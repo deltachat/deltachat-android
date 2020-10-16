@@ -194,7 +194,6 @@
     <string name="pin">Prisegti</string>
     <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
     <string name="unpin">Atsegti</string>
-
     <string name="mute_for_one_hour">Išjungti 1 valandai</string>
     <string name="mute_for_two_hours">Išjungti 2 valandoms</string>
     <string name="mute_for_one_day">Išjungti 1 dienai</string>

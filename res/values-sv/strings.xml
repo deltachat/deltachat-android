@@ -195,7 +195,6 @@
     <string name="pin">Fäst</string>
     <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
     <string name="unpin">Lösgör</string>
-
     <string name="mute_for_one_hour">Tysta 1 timma</string>
     <string name="mute_for_two_hours">Tysta 2 timmar</string>
     <string name="mute_for_one_day">Tysta 1 dag</string>
@@ -694,4 +693,5 @@
     <string name="pref_reliable_service_explain">Kräver permanent avisering</string>
     <string name="perm_enable_bg_reminder_title">Tryck här för att ta emot meddelanden medan Delta Chat är i bakgrunden.</string>
     <string name="perm_enable_bg_already_done">Du har redan gett Delta Chatt tillstånd att ta emot meddelanden i bakgrunden.\n\nKontrollera dina systeminställningar också, om det fortfarande inte kommer några meddelanden i bakgrunden.</string>
-	</resources>
+
+</resources>

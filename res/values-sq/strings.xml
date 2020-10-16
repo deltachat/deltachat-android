@@ -10,11 +10,14 @@
     <string name="on">On</string>
     <string name="off">Off</string>
     <string name="def">Parazgjedhje</string>
+    <string name="default_value">Parazgjedhje (%1$s)</string>
+    <string name="default_value_as_above">Parazgjedhje (njësoj me sa më sipër)</string>
     <string name="custom">Vetjake</string>
     <string name="none">Asnjë</string>
     <string name="automatic">Automatike</string>
     <string name="strict">Strikt</string>
     <string name="open">Hap</string>
+    <string name="open_attachment">Hape bashkëngjitjen</string>
     <string name="join">Hyni</string>
     <string name="rejoin">Rihyni</string>
     <string name="delete">Fshije</string>
@@ -123,6 +126,7 @@
     <string name="magenta">I purpurt</string>
     <string name="white">E bardhë</string>
 
+    <string name="extra_small">Tejet të vogla</string>
     <string name="small">Të vogla</string>
     <string name="normal">Normale</string>
     <string name="large">Të mëdha</string>
@@ -151,12 +155,16 @@
     <string name="menu_add_attachment">Shtoni bashkëngjitje</string>
     <string name="menu_leave_group">Braktiseni grupin</string>
     <string name="menu_delete_chat">Fshije fjalosjen</string>
+    <string name="ask_delete_named_chat">Jeni i sigurt se doni të fshihet \"%1$s\"?</string>
     <string name="menu_delete_messages">Fshiji mesazhet</string>
     <string name="menu_delete_image">Fshije figurën</string>
     <string name="menu_delete_locations">Të fshihen krejt vendndodhjet?</string>
     <string name="menu_delete_location">Të fshihet kjo vendndodhje?</string>
     <string name="menu_message_details">Hollësi mesazhi</string>
     <string name="menu_copy_to_clipboard">Kopjoje në të papastër</string>
+    <string name="menu_copy_selection_to_clipboard">Kopjoje përzgjedhjen</string>
+    <string name="menu_copy_link_to_clipboard">Kopjoje lidhjen</string>
+    <string name="paste_from_clipboard">Ngjite prej të papastre</string>
     <string name="menu_forward">Përcille mesazhin</string>
     <string name="menu_resend">Ridërgoje mesazhin</string>
     <string name="menu_reply">Përgjigju mesazhit</string>
@@ -197,6 +205,8 @@
     <string name="pin">Fiksoje</string>
     <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
     <string name="unpin">Çfiksoje</string>
+    <string name="ConversationFragment_quoted_message_not_found">S’u gjet mesazhi origjinal</string>
+    <string name="reply_privately">Përgjigjuni privatisht</string>
 
     <string name="mute_for_one_hour">Heshtoji për 1 orë</string>
     <string name="mute_for_two_hours">Heshtoji për 2 orë</string>
@@ -211,6 +221,10 @@
     <string name="share_location_for_two_hours">për 2 orë</string>
     <string name="share_location_for_six_hours">për 6 orë</string>
 
+    <plurals name="ask_send_following_n_files_to">
+        <item quantity="one">Të dërgohet kartela vijuese te %s?</item>
+        <item quantity="other">Të dërgohen %d kartelat vijuese te %s?</item>
+    </plurals>
     <string name="file_saved_to">Kartela u ruajt te \"%1$s\".</string>
 
     <string name="videochat">Fjalosje me video</string>
@@ -247,8 +261,12 @@
     <string name="ask_delete_contact">Të fshihet përgjithmonë kontakti %1$s? \n\nKontaktet me fjalosje në zhvillim e sipër dhe kontaktet prej libri adresash të sistemit s\’mund të fshihen përgjithmonë.</string>
     <string name="cannot_delete_contacts_in_use">S\’mund të fshihen kontakte me fjalosje në zhvillim e sipër.</string>
     <string name="ask_start_chat_with">Të bisedohet me %1$s?</string>
+    <string name="ask_delete_value">Të fshihet %s?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Të hiqet %1$s nga grupi?</string>
+    <string name="open_url_confirmation">Doni të hapet kjo lidhje?</string>
+
+
     <!-- contact list -->
     <string name="contacts_title">Kontakte</string>
     <string name="contacts_enter_name_or_email">Jepni emër ose adresë email</string>
@@ -293,6 +311,14 @@
     <string name="chat_no_contact_requests">S\’ka kërkesa kontakti.\n\nNëse doni që email-e klasikë të shfaqen këtu si kërkesa kontakti, mund të ndryshoni rregullimin përkatës te rregullimet e aplikacionit.</string>
     <string name="retry_send">Riprovo të dërgosh mesazhin</string>
     <string name="send_failed">Dërgimi i mesazhit dështoi</string>
+    <!-- reasons for a disabled message composer -->
+    <string name="messaging_disabled_not_in_group">S’mund të shkruani, ngaqë s’jeni në këtë grup. Për t’u bërë pjesë, kërkojani një anëtari tjetër.</string>
+    <string name="messaging_disabled_device_chat">Kjo fjalosje përmban mesazhe të prodhuar lokalisht. Ndaj s’mund të shkruani ndonjë mesazh.</string>
+    <string name="messaging_disabled_deaddrop">Që të pranoni apo hidhni tej një kërkesë kontakti, klikoni mbi një mesazh</string>
+    <string name="cannot_display_unsuported_file_type">S’mund të shfaqet ky lloj kartelash: %s</string>
+    <string name="attachment_failed_to_load">S’u arrit të ngarkohet bashkëngjitje</string>
+
+
     <!-- map -->
     <string name="filter_map_on_time">Shfaq vendndodhje në rrjedhë kohore</string>
     <string name="show_location_traces">Shfaq gjurmë</string>
@@ -308,6 +334,8 @@
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">Emër grupi</string>
     <string name="group_avatar">Avatar grupi</string>
+    <string name="remove_group_image">Hiqe figurën e grupit</string>
+    <string name="change_group_image">Ndryshoni figurën e grupit</string>
     <string name="group_create_button">Krijoni grup</string>
     <string name="group_please_enter_group_name">Ju lutemi, jepni një emër për grupin.</string>
     <string name="group_add_members">Shtoni anëtarë</string>
@@ -370,7 +398,9 @@
     <string name="add_account">Shtoni llogari</string>
     <string name="delete_account">Fshije llogarinë</string>
     <string name="delete_account_ask">Jeni i sigurt se doni të fshihen të dhënat e llogarisë tuaj?</string>
+    <string name="delete_account_explain_with_name">Krejt të dhënat e llogarisë për \"%s\" në këtë pajisje do të fshihen, përfshi ato të ujdisjes tuaj për fshehtëzim skaj-më-skaj, kontakte, fjalosje, mesazhe dhe media. Ky veprim s’mund të zhbëhet.</string>
     <string name="switching_account">Po ndërrohet llogari…</string>
+    <string name="try_connect_now">Provo të lidhesh tani</string>
     <!-- Translations: %1$s will be replaced by a more detailed error message -->
     <string name="configuration_failed_with_error">Formësimi dështoi. Gabim: %1$s</string>
 
@@ -412,6 +442,9 @@
     <string name="pref_notifications">Njoftime</string>
     <string name="pref_notifications_show">Shfaqi</string>
     <string name="pref_notifications_priority">Përparësi</string>
+    <string name="pref_notifications_explain">Aktivizoni njoftime sistemi për mesazhe të reja</string>
+    <string name="pref_show_notification_content">Shfaq lëndë mesazhi në njoftim</string>
+    <string name="pref_show_notification_content_explain">Shfaq te njoftimet dërguesin dhe fjalët e para të mesazhit</string>
     <string name="pref_led_color">Ngjyrë LED-i</string>
     <string name="pref_sound">Tingull</string>
     <string name="pref_silent">Heshtazi</string>
@@ -474,6 +507,25 @@
     <string name="pref_background_custom_image">Figurë vetjake</string>
     <string name="pref_background_custom_color">Ngjyrë vetjake</string>
     <string name="export_aborted">Eksportimi dështoi.</string>
+    <string name="profile_image_select">Përzgjidhni figurë profili</string>
+    <string name="select_your_new_profile_image">Përzgjidhni figurën tuaj të re të profilit</string>
+    <string name="profile_image_delete">Fshini figurën e profilit</string>
+
+
+    <!-- Emoji picker and categories -->
+    <string name="emoji_search_results">Përfundime kërkimi</string>
+    <string name="emoji_not_found">S’u gjetën emoji</string>
+    <string name="emoji_recent">Përdorur së fundi</string>
+    <string name="emoji_people">Njerëz &amp; Trupi</string>
+    <string name="emoji_nature">Kafshë &amp; Naturë</string>
+    <string name="emoji_foods">Ushqim &amp; Pije</string>
+    <string name="emoji_activity">Veprimtari</string>
+    <string name="emoji_places">Udhëtime &amp; Vende</string>
+    <string name="emoji_objects">Objekte</string>
+    <string name="emoji_symbols">Simbole</string>
+    <string name="emoji_flags">Flamuj</string>
+
+
     <!-- automatically delete message -->
     <string name="delete_old_messages">Fshiji mesazhet e vjetër</string>
     <!-- devs: autodel_title is deprecated, use delete_old_messages instead -->
@@ -552,8 +604,10 @@
 
     <!-- qr code stuff -->
     <string name="qr_code">Kod QR</string>
+    <string name="load_qr_code_as_image">Ngarkoje kodin QR si figurë</string>
     <string name="qrscan_title">Skanoni kod QR</string>
     <string name="qrscan_hint">Vendoseni kamerën tuaj përmbi kodin QR</string>
+    <string name="qrscan_failed">Kodi QR s’u shkodua dot</string>
     <string name="qrscan_ask_join_group">Doni të bëheni pjesë e grupit \"%1$s\"?</string>
     <string name="qrscan_fingerprint_mismatch">Shenjat e gishtave të skanuar nuk përputhen me shenjat e gishtave parë së fundi për %1$s.</string>
     <string name="qrscan_no_addr_found">Ky kod QR përmban shenja gishtash, por jo adresë email.\n\nPër një verifikim out-of-band, ju lutemi, së pari vendosni me marrësin një lidhje të fshehtëzuar.</string>
@@ -581,6 +635,9 @@
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">U ndryshua rregullimi për %1$s</string>
     <string name="verified_group_explain">Grupet e verifikuara (eksperimentale) furnizojnë siguri kundër sulmesh aktive. Anëtarët janë të verifikuar me një faktor të dytë nga anëtarë të tjerë dhe mesazhet janë përherë të fshehtëzuara skaj më skaj.</string>
+    <string name="copy_qr_data_success">URL-ja QR u kopjua në të papastër</string>
+
+
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d mesazhe të rinj në %2$d fjalosje</string>
     <string name="notify_mark_read">Vëri shenjë si i lexuar</string>
@@ -608,6 +665,9 @@
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Mesazh i fshehtëzuar</string>
 
+    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
+    <string name="about_offical_app_desktop">Ky është aplikacioni zyrtar Delta Chat Desktop.</string>
+    <string name="about_licensed_under_desktop">Ky program licencohet sipar GNU GPL version 3 dhe kodi burim mund të kihet që prej GitHub-i.</string>
     <string name="welcome_desktop">Mirë se vini në Delta Chat</string>
     <string name="login_known_accounts_title_desktop">Llogari të njohura</string>
     <string name="global_menu_preferences_language_desktop">Zgjidhni Gjuhë…</string>
@@ -662,6 +722,7 @@
     <string name="ask_delete_chat_desktop">Jeni i sigurt se doni të fshihet kjo fjalosje?</string>
     <string name="email_validation_failed_desktop">Adresa email është e domosdoshme.</string>
     <string name="forget_login_confirmation_desktop">Të fshihet kjo hyrje? Do të fshihet gjithçka, përfshi rregullimin tuaj për skaj-më-skaj, kontaktet, fjalosjet, mesazhet dhe mediat. Ky veprim është përfundimtar dhe s\’mund të prapësohet.</string>
+    <string name="account_info_hover_tooltip_desktop">Email: %s\nMadhësi: %s\nShteg: %s</string>
     <string name="me_desktop">unë</string>
     <string name="in_this_group_desktop">Anëtarë grupi</string>
     <string name="not_in_this_group_desktop">Anëtarë potencialë grupi (jo në grup)</string>
@@ -683,6 +744,9 @@
     <string name="a11y_delivery_status_invalid">Gjendje dërgimi e pavlefshme</string>
     <string name="a11y_message_context_menu_btn_label">Veprime mesazhesh</string>
     <string name="a11y_background_preview_label">Paraparje sfondi</string>
+    <string name="a11y_disappearing_messages_activated">Zhdukja e mesazheve është e aktivizuar</string>
+
+
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Lejimi i përdorimi të kamerës ju bën të mundur të bëni foto dhe video.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Lejimi i përdorimi të librit tuaj të adresave kamerës ju bën të mundur të bisedoni me kontakte prej pajisjes tuaj.</string>
@@ -700,7 +764,5 @@
     <string name="pref_reliable_service_explain">Lyp një njoftim permanent</string>
     <string name="perm_enable_bg_reminder_title">Prekeni këtu që të merrni mesazhe, teksa Delta Chat rri në prapaskenë.</string>
     <string name="perm_enable_bg_already_done">E keni lejuar tashmë Delta Chat-in të marrë mesazhe në prapaskenë.\n\nNëse mesazhet prapë nuk mbërrijnë në prapaskenë, ju lutemi, kontrolloni edhe rregullimet e sistemit tuaj.</string>
-	<string name="ConversationFragment_quoted_message_not_found">S’u gjet mesazhi origjinal</string>
-	<string name="reply_privately">Përgjigjuni privatisht</string>
 
 </resources>

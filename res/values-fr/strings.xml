@@ -195,7 +195,6 @@
     <string name="pin">Épingler</string>
     <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
     <string name="unpin">Désépingler</string>
-
     <string name="mute_for_one_hour">Déactiver pour 1 heure</string>
     <string name="mute_for_two_hours">Déactiver pour 2 heures</string>
     <string name="mute_for_one_day">Déactiver pour 1 jour</string>
@@ -641,4 +640,5 @@
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat vous laisse choisir quelles photos envoyer de votre photothèque. </string>
     <string name="perm_enable_bg_reminder_title">Touchez ici pour recevoir des messages pendant que DeltaChat est en arrière-plan.</string>
     <string name="perm_enable_bg_already_done">Vous avez déjà autorisé Delta Chat à recevoir des messages en arrière plan.\n\nSi vous ne les recevez toujours pas en arrière plan, vérifiez les paramètres de votre système.</string>
-	</resources>
+
+</resources>

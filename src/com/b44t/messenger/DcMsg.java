@@ -4,6 +4,8 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import org.thoughtcrime.securesms.connect.ApplicationDcContext;
+
 import java.io.File;
 import java.util.Set;
 
@@ -69,6 +71,22 @@ public class DcMsg {
 
         DcMsg that = (DcMsg) other;
         return this.getId()==that.getId() && this.getId()!=0;
+    }
+
+    /**
+     * If given a message, calculates the position of the message in the chat
+     */
+    public static int getMessagePosition(DcMsg msg, ApplicationDcContext dcContext) {
+        int msgs[] = dcContext.getChatMsgs(msg.getChatId(), 0, 0);
+        int startingPosition = -1;
+        int msgId = msg.getId();
+        for (int i = 0; i < msgs.length; i++) {
+            if (msgs[i] == msgId) {
+                startingPosition = msgs.length - 1 - i;
+                break;
+            }
+        }
+        return startingPosition;
     }
 
     public native int     getId              ();

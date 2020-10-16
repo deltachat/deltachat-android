@@ -188,7 +188,6 @@
     <string name="pin">Anclar</string>
     <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
     <string name="unpin">Desanclar</string>
-
     <string name="mute_for_one_hour">Silenciar por 1 hora</string>
     <string name="mute_for_two_hours">Silenciar por 2 horas</string>
     <string name="mute_for_one_day">Silenciar por 1 día</string>
@@ -611,4 +610,5 @@
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Al permitir el acceso a la galería de fotos podrás subir tus imágenes desde allí.</string>
     <string name="perm_enable_bg_reminder_title">Toque aquí para recibir mensajes mientras Delta Chat está en segundo plano.</string>
     <string name="perm_enable_bg_already_done">Ya has permitido que Delta Chat reciba mensajes en segundo plano.\n\nSi los mensajes aún no llegan en segundo plano, compruebe también la configuración de su sistema.</string>
-	</resources>
+
+</resources>

@@ -69,6 +69,7 @@ import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.recipients.Recipient;
+import org.thoughtcrime.securesms.util.AccessibilityUtil;
 import org.thoughtcrime.securesms.util.Debouncer;
 import org.thoughtcrime.securesms.util.SaveAttachmentTask;
 import org.thoughtcrime.securesms.util.StickyHeaderDecoration;
@@ -107,7 +108,6 @@ public class ConversationFragment extends Fragment
     private Recipient                   recipient;
     private long                        chatId;
     private int                         startingPosition;
-    private int                         startingMsgId;
     private boolean                     firstLoad;
     private ActionMode                  actionMode;
     private Locale                      locale;
@@ -157,7 +157,8 @@ public class ConversationFragment extends Fragment
 
         scrollToBottomButton.setOnClickListener(v -> scrollToBottom());
 
-        final LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, true);
+        final SetStartingPositionLinearLayoutManager layoutManager = new SetStartingPositionLinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, true);
+
         list.setHasFixedSize(false);
         list.setLayoutManager(layoutManager);
         list.setItemAnimator(null);
@@ -178,14 +179,9 @@ public class ConversationFragment extends Fragment
     @Override
     public void onActivityCreated(Bundle bundle) {
         super.onActivityCreated(bundle);
+
         initializeResources();
         initializeListAdapter();
-
-        int freshMsgs = dcContext.getFreshMsgCount((int) chatId);
-        if (freshMsgs > 0) {
-            setLastSeenPosition(freshMsgs - 1);
-            moveToLastSeen();
-        }
     }
 
     private void setNoMessageText() {
@@ -283,14 +279,16 @@ public class ConversationFragment extends Fragment
         if (getListAdapter().getLastSeenPosition() < 0) {
             return;
         }
-        scrollToLastSeenPosition(getListAdapter().getLastSeenPosition() + 1);
+        final int lastSeenPosition = getListAdapter().getLastSeenPosition() + 1;
+        if (lastSeenPosition > 0) {
+            list.post(() -> ((LinearLayoutManager)list.getLayoutManager()).scrollToPositionWithOffset(lastSeenPosition, list.getHeight()));
+        }
     }
 
     private void initializeResources() {
         this.chatId            = this.getActivity().getIntent().getIntExtra(ConversationActivity.CHAT_ID_EXTRA, -1);
         this.recipient         = Recipient.from(getActivity(), Address.fromChat((int)this.chatId));
         this.startingPosition  = this.getActivity().getIntent().getIntExtra(ConversationActivity.STARTING_POSITION_EXTRA, -1);
-        this.startingMsgId     = this.getActivity().getIntent().getIntExtra(ConversationActivity.SCROLL_TO_MSG_ID_EXTRA, -1);
         this.firstLoad         = true;
 
         OnScrollListener scrollListener = new ConversationScrollListener(getActivity());
@@ -301,11 +299,29 @@ public class ConversationFragment extends Fragment
         if (this.recipient != null && this.chatId != -1) {
             ConversationAdapter adapter = new ConversationAdapter(getActivity(), this.recipient.getChat(), GlideApp.with(this), locale, selectionClickListener, this.recipient);
             list.setAdapter(adapter);
+
             dateDecoration = new StickyHeaderDecoration(adapter, false, false);
             list.addItemDecoration(dateDecoration);
 
+            int freshMsgs = dcContext.getFreshMsgCount((int) chatId);
+            SetStartingPositionLinearLayoutManager layoutManager = (SetStartingPositionLinearLayoutManager) list.getLayoutManager();
+            if (startingPosition > -1) {
+                layoutManager.setStartingPosition(startingPosition);
+            } else if (freshMsgs > 0) {
+                layoutManager.setStartingPosition(freshMsgs - 1);
+            }
+
             reloadList();
             updateLocationButton();
+
+            if (freshMsgs > 0) {
+                getListAdapter().setLastSeenPosition(freshMsgs - 1);
+                if (lastSeenDecoration != null) {
+                    list.removeItemDecoration(lastSeenDecoration);
+                }
+                lastSeenDecoration = new ConversationAdapter.LastSeenHeader(getListAdapter());
+                list.addItemDecoration(lastSeenDecoration);
+            }
         }
     }
 
@@ -364,7 +380,8 @@ public class ConversationFragment extends Fragment
     }
 
     public void scrollToBottom() {
-        if (((LinearLayoutManager) list.getLayoutManager()).findFirstVisibleItemPosition() < SCROLL_ANIMATION_THRESHOLD) {
+        if (((LinearLayoutManager) list.getLayoutManager()).findFirstVisibleItemPosition() < SCROLL_ANIMATION_THRESHOLD
+                && !AccessibilityUtil.areAnimationsDisabled(getContext())) {
             list.smoothScrollToPosition(0);
         } else {
             list.scrollToPosition(0);
@@ -377,17 +394,6 @@ public class ConversationFragment extends Fragment
             list.removeItemDecoration(lastSeenDecoration);
         }
         if (lastSeen > 0) {
-            lastSeenDecoration = new ConversationAdapter.LastSeenHeader(getListAdapter());
-            list.addItemDecoration(lastSeenDecoration);
-        }
-    }
-
-    private void setLastSeenPosition(int position) {
-        getListAdapter().setLastSeenPosition(position);
-        if (lastSeenDecoration != null) {
-            list.removeItemDecoration(lastSeenDecoration);
-        }
-        if (position >= 0) {
             lastSeenDecoration = new ConversationAdapter.LastSeenHeader(getListAdapter());
             list.addItemDecoration(lastSeenDecoration);
         }
@@ -536,15 +542,10 @@ public class ConversationFragment extends Fragment
         }
         int[] msgs = DcHelper.getContext(getContext()).getChatMsgs((int) chatId, 0, 0);
         adapter.changeData(msgs);
-        int lastSeenPosition = adapter.getLastSeenPosition();
 
         if (firstLoad) {
             if (startingPosition >= 0) {
-                scrollAndHighlight(startingPosition, false);
-            } else if (startingMsgId >= 0) {
-                scrollToMsgId(startingMsgId);
-            } else {
-                scrollToLastSeenPosition(lastSeenPosition);
+                getListAdapter().pulseHighlightItem(startingPosition);
             }
             firstLoad = false;
         } else if(oldIndex  > 0) {
@@ -575,19 +576,13 @@ public class ConversationFragment extends Fragment
 
     private void scrollAndHighlight(final int pos, boolean smooth) {
         list.post(() -> {
-            if (smooth) {
+            if (smooth && !AccessibilityUtil.areAnimationsDisabled(getContext())) {
                 list.smoothScrollToPosition(pos);
             } else {
                 list.scrollToPosition(pos);
             }
             getListAdapter().pulseHighlightItem(pos);
         });
-    }
-
-    private void scrollToLastSeenPosition(final int lastSeenPosition) {
-        if (lastSeenPosition > 0) {
-            list.post(() -> ((LinearLayoutManager)list.getLayoutManager()).scrollToPositionWithOffset(lastSeenPosition, list.getHeight()));
-        }
     }
 
     public void scrollToMsgId(final int msgId) {
@@ -834,7 +829,8 @@ public class ConversationFragment extends Fragment
             if (foreignChatId != 0 && foreignChatId != chatId) {
                 Intent intent = new Intent(getActivity(), ConversationActivity.class);
                 intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, foreignChatId);
-                intent.putExtra(ConversationActivity.SCROLL_TO_MSG_ID_EXTRA, quoted.getId());
+                int start = DcMsg.getMessagePosition(quoted, dcContext);
+                intent.putExtra(ConversationActivity.STARTING_POSITION_EXTRA, start);
                 if (getActivity() != null) {
                     getActivity().startActivity(intent);
                     getActivity().finish();

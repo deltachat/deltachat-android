@@ -10,11 +10,14 @@
     <string name="on">开</string>
     <string name="off">关</string>
     <string name="def">默认</string>
+    <string name="default_value">默认值（%1$s）</string>
+    <string name="default_value_as_above">默认值（与上面相同）</string>
     <string name="custom">自定义</string>
     <string name="none">无</string>
     <string name="automatic">自动</string>
     <string name="strict">严格</string>
     <string name="open">打开</string>
+    <string name="open_attachment">打开附件</string>
     <string name="join">加入</string>
     <string name="rejoin">重新加入</string>
     <string name="delete">删除</string>
@@ -42,6 +45,7 @@
     <string name="one_moment">稍等片刻…</string>
     <string name="done">已完成</string>
     <string name="undo">撤销</string>
+    <string name="offline">离线</string>
     <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
     <string name="next">下一步</string>
     <string name="error">错误</string>
@@ -117,6 +121,8 @@
     <string name="magenta"> 洋红色</string>
     <string name="white">白色</string>
 
+    <string name="zoom">缩放</string>
+    <string name="extra_small">特小</string>
     <string name="small">小</string>
     <string name="normal">正常</string>
     <string name="large">大</string>
@@ -145,12 +151,16 @@
     <string name="menu_add_attachment">添加附件</string>
     <string name="menu_leave_group">离开群组</string>
     <string name="menu_delete_chat">删除聊天</string>
+    <string name="ask_delete_named_chat">您确定要删除“%1$s”吗？</string>
     <string name="menu_delete_messages">删除消息</string>
     <string name="menu_delete_image">删除图像</string>
     <string name="menu_delete_locations">删除所有位置？</string>
     <string name="menu_delete_location">删除此位置？</string>
     <string name="menu_message_details">消息详情</string>
     <string name="menu_copy_to_clipboard">复制到剪贴板</string>
+    <string name="menu_copy_selection_to_clipboard">复制所选内容</string>
+    <string name="menu_copy_link_to_clipboard">复制链接</string>
+    <string name="paste_from_clipboard">从剪贴板粘贴</string>
     <string name="menu_forward">转发消息</string>
     <string name="menu_resend">重发消息</string>
     <string name="menu_reply">回复消息</string>
@@ -191,6 +201,8 @@
     <string name="pin">固定</string>
     <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
     <string name="unpin">取消固定</string>
+    <string name="ConversationFragment_quoted_message_not_found">原消息未找到</string>
+    <string name="reply_privately">私下回复</string>
 
     <string name="mute_for_one_hour">静音 1 小时</string>
     <string name="mute_for_two_hours">静音 2 小时</string>
@@ -205,6 +217,9 @@
     <string name="share_location_for_two_hours">2 小时</string>
     <string name="share_location_for_six_hours">6 小时</string>
 
+    <plurals name="ask_send_following_n_files_to">
+        <item quantity="other">将以下 %d 个文件发送给 %s？</item>
+    </plurals>
     <string name="file_saved_to">文件已保存到 “%1$s”。</string>
 
     <string name="videochat">视频聊天</string>
@@ -239,8 +254,12 @@
     <string name="ask_delete_contact">删除联系人 %1$s?\n\n仍有在进行中的聊天的联系人和在系统通讯录中的联系人无法被永久删除。</string>
     <string name="cannot_delete_contacts_in_use">无法删除仍有在进行中的聊天的联系人。</string>
     <string name="ask_start_chat_with">与 %1$s 聊天？</string>
+    <string name="ask_delete_value">删除 %s？</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">将 %1$s 从群组中移除？</string>
+    <string name="open_url_confirmation">您要打开此链接吗？</string>
+
+
     <!-- contact list -->
     <string name="contacts_title">联系人</string>
     <string name="contacts_enter_name_or_email">输入名称或电子邮件地址</string>
@@ -282,6 +301,14 @@
     <string name="chat_no_contact_requests">没有联系人请求。\n\n如果您希望传统的电子邮件作为联系人请求出现在这里，则可以更改本应用相关设置。</string>
     <string name="retry_send">重试发送消息</string>
     <string name="send_failed">无法发送消息</string>
+    <!-- reasons for a disabled message composer -->
+    <string name="messaging_disabled_not_in_group">您无法编写消息，因为您不在此群组中。要加入，请询问其他成员。</string>
+    <string name="messaging_disabled_device_chat">此聊天包含本地生成的消息。因此您不能编写任何消息。</string>
+    <string name="messaging_disabled_deaddrop">点击消息来接受或拒绝联系人请求</string>
+    <string name="cannot_display_unsuported_file_type">无法显示此类文件：%s</string>
+    <string name="attachment_failed_to_load">加载附件失败</string>
+
+
     <!-- map -->
     <string name="filter_map_on_time">显示在时间范围内的位置</string>
     <string name="show_location_traces">显示轨迹</string>
@@ -296,7 +323,9 @@
 
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">群组名称</string>
-    <string name="group_avatar">群组图标</string>
+    <string name="group_avatar">群组图像</string>
+    <string name="remove_group_image">移除群组图像</string>
+    <string name="change_group_image">更改群组图像</string>
     <string name="group_create_button">创建群组</string>
     <string name="group_please_enter_group_name">请为群组输入名称。</string>
     <string name="group_add_members">添加成员</string>
@@ -346,7 +375,7 @@
     <string name="login_error_port">请输入有效的端口（1-65535）</string>
     <string name="login_error_required_fields">请输入有效的电子邮件地址和密码</string>
     <string name="import_backup_title">导入备份</string>
-    <string name="import_backup_ask">在“%1$s”找到备份。\n\n您想导入并使用其中的全部数据与设置吗？</string>
+    <string name="import_backup_ask">在“%1$s”找到备份。\n\n您要导入并使用其中的全部数据与设置吗？</string>
     <string name="import_backup_no_backup_found">没有找到备份。\n\n将备份复制到“%1$s”然后再试一次。或者按“开始发送消息”来进行常规设置流程。</string>
     <!-- Translators: %1$s will be replaced by the email address -->
     <string name="login_error_cannot_login">无法作为“%1$s”登录。请检查电子邮件地址和密码是否正确。</string>
@@ -359,7 +388,9 @@
     <string name="add_account">添加账户</string>
     <string name="delete_account">删除账户</string>
     <string name="delete_account_ask">您确定要删除您的账户数据吗？</string>
+    <string name="delete_account_explain_with_name">此设备上“%s”的所有帐户数据都将被删除，包括您的端到端加密设置、联系人、聊天、消息及媒体。 此操作无法撤消。</string>
     <string name="switching_account">切换账户 …</string>
+    <string name="try_connect_now">立即尝试连接</string>
     <!-- Translations: %1$s will be replaced by a more detailed error message -->
     <string name="configuration_failed_with_error">配置失败。错误：%1$s</string>
 
@@ -378,7 +409,7 @@
     <string name="pref_profile_info_headline">您的个人资料</string>
     <string name="pref_profile_photo">个人资料图片</string>
     <string name="pref_blocked_contacts">已屏蔽联系人</string>
-    <string name="pref_profile_photo_remove_ask">移除个人资料照片？</string>
+    <string name="pref_profile_photo_remove_ask">移除个人资料图片？</string>
     <string name="pref_password_and_account_settings">密码和账户</string>
     <string name="pref_who_can_see_profile_explain">在与其他用户交流时，您的个人资料图片和名称将与您的消息一起显示。 已经发送的信息不能被删除或者移除。</string>
     <string name="pref_your_name">您的名称</string>
@@ -401,6 +432,9 @@
     <string name="pref_notifications">通知</string>
     <string name="pref_notifications_show">显示</string>
     <string name="pref_notifications_priority">优先级</string>
+    <string name="pref_notifications_explain">为新消息启用系统通知</string>
+    <string name="pref_show_notification_content">在通知中显示消息内容</string>
+    <string name="pref_show_notification_content_explain">在通知中显示发送者和消息开头部分</string>
     <string name="pref_led_color">LED 颜色</string>
     <string name="pref_sound">声音</string>
     <string name="pref_silent">无声</string>
@@ -464,6 +498,25 @@
     <string name="pref_background_custom_image">自定义图像</string>
     <string name="pref_background_custom_color">自定义颜色</string>
     <string name="export_aborted">导出已中止。</string>
+    <string name="profile_image_select">选择个人资料图片</string>
+    <string name="select_your_new_profile_image">选择新的个人资料图片</string>
+    <string name="profile_image_delete">删除个人资料图片</string>
+
+
+    <!-- Emoji picker and categories -->
+    <string name="emoji_search_results">搜索结果</string>
+    <string name="emoji_not_found">未找到 emoji</string>
+    <string name="emoji_recent">最近使用</string>
+    <string name="emoji_people">人物 &amp; 身体</string>
+    <string name="emoji_nature">动物 &amp; 自然</string>
+    <string name="emoji_foods">食品 &amp; 饮料</string>
+    <string name="emoji_activity">活动</string>
+    <string name="emoji_places">出行 &amp; 地点</string>
+    <string name="emoji_objects">物品</string>
+    <string name="emoji_symbols">符号</string>
+    <string name="emoji_flags">旗帜</string>
+
+
     <!-- automatically delete message -->
     <string name="delete_old_messages">删除旧消息</string>
     <!-- devs: autodel_title is deprecated, use delete_old_messages instead -->
@@ -542,9 +595,11 @@
 
     <!-- qr code stuff -->
     <string name="qr_code">二维码</string>
+    <string name="load_qr_code_as_image">将二维码加载为图像</string>
     <string name="qrscan_title">扫描二维码</string>
     <string name="qrscan_hint">将您的相机放于二维码上方。</string>
-    <string name="qrscan_ask_join_group">您想加入群组“%1$s”吗？</string>
+    <string name="qrscan_failed">二维码无法被解码</string>
+    <string name="qrscan_ask_join_group">您要加入群组“%1$s”吗？</string>
     <string name="qrscan_fingerprint_mismatch">扫描到的指纹与上次见到的 %1$s 的指纹不匹配。</string>
     <string name="qrscan_no_addr_found">此二维码包含指纹但没有电子邮件地址。\n\n对于带外验证，请先与收件人建立加密连接。</string>
     <string name="qrscan_contains_text">已扫描到的二维码文本：\n\n%1$s</string>
@@ -563,7 +618,7 @@
     <string name="qrshow_join_contact_no_connection_toast">没有互联网连接，无法进行二维码设置。</string>
     <string name="qraccount_ask_create_and_login">在“%1$s”创建新的电子邮件地址并在那登录？</string>
     <string name="qraccount_ask_create_and_login_another">在“%1$s”创建新的电子邮件地址并在那登录？\n\n您的已存在账户不会被删除。使用“切换账户”来在您的账户之间切换。</string>
-    <string name="qraccount_success_enter_name">登录成功——您的电子邮件地址是 %1$s\n\n如果您愿意，您现在可以去设置一个名称和头像。它们将显示给您写信到的人。</string>
+    <string name="qraccount_success_enter_name">登录成功——您的电子邮件地址是 %1$s\n\n如果您愿意，您现在可以去设置一个名称和个人资料图片。它们将显示给您发消息到的人。</string>
     <string name="qraccount_qr_code_cannot_be_used">无法使用扫描到的二维码建立新账户。</string>
     <string name="qraccount_use_on_new_install">扫描到的二维码是用于设置新帐户的。设置新的 Delta Chat 安装时，您可以扫描此二维码。</string>
     <string name="contact_verified">%1$s 已验证。</string>
@@ -571,6 +626,9 @@
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">更改了 %1$s 的加密设置。</string>
     <string name="verified_group_explain">已验证群组（实验性）可提供针对主动攻击的安全性。其中的成员被其他成员用第二个因素进行了验证，并且消息始终是端到端加密的。</string>
+    <string name="copy_qr_data_success">已复制二维码链接到剪贴板</string>
+
+
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%2$d 个聊天中有 %1$d 条新消息</string>
     <string name="notify_mark_read">标记为已读</string>
@@ -598,6 +656,9 @@
     <!-- dc_str_* resources -->
     <string name="encrypted_message">加密的消息</string>
 
+    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
+    <string name="about_offical_app_desktop">这是 Delta Chat 官方桌面应用。</string>
+    <string name="about_licensed_under_desktop">本软件在 GNU GPL 版本 3 下获得授权，其源代码可从 GitHub 获得。</string>
     <string name="welcome_desktop">欢迎使用 Delta Chat</string>
     <string name="login_known_accounts_title_desktop">已知账户</string>
     <string name="global_menu_preferences_language_desktop">语言</string>
@@ -652,6 +713,7 @@
     <string name="ask_delete_chat_desktop">删除此聊天？</string>
     <string name="email_validation_failed_desktop">需要电子邮件地址。</string>
     <string name="forget_login_confirmation_desktop">删除此登录？ 一切都将被删除，包括您的端到端设置、联系人、聊天、消息及媒体。 此操作无法撤消。</string>
+    <string name="account_info_hover_tooltip_desktop">电子邮件：%s\n大小：%s\n路径：%s</string>
     <string name="me_desktop">我</string>
     <string name="in_this_group_desktop">群组成员</string>
     <string name="not_in_this_group_desktop">潜在的群组成员（不在群组中）</string>
@@ -673,6 +735,9 @@
     <string name="a11y_delivery_status_invalid">无效的发送状态</string>
     <string name="a11y_message_context_menu_btn_label">消息操作</string>
     <string name="a11y_background_preview_label">背景预览</string>
+    <string name="a11y_disappearing_messages_activated">阅后即焚消息已激活</string>
+
+
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat 使用您的相机来拍摄、发送照片和视频以及扫描二维码。</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat 使用您的联系人来显示您可以写信到的电子邮件地址列表。 Delta Chat 没有服务器，您的联系人不会被发送到任何地方。</string>
@@ -690,7 +755,5 @@
     <string name="pref_reliable_service_explain">需要一个永久通知</string>
     <string name="perm_enable_bg_reminder_title">点击此处以在 Delta Chat 处于后台时接收消息。</string>
     <string name="perm_enable_bg_already_done">您已允许 Delta Chat 在后台接收消息。\n\n如果在后台时消息仍没到达，请同时检查系统设置。</string>
-	<string name="ConversationFragment_quoted_message_not_found">原消息未找到</string>
-	<string name="reply_privately">私下回复</string>
 
 </resources>

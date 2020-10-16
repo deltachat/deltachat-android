@@ -207,7 +207,6 @@
     <string name="pin">Закріпити</string>
     <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
     <string name="unpin">Відкрипити</string>
-
     <string name="mute_for_one_hour">Відключити сповіщення на 1 годину</string>
     <string name="mute_for_two_hours">Відключити сповіщення на 2 години</string>
     <string name="mute_for_one_day">Відключити сповіщення на 1 день</string>
@@ -719,4 +718,5 @@
     <string name="pref_reliable_service_explain">Потребує перманентного сповіщення</string>
     <string name="perm_enable_bg_reminder_title">Натисніть тут, щоб отримувати повідомлення, коли Delta Chat знаходиться у фоновому режимі.</string>
     <string name="perm_enable_bg_already_done">Ви вже дозволили Delta Chat отримувати повідомлення у фоні.\n\nЯкщо повідомлення досі не приходять у фоні, перевірте налаштування вашої системи.</string>
-	</resources>
+
+</resources>
