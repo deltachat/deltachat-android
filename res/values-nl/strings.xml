@@ -10,11 +10,14 @@
     <string name="on">Aan</string>
     <string name="off">Uit</string>
     <string name="def">Standaard</string>
+    <string name="default_value">Standaard (%1$s)</string>
+    <string name="default_value_as_above">Standaard (zoals hierboven)</string>
     <string name="custom">Aangepast</string>
     <string name="none">Geen</string>
     <string name="automatic">Automatisch</string>
     <string name="strict">Strikt</string>
     <string name="open">Openen</string>
+    <string name="open_attachment">Bijlage openen</string>
     <string name="join">Deelnemen</string>
     <string name="rejoin">Opnieuw deelnemen</string>
     <string name="delete">Verwijderen</string>
@@ -42,6 +45,7 @@
     <string name="one_moment">Even geduld...</string>
     <string name="done">Klaar</string>
     <string name="undo">Ongedaan maken</string>
+    <string name="offline">Offline</string>
     <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
     <string name="next">Volgende</string>
     <string name="error">Fout</string>
@@ -123,6 +127,8 @@
     <string name="magenta">Magenta</string>
     <string name="white">Wit</string>
 
+    <string name="zoom">Zoomen</string>
+    <string name="extra_small">Extra klein</string>
     <string name="small">Klein</string>
     <string name="normal">Normaal</string>
     <string name="large">Groot</string>
@@ -151,12 +157,16 @@
     <string name="menu_add_attachment">Bijlage toevoegen</string>
     <string name="menu_leave_group">Groep verlaten</string>
     <string name="menu_delete_chat">Gesprek verwijderen</string>
+    <string name="ask_delete_named_chat">Weet je zeker dat je \'%1$s\' wilt verwijderen?</string>
     <string name="menu_delete_messages">Berichten verwijderen</string>
     <string name="menu_delete_image">Afbeelding verwijderen</string>
     <string name="menu_delete_locations">Wil je alle locaties verwijderen?</string>
     <string name="menu_delete_location">Wil je deze locatie verwijderen?</string>
     <string name="menu_message_details">Berichtinformatie</string>
     <string name="menu_copy_to_clipboard">Kopiëren naar klembord</string>
+    <string name="menu_copy_selection_to_clipboard">Selectie kopiëren</string>
+    <string name="menu_copy_link_to_clipboard">Link kopiëren</string>
+    <string name="paste_from_clipboard">Plakken van klembord</string>
     <string name="menu_forward">Bericht doorsturen</string>
     <string name="menu_resend">Bericht opnieuw versturen</string>
     <string name="menu_reply">Bericht beantwoorden</string>
@@ -197,6 +207,8 @@
     <string name="pin">Vastmaken</string>
     <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
     <string name="unpin">Losmaken</string>
+    <string name="ConversationFragment_quoted_message_not_found">Geen oorspronkelijk bericht gevonden</string>
+    <string name="reply_privately">Privé beantwoorden</string>
 
     <string name="mute_for_one_hour">1 uur lang uitschakelen</string>
     <string name="mute_for_two_hours">2 uur lang uitschakelen</string>
@@ -211,6 +223,10 @@
     <string name="share_location_for_two_hours">2 uur lang</string>
     <string name="share_location_for_six_hours">6 uur lang</string>
 
+    <plurals name="ask_send_following_n_files_to">
+        <item quantity="one">Wil je het volgende bestand versturen aan %s?</item>
+        <item quantity="other">Wil je de volgende %d bestanden versturen aan %s?</item>
+    </plurals>
     <string name="file_saved_to">Het bestand is opgeslagen in \'%1$s\'.</string>
 
     <string name="videochat">Videogesprek</string>
@@ -247,8 +263,12 @@
     <string name="ask_delete_contact">Wil je de contactpersoon %1$s permanent verwijderen?\n\nPersonen met actieve gesprekken en personen afkomstig uit je adresboek kunnen niet permanent worden verwijderd.</string>
     <string name="cannot_delete_contacts_in_use">Contactpersonen waarmee je nog gesprekken voert kunnen niet worden verwijderd.</string>
     <string name="ask_start_chat_with">Wil je een gesprek voeren met %1$s?</string>
+    <string name="ask_delete_value">Wil je %s verwijderen?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Wil je %1$s verwijderen uit de groep?</string>
+    <string name="open_url_confirmation">Weet je zeker dat je deze link wilt openen?</string>
+
+
     <!-- contact list -->
     <string name="contacts_title">Contactpersonen</string>
     <string name="contacts_enter_name_or_email">Voer een naam of e-mailadres in.</string>
@@ -293,6 +313,14 @@
     <string name="chat_no_contact_requests">Geen contactpersoonverzoeken.\n\nAls je wilt dat klassieke e-mail hier verschijnt in de vorm van contactpersoonverzoeken, dan kun je dat aangeven in de app-instellingen.</string>
     <string name="retry_send">Bericht opnieuw versturen</string>
     <string name="send_failed">Kan bericht niet versturen</string>
+    <!-- reasons for a disabled message composer -->
+    <string name="messaging_disabled_not_in_group">Alleen leden kunnen berichten versturen aan deze groep. Vraag aan een lid om lid te worden.</string>
+    <string name="messaging_disabled_device_chat">Je kunt geen berichten versturen omdat dit gesprek alleen lokaal gegenereerde berichten bevat.</string>
+    <string name="messaging_disabled_deaddrop">Druk op een bericht om het contactpersoonverzoek goed te keuren of af te wijzen</string>
+    <string name="cannot_display_unsuported_file_type">Het volgende bestandstype kan niet worden getoond: %s</string>
+    <string name="attachment_failed_to_load">De bijlage kan niet worden geladen</string>
+
+
     <!-- map -->
     <string name="filter_map_on_time">Locaties tonen in tijdsbeeld</string>
     <string name="show_location_traces">Sporen tonen</string>
@@ -308,6 +336,8 @@
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">Groepsnaam</string>
     <string name="group_avatar">Groepsafbeelding</string>
+    <string name="remove_group_image">Groepsafbeelding verwijderen</string>
+    <string name="change_group_image">Groepsafbeelding wijzigen</string>
     <string name="group_create_button">Groep aanmaken</string>
     <string name="group_please_enter_group_name">Voer een naam in voor de groep.</string>
     <string name="group_add_members">Deelnemers toevoegen</string>
@@ -370,7 +400,9 @@
     <string name="add_account">Account toevoegen</string>
     <string name="delete_account">Account verwijderen</string>
     <string name="delete_account_ask">Weet je zeker dat je je accountgegevens wilt verwijderen?</string>
+    <string name="delete_account_explain_with_name">Alle gegevens van \'%s\' worden verwijderd: de eind-tot-eindinstellingen, contactpersonen, gesprekken, berichten en media. Deze actie kan niet ongedaan worden gemaakt.</string>
     <string name="switching_account">Bezig met overschakelen…</string>
+    <string name="try_connect_now">Probeer te verbinden</string>
     <!-- Translations: %1$s will be replaced by a more detailed error message -->
     <string name="configuration_failed_with_error">Het instellen is mislukt. Foutmelding: %1$s</string>
 
@@ -412,6 +444,9 @@
     <string name="pref_notifications">Meldingen</string>
     <string name="pref_notifications_show">Tonen</string>
     <string name="pref_notifications_priority">Prioriteit</string>
+    <string name="pref_notifications_explain">Systeemmeldingen tonen bij nieuwe berichten</string>
+    <string name="pref_show_notification_content">Berichtinhoud tonen op meldingen</string>
+    <string name="pref_show_notification_content_explain">Toont de afzender en eerste regel van berichten op meldingen</string>
     <string name="pref_led_color">LED-kleur</string>
     <string name="pref_sound">Geluid</string>
     <string name="pref_silent">Stil</string>
@@ -475,6 +510,25 @@
     <string name="pref_background_custom_image">Eigen afbeelding</string>
     <string name="pref_background_custom_color">Eigen kleur</string>
     <string name="export_aborted">Het exporteren is afgebroken.</string>
+    <string name="profile_image_select">Profielfoto kiezen</string>
+    <string name="select_your_new_profile_image">Kies een nieuwe profielfoto</string>
+    <string name="profile_image_delete">Profielfoto verwijderen</string>
+
+
+    <!-- Emoji picker and categories -->
+    <string name="emoji_search_results">Zoekresultaten</string>
+    <string name="emoji_not_found">Geen emoji gevonden</string>
+    <string name="emoji_recent">Onlangs gebruikt</string>
+    <string name="emoji_people">Personen en lichaamsuitdrukkingen</string>
+    <string name="emoji_nature">Dieren en natuur</string>
+    <string name="emoji_foods">Eten en drinken</string>
+    <string name="emoji_activity">Activiteit</string>
+    <string name="emoji_places">Reizen en locaties</string>
+    <string name="emoji_objects">Objecten</string>
+    <string name="emoji_symbols">Symbolen</string>
+    <string name="emoji_flags">Vlaggen</string>
+
+
     <!-- automatically delete message -->
     <string name="delete_old_messages">Oude berichten verwijderen</string>
     <!-- devs: autodel_title is deprecated, use delete_old_messages instead -->
@@ -553,8 +607,10 @@
 
     <!-- qr code stuff -->
     <string name="qr_code">QR-code</string>
+    <string name="load_qr_code_as_image">QR-code als afbeelding laden</string>
     <string name="qrscan_title">QR-code scannen</string>
     <string name="qrscan_hint">Plaatst je camera boven de QR-code</string>
+    <string name="qrscan_failed">De qr-code kan niet worden ontcijferd</string>
     <string name="qrscan_ask_join_group">Wil je deelnemen aan de groep \"%1$s\"?</string>
     <string name="qrscan_fingerprint_mismatch">De gescande vingerafdruk komt niet overeen met de vorige voor %1$s</string>
     <string name="qrscan_no_addr_found">Deze QR-code bevat een vingerafdruk, maar geen e-mailadres.\n\nVoor out-of-bandgoedkeuring, moet je eerst een beveiligde verbinding opzetten met de ontvanger.</string>
@@ -582,6 +638,9 @@
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Gewijzigde instellingen voor %1$s</string>
     <string name="verified_group_explain">Goedgekeurde groepen (experimenteel) zijn extra beveiligd tegen aanvallen van buitenaf. Leden worden goedgekeurd door andere leden en berichten zijn altijd eind-tot-eind versleuteld.</string>
+    <string name="copy_qr_data_success">De qr-url is gekopieerd naar het klembord</string>
+
+
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d nieuwe berichten in %2$d gesprekken</string>
     <string name="notify_mark_read">Markeren als gelezen</string>
@@ -609,6 +668,9 @@
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Versleuteld bericht</string>
 
+    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
+    <string name="about_offical_app_desktop">Dit is de officiële Delta Chat-computerapp.</string>
+    <string name="about_licensed_under_desktop">Deze software is vrijgegeven onder de GNU GPL versie 3 en de broncode is beschikbaar op GitHub.</string>
     <string name="welcome_desktop">Welkom bij Delta Chat</string>
     <string name="login_known_accounts_title_desktop">Bekende accounts</string>
     <string name="global_menu_preferences_language_desktop">Kies een taal...</string>
@@ -663,6 +725,7 @@
     <string name="ask_delete_chat_desktop">Weet je zeker dat je dit gesprek wilt verwijderen?</string>
     <string name="email_validation_failed_desktop">E-mailadres vereist.</string>
     <string name="forget_login_confirmation_desktop">Wil je dit account verwijderen? Alles wordt verwijderd: je eind-tot-eindinstellingen, contactpersonen, gesprekken, berichten en media. Deze actie kan niet ongedaan worden gemaakt.</string>
+    <string name="account_info_hover_tooltip_desktop">E-Mail: %s\nGrootte: %s\nPad: %s</string>
     <string name="me_desktop">ik</string>
     <string name="in_this_group_desktop">Groepsleden</string>
     <string name="not_in_this_group_desktop">Potentiële groepsleden (niet in de groep)</string>
@@ -684,6 +747,9 @@
     <string name="a11y_delivery_status_invalid">Onbekende bezorgstatus</string>
     <string name="a11y_message_context_menu_btn_label">Berichtacties</string>
     <string name="a11y_background_preview_label">Achtergrondvoorbeeld</string>
+    <string name="a11y_disappearing_messages_activated">Verdwijnende berichten zijn ingeschakeld</string>
+
+
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Geef Delta Chat toegang tot je camera om foto\'s en video\'s te maken en QR-codes te scannen.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Geef Delta Chat toegang tot je adresboek om gesprekken te voeren met contactpersonen. Delta Chat heeft geen servers, dus ze worden niet aan ons opgestuurd.</string>
@@ -701,7 +767,5 @@
     <string name="pref_reliable_service_explain">Vereist een permanente melding</string>
     <string name="perm_enable_bg_reminder_title">Druk hier om berichten te ontvangen als Delta Chat niet geopend is.</string>
     <string name="perm_enable_bg_already_done">Je hebt al toestemming gegeven voor het ophalen van berichten op de achtergrond.\n\nAls het nog steeds niet werkt, controleer dan de systeeminstellingen.</string>
-	<string name="ConversationFragment_quoted_message_not_found">Geen oorspronkelijk bericht gevonden</string>
-	<string name="reply_privately">Privé beantwoorden</string>
 
 </resources>

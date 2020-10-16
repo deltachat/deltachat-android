@@ -205,7 +205,6 @@
     <string name="pin">Przypnij</string>
     <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
     <string name="unpin">Odepnij</string>
-
     <string name="mute_for_one_hour">Wyłącz na 1 godzinę</string>
     <string name="mute_for_two_hours">Wyłącz na 2 godziny</string>
     <string name="mute_for_one_day">Wyłącz na 1 dzień</string>

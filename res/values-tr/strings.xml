@@ -10,11 +10,14 @@
     <string name="on">Açık</string>
     <string name="off">Kapalı</string>
     <string name="def">Varsayılan</string>
+    <string name="default_value">Varsayılan (%1$s)</string>
+    <string name="default_value_as_above">Varsayılan (yukarıdakinin aynısı)</string>
     <string name="custom">Özel</string>
     <string name="none">Hiçbiri</string>
     <string name="automatic">Otomatik</string>
     <string name="strict">Katı</string>
     <string name="open">Aç</string>
+    <string name="open_attachment">İlişiği aç</string>
     <string name="join">Katıl</string>
     <string name="rejoin">Yeniden katıl</string>
     <string name="delete">Sil</string>
@@ -42,6 +45,7 @@
     <string name="one_moment">Bir dakika…</string>
     <string name="done">Bitti</string>
     <string name="undo">Geri al</string>
+    <string name="offline">Çevrimdışı</string>
     <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
     <string name="next">Sonraki</string>
     <string name="error">Hata</string>
@@ -123,6 +127,8 @@
     <string name="magenta">Eflatun</string>
     <string name="white">Beyaz</string>
 
+    <string name="zoom">Yakınlaştır</string>
+    <string name="extra_small">Çok küçük</string>
     <string name="small">Küçük</string>
     <string name="normal">Normal</string>
     <string name="large">Büyük</string>
@@ -151,12 +157,16 @@
     <string name="menu_add_attachment">İlişik ekle</string>
     <string name="menu_leave_group">Gruptan ayrıl</string>
     <string name="menu_delete_chat">Sohbeti sil</string>
+    <string name="ask_delete_named_chat">\"%1$s\" sohbetini silmek istediğinizden emin misiniz?</string>
     <string name="menu_delete_messages">İletileri sil</string>
     <string name="menu_delete_image">Görseli sil</string>
     <string name="menu_delete_locations">Tüm konumlar silinsin mi?</string>
     <string name="menu_delete_location">Bu konum silinsin mi?</string>
     <string name="menu_message_details">İleti ayrıntıları</string>
     <string name="menu_copy_to_clipboard">Panoya kopyala</string>
+    <string name="menu_copy_selection_to_clipboard">Seçimi kopyala</string>
+    <string name="menu_copy_link_to_clipboard">Bağlantıyı kopyala</string>
+    <string name="paste_from_clipboard">Panodan yapıştır</string>
     <string name="menu_forward">İletiyi ilet</string>
     <string name="menu_resend">İletiyi yeniden gönder</string>
     <string name="menu_reply">İletiye yanıt ver</string>
@@ -197,6 +207,8 @@
     <string name="pin">Sabitle</string>
     <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
     <string name="unpin">Sabitleme</string>
+    <string name="ConversationFragment_quoted_message_not_found">Özgün ileti bulunamadı</string>
+    <string name="reply_privately">Özel olarak yanıtla</string>
 
     <string name="mute_for_one_hour">1 saatliğine sessize al</string>
     <string name="mute_for_two_hours">2 saatliğine sessize al</string>
@@ -211,6 +223,10 @@
     <string name="share_location_for_two_hours">2 saatliğine</string>
     <string name="share_location_for_six_hours">6 saatliğine</string>
 
+    <plurals name="ask_send_following_n_files_to">
+        <item quantity="one">Aşağıdaki dosya %s alıcısına gönderilsin mi?</item>
+        <item quantity="other">Aşağıdaki %d dosya %s alıcısına gönderilsin mi?</item>
+    </plurals>
     <string name="file_saved_to">Dosya \"%1$s\" üzerine kaydedildi.</string>
 
     <string name="videochat">Video sohbeti</string>
@@ -247,8 +263,12 @@
     <string name="ask_delete_contact">%1$s kişisi silinsin mi?\n\nSohbetlerin sürdüğü kişiler ve sistemin adres defterinden gelen kişiler kalıcı olarak silinemez.</string>
     <string name="cannot_delete_contacts_in_use">Sohbetlerin sürdüğü kişiler silinemez.</string>
     <string name="ask_start_chat_with">%1$s ile sohbet edilsin mi?</string>
+    <string name="ask_delete_value">%s silinsin mi?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">%1$s gruptan kaldırılsın mı?</string>
+    <string name="open_url_confirmation">Bu bağlantıyı açmak istiyor musunuz?</string>
+
+
     <!-- contact list -->
     <string name="contacts_title">Kişiler</string>
     <string name="contacts_enter_name_or_email">Ad ya da e-posta adresi girin</string>
@@ -293,6 +313,14 @@
     <string name="chat_no_contact_requests">İletişim isteği yok.\n\nKlasik e-postaları burada iletişim isteği olarak görmek istiyorsanız, ilgili ayarı uygulama ayarlarında değiştirebilirsiniz.</string>
     <string name="retry_send">İletiyi göndermeyi yeniden dene</string>
     <string name="send_failed">İleti gönderilemedi</string>
+    <!-- reasons for a disabled message composer -->
+    <string name="messaging_disabled_not_in_group">Yazamazsınız çünkü bu grupta değilsiniz. Katılmak için başka bir üyeye sorun.</string>
+    <string name="messaging_disabled_device_chat">Bu sohbet, yerel olarak oluşturulan iletileri içerir. Bu nedenle herhangi bir ileti yazamazsınız.</string>
+    <string name="messaging_disabled_deaddrop">İletişim isteğini kabul etmek ya da reddetmek için bir iletinin üzerine tıklayın</string>
+    <string name="cannot_display_unsuported_file_type">Bu dosya türü görüntülenemiyor: %s</string>
+    <string name="attachment_failed_to_load">İlişiği yükleme başarısız</string>
+
+
     <!-- map -->
     <string name="filter_map_on_time">Konumları zaman çerçevesinde göster</string>
     <string name="show_location_traces">İzleri göster</string>
@@ -307,7 +335,9 @@
 
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">Grup adı</string>
-    <string name="group_avatar">Grup avatarı</string>
+    <string name="group_avatar">Grup görseli</string>
+    <string name="remove_group_image">Grup görselini kaldır</string>
+    <string name="change_group_image">Grup görselini değiştir</string>
     <string name="group_create_button">Grup oluştur</string>
     <string name="group_please_enter_group_name">Lütfen grup için bir ad girin.</string>
     <string name="group_add_members">Üyeler ekle</string>
@@ -370,7 +400,9 @@
     <string name="add_account">Hesap ekle</string>
     <string name="delete_account">Hesabı sil</string>
     <string name="delete_account_ask">Hesap verilerinizi silmek istediğinizden emin misiniz?</string>
+    <string name="delete_account_explain_with_name">Uçtan uca şifreleme ayarlamanızı, kişilerinizi, sohbetlerinizi, iletilerinizi ve ortamlarınızı kapsayarak \"%s\" hesabının bu aygıttaki verilerinin tümü silinecek. Bu eylem geri alınamaz.</string>
     <string name="switching_account">Hesap değiştiriliyor…</string>
+    <string name="try_connect_now">Şimdi bağlanmayı dene</string>
     <!-- Translations: %1$s will be replaced by a more detailed error message -->
     <string name="configuration_failed_with_error">Yapılandırma başarısız. Hata: %1$s</string>
 
@@ -387,11 +419,11 @@
     <string name="pref_using_custom">Özel kullanılıyor: %s</string>
     <string name="pref_using_default">Varsayılan kullanılıyor: %s</string>
     <string name="pref_profile_info_headline">Profil bilginiz</string>
-    <string name="pref_profile_photo">Profil resmi</string>
+    <string name="pref_profile_photo">Profil görseli</string>
     <string name="pref_blocked_contacts">Engellenen kişiler</string>
-    <string name="pref_profile_photo_remove_ask">Profil fotoğrafı kaldırılsın mı?</string>
+    <string name="pref_profile_photo_remove_ask">Profil görseli kaldırılsın mı?</string>
     <string name="pref_password_and_account_settings">Parola ve hesap</string>
-    <string name="pref_who_can_see_profile_explain">Diğer kullanıcılarla iletişim kurarken, profil resminiz ve adınız iletilerinizin yanında gösterilir. Zaten gönderilen bilgiler silinemeyebilir ya da kaldırılamayabilir.</string>
+    <string name="pref_who_can_see_profile_explain">Diğer kullanıcılarla iletişim kurarken, profil görseliniz ve adınız iletilerinizin yanında gösterilir. Zaten gönderilen bilgiler silinemeyebilir ya da kaldırılamayabilir.</string>
     <string name="pref_your_name">Adınız</string>
     <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
     <string name="pref_default_status_label">İmza metni</string>
@@ -412,6 +444,9 @@
     <string name="pref_notifications">Bildirimler</string>
     <string name="pref_notifications_show">Göster</string>
     <string name="pref_notifications_priority">Öncelik</string>
+    <string name="pref_notifications_explain">Yeni iletiler için sistem bildirimlerini etkinleştir</string>
+    <string name="pref_show_notification_content">Bildirimde ileti içeriğini göster</string>
+    <string name="pref_show_notification_content_explain">Bildirimlerde iletinin gönderenini ve ilk sözcüklerini gösterir</string>
     <string name="pref_led_color">LED rengi</string>
     <string name="pref_sound">Ses</string>
     <string name="pref_silent">Sessiz</string>
@@ -475,6 +510,25 @@
     <string name="pref_background_custom_image">Özel görsel</string>
     <string name="pref_background_custom_color">Özel renk</string>
     <string name="export_aborted">Dışa aktarmadan vazgeçildi.</string>
+    <string name="profile_image_select">Profil görseli seç</string>
+    <string name="select_your_new_profile_image">Yeni profil görselinizi seçin</string>
+    <string name="profile_image_delete">Profil görselini sil</string>
+
+
+    <!-- Emoji picker and categories -->
+    <string name="emoji_search_results">Arama sonuçları</string>
+    <string name="emoji_not_found">Emoji bulunamadı</string>
+    <string name="emoji_recent">Son kullanılan</string>
+    <string name="emoji_people">İnsanlar &amp; Gövde</string>
+    <string name="emoji_nature">Hayvanlar &amp; Doğa</string>
+    <string name="emoji_foods">Yiyecek &amp; İçecek</string>
+    <string name="emoji_activity">Etkinlik</string>
+    <string name="emoji_places">Seyahat &amp; Yerler</string>
+    <string name="emoji_objects">Nesneler</string>
+    <string name="emoji_symbols">Semboller</string>
+    <string name="emoji_flags">Bayraklar</string>
+
+
     <!-- automatically delete message -->
     <string name="delete_old_messages">Eski iletileri sil</string>
     <!-- devs: autodel_title is deprecated, use delete_old_messages instead -->
@@ -553,8 +607,10 @@
 
     <!-- qr code stuff -->
     <string name="qr_code">QR kod</string>
+    <string name="load_qr_code_as_image">QR kodu görsel olarak yükle</string>
     <string name="qrscan_title">QR kod tara</string>
     <string name="qrscan_hint">Kameranızı QR kodun üzerine tutun.</string>
+    <string name="qrscan_failed">QR kod çözülemedi</string>
     <string name="qrscan_ask_join_group">\"%1$s\" grubuna katılmak istiyor musunuz?</string>
     <string name="qrscan_fingerprint_mismatch">Taranan parmak izi, %1$s için son görülenle eşleşmiyor.</string>
     <string name="qrscan_no_addr_found">Bu QR kod bir parmak izi içeriyor ama e-posta adresi yok.\n\nBir bant dışı doğrulama için lütfen önce alıcıya şifrelenen bir bağlantı kurun.</string>
@@ -574,7 +630,7 @@
     <string name="qrshow_join_contact_no_connection_toast">Internet bağlantısı yok; QR kod ayarlaması gerçekleştirilemiyor.</string>
     <string name="qraccount_ask_create_and_login">\"%1$s\" üzerinde yeni e-posta adresi oluşturulsun ve oturum açılsın mı?</string>
     <string name="qraccount_ask_create_and_login_another">\"%1$s\" üzerinde yeni e-posta adresi oluşturulsun ve oturum açılsın mı?\n\nVarolan hesabınız silinmeyecek. Hesaplarınız arasında geçiş yapmak için \"Hesap değiştir\" öğesini kullanın.</string>
-    <string name="qraccount_success_enter_name">Oturum açma başarılı—e-posta adresiniz %1$s\n\nİsterseniz şimdi yazdığınız insanların görüntüleyeceği bir ad ve bir avatar görseli girebilirsiniz.</string>
+    <string name="qraccount_success_enter_name">Oturum açma başarılı—e-posta adresiniz %1$s\n\nİsterseniz şimdi yazdığınız insanlara görüntülenecek bir ad ve bir profil görseli girebilirsiniz.</string>
     <string name="qraccount_qr_code_cannot_be_used">Taranan QR kod yeni bir hesap ayarlamak için kullanılamıyor.</string>
     <string name="qraccount_use_on_new_install">Taranan QR kod yeni bir hesap ayarlamak içindir. QR kodu yeni bir Delta Chat kurulumunu ayarlarken tarayabilirsiniz.</string>
     <string name="contact_verified">%1$s doğrulandı.</string>
@@ -582,6 +638,9 @@
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">%1$s için ayarlama değiştirildi.</string>
     <string name="verified_group_explain">Doğrulanan gruplar (deneysel), etkin saldırılar karşısında güvenlik sağlar. Üyeler, diğer üyeler tarafından ikinci bir etkenle doğrulanır ve iletiler her zaman uçtan uca şifrelenir.</string>
+    <string name="copy_qr_data_success">QR URL\'si panoya kopyalandı</string>
+
+
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%2$d sohbette %1$d yeni ileti</string>
     <string name="notify_mark_read">Okundu imi</string>
@@ -609,6 +668,9 @@
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Şifrelenen ileti</string>
 
+    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
+    <string name="about_offical_app_desktop">Bu, resmî Delta Chat Masaüstü uygulamasıdır.</string>
+    <string name="about_licensed_under_desktop">Bu yazılım, GNU GPL sürüm 3 altında lisanslıdır ve kaynak kod GitHub\'da kullanılabilir.</string>
     <string name="welcome_desktop">Delta Chat\'e hoş geldiniz</string>
     <string name="login_known_accounts_title_desktop">Bilinen hesaplar</string>
     <string name="global_menu_preferences_language_desktop">Dil</string>
@@ -663,6 +725,7 @@
     <string name="ask_delete_chat_desktop">Bu sohbet silinsin mi?</string>
     <string name="email_validation_failed_desktop">E-posta adresi gerekli.</string>
     <string name="forget_login_confirmation_desktop">Bu oturum silinsin mi? Uçtan uca ayarlamanızı, kişilerinizi, sohbetlerinizi, iletilerinizi ve ortamlarınızı kapsayarak her şey silinecek. Bu eylem geri alınamaz.</string>
+    <string name="account_info_hover_tooltip_desktop">E-posta: %s\nBoyut: %s\nYol: %s</string>
     <string name="me_desktop">ben</string>
     <string name="in_this_group_desktop">Grup üyeleri</string>
     <string name="not_in_this_group_desktop">Olası grup üyeleri (grupta değil)</string>
@@ -684,6 +747,9 @@
     <string name="a11y_delivery_status_invalid">Geçersiz teslimat durumu</string>
     <string name="a11y_message_context_menu_btn_label">İleti eylemleri</string>
     <string name="a11y_background_preview_label">Arka plan önizlemesi</string>
+    <string name="a11y_disappearing_messages_activated">Kaybolan iletiler etkinleştirildi</string>
+
+
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat, fotoğraflar ve videolar çekmek ve göndermek için ve QR kodları taramak için kameranızı kullanır.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat, yazabileceğiniz e-posta adreslerinin bir listesini göstermek için kişilerinizi kullanır. Delta Chat\'in sunucusu yoktur; kişileriniz herhangi bir yere gönderilmez.</string>
@@ -701,7 +767,5 @@
     <string name="pref_reliable_service_explain">Kalıcı bir bildirim gerektirir</string>
     <string name="perm_enable_bg_reminder_title">Delta Chat arka plandayken iletileri almak için buraya dokunun.</string>
     <string name="perm_enable_bg_already_done">Delta Chat\'in arka planda iletileri almasına zaten izin verdiniz.\n\nİletiler arka planda hâlâ gelmiyorsa, lütfen sistem ayarlarınızı da denetleyin.</string>
-	<string name="ConversationFragment_quoted_message_not_found">Özgün ileti bulunamadı</string>
-	<string name="reply_privately">Özel olarak yanıtla</string>
 
 </resources>

@@ -188,7 +188,6 @@
     <string name="pin">Alpingli</string>
     <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
     <string name="unpin">Depingli</string>
-
     <string name="mute_for_one_hour">Silentigi por 1 horo</string>
     <string name="mute_for_two_hours">Silentigi por 2 horoj</string>
     <string name="mute_for_one_day">Silentigi por 1 tago</string>

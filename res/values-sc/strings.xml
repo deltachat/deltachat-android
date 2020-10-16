@@ -195,7 +195,6 @@
     <string name="pin">Apica</string>
     <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
     <string name="unpin">Isbloca</string>
-
     <string name="mute_for_one_hour">A sa muda pro 1 ora</string>
     <string name="mute_for_two_hours">A sa muda pro 2 oras</string>
     <string name="mute_for_one_day">A sa muda pro 1 die</string>

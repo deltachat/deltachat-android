@@ -195,7 +195,6 @@
     <string name="pin">Fest</string>
     <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
     <string name="unpin">Løsn</string>
-
     <string name="mute_for_one_hour">Demp i 1 time</string>
     <string name="mute_for_two_hours">Demp i 2 timer</string>
     <string name="mute_for_one_day">Demp i 1 dag</string>

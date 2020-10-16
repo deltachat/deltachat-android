@@ -207,6 +207,8 @@
     <string name="pin">Anheften</string>
     <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
     <string name="unpin">Loslösen</string>
+    <string name="ConversationFragment_quoted_message_not_found">Originalnachricht nicht gefunden</string>
+    <string name="reply_privately">Privat antworten</string>
 
     <string name="mute_for_one_hour">Stumm für 1 Stunde</string>
     <string name="mute_for_two_hours">Stumm für 2 Stunden</string>
@@ -769,7 +771,5 @@ Ihr bisheriges E-Mail-Konto wird dabei nicht gelöscht. Sie können mit der Opti
     <string name="pref_reliable_service_explain">Erfordert immer sichtbaren Hinweis</string>
     <string name="perm_enable_bg_reminder_title">Tippen Sie hier, um Nachrichten zu empfangen, während Delta Chat im Hintergrund läuft.</string>
     <string name="perm_enable_bg_already_done">Sie haben Delta Chat bereits erlaubt, Nachrichten im Hintergrund zu empfangen.\n\nFalls keine Nachrichten eingehen, überprüfen Sie bitte auch Ihre Systemeinstellungen.</string>
-	<string name="ConversationFragment_quoted_message_not_found">Originalnachricht nicht gefunden</string>
-	<string name="reply_privately">Privat antworten</string>
 
 </resources>

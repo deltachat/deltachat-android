@@ -207,7 +207,6 @@
     <string name="pin">Прикрепить</string>
     <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
     <string name="unpin">Открепить</string>
-
     <string name="mute_for_one_hour">1 час</string>
     <string name="mute_for_two_hours">На 2 часа</string>
     <string name="mute_for_one_day">На 1 день</string>
@@ -724,4 +723,5 @@
     <string name="perm_enable_bg_reminder_title">Нажмите здесь, чтобы получать сообщения, когда Delta Chat находится в фоновом режиме.</string>
     <string name="perm_enable_bg_already_done"> 
 Вы уже разрешили Delta Chat получать сообщения в фоне.\n\nЕсли сообщения всё ещё не приходят в фоне, пожалуйста, проверьте также системные настройки.</string>
-	</resources>
+
+</resources>
