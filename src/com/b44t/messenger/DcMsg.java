@@ -80,9 +80,9 @@ public class DcMsg {
         int msgs[] = dcContext.getChatMsgs(msg.getChatId(), 0, 0);
         int startingPosition = -1;
         int msgId = msg.getId();
-        for(int i=0; i< msgs.length; i++ ) {
-            if(msgs[i] == msgId) {
-                startingPosition = msgs.length-1-i;
+        for (int i = 0; i < msgs.length; i++) {
+            if (msgs[i] == msgId) {
+                startingPosition = msgs.length - 1 - i;
                 break;
             }
         }
