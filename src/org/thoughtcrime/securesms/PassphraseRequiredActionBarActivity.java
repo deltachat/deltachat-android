@@ -50,19 +50,19 @@ public abstract class PassphraseRequiredActionBarActivity extends BaseActionBarA
 
   @Override
   protected void onResume() {
-    Log.w(TAG, "onResume()");
+    Log.i(TAG, "onResume()");
     super.onResume();
   }
 
   @Override
   protected void onPause() {
-    Log.w(TAG, "onPause()");
+    Log.i(TAG, "onPause()");
     super.onPause();
   }
 
   @Override
   protected void onDestroy() {
-    Log.w(TAG, "onDestroy()");
+    Log.i(TAG, "onDestroy()");
     super.onDestroy();
   }
 
