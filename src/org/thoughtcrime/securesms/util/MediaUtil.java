@@ -50,17 +50,16 @@ public class MediaUtil {
 
   public static Slide getSlideForMsg(Context context, DcMsg dcMsg) {
     Slide slide = null;
-    if (isGif(dcMsg.getFilemime())) {
+    if (dcMsg.getType() == DcMsg.DC_MSG_GIF) {
       slide = new GifSlide(context, dcMsg);
-    } else if (isImageType(dcMsg.getFilemime())) {
+    } else if (dcMsg.getType() == DcMsg.DC_MSG_IMAGE) {
       slide = new ImageSlide(context, dcMsg);
-    } else if (isVideoType(dcMsg.getFilemime())) {
+    } else if (dcMsg.getType() == DcMsg.DC_MSG_VIDEO) {
       slide = new VideoSlide(context, dcMsg);
-    } else if (isAudioType(dcMsg.getFilemime())) {
+    } else if (dcMsg.getType() == DcMsg.DC_MSG_AUDIO
+            || dcMsg.getType() == DcMsg.DC_MSG_VOICE) {
       slide = new AudioSlide(context, dcMsg);
-    } else if (isMms(dcMsg.getFilemime())) {
-      slide = new MmsSlide(context, dcMsg);
-    } else if (dcMsg.getFilemime() != null) {
+    } else if (dcMsg.getType() == DcMsg.DC_MSG_FILE) {
       slide = new DocumentSlide(context, dcMsg);
     }
 
