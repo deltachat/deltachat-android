@@ -224,8 +224,6 @@
     <string name="ask_start_chat_with">Pradėti pokalbį su %1$s?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Pašalinti %1$s iš grupės?</string>
-
-
     <!-- contact list -->
     <string name="contacts_title">Adresatai</string>
     <string name="contacts_enter_name_or_email">Įveskite vardą ar el. pašto adresą</string>
@@ -268,7 +266,6 @@
     <string name="saved_messages">Įrašytos žinutės</string>
     <string name="chat_contact_request">Adresato užklausa</string>
     <string name="send_failed">Nepavyko išsiųsti žinutės</string>
-
     <!-- search -->
     <string name="search">Ieškoti</string>
     <string name="search_explain">Ieškokite pokalbių, adresatų ir žinučių</string>
@@ -422,7 +419,6 @@
     <string name="pref_background_custom_image">Tinkintas paveikslas</string>
     <string name="pref_background_custom_color">Tinkinta spalva</string>
     <string name="export_aborted">Eksportavimas nutrauktas.</string>
-
     <string name="autodel_device_title">Ištrinti žinutes iš įrenginio</string>
     <string name="autodel_server_title">Ištrinti žinutes iš serverio</string>
     <string name="autodel_confirm">Aš suprantu, ištrinti visas šias žinutes</string>
@@ -507,7 +503,6 @@
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Šifruota žinutė</string>
 
-    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
     <string name="welcome_desktop">Sveiki atvykę į Delta Chat</string>
     <string name="login_known_accounts_title_desktop">Žinomos paskyros</string>
     <string name="global_menu_preferences_language_desktop">Pasirinkti kalbą...</string>
@@ -578,7 +573,5 @@
     <string name="a11y_delivery_status_read">Pristatymo būsena: Perskaityta</string>
     <string name="a11y_delivery_status_invalid">Neteisinga pristatymo būsena</string>
     <string name="a11y_background_preview_label">Fono peržiūra</string>
-
-
     <string name="perm_enable_bg_reminder_title">Bakstelėkite čia, norėdami gauti žinutes, kol Delta Chat veikia fone.</string>
     </resources>

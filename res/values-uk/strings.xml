@@ -263,8 +263,6 @@
     <string name="ask_start_chat_with">Створити чат з %1$s?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Видалити %1$s із групи?</string>
-
-
     <!-- contact list -->
     <string name="contacts_title">Контакти</string>
     <string name="contacts_enter_name_or_email">Введіть ім\'я або адресу електронної пошти</string>
@@ -313,7 +311,6 @@
     <string name="chat_no_contact_requests">Немає запитів контактів.\n\nЯкщо Ви бажаєте, щоб звичайна пошта з\'являлася тут як запити контактів, Ви можете змінити відповідний параметр у налаштуваннях додатку.</string>
     <string name="retry_send">Спробувати надіслати повідомлення ще раз</string>
     <string name="send_failed">Не можу надіслати повідомлення</string>
-
     <!-- map -->
     <string name="filter_map_on_time">Показати місця у часовому проміжку</string>
     <string name="show_location_traces">Показати треки</string>
@@ -496,7 +493,6 @@
     <string name="pref_background_custom_image">Персональне зображення</string>
     <string name="pref_background_custom_color">Персональний колір</string>
     <string name="export_aborted">Експорт припинено.</string>
-
     <!-- automatically delete message -->
     <string name="delete_old_messages">Видалити старі повідомлення</string>
     <!-- devs: autodel_title is deprecated, use delete_old_messages instead -->
@@ -604,8 +600,6 @@
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Змінені параметри для %1$s</string>
     <string name="verified_group_explain">Перевірені групи (експеримент) надають захист від активних атак. Члени таких груп перевірені через другий фактор іншими членами групи, а повідомлення завжди наскрізно зашифровані.</string>
-
-
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d нових повідомлень з %2$d чатів</string>
     <string name="notify_mark_read">Позначити прочитаним</string>
@@ -633,7 +627,6 @@
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Зашифроване повідомлення</string>
 
-    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
     <string name="welcome_desktop">Вітаємо у Delta Chat</string>
     <string name="login_known_accounts_title_desktop">Відомі облікові записи</string>
     <string name="global_menu_preferences_language_desktop">Вибір мови</string>
@@ -699,7 +692,6 @@
     <string name="menu.view.developer.open.current.log.file">Відкрити поточний файл журналу</string>
     <string name="user_location_permission_explanation">Delta Chat потребує дозволу на доступ до геоданих щоб ділитися вашим місцезнаходженням.</string>
 
-
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Статус доставки: Помилка</string>
     <string name="a11y_encryption_padlock">Замок шифрування</string>
@@ -710,8 +702,6 @@
     <string name="a11y_delivery_status_invalid">Невірний статус доставки</string>
     <string name="a11y_message_context_menu_btn_label">Дії з повідомленням</string>
     <string name="a11y_background_preview_label">Попередній перегляд фону</string>
-
-
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat використовує вашу камеру для знімання та надсилання фото та відео, а також для сканування QR-кодів.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat використовує ваші контакти аби показати список адрес ел.пошти на які ви можете написати. Delta Chat не має сервера, тож ваші контакти нікуди не надсилаються.</string>
@@ -729,5 +719,4 @@
     <string name="pref_reliable_service_explain">Потребує перманентного сповіщення</string>
     <string name="perm_enable_bg_reminder_title">Натисніть тут, щоб отримувати повідомлення, коли Delta Chat знаходиться у фоновому режимі.</string>
     <string name="perm_enable_bg_already_done">Ви вже дозволили Delta Chat отримувати повідомлення у фоні.\n\nЯкщо повідомлення досі не приходять у фоні, перевірте налаштування вашої системи.</string>
-
-</resources>
+	</resources>

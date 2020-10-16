@@ -165,6 +165,7 @@ public class ApplicationDcContext extends DcContext {
     setStockTranslation(82, context.getString(R.string.videochat_invitation));
     setStockTranslation(83, context.getString(R.string.videochat_invitation_body));
     setStockTranslation(84, context.getString(R.string.configuration_failed_with_error));
+    setStockTranslation(90, context.getString(R.string.reply_noun));
   }
 
   public File getImexDir() {

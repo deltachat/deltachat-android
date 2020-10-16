@@ -247,8 +247,6 @@
     <string name="ask_start_chat_with">Cheres tzarrare cun %1$s?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Cheres bogare %1$sdae su grupu?</string>
-
-
     <!-- contact list -->
     <string name="contacts_title">Cuntatos</string>
     <string name="contacts_enter_name_or_email">Inserta su nùmene o s\'indiritzu de posta eletrònica</string>
@@ -291,7 +289,6 @@
     <string name="chat_no_contact_requests">Peruna rechesta de cuntatu.\n\nSi cheres chi sas lìteras eletrònicas clàssicas apàrgiant inoghe comente rechestas de cuntatu, podes mudare s\'impostatzione chi li pertocat in sas impostatziones de s\'aplicatzione.</string>
     <string name="retry_send">Torra a proare a imbiare su messàgiu</string>
     <string name="send_failed">Imbiu de su messàgiu fallidu</string>
-
     <!-- map -->
     <string name="filter_map_on_time">Ammustra sas positziones in su tempus</string>
     <string name="show_location_traces">Ammustra sas rastas</string>
@@ -474,7 +471,6 @@
     <string name="pref_background_custom_image">Immàgine personalizada</string>
     <string name="pref_background_custom_color">Colore personalizadu</string>
     <string name="export_aborted">Esportatzione annullada.</string>
-
     <!-- automatically delete message -->
     <string name="delete_old_messages">Iscantzella sos messàgios betzos</string>
     <!-- devs: autodel_title is deprecated, use delete_old_messages instead -->

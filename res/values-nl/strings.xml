@@ -95,6 +95,8 @@
     <string name="self">Ik</string>
     <string name="draft">Concept</string>
     <string name="image">Afbeelding</string>
+    <!-- Translators: Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
+    <string name="reply_noun">Antwoord</string>
     <string name="gif">GIF</string>
     <string name="images">Afbeeldingen</string>
     <string name="audio">Audio</string>
@@ -247,8 +249,6 @@
     <string name="ask_start_chat_with">Wil je een gesprek voeren met %1$s?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Wil je %1$s verwijderen uit de groep?</string>
-
-
     <!-- contact list -->
     <string name="contacts_title">Contactpersonen</string>
     <string name="contacts_enter_name_or_email">Voer een naam of e-mailadres in.</string>
@@ -293,7 +293,6 @@
     <string name="chat_no_contact_requests">Geen contactpersoonverzoeken.\n\nAls je wilt dat klassieke e-mail hier verschijnt in de vorm van contactpersoonverzoeken, dan kun je dat aangeven in de app-instellingen.</string>
     <string name="retry_send">Bericht opnieuw versturen</string>
     <string name="send_failed">Kan bericht niet versturen</string>
-
     <!-- map -->
     <string name="filter_map_on_time">Locaties tonen in tijdsbeeld</string>
     <string name="show_location_traces">Sporen tonen</string>
@@ -476,7 +475,6 @@
     <string name="pref_background_custom_image">Eigen afbeelding</string>
     <string name="pref_background_custom_color">Eigen kleur</string>
     <string name="export_aborted">Het exporteren is afgebroken.</string>
-
     <!-- automatically delete message -->
     <string name="delete_old_messages">Oude berichten verwijderen</string>
     <!-- devs: autodel_title is deprecated, use delete_old_messages instead -->
@@ -584,8 +582,6 @@
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Gewijzigde instellingen voor %1$s</string>
     <string name="verified_group_explain">Goedgekeurde groepen (experimenteel) zijn extra beveiligd tegen aanvallen van buitenaf. Leden worden goedgekeurd door andere leden en berichten zijn altijd eind-tot-eind versleuteld.</string>
-
-
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d nieuwe berichten in %2$d gesprekken</string>
     <string name="notify_mark_read">Markeren als gelezen</string>
@@ -613,7 +609,6 @@
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Versleuteld bericht</string>
 
-    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
     <string name="welcome_desktop">Welkom bij Delta Chat</string>
     <string name="login_known_accounts_title_desktop">Bekende accounts</string>
     <string name="global_menu_preferences_language_desktop">Kies een taal...</string>
@@ -679,7 +674,6 @@
     <string name="menu.view.developer.open.current.log.file">Huidig logbestand openen</string>
     <string name="user_location_permission_explanation">Delta Chat heeft het locatietoegangsrecht nodig om je locatie te tonen en delen.</string>
 
-
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Bezorgstatus: afleveren mislukt</string>
     <string name="a11y_encryption_padlock">Versleutelingsslot</string>
@@ -690,8 +684,6 @@
     <string name="a11y_delivery_status_invalid">Onbekende bezorgstatus</string>
     <string name="a11y_message_context_menu_btn_label">Berichtacties</string>
     <string name="a11y_background_preview_label">Achtergrondvoorbeeld</string>
-
-
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Geef Delta Chat toegang tot je camera om foto\'s en video\'s te maken en QR-codes te scannen.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Geef Delta Chat toegang tot je adresboek om gesprekken te voeren met contactpersonen. Delta Chat heeft geen servers, dus ze worden niet aan ons opgestuurd.</string>
@@ -709,5 +701,7 @@
     <string name="pref_reliable_service_explain">Vereist een permanente melding</string>
     <string name="perm_enable_bg_reminder_title">Druk hier om berichten te ontvangen als Delta Chat niet geopend is.</string>
     <string name="perm_enable_bg_already_done">Je hebt al toestemming gegeven voor het ophalen van berichten op de achtergrond.\n\nAls het nog steeds niet werkt, controleer dan de systeeminstellingen.</string>
+	<string name="ConversationFragment_quoted_message_not_found">Geen oorspronkelijk bericht gevonden</string>
+	<string name="reply_privately">Privé beantwoorden</string>
 
 </resources>

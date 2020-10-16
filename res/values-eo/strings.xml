@@ -219,8 +219,6 @@
     <string name="ask_start_chat_with">Babili kun %1$s?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Forigi %1$sel la grupo?</string>
-
-
     <!-- contact list -->
     <string name="contacts_title">Kontaktoj</string>
     <string name="contacts_enter_name_or_email">Enigi nomon aŭ retadreson</string>
@@ -259,7 +257,6 @@
     <string name="chat_contact_request">Kontakt-peto</string>
     <string name="retry_send">Reprovi sendi mesaĝon</string>
     <string name="send_failed">Ne povis sendi mesaĝon</string>
-
     <string name="show_location_traces">Montri spurojn</string>
     <string name="add_poi">Sendi punkton de intereso</string>
 
@@ -405,7 +402,6 @@
     <!-- permissions -->
     <string name="perm_required_title">Permeso bezonata</string>
     <string name="perm_continue">Daŭrigi</string>
-    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
     <string name="welcome_desktop">Bonvenon al Delta Chat</string>
     <string name="global_menu_preferences_language_desktop">Lingvo</string>
     <string name="global_menu_file_desktop">Dosiero</string>

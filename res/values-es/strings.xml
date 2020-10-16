@@ -224,8 +224,6 @@
     <string name="ask_start_chat_with">¿Chatear con %1$s?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">¿Eliminar a %1$s del grupo?</string>
-
-
     <!-- contact list -->
     <string name="contacts_title">Contactos</string>
     <string name="contacts_enter_name_or_email">Nombre o correo electrónico</string>
@@ -268,7 +266,6 @@
     <string name="chat_no_contact_requests">No hay solicitudes de contacto.\n\nSi desea que los correos electrónicos clásicos aparezcan aquí como solicitudes de contacto, puede cambiar la configuración correspondiente en la configuración de la aplicación.</string>
     <string name="retry_send">Reintentar enviar mensaje</string>
     <string name="send_failed">Falló enviar el mensaje</string>
-
     <!-- map -->
     <string name="filter_map_on_time">Mostrar ubicaciones en el marco de tiempo</string>
     <string name="show_location_traces">Mostrar trazas</string>
@@ -508,8 +505,6 @@
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Configuración cambiada para %1$s</string>
     <string name="verified_group_explain">Los grupos verificados (experimentales) brindan seguridad contra ataques activos. Los miembros son verificados con un segundo factor por otros miembros y los mensajes siempre están encriptados de extremo a extremo.</string>
-
-
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d nuevos mensajes en %2$d chats</string>
     <string name="notify_mark_read">Marcar como leído</string>
@@ -534,7 +529,6 @@
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Mensaje cifrado</string>
 
-    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
     <string name="welcome_desktop">Bienvenido a Delta Chat</string>
     <string name="login_known_accounts_title_desktop">Cuentas conocidas</string>
     <string name="global_menu_preferences_language_desktop">Seleccione Idioma...</string>
@@ -600,7 +594,6 @@
     <string name="menu.view.developer.open.current.log.file">Abrir Archivo de Logs Actual</string>
     <string name="user_location_permission_explanation">Delta Chat necesita el permiso de ubicación para mostrar y compartir tu ubicación.</string>
 
-
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Estado de envío: Error</string>
     <string name="a11y_encryption_padlock">Candado de cifrado</string>
@@ -611,8 +604,6 @@
     <string name="a11y_delivery_status_invalid">Estado de envío no válido</string>
     <string name="a11y_message_context_menu_btn_label">Acciones del mensaje</string>
     <string name="a11y_background_preview_label">Previsualización del fondo</string>
-
-
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Al permitir el acceso a la cámara podrás tomar fotos y videos.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Al permitir acceder a tu libreta de direcciones podrás chatear con los contactos de tu dispositivo.</string>
@@ -620,5 +611,4 @@
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Al permitir el acceso a la galería de fotos podrás subir tus imágenes desde allí.</string>
     <string name="perm_enable_bg_reminder_title">Toque aquí para recibir mensajes mientras Delta Chat está en segundo plano.</string>
     <string name="perm_enable_bg_already_done">Ya has permitido que Delta Chat reciba mensajes en segundo plano.\n\nSi los mensajes aún no llegan en segundo plano, compruebe también la configuración de su sistema.</string>
-
-</resources>
+	</resources>

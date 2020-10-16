@@ -175,8 +175,6 @@
     <string name="ask_start_chat_with">要和%1$s開始對話嗎？</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">要把%1$s移出群組嗎？</string>
-
-
     <!-- contact list -->
     <string name="contacts_title">聯絡人清單</string>
     <string name="contacts_enter_name_or_email">請輸入姓名或email地址</string>

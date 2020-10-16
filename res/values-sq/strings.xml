@@ -95,6 +95,8 @@
     <string name="self">Unë</string>
     <string name="draft">Skicë</string>
     <string name="image">Figurë</string>
+    <!-- Translators: Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
+    <string name="reply_noun">Përgjigje</string>
     <string name="gif">Gif</string>
     <string name="images">Figura</string>
     <string name="audio">Audio</string>
@@ -247,8 +249,6 @@
     <string name="ask_start_chat_with">Të bisedohet me %1$s?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Të hiqet %1$s nga grupi?</string>
-
-
     <!-- contact list -->
     <string name="contacts_title">Kontakte</string>
     <string name="contacts_enter_name_or_email">Jepni emër ose adresë email</string>
@@ -293,7 +293,6 @@
     <string name="chat_no_contact_requests">S\’ka kërkesa kontakti.\n\nNëse doni që email-e klasikë të shfaqen këtu si kërkesa kontakti, mund të ndryshoni rregullimin përkatës te rregullimet e aplikacionit.</string>
     <string name="retry_send">Riprovo të dërgosh mesazhin</string>
     <string name="send_failed">Dërgimi i mesazhit dështoi</string>
-
     <!-- map -->
     <string name="filter_map_on_time">Shfaq vendndodhje në rrjedhë kohore</string>
     <string name="show_location_traces">Shfaq gjurmë</string>
@@ -475,7 +474,6 @@
     <string name="pref_background_custom_image">Figurë vetjake</string>
     <string name="pref_background_custom_color">Ngjyrë vetjake</string>
     <string name="export_aborted">Eksportimi dështoi.</string>
-
     <!-- automatically delete message -->
     <string name="delete_old_messages">Fshiji mesazhet e vjetër</string>
     <!-- devs: autodel_title is deprecated, use delete_old_messages instead -->
@@ -583,8 +581,6 @@
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">U ndryshua rregullimi për %1$s</string>
     <string name="verified_group_explain">Grupet e verifikuara (eksperimentale) furnizojnë siguri kundër sulmesh aktive. Anëtarët janë të verifikuar me një faktor të dytë nga anëtarë të tjerë dhe mesazhet janë përherë të fshehtëzuara skaj më skaj.</string>
-
-
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d mesazhe të rinj në %2$d fjalosje</string>
     <string name="notify_mark_read">Vëri shenjë si i lexuar</string>
@@ -612,7 +608,6 @@
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Mesazh i fshehtëzuar</string>
 
-    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
     <string name="welcome_desktop">Mirë se vini në Delta Chat</string>
     <string name="login_known_accounts_title_desktop">Llogari të njohura</string>
     <string name="global_menu_preferences_language_desktop">Zgjidhni Gjuhë…</string>
@@ -678,7 +673,6 @@
     <string name="menu.view.developer.open.current.log.file">Hap Kartelën Regjistër të Tanishme</string>
     <string name="user_location_permission_explanation">Që të mund të shfaqë dhe ndajë me të tjerët vendndodhjen tuaj, Delta Chat lyp lejen vendore.</string>
 
-
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Gjendje dërgimi: Gabim</string>
     <string name="a11y_encryption_padlock">Dry fshehtëzimi</string>
@@ -689,8 +683,6 @@
     <string name="a11y_delivery_status_invalid">Gjendje dërgimi e pavlefshme</string>
     <string name="a11y_message_context_menu_btn_label">Veprime mesazhesh</string>
     <string name="a11y_background_preview_label">Paraparje sfondi</string>
-
-
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Lejimi i përdorimi të kamerës ju bën të mundur të bëni foto dhe video.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Lejimi i përdorimi të librit tuaj të adresave kamerës ju bën të mundur të bisedoni me kontakte prej pajisjes tuaj.</string>
@@ -708,5 +700,7 @@
     <string name="pref_reliable_service_explain">Lyp një njoftim permanent</string>
     <string name="perm_enable_bg_reminder_title">Prekeni këtu që të merrni mesazhe, teksa Delta Chat rri në prapaskenë.</string>
     <string name="perm_enable_bg_already_done">E keni lejuar tashmë Delta Chat-in të marrë mesazhe në prapaskenë.\n\nNëse mesazhet prapë nuk mbërrijnë në prapaskenë, ju lutemi, kontrolloni edhe rregullimet e sistemit tuaj.</string>
+	<string name="ConversationFragment_quoted_message_not_found">S’u gjet mesazhi origjinal</string>
+	<string name="reply_privately">Përgjigjuni privatisht</string>
 
 </resources>
