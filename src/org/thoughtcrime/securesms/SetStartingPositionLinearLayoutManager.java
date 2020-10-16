@@ -11,11 +11,11 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 /**
  * Like LinearLayoutManager but you can set a starting position
  */
-class MyLayoutManager extends LinearLayoutManager {
+class SetStartingPositionLinearLayoutManager extends LinearLayoutManager {
 
   private int pendingStartingPos = -1;
 
-  MyLayoutManager(Context context, int vertical, boolean b) {
+  SetStartingPositionLinearLayoutManager(Context context, int vertical, boolean b) {
     super(context, vertical, b);
   }
 

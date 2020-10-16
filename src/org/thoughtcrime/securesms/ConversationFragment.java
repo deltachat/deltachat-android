@@ -157,7 +157,7 @@ public class ConversationFragment extends Fragment
 
         scrollToBottomButton.setOnClickListener(v -> scrollToBottom());
 
-        final MyLayoutManager layoutManager = new MyLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, true);
+        final SetStartingPositionLinearLayoutManager layoutManager = new SetStartingPositionLinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, true);
 
         list.setHasFixedSize(false);
         list.setLayoutManager(layoutManager);
@@ -304,7 +304,7 @@ public class ConversationFragment extends Fragment
             list.addItemDecoration(dateDecoration);
 
             int freshMsgs = dcContext.getFreshMsgCount((int) chatId);
-            MyLayoutManager layoutManager = (MyLayoutManager) list.getLayoutManager();
+            SetStartingPositionLinearLayoutManager layoutManager = (SetStartingPositionLinearLayoutManager) list.getLayoutManager();
             if (startingPosition > -1) {
                 layoutManager.setStartingPosition(startingPosition);
             } else if (freshMsgs > 0) {
