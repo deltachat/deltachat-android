@@ -59,7 +59,7 @@ public class AvatarImageView extends AppCompatImageView {
       }
     } else {
       setImageDrawable(new GeneratedContactPhoto("+").asDrawable(getContext(), ThemeUtil.getDummyContactColor(getContext())));
-      super.setOnClickListener(listener);
+      if (listener != null) super.setOnClickListener(listener);
     }
   }
 
