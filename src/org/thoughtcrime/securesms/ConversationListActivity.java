@@ -85,11 +85,6 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 
   @Override
   protected void onCreate(Bundle icicle, boolean ready) {
-    ApplicationDcContext dcContext = DcHelper.getContext(this);
-
-    // add welcome message
-//    dcContext.updateDeviceChats();
-
     // update messages - for new messages, do not reuse or modify strings but create new ones.
     // it is not needed to keep all past update messages, however, when deleted, also the strings should be deleted.
     //DcMsg msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);

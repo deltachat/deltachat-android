@@ -575,12 +575,6 @@ JNIEXPORT jboolean Java_com_b44t_messenger_DcContext_wasDeviceMsgEverAdded(JNIEn
 }
 
 
-JNIEXPORT void Java_com_b44t_messenger_DcContext_updateDeviceChats(JNIEnv *env, jobject obj)
-{
-    dc_update_device_chats(get_dc_context(env, obj));
-}
-
-
 /* DcContext - handle config */
 
 JNIEXPORT void Java_com_b44t_messenger_DcContext_setConfig(JNIEnv *env, jobject obj, jstring key, jstring value /*may be NULL*/)
