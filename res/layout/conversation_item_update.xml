@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<org.thoughtcrime.securesms.ConversationUpdateItem
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<org.thoughtcrime.securesms.ConversationUpdateItem xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/conversation_item_background"
     android:focusable="true"
     android:gravity="center"
@@ -18,6 +18,23 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical">
+
+        <FrameLayout
+            android:id="@+id/big_icon_container"
+            android:layout_width="108dp"
+            android:layout_height="108dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:layout_marginBottom="8dp"
+            android:visibility="gone"
+            android:background="@drawable/circle_universal_overlay">
+            <ImageView android:id="@+id/big_icon"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                app:srcCompat="@drawable/ic_protected_24" />
+        </FrameLayout>
 
         <!--Links should be clickable, see https://github.com/deltachat/deltachat-android/issues/1546-->
         <TextView
