@@ -594,6 +594,9 @@
     <string name="systemmsg_ephemeral_timer_week">Disappearing messages timer set to 1 week.</string>
     <string name="systemmsg_ephemeral_timer_four_weeks">Disappearing messages timer set to 4 weeks.</string>
 
+    <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
+    <string name="systemmsg_chat_protection_disabled">Chat protection disabled.</string>
+    <string name="systemmsg_chat_protection_enabled">Chat protection enabled.</string>
 
     <!-- screen lock -->
     <string name="screenlock_title">Screen lock</string>
