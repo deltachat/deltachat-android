@@ -71,7 +71,12 @@ public class ConversationUpdateItem extends LinearLayout
   }
 
   private void setGenericInfoRecord(DcMsg messageRecord) {
-    body.setText(messageRecord.getDisplayBody());
+    String text = messageRecord.getText();
+    if (messageRecord.getInfoType()==DcMsg.DC_INFO_PROTECTION_ENABLED) {
+      text += "\n" + getContext().getString(R.string.systemmsg_chat_protection_enabled_explain);
+    }
+    body.setText(text);
+
     body.setVisibility(VISIBLE);
   }
 
