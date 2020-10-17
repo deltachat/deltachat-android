@@ -19,6 +19,7 @@ package org.thoughtcrime.securesms;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.graphics.Color;
@@ -64,6 +65,7 @@ import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.util.StickyHeaderDecoration;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
+import org.thoughtcrime.securesms.util.views.AdaptiveActionsToolbar;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -148,6 +150,7 @@ public class ContactSelectionListFragment extends    Fragment
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
           getActivity().getWindow().setStatusBarColor(getResources().getColor(R.color.action_mode_status_bar));
         }
+        setCorrectMenuVisibility(menu);
         actionMode.setTitle("1");
         return true;
       }
@@ -162,6 +165,9 @@ public class ContactSelectionListFragment extends    Fragment
         switch (menuItem.getItemId()) {
           case R.id.menu_select_all:
             handleSelectAll();
+            return true;
+          case R.id.menu_view_profile:
+            handleViewProfile();
             return true;
           case R.id.menu_delete_selected:
             handleDeleteSelected();
@@ -203,6 +209,26 @@ public class ContactSelectionListFragment extends    Fragment
 
   private void updateActionModeTitle() {
     actionMode.setTitle(String.valueOf(getContactSelectionListAdapter().getActionModeSelection().size()));
+  }
+
+  private void setCorrectMenuVisibility(Menu menu) {
+    ContactSelectionListAdapter adapter = getContactSelectionListAdapter();
+    if (adapter.getActionModeSelection().size() > 1) {
+      menu.findItem(R.id.menu_view_profile).setVisible(false);
+    } else {
+      menu.findItem(R.id.menu_view_profile).setVisible(true);
+    }
+  }
+
+  private void handleViewProfile() {
+    ContactSelectionListAdapter adapter = getContactSelectionListAdapter();
+    if (adapter.getActionModeSelection().size() == 1) {
+      int contactId = adapter.getActionModeSelection().valueAt(0);
+
+      Intent intent = new Intent(getContext(), ProfileActivity.class);
+      intent.putExtra(ProfileActivity.CONTACT_ID_EXTRA, contactId);
+      getContext().startActivity(intent);
+    }
   }
 
   private void handleDeleteSelected() {
@@ -365,6 +391,8 @@ public class ContactSelectionListFragment extends    Fragment
     {
       if (handleActionMode) {
         if (actionMode != null) {
+          Menu menu = actionMode.getMenu();
+          setCorrectMenuVisibility(menu);
           updateActionModeTitle();
           finishActionModeIfSelectionIsEmpty();
         }
