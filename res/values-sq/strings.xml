@@ -158,6 +158,7 @@
     <string name="ask_delete_named_chat">Jeni i sigurt se doni të fshihet \"%1$s\"?</string>
     <string name="menu_delete_messages">Fshiji mesazhet</string>
     <string name="menu_delete_image">Fshije figurën</string>
+    <string name="delete_contact">Fshije kontaktin</string>
     <string name="menu_delete_locations">Të fshihen krejt vendndodhjet?</string>
     <string name="menu_delete_location">Të fshihet kjo vendndodhje?</string>
     <string name="menu_message_details">Hollësi mesazhi</string>

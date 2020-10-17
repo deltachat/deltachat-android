@@ -160,6 +160,7 @@
     <string name="ask_delete_named_chat">Sind Sie sicher, dass Sie \"%1$s\" löschen möchten?</string>
     <string name="menu_delete_messages">Nachrichten löschen</string>
     <string name="menu_delete_image">Bild löschen</string>
+    <string name="delete_contact">Kontakt löschen</string>
     <string name="menu_delete_locations">Alle Standorte löschen?</string>
     <string name="menu_delete_location">Diesen Standort löschen?</string>
     <string name="menu_message_details">Nachrichtendetails</string>

@@ -160,6 +160,7 @@
     <string name="ask_delete_named_chat">Weet je zeker dat je \'%1$s\' wilt verwijderen?</string>
     <string name="menu_delete_messages">Berichten verwijderen</string>
     <string name="menu_delete_image">Afbeelding verwijderen</string>
+    <string name="delete_contact">Contactpersoon verwijderen</string>
     <string name="menu_delete_locations">Wil je alle locaties verwijderen?</string>
     <string name="menu_delete_location">Wil je deze locatie verwijderen?</string>
     <string name="menu_message_details">Berichtinformatie</string>
