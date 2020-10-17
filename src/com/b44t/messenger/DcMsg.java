@@ -38,6 +38,9 @@ public class DcMsg {
     public final static int DC_VIDEOCHATTYPE_UNKNOWN = 0;
     public final static int DC_VIDEOCHATTYPE_BASICWEBRTC = 1;
 
+    public final static int DC_INFO_PROTECTION_ENABLED = 11;
+    public final static int DC_INFO_PROTECTION_DISABLED = 12;
+
     private static final String TAG = DcMsg.class.getSimpleName();
 
     public DcMsg(DcContext context, int viewtype) {
@@ -113,6 +116,7 @@ public class DcMsg {
     public native long    getFilebytes       ();
     public native boolean isForwarded        ();
     public native boolean isInfo             ();
+    public native int     getInfoType        ();
     public native boolean isSetupMessage     ();
     public native String  getSetupCodeBegin  ();
     public native String  getVideochatUrl    ();
