@@ -47,10 +47,6 @@ public class AudioSlide extends Slide {
     super(context,  new UriAttachment(uri, null, contentType, AttachmentDatabase.TRANSFER_PROGRESS_STARTED, dataSize, 0, 0, null, null, voiceNote));
   }
 
-  public AudioSlide(Context context, Attachment attachment) {
-    super(context, attachment);
-  }
-
   @Override
   @Nullable
   public Uri getThumbnailUri() {

@@ -152,10 +152,6 @@ public class DcMsg {
         return getFromId() == DcContact.DC_CONTACT_ID_SELF;
     }
 
-    public boolean isGroupAction() {
-        return false;
-    }
-
     public String getDisplayBody()  {
         return getText();
     }
@@ -174,20 +170,11 @@ public class DcMsg {
     public boolean isPreparing() {
         return getState() == DC_STATE_OUT_PREPARING;
     }
-    public long getExpiresIn() {
-        return -1; // never.
-    }
-    public long getExpireStarted() {
-        return 0;
-    }
     public boolean isSecure() {
         return showPadlock()!=0;
     }
     public boolean isPending() {
         return getState() == DC_STATE_OUT_PENDING;
-    }
-    public boolean isMediaPending() {
-        return isPending();
     }
     public boolean isDelivered() {
         return getState() == DC_STATE_OUT_DELIVERED;
@@ -198,17 +185,7 @@ public class DcMsg {
     public boolean isSeen() {
         return getState() == DC_STATE_IN_SEEN;
     }
-    public boolean isMms() {
-        return false;
-    }
 
-    // the following are probably system messages in delta-land
-    public boolean isJoined() { return false; }
-    public boolean isExpirationTimerUpdate() { return false; }
-    public boolean isEndSession() { return false; }
-    public boolean isIdentityUpdate() { return false; }
-    public boolean isIdentityVerified() { return false; }
-    public boolean isIdentityDefault() { return false; }
 
     // working with raw c-data
     private long        msgCPtr;        // CAVE: the name is referenced in the JNI
