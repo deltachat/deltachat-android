@@ -154,6 +154,7 @@
     <string name="ask_delete_named_chat">您确定要删除“%1$s”吗？</string>
     <string name="menu_delete_messages">删除消息</string>
     <string name="menu_delete_image">删除图像</string>
+    <string name="delete_contact">删除联系人</string>
     <string name="menu_delete_locations">删除所有位置？</string>
     <string name="menu_delete_location">删除此位置？</string>
     <string name="menu_message_details">消息详情</string>

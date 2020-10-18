@@ -49,10 +49,6 @@ public class VideoSlide extends Slide {
     dcMsgId = dcMsg.getId();
   }
 
-  public VideoSlide(Context context, Attachment attachment) {
-    super(context, attachment);
-  }
-
   @Override
   public boolean hasPlayOverlay() {
     return true;
