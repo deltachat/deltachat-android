@@ -556,7 +556,6 @@
     <string name="systemmsg_ephemeral_timer_week">Таймер зникнення повідомлень встановлено на 1 тиждень.</string>
     <string name="systemmsg_ephemeral_timer_four_weeks">Таймер зникнення повідомлень встановлено на 4 тижні.</string>
 
-
     <!-- screen lock -->
     <string name="screenlock_title">Блокування екрану</string>
     <string name="screenlock_explain">Блокування доступу за допомогою блокування екрану Android або відбитків пальців; щоб уникнути появи попереднього вмісту, будь ласка, увімкнить «Безпека екрану».</string>

@@ -560,7 +560,6 @@
     <string name="systemmsg_ephemeral_timer_week">Таймер исчезающих сообщений установлен на 1 неделю.</string>
     <string name="systemmsg_ephemeral_timer_four_weeks">Таймер исчезающих сообщений установлен на 4 недели.</string>
 
-
     <!-- screen lock -->
     <string name="screenlock_title">Блокировка экрана</string>
     <string name="screenlock_explain">Блокировка доступа с помощью блокировки экрана Android или отпечатков пальцев; чтобы избежать появления предыдущего контента, пожалуйста, включите \"Безопасность экрана\"</string>

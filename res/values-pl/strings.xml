@@ -550,7 +550,6 @@
     <string name="systemmsg_ephemeral_timer_week">Ustawiono zegar znikających wiadomości na 1 tydzień.</string>
     <string name="systemmsg_ephemeral_timer_four_weeks">Ustawiono zegar znikających wiadomości na 4 tygodnie.</string>
 
-
     <!-- screen lock -->
     <string name="screenlock_title">Blokada ekranu</string>
     <string name="screenlock_explain">Blokuj dostęp za pomocą blokady ekranu systemu Android lub odcisku palca; aby uniknąć pojawienia się poprzedniej zawartości, włącz również opcję „Zabezpieczenia ekranu”</string>

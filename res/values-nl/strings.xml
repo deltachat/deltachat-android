@@ -594,6 +594,9 @@
     <string name="systemmsg_ephemeral_timer_week">De tijdklok van verdwijnende berichten is ingesteld op 1 week.</string>
     <string name="systemmsg_ephemeral_timer_four_weeks">De tijdklok van verdwijnende berichten is ingesteld op 4 weken.</string>
 
+    <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
+    <string name="systemmsg_chat_protection_disabled">Gespreksbeveiliging is uitgeschakeld.</string>
+    <string name="systemmsg_chat_protection_enabled">Gespreksbeveiliging is ingeschakeld.</string>
 
     <!-- screen lock -->
     <string name="screenlock_title">Schermvergrendeling</string>

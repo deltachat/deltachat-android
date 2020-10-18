@@ -591,7 +591,6 @@
     <string name="systemmsg_ephemeral_timer_week">Kohëmatësi për mesazhe që zhduken është vënë në 1 javë.</string>
     <string name="systemmsg_ephemeral_timer_four_weeks">Kohëmatësi për mesazhe që zhduken është vënë në 4 javë.</string>
 
-
     <!-- screen lock -->
     <string name="screenlock_title">Kyçje ekrani</string>
     <string name="screenlock_explain">Kyçni hyrjen me kyçje ekrani apo shenja gishtas Android; për të shmangur shfaqje të lëndës së mëparshme, ju lutemi, aktivizoni edhe \"Siguri ekrani\"</string>

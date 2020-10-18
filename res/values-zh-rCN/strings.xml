@@ -582,7 +582,6 @@
     <string name="systemmsg_ephemeral_timer_week">设置阅后即焚消息定时器为 1 周</string>
     <string name="systemmsg_ephemeral_timer_four_weeks">设置阅后即焚消息定时器为 4 周</string>
 
-
     <!-- screen lock -->
     <string name="screenlock_title">屏幕锁定</string>
     <string name="screenlock_explain">使用 Android 屏幕锁定或指纹锁定访问权限;要避免出现之前的内容，请同时启用“屏幕安全”。</string>
