@@ -594,6 +594,9 @@
     <string name="systemmsg_ephemeral_timer_week">Kaybolan iletiler zamanlayıcısı 1 haftaya ayarlandı.</string>
     <string name="systemmsg_ephemeral_timer_four_weeks">Kaybolan iletiler zamanlayıcısı 4 haftaya ayarlandı.</string>
 
+    <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
+    <string name="systemmsg_chat_protection_disabled">Sohbet koruması etkisizleştirildi.</string>
+    <string name="systemmsg_chat_protection_enabled">Sohbet koruması etkinleştirildi.</string>
 
     <!-- screen lock -->
     <string name="screenlock_title">Ekran kilidi</string>

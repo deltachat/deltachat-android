@@ -530,7 +530,6 @@
     <string name="systemmsg_ephemeral_timer_week">As mensaxes desaparecerán após 1 semana.</string>
     <string name="systemmsg_ephemeral_timer_four_weeks">As mensaxes desaparecerán após 4 semanas.</string>
 
-
     <!-- screen lock -->
     <string name="screenlock_title">Bloqueo de pantalla</string>
     <string name="screenlock_explain">Limita o acceso co bloqueo de pantalla Android ou impresión dactilar; para evitar mostrar o contido, por favor activa \"Seguridade de Pantalla\".</string>
