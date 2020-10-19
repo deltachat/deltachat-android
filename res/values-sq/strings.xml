@@ -591,6 +591,10 @@
     <string name="systemmsg_ephemeral_timer_week">Kohëmatësi për mesazhe që zhduken është vënë në 1 javë.</string>
     <string name="systemmsg_ephemeral_timer_four_weeks">Kohëmatësi për mesazhe që zhduken është vënë në 4 javë.</string>
 
+    <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
+    <string name="systemmsg_chat_protection_disabled">Mbrojtja e fjalosjes u çaktivizua.</string>
+    <string name="systemmsg_chat_protection_enabled">Mbrojtja e fjalosjes u aktivizua.</string>
+
     <!-- screen lock -->
     <string name="screenlock_title">Kyçje ekrani</string>
     <string name="screenlock_explain">Kyçni hyrjen me kyçje ekrani apo shenja gishtas Android; për të shmangur shfaqje të lëndës së mëparshme, ju lutemi, aktivizoni edhe \"Siguri ekrani\"</string>
