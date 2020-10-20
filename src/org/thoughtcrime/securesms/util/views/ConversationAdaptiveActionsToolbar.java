@@ -14,41 +14,33 @@ import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
 /**
- * AdaptiveActionsToolbar behaves like a normal {@link Toolbar} except in that it ignores the
- * showAsAlways attributes of menu items added via menu inflation, opting for an adaptive algorithm
- * instead. This algorithm will display as many icons as it can up to a specific percentage of the
- * screen.
- *
- * Each ActionView icon is expected to occupy 48dp of space, including padding. Items are stacked one
- * after the next with no margins.
- *
- * This view can be customized via attributes:
- *
- * aat_max_shown           -- controls the max number of items to display.
- * aat_percent_for_actions -- controls the max percent of screen width the buttons can occupy.
+ * This class was pulled from Signal (AdaptiveActionsToolbar) and then adapted to the ConversationActivity.
  */
-public class AdaptiveActionsToolbar extends Toolbar {
+public class ConversationAdaptiveActionsToolbar extends Toolbar {
 
-  private static final int   NAVIGATION_DP          = 56;
-  private static final int   ACTION_VIEW_WIDTH_DP   = 48;
-  private static final int   OVERFLOW_VIEW_WIDTH_DP = 36;
+  private static final int NAVIGATION_DP          = 56;
+  private static final int ACTION_VIEW_WIDTH_DP   = 48;
+  private static final int OVERFLOW_VIEW_WIDTH_DP = 36;
+
+  private static final int ID_NEVER_SHOW_AS_ACTION  = R.id.menu_context_reply_privately;
+  private static final int ID_ALWAYS_SHOW_AS_ACTION = R.id.menu_context_forward;
 
   private int   maxShown;
 
-  public AdaptiveActionsToolbar(@NonNull Context context) {
+  public ConversationAdaptiveActionsToolbar(@NonNull Context context) {
     this(context, null);
   }
 
-  public AdaptiveActionsToolbar(@NonNull Context context, @Nullable AttributeSet attrs) {
+  public ConversationAdaptiveActionsToolbar(@NonNull Context context, @Nullable AttributeSet attrs) {
     this(context, attrs, R.attr.toolbarStyle);
   }
 
-  public AdaptiveActionsToolbar(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+  public ConversationAdaptiveActionsToolbar(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
     super(context, attrs, defStyleAttr);
 
-    TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.AdaptiveActionsToolbar);
+    TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.ConversationAdaptiveActionsToolbar);
 
-    maxShown = array.getInteger(R.styleable.AdaptiveActionsToolbar_aat_max_shown, 100);
+    maxShown = array.getInteger(R.styleable.ConversationAdaptiveActionsToolbar_aat_max_shown, 100);
 
     array.recycle();
   }
@@ -78,9 +70,17 @@ public class AdaptiveActionsToolbar extends Toolbar {
 
     nItemsToShow = Math.min(maxToShow, widthAllowed / ViewUtil.dpToPx(ACTION_VIEW_WIDTH_DP));
 
+    menu.findItem(ID_ALWAYS_SHOW_AS_ACTION).setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+    nItemsToShow--;
+
     for (int i = 0; i < menu.size(); i++) {
       MenuItem item = menu.getItem(i);
-      boolean neverShowAsAction = item.getItemId() == R.id.menu_context_reply_privately;
+
+      boolean neverShowAsAction = item.getItemId() == ID_NEVER_SHOW_AS_ACTION;
+      boolean alwaysShowAsAction = item.getItemId() == ID_ALWAYS_SHOW_AS_ACTION;
+
+      if (alwaysShowAsAction) continue;
+
       if (item.isVisible() && nItemsToShow > 0 && !neverShowAsAction) {
         item.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
         nItemsToShow--;
