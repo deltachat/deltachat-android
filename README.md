@@ -40,8 +40,9 @@ Then, run the image:
 podman run -it -v $(pwd):/home/app -w /home/app localhost/deltachat-android
 ```
 
-Within the container, build the native library first:
+Within the container, install toolchains and build the native library:
 ```
+root@6012dcb974fe:/home/app# scripts/install-toolchains.sh
 root@6012dcb974fe:/home/app# ./ndk-make.sh
 ```
 
