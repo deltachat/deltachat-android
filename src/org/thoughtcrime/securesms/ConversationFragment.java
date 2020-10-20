@@ -781,6 +781,7 @@ public class ConversationFragment extends Fragment
                     setCorrectMenuVisibility(menu);
                     ConversationAdaptiveActionsToolbar.adjustMenuActions(menu, 10, requireActivity().getWindow().getDecorView().getMeasuredWidth());
                     actionMode.setTitle(String.valueOf(getListAdapter().getSelectedItems().size()));
+                    actionMode.setTitleOptionalHint(false); // the title represents important information, also indicating implicitly, more items can be selected
                 }
             }
             else if(messageRecord.isSetupMessage()) {
