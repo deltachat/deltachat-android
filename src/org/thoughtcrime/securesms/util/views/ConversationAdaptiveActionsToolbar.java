@@ -19,6 +19,7 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 public class ConversationAdaptiveActionsToolbar extends Toolbar {
 
   private static final int NAVIGATION_DP          = 56;
+  private static final int TITLE_DP               = 48; // estimated, only a number (if >1 items are selected there is more room anyway as there are fewer options)
   private static final int ACTION_VIEW_WIDTH_DP   = 48;
   private static final int OVERFLOW_VIEW_WIDTH_DP = 36;
 
@@ -61,7 +62,7 @@ public class ConversationAdaptiveActionsToolbar extends Toolbar {
       }
     }
 
-    int widthAllowed = toolbarWidthPx - ViewUtil.dpToPx(NAVIGATION_DP);
+    int widthAllowed = toolbarWidthPx - ViewUtil.dpToPx(NAVIGATION_DP + TITLE_DP);
     int nItemsToShow = Math.min(maxToShow, widthAllowed / ViewUtil.dpToPx(ACTION_VIEW_WIDTH_DP));
 
     if (nItemsToShow < menuSize) {
