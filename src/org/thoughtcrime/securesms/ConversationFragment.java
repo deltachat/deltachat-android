@@ -473,9 +473,6 @@ public class ConversationFragment extends Fragment
         getActivity().overridePendingTransition(R.anim.slide_from_right, R.anim.fade_scale_out);
     }
 
-    private void handleResendMessage(final DcMsg message) {
-    }
-
     @SuppressLint("RestrictedApi")
     private void handleReplyMessage(final DcMsg message) {
         if (getActivity() != null) {
@@ -926,10 +923,6 @@ public class ConversationFragment extends Fragment
                     return true;
                 case R.id.menu_context_forward:
                     handleForwardMessage(getListAdapter().getSelectedItems());
-                    actionMode.finish();
-                    return true;
-                case R.id.menu_context_resend:
-                    handleResendMessage(getSelectedMessageRecord());
                     actionMode.finish();
                     return true;
                 case R.id.menu_context_save_attachment:
