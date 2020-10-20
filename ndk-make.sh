@@ -5,9 +5,8 @@ echo "starting time: `date`"
 cd jni/deltachat-core-rust
 
 # to setup the toolchains (from https://medium.com/visly/rust-on-android-19f34a2fb43 )
-# run the following in `jni/deltachat-core-rust`:
-# $ rustup target add armv7-linux-androideabi aarch64-linux-android i686-linux-android x86_64-linux-android --toolchain `cat rust-toolchain`
-# 
+# run `scripts/install-toolchains.sh`.
+#
 # Currently ndk20b is minimum required version
 # (newer versions will likely work, however, are not tested and not used in offial releases,
 # in general, changes on the ndk-version should be done with care)
