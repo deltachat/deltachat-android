@@ -729,7 +729,7 @@
     <string name="ask_delete_chat_desktop">Delete this chat?</string>
     <string name="email_validation_failed_desktop">Email address required.</string>
     <string name="forget_login_confirmation_desktop">Delete this login? Everything will be deleted, including your end-to-end setup, contacts, chats, messages and media. This action cannot be undone.</string>
-    <string name="account_info_hover_tooltip_desktop">E-Mail: %s\nSize: %s\nPath: %s</string>
+    <string name="account_info_hover_tooltip_desktop">E-Mail: %1$s\nSize: %2$s\nPath: %3$s</string>
     <string name="me_desktop">me</string>
     <string name="in_this_group_desktop">Group members</string>
     <string name="not_in_this_group_desktop">Potential group members (not in group)</string>
