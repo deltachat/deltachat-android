@@ -483,7 +483,7 @@
     <string name="pref_imap_folder_handling">IMAP 文件夹处理</string>
     <string name="pref_imap_folder_warn_disable_defaults">如果禁用了此选项，请确保您的服务器和其他客户端已进行了相应的设置。\n\n否则可能无法正常工作。</string>
     <string name="pref_watch_inbox_folder">监视收件箱文件夹</string>
-    <string name="pref_watch_sent_folder">监视发送文件夹</string>
+    <string name="pref_watch_sent_folder">监视已发送文件夹</string>
     <string name="pref_watch_mvbox_folder">监视 DeltaChat 文件夹</string>
     <string name="pref_send_copy_to_self">给自己发送副本</string>
     <string name="pref_auto_folder_moves">自动移动至 DeltaChat 文件夹</string>
@@ -508,11 +508,11 @@
     <string name="emoji_search_results">搜索结果</string>
     <string name="emoji_not_found">未找到 emoji</string>
     <string name="emoji_recent">最近使用</string>
-    <string name="emoji_people">人物 &amp; 身体</string>
-    <string name="emoji_nature">动物 &amp; 自然</string>
-    <string name="emoji_foods">食品 &amp; 饮料</string>
+    <string name="emoji_people">人物与身体</string>
+    <string name="emoji_nature">动物与自然</string>
+    <string name="emoji_foods">食品与饮料</string>
     <string name="emoji_activity">活动</string>
-    <string name="emoji_places">出行 &amp; 地点</string>
+    <string name="emoji_places">出行与地点</string>
     <string name="emoji_objects">物品</string>
     <string name="emoji_symbols">符号</string>
     <string name="emoji_flags">旗帜</string>
