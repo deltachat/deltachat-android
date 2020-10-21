@@ -164,8 +164,7 @@ public class ConversationFragment extends Fragment
         list.setItemAnimator(null);
 
         new ConversationItemSwipeCallback(
-                msg -> actionMode == null &&
-                    dcContext.getChat(msg.getChatId()).canSend(),
+                msg -> actionMode == null,
                 this::handleReplyMessage
         ).attachToRecyclerView(list);
 
@@ -343,10 +342,15 @@ public class ConversationFragment extends Fragment
             DcChat chat = getListAdapter().getChat();
             menu.findItem(R.id.menu_context_details).setVisible(true);
             menu.findItem(R.id.menu_context_save_attachment).setVisible(messageRecord.hasFile());
-            menu.findItem(R.id.menu_context_reply).setVisible(chat.canSend());
-            boolean showReplyPrivately = chat.isGroup() && !messageRecord.isOutgoing();
+            boolean canReply = canReplyToMsg(messageRecord);
+            menu.findItem(R.id.menu_context_reply).setVisible(chat.canSend() && canReply);
+            boolean showReplyPrivately = chat.isGroup() && !messageRecord.isOutgoing() && canReply;
             menu.findItem(R.id.menu_context_reply_privately).setVisible(showReplyPrivately);
         }
+    }
+
+    static boolean canReplyToMsg(DcMsg dcMsg) {
+        return !dcMsg.isInfo() && dcMsg.getType() != DcMsg.DC_MSG_VIDEOCHAT_INVITATION;
     }
 
     private ConversationAdapter getListAdapter() {

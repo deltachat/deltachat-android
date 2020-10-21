@@ -215,9 +215,20 @@ public class ConversationItem extends LinearLayout
   }
 
   public boolean disallowSwipe(float downX, float downY) {
+    if (BuildConfig.DEBUG) {
+      // If it is possible to reply to a message, it should also be possible to swipe it.
+      // For this to be possible we need a non-null reply icon.
+      boolean replyNull = (reply == null);
+      boolean canReply = ConversationFragment.canReplyToMsg(messageRecord);
+      if (replyNull == canReply) {
+        String msg = "(reply == null) was " + replyNull + " but canReplyToMsg() was " + canReply;
+        throw new AssertionError(msg);
+      }
+    }
     if (reply == null) return true;
-    if (!hasAudio(messageRecord)) return false;
+    if (!dcChat.canSend()) return true;
 
+    if (!hasAudio(messageRecord)) return false;
     audioViewStub.get().getSeekBarGlobalVisibleRect(SWIPE_RECT);
     return SWIPE_RECT.contains((int) downX, (int) downY);
   }
