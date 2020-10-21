@@ -5,7 +5,7 @@ if [ -z "$VERSION" ]; then
     echo "this script uploads apk and symbols to get.delta.chat"
     echo "the script does not upload things to gplay or other stores."
     echo ""
-    echo "usage: ./tools/upload-release.sh <VERSION>"
+    echo "usage: ./scrips/upload-release.sh <VERSION>"
     exit
 fi
 if [[ ${VERSION:0:1} == "v" ]]; then

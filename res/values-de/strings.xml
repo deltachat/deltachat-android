@@ -733,7 +733,7 @@ Ihr bisheriges E-Mail-Konto wird dabei nicht gelöscht. Sie können mit der Opti
     <string name="ask_delete_chat_desktop">Chat wirklich löschen?</string>
     <string name="email_validation_failed_desktop">E-Mail-Adresse benötigt.</string>
     <string name="forget_login_confirmation_desktop">Dieses Login löschen? Alles wird gelöscht, einschließlich des Ende-zu-Ende-Setups, der Kontakte, Chats, Nachrichten und Medien. Diese Aktion ist endgültig und kann nicht rückgängig gemacht werden.</string>
-    <string name="account_info_hover_tooltip_desktop">E-Mail: %s\nGröße: %s\nPfad: %s</string>
+    <string name="account_info_hover_tooltip_desktop">E-Mail: %1$s\nGröße: %2$s\nPfad: %3$s</string>
     <string name="me_desktop">ich</string>
     <string name="in_this_group_desktop">Gruppenmitglieder</string>
     <string name="not_in_this_group_desktop">Potenzielle Gruppenmitglieder (nicht in der Gruppe)</string>

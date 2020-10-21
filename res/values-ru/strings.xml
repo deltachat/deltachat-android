@@ -10,11 +10,13 @@
     <string name="on">Вкл.</string>
     <string name="off">Выкл.</string>
     <string name="def">По умолчанию</string>
+    <string name="default_value">По умолчанию (%1$s)</string>
     <string name="custom">Персональная настройка</string>
     <string name="none">Не задано</string>
     <string name="automatic">Автоматически</string>
     <string name="strict">Строгий</string>
     <string name="open">Открыть</string>
+    <string name="open_attachment">Открыть вложение</string>
     <string name="join">Зайти</string>
     <string name="rejoin">Перезайти</string>
     <string name="delete">Удалить</string>
@@ -107,6 +109,8 @@
     <string name="self">Я</string>
     <string name="draft">Черновик</string>
     <string name="image">Изображение</string>
+    <!-- Translators: Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
+    <string name="reply_noun">Ответить</string>
     <string name="gif">GIF</string>
     <string name="images">Изображения</string>
     <string name="audio">Аудио</string>
@@ -133,6 +137,7 @@
     <string name="magenta">Маджента</string>
     <string name="white">Белый</string>
 
+    <string name="zoom">Масштаб</string>
     <string name="small">Маленький</string>
     <string name="normal">Обычный</string>
     <string name="large">Большой</string>
@@ -163,10 +168,14 @@
     <string name="menu_delete_chat">Удалить чат</string>
     <string name="menu_delete_messages">Удалить сообщения</string>
     <string name="menu_delete_image">Удалить изображение</string>
+    <string name="delete_contact">Удалить контакт</string>
     <string name="menu_delete_locations">Удалить все местоположения?</string>
     <string name="menu_delete_location">Удалить местоположение?</string>
     <string name="menu_message_details">Подробности сообщения</string>
     <string name="menu_copy_to_clipboard">Скопировать в буфер обмена</string>
+    <string name="menu_copy_selection_to_clipboard">Скопировать выделенное</string>
+    <string name="menu_copy_link_to_clipboard">Скопировать ссылку</string>
+    <string name="paste_from_clipboard">Вставить из буфера обмена</string>
     <string name="menu_forward">Переслать сообщение</string>
     <string name="menu_resend">Продублировать сообщение</string>
     <string name="menu_reply">Ответить на сообщение</string>
@@ -207,6 +216,7 @@
     <string name="pin">Прикрепить</string>
     <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
     <string name="unpin">Открепить</string>
+    <string name="ConversationFragment_quoted_message_not_found">Оригинальное сообщение не найдено</string>
     <string name="mute_for_one_hour">1 час</string>
     <string name="mute_for_two_hours">На 2 часа</string>
     <string name="mute_for_one_day">На 1 день</string>
@@ -262,8 +272,12 @@
     <string name="ask_delete_contact">Удалить контакт навсегда  %1$s?\n\nКонтакты с исходящими чатами и контакты из системной адресной книги не будут удалены .</string>
     <string name="cannot_delete_contacts_in_use">Невозможно удалить контакты, с которыми имеются активные чаты.</string>
     <string name="ask_start_chat_with">Создать чат с %1$s?</string>
+    <string name="ask_delete_value">Удалить %s?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Удалить %1$s из группы?</string>
+    <string name="open_url_confirmation">Вы хотите открыть эту ссылку?</string>
+
+
     <!-- contact list -->
     <string name="contacts_title">Контакты</string>
     <string name="contacts_enter_name_or_email">Введите имя или адрес эл. почты</string>
@@ -314,6 +328,9 @@
     <string name="chat_no_contact_requests">Нет запросов контактов.\n\nЕсли Вы хотите, чтобы обычная почта появлялась здесь как запросы контактов, вы можете изменить соответствующий параметр в настройках приложения.</string>
     <string name="retry_send">Повторить отправку сообщения</string>
     <string name="send_failed">Не удалось отправить сообщение</string>
+    <string name="attachment_failed_to_load">Не удалось загрузить вложение</string>
+
+
     <!-- map -->
     <string name="filter_map_on_time">Показать местоположения с интервалом времени</string>
     <string name="show_location_traces">Показывать маршруты</string>
@@ -329,6 +346,8 @@
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">Название группы</string>
     <string name="group_avatar">Аватар группы</string>
+    <string name="remove_group_image">Удалить изображение группы</string>
+    <string name="change_group_image">Сменить изображение группы</string>
     <string name="group_create_button">Создать группу</string>
     <string name="group_please_enter_group_name">Введите название группы</string>
     <string name="group_add_members">Добавить участников</string>
@@ -392,6 +411,7 @@
     <string name="delete_account">Удалить аккаунт</string>
     <string name="delete_account_ask">Вы уверены, что хотите удалить данные учётной записи?</string>
     <string name="switching_account">Меняем аккаунт...</string>
+    <string name="try_connect_now">Попытаться подключиться сейчас</string>
     <!-- Translations: %1$s will be replaced by a more detailed error message -->
     <string name="configuration_failed_with_error">Настройка не удалась. Ошибка: %1$s</string>
 
@@ -496,6 +516,20 @@
     <string name="pref_background_custom_image">Пользовательское изображение</string>
     <string name="pref_background_custom_color">Пользовательский цвет</string>
     <string name="export_aborted">Экспорт прекращен.</string>
+    <string name="profile_image_select">Выбрать фото профиля</string>
+    <string name="select_your_new_profile_image">Выбрать новое изображение профиля</string>
+    <string name="profile_image_delete">Удалить фото профиля</string>
+
+
+    <!-- Emoji picker and categories -->
+    <string name="emoji_search_results">Результаты поиска</string>
+    <string name="emoji_not_found">Эмодзи не найдено</string>
+    <string name="emoji_recent">Недавно использованные</string>
+    <string name="emoji_objects">Объекты</string>
+    <string name="emoji_symbols">Символы</string>
+    <string name="emoji_flags">Флаги</string>
+
+
     <!-- automatically delete message -->
     <string name="delete_old_messages">Удалять старые сообщения</string>
     <!-- devs: autodel_title is deprecated, use delete_old_messages instead -->
@@ -573,6 +607,7 @@
 
     <!-- qr code stuff -->
     <string name="qr_code">QR код</string>
+    <string name="load_qr_code_as_image">Загрузить QR-код как изображение</string>
     <string name="qrscan_title">Сканировать QR код</string>
     <string name="qrscan_hint">Наведите камеру на QR код</string>
     <string name="qrscan_ask_join_group">Присоединиться к группе «%1$s»?</string>
@@ -704,6 +739,9 @@
     <string name="a11y_delivery_status_invalid">Недопустимый статус доставки</string>
     <string name="a11y_message_context_menu_btn_label">Действия с сообщением</string>
     <string name="a11y_background_preview_label">Предпросмотр фона</string>
+    <string name="a11y_disappearing_messages_activated">Исчезающие сообщения включены</string>
+
+
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat использует вашу камеру для фото и видео съёмки и сканирования QR кодов.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat использует ваши контакты для просмотра имеющихся у них адресов электронной почты, которым вы можете написать. Delta Chat не имеет сервера, ваши контакты никуда не будут отправлены.</string>

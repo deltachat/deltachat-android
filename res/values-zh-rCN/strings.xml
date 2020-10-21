@@ -483,7 +483,7 @@
     <string name="pref_imap_folder_handling">IMAP 文件夹处理</string>
     <string name="pref_imap_folder_warn_disable_defaults">如果禁用了此选项，请确保您的服务器和其他客户端已进行了相应的设置。\n\n否则可能无法正常工作。</string>
     <string name="pref_watch_inbox_folder">监视收件箱文件夹</string>
-    <string name="pref_watch_sent_folder">监视发送文件夹</string>
+    <string name="pref_watch_sent_folder">监视已发送文件夹</string>
     <string name="pref_watch_mvbox_folder">监视 DeltaChat 文件夹</string>
     <string name="pref_send_copy_to_self">给自己发送副本</string>
     <string name="pref_auto_folder_moves">自动移动至 DeltaChat 文件夹</string>
@@ -508,11 +508,11 @@
     <string name="emoji_search_results">搜索结果</string>
     <string name="emoji_not_found">未找到 emoji</string>
     <string name="emoji_recent">最近使用</string>
-    <string name="emoji_people">人物 &amp; 身体</string>
-    <string name="emoji_nature">动物 &amp; 自然</string>
-    <string name="emoji_foods">食品 &amp; 饮料</string>
+    <string name="emoji_people">人物与身体</string>
+    <string name="emoji_nature">动物与自然</string>
+    <string name="emoji_foods">食品与饮料</string>
     <string name="emoji_activity">活动</string>
-    <string name="emoji_places">出行 &amp; 地点</string>
+    <string name="emoji_places">出行与地点</string>
     <string name="emoji_objects">物品</string>
     <string name="emoji_symbols">符号</string>
     <string name="emoji_flags">旗帜</string>
@@ -581,6 +581,10 @@
     <string name="systemmsg_ephemeral_timer_day">设置阅后即焚消息定时器为 1 天</string>
     <string name="systemmsg_ephemeral_timer_week">设置阅后即焚消息定时器为 1 周</string>
     <string name="systemmsg_ephemeral_timer_four_weeks">设置阅后即焚消息定时器为 4 周</string>
+
+    <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
+    <string name="systemmsg_chat_protection_disabled">聊天保护已禁用</string>
+    <string name="systemmsg_chat_protection_enabled">聊天保护已启用</string>
 
     <!-- screen lock -->
     <string name="screenlock_title">屏幕锁定</string>
@@ -713,7 +717,7 @@
     <string name="ask_delete_chat_desktop">删除此聊天？</string>
     <string name="email_validation_failed_desktop">需要电子邮件地址。</string>
     <string name="forget_login_confirmation_desktop">删除此登录？ 一切都将被删除，包括您的端到端设置、联系人、聊天、消息及媒体。 此操作无法撤消。</string>
-    <string name="account_info_hover_tooltip_desktop">电子邮件：%s\n大小：%s\n路径：%s</string>
+    <string name="account_info_hover_tooltip_desktop">电子邮件：%1$s\n大小：%2$s\n路径：%3$s</string>
     <string name="me_desktop">我</string>
     <string name="in_this_group_desktop">群组成员</string>
     <string name="not_in_this_group_desktop">潜在的群组成员（不在群组中）</string>

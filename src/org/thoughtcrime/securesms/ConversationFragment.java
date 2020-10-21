@@ -75,7 +75,7 @@ import org.thoughtcrime.securesms.util.SaveAttachmentTask;
 import org.thoughtcrime.securesms.util.StickyHeaderDecoration;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
-import org.thoughtcrime.securesms.util.views.AdaptiveActionsToolbar;
+import org.thoughtcrime.securesms.util.views.ConversationAdaptiveActionsToolbar;
 import org.thoughtcrime.securesms.videochat.VideochatUtil;
 
 import java.util.Collections;
@@ -473,9 +473,6 @@ public class ConversationFragment extends Fragment
         getActivity().overridePendingTransition(R.anim.slide_from_right, R.anim.fade_scale_out);
     }
 
-    private void handleResendMessage(final DcMsg message) {
-    }
-
     @SuppressLint("RestrictedApi")
     private void handleReplyMessage(final DcMsg message) {
         if (getActivity() != null) {
@@ -782,8 +779,9 @@ public class ConversationFragment extends Fragment
                 } else {
                     Menu menu = actionMode.getMenu();
                     setCorrectMenuVisibility(menu);
-                    AdaptiveActionsToolbar.adjustMenuActions(menu, 10, requireActivity().getWindow().getDecorView().getMeasuredWidth());
+                    ConversationAdaptiveActionsToolbar.adjustMenuActions(menu, 10, requireActivity().getWindow().getDecorView().getMeasuredWidth());
                     actionMode.setTitle(String.valueOf(getListAdapter().getSelectedItems().size()));
+                    actionMode.setTitleOptionalHint(false); // the title represents important information, also indicating implicitly, more items can be selected
                 }
             }
             else if(messageRecord.isSetupMessage()) {
@@ -889,7 +887,7 @@ public class ConversationFragment extends Fragment
             }
 
             setCorrectMenuVisibility(menu);
-            AdaptiveActionsToolbar.adjustMenuActions(menu, 10, requireActivity().getWindow().getDecorView().getMeasuredWidth());
+            ConversationAdaptiveActionsToolbar.adjustMenuActions(menu, 10, requireActivity().getWindow().getDecorView().getMeasuredWidth());
             return true;
         }
 
@@ -926,10 +924,6 @@ public class ConversationFragment extends Fragment
                     return true;
                 case R.id.menu_context_forward:
                     handleForwardMessage(getListAdapter().getSelectedItems());
-                    actionMode.finish();
-                    return true;
-                case R.id.menu_context_resend:
-                    handleResendMessage(getSelectedMessageRecord());
                     actionMode.finish();
                     return true;
                 case R.id.menu_context_save_attachment:
