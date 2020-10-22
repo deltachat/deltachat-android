@@ -101,7 +101,7 @@ public class ConversationItem extends LinearLayout
   private GlideRequests glideRequests;
 
   protected ViewGroup              bodyBubble;
-  protected View                   reply;
+  protected View                   replyView;
   @Nullable private QuoteView      quoteView;
   private   TextView               bodyText;
   private   ConversationItemFooter footer;
@@ -162,7 +162,7 @@ public class ConversationItem extends LinearLayout
     this.groupSenderHolder       =            findViewById(R.id.group_sender_holder);
     this.quoteView               =            findViewById(R.id.quote_view);
     this.container               =            findViewById(R.id.container);
-    this.reply                   =            findViewById(R.id.reply_icon);
+    this.replyView               =            findViewById(R.id.reply_icon);
 
     setOnClickListener(new ClickListener(null));
 
@@ -215,17 +215,10 @@ public class ConversationItem extends LinearLayout
   }
 
   public boolean disallowSwipe(float downX, float downY) {
-    if (BuildConfig.DEBUG) {
-      // If it is possible to reply to a message, it should also be possible to swipe it.
-      // For this to be possible we need a non-null reply icon.
-      boolean replyNull = (reply == null);
-      boolean canReply = ConversationFragment.canReplyToMsg(messageRecord);
-      if (replyNull == canReply) {
-        String msg = "(reply == null) was " + replyNull + " but canReplyToMsg() was " + canReply;
-        throw new AssertionError(msg);
-      }
-    }
-    if (reply == null) return true;
+    // If it is possible to reply to a message, it should also be possible to swipe it.
+    // For this to be possible we need a non-null reply icon.
+    // This means that `replyView != null` must always be the same as ConversationFragment.canReplyToMsg(messageRecord).
+    if (replyView == null) return true;
     if (!dcChat.canSend()) return true;
 
     if (!hasAudio(messageRecord)) return false;

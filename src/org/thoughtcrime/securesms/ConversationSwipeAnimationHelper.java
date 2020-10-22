@@ -33,12 +33,12 @@ final class ConversationSwipeAnimationHelper {
     float progress = dx / TRIGGER_DX;
 
     updateBodyBubbleTransition(conversationItem.bodyBubble, dx, sign);
-    updateReplyIconTransition(conversationItem.reply, dx, progress, sign);
+    updateReplyIconTransition(conversationItem.replyView, dx, progress, sign);
     updateContactPhotoHolderTransition(conversationItem.contactPhotoHolder, progress, sign);
   }
 
   public static void trigger(@NonNull ConversationItem conversationItem) {
-    triggerReplyIcon(conversationItem.reply);
+    triggerReplyIcon(conversationItem.replyView);
   }
 
   private static void updateBodyBubbleTransition(@NonNull View bodyBubble, float dx, float sign) {
