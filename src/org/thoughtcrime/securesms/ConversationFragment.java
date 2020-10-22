@@ -406,6 +406,7 @@ public class ConversationFragment extends Fragment
     private void handleCopyMessage(final Set<DcMsg> dcMsgsSet) {
         List<DcMsg> dcMsgsList = new LinkedList<>(dcMsgsSet);
         Collections.sort(dcMsgsList, (lhs, rhs) -> Long.compare(lhs.getDateReceived(), rhs.getDateReceived()));
+        boolean singleMsg = dcMsgsList.size() == 1;
 
         StringBuilder result = new StringBuilder();
 
@@ -415,11 +416,11 @@ public class ConversationFragment extends Fragment
                 result.append("\n\n");
             }
 
-            if (msg.getFromId() != prevMsg.getFromId()) {
+            if (msg.getFromId() != prevMsg.getFromId() && !singleMsg) {
                 DcContact contact = dcContext.getContact(msg.getFromId());
                 result.append(contact.getDisplayName()).append(":\n");
             }
-            if(msg.getType() == DcMsg.DC_MSG_TEXT) {
+            if(msg.getType() == DcMsg.DC_MSG_TEXT || singleMsg) {
                 result.append(msg.getText());
             } else {
                 result.append(msg.getSummarytext(10000000));
