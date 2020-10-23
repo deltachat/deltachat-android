@@ -525,8 +525,9 @@ public class ConversationListFragment extends Fragment
     if (isRelayingMessageContent(getActivity())) {
       Context context = getContext();
       if (context != null) {
-        fab.setImageDrawable(ContextCompat.getDrawable(getContext(), R.drawable.ic_send_sms_white_24dp));
+        fab.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_send_sms_white_24dp));
       }
+      fab.setVisibility(View.VISIBLE);
       initializeFabClickListener(true);
     } else {
 
@@ -580,6 +581,8 @@ public class ConversationListFragment extends Fragment
     if (context != null) {
       fab.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_add_white_24dp));
     }
+    if (archive) fab.setVisibility(View.GONE);
+    else         fab.setVisibility(View.VISIBLE);
     initializeFabClickListener(false);
 
     actionMode = null;
