@@ -26,7 +26,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.text.ClipboardManager;
+import android.content.ClipboardManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.util.Linkify;
@@ -420,7 +420,7 @@ public class ConversationFragment extends Fragment
                 DcContact contact = dcContext.getContact(msg.getFromId());
                 result.append(contact.getDisplayName()).append(":\n");
             }
-            if(msg.getType() == DcMsg.DC_MSG_TEXT || singleMsg) {
+            if (msg.getType() == DcMsg.DC_MSG_TEXT || (singleMsg && !msg.getText().isEmpty())) {
                 result.append(msg.getText());
             } else {
                 result.append(msg.getSummarytext(10000000));
