@@ -26,7 +26,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.text.ClipboardManager;
+import android.content.ClipboardManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.util.Linkify;
@@ -164,8 +164,7 @@ public class ConversationFragment extends Fragment
         list.setItemAnimator(null);
 
         new ConversationItemSwipeCallback(
-                msg -> actionMode == null &&
-                    dcContext.getChat(msg.getChatId()).canSend(),
+                msg -> actionMode == null,
                 this::handleReplyMessage
         ).attachToRecyclerView(list);
 
@@ -343,10 +342,15 @@ public class ConversationFragment extends Fragment
             DcChat chat = getListAdapter().getChat();
             menu.findItem(R.id.menu_context_details).setVisible(true);
             menu.findItem(R.id.menu_context_save_attachment).setVisible(messageRecord.hasFile());
-            menu.findItem(R.id.menu_context_reply).setVisible(chat.canSend());
-            boolean showReplyPrivately = chat.isGroup() && !messageRecord.isOutgoing();
+            boolean canReply = canReplyToMsg(messageRecord);
+            menu.findItem(R.id.menu_context_reply).setVisible(chat.canSend() && canReply);
+            boolean showReplyPrivately = chat.isGroup() && !messageRecord.isOutgoing() && canReply;
             menu.findItem(R.id.menu_context_reply_privately).setVisible(showReplyPrivately);
         }
+    }
+
+    static boolean canReplyToMsg(DcMsg dcMsg) {
+        return !dcMsg.isInfo() && dcMsg.getType() != DcMsg.DC_MSG_VIDEOCHAT_INVITATION;
     }
 
     private ConversationAdapter getListAdapter() {
@@ -402,6 +406,7 @@ public class ConversationFragment extends Fragment
     private void handleCopyMessage(final Set<DcMsg> dcMsgsSet) {
         List<DcMsg> dcMsgsList = new LinkedList<>(dcMsgsSet);
         Collections.sort(dcMsgsList, (lhs, rhs) -> Long.compare(lhs.getDateReceived(), rhs.getDateReceived()));
+        boolean singleMsg = dcMsgsList.size() == 1;
 
         StringBuilder result = new StringBuilder();
 
@@ -411,11 +416,11 @@ public class ConversationFragment extends Fragment
                 result.append("\n\n");
             }
 
-            if (msg.getFromId() != prevMsg.getFromId()) {
+            if (msg.getFromId() != prevMsg.getFromId() && !singleMsg) {
                 DcContact contact = dcContext.getContact(msg.getFromId());
                 result.append(contact.getDisplayName()).append(":\n");
             }
-            if(msg.getType() == DcMsg.DC_MSG_TEXT) {
+            if (msg.getType() == DcMsg.DC_MSG_TEXT || (singleMsg && !msg.getText().isEmpty())) {
                 result.append(msg.getText());
             } else {
                 result.append(msg.getSummarytext(10000000));
