@@ -205,7 +205,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
       }
     }
 
-    if(!isGlobalProfile() && !isSelfProfile()) {
+    if(!isGlobalProfile() && !isSelfProfile() && !chatIsDeviceTalk) {
       tabs.add(TAB_SETTINGS);
     }
     tabs.add(TAB_GALLERY);
