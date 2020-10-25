@@ -66,6 +66,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
   private ApplicationDcContext dcContext;
   private int                  chatId;
   private boolean              chatIsGroup;
+  private boolean              chatIsDeviceTalk;
   private int                  contactId;
   private boolean              fromChat;
 
@@ -114,9 +115,11 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
   public boolean onCreateOptionsMenu(Menu menu) {
     MenuInflater inflater = getMenuInflater();
 
-    inflater.inflate(R.menu.profile_common, menu);
-
     if (!isSelfProfile()) {
+      if (!chatIsDeviceTalk) {
+        inflater.inflate(R.menu.profile_common, menu);
+      }
+
       if (chatId != 0) {
         inflater.inflate(R.menu.profile_chat, menu);
         if (chatIsGroup) {
@@ -124,7 +127,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
         }
       }
 
-      if (isContactProfile()) {
+      if (isContactProfile() && !chatIsDeviceTalk) {
         inflater.inflate(R.menu.profile_contact, menu);
       }
     }
@@ -183,10 +186,11 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void initializeResources() {
-    chatId      = getIntent().getIntExtra(CHAT_ID_EXTRA, 0);
-    contactId   = getIntent().getIntExtra(CONTACT_ID_EXTRA, 0);
-    chatIsGroup = false;
-    fromChat    = getIntent().getBooleanExtra(FROM_CHAT, false);
+    chatId           = getIntent().getIntExtra(CHAT_ID_EXTRA, 0);
+    contactId        = getIntent().getIntExtra(CONTACT_ID_EXTRA, 0);
+    chatIsGroup      = false;
+    chatIsDeviceTalk = false;
+    fromChat         = getIntent().getBooleanExtra(FROM_CHAT, false);
 
     if (contactId!=0) {
       chatId = dcContext.getChatIdByContactId(contactId);
@@ -194,6 +198,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
     else if(chatId!=0) {
       DcChat dcChat = dcContext.getChat(chatId);
       chatIsGroup = dcChat.isGroup();
+      chatIsDeviceTalk = dcChat.isDeviceTalk();
       if(!chatIsGroup) {
         final int[] members = dcContext.getChatContacts(chatId);
         contactId = members.length>=1? members[0] : 0;
