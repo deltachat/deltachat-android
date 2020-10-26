@@ -36,6 +36,7 @@
     <string name="save">Kaydet</string>
     <string name="chat">Sohbet</string>
     <string name="media">Ortam</string>
+    <string name="profile">Profil</string>
     <string name="main_menu">Ana menü</string>
     <string name="start_chat">Sohbete başla</string>
     <string name="show_password">Parolayı göster</string>

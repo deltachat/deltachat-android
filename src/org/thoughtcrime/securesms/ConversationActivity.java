@@ -447,6 +447,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       menu.findItem(R.id.menu_videochat_invite).setVisible(false);
     }
 
+    if (!dcChat.canSend()) {
+      menu.findItem(R.id.menu_ephemeral_messages).setVisible(false);
+    }
+
     if (isGroupConversation()) {
       if (isActiveGroup()) {
         inflater.inflate(R.menu.conversation_push_group_options, menu);

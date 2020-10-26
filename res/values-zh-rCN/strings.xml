@@ -36,6 +36,7 @@
     <string name="save">保存</string>
     <string name="chat">聊天</string>
     <string name="media">媒体</string>
+    <string name="profile">概要</string>
     <string name="main_menu">主菜单</string>
     <string name="start_chat">开始聊天</string>
     <string name="show_password">显示密码</string>

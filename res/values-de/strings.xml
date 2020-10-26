@@ -36,6 +36,7 @@
     <string name="save">Speichern</string>
     <string name="chat">Chat</string>
     <string name="media">Medien</string>
+    <string name="profile">Profil</string>
     <string name="main_menu">Hauptmenü</string>
     <string name="start_chat">Chat starten</string>
     <string name="show_password">Passwort anzeigen</string>
