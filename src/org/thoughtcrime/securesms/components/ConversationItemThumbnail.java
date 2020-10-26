@@ -38,6 +38,7 @@ public class ConversationItemThumbnail extends FrameLayout {
 
   private static final Paint LIGHT_THEME_OUTLINE_PAINT = new Paint();
   private static final Paint DARK_THEME_OUTLINE_PAINT = new Paint();
+  public static final double IMAGE_ASPECT_RATIO = 1.0;
 
   static {
     LIGHT_THEME_OUTLINE_PAINT.setColor(Color.argb((int) (255 * 0.2), 0, 0, 0));
@@ -93,8 +94,10 @@ public class ConversationItemThumbnail extends FrameLayout {
 
     if (attrs != null) {
       TypedArray typedArray = getContext().getTheme().obtainStyledAttributes(attrs, R.styleable.ConversationItemThumbnail, 0, 0);
+
       minHeight = readDimen(R.dimen.media_bubble_min_height);
       maxHeight = readDimen(R.dimen.media_bubble_max_height);
+
       // At least allow the image to be as high as half the screen size
       // Otherwise on tablets all images would be shown wide, but with a low height
       DisplayMetrics dm = new DisplayMetrics();
@@ -102,6 +105,7 @@ public class ConversationItemThumbnail extends FrameLayout {
       // Screen could be rotated later so that width and height swap, but just take the lower value:
       int screenHeight = Math.min(dm.heightPixels, dm.widthPixels);
       maxHeight = Math.max(screenHeight / 2, maxHeight);
+
       typedArray.recycle();
     }
   }
@@ -117,10 +121,9 @@ public class ConversationItemThumbnail extends FrameLayout {
 
     // Compute height:
     int best = width * naturalHeight / naturalWidth;
-    int min = ViewUtil.dpToPx(50);
-    int max = (int) (width * 0.8);
+    int max = (int) (width * IMAGE_ASPECT_RATIO);
 
-    int height = Util.clamp(best, min, max);
+    int height = Util.clamp(best, 0, max);
     int finalHeight = Util.clamp(height, this.minHeight, this.maxHeight);
 
     super.onMeasure(originalWidthMeasureSpec,
