@@ -36,6 +36,7 @@
     <string name="save">Ruaje</string>
     <string name="chat">Fjalosje</string>
     <string name="media">Media</string>
+    <string name="profile">Profile</string>
     <string name="main_menu">Menuja kryesore</string>
     <string name="start_chat">Nisni fjalosje</string>
     <string name="show_password">Shfaqe fjalëkalimin</string>
@@ -45,6 +46,7 @@
     <string name="one_moment">Një çast…</string>
     <string name="done">U bë</string>
     <string name="undo">Zhbëje</string>
+    <string name="offline">Jo në linjë</string>
     <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
     <string name="next">Pasuesja</string>
     <string name="error">Gabim</string>
