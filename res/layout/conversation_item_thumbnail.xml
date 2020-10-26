@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <org.thoughtcrime.securesms.components.ThumbnailView
         android:id="@+id/conversation_thumbnail_image"
-        android:layout_width="@dimen/media_bubble_default_dimens"
-        android:layout_height="@dimen/media_bubble_default_dimens"
-        android:adjustViewBounds="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:clickable="false"
         android:longClickable="false"
-        android:scaleType="fitCenter"
+        android:scaleType="centerCrop"
         android:contentDescription="@string/image"
-        app:thumbnail_radius="1dp"/>
+        app:thumbnail_radius="1dp" />
 
     <ImageView
         android:id="@+id/conversation_thumbnail_shade"
@@ -20,6 +19,7 @@
         android:layout_height="48dp"
         android:layout_gravity="bottom"
         android:visibility="gone"
+        tools:visibility="visible"
         android:src="@drawable/image_shade" />
 
     <org.thoughtcrime.securesms.components.ConversationItemFooter

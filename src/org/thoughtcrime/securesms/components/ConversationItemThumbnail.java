@@ -1,6 +1,8 @@
 package org.thoughtcrime.securesms.components;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -8,10 +10,13 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.RectF;
 import android.net.Uri;
+
+import androidx.annotation.DimenRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.UiThread;
 import android.util.AttributeSet;
+import android.util.DisplayMetrics;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
@@ -21,6 +26,8 @@ import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.mms.Slide;
 import org.thoughtcrime.securesms.mms.SlideClickListener;
 import org.thoughtcrime.securesms.util.ThemeUtil;
+import org.thoughtcrime.securesms.util.Util;
+import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.concurrent.ListenableFuture;
 
 import java.util.concurrent.ExecutionException;
@@ -53,6 +60,10 @@ public class ConversationItemThumbnail extends FrameLayout {
   private ConversationItemFooter footer;
   private Paint                  outlinePaint;
   private CornerMask             cornerMask;
+  private int naturalWidth;
+  private int naturalHeight;
+  private int minHeight;
+  private int maxHeight;
 
   public ConversationItemThumbnail(Context context) {
     super(context);
@@ -82,12 +93,38 @@ public class ConversationItemThumbnail extends FrameLayout {
 
     if (attrs != null) {
       TypedArray typedArray = getContext().getTheme().obtainStyledAttributes(attrs, R.styleable.ConversationItemThumbnail, 0, 0);
-      thumbnail.setBounds(typedArray.getDimensionPixelSize(R.styleable.ConversationItemThumbnail_conversationThumbnail_minWidth, 0),
-                          typedArray.getDimensionPixelSize(R.styleable.ConversationItemThumbnail_conversationThumbnail_maxWidth, 0),
-                          typedArray.getDimensionPixelSize(R.styleable.ConversationItemThumbnail_conversationThumbnail_minHeight, 0),
-                          typedArray.getDimensionPixelSize(R.styleable.ConversationItemThumbnail_conversationThumbnail_maxHeight, 0));
+      minHeight = readDimen(R.dimen.media_bubble_min_height);
+      maxHeight = readDimen(R.dimen.media_bubble_max_height);
+      // At least allow the image to be as high as half the screen size
+      // Otherwise on tablets all images would be shown wide, but with a low height
+      DisplayMetrics dm = new DisplayMetrics();
+      ((Activity) getContext()).getWindowManager().getDefaultDisplay().getMetrics(dm);
+      // Screen could be rotated later so that width and height swap, but just take the lower value:
+      int screenHeight = Math.min(dm.heightPixels, dm.widthPixels);
+      maxHeight = Math.max(screenHeight / 2, maxHeight);
       typedArray.recycle();
     }
+  }
+
+  @Override
+  protected void onMeasure(int originalWidthMeasureSpec, int originalHeightMeasureSpec) {
+    int width = MeasureSpec.getSize(originalWidthMeasureSpec);
+
+    if (naturalWidth == 0 || naturalHeight == 0) {
+      super.onMeasure(originalWidthMeasureSpec, originalHeightMeasureSpec);
+      return;
+    }
+
+    // Compute height:
+    int best = width * naturalHeight / naturalWidth;
+    int min = ViewUtil.dpToPx(50);
+    int max = (int) (width * 0.8);
+
+    int height = Util.clamp(best, min, max);
+    int finalHeight = Util.clamp(height, this.minHeight, this.maxHeight);
+
+    super.onMeasure(originalWidthMeasureSpec,
+                    MeasureSpec.makeMeasureSpec(finalHeight, MeasureSpec.EXACTLY));
   }
 
   @SuppressWarnings("SuspiciousNameCombination")
@@ -173,7 +210,9 @@ public class ConversationItemThumbnail extends FrameLayout {
   public void setImageResource(@NonNull GlideRequests glideRequests, @NonNull Slide slide,
                                int naturalWidth, int naturalHeight)
   {
-    refreshSlideAttachmentState(thumbnail.setImageResource(glideRequests, slide, naturalWidth, naturalHeight), slide);
+    this.naturalWidth = naturalWidth;
+    this.naturalHeight = naturalHeight;
+    refreshSlideAttachmentState(thumbnail.setImageResource(glideRequests, slide), slide);
 
   }
 
@@ -187,5 +226,9 @@ public class ConversationItemThumbnail extends FrameLayout {
 
   public void clear(GlideRequests glideRequests) {
     thumbnail.clear(glideRequests);
+  }
+
+  private int readDimen(@DimenRes int dimenId) {
+    return getResources().getDimensionPixelOffset(dimenId);
   }
 }
