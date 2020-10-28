@@ -1,24 +1,19 @@
 package org.thoughtcrime.securesms.components;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.res.Resources;
-import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.RectF;
-import android.net.Uri;
+import android.util.AttributeSet;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
 
 import androidx.annotation.DimenRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.UiThread;
-import android.util.AttributeSet;
-import android.util.DisplayMetrics;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.database.AttachmentDatabase;
@@ -27,7 +22,6 @@ import org.thoughtcrime.securesms.mms.Slide;
 import org.thoughtcrime.securesms.mms.SlideClickListener;
 import org.thoughtcrime.securesms.util.ThemeUtil;
 import org.thoughtcrime.securesms.util.Util;
-import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.concurrent.ListenableFuture;
 
 import java.util.concurrent.ExecutionException;
@@ -63,7 +57,6 @@ public class ConversationItemThumbnail extends FrameLayout {
   private CornerMask             cornerMask;
   private int naturalWidth;
   private int naturalHeight;
-  private int charCount;
 
   public ConversationItemThumbnail(Context context) {
     super(context);
@@ -94,9 +87,9 @@ public class ConversationItemThumbnail extends FrameLayout {
 
   @Override
   protected void onMeasure(int originalWidthMeasureSpec, int originalHeightMeasureSpec) {
-    int originalWidth = MeasureSpec.getSize(originalWidthMeasureSpec);
+    int width = MeasureSpec.getSize(originalWidthMeasureSpec);
     int minHeight = readDimen(R.dimen.media_bubble_min_height);
-    int availableHeight = (int) (getResources().getDisplayMetrics().heightPixels * 0.9);
+    int availableHeight = (int) (getResources().getDisplayMetrics().heightPixels * 0.75);
 
     if (naturalWidth == 0 || naturalHeight == 0) {
       super.onMeasure(originalWidthMeasureSpec, originalHeightMeasureSpec);
@@ -104,24 +97,14 @@ public class ConversationItemThumbnail extends FrameLayout {
     }
 
     // Compute height:
-    int bestHeight = originalWidth * naturalHeight / naturalWidth;
-    int maxHeight = (int) (originalWidth * IMAGE_ASPECT_RATIO);
+    int bestHeight = width * naturalHeight / naturalWidth;
+    int maxHeight = (int) (width * IMAGE_ASPECT_RATIO);
     int height = Util.clamp(bestHeight, 0, maxHeight);
 
     height = Util.clamp(height, minHeight, availableHeight);
     int heightMeasureSpec = MeasureSpec.makeMeasureSpec(height, MeasureSpec.EXACTLY);
 
-    int widthMeasureSpec = originalWidthMeasureSpec;
-    if (this.charCount < 200) {
-      // For short messages, if the height has been cropped, restore the image ratio by limiting the width.
-      // We don't do this for longer messages not to create very thin and difficult-to-read messages.
-      int bestWidth = height * naturalWidth / naturalHeight;
-      int minWidth = (int) (height / IMAGE_ASPECT_RATIO);
-      int width = Util.clamp(bestWidth, minWidth, originalWidth);
-      widthMeasureSpec = MeasureSpec.makeMeasureSpec(width, MeasureSpec.getMode(originalWidthMeasureSpec));
-    }
-
-    super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+    super.onMeasure(originalWidthMeasureSpec, heightMeasureSpec);
   }
 
   @SuppressWarnings("SuspiciousNameCombination")
@@ -203,11 +186,10 @@ public class ConversationItemThumbnail extends FrameLayout {
 
   @UiThread
   public void setImageResource(@NonNull GlideRequests glideRequests, @NonNull Slide slide,
-                               int naturalWidth, int naturalHeight, int charCount)
+                               int naturalWidth, int naturalHeight)
   {
     this.naturalWidth = naturalWidth;
     this.naturalHeight = naturalHeight;
-    this.charCount = charCount;
     refreshSlideAttachmentState(thumbnail.setImageResource(glideRequests, slide), slide);
   }
 
