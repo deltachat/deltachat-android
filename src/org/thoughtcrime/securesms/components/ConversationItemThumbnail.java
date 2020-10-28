@@ -63,8 +63,7 @@ public class ConversationItemThumbnail extends FrameLayout {
   private CornerMask             cornerMask;
   private int naturalWidth;
   private int naturalHeight;
-  private int minHeight;
-  private int maxHeight;
+  private int charCount;
 
   public ConversationItemThumbnail(Context context) {
     super(context);
@@ -91,28 +90,13 @@ public class ConversationItemThumbnail extends FrameLayout {
     this.cornerMask   = new CornerMask(this);
 
     setTouchDelegate(thumbnail.getTouchDelegate());
-
-    if (attrs != null) {
-      TypedArray typedArray = getContext().getTheme().obtainStyledAttributes(attrs, R.styleable.ConversationItemThumbnail, 0, 0);
-
-      minHeight = readDimen(R.dimen.media_bubble_min_height);
-      maxHeight = readDimen(R.dimen.media_bubble_max_height);
-
-      // At least allow the image to be as high as half the screen size
-      // Otherwise on tablets all images would be shown wide, but with a low height
-      DisplayMetrics dm = new DisplayMetrics();
-      ((Activity) getContext()).getWindowManager().getDefaultDisplay().getMetrics(dm);
-      // Screen could be rotated later so that width and height swap, but just take the lower value:
-      int screenHeight = Math.min(dm.heightPixels, dm.widthPixels);
-      maxHeight = Math.max(screenHeight / 2, maxHeight);
-
-      typedArray.recycle();
-    }
   }
 
   @Override
   protected void onMeasure(int originalWidthMeasureSpec, int originalHeightMeasureSpec) {
-    int width = MeasureSpec.getSize(originalWidthMeasureSpec);
+    int originalWidth = MeasureSpec.getSize(originalWidthMeasureSpec);
+    int minHeight = readDimen(R.dimen.media_bubble_min_height);
+    int availableHeight = (int) (getResources().getDisplayMetrics().heightPixels * 0.9);
 
     if (naturalWidth == 0 || naturalHeight == 0) {
       super.onMeasure(originalWidthMeasureSpec, originalHeightMeasureSpec);
@@ -120,14 +104,24 @@ public class ConversationItemThumbnail extends FrameLayout {
     }
 
     // Compute height:
-    int best = width * naturalHeight / naturalWidth;
-    int max = (int) (width * IMAGE_ASPECT_RATIO);
+    int bestHeight = originalWidth * naturalHeight / naturalWidth;
+    int maxHeight = (int) (originalWidth * IMAGE_ASPECT_RATIO);
+    int height = Util.clamp(bestHeight, 0, maxHeight);
 
-    int height = Util.clamp(best, 0, max);
-    int finalHeight = Util.clamp(height, this.minHeight, this.maxHeight);
+    height = Util.clamp(height, minHeight, availableHeight);
+    int heightMeasureSpec = MeasureSpec.makeMeasureSpec(height, MeasureSpec.EXACTLY);
 
-    super.onMeasure(originalWidthMeasureSpec,
-                    MeasureSpec.makeMeasureSpec(finalHeight, MeasureSpec.EXACTLY));
+    int widthMeasureSpec = originalWidthMeasureSpec;
+    if (this.charCount < 200) {
+      // For short messages, if the height has been cropped, restore the image ratio by limiting the width.
+      // We don't do this for longer messages not to create very thin and difficult-to-read messages.
+      int bestWidth = height * naturalWidth / naturalHeight;
+      int minWidth = (int) (height / IMAGE_ASPECT_RATIO);
+      int width = Util.clamp(bestWidth, minWidth, originalWidth);
+      widthMeasureSpec = MeasureSpec.makeMeasureSpec(width, MeasureSpec.getMode(originalWidthMeasureSpec));
+    }
+
+    super.onMeasure(widthMeasureSpec, heightMeasureSpec);
   }
 
   @SuppressWarnings("SuspiciousNameCombination")
@@ -203,28 +197,18 @@ public class ConversationItemThumbnail extends FrameLayout {
     });
   }
 
-  @UiThread
-  public void setImageResource(@NonNull GlideRequests glideRequests, @NonNull Slide slide)
-  {
-    refreshSlideAttachmentState(thumbnail.setImageResource(glideRequests, slide), slide);
+  public void setThumbnailClickListener(SlideClickListener listener) {
+    thumbnail.setThumbnailClickListener(listener);
   }
 
   @UiThread
   public void setImageResource(@NonNull GlideRequests glideRequests, @NonNull Slide slide,
-                               int naturalWidth, int naturalHeight)
+                               int naturalWidth, int naturalHeight, int charCount)
   {
     this.naturalWidth = naturalWidth;
     this.naturalHeight = naturalHeight;
+    this.charCount = charCount;
     refreshSlideAttachmentState(thumbnail.setImageResource(glideRequests, slide), slide);
-
-  }
-
-  public void setImageResource(@NonNull GlideRequests glideRequests, @NonNull Uri uri) {
-    thumbnail.setImageResource(glideRequests, uri);
-  }
-
-  public void setThumbnailClickListener(SlideClickListener listener) {
-    thumbnail.setThumbnailClickListener(listener);
   }
 
   public void clear(GlideRequests glideRequests) {

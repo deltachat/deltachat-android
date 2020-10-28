@@ -455,7 +455,8 @@ public class ConversationItem extends LinearLayout
       mediaThumbnailStub.get().setImageResource(glideRequests,
                                                 slide,
                                                 thumbnailSize.width,
-                                                thumbnailSize.height);
+                                                thumbnailSize.height,
+                                                messageRecord.getText().length());
       mediaThumbnailStub.get().setThumbnailClickListener(new ThumbnailClickListener());
       mediaThumbnailStub.get().setOnLongClickListener(passthroughClickListener);
       mediaThumbnailStub.get().setOnClickListener(passthroughClickListener);
