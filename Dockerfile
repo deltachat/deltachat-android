@@ -30,4 +30,8 @@ ENV PATH ${PATH}:/android-sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/b
 
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain none
 ENV PATH ${PATH}:/root/.cargo/bin
-COPY docker/cargo-config /root/.cargo/config
+
+ENV CARGO_TARGET_ARMV7_LINUX_ANDROIDEABI_LINKER ${ANDROID_HOME}/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi16-clang
+ENV CARGO_TARGET_AARCH64_LINUX_ANDROID_LINKER ${ANDROID_HOME}/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android21-clang
+ENV CARGO_TARGET_I686_LINUX_ANDROID_LINKER ${ANDROID_HOME}/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/bin/i686-linux-android16-clang
+ENV CARGO_TARGET_X86_64_LINUX_ANDROID_LINKER ${ANDROID_HOME}/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/bin/x86_64-linux-android21-clang
