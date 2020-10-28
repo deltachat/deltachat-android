@@ -5,7 +5,6 @@
         android:id="@+id/image_view"
         android:layout_width="match_parent"
         android:layout_height="@dimen/media_bubble_default_dimens"
-        android:scaleType="centerCrop"
         android:contentDescription="@string/image"
         android:visibility="gone"
         android:elevation="8dp"

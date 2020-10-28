@@ -9,7 +9,6 @@
         android:layout_height="match_parent"
         android:clickable="false"
         android:longClickable="false"
-        android:scaleType="centerCrop"
         android:contentDescription="@string/image"
         app:thumbnail_radius="1dp" />
 
