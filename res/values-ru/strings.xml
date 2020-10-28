@@ -35,6 +35,7 @@
     <string name="save">Сохранить</string>
     <string name="chat">Чат</string>
     <string name="media">Медиафайлы</string>
+    <string name="profile">Профиль</string>
     <string name="main_menu">Главное меню</string>
     <string name="start_chat">Начать чат</string>
     <string name="show_password">Показать пароль</string>
@@ -328,6 +329,7 @@
     <string name="chat_no_contact_requests">Нет запросов контактов.\n\nЕсли Вы хотите, чтобы обычная почта появлялась здесь как запросы контактов, вы можете изменить соответствующий параметр в настройках приложения.</string>
     <string name="retry_send">Повторить отправку сообщения</string>
     <string name="send_failed">Не удалось отправить сообщение</string>
+    <string name="messaging_disabled_deaddrop">Нажмите на сообщение чтобы принять или отклонить запрос контакта</string>
     <string name="attachment_failed_to_load">Не удалось загрузить вложение</string>
 
 
@@ -453,6 +455,7 @@
     <string name="pref_notifications">Уведомления</string>
     <string name="pref_notifications_show">Показывать</string>
     <string name="pref_notifications_priority">Приоритет</string>
+    <string name="pref_show_notification_content">Показывать содержимое сообщений в уведомлениях.</string>
     <string name="pref_led_color">Цвет светодиода </string>
     <string name="pref_sound">Звук</string>
     <string name="pref_silent">Беззвучный</string>
@@ -594,6 +597,10 @@
     <string name="systemmsg_ephemeral_timer_week">Таймер исчезающих сообщений установлен на 1 неделю.</string>
     <string name="systemmsg_ephemeral_timer_four_weeks">Таймер исчезающих сообщений установлен на 4 недели.</string>
 
+    <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
+    <string name="systemmsg_chat_protection_disabled">Защита чата отключена.</string>
+    <string name="systemmsg_chat_protection_enabled">Защита чата включена</string>
+
     <!-- screen lock -->
     <string name="screenlock_title">Блокировка экрана</string>
     <string name="screenlock_explain">Блокировка доступа с помощью блокировки экрана Android или отпечатков пальцев; чтобы избежать появления предыдущего контента, пожалуйста, включите \"Безопасность экрана\"</string>
@@ -610,6 +617,7 @@
     <string name="load_qr_code_as_image">Загрузить QR-код как изображение</string>
     <string name="qrscan_title">Сканировать QR код</string>
     <string name="qrscan_hint">Наведите камеру на QR код</string>
+    <string name="qrscan_failed">QR-код не может быть декодирован</string>
     <string name="qrscan_ask_join_group">Присоединиться к группе «%1$s»?</string>
     <string name="qrscan_fingerprint_mismatch">Отсканированный отпечаток не совпадает с последним известным отпечатком %1$s</string>
     <string name="qrscan_no_addr_found">QR код содержит отпечаток ключа, но не содержит адрес электронной почты.\n\nДля проверки подлинности с использованием альтернативного канала связи следует сначала установить с получателем защищенное соединение.</string>
@@ -664,6 +672,8 @@
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Зашифрованное сообщение</string>
 
+    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
+    <string name="about_offical_app_desktop">Это официальное приложение Delta Chat Desktop.</string>
     <string name="welcome_desktop">Добро пожаловать в Delta Chat</string>
     <string name="login_known_accounts_title_desktop">Известные аккаунты</string>
     <string name="global_menu_preferences_language_desktop">Выбор языка</string>
