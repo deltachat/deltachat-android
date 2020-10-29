@@ -37,7 +37,7 @@ podman build . -t deltachat-android
 
 Then, run the image:
 ```
-podman run -it -v $(pwd):/home/app -w /home/app localhost/deltachat-android
+podman run -it --name deltachat -v $(pwd):/home/app -w /home/app localhost/deltachat-android
 ```
 
 Within the container, install toolchains and build the native library:
@@ -58,9 +58,15 @@ If you don't want to use Docker or Podman, proceed to the next section.
 To setup build environment manually, you can read the `Dockerfile`
 and mimic what it does.
 
-First, you need to setup Android SDK and Android NDK.  Then, open
-`ndk-make.sh` in an editor and follow the instructions to set up a rust
-build environment.  This is needed only once.
+First, you need to setup Android SDK and Android NDK.  Configure
+`ANDROID_NDK_ROOT` environment variable to point to the Android NDK
+installation directory.  Currently ndk20b is the minimum required version.
+Newer versions will likely work, however, are not tested and not used
+in official releases, in general, changes on the ndk-version should be
+done with care.
+
+Then, install Rust using [rustup](https://rustup.rs/). Install Rust
+toolchains for cross-compilation by executing `scripts/install-toolchains.sh`.
 
 After that, call `./ndk-make.sh` in the root directory to build core-rust.
 Afterwards run the project in Android Studio. The project requires API 25.
