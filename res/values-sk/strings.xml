@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- common strings without special context -->
+    <string name="app_name">Delta Chat</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Zrušiť</string>
+    <string name="yes">Áno</string>
+    <string name="no">Nie</string>
+    <string name="select">Vybrať</string>
+    <string name="on">Zapnúť</string>
+    <string name="off">Vypnúť</string>
+    <string name="def">Štandardné nastavenie</string>
+    <string name="default_value">Štandardné nastavenie (%1$s)</string>
+    <string name="default_value_as_above">Štandardné nastavenie (rovnaké ako vyššie)</string>
+    <string name="custom">Vlastný</string>
+    <string name="none">Nie je</string>
+    <string name="automatic">Automatické</string>
+    <string name="strict">Striktný</string>
+    <string name="open">Otvoriť</string>
+    <string name="open_attachment">Otvoriť prílohu</string>
+    <string name="join">Spojiť</string>
+    <string name="rejoin">Znovu spojiť</string>
+    <string name="delete">Zmazať</string>
+    <string name="info">Informácia</string>
+    <string name="update">Aktualizovať</string>
+    <string name="emoji">Smajlíci</string>
+    <string name="attachment">Príloha</string>
+    <string name="back">Späť</string>
+    <string name="close">Zatvoriť</string>
+    <string name="forward">Vpred</string>
+    <string name="archive">Archivovať</string>
+    <string name="unarchive">Zrušiť archiváciu</string>
+    <string name="mute">Stíšiť</string>
+    <string name="ephemeral_messages">Miznúce správy</string>
+    <string name="ephemeral_messages_hint">Tieto nastavenia platia pre všetkých účastníkov používajúcich Delta Chat. Môžu však kopírovať, ukladať a preposielať správy alebo používať iných e-mailových klientov.</string>
+    <string name="save">Uložiť</string>
+    <string name="chat">Konverzácia</string>
+    <string name="media">Médiá</string>
+    <string name="profile">Profil</string>
+    <string name="main_menu">Hlavné menu</string>
+    <string name="start_chat">Začať konverzáciu</string>
+    <string name="show_password">Ukáž heslo</string>
+    <string name="hide_password">Skryť heslo</string>
+    <string name="not_now">Teraz nie</string>
+    <string name="never">Nikdy</string>
+    <string name="one_moment">Moment...</string>
+    <string name="done">Hotovo</string>
+    <string name="undo">Vrátenie späť</string>
+    <string name="offline">Offline</string>
+    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
+    <string name="next">Ďalšie</string>
+    <string name="error">Chyba</string>
+    <string name="error_x">Chyba: %1$s</string>
+    <string name="error_no_network">Sieť nedostupná</string>
+    <string name="no_app_to_handle_data">Nemôžem nájsť aplikáciu na spracovanie tohto typu údajov.</string>
+    <string name="no_browser_installed">Nie je nainštalovaný žiadny prehliadač.</string>
+    <string name="file_not_found">Nemohol nájsť %1$s.</string>
+    <string name="copied_to_clipboard">Skopírované do schránky.</string>
+    <string name="contacts_headline">Kontakty</string>
+    <string name="email_address">Emailová adresa</string>
+    <string name="bad_email_address">Zlá e-mailová adresa</string>
+    <string name="password">Heslo</string>
+    <string name="existing_password">Existujúce heslo</string>
+    <string name="now">Teraz</string>
+    <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
+    <string name="danger">Nebezpečenstvo</string>
+    <string name="today">Dnes</string>
+    <string name="yesterday">Včera</string>
+    <string name="this_week">Tento týždeň</string>
+    <string name="this_month">Tento mesiac</string>
+    <string name="last_week">Minulý týždeň</string>
+    <string name="last_month">Minulý mesiac</string>
+    <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
+    <plurals name="n_minutes">
+        <item quantity="one">%d minúta</item>
+        <item quantity="few">%d minút</item>
+        <item quantity="many">%d minút</item>
+        <item quantity="other">%d minúty</item>
+    </plurals>
+    <!-- Translators: show beside messages that are "N hours old". prefer a short string, prefer abbreviations if they're well-known -->
+    <plurals name="n_hours">
+        <item quantity="one">%d hour</item>
+        <item quantity="few">%d hours</item>
+        <item quantity="many">%d hours</item>
+        <item quantity="other">%d hours</item>
+    </plurals>
+    <plurals name="n_chats">
+        <item quantity="one">%d chat</item>
+        <item quantity="few">%d chatov</item>
+        <item quantity="many">%d chatov</item>
+        <item quantity="other">%d chaty</item>
+    </plurals>
+    <plurals name="n_contacts">
+        <item quantity="one">%d contact</item>
+        <item quantity="few">%d contact</item>
+        <item quantity="many">%d contact</item>
+        <item quantity="other">%d contacts</item>
+    </plurals>
+    <plurals name="n_messages">
+        <item quantity="one">%d message</item>
+        <item quantity="few">%d messages</item>
+        <item quantity="many">%d messages</item>
+        <item quantity="other">%d messages</item>
+    </plurals>
+    <plurals name="n_members">
+        <item quantity="one">%d member</item>
+        <item quantity="few">%d members</item>
+        <item quantity="many">%d members</item>
+        <item quantity="other">%d members</item>
+    </plurals>
+
+    <string name="self">Ja</string>
+    <string name="draft">Návrh</string>
+    <string name="image">Obrázok</string>
+    <!-- Translators: Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
+    <string name="reply_noun">Odpovedať</string>
+    <string name="gif">Gif</string>
+    <string name="images">Snímky</string>
+    <string name="audio">Zvuk</string>
+    <string name="voice_message">Hlasová správa</string>
+    <string name="forwarded_message">Preposlaná správa</string>
+    <string name="video">Video</string>
+    <string name="documents">Dokumenty</string>
+    <string name="contact">Kontakt</string>
+    <string name="verified_contact">Overený kontakt</string>
+    <string name="camera">Fotoaparát</string>
+    <string name="location">Poloha</string>
+    <string name="gallery">Galéria</string>
+    <string name="images_and_videos">Obrázky a videá</string>
+    <string name="file">Súbor</string>
+    <string name="files">Súbory</string>
+    <string name="unknown">Neznáme</string>
+
+    <string name="green">Zelená</string>
+    <string name="red">Červená</string>
+    <string name="blue">Modrá</string>
+    <string name="orange">Oranžová</string>
+    <string name="cyan">Tyrkysový</string>
+    <string name="purple">Fialová</string>
+    <string name="magenta">Purpurová</string>
+    <string name="white">Biela</string>
+
+    <string name="zoom">Zväčšiť</string>
+    <string name="extra_small">Extra malý</string>
+    <string name="small">Malý</string>
+    <string name="normal">Normálny</string>
+    <string name="large">Veľký</string>
+    <string name="extra_large">Extra veľké</string>
+
+    <string name="fast">Rýchlo</string>
+    <string name="slow">Pomaly</string>
+
+    <string name="message_delivered">Správa doručená</string>
+    <string name="message_read">Správa prečítaná</string>
+
+
+    <!-- menu labels (or icon, buttons...) -->
+    <string name="menu_new_contact">Nový kontakt</string>
+    <string name="menu_new_chat">Nový chat</string>
+    <string name="menu_new_group">Nová skupina</string>
+    <string name="menu_new_verified_group">Nová overená skupina</string>
+    <string name="menu_send">Poslať</string>
+    <string name="menu_toggle_keyboard">Prepnúť klávesnicu emodži</string>
+    <string name="menu_edit_group">Upraviť skupinu</string>
+    <string name="menu_group_name_and_image">Názov a obrázok skupiny</string>
+    <string name="menu_show_map">Zobraziť mapu</string>
+    <string name="menu_show_global_map">Zobraziť všetky polohy</string>
+    <string name="menu_archive_chat">Archivovať čet</string>
+    <string name="menu_unarchive_chat">Zrušiť archiváciu četu</string>
+    <string name="menu_add_attachment">Pridať prílohu</string>
+    <string name="menu_leave_group">Opustit skupinu</string>
+    <string name="menu_delete_chat">Odstrániť čet</string>
+    <string name="ask_delete_named_chat">Naozaj chcete položku odstrániť \"%1$s\"?</string>
+    <string name="menu_delete_messages">Odstrániť správy</string>
+    <string name="menu_delete_image">Odstrániť obrázok</string>
+    <string name="delete_contact">Odstrániť kontakt</string>
+    <string name="menu_delete_locations">Odstrániť všetky miesta?</string>
+    <string name="menu_delete_location">Odstrániť toto miesto?</string>
+    <string name="menu_message_details">Podrobnosti správy</string>
+    <string name="menu_copy_to_clipboard">Skopírovať do schránky</string>
+    <string name="menu_copy_selection_to_clipboard">Kopírovať výber</string>
+    <string name="menu_copy_link_to_clipboard">Skopírovať odkaz</string>
+    <string name="paste_from_clipboard">Prilepiť zo schránky</string>
+    <string name="menu_forward">Preposlať správu</string>
+    <string name="menu_resend">Znova odoslať správu</string>
+    <string name="menu_reply">Odpovedať na správu</string>
+    <string name="menu_mute">Ignorovať upozornenia</string>
+    <string name="menu_unmute">Zapnúť zvuk</string>
+    <string name="menu_export_attachment">Exportovať prílohu</string>
+    <string name="menu_all_media">Všetky médiá</string>
+    <string name="menu_share">Zdieľam</string>
+    <string name="menu_block_contact">Blokovať kontakt</string>
+    <string name="menu_unblock_contact">Odblokovať kontakt</string>
+    <string name="menu_play">Hrať</string>
+    <string name="menu_pause">Stopnúť</string>
+    <string name="menu_scroll_to_bottom">Posuňte sa nadol</string>
+    <string name="menu_scroll_to_top">Prejdite hore</string>
+    <string name="menu_help">Pomoc</string>
+    <string name="menu_select_all">Vybrať všetko</string>
+    <string name="menu_expand">Rozbaliť</string>
+    <string name="menu_edit_name">Upraviť meno</string>
+    <string name="menu_settings">Nastavenie</string>
+    <string name="menu_advanced">Pokročilé</string>
+    <string name="menu_deaddrop">Žiadosti o kontakt</string>
+    <string name="menu_deaddrop_subtitle">Stlačením správy začnete chatovať</string>
+    <string name="menu_view_profile">Prezrieť profil</string>
+    <string name="menu_zoom_in">Priblížiť</string>
+    <string name="menu_zoom_out">Oddialiť</string>
+    <string name="menu_save_log">Uložiť záznam</string>
+    <string name="title_share_location">Zdieľať polohu so všetkými členmi skupiny</string>
+    <string name="device_talk">Správy zariadenia</string>
+    <string name="device_talk_subtitle">Miestne generované správy</string>
+    <string name="device_talk_explain">Správy v tomto rozhovore sú generované lokálne vašou aplikáciou Delta Chat. Jeho tvorcovia ho používajú na informovanie o aktualizáciách aplikácií a problémoch počas používania.</string>
+    <string name="device_talk_welcome_message">Vitajte na chatu Delta! - Delta Chat vyzerá a vyzerá ako iné populárne aplikácie pre komunikáciu, nezahŕňa však centralizované riadenie, sledovanie ani predaj vašich priateľov, kolegov alebo rodiny veľkým organizáciám.\n\nTechnicky je Delta Chat e-mailová aplikácia s moderným rozhraním pre chat. . Ak budete chcieť, pošlite e-mail v novom šate 👻\n\nPoužite program Delta Chat s kýmkoľvek z miliárd ľudí: stačí použiť jeho e-mailovú adresu. Príjemcovia nemusia inštalovať Delta Chat, navštevovať webové stránky alebo sa kdekoľvek registrovať - samozrejme, ak sa im páči, môžete ich odkázať na 👉 https://get.delta.chat</string>
+    <string name="edit_contact">Upraviť kontakt</string>
+    <!-- Translators: "Pin" here is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
+    <string name="pin_chat">Pripnúť čet</string>
+    <!-- Translators: this is the opposite of "Pin chat", removing the sticky-state from a chat. -->
+    <string name="unpin_chat">Odopnúť rozhovor</string>
+    <!-- Translators: this is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
+    <string name="pin">Pripnúť</string>
+    <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
+    <string name="unpin">Uvoľniť</string>
+    <string name="ConversationFragment_quoted_message_not_found">Pôvodná správa sa nenašla</string>
+    <string name="reply_privately">Odpovedajte súkromne</string>
+
+    <string name="mute_for_one_hour">Stíšiť 1 hodinu</string>
+    <string name="mute_for_two_hours">Stíšiť 2 hodiny</string>
+    <string name="mute_for_one_day">Stíšiť 1 deň</string>
+    <string name="mute_for_seven_days">Stíšiť 7 dní</string>
+    <string name="mute_forever">Stlmiť navždy</string>
+
+    <string name="share_location_once">raz</string>
+    <string name="share_location_for_5_minutes">po dobu 5 minút</string>
+    <string name="share_location_for_30_minutes">po dobu 30 minút</string>
+    <string name="share_location_for_one_hour">po dobu 1 hodiny</string>
+    <string name="share_location_for_two_hours">po dobu 2 hodín</string>
+    <string name="share_location_for_six_hours">po dobu 6 hodín</string>
+
+    <plurals name="ask_send_following_n_files_to">
+        <item quantity="one">Odoslať nasledujúci súbor %s používateľovi?</item>
+        <item quantity="few">Odoslať nasledujúce %d súbory %s používateľovi?</item>
+        <item quantity="many">Odoslať nasledujúce %d súbory %s používateľovi?</item>
+        <item quantity="other">Odoslať nasledujúce %d súbory %s používateľovi?</item>
+    </plurals>
+    <string name="file_saved_to">Súbor bol uložený do priečinka%1$s</string>
+
+    <string name="videochat">Video chat</string>
+    <string name="videochat_invite_user_to_videochat">Pozvať %1$s na videorozhovor?</string>
+    <string name="videochat_invite_user_hint">Vyžaduje to kompatibilnú aplikáciu alebo kompatibilný prehliadač na oboch stranách.</string>
+    <string name="videochat_contact_invited_hint">%1$s pozvaný na videorozhovor.</string>
+    <string name="videochat_you_invited_hint">Pozvali ste na videorozhovor.</string>
+    <string name="videochat_will_open_in_your_browser">Tento videorozhovor sa otvorí vo vašom prehliadači.</string>
+    <string name="videochat_tap_to_join">Klepnutím sa pripojíte</string>
+    <string name="videochat_tap_to_open">Otvoríte klepnutím</string>
+    <string name="videochat_instance">Inštancia videorozhovoru</string>
+    <string name="videochat_instance_placeholder">Vaša inštancia videorozhovoru</string>
+    <string name="videochat_instance_explain">Ak je definovaná inštancia videorozhovoru, môžete začať videorozhovor z každého individuálneho rozhovoru. Videochaty vyžadujú na oboch stranách kompatibilnú aplikáciu alebo kompatibilný prehliadač. \n\nPríklady: https://meet.jit.si/$ROOM alebo basicwebrtc:https://váš-server</string>
+    <string name="videochat_instance_from_qr">Pomocou „%1$s“ pozvete ostatných na videorozhovory?\n\nPo nastavení môžete začať videorozhovor z každého individuálneho rozhovoru. Toto nahradí predchádzajúce nastavenie pre videorozhovory, ak existujú.</string>
+    <string name="videochat_invitation">Pozvánka na videorozhovor</string>
+    <string name="videochat_invitation_body">Ste pozvaní na videorozhovor, kliknutím %1$s sa pripojíte.</string>
+
+    <!-- get confirmations -->
+    <string name="ask_leave_group">Naozaj chcete opustiť túto skupinu?</string>
+    <plurals name="ask_delete_chat">
+        <item quantity="one">Odstrániť %d chat? Už sa nebude zobrazovať v zozname chatu, jeho správy zostanú na serveri.</item>
+        <item quantity="few">Odstrániť %d chaty? Už sa nebudú zobrazovať v zozname chatu, ich správy zostanú na serveri.</item>
+        <item quantity="many">Odstrániť %d chaty? Už sa nebudú zobrazovať v zozname chatu, ich správy zostanú na serveri.</item>
+        <item quantity="other">Odstrániť %d chaty? Už sa nebudú zobrazovať v zozname chatu, ich správy zostanú na serveri.</item>
+    </plurals>
+    <plurals name="ask_delete_messages">
+        <item quantity="one">Odstrániť %d správu tu a na serveri?</item>
+        <item quantity="few">Odstrániť %d správy tu a na serveri?</item>
+        <item quantity="many">Odstrániť %d správy tu a na serveri?</item>
+        <item quantity="other">Odstrániť %d správy tu a na serveri?</item>
+    </plurals>
+    <string name="ask_forward">Preposielať správy na %1$s?</string>
+    <string name="ask_forward_multiple">Preposielať správy do %1$d chatu?</string>
+    <string name="ask_export_attachment">Exportovať prílohu? Exportovanie príloh umožní prístup k nim všetkým ďalším aplikáciám na vašom zariadení.\n\nChcete pokračovať?</string>
+    <string name="ask_block_contact">Zablokovať tento kontakt? Od tohto kontaktu už nebudete dostávať správy.</string>
+    <string name="ask_unblock_contact">Odblokovať tento kontakt? Z tohto kontaktu budete opäť môcť dostávať správy.</string>
+    <string name="ask_delete_contacts">Odstrániť kontakty?\n\nKontakty s prebiehajúcimi rozhovormi a kontakty z adresára systému nemožno natrvalo odstrániť.</string>
+    <string name="ask_delete_contact">Odstrániť kontakt %1$s?\n\nKontakty s prebiehajúcimi chatmi a kontakty z adresára systému nemožno natrvalo odstrániť.</string>
+    <string name="cannot_delete_contacts_in_use">Nie je možné odstrániť kontakty s prebiehajúcimi rozhovormi.</string>
+    </resources>
