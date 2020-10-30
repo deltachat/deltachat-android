@@ -6,7 +6,8 @@ grep --include='strings.xml' -r '\% ' .
 grep --include='strings.xml' -r '\$ ' .
 grep --include='strings.xml' -r ' \$' .
 
-# a space after a backslash is typically unwanted, sth. as `\ n`.
-# (this check disallows using the backslash as such alone,
-# however, this is currently no issue, as it is just not used this way anywhere)
-grep --include='strings.xml' -r '\\ ' .
+# check for broken usage of escape sequences:
+# - alert on `\ n`, `\ N`, `\n\Another paragraph` and so on
+# - allow only `\n`, `\"`, `\'` and `\’`
+#   (`’` might not be escaped, but it is done often eg. in "sq", so we allow that for now)
+grep --include='strings.xml' -r "\\\\[^n\"'’]" .

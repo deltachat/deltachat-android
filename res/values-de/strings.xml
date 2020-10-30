@@ -579,7 +579,7 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="systemmsg_member_removed">%1$s entfernt.</string>
     <string name="systemmsg_group_left">Gruppe verlassen.</string>
     <string name="systemmsg_read_receipt_subject">Empfangsbestätigung</string>
-    <string name="systemmsg_read_receipt_body">Ihre Nachricht \"%1$s\" wurde auf dem Empfangsgerät angezeigt.\n\Das ist keine Garantie dafür, dass sie auch gelesen wurde.</string>
+    <string name="systemmsg_read_receipt_body">Ihre Nachricht \"%1$s\" wurde auf dem Empfangsgerät angezeigt.\n\nDas ist keine Garantie dafür, dass sie auch gelesen wurde.</string>
     <string name="systemmsg_cannot_decrypt">Diese Nachricht kann nicht entschlüsselt werden.\n\n• Es könnte bereits helfen, einfach auf diese Nachricht zu antworten und die/den AbsenderIn zu bitten, die Nachricht erneut zu senden.\n\n• Falls Delta Chat oder ein anderes E-Mail-Programm auf diesem oder einem anderen Gerät neu installiert wurde, kann von dort aus eine Autocrypt Setup-Nachricht gesendet werden.</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). -->
     <string name="systemmsg_action_by_me">%1$s von mir.</string>
