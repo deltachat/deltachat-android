@@ -216,14 +216,14 @@
     <!-- get confirmations -->
     <string name="ask_leave_group">Voulez-vous vraiment quitter ce groupe ?</string>
     <plurals name="ask_delete_chat">
-        <item quantity="one">Effacer %d tchats \?</item>
-        <item quantity="other">Effacer %d discussions \? Elles ne seront plus montrées dans la liste de tchats, mais leurs messages resteront sur le serveur.</item>
+        <item quantity="one">Effacer %d tchats ?</item>
+        <item quantity="other">Effacer %d discussions ? Elles ne seront plus montrées dans la liste de tchats, mais leurs messages resteront sur le serveur.</item>
     </plurals>
     <plurals name="ask_delete_messages">
         <item quantity="one">Effacer %d messages ici et sur le serveur ?</item>
         <item quantity="other">Effacer %dmessages ici et sur le serveur ?</item>
     </plurals>
-    <string name="ask_forward">Faire suivre les messages à %1$s \?</string>
+    <string name="ask_forward">Faire suivre les messages à %1$s ?</string>
     <string name="ask_export_attachment">Exporter une pièce jointe ? L\'exportation des pièces jointes permettra à toute autre application sur votre appareil d\'y accéder. Continuer ?</string>
     <string name="ask_block_contact">Bloquer ce contact ? Vous ne recevrez plus ses messages.</string>
     <string name="ask_unblock_contact">Débloquer ce contact ? Vous recevrez à nouveau ses messages.</string>
