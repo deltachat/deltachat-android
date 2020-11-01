@@ -31,6 +31,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.appcompat.widget.TooltipCompat;
 
 import com.b44t.messenger.DcChat;
+import com.b44t.messenger.DcContext;
+import com.b44t.messenger.DcMsg;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
@@ -87,9 +89,10 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   protected void onCreate(Bundle icicle, boolean ready) {
     // update messages - for new messages, do not reuse or modify strings but create new ones.
     // it is not needed to keep all past update messages, however, when deleted, also the strings should be deleted.
-    //DcMsg msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
-    //msg.setText(getString(R.string.update_1_10_android) + "\n\n" + "https://delta.chat/en/2020-06-24-releases");
-    //dcContext.addDeviceMsg("update_1_10b_android", msg); // addDeviceMessage() makes sure, messages with the same id are not added twice
+    DcContext dcContext = DcHelper.getContext(this);
+    DcMsg msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
+    msg.setText(getString(R.string.update_1_14_android) + " https://delta.chat/en/download#changelogs");
+    dcContext.addDeviceMsg("update_1_14j_android", msg); // addDeviceMessage() makes sure, messages with the same id are not added twice
 
     // create view
     setContentView(R.layout.conversation_list_activity);
