@@ -10,6 +10,8 @@
     <string name="on">Nyala</string>
     <string name="off">Mati</string>
     <string name="def">Default</string>
+    <string name="default_value">Default (%1$s)</string>
+    <string name="default_value_as_above">Default (sama seperti di atas)</string>
     <string name="custom">Menurut pesanan</string>
     <string name="none">Tidak ada</string>
     <string name="automatic">Otomatis</string>
@@ -33,6 +35,7 @@
     <string name="save">Simpan</string>
     <string name="chat">Chat</string>
     <string name="media">Media</string>
+    <string name="profile">Profil</string>
     <string name="main_menu">Menu utama</string>
     <string name="start_chat">Mulai obrolan</string>
     <string name="show_password">Tunjukkan kata kunci</string>
@@ -148,12 +151,15 @@
     <string name="menu_add_attachment">Tambah lampiran</string>
     <string name="menu_leave_group">Tinggalkan grup</string>
     <string name="menu_delete_chat">Hapus obrolan</string>
+    <string name="ask_delete_named_chat">Apakah anda yakin ingin menghapus \"%1$s\"?</string>
     <string name="menu_delete_messages">Hapus pesan</string>
     <string name="menu_delete_image">Hapus gambar</string>
+    <string name="delete_contact">Hapus kontak</string>
     <string name="menu_delete_locations">Hapus semua lokasi?</string>
     <string name="menu_delete_location">Hapus lokasi ini?</string>
     <string name="menu_message_details">Detail pesan</string>
     <string name="menu_copy_to_clipboard">Kopi ke papan klip</string>
+    <string name="menu_copy_selection_to_clipboard">Salin yang dipilih</string>
     <string name="menu_copy_link_to_clipboard">Salin pranala</string>
     <string name="paste_from_clipboard">Tempelkan dari papan klip</string>
     <string name="menu_forward">Teruskan pesan</string>
@@ -196,6 +202,7 @@
     <string name="pin">Sematkan</string>
     <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
     <string name="unpin">Lepas pin</string>
+    <string name="ConversationFragment_quoted_message_not_found">Pesan orisinil tidak ditemukan</string>
     <string name="reply_privately">Balas secara privat</string>
 
     <string name="mute_for_one_hour">Diamkan untuk 1 jam</string>
@@ -214,6 +221,7 @@
     <string name="file_saved_to">Berkas disimpan ke \"%1$s\".</string>
 
     <string name="videochat">Obrolan video</string>
+    <string name="videochat_invite_user_to_videochat">Undang %1$s ke obrolan video?</string>
     <string name="videochat_contact_invited_hint">%1$s diundang ke obrolan video.</string>
     <string name="videochat_you_invited_hint">Anda diundang ke obrolan video.</string>
     <string name="videochat_tap_to_join">Ketuk untuk bergabung</string>

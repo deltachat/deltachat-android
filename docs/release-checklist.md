@@ -3,17 +3,17 @@
 on the command-line:
 
 1. update core rust submodule, if needed:
-   $ ./tools/update-core.sh
+   $ ./scripts/update-core.sh
    depending on how much you trust in rust, you might want to do a
-   ./tools/clean-core.sh before building
+   ./scripts/clean-core.sh before building
 
 2. $ ./ndk-make.sh
 
 this will take some time - meanwhile we're doing some housekeeping:
 
 3. update translations and local help:
-   $ ./tools/tx-pull-translations.sh
-   $ cd ../deltachat-pages; ./tools/create-local-help.py; cd ../deltachat-android
+   $ ./scripts/tx-pull-translations.sh
+   $ cd ../deltachat-pages; ./scripts/create-local-help.py; cd ../deltachat-android
 
 4. add a device message to ConversationListActivity::onCreate()
    and update CHANGELOG.md
@@ -39,7 +39,7 @@ on success, the generated APK is at
 
 # Upload APK to get.delta.chat
 
-7. $ ./tools/upload-release.sh VERSION
+7. $ ./scripts/upload-release.sh VERSION
 
 8. a) Test the APK yourself.
       The "Testing checklist" gives some hints.

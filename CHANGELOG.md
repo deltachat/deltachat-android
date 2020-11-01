@@ -1,5 +1,46 @@
 # Delta Chat Android Changelog
 
+## v1.14.0
+2020-11
+
+* new swipe-to-reply option
+* disappearing messages: select for any chat the lifetime of the messages
+* chat opens at the position of the first unseen message
+* add known contacts from the IMAP-server to the local addressbook on configure
+* direct forwarding to "saved messags" - save one tap and stay in context :)
+* long tap in contact-list allows opening "profile" directly
+* allow forwarding to multiple archived chats
+* enable encryption in groups if preferred by the majority of recipients
+  (previously, encryption was only enabled if everyone preferred i)
+* add explicit switches for handling background connections
+  at "Settings / Notifications"
+* ask directly after configure for the permission to run in background
+  to get notifications
+* speed up chatlist-view
+* speed up configuration
+* try multiple servers from autoconfig
+* prefix log by a hint about sensitive information
+* check system clock and app date for common issues
+* prepare to remove screen lock as it adds only few protection
+  while having issues on its own
+* improve multi-device notification handling
+* improve detection and handling of video and audio messages
+* hide unused functions in "Saved messages" and "Device chat" profiles
+* remove unneeded information when copying a single message to the clipboard
+* bypass some limits for maximum number of recipients
+* fix launch if there is an ongoing process
+* fix: update relative times in chatlist once a minute
+* fix: hide keyboard when leaving edit-name
+* fix: connect immediately to an account scanned from a qr-code
+* fix errors that are not shown during configuring
+* fix keyboard position on Android Q
+* fix mistakenly unarchived chats
+* fix: tons of improvements affecting sending and receiving messages, see
+  https://github.com/deltachat/deltachat-core-rust/blob/master/CHANGELOG.md
+* update provider database and dependencies
+* add Slovak translation, update other translations
+
+
 ## v1.12.5
 2020-08
 
