@@ -347,6 +347,16 @@ public class ConversationFragment extends Fragment
             boolean showReplyPrivately = chat.isGroup() && !messageRecord.isOutgoing() && canReply;
             menu.findItem(R.id.menu_context_reply_privately).setVisible(showReplyPrivately);
         }
+
+        // if one of the selected item cannot be forwarded, disable forwarding.
+        boolean canForward = true;
+        for (DcMsg messageRecord : messageRecords) {
+            if (messageRecord.isInfo()) {
+                canForward = false;
+                break;
+            }
+        }
+        menu.findItem(R.id.menu_context_forward).setVisible(canForward);
     }
 
     static boolean canReplyToMsg(DcMsg dcMsg) {
