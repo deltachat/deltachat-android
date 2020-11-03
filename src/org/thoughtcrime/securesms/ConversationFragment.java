@@ -347,6 +347,12 @@ public class ConversationFragment extends Fragment
             boolean showReplyPrivately = chat.isGroup() && !messageRecord.isOutgoing() && canReply;
             menu.findItem(R.id.menu_context_reply_privately).setVisible(showReplyPrivately);
         }
+
+        boolean anySystem = false;
+        for (DcMsg msg : messageRecords) {
+            if (msg.isInfo()) anySystem = true;
+        }
+        menu.findItem(R.id.menu_context_forward).setVisible(!anySystem);
     }
 
     static boolean canReplyToMsg(DcMsg dcMsg) {
