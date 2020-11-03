@@ -13,16 +13,20 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
         android:animateLayoutChanges="true">
 
-        <LinearLayout
+        <com.google.android.material.chip.ChipGroup
             android:id="@+id/scribble_toolbar"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginRight="10dp"
             android:orientation="horizontal"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            app:layout_constraintEnd_toStartOf="@id/scribble_save_confirm_barrier"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
@@ -105,30 +109,35 @@
                 android:padding="6dp"
                 android:src="@drawable/ic_rotate_32" />
 
+        </com.google.android.material.chip.ChipGroup>
 
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                />
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/scribble_save_confirm_barrier"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:barrierDirection="start"
+            app:constraint_referenced_ids="scribble_confirm_button,scribble_save_button"
+            tools:layout_editor_absoluteY="21dp"/>
 
-            <ImageView
-                android:id="@+id/scribble_confirm_button"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:padding="6dp"
-                android:src="@drawable/ic_check_white_24dp" />
+        <ImageView
+            android:id="@+id/scribble_confirm_button"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="6dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/ic_check_white_24dp" />
 
-            <ImageView
-                android:id="@+id/scribble_save_button"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:src="@drawable/ic_check_white_24dp"
-                android:padding="6dp"
-                android:background="?attr/selectableItemBackgroundBorderless"/>
-
-        </LinearLayout>
+        <ImageView
+            android:id="@+id/scribble_save_button"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_check_white_24dp"
+            android:padding="6dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:background="?attr/selectableItemBackgroundBorderless"/>
 
         <org.thoughtcrime.securesms.scribbles.widget.VerticalSlideColorPicker
             android:id="@+id/scribble_color_picker"
