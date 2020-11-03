@@ -26,7 +26,8 @@ ENV PATH ${PATH}:/android-sdk/tools/bin
 # Install NDK manually. Other SDK parts are installed automatically by gradle.
 RUN sdkmanager --sdk_root=${ANDROID_SDK_ROOT} ndk-bundle
 
-ENV PATH ${PATH}:/android-sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/bin/:/android-sdk/ndk-bundle/
+ENV ANDROID_NDK_ROOT ${ANDROID_SDK_ROOT}/ndk-bundle
+ENV PATH ${PATH}:${ANDROID_NDK_ROOT}/toolchains/llvm/prebuilt/linux-x86_64/bin/:${ANDROID_NDK_ROOT}
 
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain none
 ENV PATH ${PATH}:/root/.cargo/bin
