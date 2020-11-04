@@ -11,6 +11,7 @@
     <string name="off">Выкл.</string>
     <string name="def">По умолчанию</string>
     <string name="default_value">По умолчанию (%1$s)</string>
+    <string name="default_value_as_above">По умолчанию (как указано выше)</string>
     <string name="custom">Персональная настройка</string>
     <string name="none">Не задано</string>
     <string name="automatic">Автоматически</string>
@@ -45,6 +46,7 @@
     <string name="one_moment">Один момент…</string>
     <string name="done">Выполнено</string>
     <string name="undo">Отмена</string>
+    <string name="offline">Не в сети</string>
     <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
     <string name="next">Дальше</string>
     <string name="error">Ошибка</string>
@@ -139,6 +141,7 @@
     <string name="white">Белый</string>
 
     <string name="zoom">Масштаб</string>
+    <string name="extra_small">Очень маленький</string>
     <string name="small">Маленький</string>
     <string name="normal">Обычный</string>
     <string name="large">Большой</string>
@@ -167,6 +170,7 @@
     <string name="menu_add_attachment">Прикрепить вложение</string>
     <string name="menu_leave_group">Покинуть группу</string>
     <string name="menu_delete_chat">Удалить чат</string>
+    <string name="ask_delete_named_chat">Вы уверены, что хотите удалить \"%1$s\"?</string>
     <string name="menu_delete_messages">Удалить сообщения</string>
     <string name="menu_delete_image">Удалить изображение</string>
     <string name="delete_contact">Удалить контакт</string>
@@ -218,6 +222,8 @@
     <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
     <string name="unpin">Открепить</string>
     <string name="ConversationFragment_quoted_message_not_found">Оригинальное сообщение не найдено</string>
+    <string name="reply_privately">Ответить лично</string>
+
     <string name="mute_for_one_hour">1 час</string>
     <string name="mute_for_two_hours">На 2 часа</string>
     <string name="mute_for_one_day">На 1 день</string>
@@ -329,7 +335,11 @@
     <string name="chat_no_contact_requests">Нет запросов контактов.\n\nЕсли Вы хотите, чтобы обычная почта появлялась здесь как запросы контактов, вы можете изменить соответствующий параметр в настройках приложения.</string>
     <string name="retry_send">Повторить отправку сообщения</string>
     <string name="send_failed">Не удалось отправить сообщение</string>
+    <!-- reasons for a disabled message composer -->
+    <string name="messaging_disabled_not_in_group">Вы не можете писать, потому что вы не в этой группе. Чтобы присоединиться, попросите другого участника.</string>
+    <string name="messaging_disabled_device_chat">Этот чат содержит локально сгенерированные сообщения. Поэтому вы не можете писать сообщения.</string>
     <string name="messaging_disabled_deaddrop">Нажмите на сообщение чтобы принять или отклонить запрос контакта</string>
+    <string name="cannot_display_unsuported_file_type">Невозможно отобразить этот тип файла: %s</string>
     <string name="attachment_failed_to_load">Не удалось загрузить вложение</string>
 
 
@@ -412,6 +422,7 @@
     <string name="add_account">Добавить аккаунт</string>
     <string name="delete_account">Удалить аккаунт</string>
     <string name="delete_account_ask">Вы уверены, что хотите удалить данные учётной записи?</string>
+    <string name="delete_account_explain_with_name">Все данные учётной записи \"%s\" на этом устройстве будут удалены, включая настройки сквозного шифрования, контакты, чаты, сообщения и мультимедиа. Это действие не может быть отменено.</string>
     <string name="switching_account">Меняем аккаунт...</string>
     <string name="try_connect_now">Попытаться подключиться сейчас</string>
     <!-- Translations: %1$s will be replaced by a more detailed error message -->
@@ -455,6 +466,7 @@
     <string name="pref_notifications">Уведомления</string>
     <string name="pref_notifications_show">Показывать</string>
     <string name="pref_notifications_priority">Приоритет</string>
+    <string name="pref_notifications_explain">Включить системные уведомления для новых сообщений</string>
     <string name="pref_show_notification_content">Показывать содержимое сообщений в уведомлениях.</string>
     <string name="pref_led_color">Цвет светодиода </string>
     <string name="pref_sound">Звук</string>
@@ -645,6 +657,9 @@
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Изменены параметры для %1$s</string>
     <string name="verified_group_explain">Проверенные группы (экспериментально) защищены от активных атак. Участники проверяются с помощью второго фактора другими участниками и сообщения всегда передаются посредством cквозного шифрования .</string>
+    <string name="copy_qr_data_success">Ссылка из QR-кода скопирована в буфер обмена</string>
+
+
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d новых сообщений в %2$d чатах.</string>
     <string name="notify_mark_read">Отметить как прочитанное</string>
@@ -674,6 +689,7 @@
 
     <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
     <string name="about_offical_app_desktop">Это официальное приложение Delta Chat Desktop.</string>
+    <string name="about_licensed_under_desktop">Это программное обеспечение находится под лицензией GNU GPL версии 3, а исходный код доступен на GitHub.</string>
     <string name="welcome_desktop">Добро пожаловать в Delta Chat</string>
     <string name="login_known_accounts_title_desktop">Известные аккаунты</string>
     <string name="global_menu_preferences_language_desktop">Выбор языка</string>
@@ -728,6 +744,7 @@
     <string name="ask_delete_chat_desktop">Действительно удалить этот чат?</string>
     <string name="email_validation_failed_desktop">Требуется адрес электронной почты.</string>
     <string name="forget_login_confirmation_desktop">Удалить эту учётную запись? Все данные будут удалены, включая настройки сквозного шифрования, контакты, чаты, сообщения и медиа файлы. Это действие нельзя будет отменить.</string>
+    <string name="account_info_hover_tooltip_desktop">Почта: %1$s\nРазмер: %2$s\nПуть: %3$s</string>
     <string name="me_desktop">мне</string>
     <string name="in_this_group_desktop">Участники группы</string>
     <string name="not_in_this_group_desktop">Потенциальные участники (не в группе)</string>
@@ -770,5 +787,6 @@
     <string name="perm_enable_bg_reminder_title">Нажмите здесь, чтобы получать сообщения, когда Delta Chat находится в фоновом режиме.</string>
     <string name="perm_enable_bg_already_done"> 
 Вы уже разрешили Delta Chat получать сообщения в фоне.\n\nЕсли сообщения всё ещё не приходят в фоне, пожалуйста, проверьте также системные настройки.</string>
+    <string name="update_1_14_android">Некоторые обновления в версии 1.14:\n\n🧹 Ответы: чтобы ответить на сообщение, просто смахните его вправо (не здесь! вы не можете отвечать тут 😛) Вы увидите цитату над полем ввода сообщения и сможете продолжить писать его как обычно.\n\n🔥 Исчезающие сообщения ­- время пришло 😀. Любой чат может быть настроен, чтобы отправляемые и приходящие сообщения удалялись через некоторое время. Просто выберите «Исчезающие сообщения» в меню чата (снова: не здесь)\n\n👆 Чаты открываются на последнем непрочитанном сообщении\n\n💾 Отправляйте сообщения в «Сохраненные сообщения» напрямую (можете попробовать здесь: долгое нажатие на сообщение, затем стрелка в правом верхнем углу)\n\n🎃 Наконец, мы напугали много багов! Они так испугались, что больше не вернутся.</string>
 
 </resources>

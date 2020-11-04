@@ -361,7 +361,7 @@
     <string name="pref_using_custom">Usage de la personnalisation : %s</string>
     <string name="pref_using_default">Utilisation par défaut : %s</string>
     <string name="pref_profile_info_headline">Informations de votre profil</string>
-    <string name="pref_profile_photo">Photo du profil</string>
+    <string name="pref_profile_photo">Photo de profil</string>
     <string name="pref_blocked_contacts">Contacts bloqués</string>
     <string name="pref_profile_photo_remove_ask">Supprimer la photo de profil ?</string>
     <string name="pref_password_and_account_settings">Mot de passe et compte</string>
@@ -640,5 +640,4 @@
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat vous laisse choisir quelles photos envoyer de votre photothèque. </string>
     <string name="perm_enable_bg_reminder_title">Touchez ici pour recevoir des messages pendant que DeltaChat est en arrière-plan.</string>
     <string name="perm_enable_bg_already_done">Vous avez déjà autorisé Delta Chat à recevoir des messages en arrière plan.\n\nSi vous ne les recevez toujours pas en arrière plan, vérifiez les paramètres de votre système.</string>
-
-</resources>
+    </resources>
