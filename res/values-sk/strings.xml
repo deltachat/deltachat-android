@@ -282,4 +282,15 @@
     <string name="ask_delete_contacts">Odstrániť kontakty?\n\nKontakty s prebiehajúcimi rozhovormi a kontakty z adresára systému nemožno natrvalo odstrániť.</string>
     <string name="ask_delete_contact">Odstrániť kontakt %1$s?\n\nKontakty s prebiehajúcimi chatmi a kontakty z adresára systému nemožno natrvalo odstrániť.</string>
     <string name="cannot_delete_contacts_in_use">Nie je možné odstrániť kontakty s prebiehajúcimi rozhovormi.</string>
+    <string name="ask_start_chat_with">Chatovať s %1$s?</string>
+    <string name="ask_delete_value">Odstrániť %s?</string>
+    <!-- Translators: %1$s will be replaces by a comma separated list of names -->
+    <string name="ask_remove_members">Odstrániť %1$s zo skupiny?</string>
+    <string name="open_url_confirmation">Chcete otvoriť tento odkaz?</string>
+
+
+    <!-- contact list -->
+    <string name="contacts_title">Kontakty</string>
+    <string name="contacts_enter_name_or_email">Zadajte meno alebo e-mailovú adresu</string>
+    <string name="contacts_type_email_above">Vyššie zadajte e-mailovú adresu</string>
     </resources>
