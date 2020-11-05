@@ -540,6 +540,10 @@
     <string name="emoji_search_results">Результаты поиска</string>
     <string name="emoji_not_found">Эмодзи не найдено</string>
     <string name="emoji_recent">Недавно использованные</string>
+    <string name="emoji_people">Люди &amp; Тело</string>
+    <string name="emoji_nature">Животные &amp; Природа</string>
+    <string name="emoji_foods">Еда &amp; Напитки</string>
+    <string name="emoji_places">Путешествия &amp; Места</string>
     <string name="emoji_objects">Объекты</string>
     <string name="emoji_symbols">Символы</string>
     <string name="emoji_flags">Флаги</string>
