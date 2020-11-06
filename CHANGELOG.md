@@ -1,5 +1,15 @@
 # Delta Chat Android Changelog
 
+## v1.14.1
+2020-11
+
+* improve display of subseconds while recording voice messages
+* disable useless but confusing forwarding of info-messages
+* fix: show image editor "Done" button also on small screen
+* fix: show more characters of chat names before truncating
+* fix crash in image editor
+
+
 ## v1.14.0
 2020-11
 
