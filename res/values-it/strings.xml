@@ -772,5 +772,6 @@
     <string name="pref_reliable_service_explain">Richiede una notifica permanente</string>
     <string name="perm_enable_bg_reminder_title">Premi qui per ricevere i messaggi anche quando Delta Chat è in background.</string>
     <string name="perm_enable_bg_already_done">Hai già autorizzato Delta Chat a ricevere messaggi in background.\n\nSe i messaggi non arrivano in background controlla le impostazioni di sistema.</string>
+    <string name="update_1_14_android">Alcuni punti salienti dell\'aggiornamento 1.14:\n\n🧹 Scorri per rispondere: per rispondere a un messaggio concreto, fallo scorrere verso destra (non qui! Non puoi rispondere qui 😛) Vedrai una citazione sopra la riga di composizione e potrai continuare a scrivere  il tuo messaggio come al solito.\n\n🔥 Messaggi che scompaiono: è giunto il momento 😀. Qualsiasi chat ora può essere configurata per eliminare i messaggi inviati e ricevuti dopo un po\' di tempo. Seleziona \"Messaggi che scompaiono\" dal menu della chat (di nuovo: non qui)\n\n👆 Le chat si aprono al primo messaggio non visto\n\n💾 Inoltra direttamente e più velocemente le cose a \"Messaggi salvati\" (puoi provare qui: tocca a lungo questo messaggio e poi la freccia in alto a destra)\n\n🎃 Finalmente abbiamo di nuovo spaventato molti bug! Molti erano così spaventati che non torneranno.</string>
 
 </resources>
