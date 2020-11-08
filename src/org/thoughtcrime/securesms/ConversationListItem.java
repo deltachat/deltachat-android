@@ -139,18 +139,6 @@ public class ConversationListItem extends RelativeLayout
     int state       = dcSummary.getState();
     int unreadCount = (state==DcMsg.DC_STATE_IN_FRESH || state==DcMsg.DC_STATE_IN_NOTICED)? thread.getUnreadCount() : 0;
 
-    // if the last message is not fresh or noticed, we assume, there are no unread things
-    // and also remove notifications for the chat.
-    // this might be improved at some point in core, https://github.com/deltachat/deltachat-core-rust/issues/1974
-    // and the following call to removeNotifications() can go to DC_EVENT_MSGS_NOTICED handler.
-    // however, for now it is not that bad
-    // and ensures, things answered on device-A are no longer notified on device-B.
-    if (unreadCount==0) {
-      Util.runOnAnyBackgroundThread(() -> {
-        dcContext.notificationCenter.removeNotifications((int) chatId);
-      });
-    }
-
     if (highlightSubstring != null) {
       this.fromView.setText(getHighlightedSpan(locale, recipient.getName(), highlightSubstring));
     } else {
