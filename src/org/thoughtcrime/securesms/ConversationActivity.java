@@ -553,6 +553,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     composeText.setSelection(composeText.getText().length());
   }
 
+  public void hideSoftKeyboard() {
+    container.hideCurrentInput(composeText);
+  }
+
   //////// Event Handlers
 
   private void handleEphemeralMessages() {
