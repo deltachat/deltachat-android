@@ -1,5 +1,12 @@
 # Delta Chat Android Changelog
 
+## v1.14.3
+2020-11
+
+* add timestamps to image and video filenames
+* fix: preserve quotes in messages with attachments
+
+
 ## v1.14.2
 2020-11
 
