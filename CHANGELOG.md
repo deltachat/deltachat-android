@@ -1,5 +1,16 @@
 # Delta Chat Android Changelog
 
+## v1.14.2
+2020-11
+
+* make quote animation faster
+* fix maybe stuck notifications
+* fix: close keyboard when a quotes is opened in another chat
+* fix: do not cut the document icon in quotes
+* fix: make the the quote dissmiss button better clickable again
+* update translations
+
+
 ## v1.14.1
 2020-11
 
