@@ -50,10 +50,11 @@ on success, the generated APK is at
 
 on https://play.google.com/apps/publish/ :
 
-9. a) open "Delta Chat/Release management/App releases/Production track/Manage"
-      then "Create release/Browse files" and select APK from above
-   b) fill out "What's new in this release?" (500 characters max)
-   c) click "Save" and then "Review"
+9. a) open "Delta Chat/Release/Production"
+      then "Create new release" and upload APK from above
+   b) fill out "Release details/Release notes" (500 characters max),
+      release name should be default ("123 (1.2.3)")
+   c) click "Save" and then "Review release"
    d) rollout to 20% by default is fine
 
 

@@ -175,7 +175,7 @@ public class InputPanel extends ConstraintLayout
                                                     @Nullable AnimationCompleteListener onAnimationComplete)
   {
     ValueAnimator animator = ValueAnimator.ofInt(originalHeight, finalHeight)
-            .setDuration(300);
+            .setDuration(200);
 
     animator.addUpdateListener(animation -> {
       ViewGroup.LayoutParams params = view.getLayoutParams();

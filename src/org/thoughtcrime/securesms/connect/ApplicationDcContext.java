@@ -452,6 +452,13 @@ public class ApplicationDcContext extends DcContext {
         }
         break;
 
+      case DC_EVENT_MSGS_NOTICED:
+        notificationCenter.removeNotifications(event.getData1Int());
+        if (eventCenter != null) {
+          eventCenter.sendToObservers(event);
+        }
+        break;
+
       default: {
         if (eventCenter != null) {
           eventCenter.sendToObservers(event);

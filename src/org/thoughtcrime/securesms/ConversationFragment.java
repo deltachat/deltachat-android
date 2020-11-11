@@ -844,6 +844,7 @@ public class ConversationFragment extends Fragment
                 intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, foreignChatId);
                 int start = DcMsg.getMessagePosition(quoted, dcContext);
                 intent.putExtra(ConversationActivity.STARTING_POSITION_EXTRA, start);
+                ((ConversationActivity) getActivity()).hideSoftKeyboard();
                 if (getActivity() != null) {
                     getActivity().startActivity(intent);
                     getActivity().finish();
@@ -867,7 +868,7 @@ public class ConversationFragment extends Fragment
                 if (position != -1) {
                     scrollAndHighlight(position, smooth);
                 } else {
-                    Log.e(TAG, "msgId {} not found for scrolling");
+                    Log.e(TAG, "msgId not found for scrolling: " + quoted.getId());
                 }
             }
         }

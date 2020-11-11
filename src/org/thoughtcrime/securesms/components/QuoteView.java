@@ -3,7 +3,6 @@ package org.thoughtcrime.securesms.components;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Canvas;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
@@ -111,6 +110,11 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
       typedArray.recycle();
 
       dismissView.setVisibility(messageType == MESSAGE_TYPE_PREVIEW ? VISIBLE : GONE);
+      if (messageType == MESSAGE_TYPE_PREVIEW) {
+        bodyView.setSingleLine();
+      } else {
+        bodyView.setMaxLines(3);
+      }
 
 //      if (messageType == MESSAGE_TYPE_PREVIEW) {
 //        int radius = getResources().getDimensionPixelOffset(R.dimen.quote_corner_radius_preview);
