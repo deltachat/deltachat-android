@@ -293,4 +293,47 @@
     <string name="contacts_title">Kontakty</string>
     <string name="contacts_enter_name_or_email">Zadajte meno alebo e-mailovú adresu</string>
     <string name="contacts_type_email_above">Vyššie zadajte e-mailovú adresu</string>
+    <string name="contacts_empty_hint">Žiadne kontakty.</string>
+
+
+    <!-- chatlist and chat view -->
+    <plurals name="chat_archived">
+        <item quantity="one">%dčet bol archivovaný</item>
+        <item quantity="few">%dchaty archivované</item>
+        <item quantity="many">%dchaty archivované</item>
+        <item quantity="other">%dchaty archivované</item>
+    </plurals>
+    <plurals name="chat_unarchived">
+        <item quantity="one">%dčet bol zrušený z archívu</item>
+        <item quantity="few">%dkonverzácie boli archivované</item>
+        <item quantity="many">%dkonverzácie boli archivované</item>
+        <item quantity="other">%dkonverzácie boli archivované</item>
+    </plurals>
+    <string name="chat_archived_chats_title">Archivované rozhovory</string>
+    <string name="chat_please_enter_message">Zadajte správu.</string>
+    <string name="chat_camera_unavailable">Fotoaparát nie je k dispozícii.</string>
+    <string name="chat_unable_to_record_audio">Nie je možné zaznamenať zvuk.</string>
+    <plurals name="chat_n_new_messages">
+        <item quantity="one">%dnová správa</item>
+        <item quantity="few">%dnových správ</item>
+        <item quantity="many">%dnové správy</item>
+        <item quantity="other">%dnové správy</item>
+    </plurals>
+    <string name="chat_no_messages_hint">Pošlite správu na%1$s:\n\n • Je v poriadku, ak %2$snepoužívate program Delta Chat.\n\n• Doručenie prvej správy môže chvíľu trvať a môže byť nezašifrované.</string>
+    <string name="chat_new_group_hint">Vytvorte prvú správu a umožnite ostatným odpovedať v rámci tejto skupiny.\n\n• Je v poriadku, ak nie všetci členovia používajú Delta Chat.\n\n• Doručenie prvej správy môže chvíľu trvať.</string>
+    <string name="chat_record_slide_to_cancel">Posunutím akciu zrušíte</string>
+    <string name="chat_record_explain">Klepnutím a podržaním nahráte hlasovú správu, uvoľnením ju odošlete</string>
+    <string name="chat_no_chats_yet_title">Prázdna doručená pošta.\nStlačením tlačidla + spustíte nový chat.</string>
+    <string name="chat_no_chats_yet_hint">Môžete chatovať s ostatnými používateľmi služby Delta Chat a s ľubovoľnou e-mailovou adresou.</string>
+    <string name="chat_all_archived">Všetky chaty boli archivované.\nStlačením tlačidla „+“ začnite nový čet.</string>
+    <string name="chat_share_with_title">Zdieľať s</string>
+    <string name="chat_input_placeholder">Správa</string>
+    <string name="chat_archived_label">Archivované</string>
+    <string name="chat_no_messages">Žiadne správy.</string>
+    <string name="chat_self_talk_subtitle">Správy, ktoré som si posielal sám pre seba</string>
+    <string name="saved_messages">Uložené správy</string>
+    <string name="saved_messages_explain">• Preposielajte správy sem, aby ste k nim mali ľahký prístup\n\n• Robte si poznámky alebo hlasové poznámky\n\n• Pripojte médiá, aby ste ich uložili</string>
+    <!-- this "Saved" should match the "Saved" from "Saved messages" -->
+    <string name="saved">Uložené</string>
+    <string name="chat_contact_request">Kontaktná žiadosť</string>
     </resources>
