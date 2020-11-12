@@ -21,11 +21,6 @@ import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
-import androidx.annotation.DimenRes;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
-
 import android.graphics.Rect;
 import android.text.SpannableString;
 import android.text.Spanned;
@@ -39,6 +34,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.annotation.DimenRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
@@ -571,7 +571,10 @@ public class ConversationItem extends LinearLayout
     if (msg != null) {
       author = dcContext.getRecipient(dcContext.getContact(msg.getFromId()));
       if (msg.getType() != DcMsg.DC_MSG_TEXT) {
-        slideDeck.addSlide(MediaUtil.getSlideForMsg(context, msg));
+        Slide slide = MediaUtil.getSlideForMsg(context, msg);
+        if (slide != null) {
+          slideDeck.addSlide(slide);
+        }
       }
     }
 
