@@ -39,7 +39,7 @@
 * long tap in contact-list allows opening "profile" directly
 * allow forwarding to multiple archived chats
 * enable encryption in groups if preferred by the majority of recipients
-  (previously, encryption was only enabled if everyone preferred i)
+  (previously, encryption was only enabled if everyone preferred it)
 * add explicit switches for handling background connections
   at "Settings / Notifications"
 * ask directly after configure for the permission to run in background
