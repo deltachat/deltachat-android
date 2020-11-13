@@ -51,6 +51,7 @@ import com.b44t.messenger.DcMsg;
 
 import org.thoughtcrime.securesms.components.MediaView;
 import org.thoughtcrime.securesms.components.viewpager.ExtendedOnPageChangedListener;
+import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.database.loaders.PagingMediaLoader;
@@ -95,7 +96,7 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
 
   @Nullable
   private DcMsg     messageRecord;
-  private DcContext dcContext;
+  private ApplicationDcContext dcContext;
   private MediaItem initialMedia;
   private ViewPager mediaPager;
   private Recipient conversationRecipient;
@@ -303,6 +304,25 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
     }
   }
 
+  private void showInChat() {
+    MediaItem mediaItem = getCurrentMediaItem();
+    if (mediaItem == null || mediaItem.msgId == DcMsg.DC_MSG_NO_ID) {
+      Log.w(TAG, "mediaItem missing.");
+      return;
+    }
+
+    DcMsg dcMsg = dcContext.getMsg(mediaItem.msgId);
+    if (dcMsg.getId() == DcMsg.DC_MSG_NO_ID) {
+      Log.w(TAG, "cannot get message object.");
+      return;
+    }
+
+    Intent intent = new Intent(this, ConversationActivity.class);
+    intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, dcMsg.getChatId());
+    intent.putExtra(ConversationActivity.STARTING_POSITION_EXTRA, DcMsg.getMessagePosition(dcMsg, dcContext));
+    startActivity(intent);
+  }
+
   @SuppressLint("StaticFieldLeak")
   private void deleteMedia() {
     MediaItem mediaItem = getCurrentMediaItem();
@@ -343,6 +363,7 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
     if (!isMediaInDb()) {
       menu.findItem(R.id.media_preview__overview).setVisible(false);
       menu.findItem(R.id.delete).setVisible(false);
+      menu.findItem(R.id.show_in_chat).setVisible(false);
     }
 
     if (editAvatarChatId==0) {
@@ -361,6 +382,7 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
       case R.id.media_preview__overview: showOverview(); return true;
       case R.id.save:                    saveToDisk();   return true;
       case R.id.delete:                  deleteMedia();  return true;
+      case R.id.show_in_chat:            showInChat();   return true;
       case android.R.id.home:            finish();       return true;
     }
 
