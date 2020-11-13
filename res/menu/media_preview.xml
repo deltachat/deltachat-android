@@ -5,16 +5,15 @@
         android:title="@string/menu_group_name_and_image"
         android:icon="@drawable/ic_create_white_24dp"
         app:showAsAction="always"/>
+    <item android:id="@+id/delete"
+        android:title="@string/menu_delete_messages"
+        android:icon="@drawable/ic_delete_white_24dp"
+        app:showAsAction="always"/>
     <item android:id="@+id/save"
           android:title="@string/menu_export_attachment"
           android:icon="@drawable/ic_save_white_24dp"
-          app:showAsAction="always"/>
+          app:showAsAction="ifRoom"/>
     <item android:id="@+id/media_preview__overview"
           android:title="@string/menu_all_media"
-          android:icon="@drawable/ic_photo_library_white_24dp"
-          app:showAsAction="ifRoom"/>
-    <item android:id="@+id/delete"
-          android:title="@string/menu_delete_messages"
-          android:icon="@drawable/ic_delete_white_24dp"
-          app:showAsAction="ifRoom"/>
+          app:showAsAction="never"/>
 </menu>
