@@ -282,18 +282,6 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
     }
   }
 
-  private void forward() {
-    MediaItem mediaItem = getCurrentMediaItem();
-
-    if (mediaItem != null) {
-      Intent composeIntent = new Intent(this, ConversationListActivity.class);
-      int[] msgIds = new int[]{mediaItem.msgId};
-      setForwardingMessageIds(composeIntent, msgIds);
-      startActivity(composeIntent);
-      overridePendingTransition(R.anim.slide_from_right, R.anim.fade_scale_out);
-    }
-  }
-
   @SuppressWarnings("CodeBlock2Expr")
   @SuppressLint("InlinedApi")
   private void saveToDisk() {
@@ -355,7 +343,6 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
     if (!isMediaInDb()) {
       menu.findItem(R.id.media_preview__overview).setVisible(false);
       menu.findItem(R.id.delete).setVisible(false);
-      menu.findItem(R.id.media_preview__forward).setVisible(false);
     }
 
     if (editAvatarChatId==0) {
@@ -372,7 +359,6 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
     switch (item.getItemId()) {
       case R.id.media_preview__edit:     editAvatar();   return true;
       case R.id.media_preview__overview: showOverview(); return true;
-      case R.id.media_preview__forward:  forward();      return true;
       case R.id.save:                    saveToDisk();   return true;
       case R.id.delete:                  deleteMedia();  return true;
       case android.R.id.home:            finish();       return true;

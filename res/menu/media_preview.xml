@@ -5,10 +5,6 @@
         android:title="@string/menu_group_name_and_image"
         android:icon="@drawable/ic_create_white_24dp"
         app:showAsAction="always"/>
-    <item android:id="@+id/media_preview__forward"
-          android:title="@string/menu_forward"
-          android:icon="@drawable/ic_forward_white_24dp"
-          app:showAsAction="always"/>
     <item android:id="@+id/save"
           android:title="@string/menu_export_attachment"
           android:icon="@drawable/ic_save_white_24dp"
