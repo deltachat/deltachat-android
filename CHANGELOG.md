@@ -1,5 +1,12 @@
 # Delta Chat Android Changelog
 
+## v1.14.4
+2020-11
+
+* fix input line height when using system-emojis
+* fix crash on receiving certain messages with quotes
+
+
 ## v1.14.3
 2020-11
 
