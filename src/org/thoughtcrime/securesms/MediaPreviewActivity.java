@@ -33,6 +33,7 @@ import androidx.loader.content.Loader;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AlertDialog;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -45,7 +46,6 @@ import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
-import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMediaGalleryElement;
 import com.b44t.messenger.DcMsg;
 
@@ -69,8 +69,6 @@ import org.thoughtcrime.securesms.util.Util;
 import java.io.IOException;
 import java.util.WeakHashMap;
 
-import static org.thoughtcrime.securesms.util.RelayUtil.setForwardingMessageIds;
-
 /**
  * Activity for displaying media attachments in-app
  */
@@ -85,6 +83,7 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
   public static final String OUTGOING_EXTRA       = "outgoing";
   public static final String LEFT_IS_RECENT_EXTRA = "left_is_recent";
   public static final String DC_MSG_ID            = "dc_msg_id";
+  public static final String OPENED_FROM_PROFILE  = "opened_from_profile";
 
   /** USE ONLY IF YOU HAVE NO MESSAGE ID! */
   public static final String DATE_EXTRA = "date";
@@ -269,17 +268,22 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
 
 
   private void showOverview() {
-    if(conversationRecipient.getAddress().isDcChat()) {
+    if (getIntent().getBooleanExtra(OPENED_FROM_PROFILE, false)) {
+      finish();
+    }
+    else if(conversationRecipient.getAddress().isDcChat()) {
       Intent intent = new Intent(this, ProfileActivity.class);
       intent.putExtra(ProfileActivity.CHAT_ID_EXTRA, conversationRecipient.getAddress().getDcChatId());
       intent.putExtra(ProfileActivity.FORCE_TAB_EXTRA, ProfileActivity.TAB_GALLERY);
       startActivity(intent);
+      finish();
     }
     else if(conversationRecipient.getAddress().isDcContact()) {
       Intent intent = new Intent(this, ProfileActivity.class);
       intent.putExtra(ProfileActivity.CONTACT_ID_EXTRA, conversationRecipient.getAddress().getDcContactId());
       intent.putExtra(ProfileActivity.FORCE_TAB_EXTRA, ProfileActivity.TAB_GALLERY);
       startActivity(intent);
+      finish();
     }
   }
 

@@ -170,6 +170,7 @@ public class ProfileGalleryFragment
     intent.putExtra(MediaPreviewActivity.ADDRESS_EXTRA, Address.fromChat(chatId));
     intent.putExtra(MediaPreviewActivity.OUTGOING_EXTRA, mediaRecord.isOutgoing());
     intent.putExtra(MediaPreviewActivity.LEFT_IS_RECENT_EXTRA, false);
+    intent.putExtra(MediaPreviewActivity.OPENED_FROM_PROFILE, true);
     context.startActivity(intent);
   }
 
