@@ -73,7 +73,9 @@ unset CPATH
 if test -z $1; then
   echo Full build
 
-  export RUSTFLAGS="-C lto=on -C embed-bitcode=yes"
+  # According to 1.45.0 changelog in https://github.com/rust-lang/rust/blob/master/RELEASES.md,
+  # "The recommended way to control LTO is with Cargo profiles, either in Cargo.toml or .cargo/config, or by setting CARGO_PROFILE_<name>_LTO in the environment."
+  export CARGO_PROFILE_RELEASE_LTO=on
   RELEASE="release"
   RELEASEFLAG="--release"
 else
