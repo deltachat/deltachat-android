@@ -70,18 +70,9 @@ cd deltachat-core-rust
 # fix build on MacOS Catalina
 unset CPATH
 
-if test -z $1; then
-  echo Full build
-
-  export RUSTFLAGS="-C lto=on -C embed-bitcode=yes"
-  RELEASE="release"
-  RELEASEFLAG="--release"
-else
-  echo Fast, partial, slow debug build. DO NOT UPLOAD THE APK ANYWHERE.
-
-  RELEASE="debug"
-  RELEASEFLAG=
-fi
+export RUSTFLAGS="-C lto=on -C embed-bitcode=yes"
+RELEASE="release"
+RELEASEFLAG="--release"
 
 if test -z $1 || test $1 = armeabi-v7a; then
     echo "-- cross compiling to armv7-linux-androideabi (arm) --"
