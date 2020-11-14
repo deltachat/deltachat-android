@@ -17,6 +17,6 @@
           android:icon="@drawable/ic_save_white_24dp"
           app:showAsAction="ifRoom"/>
     <item android:id="@+id/media_preview__overview"
-          android:title="@string/menu_all_media"
+          android:title="@string/tab_gallery"
           app:showAsAction="never"/>
 </menu>
