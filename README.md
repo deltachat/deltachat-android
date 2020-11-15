@@ -27,28 +27,35 @@ subproject _deltachat-core-rust_:
 If you only want to build an APK, the easiest way is to use
 provided `Dockerfile` with [Docker](https://www.docker.com/) or
 [Podman](https://podman.io/). Podman is a drop-in replacement for Docker
-that does not require root privileges.  It is used in the following
-example.
+that does not require root privileges.
 
 First, build the image `deltachat-android` by running
 ```
-podman build . -t deltachat-android
+podman build --build-arg UID=$(id -u) --build-arg GID=$(id -g) . -t deltachat-android
+```
+or
+```
+docker build --build-arg UID=$(id -u) --build-arg GID=$(id -g) . -t deltachat-android
 ```
 
 Then, run the image:
 ```
-podman run -it --name deltachat -v $(pwd):/home/app -w /home/app localhost/deltachat-android
+podman run --userns=keep-id -it --name deltachat -v $(pwd):/home/app -w /home/app localhost/deltachat-android
+```
+or
+```
+docker run -it --name deltachat -v $(pwd):/home/app -w /home/app localhost/deltachat-android
 ```
 
 Within the container, install toolchains and build the native library:
 ```
-root@6012dcb974fe:/home/app# scripts/install-toolchains.sh
-root@6012dcb974fe:/home/app# ./ndk-make.sh
+deltachat@6012dcb974fe:/home/app$ scripts/install-toolchains.sh
+deltachat@6012dcb974fe:/home/app$ ./ndk-make.sh
 ```
 
 Then, [build an APK](https://developer.android.com/studio/build/building-cmdline):
 ```
-root@6012dcb974fe:/home/app# ./gradlew assembleDebug
+deltachat@6012dcb974fe:/home/app$ ./gradlew assembleDebug
 ```
 
 If you don't want to use Docker or Podman, proceed to the next section.
