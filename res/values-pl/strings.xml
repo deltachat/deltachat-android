@@ -494,8 +494,6 @@
     <string name="autodel_server_title">Usuwanie wiadomości z serwera</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">Czy chcesz teraz usunąć %1$d wiadomości i wszystkie nowo pobrane wiadomości w przyszłości „%2$s”?\n\n• Obejmuje to wszystkie multimedia\n\n• Wiadomości zostaną usunięte niezależnie od tego, czy były widoczne, czy nie\n\n• „Zapisane wiadomości” zostaną pominięte podczas lokalnego usuwania</string>
-    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
-    <string name="autodel_server_ask">Czy chcesz teraz usunąć %1$d wiadomości i wszystkie nowo pobrane wiadomości w przyszłości „%2$s”?\n\n• Obejmuje to wszystkie multimedia\n\n• Spowoduje to również usunięcie e-maili, na które ma wpływ opcja „Pokaż klasyczne e-maile”\n\n• „Zapisane wiadomości” zostaną pominięte podczas lokalnego usuwania</string>
     <string name="autodel_confirm">Rozumiem, usuń te wszystkie wiadomości</string>
     <string name="autodel_at_once">Od razu</string>
     <string name="after_30_seconds">Po 30 sekundach</string>

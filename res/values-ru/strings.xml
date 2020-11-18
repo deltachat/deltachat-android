@@ -557,8 +557,6 @@
     <string name="autodel_server_title">Удалять сообщения с сервера</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">Вы хотите удалить %1$d сообщений сейчас и все новые загруженные сообщения \"%2$s\" в будущем?\n\n• Это включает в себя все медиафайлы\n\n• Сообщения будут удалены независимо от того, просмотрены они или нет\n\n• \"Сохранённые сообщения\" будут пропущены при локальном удалении</string>
-    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
-    <string name="autodel_server_ask">Вы хотите удалить %1$d сообщений сейчас и все новые загруженные сообщения \"%2$s\" в будущем?\n\n• Это включает в себя все медиафайлы\n\n• Это также удалит почту, затронутую опцией \"Показывать обычную почту\"\n\n• \"Сохранённые сообщения\" также будут удалены с сервера</string>
     <string name="autodel_confirm">Я понимаю, удалить все эти сообщения</string>
     <string name="autodel_at_once">Сразу</string>
     <string name="after_30_seconds">Через 30 секунд</string>

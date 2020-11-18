@@ -563,8 +563,6 @@
     <string name="autodel_server_title">Видалити повідомлення на сервері</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">Ви бажаєте видалити %1$d повідомлень та всі щойно отримані повідомлення \"%2$s\" у майбутньому?\n\n• Це включає усі медіа\n\n• Повідомлення будуть видалені незалежно від того бачили їх чи ні\n\n• \"Збережені повідомлення\" будуть пропущені при локальному видаленні</string>
-    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
-    <string name="autodel_server_ask">Ви бажаєте видалити %1$d повідомлень та всі щойно отримані повідомлення \"%2$s\" у майбутньому?\n\n• Це включає усі медіа\n\n• це також видалить електронні повідомлення на які впливає параметр \"Показувати класичні ел.повідомлення\"\n\n• \"Збережені повідомлення\" будуть видалені зі сервера</string>
     <string name="autodel_confirm">Я все розумію, видалити усі повідомлення</string>
     <string name="autodel_at_once">Одразу</string>
     <string name="after_30_seconds">Через 30 секунд</string>

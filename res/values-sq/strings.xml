@@ -537,8 +537,6 @@
     <string name="autodel_server_title">Fshini mesazhe prej shërbyesi</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">Doni të fshihen %1$d mesazhe tani dhe krejt mesazhet e prurë rishtazi \"%2$s\" në të ardhmen?\n\n• Kjo përfshin krejt mediat\n\n• Mesazhi do të fshihet, qoftë kur e kanë parë, qoftë kur s’e kanë parë\n\n• \"Mesazhe të ruajtur\" do të anashkalohen nga fshirja vendore</string>
-    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
-    <string name="autodel_server_ask">Doni të fshihen %1$d mesazhe tani dhe krejt mesazhet e prurë rishtazi \"%2$s\" në të ardhmen?\n\n• Kjo përfshin krejt mediat\n\n• Kjo do të fshijë gjithashtu email-e nën mundësinë \"Shfaq email-e klasikë\"\n\n• \"Mesazhet e ruajtur\" do të fshihen gjithashtu nga shërbyesi</string>
     <string name="autodel_confirm">E kuptoj, fshiji krejt këto mesazhe</string>
     <string name="autodel_at_once">Menjëherë</string>
     <string name="after_30_seconds">Pas 30 sekondash</string>

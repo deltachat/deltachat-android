@@ -542,8 +542,8 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">Wirklich %1$d Nachrichten jetzt und zukünftig alle neuen Nachrichten \"%2$s\" löschen?\n\n• Dies schliesst alle Medien mit ein\n\n• Nachrichten werden gelöscht, auch wenn sie nicht angesehen wurden\n\n• \"Gespeicherte Nachrichten\" werden nicht gelöscht</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
-    <string name="autodel_server_ask">Wirklich %1$d Nachrichten jetzt und zukünftig alle neuen Nachrichten \"%2$s\" löschen?\n\n• Dies schliesst alle Medien mit ein\n\n• E-Mails, die aufgrund von \"Normale E-Mails anzeigen\" angezeigt werden, werden ebenfalls vom Server gelöscht\n\n• \"Gespeicherte Nachrichten\" werden ebenfalls vom Server gelöschet</string>
-    <string name="autodel_confirm">Verstanden, löschen all diese Nachrichten</string>
+    <string name="autodel_server_ask">Wirklich %1$d Nachrichten jetzt und zukünftig alle neuen Nachrichten \"%2$s\" löschen?\n\n⚠️ Dies schließt E-Mails, Medien und \"Gespeicherte Nachrichten\" aus allen Server-Ordnern mit ein\n\n⚠️ Verwenden Sie diese Funktion nicht, wenn Sie Daten auf dem Server behalten möchten\n\n⚠️ Verwenden Sie diese Funktion nicht, wenn Sie neben Delta Chat noch andere E-Mail-Clients verwenden</string>
+    <string name="autodel_confirm">Verstanden, all diese Nachrichten löschen</string>
     <string name="autodel_at_once">Sofort</string>
     <string name="after_30_seconds">Nach 30 Sekunden</string>
     <string name="after_1_minute">Nach 1 Minute</string>
