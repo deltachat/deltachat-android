@@ -98,7 +98,7 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
   private void initAutodelFromCore() {
     String value = Integer.toString(dcContext.getConfigInt("delete_server_after"));
     autoDelServer.setValue(value);
-    updateListSummary(autoDelServer, value);
+    updateListSummary(autoDelServer, value, value.equals("0")? null : getString(R.string.autodel_server_enabled_hint));
 
     value = Integer.toString(dcContext.getConfigInt("delete_device_after"));
     autoDelDevice.setValue(value);
