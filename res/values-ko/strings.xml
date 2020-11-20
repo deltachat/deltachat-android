@@ -120,6 +120,8 @@
     <string name="menu_mute">알림 음소거</string>
     <string name="menu_unmute">음소거 해제</string>
     <string name="menu_all_media">모든 미디어</string>
+    <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
+    <string name="show_in_chat">대화 속에서 보기</string>
     <string name="menu_share">공유</string>
     <string name="menu_block_contact">차단</string>
     <string name="menu_unblock_contact">차단 해제</string>

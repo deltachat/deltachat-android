@@ -176,6 +176,8 @@
     <string name="menu_unmute">Stumm aus</string>
     <string name="menu_export_attachment">Datei exportieren</string>
     <string name="menu_all_media">Alle Medien</string>
+    <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
+    <string name="show_in_chat">Im Chat zeigen</string>
     <string name="menu_share">Teilen</string>
     <string name="menu_block_contact">Kontakt blockieren</string>
     <string name="menu_unblock_contact">Kontakt nicht mehr blockieren</string>
