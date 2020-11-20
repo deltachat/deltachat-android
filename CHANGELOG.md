@@ -1,5 +1,16 @@
 # Delta Chat Android Changelog
 
+## v1.14.5
+2020-11
+
+* show impact of the "Delete messages from server" option more clearly
+* fix: do not fetch from INBOX if "Watch Inbox folder" is disabled
+  and do not fetch messages arriving before re-enabling
+* fix: do not use STARTTLS when PLAIN connection is requested
+  and do not allow downgrade if STARTTLS is not available
+* update translations
+
+
 ## v1.14.4
 2020-11
 

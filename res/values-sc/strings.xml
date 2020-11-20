@@ -478,8 +478,6 @@
     <string name="autodel_server_title">Iscantzella sos messàgios dae su servidore</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">Cheres iscantzellare%1$d messàgios como e totu sos messàgios arribados \"%2$s\" in su tempus benidore?\n\n• Custu at a incluire totu sos documentos multimediales\n\n• Sos messàgios ant a èssere iscantzellados fintzas si no ant a èssere istados lèghidos\n\n• Sos \"Messàgios sarvados\" ant a èssere esclùdidos dae s\'iscantzellamentu locale</string>
-    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
-    <string name="autodel_server_ask">Cheres iscantzellare%1$d messàgios como e totu sos messàgios arribados \"%2$s\" in su tempus benidore?\n\n• Custu at a incluire totu sos documentos multimediales\n\n• Custu at a iscantzellare fintzas totu sas lìteras de posta eletrònica influentzadas dae s\'optzione \"Ammustra sas lìteras traditzionales\"\n\n• Sos \"Messàgios sarvados\" ant a èssere iscantzellados dae su serbidore fintzas issos</string>
     <string name="autodel_confirm">Apo cumpresu, iscantzella totu sos messàgios</string>
     <string name="autodel_at_once">Una borta</string>
     <string name="after_30_seconds">A pustis de 30 segundos</string>

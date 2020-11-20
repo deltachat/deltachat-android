@@ -538,7 +538,7 @@
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">Doni të fshihen %1$d mesazhe tani dhe krejt mesazhet e prurë rishtazi \"%2$s\" në të ardhmen?\n\n• Kjo përfshin krejt mediat\n\n• Mesazhi do të fshihet, qoftë kur e kanë parë, qoftë kur s’e kanë parë\n\n• \"Mesazhe të ruajtur\" do të anashkalohen nga fshirja vendore</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
-    <string name="autodel_server_ask">Doni të fshihen %1$d mesazhe tani dhe krejt mesazhet e prurë rishtazi \"%2$s\" në të ardhmen?\n\n• Kjo përfshin krejt mediat\n\n• Kjo do të fshijë gjithashtu email-e nën mundësinë \"Shfaq email-e klasikë\"\n\n• \"Mesazhet e ruajtur\" do të fshihen gjithashtu nga shërbyesi</string>
+    <string name="autodel_server_ask">Doni të fshihen tani %1$d mesazhe dhe krejt mesazhet e prurë rishtas \"%2$s\" më vonë në të ardhmen?\n\n⚠️ Kjo përfshin email-et, media dhe \"Mesazhe të ruajtur\" në krejt dosjet e shërbyesit\n\n⚠️ Mos e përdorni këtë funksion, nëse doni të mbani të dhënat në shërbyes\n\n⚠️ Mos e përdorni këtë funksion, nëse po përdorni klientë të tjerët përkrah Delta Chat-it</string>
     <string name="autodel_confirm">E kuptoj, fshiji krejt këto mesazhe</string>
     <string name="autodel_at_once">Menjëherë</string>
     <string name="after_30_seconds">Pas 30 sekondash</string>
@@ -770,4 +770,6 @@
     <string name="pref_reliable_service_explain">Lyp një njoftim permanent</string>
     <string name="perm_enable_bg_reminder_title">Prekeni këtu që të merrni mesazhe, teksa Delta Chat rri në prapaskenë.</string>
     <string name="perm_enable_bg_already_done">E keni lejuar tashmë Delta Chat-in të marrë mesazhe në prapaskenë.\n\nNëse mesazhet prapë nuk mbërrijnë në prapaskenë, ju lutemi, kontrolloni edhe rregullimet e sistemit tuaj.</string>
-    </resources>
+    <string name="update_1_14_android">Disa gjëra për t’u theksuar te përditësimi 1.14:\n\n🧹 Fërkojeni për t’u përgjigjur: Për t’ju përgjigjur një mesazhi të caktuar, fërkojeni për djathtas (jo këtu! këtu s’përgjigjeni dot 😛) Do të shihni një si punë citimi sipër rreshtit të hartuesit dhe mund të vazhdoni të shkruani mesazhin tuaj si zakonisht.\n\n🔥 Mesazhe që treten ­- ka ardhur koha 😀. Çfarëdo fjalosje tanimë mund të formësohet që të fshijë pas njëfarë kohe mesazhet e dërguar dhe të marrë. Thjesht përzgjidhni \"Tretje mesazhesh\" që nga menuja e fjalosjes (sërish: jo këtu)\n\n👆 Fjalosjet hapen me mesazhin e parë të palexuar\n\n💾 Përcillni gjëra te \"Mesazhe të ruajtur\" drejtpërdrejt dhe më shpejt (kjo mund të provohet këtu: prekeni paksa më gjatë këtë mesazh dhe mandej shigjetën sipër djathtas)\n\n🎃 Së fundi, kemi tmerruar shumë të meta! Shumë prej tyre qenë kaq shumë të tmerruara, sa s’do të kthehen më.</string>
+
+</resources>

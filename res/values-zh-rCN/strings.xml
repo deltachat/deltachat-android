@@ -527,8 +527,6 @@
     <string name="autodel_server_title">从服务器删除消息</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">您要删除目前的 %1$d 条消息以及之后 %2$s 内新收到的消息吗？\n\n• 这包括所有媒体文件\n\n• 无论消息是否被浏览过，它们都将会被删除\n\n• 在本地删除中，“保存的消息”将被跳过</string>
-    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
-    <string name="autodel_server_ask">您要删除目前的 %1$d 条消息以及之后 %2$s 内新收到的消息吗？\n\n• 这包括所有媒体文件\n\n• 这也会删除被“显示传统电子邮件”选项影响的电子邮件\n\n• “保存的消息”也将从服务器中删除</string>
     <string name="autodel_confirm">我了解，将这些消息全部删除</string>
     <string name="autodel_at_once">立刻</string>
     <string name="after_30_seconds">30 秒后</string>

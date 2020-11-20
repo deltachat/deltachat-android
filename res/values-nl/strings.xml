@@ -540,7 +540,9 @@
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">Wil je nu %1$d berichten verwijderen en toekomstige berichten \'%2$s\'?\n\n• Dit omvat alle media\n\n• Berichten worden verwijderd, ongeacht of ze bekeken zijn\n\n• Het gesprek \'Opgeslagen berichten\' wordt overgeslagen</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
-    <string name="autodel_server_ask">Wil je nu %1$d berichten verwijderen en toekomstige berichten \'%2$s\'?\n\n• Dit omvat alle media\n\n• Berichten worden verwijderd, ongeacht of ze bekeken zijn\n\n• Het gesprek \'Opgeslagen berichten\' wordt eveneens verwijderd van de server</string>
+    <string name="autodel_server_ask">Wil je nu %1$d berichten verwijderen en toekomstige berichten %2$s?\n\n⚠️ Dit omvat alle media\n\n⚠️ Berichten worden verwijderd, ongeacht of ze bekeken zijn\n\n⚠️ Het gesprek \'Opgeslagen berichten\' wordt eveneens verwijderd van de server.\n\n⚠️ Gebruik deze functie niet als je je gegevens wilt bewaren op de server\n\n⚠️ Gebruik deze functie niet als je ook andere e-mailclients gebruikt</string>
+    <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
+    <string name="autodel_server_enabled_hint">Berichten worden verwijderd, ongeacht of ze bekeken zijn. Het gesprek \'Opgeslagen berichten\' wordt eveneens verwijderd van de server. Gebruik deze functie niet als je je gegevens wilt bewaren op de server of als je ook andere e-mailclients gebruikt.</string>
     <string name="autodel_confirm">Ik begrijp het; verwijder alle berichten</string>
     <string name="autodel_at_once">Direct</string>
     <string name="after_30_seconds">Na 30 seconden</string>

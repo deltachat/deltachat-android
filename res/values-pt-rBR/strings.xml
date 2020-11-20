@@ -6,14 +6,20 @@
     <string name="cancel">Cancelar</string>
     <string name="yes">Sim</string>
     <string name="no">Não</string>
+    <string name="select">Selecionar</string>
     <string name="on">Ligado</string>
     <string name="off">Desligado</string>
     <string name="def">Padrão</string>
+    <string name="default_value">Padrão (%1$s)</string>
+    <string name="default_value_as_above">Padrão (igual acima)</string>
     <string name="custom">Personalizado</string>
     <string name="none">Nenhum</string>
     <string name="automatic">Automático</string>
     <string name="strict">Rigoroso</string>
     <string name="open">Abrir</string>
+    <string name="open_attachment">Abrir anexo</string>
+    <string name="join">Entrar</string>
+    <string name="rejoin">Re-entrar</string>
     <string name="delete">Apagar</string>
     <string name="info">Informação</string>
     <string name="update">Atualizar</string>
@@ -26,9 +32,11 @@
     <string name="unarchive">Desarquivar</string>
     <string name="mute">Mudo</string>
     <string name="ephemeral_messages">Mensagens efêmeras</string>
+    <string name="ephemeral_messages_hint">Estas configurações se aplicam a todos os participantes usando o Delta Chat. No entanto, eles podem copiar, salvar e encaminhar mensagens ou usar outros clientes de email.</string>
     <string name="save">Salvar</string>
     <string name="chat">Conversa</string>
     <string name="media">Mídia</string>
+    <string name="profile">Perfil</string>
     <string name="main_menu">Menu principal</string>
     <string name="start_chat">Começar conversa</string>
     <string name="show_password">Mostrar senha</string>
@@ -38,6 +46,7 @@
     <string name="one_moment">Um momento...</string>
     <string name="done">Feito</string>
     <string name="undo">Desfazer</string>
+    <string name="offline">Desconectado</string>
     <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
     <string name="next">Avançar</string>
     <string name="error">Erro</string>
@@ -91,6 +100,8 @@
     <string name="self">Eu</string>
     <string name="draft">Rascunho</string>
     <string name="image">Imagem</string>
+    <!-- Translators: Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
+    <string name="reply_noun">Responder</string>
     <string name="gif">Gif</string>
     <string name="images">Imagens</string>
     <string name="audio">Áudio</string>
@@ -103,7 +114,9 @@
     <string name="camera">Câmera</string>
     <string name="location">Localização</string>
     <string name="gallery">Galeria</string>
+    <string name="images_and_videos">Imagens e vídeos</string>
     <string name="file">Arquivo</string>
+    <string name="files">Arquivos</string>
     <string name="unknown">Desconhecido</string>
 
     <string name="green">Verde</string>
@@ -115,6 +128,8 @@
     <string name="magenta">Magenta</string>
     <string name="white">Branco</string>
 
+    <string name="zoom">Zoom</string>
+    <string name="extra_small">Muito pequeno</string>
     <string name="small">Pequeno</string>
     <string name="normal">Normal</string>
     <string name="large">Grande</string>
@@ -143,12 +158,17 @@
     <string name="menu_add_attachment">Inserir anexo</string>
     <string name="menu_leave_group">Sair do grupo</string>
     <string name="menu_delete_chat">Apagar conversa</string>
+    <string name="ask_delete_named_chat">Você tem certeza que quer apagar \"%1$s\"?</string>
     <string name="menu_delete_messages">Apagar mensagens</string>
     <string name="menu_delete_image">Apagar imagem</string>
+    <string name="delete_contact">Apagar contato</string>
     <string name="menu_delete_locations">Apagar todas as localizações?</string>
     <string name="menu_delete_location">Apagar esta localização?</string>
     <string name="menu_message_details">Detalhes da mensagem</string>
     <string name="menu_copy_to_clipboard">Copiar para a área de transferência</string>
+    <string name="menu_copy_selection_to_clipboard">Copiar seleção</string>
+    <string name="menu_copy_link_to_clipboard">Copiar link</string>
+    <string name="paste_from_clipboard">Colar a partir da área de transferência</string>
     <string name="menu_forward">Encaminhar mensagem</string>
     <string name="menu_resend">Reenviar mensagem</string>
     <string name="menu_reply">Responder a mensagem</string>
@@ -178,7 +198,20 @@
     <string name="title_share_location">Compartilhar localização com o grupo</string>
     <string name="device_talk">Mensagens desse aparelho</string>
     <string name="device_talk_subtitle">Mensagens geradas localmente</string>
+    <string name="device_talk_explain">Mensagens nesta conversa são geradas localmente pelo app Delta Chat. Essas mensagens são para informar sobre atualizações do app e problemas durante seu uso.</string>
+    <string name="device_talk_welcome_message">Bem vindo ao Delta Chat! - O Delta Chat se parece com outros aplicativos de mensagens populares, mas não envolve controle centralizado, rastreamento ou venda de você, amigos, colegas ou família para grandes organizações.\n\nTecnicamente, o Delta Chat é um aplicativo de e-mail com uma interface de bate-papo moderna. E-mail de cara nova se você 👻\n\nUtilize o Delta Chat com qualquer pessoa dentre bilhões de pessoas: basta usar o endereço de e-mail. Os destinatários não precisam instalar o Delta Chat, visitar sites ou se inscrever em qualquer lugar - no entanto, é claro, se quiserem, você pode direcioná-los para 👉 https://get.delta.chat</string>
     <string name="edit_contact">Editar contato</string>
+    <!-- Translators: "Pin" here is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
+    <string name="pin_chat">Fixar conversa</string>
+    <!-- Translators: this is the opposite of "Pin chat", removing the sticky-state from a chat. -->
+    <string name="unpin_chat">Desafixar conversa</string>
+    <!-- Translators: this is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
+    <string name="pin">Fixar</string>
+    <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
+    <string name="unpin">Desafixar</string>
+    <string name="ConversationFragment_quoted_message_not_found">Mensagem original não encontrada</string>
+    <string name="reply_privately">Responder em privado</string>
+
     <string name="mute_for_one_hour">Silenciar por 1 hora</string>
     <string name="mute_for_two_hours">Silenciar por 2 horas</string>
     <string name="mute_for_one_day">Silenciar por 1 dia</string>
@@ -194,6 +227,14 @@
 
     <string name="file_saved_to">Arquivo salvo em \"%1$s\".</string>
 
+    <string name="videochat">Vídeo conversa</string>
+    <string name="videochat_invite_user_to_videochat">Convidar %1$s para uma chamada de vídeo?</string>
+    <string name="videochat_invite_user_hint">Isto requer um app compatível ou um navegador compatível nos dois interlocutores.</string>
+    <string name="videochat_contact_invited_hint">%1$s convidou para uma conversa em vídeo.</string>
+    <string name="videochat_you_invited_hint">Você convidou para uma conversa em vídeo.</string>
+    <string name="videochat_will_open_in_your_browser">Esta conversa em vídeo vai abrir no seu navegador.</string>
+    <string name="videochat_tap_to_join">Clique para entrar</string>
+    <string name="videochat_tap_to_open">Clique para abrir</string>
     <!-- get confirmations -->
     <string name="ask_leave_group">Quer mesmo sair do grupo?</string>
     <plurals name="ask_delete_chat">

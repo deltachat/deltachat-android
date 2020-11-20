@@ -471,8 +471,6 @@
     <string name="autodel_server_title">پاک کردن پیام‌ها از سرور</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">آیا می‌خواهید %1$d پیام جدید و دریافت شده را در زمان%2$s در آینده پاک کنید؟\n\n• این شامل همه رسانه‌ها هم می‌شود\n\n•  پیام‌ها جدای از اینکه دیده شده باشند یا نه پاک می‌شوند. \"پیام های ذخیره شده\" شامل این پاک کردن محلی نمی‌شوند. </string>
-    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
-    <string name="autodel_server_ask">آیا می‌خواهید%1$d پیام جدید و دریافت شده را در زمان%2$s در آینده پاک کنید؟\n\n• این شامل همه رسانه هم می‌شود\n\n• همچنین ایمیل‌های مربوط به \"نمایش ایمیل‌های معمولی\"  نیز از سرور پاک می‌شوند. </string>
     <string name="autodel_confirm">متوجه هستم، همه پیام‌ها حذف شوند</string>
     <string name="autodel_at_once">یک بار</string>
     <string name="after_30_seconds">بعد از 30 ثانیه</string>

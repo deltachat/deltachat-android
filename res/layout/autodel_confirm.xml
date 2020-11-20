@@ -7,6 +7,8 @@
     <CheckBox
         android:id="@+id/i_understand"
         android:text="@string/autodel_confirm"
+        android:textSize="16sp"
+        android:textColor="@color/red_500"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
