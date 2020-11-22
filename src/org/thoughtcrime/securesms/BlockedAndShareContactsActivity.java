@@ -87,7 +87,7 @@ public class BlockedAndShareContactsActivity extends PassphraseRequiredActionBar
       recyclerView  = ViewUtil.findById(view, R.id.recycler_view);
       recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
       emptyStateView = ViewUtil.findById(view, android.R.id.empty);
-      emptyStateView.setText(R.string.none_blocked_desktop);
+      emptyStateView.setText(R.string.blocked_empty_hint);
       return view;
     }
 
