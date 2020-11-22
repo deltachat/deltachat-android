@@ -494,7 +494,8 @@ public class ConversationItem extends LinearLayout
     }
 
     if ((!current.isOutgoing() && isGroupThread)
-     || current.isForwarded()){
+     || current.isForwarded()
+     || hasQuote(current)) {
       topLeft  = 0;
       topRight = 0;
     }

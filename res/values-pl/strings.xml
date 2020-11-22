@@ -265,6 +265,9 @@
     <string name="ask_start_chat_with">Rozpocząć czat z %1$s?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Usunąć %1$s z grupy?</string>
+    <string name="open_url_confirmation">Czy chcesz otworzyć ten link?</string>
+
+
     <!-- contact list -->
     <string name="contacts_title">Kontakty</string>
     <string name="contacts_enter_name_or_email">Podaj nazwę lub adres e-mail</string>
