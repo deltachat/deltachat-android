@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.loader.app.LoaderManager;
 import androidx.loader.content.Loader;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -78,15 +77,12 @@ public class BlockedAndShareContactsActivity extends PassphraseRequiredActionBar
 
     private RecyclerView recyclerView;
 
-    private SwipeRefreshLayout swipeRefreshLayout;
-
     private boolean showOnlyBlocked;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle bundle) {
       View view = inflater.inflate(R.layout.contact_selection_list_fragment, container, false);
       recyclerView  = ViewUtil.findById(view, R.id.recycler_view);
-      swipeRefreshLayout  = ViewUtil.findById(view, R.id.swipe_refresh);
       recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
       return view;
     }
@@ -111,8 +107,6 @@ public class BlockedAndShareContactsActivity extends PassphraseRequiredActionBar
               false,
               false);
       recyclerView.setAdapter(adapter);
-      swipeRefreshLayout.setRefreshing(false);
-      swipeRefreshLayout.setEnabled(false);
     }
 
     @Override
