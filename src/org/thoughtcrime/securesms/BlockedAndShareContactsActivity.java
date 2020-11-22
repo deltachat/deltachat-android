@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
@@ -76,6 +77,7 @@ public class BlockedAndShareContactsActivity extends PassphraseRequiredActionBar
 
 
     private RecyclerView recyclerView;
+    private TextView emptyStateView;
 
     private boolean showOnlyBlocked;
 
@@ -84,6 +86,8 @@ public class BlockedAndShareContactsActivity extends PassphraseRequiredActionBar
       View view = inflater.inflate(R.layout.contact_selection_list_fragment, container, false);
       recyclerView  = ViewUtil.findById(view, R.id.recycler_view);
       recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+      emptyStateView = ViewUtil.findById(view, android.R.id.empty);
+      emptyStateView.setText(R.string.none_blocked_desktop);
       return view;
     }
 
@@ -116,7 +120,13 @@ public class BlockedAndShareContactsActivity extends PassphraseRequiredActionBar
 
     @Override
     public void onLoadFinished(Loader<DcContactsLoader.Ret> loader, DcContactsLoader.Ret data) {
-      getContactSelectionListAdapter().changeData(data);
+      ContactSelectionListAdapter adapter = getContactSelectionListAdapter();
+      if (adapter != null) {
+        adapter.changeData(data);
+        if (emptyStateView != null) {
+          emptyStateView.setVisibility(adapter.getItemCount() > 0 ? View.GONE : View.VISIBLE);
+        }
+      }
     }
 
     @Override
