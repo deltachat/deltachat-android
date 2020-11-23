@@ -19,8 +19,8 @@
             android:padding="16dp"
             android:lineSpacingMultiplier="1.3"
             android:visibility="gone"
-            android:text="@string/contacts_empty_hint"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            tools:text="No contacts." />
 
     <org.thoughtcrime.securesms.components.RecyclerViewFastScroller
         android:id="@+id/fast_scroller"
