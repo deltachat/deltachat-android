@@ -20,8 +20,8 @@
 			android:id="@+id/quote_bar"
 			android:layout_width="@dimen/quote_corner_radius_bottom"
 			android:layout_height="match_parent"
-			android:background="@color/purple_400"
-			tools:tint="@color/purple_400" />
+			android:background="@color/unknown_sender"
+			tools:tint="@color/unknown_sender" />
 
 		<LinearLayout
 			android:layout_width="0dp"
