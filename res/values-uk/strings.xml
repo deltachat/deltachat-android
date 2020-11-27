@@ -188,6 +188,8 @@
     <string name="menu_unmute">Увімкнути сповіщення</string>
     <string name="menu_export_attachment">Експортувати вкладення</string>
     <string name="menu_all_media">Всі матеріали</string>
+    <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
+    <string name="show_in_chat">Показати в чаті</string>
     <string name="menu_share">Поділитися</string>
     <string name="menu_block_contact">Заблокувати контакт</string>
     <string name="menu_unblock_contact">Розблокувати контакт</string>
@@ -563,6 +565,10 @@
     <string name="autodel_server_title">Видалити повідомлення на сервері</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">Ви бажаєте видалити %1$d повідомлень та всі щойно отримані повідомлення \"%2$s\" у майбутньому?\n\n• Це включає усі медіа\n\n• Повідомлення будуть видалені незалежно від того бачили їх чи ні\n\n• \"Збережені повідомлення\" будуть пропущені при локальному видаленні</string>
+    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
+    <string name="autodel_server_ask">Ви бажаєте видалити %1$d повідомлень зараз та всі наступні повідомлення протягом %2$s?\n\n⚠️ Це стосується повідомлень електронної пошти, медіа та \"Збережених повідомлень\" у всіх серверних папках\n\n⚠️ Не використовуйте цю функцію якщо ви хочете зберегти дані на сервері\n\n⚠️ Не використовуйте цю функцію якщо ви користуєтесь іншими клієнтами електронної пошти окрім Delta Chat</string>
+    <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
+    <string name="autodel_server_enabled_hint">Це стосується повідомлень електронної пошти, медіа та \"Збережених повідомлень\" у всіх серверних папках. Не використовуйте цю функцію якщо ви хочете зберегти дані на сервері або якщо ви користуєтесь іншими клієнтами електронної пошти окрім Delta Chat.</string>
     <string name="autodel_confirm">Я все розумію, видалити усі повідомлення</string>
     <string name="autodel_at_once">Одразу</string>
     <string name="after_30_seconds">Через 30 секунд</string>

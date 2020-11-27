@@ -176,6 +176,8 @@
     <string name="menu_unmute">Meldingen inschakelen</string>
     <string name="menu_export_attachment">Bijlage exporteren</string>
     <string name="menu_all_media">Alle media</string>
+    <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
+    <string name="show_in_chat">Tonen in bijbehorend gesprek</string>
     <string name="menu_share">Delen</string>
     <string name="menu_block_contact">Contactpersoon blokkeren</string>
     <string name="menu_unblock_contact">Contactpersoon deblokkeren</string>

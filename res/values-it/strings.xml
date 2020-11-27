@@ -176,6 +176,8 @@
     <string name="menu_unmute">Abilita notifiche</string>
     <string name="menu_export_attachment">Esporta allegato</string>
     <string name="menu_all_media">Tutti i media</string>
+    <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
+    <string name="show_in_chat">Mostra in chat</string>
     <string name="menu_share">Condividi</string>
     <string name="menu_block_contact">Blocca contatto</string>
     <string name="menu_unblock_contact">Sblocca contatto</string>
@@ -541,6 +543,8 @@
     <string name="autodel_device_ask">Vuoi eliminare %1$d messaggi ora e tutti i messaggi arrivati \"%2$s\" nel futuro?\n\n• Questo include tutti i media\n\n• I messaggi verranno eliminati anche se non sono stati letti\n\n• I \"Messaggi salvati\" vengono preservati dalla cancellazione locale.</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_server_ask">Vuoi eliminare %1$d messaggi ora e tutti i messaggi appena recuperati \"%2$s\" nel futuro?\n\n⚠️ Ciò include emails, contenuti multimediali e \"Messaggi salvati\" in tutte le cartelle del server\n\n⚠️ Non utilizzare questa funzione se vuoi mantenere i dati sul server\n\n⚠️ Non utilizzare questa funzione se stai utilizzando altri client di posta elettronica oltre a Delta Chat</string>
+    <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
+    <string name="autodel_server_enabled_hint">Questo include email, media e \"Messaggi salvati\" in tutte le cartelle del server. Non utilizzare questa funzione se desideri mantenere i dati sul server o se stai utilizzando altri client di posta elettronica oltre a Delta Chat.</string>
     <string name="autodel_confirm">Ho capito, elimina tutti i messaggi</string>
     <string name="autodel_at_once">Una volta</string>
     <string name="after_30_seconds">Dopo 30 secondi</string>
