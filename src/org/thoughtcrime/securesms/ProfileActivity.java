@@ -107,6 +107,14 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
 
     this.tabLayout.setupWithViewPager(viewPager);
     this.viewPager.setAdapter(new ProfilePagerAdapter(getSupportFragmentManager()));
+    int forceTab = getIntent().getIntExtra(FORCE_TAB_EXTRA, -1);
+    if (forceTab != -1) {
+      int forceIndex = tabs.indexOf(forceTab);
+      if (forceIndex != -1) {
+        this.viewPager.setCurrentItem(forceIndex);
+      }
+    }
+
     dcContext.eventCenter.addObserver(DcContext.DC_EVENT_CHAT_MODIFIED, this);
     dcContext.eventCenter.addObserver(DcContext.DC_EVENT_CONTACTS_CHANGED, this);
   }
