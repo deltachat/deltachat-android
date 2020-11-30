@@ -14,8 +14,12 @@
     <string name="automatic">Automatinis</string>
     <string name="strict">Griežtas</string>
     <string name="open">Atverti</string>
+    <string name="open_attachment">Atverti priedą</string>
+    <string name="join">Prisijungti</string>
+    <string name="rejoin">Prisijungti iš naujo</string>
     <string name="delete">Ištrinti</string>
     <string name="info">Informacija</string>
+    <string name="update">Atnaujinti</string>
     <string name="attachment">Priedas</string>
     <string name="back">Atgal</string>
     <string name="close">Užverti</string>
@@ -25,6 +29,7 @@
     <string name="ephemeral_messages">Išnykstančios žinutės</string>
     <string name="save">Įrašyti</string>
     <string name="media">Medija</string>
+    <string name="profile">Profilis</string>
     <string name="main_menu">Pagrindinis meniu</string>
     <string name="show_password">Rodyti slaptažodį</string>
     <string name="hide_password">Slėpti slaptažodį</string>
@@ -124,6 +129,7 @@
     <string name="magenta">Rausvai raudona</string>
     <string name="white">Balta</string>
 
+    <string name="extra_small">Labai mažas</string>
     <string name="small">Mažas</string>
     <string name="normal">Normalus</string>
     <string name="large">Didelis</string>
@@ -152,12 +158,16 @@
     <string name="menu_add_attachment">Pridėti priedą</string>
     <string name="menu_leave_group">Išeiti iš grupės</string>
     <string name="menu_delete_chat">Ištrinti pokalbį</string>
+    <string name="ask_delete_named_chat">Ar tikrai norite ištrinti „%1$s“?</string>
     <string name="menu_delete_messages">Ištrinti žinutes</string>
     <string name="menu_delete_image">Ištrinti paveikslą</string>
+    <string name="delete_contact">Ištrinti adresatą</string>
     <string name="menu_delete_locations">Ištrinti visas vietas?</string>
     <string name="menu_delete_location">Ištrinti šią vietą?</string>
     <string name="menu_message_details">Išsamesnė žinutės informacija</string>
     <string name="menu_copy_to_clipboard">Kopijuoti į iškarpinę</string>
+    <string name="menu_copy_link_to_clipboard">Kopijuoti nuorodą</string>
+    <string name="paste_from_clipboard">Įdėti iš iškarpinės</string>
     <string name="menu_forward">Persiųsti žinutę</string>
     <string name="menu_resend">Siųsti žinutę iš naujo</string>
     <string name="menu_reply">Atsakyti į žinutę</string>
@@ -165,6 +175,8 @@
     <string name="menu_unmute">Įjungti pranešimus</string>
     <string name="menu_export_attachment">Eksportuoti priedą</string>
     <string name="menu_all_media">Visa medija</string>
+    <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
+    <string name="show_in_chat">Rodyti pokalbyje</string>
     <string name="menu_share">Bendrinti</string>
     <string name="menu_block_contact">Užblokuoti adresatą</string>
     <string name="menu_unblock_contact">Atblokuoti adresatą</string>
@@ -194,6 +206,8 @@
     <string name="pin">Prisegti</string>
     <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
     <string name="unpin">Atsegti</string>
+    <string name="reply_privately">Atsakyti privačiai</string>
+
     <string name="mute_for_one_hour">Išjungti 1 valandai</string>
     <string name="mute_for_two_hours">Išjungti 2 valandoms</string>
     <string name="mute_for_one_day">Išjungti 1 dienai</string>
@@ -202,6 +216,7 @@
 
     <string name="file_saved_to">Failas įrašytas į \"%1$s\".</string>
 
+    <string name="videochat_will_open_in_your_browser">Šis vaizdo pokalbis bus atvertas jūsų naršyklėje.</string>
     <!-- get confirmations -->
     <string name="ask_leave_group">Ar tikrai norite išeiti iš šios grupės?</string>
     <plurals name="ask_delete_chat">
@@ -221,8 +236,12 @@
     <string name="ask_block_contact">Užblokuoti šį adresatą? Jūs daugiau nebegausite žinučių nuo šio adresato.</string>
     <string name="ask_unblock_contact">Atblokuoti šį adresatą? Jūs ir vėl galėsite gauti žinutes nuo šio adresato.</string>
     <string name="ask_start_chat_with">Pradėti pokalbį su %1$s?</string>
+    <string name="ask_delete_value">Ištrinti %s?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Pašalinti %1$s iš grupės?</string>
+    <string name="open_url_confirmation">Ar norite atverti šią nuorodą?</string>
+
+
     <!-- contact list -->
     <string name="contacts_title">Adresatai</string>
     <string name="contacts_enter_name_or_email">Įveskite vardą ar el. pašto adresą</string>
@@ -265,6 +284,9 @@
     <string name="saved_messages">Įrašytos žinutės</string>
     <string name="chat_contact_request">Adresato užklausa</string>
     <string name="send_failed">Nepavyko išsiųsti žinutės</string>
+    <string name="attachment_failed_to_load">Nepavyko įkelti priedo</string>
+
+
     <!-- search -->
     <string name="search">Ieškoti</string>
     <string name="search_explain">Ieškokite pokalbių, adresatų ir žinučių</string>
@@ -333,6 +355,9 @@
     <string name="delete_account">Ištrinti paskyrą</string>
     <string name="delete_account_ask">Ar tikrai norite ištrinti savo paskyros duomenis?</string>
     <string name="switching_account">Perjungiama paskyra…</string>
+    <!-- Translations: %1$s will be replaced by a more detailed error message -->
+    <string name="configuration_failed_with_error">Konfigūracija patyrė nesėkmę. Klaida: %1$s</string>
+
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Kam persiųsti …</string>
@@ -418,6 +443,16 @@
     <string name="pref_background_custom_image">Tinkintas paveikslas</string>
     <string name="pref_background_custom_color">Tinkinta spalva</string>
     <string name="export_aborted">Eksportavimas nutrauktas.</string>
+    <string name="emoji_people">Žmonės ir kūnas</string>
+    <string name="emoji_nature">Gyvūnai ir gamta</string>
+    <string name="emoji_foods">Maistas ir gėrimai</string>
+    <string name="emoji_activity">Veikla</string>
+    <string name="emoji_places">Kelionės ir vietos</string>
+    <string name="emoji_objects">Objektai</string>
+    <string name="emoji_symbols">Simboliai</string>
+    <string name="emoji_flags">Vėliavos</string>
+
+
     <string name="autodel_device_title">Ištrinti žinutes iš įrenginio</string>
     <string name="autodel_server_title">Ištrinti žinutes iš serverio</string>
     <string name="autodel_confirm">Aš suprantu, ištrinti visas šias žinutes</string>
@@ -572,5 +607,7 @@
     <string name="a11y_delivery_status_read">Pristatymo būsena: Perskaityta</string>
     <string name="a11y_delivery_status_invalid">Neteisinga pristatymo būsena</string>
     <string name="a11y_background_preview_label">Fono peržiūra</string>
+    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+    <string name="pref_background_notifications">Foniniai pranešimai</string>
     <string name="perm_enable_bg_reminder_title">Bakstelėkite čia, norėdami gauti žinutes, kol Delta Chat veikia fone.</string>
     </resources>

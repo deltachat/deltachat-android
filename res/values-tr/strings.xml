@@ -425,6 +425,7 @@
     <string name="pref_profile_info_headline">Profil bilginiz</string>
     <string name="pref_profile_photo">Profil görseli</string>
     <string name="pref_blocked_contacts">Engellenen kişiler</string>
+    <string name="blocked_empty_hint">Kişileri engellerseniz, burada gösterilecekler.</string>
     <string name="pref_profile_photo_remove_ask">Profil görseli kaldırılsın mı?</string>
     <string name="pref_password_and_account_settings">Parola ve hesap</string>
     <string name="pref_who_can_see_profile_explain">Diğer kullanıcılarla iletişim kurarken, profil görseliniz ve adınız iletilerinizin yanında gösterilir. Zaten gönderilen bilgiler silinemeyebilir ya da kaldırılamayabilir.</string>

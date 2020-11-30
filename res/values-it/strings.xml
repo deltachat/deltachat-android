@@ -116,7 +116,7 @@
     <string name="gallery">Galleria</string>
     <string name="images_and_videos">Immagini e video</string>
     <string name="file">File</string>
-    <string name="files">File</string>
+    <string name="files">Files</string>
     <string name="unknown">Sconosciuto</string>
 
     <string name="green">Verde</string>
@@ -425,6 +425,7 @@
     <string name="pref_profile_info_headline">Le tue info profilo</string>
     <string name="pref_profile_photo">Foto profilo</string>
     <string name="pref_blocked_contacts">Contatti bloccati</string>
+    <string name="blocked_empty_hint">Se blocchi dei contatti, verranno elencati qui.</string>
     <string name="pref_profile_photo_remove_ask">Rimuvere la foto profilo?</string>
     <string name="pref_password_and_account_settings">Password e account</string>
     <string name="pref_who_can_see_profile_explain">L\'immagine del tuo profilo e il tuo nome saranno mostrati insieme ai tuoi messaggi quando comunichi con altri utenti. Le informazioni già inviate non possono essere cancellate o rimosse.</string>

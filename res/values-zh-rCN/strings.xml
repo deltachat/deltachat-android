@@ -31,7 +31,7 @@
     <string name="archive">归档</string>
     <string name="unarchive">解档</string>
     <string name="mute">静音</string>
-    <string name="ephemeral_messages">阅后即焚</string>
+    <string name="ephemeral_messages">消息定时销毁</string>
     <string name="ephemeral_messages_hint">这些设置适用于所有使用 Delta Chat 的参与者。 但是，他们可能会复制、保存和转发消息或者使用其他的电子邮件客户端。</string>
     <string name="save">保存</string>
     <string name="chat">聊天</string>
@@ -413,6 +413,7 @@
     <string name="pref_profile_info_headline">您的个人资料</string>
     <string name="pref_profile_photo">个人资料图片</string>
     <string name="pref_blocked_contacts">已屏蔽联系人</string>
+    <string name="blocked_empty_hint">被您屏蔽的联系人将显示于此。</string>
     <string name="pref_profile_photo_remove_ask">移除个人资料图片？</string>
     <string name="pref_password_and_account_settings">密码和账户</string>
     <string name="pref_who_can_see_profile_explain">在与其他用户交流时，您的个人资料图片和名称将与您的消息一起显示。 已经发送的信息不能被删除或者移除。</string>
@@ -579,13 +580,13 @@
     <string name="systemmsg_subject_for_new_contact">来自 %1$s 的消息</string>
     <string name="systemmsg_failed_sending_to">发送消息给 %1$s 失败。</string>
 
-    <string name="systemmsg_ephemeral_timer_disabled">已禁用阅后即焚定时器</string>
-    <string name="systemmsg_ephemeral_timer_enabled">设置阅后即焚定时器为 %1$s 秒</string>
-    <string name="systemmsg_ephemeral_timer_minute">设置阅后即焚定时器为 1 分钟</string>
-    <string name="systemmsg_ephemeral_timer_hour">设置阅后即焚定时器为 1 小时</string>
-    <string name="systemmsg_ephemeral_timer_day">设置阅后即焚定时器为 1 天</string>
-    <string name="systemmsg_ephemeral_timer_week">设置阅后即焚定时器为 1 周</string>
-    <string name="systemmsg_ephemeral_timer_four_weeks">设置阅后即焚定时器为 4 周</string>
+    <string name="systemmsg_ephemeral_timer_disabled">已禁用消息定时销毁计时器</string>
+    <string name="systemmsg_ephemeral_timer_enabled">设置消息定时销毁计时器为 %1$s 秒</string>
+    <string name="systemmsg_ephemeral_timer_minute">设置消息定时销毁计时器为 1 分钟</string>
+    <string name="systemmsg_ephemeral_timer_hour">设置消息定时销毁计时器为 1 小时</string>
+    <string name="systemmsg_ephemeral_timer_day">设置消息定时销毁计时器为 1 天</string>
+    <string name="systemmsg_ephemeral_timer_week">设置消息定时销毁计时器为 1 周</string>
+    <string name="systemmsg_ephemeral_timer_four_weeks">设置消息定时销毁计时器为 4 周</string>
 
     <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
     <string name="systemmsg_chat_protection_disabled">聊天保护已禁用</string>
@@ -744,7 +745,7 @@
     <string name="a11y_delivery_status_invalid">无效的发送状态</string>
     <string name="a11y_message_context_menu_btn_label">消息操作</string>
     <string name="a11y_background_preview_label">背景预览</string>
-    <string name="a11y_disappearing_messages_activated">阅后即焚已激活</string>
+    <string name="a11y_disappearing_messages_activated">消息定时销毁已激活</string>
 
 
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
@@ -764,6 +765,6 @@
     <string name="pref_reliable_service_explain">需要一个永久通知</string>
     <string name="perm_enable_bg_reminder_title">点击此处以在 Delta Chat 处于后台时接收消息。</string>
     <string name="perm_enable_bg_already_done">您已允许 Delta Chat 在后台接收消息。\n\n如果在后台时消息仍没到达，请同时检查系统设置。</string>
-    <string name="update_1_14_android">1.14 更新亮点：\n\n🧹 轻扫以回复：要回复某一具体消息，只需将其向右轻扫（不是这里！这里您不能回复😛）您会在撰写行上方看到一个引用，之后可以照常编写消息。\n\n🔥 阅后即焚 ­—— 时辰已到😀。任意聊天均可被配置为在一段时间后删除已发送与已接收的消息。从聊天菜单中选择“阅后即焚”（重复：不是这里）\n\n👆 于第一条未查看的消息处打开聊天\n\n💾 将东西直接、快速地转发到“保存的消息”（这个可以在这里尝试：长按此消息，然后右上角箭头）\n\n🎃 最后，我们再次恐吓了许多bug！它们大多数都被吓坏了，应该不会再回来了。</string>
+    <string name="update_1_14_android">1.14 更新亮点：\n\n🧹 轻扫以回复：要回复某一具体消息，只需将其向右轻扫（不是这里！这里您不能回复😛）您会在撰写行上方看到一个引用，之后可以照常编写消息。\n\n🔥 消息定时销毁 ­—— 时辰已到😀。任意聊天均可被配置为在一段时间后删除已发送与已接收的消息。从聊天菜单中选择“消息定时销毁”（重复：不是这里）\n\n👆 于第一条未查看的消息处打开聊天\n\n💾 将东西直接、快速地转发到“保存的消息”（这个可以在这里尝试：长按此消息，然后右上角箭头）\n\n🎃 最后，我们再次恐吓了许多bug！它们大多数都被吓坏了，应该不会再回来了。</string>
 
 </resources>

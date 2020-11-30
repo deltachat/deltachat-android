@@ -175,6 +175,8 @@
     <string name="menu_unmute">Çheshtoji</string>
     <string name="menu_export_attachment">Eksporto bashkëngjitje</string>
     <string name="menu_all_media">Krejt mediat</string>
+    <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
+    <string name="show_in_chat">Shfaqe në fjalosje</string>
     <string name="menu_share">Ndajeni me të tjerë</string>
     <string name="menu_block_contact">Bllokoje kontaktin</string>
     <string name="menu_unblock_contact">Zhbllokoje kontaktin</string>
@@ -422,6 +424,7 @@
     <string name="pref_profile_info_headline">Të dhëna tuajat të profilit</string>
     <string name="pref_profile_photo">Foto profili</string>
     <string name="pref_blocked_contacts">Kontakte të bllokuar</string>
+    <string name="blocked_empty_hint">Nëse bllokoni kontakte, do të shfaqen këtu.</string>
     <string name="pref_profile_photo_remove_ask">Të hiqet fotoja e profilit?</string>
     <string name="pref_password_and_account_settings">Fjalëkalim dhe llogari</string>
     <string name="pref_who_can_see_profile_explain">Fotoja dhe emri juaj i profilit do të shfaqen tok me mesazhet, kur komunikoni me përdorues të tjerë. Informacioni i dërguar tashmë s\’mund të fshihet apo të hiqet.</string>

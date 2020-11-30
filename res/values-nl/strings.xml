@@ -425,6 +425,7 @@
     <string name="pref_profile_info_headline">Mijn profiel</string>
     <string name="pref_profile_photo">Profielfoto</string>
     <string name="pref_blocked_contacts">Geblokkeerde contactpersonen</string>
+    <string name="blocked_empty_hint">Geblokkeerde contactpersonen worden hier getoond.</string>
     <string name="pref_profile_photo_remove_ask">Profielfoto verwijderen?</string>
     <string name="pref_password_and_account_settings">Wachtwoord en account</string>
     <string name="pref_who_can_see_profile_explain">Je profielfoto en -naam worden getoond in gesprekken, naast je berichten. Reeds verstuurde informatie kan niet worden verwijderd of teruggehaald.</string>
