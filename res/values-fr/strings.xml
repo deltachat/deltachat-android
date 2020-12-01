@@ -425,6 +425,7 @@
     <string name="pref_profile_info_headline">Informations de votre profil</string>
     <string name="pref_profile_photo">Photo de profil</string>
     <string name="pref_blocked_contacts">Contacts bloqués</string>
+    <string name="blocked_empty_hint">Si vous bloquez des contacts, ils seront affichés ici.</string>
     <string name="pref_profile_photo_remove_ask">Supprimer la photo de profil ?</string>
     <string name="pref_password_and_account_settings">Mot de passe et compte</string>
     <string name="pref_who_can_see_profile_explain">L\'image et le nom de votre profil seront affichés à côté de vos messages lorsque vous communiquez avec d\'autres utilisateurs. Les informations déjà envoyées ne peuvent pas être effacées ou supprimées.</string>
@@ -523,11 +524,11 @@
     <string name="emoji_search_results">Résultats de la recherche</string>
     <string name="emoji_not_found">Pas d\'emoji trouvé</string>
     <string name="emoji_recent">Récemment utilisés</string>
-    <string name="emoji_people">Personnes & corps</string>
-    <string name="emoji_nature">Animaux & nature</string>
-    <string name="emoji_foods">Nourriture & boisson</string>
+    <string name="emoji_people">Personnes &amp; corps</string>
+    <string name="emoji_nature">Animaux &amp; nature</string>
+    <string name="emoji_foods">Nourriture &amp; boisson</string>
     <string name="emoji_activity">Activités</string>
-    <string name="emoji_places">Voyage & lieux</string>
+    <string name="emoji_places">Voyage &amp; lieux</string>
     <string name="emoji_objects">Objets</string>
     <string name="emoji_symbols">Symboles</string>
     <string name="emoji_flags">Drapeaux</string>
