@@ -122,7 +122,6 @@ public class ConversationItem extends LinearLayout
 
   private int incomingBubbleColor;
   private int outgoingBubbleColor;
-  private int forwardedTitleColor;
 
   private final PassthroughClickListener        passthroughClickListener   = new PassthroughClickListener();
 
@@ -265,13 +264,11 @@ public class ConversationItem extends LinearLayout
     final int[]      attributes = new int[] {
         R.attr.conversation_item_incoming_bubble_color,
         R.attr.conversation_item_outgoing_bubble_color,
-        R.attr.conversation_item_incoming_text_secondary_color
     };
     final TypedArray attrs      = context.obtainStyledAttributes(attributes);
 
     incomingBubbleColor = attrs.getColor(0, Color.WHITE);
     outgoingBubbleColor = attrs.getColor(1, Color.WHITE);
-    forwardedTitleColor = attrs.getColor(2, Color.BLACK);
     attrs.recycle();
   }
 
@@ -463,6 +460,7 @@ public class ConversationItem extends LinearLayout
 
       setThumbnailOutlineCorners(messageRecord, isGroupThread);
 
+      bodyBubble.getLayoutParams().width = ViewUtil.dpToPx(readDimen(R.dimen.media_bubble_max_width));
       ViewUtil.updateLayoutParams(bodyText, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
       ViewUtil.updateLayoutParams(groupSenderHolder, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
       footer.setVisibility(VISIBLE);
@@ -641,7 +639,7 @@ public class ConversationItem extends LinearLayout
   private void setGroupMessageStatus() {
     if (messageRecord.isForwarded()) {
       this.groupSender.setText(context.getString(R.string.forwarded_message));
-      this.groupSender.setTextColor(forwardedTitleColor);
+      this.groupSender.setTextColor(context.getResources().getColor(R.color.unknown_sender));
     }
     else if (groupThread && !messageRecord.isOutgoing() && dcContact !=null) {
       this.groupSender.setText(dcContact.getDisplayName());

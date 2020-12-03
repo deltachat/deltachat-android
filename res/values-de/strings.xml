@@ -427,6 +427,7 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="pref_profile_info_headline">Mein Profil</string>
     <string name="pref_profile_photo">Profilbild</string>
     <string name="pref_blocked_contacts">Blockierte Kontakte</string>
+    <string name="blocked_empty_hint">Wenn Sie Kontakte blockieren, werden diese hier angezeigt.</string>
     <string name="pref_profile_photo_remove_ask">Profilbild entfernen?</string>
     <string name="pref_password_and_account_settings">Passwort und E-Mail-Konto</string>
     <string name="pref_who_can_see_profile_explain">Das Profilbild und der Name werden neben gesendeten Nachrichten angezeigt. Bereits gesendete Informationen können nicht mehr gelöscht oder entfernt werden.</string>

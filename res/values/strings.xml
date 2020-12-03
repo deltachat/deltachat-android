@@ -425,6 +425,7 @@
     <string name="pref_profile_info_headline">Your profile info</string>
     <string name="pref_profile_photo">Profile image</string>
     <string name="pref_blocked_contacts">Blocked contacts</string>
+    <string name="blocked_empty_hint">If you block contacts, they will be shown here.</string>
     <string name="pref_profile_photo_remove_ask">Remove profile image?</string>
     <string name="pref_password_and_account_settings">Password and account</string>
     <string name="pref_who_can_see_profile_explain">Your profile image and name will be shown alongside your messages when communicating with other users. Already sent information can not be deleted or removed.</string>

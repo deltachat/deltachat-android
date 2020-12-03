@@ -188,6 +188,8 @@
     <string name="menu_unmute">Zapnúť zvuk</string>
     <string name="menu_export_attachment">Exportovať prílohu</string>
     <string name="menu_all_media">Všetky médiá</string>
+    <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
+    <string name="show_in_chat">Zobraziť v chate</string>
     <string name="menu_share">Zdieľam</string>
     <string name="menu_block_contact">Blokovať kontakt</string>
     <string name="menu_unblock_contact">Odblokovať kontakt</string>
@@ -336,4 +338,92 @@
     <!-- this "Saved" should match the "Saved" from "Saved messages" -->
     <string name="saved">Uložené</string>
     <string name="chat_contact_request">Kontaktná žiadosť</string>
+    <string name="chat_no_contact_requests">Žiadne žiadosti o kontakt.\n\nAk chcete, aby sa tu klasické e-maily zobrazovali ako žiadosti o kontakt, môžete príslušné nastavenie zmeniť v nastaveniach aplikácie.</string>
+    <string name="retry_send">Skúste správu odoslať znova</string>
+    <string name="send_failed">Správu sa nepodarilo odoslať</string>
+    <!-- reasons for a disabled message composer -->
+    <string name="messaging_disabled_not_in_group">Nemôžete písať, pretože nie ste v tejto skupine. Ak sa chcete pripojiť, požiadajte iného člena.</string>
+    <string name="messaging_disabled_device_chat">Tento chat obsahuje miestne generované správy. Preto nemôžete písať žiadne správy.</string>
+    <string name="messaging_disabled_deaddrop">Kliknutím na správu prijmete alebo odmietnete žiadosť o kontakt</string>
+    <string name="cannot_display_unsuported_file_type">Nie je možné zobraziť tento typ súboru:%s</string>
+    <string name="attachment_failed_to_load">Prílohu sa nepodarilo načítať</string>
+
+
+    <!-- map -->
+    <string name="filter_map_on_time">Zobraziť polohy v časovom rámci</string>
+    <string name="show_location_traces">Zobraziť stopy</string>
+    <string name="add_poi">Pošlite zaujímavé miesto</string>
+
+
+    <!-- search -->
+    <string name="search">Vyhľadávanie</string>
+    <string name="search_explain">Vyhľadajte chaty, kontakty a správy</string>
+    <string name="search_no_result_for_x">Neboli nájdené žiadne výsledky pre %s</string>
+
+
+    <!-- create/edit groups, contact/group profile -->
+    <string name="group_name">Názov skupiny</string>
+    <string name="group_avatar">Skupinový obrázok</string>
+    <string name="remove_group_image">Odstrániť skupinový obrázok</string>
+    <string name="change_group_image">Zmeniť skupinový obrázok</string>
+    <string name="group_create_button">Vytvorte skupinu</string>
+    <string name="group_please_enter_group_name">Zadajte názov skupiny.</string>
+    <string name="group_add_members">Pridajte členov</string>
+    <string name="group_hello_draft">Dobrý deň, práve som pre nás vytvoril skupinu \"%1$s\"</string>
+    <string name="group_self_not_in_group">Ak chcete vykonať túto akciu, musíte byť členom skupiny.</string>
+    <string name="profile_encryption">Šifrovanie</string>
+    <string name="profile_shared_chats">Zdieľané chaty</string>
+    <string name="tab_contact">Kontakt</string>
+    <string name="tab_group">Skupina</string>
+    <string name="tab_members">Členovia</string>
+    <string name="tab_gallery">Galéria</string>
+    <string name="tab_docs">Docs</string>
+    <string name="tab_links">Odkazy</string>
+    <string name="tab_map">Mapa</string>
+    <string name="tab_gallery_empty_hint">Tu sa zobrazia obrázky a videá zdieľané v tomto rozhovore.</string>
+    <string name="tab_docs_empty_hint">Tu sa zobrazia dokumenty, hudba a ďalšie súbory zdieľané v tomto rozhovore.</string>
+    <string name="media_preview">Ukážka pre médiá</string>
+    <string name="send_message">Poslať správu</string>
+
+
+    <!-- welcome and login -->
+    <string name="welcome_intro1_message">Posol s najširším publikom na svete. Slobodný a nezávislý.</string>
+    <string name="login_title">Prihlásiť sa</string>
+    <string name="login_header">Prihláste sa na server</string>
+    <string name="login_explain">Prihláste sa pomocou existujúceho e-mailového účtu</string>
+    <string name="login_subheader">Pre známych poskytovateľov e-mailov sa automaticky nastavujú ďalšie nastavenia. Niekedy je potrebné v nastaveniach webu povoliť protokol IMAP. Požiadajte o pomoc svojho poskytovateľa e-mailu alebo priateľov</string>
+    <string name="login_no_servers_hint">Neexistujú žiadne servery Delta Chat, vaše dáta zostanú vo vašom prístroji.</string>
+    <string name="login_inbox">Doručená pošta</string>
+    <string name="login_imap_login">Prihlasovacie meno IMAP</string>
+    <string name="login_imap_server">Server IMAP</string>
+    <string name="login_imap_port">Port IMAP</string>
+    <string name="login_imap_security">Zabezpečenie IMAP</string>
+    <string name="login_outbox">Pošta na odoslanie</string>
+    <string name="login_smtp_login">Prihlasovacie meno pre SMTP</string>
+    <string name="login_smtp_password">Heslo SMTP</string>
+    <string name="login_smtp_server">Server SMTP</string>
+    <string name="login_smtp_port">Port SMTP</string>
+    <string name="login_smtp_security">Zabezpečenie SMTP</string>
+    <string name="login_auth_method">Metóda autorizácie</string>
+    <!-- Translators: %1$s will be replaced by an email address -->
+    <string name="login_oauth2_checking_addr">Prebieha kontrola %1$s</string>
+    <string name="login_info_oauth2_title">Pokračovať v zjednodušenom nastavovaní?</string>
+    <string name="login_info_oauth2_text">Zadaná e-mailová adresa podporuje zjednodušené nastavenie (OAuth 2.0).\n\nV ďalšom kroku povoľte aplikácii Delta Chat, aby fungovala ako vaša aplikácia Chat cez e-mail.\n\nNie sú k dispozícii servery Delta Chat, vaše dáta zostanú vo vašom zariadení .</string>
+    <string name="login_certificate_checks">Osvedčovacie kontroly</string>
+    <string name="login_error_mail">Prosím zadajte platnú emailovú adresu</string>
+    <string name="login_error_server">Zadajte platný server / IP adresu</string>
+    <string name="login_error_port">Zadajte platný port (1–65535)</string>
+    <string name="login_error_required_fields">Zadajte platnú e-mailovú adresu a heslo</string>
+    <string name="import_backup_title">Importovať zálohu</string>
+    <string name="import_backup_ask">Záloha sa našla na „%1$s“.\n\nChcete z nej importovať a použiť všetky dáta a nastavenia?</string>
+    <string name="import_backup_no_backup_found">Neboli nájdené žiadne zálohy.\n\nSkopírujte zálohu na „%1$s“ a skúste to znova. Prípadne stlačte tlačidlo „Spustiť zasielanie správ“ a pokračujte v bežnom procese nastavenia.</string>
+    <!-- Translators: %1$s will be replaced by the email address -->
+    <string name="login_error_cannot_login">Nie je možné prihlásiť sa ako „%1$s“. Skontrolujte správnosť e-mailovej adresy a hesla.</string>
+    <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
+    <string name="login_error_server_response">Odpoveď od%1$s:%2$s\n\nNiektorí poskytovatelia vám môžu poslať e-mailom ďalšie informácie o tomto probléme; mali by ste byť schopní skontrolovať svoju doručenú poštu pomocou svojej bežnej e-mailovej aplikácie alebo webovej stránky. Ak narazíte na problémy, obráťte sa na svojho poskytovateľa alebo priateľov.</string>
+    <!-- TLS certificate checks -->
+    <string name="accept_invalid_certificates">Prijmite neplatné certifikáty</string>
+    <string name="used_settings">Použité nastavenia:</string>
+    <string name="switch_account">Prepnúť účet</string>
+    <string name="add_account">Pridať účet</string>
     </resources>

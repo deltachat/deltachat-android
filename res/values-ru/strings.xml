@@ -188,6 +188,8 @@
     <string name="menu_unmute">Включить уведомления</string>
     <string name="menu_export_attachment">Экспортировать вложение</string>
     <string name="menu_all_media">Все медиафайлы</string>
+    <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
+    <string name="show_in_chat">Показать в чате</string>
     <string name="menu_share">Поделиться</string>
     <string name="menu_block_contact">Заблокировать контакт</string>
     <string name="menu_unblock_contact">Разблокировать контакт</string>
@@ -237,6 +239,12 @@
     <string name="share_location_for_two_hours">2 часа</string>
     <string name="share_location_for_six_hours">6 часов</string>
 
+    <plurals name="ask_send_following_n_files_to">
+        <item quantity="one">Отправить следующий файл %s?</item>
+        <item quantity="few">Отправить следующие %d файла %s?</item>
+        <item quantity="many">Отправить следующие %d файлов %s?</item>
+        <item quantity="other">Отправить следующие %d файлов %s?</item>
+    </plurals>
     <string name="file_saved_to">Файл сохранён в «%1$s».</string>
 
     <string name="videochat">Видеочат</string>
@@ -443,6 +451,7 @@
     <string name="pref_profile_info_headline">Личный профиль</string>
     <string name="pref_profile_photo">Фото профиля</string>
     <string name="pref_blocked_contacts">Заблокированные контакты</string>
+    <string name="blocked_empty_hint">Если вы заблокируете контакты, они будут показаны здесь.</string>
     <string name="pref_profile_photo_remove_ask">Удалить фото профиля?</string>
     <string name="pref_password_and_account_settings">Пароль и аккаунт</string>
     <string name="pref_who_can_see_profile_explain">Изображение профиля и имя будут отображаться при общении с другими пользователями. Уже отправленная информация не может быть удалена или отозвана.</string>
@@ -468,6 +477,7 @@
     <string name="pref_notifications_priority">Приоритет</string>
     <string name="pref_notifications_explain">Включить системные уведомления для новых сообщений</string>
     <string name="pref_show_notification_content">Показывать содержимое сообщений в уведомлениях.</string>
+    <string name="pref_show_notification_content_explain">Показывает отправителя и первые слова сообщения в уведомлениях</string>
     <string name="pref_led_color">Цвет светодиода </string>
     <string name="pref_sound">Звук</string>
     <string name="pref_silent">Беззвучный</string>
@@ -543,6 +553,7 @@
     <string name="emoji_people">Люди &amp; Тело</string>
     <string name="emoji_nature">Животные &amp; Природа</string>
     <string name="emoji_foods">Еда &amp; Напитки</string>
+    <string name="emoji_activity">Активность</string>
     <string name="emoji_places">Путешествия &amp; Места</string>
     <string name="emoji_objects">Объекты</string>
     <string name="emoji_symbols">Символы</string>
@@ -557,6 +568,10 @@
     <string name="autodel_server_title">Удалять сообщения с сервера</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">Вы хотите удалить %1$d сообщений сейчас и все новые загруженные сообщения \"%2$s\" в будущем?\n\n• Это включает в себя все медиафайлы\n\n• Сообщения будут удалены независимо от того, просмотрены они или нет\n\n• \"Сохранённые сообщения\" будут пропущены при локальном удалении</string>
+    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
+    <string name="autodel_server_ask">Вы хотите удалить %1$d сообщений сейчас и все новые сообщения «%2$s» в будущем?\n\n⚠️ Это включает письма, медиа и «Сохраненные сообщения» во всех папках сервера\n\n⚠️ Не используйте эту функцию если вы хотите сохранить данные на сервере\n\n⚠️ Не используйте эту функцию если вы используете другие почтовые клиенты кроме Delta Chat</string>
+    <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
+    <string name="autodel_server_enabled_hint">Это включает почту, медиа и «Сохраненные сообщения» во всех папках сервера. Не используйте эту функцию, если вы хотите сохранить данные на сервере или если вы используете другие почтовые клиенты кроме Delta Chat.</string>
     <string name="autodel_confirm">Я понимаю, удалить все эти сообщения</string>
     <string name="autodel_at_once">Сразу</string>
     <string name="after_30_seconds">Через 30 секунд</string>

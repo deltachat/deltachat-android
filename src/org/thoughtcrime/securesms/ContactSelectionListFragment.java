@@ -30,7 +30,6 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.loader.app.LoaderManager;
 import androidx.loader.content.Loader;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.ActionMode;
@@ -87,18 +86,14 @@ public class ContactSelectionListFragment extends    Fragment
   private static final String TAG = ContactSelectionListFragment.class.getSimpleName();
 
   public static final String MULTI_SELECT          = "multi_select";
-  public static final String REFRESHABLE           = "refreshable";
-  public static final String RECENTS               = "recents";
   public static final String SELECT_VERIFIED_EXTRA = "select_verified";
   public static final String FROM_SHARE_ACTIVITY_EXTRA = "from_share_activity";
   public static final String PRESELECTED_CONTACTS = "preselected_contacts";
 
   private ApplicationDcContext dcContext;
 
-  private TextView                  emptyText;
   private Set<String>               selectedContacts;
   private OnContactSelectedListener onContactSelectedListener;
-  private SwipeRefreshLayout        swipeRefresh;
   private String                    cursorFilter;
   private RecyclerView              recyclerView;
   private StickyHeaderDecoration    listDecoration;
@@ -136,9 +131,7 @@ public class ContactSelectionListFragment extends    Fragment
   public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     View view = inflater.inflate(R.layout.contact_selection_list_fragment, container, false);
 
-    emptyText               = ViewUtil.findById(view, android.R.id.empty);
     recyclerView            = ViewUtil.findById(view, R.id.recycler_view);
-    swipeRefresh            = ViewUtil.findById(view, R.id.swipe_refresh);
     fastScroller            = ViewUtil.findById(view, R.id.fast_scroller);
     recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
     actionModeCallback = new ActionMode.Callback() {
@@ -187,10 +180,6 @@ public class ContactSelectionListFragment extends    Fragment
         }
       }
     };
-
-    // There shouldn't be the need to pull to refresh the contacts
-    // swipeRefresh.setEnabled(getActivity().getIntent().getBooleanExtra(REFRESHABLE, true) && Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN);
-    swipeRefresh.setEnabled(false);
 
     return view;
   }
@@ -309,11 +298,6 @@ public class ContactSelectionListFragment extends    Fragment
 
   public void resetQueryFilter() {
     setQueryFilter(null);
-    swipeRefresh.setRefreshing(false);
-  }
-
-  public void setRefreshing(boolean refreshing) {
-    swipeRefresh.setRefreshing(refreshing);
   }
 
   public void reset() {
@@ -337,7 +321,6 @@ public class ContactSelectionListFragment extends    Fragment
   @Override
   public void onLoadFinished(Loader<DcContactsLoader.Ret> loader, DcContactsLoader.Ret data) {
     ((ContactSelectionListAdapter) recyclerView.getAdapter()).changeData(data);
-    emptyText.setText(R.string.contacts_empty_hint);
     boolean useFastScroller = (recyclerView.getAdapter().getItemCount() > 20);
     recyclerView.setVerticalScrollBarEnabled(!useFastScroller);
     if (useFastScroller) {
@@ -449,10 +432,6 @@ public class ContactSelectionListFragment extends    Fragment
 
     public void setOnContactSelectedListener(OnContactSelectedListener onContactSelectedListener) {
     this.onContactSelectedListener = onContactSelectedListener;
-  }
-
-  public void setOnRefreshListener(SwipeRefreshLayout.OnRefreshListener onRefreshListener) {
-    this.swipeRefresh.setOnRefreshListener(onRefreshListener);
   }
 
   public interface OnContactSelectedListener {

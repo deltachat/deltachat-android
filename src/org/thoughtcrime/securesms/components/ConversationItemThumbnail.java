@@ -1,19 +1,19 @@
 package org.thoughtcrime.securesms.components;
 
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.RectF;
-import android.net.Uri;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.UiThread;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+
+import androidx.annotation.DimenRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.UiThread;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.database.AttachmentDatabase;
@@ -21,6 +21,7 @@ import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.mms.Slide;
 import org.thoughtcrime.securesms.mms.SlideClickListener;
 import org.thoughtcrime.securesms.util.ThemeUtil;
+import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.concurrent.ListenableFuture;
 
 import java.util.concurrent.ExecutionException;
@@ -31,6 +32,7 @@ public class ConversationItemThumbnail extends FrameLayout {
 
   private static final Paint LIGHT_THEME_OUTLINE_PAINT = new Paint();
   private static final Paint DARK_THEME_OUTLINE_PAINT = new Paint();
+  public static final double IMAGE_ASPECT_RATIO = 1.0;
 
   static {
     LIGHT_THEME_OUTLINE_PAINT.setColor(Color.argb((int) (255 * 0.2), 0, 0, 0));
@@ -53,6 +55,8 @@ public class ConversationItemThumbnail extends FrameLayout {
   private ConversationItemFooter footer;
   private Paint                  outlinePaint;
   private CornerMask             cornerMask;
+  private int naturalWidth;
+  private int naturalHeight;
 
   public ConversationItemThumbnail(Context context) {
     super(context);
@@ -79,15 +83,28 @@ public class ConversationItemThumbnail extends FrameLayout {
     this.cornerMask   = new CornerMask(this);
 
     setTouchDelegate(thumbnail.getTouchDelegate());
+  }
 
-    if (attrs != null) {
-      TypedArray typedArray = getContext().getTheme().obtainStyledAttributes(attrs, R.styleable.ConversationItemThumbnail, 0, 0);
-      thumbnail.setBounds(typedArray.getDimensionPixelSize(R.styleable.ConversationItemThumbnail_conversationThumbnail_minWidth, 0),
-                          typedArray.getDimensionPixelSize(R.styleable.ConversationItemThumbnail_conversationThumbnail_maxWidth, 0),
-                          typedArray.getDimensionPixelSize(R.styleable.ConversationItemThumbnail_conversationThumbnail_minHeight, 0),
-                          typedArray.getDimensionPixelSize(R.styleable.ConversationItemThumbnail_conversationThumbnail_maxHeight, 0));
-      typedArray.recycle();
+  @Override
+  protected void onMeasure(int originalWidthMeasureSpec, int originalHeightMeasureSpec) {
+    int width = MeasureSpec.getSize(originalWidthMeasureSpec);
+    int minHeight = readDimen(R.dimen.media_bubble_min_height);
+    int availableHeight = (int) (getResources().getDisplayMetrics().heightPixels * 0.75);
+
+    if (naturalWidth == 0 || naturalHeight == 0) {
+      super.onMeasure(originalWidthMeasureSpec, originalHeightMeasureSpec);
+      return;
     }
+
+    // Compute height:
+    int bestHeight = width * naturalHeight / naturalWidth;
+    int maxHeight = (int) (width * IMAGE_ASPECT_RATIO);
+    int height = Util.clamp(bestHeight, 0, maxHeight);
+
+    height = Util.clamp(height, minHeight, availableHeight);
+    int heightMeasureSpec = MeasureSpec.makeMeasureSpec(height, MeasureSpec.EXACTLY);
+
+    super.onMeasure(originalWidthMeasureSpec, heightMeasureSpec);
   }
 
   @SuppressWarnings("SuspiciousNameCombination")
@@ -163,29 +180,24 @@ public class ConversationItemThumbnail extends FrameLayout {
     });
   }
 
-  @UiThread
-  public void setImageResource(@NonNull GlideRequests glideRequests, @NonNull Slide slide)
-  {
-    refreshSlideAttachmentState(thumbnail.setImageResource(glideRequests, slide), slide);
+  public void setThumbnailClickListener(SlideClickListener listener) {
+    thumbnail.setThumbnailClickListener(listener);
   }
 
   @UiThread
   public void setImageResource(@NonNull GlideRequests glideRequests, @NonNull Slide slide,
                                int naturalWidth, int naturalHeight)
   {
-    refreshSlideAttachmentState(thumbnail.setImageResource(glideRequests, slide, naturalWidth, naturalHeight), slide);
-
-  }
-
-  public void setImageResource(@NonNull GlideRequests glideRequests, @NonNull Uri uri) {
-    thumbnail.setImageResource(glideRequests, uri);
-  }
-
-  public void setThumbnailClickListener(SlideClickListener listener) {
-    thumbnail.setThumbnailClickListener(listener);
+    this.naturalWidth = naturalWidth;
+    this.naturalHeight = naturalHeight;
+    refreshSlideAttachmentState(thumbnail.setImageResource(glideRequests, slide), slide);
   }
 
   public void clear(GlideRequests glideRequests) {
     thumbnail.clear(glideRequests);
+  }
+
+  private int readDimen(@DimenRes int dimenId) {
+    return getResources().getDimensionPixelOffset(dimenId);
   }
 }

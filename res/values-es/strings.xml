@@ -176,6 +176,8 @@
     <string name="menu_unmute">Des-silenciar </string>
     <string name="menu_export_attachment">Exportar adjunto</string>
     <string name="menu_all_media">Toda la multimedia</string>
+    <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
+    <string name="show_in_chat">Mostrar en el chat</string>
     <string name="menu_share">Compartir</string>
     <string name="menu_block_contact">Bloquear contacto</string>
     <string name="menu_unblock_contact">Desbloquear contacto</string>
@@ -539,6 +541,10 @@
     <string name="autodel_server_title">Borrar mensajes del servidor</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">¿Desea borrar %1$d mensajes ahora y todos los mensajes recientemente alcanzados \"%2$s\" en el futuro?\n\n• Esto incluye toda la multimedia\n\n• Los mensajes serán eliminados siendo vistos o no\n\n• \"Mensajes guardados\" serán saltados de este proceso local</string>
+    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
+    <string name="autodel_server_ask">¿Deseas borrar %1$d mensajes ahora y todos los mensajes recibidos en \"%2$s\"  al futuro?\n\n⚠️ Esto incluye correos, multimedia y \"Mensajes guardados\" en todas las carpetas del servidor. No uses esta función sis quieres mantener tus datos en el servidor o si estas usando otros clientes de correo más allá de Delta Chat\n\n⚠️ No uses esta función si deseas mantener tus datos en el servidor\n\n⚠️ No uses esta función si estás usando otros clientes de correo más allá de Delta Chat</string>
+    <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
+    <string name="autodel_server_enabled_hint">Esto incluye correos, multimedia  y \"Mensajes guardados\" en todas las carpetas del servidor. No uses esta función sis quieres mantener tus datos en el servidor o si estas usando otros clientes de correo más allá de Delta Chat</string>
     <string name="autodel_confirm">Comprendo, borrar todos los mensajes</string>
     <string name="autodel_at_once">Inmediatamente</string>
     <string name="after_30_seconds">Luego de 30 segundos</string>

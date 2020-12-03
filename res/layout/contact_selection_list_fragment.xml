@@ -4,11 +4,6 @@
              xmlns:app="http://schemas.android.com/apk/res-auto"
              xmlns:tools="http://schemas.android.com/tools"
              android:orientation="vertical">
-    
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-            android:id="@+id/swipe_refresh"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"
@@ -21,11 +16,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center|center_vertical"
-            android:layout_marginTop="15dp"
-            android:text="@string/one_moment"
-            android:textSize="20sp" />
-
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+            android:padding="16dp"
+            android:lineSpacingMultiplier="1.3"
+            android:visibility="gone"
+            android:textSize="20sp"
+            tools:text="No contacts." />
 
     <org.thoughtcrime.securesms.components.RecyclerViewFastScroller
         android:id="@+id/fast_scroller"
