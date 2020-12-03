@@ -176,6 +176,8 @@
     <string name="menu_unmute">Reativar notificações</string>
     <string name="menu_export_attachment">Exportar o anexo</string>
     <string name="menu_all_media">Todos os arquivos de mídia</string>
+    <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
+    <string name="show_in_chat">Mostrar na conversa</string>
     <string name="menu_share">Compartilhar</string>
     <string name="menu_block_contact">Bloquear contato</string>
     <string name="menu_unblock_contact">Desbloquear contato</string>
@@ -225,6 +227,10 @@
     <string name="share_location_for_two_hours">por 2 horas</string>
     <string name="share_location_for_six_hours">por 6 horas</string>
 
+    <plurals name="ask_send_following_n_files_to">
+        <item quantity="one">Enviar o seguinte arquivo para %s?</item>
+        <item quantity="other">Enviar os seguintes arquivos %d para %s?</item>
+    </plurals>
     <string name="file_saved_to">Arquivo salvo em \"%1$s\".</string>
 
     <string name="videochat">Vídeo conversa</string>
@@ -235,6 +241,9 @@
     <string name="videochat_will_open_in_your_browser">Esta conversa em vídeo vai abrir no seu navegador.</string>
     <string name="videochat_tap_to_join">Clique para entrar</string>
     <string name="videochat_tap_to_open">Clique para abrir</string>
+    <string name="videochat_instance">Instância de conversa de vídeo</string>
+    <string name="videochat_instance_placeholder">Sua instância de conversa de vídeo</string>
+    <string name="videochat_invitation">Convite para conversa de vídeo</string>
     <!-- get confirmations -->
     <string name="ask_leave_group">Quer mesmo sair do grupo?</string>
     <plurals name="ask_delete_chat">
