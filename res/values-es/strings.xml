@@ -32,7 +32,7 @@
     <string name="unarchive">Des-archivar</string>
     <string name="mute">Silenciar</string>
     <string name="ephemeral_messages">Desaparición de mensajes</string>
-    <string name="ephemeral_messages_hint">Estos ajustes se aplican a todos los participantes que usan Delta Chat. Sin embargo, pueden copiar, guardar y reenviar mensajes o usar otros clientes de correo</string>
+    <string name="ephemeral_messages_hint">Estos ajustes se aplican a todos los participantes que usan DeltaLab. Sin embargo, pueden copiar, guardar y reenviar mensajes o usar otros clientes de correo</string>
     <string name="save">Guardar</string>
     <string name="chat">Chat</string>
     <string name="media">Multimedia</string>
@@ -543,9 +543,9 @@
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">¿Desea borrar %1$d mensajes ahora y todos los mensajes recientemente alcanzados \"%2$s\" en el futuro?\n\n• Esto incluye toda la multimedia\n\n• Los mensajes serán eliminados siendo vistos o no\n\n• \"Mensajes guardados\" serán saltados de este proceso local</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
-    <string name="autodel_server_ask">¿Deseas borrar %1$d mensajes ahora y todos los mensajes recibidos en \"%2$s\"  al futuro?\n\n⚠️ Esto incluye correos, multimedia y \"Mensajes guardados\" en todas las carpetas del servidor. No uses esta función sis quieres mantener tus datos en el servidor o si estas usando otros clientes de correo más allá de Delta Chat\n\n⚠️ No uses esta función si deseas mantener tus datos en el servidor\n\n⚠️ No uses esta función si estás usando otros clientes de correo más allá de Delta Chat</string>
+    <string name="autodel_server_ask">¿Deseas borrar %1$d mensajes ahora y todos los mensajes recibidos en \"%2$s\"  al futuro?\n\n⚠️ Esto incluye correos, multimedia y \"Mensajes guardados\" en todas las carpetas del servidor. No uses esta función si quieres mantener tus datos en el servidor o si estas usando otros clientes de correo más allá de DeltaLab\n\n⚠️ No uses esta función si deseas mantener tus datos en el servidor\n\n⚠️ No uses esta función si estás usando otros clientes de correo más allá de DeltaLab</string>
     <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
-    <string name="autodel_server_enabled_hint">Esto incluye correos, multimedia  y \"Mensajes guardados\" en todas las carpetas del servidor. No uses esta función sis quieres mantener tus datos en el servidor o si estas usando otros clientes de correo más allá de Delta Chat</string>
+    <string name="autodel_server_enabled_hint">Esto incluye correos, multimedia  y \"Mensajes guardados\" en todas las carpetas del servidor. No uses esta función si quieres mantener tus datos en el servidor o si estas usando otros clientes de correo más allá de DeltaLab</string>
     <string name="autodel_confirm">Comprendo, borrar todos los mensajes</string>
     <string name="autodel_at_once">Inmediatamente</string>
     <string name="after_30_seconds">Luego de 30 segundos</string>
@@ -642,7 +642,7 @@
     <string name="qraccount_ask_create_and_login_another">¿Crear una nueva dirección de e-mail en \"%1$s\" e ingresar ahí?\n\nTu cuenta existente no será eliminada. Usar el ítem \"Cambiar cuenta\" para cambiar entre tus cuentas.</string>
     <string name="qraccount_success_enter_name">Ingreso satisfactorio—tu dirección de email es %1$s\n\nSi lo deseas, puedes ingresar un nombre y una imagen de perfil, que será mostrada a los usuarios que escribas.</string>
     <string name="qraccount_qr_code_cannot_be_used">El código QR escaneado no puede ser usado para configurar una nueva cuenta</string>
-    <string name="qraccount_use_on_new_install">El código QR escaneado esta configurando la nueva cuenta. Puedes escanear el código QR cuando estés preparando una nueva instalación de Delta Chat</string>
+    <string name="qraccount_use_on_new_install">El código QR escaneado esta configurando la nueva cuenta. Puedes escanear el código QR cuando estés preparando una nueva instalación de DeltaLab</string>
     <string name="contact_verified">%1$s verificado.</string>
     <string name="contact_not_verified">No se pudo verificar %1$s</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
@@ -667,10 +667,10 @@
     <!-- permissions -->
     <string name="perm_required_title">Permiso requerido</string>
     <string name="perm_continue">Continuar</string>
-    <string name="perm_explain_access_to_camera_denied">Delta Chat requiere el permiso de Cámara para tomar fotos o videos, pero ha sido denegado de forma permanente. Por favor, vaya al menú de configuración de aplicaciones, seleccione \"Permisos\" y habilite \"Cámara\".</string>
-    <string name="perm_explain_access_to_mic_denied">Delta Chat requiere el permiso de Micrófono para enviar mensajes de audio, pero ha sido denegado de forma permanente. Por favor, vaya al menú de configuración de aplicaciones, seleccione \"Permisos\" y habilite \"Micrófono\".</string>
-    <string name="perm_explain_access_to_storage_denied">Delta Chat requiere el permiso de Almacenamiento para adjuntar o exportar fotos, videos o audio, pero ha sido denegado de forma permanente. Por favor, vaya al menú de configuración de aplicaciones, seleccione \"Permisos\" y habilite \"Almacenamiento\".</string>
-    <string name="perm_explain_access_to_location_denied">Delta Chat requiere el permiso de Ubicación para adjuntar una ubicación, pero ha sido denegado de forma permanente. Por favor, vaya al menú de configuración de aplicaciones, seleccione \"Permisos\" y habilite \"Ubicación\".</string>
+    <string name="perm_explain_access_to_camera_denied">DeltaLab requiere el permiso de Cámara para tomar fotos o videos, pero ha sido denegado de forma permanente. Por favor, vaya al menú de configuración de aplicaciones, seleccione \"Permisos\" y habilite \"Cámara\".</string>
+    <string name="perm_explain_access_to_mic_denied">DeltaLab requiere el permiso de Micrófono para enviar mensajes de audio, pero ha sido denegado de forma permanente. Por favor, vaya al menú de configuración de aplicaciones, seleccione \"Permisos\" y habilite \"Micrófono\".</string>
+    <string name="perm_explain_access_to_storage_denied">DeltaLab requiere el permiso de Almacenamiento para adjuntar o exportar fotos, videos o audio, pero ha sido denegado de forma permanente. Por favor, vaya al menú de configuración de aplicaciones, seleccione \"Permisos\" y habilite \"Almacenamiento\".</string>
+    <string name="perm_explain_access_to_location_denied">DeltaLab requiere el permiso de Ubicación para adjuntar una ubicación, pero ha sido denegado de forma permanente. Por favor, vaya al menú de configuración de aplicaciones, seleccione \"Permisos\" y habilite \"Ubicación\".</string>
 
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Dibuja para difuminar</string>
@@ -679,9 +679,9 @@
     <string name="encrypted_message">Mensaje cifrado</string>
 
     <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
-    <string name="about_offical_app_desktop">Esta es la aplicación oficial de Delta Chat para escritorio</string>
+    <string name="about_offical_app_desktop">Esta es la aplicación oficial de DeltaLab para escritorio</string>
     <string name="about_licensed_under_desktop">El software está licenciado para GNU GPL version 3 y el código está disponible en GitHub</string>
-    <string name="welcome_desktop">Bienvenido a Delta Chat</string>
+    <string name="welcome_desktop">Bienvenido a DeltaLab</string>
     <string name="login_known_accounts_title_desktop">Cuentas conocidas</string>
     <string name="global_menu_preferences_language_desktop">Seleccione Idioma...</string>
     <string name="global_menu_file_desktop">Archivo</string>
@@ -765,18 +765,18 @@
     <string name="InfoPlist_NSContactsUsageDescription">Al permitir acceder a tu libreta de direcciones podrás chatear con los contactos de tu dispositivo.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Al permitir el acceso al micrófono podrás grabar audio.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Al permitir el acceso a la galería de fotos podrás subir tus imágenes desde allí.</string>
-    <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat quiere guardar imágenes en tu galería</string>
+    <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">DeltaLab quiere guardar imágenes en tu galería</string>
 
 
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="pref_background_notifications">Notificaciones en segundo plano</string>
     <string name="pref_background_notifications_explain">Usar la conexión de segundo plano a tu servidor y requerir ignorar las optimizaciones de batería</string>
-    <string name="pref_background_notifications_rationale">Para mantener la conexión de tu servidor email y recibir mensajes en segundo plano, ignorar las optimizaciones en el próximo paso.\n\nDelta Chat usa pocos recursos y cuida no drenar tu batería</string>
+    <string name="pref_background_notifications_rationale">Para mantener la conexión de tu servidor email y recibir mensajes en segundo plano, ignorar las optimizaciones en el próximo paso.\n\nDeltaLab usa pocos recursos y cuida no drenar tu batería</string>
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="pref_reliable_service">Conexión en segundo plano confiable</string>
     <string name="pref_reliable_service_explain">Requiere notificación permanente</string>
-    <string name="perm_enable_bg_reminder_title">Toque aquí para recibir mensajes mientras Delta Chat está en segundo plano.</string>
-    <string name="perm_enable_bg_already_done">Ya has permitido que Delta Chat reciba mensajes en segundo plano.\n\nSi los mensajes aún no llegan en segundo plano, compruebe también la configuración de su sistema.</string>
+    <string name="perm_enable_bg_reminder_title">Toque aquí para recibir mensajes mientras DeltaLab está en segundo plano.</string>
+    <string name="perm_enable_bg_already_done">Ya has permitido que DeltaLab reciba mensajes en segundo plano.\n\nSi los mensajes aún no llegan en segundo plano, compruebe también la configuración de su sistema.</string>
     <string name="update_1_14_android">Algunas notas de la actualización 1.14:\n\n🧹 Tirar para responder: Para contestar un mensaje concreto, simplemente tira hacia la derecha (¡no aquí! no puedes responder aquí  😛) Verás una cita arriba de la linea de escritura y puedes continuar escribiendo como siempre.\n\n🔥 Mensajes que desaparecen - el momento ha llegado 😀. Cualquier chat puede ser configurado para borrar los mensajes enviados y recibidos luego de un tiempo. Selecciona \"Borrado de mensajes\" del menú del chat (nuevamente: no aquí)\n\n👆 Los chats se abren con el primer mensaje no visto\n\n💾 Reenviar cosas a \"Mensajes guardados\" directamente y más rápido (se puede probar aquí: selecciona este mensaje y luego toca en la flecha del sector superior derecho)\n\n🎃 Finalmente, ¡ya los espantamos con muchos bugs! Pero muchos de ellos fueron ahuyentados, no van a volver</string>
 
 </resources>
