@@ -85,14 +85,11 @@ import java.util.regex.Pattern;
 public class ConversationItem extends LinearLayout
     implements BindableConversationItem
 {
-
   private static final String TAG = ConversationItem.class.getSimpleName();
 
   private static final Rect SWIPE_RECT = new Rect();
 
   private static final Pattern CMD_PATTERN = Pattern.compile("(?<=^|\\s)/[a-zA-Z][a-zA-Z@\\d_/.-]{0,254}");
-  private static final Pattern MENTION_PATTERN = Pattern.compile("(?<=^|\\s)@([\\w\\d@_.-]+)");
-  private static final Pattern HASHTAG_PATTERN = Pattern.compile("(?<=^|\\s)#([\\w\\d_-]+)");
   private static final int MAX_MEASURE_CALLS = 3;
   static long PULSE_HIGHLIGHT_MILLIS = 500;
 
@@ -345,10 +342,6 @@ public class ConversationItem extends LinearLayout
     return dcMsg.getType()==DcMsg.DC_MSG_FILE && !dcMsg.isSetupMessage();
   }
 
-  private boolean hasSticker(DcMsg dcMsg) {
-    return dcMsg.getType()==DcMsg.DC_MSG_STICKER;
-  }
-
   private void setBodyText(DcMsg messageRecord) {
     bodyText.setClickable(false);
     bodyText.setFocusable(false);
@@ -417,7 +410,7 @@ public class ConversationItem extends LinearLayout
       ViewUtil.updateLayoutParams(groupSenderHolder, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
       footer.setVisibility(VISIBLE);
     }
-    else if (hasDocument(messageRecord) || hasSticker(messageRecord)) {
+    else if (hasDocument(messageRecord)) {
       documentViewStub.get().setVisibility(View.VISIBLE);
       if (mediaThumbnailStub.resolved()) mediaThumbnailStub.get().setVisibility(View.GONE);
       if (audioViewStub.resolved())      audioViewStub.get().setVisibility(View.GONE);
@@ -547,12 +540,6 @@ public class ConversationItem extends LinearLayout
     // do this first to avoid `/xkcd_123456` to be treated partly as a phone number
     if (Linkify.addLinks(messageBody, CMD_PATTERN, "cmd:", null, null)) {
       replaceURLSpan(messageBody); // replace URLSpan so that it is not removed on the next addLinks() call
-    }
-    if (Linkify.addLinks(messageBody, MENTION_PATTERN, "mention:", null, null)) {
-      replaceURLSpan(messageBody);
-    }
-    if (Linkify.addLinks(messageBody, HASHTAG_PATTERN, "tag:", null, null)) {
-      replaceURLSpan(messageBody);
     }
 
     // linkyfiy urls etc., this removes all existing URLSpan
@@ -692,12 +679,8 @@ public class ConversationItem extends LinearLayout
 
   private void setMessageShape(@NonNull DcMsg current) {
     int background;
-    if (current.getType()==DcMsg.DC_MSG_STICKER) {
-	background = R.drawable.void_background;
-    } else {
-	background = current.isOutgoing() ? R.drawable.message_bubble_background_sent_alone
-	                                  : R.drawable.message_bubble_background_received_alone;
-    }
+    background = current.isOutgoing() ? R.drawable.message_bubble_background_sent_alone
+                                      : R.drawable.message_bubble_background_received_alone;
     bodyBubble.setBackgroundResource(background);
   }
 

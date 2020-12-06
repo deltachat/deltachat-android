@@ -31,15 +31,4 @@ public class DocumentSlide extends Slide {
     return true;
   }
 
-  public boolean hasAnimation() {
-    return getFileName().or("").endsWith(".tgs");
-  }
-
-  public boolean hasSticker() {
-      if (this.attachment instanceof DcAttachment) {
-	  return (((DcAttachment) this.attachment).getType()==DcMsg.DC_MSG_STICKER);
-      }
-    return false;
-  }
-
 }

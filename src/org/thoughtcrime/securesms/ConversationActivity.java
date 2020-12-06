@@ -125,7 +125,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
-import java.util.regex.Matcher;
 
 import static org.thoughtcrime.securesms.NewConversationActivity.MAILTO;
 import static org.thoughtcrime.securesms.TransportOption.Type;
@@ -167,9 +166,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private static final int RECORD_VIDEO        = 8;
   private static final int PICK_LOCATION       = 9;  // TODO: i think, this can be deleted
   private static final int SMS_DEFAULT         = 11; // TODO: i think, this can be deleted
-  private static final int PICK_STICKER        = 12;
 
-  private   Menu                        menu;
   private   GlideRequests               glideRequests;
   protected ComposeText                 composeText;
   private   AnimatingToggle             buttonToggle;
@@ -203,14 +200,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   private final DynamicTheme       dynamicTheme    = new DynamicTheme();
   private final DynamicLanguage    dynamicLanguage = new DynamicLanguage();
-
-  public void openSearch(String text) {
-      MenuItem searchItem = menu.findItem(R.id.menu_search_chat);
-      searchItem.expandActionView();
-      SearchView searchView = (SearchView) searchItem.getActionView();
-      searchView.setQuery(text, true);
-      searchView.clearFocus();  // hide keyboard
-  }
 
   @Override
   protected void onPreCreate() {
@@ -380,9 +369,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       setMedia(data.getData(), mediaType);
 
       break;
-    case PICK_STICKER:
-      setMedia(data.getData(), MediaType.DOCUMENT);
-      break;
     case PICK_DOCUMENT:
       setMedia(data.getData(), MediaType.DOCUMENT);
       break;
@@ -440,7 +426,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   @Override
   public boolean onPrepareOptionsMenu(Menu menu) {
-    this.menu = menu;
     MenuInflater inflater = this.getMenuInflater();
     menu.clear();
 
@@ -870,7 +855,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     backgroundView        = ViewUtil.findById(this, R.id.conversation_background);
 
     ImageButton quickCameraToggle = ViewUtil.findById(this, R.id.quick_camera_toggle);
-    ImageButton quickStickerToggle = ViewUtil.findById(this,R.id.quick_sticker_toggle);
 
     container.addOnKeyboardShownListener(this);
     container.addOnKeyboardHiddenListener(backgroundView);
@@ -903,8 +887,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     composeText.setOnEditorActionListener(sendButtonListener);
     composeText.setOnClickListener(composeKeyPressedListener);
     composeText.setOnFocusChangeListener(composeKeyPressedListener);
-
-    quickStickerToggle.setOnClickListener(new QuickStickerListener());
 
     if (QuickAttachmentDrawer.isDeviceSupported(this)) {
       quickAttachmentDrawer.setListener(this);
@@ -1379,22 +1361,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       intent.setData(uri);
 
       onActivityResult(PICK_GALLERY, RESULT_OK, intent);
-    }
-  }
-
-  private class QuickStickerListener implements OnClickListener{
-
-    @Override
-    public void onClick(View v) {
-      Permissions.with(ConversationActivity.this)
-          .request(Manifest.permission.READ_EXTERNAL_STORAGE,
-              Manifest.permission.WRITE_EXTERNAL_STORAGE)
-          .ifNecessary()
-          .withPermanentDenialDialog(getString(R.string.perm_explain_access_to_storage_denied))
-          .onAllGranted(()->{
-            startActivityForResult(new Intent(ConversationActivity.this, AnimatedStickerActivity.class),PICK_STICKER);
-          })
-          .execute();
     }
   }
 

@@ -19,9 +19,7 @@ package org.thoughtcrime.securesms.contacts;
 import android.content.Context;
 import android.database.Cursor;
 import android.provider.ContactsContract;
-import android.util.Log;
 
-import org.thoughtcrime.securesms.ContactSelectionListFragment;
 import org.thoughtcrime.securesms.util.Hash;
 import org.thoughtcrime.securesms.util.Prefs;
 
@@ -43,7 +41,6 @@ import java.util.Set;
  */
 
 public class ContactAccessor {
-  private static final String TAG = ContactSelectionListFragment.class.getSimpleName();
 
   private static final int CONTACT_CURSOR_NAME = 0;
 
@@ -69,30 +66,13 @@ public class ContactAccessor {
     Set<String> contactPhotoIdentifiers = new HashSet<>();
     while (systemContactsCursor != null && systemContactsCursor.moveToNext()) {
 
-      String name;
-      try {
-        name = systemContactsCursor.getString(CONTACT_CURSOR_NAME);
-        if (name != null) {
-          name = name.replace("\r", ""); // remove characters later used as field separator
-          name = name.replace("\n", "");
-        } else {
-          name = "";
-        }
-      } catch(Exception e) {
-        Log.e(TAG, "Can't get contact name: " + e);
-        name = "";
-      }
+      String name = systemContactsCursor.getString(CONTACT_CURSOR_NAME);
+      name = name.replace("\r", ""); // remove characters later used as field separator
+      name = name.replace("\n", "");
 
-      String mail = null;
-      try {
-        mail = systemContactsCursor.getString(CONTACT_CURSOR_MAIL);
-        if (mail != null) {
-          mail = mail.replace("\r", ""); // remove characters later used as field separator
-          mail = mail.replace("\n", "");
-        }
-      } catch(Exception e) {
-        Log.e(TAG, "Can't get contact addr: " + e);
-      }
+      String mail = systemContactsCursor.getString(CONTACT_CURSOR_MAIL);
+      mail = mail.replace("\r", ""); // remove characters later used as field separator
+      mail = mail.replace("\n", "");
 
       String contactId = systemContactsCursor.getString(CONTACT_CURSOR_CONTACT_ID);
       if (contactId != null) {

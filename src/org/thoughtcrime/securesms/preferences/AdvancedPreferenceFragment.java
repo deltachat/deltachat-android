@@ -6,7 +6,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.os.Environment;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -25,19 +24,9 @@ import org.thoughtcrime.securesms.LogViewActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.permissions.Permissions;
-import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.ScreenLockUtil;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.views.ProgressDialog;
-
-import java.io.File;
-import java.io.FileFilter;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
 
 import static android.app.Activity.RESULT_OK;
 import static android.text.InputType.TYPE_TEXT_VARIATION_URI;
@@ -112,30 +101,6 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
     Preference webrtcInstance = this.findPreference("pref_webrtc_instance");
     webrtcInstance.setOnPreferenceClickListener(new WebrtcInstanceListener());
     updateWebrtcSummary();
-
-    Preference importMap=this.findPreference("pref_location_streaming_import");
-    Preference exportMap=this.findPreference("pref_location_streaming_export");
-    importMap.setOnPreferenceClickListener(new ImportMapListener());
-    exportMap.setOnPreferenceClickListener(new ExportMapListener());
-    this.findPreference("pref_location_streaming_enabled").setOnPreferenceChangeListener((preference, newValue) -> {
-      if(newValue instanceof Boolean){
-        if (((Boolean)newValue)) {
-          importMap.setEnabled(true);
-          exportMap.setEnabled(true);
-        }else{
-          importMap.setEnabled(false);
-          exportMap.setEnabled(false);
-        }
-      }
-      return true;
-    });
-    if (Prefs.isLocationStreamingEnabled(getContext())){
-      importMap.setEnabled(true);
-      exportMap.setEnabled(true);
-    }else{
-      importMap.setEnabled(false);
-      exportMap.setEnabled(false);
-    }
   }
 
   private boolean handleImapCheck(Preference preference, Object newValue, String dc_config_name) {
@@ -356,93 +321,5 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
               .show();
         })
         .execute();
-  }
-
-  private class ImportMapListener implements Preference.OnPreferenceClickListener {
-    @Override
-    public boolean onPreferenceClick(Preference preference) {
-      performImport();
-      return true;
-    }
-  }
-
-  private void performImport() {
-    Permissions.with(getActivity())
-        .request(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)
-        .ifNecessary()
-        .onAllGranted(() -> {
-		File download = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
-		List<File> files = Arrays.asList(download.listFiles(new FileFilter(){
-			@Override
-			public boolean accept(File pathname) {
-			    return pathname.getPath().endsWith("mbgl-offline.db");
-			}
-		    }));
-		if (files.size() > 0) {
-		    File filesDir = getActivity().getFilesDir();
-		    File mapExternal = files.get(files.size()-1);
-		    new AlertDialog.Builder(getActivity())
-			.setTitle(R.string.pref_map_import)
-			.setMessage(getActivity().getString(R.string.pref_map_import_ask) + "\n" + mapExternal.getPath())
-			.setNegativeButton(android.R.string.cancel, (dialog, which) -> {})
-			.setPositiveButton(android.R.string.ok, (dialogInterface, i) -> {
-				try {
-				    File map = new File(filesDir,"mbgl-offline.db");
-				    if (map.exists()) {
-					map.delete();
-				    }
-				    map = new File(filesDir,"mbgl-offline.db");
-				    map.createNewFile();
-				    Util.copy(new FileInputStream(mapExternal),new FileOutputStream(map));
-				    Toast.makeText(getContext(), R.string.pref_map_import_done, Toast.LENGTH_SHORT).show();
-				} catch (IOException e) {
-				    e.printStackTrace();
-				}
-			}).show();
-		}else {
-		    Toast.makeText(getContext(), R.string.pref_map_backup_not_found, Toast.LENGTH_SHORT).show();
-		}
-	    }).execute();
-  }
-
-  private class ExportMapListener implements Preference.OnPreferenceClickListener {
-    @Override
-    public boolean onPreferenceClick(Preference preference) {
-      performExport();
-      return true;
-    }
-  }
-
-  private void performExport() {
-    File filesDir = getActivity().getFilesDir();
-    File map = new File(filesDir,"mbgl-offline.db");
-    if(map.exists()) {
-	Permissions.with(getActivity())
-	    .request(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)
-	    .ifNecessary()
-	    .onAllGranted(() -> {
-		    new AlertDialog.Builder(getActivity())
-			.setTitle(R.string.pref_map_export)
-			.setMessage(R.string.pref_map_backup_explain)
-			.setNegativeButton(android.R.string.cancel, null)
-			.setPositiveButton(android.R.string.ok, (dialogInterface, i) -> {
-				File mapExternal = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), new Date().getTime()+map.getName());
-				if (!mapExternal.exists()) {
-				    try {
-					mapExternal.createNewFile();
-					Util.copy(new FileInputStream(map), new FileOutputStream(mapExternal));
-					Toast.makeText(getContext(), R.string.pref_map_backup_done, Toast.LENGTH_SHORT).show();
-				    } catch (IOException e) {
-					e.printStackTrace();
-					Toast.makeText(getContext(), R.string.pref_map_backup_fail, Toast.LENGTH_SHORT).show();
-				    }
-				}
-			})
-			.show();
-		})
-	    .execute();
-    } else {
-      Toast.makeText(this.getContext(), R.string.pref_map_backup_not_found, Toast.LENGTH_SHORT).show();
-    }
   }
 }

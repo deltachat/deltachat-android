@@ -273,10 +273,6 @@ public class ConversationListItem extends RelativeLayout
           unreadIndicator.setVisibility(View.GONE);
         }
         else {
-	    final TypedArray attrs = getContext().obtainStyledAttributes(new int[] {
-		    R.attr.conversation_list_item_unreadcount_color,
-	    });
-
           unreadIndicator.setImageDrawable(TextDrawable.builder()
               .beginConfig()
               .width(ViewUtil.dpToPx(getContext(), 24))
@@ -284,7 +280,7 @@ public class ConversationListItem extends RelativeLayout
               .textColor(Color.WHITE)
               .bold()
               .endConfig()
-              .buildRound(String.valueOf(unreadCount), attrs.getColor(0, Color.BLACK)));
+              .buildRound(String.valueOf(unreadCount), getResources().getColor(R.color.green_A700)));
           unreadIndicator.setVisibility(View.VISIBLE);
         }
       }

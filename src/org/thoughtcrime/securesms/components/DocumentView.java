@@ -8,24 +8,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.airbnb.lottie.LottieAnimationView;
-import com.airbnb.lottie.LottieComposition;
-import com.airbnb.lottie.LottieCompositionFactory;
-import com.airbnb.lottie.LottieResult;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.mms.DocumentSlide;
 import org.thoughtcrime.securesms.mms.SlideClickListener;
 import org.thoughtcrime.securesms.util.Util;
-import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.guava.Optional;
-
-import java.util.zip.GZIPInputStream;
 
 public class DocumentView extends FrameLayout {
 
@@ -34,7 +24,6 @@ public class DocumentView extends FrameLayout {
   private final @NonNull View            container;
   private final @NonNull TextView        fileName;
   private final @NonNull TextView        fileSize;
-  private final @NonNull LottieAnimationView lottie;
 
   private @Nullable SlideClickListener viewListener;
 
@@ -53,7 +42,6 @@ public class DocumentView extends FrameLayout {
     this.container        = findViewById(R.id.document_container);
     this.fileName         = findViewById(R.id.file_name);
     this.fileSize         = findViewById(R.id.file_size);
-    this.lottie           = findViewById(R.id.doc_animation);
   }
 
   public void setDocumentClickListener(@Nullable SlideClickListener listener) {
@@ -62,7 +50,13 @@ public class DocumentView extends FrameLayout {
 
   public void setDocument(final @NonNull DocumentSlide documentSlide)
   {
-      this.fileName.setText(documentSlide.getFileName().or(getContext().getString(R.string.unknown)));
+    this.fileName.setText(documentSlide.getFileName().or(getContext().getString(R.string.unknown)));
+
+    String fileSize = Util.getPrettyFileSize(documentSlide.getFileSize())
+        + " " + getFileType(documentSlide.getFileName()).toUpperCase();
+    this.fileSize.setText(fileSize);
+
+    this.setOnClickListener(new OpenClickedListener(documentSlide));
   }
 
   @Override

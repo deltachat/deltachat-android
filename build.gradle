@@ -107,7 +107,7 @@ android {
         buildConfigField "String", "MAP_ACCESS_TOKEN", '"pk.eyJ1IjoiZGVsdGFjaGF0IiwiYSI6ImNqc3c1aWczMzBjejY0M28wZmU0a3cwMzMifQ.ZPTH9dFJaav06RAu4rTYHw"'
 
         ndk {
-            abiFilters "armeabi-v7a", "arm64-v8a"  //, "x86", "x86_64"
+            abiFilters "armeabi-v7a", "arm64-v8a" //, "x86", "x86_64"
         }
     }
 
@@ -151,7 +151,7 @@ android {
     buildTypes {
         debug {
             minifyEnabled false
-            applicationIdSuffix ".lite"
+            applicationIdSuffix ".beta"
         }
         release {
 	    applicationIdSuffix ".lite"

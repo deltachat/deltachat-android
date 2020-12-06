@@ -472,12 +472,6 @@ public class ConversationFragment extends Fragment
                 .setPositiveButton(android.R.string.ok, null)
                 .create();
         d.show();
-	try {
-	    ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
-	    clipboard.setText(info_str);
-	} catch (Exception e) {
-	    e.printStackTrace();
-	}
         try {
             //noinspection ConstantConditions
             Linkify.addLinks((TextView) d.findViewById(android.R.id.message), Linkify.WEB_URLS);

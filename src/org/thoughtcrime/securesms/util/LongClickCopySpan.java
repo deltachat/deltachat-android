@@ -23,8 +23,6 @@ public class LongClickCopySpan extends ClickableSpan {
   private static final String PREFIX_MAILTO = "mailto:";
   private static final String PREFIX_TEL = "tel:";
   private static final String PREFIX_CMD = "cmd:";
-  private static final String PREFIX_MENTION = "mention:";
-  private static final String PREFIX_TAG = "tag:";
 
   private boolean isHighlighted;
   @ColorInt
@@ -54,27 +52,8 @@ public class LongClickCopySpan extends ClickableSpan {
         String cmd = url.substring(PREFIX_CMD.length());
         ConversationActivity activity = (ConversationActivity) widget.getContext();
         activity.setDraftText(cmd + " ");
-	//Activity activity = (Activity) widget.getContext();
-	//DcContext dcContext = DcHelper.getContext(activity);
-	//dcContext.sendTextMsg(this.chatId, cmd);
       } catch (Exception e) {
         e.printStackTrace();
-      }
-    } else if (url.startsWith(PREFIX_MENTION)) {
-      try {
-        String mention = url.substring(PREFIX_MENTION.length());
-        ConversationActivity activity = (ConversationActivity) widget.getContext();
-        activity.setDraftText(mention + " ");
-      } catch (Exception e) {
-        e.printStackTrace();
-      }
-    } else if (url.startsWith(PREFIX_TAG)) {
-      try {
-	String tag = url.substring(PREFIX_TAG.length());
-        ConversationActivity activity = (ConversationActivity) widget.getContext();
-        activity.openSearch(tag);
-      } catch(Exception e) {
-	e.printStackTrace();
       }
     } else if (url.startsWith(PREFIX_MAILTO)) {
       try {
@@ -106,12 +85,6 @@ public class LongClickCopySpan extends ClickableSpan {
 
     if (url.startsWith(PREFIX_CMD)) {
       copyUrl(context, url.substring(PREFIX_CMD.length()));
-      Toast.makeText(context, context.getString(R.string.copied_to_clipboard), Toast.LENGTH_SHORT).show();
-    } else if (url.startsWith(PREFIX_MENTION)) {
-      copyUrl(context, url.substring(PREFIX_MENTION.length()));
-      Toast.makeText(context, context.getString(R.string.copied_to_clipboard), Toast.LENGTH_SHORT).show();
-    } else if (url.startsWith(PREFIX_TAG)) {
-      copyUrl(context, url.substring(PREFIX_TAG.length()));
       Toast.makeText(context, context.getString(R.string.copied_to_clipboard), Toast.LENGTH_SHORT).show();
     } else {
       String preparedUrl = prepareUrl(url);

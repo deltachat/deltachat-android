@@ -35,9 +35,4 @@ public class DcAttachment extends Attachment {
     }
     return getDataUri();
   }
-
-  public int getType() {
-    return dcMsg.getType();
-  }
-
 }
