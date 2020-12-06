@@ -516,14 +516,6 @@
     <string name="pref_background_default_color">Default color</string>
     <string name="pref_background_custom_image">Custom image</string>
     <string name="pref_background_custom_color">Custom color</string>
-    <string name="pref_map_backup_explain">Export map?</string>
-    <string name="pref_map_backup_done">Operation completed successfully</string>
-    <string name="pref_map_import_done">Done! You must restart the app to see the effects</string>
-    <string name="pref_map_backup_fail">Operation failed</string>
-    <string name="pref_map_backup_not_found">Map not found</string>
-    <string name="pref_map_import_ask">Do you want to import map?</string>
-    <string name="pref_map_import">Import map</string>
-    <string name="pref_map_export">Export map</string>
     <string name="export_aborted">Export aborted.</string>
     <string name="profile_image_select">Select profile image</string>
     <string name="select_your_new_profile_image">Select your new profile image</string>
