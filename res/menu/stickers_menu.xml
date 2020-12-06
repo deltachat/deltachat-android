@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item android:id="@+id/action_stickers_add" android:icon="@drawable/ic_add_white_24dp" app:showAsAction="always" android:title="Añadir Stickers"/>
-    <item android:id="@+id/action_stickers_remove" android:icon="@drawable/ic_close_white_24dp" app:showAsAction="always" android:title="Eliminar Pack de Stickers"/>
-</menu>

@@ -4,18 +4,6 @@
        xmlns:app="http://schemas.android.com/apk/res-auto"
        tools:context="org.thoughtcrime.securesms.components.DocumentView">
 
-       <com.airbnb.lottie.LottieAnimationView
-           android:id="@+id/doc_animation"
-           android:layout_width="200dp"
-           android:layout_height="200dp"
-           android:layout_gravity="center_vertical"
-           android:clickable="false"
-           android:focusable="false"
-           android:orientation="horizontal"
-           app:lottie_autoPlay="true"
-           app:lottie_loop="true"
-           android:visibility="visible" />
-
         <LinearLayout android:id="@+id/document_container"
                       android:layout_width="fill_parent"
                       android:layout_height="wrap_content"
