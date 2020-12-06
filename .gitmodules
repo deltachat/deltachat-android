@@ -1,3 +1,0 @@
-[submodule "jni/deltachat-core-rust"]
-	path = jni/deltachat-core-rust
-	url = https://github.com/deltachat/deltachat-core-rust

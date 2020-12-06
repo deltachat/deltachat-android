@@ -70,20 +70,11 @@ cd deltachat-core-rust
 # fix build on MacOS Catalina
 unset CPATH
 
-if test -z $1; then
-  echo Full build
-
-  # According to 1.45.0 changelog in https://github.com/rust-lang/rust/blob/master/RELEASES.md,
-  # "The recommended way to control LTO is with Cargo profiles, either in Cargo.toml or .cargo/config, or by setting CARGO_PROFILE_<name>_LTO in the environment."
-  export CARGO_PROFILE_RELEASE_LTO=on
-  RELEASE="release"
-  RELEASEFLAG="--release"
-else
-  echo Fast, partial, slow debug build. DO NOT UPLOAD THE APK ANYWHERE.
-
-  RELEASE="debug"
-  RELEASEFLAG=
-fi
+# According to 1.45.0 changelog in https://github.com/rust-lang/rust/blob/master/RELEASES.md,
+# "The recommended way to control LTO is with Cargo profiles, either in Cargo.toml or .cargo/config, or by setting CARGO_PROFILE_<name>_LTO in the environment."
+export CARGO_PROFILE_RELEASE_LTO=on
+RELEASE="release"
+RELEASEFLAG="--release"
 
 if test -z $1 || test $1 = armeabi-v7a; then
     echo "-- cross compiling to armv7-linux-androideabi (arm) --"
@@ -101,21 +92,21 @@ if test -z $1 || test $1 = arm64-v8a; then
     cp target/aarch64-linux-android/$RELEASE/libdeltachat.a ../arm64-v8a
 fi
 
-if test -z $1 || test $1 = x86; then
-    echo "-- cross compiling to i686-linux-android (x86) --"
-    export CFLAGS=-D__ANDROID_API__=16
-    TARGET_CC=i686-linux-android16-clang \
-    cargo +`cat rust-toolchain` build $RELEASEFLAG --target i686-linux-android -p deltachat_ffi
-    cp target/i686-linux-android/$RELEASE/libdeltachat.a ../x86
-fi
+# if test -z $1 || test $1 = x86; then
+#     echo "-- cross compiling to i686-linux-android (x86) --"
+#     export CFLAGS=-D__ANDROID_API__=16
+#     TARGET_CC=i686-linux-android16-clang \
+#     cargo +`cat rust-toolchain` build $RELEASEFLAG --target i686-linux-android -p deltachat_ffi
+#     cp target/i686-linux-android/$RELEASE/libdeltachat.a ../x86
+# fi
 
-if test -z $1 || test $1 = x86_64; then
-    echo "-- cross compiling to x86_64-linux-android (x86_64) --"
-    export CFLAGS=-D__ANDROID_API__=21
-    TARGET_CC=x86_64-linux-android21-clang \
-    cargo +`cat rust-toolchain` build $RELEASEFLAG --target x86_64-linux-android -p deltachat_ffi
-    cp target/x86_64-linux-android/$RELEASE/libdeltachat.a ../x86_64
-fi
+# if test -z $1 || test $1 = x86_64; then
+#     echo "-- cross compiling to x86_64-linux-android (x86_64) --"
+#     export CFLAGS=-D__ANDROID_API__=21
+#     TARGET_CC=x86_64-linux-android21-clang \
+#     cargo +`cat rust-toolchain` build $RELEASEFLAG --target x86_64-linux-android -p deltachat_ffi
+#     cp target/x86_64-linux-android/$RELEASE/libdeltachat.a ../x86_64
+# fi
 
 echo -- ndk-build --
 
@@ -131,7 +122,7 @@ if test $1; then
 else
     # We are compiling for all architectures:
     TMP=$(mktemp)
-    sed "s/APP_ABI.*/APP_ABI := armeabi-v7a arm64-v8a x86 x86_64/g" Application.mk >"$TMP"
+    sed "s/APP_ABI.*/APP_ABI := armeabi-v7a arm64-v8a/g" Application.mk >"$TMP"
     mv "$TMP" Application.mk
 fi
 
