@@ -25,11 +25,13 @@ import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 import androidx.appcompat.widget.TooltipCompat;
 
 import com.b44t.messenger.DcChat;
+import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMsg;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
@@ -46,6 +48,7 @@ import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.Prefs;
+import org.thoughtcrime.securesms.util.SendRelayedMessageUtil;
 
 import static org.thoughtcrime.securesms.ConversationActivity.CHAT_ID_EXTRA;
 import static org.thoughtcrime.securesms.ConversationActivity.STARTING_POSITION_EXTRA;
@@ -84,41 +87,12 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 
   @Override
   protected void onCreate(Bundle icicle, boolean ready) {
-    ApplicationDcContext dcContext = DcHelper.getContext(this);
-
-    DcMsg msg;
-
-    // add welcome message
-    dcContext.updateDeviceChats();
-
-    msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
-    msg.setText(
-            "💡TIP - Estos son algunos bots para DeltaLab:\n" +
-	    "✳️ adb_bot1@testrun.org para grupos públicos, mega-groupos con más de 20 personas!, canales y directorio de amigos.\n" +
-	    "✳️ simplebot@testrun.org puente entre delta chat y la red social Mastodon (https://joinmastodon.org).\n" +
-	    // "✳️ simple-facebook-bridge@testrun.org puente para chatear desde delta chat con tus amigos de facebook.\n" +
-	    "✳️ simplebot@systemli.org bot de navegación en internet, búsqueda y descargas de archivos, fotos, estado del tiempo, wikipedia, RSS, memes etc.\n" +
-	    "✳️ simplebot@riseup.net bot para navegación en internet con prestaciones similares a simplebot@systemli.org\n" +
-	    "✳️ deltabot@echedeylr.tk bot para navegación en internet con prestaciones similares a simplebot@systemli.org\n" +
-	    "✳️ games@echedeylr.tk bot de juegos, permite jugar con otros usuarios a varios juegos.\n" +
-	    "✳️ dcbridge@echedeylr.tk bot puente con IRC para unirse a salas de chat de internet como #deltachat-es\n" +
-	    "\nℹ️ para ver cada comando que soporta un bot, enviale un mensaje que diga:\n" +
-	    "/help");
-    dcContext.addDeviceMsg("dlab-1.13.3-bots", msg);
-
-    msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
-    msg.setText(
-	    "🆕 Registro de cambios v1.13.3:\n" +
-	    "✳️ Ahora los /comandos (y @menciones) se ponen de borrador al hacerles click, para evitar envíos accidentales.\n" +
-	    "✳️ Al hacer click en una #etiqueta se activa la búsqueda de dicha etiqueta en el chat.\n" +
-	    "✳️ Ahora las imágenes .webp son mostradas como stickers sin burbuja.\n" +
-	    "✳️ Mejorado el selector de stickers para Android < 7.\n" +
-	    "✳️ Añadido de vuelta la funcionalidad experimental de mapas (debe ser activada en ajustes avanzados).\n" +
-	    "✳️ Ahora el editor de imágenes tiene los iconos de forma vertical para que sean visibles en teléfonos de pantalla pequeña, gracias al programador: Ruben David (https://github.com/RubenDavidPerezJimenez)\n" +
-	    "✳️ Añadido soporte para exportar/importar el mapa de la app, gracias al programador: Ruben David.\n" +
-	    "✳️ Corregido detalle visual: ahora el icono de stickers se oculta mientras se graba audio, gracias al programador: Ruben David.\n" +
-	    "\nDeltaLab es una versión personalizada de Delta Chat, pensada para ser ahorrativa y experimentar cosas nuevas, la versión oficial puedes descargarla de: https://get.delta.chat");
-    dcContext.addDeviceMsg("dlab-1.13.3-chlog", msg);
+    // update messages - for new messages, do not reuse or modify strings but create new ones.
+    // it is not needed to keep all past update messages, however, when deleted, also the strings should be deleted.
+    DcContext dcContext = DcHelper.getContext(this);
+    DcMsg msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
+    msg.setText(getString(R.string.update_1_14_android) + "\n\nhttps://delta.chat/en/2020-11-05-android-update");
+    dcContext.addDeviceMsg("update_1_14j_android", msg); // addDeviceMessage() makes sure, messages with the same id are not added twice
 
     // create view
     setContentView(R.layout.conversation_list_activity);
@@ -305,17 +279,25 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   public void openConversation(int chatId, int startingPosition) {
     searchToolbar.clearFocus();
 
-    Intent intent = new Intent(this, ConversationActivity.class);
-    intent.putExtra(CHAT_ID_EXTRA, chatId);
-    intent.putExtra(STARTING_POSITION_EXTRA, startingPosition);
-    if (isRelayingMessageContent(this)) {
-      acquireRelayMessageContent(this, intent);
-      startActivityForResult(intent, REQUEST_RELAY);
+    final ApplicationDcContext dcContext = DcHelper.getContext(this);
+    if (isForwarding(this) && dcContext.getChat(chatId).isSelfTalk()) {
+      SendRelayedMessageUtil.immediatelyRelay(this, chatId);
+      Toast.makeText(this, "✔️ " + getString(R.string.saved), Toast.LENGTH_SHORT).show();
+      handleResetRelaying();
+      finish();
     } else {
-      startActivity(intent);
-    }
+      Intent intent = new Intent(this, ConversationActivity.class);
+      intent.putExtra(CHAT_ID_EXTRA, chatId);
+      intent.putExtra(STARTING_POSITION_EXTRA, startingPosition);
+      if (isRelayingMessageContent(this)) {
+        acquireRelayMessageContent(this, intent);
+        startActivityForResult(intent, REQUEST_RELAY);
+      } else {
+        startActivity(intent);
+      }
 
-    overridePendingTransition(R.anim.slide_from_right, R.anim.fade_scale_out);
+      overridePendingTransition(R.anim.slide_from_right, R.anim.fade_scale_out);
+    }
   }
 
   @Override

@@ -9,6 +9,7 @@ import android.text.Html;
 import android.widget.Toast;
 
 import com.b44t.messenger.DcContext;
+import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcEventCenter;
 import com.b44t.messenger.DcLot;
 import com.google.zxing.integration.android.IntentResult;
@@ -222,10 +223,10 @@ public class QrCodeHandler implements DcEventCenter.DcEventDelegate {
     }
 
     @Override
-    public void handleEvent(int eventId, Object data1, Object data2) {
-        if (eventId == DcContext.DC_EVENT_SECUREJOIN_JOINER_PROGRESS) {
-            long contact_id = (Long)data1;
-            long progress = (Long)data2;
+    public void handleEvent(DcEvent event) {
+        if (event.getId() == DcContext.DC_EVENT_SECUREJOIN_JOINER_PROGRESS) {
+            long contact_id = event.getData1Int();
+            long progress = event.getData2Int();
             String msg = null;
             if( progress == 400) {
                 msg = activity.getString(R.string.qrscan_x_verified_introduce_myself, dcContext.getContact((int)contact_id).getNameNAddr());

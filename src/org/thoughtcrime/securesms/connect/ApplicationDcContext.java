@@ -64,6 +64,35 @@ public class ApplicationDcContext extends DcContext {
     // if ui-based migrations are needed, this is a good place
     // (see eg. https://github.com/deltachat/deltachat-android/pull/1618 for an example)
 
+    // screen-lock is deprecated, inform users still using it
+    try {
+      if (!Prefs.getBooleanPreference(context, "pref_android_screen_lock_checked", false)) {
+        Prefs.setBooleanPreference(context, "pref_android_screen_lock_checked", true);
+        if (Prefs.isScreenLockEnabled(context)) {
+          Prefs.setBooleanPreference(context, "pref_android_screen_lock_keep_for_now", true);
+          DcMsg msg = new DcMsg(this, DcMsg.DC_MSG_TEXT);
+          msg.setText("⚠️ You are using the function \"Screen lock\" " +
+            "that will be removed in one of the next versions for the following reasons:\n" +
+            "\n" +
+            "• It does not add much protection as one just has to repeat the system secret.\n" +
+            "\n" +
+            "• It is hard to maintain across different Android versions and is not even doable on some." +
+            " We like to put the resources to other things.\n" +
+            "\n" +
+            "• It is not planned/possible on iOS or Desktop this way" +
+            " and stands in the way of moving towards unified solutions.\n" +
+            "\n" +
+            "• Same or even better functionality is available by other apps or maybe by the device itself.\n" +
+            "\n" +
+            "\uD83D\uDC49 For the future, we suggest to keep your phone locked " +
+            "or use an appropriate app or check the device settings.");
+          addDeviceMsg("android-screen-lock-deprecated14", msg);
+        }
+      }
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+
     new Thread(() -> {
       DcEventEmitter emitter = getEventEmitter();
       while (true) {
@@ -138,6 +167,9 @@ public class ApplicationDcContext extends DcContext {
     setStockTranslation(82, context.getString(R.string.videochat_invitation));
     setStockTranslation(83, context.getString(R.string.videochat_invitation_body));
     setStockTranslation(84, context.getString(R.string.configuration_failed_with_error));
+    setStockTranslation(88, context.getString(R.string.systemmsg_chat_protection_enabled));
+    setStockTranslation(89, context.getString(R.string.systemmsg_chat_protection_disabled));
+    setStockTranslation(90, context.getString(R.string.reply_noun));
   }
 
   public File getImexDir() {
@@ -305,11 +337,10 @@ public class ApplicationDcContext extends DcContext {
     Recipient recipient = getRecipient(chat);
     long date = summary.getTimestamp();
     int unreadCount = getFreshMsgCount(chatId);
-    boolean verified = chat.isVerified();
 
     return new ThreadRecord(body, recipient, date,
         unreadCount, chatId,
-        chat.getVisibility(), verified, chat.isSendingLocations(), chat.isMuted(), summary);
+        chat.getVisibility(), chat.isProtected(), chat.isSendingLocations(), chat.isMuted(), summary);
   }
 
   /***********************************************************************************************
@@ -427,7 +458,14 @@ public class ApplicationDcContext extends DcContext {
       case DC_EVENT_INCOMING_MSG:
         notificationCenter.addNotification(event.getData1Int(), event.getData2Int());
         if (eventCenter != null) {
-          eventCenter.sendToObservers(id, (long)event.getData1Int(), (long)event.getData2Int());
+          eventCenter.sendToObservers(event);
+        }
+        break;
+
+      case DC_EVENT_MSGS_NOTICED:
+        notificationCenter.removeNotifications(event.getData1Int());
+        if (eventCenter != null) {
+          eventCenter.sendToObservers(event);
         }
         break;
 
@@ -446,10 +484,8 @@ public class ApplicationDcContext extends DcContext {
         }
 
       default: {
-        final Object data1obj = (long)event.getData1Int();
-        final Object data2obj = data2IsString(id) ? event.getData2Str() : (long)event.getData2Int();
         if (eventCenter != null) {
-          eventCenter.sendToObservers(id, data1obj, data2obj);
+          eventCenter.sendToObservers(event);
         }
       }
       break;

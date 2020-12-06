@@ -101,7 +101,7 @@
     <color name="dummy_avatar_color">#808080</color>
     <color name="slidearrow_color">#999999</color>
 
-    <color name="universal_overlay">#44000000</color>
+    <color name="universal_overlay">#55444444</color>
 
     <color name="trackTintColor">#552090ea</color>
     <color name="trackHighlightTintColor">#ff2090ea</color>
@@ -113,5 +113,9 @@
 
     <color name="pinned_bg">#eeeeee</color>
     <color name="pinned_bg_dark">#222222</color>
+
+    <!-- unknown_sender fits in dark mode and lite mode (also other chat/contact colors fit in both modes);
+         unknown_sender is used for the sender-name/quote-bar if the sender is unknown -->
+    <color name="unknown_sender">#ff999999</color>
 
 </resources>

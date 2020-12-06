@@ -189,7 +189,6 @@
     <string name="pin">Finkatu</string>
     <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
     <string name="unpin">Desfinkatu</string>
-
     <string name="mute_for_one_hour">Mututu ordubete</string>
     <string name="mute_for_two_hours">Mututu 2 ordu</string>
     <string name="mute_for_one_day">Mututu egun bat</string>
@@ -225,12 +224,6 @@
     <string name="ask_start_chat_with">Txateatu %1$s erabiltzailearekin?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Kendu %1$s taldetik?</string>
-    <string name="info_outdated_app_title">Zure aplikazioaren bertsioa zaharkituta dago</string>
-    <string name="info_outdated_app_text">Badirudi eguneraketak automatikoki kudeatzen ez dituen iturri batetik instalatu duzula Delta Chat (esaterako GitHub). Aldatu aplikazio dendaren bateko bertsiora azken eguneraketak eta arazoen konponketak jasotzeko.</string>
-    <string name="info_outdated_app_dialog_title">Eguneratu iturriak</string>
-    <string name="info_outdated_app_dialog_text">Delta Chat hemen ago eskuragarri:</string>
-
-
     <!-- contact list -->
     <string name="contacts_title">Kontaktuak</string>
     <string name="contacts_enter_name_or_email">Sartu izena edo e-mail helbidea</string>
@@ -273,7 +266,6 @@
     <string name="chat_no_contact_requests">Kontaktu eskaerarik ez.\n\nE-mail klasikoak hemen kontaktu eskari gisa agertzea nahi baduzu, aplikazioaren ezarpenetan aldatu dezakezu.</string>
     <string name="retry_send">Saiatu berriro mezua bidaltzen</string>
     <string name="send_failed">Huts egin du mezua bidaltzean</string>
-
     <!-- map -->
     <string name="filter_map_on_time">Erakutsi kokalekuak denbora markoan</string>
     <string name="show_location_traces">Erakutsi lorratzak</string>
@@ -453,8 +445,6 @@
     <string name="autodel_server_title">Ezabatu mezuak zerbitzaritik</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">%1$d mezu ezabatu nahi dituzu orain eta \"%2$s\" etorkizunean jasotako mezuak ere?\n\n• Honek multimedia ere barne hartzen du\n\n• Mezuak ikusi ala ez ezabatuko dira\n\n• \"Gordetako mezuak\" ez dira lokalki ezabatuko</string>
-    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
-    <string name="autodel_server_ask">%1$d mezu ezabatu nahi dituzu orain eta \"%2$s\" etorkizunean jasotako mezuak ere?\n\n• Honek \"Erakutsi e-mail klasikoak\" aukerak ekarritako e-mailei ere eragingo die\n\n• \"Gordetako mezuak\" ere zerbitzaritik ezabatuko dira</string>
     <string name="autodel_confirm">Ulertzen dut, ezabatu mezuk guzti hauek</string>
     <string name="autodel_at_once">Berehala</string>
     <string name="autodel_after_1_hour">Ordubete eta gero</string>
@@ -537,8 +527,6 @@
     <string name="contact_setup_changed">Aldatu %1$s(r)en ezarpena</string>
     <string name="verified_group_explain">Egiaztatutako taldeek (esperimentala) eraso aktiboekiko babesa eskaintzen dute.
 Kideak beste kide batzuek egiatzen dituzte bigarren faktore batekin eta mezuak beti zifratzen dira muturretik muturrera.</string>
-
-
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d mezu berri %2$d txatetan</string>
     <string name="notify_mark_read">Markatu irakurrita gisa</string>
@@ -563,7 +551,6 @@ Kideak beste kide batzuek egiatzen dituzte bigarren faktore batekin eta mezuak b
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Zifratutako mezua</string>
 
-    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
     <string name="welcome_desktop">Ongi etorri Delta Chat-era</string>
     <string name="login_known_accounts_title_desktop">Kontu ezagunak</string>
     <string name="global_menu_preferences_language_desktop">Hautatu hizkuntza...</string>
@@ -629,7 +616,6 @@ Kideak beste kide batzuek egiatzen dituzte bigarren faktore batekin eta mezuak b
     <string name="menu.view.developer.open.current.log.file">Ireki uneko egunkari-fitxategia</string>
     <string name="user_location_permission_explanation">Delta Chat-ek kokalekua atzitzeko baimena behar du zure kokalekua erakutsi eta partekatu ahal izateko.</string>
 
-
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Bidalketa-egoera: Errorea</string>
     <string name="a11y_encryption_padlock">Zifratze giltzarrapoa</string>
@@ -640,8 +626,6 @@ Kideak beste kide batzuek egiatzen dituzte bigarren faktore batekin eta mezuak b
     <string name="a11y_delivery_status_invalid">Bidalketa-egoera baliogabea</string>
     <string name="a11y_message_context_menu_btn_label">Mezu-ekintzak</string>
     <string name="a11y_background_preview_label">Atzealdearen aurrebista</string>
-
-
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Kamera atzitzeko baimena emateak argazkiak eta bideoak ateratzea ahalbidetzen dizu.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Kontaktuen liburua atzitzeko baimena emateak zure gailuko kontaktuekin txateatzea ahalbidetzen dizu.</string>
@@ -652,5 +636,4 @@ Kideak beste kide batzuek egiatzen dituzte bigarren faktore batekin eta mezuak b
     <string name="pref_reliable_service_explain">Etengabeko jakinarazpena eskatzen du</string>
     <string name="perm_enable_bg_reminder_title">Sakatu hemen mezuak jasotzeko Delta Chat bigarren planoan dagoenean.</string>
     <string name="perm_enable_bg_already_done">Dagoeneko baimendu diozu Delta Chat aplikazioari bigarren planoan mezuak jasotzea,\n\nOraindik ere mezuak heltzen ez badira, egiaztatu ere zure sistemaren ezarpenak.</string>
-
-</resources>
+    </resources>

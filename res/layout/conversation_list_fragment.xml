@@ -51,11 +51,6 @@
                   android:orientation="vertical"
                   tools:visibility="gone">
 
-        <org.thoughtcrime.securesms.components.reminder.ReminderView
-                android:id="@+id/reminder"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
         <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/list"
                 android:layout_width="match_parent"

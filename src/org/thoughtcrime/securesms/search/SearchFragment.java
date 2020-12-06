@@ -164,16 +164,10 @@ public class SearchFragment extends Fragment implements SearchListAdapter.EventL
     ConversationListActivity conversationList = (ConversationListActivity) getActivity();
     if (conversationList != null) {
       ApplicationDcContext dcContext = DcHelper.getContext(getContext());
-      int startingPosition = -1;
       int chatId = message.getChatId();
       int msgId = message.getId();
+      int startingPosition = DcMsg.getMessagePosition(message, dcContext);
       int msgs[] = dcContext.getChatMsgs(chatId, 0, 0);
-      for(int i=0; i<msgs.length; i++ ) {
-        if(msgs[i]==msgId) {
-          startingPosition = msgs.length-1-i;
-          break;
-        }
-      }
       conversationList.openConversation(chatId, startingPosition);
     }
   }

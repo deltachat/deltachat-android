@@ -24,6 +24,7 @@ import android.view.Window;
 import android.widget.TextView;
 
 import com.b44t.messenger.DcContext;
+import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcEventCenter;
 import com.b44t.messenger.DcMsg;
 import com.codewaves.stickyheadergrid.StickyHeaderGridLayoutManager;
@@ -94,7 +95,7 @@ public class ProfileDocumentsFragment
   }
 
   @Override
-  public void handleEvent(int eventId, Object data1, Object data2) {
+  public void handleEvent(DcEvent event) {
     getLoaderManager().restartLoader(0, null, this);
   }
 

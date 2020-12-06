@@ -10,7 +10,7 @@
       <li><a href="#chi-può-vedere-la-mia-immagine-del-profilo">Chi può vedere la mia immagine del profilo?</a></li>
       <li><a href="#delta-chat-supporta-le-email-in-html">Delta Chat supporta le email in HTML?</a></li>
       <li><a href="#perché-devo-inserire-la-password-della-mia-email-in-delta-chat-e-sicuro">Perché devo inserire la password della mia email in Delta Chat? E’ sicuro?</a></li>
-      <li><a href="#quali-autorizzazioni-di-android-richiede-delta-chat">Quali autorizzazioni di Android richiede Delta Chat?</a></li>
+      <li><a href="#di-quali-autorizzazioni-ha-bisogno-delta-chat">Di quali autorizzazioni ha bisogno Delta Chat?</a></li>
     </ul>
   </li>
   <li><a href="#gruppi">Gruppi</a>
@@ -126,7 +126,7 @@ non è necessario che il destinatario utilizzi la tua stessa app.</p>
   <li><strong>Risposte</strong> dai messaggi inviati da te</li>
 </ul>
 
-<p>Gli altri messaggi non appaiono automaticamente e devono essere cercati nella sezione <strong>Richieste di contatto</strong>. La chat può essere avviata da lì.</p>
+<p>Altri messaggi non vengono visualizzati automaticamente e si trovano in <strong>Richieste di contatto</strong>. Se lo si desidera, è possibile avviare una chat da lì.</p>
     
       <h3 id="come-viene-gestito-lo-spam">
         
@@ -214,13 +214,17 @@ Sorgente</a>
 per essere certo che le credenziali siano gestite in modo sicuro. Siamo felici
 di ricevere feedback che aiutino a rendere l’app più sicura per tutti gli utenti.</p>
     
-      <h3 id="quali-autorizzazioni-di-android-richiede-delta-chat">
+      <h3 id="di-quali-autorizzazioni-ha-bisogno-delta-chat">
         
         
-          Quali autorizzazioni di Android richiede Delta Chat? <a href="#quali-autorizzazioni-di-android-richiede-delta-chat" class="anchor"></a>
+          Di quali autorizzazioni ha bisogno Delta Chat? <a href="#di-quali-autorizzazioni-ha-bisogno-delta-chat" class="anchor"></a>
         
         
       </h3>
+
+<p>A seconda del sistema operativo in uso,
+ti potrebbe essere chiesto di concedere le autorizzazioni all’app.
+Questo è ciò che Delta Chat fa con queste autorizzazioni:</p>
 
 <ul>
   <li>Camera <em>(può essere negata)</em>
@@ -281,9 +285,9 @@ di ricevere feedback che aiutino a rendere l’app più sicura per tutti gli ute
       </h3>
 
 <ul>
-  <li>Seleziona <strong>Aggiungi Gruppo</strong> dal “Sandwich menu” nell’angolo in alto a destra della lista delle chat.</li>
-  <li>Nella schermata successiva, scegli i <strong>membri del gruppo</strong> e seleziona la spunta in alto a destra. Poi potrai definire il <strong>nome del gruppo</strong>.</li>
-  <li>Appena invii il <strong>primo messaggio</strong> nel gruppo, tutti i membri verranno informati della creazione del gruppo e potranno rispondere (finché non invii il primo messaggio il gruppo resta invisibile ai membri).</li>
+  <li>Seleziona <strong>Nuova chat</strong> e poi <strong>Nuovo gruppo</strong> dal menu nell’angolo in alto a destra o premi il pulsante corrispondente su Android/iOS.</li>
+  <li>Nella schermata successiva, seleziona i <strong>membri del gruppo</strong> e definisci un <strong>nome del gruppo</strong>. Puoi anche selezionare un <strong>avatar di gruppo</strong>.</li>
+  <li>Non appena scrivi il <strong>primo messaggio</strong> nel gruppo, tutti i membri vengono informati sul nuovo gruppo e possono rispondere nel gruppo (finché non scrivi un messaggio nel gruppo, il gruppo è invisibile ai membri).</li>
 </ul>
     
       <h3 id="aggiungere-membri-ad-un-gruppo">
@@ -426,8 +430,8 @@ Se un membro della chat non usa un’app compatibile con Autocrypt
 i messaggi non vengono cifrati finché non ne viene usata una compatibile.</p>
   </li>
   <li>
-    <p>Se preferisci evitare la crittografia end-to-end delle email predefinita, 
-usa la relativa impostazione di Autocrypt in “Impostazioni / Impostazioni avanzate”.</p>
+    <p>Se si desidera piuttosto evitare le e-mail crittografate end-to-end per impostazione predefinita,
+utilizzare l’impostazione Autocrypt corrispondente in “Impostazioni” o “Impostazioni avanzate”.</p>
   </li>
 </ul>
     
@@ -455,16 +459,20 @@ tra il tuo dispositivo e quello del destinatario.</li>
         
       </h3>
 
-<p>Il profilo utente mostra alcune info aggiuntive:</p>
+<p>Se ti trovi a breve distanza dal partner di chat:</p>
 
 <ul>
-  <li>
-    <p>Tocca “Codice QR di invito” su Android e poi usa il tasto “Scansiona codice QR”
-sull’altro dispositivo per scansionarlo. Se entrambi i dispositivi hanno accesso
-alla rete, creeranno un canale di comunicazione tra di loro (se non esiste già) 
-e verificheranno le chiavi di cifratura. Entrambi vedranno un
-messaggio di sistema “mittente verificato” nella chat 1:1.</p>
-  </li>
+  <li>Seleziona <strong>Codice di invito QR</strong> su un dispositivo, quindi <strong>Scansiona codice QR</strong>
+sull’altro e scansiona il codice. Se entrambi i dispositivi sono online,
+introdurranno un canale di chat tra loro (se non esiste già)
+e verranno verificate anche le chiavi di crittografia. Entrambi vedranno un
+messaggio di sistema “mittente verificato” nella chat 1:1.</li>
+</ul>
+
+<p>Se non sei vicino al partner di chat, puoi controllare lo stato manualmente nella finestra di dialogo “Crittografia”
+(profilo utente su Android/iOS o fare clic con il pulsante destro del mouse sull’elemento dell’elenco chat di un utente sul desktop):</p>
+
+<ul>
   <li>
     <p>Per la cifratura end-to-end, Delta Chat mostra due impronte qui. 
 Se le stesse impronte appaiono sul dispositivo dell’intelocutore, 
@@ -485,7 +493,7 @@ la connessione è sicura.</p>
 
 <ul>
   <li>
-    <p>Se viene visualizzato un piccolo ** lucchetto ** accanto a un messaggio, ciò indica che il messaggio è crittografato end-to-end <em>e</em> viene inviato dal dato mittente <em>e</em> che anche la tua risposta verrà crittografata end-to-end.</p>
+    <p>Un piccolo <strong>lucchetto</strong> mostrato accanto a un messaggio indica se il messaggio è crittografato end-to-end dal mittente specificato.</p>
   </li>
   <li>
     <p>Se non c’è <strong>nessun lucchetto</strong>, il messaggio è solitamente trasmesso in chiaro. Ad esempio perché tu o il destinatario avete disabilitato la cifratura end-to-end o il mittente usa un’applicazione che non la supporta.</p>
@@ -613,7 +621,7 @@ RFC</a>.</p>
     <p>Si. Il miglior modo per farlo è inviare un messaggio di configurazione Autocrypt dall’altro client e-mail. Cerca comandi come “Avvia trasferimento impostazioni Autocrypt” nelle impostazioni dell’altro client e segui le istruzioni.</p>
   </li>
   <li>
-    <p>In alternativa, puoi importare la chiave manualmente da “Impostazioni Avanzate / Gestisci chiavi private”. Attenzione: assicurati che la chiave non sia protetta da password o rimuovila prima.</p>
+    <p>In alternativa, puoi importare la chiave manualmente in “Impostazioni” o “Impostazioni avanzate” e poi “Importa chiavi segrete”. Attenzione: assicurarsi che la chiave non sia protetta da una password o rimuovere la password in anticipo.</p>
   </li>
 </ul>
 
@@ -679,15 +687,15 @@ FAQ</a>.</li>
 un backup dal vecchio dispositivo e importarlo nel nuovo:</p>
 
 <ul>
-  <li>Nel vecchio dispositivo, seleziona “Impostazioni / Chat e media / Backup”. Inserisci
-il PIN, tracciato o password di sblocco, poi seleziona “Avvia
-Backup”. Questo salva il backup nel dispositivo e deve essere trasferito
-in qualche modo all’altro dispostivo.</li>
-  <li>Nella schermata di accesso del nuovo dispositivo, invece di inserire l’email
-seleziona “Importa backup”. Dopo l’importazione, le conversazioni, le chiavi
-di crittografia e i media saranno presenti sul nuovo dispositivo.</li>
-  <li>Ora sono sincronizzati e puoi utilizzare entrambi i dispositivi per inviare e
-ricevere messaggi cifrati E2E con i tuoi contatti.</li>
+  <li>Sul vecchio dispositivo, vai su “Impostazioni” o “Impostazioni / Chat e media” e poi su “Backup”. Inserisci il tuo
+PIN, sequenza o password di sblocco dello schermo. Quindi puoi fare clic su “Avvia
+Backup”. Questo salva il file di backup sul tuo dispositivo. Ora devi trasferirlo
+in qualche modo sull’altro dispositivo.</li>
+  <li>Sul nuovo dispositivo, nella schermata di accesso, invece di accedere al tuo account
+di posta elettronica, scegli “Importa backup”. Dopo l’importazione, le tue conversazioni, la crittografia
+chiavi e i media dovrebbero essere copiati sul nuovo dispositivo.</li>
+  <li>Ora sei sincronizzato e puoi utilizzare entrambi i dispositivi per l’invio e la ricezione
+Messaggi crittografati E2E con i tuoi partner di comunicazione.</li>
 </ul>
     
       <h3 id="e-in-previsione-la-creazione-di-un-client-web-di-delta-chat">

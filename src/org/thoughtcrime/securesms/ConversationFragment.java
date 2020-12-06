@@ -26,7 +26,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.text.ClipboardManager;
+import android.content.ClipboardManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.util.Linkify;
@@ -57,6 +57,7 @@ import androidx.recyclerview.widget.RecyclerView.OnScrollListener;
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
+import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcEventCenter;
 import com.b44t.messenger.DcMsg;
 
@@ -68,11 +69,13 @@ import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.recipients.Recipient;
+import org.thoughtcrime.securesms.util.AccessibilityUtil;
 import org.thoughtcrime.securesms.util.Debouncer;
 import org.thoughtcrime.securesms.util.SaveAttachmentTask;
 import org.thoughtcrime.securesms.util.StickyHeaderDecoration;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
+import org.thoughtcrime.securesms.util.views.ConversationAdaptiveActionsToolbar;
 import org.thoughtcrime.securesms.videochat.VideochatUtil;
 
 import java.util.Collections;
@@ -154,10 +157,16 @@ public class ConversationFragment extends Fragment
 
         scrollToBottomButton.setOnClickListener(v -> scrollToBottom());
 
-        final LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, true);
+        final SetStartingPositionLinearLayoutManager layoutManager = new SetStartingPositionLinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, true);
+
         list.setHasFixedSize(false);
         list.setLayoutManager(layoutManager);
         list.setItemAnimator(null);
+
+        new ConversationItemSwipeCallback(
+                msg -> actionMode == null,
+                this::handleReplyMessage
+        ).attachToRecyclerView(list);
 
         // setLayerType() is needed to allow larger items (long texts in our case)
         // with hardware layers, drawing may result in errors as "OpenGLRenderer: Path too large to be rendered into a texture"
@@ -169,6 +178,7 @@ public class ConversationFragment extends Fragment
     @Override
     public void onActivityCreated(Bundle bundle) {
         super.onActivityCreated(bundle);
+
         initializeResources();
         initializeListAdapter();
     }
@@ -268,7 +278,10 @@ public class ConversationFragment extends Fragment
         if (getListAdapter().getLastSeenPosition() < 0) {
             return;
         }
-        scrollToLastSeenPosition(getListAdapter().getLastSeenPosition());
+        final int lastSeenPosition = getListAdapter().getLastSeenPosition() + 1;
+        if (lastSeenPosition > 0) {
+            list.post(() -> ((LinearLayoutManager)list.getLayoutManager()).scrollToPositionWithOffset(lastSeenPosition, list.getHeight()));
+        }
     }
 
     private void initializeResources() {
@@ -285,11 +298,29 @@ public class ConversationFragment extends Fragment
         if (this.recipient != null && this.chatId != -1) {
             ConversationAdapter adapter = new ConversationAdapter(getActivity(), this.recipient.getChat(), GlideApp.with(this), locale, selectionClickListener, this.recipient);
             list.setAdapter(adapter);
+
             dateDecoration = new StickyHeaderDecoration(adapter, false, false);
             list.addItemDecoration(dateDecoration);
 
+            int freshMsgs = dcContext.getFreshMsgCount((int) chatId);
+            SetStartingPositionLinearLayoutManager layoutManager = (SetStartingPositionLinearLayoutManager) list.getLayoutManager();
+            if (startingPosition > -1) {
+                layoutManager.setStartingPosition(startingPosition);
+            } else if (freshMsgs > 0) {
+                layoutManager.setStartingPosition(freshMsgs - 1);
+            }
+
             reloadList();
             updateLocationButton();
+
+            if (freshMsgs > 0) {
+                getListAdapter().setLastSeenPosition(freshMsgs - 1);
+                if (lastSeenDecoration != null) {
+                    list.removeItemDecoration(lastSeenDecoration);
+                }
+                lastSeenDecoration = new ConversationAdapter.LastSeenHeader(getListAdapter());
+                list.addItemDecoration(lastSeenDecoration);
+            }
         }
     }
 
@@ -304,15 +335,32 @@ public class ConversationFragment extends Fragment
         if (messageRecords.size() > 1) {
             menu.findItem(R.id.menu_context_details).setVisible(false);
             menu.findItem(R.id.menu_context_save_attachment).setVisible(false);
-
-	    menu.findItem(R.id.menu_context_reply).setVisible(false);
+            menu.findItem(R.id.menu_context_reply).setVisible(false);
+            menu.findItem(R.id.menu_context_reply_privately).setVisible(false);
         } else {
             DcMsg messageRecord = messageRecords.iterator().next();
+            DcChat chat = getListAdapter().getChat();
             menu.findItem(R.id.menu_context_details).setVisible(true);
             menu.findItem(R.id.menu_context_save_attachment).setVisible(messageRecord.hasFile());
-
-	    menu.findItem(R.id.menu_context_reply).setVisible(true);
+            boolean canReply = canReplyToMsg(messageRecord);
+            menu.findItem(R.id.menu_context_reply).setVisible(chat.canSend() && canReply);
+            boolean showReplyPrivately = chat.isGroup() && !messageRecord.isOutgoing() && canReply;
+            menu.findItem(R.id.menu_context_reply_privately).setVisible(showReplyPrivately);
         }
+
+        // if one of the selected item cannot be forwarded, disable forwarding.
+        boolean canForward = true;
+        for (DcMsg messageRecord : messageRecords) {
+            if (messageRecord.isInfo()) {
+                canForward = false;
+                break;
+            }
+        }
+        menu.findItem(R.id.menu_context_forward).setVisible(canForward);
+    }
+
+    static boolean canReplyToMsg(DcMsg dcMsg) {
+        return !dcMsg.isInfo() && dcMsg.getType() != DcMsg.DC_MSG_VIDEOCHAT_INVITATION;
     }
 
     private ConversationAdapter getListAdapter() {
@@ -346,21 +394,21 @@ public class ConversationFragment extends Fragment
     }
 
     public void scrollToBottom() {
-        if (((LinearLayoutManager) list.getLayoutManager()).findFirstVisibleItemPosition() < SCROLL_ANIMATION_THRESHOLD) {
+        if (((LinearLayoutManager) list.getLayoutManager()).findFirstVisibleItemPosition() < SCROLL_ANIMATION_THRESHOLD
+                && !AccessibilityUtil.areAnimationsDisabled(getContext())) {
             list.smoothScrollToPosition(0);
         } else {
             list.scrollToPosition(0);
         }
     }
 
-    public void setLastSeen(long lastSeen) {
+    void setLastSeen(long lastSeen) {
         getListAdapter().setLastSeen(lastSeen);
         if (lastSeenDecoration != null) {
             list.removeItemDecoration(lastSeenDecoration);
         }
-
         if (lastSeen > 0) {
-            lastSeenDecoration = new ConversationAdapter.LastSeenHeader(getListAdapter()/*, lastSeen*/);
+            lastSeenDecoration = new ConversationAdapter.LastSeenHeader(getListAdapter());
             list.addItemDecoration(lastSeenDecoration);
         }
     }
@@ -368,6 +416,7 @@ public class ConversationFragment extends Fragment
     private void handleCopyMessage(final Set<DcMsg> dcMsgsSet) {
         List<DcMsg> dcMsgsList = new LinkedList<>(dcMsgsSet);
         Collections.sort(dcMsgsList, (lhs, rhs) -> Long.compare(lhs.getDateReceived(), rhs.getDateReceived()));
+        boolean singleMsg = dcMsgsList.size() == 1;
 
         StringBuilder result = new StringBuilder();
 
@@ -377,11 +426,11 @@ public class ConversationFragment extends Fragment
                 result.append("\n\n");
             }
 
-            if (msg.getFromId() != prevMsg.getFromId()) {
+            if (msg.getFromId() != prevMsg.getFromId() && !singleMsg) {
                 DcContact contact = dcContext.getContact(msg.getFromId());
                 result.append(contact.getDisplayName()).append(":\n");
             }
-            if(msg.getType() == DcMsg.DC_MSG_TEXT) {
+            if (msg.getType() == DcMsg.DC_MSG_TEXT || (singleMsg && !msg.getText().isEmpty())) {
                 result.append(msg.getText());
             } else {
                 result.append(msg.getSummarytext(10000000));
@@ -445,11 +494,31 @@ public class ConversationFragment extends Fragment
         getActivity().overridePendingTransition(R.anim.slide_from_right, R.anim.fade_scale_out);
     }
 
-    private void handleResendMessage(final DcMsg message) {
+    @SuppressLint("RestrictedApi")
+    private void handleReplyMessage(final DcMsg message) {
+        if (getActivity() != null) {
+            //noinspection ConstantConditions
+            ((AppCompatActivity) getActivity()).getSupportActionBar().collapseActionView();
+        }
+
+        listener.handleReplyMessage(message);
     }
 
-    private void handleReplyMessage(final DcMsg message) {
-        listener.handleReplyMessage(message);
+    private void handleReplyMessagePrivately(final DcMsg msg) {
+
+        if (getActivity() != null) {
+            int privateChatId = dcContext.createChatByContactId(msg.getFromId());
+            DcMsg replyMsg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
+            replyMsg.setQuote(msg);
+            dcContext.setDraft(privateChatId, replyMsg);
+
+            Intent intent = new Intent(getActivity(), ConversationActivity.class);
+            intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, privateChatId);
+            getActivity().startActivity(intent);
+            getActivity().finish();
+        } else {
+            Log.e(TAG, "Activity was null");
+        }
     }
 
     private void handleSaveAttachment(final DcMsg message) {
@@ -485,15 +554,16 @@ public class ConversationFragment extends Fragment
             pixelOffset = (firstView == null) ? 0 : list.getBottom() - firstView.getBottom() - list.getPaddingBottom();
         }
 
+        if (getContext() == null) {
+            Log.e(TAG, "reloadList: getContext() was null");
+            return;
+        }
         int[] msgs = DcHelper.getContext(getContext()).getChatMsgs((int) chatId, 0, 0);
         adapter.changeData(msgs);
-        int lastSeenPosition = adapter.getLastSeenPosition();
 
         if (firstLoad) {
             if (startingPosition >= 0) {
-                scrollToStartingPosition(startingPosition);
-            } else {
-                scrollToLastSeenPosition(lastSeenPosition);
+                getListAdapter().pulseHighlightItem(startingPosition);
             }
             firstLoad = false;
         } else if(oldIndex  > 0) {
@@ -522,24 +592,24 @@ public class ConversationFragment extends Fragment
         floatingLocationButton.setVisibility(dcContext.isSendingLocationsToChat((int) chatId)? View.VISIBLE : View.GONE);
     }
 
-    private void scrollToStartingPosition(final int startingPosition) {
+    private void scrollAndHighlight(final int pos, boolean smooth) {
         list.post(() -> {
-            list.getLayoutManager().scrollToPosition(startingPosition);
-            getListAdapter().pulseHighlightItem(startingPosition);
+            if (smooth && !AccessibilityUtil.areAnimationsDisabled(getContext())) {
+                list.smoothScrollToPosition(pos);
+            } else {
+                list.scrollToPosition(pos);
+            }
+            getListAdapter().pulseHighlightItem(pos);
         });
-    }
-
-    private void scrollToLastSeenPosition(final int lastSeenPosition) {
-        if (lastSeenPosition > 0) {
-            list.post(() -> ((LinearLayoutManager)list.getLayoutManager()).scrollToPositionWithOffset(lastSeenPosition, list.getHeight()));
-        }
     }
 
     public void scrollToMsgId(final int msgId) {
         ConversationAdapter adapter = (ConversationAdapter)list.getAdapter();
         int position = adapter.msgIdToPosition(msgId);
         if (position!=-1) {
-            scrollToStartingPosition(position);
+            scrollAndHighlight(position, false);
+        } else {
+            Log.e(TAG, "msgId {} not found for scrolling");
         }
     }
 
@@ -570,14 +640,12 @@ public class ConversationFragment extends Fragment
             boolean currentlyAtZoomScrollHeight = isAtZoomScrollHeight();
 //            int     positionId                  = getHeaderPositionId();
 
-            if (currentlyAtBottom && !wasAtBottom) {
-                ViewUtil.animateOut(scrollToBottomButton, scrollButtonOutAnimation, View.INVISIBLE);
-            }
-
             if (currentlyAtZoomScrollHeight && !wasAtZoomScrollHeight) {
                 ViewUtil.animateIn(scrollToBottomButton, scrollButtonInAnimation);
+            } else if (currentlyAtBottom && !wasAtBottom) {
+                ViewUtil.animateOut(scrollToBottomButton, scrollButtonOutAnimation, View.INVISIBLE);
             }
-
+            
 //      if (positionId != lastPositionId) {
 //        bindScrollHeader(conversationDateHeader, positionId);
 //      }
@@ -730,8 +798,11 @@ public class ConversationFragment extends Fragment
                 if (getListAdapter().getSelectedItems().size() == 0) {
                     actionMode.finish();
                 } else {
-                    setCorrectMenuVisibility(actionMode.getMenu());
+                    Menu menu = actionMode.getMenu();
+                    setCorrectMenuVisibility(menu);
+                    ConversationAdaptiveActionsToolbar.adjustMenuActions(menu, 10, requireActivity().getWindow().getDecorView().getMeasuredWidth());
                     actionMode.setTitle(String.valueOf(getListAdapter().getSelectedItems().size()));
+                    actionMode.setTitleOptionalHint(false); // the title represents important information, also indicating implicitly, more items can be selected
                 }
             }
             else if(messageRecord.isSetupMessage()) {
@@ -761,6 +832,50 @@ public class ConversationFragment extends Fragment
                 list.getAdapter().notifyDataSetChanged();
 
                 actionMode = ((AppCompatActivity)getActivity()).startSupportActionMode(actionModeCallback);
+            }
+        }
+
+        @Override
+        public void onQuoteClicked(DcMsg messageRecord) {
+            DcMsg quoted = messageRecord.getQuotedMsg();
+            if (quoted == null) {
+                Log.i(TAG, "Clicked on a quote whose original message we never had.");
+                Toast.makeText(getContext(), R.string.ConversationFragment_quoted_message_not_found, Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            int foreignChatId = quoted.getChatId();
+            if (foreignChatId != 0 && foreignChatId != chatId) {
+                Intent intent = new Intent(getActivity(), ConversationActivity.class);
+                intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, foreignChatId);
+                int start = DcMsg.getMessagePosition(quoted, dcContext);
+                intent.putExtra(ConversationActivity.STARTING_POSITION_EXTRA, start);
+                ((ConversationActivity) getActivity()).hideSoftKeyboard();
+                if (getActivity() != null) {
+                    getActivity().startActivity(intent);
+                    getActivity().finish();
+                } else {
+                    Log.e(TAG, "Activity was null");
+                }
+            } else {
+                LinearLayoutManager layout = ((LinearLayoutManager) list.getLayoutManager());
+                boolean smooth = false;
+                ConversationAdapter adapter = (ConversationAdapter) list.getAdapter();
+                if (adapter == null) return;
+                int position = adapter.msgIdToPosition(quoted.getId());
+                if (layout != null) {
+                    int distance1 = Math.abs(position - layout.findFirstVisibleItemPosition());
+                    int distance2 = Math.abs(position - layout.findLastVisibleItemPosition());
+                    int distance = Math.min(distance1, distance2);
+                    smooth = distance < 15;
+                    Log.i(TAG, "Scrolling to quote, smoth: " + smooth + ", distance: " + distance);
+                }
+
+                if (position != -1) {
+                    scrollAndHighlight(position, smooth);
+                } else {
+                    Log.e(TAG, "msgId not found for scrolling: " + quoted.getId());
+                }
             }
         }
     }
@@ -794,6 +909,7 @@ public class ConversationFragment extends Fragment
             }
 
             setCorrectMenuVisibility(menu);
+            ConversationAdaptiveActionsToolbar.adjustMenuActions(menu, 10, requireActivity().getWindow().getDecorView().getMeasuredWidth());
             return true;
         }
 
@@ -832,16 +948,15 @@ public class ConversationFragment extends Fragment
                     handleForwardMessage(getListAdapter().getSelectedItems());
                     actionMode.finish();
                     return true;
-                case R.id.menu_context_resend:
-                    handleResendMessage(getSelectedMessageRecord());
-                    actionMode.finish();
-                    return true;
                 case R.id.menu_context_save_attachment:
                     handleSaveAttachment(getSelectedMessageRecord());
                     return true;
                 case R.id.menu_context_reply:
                     handleReplyMessage(getSelectedMessageRecord());
                     actionMode.finish();
+                    return true;
+                case R.id.menu_context_reply_privately:
+                    handleReplyMessagePrivately(getSelectedMessageRecord());
                     return true;
             }
 
@@ -850,9 +965,30 @@ public class ConversationFragment extends Fragment
     }
 
     @Override
-    public void handleEvent(int eventId, Object data1, Object data2) {
-        if (eventId == DcContext.DC_EVENT_CHAT_MODIFIED) {
-            updateLocationButton();
+    public void handleEvent(DcEvent event) {
+        switch (event.getId()) {
+            case DcContext.DC_EVENT_MSGS_CHANGED:
+                if (event.getData1Int() == 0 // deleted messages or batch insert
+                 || event.getData1Int() == chatId) {
+                    reloadList();
+                }
+                break;
+
+            case DcContext.DC_EVENT_INCOMING_MSG:
+            case DcContext.DC_EVENT_MSG_DELIVERED:
+            case DcContext.DC_EVENT_MSG_FAILED:
+            case DcContext.DC_EVENT_MSG_READ:
+                if (event.getData1Int() == chatId) {
+                    reloadList();
+                }
+                break;
+
+            case DcContext.DC_EVENT_CHAT_MODIFIED:
+                if (event.getData1Int() == chatId) {
+                  updateLocationButton();
+                  reloadList();
+                }
+                break;
         }
 
         // removing the "new message" marker on incoming messages may be a bit unexpected,
@@ -861,7 +997,5 @@ public class ConversationFragment extends Fragment
         /*if (eventId == DcContext.DC_EVENT_INCOMING_MSG && isResumed()) {
             setLastSeen(-1);
         }*/
-
-        reloadList();
     }
 }

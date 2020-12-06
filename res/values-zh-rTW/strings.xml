@@ -175,11 +175,6 @@
     <string name="ask_start_chat_with">要和%1$s開始對話嗎？</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">要把%1$s移出群組嗎？</string>
-    <string name="info_outdated_app_title">你的app太舊了。</string>
-    <string name="info_outdated_app_text">你似乎從原始碼(如 GitHub)安裝了 Delta Chat。建議使用各種商店的版本，以獲得最新功能、錯誤修正、以及自動更新。</string>
-    <string name="info_outdated_app_dialog_text">Delta Chat 可以在以下地方下載:</string>
-
-
     <!-- contact list -->
     <string name="contacts_title">聯絡人清單</string>
     <string name="contacts_enter_name_or_email">請輸入姓名或email地址</string>

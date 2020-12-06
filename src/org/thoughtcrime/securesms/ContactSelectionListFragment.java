@@ -19,6 +19,7 @@ package org.thoughtcrime.securesms;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.graphics.Color;
@@ -29,12 +30,13 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.loader.app.LoaderManager;
 import androidx.loader.content.Loader;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.ActionMode;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.util.Log;
 import android.util.SparseIntArray;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -47,6 +49,7 @@ import android.widget.Toast;
 
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
+import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcEventCenter;
 
 import org.thoughtcrime.securesms.components.RecyclerViewFastScroller;
@@ -83,18 +86,14 @@ public class ContactSelectionListFragment extends    Fragment
   private static final String TAG = ContactSelectionListFragment.class.getSimpleName();
 
   public static final String MULTI_SELECT          = "multi_select";
-  public static final String REFRESHABLE           = "refreshable";
-  public static final String RECENTS               = "recents";
   public static final String SELECT_VERIFIED_EXTRA = "select_verified";
   public static final String FROM_SHARE_ACTIVITY_EXTRA = "from_share_activity";
   public static final String PRESELECTED_CONTACTS = "preselected_contacts";
 
   private ApplicationDcContext dcContext;
 
-  private TextView                  emptyText;
   private Set<String>               selectedContacts;
   private OnContactSelectedListener onContactSelectedListener;
-  private SwipeRefreshLayout        swipeRefresh;
   private String                    cursorFilter;
   private RecyclerView              recyclerView;
   private StickyHeaderDecoration    listDecoration;
@@ -132,9 +131,7 @@ public class ContactSelectionListFragment extends    Fragment
   public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     View view = inflater.inflate(R.layout.contact_selection_list_fragment, container, false);
 
-    emptyText               = ViewUtil.findById(view, android.R.id.empty);
     recyclerView            = ViewUtil.findById(view, R.id.recycler_view);
-    swipeRefresh            = ViewUtil.findById(view, R.id.swipe_refresh);
     fastScroller            = ViewUtil.findById(view, R.id.fast_scroller);
     recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
     actionModeCallback = new ActionMode.Callback() {
@@ -145,6 +142,7 @@ public class ContactSelectionListFragment extends    Fragment
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
           getActivity().getWindow().setStatusBarColor(getResources().getColor(R.color.action_mode_status_bar));
         }
+        setCorrectMenuVisibility(menu);
         actionMode.setTitle("1");
         return true;
       }
@@ -159,6 +157,9 @@ public class ContactSelectionListFragment extends    Fragment
         switch (menuItem.getItemId()) {
           case R.id.menu_select_all:
             handleSelectAll();
+            return true;
+          case R.id.menu_view_profile:
+            handleViewProfile();
             return true;
           case R.id.menu_delete_selected:
             handleDeleteSelected();
@@ -180,10 +181,6 @@ public class ContactSelectionListFragment extends    Fragment
       }
     };
 
-    // There shouldn't be the need to pull to refresh the contacts
-    // swipeRefresh.setEnabled(getActivity().getIntent().getBooleanExtra(REFRESHABLE, true) && Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN);
-    swipeRefresh.setEnabled(false);
-
     return view;
   }
 
@@ -200,6 +197,26 @@ public class ContactSelectionListFragment extends    Fragment
 
   private void updateActionModeTitle() {
     actionMode.setTitle(String.valueOf(getContactSelectionListAdapter().getActionModeSelection().size()));
+  }
+
+  private void setCorrectMenuVisibility(Menu menu) {
+    ContactSelectionListAdapter adapter = getContactSelectionListAdapter();
+    if (adapter.getActionModeSelection().size() > 1) {
+      menu.findItem(R.id.menu_view_profile).setVisible(false);
+    } else {
+      menu.findItem(R.id.menu_view_profile).setVisible(true);
+    }
+  }
+
+  private void handleViewProfile() {
+    ContactSelectionListAdapter adapter = getContactSelectionListAdapter();
+    if (adapter.getActionModeSelection().size() == 1) {
+      int contactId = adapter.getActionModeSelection().valueAt(0);
+
+      Intent intent = new Intent(getContext(), ProfileActivity.class);
+      intent.putExtra(ProfileActivity.CONTACT_ID_EXTRA, contactId);
+      getContext().startActivity(intent);
+    }
   }
 
   private void handleDeleteSelected() {
@@ -281,11 +298,6 @@ public class ContactSelectionListFragment extends    Fragment
 
   public void resetQueryFilter() {
     setQueryFilter(null);
-    swipeRefresh.setRefreshing(false);
-  }
-
-  public void setRefreshing(boolean refreshing) {
-    swipeRefresh.setRefreshing(refreshing);
   }
 
   public void reset() {
@@ -309,7 +321,6 @@ public class ContactSelectionListFragment extends    Fragment
   @Override
   public void onLoadFinished(Loader<DcContactsLoader.Ret> loader, DcContactsLoader.Ret data) {
     ((ContactSelectionListAdapter) recyclerView.getAdapter()).changeData(data);
-    emptyText.setText(R.string.contacts_empty_hint);
     boolean useFastScroller = (recyclerView.getAdapter().getItemCount() > 20);
     recyclerView.setVerticalScrollBarEnabled(!useFastScroller);
     if (useFastScroller) {
@@ -341,10 +352,15 @@ public class ContactSelectionListFragment extends    Fragment
     Thread thread = new Thread() {
       @Override
       public void run() {
-        ContactAccessor contactAccessor = ContactAccessor.getInstance();
-        String allSystemContacts = contactAccessor.getAllSystemContactsAsString(getContext());
-        if (!allSystemContacts.isEmpty()) {
-          dcContext.addAddressBook(allSystemContacts);
+        try {
+          ContactAccessor contactAccessor = ContactAccessor.getInstance();
+          String allSystemContacts = contactAccessor.getAllSystemContactsAsString(getContext());
+          if (!allSystemContacts.isEmpty()) {
+            dcContext.addAddressBook(allSystemContacts);
+          }
+        } catch (SecurityException e) {
+          Log.e(TAG, "Caught a weird bug in the Android OS https://github.com/deltachat/deltachat-android/issues/1639: " + e);
+          e.printStackTrace();
         }
       }
     };
@@ -357,6 +373,8 @@ public class ContactSelectionListFragment extends    Fragment
     {
       if (handleActionMode) {
         if (actionMode != null) {
+          Menu menu = actionMode.getMenu();
+          setCorrectMenuVisibility(menu);
           updateActionModeTitle();
           finishActionModeIfSelectionIsEmpty();
         }
@@ -416,18 +434,14 @@ public class ContactSelectionListFragment extends    Fragment
     this.onContactSelectedListener = onContactSelectedListener;
   }
 
-  public void setOnRefreshListener(SwipeRefreshLayout.OnRefreshListener onRefreshListener) {
-    this.swipeRefresh.setOnRefreshListener(onRefreshListener);
-  }
-
   public interface OnContactSelectedListener {
     void onContactSelected(int specialId, String number);
     void onContactDeselected(int specialId, String number);
   }
 
   @Override
-  public void handleEvent(int eventId, Object data1, Object data2) {
-    if (eventId==DcContext.DC_EVENT_CONTACTS_CHANGED) {
+  public void handleEvent(DcEvent event) {
+    if (event.getId()==DcContext.DC_EVENT_CONTACTS_CHANGED) {
       getLoaderManager().restartLoader(0, null, ContactSelectionListFragment.this);
     }
   }

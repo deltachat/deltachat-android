@@ -124,6 +124,8 @@
     <string name="menu_mute">كتم الإشعارات</string>
     <string name="menu_unmute">إلغاء الكتم.</string>
     <string name="menu_all_media">جميع الوسائط</string>
+    <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
+    <string name="show_in_chat">إظهار في المحادثة</string>
     <string name="menu_share">شارك</string>
     <string name="menu_play">شغّل</string>
     <string name="menu_pause">تعليق مؤقت</string>
@@ -139,9 +141,6 @@
     <string name="mute_for_two_hours">أكتم لمدة ساعتين</string>
     <string name="mute_for_one_day">أكتم لمدة يوم</string>
     <string name="mute_for_seven_days">أكتم لمدة أسبوع</string>
-    <string name="info_outdated_app_dialog_text">دالتا تشات Delta Chat متوفر على:</string>
-
-
     <!-- contact list -->
     <string name="contacts_title">جهات الإتصا</string>
     <string name="contacts_enter_name_or_email">ادخل الإسم أو البريد الإلكتروني</string>

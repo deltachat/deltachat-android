@@ -33,6 +33,7 @@ import androidx.loader.content.Loader;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AlertDialog;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -45,12 +46,12 @@ import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
-import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMediaGalleryElement;
 import com.b44t.messenger.DcMsg;
 
 import org.thoughtcrime.securesms.components.MediaView;
 import org.thoughtcrime.securesms.components.viewpager.ExtendedOnPageChangedListener;
+import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.database.loaders.PagingMediaLoader;
@@ -68,8 +69,6 @@ import org.thoughtcrime.securesms.util.Util;
 import java.io.IOException;
 import java.util.WeakHashMap;
 
-import static org.thoughtcrime.securesms.util.RelayUtil.setForwardingMessageIds;
-
 /**
  * Activity for displaying media attachments in-app
  */
@@ -84,6 +83,7 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
   public static final String OUTGOING_EXTRA       = "outgoing";
   public static final String LEFT_IS_RECENT_EXTRA = "left_is_recent";
   public static final String DC_MSG_ID            = "dc_msg_id";
+  public static final String OPENED_FROM_PROFILE  = "opened_from_profile";
 
   /** USE ONLY IF YOU HAVE NO MESSAGE ID! */
   public static final String DATE_EXTRA = "date";
@@ -95,7 +95,7 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
 
   @Nullable
   private DcMsg     messageRecord;
-  private DcContext dcContext;
+  private ApplicationDcContext dcContext;
   private MediaItem initialMedia;
   private ViewPager mediaPager;
   private Recipient conversationRecipient;
@@ -259,7 +259,7 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
   private void editAvatar() {
     Intent intent = new Intent(this, GroupCreateActivity.class);
     intent.putExtra(GroupCreateActivity.EDIT_GROUP_CHAT_ID, editAvatarChatId);
-    if (dcContext.getChat(editAvatarChatId).isVerified()) {
+    if (dcContext.getChat(editAvatarChatId).isProtected()) {
       intent.putExtra(GroupCreateActivity.GROUP_CREATE_VERIFIED_EXTRA, true);
     }
     startActivity(intent);
@@ -268,29 +268,22 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
 
 
   private void showOverview() {
-    if(conversationRecipient.getAddress().isDcChat()) {
+    if (getIntent().getBooleanExtra(OPENED_FROM_PROFILE, false)) {
+      finish();
+    }
+    else if(conversationRecipient.getAddress().isDcChat()) {
       Intent intent = new Intent(this, ProfileActivity.class);
       intent.putExtra(ProfileActivity.CHAT_ID_EXTRA, conversationRecipient.getAddress().getDcChatId());
       intent.putExtra(ProfileActivity.FORCE_TAB_EXTRA, ProfileActivity.TAB_GALLERY);
       startActivity(intent);
+      finish();
     }
     else if(conversationRecipient.getAddress().isDcContact()) {
       Intent intent = new Intent(this, ProfileActivity.class);
       intent.putExtra(ProfileActivity.CONTACT_ID_EXTRA, conversationRecipient.getAddress().getDcContactId());
       intent.putExtra(ProfileActivity.FORCE_TAB_EXTRA, ProfileActivity.TAB_GALLERY);
       startActivity(intent);
-    }
-  }
-
-  private void forward() {
-    MediaItem mediaItem = getCurrentMediaItem();
-
-    if (mediaItem != null) {
-      Intent composeIntent = new Intent(this, ConversationListActivity.class);
-      int[] msgIds = new int[]{mediaItem.msgId};
-      setForwardingMessageIds(composeIntent, msgIds);
-      startActivity(composeIntent);
-      overridePendingTransition(R.anim.slide_from_right, R.anim.fade_scale_out);
+      finish();
     }
   }
 
@@ -313,6 +306,25 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
                    .execute();
       });
     }
+  }
+
+  private void showInChat() {
+    MediaItem mediaItem = getCurrentMediaItem();
+    if (mediaItem == null || mediaItem.msgId == DcMsg.DC_MSG_NO_ID) {
+      Log.w(TAG, "mediaItem missing.");
+      return;
+    }
+
+    DcMsg dcMsg = dcContext.getMsg(mediaItem.msgId);
+    if (dcMsg.getId() == DcMsg.DC_MSG_NO_ID) {
+      Log.w(TAG, "cannot get message object.");
+      return;
+    }
+
+    Intent intent = new Intent(this, ConversationActivity.class);
+    intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, dcMsg.getChatId());
+    intent.putExtra(ConversationActivity.STARTING_POSITION_EXTRA, DcMsg.getMessagePosition(dcMsg, dcContext));
+    startActivity(intent);
   }
 
   @SuppressLint("StaticFieldLeak")
@@ -355,7 +367,7 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
     if (!isMediaInDb()) {
       menu.findItem(R.id.media_preview__overview).setVisible(false);
       menu.findItem(R.id.delete).setVisible(false);
-      menu.findItem(R.id.media_preview__forward).setVisible(false);
+      menu.findItem(R.id.show_in_chat).setVisible(false);
     }
 
     if (editAvatarChatId==0) {
@@ -372,9 +384,9 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
     switch (item.getItemId()) {
       case R.id.media_preview__edit:     editAvatar();   return true;
       case R.id.media_preview__overview: showOverview(); return true;
-      case R.id.media_preview__forward:  forward();      return true;
       case R.id.save:                    saveToDisk();   return true;
       case R.id.delete:                  deleteMedia();  return true;
+      case R.id.show_in_chat:            showInChat();   return true;
       case android.R.id.home:            finish();       return true;
     }
 

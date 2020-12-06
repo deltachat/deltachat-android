@@ -28,6 +28,8 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import com.b44t.messenger.DcEvent;
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.core.content.ContextCompat;
@@ -58,9 +60,6 @@ import org.thoughtcrime.securesms.ConversationListAdapter.ItemClickListener;
 import org.thoughtcrime.securesms.components.recyclerview.DeleteItemAnimator;
 import org.thoughtcrime.securesms.components.registration.PulsingFloatingActionButton;
 import org.thoughtcrime.securesms.components.reminder.DozeReminder;
-import org.thoughtcrime.securesms.components.reminder.OutdatedReminder;
-import org.thoughtcrime.securesms.components.reminder.Reminder;
-import org.thoughtcrime.securesms.components.reminder.ReminderView;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcChatlistLoader;
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -97,7 +96,6 @@ public class ConversationListFragment extends Fragment
 
   private ActionMode                  actionMode;
   private RecyclerView                list;
-  private ReminderView                reminderView;
   private View                        emptyState;
   private TextView                    emptySearch;
   private PulsingFloatingActionButton fab;
@@ -116,6 +114,7 @@ public class ConversationListFragment extends Fragment
     dcContext.eventCenter.addObserver(DcContext.DC_EVENT_CHAT_MODIFIED, this);
     dcContext.eventCenter.addObserver(DcContext.DC_EVENT_INCOMING_MSG, this);
     dcContext.eventCenter.addObserver(DcContext.DC_EVENT_MSGS_CHANGED, this);
+    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_MSGS_NOTICED, this);
     dcContext.eventCenter.addObserver(DcContext.DC_EVENT_MSG_DELIVERED, this);
     dcContext.eventCenter.addObserver(DcContext.DC_EVENT_MSG_FAILED, this);
     dcContext.eventCenter.addObserver(DcContext.DC_EVENT_MSG_READ, this);
@@ -132,7 +131,6 @@ public class ConversationListFragment extends Fragment
   public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle bundle) {
     final View view = inflater.inflate(R.layout.conversation_list_fragment, container, false);
 
-    reminderView = ViewUtil.findById(view, R.id.reminder);
     list         = ViewUtil.findById(view, R.id.list);
     fab          = ViewUtil.findById(view, R.id.fab);
     emptyState   = ViewUtil.findById(view, R.id.empty_state);
@@ -140,8 +138,6 @@ public class ConversationListFragment extends Fragment
 
     if (archive) fab.setVisibility(View.GONE);
     else         fab.setVisibility(View.VISIBLE);
-
-    reminderView.setOnDismissListener(this::updateReminders);
 
     list.setHasFixedSize(true);
     list.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -231,32 +227,23 @@ public class ConversationListFragment extends Fragment
 
   @SuppressLint({"StaticFieldLeak", "NewApi"})
   private void updateReminders() {
-    new AsyncTask<Context, Void, Optional<? extends Reminder>>() {
+    new AsyncTask<Context, Void, Void>() {
       @Override
-      protected Optional<? extends Reminder> doInBackground(Context... params) {
+      protected Void doInBackground(Context... params) {
         final Context context = params[0];
         try {
           if (DozeReminder.isEligible(context)) {
             DozeReminder.addDozeReminderDeviceMsg(context);
-            return Optional.absent();
-          } else if (OutdatedReminder.isEligible(context)) {
-            return Optional.of(new OutdatedReminder(context));
           }
         } catch (Exception e) {
           e.printStackTrace();
         }
-
-        return Optional.absent();
+        return null;
       }
 
       @Override
-      protected void onPostExecute(Optional<? extends Reminder> reminder) {
+      protected void onPostExecute(Void result) {
         DozeReminder.maybeAskDirectly(getActivity());
-        if (reminder.isPresent() && getActivity() != null && !isRemoving()) {
-          reminderView.showReminder(reminder.get());
-        } else if (!reminder.isPresent()) {
-          reminderView.hide();
-        }
       }
     }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, getActivity());
   }
@@ -538,8 +525,9 @@ public class ConversationListFragment extends Fragment
     if (isRelayingMessageContent(getActivity())) {
       Context context = getContext();
       if (context != null) {
-        fab.setImageDrawable(ContextCompat.getDrawable(getContext(), R.drawable.ic_send_sms_white_24dp));
+        fab.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_send_sms_white_24dp));
       }
+      fab.setVisibility(View.VISIBLE);
       initializeFabClickListener(true);
     } else {
 
@@ -593,13 +581,15 @@ public class ConversationListFragment extends Fragment
     if (context != null) {
       fab.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_add_white_24dp));
     }
+    if (archive) fab.setVisibility(View.GONE);
+    else         fab.setVisibility(View.VISIBLE);
     initializeFabClickListener(false);
 
     actionMode = null;
   }
 
   @Override
-  public void handleEvent(int eventId, Object data1, Object data2) {
+  public void handleEvent(DcEvent event) {
     getLoaderManager().restartLoader(0, null, this);
   }
 }

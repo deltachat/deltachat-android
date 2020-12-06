@@ -63,6 +63,7 @@ import androidx.core.view.WindowCompat;
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
+import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcEventCenter;
 import com.b44t.messenger.DcMsg;
 
@@ -83,7 +84,6 @@ import org.thoughtcrime.securesms.components.camera.QuickAttachmentDrawer.Attach
 import org.thoughtcrime.securesms.components.camera.QuickAttachmentDrawer.DrawerState;
 import org.thoughtcrime.securesms.components.emoji.EmojiKeyboardProvider;
 import org.thoughtcrime.securesms.components.emoji.MediaKeyboard;
-import org.thoughtcrime.securesms.components.reminder.ReminderView;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.map.MapActivity;
@@ -93,6 +93,7 @@ import org.thoughtcrime.securesms.mms.AudioSlide;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.mms.PartAuthority;
+import org.thoughtcrime.securesms.mms.QuoteModel;
 import org.thoughtcrime.securesms.mms.SlideDeck;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
@@ -110,6 +111,7 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.concurrent.AssertedSuccessListener;
 import org.thoughtcrime.securesms.util.concurrent.ListenableFuture;
 import org.thoughtcrime.securesms.util.concurrent.SettableFuture;
+import org.thoughtcrime.securesms.util.guava.Optional;
 import org.thoughtcrime.securesms.util.views.Stub;
 import org.thoughtcrime.securesms.video.recode.VideoRecoder;
 import org.thoughtcrime.securesms.videochat.VideochatUtil;
@@ -177,7 +179,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private   ConversationFragment        fragment;
   private   InputAwareLayout            container;
   private   View                        composePanel;
-  protected Stub<ReminderView>          reminderView;
   private   ScaleStableImageView        backgroundView;
 
   private   AttachmentTypeSelector attachmentTypeSelector;
@@ -449,7 +450,9 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     inflater.inflate(R.menu.conversation, menu);
 
-    if(Prefs.isChatMuted(dcChat)) {
+    if (dcChat.isSelfTalk()) {
+      menu.findItem(R.id.menu_mute_notifications).setVisible(false);
+    } else if(Prefs.isChatMuted(dcChat)) {
       menu.findItem(R.id.menu_mute_notifications).setTitle(R.string.menu_unmute);
     }
 
@@ -459,6 +462,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     if (!dcContext.isWebrtcConfigOk() || !dcChat.canVideochat()) {
       menu.findItem(R.id.menu_videochat_invite).setVisible(false);
+    }
+
+    if (!dcChat.canSend()) {
+      menu.findItem(R.id.menu_ephemeral_messages).setVisible(false);
     }
 
     if (isGroupConversation()) {
@@ -559,6 +566,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   public void setDraftText(String txt) {
     composeText.setText(txt);
     composeText.setSelection(composeText.getText().length());
+  }
+
+  public void hideSoftKeyboard() {
+    container.hideCurrentInput(composeText);
   }
 
   //////// Event Handlers
@@ -781,6 +792,11 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       composeText.setSelection(composeText.getText().length());
     }
 
+    DcMsg quote = draft.getQuotedMsg();
+    if (quote != null) {
+      handleReplyMessage(quote);
+    }
+
     String filename = draft.getFile();
     if (filename.isEmpty() || !new File(filename).exists()) {
       future.set(!text.isEmpty());
@@ -848,7 +864,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     emojiDrawerStub       = ViewUtil.findStubById(this, R.id.emoji_drawer_stub);
     composePanel          = ViewUtil.findById(this, R.id.bottom_panel);
     container             = ViewUtil.findById(this, R.id.layout_container);
-    reminderView          = ViewUtil.findStubById(this, R.id.reminder_stub);
     quickAttachmentDrawer = ViewUtil.findById(this, R.id.quick_attachment_drawer);
     quickAttachmentToggle = ViewUtil.findById(this, R.id.quick_attachment_toggle);
     inputPanel            = ViewUtil.findById(this, R.id.bottom_panel);
@@ -1067,12 +1082,14 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     final SettableFuture<Integer> future  = new SettableFuture<>();
 
     DcMsg msg = null;
+    Optional<QuoteModel> quote = inputPanel.getQuote();
     Integer recompress = 0;
 
     // for a quick ui feedback, we clear the related controls immediately on sending messages.
     // for drafts, however, we do not change the controls, the activity may be resumed.
     if (action==ACTION_SEND_OUT) {
       composeText.setText("");
+      inputPanel.clearQuote();
     }
 
     if(slideDeck!=null) {
@@ -1113,6 +1130,11 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     else if (!body.isEmpty()){
       msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
       msg.setText(body);
+    }
+
+    if (quote.isPresent()) {
+      if (msg == null) msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
+      msg.setQuote(quote.get().getQuotedMsg());
     }
 
     // msg may still be null to clear drafts
@@ -1476,41 +1498,25 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   @Override
-  public void handleReplyMessage(DcMsg messageRecord) {
-      DcContact contact = dcContext.getContact(messageRecord.getFromId());
-      String prefix = "> ";
-      String quote;
-      if(messageRecord.getType() == DcMsg.DC_MSG_TEXT) {
-	  quote = messageRecord.getText();
-      }
-      else {
-	  quote = messageRecord.getSummarytext(1000);
-      }
+  public void handleReplyMessage(DcMsg msg) {
+    // If you modify these lines you may also want to modify ConversationItem.setQuote():
+    Recipient author = dcContext.getRecipient(dcContext.getContact(msg.getFromId()));
 
-      quote = quote.replaceAll("> .*\n", "").trim();
+    SlideDeck slideDeck = new SlideDeck();
+    if (msg.getType() != DcMsg.DC_MSG_TEXT) {
+      slideDeck.addSlide(MediaUtil.getSlideForMsg(this, msg));
+    }
 
-      int nl_count = 0;
-      for(int i=0; i < quote.length(); i++) {
-	  if(quote.charAt(i) == '\n') {
-	      nl_count += 1;
-	      if (nl_count == 4) {
-		  quote = quote.substring(0, i);
-		  break;
-	      }
-	  }
-      }
+    String text = msg.getSummarytext(500);
 
-      if (quote.length() > 60) {
-	  quote = quote.substring(0, 60) + "[...]";
-      } else if (nl_count == 4) {
-	  quote += "[...]";
-      }
+    inputPanel.setQuote(GlideApp.with(this),
+            msg,
+            msg.getTimestamp(),
+            author,
+            text,
+            slideDeck);
 
-      quote = "@" + contact.getDisplayName().replace(' ', '_') + ":\n" + quote;
-      quote = prefix+quote.replaceAll("(?:\r\n?|\n)(?!\\z)", "$0"+Matcher.quoteReplacement(prefix)) + "\n\n\n";
-      composeText.setText(quote);
-      composeText.setSelection(composeText.getText().length());
-      container.showSoftkey(composeText);
+    inputPanel.clickOnComposeInput();
   }
 
   @Override
@@ -1520,9 +1526,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   @Override
-  public void handleEvent(int eventId, Object data1, Object data2) {
-    if (eventId == DcContext.DC_EVENT_CHAT_MODIFIED
-     || eventId == DcContext.DC_EVENT_CHAT_EPHEMERAL_TIMER_MODIFIED
+  public void handleEvent(DcEvent event) {
+    int eventId = event.getId();
+    if ((eventId == DcContext.DC_EVENT_CHAT_MODIFIED && event.getData1Int() == chatId)
+     || (eventId == DcContext.DC_EVENT_CHAT_EPHEMERAL_TIMER_MODIFIED && event.getData1Int() == chatId)
      || eventId == DcContext.DC_EVENT_CONTACTS_CHANGED) {
       dcChat = dcContext.getChat(chatId);
       titleView.setTitle(glideRequests, dcChat);

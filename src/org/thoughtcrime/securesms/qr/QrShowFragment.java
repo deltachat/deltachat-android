@@ -23,6 +23,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.b44t.messenger.DcContext;
+import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcEventCenter;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
@@ -184,11 +185,11 @@ public class QrShowFragment extends Fragment implements DcEventCenter.DcEventDel
     }
 
     @Override
-    public void handleEvent(int eventId, Object data1, Object data2) {
-        if (eventId == DcContext.DC_EVENT_SECUREJOIN_INVITER_PROGRESS) {
+    public void handleEvent(DcEvent event) {
+        if (event.getId() == DcContext.DC_EVENT_SECUREJOIN_INVITER_PROGRESS) {
             DcContext dcContext = DcHelper.getContext(getActivity());
-            int contact_id = ((Long) data1).intValue();
-            long progress = (Long) data2;
+            int contact_id = event.getData1Int();
+            long progress = event.getData2Int();
             String msg = null;
             if (progress == 300) {
                 msg = String.format(getString(R.string.qrshow_x_joining), dcContext.getContact(contact_id).getNameNAddr());

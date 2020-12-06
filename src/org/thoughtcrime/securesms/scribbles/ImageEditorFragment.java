@@ -95,7 +95,7 @@ public final class ImageEditorFragment extends Fragment implements ImageEditorHu
     super.onCreate(savedInstanceState);
 
     if (imageUri == null) {
-      throw new AssertionError("No KEY_IMAGE_URI supplied");
+      imageUri = getArguments().getParcelable(KEY_IMAGE_URI);
     }
 
     MediaConstraints mediaConstraints = new ImageEditorMediaConstraints();

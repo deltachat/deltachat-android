@@ -28,6 +28,7 @@
       <!-- pt_BR --> <item>Português do Brasil</item>
       <!-- sc -->    <item>Sardu</item>
       <!-- sq -->    <item>Shqip</item>
+      <!-- sk -->    <item>Slovenčina</item>
       <!-- sv -->    <item>Svenska</item>
       <!-- tr -->    <item>Türkçe</item>
       <!-- ru -->    <item>Pусский</item>
@@ -67,6 +68,7 @@
       <item>pt_BR</item>
       <item>sc</item>
       <item>sq</item>
+      <item>sk</item>
       <item>sv</item>
       <item>tr</item>
       <item>ru</item>

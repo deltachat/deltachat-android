@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
 
+import com.b44t.messenger.DcEvent;
 import com.google.android.material.tabs.TabLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -65,6 +66,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
   private ApplicationDcContext dcContext;
   private int                  chatId;
   private boolean              chatIsGroup;
+  private boolean              chatIsDeviceTalk;
   private int                  contactId;
   private boolean              fromChat;
 
@@ -105,6 +107,14 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
 
     this.tabLayout.setupWithViewPager(viewPager);
     this.viewPager.setAdapter(new ProfilePagerAdapter(getSupportFragmentManager()));
+    int forceTab = getIntent().getIntExtra(FORCE_TAB_EXTRA, -1);
+    if (forceTab != -1) {
+      int forceIndex = tabs.indexOf(forceTab);
+      if (forceIndex != -1) {
+        this.viewPager.setCurrentItem(forceIndex);
+      }
+    }
+
     dcContext.eventCenter.addObserver(DcContext.DC_EVENT_CHAT_MODIFIED, this);
     dcContext.eventCenter.addObserver(DcContext.DC_EVENT_CONTACTS_CHANGED, this);
   }
@@ -113,9 +123,11 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
   public boolean onCreateOptionsMenu(Menu menu) {
     MenuInflater inflater = getMenuInflater();
 
-    inflater.inflate(R.menu.profile_common, menu);
-
     if (!isSelfProfile()) {
+      if (!chatIsDeviceTalk) {
+        inflater.inflate(R.menu.profile_common, menu);
+      }
+
       if (chatId != 0) {
         inflater.inflate(R.menu.profile_chat, menu);
         if (chatIsGroup) {
@@ -123,7 +135,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
         }
       }
 
-      if (isContactProfile()) {
+      if (isContactProfile() && !chatIsDeviceTalk) {
         inflater.inflate(R.menu.profile_contact, menu);
       }
     }
@@ -177,15 +189,16 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
   }
 
   @Override
-  public void handleEvent(int eventId, Object data1, Object data2) {
+  public void handleEvent(DcEvent event) {
     updateToolbar();
   }
 
   private void initializeResources() {
-    chatId      = getIntent().getIntExtra(CHAT_ID_EXTRA, 0);
-    contactId   = getIntent().getIntExtra(CONTACT_ID_EXTRA, 0);
-    chatIsGroup = false;
-    fromChat    = getIntent().getBooleanExtra(FROM_CHAT, false);
+    chatId           = getIntent().getIntExtra(CHAT_ID_EXTRA, 0);
+    contactId        = getIntent().getIntExtra(CONTACT_ID_EXTRA, 0);
+    chatIsGroup      = false;
+    chatIsDeviceTalk = false;
+    fromChat         = getIntent().getBooleanExtra(FROM_CHAT, false);
 
     if (contactId!=0) {
       chatId = dcContext.getChatIdByContactId(contactId);
@@ -193,13 +206,14 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
     else if(chatId!=0) {
       DcChat dcChat = dcContext.getChat(chatId);
       chatIsGroup = dcChat.isGroup();
+      chatIsDeviceTalk = dcChat.isDeviceTalk();
       if(!chatIsGroup) {
         final int[] members = dcContext.getChatContacts(chatId);
         contactId = members.length>=1? members[0] : 0;
       }
     }
 
-    if(!isGlobalProfile() && !isSelfProfile()) {
+    if(!isGlobalProfile() && !isSelfProfile() && !chatIsDeviceTalk) {
       tabs.add(TAB_SETTINGS);
     }
     tabs.add(TAB_GALLERY);
@@ -424,7 +438,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
     if (chatIsGroup) {
       Intent intent = new Intent(this, GroupCreateActivity.class);
       intent.putExtra(GroupCreateActivity.EDIT_GROUP_CHAT_ID, chatId);
-      if (dcContext.getChat(chatId).isVerified()) {
+      if (dcContext.getChat(chatId).isProtected()) {
         intent.putExtra(GroupCreateActivity.GROUP_CREATE_VERIFIED_EXTRA, true);
       }
       startActivity(intent);

@@ -18,7 +18,7 @@
     <dimen name="message_bubble_shadow_distance">1.5dp</dimen>
     <dimen name="message_bubble_horizontal_padding">8dp</dimen>
     <dimen name="message_bubble_horizontal_padding_half">4dp</dimen>
-    <dimen name="message_bubble_top_padding">8dp</dimen>
+    <dimen name="message_bubble_top_padding">6dp</dimen>
     <dimen name="message_bubble_collapsed_footer_padding">6dp</dimen>
     <dimen name="message_bubble_edge_margin">32dp</dimen>
     <dimen name="message_bubble_bottom_padding">6dp</dimen>
@@ -27,7 +27,7 @@
     <dimen name="media_bubble_default_dimens">210dp</dimen>
     <dimen name="media_bubble_min_width">150dp</dimen>
     <dimen name="media_bubble_max_width">240dp</dimen>
-    <dimen name="media_bubble_min_height">100dp</dimen>
+    <dimen name="media_bubble_min_height">50dp</dimen>
     <dimen name="media_bubble_max_height">320dp</dimen>
     <dimen name="below_bubble">3dp</dimen>
 
@@ -41,6 +41,10 @@
     <dimen name="conversation_group_left_gutter">52dp</dimen>
     <dimen name="conversation_vertical_message_spacing_collapse">1dp</dimen>
 
+    <dimen name="quote_corner_radius_large">10dp</dimen>
+    <dimen name="quote_corner_radius_bottom">2.5dp</dimen>
+    <dimen name="quote_corner_radius_preview">18dp</dimen>
+
     <dimen name="quick_camera_shutter_ring_size">52dp</dimen>
 
     <dimen name="contact_selection_actions_tap_area">10dp</dimen>
@@ -50,5 +54,6 @@
     <dimen name="slider_thumbOutlineSize">4dp</dimen>
     <dimen name="slider_displayTextFontSize">12sp</dimen>
     <dimen name="slider_displayTextBasicOffsetY">8dp</dimen>
+	<dimen name="quote_thumb_size">45dp</dimen>
 
 </resources>

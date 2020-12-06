@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 
 import com.b44t.messenger.DcContext;
+import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcEventCenter;
 import com.b44t.messenger.DcLot;
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -171,7 +172,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
         dcContext.configure();
     }
 
-    private void progressError(Object data2) {
+    private void progressError(String data2) {
         progressDialog.dismiss();
         maybeShowConfigurationError(this, data2);
     }
@@ -195,10 +196,10 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
         finish();
     }
 
-    public static void maybeShowConfigurationError(Activity activity, Object data2) {
-        if (data2 instanceof String && !((String) data2).isEmpty()) {
+    public static void maybeShowConfigurationError(Activity activity, String data2) {
+        if (data2 != null && !data2.isEmpty()) {
             AlertDialog d = new AlertDialog.Builder(activity)
-                .setMessage(((String) data2))
+                .setMessage(data2)
                 .setPositiveButton(android.R.string.ok, null)
                 .create();
             d.show();
@@ -212,9 +213,11 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
     }
 
     @Override
-    public void handleEvent(int eventId, Object data1, Object data2) {
+    public void handleEvent(DcEvent event) {
+        int eventId = event.getId();
+
         if (eventId== DcContext.DC_EVENT_IMEX_PROGRESS ) {
-            long progress = (Long)data1;
+            long progress = event.getData1Int();
             if (progress==0/*error/aborted*/) {
                 progressError(dcContext.getCapturedError());
                 notificationController.close();
@@ -230,16 +233,16 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
             }
         }
         else if (manualConfigure && eventId==DcContext.DC_EVENT_CONFIGURE_PROGRESS) {
-            long progress = (Long)data1;
+            long progress = event.getData1Int();
             if (progress==1000/*done*/) {
                 dcContext.maybeStartIo();
                 finish(); // remove ourself from the activity stack (finishAffinity is available in API 16, we're targeting API 14)
             }
         }
         else if (!manualConfigure && eventId==DcContext.DC_EVENT_CONFIGURE_PROGRESS) {
-            long progress = (Long)data1;
+            long progress = event.getData1Int();
             if (progress==0/*error/aborted*/) {
-                progressError(data2);
+                progressError(event.getData2Str());
             }
             else if (progress<1000/*progress in permille*/) {
                 progressUpdate((int)progress);

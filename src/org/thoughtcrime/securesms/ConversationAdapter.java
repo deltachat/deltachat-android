@@ -22,8 +22,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.graphics.Color;
-import android.graphics.PorterDuff;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,6 +50,8 @@ import java.util.HashSet;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
+
+import static org.thoughtcrime.securesms.ConversationItem.PULSE_HIGHLIGHT_MILLIS;
 
 /**
  * A DC adapter for a conversation thread.  Ultimately
@@ -97,6 +98,8 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
   private @NonNull DcChat      dcChat;
   private @NonNull int[]       dcMsgList = new int[0];
   private int                  positionToPulseHighlight = -1;
+  private int                  positionCurrentlyPulseHighlighting = -1;
+  private long                 pulseHighlightingSince = -1;
   private int                  lastSeenPosition = -1;
   private long                 lastSeen = -1;
 
@@ -131,7 +134,10 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
 
   public void updateLastSeenPosition() {
     this.lastSeenPosition = findLastSeenPosition(lastSeen);
+  }
 
+  void setLastSeenPosition(int pos) {
+    lastSeenPosition = pos;
   }
 
   public int getLastSeenPosition() {
@@ -227,12 +233,24 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
   @Override
   public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
     ConversationAdapter.ViewHolder holder = (ConversationAdapter.ViewHolder)viewHolder;
-    boolean pulseHighlight = position == positionToPulseHighlight;
+
+    long now = System.currentTimeMillis();
+    if (position == positionToPulseHighlight) {
+      positionToPulseHighlight = -1;
+      positionCurrentlyPulseHighlighting = position;
+      pulseHighlightingSince = now;
+    }
+
+    long elapsed = now - pulseHighlightingSince;
+    boolean pulseHighlight = (positionCurrentlyPulseHighlighting == position && elapsed < PULSE_HIGHLIGHT_MILLIS);
 
     holder.getItem().bind(getMsg(position), dcChat, glideRequests, locale, batchSelected, recipient, pulseHighlight);
+  }
 
-    if (pulseHighlight) {
-      positionToPulseHighlight = -1;
+  @Override
+  public void onViewRecycled(@NonNull RecyclerView.ViewHolder viewHolder) {
+    if (viewHolder.itemView instanceof  ConversationItem) {
+      ConversationSwipeAnimationHelper.update((ConversationItem) viewHolder.itemView, 0, 1);
     }
   }
 

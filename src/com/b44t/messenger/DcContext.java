@@ -16,6 +16,7 @@ public class DcContext {
     public final static int DC_EVENT_ERROR_SELF_NOT_IN_GROUP     = 410;
     public final static int DC_EVENT_MSGS_CHANGED                = 2000;
     public final static int DC_EVENT_INCOMING_MSG                = 2005;
+    public final static int DC_EVENT_MSGS_NOTICED                = 2008;
     public final static int DC_EVENT_MSG_DELIVERED               = 2010;
     public final static int DC_EVENT_MSG_FAILED                  = 2012;
     public final static int DC_EVENT_MSG_READ                    = 2015;
@@ -131,7 +132,6 @@ public class DcContext {
     public @NonNull DcChat     getChat              (int chat_id) { return new DcChat(getChatCPtr(chat_id)); }
     public native void         markseenMsgs         (int msg_ids[]);
     public native void         marknoticedChat      (int chat_id);
-    public native void         marknoticedAllChats  ();
     public native void         marknoticedContact   (int contact_id);
     public native void         setChatVisibility    (int chat_id, int visibility);
     public native int          getChatIdByContactId (int contact_id);
@@ -167,7 +167,6 @@ public class DcContext {
     public native int          sendVideochatInvitation(int chat_id);
     public native int          addDeviceMsg         (String label, DcMsg msg);
     public native boolean      wasDeviceMsgEverAdded(String label);
-    public native void         updateDeviceChats    ();
     public @NonNull DcLot      checkQr              (String qr) { return new DcLot(checkQrCPtr(qr)); }
     public native String       getSecurejoinQr      (int chat_id);
     public native int          joinSecurejoin       (String qr);

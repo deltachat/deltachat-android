@@ -195,7 +195,6 @@
     <string name="pin">Fäst</string>
     <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
     <string name="unpin">Lösgör</string>
-
     <string name="mute_for_one_hour">Tysta 1 timma</string>
     <string name="mute_for_two_hours">Tysta 2 timmar</string>
     <string name="mute_for_one_day">Tysta 1 dag</string>
@@ -247,12 +246,6 @@
     <string name="ask_start_chat_with">Chatta med %1$s ?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Ta bort %1$s från gruppen?</string>
-    <string name="info_outdated_app_title">Din appversion är för gammal.</string>
-    <string name="info_outdated_app_text">Det verkar som att du installerade Delta Chat från en källa som inte har automatiska uppdateringar (t.ex. GitHub). Vänligen använd en butiksversion för att komma åt de senaste funktionerna och buggfixar.</string>
-    <string name="info_outdated_app_dialog_title">Uppdatera källan</string>
-    <string name="info_outdated_app_dialog_text">Delta Chat är tillgänglig för:</string>
-
-
     <!-- contact list -->
     <string name="contacts_title">Kontakter</string>
     <string name="contacts_enter_name_or_email">Ange namn eller e-postadress</string>
@@ -295,7 +288,6 @@
     <string name="chat_no_contact_requests">Inga kontaktförfrågningar.\n\nOm du vill att vanliga e-postmeddelanden skall visas som kontaktförfrågningar här, kan du ändra det i appens inställningar.</string>
     <string name="retry_send">Skicka om meddelandet</string>
     <string name="send_failed">Kunde inte skicka meddelandet</string>
-
     <!-- map -->
     <string name="filter_map_on_time">Visa platser inom tidsramen</string>
     <string name="show_location_traces">Visa spår</string>
@@ -475,7 +467,6 @@
     <string name="pref_background_custom_image">Anpassad bild</string>
     <string name="pref_background_custom_color">Anpassad färg</string>
     <string name="export_aborted">Exporten avbruten</string>
-
     <!-- automatically delete message -->
     <string name="delete_old_messages">Ta bort gamla meddelanden</string>
     <!-- devs: autodel_title is deprecated, use delete_old_messages instead -->
@@ -484,8 +475,6 @@
     <string name="autodel_server_title">Ta bort meddelanden från servern</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">Vill du ta bort %1$d meddelanden nu och alla kommande meddelanden \"%2$s\" i framtiden?\n\n• Detta inkluderar all mediafiler.\n\n• Meddelanden kommer att tas bort oavsett om de har lästs eller inte.\n\n• \"Sparade meddelanden\" undantas från lokal borttagning.</string>
-    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
-    <string name="autodel_server_ask">Vill du ta bort %1$d meddelanden nu och alla kommande meddelanden \"%2$s\" i framtiden?\n\n• Detta inkluderar all mediafiler.\n\n• Detta tar också bort e-post som påverkas av alternativet \"Visa vanlig e-post\".\n\n• \"Sparade e-postmeddelanden\" kommer även att tas bort från servern.</string>
     <string name="autodel_confirm">Jag förstår! Ta bort alla dessa meddelanden.</string>
     <string name="autodel_at_once">Nu genast</string>
     <string name="after_30_seconds">Efter 30 sekunder</string>
@@ -540,7 +529,6 @@
     <string name="systemmsg_ephemeral_timer_week">Tiduret för meddelandeborttagning är satt till 1 vecka.</string>
     <string name="systemmsg_ephemeral_timer_four_weeks">Tiduret för meddelandeborttagning är satt till 4 veckor.</string>
 
-
     <!-- screen lock -->
     <string name="screenlock_title">Skärmlås</string>
     <string name="screenlock_explain">Lås åtkomsten med Androids skärmlås eller fingeravtryck. Aktivera även \"Skärmsäkerhet\", för att undvika att visa tidigare innehåll.</string>
@@ -583,8 +571,6 @@
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Ändrade inställningarna för %1$s.</string>
     <string name="verified_group_explain">Verifierade grupper (experimentellt) tillhandahåller skydd mot aktiva attacker. Medlemmar verifieras med en andra faktor, av andra medlemmar, och meddelanden är alltid slutpunkt-till-slutpunkt-krypterade.</string>
-
-
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d nya meddelanden i %2$d chattar</string>
     <string name="notify_mark_read">Läst</string>
@@ -612,7 +598,6 @@
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Krypterat meddelande</string>
 
-    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
     <string name="welcome_desktop">Välkommen till Delta Chat</string>
     <string name="login_known_accounts_title_desktop">Kända konton</string>
     <string name="global_menu_preferences_language_desktop">Språk</string>
@@ -678,7 +663,6 @@
     <string name="menu.view.developer.open.current.log.file">Öppna aktuell loggfil</string>
     <string name="user_location_permission_explanation">Delta Chat behöver platsbehörighet, för att kunna visa och dela din plats.</string>
 
-
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Leveransstatus: Fel</string>
     <string name="a11y_encryption_padlock">Hänglås för kryptering</string>
@@ -689,8 +673,6 @@
     <string name="a11y_delivery_status_invalid">Ogiltig leveransstatus</string>
     <string name="a11y_message_context_menu_btn_label">Meddelandeåtgärder</string>
     <string name="a11y_background_preview_label">Förhandsvisning i bakgrunden</string>
-
-
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat använder din kamera för att ta och skicka foton och filmer, och för att skanna QR-koder.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat använder dina kontakter för att visa en lista över e-postadresser som du kan skriva till.m Delta Chat har ingen server, dina kontakter skickas inte någonstans.</string>
@@ -708,5 +690,4 @@
     <string name="pref_reliable_service_explain">Kräver permanent avisering</string>
     <string name="perm_enable_bg_reminder_title">Tryck här för att ta emot meddelanden medan Delta Chat är i bakgrunden.</string>
     <string name="perm_enable_bg_already_done">Du har redan gett Delta Chatt tillstånd att ta emot meddelanden i bakgrunden.\n\nKontrollera dina systeminställningar också, om det fortfarande inte kommer några meddelanden i bakgrunden.</string>
-
-</resources>
+    </resources>

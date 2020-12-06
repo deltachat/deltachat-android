@@ -218,7 +218,6 @@
     <!-- dc_str_* resources -->
     <string name="encrypted_message">ఎంక్రిప్ట్ చెసిన సందేశం</string>
 
-    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
     <string name="welcome_desktop">Delta Chat కి స్వాగతం.</string>
     <string name="global_menu_file_desktop">ఫైల్</string>
     <string name="global_menu_edit_desktop">మార్చు</string>

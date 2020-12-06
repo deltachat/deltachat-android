@@ -23,6 +23,18 @@
         android:clipToPadding="false"
         android:clipChildren="false">
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/reply_icon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignStart="@id/body_bubble"
+            android:layout_alignTop="@id/body_bubble"
+            android:layout_alignBottom="@id/body_bubble"
+            android:alpha="0"
+            app:srcCompat="?menu_reply_icon"
+            android:tint="?icon_tint"
+            android:layout_alignLeft="@id/body_bubble" />
+
         <LinearLayout
             android:id="@+id/body_bubble"
             android:layout_width="wrap_content"
@@ -65,9 +77,22 @@
 
             </LinearLayout>
 
+            <org.thoughtcrime.securesms.components.QuoteView
+                android:id="@+id/quote_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/message_bubble_top_padding"
+                android:layout_marginStart="6dp"
+                android:layout_marginEnd="6dp"
+                android:visibility="gone"
+                app:message_type="incoming"
+                app:quote_colorPrimary="?attr/conversation_item_quote_text_color"
+                app:quote_colorSecondary="?attr/conversation_item_quote_text_color"
+                tools:visibility="visible"/>
+
             <ViewStub
                 android:id="@+id/image_view_stub"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout="@layout/conversation_item_sent_thumbnail" />
 

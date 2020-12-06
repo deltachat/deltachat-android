@@ -1,14 +1,15 @@
 package org.thoughtcrime.securesms.audio;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import android.util.Log;
 import android.util.Pair;
-import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.google.android.exoplayer2.C;
 import com.google.android.exoplayer2.DefaultLoadControl;
@@ -26,7 +27,7 @@ import com.google.android.exoplayer2.source.MediaSource;
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 
-import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.AudioSlide;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.guava.Optional;
@@ -170,14 +171,16 @@ public class AudioSlidePlayer {
       public void onPlayerError(ExoPlaybackException error) {
         Log.w(TAG, "MediaPlayer Error: " + error);
 
-        Toast.makeText(context, R.string.error, Toast.LENGTH_SHORT).show();
-
         synchronized (AudioSlidePlayer.this) {
           mediaPlayer = null;
         }
 
         notifyOnStop();
         progressEventHandler.removeMessages(0);
+
+        // Failed to play media file, maybe another app can handle it
+        int msgId = getAudioSlide().getDcMsgId();
+        DcHelper.getContext(context).openForViewOrShare(context, msgId, Intent.ACTION_VIEW);
       }
     });
   }

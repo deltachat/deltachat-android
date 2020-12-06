@@ -502,12 +502,14 @@ public class NotificationCenter {
     }
 
     public void removeNotifications(int chatId) {
-        boolean removeSummary = false;
+        boolean removeSummary;
         synchronized (inboxes) {
             inboxes.remove(chatId);
             removeSummary = inboxes.isEmpty();
         }
 
+        // cancel notification independently of inboxes array,
+        // due to restarts, the app may have notification even when inboxes is empty.
         try {
             NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
             notificationManager.cancel(ID_MSG_OFFSET + chatId);

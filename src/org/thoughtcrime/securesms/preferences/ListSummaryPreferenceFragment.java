@@ -10,6 +10,7 @@ import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 
 import com.b44t.messenger.DcContext;
+import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcEventCenter;
 
 import org.thoughtcrime.securesms.R;
@@ -80,8 +81,16 @@ public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceF
   }
 
   protected void updateListSummary(Preference preference, Object value) {
+    updateListSummary(preference, value, null);
+  }
+
+  protected void updateListSummary(Preference preference, Object value, String hint) {
     ListPreference listPref = (ListPreference) preference;
-    listPref.setSummary(getSelectedSummary(preference, value));
+    String summary = getSelectedSummary(preference, value);
+    if (hint != null) {
+      summary += "\n\n" + hint;
+    }
+    listPref.setSummary(summary);
   }
 
   protected void initializeListSummary(ListPreference pref) {
@@ -116,9 +125,9 @@ public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceF
   }
 
   @Override
-  public void handleEvent(int eventId, Object data1, Object data2) {
-    if (eventId== DcContext.DC_EVENT_IMEX_PROGRESS) {
-      long progress = (Long)data1;
+  public void handleEvent(DcEvent event) {
+    if (event.getId()== DcContext.DC_EVENT_IMEX_PROGRESS) {
+      long progress = event.getData1Int();
       if (progress==0/*error/aborted*/) {
         dcContext.endCaptureNextError();
         progressDialog.dismiss();

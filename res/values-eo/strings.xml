@@ -188,7 +188,6 @@
     <string name="pin">Alpingli</string>
     <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
     <string name="unpin">Depingli</string>
-
     <string name="mute_for_one_hour">Silentigi por 1 horo</string>
     <string name="mute_for_two_hours">Silentigi por 2 horoj</string>
     <string name="mute_for_one_day">Silentigi por 1 tago</string>
@@ -219,12 +218,6 @@
     <string name="ask_start_chat_with">Babili kun %1$s?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Forigi %1$sel la grupo?</string>
-    <string name="info_outdated_app_title">La versio de via aplikaĵo estas malnova.</string>
-    <string name="info_outdated_app_text">Ŝajnas ke vi instalis Delta Chat-on el fonto sen aŭtomataj ĝisdatigoj (t.e. GitHub). Bonvolu ŝanĝi al butika versio por ricevi la plej novajn eblecojn kaj cimoriparojn.</string>
-    <string name="info_outdated_app_dialog_title">Ĝisdatigi fontojn</string>
-    <string name="info_outdated_app_dialog_text">Delta Chat estas atingebla je:</string>
-
-
     <!-- contact list -->
     <string name="contacts_title">Kontaktoj</string>
     <string name="contacts_enter_name_or_email">Enigi nomon aŭ retadreson</string>
@@ -263,7 +256,6 @@
     <string name="chat_contact_request">Kontakt-peto</string>
     <string name="retry_send">Reprovi sendi mesaĝon</string>
     <string name="send_failed">Ne povis sendi mesaĝon</string>
-
     <string name="show_location_traces">Montri spurojn</string>
     <string name="add_poi">Sendi punkton de intereso</string>
 
@@ -409,7 +401,6 @@
     <!-- permissions -->
     <string name="perm_required_title">Permeso bezonata</string>
     <string name="perm_continue">Daŭrigi</string>
-    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
     <string name="welcome_desktop">Bonvenon al Delta Chat</string>
     <string name="global_menu_preferences_language_desktop">Lingvo</string>
     <string name="global_menu_file_desktop">Dosiero</string>

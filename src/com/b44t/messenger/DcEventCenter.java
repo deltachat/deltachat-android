@@ -10,7 +10,7 @@ public class DcEventCenter {
     private final Object LOCK = new Object();
 
     public interface DcEventDelegate {
-        void handleEvent(int eventId, Object data1, Object data2);
+        void handleEvent(DcEvent event);
         default boolean runOnMain() {
             return true;
         }
@@ -54,9 +54,9 @@ public class DcEventCenter {
         }
     }
 
-    public void sendToObservers(int eventId, Object data1, Object data2) {
+    public void sendToObservers(DcEvent event) {
         synchronized (LOCK) {
-            ArrayList<DcEventDelegate> idObservers = allObservers.get(eventId);
+            ArrayList<DcEventDelegate> idObservers = allObservers.get(event.getId());
             if (idObservers != null) {
                 for (DcEventDelegate observer : idObservers) {
                     // using try/catch blocks as under some circumstances eg. getContext() may return NULL -
@@ -65,7 +65,7 @@ public class DcEventCenter {
                     if(observer.runOnMain()) {
                         Util.runOnMain(() -> {
                             try {
-                                observer.handleEvent(eventId, data1, data2);
+                                observer.handleEvent(event);
                             }
                             catch(Exception e) {
                                 e.printStackTrace();
@@ -74,7 +74,7 @@ public class DcEventCenter {
                     } else {
                         Util.runOnBackground(() -> {
                             try {
-                                observer.handleEvent(eventId, data1, data2);
+                                observer.handleEvent(event);
                             }
                             catch (Exception e) {
                                 e.printStackTrace();

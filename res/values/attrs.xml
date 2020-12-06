@@ -105,8 +105,6 @@
     <attr name="import_export_item_background_shadow_color" format="reference|color" />
     <attr name="import_export_item_card_background" format="reference" />
 
-    <attr name="reminder_header_background" format="color"/>
-
     <attr name="menu_new_conversation_icon" format="reference" />
     <attr name="menu_search_icon" format="reference" />
     <attr name="menu_popup_expand" format="reference"/>
@@ -122,6 +120,9 @@
     <attr name="menu_reply_icon" format="reference" />
 
     <attr name="pref_icon_tint" format="color"/>
+
+    <attr name="quote_missing_icon_color" format="color" />
+    <attr name="quote_dismiss_button_tint" format="color" />
 
     <declare-styleable name="CustomDefaultPreference">
         <attr name="custom_pref_toggle" format="string"/>
@@ -238,6 +239,20 @@
 
     <declare-styleable name="TimeRangeSlider">
         <attr name="timeFrame" format="integer"/>
+    </declare-styleable>
+
+    <declare-styleable name="QuoteView">
+        <attr name="message_type" format="enum">
+            <enum name="preview" value="0" />
+            <enum name="outgoing" value="1" />
+            <enum name="incoming" value="2" />
+        </attr>
+        <attr name="quote_colorPrimary" format="color" />
+        <attr name="quote_colorSecondary" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="ConversationAdaptiveActionsToolbar">
+        <attr name="aat_max_shown" format="integer" />
     </declare-styleable>
 
 </resources>

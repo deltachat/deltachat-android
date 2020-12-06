@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.Group;
 
+import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcProvider;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -546,15 +547,15 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
     }
 
     @Override
-    public void handleEvent(int eventId, Object data1, Object data2) {
-        if (eventId==DcContext.DC_EVENT_CONFIGURE_PROGRESS) {
+    public void handleEvent(DcEvent event) {
+        if (event.getId()==DcContext.DC_EVENT_CONFIGURE_PROGRESS) {
             ApplicationDcContext dcContext = DcHelper.getContext(this);
-            long progress = (Long)data1;
+            long progress = event.getData1Int();
             if (progress==0/*error/aborted*/) {
                 dcContext.maybeStartIo(); // start-io is also needed on errors to make previous config work in case of changes
                 dcContext.endCaptureNextError();
                 progressDialog.dismiss();
-                WelcomeActivity.maybeShowConfigurationError(this, data2);
+                WelcomeActivity.maybeShowConfigurationError(this, event.getData2Str());
             }
             else if (progress<1000/*progress in permille*/) {
                 int percent = (int)progress / 10;
