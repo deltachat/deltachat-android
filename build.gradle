@@ -28,7 +28,6 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.airbnb.android:lottie:3.4.1'
     implementation 'androidx.multidex:multidex:2.0.1'
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.2.0'
@@ -82,7 +81,7 @@ dependencies {
 
 android {
     flavorDimensions "none"
-    compileSdkVersion 28
+    compileSdkVersion 29
     useLibrary 'org.apache.http.legacy'
 
     dexOptions {
@@ -97,7 +96,7 @@ android {
         multiDexEnabled true
 
         minSdkVersion 16
-        targetSdkVersion 28
+        targetSdkVersion 29
 
         vectorDrawables.useSupportLibrary = true
 

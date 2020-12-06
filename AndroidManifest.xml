@@ -17,6 +17,7 @@
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
@@ -43,7 +44,9 @@
                  android:allowBackup="false"
                  android:theme="@style/TextSecure.LightTheme"
                  android:largeHeap="true"
-                 tools:ignore="GoogleAppIndexingWarning">
+                 tools:ignore="GoogleAppIndexingWarning"
+                 android:requestLegacyExternalStorage="true"
+        >
 
     <!-- android car support, see https://developer.android.com/training/auto/start/,
          as this potentially blocks releases on gplay due to extra-checks,
@@ -269,7 +272,6 @@
     </activity>
 
     <activity android:name=".map.MapActivity" />
-    <activity android:name=".AnimatedStickerActivity" />
 
     <activity android:name=".ZhvActivity">
       <intent-filter>
