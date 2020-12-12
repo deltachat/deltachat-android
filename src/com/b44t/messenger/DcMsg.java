@@ -125,6 +125,7 @@ public class DcMsg {
     public native void    setLocation        (float latitude, float longitude);
     public void           setQuote           (DcMsg quote) { setQuoteCPtr(quote.msgCPtr); }
     public native String  getQuotedText      ();
+    public native String  getError           ();
 
     public DcMsg          getQuotedMsg       () {
         long cPtr = getQuotedMsgCPtr();

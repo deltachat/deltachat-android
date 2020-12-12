@@ -781,6 +781,18 @@ public class ConversationItem extends LinearLayout
         handleDeadDropClick();
       } else if (!shouldInterceptClicks(messageRecord) && parent != null) {
         parent.onClick(v);
+      } else if (messageRecord.isFailed()) {
+        AlertDialog d = new AlertDialog.Builder(context)
+                .setMessage(messageRecord.getError())
+                .setTitle(R.string.error)
+                .create();
+        d.show();
+        try {
+          //noinspection ConstantConditions
+          Linkify.addLinks((TextView) d.findViewById(android.R.id.message), Linkify.WEB_URLS | Linkify.EMAIL_ADDRESSES);
+        } catch(NullPointerException e) {
+          e.printStackTrace();
+        }
       }
     }
   }
