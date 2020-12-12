@@ -20,8 +20,6 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.Typeface;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.Spanned;
@@ -32,6 +30,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.amulyakhare.textdrawable.TextDrawable;
 import com.annimon.stream.Stream;
@@ -50,9 +51,7 @@ import org.thoughtcrime.securesms.database.model.ThreadRecord;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.DateUtils;
-import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.ThemeUtil;
-import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
 import java.util.Collections;
@@ -289,6 +288,7 @@ public class ConversationListItem extends RelativeLayout
         unreadIndicator.setVisibility(View.GONE);
         if (state == DcMsg.DC_STATE_OUT_ERROR) {
           deliveryStatusIndicator.setFailed();
+          deliveryStatusIndicator.setTint(Color.RED);
         } else if (state == DcMsg.DC_STATE_OUT_MDN_RCVD) {
           deliveryStatusIndicator.setRead();
         } else if (state == DcMsg.DC_STATE_OUT_DELIVERED) {

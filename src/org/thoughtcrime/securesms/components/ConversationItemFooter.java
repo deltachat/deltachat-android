@@ -2,13 +2,15 @@ package org.thoughtcrime.securesms.components;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import android.graphics.Color;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.b44t.messenger.DcMsg;
 
@@ -87,7 +89,7 @@ public class ConversationItemFooter extends LinearLayout {
     if      (!messageRecord.isOutgoing())  deliveryStatusView.setNone();
     else if (messageRecord.isRemoteRead()) deliveryStatusView.setRead();
     else if (messageRecord.isDelivered())  deliveryStatusView.setSent();
-    else if (messageRecord.isFailed())     deliveryStatusView.setFailed();
+    else if (messageRecord.isFailed())    {deliveryStatusView.setFailed();deliveryStatusView.setTint(Color.RED);}
     else if (messageRecord.isPreparing())  deliveryStatusView.setPreparing();
     else                                   deliveryStatusView.setPending();
   }
