@@ -17,6 +17,7 @@
     <string name="automatic">Automatyczne</string>
     <string name="strict">Dokładne</string>
     <string name="open">Otwórz</string>
+    <string name="open_attachment">Otwórz załącznik</string>
     <string name="join">Dołącz</string>
     <string name="rejoin">Dołącz ponownie</string>
     <string name="delete">Usuń</string>
@@ -33,6 +34,7 @@
     <string name="save">Zapisz</string>
     <string name="chat">Czat</string>
     <string name="media">Multimedia</string>
+    <string name="profile">Profil</string>
     <string name="main_menu">Menu główne</string>
     <string name="start_chat">Rozpocznij czat</string>
     <string name="show_password">Pokaż hasło</string>
@@ -42,6 +44,7 @@
     <string name="one_moment">Jedną chwilę…</string>
     <string name="done">Gotowe</string>
     <string name="undo">Cofnij</string>
+    <string name="offline">Offline</string>
     <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
     <string name="next">Dalej</string>
     <string name="error">Błąd</string>
@@ -107,6 +110,8 @@
     <string name="self">Ja</string>
     <string name="draft">Szkic</string>
     <string name="image">Obraz</string>
+    <!-- Translators: Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
+    <string name="reply_noun">Odpowiedź</string>
     <string name="gif">Gif</string>
     <string name="images">Obrazy</string>
     <string name="audio">Audio</string>
@@ -133,6 +138,8 @@
     <string name="magenta">Magenta</string>
     <string name="white">Biały</string>
 
+    <string name="zoom">Powiększenie</string>
+    <string name="extra_small">Bardzo małe</string>
     <string name="small">Mały</string>
     <string name="normal">Normalny</string>
     <string name="large">Duży</string>
@@ -164,12 +171,14 @@
     <string name="ask_delete_named_chat">Czy na pewno chcesz usunąć „%1$s”?</string>
     <string name="menu_delete_messages">Usuń wiadomości</string>
     <string name="menu_delete_image">Usuń  obraz</string>
+    <string name="delete_contact">Usuń kontakt</string>
     <string name="menu_delete_locations">Usunąć wszystkie lokalizacje?</string>
     <string name="menu_delete_location">Usunąć tę lokalizację?</string>
     <string name="menu_message_details">Szczegóły wiadomości</string>
     <string name="menu_copy_to_clipboard">Kopiuj do schowka</string>
     <string name="menu_copy_selection_to_clipboard">Kopiuj zaznaczenie</string>
     <string name="menu_copy_link_to_clipboard">Kopiuj link</string>
+    <string name="paste_from_clipboard">Wklej ze schowka</string>
     <string name="menu_forward">Przekaż wiadomość</string>
     <string name="menu_resend">Wyślij ponownie wiadomość</string>
     <string name="menu_reply">Odpowiedz na wiadomość</string>
@@ -177,6 +186,8 @@
     <string name="menu_unmute">Wyłącz powiadomienia</string>
     <string name="menu_export_attachment">Eksportuj załącznik</string>
     <string name="menu_all_media">Wszystkie multimedia</string>
+    <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
+    <string name="show_in_chat">Pokaż w czacie</string>
     <string name="menu_share">Udostępnij</string>
     <string name="menu_block_contact">Blokuj kontakt</string>
     <string name="menu_unblock_contact">Odblokuj kontakt</string>
@@ -210,6 +221,7 @@
     <string name="pin">Przypnij</string>
     <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
     <string name="unpin">Odepnij</string>
+    <string name="ConversationFragment_quoted_message_not_found">Nie znaleziono oryginalnej wiadomości</string>
     <string name="mute_for_one_hour">Wyłącz na 1 godzinę</string>
     <string name="mute_for_two_hours">Wyłącz na 2 godziny</string>
     <string name="mute_for_one_day">Wyłącz na 1 dzień</string>
@@ -263,6 +275,7 @@
     <string name="ask_delete_contact">Usunąć trwale kontakt %1$s?\n\nKontaktów z trwającymi czatami i kontaktów z książki adresowej systemu nie można trwale usunąć.</string>
     <string name="cannot_delete_contacts_in_use">Nie można usunąć kontaktów z trwającymi czatami.</string>
     <string name="ask_start_chat_with">Rozpocząć czat z %1$s?</string>
+    <string name="ask_delete_value">Usunąć %s?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Usunąć %1$s z grupy?</string>
     <string name="open_url_confirmation">Czy chcesz otworzyć ten link?</string>
@@ -312,10 +325,14 @@
     <string name="chat_self_talk_subtitle">Wiadomości wysłane do siebie</string>
     <string name="saved_messages">Zapisane wiadomości</string>
     <string name="saved_messages_explain">• Przesyłaj tu wiadomości, aby mieć je pod ręką\n\n• Rób notatki lub notatki głosowe\n\n• Dołączaj media, aby je zachować</string>
+    <!-- this "Saved" should match the "Saved" from "Saved messages" -->
+    <string name="saved">Zapisana</string>
     <string name="chat_contact_request">Prośba o kontakt</string>
     <string name="chat_no_contact_requests">Brak zaproszenia do kontaktów.\n\nJeśli chcesz, aby klasyczne wiadomości e-mail pojawiały się tutaj jako prośby o kontakt, możesz zmienić odpowiednie ustawienia w ustawieniach aplikacji.</string>
     <string name="retry_send">Spróbuj ponownie wysłać wiadomość</string>
     <string name="send_failed">Nie można wysłać wiadomości</string>
+    <!-- reasons for a disabled message composer -->
+    <string name="messaging_disabled_not_in_group">Nie możesz pisać, ponieważ nie jesteś w tej grupie. Aby dołączyć, poproś innego członka.</string>
     <string name="messaging_disabled_device_chat">Ten czat zawiera wiadomości generowane lokalnie dlatego nie możesz pisać żadnych wiadomości.</string>
     <string name="messaging_disabled_deaddrop">Kliknij wiadomość, aby zaakceptować lub odrzucić prośbę o kontakt</string>
     <!-- map -->
@@ -500,11 +517,13 @@
     <string name="pref_background_default_color">Domyślny kolor</string>
     <string name="pref_background_custom_image">Własny obraz</string>
     <string name="pref_background_custom_color">Własny kolor</string>
+    <string name="export_aborted">Eksport przerwany.</string>
     <string name="profile_image_select">Wybierz zdjęcie profilowe</string>
     <string name="select_your_new_profile_image">Wybierz nowe zdjęcie profilowe</string>
     <string name="profile_image_delete">Usuń zdjęcie profilowe</string>
 
 
+    <string name="emoji_not_found">Nie znaleziono emoji</string>
     <string name="emoji_recent">Ostatnio używane</string>
     <string name="emoji_people">Ludzie i Ciało</string>
     <string name="emoji_nature">Zwierzęta i Natura</string>
@@ -577,6 +596,10 @@
     <string name="systemmsg_ephemeral_timer_day">Ustawiono zegar znikających wiadomości na 1 dzień.</string>
     <string name="systemmsg_ephemeral_timer_week">Ustawiono zegar znikających wiadomości na 1 tydzień.</string>
     <string name="systemmsg_ephemeral_timer_four_weeks">Ustawiono zegar znikających wiadomości na 4 tygodnie.</string>
+
+    <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
+    <string name="systemmsg_chat_protection_disabled">Ochrona czatu wyłączona.</string>
+    <string name="systemmsg_chat_protection_enabled">Ochrona czatu włączona.</string>
 
     <!-- screen lock -->
     <string name="screenlock_title">Blokada ekranu</string>
@@ -720,6 +743,9 @@
     <string name="a11y_delivery_status_read">Status dostawy: Przeczytane</string>
     <string name="a11y_delivery_status_invalid">Nieprawidłowy status dostawy</string>
     <string name="a11y_background_preview_label">Podgląd tła</string>
+    <string name="a11y_disappearing_messages_activated">Aktywowano znikające wiadomości</string>
+
+
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Zezwolenie na dostęp do aparatu pozwala robić zdjęcia i nagrywać filmy.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Zezwolenie na dostęp do książki adresowej pozwala czatować z kontaktami z urządzenia.</string>
