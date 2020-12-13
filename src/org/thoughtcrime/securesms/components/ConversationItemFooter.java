@@ -2,13 +2,15 @@ package org.thoughtcrime.securesms.components;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import android.graphics.Color;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.b44t.messenger.DcMsg;
 
@@ -23,6 +25,7 @@ public class ConversationItemFooter extends LinearLayout {
   private ImageView           secureIndicatorView;
   private ImageView           locationIndicatorView;
   private DeliveryStatusView  deliveryStatusView;
+  private Integer             textColor = null;
 
   public ConversationItemFooter(Context context) {
     super(context);
@@ -49,7 +52,8 @@ public class ConversationItemFooter extends LinearLayout {
 
     if (attrs != null) {
       TypedArray typedArray = getContext().getTheme().obtainStyledAttributes(attrs, R.styleable.ConversationItemFooter, 0, 0);
-      setTextColor(typedArray.getInt(R.styleable.ConversationItemFooter_footer_text_color, getResources().getColor(R.color.core_white)));
+      textColor = typedArray.getInt(R.styleable.ConversationItemFooter_footer_text_color, getResources().getColor(R.color.core_white));
+      setTextColor(textColor);
       typedArray.recycle();
     }
   }
@@ -66,7 +70,7 @@ public class ConversationItemFooter extends LinearLayout {
     presentDeliveryStatus(messageRecord);
   }
 
-  public void setTextColor(int color) {
+  private void setTextColor(int color) {
     dateView.setTextColor(color);
     secureIndicatorView.setColorFilter(color);
     locationIndicatorView.setColorFilter(color);
@@ -90,5 +94,11 @@ public class ConversationItemFooter extends LinearLayout {
     else if (messageRecord.isFailed())     deliveryStatusView.setFailed();
     else if (messageRecord.isPreparing())  deliveryStatusView.setPreparing();
     else                                   deliveryStatusView.setPending();
+
+    if (messageRecord.isFailed()) {
+      deliveryStatusView.setTint(Color.RED);
+    } else {
+      deliveryStatusView.setTint(textColor); // Reset the color to the standard color (because the footer is re-used in a RecyclerView)
+    }
   }
 }
