@@ -785,6 +785,7 @@ public class ConversationItem extends LinearLayout
         AlertDialog d = new AlertDialog.Builder(context)
                 .setMessage(messageRecord.getError())
                 .setTitle(R.string.error)
+                .setPositiveButton(R.string.ok, null)
                 .create();
         d.show();
         try {
