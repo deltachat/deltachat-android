@@ -159,6 +159,7 @@ public class AudioSlidePlayer {
             Log.i(TAG, "onComplete");
             synchronized (AudioSlidePlayer.this) {
               getListener().onReceivedDuration(Long.valueOf(mediaPlayer.getDuration()).intValue());
+              mediaPlayer.release();
               mediaPlayer = null;
             }
 
@@ -172,6 +173,7 @@ public class AudioSlidePlayer {
         Log.w(TAG, "MediaPlayer Error: " + error);
 
         synchronized (AudioSlidePlayer.this) {
+          mediaPlayer.release();
           mediaPlayer = null;
         }
 
