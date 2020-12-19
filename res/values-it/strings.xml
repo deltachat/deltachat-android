@@ -101,7 +101,7 @@
     <string name="draft">Bozza</string>
     <string name="image">Immagine</string>
     <!-- Translators: Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
-    <string name="reply_noun">Risponde</string>
+    <string name="reply_noun">Rispondi</string>
     <string name="gif">Gif</string>
     <string name="images">Immagine</string>
     <string name="audio">Audio</string>
