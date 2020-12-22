@@ -457,6 +457,7 @@
     <string name="pref_silent">Silencio</string>
     <string name="pref_privacy">Privacidad</string>
     <string name="pref_chats_and_media">Chats y multimedia</string>
+    <string name="pref_system_default">Predeterminado del sistema</string>
     <!-- Translators: "light" in the meaning "opposite of dark" -->
     <string name="pref_light_theme">Claro</string>
     <string name="pref_dark_theme">Oscuro </string>

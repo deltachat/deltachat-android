@@ -309,10 +309,16 @@
     <string name="chat_no_messages">Sem mensagens.</string>
     <string name="chat_self_talk_subtitle">Mensagens para mim mesmo</string>
     <string name="saved_messages">Mensagens salvas</string>
+    <string name="saved_messages_explain">• Encaminhe mensagens aqui para fácil acesso\n\n• Faça anotações ou gravações de voz\n\n• Anexe mídia para salvá-las</string>
     <!-- this "Saved" should match the "Saved" from "Saved messages" -->
     <string name="saved">Salvo</string>
     <string name="chat_contact_request">Pedido de contato</string>
     <string name="chat_no_contact_requests">Sem pedidos de contato.\n\nSe você quiser, e-mails normais podem ser exibidos como pedidos de contato. Basta habilitar nas configurações.</string>
+    <string name="retry_send">Tentar enviar mensagem novamente</string>
+    <string name="send_failed">Não foi possível enviar mensagem</string>
+    <!-- reasons for a disabled message composer -->
+    <string name="messaging_disabled_not_in_group">Você não pode escrever porque não está neste grupo. Para entrar, peça a outro membro.</string>
+    <string name="messaging_disabled_device_chat">Esta conversa contém mensagens geradas localmente. Portanto, você não pode escrever nenhuma mensagem.</string>
     <!-- map -->
     <string name="filter_map_on_time">Exibir localização no tempo.</string>
     <string name="show_location_traces">Exibir pegadas</string>
@@ -415,6 +421,7 @@
     <string name="pref_silent">Silêncio</string>
     <string name="pref_privacy">Privacidade</string>
     <string name="pref_chats_and_media">Conversas e mídia</string>
+    <string name="pref_system_default">Padrão do sistema</string>
     <!-- Translators: "light" in the meaning "opposite of dark" -->
     <string name="pref_light_theme">Claro</string>
     <string name="pref_dark_theme">Escuro</string>

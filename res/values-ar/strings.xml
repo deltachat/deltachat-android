@@ -203,6 +203,7 @@
     <string name="pref_sound">الصوت</string>
     <string name="pref_privacy">الخصوصية</string>
     <string name="pref_chats_and_media">الدردشة والوسائط</string>
+    <string name="pref_system_default">افتراضيات النظام</string>
     <!-- Translators: "light" in the meaning "opposite of dark" -->
     <string name="pref_light_theme">فاتح</string>
     <string name="pref_dark_theme">داكن</string>

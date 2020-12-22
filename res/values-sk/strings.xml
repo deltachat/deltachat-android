@@ -467,4 +467,5 @@
     <string name="pref_change_secret">Zmeniť secret</string>
     <string name="pref_change_secret_explain">Zmeňte svoj PIN / vzor / odtlačok prsta pomocou nastavení systému</string>
     <string name="pref_screen_security">Zabezpečenie obrazovky</string>
+    <string name="pref_system_default">Predvolené nastavenie</string>
     </resources>
