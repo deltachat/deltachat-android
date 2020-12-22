@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!-- when changing this file, consider adapting values-v29/preferences_appearance.xml as well
- (values-v29/preferences_appearance.xml differs only wrt theme default value) -->
+<!-- when changing this file, consider adapting values/preferences_appearance.xml as well
+ (values/preferences_appearance.xml differs only wrt theme default value) -->
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
     <ListPreference
@@ -9,7 +9,7 @@
             android:title="@string/pref_theme"
             android:entries="@array/pref_theme_entries"
             android:entryValues="@array/pref_theme_values"
-            android:defaultValue="light"/>
+            android:defaultValue="system"/>
 
     <Preference
         android:key="pref_chat_background"
