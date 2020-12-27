@@ -114,6 +114,7 @@ public class DcMsg {
     public native boolean isForwarded        ();
     public native boolean isInfo             ();
     public native boolean isSetupMessage     ();
+    public native boolean isMimeModified     ();
     public native String  getSetupCodeBegin  ();
     public native String  getVideochatUrl    ();
     public native int     getVideochatType   ();

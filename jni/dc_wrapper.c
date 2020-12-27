@@ -506,6 +506,15 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcContext_getMsgInfo(JNIEnv *env, jobj
 }
 
 
+JNIEXPORT jstring Java_com_b44t_messenger_DcContext_getOriginalMimeHtml(JNIEnv *env, jobject obj, jint msg_id)
+{
+    char* temp = dc_get_original_mime_html(get_dc_context(env, obj), msg_id);
+        jstring ret = JSTRING_NEW(temp);
+    dc_str_unref(temp);
+    return ret;
+}
+
+
 JNIEXPORT void Java_com_b44t_messenger_DcContext_deleteMsgs(JNIEnv *env, jobject obj, jintArray msg_ids)
 {
     int msg_ids_cnt = 0;
@@ -1334,6 +1343,12 @@ JNIEXPORT jboolean Java_com_b44t_messenger_DcMsg_isInfo(JNIEnv *env, jobject obj
 JNIEXPORT jboolean Java_com_b44t_messenger_DcMsg_isSetupMessage(JNIEnv *env, jobject obj)
 {
     return dc_msg_is_setupmessage(get_dc_msg(env, obj));
+}
+
+
+JNIEXPORT jboolean Java_com_b44t_messenger_DcMsg_isMimeModified(JNIEnv *env, jobject obj)
+{
+    return dc_msg_is_mime_modified(get_dc_msg(env, obj))!=0;
 }
 
 
