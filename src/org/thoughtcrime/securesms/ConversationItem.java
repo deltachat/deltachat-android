@@ -32,6 +32,7 @@ import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -110,6 +111,7 @@ public class ConversationItem extends LinearLayout
   private   AvatarImageView        contactPhoto;
   protected ViewGroup              contactPhotoHolder;
   private   ViewGroup              container;
+  private   Button                 showFullMessage;
 
   private @NonNull  Set<DcMsg>                      batchSelected = new HashSet<>();
   private @NonNull  Recipient                       conversationRecipient;
@@ -162,6 +164,7 @@ public class ConversationItem extends LinearLayout
     this.quoteView               =            findViewById(R.id.quote_view);
     this.container               =            findViewById(R.id.container);
     this.replyView               =            findViewById(R.id.reply_icon);
+    this.showFullMessage         =            findViewById(R.id.show_full_message);
 
     setOnClickListener(new ClickListener(null));
 
@@ -361,6 +364,18 @@ public class ConversationItem extends LinearLayout
       bodyText.setVisibility(View.VISIBLE);
     }
 
+    if (messageRecord.isMimeModified()) {
+      showFullMessage.setVisibility(View.VISIBLE);
+      showFullMessage.setOnClickListener(view -> {
+        if (eventListener != null && batchSelected.isEmpty()) {
+          eventListener.onShowFullClicked(messageRecord);
+        } else {
+          passthroughClickListener.onClick(view);
+        }
+      });
+    } else {
+      showFullMessage.setVisibility(View.GONE);
+    }
   }
 
   private void setMediaAttributes(@NonNull DcMsg           messageRecord,

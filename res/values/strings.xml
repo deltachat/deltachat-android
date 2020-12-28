@@ -39,6 +39,7 @@
     <string name="profile">Profile</string>
     <string name="main_menu">Main menu</string>
     <string name="start_chat">Start chat</string>
+    <string name="show_full_message">Show full message…</string>
     <string name="show_password">Show password</string>
     <string name="hide_password">Hide password</string>
     <string name="not_now">Not now</string>

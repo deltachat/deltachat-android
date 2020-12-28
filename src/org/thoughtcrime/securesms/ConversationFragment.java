@@ -872,6 +872,10 @@ public class ConversationFragment extends Fragment
                 }
             }
         }
+
+      @Override
+      public void onShowFullClicked(DcMsg messageRecord) {
+      }
     }
 
     @Override
