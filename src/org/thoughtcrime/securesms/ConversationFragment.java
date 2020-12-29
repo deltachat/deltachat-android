@@ -875,6 +875,10 @@ public class ConversationFragment extends Fragment
 
       @Override
       public void onShowFullClicked(DcMsg messageRecord) {
+        Intent intent = new Intent(getActivity(), FullMsgActivity.class);
+        intent.putExtra(FullMsgActivity.MSG_ID_EXTRA, messageRecord.getId());
+        startActivity(intent);
+        getActivity().overridePendingTransition(R.anim.slide_from_right, R.anim.fade_scale_out);
       }
     }
 
