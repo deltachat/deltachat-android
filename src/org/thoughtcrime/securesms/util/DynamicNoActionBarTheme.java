@@ -1,5 +1,6 @@
 package org.thoughtcrime.securesms.util;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.StyleRes;
 
 import org.thoughtcrime.securesms.R;
