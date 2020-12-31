@@ -138,7 +138,7 @@ public class Prefs {
   }
 
   public static String getTheme(Context context) {
-    return getStringPreference(context, THEME_PREF, "light");
+    return getStringPreference(context, THEME_PREF, DynamicTheme.systemThemeAvailable() ? DynamicTheme.SYSTEM : DynamicTheme.LIGHT);
   }
 
   public static boolean isScreenLockTimeoutEnabled(Context context) {

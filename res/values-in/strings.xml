@@ -560,6 +560,9 @@
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Ubah pengaturan untuk %1$s.</string>
     <string name="verified_group_explain">Kelompok yang sudah diverifikasi (eksperimental) menjaga keamanan dari serangan aktif. Anggota diverifikasi dengan faktor kedua oleh anggota lain dan selalu dengan pesan yang terinkripsi ujung ke ujung.</string>
+    <string name="copy_qr_data_success">Salin QR url ke papan klip</string>
+
+
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$dpesan baru di%2$d obrolan</string>
     <string name="notify_mark_read">Tandai telah dibaca</string>
@@ -584,6 +587,9 @@
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Pesan terenkripsi</string>
 
+    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
+    <string name="about_offical_app_desktop">Ini adalah aplikasi resmi Delta Chat Desktop.</string>
+    <string name="about_licensed_under_desktop">Perangkat lunak ini berlisensi di bawah GNU GPL versi 3 dan kode sumber tersedia di GitHub.</string>
     <string name="welcome_desktop">Selamat Datang di Delta Chat</string>
     <string name="login_known_accounts_title_desktop">Akun yang dikenal</string>
     <string name="global_menu_preferences_language_desktop">Bahasa</string>
@@ -633,6 +639,7 @@
     <string name="ask_delete_chat_desktop">Hapus obrolan ini?</string>
     <string name="email_validation_failed_desktop">Alamat email dibutuhkan</string>
     <string name="forget_login_confirmation_desktop">Hapus login ini? Semuanya akan dihapus, termasuk pengaturan ujung ke ujung, kontak, obrolan, pesan dan media. Kalau diklik tidak bisa balik lagi.</string>
+    <string name="account_info_hover_tooltip_desktop">E-Mail: %1$s\nSize: %2$s\nPath: %3$s</string>
     <string name="me_desktop">saya</string>
     <string name="in_this_group_desktop">Anggota kelompok</string>
     <string name="not_in_this_group_desktop">Anggota kelompok potensial (tidak dalam kelompok)</string>

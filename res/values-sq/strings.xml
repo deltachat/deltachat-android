@@ -456,6 +456,7 @@
     <string name="pref_silent">Heshtazi</string>
     <string name="pref_privacy">Privatësi</string>
     <string name="pref_chats_and_media">Fjalosje dhe media</string>
+    <string name="pref_system_default">Parazgjedhje sistemi</string>
     <!-- Translators: "light" in the meaning "opposite of dark" -->
     <string name="pref_light_theme">E çelët</string>
     <string name="pref_dark_theme">E errët</string>

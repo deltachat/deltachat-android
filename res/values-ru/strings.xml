@@ -483,6 +483,7 @@
     <string name="pref_silent">Беззвучный</string>
     <string name="pref_privacy">Конфиденциальность</string>
     <string name="pref_chats_and_media">Чаты и медиафайлы</string>
+    <string name="pref_system_default">По умолчанию</string>
     <!-- Translators: "light" in the meaning "opposite of dark" -->
     <string name="pref_light_theme">Светлая</string>
     <string name="pref_dark_theme">Тёмная</string>

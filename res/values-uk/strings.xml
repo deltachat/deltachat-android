@@ -481,6 +481,7 @@
     <string name="pref_silent">Беззвучний</string>
     <string name="pref_privacy">Конфіденційність</string>
     <string name="pref_chats_and_media">Чати і медіа</string>
+    <string name="pref_system_default">Системне значення за замовчуванням</string>
     <!-- Translators: "light" in the meaning "opposite of dark" -->
     <string name="pref_light_theme">Світла</string>
     <string name="pref_dark_theme">Темна</string>

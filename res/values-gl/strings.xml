@@ -454,6 +454,7 @@
     <string name="pref_silent">Mudo</string>
     <string name="pref_privacy">Intimidade</string>
     <string name="pref_chats_and_media">Conversas e medios</string>
+    <string name="pref_system_default">Por omsión no sistema</string>
     <!-- Translators: "light" in the meaning "opposite of dark" -->
     <string name="pref_light_theme">Claro</string>
     <string name="pref_dark_theme">Escuro</string>
