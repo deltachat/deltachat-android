@@ -4,16 +4,16 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.preference.CheckBoxPreference;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
-
-import android.view.View;
-import android.widget.CheckBox;
-import android.widget.Toast;
 
 import com.b44t.messenger.DcContext;
 
@@ -165,13 +165,16 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
 
         View gl = View.inflate(getActivity(), R.layout.autodel_confirm, null);
         CheckBox confirmCheckbox = gl.findViewById(R.id.i_understand);
-        String msg = String.format(context.getString(fromServer?
+        TextView msg = gl.findViewById(R.id.autodel_ask_msg);
+
+        // If we'd use both `setMessage()` and `setView()` on the same AlertDialog, on small screens the
+        // "OK" and "Cancel" buttons would not be show. So, put the message into our custom view:
+        msg.setText(String.format(context.getString(fromServer?
                 R.string.autodel_server_ask : R.string.autodel_device_ask),
-                delCount, getSelectedSummary(preference, newValue));
+                delCount, getSelectedSummary(preference, newValue)));
 
         new AlertDialog.Builder(context)
                 .setTitle(preference.getTitle())
-                .setMessage(msg)
                 .setView(gl)
                 .setPositiveButton(android.R.string.ok, (dialog, whichButton) -> {
                   if (confirmCheckbox.isChecked()) {
@@ -182,7 +185,8 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
                   }
                 })
                 .setNegativeButton(android.R.string.cancel, (dialog, whichButton) -> initAutodelFromCore())
-                .setCancelable(false)
+                .setCancelable(true) // Enable the user to quickly cancel if they are intimidated by the warnings :)
+                .setOnCancelListener(dialog -> initAutodelFromCore())
                 .show();
       } else {
         updateListSummary(preference, newValue);
