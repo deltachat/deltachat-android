@@ -42,11 +42,13 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
     webView = findViewById(R.id.webview);
     webView.setWebViewClient(new WebViewClient() {
       public boolean shouldOverrideUrlLoading(WebView view, String url) {
-      if (url != null && (url.startsWith("http://") || url.startsWith("https://"))) {
-        openOnlineUrl(url);
-        return true;
-      }
-      return false;
+        if (url != null) {
+          if (url.startsWith("http://") || url.startsWith("https://") || url.startsWith("mailto:")) {
+            openOnlineUrl(url);
+            return true;
+          }
+        }
+        return false;
       }
     });
     webView.setFindListener(this);
