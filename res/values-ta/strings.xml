@@ -204,6 +204,7 @@
     <string name="pref_silent">அமைதி</string>
     <string name="pref_privacy">தனியுரிமை</string>
     <string name="pref_chats_and_media">அரட்டைகள் மற்றும் ஊடகங்கள்</string>
+    <string name="pref_system_default">கருவி இயல்புநிலை</string>
     <!-- Translators: "light" in the meaning "opposite of dark" -->
     <string name="pref_light_theme">வெளிச்சமிக்க</string>
     <string name="pref_dark_theme">இருள்கொண்ட</string>

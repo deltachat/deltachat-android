@@ -205,6 +205,7 @@
     <string name="pref_silent">Tiho</string>
     <string name="pref_privacy">Privatnost</string>
     <string name="pref_chats_and_media">Razgovori i media</string>
+    <string name="pref_system_default">Sustavno zadano</string>
     <!-- Translators: "light" in the meaning "opposite of dark" -->
     <string name="pref_light_theme">Svijetlo</string>
     <string name="pref_dark_theme">Tamno</string>
