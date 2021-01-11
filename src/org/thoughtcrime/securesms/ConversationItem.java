@@ -364,7 +364,7 @@ public class ConversationItem extends LinearLayout
       bodyText.setVisibility(View.VISIBLE);
     }
 
-    if (messageRecord.isMimeModified()) {
+    if (messageRecord.hasHtml()) {
       showFullMessage.setVisibility(View.VISIBLE);
       showFullMessage.setOnClickListener(view -> {
         if (eventListener != null && batchSelected.isEmpty()) {

@@ -52,7 +52,7 @@ public class FullMsgActivity extends WebViewActivity
       // see eg. https://stackoverflow.com/questions/54516798/webview-loaddata-not-working-on-android-9-0-api-29
       try {
         FullMsgActivity activity = activityReference.get();
-        html = activity.dcContext.getOriginalMimeHtml(activity.msgId);
+        html = activity.dcContext.getMsgHtml(activity.msgId);
         html = encodeToString(html.getBytes("UTF-8"), DEFAULT);
       } catch(Exception e) {
         e.printStackTrace();
