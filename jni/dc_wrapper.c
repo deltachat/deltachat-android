@@ -256,12 +256,6 @@ JNIEXPORT void Java_com_b44t_messenger_DcContext_stopIo(JNIEnv *env, jobject obj
 }
 
 
-JNIEXPORT jboolean Java_com_b44t_messenger_DcContext_isIoRunning(JNIEnv *env, jobject obj)
-{
-    return dc_is_io_running(get_dc_context(env, obj)) != 0;
-}
-
-
 JNIEXPORT void Java_com_b44t_messenger_DcContext_maybeNetwork(JNIEnv *env, jobject obj)
 {
     dc_maybe_network(get_dc_context(env, obj));
