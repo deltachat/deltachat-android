@@ -307,6 +307,12 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     titleView.setTitle(glideRequests, dcChat);
 
     dcContext.notificationCenter.updateVisibleChat(chatId);
+
+    // If the user opens a chat, goes to another app, and shares some content to the same chat, we will have two ConversationActivity's
+    // with the same chat (because sharing uses startActivityForResult() and all activities started this way will be created a second time,
+    // without affecting the existing activity). So, load the draft in case the user modified it in the other activity.
+    // See https://github.com/deltachat/deltachat-android/pull/1770
+    initializeDraft();
   }
 
   @Override
