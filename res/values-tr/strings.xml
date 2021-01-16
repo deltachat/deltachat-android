@@ -413,8 +413,8 @@
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">İlet…</string>
-    <string name="share_multiple_attachments">%1$d dosya seçilen sohbete gönderilsin mi?\n\nDosyalar, değiştirilmeden özgün boyutlarında gönderilir; örn. görseller ve videolar yeniden kodlanmaz.</string>
-    <string name="share_multiple_attachments_multiple_chats">%1$d dosya %2$d sohbete gönderilsin mi?\n\nDosyalar, değiştirilmeden özgün boyutlarında gönderilir; örn. görseller ve videolar yeniden kodlanmaz.</string>
+    <string name="share_multiple_attachments">%1$d dosya seçilen sohbete gönderilsin mi?\n\nDosyalar, değiştirilmeden özgün boyutlarında gönderilir; ör. görseller ve videolar yeniden kodlanmaz.</string>
+    <string name="share_multiple_attachments_multiple_chats">%1$d dosya %2$d sohbete gönderilsin mi?\n\nDosyalar, değiştirilmeden özgün boyutlarında gönderilir; ör. görseller ve videolar yeniden kodlanmaz.</string>
     <string name="share_text_multiple_chats">Bu metin %1$d sohbete gönderilsin mi?\n\n\"%2$s\"</string>
     <string name="share_abort">Eksik izinlerden dolayı paylaşımdan vazgeçildi.</string>
 
