@@ -437,20 +437,22 @@ public class ConversationListFragment extends Fragment
         DcMsg msg = dcContext.getMsg(msgId);
         int contactId = item.getContactId();
         DcContact contact = dcContext.getContact(contactId);
+        int textNo = R.string.menu_block_contact;
+        int textQuestion = R.string.ask_start_chat_with;
+        if (msg.isMailingList()) {
+          textNo = R.string.never;
+          textQuestion = R.string.ask_show_mailing_list;
+        }
         new AlertDialog.Builder(getActivity())
-                .setMessage(getActivity().getString(R.string.ask_start_chat_with, contact.getNameNAddr()))
                 .setPositiveButton(android.R.string.ok, (dialog, which) -> {
                   int belongingChatId = msg.decideOnContactRequest(DcMsg.DC_DEADDROP_DECISION_YES);
                   if (belongingChatId != 0) {
                     handleCreateConversation(belongingChatId);
                   }
                 })
-                .setNegativeButton(R.string.not_now, (dialog, which) -> {
-                  msg.decideOnContactRequest(DcMsg.DC_DEADDROP_DECISION_NOT_NOW);
-                })
-                .setNeutralButton(R.string.menu_block_contact, (dialog, which) -> {
-                  msg.decideOnContactRequest(DcMsg.DC_DEADDROP_DECISION_NO);
-                })
+                .setNegativeButton(R.string.not_now, (dialog, which) -> msg.decideOnContactRequest(DcMsg.DC_DEADDROP_DECISION_NOT_NOW))
+                .setNeutralButton(R.string.menu_block_contact, (dialog, which) -> msg.decideOnContactRequest(DcMsg.DC_DEADDROP_DECISION_NO))
+                .setMessage(getActivity().getString(R.string.ask_start_chat_with, contact.getNameNAddr()))
                 .show();
         return;
       }

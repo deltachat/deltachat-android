@@ -729,6 +729,12 @@ public class ConversationItem extends LinearLayout
   /// Event handlers
 
   private void handleDeadDropClick() {
+    int textNo = R.string.menu_block_contact;
+    int textQuestion = R.string.ask_start_chat_with;
+    if (messageRecord.isMailingList()) {
+      textNo = R.string.never;
+      textQuestion = R.string.ask_show_mailing_list;
+    }
     new AlertDialog.Builder(context)
       .setPositiveButton(android.R.string.ok, (dialog, which) -> {
         int chatId = messageRecord.decideOnContactRequest(DcMsg.DC_DEADDROP_DECISION_YES);
@@ -739,8 +745,8 @@ public class ConversationItem extends LinearLayout
         }
       })
       .setNegativeButton(android.R.string.cancel, null)
-      .setNeutralButton(R.string.menu_block_contact, (dialog, which) -> messageRecord.decideOnContactRequest(DcMsg.DC_DEADDROP_DECISION_NO))
-      .setMessage(context.getString(R.string.ask_start_chat_with, dcContext.getContact(messageRecord.getFromId()).getDisplayName()))
+      .setNeutralButton(textNo, (dialog, which) -> messageRecord.decideOnContactRequest(DcMsg.DC_DEADDROP_DECISION_NO))
+      .setMessage(context.getString(textQuestion, messageRecord.getSenderName()))
       .show();
   }
 

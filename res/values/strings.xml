@@ -275,6 +275,7 @@
     <string name="cannot_delete_contacts_in_use">Cannot delete contacts with ongoing chats.</string>
     <string name="ask_start_chat_with">Chat with %1$s?</string>
     <string name="ask_delete_value">Delete %s?</string>
+    <string name="ask_show_mailing_list">Show mailing list with %1$s in Delta Chat?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Remove %1$s from group?</string>
     <string name="open_url_confirmation">Do you want to open this link?</string>

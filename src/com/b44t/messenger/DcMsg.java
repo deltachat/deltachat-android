@@ -133,6 +133,7 @@ public class DcMsg {
     public void           setQuote           (DcMsg quote) { setQuoteCPtr(quote.msgCPtr); }
     public native String  getQuotedText      ();
     public native String  getError           ();
+    public native boolean isMailingList      ();
 
     public DcMsg          getQuotedMsg       () {
         long cPtr = getQuotedMsgCPtr();
