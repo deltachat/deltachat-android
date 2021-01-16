@@ -1440,6 +1440,11 @@ JNIEXPORT jlong Java_com_b44t_messenger_DcMsg_getQuotedMsgCPtr(JNIEnv *env, jobj
 }
 
 
+JNIEXPORT jboolean Java_com_b44t_messenger_DcMsg_isMailingList(JNIEnv *env, jobject obj)
+{
+    return dc_msg_is_mailing_list(get_dc_msg(env, obj))!=0;
+}
+
 
 /*******************************************************************************
  * DcContact
