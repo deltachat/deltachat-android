@@ -11,7 +11,7 @@
     <string name="off">Вимкн.</string>
     <string name="def">За замовчуванням</string>
     <string name="default_value">За замовчуванням (%1$s)</string>
-    <string name="default_value_as_above">За замовчуванням (так сам, як вказано вище)</string>
+    <string name="default_value_as_above">За замовчуванням (так само, як вказано вище)</string>
     <string name="custom">Персональне налаштування</string>
     <string name="none">Не задано</string>
     <string name="automatic">Автоматично</string>

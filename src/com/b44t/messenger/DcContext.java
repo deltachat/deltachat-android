@@ -101,7 +101,6 @@ public class DcContext {
 
     public native void         startIo              ();
     public native void         stopIo               ();
-    public native boolean      isIoRunning          ();
 
     public native void         maybeNetwork         ();
     public native void         setConfig            (String key, String value);
