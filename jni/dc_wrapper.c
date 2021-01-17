@@ -1292,6 +1292,15 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcMsg_getOverrideSenderName(JNIEnv *en
 }
 
 
+JNIEXPORT jstring Java_com_b44t_messenger_DcMsg_getSenderFirstName(JNIEnv *env, jobject obj)
+{
+    char* temp = dc_msg_get_sender_first_name(get_dc_msg(env, obj));
+        jstring ret = JSTRING_NEW(temp);
+    dc_str_unref(temp);
+    return ret;
+}
+
+
 JNIEXPORT jint Java_com_b44t_messenger_DcMsg_showPadlock(JNIEnv *env, jobject obj)
 {
     return dc_msg_get_showpadlock(get_dc_msg(env, obj));
