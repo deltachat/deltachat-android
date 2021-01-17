@@ -3,6 +3,7 @@ package com.b44t.messenger;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 
@@ -109,7 +110,6 @@ public class DcMsg {
     public native void    lateFilingMediaSize(int width, int height, int duration);
     public @NonNull DcLot getSummary         (DcChat chat) { return new DcLot(getSummaryCPtr(chat.getChatCPtr())); }
     public native String  getSummarytext     (int approx_characters);
-    public native String  getSenderName      ();
     public native int     showPadlock        ();
     public boolean        hasFile            () { String file = getFile(); return file!=null && !file.isEmpty(); }
     public native String  getFile            ();
@@ -134,6 +134,16 @@ public class DcMsg {
     public native String  getQuotedText      ();
     public native String  getError           ();
     public native boolean isMailingList      ();
+    private native @Nullable String getOverrideSenderName();
+
+    public @NonNull String getSenderName(@NonNull DcContact dcContact) {
+        String overrideName = getOverrideSenderName();
+        if (overrideName != null) {
+            return overrideName;
+        } else {
+            return dcContact.getDisplayName();
+        }
+    }
 
     public DcMsg          getQuotedMsg       () {
         long cPtr = getQuotedMsgCPtr();
