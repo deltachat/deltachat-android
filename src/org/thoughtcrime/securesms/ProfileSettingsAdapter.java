@@ -1,13 +1,14 @@
 package org.thoughtcrime.securesms;
 
 import android.content.Context;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcChatlist;
@@ -263,10 +264,12 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
 
     if (memberList!=null) {
       itemDataMemberCount = memberList.length;
-      itemData.add(new ItemData(ItemData.TYPE_MEMBER, DcContact.DC_CONTACT_ID_ADD_MEMBER, 0));
-      itemData.add(new ItemData(ItemData.TYPE_MEMBER, DcContact.DC_CONTACT_ID_QR_INVITE, 0));
-      for (int i = 0; i < memberList.length; i++) {
-        itemData.add(new ItemData(ItemData.TYPE_MEMBER, memberList[i], 0));
+      if (!dcChat.isMailingList()) {
+        itemData.add(new ItemData(ItemData.TYPE_MEMBER, DcContact.DC_CONTACT_ID_ADD_MEMBER, 0));
+        itemData.add(new ItemData(ItemData.TYPE_MEMBER, DcContact.DC_CONTACT_ID_QR_INVITE, 0));
+      }
+      for (int value : memberList) {
+        itemData.add(new ItemData(ItemData.TYPE_MEMBER, value, 0));
       }
 //      itemData.add(new ItemData(ItemData.TYPE_SECONDARY_SETTING, SETTING_GROUP_NAME_N_IMAGE, context.getString(R.string.menu_group_name_and_image)));
     }
