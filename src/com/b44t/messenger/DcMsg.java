@@ -133,6 +133,7 @@ public class DcMsg {
     public native String  getQuotedText      ();
     public native String  getError           ();
     public native boolean isMailingList      ();
+    public native String  getSenderFirstName ();
     private native @Nullable String getOverrideSenderName();
 
     public @NonNull String getSenderName(@NonNull DcContact dcContact) {

@@ -331,7 +331,7 @@ public class NotificationCenter {
             DcMsg dcMsg = dcContext.getMsg(msgId);
             String line = privacy.isDisplayMessage()? dcMsg.getSummarytext(2000) : context.getString(R.string.notify_new_message);
             if (dcChat.isGroup() && privacy.isDisplayContact()) {
-                line = dcContext.getContact(dcMsg.getFromId()).getFirstName() + ": " + line;
+                line = dcMsg.getSenderFirstName() + ": " + line;
             }
 
             // play signal?
@@ -368,7 +368,7 @@ public class NotificationCenter {
             // prepend the sender in the ticker also for one-to-one chats (for group-chats, this is already done)
             String tickerLine = line;
             if (!dcChat.isGroup() && privacy.isDisplayContact()) {
-                line = dcContext.getContact(dcMsg.getFromId()).getFirstName() + ": " + line;
+                line = dcMsg.getSenderFirstName() + ": " + line;
             }
             builder.setTicker(tickerLine);
 
