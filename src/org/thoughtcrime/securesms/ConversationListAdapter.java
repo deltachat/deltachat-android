@@ -17,13 +17,13 @@
 package org.thoughtcrime.securesms;
 
 import android.content.Context;
-import android.database.Cursor;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcChatlist;
@@ -180,16 +180,6 @@ class ConversationListAdapter extends RecyclerView.Adapter {
       }
     }
     this.notifyDataSetChanged();
-  }
-
-  int getDeaddropContactId()
-  {
-    for (int i = 0; i < dcChatlist.getCnt(); i++) {
-      if (dcChatlist.getChatId(i) == DcChat.DC_CHAT_ID_DEADDROP) {
-       return dcContext.getMsg(dcChatlist.getMsgId(i)).getFromId();
-      }
-    }
-    return 0;
   }
 
   interface ItemClickListener {
