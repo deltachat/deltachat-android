@@ -636,7 +636,7 @@ public class ConversationItem extends LinearLayout
       this.groupSender.setTextColor(forwardedTitleColor);
     }
     else if (groupThread && !messageRecord.isOutgoing() && dcContact !=null) {
-      this.groupSender.setText(messageRecord.getSenderName());
+      this.groupSender.setText(messageRecord.getSenderName(dcContact));
 
       this.groupSender.setTextColor(dcContact.getArgbColor());
     }
@@ -725,7 +725,7 @@ public class ConversationItem extends LinearLayout
       })
       .setNegativeButton(android.R.string.cancel, null)
       .setNeutralButton(textNo, (dialog, which) -> messageRecord.decideOnContactRequest(DcMsg.DC_DEADDROP_DECISION_NO))
-      .setMessage(context.getString(textQuestion, messageRecord.getSenderName()))
+      .setMessage(context.getString(textQuestion, messageRecord.getSenderName(dcContact)))
       .show();
   }
 
