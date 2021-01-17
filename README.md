@@ -27,27 +27,35 @@ subproject _deltachat-core-rust_:
 If you only want to build an APK, the easiest way is to use
 provided `Dockerfile` with [Docker](https://www.docker.com/) or
 [Podman](https://podman.io/). Podman is a drop-in replacement for Docker
-that does not require root privileges.  It is used in the following
-example.
+that does not require root privileges.
 
 First, build the image `deltachat-android` by running
 ```
-podman build . -t deltachat-android
+podman build --build-arg UID=$(id -u) --build-arg GID=$(id -g) . -t deltachat-android
+```
+or
+```
+docker build --build-arg UID=$(id -u) --build-arg GID=$(id -g) . -t deltachat-android
 ```
 
 Then, run the image:
 ```
-podman run -it -v $(pwd):/home/app -w /home/app localhost/deltachat-android
+podman run --userns=keep-id -it --name deltachat -v $(pwd):/home/app -w /home/app localhost/deltachat-android
+```
+or
+```
+docker run -it --name deltachat -v $(pwd):/home/app -w /home/app localhost/deltachat-android
 ```
 
-Within the container, build the native library first:
+Within the container, install toolchains and build the native library:
 ```
-root@6012dcb974fe:/home/app# ./ndk-make.sh
+deltachat@6012dcb974fe:/home/app$ scripts/install-toolchains.sh
+deltachat@6012dcb974fe:/home/app$ ./ndk-make.sh
 ```
 
 Then, [build an APK](https://developer.android.com/studio/build/building-cmdline):
 ```
-root@6012dcb974fe:/home/app# ./gradlew assembleDebug
+deltachat@6012dcb974fe:/home/app$ ./gradlew assembleDebug
 ```
 
 If you don't want to use Docker or Podman, proceed to the next section.
@@ -57,9 +65,15 @@ If you don't want to use Docker or Podman, proceed to the next section.
 To setup build environment manually, you can read the `Dockerfile`
 and mimic what it does.
 
-First, you need to setup Android SDK and Android NDK.  Then, open
-`ndk-make.sh` in an editor and follow the instructions to set up a rust
-build environment.  This is needed only once.
+First, you need to setup Android SDK and Android NDK.  Configure
+`ANDROID_NDK_ROOT` environment variable to point to the Android NDK
+installation directory.  Currently ndk20b is the minimum required version.
+Newer versions will likely work, however, are not tested and not used
+in official releases, in general, changes on the ndk-version should be
+done with care.
+
+Then, install Rust using [rustup](https://rustup.rs/). Install Rust
+toolchains for cross-compilation by executing `scripts/install-toolchains.sh`.
 
 After that, call `./ndk-make.sh` in the root directory to build core-rust.
 Afterwards run the project in Android Studio. The project requires API 25.

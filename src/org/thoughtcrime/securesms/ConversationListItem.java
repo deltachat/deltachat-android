@@ -20,8 +20,6 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.Typeface;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.Spanned;
@@ -32,6 +30,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.amulyakhare.textdrawable.TextDrawable;
 import com.annimon.stream.Stream;
@@ -50,9 +51,7 @@ import org.thoughtcrime.securesms.database.model.ThreadRecord;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.DateUtils;
-import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.ThemeUtil;
-import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
 import java.util.Collections;
@@ -139,18 +138,6 @@ public class ConversationListItem extends RelativeLayout
     int state       = dcSummary.getState();
     int unreadCount = (state==DcMsg.DC_STATE_IN_FRESH || state==DcMsg.DC_STATE_IN_NOTICED)? thread.getUnreadCount() : 0;
 
-    // if the last message is not fresh or noticed, we assume, there are no unread things
-    // and also remove notifications for the chat.
-    // this might be improved at some point in core, https://github.com/deltachat/deltachat-core-rust/issues/1974
-    // and the following call to removeNotifications() can go to DC_EVENT_MSGS_NOTICED handler.
-    // however, for now it is not that bad
-    // and ensures, things answered on device-A are no longer notified on device-B.
-    if (unreadCount==0) {
-      Util.runOnAnyBackgroundThread(() -> {
-        dcContext.notificationCenter.removeNotifications((int) chatId);
-      });
-    }
-
     if (highlightSubstring != null) {
       this.fromView.setText(getHighlightedSpan(locale, recipient.getName(), highlightSubstring));
     } else {
@@ -190,7 +177,7 @@ public class ConversationListItem extends RelativeLayout
     fromView.setCompoundDrawablesWithIntrinsicBounds(
         thread.isMuted()? R.drawable.ic_volume_off_grey600_18dp : 0,
         0,
-        thread.isVerified()? R.drawable.ic_verified : 0,
+        thread.isProtected()? R.drawable.ic_verified : 0,
         0);
   }
 
@@ -213,7 +200,7 @@ public class ConversationListItem extends RelativeLayout
     deliveryStatusIndicator.setNone();
 
     setBatchState(false);
-    contactPhotoImage.setAvatar(glideRequests, recipient, true);
+    contactPhotoImage.setAvatar(glideRequests, recipient, false);
   }
 
   public void bind(@NonNull  DcMsg         messageResult,
@@ -244,7 +231,7 @@ public class ConversationListItem extends RelativeLayout
     deliveryStatusIndicator.setNone();
 
     setBatchState(false);
-    contactPhotoImage.setAvatar(glideRequests, recipient, true);
+    contactPhotoImage.setAvatar(glideRequests, recipient, false);
   }
 
   @Override
@@ -311,6 +298,12 @@ public class ConversationListItem extends RelativeLayout
           deliveryStatusIndicator.setPending();
         } else {
           deliveryStatusIndicator.setNone();
+        }
+
+        if (state == DcMsg.DC_STATE_OUT_ERROR) {
+          deliveryStatusIndicator.setTint(Color.RED);
+        } else {
+          deliveryStatusIndicator.resetTint();
         }
       }
     }

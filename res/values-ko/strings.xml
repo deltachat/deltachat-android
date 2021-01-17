@@ -120,6 +120,8 @@
     <string name="menu_mute">알림 음소거</string>
     <string name="menu_unmute">음소거 해제</string>
     <string name="menu_all_media">모든 미디어</string>
+    <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
+    <string name="show_in_chat">대화 속에서 보기</string>
     <string name="menu_share">공유</string>
     <string name="menu_block_contact">차단</string>
     <string name="menu_unblock_contact">차단 해제</string>
@@ -189,6 +191,7 @@
     <string name="pref_silent">무음</string>
     <string name="pref_privacy">개인정보 보호</string>
     <string name="pref_chats_and_media">대화 및 미디어</string>
+    <string name="pref_system_default">시스템 기본값</string>
     <!-- Translators: "light" in the meaning "opposite of dark" -->
     <string name="pref_light_theme">밝게</string>
     <string name="pref_dark_theme">어둡게</string>
@@ -226,7 +229,6 @@
     <!-- permissions -->
     <string name="perm_required_title">권한 필요</string>
     <string name="perm_continue">확인</string>
-    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
     <string name="welcome_desktop">Delta Chat에 오신 것을 환영합니다.</string>
     <string name="global_menu_preferences_language_desktop">언어</string>
     <string name="global_menu_file_desktop">파일</string>

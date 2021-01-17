@@ -22,11 +22,13 @@ import android.graphics.Rect;
 import android.os.Build;
 import android.os.Build.VERSION_CODES;
 import android.preference.PreferenceManager;
-import androidx.appcompat.widget.LinearLayoutCompat;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Surface;
 import android.view.View;
+import android.view.WindowInsets;
+
+import androidx.appcompat.widget.LinearLayoutCompat;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.util.ServiceUtil;
@@ -120,20 +122,28 @@ public class KeyboardAwareLinearLayout extends LinearLayoutCompat {
 
   @TargetApi(VERSION_CODES.LOLLIPOP)
   private int getViewInset() {
-    try {
-      Field attachInfoField = View.class.getDeclaredField("mAttachInfo");
-      attachInfoField.setAccessible(true);
-      Object attachInfo = attachInfoField.get(this);
-      if (attachInfo != null) {
-        Field stableInsetsField = attachInfo.getClass().getDeclaredField("mStableInsets");
-        stableInsetsField.setAccessible(true);
-        Rect insets = (Rect)stableInsetsField.get(attachInfo);
-        return insets.bottom;
+    // In Android 10 we can't use mAttatchInfo anymore, instead use the SDK interface:
+    if (Build.VERSION.SDK_INT >= VERSION_CODES.Q) {
+      WindowInsets insets = getRootWindowInsets();
+      if (insets == null) return 0;
+      return insets.getStableInsetBottom();
+    } else {
+      // Some older Android versions don't know `getRootViewInsets()` yet, so we still need the old way:
+      try {
+        Field attachInfoField = View.class.getDeclaredField("mAttachInfo");
+        attachInfoField.setAccessible(true);
+        Object attachInfo = attachInfoField.get(this);
+        if (attachInfo != null) {
+          Field stableInsetsField = attachInfo.getClass().getDeclaredField("mStableInsets");
+          stableInsetsField.setAccessible(true);
+          Rect insets = (Rect) stableInsetsField.get(attachInfo);
+          return insets.bottom;
+        }
+      } catch (NoSuchFieldException nsfe) {
+        Log.w(TAG, "field reflection error when measuring view inset", nsfe);
+      } catch (IllegalAccessException iae) {
+        Log.w(TAG, "access reflection error when measuring view inset", iae);
       }
-    } catch (NoSuchFieldException nsfe) {
-      Log.w(TAG, "field reflection error when measuring view inset", nsfe);
-    } catch (IllegalAccessException iae) {
-      Log.w(TAG, "access reflection error when measuring view inset", iae);
     }
     return 0;
   }

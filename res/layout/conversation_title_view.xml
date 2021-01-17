@@ -60,11 +60,14 @@
                 android:layout_height="wrap_content"
                 android:drawablePadding="5dp"
                 android:ellipsize="end"
-                android:maxLines="1"
+                android:singleLine="true"
                 android:textSize="20dp"
                 android:transitionName="recipient_name"
                 android:layout_weight="1"
                 tools:text="Jules Bonnot" />
+                <!-- Attention: Using android:maxLines="1", if the name is an emoji followed by a
+                long word and the chat is muted, then the long word is not shown at all
+                (instead of using `…`). That's why we use android:singleLine="true" -->
 
             <ImageView
                 android:id="@+id/ephemeral_icon"

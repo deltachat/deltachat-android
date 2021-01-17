@@ -1,5 +1,92 @@
 # Delta Chat Android Changelog
 
+## v1.14.5
+2020-11
+
+* show impact of the "Delete messages from server" option more clearly
+* fix: do not fetch from INBOX if "Watch Inbox folder" is disabled
+  and do not fetch messages arriving before re-enabling
+* fix: do not use STARTTLS when PLAIN connection is requested
+  and do not allow downgrade if STARTTLS is not available
+* update translations
+
+
+## v1.14.4
+2020-11
+
+* fix input line height when using system-emojis
+* fix crash on receiving certain messages with quotes
+
+
+## v1.14.3
+2020-11
+
+* add timestamps to image and video filenames
+* fix: preserve quotes in messages with attachments
+
+
+## v1.14.2
+2020-11
+
+* make quote animation faster
+* fix maybe stuck notifications
+* fix: close keyboard when a quotes is opened in another chat
+* fix: do not cut the document icon in quotes
+* fix: make the the quote dissmiss button better clickable again
+* update translations
+
+
+## v1.14.1
+2020-11
+
+* improve display of subseconds while recording voice messages
+* disable useless but confusing forwarding of info-messages
+* fix: show image editor "Done" button also on small screen
+* fix: show more characters of chat names before truncating
+* fix crash in image editor
+
+
+## v1.14.0
+2020-11
+
+* new swipe-to-reply option
+* disappearing messages: select for any chat the lifetime of the messages
+* chat opens at the position of the first unseen message
+* add known contacts from the IMAP-server to the local addressbook on configure
+* direct forwarding to "saved messags" - save one tap and stay in context :)
+* long tap in contact-list allows opening "profile" directly
+* allow forwarding to multiple archived chats
+* enable encryption in groups if preferred by the majority of recipients
+  (previously, encryption was only enabled if everyone preferred it)
+* add explicit switches for handling background connections
+  at "Settings / Notifications"
+* ask directly after configure for the permission to run in background
+  to get notifications
+* speed up chatlist-view
+* speed up configuration
+* try multiple servers from autoconfig
+* prefix log by a hint about sensitive information
+* check system clock and app date for common issues
+* prepare to remove screen lock as it adds only few protection
+  while having issues on its own
+* improve multi-device notification handling
+* improve detection and handling of video and audio messages
+* hide unused functions in "Saved messages" and "Device chat" profiles
+* remove unneeded information when copying a single message to the clipboard
+* bypass some limits for maximum number of recipients
+* fix launch if there is an ongoing process
+* fix: update relative times in chatlist once a minute
+* fix: hide keyboard when leaving edit-name
+* fix: connect immediately to an account scanned from a qr-code
+* fix errors that are not shown during configuring
+* fix keyboard position on Android Q
+* fix mistakenly unarchived chats
+* fix: tons of improvements affecting sending and receiving messages, see
+  https://github.com/deltachat/deltachat-core-rust/blob/master/CHANGELOG.md
+* update provider database and dependencies
+* add Slovak translation, update other translations
+
+
 ## v1.12.5
 2020-08
 

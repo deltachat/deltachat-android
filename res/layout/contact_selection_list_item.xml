@@ -42,6 +42,9 @@
             android:fontFamily="sans-serif"
             android:textSize="16sp"
             tools:text="Frieeeeeeedrich Nieeeeeeeeeetzsche" />
+            <!-- Attention: Using android:maxLines="1", if the name is an emoji followed by a
+            long word and the chat is muted, then the long word is not shown at all
+            (instead of using `…`). That's why we use android:singleLine="true" -->
 
         <LinearLayout android:id="@+id/number_container"
                       android:orientation="horizontal"

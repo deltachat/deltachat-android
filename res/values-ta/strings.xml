@@ -204,6 +204,7 @@
     <string name="pref_silent">அமைதி</string>
     <string name="pref_privacy">தனியுரிமை</string>
     <string name="pref_chats_and_media">அரட்டைகள் மற்றும் ஊடகங்கள்</string>
+    <string name="pref_system_default">கருவி இயல்புநிலை</string>
     <!-- Translators: "light" in the meaning "opposite of dark" -->
     <string name="pref_light_theme">வெளிச்சமிக்க</string>
     <string name="pref_dark_theme">இருள்கொண்ட</string>
@@ -252,7 +253,6 @@
     <!-- dc_str_* resources -->
     <string name="encrypted_message">மறைகுறியாக்கப்பட்ட செய்தி</string>
 
-    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
     <string name="welcome_desktop">Delta Chat க்கு வரவேற்கிறது.</string>
     <string name="global_menu_preferences_language_desktop">நிறவடிவமைப்பு</string>
     <string name="global_menu_file_desktop">கோப்பு</string>

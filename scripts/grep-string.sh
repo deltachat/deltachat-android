@@ -3,7 +3,7 @@ TEXT=$1
 if [ -z "$TEXT" ]; then
     echo "this script searches for the string key given as the first parameter."
     echo "search is done in this repo and in ../deltachat-ios and in ../deltachat-desktop."
-    echo "usage: ./tools/grep-string.sh <STRING-KEY>"
+    echo "usage: ./scripts/grep-string.sh <STRING-KEY>"
     exit
 fi
 

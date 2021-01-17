@@ -15,10 +15,6 @@ public class GifSlide extends ImageSlide {
     super(context, dcMsg);
   }
 
-  public GifSlide(Context context, Attachment attachment) {
-    super(context, attachment);
-  }
-
   public GifSlide(Context context, Uri uri, long size, int width, int height) {
     super(context, constructAttachmentFromUri(context, uri, MediaUtil.IMAGE_GIF, size, width, height, uri, null, false));
   }

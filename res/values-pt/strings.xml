@@ -273,6 +273,7 @@
     <string name="pref_silent">Silêncio</string>
     <string name="pref_privacy">Privacidade</string>
     <string name="pref_chats_and_media">chats e mídia</string>
+    <string name="pref_system_default">Configuração por omissão</string>
     <!-- Translators: "light" in the meaning "opposite of dark" -->
     <string name="pref_light_theme">Luz</string>
     <string name="pref_dark_theme">Escuro</string>

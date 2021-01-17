@@ -81,8 +81,16 @@ public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceF
   }
 
   protected void updateListSummary(Preference preference, Object value) {
+    updateListSummary(preference, value, null);
+  }
+
+  protected void updateListSummary(Preference preference, Object value, String hint) {
     ListPreference listPref = (ListPreference) preference;
-    listPref.setSummary(getSelectedSummary(preference, value));
+    String summary = getSelectedSummary(preference, value);
+    if (hint != null) {
+      summary += "\n\n" + hint;
+    }
+    listPref.setSummary(summary);
   }
 
   protected void initializeListSummary(ListPreference pref) {

@@ -327,6 +327,7 @@
     <string name="pref_silent">Silenci</string>
     <string name="pref_privacy">Privacitat</string>
     <string name="pref_chats_and_media">Xats i multimèdia</string>
+    <string name="pref_system_default">Per defecte del sistema</string>
     <!-- Translators: "light" in the meaning "opposite of dark" -->
     <string name="pref_light_theme">Clar</string>
     <string name="pref_dark_theme">Fosc</string>
@@ -523,7 +524,6 @@
     <string name="menu.view.developer.open.log.folder">Obre la carpeta de registre</string>
     <string name="menu.view.developer.open.current.log.file">Obre el fitxer de registre actual</string>
     <string name="user_location_permission_explanation">Delta Chat necessita permís per accedir a la ubicació per poder-la mostrar i compartir.</string>
-
 
     <string name="perm_enable_bg_reminder_title">Prem aquí per rebre missatges mentre Delta Chat és en segon pla.</string>
     </resources>

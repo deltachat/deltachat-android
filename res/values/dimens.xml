@@ -27,7 +27,7 @@
     <dimen name="media_bubble_default_dimens">210dp</dimen>
     <dimen name="media_bubble_min_width">150dp</dimen>
     <dimen name="media_bubble_max_width">240dp</dimen>
-    <dimen name="media_bubble_min_height">100dp</dimen>
+    <dimen name="media_bubble_min_height">50dp</dimen>
     <dimen name="media_bubble_max_height">320dp</dimen>
     <dimen name="below_bubble">3dp</dimen>
 

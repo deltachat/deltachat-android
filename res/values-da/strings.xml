@@ -191,8 +191,6 @@
     <string name="ask_start_chat_with">Samtale med %1$s?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Fjerne %1$s fra gruppe?</string>
-
-
     <!-- contact list -->
     <string name="contacts_title">Kontakter</string>
     <string name="contacts_enter_name_or_email">Indtaste navn eller e-post adresse</string>
@@ -333,6 +331,7 @@
     <string name="pref_silent">Stille</string>
     <string name="pref_privacy">Privatliv</string>
     <string name="pref_chats_and_media">Samtaler og medie</string>
+    <string name="pref_system_default">System standard</string>
     <!-- Translators: "light" in the meaning "opposite of dark" -->
     <string name="pref_light_theme">Lys</string>
     <string name="pref_dark_theme">Mørk</string>
@@ -471,7 +470,6 @@
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Krypteret besked</string>
 
-    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
     <string name="welcome_desktop">Velkommen til Delta Chat</string>
     <string name="login_known_accounts_title_desktop">Kendte konti</string>
     <string name="global_menu_preferences_language_desktop">Vælge sprog...</string>
@@ -534,7 +532,6 @@
     <string name="menu.view.developer.open.log.folder">Åbne log mappe</string>
     <string name="menu.view.developer.open.current.log.file">Åbne nuværende log fil</string>
     <string name="user_location_permission_explanation">Delta Chat behøver placering tilladelse for at vise og dele placering.</string>
-
 
     <string name="perm_enable_bg_reminder_title">Tryk her for at modtage beskeder når Delta Chat er i baggrunden.</string>
     </resources>

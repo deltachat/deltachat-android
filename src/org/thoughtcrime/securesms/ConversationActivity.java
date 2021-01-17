@@ -156,7 +156,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   public static final String CHAT_ID_EXTRA           = "chat_id";
   public static final String TEXT_EXTRA              = "draft_text";
   public static final String STARTING_POSITION_EXTRA = "starting_position";
-  public static final String SCROLL_TO_MSG_ID_EXTRA  = "scroll_to_msg_id_extra";
 
   private static final int PICK_GALLERY        = 1;
   private static final int PICK_DOCUMENT       = 2;
@@ -436,7 +435,9 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     inflater.inflate(R.menu.conversation, menu);
 
-    if(Prefs.isChatMuted(dcChat)) {
+    if (dcChat.isSelfTalk()) {
+      menu.findItem(R.id.menu_mute_notifications).setVisible(false);
+    } else if(Prefs.isChatMuted(dcChat)) {
       menu.findItem(R.id.menu_mute_notifications).setTitle(R.string.menu_unmute);
     }
 
@@ -446,6 +447,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     if (!dcContext.isWebrtcConfigOk() || !dcChat.canVideochat()) {
       menu.findItem(R.id.menu_videochat_invite).setVisible(false);
+    }
+
+    if (!dcChat.canSend()) {
+      menu.findItem(R.id.menu_ephemeral_messages).setVisible(false);
     }
 
     if (isGroupConversation()) {
@@ -546,6 +551,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   public void setDraftText(String txt) {
     composeText.setText(txt);
     composeText.setSelection(composeText.getText().length());
+  }
+
+  public void hideSoftKeyboard() {
+    container.hideCurrentInput(composeText);
   }
 
   //////// Event Handlers

@@ -175,8 +175,6 @@
     <string name="ask_start_chat_with">要和%1$s開始對話嗎？</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">要把%1$s移出群組嗎？</string>
-
-
     <!-- contact list -->
     <string name="contacts_title">聯絡人清單</string>
     <string name="contacts_enter_name_or_email">請輸入姓名或email地址</string>
@@ -314,6 +312,7 @@
     <string name="pref_silent">靜音</string>
     <string name="pref_privacy">隱私權設定</string>
     <string name="pref_chats_and_media">對話和媒體設定</string>
+    <string name="pref_system_default">系統預設</string>
     <!-- Translators: "light" in the meaning "opposite of dark" -->
     <string name="pref_light_theme">亮色</string>
     <string name="pref_dark_theme">暗色</string>

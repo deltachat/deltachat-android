@@ -101,7 +101,6 @@ public class DcContext {
 
     public native void         startIo              ();
     public native void         stopIo               ();
-    public native boolean      isIoRunning          ();
 
     public native void         maybeNetwork         ();
     public native void         setConfig            (String key, String value);
@@ -165,7 +164,6 @@ public class DcContext {
     public native int          sendVideochatInvitation(int chat_id);
     public native int          addDeviceMsg         (String label, DcMsg msg);
     public native boolean      wasDeviceMsgEverAdded(String label);
-    public native void         updateDeviceChats    ();
     public @NonNull DcLot      checkQr              (String qr) { return new DcLot(checkQrCPtr(qr)); }
     public native String       getSecurejoinQr      (int chat_id);
     public native int          joinSecurejoin       (String qr);

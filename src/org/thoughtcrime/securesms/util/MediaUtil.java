@@ -16,14 +16,12 @@ import com.b44t.messenger.DcMsg;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.gif.GifDrawable;
 
-import org.thoughtcrime.securesms.attachments.Attachment;
 import org.thoughtcrime.securesms.mms.AudioSlide;
 import org.thoughtcrime.securesms.mms.DecryptableStreamUriLoader.DecryptableUri;
 import org.thoughtcrime.securesms.mms.DocumentSlide;
 import org.thoughtcrime.securesms.mms.GifSlide;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.mms.ImageSlide;
-import org.thoughtcrime.securesms.mms.MmsSlide;
 import org.thoughtcrime.securesms.mms.PartAuthority;
 import org.thoughtcrime.securesms.mms.Slide;
 import org.thoughtcrime.securesms.mms.VideoSlide;
@@ -50,41 +48,17 @@ public class MediaUtil {
 
   public static Slide getSlideForMsg(Context context, DcMsg dcMsg) {
     Slide slide = null;
-    if (isGif(dcMsg.getFilemime())) {
+    if (dcMsg.getType() == DcMsg.DC_MSG_GIF) {
       slide = new GifSlide(context, dcMsg);
-    } else if (isImageType(dcMsg.getFilemime())) {
+    } else if (dcMsg.getType() == DcMsg.DC_MSG_IMAGE) {
       slide = new ImageSlide(context, dcMsg);
-    } else if (isVideoType(dcMsg.getFilemime())) {
+    } else if (dcMsg.getType() == DcMsg.DC_MSG_VIDEO) {
       slide = new VideoSlide(context, dcMsg);
-    } else if (isAudioType(dcMsg.getFilemime())) {
+    } else if (dcMsg.getType() == DcMsg.DC_MSG_AUDIO
+            || dcMsg.getType() == DcMsg.DC_MSG_VOICE) {
       slide = new AudioSlide(context, dcMsg);
-    } else if (isMms(dcMsg.getFilemime())) {
-      slide = new MmsSlide(context, dcMsg);
-    } else if (dcMsg.getFilemime() != null) {
+    } else if (dcMsg.getType() == DcMsg.DC_MSG_FILE) {
       slide = new DocumentSlide(context, dcMsg);
-    }
-
-    return slide;
-  }
-
-  /**
-   * @deprecated use getSlideForMsg instead.
-   */
-  @Deprecated
-  public static Slide getSlideForAttachment(Context context, Attachment attachment) {
-    Slide slide = null;
-    if (isGif(attachment.getContentType())) {
-      slide = new GifSlide(context, attachment);
-    } else if (isImageType(attachment.getContentType())) {
-      slide = new ImageSlide(context, attachment);
-    } else if (isVideoType(attachment.getContentType())) {
-      slide = new VideoSlide(context, attachment);
-    } else if (isAudioType(attachment.getContentType())) {
-      slide = new AudioSlide(context, attachment);
-    } else if (isMms(attachment.getContentType())) {
-      slide = new MmsSlide(context, attachment);
-    } else if (attachment.getContentType() != null) {
-      slide = new DocumentSlide(context, attachment);
     }
 
     return slide;
@@ -191,10 +165,6 @@ public class MediaUtil {
     }
     Log.d(TAG, "Dimensions for [" + uri + "] are " + dimens.first + " x " + dimens.second);
     return dimens;
-  }
-
-  public static boolean isMms(String contentType) {
-    return !TextUtils.isEmpty(contentType) && contentType.trim().equals("application/mms");
   }
 
   public static boolean isVideo(String contentType) {

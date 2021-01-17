@@ -1,5 +1,6 @@
 package org.thoughtcrime.securesms.components;
 
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
@@ -92,7 +93,16 @@ public class DeliveryStatusView {
     clearAnimation();
   }
 
-  public void setTint(int color) {
-    deliveryIndicator.setColorFilter(color);
+  public void setTint(Integer color) {
+    if (color != null) {
+      deliveryIndicator.setColorFilter(color);
+    } else {
+      Log.w("dbg", "reset tint, color " + color);
+      resetTint();
+    }
+  }
+
+  public void resetTint() {
+    deliveryIndicator.setColorFilter(null);
   }
 }

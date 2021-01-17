@@ -10,11 +10,14 @@
     <string name="on">Вкл.</string>
     <string name="off">Выкл.</string>
     <string name="def">По умолчанию</string>
+    <string name="default_value">По умолчанию (%1$s)</string>
+    <string name="default_value_as_above">По умолчанию (как указано выше)</string>
     <string name="custom">Персональная настройка</string>
     <string name="none">Не задано</string>
     <string name="automatic">Автоматически</string>
     <string name="strict">Строгий</string>
     <string name="open">Открыть</string>
+    <string name="open_attachment">Открыть вложение</string>
     <string name="join">Зайти</string>
     <string name="rejoin">Перезайти</string>
     <string name="delete">Удалить</string>
@@ -33,6 +36,7 @@
     <string name="save">Сохранить</string>
     <string name="chat">Чат</string>
     <string name="media">Медиафайлы</string>
+    <string name="profile">Профиль</string>
     <string name="main_menu">Главное меню</string>
     <string name="start_chat">Начать чат</string>
     <string name="show_password">Показать пароль</string>
@@ -42,6 +46,7 @@
     <string name="one_moment">Один момент…</string>
     <string name="done">Выполнено</string>
     <string name="undo">Отмена</string>
+    <string name="offline">Не в сети</string>
     <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
     <string name="next">Дальше</string>
     <string name="error">Ошибка</string>
@@ -107,6 +112,8 @@
     <string name="self">Я</string>
     <string name="draft">Черновик</string>
     <string name="image">Изображение</string>
+    <!-- Translators: Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
+    <string name="reply_noun">Ответить</string>
     <string name="gif">GIF</string>
     <string name="images">Изображения</string>
     <string name="audio">Аудио</string>
@@ -133,6 +140,8 @@
     <string name="magenta">Маджента</string>
     <string name="white">Белый</string>
 
+    <string name="zoom">Масштаб</string>
+    <string name="extra_small">Очень маленький</string>
     <string name="small">Маленький</string>
     <string name="normal">Обычный</string>
     <string name="large">Большой</string>
@@ -161,12 +170,17 @@
     <string name="menu_add_attachment">Прикрепить вложение</string>
     <string name="menu_leave_group">Покинуть группу</string>
     <string name="menu_delete_chat">Удалить чат</string>
+    <string name="ask_delete_named_chat">Вы уверены, что хотите удалить \"%1$s\"?</string>
     <string name="menu_delete_messages">Удалить сообщения</string>
     <string name="menu_delete_image">Удалить изображение</string>
+    <string name="delete_contact">Удалить контакт</string>
     <string name="menu_delete_locations">Удалить все местоположения?</string>
     <string name="menu_delete_location">Удалить местоположение?</string>
     <string name="menu_message_details">Подробности сообщения</string>
     <string name="menu_copy_to_clipboard">Скопировать в буфер обмена</string>
+    <string name="menu_copy_selection_to_clipboard">Скопировать выделенное</string>
+    <string name="menu_copy_link_to_clipboard">Скопировать ссылку</string>
+    <string name="paste_from_clipboard">Вставить из буфера обмена</string>
     <string name="menu_forward">Переслать сообщение</string>
     <string name="menu_resend">Продублировать сообщение</string>
     <string name="menu_reply">Ответить на сообщение</string>
@@ -174,6 +188,8 @@
     <string name="menu_unmute">Включить уведомления</string>
     <string name="menu_export_attachment">Экспортировать вложение</string>
     <string name="menu_all_media">Все медиафайлы</string>
+    <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
+    <string name="show_in_chat">Показать в чате</string>
     <string name="menu_share">Поделиться</string>
     <string name="menu_block_contact">Заблокировать контакт</string>
     <string name="menu_unblock_contact">Разблокировать контакт</string>
@@ -207,6 +223,8 @@
     <string name="pin">Прикрепить</string>
     <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
     <string name="unpin">Открепить</string>
+    <string name="ConversationFragment_quoted_message_not_found">Оригинальное сообщение не найдено</string>
+    <string name="reply_privately">Ответить лично</string>
 
     <string name="mute_for_one_hour">1 час</string>
     <string name="mute_for_two_hours">На 2 часа</string>
@@ -221,6 +239,12 @@
     <string name="share_location_for_two_hours">2 часа</string>
     <string name="share_location_for_six_hours">6 часов</string>
 
+    <plurals name="ask_send_following_n_files_to">
+        <item quantity="one">Отправить следующий файл %s?</item>
+        <item quantity="few">Отправить следующие %d файла %s?</item>
+        <item quantity="many">Отправить следующие %d файлов %s?</item>
+        <item quantity="other">Отправить следующие %d файлов %s?</item>
+    </plurals>
     <string name="file_saved_to">Файл сохранён в «%1$s».</string>
 
     <string name="videochat">Видеочат</string>
@@ -263,8 +287,10 @@
     <string name="ask_delete_contact">Удалить контакт навсегда  %1$s?\n\nКонтакты с исходящими чатами и контакты из системной адресной книги не будут удалены .</string>
     <string name="cannot_delete_contacts_in_use">Невозможно удалить контакты, с которыми имеются активные чаты.</string>
     <string name="ask_start_chat_with">Создать чат с %1$s?</string>
+    <string name="ask_delete_value">Удалить %s?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Удалить %1$s из группы?</string>
+    <string name="open_url_confirmation">Вы хотите открыть эту ссылку?</string>
 
 
     <!-- contact list -->
@@ -311,10 +337,19 @@
     <string name="chat_self_talk_subtitle">Сообщения отправленные себе</string>
     <string name="saved_messages">Сохранённые сообщения</string>
     <string name="saved_messages_explain">• Пересылайте сообщения сюда для быстрого доступа\n\n• Делайте текстовые или голосовые заметки\n\n• Прикрепляйте медиафайлы, чтобы сохранить их</string>
+    <!-- this "Saved" should match the "Saved" from "Saved messages" -->
+    <string name="saved">Сохранено</string>
     <string name="chat_contact_request">Запрос контакта</string>
     <string name="chat_no_contact_requests">Нет запросов контактов.\n\nЕсли Вы хотите, чтобы обычная почта появлялась здесь как запросы контактов, вы можете изменить соответствующий параметр в настройках приложения.</string>
     <string name="retry_send">Повторить отправку сообщения</string>
     <string name="send_failed">Не удалось отправить сообщение</string>
+    <!-- reasons for a disabled message composer -->
+    <string name="messaging_disabled_not_in_group">Вы не можете писать, потому что вы не в этой группе. Чтобы присоединиться, попросите другого участника.</string>
+    <string name="messaging_disabled_device_chat">Этот чат содержит локально сгенерированные сообщения. Поэтому вы не можете писать сообщения.</string>
+    <string name="messaging_disabled_deaddrop">Нажмите на сообщение чтобы принять или отклонить запрос контакта</string>
+    <string name="cannot_display_unsuported_file_type">Невозможно отобразить этот тип файла: %s</string>
+    <string name="attachment_failed_to_load">Не удалось загрузить вложение</string>
+
 
     <!-- map -->
     <string name="filter_map_on_time">Показать местоположения с интервалом времени</string>
@@ -331,6 +366,8 @@
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">Название группы</string>
     <string name="group_avatar">Аватар группы</string>
+    <string name="remove_group_image">Удалить изображение группы</string>
+    <string name="change_group_image">Сменить изображение группы</string>
     <string name="group_create_button">Создать группу</string>
     <string name="group_please_enter_group_name">Введите название группы</string>
     <string name="group_add_members">Добавить участников</string>
@@ -393,7 +430,9 @@
     <string name="add_account">Добавить аккаунт</string>
     <string name="delete_account">Удалить аккаунт</string>
     <string name="delete_account_ask">Вы уверены, что хотите удалить данные учётной записи?</string>
+    <string name="delete_account_explain_with_name">Все данные учётной записи \"%s\" на этом устройстве будут удалены, включая настройки сквозного шифрования, контакты, чаты, сообщения и мультимедиа. Это действие не может быть отменено.</string>
     <string name="switching_account">Меняем аккаунт...</string>
+    <string name="try_connect_now">Попытаться подключиться сейчас</string>
     <!-- Translations: %1$s will be replaced by a more detailed error message -->
     <string name="configuration_failed_with_error">Настройка не удалась. Ошибка: %1$s</string>
 
@@ -412,6 +451,7 @@
     <string name="pref_profile_info_headline">Личный профиль</string>
     <string name="pref_profile_photo">Фото профиля</string>
     <string name="pref_blocked_contacts">Заблокированные контакты</string>
+    <string name="blocked_empty_hint">Если вы заблокируете контакты, они будут показаны здесь.</string>
     <string name="pref_profile_photo_remove_ask">Удалить фото профиля?</string>
     <string name="pref_password_and_account_settings">Пароль и аккаунт</string>
     <string name="pref_who_can_see_profile_explain">Изображение профиля и имя будут отображаться при общении с другими пользователями. Уже отправленная информация не может быть удалена или отозвана.</string>
@@ -435,11 +475,15 @@
     <string name="pref_notifications">Уведомления</string>
     <string name="pref_notifications_show">Показывать</string>
     <string name="pref_notifications_priority">Приоритет</string>
+    <string name="pref_notifications_explain">Включить системные уведомления для новых сообщений</string>
+    <string name="pref_show_notification_content">Показывать содержимое сообщений в уведомлениях.</string>
+    <string name="pref_show_notification_content_explain">Показывает отправителя и первые слова сообщения в уведомлениях</string>
     <string name="pref_led_color">Цвет светодиода </string>
     <string name="pref_sound">Звук</string>
     <string name="pref_silent">Беззвучный</string>
     <string name="pref_privacy">Конфиденциальность</string>
     <string name="pref_chats_and_media">Чаты и медиафайлы</string>
+    <string name="pref_system_default">По умолчанию</string>
     <!-- Translators: "light" in the meaning "opposite of dark" -->
     <string name="pref_light_theme">Светлая</string>
     <string name="pref_dark_theme">Тёмная</string>
@@ -498,6 +542,24 @@
     <string name="pref_background_custom_image">Пользовательское изображение</string>
     <string name="pref_background_custom_color">Пользовательский цвет</string>
     <string name="export_aborted">Экспорт прекращен.</string>
+    <string name="profile_image_select">Выбрать фото профиля</string>
+    <string name="select_your_new_profile_image">Выбрать новое изображение профиля</string>
+    <string name="profile_image_delete">Удалить фото профиля</string>
+
+
+    <!-- Emoji picker and categories -->
+    <string name="emoji_search_results">Результаты поиска</string>
+    <string name="emoji_not_found">Эмодзи не найдено</string>
+    <string name="emoji_recent">Недавно использованные</string>
+    <string name="emoji_people">Люди &amp; Тело</string>
+    <string name="emoji_nature">Животные &amp; Природа</string>
+    <string name="emoji_foods">Еда &amp; Напитки</string>
+    <string name="emoji_activity">Активность</string>
+    <string name="emoji_places">Путешествия &amp; Места</string>
+    <string name="emoji_objects">Объекты</string>
+    <string name="emoji_symbols">Символы</string>
+    <string name="emoji_flags">Флаги</string>
+
 
     <!-- automatically delete message -->
     <string name="delete_old_messages">Удалять старые сообщения</string>
@@ -508,7 +570,9 @@
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">Вы хотите удалить %1$d сообщений сейчас и все новые загруженные сообщения \"%2$s\" в будущем?\n\n• Это включает в себя все медиафайлы\n\n• Сообщения будут удалены независимо от того, просмотрены они или нет\n\n• \"Сохранённые сообщения\" будут пропущены при локальном удалении</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
-    <string name="autodel_server_ask">Вы хотите удалить %1$d сообщений сейчас и все новые загруженные сообщения \"%2$s\" в будущем?\n\n• Это включает в себя все медиафайлы\n\n• Это также удалит почту, затронутую опцией \"Показывать обычную почту\"\n\n• \"Сохранённые сообщения\" также будут удалены с сервера</string>
+    <string name="autodel_server_ask">Вы хотите удалить %1$d сообщений сейчас и все новые сообщения «%2$s» в будущем?\n\n⚠️ Это включает письма, медиа и «Сохраненные сообщения» во всех папках сервера\n\n⚠️ Не используйте эту функцию если вы хотите сохранить данные на сервере\n\n⚠️ Не используйте эту функцию если вы используете другие почтовые клиенты кроме Delta Chat</string>
+    <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
+    <string name="autodel_server_enabled_hint">Это включает почту, медиа и «Сохраненные сообщения» во всех папках сервера. Не используйте эту функцию, если вы хотите сохранить данные на сервере или если вы используете другие почтовые клиенты кроме Delta Chat.</string>
     <string name="autodel_confirm">Я понимаю, удалить все эти сообщения</string>
     <string name="autodel_at_once">Сразу</string>
     <string name="after_30_seconds">Через 30 секунд</string>
@@ -563,6 +627,9 @@
     <string name="systemmsg_ephemeral_timer_week">Таймер исчезающих сообщений установлен на 1 неделю.</string>
     <string name="systemmsg_ephemeral_timer_four_weeks">Таймер исчезающих сообщений установлен на 4 недели.</string>
 
+    <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
+    <string name="systemmsg_chat_protection_disabled">Защита чата отключена.</string>
+    <string name="systemmsg_chat_protection_enabled">Защита чата включена</string>
 
     <!-- screen lock -->
     <string name="screenlock_title">Блокировка экрана</string>
@@ -577,8 +644,10 @@
 
     <!-- qr code stuff -->
     <string name="qr_code">QR код</string>
+    <string name="load_qr_code_as_image">Загрузить QR-код как изображение</string>
     <string name="qrscan_title">Сканировать QR код</string>
     <string name="qrscan_hint">Наведите камеру на QR код</string>
+    <string name="qrscan_failed">QR-код не может быть декодирован</string>
     <string name="qrscan_ask_join_group">Присоединиться к группе «%1$s»?</string>
     <string name="qrscan_fingerprint_mismatch">Отсканированный отпечаток не совпадает с последним известным отпечатком %1$s</string>
     <string name="qrscan_no_addr_found">QR код содержит отпечаток ключа, но не содержит адрес электронной почты.\n\nДля проверки подлинности с использованием альтернативного канала связи следует сначала установить с получателем защищенное соединение.</string>
@@ -606,6 +675,7 @@
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Изменены параметры для %1$s</string>
     <string name="verified_group_explain">Проверенные группы (экспериментально) защищены от активных атак. Участники проверяются с помощью второго фактора другими участниками и сообщения всегда передаются посредством cквозного шифрования .</string>
+    <string name="copy_qr_data_success">Ссылка из QR-кода скопирована в буфер обмена</string>
 
 
     <!-- notifications  -->
@@ -636,6 +706,8 @@
     <string name="encrypted_message">Зашифрованное сообщение</string>
 
     <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
+    <string name="about_offical_app_desktop">Это официальное приложение Delta Chat Desktop.</string>
+    <string name="about_licensed_under_desktop">Это программное обеспечение находится под лицензией GNU GPL версии 3, а исходный код доступен на GitHub.</string>
     <string name="welcome_desktop">Добро пожаловать в Delta Chat</string>
     <string name="login_known_accounts_title_desktop">Известные аккаунты</string>
     <string name="global_menu_preferences_language_desktop">Выбор языка</string>
@@ -690,6 +762,7 @@
     <string name="ask_delete_chat_desktop">Действительно удалить этот чат?</string>
     <string name="email_validation_failed_desktop">Требуется адрес электронной почты.</string>
     <string name="forget_login_confirmation_desktop">Удалить эту учётную запись? Все данные будут удалены, включая настройки сквозного шифрования, контакты, чаты, сообщения и медиа файлы. Это действие нельзя будет отменить.</string>
+    <string name="account_info_hover_tooltip_desktop">Почта: %1$s\nРазмер: %2$s\nПуть: %3$s</string>
     <string name="me_desktop">мне</string>
     <string name="in_this_group_desktop">Участники группы</string>
     <string name="not_in_this_group_desktop">Потенциальные участники (не в группе)</string>
@@ -701,7 +774,6 @@
     <string name="menu.view.developer.open.current.log.file">Открыть Текущий Файл Журнала Log</string>
     <string name="user_location_permission_explanation">Для отображения и публикации вашего местоположения Delta Chat необходимо разрешение на местоположение.</string>
 
-
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Статус доставки: Ошибка</string>
     <string name="a11y_encryption_padlock">Значок шифрования</string>
@@ -712,6 +784,7 @@
     <string name="a11y_delivery_status_invalid">Недопустимый статус доставки</string>
     <string name="a11y_message_context_menu_btn_label">Действия с сообщением</string>
     <string name="a11y_background_preview_label">Предпросмотр фона</string>
+    <string name="a11y_disappearing_messages_activated">Исчезающие сообщения включены</string>
 
 
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
@@ -732,5 +805,6 @@
     <string name="perm_enable_bg_reminder_title">Нажмите здесь, чтобы получать сообщения, когда Delta Chat находится в фоновом режиме.</string>
     <string name="perm_enable_bg_already_done"> 
 Вы уже разрешили Delta Chat получать сообщения в фоне.\n\nЕсли сообщения всё ещё не приходят в фоне, пожалуйста, проверьте также системные настройки.</string>
+    <string name="update_1_14_android">Некоторые обновления в версии 1.14:\n\n🧹 Ответы: чтобы ответить на сообщение, просто смахните его вправо (не здесь! вы не можете отвечать тут 😛) Вы увидите цитату над полем ввода сообщения и сможете продолжить писать его как обычно.\n\n🔥 Исчезающие сообщения ­- время пришло 😀. Любой чат может быть настроен, чтобы отправляемые и приходящие сообщения удалялись через некоторое время. Просто выберите «Исчезающие сообщения» в меню чата (снова: не здесь)\n\n👆 Чаты открываются на последнем непрочитанном сообщении\n\n💾 Отправляйте сообщения в «Сохраненные сообщения» напрямую (можете попробовать здесь: долгое нажатие на сообщение, затем стрелка в правом верхнем углу)\n\n🎃 Наконец, мы напугали много багов! Они так испугались, что больше не вернутся.</string>
 
 </resources>

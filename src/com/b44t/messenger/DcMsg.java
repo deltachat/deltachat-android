@@ -5,6 +5,8 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import org.thoughtcrime.securesms.connect.ApplicationDcContext;
+
 import java.io.File;
 import java.util.Set;
 
@@ -76,6 +78,22 @@ public class DcMsg {
         return this.getId()==that.getId() && this.getId()!=0;
     }
 
+    /**
+     * If given a message, calculates the position of the message in the chat
+     */
+    public static int getMessagePosition(DcMsg msg, ApplicationDcContext dcContext) {
+        int msgs[] = dcContext.getChatMsgs(msg.getChatId(), 0, 0);
+        int startingPosition = -1;
+        int msgId = msg.getId();
+        for (int i = 0; i < msgs.length; i++) {
+            if (msgs[i] == msgId) {
+                startingPosition = msgs.length - 1 - i;
+                break;
+            }
+        }
+        return startingPosition;
+    }
+
     public native int     getId              ();
     public native String  getText            ();
     public native long    getTimestamp       ();
@@ -113,6 +131,7 @@ public class DcMsg {
     public native void    setLocation        (float latitude, float longitude);
     public void           setQuote           (DcMsg quote) { setQuoteCPtr(quote.msgCPtr); }
     public native String  getQuotedText      ();
+    public native String  getError           ();
     public native boolean isMailingList      ();
     private native @Nullable String getOverrideSenderName();
 
@@ -151,10 +170,6 @@ public class DcMsg {
         return getFromId() == DcContact.DC_CONTACT_ID_SELF;
     }
 
-    public boolean isGroupAction() {
-        return false;
-    }
-
     public String getDisplayBody()  {
         return getText();
     }
@@ -173,20 +188,11 @@ public class DcMsg {
     public boolean isPreparing() {
         return getState() == DC_STATE_OUT_PREPARING;
     }
-    public long getExpiresIn() {
-        return -1; // never.
-    }
-    public long getExpireStarted() {
-        return 0;
-    }
     public boolean isSecure() {
         return showPadlock()!=0;
     }
     public boolean isPending() {
         return getState() == DC_STATE_OUT_PENDING;
-    }
-    public boolean isMediaPending() {
-        return isPending();
     }
     public boolean isDelivered() {
         return getState() == DC_STATE_OUT_DELIVERED;
@@ -197,17 +203,7 @@ public class DcMsg {
     public boolean isSeen() {
         return getState() == DC_STATE_IN_SEEN;
     }
-    public boolean isMms() {
-        return false;
-    }
 
-    // the following are probably system messages in delta-land
-    public boolean isJoined() { return false; }
-    public boolean isExpirationTimerUpdate() { return false; }
-    public boolean isEndSession() { return false; }
-    public boolean isIdentityUpdate() { return false; }
-    public boolean isIdentityVerified() { return false; }
-    public boolean isIdentityDefault() { return false; }
 
     // working with raw c-data
     private long        msgCPtr;        // CAVE: the name is referenced in the JNI

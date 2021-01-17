@@ -47,9 +47,12 @@
                 android:drawablePadding="5dp"
                 android:ellipsize="end"
                 android:fontFamily="sans-serif-medium"
-                android:maxLines="1"
+                android:singleLine="true"
                 android:textColor="?attr/conversation_list_item_contact_color"
                 tools:text="Jules Bonnot" />
+                <!-- Attention: Using android:maxLines="1", if the name is an emoji followed by a
+                long word and the chat is muted, then the long word is not shown at all
+                (instead of using `…`). That's why we use android:singleLine="true" -->
 
             <org.thoughtcrime.securesms.components.emoji.EmojiTextView
                 android:id="@+id/subject"

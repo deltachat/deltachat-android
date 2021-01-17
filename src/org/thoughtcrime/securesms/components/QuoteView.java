@@ -3,8 +3,6 @@ package org.thoughtcrime.securesms.components;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Canvas;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.text.TextUtils;
@@ -42,8 +40,6 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
   private static final String TAG = QuoteView.class.getSimpleName();
 
   private static final int MESSAGE_TYPE_PREVIEW  = 0;
-  private static final int MESSAGE_TYPE_OUTGOING = 1;
-  private static final int MESSAGE_TYPE_INCOMING = 2;
 
   private ViewGroup mainView;
   private TextView  authorView;
@@ -57,13 +53,8 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
   private DcMsg quotedMsg;
   private DcContact     author;
   private CharSequence  body;
-  //private TextView      missingLinkText;
   private SlideDeck     attachments;
   private int           messageType;
-  private int           largeCornerRadius;
-  private int           smallCornerRadius;
-//  private CornerMask    cornerMask;
-
 
   public QuoteView(Context context) {
     super(context);
@@ -97,41 +88,26 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
     this.attachmentVideoOverlayView   = findViewById(R.id.quote_video_overlay);
     this.attachmentContainerView      = findViewById(R.id.quote_attachment_container);
     this.dismissView                  = findViewById(R.id.quote_dismiss);
-//    this.largeCornerRadius            = getResources().getDimensionPixelSize(R.dimen.quote_corner_radius_large);
-//    this.smallCornerRadius            = getResources().getDimensionPixelSize(R.dimen.quote_corner_radius_bottom);
-
-//    cornerMask = new CornerMask(this);
-//    cornerMask.setRadii(largeCornerRadius, largeCornerRadius, smallCornerRadius, smallCornerRadius);
 
     if (attrs != null) {
       TypedArray typedArray     = getContext().getTheme().obtainStyledAttributes(attrs, R.styleable.QuoteView, 0, 0);
-      int        primaryColor   = typedArray.getColor(R.styleable.QuoteView_quote_colorPrimary, Color.BLACK);
-      int        secondaryColor = typedArray.getColor(R.styleable.QuoteView_quote_colorSecondary, Color.BLACK);
       messageType = typedArray.getInt(R.styleable.QuoteView_message_type, 0);
       typedArray.recycle();
 
       dismissView.setVisibility(messageType == MESSAGE_TYPE_PREVIEW ? VISIBLE : GONE);
-
-//      if (messageType == MESSAGE_TYPE_PREVIEW) {
-//        int radius = getResources().getDimensionPixelOffset(R.dimen.quote_corner_radius_preview);
-//        cornerMask.setTopLeftRadius(radius);
-//        cornerMask.setTopRightRadius(radius);
-//      }
+      if (messageType == MESSAGE_TYPE_PREVIEW) {
+        bodyView.setSingleLine();
+      } else {
+        bodyView.setMaxLines(3);
+      }
     }
 
     dismissView.setOnClickListener(view -> setVisibility(GONE));
   }
-//
-//  @Override
-//  protected void dispatchDraw(Canvas canvas) {
-//    super.dispatchDraw(canvas);
-//    cornerMask.mask(canvas);
-//  }
 
   @Override
   protected void onDetachedFromWindow() {
     super.onDetachedFromWindow();
-    //if (author != null) author.removeForeverObserver(this);
   }
 
   public void setQuote(GlideRequests glideRequests,
@@ -140,28 +116,17 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
                        @Nullable CharSequence body,
                        @NonNull SlideDeck attachments)
   {
-//    if (this.author != null) this.author.removeForeverObserver(this);
-
     quotedMsg        = msg;
     this.author      = author != null ? author.getDcContact() : null;
     this.body        = body;
     this.attachments = attachments;
 
-    //this.author.observeForever(this);
     setQuoteAuthor(author);
     setQuoteText(body, attachments);
     setQuoteAttachment(glideRequests, attachments);
-    //setQuoteMissingFooter(originalMissing);
   }
 
-//  public void setTopCornerSizes(boolean topLeftLarge, boolean topRightLarge) {
-//    cornerMask.setTopLeftRadius(topLeftLarge ? largeCornerRadius : smallCornerRadius);
-//    cornerMask.setTopRightRadius(topRightLarge ? largeCornerRadius : smallCornerRadius);
-//  }
-
   public void dismiss() {
-    //if (this.author != null) this.author.removeForeverObserver(this);
-
     this.author = null;
     this.body   = null;
 
@@ -176,15 +141,23 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
   private void setQuoteAuthor(@Nullable Recipient author) {
     if (author == null) {
       authorView.setVisibility(GONE);
-      return;
-    }
-
-    DcContact contact = author.getDcContact();
-    if (contact != null) {
+      quoteBarView.setBackgroundColor(getForwardedColor());
+    } else if (quotedMsg.isForwarded()) {
       authorView.setVisibility(VISIBLE);
-      authorView.setText(contact.getDisplayName());
-      quoteBarView.setBackgroundColor(contact.getArgbColor());
-      authorView.setTextColor(contact.getArgbColor());
+      authorView.setText(getContext().getString(R.string.forwarded_message));
+      authorView.setTextColor(getForwardedColor());
+      quoteBarView.setBackgroundColor(getForwardedColor());
+    } else {
+      DcContact contact = author.getDcContact();
+      if (contact == null) {
+        authorView.setVisibility(GONE);
+        quoteBarView.setBackgroundColor(getForwardedColor());
+      } else {
+        authorView.setVisibility(VISIBLE);
+        authorView.setText(contact.getDisplayName());
+        authorView.setTextColor(contact.getArgbColor());
+        quoteBarView.setBackgroundColor(contact.getArgbColor());
+      }
     }
   }
 
@@ -236,11 +209,6 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
       dismissView.setBackgroundResource(R.drawable.circle_alpha);
     }
   }
-//
-//  private void setQuoteMissingFooter(boolean missing) {
-//    footerView.setVisibility(missing ? VISIBLE : GONE);
-//    footerView.setBackgroundColor(author.getColor());
-//  }
 
   public CharSequence getBody() {
     return body;
@@ -256,5 +224,9 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
 
   public DcMsg getOriginalMsg() {
     return quotedMsg;
+  }
+
+  private int getForwardedColor() {
+    return getResources().getColor(R.color.unknown_sender);
   }
 }

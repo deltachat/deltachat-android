@@ -124,6 +124,8 @@
     <string name="menu_mute">كتم الإشعارات</string>
     <string name="menu_unmute">إلغاء الكتم.</string>
     <string name="menu_all_media">جميع الوسائط</string>
+    <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
+    <string name="show_in_chat">إظهار في المحادثة</string>
     <string name="menu_share">شارك</string>
     <string name="menu_play">شغّل</string>
     <string name="menu_pause">تعليق مؤقت</string>
@@ -201,6 +203,7 @@
     <string name="pref_sound">الصوت</string>
     <string name="pref_privacy">الخصوصية</string>
     <string name="pref_chats_and_media">الدردشة والوسائط</string>
+    <string name="pref_system_default">افتراضيات النظام</string>
     <!-- Translators: "light" in the meaning "opposite of dark" -->
     <string name="pref_light_theme">فاتح</string>
     <string name="pref_dark_theme">داكن</string>

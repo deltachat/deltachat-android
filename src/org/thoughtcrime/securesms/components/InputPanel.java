@@ -16,7 +16,6 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.TranslateAnimation;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -176,7 +175,7 @@ public class InputPanel extends ConstraintLayout
                                                     @Nullable AnimationCompleteListener onAnimationComplete)
   {
     ValueAnimator animator = ValueAnimator.ofInt(originalHeight, finalHeight)
-            .setDuration(300);
+            .setDuration(200);
 
     animator.addUpdateListener(animation -> {
       ViewGroup.LayoutParams params = view.getLayoutParams();
@@ -376,7 +375,7 @@ public class InputPanel extends ConstraintLayout
 
     private final TextView recordTimeView;
     private final AtomicLong startTime = new AtomicLong(0);
-    private final int UPDATE_EVERY_MS = 137;
+    private final int UPDATE_EVERY_MS = 99;
 
     private RecordTime(TextView recordTimeView) {
       this.recordTimeView = recordTimeView;
@@ -409,7 +408,7 @@ public class InputPanel extends ConstraintLayout
     private String formatElapsedTime(long ms)
     {
       return DateUtils.formatElapsedTime(TimeUnit.MILLISECONDS.toSeconds(ms))
-              + String.format(".%02d", ((ms/10)%100));
+              + String.format(".%01d", ((ms/100)%10));
 
     }
   }

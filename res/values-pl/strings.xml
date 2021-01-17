@@ -10,11 +10,14 @@
     <string name="on">Włączone</string>
     <string name="off">Wyłączone</string>
     <string name="def">Domyślne</string>
+    <string name="default_value">Domyślny (%1$s)</string>
+    <string name="default_value_as_above">Domyślna (taka sama jak powyżej)</string>
     <string name="custom">Własne</string>
     <string name="none">Brak</string>
     <string name="automatic">Automatyczne</string>
     <string name="strict">Dokładne</string>
     <string name="open">Otwórz</string>
+    <string name="open_attachment">Otwórz załącznik</string>
     <string name="join">Dołącz</string>
     <string name="rejoin">Dołącz ponownie</string>
     <string name="delete">Usuń</string>
@@ -31,6 +34,7 @@
     <string name="save">Zapisz</string>
     <string name="chat">Czat</string>
     <string name="media">Multimedia</string>
+    <string name="profile">Profil</string>
     <string name="main_menu">Menu główne</string>
     <string name="start_chat">Rozpocznij czat</string>
     <string name="show_password">Pokaż hasło</string>
@@ -40,6 +44,7 @@
     <string name="one_moment">Jedną chwilę…</string>
     <string name="done">Gotowe</string>
     <string name="undo">Cofnij</string>
+    <string name="offline">Offline</string>
     <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
     <string name="next">Dalej</string>
     <string name="error">Błąd</string>
@@ -81,19 +86,19 @@
         <item quantity="one">%d czat</item>
         <item quantity="few">%d czaty</item>
         <item quantity="many">%d czatów</item>
-        <item quantity="other">%d czatu</item>
+        <item quantity="other">%d czatów</item>
     </plurals>
     <plurals name="n_contacts">
         <item quantity="one">%d kontakt</item>
         <item quantity="few">%d kontakty</item>
         <item quantity="many">%d kontaktów</item>
-        <item quantity="other">%d kontaktu</item>
+        <item quantity="other">%d kontaktów</item>
     </plurals>
     <plurals name="n_messages">
         <item quantity="one">%d wiadomość</item>
         <item quantity="few">%d wiadomości</item>
         <item quantity="many">%d wiadomości</item>
-        <item quantity="other">%dwiadomości </item>
+        <item quantity="other">%d wiadomości </item>
     </plurals>
     <plurals name="n_members">
         <item quantity="one">%d członek</item>
@@ -105,6 +110,8 @@
     <string name="self">Ja</string>
     <string name="draft">Szkic</string>
     <string name="image">Obraz</string>
+    <!-- Translators: Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
+    <string name="reply_noun">Odpowiedź</string>
     <string name="gif">Gif</string>
     <string name="images">Obrazy</string>
     <string name="audio">Audio</string>
@@ -131,6 +138,8 @@
     <string name="magenta">Magenta</string>
     <string name="white">Biały</string>
 
+    <string name="zoom">Powiększenie</string>
+    <string name="extra_small">Bardzo małe</string>
     <string name="small">Mały</string>
     <string name="normal">Normalny</string>
     <string name="large">Duży</string>
@@ -159,12 +168,17 @@
     <string name="menu_add_attachment">Dodaj załącznik</string>
     <string name="menu_leave_group">Opuść grupę</string>
     <string name="menu_delete_chat">Usuń czat</string>
+    <string name="ask_delete_named_chat">Czy na pewno chcesz usunąć „%1$s”?</string>
     <string name="menu_delete_messages">Usuń wiadomości</string>
     <string name="menu_delete_image">Usuń  obraz</string>
+    <string name="delete_contact">Usuń kontakt</string>
     <string name="menu_delete_locations">Usunąć wszystkie lokalizacje?</string>
     <string name="menu_delete_location">Usunąć tę lokalizację?</string>
     <string name="menu_message_details">Szczegóły wiadomości</string>
     <string name="menu_copy_to_clipboard">Kopiuj do schowka</string>
+    <string name="menu_copy_selection_to_clipboard">Kopiuj zaznaczenie</string>
+    <string name="menu_copy_link_to_clipboard">Kopiuj link</string>
+    <string name="paste_from_clipboard">Wklej ze schowka</string>
     <string name="menu_forward">Przekaż wiadomość</string>
     <string name="menu_resend">Wyślij ponownie wiadomość</string>
     <string name="menu_reply">Odpowiedz na wiadomość</string>
@@ -172,6 +186,8 @@
     <string name="menu_unmute">Wyłącz powiadomienia</string>
     <string name="menu_export_attachment">Eksportuj załącznik</string>
     <string name="menu_all_media">Wszystkie multimedia</string>
+    <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
+    <string name="show_in_chat">Pokaż w czacie</string>
     <string name="menu_share">Udostępnij</string>
     <string name="menu_block_contact">Blokuj kontakt</string>
     <string name="menu_unblock_contact">Odblokuj kontakt</string>
@@ -205,7 +221,7 @@
     <string name="pin">Przypnij</string>
     <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
     <string name="unpin">Odepnij</string>
-
+    <string name="ConversationFragment_quoted_message_not_found">Nie znaleziono oryginalnej wiadomości</string>
     <string name="mute_for_one_hour">Wyłącz na 1 godzinę</string>
     <string name="mute_for_two_hours">Wyłącz na 2 godziny</string>
     <string name="mute_for_one_day">Wyłącz na 1 dzień</string>
@@ -237,7 +253,7 @@
     <string name="videochat_invitation_body">Masz zaproszenie do czatu wideo, naciśnij %1$s, aby dołączyć.</string>
 
     <!-- get confirmations -->
-    <string name="ask_leave_group">Czy na pewno chcesz opuścić tą grupę?</string>
+    <string name="ask_leave_group">Czy na pewno chcesz opuścić tę grupę?</string>
     <plurals name="ask_delete_chat">
         <item quantity="one">Usunąć %d czat? Nie będzie już wyświetlany na liście czatów, wiadomość pozostanie na serwerze.</item>
         <item quantity="few">Usunąć %d czatów? Nie będą już wyświetlane na liście czatów, ich wiadomości pozostaną na serwerze.</item>
@@ -259,8 +275,10 @@
     <string name="ask_delete_contact">Usunąć trwale kontakt %1$s?\n\nKontaktów z trwającymi czatami i kontaktów z książki adresowej systemu nie można trwale usunąć.</string>
     <string name="cannot_delete_contacts_in_use">Nie można usunąć kontaktów z trwającymi czatami.</string>
     <string name="ask_start_chat_with">Rozpocząć czat z %1$s?</string>
+    <string name="ask_delete_value">Usunąć %s?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Usunąć %1$s z grupy?</string>
+    <string name="open_url_confirmation">Czy chcesz otworzyć ten link?</string>
 
 
     <!-- contact list -->
@@ -307,11 +325,16 @@
     <string name="chat_self_talk_subtitle">Wiadomości wysłane do siebie</string>
     <string name="saved_messages">Zapisane wiadomości</string>
     <string name="saved_messages_explain">• Przesyłaj tu wiadomości, aby mieć je pod ręką\n\n• Rób notatki lub notatki głosowe\n\n• Dołączaj media, aby je zachować</string>
+    <!-- this "Saved" should match the "Saved" from "Saved messages" -->
+    <string name="saved">Zapisana</string>
     <string name="chat_contact_request">Prośba o kontakt</string>
     <string name="chat_no_contact_requests">Brak zaproszenia do kontaktów.\n\nJeśli chcesz, aby klasyczne wiadomości e-mail pojawiały się tutaj jako prośby o kontakt, możesz zmienić odpowiednie ustawienia w ustawieniach aplikacji.</string>
     <string name="retry_send">Spróbuj ponownie wysłać wiadomość</string>
     <string name="send_failed">Nie można wysłać wiadomości</string>
-
+    <!-- reasons for a disabled message composer -->
+    <string name="messaging_disabled_not_in_group">Nie możesz pisać, ponieważ nie jesteś w tej grupie. Aby dołączyć, poproś innego członka.</string>
+    <string name="messaging_disabled_device_chat">Ten czat zawiera wiadomości generowane lokalnie dlatego nie możesz pisać żadnych wiadomości.</string>
+    <string name="messaging_disabled_deaddrop">Kliknij wiadomość, aby zaakceptować lub odrzucić prośbę o kontakt</string>
     <!-- map -->
     <string name="filter_map_on_time">Pokaż lokalizacje w ramach czasowych</string>
     <string name="show_location_traces">Pokaż ślady</string>
@@ -326,7 +349,9 @@
 
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">Nazwa grupy</string>
-    <string name="group_avatar">Awatar grupy</string>
+    <string name="group_avatar">Obraz grupy</string>
+    <string name="remove_group_image">Usuń obraz grupy</string>
+    <string name="change_group_image">Zmień obraz grupy</string>
     <string name="group_create_button">Utwórz grupę</string>
     <string name="group_please_enter_group_name">Podaj nazwę dla grupy</string>
     <string name="group_add_members">Dodaj członków</string>
@@ -428,11 +453,14 @@
     <string name="pref_notifications">Powiadomienia</string>
     <string name="pref_notifications_show">Pokaż</string>
     <string name="pref_notifications_priority">Priorytet</string>
+    <string name="pref_notifications_explain">Włącz powiadomienia systemowe o nowych wiadomościach</string>
+    <string name="pref_show_notification_content_explain">Pokaż nadawcę i pierwsze słowa wiadomości w powiadomieniach</string>
     <string name="pref_led_color">Kolor LED-a</string>
     <string name="pref_sound">Dźwięk</string>
     <string name="pref_silent">Cichy</string>
     <string name="pref_privacy">Prywatność</string>
     <string name="pref_chats_and_media">Czaty i media</string>
+    <string name="pref_system_default">Domyślny systemu</string>
     <!-- Translators: "light" in the meaning "opposite of dark" -->
     <string name="pref_light_theme">Jasny</string>
     <string name="pref_dark_theme">Ciemny</string>
@@ -490,6 +518,24 @@
     <string name="pref_background_default_color">Domyślny kolor</string>
     <string name="pref_background_custom_image">Własny obraz</string>
     <string name="pref_background_custom_color">Własny kolor</string>
+    <string name="export_aborted">Eksport przerwany.</string>
+    <string name="profile_image_select">Wybierz zdjęcie profilowe</string>
+    <string name="select_your_new_profile_image">Wybierz nowe zdjęcie profilowe</string>
+    <string name="profile_image_delete">Usuń zdjęcie profilowe</string>
+
+
+    <string name="emoji_not_found">Nie znaleziono emoji</string>
+    <string name="emoji_recent">Ostatnio używane</string>
+    <string name="emoji_people">Ludzie i Ciało</string>
+    <string name="emoji_nature">Zwierzęta i Natura</string>
+    <string name="emoji_foods">Jedzenie i Picie</string>
+    <string name="emoji_activity">Aktywność</string>
+    <string name="emoji_places">Podróże i Miejsca</string>
+    <string name="emoji_objects">Obiekty</string>
+    <string name="emoji_symbols">Symbole</string>
+    <string name="emoji_flags">Flagi</string>
+
+
     <!-- automatically delete message -->
     <string name="delete_old_messages">Usuń stare wiadomości</string>
     <!-- devs: autodel_title is deprecated, use delete_old_messages instead -->
@@ -498,8 +544,6 @@
     <string name="autodel_server_title">Usuwanie wiadomości z serwera</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">Czy chcesz teraz usunąć %1$d wiadomości i wszystkie nowo pobrane wiadomości w przyszłości „%2$s”?\n\n• Obejmuje to wszystkie multimedia\n\n• Wiadomości zostaną usunięte niezależnie od tego, czy były widoczne, czy nie\n\n• „Zapisane wiadomości” zostaną pominięte podczas lokalnego usuwania</string>
-    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
-    <string name="autodel_server_ask">Czy chcesz teraz usunąć %1$d wiadomości i wszystkie nowo pobrane wiadomości w przyszłości „%2$s”?\n\n• Obejmuje to wszystkie multimedia\n\n• Spowoduje to również usunięcie e-maili, na które ma wpływ opcja „Pokaż klasyczne e-maile”\n\n• „Zapisane wiadomości” zostaną pominięte podczas lokalnego usuwania</string>
     <string name="autodel_confirm">Rozumiem, usuń te wszystkie wiadomości</string>
     <string name="autodel_at_once">Od razu</string>
     <string name="after_30_seconds">Po 30 sekundach</string>
@@ -554,6 +598,9 @@
     <string name="systemmsg_ephemeral_timer_week">Ustawiono zegar znikających wiadomości na 1 tydzień.</string>
     <string name="systemmsg_ephemeral_timer_four_weeks">Ustawiono zegar znikających wiadomości na 4 tygodnie.</string>
 
+    <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
+    <string name="systemmsg_chat_protection_disabled">Ochrona czatu wyłączona.</string>
+    <string name="systemmsg_chat_protection_enabled">Ochrona czatu włączona.</string>
 
     <!-- screen lock -->
     <string name="screenlock_title">Blokada ekranu</string>
@@ -568,6 +615,7 @@
 
     <!-- qr code stuff -->
     <string name="qr_code">Kod QR</string>
+    <string name="load_qr_code_as_image">Załaduj kod QR jako obraz</string>
     <string name="qrscan_title">Skanuj kod QR</string>
     <string name="qrscan_hint">Umieść aparat nad kodem QR</string>
     <string name="qrscan_ask_join_group">Czy chcesz dołączyć do grupy „%1$s?</string>
@@ -582,15 +630,18 @@
     <string name="qrshow_x_verified">Zweryfikowano %1$s</string>
     <string name="qrshow_x_has_joined_group">Użytkownik %1$s dołączył do grupy. </string>
     <string name="qrshow_join_group_title">Kod QR zaproszenia</string>
-    <string name="qrshow_join_group_hint">Zeskanuj to, aby dołączyć do grupy „%1$s”.</string>
+    <string name="qrshow_join_group_hint">Zeskanuj go, aby dołączyć do grupy „%1$s”.</string>
     <string name="qrshow_join_contact_title">Kod QR zaproszenia</string>
-    <string name="qrshow_join_contact_hint">Zeskanuj to w celu skonfigurowania kontaktu z %1$s</string>
+    <string name="qrshow_join_contact_hint">Zeskanuj go w celu skonfigurowania kontaktu z %1$s</string>
     <string name="qrshow_join_contact_no_connection_hint">Konfiguracja kodu QR wymaga połączenia z Internetem. Przed kontynuowaniem połącz się z siecią.</string>
     <string name="qrshow_join_contact_no_connection_toast">Brak połączenia z Internetem, nie można przeprowadzić konfiguracji kodu QR.</string>
     <string name="contact_verified">Kontakt %1$s zweryfikowany.</string>
     <string name="contact_not_verified">Nie można zweryfikować %1$s</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Zmieniono konfigurację dla %1$s</string>
+    <string name="copy_qr_data_success">Skopiowano adres kodu QR do schowka</string>
+
+
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d nowe wiadomości w %2$d czatach</string>
     <string name="notify_mark_read">Oznacz jako przeczytane</string>
@@ -616,6 +667,8 @@
     <string name="encrypted_message">Zaszyfrowana wiadomość</string>
 
     <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
+    <string name="about_offical_app_desktop">To jest oficjalna aplikacja Delta Chat Desktop.</string>
+    <string name="about_licensed_under_desktop">To oprogramowanie jest objęte licencją GNU GPL w wersji 3, a kod źródłowy jest dostępny na GitHub.</string>
     <string name="welcome_desktop">Witaj w Delta Chat</string>
     <string name="login_known_accounts_title_desktop">Znane konta</string>
     <string name="global_menu_preferences_language_desktop">Wybierz język</string>
@@ -655,7 +708,7 @@
     <string name="autocrypt_key_transfer_desktop">Transfer klucza Autocrypt</string>
     <string name="initiate_key_transfer_desktop">Wiadomość konfiguracyjna automatycznego szyfrowania bezpiecznie udostępnia twoją konfigurację end-to-end innym aplikacjom zgodnym z Autocrypt. Klucz zostanie zaszyfrowany za pomocą wyświetlonego tutaj kodu konfiguracyjnego, który należy wpisać na drugim urządzeniu.</string>
     <string name="reply_to_message_desktop">Odpowiedz na wiadomość</string>
-    <string name="select_group_image_desktop">Wybierz zdjęcie grupy</string>
+    <string name="select_group_image_desktop">Wybierz obraz grupy</string>
     <string name="imex_progress_title_desktop">Postęp tworzenia kopii zapasowej </string>
     <string name="download_attachment_desktop">Pobierz załącznik</string>
     <string name="export_backup_desktop">Eksport kopii zapasowej</string>
@@ -670,6 +723,7 @@
     <string name="ask_delete_chat_desktop">Czy na pewno chcesz usunąć ten czat?</string>
     <string name="email_validation_failed_desktop">Wymagany adres e-mail.</string>
     <string name="forget_login_confirmation_desktop">Usunąć ten login? Wszystko zostanie usunięte, w tym kompletna konfiguracja, kontakty, czaty, wiadomości i multimedia. Ta akcja jest ostateczna i nie można jej odwrócić.</string>
+    <string name="account_info_hover_tooltip_desktop">E-mail: %1$s\nRozmiar: %2$s\nŚcieżka: %3$s</string>
     <string name="me_desktop">ja</string>
     <string name="in_this_group_desktop">Członkowie grupy</string>
     <string name="not_in_this_group_desktop">Potencjalni członkowie grupy (nie w grupie)</string>
@@ -681,7 +735,6 @@
     <string name="menu.view.developer.open.current.log.file">Otwórz bieżący plik dziennika</string>
     <string name="user_location_permission_explanation">Delta Chat wymaga uprawnienia lokalizacji, aby pokazać i udostępniać swoją lokalizację.</string>
 
-
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Status dostawy: Błąd</string>
     <string name="a11y_encryption_padlock">Kłódka szyfrowania</string>
@@ -691,6 +744,7 @@
     <string name="a11y_delivery_status_read">Status dostawy: Przeczytane</string>
     <string name="a11y_delivery_status_invalid">Nieprawidłowy status dostawy</string>
     <string name="a11y_background_preview_label">Podgląd tła</string>
+    <string name="a11y_disappearing_messages_activated">Aktywowano znikające wiadomości</string>
 
 
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
@@ -701,6 +755,10 @@
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat chce zapisać obrazy w twojej bibliotece zdjęć.</string>
 
 
+    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+    <string name="pref_background_notifications">Powiadomienia w tle</string>
+    <string name="pref_background_notifications_explain">Używa połączenia z serwerem w tle i wymaga ignorowania optymalizacji baterii.</string>
+    <string name="pref_background_notifications_rationale">Aby utrzymać połączenie z serwerem e-mail i odbierać wiadomości w tle, zignoruj optymalizacje baterii w następnym kroku.\n\nDelta Chat zużywa niewiele zasobów i dba o to, aby nie wyczerpać baterii.</string>
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="pref_reliable_service">Niezawodne połączenie w tle</string>
     <string name="pref_reliable_service_explain">Wymaga stałego powiadomienia</string>

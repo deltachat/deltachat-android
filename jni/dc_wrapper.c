@@ -256,12 +256,6 @@ JNIEXPORT void Java_com_b44t_messenger_DcContext_stopIo(JNIEnv *env, jobject obj
 }
 
 
-JNIEXPORT jboolean Java_com_b44t_messenger_DcContext_isIoRunning(JNIEnv *env, jobject obj)
-{
-    return dc_is_io_running(get_dc_context(env, obj)) != 0;
-}
-
-
 JNIEXPORT void Java_com_b44t_messenger_DcContext_maybeNetwork(JNIEnv *env, jobject obj)
 {
     dc_maybe_network(get_dc_context(env, obj));
@@ -560,12 +554,6 @@ JNIEXPORT jboolean Java_com_b44t_messenger_DcContext_wasDeviceMsgEverAdded(JNIEn
         jboolean ret = dc_was_device_msg_ever_added(get_dc_context(env, obj), labelPtr) != 0;
     CHAR_UNREF(label);
     return ret;
-}
-
-
-JNIEXPORT void Java_com_b44t_messenger_DcContext_updateDeviceChats(JNIEnv *env, jobject obj)
-{
-    dc_update_device_chats(get_dc_context(env, obj));
 }
 
 
@@ -1010,8 +998,7 @@ JNIEXPORT jint Java_com_b44t_messenger_DcChat_getId(JNIEnv *env, jobject obj)
 
 JNIEXPORT jboolean Java_com_b44t_messenger_DcChat_isGroup(JNIEnv *env, jobject obj)
 {
-    int chat_type = dc_chat_get_type(get_dc_chat(env, obj));
-    return (chat_type==DC_CHAT_TYPE_GROUP || chat_type==DC_CHAT_TYPE_VERIFIED_GROUP);
+    return dc_chat_get_type(get_dc_chat(env, obj)) == DC_CHAT_TYPE_GROUP;
 }
 
 
@@ -1075,9 +1062,9 @@ JNIEXPORT jboolean Java_com_b44t_messenger_DcChat_canSend(JNIEnv *env, jobject o
 }
 
 
-JNIEXPORT jboolean Java_com_b44t_messenger_DcChat_isVerified(JNIEnv *env, jobject obj)
+JNIEXPORT jboolean Java_com_b44t_messenger_DcChat_isProtected(JNIEnv *env, jobject obj)
 {
-    return dc_chat_is_verified(get_dc_chat(env, obj))!=0;
+    return dc_chat_is_protected(get_dc_chat(env, obj))!=0;
 }
 
 
@@ -1444,6 +1431,16 @@ JNIEXPORT jboolean Java_com_b44t_messenger_DcMsg_isMailingList(JNIEnv *env, jobj
 {
     return dc_msg_is_mailing_list(get_dc_msg(env, obj))!=0;
 }
+
+
+JNIEXPORT jstring Java_com_b44t_messenger_DcMsg_getError(JNIEnv *env, jobject obj)
+{
+    char* temp = dc_msg_get_error(get_dc_msg(env, obj));
+        jstring ret = JSTRING_NEW(temp);
+    dc_str_unref(temp);
+    return ret;
+}
+
 
 
 /*******************************************************************************

@@ -165,6 +165,9 @@ public class ApplicationDcContext extends DcContext {
     setStockTranslation(82, context.getString(R.string.videochat_invitation));
     setStockTranslation(83, context.getString(R.string.videochat_invitation_body));
     setStockTranslation(84, context.getString(R.string.configuration_failed_with_error));
+    setStockTranslation(88, context.getString(R.string.systemmsg_chat_protection_enabled));
+    setStockTranslation(89, context.getString(R.string.systemmsg_chat_protection_disabled));
+    setStockTranslation(90, context.getString(R.string.reply_noun));
   }
 
   public File getImexDir() {
@@ -324,11 +327,10 @@ public class ApplicationDcContext extends DcContext {
     Recipient recipient = getRecipient(chat);
     long date = summary.getTimestamp();
     int unreadCount = getFreshMsgCount(chatId);
-    boolean verified = chat.isVerified();
 
     return new ThreadRecord(body, recipient, date,
         unreadCount, chatId,
-        chat.getVisibility(), verified, chat.isSendingLocations(), chat.isMuted(), summary);
+        chat.getVisibility(), chat.isProtected(), chat.isSendingLocations(), chat.isMuted(), summary);
   }
 
   /***********************************************************************************************
@@ -445,6 +447,13 @@ public class ApplicationDcContext extends DcContext {
 
       case DC_EVENT_INCOMING_MSG:
         notificationCenter.addNotification(event.getData1Int(), event.getData2Int());
+        if (eventCenter != null) {
+          eventCenter.sendToObservers(event);
+        }
+        break;
+
+      case DC_EVENT_MSGS_NOTICED:
+        notificationCenter.removeNotifications(event.getData1Int());
         if (eventCenter != null) {
           eventCenter.sendToObservers(event);
         }

@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item android:title="@string/menu_resend"
-          android:id="@+id/menu_context_resend"
-          android:visible="false"
-          app:showAsAction="never" />
-
     <item android:title="@string/menu_reply"
           android:id="@+id/menu_context_reply"
           android:icon="?menu_reply_icon"
@@ -15,15 +10,15 @@
           android:icon="?menu_info_icon"
           app:showAsAction="always" />
 
-    <item android:title="@string/menu_export_attachment"
-          android:id="@+id/menu_context_save_attachment"
-          android:visible="false"
-          android:icon="?menu_save_icon"
-          app:showAsAction="always" />
-
     <item android:title="@string/menu_delete_messages"
         android:id="@+id/menu_context_delete_message"
         android:icon="?menu_trash_icon"
+        app:showAsAction="always" />
+
+    <item android:title="@string/menu_export_attachment"
+        android:id="@+id/menu_context_save_attachment"
+        android:visible="false"
+        android:icon="?menu_save_icon"
         app:showAsAction="always" />
 
     <item android:title="@string/menu_copy_to_clipboard"
@@ -38,5 +33,5 @@
 
     <item android:title="@string/reply_privately"
         android:id="@+id/menu_context_reply_privately"
-        app:showAsAction="collapseActionView" />
+        app:showAsAction="never" />
 </menu>
