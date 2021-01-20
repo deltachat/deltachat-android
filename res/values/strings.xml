@@ -267,7 +267,6 @@
     <string name="ask_delete_contact">Delete contact %1$s?\n\nContacts with ongoing chats and contacts from the system\'s address book cannot be deleted permanently.</string>
     <string name="cannot_delete_contacts_in_use">Cannot delete contacts with ongoing chats.</string>
     <string name="ask_start_chat_with">Chat with %1$s?</string>
-    <string name="ask_show_mailing_list">Show mailing list with %1$s in Delta Chat?</string>
     <string name="ask_delete_value">Delete %s?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Remove %1$s from group?</string>
@@ -760,6 +759,12 @@
     <string name="a11y_message_context_menu_btn_label">Message actions</string>
     <string name="a11y_background_preview_label">Background preview</string>
     <string name="a11y_disappearing_messages_activated">Disappearing messages activated</string>
+
+
+    <!-- mailing lists -->
+    <string name="mailing_list">Mailing list</string>
+    <string name="ask_show_mailing_list">Show mailing list with %1$s in Delta Chat?</string>
+    <string name="unnamed_newsletter">Unnamed newsletter</string>
 
 
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->

@@ -3,13 +3,11 @@ package org.thoughtcrime.securesms.connect;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
-import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.util.Log;
 import android.webkit.MimeTypeMap;
@@ -39,7 +37,6 @@ import org.thoughtcrime.securesms.util.Util;
 import java.io.File;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Set;
 
 public class ApplicationDcContext extends DcContext {
 
@@ -168,6 +165,9 @@ public class ApplicationDcContext extends DcContext {
     setStockTranslation(88, context.getString(R.string.systemmsg_chat_protection_enabled));
     setStockTranslation(89, context.getString(R.string.systemmsg_chat_protection_disabled));
     setStockTranslation(90, context.getString(R.string.reply_noun));
+
+    
+    setStockTranslation(93, context.getString(R.string.unnamed_newsletter));
   }
 
   public File getImexDir() {
