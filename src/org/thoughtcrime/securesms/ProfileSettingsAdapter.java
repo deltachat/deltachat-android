@@ -51,6 +51,7 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
   private int                                 itemDataMemberCount;
   private DcChatlist                          itemDataSharedChats;
   private DcContact                           itemDataContact;
+  private boolean                             isMailingList;
   private final Set<Integer>                  selectedMembers;
 
   private final LayoutInflater                layoutInflater;
@@ -215,7 +216,11 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
     String txt = "";
     switch(getItemViewType(position)) {
       case ItemData.TYPE_MEMBER:
-        txt = context.getResources().getQuantityString(R.plurals.n_members, (int) itemDataMemberCount, (int) itemDataMemberCount);
+        if (isMailingList) {
+          txt = context.getString(R.string.contacts_headline);
+        } else {
+          txt = context.getResources().getQuantityString(R.plurals.n_members, (int) itemDataMemberCount, (int) itemDataMemberCount);
+        }
         break;
       case ItemData.TYPE_SHARED_CHAT:
         txt = context.getString(R.string.profile_shared_chats);
@@ -261,10 +266,13 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
     itemDataMemberCount = 0;
     itemDataSharedChats = null;
     itemDataContact = null;
+    isMailingList = false;
 
     if (memberList!=null) {
       itemDataMemberCount = memberList.length;
-      if (!dcChat.isMailingList()) {
+      if (dcChat.isMailingList()) {
+        isMailingList = true;
+      } else {
         itemData.add(new ItemData(ItemData.TYPE_MEMBER, DcContact.DC_CONTACT_ID_ADD_MEMBER, 0));
         itemData.add(new ItemData(ItemData.TYPE_MEMBER, DcContact.DC_CONTACT_ID_QR_INVITE, 0));
       }
