@@ -36,7 +36,7 @@ jobs:
           ANDROID_NDK_ROOT: ${{ steps.setup-ndk.outputs.ndk-path }}
         run: |
           export PATH="${PATH}:${ANDROID_NDK_ROOT}/toolchains/llvm/prebuilt/linux-x86_64/bin/:${ANDROID_NDK_ROOT}"
-          ./scripts/install-toolchains.sh && ./ndk-make.sh armeabi-v7a
+          ./scripts/install-toolchains.sh && ./ndk-make.sh
 
       - name: Build APK
         run: ./gradlew --no-daemon assembleGplayDebug
