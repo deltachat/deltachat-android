@@ -27,7 +27,10 @@ jobs:
       - name: Compile core
         env:
           ANDROID_NDK_ROOT: ${{ steps.setup-ndk.outputs.ndk-path }}
-        run: ./scripts/install-toolchains.sh && ./ndk-make.sh
+        run: |
+          export PATH="${PATH}:${ANDROID_NDK_ROOT}/toolchains/llvm/prebuilt/linux-x86_64/bin/:${ANDROID_NDK_ROOT}"
+          echo $PATH
+          ./scripts/install-toolchains.sh && ./ndk-make.sh
 
       - name: Build APK
         run: ./gradlew --no-daemon assembleGplay
