@@ -34,7 +34,7 @@ jobs:
           ./scripts/install-toolchains.sh && ./ndk-make.sh
 
       - name: Build APK
-        run: ./gradlew --no-daemon assembleGplay
+        run: ./gradlew --no-daemon assembleGplayRelease
 
       - name: Sign APK
         uses: r0adkll/sign-android-release@v1
