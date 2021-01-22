@@ -176,6 +176,8 @@
     <string name="menu_unmute">Dar voz</string>
     <string name="menu_export_attachment">Exportar anexo</string>
     <string name="menu_all_media">Todos os medios</string>
+    <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
+    <string name="show_in_chat">Mostrar na conversa</string>
     <string name="menu_share">Compartir</string>
     <string name="menu_block_contact">Bloquear contacto</string>
     <string name="menu_unblock_contact">Desbloquear contacto</string>
@@ -320,7 +322,7 @@
     <string name="messaging_disabled_device_chat">A conversa contén mensaxes creados localmente. Polo tanto non podes escribir ningunha mensaxe.</string>
     <string name="messaging_disabled_deaddrop">Preme nunha mensaxe para aceptar ou denegar a solicitude de contacto</string>
     <string name="cannot_display_unsuported_file_type">Non se pode motrar este tipo de ficheiro: %s</string>
-    <string name="attachment_failed_to_load">Erro ó cargar o anexo</string>
+    <string name="attachment_failed_to_load">Erro ao cargar o anexo</string>
 
 
     <!-- map -->
@@ -423,6 +425,7 @@
     <string name="pref_profile_info_headline">Info do teu perfil</string>
     <string name="pref_profile_photo">Imaxe de perfil</string>
     <string name="pref_blocked_contacts">Contactos bloqueados</string>
+    <string name="blocked_empty_hint">Móstranse aquí os contactos que bloqueas.</string>
     <string name="pref_profile_photo_remove_ask">Eliminar foto de perfil?</string>
     <string name="pref_password_and_account_settings">Contrasinal e conta</string>
     <string name="pref_who_can_see_profile_explain">A túa foto de perfil e nome móstranse xunto coas túas mensaxes ao comunicarte con outras persoas. A información xa enviada non se pode agochar o borrar.</string>
@@ -540,6 +543,10 @@
     <string name="autodel_server_title">Borrar mensaxes do servidor</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">Queres borrar %1$d mensaxes agora e todas as novas mensaxes \"%2$s\" no futuro?\n\n• Esto inclúe todo o multimedia\n\n• As mensaxes borraranse fosen lidas ou non\n\n• As \"mensaxes gardadas\" non será borradas do dispositivo.</string>
+    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
+    <string name="autodel_server_ask">Desexas eliminar %1$d mensaxes e todas as \"%2$s\" novas mensaxes obtidas no futuro?\n\n⚠️ Esto inclúe emails, multimedia e \"Mensaxes gardadas\" en tódolos cartafoles do servidor\n\n⚠️ Non uses esta función se queres manter os datos gardados no servidor\n\n⚠️ Non uses esta función se estás a utilizar outro cliente de email ademáis de Delta Chat</string>
+    <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
+    <string name="autodel_server_enabled_hint">Esto inclúe emails, multimedia e \"Mensaxes gardadas\" en tódolos cartafoles do servidor. Non uses esta función se queres manter os datos gardados no servidor ou se estás a utilizar outro cliente de email ademáis de Delta Chat.</string>
     <string name="autodel_confirm">Entendo, dalle e borra as mensaxes todas</string>
     <string name="autodel_at_once">dunha vez</string>
     <string name="after_30_seconds">Após 30 segundos</string>
@@ -642,7 +649,7 @@
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Cambiaron os axustes para %1$s.</string>
     <string name="verified_group_explain">Os grupos verificados (experimental) proporcionan seguridade contra ataques activos. As integrantes son verificadas cun segundo factor por outros membros e as mensaxes van sempre cifradas E2E.</string>
-    <string name="copy_qr_data_success">Copiado o url do QR ó portapapeis</string>
+    <string name="copy_qr_data_success">Copiado o url do QR ao portapapeis</string>
 
 
     <!-- notifications  -->
@@ -771,4 +778,6 @@
     <string name="pref_reliable_service_explain">Require unha notificación permanente</string>
     <string name="perm_enable_bg_reminder_title">Toca aquí para recibir mensaxes mentras Delta Chat está en segundo plano.</string>
     <string name="perm_enable_bg_already_done">Xa permitiches que Delta Chat reciba mensaxes en segundo plano\n\nSe aínda así non recibes as mensaxes, por favor comproba os axustes do sistema.</string>
-    </resources>
+    <string name="update_1_14_android">Destacados da actualización 1.14:\n\n🧹 Despraza para responder: para responder a unha mensaxe concreta, despraza hacia á dereita (non aquí! non podes responder aquí 😛) Verás a cita na parte superior da caixa de texto e poderás escribir como sempre.\n\n🔥 Mensaxes efémeras - chegou a hora 😀. Calquera conversa pódese configurar para eliminar as mensaxes enviadas e recibidas após un tempo. Elixe \"Mensaxes efémeras\" desde o menú da conversa (non aquí!)\n\n👆 Abrir conversa na primeira mensaxe non lida\n\n💾 Enviar cousas a \"Mensaxes gardadas\" directamente e máis rápido (esto pódelo probar aquí: mantén presa esta mensaxe e despois toca a flecha arriba-a-dereita)\n\n🎃 Para rematar, arranxamos moitos fallos! Moitos eran arrepiantes, non volverán.</string>
+
+</resources>

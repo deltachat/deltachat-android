@@ -10,6 +10,8 @@
     <string name="on">Allutu</string>
     <string name="off">Istudadu</string>
     <string name="def">Predefinidu</string>
+    <string name="default_value">Predefinidu (%1$s)</string>
+    <string name="default_value_as_above">Predefinidu (comente in subra)</string>
     <string name="custom">Personalizadu</string>
     <string name="none">Perunu</string>
     <string name="automatic">Automàticu</string>
@@ -33,6 +35,7 @@
     <string name="save">Sarva</string>
     <string name="chat">Tzarrada</string>
     <string name="media">Cuntenutu multimediale</string>
+    <string name="profile">Profilu</string>
     <string name="main_menu">Menù printzipale</string>
     <string name="start_chat">Faghe incumintzare una tzarrada</string>
     <string name="show_password">Ammustra sa crae de intrada</string>
@@ -42,6 +45,7 @@
     <string name="one_moment">Unu momentu...</string>
     <string name="done">Fatu</string>
     <string name="undo">Annulla</string>
+    <string name="offline">Non in lìnia</string>
     <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
     <string name="next">Sighi</string>
     <string name="error">Faddina</string>
@@ -95,6 +99,8 @@
     <string name="self">Deo</string>
     <string name="draft">Abbotzu</string>
     <string name="image">Immàgine</string>
+    <!-- Translators: Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
+    <string name="reply_noun">Risponde</string>
     <string name="gif">Gif</string>
     <string name="images">Immàgines</string>
     <string name="audio">Àudio</string>
@@ -121,6 +127,8 @@
     <string name="magenta">Magenta</string>
     <string name="white">Biancu</string>
 
+    <string name="zoom">Ismànnia</string>
+    <string name="extra_small">Minore meda</string>
     <string name="small">Minore</string>
     <string name="normal">Normale</string>
     <string name="large">Largu</string>
@@ -149,6 +157,7 @@
     <string name="menu_add_attachment">Annanghe un\'allegadu</string>
     <string name="menu_leave_group">Lassa su grupu</string>
     <string name="menu_delete_chat">Iscantzella sa tzarrada</string>
+    <string name="ask_delete_named_chat">Ses seguru de chèrrere iscantzellare \"%1$s\"?</string>
     <string name="menu_delete_messages">Iscantzella sos messàgios</string>
     <string name="menu_delete_image">Iscantzella s\'immàgine</string>
     <string name="menu_delete_locations">Iscantzellare totu sas positziones?</string>
@@ -246,6 +255,9 @@
     <string name="ask_start_chat_with">Cheres tzarrare cun %1$s?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Cheres bogare %1$sdae su grupu?</string>
+    <string name="open_url_confirmation">Cheres abèrrere custu ligàmene?</string>
+
+
     <!-- contact list -->
     <string name="contacts_title">Cuntatos</string>
     <string name="contacts_enter_name_or_email">Inserta su nùmene o s\'indiritzu de posta eletrònica</string>
@@ -284,10 +296,17 @@
     <string name="chat_self_talk_subtitle">Messàgios chi m\'apo imbiadu a sa sola</string>
     <string name="saved_messages">Messàgios sarvados</string>
     <string name="saved_messages_explain">• Inoltra sos messàgios inoghe pro bi pòdere atzèdere in manera lestra\n\n• Sarva notas iscritas o sonoras\n\n• Allega mèdios pro los sarvare</string>
+    <!-- this "Saved" should match the "Saved" from "Saved messages" -->
+    <string name="saved">Sarvadu</string>
     <string name="chat_contact_request">Rechesta de cuntatu</string>
     <string name="chat_no_contact_requests">Peruna rechesta de cuntatu.\n\nSi cheres chi sas lìteras eletrònicas clàssicas apàrgiant inoghe comente rechestas de cuntatu, podes mudare s\'impostatzione chi li pertocat in sas impostatziones de s\'aplicatzione.</string>
     <string name="retry_send">Torra a proare a imbiare su messàgiu</string>
     <string name="send_failed">Imbiu de su messàgiu fallidu</string>
+    <!-- reasons for a disabled message composer -->
+    <string name="messaging_disabled_not_in_group">Non podes iscrìere ca non ses in custu grupu. Pro b\'intrare pedi a un\'àteru membru.</string>
+    <string name="messaging_disabled_device_chat">Custa tzarrada cuntenet messàgios ingendrados localmente. Duncas non podet iscrìere messàgiu perunu.</string>
+    <string name="messaging_disabled_deaddrop">Incarca in unu messàgiu pro atzetare o negare sa rechesta de cuntatu.</string>
+    <string name="cannot_display_unsuported_file_type">Impossìbile ammustrare custa casta de documentu: %s</string>
     <!-- map -->
     <string name="filter_map_on_time">Ammustra sas positziones in su tempus</string>
     <string name="show_location_traces">Ammustra sas rastas</string>
@@ -303,6 +322,8 @@
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">Nùmene de su grupu</string>
     <string name="group_avatar">Avatar de su grupu</string>
+    <string name="remove_group_image">Boga s\'immàgine de su grupu</string>
+    <string name="change_group_image">Càmbia s\'immàgine de su grupu</string>
     <string name="group_create_button">Crea unu grupu</string>
     <string name="group_please_enter_group_name">Inserta unu nùmene pro su grupu.</string>
     <string name="group_add_members">Annanghe mambros</string>
@@ -366,6 +387,7 @@
     <string name="delete_account">Iscantzella su contu</string>
     <string name="delete_account_ask">Ses seguru de chèrrere iscantzellare sos datos de su contu tuo?</string>
     <string name="switching_account">Cambiende contu…</string>
+    <string name="try_connect_now">Proa a ti collegare como</string>
     <!-- Translations: %1$s will be replaced by a more detailed error message -->
     <string name="configuration_failed_with_error">Configuratzione fallida. Errore: %1$s</string>
 
@@ -384,6 +406,7 @@
     <string name="pref_profile_info_headline">Sas informatziones de profilu tuas</string>
     <string name="pref_profile_photo">Fotografia de profilu</string>
     <string name="pref_blocked_contacts">Cuntatos blocados</string>
+    <string name="blocked_empty_hint">Si as a blocare cuntatos ant a èssere allistados inoghe.</string>
     <string name="pref_profile_photo_remove_ask">Bogare sa fotografia de profilu?</string>
     <string name="pref_password_and_account_settings">Crae de intrada e contu</string>
     <string name="pref_who_can_see_profile_explain">S\'immàgine de profilu tua e su nùmene tuo ant a èssere ammustrados in paris cun sos messàgios tuos cando ses comunichende cun àteros impreadores. Sas informatziones giai imbiadas non podent èssere iscantzelladas o bogadas.</string>
@@ -407,11 +430,14 @@
     <string name="pref_notifications">Notìficas</string>
     <string name="pref_notifications_show">Ammustra</string>
     <string name="pref_notifications_priority">Prioridade</string>
+    <string name="pref_notifications_explain">Abìlita sas notìficas de sistema pro sos messàgios noos</string>
+    <string name="pref_show_notification_content">Ammustra su cuntenutu de su messàgiu in sa notìfica</string>
     <string name="pref_led_color">Colore LED</string>
     <string name="pref_sound">Sonu</string>
     <string name="pref_silent">Istuda su sonu</string>
     <string name="pref_privacy">Riservadesa</string>
     <string name="pref_chats_and_media">Tzarradas e mèdios</string>
+    <string name="pref_system_default">Predefinidu de sistema</string>
     <!-- Translators: "light" in the meaning "opposite of dark" -->
     <string name="pref_light_theme">Craru</string>
     <string name="pref_dark_theme">Iscuru</string>
@@ -470,6 +496,14 @@
     <string name="pref_background_custom_image">Immàgine personalizada</string>
     <string name="pref_background_custom_color">Colore personalizadu</string>
     <string name="export_aborted">Esportatzione annullada.</string>
+    <string name="profile_image_select">Ischerta s\'immàgine de profilu</string>
+    <string name="select_your_new_profile_image">Ischerta s\'immàgine de profilu noa tua</string>
+    <string name="profile_image_delete">Iscantzella s\'immàgine de profilu</string>
+
+
+    <!-- Emoji picker and categories -->
+    <string name="emoji_search_results">Resurtados de sa chirca</string>
+    <string name="emoji_not_found">Peruna emoji agatada</string>
     <!-- automatically delete message -->
     <string name="delete_old_messages">Iscantzella sos messàgios betzos</string>
     <!-- devs: autodel_title is deprecated, use delete_old_messages instead -->
