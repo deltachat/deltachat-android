@@ -4,11 +4,11 @@ on:
     tags:
     - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
 
-name: Upload Release Asset
+name: Upload Release APK
 
 jobs:
   build:
-    name: Upload Release Asset
+    name: Upload Release APK
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -51,12 +51,12 @@ jobs:
           prerelease: false
 
       - name: Upload Release Asset
-        id: upload-release-asset 
+        id: upload-release-asset
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ${{steps.sign_app.outputs.signedReleaseFile}}
-          asset_name: app.apk
+          asset_name: deltalab-${{ github.ref }}.apk
           asset_content_type: application/zip
