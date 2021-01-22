@@ -169,6 +169,8 @@
     <string name="menu_unmute">Aktifkan notifikasi</string>
     <string name="menu_export_attachment">Ekspor lampiran</string>
     <string name="menu_all_media">Semua media</string>
+    <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
+    <string name="show_in_chat">Tunjukkan dalam chat</string>
     <string name="menu_share">Bagikan</string>
     <string name="menu_block_contact">Blokir kontak</string>
     <string name="menu_unblock_contact">Buka blokir kontak</string>
@@ -218,12 +220,16 @@
     <string name="share_location_for_two_hours">untuk 2 jam</string>
     <string name="share_location_for_six_hours">untuk 6 jam</string>
 
+    <plurals name="ask_send_following_n_files_to">
+        <item quantity="other">Kirimkan yang berikut ini %d berkas ke %s?</item>
+    </plurals>
     <string name="file_saved_to">Berkas disimpan ke \"%1$s\".</string>
 
     <string name="videochat">Obrolan video</string>
     <string name="videochat_invite_user_to_videochat">Undang %1$s ke obrolan video?</string>
     <string name="videochat_contact_invited_hint">%1$s diundang ke obrolan video.</string>
     <string name="videochat_you_invited_hint">Anda diundang ke obrolan video.</string>
+    <string name="videochat_will_open_in_your_browser">Video chat ini akan terbuka di browser Anda.</string>
     <string name="videochat_tap_to_join">Ketuk untuk bergabung</string>
     <string name="videochat_tap_to_open">Ketuk untuk membuka</string>
     <string name="videochat_invitation">Undangan obrolan video</string>
@@ -471,6 +477,7 @@
     <string name="profile_image_delete">Hapus gambar profil</string>
 
 
+    <string name="emoji_not_found">Emoji tidak ditemukan</string>
     <string name="emoji_recent">Terakhir digunakan</string>
     <string name="emoji_nature">Hewan &amp; Alam</string>
     <string name="emoji_foods">Makanan &amp; Minuman</string>
@@ -511,6 +518,8 @@
     <string name="autocrypt_bad_setup_code">Kode pengaturan jelek. Ayo cakepan lagi.\n\nKalau Anda lupa kode pengaturan, kirim lagi Autocrypt Setup Message dari perangkat lainnya.</string>
 
 
+    <!-- system messages -->
+    <string name="systemmsg_group_name_changed">Nama grup diganti dari \"%1$s\" ke \"%2$s\".</string>
     <string name="systemmsg_group_image_changed">Gambar grup telah diubah.</string>
     <string name="systemmsg_group_image_deleted">Gambar grup telah dihapus.</string>
     <string name="systemmsg_member_added">Member %1$s telah ditambahkan.</string>
@@ -584,6 +593,9 @@
     <string name="perm_explain_access_to_storage_denied">Untuk menerima atau mengirim berkas, pergi ke pengaturan aplikasi, pilih \"Perizinan\", dan fungsikan \"Penyimpanan\".</string>
     <string name="perm_explain_access_to_location_denied">Untuk melampirkan lokasi, lihat pengaturan aplikasi, pilih \"Perizinan\", dan aktifkan \"Lokasi\".</string>
 
+    <!-- ImageEditorHud -->
+    <string name="ImageEditorHud_draw_anywhere_to_blur">Gambar di mana saja untuk diburamkan</string>
+
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Pesan terenkripsi</string>
 
@@ -628,6 +640,7 @@
     <string name="autocrypt_key_transfer_desktop">Transfer kunci Autocrypt</string>
     <string name="initiate_key_transfer_desktop">Pengaturan Pesan Autocrypt secara aman membagikan pengaturan ujung ke ujung Anda dengan aplikasi lain yang sesuai dengan Autocrypt. Pengaturan akan dienkripsi dengan kode pengaturan yang ditampilkan di sini dan harus diketik di perangkat lain.</string>
     <string name="reply_to_message_desktop">Balas pesan</string>
+    <string name="select_group_image_desktop">Pilih gambar grup</string>
     <string name="download_attachment_desktop">Unduh lampiran</string>
     <string name="show_key_transfer_message_desktop">Kunci Anda sudah dikirim ke Anda sendiri. Lihat pesan pengaturan di perangkat yang lain. Seharusnya Anda akan diminta kode pengaturan. Masukkan angka berikut:</string>
     <string name="new_message_from_desktop">Pesan baru dari</string>
