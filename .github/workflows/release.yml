@@ -2,8 +2,7 @@ name: Upload Release APK
 
 on:
   create:
-    ref_type: tag
-    ref: 'v*'
+    ref: 'release/*'
 
 jobs:
   build:
@@ -14,6 +13,9 @@ jobs:
       - uses: textbook/git-checkout-submodule-action@master
       - run: cp jni/deltachat-core-rust/rust-toolchain .
       - uses: actions-rs/toolchain@v1
+      - uses: Swatinem/rust-cache@v1
+        with:
+          working-directory: jni/deltachat-core-rust
       - uses: actions/setup-java@v1.4.3
         with:
           java-version: 11
@@ -23,14 +25,6 @@ jobs:
         with:
           ndk-version: r21d
 
-      - uses: actions/cache@v2
-        with:
-          path: |
-            ~/.cargo/registry
-            ~/.cargo/git
-            jni/deltachat-core-rust/target
-          key: ${{ runner.os }}-cargo-${{ hashFiles('jni/deltachat-core-rust/Cargo.lock') }}
-
       - name: Compile core
         env:
           ANDROID_NDK_ROOT: ${{ steps.setup-ndk.outputs.ndk-path }}
@@ -39,7 +33,7 @@ jobs:
           ./scripts/install-toolchains.sh && ./ndk-make.sh
 
       - name: Build APK
-        run: ./gradlew --no-daemon assembleGplay
+        run: ./gradlew --no-daemon assembleGplayRelease
 
       - name: Sign APK
         uses: r0adkll/sign-android-release@v1
