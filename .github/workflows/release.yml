@@ -23,6 +23,14 @@ jobs:
         with:
           ndk-version: r21d
 
+      - uses: actions/cache@v2
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            target
+          key: ${{ runner.os }}-cargo-${{ hashFiles('jni/deltachat-core-rust/Cargo.lock') }}
+
       - name: Compile core
         env:
           ANDROID_NDK_ROOT: ${{ steps.setup-ndk.outputs.ndk-path }}
