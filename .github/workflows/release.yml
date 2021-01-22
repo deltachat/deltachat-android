@@ -14,6 +14,9 @@ jobs:
       - uses: textbook/git-checkout-submodule-action@master
       - run: cp jni/deltachat-core-rust/rust-toolchain .
       - uses: actions-rs/toolchain@v1
+      - uses: Swatinem/rust-cache@v1
+        with:
+          working-directory: jni/deltachat-core-rust
       - uses: actions/setup-java@v1.4.3
         with:
           java-version: 11
@@ -22,14 +25,6 @@ jobs:
         id: setup-ndk
         with:
           ndk-version: r21d
-
-      - uses: actions/cache@v2
-        with:
-          path: |
-            ~/.cargo/registry
-            ~/.cargo/git
-            jni/deltachat-core-rust/target
-          key: ${{ runner.os }}-cargo-${{ hashFiles('jni/deltachat-core-rust/Cargo.lock') }}
 
       - name: Compile core
         env:
