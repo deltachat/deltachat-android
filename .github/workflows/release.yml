@@ -1,10 +1,10 @@
+name: Upload Release APK
+
 on:
   push:
     # Sequence of patterns matched against refs/tags
     tags: 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
     branches: master
-
-name: Upload Release APK
 
 jobs:
   build:
@@ -22,7 +22,7 @@ jobs:
           ndk-version: r21d
       - uses: android-actions/setup-android@v2
 
-      - Name: Compile core
+      - name: Compile core
         run: ./scripts/install-toolchains.sh && ./ndk-make.sh
 
       - name: Build APK
