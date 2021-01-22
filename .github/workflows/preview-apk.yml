@@ -1,0 +1,48 @@
+name: Upload Preview APK
+
+on: pull_request
+
+jobs:
+  build:
+    name: Upload Preview APK
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: textbook/git-checkout-submodule-action@master
+      - run: cp jni/deltachat-core-rust/rust-toolchain .
+      - uses: actions-rs/toolchain@v1
+      - uses: Swatinem/rust-cache@v1
+        with:
+          working-directory: jni/deltachat-core-rust
+      - uses: actions/setup-java@v1.4.3
+        with:
+          java-version: 11
+      - uses: android-actions/setup-android@v2
+      - uses: actions/cache@v2
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+      - uses: nttld/setup-ndk@v1
+        id: setup-ndk
+        with:
+          ndk-version: r21d
+
+      - name: Compile core
+        env:
+          ANDROID_NDK_ROOT: ${{ steps.setup-ndk.outputs.ndk-path }}
+        run: |
+          export PATH="${PATH}:${ANDROID_NDK_ROOT}/toolchains/llvm/prebuilt/linux-x86_64/bin/:${ANDROID_NDK_ROOT}"
+          ./scripts/install-toolchains.sh && ./ndk-make.sh armeabi-v7a
+
+      - name: Build APK
+        run: ./gradlew --no-daemon assembleGplayDebug
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v2
+        with:
+          name: app.apk
+          path: 'build/outputs/apk/gplay/debug/*.apk'
