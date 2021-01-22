@@ -13,6 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: textbook/git-checkout-submodule-action@master
+      - run: cp jni/deltachat-core-rust/rust-toolchain .
       - uses: actions-rs/toolchain@v1
       - uses: actions/setup-java@v1.4.3
         with:
