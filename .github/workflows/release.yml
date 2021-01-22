@@ -28,7 +28,7 @@ jobs:
           path: |
             ~/.cargo/registry
             ~/.cargo/git
-            target
+            jni/deltachat-core-rust/target
           key: ${{ runner.os }}-cargo-${{ hashFiles('jni/deltachat-core-rust/Cargo.lock') }}
 
       - name: Compile core
