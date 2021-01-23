@@ -2,7 +2,7 @@ name: Upload Release APK
 
 on:
   create:
-    ref: 'release/*'
+    ref: 'releases/*'
 
 jobs:
   build:
@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/*/}" >> $GITHUB_ENV
       - uses: textbook/git-checkout-submodule-action@master
       - run: cp jni/deltachat-core-rust/rust-toolchain .
       - uses: actions-rs/toolchain@v1
@@ -53,7 +54,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
+          release_name: ${{ env.RELEASE_VERSION }}
           draft: false
           prerelease: false
 
@@ -65,5 +66,5 @@ jobs:
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ${{steps.sign_app.outputs.signedReleaseFile}}
-          asset_name: deltalab-${{ github.ref }}.apk
+          asset_name: ${{ env.RELEASE_VERSION }}.apk
           asset_content_type: application/zip
