@@ -50,7 +50,6 @@ public class DcContact {
     public native int     getId          ();
     public native String  getName        ();
     public native String  getDisplayName ();
-    public native String  getFirstName   ();
     public native String  getAddr        ();
     public native String  getNameNAddr   ();
     public native String  getProfileImage();
