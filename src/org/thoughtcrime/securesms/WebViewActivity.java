@@ -41,6 +41,7 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
 
     webView = findViewById(R.id.webview);
     webView.setWebViewClient(new WebViewClient() {
+      @Override
       public boolean shouldOverrideUrlLoading(WebView view, String url) {
         if (url != null) {
           if (url.startsWith("http://") || url.startsWith("https://") || url.startsWith("mailto:")) {

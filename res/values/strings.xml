@@ -40,6 +40,11 @@
     <string name="main_menu">Main menu</string>
     <string name="start_chat">Start chat</string>
     <string name="show_full_message">Show full message…</string>
+    <string name="load_remote_content">Load remote content</string>
+    <!-- possible answers to the question are: Never, Always, Once -->
+    <string name="load_remote_content_ask">Loading remote content (eg. images) may be used by the sender to track you.\n\nNote, that even if loading remote content is disabled, you may see embedded or cached images.\n\nLoad remote content?</string>
+    <string name="always">Always</string>
+    <string name="once">Once</string>
     <string name="show_password">Show password</string>
     <string name="hide_password">Hide password</string>
     <string name="not_now">Not now</string>
