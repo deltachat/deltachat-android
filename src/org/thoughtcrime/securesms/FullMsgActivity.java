@@ -71,20 +71,20 @@ public class FullMsgActivity extends WebViewActivity
 
         // we are using the buttons "[Always]  [Never][Once]" in that order.
         // 1. Checkmarks before [Always] and [Never] show the current state.
-        // 2. [Once] is hidden in [Always] mode, content is already loaded anyway),
-        //    however, more important, this avoids the question
-        //    if [Always] mode should be ended by tapping [Once] (it should, but that may be unexpected)
-        // Maybe a usual Checkbox and "[Cancel][OK]" buttons are an alternative, however, a [Once]
+        // 2. [Once] is also shown in always-mode and disables always-mode if selected
+        //    (there was the idea to hide [Once] in always mode, but that looks more like a bug in the end)
+        // (maybe a usual Always-Checkbox and "[Cancel][OK]" buttons are an alternative, however, a [Once]
         // would be required as well - probably as the leftmost button which is not that usable in
-        // not-always-mode where the dialog is used more often.
+        // not-always-mode where the dialog is used more often. Or [Ok] would mean "Once" as well as "Change checkbox setting",
+        // which is also a bit weird. Anyway, let's give the three buttons a try :)
         if (Prefs.getAlwaysLoadRemoteContent(this)) {
           builder.setNeutralButton("✔️ " + this.getString(R.string.always), (dialog, which) -> onChangeLoadRemoteContent(LoadRemoteContent.ALWAYS));
           builder.setNegativeButton(R.string.never, (dialog, which) -> onChangeLoadRemoteContent(LoadRemoteContent.NEVER));
         } else {
           builder.setNeutralButton(R.string.always, (dialog, which) -> onChangeLoadRemoteContent(LoadRemoteContent.ALWAYS));
           builder.setNegativeButton("✔️ " + this.getString(R.string.never), (dialog, which) -> onChangeLoadRemoteContent(LoadRemoteContent.NEVER));
-          builder.setPositiveButton(R.string.once, (dialog, which) -> onChangeLoadRemoteContent(LoadRemoteContent.ONCE));
         }
+        builder.setPositiveButton(R.string.once, (dialog, which) -> onChangeLoadRemoteContent(LoadRemoteContent.ONCE));
         
         builder.show();
         return true;
