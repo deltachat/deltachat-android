@@ -1,0 +1,3 @@
+[submodule "jni/deltachat-core-rust"]
+       path = jni/deltachat-core-rust
+       url = https://github.com/adbenitez/deltalab-core
