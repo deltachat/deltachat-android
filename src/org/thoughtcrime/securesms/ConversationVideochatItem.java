@@ -67,7 +67,7 @@ public class ConversationVideochatItem extends LinearLayout
     DcContact dcContact = dcContext.getContact(dcMsg.getFromId());
 
     CharSequence line1 = dcMsg.isOutgoing()? getContext().getString(R.string.videochat_you_invited_hint) :
-            getContext().getString(R.string.videochat_contact_invited_hint, dcContact.getFirstName());
+            getContext().getString(R.string.videochat_contact_invited_hint, dcContact.getDisplayName());
     CharSequence line2 = Util.getBoldedString(dcMsg.isOutgoing()? getContext().getString(R.string.videochat_tap_to_open) :
             getContext().getString(R.string.videochat_tap_to_join));
 
