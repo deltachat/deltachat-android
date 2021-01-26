@@ -165,7 +165,9 @@ android {
             // nb: it is highly recommended to use the same settings in debug+release -
             // otherwise problems might be noticed delayed only
             minifyEnabled false
-            signingConfig signingConfigs.release
+	    if(project.hasProperty("DC_RELEASE_STORE_FILE")) {
+                signingConfig signingConfigs.release
+	    }
         }
     }
 
