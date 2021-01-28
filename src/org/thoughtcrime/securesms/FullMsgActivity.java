@@ -37,6 +37,11 @@ public class FullMsgActivity extends WebViewActivity
     loadRemoteContent = Prefs.getAlwaysLoadRemoteContent(this);
     webView.getSettings().setBlockNetworkLoads(!loadRemoteContent);
 
+    // setBuiltInZoomControls() adds pinch-to-zoom as well as two ugly buttons;
+    // the latter are hidden with setDisplayZoomControls() again.
+    webView.getSettings().setBuiltInZoomControls(true);
+    webView.getSettings().setDisplayZoomControls(false);
+
     getSupportActionBar().setTitle(getString(R.string.chat_input_placeholder));
 
     dcContext = DcHelper.getContext(this);
