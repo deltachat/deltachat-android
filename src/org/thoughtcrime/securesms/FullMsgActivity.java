@@ -11,6 +11,7 @@ import androidx.appcompat.app.AlertDialog;
 
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.Prefs;
 
 import java.lang.ref.WeakReference;
@@ -77,14 +78,15 @@ public class FullMsgActivity extends WebViewActivity
         // would be required as well - probably as the leftmost button which is not that usable in
         // not-always-mode where the dialog is used more often. Or [Ok] would mean "Once" as well as "Change checkbox setting",
         // which is also a bit weird. Anyway, let's give the three buttons a try :)
+        final String checkmarkPrefix = DynamicTheme.getCheckmarkEmoji(this) + " ";
         if (Prefs.getAlwaysLoadRemoteContent(this)) {
-          builder.setNeutralButton("✔️ " + getString(R.string.always), (dialog, which) -> onChangeLoadRemoteContent(LoadRemoteContent.ALWAYS));
+          builder.setNeutralButton(checkmarkPrefix + getString(R.string.always), (dialog, which) -> onChangeLoadRemoteContent(LoadRemoteContent.ALWAYS));
           builder.setNegativeButton(R.string.never, (dialog, which) -> onChangeLoadRemoteContent(LoadRemoteContent.NEVER));
           builder.setPositiveButton(R.string.once, (dialog, which) -> onChangeLoadRemoteContent(LoadRemoteContent.ONCE));
         } else {
           builder.setNeutralButton(R.string.always, (dialog, which) -> onChangeLoadRemoteContent(LoadRemoteContent.ALWAYS));
-          builder.setNegativeButton((loadRemoteContent? "" : "✔️ ") + getString(R.string.never), (dialog, which) -> onChangeLoadRemoteContent(LoadRemoteContent.NEVER));
-          builder.setPositiveButton((loadRemoteContent? "✔️ " : "") + getString(R.string.once), (dialog, which) -> onChangeLoadRemoteContent(LoadRemoteContent.ONCE));
+          builder.setNegativeButton((loadRemoteContent? "" : checkmarkPrefix) + getString(R.string.never), (dialog, which) -> onChangeLoadRemoteContent(LoadRemoteContent.NEVER));
+          builder.setPositiveButton((loadRemoteContent? checkmarkPrefix : "") + getString(R.string.once), (dialog, which) -> onChangeLoadRemoteContent(LoadRemoteContent.ONCE));
         }
 
         builder.show();
