@@ -39,6 +39,12 @@
     <string name="profile">Profile</string>
     <string name="main_menu">Main menu</string>
     <string name="start_chat">Start chat</string>
+    <string name="show_full_message">Show full message…</string>
+    <string name="load_remote_content">Load remote images</string>
+    <!-- possible answers to the question are: Never, Always, Once -->
+    <string name="load_remote_content_ask">Remote images can be used to track you.\n\nThe setting also allows loading fonts and other content. Even if it is disabled, you may still see embedded or cached images.\n\nLoad remote images?</string>
+    <string name="always">Always</string>
+    <string name="once">Once</string>
     <string name="show_password">Show password</string>
     <string name="hide_password">Hide password</string>
     <string name="not_now">Not now</string>

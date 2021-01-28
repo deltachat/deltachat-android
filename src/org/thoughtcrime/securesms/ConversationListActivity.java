@@ -282,7 +282,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     final ApplicationDcContext dcContext = DcHelper.getContext(this);
     if (isForwarding(this) && dcContext.getChat(chatId).isSelfTalk()) {
       SendRelayedMessageUtil.immediatelyRelay(this, chatId);
-      Toast.makeText(this, "✔️ " + getString(R.string.saved), Toast.LENGTH_SHORT).show();
+      Toast.makeText(this, DynamicTheme.getCheckmarkEmoji(this) + " " + getString(R.string.saved), Toast.LENGTH_SHORT).show();
       handleResetRelaying();
       finish();
     } else {
