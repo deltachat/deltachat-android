@@ -78,14 +78,15 @@ public class FullMsgActivity extends WebViewActivity
         // not-always-mode where the dialog is used more often. Or [Ok] would mean "Once" as well as "Change checkbox setting",
         // which is also a bit weird. Anyway, let's give the three buttons a try :)
         if (Prefs.getAlwaysLoadRemoteContent(this)) {
-          builder.setNeutralButton("✔️ " + this.getString(R.string.always), (dialog, which) -> onChangeLoadRemoteContent(LoadRemoteContent.ALWAYS));
+          builder.setNeutralButton("✔️ " + getString(R.string.always), (dialog, which) -> onChangeLoadRemoteContent(LoadRemoteContent.ALWAYS));
           builder.setNegativeButton(R.string.never, (dialog, which) -> onChangeLoadRemoteContent(LoadRemoteContent.NEVER));
+          builder.setPositiveButton(R.string.once, (dialog, which) -> onChangeLoadRemoteContent(LoadRemoteContent.ONCE));
         } else {
           builder.setNeutralButton(R.string.always, (dialog, which) -> onChangeLoadRemoteContent(LoadRemoteContent.ALWAYS));
-          builder.setNegativeButton("✔️ " + this.getString(R.string.never), (dialog, which) -> onChangeLoadRemoteContent(LoadRemoteContent.NEVER));
+          builder.setNegativeButton((loadRemoteContent? "" : "✔️ ") + getString(R.string.never), (dialog, which) -> onChangeLoadRemoteContent(LoadRemoteContent.NEVER));
+          builder.setPositiveButton((loadRemoteContent? "✔️ " : "") + getString(R.string.once), (dialog, which) -> onChangeLoadRemoteContent(LoadRemoteContent.ONCE));
         }
-        builder.setPositiveButton(R.string.once, (dialog, which) -> onChangeLoadRemoteContent(LoadRemoteContent.ONCE));
-        
+
         builder.show();
         return true;
     }
