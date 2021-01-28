@@ -3,6 +3,7 @@ package org.thoughtcrime.securesms;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -41,18 +42,38 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
 
     webView = findViewById(R.id.webview);
     webView.setWebViewClient(new WebViewClient() {
+      // `shouldOverrideUrlLoading()` is called when the user clicks a URL,
+      // returning `true` means, the URL is passed to `loadUrl()`, `false` aborts loading.
+      // the method is not called for POST request nor for on-page-links.
+      //
+      // nb: from API 24, `shouldOverrideUrlLoading(String)` is deprecated and
+      // `shouldOverrideUrlLoading(WebResourceRequest)` shall be used.
+      // the new one has the same functionality, and the old one still exist,
+      // so, to support all systems, for now, using the old one seems to be the simplest way.
       @Override
       public boolean shouldOverrideUrlLoading(WebView view, String url) {
         if (url != null) {
           if (url.startsWith("http://") || url.startsWith("https://") || url.startsWith("mailto:")) {
             openOnlineUrl(url);
+            // URL opened externally, returning `true` causes the WebView to abort loading
             return true;
           }
         }
-        return false;
+        // by returning `true`, we also abort loading other URLs in our WebView;
+        // eg. that might be weird or internal protocols.
+        // if we come over really useful things, we should allow that explicitly.
+        return true;
       }
     });
     webView.setFindListener(this);
+
+    // disable "safe browsing" as this has privacy issues,
+    // eg. at least false positives are sent to the "Safe Browsing Lookup API".
+    // as all URLs opened in the WebView are local anyway,
+    // "safe browsing" will never be able to report issues, so it can be disabled.
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+      webView.getSettings().setSafeBrowsingEnabled(false);
+    }
   }
 
   @Override
