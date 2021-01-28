@@ -73,7 +73,7 @@ public class LocalHelpActivity extends WebViewActivity
       exists = true;
       is.close();
     } catch(Exception e) {
-      ;
+      ; // a non-existent asset is no error, the function's purpose is to check exactly that.
     }
     return exists;
   }
