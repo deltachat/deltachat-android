@@ -39,6 +39,12 @@
     <string name="profile">概要</string>
     <string name="main_menu">主菜单</string>
     <string name="start_chat">开始聊天</string>
+    <string name="show_full_message">显示完整消息… </string>
+    <string name="load_remote_content">加载远程图片</string>
+    <!-- possible answers to the question are: Never, Always, Once -->
+    <string name="load_remote_content_ask">远程图片可被用来跟踪你。\n\n该设置还允许加载字体和其他内容。即使禁用了它，你仍然可以看到嵌入或缓存的图像。\n\n要加载远程图片吗？</string>
+    <string name="always">始终</string>
+    <string name="once">一次</string>
     <string name="show_password">显示密码</string>
     <string name="hide_password">隐藏密码</string>
     <string name="not_now">现在不</string>

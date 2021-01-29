@@ -39,6 +39,12 @@
     <string name="profile">Perfil</string>
     <string name="main_menu">Menú principal</string>
     <string name="start_chat">Inciar chat</string>
+    <string name="show_full_message">Mostrar mensaxe completa...</string>
+    <string name="load_remote_content">Cargar imaxes remotas</string>
+    <!-- possible answers to the question are: Never, Always, Once -->
+    <string name="load_remote_content_ask">As imaxes remotas poden ser utilizadas para rastrexarte.\n\nO axuste tamén permite cargar tipografías e outro contido. Incluso estando desactivado, é posible ver as imaxes gardadas na caché.\n\nCargar imaxes remotas?</string>
+    <string name="always">Sempre</string>
+    <string name="once">Unha vez</string>
     <string name="show_password">Mostrar contrasinal</string>
     <string name="hide_password">Agochar contrasinal</string>
     <string name="not_now">Agora non</string>

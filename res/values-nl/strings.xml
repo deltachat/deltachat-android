@@ -39,6 +39,12 @@
     <string name="profile">Profiel</string>
     <string name="main_menu">Hoofdmenu</string>
     <string name="start_chat">Gesprek beginnen</string>
+    <string name="show_full_message">Volledige bericht tonen…</string>
+    <string name="load_remote_content">Externe afbeeldingen laden</string>
+    <!-- possible answers to the question are: Never, Always, Once -->
+    <string name="load_remote_content_ask">Externe afbeeldingen kunnen worden gebruikt om je gedrag te volgen.\n\nDeze instelling staat tevens toe om andere externe inhoud, zoals lettertypen, te laden, en zelfs na uitschakeling kunnen er ingesloten of gecachte afbeeldingen worden getoond.\n\nWeet je het zeker?</string>
+    <string name="always">Altijd</string>
+    <string name="once">Eenmalig</string>
     <string name="show_password">Wachtwoord tonen</string>
     <string name="hide_password">Wachtwoord verbergen</string>
     <string name="not_now">Niet nu</string>
