@@ -131,14 +131,14 @@
   </string-array>
 
     <string-array name="ephemeral_message_durations">
-        <item>@string/off</item>
-        <item>@string/after_1_minute</item>
-        <item>@string/after_5_minutes</item>
-        <item>@string/after_30_minutes</item>
-        <item>@string/autodel_after_1_hour</item>
-        <item>@string/autodel_after_1_day</item>
-        <item>@string/autodel_after_1_week</item>
-        <item>@string/autodel_after_4_weeks</item>
+        <!-- 0 --> <item>@string/off</item>
+        <!-- 1 --> <item>@string/after_1_minute</item>
+        <!-- 2 --> <item>@string/after_5_minutes</item>
+        <!-- 3 --> <item>@string/after_30_minutes</item>
+        <!-- 4 --> <item>@string/autodel_after_1_hour</item>
+        <!-- 5 --> <item>@string/autodel_after_1_day</item>
+        <!-- 6 --> <item>@string/autodel_after_1_week</item>
+        <!-- 7 --> <item>@string/autodel_after_4_weeks</item>
     </string-array>
 
     <string-array name="mute_durations">
