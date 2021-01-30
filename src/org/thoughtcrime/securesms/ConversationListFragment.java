@@ -436,7 +436,8 @@ public class ConversationListFragment extends Fragment
         DcContact contact = dcContext.getContact(contactId);
         int textNo = R.string.menu_block_contact;
         int textQuestion = R.string.ask_start_chat_with;
-        if (msg.isMailingList()) {
+        DcChat realChat = dcContext.getChat(msg.getRealChatId());
+        if (realChat.isMailingList()) {
           textNo = R.string.never;
           textQuestion = R.string.ask_show_mailing_list;
         }

@@ -103,6 +103,7 @@ public class DcMsg {
     public native int     getType            ();
     public native int     getState           ();
     public native int     getChatId          ();
+    public native int     getRealChatId      ();
     public native int     getFromId          ();
     public native int     getWidth           (int def);
     public native int     getHeight          (int def);
@@ -133,8 +134,6 @@ public class DcMsg {
     public void           setQuote           (DcMsg quote) { setQuoteCPtr(quote.msgCPtr); }
     public native String  getQuotedText      ();
     public native String  getError           ();
-    public native boolean isMailingList      ();
-    public native String  getSenderFirstName ();
     private native @Nullable String getOverrideSenderName();
 
     public @NonNull String getSenderName(@NonNull DcContact dcContact) {

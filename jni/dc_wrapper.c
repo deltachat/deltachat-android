@@ -1230,6 +1230,12 @@ JNIEXPORT jint Java_com_b44t_messenger_DcMsg_getChatId(JNIEnv *env, jobject obj)
 }
 
 
+JNIEXPORT jint Java_com_b44t_messenger_DcMsg_getRealChatId(JNIEnv *env, jobject obj)
+{
+    return dc_msg_get_real_chat_id(get_dc_msg(env, obj));
+}
+
+
 JNIEXPORT jint Java_com_b44t_messenger_DcMsg_getFromId(JNIEnv *env, jobject obj)
 {
     return dc_msg_get_from_id(get_dc_msg(env, obj));
@@ -1286,15 +1292,6 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcMsg_getSummarytext(JNIEnv *env, jobj
 JNIEXPORT jstring Java_com_b44t_messenger_DcMsg_getOverrideSenderName(JNIEnv *env, jobject obj)
 {
     char* temp = dc_msg_get_override_sender_name(get_dc_msg(env, obj));
-        jstring ret = JSTRING_NEW(temp);
-    dc_str_unref(temp);
-    return ret;
-}
-
-
-JNIEXPORT jstring Java_com_b44t_messenger_DcMsg_getSenderFirstName(JNIEnv *env, jobject obj)
-{
-    char* temp = dc_msg_get_sender_first_name(get_dc_msg(env, obj));
         jstring ret = JSTRING_NEW(temp);
     dc_str_unref(temp);
     return ret;
@@ -1457,12 +1454,6 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcMsg_getError(JNIEnv *env, jobject ob
         jstring ret = JSTRING_NEW(temp);
     dc_str_unref(temp);
     return ret;
-}
-
-
-JNIEXPORT jboolean Java_com_b44t_messenger_DcMsg_isMailingList(JNIEnv *env, jobject obj)
-{
-    return dc_msg_is_mailing_list(get_dc_msg(env, obj))!=0;
 }
 
 
