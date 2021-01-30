@@ -1021,10 +1021,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     composeText.append(name + "\n" + mail);
   }
 
-  private boolean isActiveGroup() {
-    return dcChat.isGroup();
-  }
-
   private boolean isGroupConversation() {
     return dcChat.isGroup();
   }
