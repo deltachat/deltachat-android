@@ -80,29 +80,29 @@ public class EphemeralMessagesDialog {
 
     private static int getPreselection(int timespan) {
         if (timespan == 0) {
-            return 0;
+            return 0; // off
         }
 
         // Choose timespan close to the current one out of available options.
         if (timespan < TimeUnit.MINUTES.toSeconds(5)) {
-            return 1;
+            return 1; // 1 minute
         }
         if (timespan < TimeUnit.MINUTES.toSeconds(30)) {
-            return 2;
+            return 2; // 5 minutes
         }
         if (timespan < TimeUnit.HOURS.toSeconds(1)) {
-            return 3;
+            return 3; // 30 minutes
         }
         if (timespan < TimeUnit.DAYS.toSeconds(1)) {
-            return 4;
+            return 4; // 1 hour
         }
         if (timespan < TimeUnit.DAYS.toSeconds(7)) {
-            return 5;
+            return 5; // 1 day
         }
         if (timespan < TimeUnit.DAYS.toSeconds(28)) {
-            return 6;
+            return 6; // 1 week
         }
-        return 7;
+        return 7; // 4 weeks
     }
 
 }
