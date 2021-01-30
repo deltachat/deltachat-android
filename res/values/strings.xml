@@ -558,6 +558,8 @@
     <string name="autodel_at_once">At once</string>
     <string name="after_30_seconds">After 30 seconds</string>
     <string name="after_1_minute">After 1 minute</string>
+    <string name="after_5_minutes">After 5 minutes</string>
+    <string name="after_30_minutes">After 30 minutes</string>
     <string name="autodel_after_1_hour">After 1 hour</string>
     <string name="autodel_after_1_day">After 1 day</string>
     <string name="autodel_after_1_week">After 1 week</string>

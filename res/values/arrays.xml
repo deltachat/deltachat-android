@@ -132,8 +132,9 @@
 
     <string-array name="ephemeral_message_durations">
         <item>@string/off</item>
-        <item>@string/after_30_seconds</item>
         <item>@string/after_1_minute</item>
+        <item>@string/after_5_minutes</item>
+        <item>@string/after_30_minutes</item>
         <item>@string/autodel_after_1_hour</item>
         <item>@string/autodel_after_1_day</item>
         <item>@string/autodel_after_1_week</item>
