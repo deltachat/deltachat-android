@@ -43,6 +43,7 @@ import androidx.appcompat.app.AlertDialog;
 
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
+import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMsg;
 
 import org.thoughtcrime.securesms.audio.AudioSlidePlayer;
@@ -729,13 +730,7 @@ public class ConversationItem extends LinearLayout
   /// Event handlers
 
   private void handleDeadDropClick() {
-    int textNo = R.string.menu_block_contact;
-    int textQuestion = R.string.ask_start_chat_with;
-    DcChat realChat = dcContext.getChat(messageRecord.getRealChatId());
-    if (realChat.isMailingList()) {
-      textNo = R.string.never;
-      textQuestion = R.string.ask_show_mailing_list;
-    }
+    ConversationListFragment.DeaddropQuestionHelper helper = new ConversationListFragment.DeaddropQuestionHelper(context, messageRecord);
     new AlertDialog.Builder(context)
       .setPositiveButton(android.R.string.ok, (dialog, which) -> {
         int chatId = messageRecord.decideOnContactRequest(DcMsg.DC_DEADDROP_DECISION_YES);
@@ -746,8 +741,8 @@ public class ConversationItem extends LinearLayout
         }
       })
       .setNegativeButton(android.R.string.cancel, null)
-      .setNeutralButton(textNo, (dialog, which) -> messageRecord.decideOnContactRequest(DcMsg.DC_DEADDROP_DECISION_NO))
-      .setMessage(context.getString(textQuestion, messageRecord.getSenderName(dcContact)))
+      .setNeutralButton(helper.answerNo, (dialog, which) -> messageRecord.decideOnContactRequest(DcMsg.DC_DEADDROP_DECISION_NO))
+      .setMessage(helper.question)
       .show();
   }
 

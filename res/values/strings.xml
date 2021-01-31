@@ -332,6 +332,11 @@
     <string name="attachment_failed_to_load">Failed to load attachment</string>
 
 
+    <!-- mailing lists -->
+    <string name="mailing_list">Mailing list</string>
+    <string name="ask_show_mailing_list">Show mailing list \"%1$s\"?</string>
+
+
     <!-- map -->
     <string name="filter_map_on_time">Show locations in time frame</string>
     <string name="show_location_traces">Show traces</string>
@@ -773,12 +778,6 @@
     <string name="a11y_message_context_menu_btn_label">Message actions</string>
     <string name="a11y_background_preview_label">Background preview</string>
     <string name="a11y_disappearing_messages_activated">Disappearing messages activated</string>
-
-
-    <!-- mailing lists -->
-    <string name="mailing_list">Mailing list</string>
-    <string name="ask_show_mailing_list">Show mailing list with %1$s in Delta Chat?</string>
-    <string name="unnamed_newsletter">Unnamed newsletter</string>
 
 
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->

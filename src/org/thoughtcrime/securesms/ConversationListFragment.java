@@ -432,15 +432,7 @@ public class ConversationListFragment extends Fragment
         DcContext dcContext = DcHelper.getContext(getActivity());
         int msgId = item.getMsgId();
         DcMsg msg = dcContext.getMsg(msgId);
-        int contactId = item.getContactId();
-        DcContact contact = dcContext.getContact(contactId);
-        int textNo = R.string.menu_block_contact;
-        int textQuestion = R.string.ask_start_chat_with;
-        DcChat realChat = dcContext.getChat(msg.getRealChatId());
-        if (realChat.isMailingList()) {
-          textNo = R.string.never;
-          textQuestion = R.string.ask_show_mailing_list;
-        }
+        DeaddropQuestionHelper helper = new DeaddropQuestionHelper(getContext(), msg);
         new AlertDialog.Builder(getActivity())
                 .setPositiveButton(android.R.string.ok, (dialog, which) -> {
                   int belongingChatId = msg.decideOnContactRequest(DcMsg.DC_DEADDROP_DECISION_YES);
@@ -449,8 +441,8 @@ public class ConversationListFragment extends Fragment
                   }
                 })
                 .setNegativeButton(R.string.not_now, (dialog, which) -> msg.decideOnContactRequest(DcMsg.DC_DEADDROP_DECISION_NOT_NOW))
-                .setNeutralButton(textNo, (dialog, which) -> msg.decideOnContactRequest(DcMsg.DC_DEADDROP_DECISION_NO))
-                .setMessage(getActivity().getString(textQuestion, contact.getNameNAddr()))
+                .setNeutralButton(helper.answerNo, (dialog, which) -> msg.decideOnContactRequest(DcMsg.DC_DEADDROP_DECISION_NO))
+                .setMessage(helper.question)
                 .show();
         return;
       }
@@ -485,6 +477,25 @@ public class ConversationListFragment extends Fragment
       }
     }
   }
+
+  static class DeaddropQuestionHelper {
+    public String question;
+    public String answerNo;
+
+    DeaddropQuestionHelper(Context context, DcMsg dcMsg) {
+      DcContext dcContext = DcHelper.getContext(context);
+      DcChat dcChat = dcContext.getChat(dcMsg.getRealChatId());
+
+      if (dcChat.isMailingList()) {
+        question = context.getString(R.string.ask_show_mailing_list, dcChat.getName());
+        answerNo = context.getString(R.string.never);
+      } else {
+        DcContact dcContact = dcContext.getContact(dcMsg.getFromId());
+        question = context.getString(R.string.ask_start_chat_with, dcMsg.getSenderName(dcContact));
+        answerNo = context.getString(R.string.menu_block_contact);
+      }
+    }
+  };
 
   @Override
   public void onSwitchToArchive() {
