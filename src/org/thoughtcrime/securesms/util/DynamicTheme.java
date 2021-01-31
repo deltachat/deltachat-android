@@ -89,6 +89,11 @@ public class DynamicTheme {
     }
   }
 
+  // return a checkmark emoji that fits to the background of the selected theme.
+  public static String getCheckmarkEmoji(@NonNull Context context) {
+    return isDarkTheme(context) ? "✅" /*blue, white or white in a box*/ : "✔️" /*blue or black*/;
+  }
+
   private static boolean isSystemInDarkTheme(@NonNull Context context) {
     return (context.getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES;
   }

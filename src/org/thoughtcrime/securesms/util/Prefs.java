@@ -68,6 +68,9 @@ public class Prefs {
   private static final String MAP_CENTER_LONGITUDE = "pref_map_center_longitude";
   private static final String MAP_ZOOM = "pref_map_zoom";
 
+  public  static final String  ALWAYS_LOAD_REMOTE_CONTENT = "pref_always_load_remote_content";
+  public  static final boolean ALWAYS_LOAD_REMOTE_CONTENT_DEFAULT = false;
+
   public enum VibrateState {
     DEFAULT(0), ENABLED(1), DISABLED(2);
     private final int id;
@@ -301,6 +304,11 @@ public class Prefs {
 
   public static boolean isSystemEmojiPreferred(Context context) {
     return getBooleanPreference(context, SYSTEM_EMOJI_PREF, false);
+  }
+
+  public static boolean getAlwaysLoadRemoteContent(Context context) {
+    return getBooleanPreference(context, Prefs.ALWAYS_LOAD_REMOTE_CONTENT,
+      Prefs.ALWAYS_LOAD_REMOTE_CONTENT_DEFAULT);
   }
 
   // generic preference functions

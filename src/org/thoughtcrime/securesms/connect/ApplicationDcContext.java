@@ -163,13 +163,16 @@ public class ApplicationDcContext extends DcContext {
     setStockTranslation(78, context.getString(R.string.systemmsg_ephemeral_timer_hour));
     setStockTranslation(79, context.getString(R.string.systemmsg_ephemeral_timer_day));
     setStockTranslation(80, context.getString(R.string.systemmsg_ephemeral_timer_week));
-    setStockTranslation(81, context.getString(R.string.systemmsg_ephemeral_timer_four_weeks));
     setStockTranslation(82, context.getString(R.string.videochat_invitation));
     setStockTranslation(83, context.getString(R.string.videochat_invitation_body));
     setStockTranslation(84, context.getString(R.string.configuration_failed_with_error));
     setStockTranslation(88, context.getString(R.string.systemmsg_chat_protection_enabled));
     setStockTranslation(89, context.getString(R.string.systemmsg_chat_protection_disabled));
     setStockTranslation(90, context.getString(R.string.reply_noun));
+    setStockTranslation(93, context.getString(R.string.systemmsg_ephemeral_timer_minutes));
+    setStockTranslation(94, context.getString(R.string.systemmsg_ephemeral_timer_hours));
+    setStockTranslation(95, context.getString(R.string.systemmsg_ephemeral_timer_days));
+    setStockTranslation(96, context.getString(R.string.systemmsg_ephemeral_timer_weeks));
   }
 
   public File getImexDir() {

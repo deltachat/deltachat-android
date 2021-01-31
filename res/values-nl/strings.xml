@@ -39,6 +39,12 @@
     <string name="profile">Profiel</string>
     <string name="main_menu">Hoofdmenu</string>
     <string name="start_chat">Gesprek beginnen</string>
+    <string name="show_full_message">Volledige bericht tonen…</string>
+    <string name="load_remote_content">Externe afbeeldingen laden</string>
+    <!-- possible answers to the question are: Never, Always, Once -->
+    <string name="load_remote_content_ask">Externe afbeeldingen kunnen worden gebruikt om je gedrag te volgen.\n\nDeze instelling staat tevens toe om andere externe inhoud, zoals lettertypen, te laden, en zelfs na uitschakeling kunnen er ingesloten of gecachte afbeeldingen worden getoond.\n\nWeet je het zeker?</string>
+    <string name="always">Altijd</string>
+    <string name="once">Eenmalig</string>
     <string name="show_password">Wachtwoord tonen</string>
     <string name="hide_password">Wachtwoord verbergen</string>
     <string name="not_now">Niet nu</string>
@@ -187,6 +193,7 @@
     <string name="menu_scroll_to_top">Ga naar het begin</string>
     <string name="menu_help">Hulp</string>
     <string name="menu_select_all">Alles selecteren</string>
+    <string name="select_more">Meer selecteren</string>
     <string name="menu_expand">Uitvouwen</string>
     <string name="menu_edit_name">Naam wijzigen</string>
     <string name="menu_settings">Instellingen</string>
@@ -600,7 +607,6 @@
     <string name="systemmsg_ephemeral_timer_day">De tijdklok van verdwijnende berichten is ingesteld op 1 dag.</string>
     <string name="systemmsg_ephemeral_timer_week">De tijdklok van verdwijnende berichten is ingesteld op 1 week.</string>
     <string name="systemmsg_ephemeral_timer_four_weeks">De tijdklok van verdwijnende berichten is ingesteld op 4 weken.</string>
-
     <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
     <string name="systemmsg_chat_protection_disabled">Gespreksbeveiliging is uitgeschakeld.</string>
     <string name="systemmsg_chat_protection_enabled">Gespreksbeveiliging is ingeschakeld.</string>

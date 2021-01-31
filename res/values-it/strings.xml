@@ -39,6 +39,12 @@
     <string name="profile">Profilo</string>
     <string name="main_menu">Menu principale</string>
     <string name="start_chat">Inizia una chat</string>
+    <string name="show_full_message">Mostra messaggio completo...</string>
+    <string name="load_remote_content">Carica immagini remote</string>
+    <!-- possible answers to the question are: Never, Always, Once -->
+    <string name="load_remote_content_ask">Le immagini remote possono essere utilizzate per tracciarti.\n\nL\'impostazione consente anche di caricare caratteri e altri contenuti. Anche se è disabilitato, potresti comunque vedere immagini incorporate o memorizzate nella cache.\n\nCaricare immagini remote?</string>
+    <string name="always">Sempre</string>
+    <string name="once">Una volta</string>
     <string name="show_password">Mostra password</string>
     <string name="hide_password">Nascondi password</string>
     <string name="not_now">Non ora</string>
@@ -187,6 +193,7 @@
     <string name="menu_scroll_to_top">Scorri in cima</string>
     <string name="menu_help">Aiuto</string>
     <string name="menu_select_all">Seleziona tutto</string>
+    <string name="select_more">Seleziona di più</string>
     <string name="menu_expand">Espandi</string>
     <string name="menu_edit_name">Modifica nome</string>
     <string name="menu_settings">Impostazioni</string>
@@ -600,7 +607,6 @@
     <string name="systemmsg_ephemeral_timer_day">Il timer per la scomparsa dei messaggi è impostato su 1 giorno.</string>
     <string name="systemmsg_ephemeral_timer_week">Il timer per la scomparsa dei messaggi è impostato su 1 settimana.</string>
     <string name="systemmsg_ephemeral_timer_four_weeks">Il timer per la scomparsa dei messaggi è impostato su 4 settimane.</string>
-
     <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
     <string name="systemmsg_chat_protection_disabled">Protezione chat disattivata.</string>
     <string name="systemmsg_chat_protection_enabled">Protezione chat abilitata.</string>

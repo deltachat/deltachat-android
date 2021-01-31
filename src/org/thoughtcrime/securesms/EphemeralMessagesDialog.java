@@ -60,12 +60,13 @@ public class EphemeralMessagesDialog {
                 .setPositiveButton(R.string.ok, (dialog, which) -> {
                     final long burnAfter;
                     switch (selectedChoice[0]) {
-                        case 1:  burnAfter = TimeUnit.SECONDS.toSeconds(30); break;
-                        case 2:  burnAfter = TimeUnit.MINUTES.toSeconds(1); break;
-                        case 3:  burnAfter = TimeUnit.HOURS.toSeconds(1); break;
-                        case 4:  burnAfter = TimeUnit.DAYS.toSeconds(1);  break;
-                        case 5:  burnAfter = TimeUnit.DAYS.toSeconds(7);  break;
-                        case 6:  burnAfter = TimeUnit.DAYS.toSeconds(28); break;
+                        case 1:  burnAfter = TimeUnit.MINUTES.toSeconds(1); break;
+                        case 2:  burnAfter = TimeUnit.MINUTES.toSeconds(5); break;
+                        case 3:  burnAfter = TimeUnit.MINUTES.toSeconds(30); break;
+                        case 4:  burnAfter = TimeUnit.HOURS.toSeconds(1); break;
+                        case 5:  burnAfter = TimeUnit.DAYS.toSeconds(1);  break;
+                        case 6:  burnAfter = TimeUnit.DAYS.toSeconds(7);  break;
+                        case 7:  burnAfter = TimeUnit.DAYS.toSeconds(28); break;
                         default: burnAfter = 0; break;
                     }
                     listener.onTimeSelected(burnAfter);
@@ -78,25 +79,30 @@ public class EphemeralMessagesDialog {
     }
 
     private static int getPreselection(int timespan) {
-        if (timespan == TimeUnit.DAYS.toSeconds(28)) {
-            return 6;
-        } else if (timespan == TimeUnit.DAYS.toSeconds(7)) {
-            return 5;
-        } else if (timespan == TimeUnit.DAYS.toSeconds(1)) {
-            return 4;
-        } else if (timespan == TimeUnit.HOURS.toSeconds(1)) {
-            return 3;
-        } else if (timespan == TimeUnit.MINUTES.toSeconds(1)) {
-            return 2;
-        } else if (timespan == TimeUnit.SECONDS.toSeconds(30)) {
-            return 1;
-        } else {
-            if (timespan != 0) {
-                Log.e(TAG, "Invalid ephemeral messages timespan, falling back to OFF");
-            }
-            return 0;
+        if (timespan == 0) {
+            return 0; // off
         }
 
+        // Choose timespan close to the current one out of available options.
+        if (timespan < TimeUnit.MINUTES.toSeconds(5)) {
+            return 1; // 1 minute
+        }
+        if (timespan < TimeUnit.MINUTES.toSeconds(30)) {
+            return 2; // 5 minutes
+        }
+        if (timespan < TimeUnit.HOURS.toSeconds(1)) {
+            return 3; // 30 minutes
+        }
+        if (timespan < TimeUnit.DAYS.toSeconds(1)) {
+            return 4; // 1 hour
+        }
+        if (timespan < TimeUnit.DAYS.toSeconds(7)) {
+            return 5; // 1 day
+        }
+        if (timespan < TimeUnit.DAYS.toSeconds(28)) {
+            return 6; // 1 week
+        }
+        return 7; // 4 weeks
     }
 
 }

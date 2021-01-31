@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:title="@string/search"
+        android:id="@+id/menu_search_web_view"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        app:showAsAction="collapseActionView|never" />
+
+    <item android:title="0/0"
+        android:id="@+id/menu_search_counter"
+        android:visible="false"
+        app:showAsAction="always"/>
+
+    <item android:title="@string/back"
+        android:id="@+id/menu_search_up"
+        android:icon="@drawable/ic_search_up"
+        android:visible="false"
+        app:showAsAction="always"/>
+
+    <item android:title="@string/next"
+        android:id="@+id/menu_search_down"
+        android:icon="@drawable/ic_search_down"
+        android:visible="false"
+        app:showAsAction="always"/>
+
+</menu>
