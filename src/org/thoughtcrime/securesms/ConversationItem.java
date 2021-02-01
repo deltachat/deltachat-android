@@ -733,7 +733,7 @@ public class ConversationItem extends LinearLayout
     ConversationListFragment.DeaddropQuestionHelper helper = new ConversationListFragment.DeaddropQuestionHelper(context, messageRecord);
     new AlertDialog.Builder(context)
       .setPositiveButton(android.R.string.ok, (dialog, which) -> {
-        int chatId = messageRecord.decideOnContactRequest(DcMsg.DC_DEADDROP_DECISION_YES);
+        int chatId = dcContext.decideOnContactRequest(messageRecord.getId(), DcContext.DC_DECISION_START_CHAT);
         if( chatId != 0 ) {
           Intent intent = new Intent(context, ConversationActivity.class);
           intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
@@ -741,7 +741,7 @@ public class ConversationItem extends LinearLayout
         }
       })
       .setNegativeButton(android.R.string.cancel, null)
-      .setNeutralButton(helper.answerNo, (dialog, which) -> messageRecord.decideOnContactRequest(DcMsg.DC_DEADDROP_DECISION_NO))
+      .setNeutralButton(helper.answerBlock, (dialog, which) -> dcContext.decideOnContactRequest(messageRecord.getId(), DcContext.DC_DECISION_BLOCK))
       .setMessage(helper.question)
       .show();
   }

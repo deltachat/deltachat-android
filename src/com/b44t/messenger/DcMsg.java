@@ -39,10 +39,6 @@ public class DcMsg {
     public final static int DC_VIDEOCHATTYPE_UNKNOWN = 0;
     public final static int DC_VIDEOCHATTYPE_BASICWEBRTC = 1;
 
-    public final static int DC_DEADDROP_DECISION_YES = 0;
-    public final static int DC_DEADDROP_DECISION_NO = 1;
-    public final static int DC_DEADDROP_DECISION_NOT_NOW = 2;
-
     private static final String TAG = DcMsg.class.getSimpleName();
 
     public DcMsg(DcContext context, int viewtype) {
@@ -123,7 +119,6 @@ public class DcMsg {
     public native boolean hasHtml            ();
     public native String  getSetupCodeBegin  ();
     public native String  getVideochatUrl    ();
-    public native int     decideOnContactRequest(int decision);
     public native int     getVideochatType   ();
     public native boolean isIncreation       ();
     public native void    setText            (String text);

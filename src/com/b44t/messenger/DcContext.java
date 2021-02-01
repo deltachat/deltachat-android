@@ -71,6 +71,10 @@ public class DcContext {
     public final static int DC_MEDIA_QUALITY_BALANCED = 0;
     public final static int DC_MEDIA_QUALITY_WORSE    = 1;
 
+    public final static int DC_DECISION_START_CHAT = 0;
+    public final static int DC_DECISION_BLOCK      = 1;
+    public final static int DC_DECISION_NOT_NOW    = 2;
+
     public DcContext(String osName, String dbfile) {
         contextCPtr = createContextCPtr(osName, dbfile);
     }
@@ -152,6 +156,7 @@ public class DcContext {
     public native boolean      setChatEphemeralTimer (int chat_id, int timer);
     public native boolean      setChatMuteDuration  (int chat_id, long duration);
     public native void         deleteChat           (int chat_id);
+    public native int          decideOnContactRequest(int msg_id, int decision);
     public @NonNull DcMsg      getMsg               (int msg_id) { return new DcMsg(getMsgCPtr(msg_id)); }
     public native String       getMsgInfo           (int id);
     public native String       getMsgHtml           (int msg_id);

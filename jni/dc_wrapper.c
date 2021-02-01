@@ -460,6 +460,12 @@ JNIEXPORT void Java_com_b44t_messenger_DcContext_deleteChat(JNIEnv *env, jobject
 /* DcContext - handle messages */
 
 
+JNIEXPORT jint Java_com_b44t_messenger_DcContext_decideOnContactRequest(JNIEnv *env, jobject obj, jint msg_id, jint decision)
+{
+    return (jint)dc_decide_on_contact_request(get_dc_context(env, obj), msg_id, decision);
+}
+
+
 JNIEXPORT jint Java_com_b44t_messenger_DcContext_getFreshMsgCount(JNIEnv *env, jobject obj, jint chat_id)
 {
     return dc_get_fresh_msg_cnt(get_dc_context(env, obj), chat_id);
@@ -470,7 +476,6 @@ JNIEXPORT jint Java_com_b44t_messenger_DcContext_estimateDeletionCount(JNIEnv *e
 {
     return dc_estimate_deletion_cnt(get_dc_context(env, obj), from_server, seconds);
 }
-
 
 
 JNIEXPORT jlong Java_com_b44t_messenger_DcContext_getMsgCPtr(JNIEnv *env, jobject obj, jint id)
@@ -1379,12 +1384,6 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcMsg_getVideochatUrl(JNIEnv *env, job
         jstring ret =  JSTRING_NEW(temp);
     dc_str_unref(temp);
     return ret;
-}
-
-
-JNIEXPORT jint Java_com_b44t_messenger_DcMsg_decideOnContactRequest(JNIEnv *env, jobject obj, jint decision)
-{
-    return (jint)dc_decide_on_contact_request(get_dc_msg(env, obj), decision);
 }
 
 

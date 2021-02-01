@@ -430,18 +430,17 @@ public class ConversationListFragment extends Fragment
 
       if (chatId == DcChat.DC_CHAT_ID_DEADDROP) {
         DcContext dcContext = DcHelper.getContext(getActivity());
-        int msgId = item.getMsgId();
-        DcMsg msg = dcContext.getMsg(msgId);
-        DeaddropQuestionHelper helper = new DeaddropQuestionHelper(getContext(), msg);
+        final int msgId = item.getMsgId();
+        DeaddropQuestionHelper helper = new DeaddropQuestionHelper(getContext(), dcContext.getMsg(msgId));
         new AlertDialog.Builder(getActivity())
                 .setPositiveButton(android.R.string.ok, (dialog, which) -> {
-                  int belongingChatId = msg.decideOnContactRequest(DcMsg.DC_DEADDROP_DECISION_YES);
+                  int belongingChatId = dcContext.decideOnContactRequest(msgId, DcContext.DC_DECISION_START_CHAT);
                   if (belongingChatId != 0) {
                     handleCreateConversation(belongingChatId);
                   }
                 })
-                .setNegativeButton(R.string.not_now, (dialog, which) -> msg.decideOnContactRequest(DcMsg.DC_DEADDROP_DECISION_NOT_NOW))
-                .setNeutralButton(helper.answerNo, (dialog, which) -> msg.decideOnContactRequest(DcMsg.DC_DEADDROP_DECISION_NO))
+                .setNegativeButton(R.string.not_now, (dialog, which) -> dcContext.decideOnContactRequest(msgId, DcContext.DC_DECISION_NOT_NOW))
+                .setNeutralButton(helper.answerBlock, (dialog, which) -> dcContext.decideOnContactRequest(msgId, DcContext.DC_DECISION_BLOCK))
                 .setMessage(helper.question)
                 .show();
         return;
@@ -480,7 +479,7 @@ public class ConversationListFragment extends Fragment
 
   static class DeaddropQuestionHelper {
     public String question;
-    public String answerNo;
+    public String answerBlock;
 
     DeaddropQuestionHelper(Context context, DcMsg dcMsg) {
       DcContext dcContext = DcHelper.getContext(context);
@@ -488,11 +487,11 @@ public class ConversationListFragment extends Fragment
 
       if (dcChat.isMailingList()) {
         question = context.getString(R.string.ask_show_mailing_list, dcChat.getName());
-        answerNo = context.getString(R.string.never);
+        answerBlock = context.getString(R.string.block);
       } else {
         DcContact dcContact = dcContext.getContact(dcMsg.getFromId());
         question = context.getString(R.string.ask_start_chat_with, dcMsg.getSenderName(dcContact));
-        answerNo = context.getString(R.string.menu_block_contact);
+        answerBlock = context.getString(R.string.menu_block_contact);
       }
     }
   };
