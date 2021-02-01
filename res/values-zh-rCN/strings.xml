@@ -39,6 +39,12 @@
     <string name="profile">概要</string>
     <string name="main_menu">主菜单</string>
     <string name="start_chat">开始聊天</string>
+    <string name="show_full_message">显示完整消息… </string>
+    <string name="load_remote_content">加载远程图片</string>
+    <!-- possible answers to the question are: Never, Always, Once -->
+    <string name="load_remote_content_ask">远程图片可被用来跟踪你。\n\n该设置还允许加载字体和其他内容。即使禁用了它，你仍然可以看到嵌入或缓存的图像。\n\n要加载远程图片吗？</string>
+    <string name="always">始终</string>
+    <string name="once">一次</string>
     <string name="show_password">显示密码</string>
     <string name="hide_password">隐藏密码</string>
     <string name="not_now">现在不</string>
@@ -181,6 +187,7 @@
     <string name="menu_scroll_to_top">滚动至顶部</string>
     <string name="menu_help">帮助</string>
     <string name="menu_select_all">全选</string>
+    <string name="select_more">选择更多</string>
     <string name="menu_expand">展开</string>
     <string name="menu_edit_name">编辑名称</string>
     <string name="menu_settings">设置</string>
@@ -588,7 +595,6 @@
     <string name="systemmsg_ephemeral_timer_day">设置消息定时销毁计时器为 1 天</string>
     <string name="systemmsg_ephemeral_timer_week">设置消息定时销毁计时器为 1 周</string>
     <string name="systemmsg_ephemeral_timer_four_weeks">设置消息定时销毁计时器为 4 周</string>
-
     <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
     <string name="systemmsg_chat_protection_disabled">聊天保护已禁用</string>
     <string name="systemmsg_chat_protection_enabled">聊天保护已启用</string>

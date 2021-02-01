@@ -39,6 +39,12 @@
     <string name="profile">Profil</string>
     <string name="main_menu">Hauptmenü</string>
     <string name="start_chat">Chat starten</string>
+    <string name="show_full_message">Ganze Nachricht anzeigen…</string>
+    <string name="load_remote_content">Bilder nachladen</string>
+    <!-- possible answers to the question are: Never, Always, Once -->
+    <string name="load_remote_content_ask">Das Nachladen von Bildern kann dazu verwendet werden, Sie zu tracken.\n\nDie Option erlaubt auch das Laden von Schriftarten und anderen Inhalten; wenn sie deaktiviert ist, werden eingebettete oder zwischengespeicherte Bilder dennoch angezeigt.\n\nBilder nachladen?</string>
+    <string name="always">Immer</string>
+    <string name="once">Einmal</string>
     <string name="show_password">Passwort anzeigen</string>
     <string name="hide_password">Passwort verstecken</string>
     <string name="not_now">Nicht jetzt</string>
@@ -554,6 +560,8 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="autodel_at_once">Sofort</string>
     <string name="after_30_seconds">Nach 30 Sekunden</string>
     <string name="after_1_minute">Nach 1 Minute</string>
+    <string name="after_5_minutes">Nach 5 Minuten</string>
+    <string name="after_30_minutes">Nach 30 Minuten</string>
     <string name="autodel_after_1_hour">Nach 1 Stunde</string>
     <string name="autodel_after_1_day">Nach 1 Tag</string>
     <string name="autodel_after_1_week">Nach 1 Woche</string>
@@ -603,6 +611,10 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="systemmsg_ephemeral_timer_day">Ablaufzeit verschwindender Nachrichten auf 1 Tag festgelegt.</string>
     <string name="systemmsg_ephemeral_timer_week">Ablaufzeit verschwindender Nachrichten auf 1 Woche festgelegt.</string>
     <string name="systemmsg_ephemeral_timer_four_weeks">Ablaufzeit verschwindender Nachrichten auf 4 Wochen festgelegt.</string>
+    <string name="systemmsg_ephemeral_timer_minutes">Ablaufzeit verschwindender Nachrichten auf %1$s Minuten festgelegt.</string>
+    <string name="systemmsg_ephemeral_timer_hours">Ablaufzeit verschwindender Nachrichten auf %1$s Stunden festgelegt.</string>
+    <string name="systemmsg_ephemeral_timer_days">Ablaufzeit verschwindender Nachrichten auf %1$s Tage festgelegt.</string>
+    <string name="systemmsg_ephemeral_timer_weeks">Ablaufzeit verschwindender Nachrichten auf %1$s Wochen festgelegt.</string>
 
     <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
     <string name="systemmsg_chat_protection_disabled">Chat-Absicherung ausgeschaltet.</string>

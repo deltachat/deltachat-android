@@ -39,6 +39,12 @@
     <string name="profile">Profile</string>
     <string name="main_menu">Menuja kryesore</string>
     <string name="start_chat">Nisni fjalosje</string>
+    <string name="show_full_message">Shfaq mesazhin e plotë…</string>
+    <string name="load_remote_content">Ngarko figura të largëta</string>
+    <!-- possible answers to the question are: Never, Always, Once -->
+    <string name="load_remote_content_ask">Figurat e largëta mund të përdoren për t’ju ndjekur.\n\nRregullimi lejon gjithashtu të ngarkohen shkronja dhe lëndë tjetër. Edhe nëse është e çaktivizuar, prapë mund të shihni figura të trupëzuara ose të ruajtura në fshehtinë.\n\nTë ngarkohen figura të largëta?</string>
+    <string name="always">Përherë</string>
+    <string name="once">Vetëm njëherë</string>
     <string name="show_password">Shfaqe fjalëkalimin</string>
     <string name="hide_password">Fshihe fjalëkalimin</string>
     <string name="not_now">Jo tani</string>
@@ -186,6 +192,7 @@
     <string name="menu_scroll_to_top">Rrëshqit sipër në krye</string>
     <string name="menu_help">Nidhmë</string>
     <string name="menu_select_all">Përzgjidhi krejt</string>
+    <string name="select_more">Përzgjidhni më tepër</string>
     <string name="menu_expand">Zgjeroje</string>
     <string name="menu_edit_name">Përpunoni emrin</string>
     <string name="menu_settings">Rregullime</string>
@@ -598,7 +605,6 @@
     <string name="systemmsg_ephemeral_timer_day">Kohëmatësi për mesazhe që zhduken është vënë në 1 ditë.</string>
     <string name="systemmsg_ephemeral_timer_week">Kohëmatësi për mesazhe që zhduken është vënë në 1 javë.</string>
     <string name="systemmsg_ephemeral_timer_four_weeks">Kohëmatësi për mesazhe që zhduken është vënë në 4 javë.</string>
-
     <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
     <string name="systemmsg_chat_protection_disabled">Mbrojtja e fjalosjes u çaktivizua.</string>
     <string name="systemmsg_chat_protection_enabled">Mbrojtja e fjalosjes u aktivizua.</string>

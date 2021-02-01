@@ -129,10 +129,22 @@
                 app:scaleEmojis="true"
                 tools:text="Mango pickle lorem ipsum"/>
 
-            <TextView
+            <Button
+                android:id="@+id/show_full_message"
+                android:visibility="gone"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility="gone" />
+                android:layout_height="28dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="10dp"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:background="@drawable/conversation_item_update_background"
+                android:minWidth="20dp"
+                android:text="@string/show_full_message"
+                android:textAllCaps="false"/>
 
             <org.thoughtcrime.securesms.components.ConversationItemFooter
                 android:id="@+id/conversation_item_footer"

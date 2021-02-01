@@ -39,6 +39,12 @@
     <string name="profile">Perfil</string>
     <string name="main_menu">Menú principal</string>
     <string name="start_chat">Inciar chat</string>
+    <string name="show_full_message">Mostrar mensaxe completa...</string>
+    <string name="load_remote_content">Cargar imaxes remotas</string>
+    <!-- possible answers to the question are: Never, Always, Once -->
+    <string name="load_remote_content_ask">As imaxes remotas poden ser utilizadas para rastrexarte.\n\nO axuste tamén permite cargar tipografías e outro contido. Incluso estando desactivado, é posible ver as imaxes gardadas na caché.\n\nCargar imaxes remotas?</string>
+    <string name="always">Sempre</string>
+    <string name="once">Unha vez</string>
     <string name="show_password">Mostrar contrasinal</string>
     <string name="hide_password">Agochar contrasinal</string>
     <string name="not_now">Agora non</string>
@@ -187,6 +193,7 @@
     <string name="menu_scroll_to_top">Moverse arriba</string>
     <string name="menu_help">Axuda</string>
     <string name="menu_select_all">Escoller todo</string>
+    <string name="select_more">Elexir máis</string>
     <string name="menu_expand">Despregar</string>
     <string name="menu_edit_name">Editar nome</string>
     <string name="menu_settings">Axustes</string>
@@ -600,7 +607,6 @@
     <string name="systemmsg_ephemeral_timer_day">As mensaxes desaparecerán após 1 día.</string>
     <string name="systemmsg_ephemeral_timer_week">As mensaxes desaparecerán após 1 semana.</string>
     <string name="systemmsg_ephemeral_timer_four_weeks">As mensaxes desaparecerán após 4 semanas.</string>
-
     <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
     <string name="systemmsg_chat_protection_disabled">Protección do chat desactivada.</string>
     <string name="systemmsg_chat_protection_enabled">Protección do chat activada.</string>

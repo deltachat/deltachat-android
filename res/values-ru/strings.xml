@@ -39,6 +39,12 @@
     <string name="profile">Профиль</string>
     <string name="main_menu">Главное меню</string>
     <string name="start_chat">Начать чат</string>
+    <string name="show_full_message">Показать сообщение…</string>
+    <string name="load_remote_content">Загружать удаленные изображения</string>
+    <!-- possible answers to the question are: Never, Always, Once -->
+    <string name="load_remote_content_ask">Удаленные изображения могут использоваться для отслеживания вас.\n\nЭта настройка также позволяет загружать удаленные шрифты и другое содержимое. Даже если она отключена, вы все равно сможете видеть встроенные или кешированные изображения.\n\nЗагружать удаленные изображения?</string>
+    <string name="always">Всегда</string>
+    <string name="once">Только сейчас</string>
     <string name="show_password">Показать пароль</string>
     <string name="hide_password">Скрыть пароль</string>
     <string name="not_now">Не сейчас</string>
@@ -199,6 +205,7 @@
     <string name="menu_scroll_to_top">Прокрутить вверх</string>
     <string name="menu_help">Помощь</string>
     <string name="menu_select_all">Выбрать всё</string>
+    <string name="select_more">Выбрать больше</string>
     <string name="menu_expand">Расширить</string>
     <string name="menu_edit_name">Изменить имя</string>
     <string name="menu_settings">Настройки</string>
@@ -577,6 +584,8 @@
     <string name="autodel_at_once">Сразу</string>
     <string name="after_30_seconds">Через 30 секунд</string>
     <string name="after_1_minute">Через 1 минуту</string>
+    <string name="after_5_minutes">Через 5 минут</string>
+    <string name="after_30_minutes">Через 30 минут</string>
     <string name="autodel_after_1_hour">Через 1 час</string>
     <string name="autodel_after_1_day">Через 1 день</string>
     <string name="autodel_after_1_week">Через 1 неделю</string>
@@ -626,6 +635,10 @@
     <string name="systemmsg_ephemeral_timer_day">Таймер исчезающих сообщений установлен на 1 день.</string>
     <string name="systemmsg_ephemeral_timer_week">Таймер исчезающих сообщений установлен на 1 неделю.</string>
     <string name="systemmsg_ephemeral_timer_four_weeks">Таймер исчезающих сообщений установлен на 4 недели.</string>
+    <string name="systemmsg_ephemeral_timer_minutes">Таймер исчезающих сообщений установлен в %1$s минут.</string>
+    <string name="systemmsg_ephemeral_timer_hours">Таймер исчезающих сообщений установлен в %1$s часов.</string>
+    <string name="systemmsg_ephemeral_timer_days">Таймер исчезающих сообщений установлен в %1$s дней.</string>
+    <string name="systemmsg_ephemeral_timer_weeks">Таймер исчезающих сообщений установлен в %1$s недель.</string>
 
     <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
     <string name="systemmsg_chat_protection_disabled">Защита чата отключена.</string>

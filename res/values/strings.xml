@@ -39,6 +39,12 @@
     <string name="profile">Profile</string>
     <string name="main_menu">Main menu</string>
     <string name="start_chat">Start chat</string>
+    <string name="show_full_message">Show full message…</string>
+    <string name="load_remote_content">Load remote images</string>
+    <!-- possible answers to the question are: Never, Always, Once -->
+    <string name="load_remote_content_ask">Remote images can be used to track you.\n\nThe setting also allows loading fonts and other content. Even if it is disabled, you may still see embedded or cached images.\n\nLoad remote images?</string>
+    <string name="always">Always</string>
+    <string name="once">Once</string>
     <string name="show_password">Show password</string>
     <string name="hide_password">Hide password</string>
     <string name="not_now">Not now</string>
@@ -552,6 +558,8 @@
     <string name="autodel_at_once">At once</string>
     <string name="after_30_seconds">After 30 seconds</string>
     <string name="after_1_minute">After 1 minute</string>
+    <string name="after_5_minutes">After 5 minutes</string>
+    <string name="after_30_minutes">After 30 minutes</string>
     <string name="autodel_after_1_hour">After 1 hour</string>
     <string name="autodel_after_1_day">After 1 day</string>
     <string name="autodel_after_1_week">After 1 week</string>
@@ -601,6 +609,10 @@
     <string name="systemmsg_ephemeral_timer_day">Disappearing messages timer set to 1 day.</string>
     <string name="systemmsg_ephemeral_timer_week">Disappearing messages timer set to 1 week.</string>
     <string name="systemmsg_ephemeral_timer_four_weeks">Disappearing messages timer set to 4 weeks.</string>
+    <string name="systemmsg_ephemeral_timer_minutes">Disappearing messages timer set to %1$s minutes.</string>
+    <string name="systemmsg_ephemeral_timer_hours">Disappearing messages timer set to %1$s hours.</string>
+    <string name="systemmsg_ephemeral_timer_days">Disappearing messages timer set to %1$s days.</string>
+    <string name="systemmsg_ephemeral_timer_weeks">Disappearing messages timer set to %1$s weeks.</string>
 
     <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
     <string name="systemmsg_chat_protection_disabled">Chat protection disabled.</string>

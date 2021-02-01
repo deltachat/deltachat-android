@@ -597,7 +597,6 @@
     <string name="systemmsg_ephemeral_timer_day">Ustawiono zegar znikających wiadomości na 1 dzień.</string>
     <string name="systemmsg_ephemeral_timer_week">Ustawiono zegar znikających wiadomości na 1 tydzień.</string>
     <string name="systemmsg_ephemeral_timer_four_weeks">Ustawiono zegar znikających wiadomości na 4 tygodnie.</string>
-
     <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
     <string name="systemmsg_chat_protection_disabled">Ochrona czatu wyłączona.</string>
     <string name="systemmsg_chat_protection_enabled">Ochrona czatu włączona.</string>
