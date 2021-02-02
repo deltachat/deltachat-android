@@ -138,7 +138,7 @@
         <!-- 4 --> <item>@string/autodel_after_1_hour</item>
         <!-- 5 --> <item>@string/autodel_after_1_day</item>
         <!-- 6 --> <item>@string/autodel_after_1_week</item>
-        <!-- 7 --> <item>@string/autodel_after_4_weeks</item>
+        <!-- 7 --> <item>@string/after_5_weeks</item>
     </string-array>
 
     <string-array name="mute_durations">
@@ -154,7 +154,7 @@
       <item>@string/autodel_after_1_hour</item>
       <item>@string/autodel_after_1_day</item>
       <item>@string/autodel_after_1_week</item>
-      <item>@string/autodel_after_4_weeks</item>
+      <item>@string/after_5_weeks</item>
       <item>@string/autodel_after_1_year</item>
   </string-array>
 
@@ -163,7 +163,7 @@
       <item>3600</item>
       <item>86400</item>
       <item>604800</item>
-      <item>2419200</item>
+      <item>3024000</item>
       <item>31536000</item>
   </string-array>
 
@@ -173,7 +173,7 @@
       <item>@string/autodel_after_1_hour</item>
       <item>@string/autodel_after_1_day</item>
       <item>@string/autodel_after_1_week</item>
-      <item>@string/autodel_after_4_weeks</item>
+      <item>@string/after_5_weeks</item>
       <item>@string/autodel_after_1_year</item>
   </string-array>
 
@@ -183,7 +183,7 @@
       <item>3600</item>
       <item>86400</item>
       <item>604800</item>
-      <item>2419200</item>
+      <item>3024000</item>
       <item>31536000</item>
   </string-array>
 
