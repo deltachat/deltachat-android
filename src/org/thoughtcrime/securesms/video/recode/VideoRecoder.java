@@ -802,7 +802,7 @@ public class VideoRecoder {
 
       // check if video bitrate is already reasonable
       final int  MAX_KBPS = 1500000;
-      final long MAX_BYTES = 100000; //DcHelper.getInt(context, "sys.msgsize_max_recommended");
+      final long MAX_BYTES = DcHelper.getInt(context, "sys.msgsize_max_recommended");
       long inBytes = new File(inPath).length();
       if (inBytes > 0 && inBytes <= MAX_BYTES && vei.originalVideoBitrate <= MAX_KBPS*2 /*be tolerant as long the file size matches*/) {
         Log.i(TAG, String.format("recoding for %s is not needed, %d bytes and %d kbps are ok", inPath, inBytes, vei.originalVideoBitrate));
@@ -814,10 +814,21 @@ public class VideoRecoder {
       long maxVideoBytes = MAX_BYTES - vei.originalAudioBytes - resultDurationMs /*10 kbps codec overhead*/;
       vei.resultVideoBitrate = (int) (maxVideoBytes / Math.max(1, resultDurationMs / 1000) * 8);
 
-      vei.resultVideoBitrate = 200000;
+      if (vei.resultVideoBitrate < 200000) {
+        vei.resultVideoBitrate = 200000;
+      } else if (vei.resultVideoBitrate > 500000) {
+        boolean hardCompression = Prefs.isHardCompressionEnabled(context);
+        if (resultDurationMs < 30 * 1000 && !hardCompression) {
+          vei.resultVideoBitrate = MAX_KBPS; // ~ 12 MB/minute, plus Audio
+        } else if (resultDurationMs < 60 * 1000 && !hardCompression) {
+          vei.resultVideoBitrate = 1000000; // ~ 8 MB/minute, plus Audio
+        } else {
+          vei.resultVideoBitrate = 500000; // ~ 3.7 MB/minute, plus Audio
+        }
+      }
 
       // calculate video dimensions
-      int maxSide = 480;
+      int maxSide = vei.resultVideoBitrate > 400000 ? 640 : 480;
       vei.resultWidth = vei.originalWidth;
       vei.resultHeight = vei.originalHeight;
       if (vei.resultWidth > maxSide || vei.resultHeight > maxSide) {
