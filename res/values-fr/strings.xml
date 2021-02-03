@@ -555,6 +555,7 @@
     <string name="autodel_after_1_day">Après 1 jour</string>
     <string name="autodel_after_1_week">Après 1 semaine</string>
     <string name="autodel_after_4_weeks">Après 4 semaines</string>
+    <string name="after_5_weeks">Après 5 semaines</string>
     <string name="autodel_after_1_year">Après 1 année</string>
 
     <!-- autocrypt -->

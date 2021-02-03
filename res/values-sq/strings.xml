@@ -556,6 +556,8 @@
     <string name="autodel_at_once">Menjëherë</string>
     <string name="after_30_seconds">Pas 30 sekondash</string>
     <string name="after_1_minute">Pas 1 minute</string>
+    <string name="after_5_minutes">Pas 5 minutash</string>
+    <string name="after_30_minutes">Pas 30 minutash</string>
     <string name="autodel_after_1_hour">Pas 1 ore</string>
     <string name="autodel_after_1_day">Pas 1 dite</string>
     <string name="autodel_after_1_week">Pas 1 jave</string>
@@ -605,6 +607,11 @@
     <string name="systemmsg_ephemeral_timer_day">Kohëmatësi për mesazhe që zhduken është vënë në 1 ditë.</string>
     <string name="systemmsg_ephemeral_timer_week">Kohëmatësi për mesazhe që zhduken është vënë në 1 javë.</string>
     <string name="systemmsg_ephemeral_timer_four_weeks">Kohëmatësi për mesazhe që zhduken është vënë në 4 javë.</string>
+    <string name="systemmsg_ephemeral_timer_minutes">Kohëmatësi për mesazhe që zhduken është vënë në %1$s minuta.</string>
+    <string name="systemmsg_ephemeral_timer_hours">Kohëmatësi për mesazhe që zhduken është vënë në %1$s orë.</string>
+    <string name="systemmsg_ephemeral_timer_days">Kohëmatësi i zhdukjes së mesazheve është vënë në %1$s ditë.</string>
+    <string name="systemmsg_ephemeral_timer_weeks">Kohëmatësi për mesazhe që zhduken është vënë në %1$s javë.</string>
+
     <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
     <string name="systemmsg_chat_protection_disabled">Mbrojtja e fjalosjes u çaktivizua.</string>
     <string name="systemmsg_chat_protection_enabled">Mbrojtja e fjalosjes u aktivizua.</string>
