@@ -93,9 +93,9 @@ public class DataCollectionTask extends AsyncTask<Void, Void, Set<String>> {
     }
 
     @Override
-    protected void onPostExecute(Set<String> strings) {
+    protected void onPostExecute(Set<String> emojiCodePoints) {
         if (!this.isCancelled()) {
-            callback.onDataCollectionFinished(strings);
+            callback.onDataCollectionFinished(emojiCodePoints);
         }
         instances.remove(this);
         Log.d(TAG, "performance test - collect Data finished");
