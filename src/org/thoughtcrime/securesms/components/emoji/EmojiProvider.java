@@ -3,6 +3,7 @@ package org.thoughtcrime.securesms.components.emoji;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.ColorFilter;
 import android.graphics.Paint;
@@ -31,7 +32,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-class EmojiProvider {
+public class EmojiProvider {
 
   private static final    String        TAG      = EmojiProvider.class.getSimpleName();
   private static volatile EmojiProvider instance = null;
@@ -111,6 +112,19 @@ class EmojiProvider {
     return getEmojiDrawable(drawInfo, false);
   }
 
+  public boolean isEmoji(CharSequence emoji) {
+     return emojiTree.getEmoji(emoji, 0, emoji.length()) != null;
+  }
+
+  public @Nullable Bitmap getEmojiBitmap(CharSequence emoji, boolean background) {
+    EmojiDrawInfo drawInfo = emojiTree.getEmoji(emoji, 0, emoji.length());
+    EmojiDrawable drawable = ((EmojiDrawable) getEmojiDrawable(drawInfo, background));
+    if (drawable != null) {
+      return drawable.getEmojiBitmap();
+    }
+    return null;
+  }
+
   protected  @Nullable Drawable getEmojiDrawable(@Nullable EmojiDrawInfo drawInfo, boolean background) {
     if (drawInfo == null)  {
       return null;
@@ -157,6 +171,26 @@ class EmojiProvider {
       this.intrinsicWidth  = EMOJI_RAW_WIDTH  * decodeScale;
       this.intrinsicHeight = EMOJI_RAW_HEIGHT * decodeScale;
     }
+
+    private Bitmap getEmojiBitmap() {
+      Bitmap singleEmoji = Bitmap.createBitmap((int) intrinsicWidth/2, (int) intrinsicHeight/2, Bitmap.Config.ARGB_8888);
+
+      final int row = info.getIndex() / EMOJI_PER_ROW;
+      final int rowIndex = info.getIndex() % EMOJI_PER_ROW;
+
+      Rect desRect = new Rect(0, 0, (int) intrinsicWidth, (int) intrinsicWidth);
+      Rect srcRect = new Rect((int)(rowIndex * intrinsicWidth),
+        (int)(row * intrinsicHeight + row * verticalPad)+1,
+        (int)(((rowIndex + 1) * intrinsicWidth)-1),
+        (int)((row + 1) * intrinsicHeight + row * verticalPad)-1);
+
+      Canvas canvas = new Canvas(singleEmoji);
+      canvas.scale(0.5f, 0.5f);
+      canvas.drawBitmap(bmp, srcRect, desRect, paint);
+
+      return singleEmoji;
+    }
+
 
     @Override
     public void draw(@NonNull Canvas canvas) {

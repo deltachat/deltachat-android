@@ -11,14 +11,17 @@ import com.mapbox.geojson.Point;
 import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.geometry.LatLngBounds;
 
+import org.thoughtcrime.securesms.components.emoji.EmojiProvider;
 import org.thoughtcrime.securesms.map.model.MapSource;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 import static org.thoughtcrime.securesms.map.MapDataManager.ACCURACY;
 import static org.thoughtcrime.securesms.map.MapDataManager.CONTACT_ID;
+import static org.thoughtcrime.securesms.map.MapDataManager.IS_EMOJI_CHAR;
 import static org.thoughtcrime.securesms.map.MapDataManager.IS_POI;
 import static org.thoughtcrime.securesms.map.MapDataManager.LAST_LOCATION;
 import static org.thoughtcrime.securesms.map.MapDataManager.LAST_POSITION_ICON;
@@ -41,18 +44,24 @@ public class DataCollector {
     private ConcurrentHashMap<Integer, MapSource> contactMapSources;
     private ConcurrentHashMap<String, LinkedList<Feature>> featureCollections;
     private ConcurrentHashMap<Integer, Feature> lastPositions;
+    private Set<String> emojiCodePoints;
     private LatLngBounds.Builder boundingBuilder;
+    private EmojiProvider emojiProvider;
 
     public DataCollector(DcContext dcContext,
                          ConcurrentHashMap<Integer, MapSource> contactMapSources,
                          ConcurrentHashMap<String, LinkedList<Feature>> featureCollections,
                          ConcurrentHashMap<Integer, Feature> lastPositions,
+                         Set<String> emojiCodePoints,
+                         EmojiProvider emojiProvider,
                          LatLngBounds.Builder boundingBuilder) {
         this.dcContext = dcContext;
         this.contactMapSources = contactMapSources;
         this.featureCollections = featureCollections;
         this.lastPositions = lastPositions;
         this.boundingBuilder = boundingBuilder;
+        this.emojiCodePoints = emojiCodePoints;
+        this.emojiProvider = emojiProvider;
     }
 
 
@@ -85,6 +94,7 @@ public class DataCollector {
                             "";
             boolean isPoi = locations.isIndependent(i);
             int messageId = locations.getMsgId(i);
+            boolean isEmojiChar = !codepointChar.isEmpty() && emojiProvider.isEmoji(codepointChar);
 
             Feature pointFeature = Feature.fromGeometry(point, new JsonObject(), String.valueOf(locations.getLocationId(i)));
             pointFeature.addBooleanProperty(MARKER_SELECTED, false);
@@ -94,9 +104,17 @@ public class DataCollector {
             pointFeature.addNumberProperty(MESSAGE_ID, messageId);
             pointFeature.addNumberProperty(ACCURACY, locations.getAccuracy(i));
             pointFeature.addStringProperty(MARKER_CHAR, codepointChar);
-            pointFeature.addStringProperty(MARKER_ICON, isPoi ?
-                    contactMapMetadata.getMarkerPoi() :
-                    contactMapMetadata.getMarkerIcon());
+            pointFeature.addBooleanProperty(IS_EMOJI_CHAR, isEmojiChar);
+            if (isPoi && isEmojiChar) {
+              //we save emoji bitmaps in mapboxstyle with the codepoint as the key
+              pointFeature.addStringProperty(MARKER_ICON, codepointChar);
+              emojiCodePoints.add(codepointChar);
+            } else if (isPoi) {
+              pointFeature.addStringProperty(MARKER_ICON, contactMapMetadata.getMarkerPoi());
+            } else {
+              pointFeature.addStringProperty(MARKER_ICON, contactMapMetadata.getMarkerIcon());
+            }
+
             pointFeature.addBooleanProperty(IS_POI, isPoi);
             if (isPoi && codepointChar.length() == 0 && messageId != 0) {
                 //has a long poi label
