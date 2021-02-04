@@ -30,7 +30,7 @@ public class DataCollectionTask extends AsyncTask<Void, Void, Set<String>> {
     }
 
     private static final String TAG = DataCollectionTask.class.getSimpleName();
-    private static final HashSet<DataCollectionTask> instances = new HashSet<>();
+    private static final Set<DataCollectionTask> instances = Collections.newSetFromMap(new ConcurrentHashMap<>());
 
     private final int chatId;
     private final int[] contactIds;
