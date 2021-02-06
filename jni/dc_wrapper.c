@@ -376,6 +376,15 @@ JNIEXPORT void Java_com_b44t_messenger_DcContext_markseenMsgs(JNIEnv *env, jobje
 }
 
 
+JNIEXPORT jstring Java_com_b44t_messenger_DcContext_getChatEncrInfo(JNIEnv *env, jobject obj, jint chat_id)
+{
+    char* temp = dc_get_chat_encrinfo(get_dc_context(env, obj), chat_id);
+        jstring ret = JSTRING_NEW(temp);
+    dc_str_unref(temp);
+    return ret;
+}
+
+
 JNIEXPORT void Java_com_b44t_messenger_DcContext_marknoticedChat(JNIEnv *env, jobject obj, jint chat_id)
 {
     dc_marknoticed_chat(get_dc_context(env, obj), chat_id);

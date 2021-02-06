@@ -464,7 +464,8 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
   }
 
   public void onEncrInfo() {
-    String info_str = dcContext.getContactEncrInfo(contactId);
+    String info_str = isContactProfile() ?
+      dcContext.getContactEncrInfo(contactId) : dcContext.getChatEncrInfo(chatId);
     new AlertDialog.Builder(this)
         .setMessage(info_str)
         .setPositiveButton(android.R.string.ok, null)
