@@ -6,4 +6,24 @@
           android:id="@+id/edit_name"
           app:showAsAction="never"/>
 
+    <item android:title="@string/menu_mute"
+        android:id="@+id/menu_mute_notifications"
+        app:showAsAction="never"/>
+
+    <item android:title="@string/pref_sound"
+        android:id="@+id/menu_sound"
+        app:showAsAction="never"/>
+
+    <item android:title="@string/pref_vibrate"
+        android:id="@+id/menu_vibrate"
+        app:showAsAction="never"/>
+
+    <item android:title="@string/profile_encryption"
+        android:id="@+id/show_encr_info"
+        app:showAsAction="never"/>
+
+    <item android:title="@string/menu_block_contact"
+        android:id="@+id/block_contact"
+        app:showAsAction="never"/>
+
 </menu>
