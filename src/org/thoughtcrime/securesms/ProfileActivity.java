@@ -131,9 +131,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
 
       if (chatId != 0) {
         inflater.inflate(R.menu.profile_chat, menu);
-        if (chatIsMailingList) {
-          menu.findItem(R.id.edit_name).setVisible(false);
-        } else if (chatIsGroup) {
+        if (chatIsGroup) {
           menu.findItem(R.id.edit_name).setTitle(R.string.menu_group_name_and_image);
         }
       }
