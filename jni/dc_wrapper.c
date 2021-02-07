@@ -1010,15 +1010,9 @@ JNIEXPORT jint Java_com_b44t_messenger_DcChat_getId(JNIEnv *env, jobject obj)
 }
 
 
-JNIEXPORT jboolean Java_com_b44t_messenger_DcChat_isGroup(JNIEnv *env, jobject obj)
+JNIEXPORT jint Java_com_b44t_messenger_DcChat_getType(JNIEnv *env, jobject obj)
 {
-    return dc_chat_get_type(get_dc_chat(env, obj)) == DC_CHAT_TYPE_GROUP;
-}
-
-
-JNIEXPORT jboolean Java_com_b44t_messenger_DcChat_isMailingList(JNIEnv *env, jobject obj)
-{
-    return dc_chat_is_mailing_list(get_dc_chat(env, obj))!=0;
+    return dc_chat_get_type(get_dc_chat(env, obj));
 }
 
 
