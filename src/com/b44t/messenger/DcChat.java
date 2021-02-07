@@ -1,8 +1,11 @@
 package com.b44t.messenger;
 
-import org.thoughtcrime.securesms.connect.ApplicationDcContext;
-
 public class DcChat {
+
+    public static final int DC_CHAT_TYPE_UNDEFINED   = 0;
+    public static final int DC_CHAT_TYPE_SINGLE      = 100;
+    public static final int DC_CHAT_TYPE_GROUP       = 120;
+    public static final int DC_CHAT_TYPE_MAILINGLIST = 140;
 
     public static final int DC_CHAT_NO_CHAT          = 0;
     public final static int DC_CHAT_ID_DEADDROP      = 1;
@@ -25,7 +28,7 @@ public class DcChat {
     }
 
     public native int     getId             ();
-    public native boolean isGroup           ();
+    public native int     getType           ();
     public native int     getVisibility     ();
     public native String  getName           ();
     public native String  getProfileImage   ();
@@ -38,11 +41,27 @@ public class DcChat {
     public native boolean isSendingLocations();
     public native boolean isMuted           ();
 
+
+    // aliases and higher-level tools
+
+    public boolean isGroup() {
+      // isMultiUser() might fit better,
+      // however, would result in lots of code changes, so we leave this as is for now.
+      int type = getType();
+      return type == DC_CHAT_TYPE_GROUP || type == DC_CHAT_TYPE_MAILINGLIST;
+    }
+
+    public boolean isMailingList() {
+        return getType() == DC_CHAT_TYPE_MAILINGLIST;
+    }
+
     public boolean canVideochat() {
         return canSend() && !isGroup() && !isSelfTalk();
     }
 
+
     // working with raw c-data
+
     private long        chatCPtr;    // CAVE: the name is referenced in the JNI
     private native void unrefChatCPtr();
     public long         getChatCPtr  () { return chatCPtr; }

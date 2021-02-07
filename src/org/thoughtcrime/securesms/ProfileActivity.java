@@ -67,6 +67,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
   private int                  chatId;
   private boolean              chatIsGroup;
   private boolean              chatIsDeviceTalk;
+  private boolean              chatIsMailingList;
   private int                  contactId;
   private boolean              fromChat;
 
@@ -200,6 +201,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
     contactId        = getIntent().getIntExtra(CONTACT_ID_EXTRA, 0);
     chatIsGroup      = false;
     chatIsDeviceTalk = false;
+    chatIsMailingList= false;
     fromChat         = getIntent().getBooleanExtra(FROM_CHAT, false);
 
     if (contactId!=0) {
@@ -209,13 +211,14 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
       DcChat dcChat = dcContext.getChat(chatId);
       chatIsGroup = dcChat.isGroup();
       chatIsDeviceTalk = dcChat.isDeviceTalk();
+      chatIsMailingList = dcChat.isMailingList();
       if(!chatIsGroup) {
         final int[] members = dcContext.getChatContacts(chatId);
         contactId = members.length>=1? members[0] : 0;
       }
     }
 
-    if(!isGlobalProfile() && !isSelfProfile() && !chatIsDeviceTalk) {
+    if(!isGlobalProfile() && !isSelfProfile() && !chatIsDeviceTalk && !chatIsMailingList) {
       tabs.add(TAB_SETTINGS);
     }
     tabs.add(TAB_GALLERY);
@@ -306,7 +309,9 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
           if(isContactProfile()) {
             return getString(contactId==DcContact.DC_CONTACT_ID_SELF? R.string.self : R.string.tab_contact);
           }
-          else {
+          else if (chatIsMailingList) {
+            return getString(R.string.mailing_list);
+          } else {
             return getString(R.string.tab_group);
           }
 

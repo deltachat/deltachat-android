@@ -25,22 +25,6 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
-import com.b44t.messenger.DcEvent;
-import com.google.android.material.snackbar.Snackbar;
-
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
-import androidx.loader.app.LoaderManager;
-import androidx.loader.content.Loader;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.view.ActionMode;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -50,11 +34,26 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.ActionMode;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.loader.app.LoaderManager;
+import androidx.loader.content.Loader;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcChatlist;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
+import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcEventCenter;
+import com.b44t.messenger.DcMsg;
+import com.google.android.material.snackbar.Snackbar;
 
 import org.thoughtcrime.securesms.ConversationListAdapter.ItemClickListener;
 import org.thoughtcrime.securesms.components.recyclerview.DeleteItemAnimator;
@@ -68,7 +67,6 @@ import org.thoughtcrime.securesms.util.RelayUtil;
 import org.thoughtcrime.securesms.util.SendRelayedMessageUtil;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
-import org.thoughtcrime.securesms.util.guava.Optional;
 import org.thoughtcrime.securesms.util.task.SnackbarAsyncTask;
 import org.thoughtcrime.securesms.util.views.ProgressDialog;
 
@@ -300,7 +298,7 @@ public class ConversationListFragment extends Fragment
       protected void executeAction(@Nullable Void parameter) {
         for (long chatId : selectedConversations) {
           if (chatId == DcChat.DC_CHAT_ID_DEADDROP) {
-            dcContext.marknoticedContact(getListAdapter().getDeaddropContactId());
+            dcContext.marknoticedChat(DcChat.DC_CHAT_ID_DEADDROP);
           }
           else {
             dcContext.setChatVisibility((int)chatId,
@@ -348,7 +346,7 @@ public class ConversationListFragment extends Fragment
           protected Void doInBackground(Void... params) {
             for (long chatId : selectedConversations) {
               if (chatId == DcChat.DC_CHAT_ID_DEADDROP) {
-                dcContext.marknoticedContact(getListAdapter().getDeaddropContactId());
+                dcContext.marknoticedChat(DcChat.DC_CHAT_ID_DEADDROP);
               }
               else {
                 dcContext.notificationCenter.removeNotifications((int) chatId);
@@ -432,23 +430,18 @@ public class ConversationListFragment extends Fragment
 
       if (chatId == DcChat.DC_CHAT_ID_DEADDROP) {
         DcContext dcContext = DcHelper.getContext(getActivity());
-        int msgId = item.getMsgId();
-        int contactId = item.getContactId();
-        DcContact contact = dcContext.getContact(contactId);
+        final int msgId = item.getMsgId();
+        DeaddropQuestionHelper helper = new DeaddropQuestionHelper(getContext(), dcContext.getMsg(msgId));
         new AlertDialog.Builder(getActivity())
-                .setMessage(getActivity().getString(R.string.ask_start_chat_with, contact.getNameNAddr()))
                 .setPositiveButton(android.R.string.ok, (dialog, which) -> {
-                  int belongingChatId = dcContext.createChatByMsgId(msgId);
+                  int belongingChatId = dcContext.decideOnContactRequest(msgId, DcContext.DC_DECISION_START_CHAT);
                   if (belongingChatId != 0) {
                     handleCreateConversation(belongingChatId);
                   }
                 })
-                .setNegativeButton(R.string.not_now, (dialog, which) -> {
-                  dcContext.marknoticedContact(contactId);
-                })
-                .setNeutralButton(R.string.menu_block_contact, (dialog, which) -> {
-                  dcContext.blockContact(contactId, 1);
-                })
+                .setNegativeButton(R.string.not_now, (dialog, which) -> dcContext.decideOnContactRequest(msgId, DcContext.DC_DECISION_NOT_NOW))
+                .setNeutralButton(helper.answerBlock, (dialog, which) -> dcContext.decideOnContactRequest(msgId, DcContext.DC_DECISION_BLOCK))
+                .setMessage(helper.question)
                 .show();
         return;
       }
@@ -483,6 +476,25 @@ public class ConversationListFragment extends Fragment
       }
     }
   }
+
+  static class DeaddropQuestionHelper {
+    public String question;
+    public String answerBlock;
+
+    DeaddropQuestionHelper(Context context, DcMsg dcMsg) {
+      DcContext dcContext = DcHelper.getContext(context);
+      DcChat dcChat = dcContext.getChat(dcMsg.getRealChatId());
+
+      if (dcChat.isMailingList()) {
+        question = context.getString(R.string.ask_show_mailing_list, dcChat.getName());
+        answerBlock = context.getString(R.string.block);
+      } else {
+        DcContact dcContact = dcContext.getContact(dcMsg.getFromId());
+        question = context.getString(R.string.ask_start_chat_with, dcMsg.getSenderName(dcContact));
+        answerBlock = context.getString(R.string.menu_block_contact);
+      }
+    }
+  };
 
   @Override
   public void onSwitchToArchive() {
