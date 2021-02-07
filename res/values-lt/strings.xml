@@ -483,6 +483,7 @@
     <string name="autodel_after_1_day">Po 1 dienos</string>
     <string name="autodel_after_1_week">Po 1 savaitės</string>
     <string name="autodel_after_4_weeks">Po 4 savaičių</string>
+    <string name="after_5_weeks">Po 5 savaičių</string>
     <string name="autodel_after_1_year">Po 1 metų</string>
 
     <!-- autocrypt -->
@@ -514,6 +515,10 @@
     <string name="systemmsg_read_receipt_body">Tai yra pranešimas apie žinutės \"%1$s\" skaitymą.\n\nTai reiškia, kad žinutė buvo atvaizduota gavėjo įrenginyje, tačiau neužtikrina, kad jos turinys buvo perskaitytas.</string>
     <string name="systemmsg_cannot_decrypt">Nepavyksta iššifruoti šios žinutės.\n\n• Galima, tiesiog, atsakyti į šią žinutę ir paprašyti siuntėjo dar kartą išsiųsti šią žinutę.\n\n• Tuo atveju, jeigu iš naujo įdiegėte Delta Chat ar kitą el. pašto programą šiame ar kitame įrenginyje, jūs galite pageidauti išsiųsti Autocrypt sąrankos žinutę iš to įrenginio.</string>
     <string name="systemmsg_subject_for_new_contact">Žinutė nuo %1$s</string>
+    <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
+    <string name="systemmsg_chat_protection_disabled">Pokalbio apsauga išjungta.</string>
+    <string name="systemmsg_chat_protection_enabled">Pokalbio apsauga įjungta.</string>
+
     <!-- screen lock -->
     <string name="screenlock_title">Ekrano užraktas</string>
     <string name="screenlock_authentication_failed">Tapatybės nustatymas nepavyko.</string>

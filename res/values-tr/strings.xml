@@ -564,6 +564,7 @@
     <string name="autodel_after_1_day">1 gün sonra</string>
     <string name="autodel_after_1_week">1 hafta sonra</string>
     <string name="autodel_after_4_weeks">4 hafta sonra</string>
+    <string name="after_5_weeks">5 hafta sonra</string>
     <string name="autodel_after_1_year">1 yıl sonra</string>
 
     <!-- autocrypt -->

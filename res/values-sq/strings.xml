@@ -562,6 +562,7 @@
     <string name="autodel_after_1_day">Pas 1 dite</string>
     <string name="autodel_after_1_week">Pas 1 jave</string>
     <string name="autodel_after_4_weeks">Pas 4 javësh</string>
+    <string name="after_5_weeks">Pas 5 javësh</string>
     <string name="autodel_after_1_year">Pas 1 viti</string>
 
     <!-- autocrypt -->

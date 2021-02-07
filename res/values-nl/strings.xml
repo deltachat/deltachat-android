@@ -564,6 +564,7 @@
     <string name="autodel_after_1_day">Na 1 dag</string>
     <string name="autodel_after_1_week">Na 1 week</string>
     <string name="autodel_after_4_weeks">Na 4 weken</string>
+    <string name="after_5_weeks">Na 5 weken</string>
     <string name="autodel_after_1_year">Na 1 jaar</string>
 
     <!-- autocrypt -->

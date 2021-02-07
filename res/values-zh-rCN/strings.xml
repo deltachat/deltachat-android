@@ -551,7 +551,8 @@
     <string name="autodel_after_1_hour">1 小时后</string>
     <string name="autodel_after_1_day">1 天后</string>
     <string name="autodel_after_1_week">1 周后</string>
-    <string name="autodel_after_4_weeks">4 星期后</string>
+    <string name="autodel_after_4_weeks">4 周后</string>
+    <string name="after_5_weeks">5 周后</string>
     <string name="autodel_after_1_year">1 年后</string>
 
     <!-- autocrypt -->
