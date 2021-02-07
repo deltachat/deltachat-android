@@ -113,6 +113,7 @@
     <string name="audio">Audio</string>
     <string name="voice_message">Voice message</string>
     <string name="forwarded_message">Forwarded message</string>
+    <string name="forwarded_by">Forwarded by %1$s</string>
     <string name="video">Video</string>
     <string name="documents">Documents</string>
     <string name="contact">Contact</string>
