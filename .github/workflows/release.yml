@@ -1,8 +1,11 @@
 name: Upload Release APK
 
 on:
-  create:
-    ref: 'releases/*'
+  release:
+    types:
+      - created
+    tags:
+      - 'v*'
 
 jobs:
   build:
