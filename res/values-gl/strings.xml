@@ -558,10 +558,13 @@
     <string name="autodel_at_once">dunha vez</string>
     <string name="after_30_seconds">Após 30 segundos</string>
     <string name="after_1_minute">Após 1 minuto</string>
+    <string name="after_5_minutes">Após 5 minutos</string>
+    <string name="after_30_minutes">Após 30 minutos</string>
     <string name="autodel_after_1_hour">Após 1 hora</string>
     <string name="autodel_after_1_day">Após 1 día</string>
     <string name="autodel_after_1_week">Após 1 semana</string>
     <string name="autodel_after_4_weeks">Após 4 semanas</string>
+    <string name="after_5_weeks">Após 5 semanas</string>
     <string name="autodel_after_1_year">Após 1 ano</string>
 
     <!-- autocrypt -->
@@ -607,6 +610,11 @@
     <string name="systemmsg_ephemeral_timer_day">As mensaxes desaparecerán após 1 día.</string>
     <string name="systemmsg_ephemeral_timer_week">As mensaxes desaparecerán após 1 semana.</string>
     <string name="systemmsg_ephemeral_timer_four_weeks">As mensaxes desaparecerán após 4 semanas.</string>
+    <string name="systemmsg_ephemeral_timer_minutes">As mensaxes desaparecerán após %1$s minutos.</string>
+    <string name="systemmsg_ephemeral_timer_hours">As mensaxes desaparecerán após %1$s horas.</string>
+    <string name="systemmsg_ephemeral_timer_days">As mensaxes desaparecerán após %1$s días.</string>
+    <string name="systemmsg_ephemeral_timer_weeks">As mensaxes desaparecerán após %1$s semanas.</string>
+
     <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
     <string name="systemmsg_chat_protection_disabled">Protección do chat desactivada.</string>
     <string name="systemmsg_chat_protection_enabled">Protección do chat activada.</string>

@@ -31,6 +31,8 @@
     <string name="media">Medija</string>
     <string name="profile">Profilis</string>
     <string name="main_menu">Pagrindinis meniu</string>
+    <string name="always">Visada</string>
+    <string name="once">Vieną kartą</string>
     <string name="show_password">Rodyti slaptažodį</string>
     <string name="hide_password">Slėpti slaptažodį</string>
     <string name="not_now">Ne dabar</string>
@@ -103,6 +105,8 @@
     <string name="self">Aš</string>
     <string name="draft">Juodraštis</string>
     <string name="image">Paveikslas</string>
+    <!-- Translators: Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
+    <string name="reply_noun">Atsakymas</string>
     <string name="gif">Gif</string>
     <string name="images">Paveikslai</string>
     <string name="audio">Garsas</string>
@@ -166,6 +170,7 @@
     <string name="menu_delete_location">Ištrinti šią vietą?</string>
     <string name="menu_message_details">Išsamesnė žinutės informacija</string>
     <string name="menu_copy_to_clipboard">Kopijuoti į iškarpinę</string>
+    <string name="menu_copy_selection_to_clipboard">Kopijuoti žymėjimą</string>
     <string name="menu_copy_link_to_clipboard">Kopijuoti nuorodą</string>
     <string name="paste_from_clipboard">Įdėti iš iškarpinės</string>
     <string name="menu_forward">Persiųsti žinutę</string>
@@ -213,6 +218,13 @@
     <string name="mute_for_one_day">Išjungti 1 dienai</string>
     <string name="mute_for_seven_days">Išjungti 7 dienoms</string>
     <string name="mute_forever">Išjungti visam laikui</string>
+
+    <string name="share_location_once">vieną kartą</string>
+    <string name="share_location_for_5_minutes">5 minutėms</string>
+    <string name="share_location_for_30_minutes">30 minučių</string>
+    <string name="share_location_for_one_hour">1 valandai</string>
+    <string name="share_location_for_two_hours">2 valandoms</string>
+    <string name="share_location_for_six_hours">6 valandoms</string>
 
     <string name="file_saved_to">Failas įrašytas į \"%1$s\".</string>
 
@@ -282,6 +294,8 @@
     <string name="chat_no_messages">Žinučių nėra.</string>
     <string name="chat_self_talk_subtitle">Žinutės, kurias siunčiu asmeniškai sau</string>
     <string name="saved_messages">Įrašytos žinutės</string>
+    <!-- this "Saved" should match the "Saved" from "Saved messages" -->
+    <string name="saved">Įrašyta</string>
     <string name="chat_contact_request">Adresato užklausa</string>
     <string name="send_failed">Nepavyko išsiųsti žinutės</string>
     <string name="attachment_failed_to_load">Nepavyko įkelti priedo</string>
@@ -320,6 +334,7 @@
     <string name="welcome_intro1_message">Pokalbių programa su plačiausia auditorija pasaulyje. Nemokama ir nepriklausoma.</string>
     <string name="login_title">Prisijungti</string>
     <string name="login_header">Prisijungti prie savo serverio</string>
+    <string name="login_explain">Prisijungti naudojant esamą el. pašto paskyrą</string>
     <string name="login_subheader">Žinomiems el. pašto teikėjams papildomi nustatymai yra nustatomi automatiškai. Kartais, IMAP turi būti įjungtas prisijungus per naršyklę. Išsamesnės pagalbos teiraukitės savo el. pašto teikėjo ar draugų.</string>
     <string name="login_no_servers_hint">Nėra jokių Delta Chat serverių, jūsų duomenys išlieka jūsų įrenginyje!</string>
     <string name="login_inbox">Gauta</string>
@@ -334,6 +349,8 @@
     <string name="login_smtp_port">SMTP prievadas</string>
     <string name="login_smtp_security">SMTP saugumas</string>
     <string name="login_auth_method">Įgaliojimų suteikimo metodas</string>
+    <!-- Translators: %1$s will be replaced by an email address -->
+    <string name="login_oauth2_checking_addr">Tikrinamas %1$s</string>
     <string name="login_info_oauth2_title">Tęsti, naudojant supaprastintą sąranką?</string>
     <string name="login_certificate_checks">Liudijimų patikrinimai</string>
     <string name="login_error_mail">Įveskite teisingą el. pašto adresą.</string>
@@ -460,10 +477,13 @@
     <string name="autodel_at_once">Iš karto</string>
     <string name="after_30_seconds">Po 30 sekundžių</string>
     <string name="after_1_minute">Po 1 minutės</string>
+    <string name="after_5_minutes">Po 5 minučių</string>
+    <string name="after_30_minutes">Po 30 minučių</string>
     <string name="autodel_after_1_hour">Po 1 valandos</string>
     <string name="autodel_after_1_day">Po 1 dienos</string>
     <string name="autodel_after_1_week">Po 1 savaitės</string>
     <string name="autodel_after_4_weeks">Po 4 savaičių</string>
+    <string name="after_5_weeks">Po 5 savaičių</string>
     <string name="autodel_after_1_year">Po 1 metų</string>
 
     <!-- autocrypt -->
@@ -490,10 +510,15 @@
     <string name="systemmsg_group_image_deleted">Grupės paveikslas ištrintas.</string>
     <string name="systemmsg_member_added">Dalyvis %1$s pridėtas.</string>
     <string name="systemmsg_member_removed">Dalyvis %1$s pašalintas.</string>
+    <string name="systemmsg_group_left">Išeita iš grupės.</string>
     <string name="systemmsg_read_receipt_subject">Pranešimas apie skaitymą</string>
     <string name="systemmsg_read_receipt_body">Tai yra pranešimas apie žinutės \"%1$s\" skaitymą.\n\nTai reiškia, kad žinutė buvo atvaizduota gavėjo įrenginyje, tačiau neužtikrina, kad jos turinys buvo perskaitytas.</string>
     <string name="systemmsg_cannot_decrypt">Nepavyksta iššifruoti šios žinutės.\n\n• Galima, tiesiog, atsakyti į šią žinutę ir paprašyti siuntėjo dar kartą išsiųsti šią žinutę.\n\n• Tuo atveju, jeigu iš naujo įdiegėte Delta Chat ar kitą el. pašto programą šiame ar kitame įrenginyje, jūs galite pageidauti išsiųsti Autocrypt sąrankos žinutę iš to įrenginio.</string>
     <string name="systemmsg_subject_for_new_contact">Žinutė nuo %1$s</string>
+    <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
+    <string name="systemmsg_chat_protection_disabled">Pokalbio apsauga išjungta.</string>
+    <string name="systemmsg_chat_protection_enabled">Pokalbio apsauga įjungta.</string>
+
     <!-- screen lock -->
     <string name="screenlock_title">Ekrano užraktas</string>
     <string name="screenlock_authentication_failed">Tapatybės nustatymas nepavyko.</string>
@@ -590,6 +615,7 @@
     <string name="ask_delete_chat_desktop">Ar tikrai norite ištrinti šį pokalbį?</string>
     <string name="email_validation_failed_desktop">Reikalingas el. pašto adresas.</string>
     <string name="forget_login_confirmation_desktop">Ištrinti šį prisijungimą? Viskas bus ištrinta, įskaitant jūsų ištisinę sąranką, adresatus, pokalbius, žinutes ir mediją. Šis veiksmas yra galutinis ir negalės būti panaikintas.</string>
+    <string name="account_info_hover_tooltip_desktop">El. paštas: %1$s\nDydis: %2$s\nKelias: %3$s</string>
     <string name="me_desktop">aš</string>
     <string name="in_this_group_desktop">Grupės dalyviai</string>
     <string name="not_in_this_group_desktop">Potencialūs grupės dalyviai (nėra grupėje)</string>

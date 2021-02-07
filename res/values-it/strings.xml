@@ -558,10 +558,13 @@
     <string name="autodel_at_once">Una volta</string>
     <string name="after_30_seconds">Dopo 30 secondi</string>
     <string name="after_1_minute">Dopo 1 minuto</string>
+    <string name="after_5_minutes">Dopo 5 minuti</string>
+    <string name="after_30_minutes">Dopo 30 minuti</string>
     <string name="autodel_after_1_hour">Dopo 1 ora</string>
     <string name="autodel_after_1_day">Dopo 1 giorno</string>
     <string name="autodel_after_1_week">Dopo 1 settimana</string>
     <string name="autodel_after_4_weeks">Dopo 4 settimane</string>
+    <string name="after_5_weeks">Dopo 5 settimane</string>
     <string name="autodel_after_1_year">Dopo 1 anno</string>
 
     <!-- autocrypt -->
@@ -607,6 +610,11 @@
     <string name="systemmsg_ephemeral_timer_day">Il timer per la scomparsa dei messaggi è impostato su 1 giorno.</string>
     <string name="systemmsg_ephemeral_timer_week">Il timer per la scomparsa dei messaggi è impostato su 1 settimana.</string>
     <string name="systemmsg_ephemeral_timer_four_weeks">Il timer per la scomparsa dei messaggi è impostato su 4 settimane.</string>
+    <string name="systemmsg_ephemeral_timer_minutes">Timer di scomparsa dei messaggi impostato su %1$s minuti.</string>
+    <string name="systemmsg_ephemeral_timer_hours">Timer di scomparsa dei messaggi impostato su %1$s ore.</string>
+    <string name="systemmsg_ephemeral_timer_days">Timer di scomparsa dei messaggi impostato su %1$s giorni.</string>
+    <string name="systemmsg_ephemeral_timer_weeks">Timer di scomparsa dei messaggi impostato su %1$s settimane.</string>
+
     <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
     <string name="systemmsg_chat_protection_disabled">Protezione chat disattivata.</string>
     <string name="systemmsg_chat_protection_enabled">Protezione chat abilitata.</string>

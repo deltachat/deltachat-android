@@ -558,10 +558,13 @@
     <string name="autodel_at_once">Bir kerede</string>
     <string name="after_30_seconds">30 saniye sonra</string>
     <string name="after_1_minute">1 dakika sonra</string>
+    <string name="after_5_minutes">5 dakika sonra</string>
+    <string name="after_30_minutes">30 dakika sonra</string>
     <string name="autodel_after_1_hour">1 saat sonra</string>
     <string name="autodel_after_1_day">1 gün sonra</string>
     <string name="autodel_after_1_week">1 hafta sonra</string>
     <string name="autodel_after_4_weeks">4 hafta sonra</string>
+    <string name="after_5_weeks">5 hafta sonra</string>
     <string name="autodel_after_1_year">1 yıl sonra</string>
 
     <!-- autocrypt -->
@@ -607,6 +610,11 @@
     <string name="systemmsg_ephemeral_timer_day">Kaybolan iletiler zamanlayıcısı 1 güne ayarlandı.</string>
     <string name="systemmsg_ephemeral_timer_week">Kaybolan iletiler zamanlayıcısı 1 haftaya ayarlandı.</string>
     <string name="systemmsg_ephemeral_timer_four_weeks">Kaybolan iletiler zamanlayıcısı 4 haftaya ayarlandı.</string>
+    <string name="systemmsg_ephemeral_timer_minutes">Kaybolan iletiler zamanlayıcısı %1$s dakikaya ayarlandı.</string>
+    <string name="systemmsg_ephemeral_timer_hours">Kaybolan iletiler zamanlayıcısı %1$s saate ayarlandı.</string>
+    <string name="systemmsg_ephemeral_timer_days">Kaybolan iletiler zamanlayıcısı %1$s güne ayarlandı.</string>
+    <string name="systemmsg_ephemeral_timer_weeks">Kaybolan iletiler zamanlayıcısı %1$s haftaya ayarlandı.</string>
+
     <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
     <string name="systemmsg_chat_protection_disabled">Sohbet koruması etkisizleştirildi.</string>
     <string name="systemmsg_chat_protection_enabled">Sohbet koruması etkinleştirildi.</string>

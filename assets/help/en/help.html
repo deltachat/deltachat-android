@@ -627,7 +627,7 @@ RFC</a>.</p>
   </li>
 </ul>
 
-<p>If you don’t have a key or don’t even know you would need one - don’t worry: Delta Chat generates one as needed, you don’t have to hit a button for it.</p>
+<p>If you don’t have a key or don’t even know you would need one - don’t worry: Delta Chat generates keys as needed, you don’t have to hit a button for it.</p>
     
       <h3 id="i-cant-import-my-existing-pgp-key-into-delta-chat">
         
@@ -637,24 +637,24 @@ RFC</a>.</p>
         
       </h3>
 
-<p>With a very good chance, the problem is that your key is encrypted and/or uses
-a password. Such keys are not supported by Delta Chat.  You may remove the
+<p>The most likely cause is that your key is encrypted and/or uses
+a password. Such keys are not supported by Delta Chat.  You could remove the
 passphrase encryption and the password and try the import again.  If you want
 to keep your passphrase you’ll have to create an e-mail alias for use
 with Delta Chat such that Delta Chat’s key is tied to this e-mail alias.</p>
 
-<p>Format wise, Delta Chat supports common OpenPGP private key formats, however, it
-is unlikely that we will support 100% of all private keys of any sources. This
-is also not the main focus of Delta Chat (in fact, the large majority of the
-Delta Chat users will not have any key before they start using Delta).
-However, we try to support private keys from other sources as good as possible.</p>
+<p>Delta Chat supports common OpenPGP private key formats, however, it
+is unlikely that private keys from all sources will be fully supported. This
+is not the main goal of Delta Chat. In fact, the majority of new users 
+will not have any key prior to using Delta Chat.
+We do, however, try to support private keys from as many sources as possible.</p>
 
-<p>Removing the password from the private key will be different, depending on the
+<p>Removing the password from the private key will depend on the
 software you use to manage your PGP keys. With Enigmail, you can set your
 password to an empty value in the Key Management window. With GnuPG you can set
 it <a href="https://github.com/deltachat/deltachat-android/issues/98#issuecomment-378383429">via the command
 line</a>.
-For other programs, you can find a solution online.</p>
+For other programs, you should be able to find a solution online.</p>
     
       <h3 id="why-dont-you-use-pep-pretty-easy-privacy">
         

@@ -129,6 +129,7 @@ public class DcContext {
     public native int          addAddressBook       (String adrbook);
     public @NonNull DcChatlist getChatlist          (int listflags, String query, int queryId) { return new DcChatlist(getChatlistCPtr(listflags, query, queryId)); }
     public @NonNull DcChat     getChat              (int chat_id) { return new DcChat(getChatCPtr(chat_id)); }
+    public native String       getChatEncrInfo      (int chat_id);
     public native void         markseenMsgs         (int msg_ids[]);
     public native void         marknoticedChat      (int chat_id);
     public native void         marknoticedContact   (int contact_id);

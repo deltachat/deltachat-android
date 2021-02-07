@@ -566,6 +566,7 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="autodel_after_1_day">Nach 1 Tag</string>
     <string name="autodel_after_1_week">Nach 1 Woche</string>
     <string name="autodel_after_4_weeks">Nach 4 Wochen</string>
+    <string name="after_5_weeks">Nach 5 Wochen</string>
     <string name="autodel_after_1_year">Nach 1 Jahr</string>
 
     <!-- autocrypt -->

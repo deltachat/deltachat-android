@@ -558,10 +558,13 @@
     <string name="autodel_at_once">Direct</string>
     <string name="after_30_seconds">Na 30 seconden</string>
     <string name="after_1_minute">Na 1 minuut</string>
+    <string name="after_5_minutes">Na 5 minuten</string>
+    <string name="after_30_minutes">Na 30 minuten</string>
     <string name="autodel_after_1_hour">Na 1 uur</string>
     <string name="autodel_after_1_day">Na 1 dag</string>
     <string name="autodel_after_1_week">Na 1 week</string>
     <string name="autodel_after_4_weeks">Na 4 weken</string>
+    <string name="after_5_weeks">Na 5 weken</string>
     <string name="autodel_after_1_year">Na 1 jaar</string>
 
     <!-- autocrypt -->
@@ -607,6 +610,11 @@
     <string name="systemmsg_ephemeral_timer_day">De tijdklok van verdwijnende berichten is ingesteld op 1 dag.</string>
     <string name="systemmsg_ephemeral_timer_week">De tijdklok van verdwijnende berichten is ingesteld op 1 week.</string>
     <string name="systemmsg_ephemeral_timer_four_weeks">De tijdklok van verdwijnende berichten is ingesteld op 4 weken.</string>
+    <string name="systemmsg_ephemeral_timer_minutes">De tijdklok van verdwijnende berichten is ingesteld op %1$s minuten.</string>
+    <string name="systemmsg_ephemeral_timer_hours">De tijdklok van verdwijnende berichten is ingesteld op %1$s uur.</string>
+    <string name="systemmsg_ephemeral_timer_days">De tijdklok van verdwijnende berichten is ingesteld op %1$s dagen.</string>
+    <string name="systemmsg_ephemeral_timer_weeks">De tijdklok van verdwijnende berichten is ingesteld op %1$s weken.</string>
+
     <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
     <string name="systemmsg_chat_protection_disabled">Gespreksbeveiliging is uitgeschakeld.</string>
     <string name="systemmsg_chat_protection_enabled">Gespreksbeveiliging is ingeschakeld.</string>

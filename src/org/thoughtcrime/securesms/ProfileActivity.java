@@ -121,22 +121,24 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
 
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
-    MenuInflater inflater = getMenuInflater();
-
     if (!isSelfProfile()) {
-      if (!chatIsDeviceTalk) {
-        inflater.inflate(R.menu.profile_common, menu);
-      }
+      getMenuInflater().inflate(R.menu.profile_common, menu);
 
       if (chatId != 0) {
-        inflater.inflate(R.menu.profile_chat, menu);
-        if (chatIsGroup) {
+        if (chatIsDeviceTalk) {
+          menu.findItem(R.id.edit_name).setVisible(false);
+          menu.findItem(R.id.show_encr_info).setVisible(false);
+        } else if (chatIsGroup) {
           menu.findItem(R.id.edit_name).setTitle(R.string.menu_group_name_and_image);
         }
+      } else {
+        menu.findItem(R.id.menu_mute_notifications).setVisible(false);
+        menu.findItem(R.id.menu_sound).setVisible(false);
+        menu.findItem(R.id.menu_vibrate).setVisible(false);
       }
 
-      if (isContactProfile() && !chatIsDeviceTalk) {
-        inflater.inflate(R.menu.profile_contact, menu);
+      if (!isContactProfile() || chatIsDeviceTalk) {
+        menu.findItem(R.id.block_contact).setVisible(false);
       }
     }
 
@@ -462,7 +464,8 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
   }
 
   public void onEncrInfo() {
-    String info_str = dcContext.getContactEncrInfo(contactId);
+    String info_str = isContactProfile() ?
+      dcContext.getContactEncrInfo(contactId) : dcContext.getChatEncrInfo(chatId);
     new AlertDialog.Builder(this)
         .setMessage(info_str)
         .setPositiveButton(android.R.string.ok, null)
