@@ -43,6 +43,7 @@ import androidx.appcompat.app.AlertDialog;
 
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
+import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMsg;
 
 import org.thoughtcrime.securesms.audio.AudioSlidePlayer;
@@ -657,7 +658,7 @@ public class ConversationItem extends LinearLayout
       this.groupSender.setTextColor(context.getResources().getColor(R.color.unknown_sender));
     }
     else if (groupThread && !messageRecord.isOutgoing() && dcContact !=null) {
-      this.groupSender.setText(dcContact.getDisplayName());
+      this.groupSender.setText(messageRecord.getSenderName(dcContact));
 
       this.groupSender.setTextColor(dcContact.getArgbColor());
     }
@@ -729,9 +730,10 @@ public class ConversationItem extends LinearLayout
   /// Event handlers
 
   private void handleDeadDropClick() {
+    ConversationListFragment.DeaddropQuestionHelper helper = new ConversationListFragment.DeaddropQuestionHelper(context, messageRecord);
     new AlertDialog.Builder(context)
       .setPositiveButton(android.R.string.ok, (dialog, which) -> {
-        int chatId = dcContext.createChatByMsgId(messageRecord.getId());
+        int chatId = dcContext.decideOnContactRequest(messageRecord.getId(), DcContext.DC_DECISION_START_CHAT);
         if( chatId != 0 ) {
           Intent intent = new Intent(context, ConversationActivity.class);
           intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
@@ -739,10 +741,8 @@ public class ConversationItem extends LinearLayout
         }
       })
       .setNegativeButton(android.R.string.cancel, null)
-      .setNeutralButton(R.string.menu_block_contact, (dialog, which) -> {
-        dcContext.blockContact(messageRecord.getFromId(), 1);
-      })
-      .setMessage(context.getString(R.string.ask_start_chat_with, dcContext.getContact(messageRecord.getFromId()).getDisplayName()))
+      .setNeutralButton(helper.answerBlock, (dialog, which) -> dcContext.decideOnContactRequest(messageRecord.getId(), DcContext.DC_DECISION_BLOCK))
+      .setMessage(helper.question)
       .show();
   }
 

@@ -17,16 +17,16 @@
 package org.thoughtcrime.securesms.contacts;
 
 import android.content.Context;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.SparseIntArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.b44t.messenger.DcContact;
 
@@ -173,6 +173,7 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter
         return;
       }
       int adapterPosition = getAdapterPosition();
+      if (adapterPosition < 0) return;
       int contactId = getContactId(adapterPosition);
       boolean enabled = actionModeSelection.indexOfKey(adapterPosition) > -1;
       if (enabled) {

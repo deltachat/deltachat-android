@@ -476,7 +476,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     }
 
     if (isGroupConversation()) {
-      if (isActiveGroup()) {
+      if (!dcChat.isMailingList()) { // Leaving mailing lists is currently not supported
         inflater.inflate(R.menu.conversation_push_group_options, menu);
       }
     }
@@ -1019,10 +1019,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     String name = data.getStringExtra(BlockedAndShareContactsActivity.SHARE_CONTACT_NAME_EXTRA);
     String mail = data.getStringExtra(BlockedAndShareContactsActivity.SHARE_CONTACT_MAIL_EXTRA);
     composeText.append(name + "\n" + mail);
-  }
-
-  private boolean isActiveGroup() {
-    return dcChat.isGroup();
   }
 
   private boolean isGroupConversation() {

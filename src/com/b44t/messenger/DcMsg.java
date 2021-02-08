@@ -3,6 +3,7 @@ package com.b44t.messenger;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 
@@ -98,6 +99,7 @@ public class DcMsg {
     public native int     getType            ();
     public native int     getState           ();
     public native int     getChatId          ();
+    public native int     getRealChatId      ();
     public native int     getFromId          ();
     public native int     getWidth           (int def);
     public native int     getHeight          (int def);
@@ -127,6 +129,16 @@ public class DcMsg {
     public void           setQuote           (DcMsg quote) { setQuoteCPtr(quote.msgCPtr); }
     public native String  getQuotedText      ();
     public native String  getError           ();
+    private native @Nullable String getOverrideSenderName();
+
+    public @NonNull String getSenderName(@NonNull DcContact dcContact) {
+        String overrideName = getOverrideSenderName();
+        if (overrideName != null) {
+            return overrideName;
+        } else {
+            return dcContact.getDisplayName();
+        }
+    }
 
     public DcMsg          getQuotedMsg       () {
         long cPtr = getQuotedMsgCPtr();

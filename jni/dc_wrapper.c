@@ -391,12 +391,6 @@ JNIEXPORT void Java_com_b44t_messenger_DcContext_marknoticedChat(JNIEnv *env, jo
 }
 
 
-JNIEXPORT void Java_com_b44t_messenger_DcContext_marknoticedContact(JNIEnv *env, jobject obj, jint contact_id)
-{
-    dc_marknoticed_contact(get_dc_context(env, obj), contact_id);
-}
-
-
 JNIEXPORT void Java_com_b44t_messenger_DcContext_setChatVisibility(JNIEnv *env, jobject obj, jint chat_id, jint visibility)
 {
     dc_set_chat_visibility(get_dc_context(env, obj), chat_id, visibility);
@@ -406,12 +400,6 @@ JNIEXPORT void Java_com_b44t_messenger_DcContext_setChatVisibility(JNIEnv *env, 
 JNIEXPORT jint Java_com_b44t_messenger_DcContext_createChatByContactId(JNIEnv *env, jobject obj, jint contact_id)
 {
     return (jint)dc_create_chat_by_contact_id(get_dc_context(env, obj), contact_id);
-}
-
-
-JNIEXPORT jint Java_com_b44t_messenger_DcContext_createChatByMsgId(JNIEnv *env, jobject obj, jint msg_id)
-{
-    return (jint)dc_create_chat_by_msg_id(get_dc_context(env, obj), msg_id);
 }
 
 
@@ -481,6 +469,12 @@ JNIEXPORT void Java_com_b44t_messenger_DcContext_deleteChat(JNIEnv *env, jobject
 /* DcContext - handle messages */
 
 
+JNIEXPORT jint Java_com_b44t_messenger_DcContext_decideOnContactRequest(JNIEnv *env, jobject obj, jint msg_id, jint decision)
+{
+    return (jint)dc_decide_on_contact_request(get_dc_context(env, obj), msg_id, decision);
+}
+
+
 JNIEXPORT jint Java_com_b44t_messenger_DcContext_getFreshMsgCount(JNIEnv *env, jobject obj, jint chat_id)
 {
     return dc_get_fresh_msg_cnt(get_dc_context(env, obj), chat_id);
@@ -491,7 +485,6 @@ JNIEXPORT jint Java_com_b44t_messenger_DcContext_estimateDeletionCount(JNIEnv *e
 {
     return dc_estimate_deletion_cnt(get_dc_context(env, obj), from_server, seconds);
 }
-
 
 
 JNIEXPORT jlong Java_com_b44t_messenger_DcContext_getMsgCPtr(JNIEnv *env, jobject obj, jint id)
@@ -1026,9 +1019,9 @@ JNIEXPORT jint Java_com_b44t_messenger_DcChat_getId(JNIEnv *env, jobject obj)
 }
 
 
-JNIEXPORT jboolean Java_com_b44t_messenger_DcChat_isGroup(JNIEnv *env, jobject obj)
+JNIEXPORT jint Java_com_b44t_messenger_DcChat_getType(JNIEnv *env, jobject obj)
 {
-    return dc_chat_get_type(get_dc_chat(env, obj)) == DC_CHAT_TYPE_GROUP;
+    return dc_chat_get_type(get_dc_chat(env, obj));
 }
 
 
@@ -1245,6 +1238,12 @@ JNIEXPORT jint Java_com_b44t_messenger_DcMsg_getChatId(JNIEnv *env, jobject obj)
 }
 
 
+JNIEXPORT jint Java_com_b44t_messenger_DcMsg_getRealChatId(JNIEnv *env, jobject obj)
+{
+    return dc_msg_get_real_chat_id(get_dc_msg(env, obj));
+}
+
+
 JNIEXPORT jint Java_com_b44t_messenger_DcMsg_getFromId(JNIEnv *env, jobject obj)
 {
     return dc_msg_get_from_id(get_dc_msg(env, obj));
@@ -1295,6 +1294,18 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcMsg_getSummarytext(JNIEnv *env, jobj
         jstring ret = JSTRING_NEW(temp);
     dc_str_unref(temp);
     return ret;
+}
+
+
+JNIEXPORT jstring Java_com_b44t_messenger_DcMsg_getOverrideSenderName(JNIEnv *env, jobject obj)
+{
+    char* temp = dc_msg_get_override_sender_name(get_dc_msg(env, obj));
+        jstring ret = NULL;
+        if (temp) {
+            JSTRING_NEW(temp);
+        }
+    dc_str_unref(temp);
+    return ret; // null if there is no override-sender-name
 }
 
 
@@ -1449,7 +1460,6 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcMsg_getError(JNIEnv *env, jobject ob
     dc_str_unref(temp);
     return ret;
 }
-
 
 
 /*******************************************************************************

@@ -38,7 +38,6 @@ import com.amulyakhare.textdrawable.TextDrawable;
 import com.annimon.stream.Stream;
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
-import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcLot;
 import com.b44t.messenger.DcMsg;
 
@@ -248,11 +247,6 @@ public class ConversationListItem extends RelativeLayout
 
   public int getMsgId() {
     return msgId;
-  }
-
-  public int getContactId() {
-    DcContext dcContext = DcHelper.getContext(getContext());
-    return dcContext.getMsg(msgId).getFromId();
   }
 
   private void setStatusIcons(int visibility, int state, int unreadCount) {
