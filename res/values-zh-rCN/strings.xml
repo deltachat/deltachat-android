@@ -179,6 +179,8 @@
     <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
     <string name="show_in_chat">在聊天中显示</string>
     <string name="menu_share">分享</string>
+    <!-- this is the action "to block sth." usually a mailing list or a contact. this is NOT "a large solid piece of hard material" :) -->
+    <string name="block">屏蔽</string>
     <string name="menu_block_contact">屏蔽联系人</string>
     <string name="menu_unblock_contact">取消屏蔽联系人</string>
     <string name="menu_play">播放</string>
@@ -318,6 +320,11 @@
     <string name="messaging_disabled_deaddrop">点击消息来接受或拒绝联系人请求</string>
     <string name="cannot_display_unsuported_file_type">无法显示此类文件：%s</string>
     <string name="attachment_failed_to_load">加载附件失败</string>
+
+
+    <!-- mailing lists -->
+    <string name="mailing_list">邮件列表</string>
+    <string name="ask_show_mailing_list">显示邮件列表 \"%1$s\"吗？</string>
 
 
     <!-- map -->

@@ -185,6 +185,8 @@
     <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
     <string name="show_in_chat">Tonen in bijbehorend gesprek</string>
     <string name="menu_share">Delen</string>
+    <!-- this is the action "to block sth." usually a mailing list or a contact. this is NOT "a large solid piece of hard material" :) -->
+    <string name="block">Blokkeren</string>
     <string name="menu_block_contact">Contactpersoon blokkeren</string>
     <string name="menu_unblock_contact">Contactpersoon deblokkeren</string>
     <string name="menu_play">Afspelen</string>
@@ -330,6 +332,11 @@
     <string name="messaging_disabled_deaddrop">Druk op een bericht om het contactpersoonverzoek goed te keuren of af te wijzen</string>
     <string name="cannot_display_unsuported_file_type">Het volgende bestandstype kan niet worden getoond: %s</string>
     <string name="attachment_failed_to_load">De bijlage kan niet worden geladen</string>
+
+
+    <!-- mailing lists -->
+    <string name="mailing_list">Mailinglijst</string>
+    <string name="ask_show_mailing_list">Wil je de mailinglijst \'%1$s\' tonen?</string>
 
 
     <!-- map -->
