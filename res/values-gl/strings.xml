@@ -185,6 +185,8 @@
     <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
     <string name="show_in_chat">Mostrar na conversa</string>
     <string name="menu_share">Compartir</string>
+    <!-- this is the action "to block sth." usually a mailing list or a contact. this is NOT "a large solid piece of hard material" :) -->
+    <string name="block">Bloquear</string>
     <string name="menu_block_contact">Bloquear contacto</string>
     <string name="menu_unblock_contact">Desbloquear contacto</string>
     <string name="menu_play">Reproducir</string>
@@ -330,6 +332,11 @@
     <string name="messaging_disabled_deaddrop">Preme nunha mensaxe para aceptar ou denegar a solicitude de contacto</string>
     <string name="cannot_display_unsuported_file_type">Non se pode motrar este tipo de ficheiro: %s</string>
     <string name="attachment_failed_to_load">Erro ao cargar o anexo</string>
+
+
+    <!-- mailing lists -->
+    <string name="mailing_list">Lista de correo</string>
+    <string name="ask_show_mailing_list">Mostrar lista de correo \"%1$s\"?</string>
 
 
     <!-- map -->
