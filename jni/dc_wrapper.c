@@ -1302,7 +1302,7 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcMsg_getOverrideSenderName(JNIEnv *en
     char* temp = dc_msg_get_override_sender_name(get_dc_msg(env, obj));
         jstring ret = NULL;
         if (temp) {
-            JSTRING_NEW(temp);
+            ret = JSTRING_NEW(temp);
         }
     dc_str_unref(temp);
     return ret; // null if there is no override-sender-name
