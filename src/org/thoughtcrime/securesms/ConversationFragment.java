@@ -428,7 +428,7 @@ public class ConversationFragment extends Fragment
 
             if (msg.getFromId() != prevMsg.getFromId() && !singleMsg) {
                 DcContact contact = dcContext.getContact(msg.getFromId());
-                result.append(contact.getDisplayName()).append(":\n");
+                result.append(msg.getSenderName(contact)).append(":\n");
             }
             if (msg.getType() == DcMsg.DC_MSG_TEXT || (singleMsg && !msg.getText().isEmpty())) {
                 result.append(msg.getText());
