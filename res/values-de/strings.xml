@@ -113,6 +113,8 @@
     <string name="audio">Audio</string>
     <string name="voice_message">Sprachnachricht</string>
     <string name="forwarded_message">Weitergeleitete Nachricht</string>
+    <!-- %1$s will be replaced by the name or the email-address of the person who has forwarded the message -->
+    <string name="forwarded_by">Weitergeleitet von %1$s</string>
     <string name="video">Video</string>
     <string name="documents">Dokumente</string>
     <string name="contact">Kontakt</string>
