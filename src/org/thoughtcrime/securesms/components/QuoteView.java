@@ -143,8 +143,13 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
       authorView.setVisibility(GONE);
       quoteBarView.setBackgroundColor(getForwardedColor());
     } else if (quotedMsg.isForwarded()) {
+      DcContact contact = author.getDcContact();
       authorView.setVisibility(VISIBLE);
-      authorView.setText(getContext().getString(R.string.forwarded_message));
+      if (contact == null) {
+        authorView.setText(getContext().getString(R.string.forwarded_message));
+      } else {
+        authorView.setText(getContext().getString(R.string.forwarded_by, quotedMsg.getSenderName(contact)));
+      }
       authorView.setTextColor(getForwardedColor());
       quoteBarView.setBackgroundColor(getForwardedColor());
     } else {
