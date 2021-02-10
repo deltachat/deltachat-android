@@ -657,8 +657,7 @@ public class ConversationItem extends LinearLayout
       this.groupSender.setTextColor(context.getResources().getColor(R.color.unknown_sender));
     }
     else if (groupThread && !messageRecord.isOutgoing() && dcContact !=null) {
-      this.groupSender.setText(dcContact.getDisplayName());
-
+      this.groupSender.setText(messageRecord.getSenderName(dcContact));
       this.groupSender.setTextColor(dcContact.getArgbColor());
     }
   }

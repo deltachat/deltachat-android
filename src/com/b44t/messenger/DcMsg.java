@@ -127,6 +127,7 @@ public class DcMsg {
     public void           setQuote           (DcMsg quote) { setQuoteCPtr(quote.msgCPtr); }
     public native String  getQuotedText      ();
     public native String  getError           ();
+    public native String  getOverrideSenderName();
 
     public DcMsg          getQuotedMsg       () {
         long cPtr = getQuotedMsgCPtr();
@@ -148,6 +149,15 @@ public class DcMsg {
             ids[i++] = dcMsg.getId();
         }
         return ids;
+    }
+
+    public String getSenderName(DcContact sender) {
+        String overrideSenderName = getOverrideSenderName();
+        if (overrideSenderName != null && !overrideSenderName.equals("")) {
+            return overrideSenderName;
+        } else {
+            return sender.getDisplayName();
+        }
     }
 
     public boolean isOutgoing() {
