@@ -1547,6 +1547,15 @@ JNIEXPORT jint Java_com_b44t_messenger_DcContact_getColor(JNIEnv *env, jobject o
 }
 
 
+JNIEXPORT jstring Java_com_b44t_messenger_DcContact_getStatus(JNIEnv *env, jobject obj)
+{
+    char* temp = dc_contact_get_status(get_dc_contact(env, obj));
+        jstring ret = JSTRING_NEW(temp);
+    dc_str_unref(temp);
+    return ret;
+}
+
+
 JNIEXPORT jboolean Java_com_b44t_messenger_DcContact_isBlocked(JNIEnv *env, jobject obj)
 {
     return (jboolean)(dc_contact_is_blocked(get_dc_contact(env, obj))!=0);
