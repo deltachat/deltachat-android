@@ -144,24 +144,6 @@ public class ProfileSettingsFragment extends Fragment
       case ProfileSettingsAdapter.SETTING_NEW_CHAT:
         onNewChat();
         break;
-      case ProfileSettingsAdapter.SETTING_CONTACT_NAME:
-        ((ProfileActivity)getActivity()).onEditName();
-        break;
-      case ProfileSettingsAdapter.SETTING_ENCRYPTION:
-        ((ProfileActivity)getActivity()).onEncrInfo();
-        break;
-      case ProfileSettingsAdapter.SETTING_BLOCK_CONTACT:
-        ((ProfileActivity)getActivity()).onBlockContact();
-        break;
-      case ProfileSettingsAdapter.SETTING_NOTIFY:
-        ((ProfileActivity)getActivity()).onNotifyOnOff();
-        break;
-      case ProfileSettingsAdapter.SETTING_SOUND:
-        ((ProfileActivity)getActivity()).onSoundSettings();
-        break;
-      case ProfileSettingsAdapter.SETTING_VIBRATE:
-        ((ProfileActivity)getActivity()).onVibrateSettings();
-        break;
     }
   }
 

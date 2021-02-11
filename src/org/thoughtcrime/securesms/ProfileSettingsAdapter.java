@@ -33,15 +33,6 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
 {
   public static final int SETTING_CONTACT_ADDR = 110;
   public static final int SETTING_NEW_CHAT = 120;
-  public static final int SETTING_CONTACT_NAME = 130;
-  public static final int SETTING_ENCRYPTION = 140;
-  public static final int SETTING_BLOCK_CONTACT = 150;
-
-  public static final int SETTING_GROUP_NAME_N_IMAGE = 210;
-
-  public static final int SETTING_NOTIFY = 310;
-  public static final int SETTING_SOUND = 320;
-  public static final int SETTING_VIBRATE = 330;
 
   private final @NonNull Context              context;
   private final @NonNull Locale               locale;
@@ -62,7 +53,6 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
     static final int TYPE_PRIMARY_SETTING = 1;
     static final int TYPE_MEMBER = 2;
     static final int TYPE_SHARED_CHAT = 3;
-    static final int TYPE_SECONDARY_SETTING = 4;
     int type;
     int contactId;
     int chatlistIndex;
@@ -279,13 +269,10 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
       for (int value : memberList) {
         itemData.add(new ItemData(ItemData.TYPE_MEMBER, value, 0));
       }
-//      itemData.add(new ItemData(ItemData.TYPE_SECONDARY_SETTING, SETTING_GROUP_NAME_N_IMAGE, context.getString(R.string.menu_group_name_and_image)));
     }
     else if (sharedChats!=null && dcContact!=null) {
       itemDataContact = dcContact;
       itemData.add(new ItemData(ItemData.TYPE_PRIMARY_SETTING, SETTING_CONTACT_ADDR,dcContact.getAddr()));
-//      itemData.add(new ItemData(ItemData.TYPE_PRIMARY_SETTING, SETTING_CONTACT_NAME, context.getString(R.string.menu_edit_name)));
-//      itemData.add(new ItemData(ItemData.TYPE_PRIMARY_SETTING, SETTING_ENCRYPTION, context.getString(R.string.profile_encryption)));
       itemData.add(new ItemData(ItemData.TYPE_PRIMARY_SETTING, SETTING_NEW_CHAT, context.getString(R.string.send_message)));
       itemDataSharedChats = sharedChats;
       int sharedChatsCnt = sharedChats.getCnt();
@@ -293,18 +280,6 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
         itemData.add(new ItemData(ItemData.TYPE_SHARED_CHAT, 0, i));
       }
     }
-
-//    if(dcChat!=null) {
-//      itemData.add(new ItemData(ItemData.TYPE_SECONDARY_SETTING, SETTING_NOTIFY,
-//          context.getString(Prefs.isChatMuted(context, dcChat.getId())? R.string.menu_unmute : R.string.menu_mute)));
-//      itemData.add(new ItemData(ItemData.TYPE_SECONDARY_SETTING, SETTING_SOUND, context.getString(R.string.pref_sound)));
-//      itemData.add(new ItemData(ItemData.TYPE_SECONDARY_SETTING, SETTING_VIBRATE, context.getString(R.string.pref_vibrate)));
-//    }
-
-//    if (dcContact!=null) {
-//      itemData.add(new ItemData(ItemData.TYPE_SECONDARY_SETTING, SETTING_BLOCK_CONTACT,
-//          context.getString(dcContact.isBlocked()? R.string.menu_unblock_contact : R.string.menu_block_contact)));
-//    }
 
     notifyDataSetChanged();
   }
