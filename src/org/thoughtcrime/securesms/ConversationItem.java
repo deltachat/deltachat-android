@@ -655,14 +655,14 @@ public class ConversationItem extends LinearLayout
   private void setGroupMessageStatus() {
     if (messageRecord.isForwarded()) {
       if (groupThread && !messageRecord.isOutgoing() && dcContact !=null) {
-        this.groupSender.setText(context.getString(R.string.forwarded_by, messageRecord.getSenderName(dcContact)));
+        this.groupSender.setText(context.getString(R.string.forwarded_by, messageRecord.getSenderName(dcContact, false)));
       } else {
         this.groupSender.setText(context.getString(R.string.forwarded_message));
       }
       this.groupSender.setTextColor(context.getResources().getColor(R.color.unknown_sender));
     }
     else if (groupThread && !messageRecord.isOutgoing() && dcContact !=null) {
-      this.groupSender.setText(messageRecord.getSenderName(dcContact));
+      this.groupSender.setText(messageRecord.getSenderName(dcContact, true));
       this.groupSender.setTextColor(dcContact.getArgbColor());
     }
   }

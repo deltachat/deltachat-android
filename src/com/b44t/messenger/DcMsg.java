@@ -131,10 +131,10 @@ public class DcMsg {
     public native String  getError           ();
     private native @Nullable String getOverrideSenderName();
 
-    public @NonNull String getSenderName(@NonNull DcContact dcContact) {
+    public @NonNull String getSenderName(@NonNull DcContact dcContact, boolean markOverride) {
         String overrideName = getOverrideSenderName();
         if (overrideName != null) {
-            return overrideName;
+            return (markOverride ? "~" : "") + overrideName;
         } else {
             return dcContact.getDisplayName();
         }
