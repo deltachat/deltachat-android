@@ -148,7 +148,7 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
       if (contact == null) {
         authorView.setText(getContext().getString(R.string.forwarded_message));
       } else {
-        authorView.setText(getContext().getString(R.string.forwarded_by, quotedMsg.getSenderName(contact)));
+        authorView.setText(getContext().getString(R.string.forwarded_by, quotedMsg.getSenderName(contact, false)));
       }
       authorView.setTextColor(getForwardedColor());
       quoteBarView.setBackgroundColor(getForwardedColor());
@@ -159,7 +159,7 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
         quoteBarView.setBackgroundColor(getForwardedColor());
       } else {
         authorView.setVisibility(VISIBLE);
-        authorView.setText(quotedMsg.getSenderName(contact));
+        authorView.setText(quotedMsg.getSenderName(contact, false));
         authorView.setTextColor(contact.getArgbColor());
         quoteBarView.setBackgroundColor(contact.getArgbColor());
       }

@@ -490,7 +490,7 @@ public class ConversationListFragment extends Fragment
         answerBlock = context.getString(R.string.block);
       } else {
         DcContact dcContact = dcContext.getContact(dcMsg.getFromId());
-        question = context.getString(R.string.ask_start_chat_with, dcMsg.getSenderName(dcContact));
+        question = context.getString(R.string.ask_start_chat_with, dcMsg.getSenderName(dcContact, false));
         answerBlock = context.getString(R.string.menu_block_contact);
       }
     }
