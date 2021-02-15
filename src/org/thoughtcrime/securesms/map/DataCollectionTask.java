@@ -74,17 +74,17 @@ public class DataCollectionTask extends AsyncTask<Void, Void, Set<String>> {
         Log.d(TAG, "performance test - collect Data start");
         HashSet<String> emojiCodePoints = new HashSet<>();
         DataCollector dataCollector = new DataCollector(dcContext,
-          contactMapSources,
-          featureCollections,
-          lastPositions,
-          emojiCodePoints,
-          emojiProvider,
-          boundingBuilder);
+                contactMapSources,
+                featureCollections,
+                lastPositions,
+                emojiCodePoints,
+                emojiProvider,
+                boundingBuilder);
         for (int contactId : contactIds) {
-           dataCollector.updateSource(chatId,
-             contactId,
-            System.currentTimeMillis() - TIME_FRAME,
-            TIMESTAMP_NOW);
+            dataCollector.updateSource(chatId,
+                    contactId,
+                    System.currentTimeMillis() - TIME_FRAME,
+                    TIMESTAMP_NOW);
             if (this.isCancelled()) {
                 break;
             }

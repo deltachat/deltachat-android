@@ -301,23 +301,23 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate,
     }
 
     public void handleEmojiCodepoints(Set<String> emojiCodePoints) {
-      // generate only new emoji bitmaps, so remove the ones from the set that we already generated
-      emojiCodePoints.removeAll(this.emojiCodePoints);
-      if (emojiCodePoints.isEmpty()) {
-        return;
-      }
-
-      ExecutorService executor = Executors.newSingleThreadExecutor();
-      Handler handler = new Handler(Looper.getMainLooper());
-      executor.execute(() -> {
-        for (String codePoint : emojiCodePoints) {
-          Bitmap emoji = emojiProvider.getEmojiBitmap(codePoint, 0.5f, true);
-          handler.post(() -> {
-            mapboxStyle.addImage(codePoint, emoji);
-            emojiCodePoints.add(codePoint);
-          });
+        // generate only new emoji bitmaps, so remove the ones from the set that we already generated
+        emojiCodePoints.removeAll(this.emojiCodePoints);
+        if (emojiCodePoints.isEmpty()) {
+          return;
         }
-      });
+
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        Handler handler = new Handler(Looper.getMainLooper());
+        executor.execute(() -> {
+          for (String codePoint : emojiCodePoints) {
+            Bitmap emoji = emojiProvider.getEmojiBitmap(codePoint, 0.5f, true);
+            handler.post(() -> {
+              mapboxStyle.addImage(codePoint, emoji);
+              emojiCodePoints.add(codePoint);
+            });
+          }
+        });
     }
 
     public void filterRange(long startTimestamp, long endTimestamp) {
