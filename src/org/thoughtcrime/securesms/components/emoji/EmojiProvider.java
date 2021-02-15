@@ -116,11 +116,11 @@ public class EmojiProvider {
      return emojiTree.getEmoji(emoji, 0, emoji.length()) != null;
   }
 
-  public @Nullable Bitmap getEmojiBitmap(CharSequence emoji, boolean background) {
+  public @Nullable Bitmap getEmojiBitmap(CharSequence emoji, float scale, boolean background) {
     EmojiDrawInfo drawInfo = emojiTree.getEmoji(emoji, 0, emoji.length());
     EmojiDrawable drawable = ((EmojiDrawable) getEmojiDrawable(drawInfo, background));
     if (drawable != null) {
-      return drawable.getEmojiBitmap();
+      return drawable.getEmojiBitmap(scale);
     }
     return null;
   }
@@ -172,7 +172,7 @@ public class EmojiProvider {
       this.intrinsicHeight = EMOJI_RAW_HEIGHT * decodeScale;
     }
 
-    private Bitmap getEmojiBitmap() {
+    private Bitmap getEmojiBitmap(float scale) {
       Bitmap singleEmoji = Bitmap.createBitmap((int) intrinsicWidth/2, (int) intrinsicHeight/2, Bitmap.Config.ARGB_8888);
 
       final int row = info.getIndex() / EMOJI_PER_ROW;
@@ -185,7 +185,7 @@ public class EmojiProvider {
         (int)((row + 1) * intrinsicHeight + row * verticalPad)-1);
 
       Canvas canvas = new Canvas(singleEmoji);
-      canvas.scale(0.5f, 0.5f);
+      canvas.scale(scale, scale);
       canvas.drawBitmap(bmp, srcRect, desRect, paint);
 
       return singleEmoji;

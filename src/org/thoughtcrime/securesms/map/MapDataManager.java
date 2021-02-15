@@ -2,6 +2,8 @@ package org.thoughtcrime.securesms.map;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -28,7 +30,6 @@ import org.thoughtcrime.securesms.components.emoji.EmojiProvider;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.map.DataCollectionTask.DataCollectionCallback;
-import org.thoughtcrime.securesms.map.EmojiBitmapGenerationTask.EmojiBitmapGenerationCallback;
 import org.thoughtcrime.securesms.map.GenerateInfoWindowTask.GenerateInfoWindowCallback;
 import org.thoughtcrime.securesms.map.model.FilterProvider;
 import org.thoughtcrime.securesms.map.model.MapSource;
@@ -41,6 +42,8 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import static com.b44t.messenger.DcContext.DC_EVENT_LOCATION_CHANGED;
 import static com.b44t.messenger.DcContext.DC_GCL_ADD_SELF;
@@ -89,8 +92,7 @@ import static org.thoughtcrime.securesms.util.BitmapUtil.generateColoredBitmap;
 
 public class MapDataManager implements DcEventCenter.DcEventDelegate,
   GenerateInfoWindowCallback,
-  DataCollectionCallback,
-  EmojiBitmapGenerationCallback {
+  DataCollectionCallback {
     public static final String MARKER_SELECTED = "MARKER_SELECTED";
     public static final String LAST_LOCATION = "LAST_LOCATION";
     public static final String CONTACT_ID = "CONTACT_ID";
@@ -278,11 +280,6 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate,
     }
 
     @Override
-    public void onEmojiBitmapCreated(String codePoint, Bitmap emoji) {
-      mapboxStyle.addImage(codePoint, emoji);
-    }
-
-    @Override
     public void onDataCollectionFinished(Set <String> emojiCodePoints) {
         handleEmojiCodepoints(emojiCodePoints);
         for (MapSource source : contactMapSources.values()) {
@@ -304,13 +301,23 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate,
     }
 
     public void handleEmojiCodepoints(Set<String> emojiCodePoints) {
-      // generate only new emoji bitmaps, so check the diff
+      // generate only new emoji bitmaps, so remove the ones from the set that we already generated
       emojiCodePoints.removeAll(this.emojiCodePoints);
-      if (!emojiCodePoints.isEmpty()) {
-        EmojiBitmapGenerationTask task = new EmojiBitmapGenerationTask(this, emojiProvider);
-        task.execute(emojiCodePoints.toArray(new String[0]));
-        this.emojiCodePoints.addAll(emojiCodePoints);
+      if (emojiCodePoints.isEmpty()) {
+        return;
       }
+
+      ExecutorService executor = Executors.newSingleThreadExecutor();
+      Handler handler = new Handler(Looper.getMainLooper());
+      executor.execute(() -> {
+        for (String codePoint : emojiCodePoints) {
+          Bitmap emoji = emojiProvider.getEmojiBitmap(codePoint, 0.5f, true);
+          handler.post(() -> {
+            mapboxStyle.addImage(codePoint, emoji);
+            emojiCodePoints.add(codePoint);
+          });
+        }
+      });
     }
 
     public void filterRange(long startTimestamp, long endTimestamp) {
