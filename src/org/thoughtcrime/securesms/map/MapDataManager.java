@@ -399,6 +399,7 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate,
 
     private void initInfoWindowLayer() {
         Expression iconOffset = switchCase(
+                toBool(get(IS_EMOJI_CHAR)), literal(new Float[] {-2f, -23f}),
                 toBool(get(LAST_LOCATION)), literal(new Float[] {-2f, -25f}),
                 literal(new Float[] {-2f, -20f}));
         GeoJsonSource infoWindowSource = new GeoJsonSource(INFO_WINDOW_SRC);
