@@ -85,10 +85,8 @@ public class LocationBackgroundService extends Service {
 
     private void initialLocationUpdate() {
         try {
-            //Location networkLocation = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
             Location gpsLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-            //locationListener.onLocationChanged(networkLocation);
-            if (System.currentTimeMillis() - gpsLocation.getTime() < INITIAL_TIMEOUT) {
+            if (gpsLocation != null && System.currentTimeMillis() - gpsLocation.getTime() < INITIAL_TIMEOUT) {
               locationListener.onLocationChanged(gpsLocation);
             }
 
