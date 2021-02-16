@@ -173,7 +173,7 @@ public class EmojiProvider {
     }
 
     private Bitmap getEmojiBitmap(float scale) {
-      Bitmap singleEmoji = Bitmap.createBitmap((int) intrinsicWidth/2, (int) intrinsicHeight/2, Bitmap.Config.ARGB_8888);
+      Bitmap singleEmoji = Bitmap.createBitmap((int) (intrinsicWidth * scale), (int) (intrinsicHeight*scale), Bitmap.Config.ARGB_8888);
 
       final int row = info.getIndex() / EMOJI_PER_ROW;
       final int rowIndex = info.getIndex() % EMOJI_PER_ROW;
