@@ -19,6 +19,7 @@ import android.util.Log;
 public class LocationBackgroundService extends Service {
 
     private static final int TIMEOUT = 1000 * 15;
+    private static final int INITIAL_TIMEOUT = 1000 * 60 * 2;
     private static final String TAG = LocationBackgroundService.class.getSimpleName();
     private LocationManager locationManager = null;
     private static final int LOCATION_INTERVAL = 1000;
@@ -84,10 +85,10 @@ public class LocationBackgroundService extends Service {
 
     private void initialLocationUpdate() {
         try {
-            //Location networkLocation = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
             Location gpsLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-            //locationListener.onLocationChanged(networkLocation);
-            locationListener.onLocationChanged(gpsLocation);
+            if (gpsLocation != null && System.currentTimeMillis() - gpsLocation.getTime() < INITIAL_TIMEOUT) {
+              locationListener.onLocationChanged(gpsLocation);
+            }
 
         } catch (NullPointerException | SecurityException e) {
             e.printStackTrace();
