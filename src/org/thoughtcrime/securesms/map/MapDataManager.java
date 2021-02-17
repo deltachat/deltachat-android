@@ -2,8 +2,11 @@ package org.thoughtcrime.securesms.map;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import androidx.annotation.NonNull;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
+
+import androidx.annotation.NonNull;
 
 import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcEventCenter;
@@ -23,6 +26,7 @@ import com.mapbox.mapboxsdk.style.layers.SymbolLayer;
 import com.mapbox.mapboxsdk.style.sources.GeoJsonSource;
 
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.components.emoji.EmojiProvider;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.map.DataCollectionTask.DataCollectionCallback;
@@ -32,19 +36,24 @@ import org.thoughtcrime.securesms.map.model.MapSource;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import static com.b44t.messenger.DcContext.DC_EVENT_LOCATION_CHANGED;
 import static com.b44t.messenger.DcContext.DC_GCL_ADD_SELF;
 import static com.mapbox.mapboxsdk.location.modes.RenderMode.COMPASS;
 import static com.mapbox.mapboxsdk.style.expressions.Expression.all;
+import static com.mapbox.mapboxsdk.style.expressions.Expression.eq;
 import static com.mapbox.mapboxsdk.style.expressions.Expression.get;
 import static com.mapbox.mapboxsdk.style.expressions.Expression.has;
 import static com.mapbox.mapboxsdk.style.expressions.Expression.length;
 import static com.mapbox.mapboxsdk.style.expressions.Expression.literal;
-import static com.mapbox.mapboxsdk.style.expressions.Expression.eq;
 import static com.mapbox.mapboxsdk.style.expressions.Expression.neq;
 import static com.mapbox.mapboxsdk.style.expressions.Expression.not;
 import static com.mapbox.mapboxsdk.style.expressions.Expression.switchCase;
@@ -81,7 +90,9 @@ import static org.thoughtcrime.securesms.util.BitmapUtil.generateColoredBitmap;
  * Created by cyberta on 07.03.19.
  */
 
-public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateInfoWindowCallback, DataCollectionCallback {
+public class MapDataManager implements DcEventCenter.DcEventDelegate,
+  GenerateInfoWindowCallback,
+  DataCollectionCallback {
     public static final String MARKER_SELECTED = "MARKER_SELECTED";
     public static final String LAST_LOCATION = "LAST_LOCATION";
     public static final String CONTACT_ID = "CONTACT_ID";
@@ -90,6 +101,7 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
     public static final String MESSAGE_ID = "MESSAGE_ID";
     public static final String ACCURACY = "ACCURACY";
     public static final String MARKER_CHAR = "MARKER_CHAR";
+    public static final String IS_EMOJI_CHAR = "IS_EMOJI_CHAR";
     public static final String POI_LONG_DESCRIPTION = "POI_LONG_DESCRIPTION";
     public static final String MARKER_ICON = "MARKER_ICON";
     public static final String IS_POI = "IS_POI";
@@ -109,6 +121,7 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
     private ConcurrentHashMap<Integer, MapSource> contactMapSources = new ConcurrentHashMap<>();
     private ConcurrentHashMap<String, LinkedList<Feature>> featureCollections = new ConcurrentHashMap<>();
     private ConcurrentHashMap<Integer, Feature> lastPositions = new ConcurrentHashMap<>();
+    private Set<String> emojiCodePoints = Collections.newSetFromMap(new ConcurrentHashMap<>());
     private FilterProvider filterProvider = new FilterProvider();
     private Feature selectedFeature;
     private int chatId;
@@ -119,6 +132,7 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
     private boolean isInitial = true;
     private boolean showTraces = false;
     private LocationComponent locationComponent;
+    private EmojiProvider emojiProvider;
 
     public interface MapDataState {
         void onDataInitialized(LatLngBounds bounds);
@@ -133,6 +147,7 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
         boundingBuilder = new LatLngBounds.Builder();
         this.callback = updateCallback;
         this.locationComponent = locationComponent;
+        emojiProvider = EmojiProvider.getInstance(context);
 
         initInfoWindowLayer();
         initLastPositionLayer();
@@ -189,16 +204,21 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
         Log.d(TAG, "updateEvent in MapDataManager called. eventId: " + eventId);
         int contactId = event.getData1Int();
         if (contactMapSources.containsKey(contactId)) {
+            HashSet<String> emojiCodePoints = new HashSet<>();
             DataCollector collector = new DataCollector(dcContext,
-                    contactMapSources,
-                    featureCollections,
-                    lastPositions, null);
+              contactMapSources,
+              featureCollections,
+              lastPositions,
+              emojiCodePoints,
+              emojiProvider,
+              null
+              );
             collector.updateSource(chatId,
                     contactId,
                     System.currentTimeMillis() - TIME_FRAME,
                     TIMESTAMP_NOW);
-
             refreshSource(contactId);
+            handleEmojiCodepoints(emojiCodePoints);
         }
         Log.d(TAG, "updateEvent in MapDataManager called. finished: " + eventId);
     }
@@ -260,7 +280,8 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
     }
 
     @Override
-    public void onDataCollectionFinished() {
+    public void onDataCollectionFinished(Set <String> emojiCodePoints) {
+        handleEmojiCodepoints(emojiCodePoints);
         for (MapSource source : contactMapSources.values()) {
             initContactBasedLayers(source);
             refreshSource(source.getContactId());
@@ -277,6 +298,26 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
             }
             callback.onDataInitialized(bound);
         }
+    }
+
+    public void handleEmojiCodepoints(Set<String> emojiCodePoints) {
+        // generate only new emoji bitmaps, so remove the ones from the set that we already generated
+        emojiCodePoints.removeAll(this.emojiCodePoints);
+        if (emojiCodePoints.isEmpty()) {
+          return;
+        }
+
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        Handler handler = new Handler(Looper.getMainLooper());
+        executor.execute(() -> {
+          for (String codePoint : emojiCodePoints) {
+            Bitmap emoji = emojiProvider.getEmojiBitmap(codePoint, 0.5f, true);
+            handler.post(() -> {
+              mapboxStyle.addImage(codePoint, emoji);
+              emojiCodePoints.add(codePoint);
+            });
+          }
+        });
     }
 
     public void filterRange(long startTimestamp, long endTimestamp) {
@@ -365,6 +406,7 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
 
     private void initInfoWindowLayer() {
         Expression iconOffset = switchCase(
+                toBool(get(IS_EMOJI_CHAR)), literal(new Float[] {-2f, -23f}),
                 toBool(get(LAST_LOCATION)), literal(new Float[] {-2f, -25f}),
                 literal(new Float[] {-2f, -20f}));
         GeoJsonSource infoWindowSource = new GeoJsonSource(INFO_WINDOW_SRC);
@@ -511,7 +553,9 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
                 contactMapSources,
                 featureCollections,
                 lastPositions,
+
                 boundingBuilder,
+                emojiProvider,
                 this).execute();
     }
 
@@ -523,6 +567,7 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate, GenerateIn
                 featureCollections,
                 lastPositions,
                 boundingBuilder,
+                emojiProvider,
                 this).execute();
     }
 
