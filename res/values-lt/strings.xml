@@ -27,10 +27,14 @@
     <string name="archive">Archyvuoti</string>
     <string name="unarchive">Išarchyvuoti</string>
     <string name="ephemeral_messages">Išnykstančios žinutės</string>
+    <string name="ephemeral_messages_hint">Šie nustatymai taikomi visiems Delta Chat besinaudojantiems dalyviams. Vis dėlto, jie gali kopijuoti, įrašyti ir persiųsti žinutes arba naudoti kitas el. pašto kliento programas.</string>
     <string name="save">Įrašyti</string>
     <string name="media">Medija</string>
     <string name="profile">Profilis</string>
     <string name="main_menu">Pagrindinis meniu</string>
+    <string name="start_chat">Pradėti pokalbį</string>
+    <string name="show_full_message">Rodyti visą žinutę…</string>
+    <string name="load_remote_content">Įkelti nuotolinius paveikslus</string>
     <string name="always">Visada</string>
     <string name="once">Vieną kartą</string>
     <string name="show_password">Rodyti slaptažodį</string>
@@ -112,6 +116,8 @@
     <string name="audio">Garsas</string>
     <string name="voice_message">Balso žinutė</string>
     <string name="forwarded_message">Persiųsta žinutė</string>
+    <!-- %1$s will be replaced by the name or the email-address of the person who has forwarded the message -->
+    <string name="forwarded_by">Persiuntė %1$s</string>
     <string name="video">Vaizdas</string>
     <string name="documents">Dokumentai</string>
     <string name="contact">Adresatas</string>
@@ -133,6 +139,7 @@
     <string name="magenta">Rausvai raudona</string>
     <string name="white">Balta</string>
 
+    <string name="zoom">Mastelis</string>
     <string name="extra_small">Labai mažas</string>
     <string name="small">Mažas</string>
     <string name="normal">Normalus</string>
@@ -183,9 +190,11 @@
     <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
     <string name="show_in_chat">Rodyti pokalbyje</string>
     <string name="menu_share">Bendrinti</string>
+    <!-- this is the action "to block sth." usually a mailing list or a contact. this is NOT "a large solid piece of hard material" :) -->
+    <string name="block">Užblokuoti</string>
     <string name="menu_block_contact">Užblokuoti adresatą</string>
     <string name="menu_unblock_contact">Atblokuoti adresatą</string>
-    <string name="menu_play">Groti</string>
+    <string name="menu_play">Atkurti</string>
     <string name="menu_pause">Pristabdyti</string>
     <string name="menu_scroll_to_bottom">Slinkti į apačią</string>
     <string name="menu_scroll_to_top">Slinkti į viršų</string>
@@ -202,6 +211,7 @@
     <string name="menu_zoom_out">Mažinti</string>
     <string name="menu_save_log">Įrašyti žurnalą</string>
     <string name="title_share_location">Bendrinti savo vietą su visais grupės dalyviais</string>
+    <string name="device_talk">Įrenginio žinutės</string>
     <string name="edit_contact">Taisyti adresatą</string>
     <!-- Translators: "Pin" here is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
     <string name="pin_chat">Prisegti pokalbį</string>
@@ -211,6 +221,7 @@
     <string name="pin">Prisegti</string>
     <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
     <string name="unpin">Atsegti</string>
+    <string name="ConversationFragment_quoted_message_not_found">Pradinė žinutė nerasta</string>
     <string name="reply_privately">Atsakyti privačiai</string>
 
     <string name="mute_for_one_hour">Išjungti 1 valandai</string>
@@ -228,7 +239,14 @@
 
     <string name="file_saved_to">Failas įrašytas į \"%1$s\".</string>
 
+    <string name="videochat">Vaizdo pokalbis</string>
+    <string name="videochat_invite_user_to_videochat">Pakviesti %1$s į vaizdo pokalbį?</string>
+    <string name="videochat_invite_user_hint">Tai reikalauja, kad abu pašnekovai turėtų suderinamą programėlę ar suderinamą naršyklę.</string>
     <string name="videochat_will_open_in_your_browser">Šis vaizdo pokalbis bus atvertas jūsų naršyklėje.</string>
+    <string name="videochat_tap_to_join">Bakstelėkite norėdami prisijungti</string>
+    <string name="videochat_tap_to_open">Bakstelėkite norėdami atverti</string>
+    <string name="videochat_instance">Vaizdo pokalbio egzempliorius</string>
+    <string name="videochat_instance_placeholder">Jūsų vaizdo pokalbio egzempliorius</string>
     <!-- get confirmations -->
     <string name="ask_leave_group">Ar tikrai norite išeiti iš šios grupės?</string>
     <plurals name="ask_delete_chat">
@@ -310,6 +328,8 @@
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">Grupės pavadinimas</string>
     <string name="group_avatar">Grupės avataras</string>
+    <string name="remove_group_image">Šalinti grupės paveikslą</string>
+    <string name="change_group_image">Keisti grupės paveikslą</string>
     <string name="group_create_button">Sukurti grupę</string>
     <string name="group_please_enter_group_name">Įveskite grupės pavadinimą.</string>
     <string name="group_add_members">Pridėti dalyvius</string>
@@ -384,6 +404,7 @@
     <string name="pref_profile_info_headline">Jūsų profilio informacija</string>
     <string name="pref_profile_photo">Profilio nuotrauka</string>
     <string name="pref_blocked_contacts">Užblokuoti adresatai</string>
+    <string name="blocked_empty_hint">Jei užblokuosite adresatus, jie bus rodomi čia.</string>
     <string name="pref_profile_photo_remove_ask">Šalinti profilio nuotrauką?</string>
     <string name="pref_password_and_account_settings">Slaptažodis ir paskyra</string>
     <string name="pref_who_can_see_profile_explain">Bendraujant su kitais naudotojais, jūsų profilio paveikslas ir vardas bus rodomi kartu su jūsų žinutėmis. Jau išsiųsta informacija negalės būti ištrinta ar pašalinta.</string>
@@ -515,6 +536,18 @@
     <string name="systemmsg_read_receipt_body">Tai yra pranešimas apie žinutės \"%1$s\" skaitymą.\n\nTai reiškia, kad žinutė buvo atvaizduota gavėjo įrenginyje, tačiau neužtikrina, kad jos turinys buvo perskaitytas.</string>
     <string name="systemmsg_cannot_decrypt">Nepavyksta iššifruoti šios žinutės.\n\n• Galima, tiesiog, atsakyti į šią žinutę ir paprašyti siuntėjo dar kartą išsiųsti šią žinutę.\n\n• Tuo atveju, jeigu iš naujo įdiegėte Delta Chat ar kitą el. pašto programą šiame ar kitame įrenginyje, jūs galite pageidauti išsiųsti Autocrypt sąrankos žinutę iš to įrenginio.</string>
     <string name="systemmsg_subject_for_new_contact">Žinutė nuo %1$s</string>
+    <string name="systemmsg_ephemeral_timer_disabled">Išnykstančių žinučių laikmatis išjungtas.</string>
+    <string name="systemmsg_ephemeral_timer_enabled">Išnykstančių žinučių laikmatis nustatytas į %1$s sek.</string>
+    <string name="systemmsg_ephemeral_timer_minute">Išnykstančių žinučių laikmatis nustatytas į 1 minutę.</string>
+    <string name="systemmsg_ephemeral_timer_hour">Išnykstančių žinučių laikmatis nustatytas į 1 valandą.</string>
+    <string name="systemmsg_ephemeral_timer_day">Išnykstančių žinučių laikmatis nustatytas į 1 dieną.</string>
+    <string name="systemmsg_ephemeral_timer_week">Išnykstančių žinučių laikmatis nustatytas į 1 savaitę.</string>
+    <string name="systemmsg_ephemeral_timer_four_weeks">Išnykstančių žinučių laikmatis nustatytas į 4 savaites.</string>
+    <string name="systemmsg_ephemeral_timer_minutes">Išnykstančių žinučių laikmatis nustatytas į %1$s min.</string>
+    <string name="systemmsg_ephemeral_timer_hours">Išnykstančių žinučių laikmatis nustatytas į %1$s val.</string>
+    <string name="systemmsg_ephemeral_timer_days">Išnykstančių žinučių laikmatis nustatytas į %1$s d.</string>
+    <string name="systemmsg_ephemeral_timer_weeks">Išnykstančių žinučių laikmatis nustatytas į %1$s sav.</string>
+
     <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
     <string name="systemmsg_chat_protection_disabled">Pokalbio apsauga išjungta.</string>
     <string name="systemmsg_chat_protection_enabled">Pokalbio apsauga įjungta.</string>
@@ -531,8 +564,10 @@
 
     <!-- qr code stuff -->
     <string name="qr_code">QR kodas</string>
+    <string name="load_qr_code_as_image">Įkelti QR kodą kaip paveikslą</string>
     <string name="qrscan_title">Nuskenuoti QR kodą</string>
     <string name="qrscan_hint">Laikykite savo kamerą virš QR kodo</string>
+    <string name="qrscan_failed">Nepavyko dekoduoti QR kodo</string>
     <string name="qrscan_ask_join_group">Ar norite prisijungti prie grupės \"%1$s\"?</string>
     <string name="qrscan_contains_text">Nuskenuoto QR kodo tekstas:\n\n%1$s</string>
     <string name="qrscan_contains_url">Nuskenuoto QR kodo URL:\n\n%1$s</string>
@@ -545,7 +580,10 @@
     <string name="qrshow_join_contact_hint">Nuskenuokite tai, norėdami užmegzti kontaktą su %1$s</string>
     <string name="qrshow_join_contact_no_connection_hint">QR kodo sąranka reikalauja interneto ryšio. Prieš tęsdami, prisijunkite prie tinklo.</string>
     <string name="qrshow_join_contact_no_connection_toast">Nėra interneto ryšio, nepavyksta atlikti QR kodo sąrankos.</string>
+    <string name="qraccount_ask_create_and_login">Sukurti naują el. pašto adresą ties „%1$s“ ir prisijungti ten?</string>
     <string name="contact_not_verified">Nepavyksta patvirtinti %1$s</string>
+    <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
+    <string name="contact_setup_changed">Pakeista sąranka, skirta %1$s.</string>
     <string name="notify_mark_read">Žymėti kaip skaitytą</string>
     <string name="notify_reply_button">Atsakyti</string>
     <string name="notify_new_message">Nauja žinutė</string>
@@ -634,7 +672,16 @@
     <string name="a11y_delivery_status_read">Pristatymo būsena: Perskaityta</string>
     <string name="a11y_delivery_status_invalid">Neteisinga pristatymo būsena</string>
     <string name="a11y_background_preview_label">Fono peržiūra</string>
+    <string name="a11y_disappearing_messages_activated">Išnykstančios žinutės aktyvuotos</string>
+
+
+    <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat leis jums pasirinkti, kurias nuotraukas iš savo kolekcijos išsiųsti.</string>
+    <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat nori įrašyti paveikslus į jūsų nuotraukų kolekciją.</string>
+
+
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="pref_background_notifications">Foniniai pranešimai</string>
+    <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
+    <string name="pref_reliable_service">Patikimas foninis ryšys</string>
     <string name="perm_enable_bg_reminder_title">Bakstelėkite čia, norėdami gauti žinutes, kol Delta Chat veikia fone.</string>
     </resources>

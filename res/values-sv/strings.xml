@@ -10,11 +10,14 @@
     <string name="on">På</string>
     <string name="off">Av</string>
     <string name="def">Standard</string>
+    <string name="default_value">Standard (%1$s)</string>
+    <string name="default_value_as_above">Standard (samma som ovan)</string>
     <string name="custom">Anpassat</string>
     <string name="none">Ingen</string>
     <string name="automatic">Automatiskt</string>
     <string name="strict">Sträng</string>
     <string name="open">Öppna</string>
+    <string name="open_attachment">Öppna bilaga</string>
     <string name="join">Anslut</string>
     <string name="rejoin">Återanslut</string>
     <string name="delete">Ta bort</string>
@@ -33,8 +36,15 @@
     <string name="save">Spara</string>
     <string name="chat">Chatt</string>
     <string name="media">Media</string>
+    <string name="profile">Profil</string>
     <string name="main_menu">Huvudmeny</string>
     <string name="start_chat">Starta chatt</string>
+    <string name="show_full_message">Visa hela meddelandet...</string>
+    <string name="load_remote_content">Ladda in fjärrbilder</string>
+    <!-- possible answers to the question are: Never, Always, Once -->
+    <string name="load_remote_content_ask">Fjärrbilder kan användas för att spåra dig.\n\nInställningen att fonter och annat innehåll laddas in. Även om inställningen är inaktiverad kan eventuellt inbäddade eller cachade fjärrbilder visas.\n\nLadda in fjärrbilder?</string>
+    <string name="always">Alltid</string>
+    <string name="once">en gång</string>
     <string name="show_password">Visa lösenord</string>
     <string name="hide_password">Dölj lösenord</string>
     <string name="not_now">Inte nu</string>
@@ -42,6 +52,7 @@
     <string name="one_moment">Ett ögonblick...</string>
     <string name="done">Klart</string>
     <string name="undo">Ångra</string>
+    <string name="offline">Offline</string>
     <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
     <string name="next">Nästa</string>
     <string name="error">Fel</string>
@@ -95,11 +106,15 @@
     <string name="self">Jag</string>
     <string name="draft">Utkast</string>
     <string name="image">Bild</string>
+    <!-- Translators: Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
+    <string name="reply_noun">Svara</string>
     <string name="gif">GIF</string>
     <string name="images">Bilder</string>
     <string name="audio">Ljud</string>
     <string name="voice_message">Röstmeddelande</string>
     <string name="forwarded_message">Vidarebefordrat meddelande</string>
+    <!-- %1$s will be replaced by the name or the email-address of the person who has forwarded the message -->
+    <string name="forwarded_by">Vidarebefordrad av %1$s</string>
     <string name="video">Video</string>
     <string name="documents">Dokument</string>
     <string name="contact">Kontakt</string>
@@ -121,6 +136,8 @@
     <string name="magenta">Magenta</string>
     <string name="white">Vit</string>
 
+    <string name="zoom">Zoom</string>
+    <string name="extra_small">Extra liten</string>
     <string name="small">Liten</string>
     <string name="normal">Normal</string>
     <string name="large">Stor</string>
@@ -149,12 +166,17 @@
     <string name="menu_add_attachment">Lägg till bilaga</string>
     <string name="menu_leave_group">Lämna grupp</string>
     <string name="menu_delete_chat">Ta bort chatt</string>
+    <string name="ask_delete_named_chat">Är du säker på att du vill ta bort \"%1$s\"?</string>
     <string name="menu_delete_messages">Ta bort meddelanden</string>
     <string name="menu_delete_image">Ta bort bild</string>
+    <string name="delete_contact">Ta bort kontakt</string>
     <string name="menu_delete_locations">Ta bort alla platser?</string>
     <string name="menu_delete_location">Ta bort denna plats?</string>
     <string name="menu_message_details">Meddelandedetaljer</string>
     <string name="menu_copy_to_clipboard">Kopierad till urklipp</string>
+    <string name="menu_copy_selection_to_clipboard">Kopiera urval</string>
+    <string name="menu_copy_link_to_clipboard">Kopiera länk</string>
+    <string name="paste_from_clipboard">Klistra in från urklipp</string>
     <string name="menu_forward">Vidarebefordra meddelande</string>
     <string name="menu_resend">Skicka om meddelandet</string>
     <string name="menu_reply">Svara på meddelandet</string>
@@ -162,7 +184,11 @@
     <string name="menu_unmute">Slå på</string>
     <string name="menu_export_attachment">Exportera bilaga</string>
     <string name="menu_all_media">All media</string>
+    <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
+    <string name="show_in_chat">Visa i chatten</string>
     <string name="menu_share">Dela</string>
+    <!-- this is the action "to block sth." usually a mailing list or a contact. this is NOT "a large solid piece of hard material" :) -->
+    <string name="block">Blockera</string>
     <string name="menu_block_contact">Blockera kontakt</string>
     <string name="menu_unblock_contact">Avblockera kontakten</string>
     <string name="menu_play">Spela upp</string>
@@ -171,6 +197,7 @@
     <string name="menu_scroll_to_top">Bläddra till toppen</string>
     <string name="menu_help">Hjälp</string>
     <string name="menu_select_all">Markera alla</string>
+    <string name="select_more">Välj flera</string>
     <string name="menu_expand">Expandera</string>
     <string name="menu_edit_name">Redigera namn</string>
     <string name="menu_settings">Inställningar</string>
@@ -195,6 +222,9 @@
     <string name="pin">Fäst</string>
     <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
     <string name="unpin">Lösgör</string>
+    <string name="ConversationFragment_quoted_message_not_found">Original meddelandet hittas inte</string>
+    <string name="reply_privately">Svara säkert</string>
+
     <string name="mute_for_one_hour">Tysta 1 timma</string>
     <string name="mute_for_two_hours">Tysta 2 timmar</string>
     <string name="mute_for_one_day">Tysta 1 dag</string>
@@ -208,6 +238,10 @@
     <string name="share_location_for_two_hours">i 2 timmar</string>
     <string name="share_location_for_six_hours">i 6 timmar</string>
 
+    <plurals name="ask_send_following_n_files_to">
+        <item quantity="one">Skicka följande fil till %s?</item>
+        <item quantity="other">Skicka de följande filerna %d till %s ?</item>
+    </plurals>
     <string name="file_saved_to">Filen är sparad i \"%1$s\".</string>
 
     <string name="videochat">Videochatt</string>
@@ -244,8 +278,12 @@
     <string name="ask_delete_contact">Ta bort kontakten %1$s?\n\nKontakter med pågående chattar och kontakter från systemets adressbok kan inte tas bort permanent. </string>
     <string name="cannot_delete_contacts_in_use">Det går inte att ta bort kontakter med pågående chattar.</string>
     <string name="ask_start_chat_with">Chatta med %1$s ?</string>
+    <string name="ask_delete_value">Ta bort %s?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Ta bort %1$s från gruppen?</string>
+    <string name="open_url_confirmation">Vill du öppna denna länk?</string>
+
+
     <!-- contact list -->
     <string name="contacts_title">Kontakter</string>
     <string name="contacts_enter_name_or_email">Ange namn eller e-postadress</string>
@@ -284,10 +322,25 @@
     <string name="chat_self_talk_subtitle">Meddelanden jag skickat till mig själv</string>
     <string name="saved_messages">Sparade meddelanden</string>
     <string name="saved_messages_explain">• Vidarebefordra meddelanden här för enkel åtkomst\n\n• Spara anteckningar eller röstmemon\n\n• Bifoga mediafiler för att spara dom</string>
+    <!-- this "Saved" should match the "Saved" from "Saved messages" -->
+    <string name="saved">Sparad</string>
     <string name="chat_contact_request">Kontaktförfrågan</string>
     <string name="chat_no_contact_requests">Inga kontaktförfrågningar.\n\nOm du vill att vanliga e-postmeddelanden skall visas som kontaktförfrågningar här, kan du ändra det i appens inställningar.</string>
     <string name="retry_send">Skicka om meddelandet</string>
     <string name="send_failed">Kunde inte skicka meddelandet</string>
+    <!-- reasons for a disabled message composer -->
+    <string name="messaging_disabled_not_in_group">Du kan inte skriva eftersom du inte är med i denna grupp. Be en medlem bjuda in dig, för att gå med</string>
+    <string name="messaging_disabled_device_chat">Den här chatten innehåller meddelanden som har genererats lokalt. Därför kan du inte skriva meddelanden.</string>
+    <string name="messaging_disabled_deaddrop">Tryck på ett meddelande för att acceptera, eller neka en kontaktförfrågan</string>
+    <string name="cannot_display_unsuported_file_type">Denna filtyp kan inte visas: %s</string>
+    <string name="attachment_failed_to_load">Bilagan kunde inte visas</string>
+
+
+    <!-- mailing lists -->
+    <string name="mailing_list">Mejllista</string>
+    <string name="ask_show_mailing_list">Visa mejllistan \"%1$s\"?</string>
+
+
     <!-- map -->
     <string name="filter_map_on_time">Visa platser inom tidsramen</string>
     <string name="show_location_traces">Visa spår</string>
@@ -303,6 +356,8 @@
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">Gruppnamn</string>
     <string name="group_avatar">Gruppbild</string>
+    <string name="remove_group_image">Ta bort gruppbild</string>
+    <string name="change_group_image">Ändra gruppbild</string>
     <string name="group_create_button">Skapa grupp</string>
     <string name="group_please_enter_group_name">Ange ett namn för gruppen.</string>
     <string name="group_add_members">Lägg till medlemmar</string>

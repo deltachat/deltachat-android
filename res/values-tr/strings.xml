@@ -113,6 +113,8 @@
     <string name="audio">Ses</string>
     <string name="voice_message">Sesli ileti</string>
     <string name="forwarded_message">İletilen ileti</string>
+    <!-- %1$s will be replaced by the name or the email-address of the person who has forwarded the message -->
+    <string name="forwarded_by">%1$s tarafından iletildi</string>
     <string name="video">Video</string>
     <string name="documents">Belgeler</string>
     <string name="contact">Kişi</string>
@@ -185,6 +187,8 @@
     <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
     <string name="show_in_chat">Sohbette göster</string>
     <string name="menu_share">Paylaş</string>
+    <!-- this is the action "to block sth." usually a mailing list or a contact. this is NOT "a large solid piece of hard material" :) -->
+    <string name="block">Engelle</string>
     <string name="menu_block_contact">Kişiyi engelle</string>
     <string name="menu_unblock_contact">Kişiyi engelleme</string>
     <string name="menu_play">Oynat</string>
@@ -330,6 +334,11 @@
     <string name="messaging_disabled_deaddrop">İletişim isteğini kabul etmek ya da reddetmek için bir iletinin üzerine tıklayın</string>
     <string name="cannot_display_unsuported_file_type">Bu dosya türü görüntülenemiyor: %s</string>
     <string name="attachment_failed_to_load">İlişiği yükleme başarısız</string>
+
+
+    <!-- mailing lists -->
+    <string name="mailing_list">Posta listesi</string>
+    <string name="ask_show_mailing_list">\"%1$s\" posta listesi gösterilsin mi?</string>
 
 
     <!-- map -->
