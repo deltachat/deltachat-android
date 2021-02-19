@@ -473,7 +473,7 @@
     <string name="pref_managekeys_export_secret_keys">នាំចេញកូនសោរសម្ងាត់</string>
     <string name="pref_managekeys_export_explain">នាំចេញកូនសោរសម្ងាត់ទៅ \"%1s\"?</string>
     <string name="pref_managekeys_import_secret_keys">នាំចូលកូនសោរសម្ងាត់</string>
-    <string name="pref_managekeys_import_explain">នាំចូលកូនសោរសម្ងាត់ពី \"%1$s\"?\n\n• កូនសោរសម្ងាត់ដែលមានស្រាប់នឹងមិនបានលុបទេ\n\n•កូនសោរដែលនាំចូលចុងក្រោយនឹងបានប្រើប្រាស់ដូចជា លំនាំថ្មីលើកលែងតែវាមានពាក្យ \"legacy\" ក្នុងឈ្មោះឯកសាររបស់វា។{Import secret keys from \"%1$s\"?\n\n• Existing secret keys will not be deleted\n\n• The last imported key will be used as the new default key unless it has the word \"legacy\" in its filename.}</string>
+    <string name="pref_managekeys_import_explain">នាំចូលកូនសោរសម្ងាត់ពី \"%1$s\"?\n\n• កូនសោរសម្ងាត់ដែលមានស្រាប់នឹងមិនបានលុបទេ\n\n•កូនសោរដែលនាំចូលចុងក្រោយនឹងបានប្រើប្រាស់ដូចជា លំនាំថ្មីលើកលែងតែវាមានពាក្យ \"legacy\" ក្នុងឈ្មោះឯកសាររបស់វា។</string>
     <string name="pref_managekeys_secret_keys_exported_to_x">បានសរសេរកូនសោរសម្ងាត់ ដោយជោគជ័យទៅ \"%1$s\"</string>
     <string name="pref_managekeys_secret_keys_imported_from_x">បាននាំចូលកូនសោរសម្ងាត់ពី \"%1$s\"</string>
     <string name="pref_background">ផ្ទៃខាងក្រោយ</string>
@@ -545,7 +545,7 @@
     <string name="autocrypt_send_asm_title">ផ្ញើសារអ៊ិនគ្រីបស្វ័យប្រវត្តិសម្រាប់ការរៀបចំ</string>
     <string name="autocrypt_send_asm_explain_before">សារអ៊ិនគ្រីបស្វ័យប្រវត្តិសម្រាប់ការរៀបចំចែកចាយចាត់របសឧបករណ៍ដល់ឧបករណ៍ជាមួយកម្មវិធីដែលមានអ៊ិនគ្រីបស្វ័យប្រវត្តិផ្សេងទៀត។\n\n ការចាត់នឹងបានអ៊ិនគ្រីប (ការធ្វើឲ្យការផ្ញើសារជាសារដាយសញ្ញាសម្ងាត់) នៅទីនេះ នឹងត្រូវតែបានវាយបញ្ចូលនៅលើឧបករណ៍ផ្សេង។</string>
     <string name="autocrypt_send_asm_button">ផ្ញើសារអ៊ិនគ្រីបស្វ័យប្រវត្តិសម្រាប់ការរៀបចំ</string>
-    <string name="autocrypt_send_asm_explain_after">ការរៀបចំរបស់អ្នកត្រូវបានផ្ញើទៅខ្លួនឯងហើយ។ ប្តូរឆ្លាស់ឧបករណ៍ផ្សេង និងបើកសារការរៀបចំ។ អ្នកនឹងទទួលសំណួរពីកូដរៀបចំ។ បញ្ចូលលេខដូចខាងក្រោម:\n\n%$s1</string>
+    <string name="autocrypt_send_asm_explain_after">ការរៀបចំរបស់អ្នកត្រូវបានផ្ញើទៅខ្លួនឯងហើយ។ ប្តូរឆ្លាស់ឧបករណ៍ផ្សេង និងបើកសារការរៀបចំ។ អ្នកនឹងទទួលសំណួរពីកូដរៀបចំ។ បញ្ចូលលេខដូចខាងក្រោម:\n\n%1$s</string>
     <string name="autocrypt_prefer_e2ee">ចូលចិត្តការអ៊ិនគ្រីបច្រើនជាង</string>
     <string name="autocrypt_asm_subject">ផ្ញើសារអ៊ិនគ្រីបស្វ័យប្រវត្តិសម្រាប់ការរៀបចំ</string>
     <string name="autocrypt_asm_general_body">នេះជាសាររៀបចំចាក់អ៊ិនគ្រីបស្វ័យប្រវត្តិសម្រាប់ចែកចាយចាត់ការរៀបចំចាក់ឧបករណ៍ដល់ឧបករណ៍ជាមួយឧបករណ៍ផ្សេងទៀត។\n\nដើម្បីឌិគ្រីប (ការទទួលសារដែលបានធ្វើជាសារសញ្ញាសម្ងាត់ដល់អាចអានបានវិញ) និងប្រើប្រាសការរៀបចំចាក់របសអ្នក បើកសារនៅក្នុងកម្មវិធីដែលស្គាល់អ៊ិនគ្រីបស្វ័យប្រវត្តិ និងកូដការរៀបចំដែលបានអំណោយពីឧបករណ៍បានបង្កើតវា។</string>
