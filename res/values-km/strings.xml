@@ -1,0 +1,764 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- common strings without special context -->
+    <string name="app_name">Delta Chat</string>
+    <string name="ok">យល់ព្រម</string>
+    <string name="cancel">ចោល</string>
+    <string name="yes">បាទ/ចាស</string>
+    <string name="no">ទេ</string>
+    <string name="select">សំរាំង</string>
+    <string name="on">បើក</string>
+    <string name="off">បិទ</string>
+    <string name="def">លំនាំដើម</string>
+    <string name="default_value">លំនាំដើម (%1$s)</string>
+    <string name="default_value_as_above">លំនាំដើម (ដូចខាងលើ)</string>
+    <string name="custom">តាមទម្លាប់</string>
+    <string name="none">គ្មាន</string>
+    <string name="automatic">ដោយស្វ័យប្រវត្ដិ</string>
+    <string name="strict">យ៉ាង ដិតដល</string>
+    <string name="open">បើក</string>
+    <string name="open_attachment">បើកឯកសារភ្ជាប់</string>
+    <string name="join">ចូលរួម</string>
+    <string name="rejoin">ចូលរួមម្តងទៀត</string>
+    <string name="delete">លុបចោល</string>
+    <string name="info">ការពន្យល់</string>
+    <string name="update">ធ្វើឱ្យទាន់សម័យ</string>
+    <string name="emoji">សញ្ញាអារម្មណ៍</string>
+    <string name="attachment">ឯកសារ​ភ្ជាប់</string>
+    <string name="back">ត្រឡប់មកវិញ</string>
+    <string name="close">បិទ</string>
+    <string name="forward">ទៅមុខ</string>
+    <string name="archive">ទុកក្នុងប័ណ្ណសារ</string>
+    <string name="unarchive">ផ្តល់ឱ្យចេញពីប័ណ្ណសារ</string>
+    <string name="mute">ធ្វើឲ្យមិនឃើញមិនលឺ</string>
+    <string name="ephemeral_messages">កម្មវិធីសារដែលនឹងបាត់បន្ទាប់ពីមួយរយៈ</string>
+    <string name="ephemeral_messages_hint">ការកំណត់ទាំងនេះអនុវត្តចំពោះសមាជិកទាំងអស់ដែលកំពុងប្រើ សា Delta Chat ។ ទោះយ៉ាងណា គេអាចថតចម្លង រក្សាទុក និង បញ្ជូនសារបន្ត រឺ ប្រើប្រាស់បណ្តាអុីម៉េលផ្សេងៗបាន។</string>
+    <string name="save">រក្សាទុក</string>
+    <string name="chat">សន្ទនា</string>
+    <string name="media">ផ្សព្វផ្សាយ</string>
+    <string name="profile">ពត៌មានផ្ទាល់ខ្លួន</string>
+    <string name="main_menu">បញ្ជីដើម</string>
+    <string name="start_chat">ចាប់ផ្តើមសន្ទនា</string>
+    <string name="show_password">បង្ហាញពាក្យសម្ងាត់</string>
+    <string name="hide_password">លាក់ពាក្យសម្ងាត់</string>
+    <string name="not_now">មិនឥឡូវនេះទេ</string>
+    <string name="never">មិនដែលទេ</string>
+    <string name="one_moment">សូមមួយភ្លែត...</string>
+    <string name="done">រួចរាល់</string>
+    <string name="undo">ធ្វើឡើងវិញ</string>
+    <string name="offline">ក្រៅបណ្តាញ</string>
+    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
+    <string name="next">បន្ទាប់</string>
+    <string name="error">កំហុស</string>
+    <string name="error_x">កំហុស: %1$s</string>
+    <string name="error_no_network">បណ្តាញមិនទំនេរ</string>
+    <string name="no_app_to_handle_data">មិនអាចរកឃើញកម្មវិធីសម្រាប់ដំណើរការលើទិន្ន័យប្រភេទនេះទេ</string>
+    <string name="no_browser_installed">គ្មានកម្មវិធីរុករកត្រូវបានដំឡើងទេ</string>
+    <string name="file_not_found">រកមិនឃើញឯកសា %1$s។</string>
+    <string name="copied_to_clipboard">បានចម្លងទុកទៅក្តារបណ្តោះអាសន្ន</string>
+    <string name="contacts_headline">ឈ្មោះទំនាក់ទំនង</string>
+    <string name="email_address">អាសយដ្ឋានអុីមែល</string>
+    <string name="bad_email_address">អាសយដ្ឋានអុីមែលមិនល្អ</string>
+    <string name="password">ពាក្យសម្ងាត់</string>
+    <string name="existing_password">ពាក្យសម្ងាត់ដែលមានស្រាប់</string>
+    <string name="now">ឥឡូវនេះ</string>
+    <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
+    <string name="danger">ភយន្តរាយ</string>
+    <string name="today">ថ្ងៃនេះ</string>
+    <string name="yesterday">ម្សិលមិញ</string>
+    <string name="this_week">ស​ប្តា​ហ៍​នេះ</string>
+    <string name="this_month">ខែ​នេះ</string>
+    <string name="last_week">ស​ប្តា​ហ៍​មុន</string>
+    <string name="last_month">ខែមុន</string>
+    <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
+    <plurals name="n_minutes">
+        <item quantity="other">%d នាទី</item>
+    </plurals>
+    <!-- Translators: show beside messages that are "N hours old". prefer a short string, prefer abbreviations if they're well-known -->
+    <plurals name="n_hours">
+        <item quantity="other">%d ម៉ោង</item>
+    </plurals>
+    <plurals name="n_chats">
+        <item quantity="other">សន្ទនា %d</item>
+    </plurals>
+    <plurals name="n_contacts">
+        <item quantity="other">ទំនាក់ទំនង %d</item>
+    </plurals>
+    <plurals name="n_messages">
+        <item quantity="other">សារ %d</item>
+    </plurals>
+    <plurals name="n_members">
+        <item quantity="other">សមាជិក %d</item>
+    </plurals>
+
+    <string name="self">ខ្ញុំ</string>
+    <string name="draft">ពង្រាង</string>
+    <string name="image">រូបភាព</string>
+    <!-- Translators: Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
+    <string name="reply_noun">ចម្លើយតប</string>
+    <string name="gif">រូបភាពចលនា</string>
+    <string name="images">រូបភាព</string>
+    <string name="audio">សម្លេង</string>
+    <string name="voice_message">សារជាសម្លេង</string>
+    <string name="forwarded_message">សារដែលបានបញ្ជូនបន្ត</string>
+    <string name="video">វីដេអូ</string>
+    <string name="documents">ឯកសារ</string>
+    <string name="contact">ទំនាក់ទំនង</string>
+    <string name="verified_contact">ទំនាក់ទំនងដែលបានផ្ទៀងផ្ទាត់</string>
+    <string name="camera">កាមេរ៉ា</string>
+    <string name="location">ទីតាំង</string>
+    <string name="gallery">វិចិត្រសាល</string>
+    <string name="images_and_videos">រូបភាព និងវីដេអូ</string>
+    <string name="file">ឯកសារ</string>
+    <string name="files">ឯកសារ</string>
+    <string name="unknown">មិនស្គាល់</string>
+
+    <string name="green">ពណ៌បៃតង</string>
+    <string name="red">ក្រហម</string>
+    <string name="blue">ពណ៌ខៀវ</string>
+    <string name="orange">ពណ៌ក្រូច</string>
+    <string name="cyan">ពណ៌ខៀវខ្ចី</string>
+    <string name="purple">ពណ៌ស្វាយ</string>
+    <string name="magenta">ពណ៌ស្វាយខ្ចី</string>
+    <string name="white">ពណ៌ស</string>
+
+    <string name="zoom">ពង្រីក</string>
+    <string name="extra_small">តូចបំផុត</string>
+    <string name="small">តូច</string>
+    <string name="normal">ធម្មតា</string>
+    <string name="large">ធំ</string>
+    <string name="extra_large">ធំបំផុត</string>
+
+    <string name="fast">រហ័ស</string>
+    <string name="slow">យឺត</string>
+
+    <string name="message_delivered">សារបានទទួលហើយ</string>
+    <string name="message_read">សារបានអានហើយ</string>
+
+
+    <!-- menu labels (or icon, buttons...) -->
+    <string name="menu_new_contact">ទំនាក់ទំនងថ្មី</string>
+    <string name="menu_new_chat">សន្ទនាថ្មី</string>
+    <string name="menu_new_group">ក្រុមថ្មី</string>
+    <string name="menu_new_verified_group">ក្រុមដែលបានកំណត់ថ្មី</string>
+    <string name="menu_send">ផ្ញើ</string>
+    <string name="menu_toggle_keyboard">ក្តារចុចបើក/បិទរូបសញ្ញាអារម្មណ៍</string>
+    <string name="menu_edit_group">កែក្រុម</string>
+    <string name="menu_group_name_and_image">ក្រុមឈ្មោះ និងរូបភាព</string>
+    <string name="menu_show_map">បង្ហាញផែនទី</string>
+    <string name="menu_show_global_map">បង្ហាញទីតាំងទាំងអស់</string>
+    <string name="menu_archive_chat">លាក់សារសន្ទនា</string>
+    <string name="menu_unarchive_chat">បង្ហាញសារសន្ទនា</string>
+    <string name="menu_add_attachment">បន្ថែមឯកសារភ្ជាប់</string>
+    <string name="menu_leave_group">ចាកចេញពីក្រុម</string>
+    <string name="menu_delete_chat">លុបសារសន្ទនា</string>
+    <string name="ask_delete_named_chat">តើអ្នកប្រាកដហើយថាចង់លុប \"%1$s\"?</string>
+    <string name="menu_delete_messages">លុបសារ</string>
+    <string name="menu_delete_image">លុបរូបភាព</string>
+    <string name="delete_contact">លុបទំនាក់ទំនង</string>
+    <string name="menu_delete_locations">លុបទីតាំងទាំងអស់?</string>
+    <string name="menu_delete_location">លុបទីតាំងនេះ?</string>
+    <string name="menu_message_details">លំអិតសារ</string>
+    <string name="menu_copy_to_clipboard">ចម្លងទៅក្តារខ្ទាស់ឯកសារ</string>
+    <string name="menu_copy_selection_to_clipboard">ចម្លងផ្នែកខ្លះ</string>
+    <string name="menu_copy_link_to_clipboard">ចម្លងតំណភ្ជាប់</string>
+    <string name="paste_from_clipboard">ទាញយកពីក្តារខ្ទាស់ឯកសារ</string>
+    <string name="menu_forward">បញ្ជូនបន្តសារ</string>
+    <string name="menu_resend">ផ្ញើសារម្តងទៀត</string>
+    <string name="menu_reply">ឆ្លើយតបសារ</string>
+    <string name="menu_mute">ធ្វើឲ្យមិនឃើញមិនលឺការជូនដំណឹង</string>
+    <string name="menu_unmute">ចេញពីមិនឃើញមិនលឺ</string>
+    <string name="menu_export_attachment">នាំចេញឯកសារភ្ជាប់</string>
+    <string name="menu_all_media">ប្រព័ន្ធផ្សព្វផ្សាយទាំងអស់</string>
+    <string name="menu_share">ចែករំលែក</string>
+    <string name="menu_block_contact">រារាំងទំនាក់ទំនង</string>
+    <string name="menu_unblock_contact">មិនរារាំងទំនាក់ទំនង</string>
+    <string name="menu_play">ចាក់</string>
+    <string name="menu_pause">ផ្អាក</string>
+    <string name="menu_scroll_to_bottom">រំកិលចុះទៅក្រោម</string>
+    <string name="menu_scroll_to_top">រំកិលឡើងទៅលើ</string>
+    <string name="menu_help">ជំនួយ</string>
+    <string name="menu_select_all">ជ្រើសរើសទាំងអស់</string>
+    <string name="menu_expand">លាត</string>
+    <string name="menu_edit_name">កែឈ្មោះ</string>
+    <string name="menu_settings">ការកំណត់</string>
+    <string name="menu_advanced">ដែលបន្ថែមទៅទៀត</string>
+    <string name="menu_deaddrop">ស្នើសុំការទាក់ទង</string>
+    <string name="menu_deaddrop_subtitle">ចុចពាក្យសារ សម្រាប់ចាប់ផ្តើមការជជែក</string>
+    <string name="menu_view_profile">មើលពត៌មានផ្ទាល់ខ្លួន</string>
+    <string name="menu_zoom_in">បង្រួមទំហំ</string>
+    <string name="menu_zoom_out">ពង្រីកទំហំ</string>
+    <string name="menu_save_log">រក្សាទុកកំណត់ហេតុ</string>
+    <string name="title_share_location">ចែករំលែក ទីតាំងជាមួយសមាជិកក្រុមទាំងអស់</string>
+    <string name="device_talk">សារពីឧបករណ៍</string>
+    <string name="device_talk_subtitle">សារដែលបានបង្កើតពីសា Delta Chat</string>
+    <string name="device_talk_explain">សារក្នុងការសន្ទនានេះ បានបង្កើតទិនេះដោយ សា Delta Chat ។ អ្នកបង្កើតវា ប្រើវាដើម្បីជូនដំណឹងពីការធ្វើបច្ចុប្បន្នភាពកម្មវិធី និងបញ្ហាកំឡុងពេលប្រើ។</string>
+    <string name="device_talk_welcome_message">ស្វាគមន៍មកកាន់ សា Delta Chat ! - សា Delta Chat មើលទៅដូចកម្មវិធីសន្ទនាពេញនិយមផ្សេងទៀតដែរ ប៉ុន្តែមិនជាប់ស្មុគស្មាញនឹងការត្រួតត្រាជាកណ្តាល តាមដាន រឺលក់អ្នក មិត្តភក្តិ មិត្តរួមការងារ រឺគ្រួសារ ទៅឲ្យអង្គការធំ។\n\nបច្ចេកទេស សា Delta Chat គឺ កម្មវិធីអុីម៉ែលជាមួយនឹងចំណុចប្រទាក់ការសន្ទនាទាន់សម័យ។ អ្នកនឹងត្រូវការតែអុីម៉េលតែប៉ុណ្ណោះ! 👻\n\nប្រើប្រាស់សាហារីសង្ឃ ជាមួយនរណាម្នាក់ក្នុងចំណោមមនុស្សរាប់ពាន់លានអ្នក: ដោយគ្រាន់តែប្រើអស័យដ្ឋានអុីម៉េលរបស់ពួកគេ។ អ្នកទទួលបានសារដោយមិនតម្រូវបញ្ជូលកម្មវិធី សា Delta Chat ទស្សនាគេហទំព័រ ឬចុះឈ្មោះសិននៅកន្លែងណាក៏បាន - ទោះបីជា ការពិតប្រសិនបើពួកគេចូលចិត្ត អ្នកអាចចង្អុរពួកគេទៅកាន់ 👉 https://get.delta.chat</string>
+    <string name="edit_contact">កែសម្រួល ទំនាក់ទំនង</string>
+    <!-- Translators: "Pin" here is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
+    <string name="pin_chat">ខ្ទាស់សន្ទនា</string>
+    <!-- Translators: this is the opposite of "Pin chat", removing the sticky-state from a chat. -->
+    <string name="unpin_chat">ដកខ្ទាស់សន្ទនា</string>
+    <!-- Translators: this is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
+    <string name="pin">ខ្ទាស់</string>
+    <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
+    <string name="unpin">ដកខ្ទាស់</string>
+    <string name="ConversationFragment_quoted_message_not_found">រកមិនឃើញសារដើម</string>
+    <string name="reply_privately">ឆ្លើយតបដោយឯកជន</string>
+
+    <string name="mute_for_one_hour">ធ្វើឲ្យមិនឃើញមិនលឺរយៈពេល១ម៉ោង</string>
+    <string name="mute_for_two_hours">ធ្វើឲ្យមិនឃើញមិនលឺរយៈពេល២ម៉ោង</string>
+    <string name="mute_for_one_day">ធ្វើឲ្យមិនឃើញមិនលឺរយៈពេល១ថ្ងៃ</string>
+    <string name="mute_for_seven_days">ធ្វើឲ្យមិនឃើញមិនលឺរយៈពេល៧ថ្ងៃ</string>
+    <string name="mute_forever">ធ្វើឲ្យមិនឃើញមិនលឺរយៈរហូត</string>
+
+    <string name="share_location_once">ម្តង</string>
+    <string name="share_location_for_5_minutes">រយៈពេល៥នាទី</string>
+    <string name="share_location_for_30_minutes">រយៈពេល៣០នាទី</string>
+    <string name="share_location_for_one_hour">រយៈពេល១ម៉ោង</string>
+    <string name="share_location_for_two_hours">រយៈពេល២ម៉ោង</string>
+    <string name="share_location_for_six_hours">រយៈពេល៦ម៉ោង</string>
+
+    <plurals name="ask_send_following_n_files_to">
+        <item quantity="other">ផ្ញើឯកសារ %d ខាងក្រោមទៅ %s?</item>
+    </plurals>
+    <string name="file_saved_to">ឯកសារបានរក្សាទុកនៅ \"%1$s\"។</string>
+
+    <string name="videochat">សន្ទនាវីដេអូ</string>
+    <string name="videochat_invite_user_to_videochat">អញ្ជើញ %1$s ទៅកាន់សន្ទនាវីដេអូ?</string>
+    <string name="videochat_invite_user_hint">តម្រូវឲ្យមានកម្មវិធីដែលមានសមត្ថភាព រឺកម្មវិធីរុករកដែលស្របគ្នាដល់ទីបញ្ចប់</string>
+    <string name="videochat_contact_invited_hint">%1$s បានអញ្ជើញចូលរួមសន្ទនាជាវីដេអូ</string>
+    <string name="videochat_you_invited_hint">អ្នកបានអញ្ជើញចូលរួមសន្ទនាជាវីដេអូ</string>
+    <string name="videochat_will_open_in_your_browser">សន្ទនាវីដេអូនេះនឹងបើកនៅក្នុងកម្មវិធីរុករករបស់អ្នក</string>
+    <string name="videochat_tap_to_join">ប៉ៈដើម្បីចូលរូម</string>
+    <string name="videochat_tap_to_open">ប៉ៈដើម្បីបើក</string>
+    <string name="videochat_instance">សន្ទនាវីដេអូផុសឡើង</string>
+    <string name="videochat_instance_placeholder">សន្ទនាវីដេអូរបស់អ្នកផុសឡើង</string>
+    <string name="videochat_instance_explain">ប្រសិនបើការសន្ទនាជាវីដេអូផុសឡើង ត្រូវបានកំណត់រួចហើយ អ្នកអាចចាប់ផ្តើម វីដេអូសន្ទនា ពីការសន្ទនាមួយទៅមួយទៀត។ ការសន្ទនាជាវីដេអូតម្រូវឲ្យមានកម្មវិធីដែលត្រូវគ្នា រឺកម្មវិធីរុករកដែលត្រូវគ្នាដល់ចុងបញ្ចប់។\n\nឧទាហរណ៍៖ https://meet.jit.si/$ROOM ឬ basicwebrtc:https://your-server</string>
+    <string name="videochat_instance_from_qr">ប្រើ \"%1$s\" ដើម្បីអញ្ជើញអ្នកផ្សេងទៀតទៅកាន់សន្ទនាវីដេអូ?\n\nកំណត់ម្តង អ្នកអាចចាប់ផ្តើមសន្ទនាវីដេអូ ពីការសន្ទនាមួយទៅមួយទៀត។ បើធ្វើសន្ទនាវីដេអូនេះនឹងជំនួសការកំណត់មុនៗ។</string>
+    <string name="videochat_invitation">ការអញ្ជើញសន្ទនាវីដេអូ</string>
+    <string name="videochat_invitation_body">អ្នកត្រូវបានអញ្ជើញដើម្បីសន្ទនាជាវីដេអូ។ ចុច %1$s ដើម្បីចូលរួម។</string>
+
+    <!-- get confirmations -->
+    <string name="ask_leave_group">តើអ្នកប្រាកដហើយថាចង់ចាកចេញពីក្រុមនេះ?</string>
+    <plurals name="ask_delete_chat">
+        <item quantity="other">លុបសារសន្ទនាទាំង %d  នេះ? ពួកគេនឹងមិនត្រូវបានបង្ហាញនៅក្នុងបញ្ជីសន្ទនាទៀតទេ។ សាររបស់ពួកគេនឹងនៅមានលើម៉ាសុីនមេ</item>
+    </plurals>
+    <plurals name="ask_delete_messages">
+        <item quantity="other">លុបសារទាំង %d នេះ នៅទីនេះ និងនៅលើម៉ាសុីននេ</item>
+    </plurals>
+    <string name="ask_forward">បញ្ជូនសារទៅកាន់ %1$d?</string>
+    <string name="ask_forward_multiple">បញ្ជូនសារទាំងនេះទៅកាន់សន្ទនា %1$d?</string>
+    <string name="ask_export_attachment">នាំចេញឯកសារភ្ជាប់? ការនាំចេញឯកសារភ្ជាប់ នឹងអនុញ្ញាតឲ្យកម្មវិធីផ្សេងទៀត ដំណើរការនៅលើឧបករណ៍របស់អ្នក។\n\nបន្ត?</string>
+    <string name="ask_block_contact">បង្ខាំងទំនាក់ទំនងនេះ? អ្នកនឹងមិនបានសារពីទំនាក់ទំនងនេះទៀត</string>
+    <string name="ask_unblock_contact">ដកបង្ខាំងទំនាក់ទំនងនេះ? អ្នកនឹងអាចទទួលសារពីទំនាក់ទំនងនេះម្តងទៀត។</string>
+    <string name="ask_delete_contacts">លុបការទំនាក់ទំនង?\n\nទំនាក់ទំនងដែលកំពុងបន្ត និងទំនាក់ទំនង ពីសៀវភៅអសយដ្ឋានពីម៉ាសុីន មិនអាចលុបចេញបានដាច់ខាត។</string>
+    <string name="ask_delete_contact">លុបទំនាក់ទំនង %1$s?\n\nទំនាក់ទំនងដែលកំពុងបន្ត និងទំនាក់ទំនង ពីសៀវភៅអសយដ្ឋានពីម៉ាសុីន មិនអាចលុបចេញបានដាច់ខាត។</string>
+    <string name="cannot_delete_contacts_in_use">មិនអាចលុបទំនាក់ទំនងដែលកំពុងបន្តសន្ទនា</string>
+    <string name="ask_start_chat_with">សន្ទនាជាមួយ %1$s?</string>
+    <string name="ask_delete_value">លុប %s?</string>
+    <!-- Translators: %1$s will be replaces by a comma separated list of names -->
+    <string name="ask_remove_members">លុប %1$s ពីក្រុមសន្ទនានេះ?</string>
+    <string name="open_url_confirmation">តើអ្នកចង់បើកតំណនេះ?</string>
+
+
+    <!-- contact list -->
+    <string name="contacts_title">បញ្ជីទំនាក់ទំនង</string>
+    <string name="contacts_enter_name_or_email">សរសេរឈ្មោះឬអាសយដ្ឋានអ៊ីមែលនៅទីនេះ</string>
+    <string name="contacts_type_email_above">វាយបញ្ចូលអាសយដ្ឋានអ៊ីមែលខាងលើ</string>
+    <string name="contacts_empty_hint">មិនមានទំនាក់ទំនងទេ។</string>
+
+
+    <!-- chatlist and chat view -->
+    <plurals name="chat_archived">
+        <item quantity="other">បានទុកសារសន្ទនា %d ក្នុងប័ណ្ណ</item>
+    </plurals>
+    <plurals name="chat_unarchived">
+        <item quantity="other">បានយកចេញសារសន្ទនា %d ពីប័ណ្ណ</item>
+    </plurals>
+    <string name="chat_please_enter_message">សូមសរសេរសារមួយ។</string>
+    <string name="chat_camera_unavailable">កាមេរ៉ាមិនអាចរកឃើញទេ។</string>
+    <string name="chat_unable_to_record_audio">មិនអាចថតសំលេងបានទេ។</string>
+    <plurals name="chat_n_new_messages">
+        <item quantity="other">មានសារថ្មី %d</item>
+    </plurals>
+    <string name="chat_no_messages_hint">ផ្ញើសារទៅ %1$s:\n\n• គ្មាន​បញ្ហាប្រសិនបើ %2$s មិនប្រើប្រាស់សា Delta Chat\n\n• ការទទួលសារដំបូងអាចចំណាយពេលមួយស្របក់ និងប្រហែលជាមិនបានធ្វើឲ្យសម្ងាត់ (អ៊ិនគ្រីប)។</string>
+    <string name="chat_new_group_hint">បង្កើតសារដំបូងនឹងអនុញ្ញាតិឲ្យអ្នកផ្សេងទៀតឆ្លើយតបនៅក្នុងក្រុមនេះ។\n\n• មិនអីទេ ប្រសិនបើមិនមែនសមាជិកទាំងអស់ប្រើប្រាស់សា Delta Chat ។\n\n• ការទទួលបានសារដំបូងអាចចំណាយពេលមួយស្របក់។</string>
+    <string name="chat_record_slide_to_cancel">អូសដើម្បីផ្អាកសិន</string>
+    <string name="chat_record_explain">ប៉ៈ និងសង្កត់ដើម្បីថតសារសម្លេង លែងដើម្បីផ្ញើ។</string>
+    <string name="chat_no_chats_yet_title">ប្រអប់ទទួលគឺទទេ។\nចុច \"+\" ដើម្បីចាប់ផ្តើមការការសន្ទនាថ្មី។</string>
+    <string name="chat_no_chats_yet_hint">អ្នកអាចសន្ទនាជាមួយអ្នកប្រើប្រាស់សា Delta Chat ផ្សេងទៀត និងជាមួយអ្នកមានអសយដ្ឋានអុីម៉េលណាមួយ។</string>
+    <string name="chat_all_archived">សន្ទនាទាំងអស់បានកំណត់ទុក។\nចុច \"+\" ដើម្បីចាប់ផ្តើមការសន្ទនាថ្មី។</string>
+    <string name="chat_share_with_title">ចែករំលែកជាមួយ</string>
+    <string name="chat_input_placeholder">សារ</string>
+    <string name="chat_archived_label"> បានរក្សាទុកជាឯកសារ</string>
+    <string name="chat_no_messages">គ្មានសារ</string>
+    <string name="chat_self_talk_subtitle">សារខ្ញុំបានផ្ញើទៅខ្លួនឯង</string>
+    <string name="saved_messages">សារដែលបានរក្សាទុករួចហើយ</string>
+    <string name="saved_messages_explain">• បញ្ជូនសារនៅទីនេះដើម្បីងាយស្រួលចូល\n\n• កត់សម្គាល់ រឺកំណត់ត្រាសម្លេង\n\n• ភ្ជាប់ឯកសារដើម្បីរក្សាទុក។</string>
+    <!-- this "Saved" should match the "Saved" from "Saved messages" -->
+    <string name="saved">រក្សាទុកហើយ</string>
+    <string name="chat_contact_request">ស្នើសុំទំនាក់ទំនង</string>
+    <string name="chat_no_contact_requests">គ្មានសំណើសុំទំនាក់ទំនង។\n\nប្រសិនបើអ្នកចង់បាន អុីម៉េលដែលជាធម្មតាឡើងឋានៈជាសំណើនៅទីនេះ អ្នកអាចផ្លាស់ប្តូរការកំណត់ដែលត្រូវគ្នា នៅក្នុងការកំណត់កម្មវិធី។</string>
+    <string name="retry_send">ព្យាយាមម្តងទៀតដើម្បីផ្ញើសារ</string>
+    <string name="send_failed">មិនអាចផ្ញើសារ</string>
+    <!-- reasons for a disabled message composer -->
+    <string name="messaging_disabled_not_in_group">អ្នកមិនអាចសរសេរ ពីព្រោះអ្នកមិននៅក្នុងក្រុមនេះ។ ដើម្បីចូលរួម សុំសមាជិកផ្សេងទៀត។</string>
+    <string name="messaging_disabled_device_chat">ការសន្ទនានេះផ្ទុកសារក្នុងតំបន់។ ដូច្នេះអ្នកមិនអាចសរសេរសារណាមួយបានទេ។</string>
+    <string name="messaging_disabled_deaddrop">ចុចលើសារដើម្បីទទួលយក ឬបដិសេធស្នើសុំទំនាក់ទំនង។</string>
+    <string name="cannot_display_unsuported_file_type">មិនអាចបង្ហាញប្រភេទឯកសារនេះ៖ %s</string>
+    <string name="attachment_failed_to_load">បានបរាជ័យ ក្នុងការផ្ទុកឯកសារភ្ជាប់។</string>
+
+
+    <!-- map -->
+    <string name="filter_map_on_time">បង្ហាញទីតាំងនៅក្នុងស៊ុមពេលវេលា</string>
+    <string name="show_location_traces">បង្ហាញដាន</string>
+    <string name="add_poi">ផ្ញើចំណុចចំណាប់អារម្មណ៍</string>
+
+
+    <!-- search -->
+    <string name="search">ស្វែងរក</string>
+    <string name="search_explain">ស្វែងរកការសន្ទនា ទំនាក់ទំនង និងសារ។</string>
+    <string name="search_no_result_for_x">រកមិនឃើញលទ្ធផលសម្រាប់ \"%s\"</string>
+
+
+    <!-- create/edit groups, contact/group profile -->
+    <string name="group_name">ឈ្មោះរបស់ក្រុម</string>
+    <string name="group_avatar">រូបភាពរបស់ក្រុម</string>
+    <string name="remove_group_image">លុបរូបភាពរបស់ក្រុម</string>
+    <string name="change_group_image">ផ្លាស់ប្តូររូបភាពរបស់ក្រុម</string>
+    <string name="group_create_button">បង្កើតក្រុម</string>
+    <string name="group_please_enter_group_name">សូមបញ្ចូលឈ្មោះសម្រាប់ក្រុមនេះ</string>
+    <string name="group_add_members">បន្ថែមសមាជិក</string>
+    <string name="group_hello_draft">សូមស្វាគមន៍! ខ្ញុំទើបតែបង្កើតក្រុមឈ្មោះ \"%1$s\"សម្រាប់ពួកយើង។</string>
+    <string name="group_self_not_in_group">អ្នកត្រូវតែជាសមាជិកម្នាក់របស់ក្រុមដើម្បីអនុវត្តសកម្មភាពនេះ។</string>
+    <string name="profile_encryption">ការអ៊ិនគ្រីប</string>
+    <string name="profile_shared_chats">សន្ទនាដែលបានចែករំលែក</string>
+    <string name="tab_contact">ទំនាក់ទំនង</string>
+    <string name="tab_group">ក្រុម</string>
+    <string name="tab_members">សមាជិក</string>
+    <string name="tab_gallery">វិចិត្រសាលរូបភាពនិងវីដេអូ</string>
+    <string name="tab_docs">វិចិត្រសាលឯកសារ</string>
+    <string name="tab_links">វិចិត្រសាលតំណខ្ពស់</string>
+    <string name="tab_map">វិចិត្រសាលផែនទី</string>
+    <string name="tab_gallery_empty_hint">រូបភាព និងវីដេអូដែលបានចែករំលែកនៅក្នុងការសន្ទនានេះ បង្ហាញនៅទីនេះ។</string>
+    <string name="tab_docs_empty_hint">ឯកសារ និងសំលេងដែលបានចែករំលែកនៅក្នុងការសន្ទនានេះ បង្ហាញនៅទីនេះ។</string>
+    <string name="media_preview">ការមើលប្រព័ន្ធផ្សព្វផ្សាយជាមុន</string>
+    <string name="send_message">ផ្ញើ​សារ</string>
+
+
+    <!-- welcome and login -->
+    <string name="welcome_intro1_message">អ្នកនាំសារជាមួយនឹងវិសាលភាពទស្សនិកក្នុងពិភពលោក។ ដោយឥតគិតថ្លៃ និងឯករាជ្យ។</string>
+    <string name="login_title">កត់ចូល</string>
+    <string name="login_header">កត់ចូលទៅម៉ាសុីនមេរបស់អ្នក</string>
+    <string name="login_explain">កត់ចូលជាមួយគណនីយដែលមានស្រាប់</string>
+    <string name="login_subheader">សម្រាប់លក្ខខណ្ឌអុីម៉េលដែលស្គាល់ស្រាប់ នឹងត្រួវបានដំឡើងដោយស្វ័យប្រវត្តិខ្លួនឯង។ ពេលខ្លះ IMAP ត្រូវការបើកដំណើរការនៅក្នុងការកំណត់គេហទំព័រ។ ពិគ្រោះជាមួយអ្នកផ្តល់អុីម៉េលរបស់អ្មក ឬ មិត្តរបស់អ្នកសម្រាប់ជួយ។</string>
+    <string name="login_no_servers_hint">គ្មានម៉ាសុីនមេពី សាហារីសង្ឃទេ ទិន្ន័យរបស់អ្នកស្ថិតនៅលើឧបករណ៍របស់អ្នក។</string>
+    <string name="login_inbox">ប្រអប់ទទួលសារ</string>
+    <string name="login_imap_login">កត់ឈ្មោះចូលរបស IMAP</string>
+    <string name="login_imap_server">ម៉ាសុីនមេរបស IMAP</string>
+    <string name="login_imap_port">ច្រក របស IMAP</string>
+    <string name="login_imap_security">សន្តិសុខ របស IMAP </string>
+    <string name="login_outbox">ប្រអប់ចេញ</string>
+    <string name="login_smtp_login">កត់ឈ្មោះចូលរបស SMTP</string>
+    <string name="login_smtp_password">ពាក្យសម្ងាត់ SMTP</string>
+    <string name="login_smtp_server">ម៉ាសុីនមេរបស SMTP</string>
+    <string name="login_smtp_port">ច្រករបស SMTP</string>
+    <string name="login_smtp_security">សន្តិសុខ SMTP</string>
+    <string name="login_auth_method">ការចុះបញ្ជី</string>
+    <!-- Translators: %1$s will be replaced by an email address -->
+    <string name="login_oauth2_checking_addr">ត្រួតពិនិត្យ %1$s</string>
+    <string name="login_info_oauth2_title">បន្តជាមួយការដំឡើងសាមញ្ញ?</string>
+    <string name="login_info_oauth2_text">អស័យដ្ឋានអុីម៉េលដែលបានបញ្ចូល គាំទ្រការដំឡើងសាមញ្ញ (OAuth 2.0)\n\nនៅជំហានបន្ទាប់ សូមអនុញ្ញាតឲ្យសាហារីសង្ឃ ដើរតួជាការសន្ទនារបស់អ្នកនៅលើកម្មវិធីអុីម៉េល។\n\nមិនមាន ម៉ាសុីនមេ សាហារីសង្ឃទេ។ ទិន្ន័យរបស់អ្នកស្ថិតនៅលើឧបករណ៍របស់អ្នក។</string>
+    <string name="login_certificate_checks">ការត្រួតពិនិត្យលិខិតបញ្ជាក់</string>
+    <string name="login_error_server">សូមបញ្ចូលម៉ាសុីន ឬ IP អស័យដ្ឋាន ដែលសុពលភាព</string>
+    <string name="login_error_port">សូមបញ្ចូលច្រកដែលសុពលភាព (1-65535)</string>
+    <string name="login_error_required_fields">សូមបញ្ចូលអ៊ីម៉េលអាស័យដ្ឋាននិងពាក្យសម្ងាត់ដែលសុពលភាព។</string>
+    <string name="import_backup_title">នាំចូលពត៌មានចម្លងទុក</string>
+    <string name="import_backup_ask">រកឃើញពត៌មានចម្លងទុកនៅ \"%1s\".\n\nតើអ្នកចង់នាំចូល និងប្រើប្រាស់ទិន្នន័យទាំងអស់ និងការកំណត់ពីវា?</string>
+    <string name="import_backup_no_backup_found">រក​មិន​ឃើញពត៌មានចម្លងទុកទេ\n\nចម្លង ពត៌មានចម្លងទុកទៅ \"%1$s\" និងសាកល្បងម្តងទៀត\n\nចុច \"ចាប់ផ្តើមផ្ញើសារ\" ដើម្បីបន្តជាមួយដំណើរការរៀបចំធម្មតា។</string>
+    <!-- Translators: %1$s will be replaced by the email address -->
+    <string name="login_error_cannot_login">មិនអាចកត់ចូលជា \"%1$s\" ។ សូមផ្ទៀតផ្ទាត់មើលអស័យដ្ឋានអុីម៉េល និងពាក្យសម្ងាត់ឲ្យបានត្រឹមត្រូវ។</string>
+    <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
+    <string name="login_error_server_response">ឆ្លើយតបពី %1$s: %2$s\n\nអ្នកផ្តល់សេវាខ្លះអាចអ៊ីម៉េលមកអ្នក នូវពត៌មានបន្ថែមអំពីបញ្ហានេះ។ អ្នកគួរតែអាចត្រួតពិនិត្យប្រអប់ចូលរបស់អ្នក ប្រើបាស័យដ្ឋានអ៊ីម៉េលទៀងទាត់ប្រាស់កម្មវិធី ឬវេបសាយ។ ពិគ្រោះជាមួយអ្នកផ្តល់សេវា ឬមិត្តរបស់អ្នក ប្រសិនបើអ្នកមានបញ្ហា។</string>
+    <!-- TLS certificate checks -->
+    <string name="accept_invalid_certificates">ទទួលយកលិខិតបញ្ជាក់មិនត្រឹមត្រូវ</string>
+    <string name="used_settings">ការកំណត់ដែលបានប្រើ:</string>
+    <string name="switch_account">ប្តូរឆ្លាស់គណនី</string>
+    <string name="add_account">បន្ថែមគណនី</string>
+    <string name="delete_account">លុបគណនី</string>
+    <string name="delete_account_ask">តើអ្នកប្រាកដហើយថាចង់លុបទិន្នន័យគណនីរបស់អ្នក?</string>
+    <string name="delete_account_explain_with_name">ទិន្នន័យគណនីទាំងអស់របស់ \"%s\" នៅលើឧបករណ៍នេះនឹងបានលុប រួមបញ្ចូលទាំងការរៀបចំ ទៅបញ្ចប់ការអុិនគ្រឹបឧបករណ៍ដល់ឧបករណ៍ ទំនាក់ទំនង សន្ទនា សារ និងសម្លេង។ សកម្មភាពនេះមិនអាចធ្វើឡើងវិញបានទេ។</string>
+    <string name="switching_account">កំពុងប្តូរឆ្លាស់គណនី…</string>
+    <string name="try_connect_now">ព្យាយាមភ្ជាប់ឥលូវនេះ</string>
+    <!-- Translations: %1$s will be replaced by a more detailed error message -->
+    <string name="configuration_failed_with_error">ការកំណត់រចនាសម្ព័ន្ឌ បរាជ័យ។ កំហុស៖ %1$s</string>
+
+    <!-- share and forward messages -->
+    <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
+    <string name="forward_to">បញ្ជូនទៅ…</string>
+    <string name="share_multiple_attachments">ផ្ញើ ឯកសារ %1$d  ទៅការសន្ទនាដែលបានជ្រើសរើស?\n\nឯកសារដែលបានផ្ញើហើយ មិនកែប្រែបានក្នុងទំហំដើមរបស់វា។ នេះ​មានន័យថា រូបភាព និងវីដេអូមិនត្រូវបានថតទុកទេ។</string>
+    <string name="share_multiple_attachments_multiple_chats">ផ្ញើឯកសារ %1$d ទៅ សន្ទនា %2$d?\n\nឯកសារដែលបានផ្ញើហើយ មិនកែប្រែបានក្នុងទំហំដើមរបស់វា។ នេះ​មានន័យថា រូបភាព និងវីដេអូមិនត្រូវបានថតទុកទេ។</string>
+    <string name="share_text_multiple_chats">ផ្ញើអត្ថបទនេះទៅសន្ទនា %1$d?\n\n\"%2$s\"</string>
+    <string name="share_abort">ការខកខានចែករំលែក ដល់ពេលកំណត់បាត់បង់សិទ្ធ។</string>
+
+
+    <!-- preferences -->
+    <string name="pref_using_custom">ដោយប្រើតាមទម្លាប់: %s</string>
+    <string name="pref_using_default">ដោយប្រើលំនាំដើម</string>
+    <string name="pref_profile_info_headline">ពត៌មានទិន្នន័យផ្ទាល់ខ្លួនរបស់អ្នក</string>
+    <string name="pref_profile_photo">រូបភាពទិន្ន័យផ្ទាល់ខ្លួន</string>
+    <string name="pref_blocked_contacts">ទំនាក់ទំនងដែលបានរារាំង</string>
+    <string name="pref_profile_photo_remove_ask">លុបរូបភាពទិន្ន័យផ្ទាល់ខ្លួន?</string>
+    <string name="pref_password_and_account_settings">ពាក្យសម្ងាត់ និងគណនី</string>
+    <string name="pref_who_can_see_profile_explain">រូបភាពទិន្ន័យផ្ទាល់ខ្លួនរបស់អ្នក និងឈ្មោះនឹងត្រូវបានបង្ហាញនៅក្បែរសាររបស់អ្នក នៅពេល ទនំាក់ទំនងជាមួយអ្នកប្រើប្រាស់ផ្សេងទៀត។ ដំណឹងដែលបានផ្ញើរួចមិនអាចលុបចោល ឬដកចេញបានទេ។</string>
+    <string name="pref_your_name">ឈ្មោះរបស់អ្នក</string>
+    <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
+    <string name="pref_default_status_label">ហត្ថលេខាជាអក្សរ</string>
+    <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
+    <string name="pref_default_status_text">បានផ្ញើជាមួយ សាហារីរសង្ឃ ( https://delta.chat )។ សូមទាញយកកម្មវិធីសាហារីរសង្ឃ​ទីនេះ៖ https://forum.sangham.net/index.php?action=tpmod;dl=item757</string>
+    <string name="pref_enter_sends">គ្រាប់​ចុច​ បញ្ចូលធ្វើឱ្យផ្ញើសារ</string>
+    <string name="pref_enter_sends_explain">ចុច គ្រាប់​ចុច​ បញ្ចូល (Enter key) នឹងផ្ញើអត្ថបទសារ។</string>
+    <string name="pref_outgoing_media_quality">គុណភាពប្រពន្ធ័សម្លេងផ្សាយចេញ</string>
+    <string name="pref_outgoing_balanced">មានតុល្យភាព</string>
+    <string name="pref_outgoing_worse">គុណភាពកាន់តែអាក្រក់ ទំហំតូច</string>
+    <string name="pref_vibrate">ញ័រ</string>
+    <string name="pref_change_secret">ផ្លាស់ប្តូរសម្ងាត់</string>
+    <string name="pref_change_secret_explain">ប្តូរ PIN / លំនាំ/ ស្នាមម្រាម របស់អ្នក ដៃ តាមរយះការកំណត់ប្រពន្ធ័។</string>
+    <string name="pref_screen_security">សុវត្ថិភាពអេក្រង់</string>
+    <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
+    <string name="pref_screen_security_explain">ស្នើសុំរារាំងរូបថតអេក្រង់ នៅក្នុងបញ្ជីបច្ចុប្បន្ន និងខាងក្នុងកម្មវិធី។</string>
+    <string name="pref_screen_security_please_restart_hint">ដើម្បីកំណត់សុវត្ថិភាពអេក្រង់ សូមចាប់ផ្តើមកម្មវិធីឡើងវិញ។</string>
+    <string name="pref_notifications">ការជូនដំណឹង</string>
+    <string name="pref_notifications_show">បង្ហាញ</string>
+    <string name="pref_notifications_priority">អាទិភាព</string>
+    <string name="pref_notifications_explain">បើកប្រពន្ធ័ការជូនដំណឹងសម្រាប់សារថ្មី</string>
+    <string name="pref_show_notification_content">បង្ហាញមាតិកាសារក្នុងការជូនដំណឹង</string>
+    <string name="pref_show_notification_content_explain">បង្ហាញអ្នកផ្ញើ និងពាក្យដំបូងនៃសារក្នុងការជូនដំណឹង</string>
+    <string name="pref_led_color">ពណ៌ LED</string>
+    <string name="pref_sound">សម្លេង</string>
+    <string name="pref_silent">ស្ងាត់សម្លេង</string>
+    <string name="pref_privacy">ភាពឯកជន</string>
+    <string name="pref_chats_and_media">សន្ទនា និងប្រពន្ធ័សម្លេង</string>
+    <!-- Translators: "light" in the meaning "opposite of dark" -->
+    <string name="pref_light_theme">ពន្លឺ</string>
+    <string name="pref_dark_theme">ងងឹត</string>
+    <string name="pref_appearance">រូបរាង</string>
+    <string name="pref_theme">ស្បែក</string>
+    <string name="pref_language">ភាសា</string>
+    <string name="pref_incognito_keyboard">ក្តារចុចអនាមិក</string>
+    <!-- Translators: Keep in mind that this is a Request - it must be clear in the wording that this cannot be enforced. -->
+    <string name="pref_incognito_keyboard_explain">ស្នើសុំក្តារចុចដើម្បីបិទការរៀនផ្ទាល់ខ្លួនបាន</string>
+    <string name="pref_read_receipts">អានវិក័យបត្រ</string>
+    <string name="pref_read_receipts_explain">ប្រសិនបើអានវិក័យបត្តិ ត្រូវបានបិទ អ្នកមិនអាចឃើញ អានវិក័យវត្រពីអ្នកផ្សេងទៀតទេ។</string>
+    <string name="pref_manage_keys">កាន់កាប់គ្រាប់​ចុច</string>
+    <string name="pref_use_system_emoji">ប្រើប្រាស់រូបសញ្ញាអារម្មណ៍របសប្រពន្ធ័</string>
+    <string name="pref_use_system_emoji_explain">បិទការប្រើប្រាស់រូបសញ្ញាអារម្មណ៍ ពិសា Delta Chat</string>
+    <string name="pref_app_access">ចូលដំណើរការកម្មវិធី</string>
+    <string name="pref_communication">មធ្យោបាយទំនាក់ទំនង</string>
+    <string name="pref_chats">សន្ទនា</string>
+    <string name="pref_in_chat_sounds">សម្លេងនៅក្នុងសន្ទនា</string>
+    <string name="pref_message_text_size">ទំហំអក្សរសារ</string>
+    <string name="pref_view_log">មើលកំណត់ហេតុ</string>
+    <string name="pref_saved_log">បានរក្សាទុក កំណត់ហេតុទៅថតឯកសារ \"ទាញយក\"</string>
+    <string name="pref_save_log_failed">បានបរាជ័យក្នុងការរក្សាទុកកំណត់ហេតុ</string>
+    <string name="pref_log_header">កំណត់ហេតុ</string>
+    <string name="pref_other">ផ្សេងទៀត</string>
+    <string name="pref_backup">បម្រុងទុក</string>
+    <string name="pref_backup_explain">បម្រុងទុកការសន្ទនាទៅឧបករណ៍ខាងក្រៅ</string>
+    <string name="pref_backup_export_explain">ការបម្រុងទុកជួយអ្នករៀបចំការដំឡើងថ្មីលើឧបករណ៍នេះ ឬលើឧបករណ៍ផ្សេងទៀត។\n\nការបម្រុងទុក នឹងផ្ទុកសារទាំងអស់ ទំនាក់ទំនង និងសន្ទនា និងការរៀបចំអ៊ិនគ្រីបស្វ័យប្រវត្តិឧបករណ៍ដល់ឧបករណ៍របសអ្នក។ ថែរក្សាឯកសារបម្រុងទុក ក្នុងទីតាំងសុវត្ថិភាព ឬលុបវាឆាប់ៗតាមដែលអាចធ្វើទៅបាន។</string>
+    <string name="pref_backup_export_start_button">ចាប់ផ្តើមការបម្រុងទុក</string>
+    <string name="pref_backup_written_to_x">បានសរសេរការបម្រុងទុកដោយជោគជ័យទៅ \"%1$s\"</string>
+    <string name="pref_managekeys_menu_title">គ្រប់គ្រងកូនសោរ</string>
+    <string name="pref_managekeys_export_secret_keys">នាំចេញកូនសោរសម្ងាត់</string>
+    <string name="pref_managekeys_export_explain">នាំចេញកូនសោរសម្ងាត់ទៅ \"%1s\"?</string>
+    <string name="pref_managekeys_import_secret_keys">នាំចូលកូនសោរសម្ងាត់</string>
+    <string name="pref_managekeys_import_explain">នាំចូលកូនសោរសម្ងាត់ពី \"%1$s\"?\n\n• កូនសោរសម្ងាត់ដែលមានស្រាប់នឹងមិនបានលុបទេ\n\n•កូនសោរដែលនាំចូលចុងក្រោយនឹងបានប្រើប្រាស់ដូចជា លំនាំថ្មីលើកលែងតែវាមានពាក្យ \"legacy\" ក្នុងឈ្មោះឯកសាររបស់វា។{Import secret keys from \"%1$s\"?\n\n• Existing secret keys will not be deleted\n\n• The last imported key will be used as the new default key unless it has the word \"legacy\" in its filename.}</string>
+    <string name="pref_managekeys_secret_keys_exported_to_x">បានសរសេរកូនសោរសម្ងាត់ ដោយជោគជ័យទៅ \"%1$s\"</string>
+    <string name="pref_managekeys_secret_keys_imported_from_x">បាននាំចូលកូនសោរសម្ងាត់ពី \"%1$s\"</string>
+    <string name="pref_background">ផ្ទៃខាងក្រោយ</string>
+    <string name="pref_background_btn_default">ប្រើប្រាស់រូបភាពលំនាំដើម</string>
+    <string name="pref_background_btn_gallery">ជ្រើសរើសពីវិចិត្រសាល</string>
+    <string name="pref_imap_folder_handling">ការប្រគល់ឯកសារ IMAP</string>
+    <string name="pref_imap_folder_warn_disable_defaults">ប្រសិនបើអ្នកបិទជម្រើសនេះ ត្រូវប្រាកដថា ម៉ាសុីនបម្រើរបស់អ្នក និងសេវាបម្រើផ្សេងទៀតរបស់អ្នក បានដំឡើងតាម\n\nបើមិនដូច្នោះទេ អ្វីៗនឹងមិនដំណើរការទាល់តែសោះ។</string>
+    <string name="pref_watch_inbox_folder">មើលថតប្រអប់ទទួល</string>
+    <string name="pref_watch_sent_folder">មើលថតប្រអប់បានផ្ញើ</string>
+    <string name="pref_watch_mvbox_folder">មើលថតប្រអប់សា Delta Chat</string>
+    <string name="pref_send_copy_to_self">ផ្ញើចម្លងទៅខ្លួនឯង</string>
+    <string name="pref_auto_folder_moves">ផ្លាស់ទីដោយស្វ័យប្រវត្តិទៅ ប្រអប់សា Delta Chat</string>
+    <string name="pref_auto_folder_moves_explain">ការនិយាយសន្ទនា បានផ្លាស់ទីដើម្បីជៀសវាងការប៉ៈពាល់ប្រអប់ទទួល។</string>
+    <string name="pref_show_emails">បង្ហាញអុីម៉េលដែលធម្មតា</string>
+    <string name="pref_show_emails_no">ទេ។ សន្ទនាតែម្តង។</string>
+    <string name="pref_show_emails_accepted_contacts">សម្រាប់ទំនាក់ទំនងដែលបានទទួលយក</string>
+    <string name="pref_show_emails_all">ទាំងអស់</string>
+    <string name="pref_experimental_features">ពិសោធន៍លក្ខណៈពិសេស</string>
+    <string name="pref_on_demand_location_streaming">ការផ្សាយផ្ទាល់តទីតាំងតាមម្រូវការ</string>
+    <string name="pref_background_default">ផ្ទៃខាងក្រោយលំនាំដើម</string>
+    <string name="pref_background_default_color">ពណ៌លំនាំដើម</string>
+    <string name="pref_background_custom_image">រួបភាពផ្ទាល់ខ្លួន</string>
+    <string name="pref_background_custom_color">ពណ៌ផ្ទាល់ខ្លួន</string>
+    <string name="export_aborted">ការនាំចេញបានបញ្ឈប់</string>
+    <string name="profile_image_select">ជ្រើសរើសរូបភាពទិន្ន័យផ្ទាល់ខ្លួន</string>
+    <string name="select_your_new_profile_image">ជ្រើសរើសរូបភាពទិន្នន័យផ្ទាល់ខ្លួនថ្មី</string>
+    <string name="profile_image_delete">លុបរូបភាពទិន្នន័យផ្ទាល់ខ្លួន</string>
+
+
+    <!-- Emoji picker and categories -->
+    <string name="emoji_search_results">លទ្ធផលស្វែងរក</string>
+    <string name="emoji_not_found">រកមិនឃើញរូបសញ្ញាអារម្មណ៍</string>
+    <string name="emoji_recent">ទើបបានប្រើថ្មីៗ</string>
+    <string name="emoji_people">មនុស្សនិងរាងកាយ</string>
+    <string name="emoji_nature">សត្វនិងធម្មជាតិ</string>
+    <string name="emoji_foods">អាហារនិងភេសជ្ជៈ</string>
+    <string name="emoji_activity">សកម្មភាព</string>
+    <string name="emoji_places">ការធ្វើដំណើរនិងទីកន្លែង</string>
+    <string name="emoji_objects">វត្ថុ</string>
+    <string name="emoji_symbols">និមិត្តសញ្ញា</string>
+    <string name="emoji_flags">ទង់ជាតិ</string>
+
+
+    <!-- automatically delete message -->
+    <string name="delete_old_messages">លុបសារចាស់</string>
+    <!-- devs: autodel_title is deprecated, use delete_old_messages instead -->
+    <string name="autodel_title">លុបសារដោយស្វ័យប្រវត្តិ</string>
+    <string name="autodel_device_title">លុបសារពីឧបករណ៍</string>
+    <string name="autodel_server_title">លុបសារពីម៉ាសុីនមេ</string>
+    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
+    <string name="autodel_device_ask">តើអ្នកចង់លុបសារ %1$d ឥលូវ និងសារដែលបានទទួលថ្មីៗ នៅពេលពេល \"%2$s\" ខាងមុខ?\n\n• នេះធ្វើឱ្យរួមបញ្ចូលទាំងប្រពន្ធ័ផ្សព្វផ្សាយទាំងអស់\n\nសារនឹងត្រូវបានលុប បើទោះបីជាពួកគេបានឃើញ ឬមិនបានឃើញក៏ដោយ\n\n• \"សារដែលបានរក្សាទុក\" និងបានរំលងពីការរុករកក្នុងតំបន់។</string>
+    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
+    <string name="autodel_server_ask">តើអ្នកចង់លុបសារ %1$d ឥឡូវនេះ និងសារដែលបានប្រមូលថ្មីៗទាំងអស់ នៅពេល \"%2$s\" ទៅមុខ?\n\n⚠️ រួមទាំងអុីម៉រល ប្រពន្ធ័ផ្សព្វផ្សាយ និង \"សារដែលបានរក្សាទុក\" នៅថតម៉ាសុីនមេទាំងអស់\n\n⚠️ កុំប្រើមុខងារនេះ ប្រសិនបើអ្នកចង់រក្សាទុកទិន្ន័យនៅលើម៉ាសុីនមេ\n\n⚠️ កុំប្រើមុខងារនេះ ប្រសិនបើអ្នកកំពុងប្រើសេវាអុីម៉េលផ្សេងពី សា Delta Chat ។</string>
+    <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
+    <string name="autodel_server_enabled_hint">នេះរួមបញ្ចូលទាំងអុីម៉ែល ប្រពន្ធ័ផ្សព្វផ្សាយ និង \"សារដែលបានរក្សាទុក\" ក្នុងថតទាំងអស់របស់ម៉ាសុីនមេ។ កុំប្រើមុខងារនេះ ប្រសិនបើអ្នកចង់រក្សាទិន្ន័យនៅលើម៉ាសុីនមេ ឬប្រសិនបើអ្នកកំពុងប្រើសេវាកម្មអុីម៉េលផ្សេងពី សា Delta Chat ។</string>
+    <string name="autodel_confirm">ខ្ញុំយល់។ លុបសារទាំងអស់នេះ</string>
+    <string name="autodel_at_once">នៅពេលតែមួយ</string>
+    <string name="after_30_seconds">បន្ទាប់ពី ៣០វិនាទី</string>
+    <string name="after_1_minute">បន្ទាប់ពី ១នាទី</string>
+    <string name="autodel_after_1_hour">បន្ទាប់ពី ១ម៉ោង</string>
+    <string name="autodel_after_1_day">បន្ទាប់ពី ១ថ្ងៃ</string>
+    <string name="autodel_after_1_week">បន្ទាប់ពី ១អាទិត្យ</string>
+    <string name="autodel_after_4_weeks">បន្ទាប់ពី ៤អាទិត្យ</string>
+    <string name="autodel_after_1_year">បន្ទាប់ពី ១ឆ្នាំ</string>
+
+    <!-- autocrypt -->
+    <string name="autocrypt">អ៊ិនគ្រីបស្វ័យប្រវត្តិ (ផ្ញើនិងទទួលសារដោយសម្ងាត់)</string>
+    <string name="autocrypt_explain">អ៊ិនគ្រីបស្វ័យប្រវត្តិគឺជាបើកការបញ្ជាក់ថ្មីសម្រាប់អ៊ិនគ្រីប  (ការធ្វើឲ្យការផ្ញើសារជាសារដាយសញ្ញាសម្ងាត់) អ៊ីមែលពីឧបករណ៍ដល់ឧបករណ៍ស្វ័យប្រវត្តិ\n\nការរៀបចំការចាត់របសឧបករណ៍ដល់ឧបករណ៍នឹអបានតាមស្វ័យប្រវត្តិបើយោងតាមតម្រូវការរបស់អ្នក។ អ្នកនឹងបានផ្ទេរវារវាងឧបករណ៍ពិសារអ៊ិនគ្រីបស្វ័យប្រវត្តិ</string>
+    <string name="autocrypt_send_asm_title">ផ្ញើសារអ៊ិនគ្រីបស្វ័យប្រវត្តិសម្រាប់ការរៀបចំ</string>
+    <string name="autocrypt_send_asm_explain_before">សារអ៊ិនគ្រីបស្វ័យប្រវត្តិសម្រាប់ការរៀបចំចែកចាយចាត់របសឧបករណ៍ដល់ឧបករណ៍ជាមួយកម្មវិធីដែលមានអ៊ិនគ្រីបស្វ័យប្រវត្តិផ្សេងទៀត។\n\n ការចាត់នឹងបានអ៊ិនគ្រីប (ការធ្វើឲ្យការផ្ញើសារជាសារដាយសញ្ញាសម្ងាត់) នៅទីនេះ នឹងត្រូវតែបានវាយបញ្ចូលនៅលើឧបករណ៍ផ្សេង។</string>
+    <string name="autocrypt_send_asm_button">ផ្ញើសារអ៊ិនគ្រីបស្វ័យប្រវត្តិសម្រាប់ការរៀបចំ</string>
+    <string name="autocrypt_send_asm_explain_after">ការរៀបចំរបស់អ្នកត្រូវបានផ្ញើទៅខ្លួនឯងហើយ។ ប្តូរឆ្លាស់ឧបករណ៍ផ្សេង និងបើកសារការរៀបចំ។ អ្នកនឹងទទួលសំណួរពីកូដរៀបចំ។ បញ្ចូលលេខដូចខាងក្រោម:\n\n%$s1</string>
+    <string name="autocrypt_prefer_e2ee">ចូលចិត្តការអ៊ិនគ្រីបច្រើនជាង</string>
+    <string name="autocrypt_asm_subject">ផ្ញើសារអ៊ិនគ្រីបស្វ័យប្រវត្តិសម្រាប់ការរៀបចំ</string>
+    <string name="autocrypt_asm_general_body">នេះជាសាររៀបចំចាក់អ៊ិនគ្រីបស្វ័យប្រវត្តិសម្រាប់ចែកចាយចាត់ការរៀបចំចាក់ឧបករណ៍ដល់ឧបករណ៍ជាមួយឧបករណ៍ផ្សេងទៀត។\n\nដើម្បីឌិគ្រីប (ការទទួលសារដែលបានធ្វើជាសារសញ្ញាសម្ងាត់ដល់អាចអានបានវិញ) និងប្រើប្រាសការរៀបចំចាក់របសអ្នក បើកសារនៅក្នុងកម្មវិធីដែលស្គាល់អ៊ិនគ្រីបស្វ័យប្រវត្តិ និងកូដការរៀបចំដែលបានអំណោយពីឧបករណ៍បានបង្កើតវា។</string>
+    <string name="autocrypt_asm_click_body">នេះជាសាររៀបចំចាក់អ៊ិនគ្រីបស្វ័យប្រវត្តិសម្រាប់ចែកចាយចាត់ការរៀបចំចាក់ឧបករណ៍ដល់ឧបករណ៍ជាមួយឧបករណ៍ផ្សេងទៀត។\n\nដើម្បីឌិគ្រីបវា ប្រើការតម្លងរបស់អ្មក ប៉ៈ ឬចុចលើសារនេះ។</string>
+    <string name="autocrypt_continue_transfer_title">ផ្ញើសារអ៊ិនគ្រីបស្វ័យប្រវត្តិសម្រាប់ការរៀបចំ</string>
+    <string name="autocrypt_continue_transfer_please_enter_code">សូមបញ្ចូលកូដតម្លើង ដែលបានបង្ហាញនៅលើឧបករណ៍ផ្សេងទៀត។</string>
+    <string name="autocrypt_continue_transfer_succeeded">ការតម្លើងឧបករណ៍ដល់ឧបករណ៍បានផ្ទេរហើយ។ ឧបករណ៍នេះរួចរាល់ហើយដើម្បីប្រើប្រាស់ អ៊ិនគ្រីបស្វ័យប្រវត្តិ មានតម្លើងដូចគ្នាឧបករណ៍ផ្សេងទៀត។</string>
+    <string name="autocrypt_continue_transfer_retry">ព្យាយាមម្តងទៀត</string>
+    <string name="autocrypt_bad_setup_code">កូដតម្លើងមិនត្រឹមត្រូវ។ សូមព្យាយាមម្តងទៀត\n\nប្រសិនបើអ្នកមិនចងចាំកូដតម្លើង ចូរផ្ញើសារតម្លើងចាក់អ៊ិនគ្រីបស្វ័យប្រវត្តិថ្មីមួយពីឧបករណ៍ផ្សេងទៀត។</string>
+
+
+    <!-- system messages -->
+    <string name="systemmsg_group_name_changed">ឈ្មោះក្រុមត្រូវបានប្តូរពី \"%1$s\" ទៅកាន់ \"%2$s\"</string>
+    <string name="systemmsg_group_image_changed">រូបភាពក្រុមត្រូវបានប្តូរ</string>
+    <string name="systemmsg_group_image_deleted">រូបភាពក្រុមត្រូវបានលុប</string>
+    <string name="systemmsg_member_added">សមាជិក %1$s ត្រូវបានបន្ថែម</string>
+    <string name="systemmsg_member_removed">សមាជិក %1$s ត្រូវបានយកចេញ</string>
+    <string name="systemmsg_group_left">អ្នកត្រូវបានចាកចេញពីក្រុម</string>
+    <string name="systemmsg_read_receipt_subject">សារត្រូវបានបើក</string>
+    <string name="systemmsg_read_receipt_body">\"%1$s\" សារដែលអ្នកបានផ្ញើត្រូវបានបង្ហាញនៅលើ អេក្រង់របស់អ្នកទទួល\n\nនេះមិនមែនជាការធានាថា មាតិកាត្រួវបានអានទេ។</string>
+    <string name="systemmsg_cannot_decrypt">សារនេះមិនអាចត្រូវបានឌិគ្រីប\n\n• វាអាចជួយឆ្លើយតបជំនួសសារនេះ និងសួរអ្នកផ្ញើដើម្បីផ្ញើសារម្តងទៀត\n\n• ក្នុងករណីអ្នកបានតម្លើងសា Delta Chat ម្តងទៀត ឬកម្មវិធីអុីម៉េលមួយទៀត លើឧបករណ៍នេះ ឬឧបករណ៍មួយផ្សេងទៀត អ្នកប្រហែលជាចង់ផ្ញើ សារការតម្លើងអ៊ិនគ្រីបស្វ័យប្រវត្តិ  (ផ្ញើនិងទទួលដោយសម្ងាត់) ពីទីនោះ។</string>
+    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). -->
+    <string name="systemmsg_action_by_me">%1$s ដោយខ្ញុំ</string>
+    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
+    <string name="systemmsg_action_by_user">%1$s ដោយ %2$s</string>
+    <string name="systemmsg_unknown_sender_for_chat">មិនស្គាល់អ្នកផ្ញើការសន្ទនានេះ។ មើល \'ពត៌មាន\' សម្រាប់ពត៌មានលំអិត</string>
+    <string name="systemmsg_subject_for_new_contact">សារពី %1$s</string>
+    <string name="systemmsg_failed_sending_to">បានបរាបានក្នុងការផ្ញើសារទៅ %1$s</string>
+
+    <string name="systemmsg_ephemeral_timer_disabled">បានបិទបាត់កម្មវិធីសារដែលនឹងបាត់បន្ទាប់ពីមួយរយៈ</string>
+    <string name="systemmsg_ephemeral_timer_enabled">កម្មវិធីសារដែលនឹងបាត់បន្ទាប់ពីមួយរយៈបាន កំណត់ទៅ %1$s វិនាទី។</string>
+    <string name="systemmsg_ephemeral_timer_minute">កម្មវិធីសារដែលនឹងបាត់បន្ទាប់ពីមួយរយៈបាន កំណត់ទៅ ១នាទី។</string>
+    <string name="systemmsg_ephemeral_timer_hour">កម្មវិធីសារដែលនឹងបាត់បន្ទាប់ពីមួយរយៈបាន កំណត់ទៅ ១ម៉ោង។</string>
+    <string name="systemmsg_ephemeral_timer_day">កម្មវិធីសារដែលនឹងបាត់បន្ទាប់ពីមួយរយៈបាន កំណត់ទៅ ១ថ្ងៃ។</string>
+    <string name="systemmsg_ephemeral_timer_week">កម្មវិធីសារដែលនឹងបាត់បន្ទាប់ពីមួយរយៈបាន កំណត់ទៅ ១សប្តាហ៍។</string>
+    <string name="systemmsg_ephemeral_timer_four_weeks">កម្មវិធីសារដែលនឹងបាត់បន្ទាប់ពីមួយរយៈបាន កំណត់ទៅ ៤សប្តាហ៍</string>
+    <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
+    <string name="systemmsg_chat_protection_disabled">ការការពារសន្ទនាត្រូវបានបិទ</string>
+    <string name="systemmsg_chat_protection_enabled">ការការពារសន្ទនាត្រូវបានបើក</string>
+
+    <!-- screen lock -->
+    <string name="screenlock_title">ចាក់អេក្រង់</string>
+    <string name="screenlock_explain">ចាក់សោរដំណើរការជាមួយ Android ចាក់សោរអេក្រង់ ឬស្នាមម្រាមដៃ ដើម្បីចៀសវាងការបង្ហាញមាតិកាមុន។ សូមបើកដំណើរការ \"អេក្រង់សុវត្ថិភាព\" ផងដែរ។</string>
+    <string name="screenlock_authentication_failed">ការផ្ទៀងផ្ទាត់បានបរាជ័យ</string>
+    <string name="screenlock_unlock_title">ដោះសោរសា Delta Chat</string>
+    <string name="screenlock_unlock_description">សូមបញ្ចូលការកំណត់ប្រព័ន្ធសុវត្ថិភាពសម្ងាត់របស់អ្នក ដើម្បីដោះសោរ សា Delta Chat ។</string>
+    <string name="screenlock_inactivity_timeout">ចាក់សោរពីព្រោះអស់ពេលអសកម្ម</string>
+    <string name="screenlock_inactivity_timeout_explain">សា Delta Chat បិទដោយស្វ័យប្រវត្តិ បន្ទាប់ពីបានបញ្ជាក់រយះពេលនៃអសកម្ម។</string>
+    <string name="screenlock_inactivity_timeout_interval">ពេលវេលាដើម្បីឲ្យសកម្ម</string>
+
+
+    <!-- qr code stuff -->
+    <string name="qr_code">QR កូដ</string>
+    <string name="load_qr_code_as_image">ផ្ទុកកូដ QR ជារូបភាព</string>
+    <string name="qrscan_title">ស្គេនកូដQR</string>
+    <string name="qrscan_hint">កាន់កាម៉េរ៉ារបស់អ្នកពីលើកូដ QR</string>
+    <string name="qrscan_failed">កូដ QR មិនអាចបានឌិកូដទេ</string>
+    <string name="qrscan_ask_join_group">តើអ្នកចង់ចូលរួមក្រុម \"%1$s\" ទេ?</string>
+    <string name="qrscan_fingerprint_mismatch">ស្នាមម្រាមដៃដែលបានស្គេន មិនផ្គូរផ្គងគ្នាទេនឹងការបានឃើញចុងក្រោយសម្រាប់ %1$s</string>
+    <string name="qrscan_no_addr_found">កូដ QR នេះផ្ទុកស្នាមម្រាមដៃ ប៉ុន្តែគ្មានអស័យដ្ឋានអុីម៉េលទេ\n\nសម្រាប់ក្រុម ក្រៅក្រុម ការផ្ទៀងផ្ទាត់ សូមបង្កើត ការតភ្ជាប់ជាអ៊ិនគ្រីបទៅអ្នកទទួលជាមុនសិន។</string>
+    <string name="qrscan_contains_text">អក្សរពិកូដ QR ដែលបានស្គេន:\n\n%1$s</string>
+    <string name="qrscan_contains_url">URL ពិកូដ QR ដែលបានស្គេន:\n\n%1$s</string>
+    <string name="qrscan_fingerprint_label">ស្នាមម្រាមដៃ</string>
+    <string name="qrscan_x_verified_introduce_myself">%1$s បានផ្ទៀងផ្ទាត់, ណែនាំខ្លួនឯង…</string>
+    <string name="qrshow_title">កូដ QR សម្រាប់ការអញ្ជើញ</string>
+    <string name="qrshow_x_joining">%1$s ចូលរួម</string>
+    <string name="qrshow_x_verified">%1$s បានផ្ទៀងផ្ទាត់</string>
+    <string name="qrshow_x_has_joined_group">%1$s បានចូលរួមក្រុមនេះ</string>
+    <string name="qrshow_join_group_title">កូដ QR សម្រាប់ការអញ្ជើញ</string>
+    <string name="qrshow_join_group_hint">ស្គេនទីនេះដើម្បីចូលរួមក្រុម \"%1$s\" នេះ។</string>
+    <string name="qrshow_join_contact_title">កូដ QR សម្រាប់ការអញ្ជើញ</string>
+    <string name="qrshow_join_contact_hint">ស្គេនទីនេះដើម្បីរៀបចំទំនាក់ទំនងជាមួយ %1$s</string>
+    <string name="qrshow_join_contact_no_connection_hint">រៀបចំកូដ QR អញ្ជើញតម្រូវការភ្ជាប់សេវាអុិនធ័រណេត។ សូមភ្ជាប់ទៅបណ្តាញមុនពេលដំណើរការ។</string>
+    <string name="qrshow_join_contact_no_connection_toast">គ្មានសេវាអុិនធ័រណេត មិនអាចអនុវត្ត ការរៀបចំកូដ QR</string>
+    <string name="qraccount_ask_create_and_login">បង្កើតអស័យដ្ឋានអុីម៉េលថ្មីនៅលើ \"%1$s\" និងកត់ចូលនៅទីនោះ?</string>
+    <string name="qraccount_ask_create_and_login_another">បង្កើតអស័យដ្ឋានអុីម៉េលថ្មីនៅលើ \"%1$s\" និងកត់ចូលនៅទីនោះ?\n\nគណនីរបស់អ្នកដែលមានស្រាប់ នឹងមិនត្រូវបានលុបចោលទេ។ ប្រើប្រាស់ ការ \"ឆ្លាស់ប្តូរគណនី\" ដើម្បីធាតុប្តូររវាងគណនីរបស់អ្នក។</string>
+    <string name="qraccount_success_enter_name">កត់ចូលដោយជោគជ័យ — អស័យដ្ឋានអុីម៉េលរបស់អ្នកគឺ %1$s \n\nប្រសិនបើអ្នកចូលចិត្ត ឥលូវនេះអ្នកអាច បញ្ចូលឈ្មោះ និងរូបភាពទិន្ន័យផ្ទាល់ ដែលនឹងបានបង្ហាញទៅកាន់មនុស្សដែលអ្នកសរសេរទៅ។</string>
+    <string name="qraccount_qr_code_cannot_be_used">កូដ QR ដែលបានស្គេន មិនអាចត្រូវបានប្រើប្រាស់ដើម្បីរៀបចំគណនីថ្មីមួយទេ។</string>
+    <string name="qraccount_use_on_new_install">កូដ QR ដែលបានស្គេន គឺសម្រាប់ការកំណត់ឡើងនូវគណនីថ្មីមួយ។ អ្នកអាចស្គេនកូដ QR នៅពេលការកំណត់តម្លើងនូវ សា Delta Chat ។</string>
+    <string name="contact_verified">%1$s បានផ្ទៀងផ្ទាត់</string>
+    <string name="contact_not_verified">មិនអាចផ្ទៀងផ្ទាត់ %1$s</string>
+    <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
+    <string name="contact_setup_changed">បានដូរការរៀបចំសម្រាប់ %1$s</string>
+    <string name="verified_group_explain">\"ក្រុមបានផ្ទៀងផ្ទាត់\" (ពិសោធន៍) បានផ្តល់សុវត្ថិភាពប្រឆាំងនឹងសកម្មភាពវាយប្រហារ។ សមាជិកត្រូវបានផ្ទៀងផ្ទាត់ជាមុខងារទីពីរ ដោយសមាជិកដទៃទៀត និងសារតែងតែបានអ៊ិនគ្រីប ពីឧបករណ៍ដល់ឧបករណ៍។</string>
+    <string name="copy_qr_data_success">បានចម្លង QR-url ទៅក្តារខ្ទាស់</string>
+
+
+    <!-- notifications  -->
+    <string name="notify_n_messages_in_m_chats">សារ %1$d ថ្មីក្នុងសន្ទនា %2$d</string>
+    <string name="notify_mark_read">សម្គាល់ថាអាន</string>
+    <string name="notify_reply_button">ឆ្លើយតប</string>
+    <string name="notify_new_message">សារថ្មី</string>
+    <string name="notify_background_connection_enabled">តំណភ្ជាប់ផ្ទៃខាងក្រោយបានបើក</string>
+    <string name="notify_priority_high">ខ្ពស់</string>
+    <string name="notify_priority_max">អតិប្បរមា</string>
+    <string name="notify_name_and_message">ឈ្មោះ និងសារ</string>
+    <string name="notify_name_only">តែឈ្មោះ</string>
+    <string name="notify_no_name_or_message">មិនឈ្មោះ ឬសារ</string>
+
+
+    <!-- permissions -->
+    <string name="perm_required_title">ត្រូវបានការអនុញ្ញាត</string>
+    <string name="perm_continue">បន្ត</string>
+    <string name="perm_explain_access_to_camera_denied">ដើម្បីថតរូប រឺថតវីដេអូ ចូលទៅកាន់ការកំណត់កម្មវិធី ជ្រើសរើស \" ការអនុញ្ញាត\" និងបើកដំណើរការ \"ម៉ាសុីនថត\"។</string>
+    <string name="perm_explain_access_to_mic_denied">ដើម្បីផ្ញើ សារសំឡេង ចូលទៅកាន់ការកំណត់កម្មវិធី ជ្រើសរើស \"ការអនុញ្ញាត\" និងបើកដំណើរការ \"មីក្រូហ្វូន\"។</string>
+    <string name="perm_explain_access_to_storage_denied">ដើម្បីទទួល រឺផ្ញើឯកសារ ចូលទៅកាន់ការកំណត់កម្មវិធី ជ្រើសរើស \"ការអនុញ្ញាត\" និងបើកដំណើរការ \"ការផ្ទុក\"។</string>
+    <string name="perm_explain_access_to_location_denied">ដើម្បីភ្ជាប់ទីតាំង ចូលទៅកាន់ការកំណត់កម្មវិធី ជ្រើសរើស\"ការកំណត់\" និងបើកដំណើរការ \"ទីតាំង\"។</string>
+
+    <!-- ImageEditorHud -->
+    <string name="ImageEditorHud_draw_anywhere_to_blur">គូកន្លែងណាដើម្បីឲ្យព្រិលៗ</string>
+
+    <!-- dc_str_* resources -->
+    <string name="encrypted_message">សារដែលបានធ្វើឲ្យសម្ងាត់</string>
+
+    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
+    <string name="about_offical_app_desktop">នេះគឺជាសា Delta Chat ផ្លូវការ នៅលើកម្មវិធីកុំព្យូទ័រលើតុ</string>
+    <string name="about_licensed_under_desktop">សូហ្វវែ Delta Chat នេះគឺបានអាជ្ញាប័ណ្ណនៅក្រោម GNU GPL ជំនាន់ ៣ និងប្រភពកូដ គឺអាចរកបាននៅលើ GitHub</string>
+    <string name="welcome_desktop">ស្វាគមន៍មកកាន់សា Delta Chat</string>
+    <string name="login_known_accounts_title_desktop">គណនីដែលបានស្គាល់</string>
+    <string name="global_menu_preferences_language_desktop">ភាសា</string>
+    <string name="global_menu_file_desktop">ឯកសារ</string>
+    <string name="global_menu_file_quit_desktop">ឈប់</string>
+    <string name="global_menu_edit_desktop">កែ</string>
+    <string name="global_menu_edit_undo_desktop">ធ្វើឡើងវិញ</string>
+    <string name="global_menu_edit_redo_desktop">ធ្វើម្តងទៀត</string>
+    <string name="global_menu_edit_cut_desktop">កាត់</string>
+    <string name="global_menu_edit_copy_desktop">ចម្លង</string>
+    <string name="global_menu_edit_paste_desktop">បិទភ្ជាប់</string>
+    <string name="global_menu_view_desktop">ការមើល</string>
+    <string name="global_menu_view_floatontop_desktop">អណ្តែតនៅខាងលើ</string>
+    <string name="global_menu_view_developer_desktop">អ្នកអភិវឌ្ឍន៍</string>
+    <string name="global_menu_view_developer_tools_desktop">ឧបករណ៍អភិវឌ្ឍន៍</string>
+    <string name="global_menu_help_desktop">ជួយ</string>
+    <string name="global_menu_help_learn_desktop">ស្វែងយល់បន្ថែមអំពី សា Delta Chat</string>
+    <string name="global_menu_help_contribute_desktop">រួមចំណែកនៅលើ GitHub</string>
+    <string name="global_menu_help_report_desktop">រាយការណ៍ពីបញ្ហា</string>
+    <string name="global_menu_help_about_desktop">អំពីសា Delta Chat</string>
+    <string name="no_chat_selected_suggestion_desktop">ជ្រើសរើសសន្ទនា ឬបង្កើតសន្ទនាថ្មី</string>
+    <string name="write_message_desktop">សរសេរសារ</string>
+    <string name="encryption_info_title_desktop">ពត៌មានពីការធ្វើឲ្យសារជាសម្ងាត់</string>
+    <string name="contact_detail_title_desktop">លម្អិតពត៌មានទំនាក់ទំនង</string>
+    <string name="contact_request_title_desktop">ស្នើទំនាក់ទំនង</string>
+    <string name="delete_message_desktop">លុបសារ</string>
+    <string name="more_info_desktop">ពត៌មានបន្ថែម</string>
+    <string name="logout_desktop">ចេញក្រៅ</string>
+    <string name="timestamp_format_m_desktop">ខែ ថ្ងៃ</string>
+    <string name="encryption_info_desktop">បង្ហាញពត៌មានដែលការធ្វើឲ្យសារជាសម្ងាត់</string>
+    <string name="verified_desktop">បានផ្ទៀងផ្ទាត់</string>
+    <string name="remove_desktop">យកចេញ</string>
+    <string name="save_desktop">រក្សាទុក</string>
+    <string name="add_contact_desktop">បន្ថែមទំនាក់ទំនង</string>
+    <string name="login_required_desktop">ទាមទារ</string>
+    <string name="name_desktop">ឈ្មោះ</string>
+    <string name="autocrypt_key_transfer_desktop">ការផ្ទេរសោរអ៊ិនគ្រីបស្វ័យប្រវត្តិ</string>
+    <string name="initiate_key_transfer_desktop">សាររៀបចំអ៊ិនគ្រីបស្វ័យប្រវត្តិដោយសុវត្ថិភាព ចែករំលែកការរៀបចំឧបករណ៍ដល់ឧបករណ៍ ដល់ឧបករណ៍ជាមួយកម្មវិធី ដែលមានអ៊ិនគ្រីបស្វ័យប្រវត្តិផ្សេងទៀត។ ការចាត់នឹងបានអ៊ិនគ្រីប (ការធ្វើឲ្យការផ្ញើសារជាសារដាយសញ្ញាសម្ងាត់) នៅទីនេះ នឹងត្រូវតែបានវាយបញ្ចូលនៅលើឧបករណ៍ផ្សេង។</string>
+    <string name="reply_to_message_desktop">ឆ្លើយសារ</string>
+    <string name="select_group_image_desktop">ជ្រើសរើសរូបភាពរបស់ក្រុម</string>
+    <string name="imex_progress_title_desktop">វឌ្ឍនភាពការបម្រុងទុក</string>
+    <string name="download_attachment_desktop">ទាញយកឯកសារភ្ជាប់</string>
+    <string name="export_backup_desktop">នាំចេញការបម្រុងទុក</string>
+    <string name="transfer_key_desktop">ផ្ទេរកូនសេារ</string>
+    <string name="show_key_transfer_message_desktop">កូនសោររបស់អ្នកបានផ្ញើទៅខ្លួនអ្នក។ ប្តូរឆ្លាស់ទៅឧបករណ៍ផ្សេងទៀត និងបើកការរៀបចំសារ។ អ្នកនឹងទទួលសំណួរពីកូដរៀបចំ។ បញ្ចូលតូលេខដូចខាងក្រោម:</string>
+    <string name="new_message_from_desktop">សារថ្មីពី</string>
+    <string name="unblock_contacts_desktop">ដកការរារាំងទំនាក់ទំនង</string>
+    <string name="none_blocked_desktop">គ្មានទំនាក់ទំនងដែលត្រូវបានរារាំងនៅឡើយទេ</string>
+    <string name="autocrypt_correct_desktop">ការរៀវចំចាក់អ៊ិនគ្រីបស្វ័យប្រវត្តិបានផ្ទេរហើយ។</string>
+    <string name="autocrypt_incorrect_desktop">ការរៀបចំកូដមិនត្រឹមត្រូវទេ។ សូមព្យាយាមម្តងទៀត។</string>
+    <string name="create_chat_error_desktop">មិនអាចបានបង្កើតការសន្ទនា</string>
+    <string name="ask_delete_chat_desktop">លុបការសន្ទនានេះ?</string>
+    <string name="email_validation_failed_desktop">ទាមទារអស័យដ្ឋានអុីម៉េល</string>
+    <string name="forget_login_confirmation_desktop">លុបការកត់ចូលនេះ? គ្រប់យ៉ាងនឹងត្រូវបានលុប រួមបញ្ចូលទាំងការរៀបចំ ទៅបញ្ចប់ការអុិនគ្រឹបឧបករណ៍ដល់ឧបករណ៍ ទំនាក់ទំនង សន្ទនា សារ និងប្រពន្ធ័ផ្សព្វផ្សាយ។ សកម្មភាពនេះមិនអាចធ្វើឡើងវិញបានទេ។</string>
+    <string name="account_info_hover_tooltip_desktop">អុីម៉េល: %1$s\nទំហំ: %2$s\nផ្លូវ: %3$s</string>
+    <string name="me_desktop">ខ្ញុំ</string>
+    <string name="in_this_group_desktop">សមាជិកក្រុម</string>
+    <string name="not_in_this_group_desktop">សក្តានុពលសមាជិកក្រុម (មិននៅក្នុងក្រុម)</string>
+    <string name="message_detail_sent_desktop">បានផ្ញើ</string>
+    <string name="message_detail_received_desktop">បានទទួល</string>
+    <string name="message_detail_from_desktop">ពី</string>
+    <string name="message_detail_to_desktop">ទៅកាន់</string>
+    <string name="menu.view.developer.open.log.folder">បើកថតឯកសារកត់</string>
+    <string name="menu.view.developer.open.current.log.file">បើកឯកសារកត់បច្ចុប្បន្ន</string>
+    <string name="user_location_permission_explanation">សា Delta Chat ត្រូវការការអនុញ្ញាតទីតាំង ដើម្បីបង្ហាញ និងចែករំលែកទីតាំងរបស់អ្នក។</string>
+
+    <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
+    <string name="a11y_delivery_status_error">ស្ថានភាពចែកចាយ៖ មានកំហុស</string>
+    <string name="a11y_encryption_padlock">សោត្រដោកការអ៊ិនគ្រីប</string>
+    <string name="a11y_delivery_status_sending">ស្ថានភាពចែកចាយ៖ កំពុងផ្ញើសារ</string>
+    <string name="a11y_delivery_status_draft">ស្ថានភាពចែកចាយ៖ ពង្រាង</string>
+    <string name="a11y_delivery_status_delivered">ស្ថានភាពចែកចាយ៖ បានប្រគល់</string>
+    <string name="a11y_delivery_status_read">ស្ថានភាពចែកចាយ៖ បានអាន</string>
+    <string name="a11y_delivery_status_invalid">ស្ថានភាពចែកចាយមិនត្រឹមត្រូវ</string>
+    <string name="a11y_message_context_menu_btn_label">សកម្មភាពសារ</string>
+    <string name="a11y_background_preview_label">ការមើលផ្ទៃខាងក្រោយ</string>
+    <string name="a11y_disappearing_messages_activated">កម្មវិធីសារដែលនឹងបាត់បន្ទាប់ពីមួយរយៈ បានធ្វើឱ្យសកម្ម</string>
+
+
+    <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
+    <string name="InfoPlist_NSCameraUsageDescription">សាហារីសង្ឃ ប្រើកាម៉េរ៉ារបស់អ្នកដើម្បីថតរូប និងផ្ញើរូបថត និងវីដេអូ និងស្កេនកូដ QR។</string>
+    <string name="InfoPlist_NSContactsUsageDescription">សា Delta Chat ប្រើទំនាក់ទំនងរបស់អ្នកដើម្បីបង្ហាញបញ្ជីអស័យដ្ឋានអុីម៉េល ដែលអ្នកអាចសរសេរទៅ។ សា Delta Chat គ្មានម៉ាសុីនមេទេ។ ទំនាក់ទំនងរបស់អ្នកមិនត្រូវបានផ្ញើទៅណាទេ។</string>
+    <string name="InfoPlist_NSMicrophoneUsageDescription">សា Delta Chat ប្រើមីក្រូហ្វូនរបស់អ្នកដើម្បីថត និងផ្ញើសារជាសម្លេង និងវីដេអូជាមួយសម្លេង។</string>
+    <string name="InfoPlist_NSPhotoLibraryUsageDescription">សា Delta Chat នឹងអនុញ្ញាតឲ្យអ្នកជ្រើសរើសរូបថតមួយណា ពីបណ្ណាល័យរូបថតរបស់អ្នកដើម្បីផ្ញើ។</string>
+    <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">សា Delta Chat ចង់រក្សាទុករូបភាពទៅបណ្ណាល័យរូបថតរបស់អ្មក។</string>
+
+
+    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+    <string name="pref_background_notifications">ការជូនដំណឹងផ្ទៃខាងក្រោយ</string>
+    <string name="pref_background_notifications_explain">ប្រើតំណភ្ជាប់ផ្ទៃខាងក្រោយទៅម៉ាសុីនមេរបស់អ្មក និងបដិសេធការទាមទារបង្កើនប្រសិទ្ធភាពថ្ម។</string>
+    <string name="pref_background_notifications_rationale">ដើម្បីថែរក្សាតំណភ្ជាប់ទៅម៉ាសុីនបម្រើអុីម៉េលរបស់អ្នក និងទទួលសារនៅផ្ទៃខាងក្រោយ។ បដិសេធការបង្កើនប្រសិទ្ធភាពថ្ម នៅក្នុងជំហានបន្ទាប់។\n\nសាហារីសង្ឃ ប្រើធនធានបន្តិចបន្តួច និងយកចិត្តទុកដាក់មិនបង្ហូរថ្មរបស់អ្នក។</string>
+    <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
+    <string name="pref_reliable_service">តំណភ្ជាប់ផ្ទៃខាងក្រោយដែលទុកចិត្តបាន</string>
+    <string name="pref_reliable_service_explain">តម្រូវការជូនដំណឹងជាអចិន្រ្តៃយ៍</string>
+    <string name="perm_enable_bg_reminder_title">ប៉ះទីនេះដើម្បីទទួលសារកំឡុងពេល សា Delta Chat គឺស្ថិតនៅក្នុងផ្ទៃខាងក្រោយ។</string>
+    <string name="perm_enable_bg_already_done">អ្នកបានអនុញ្ញាតរួចរាល់ហើយឲ្យសា Delta Chat ដើម្បីទទួលសារនៅផ្ទៃខាងក្រោយ\n\nប្រសិនបើ សារនៅតែមិនមកដល់ផ្ទៃខាងក្រោយ សូមពិនិត្យការការកំណត់ប្រពន្ធ័របស់អ្នកផងដែរ។</string>
+    <string name="update_1_14_android">គំនូសពណ៌ខ្លះនៃការធ្វើបច្ចុប្បន្នភាព ១.១៤ :\n\nដើម្បីឆ្លើយតបសារជាក់ស្តែង គ្រាន់តែអូសវាទៅខាងស្តាំ (មិន​នៅ​ទីនេះ! អ្នកមិនអាចឆ្លើយនៅទីនេះទេ 😛)អ្នកនឹងឃើញសម្រង់ពាក្យតែងខាងលើបន្ទាត់ និងអាចបន្តសរសេរសាររបស់អ្នក ដូចធម្មតា។.\n\n🔥បាត់សារ - ពេលវេលាមកដល់ហើយ! 😀 ការជជែកខ្លះ ឥឡូវនេះអាចត្រូវបានដំឡើងដើម្បីលុបសារដែលបានផ្ញើ និងសារដែលបានទទួល នៅពេលបន្ទាប់។ គ្រាន់តែជ្រើស \"កម្មវិធីសារដែលនឹងបាត់បន្ទាប់ពីមួយរយៈ\" ពីបញ្ជីសន្ទនា (ម្តងទៀត៖ មិននៅទីនេះទេ)\n\n👆ការសន្ទនាបើកនៅសារដែលមើលមិនឃើញដំបូង\n\n💾 បញ្ជូនបន្តទៅ \"សារដែលបានរក្សាទុក\" ដោយផ្ទាល់និងលឿនជាងមុន (នេះអាចត្រូវបានសាកល្បងនៅទីនេះ៖ ប៉ះសារនេះយូរហើយ បន្ទាប់មកព្រួញនៅខាងស្តាំ)\n\n🎃 យ៉ាងហោចណាស់យើងបានខ្លាចកំហុសជាច្រើនទៀត! កំហុសជាច្រើនខ្លាចណាស់ពួកគេនឹងមិនត្រឡប់មកវិញទេ។</string>
+
+</resources>
