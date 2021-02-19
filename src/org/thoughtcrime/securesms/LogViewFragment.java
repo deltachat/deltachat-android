@@ -27,6 +27,8 @@ import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
 import android.os.PowerManager;
+
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import android.text.TextUtils;
 import android.util.Log;
@@ -40,6 +42,7 @@ import com.b44t.messenger.DcContext;
 
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.NoExternalStorageException;
+import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Scrubber;
 import org.thoughtcrime.securesms.util.StorageUtil;
@@ -59,15 +62,11 @@ public class LogViewFragment extends Fragment {
   private static final String TAG = LogViewFragment.class.getSimpleName();
 
   private EditText logPreview;
+  private @NonNull DynamicLanguage dynamicLanguage;
 
-  public static LogViewFragment newInstance()
-  {
-    LogViewFragment fragment = new LogViewFragment();
-
-    return fragment;
+  public LogViewFragment(DynamicLanguage dynamicLanguage) {
+    this.dynamicLanguage = dynamicLanguage;
   }
-
-  public LogViewFragment() { }
 
   @Override
   public void onCreate(Bundle savedInstanceState) {
@@ -86,7 +85,7 @@ public class LogViewFragment extends Fragment {
     super.onViewCreated(view, savedInstanceState);
 
     logPreview   = (EditText) getView().findViewById(R.id.log_preview);
-    new PopulateLogcatAsyncTask(getActivity()).execute();
+    new PopulateLogcatAsyncTask(this).execute();
   }
 
   public String getLogText() {
@@ -150,19 +149,19 @@ public class LogViewFragment extends Fragment {
   }
 
   private class PopulateLogcatAsyncTask extends AsyncTask<Void,Void,String> {
-    private WeakReference<Context> weakContext;
+    private WeakReference<LogViewFragment> weakFragment;
 
-    public PopulateLogcatAsyncTask(Context context) {
-      this.weakContext = new WeakReference<>(context);
+    public PopulateLogcatAsyncTask(LogViewFragment fragment) {
+      this.weakFragment = new WeakReference<>(fragment);
     }
 
     @Override
     protected String doInBackground(Void... voids) {
-      Context context = weakContext.get();
-      if (context == null) return null;
+      LogViewFragment fragment = weakFragment.get();
+      if (fragment == null) return null;
 
       return "**This log may contain sensitive information. If you want to post it publicly you may examine and edit it beforehand.**\n\n" +
-          buildDescription(context) + "\n" + new Scrubber().scrub(grabLogcat());
+          buildDescription(fragment) + "\n" + new Scrubber().scrub(grabLogcat());
     }
 
     @Override
@@ -206,7 +205,8 @@ public class LogViewFragment extends Fragment {
     return activityManager.getMemoryClass() + lowMem;
   }
 
-  private static String buildDescription(Context context) {
+  private static String buildDescription(LogViewFragment fragment) {
+    Context context = fragment.getActivity();
 
     PowerManager powerManager = (PowerManager)context.getSystemService(Context.POWER_SERVICE);
     final PackageManager pm      = context.getPackageManager();
@@ -245,6 +245,14 @@ public class LogViewFragment extends Fragment {
               Prefs.isNotificationsEnabled(context)).append("\n");
       builder.append("reliableService=").append(
               Prefs.reliableService(context)).append("\n");
+
+      Locale locale = fragment.dynamicLanguage.getCurrentLocale();
+      builder.append("lang=").append(locale.getLanguage()).append("\n");
+      if (VERSION.SDK_INT >= VERSION_CODES.JELLY_BEAN_MR1) {
+        boolean isRtl = DynamicLanguage.getLayoutDirection(context) == View.LAYOUT_DIRECTION_RTL;
+        builder.append("rtl=").append(isRtl).append("\n");
+      }
+
     } catch (Exception e) {
       builder.append("Unknown\n");
     }
