@@ -192,11 +192,20 @@
     <string name="menu_help">یارمەتی</string>
     <string name="menu_select_all">هەمووی هەڵبژێرە</string>
     <string name="select_more">هەڵبژاردنی زۆرتر</string>
+    <string name="menu_expand">ئاوەڵا کردن</string>
     <string name="menu_edit_name">دەستکاری ناو</string>
     <string name="menu_settings">ڕێکخستنەکان</string>
     <string name="menu_advanced">پێشکەوتوو</string>
     <string name="menu_deaddrop">داواکاری پێوەندی</string>
+    <string name="menu_deaddrop_subtitle">بۆ دەستپێکردنی وتووێژ، لەسەر پەیامەکە کرتە بکە</string>
     <string name="menu_view_profile">دیتنی پرۆفایل</string>
+    <string name="menu_zoom_in">نێزیک کردنەوە</string>
+    <string name="menu_zoom_out">دوور کردنەوە</string>
+    <string name="menu_save_log">پاشەکەوت کردن</string>
+    <string name="device_talk">پەیامەکانی ئامێرەکە</string>
+    <string name="device_talk_subtitle">پەیامە درووستکراوە ناوخۆییەکان</string>
+    <string name="device_talk_explain">پەیامەکانی نێو ئەم وتووێژە بە شێوازی ناوخۆیی لەلایەن نەرمامێری دێڵتاچاتەکەتەوە درووست کراون. درووستکەرانی نەرمامێرەکە کەڵکی لێ دەگرن بۆ ئاگادار کردنەوەی بەکارهێنەران سەبارەت بە وەشانە نوێکانی نەرمامێرەکە و کێشە و گرفتەکانی.</string>
+    <string name="device_talk_welcome_message">بەخێر بێن بۆ دێڵتا چات! ڕواڵەت و بەکارهێنانی دێڵتا چات هەر وەکوو نەرمامێرە پەیامنێرە باوەکانی دیکەیە، بەڵام کۆنترۆڵی ناوەندی لەسەر نییە، شوێنی ئێوە و هاوڕێ و هاوکار و بنەماڵەکانتان ناگرێت و زانیارییەکانتان نافرۆشێت بە ڕێکخراوەکان.\n\n لەڕاستیدا دێڵتاچات نەرمامێرێکی ئیمەیلییە بە ڕواڵەتێکی مۆدەڕنەوە. ئیمەیل بە جل و بەرگێکی نوێوە ئەگەر پێتان خۆش بێت\n\n👻 لە دێڵتا چات بۆ پێوەندی گرتن لەگەڵ هەرکەسێک کە دەتانەوێت کەڵک بگرن: بەس ئیمەلەکەیان بەکار بێنن. ئیدی وەرگرەکان پێویست ناکات دێڵتا چات دابمەرزێنن یان سەردانی ماڵپەڕێک بکەن یان لە شوێنێک ببن بە ئەندام-هەڵبەت ئەگەر پێیان خۆش بوو دەتوانن ئەم نەرمامێرەیان پێ بناسێنن👈https://get.delta.chat</string>
     <string name="edit_contact">دەستکاری بەردەنگ</string>
     <!-- Translators: "Pin" here is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
     <string name="pin_chat">دەرزیلەکردنی چات</string>
@@ -207,6 +216,8 @@
     <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
     <string name="unpin">دەرزیلە لابە</string>
     <string name="ConversationFragment_quoted_message_not_found">پەیامە ڕەسەنەکە نەدۆزرایەوە</string>
+    <string name="reply_privately">وەڵامدانەوەی نهێنی</string>
+
     <string name="mute_for_one_hour">بێدەنگ کردن بۆ ماوەی 1 کاتژمێر</string>
     <string name="mute_for_two_hours">بێدەنگ کردن بۆ ماوەی 2 کاتژمێر</string>
     <string name="mute_for_one_day">بێدەنگ کردن بۆ ماوەی 1 ڕۆژ</string>
@@ -239,6 +250,12 @@
 
     <!-- get confirmations -->
     <string name="ask_leave_group">دڵنیایی دەتەوێت ئەم کۆڕە بەجێ بێڵیت؟</string>
+    <plurals name="ask_delete_messages">
+        <item quantity="one">دەتەوێت %d پەیام لێرە و لەسەر سێرڤەر بسڕیتەوە؟</item>
+        <item quantity="other">دەتەوێت %d پەیام لێرە و لەسەر سێرڤەر بسڕیتەوە؟</item>
+    </plurals>
+    <string name="ask_forward">ئەو پەیامانە دەنێریت بۆ %1$s؟</string>
+    <string name="ask_forward_multiple">ئەو پەیامانە دەنێریت بۆ نێو %1$dوتووێژ؟</string>
     <string name="ask_start_chat_with">وتووێژ لەگەڵ %1$s؟</string>
     <string name="ask_delete_value">%sدەسڕیتەوە؟</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
@@ -273,13 +290,23 @@
     <string name="chat_record_slide_to_cancel">بیخشێنە بۆ هەڵوەشاندنەوە</string>
     <string name="chat_share_with_title">هاوبەش کردن لەگەڵ</string>
     <string name="chat_input_placeholder">پەیام</string>
+    <string name="chat_archived_label">ئەرشیڤ کرا</string>
     <string name="chat_no_messages">هیچ پەیامێک نییە</string>
     <string name="chat_self_talk_subtitle">ئەوا پەیامانەی کە بۆ خۆمم هەناردووە</string>
     <string name="saved_messages">پەیامە پاشەکەوت کراوەکان</string>
     <!-- this "Saved" should match the "Saved" from "Saved messages" -->
     <string name="saved">پاشەکەوت کرا</string>
+    <string name="chat_contact_request">داخوازی بەردەنگ بوون</string>
     <string name="retry_send">دیسان هەوڵ بدەوە بۆ هەناردنی پەیامەکە</string>
     <string name="send_failed">پەیامەکە نەهەناردرا</string>
+    <!-- mailing lists -->
+    <string name="mailing_list">لیستەی ئیمەیلەکان</string>
+    <string name="ask_show_mailing_list">لیستەی ئیمەیلەکانی \"%1$s\" پیشان بدرێت؟</string>
+
+
+    <!-- map -->
+    <string name="filter_map_on_time">شوێنەکان لە نێو چوارچێوەی کاتدا پیشان بدرێت؟</string>
+    <string name="show_location_traces">پیشاندانی شوێنپێ</string>
     <!-- search -->
     <string name="search">گەڕان</string>
     <string name="search_explain">بگەڕە بۆ وتووێژەکان و بەردەنگەکان و پەیامەکان</string>
@@ -296,6 +323,9 @@
     <string name="group_add_members">ئەندام زیاد بکە</string>
     <string name="group_hello_draft">سڵاو، کۆڕی %1$s م درووست کرد بۆ خۆمان.</string>
     <string name="group_self_not_in_group">بۆ ئەم کردارە دەبێت ئەندامی کۆڕەکە بیت.</string>
+    <string name="profile_encryption">شفرەکردن</string>
+    <string name="profile_shared_chats">وتووێژە هاوبەشکراوەکان</string>
+    <string name="tab_contact">بەردەنگ</string>
     <string name="tab_group">کۆڕ</string>
     <string name="tab_members">ئەندامان</string>
     <string name="tab_gallery">پیشانگە</string>
@@ -307,8 +337,11 @@
 
     <string name="login_title">بچۆ ژوورەوە</string>
     <string name="login_header">بچۆ ژوورەوە بۆ سێرڤێرەکەی خۆت</string>
+    <string name="login_inbox">وەرگیراوەکان</string>
+    <string name="login_outbox">هەنێردراوەکان</string>
     <string name="login_error_mail">تکایە ئیمەیلێکی ڕاست بنووسە</string>
     <string name="import_backup_title">هاوردەکردنی یەدەک</string>
+    <string name="used_settings">ڕێکخستنە بەکارهێنراوەکان:</string>
     <string name="switch_account">گۆڕینی هەژمار</string>
     <string name="add_account">زیادکردنی هەژمار</string>
     <string name="delete_account">سڕینەوەی هەژمار</string>
@@ -318,6 +351,9 @@
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">هەناردن بۆ...</string>
+    <!-- preferences -->
+    <string name="pref_using_custom">بەکارهێنانی دڵخواز: %s</string>
+    <string name="pref_using_default">بەکارهێنانی بنەڕەتی: %s</string>
     <string name="pref_profile_info_headline">زانیارییەکانی پرۆفایلەکەت</string>
     <string name="pref_profile_photo">وێنەی لادیمەن</string>
     <string name="pref_blocked_contacts">هەژمارە ئاستەنگکراوەکان</string>
@@ -325,7 +361,13 @@
     <string name="pref_profile_photo_remove_ask">وێنەی لادیمەنەکەت دەسڕیتەوە؟</string>
     <string name="pref_password_and_account_settings">هەژمار و تێپەڕوشە</string>
     <string name="pref_your_name">ناو</string>
+    <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
+    <string name="pref_default_status_label">دەقی واژۆ</string>
+    <string name="pref_outgoing_worse">نزمترین چۆنییەتی، قەبارەی بچووک</string>
     <string name="pref_vibrate">لەرزینەوە</string>
+    <string name="pref_change_secret">گۆڕینی نهێنی</string>
+    <string name="pref_screen_security">پاراستنی شاشە</string>
+    <string name="pref_notifications">ئاگادارییەکان</string>
     <string name="pref_notifications_show">پیشاندان</string>
     <string name="pref_sound">دەنگ</string>
     <string name="pref_silent">بێدەنگ</string>
@@ -347,5 +389,66 @@
     <string name="pref_other">کەسانی دی</string>
     <string name="pref_background">پشتخان</string>
     <string name="pref_background_btn_default">بەکارهێنانی وێنەی بنەڕەتی</string>
+    <string name="pref_background_btn_gallery">هەڵبژاردن لە پیشانگا</string>
+    <string name="pref_watch_inbox_folder">دیتنی بوخچەی وەرگیراوەکان</string>
+    <string name="pref_watch_sent_folder">دیتنی بوخچەی هەنێردراوەکان</string>
+    <string name="pref_watch_mvbox_folder">دیتنی بوخچەی دێڵتاچات</string>
+    <string name="pref_send_copy_to_self">هەناردنی ڕوونووسێک بۆ خۆت</string>
+    <string name="pref_auto_folder_moves">هەناردنی خۆکار بۆ بوخچەی دێڵتاچات</string>
+    <string name="pref_show_emails">پیشاندانی ئیمەیلە کلاسیکەکان</string>
+    <string name="pref_show_emails_no">نا، بەس چاتەکان</string>
+    <string name="pref_show_emails_accepted_contacts">بۆ بەردەنگە پەسندکراوەکان</string>
+    <string name="pref_show_emails_all">هەموو</string>
+    <string name="pref_experimental_features">ئەو تایبەتمەندییانەی بۆ تاقی کردنەوەن</string>
+    <string name="pref_background_default">پشتخانی بنەڕەتی</string>
+    <string name="pref_background_default_color">ڕەنگی بنەڕەتی</string>
+    <string name="pref_background_custom_image">وێنەی دڵخواز</string>
+    <string name="pref_background_custom_color">ڕەنگی دڵخواز</string>
+    <string name="export_aborted">هەناردەکردن ڕاوەستا</string>
+    <string name="profile_image_select">هەڵبژاردنی وێنەی لادیمەن</string>
+    <string name="select_your_new_profile_image">وێنەی لادیمەنە نوێکەت هەڵبژێرە</string>
+    <string name="profile_image_delete">سڕینەوەی وێنەی لادیمەن</string>
+
+
+    <!-- Emoji picker and categories -->
+    <string name="emoji_search_results">ئەنجامی گەڕان</string>
+    <string name="emoji_not_found">هیچ وێنۆچکەیەک نەدۆزرایەوە</string>
+    <string name="emoji_recent">دوایین بەکارهێنراوەکان</string>
+    <string name="emoji_activity">چالاکی</string>
+    <string name="emoji_symbols">هێماکان</string>
+    <string name="emoji_flags">ئاڵاکان</string>
+
+
+    <!-- automatically delete message -->
+    <string name="delete_old_messages">سڕینەوەی پەیامە کۆنەکان</string>
+    <!-- devs: autodel_title is deprecated, use delete_old_messages instead -->
+    <string name="autodel_title">سڕینەوەی-خۆکاری پەیامەکان</string>
+    <string name="autodel_device_title">سڕینەوەی پەیامەکان لەسەر مۆبایەلەکت</string>
+    <string name="autodel_server_title">سڕینەوەی پەیامەکان لەسەر سێرڤەر</string>
+    <string name="autodel_confirm">تێگەیشتم، هەموو ئەم پەیامانە بسڕەوە</string>
+    <string name="autodel_at_once">بەیەکجاری</string>
+    <string name="after_30_seconds">پاش 30 چرکە</string>
+    <string name="after_1_minute">پاش 1 خولەک</string>
+    <string name="after_5_minutes">پاش 5 خولەک</string>
+    <string name="after_30_minutes">پاش 30 خولەک</string>
+    <string name="autodel_after_1_hour">پاش 1 کاتژمێر</string>
+    <string name="autodel_after_1_day">پاش 1 ڕۆژ</string>
+    <string name="autodel_after_1_week">پاش 1 حەوتە</string>
+    <string name="autodel_after_4_weeks">پاش 4 حەوتە</string>
+    <string name="after_5_weeks">پاش 5 حەوتە</string>
+    <string name="autodel_after_1_year">پاش 1 ساڵ</string>
+
+    <!-- autocrypt -->
+    <string name="autocrypt">ئۆتۆکریپت</string>
+    <string name="autocrypt_explain">ئۆتۆکریپت شێوازێکی نوێ و خۆڕاییە بۆ شفرەکردنی خۆکاری ئیمەیل بە چەشنی ئەمسەر-ئەوسەر.\n\n ڕێکخستنی ئەمسەر-ئەوسەرەکە، بە چەشنی پێویست، خۆکارانە درووست دەبێت و تۆ دەتوانیت لەنێوان ئامێرەکاندا، کە پەیامی ڕێکخستنی ئۆتۆکریپتیان هەیە، بیانگوازیتەوە.</string>
+    <string name="autocrypt_send_asm_title">هەناردنی پەیامی ڕێکخستنی ئۆتۆکریپت</string>
+    <string name="autocrypt_send_asm_button">هەناردنی پەیامی ڕێکخستنی ئۆتۆکریپت</string>
+    <string name="autocrypt_asm_subject">پەیامی ڕێکخستنی ئۆتۆکریپت</string>
+    <string name="autocrypt_continue_transfer_title">پەیامی ڕێکخستنی ئۆتۆکریپت</string>
+    <string name="autocrypt_continue_transfer_retry">دیسان هەوڵدانەوە</string>
+    <string name="systemmsg_subject_for_new_contact">پەیام لەلایەن %1$s</string>
+    <string name="systemmsg_failed_sending_to">هەناردنی پەیام بۆ %1$s سەرنەکەوت</string>
+
     <string name="global_menu_preferences_language_desktop">زمان</string>
+    <string name="contact_request_title_desktop">داخوازی بەردەنگ بوون</string>
     </resources>
