@@ -42,7 +42,7 @@
     <string name="show_full_message">显示完整消息… </string>
     <string name="load_remote_content">加载远程图片</string>
     <!-- possible answers to the question are: Never, Always, Once -->
-    <string name="load_remote_content_ask">远程图片可被用来跟踪你。\n\n该设置还允许加载字体和其他内容。即使禁用了它，你仍然可以看到嵌入或缓存的图像。\n\n要加载远程图片吗？</string>
+    <string name="load_remote_content_ask">远程图像可被用来跟踪您。\n\n该设置还允许加载字体和其他内容。即使禁用，您仍可能看到嵌入或缓存的图像。\n\n要加载远程图像吗？</string>
     <string name="always">始终</string>
     <string name="once">一次</string>
     <string name="show_password">显示密码</string>
@@ -107,6 +107,8 @@
     <string name="audio">音频</string>
     <string name="voice_message">语音消息</string>
     <string name="forwarded_message">转发的消息</string>
+    <!-- %1$s will be replaced by the name or the email-address of the person who has forwarded the message -->
+    <string name="forwarded_by">转发人 %1$s</string>
     <string name="video">视频</string>
     <string name="documents">文档</string>
     <string name="contact">联系人</string>
@@ -203,7 +205,7 @@
     <string name="title_share_location">与所有群组成员共享位置</string>
     <string name="device_talk">设备消息</string>
     <string name="device_talk_subtitle">本地生成的消息</string>
-    <string name="device_talk_explain">此聊天中的消息是由您的 Delta Chat 应用本地生成的。 它的制作者使用它来通知应用更新和使用过程中出现的问题。</string>
+    <string name="device_talk_explain">此聊天中的消息是由 Delta Chat 应用本地生成的。 它的制作者使用它来通知应用更新和使用过程中出现的问题。</string>
     <string name="device_talk_welcome_message">欢迎使用 Delta Chat！ – Delta Chat 看起来、用起来就跟其他流行的通讯应用一样，但是却不涉及中心化的控制、跟踪以及将您、朋友、同事或家庭出卖给大型组织。\n\n从技术上来说，Delta Chat 是具有现代聊天界面的电子邮件应用程序。若您愿意，电子邮件将装扮一新👻\n\n与数十亿人中的任何人一起使用 Delta Chat：只需使用他们的电子邮件地址即可。收件人不需要安装 Delta Chat、访问网站或是在什么地方注册 - 当然，如果他们愿意，您可以指给他们👉 https://get.delta.chat</string>
     <string name="edit_contact">编辑联系人</string>
     <!-- Translators: "Pin" here is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
@@ -240,7 +242,7 @@
     <string name="videochat_invite_user_hint">这需要两端都具有兼容的应用或兼容的浏览器。</string>
     <string name="videochat_contact_invited_hint">%1$s 被邀请参加视频聊天。</string>
     <string name="videochat_you_invited_hint">您被邀请参加视频聊天。</string>
-    <string name="videochat_will_open_in_your_browser">该视频聊天将在您的浏览器中打开。</string>
+    <string name="videochat_will_open_in_your_browser">该视频聊天将在浏览器中打开。</string>
     <string name="videochat_tap_to_join">点击来加入</string>
     <string name="videochat_tap_to_open">点击来打开</string>
     <string name="videochat_instance">视频聊天实例</string>
@@ -253,7 +255,7 @@
     <!-- get confirmations -->
     <string name="ask_leave_group">您确定要离开此群组吗？</string>
     <plurals name="ask_delete_chat">
-        <item quantity="other">删除 %d 个聊天？它们将不再显示在聊天列表中，但它们的消息仍将保留于服务器。</item>
+        <item quantity="other">删除 %d 个聊天？这个（些）聊天将不再显示在聊天列表中，但它（们）的消息仍将保留于服务器。</item>
     </plurals>
     <plurals name="ask_delete_messages">
         <item quantity="other">在此处和服务器上删除 %d 条消息？</item>
@@ -312,7 +314,7 @@
     <string name="saved">已保存</string>
     <string name="chat_contact_request">联系人请求</string>
     <string name="chat_no_contact_requests">没有联系人请求。\n\n如果您希望传统的电子邮件作为联系人请求出现在这里，则可以更改本应用相关设置。</string>
-    <string name="retry_send">重试发送消息</string>
+    <string name="retry_send">尝试重发消息</string>
     <string name="send_failed">无法发送消息</string>
     <!-- reasons for a disabled message composer -->
     <string name="messaging_disabled_not_in_group">您无法编写消息，因为您不在此群组中。要加入，请询问其他成员。</string>
@@ -367,7 +369,7 @@
     <!-- welcome and login -->
     <string name="welcome_intro1_message">本通讯软件有着世界上最广泛的受众。自由且自主。</string>
     <string name="login_title">登录</string>
-    <string name="login_header">登录至您的服务器</string>
+    <string name="login_header">登录至服务器</string>
     <string name="login_explain">使用现有电子邮件帐户登录</string>
     <string name="login_subheader">对于已知的电子邮件提供商，附加设置会被自动设置。有时 IMAP 需要在网页版设置里启用。 请咨询您的电子邮件提供商或朋友来寻求帮助。</string>
     <string name="login_no_servers_hint">不存在 Delta Chat 服务器，您的数据保留于您的设备！</string>
@@ -422,8 +424,8 @@
 
 
     <!-- preferences -->
-    <string name="pref_using_custom">使用自定义： %s</string>
-    <string name="pref_using_default">使用默认： %s</string>
+    <string name="pref_using_custom">使用自定义值： %s</string>
+    <string name="pref_using_default">使用默认值： %s</string>
     <string name="pref_profile_info_headline">您的个人资料</string>
     <string name="pref_profile_photo">个人资料图片</string>
     <string name="pref_blocked_contacts">已屏蔽联系人</string>
@@ -544,11 +546,11 @@
     <string name="autodel_device_title">从设备删除消息</string>
     <string name="autodel_server_title">从服务器删除消息</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
-    <string name="autodel_device_ask">您要删除目前的 %1$d 条消息以及之后 %2$s 内新收到的消息吗？\n\n• 这包括所有媒体文件\n\n• 无论消息是否被浏览过，它们都将会被删除\n\n• 在本地删除中，“保存的消息”将被跳过</string>
+    <string name="autodel_device_ask">您是否要立即删除 %1$d 条消息，并在之后于消息收到“%2$s”删除它们？\n\n• 这包括所有媒体文件\n\n• 无论消息是否被浏览过，它们都将会被删除\n\n• 在本地删除中，“保存的消息”将被跳过</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
-    <string name="autodel_server_ask">你想要现在删除%1$d条消息及所有未来“%2$s”之内获取的新消息吗？\n\n⚠️这包括所有服务器文件夹中的电子邮件、媒体和“保存的信息”\n\n⚠️ 如果您想在服务器上保存数据，请不要使用此功能n\n⚠️ 不要使用此功能，如果你正在使用其他Delta Chat之外的电子邮件客户端。</string>
+    <string name="autodel_server_ask">您是否要立即删除 %1$d 条消息，并在之后于消息收到“%2$s”删除它们？\n\n⚠️ 这包括所有服务器文件夹中的电子邮件、媒体和“保存的消息”\n\n⚠️ 如果您想在服务器上保存数据，请不要使用此功能\n\n⚠️ 如果您正在使用 Delta Chat 之外的其他电子邮件客户端，请不要使用此功能</string>
     <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
-    <string name="autodel_server_enabled_hint">这包括所有服务器文件夹中的电子邮件、媒体和\"保存的信息\"。如果您想在服务器上保存数据，或者您正在使用除Delta Chat之外的其他电子邮件客户端，请不要使用此功能。</string>
+    <string name="autodel_server_enabled_hint">这包括所有服务器文件夹中的电子邮件、媒体和\"保存的消息\"。如果您想在服务器上保存数据，或者您正在使用除 Delta Chat 之外的其他电子邮件客户端，请不要使用此功能。</string>
     <string name="autodel_confirm">我了解，将这些消息全部删除</string>
     <string name="autodel_at_once">立刻</string>
     <string name="after_30_seconds">30 秒后</string>
@@ -611,8 +613,8 @@
     <string name="systemmsg_ephemeral_timer_weeks">设置消息定时销毁计时器为 %1$s 周</string>
 
     <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
-    <string name="systemmsg_chat_protection_disabled">聊天保护已禁用</string>
-    <string name="systemmsg_chat_protection_enabled">聊天保护已启用</string>
+    <string name="systemmsg_chat_protection_disabled">已禁用聊天保护</string>
+    <string name="systemmsg_chat_protection_enabled">已启用聊天保护</string>
 
     <!-- screen lock -->
     <string name="screenlock_title">屏幕锁定</string>
@@ -627,9 +629,9 @@
 
     <!-- qr code stuff -->
     <string name="qr_code">二维码</string>
-    <string name="load_qr_code_as_image">将二维码加载为图像</string>
+    <string name="load_qr_code_as_image">从图像加载二维码</string>
     <string name="qrscan_title">扫描二维码</string>
-    <string name="qrscan_hint">将您的相机放于二维码上方。</string>
+    <string name="qrscan_hint">将相机对准二维码。</string>
     <string name="qrscan_failed">二维码无法被解码</string>
     <string name="qrscan_ask_join_group">您要加入群组“%1$s”吗？</string>
     <string name="qrscan_fingerprint_mismatch">扫描到的指纹与上次见到的 %1$s 的指纹不匹配。</string>
@@ -649,8 +651,8 @@
     <string name="qrshow_join_contact_no_connection_hint">二维码设置需要互联网连接。 要继续，请先连接到网络。</string>
     <string name="qrshow_join_contact_no_connection_toast">没有互联网连接，无法进行二维码设置。</string>
     <string name="qraccount_ask_create_and_login">在“%1$s”创建新的电子邮件地址并在那登录？</string>
-    <string name="qraccount_ask_create_and_login_another">在“%1$s”创建新的电子邮件地址并在那登录？\n\n您的已存在账户不会被删除。使用“切换账户”来在您的账户之间切换。</string>
-    <string name="qraccount_success_enter_name">登录成功——您的电子邮件地址是 %1$s\n\n如果您愿意，您现在可以去设置一个名称和个人资料图片。它们将显示给您发消息到的人。</string>
+    <string name="qraccount_ask_create_and_login_another">在“%1$s”创建新的电子邮件地址并在那登录？\n\n已存在账户不会被删除。使用“切换账户”来在账户之间切换。</string>
+    <string name="qraccount_success_enter_name">登录成功——电子邮件地址是 %1$s\n\n如果您愿意，您现在可以去设置一个名称和个人资料图片。它们将显示给您发消息到的人。</string>
     <string name="qraccount_qr_code_cannot_be_used">无法使用扫描到的二维码建立新账户。</string>
     <string name="qraccount_use_on_new_install">扫描到的二维码是用于设置新帐户的。设置新的 Delta Chat 安装时，您可以扫描此二维码。</string>
     <string name="contact_verified">%1$s 已验证。</string>
@@ -683,7 +685,7 @@
     <string name="perm_explain_access_to_location_denied">要附加位置，请转至应用设置，选择“权限”，然后启用“位置”。</string>
 
     <!-- ImageEditorHud -->
-    <string name="ImageEditorHud_draw_anywhere_to_blur">对任意地方进行模糊</string>
+    <string name="ImageEditorHud_draw_anywhere_to_blur">对任意地方涂抹以进行模糊</string>
 
     <!-- dc_str_* resources -->
     <string name="encrypted_message">加密的消息</string>
@@ -771,11 +773,11 @@
 
 
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
-    <string name="InfoPlist_NSCameraUsageDescription">Delta Chat 使用您的相机来拍摄、发送照片和视频以及扫描二维码。</string>
+    <string name="InfoPlist_NSCameraUsageDescription">Delta Chat 使用相机来拍摄、发送照片和视频以及扫描二维码。</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat 使用您的联系人来显示您可以写信到的电子邮件地址列表。 Delta Chat 没有服务器，您的联系人不会被发送到任何地方。</string>
-    <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat 使用您的麦克风来录制、发送语音消息和带有声音的视频。</string>
+    <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat 使用麦克风来录制、发送语音消息和带有声音的视频。</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat 将让您选择要从图库中发送哪些照片。</string>
-    <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat 想将图像保存到您的图库。</string>
+    <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat 想将图像保存到图库。</string>
 
 
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
@@ -786,7 +788,7 @@
     <string name="pref_reliable_service">可靠后台连接</string>
     <string name="pref_reliable_service_explain">需要一个永久通知</string>
     <string name="perm_enable_bg_reminder_title">点击此处以在 Delta Chat 处于后台时接收消息。</string>
-    <string name="perm_enable_bg_already_done">您已允许 Delta Chat 在后台接收消息。\n\n如果在后台时消息仍没到达，请同时检查系统设置。</string>
+    <string name="perm_enable_bg_already_done">您已允许 Delta Chat 在后台接收消息。\n\n如果在后台时消息仍没到达，请检查系统设置。</string>
     <string name="update_1_14_android">1.14 更新亮点：\n\n🧹 轻扫以回复：要回复某一具体消息，只需将其向右轻扫（不是这里！这里您不能回复😛）您会在撰写行上方看到一个引用，之后可以照常编写消息。\n\n🔥 消息定时销毁 ­—— 时辰已到😀。任意聊天均可被配置为在一段时间后删除已发送与已接收的消息。从聊天菜单中选择“消息定时销毁”（重复：不是这里）\n\n👆 于第一条未查看的消息处打开聊天\n\n💾 将东西直接、快速地转发到“保存的消息”（这个可以在这里尝试：长按此消息，然后右上角箭头）\n\n🎃 最后，我们再次恐吓了许多bug！它们大多数都被吓坏了，应该不会再回来了。</string>
 
 </resources>

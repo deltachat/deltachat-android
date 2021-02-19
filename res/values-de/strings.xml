@@ -799,7 +799,7 @@ Ihr bisheriges E-Mail-Konto wird dabei nicht gelöscht. Sie können mit der Opti
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="pref_background_notifications">Hintergrundbenachrichtigungen</string>
     <string name="pref_background_notifications_explain">Verwendet eine Hintergrundverbindung zu Ihrem Server und erfordert das Ausschalten der Akku-Optimierung</string>
-    <string name="pref_background_notifications_rationale">Um die Verbindung zu Ihrem E-Mail-Server aufrechtzuerhalten und Nachrichten im Hintergrund zu empfangen, Ignorieren Sie im nächsten Schritt die \"Akku-Optimierungen\".\n\nDelta Chat verbraucht nur minimale Ressourcen und achtet darauf, den Akku zu schonen.</string>
+    <string name="pref_background_notifications_rationale">Um die Verbindung zu Ihrem E-Mail-Server aufrechtzuerhalten und Nachrichten im Hintergrund zu empfangen, ignorieren Sie im nächsten Schritt die \"Akku-Optimierungen\".\n\nDelta Chat verbraucht nur minimale Ressourcen und achtet darauf, den Akku zu schonen.</string>
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="pref_reliable_service">Zuverlässige Hintergrundverbindung</string>
     <string name="pref_reliable_service_explain">Erfordert immer sichtbaren Hinweis</string>

@@ -335,6 +335,11 @@
     <string name="messaging_disabled_not_in_group">Nie możesz pisać, ponieważ nie jesteś w tej grupie. Aby dołączyć, poproś innego członka.</string>
     <string name="messaging_disabled_device_chat">Ten czat zawiera wiadomości generowane lokalnie dlatego nie możesz pisać żadnych wiadomości.</string>
     <string name="messaging_disabled_deaddrop">Kliknij wiadomość, aby zaakceptować lub odrzucić prośbę o kontakt</string>
+    <!-- mailing lists -->
+    <string name="mailing_list">Lista mailingowa</string>
+    <string name="ask_show_mailing_list">Wyświetlić listę mailingową „%1$s”?</string>
+
+
     <!-- map -->
     <string name="filter_map_on_time">Pokaż lokalizacje w ramach czasowych</string>
     <string name="show_location_traces">Pokaż ślady</string>
@@ -548,10 +553,13 @@
     <string name="autodel_at_once">Od razu</string>
     <string name="after_30_seconds">Po 30 sekundach</string>
     <string name="after_1_minute">Po 1 minucie</string>
+    <string name="after_5_minutes">Po 5 minutach</string>
+    <string name="after_30_minutes">Po 30 minutach</string>
     <string name="autodel_after_1_hour">Po 1 godzinie</string>
     <string name="autodel_after_1_day">Po 1 dniu</string>
     <string name="autodel_after_1_week">Po 1 tygodniu</string>
     <string name="autodel_after_4_weeks">Po 4 tygodniach</string>
+    <string name="after_5_weeks">Po 5 tygodniach</string>
     <string name="autodel_after_1_year">Po 1 roku</string>
 
     <!-- autocrypt -->
@@ -597,6 +605,11 @@
     <string name="systemmsg_ephemeral_timer_day">Ustawiono zegar znikających wiadomości na 1 dzień.</string>
     <string name="systemmsg_ephemeral_timer_week">Ustawiono zegar znikających wiadomości na 1 tydzień.</string>
     <string name="systemmsg_ephemeral_timer_four_weeks">Ustawiono zegar znikających wiadomości na 4 tygodnie.</string>
+    <string name="systemmsg_ephemeral_timer_minutes">Ustawiono zegar znikających wiadomości na czas %1$s minut.</string>
+    <string name="systemmsg_ephemeral_timer_hours">Ustawiono zegar znikających wiadomości na czas %1$s godzin.</string>
+    <string name="systemmsg_ephemeral_timer_days">Ustawiono zegar znikających wiadomości na czas %1$s dni.</string>
+    <string name="systemmsg_ephemeral_timer_weeks">Ustawiono zegar znikających wiadomości na czas %1$s tygodni.</string>
+
     <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
     <string name="systemmsg_chat_protection_disabled">Ochrona czatu wyłączona.</string>
     <string name="systemmsg_chat_protection_enabled">Ochrona czatu włączona.</string>

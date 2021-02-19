@@ -113,6 +113,8 @@
     <string name="audio">Audio</string>
     <string name="voice_message">Mesazh zanor</string>
     <string name="forwarded_message">Mesazhi u përcoll</string>
+    <!-- %1$s will be replaced by the name or the email-address of the person who has forwarded the message -->
+    <string name="forwarded_by">Përcjellë nga %1$s</string>
     <string name="video">Video</string>
     <string name="documents">Dokumente</string>
     <string name="contact">Kontakt</string>

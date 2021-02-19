@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- common strings without special context -->
+    <string name="app_name">دێڵتا چات</string>
+    <string name="ok">باشە</string>
+    <string name="cancel">هەڵوەشاندنەوە</string>
+    <string name="yes">بەڵێ</string>
+    <string name="no">نا</string>
+    <string name="select">هەڵبژاردن</string>
+    <string name="on">چالاک</string>
+    <string name="off">ناچالاک</string>
+    <string name="def">بنەڕەتی</string>
+    <string name="default_value">بنەڕەتی (%1$s)</string>
+    <string name="default_value_as_above">بنەڕەتی (وەکوو سەرەوە)</string>
+    <string name="custom">دڵخواز</string>
+    <string name="none">هیچیان</string>
+    <string name="automatic">خۆکار</string>
+    <string name="open">کردنەوە</string>
+    <string name="open_attachment">کردنەوەی پێوەلکاو</string>
+    <string name="join">بەشداربوون</string>
+    <string name="rejoin">دیسان بەشداربوونەوە</string>
+    <string name="delete">بیسڕەوە</string>
+    <string name="info">زانیاری</string>
+    <string name="update">نوێ کردنەوە</string>
+    <string name="emoji">وێنۆچکە</string>
+    <string name="attachment">پێوەلکاو</string>
+    <string name="back">گەڕانەوە</string>
+    <string name="close">داخستن</string>
+    <string name="forward">بڵاو کردنەوە</string>
+    <string name="archive">ئەرشیڤ کردن</string>
+    <string name="unarchive">دەرهێنان لە ئەرشیڤ</string>
+    <string name="mute">بێدەنگ کردن</string>
+    <string name="ephemeral_messages">ئەو پەیامانەی بزر دەبن</string>
+    <string name="ephemeral_messages_hint">ئەم ڕێکخستنانە بۆ هەموو بەکارهێنەرانی دێڵتا چات دەبن. ئەگەرچی ئەوان دەتوانن پەیامەکان کۆپی بکەن، پاشەکەوتیان بکەن و بڵاویان بکەنەوە یان لە پۆستێکی ئەلیکترۆنی دیکە کەڵک بگرن.</string>
+    <string name="save">پاشەکەوتی بکە</string>
+    <string name="chat">چات</string>
+    <string name="media">ڕەنگاڵە</string>
+    <string name="profile">لادیمەن</string>
+    <string name="main_menu">پێڕستی سەرەکی</string>
+    <string name="start_chat">وتووێژ دەست پێبکە</string>
+    <string name="show_full_message">هەموو پەیامەکە پیشان بدە...</string>
+    <string name="always">هەمیشە</string>
+    <string name="once">یەکجار</string>
+    <string name="show_password">تێپەڕوشەکە پیشان بدە</string>
+    <string name="hide_password">تێپەڕوشەکە بشارەوە</string>
+    <string name="not_now">ئێستا نا</string>
+    <string name="never">قەت</string>
+    <string name="done">ئەنجام بوو</string>
+    <string name="undo">گەڕاندنەوە</string>
+    <string name="offline">دەرهێڵ</string>
+    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
+    <string name="next">پاشوو</string>
+    <string name="error">هەڵە</string>
+    <string name="error_x">هەڵە: %1$s</string>
+    <string name="error_no_network">تۆڕ بەردەست نییە</string>
+    <string name="no_app_to_handle_data">نەرمامێرێک نەدۆزرایەوە کە ئەم چەشنە داتایە بخوێنێتەوە.</string>
+    <string name="no_browser_installed">هیچ وێبگەڕێک دانەمەزراوە</string>
+    <string name="file_not_found">%1$s نەدۆزرایەوە.</string>
+    <string name="copied_to_clipboard">ڕوونووس کرا</string>
+    <string name="contacts_headline">بەردەنگەکان</string>
+    <string name="email_address">پۆستی ئەلیکترۆنی</string>
+    <string name="bad_email_address">پۆستی ئەلیکترۆنی بێکەڵک</string>
+    <string name="password">تێپەڕوشە</string>
+    <string name="existing_password">دووپات کردنەوەی تێپەڕوشە</string>
+    <string name="now">ئێستا</string>
+    <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
+    <string name="danger">مەترسی</string>
+    <string name="today">ئەمڕۆ</string>
+    <string name="yesterday">دوێنێ</string>
+    <string name="this_week">ئەم حەوتەیە</string>
+    <string name="this_month">ئەم مانگە</string>
+    <string name="last_week">حەوتەی ڕابردوو</string>
+    <string name="last_month">مانگی ڕابردوو</string>
+    <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
+    <plurals name="n_minutes">
+        <item quantity="one">%dخولەک</item>
+        <item quantity="other">%dخولەک</item>
+    </plurals>
+    <!-- Translators: show beside messages that are "N hours old". prefer a short string, prefer abbreviations if they're well-known -->
+    <plurals name="n_hours">
+        <item quantity="one">%dکاتژمێر</item>
+        <item quantity="other">%dکاتژمێر</item>
+    </plurals>
+    <plurals name="n_chats">
+        <item quantity="one">%dوتووێژ</item>
+        <item quantity="other">%dوتووێژ</item>
+    </plurals>
+    <plurals name="n_contacts">
+        <item quantity="one">%dبەردەنگ</item>
+        <item quantity="other">%dبەردەنگ</item>
+    </plurals>
+    <plurals name="n_messages">
+        <item quantity="one">%dپەیام</item>
+        <item quantity="other">%dپەیام</item>
+    </plurals>
+    <plurals name="n_members">
+        <item quantity="one">%dئەندام</item>
+        <item quantity="other">%dئەندام</item>
+    </plurals>
+
+    <string name="self">من</string>
+    <string name="draft">ڕەشنووس</string>
+    <string name="image">وێنە</string>
+    <!-- Translators: Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
+    <string name="reply_noun">وەڵام دانەوە</string>
+    <string name="gif">گیف</string>
+    <string name="images">وێنەکان</string>
+    <string name="audio">دەنگ</string>
+    <string name="voice_message">پەیامی دەنگی</string>
+    <string name="forwarded_message">پەیامی هاوبەشکراو</string>
+    <!-- %1$s will be replaced by the name or the email-address of the person who has forwarded the message -->
+    <string name="forwarded_by">هاوبەشکراو لە لایەن%1$s</string>
+    <string name="video">ڤیدیۆ</string>
+    <string name="documents">بەڵگەکان</string>
+    <string name="contact">بەردەنگ</string>
+    <string name="verified_contact">بەردەنگی پشتڕاست کراو</string>
+    <string name="camera">کامێرا</string>
+    <string name="location">شوێن</string>
+    <string name="gallery">پیشانگا</string>
+    <string name="images_and_videos">وێنە و ڤیدیۆکان</string>
+    <string name="file">پەڕگە</string>
+    <string name="files">پەڕگەکان</string>
+    <string name="unknown">نەناسراو</string>
+
+    <string name="green">سەوز</string>
+    <string name="red">سوور</string>
+    <string name="blue">شین</string>
+    <string name="orange">نارنجی</string>
+    <string name="cyan">سەوزی شینباو</string>
+    <string name="purple">ئەرخەوانی</string>
+    <string name="magenta">سووری ئەرخەوانی</string>
+    <string name="white">سپی</string>
+
+    <string name="zoom">نزیک کردنەوە</string>
+    <string name="extra_small">زۆر بچووک</string>
+    <string name="small">بچووک</string>
+    <string name="normal">ئاسایی</string>
+    <string name="large">گەورە</string>
+    <string name="extra_large">زۆر گەورە</string>
+
+    <string name="fast">خێرا</string>
+    <string name="slow">خاو</string>
+
+    <string name="message_delivered">پەیامەکە گەیشت</string>
+    <string name="message_read">پەیامەکە خوێندرایەوە</string>
+
+
+    <!-- menu labels (or icon, buttons...) -->
+    <string name="menu_new_contact">بەردەنگی نوێ</string>
+    <string name="menu_new_chat">وتووێژی نوێ</string>
+    <string name="menu_new_group">گرووپی نوێ</string>
+    <string name="menu_new_verified_group">گرووپی پشتڕاست کراوەی نوێ</string>
+    <string name="menu_send">بینێرە</string>
+    <string name="menu_edit_group">دەستکاری کۆڕ</string>
+    <string name="menu_group_name_and_image">ناو و وێنەی کۆڕ</string>
+    <string name="menu_show_map">پیشاندانی نەخشە</string>
+    <string name="menu_show_global_map">پیشاندانی هەموو شوێنەکان</string>
+    <string name="menu_archive_chat">ئەرشیڤ کردنی وتووێژ</string>
+    <string name="menu_unarchive_chat">دەرهێنانی وتووێژ لە ئەرشیڤ</string>
+    <string name="menu_add_attachment">زیاد کردنی پێوەلکاو</string>
+    <string name="menu_leave_group">بەجێهێشتنی کۆڕ</string>
+    <string name="menu_delete_chat">سڕینەوەی وتووێژ</string>
+    <string name="ask_delete_named_chat">دڵنیایی دەتەوێت \"%1$s\" بسڕیتەوە؟</string>
+    <string name="menu_delete_messages">سڕینەوەی پەیامەکان</string>
+    <string name="menu_delete_image">سڕینەوەی وێنە</string>
+    <string name="delete_contact">سڕینەوەی بەردەنگ</string>
+    <string name="menu_delete_locations">هەموو شوێنەکان دەسڕیتەوە؟</string>
+    <string name="menu_delete_location">ئەم شوێنە دەسڕیتەوە؟</string>
+    <string name="menu_message_details">وردەکارییەکانی پەیامەکە</string>
+    <string name="menu_copy_to_clipboard">ڕوونووس کردن</string>
+    <string name="menu_copy_selection_to_clipboard">هەڵبژێردراوەکان ڕوونووس بکە</string>
+    <string name="menu_copy_link_to_clipboard">بەستەر کۆپی بکە</string>
+    <string name="paste_from_clipboard">ڕوونووسەکە بلکێنە</string>
+    <string name="menu_forward">هاوبەش کردنی پەیام</string>
+    <string name="menu_resend">دیسان پەیامەکە بنێرەوە</string>
+    <string name="menu_reply">وەڵام دانەوە بە پەیام</string>
+    <string name="menu_mute">بێدەنگ کردنی وریاکەرەوەکان</string>
+    <string name="menu_unmute">دەنگدار کردن</string>
+    <string name="menu_export_attachment">هەناردە کردنی پێوەلکاو</string>
+    <string name="menu_all_media">هەموو ڕەنگاڵەکان</string>
+    <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
+    <string name="show_in_chat">لە نێو وتووێژەکەدا پیشانی بدە</string>
+    <string name="menu_share">هاوبەش کردن</string>
+    <!-- this is the action "to block sth." usually a mailing list or a contact. this is NOT "a large solid piece of hard material" :) -->
+    <string name="block">ئاستەنگ کردن</string>
+    <string name="menu_block_contact">ئاستەنگ کردنی بەردەنگ</string>
+    <string name="menu_unblock_contact">لابردنی ئاستەنگ</string>
+    <string name="menu_play">خستنەسەر</string>
+    <string name="menu_pause">وەستان</string>
+    <string name="menu_scroll_to_bottom">ڕۆیشتن بەرەو خوار</string>
+    <string name="menu_scroll_to_top">ڕۆیشتن بەرەو ژوور</string>
+    <string name="menu_help">یارمەتی</string>
+    <string name="menu_select_all">هەمووی هەڵبژێرە</string>
+    <string name="select_more">هەڵبژاردنی زۆرتر</string>
+    <string name="menu_edit_name">دەستکاری ناو</string>
+    <string name="menu_settings">ڕێکخستنەکان</string>
+    <string name="menu_advanced">پێشکەوتوو</string>
+    <string name="menu_deaddrop">داواکاری پێوەندی</string>
+    <string name="menu_view_profile">دیتنی پرۆفایل</string>
+    <string name="edit_contact">دەستکاری بەردەنگ</string>
+    <!-- Translators: "Pin" here is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
+    <string name="pin_chat">دەرزیلەکردنی چات</string>
+    <!-- Translators: this is the opposite of "Pin chat", removing the sticky-state from a chat. -->
+    <string name="unpin_chat">لابردنی دەرزیلە</string>
+    <!-- Translators: this is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
+    <string name="pin">دەرزیلە بکە</string>
+    <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
+    <string name="unpin">دەرزیلە لابە</string>
+    <string name="ConversationFragment_quoted_message_not_found">پەیامە ڕەسەنەکە نەدۆزرایەوە</string>
+    <string name="mute_for_one_hour">بێدەنگ کردن بۆ ماوەی 1 کاتژمێر</string>
+    <string name="mute_for_two_hours">بێدەنگ کردن بۆ ماوەی 2 کاتژمێر</string>
+    <string name="mute_for_one_day">بێدەنگ کردن بۆ ماوەی 1 ڕۆژ</string>
+    <string name="mute_for_seven_days">بێدەنگ کردن بۆ ماوەی 7 ڕۆژ</string>
+    <string name="mute_forever">بێدەنگ کردن بۆ هەمیشە</string>
+
+    <string name="share_location_once">یەکجار</string>
+    <string name="share_location_for_5_minutes">بۆ ماوەی 5 خولەک</string>
+    <string name="share_location_for_30_minutes">بۆ ماوەی 30 خولەک</string>
+    <string name="share_location_for_one_hour">بۆ ماوەی 1 کاتژمێر</string>
+    <string name="share_location_for_two_hours">بۆ ماوەی 2 کاتژمێر</string>
+    <string name="share_location_for_six_hours">بۆ ماوەی 6 کاتژمێر</string>
+
+    <plurals name="ask_send_following_n_files_to">
+        <item quantity="one">ئەم پەڕگەیە دەنێریت بۆ %s؟</item>
+        <item quantity="other">ئەم %d پەڕگەیە دەنێریت بۆ %s؟</item>
+    </plurals>
+    <string name="file_saved_to">پەڕگەکە پاشەکەوت کرا لە \"%1$s\".</string>
+
+    <string name="videochat">وتووێژی ڤیدیۆیی</string>
+    <string name="videochat_invite_user_to_videochat">بانگهێشتی %1$s دەکەی بۆ وتووێژی ڤیدیۆیی؟</string>
+    <string name="videochat_contact_invited_hint">%1$s بانگێشت کرا بۆ وتووێژی ڤیدیۆیی.</string>
+    <string name="videochat_will_open_in_your_browser">ئەم وتووێژە ڤیدیۆییە لە نێو وێبگەڕەکەتدا دەکرێتەوە.</string>
+    <string name="videochat_tap_to_join">بۆ بەشدار بوون کرتە بکە.</string>
+    <string name="videochat_tap_to_open">بۆ کردنەوە کرتە بکە.</string>
+    <string name="videochat_instance">نموونەی وتووێژی ڤیدیۆیی</string>
+    <string name="videochat_instance_placeholder">نموونەی وتووێژی ڤیدیۆییەکەت</string>
+    <string name="videochat_invitation">بانگهێشتی وتووێژی ڤیدیۆیی</string>
+    <string name="videochat_invitation_body">تۆ بانگهێشت کراوی بۆ وتووێژێکی ڤیدیۆیی، بۆ بەشدار بوون لەسەر %1$s کرتە بکە.</string>
+
+    <!-- get confirmations -->
+    <string name="ask_leave_group">دڵنیایی دەتەوێت ئەم کۆڕە بەجێ بێڵیت؟</string>
+    <string name="ask_start_chat_with">وتووێژ لەگەڵ %1$s؟</string>
+    <string name="ask_delete_value">%sدەسڕیتەوە؟</string>
+    <!-- Translators: %1$s will be replaces by a comma separated list of names -->
+    <string name="ask_remove_members">%1$sلە کۆڕ دەخەیتەدەر؟</string>
+    <string name="open_url_confirmation">دەتەوێت ئەم بەستەرە بکەیتەوە؟</string>
+
+
+    <!-- contact list -->
+    <string name="contacts_title">بەردەنگەکان</string>
+    <string name="contacts_enter_name_or_email">ناو یان ئیمەیل بنووسە</string>
+    <string name="contacts_type_email_above">ئیمەیلەکە لە سەرەوە بنووسە</string>
+    <string name="contacts_empty_hint">هیچ بەردەنگێک نییە</string>
+
+
+    <!-- chatlist and chat view -->
+    <plurals name="chat_archived">
+        <item quantity="one">%dوتووێژ ئەرشیڤ کرا</item>
+        <item quantity="other">%d وتووێژ ئەرشیڤ کران</item>
+    </plurals>
+    <plurals name="chat_unarchived">
+        <item quantity="one">%d وتووێژ لە ئەرشیڤ دەرهێنرا</item>
+        <item quantity="other">%d وتووێژ لە ئەرشیڤ دەرهێنران</item>
+    </plurals>
+    <string name="chat_archived_chats_title">وتووێژە ئەرشیڤکراوەکان</string>
+    <string name="chat_please_enter_message">تکایە پەیامێک بنووسە</string>
+    <string name="chat_camera_unavailable">کامێرا بەردەست نییە</string>
+    <string name="chat_unable_to_record_audio">دەنگ تۆمار ناکرێ</string>
+    <plurals name="chat_n_new_messages">
+        <item quantity="one">%d پەیامی نوێ</item>
+        <item quantity="other">%d پەیامی نوێ</item>
+    </plurals>
+    <string name="chat_record_slide_to_cancel">بیخشێنە بۆ هەڵوەشاندنەوە</string>
+    <string name="chat_share_with_title">هاوبەش کردن لەگەڵ</string>
+    <string name="chat_input_placeholder">پەیام</string>
+    <string name="chat_no_messages">هیچ پەیامێک نییە</string>
+    <string name="chat_self_talk_subtitle">ئەوا پەیامانەی کە بۆ خۆمم هەناردووە</string>
+    <string name="saved_messages">پەیامە پاشەکەوت کراوەکان</string>
+    <!-- this "Saved" should match the "Saved" from "Saved messages" -->
+    <string name="saved">پاشەکەوت کرا</string>
+    <string name="retry_send">دیسان هەوڵ بدەوە بۆ هەناردنی پەیامەکە</string>
+    <string name="send_failed">پەیامەکە نەهەناردرا</string>
+    <!-- search -->
+    <string name="search">گەڕان</string>
+    <string name="search_explain">بگەڕە بۆ وتووێژەکان و بەردەنگەکان و پەیامەکان</string>
+    <string name="search_no_result_for_x">هیچ ئەنجامێک نەدۆزرایەوە بۆ \"%s\"</string>
+
+
+    <!-- create/edit groups, contact/group profile -->
+    <string name="group_name">ناوی کۆڕ</string>
+    <string name="group_avatar">وێنەی کۆڕ</string>
+    <string name="remove_group_image">سڕینەوەی وێنەی کۆڕ</string>
+    <string name="change_group_image">گۆڕینی ناوی کۆڕ</string>
+    <string name="group_create_button">کۆڕێک درووست بکە</string>
+    <string name="group_please_enter_group_name">تکایە ناوێک بنووسە بۆ کۆڕەکە.</string>
+    <string name="group_add_members">ئەندام زیاد بکە</string>
+    <string name="group_hello_draft">سڵاو، کۆڕی %1$s م درووست کرد بۆ خۆمان.</string>
+    <string name="group_self_not_in_group">بۆ ئەم کردارە دەبێت ئەندامی کۆڕەکە بیت.</string>
+    <string name="tab_group">کۆڕ</string>
+    <string name="tab_members">ئەندامان</string>
+    <string name="tab_gallery">پیشانگە</string>
+    <string name="tab_docs">بەڵگەکان</string>
+    <string name="tab_links">بەستەرەکان</string>
+    <string name="tab_map">نەخشە</string>
+    <string name="send_message">پەیام بنێرە</string>
+
+
+    <string name="login_title">بچۆ ژوورەوە</string>
+    <string name="login_header">بچۆ ژوورەوە بۆ سێرڤێرەکەی خۆت</string>
+    <string name="login_error_mail">تکایە ئیمەیلێکی ڕاست بنووسە</string>
+    <string name="import_backup_title">هاوردەکردنی یەدەک</string>
+    <string name="switch_account">گۆڕینی هەژمار</string>
+    <string name="add_account">زیادکردنی هەژمار</string>
+    <string name="delete_account">سڕینەوەی هەژمار</string>
+    <string name="delete_account_ask">دڵنیای دەتەوێت داتاکانی هەژمارەکەت بسڕیتەوە؟</string>
+    <string name="switching_account">گۆڕانی هەژمار...</string>
+    <string name="try_connect_now">هەوڵدان بۆ گرێدان</string>
+    <!-- share and forward messages -->
+    <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
+    <string name="forward_to">هەناردن بۆ...</string>
+    <string name="pref_profile_info_headline">زانیارییەکانی پرۆفایلەکەت</string>
+    <string name="pref_profile_photo">وێنەی لادیمەن</string>
+    <string name="pref_blocked_contacts">هەژمارە ئاستەنگکراوەکان</string>
+    <string name="blocked_empty_hint">ئەگەر هەژمارێک ئاستەنگ بکەیت، لێرەدا پیشان دەدرێت.</string>
+    <string name="pref_profile_photo_remove_ask">وێنەی لادیمەنەکەت دەسڕیتەوە؟</string>
+    <string name="pref_password_and_account_settings">هەژمار و تێپەڕوشە</string>
+    <string name="pref_your_name">ناو</string>
+    <string name="pref_vibrate">لەرزینەوە</string>
+    <string name="pref_notifications_show">پیشاندان</string>
+    <string name="pref_sound">دەنگ</string>
+    <string name="pref_silent">بێدەنگ</string>
+    <string name="pref_privacy">پاراستنی تاکەکەسی</string>
+    <string name="pref_chats_and_media">وتووێژ و ڕەنگاڵەکان</string>
+    <string name="pref_system_default">بنەڕەتی سیستەم</string>
+    <!-- Translators: "light" in the meaning "opposite of dark" -->
+    <string name="pref_light_theme">ڕووناک</string>
+    <string name="pref_dark_theme">تاریک</string>
+    <string name="pref_appearance">ڕوواڵەت</string>
+    <string name="pref_theme">ڕووکار</string>
+    <string name="pref_language">زمان</string>
+    <string name="pref_read_receipts">وەرگرنامەی خوێندنەوە</string>
+    <string name="pref_read_receipts_explain">ئەگەر \"وەرگرنامەی خوێندن\" ناچالاک بێت، ئیدی تۆش نایبینیت کە ئاخۆ کەسانی دی پەیامەکتیان خوێندووەتەوە یان نا.</string>
+    <string name="pref_use_system_emoji">بەکارهێنانی وێنۆچکەکانی سیستەم</string>
+    <string name="pref_communication">پێوەندی</string>
+    <string name="pref_chats">وتووێژەکان</string>
+    <string name="pref_message_text_size">قەبارەی فۆنتی پەیامەکان</string>
+    <string name="pref_other">کەسانی دی</string>
+    <string name="pref_background">پشتخان</string>
+    <string name="pref_background_btn_default">بەکارهێنانی وێنەی بنەڕەتی</string>
+    <string name="global_menu_preferences_language_desktop">زمان</string>
+    </resources>
