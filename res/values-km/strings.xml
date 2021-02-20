@@ -39,6 +39,12 @@
     <string name="profile">ពត៌មានផ្ទាល់ខ្លួន</string>
     <string name="main_menu">បញ្ជីដើម</string>
     <string name="start_chat">ចាប់ផ្តើមសន្ទនា</string>
+    <string name="show_full_message">បង្ហាញសារទាំងស្រុង…</string>
+    <string name="load_remote_content">ផ្ទុករូបភាពពីខាងក្រៅ</string>
+    <!-- possible answers to the question are: Never, Always, Once -->
+    <string name="load_remote_content_ask">រូបភាពពីខាងក្រៅអាចប្រើបានប្រើដើម្បីតាមដានអ្នក។\n\nការកំណត់នេះក៏អនុញ្ញាតឱ្យផ្ទុកពុម្ពអក្សរនិងមាតិកាផ្សេងទៀត។ ទោះបីជាវាត្រូវបានបិទក៏ដោយអ្នកនៅតែអាចមើលឃើញរូបភាពដែលបានបង្កប់ឬលាក់ទុក។\n\nផ្ទុករូបភាពពីខាងក្រៅ?</string>
+    <string name="always">ជារហូត</string>
+    <string name="once">ម្តង</string>
     <string name="show_password">បង្ហាញពាក្យសម្ងាត់</string>
     <string name="hide_password">លាក់ពាក្យសម្ងាត់</string>
     <string name="not_now">មិនឥឡូវនេះទេ</string>
@@ -101,6 +107,8 @@
     <string name="audio">សម្លេង</string>
     <string name="voice_message">សារជាសម្លេង</string>
     <string name="forwarded_message">សារដែលបានបញ្ជូនបន្ត</string>
+    <!-- %1$s will be replaced by the name or the email-address of the person who has forwarded the message -->
+    <string name="forwarded_by">បញ្ជូនបន្តពី %1$s</string>
     <string name="video">វីដេអូ</string>
     <string name="documents">ឯកសារ</string>
     <string name="contact">ទំនាក់ទំនង</string>
@@ -170,7 +178,11 @@
     <string name="menu_unmute">ចេញពីមិនឃើញមិនលឺ</string>
     <string name="menu_export_attachment">នាំចេញឯកសារភ្ជាប់</string>
     <string name="menu_all_media">ប្រព័ន្ធផ្សព្វផ្សាយទាំងអស់</string>
+    <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
+    <string name="show_in_chat">បង្ហាញនៅក្នុងសន្ទនា</string>
     <string name="menu_share">ចែករំលែក</string>
+    <!-- this is the action "to block sth." usually a mailing list or a contact. this is NOT "a large solid piece of hard material" :) -->
+    <string name="block">រារាំង</string>
     <string name="menu_block_contact">រារាំងទំនាក់ទំនង</string>
     <string name="menu_unblock_contact">មិនរារាំងទំនាក់ទំនង</string>
     <string name="menu_play">ចាក់</string>
@@ -179,6 +191,7 @@
     <string name="menu_scroll_to_top">រំកិលឡើងទៅលើ</string>
     <string name="menu_help">ជំនួយ</string>
     <string name="menu_select_all">ជ្រើសរើសទាំងអស់</string>
+    <string name="select_more">ជ្រើសរើសថែមទៀត</string>
     <string name="menu_expand">លាត</string>
     <string name="menu_edit_name">កែឈ្មោះ</string>
     <string name="menu_settings">ការកំណត់</string>
@@ -276,6 +289,7 @@
     <plurals name="chat_unarchived">
         <item quantity="other">បានយកចេញសារសន្ទនា %d ពីប័ណ្ណ</item>
     </plurals>
+    <string name="chat_archived_chats_title">ការសន្ទនាដែលបានទុកក្នុងប័ណ្ណសារ</string>
     <string name="chat_please_enter_message">សូមសរសេរសារមួយ។</string>
     <string name="chat_camera_unavailable">កាមេរ៉ាមិនអាចរកឃើញទេ។</string>
     <string name="chat_unable_to_record_audio">មិនអាចថតសំលេងបានទេ។</string>
@@ -308,6 +322,11 @@
     <string name="messaging_disabled_deaddrop">ចុចលើសារដើម្បីទទួលយក ឬបដិសេធស្នើសុំទំនាក់ទំនង។</string>
     <string name="cannot_display_unsuported_file_type">មិនអាចបង្ហាញប្រភេទឯកសារនេះ៖ %s</string>
     <string name="attachment_failed_to_load">បានបរាជ័យ ក្នុងការផ្ទុកឯកសារភ្ជាប់។</string>
+
+
+    <!-- mailing lists -->
+    <string name="mailing_list">អ៊ីម៉ែលការផ្សាយ</string>
+    <string name="ask_show_mailing_list">បង្ហាញសារអ៊ីម៉ែលការផ្សាយ \"%1$s\"?</string>
 
 
     <!-- map -->
@@ -371,6 +390,7 @@
     <string name="login_info_oauth2_title">បន្តជាមួយការដំឡើងសាមញ្ញ?</string>
     <string name="login_info_oauth2_text">អស័យដ្ឋានអុីម៉េលដែលបានបញ្ចូល គាំទ្រការដំឡើងសាមញ្ញ (OAuth 2.0)\n\nនៅជំហានបន្ទាប់ សូមអនុញ្ញាតឲ្យសាហារីសង្ឃ ដើរតួជាការសន្ទនារបស់អ្នកនៅលើកម្មវិធីអុីម៉េល។\n\nមិនមាន ម៉ាសុីនមេ សាហារីសង្ឃទេ។ ទិន្ន័យរបស់អ្នកស្ថិតនៅលើឧបករណ៍របស់អ្នក។</string>
     <string name="login_certificate_checks">ការត្រួតពិនិត្យលិខិតបញ្ជាក់</string>
+    <string name="login_error_mail">សូមបញ្ចូលអាស័យដ្ឋាន់អ៊ីមែលត្រឹមត្រូវ</string>
     <string name="login_error_server">សូមបញ្ចូលម៉ាសុីន ឬ IP អស័យដ្ឋាន ដែលសុពលភាព</string>
     <string name="login_error_port">សូមបញ្ចូលច្រកដែលសុពលភាព (1-65535)</string>
     <string name="login_error_required_fields">សូមបញ្ចូលអ៊ីម៉េលអាស័យដ្ឋាននិងពាក្យសម្ងាត់ដែលសុពលភាព។</string>
@@ -409,6 +429,7 @@
     <string name="pref_profile_info_headline">ពត៌មានទិន្នន័យផ្ទាល់ខ្លួនរបស់អ្នក</string>
     <string name="pref_profile_photo">រូបភាពទិន្ន័យផ្ទាល់ខ្លួន</string>
     <string name="pref_blocked_contacts">ទំនាក់ទំនងដែលបានរារាំង</string>
+    <string name="blocked_empty_hint">ប្រសិនបើអ្នករារាំងទំនាក់ទំ នងពួកទំនាក់ទំនងនេះនឹងត្រូវបានដាកបង្ហាញនៅទីនេះ។</string>
     <string name="pref_profile_photo_remove_ask">លុបរូបភាពទិន្ន័យផ្ទាល់ខ្លួន?</string>
     <string name="pref_password_and_account_settings">ពាក្យសម្ងាត់ និងគណនី</string>
     <string name="pref_who_can_see_profile_explain">រូបភាពទិន្ន័យផ្ទាល់ខ្លួនរបស់អ្នក និងឈ្មោះនឹងត្រូវបានបង្ហាញនៅក្បែរសាររបស់អ្នក នៅពេល ទនំាក់ទំនងជាមួយអ្នកប្រើប្រាស់ផ្សេងទៀត។ ដំណឹងដែលបានផ្ញើរួចមិនអាចលុបចោល ឬដកចេញបានទេ។</string>
@@ -440,6 +461,7 @@
     <string name="pref_silent">ស្ងាត់សម្លេង</string>
     <string name="pref_privacy">ភាពឯកជន</string>
     <string name="pref_chats_and_media">សន្ទនា និងប្រពន្ធ័សម្លេង</string>
+    <string name="pref_system_default">លំនាំដើមប្រព័ន្ធ</string>
     <!-- Translators: "light" in the meaning "opposite of dark" -->
     <string name="pref_light_theme">ពន្លឺ</string>
     <string name="pref_dark_theme">ងងឹត</string>
@@ -533,10 +555,13 @@
     <string name="autodel_at_once">នៅពេលតែមួយ</string>
     <string name="after_30_seconds">បន្ទាប់ពី ៣០វិនាទី</string>
     <string name="after_1_minute">បន្ទាប់ពី ១នាទី</string>
+    <string name="after_5_minutes">ក្រោយរយៈពេល៥នាទី</string>
+    <string name="after_30_minutes">ក្រោយរយៈពេល៣០នាទី</string>
     <string name="autodel_after_1_hour">បន្ទាប់ពី ១ម៉ោង</string>
     <string name="autodel_after_1_day">បន្ទាប់ពី ១ថ្ងៃ</string>
     <string name="autodel_after_1_week">បន្ទាប់ពី ១អាទិត្យ</string>
     <string name="autodel_after_4_weeks">បន្ទាប់ពី ៤អាទិត្យ</string>
+    <string name="after_5_weeks">ក្រោយរយៈពេល៣០៥សប្តាហ៍</string>
     <string name="autodel_after_1_year">បន្ទាប់ពី ១ឆ្នាំ</string>
 
     <!-- autocrypt -->
@@ -582,6 +607,11 @@
     <string name="systemmsg_ephemeral_timer_day">កម្មវិធីសារដែលនឹងបាត់បន្ទាប់ពីមួយរយៈបាន កំណត់ទៅ ១ថ្ងៃ។</string>
     <string name="systemmsg_ephemeral_timer_week">កម្មវិធីសារដែលនឹងបាត់បន្ទាប់ពីមួយរយៈបាន កំណត់ទៅ ១សប្តាហ៍។</string>
     <string name="systemmsg_ephemeral_timer_four_weeks">កម្មវិធីសារដែលនឹងបាត់បន្ទាប់ពីមួយរយៈបាន កំណត់ទៅ ៤សប្តាហ៍</string>
+    <string name="systemmsg_ephemeral_timer_minutes">កម្មវិធីសារដែលនឹងបាត់បន្ទាប់ពីមួយរយៈបាន កំណត់ទៅ %1$s នាទី។</string>
+    <string name="systemmsg_ephemeral_timer_hours">កម្មវិធីសារដែលនឹងបាត់បន្ទាប់ពីមួយរយៈបាន កំណត់ទៅ %1$s ម៉ោង។</string>
+    <string name="systemmsg_ephemeral_timer_days">កម្មវិធីសារដែលនឹងបាត់បន្ទាប់ពីមួយរយៈបាន កំណត់ទៅ %1$s ថ្ងៃ។</string>
+    <string name="systemmsg_ephemeral_timer_weeks">កម្មវិធីសារដែលនឹងបាត់បន្ទាប់ពីមួយរយៈបាន កំណត់ទៅ %1$s ថ្ងៃ។</string>
+
     <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
     <string name="systemmsg_chat_protection_disabled">ការការពារសន្ទនាត្រូវបានបិទ</string>
     <string name="systemmsg_chat_protection_enabled">ការការពារសន្ទនាត្រូវបានបើក</string>
