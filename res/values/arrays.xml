@@ -5,46 +5,46 @@
        ... some one has to clean up this mess some day ... -->
 
   <string-array name="language_entries">
-      <!--        English name:           Local name: -->
-      <!-- zz     -->                     <item>@string/def</item>
-      <!-- az     Azerbaijani -->         <item>Azeri</item>
-      <!-- in     Indonesian -->          <item>Bahasa Indonesia</item>
-      <!-- ca     Catalan -->             <item>Català</item>
-      <!-- da     Danish -->              <item>Dansk</item>
-      <!-- de     German -->              <item>Deutsch</item>
-      <!-- en     English -->             <item>English</item>
-      <!-- es     Spanish -->             <item>Español</item>
-      <!-- eo     Esperanto -->           <item>Esperanto</item>
-      <!-- eu     Basque -->              <item>Euskara</item>
-      <!-- fr     French -->              <item>Français</item>
-      <!-- gl     Galician -->            <item>Galego</item>
-      <!-- hr     Croatian -->            <item>Hrvatski</item>
-      <!-- it     Italian -->             <item>Italiano</item>
-      <!-- lt     Lithuanian -->          <item>Lietuvių kalba</item>
-      <!-- hu     Hungarian -->           <item>Magyar nyelv</item>
-      <!-- nl     Dutch -->               <item>Nederlands</item>
-      <!-- nb     Norwegian Bokmål -->    <item>Norsk Bokmål</item>
-      <!-- pl     Polish -->              <item>Polski</item>
-      <!-- pt     Portuguese -->          <item>Português</item>
-      <!-- pt_BR  Portuguese (Brazil) --> <item>Português do Brasil</item>
-      <!-- sc     Sardinian -->           <item>Sardu</item>
-      <!-- sq     Albanian -->            <item>Shqip</item>
-      <!-- sk     Slovak -->              <item>Slovenčina</item>
-      <!-- sv     Swedish -->             <item>Svenska</item>
-      <!-- tr     Turkish -->             <item>Türkçe</item>
-      <!-- ru     Russian -->             <item>Pусский</item>
-      <!-- sr     Serbian -->             <item>Српски</item>
-      <!-- uk     Ukranian -->            <item>Українська</item>
-      <!-- ar     Arabic -->              <item>عربى</item>
-      <!-- fa     Persian/Farsi -->       <item>فارسی</item>
-      <!-- ku     Kurdish -->             <item>کوردی</item>
-      <!-- ja     Japanese -->            <item>日本語</item>
-      <!-- ko     Korean -->              <item>한국어</item>
-      <!-- zh_CN  Chinese traditional --> <item>简体中文</item>
-      <!-- zh_TW  Chinese tr. (Taiwan)--> <item>繁體中文</item>
-      <!-- km     Khmer -->               <item>ភាសាខ្មែរ</item>
-      <!-- ta     Tamil -->               <item>தமிழ்</item>
-      <!-- te     Telugo -->              <item>తెలుగు</item>
+      <!--        English name:              Local name: -->
+      <!-- zz     -->                        <item>@string/def</item>
+      <!-- az     Azerbaijani -->            <item>Azeri</item>
+      <!-- in     Indonesian -->             <item>Bahasa Indonesia</item>
+      <!-- ca     Catalan -->                <item>Català</item>
+      <!-- da     Danish -->                 <item>Dansk</item>
+      <!-- de     German -->                 <item>Deutsch</item>
+      <!-- en     English -->                <item>English</item>
+      <!-- es     Spanish -->                <item>Español</item>
+      <!-- eo     Esperanto -->              <item>Esperanto</item>
+      <!-- eu     Basque -->                 <item>Euskara</item>
+      <!-- fr     French -->                 <item>Français</item>
+      <!-- gl     Galician -->               <item>Galego</item>
+      <!-- hr     Croatian -->               <item>Hrvatski</item>
+      <!-- it     Italian -->                <item>Italiano</item>
+      <!-- lt     Lithuanian -->             <item>Lietuvių kalba</item>
+      <!-- hu     Hungarian -->              <item>Magyar nyelv</item>
+      <!-- nl     Dutch -->                  <item>Nederlands</item>
+      <!-- nb     Norwegian Bokmål -->       <item>Norsk Bokmål</item>
+      <!-- pl     Polish -->                 <item>Polski</item>
+      <!-- pt     Portuguese -->             <item>Português</item>
+      <!-- pt_BR  Portuguese (Brazil) -->    <item>Português do Brasil</item>
+      <!-- sc     Sardinian -->              <item>Sardu</item>
+      <!-- sq     Albanian -->               <item>Shqip</item>
+      <!-- sk     Slovak -->                 <item>Slovenčina</item>
+      <!-- sv     Swedish -->                <item>Svenska</item>
+      <!-- tr     Turkish -->                <item>Türkçe</item>
+      <!-- ru     Russian -->                <item>Pусский</item>
+      <!-- sr     Serbian -->                <item>Српски</item>
+      <!-- uk     Ukranian -->               <item>Українська</item>
+      <!-- ar     Arabic -->                 <item>عربى</item>
+      <!-- fa     Persian/Farsi -->          <item>فارسی</item>
+      <!-- ckb    Central Kurdish/Sorani --> <item>سۆرانی</item>
+      <!-- ja     Japanese -->               <item>日本語</item>
+      <!-- ko     Korean -->                 <item>한국어</item>
+      <!-- zh_CN  Chinese traditional -->    <item>简体中文</item>
+      <!-- zh_TW  Chinese trad. (Taiwan) --> <item>繁體中文</item>
+      <!-- km     Khmer -->                  <item>ភាសាខ្មែរ</item>
+      <!-- ta     Tamil -->                  <item>தமிழ்</item>
+      <!-- te     Telugo -->                 <item>తెలుగు</item>
   </string-array>
 
   <string-array name="language_values">
@@ -79,7 +79,7 @@
       <item>uk</item>
       <item>ar</item>
       <item>fa</item>
-      <item>ku</item>
+      <item>ckb</item>
       <item>ja</item>
       <item>ko</item>
       <item>zh_CN</item>
