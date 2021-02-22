@@ -39,6 +39,12 @@
     <string name="profile">Профіль</string>
     <string name="main_menu">Головне меню</string>
     <string name="start_chat">Почати розмову</string>
+    <string name="show_full_message">Показати повне повідомлення...</string>
+    <string name="load_remote_content">Завантажувати віддалені зображення</string>
+    <!-- possible answers to the question are: Never, Always, Once -->
+    <string name="load_remote_content_ask">Віддалені зображення можна використовувати для слідкування за вами.\n\nЦе налаштування також дозволяє завантажувати шрифти та інший вміст. Навіть якщо воно вимкнене, ви можете побачити вбудовані або кешовані зображення.\n\nЗавантажувати віддалені зображення?</string>
+    <string name="always">Завжди</string>
+    <string name="once">Один раз</string>
     <string name="show_password">Показати пароль</string>
     <string name="hide_password">Приховати пароль</string>
     <string name="not_now">Не зараз</string>
@@ -119,6 +125,8 @@
     <string name="audio">Аудіо</string>
     <string name="voice_message">Голосове повідомлення</string>
     <string name="forwarded_message">Переслане повідомлення</string>
+    <!-- %1$s will be replaced by the name or the email-address of the person who has forwarded the message -->
+    <string name="forwarded_by">Переслано від %1$s</string>
     <string name="video">Відео</string>
     <string name="documents">Документи</string>
     <string name="contact">Контакт</string>
@@ -191,6 +199,8 @@
     <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
     <string name="show_in_chat">Показати в чаті</string>
     <string name="menu_share">Поділитися</string>
+    <!-- this is the action "to block sth." usually a mailing list or a contact. this is NOT "a large solid piece of hard material" :) -->
+    <string name="block">Заблокувати</string>
     <string name="menu_block_contact">Заблокувати контакт</string>
     <string name="menu_unblock_contact">Розблокувати контакт</string>
     <string name="menu_play">Грати</string>
@@ -348,6 +358,11 @@
     <string name="messaging_disabled_deaddrop">Клацніть на повідомлення, щоб прийняти або відхилити запит на контакт</string>
     <string name="cannot_display_unsuported_file_type">Неможливо відобразити цей тип файлів: %s</string>
     <string name="attachment_failed_to_load">Не вдалося завантажити вкладення</string>
+
+
+    <!-- mailing lists -->
+    <string name="mailing_list">Список адресатів</string>
+    <string name="ask_show_mailing_list">Показати список адресатів \"%1$s\"?</string>
 
 
     <!-- map -->
@@ -576,10 +591,13 @@
     <string name="autodel_at_once">Одразу</string>
     <string name="after_30_seconds">Через 30 секунд</string>
     <string name="after_1_minute">Через 1 хвилину</string>
+    <string name="after_5_minutes">Через 5 хвилин</string>
+    <string name="after_30_minutes">Через 30 хвилин</string>
     <string name="autodel_after_1_hour">Через 1 годину</string>
     <string name="autodel_after_1_day">Через 1 день</string>
     <string name="autodel_after_1_week">Через 1 тиждень</string>
     <string name="autodel_after_4_weeks">Через 4 тижні</string>
+    <string name="after_5_weeks">Через 5 тижнів</string>
     <string name="autodel_after_1_year">Через 1 рік</string>
 
     <!-- autocrypt -->
@@ -625,6 +643,11 @@
     <string name="systemmsg_ephemeral_timer_day">Таймер зникнення повідомлень встановлено на 1 день.</string>
     <string name="systemmsg_ephemeral_timer_week">Таймер зникнення повідомлень встановлено на 1 тиждень.</string>
     <string name="systemmsg_ephemeral_timer_four_weeks">Таймер зникнення повідомлень встановлено на 4 тижні.</string>
+    <string name="systemmsg_ephemeral_timer_minutes">Таймер повідомлень, що зникають встановлено на %1$s хвилин.</string>
+    <string name="systemmsg_ephemeral_timer_hours">Таймер повідомлень, що зникають встановлено на %1$s годин.</string>
+    <string name="systemmsg_ephemeral_timer_days">Таймер повідомлень, що зникають встановлено на %1$s днів.</string>
+    <string name="systemmsg_ephemeral_timer_weeks">Таймер повідомлень, що зникають встановлено на %1$s тижнів.</string>
+
     <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
     <string name="systemmsg_chat_protection_disabled">Захист чату вимкнено.</string>
     <string name="systemmsg_chat_protection_enabled">Захист чату увімкнено.</string>
