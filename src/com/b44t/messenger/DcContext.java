@@ -123,7 +123,6 @@ public class DcContext {
     public native boolean      mayBeValidAddr       (String addr);
     public native int          lookupContactIdByAddr(String addr);
     public native int[]        getContacts          (int flags, String query);
-    public native int          getBlockedCount      ();
     public native int[]        getBlockedContacts   ();
     public @NonNull DcContact  getContact           (int contact_id) { return new DcContact(getContactCPtr(contact_id)); }
     public native int          createContact        (String name, String addr);

@@ -296,12 +296,6 @@ JNIEXPORT jintArray Java_com_b44t_messenger_DcContext_getContacts(JNIEnv *env, j
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_DcContext_getBlockedCount(JNIEnv *env, jobject obj)
-{
-    return dc_get_blocked_cnt(get_dc_context(env, obj));
-}
-
-
 JNIEXPORT jintArray Java_com_b44t_messenger_DcContext_getBlockedContacts(JNIEnv *env, jobject obj)
 {
     dc_array_t* ca = dc_get_blocked_contacts(get_dc_context(env, obj));
