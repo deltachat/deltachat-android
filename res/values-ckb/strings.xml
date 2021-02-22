@@ -387,6 +387,8 @@
     <string name="login_info_oauth2_title">بە ڕێکخستنە ئاسانکراوەکەوە بەردەوام دەبیت؟</string>
     <string name="login_error_mail">تکایە ئیمەیلێکی ڕاست بنووسە</string>
     <string name="login_error_server">تکایە سێرڤەرێکی / شوێنەواری ئای پی ڕەوا بنووسە.</string>
+    <string name="login_error_port">تکایە پۆرتێکی (1-65535) درووست بنووسە</string>
+    <string name="login_error_required_fields">تکایە ئیمەیلێکی درووست و تێپەڕوشەیەک بنووسە</string>
     <string name="import_backup_title">هاوردەکردنی یەدەک</string>
     <string name="used_settings">ڕێکخستنە بەکارهێنراوەکان:</string>
     <string name="switch_account">گۆڕینی هەژمار</string>
@@ -414,10 +416,14 @@
     <string name="pref_outgoing_worse">نزمترین چۆنییەتی، قەبارەی بچووک</string>
     <string name="pref_vibrate">لەرزینەوە</string>
     <string name="pref_change_secret">گۆڕینی نهێنی</string>
+    <string name="pref_change_secret_explain">لەڕێگای ڕێکخستنەکانی سیستەمەوە، شفرە/نەخشاندن/پەنجەمۆر بگۆڕە  </string>
     <string name="pref_screen_security">پاراستنی شاشە</string>
     <string name="pref_notifications">ئاگادارییەکان</string>
     <string name="pref_notifications_show">پیشاندان</string>
     <string name="pref_notifications_priority">پێشترێتی</string>
+    <string name="pref_notifications_explain">وریاکەرەوەکانی سیستەم بۆ پەیامە نوێکان چالاک بکە</string>
+    <string name="pref_show_notification_content">دەقی پەیامەکە لەنێو وریاکەرەوەکاندا پیشان بدە</string>
+    <string name="pref_show_notification_content_explain">ناوی پەیامنێرەکە و وشە سەرەتاییەکانی دەقی پەیامەکە لەناو وریاکەرەوەکەدا پیشان بدە</string>
     <string name="pref_led_color">ڕەنگی چرای LED</string>
     <string name="pref_sound">دەنگ</string>
     <string name="pref_silent">بێدەنگ</string>
@@ -502,11 +508,18 @@
     <string name="autocrypt_asm_subject">پەیامی ڕێکخستنی ئۆتۆکریپت</string>
     <string name="autocrypt_continue_transfer_title">پەیامی ڕێکخستنی ئۆتۆکریپت</string>
     <string name="autocrypt_continue_transfer_retry">دیسان هەوڵدانەوە</string>
+    <!-- system messages -->
+    <string name="systemmsg_group_name_changed">ناوی کۆڕ لە \"%1$s\" گۆڕا بۆ \"%2$s\".</string>
     <string name="systemmsg_group_image_changed">وێنەی کۆڕ گۆڕا.</string>
     <string name="systemmsg_group_image_deleted">وێنەی کۆڕ سڕاوە.</string>
     <string name="systemmsg_member_added">%1$s زیاد کرا بە کۆڕ.</string>
     <string name="systemmsg_member_removed">ئەندامی %1$s سڕدرایەوە.</string>
     <string name="systemmsg_read_receipt_subject">پەیامەکە کرایەوە</string>
+    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). -->
+    <string name="systemmsg_action_by_me">%1$s لەلایەن منەوە.</string>
+    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
+    <string name="systemmsg_action_by_user">%1$s لەلایەن %2$s.</string>
+    <string name="systemmsg_unknown_sender_for_chat">پەیامنێری ئەم وتووێژە نەناسراوە. بۆ وردەکاری زۆرتر سەیری \'زانیارییەکان\' بکە.</string>
     <string name="systemmsg_subject_for_new_contact">پەیام لەلایەن %1$s</string>
     <string name="systemmsg_failed_sending_to">هەناردنی پەیام بۆ %1$s سەرنەکەوت</string>
 
@@ -532,7 +545,13 @@
     <string name="screenlock_unlock_title">کردنەوەی قفڵی دێڵتا چات</string>
     <!-- qr code stuff -->
     <string name="qr_code">کۆدی QR</string>
+    <string name="load_qr_code_as_image">کۆدی QR وەکوو وێنەیەک بار بکە.</string>
+    <string name="qrscan_title">سکان کردنی کۆدی QR</string>
+    <string name="qrscan_hint">کامێراکەت لەسەر کۆدی QRەکە ڕابگرە.</string>
+    <string name="qrscan_failed">کۆدی QR نەخوێندرایەوە.</string>
     <string name="qrscan_ask_join_group">دەتوێت بەشداری کۆڕی \"%1$s\" ببیت؟</string>
+    <string name="qrscan_contains_text">دەقی کۆدی QRە سکانکراوەکە:\n\n%1$s</string>
+    <string name="qrscan_contains_url">ناونیشانی وێبی کۆدی QRە سکانکراوەکە:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">پەنجەمۆر</string>
     <string name="qrshow_title">کۆدی QRی بانگهێشت کردن</string>
     <string name="qrshow_x_joining">%1$s بەشداربوو</string>
@@ -542,13 +561,22 @@
     <string name="qrshow_join_group_hint">بۆ بەشداربوون لە کۆڕ ئەمە سکان بکە: \"%1$s\"</string>
     <string name="qrshow_join_contact_title">کۆدی QRی بانگهێشت کردن</string>
     <string name="qrshow_join_contact_hint">بۆ ڕێکخستنی پێوەندی لەگەڵ %1$s، ئەم کۆدە سکان بکە. </string>
+    <string name="qrshow_join_contact_no_connection_toast">هێڵی ئینتەرنێت بەردەست نییە، ڕێکخستنی کۆدی QR جێبەجێ ناکرێ.</string>
+    <string name="qraccount_ask_create_and_login">دەتەوێت ناونیشانی ئیمەیلێکی نوێ لەسەر \"%1$s\" درووست بکەیت و لەوێ بچیتە ژوورەوە؟</string>
     <string name="contact_verified">%1$s پشتڕاست کرایەوە</string>
     <string name="contact_not_verified">%1$s پشتڕاست ناکرێتەوە.</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">ڕێکخستن بۆ %1$s گۆڕا.</string>
+    <string name="copy_qr_data_success">ناونیشانی وێبی QRەکە ڕوونووس کرا.</string>
+
+
+    <!-- notifications  -->
+    <string name="notify_n_messages_in_m_chats">%1$d پەیامی نوێ لە %2$d وتووێژدا</string>
     <string name="notify_mark_read">نیشانەی خوێندنەوە</string>
     <string name="notify_reply_button">وەڵام دانەوە</string>
     <string name="notify_new_message">پەیامی نوێ</string>
+    <string name="notify_background_connection_enabled">پەیوەندی پشتخان چالاک کرا</string>
+    <string name="notify_priority_high">زۆر</string>
     <string name="notify_priority_max">زۆرترین</string>
     <string name="notify_name_and_message">ناو و پەیام</string>
     <string name="notify_name_only">بەس ناو</string>
@@ -562,6 +590,7 @@
     <string name="encrypted_message">پەیامی شفرەکراو</string>
 
     <string name="welcome_desktop">بەخێر بێن بۆ دێڵتا چات</string>
+    <string name="login_known_accounts_title_desktop">هەژمارە ناسراوەکان</string>
     <string name="global_menu_preferences_language_desktop">زمان</string>
     <string name="global_menu_file_desktop">پەڕگە</string>
     <string name="global_menu_file_quit_desktop">چوونەدەرەوە</string>
@@ -584,6 +613,7 @@
     <string name="delete_message_desktop">سڕینەوەی پەیام</string>
     <string name="more_info_desktop">زانیاری زۆرتر</string>
     <string name="logout_desktop">چوونەدەرەوە</string>
+    <string name="verified_desktop">پشتڕاستکراوە</string>
     <string name="remove_desktop">سڕینەوە</string>
     <string name="save_desktop">پاشەکەوت کردن</string>
     <string name="add_contact_desktop">زیادکردنی بەردەنگ</string>
@@ -593,8 +623,10 @@
     <string name="reply_to_message_desktop">وەڵامی ئەو پەیامە بدەوە</string>
     <string name="select_group_image_desktop">هەڵبژاردنی وێنەی گرووپ</string>
     <string name="download_attachment_desktop">داگرتنی پێوەلکاو</string>
+    <string name="export_backup_desktop">هەناردەکردنی یەدەک</string>
     <string name="new_message_from_desktop">پەیامی نوێ لەلایەن</string>
     <string name="unblock_contacts_desktop">لابردنی ئاستەنگی بەردەنگەکان</string>
+    <string name="none_blocked_desktop">تا ئێستا هیچ بەردەنگێک ئاستەنگ نەکراوە</string>
     <string name="create_chat_error_desktop">وتووێژەکە ڕێک نەخرا.</string>
     <string name="ask_delete_chat_desktop">ئەم وتووێژە دەسڕیتەوە؟</string>
     <string name="email_validation_failed_desktop">ناونیشانی ئیمەیل پێویستە</string>
@@ -612,8 +644,17 @@
     <string name="a11y_delivery_status_read">دۆخی گەیشتن: خوێندرایەوە</string>
     <string name="a11y_delivery_status_invalid">دۆخی گەیشتن ناڕەوایە</string>
     <string name="a11y_message_context_menu_btn_label">چالاکییەکانی پەیام</string>
+    <string name="a11y_disappearing_messages_activated">پەیامە خۆشارەوەکان چالاک کرا</string>
+
+
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">دێڵتا چات بۆ گرتن و هەناردنی وێنە و فلیم و سکان کردنی کۆدی QR، کامێراکەت بەکاردەهێنێت.</string>
+    <string name="InfoPlist_NSMicrophoneUsageDescription">دێڵتا چات بۆ تۆمار کردن و هەناردنی دەنگ و هەروەها ڤیدیۆی دەنگدار، مایکەکەت بەکاردەهێنێت.</string>
+    <string name="InfoPlist_NSPhotoLibraryUsageDescription">دێڵتا چات ڕێگە دەدات خۆت هەڵیبژێری کە کام وێنە لە پیشانگاکەتەوە بنێردرێت.</string>
+    <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">دێڵتا چات دەیەوێت وێنە پاشەکەوت بکاتە نێو پیشانگاکەت.</string>
+
+
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="pref_background_notifications">وریاکەرەوەکانی پشتخان</string>
+    <string name="perm_enable_bg_reminder_title">بۆ وەرگرتنی پەیامەکان لەو کاتانەدا کە دێڵتا چات لە پشتخانەوەیە، لێرە کرتە بکە.</string>
     </resources>
