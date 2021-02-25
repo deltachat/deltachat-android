@@ -400,6 +400,8 @@
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">هەناردن بۆ...</string>
+    <string name="share_multiple_attachments">%1$dپەڕگە دەنێریت بە ئەو وتووێژە؟n\n فایلەکان بەبێ دەستکاری و هەر بە قەبارەی خۆیانەوە دەنێردرێن. بۆنموونە، وێنە و ڤیدیۆکان دیسان شفرە ناکرێنەوە.</string>
+    <string name="share_text_multiple_chats">ئەم دەقە دەنێریت بۆ %1$d وتووێژ؟n\n\"%2$s\"</string>
     <!-- preferences -->
     <string name="pref_using_custom">بەکارهێنانی دڵخواز: %s</string>
     <string name="pref_using_default">بەکارهێنانی بنەڕەتی: %s</string>
@@ -523,17 +525,17 @@
     <string name="systemmsg_subject_for_new_contact">پەیام لەلایەن %1$s</string>
     <string name="systemmsg_failed_sending_to">هەناردنی پەیام بۆ %1$s سەرنەکەوت</string>
 
-    <string name="systemmsg_ephemeral_timer_disabled">کاتژمێری پەیامە خۆشارەوەکان ناچالاک کرا.</string>
-    <string name="systemmsg_ephemeral_timer_enabled">کاتژمێری پەیام خۆشارەوەکان لەسەر %1$s چرکە ڕێکخرا.</string>
-    <string name="systemmsg_ephemeral_timer_minute">کاتژمێری پەیام خۆشارەوەکان لەسەر 1  خولەک ڕێکخرا.</string>
-    <string name="systemmsg_ephemeral_timer_hour">کاتژمێری پەیام خۆشارەوەکان لەسەر 1 سەعات ڕێکخرا.</string>
-    <string name="systemmsg_ephemeral_timer_day">کاتژمێری پەیام خۆشارەوەکان لەسەر 1 ڕۆژ ڕێکخرا.</string>
-    <string name="systemmsg_ephemeral_timer_week">کاتژمێری پەیام خۆشارەوەکان لەسەر 1 حەوتە ڕێکخرا.</string>
-    <string name="systemmsg_ephemeral_timer_four_weeks">کاتژمێری پەیام خۆشارەوەکان لەسەر 4 ڕۆژ ڕێکخرا.</string>
-    <string name="systemmsg_ephemeral_timer_minutes">کاتژمێری پەیام خۆشارەوەکان لەسەر%1$s خولەک ڕێکخرا.</string>
-    <string name="systemmsg_ephemeral_timer_hours">کاتژمێری پەیام خۆشارەوەکان لەسەر %1$s سەعات ڕێکخرا.</string>
-    <string name="systemmsg_ephemeral_timer_days">کاتژمێری پەیام خۆشارەوەکان لەسەر %1$s ڕۆژ ڕێکخرا.</string>
-    <string name="systemmsg_ephemeral_timer_weeks">کاتژمێری پەیام خۆشارەوەکان لەسەر %1$s حەوتە ڕێکخرا.</string>
+    <string name="systemmsg_ephemeral_timer_disabled">دەمژمێری پەیامە خۆشارەوەکان ناچالاک کرا.</string>
+    <string name="systemmsg_ephemeral_timer_enabled">دەمژمێری پەیام خۆشارەوەکان لەسەر %1$s چرکە ڕێکخرا.</string>
+    <string name="systemmsg_ephemeral_timer_minute">دەمژمێری پەیام خۆشارەوەکان لەسەر 1  خولەک ڕێکخرا.</string>
+    <string name="systemmsg_ephemeral_timer_hour">دەمژمێری پەیام خۆشارەوەکان لەسەر 1 سەعات ڕێکخرا.</string>
+    <string name="systemmsg_ephemeral_timer_day">دەمژمێری پەیام خۆشارەوەکان لەسەر 1 ڕۆژ ڕێکخرا.</string>
+    <string name="systemmsg_ephemeral_timer_week">دەمژمێری پەیام خۆشارەوەکان لەسەر 1 حەوتە ڕێکخرا.</string>
+    <string name="systemmsg_ephemeral_timer_four_weeks">دەمژمێری پەیام خۆشارەوەکان لەسەر 4 ڕۆژ ڕێکخرا.</string>
+    <string name="systemmsg_ephemeral_timer_minutes">دەمژمێری پەیام خۆشارەوەکان لەسەر%1$s خولەک ڕێکخرا.</string>
+    <string name="systemmsg_ephemeral_timer_hours">دەمژمێری پەیام خۆشارەوەکان لەسەر %1$s سەعات ڕێکخرا.</string>
+    <string name="systemmsg_ephemeral_timer_days">دەمژمێری پەیام خۆشارەوەکان لەسەر %1$s ڕۆژ ڕێکخرا.</string>
+    <string name="systemmsg_ephemeral_timer_weeks">دەمژمێری پەیام خۆشارەوەکان لەسەر %1$s حەوتە ڕێکخرا.</string>
 
     <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
     <string name="systemmsg_chat_protection_disabled">پاراستنی وتووێژ ناچالاک کرا.</string>
@@ -586,9 +588,16 @@
     <!-- permissions -->
     <string name="perm_required_title">ڕێدان پێویستە</string>
     <string name="perm_continue">بەردەوامبوون</string>
+    <string name="perm_explain_access_to_camera_denied">بۆ فلیم و وێنە گرتن، بچۆ بەشی ڕێکخستنەکانی نەرمامێرەکە، لە بەشی \"ڕێگەپێدان\"دا، \"کامێرا\" چالاک بکەوە.</string>
+    <string name="perm_explain_access_to_mic_denied">بۆ هەناردنی پەیامی دەنگی، بچۆ بەشی ڕێکخستنەکانی نەرمامێرەکە، لە بەشی \"ڕێگەپێدان\"دا، \"مایک\" چالاک بکەوە.</string>
+    <string name="perm_explain_access_to_storage_denied">بۆ هەناردن و وەرگرتنی پەڕگەکان، بچۆ بەشی ڕێکخستنەکانی نەرمامێرەکە، لە بەشی \"ڕێگەپێدان\"دا، \"بیرگە\" چالاک بکەوە.</string>
+    <string name="perm_explain_access_to_location_denied">بۆ لکاندنی شوێنێک، بچۆ بەشی ڕێکخستنەکانی نەرمامێرەکە، لە بەشی \"ڕێگەپێدان\"دا، \"شوێن\" چالاک بکەوە.</string>
+
     <!-- dc_str_* resources -->
     <string name="encrypted_message">پەیامی شفرەکراو</string>
 
+    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
+    <string name="about_offical_app_desktop">ئەمە نەرمامێری فەرمی دێڵتا چاتە بۆ کۆمپووتەری ڕوومێز.</string>
     <string name="welcome_desktop">بەخێر بێن بۆ دێڵتا چات</string>
     <string name="login_known_accounts_title_desktop">هەژمارە ناسراوەکان</string>
     <string name="global_menu_preferences_language_desktop">زمان</string>
@@ -622,6 +631,7 @@
     <string name="autocrypt_key_transfer_desktop">گواستنەوەی کلیلی ئۆتۆکریپت</string>
     <string name="reply_to_message_desktop">وەڵامی ئەو پەیامە بدەوە</string>
     <string name="select_group_image_desktop">هەڵبژاردنی وێنەی گرووپ</string>
+    <string name="imex_progress_title_desktop">پرۆسەی یەدەک هەڵگرتن</string>
     <string name="download_attachment_desktop">داگرتنی پێوەلکاو</string>
     <string name="export_backup_desktop">هەناردەکردنی یەدەک</string>
     <string name="new_message_from_desktop">پەیامی نوێ لەلایەن</string>
@@ -649,6 +659,7 @@
 
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">دێڵتا چات بۆ گرتن و هەناردنی وێنە و فلیم و سکان کردنی کۆدی QR، کامێراکەت بەکاردەهێنێت.</string>
+    <string name="InfoPlist_NSContactsUsageDescription">دێڵتا چات لە بەردەنگەکانت کەڵک دەگرێت بۆ ئەوەی لیستەیەک لە ئیمەیلەکانت پیشان بدات کە دەتوانیت نامەیان بۆ بنێریت. دێڵتا چات هیچ سێرڤەرێکی نییە و بەردەنگەکانت بۆ هیچ کوێ نانێردرێن.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">دێڵتا چات بۆ تۆمار کردن و هەناردنی دەنگ و هەروەها ڤیدیۆی دەنگدار، مایکەکەت بەکاردەهێنێت.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">دێڵتا چات ڕێگە دەدات خۆت هەڵیبژێری کە کام وێنە لە پیشانگاکەتەوە بنێردرێت.</string>
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">دێڵتا چات دەیەوێت وێنە پاشەکەوت بکاتە نێو پیشانگاکەت.</string>
@@ -656,5 +667,7 @@
 
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="pref_background_notifications">وریاکەرەوەکانی پشتخان</string>
+    <string name="pref_reliable_service_explain">وریاکەرەوەیەکی هەمیشەیی پێویستە</string>
     <string name="perm_enable_bg_reminder_title">بۆ وەرگرتنی پەیامەکان لەو کاتانەدا کە دێڵتا چات لە پشتخانەوەیە، لێرە کرتە بکە.</string>
+    <string name="perm_enable_bg_already_done">تۆ ئێستا ڕێگەت بە دێڵتا چات دا کە لە پشتخانەوە پەیامەکان وەربگرێت.\n\n ئەگەر هێشتا لە پشخاندا پەیامەکان نایەن، سەرنجێکیش لە ڕێکخستنەکانی سیستەم بدەوە.</string>
     </resources>
