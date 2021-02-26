@@ -149,7 +149,7 @@
     <string name="menu_new_contact">بەردەنگی نوێ</string>
     <string name="menu_new_chat">وتووێژی نوێ</string>
     <string name="menu_new_group">گرووپی نوێ</string>
-    <string name="menu_new_verified_group">گرووپی پشتڕاست کراوەی نوێ</string>
+    <string name="menu_new_verified_group">گرووپی پشتڕاستکراوەی نوێ</string>
     <string name="menu_send">بینێرە</string>
     <string name="menu_edit_group">دەستکاری کۆڕ</string>
     <string name="menu_group_name_and_image">ناو و وێنەی کۆڕ</string>
@@ -196,7 +196,7 @@
     <string name="menu_edit_name">دەستکاری ناو</string>
     <string name="menu_settings">ڕێکخستنەکان</string>
     <string name="menu_advanced">پێشکەوتوو</string>
-    <string name="menu_deaddrop">داواکاری پێوەندی</string>
+    <string name="menu_deaddrop">داواکارییەکان بۆ پەیوەندی</string>
     <string name="menu_deaddrop_subtitle">بۆ دەستپێکردنی وتووێژ، لەسەر پەیامەکە کرتە بکە</string>
     <string name="menu_view_profile">دیتنی پرۆفایل</string>
     <string name="menu_zoom_in">نێزیک کردنەوە</string>
@@ -414,8 +414,11 @@
     <string name="pref_your_name">ناو</string>
     <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
     <string name="pref_default_status_label">دەقی واژۆ</string>
-    <string name="pref_outgoing_media_quality">چۆنییەتی ڕەنگاڵە هەناردنییەکان</string>
-    <string name="pref_outgoing_worse">نزمترین چۆنییەتی، قەبارەی بچووک</string>
+    <string name="pref_enter_sends">کلیلی \"ئینتەر\" بنێرێت</string>
+    <string name="pref_enter_sends_explain">دەستنان بە کلیلی \"ئینتەر\"دا، پەیامەکان دەنێرێت</string>
+    <string name="pref_outgoing_media_quality">چۆنێتی ڕەنگاڵە هەناردنییەکان</string>
+    <string name="pref_outgoing_balanced">وەکوو خۆی</string>
+    <string name="pref_outgoing_worse">نزمترین چۆنێتی، قەبارەی بچووک</string>
     <string name="pref_vibrate">لەرزینەوە</string>
     <string name="pref_change_secret">گۆڕینی نهێنی</string>
     <string name="pref_change_secret_explain">لەڕێگای ڕێکخستنەکانی سیستەمەوە، شفرە/نەخشاندن/پەنجەمۆر بگۆڕە  </string>
@@ -439,7 +442,7 @@
     <string name="pref_theme">ڕووکار</string>
     <string name="pref_language">زمان</string>
     <string name="pref_read_receipts">وەرگرنامەی خوێندنەوە</string>
-    <string name="pref_read_receipts_explain">ئەگەر \"وەرگرنامەی خوێندن\" ناچالاک بێت، ئیدی تۆش نایبینیت کە ئاخۆ کەسانی دی پەیامەکتیان خوێندووەتەوە یان نا.</string>
+    <string name="pref_read_receipts_explain">ئەگەر \"وەرگرنامەی خوێندن\" ناچالاک بێت، ئیدی تۆش نایبینیت کە ئاخۆ کەسانی دی پەیامەکەتیان خوێندووەتەوە یان نا.</string>
     <string name="pref_use_system_emoji">بەکارهێنانی وێنۆچکەکانی سیستەم</string>
     <string name="pref_communication">پێوەندی</string>
     <string name="pref_chats">وتووێژەکان</string>
