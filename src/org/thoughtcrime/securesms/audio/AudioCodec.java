@@ -23,23 +23,27 @@ public class AudioCodec {
 
   private static final String TAG = AudioCodec.class.getSimpleName();
 
-  private static final int    SAMPLE_RATE       = 8000;
-  private static final int    SAMPLE_RATE_INDEX = 11;
+  private static final int    SAMPLE_RATE_BALANCED = 44100;
+  private static final int    SAMPLE_RATE_WORSE = 8000;
+  private static final int    SAMPLE_RATE_INDEX_BALANCED = 4;
+  private static final int    SAMPLE_RATE_INDEX_WORSE = 11;
   private static final int    CHANNELS          = 1;
   private static final int    BIT_RATE_BALANCED = 24000;
-  private static final int    BIT_RATE_WORSE    = 8000;
+  private static final int    BIT_RATE_WORSE    = 4000;
 
   private final int         bufferSize;
   private final MediaCodec  mediaCodec;
   private final AudioRecord audioRecord;
+  private final Context context;
 
   private boolean running  = true;
   private boolean finished = false;
 
   public AudioCodec(Context context) throws IOException {
-    this.bufferSize  = AudioRecord.getMinBufferSize(SAMPLE_RATE, AudioFormat.CHANNEL_IN_MONO, AudioFormat.ENCODING_PCM_16BIT);
+      this.context = context;
+      this.bufferSize  = AudioRecord.getMinBufferSize(getSampleRate(), AudioFormat.CHANNEL_IN_MONO, AudioFormat.ENCODING_PCM_16BIT);
     this.audioRecord = createAudioRecord(this.bufferSize);
-    this.mediaCodec  = createMediaCodec(context, this.bufferSize);
+    this.mediaCodec  = createMediaCodec(this.bufferSize);
 
     this.mediaCodec.start();
 
@@ -160,7 +164,7 @@ public class AudioCodec {
     adtsHeader[0]  = (byte) 0xFF; // Sync Word
     adtsHeader[1]  = (byte) 0xF1; // MPEG-4, Layer (0), No CRC
     adtsHeader[2]  = (byte) ((MediaCodecInfo.CodecProfileLevel.AACObjectLC - 1) << 6);
-    adtsHeader[2] |= (((byte) SAMPLE_RATE_INDEX) << 2);
+    adtsHeader[2] |= (((byte) getSampleRateIndex()) << 2);
     adtsHeader[2] |= (((byte) CHANNELS) >> 2);
     adtsHeader[3]  = (byte) (((CHANNELS & 3) << 6) | ((frameLength >> 11) & 0x03));
     adtsHeader[4]  = (byte) ((frameLength >> 3) & 0xFF);
@@ -171,20 +175,20 @@ public class AudioCodec {
   }
 
   private AudioRecord createAudioRecord(int bufferSize) {
-    return new AudioRecord(MediaRecorder.AudioSource.MIC, SAMPLE_RATE,
+    return new AudioRecord(MediaRecorder.AudioSource.MIC, getSampleRate(),
                            AudioFormat.CHANNEL_IN_MONO,
                            AudioFormat.ENCODING_PCM_16BIT, bufferSize * 10);
   }
 
-  private MediaCodec createMediaCodec(Context context, int bufferSize) throws IOException {
+  private MediaCodec createMediaCodec(int bufferSize) throws IOException {
     MediaCodec  mediaCodec  = MediaCodec.createEncoderByType("audio/mp4a-latm");
     MediaFormat mediaFormat = new MediaFormat();
 
     mediaFormat.setString(MediaFormat.KEY_MIME, "audio/mp4a-latm");
-    mediaFormat.setInteger(MediaFormat.KEY_SAMPLE_RATE, SAMPLE_RATE);
+    mediaFormat.setInteger(MediaFormat.KEY_SAMPLE_RATE, getSampleRate());
     mediaFormat.setInteger(MediaFormat.KEY_CHANNEL_COUNT, CHANNELS);
     mediaFormat.setInteger(MediaFormat.KEY_MAX_INPUT_SIZE, bufferSize);
-    mediaFormat.setInteger(MediaFormat.KEY_BIT_RATE, Prefs.isHardCompressionEnabled(context)? BIT_RATE_WORSE : BIT_RATE_BALANCED);
+    mediaFormat.setInteger(MediaFormat.KEY_BIT_RATE, getBitRate());
     mediaFormat.setInteger(MediaFormat.KEY_AAC_PROFILE, MediaCodecInfo.CodecProfileLevel.AACObjectLC);
 
     try {
@@ -196,6 +200,18 @@ public class AudioCodec {
     }
 
     return mediaCodec;
+  }
+
+  private int getSampleRate() {
+    return Prefs.isHardCompressionEnabled(context)? SAMPLE_RATE_WORSE : SAMPLE_RATE_BALANCED;
+  }
+
+  private int getSampleRateIndex() {
+    return Prefs.isHardCompressionEnabled(context)? SAMPLE_RATE_INDEX_WORSE : SAMPLE_RATE_INDEX_BALANCED;
+  }
+
+  private int getBitRate() {
+    return Prefs.isHardCompressionEnabled(context)? BIT_RATE_WORSE : BIT_RATE_BALANCED;
   }
 
 }
