@@ -120,6 +120,7 @@ public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceF
     progressDialog.show();
 
     imexDir = dcContext.getImexDir().getAbsolutePath();
+    dcContext.stopIo();
     dcContext.captureNextError();
     dcContext.imex(progressWhat, imexDir);
   }
@@ -130,6 +131,7 @@ public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceF
       long progress = event.getData1Int();
       if (progress==0/*error/aborted*/) {
         dcContext.endCaptureNextError();
+        dcContext.maybeStartIo();
         progressDialog.dismiss();
         progressDialog = null;
         if (dcContext.hasCapturedError()) {
@@ -149,6 +151,7 @@ public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceF
       }
       else if (progress==1000/*done*/) {
         dcContext.endCaptureNextError();
+        dcContext.maybeStartIo();
         progressDialog.dismiss();
         progressDialog = null;
         notificationController.close();
