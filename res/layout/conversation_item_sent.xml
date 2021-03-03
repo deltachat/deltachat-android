@@ -97,6 +97,12 @@
                 android:layout="@layout/conversation_item_sent_thumbnail" />
 
             <ViewStub
+		android:id="@+id/sticker_view_stub"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout="@layout/conversation_item_received_sticker" />
+
+            <ViewStub
                 android:id="@+id/audio_view_stub"
                 android:layout="@layout/conversation_item_sent_audio"
                 android:layout_width="210dp"
@@ -159,6 +165,19 @@
                 android:clipChildren="false"
                 android:clipToPadding="false"
                 app:footer_text_color="?attr/conversation_item_outgoing_text_secondary_color"/>
+
+        <org.thoughtcrime.securesms.components.ConversationItemFooter
+            android:id="@+id/conversation_item_sticker_footer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/message_bubble_horizontal_padding"
+            android:layout_marginRight="@dimen/message_bubble_horizontal_padding"
+            android:layout_marginBottom="@dimen/message_bubble_bottom_padding"
+            android:layout_gravity="end"
+            android:gravity="end"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            app:footer_text_color="@color/gray50"/>
 
         </LinearLayout>
 

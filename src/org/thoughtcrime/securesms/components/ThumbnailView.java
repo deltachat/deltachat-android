@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
+import com.bumptech.glide.load.resource.bitmap.FitCenter;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 
 import org.thoughtcrime.securesms.R;
@@ -55,6 +56,7 @@ public class ThumbnailView extends FrameLayout {
 
   private SlideClickListener            thumbnailClickListener = null;
   private Slide                         slide                  = null;
+  private BitmapTransformation          fit                    = new CenterCrop();
 
   private int radius;
 
@@ -82,6 +84,7 @@ public class ThumbnailView extends FrameLayout {
       bounds[MIN_HEIGHT] = typedArray.getDimensionPixelSize(R.styleable.ThumbnailView_minHeight, 0);
       bounds[MAX_HEIGHT] = typedArray.getDimensionPixelSize(R.styleable.ThumbnailView_maxHeight, 0);
       radius             = typedArray.getDimensionPixelSize(R.styleable.ThumbnailView_thumbnail_radius, getResources().getDimensionPixelSize(R.dimen.gallery_thumbnail_radius));
+      fit                = typedArray.getInt(R.styleable.ThumbnailView_thumbnail_fit, 0) == 1 ? new FitCenter() : new CenterCrop();
       typedArray.recycle();
     } else {
       radius = getResources().getDimensionPixelSize(R.dimen.gallery_thumbnail_radius);
@@ -268,7 +271,7 @@ public class ThumbnailView extends FrameLayout {
           protected void onPostExecute(Boolean success) {
             GlideRequest request = applySizing(glideRequests.load(new DecryptableUri(thumbnailUri))
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
-                .transition(withCrossFade()), new CenterCrop());
+                .transition(withCrossFade()), fit);
             request.into(new GlideDrawableListeningTarget(img, result));
           }
         }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
@@ -277,7 +280,7 @@ public class ThumbnailView extends FrameLayout {
       {
         GlideRequest request = applySizing(glideRequests.load(new DecryptableUri(slide.getThumbnailUri()))
             .diskCacheStrategy(DiskCacheStrategy.NONE)
-            .transition(withCrossFade()), new CenterCrop());
+            .transition(withCrossFade()), fit);
         request.into(new GlideDrawableListeningTarget(image, result));
       }
     }
@@ -293,11 +296,15 @@ public class ThumbnailView extends FrameLayout {
   public ListenableFuture<Boolean> setImageResource(@NonNull GlideRequests glideRequests, @NonNull Uri uri) {
     SettableFuture<Boolean> future = new SettableFuture<>();
 
-    glideRequests.load(new DecryptableUri(uri))
-                 .diskCacheStrategy(DiskCacheStrategy.NONE)
-                 .transforms(new CenterCrop(), new RoundedCorners(radius))
-                 .transition(withCrossFade())
-                 .into(new GlideDrawableListeningTarget(image, future));
+    GlideRequest request = glideRequests.load(new DecryptableUri(uri))
+                                        .diskCacheStrategy(DiskCacheStrategy.NONE);
+    if (radius > 0) {
+      request = request.transforms(fit, new RoundedCorners(radius));
+    } else {
+      request = request.transforms(fit);
+    }
+    request.transition(withCrossFade())
+	   .into(new GlideDrawableListeningTarget(image, future));
 
     return future;
   }
@@ -312,6 +319,10 @@ public class ThumbnailView extends FrameLayout {
     slide = null;
   }
 
+  public void setFit(@NonNull BitmapTransformation fit) {
+    this.fit = fit;
+  }
+
   private GlideRequest applySizing(@NonNull GlideRequest request, @NonNull BitmapTransformation fitting) {
     int[] size = new int[2];
     fillTargetDimensions(size, dimens, bounds);
@@ -319,8 +330,12 @@ public class ThumbnailView extends FrameLayout {
       size[WIDTH]  = getDefaultWidth();
       size[HEIGHT] = getDefaultHeight();
     }
-    return request.override(size[WIDTH], size[HEIGHT])
-                  .transforms(fitting, new RoundedCorners(radius));
+    request = request.override(size[WIDTH], size[HEIGHT]);
+    if (radius > 0) {
+	return request.transforms(fitting, new RoundedCorners(radius));
+    } else {
+	return request.transforms(fitting);
+    }
   }
 
   private int getDefaultWidth() {
