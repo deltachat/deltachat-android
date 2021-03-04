@@ -24,7 +24,6 @@ import androidx.fragment.app.Fragment;
 
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
-import com.b44t.messenger.DcEventCenter;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
@@ -32,6 +31,7 @@ import com.google.zxing.common.BitMatrix;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
+import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 
 public class QrShowFragment extends Fragment implements DcEventCenter.DcEventDelegate {

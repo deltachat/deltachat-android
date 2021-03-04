@@ -21,7 +21,6 @@ import androidx.annotation.NonNull;
 import androidx.multidex.MultiDexApplication;
 
 import com.b44t.messenger.DcContext;
-import com.b44t.messenger.DcEventCenter;
 
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.FetchWorker;

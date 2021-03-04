@@ -21,7 +21,6 @@ import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
-import com.b44t.messenger.DcEventCenter;
 import com.b44t.messenger.DcEventEmitter;
 import com.b44t.messenger.DcLot;
 import com.b44t.messenger.DcMsg;
