@@ -17,11 +17,11 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.b44t.messenger.DcContext;
-import com.b44t.messenger.DcEventCenter;
 
 import org.thoughtcrime.securesms.ApplicationPreferencesActivity;
 import org.thoughtcrime.securesms.LogViewActivity;
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.util.ScreenLockUtil;
