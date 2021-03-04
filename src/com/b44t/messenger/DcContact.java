@@ -1,7 +1,6 @@
 package com.b44t.messenger;
 
 import android.graphics.Color;
-import android.util.Log;
 
 public class DcContact {
 
