@@ -68,6 +68,7 @@ import org.thoughtcrime.securesms.util.LongClickCopySpan;
 import org.thoughtcrime.securesms.util.LongClickMovementMethod;
 import org.thoughtcrime.securesms.util.MediaUtil;
 import org.thoughtcrime.securesms.util.Prefs;
+import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.views.Stub;
 
@@ -663,7 +664,7 @@ public class ConversationItem extends LinearLayout
     }
     else if (groupThread && !messageRecord.isOutgoing() && dcContact !=null) {
       this.groupSender.setText(messageRecord.getSenderName(dcContact, true));
-      this.groupSender.setTextColor(dcContact.getArgbColor());
+      this.groupSender.setTextColor(Util.rgbToArgbColor(dcContact.getColor()));
     }
   }
 

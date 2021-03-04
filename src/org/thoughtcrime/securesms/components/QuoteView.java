@@ -32,6 +32,7 @@ import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.recipients.RecipientForeverObserver;
 import org.thoughtcrime.securesms.util.MediaUtil;
 import org.thoughtcrime.securesms.util.ThemeUtil;
+import org.thoughtcrime.securesms.util.Util;
 
 import java.util.List;
 
@@ -160,8 +161,8 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
       } else {
         authorView.setVisibility(VISIBLE);
         authorView.setText(quotedMsg.getSenderName(contact, false));
-        authorView.setTextColor(contact.getArgbColor());
-        quoteBarView.setBackgroundColor(contact.getArgbColor());
+        authorView.setTextColor(Util.rgbToArgbColor(contact.getColor()));
+        quoteBarView.setBackgroundColor(Util.rgbToArgbColor(contact.getColor()));
       }
     }
   }
