@@ -1,8 +1,5 @@
 package com.b44t.messenger;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
 public class DcChatlist {
 
     public DcChatlist(long chatlistCPtr) {
@@ -17,10 +14,10 @@ public class DcChatlist {
 
     public native int       getCnt    ();
     public native int       getChatId (int index);
-    public @NonNull DcChat  getChat   (int index) { return new DcChat(getChatCPtr(index)); }
+    public DcChat           getChat   (int index) { return new DcChat(getChatCPtr(index)); }
     public native int       getMsgId  (int index);
-    public @NonNull DcMsg   getMsg    (int index) { return new DcMsg(getMsgCPtr(index)); }
-    public @NonNull DcLot   getSummary(int index, @Nullable DcChat chat) { return new DcLot(getSummaryCPtr(index, chat==null? 0 : chat.getChatCPtr())); }
+    public DcMsg            getMsg    (int index) { return new DcMsg(getMsgCPtr(index)); }
+    public DcLot            getSummary(int index, DcChat chat) { return new DcLot(getSummaryCPtr(index, chat==null? 0 : chat.getChatCPtr())); }
 
     public class Item {
         public DcLot summary;
