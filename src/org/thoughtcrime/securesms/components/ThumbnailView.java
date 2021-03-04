@@ -5,8 +5,6 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.net.Uri;
 import android.os.AsyncTask;
-import androidx.annotation.NonNull;
-import androidx.annotation.UiThread;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
@@ -14,9 +12,11 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.UiThread;
+
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
-import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 
 import org.thoughtcrime.securesms.R;
@@ -266,18 +266,18 @@ public class ThumbnailView extends FrameLayout {
           }
           @Override
           protected void onPostExecute(Boolean success) {
-            GlideRequest request = applySizing(glideRequests.load(new DecryptableUri(thumbnailUri))
+            GlideRequest request = glideRequests.load(new DecryptableUri(thumbnailUri))
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
-                .transition(withCrossFade()), new CenterCrop());
+                .transition(withCrossFade());
             request.into(new GlideDrawableListeningTarget(img, result));
           }
         }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
       }
       else
       {
-        GlideRequest request = applySizing(glideRequests.load(new DecryptableUri(slide.getThumbnailUri()))
+        GlideRequest request = glideRequests.load(new DecryptableUri(slide.getThumbnailUri()))
             .diskCacheStrategy(DiskCacheStrategy.NONE)
-            .transition(withCrossFade()), new CenterCrop());
+            .transition(withCrossFade());
         request.into(new GlideDrawableListeningTarget(image, result));
       }
     }
@@ -288,18 +288,6 @@ public class ThumbnailView extends FrameLayout {
     }
 
     return result;
-  }
-
-  public ListenableFuture<Boolean> setImageResource(@NonNull GlideRequests glideRequests, @NonNull Uri uri) {
-    SettableFuture<Boolean> future = new SettableFuture<>();
-
-    glideRequests.load(new DecryptableUri(uri))
-                 .diskCacheStrategy(DiskCacheStrategy.NONE)
-                 .transforms(new CenterCrop(), new RoundedCorners(radius))
-                 .transition(withCrossFade())
-                 .into(new GlideDrawableListeningTarget(image, future));
-
-    return future;
   }
 
   public void setThumbnailClickListener(SlideClickListener listener) {
