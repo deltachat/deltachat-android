@@ -5,19 +5,16 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.net.Uri;
 import android.os.AsyncTask;
-import androidx.annotation.NonNull;
-import androidx.annotation.UiThread;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.UiThread;
+
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
-import com.bumptech.glide.load.resource.bitmap.CenterCrop;
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.database.AttachmentDatabase;
@@ -56,8 +53,6 @@ public class ThumbnailView extends FrameLayout {
   private SlideClickListener            thumbnailClickListener = null;
   private Slide                         slide                  = null;
 
-  private int radius;
-
   public ThumbnailView(Context context) {
     this(context, null);
   }
@@ -81,10 +76,8 @@ public class ThumbnailView extends FrameLayout {
       bounds[MAX_WIDTH]  = typedArray.getDimensionPixelSize(R.styleable.ThumbnailView_maxWidth, 0);
       bounds[MIN_HEIGHT] = typedArray.getDimensionPixelSize(R.styleable.ThumbnailView_minHeight, 0);
       bounds[MAX_HEIGHT] = typedArray.getDimensionPixelSize(R.styleable.ThumbnailView_maxHeight, 0);
-      radius             = typedArray.getDimensionPixelSize(R.styleable.ThumbnailView_thumbnail_radius, getResources().getDimensionPixelSize(R.dimen.gallery_thumbnail_radius));
+      // int radius = typedArray.getDimensionPixelSize(R.styleable.ThumbnailView_thumbnail_radius, getResources().getDimensionPixelSize(R.dimen.gallery_thumbnail_radius));
       typedArray.recycle();
-    } else {
-      radius = getResources().getDimensionPixelSize(R.dimen.gallery_thumbnail_radius);
     }
 
   }
@@ -199,15 +192,6 @@ public class ThumbnailView extends FrameLayout {
     super.setClickable(clickable);
   }
 
-  public void setBounds(int minWidth, int maxWidth, int minHeight, int maxHeight) {
-    bounds[MIN_WIDTH]  = minWidth;
-    bounds[MAX_WIDTH]  = maxWidth;
-    bounds[MIN_HEIGHT] = minHeight;
-    bounds[MAX_HEIGHT] = maxHeight;
-
-    forceLayout();
-  }
-
   @UiThread
   public ListenableFuture<Boolean> setImageResource(@NonNull GlideRequests glideRequests, @NonNull Slide slide)
   {
@@ -266,18 +250,18 @@ public class ThumbnailView extends FrameLayout {
           }
           @Override
           protected void onPostExecute(Boolean success) {
-            GlideRequest request = applySizing(glideRequests.load(new DecryptableUri(thumbnailUri))
+            GlideRequest request = glideRequests.load(new DecryptableUri(thumbnailUri))
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
-                .transition(withCrossFade()), new CenterCrop());
+                .transition(withCrossFade());
             request.into(new GlideDrawableListeningTarget(img, result));
           }
         }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
       }
       else
       {
-        GlideRequest request = applySizing(glideRequests.load(new DecryptableUri(slide.getThumbnailUri()))
+        GlideRequest request = glideRequests.load(new DecryptableUri(slide.getThumbnailUri()))
             .diskCacheStrategy(DiskCacheStrategy.NONE)
-            .transition(withCrossFade()), new CenterCrop());
+            .transition(withCrossFade());
         request.into(new GlideDrawableListeningTarget(image, result));
       }
     }
@@ -290,18 +274,6 @@ public class ThumbnailView extends FrameLayout {
     return result;
   }
 
-  public ListenableFuture<Boolean> setImageResource(@NonNull GlideRequests glideRequests, @NonNull Uri uri) {
-    SettableFuture<Boolean> future = new SettableFuture<>();
-
-    glideRequests.load(new DecryptableUri(uri))
-                 .diskCacheStrategy(DiskCacheStrategy.NONE)
-                 .transforms(new CenterCrop(), new RoundedCorners(radius))
-                 .transition(withCrossFade())
-                 .into(new GlideDrawableListeningTarget(image, future));
-
-    return future;
-  }
-
   public void setThumbnailClickListener(SlideClickListener listener) {
     this.thumbnailClickListener = listener;
   }
@@ -310,33 +282,6 @@ public class ThumbnailView extends FrameLayout {
     glideRequests.clear(image);
 
     slide = null;
-  }
-
-  private GlideRequest applySizing(@NonNull GlideRequest request, @NonNull BitmapTransformation fitting) {
-    int[] size = new int[2];
-    fillTargetDimensions(size, dimens, bounds);
-    if (size[WIDTH] == 0 && size[HEIGHT] == 0) {
-      size[WIDTH]  = getDefaultWidth();
-      size[HEIGHT] = getDefaultHeight();
-    }
-    return request.override(size[WIDTH], size[HEIGHT])
-                  .transforms(fitting, new RoundedCorners(radius));
-  }
-
-  private int getDefaultWidth() {
-    ViewGroup.LayoutParams params = getLayoutParams();
-    if (params != null) {
-      return Math.max(params.width, 0);
-    }
-    return 0;
-  }
-
-  private int getDefaultHeight() {
-    ViewGroup.LayoutParams params = getLayoutParams();
-    if (params != null) {
-      return Math.max(params.height, 0);
-    }
-    return 0;
   }
 
   private class ThumbnailClickDispatcher implements View.OnClickListener {

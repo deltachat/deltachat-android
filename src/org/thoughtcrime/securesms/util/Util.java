@@ -22,6 +22,7 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -321,5 +322,11 @@ public class Util {
     } catch (InterruptedException e) {
       throw new AssertionError(e);
     }
+  }
+
+  /// Converts a rgb-color as returned eg. by DcContact.getColor()
+  /// to argb-color as used by Android.
+  public static int rgbToArgbColor(int rgb) {
+    return Color.argb(0xFF, Color.red(rgb), Color.green(rgb), Color.blue(rgb));
   }
 }

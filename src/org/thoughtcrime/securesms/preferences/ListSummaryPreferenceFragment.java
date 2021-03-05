@@ -11,10 +11,10 @@ import androidx.preference.Preference;
 
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
-import com.b44t.messenger.DcEventCenter;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
+import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.service.GenericForegroundService;
 import org.thoughtcrime.securesms.service.NotificationController;

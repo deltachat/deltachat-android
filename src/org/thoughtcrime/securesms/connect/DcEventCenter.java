@@ -1,4 +1,6 @@
-package com.b44t.messenger;
+package org.thoughtcrime.securesms.connect;
+
+import com.b44t.messenger.DcEvent;
 
 import org.thoughtcrime.securesms.util.Util;
 
