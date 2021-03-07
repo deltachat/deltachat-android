@@ -55,10 +55,11 @@ public class FullMsgActivity extends WebViewActivity
     webView.getSettings().setAllowContentAccess(false);
     webView.getSettings().setAllowFileAccess(false);
 
-    getSupportActionBar().setTitle(getString(R.string.chat_input_placeholder));
-
     dcContext = DcHelper.getContext(this);
     msgId = getIntent().getIntExtra(MSG_ID_EXTRA, 0);
+    String title = dcContext.getMsg(msgId).getSubject();
+    if (title.isEmpty()) title = getString(R.string.chat_input_placeholder);
+    getSupportActionBar().setTitle(title);
 
     loadHtmlAsync(new WeakReference<>(this));
   }
