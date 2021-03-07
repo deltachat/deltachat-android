@@ -1190,6 +1190,15 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcMsg_getText(JNIEnv *env, jobject obj
 }
 
 
+JNIEXPORT jstring Java_com_b44t_messenger_DcMsg_getSubject(JNIEnv *env, jobject obj)
+{
+    char* temp = dc_msg_get_subject(get_dc_msg(env, obj));
+        jstring ret = JSTRING_NEW(temp);
+    dc_str_unref(temp);
+    return ret;
+}
+
+
 JNIEXPORT jlong Java_com_b44t_messenger_DcMsg_getTimestamp(JNIEnv *env, jobject obj)
 {
     return JTIMESTAMP(dc_msg_get_timestamp(get_dc_msg(env, obj)));
