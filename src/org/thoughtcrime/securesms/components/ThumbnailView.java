@@ -332,9 +332,9 @@ public class ThumbnailView extends FrameLayout {
     }
     request = request.override(size[WIDTH], size[HEIGHT]);
     if (radius > 0) {
-	return request.transforms(fitting, new RoundedCorners(radius));
+      return request.transforms(fitting, new RoundedCorners(radius));
     } else {
-	return request.transforms(fitting);
+      return request.transforms(fitting);
     }
   }
 
