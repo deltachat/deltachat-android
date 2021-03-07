@@ -4,13 +4,9 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.ImageView.ScaleType;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
-import com.bumptech.glide.load.resource.bitmap.CenterCrop;
-import com.bumptech.glide.load.resource.bitmap.CenterInside;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.mms.GlideRequests;
@@ -58,10 +54,8 @@ public class BorderlessImageView extends FrameLayout {
     boolean showControls = slide.asAttachment().getDataUri() == null;
 
     if (slide.hasSticker()) {
-      image.setScaleType(ScaleType.CENTER_INSIDE);
       image.setImageResource(glideRequests, slide);
     } else {
-      image.setScaleType(ScaleType.CENTER_CROP);
       image.setImageResource(glideRequests, slide, slide.asAttachment().getWidth(), slide.asAttachment().getHeight());
     }
 
