@@ -32,7 +32,7 @@ public class LogViewActivity extends BaseActionBarActivity {
     dynamicLanguage.onCreate(this);
 
     setContentView(R.layout.log_view_activity);
-    logViewFragment = LogViewFragment.newInstance();
+    logViewFragment = new LogViewFragment(dynamicLanguage);
     FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
     transaction.replace(R.id.fragment_container, logViewFragment);
     transaction.commit();

@@ -1,12 +1,5 @@
 package com.b44t.messenger;
 
-import android.util.Log;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
-import org.thoughtcrime.securesms.connect.ApplicationDcContext;
-
 import java.io.File;
 import java.util.Set;
 
@@ -59,9 +52,6 @@ public class DcMsg {
 
     @Override
     public int hashCode() {
-        if (this.getId() == 0) {
-            Log.e(TAG, "encountered a DcMsg with id 0.");
-        }
         return this.getId();
     }
 
@@ -78,7 +68,7 @@ public class DcMsg {
     /**
      * If given a message, calculates the position of the message in the chat
      */
-    public static int getMessagePosition(DcMsg msg, ApplicationDcContext dcContext) {
+    public static int getMessagePosition(DcMsg msg, DcContext dcContext) {
         int msgs[] = dcContext.getChatMsgs(msg.getChatId(), 0, 0);
         int startingPosition = -1;
         int msgId = msg.getId();
@@ -93,6 +83,7 @@ public class DcMsg {
 
     public native int     getId              ();
     public native String  getText            ();
+    public native String  getSubject         ();
     public native long    getTimestamp       ();
     public native long    getSortTimestamp   ();
     public native boolean hasDeviatingTimestamp();
@@ -106,7 +97,7 @@ public class DcMsg {
     public native int     getHeight          (int def);
     public native int     getDuration        ();
     public native void    lateFilingMediaSize(int width, int height, int duration);
-    public @NonNull DcLot getSummary         (DcChat chat) { return new DcLot(getSummaryCPtr(chat.getChatCPtr())); }
+    public DcLot          getSummary         (DcChat chat) { return new DcLot(getSummaryCPtr(chat.getChatCPtr())); }
     public native String  getSummarytext     (int approx_characters);
     public native int     showPadlock        ();
     public boolean        hasFile            () { String file = getFile(); return file!=null && !file.isEmpty(); }
@@ -130,9 +121,9 @@ public class DcMsg {
     public void           setQuote           (DcMsg quote) { setQuoteCPtr(quote.msgCPtr); }
     public native String  getQuotedText      ();
     public native String  getError           ();
-    private native @Nullable String getOverrideSenderName();
+    private native String getOverrideSenderName();
 
-    public @NonNull String getSenderName(@NonNull DcContact dcContact, boolean markOverride) {
+    public String getSenderName(DcContact dcContact, boolean markOverride) {
         String overrideName = getOverrideSenderName();
         if (overrideName != null) {
             return (markOverride ? "~" : "") + overrideName;

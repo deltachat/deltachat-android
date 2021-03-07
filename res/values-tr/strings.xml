@@ -303,7 +303,7 @@
     <string name="chat_archived_chats_title">Arşivlenen sohbetler</string>
     <string name="chat_please_enter_message">Lütfen bir ileti girin.</string>
     <string name="chat_camera_unavailable">Kamera kullanım dışı.</string>
-    <string name="chat_unable_to_record_audio">Ses kaydedilemedi.</string>
+    <string name="chat_unable_to_record_audio">Ses kaydedilemiyor.</string>
     <plurals name="chat_n_new_messages">
         <item quantity="one">%d yeni ileti</item>
         <item quantity="other">%d yeni ileti</item>
