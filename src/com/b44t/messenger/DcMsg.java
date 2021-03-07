@@ -82,6 +82,7 @@ public class DcMsg {
 
     public native int     getId              ();
     public native String  getText            ();
+    public native String  getSubject         ();
     public native long    getTimestamp       ();
     public native long    getSortTimestamp   ();
     public native boolean hasDeviatingTimestamp();
