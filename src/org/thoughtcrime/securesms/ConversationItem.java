@@ -695,7 +695,7 @@ public class ConversationItem extends LinearLayout
       this.groupSender.setVisibility(GONE);
       return;
     } else {
-	this.groupSender.setVisibility(VISIBLE);
+      this.groupSender.setVisibility(VISIBLE);
     }
 
     if (messageRecord.isForwarded()) {
