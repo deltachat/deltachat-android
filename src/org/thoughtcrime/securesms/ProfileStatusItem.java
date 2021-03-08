@@ -6,6 +6,7 @@ import android.util.AttributeSet;
 import android.widget.LinearLayout;
 
 import org.thoughtcrime.securesms.components.emoji.EmojiTextView;
+import org.thoughtcrime.securesms.util.LongClickMovementMethod;
 
 public class ProfileStatusItem extends LinearLayout {
 
@@ -27,5 +28,6 @@ public class ProfileStatusItem extends LinearLayout {
 
   public void set(String status) {
     statusTextView.setText(EmojiTextView.linkify(new SpannableString(status)));
+    statusTextView.setMovementMethod(LongClickMovementMethod.getInstance(getContext()));
   }
 }
