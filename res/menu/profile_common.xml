@@ -6,6 +6,10 @@
           android:id="@+id/edit_name"
           app:showAsAction="never"/>
 
+    <item android:title="@string/menu_copy_to_clipboard"
+        android:id="@+id/copy_addr_to_clipboard"
+        app:showAsAction="never"/>
+
     <item android:title="@string/menu_mute"
         android:id="@+id/menu_mute_notifications"
         app:showAsAction="never"/>

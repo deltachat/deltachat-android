@@ -21,6 +21,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
@@ -34,6 +35,7 @@ import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.Prefs;
+import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
 import java.io.File;
@@ -128,8 +130,10 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
         if (chatIsDeviceTalk) {
           menu.findItem(R.id.edit_name).setVisible(false);
           menu.findItem(R.id.show_encr_info).setVisible(false);
+          menu.findItem(R.id.copy_addr_to_clipboard).setVisible(false);
         } else if (chatIsGroup) {
           menu.findItem(R.id.edit_name).setTitle(R.string.menu_group_name_and_image);
+          menu.findItem(R.id.copy_addr_to_clipboard).setVisible(false);
         }
       } else {
         menu.findItem(R.id.menu_mute_notifications).setVisible(false);
@@ -238,7 +242,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
     }
     else if (chatId > 0) {
       DcChat dcChat  = dcContext.getChat(chatId);
-      titleView.setTitle(GlideApp.with(this), dcChat, false);
+      titleView.setTitle(GlideApp.with(this), dcChat, isContactProfile());
     }
     else if (isContactProfile()){
       titleView.setTitle(GlideApp.with(this), dcContext.getContact(contactId));
@@ -357,6 +361,9 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
       case R.id.edit_name:
         onEditName();
         break;
+      case R.id.copy_addr_to_clipboard:
+        onCopyAddrToClipboard();
+        break;
       case R.id.show_encr_info:
         onEncrInfo();
         break;
@@ -465,6 +472,12 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
           .setNegativeButton(android.R.string.cancel, null)
           .show();
     }
+  }
+
+  private void onCopyAddrToClipboard() {
+    DcContact dcContact = dcContext.getContact(contactId);
+    Util.writeTextToClipboard(this, dcContact.getAddr());
+    Toast.makeText(this, getString(R.string.copied_to_clipboard), Toast.LENGTH_SHORT).show();
   }
 
   private void onEncrInfo() {
