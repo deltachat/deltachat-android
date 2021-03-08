@@ -1,6 +1,7 @@
 package org.thoughtcrime.securesms;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build;
@@ -142,6 +143,22 @@ public class ProfileSettingsFragment extends Fragment
         onNewChat();
         break;
     }
+  }
+
+  @Override
+  public void onStatusLongClicked() {
+      Context context = getContext();
+      new AlertDialog.Builder(context)
+        .setTitle(R.string.pref_default_status_label)
+        .setItems(new CharSequence[]{
+            context.getString(R.string.menu_copy_to_clipboard)
+          },
+          (dialogInterface, i) -> {
+            Util.writeTextToClipboard(context, adapter.getStatusText());
+            Toast.makeText(context, context.getString(R.string.copied_to_clipboard), Toast.LENGTH_SHORT).show();
+          })
+        .setNegativeButton(R.string.cancel, null)
+        .show();
   }
 
   @Override
