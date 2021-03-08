@@ -3,8 +3,12 @@ package org.thoughtcrime.securesms.components.emoji;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
+import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
+import android.text.Spanned;
 import android.text.TextUtils;
+import android.text.style.URLSpan;
+import android.text.util.Linkify;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 
@@ -16,9 +20,12 @@ import androidx.core.widget.TextViewCompat;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.components.emoji.EmojiProvider.EmojiDrawable;
 import org.thoughtcrime.securesms.components.emoji.parsing.EmojiParser;
+import org.thoughtcrime.securesms.util.LongClickCopySpan;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.guava.Optional;
+
+import java.util.regex.Pattern;
 
 
 public class EmojiTextView extends AppCompatTextView {
@@ -200,5 +207,35 @@ public class EmojiTextView extends AppCompatTextView {
   public void setTextSize(int unit, float size) {
     this.originalFontSize = TypedValue.applyDimension(unit, size, getResources().getDisplayMetrics());
     super.setTextSize(unit, size);
+  }
+
+
+  // tools for linkify
+
+  private static final Pattern CMD_PATTERN = Pattern.compile("(?<=^|\\s)/[a-zA-Z][a-zA-Z@\\d_/.-]{0,254}");
+
+  private static void replaceURLSpan(SpannableString messageBody) {
+    URLSpan[] urlSpans = messageBody.getSpans(0, messageBody.length(), URLSpan.class);
+    for (URLSpan urlSpan : urlSpans) {
+      int start = messageBody.getSpanStart(urlSpan);
+      int end = messageBody.getSpanEnd(urlSpan);
+      // LongClickCopySpan must not be derived from URLSpan, otherwise links will be removed on the next addLinks() call
+      messageBody.setSpan(new LongClickCopySpan(urlSpan.getURL()), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+    }
+  }
+
+  public static SpannableString linkify(SpannableString messageBody) {
+    // linkify commands such as `/echo` -
+    // do this first to avoid `/xkcd_123456` to be treated partly as a phone number
+    if (Linkify.addLinks(messageBody, CMD_PATTERN, "cmd:", null, null)) {
+      EmojiTextView.replaceURLSpan(messageBody); // replace URLSpan so that it is not removed on the next addLinks() call
+    }
+
+    // linkyfiy urls etc., this removes all existing URLSpan
+    if (Linkify.addLinks(messageBody, Linkify.EMAIL_ADDRESSES|Linkify.WEB_URLS|Linkify.PHONE_NUMBERS)) {
+      EmojiTextView.replaceURLSpan(messageBody);
+    }
+
+    return messageBody;
   }
 }

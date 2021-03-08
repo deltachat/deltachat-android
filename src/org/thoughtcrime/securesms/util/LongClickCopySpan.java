@@ -28,11 +28,9 @@ public class LongClickCopySpan extends ClickableSpan {
   @ColorInt
   private int highlightColor;
   private final String url;
-  private int chatId;
 
-  public LongClickCopySpan(String url, int chatId) {
+  public LongClickCopySpan(String url) {
     this.url = url;
-    this.chatId = chatId;
   }
 
   private void openChat(Activity activity, DcContact contact) {
