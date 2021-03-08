@@ -41,6 +41,7 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
   private int                                 itemDataMemberCount;
   private DcChatlist                          itemDataSharedChats;
   private DcContact                           itemDataContact;
+  private String                              itemDataStatusText;
   private boolean                             isMailingList;
   private final Set<Integer>                  selectedMembers;
 
@@ -50,8 +51,9 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
 
   static class ItemData {
     static final int TYPE_PRIMARY_SETTING = 1;
-    static final int TYPE_MEMBER = 2;
-    static final int TYPE_SHARED_CHAT = 3;
+    static final int TYPE_STATUS = 2;
+    static final int TYPE_MEMBER = 3;
+    static final int TYPE_SHARED_CHAT = 4;
     int type;
     int contactId;
     int chatlistIndex;
@@ -121,6 +123,10 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
       item.hideItemDivider();
       return new ViewHolder(item);
     }
+    else if (viewType == ItemData.TYPE_STATUS) {
+      final ProfileStatusItem item = (ProfileStatusItem)layoutInflater.inflate(R.layout.profile_status_item, parent, false);
+      return new ViewHolder(item);
+    }
     else {
       final ProfileSettingsItem item = (ProfileSettingsItem)layoutInflater.inflate(R.layout.profile_settings_item, parent, false);
       return new ViewHolder(item);
@@ -170,6 +176,11 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
           locale, Collections.emptySet(), false);
       conversationListItem.setOnClickListener(view -> clickListener.onSharedChatClicked(chatId));
     }
+    else if(holder.itemView instanceof ProfileStatusItem) {
+      ProfileStatusItem item = (ProfileStatusItem) holder.itemView;
+      item.setOnLongClickListener(view -> {clickListener.onStatusLongClicked(); return true;});
+      item.set(itemData.get(i).label);
+    }
     else if(holder.itemView instanceof ProfileSettingsItem) {
       int settingsId = itemData.get(i).settingsId;
       ProfileSettingsItem profileSettingsItem = (ProfileSettingsItem) holder.itemView;
@@ -185,6 +196,7 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
 
   public interface ItemClickListener {
     void onSettingsClicked(int settingsId);
+    void onStatusLongClicked();
     void onSharedChatClicked(int chatId);
     void onMemberClicked(int contactId);
     void onMemberLongClicked(int contactId);
@@ -222,6 +234,9 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
           txt = context.getString(R.string.contact);
         }
         break;
+      case ItemData.TYPE_STATUS:
+        txt = context.getString(R.string.pref_default_status_label);
+        break;
       default:
         txt = context.getString(R.string.menu_settings);
         break;
@@ -245,6 +260,11 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
     return selectedMembers.size();
   }
 
+  @NonNull
+  public String getStatusText() {
+    return itemDataStatusText;
+  }
+
   public void clearSelection() {
     selectedMembers.clear();
     notifyDataSetChanged();
@@ -255,6 +275,7 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
     itemDataMemberCount = 0;
     itemDataSharedChats = null;
     itemDataContact = null;
+    itemDataStatusText = "";
     isMailingList = false;
 
     if (memberList!=null) {
@@ -272,6 +293,11 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
     else if (sharedChats!=null && dcContact!=null) {
       itemDataContact = dcContact;
       itemData.add(new ItemData(ItemData.TYPE_PRIMARY_SETTING, SETTING_NEW_CHAT, context.getString(R.string.send_message)));
+
+      itemDataStatusText = dcContact.getStatus();
+      if (!itemDataStatusText.isEmpty()) {
+        itemData.add(new ItemData(ItemData.TYPE_STATUS, 0, itemDataStatusText));
+      }
       itemDataSharedChats = sharedChats;
       int sharedChatsCnt = sharedChats.getCnt();
       for (int i = 0; i < sharedChatsCnt; i++) {

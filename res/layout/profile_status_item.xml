@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<org.thoughtcrime.securesms.ProfileStatusItem
+             xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:background="?attr/conversation_list_item_background"
+             android:focusable="true"
+             android:padding="16dp">
+
+    <org.thoughtcrime.securesms.components.emoji.EmojiTextView
+              android:id="@+id/status_text"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:gravity="start|center_vertical"
+              style="@style/Signal.Text.Body"
+              android:textColor="?attr/emoji_text_color"/>
+
+</org.thoughtcrime.securesms.ProfileStatusItem>
