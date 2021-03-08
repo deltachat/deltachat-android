@@ -138,9 +138,6 @@ public class ProfileSettingsFragment extends Fragment
   @Override
   public void onSettingsClicked(int settingsId) {
     switch(settingsId) {
-      case ProfileSettingsAdapter.SETTING_CONTACT_ADDR:
-        onContactAddrClicked();
-        break;
       case ProfileSettingsAdapter.SETTING_NEW_CHAT:
         onNewChat();
         break;
@@ -210,21 +207,6 @@ public class ProfileSettingsFragment extends Fragment
     intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
     getContext().startActivity(intent);
     getActivity().finish();
-  }
-
-  private void onContactAddrClicked() {
-    String address = dcContext.getContact(contactId).getAddr();
-    new AlertDialog.Builder(getContext())
-        .setTitle(address)
-        .setItems(new CharSequence[]{
-                getContext().getString(R.string.menu_copy_to_clipboard)
-            },
-            (dialogInterface, i) -> {
-              Util.writeTextToClipboard(getContext(), address);
-              Toast.makeText(getContext(), getString(R.string.copied_to_clipboard), Toast.LENGTH_SHORT).show();
-            })
-        .setNegativeButton(R.string.cancel, null)
-        .show();
   }
 
   private void onNewChat() {
