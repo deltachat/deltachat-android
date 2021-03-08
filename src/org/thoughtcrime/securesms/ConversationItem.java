@@ -23,9 +23,7 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.text.SpannableString;
-import android.text.Spanned;
 import android.text.TextUtils;
-import android.text.style.URLSpan;
 import android.text.util.Linkify;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -53,6 +51,7 @@ import org.thoughtcrime.securesms.components.ConversationItemFooter;
 import org.thoughtcrime.securesms.components.ConversationItemThumbnail;
 import org.thoughtcrime.securesms.components.DocumentView;
 import org.thoughtcrime.securesms.components.QuoteView;
+import org.thoughtcrime.securesms.components.emoji.EmojiTextView;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.AudioSlide;
@@ -64,7 +63,6 @@ import org.thoughtcrime.securesms.mms.SlideClickListener;
 import org.thoughtcrime.securesms.mms.SlideDeck;
 import org.thoughtcrime.securesms.mms.VideoSlide;
 import org.thoughtcrime.securesms.recipients.Recipient;
-import org.thoughtcrime.securesms.util.LongClickCopySpan;
 import org.thoughtcrime.securesms.util.LongClickMovementMethod;
 import org.thoughtcrime.securesms.util.MediaUtil;
 import org.thoughtcrime.securesms.util.Prefs;
@@ -75,7 +73,6 @@ import org.thoughtcrime.securesms.util.views.Stub;
 import java.util.HashSet;
 import java.util.Locale;
 import java.util.Set;
-import java.util.regex.Pattern;
 
 /**
  * A view that displays an individual conversation item within a conversation
@@ -92,7 +89,6 @@ public class ConversationItem extends LinearLayout
 
   private static final Rect SWIPE_RECT = new Rect();
 
-  private static final Pattern CMD_PATTERN = Pattern.compile("(?<=^|\\s)/[a-zA-Z][a-zA-Z@\\d_/.-]{0,254}");
   private static final int MAX_MEASURE_CALLS = 3;
   static long PULSE_HIGHLIGHT_MILLIS = 500;
 
@@ -362,7 +358,11 @@ public class ConversationItem extends LinearLayout
       bodyText.setVisibility(View.GONE);
     }
     else {
-      bodyText.setText(linkifyMessageBody(new SpannableString(text), batchSelected.isEmpty()));
+      SpannableString spannable = new SpannableString(text);
+      if (batchSelected.isEmpty()) {
+        spannable = EmojiTextView.linkify(spannable);
+      }
+      bodyText.setText(spannable);
       bodyText.setVisibility(View.VISIBLE);
     }
 
@@ -536,35 +536,6 @@ public class ConversationItem extends LinearLayout
       contactPhoto.setAvatar(glideRequests, dcContext.getRecipient(dcContact), true);
       contactPhoto.setVisibility(View.VISIBLE);
     }
-  }
-
-  private void replaceURLSpan(SpannableString messageBody) {
-    URLSpan[] urlSpans = messageBody.getSpans(0, messageBody.length(), URLSpan.class);
-    for (URLSpan urlSpan : urlSpans) {
-      int start = messageBody.getSpanStart(urlSpan);
-      int end = messageBody.getSpanEnd(urlSpan);
-      // LongClickCopySpan must not be derived from URLSpan, otherwise links will be removed on the next addLinks() call
-      messageBody.setSpan(new LongClickCopySpan(urlSpan.getURL(), this.dcChat.getId()), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-    }
-  }
-
-  private SpannableString linkifyMessageBody(SpannableString messageBody, boolean shouldLinkifyAllLinks) {
-    if (!shouldLinkifyAllLinks) {
-      return messageBody;
-    }
-
-    // linkify commands such as `/echo` -
-    // do this first to avoid `/xkcd_123456` to be treated partly as a phone number
-    if (Linkify.addLinks(messageBody, CMD_PATTERN, "cmd:", null, null)) {
-      replaceURLSpan(messageBody); // replace URLSpan so that it is not removed on the next addLinks() call
-    }
-
-    // linkyfiy urls etc., this removes all existing URLSpan
-    if (Linkify.addLinks(messageBody, Linkify.EMAIL_ADDRESSES|Linkify.WEB_URLS|Linkify.PHONE_NUMBERS)) {
-      replaceURLSpan(messageBody);
-    }
-
-    return messageBody;
   }
 
   private void setQuote(@NonNull DcMsg current) {

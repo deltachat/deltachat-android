@@ -1,6 +1,7 @@
 package org.thoughtcrime.securesms;
 
 import android.content.Context;
+import android.text.SpannableString;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 
@@ -25,6 +26,6 @@ public class ProfileStatusItem extends LinearLayout {
   }
 
   public void set(String status) {
-    statusTextView.setText(status==null? "" : status);
+    statusTextView.setText(EmojiTextView.linkify(new SpannableString(status)));
   }
 }
