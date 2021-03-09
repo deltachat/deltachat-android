@@ -160,7 +160,7 @@
     <string name="menu_add_attachment">زیاد کردنی پێوەلکاو</string>
     <string name="menu_leave_group">بەجێهێشتنی کۆڕ</string>
     <string name="menu_delete_chat">سڕینەوەی وتووێژ</string>
-    <string name="ask_delete_named_chat">دڵنیایی دەتەوێت \"%1$s\" بسڕیتەوە؟</string>
+    <string name="ask_delete_named_chat">دڵنیای دەتەوێت \"%1$s\" بسڕیتەوە؟</string>
     <string name="menu_delete_messages">سڕینەوەی پەیامەکان</string>
     <string name="menu_delete_image">سڕینەوەی وێنە</string>
     <string name="delete_contact">سڕینەوەی بەردەنگ</string>
@@ -253,14 +253,14 @@
     <string name="videochat_invitation_body">تۆ بانگهێشت کراوی بۆ وتووێژێکی ڤیدیۆیی، بۆ بەشدار بوون لەسەر %1$s کرتە بکە.</string>
 
     <!-- get confirmations -->
-    <string name="ask_leave_group">دڵنیایی دەتەوێت ئەم کۆڕە بەجێ بێڵیت؟</string>
+    <string name="ask_leave_group">دڵنیای دەتەوێت ئەم کۆڕە بەجێ بێڵیت؟</string>
     <plurals name="ask_delete_chat">
         <item quantity="one">%d وتووێژ دەسڕیتەوە؟ ئیدی لە نیو لیستەی وتووێژەکاندا دیار نامێنن، بەڵام پەیامەکانیان لەسەر سێرڤەر دەمێنێتەوە.</item>
         <item quantity="other">%d وتووێژ دەسڕیتەوە؟ ئیدی لە نیو لیستەی وتووێژەکاندا دیار نامێنن، بەڵام پەیامەکانیان لەسەر سێرڤەر دەمێنێتەوە.</item>
     </plurals>
     <plurals name="ask_delete_messages">
-        <item quantity="one">دەتەوێت %d پەیام لێرە و لەسەر سێرڤەر بسڕیتەوە؟</item>
-        <item quantity="other">دەتەوێت %d پەیام لێرە و لەسەر سێرڤەر بسڕیتەوە؟</item>
+        <item quantity="one">دەتەوێت ئەم %d پەیامە لێرە و لەسەر سێرڤەر بسڕیتەوە؟</item>
+        <item quantity="other">دەتەوێت ئەم %d پەیامە لێرە و لەسەر سێرڤەر بسڕیتەوە؟</item>
     </plurals>
     <string name="ask_forward">ئەو پەیامانە دەنێریت بۆ %1$s؟</string>
     <string name="ask_forward_multiple">ئەو پەیامانە دەنێریت بۆ نێو %1$dوتووێژ؟</string>
@@ -308,10 +308,10 @@
     <string name="chat_no_chats_yet_hint">دەتوانیت لەگەڵ بەکارهێنەرانی دیکەی دێڵتاچات و هەروەها هەر ناونیشانێکی ئیمەیلدا وتووێژ بکەیت.</string>
     <string name="chat_all_archived">هەموو وتووێژەکان ئەرشیڤ کران. \n بۆ دەستپێکردنی وتووێژێکی نوێ، \"+\" لێبدە.</string>
     <string name="chat_share_with_title">هاوبەش کردن لەگەڵ</string>
-    <string name="chat_input_placeholder">پەیام</string>
+    <string name="chat_input_placeholder">بنووسە</string>
     <string name="chat_archived_label">ئەرشیڤ کرا</string>
     <string name="chat_no_messages">هیچ پەیامێک نییە</string>
-    <string name="chat_self_talk_subtitle">ئەوا پەیامانەی کە بۆ خۆمم هەناردووە</string>
+    <string name="chat_self_talk_subtitle">ئەو پەیامانەی ناردوومن بۆ خۆم</string>
     <string name="saved_messages">کانگای نامەکان</string>
     <string name="saved_messages_explain">• پەیامەکان بنێرە ئێرە تاکوو بەئاسانی لەبەردەست بن\n\n• ڕەشنووسی دەق یان دەنگی دابنە\n\n• ڕەنگاڵە پەیوەست بکە تاکوو پاشەکەوت بکرێن</string>
     <!-- this "Saved" should match the "Saved" from "Saved messages" -->
@@ -362,6 +362,7 @@
     <string name="tab_map">نەخشە</string>
     <string name="tab_gallery_empty_hint">وێنە و ڤیدیۆ هاوبەشکراوەکانی نێو ئەم وتووێژە، لێرەدا پیشان دەدرێن.</string>
     <string name="tab_docs_empty_hint">بەڵگە و مۆسیقا و هەموو پەڕگە هاوبەشکراوەکانی نێو ئەم وتووێژە، لێرەدا پیشان دەدرێن.</string>
+    <string name="media_preview">پێشدیتنی ڕەنگاڵە</string>
     <string name="send_message">پەیام بنێرە</string>
 
 
