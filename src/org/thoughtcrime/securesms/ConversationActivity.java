@@ -21,6 +21,7 @@ import android.annotation.SuppressLint;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.graphics.Color;
@@ -1204,6 +1205,12 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   // handle attachment drawer, camera, recorder
 
   private void updateToggleButtonState() {
+    if (inputPanel.isRecordingInLockedMode()) {
+      buttonToggle.display(sendButton);
+      quickAttachmentToggle.hide();
+      return;
+    }
+
     if (composeText.getText().length() == 0 && !attachmentManager.isAttachmentPresent()) {
       buttonToggle.display(attachButton);
       quickAttachmentToggle.show();
@@ -1270,7 +1277,14 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   @Override
+  public void onRecorderLocked() {
+    updateToggleButtonState();
+    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
+  }
+
+  @Override
   public void onRecorderFinished() {
+    updateToggleButtonState();
     Vibrator vibrator = ServiceUtil.getVibrator(this);
     vibrator.vibrate(20);
 
@@ -1307,6 +1321,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   @Override
   public void onRecorderCanceled() {
+    updateToggleButtonState();
     Vibrator vibrator = ServiceUtil.getVibrator(this);
     vibrator.vibrate(50);
 
@@ -1404,6 +1419,11 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private class SendButtonListener implements OnClickListener, TextView.OnEditorActionListener {
     @Override
     public void onClick(View v) {
+      if (inputPanel.isRecordingInLockedMode()) {
+        inputPanel.releaseRecordingLock();
+        return;
+      }
+
       String rawText = composeText.getTextTrimmed();
       if (rawText.length() < 1 && !attachmentManager.isAttachmentPresent()) {
         Toast.makeText(ConversationActivity.this, R.string.chat_please_enter_message,

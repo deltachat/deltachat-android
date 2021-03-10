@@ -195,6 +195,22 @@ public class ViewUtil {
     }
   }
 
+  public static boolean isLtr(@NonNull View view) {
+    return isLtr(view.getContext());
+  }
+
+  public static boolean isLtr(@NonNull Context context) {
+    return context.getResources().getConfiguration().getLayoutDirection() == View.LAYOUT_DIRECTION_LTR;
+  }
+
+  public static boolean isRtl(@NonNull View view) {
+    return isRtl(view.getContext());
+  }
+
+  public static boolean isRtl(@NonNull Context context) {
+    return context.getResources().getConfiguration().getLayoutDirection() == View.LAYOUT_DIRECTION_RTL;
+  }
+
   public static int dpToPx(Context context, int dp) {
     return (int)((dp * context.getResources().getDisplayMetrics().density) + 0.5);
   }
