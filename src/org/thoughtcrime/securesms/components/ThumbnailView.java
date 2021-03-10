@@ -284,6 +284,10 @@ public class ThumbnailView extends FrameLayout {
     slide = null;
   }
 
+  public void setScaleType(@NonNull ImageView.ScaleType scale) {
+    image.setScaleType(scale);
+  }
+
   private class ThumbnailClickDispatcher implements View.OnClickListener {
     @Override
     public void onClick(View view) {

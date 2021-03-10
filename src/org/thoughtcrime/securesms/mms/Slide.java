@@ -80,6 +80,8 @@ public abstract class Slide {
     return false;
   }
 
+  public boolean hasSticker() { return false; }
+
   public boolean hasVideo() {
     return false;
   }

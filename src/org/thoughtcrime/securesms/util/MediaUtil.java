@@ -24,6 +24,7 @@ import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.mms.ImageSlide;
 import org.thoughtcrime.securesms.mms.PartAuthority;
 import org.thoughtcrime.securesms.mms.Slide;
+import org.thoughtcrime.securesms.mms.StickerSlide;
 import org.thoughtcrime.securesms.mms.VideoSlide;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 
@@ -52,6 +53,8 @@ public class MediaUtil {
       slide = new GifSlide(context, dcMsg);
     } else if (dcMsg.getType() == DcMsg.DC_MSG_IMAGE) {
       slide = new ImageSlide(context, dcMsg);
+    } else if (dcMsg.getType() == DcMsg.DC_MSG_STICKER) {
+      slide = new StickerSlide(context, dcMsg);
     } else if (dcMsg.getType() == DcMsg.DC_MSG_VIDEO) {
       slide = new VideoSlide(context, dcMsg);
     } else if (dcMsg.getType() == DcMsg.DC_MSG_AUDIO
