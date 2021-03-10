@@ -334,6 +334,7 @@ public class ConversationFragment extends Fragment
 
         if (messageRecords.size() > 1) {
             menu.findItem(R.id.menu_context_details).setVisible(false);
+            menu.findItem(R.id.menu_context_share).setVisible(false);
             menu.findItem(R.id.menu_context_save_attachment).setVisible(false);
             menu.findItem(R.id.menu_context_reply).setVisible(false);
             menu.findItem(R.id.menu_context_reply_privately).setVisible(false);
@@ -341,6 +342,7 @@ public class ConversationFragment extends Fragment
             DcMsg messageRecord = messageRecords.iterator().next();
             DcChat chat = getListAdapter().getChat();
             menu.findItem(R.id.menu_context_details).setVisible(true);
+            menu.findItem(R.id.menu_context_share).setVisible(messageRecord.hasFile());
             menu.findItem(R.id.menu_context_save_attachment).setVisible(messageRecord.hasFile());
             boolean canReply = canReplyToMsg(messageRecord);
             menu.findItem(R.id.menu_context_reply).setVisible(chat.canSend() && canReply);
@@ -941,6 +943,9 @@ public class ConversationFragment extends Fragment
                     return true;
                 case R.id.menu_context_delete_message:
                     handleDeleteMessages(getListAdapter().getSelectedItems());
+                    return true;
+                case R.id.menu_context_share:
+                    dcContext.openForViewOrShare(getContext(), getSelectedMessageRecord().getId(), Intent.ACTION_SEND);
                     return true;
                 case R.id.menu_context_details:
                     handleDisplayDetails(getSelectedMessageRecord());

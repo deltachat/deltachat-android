@@ -26,14 +26,6 @@ import android.os.AsyncTask;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.loader.app.LoaderManager;
-import androidx.loader.content.Loader;
-import androidx.viewpager.widget.PagerAdapter;
-import androidx.viewpager.widget.ViewPager;
-import androidx.appcompat.app.AlertDialog;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -45,6 +37,14 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.loader.app.LoaderManager;
+import androidx.loader.content.Loader;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import com.b44t.messenger.DcMediaGalleryElement;
 import com.b44t.messenger.DcMsg;
@@ -287,6 +287,13 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
     }
   }
 
+  private void share() {
+    MediaItem mediaItem = getCurrentMediaItem();
+    if (mediaItem != null) {
+      dcContext.openForViewOrShare(this, mediaItem.msgId, Intent.ACTION_SEND);
+    }
+  }
+
   @SuppressWarnings("CodeBlock2Expr")
   @SuppressLint("InlinedApi")
   private void saveToDisk() {
@@ -384,6 +391,7 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
     switch (item.getItemId()) {
       case R.id.media_preview__edit:     editAvatar();   return true;
       case R.id.media_preview__overview: showOverview(); return true;
+      case R.id.media_preview__share:    share();        return true;
       case R.id.save:                    saveToDisk();   return true;
       case R.id.delete:                  deleteMedia();  return true;
       case R.id.show_in_chat:            showInChat();   return true;

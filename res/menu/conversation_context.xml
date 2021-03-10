@@ -15,16 +15,21 @@
         android:icon="?menu_trash_icon"
         app:showAsAction="always" />
 
-    <item android:title="@string/menu_export_attachment"
-        android:id="@+id/menu_context_save_attachment"
-        android:visible="false"
-        android:icon="?menu_save_icon"
+    <item android:title="@string/menu_share"
+        android:id="@+id/menu_context_share"
+        android:icon="@drawable/ic_share_white_24dp"
         app:showAsAction="always" />
 
     <item android:title="@string/menu_copy_to_clipboard"
           android:id="@+id/menu_context_copy"
           android:icon="?menu_copy_icon"
           app:showAsAction="always" />
+
+    <item android:title="@string/menu_export_attachment"
+        android:id="@+id/menu_context_save_attachment"
+        android:visible="false"
+        android:icon="?menu_save_icon"
+        app:showAsAction="always" />
 
     <item android:title="@string/menu_forward"
           android:id="@+id/menu_context_forward"
