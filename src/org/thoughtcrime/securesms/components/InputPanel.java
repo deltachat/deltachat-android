@@ -63,6 +63,7 @@ public class InputPanel extends ConstraintLayout
   private View            quickAudioToggle;
   private View            buttonToggle;
   private View            recordingContainer;
+  private View            recordLockCancel;
 
   private MicrophoneRecorderView microphoneRecorderView;
   private SlideToCancel          slideToCancel;
@@ -98,11 +99,13 @@ public class InputPanel extends ConstraintLayout
     this.quickAudioToggle       = findViewById(R.id.quick_audio_toggle);
     this.buttonToggle           = findViewById(R.id.button_toggle);
     this.recordingContainer     = findViewById(R.id.recording_container);
+    this.recordLockCancel       = findViewById(R.id.record_cancel);
     this.recordTime             = new RecordTime(findViewById(R.id.record_time));
     this.slideToCancel          = new SlideToCancel(findViewById(R.id.slide_to_cancel));
     this.microphoneRecorderView = findViewById(R.id.recorder_view);
     this.microphoneRecorderView.setListener(this);
 
+    this.recordLockCancel.setOnClickListener(v -> microphoneRecorderView.cancelAction());
 
     if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
       this.microphoneRecorderView.setVisibility(View.GONE);
@@ -215,24 +218,24 @@ public class InputPanel extends ConstraintLayout
   }
 
   @Override
-  public void onRecordPressed(float startPositionX) {
+  public void onRecordPressed() {
     if (listener != null) listener.onRecorderStarted();
     recordTime.display();
-    slideToCancel.display(startPositionX);
+    slideToCancel.display();
 
     if (emojiVisible) ViewUtil.fadeOut(mediaKeyboard, FADE_TIME, View.INVISIBLE);
     ViewUtil.fadeOut(composeText, FADE_TIME, View.INVISIBLE);
     ViewUtil.fadeOut(quickCameraToggle, FADE_TIME, View.INVISIBLE);
     ViewUtil.fadeOut(quickAudioToggle, FADE_TIME, View.INVISIBLE);
-    ViewUtil.fadeOut(buttonToggle, FADE_TIME, View.INVISIBLE);
+    buttonToggle.animate().alpha(0).setDuration(FADE_TIME).start();
   }
 
   @Override
-  public void onRecordReleased(float x) {
-    long elapsedTime = onRecordHideEvent(x);
+  public void onRecordReleased() {
+    long elapsedTime = onRecordHideEvent();
 
     if (listener != null) {
-      Log.w(TAG, "Elapsed time: " + elapsedTime);
+      Log.d(TAG, "Elapsed time: " + elapsedTime);
       if (elapsedTime > 1000) {
         listener.onRecorderFinished();
       } else {
@@ -243,23 +246,30 @@ public class InputPanel extends ConstraintLayout
   }
 
   @Override
-  public void onRecordMoved(float x, float absoluteX) {
-    slideToCancel.moveTo(x);
+  public void onRecordMoved(float offsetX, float absoluteX) {
+    slideToCancel.moveTo(offsetX);
 
-    int   direction = ViewCompat.getLayoutDirection(this);
     float position  = absoluteX / recordingContainer.getWidth();
 
-    if (direction == ViewCompat.LAYOUT_DIRECTION_LTR && position <= 0.5 ||
-            direction == ViewCompat.LAYOUT_DIRECTION_RTL && position >= 0.6)
+    if (ViewUtil.isLtr(this) && position <= 0.5 ||
+        ViewUtil.isRtl(this) && position >= 0.6)
     {
       this.microphoneRecorderView.cancelAction();
     }
   }
 
   @Override
-  public void onRecordCanceled(float x) {
-    onRecordHideEvent(x);
+  public void onRecordCanceled() {
+    onRecordHideEvent();
     if (listener != null) listener.onRecorderCanceled();
+  }
+
+  @Override
+  public void onRecordLocked() {
+    slideToCancel.hide();
+    recordLockCancel.setVisibility(View.VISIBLE);
+    buttonToggle.animate().alpha(1).setDuration(FADE_TIME).start();
+    if (listener != null) listener.onRecorderLocked();
   }
 
   public void onPause() {
@@ -273,8 +283,10 @@ public class InputPanel extends ConstraintLayout
     quickCameraToggle.setEnabled(enabled);
   }
 
-  private long onRecordHideEvent(float x) {
-    ListenableFuture<Void> future      = slideToCancel.hide(x);
+  private long onRecordHideEvent() {
+    recordLockCancel.setVisibility(View.GONE);
+
+    ListenableFuture<Void> future      = slideToCancel.hide();
     long                   elapsedTime = recordTime.hide();
 
     future.addListener(new AssertedSuccessListener<Void>() {
@@ -284,7 +296,7 @@ public class InputPanel extends ConstraintLayout
         ViewUtil.fadeIn(composeText, FADE_TIME);
         ViewUtil.fadeIn(quickCameraToggle, FADE_TIME);
         ViewUtil.fadeIn(quickAudioToggle, FADE_TIME);
-        ViewUtil.fadeIn(buttonToggle, FADE_TIME);
+        buttonToggle.animate().alpha(1).setDuration(FADE_TIME).start();
       }
     });
 
@@ -306,8 +318,17 @@ public class InputPanel extends ConstraintLayout
     composeText.insertEmoji(emoji);
   }
 
+  public boolean isRecordingInLockedMode() {
+    return microphoneRecorderView.isRecordingLocked();
+  }
+
+  public void releaseRecordingLock() {
+    microphoneRecorderView.unlockAction();
+  }
+
   public interface Listener {
     void onRecorderStarted();
+    void onRecorderLocked();
     void onRecorderFinished();
     void onRecorderCanceled();
     void onRecorderPermissionRequired();
@@ -318,23 +339,19 @@ public class InputPanel extends ConstraintLayout
 
     private final View slideToCancelView;
 
-    private float startPositionX;
-
-    public SlideToCancel(View slideToCancelView) {
+    SlideToCancel(View slideToCancelView) {
       this.slideToCancelView = slideToCancelView;
     }
 
-    public void display(float startPositionX) {
-      this.startPositionX = startPositionX;
+    public void display() {
       ViewUtil.fadeIn(this.slideToCancelView, FADE_TIME);
     }
 
-    public ListenableFuture<Void> hide(float x) {
+    public ListenableFuture<Void> hide() {
       final SettableFuture<Void> future = new SettableFuture<>();
-      float offset = getOffset(x);
 
       AnimationSet animation = new AnimationSet(true);
-      animation.addAnimation(new TranslateAnimation(Animation.ABSOLUTE, offset,
+      animation.addAnimation(new TranslateAnimation(Animation.ABSOLUTE, slideToCancelView.getTranslationX(),
                                                     Animation.ABSOLUTE, 0,
                                                     Animation.RELATIVE_TO_SELF, 0,
                                                     Animation.RELATIVE_TO_SELF, 0));
@@ -351,8 +368,7 @@ public class InputPanel extends ConstraintLayout
       return future;
     }
 
-    public void moveTo(float x) {
-      float     offset    = getOffset(x);
+    void moveTo(float offset) {
       Animation animation = new TranslateAnimation(Animation.ABSOLUTE, offset,
                                                    Animation.ABSOLUTE, offset,
                                                    Animation.RELATIVE_TO_SELF, 0,
@@ -363,11 +379,6 @@ public class InputPanel extends ConstraintLayout
       animation.setFillBefore(true);
 
       slideToCancelView.startAnimation(animation);
-    }
-
-    private float getOffset(float x) {
-      return ViewCompat.getLayoutDirection(slideToCancelView) == ViewCompat.LAYOUT_DIRECTION_LTR ?
-          -Math.max(0, this.startPositionX - x) : Math.max(0, x - this.startPositionX);
     }
   }
 
