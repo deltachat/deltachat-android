@@ -31,6 +31,8 @@
     <dimen name="media_bubble_max_height">320dp</dimen>
     <dimen name="below_bubble">3dp</dimen>
 
+    <dimen name="media_bubble_sticker_dimens">175dp</dimen>
+
     <dimen name="gallery_thumbnail_radius">1dp</dimen>
 
     <dimen name="media_keyboard_provider_icon_padding">5dp</dimen>

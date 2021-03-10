@@ -23,9 +23,7 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.text.SpannableString;
-import android.text.Spanned;
 import android.text.TextUtils;
-import android.text.style.URLSpan;
 import android.text.util.Linkify;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -49,10 +47,12 @@ import com.b44t.messenger.DcMsg;
 import org.thoughtcrime.securesms.audio.AudioSlidePlayer;
 import org.thoughtcrime.securesms.components.AudioView;
 import org.thoughtcrime.securesms.components.AvatarImageView;
+import org.thoughtcrime.securesms.components.BorderlessImageView;
 import org.thoughtcrime.securesms.components.ConversationItemFooter;
 import org.thoughtcrime.securesms.components.ConversationItemThumbnail;
 import org.thoughtcrime.securesms.components.DocumentView;
 import org.thoughtcrime.securesms.components.QuoteView;
+import org.thoughtcrime.securesms.components.emoji.EmojiTextView;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.AudioSlide;
@@ -62,9 +62,9 @@ import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.mms.Slide;
 import org.thoughtcrime.securesms.mms.SlideClickListener;
 import org.thoughtcrime.securesms.mms.SlideDeck;
+import org.thoughtcrime.securesms.mms.StickerSlide;
 import org.thoughtcrime.securesms.mms.VideoSlide;
 import org.thoughtcrime.securesms.recipients.Recipient;
-import org.thoughtcrime.securesms.util.LongClickCopySpan;
 import org.thoughtcrime.securesms.util.LongClickMovementMethod;
 import org.thoughtcrime.securesms.util.MediaUtil;
 import org.thoughtcrime.securesms.util.Prefs;
@@ -75,7 +75,6 @@ import org.thoughtcrime.securesms.util.views.Stub;
 import java.util.HashSet;
 import java.util.Locale;
 import java.util.Set;
-import java.util.regex.Pattern;
 
 /**
  * A view that displays an individual conversation item within a conversation
@@ -92,7 +91,6 @@ public class ConversationItem extends LinearLayout
 
   private static final Rect SWIPE_RECT = new Rect();
 
-  private static final Pattern CMD_PATTERN = Pattern.compile("(?<=^|\\s)/[a-zA-Z][a-zA-Z@\\d_/.-]{0,254}");
   private static final int MAX_MEASURE_CALLS = 3;
   static long PULSE_HIGHLIGHT_MILLIS = 500;
 
@@ -108,6 +106,7 @@ public class ConversationItem extends LinearLayout
   @Nullable private QuoteView      quoteView;
   private   TextView               bodyText;
   private   ConversationItemFooter footer;
+  private   ConversationItemFooter stickerFooter;
   private   TextView               groupSender;
   private   View                   groupSenderHolder;
   private   AvatarImageView        contactPhoto;
@@ -120,6 +119,7 @@ public class ConversationItem extends LinearLayout
   private @NonNull  Stub<ConversationItemThumbnail> mediaThumbnailStub;
   private @NonNull  Stub<AudioView>                 audioViewStub;
   private @NonNull  Stub<DocumentView>              documentViewStub;
+  private           Stub<BorderlessImageView>       stickerStub;
   private @Nullable EventListener                   eventListener;
 
   private int measureCalls;
@@ -155,6 +155,7 @@ public class ConversationItem extends LinearLayout
 
     this.bodyText                =            findViewById(R.id.conversation_item_body);
     this.footer                  =            findViewById(R.id.conversation_item_footer);
+    this.stickerFooter           =            findViewById(R.id.conversation_item_sticker_footer);
     this.groupSender             =            findViewById(R.id.group_message_sender);
     this.contactPhoto            =            findViewById(R.id.contact_photo);
     this.contactPhotoHolder      =            findViewById(R.id.contact_photo_container);
@@ -162,6 +163,7 @@ public class ConversationItem extends LinearLayout
     this.mediaThumbnailStub      = new Stub<>(findViewById(R.id.image_view_stub));
     this.audioViewStub           = new Stub<>(findViewById(R.id.audio_view_stub));
     this.documentViewStub        = new Stub<>(findViewById(R.id.document_view_stub));
+    this.stickerStub             = new Stub<>(findViewById(R.id.sticker_view_stub));
     this.groupSenderHolder       =            findViewById(R.id.group_sender_holder);
     this.quoteView               =            findViewById(R.id.quote_view);
     this.container               =            findViewById(R.id.container);
@@ -339,8 +341,15 @@ public class ConversationItem extends LinearLayout
     return type==DcMsg.DC_MSG_GIF || type==DcMsg.DC_MSG_IMAGE || type==DcMsg.DC_MSG_VIDEO;
   }
 
+  private boolean hasSticker(DcMsg dcMsg) {
+    return dcMsg.getType()==DcMsg.DC_MSG_STICKER;
+  }
+
   private boolean hasOnlyThumbnail(DcMsg messageRecord) {
-    return hasThumbnail(messageRecord) && !hasAudio(messageRecord) && !hasDocument(messageRecord);
+    return hasThumbnail(messageRecord) &&
+	   !hasAudio(messageRecord)    &&
+	   !hasDocument(messageRecord) &&
+	   !hasSticker(messageRecord);
   }
 
   private boolean hasDocument(DcMsg dcMsg) {
@@ -362,7 +371,11 @@ public class ConversationItem extends LinearLayout
       bodyText.setVisibility(View.GONE);
     }
     else {
-      bodyText.setText(linkifyMessageBody(new SpannableString(text), batchSelected.isEmpty()));
+      SpannableString spannable = new SpannableString(text);
+      if (batchSelected.isEmpty()) {
+        spannable = EmojiTextView.linkify(spannable);
+      }
+      bodyText.setText(spannable);
       bodyText.setVisibility(View.VISIBLE);
     }
 
@@ -403,6 +416,7 @@ public class ConversationItem extends LinearLayout
       audioViewStub.get().setVisibility(View.VISIBLE);
       if (mediaThumbnailStub.resolved()) mediaThumbnailStub.get().setVisibility(View.GONE);
       if (documentViewStub.resolved())   documentViewStub.get().setVisibility(View.GONE);
+      if (stickerStub.resolved())        stickerStub.get().setVisibility(View.GONE);
 
       //noinspection ConstantConditions
       if(dcChat.getId() == DcChat.DC_CHAT_ID_DEADDROP) {  // no audio on dead drops
@@ -431,6 +445,7 @@ public class ConversationItem extends LinearLayout
       documentViewStub.get().setVisibility(View.VISIBLE);
       if (mediaThumbnailStub.resolved()) mediaThumbnailStub.get().setVisibility(View.GONE);
       if (audioViewStub.resolved())      audioViewStub.get().setVisibility(View.GONE);
+      if (stickerStub.resolved())        stickerStub.get().setVisibility(View.GONE);
 
       //noinspection ConstantConditions
       documentViewStub.get().setDocument(new DocumentSlide(context, messageRecord));
@@ -445,6 +460,7 @@ public class ConversationItem extends LinearLayout
       mediaThumbnailStub.get().setVisibility(View.VISIBLE);
       if (audioViewStub.resolved())    audioViewStub.get().setVisibility(View.GONE);
       if (documentViewStub.resolved()) documentViewStub.get().setVisibility(View.GONE);
+      if (stickerStub.resolved())        stickerStub.get().setVisibility(View.GONE);
 
       Slide slide;
       if (messageRecord.getType()==DcMsg.DC_MSG_VIDEO) {
@@ -480,6 +496,25 @@ public class ConversationItem extends LinearLayout
       bodyBubble.getLayoutParams().width = ViewUtil.dpToPx(readDimen(R.dimen.media_bubble_max_width));
       ViewUtil.updateLayoutParams(bodyText, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
       ViewUtil.updateLayoutParams(groupSenderHolder, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+      footer.setVisibility(VISIBLE);
+    }
+    else if (hasSticker(messageRecord)) {
+      stickerStub.get().setVisibility(View.VISIBLE);
+      if (audioViewStub.resolved())      audioViewStub.get().setVisibility(View.GONE);
+      if (documentViewStub.resolved())   documentViewStub.get().setVisibility(View.GONE);
+      if (mediaThumbnailStub.resolved()) mediaThumbnailStub.get().setVisibility(View.GONE);
+
+      bodyBubble.setBackgroundColor(Color.TRANSPARENT);
+
+      stickerStub.get().setSlide(glideRequests, new StickerSlide(context, messageRecord));
+      //stickerStub.get().setThumbnailClickListener(passthroughClickListener);
+
+      stickerStub.get().setOnLongClickListener(passthroughClickListener);
+      stickerStub.get().setOnClickListener(passthroughClickListener);
+
+      ViewUtil.updateLayoutParams(bodyText, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+      ViewUtil.updateLayoutParams(groupSenderHolder, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
       footer.setVisibility(VISIBLE);
     }
     else {
@@ -536,35 +571,6 @@ public class ConversationItem extends LinearLayout
       contactPhoto.setAvatar(glideRequests, dcContext.getRecipient(dcContact), true);
       contactPhoto.setVisibility(View.VISIBLE);
     }
-  }
-
-  private void replaceURLSpan(SpannableString messageBody) {
-    URLSpan[] urlSpans = messageBody.getSpans(0, messageBody.length(), URLSpan.class);
-    for (URLSpan urlSpan : urlSpans) {
-      int start = messageBody.getSpanStart(urlSpan);
-      int end = messageBody.getSpanEnd(urlSpan);
-      // LongClickCopySpan must not be derived from URLSpan, otherwise links will be removed on the next addLinks() call
-      messageBody.setSpan(new LongClickCopySpan(urlSpan.getURL(), this.dcChat.getId()), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-    }
-  }
-
-  private SpannableString linkifyMessageBody(SpannableString messageBody, boolean shouldLinkifyAllLinks) {
-    if (!shouldLinkifyAllLinks) {
-      return messageBody;
-    }
-
-    // linkify commands such as `/echo` -
-    // do this first to avoid `/xkcd_123456` to be treated partly as a phone number
-    if (Linkify.addLinks(messageBody, CMD_PATTERN, "cmd:", null, null)) {
-      replaceURLSpan(messageBody); // replace URLSpan so that it is not removed on the next addLinks() call
-    }
-
-    // linkyfiy urls etc., this removes all existing URLSpan
-    if (Linkify.addLinks(messageBody, Linkify.EMAIL_ADDRESSES|Linkify.WEB_URLS|Linkify.PHONE_NUMBERS)) {
-      replaceURLSpan(messageBody);
-    }
-
-    return messageBody;
   }
 
   private void setQuote(@NonNull DcMsg current) {
@@ -630,6 +636,7 @@ public class ConversationItem extends LinearLayout
     ViewUtil.updateLayoutParams(footer, LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 
     footer.setVisibility(GONE);
+    stickerFooter.setVisibility(GONE);
     if (mediaThumbnailStub.resolved()) mediaThumbnailStub.get().getFooter().setVisibility(GONE);
 
     ConversationItemFooter activeFooter = getActiveFooter(current);
@@ -638,7 +645,9 @@ public class ConversationItem extends LinearLayout
   }
 
   private ConversationItemFooter getActiveFooter(@NonNull DcMsg messageRecord) {
-    if (hasOnlyThumbnail(messageRecord) && TextUtils.isEmpty(messageRecord.getText())) {
+    if (hasSticker(messageRecord)) {
+      return stickerFooter;
+    } else if (hasOnlyThumbnail(messageRecord) && TextUtils.isEmpty(messageRecord.getText())) {
       return mediaThumbnailStub.get().getFooter();
     } else {
       return footer;
@@ -654,6 +663,13 @@ public class ConversationItem extends LinearLayout
   }
 
   private void setGroupMessageStatus() {
+    if (messageRecord.getType()==DcMsg.DC_MSG_STICKER) {
+      this.groupSender.setVisibility(GONE);
+      return;
+    } else {
+      this.groupSender.setVisibility(VISIBLE);
+    }
+
     if (messageRecord.isForwarded()) {
       if (groupThread && !messageRecord.isOutgoing() && dcContact !=null) {
         this.groupSender.setText(context.getString(R.string.forwarded_by, messageRecord.getSenderName(dcContact, false)));

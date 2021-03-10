@@ -9,6 +9,7 @@ public class DcMsg {
     public final static int DC_MSG_TEXT = 10;
     public final static int DC_MSG_IMAGE = 20;
     public final static int DC_MSG_GIF = 21;
+    public final static int DC_MSG_STICKER = 23;
     public final static int DC_MSG_AUDIO = 40;
     public final static int DC_MSG_VOICE = 41;
     public final static int DC_MSG_VIDEO = 50;

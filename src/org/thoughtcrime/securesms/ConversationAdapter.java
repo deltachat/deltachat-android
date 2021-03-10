@@ -81,6 +81,8 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
   private static final int MESSAGE_TYPE_DOCUMENT_OUTGOING  = 7;
   private static final int MESSAGE_TYPE_DOCUMENT_INCOMING  = 8;
   private static final int MESSAGE_TYPE_VIDEOCHAT_INVITE   = 9;
+  private static final int MESSAGE_TYPE_STICKER_INCOMING   = 10;
+  private static final int MESSAGE_TYPE_STICKER_OUTGOING   = 11;
 
   private final Set<DcMsg> batchSelected = Collections.synchronizedSet(new HashSet<DcMsg>());
 
@@ -275,10 +277,12 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
       case MESSAGE_TYPE_AUDIO_OUTGOING:
       case MESSAGE_TYPE_THUMBNAIL_OUTGOING:
       case MESSAGE_TYPE_DOCUMENT_OUTGOING:
+      case MESSAGE_TYPE_STICKER_OUTGOING:
       case MESSAGE_TYPE_OUTGOING:        return R.layout.conversation_item_sent;
       case MESSAGE_TYPE_AUDIO_INCOMING:
       case MESSAGE_TYPE_THUMBNAIL_INCOMING:
       case MESSAGE_TYPE_DOCUMENT_INCOMING:
+      case MESSAGE_TYPE_STICKER_INCOMING:
       case MESSAGE_TYPE_INCOMING:        return R.layout.conversation_item_received;
       case MESSAGE_TYPE_INFO:            return R.layout.conversation_item_update;
       case MESSAGE_TYPE_VIDEOCHAT_INVITE:return R.layout.conversation_item_videochat;
@@ -301,6 +305,9 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
     }
     else if (type==DcMsg.DC_MSG_IMAGE || type==DcMsg.DC_MSG_GIF || type==DcMsg.DC_MSG_VIDEO) {
       return dcMsg.isOutgoing()? MESSAGE_TYPE_THUMBNAIL_OUTGOING : MESSAGE_TYPE_THUMBNAIL_INCOMING;
+    }
+    else if (type == DcMsg.DC_MSG_STICKER) {
+      return dcMsg.isOutgoing()? MESSAGE_TYPE_STICKER_OUTGOING : MESSAGE_TYPE_STICKER_INCOMING;
     }
     else if (type == DcMsg.DC_MSG_VIDEOCHAT_INVITATION) {
       return MESSAGE_TYPE_VIDEOCHAT_INVITE;

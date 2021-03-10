@@ -18,10 +18,10 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
@@ -35,6 +35,7 @@ import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.Prefs;
+import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
 import java.io.File;
@@ -129,8 +130,10 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
         if (chatIsDeviceTalk) {
           menu.findItem(R.id.edit_name).setVisible(false);
           menu.findItem(R.id.show_encr_info).setVisible(false);
+          menu.findItem(R.id.copy_addr_to_clipboard).setVisible(false);
         } else if (chatIsGroup) {
           menu.findItem(R.id.edit_name).setTitle(R.string.menu_group_name_and_image);
+          menu.findItem(R.id.copy_addr_to_clipboard).setVisible(false);
         }
       } else {
         menu.findItem(R.id.menu_mute_notifications).setVisible(false);
@@ -239,7 +242,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
     }
     else if (chatId > 0) {
       DcChat dcChat  = dcContext.getChat(chatId);
-      titleView.setTitle(GlideApp.with(this), dcChat, false);
+      titleView.setTitle(GlideApp.with(this), dcChat, isContactProfile());
     }
     else if (isContactProfile()){
       titleView.setTitle(GlideApp.with(this), dcContext.getContact(contactId));
@@ -251,7 +254,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
   }
 
   private boolean isContactProfile() {
-    // there may still be a single-chat lined to the contact profile
+    // contact-profiles are profiles without a chat or with a one-to-one chat
     return contactId!=0 && (chatId==0 || !chatIsGroup);
   }
 
@@ -307,7 +310,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
       switch(tabId) {
         case TAB_SETTINGS:
           if(isContactProfile()) {
-            return getString(contactId==DcContact.DC_CONTACT_ID_SELF? R.string.self : R.string.tab_contact);
+            return getString(R.string.tab_contact);
           }
           else if (chatIsMailingList) {
             return getString(R.string.mailing_list);
@@ -358,6 +361,9 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
       case R.id.edit_name:
         onEditName();
         break;
+      case R.id.copy_addr_to_clipboard:
+        onCopyAddrToClipboard();
+        break;
       case R.id.show_encr_info:
         onEncrInfo();
         break;
@@ -369,7 +375,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
     return false;
   }
 
-  public void onNotifyOnOff() {
+  private void onNotifyOnOff() {
     if (Prefs.isChatMuted(dcContext.getChat(chatId))) {
       setMuted(0);
     }
@@ -384,7 +390,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
     }
   }
 
-  public void onSoundSettings() {
+  private void onSoundSettings() {
     Uri current = Prefs.getChatRingtone(this, chatId);
     Uri defaultUri = Prefs.getNotificationRingtone(this);
 
@@ -401,7 +407,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
     startActivityForResult(intent, REQUEST_CODE_PICK_RINGTONE);
   }
 
-  public void onVibrateSettings() {
+  private void onVibrateSettings() {
     int checkedItem = Prefs.getChatVibrate(this, chatId).getId();
     int[] selectedChoice = new int[]{checkedItem};
     new AlertDialog.Builder(this)
@@ -414,7 +420,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
             .show();
   }
 
-  public void onEnlargeAvatar() {
+  private void onEnlargeAvatar() {
     String profileImagePath;
     String title;
     Uri profileImageUri;
@@ -441,7 +447,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
     startActivity(intent);
   }
 
-  public void onEditName() {
+  private void onEditName() {
     if (chatIsGroup) {
       Intent intent = new Intent(this, GroupCreateActivity.class);
       intent.putExtra(GroupCreateActivity.EDIT_GROUP_CHAT_ID, chatId);
@@ -468,7 +474,13 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
     }
   }
 
-  public void onEncrInfo() {
+  private void onCopyAddrToClipboard() {
+    DcContact dcContact = dcContext.getContact(contactId);
+    Util.writeTextToClipboard(this, dcContact.getAddr());
+    Toast.makeText(this, getString(R.string.copied_to_clipboard), Toast.LENGTH_SHORT).show();
+  }
+
+  private void onEncrInfo() {
     String info_str = isContactProfile() ?
       dcContext.getContactEncrInfo(contactId) : dcContext.getChatEncrInfo(chatId);
     new AlertDialog.Builder(this)
@@ -477,7 +489,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
         .show();
   }
 
-  public void onBlockContact() {
+  private void onBlockContact() {
     DcContact dcContact = dcContext.getContact(contactId);
     if(dcContact.isBlocked()) {
       new AlertDialog.Builder(this)

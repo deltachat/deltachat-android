@@ -39,6 +39,12 @@
     <string name="profile">Profil</string>
     <string name="main_menu">Menu principal</string>
     <string name="start_chat">Commencer la discussion</string>
+    <string name="show_full_message">Montrer le message complet...</string>
+    <string name="load_remote_content">Charger les images distantes</string>
+    <!-- possible answers to the question are: Never, Always, Once -->
+    <string name="load_remote_content_ask">Les images distantes peuvent être utilisées pour vous pister. Ce paramètre autorise également le chargement de polices ou d\'autres contenus. S\'il est désactivé, vous pouvez tout de même voir les images ancrées ou en cache. Souhaitez-vous charger les images distantes ?</string>
+    <string name="always">Toujours</string>
+    <string name="once">Une fois</string>
     <string name="show_password">Afficher le mot de passe</string>
     <string name="hide_password">Masquer le mot de passe</string>
     <string name="not_now">Pas maintenant</string>
@@ -107,6 +113,8 @@
     <string name="audio">Son</string>
     <string name="voice_message">Message vocal</string>
     <string name="forwarded_message">Message transféré</string>
+    <!-- %1$s will be replaced by the name or the email-address of the person who has forwarded the message -->
+    <string name="forwarded_by">Transféré par %1$s</string>
     <string name="video">Vidéo</string>
     <string name="documents">Documents</string>
     <string name="contact">Contact</string>
@@ -179,6 +187,8 @@
     <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
     <string name="show_in_chat">Montrer dans la discussion</string>
     <string name="menu_share">Partager</string>
+    <!-- this is the action "to block sth." usually a mailing list or a contact. this is NOT "a large solid piece of hard material" :) -->
+    <string name="block">Bloquer</string>
     <string name="menu_block_contact">Bloquer ce contact</string>
     <string name="menu_unblock_contact">Débloquer ce contact</string>
     <string name="menu_play">Jouer</string>
@@ -187,6 +197,7 @@
     <string name="menu_scroll_to_top">Faites défiler jusqu\'en haut</string>
     <string name="menu_help">Aide</string>
     <string name="menu_select_all">Tout sélectionner</string>
+    <string name="select_more">Sélectionner plus</string>
     <string name="menu_expand">Étendre</string>
     <string name="menu_edit_name">Modifier le nom</string>
     <string name="menu_settings">Configuration</string>
@@ -323,6 +334,11 @@
     <string name="messaging_disabled_deaddrop">Cliquez sur un message pour accepter ou rejeter la demande de contact.</string>
     <string name="cannot_display_unsuported_file_type">Impossible d\'afficher ce type de fichier : %s</string>
     <string name="attachment_failed_to_load">Échec du chargement de la pièce jointe</string>
+
+
+    <!-- mailing lists -->
+    <string name="mailing_list">Liste de diffusion</string>
+    <string name="ask_show_mailing_list">Montrer la liste de diffusion « %1$s » ?</string>
 
 
     <!-- map -->
@@ -551,6 +567,8 @@
     <string name="autodel_at_once">Une fois</string>
     <string name="after_30_seconds">Après 30 secondes</string>
     <string name="after_1_minute">Après 1 minute</string>
+    <string name="after_5_minutes">Après 5 minutes</string>
+    <string name="after_30_minutes">Après 30 minutes</string>
     <string name="autodel_after_1_hour">Après 1 heure</string>
     <string name="autodel_after_1_day">Après 1 jour</string>
     <string name="autodel_after_1_week">Après 1 semaine</string>
@@ -601,6 +619,11 @@
     <string name="systemmsg_ephemeral_timer_day">Temporisation des messages éphémères réglée à 1 journée.</string>
     <string name="systemmsg_ephemeral_timer_week">Temporisation des messages éphémères réglée à 1 semaine.</string>
     <string name="systemmsg_ephemeral_timer_four_weeks">Temporisation des messages éphémères réglée à 4 semaines.</string>
+    <string name="systemmsg_ephemeral_timer_minutes">Régler le temps d\'affichage des messages éphémères à %1$s minute(s).</string>
+    <string name="systemmsg_ephemeral_timer_hours">Régler le temps d\'affichage des messages éphémères à %1$s heure(s).</string>
+    <string name="systemmsg_ephemeral_timer_days">Régler le temps d\'affichage des messages éphémères à %1$s jour(s).</string>
+    <string name="systemmsg_ephemeral_timer_weeks">Régler le temps d\'affichage des messages éphémères à %1$s semaine(s).</string>
+
     <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
     <string name="systemmsg_chat_protection_disabled">Protection de la discussion désactivée.</string>
     <string name="systemmsg_chat_protection_enabled">Protection de la discussion activée.</string>

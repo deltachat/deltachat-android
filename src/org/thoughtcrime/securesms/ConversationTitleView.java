@@ -118,7 +118,8 @@ public class ConversationTitleView extends RelativeLayout {
     avatar.setAvatar(glideRequests, DcHelper.getContext(getContext()).getRecipient(contact), false);
     title.setText(contact.getDisplayName());
     title.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-    subtitle.setVisibility(View.GONE);
+    subtitle.setText(contact.getAddr());
+    subtitle.setVisibility(View.VISIBLE);
   }
 
   public void hideAvatar() {

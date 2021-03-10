@@ -902,7 +902,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     });
 
     titleView.setOnClickListener(v -> handleProfile());
-    titleView.setOnBackClickedListener(view -> onBackPressed());
+    titleView.setOnBackClickedListener(view -> handleReturnToConversationList());
 
     composeText.setOnKeyListener(composeKeyPressedListener);
     composeText.addTextChangedListener(composeKeyPressedListener);

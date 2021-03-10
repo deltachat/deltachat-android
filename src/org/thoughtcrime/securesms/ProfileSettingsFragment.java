@@ -1,6 +1,7 @@
 package org.thoughtcrime.securesms;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build;
@@ -138,31 +139,26 @@ public class ProfileSettingsFragment extends Fragment
   @Override
   public void onSettingsClicked(int settingsId) {
     switch(settingsId) {
-      case ProfileSettingsAdapter.SETTING_CONTACT_ADDR:
-        onContactAddrClicked();
-        break;
       case ProfileSettingsAdapter.SETTING_NEW_CHAT:
         onNewChat();
         break;
-      case ProfileSettingsAdapter.SETTING_CONTACT_NAME:
-        ((ProfileActivity)getActivity()).onEditName();
-        break;
-      case ProfileSettingsAdapter.SETTING_ENCRYPTION:
-        ((ProfileActivity)getActivity()).onEncrInfo();
-        break;
-      case ProfileSettingsAdapter.SETTING_BLOCK_CONTACT:
-        ((ProfileActivity)getActivity()).onBlockContact();
-        break;
-      case ProfileSettingsAdapter.SETTING_NOTIFY:
-        ((ProfileActivity)getActivity()).onNotifyOnOff();
-        break;
-      case ProfileSettingsAdapter.SETTING_SOUND:
-        ((ProfileActivity)getActivity()).onSoundSettings();
-        break;
-      case ProfileSettingsAdapter.SETTING_VIBRATE:
-        ((ProfileActivity)getActivity()).onVibrateSettings();
-        break;
     }
+  }
+
+  @Override
+  public void onStatusLongClicked() {
+      Context context = getContext();
+      new AlertDialog.Builder(context)
+        .setTitle(R.string.pref_default_status_label)
+        .setItems(new CharSequence[]{
+            context.getString(R.string.menu_copy_to_clipboard)
+          },
+          (dialogInterface, i) -> {
+            Util.writeTextToClipboard(context, adapter.getStatusText());
+            Toast.makeText(context, context.getString(R.string.copied_to_clipboard), Toast.LENGTH_SHORT).show();
+          })
+        .setNegativeButton(R.string.cancel, null)
+        .show();
   }
 
   @Override
@@ -228,21 +224,6 @@ public class ProfileSettingsFragment extends Fragment
     intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
     getContext().startActivity(intent);
     getActivity().finish();
-  }
-
-  private void onContactAddrClicked() {
-    String address = dcContext.getContact(contactId).getAddr();
-    new AlertDialog.Builder(getContext())
-        .setTitle(address)
-        .setItems(new CharSequence[]{
-                getContext().getString(R.string.menu_copy_to_clipboard)
-            },
-            (dialogInterface, i) -> {
-              Util.writeTextToClipboard(getContext(), address);
-              Toast.makeText(getContext(), getString(R.string.copied_to_clipboard), Toast.LENGTH_SHORT).show();
-            })
-        .setNegativeButton(R.string.cancel, null)
-        .show();
   }
 
   private void onNewChat() {

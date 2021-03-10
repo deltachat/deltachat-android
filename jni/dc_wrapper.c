@@ -1,25 +1,3 @@
-/*******************************************************************************
- *
- *                           Delta Chat Java Adapter
- *                           (C) 2017 Björn Petersen
- *                    Contact: r10s@b44t.com, http://b44t.com
- *
- * This program is free software: you can redistribute it and/or modify it under
- * the terms of the GNU General Public License as published by the Free Software
- * Foundation, either version 3 of the License, or (at your option) any later
- * version.
- *
- * This program is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
- * details.
- *
- * You should have received a copy of the GNU General Public License along with
- * this program.  If not, see http://www.gnu.org/licenses/ .
- *
- ******************************************************************************/
-
-
 // Purpose: The C part of the Java<->C Wrapper, see also DcContext.java
 
 
@@ -41,7 +19,7 @@ static char* char_ref__(JNIEnv* env, jstring a) {
     }
 
     /* we do not use the JNI functions GetStringUTFChars()/ReleaseStringUTFChars()
-    as they do not work on some older systems for code points >0xffff, eg. emojos.
+    as they do not work on some older systems for code points >0xffff, eg. emojis.
     as a workaround, we're calling back to java-land's String.getBytes() which works as expected */
     static jclass    s_strCls    = NULL;
     static jmethodID s_getBytes  = NULL;
@@ -1544,6 +1522,15 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcContact_getProfileImage(JNIEnv *env,
 JNIEXPORT jint Java_com_b44t_messenger_DcContact_getColor(JNIEnv *env, jobject obj)
 {
     return dc_contact_get_color(get_dc_contact(env, obj));
+}
+
+
+JNIEXPORT jstring Java_com_b44t_messenger_DcContact_getStatus(JNIEnv *env, jobject obj)
+{
+    char* temp = dc_contact_get_status(get_dc_contact(env, obj));
+        jstring ret = JSTRING_NEW(temp);
+    dc_str_unref(temp);
+    return ret;
 }
 
 
