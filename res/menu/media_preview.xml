@@ -18,8 +18,7 @@
         app:showAsAction="ifRoom"/>
     <item android:id="@+id/save"
           android:title="@string/menu_export_attachment"
-          android:icon="@drawable/ic_save_white_24dp"
-          app:showAsAction="ifRoom"/>
+          app:showAsAction="never"/>
     <item android:id="@+id/media_preview__overview"
           android:title="@string/tab_gallery"
           app:showAsAction="never"/>
