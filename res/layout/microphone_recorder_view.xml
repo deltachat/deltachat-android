@@ -20,6 +20,8 @@
         android:layout_width="40dp"
         android:layout_height="64dp"
         android:layout_gravity="center"
+        android:layout_marginLeft="-9dp"
+        android:layout_marginStart="-9dp"
         android:background="@drawable/recording_lock_background"
         android:clipChildren="false"
         android:orientation="vertical"
