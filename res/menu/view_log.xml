@@ -2,11 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item android:id="@+id/save_log"
-        android:title="@string/menu_save_log"
-        android:icon="@drawable/ic_save_white_24dp"
-        app:showAsAction="always"/>
+        android:title="@string/menu_save_log" />
     <item android:title="@string/menu_copy_to_clipboard"
-        android:id="@+id/copy_log_to_clipboard" />
+        android:icon="@drawable/ic_content_copy_white_24dp"
+        android:id="@+id/copy_log_to_clipboard"
+        app:showAsAction="ifRoom" />
     <item android:title="@string/menu_zoom_in"
         android:id="@+id/log_zoom_in" />
     <item android:title="@string/menu_zoom_out"
