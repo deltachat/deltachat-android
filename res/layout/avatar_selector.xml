@@ -95,7 +95,9 @@
 					android:contentDescription="@string/contact"
 					app:circleColor="#FD3C00"/>
 
-				<TextView android:layout_marginTop="10dp"
+				<TextView
+					android:id="@+id/remove_button_label"
+					android:layout_marginTop="10dp"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					style="@style/AttachmentTypeLabel"

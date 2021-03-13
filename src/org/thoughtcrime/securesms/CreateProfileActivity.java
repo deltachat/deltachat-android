@@ -25,7 +25,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.loader.app.LoaderManager;
 
@@ -58,8 +57,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.security.SecureRandom;
-import java.util.LinkedList;
-import java.util.List;
 
 import static android.provider.MediaStore.EXTRA_OUTPUT;
 
@@ -335,46 +332,6 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Emoj
     statusView.setText(status);
   }
 
-  private Intent createAvatarSelectionIntent(@Nullable File captureFile, boolean includeClear, boolean includeCamera) {
-    List<Intent> extraIntents  = new LinkedList<>();
-    Intent       galleryIntent = new Intent(Intent.ACTION_PICK);
-//    galleryIntent.setDataAndType(android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI, "image/*");
-//
-//    if (!IntentUtils.isResolvable(CreateProfileActivity.this, galleryIntent)) {
-//      galleryIntent = new Intent(Intent.ACTION_GET_CONTENT);
-//      galleryIntent.setType("image/*");
-//    }
-
-    if (includeCamera) {
-      Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-
-      Uri captureUri = null;
-      try {
-        captureUri = FileProviderUtil.getUriFor(this, captureFile);
-      } catch (Exception e) {
-        Log.w(TAG, e);
-      }
-
-      if (captureUri != null && cameraIntent.resolveActivity(getPackageManager()) != null) {
-        cameraIntent.putExtra(EXTRA_OUTPUT, captureUri);
-        extraIntents.add(cameraIntent);
-      }
-    }
-
-    if (includeClear) {
-      extraIntents.add(new Intent("org.thoughtcrime.securesms.action.CLEAR_PROFILE_PHOTO"));
-    }
-
-    Intent chooserIntent = Intent.createChooser(galleryIntent, getString(R.string.pref_profile_photo));
-
-    if (!extraIntents.isEmpty()) {
-      chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, extraIntents.toArray(new Intent[0]));
-    }
-
-
-    return chooserIntent;
-  }
-
   private void handleAvatarSelectionWithPermissions() {
     boolean hasCameraPermission = Permissions.hasAll(this, Manifest.permission.CAMERA);
 
@@ -387,7 +344,7 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Emoj
       }
     }
 
-    new AvatarSelector(this, LoaderManager.getInstance(this), new AvatarSelectedListener()).show(this, avatar);
+    new AvatarSelector(this, LoaderManager.getInstance(this), new AvatarSelectedListener(), avatarBytes != null).show(this, avatar);
     /*Intent chooserIntent = createAvatarSelectionIntent(captureFile, avatarBytes != null, hasCameraPermission);
     startActivityForResult(chooserIntent, REQUEST_CODE_AVATAR);*/
   }

@@ -53,7 +53,7 @@ public class AvatarSelector extends PopupWindow {
   private @Nullable AttachmentClickedListener listener;
   private int chatId;
 
-  public AvatarSelector(@NonNull Context context, @NonNull LoaderManager loaderManager, @Nullable AttachmentClickedListener listener) {
+  public AvatarSelector(@NonNull Context context, @NonNull LoaderManager loaderManager, @Nullable AttachmentClickedListener listener, boolean includeClear) {
     super(context);
 
     LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -61,7 +61,6 @@ public class AvatarSelector extends PopupWindow {
 
     this.listener       = listener;
     this.loaderManager  = loaderManager;
-    this.chatId         = chatId;
     this.recentRail     = ViewUtil.findById(layout, R.id.recent_photos);
     this.imageButton    = ViewUtil.findById(layout, R.id.gallery_button);
     this.cameraButton   = ViewUtil.findById(layout, R.id.camera_button);
@@ -73,6 +72,10 @@ public class AvatarSelector extends PopupWindow {
     this.closeButton.setOnClickListener(new CloseClickListener());
     this.removeButton.setOnClickListener(new PropagatingClickListener(REMOVE_PHOTO));
     this.recentRail.setListener(new RecentPhotoSelectedListener());
+    if (!includeClear) {
+      this.removeButton.setVisibility(View.GONE);
+      ViewUtil.findById(layout, R.id.remove_button_label).setVisibility(View.GONE);
+    }
 
     setContentView(layout);
     setWidth(LinearLayout.LayoutParams.MATCH_PARENT);
