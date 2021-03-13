@@ -345,8 +345,6 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Emoj
     }
 
     new AvatarSelector(this, LoaderManager.getInstance(this), new AvatarSelectedListener(), avatarBytes != null).show(this, avatar);
-    /*Intent chooserIntent = createAvatarSelectionIntent(captureFile, avatarBytes != null, hasCameraPermission);
-    startActivityForResult(chooserIntent, REQUEST_CODE_AVATAR);*/
   }
 
   private void handleUpload() {
