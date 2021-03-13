@@ -47,7 +47,6 @@ import org.thoughtcrime.securesms.util.BitmapDecodingException;
 import org.thoughtcrime.securesms.util.BitmapUtil;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
-import org.thoughtcrime.securesms.util.FileProviderUtil;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
@@ -57,8 +56,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.security.SecureRandom;
-
-import static android.provider.MediaStore.EXTRA_OUTPUT;
 
 @SuppressLint("StaticFieldLeak")
 public class CreateProfileActivity extends BaseActionBarActivity implements EmojiKeyboardProvider.EmojiEventListener {
@@ -82,13 +79,14 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Emoj
   private boolean fromWelcome;
 
   private byte[] avatarBytes;
-  private File   captureFile;
+  private AttachmentManager attachmentManager;
 
 
   @Override
   public void onCreate(Bundle bundle) {
     super.onCreate(bundle);
     this.fromWelcome  = getIntent().getBooleanExtra(FROM_WELCOME, false);
+    attachmentManager = new AttachmentManager(this, () -> {});
 
     dynamicTheme.onCreate(this);
     dynamicLanguage.onCreate(this);
@@ -169,12 +167,10 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Emoj
       case REQUEST_CODE_AVATAR:
         if (resultCode == Activity.RESULT_OK) {
           Uri inputFile  = (data != null ? data.getData() : null);
-
           onFileSelected(inputFile);
-
         }
-
         break;
+
       case Crop.REQUEST_CROP:
         if (resultCode == Activity.RESULT_OK) {
 
@@ -222,8 +218,8 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Emoj
 
   private void onFileSelected(Uri inputFile) {
     Uri outputFile = Uri.fromFile(new File(getCacheDir(), "cropped"));
-    if (inputFile == null && captureFile != null) {
-      inputFile = Uri.fromFile(captureFile);
+    if (inputFile == null) {
+      inputFile = attachmentManager.getImageCaptureUri();
     }
 
     new Crop(inputFile).output(outputFile).asSquare().start(this);
@@ -333,17 +329,6 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Emoj
   }
 
   private void handleAvatarSelectionWithPermissions() {
-    boolean hasCameraPermission = Permissions.hasAll(this, Manifest.permission.CAMERA);
-
-    if (hasCameraPermission) {
-      try {
-        captureFile = File.createTempFile("capture", ".jpg", getExternalCacheDir());
-      } catch (IOException e) {
-        Log.w(TAG, e);
-        captureFile = null;
-      }
-    }
-
     new AvatarSelector(this, LoaderManager.getInstance(this), new AvatarSelectedListener(), avatarBytes != null).show(this, avatar);
   }
 
@@ -376,7 +361,7 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Emoj
         super.onPostExecute(result);
 
         if (result) {
-          if (captureFile != null) captureFile.delete();
+          attachmentManager.cleanup();
           if (fromWelcome) {
             startActivity(new Intent(getApplicationContext(), ConversationListActivity.class));
           }
@@ -411,21 +396,7 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Emoj
                   .show();
           break;
         case AvatarSelector.TAKE_PHOTO:
-          Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-
-          Uri captureUri = null;
-          try {
-            captureUri = FileProviderUtil.getUriFor(CreateProfileActivity.this, captureFile);
-          } catch (Exception e) {
-            Log.w(TAG, e);
-          }
-
-          if (captureUri != null && cameraIntent.resolveActivity(getPackageManager()) != null) {
-            cameraIntent.putExtra(EXTRA_OUTPUT, captureUri);
-            startActivityForResult(cameraIntent, REQUEST_CODE_AVATAR);
-          } else {
-            Toast.makeText(CreateProfileActivity.this, R.string.error, Toast.LENGTH_SHORT).show();
-          }
+          attachmentManager.capturePhoto(CreateProfileActivity.this, REQUEST_CODE_AVATAR);
           break;
       }
     }
