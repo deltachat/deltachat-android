@@ -85,7 +85,6 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Emoj
   public void onCreate(Bundle bundle) {
     super.onCreate(bundle);
     this.fromWelcome  = getIntent().getBooleanExtra(FROM_WELCOME, false);
-    attachmentManager = new AttachmentManager(this, () -> {});
 
     dynamicTheme.onCreate(this);
     dynamicLanguage.onCreate(this);
@@ -96,6 +95,7 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Emoj
     getSupportActionBar().setDisplayHomeAsUpEnabled(!this.fromWelcome);
     getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close_white_24dp);
 
+    attachmentManager = new AttachmentManager(this, () -> {});
     initializeResources();
     initializeEmojiInput();
     initializeProfileName();
