@@ -6,8 +6,6 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import android.util.SparseBooleanArray;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -19,6 +17,11 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.loader.app.LoaderManager;
+
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
@@ -27,11 +30,13 @@ import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.soundcloud.android.crop.Crop;
 
+import org.thoughtcrime.securesms.components.AvatarSelector;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.contacts.avatars.ResourceContactPhoto;
 import org.thoughtcrime.securesms.database.Address;
+import org.thoughtcrime.securesms.mms.AttachmentManager;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.profiles.AvatarHelper;
 import org.thoughtcrime.securesms.qr.QrShowActivity;
@@ -42,8 +47,8 @@ import org.thoughtcrime.securesms.util.SelectedRecipientsAdapter;
 import org.thoughtcrime.securesms.util.SelectedRecipientsAdapter.OnRecipientDeletedListener;
 import org.thoughtcrime.securesms.util.ThemeUtil;
 import org.thoughtcrime.securesms.util.ViewUtil;
-import org.thoughtcrime.securesms.util.task.ProgressDialogAsyncTask;
 import org.thoughtcrime.securesms.util.guava.Optional;
+import org.thoughtcrime.securesms.util.task.ProgressDialogAsyncTask;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -65,6 +70,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
 
   private static final int PICK_CONTACT = 1;
   public static final  int AVATAR_SIZE  = 210;
+  private static final int REQUEST_CODE_AVATAR = 2759;
 
   private ApplicationDcContext dcContext;
 
@@ -75,6 +81,9 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
   private Bitmap       avatarBmp;
   private int          groupChatId;
   private boolean      isEdit;
+  private boolean      avatarChanged;
+  private boolean      imageLoaded;
+  private AttachmentManager attachmentManager;
 
   @Override
   protected void onPreCreate() {
@@ -92,6 +101,8 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close_white_24dp);
 
     groupChatId = getIntent().getIntExtra(EDIT_GROUP_CHAT_ID, 0);
+    attachmentManager = new AttachmentManager(this, () -> {});
+    avatarChanged = false;
 
     // groupChatId may be set during creation,
     // so always check isEdit()
@@ -219,7 +230,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void initializeAvatarView() {
-    boolean imageLoaded = false;
+    imageLoaded = false;
     if (groupChatId != 0) {
       String avatarPath = dcContext.getChat(groupChatId).getProfileImage();
       File avatarFile = new File(avatarPath);
@@ -234,7 +245,10 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     if (!imageLoaded) {
       avatar.setImageDrawable(new ResourceContactPhoto(R.drawable.ic_group_white_24dp).asDrawable(this, ThemeUtil.getDummyContactColor(this)));
     }
-    avatar.setOnClickListener(view -> Crop.pickImage(GroupCreateActivity.this));
+    avatar.setOnClickListener(view ->
+            new AvatarSelector(this, LoaderManager.getInstance(this), new AvatarSelectedListener(), imageLoaded)
+                    .show(this, avatar)
+    );
   }
 
   private void initializeExistingGroup() {
@@ -268,6 +282,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
         else {
           groupCreateInDb();
         }
+        attachmentManager.cleanup();
 
         if (groupChatId==0) // Group still hasn't been created e.g. due to empty name
           return true;
@@ -336,9 +351,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     dcContext.setChatName(groupChatId, groupName);
     updateGroupParticipants();
 
-    if (avatarBmp!=null) {
-      AvatarHelper.setGroupAvatar(this, groupChatId, avatarBmp);
-    }
+    if (avatarChanged) AvatarHelper.setGroupAvatar(this, groupChatId, avatarBmp);
   }
 
   private void groupUpdateDone() {
@@ -393,10 +406,15 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     super.onActivityResult(reqCode, resultCode, data);
     Uri outputFile = Uri.fromFile(new File(getCacheDir(), "cropped"));
 
-    if (data == null || resultCode != Activity.RESULT_OK)
+    if (resultCode != Activity.RESULT_OK)
       return;
 
     switch (reqCode) {
+      case REQUEST_CODE_AVATAR:
+        Uri inputFile  = (data != null ? data.getData() : null);
+        onFileSelected(inputFile);
+        break;
+
       case PICK_CONTACT:
         List<String> selected = data.getStringArrayListExtra("contacts");
 
@@ -515,6 +533,8 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
 
   private <T> void setAvatar(T model, Bitmap bitmap) {
     avatarBmp = bitmap;
+    avatarChanged = true;
+    imageLoaded = true;
     GlideApp.with(this)
             .load(model)
             .circleCrop()
@@ -527,4 +547,44 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     return isEdit;
   }
 
+
+  private class AvatarSelectedListener implements AvatarSelector.AttachmentClickedListener {
+    @Override
+    public void onClick(int type) {
+      switch (type) {
+        case AvatarSelector.ADD_GALLERY:
+          AttachmentManager.selectImage(GroupCreateActivity.this, REQUEST_CODE_AVATAR);
+          break;
+        case AvatarSelector.REMOVE_PHOTO:
+          new AlertDialog.Builder(GroupCreateActivity.this)
+                  .setTitle(R.string.pref_profile_photo_remove_ask)
+                  .setNegativeButton(android.R.string.cancel, (dialog, which) -> finish())
+                  .setPositiveButton(R.string.ok, (dialog, which) -> {
+                    avatarBmp = null;
+                    imageLoaded = false;
+                    avatarChanged = true;
+                    avatar.setImageDrawable(new ResourceContactPhoto(R.drawable.ic_group_white_24dp).asDrawable(GroupCreateActivity.this, ThemeUtil.getDummyContactColor(GroupCreateActivity.this)));
+                  })
+                  .show();
+          break;
+        case AvatarSelector.TAKE_PHOTO:
+          attachmentManager.capturePhoto(GroupCreateActivity.this, REQUEST_CODE_AVATAR);
+          break;
+      }
+    }
+
+    @Override
+    public void onQuickAttachment(Uri inputFile) {
+      onFileSelected(inputFile);
+    }
+  }
+
+  private void onFileSelected(Uri inputFile) {
+    Uri outputFile = Uri.fromFile(new File(getCacheDir(), "cropped"));
+    if (inputFile == null) {
+      inputFile = attachmentManager.getImageCaptureUri();
+    }
+
+    new Crop(inputFile).output(outputFile).asSquare().start(this);
+  }
 }

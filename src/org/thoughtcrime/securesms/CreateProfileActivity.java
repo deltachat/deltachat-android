@@ -377,7 +377,7 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Emoj
     public void onClick(int type) {
       switch (type) {
         case AvatarSelector.ADD_GALLERY:
-          AttachmentManager.selectGallery(CreateProfileActivity.this, REQUEST_CODE_AVATAR);
+          AttachmentManager.selectImage(CreateProfileActivity.this, REQUEST_CODE_AVATAR);
           break;
         case AvatarSelector.REMOVE_PHOTO:
           new AlertDialog.Builder(CreateProfileActivity.this)

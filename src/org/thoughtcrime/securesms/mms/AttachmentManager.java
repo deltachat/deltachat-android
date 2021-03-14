@@ -29,13 +29,13 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.provider.MediaStore;
 import android.provider.OpenableColumns;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import android.text.TextUtils;
 import android.util.Log;
 import android.util.Pair;
 import android.view.View;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.MediaPreviewActivity;
@@ -74,7 +74,8 @@ public class AttachmentManager {
 
   private final @NonNull Context                    context;
   private final @NonNull Stub<View>                 attachmentViewStub;
-  private final @NonNull AttachmentListener         attachmentListener;
+  private final @NonNull
+  AttachmentListener attachmentListener;
 
   private RemovableEditableMediaView removableMediaView;
   private ThumbnailView              thumbnail;
@@ -394,6 +395,15 @@ public class AttachmentManager {
                .withPermanentDenialDialog(activity.getString(R.string.perm_explain_access_to_storage_denied))
                .onAllGranted(() -> selectMediaType(activity, "image/*", new String[] {"image/*", "video/*"}, requestCode))
                .execute();
+  }
+
+  public static void selectImage(Activity activity, int requestCode) {
+    Permissions.with(activity)
+            .request(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+            .ifNecessary()
+            .withPermanentDenialDialog(activity.getString(R.string.perm_explain_access_to_storage_denied))
+            .onAllGranted(() -> selectMediaType(activity, "image/*", null, requestCode))
+            .execute();
   }
 
   public static void selectAudio(Activity activity, int requestCode) {
