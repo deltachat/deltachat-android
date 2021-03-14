@@ -43,7 +43,7 @@ public class PagingMediaLoader extends AsyncLoader<DcMediaGalleryElement> {
     if(currentIndex == -1) {
       currentIndex = 0;
       DcMsg unfound = context.getMsg(msg.getId());
-      Log.d(TAG, "did not find message in list: " + unfound.getId() + " / " + unfound.getFile() + " / " + unfound.getText());
+      Log.e(TAG, "did not find message in list: " + unfound.getId() + " / " + unfound.getFile() + " / " + unfound.getText());
     }
     DcMediaGalleryElement retVal = new DcMediaGalleryElement(mediaMessages, currentIndex, context, leftIsRecent);
     return retVal;
