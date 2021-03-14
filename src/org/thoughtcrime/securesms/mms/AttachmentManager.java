@@ -29,13 +29,13 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.provider.MediaStore;
 import android.provider.OpenableColumns;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import android.text.TextUtils;
 import android.util.Log;
 import android.util.Pair;
 import android.view.View;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.MediaPreviewActivity;
@@ -388,7 +388,12 @@ public class AttachmentManager {
   }
 
   public static void selectGallery(Activity activity, int requestCode) {
-    selectMediaType(activity, "image/*", new String[] {"image/*", "video/*"}, requestCode);
+    Permissions.with(activity)
+               .request(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+               .ifNecessary()
+               .withPermanentDenialDialog(activity.getString(R.string.perm_explain_access_to_storage_denied))
+               .onAllGranted(() -> selectMediaType(activity, "image/*", new String[] {"image/*", "video/*"}, requestCode))
+               .execute();
   }
 
   public static void selectAudio(Activity activity, int requestCode) {

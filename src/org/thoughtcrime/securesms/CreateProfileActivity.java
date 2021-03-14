@@ -1,7 +1,6 @@
 package org.thoughtcrime.securesms;
 
 
-import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
@@ -237,11 +236,10 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Emoj
 
     this.avatar.setImageDrawable(new ResourceContactPhoto(R.drawable.ic_camera_alt_white_24dp).asDrawable(this, getResources().getColor(R.color.grey_400)));
 
-    this.avatar.setOnClickListener(view -> Permissions.with(this)
-                                                      .request(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                                                      .ifNecessary()
-                                                      .onAnyResult(this::handleAvatarSelectionWithPermissions)
-                                                      .execute());
+    this.avatar.setOnClickListener(view ->
+            new AvatarSelector(this, LoaderManager.getInstance(this), new AvatarSelectedListener(), avatarBytes != null)
+                    .show(this, avatar)
+    );
 
     passwordAccountSettings.setOnClickListener(view -> {
       Intent intent = new Intent(this, RegistrationActivity.class);
@@ -326,10 +324,6 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Emoj
   private void initializeStatusText() {
     String status = DcHelper.get(this, DcHelper.CONFIG_SELF_STATUS);
     statusView.setText(status);
-  }
-
-  private void handleAvatarSelectionWithPermissions() {
-    new AvatarSelector(this, LoaderManager.getInstance(this), new AvatarSelectedListener(), avatarBytes != null).show(this, avatar);
   }
 
   private void handleUpload() {
