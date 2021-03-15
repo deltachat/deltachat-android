@@ -19,7 +19,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.loader.app.LoaderManager;
 
 import com.b44t.messenger.DcContact;
@@ -556,16 +555,10 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
           AttachmentManager.selectImage(GroupCreateActivity.this, REQUEST_CODE_AVATAR);
           break;
         case AvatarSelector.REMOVE_PHOTO:
-          new AlertDialog.Builder(GroupCreateActivity.this)
-                  .setTitle(R.string.pref_profile_photo_remove_ask)
-                  .setNegativeButton(android.R.string.cancel, (dialog, which) -> finish())
-                  .setPositiveButton(R.string.ok, (dialog, which) -> {
-                    avatarBmp = null;
-                    imageLoaded = false;
-                    avatarChanged = true;
-                    avatar.setImageDrawable(new ResourceContactPhoto(R.drawable.ic_group_white_24dp).asDrawable(GroupCreateActivity.this, ThemeUtil.getDummyContactColor(GroupCreateActivity.this)));
-                  })
-                  .show();
+          avatarBmp = null;
+          imageLoaded = false;
+          avatarChanged = true;
+          avatar.setImageDrawable(new ResourceContactPhoto(R.drawable.ic_group_white_24dp).asDrawable(GroupCreateActivity.this, ThemeUtil.getDummyContactColor(GroupCreateActivity.this)));
           break;
         case AvatarSelector.TAKE_PHOTO:
           attachmentManager.capturePhoto(GroupCreateActivity.this, REQUEST_CODE_AVATAR);

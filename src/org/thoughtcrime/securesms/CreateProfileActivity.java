@@ -24,7 +24,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.loader.app.LoaderManager;
 
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -380,14 +379,8 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Emoj
           AttachmentManager.selectImage(CreateProfileActivity.this, REQUEST_CODE_AVATAR);
           break;
         case AvatarSelector.REMOVE_PHOTO:
-          new AlertDialog.Builder(CreateProfileActivity.this)
-                  .setTitle(R.string.pref_profile_photo_remove_ask)
-                  .setNegativeButton(android.R.string.cancel, (dialog, which) -> finish())
-                  .setPositiveButton(R.string.ok, (dialog, which) -> {
-                    avatarBytes = null;
-                    avatar.setImageDrawable(new ResourceContactPhoto(R.drawable.ic_camera_alt_white_24dp).asDrawable(CreateProfileActivity.this, getResources().getColor(R.color.grey_400)));
-                  })
-                  .show();
+          avatarBytes = null;
+          avatar.setImageDrawable(new ResourceContactPhoto(R.drawable.ic_camera_alt_white_24dp).asDrawable(CreateProfileActivity.this, getResources().getColor(R.color.grey_400)));
           break;
         case AvatarSelector.TAKE_PHOTO:
           attachmentManager.capturePhoto(CreateProfileActivity.this, REQUEST_CODE_AVATAR);
