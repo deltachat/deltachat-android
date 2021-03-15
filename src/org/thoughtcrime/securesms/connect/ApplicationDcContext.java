@@ -233,6 +233,7 @@ public class ApplicationDcContext extends DcContext {
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType(mimeType);
         intent.putExtra(Intent.EXTRA_STREAM, uri);
+        intent.putExtra(Intent.EXTRA_TEXT, msg.getText());
         intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         activity.startActivity(Intent.createChooser(intent, context.getString(R.string.chat_share_with_title)));
       }

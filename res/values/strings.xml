@@ -337,6 +337,7 @@
     <string name="cannot_display_unsuported_file_type">Cannot display this file type: %s</string>
     <string name="attachment_failed_to_load">Failed to load attachment</string>
 
+    <string name="conversation_activity__quick_attachment_drawer_lock_record_description">Lock recording of audio attachment</string>
 
     <!-- mailing lists -->
     <string name="mailing_list">Mailing list</string>

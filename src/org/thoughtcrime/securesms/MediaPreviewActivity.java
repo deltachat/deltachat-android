@@ -26,14 +26,6 @@ import android.os.AsyncTask;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.loader.app.LoaderManager;
-import androidx.loader.content.Loader;
-import androidx.viewpager.widget.PagerAdapter;
-import androidx.viewpager.widget.ViewPager;
-import androidx.appcompat.app.AlertDialog;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -44,7 +36,22 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
-import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.loader.app.LoaderManager;
+import androidx.loader.content.Loader;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.loader.app.LoaderManager;
+import androidx.loader.content.Loader;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import com.b44t.messenger.DcMediaGalleryElement;
 import com.b44t.messenger.DcMsg;
@@ -57,6 +64,7 @@ import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.database.loaders.PagingMediaLoader;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.mms.GlideRequests;
+import org.thoughtcrime.securesms.mms.Slide;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.recipients.RecipientModifiedListener;
@@ -230,13 +238,6 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
 
     // if you search for the place where the media are loaded, go to 'onCreateLoader'.
 
-    if (!isContentTypeSupported(initialMedia.type)) {
-      Log.w(TAG, "Unsupported media type sent to MediaPreviewActivity, finishing.");
-      Toast.makeText(getApplicationContext(), R.string.error, Toast.LENGTH_LONG).show();
-      finish();
-      return;
-    }
-
     Log.w(TAG, "Loading Part URI: " + initialMedia);
 
     if (messageRecord != null) {
@@ -284,6 +285,13 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
       intent.putExtra(ProfileActivity.FORCE_TAB_EXTRA, ProfileActivity.TAB_GALLERY);
       startActivity(intent);
       finish();
+    }
+  }
+
+  private void share() {
+    MediaItem mediaItem = getCurrentMediaItem();
+    if (mediaItem != null) {
+      dcContext.openForViewOrShare(this, mediaItem.msgId, Intent.ACTION_SEND);
     }
   }
 
@@ -384,6 +392,7 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
     switch (item.getItemId()) {
       case R.id.media_preview__edit:     editAvatar();   return true;
       case R.id.media_preview__overview: showOverview(); return true;
+      case R.id.media_preview__share:    share();        return true;
       case R.id.save:                    saveToDisk();   return true;
       case R.id.delete:                  deleteMedia();  return true;
       case R.id.show_in_chat:            showInChat();   return true;
@@ -407,8 +416,8 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
     }
   }
 
-  public static boolean isContentTypeSupported(final String contentType) {
-    return contentType != null && (contentType.startsWith("image/") || contentType.startsWith("video/"));
+  public static boolean isTypeSupported(final Slide slide) {
+    return slide != null && (slide.hasVideo() || slide.hasImage());
   }
 
   @Override
