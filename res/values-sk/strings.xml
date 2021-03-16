@@ -663,4 +663,168 @@
     <string name="screenlock_inactivity_timeout_interval">Čas zostať aktívny</string>
 
 
-    </resources>
+    <!-- qr code stuff -->
+    <string name="qr_code">QR kód</string>
+    <string name="load_qr_code_as_image">Načítajte QR kód ako obrázok</string>
+    <string name="qrscan_title">Naskenujte QR kód</string>
+    <string name="qrscan_hint">Podržte fotoaparát nad QR kódom.</string>
+    <string name="qrscan_failed">QR kód sa nepodarilo dekódovať</string>
+    <string name="qrscan_ask_join_group">Chcete sa pridať k skupine „%1$s“?</string>
+    <string name="qrscan_fingerprint_mismatch">Naskenovaný odtlačok prsta sa nezhoduje s posledným zaznamenaným pre %1$s.</string>
+    <string name="qrscan_no_addr_found">Tento QR kód obsahuje odtlačok prsta, ale nemá e-mailovú adresu.\n\nAk chcete overiť overenie pásma, najskôr vytvorte šifrované pripojenie k príjemcovi.</string>
+    <string name="qrscan_contains_text">Naskenovaný text QR kódu: \n\n%1$s</string>
+    <string name="qrscan_contains_url">Naskenovaná adresa URL s QR kódom:\n\n%1$s</string>
+    <string name="qrscan_fingerprint_label">Odtlačok prsta</string>
+    <string name="qrscan_x_verified_introduce_myself">%1$s overené, predstavte sa ...</string>
+    <string name="qrshow_title">QR pozývací kód</string>
+    <string name="qrshow_x_joining">%1$s pripája sa.</string>
+    <string name="qrshow_x_verified">%1$s overené.</string>
+    <string name="qrshow_x_has_joined_group">%1$s sa pripojil k skupine.</string>
+    <string name="qrshow_join_group_title">QR pozývací kód</string>
+    <string name="qrshow_join_group_hint">Naskenujte to a pripojte sa k skupine „%1$s“.</string>
+    <string name="qrshow_join_contact_title">QR pozývací kód</string>
+    <string name="qrshow_join_contact_hint">Naskenujte to a vytvorte kontakt s %1$s .</string>
+    <string name="qrshow_join_contact_no_connection_hint">Nastavenie QR kódu vyžaduje pripojenie k internetu. Pred pokračovaním sa pripojte k sieti.</string>
+    <string name="qrshow_join_contact_no_connection_toast">Nie je pripojenie na internet, nedá sa nastaviť kód QR.</string>
+    <string name="qraccount_ask_create_and_login">Vytvoriť novú e-mailovú adresu na „%1$s“ a prihlásiť sa tam?</string>
+    <string name="qraccount_ask_create_and_login_another">Vytvorte novú e-mailovú adresu na „%1$s“ a prihláste sa tam?\n\nVáš existujúci účet nebude odstránený. Medzi položkami môžete prepínať pomocou položky „Prepnúť účet“.</string>
+    <string name="qraccount_success_enter_name">Prihlásenie bolo úspešné - vaša e-mailová adresa je %1$s\n\nlf chcete, teraz môžete zadať meno a profilový obrázok, ktoré sa zobrazia ľuďom, s ktorými si píšete.</string>
+    <string name="qraccount_qr_code_cannot_be_used">Naskenovaný QR kód nie je možné použiť na založenie nového účtu.</string>
+    <string name="qraccount_use_on_new_install">Naskenovaný QR kód slúži na založenie nového účtu. QR kód môžete naskenovať pri nastavovaní novej inštalácie Delta Chat.</string>
+    <string name="contact_verified">%1$s overené.</string>
+    <string name="contact_not_verified">Cannot verify %1$s.</string>
+    <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
+    <string name="contact_setup_changed">Zmena nastavenia pre %1$s.</string>
+    <string name="verified_group_explain">Overené skupiny (experimentálne) poskytujú bezpečnosť proti aktívnym útokom. Členovia sú overovaní druhým faktorom ostatnými členmi a správy sú vždy šifrované end-to-end.</string>
+    <string name="copy_qr_data_success">Skopírovaná adresa URL QR do schránky</string>
+
+
+    <!-- notifications  -->
+    <string name="notify_n_messages_in_m_chats">%1$d nové správy v %2$d četoch</string>
+    <string name="notify_mark_read">Označiť ako prečítané</string>
+    <string name="notify_reply_button">Odpovedať</string>
+    <string name="notify_new_message">Nová správa</string>
+    <string name="notify_background_connection_enabled">Pripojenie na pozadí je povolené</string>
+    <string name="notify_priority_high">Vysoký</string>
+    <string name="notify_priority_max">Max</string>
+    <string name="notify_name_and_message">Meno a správa</string>
+    <string name="notify_name_only">Iba meno</string>
+    <string name="notify_no_name_or_message">Žiadne meno ani správa</string>
+
+
+    <!-- permissions -->
+    <string name="perm_required_title">Vyžaduje sa povolenie</string>
+    <string name="perm_continue">ďalej</string>
+    <string name="perm_explain_access_to_camera_denied">Ak chcete fotografovať alebo snímať videá, prejdite do nastavení aplikácie, vyberte možnosť „Povolenia“ a povoľte možnosť „Fotoaparát“.</string>
+    <string name="perm_explain_access_to_mic_denied">Ak chcete odosielať zvukové správy, prejdite do nastavení aplikácie, vyberte možnosť „Povolenia“ a povoľte možnosť „Mikrofón“.</string>
+    <string name="perm_explain_access_to_storage_denied">Ak chcete prijímať alebo odosielať súbory, prejdite do nastavení aplikácie, vyberte možnosť „Povolenia“ a povoľte možnosť „Úložisko“.</string>
+    <string name="perm_explain_access_to_location_denied">Ak chcete pripojiť miesto, prejdite do nastavení aplikácie, vyberte možnosť Povolenia a povoľte možnosť Poloha.</string>
+
+    <!-- ImageEditorHud -->
+    <string name="ImageEditorHud_draw_anywhere_to_blur">Ak chcete rozmazať, nakreslite kamkoľvek</string>
+
+    <!-- dc_str_* resources -->
+    <string name="encrypted_message">Zašifrovaná správa</string>
+
+    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
+    <string name="about_offical_app_desktop">Toto je oficiálna aplikácia Delta Chat Desktop.</string>
+    <string name="about_licensed_under_desktop">Tento softvér je licencovaný pod GNU GPL verzie 3 a zdrojový kód je k dispozícii na GitHub.</string>
+    <string name="welcome_desktop">Vitajte v rozhovore Delta</string>
+    <string name="login_known_accounts_title_desktop">Známe účty</string>
+    <string name="global_menu_preferences_language_desktop">Jazyk</string>
+    <string name="global_menu_file_desktop">Súbor</string>
+    <string name="global_menu_file_quit_desktop">Skončiť</string>
+    <string name="global_menu_edit_desktop">Upraviť</string>
+    <string name="global_menu_edit_undo_desktop">Vrátenie späť</string>
+    <string name="global_menu_edit_redo_desktop">Znova</string>
+    <string name="global_menu_edit_cut_desktop">Vystrihnúť</string>
+    <string name="global_menu_edit_copy_desktop">Kópia</string>
+    <string name="global_menu_edit_paste_desktop">Vložiť</string>
+    <string name="global_menu_view_desktop">vyhliadka</string>
+    <string name="global_menu_view_floatontop_desktop">Vznášajte sa na vrchu</string>
+    <string name="global_menu_view_developer_desktop">Vývojár</string>
+    <string name="global_menu_view_developer_tools_desktop">Nástroje pre vývojárov</string>
+    <string name="global_menu_help_desktop">Pomoc</string>
+    <string name="global_menu_help_learn_desktop">Získajte viac informácií o službe Delta Chat</string>
+    <string name="global_menu_help_contribute_desktop">Prispievajte na GitHub</string>
+    <string name="global_menu_help_report_desktop">Nahlásiť problém</string>
+    <string name="global_menu_help_about_desktop">O spoločnosti Delta Chat</string>
+    <string name="no_chat_selected_suggestion_desktop">Vyberte chat alebo vytvorte nový chat</string>
+    <string name="write_message_desktop">Napíš správu</string>
+    <string name="encryption_info_title_desktop">Informácie o šifrovaní</string>
+    <string name="contact_detail_title_desktop">Kontaktné údaje</string>
+    <string name="contact_request_title_desktop">Kontaktná žiadosť</string>
+    <string name="delete_message_desktop">Odstrániť správu</string>
+    <string name="more_info_desktop">Viac informácií</string>
+    <string name="logout_desktop">Odhlásiť sa</string>
+    <string name="timestamp_format_m_desktop">MMM D</string>
+    <string name="encryption_info_desktop">Zobraziť informácie o šifrovaní</string>
+    <string name="verified_desktop">overené</string>
+    <string name="remove_desktop">Odstrániť</string>
+    <string name="save_desktop">Uložiť</string>
+    <string name="add_contact_desktop">Pridať kontakt</string>
+    <string name="login_required_desktop">požadovaný</string>
+    <string name="name_desktop">Názov</string>
+    <string name="autocrypt_key_transfer_desktop">Autocryptujte prenos kľúčov</string>
+    <string name="initiate_key_transfer_desktop">Správa o nastavení automatického šifrovania bezpečne zdieľa vaše komplexné nastavenie s inými aplikáciami kompatibilnými s automatickým šifrovaním. Nastavenie bude šifrované tu zobrazeným nastavovacím kódom a musí byť zadané na druhom zariadení.</string>
+    <string name="reply_to_message_desktop">Odpovedať na správu</string>
+    <string name="select_group_image_desktop">Vyberte skupinový obrázok</string>
+    <string name="imex_progress_title_desktop">Priebeh zálohovania</string>
+    <string name="download_attachment_desktop">Stiahnutie prílohy</string>
+    <string name="export_backup_desktop">Exportovať zálohu</string>
+    <string name="transfer_key_desktop">Kľúč na prenos</string>
+    <string name="show_key_transfer_message_desktop">Váš kľúč bol odoslaný vám. Prepnite na druhé zariadenie a otvorte správu o nastavení. Mali by ste byť požiadaní o nastavovací kód. Zadajte nasledujúce číslice:</string>
+    <string name="new_message_from_desktop">Nová správa od používateľa</string>
+    <string name="unblock_contacts_desktop">Odblokujte kontakty</string>
+    <string name="none_blocked_desktop">Zatiaľ nemáte blokované kontakty</string>
+    <string name="autocrypt_correct_desktop">Nastavenie automatického šifrovania bolo prenesené.</string>
+    <string name="autocrypt_incorrect_desktop">Nesprávny kód nastavenia. Prosím skúste znova.</string>
+    <string name="create_chat_error_desktop">Nepodarilo sa vytvoriť rozhovor.</string>
+    <string name="ask_delete_chat_desktop">Odstrániť tento rozhovor?</string>
+    <string name="email_validation_failed_desktop">Vyžaduje sa e-mailová adresa.</string>
+    <string name="forget_login_confirmation_desktop">Odstrániť tieto prihlasovacie údaje? Odstráni sa všetko vrátane vášho kompletného nastavenia, kontaktov, chatov, správ a médií. Túto akciu nie je možné vrátiť späť.</string>
+    <string name="account_info_hover_tooltip_desktop">E-mail: %1$s\nVeľkosť: %2$s\nCesta: %3$s</string>
+    <string name="me_desktop">ja</string>
+    <string name="in_this_group_desktop">Členovia skupiny</string>
+    <string name="not_in_this_group_desktop">Potenciálni členovia skupiny (nie sú v skupine)</string>
+    <string name="message_detail_sent_desktop">odoslané</string>
+    <string name="message_detail_received_desktop">prijaté</string>
+    <string name="message_detail_from_desktop">od</string>
+    <string name="message_detail_to_desktop">do</string>
+    <string name="menu.view.developer.open.log.folder">Otvorte priečinok denníka</string>
+    <string name="menu.view.developer.open.current.log.file">Otvoriť aktuálny súbor protokolu</string>
+    <string name="user_location_permission_explanation">Delta Chat potrebuje na zobrazenie a zdieľanie vašej polohy povolenie na polohu.</string>
+
+    <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
+    <string name="a11y_delivery_status_error">Stav doručenia: Chyba</string>
+    <string name="a11y_encryption_padlock">Šifrovací zámok</string>
+    <string name="a11y_delivery_status_sending">Stav doručenia: Odosiela sa</string>
+    <string name="a11y_delivery_status_draft">Stav doručenia: Koncept</string>
+    <string name="a11y_delivery_status_delivered">Stav doručenia: Doručené</string>
+    <string name="a11y_delivery_status_read">Stav doručenia: Čítané</string>
+    <string name="a11y_delivery_status_invalid">Stav doručenia je neplatný</string>
+    <string name="a11y_message_context_menu_btn_label">Akcie správ</string>
+    <string name="a11y_background_preview_label">Ukážka na pozadí</string>
+    <string name="a11y_disappearing_messages_activated">Miznúce správy boli aktivované</string>
+
+
+    <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
+    <string name="InfoPlist_NSCameraUsageDescription">Delta Chat používa váš fotoaparát na snímanie a odosielanie fotografií a videí a na skenovanie QR kódov.</string>
+    <string name="InfoPlist_NSContactsUsageDescription">Delta Chat používa vaše kontakty na zobrazenie zoznamu e-mailových adries, na ktoré môžete písať. Delta Chat nemá žiadny server, vaše kontakty sa nikam neposielajú.</string>
+    <string name="InfoPlist_NSMicrophoneUsageDescription">Aplikácia Delta Chat používa váš mikrofón na zaznamenávanie a odosielanie hlasových správ a videí so zvukom.</string>
+    <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat vám umožní zvoliť si, ktoré fotografie z vašej knižnice chcete odoslať.</string>
+    <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat chce uložiť obrázky do vašej knižnice fotografií.</string>
+
+
+    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+    <string name="pref_background_notifications">Oznámenia na pozadí</string>
+    <string name="pref_background_notifications_explain">Používa pripojenie na pozadí k vášmu serveru a vyžaduje ignorované optimalizácie batérie.</string>
+    <string name="pref_background_notifications_rationale">Ak chcete zachovať pripojenie k svojmu e-mailovému serveru a prijímať správy na pozadí, v ďalšom kroku ignorujte optimalizáciu batérie. \n\nDelta Chat využíva málo zdrojov a dbá na to, aby sa batéria nevybíjala.</string>
+    <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
+    <string name="pref_reliable_service">Spoľahlivé pripojenie na pozadí</string>
+    <string name="pref_reliable_service_explain">Vyžaduje trvalé upozornenie</string>
+    <string name="perm_enable_bg_reminder_title">Klepnutím sem prijmete správy, zatiaľ čo je Delta Chat na pozadí.</string>
+    <string name="perm_enable_bg_already_done">Službe Delta Chat ste už povolili príjem správ na pozadí.\n\nAk správy stále neprichádzajú na pozadí, skontrolujte tiež svoje systémové nastavenia.</string>
+    <string name="update_1_14_android">Niektoré najdôležitejšie body aktualizácie 1.14: \n\nPotiahnutím prstom odpoviete: Ak chcete odpovedať na konkrétnu správu, jednoducho potiahnite prstom doprava (nie tu! Tu nemôžete odpovedať You\'ll) Nad riadkom na napísanie príspevku sa zobrazí citát a môžete pokračovať v písaní vaša správa ako obvykle. \n\n🔥 Miznúce správy - nadišiel čas 😀. Teraz je možné nakonfigurovať akýkoľvek chat tak, aby po určitom čase odstránil odoslané a prijaté správy. Stačí v ponuke chatu zvoliť možnosť „Miznúce správy“ (opäť: tu nie)\n\n👆 Chaty sa otvárajú pri prvej nevidenej správe\n\n💾 Preposielať veci na „Uložené správy“ priamo a rýchlejšie (môžete to vyskúšať tu: dlho - klepnite na túto správu a potom na šípku vpravo hore)\n\n🎃 Nakoniec sme opäť vystrašili veľa chýb! Veľa bolo tak vystrašených, že sa už nevrátia.</string>
+
+</resources>

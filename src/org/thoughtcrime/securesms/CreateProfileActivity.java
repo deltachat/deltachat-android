@@ -1,7 +1,6 @@
 package org.thoughtcrime.securesms;
 
 
-import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
@@ -12,9 +11,6 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import com.google.android.material.textfield.TextInputEditText;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -27,14 +23,20 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.loader.app.LoaderManager;
+
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.google.android.material.textfield.TextInputEditText;
 import com.soundcloud.android.crop.Crop;
 
+import org.thoughtcrime.securesms.components.AvatarSelector;
 import org.thoughtcrime.securesms.components.InputAwareLayout;
 import org.thoughtcrime.securesms.components.emoji.EmojiKeyboardProvider;
 import org.thoughtcrime.securesms.components.emoji.MediaKeyboard;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.contacts.avatars.ResourceContactPhoto;
+import org.thoughtcrime.securesms.mms.AttachmentManager;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.profiles.AvatarHelper;
@@ -43,8 +45,6 @@ import org.thoughtcrime.securesms.util.BitmapDecodingException;
 import org.thoughtcrime.securesms.util.BitmapUtil;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
-import org.thoughtcrime.securesms.util.FileProviderUtil;
-import org.thoughtcrime.securesms.util.IntentUtils;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
@@ -54,10 +54,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.security.SecureRandom;
-import java.util.LinkedList;
-import java.util.List;
-
-import static android.provider.MediaStore.EXTRA_OUTPUT;
 
 @SuppressLint("StaticFieldLeak")
 public class CreateProfileActivity extends BaseActionBarActivity implements EmojiKeyboardProvider.EmojiEventListener {
@@ -81,7 +77,7 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Emoj
   private boolean fromWelcome;
 
   private byte[] avatarBytes;
-  private File   captureFile;
+  private AttachmentManager attachmentManager;
 
 
   @Override
@@ -98,6 +94,7 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Emoj
     getSupportActionBar().setDisplayHomeAsUpEnabled(!this.fromWelcome);
     getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close_white_24dp);
 
+    attachmentManager = new AttachmentManager(this, () -> {});
     initializeResources();
     initializeEmojiInput();
     initializeProfileName();
@@ -167,22 +164,11 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Emoj
     switch (requestCode) {
       case REQUEST_CODE_AVATAR:
         if (resultCode == Activity.RESULT_OK) {
-          Uri outputFile = Uri.fromFile(new File(getCacheDir(), "cropped"));
           Uri inputFile  = (data != null ? data.getData() : null);
-
-          if (inputFile == null && captureFile != null) {
-            inputFile = Uri.fromFile(captureFile);
-          }
-
-          if (data != null && data.getBooleanExtra("delete", false)) {
-            avatarBytes = null;
-            avatar.setImageDrawable(new ResourceContactPhoto(R.drawable.ic_camera_alt_white_24dp).asDrawable(this, getResources().getColor(R.color.grey_400)));
-          } else {
-            new Crop(inputFile).output(outputFile).asSquare().start(this);
-          }
+          onFileSelected(inputFile);
         }
-
         break;
+
       case Crop.REQUEST_CROP:
         if (resultCode == Activity.RESULT_OK) {
 
@@ -228,6 +214,15 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Emoj
     }
   }
 
+  private void onFileSelected(Uri inputFile) {
+    Uri outputFile = Uri.fromFile(new File(getCacheDir(), "cropped"));
+    if (inputFile == null) {
+      inputFile = attachmentManager.getImageCaptureUri();
+    }
+
+    new Crop(inputFile).output(outputFile).asSquare().start(this);
+  }
+
   private void initializeResources() {
     TextView passwordAccountSettings       = ViewUtil.findById(this, R.id.password_account_settings_button);
     TextView loginSuccessText              = ViewUtil.findById(this, R.id.login_success_text);
@@ -240,11 +235,10 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Emoj
 
     this.avatar.setImageDrawable(new ResourceContactPhoto(R.drawable.ic_camera_alt_white_24dp).asDrawable(this, getResources().getColor(R.color.grey_400)));
 
-    this.avatar.setOnClickListener(view -> Permissions.with(this)
-                                                      .request(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                                                      .ifNecessary()
-                                                      .onAnyResult(this::handleAvatarSelectionWithPermissions)
-                                                      .execute());
+    this.avatar.setOnClickListener(view ->
+            new AvatarSelector(this, LoaderManager.getInstance(this), new AvatarSelectedListener(), avatarBytes != null)
+                    .show(this, avatar)
+    );
 
     passwordAccountSettings.setOnClickListener(view -> {
       Intent intent = new Intent(this, RegistrationActivity.class);
@@ -331,62 +325,6 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Emoj
     statusView.setText(status);
   }
 
-  private Intent createAvatarSelectionIntent(@Nullable File captureFile, boolean includeClear, boolean includeCamera) {
-    List<Intent> extraIntents  = new LinkedList<>();
-    Intent       galleryIntent = new Intent(Intent.ACTION_PICK);
-    galleryIntent.setDataAndType(android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI, "image/*");
-
-    if (!IntentUtils.isResolvable(CreateProfileActivity.this, galleryIntent)) {
-      galleryIntent = new Intent(Intent.ACTION_GET_CONTENT);
-      galleryIntent.setType("image/*");
-    }
-
-    if (includeCamera) {
-      Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-
-      Uri captureUri = null;
-      try {
-        captureUri = FileProviderUtil.getUriFor(this, captureFile);
-      } catch (Exception e) {
-        Log.w(TAG, e);
-      }
-
-      if (captureUri != null && cameraIntent.resolveActivity(getPackageManager()) != null) {
-        cameraIntent.putExtra(EXTRA_OUTPUT, captureUri);
-        extraIntents.add(cameraIntent);
-      }
-    }
-
-    if (includeClear) {
-      extraIntents.add(new Intent("org.thoughtcrime.securesms.action.CLEAR_PROFILE_PHOTO"));
-    }
-
-    Intent chooserIntent = Intent.createChooser(galleryIntent, getString(R.string.pref_profile_photo));
-
-    if (!extraIntents.isEmpty()) {
-      chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, extraIntents.toArray(new Intent[0]));
-    }
-
-
-    return chooserIntent;
-  }
-
-  private void handleAvatarSelectionWithPermissions() {
-    boolean hasCameraPermission = Permissions.hasAll(this, Manifest.permission.CAMERA);
-
-    if (hasCameraPermission) {
-      try {
-        captureFile = File.createTempFile("capture", ".jpg", getExternalCacheDir());
-      } catch (IOException e) {
-        Log.w(TAG, e);
-        captureFile = null;
-      }
-    }
-
-    Intent chooserIntent = createAvatarSelectionIntent(captureFile, avatarBytes != null, hasCameraPermission);
-    startActivityForResult(chooserIntent, REQUEST_CODE_AVATAR);
-  }
-
   private void handleUpload() {
     final String        name;
 
@@ -416,7 +354,7 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Emoj
         super.onPostExecute(result);
 
         if (result) {
-          if (captureFile != null) captureFile.delete();
+          attachmentManager.cleanup();
           if (fromWelcome) {
             startActivity(new Intent(getApplicationContext(), ConversationListActivity.class));
           }
@@ -433,4 +371,26 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Emoj
     DcHelper.set(this, DcHelper.CONFIG_SELF_STATUS, newStatus);
   }
 
+  private class AvatarSelectedListener implements AvatarSelector.AttachmentClickedListener {
+    @Override
+    public void onClick(int type) {
+      switch (type) {
+        case AvatarSelector.ADD_GALLERY:
+          AttachmentManager.selectImage(CreateProfileActivity.this, REQUEST_CODE_AVATAR);
+          break;
+        case AvatarSelector.REMOVE_PHOTO:
+          avatarBytes = null;
+          avatar.setImageDrawable(new ResourceContactPhoto(R.drawable.ic_camera_alt_white_24dp).asDrawable(CreateProfileActivity.this, getResources().getColor(R.color.grey_400)));
+          break;
+        case AvatarSelector.TAKE_PHOTO:
+          attachmentManager.capturePhoto(CreateProfileActivity.this, REQUEST_CODE_AVATAR);
+          break;
+      }
+    }
+
+    @Override
+    public void onQuickAttachment(Uri inputFile) {
+      onFileSelected(inputFile);
+    }
+  }
 }

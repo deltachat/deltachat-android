@@ -18,7 +18,7 @@ package org.thoughtcrime.securesms.mms;
 
 import android.content.Context;
 import android.net.Uri;
-import androidx.annotation.DrawableRes;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -35,6 +35,7 @@ public class ImageSlide extends Slide {
 
   public ImageSlide(@NonNull Context context, @NonNull DcMsg dcMsg) {
     super(context, new DcAttachment(dcMsg));
+    dcMsgId = dcMsg.getId();
   }
 
   public ImageSlide(@NonNull Context context, @NonNull Attachment attachment) {

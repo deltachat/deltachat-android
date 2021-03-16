@@ -63,7 +63,6 @@ import org.thoughtcrime.securesms.mms.Slide;
 import org.thoughtcrime.securesms.mms.SlideClickListener;
 import org.thoughtcrime.securesms.mms.SlideDeck;
 import org.thoughtcrime.securesms.mms.StickerSlide;
-import org.thoughtcrime.securesms.mms.VideoSlide;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.LongClickMovementMethod;
 import org.thoughtcrime.securesms.util.MediaUtil;
@@ -462,13 +461,7 @@ public class ConversationItem extends LinearLayout
       if (documentViewStub.resolved()) documentViewStub.get().setVisibility(View.GONE);
       if (stickerStub.resolved())        stickerStub.get().setVisibility(View.GONE);
 
-      Slide slide;
-      if (messageRecord.getType()==DcMsg.DC_MSG_VIDEO) {
-        slide = new VideoSlide(context, messageRecord);
-      }
-      else {
-        slide = new DocumentSlide(context, messageRecord);
-      }
+      Slide slide = MediaUtil.getSlideForMsg(context, messageRecord);
 
       MediaUtil.ThumbnailSize thumbnailSize = new MediaUtil.ThumbnailSize(messageRecord.getWidth(0), messageRecord.getHeight(0));
       if ((thumbnailSize.width<=0||thumbnailSize.height<=0)) {

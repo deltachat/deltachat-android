@@ -148,8 +148,8 @@
     <!-- menu labels (or icon, buttons...) -->
     <string name="menu_new_contact">بەردەنگی نوێ</string>
     <string name="menu_new_chat">وتووێژی نوێ</string>
-    <string name="menu_new_group">گرووپی نوێ</string>
-    <string name="menu_new_verified_group">گرووپی پشتڕاستکراوەی نوێ</string>
+    <string name="menu_new_group">کۆڕی نوێ</string>
+    <string name="menu_new_verified_group">کۆڕی پشتڕاستکراوەی نوێ</string>
     <string name="menu_send">بینێرە</string>
     <string name="menu_edit_group">دەستکاری کۆڕ</string>
     <string name="menu_group_name_and_image">ناو و وێنەی کۆڕ</string>
@@ -256,7 +256,7 @@
     <string name="ask_leave_group">دڵنیای دەتەوێت ئەم کۆڕە بەجێ بێڵیت؟</string>
     <plurals name="ask_delete_chat">
         <item quantity="one">%d وتووێژ دەسڕیتەوە؟ ئیدی لە نیو لیستەی وتووێژەکاندا دیار نامێنن، بەڵام پەیامەکانیان لەسەر سێرڤەر دەمێنێتەوە.</item>
-        <item quantity="other">%d وتووێژ دەسڕیتەوە؟ ئیدی لە نیو لیستەی وتووێژەکاندا دیار نامێنن، بەڵام پەیامەکانیان لەسەر سێرڤەر دەمێنێتەوە.</item>
+        <item quantity="other">%d وتووێژ دەسڕیتەوە؟ ئیدی لە نێو لیستەی وتووێژەکاندا دیار نامێنن، بەڵام پەیامەکانیان لەسەر سێرڤەر دەمێنێتەوە.</item>
     </plurals>
     <plurals name="ask_delete_messages">
         <item quantity="one">دەتەوێت ئەم %d پەیامە لێرە و لەسەر سێرڤەر بسڕیتەوە؟</item>
@@ -302,6 +302,7 @@
         <item quantity="other">%d پەیامی نوێ</item>
     </plurals>
     <string name="chat_no_messages_hint">پەیام دەنێری بۆ %1$s:\n\n• کێشە نییە ئەگەر %2$s دێڵتاچات بەکارناهێنێت.\n\n• گەیشتنی یەکەم پەیام لەوانەیە ماوەیەک بخایەنێت و لەوانەیە شفرەنەکراو بێت.</string>
+    <string name="chat_new_group_hint">پەیامی یەکەم بنێرە، ئیدی کەسانی دیکەش دەتوانن لەنێو ئەم کۆڕەدا وتووێژ بکەن. \n\n• کێشە نییە ئەگەر هەموو ئەندامان دێڵتا چات بەکارنەهێنن.\n\n• لەوانەیە گەیشتنی یەکەمین پەیام هەندێک کات ببات.</string>
     <string name="chat_record_slide_to_cancel">بیخشێنە بۆ وازهێنان</string>
     <string name="chat_record_explain">کرتە بکە و دەست لەسەری ڕابگرە بۆ تۆمارکردنی پەیامێکی دەنگی، پاشان دەستبەردە بۆ هەناردنی.</string>
     <string name="chat_no_chats_yet_title">هاتنگە بەتاڵە. \n \"+\" لێبدە بۆ دەستپێکی وتووێژێکی نوێ.</string>
@@ -349,7 +350,7 @@
     <string name="group_create_button">کۆڕێک درووست بکە</string>
     <string name="group_please_enter_group_name">تکایە ناوێک بنووسە بۆ کۆڕەکە.</string>
     <string name="group_add_members">ئەندام زیاد بکە</string>
-    <string name="group_hello_draft">سڵاو، کۆڕی %1$s م درووست کرد بۆ خۆمان.</string>
+    <string name="group_hello_draft">سڵاو، کۆڕی \"%1$s\"م درووست کرد بۆ خۆمان.</string>
     <string name="group_self_not_in_group">بۆ ئەم کردارە دەبێت ئەندامی کۆڕەکە بیت.</string>
     <string name="profile_encryption">شفرەکردن</string>
     <string name="profile_shared_chats">وتووێژە هاوبەشکراوەکان</string>
@@ -393,6 +394,8 @@
     <string name="import_backup_title">هاوردەکردنی یەدەک</string>
     <string name="import_backup_ask">یەدەکەکە لە \"%1$s\"دا دۆزرایەوە.\n\n دەتەوێت هەموو داتا و ڕێکخستنەکانی هاوردە بکەیت و بەکاریان بێنیت؟</string>
     <string name="import_backup_no_backup_found">هیچ یەدەکێک نەدۆزرایەوە.\n\n یەدەکەکە کۆپی بکە بۆ\"%1$s\" و دیسان هەوڵبدەوە. یان بۆ بەردەوامبوون لەسەر پرۆسەی ئاسایی دامەزراندنەکە، دەستبنە بە \"دەستپێکی نامەنووسین\"دا .</string>
+    <!-- Translators: %1$s will be replaced by the email address -->
+    <string name="login_error_cannot_login">\"%1$s\" ناتوانێت بچێتە ژوورەوە. سەرنج بدە بزانە ئیمەیل و تێپەڕوشەکە درووستە.</string>
     <string name="used_settings">ڕێکخستنە بەکارهێنراوەکان:</string>
     <string name="switch_account">گۆڕینی هەژمار</string>
     <string name="add_account">زیادکردنی هەژمار</string>
@@ -591,10 +594,12 @@
     <string name="qrshow_join_contact_hint">بۆ ڕێکخستنی پێوەندی لەگەڵ %1$s، ئەم کۆدە سکان بکە. </string>
     <string name="qrshow_join_contact_no_connection_toast">هێڵی ئینتەرنێت بەردەست نییە، ڕێکخستنی کۆدی QR جێبەجێ ناکرێ.</string>
     <string name="qraccount_ask_create_and_login">دەتەوێت ناونیشانی ئیمەیلێکی نوێ لەسەر \"%1$s\" درووست بکەیت و لەوێ بچیتە ژوورەوە؟</string>
+    <string name="qraccount_qr_code_cannot_be_used">ناتوانی لە کۆدی QRە سکان کراوەکە کەڵک بگریت بۆ پێکهێنانی هەژمارێکی نوێ.</string>
     <string name="contact_verified">%1$s پشتڕاست کرایەوە</string>
     <string name="contact_not_verified">%1$s پشتڕاست ناکرێتەوە.</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">ڕێکخستن بۆ %1$s گۆڕا.</string>
+    <string name="verified_group_explain">کۆڕی پشتڕاستکراوە (لە قۆناخی تاقیکردنەوەدایە) پارێزراودەبێت بەرانبەر هێرشەکان. ئەندامان لەلایەن ئەندامانی دیکەوە پشتڕاست دەکرێنەوە و پەیامەکان هەمیشە شفرەکراوی ئەمسەر-ئەوسەر دەبن.</string>
     <string name="copy_qr_data_success">ناونیشانی وێبی QRەکە ڕوونووس کرا.</string>
 
 
@@ -657,7 +662,7 @@
     <string name="name_desktop">ناو</string>
     <string name="autocrypt_key_transfer_desktop">گواستنەوەی کلیلی ئۆتۆکریپت</string>
     <string name="reply_to_message_desktop">وەڵامی ئەو پەیامە بدەوە</string>
-    <string name="select_group_image_desktop">هەڵبژاردنی وێنەی گرووپ</string>
+    <string name="select_group_image_desktop">هەڵبژاردنی وێنەی کۆڕ</string>
     <string name="imex_progress_title_desktop">پرۆسەی یەدەک هەڵگرتن</string>
     <string name="download_attachment_desktop">داگرتنی پێوەلکاو</string>
     <string name="export_backup_desktop">هەناردەکردنی یەدەک</string>
