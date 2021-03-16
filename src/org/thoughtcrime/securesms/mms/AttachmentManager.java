@@ -74,7 +74,8 @@ public class AttachmentManager {
 
   private final @NonNull Context                    context;
   private final @NonNull Stub<View>                 attachmentViewStub;
-  private final @NonNull AttachmentListener         attachmentListener;
+  private final @NonNull
+  AttachmentListener attachmentListener;
 
   private RemovableEditableMediaView removableMediaView;
   private ThumbnailView              thumbnail;
@@ -394,6 +395,15 @@ public class AttachmentManager {
                .withPermanentDenialDialog(activity.getString(R.string.perm_explain_access_to_storage_denied))
                .onAllGranted(() -> selectMediaType(activity, "image/*", new String[] {"image/*", "video/*"}, requestCode))
                .execute();
+  }
+
+  public static void selectImage(Activity activity, int requestCode) {
+    Permissions.with(activity)
+            .request(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+            .ifNecessary()
+            .withPermanentDenialDialog(activity.getString(R.string.perm_explain_access_to_storage_denied))
+            .onAllGranted(() -> selectMediaType(activity, "image/*", null, requestCode))
+            .execute();
   }
 
   public static void selectAudio(Activity activity, int requestCode) {

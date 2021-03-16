@@ -256,19 +256,7 @@
               android:theme="@style/TextSecure.LightTheme"
               android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
 
-    <activity android:name=".ClearProfileAvatarActivity"
-              android:theme="@style/Theme.AppCompat.Dialog.Alert"
-              android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"
-              android:icon="@drawable/clear_profile_avatar"
-              android:label="@string/menu_delete_image">
-
-        <intent-filter>
-            <action android:name="org.thoughtcrime.securesms.action.CLEAR_PROFILE_PHOTO"/>
-            <category android:name="android.intent.category.DEFAULT"/>
-        </intent-filter>
-    </activity>
-
-    <activity android:name=".preferences.ChatBackgroundActivity"
+        <activity android:name=".preferences.ChatBackgroundActivity"
               android:theme="@style/TextSecure.LightTheme"
               android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
 

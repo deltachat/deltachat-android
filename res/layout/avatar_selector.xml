@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:orientation="vertical"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content">
+
+	<View android:layout_width="match_parent"
+		android:layout_height="4dp"
+		android:background="@drawable/attachment_selector_shadow"/>
+
+	<LinearLayout android:orientation="vertical"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:background="?attachment_type_selector_background">
+
+		<org.thoughtcrime.securesms.components.RecentPhotoViewRail
+			android:id="@+id/recent_photos"
+			android:layout_width="match_parent"
+			android:layout_height="90dp"
+			android:padding="4dp"/>
+
+
+		<LinearLayout android:orientation="horizontal"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="16dp"
+			android:layout_marginLeft="16dp"
+			android:layout_marginRight="16dp"
+			android:layout_marginBottom="16dp"
+			android:weightSum="4">
+
+			<!-- second row -->
+
+			<LinearLayout android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:gravity="center"
+				android:orientation="vertical">
+
+				<org.thoughtcrime.securesms.components.CircleColorImageView
+					android:id="@+id/camera_button"
+					android:layout_width="53dp"
+					android:layout_height="53dp"
+					android:src="@drawable/attach_camera"
+					android:scaleType="center"
+					android:contentDescription="@string/camera"
+					app:circleColor="#00FFFFFF"/>
+
+				<TextView android:layout_marginTop="10dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:gravity="center"
+					style="@style/AttachmentTypeLabel"
+					android:text="@string/camera"/>
+
+			</LinearLayout>
+
+			<LinearLayout android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:gravity="center"
+				android:orientation="vertical">
+
+				<org.thoughtcrime.securesms.components.CircleColorImageView
+					android:id="@+id/gallery_button"
+					android:layout_width="53dp"
+					android:layout_height="53dp"
+					android:src="@drawable/ic_image_white_24dp"
+					android:scaleType="center"
+					android:contentDescription="@string/gallery"
+					app:circleColor="@color/gallery_icon"/>
+
+				<TextView android:layout_marginTop="10dp"
+					style="@style/AttachmentTypeLabel"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/gallery"/>
+
+			</LinearLayout>
+
+			<LinearLayout android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:gravity="center"
+				android:orientation="vertical"
+				android:layout_weight="1">
+
+				<org.thoughtcrime.securesms.components.CircleColorImageView
+					android:id="@+id/remove_button"
+					android:layout_width="53dp"
+					android:layout_height="53dp"
+					android:src="@drawable/ic_delete_white_24dp"
+					android:scaleType="center"
+					android:contentDescription="@string/contact"
+					app:circleColor="#FD3C00"/>
+
+				<TextView
+					android:id="@+id/remove_button_label"
+					android:layout_marginTop="10dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					style="@style/AttachmentTypeLabel"
+					android:text="@string/remove_desktop"/>
+
+			</LinearLayout>
+
+			<LinearLayout android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:gravity="center"
+				android:orientation="vertical">
+
+				<org.thoughtcrime.securesms.components.CircleColorImageView
+					android:id="@+id/close_button"
+					android:layout_width="53dp"
+					android:layout_height="53dp"
+					android:src="@drawable/ic_keyboard_arrow_down_white_24dp"
+					android:scaleType="center"
+					android:contentDescription="@string/menu_add_attachment"
+					app:circleColor="?attr/close_icon_color"/>
+
+				<TextView android:layout_marginTop="10dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					style="@style/AttachmentTypeLabel"
+					android:text=" "/>
+
+			</LinearLayout>
+
+
+		</LinearLayout>
+
+	</LinearLayout>
+
+</LinearLayout>
