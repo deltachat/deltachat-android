@@ -192,7 +192,7 @@ public class ConversationItem extends LinearLayout
     this.glideRequests          = glideRequests;
     this.batchSelected          = batchSelected;
     this.conversationRecipient  = recipients;
-    this.groupThread            = dcChat.isGroup();
+    this.groupThread            = dcChat.isGroup() || messageRecord.getOverrideSenderName() != null;
 
     if (groupThread && !messageRecord.isOutgoing()) {
       this.dcContact = dcContext.getContact(messageRecord.getFromId());
