@@ -22,7 +22,7 @@
         android:layout_gravity="center"
         android:layout_marginLeft="-9dp"
         android:layout_marginStart="-9dp"
-        android:background="@drawable/recording_lock_background"
+        android:background="?attr/recording_lock_background"
         android:clipChildren="false"
         android:orientation="vertical"
         android:visibility="gone"
