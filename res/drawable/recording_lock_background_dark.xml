@@ -4,7 +4,7 @@
     android:shape="rectangle">
 
     <solid
-        android:color="?attr/input_panel_bg_color" />
+        android:color="@color/gray95" />
 
     <corners
         android:radius="20dp" />
