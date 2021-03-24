@@ -148,6 +148,7 @@
 
         <item name="quick_camera_icon">@drawable/quick_camera_light</item>
         <item name="quick_mic_icon">@drawable/ic_mic_grey600_24dp</item>
+	<item name="recording_lock_background">@drawable/recording_lock_background_light</item>
 
         <item name="conversation_item_sent_indicator_text_background">@drawable/conversation_item_sent_indicator_text_shape</item>
 
@@ -307,6 +308,7 @@
 
         <item name="quick_camera_icon">@drawable/quick_camera_dark</item>
         <item name="quick_mic_icon">@drawable/ic_mic_white_24dp</item>
+	<item name="recording_lock_background">@drawable/recording_lock_background_dark</item>
 
         <item name="menu_new_conversation_icon">@drawable/ic_add_white_24dp</item>
         <item name="menu_search_icon">@drawable/ic_search_white_24dp</item>

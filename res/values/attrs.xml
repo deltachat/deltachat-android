@@ -71,6 +71,7 @@
     <attr name="emoji_variation_selector_background" format="reference|color" />
     <attr name="quick_camera_icon" format="reference"/>
     <attr name="quick_mic_icon" format="reference"/>
+    <attr name="recording_lock_background" format="reference"/>
 
     <attr name="conversation_item_background" format="reference"/>
     <attr name="conversation_item_incoming_bubble_color" format="reference|color"/>
