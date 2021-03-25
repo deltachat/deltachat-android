@@ -29,9 +29,9 @@ provided `Dockerfile` with [Docker](https://www.docker.com/) or
 [Podman](https://podman.io/). Podman is a drop-in replacement for Docker
 that does not require root privileges.
 
-If you don't have Docker or Podman setup yet, read how to [setup Podman](#setup-podman)
-below. If you don't want to use Docker or Podman, read how to [manually install the
-build environment](#install-build-environment)
+If you don't have Docker or Podman setup yet, read [how to setup Podman](#setup-podman)
+below. If you don't want to use Docker or Podman, read [how to manually install the
+build environment](#install-build-environment).
 
 First, build the image `deltachat-android` by running
 ```
@@ -51,7 +51,8 @@ or
 docker run -it --name deltachat -v $(pwd):/home/app -w /home/app localhost/deltachat-android
 ```
 
-You can leave the container with Ctrl+D or by typing `exit` and re-enter it with `podman start -ia deltachat`.
+You can leave the container with Ctrl+D or by typing `exit` and re-enter it with 
+`docker start -ia deltachat` or `podman start -ia deltachat`.
 
 Within the container, install toolchains and build the native library:
 ```
@@ -67,6 +68,7 @@ deltachat@6012dcb974fe:/home/app$ ./gradlew assembleDebug
 ## Troubleshooting
 
 - `./gradlew assembleDebug` fails with `The SDK directory '/home/user/Android/Sdk' does not exist.`:
+  
   You have to
   - either: remove the line starting with `sdk.dir=` from your `local.properties` file
   - or: execute `./gradlew assembleDebug` from outside the container
@@ -75,8 +77,9 @@ deltachat@6012dcb974fe:/home/app$ ./gradlew assembleDebug
 
 These instructions were only tested on a Manjaro machine so far. If anything doesn't work, please open an issue.
 
-- [Install Podman](https://podman.io/getting-started/installation)
-- In /etc/containers/storage.conf, replace the line
+First, [Install Podman](https://podman.io/getting-started/installation).
+
+Then in /etc/containers/storage.conf, replace the line
 ```
 driver = ""
 ```
@@ -87,14 +90,15 @@ driver = "overlay"
 You can also set the `driver` option to something else, you just need to set it to _something_.
 [Read about possible options here](
 https://github.com/containers/storage/blob/master/docs/containers-storage.conf.5.md#storage-table).
-- If you want to run Podman without root:
+
+Finally, if you want to run Podman without root, run:
 ```
-touch /etc/subgid
-touch /etc/subuid
-usermod --add-subuids 165536-231072 --add-subgids 165536-231072 yourusername
+sudo touch /etc/subgid
+sudo touch /etc/subuid
+sudo usermod --add-subuids 165536-231072 --add-subgids 165536-231072 yourusername
 ```
-  (replace `yourusername` with your username)
-  See https://wiki.archlinux.org/index.php/Podman#Rootless_Podman for more information.
+(replace `yourusername` with your username)
+See https://wiki.archlinux.org/index.php/Podman#Rootless_Podman for more information.
 
 # <a name="install-build-environment"></a>Install Build Environment (without Docker or Podman)
 
