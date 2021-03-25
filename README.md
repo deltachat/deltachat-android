@@ -29,6 +29,10 @@ provided `Dockerfile` with [Docker](https://www.docker.com/) or
 [Podman](https://podman.io/). Podman is a drop-in replacement for Docker
 that does not require root privileges.
 
+If you don't have Docker or Podman setup yet, read how to [setup Podman](#setup-podman)
+below. If you don't want to use Docker or Podman, read how to [manually install the
+build environment](#install-build-environment)
+
 First, build the image `deltachat-android` by running
 ```
 podman build --build-arg UID=$(id -u) --build-arg GID=$(id -g) . -t deltachat-android
@@ -53,14 +57,31 @@ deltachat@6012dcb974fe:/home/app$ scripts/install-toolchains.sh
 deltachat@6012dcb974fe:/home/app$ ./ndk-make.sh
 ```
 
+Leave the container with Ctrl+D (you can return later using `podman start -ia deltachat`).
+
 Then, [build an APK](https://developer.android.com/studio/build/building-cmdline):
 ```
 deltachat@6012dcb974fe:/home/app$ ./gradlew assembleDebug
 ```
 
-If you don't want to use Docker or Podman, proceed to the next section.
+# <a name="setup-podman"></a>Setup Podman
 
-# Install Build Environment
+These instructions were tested on a Manjaro machine. If anything doesn't work, please open an issue.
+
+- [Install Podman](https://podman.io/getting-started/installation)
+- In /etc/containers/storage.conf, set the `driver` option to `overlay`. You can also set it to something
+else, you just need to set it to _something_. [Read about possible options here](
+https://github.com/containers/storage/blob/master/docs/containers-storage.conf.5.md#storage-table).
+- If you want to run Podman without root:
+```
+touch /etc/subgid
+touch /etc/subuid
+usermod --add-subuids 165536-231072 --add-subgids 165536-231072 yourusername
+```
+(replace `yourusername` with your username)
+See https://wiki.archlinux.org/index.php/Podman#Rootless_Podman for more information.
+
+# <a name="install-build-environment"></a>Install Build Environment (without Docker or Podman)
 
 To setup build environment manually, you can read the `Dockerfile`
 and mimic what it does.
