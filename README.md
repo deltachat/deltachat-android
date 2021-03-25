@@ -97,7 +97,7 @@ sudo touch /etc/subgid
 sudo touch /etc/subuid
 sudo usermod --add-subuids 165536-231072 --add-subgids 165536-231072 yourusername
 ```
-(replace `yourusername` with your username)
+(replace `yourusername` with your username).
 See https://wiki.archlinux.org/index.php/Podman#Rootless_Podman for more information.
 
 # <a name="install-build-environment"></a>Install Build Environment (without Docker or Podman)
