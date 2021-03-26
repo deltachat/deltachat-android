@@ -24,12 +24,14 @@ public class AudioCodec {
   private static final String TAG = AudioCodec.class.getSimpleName();
 
   private static final int    SAMPLE_RATE_BALANCED = 44100;
-  private static final int    SAMPLE_RATE_WORSE = 8000;
   private static final int    SAMPLE_RATE_INDEX_BALANCED = 4;
-  private static final int    SAMPLE_RATE_INDEX_WORSE = 11;
-  private static final int    CHANNELS          = 1;
   private static final int    BIT_RATE_BALANCED = 24000;
-  private static final int    BIT_RATE_WORSE    = 4000;
+
+  private static final int    SAMPLE_RATE_WORSE = 16000;
+  private static final int    SAMPLE_RATE_INDEX_WORSE = 8;
+  private static final int    BIT_RATE_WORSE    = 8000;
+
+  private static final int    CHANNELS          = 1;
 
   private final int         bufferSize;
   private final MediaCodec  mediaCodec;
