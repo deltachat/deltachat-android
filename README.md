@@ -67,11 +67,19 @@ deltachat@6012dcb974fe:/home/app$ ./gradlew assembleDebug
 
 ## Troubleshooting
 
-- `./gradlew assembleDebug` fails with `The SDK directory '/home/user/Android/Sdk' does not exist.`:
-  
-  You have to
-  - either: remove the line starting with `sdk.dir=` from your `local.properties` file
-  - or: execute `./gradlew assembleDebug` from outside the container
+- Executing `./gradlew assembleDebug` inside the container fails with `The SDK directory '/home/user/Android/Sdk' does not exist.`:
+
+  The problem is that Android Studio (outside the container) automatically creates a file `local.properties` with a content like `sdk.dir=/home/username/Android/Sdk`,
+  so, Gradle-inside-the-container looks for the Sdk at `/home/username/Android/Sdk`, where it can't find it.
+  You could:
+  - either: remove the file or just the line starting with `sdk.dir`
+  - or: run `./gradlew assembleDebug` from outside the container (however, there may be incompability issues if different versions are installed inside and outside the container)
+
+- Running the image fails with `ERRO[0000] The storage 'driver' option must be set in /etc/containers/storage.conf, guarantee proper operation.`:
+
+  In /etc/containers/storage.conf, replace the line: `driver = ""` with: `driver = "overlay"`.
+  You can also set the `driver` option to something else, you just need to set it to _something_.
+  [Read about possible options here](https://github.com/containers/storage/blob/master/docs/containers-storage.conf.5.md#storage-table).
 
 # <a name="setup-podman"></a>Setup Podman
 
@@ -79,19 +87,7 @@ These instructions were only tested on a Manjaro machine so far. If anything doe
 
 First, [Install Podman](https://podman.io/getting-started/installation).
 
-Then in /etc/containers/storage.conf, replace the line
-```
-driver = ""
-```
-with:
-```
-driver = "overlay"
-```
-You can also set the `driver` option to something else, you just need to set it to _something_.
-[Read about possible options here](
-https://github.com/containers/storage/blob/master/docs/containers-storage.conf.5.md#storage-table).
-
-Finally, if you want to run Podman without root, run:
+Then, if you want to run Podman without root, run:
 ```
 sudo touch /etc/subgid
 sudo touch /etc/subuid
