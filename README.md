@@ -29,6 +29,10 @@ provided `Dockerfile` with [Docker](https://www.docker.com/) or
 [Podman](https://podman.io/). Podman is a drop-in replacement for Docker
 that does not require root privileges.
 
+If you don't have Docker or Podman setup yet, read [how to setup Podman](#setup-podman)
+below. If you don't want to use Docker or Podman, read [how to manually install the
+build environment](#install-build-environment).
+
 First, build the image `deltachat-android` by running
 ```
 podman build --build-arg UID=$(id -u) --build-arg GID=$(id -g) . -t deltachat-android
@@ -47,6 +51,9 @@ or
 docker run -it --name deltachat -v $(pwd):/home/app -w /home/app localhost/deltachat-android
 ```
 
+You can leave the container with Ctrl+D or by typing `exit` and re-enter it with 
+`docker start -ia deltachat` or `podman start -ia deltachat`.
+
 Within the container, install toolchains and build the native library:
 ```
 deltachat@6012dcb974fe:/home/app$ scripts/install-toolchains.sh
@@ -58,9 +65,38 @@ Then, [build an APK](https://developer.android.com/studio/build/building-cmdline
 deltachat@6012dcb974fe:/home/app$ ./gradlew assembleDebug
 ```
 
-If you don't want to use Docker or Podman, proceed to the next section.
+## Troubleshooting
 
-# Install Build Environment
+- Executing `./gradlew assembleDebug` inside the container fails with `The SDK directory '/home/user/Android/Sdk' does not exist.`:
+
+  The problem is that Android Studio (outside the container) automatically creates a file `local.properties` with a content like `sdk.dir=/home/username/Android/Sdk`,
+  so, Gradle-inside-the-container looks for the Sdk at `/home/username/Android/Sdk`, where it can't find it.
+  You could:
+  - either: remove the file or just the line starting with `sdk.dir`
+  - or: run `./gradlew assembleDebug` from outside the container (however, there may be incompability issues if different versions are installed inside and outside the container)
+
+- Running the image fails with `ERRO[0000] The storage 'driver' option must be set in /etc/containers/storage.conf, guarantee proper operation.`:
+
+  In /etc/containers/storage.conf, replace the line: `driver = ""` with: `driver = "overlay"`.
+  You can also set the `driver` option to something else, you just need to set it to _something_.
+  [Read about possible options here](https://github.com/containers/storage/blob/master/docs/containers-storage.conf.5.md#storage-table).
+
+# <a name="setup-podman"></a>Setup Podman
+
+These instructions were only tested on a Manjaro machine so far. If anything doesn't work, please open an issue.
+
+First, [Install Podman](https://podman.io/getting-started/installation).
+
+Then, if you want to run Podman without root, run:
+```
+sudo touch /etc/subgid
+sudo touch /etc/subuid
+sudo usermod --add-subuids 165536-231072 --add-subgids 165536-231072 yourusername
+```
+(replace `yourusername` with your username).
+See https://wiki.archlinux.org/index.php/Podman#Rootless_Podman for more information.
+
+# <a name="install-build-environment"></a>Install Build Environment (without Docker or Podman)
 
 To setup build environment manually, you can read the `Dockerfile`
 and mimic what it does.

@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM docker.io/ubuntu:18.04
 
 # Install Android Studio requirements
 # See https://developer.android.com/studio/install#linux
