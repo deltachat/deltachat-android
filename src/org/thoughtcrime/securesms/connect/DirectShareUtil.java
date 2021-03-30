@@ -15,11 +15,15 @@ import androidx.core.graphics.drawable.IconCompat;
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcChatlist;
 import com.b44t.messenger.DcContext;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import org.thoughtcrime.securesms.ShareActivity;
+import org.thoughtcrime.securesms.contacts.avatars.ContactPhoto;
 import org.thoughtcrime.securesms.mms.GlideApp;
+import org.thoughtcrime.securesms.mms.GlideRequest;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.BitmapUtil;
+import org.thoughtcrime.securesms.util.DrawableUtil;
 import org.thoughtcrime.securesms.util.Util;
 
 import java.util.Collections;
@@ -66,17 +70,7 @@ public class DirectShareUtil {
       intent.putExtra(ShareActivity.EXTRA_CHAT_ID, chat.getId());
 
       Recipient recipient = DcHelper.getContext(context).getRecipient(chat);
-      Bitmap avatar;
-      try {
-        avatar = GlideApp.with(context)
-                .asBitmap()
-                .load(recipient.getContactPhoto(context))
-                .submit(context.getResources().getDimensionPixelSize(android.R.dimen.notification_large_icon_width),
-                        context.getResources().getDimensionPixelSize(android.R.dimen.notification_large_icon_width))
-                .get();
-      } catch (InterruptedException | ExecutionException | NullPointerException e) {
-        avatar = getFallbackDrawable(context, recipient);
-      }
+      Bitmap avatar = getIconForShortcut(context, recipient);
       results.add(new ShortcutInfoCompat.Builder(context, Integer.toString(chat.getId()))
               .setShortLabel(chat.getName())
               .setLongLived(true)
@@ -91,63 +85,37 @@ public class DirectShareUtil {
     return results;
   }
 
+  private static Bitmap getIconForShortcut(@NonNull Context context, @NonNull Recipient recipient) {
+    try {
+      return getShortcutInfoBitmap(context, recipient);
+    } catch (ExecutionException | InterruptedException | NullPointerException e) {
+      return getFallbackDrawable(context, recipient);
+    }
+  }
+
+  private static @NonNull Bitmap getShortcutInfoBitmap(@NonNull Context context, @NonNull Recipient recipient) throws ExecutionException, InterruptedException {
+    return DrawableUtil.wrapBitmapForShortcutInfo(request(GlideApp.with(context).asBitmap(), context, recipient, false).submit().get());
+  }
+
   private static Bitmap getFallbackDrawable(Context context, @NonNull Recipient recipient) {
     return BitmapUtil.createFromDrawable(recipient.getFallbackAvatarDrawable(context),
             context.getResources().getDimensionPixelSize(android.R.dimen.notification_large_icon_width),
             context.getResources().getDimensionPixelSize(android.R.dimen.notification_large_icon_height));
   }
 
+  private static <T> GlideRequest<T> request(@NonNull GlideRequest<T> glideRequest, @NonNull Context context, @NonNull Recipient recipient, boolean loadSelf) {
+    final ContactPhoto photo;
+    photo = recipient.getContactPhoto(context);
+
+    return glideRequest.load(photo)
+            .error(getFallbackDrawable(context, recipient))
+            .diskCacheStrategy(DiskCacheStrategy.ALL);
+  }
+
+
   public static void clearShortcut(@NonNull Context context, int chatId) {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
       Util.runOnBackgroundDelayed(() -> ShortcutManagerCompat.removeDynamicShortcuts(context, Collections.singletonList(Integer.toString(chatId))), 50);
     }
   }
-
-
-//  // TODO these are gotten from Signal:
-//
-//
-//  public static @NonNull Bitmap wrapBitmapForShortcutInfo(@NonNull Bitmap toWrap, Context context) {
-//    int SHORTCUT_INFO_BITMAP_SIZE = context.getResources().getDimensionPixelSize(android.R.dimen.notification_large_icon_width);
-//    int SHORTCUT_INFO_WRAPPED_SIZE = SHORTCUT_INFO_BITMAP_SIZE;
-//    int SHORTCUT_INFO_PADDING = 0;
-//    Bitmap bitmap = Bitmap.createBitmap(SHORTCUT_INFO_BITMAP_SIZE, SHORTCUT_INFO_BITMAP_SIZE, Bitmap.Config.ARGB_8888);
-//    Bitmap scaled = Bitmap.createScaledBitmap(toWrap, SHORTCUT_INFO_WRAPPED_SIZE, SHORTCUT_INFO_WRAPPED_SIZE, true);
-//
-//    Canvas canvas = new Canvas(bitmap);
-//    canvas.drawBitmap(scaled, SHORTCUT_INFO_PADDING, SHORTCUT_INFO_PADDING, null);
-//
-//    return bitmap;
-//  }
-//
-//
-//  private static @NonNull Bitmap getShortcutInfoBitmap(@NonNull Context context, @NonNull Recipient recipient) throws ExecutionException, InterruptedException {
-//    return wrapBitmapForShortcutInfo(request(GlideApp.with(context).asBitmap(), context, recipient, false).circleCrop().submit().get(), context);
-//  }
-//
-//
-//  private static <T> GlideRequest<T> request(@NonNull GlideRequest<T> glideRequest, @NonNull Context context, @NonNull Recipient recipient) {
-//    return request(glideRequest, context, recipient, true);
-//  }
-//
-//
-//  private static <T> GlideRequest<T> request(@NonNull GlideRequest<T> glideRequest, @NonNull Context context, @NonNull Recipient recipient, boolean loadSelf) {
-//    final ContactPhoto photo;
-//    photo = recipient.getContactPhoto(context);
-//
-//    return glideRequest.load(photo)
-//            .error(getFallbackDrawable(context, recipient))
-//            .diskCacheStrategy(DiskCacheStrategy.ALL);
-//  }
-//
-//  @RequiresApi(api = Build.VERSION_CODES.O)
-//  @WorkerThread
-//  public static Icon getIconForShortcut(@NonNull Context context, @NonNull Recipient recipient) {
-//    try {
-//      return Icon.createWithAdaptiveBitmap(getShortcutInfoBitmap(context, recipient));
-//    } catch (ExecutionException | InterruptedException e) {
-//      return null; // TODO
-//    }
-//  }
-
 }
