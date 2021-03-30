@@ -94,11 +94,15 @@
             <data android:mimeType="text/*"/>
             <data android:mimeType="*/*"/>
         </intent-filter>
-<!--
         <meta-data
-                android:name="android.service.chooser.chooser_target_service"
-                android:value="org.thoughtcrime.securesms.service.DirectShareService" />
--->
+            android:name="android.service.chooser.chooser_target_service"
+            android:value="androidx.sharetarget.ChooserTargetServiceCompat" />
+
+        <!--
+				<meta-data
+						android:name="android.service.chooser.chooser_target_service"
+						android:value="org.thoughtcrime.securesms.service.DirectShareService" />
+		-->
 
     </activity>
 
@@ -130,6 +134,9 @@
                    android:resource="@mipmap/ic_launcher" />
         <meta-data android:name="com.sec.minimode.icon.landscape.normal"
                    android:resource="@mipmap/ic_launcher" />
+        <meta-data
+            android:name="android.app.shortcuts"
+            android:resource="@xml/shortcuts" />
 
     </activity-alias>
 

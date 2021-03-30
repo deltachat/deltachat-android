@@ -16,6 +16,7 @@ import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcChatlist;
 import com.b44t.messenger.DcContext;
 
+import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.ShareActivity;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.recipients.Recipient;
@@ -30,7 +31,7 @@ import java.util.concurrent.ExecutionException;
 public class DirectShareUtil {
 
   private static final String TAG = DirectShareUtil.class.getSimpleName();
-  private static final String SHORTCUT_CATEGORY = "DIRECT_SHARE_DELTA_CHAT";
+  private static final String SHORTCUT_CATEGORY = "android.shortcut.conversation";
   static void triggerRefreshDirectShare(Context context) {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
       Util.runOnBackgroundDelayed(() -> {
@@ -63,7 +64,8 @@ public class DirectShareUtil {
         continue;
       }
 
-      Intent intent = new Intent(Intent.ACTION_SEND);
+      Intent intent = new Intent(context, ConversationActivity.class);
+      intent.setAction(Intent.ACTION_SEND);
       intent.putExtra(ShareActivity.EXTRA_CHAT_ID, chat.getId());
       Recipient recipient = DcHelper.getContext(context).getRecipient(chat);
       Bitmap avatar;
@@ -79,6 +81,7 @@ public class DirectShareUtil {
         avatar = getFallbackDrawable(context, recipient);
       }
       IconCompat icon = IconCompat.createWithAdaptiveBitmap(avatar);
+//      context.grantUriPermission();
       //results.add(new ChooserTarget(chat.getName(), Icon.createWithBitmap(avatar), 1.0f, componentName, bundle));
       results.add(new ShortcutInfoCompat.Builder(context, Integer.toString(chat.getId()))
               .setShortLabel(chat.getName())
@@ -98,6 +101,14 @@ public class DirectShareUtil {
     return BitmapUtil.createFromDrawable(recipient.getFallbackAvatarDrawable(context),
             context.getResources().getDimensionPixelSize(android.R.dimen.notification_large_icon_width),
             context.getResources().getDimensionPixelSize(android.R.dimen.notification_large_icon_height));
+  }
+
+  public static void clearShortcut(@NonNull Context context, int chatId) {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+      Util.runOnBackgroundDelayed(() -> {
+        ShortcutManagerCompat.removeDynamicShortcuts(context, Collections.singletonList(Integer.toString(chatId)));
+      }, 50);
+    }
   }
 
 

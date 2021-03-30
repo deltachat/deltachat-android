@@ -87,6 +87,7 @@ import org.thoughtcrime.securesms.components.emoji.MediaKeyboard;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.connect.DirectShareUtil;
 import org.thoughtcrime.securesms.map.MapActivity;
 import org.thoughtcrime.securesms.mms.AttachmentManager;
 import org.thoughtcrime.securesms.mms.AttachmentManager.MediaType;
@@ -123,6 +124,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -669,6 +671,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
         .setMessage(getResources().getQuantityString(R.plurals.ask_delete_chat, 1, 1))
         .setPositiveButton(R.string.delete, (dialog, which) -> {
           dcContext.deleteChat(chatId);
+          DirectShareUtil.clearShortcut(this, chatId);
           Toast.makeText(this, getString(R.string.done), Toast.LENGTH_SHORT).show();
           finish();
         })
