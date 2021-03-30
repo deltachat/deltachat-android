@@ -31,6 +31,15 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
+/**
+ * The Signal code has a similar class called ConversationUtil.
+ *
+ * This class uses the Sharing Shortcuts API to publish dynamic launcher shortcuts (the ones that
+ * appear when you long-press on an app) and direct-sharing-shortcuts.
+ *
+ * It replaces the class DirectShareService, because DirectShareService used the
+ * ChooserTargetService API, which was replaced by the Sharing Shortcuts API.
+ */
 public class DirectShareUtil {
 
   private static final String TAG = DirectShareUtil.class.getSimpleName();
