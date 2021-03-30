@@ -98,12 +98,6 @@
             android:name="android.service.chooser.chooser_target_service"
             android:value="androidx.sharetarget.ChooserTargetServiceCompat" />
 
-        <!--
-				<meta-data
-						android:name="android.service.chooser.chooser_target_service"
-						android:value="org.thoughtcrime.securesms.service.DirectShareService" />
-		-->
-
     </activity>
 
     <activity android:name=".ConversationListActivity"
@@ -284,13 +278,6 @@
     <service android:name=".connect.KeepAliveService" android:enabled="true" />
 
     <service android:name=".geolocation.LocationBackgroundService"  />
-
-<!--    <service android:name=".service.DirectShareService"
-             android:permission="android.permission.BIND_CHOOSER_TARGET_SERVICE">
-        <intent-filter>
-            <action android:name="android.service.chooser.ChooserTargetService" />
-        </intent-filter>
-    </service>-->
 
     <service android:name=".service.GenericForegroundService" />
 
