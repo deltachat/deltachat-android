@@ -424,13 +424,6 @@ public class ApplicationDcContext extends DcContext {
 
   public long handleEvent(DcEvent event) {
     int id = event.getId();
-
-    if (id == DC_EVENT_CHAT_MODIFIED
-            || id == DC_EVENT_INCOMING_MSG
-            || id == DC_EVENT_MSGS_CHANGED) {
-      DirectShareUtil.triggerRefreshDirectShare(context);
-    }
-
     switch (id) {
       case DC_EVENT_INFO:
         Log.i(TAG, event.getData2Str());
@@ -473,6 +466,13 @@ public class ApplicationDcContext extends DcContext {
       }
       break;
     }
+
+    if (id == DC_EVENT_CHAT_MODIFIED
+            || id == DC_EVENT_INCOMING_MSG
+            || id == DC_EVENT_MSGS_CHANGED) {
+      DirectShareUtil.triggerRefreshDirectShare(context);
+    }
+
     return 0;
   }
 

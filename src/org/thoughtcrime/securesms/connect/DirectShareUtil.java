@@ -44,6 +44,13 @@ public class DirectShareUtil {
 
   private static final String TAG = DirectShareUtil.class.getSimpleName();
   private static final String SHORTCUT_CATEGORY = "android.shortcut.conversation";
+
+  public static void clearShortcut(@NonNull Context context, int chatId) {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+      Util.runOnBackgroundDelayed(() -> ShortcutManagerCompat.removeDynamicShortcuts(context, Collections.singletonList(Integer.toString(chatId))), 50);
+    }
+  }
+
   static void triggerRefreshDirectShare(Context context) {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
       Util.runOnBackgroundDelayed(() -> {
@@ -103,7 +110,7 @@ public class DirectShareUtil {
   }
 
   private static @NonNull Bitmap getShortcutInfoBitmap(@NonNull Context context, @NonNull Recipient recipient) throws ExecutionException, InterruptedException {
-    return DrawableUtil.wrapBitmapForShortcutInfo(request(GlideApp.with(context).asBitmap(), context, recipient, false).submit().get());
+    return DrawableUtil.wrapBitmapForShortcutInfo(request(GlideApp.with(context).asBitmap(), context, recipient, false).circleCrop().submit().get());
   }
 
   private static Bitmap getFallbackDrawable(Context context, @NonNull Recipient recipient) {
@@ -119,12 +126,5 @@ public class DirectShareUtil {
     return glideRequest.load(photo)
             .error(getFallbackDrawable(context, recipient))
             .diskCacheStrategy(DiskCacheStrategy.ALL);
-  }
-
-
-  public static void clearShortcut(@NonNull Context context, int chatId) {
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-      Util.runOnBackgroundDelayed(() -> ShortcutManagerCompat.removeDynamicShortcuts(context, Collections.singletonList(Integer.toString(chatId))), 50);
-    }
   }
 }
