@@ -41,11 +41,9 @@ public class DirectShareUtil {
     }
   }
 
-  // TODO these are from DirectShareService:
   @RequiresApi(api = Build.VERSION_CODES.M)
   private static List<ShortcutInfoCompat> getChooserTargets(Context context) {
     List<ShortcutInfoCompat> results = new LinkedList<>();
-    ComponentName componentName = new ComponentName(context, ShareActivity.class);
     ApplicationDcContext dcContext = DcHelper.getContext(context);
 
     DcChatlist chatlist = dcContext.getChatlist(
@@ -66,6 +64,7 @@ public class DirectShareUtil {
       Intent intent = new Intent(context, ShareActivity.class);
       intent.setAction(Intent.ACTION_SEND);
       intent.putExtra(ShareActivity.EXTRA_CHAT_ID, chat.getId());
+
       Recipient recipient = DcHelper.getContext(context).getRecipient(chat);
       Bitmap avatar;
       try {
@@ -76,17 +75,13 @@ public class DirectShareUtil {
                         context.getResources().getDimensionPixelSize(android.R.dimen.notification_large_icon_width))
                 .get();
       } catch (InterruptedException | ExecutionException | NullPointerException e) {
-        //Log.w(TAG, e);
         avatar = getFallbackDrawable(context, recipient);
       }
-      IconCompat icon = IconCompat.createWithAdaptiveBitmap(avatar);
-//      context.grantUriPermission();
-      //results.add(new ChooserTarget(chat.getName(), Icon.createWithBitmap(avatar), 1.0f, componentName, bundle));
       results.add(new ShortcutInfoCompat.Builder(context, Integer.toString(chat.getId()))
               .setShortLabel(chat.getName())
               .setLongLived(true)
               .setRank(i+1)
-              .setIcon(icon)
+              .setIcon(IconCompat.createWithAdaptiveBitmap(avatar))
               .setCategories(Collections.singleton(SHORTCUT_CATEGORY))
               .setIntent(intent)
               .setActivity(new ComponentName(context, "org.thoughtcrime.securesms.RoutingActivity"))
@@ -104,9 +99,7 @@ public class DirectShareUtil {
 
   public static void clearShortcut(@NonNull Context context, int chatId) {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-      Util.runOnBackgroundDelayed(() -> {
-        ShortcutManagerCompat.removeDynamicShortcuts(context, Collections.singletonList(Integer.toString(chatId)));
-      }, 50);
+      Util.runOnBackgroundDelayed(() -> ShortcutManagerCompat.removeDynamicShortcuts(context, Collections.singletonList(Integer.toString(chatId))), 50);
     }
   }
 

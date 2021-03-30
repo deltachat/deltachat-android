@@ -28,9 +28,9 @@ public class AttachmentsContentProvider extends ContentProvider {
         ApplicationDcContext dcContext = DcHelper.getContext(getContext());
 
         String path = uri.getPath();
-//        if (!dcContext.sharedFiles.containsKey(path)) {
-//            throw new FileNotFoundException("File was not shared before.");
-//        } // TODO dbg dangerous!!!!
+        if (!dcContext.sharedFiles.containsKey(path)) {
+            throw new FileNotFoundException("File was not shared before.");
+        }
 
         File privateFile = new File(dcContext.getBlobdir(), path);
         return ParcelFileDescriptor.open(privateFile, ParcelFileDescriptor.MODE_READ_ONLY);
