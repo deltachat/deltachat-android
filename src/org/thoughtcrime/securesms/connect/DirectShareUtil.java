@@ -16,7 +16,6 @@ import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcChatlist;
 import com.b44t.messenger.DcContext;
 
-import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.ShareActivity;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.recipients.Recipient;
@@ -64,7 +63,7 @@ public class DirectShareUtil {
         continue;
       }
 
-      Intent intent = new Intent(context, ConversationActivity.class);
+      Intent intent = new Intent(context, ShareActivity.class);
       intent.setAction(Intent.ACTION_SEND);
       intent.putExtra(ShareActivity.EXTRA_CHAT_ID, chat.getId());
       Recipient recipient = DcHelper.getContext(context).getRecipient(chat);
