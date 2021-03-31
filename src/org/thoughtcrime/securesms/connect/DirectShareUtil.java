@@ -53,6 +53,13 @@ public class DirectShareUtil {
     }
   }
 
+  public static void resetAllShortcuts(@NonNull Context context) {
+    Util.runOnBackground(() -> {
+      ShortcutManagerCompat.removeAllDynamicShortcuts(context);
+      triggerRefreshDirectShare(context);
+    });
+  }
+
   public static void triggerRefreshDirectShare(Context context) {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 
