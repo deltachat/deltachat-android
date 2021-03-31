@@ -3,8 +3,10 @@ package org.thoughtcrime.securesms.connect;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ShortcutManager;
 import android.graphics.Bitmap;
 import android.os.Build;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -47,17 +49,38 @@ public class DirectShareUtil {
 
   public static void clearShortcut(@NonNull Context context, int chatId) {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-      Util.runOnBackgroundDelayed(() -> ShortcutManagerCompat.removeDynamicShortcuts(context, Collections.singletonList(Integer.toString(chatId))), 50);
+      Util.runOnAnyBackgroundThread(() -> ShortcutManagerCompat.removeDynamicShortcuts(context, Collections.singletonList(Integer.toString(chatId))));
     }
   }
 
-  static void triggerRefreshDirectShare(Context context) {
+  public static void triggerRefreshDirectShare(Context context) {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+
       Util.runOnBackgroundDelayed(() -> {
-        ShortcutManagerCompat.addDynamicShortcuts(context, getChooserTargets(context));
-        // Delay 50ms because we run this when a new message appears and we want to make sure that
-        // more important things like showing a notification are not delayed
-      }, 50);
+        try {
+          if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N_MR1
+                  && context.getSystemService(ShortcutManager.class).isRateLimitingActive()) {
+            return;
+          }
+
+          int maxShortcuts = ShortcutManagerCompat.getMaxShortcutCountPerActivity(context);
+          List<ShortcutInfoCompat> currentShortcuts = ShortcutManagerCompat.getDynamicShortcuts(context);
+          List<ShortcutInfoCompat> newShortcuts = getChooserTargets(context);
+
+          if (maxShortcuts > 0
+                  && currentShortcuts.size() + newShortcuts.size() > maxShortcuts) {
+            ShortcutManagerCompat.removeAllDynamicShortcuts(context);
+          }
+
+          boolean success = ShortcutManagerCompat.addDynamicShortcuts(context, newShortcuts);
+          Log.i(TAG, "Updated dynamic shortcuts, success: " + success);
+        } catch(IllegalArgumentException e) {
+          Log.e(TAG, "Updating dynamic shortcuts failed: " + e);
+        }
+
+        // Wait  500ms, this is called by onResume(), and we want to make sure that refreshing
+        // shortcuts does not delay loading of the chatlist
+      }, 500);
     }
   }
 
