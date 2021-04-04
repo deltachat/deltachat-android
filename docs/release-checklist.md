@@ -13,7 +13,7 @@ this will take some time - meanwhile we're doing some housekeeping:
 
 3. update translations and local help:
    $ ./scripts/tx-pull-translations.sh
-   $ cd ../deltachat-pages; ./scripts/create-local-help.py; cd ../deltachat-android
+   $ cd ../deltachat-pages; ./tools/create-local-help.py; cd ../deltachat-android
 
 4. add a device message to ConversationListActivity::onCreate()
    and update CHANGELOG.md
