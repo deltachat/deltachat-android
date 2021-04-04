@@ -18,7 +18,7 @@
 * improve and harden secure join
 * new gallery options "Show in chat" and "Share from Delta Chat"
 * display forwarded messages in quotes as such
-* show name of forwarded in groups
+* show name of forwarder in groups
 * add chat encryption info
 * tweak ephemeral timeout options
 * show message delivery errors directly when tapping on a message
