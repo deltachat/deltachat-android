@@ -1,5 +1,40 @@
 # Delta Chat Android Changelog
 
+## v1.17.0 Preview Release
+#2021-04
+
+* new mailinglist and better bot support
+* add option to view original-/html-mails
+* use more colors for user avatars
+* improve e-mail compatibility
+* improve compatibility with Outlook.com
+  and other providers changing message headers
+* swipe up the voice message record button to lock recording
+* show stickers as such
+* show status/footer messages in contact profiles
+* scale avatars based on media_quality, fix avatar rotation
+* export backups as .tar files
+* enable strict TLS for known providers by default
+* improve and harden secure join
+* new gallery options "Show in chat" and "Share from Delta Chat"
+* display forwarded messages in quotes as such
+* show name of forwarder in groups
+* add chat encryption info
+* tweak ephemeral timeout options
+* show message delivery errors directly when tapping on a message
+* add option to follow system light/dark settings
+* better profile and group picture selection by using attachment selector
+* make the upper left back button return to chat list even if the keyboard is open
+* fix decoding of attachment filenames
+* fix: exclude muted chats from notify-badge/dot
+* fix: do not return quoted messages from the trash chat
+* fix text width for messages with tall images
+* fix disappearing drafts
+* much more bug fixes
+* add Khmer and Kurdish translations, update other translations
+* add Czech local help, update other local help
+
+
 ## v1.14.5
 2020-11
 
