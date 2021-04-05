@@ -122,7 +122,15 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
     String readReceiptState = dcContext.getConfigInt("mdns_enabled")!=0? onRes : offRes;
     boolean deleteOld = (dcContext.getConfigInt("delete_device_after")!=0 || dcContext.getConfigInt("delete_server_after")!=0);
 
-    String summary = context.getString(R.string.pref_read_receipts) + " " + readReceiptState;
+    String showEmails = "?";
+    switch (dcContext.getConfigInt("show_emails")) {
+      case DcContext.DC_SHOW_EMAILS_OFF: showEmails = offRes; break;
+      case DcContext.DC_SHOW_EMAILS_ACCEPTED_CONTACTS: showEmails = context.getString(R.string.pref_show_emails_accepted_contacts); break;
+      case DcContext.DC_SHOW_EMAILS_ALL: showEmails = context.getString(R.string.pref_show_emails_all); break;
+    }
+
+    String summary = context.getString(R.string.pref_show_emails) + " " + showEmails + ", " +
+      context.getString(R.string.pref_read_receipts) + " " + readReceiptState;
     if (deleteOld) {
       summary += ", " + context.getString(R.string.delete_old_messages) + " " + onRes;
     }
