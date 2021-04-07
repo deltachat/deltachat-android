@@ -46,6 +46,7 @@ import com.b44t.messenger.DcMsg;
 
 import io.noties.markwon.Markwon;
 import io.noties.markwon.ext.strikethrough.StrikethroughPlugin;
+import io.noties.markwon.ext.tasklist.TaskListPlugin;
 
 import org.thoughtcrime.securesms.audio.AudioSlidePlayer;
 import org.thoughtcrime.securesms.components.AudioView;
@@ -145,6 +146,7 @@ public class ConversationItem extends LinearLayout
     this.dcContext = DcHelper.getContext(context);
     markwon = Markwon.builder(context)
 	.usePlugin(StrikethroughPlugin.create())
+	.usePlugin(TaskListPlugin.create(context))
 	.build();
   }
 
