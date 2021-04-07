@@ -3,7 +3,7 @@ package org.thoughtcrime.securesms.components.emoji;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
-import android.text.SpannableString;
+import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.TextUtils;
@@ -214,7 +214,7 @@ public class EmojiTextView extends AppCompatTextView {
 
   private static final Pattern CMD_PATTERN = Pattern.compile("(?<=^|\\s)/[a-zA-Z][a-zA-Z@\\d_/.-]{0,254}");
 
-  private static void replaceURLSpan(SpannableString messageBody) {
+  private static void replaceURLSpan(Spannable messageBody) {
     URLSpan[] urlSpans = messageBody.getSpans(0, messageBody.length(), URLSpan.class);
     for (URLSpan urlSpan : urlSpans) {
       int start = messageBody.getSpanStart(urlSpan);
@@ -224,7 +224,7 @@ public class EmojiTextView extends AppCompatTextView {
     }
   }
 
-  public static SpannableString linkify(SpannableString messageBody) {
+  public static Spannable linkify(Spannable messageBody) {
     // linkify commands such as `/echo` -
     // do this first to avoid `/xkcd_123456` to be treated partly as a phone number
     if (Linkify.addLinks(messageBody, CMD_PATTERN, "cmd:", null, null)) {

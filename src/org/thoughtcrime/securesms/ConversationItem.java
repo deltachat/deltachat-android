@@ -22,7 +22,7 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.Rect;
-import android.text.SpannableString;
+import android.text.Spannable;
 import android.text.TextUtils;
 import android.text.util.Linkify;
 import android.util.AttributeSet;
@@ -43,6 +43,9 @@ import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMsg;
+
+import io.noties.markwon.Markwon;
+import io.noties.markwon.ext.strikethrough.StrikethroughPlugin;
 
 import org.thoughtcrime.securesms.audio.AudioSlidePlayer;
 import org.thoughtcrime.securesms.components.AudioView;
@@ -130,6 +133,7 @@ public class ConversationItem extends LinearLayout
 
   private final Context context;
   private final ApplicationDcContext dcContext;
+  private final Markwon markwon;
 
   public ConversationItem(Context context) {
     this(context, null);
@@ -139,6 +143,9 @@ public class ConversationItem extends LinearLayout
     super(context, attrs);
     this.context = context;
     this.dcContext = DcHelper.getContext(context);
+    markwon = Markwon.builder(context)
+	.usePlugin(StrikethroughPlugin.create())
+	.build();
   }
 
   @Override
@@ -370,7 +377,7 @@ public class ConversationItem extends LinearLayout
       bodyText.setVisibility(View.GONE);
     }
     else {
-      SpannableString spannable = new SpannableString(text);
+      Spannable spannable = (Spannable)markwon.toMarkdown(text);
       if (batchSelected.isEmpty()) {
         spannable = EmojiTextView.linkify(spannable);
       }
