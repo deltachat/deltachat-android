@@ -492,8 +492,6 @@
     <string name="pref_outgoing_balanced">Balanced</string>
     <string name="pref_outgoing_worse">Worse quality, small size</string>
     <string name="pref_vibrate">Vibrate</string>
-    <string name="pref_change_secret">Change secret</string>
-    <string name="pref_change_secret_explain">Change your PIN / pattern / fingerprint via system settings</string>
     <string name="pref_screen_security">Screen security</string>
     <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
     <string name="pref_screen_security_explain">Request to block screenshots in the recents list and inside the app</string>
@@ -664,17 +662,6 @@
     <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
     <string name="systemmsg_chat_protection_disabled">Chat protection disabled.</string>
     <string name="systemmsg_chat_protection_enabled">Chat protection enabled.</string>
-
-    <!-- screen lock -->
-    <string name="screenlock_title">Screen lock</string>
-    <string name="screenlock_explain">Lock access with Android screen lock or fingerprint; to avoid showing the prior content, please also enable \"Screen security\".</string>
-    <string name="screenlock_authentication_failed">Authentication failed.</string>
-    <string name="screenlock_unlock_title">Unlock Delta Chat</string>
-    <string name="screenlock_unlock_description">Please enter your system defined secret to unlock Delta Chat.</string>
-    <string name="screenlock_inactivity_timeout">Inactivity timeout lock</string>
-    <string name="screenlock_inactivity_timeout_explain">Auto-lock Delta Chat after a specified time period of inactivity</string>
-    <string name="screenlock_inactivity_timeout_interval">Time to remain active</string>
-
 
     <!-- qr code stuff -->
     <string name="qr_code">QR code</string>
