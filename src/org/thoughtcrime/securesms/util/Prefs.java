@@ -31,7 +31,6 @@ public class Prefs {
 
   private static final String TAG = Prefs.class.getSimpleName();
 
-  public  static final String CHANGE_PASSPHRASE_PREF           = "pref_change_passphrase";
   public  static final String DISABLE_PASSPHRASE_PREF          = "pref_disable_passphrase";
   public  static final String THEME_PREF                       = "pref_theme";
   public  static final String LANGUAGE_PREF                    = "pref_language";
@@ -43,8 +42,6 @@ public class Prefs {
   private static final String NOTIFICATION_PREF                = "pref_key_enable_notifications";
   public  static final String LED_COLOR_PREF                   = "pref_led_color";
   private static final String CHAT_RINGTONE                    = "pref_chat_ringtone_"; // followed by chat-id
-  public  static final String SCREEN_LOCK_TIMEOUT_INTERVAL_PREF = "pref_timeout_interval";
-  public  static final String SCREEN_LOCK_TIMEOUT_PREF         = "pref_timeout_passphrase";
   public  static final String SCREEN_SECURITY_PREF             = "pref_screen_security";
   private static final String ENTER_SENDS_PREF                 = "pref_enter_sends";
   private static final String PROMPTED_DOZE_MSG_ID_PREF        = "pref_prompted_doze_msg_id";
@@ -142,18 +139,6 @@ public class Prefs {
 
   public static String getTheme(Context context) {
     return getStringPreference(context, THEME_PREF, DynamicTheme.systemThemeAvailable() ? DynamicTheme.SYSTEM : DynamicTheme.LIGHT);
-  }
-
-  public static boolean isScreenLockTimeoutEnabled(Context context) {
-    return getBooleanPreference(context, SCREEN_LOCK_TIMEOUT_PREF, false);
-  }
-
-  public static int getScreenLockTimeoutInterval(Context context) {
-    return getIntegerPreference(context, SCREEN_LOCK_TIMEOUT_INTERVAL_PREF, 5 * 60);
-  }
-
-  public static void setScreenLockTimeoutInterval(Context context, int interval) {
-    setIntegerPrefrence(context, SCREEN_LOCK_TIMEOUT_INTERVAL_PREF, interval);
   }
 
   public static String getLanguage(Context context) {

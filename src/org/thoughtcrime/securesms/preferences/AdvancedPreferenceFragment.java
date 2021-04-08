@@ -6,15 +6,16 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.preference.CheckBoxPreference;
 import androidx.preference.Preference;
-import android.util.Log;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.Toast;
 
 import com.b44t.messenger.DcContext;
 
@@ -24,6 +25,7 @@ import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.permissions.Permissions;
+import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.ScreenLockUtil;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.views.ProgressDialog;
@@ -94,6 +96,9 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
 
     Preference manageKeys = this.findPreference("pref_manage_keys");
     manageKeys.setOnPreferenceClickListener(new ManageKeysListener());
+
+    Preference screenSecurity = this.findPreference(Prefs.SCREEN_SECURITY_PREF);
+    screenSecurity.setOnPreferenceChangeListener(new ScreenShotSecurityListener());
 
     Preference submitDebugLog = this.findPreference("pref_view_log");
     submitDebugLog.setOnPreferenceClickListener(new ViewLogListener());
@@ -166,6 +171,16 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
     } catch (PackageManager.NameNotFoundException e) {
       Log.w(TAG, e);
       return context.getString(R.string.app_name);
+    }
+  }
+
+  private class ScreenShotSecurityListener implements Preference.OnPreferenceChangeListener {
+    @Override
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+      boolean enabled = (Boolean) newValue;
+      Prefs.setScreenSecurityEnabled(getContext(), enabled);
+      Toast.makeText(getContext(), R.string.pref_screen_security_please_restart_hint, Toast.LENGTH_LONG).show();
+      return true;
     }
   }
 
