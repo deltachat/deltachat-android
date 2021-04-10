@@ -160,6 +160,8 @@
 
         <intent-filter>
             <data android:scheme="mailto"/>
+            <data android:scheme="http"/>
+            <data android:scheme="https"/>
             <action android:name="android.intent.action.VIEW"/>
             <category android:name="android.intent.category.DEFAULT"/>
             <category android:name="android.intent.category.BROWSABLE"/>

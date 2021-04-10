@@ -95,6 +95,11 @@ public class NewConversationActivity extends ContactSelectionActivity {
               startActivity(shareIntent);
               finish();
             }
+          } else if(scheme != null && scheme.startsWith("http")) {
+            Intent shareIntent = new Intent(this, ShareActivity.class);
+            shareIntent.putExtra(Intent.EXTRA_TEXT, "/web " + uri.toString());
+            startActivity(shareIntent);
+            finish();
           }
         }
       }
