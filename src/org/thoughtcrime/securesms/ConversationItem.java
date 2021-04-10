@@ -500,7 +500,7 @@ public class ConversationItem extends LinearLayout
       bodyBubble.setBackgroundColor(Color.TRANSPARENT);
 
       stickerStub.get().setSlide(glideRequests, new StickerSlide(context, messageRecord));
-      //stickerStub.get().setThumbnailClickListener(passthroughClickListener);
+      stickerStub.get().setThumbnailClickListener(new StickerClickListener());
 
       stickerStub.get().setOnLongClickListener(passthroughClickListener);
       stickerStub.get().setOnClickListener(passthroughClickListener);
@@ -776,6 +776,16 @@ public class ConversationItem extends LinearLayout
         context.startActivity(intent);
       } else if (slide.getUri() != null) {
         dcContext.openForViewOrShare(context, slide.getDcMsgId(), Intent.ACTION_VIEW);
+      }
+    }
+  }
+
+  private class StickerClickListener implements SlideClickListener {
+    public void onClick(final View v, final Slide slide) {
+      if (dcChat.getId() == DcChat.DC_CHAT_ID_DEADDROP && batchSelected.isEmpty()) {
+        handleDeadDropClick();
+      } else if (shouldInterceptClicks(messageRecord) || !batchSelected.isEmpty()) {
+        performClick();
       }
     }
   }
