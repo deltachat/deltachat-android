@@ -158,7 +158,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
 
     item = menu.findItem(R.id.menu_mute_notifications);
     if(item!=null) {
-      item.setTitle(Prefs.isChatMuted(dcContext.getChat(chatId))? R.string.menu_unmute : R.string.menu_mute);
+      item.setTitle(dcContext.getChat(chatId).isMuted()? R.string.menu_unmute : R.string.menu_mute);
     }
 
     super.onPrepareOptionsMenu(menu);
@@ -375,7 +375,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void onNotifyOnOff() {
-    if (Prefs.isChatMuted(dcContext.getChat(chatId))) {
+    if (dcContext.getChat(chatId).isMuted()) {
       setMuted(0);
     }
     else {
@@ -385,7 +385,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
 
   private void setMuted(final long duration) {
     if (chatId != 0) {
-      Prefs.setChatMuteDuration(dcContext, chatId, duration);
+      dcContext.setChatMuteDuration(chatId, duration);
     }
   }
 
