@@ -44,9 +44,12 @@ import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMsg;
 
+import io.noties.markwon.AbstractMarkwonPlugin;
 import io.noties.markwon.Markwon;
+import io.noties.markwon.MarkwonVisitor;
 import io.noties.markwon.ext.strikethrough.StrikethroughPlugin;
 import io.noties.markwon.ext.tasklist.TaskListPlugin;
+import org.commonmark.node.SoftLineBreak;
 
 import org.thoughtcrime.securesms.audio.AudioSlidePlayer;
 import org.thoughtcrime.securesms.components.AudioView;
@@ -147,6 +150,17 @@ public class ConversationItem extends LinearLayout
     markwon = Markwon.builder(context)
 	.usePlugin(StrikethroughPlugin.create())
 	.usePlugin(TaskListPlugin.create(context))
+	.usePlugin(new AbstractMarkwonPlugin() {
+            @Override
+            public void configureVisitor(@NonNull MarkwonVisitor.Builder builder) {
+                builder.on(SoftLineBreak.class, new MarkwonVisitor.NodeVisitor<SoftLineBreak>() {
+                    @Override
+                    public void visit(@NonNull MarkwonVisitor visitor, @NonNull SoftLineBreak softLineBreak) {
+                        visitor.forceNewLine();
+                    }
+                });
+            }
+        })
 	.build();
   }
 
