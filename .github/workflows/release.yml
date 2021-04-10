@@ -8,6 +8,7 @@ on:
 
 jobs:
   check:
+    runs-on: ubuntu-latest
     outputs:
       status: ${{ steps.check-tag.conclusion }}
     steps:
