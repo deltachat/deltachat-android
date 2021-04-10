@@ -7,16 +7,21 @@ on:
       - 'v*.*.*'
 
 jobs:
-  tagcheck:
+  check:
+    outputs:
+      status: ${{ steps.check-tag.conclusion }}
     steps:
       - id: check-tag
         run: |
           if [[ "${{ github.event.ref }}" =~ ^refs/tags/v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
-              echo ::set-output name=match::true
+              exit 0
+          else
+              exit 1
           fi
-    
+
   build:
-    if: ${{ github.event_name == 'push' && tagcheck.steps.check-tag.outputs.match == 'true' }}
+    needs: check
+    if: needs.check.outputs.status == 'success'
     name: Upload Release APK
     runs-on: ubuntu-latest
     steps:
