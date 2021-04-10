@@ -10,19 +10,17 @@ jobs:
   check:
     runs-on: ubuntu-latest
     outputs:
-      status: ${{ steps.check-tag.conclusion }}
+      match: ${{ steps.check-tag.outputs.match }}
     steps:
       - id: check-tag
         run: |
           if [[ "${{ github.event.ref }}" =~ ^refs/tags/v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
-              exit 0
-          else
-              exit 1
+              echo ::set-output name=match::success
           fi
 
   build:
     needs: check
-    if: needs.check.outputs.status == 'success'
+    if: needs.check.outputs.match == 'true'
     name: Upload Release APK
     runs-on: ubuntu-latest
     steps:
