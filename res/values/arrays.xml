@@ -10,6 +10,7 @@
       <!-- az     Azerbaijani -->            <item>Azeri</item>
       <!-- in     Indonesian -->             <item>Bahasa Indonesia</item>
       <!-- ca     Catalan -->                <item>Català</item>
+      <!-- cs     Czech -->                  <item>Čeština</item>
       <!-- da     Danish -->                 <item>Dansk</item>
       <!-- de     German -->                 <item>Deutsch</item>
       <!-- en     English -->                <item>English</item>
@@ -52,6 +53,7 @@
       <item>az</item>
       <item>in</item> <!-- sic: Android uses "in" where ISO 639-1 is "id" -->
       <item>ca</item>
+      <item>cs</item>
       <item>da</item>
       <item>de</item>
       <item>en</item>
