@@ -20,8 +20,11 @@ public class LocalHelpActivity extends WebViewActivity
     try {
       Locale locale = dynamicLanguage.getCurrentLocale();
       String appLang = locale.getLanguage();
+      String appCountry = locale.getCountry();
       if (assetExists(helpPath.replace("LANG", appLang))) {
         helpLang = appLang;
+      } else if (assetExists(helpPath.replace("LANG", appLang+"_"+appCountry))) {
+        helpLang = appLang+"_"+appCountry;
       } else {
         appLang = appLang.substring(0, 2);
         if (assetExists(helpPath.replace("LANG", appLang))) {
