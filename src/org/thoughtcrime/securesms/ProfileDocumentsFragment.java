@@ -1,10 +1,11 @@
 package org.thoughtcrime.securesms;
 
-import android.annotation.SuppressLint;
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.content.res.Resources;
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
@@ -32,11 +33,12 @@ import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.loaders.BucketedThreadMediaLoader;
+import org.thoughtcrime.securesms.permissions.Permissions;
+import org.thoughtcrime.securesms.util.SaveAttachmentTask;
 import org.thoughtcrime.securesms.util.ViewUtil;
-import org.thoughtcrime.securesms.util.task.ProgressDialogAsyncTask;
 
-import java.util.Collection;
 import java.util.Locale;
+import java.util.Set;
 
 public class ProfileDocumentsFragment
     extends Fragment
@@ -145,6 +147,7 @@ public class ProfileDocumentsFragment
       actionMode = null;
     } else {
       actionMode.setTitle(String.valueOf(adapter.getSelectedMediaCount()));
+      setCorrectMenuVisibility(actionMode.getMenu());
     }
   }
 
@@ -172,39 +175,67 @@ public class ProfileDocumentsFragment
     }
   }
 
-  @SuppressLint("StaticFieldLeak")
-  private void handleDeleteMedia(@NonNull Collection<DcMsg> mediaRecords) {
-    int recordCount       = mediaRecords.size();
-    Resources res         = getContext().getResources();
-    String confirmMessage = res.getQuantityString(R.plurals.ask_delete_messages,
-        recordCount,
-        recordCount);
+  private void handleDeleteMedia(final Set<DcMsg> messageRecords) {
+    int messagesCount = messageRecords.size();
 
-    AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-    builder.setMessage(confirmMessage);
-    builder.setCancelable(true);
+    new AlertDialog.Builder(getActivity())
+            .setMessage(getActivity().getResources().getQuantityString(R.plurals.ask_delete_messages, messagesCount, messagesCount))
+            .setCancelable(true)
+            .setPositiveButton(R.string.delete, (dialog, which) -> {
+                int[] ids = DcMsg.msgSetToIds(messageRecords);
+                dcContext.deleteMsgs(ids);
+                actionMode.finish();
+            })
+            .setNegativeButton(android.R.string.cancel, null)
+            .show();
+  }
 
-    builder.setPositiveButton(R.string.delete, (dialogInterface, i) -> {
-      new ProgressDialogAsyncTask<DcMsg, Void, Void>(getContext(),
-          R.string.one_moment,
-          R.string.one_moment)
-      {
-        @Override
-        protected Void doInBackground(DcMsg... records) {
-          if (records == null || records.length == 0) {
-            return null;
-          }
+  private void handleShowInChat(final DcMsg dcMsg) {
+    Intent intent = new Intent(getContext(), ConversationActivity.class);
+    intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, dcMsg.getChatId());
+    intent.putExtra(ConversationActivity.STARTING_POSITION_EXTRA, DcMsg.getMessagePosition(dcMsg, dcContext));
+    startActivity(intent);
+  }
 
-          for (DcMsg record : records) {
-            dcContext.deleteMsgs(new int[]{record.getId()});
-          }
-          return null;
-        }
-
-      }.execute(mediaRecords.toArray(new DcMsg[mediaRecords.size()]));
+  private void handleSaveAttachment(final DcMsg message) {
+    SaveAttachmentTask.showWarningDialog(getContext(), (dialogInterface, i) -> {
+        Permissions.with(getActivity())
+                .request(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)
+                .ifNecessary()
+                .withPermanentDenialDialog(getString(R.string.perm_explain_access_to_storage_denied))
+                .onAllGranted(() -> {
+                    SaveAttachmentTask saveTask = new SaveAttachmentTask(getContext());
+                    SaveAttachmentTask.Attachment attachment = new SaveAttachmentTask.Attachment(
+                            Uri.fromFile(message.getFileAsFile()), message.getFilemime(), message.getDateReceived(), message.getFilename());
+                    saveTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, attachment);
+                    actionMode.finish();
+                })
+                .execute();
     });
-    builder.setNegativeButton(android.R.string.cancel, null);
-    builder.show();
+  }
+
+  private DcMsg getSelectedMessageRecord() {
+    Set<DcMsg> messageRecords = getListAdapter().getSelectedMedia();
+
+    if (messageRecords.size() == 1) return messageRecords.iterator().next();
+    else                            throw new AssertionError();
+  }
+
+  private void setCorrectMenuVisibility(Menu menu) {
+    Set<DcMsg> messageRecords = getListAdapter().getSelectedMedia();
+
+    if (actionMode != null && messageRecords.size() == 0) {
+      actionMode.finish();
+      return;
+    }
+
+    if (messageRecords.size() > 1) {
+      menu.findItem(R.id.show_in_chat).setVisible(false);
+      menu.findItem(R.id.save).setVisible(false);
+    } else {
+      menu.findItem(R.id.show_in_chat).setVisible(true);
+      menu.findItem(R.id.save).setVisible(true);
+    }
   }
 
   private ProfileDocumentsAdapter getListAdapter() {
@@ -225,6 +256,7 @@ public class ProfileDocumentsFragment
         originalStatusBarColor = window.getStatusBarColor();
         window.setStatusBarColor(getResources().getColor(R.color.action_mode_status_bar));
       }
+      setCorrectMenuVisibility(menu);
       return true;
     }
 
@@ -239,6 +271,12 @@ public class ProfileDocumentsFragment
         case R.id.delete:
           handleDeleteMedia(getListAdapter().getSelectedMedia());
           mode.finish();
+          return true;
+        case R.id.show_in_chat:
+          handleShowInChat(getSelectedMessageRecord());
+          return true;
+        case R.id.save:
+          handleSaveAttachment(getSelectedMessageRecord());
           return true;
       }
       return false;

@@ -4,4 +4,12 @@
         android:title="@string/menu_delete_messages"
         android:icon="@drawable/ic_delete_white_24dp"
         app:showAsAction="always"/>
+
+    <item android:id="@+id/show_in_chat"
+        android:title="@string/show_in_chat"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/save"
+          android:title="@string/menu_export_attachment"
+          app:showAsAction="never"/>
 </menu>
