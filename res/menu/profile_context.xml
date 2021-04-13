@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/details"
+	android:title="@string/menu_message_details"
+        android:icon="?menu_info_icon"
+        app:showAsAction="always"/>
+
     <item android:id="@+id/delete"
         android:title="@string/menu_delete_messages"
         android:icon="@drawable/ic_delete_white_24dp"
@@ -10,6 +15,6 @@
         app:showAsAction="never"/>
 
     <item android:id="@+id/save"
-          android:title="@string/menu_export_attachment"
-          app:showAsAction="never"/>
+        android:title="@string/menu_export_attachment"
+        app:showAsAction="never"/>
 </menu>

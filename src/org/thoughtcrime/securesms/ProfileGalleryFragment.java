@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.util.Linkify;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.loader.app.LoaderManager;
@@ -187,6 +188,21 @@ public class ProfileGalleryFragment
     }
   }
 
+  private void handleDisplayDetails(DcMsg dcMsg) {
+    String info_str = dcContext.getMsgInfo(dcMsg.getId());
+    AlertDialog d = new AlertDialog.Builder(getActivity())
+            .setMessage(info_str)
+            .setPositiveButton(android.R.string.ok, null)
+            .create();
+    d.show();
+    try {
+      //noinspection ConstantConditions
+      Linkify.addLinks((TextView) d.findViewById(android.R.id.message), Linkify.WEB_URLS);
+    } catch(NullPointerException e) {
+      e.printStackTrace();
+    }
+  }
+
   private void handleDeleteMedia(final Set<DcMsg> messageRecords) {
     int messagesCount = messageRecords.size();
 
@@ -242,9 +258,11 @@ public class ProfileGalleryFragment
     }
 
     if (messageRecords.size() > 1) {
+      menu.findItem(R.id.details).setVisible(false);
       menu.findItem(R.id.show_in_chat).setVisible(false);
       menu.findItem(R.id.save).setVisible(false);
     } else {
+      menu.findItem(R.id.details).setVisible(true);
       menu.findItem(R.id.show_in_chat).setVisible(true);
       menu.findItem(R.id.save).setVisible(true);
     }
@@ -280,6 +298,10 @@ public class ProfileGalleryFragment
     @Override
     public boolean onActionItemClicked(ActionMode mode, MenuItem menuItem) {
       switch (menuItem.getItemId()) {
+        case R.id.details:
+          handleDisplayDetails(getSelectedMessageRecord());
+          mode.finish();
+          return true;
         case R.id.delete:
           handleDeleteMedia(getListAdapter().getSelectedMedia());
           mode.finish();
