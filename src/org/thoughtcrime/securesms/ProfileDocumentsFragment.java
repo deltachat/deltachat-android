@@ -245,15 +245,10 @@ public class ProfileDocumentsFragment
       return;
     }
 
-    if (messageRecords.size() > 1) {
-      menu.findItem(R.id.details).setVisible(false);
-      menu.findItem(R.id.show_in_chat).setVisible(false);
-      menu.findItem(R.id.save).setVisible(false);
-    } else {
-      menu.findItem(R.id.details).setVisible(true);
-      menu.findItem(R.id.show_in_chat).setVisible(true);
-      menu.findItem(R.id.save).setVisible(true);
-    }
+    boolean singleSelection = messageRecords.size() == 1;
+    menu.findItem(R.id.details).setVisible(singleSelection);
+    menu.findItem(R.id.show_in_chat).setVisible(singleSelection);
+    menu.findItem(R.id.save).setVisible(singleSelection);
   }
 
   private ProfileDocumentsAdapter getListAdapter() {
