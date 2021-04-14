@@ -189,9 +189,9 @@ public class ProfileGalleryFragment
   }
 
   private void handleDisplayDetails(DcMsg dcMsg) {
-    String info_str = dcContext.getMsgInfo(dcMsg.getId());
+    String infoStr = dcContext.getMsgInfo(dcMsg.getId());
     AlertDialog d = new AlertDialog.Builder(getActivity())
-            .setMessage(info_str)
+            .setMessage(infoStr)
             .setPositiveButton(android.R.string.ok, null)
             .create();
     d.show();
