@@ -324,8 +324,6 @@
     <string name="messaging_disabled_deaddrop">برای رد یا قبول درخواست تماس روی یک پیام کلیک کنید</string>
     <string name="cannot_display_unsuported_file_type">امکان نمایش این نوع فایل وجود ندارد: %s</string>
     <string name="attachment_failed_to_load">ناموفق در بارگیری ضمیمه</string>
-
-
     <!-- map -->
     <string name="filter_map_on_time">نمایش موقعیت‌های مکانی در چارچوب زمان</string>
     <string name="show_location_traces">نمایش ردپاها</string>

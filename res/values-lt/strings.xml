@@ -317,8 +317,6 @@
     <string name="chat_contact_request">Adresato užklausa</string>
     <string name="send_failed">Nepavyko išsiųsti žinutės</string>
     <string name="attachment_failed_to_load">Nepavyko įkelti priedo</string>
-
-
     <!-- search -->
     <string name="search">Ieškoti</string>
     <string name="search_explain">Ieškokite pokalbių, adresatų ir žinučių</string>

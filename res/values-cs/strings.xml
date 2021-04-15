@@ -358,8 +358,6 @@
     <string name="messaging_disabled_deaddrop">K povolení nebo zamítnutí kontaktu stiskni jeho zprávu</string>
     <string name="cannot_display_unsuported_file_type">Nelze zobrazit tento typ souboru: %s</string>
     <string name="attachment_failed_to_load">Nezdařilo se načíst přílohu</string>
-
-
     <!-- mailing lists -->
     <string name="mailing_list">Hromadná zpráva</string>
     <string name="ask_show_mailing_list">Zobraz seznam hromadné zprávy \"%1$s\"?</string>
