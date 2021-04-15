@@ -314,7 +314,8 @@ public class ConversationFragment extends MessageSelectorFragment
         }
     }
 
-    private void setCorrectMenuVisibility(Menu menu) {
+    @Override
+    protected void setCorrectMenuVisibility(Menu menu) {
         Set<DcMsg>         messageRecords = getListAdapter().getSelectedItems();
 
         if (actionMode != null && messageRecords.size() == 0) {
@@ -357,13 +358,6 @@ public class ConversationFragment extends MessageSelectorFragment
 
     private ConversationAdapter getListAdapter() {
         return (ConversationAdapter) list.getAdapter();
-    }
-
-    private DcMsg getSelectedMessageRecord() {
-        Set<DcMsg> messageRecords = getListAdapter().getSelectedItems();
-
-        if (messageRecords.size() == 1) return messageRecords.iterator().next();
-        else                            throw new AssertionError();
     }
 
     public void reload(Recipient recipient, long chatId) {
@@ -888,10 +882,10 @@ public class ConversationFragment extends MessageSelectorFragment
                     handleDeleteMessages(getListAdapter().getSelectedItems());
                     return true;
                 case R.id.menu_context_share:
-                    dcContext.openForViewOrShare(getContext(), getSelectedMessageRecord().getId(), Intent.ACTION_SEND);
+                    dcContext.openForViewOrShare(getContext(), getSelectedMessageRecord(getListAdapter().getSelectedItems()).getId(), Intent.ACTION_SEND);
                     return true;
                 case R.id.menu_context_details:
-                    handleDisplayDetails(getSelectedMessageRecord());
+                    handleDisplayDetails(getSelectedMessageRecord(getListAdapter().getSelectedItems()));
                     actionMode.finish();
                     return true;
                 case R.id.menu_context_forward:
@@ -899,14 +893,14 @@ public class ConversationFragment extends MessageSelectorFragment
                     actionMode.finish();
                     return true;
                 case R.id.menu_context_save_attachment:
-                    handleSaveAttachment(getSelectedMessageRecord());
+                    handleSaveAttachment(getSelectedMessageRecord(getListAdapter().getSelectedItems()));
                     return true;
                 case R.id.menu_context_reply:
-                    handleReplyMessage(getSelectedMessageRecord());
+                    handleReplyMessage(getSelectedMessageRecord(getListAdapter().getSelectedItems()));
                     actionMode.finish();
                     return true;
                 case R.id.menu_context_reply_privately:
-                    handleReplyMessagePrivately(getSelectedMessageRecord());
+                    handleReplyMessagePrivately(getSelectedMessageRecord(getListAdapter().getSelectedItems()));
                     return true;
             }
 

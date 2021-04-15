@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.text.util.Linkify;
+import android.view.Menu;
 import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.view.ActionMode;
@@ -22,6 +23,13 @@ public abstract class MessageSelectorFragment extends Fragment
 {
   protected ActionMode actionMode;
   protected ApplicationDcContext dcContext;
+
+  protected abstract void setCorrectMenuVisibility(Menu menu);
+
+  protected DcMsg getSelectedMessageRecord(Set<DcMsg> messageRecords) {
+    if (messageRecords.size() == 1) return messageRecords.iterator().next();
+    else                            throw new AssertionError();
+  }
 
   protected void handleDisplayDetails(DcMsg dcMsg) {
     String infoStr = dcContext.getMsgInfo(dcMsg.getId());

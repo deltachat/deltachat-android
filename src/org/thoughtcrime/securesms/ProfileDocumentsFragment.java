@@ -165,14 +165,8 @@ public class ProfileDocumentsFragment
     }
   }
 
-  private DcMsg getSelectedMessageRecord() {
-    Set<DcMsg> messageRecords = getListAdapter().getSelectedMedia();
-
-    if (messageRecords.size() == 1) return messageRecords.iterator().next();
-    else                            throw new AssertionError();
-  }
-
-  private void setCorrectMenuVisibility(Menu menu) {
+  @Override
+  protected void setCorrectMenuVisibility(Menu menu) {
     Set<DcMsg> messageRecords = getListAdapter().getSelectedMedia();
 
     if (actionMode != null && messageRecords.size() == 0) {
@@ -217,7 +211,7 @@ public class ProfileDocumentsFragment
     public boolean onActionItemClicked(ActionMode mode, MenuItem menuItem) {
       switch (menuItem.getItemId()) {
         case R.id.details:
-          handleDisplayDetails(getSelectedMessageRecord());
+          handleDisplayDetails(getSelectedMessageRecord(getListAdapter().getSelectedMedia()));
           mode.finish();
           return true;
         case R.id.delete:
@@ -225,10 +219,10 @@ public class ProfileDocumentsFragment
           mode.finish();
           return true;
         case R.id.show_in_chat:
-          handleShowInChat(getSelectedMessageRecord());
+          handleShowInChat(getSelectedMessageRecord(getListAdapter().getSelectedMedia()));
           return true;
         case R.id.save:
-          handleSaveAttachment(getSelectedMessageRecord());
+          handleSaveAttachment(getSelectedMessageRecord(getListAdapter().getSelectedMedia()));
           return true;
       }
       return false;
