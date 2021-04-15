@@ -358,8 +358,6 @@
     <string name="messaging_disabled_deaddrop">Kliknutím na správu prijmete alebo odmietnete žiadosť o kontakt</string>
     <string name="cannot_display_unsuported_file_type">Nie je možné zobraziť tento typ súboru: %s</string>
     <string name="attachment_failed_to_load">Prílohu sa nepodarilo načítať</string>
-
-
     <!-- mailing lists -->
     <string name="mailing_list">Zoznam adries</string>
     <string name="ask_show_mailing_list">Zobraziť zoznam adries%1$s?</string>

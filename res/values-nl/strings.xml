@@ -334,8 +334,6 @@
     <string name="messaging_disabled_deaddrop">Druk op een bericht om het contactpersoonverzoek goed te keuren of af te wijzen</string>
     <string name="cannot_display_unsuported_file_type">Het volgende bestandstype kan niet worden getoond: %s</string>
     <string name="attachment_failed_to_load">De bijlage kan niet worden geladen</string>
-
-
     <!-- mailing lists -->
     <string name="mailing_list">Mailinglijst</string>
     <string name="ask_show_mailing_list">Wil je de mailinglijst \'%1$s\' tonen?</string>

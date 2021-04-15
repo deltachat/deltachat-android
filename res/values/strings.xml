@@ -254,8 +254,8 @@
     <string name="videochat_tap_to_open">Tap to open</string>
     <string name="videochat_instance">Video chat instance</string>
     <string name="videochat_instance_placeholder">Your video chat instance</string>
-    <string name="videochat_instance_explain">If a video chat instance is defined, you can start a video chat from each one-to-one chat. Video chats require a compatible app or a compatible browser on both ends.\n\nExamples: https://meet.jit.si/$ROOM or basicwebrtc:https://your-server</string>
-    <string name="videochat_instance_from_qr">Use \"%1$s\" to invite others to video chats?\n\nOnce set, you can start a video chat from each one-to-one chat. This will replace the previous setting for video chats, if any.</string>
+    <string name="videochat_instance_explain">If a video chat instance is defined, you can start a video chat from each chat. Video chats require a compatible app or a compatible browser on both ends.\n\nExamples: https://meet.jit.si/$ROOM or basicwebrtc:https://your-server</string>
+    <string name="videochat_instance_from_qr">Use \"%1$s\" to invite others to video chats?\n\nOnce set, you can start a video chat from each chat. This will replace the previous setting for video chats, if any.</string>
     <string name="videochat_invitation">Video chat invitation</string>
     <string name="videochat_invitation_body">You are invited to a video chat, click %1$s to join.</string>
 
@@ -334,8 +334,8 @@
     <string name="messaging_disabled_deaddrop">Click on a message to accept or deny the contact request</string>
     <string name="cannot_display_unsuported_file_type">Cannot display this file type: %s</string>
     <string name="attachment_failed_to_load">Failed to load attachment</string>
-
-    <string name="conversation_activity__quick_attachment_drawer_lock_record_description">Lock recording of audio attachment</string>
+    <!-- Description for the "Lock" button allowing to lift the thumb from the record button during recording voice messages -->
+    <string name="lock_recording">Lock recording</string>
 
     <!-- mailing lists -->
     <string name="mailing_list">Mailing list</string>

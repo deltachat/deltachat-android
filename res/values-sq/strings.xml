@@ -333,8 +333,6 @@
     <string name="messaging_disabled_deaddrop">Që të pranoni apo hidhni tej një kërkesë kontakti, klikoni mbi një mesazh</string>
     <string name="cannot_display_unsuported_file_type">S’mund të shfaqet ky lloj kartelash: %s</string>
     <string name="attachment_failed_to_load">S’u arrit të ngarkohet bashkëngjitje</string>
-
-
     <!-- mailing lists -->
     <string name="mailing_list">Listë postimesh</string>
     <string name="ask_show_mailing_list">Të shfaqet lista e postimeve \"%1$s\"?</string>

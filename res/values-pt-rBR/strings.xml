@@ -323,8 +323,6 @@
     <string name="messaging_disabled_deaddrop">Clique em uma mensagem para aceitar ou negar a solicitação de contato</string>
     <string name="cannot_display_unsuported_file_type">Não é possível exibir este tipo de arquivo: %s</string>
     <string name="attachment_failed_to_load">Falha ao carregar anexo</string>
-
-
     <!-- map -->
     <string name="filter_map_on_time">Exibir localização no tempo.</string>
     <string name="show_location_traces">Exibir pegadas</string>

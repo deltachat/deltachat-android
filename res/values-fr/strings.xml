@@ -334,8 +334,6 @@
     <string name="messaging_disabled_deaddrop">Cliquez sur un message pour accepter ou rejeter la demande de contact.</string>
     <string name="cannot_display_unsuported_file_type">Impossible d\'afficher ce type de fichier : %s</string>
     <string name="attachment_failed_to_load">Échec du chargement de la pièce jointe</string>
-
-
     <!-- mailing lists -->
     <string name="mailing_list">Liste de diffusion</string>
     <string name="ask_show_mailing_list">Montrer la liste de diffusion « %1$s » ?</string>

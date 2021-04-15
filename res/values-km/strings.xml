@@ -322,8 +322,6 @@
     <string name="messaging_disabled_deaddrop">ចុចលើសារដើម្បីទទួលយក ឬបដិសេធស្នើសុំទំនាក់ទំនង។</string>
     <string name="cannot_display_unsuported_file_type">មិនអាចបង្ហាញប្រភេទឯកសារនេះ៖ %s</string>
     <string name="attachment_failed_to_load">បានបរាជ័យ ក្នុងការផ្ទុកឯកសារភ្ជាប់។</string>
-
-
     <!-- mailing lists -->
     <string name="mailing_list">អ៊ីម៉ែលការផ្សាយ</string>
     <string name="ask_show_mailing_list">បង្ហាញសារអ៊ីម៉ែលការផ្សាយ \"%1$s\"?</string>
