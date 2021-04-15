@@ -104,7 +104,8 @@ public class ConversationItem extends LinearLayout
   private DcChat        dcChat;
   private DcContact     dcContact;
   private Locale        locale;
-  private boolean       groupThread;
+  // Whether the sender's avatar and name should be shown (usually the case in group threads):
+  private boolean       showSender;
   private GlideRequests glideRequests;
 
   protected ViewGroup              bodyBubble;
@@ -215,21 +216,21 @@ public class ConversationItem extends LinearLayout
     this.glideRequests          = glideRequests;
     this.batchSelected          = batchSelected;
     this.conversationRecipient  = recipients;
-    this.groupThread            = dcChat.isGroup();
+    this.showSender             = dcChat.isGroup() || messageRecord.getOverrideSenderName() != null;
 
-    if (groupThread && !messageRecord.isOutgoing()) {
+    if (showSender && !messageRecord.isOutgoing()) {
       this.dcContact = dcContext.getContact(messageRecord.getFromId());
     }
 
-    setGutterSizes(messageRecord, groupThread);
+    setGutterSizes(messageRecord, showSender);
     setMessageShape(messageRecord);
-    setMediaAttributes(messageRecord, groupThread);
+    setMediaAttributes(messageRecord, showSender);
     setInteractionState(messageRecord, pulseHighlight);
     setBodyText(messageRecord);
     setBubbleState(messageRecord);
     setContactPhoto();
     setGroupMessageStatus();
-    setAuthor(messageRecord, groupThread);
+    setAuthor(messageRecord, showSender);
     setMessageSpacing(context);
     setFooter(messageRecord, locale);
     setQuote(messageRecord);
@@ -416,7 +417,7 @@ public class ConversationItem extends LinearLayout
   }
 
   private void setMediaAttributes(@NonNull DcMsg           messageRecord,
-                                           boolean         isGroupThread)
+                                           boolean         showSender)
   {
     class SetDurationListener implements AudioSlidePlayer.Listener {
       @Override
@@ -507,7 +508,7 @@ public class ConversationItem extends LinearLayout
       mediaThumbnailStub.get().setOnClickListener(passthroughClickListener);
       mediaThumbnailStub.get().showShade(TextUtils.isEmpty(messageRecord.getText()));
 
-      setThumbnailOutlineCorners(messageRecord, isGroupThread);
+      setThumbnailOutlineCorners(messageRecord, showSender);
 
       bodyBubble.getLayoutParams().width = ViewUtil.dpToPx(readDimen(R.dimen.media_bubble_max_width));
       ViewUtil.updateLayoutParams(bodyText, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -545,7 +546,7 @@ public class ConversationItem extends LinearLayout
   }
 
   private void setThumbnailOutlineCorners(@NonNull DcMsg           current,
-                                          boolean                  isGroupThread)
+                                          boolean                  showSender)
   {
     int defaultRadius  = readDimen(R.dimen.message_corner_radius);
 
@@ -559,7 +560,7 @@ public class ConversationItem extends LinearLayout
       bottomRight = 0;
     }
 
-    if ((!current.isOutgoing() && isGroupThread)
+    if ((!current.isOutgoing() && showSender)
      || current.isForwarded()
      || hasQuote(current)) {
       topLeft  = 0;
@@ -581,7 +582,7 @@ public class ConversationItem extends LinearLayout
   private void setContactPhoto() {
     if (contactPhoto == null) return;
 
-    if (messageRecord.isOutgoing() || !groupThread || dcContact ==null) {
+    if (messageRecord.isOutgoing() || !showSender || dcContact ==null) {
       contactPhoto.setVisibility(View.GONE);
     } else {
       contactPhoto.setAvatar(glideRequests, dcContext.getRecipient(dcContact), true);
@@ -640,8 +641,8 @@ public class ConversationItem extends LinearLayout
     }
   }
 
-  private void setGutterSizes(@NonNull DcMsg current, boolean isGroupThread) {
-    if (isGroupThread && current.isOutgoing()) {
+  private void setGutterSizes(@NonNull DcMsg current, boolean showSender) {
+    if (showSender && current.isOutgoing()) {
       ViewUtil.setLeftMargin(container, readDimen(R.dimen.conversation_group_left_gutter));
     } else if (current.isOutgoing()) {
       ViewUtil.setLeftMargin(container, readDimen(R.dimen.conversation_individual_left_gutter));
@@ -687,22 +688,22 @@ public class ConversationItem extends LinearLayout
     }
 
     if (messageRecord.isForwarded()) {
-      if (groupThread && !messageRecord.isOutgoing() && dcContact !=null) {
+      if (showSender && !messageRecord.isOutgoing() && dcContact !=null) {
         this.groupSender.setText(context.getString(R.string.forwarded_by, messageRecord.getSenderName(dcContact, false)));
       } else {
         this.groupSender.setText(context.getString(R.string.forwarded_message));
       }
       this.groupSender.setTextColor(context.getResources().getColor(R.color.unknown_sender));
     }
-    else if (groupThread && !messageRecord.isOutgoing() && dcContact !=null) {
+    else if (showSender && !messageRecord.isOutgoing() && dcContact !=null) {
       this.groupSender.setText(messageRecord.getSenderName(dcContact, true));
       this.groupSender.setTextColor(Util.rgbToArgbColor(dcContact.getColor()));
     }
   }
 
-  private void setAuthor(@NonNull DcMsg current, boolean isGroupThread) {
+  private void setAuthor(@NonNull DcMsg current, boolean showSender) {
     int groupSenderHolderVisibility = GONE;
-    if (isGroupThread && !current.isOutgoing()) {
+    if (showSender && !current.isOutgoing()) {
       if (contactPhotoHolder != null) {
         contactPhotoHolder.setVisibility(VISIBLE);
       }

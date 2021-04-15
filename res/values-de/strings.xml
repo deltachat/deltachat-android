@@ -175,7 +175,7 @@
     <string name="menu_message_details">Nachrichtendetails</string>
     <string name="menu_copy_to_clipboard">In Zwischenablage kopieren</string>
     <string name="menu_copy_selection_to_clipboard">Auswahl kopieren</string>
-    <string name="menu_copy_link_to_clipboard">Verweis kopieren</string>
+    <string name="menu_copy_link_to_clipboard">Link kopieren</string>
     <string name="paste_from_clipboard">Von der Zwischenablage einfügen</string>
     <string name="menu_forward">Nachricht weiterleiten</string>
     <string name="menu_resend">Nachricht erneut versenden</string>
@@ -281,7 +281,7 @@
     <string name="ask_delete_value">%s löschen?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">%1$s aus der Gruppe löschen?</string>
-    <string name="open_url_confirmation">Diesen Verweis öffnen?</string>
+    <string name="open_url_confirmation">Diesen Link öffnen?</string>
 
 
     <!-- contact list -->
@@ -370,7 +370,7 @@
     <string name="tab_members">Mitglieder</string>
     <string name="tab_gallery">Galerie</string>
     <string name="tab_docs">Dokumente</string>
-    <string name="tab_links">Verweise</string>
+    <string name="tab_links">Links</string>
     <string name="tab_map">Karte</string>
     <string name="tab_gallery_empty_hint">In diesem Chat geteilte Bilder und Videos werden hier angezeigt.</string>
     <string name="tab_docs_empty_hint">In diesem Chat geteilte Dokumente, Musik und Dateien werden hier angezeigt.</string>

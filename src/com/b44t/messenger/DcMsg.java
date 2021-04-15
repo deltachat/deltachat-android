@@ -121,7 +121,7 @@ public class DcMsg {
     public void           setQuote           (DcMsg quote) { setQuoteCPtr(quote.msgCPtr); }
     public native String  getQuotedText      ();
     public native String  getError           ();
-    private native String getOverrideSenderName();
+    public native String  getOverrideSenderName();
 
     public String getSenderName(DcContact dcContact, boolean markOverride) {
         String overrideName = getOverrideSenderName();
