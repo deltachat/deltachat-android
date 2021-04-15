@@ -55,7 +55,7 @@ public abstract class MessageSelectorFragment extends Fragment
             .setPositiveButton(R.string.delete, (dialog, which) -> {
                 int[] ids = DcMsg.msgSetToIds(messageRecords);
                 dcContext.deleteMsgs(ids);
-                actionMode.finish();
+                if (actionMode != null) actionMode.finish();
             })
             .setNegativeButton(android.R.string.cancel, null)
             .show();
@@ -72,7 +72,7 @@ public abstract class MessageSelectorFragment extends Fragment
                     SaveAttachmentTask.Attachment attachment = new SaveAttachmentTask.Attachment(
                             Uri.fromFile(message.getFileAsFile()), message.getFilemime(), message.getDateReceived(), message.getFilename());
                     saveTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, attachment);
-                    actionMode.finish();
+                    if (actionMode != null) actionMode.finish();
                 })
                 .execute();
     });
