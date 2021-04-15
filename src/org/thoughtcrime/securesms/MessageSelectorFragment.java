@@ -18,7 +18,7 @@ import org.thoughtcrime.securesms.util.SaveAttachmentTask;
 
 import java.util.Set;
 
-public class MessageSelectorFragment extends Fragment
+public abstract class MessageSelectorFragment extends Fragment
 {
   protected ActionMode actionMode;
   protected ApplicationDcContext dcContext;
