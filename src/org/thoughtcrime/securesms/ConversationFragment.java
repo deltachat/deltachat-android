@@ -57,7 +57,6 @@ import com.b44t.messenger.DcMsg;
 
 import org.thoughtcrime.securesms.ConversationAdapter.ItemClickListener;
 import org.thoughtcrime.securesms.components.reminder.DozeReminder;
-import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.mms.GlideApp;
@@ -84,7 +83,6 @@ import static org.thoughtcrime.securesms.util.RelayUtil.setForwardingMessageIds;
 
 @SuppressLint("StaticFieldLeak")
 public class ConversationFragment extends MessageSelectorFragment
-        implements DcEventCenter.DcEventDelegate
 {
     private static final String TAG       = ConversationFragment.class.getSimpleName();
     private static final String KEY_LIMIT = "limit";

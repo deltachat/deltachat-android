@@ -24,7 +24,6 @@ import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcMsg;
 import com.codewaves.stickyheadergrid.StickyHeaderGridLayoutManager;
 
-import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.database.loaders.BucketedThreadMediaLoader;
@@ -37,7 +36,7 @@ import java.util.Set;
 public class ProfileGalleryFragment
     extends MessageSelectorFragment
     implements LoaderManager.LoaderCallbacks<BucketedThreadMediaLoader.BucketedThreadMedia>,
-               ProfileGalleryAdapter.ItemClickListener, DcEventCenter.DcEventDelegate
+               ProfileGalleryAdapter.ItemClickListener
 {
   public static final String LOCALE_EXTRA  = "locale_extra";
   public static final String CHAT_ID_EXTRA = "chat_id";

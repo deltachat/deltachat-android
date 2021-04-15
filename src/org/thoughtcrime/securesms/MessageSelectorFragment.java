@@ -14,12 +14,15 @@ import androidx.fragment.app.Fragment;
 import com.b44t.messenger.DcMsg;
 
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
+import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.util.SaveAttachmentTask;
 
 import java.util.Set;
 
-public abstract class MessageSelectorFragment extends Fragment
+public abstract class MessageSelectorFragment
+    extends Fragment
+    implements DcEventCenter.DcEventDelegate
 {
   protected ActionMode actionMode;
   protected ApplicationDcContext dcContext;
