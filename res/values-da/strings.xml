@@ -328,8 +328,6 @@
     <string name="messaging_disabled_deaddrop">Klik på en besked for at acceptere eller afvise kontaktanmodningen </string>
     <string name="cannot_display_unsuported_file_type">Kan ikke vise denne filtype: 1%s</string>
     <string name="attachment_failed_to_load">Visning af vedhæftede fil mislykkedes</string>
-
-
     <!-- map -->
     <string name="filter_map_on_time">Vis placeringer i tidsramme</string>
     <string name="show_location_traces">Vis spor</string>

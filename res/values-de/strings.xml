@@ -254,8 +254,8 @@
     <string name="videochat_tap_to_open">Öffnen</string>
     <string name="videochat_instance">Videochat-Instanz</string>
     <string name="videochat_instance_placeholder">Videochat-Instanz</string>
-    <string name="videochat_instance_explain">Wenn eine Videochat-Instanz definiert ist, können SIe einen Videochat von jedem Direktchat aus starten. Videochats erfordern beidseitig eine kompatible App oder einen kompatiblen Browser.\n\nBeispiele: https://meet.jit.si/$ROOM or basicwebrtc:https://your-server</string>
-    <string name="videochat_instance_from_qr">\"%1$s\" verwenden, um andere zu Videochats einzuladen?\n\nWenn Sie diese Einstellung vornehmen, können Sie von jedem Direktchat aus einen Videochat starten. Dies überschreibt, falls vorhanden, die bisherige Einstellung zu Videochats.</string>
+    <string name="videochat_instance_explain">Wenn eine Videochat-Instanz definiert ist, können SIe einen Videochat von jedem Chat aus starten. Videochats erfordern beidseitig eine kompatible App oder einen kompatiblen Browser.\n\nBeispiele: https://meet.jit.si/$ROOM or basicwebrtc:https://your-server</string>
+    <string name="videochat_instance_from_qr">\"%1$s\" verwenden, um andere zu Videochats einzuladen?\n\nWenn Sie diese Einstellung vornehmen, können Sie von jedem Chat aus einen Videochat starten. Dies überschreibt, falls vorhanden, die bisherige Einstellung zu Videochats.</string>
     <string name="videochat_invitation">Videochat-Einladung</string>
     <string name="videochat_invitation_body">Sie sind zu einem Videochat eingeladen, klicken Sie auf %1$s , um teilzunehmen.</string>
 
@@ -334,7 +334,8 @@
     <string name="messaging_disabled_deaddrop">Klicken Sie auf eine Nachricht, um eine Kontaktanfrage zu akzeptieren oder abzulehnen.</string>
     <string name="cannot_display_unsuported_file_type">Kann diesen Dateityp nicht anzeigen: %s</string>
     <string name="attachment_failed_to_load">Kann Anhang nicht laden</string>
-
+    <!-- Description for the "Lock" button allowing to lift the thumb from the record button during recording voice messages -->
+    <string name="lock_recording">Aufnahme arretieren</string>
 
     <!-- mailing lists -->
     <string name="mailing_list">Mailingliste</string>

@@ -331,8 +331,6 @@
     <string name="messaging_disabled_deaddrop">Click en el mensaje para aceptar o denegar el pedido del contacto</string>
     <string name="cannot_display_unsuported_file_type">No se puede mostrar este tipo de archivo: %s</string>
     <string name="attachment_failed_to_load">No se puede cargar el adjunto</string>
-
-
     <!-- map -->
     <string name="filter_map_on_time">Mostrar ubicaciones en el marco de tiempo</string>
     <string name="show_location_traces">Mostrar trazas</string>

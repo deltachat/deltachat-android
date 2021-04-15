@@ -322,8 +322,6 @@
     <string name="messaging_disabled_deaddrop">点击消息来接受或拒绝联系人请求</string>
     <string name="cannot_display_unsuported_file_type">无法显示此类文件：%s</string>
     <string name="attachment_failed_to_load">加载附件失败</string>
-
-
     <!-- mailing lists -->
     <string name="mailing_list">邮件列表</string>
     <string name="ask_show_mailing_list">显示邮件列表 \"%1$s\"吗？</string>

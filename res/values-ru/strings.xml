@@ -360,8 +360,6 @@
     <string name="messaging_disabled_deaddrop">Нажмите на сообщение, чтобы принять или отклонить запрос контакта</string>
     <string name="cannot_display_unsuported_file_type">Невозможно отобразить этот тип файла: %s</string>
     <string name="attachment_failed_to_load">Не удалось загрузить вложение</string>
-
-
     <!-- mailing lists -->
     <string name="mailing_list">Список рассылки</string>
     <string name="ask_show_mailing_list">Показывать список рассылки «%1$s»?</string>

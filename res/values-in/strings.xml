@@ -298,8 +298,6 @@
     <string name="send_failed">Tak bisa mengirim pesan</string>
     <string name="cannot_display_unsuported_file_type">Tidak dapat menampilkan tipe berkas ini: %s</string>
     <string name="attachment_failed_to_load">Gagal memuat lampiran</string>
-
-
     <!-- map -->
     <string name="filter_map_on_time">Tunjukkan lokasi dalam jangka waktu</string>
     <string name="show_location_traces">Tunjukkan jejak</string>

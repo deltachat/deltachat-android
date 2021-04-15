@@ -326,8 +326,6 @@
     <string name="messaging_disabled_deaddrop">لەسەر پەیامێک کرتە بکە بۆ قەبووڵکردن یان ڕەتکردنەوەی داخوازی بەردەنگبوون.</string>
     <string name="cannot_display_unsuported_file_type">ئەم چەشنە پەڕگەیە پیشان نادرێت: %s</string>
     <string name="attachment_failed_to_load">پێوەلکاوەکە دانەگیرا</string>
-
-
     <!-- mailing lists -->
     <string name="mailing_list">لیستەی ئیمەیلەکان</string>
     <string name="ask_show_mailing_list">لیستەی ئیمەیلەکانی \"%1$s\" پیشان بدرێت؟</string>

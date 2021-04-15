@@ -334,8 +334,6 @@
     <string name="messaging_disabled_deaddrop">Preme nunha mensaxe para aceptar ou denegar a solicitude de contacto</string>
     <string name="cannot_display_unsuported_file_type">Non se pode motrar este tipo de ficheiro: %s</string>
     <string name="attachment_failed_to_load">Erro ao cargar o anexo</string>
-
-
     <!-- mailing lists -->
     <string name="mailing_list">Lista de correo</string>
     <string name="ask_show_mailing_list">Mostrar lista de correo \"%1$s\"?</string>

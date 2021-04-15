@@ -334,8 +334,6 @@
     <string name="messaging_disabled_deaddrop">İletişim isteğini kabul etmek ya da reddetmek için bir iletinin üzerine tıklayın</string>
     <string name="cannot_display_unsuported_file_type">Bu dosya türü görüntülenemiyor: %s</string>
     <string name="attachment_failed_to_load">İlişiği yükleme başarısız</string>
-
-
     <!-- mailing lists -->
     <string name="mailing_list">Posta listesi</string>
     <string name="ask_show_mailing_list">\"%1$s\" posta listesi gösterilsin mi?</string>

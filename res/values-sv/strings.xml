@@ -334,8 +334,6 @@
     <string name="messaging_disabled_deaddrop">Tryck på ett meddelande för att acceptera, eller neka en kontaktförfrågan</string>
     <string name="cannot_display_unsuported_file_type">Denna filtyp kan inte visas: %s</string>
     <string name="attachment_failed_to_load">Bilagan kunde inte visas</string>
-
-
     <!-- mailing lists -->
     <string name="mailing_list">Mejllista</string>
     <string name="ask_show_mailing_list">Visa mejllistan \"%1$s\"?</string>
@@ -513,7 +511,7 @@
     <string name="pref_auto_folder_moves">Flyttas automatiskt till DeltaChat-mappen</string>
     <string name="pref_auto_folder_moves_explain">Chattkonversationer flyttas automatiskt för att undvika att inkorgen belamras</string>
     <string name="pref_show_emails">Visa vanliga e-postmeddelanden</string>
-    <string name="pref_show_emails_no">Nej, bara cattar</string>
+    <string name="pref_show_emails_no">Nej, bara chattar</string>
     <string name="pref_show_emails_accepted_contacts">För godkända kontakter</string>
     <string name="pref_show_emails_all">Alla</string>
     <string name="pref_experimental_features">Experimentella funktioner</string>
