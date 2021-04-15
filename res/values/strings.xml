@@ -334,7 +334,7 @@
     <string name="messaging_disabled_deaddrop">Click on a message to accept or deny the contact request</string>
     <string name="cannot_display_unsuported_file_type">Cannot display this file type: %s</string>
     <string name="attachment_failed_to_load">Failed to load attachment</string>
-    <!-- Description for the "Lock" button allowing to lift the thumb from the record button during recording voice messages -->
+    <!-- For recording Voice messages: Description for the "Lock" button allowing to lift the thumb from the record button while recording continues -->
     <string name="lock_recording">Lock recording</string>
 
     <!-- mailing lists -->
