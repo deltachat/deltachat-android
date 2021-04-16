@@ -19,7 +19,7 @@ import org.thoughtcrime.securesms.mms.Slide;
 import org.thoughtcrime.securesms.util.DateUtils;
 import org.thoughtcrime.securesms.util.MediaUtil;
 
-import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Locale;
 import java.util.Set;
@@ -143,9 +143,8 @@ class ProfileDocumentsAdapter extends StickyHeaderGridAdapter {
     return selected.size();
   }
 
-  @NonNull
-  public Collection<DcMsg> getSelectedMedia() {
-    return new HashSet<>(selected);
+  public Set<DcMsg> getSelectedMedia() {
+    return Collections.unmodifiableSet(new HashSet<>(selected));
   }
 
   public void clearSelection() {
