@@ -227,9 +227,8 @@ public class EmojiTextView extends AppCompatTextView {
   public static Spannable linkify(Spannable messageBody) {
     // linkify commands such as `/echo` -
     // do this first to avoid `/xkcd_123456` to be treated partly as a phone number
-    if (Linkify.addLinks(messageBody, CMD_PATTERN, "cmd:", null, null)) {
-      EmojiTextView.replaceURLSpan(messageBody); // replace URLSpan so that it is not removed on the next addLinks() call
-    }
+    Linkify.addLinks(messageBody, CMD_PATTERN, "cmd:", null, null);
+    EmojiTextView.replaceURLSpan(messageBody); // replace URLSpan so that it is not removed on the next addLinks() call
 
     // linkyfiy urls etc., this removes all existing URLSpan
     if (Linkify.addLinks(messageBody, Linkify.EMAIL_ADDRESSES|Linkify.WEB_URLS|Linkify.PHONE_NUMBERS)) {
