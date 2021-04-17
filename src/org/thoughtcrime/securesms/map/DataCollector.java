@@ -119,7 +119,7 @@ public class DataCollector {
             if (isPoi && codepointChar.length() == 0 && messageId != 0) {
                 //has a long poi label
                 DcMsg poiMsg = dcContext.getMsg(messageId);
-                String poiLongDescription = poiMsg.getText();
+                String poiLongDescription = poiMsg.getSummarytext(16);
                 pointFeature.addStringProperty(POI_LONG_DESCRIPTION, poiLongDescription);
             }
 
