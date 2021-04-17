@@ -1,3 +1,11 @@
+---
+name: Bug report
+about: Report something that isn't working.
+title: ''
+assignees: ''
+
+---
+
 <!--
 This is a bug report tracker. New features are discussed in the forum: https://support.delta.chat
 
