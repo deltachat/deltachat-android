@@ -9,11 +9,13 @@ import android.provider.Settings;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.view.ActionMode;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -262,9 +264,27 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
   }
 
   private class ProfilePagerAdapter extends FragmentStatePagerAdapter {
+    private Object currentFragment = null;
 
     ProfilePagerAdapter(FragmentManager fragmentManager) {
       super(fragmentManager);
+    }
+
+    @Override
+    public void setPrimaryItem(ViewGroup container, int position, Object object) {
+      super.setPrimaryItem(container, position, object);
+      if (currentFragment != null && currentFragment != object) {
+        ActionMode action = null;
+        if (currentFragment instanceof MessageSelectorFragment) {
+          action = ((MessageSelectorFragment) currentFragment).getActionMode();
+        } else if (currentFragment instanceof ProfileSettingsFragment) {
+          action = ((ProfileSettingsFragment) currentFragment).getActionMode();
+        }
+        if (action != null) {
+          action.finish();
+        }
+      }
+      currentFragment = object;
     }
 
     @Override
