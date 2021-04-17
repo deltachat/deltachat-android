@@ -29,6 +29,10 @@ public abstract class MessageSelectorFragment
 
   protected abstract void setCorrectMenuVisibility(Menu menu);
 
+  protected ActionMode getActionMode() {
+    return actionMode;
+  }
+
   protected DcMsg getSelectedMessageRecord(Set<DcMsg> messageRecords) {
     if (messageRecords.size() == 1) return messageRecords.iterator().next();
     else                            throw new AssertionError();
