@@ -394,13 +394,11 @@ public class ConversationItem extends LinearLayout
       bodyText.setVisibility(View.GONE);
     }
     else {
+      Spannable spannable = (Spannable)markwon.toMarkdown(text);
       if (batchSelected.isEmpty()) {
-        Spannable spannable = (Spannable)markwon.toMarkdown(text);
         spannable = EmojiTextView.linkify(spannable);
-        bodyText.setText(spannable);
-      } else {
-        bodyText.setText(text);
       }
+      bodyText.setText(spannable);
       bodyText.setVisibility(View.VISIBLE);
     }
 
