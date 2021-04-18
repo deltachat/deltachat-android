@@ -1,6 +1,8 @@
 package org.thoughtcrime.securesms;
 
 import android.content.Context;
+import android.content.res.TypedArray;
+import android.graphics.Color;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -26,18 +28,24 @@ public class ConversationUpdateItem extends LinearLayout
   private DeliveryStatusView  deliveryStatusView;
   private TextView            body;
   private DcMsg               messageRecord;
+  private int                 textColor;
+
+  private final Context context;
 
   public ConversationUpdateItem(Context context) {
-    super(context);
+    this(context, null);
   }
 
   public ConversationUpdateItem(Context context, AttributeSet attrs) {
     super(context, attrs);
+    this.context = context;
   }
 
   @Override
   public void onFinishInflate() {
     super.onFinishInflate();
+
+    initializeAttributes();
 
     body               = findViewById(R.id.conversation_update_body);
     deliveryStatusView = new DeliveryStatusView(findViewById(R.id.delivery_indicator));
@@ -55,6 +63,16 @@ public class ConversationUpdateItem extends LinearLayout
     this.batchSelected = batchSelected;
 
     bind(messageRecord);
+  }
+
+  private void initializeAttributes() {
+    final int[]      attributes = new int[] {
+        R.attr.conversation_item_update_text_color,
+    };
+    final TypedArray attrs      = context.obtainStyledAttributes(attributes);
+
+    textColor = attrs.getColor(0, Color.WHITE);
+    attrs.recycle();
   }
 
   @Override
@@ -82,6 +100,12 @@ public class ConversationUpdateItem extends LinearLayout
     else if (messageRecord.isPreparing())  deliveryStatusView.setPreparing();
     else if (messageRecord.isPending())    deliveryStatusView.setPending();
     else                                   deliveryStatusView.setNone();
+
+    if (messageRecord.isFailed()) {
+      deliveryStatusView.setTint(Color.RED);
+    } else {
+      deliveryStatusView.setTint(textColor);
+    }
   }
 
   @Override
