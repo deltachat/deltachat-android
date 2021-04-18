@@ -233,7 +233,7 @@
         <item name="conversation_item_incoming_text_primary_color">@color/core_dark_05</item>
         <item name="conversation_item_incoming_text_secondary_color">@color/core_dark_05</item>
 
-        <item name="conversation_item_outgoing_bubble_color">@color/gray70</item>
+        <item name="conversation_item_outgoing_bubble_color">@color/gray78</item>
         <!-- <item name="conversation_item_outgoing_bubble_border_color">#80364e59</item> -->
         <item name="conversation_item_outgoing_text_primary_color">@color/core_dark_05</item>
         <item name="conversation_item_outgoing_text_secondary_color">@color/light_pink</item>
