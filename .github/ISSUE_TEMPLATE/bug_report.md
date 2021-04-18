@@ -23,7 +23,7 @@ Please fill out as much of this form as you can (leaving out stuff that is not a
 
 <!--
 Debug logs can be copied from within the Delta Chat app with
-Settings menu -> Advanced -> Debug log
+Settings menu -> Advanced -> View log
 
 Alternatively from the Android system log:
 `adb logcat -v time -s DeltaChat`
