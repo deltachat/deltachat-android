@@ -452,7 +452,7 @@
     <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
     <string name="pref_default_status_label">Signature text</string>
     <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
-    <string name="pref_default_status_text">Sent with my DeltaLab Messenger</string>
+    <string name="pref_default_status_text">I use DeltaLab messenger, free and secure</string>
     <string name="pref_enter_sends">Enter key sends</string>
     <string name="pref_enter_sends_explain">Pressing the Enter key will send text messages</string>
     <string name="pref_outgoing_media_quality">Outgoing media quality</string>
