@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcMsg;
 
+import org.thoughtcrime.securesms.components.DeliveryStatusView;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.recipients.Recipient;
 
@@ -22,8 +23,9 @@ public class ConversationUpdateItem extends LinearLayout
 {
   private Set<DcMsg>    batchSelected;
 
-  private TextView      body;
-  private DcMsg         messageRecord;
+  private DeliveryStatusView  deliveryStatusView;
+  private TextView            body;
+  private DcMsg               messageRecord;
 
   public ConversationUpdateItem(Context context) {
     super(context);
@@ -37,7 +39,8 @@ public class ConversationUpdateItem extends LinearLayout
   public void onFinishInflate() {
     super.onFinishInflate();
 
-    this.body  = findViewById(R.id.conversation_update_body);
+    body               = findViewById(R.id.conversation_update_body);
+    deliveryStatusView = new DeliveryStatusView(findViewById(R.id.delivery_indicator));
   }
 
   @Override
@@ -73,6 +76,12 @@ public class ConversationUpdateItem extends LinearLayout
   private void setGenericInfoRecord(DcMsg messageRecord) {
     body.setText(messageRecord.getDisplayBody());
     body.setVisibility(VISIBLE);
+
+    if      (!messageRecord.isOutgoing())  deliveryStatusView.setNone();
+    else if (messageRecord.isFailed())     deliveryStatusView.setFailed();
+    else if (messageRecord.isPreparing())  deliveryStatusView.setPreparing();
+    else if (messageRecord.isPending())    deliveryStatusView.setPending();
+    else                                   deliveryStatusView.setNone();
   }
 
   @Override
