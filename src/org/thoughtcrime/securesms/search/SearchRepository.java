@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.DatabaseUtils;
 import androidx.annotation.NonNull;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.b44t.messenger.DcChatlist;
 import com.b44t.messenger.DcContext;
@@ -21,7 +22,7 @@ import java.util.concurrent.Executor;
  * Manages data retrieval for search.
  */
 class SearchRepository {
-
+  private static final String        TAG = SearchRepository.class.getSimpleName();
   private final ApplicationDcContext dcContext;
   private final Executor             executor;
   private boolean                    queryMessages = true;
@@ -40,11 +41,19 @@ class SearchRepository {
     }
 
     executor.execute(() -> {
-      int[]      contacts      = dcContext.getContacts(DcContext.DC_GCL_ADD_SELF, query);
+      long startMs = System.currentTimeMillis();
       DcChatlist conversations = dcContext.getChatlist(0, query, 0);
+      Log.i(TAG, "⏰ getChatlist: " + (System.currentTimeMillis() - startMs) + "ms");
+
+      startMs = System.currentTimeMillis();
+      int[]      contacts      = dcContext.getContacts(DcContext.DC_GCL_ADD_SELF, query);
+      Log.i(TAG, "⏰ getContacts: " + (System.currentTimeMillis() - startMs) + "ms");
+
       int[]      messages      = new int[0];
       if (queryMessages) {
+        startMs = System.currentTimeMillis();
         messages = dcContext.searchMsgs(0, query);
+        Log.i(TAG, "⏰ searchMsgs: " + (System.currentTimeMillis() - startMs) + "ms");
       }
 
       callback.onResult(new SearchResult(query, contacts, conversations, messages));
