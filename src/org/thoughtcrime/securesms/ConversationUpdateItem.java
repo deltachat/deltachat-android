@@ -1,6 +1,8 @@
 package org.thoughtcrime.securesms;
 
 import android.content.Context;
+import android.content.res.TypedArray;
+import android.graphics.Color;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -11,6 +13,7 @@ import android.widget.TextView;
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcMsg;
 
+import org.thoughtcrime.securesms.components.DeliveryStatusView;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.recipients.Recipient;
 
@@ -22,22 +25,30 @@ public class ConversationUpdateItem extends LinearLayout
 {
   private Set<DcMsg>    batchSelected;
 
-  private TextView      body;
-  private DcMsg         messageRecord;
+  private DeliveryStatusView  deliveryStatusView;
+  private TextView            body;
+  private DcMsg               messageRecord;
+  private int                 textColor;
+
+  private final Context context;
 
   public ConversationUpdateItem(Context context) {
-    super(context);
+    this(context, null);
   }
 
   public ConversationUpdateItem(Context context, AttributeSet attrs) {
     super(context, attrs);
+    this.context = context;
   }
 
   @Override
   public void onFinishInflate() {
     super.onFinishInflate();
 
-    this.body  = findViewById(R.id.conversation_update_body);
+    initializeAttributes();
+
+    body               = findViewById(R.id.conversation_update_body);
+    deliveryStatusView = new DeliveryStatusView(findViewById(R.id.delivery_indicator));
   }
 
   @Override
@@ -52,6 +63,16 @@ public class ConversationUpdateItem extends LinearLayout
     this.batchSelected = batchSelected;
 
     bind(messageRecord);
+  }
+
+  private void initializeAttributes() {
+    final int[]      attributes = new int[] {
+        R.attr.conversation_item_update_text_color,
+    };
+    final TypedArray attrs      = context.obtainStyledAttributes(attributes);
+
+    textColor = attrs.getColor(0, Color.WHITE);
+    attrs.recycle();
   }
 
   @Override
@@ -73,6 +94,18 @@ public class ConversationUpdateItem extends LinearLayout
   private void setGenericInfoRecord(DcMsg messageRecord) {
     body.setText(messageRecord.getDisplayBody());
     body.setVisibility(VISIBLE);
+
+    if      (!messageRecord.isOutgoing())  deliveryStatusView.setNone();
+    else if (messageRecord.isFailed())     deliveryStatusView.setFailed();
+    else if (messageRecord.isPreparing())  deliveryStatusView.setPreparing();
+    else if (messageRecord.isPending())    deliveryStatusView.setPending();
+    else                                   deliveryStatusView.setNone();
+
+    if (messageRecord.isFailed()) {
+      deliveryStatusView.setTint(Color.RED);
+    } else {
+      deliveryStatusView.setTint(textColor);
+    }
   }
 
   @Override
