@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8" /><meta name="viewport" content="initial-scale=1.0" /><link rel="stylesheet" href="../help.css" /></head><body><ul id="top">
+  <li><a href="#quest-ce-que-delta-chat">Qu’est ce que Delta Chat?</a>
+    <ul>
+      <li><a href="#comment-puis-je-trouver-des-gens-avec-qui-discuter-">Comment puis-je trouver des gens avec qui discuter ?</a></li>
+      <li><a href="#quels-sont-les-avantages-de-delta-chat-par-rapport-aux-autres-messageries-">Quels sont les avantages de Delta Chat par rapport aux autres messageries ?</a></li>
+      <li><a href="#quels-messages-apparaissent-dans-delta-chat">Quels messages apparaissent dans Delta Chat</a></li>
+      <li><a href="#a-propos-des-spams">A propos des spams</a></li>
+      <li><a href="#delta-chat-prend-il-en-charge-les-images-vidéos-et-autres-pièces-jointes-">Delta Chat prend-il en charge les images, vidéos et autres pièces jointes ?</a></li>
+      <li><a href="#qui-peut-voir-ma-photo-de-profile-">Qui peut voir ma photo de profile ?</a></li>
+      <li><a href="#est-ce-que-delta-chat-support-les-e-mails-en-html">Est-ce que Delta Chat support les e-mails en HTML</a></li>
+      <li><a href="#pourquoi-dois-je-entrer-le-mot-de-passe-de-mon-compte-e-mail-dans-delta-chat--est-ce-sécurisé-">Pourquoi dois-je entrer le mot de passe de mon compte E-mail dans Delta Chat ? Est-ce sécurisé ?</a></li>
+      <li><a href="#de-quelles-autorisations-delta-chat-a-t-il-besoin">De quelles autorisations Delta Chat a-t-il besoin?</a></li>
+    </ul>
+  </li>
+  <li><a href="#groupes">Groupes</a>
+    <ul>
+      <li><a href="#création-dun-groupe">Création d’un groupe</a></li>
+      <li><a href="#ajouter-une-personne-à-un-groupe">Ajouter une personne à un groupe</a></li>
+      <li><a href="#quest-quun-groupe-vérifié--pourquoi-est-ce-une-fonction-expérimentale-">Qu’est qu’un groupe vérifié ? Pourquoi est-ce une fonction expérimentale ?</a></li>
+      <li><a href="#je-me-suis-retiré-du-groupe-par-accident">Je me suis retiré du groupe par accident.</a></li>
+      <li><a href="#je-ne-souhaite-plus-recevoir-les-message-dun-groupe">Je ne souhaite plus recevoir les message d’un groupe.</a></li>
+      <li><a href="#que-signifient-les-doubles-marques-dans-un-message-groupé--tout-le-monde-a-t-il-bien-lu-mon-message-">Que signifient les doubles marques dans un message groupé ? Tout le monde a-t-il bien lu mon message ?</a></li>
+    </ul>
+  </li>
+  <li><a href="#encryption">Chiffrement</a>
+    <ul>
+      <li><a href="#delta-chat-gère-t-il-le-chiffrement-de-bout-en-bout-">Delta Chat gère-t-il le chiffrement de bout en bout ?</a></li>
+      <li><a href="#que-faire-pour-activer-le-chiffrement-de-bout-en-bout-">Que faire pour activer le chiffrement de bout en bout ?</a></li>
+      <li><a href="#si-le-chiffrement-de-bout-en-bout-nest-pas-disponible-la-connexion-nest-elle-pas-chiffrée-du-tout-">Si le chiffrement de bout en bout n’est pas disponible, la connexion n’est-elle pas chiffrée du tout ?</a></li>
+      <li><a href="#comment-puis-je-vérifier-le-statut-de-chiffrement-auprès-dun-expéditeur-">Comment puis-je vérifier le statut de chiffrement auprès d’un expéditeur ?</a></li>
+    </ul>
+  </li>
+  <li><a href="#comment-puis-je-vérifier-le-chiffrement-des-messages-">Comment puis-je vérifier le chiffrement des messages ?</a></li>
+  <li><a href="#quels-standards-sont-utilisés-pour-le-chiffrement-de-bout-en-bout-">Quels standards sont utilisés pour le chiffrement-de-bout-en-bout ?</a>
+    <ul>
+      <li><a href="#quel-est-la-différence-entre-les-groupes-vérifiés-et-des-discussions-11-avec-des-contacts-vérifiés">Quel est la différence entre les groupes vérifiés et des discussions 1:1 avec des contacts vérifiés?</a></li>
+      <li><a href="#est-ce-que-delta-chat-supporte-la-confidentialité-persistante-parfaite-perfect-forward-secrecy-">Est-ce que Delta Chat supporte la Confidentialité Persistante Parfaite (Perfect Forward Secrecy) ?</a></li>
+      <li><a href="#comment-est-ce-delta-chat-protège-mes-métadonnées">Comment est-ce Delta Chat protège mes métadonnées?</a></li>
+      <li><a href="#puis-je-ré-utiliser-ma-clé-privée-existante-">Puis-je ré-utiliser ma clé privée existante ?</a></li>
+      <li><a href="#je-ne-peux-pas-importer-ma-clé-pgp-existante-dans-delta-chat">Je ne peux pas importer ma clé PGP existante dans Delta Chat. </a></li>
+      <li><a href="#pourquoi-nutilisiez-vous-pas-pep-pretty-easy-privacy">Pourquoi n’utilisiez-vous pas pEp (pretty easy privacy)?</a></li>
+    </ul>
+  </li>
+  <li><a href="#multiclient">Multi-client</a>
+    <ul>
+      <li><a href="#puis-je-utiliser-delta-chat-sur-plusieurs-appareils-en-même-temps">Puis-je utiliser Delta Chat sur plusieurs appareils en même temps? </a></li>
+      <li><a href="#est-ce-quil-y-a-des-plans-dintroduction-dun-client-web-pour-delta-chat">Est-ce qu’il y a des plans d’introduction d’un client Web pour Delta Chat? </a></li>
+      <li><a href="#pourquoi-je-peux-choisir-de-ne-pas-regarder-la-boîte-de-réception">Pourquoi je peux choisir de ne pas regarder la boîte de réception? </a></li>
+      <li><a href="#à-quoi-est-bon-le-paramètre-menvoyer-une-copie">À quoi est bon le paramètre “M’envoyer une copie”?</a></li>
+      <li><a href="#pourquoi-puis-je-choisir-de-regarder-le-dossier-envoyés">Pourquoi puis-je choisir de regarder le dossier “Envoyés”?</a></li>
+      <li><a href="#pourquoi-puis-je-choisir-de-ne-pas-regarder-le-dossier-delta-chat">Pourquoi puis-je choisir de ne pas regarder le dossier Delta Chat?</a></li>
+    </ul>
+  </li>
+  <li><a href="#divers">Divers</a>
+    <ul>
+      <li><a href="#est-ce-que-delta-chat-fonctionne-avec-mon-fournisseur-de-courriel-électronique">Est-ce que Delta Chat fonctionne avec <em>mon</em> fournisseur de courriel électronique?</a></li>
+      <li><a href="#si-delta-chat-se-base-sur-le-courriel-électronique-est-ce-vraiment-une-messagerie-instantanée">Si Delta Chat se base sur le courriel électronique, est-ce vraiment une Messagerie <em>Instantanée</em>?</a></li>
+      <li><a href="#est-ce-delta-chat-est-compatible-avec-protonmail--tutanota--criptext">Est-ce Delta Chat est compatible avec Protonmail / Tutanota / Criptext? </a></li>
+      <li><a href="#les-détails-techniques-mintéressent-pouvez-vous-men-dire-plus">Les détails techniques m’intéressent. Pouvez-vous m’en dire plus? </a></li>
+      <li><a href="#comment-sont-financées-les-avancées-de-delta-chat">Comment sont financées les avancées de Delta Chat? </a></li>
+    </ul>
+  </li>
+</ul>
+
+
+
+<h2 id="quest-ce-que-delta-chat">
+        
+        
+          Qu’est ce que Delta Chat? <a href="#quest-ce-que-delta-chat" class="anchor"></a>
+        
+        
+      </h2>
+
+<p>Delta Chat est une application de clavardage qui utilise le courriel électronique pour délivrer ses messages et, si possible, les chiffre avec Autocrypt.</p>
+
+<p><img style="float:right; width:50%; max-width:360%; margin:1em;" src="../delta-what-optim.png" /></p>
+    
+      <h3 id="comment-puis-je-trouver-des-gens-avec-qui-discuter-">
+        
+        
+          Comment puis-je trouver des gens avec qui discuter ? <a href="#comment-puis-je-trouver-des-gens-avec-qui-discuter-" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Avec Delta Chat, vous pouvez écrire à toutes les adresses courriels existantes, même si le destinataire n’utilise pas l’application. Votre correspondant pourra simplement répondre à l’e-mail qu’il aura reçu. Contrairement aux autres messageries instantanées vos amis n’ont pas besoins d’installer le même client pour discuter avec vous.</p>
+    
+      <h3 id="quels-sont-les-avantages-de-delta-chat-par-rapport-aux-autres-messageries-">
+        
+        
+          Quels sont les avantages de Delta Chat par rapport aux autres messageries ? <a href="#quels-sont-les-avantages-de-delta-chat-par-rapport-aux-autres-messageries-" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Indépendant de toute entreprise ou de service. <em>Vous possédez vos propres données</em>.</p>
+<ul>
+  <li>Vos données ne sont pas sauvegardées sur un serveur central, à moins que vous utilisez tous le même fournisseur de mail.</li>
+  <li>Vous ne distribuez pas votre carnet d’adresses à qui que ce soit.</li>
+  <li><em>Rapide</em> par l’utilisation de Push-IMAP-.</li>
+  <li><em>La plus grande base d’utilisateurs</em> : Même les destinataires n’utilisant <em>pas</em> Delta Chat peuvent être contactés.</li>
+  <li><em>Compatible</em> - pas seulement avec lui-même.</li>
+  <li>Interface utilisateur <em>élegante</em> et <em>simple</em>.</li>
+  <li><em>Système distribué</em>.</li>
+  <li><em>Pas de Spam</em> - Seuls les messages des utilisateurs connus sont affichés par défaut.</li>
+  <li><em>Fiable</em> - et <em>sûr</em> pour un usage professionnel.
+ - Code source entièrement <em>ouvert</em> et basé sur des <em>normes</em> internationales.</li>
+</ul>
+    
+      <h3 id="quels-messages-apparaissent-dans-delta-chat">
+        
+        
+          Quels messages apparaissent dans Delta Chat <a href="#quels-messages-apparaissent-dans-delta-chat" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Delta Chat affiche automatiquement :</p>
+
+<ul>
+  <li>Messages des contacts de votre <strong>carnet d’adresses</strong>.</li>
+  <li>Messages de vos contacts <strong>contactés par vous</strong></li>
+  <li>Réponses** aux messages envoyés par vous</li>
+</ul>
+
+<p>Les autres messages n’apparaissent pas automatiquement, et se trouvent dans les <strong>demandes de contact</strong>. Si vous le souhaitez, une discussion peut être lancée depuis là.</p>
+    
+      <h3 id="a-propos-des-spams">
+        
+        
+          A propos des spams <a href="#a-propos-des-spams" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>Les messages contenus dans les dossiers indésirables courants sont ignorés et les adresses qu’ils contiennent ne sont pas considérées comme des contacts connus.</li>
+  <li>Comme les messages provenant de contacts inconnus n’apparaissent pas automatiquement, normalement, il n’y a pas de <strong>spam</strong>.</li>
+  <li>Cependant, si nécessaire, vous pouvez <strong>bloquer</strong> n’importe quel contact.</li>
+</ul>
+    
+      <h3 id="delta-chat-prend-il-en-charge-les-images-vidéos-et-autres-pièces-jointes-">
+        
+        
+          Delta Chat prend-il en charge les images, vidéos et autres pièces jointes ? <a href="#delta-chat-prend-il-en-charge-les-images-vidéos-et-autres-pièces-jointes-" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Oui. Comme le texte brut, toutes les pièces jointes aux e-mails sont affichées sous forme de messages séparés. Les messages sortants reçoivent automatiquement les pièces jointes nécessaires.</p>
+    
+      <h3 id="qui-peut-voir-ma-photo-de-profile-">
+        
+        
+          Qui peut voir ma photo de profile ? <a href="#qui-peut-voir-ma-photo-de-profile-" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Dans les paramètres vous pouvez ajouter une photo de profil. Si vous écrivez à vos contacts ou que vous les ajoutez via le QR code, ils la verront automatiquement comme votre photo de profil.</p>
+
+<ul>
+  <li>
+    <p>Les contacts qui n’utilisent pas Delta Chat la retrouveront en pièce jointe.</p>
+  </li>
+  <li>
+    <p>Pour des questions de confidentialité, personne ne peut voir votre photo de profil avant de vous avoir écrit.</p>
+  </li>
+  <li>
+    <p>Votre photo de profil n’est pas envoyé avec chaque message, mais assez régulièrement afin que vos contacts aient une photo à jour même s’ils ajoutent un nouvel appareil.</p>
+  </li>
+</ul>
+    
+      <h3 id="est-ce-que-delta-chat-support-les-e-mails-en-html">
+        
+        
+          Est-ce que Delta Chat support les e-mails en HTML <a href="#est-ce-que-delta-chat-support-les-e-mails-en-html" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>Oui, si le courriel entrant ne comprend pas le texte brut, Delta Chat convertit les courriels HTML en texte brut. Les courriels sortants sont du texte brut.</li>
+</ul>
+    
+      <h3 id="pourquoi-dois-je-entrer-le-mot-de-passe-de-mon-compte-e-mail-dans-delta-chat--est-ce-sécurisé-">
+        
+        
+          Pourquoi dois-je entrer le mot de passe de mon compte E-mail dans Delta Chat ? Est-ce sécurisé ? <a href="#pourquoi-dois-je-entrer-le-mot-de-passe-de-mon-compte-e-mail-dans-delta-chat--est-ce-sécurisé-" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Comme pour les autres clients mail, Thunderbird, FairEmail, K9-Mail, Outlook, etc, 
+celui-ci a besoin des identifiants / mots de passe pour recevoir et envoyer des E-mails. 
+Bien sûr le mot de passe est uniquement stocké sur votre appareil. Et il est utilisé uniquement pour vous authentifier auprès de votre fournisseur d’E-mail, qui a, rappelons-le, accès à vos E-mails non chiffrés.</p>
+
+<p>Si vous utilisez un fournisseur d’E-mail supportant OAuth2 comme gmail.com et yandex.ru
+il n’est pas nécessaire de stocker votre mot de passe sur votre appareil. Dans ce cas, seulement un jeton d’accès est utilisé.</p>
+
+<p>Comme Delta Chat est un logiciel libre, vous pouvez étudier le <a href="https://github.com/deltachat/deltachat-core-rust/blob/master/src/login_param.rs">code source</a> pour vérifier que vos identifiants / mots de passe sont utilisés de façon sécurisé. Nous sommes avares de retours pour renforcer la sécurité de l’application.</p>
+    
+      <h3 id="de-quelles-autorisations-delta-chat-a-t-il-besoin">
+        
+        
+          De quelles autorisations Delta Chat a-t-il besoin? <a href="#de-quelles-autorisations-delta-chat-a-t-il-besoin" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Selon le système d’exploitation utilisé,
+il vous sera peut-être demandé d’accorder des autorisations à l’application.
+Voici ce que fait Delta Chat avec ces autorisations:</p>
+
+<ul>
+  <li>Appareil photo * (peut être refusé) *
+    <ul>
+      <li>prendre des photos et des vidéos: pour envoyer des photos</li>
+    </ul>
+  </li>
+  <li>Contacts * (peut être refusé) *
+    <ul>
+      <li>lire vos contacts: pour découvrir les contacts avec lesquels discuter</li>
+    </ul>
+  </li>
+  <li>Emplacement * (peut être refusé) *
+    <ul>
+      <li>accéder à l’emplacement approximatif (sources d’emplacement réseau): pour la fonction de streaming d’emplacement</li>
+      <li>accéder à la localisation précise (GPS et sources de localisation réseau): pour la fonction de localisation en continu</li>
+    </ul>
+  </li>
+  <li>Microphone * (peut être refusé) *
+    <ul>
+      <li>enregistrement audio: pour les messages audio</li>
+    </ul>
+  </li>
+  <li>Stockage * (peut être refusé) *
+    <ul>
+      <li>modifier ou supprimer le contenu de votre carte SD pour télécharger les pièces jointes des messages</li>
+      <li>lire le contenu de votre carte SD pour partager des fichiers avec vos contacts</li>
+    </ul>
+  </li>
+  <li>Autres capacités de l’application
+    <ul>
+      <li>modifier vos paramètres audio pour choisir les sonneries et le volume des notifications et des messages audio</li>
+      <li>s’exécuter au démarrage pour ne pas avoir besoin de démarrer Delta Chat manuellement</li>
+      <li>contrôler les vibrations pour les notifications</li>
+      <li>afficher les connexions réseau pour vous connecter à votre fournisseur de messagerie</li>
+      <li>empêcher la veille du téléphone pour copier plus facilement le code de sécurité pendant le message de configuration Autocrypt</li>
+      <li>avoir un accès complet au réseau pour vous connecter à votre fournisseur de messagerie</li>
+      <li>afficher les connexions Wi-Fi pour vous connecter à votre fournisseur de messagerie</li>
+      <li>demander d’ignorer les optimisations de batterie pour les utilisateurs qui souhaitent recevoir des messages tout le temps</li>
+    </ul>
+  </li>
+</ul>
+    
+      <h2 id="groupes">
+        
+        
+          Groupes <a href="#groupes" class="anchor"></a>
+        
+        
+      </h2>
+    
+      <h3 id="création-dun-groupe">
+        
+        
+          Création d’un groupe <a href="#création-dun-groupe" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>Sélectionnez <strong>Nouvelle discussion</strong> puis <strong>Nouveau groupe</strong> dans le menu à trois points situé en haut à droite de la fenêtre ou son équivalent sous Android et iOS.</li>
+  <li>Sur l’écran suivant, sélectionnez <strong>Ajouter des participants</strong> et choisissez un <strong>Nom du groupe</strong>. Vous pouvez aussi choisir une <strong>image de groupe</strong>.</li>
+  <li>Lorsque vous enverrez le <strong>premier message</strong> dans le groupe, tous les membres en seront informés et pourront répondre. Le groupe est invisible aux autres membres si vous n’écrivez pas de premier message.</li>
+</ul>
+    
+      <h3 id="ajouter-une-personne-à-un-groupe">
+        
+        
+          Ajouter une personne à un groupe <a href="#ajouter-une-personne-à-un-groupe" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>Chaque membre du groupe a les <strong>mêmes droits</strong> que les autres. Pour cette raison, chacun peut supprimer tous les membres ou en ajouter de nouveaux.</li>
+  <li>Pour ajouter ou supprimer des membres, cliquez sur le nom du groupe dans le chat.</li>
+</ul>
+    
+      <h3 id="quest-quun-groupe-vérifié--pourquoi-est-ce-une-fonction-expérimentale-">
+        
+        
+          Qu’est qu’un groupe vérifié ? Pourquoi est-ce une fonction expérimentale ? <a href="#quest-quun-groupe-vérifié--pourquoi-est-ce-une-fonction-expérimentale-" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>
+    <p>Un groupe vérifié est une discussion qui garantit une 
+sécurité contre un attaquant actif. Tous les messages d’une discussion vérifiée
+sont chiffrés de bout en bout (e2ee), et les membres peuvent joindre en scannant
+un code barre à deux dimensions (QR code) d’invitation. Tous les membres sont alors connectés l’un à l’autre
+à travers une chaîne d’invitation, qui garanti une consistence cryptographique
+contre des attaques réseaux actives ou des fournisseurs. 
+Consultez <a href="https://countermitm.readthedocs.io/en/latest/new.html">countermitm.readthedocs.io</a>
+pour en savoir plus sur la R&amp;D derrière cette fonctionnalité.</p>
+  </li>
+  <li>
+    <p>En décembre 2019, un “groupe vérifié” reste une fonction expérimentale. Elle est continuellement améliorée et de nombreux bogues ont été corrigés depuis son introduction en 2018. Toutefois, il reste des cas, notamment avec de grands groupes, où des incohérences peuvent se produire, ou des messages qui deviennent illisibles. Début 2020, un examen de la sécurité est prévu, et plusieurs nouveaux développements autour des protocoles qr-join ont lieu de sorte qu’il y a des chances que nous supprimions le label “expérimental” dans un proche avenir.</p>
+  </li>
+</ul>
+    
+      <h3 id="je-me-suis-retiré-du-groupe-par-accident">
+        
+        
+          Je me suis retiré du groupe par accident. <a href="#je-me-suis-retiré-du-groupe-par-accident" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>Comme vous n’êtes plus membre du groupe, vous ne pouvez pas vous y ajouter à nouveau. 
+Demandez simplement dans un tchat à n’importe quel autre membre de ce groupe de vous y ré-inviter.</li>
+</ul>
+    
+      <h3 id="je-ne-souhaite-plus-recevoir-les-message-dun-groupe">
+        
+        
+          Je ne souhaite plus recevoir les message d’un groupe. <a href="#je-ne-souhaite-plus-recevoir-les-message-dun-groupe" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>
+    <p>Supprimez-vous de la liste des membres ou supprimez le tchat en entier. 
+Si souhaitez rejoindre le groupe plus tard, demandez à un autre membre du groupe de vous ré-inviter.</p>
+  </li>
+  <li>
+    <p>Vous pouvez également mettre un groupe en “Muet”, ce qui signifie que vous recevez tous les messages et pourrez toujours écrire, mais vous ne serez plus informés de l’arrivée de nouveaux messages.</p>
+  </li>
+</ul>
+    
+      <h3 id="que-signifient-les-doubles-marques-dans-un-message-groupé--tout-le-monde-a-t-il-bien-lu-mon-message-">
+        
+        
+          Que signifient les doubles marques dans un message groupé ? Tout le monde a-t-il bien lu mon message ? <a href="#que-signifient-les-doubles-marques-dans-un-message-groupé--tout-le-monde-a-t-il-bien-lu-mon-message-" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>Un message montre des doubles coches après plus que la moitié des destinataires
+ont vu le message sur leur écran.&lt;/li&gt;</li>
+  <li>Notez que certains destinataires ont peut-être désactiver leurs notifications
+de lecture pour des raisons de confidentialité.&lt;/li&gt;</li>
+  <li>Si plus de 50% du groupe a désactivé les notifications de lecture, les
+doubles coches n’apparaitront pas. Pour en savoir plus, lisez <a href="https://delta.chat/en/2017-07-06-read-receipts-and-social-pressure">ce billet de blog</a></li>
+</ul>
+    
+      <h2 id="encryption">
+        
+        
+          Chiffrement <a href="#encryption" class="anchor"></a>
+        
+        
+      </h2>
+    
+      <h3 id="delta-chat-gère-t-il-le-chiffrement-de-bout-en-bout-">
+        
+        
+          Delta Chat gère-t-il le chiffrement de bout en bout ? <a href="#delta-chat-gère-t-il-le-chiffrement-de-bout-en-bout-" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>
+    <p>Oui. Delta Chat implémente la norme Autocrypt Niveau 1 et peut ainsi chiffrer E2E (de bout en bout) les messages avec d’autres applications Autocrypt.</p>
+  </li>
+  <li>
+    <p>Delta Chat supporte aussi une forme robuste du chiffrement bout à bout qui
+est même sécurisé contre les attaques actives, voir les “groupes vérifiés” un peu plus ci-dessous.</p>
+  </li>
+</ul>
+    
+      <h3 id="que-faire-pour-activer-le-chiffrement-de-bout-en-bout-">
+        
+        
+          Que faire pour activer le chiffrement de bout en bout ? <a href="#que-faire-pour-activer-le-chiffrement-de-bout-en-bout-" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>Rien.</li>
+</ul>
+
+<p><br />- Delta Chat (et les autres applications de messagerie compatibles avec<a href="https://autocrypt.org">Autocrypt</a>) partagent automatiquement les clés nécessaires au chiffrement de bout en bout dès l’envoi des premiers messages. 
+Tous les messages suivants sont chiffrés de bout en bout automatiquement. 
+Si l’un des partenaires de tchat utilise une application de messagerie non-compatible avec Autocrypt, les messages ultérieurs ne sont pas chiffrés tant qu’une application conforme à Autocrypt n’est pas à nouveau disponible.</p>
+
+<ul>
+  <li>Si vous préférez éviter le courriel électronique chiffré de bout en bout par défaut, changez
+le paramètre Autocrypt correspondant dans “Paramètres” ou “Paramètres avancés”.</li>
+</ul>
+    
+      <h3 id="si-le-chiffrement-de-bout-en-bout-nest-pas-disponible-la-connexion-nest-elle-pas-chiffrée-du-tout-">
+        
+        
+          Si le chiffrement de bout en bout n’est pas disponible, la connexion n’est-elle pas chiffrée du tout ? <a href="#si-le-chiffrement-de-bout-en-bout-nest-pas-disponible-la-connexion-nest-elle-pas-chiffrée-du-tout-" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>Delta Chat établit le <em>chiffrement du transport</em> avec 
+la majorité des serveurs de mail (<a href="https://en.wikipedia.org/wiki/Transport_Layer_Security">TLS</a>).
+Celà sécurise seulement la connexion entre votre appareil et le serveur
+de mail, alors que le chiffrement e2ee fournit de la sécurité
+entre votre appareil et celui d’un ami.</li>
+</ul>
+    
+      <h3 id="comment-puis-je-vérifier-le-statut-de-chiffrement-auprès-dun-expéditeur-">
+        
+        
+          Comment puis-je vérifier le statut de chiffrement auprès d’un expéditeur ? <a href="#comment-puis-je-vérifier-le-statut-de-chiffrement-auprès-dun-expéditeur-" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Si vous êtes dans l’entourage physique immédiat de votre interlocuteur:</p>
+
+<ul>
+  <li>Sélectionnez <strong>code d’invitation QR</strong> sur un appareil puis
+<strong>Scanner le code QR</strong> sur l’autre et faites scanner le code. Si les deux
+appareils sont en ligne, ils ouvriront un canal de discussion avec l’un l’autre (s’il
+n’existe pas déjà) et les clés de chiffrement seront aussi vérifiées. Les deux
+appareils verront un message système “destinataire vérifié” dans leur discussion
+1:1.</li>
+</ul>
+
+<p>Si vous n’êtes pas près physiquement de l’interlocuteur, vous pouvez vérifier manuellement le status dans le dialogue “Chiffrement” (profil utilisateur sur Android/iOS ou un clic droit sur un objet de la liste des discussions sur l’appli de bureau):</p>
+
+<ul>
+  <li>
+    <p>Pour le chiffrement de bout en bout, Delta Chat y montrera deux empreintes. Si les mêmes empreintes apparaissent sur l’appareil de votre partenaire de chat, la connexion est sécurisée.</p>
+  </li>
+  <li>
+    <p>Pour le cryptage de la communication, cet état est juste affiché ici</p>
+  </li>
+</ul>
+    
+      <h2 id="comment-puis-je-vérifier-le-chiffrement-des-messages-">
+        
+        
+          Comment puis-je vérifier le chiffrement des messages ? <a href="#comment-puis-je-vérifier-le-chiffrement-des-messages-" class="anchor"></a>
+        
+        
+      </h2>
+
+<ul>
+  <li>
+    <p>Si un petit <strong>cadenas</strong> est affiché à côté d’un message, cela signifie que le message est chiffré de bout en bout par l’expéditeur.</p>
+  </li>
+  <li>
+    <p>S’il n’y a <strong>aucun cadenas</strong>, le message est généralement transporté en clair, par exemple parce que vous ou l’expéditeur avez désactivé le chiffrement-de-bout-en-bout ou que l’expéditeur utilise une application qui ne prend pas en charge le chiffrement-de-bout-en-bout.</p>
+  </li>
+</ul>
+    
+      <h2 id="quels-standards-sont-utilisés-pour-le-chiffrement-de-bout-en-bout-">
+        
+        
+          Quels standards sont utilisés pour le chiffrement-de-bout-en-bout ? <a href="#quels-standards-sont-utilisés-pour-le-chiffrement-de-bout-en-bout-" class="anchor"></a>
+        
+        
+      </h2>
+
+<ul>
+  <li>
+    <p><a href="https://autocrypt.org">Autocrypt</a> est utiliser pour mettre en place
+le chiffrement de bout en bout avec un destinataire utilisant Delta Chat ou un autre application utilisant Autocrypt. 
+Autocrypt utilise un sous-ensemble restreint de fonctionnalités d’OpenPGP.</p>
+  </li>
+  <li>
+    <p>Delta Chat implémente <a href="https://countermitm.readthedocs.io/en/latest/new.html">les protocoles setup-contact et verified-group du projet countermitm</a> afin d’achever la protection contre des attaques de réseaux actives. Ceci va au-delà de la protection opportunistique 
+de base du niveau 1 d’Autocrypt, tout en préservant sa facilité d’utilisation.</p>
+  </li>
+</ul>
+    
+      <h3 id="quel-est-la-différence-entre-les-groupes-vérifiés-et-des-discussions-11-avec-des-contacts-vérifiés">
+        
+        
+          Quel est la différence entre les groupes vérifiés et des discussions 1:1 avec des contacts vérifiés? <a href="#quel-est-la-différence-entre-les-groupes-vérifiés-et-des-discussions-11-avec-des-contacts-vérifiés" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>
+    <p>Les discussions 1:1 avec un contact vérifié, et des groupes vérifiés, ne sont pas les mêmes choses même si il y a seulement 2 personnes dans le groupe vérifié. Une différence est que vous pouvez facilement ajouter plus de personnes dans le groupe, mais il y a aussi d’autres implications.
+ </p>
+  </li>
+  <li>
+    <p>Les groupes vérifiés sont sécurisés en tout temps. Quelconque disruption (texte non chiffré ou messages mal 
+signés etc.) seront marqués et de tels messages ne seront pas montrés dans 
+ce chat. Vous pouvez vous assurez que tous les messages dans cette discussion de personnes vérifiés 
+n’ont pas été lu ou altéré par des tierces parties.</p>
+  </li>
+  <li>
+    <p> Les discussions 1:1 sont opportunistiques, c’est à dire que ça permet aux gens de communiquer 
+même s’ils changent leur client de mail, appareils, configurations etc. C’est pour celà qu’il 
+n’y pas de marque de vérification, même si vous avez vérifié le contact.</p>
+  </li>
+</ul>
+    
+      <h3 id="est-ce-que-delta-chat-supporte-la-confidentialité-persistante-parfaite-perfect-forward-secrecy-">
+        
+        
+          Est-ce que Delta Chat supporte la Confidentialité Persistante Parfaite (Perfect Forward Secrecy) ? <a href="#est-ce-que-delta-chat-supporte-la-confidentialité-persistante-parfaite-perfect-forward-secrecy-" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>
+    <p>Non, OpenPGP ne supporte pas la Perfect Forward Secrecy. La PFS marche 
+pour une architecture orienté sur les sessions, mais l’E-mail est asynchrone par nature 
+et souvent utilisé depuis plusieurs appareils. Celà signifie que si votre
+ clé privée Delta Chat fuite et que quelqu’un a une copie
+ de tout vos messages en cours de route, il sera capable de les lire.</p>
+  </li>
+  <li>
+    <p>Notez que si quelqu’un s’est emparé ou a hacké votre téléphone sous tension, il sera 
+capable de lire tous vos messages, que la PFS soit en place ou non.
+ Avoir accès à l’appareil d’un membre d’un groupe
+ exposera normalement une bonne partie du cercle social. Utiliser des adresses mails
+ qui ne sont pas facilement remontables à de vraies personnes aide les membres du groupe à rester plus sûr en cas
+ de la perquisition d’un appareil.</p>
+  </li>
+  <li>
+    <p>Nous sommes en train de réfléchir à des moyens de mieux protéger les communications en cas
+ de perquisition de matériel.</p>
+  </li>
+</ul>
+    
+      <h3 id="comment-est-ce-delta-chat-protège-mes-métadonnées">
+        
+        
+          Comment est-ce Delta Chat protège mes métadonnées? <a href="#comment-est-ce-delta-chat-protège-mes-métadonnées" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>
+    <p>Puisque Delta Chat est une messagerie décentralisé, les métadonnées des utilisateurs de Delta Chat
+ ne sont pas stockés sur un seul serveur central. Néanmoins, elles sont stockées sur les serveurs mails 
+de l’émetteur et du destinataire d’un message.</p>
+  </li>
+  <li>
+    <p>Chaque serveur de mail sait, en ce moment, qui a envoyé et qui a reçu un message en
+ analysant les en-têtes non chiffrés To/Cc et donc peut déterminer quelles adresses
+ mails font partie d’un groupe. Delta Chat lui-même pourrait éviter les en-têtes To/Cc et
+tout le temps les mettre dans la partie chiffrée. Voyez 
+ce ticket, <a href="https://github.com/deltachat/deltachat-core-rust/issues/1032">Avoid sending To/CC headers for verified groups</a>.
+La préocuppation principale pour les discussions opportunistiques est comment celà va impacter les autres applications de mail qui
+ pourrait participer à ces discussions.</p>
+  </li>
+  <li>
+    <p>Beaucoup d’autres en-têtes d’e-mail, en particulier l’en-tête “Sujet” sont prévus d’être protégés avec le chiffrement-de-bout-en-bout, consultez également cette <a href="https://datatracker.ietf.org/doc/draft-autocrypt-lamps-protected-headers/">RFC en cours pour l’IETF</a>.</p>
+  </li>
+</ul>
+    
+      <h3 id="puis-je-ré-utiliser-ma-clé-privée-existante-">
+        
+        
+          Puis-je ré-utiliser ma clé privée existante ? <a href="#puis-je-ré-utiliser-ma-clé-privée-existante-" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Oui. La meilleure façon est d’envoyer un message de configuration Autocrypt depuis l’autre client de mail. Cherchez pour quelque chose comme <strong>Commencer le transfert de la configuration Autocrypt</strong> dans les paramètres de l’autre client et suivez les instructions affichés.</p>
+
+<p>Alternativement, vous pouvez importer les clés manuellement dans “Paramètres” ou “Paramètres avancés” et puis “Importer des clefs secrètes”. Attention: soyez sûrs que la clé n’est pas protégé par un mot de passe, assurez-vous d’enlever le mot de passe avant.</p>
+
+<p>Si vous n’avez pas de clé ou ne savez même pas que vous en auriez besoin, ne vous inquiétez pas : Delta Chat en génère une si nécessaire, vous n’avez pas besoin d’appuyer sur un bouton pour cela.</p>
+    
+      <h3 id="je-ne-peux-pas-importer-ma-clé-pgp-existante-dans-delta-chat">
+        
+        
+          Je ne peux pas importer ma clé PGP existante dans Delta Chat.  <a href="#je-ne-peux-pas-importer-ma-clé-pgp-existante-dans-delta-chat" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Le problème le plus probable est que votre clé est chiffrée ou qu’elle utilise
+ un mot de passe, ou les deux. De telles clefs ne sont pas supportées par Delta Chat. Vous pourriez enlever
+ le chiffrement par mot de passe et le mot de passe puis réessayer l’import de nouveau. Si vous voulez
+garder votre mot de passe, vous aurez a créer un alias d’e-mail à utiliser avec
+Delta Chat de telle sorte que la clé de Delta Chat est lié a cet alias d’e-mail.</p>
+
+<p>Delta Chat supporte les formats communs de clé privé OpenPGP, néanmoins il
+ n’est pas certain que nous supporterons la totalité des clef privés de n’importe quelles sources. Ce
+ n’est pas aussi l’occupation principale de Delta Chat. En pratique, la majorité des nouveaux utilisateurs
+ de Delta Chat n’auront pas de clefs avant d’utiliser Delta Chat.
+Néanmoins, nous essayons de supporter les clés privés d’autant de sources que possible.</p>
+
+<p>Enlever le mot de passe de la clé privé dépendra du 
+logiciel que vous utilisez pour gérer vos clés GPG. Avec Enigmail, vous pouvez définir votre 
+mot de passe par une valeur vide dans la fenêtre de Gestion des Clés. Avec GnuPG vous pouvez le définir
+ <a href="https://github.com/deltachat/deltachat-android/issues/98#issuecomment-378383429">via la ligne de commande</a>.
+Pour les autres programmes, vous devriez être capable de trouver la solution en ligne.</p>
+    
+      <h3 id="pourquoi-nutilisiez-vous-pas-pep-pretty-easy-privacy">
+        
+        
+          Pourquoi n’utilisiez-vous pas pEp (pretty easy privacy)? <a href="#pourquoi-nutilisiez-vous-pas-pep-pretty-easy-privacy" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>Delta Chat utilise le standard de chiffrement e2ee
+d’Autocrypt. Pour une discussion sur Autocrypt et pEp, regardez la <a href="https://autocrypt.org/faq.html#how-does-autocrypt-differ-from-pep">FAQ d’Autocrypt</a>.</li>
+</ul>
+    
+      <h2 id="multiclient">
+        
+        
+          Multi-client <a href="#multiclient" class="anchor"></a>
+        
+        
+      </h2>
+    
+      <h3 id="puis-je-utiliser-delta-chat-sur-plusieurs-appareils-en-même-temps">
+        
+        
+          Puis-je utiliser Delta Chat sur plusieurs appareils en même temps?  <a href="#puis-je-utiliser-delta-chat-sur-plusieurs-appareils-en-même-temps" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Si vous voulez utiliser le <strong>même compte</strong> sur d’autres appareils, vous devriez exporter
+ une sauvegarde depuis l’ancien appareil puis l’importer dans le nouveau:</p>
+
+<p> </p>
+
+<ul>
+  <li>Sur l’ancien appareil, allez dans “Paramètres” ou “Paramètres / Discussions et médias” et puis
+ensuite à “Sauvegarde”. Entrez votre PIN, schéma ou mot de passe de dévérouillage puis ensuite vous pouvez
+cliquer sur “Commencer la sauvegarde”. Celà enregistrera le fichier de sauvegarde sur votre appareil.
+Vous allez devoir maintenant le transférer sur l’autre appareil d’une manière quelconque.</li>
+  <li>Sur l’écran de connexion du nouvel appareil, choisissez “Importer la sauvegarde” au lieu de vous
+connecter dans votre compte de mail. Après l’importation, vos discussions, clés de chiffrement ainsi que
+vos médias devrait être copiés sur le nouvel appareil.</li>
+  <li>Vous êtes maintenant synchronisé et pouvez utiliser les deux appareils pour envoyer et recevoir
+des messages chiffré e2ee avec vos interlocuteurs.</li>
+</ul>
+    
+      <h3 id="est-ce-quil-y-a-des-plans-dintroduction-dun-client-web-pour-delta-chat">
+        
+        
+          Est-ce qu’il y a des plans d’introduction d’un client Web pour Delta Chat?  <a href="#est-ce-quil-y-a-des-plans-dintroduction-dun-client-web-pour-delta-chat" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>Il n’y a pas de plans immédiats mais quelques idées préléminaires.</li>
+  <li>Il y a 2-3 façons d’introduire un client Web Delta Chat, mais toutes représentent
+ un travail conséquent. Pour l’instant, nous nous concentrons à sortir des versions stables dans tout
+ les magasins d’applications (Google Play/iOS/Windows/macOS/centre de paquets Linux) en tant qu’applications natives.</li>
+  <li>Si vous avez besoin d’un client Web parce que vous n’êtes pas autorisé à installer des logiciels sur
+ l’ordinateur sur lequel vous travaillez, vous pouvez utiliser le Client Portable pour bureaux Windows
+ ou l’AppImage pour Linux. Vous pouvez les trouver sur 
+<a href="https://get.delta.chat">get.delta.chat</a>.</li>
+</ul>
+    
+      <h3 id="pourquoi-je-peux-choisir-de-ne-pas-regarder-la-boîte-de-réception">
+        
+        
+          Pourquoi je peux choisir de ne pas regarder la boîte de réception?  <a href="#pourquoi-je-peux-choisir-de-ne-pas-regarder-la-boîte-de-réception" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>C’est un paramètre expérimental pour certaines personnes qui expérimente avec
+ des règles côté serveur. Tous les fournisseurs ne supporte pas ceci mais certains permettent de déplacer
+ tous les mails avec un en-tête tel que “Chat-Version” dans le dossier DeltaChat. Normalement, l’application
+ Delta Chat s’en occupe. .</p>
+
+<p>Ne pas Surveiller la Boîte de réception est judicieux si vous avez:</p>
+
+<ul>
+  <li>activé une règle côté serveur pour déplacer tous les messages avec un en-tête “Chat-Version” dans le dossier DeltaChat, et</li>
+  <li>défini le paramètre “Voir les mails classiques” sur “Non, seulement les tchats”.</li>
+</ul>
+
+<p>Dans ce cas là, Delta Chat n’a pas besoin de surveiller la Boîte de réception.</p>
+    
+      <h3 id="à-quoi-est-bon-le-paramètre-menvoyer-une-copie">
+        
+        
+          À quoi est bon le paramètre “M’envoyer une copie”? <a href="#à-quoi-est-bon-le-paramètre-menvoyer-une-copie" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Envoyer une copie de vos messages à vous-même s’assure que vous recevez vos propres
+ messages sur tous les appareils. Si vous avez de multiples appareils et que vous ne l’activez pas, vous
+ voyez seulement les messages des autres personnes et les messages que vous avez envoyé depuis
+ l’appareil en cours.</p>
+
+<p>La copie est envoyée dans la Boîte de réception puis déplacée dans le dossier DeltaChat; elle n’est
+ pas mise dans le dossier “Envoyés”. Delta Chat ne téléverse jamais quelque chose dans le dossier Envoyés
+ car ça signifierait de le téléverser deux fois (une fois via SMTP, puis une fois
+ dans le dossier Envoyés via IMAP).</p>
+
+<p>Le paramètre par défaut pour l’envoi à soi-même est “Non”.</p>
+    
+      <h3 id="pourquoi-puis-je-choisir-de-regarder-le-dossier-envoyés">
+        
+        
+          Pourquoi puis-je choisir de regarder le dossier “Envoyés”? <a href="#pourquoi-puis-je-choisir-de-regarder-le-dossier-envoyés" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>La seule raison de regarder le dossier Envoyés est si vous utilisiez un autre
+ programme de mail (tel que Thunderbird) en parallèle de votre application Delta Chat, et que vous voulez que votre client de messagerie
+ participe aux discussions.</p>
+
+<p>Cependant, nous recommandons d’utiliser le client de bureau Delta Chat; vous pouvez le télécharger
+ sur <a href="https://get.delta.chat">get.delta.chat</a>. L’option de regarder le dossier “Envoyés”
+ pourrait disparaître dans le futur. Elle a été introduite à un temps où il n’y avait pas
+ de client de bureau Delta Chat disponible sur toutes les plateformes.</p>
+    
+      <h3 id="pourquoi-puis-je-choisir-de-ne-pas-regarder-le-dossier-delta-chat">
+        
+        
+          Pourquoi puis-je choisir de ne pas regarder le dossier Delta Chat? <a href="#pourquoi-puis-je-choisir-de-ne-pas-regarder-le-dossier-delta-chat" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Certaines personnes utilisent Delta Chat comme un client de messagerie normal, et veulent utiliser la Boîte de réception
+ pour leurs mails au lieu d’utiliser le dossier DeltaChat. Si vous désactivez “Surveiller le dossier DeltaChat”, vous
+ devriez aussi désactiver “déplacer les messages de discussions dans DeltaChat”.
+Sinon, la suppression de messages dans une configuration multi-appareils pourrait ne pas marcher correctement.</p>
+    
+      <h2 id="divers">
+        
+        
+          Divers <a href="#divers" class="anchor"></a>
+        
+        
+      </h2>
+    
+      <h3 id="est-ce-que-delta-chat-fonctionne-avec-mon-fournisseur-de-courriel-électronique">
+        
+        
+          Est-ce que Delta Chat fonctionne avec <em>mon</em> fournisseur de courriel électronique? <a href="#est-ce-que-delta-chat-fonctionne-avec-mon-fournisseur-de-courriel-électronique" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>Avec de grandes chances: oui :)
+Cependant, quelques fournisseurs ont besoin d’options spéciales pour bien fonctionner, consultez
+ <a href="https://providers.delta.chat">l’aperçu des fournisseurs</a></li>
+</ul>
+    
+      <h3 id="si-delta-chat-se-base-sur-le-courriel-électronique-est-ce-vraiment-une-messagerie-instantanée">
+        
+        
+          Si Delta Chat se base sur le courriel électronique, est-ce vraiment une Messagerie <em>Instantanée</em>? <a href="#si-delta-chat-se-base-sur-le-courriel-électronique-est-ce-vraiment-une-messagerie-instantanée" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>Envoyer et recevoir des messages prend en général quelques secondes. Il y a parfois
+ des cas où celà peut prendre plus longtemps mais c’est aussi fort probablement vrai
+ pour n’importe quel autre messagerie.
+La discussion instantanée est fluide si les deux personnes l’utilise activement. C’est
+ parfois plus lent si l’application tourne en fond.</li>
+  <li>Recevoir des messages peut alors prendre des minutes, car Android et iOS empêche souvent Delta Chat
+ de tourner en fond, et ne le réveille que de temps en temps. Ce délai artificiel
+ est d’habitude plus prononcé sur iOS que sur Android.</li>
+  <li>Notez que Delta chat n’utilise pas le Google Cloud Messaging (GCM) ou l’Apple Push Notification Service
+ (APNS) pour les notifications, car ça amène au traquage de l’utilisateur que Delta Chat
+ veut éviter le plus possible.</li>
+  <li>Néanmoins, Android et iOS qui arrête des tâches tournant en fond est un problème
+ pour des applications légitimes. Pour en savoir plus, consultez  <a href="https://dontkillmyapp.com/">dontkillmyapp.com</a>.</li>
+</ul>
+    
+      <h3 id="est-ce-delta-chat-est-compatible-avec-protonmail--tutanota--criptext">
+        
+        
+          Est-ce Delta Chat est compatible avec Protonmail / Tutanota / Criptext?  <a href="#est-ce-delta-chat-est-compatible-avec-protonmail--tutanota--criptext" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>Oui et Non</li>
+  <li>Non, vous ne pouvez pas utiliser votre compte Protonmail, Tutanota ou Criptext avec
+Delta Chat; ils n’offrent pas de recevoir les mails via IMAP.</li>
+  <li>Dans tous les cas vous pouvez utiliser Delta Chat pour envoyer des Mesasges
+à des personnes qui utilise Protonmail, Tutanota ou Criptext. Par contre, ces messages ne seront pas chiffré de bout en bout. Le chiffrement de bout en bout que ces fournisseurs offre fonctionne
+seulement à l’intérieur de leurs plateformes et n’est pas compatible avec quelqu’un d’en dehors.</li>
+  <li>Delta Chat peut chiffrer en e2ee à travers n’importe quel autre fournisseur et avec 
+<a href="https://autocrypt.org/dev-status.html">une application e-mail compatible Autocrypt</a>.</li>
+</ul>
+    
+      <h3 id="les-détails-techniques-mintéressent-pouvez-vous-men-dire-plus">
+        
+        
+          Les détails techniques m’intéressent. Pouvez-vous m’en dire plus?  <a href="#les-détails-techniques-mintéressent-pouvez-vous-men-dire-plus" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>Consultez les <a href="https://github.com/deltachat/deltachat-android/blob/master/standards.md#standards-used-in-delta-chat">standards utilisés dans Delta Chat</a>.</li>
+</ul>
+    
+      <h3 id="comment-sont-financées-les-avancées-de-delta-chat">
+        
+        
+          Comment sont financées les avancées de Delta Chat?  <a href="#comment-sont-financées-les-avancées-de-delta-chat" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Premièrement, Delta Chat ne reçoit aucun capital risque et n’est pas endetté, et
+ n’est pas sous pression de produire d’énormes profits ou
+ de vendre ses utilisateurs et leurs amis et familles à des publicitaires (ou pire).</p>
+
+<p>Jusqu’ici les avancées de Delta Chat ont été financées par quatre sources majeures:</p>
+
+<ul>
+  <li>
+    <p>Le projet européen <a href="https://nextleap.eu">NEXTLEAP</a> a financé en 2017 et 2018 la recherche
+ et l’implémentation des protocoles de groupes vérifiés et de la configuration des contacts.</p>
+  </li>
+  <li>
+    <p>L’<a href="https://opentechfund.org">Open Technology Fund</a> a donné deux subventions.
+La première subvention (~$200K) de 2018/2019 a majoritairement amelioré l’application Android
+ et nous a permi de sortir une version beta de l’application de Bureau, et a aussi
+ ancré nos avancées de fonctionnalités dans la recherche UX dans les contextes de droit de l’homme, consultez notre
+ <a href="https://delta.chat/en/2019-07-19-uxreport">rapport de réponses aux besoins et UX</a> pour en savoir plus.
+La deuxième subvention (~$300K) de 2019/2020 est encore en cours et nous aide
+ à sortir des versions Delta/iOS, à convertir notre bibliothèque moteur vers Rust, et de fournir de nouvelles fonctionnalités pour toutes les plateformes. Pour en savoir plus
+, consultez notre <a href="https://delta.chat/en/blog">blog</a>.</p>
+  </li>
+  <li>
+    <p>La <a href="https://nlnet.nl/">fondation NLnet</a> nous a subventionné de 46K€ pour
+ la complétion des interfaces Rust/Python et l’encouragement d’un écosystème de Chatbot.</p>
+  </li>
+  <li>
+    <p>En dernier mais de loin pas des moindre, quelques enthousiastes et experts bénévoles qui ont contribué
+ et contribue au développement de Delta Chat sans recevoir d’argent, ou seulement
+ de petites sommes. Sans eux, Delta Chat n’en serait pas où il en est aujourd’hui, et
+ de très loin.</p>
+  </li>
+  <li>
+    <p>Le financement mentionné ci-dessus a été organisé par merlinux GmbH à 
+Freiburg (Allemagne) puis ensuite distribué à presque une douzaine de contributeurs.</p>
+  </li>
+</ul>
+
+<p>Le financement pour 2020/2021 est encore a déterminer. Nous sommes en train de poursuivre différentes
+ opportunités avec de différentes organisations et partenaires. Nous sommes aussi
+ en train de réfléchir au fait de demander des dons. En fait, nous avons commencé
+ à titre d’expérimentation un <a href="https://liberapay.com/delta.chat/">petit compte de don Liberapay pour Delta Chat</a>
+Delta Chat mais nous ne l’avons pas encore publié. Il y a eu aussi jusqu’ici autour de 3-4K
+ donnés à Bjoern (l’auteur original de Delta Chat) en don Paypal et 
+canaux de don en Bitcoin.</p>
+
+
+
+
+
+</body></html>

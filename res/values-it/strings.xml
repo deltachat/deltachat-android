@@ -334,6 +334,9 @@
     <string name="messaging_disabled_deaddrop">Fare clic su un messaggio per accettare o rifiutare la richiesta di contatto</string>
     <string name="cannot_display_unsuported_file_type">Impossibile visualizzare questo tipo di file: %s</string>
     <string name="attachment_failed_to_load">Impossibile caricare l\'allegato</string>
+    <!-- For recording Voice messages: Description for the "Lock" button allowing to lift the thumb from the record button while recording continues -->
+    <string name="lock_recording">Blocca la registrazione</string>
+
     <!-- mailing lists -->
     <string name="mailing_list">Mailing list</string>
     <string name="ask_show_mailing_list">Mostra la mailing list \"%1$s\"?</string>
