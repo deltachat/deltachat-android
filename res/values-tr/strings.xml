@@ -254,8 +254,8 @@
     <string name="videochat_tap_to_open">Açmak için dokunun</string>
     <string name="videochat_instance">Video sohbeti örneği</string>
     <string name="videochat_instance_placeholder">Video sohbeti örneğiniz</string>
-    <string name="videochat_instance_explain">Bir video sohbeti örneği tanımlanırsa, her bire bir sohbetten video sohbeti başlatabilirsiniz. Video sohbetleri, her iki uçta da uyumlu bir uygulama ya da uyumlu bir tarayıcı gerektirir.\n\nÖrnekler: https://meet.jit.si/$ROOM ya da basicwebrtc:https://your-server</string>
-    <string name="videochat_instance_from_qr">\"%1$s\" diğerlerini video sohbetine davet etmek için kullanılsın mı?\n\nBir kez ayarlandığında, her bire bir sohbetten video sohbeti başlatabilirsiniz. Varsa bu, video sohbetleri için önceki ayarla değiştirilir.</string>
+    <string name="videochat_instance_explain">Bir video sohbeti örneği tanımlanırsa, her sohbetten video sohbeti başlatabilirsiniz. Video sohbetleri, her iki uçta da uyumlu bir uygulama ya da uyumlu bir tarayıcı gerektirir.\n\nÖrnekler: https://meet.jit.si/$ROOM ya da basicwebrtc:https://your-server</string>
+    <string name="videochat_instance_from_qr">\"%1$s\" diğerlerini video sohbetine davet etmek için kullanılsın mı?\n\nBir kez ayarlandığında, her sohbetten video sohbeti başlatabilirsiniz. Varsa bu, video sohbetleri için önceki ayarla değiştirilir.</string>
     <string name="videochat_invitation">Video sohbeti daveti</string>
     <string name="videochat_invitation_body">Bir video sohbetine davet edildiniz, katılmak için %1$s öğesini tıklayın.</string>
 
@@ -334,6 +334,9 @@
     <string name="messaging_disabled_deaddrop">İletişim isteğini kabul etmek ya da reddetmek için bir iletinin üzerine tıklayın</string>
     <string name="cannot_display_unsuported_file_type">Bu dosya türü görüntülenemiyor: %s</string>
     <string name="attachment_failed_to_load">İlişiği yükleme başarısız</string>
+    <!-- For recording Voice messages: Description for the "Lock" button allowing to lift the thumb from the record button while recording continues -->
+    <string name="lock_recording">Kaydı kilitle</string>
+
     <!-- mailing lists -->
     <string name="mailing_list">Posta listesi</string>
     <string name="ask_show_mailing_list">\"%1$s\" posta listesi gösterilsin mi?</string>

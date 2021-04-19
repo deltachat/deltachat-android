@@ -1,5 +1,23 @@
 # Delta Chat Android Changelog
 
+## v1.19.1 Preview Release
+#2021-04
+
+* show answers to generic support-addresses as info@company.com in context
+* allow different sender for answers to support-addresses as info@company.com
+* add APNG and animated webp support
+* allow videochat-invites for groups
+* let stickers handle taps
+* add more options to Gallery and Documents long-tap menus
+* allow to add POI with text of any length
+* improve detection of quotes
+* ignore classical mails from spam-folder
+* hide share button in media previews, draft images or avatars
+* fix crash when profile tabs are changed during some items are selected
+* add Czech translation, update other translations
+* add Chinese and French local help, update other local helps
+
+
 ## v1.17.0 Preview Release
 #2021-04
 
@@ -12,7 +30,7 @@
 * swipe up the voice message record button to lock recording
 * show stickers as such
 * show status/footer messages in contact profiles
-* scale avatars based on media_quality, fix avatar rotation
+* scale avatars based on media-quality, fix avatar rotation
 * export backups as .tar files
 * enable strict TLS for known providers by default
 * improve and harden secure join

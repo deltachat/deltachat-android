@@ -334,6 +334,9 @@
     <string name="messaging_disabled_deaddrop">Druk op een bericht om het contactpersoonverzoek goed te keuren of af te wijzen</string>
     <string name="cannot_display_unsuported_file_type">Het volgende bestandstype kan niet worden getoond: %s</string>
     <string name="attachment_failed_to_load">De bijlage kan niet worden geladen</string>
+    <!-- For recording Voice messages: Description for the "Lock" button allowing to lift the thumb from the record button while recording continues -->
+    <string name="lock_recording">Opname vergrendelen</string>
+
     <!-- mailing lists -->
     <string name="mailing_list">Mailinglijst</string>
     <string name="ask_show_mailing_list">Wil je de mailinglijst \'%1$s\' tonen?</string>
@@ -458,7 +461,7 @@
     <string name="pref_change_secret_explain">Wijzig je pincode/patroon/vingerafdruk via de systeeminstellingen</string>
     <string name="pref_screen_security">Schermbeveiliging</string>
     <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
-    <string name="pref_screen_security_explain">Geen schermafdrukken tonen in de \'recent\'-lijst en binnen de app</string>
+    <string name="pref_screen_security_explain">Geen schermfoto\'s tonen op de \'recent\'-lijst en binnen de app</string>
     <string name="pref_screen_security_please_restart_hint">Herstart de app om de wijzigingen toe te passen.</string>
     <string name="pref_notifications">Meldingen</string>
     <string name="pref_notifications_show">Tonen</string>
