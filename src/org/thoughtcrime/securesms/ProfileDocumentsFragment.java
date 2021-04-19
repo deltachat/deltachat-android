@@ -177,6 +177,7 @@ public class ProfileDocumentsFragment
     menu.findItem(R.id.details).setVisible(singleSelection);
     menu.findItem(R.id.show_in_chat).setVisible(singleSelection);
     menu.findItem(R.id.save).setVisible(singleSelection);
+    menu.findItem(R.id.share).setVisible(false);
   }
 
   private ProfileDocumentsAdapter getListAdapter() {
