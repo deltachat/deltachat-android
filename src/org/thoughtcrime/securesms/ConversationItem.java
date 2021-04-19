@@ -24,24 +24,20 @@ import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.text.Spannable;
 import android.text.TextUtils;
-import android.text.util.Linkify;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.DimenRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
-import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMsg;
 
 import io.noties.markwon.AbstractMarkwonPlugin;
@@ -60,8 +56,6 @@ import org.thoughtcrime.securesms.components.ConversationItemThumbnail;
 import org.thoughtcrime.securesms.components.DocumentView;
 import org.thoughtcrime.securesms.components.QuoteView;
 import org.thoughtcrime.securesms.components.emoji.EmojiTextView;
-import org.thoughtcrime.securesms.connect.ApplicationDcContext;
-import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.AudioSlide;
 import org.thoughtcrime.securesms.mms.DocumentSlide;
 import org.thoughtcrime.securesms.mms.GlideApp;
@@ -78,7 +72,6 @@ import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.views.Stub;
 
-import java.util.HashSet;
 import java.util.Locale;
 import java.util.Set;
 
@@ -90,8 +83,7 @@ import java.util.Set;
  *
  */
 
-public class ConversationItem extends LinearLayout
-    implements BindableConversationItem
+public class ConversationItem extends BaseConversationItem
 {
   private static final String TAG = ConversationItem.class.getSimpleName();
 
@@ -100,8 +92,6 @@ public class ConversationItem extends LinearLayout
   private static final int MAX_MEASURE_CALLS = 3;
   static long PULSE_HIGHLIGHT_MILLIS = 500;
 
-  private DcMsg         messageRecord;
-  private DcChat        dcChat;
   private DcContact     dcContact;
   private Locale        locale;
   // Whether the sender's avatar and name should be shown (usually the case in group threads):
@@ -111,7 +101,6 @@ public class ConversationItem extends LinearLayout
   protected ViewGroup              bodyBubble;
   protected View                   replyView;
   @Nullable private QuoteView      quoteView;
-  private   TextView               bodyText;
   private   ConversationItemFooter footer;
   private   ConversationItemFooter stickerFooter;
   private   TextView               groupSender;
@@ -121,7 +110,6 @@ public class ConversationItem extends LinearLayout
   private   ViewGroup              container;
   private   Button                 showFullMessage;
 
-  private @NonNull  Set<DcMsg>                      batchSelected = new HashSet<>();
   private @NonNull  Recipient                       conversationRecipient;
   private @NonNull  Stub<ConversationItemThumbnail> mediaThumbnailStub;
   private @NonNull  Stub<AudioView>                 audioViewStub;
@@ -134,10 +122,6 @@ public class ConversationItem extends LinearLayout
   private int incomingBubbleColor;
   private int outgoingBubbleColor;
 
-  private final PassthroughClickListener        passthroughClickListener   = new PassthroughClickListener();
-
-  private final Context context;
-  private final ApplicationDcContext dcContext;
   private final Markwon markwon;
 
   public ConversationItem(Context context) {
@@ -146,8 +130,6 @@ public class ConversationItem extends LinearLayout
 
   public ConversationItem(Context context, AttributeSet attrs) {
     super(context, attrs);
-    this.context = context;
-    this.dcContext = DcHelper.getContext(context);
     markwon = Markwon.builder(context)
 	.usePlugin(StrikethroughPlugin.create())
 	.usePlugin(TaskListPlugin.create(context))
@@ -163,11 +145,6 @@ public class ConversationItem extends LinearLayout
             }
         })
 	.build();
-  }
-
-  @Override
-  public void setOnClickListener(OnClickListener l) {
-    super.setOnClickListener(new ClickListener(l));
   }
 
   @Override
@@ -210,11 +187,9 @@ public class ConversationItem extends LinearLayout
                    @NonNull Recipient               recipients,
                    boolean                          pulseHighlight)
   {
-    this.messageRecord          = messageRecord;
-    this.dcChat                 = dcChat;
+    bind(messageRecord, dcChat, batchSelected);
     this.locale                 = locale;
     this.glideRequests          = glideRequests;
-    this.batchSelected          = batchSelected;
     this.conversationRecipient  = recipients;
     this.showSender             = dcChat.isGroup() || messageRecord.getOverrideSenderName() != null;
 
@@ -234,7 +209,6 @@ public class ConversationItem extends LinearLayout
     setMessageSpacing(context);
     setFooter(messageRecord, locale);
     setQuote(messageRecord);
-
   }
 
 
@@ -675,10 +649,6 @@ public class ConversationItem extends LinearLayout
     return context.getResources().getDimensionPixelOffset(dimenId);
   }
 
-  private boolean shouldInterceptClicks(DcMsg messageRecord) {
-    return batchSelected.isEmpty() && (messageRecord.isFailed());
-  }
-
   private void setGroupMessageStatus() {
     if (messageRecord.getType()==DcMsg.DC_MSG_STICKER) {
       this.groupSender.setVisibility(GONE);
@@ -766,23 +736,6 @@ public class ConversationItem extends LinearLayout
 
   /// Event handlers
 
-  private void handleDeadDropClick() {
-    ConversationListFragment.DeaddropQuestionHelper helper = new ConversationListFragment.DeaddropQuestionHelper(context, messageRecord);
-    new AlertDialog.Builder(context)
-      .setPositiveButton(android.R.string.ok, (dialog, which) -> {
-        int chatId = dcContext.decideOnContactRequest(messageRecord.getId(), DcContext.DC_DECISION_START_CHAT);
-        if( chatId != 0 ) {
-          Intent intent = new Intent(context, ConversationActivity.class);
-          intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
-          context.startActivity(intent);
-        }
-      })
-      .setNegativeButton(android.R.string.cancel, null)
-      .setNeutralButton(helper.answerBlock, (dialog, which) -> dcContext.decideOnContactRequest(messageRecord.getId(), DcContext.DC_DECISION_BLOCK))
-      .setMessage(helper.question)
-      .show();
-  }
-
   private class ThumbnailClickListener implements SlideClickListener {
     public void onClick(final View v, final Slide slide) {
       if (dcChat.getId() == DcChat.DC_CHAT_ID_DEADDROP && batchSelected.isEmpty()) {
@@ -810,52 +763,6 @@ public class ConversationItem extends LinearLayout
         handleDeadDropClick();
       } else if (shouldInterceptClicks(messageRecord) || !batchSelected.isEmpty()) {
         performClick();
-      }
-    }
-  }
-
-  private class PassthroughClickListener implements View.OnLongClickListener, View.OnClickListener {
-
-    @Override
-    public boolean onLongClick(View v) {
-      if (bodyText.hasSelection()) {
-        return false;
-      }
-      performLongClick();
-      return true;
-    }
-
-    @Override
-    public void onClick(View v) {
-      performClick();
-    }
-  }
-
-  private class ClickListener implements View.OnClickListener {
-    private OnClickListener parent;
-
-    ClickListener(@Nullable OnClickListener parent) {
-      this.parent = parent;
-    }
-
-    public void onClick(View v) {
-      if (dcChat.getId() == DcChat.DC_CHAT_ID_DEADDROP && batchSelected.isEmpty()) {
-        handleDeadDropClick();
-      } else if (!shouldInterceptClicks(messageRecord) && parent != null) {
-        parent.onClick(v);
-      } else if (messageRecord.isFailed()) {
-        AlertDialog d = new AlertDialog.Builder(context)
-                .setMessage(messageRecord.getError())
-                .setTitle(R.string.error)
-                .setPositiveButton(R.string.ok, null)
-                .create();
-        d.show();
-        try {
-          //noinspection ConstantConditions
-          Linkify.addLinks((TextView) d.findViewById(android.R.id.message), Linkify.WEB_URLS | Linkify.EMAIL_ADDRESSES);
-        } catch(NullPointerException e) {
-          e.printStackTrace();
-        }
       }
     }
   }
