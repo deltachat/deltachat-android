@@ -7,7 +7,6 @@ import android.graphics.Color;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import android.util.AttributeSet;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.b44t.messenger.DcChat;
@@ -20,17 +19,10 @@ import org.thoughtcrime.securesms.recipients.Recipient;
 import java.util.Locale;
 import java.util.Set;
 
-public class ConversationUpdateItem extends LinearLayout
-    implements BindableConversationItem
+public class ConversationUpdateItem extends BaseConversationItem
 {
-  private Set<DcMsg>    batchSelected;
-
   private DeliveryStatusView  deliveryStatusView;
-  private TextView            body;
-  private DcMsg               messageRecord;
   private int                 textColor;
-
-  private final Context context;
 
   public ConversationUpdateItem(Context context) {
     this(context, null);
@@ -38,7 +30,6 @@ public class ConversationUpdateItem extends LinearLayout
 
   public ConversationUpdateItem(Context context, AttributeSet attrs) {
     super(context, attrs);
-    this.context = context;
   }
 
   @Override
@@ -47,8 +38,12 @@ public class ConversationUpdateItem extends LinearLayout
 
     initializeAttributes();
 
-    body               = findViewById(R.id.conversation_update_body);
+    bodyText           = findViewById(R.id.conversation_update_body);
     deliveryStatusView = new DeliveryStatusView(findViewById(R.id.delivery_indicator));
+
+    bodyText.setOnLongClickListener(passthroughClickListener);
+    bodyText.setOnClickListener(passthroughClickListener);
+
   }
 
   @Override
@@ -60,9 +55,9 @@ public class ConversationUpdateItem extends LinearLayout
                    @NonNull Recipient               conversationRecipient,
                             boolean                 pulseUpdate)
   {
-    this.batchSelected = batchSelected;
-
-    bind(messageRecord);
+    bind(messageRecord, dcChat, batchSelected);
+    setGenericInfoRecord(messageRecord);
+    setSelected(batchSelected.contains(messageRecord));
   }
 
   private void initializeAttributes() {
@@ -85,15 +80,9 @@ public class ConversationUpdateItem extends LinearLayout
     return messageRecord;
   }
 
-  private void bind(@NonNull DcMsg messageRecord) {
-    this.messageRecord = messageRecord;
-    setGenericInfoRecord(messageRecord);
-    setSelected(batchSelected.contains(messageRecord));
-  }
-
   private void setGenericInfoRecord(DcMsg messageRecord) {
-    body.setText(messageRecord.getDisplayBody());
-    body.setVisibility(VISIBLE);
+    bodyText.setText(messageRecord.getDisplayBody());
+    bodyText.setVisibility(VISIBLE);
 
     if      (!messageRecord.isOutgoing())  deliveryStatusView.setNone();
     else if (messageRecord.isFailed())     deliveryStatusView.setFailed();
