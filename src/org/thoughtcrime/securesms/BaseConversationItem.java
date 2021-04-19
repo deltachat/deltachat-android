@@ -42,9 +42,9 @@ public abstract class BaseConversationItem extends LinearLayout
     this.dcContext = DcHelper.getContext(context);
   }
 
-  public void bind(@NonNull DcMsg            messageRecord,
-                   @NonNull DcChat           dcChat,
-                   @NonNull Set<DcMsg>       batchSelected)
+  protected void bind(@NonNull DcMsg            messageRecord,
+                      @NonNull DcChat           dcChat,
+                      @NonNull Set<DcMsg>       batchSelected)
   {
     this.messageRecord  = messageRecord;
     this.dcChat         = dcChat;
