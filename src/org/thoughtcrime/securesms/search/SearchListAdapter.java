@@ -116,6 +116,8 @@ class SearchListAdapter extends    RecyclerView.Adapter<SearchListAdapter.Search
     int headerType = (int)getHeaderId(position);
     int textId = R.plurals.n_messages;
     int count = 1;
+    boolean maybeLimitedTo1000 = false;
+
     switch (headerType) {
       case TYPE_CHATS:
         textId = R.plurals.n_chats;
@@ -128,9 +130,15 @@ class SearchListAdapter extends    RecyclerView.Adapter<SearchListAdapter.Search
       case TYPE_MESSAGES:
         textId = R.plurals.n_messages;
         count = searchResult.getMessages().length;
+        maybeLimitedTo1000 = count==1000; // a count of 1000 results may be limited, see documentation of dc_search_msgs()
         break;
     }
-    viewHolder.bind(context.getResources().getQuantityString(textId, count, count));
+
+    String title = context.getResources().getQuantityString(textId, count, count);
+    if (maybeLimitedTo1000) {
+      title = title.replace("000", "000+"); // skipping the first digit allows formattings as "1.000" or "1,000"
+    }
+    viewHolder.bind(title);
   }
 
   void updateResults(@NonNull SearchResult result) {
