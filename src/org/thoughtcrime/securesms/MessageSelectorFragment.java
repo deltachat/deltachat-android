@@ -91,4 +91,8 @@ public abstract class MessageSelectorFragment
     intent.putExtra(ConversationActivity.STARTING_POSITION_EXTRA, DcMsg.getMessagePosition(dcMsg, dcContext));
     startActivity(intent);
   }
+
+  protected void handleShare(final DcMsg dcMsg) {
+    dcContext.openForViewOrShare(getContext(), dcMsg.getId(), Intent.ACTION_SEND);
+  }
 }

@@ -189,6 +189,7 @@ public class ProfileGalleryFragment
     menu.findItem(R.id.details).setVisible(singleSelection);
     menu.findItem(R.id.show_in_chat).setVisible(singleSelection);
     menu.findItem(R.id.save).setVisible(singleSelection);
+    menu.findItem(R.id.share).setVisible(singleSelection);
   }
 
   private ProfileGalleryAdapter getListAdapter() {
@@ -228,6 +229,9 @@ public class ProfileGalleryFragment
         case R.id.delete:
           handleDeleteMessages(getListAdapter().getSelectedMedia());
           mode.finish();
+          return true;
+        case R.id.share:
+          handleShare(getSelectedMessageRecord(getListAdapter().getSelectedMedia()));
           return true;
         case R.id.show_in_chat:
           handleShowInChat(getSelectedMessageRecord(getListAdapter().getSelectedMedia()));
