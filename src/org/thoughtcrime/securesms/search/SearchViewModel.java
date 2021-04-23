@@ -114,7 +114,7 @@ class SearchViewModel extends ViewModel {
 
     startMs = System.currentTimeMillis();
     int[] messages = dcContext.searchMsgs(0, query);
-    Log.i(TAG, "⏰ searchMsgs(" + query + ": " + (System.currentTimeMillis() - startMs) + "ms");
+    Log.i(TAG, "⏰ searchMsgs(" + query + "): " + (System.currentTimeMillis() - startMs) + "ms");
 
     callback.onResult(new SearchResult(query, contacts, conversations, messages));
   }
