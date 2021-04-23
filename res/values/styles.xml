@@ -220,4 +220,26 @@
         <item name="elevation">4dp</item>
     </style>
 
+
+    <!-- INDIGO -->
+    <style name="TextSecure.IndigoActionBar"
+           parent="@style/Widget.AppCompat.ActionBar">
+        <item name="background">@color/indigo_primary</item>
+        <item name="elevation">4dp</item>
+        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+        <item name="titleTextStyle">@style/TextSecure.TitleTextStyle</item>
+        <item name="subtitleTextStyle">@style/TextSecure.SubtitleTextStyle</item>
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:textColorSecondary">@color/white</item>
+    </style>
+
+    <style name="TextSecure.IndigoActionBar.TabBar"
+        parent="@style/Widget.AppCompat.ActionBar.TabBar">
+        <item name="android:background">@color/indigo_primary</item>
+        <item name="background">@color/indigo_primary</item>
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:textColorSecondary">#BFffffff</item>
+        <item name="elevation">4dp</item>
+    </style>
+
 </resources>

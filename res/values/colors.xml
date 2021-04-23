@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
   <!-- PURPLE -->
-  <color name="purple_primary">#ff785c8d</color>
-  <color name="purple_primary_dark">#ff604a71</color>
-  <color name="purple_primary_lite">#ff785c8d</color>
-  <color name="purple_accent">#785c8d</color>
+  <color name="purple_primary">#ff7b00c8</color>
+  <color name="purple_primary_dark">#ff6300a1</color>
+  <color name="purple_primary_lite">#ff7b00c8</color>
+  <color name="purple_accent">#7b00c8</color>
   <color name="purple_outgoing_bubble">#fffff9d9</color>
-  <color name="purple_outgoing_label">#ff8754b4</color>
+  <color name="purple_outgoing_label">#ff7b00c8</color>
   <color name="purple_unreadcount">#7b00c8</color>
   <!-- ========== -->
 
@@ -48,6 +48,16 @@
   <color name="pink_outgoing_bubble">#fffff9d9</color>
   <color name="pink_outgoing_label">#ffa03779</color>
   <color name="pink_unreadcount">#ff25b7</color>
+  <!-- ========== -->
+
+  <!-- INDIGO -->
+  <color name="indigo_primary">#ff3f51b5</color>
+  <color name="indigo_primary_dark">#ff303e9f</color>
+  <color name="indigo_primary_lite">#ff3f51b5</color>
+  <color name="indigo_accent">#3f51b5</color>
+  <color name="indigo_outgoing_bubble">#fffff9d9</color>
+  <color name="indigo_outgoing_label">#ff303e9f</color>
+  <color name="indigo_unreadcount">#3c6afe</color>
   <!-- ========== -->
 
     <color name="delta_primary">#ff415e6b</color>

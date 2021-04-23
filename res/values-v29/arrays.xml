@@ -10,6 +10,7 @@
 		<item>@string/blue</item>
 		<item>@string/red</item>
 		<item>@string/pink</item>
+		<item>@string/indigo</item>
 	</string-array>
 
 	<string-array name="pref_theme_values" translatable="false" tools:ignore="InconsistentArrays">
@@ -21,6 +22,7 @@
 		<item>blue</item>
 		<item>red</item>
 		<item>pink</item>
+		<item>indigo</item>
 	</string-array>
 
 </resources>
