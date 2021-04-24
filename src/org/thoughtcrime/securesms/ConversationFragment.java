@@ -489,7 +489,13 @@ public class ConversationFragment extends MessageSelectorFragment
             Log.e(TAG, "reloadList: getContext() was null");
             return;
         }
-        int[] msgs = DcHelper.getContext(getContext()).getChatMsgs((int) chatId, 0, 0);
+
+        DcContext dcContext = DcHelper.getContext(getContext());
+
+        long startMs = System.currentTimeMillis();
+        int[] msgs = dcContext.getChatMsgs((int) chatId, 0, 0);
+        Log.i(TAG, "⏰ getChatMsgs(" + chatId + "): " + (System.currentTimeMillis() - startMs) + "ms");
+
         adapter.changeData(msgs);
 
         if (firstLoad) {
