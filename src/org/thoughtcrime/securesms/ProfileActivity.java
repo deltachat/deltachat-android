@@ -412,7 +412,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
   private void onSoundSettings() {
     Uri defaultUri = Prefs.getNotificationRingtone(this);
     Uri current;
-    if (Prefs.hasDefaultRingtone(this, chatId)) {
+    if (!Prefs.isChatRingtoneSet(this, chatId)) {
       current = Settings.System.DEFAULT_NOTIFICATION_URI;
     } else {
       current = Prefs.getChatRingtone(this, chatId);

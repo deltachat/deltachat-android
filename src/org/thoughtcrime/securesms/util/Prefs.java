@@ -226,8 +226,8 @@ public class Prefs {
     }
   }
 
-  public static boolean hasDefaultRingtone(Context context, int chatId) {
-    return getStringPreference(context, CHAT_RINGTONE+chatId, null) == null;
+  public static boolean isChatRingtoneSet(Context context, int chatId) {
+    return getStringPreference(context, CHAT_RINGTONE+chatId, null) != null;
   }
 
   public static @Nullable Uri getChatRingtone(Context context, int chatId) {

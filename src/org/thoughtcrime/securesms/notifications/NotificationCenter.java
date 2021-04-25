@@ -75,7 +75,7 @@ public class NotificationCenter {
     }
 
     private boolean requiresIndependentChannel(int chatId) {
-        return !Prefs.hasDefaultRingtone(context, chatId)
+        return Prefs.isChatRingtoneSet(context, chatId)
                 || Prefs.getChatVibrate(context, chatId) != Prefs.VibrateState.DEFAULT;
     }
 
