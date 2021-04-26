@@ -54,7 +54,7 @@ public class DynamicTheme {
   private @StyleRes int getSelectedTheme(Activity activity) {
     String theme = Prefs.getTheme(activity);
     if (isDarkTheme(activity)) {
-      return getDarkThemeStyle();
+      return getDarkThemeStyle(theme);
     } else {
       return getLightThemeStyle(theme);
     }
@@ -70,7 +70,13 @@ public class DynamicTheme {
     return R.style.TextSecure_LightTheme;
   }
 
-  protected @StyleRes int getDarkThemeStyle() {
+  protected @StyleRes int getDarkThemeStyle(@NonNull String theme) {
+    if (theme.equals(PURPLE)) return R.style.TextSecure_PurpleDarkTheme;
+    if (theme.equals(GREEN)) return R.style.TextSecure_GreenDarkTheme;
+    if (theme.equals(BLUE)) return R.style.TextSecure_BlueDarkTheme;
+    if (theme.equals(RED)) return R.style.TextSecure_RedDarkTheme;
+    if (theme.equals(PINK)) return R.style.TextSecure_PinkDarkTheme;
+    if (theme.equals(INDIGO)) return R.style.TextSecure_IndigoDarkTheme;
     return R.style.TextSecure_DarkTheme;
   }
 
@@ -84,7 +90,7 @@ public class DynamicTheme {
   public static boolean isDarkTheme(@NonNull Context context) {
     String theme = Prefs.getTheme(context);
 
-    if (theme.equals(SYSTEM) && systemThemeAvailable()) {
+    if (!theme.equals(DARK) && !theme.equals(LIGHT) && systemThemeAvailable()) {
       return isSystemInDarkTheme(context);
     } else {
       return theme.equals(DARK);
