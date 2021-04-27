@@ -171,7 +171,7 @@
                 android:minHeight="1dp"
                 android:minWidth="0dp"
                 android:background="@android:color/transparent"
-                android:textColor="@color/delta_accent"
+                android:textColor="@color/delta_accent_darker"
                 android:text="@string/show_full_message"
                 android:textAllCaps="false"/>
 
