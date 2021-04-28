@@ -119,10 +119,10 @@
                 android:layout="@layout/conversation_item_received_thumbnail" />
 
             <ViewStub
-		android:id="@+id/sticker_view_stub"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout="@layout/conversation_item_received_sticker" />
+                android:id="@+id/sticker_view_stub"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout="@layout/conversation_item_received_sticker" />
 
             <ViewStub
                 android:id="@+id/audio_view_stub"
@@ -160,17 +160,18 @@
             <Button
                 android:id="@+id/show_full_message"
                 android:visibility="gone"
+                style="@style/Signal.Text.Body"
                 android:layout_width="wrap_content"
-                android:layout_height="28dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="6dp"
-                android:layout_marginBottom="10dp"
-                android:paddingLeft="12dp"
-                android:paddingRight="12dp"
-                android:background="@drawable/conversation_item_update_background"
-                android:minWidth="20dp"
+                android:layout_marginLeft="@dimen/message_bubble_horizontal_padding"
+                android:layout_marginRight="@dimen/message_bubble_horizontal_padding"
+                android:paddingTop="@dimen/message_bubble_showmore_padding"
+                android:paddingBottom="@dimen/message_bubble_showmore_padding"
+                android:minHeight="1dp"
+                android:minWidth="0dp"
+                android:background="@android:color/transparent"
+                android:textColor="@color/delta_accent_darker"
                 android:text="@string/show_full_message"
                 android:textAllCaps="false"/>
 
@@ -190,17 +191,22 @@
                 app:footer_text_color="?conversation_item_incoming_text_secondary_color"/>
 
             <org.thoughtcrime.securesms.components.ConversationItemFooter
-		android:id="@+id/conversation_item_sticker_footer"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_marginLeft="@dimen/message_bubble_horizontal_padding"
-		android:layout_marginRight="@dimen/message_bubble_horizontal_padding"
-		android:layout_marginBottom="@dimen/message_bubble_bottom_padding"
-		android:layout_gravity="end"
-		android:gravity="end"
-		android:clipChildren="false"
-		android:clipToPadding="false"
-		app:footer_text_color="@color/gray50"/>
+                android:id="@+id/conversation_item_sticker_footer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/message_bubble_horizontal_padding"
+                android:layout_marginBottom="@dimen/message_bubble_bottom_padding"
+                android:layout_marginTop="3dp"
+                android:paddingTop="@dimen/transparent_footer_padding"
+                android:paddingBottom="@dimen/transparent_footer_padding"
+                android:paddingLeft="@dimen/transparent_footer_padding"
+                android:paddingRight="@dimen/transparent_footer_padding"
+                android:layout_gravity="end"
+                android:gravity="end"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:background="@drawable/conversation_item_update_background"
+                app:footer_text_color="@color/core_dark_05"/>
 
         </LinearLayout>
 
