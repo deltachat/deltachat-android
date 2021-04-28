@@ -53,7 +53,7 @@ public class LongClickCopySpan extends ClickableSpan {
       } catch (Exception e) {
         e.printStackTrace();
       }
-    } else if (url.startsWith(PREFIX_MAILTO)) {
+    } else if (url.startsWith(PREFIX_MAILTO) && !url.contains("?")) {
       try {
         String addr = prepareUrl(url);
         Activity activity = (Activity) widget.getContext();
@@ -133,7 +133,7 @@ public class LongClickCopySpan extends ClickableSpan {
 
   private String prepareUrl(String url) {
     if (url.startsWith(PREFIX_MAILTO)) {
-      return url.substring(PREFIX_MAILTO.length());
+      return url.substring(PREFIX_MAILTO.length()).split("\\?")[0];
     } else if (url.startsWith(PREFIX_TEL)) {
       return url.substring(PREFIX_TEL.length());
     }
