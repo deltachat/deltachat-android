@@ -54,6 +54,7 @@ import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcMsg;
 import com.google.android.material.snackbar.Snackbar;
 
+import static org.thoughtcrime.securesms.ConversationActivity.CHAT_ID_EXTRA;
 import org.thoughtcrime.securesms.ConversationListAdapter.ItemClickListener;
 import org.thoughtcrime.securesms.components.recyclerview.DeleteItemAnimator;
 import org.thoughtcrime.securesms.components.registration.PulsingFloatingActionButton;
@@ -431,18 +432,24 @@ public class ConversationListFragment extends Fragment
       if (chatId == DcChat.DC_CHAT_ID_DEADDROP) {
         DcContext dcContext = DcHelper.getContext(getActivity());
         final int msgId = item.getMsgId();
-        DeaddropQuestionHelper helper = new DeaddropQuestionHelper(getContext(), dcContext.getMsg(msgId));
-        new AlertDialog.Builder(getActivity())
-                .setPositiveButton(android.R.string.ok, (dialog, which) -> {
-                  int belongingChatId = dcContext.decideOnContactRequest(msgId, DcContext.DC_DECISION_START_CHAT);
-                  if (belongingChatId != 0) {
-                    handleCreateConversation(belongingChatId);
-                  }
-                })
-                .setNegativeButton(R.string.not_now, (dialog, which) -> dcContext.decideOnContactRequest(msgId, DcContext.DC_DECISION_NOT_NOW))
-                .setNeutralButton(helper.answerBlock, (dialog, which) -> dcContext.decideOnContactRequest(msgId, DcContext.DC_DECISION_BLOCK))
-                .setMessage(helper.question)
-                .show();
+        if (DcHelper.getInt(getActivity(), "show_emails") == DcContext.DC_SHOW_EMAILS_ALL) {
+          Intent intent = new Intent(getActivity(), ConversationActivity.class);
+          intent.putExtra(CHAT_ID_EXTRA, DcChat.DC_CHAT_ID_DEADDROP);
+          startActivity(intent);
+        } else {
+          DeaddropQuestionHelper helper = new DeaddropQuestionHelper(getContext(), dcContext.getMsg(msgId));
+          new AlertDialog.Builder(getActivity())
+                  .setPositiveButton(android.R.string.ok, (dialog, which) -> {
+                    int belongingChatId = dcContext.decideOnContactRequest(msgId, DcContext.DC_DECISION_START_CHAT);
+                    if (belongingChatId != 0) {
+                      handleCreateConversation(belongingChatId);
+                    }
+                  })
+                  .setNegativeButton(R.string.not_now, (dialog, which) -> dcContext.decideOnContactRequest(msgId, DcContext.DC_DECISION_NOT_NOW))
+                  .setNeutralButton(helper.answerBlock, (dialog, which) -> dcContext.decideOnContactRequest(msgId, DcContext.DC_DECISION_BLOCK))
+                  .setMessage(helper.question)
+                  .show();
+        }
         return;
       }
 
