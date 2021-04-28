@@ -1,10 +1,25 @@
 # Delta Chat Android Changelog
 
-## v1.19.1 Preview Release
-#2021-04
+## v1.19.2 Preview Release
+2021-04
 
-* show answers to generic support-addresses as info@company.com in context
-* allow different sender for answers to support-addresses as info@company.com
+* opening the contact request chat mark all contact requests as noticed
+  and removes the sticky hint from the chatlist
+* if "Show classic mails" is enabled,
+  the contact request hint in the corresponding chat
+* speedup global search
+* show system message status while sending and on errors
+* improve quote style when replying with a sticker
+* fix clicks on system messages
+* fix sticker scaling
+* fix: disable "reply privately" in contact requests chat
+
+
+## v1.19.1 Preview Release
+2021-04
+
+* show answers to generic support-addresses as info@example.com in context
+* allow different sender for answers to support-addresses as info@example.com
 * add APNG and animated webp support
 * allow videochat-invites for groups
 * let stickers handle taps
@@ -19,7 +34,7 @@
 
 
 ## v1.17.0 Preview Release
-#2021-04
+2021-04
 
 * new mailinglist and better bot support
 * add option to view original-/html-mails
