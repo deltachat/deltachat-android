@@ -195,13 +195,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/message_bubble_horizontal_padding"
-                android:layout_marginRight="@dimen/message_bubble_horizontal_padding"
                 android:layout_marginBottom="@dimen/message_bubble_bottom_padding"
+                android:layout_marginTop="3dp"
+                android:paddingTop="@dimen/transparent_footer_padding"
+                android:paddingBottom="@dimen/transparent_footer_padding"
+                android:paddingLeft="@dimen/transparent_footer_padding"
+                android:paddingRight="@dimen/transparent_footer_padding"
                 android:layout_gravity="end"
                 android:gravity="end"
                 android:clipChildren="false"
                 android:clipToPadding="false"
-                app:footer_text_color="@color/gray50"/>
+                android:background="@drawable/conversation_item_update_background"
+                app:footer_text_color="@color/core_dark_05"/>
 
         </LinearLayout>
 

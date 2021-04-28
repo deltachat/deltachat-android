@@ -549,6 +549,8 @@ public class ConversationItem extends BaseConversationItem
       quoteView.dismiss();
       if (mediaThumbnailStub.resolved()) {
         ViewUtil.setTopMargin(mediaThumbnailStub.get(), 0);
+      } else if (stickerStub.resolved()) {
+        ViewUtil.setTopMargin(stickerStub.get(), 0);
       }
       return;
     }
@@ -571,7 +573,8 @@ public class ConversationItem extends BaseConversationItem
             msg,
             author,
             quoteTxt,
-            slideDeck);
+            slideDeck,
+            current.getType() == DcMsg.DC_MSG_STICKER);
 
     quoteView.setVisibility(View.VISIBLE);
     quoteView.getLayoutParams().width = ViewGroup.LayoutParams.WRAP_CONTENT;
@@ -588,6 +591,8 @@ public class ConversationItem extends BaseConversationItem
 
     if (mediaThumbnailStub.resolved()) {
       ViewUtil.setTopMargin(mediaThumbnailStub.get(), readDimen(R.dimen.message_bubble_top_padding));
+    } else if (stickerStub.resolved()) {
+      ViewUtil.setTopMargin(stickerStub.get(), readDimen(R.dimen.message_bubble_top_padding));
     }
   }
 
