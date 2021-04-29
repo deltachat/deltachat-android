@@ -703,6 +703,13 @@
 
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Draw anywhere to blur</string>
+    <string name="ImageEditorHud_add_text">Add text</string>
+    <string name="ImageEditorHud_blur">Blur</string>
+    <string name="ImageEditorHud_brush_marker">Marker brush</string>
+    <string name="ImageEditorHud_brush_highlight">Highlight brush</string>
+    <string name="ImageEditorHud_crop">Crop</string>
+    <string name="ImageEditorHud_flip">Flip</string>
+    <string name="ImageEditorHud_rotate">Rotate</string>
 
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Encrypted message</string>
