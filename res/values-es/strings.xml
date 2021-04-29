@@ -4,6 +4,7 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancelar</string>
+    <string name="clear_search">Borrar búsqueda</string>
     <string name="yes">Sí</string>
     <string name="no">No</string>
     <string name="select">Seleccionar</string>

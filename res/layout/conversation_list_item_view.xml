@@ -20,7 +20,7 @@
         android:layout_centerVertical="true"
         android:cropToPadding="true"
         tools:src="@drawable/ic_contact_picture"
-        android:contentDescription="@string/pref_profile_photo"
+        android:importantForAccessibility="no"
         android:layout_marginLeft="12dp"
         android:layout_marginRight="12dp" />
 
