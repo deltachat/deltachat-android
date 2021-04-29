@@ -95,7 +95,7 @@ public class TransportOptions {
     List<TransportOption> results = new LinkedList<>();
 
     results.add(new TransportOption(Type.NORMAL_MAIL, R.drawable.ic_send_sms_white_24dp,
-                                    context.getString(R.string.app_name),
+                                    context.getString(R.string.menu_send),
                                     context.getString(R.string.chat_input_placeholder)));
 
     return results;
