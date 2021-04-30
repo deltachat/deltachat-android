@@ -107,8 +107,12 @@ public abstract class BaseConversationItem extends LinearLayout
       } else if (!shouldInterceptClicks(messageRecord) && parent != null) {
         parent.onClick(v);
       } else if (messageRecord.isFailed()) {
+        View view = View.inflate(context, R.layout.message_details_view, null);
+        TextView detailsText = view.findViewById(R.id.details_text);
+        detailsText.setText(messageRecord.getError());
+
         AlertDialog d = new AlertDialog.Builder(context)
-                .setMessage(messageRecord.getError())
+                .setView(view)
                 .setTitle(R.string.error)
                 .setPositiveButton(R.string.ok, null)
                 .create();

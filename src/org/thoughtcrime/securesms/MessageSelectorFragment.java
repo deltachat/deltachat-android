@@ -6,6 +6,8 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.text.util.Linkify;
 import android.view.Menu;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.view.ActionMode;
@@ -39,9 +41,12 @@ public abstract class MessageSelectorFragment
   }
 
   protected void handleDisplayDetails(DcMsg dcMsg) {
-    String infoStr = dcContext.getMsgInfo(dcMsg.getId());
+    View view = View.inflate(getActivity(), R.layout.message_details_view, null);
+    TextView detailsText = view.findViewById(R.id.details_text);
+    detailsText.setText(dcContext.getMsgInfo(dcMsg.getId()));
+
     AlertDialog d = new AlertDialog.Builder(getActivity())
-            .setMessage(infoStr)
+            .setView(view)
             .setPositiveButton(android.R.string.ok, null)
             .create();
     d.show();
