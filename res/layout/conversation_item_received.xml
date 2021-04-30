@@ -84,7 +84,7 @@
                 android:visibility="gone"
                 tools:visibility="visible">
 
-                <TextView
+                <org.thoughtcrime.securesms.components.emoji.EmojiTextView
                     android:id="@+id/group_message_sender"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

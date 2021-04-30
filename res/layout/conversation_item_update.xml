@@ -23,7 +23,7 @@
         android:orientation="vertical">
 
         <!--Links should be clickable, see https://github.com/deltachat/deltachat-android/issues/1546-->
-        <TextView
+        <org.thoughtcrime.securesms.components.emoji.EmojiTextView
             android:id="@+id/conversation_update_body"
             style="@style/Delta.Text.UpdateHeader"
             android:layout_width="wrap_content"
