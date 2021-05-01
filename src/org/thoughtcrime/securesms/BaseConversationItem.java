@@ -2,7 +2,6 @@ package org.thoughtcrime.securesms;
 
 import android.content.Context;
 import android.content.Intent;
-import android.text.util.Linkify;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -117,12 +116,6 @@ public abstract class BaseConversationItem extends LinearLayout
                 .setPositiveButton(R.string.ok, null)
                 .create();
         d.show();
-        try {
-          //noinspection ConstantConditions
-          Linkify.addLinks((TextView) d.findViewById(android.R.id.message), Linkify.WEB_URLS | Linkify.EMAIL_ADDRESSES);
-        } catch(NullPointerException e) {
-          e.printStackTrace();
-        }
       }
     }
   }

@@ -4,7 +4,6 @@ import android.Manifest;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.text.util.Linkify;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
@@ -50,12 +49,6 @@ public abstract class MessageSelectorFragment
             .setPositiveButton(android.R.string.ok, null)
             .create();
     d.show();
-    try {
-      //noinspection ConstantConditions
-      Linkify.addLinks((TextView) d.findViewById(android.R.id.message), Linkify.WEB_URLS);
-    } catch(NullPointerException e) {
-      e.printStackTrace();
-    }
   }
 
   protected void handleDeleteMessages(final Set<DcMsg> messageRecords) {
