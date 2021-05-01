@@ -119,9 +119,9 @@
     <string name="contact">Contacto</string>
     <string name="verified_contact">Contacto verificado</string>
     <string name="camera">Cámara</string>
-    <string name="camera_capture_description">Capturar</string>
-    <string name="camera_change_description">Cambiar cámara</string>
-    <string name="camera_fullscreen_toogle_description">Alternar modo pantalla completa</string>
+    <string name="capture">Capturar</string>
+    <string name="switch_camera">Cambiar cámara</string>
+    <string name="toggle_fullscreen">Alternar modo pantalla completa</string>
     <string name="location">Ubicación</string>
     <string name="gallery">Galería</string>
     <string name="images_and_videos">Imágenes y videos</string>
