@@ -123,7 +123,7 @@
     <string name="camera">Camera</string>
     <string name="camera_capture_description">Capture</string>
     <string name="camera_change_description">Change camera</string>
-    <string name="camera_fullscreen_toogle_description">Alternate full screen mode</string>
+    <string name="camera_fullscreen_toogle_description">Toggle full screen mode</string>
     <string name="location">Location</string>
     <string name="gallery">Gallery</string>
     <string name="images_and_videos">Images and videos</string>
