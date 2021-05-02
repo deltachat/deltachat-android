@@ -358,6 +358,9 @@
     <string name="messaging_disabled_deaddrop">Клацніть на повідомлення, щоб прийняти або відхилити запит на контакт</string>
     <string name="cannot_display_unsuported_file_type">Неможливо відобразити цей тип файлів: %s</string>
     <string name="attachment_failed_to_load">Не вдалося завантажити вкладення</string>
+    <!-- For recording Voice messages: Description for the "Lock" button allowing to lift the thumb from the record button while recording continues -->
+    <string name="lock_recording">Заблокувати запис</string>
+
     <!-- mailing lists -->
     <string name="mailing_list">Список адресатів</string>
     <string name="ask_show_mailing_list">Показати список адресатів \"%1$s\"?</string>

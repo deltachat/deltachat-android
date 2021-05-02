@@ -244,7 +244,7 @@
     </plurals>
     <string name="file_saved_to">File salvato su \"%1$s\".</string>
 
-    <string name="videochat">Chat video</string>
+    <string name="videochat">Video chat</string>
     <string name="videochat_invite_user_to_videochat">Invito %1$s a una chat video?</string>
     <string name="videochat_invite_user_hint">Questo richiede un\'app compatibile o un browser compatibile da entrambe le parti.</string>
     <string name="videochat_contact_invited_hint">%1$s ti ha invitato a una chat video.</string>

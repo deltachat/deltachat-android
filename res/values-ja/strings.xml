@@ -12,10 +12,14 @@
     <string name="def">標準</string>
     <string name="default_value">初期値（%1$s）</string>
     <string name="default_value_as_above">初期値（同上）</string>
+    <string name="custom">カスタム</string>
     <string name="none">無し</string>
     <string name="automatic">自動</string>
+    <string name="strict">厳重</string>
     <string name="open">開く</string>
     <string name="open_attachment">添付ファイルを開く</string>
+    <string name="join">参加</string>
+    <string name="rejoin">参加</string>
     <string name="delete">削除</string>
     <string name="info">情報</string>
     <string name="update">アップデート</string>
@@ -28,12 +32,17 @@
     <string name="unarchive">元に戻す</string>
     <string name="mute">ミュート</string>
     <string name="ephemeral_messages">消えるメッセージ</string>
+    <string name="ephemeral_messages_hint">この設定は、Delta Chatの利用する参加者に適用されます。ただし、参加者はメッセージをコピーしたり、保存したり、転送したり、他のアプリを利用したりすることができます。</string>
     <string name="save">保存</string>
     <string name="chat">チャット</string>
     <string name="media">メディア</string>
     <string name="profile">プロファイル</string>
     <string name="main_menu">メインメニュー</string>
     <string name="start_chat">チャットを開始する</string>
+    <string name="show_full_message">メッセージ全体を表示</string>
+    <string name="load_remote_content">リモート画像を読み込む</string>
+    <!-- possible answers to the question are: Never, Always, Once -->
+    <string name="load_remote_content_ask">リモート画像で追跡ができる。\n\nこの設定はフォントや他のコンテツを読み込むことも許可する。無効にしても埋め込まれた画像やキャッシュされた画像を表示されます。\n\nリモート画像を読み込む？</string>
     <string name="always">常に</string>
     <string name="once">一回のみ</string>
     <string name="show_password">パスワードを表示する</string>
@@ -43,18 +52,24 @@
     <string name="one_moment">お待ち下さい…</string>
     <string name="done">完了</string>
     <string name="undo">元に戻す</string>
+    <string name="offline">オフライン</string>
     <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
     <string name="next">次へ</string>
     <string name="error">エラー</string>
     <string name="error_x">エラー：%1$s</string>
     <string name="error_no_network">通信不能</string>
+    <string name="no_app_to_handle_data">この種類のファイルを開くためのアプリが見つかりません。</string>
     <string name="no_browser_installed">ブラウザーが見つかりません</string>
     <string name="file_not_found">%1$sを見付けられません</string>
     <string name="copied_to_clipboard">クリップボードにコピーしました</string>
     <string name="contacts_headline">連絡先</string>
     <string name="email_address">メールアドレス</string>
+    <string name="bad_email_address">メールアドレスが不正です。</string>
     <string name="password">パスワード</string>
+    <string name="existing_password">既存のパスワード</string>
     <string name="now">現在</string>
+    <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
+    <string name="danger">危険</string>
     <string name="today">今日</string>
     <string name="yesterday">昨日</string>
     <string name="this_week">今週</string>
@@ -93,14 +108,15 @@
     <string name="voice_message">音声メッセージ</string>
     <string name="forwarded_message">転送されたメッセージ</string>
     <!-- %1$s will be replaced by the name or the email-address of the person who has forwarded the message -->
-    <string name="forwarded_by">%1$sは転送しました</string>
+    <string name="forwarded_by">%1$sが転送しました</string>
     <string name="video">動画</string>
     <string name="documents">文章</string>
     <string name="contact">連絡先</string>
-    <string name="verified_contact">確認した連絡先</string>
+    <string name="verified_contact">確認済みの連絡先</string>
     <string name="camera">カメラ</string>
     <string name="location">場所</string>
     <string name="gallery">画像</string>
+    <string name="images_and_videos">画像・映像</string>
     <string name="file">ファイル</string>
     <string name="files">ファイル</string>
     <string name="unknown">不明</string>
@@ -132,7 +148,9 @@
     <string name="menu_new_contact">新規連絡先</string>
     <string name="menu_new_chat">新規チャット</string>
     <string name="menu_new_group">新規グループ</string>
+    <string name="menu_new_verified_group">新しい検証済みグループ</string>
     <string name="menu_send">送信</string>
+    <string name="menu_toggle_keyboard">絵文字キーボードを呼び出す</string>
     <string name="menu_edit_group">グループを編集</string>
     <string name="menu_group_name_and_image">グループ名と画像</string>
     <string name="menu_show_map">地図を見る</string>
@@ -150,14 +168,18 @@
     <string name="menu_delete_location">この位置情報を削除しますか</string>
     <string name="menu_message_details">メッセージの詳細</string>
     <string name="menu_copy_to_clipboard">クリップボードにコピー</string>
+    <string name="menu_copy_selection_to_clipboard">コピー</string>
     <string name="menu_copy_link_to_clipboard">リンクをコピー</string>
     <string name="paste_from_clipboard">クリップボードのデータを貼り付ける</string>
     <string name="menu_forward">メッセージを転送</string>
     <string name="menu_resend">メッセージを再送信</string>
     <string name="menu_reply">メッセージに返答</string>
     <string name="menu_mute">通知しない</string>
+    <string name="menu_unmute">ミュート解除</string>
     <string name="menu_export_attachment">添付ファイルのエクスポート</string>
     <string name="menu_all_media">全ての写真･動画･音楽</string>
+    <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
+    <string name="show_in_chat">チャットに表示</string>
     <string name="menu_share">共有</string>
     <!-- this is the action "to block sth." usually a mailing list or a contact. this is NOT "a large solid piece of hard material" :) -->
     <string name="block">ブロック</string>
@@ -169,14 +191,23 @@
     <string name="menu_scroll_to_top">一番上までスクロールする</string>
     <string name="menu_help">ヘルプ</string>
     <string name="menu_select_all">全選択</string>
+    <string name="select_more">さらに選択</string>
+    <string name="menu_expand">広げる</string>
     <string name="menu_edit_name">名前の編集</string>
     <string name="menu_settings">設定</string>
     <string name="menu_advanced">追加設定</string>
     <string name="menu_deaddrop">連絡先追加</string>
+    <string name="menu_deaddrop_subtitle">メッセージを押してチャットを開始します</string>
     <string name="menu_view_profile">詳細を確認</string>
     <string name="menu_zoom_in">拡大</string>
     <string name="menu_zoom_out">縮小</string>
+    <string name="menu_save_log">ログ保存</string>
     <string name="title_share_location">現在地を全員に公開する</string>
+    <string name="device_talk">デバイスのメッセージ</string>
+    <string name="device_talk_subtitle">ローカルで生成されたメッセージ</string>
+    <string name="device_talk_explain">このチャットのメッセージはアプリで生成されます。アプリ開発者はアップデートや問題点をお知らせするために使用しています。</string>
+    <string name="device_talk_welcome_message">Delta Chatへようこそ。Delta Chatは人気のメッセンジャーアプリに似ていますが、中央集権・トラッキング・個人情報の販売が実施されていません。具体的端正なチャットインターフェースを実装したメールアプリです。
+メールアドレスがあれば誰とでもDelta Chatを使えます。受信者がDelta Chatをインストールしなくてもメッセージが届きますが、お気軽に https://get.delta.chat を教えてください。</string>
     <string name="edit_contact">連絡先を編集</string>
     <!-- Translators: "Pin" here is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
     <string name="pin_chat">チャットをピン留め</string>
@@ -186,6 +217,9 @@
     <string name="pin">ピン留め</string>
     <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
     <string name="unpin">ピン留めを解除</string>
+    <string name="ConversationFragment_quoted_message_not_found">メッセージが見つかりません</string>
+    <string name="reply_privately">個別に返信する</string>
+
     <string name="mute_for_one_hour">1時間停止する</string>
     <string name="mute_for_two_hours">2時間停止する</string>
     <string name="mute_for_one_day">24時間停止する</string>
@@ -199,40 +233,108 @@
     <string name="share_location_for_two_hours">2時間</string>
     <string name="share_location_for_six_hours">6時間</string>
 
+    <plurals name="ask_send_following_n_files_to">
+        <item quantity="other">%sさんに%dつのファイルを送る？</item>
+    </plurals>
     <string name="file_saved_to">%1$sに保存しました。</string>
 
     <string name="videochat">ビデオ通話</string>
     <string name="videochat_invite_user_to_videochat">%1$sをビデオ通話に招待しますか？</string>
+    <string name="videochat_invite_user_hint">互換性のあるブラウザ又はアプリが必要です。</string>
     <string name="videochat_contact_invited_hint">%1$sをビデオ通話に招待しました。</string>
+    <string name="videochat_you_invited_hint">ビデオ通話に招待しました。</string>
+    <string name="videochat_will_open_in_your_browser">ビデオ通話はブラウザで開きます。</string>
     <string name="videochat_tap_to_join">タップして参加</string>
+    <string name="videochat_tap_to_open">タップして開く</string>
     <string name="videochat_instance">ビデオ通話サーバー</string>
     <string name="videochat_instance_placeholder">選んだビデオ通話サーバー</string>
+    <string name="videochat_instance_explain">ビデオ通話サーバーが入力されたらチャットでビデオ通話を開始することができます。互換性のあるブラウザ又はアプリが必要です。\n\n例えば　https://meet.jit.si/$ROOM 或いは basicwebrtc:https://your-server</string>
+    <string name="videochat_instance_from_qr">%1$sで他人をビデオ通話に招待しますか？設定次第に各チャットからビデオ通話を開始することができます。以前の設定も置き換えます。</string>
     <string name="videochat_invitation">ビデオ通話に招待</string>
     <string name="videochat_invitation_body">ビデオ通話に招待されて、%1$sで参加</string>
 
     <!-- get confirmations -->
     <string name="ask_leave_group">本当に退室しますか</string>
+    <plurals name="ask_delete_chat">
+        <item quantity="other">%d個のチャットを削除しますか？チャットリストには表示されなくなりますが、メッセージはサーバーに残ります。</item>
+    </plurals>
+    <plurals name="ask_delete_messages">
+        <item quantity="other">こことサーバー上の%dつのメッセージを削除しますか？</item>
+    </plurals>
     <string name="ask_forward">%1$sにメッセージを転送しますか？</string>
     <string name="ask_forward_multiple">%1$dチャットにメッセージを転送しますか？</string>
+    <string name="ask_export_attachment">添付ファイルをエクスポートしますか？添付ファイルをエクスポートすると、他のアプリからもアクセスできるようになります。\n\nよろしいですか？</string>
     <string name="ask_block_contact">この連絡先を拒否しますか</string>
     <string name="ask_unblock_contact">この連絡先の拒否設定を解除しますか</string>
+    <string name="ask_delete_contacts">連絡先を削除しますか？\n\nチャット中の連絡先やシステムのアドレス帳の連絡先は削除できません。</string>
+    <string name="ask_delete_contact">%1$s件の連絡先を削除しますか？\n\nチャット中の連絡先やシステムのアドレス帳の連絡先は削除できません。</string>
+    <string name="cannot_delete_contacts_in_use">チャット中の連絡先は削除できません。</string>
     <string name="ask_start_chat_with">%1$sとチャットしますか</string>
     <string name="ask_delete_value">%sを削除しますか？</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">%1$sをグループから排除しますか</string>
+    <string name="open_url_confirmation">このリンクを開きますか？</string>
+
+
     <!-- contact list -->
     <string name="contacts_title">連絡先一覧</string>
     <string name="contacts_enter_name_or_email">名前かメールアドレスを入力</string>
+    <string name="contacts_type_email_above">上にメールアドレスを入力してください。</string>
     <string name="contacts_empty_hint">連絡先無し</string>
 
 
+    <!-- chatlist and chat view -->
+    <plurals name="chat_archived">
+        <item quantity="other">%d個のアーカイブチャット</item>
+    </plurals>
+    <plurals name="chat_unarchived">
+        <item quantity="other">%d個のチャットを取り戻しました</item>
+    </plurals>
     <string name="chat_archived_chats_title">アーカイブしたチャット</string>
+    <string name="chat_please_enter_message">メッセージを入力してください。</string>
+    <string name="chat_camera_unavailable">カメラは利用できません。</string>
+    <string name="chat_unable_to_record_audio">録音できません。</string>
+    <plurals name="chat_n_new_messages">
+        <item quantity="other">新着メッセージが%d件です</item>
+    </plurals>
+    <string name="chat_no_messages_hint">%1$sにメッセージを送ります\n\n･%2$sがDelta Chatを使わなくても構いません\n\n･最初のメッセージの配信は時間がかかり、暗号化されていない場合もあります。</string>
+    <string name="chat_new_group_hint">最初のメッセージを送ってから他人が返信できるようになります。\n\n･Delta Chatを使わなくても構いません\n\n･最初のメッセージの配信は時間がかかる場合もあります。</string>
     <string name="chat_record_slide_to_cancel">スライドしてキャンセル</string>
+    <string name="chat_record_explain">長押しして録音して、離すと送ります。</string>
+    <string name="chat_no_chats_yet_title">受信箱が空です。\n＋でチャットを開始します。</string>
     <string name="chat_no_chats_yet_hint">あなたはDelta Chat利用者や普通のメールアドレスとチャットを出来ます｡</string>
+    <string name="chat_all_archived">すべてのチャットがアーカイブされました。\n＋でチャットを開始します。</string>
     <string name="chat_share_with_title">共有</string>
     <string name="chat_input_placeholder">メッセージ</string>
     <string name="chat_archived_label">アーカイブ済み</string>
     <string name="chat_no_messages">メッセージ無し</string>
+    <string name="chat_self_talk_subtitle">自分に送ったメッセージ</string>
+    <string name="saved_messages">保存したメッセージ</string>
+    <string name="saved_messages_explain">ここにメッセージを転送しておけば、簡単にアクセスできます。メモやボイスメモも保存できます。メディアを添付して保存します。</string>
+    <!-- this "Saved" should match the "Saved" from "Saved messages" -->
+    <string name="saved">保存しました</string>
+    <string name="chat_contact_request">連絡先リクエスト</string>
+    <string name="chat_no_contact_requests">連絡先リクエストがありません。\n\nすべてのメールをここに表示する場合は、アプリの決定を変化してください。</string>
+    <string name="retry_send">メッセージの配信を再試行します</string>
+    <string name="send_failed">メッセージを送信できませんでした</string>
+    <!-- reasons for a disabled message composer -->
+    <string name="messaging_disabled_not_in_group">このグループに参加していないので書き込めません。参加するには、他のメンバーに知らせてください。</string>
+    <string name="messaging_disabled_device_chat">このチャットにはローカルで生成されたメッセージがありますので、メッセージを書き込めません。</string>
+    <string name="messaging_disabled_deaddrop">メッセージを押して連絡先リクエストを承認・拒否します</string>
+    <string name="cannot_display_unsuported_file_type">%s形式のファイルは表示できません</string>
+    <string name="attachment_failed_to_load">添付ファイルの読み込みに失敗しました</string>
+    <!-- For recording Voice messages: Description for the "Lock" button allowing to lift the thumb from the record button while recording continues -->
+    <string name="lock_recording">ずっと録音</string>
+
+    <!-- mailing lists -->
+    <string name="mailing_list">メーリングリスト</string>
+    <string name="ask_show_mailing_list">%1$sのメーリングリストを表示しますか？</string>
+
+
+    <string name="show_location_traces">トレースを表示する</string>
+    <string name="add_poi">指定位置を送る</string>
+
+
     <!-- search -->
     <string name="search">検索</string>
     <string name="search_explain">チャット･メッセージ･連絡先を検索</string>
@@ -241,11 +343,16 @@
 
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">グループ名</string>
+    <string name="group_avatar">グループ画像</string>
+    <string name="remove_group_image">アイコン画像の削除</string>
+    <string name="change_group_image">グループ画像の編集</string>
     <string name="group_create_button">グループ作成</string>
     <string name="group_please_enter_group_name">グループ名を入力して下さい</string>
     <string name="group_add_members">メンバーを追加</string>
     <string name="group_hello_draft">只今､グループ｢%1$s｣を作成しました｡ご利用下さい｡</string>
+    <string name="group_self_not_in_group">グループのメンバーしかが実行されないアクションです。</string>
     <string name="profile_encryption">暗号化</string>
+    <string name="profile_shared_chats">共有チャット</string>
     <string name="tab_contact">連絡先</string>
     <string name="tab_group">グループ</string>
     <string name="tab_members">メンバー</string>
@@ -253,9 +360,17 @@
     <string name="tab_docs">文章</string>
     <string name="tab_links">リンク</string>
     <string name="tab_map">地図</string>
+    <string name="tab_gallery_empty_hint">このチャットで共有された画像や映像はここに表示されます。</string>
+    <string name="tab_docs_empty_hint">このチャットで共有されたドキュメントや音楽などがここに表示されます。</string>
     <string name="media_preview">メディアのプレビュー</string>
+    <string name="send_message">送る</string>
+
+
+    <!-- welcome and login -->
+    <string name="welcome_intro1_message">世界で最も大衆的なメッセンジャーです。自由に使えて独立している。</string>
     <string name="login_title">ログイン</string>
     <string name="login_header">自分のメールサーバーにログインする</string>
+    <string name="login_explain">既存のメールアカウントにログインする</string>
     <string name="login_subheader">主なメールサーバーは自動で設定されます｡一般にIMAPはサーバー側で有効に設定する必要が有ります｡サーバー提供者や詳しい人に確認しましょう｡</string>
     <string name="login_no_servers_hint">Delta Chatには専用サーバーが有りません｡つまりあなたのデータ･個人情報はこの端末内に保存されています｡</string>
     <string name="login_inbox">受信</string>
@@ -269,19 +384,55 @@
     <string name="login_smtp_server">SMTPサーバー</string>
     <string name="login_smtp_port">SMTPポート</string>
     <string name="login_smtp_security">SMTP暗号方式</string>
+    <string name="login_auth_method">認証方法</string>
+    <!-- Translators: %1$s will be replaced by an email address -->
+    <string name="login_oauth2_checking_addr">%1$sが確認中</string>
+    <string name="login_info_oauth2_title">簡単セットアップを使用しましょうか？</string>
+    <string name="login_info_oauth2_text">入力されたメールアドレスは、簡易セットアップ（OAuth 2.0）に対応しています。次に「メールでチャット」を許可してください。Delta Chatにはサーバーがなく、テーダはデバイスにあります。</string>
+    <string name="login_certificate_checks">有効な証明書です</string>
+    <string name="login_error_mail">有効なメールアドレスを入力してください</string>
+    <string name="login_error_server">有効なサーバー或いはIPアドレスを入力してください</string>
+    <string name="login_error_port">有効なポート（１〜６５５３５）を入力してください</string>
+    <string name="login_error_required_fields">有効なメールアドレスとパスワードを入力してください</string>
     <string name="import_backup_title">バックアップをインポート</string>
+    <string name="import_backup_ask">%1$sでバックアップがあります。\n\nすべての設定やデータを取り込んで使用しましょうか？</string>
+    <string name="import_backup_no_backup_found">バックアップが見つかりません。\n\n%1$sにバックアップをコピーして、再試行してください。又は、「メッセージの開始」を押して通常のセットアップを続行します。</string>
+    <!-- Translators: %1$s will be replaced by the email address -->
+    <string name="login_error_cannot_login">%1$sとしてログインできません。メールアドレスとパスワードを確認してください。</string>
+    <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
+    <string name="login_error_server_response">%1$sから：%2$s\n\nプロバイダーによって問題に関して情報をメールで貰える可能性があります。メールアプリ又はブラウザでメールを確認してください。</string>
+    <!-- TLS certificate checks -->
+    <string name="accept_invalid_certificates">無効な証明書を受け入れます</string>
+    <string name="used_settings">使用した設定：</string>
     <string name="switch_account">アカウントを切り替え</string>
     <string name="add_account">アカウントを追加</string>
     <string name="delete_account">アカウントを削除</string>
+    <string name="delete_account_ask">本当にアカウントデータを削除しますか？</string>
+    <string name="delete_account_explain_with_name">暗号鍵・連絡先・チャット・メッセージを含めて%sのアカウントデータを端末から削除します。元に戻すことはできません。</string>
     <string name="switching_account">アカウントを切り替える</string>
+    <string name="try_connect_now">今直ぐ接続します</string>
+    <!-- Translations: %1$s will be replaced by a more detailed error message -->
+    <string name="configuration_failed_with_error">設定失敗。エラー：%1$s</string>
+
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">転送</string>
+    <string name="share_multiple_attachments">%1$dをチャットに送りますか。\n\nファイルは圧縮されずに送られます。</string>
+    <string name="share_multiple_attachments_multiple_chats">%1$dつのファイルを%2$d個のチャットに送りますか。\n\nファイルは圧縮されずに送られます。</string>
+    <string name="share_text_multiple_chats">%2$sを%1$d個のチャットに送りますか。</string>
+    <string name="share_abort">権限エラー：共有が一時中断されました。</string>
+
+
+    <!-- preferences -->
+    <string name="pref_using_custom">カスタムを使う：%s</string>
+    <string name="pref_using_default">デフォルトを使う：%s</string>
     <string name="pref_profile_info_headline">ユーザープロファイル</string>
     <string name="pref_profile_photo">アイコン画像</string>
     <string name="pref_blocked_contacts">ブロックされた人</string>
+    <string name="blocked_empty_hint">ブロックされた連絡先がここに表示されます。</string>
     <string name="pref_profile_photo_remove_ask">アイコン画像を削除しますか？</string>
     <string name="pref_password_and_account_settings">パスワードとアカウント</string>
+    <string name="pref_who_can_see_profile_explain">アイコン画像や名前は他のユーザーに連絡するとメッセージとともに表示されます。既に送信された情報を削除することができます。</string>
     <string name="pref_your_name">あなたの名前</string>
     <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
     <string name="pref_default_status_label">署名</string>
@@ -290,13 +441,22 @@
 https://delta.chat</string>
     <string name="pref_enter_sends">エンターキーで送信</string>
     <string name="pref_enter_sends_explain">エンターキーを押すとテキストメッセージが送信されます</string>
+    <string name="pref_outgoing_media_quality">送信する画像や映像の画質</string>
+    <string name="pref_outgoing_balanced">普通</string>
+    <string name="pref_outgoing_worse">低画質・サイズが小さい</string>
     <string name="pref_vibrate">振動</string>
+    <string name="pref_change_secret">秘密の変更</string>
+    <string name="pref_change_secret_explain">PIN・パターン・指紋はシステム設定で変更できます</string>
     <string name="pref_screen_security">画面セキュリティ</string>
     <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
     <string name="pref_screen_security_explain">アプリ内や「最近使ったアプリ」でスクリーンショットを禁止する</string>
+    <string name="pref_screen_security_please_restart_hint">画面のセキュリティ設定を適用してアプリを再起動してください。</string>
     <string name="pref_notifications">通知</string>
     <string name="pref_notifications_show">表示</string>
     <string name="pref_notifications_priority">優先度</string>
+    <string name="pref_notifications_explain">新着メッセージ通知を有効にします</string>
+    <string name="pref_show_notification_content">通知にメッセージの内容を表示します</string>
+    <string name="pref_show_notification_content_explain">通知には、送信者と最初の単語を表示します</string>
     <string name="pref_led_color">LED色</string>
     <string name="pref_sound">通知音</string>
     <string name="pref_silent">無音</string>
@@ -322,22 +482,40 @@ https://delta.chat</string>
     <string name="pref_chats">チャット</string>
     <string name="pref_in_chat_sounds">着信音</string>
     <string name="pref_message_text_size">文字の大きさ</string>
+    <string name="pref_view_log">ログの表示</string>
+    <string name="pref_saved_log">ログはダウンロードフォルダに保存されました。</string>
+    <string name="pref_save_log_failed">ログの保存に失敗しました</string>
+    <string name="pref_log_header">ログ</string>
     <string name="pref_other">その他</string>
     <string name="pref_backup">バックアップ</string>
+    <string name="pref_backup_explain">外部記憶装置へチャットをバックアップする</string>
     <string name="pref_backup_export_start_button">バックアップを開始する</string>
+    <string name="pref_backup_written_to_x">バックアップは%1$sに正常に完了しました。</string>
     <string name="pref_managekeys_menu_title">暗号鍵の管理</string>
     <string name="pref_managekeys_export_secret_keys">秘密鍵のエクスポート</string>
     <string name="pref_managekeys_export_explain">%1$sに秘密鍵をエクスポートしますか？</string>
     <string name="pref_managekeys_import_secret_keys">秘密鍵のインポート</string>
+    <string name="pref_managekeys_secret_keys_exported_to_x">暗号鍵は%1$sに正常に書き込まれました。</string>
+    <string name="pref_managekeys_secret_keys_imported_from_x">暗号鍵は%1$sからインポートされました。</string>
     <string name="pref_background">背景</string>
+    <string name="pref_background_btn_default">デフォルトの画像を使う</string>
+    <string name="pref_background_btn_gallery">ギャラリーから選ぶ</string>
+    <string name="pref_watch_inbox_folder">受信トレイを監視する</string>
+    <string name="pref_watch_sent_folder">送信トレイを監視する</string>
+    <string name="pref_watch_mvbox_folder">DeltaChatフォルダを監視する</string>
+    <string name="pref_send_copy_to_self">自分にコピーを送る</string>
+    <string name="pref_auto_folder_moves">DeltaChatフォルダに自動で移動する</string>
+    <string name="pref_auto_folder_moves_explain">チャットは受信箱の邪魔にならないように移動されます。</string>
     <string name="pref_show_emails">一般的なメールを表示する</string>
     <string name="pref_show_emails_no">いいえ、チャットのみ</string>
     <string name="pref_show_emails_accepted_contacts">許可されたユーザーのみ</string>
     <string name="pref_show_emails_all">全部</string>
-    <string name="pref_background_default">初期設定</string>
+    <string name="pref_experimental_features">実験的な機能</string>
+    <string name="pref_background_default">デフォルトの壁紙</string>
     <string name="pref_background_default_color">デフォルト色</string>
     <string name="pref_background_custom_image">画像</string>
     <string name="pref_background_custom_color">色</string>
+    <string name="export_aborted">エクスポートを停止しました。</string>
     <string name="profile_image_select">アイコン画像を選択する</string>
     <string name="select_your_new_profile_image">新しいアイコン画像を選択してください</string>
     <string name="profile_image_delete">アイコン画像を削除する</string>
@@ -345,8 +523,26 @@ https://delta.chat</string>
 
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">検索結果</string>
+    <string name="emoji_not_found">絵文字がみつかりません</string>
+    <string name="emoji_recent">履歴</string>
+    <string name="emoji_people">人と体</string>
+    <string name="emoji_nature">自然と動物</string>
+    <string name="emoji_foods">食べ物と飲み物</string>
+    <string name="emoji_activity">活動</string>
+    <string name="emoji_places">旅行・場所</string>
+    <string name="emoji_objects">物</string>
+    <string name="emoji_symbols">シンボル</string>
+    <string name="emoji_flags">フラッグ</string>
+
+
+    <!-- automatically delete message -->
+    <string name="delete_old_messages">古いメッセージの削除</string>
+    <!-- devs: autodel_title is deprecated, use delete_old_messages instead -->
+    <string name="autodel_title">メッセージの自動削除</string>
     <string name="autodel_device_title">端末からメッセージを削除する</string>
     <string name="autodel_server_title">サーバーからメッセージを削除する</string>
+    <string name="autodel_confirm">分かりました。メッセージを削除していいです。</string>
+    <string name="autodel_at_once">すぐに</string>
     <string name="after_30_seconds">30秒</string>
     <string name="after_1_minute">1分</string>
     <string name="after_5_minutes">5分</string>
@@ -355,33 +551,82 @@ https://delta.chat</string>
     <string name="autodel_after_1_day">1日後</string>
     <string name="autodel_after_1_week">1週間後</string>
     <string name="autodel_after_4_weeks">4週間後</string>
-    <string name="after_5_weeks">5週間</string>
+    <string name="after_5_weeks">5週間後</string>
     <string name="autodel_after_1_year">1年後</string>
 
     <!-- autocrypt -->
     <string name="autocrypt">自動暗号化</string>
     <string name="autocrypt_explain">自動暗号化機能は新しくて開けた仕様での一対一のﾒｰﾙ暗号化を行います｡\n \n この一対一暗号化は自動暗号化設定用ﾒｯｾｰｼﾞを転送して設定します｡</string>
     <string name="autocrypt_send_asm_title">自動暗号化設定用ﾒｯｾｰｼﾞを送信する</string>
-    <string name="autocrypt_send_asm_explain_before">｢自動暗号化設定用ﾒｯｾｰｼﾞ｣は安全に一対一暗号化設定を対応するｱﾌﾟﾘｹｰｼｮﾝとの間に設定します｡\n \n 受信側は設定時に表示されるﾊﾟｽｺｰﾄﾞを入力する必要が有ります｡</string>
+    <string name="autocrypt_send_asm_explain_before">｢自動暗号化設定用メッセージ｣は安全に一対一暗号化設定を対応するアプリケーションとの間に設定します｡\n \n 受信側は設定時に表示されるパスコードを入力する必要が有ります｡</string>
     <string name="autocrypt_send_asm_button">自動暗号化設定用ﾒｯｾｰｼﾞを送信する</string>
     <string name="autocrypt_prefer_e2ee">エンドツーエンド暗号化を好む</string>
     <string name="autocrypt_asm_subject">自動暗号化設定用ﾒｯｾｰｼﾞ</string>
     <string name="autocrypt_continue_transfer_title">自動暗号化設定用ﾒｯｾｰｼﾞ</string>
+    <string name="autocrypt_continue_transfer_retry">再試行</string>
+    <!-- system messages -->
+    <string name="systemmsg_group_name_changed">グループ名を%1$sから%2$sに変更しました。</string>
+    <string name="systemmsg_group_image_changed">グループ画像が変わりました。</string>
+    <string name="systemmsg_group_image_deleted">グループ画像を削除しました。</string>
+    <string name="systemmsg_member_added">%1$sが追加されました。</string>
+    <string name="systemmsg_member_removed">%1$sが退会されました。</string>
+    <string name="systemmsg_group_left">グループを退会しました。</string>
+    <string name="systemmsg_read_receipt_subject">既読</string>
+    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). -->
+    <string name="systemmsg_action_by_me">自分から%1$s</string>
+    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
+    <string name="systemmsg_action_by_user">%2$sから%1$s</string>
+    <string name="systemmsg_subject_for_new_contact">%1$sさんからのメッセージ</string>
+    <string name="systemmsg_failed_sending_to">%1$sさんへのメッセージ送信に失敗しました。</string>
+
+    <string name="systemmsg_ephemeral_timer_disabled">消えるメッセージを無効にしました。</string>
+    <string name="systemmsg_ephemeral_timer_enabled">消えるメッセージを%1$s秒にしました。</string>
+    <string name="systemmsg_ephemeral_timer_minute">消えるメッセージを1分にしました。</string>
+    <string name="systemmsg_ephemeral_timer_hour">消えるメッセージを1時間にしました。</string>
+    <string name="systemmsg_ephemeral_timer_day">消えるメッセージを1日にしました。</string>
+    <string name="systemmsg_ephemeral_timer_week">消えるメッセージを1週間にしました。</string>
+    <string name="systemmsg_ephemeral_timer_four_weeks">消えるメッセージを4週間にしました。</string>
+    <string name="systemmsg_ephemeral_timer_minutes">消えるメッセージを%1$s分にしました。</string>
+    <string name="systemmsg_ephemeral_timer_hours">消えるメッセージを%1$s時間にしました。</string>
+    <string name="systemmsg_ephemeral_timer_days">消えるメッセージを%1$s日にしました。</string>
+    <string name="systemmsg_ephemeral_timer_weeks">消えるメッセージを%1$s週間にしました。</string>
+
+    <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
+    <string name="systemmsg_chat_protection_disabled">保護が無効です。</string>
+    <string name="systemmsg_chat_protection_enabled">保護が有効です。</string>
+
     <!-- screen lock -->
     <string name="screenlock_title">画面ロック</string>
-    <string name="screenlock_explain">Delta Chatを画面ロックや指紋認証でロックする</string>
+    <string name="screenlock_explain">Delta Chatを画面ロックや指紋認証でロックする。以前のコンテンツを表示しないように、「画面のセキュリティ」も有効にしてください。</string>
+    <string name="screenlock_authentication_failed">認証に失敗しました。</string>
     <string name="screenlock_unlock_title">Delta Chatを解錠する</string>
+    <string name="screenlock_inactivity_timeout">無操作によるロック</string>
+    <string name="screenlock_inactivity_timeout_explain">一定時間操作がなかったら自動でDelta Chatをロックする</string>
+    <!-- qr code stuff -->
+    <string name="qr_code">QRコード</string>
+    <string name="load_qr_code_as_image">QRコードを画像として読み込む</string>
     <string name="qrscan_title">QRｺｰﾄﾞを読み取る</string>
     <string name="qrscan_hint">QRコードを読み取って下さい</string>
+    <string name="qrscan_failed">QRコードを読み取りできなかった</string>
+    <string name="qrscan_ask_join_group">%1$sグループに参加しますか</string>
     <string name="qrscan_contains_text">読み取り結果は以下:\n\n%1$s</string>
     <string name="qrscan_contains_url">読み取り結果は以下:\n\n:\n\n%1$s</string>
+    <string name="qrscan_x_verified_introduce_myself">%1$sを確認しました。紹介中です。</string>
     <string name="qrshow_title">自分のQRｺｰﾄﾞ</string>
     <string name="qrshow_x_joining">%1$sが参加しました</string>
     <string name="qrshow_x_verified">%1$sを確認しました。</string>
+    <string name="qrshow_x_has_joined_group">%1$sが参加しました</string>
     <string name="qrshow_join_group_title">自分のQRｺｰﾄﾞ</string>
+    <string name="qrshow_join_group_hint">スキャンして%1$sに参加します</string>
     <string name="qrshow_join_contact_title">自分のQRｺｰﾄﾞ</string>
+    <string name="qrshow_join_contact_hint">スキャンして%1$sに連絡します。</string>
+    <string name="qrshow_join_contact_no_connection_toast">インターネットに接続されていないので、QRコードの設定ができません。</string>
     <string name="contact_verified">%1$sを確認しました。</string>
     <string name="contact_not_verified">%1$sを確認できません。</string>
+    <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
+    <string name="contact_setup_changed">設定が%1$sに変わりました。</string>
+    <!-- notifications  -->
+    <string name="notify_n_messages_in_m_chats">%2$d個のチャットに%1$dの新着メッセージ</string>
     <string name="notify_mark_read">閲覧済</string>
     <string name="notify_reply_button">返信</string>
     <string name="notify_new_message">新規メッセージ</string>
@@ -395,6 +640,9 @@ https://delta.chat</string>
     <!-- permissions -->
     <string name="perm_required_title">アクセス許可が必要です</string>
     <string name="perm_continue">続行</string>
+    <!-- dc_str_* resources -->
+    <string name="encrypted_message">暗号化されたメッセージ</string>
+
     <string name="welcome_desktop">Delta Chatにようこそ</string>
     <string name="login_known_accounts_title_desktop">知り合い</string>
     <string name="global_menu_preferences_language_desktop">言語を選択して下さい</string>
@@ -411,25 +659,57 @@ https://delta.chat</string>
     <string name="global_menu_view_developer_desktop">開発者</string>
     <string name="global_menu_view_developer_tools_desktop">開発者ツール</string>
     <string name="global_menu_help_desktop">ヘルプ</string>
+    <string name="global_menu_help_learn_desktop">DeltaChatについて詳しく知る</string>
     <string name="global_menu_help_contribute_desktop">GitHubで貢献する</string>
     <string name="global_menu_help_report_desktop">問題を報告する</string>
+    <string name="global_menu_help_about_desktop">Delta Chatについて</string>
     <string name="write_message_desktop">メッセージを送信</string>
+    <string name="encryption_info_title_desktop">暗号化情報</string>
     <string name="contact_detail_title_desktop">連絡先の詳細</string>
+    <string name="contact_request_title_desktop">連絡先リクエスト</string>
+    <string name="delete_message_desktop">メッセージを削除する</string>
+    <string name="more_info_desktop">もっと詳しく</string>
+    <string name="logout_desktop">ログアウト</string>
     <string name="timestamp_format_m_desktop">MMM D</string>
-    <string name="verified_desktop">確認</string>
+    <string name="encryption_info_desktop">暗号化情報の表示</string>
+    <string name="verified_desktop">確認済み</string>
     <string name="remove_desktop">削除</string>
+    <string name="save_desktop">保存</string>
     <string name="add_contact_desktop">連絡先を追加</string>
     <string name="login_required_desktop">必須</string>
     <string name="name_desktop">名前</string>
+    <string name="autocrypt_key_transfer_desktop">自動暗号化設定の転送</string>
+    <string name="initiate_key_transfer_desktop">｢自動暗号化設定用メッセージ｣は安全に一対一暗号化設定を対応するアプリケーションとの間に設定します｡　受信側は設定時に表示されるパスコードを入力する必要が有ります｡</string>
     <string name="reply_to_message_desktop">メッセージに返答</string>
+    <string name="select_group_image_desktop">グループ画像を選択する</string>
     <string name="imex_progress_title_desktop">バックアップの進行状況</string>
+    <string name="download_attachment_desktop">添付ファイルのダウンロード</string>
     <string name="export_backup_desktop">バックアップをエクスポート</string>
+    <string name="transfer_key_desktop">暗号鍵のを転送する</string>
+    <string name="new_message_from_desktop">さんからのメッセージ</string>
+    <string name="unblock_contacts_desktop">拒否を解除</string>
+    <string name="none_blocked_desktop">ブロックされた人がいない</string>
+    <string name="autocrypt_correct_desktop">自動暗号化設定が転送されました</string>
+    <string name="ask_delete_chat_desktop">チャットを削除しますか</string>
     <string name="email_validation_failed_desktop">メールアドレスが必要です</string>
+    <string name="account_info_hover_tooltip_desktop">メール：%1$s\nサイズ：%2$s\nPath：%3$s</string>
     <string name="me_desktop">自分</string>
     <string name="in_this_group_desktop">グループメンバー</string>
     <string name="message_detail_sent_desktop">送信済み</string>
+    <string name="message_detail_received_desktop">届きました</string>
     <string name="message_detail_from_desktop">差出人</string>
     <string name="message_detail_to_desktop">宛先</string>
+    <string name="menu.view.developer.open.log.folder">ログフォルダを開く</string>
     <string name="user_location_permission_explanation">Delta Chatは位置情報を共有出来る様にする為権限が必要です</string>
+
+    <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
+    <string name="a11y_delivery_status_error">送信状態：エラー</string>
+    <string name="a11y_delivery_status_sending">送信状態：送信中</string>
+    <string name="a11y_delivery_status_draft">送信状態：下書き</string>
+    <string name="a11y_delivery_status_delivered">送信状態：送信済み</string>
+    <string name="a11y_delivery_status_read">送信状態：既読</string>
+    <string name="a11y_delivery_status_invalid">不明な送信状態</string>
+    <string name="a11y_disappearing_messages_activated">消えるメッセージを有効にしました。</string>
+
 
     </resources>
