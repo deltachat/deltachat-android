@@ -42,7 +42,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <org.thoughtcrime.securesms.components.emoji.EmojiEditText
                     android:id="@+id/name_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -60,7 +60,7 @@
         android:layout_marginRight="16dp"
         android:layout_marginTop="16dp">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <org.thoughtcrime.securesms.components.emoji.EmojiEditText
             android:id="@+id/status_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
