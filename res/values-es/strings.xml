@@ -113,6 +113,8 @@
     <string name="audio">Audio</string>
     <string name="voice_message">Mensaje de voz</string>
     <string name="forwarded_message">Mensaje reenviado</string>
+    <!-- %1$s will be replaced by the name or the email-address of the person who has forwarded the message -->
+    <string name="forwarded_by">Reenviado por %1$s</string>
     <string name="video">Video</string>
     <string name="documents">Documentos</string>
     <string name="contact">Contacto</string>
@@ -186,6 +188,8 @@
     <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
     <string name="show_in_chat">Mostrar en el chat</string>
     <string name="menu_share">Compartir</string>
+    <!-- this is the action "to block sth." usually a mailing list or a contact. this is NOT "a large solid piece of hard material" :) -->
+    <string name="block">Bloquear</string>
     <string name="menu_block_contact">Bloquear contacto</string>
     <string name="menu_unblock_contact">Desbloquear contacto</string>
     <string name="menu_play">Reproducir</string>
@@ -331,6 +335,14 @@
     <string name="messaging_disabled_deaddrop">Click en el mensaje para aceptar o denegar el pedido del contacto</string>
     <string name="cannot_display_unsuported_file_type">No se puede mostrar este tipo de archivo: %s</string>
     <string name="attachment_failed_to_load">No se puede cargar el adjunto</string>
+    <!-- For recording Voice messages: Description for the "Lock" button allowing to lift the thumb from the record button while recording continues -->
+    <string name="lock_recording">Bloquear grabación</string>
+
+    <!-- mailing lists -->
+    <string name="mailing_list">Listado de correos</string>
+    <string name="ask_show_mailing_list">¿Mostrar listado de mails \"%1$s\"?</string>
+
+
     <!-- map -->
     <string name="filter_map_on_time">Mostrar ubicaciones en el marco de tiempo</string>
     <string name="show_location_traces">Mostrar trazas</string>
@@ -557,10 +569,13 @@
     <string name="autodel_at_once">Inmediatamente</string>
     <string name="after_30_seconds">Luego de 30 segundos</string>
     <string name="after_1_minute">Luego de 1 minuto</string>
+    <string name="after_5_minutes">Luego de 5 minutos</string>
+    <string name="after_30_minutes">Luego de 30 minutos</string>
     <string name="autodel_after_1_hour">Luego de 1 hora</string>
     <string name="autodel_after_1_day">Luego de 1 día</string>
     <string name="autodel_after_1_week">Luego de 1 semana</string>
     <string name="autodel_after_4_weeks">Luego de 4 semanas</string>
+    <string name="after_5_weeks">Luego de 5 semanas</string>
     <string name="autodel_after_1_year">Luego de 1 año</string>
 
     <!-- autocrypt -->
@@ -606,6 +621,11 @@
     <string name="systemmsg_ephemeral_timer_day">Temporizador de borrado de mensaje dispuesto en 1 día</string>
     <string name="systemmsg_ephemeral_timer_week">Temporizador de borrado de mensaje dispuesto en 1 semana</string>
     <string name="systemmsg_ephemeral_timer_four_weeks">Temporizador de borrado de mensaje dispuesto en 4 semanas</string>
+    <string name="systemmsg_ephemeral_timer_minutes">Timer de mensajes borrados dispuesto en %1$s minutos.</string>
+    <string name="systemmsg_ephemeral_timer_hours">Timer de mensajes borrados dispuesto a %1$s horas.</string>
+    <string name="systemmsg_ephemeral_timer_days">Timer de mensajes borrados dispuestos en %1$s días.</string>
+    <string name="systemmsg_ephemeral_timer_weeks">Timer de mensajes borrados dispuestos para %1$s semanas.</string>
+
     <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
     <string name="systemmsg_chat_protection_disabled">Protección de chat desactivada</string>
     <string name="systemmsg_chat_protection_enabled">Protección de chat activa</string>
