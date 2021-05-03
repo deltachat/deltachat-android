@@ -647,7 +647,6 @@
 
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Rita var som helst för att smeta ut</string>
-
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Krypterat meddelande</string>
 

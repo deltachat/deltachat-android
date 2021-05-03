@@ -720,7 +720,6 @@
 
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Kreslením rozmazávej</string>
-
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Šifrovaná zpráva</string>
 

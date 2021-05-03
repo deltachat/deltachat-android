@@ -4,6 +4,7 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">Oké</string>
     <string name="cancel">Annuleren</string>
+    <string name="clear_search">Zoekopdracht wissen</string>
     <string name="yes">Ja</string>
     <string name="no">Nee</string>
     <string name="select">Selecteren</string>
@@ -120,6 +121,9 @@
     <string name="contact">Contactpersoon</string>
     <string name="verified_contact">Goedgekeurd contactpersoon</string>
     <string name="camera">Camera</string>
+    <string name="capture">Vastleggen</string>
+    <string name="switch_camera">Andere camera</string>
+    <string name="toggle_fullscreen">Beeldvullende modus aan/uit</string>
     <string name="location">Locatie</string>
     <string name="gallery">Galerij</string>
     <string name="images_and_videos">Foto\'s en video\'s</string>
@@ -699,6 +703,13 @@
 
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Teken met je vinger om vervaging toe te passen</string>
+    <string name="ImageEditorHud_add_text">Tekst toevoegen</string>
+    <string name="ImageEditorHud_blur">Vervagen</string>
+    <string name="ImageEditorHud_brush_marker">Stift</string>
+    <string name="ImageEditorHud_brush_highlight">Markeerstift</string>
+    <string name="ImageEditorHud_crop">Bijsnijden</string>
+    <string name="ImageEditorHud_flip">Spiegelen</string>
+    <string name="ImageEditorHud_rotate">Draaien</string>
 
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Versleuteld bericht</string>

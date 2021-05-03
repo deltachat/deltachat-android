@@ -696,7 +696,6 @@
 
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Dessinez n\'importe où pour flouter</string>
-
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Message chiffré</string>
 

@@ -4,6 +4,7 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">Gerai</string>
     <string name="cancel">Atsisakyti</string>
+    <string name="clear_search">Išvalyti paiešką</string>
     <string name="yes">Taip</string>
     <string name="no">Ne</string>
     <string name="on">Įjungta</string>
@@ -123,6 +124,7 @@
     <string name="contact">Adresatas</string>
     <string name="verified_contact">Patvirtintas adresatas</string>
     <string name="camera">Kamera</string>
+    <string name="switch_camera">Perjungti kamerą</string>
     <string name="location">Vieta</string>
     <string name="gallery">Galerija</string>
     <string name="images_and_videos">Paveikslai ir vaizdo įrašai</string>

@@ -594,7 +594,6 @@
 
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Gambar di mana saja untuk diburamkan</string>
-
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Pesan terenkripsi</string>
 

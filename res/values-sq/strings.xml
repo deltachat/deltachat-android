@@ -4,6 +4,7 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
     <string name="cancel">Anuloje</string>
+    <string name="clear_search">Spastroje kërkimin</string>
     <string name="yes">Po</string>
     <string name="no">Jo</string>
     <string name="select">Përzgjidhni</string>
@@ -120,6 +121,8 @@
     <string name="contact">Kontakt</string>
     <string name="verified_contact">Kontakt i verifikuar</string>
     <string name="camera">Kamerë</string>
+    <string name="switch_camera">Ndërro kamera</string>
+    <string name="toggle_fullscreen">Kalo në / Dil nga mënyra sa krejt ekrani</string>
     <string name="location">Vendndodhje</string>
     <string name="gallery">Galeri</string>
     <string name="images_and_videos">Figura dhe video</string>
@@ -333,6 +336,9 @@
     <string name="messaging_disabled_deaddrop">Që të pranoni apo hidhni tej një kërkesë kontakti, klikoni mbi një mesazh</string>
     <string name="cannot_display_unsuported_file_type">S’mund të shfaqet ky lloj kartelash: %s</string>
     <string name="attachment_failed_to_load">S’u arrit të ngarkohet bashkëngjitje</string>
+    <!-- For recording Voice messages: Description for the "Lock" button allowing to lift the thumb from the record button while recording continues -->
+    <string name="lock_recording">Kyçe incizimin</string>
+
     <!-- mailing lists -->
     <string name="mailing_list">Listë postimesh</string>
     <string name="ask_show_mailing_list">Të shfaqet lista e postimeve \"%1$s\"?</string>
@@ -694,6 +700,11 @@
 
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Që të turbullohet, vizatoni kudo qoftë</string>
+    <string name="ImageEditorHud_add_text">Shtoni tekst</string>
+    <string name="ImageEditorHud_blur">Turbulloje</string>
+    <string name="ImageEditorHud_crop">Qethe</string>
+    <string name="ImageEditorHud_flip">Ktheje në anë tjetër</string>
+    <string name="ImageEditorHud_rotate">Rrotulloje</string>
 
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Mesazh i fshehtëzuar</string>

@@ -725,7 +725,6 @@
 
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Рисуйте, чтобы размывать</string>
-
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Зашифрованное сообщение</string>
 

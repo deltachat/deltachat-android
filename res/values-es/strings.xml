@@ -706,10 +706,10 @@
     <string name="ImageEditorHud_add_text">Añadir texto</string>
     <string name="ImageEditorHud_blur">Difuminar</string>
     <string name="ImageEditorHud_brush_marker">Marcador</string>
-    <string name="ImageEditorHud_brush_highlight">Pincel de resaltado</string>
+    <string name="ImageEditorHud_brush_highlight">Pincel de resaltad</string>
     <string name="ImageEditorHud_crop">Recortar</string>
-    <string name="ImageEditorHud_flip">Voltear</string>
-    <string name="ImageEditorHud_rotate">Rotar</string>
+    <string name="ImageEditorHud_flip">Recortar</string>
+    <string name="ImageEditorHud_rotate">Recortar</string>
 
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Mensaje cifrado</string>

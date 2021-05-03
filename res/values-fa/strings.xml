@@ -673,7 +673,6 @@
 
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">هر کجا مایلید شروع به رسم کردن کنید تا مات شود.</string>
-
     <!-- dc_str_* resources -->
     <string name="encrypted_message">پیام رمزگذاری شده</string>
 
