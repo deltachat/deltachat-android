@@ -122,6 +122,7 @@
             <category android:name="android.intent.category.DEFAULT"/>
             <category android:name="android.intent.category.BROWSABLE"/>
             <data android:scheme="openpgp4fpr" />
+            <data android:scheme="OPENPGP4FPR" />
         </intent-filter>
 
         <meta-data android:name="com.sec.minimode.icon.portrait.normal"
