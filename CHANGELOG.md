@@ -2,13 +2,17 @@
 
 ## UNRELEASED
 
+* improved accessibility and screen reader support
+* use the same emoji style everywhere across the app
+* allow to select and copy text from "message details" and error dialogs
+* fix: don't collapse search menu on group changes
 * add Indonesian, Polish, Ukrainian local help, update other translations
 
 
 ## v1.19.2 Preview Release
 2021-04
 
-* opening the contact request chat mark all contact requests as noticed
+* opening the contact request chat marks all contact requests as noticed
   and removes the sticky hint from the chatlist
 * if "Show classic mails" is enabled,
   the contact request hint in the corresponding chat
@@ -43,6 +47,7 @@
 
 * new mailinglist and better bot support
 * add option to view original-/html-mails
+* check all imap folders for new messages from time to time
 * use more colors for user avatars
 * improve e-mail compatibility
 * improve compatibility with Outlook.com
