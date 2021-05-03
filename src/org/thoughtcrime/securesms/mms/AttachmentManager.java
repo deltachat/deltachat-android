@@ -107,7 +107,9 @@ public class AttachmentManager {
       removableMediaView.setRemoveClickListener(new RemoveButtonListener());
       removableMediaView.setEditClickListener(new EditButtonListener());
       thumbnail.setOnClickListener(new ThumbnailClickListener());
-      documentView.getBackground().setColorFilter(ThemeUtil.getThemedColor(context, R.attr.conversation_item_incoming_bubble_color), PorterDuff.Mode.MULTIPLY);
+      int incomingBubbleColor = ThemeUtil.getThemedColor(context, R.attr.conversation_item_incoming_bubble_color);
+      audioView.getBackground().setColorFilter(incomingBubbleColor, PorterDuff.Mode.MULTIPLY);
+      documentView.getBackground().setColorFilter(incomingBubbleColor, PorterDuff.Mode.MULTIPLY);
     }
 
   }
