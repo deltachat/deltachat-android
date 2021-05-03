@@ -813,6 +813,6 @@
     <string name="pref_reliable_service_explain">Requires a permanent notification</string>
     <string name="perm_enable_bg_reminder_title">Tap here to receive messages while Delta Chat is in the background.</string>
     <string name="perm_enable_bg_already_done">You already allowed Delta Chat to receive messages in the background.\n\nIf messages still do not arrive in background, please also check your system settings.</string>
-    <string name="update_1_14_android">Some highlights of the 1.14 update:\n\n🧹 Swipe to reply: To answer a concrete message, just swipe it right (not here! you cannot answer here 😛) You\'ll see a quote above the compose line and can continue writing your message as usual.\n\n🔥 Disappearing messages ­- the time has come 😀. Any chat can now be configured to delete sent and received messages after some time. Just select \"Disappearing messages\" from the chat\'s menu (again: not here)\n\n👆 Chats open at first unseen message\n\n💾 Forward things to \"Saved messages\" directly and faster (this can be tried here: long-tap this message and then the arrow top-right)\n\n🎃 Finally, we\'ve again frightened many bugs! Lots were so scared, they won\'t come back.</string>
+    <string name="update_1_20">Improved e-mail compatibility in version 1.20:\n\n📫 Read mailing lists\n📭 Read HTML-mails\n📪 Nice handling of support addresses\n📫 Many major and minor annoyances fixed\n\nRead our new blog post about these first steps towards mail and more:</string>
 
 </resources>
