@@ -24,6 +24,8 @@ import java.util.Set;
 public abstract class BaseConversationItem extends LinearLayout
     implements BindableConversationItem
 {
+  static long PULSE_HIGHLIGHT_MILLIS = 500;
+
   protected DcMsg         messageRecord;
   protected DcChat        dcChat;
   protected TextView      bodyText;
@@ -43,11 +45,26 @@ public abstract class BaseConversationItem extends LinearLayout
 
   protected void bind(@NonNull DcMsg            messageRecord,
                       @NonNull DcChat           dcChat,
-                      @NonNull Set<DcMsg>       batchSelected)
+                      @NonNull Set<DcMsg>       batchSelected,
+                      boolean                   pulseHighlight)
   {
     this.messageRecord  = messageRecord;
     this.dcChat         = dcChat;
     this.batchSelected  = batchSelected;
+    setInteractionState(messageRecord, pulseHighlight);
+  }
+
+  protected void setInteractionState(DcMsg messageRecord, boolean pulseHighlight) {
+    if (batchSelected.contains(messageRecord)) {
+      setBackgroundResource(R.drawable.conversation_item_background);
+      setSelected(true);
+    } else if (pulseHighlight) {
+      setBackgroundResource(R.drawable.conversation_item_background_animated);
+      setSelected(true);
+      postDelayed(() -> setSelected(false), PULSE_HIGHLIGHT_MILLIS);
+    } else {
+      setSelected(false);
+    }
   }
 
   @Override

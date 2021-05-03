@@ -55,9 +55,8 @@ public class ConversationUpdateItem extends BaseConversationItem
                    @NonNull Recipient               conversationRecipient,
                             boolean                 pulseUpdate)
   {
-    bind(messageRecord, dcChat, batchSelected);
+    bind(messageRecord, dcChat, batchSelected, pulseUpdate);
     setGenericInfoRecord(messageRecord);
-    setSelected(batchSelected.contains(messageRecord));
   }
 
   private void initializeAttributes() {
