@@ -687,7 +687,6 @@
 
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">对任意地方涂抹以进行模糊</string>
-
     <!-- dc_str_* resources -->
     <string name="encrypted_message">加密的消息</string>
 

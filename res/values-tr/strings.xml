@@ -4,6 +4,7 @@
     <string name="app_name">DeltaLab</string>
     <string name="ok">Tamam</string>
     <string name="cancel">Vazgeç</string>
+    <string name="clear_search">Aramayı temizle</string>
     <string name="yes">Evet</string>
     <string name="no">Hayır</string>
     <string name="select">Seç</string>
@@ -120,6 +121,9 @@
     <string name="contact">Kişi</string>
     <string name="verified_contact">Doğrulanan kişi</string>
     <string name="camera">Kamera</string>
+    <string name="capture">Yakala</string>
+    <string name="switch_camera">Kamerayı değiştir</string>
+    <string name="toggle_fullscreen">Tam ekran kipine geç</string>
     <string name="location">Konum</string>
     <string name="gallery">Galeri</string>
     <string name="images_and_videos">Görseller ve videolar</string>
@@ -699,6 +703,13 @@
 
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Bulanıklaştırmak için herhangi bir yere çizin</string>
+    <string name="ImageEditorHud_add_text">Metin ekle</string>
+    <string name="ImageEditorHud_blur">Bulanıklaştır</string>
+    <string name="ImageEditorHud_brush_marker">İşaret fırçası</string>
+    <string name="ImageEditorHud_brush_highlight">Fırçayı vurgula</string>
+    <string name="ImageEditorHud_crop">Kırp</string>
+    <string name="ImageEditorHud_flip">Çevir</string>
+    <string name="ImageEditorHud_rotate">Döndür</string>
 
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Şifrelenen ileti</string>

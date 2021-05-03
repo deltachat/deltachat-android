@@ -685,7 +685,6 @@
 
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Tegn hvor som helst for at sløre</string>
-
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Krypteret besked</string>
 

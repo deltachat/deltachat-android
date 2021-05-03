@@ -4,6 +4,7 @@
     <string name="app_name">DeltaLab</string>
     <string name="ok">OK</string>
     <string name="cancel">Abbruch</string>
+    <string name="clear_search">Suche löschen</string>
     <string name="yes">Ja</string>
     <string name="no">Nein</string>
     <string name="select">Auswählen</string>
@@ -120,6 +121,9 @@
     <string name="contact">Kontakt</string>
     <string name="verified_contact">Verifizierter Kontakt</string>
     <string name="camera">Kamera</string>
+    <string name="capture">Aufnehmen</string>
+    <string name="switch_camera">Kamera wechseln</string>
+    <string name="toggle_fullscreen">Vollbildmodus umschalten</string>
     <string name="location">Ort</string>
     <string name="gallery">Galerie</string>
     <string name="images_and_videos">Bilder und Videos</string>
@@ -703,6 +707,13 @@ Ihr bisheriges E-Mail-Konto wird dabei nicht gelöscht. Sie können mit der Opti
 
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Zeichne zum Verwischen in beliebige Bereiche</string>
+    <string name="ImageEditorHud_add_text">Text hinzufügen</string>
+    <string name="ImageEditorHud_blur">Verwischen</string>
+    <string name="ImageEditorHud_brush_marker">Markieren</string>
+    <string name="ImageEditorHud_brush_highlight">Hervorheben</string>
+    <string name="ImageEditorHud_crop">Zuschneiden</string>
+    <string name="ImageEditorHud_flip">Spiegeln</string>
+    <string name="ImageEditorHud_rotate">Drehen</string>
 
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Verschlüsselte Nachricht</string>

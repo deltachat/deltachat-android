@@ -672,7 +672,6 @@
 
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Desenhe em qualquer lugar para desfocar</string>
-
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Mensagem criptografada</string>
 

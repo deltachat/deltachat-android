@@ -4,6 +4,7 @@
     <string name="app_name">DeltaLab</string>
     <string name="ok">OK</string>
     <string name="cancel">Скасувати</string>
+    <string name="clear_search">Очистити пошук</string>
     <string name="yes">Так</string>
     <string name="no">Ні</string>
     <string name="select">Обрати</string>
@@ -132,6 +133,9 @@
     <string name="contact">Контакт</string>
     <string name="verified_contact">Перевірений контакт</string>
     <string name="camera">Камера</string>
+    <string name="capture">Захопити</string>
+    <string name="switch_camera">Перемкнути камеру</string>
+    <string name="toggle_fullscreen">Перейти в повноекранний режим</string>
     <string name="location">Розташування</string>
     <string name="gallery">Галерея</string>
     <string name="images_and_videos">Зображення та відео</string>
@@ -723,6 +727,13 @@
 
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Малюйте де завгодно для розмиття</string>
+    <string name="ImageEditorHud_add_text">Додати текст</string>
+    <string name="ImageEditorHud_blur">Розмити</string>
+    <string name="ImageEditorHud_brush_marker">Маркер</string>
+    <string name="ImageEditorHud_brush_highlight">Виділення</string>
+    <string name="ImageEditorHud_crop">Обрізати</string>
+    <string name="ImageEditorHud_flip">Обернути</string>
+    <string name="ImageEditorHud_rotate">Обертати</string>
 
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Зашифроване повідомлення</string>

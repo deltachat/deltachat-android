@@ -2,7 +2,6 @@ package org.thoughtcrime.securesms;
 
 import android.content.Context;
 import android.content.Intent;
-import android.text.util.Linkify;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -107,18 +106,16 @@ public abstract class BaseConversationItem extends LinearLayout
       } else if (!shouldInterceptClicks(messageRecord) && parent != null) {
         parent.onClick(v);
       } else if (messageRecord.isFailed()) {
+        View view = View.inflate(context, R.layout.message_details_view, null);
+        TextView detailsText = view.findViewById(R.id.details_text);
+        detailsText.setText(messageRecord.getError());
+
         AlertDialog d = new AlertDialog.Builder(context)
-                .setMessage(messageRecord.getError())
+                .setView(view)
                 .setTitle(R.string.error)
                 .setPositiveButton(R.string.ok, null)
                 .create();
         d.show();
-        try {
-          //noinspection ConstantConditions
-          Linkify.addLinks((TextView) d.findViewById(android.R.id.message), Linkify.WEB_URLS | Linkify.EMAIL_ADDRESSES);
-        } catch(NullPointerException e) {
-          e.printStackTrace();
-        }
       }
     }
   }

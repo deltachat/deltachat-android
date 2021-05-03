@@ -4,19 +4,27 @@
     <string name="app_name">DeltaLab</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel·la</string>
+    <string name="clear_search">Neteja la cerca</string>
     <string name="yes">Si</string>
     <string name="no">No</string>
+    <string name="select">Trieu</string>
     <string name="on">Activat</string>
     <string name="off">Desactivat</string>
     <string name="def">Per defecte</string>
+    <string name="default_value">Per defecte (%1$s)</string>
+    <string name="default_value_as_above">Per defecte (igual que a dalt)</string>
     <string name="custom">Personalitzat</string>
     <string name="none">Cap</string>
     <string name="automatic">Automàtic</string>
     <string name="strict">Estricte</string>
     <string name="open">Obre</string>
+    <string name="open_attachment">Obre l\'adjunt</string>
+    <string name="join">Uneix-te</string>
+    <string name="rejoin">Torna a unir-te</string>
     <string name="delete">Esborra</string>
     <string name="info">Info</string>
     <string name="update">Actualitza</string>
+    <string name="emoji">Emoticona</string>
     <string name="attachment">Adjunt</string>
     <string name="back">Enrere</string>
     <string name="close">Tanca</string>
@@ -25,10 +33,16 @@
     <string name="unarchive">Treu de l\'arxiu</string>
     <string name="mute">Emmudeix</string>
     <string name="ephemeral_messages">Missatges efímers</string>
+    <string name="ephemeral_messages_hint">Aquestes opcions són d\'aplicació per tots els integrants que usin Delta Chat. Tot i això, poden copiar, guardar o reenviar missatges o usar altres clients de correu.</string>
     <string name="save">Guarda</string>
     <string name="chat">Xat</string>
+    <string name="profile">Perfil</string>
     <string name="main_menu">Menú principal</string>
     <string name="start_chat">Inicia un xat</string>
+    <string name="show_full_message">Mostra el missatge sencer...</string>
+    <string name="load_remote_content">Carrega les imatges remotes</string>
+    <string name="always">Sempre</string>
+    <string name="once">Una vegada</string>
     <string name="show_password">Mostra la contrasenya</string>
     <string name="hide_password">Amaga la contrasenya</string>
     <string name="not_now">Ara no</string>
@@ -89,19 +103,27 @@
     <string name="self">Jo</string>
     <string name="draft">Esborrany</string>
     <string name="image">Imatge</string>
+    <!-- Translators: Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
+    <string name="reply_noun">Respon</string>
     <string name="gif">Gif</string>
     <string name="images">Imatges</string>
     <string name="audio">Àudio</string>
     <string name="voice_message">Missatge de veu</string>
     <string name="forwarded_message">Missatge reenviat</string>
+    <!-- %1$s will be replaced by the name or the email-address of the person who has forwarded the message -->
+    <string name="forwarded_by">Reenviat per %1$s</string>
     <string name="video">Vídeo</string>
     <string name="documents">Documents</string>
     <string name="contact">Contacte</string>
     <string name="verified_contact">Contacte verificat</string>
     <string name="camera">Càmera</string>
+    <string name="capture">Captura</string>
+    <string name="switch_camera">Canvia la càmera</string>
     <string name="location">Ubicació</string>
     <string name="gallery">Galeria</string>
+    <string name="images_and_videos">Imatges i vídeos</string>
     <string name="file">Fitxer</string>
+    <string name="files">Fitxers</string>
     <string name="unknown">Desconegut</string>
 
     <string name="green">Verd</string>
@@ -113,6 +135,8 @@
     <string name="magenta">Magenta</string>
     <string name="white">Blanc</string>
 
+    <string name="zoom">Zoom</string>
+    <string name="extra_small">Més petit</string>
     <string name="small">Petit</string>
     <string name="normal">Normal</string>
     <string name="large">Gran</string>
@@ -141,12 +165,17 @@
     <string name="menu_add_attachment">Afegeix un adjunt</string>
     <string name="menu_leave_group">Deixa el grup</string>
     <string name="menu_delete_chat">Esborra el xat</string>
+    <string name="ask_delete_named_chat">Segur que voleu esborrar \"%1$s\"?</string>
     <string name="menu_delete_messages">Esborra els missatges</string>
     <string name="menu_delete_image">Esborra la imatge</string>
+    <string name="delete_contact">Esborra el contacte</string>
     <string name="menu_delete_locations">Voleu esborrar totes les ubicacions?</string>
     <string name="menu_delete_location">Voleu esborrar aquesta ubicació?</string>
     <string name="menu_message_details">Detalls del missatge</string>
     <string name="menu_copy_to_clipboard">Copia al porta-retalls</string>
+    <string name="menu_copy_selection_to_clipboard">Copia el seleccionat</string>
+    <string name="menu_copy_link_to_clipboard">Enllaç de còpia</string>
+    <string name="paste_from_clipboard">Enganxa des del porta-retalls</string>
     <string name="menu_forward">Reenvia el missatge</string>
     <string name="menu_resend">Torna a enviar el missatge</string>
     <string name="menu_reply">Respon el missatge</string>
@@ -154,7 +183,11 @@
     <string name="menu_unmute">Activa el so</string>
     <string name="menu_export_attachment">Exporta l\'adjunt</string>
     <string name="menu_all_media">Tots els multimèdia</string>
+    <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
+    <string name="show_in_chat">Mostra al xat</string>
     <string name="menu_share">Comparteix</string>
+    <!-- this is the action "to block sth." usually a mailing list or a contact. this is NOT "a large solid piece of hard material" :) -->
+    <string name="block">Bloqueja</string>
     <string name="menu_block_contact">Bloca el contacte</string>
     <string name="menu_unblock_contact">Desbloca el contacte</string>
     <string name="menu_play">Reprodueix</string>
