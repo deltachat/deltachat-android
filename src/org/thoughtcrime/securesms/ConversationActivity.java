@@ -404,7 +404,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     case GROUP_EDIT:
       dcChat = dcContext.getChat(chatId);
       titleView.setTitle(glideRequests, dcChat);
-      supportInvalidateOptionsMenu();
       break;
     case TAKE_PHOTO:
       if (attachmentManager.getImageCaptureUri() != null) {
@@ -694,8 +693,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     sendButton.resetAvailableTransports();
     sendButton.setDefaultTransport(Type.NORMAL_MAIL);
-
-    supportInvalidateOptionsMenu();
   }
 
   private void handleForwarding() {
