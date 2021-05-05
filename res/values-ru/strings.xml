@@ -4,6 +4,7 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
     <string name="cancel">Отмена</string>
+    <string name="clear_search">Очистить поиск</string>
     <string name="yes">Да</string>
     <string name="no">Нет</string>
     <string name="select">Выбрать</string>
@@ -132,6 +133,9 @@
     <string name="contact">Контакт</string>
     <string name="verified_contact">Верифицированный контакт</string>
     <string name="camera">Камера</string>
+    <string name="capture">Захват</string>
+    <string name="switch_camera">Сменить камеру</string>
+    <string name="toggle_fullscreen">Переключить полноэкранный режим</string>
     <string name="location">Местоположение</string>
     <string name="gallery">Галерея</string>
     <string name="images_and_videos">Изображения и видео</string>
@@ -725,6 +729,14 @@
 
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Рисуйте, чтобы размывать</string>
+    <string name="ImageEditorHud_add_text">Добавить текст</string>
+    <string name="ImageEditorHud_blur">Размыть</string>
+    <string name="ImageEditorHud_brush_marker">Маркер</string>
+    <string name="ImageEditorHud_brush_highlight">Подсветка</string>
+    <string name="ImageEditorHud_crop">Обрезать</string>
+    <string name="ImageEditorHud_flip">Отразить</string>
+    <string name="ImageEditorHud_rotate">Повернуть</string>
+
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Зашифрованное сообщение</string>
 

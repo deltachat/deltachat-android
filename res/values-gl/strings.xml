@@ -4,6 +4,7 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancelar</string>
+    <string name="clear_search">Eliminar busca</string>
     <string name="yes">Si</string>
     <string name="no">Non</string>
     <string name="select">Seleccionar</string>
@@ -120,6 +121,9 @@
     <string name="contact">Contacto</string>
     <string name="verified_contact">Contacto verificado</string>
     <string name="camera">Cámara</string>
+    <string name="capture">Capturar</string>
+    <string name="switch_camera">Cambiar de cámara</string>
+    <string name="toggle_fullscreen">Activar modo de pantalla completa</string>
     <string name="location">Localización</string>
     <string name="gallery">Galería</string>
     <string name="images_and_videos">Imaxes e vídeos</string>
@@ -699,6 +703,14 @@
 
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Debuxa para esborranchar</string>
+    <string name="ImageEditorHud_add_text">Engadir texto</string>
+    <string name="ImageEditorHud_blur">Esborranchar</string>
+    <string name="ImageEditorHud_brush_marker">Pincel marcador</string>
+    <string name="ImageEditorHud_brush_highlight">Pincel resaltar</string>
+    <string name="ImageEditorHud_crop">Recortar</string>
+    <string name="ImageEditorHud_flip">Voltear</string>
+    <string name="ImageEditorHud_rotate">Rotar</string>
+
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Mensaxe cifrada</string>
 

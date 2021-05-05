@@ -4,6 +4,7 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">确定</string>
     <string name="cancel">取消</string>
+    <string name="clear_search">清除搜索</string>
     <string name="yes">是</string>
     <string name="no">否</string>
     <string name="select">选择</string>
@@ -104,7 +105,7 @@
     <string name="reply_noun">回复</string>
     <string name="gif">Gif</string>
     <string name="images">图像</string>
-    <string name="audio">音频</string>
+    <string name="audio">录音</string>
     <string name="voice_message">语音消息</string>
     <string name="forwarded_message">转发的消息</string>
     <!-- %1$s will be replaced by the name or the email-address of the person who has forwarded the message -->
@@ -114,6 +115,9 @@
     <string name="contact">联系人</string>
     <string name="verified_contact">已验证联系人</string>
     <string name="camera">相机</string>
+    <string name="capture">捕获</string>
+    <string name="switch_camera">切换摄像头</string>
+    <string name="toggle_fullscreen">切换全屏模式</string>
     <string name="location">位置</string>
     <string name="gallery">图库</string>
     <string name="images_and_videos">图像和视频</string>
@@ -127,7 +131,7 @@
     <string name="orange">橘黄色</string>
     <string name="cyan">蓝绿色</string>
     <string name="purple">紫色</string>
-    <string name="magenta"> 洋红色</string>
+    <string name="magenta">洋红色</string>
     <string name="white">白色</string>
 
     <string name="zoom">缩放</string>
@@ -174,7 +178,7 @@
     <string name="menu_forward">转发消息</string>
     <string name="menu_resend">重发消息</string>
     <string name="menu_reply">回复消息</string>
-    <string name="menu_mute">静音通知</string>
+    <string name="menu_mute">通知静音</string>
     <string name="menu_unmute">取消静音</string>
     <string name="menu_export_attachment">导出附件</string>
     <string name="menu_all_media">所有媒体</string>
@@ -659,7 +663,7 @@
     <string name="contact_verified">%1$s 已验证。</string>
     <string name="contact_not_verified">无法验证 %1$s。</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
-    <string name="contact_setup_changed">更改了 %1$s 的加密设置。</string>
+    <string name="contact_setup_changed">已更改 %1$s 的加密设置</string>
     <string name="verified_group_explain">已验证群组（实验性）可提供针对主动攻击的安全性。其中的成员被其他成员用第二个因素进行了验证，并且消息始终是端到端加密的。</string>
     <string name="copy_qr_data_success">已复制二维码链接到剪贴板</string>
 
@@ -687,6 +691,14 @@
 
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">对任意地方涂抹以进行模糊</string>
+    <string name="ImageEditorHud_add_text">添加文字</string>
+    <string name="ImageEditorHud_blur">模糊</string>
+    <string name="ImageEditorHud_brush_marker">记号笔</string>
+    <string name="ImageEditorHud_brush_highlight">荧光笔</string>
+    <string name="ImageEditorHud_crop">裁剪</string>
+    <string name="ImageEditorHud_flip">翻转</string>
+    <string name="ImageEditorHud_rotate">旋转</string>
+
     <!-- dc_str_* resources -->
     <string name="encrypted_message">加密的消息</string>
 
