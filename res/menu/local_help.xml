@@ -9,6 +9,10 @@
         android:id="@+id/learn_more"
         app:showAsAction="never"/>
 
+    <item android:title="@string/privacy_policy"
+        android:id="@+id/privacy_policy"
+        app:showAsAction="never"/>
+
     <item android:title="@string/global_menu_help_contribute_desktop"
         android:id="@+id/contribute"
         app:showAsAction="never"/>
