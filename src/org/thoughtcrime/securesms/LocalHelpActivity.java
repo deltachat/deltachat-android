@@ -55,6 +55,9 @@ public class LocalHelpActivity extends WebViewActivity
       case R.id.learn_more:
         openOnlineUrl("https://delta.chat");
         return true;
+      case R.id.privacy_policy:
+        openOnlineUrl("https://delta.chat/gdpr");
+        return true;
       case R.id.contribute:
         openOnlineUrl("https://github.com/deltachat/deltachat-android");
         return true;
