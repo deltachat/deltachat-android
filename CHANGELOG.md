@@ -1,6 +1,6 @@
 # Delta Chat Android Changelog
 
-## v1.20.0
+## v1.20.1
 
 * improved accessibility and screen reader support
 * use the same emoji style everywhere across the app
