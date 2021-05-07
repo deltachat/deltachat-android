@@ -50,7 +50,7 @@
     <string name="hide_password">Wachtwoord verbergen</string>
     <string name="not_now">Niet nu</string>
     <string name="never">Nooit</string>
-    <string name="one_moment">Even geduld...</string>
+    <string name="one_moment">Even geduld…</string>
     <string name="done">Klaar</string>
     <string name="undo">Ongedaan maken</string>
     <string name="offline">Offline</string>
@@ -434,7 +434,7 @@
 
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
-    <string name="forward_to">Doorsturen naar...</string>
+    <string name="forward_to">Doorsturen naar…</string>
     <string name="share_multiple_attachments">Wil je %1$d bestanden delen in het gekozen gesprek?\n\nDe bestanden worden ongewijzigd verstuurd in oorspronkelijke grootte.</string>
     <string name="share_multiple_attachments_multiple_chats">Wil je %1$d bestand(en) delen in %2$d gesprekken?\n\nDe bestanden worden ongewijzigd verstuurd in oorspronkelijke grootte.</string>
     <string name="share_text_multiple_chats">Wil je deze tekst versturen naar %1$d gesprekken?\n\n\"%2$s\"</string>
@@ -657,7 +657,7 @@
     <string name="qrscan_contains_text">Gescande QR-codetekst:\n\n %1$s</string>
     <string name="qrscan_contains_url">Gescande QR-code-url:\n\n %1$s</string>
     <string name="qrscan_fingerprint_label">Vingerafdruk</string>
-    <string name="qrscan_x_verified_introduce_myself">%1$s goedgekeurd; vertel iets over jezelf...</string>
+    <string name="qrscan_x_verified_introduce_myself">%1$s is goedgekeurd - vertel iets over jezelf…</string>
     <string name="qrshow_title">QR-uitnodigingscode</string>
     <string name="qrshow_x_joining">%1$s heeft deelgenomen.</string>
     <string name="qrshow_x_verified">%1$s is goedgekeurd.</string>
@@ -720,7 +720,7 @@
     <string name="about_licensed_under_desktop">Deze software is vrijgegeven onder de GNU GPL versie 3 en de broncode is beschikbaar op GitHub.</string>
     <string name="welcome_desktop">Welkom bij Delta Chat</string>
     <string name="login_known_accounts_title_desktop">Bekende accounts</string>
-    <string name="global_menu_preferences_language_desktop">Kies een taal...</string>
+    <string name="global_menu_preferences_language_desktop">Taal</string>
     <string name="global_menu_file_desktop">Bestand</string>
     <string name="global_menu_file_quit_desktop">Afsluiten</string>
     <string name="global_menu_edit_desktop">Bewerken</string>
