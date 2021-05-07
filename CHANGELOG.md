@@ -1,10 +1,11 @@
 # Delta Chat Android Changelog
 
-## UNRELEASED
+## v1.20.0
 
 * improved accessibility and screen reader support
 * use the same emoji style everywhere across the app
 * allow to select and copy text from "message details" and error dialogs
+* show hints about how location data are used
 * fix: don't collapse search menu on group changes
 * add Indonesian, Polish, Ukrainian local help, update other translations
 
