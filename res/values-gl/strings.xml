@@ -200,6 +200,7 @@
     <string name="menu_scroll_to_bottom">Moverse abaixo</string>
     <string name="menu_scroll_to_top">Moverse arriba</string>
     <string name="menu_help">Axuda</string>
+    <string name="privacy_policy">Política de Privacidade</string>
     <string name="menu_select_all">Escoller todo</string>
     <string name="select_more">Elexir máis</string>
     <string name="menu_expand">Despregar</string>
@@ -813,6 +814,6 @@
     <string name="pref_reliable_service_explain">Require unha notificación permanente</string>
     <string name="perm_enable_bg_reminder_title">Toca aquí para recibir mensaxes mentras Delta Chat está en segundo plano.</string>
     <string name="perm_enable_bg_already_done">Xa permitiches que Delta Chat reciba mensaxes en segundo plano\n\nSe aínda así non recibes as mensaxes, por favor comproba os axustes do sistema.</string>
-    <string name="update_1_14_android">Destacados da actualización 1.14:\n\n🧹 Despraza para responder: para responder a unha mensaxe concreta, despraza hacia á dereita (non aquí! non podes responder aquí 😛) Verás a cita na parte superior da caixa de texto e poderás escribir como sempre.\n\n🔥 Mensaxes efémeras - chegou a hora 😀. Calquera conversa pódese configurar para eliminar as mensaxes enviadas e recibidas após un tempo. Elixe \"Mensaxes efémeras\" desde o menú da conversa (non aquí!)\n\n👆 Abrir conversa na primeira mensaxe non lida\n\n💾 Enviar cousas a \"Mensaxes gardadas\" directamente e máis rápido (esto pódelo probar aquí: mantén presa esta mensaxe e despois toca a flecha arriba-a-dereita)\n\n🎃 Para rematar, arranxamos moitos fallos! Moitos eran arrepiantes, non volverán.</string>
+    <string name="update_1_20">Na versión 1.20 melloramos a compatibilidade co email:\n\n📫 Ler listaxes de correo\n📭 Ler emails HTML\n📪 Mellor xestión dos enderezo de axuda\n📫 Arranxamos problemas e problemiños molestos\n\nLe o artigo no blog acerca destas melloras e máis:</string>
 
 </resources>

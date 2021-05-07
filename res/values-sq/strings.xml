@@ -198,6 +198,7 @@
     <string name="menu_scroll_to_bottom">Rrëshqit drejt fundit</string>
     <string name="menu_scroll_to_top">Rrëshqit sipër në krye</string>
     <string name="menu_help">Nidhmë</string>
+    <string name="privacy_policy">Rregulla Privatësie</string>
     <string name="menu_select_all">Përzgjidhi krejt</string>
     <string name="select_more">Përzgjidhni më tepër</string>
     <string name="menu_expand">Zgjeroje</string>
@@ -808,6 +809,6 @@
     <string name="pref_reliable_service_explain">Lyp një njoftim permanent</string>
     <string name="perm_enable_bg_reminder_title">Prekeni këtu që të merrni mesazhe, teksa Delta Chat rri në prapaskenë.</string>
     <string name="perm_enable_bg_already_done">E keni lejuar tashmë Delta Chat-in të marrë mesazhe në prapaskenë.\n\nNëse mesazhet prapë nuk mbërrijnë në prapaskenë, ju lutemi, kontrolloni edhe rregullimet e sistemit tuaj.</string>
-    <string name="update_1_14_android">Disa gjëra për t’u theksuar te përditësimi 1.14:\n\n🧹 Fërkojeni për t’u përgjigjur: Për t’ju përgjigjur një mesazhi të caktuar, fërkojeni për djathtas (jo këtu! këtu s’përgjigjeni dot 😛) Do të shihni një si punë citimi sipër rreshtit të hartuesit dhe mund të vazhdoni të shkruani mesazhin tuaj si zakonisht.\n\n🔥 Mesazhe që treten ­- ka ardhur koha 😀. Çfarëdo fjalosje tanimë mund të formësohet që të fshijë pas njëfarë kohe mesazhet e dërguar dhe të marrë. Thjesht përzgjidhni \"Tretje mesazhesh\" që nga menuja e fjalosjes (sërish: jo këtu)\n\n👆 Fjalosjet hapen me mesazhin e parë të palexuar\n\n💾 Përcillni gjëra te \"Mesazhe të ruajtur\" drejtpërdrejt dhe më shpejt (kjo mund të provohet këtu: prekeni paksa më gjatë këtë mesazh dhe mandej shigjetën sipër djathtas)\n\n🎃 Së fundi, kemi tmerruar shumë të meta! Shumë prej tyre qenë kaq shumë të tmerruara, sa s’do të kthehen më.</string>
+    <string name="update_1_20">U përmirësua përputhshmëri email-i në versionin 1.20:\n\n📫 Lexoni lista postimesh\n📭 Lexoni email-e HTML\n📪 Trajtim i bukur adresash asistence\n📫 U ndreqën mjaft yçkla të mëdha dhe vockla\n\nLexoni postimin tonë të ri në blog mbi këto hapa të para drejt email-it dhe më tepër:</string>
 
 </resources>

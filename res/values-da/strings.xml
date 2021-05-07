@@ -787,6 +787,4 @@
     <string name="pref_reliable_service_explain">Kræver en permanent forbindelse</string>
     <string name="perm_enable_bg_reminder_title">Tryk her for at modtage beskeder når Delta Chat er i baggrunden.</string>
     <string name="perm_enable_bg_already_done">Du har allerede tilladt Delta Chat at modtage beskeder i baggrunden.\n\nHvis beskeder ikke ankommer i baggrunden, undersøg dine systemindstillinger.</string>
-    <string name="update_1_14_android">Nogle højdepunkter af 1.14 opdateringen:\n\n🧹 Swipe for at svare: For at svare på en specifik besked kan du bare swipe til højre (ikke her! du kan ikke svare her 😛) Do vil se et citat over skirve-linjen og kan blive ved med at skrive din besked som sædvanligt.\n\n🔥 Meddelelser ­med tidsudløb - tiden er kommet 😀. Enhver samtale kan nu blive indstillet til at slette sendte og modtagne beskeder efter et bestemt tidsinterval. Bare vælg \"Beskeder med tidsudløb\" fra samtalens menu (igen: ikke her)\n\n👆 Samtaler åbner på første uset besked\n\n💾 Videresend ting til \"Gemte beskeder\" direkte og hurtigere (dette kan afprøves her: tryk lang tid på denne besked og derefter pilen øverst til venstre)\n\n🎃 Igen har vi skræmt mange bugs! Mange var så skræmte at de ikke kommer tilbage.</string>
-
-</resources>
+    </resources>

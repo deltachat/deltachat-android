@@ -194,6 +194,7 @@
     <string name="menu_scroll_to_bottom">滚动至底部</string>
     <string name="menu_scroll_to_top">滚动至顶部</string>
     <string name="menu_help">帮助</string>
+    <string name="privacy_policy">隐私政策</string>
     <string name="menu_select_all">全选</string>
     <string name="select_more">选择更多</string>
     <string name="menu_expand">展开</string>
@@ -801,6 +802,6 @@
     <string name="pref_reliable_service_explain">需要一个永久通知</string>
     <string name="perm_enable_bg_reminder_title">点击此处以在 Delta Chat 处于后台时接收消息。</string>
     <string name="perm_enable_bg_already_done">您已允许 Delta Chat 在后台接收消息。\n\n如果在后台时消息仍没到达，请检查系统设置。</string>
-    <string name="update_1_14_android">1.14 更新亮点：\n\n🧹 轻扫以回复：要回复某一具体消息，只需将其向右轻扫（不是这里！这里您不能回复😛）您会在撰写行上方看到一个引用，之后可以照常编写消息。\n\n🔥 消息定时销毁 ­—— 时辰已到😀。任意聊天均可被配置为在一段时间后删除已发送与已接收的消息。从聊天菜单中选择“消息定时销毁”（重复：不是这里）\n\n👆 于第一条未查看的消息处打开聊天\n\n💾 将东西直接、快速地转发到“保存的消息”（这个可以在这里尝试：长按此消息，然后右上角箭头）\n\n🎃 最后，我们再次恐吓了许多bug！它们大多数都被吓坏了，应该不会再回来了。</string>
+    <string name="update_1_20">我们在 1.20 版本改进了电子邮件兼容性：\n\n📫 阅读邮件列表\n📭 阅读 HTML 邮件\n📪 很好地处理支持地址\n📫 修复了多处大大小小的错误\n\n详情请阅读我们新的博客文章：</string>
 
 </resources>

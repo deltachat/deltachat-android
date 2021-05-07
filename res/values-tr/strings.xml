@@ -200,6 +200,7 @@
     <string name="menu_scroll_to_bottom">Alta kaydır</string>
     <string name="menu_scroll_to_top">Üste kaydır</string>
     <string name="menu_help">Yardım</string>
+    <string name="privacy_policy">Gizlilik İlkesi</string>
     <string name="menu_select_all">Tümünü seç</string>
     <string name="select_more">Daha fazlasını seç</string>
     <string name="menu_expand">Genişlet</string>
@@ -813,6 +814,6 @@
     <string name="pref_reliable_service_explain">Kalıcı bir bildirim gerektirir</string>
     <string name="perm_enable_bg_reminder_title">Delta Chat arka plandayken iletileri almak için buraya dokunun.</string>
     <string name="perm_enable_bg_already_done">Delta Chat\'in arka planda iletileri almasına zaten izin verdiniz.\n\nİletiler arka planda hâlâ gelmiyorsa, lütfen sistem ayarlarınızı da denetleyin.</string>
-    <string name="update_1_14_android">1.14 güncelleştirmesinin bazı öne çıkanları:\n\n🧹 Yanıtlamak için kaydırın: Somut bir iletiyi yanıtlamak için yalnızca onu sağa kaydırın (burada değil! buraya yanıt veremezsiniz 😛) Oluşturma satırının yukarısında bir tırnak göreceksiniz ve iletinizi her zaman olduğu gibi yazabileceksiniz.\n\n🔥 Kaybolan iletiler ­- zamanı geldi 😀. Artık herhangi bir sohbet, alınan ve gönderilen iletileri bir süre sonra silmek için yapılandırılabilir. Yalnızca sohbetin menüsündeki \"Kaybolan iletiler\"i seçin (yeniden: burada değil)\n\n👆 Sohbet, ilk görülmeyen iletide açılır\n\n💾 Öğeleri doğrudan ve hızlıca \"Kaydedilen iletiler\"e kaydedin (bu, burada denenebilir: bu iletiye uzun dokunun ve sonra sağ üste atın)\n\n🎃 Son olarak, çoğu hatayı yine ürküttük! Çoğu o kadar korktu ki geri dönmeyecek.</string>
+    <string name="update_1_20">1.20 sürümünde geliştirilen e-posta uyumluluğu:\n\n📫 Posta listelerini okuma\n📭 HTML postaları okuma\n📪 Destek adreslerini iyi işleme\n📫 Çoğu büyük ve küçük sorunlar düzeltildi\n\nPostaya yönelik bu ilk adımlar ve daha fazlası hakkındaki yeni blog gönderimizi okuyun:</string>
 
 </resources>

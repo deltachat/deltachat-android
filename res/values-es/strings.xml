@@ -200,6 +200,7 @@
     <string name="menu_scroll_to_bottom">Desplazarse al final</string>
     <string name="menu_scroll_to_top">Desplazarse al inicio</string>
     <string name="menu_help">Ayuda</string>
+    <string name="privacy_policy">Política de Privacidad</string>
     <string name="menu_select_all">Seleccionar todo</string>
     <string name="select_more">Selecciona más</string>
     <string name="menu_expand">Expandir</string>
@@ -813,6 +814,4 @@
     <string name="pref_reliable_service_explain">Requiere notificación permanente</string>
     <string name="perm_enable_bg_reminder_title">Toque aquí para recibir mensajes mientras Delta Chat está en segundo plano.</string>
     <string name="perm_enable_bg_already_done">Ya has permitido que Delta Chat reciba mensajes en segundo plano.\n\nSi los mensajes aún no llegan en segundo plano, compruebe también la configuración de su sistema.</string>
-    <string name="update_1_14_android">Algunas notas de la actualización 1.14:\n\n🧹 Tirar para responder: Para contestar un mensaje concreto, simplemente tira hacia la derecha (¡no aquí! no puedes responder aquí  😛) Verás una cita arriba de la linea de escritura y puedes continuar escribiendo como siempre.\n\n🔥 Mensajes que desaparecen - el momento ha llegado 😀. Cualquier chat puede ser configurado para borrar los mensajes enviados y recibidos luego de un tiempo. Selecciona \"Borrado de mensajes\" del menú del chat (nuevamente: no aquí)\n\n👆 Los chats se abren con el primer mensaje no visto\n\n💾 Reenviar cosas a \"Mensajes guardados\" directamente y más rápido (se puede probar aquí: selecciona este mensaje y luego toca en la flecha del sector superior derecho)\n\n🎃 Finalmente, ¡ya los espantamos con muchos bugs! Pero muchos de ellos fueron ahuyentados, no van a volver</string>
-
-</resources>
+    </resources>

@@ -208,6 +208,7 @@
     <string name="menu_scroll_to_bottom">Posuň až dolů</string>
     <string name="menu_scroll_to_top">Posuň až nahoru</string>
     <string name="menu_help">Nápověda</string>
+    <string name="privacy_policy">Pravidla pro soukromí</string>
     <string name="menu_select_all">Vyber vše</string>
     <string name="select_more">Vyber více</string>
     <string name="menu_expand">Rozšiř</string>
@@ -822,6 +823,4 @@
     <string name="pref_reliable_service_explain">Vyžaduje neustálé upozornění</string>
     <string name="perm_enable_bg_reminder_title">Stiskni zde a přijímání zpráv bude probíhat při chodu Delta Chatu na pozadí.</string>
     <string name="perm_enable_bg_already_done">Přijímání zpráv na pozadí je Delta Chatu již povoleno.\n\nV případě nepřicházení nových zpráv si prosím zkontroluj své systémové nastavení.</string>
-    <string name="update_1_14_android">To nejdůležitější z verze 1.14:\n\n🧹 Odpověď tahem: K odpovědi na konkrétní zprávu ji jednoduše šoupni do prava (tady nelze odpovídat 😛). Uvozená zpráva se zobrazí nad psacím řádkem a můžeš pokračovat v psaní zprávy jako obvykle.\n\n🔥 Samomazací zprávy  ­- už bylo na čase 😀. Každý hovor teď může být nastaven k mazání poslaných a příjatých zpráv po dané časové prodlevě. Stačí zvolit \"Samomazací zprávy\" z menu hovoru (opět: ne tady).\n\n👆 Hovory se otevířou na první neotevřenou zprávu.\n\n💾 Přesměrování do \"Uložených zpráv\" přímo a rychle (to jde i tady): dlouhý stisk zprávy a pak šipka do prava.\n\n🎃 Nakonec jsme opět vyděsili mnohé mouchy a chybové brouky! Mnozí znich byli tak vystrašení, že už se nevrátí.</string>
-
-</resources>
+    </resources>

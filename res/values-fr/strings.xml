@@ -196,6 +196,7 @@
     <string name="menu_scroll_to_bottom">Faites défiler jusqu\'en bas</string>
     <string name="menu_scroll_to_top">Faites défiler jusqu\'en haut</string>
     <string name="menu_help">Aide</string>
+    <string name="privacy_policy">Politique de confidentialité</string>
     <string name="menu_select_all">Tout sélectionner</string>
     <string name="select_more">Sélectionner plus</string>
     <string name="menu_expand">Étendre</string>
@@ -798,6 +799,4 @@
     <string name="pref_reliable_service_explain">Requiert une notification permanente</string>
     <string name="perm_enable_bg_reminder_title">Touchez ici pour recevoir des messages pendant que DeltaChat est en arrière-plan.</string>
     <string name="perm_enable_bg_already_done">Vous avez déjà autorisé Delta Chat à recevoir des messages en arrière plan.\n\nSi vous ne les recevez toujours pas en arrière plan, vérifiez les paramètres de votre système.</string>
-    <string name="update_1_14_android">Quelques points forts de la mise à jour 1.14 :\n\n🧹 Glisser pour répondre : pour répondre à un message précis, glissez-le juste vers la droite – pas ici ! vous ne pouvez pas répondre là 😛 Vous verrez une citation au-dessus de la ligne de rédaction et pourrez continuer d\'écrire votre message comme d\'habitude.\n\n🔥 Messages éphémères – le temps est venu 😀 Toute discussion peut maintenant être configurée pour effacer les messages envoyés et reçus après un certain temps. Sélectionnez juste « Messages éphémères » dans le menu de discussion – encore une fois, pas ici.\n\n👆 Les discussions s\'ouvrent au premier message non-lu.\n\n💾 Transférez des choses dans les « Messages sauvegardés » directement et plus rapidement – cela peut être essayé ici : appuyez longtemps sur ce message puis sur la flèche en haut à droite.\n\n🎃 Enfin, nous avons encore effrayés de nombreux bugs ! Beaucoup ont eu tellement peur qu\'ils ne reviendront jamais.</string>
-
-</resources>
+    </resources>
