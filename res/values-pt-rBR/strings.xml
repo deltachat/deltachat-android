@@ -774,6 +774,4 @@
     <string name="pref_reliable_service_explain">Requer uma notificação permanente</string>
     <string name="perm_enable_bg_reminder_title">Toque aqui para receber mensagens enquanto o Delta Chat estiver em segundo plano.</string>
     <string name="perm_enable_bg_already_done">Você já permitiu que o Delta Chat receba mensagens em segundo plano.\n\nSe as mensagens ainda não chegarem em segundo plano, verifique também as configurações do sistema.</string>
-    <string name="update_1_14_android">Alguns destaques da atualização 1.14:\n\n🧹 Deslize para responder: para responder a uma mensagem concreta, basta deslizar para a direita (não aqui! Você não pode responder aqui 😛) Você verá uma citação acima da linha de composição e poderá continuar escrevendo sua mensagem como de costume.\n\n🔥 Mensagens que desaparecem - chegou a hora 😀. Qualquer conversa agora pode ser configurada para excluir mensagens enviadas e recebidas após algum tempo. Basta selecionar \"Mensagens desaparecendo\" no menu da conversa (de novo: não aqui)\n\n👆 Conversas abrem na primeira mensagem não vista\n\n💾 Encaminhe para \"Mensagens salvas\" diretamente e mais rápido (pode ser tentado aqui: longo-toque nesta mensagem e depois na seta em cima à direita)\n\n🎃 Finalmente, mais uma vez assustamos muitos \"bugs\"! Muitos ficaram com tanto medo que não vão voltar.</string>
-
-</resources>
+    </resources>

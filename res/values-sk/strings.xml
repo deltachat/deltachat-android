@@ -822,6 +822,4 @@
     <string name="pref_reliable_service_explain">Vyžaduje trvalé upozornenie</string>
     <string name="perm_enable_bg_reminder_title">Klepnutím sem prijmete správy, zatiaľ čo je Delta Chat na pozadí.</string>
     <string name="perm_enable_bg_already_done">Službe Delta Chat ste už povolili príjem správ na pozadí.\n\nAk správy stále neprichádzajú na pozadí, skontrolujte tiež svoje systémové nastavenia.</string>
-    <string name="update_1_14_android">Niektoré najdôležitejšie body aktualizácie 1.14: \n\nPotiahnutím prstom odpoviete: Ak chcete odpovedať na konkrétnu správu, jednoducho potiahnite prstom doprava (nie tu! Tu nemôžete odpovedať You\'ll) Nad riadkom na napísanie príspevku sa zobrazí citát a môžete pokračovať v písaní vaša správa ako obvykle. \n\n🔥 Miznúce správy - nadišiel čas 😀. Teraz je možné nakonfigurovať akýkoľvek chat tak, aby po určitom čase odstránil odoslané a prijaté správy. Stačí v ponuke chatu zvoliť možnosť „Miznúce správy“ (opäť: tu nie)\n\n👆 Chaty sa otvárajú pri prvej nevidenej správe\n\n💾 Preposielať veci na „Uložené správy“ priamo a rýchlejšie (môžete to vyskúšať tu: dlho - klepnite na túto správu a potom na šípku vpravo hore)\n\n🎃 Nakoniec sme opäť vystrašili veľa chýb! Veľa bolo tak vystrašených, že sa už nevrátia.</string>
-
-</resources>
+    </resources>

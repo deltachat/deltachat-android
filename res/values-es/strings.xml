@@ -11,8 +11,8 @@
     <string name="on">Activado</string>
     <string name="off">Desactivado</string>
     <string name="def">Por defecto</string>
-    <string name="default_value">Default (%1$s)</string>
-    <string name="default_value_as_above">Default (igual que el superior)</string>
+    <string name="default_value">Por defecto (%1$s)</string>
+    <string name="default_value_as_above">Por defecto (igual que el superior)</string>
     <string name="custom">Personalizado</string>
     <string name="none">Ninguno</string>
     <string name="automatic">Automático</string>
@@ -39,11 +39,11 @@
     <string name="media">Multimedia</string>
     <string name="profile">Perfil</string>
     <string name="main_menu">Menú principal</string>
-    <string name="start_chat">Comienza un chat</string>
+    <string name="start_chat">Comenzar chat</string>
     <string name="show_full_message">Mostrar el mensaje completo...</string>
     <string name="load_remote_content">Cargar imágenes remotas</string>
     <!-- possible answers to the question are: Never, Always, Once -->
-    <string name="load_remote_content_ask">Las imágenes remotas pueden ser usadas para seguirte.\n\nLos ajustes también te permiten cargar fuentes y otros contenidos. Inclusive si están deshabilitadas, quizás puedas ver imágenes embebidas o en caché.\n\n¿Cargar imágenes remotas?</string>
+    <string name="load_remote_content_ask">Las imágenes remotas pueden ser usadas para seguirte.\n\nLa opción también permite cargar fuentes y otros contenidos. Inclusive si están deshabilitadas, quizás puedas ver imágenes embebidas o en caché.\n\n¿Cargar imágenes remotas?</string>
     <string name="always">Siempre</string>
     <string name="once">Una vez</string>
     <string name="show_password">Mostrar contraseña</string>
@@ -59,7 +59,7 @@
     <string name="error">Error</string>
     <string name="error_x">Error: %1$s</string>
     <string name="error_no_network">Red no disponible.</string>
-    <string name="no_app_to_handle_data">No se encontró una aplicación compatible con el tipo de archivo</string>
+    <string name="no_app_to_handle_data">No se encontró una aplicación compatible con el tipo de contenido</string>
     <string name="no_browser_installed">No hay ningún navegador instalado.</string>
     <string name="file_not_found">No se pudo encontrar %1$s.</string>
     <string name="copied_to_clipboard">Copiado al portapapeles.</string>
@@ -67,10 +67,10 @@
     <string name="email_address">Dirección de correo</string>
     <string name="bad_email_address">Dirección de correo no válida.</string>
     <string name="password">Contraseña</string>
-    <string name="existing_password">Password existente</string>
+    <string name="existing_password">Contraseña existente</string>
     <string name="now">Ahora</string>
     <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
-    <string name="danger">Sea cuidadoso</string>
+    <string name="danger">Peligro</string>
     <string name="today">Hoy</string>
     <string name="yesterday">Ayer</string>
     <string name="this_week">Esta semana</string>
@@ -171,7 +171,7 @@
     <string name="menu_add_attachment">Añadir adjunto</string>
     <string name="menu_leave_group">Abandonar grupo</string>
     <string name="menu_delete_chat">Eliminar chat</string>
-    <string name="ask_delete_named_chat">¿Seguro deseas eliminar \"%1$s\"?</string>
+    <string name="ask_delete_named_chat">¿Estás seguro de que deseas eliminar \"%1$s\"?</string>
     <string name="menu_delete_messages">Eliminar mensajes</string>
     <string name="menu_delete_image">Eliminar imagen</string>
     <string name="delete_contact">Borrar contacto</string>
@@ -180,7 +180,7 @@
     <string name="menu_message_details">Detalles del mensaje</string>
     <string name="menu_copy_to_clipboard">Copiar al portapapeles</string>
     <string name="menu_copy_selection_to_clipboard">Copiar selección</string>
-    <string name="menu_copy_link_to_clipboard">Copiar link</string>
+    <string name="menu_copy_link_to_clipboard">Copiar enlace</string>
     <string name="paste_from_clipboard">Pegar del portapapeles</string>
     <string name="menu_forward">Reenviar mensaje</string>
     <string name="menu_resend">Reenviar mensaje</string>
@@ -201,8 +201,9 @@
     <string name="menu_scroll_to_bottom">Desplazarse al final</string>
     <string name="menu_scroll_to_top">Desplazarse al inicio</string>
     <string name="menu_help">Ayuda</string>
+    <string name="privacy_policy">Política de privacidad</string>
     <string name="menu_select_all">Seleccionar todo</string>
-    <string name="select_more">Selecciona más</string>
+    <string name="select_more">Seleccionar más</string>
     <string name="menu_expand">Expandir</string>
     <string name="menu_edit_name">Editar nombre</string>
     <string name="menu_settings">Ajustes</string>
@@ -228,7 +229,7 @@
     <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
     <string name="unpin">Desanclar</string>
     <string name="ConversationFragment_quoted_message_not_found">Mensaje original no encontrado</string>
-    <string name="reply_privately">Responder por privado</string>
+    <string name="reply_privately">Responder en privado</string>
 
     <string name="mute_for_one_hour">Silenciar por 1 hora</string>
     <string name="mute_for_two_hours">Silenciar por 2 horas</string>
@@ -245,16 +246,16 @@
 
     <plurals name="ask_send_following_n_files_to">
         <item quantity="one">¿Enviar el  archivo a %s?</item>
-        <item quantity="other">Enviar el siguiente %d archivo a %s?</item>
+        <item quantity="other">¿Enviar los siguientes %d archivos a %s?</item>
     </plurals>
     <string name="file_saved_to">Archivo guardado en \"%1$s\".</string>
 
     <string name="videochat">Video llamada</string>
-    <string name="videochat_invite_user_to_videochat">¿Invitar %1$s a una videollamada?</string>
-    <string name="videochat_invite_user_hint">Esto requiere una app compatible o un navegador compatible en ambos participantes</string>
-    <string name="videochat_contact_invited_hint">%1$s invitado a una videollamada</string>
-    <string name="videochat_you_invited_hint">Invitaste a una videollamada</string>
-    <string name="videochat_will_open_in_your_browser">Esta videollamada se abrirá en tu navegador</string>
+    <string name="videochat_invite_user_to_videochat">¿Invitar a %1$s a una videollamada?</string>
+    <string name="videochat_invite_user_hint">Esto requiere una app compatible o un navegador compatible en ambos extremos.</string>
+    <string name="videochat_contact_invited_hint">%1$s invitado a una videollamada.</string>
+    <string name="videochat_you_invited_hint">Invitaste a una videollamada.</string>
+    <string name="videochat_will_open_in_your_browser">Esta videollamada se abrirá en tu navegador.</string>
     <string name="videochat_tap_to_join">Toca para unirte</string>
     <string name="videochat_tap_to_open">Toca para abrir</string>
     <string name="videochat_instance">Instancia de videollamada</string>
@@ -275,7 +276,7 @@
         <item quantity="other">¿Eliminar %d mensajes aquí y en el servidor?</item>
     </plurals>
     <string name="ask_forward">¿Reenviar mensajes a %1$s?</string>
-    <string name="ask_forward_multiple">¿Reenviar los mensajes a los %1$d chats?</string>
+    <string name="ask_forward_multiple">¿Reenviar mensajes a %1$d chats?</string>
     <string name="ask_export_attachment">¿Exportar adjuntos? Si exporta los adjuntos, serán accesibles desde cualquier otra aplicación en su dispositivo. ¿Desea continuar?</string>
     <string name="ask_block_contact">¿Bloquear este contacto? Ya no recibirás mensajes de este contacto.</string>
     <string name="ask_unblock_contact">¿Desbloquear este contacto? Una vez más podrá recibir mensajes de este contacto.</string>
@@ -286,7 +287,7 @@
     <string name="ask_delete_value">¿Borrar %s?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">¿Eliminar a %1$s del grupo?</string>
-    <string name="open_url_confirmation">¿Quieres abrir este link?</string>
+    <string name="open_url_confirmation">¿Quieres abrir este enlace?</string>
 
 
     <!-- contact list -->
@@ -334,17 +335,17 @@
     <string name="retry_send">Reintentar enviar mensaje</string>
     <string name="send_failed">Falló enviar el mensaje</string>
     <!-- reasons for a disabled message composer -->
-    <string name="messaging_disabled_not_in_group">No puedes escribir porque no estás en el grupo. Para unirte, pregúntale a otro miembro</string>
-    <string name="messaging_disabled_device_chat">Este chat posee mensajes generados localmente. Por eso no podés  escribir ningún mensaje</string>
+    <string name="messaging_disabled_not_in_group">No puedes escribir porque no estás en este grupo. Para unirte, pregúntale a otro miembro.</string>
+    <string name="messaging_disabled_device_chat">Este chat contiene mensajes generados localmente. Por eso no puedes escribir ningún mensaje.</string>
     <string name="messaging_disabled_deaddrop">Click en el mensaje para aceptar o denegar el pedido del contacto</string>
     <string name="cannot_display_unsuported_file_type">No se puede mostrar este tipo de archivo: %s</string>
-    <string name="attachment_failed_to_load">No se puede cargar el adjunto</string>
+    <string name="attachment_failed_to_load">Fallo al cargar el adjunto</string>
     <!-- For recording Voice messages: Description for the "Lock" button allowing to lift the thumb from the record button while recording continues -->
     <string name="lock_recording">Bloquear grabación</string>
 
     <!-- mailing lists -->
-    <string name="mailing_list">Listado de correos</string>
-    <string name="ask_show_mailing_list">¿Mostrar listado de mails \"%1$s\"?</string>
+    <string name="mailing_list">Lista de correo</string>
+    <string name="ask_show_mailing_list">¿Mostrar lista de correo \"%1$s\"?</string>
 
 
     <!-- map -->
@@ -362,7 +363,7 @@
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">Nombre del grupo</string>
     <string name="group_avatar">Avatar del grupo</string>
-    <string name="remove_group_image">Remover imagen de grupo</string>
+    <string name="remove_group_image">Eliminar imagen de grupo</string>
     <string name="change_group_image">Cambiar imagen de grupo</string>
     <string name="group_create_button">Crear grupo</string>
     <string name="group_please_enter_group_name">Por favor introduzca un nombre para el grupo.</string>
@@ -425,17 +426,17 @@
     <string name="switch_account">Cambiar cuenta</string>
     <string name="add_account">Agregar cuenta</string>
     <string name="delete_account">Eliminar cuenta</string>
-    <string name="delete_account_ask">Estás seguro de que quieres eliminar los datos de tu cuenta?</string>
+    <string name="delete_account_ask">¿Estás seguro de que quieres eliminar los datos de tu cuenta?</string>
     <string name="delete_account_explain_with_name">Todos los datos de la cuenta de \"%s\" este dispositivo serán eliminados. Incluyendo la configuración de encriptado punto a punto, contactos, chats, mensajes y multimedia. Esta acción no puede ser deshecha.</string>
     <string name="switching_account">Cambiando cuenta...</string>
-    <string name="try_connect_now">Intenta conectarte ahora</string>
+    <string name="try_connect_now">Intentar conectar ahora</string>
     <!-- Translations: %1$s will be replaced by a more detailed error message -->
     <string name="configuration_failed_with_error">La configuración falló. Error: %1$s</string>
 
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Reenviar a ...</string>
-    <string name="share_multiple_attachments">¿Enviar %1$d los archivos seleccionados al chat?\n\nLos archivos son enviados sin modificar en su tamaño original, ej. las imágenes y los videos no son codificados nuevamente.</string>
+    <string name="share_multiple_attachments">¿Enviar %1$d archivos al chat seleccionado?\n\nLos archivos son enviados sin modificar en su tamaño original, ej. las imágenes y los videos no son codificados nuevamente.</string>
     <string name="share_multiple_attachments_multiple_chats">¿Enviar %1$d archivo(s) a %2$d chats?\n\nLos archivos son enviados sin modificar en su tamaño original, ej. imágenes y videos no son codificados nuevamente.</string>
     <string name="share_text_multiple_chats">¿Enviar este texto  a %1$d chats?\n\n\"%2$s\"</string>
     <string name="share_abort">Intercambio abortado debido a la falta de permisos.</string>
@@ -447,7 +448,7 @@
     <string name="pref_profile_info_headline">Información de perfil </string>
     <string name="pref_profile_photo">Foto de perfil</string>
     <string name="pref_blocked_contacts">Contactos bloqueados</string>
-    <string name="blocked_empty_hint">Si bloqueas los contactos, se mostrarán aquí</string>
+    <string name="blocked_empty_hint">Si bloqueas contactos, se mostrarán aquí.</string>
     <string name="pref_profile_photo_remove_ask">¿Eliminar foto de perfil? </string>
     <string name="pref_password_and_account_settings">Contraseña y cuenta</string>
     <string name="pref_who_can_see_profile_explain">La imagen y el nombre de su perfil se mostrarán junto con sus mensajes cuando se comunique con otros usuarios. La información ya enviada no puede ser borrada o eliminada.</string>
@@ -471,7 +472,7 @@
     <string name="pref_notifications">Notificaciones </string>
     <string name="pref_notifications_show">Mostrar</string>
     <string name="pref_notifications_priority">Prioridad</string>
-    <string name="pref_notifications_explain">Habilita las notificaciones de sistema para nuevos mensajes</string>
+    <string name="pref_notifications_explain">Habilitar las notificaciones del sistema para nuevos mensajes</string>
     <string name="pref_show_notification_content">Mostrar el contenido del mensaje en la notificación</string>
     <string name="pref_show_notification_content_explain">Mostrar el remitente y las primeras palabras del mensaje en las notificaciones</string>
     <string name="pref_led_color">Color de LED</string>
@@ -537,14 +538,14 @@
     <string name="pref_background_default_color">Color por defecto</string>
     <string name="pref_background_custom_image">Imagen personalizada</string>
     <string name="pref_background_custom_color">Color personalizado</string>
-    <string name="export_aborted">Exportado abortado</string>
-    <string name="profile_image_select">Seleccionar la imagen de perfil</string>
+    <string name="export_aborted">Exportado abortado.</string>
+    <string name="profile_image_select">Seleccionar imagen de perfil</string>
     <string name="select_your_new_profile_image">Seleccionar tu nueva imagen de perfil</string>
-    <string name="profile_image_delete">Borrar tu imagen de perfil</string>
+    <string name="profile_image_delete">Borrar imagen de perfil</string>
 
 
     <!-- Emoji picker and categories -->
-    <string name="emoji_search_results">Buscar resultados</string>
+    <string name="emoji_search_results">Resultados de la búsqueda</string>
     <string name="emoji_not_found">No se encontraron emojis</string>
     <string name="emoji_recent">Usados</string>
     <string name="emoji_people">Personas &amp; Cuerpo</string>
@@ -668,8 +669,8 @@
     <string name="qrshow_join_contact_hint">Escanea esto para configurar un contacto con %1$s</string>
     <string name="qrshow_join_contact_no_connection_hint">La configuración con código QR requiere conexión a Internet. Por favor, conéctese a una red antes de continuar.</string>
     <string name="qrshow_join_contact_no_connection_toast">No hay conexión a Internet, no se puede configurar con código QR.</string>
-    <string name="qraccount_ask_create_and_login">¿Crear una nueva dirección de e-mail en \"%1$s\" e ingresar allí?</string>
-    <string name="qraccount_ask_create_and_login_another">¿Crear una nueva dirección de e-mail en \"%1$s\" e ingresar ahí?\n\nTu cuenta existente no será eliminada. Usar el ítem \"Cambiar cuenta\" para cambiar entre tus cuentas.</string>
+    <string name="qraccount_ask_create_and_login">¿Crear una nueva dirección de correo en \"%1$s\" e ingresar allí?</string>
+    <string name="qraccount_ask_create_and_login_another">¿Crear una nueva dirección de correo en \"%1$s\" e ingresar ahí?\n\nTu cuenta existente no será eliminada. Usar el ítem \"Cambiar cuenta\" para cambiar entre tus cuentas.</string>
     <string name="qraccount_success_enter_name">Ingreso satisfactorio—tu dirección de email es %1$s\n\nSi lo deseas, puedes ingresar un nombre y una imagen de perfil, que será mostrada a los usuarios que escribas.</string>
     <string name="qraccount_qr_code_cannot_be_used">El código QR escaneado no puede ser usado para configurar una nueva cuenta</string>
     <string name="qraccount_use_on_new_install">El código QR escaneado esta configurando la nueva cuenta. Puedes escanear el código QR cuando estés preparando una nueva instalación de DeltaLab</string>
@@ -814,6 +815,6 @@
     <string name="pref_reliable_service_explain">Requiere notificación permanente</string>
     <string name="perm_enable_bg_reminder_title">Toque aquí para recibir mensajes mientras DeltaLab está en segundo plano.</string>
     <string name="perm_enable_bg_already_done">Ya has permitido que DeltaLab reciba mensajes en segundo plano.\n\nSi los mensajes aún no llegan en segundo plano, compruebe también la configuración de su sistema.</string>
-    <string name="update_1_14_android">Algunas notas de la actualización 1.14:\n\n🧹 Tirar para responder: Para contestar un mensaje concreto, simplemente tira hacia la derecha (¡no aquí! no puedes responder aquí  😛) Verás una cita arriba de la linea de escritura y puedes continuar escribiendo como siempre.\n\n🔥 Mensajes que desaparecen - el momento ha llegado 😀. Cualquier chat puede ser configurado para borrar los mensajes enviados y recibidos luego de un tiempo. Selecciona \"Borrado de mensajes\" del menú del chat (nuevamente: no aquí)\n\n👆 Los chats se abren con el primer mensaje no visto\n\n💾 Reenviar cosas a \"Mensajes guardados\" directamente y más rápido (se puede probar aquí: selecciona este mensaje y luego toca en la flecha del sector superior derecho)\n\n🎃 Finalmente, ¡ya los espantamos con muchos bugs! Pero muchos de ellos fueron ahuyentados, no van a volver</string>
+    <string name="update_1_20">Mejorada la compatibilidad con el correo electrónico en la versión 1.20:\n\n📫 Leer listas de correo\n📭 Leer correos HTML\n📪 Buen manejo de las direcciones de soporte\n📫 Arregladas muchas molestias grandes y pequeñas\n\nLea nuestra nueva publicación sobre estos primeros pasos hacia el correo y más:</string>
 
 </resources>

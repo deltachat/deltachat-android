@@ -203,6 +203,7 @@
     <string name="menu_scroll_to_bottom">Scroll to the bottom</string>
     <string name="menu_scroll_to_top">Scroll to the top</string>
     <string name="menu_help">Help</string>
+    <string name="privacy_policy">Privacy policy</string>
     <string name="menu_select_all">Select all</string>
     <string name="select_more">Select more</string>
     <string name="menu_expand">Expand</string>
@@ -816,7 +817,6 @@
     <string name="pref_reliable_service_explain">Requires a permanent notification</string>
     <string name="perm_enable_bg_reminder_title">Tap here to receive messages while Delta Chat is in the background.</string>
     <string name="perm_enable_bg_already_done">You already allowed Delta Chat to receive messages in the background.\n\nIf messages still do not arrive in background, please also check your system settings.</string>
-    <string name="update_1_17_bots">🤖 Listado de bots actualizado:\nhttps://writefreely.public.cat/delta-news/bots-publicos</string>
-    <string name="update_1_17_android">Algunas de las mejoras más llamativas en la actualización 1.17:\n\n➡️ Añadido soporte para visualización de stickers y stickers animados, en el caso de los animados deben ser en formato webp animado o png animado (APNG)\n\n➡️ Las imágenes .webp se envían como stickers.\n\n➡️ Añadida opción de deslizar hacia arriba para fijar la grabación de audio y así no tener que mantener el dedo presionado constantemente mientras hablas.\n\n➡️ Más ahorro de datos, ahora los mensajes en grupos gastan menos y además, los acuse de recibo (doble palomitas) no se envían en grupos aunque tengas la opción activada, permitiendo usar la opción en privado mientras la evitas en grupos.\n\n➡️ Añadido soporte para la lectura de lista de correos (conocidas como "mailing lists" o "newsletters", muy usada en suscripciones a blogs etc.)\n\n➡️ Añadida opción para ver correos con formato html.\n\n➡️ Mejorada la compatibilidad con el correo electrónico.\n\n➡️ Mejorada la compatibilidad con outlook.com\n\n➡️ Ahora se muestran los estados/biografía/firma de los usuarios en sus perfiles.\n\n➡️ Más ahorro de datos: la foto de avatar ahora es más comprimida en dependencia de los ajustes de calidad multimedia.\n\n➡️ Nueva opción en la galería: "Mostrar en el chat" para ver la parte del chat donde se envió una imagen, además se añadió una nueva opción "Compartir" para compartir directamente la imagen con otro chat o con otra aplicación que no sea Delta Chat, sin tener que exportar la imagen y luego buscarla.\n\n➡️ Nuevo tema "Sistema" que se adapta a los cambios de tema claro/oscuro del teléfono en general.\n\n➡️ Ahora los backups se guardan en formato .tar\n\n➡️ Añadido soporte para nuevos idomas y actualización de las traducciones de varios idiomas.\n\n➡️ Montón de corrección de errores y mucho más!!!</string>
+    <string name="update_1_20">Improved e-mail compatibility in version 1.20:\n\n📫 Read mailing lists\n📭 Read HTML-mails\n📪 Nice handling of support addresses\n📫 Many major and minor annoyances fixed\n\nRead our new blog post about these first steps towards mail and more:</string>
 
 </resources>

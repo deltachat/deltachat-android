@@ -37,6 +37,8 @@
     <string name="profile">Profil</string>
     <string name="main_menu">Menu główne</string>
     <string name="start_chat">Rozpocznij czat</string>
+    <string name="always">Zawsze</string>
+    <string name="once">Jeden raz</string>
     <string name="show_password">Pokaż hasło</string>
     <string name="hide_password">Ukryj hasło</string>
     <string name="not_now">Nie teraz</string>
@@ -140,10 +142,10 @@
 
     <string name="zoom">Powiększenie</string>
     <string name="extra_small">Bardzo małe</string>
-    <string name="small">Mały</string>
-    <string name="normal">Normalny</string>
-    <string name="large">Duży</string>
-    <string name="extra_large">Bardzo duży</string>
+    <string name="small">Małe</string>
+    <string name="normal">Normalne</string>
+    <string name="large">Duże</string>
+    <string name="extra_large">Bardzo duże</string>
 
     <string name="fast">Szybkie</string>
     <string name="slow">Wolne</string>
@@ -196,6 +198,7 @@
     <string name="menu_scroll_to_bottom">Przewiń na dołu</string>
     <string name="menu_scroll_to_top">Przewiń na górę</string>
     <string name="menu_help">Pomoc</string>
+    <string name="privacy_policy">Polityka prywatności</string>
     <string name="menu_select_all">Zaznacz wszystko</string>
     <string name="menu_expand">Rozwiń</string>
     <string name="menu_edit_name">Edytuj nazwę</string>
@@ -419,6 +422,7 @@
     <string name="add_account">Dodaj konto</string>
     <string name="delete_account">Usuń konto</string>
     <string name="delete_account_ask">Czy na pewno chcesz usunąć dane swojego konta?</string>
+    <string name="delete_account_explain_with_name">Wszystkie dane konta „%s” na tym urządzeniu zostaną usunięte, w tym konfiguracja szyfrowania end-to-end, kontakty, czaty, wiadomości i multimedia. Tej operacji nie można cofnąć.</string>
     <string name="switching_account">Przełączam konto…</string>
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
@@ -509,7 +513,7 @@
     <string name="pref_imap_folder_warn_disable_defaults">Jeśli wyłączysz tę opcję, upewnij się, że twój serwer i inni klienci są odpowiednio skonfigurowani.\n\nW przeciwnym razie wszystko może w ogóle nie działać.</string>
     <string name="pref_watch_inbox_folder">Oglądaj katalog Skrzynka odbiorcza</string>
     <string name="pref_watch_sent_folder">Oglądaj katalog Wysłane</string>
-    <string name="pref_watch_mvbox_folder">Oglądaj katalog DeltaChat</string>
+    <string name="pref_watch_mvbox_folder">Oglądaj folder DeltaChat</string>
     <string name="pref_send_copy_to_self">Wyślij kopię do siebie</string>
     <string name="pref_auto_folder_moves">Automatyczne przenoszenie do folderu DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">Rozmowy na czacie są przenoszone, aby nie zaśmiecać folderu Skrzynka odbiorcza</string>
@@ -529,6 +533,8 @@
     <string name="profile_image_delete">Usuń zdjęcie profilowe</string>
 
 
+    <!-- Emoji picker and categories -->
+    <string name="emoji_search_results">Wyniki wyszukiwania</string>
     <string name="emoji_not_found">Nie znaleziono emoji</string>
     <string name="emoji_recent">Ostatnio używane</string>
     <string name="emoji_people">Ludzie i Ciało</string>
@@ -549,6 +555,10 @@
     <string name="autodel_server_title">Usuwanie wiadomości z serwera</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">Czy chcesz teraz usunąć %1$d wiadomości i wszystkie nowo pobrane wiadomości w przyszłości „%2$s”?\n\n• Obejmuje to wszystkie multimedia\n\n• Wiadomości zostaną usunięte niezależnie od tego, czy były widoczne, czy nie\n\n• „Zapisane wiadomości” zostaną pominięte podczas lokalnego usuwania</string>
+    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
+    <string name="autodel_server_ask">Czy chcesz teraz usunąć %1$d wiadomości i wszystkie nowo pobrane wiadomości w przyszłości „%2$s”?\n\n⚠️ Obejmuje to e-maile, multimedia i „Zapisane wiadomości” we wszystkich folderach na serwerze.\n\n⚠️ Nie używaj tej funkcji, jeśli chcesz zachować dane na serwerze\n\n⚠️ Nie używaj tej funkcji, jeśli używasz innych klientów poczty e-mail oprócz Delta Chat</string>
+    <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
+    <string name="autodel_server_enabled_hint">Obejmuje to e-maile, multimedia i „Zapisane wiadomości” we wszystkich folderach na serwerze. Nie używaj tej funkcji, jeśli chcesz zachować dane na serwerze lub jeśli używasz innych klientów poczty e-mail oprócz Delta Chat.</string>
     <string name="autodel_confirm">Rozumiem, usuń te wszystkie wiadomości</string>
     <string name="autodel_at_once">Od razu</string>
     <string name="after_30_seconds">Po 30 sekundach</string>
@@ -675,6 +685,13 @@
     <string name="perm_explain_access_to_storage_denied">Delta Chat wymaga uprawnienia do przechowywania, aby dołączyć lub wyeksportować zdjęcia, filmy lub dźwięk, ale zostało ono trwale odrzucone. Przejdź do menu ustawień aplikacji, wybierz „Uprawnienia” i włącz „Pamięć”.</string>
     <string name="perm_explain_access_to_location_denied">Delta Chat wymaga zezwolenia na lokalizację, aby dołączyć lokalizację, ale zostało ono trwale odrzucone. Przejdź do menu ustawień aplikacji, wybierz „Uprawnienia” i włącz „Lokalizacja”.</string>
 
+    <!-- ImageEditorHud -->
+    <string name="ImageEditorHud_draw_anywhere_to_blur">Rysuj gdziekolwiek, aby rozmyć</string>
+    <string name="ImageEditorHud_add_text">Dodaj tekst</string>
+    <string name="ImageEditorHud_blur">Rozmycie</string>
+    <string name="ImageEditorHud_crop">Przytnij</string>
+    <string name="ImageEditorHud_rotate">Obróć</string>
+
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Zaszyfrowana wiadomość</string>
 
@@ -685,7 +702,7 @@
     <string name="login_known_accounts_title_desktop">Znane konta</string>
     <string name="global_menu_preferences_language_desktop">Wybierz język</string>
     <string name="global_menu_file_desktop">Plik</string>
-    <string name="global_menu_file_quit_desktop">Wyjdź</string>
+    <string name="global_menu_file_quit_desktop">Zamknij</string>
     <string name="global_menu_edit_desktop">Edycja</string>
     <string name="global_menu_edit_undo_desktop">Cofnij</string>
     <string name="global_menu_edit_redo_desktop">Przywróć</string>

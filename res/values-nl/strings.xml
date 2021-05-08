@@ -50,7 +50,7 @@
     <string name="hide_password">Wachtwoord verbergen</string>
     <string name="not_now">Niet nu</string>
     <string name="never">Nooit</string>
-    <string name="one_moment">Even geduld...</string>
+    <string name="one_moment">Even geduld…</string>
     <string name="done">Klaar</string>
     <string name="undo">Ongedaan maken</string>
     <string name="offline">Offline</string>
@@ -200,6 +200,7 @@
     <string name="menu_scroll_to_bottom">Ga naar het einde</string>
     <string name="menu_scroll_to_top">Ga naar het begin</string>
     <string name="menu_help">Hulp</string>
+    <string name="privacy_policy">Privacybeleid</string>
     <string name="menu_select_all">Alles selecteren</string>
     <string name="select_more">Meer selecteren</string>
     <string name="menu_expand">Uitvouwen</string>
@@ -433,7 +434,7 @@
 
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
-    <string name="forward_to">Doorsturen naar...</string>
+    <string name="forward_to">Doorsturen naar…</string>
     <string name="share_multiple_attachments">Wil je %1$d bestanden delen in het gekozen gesprek?\n\nDe bestanden worden ongewijzigd verstuurd in oorspronkelijke grootte.</string>
     <string name="share_multiple_attachments_multiple_chats">Wil je %1$d bestand(en) delen in %2$d gesprekken?\n\nDe bestanden worden ongewijzigd verstuurd in oorspronkelijke grootte.</string>
     <string name="share_text_multiple_chats">Wil je deze tekst versturen naar %1$d gesprekken?\n\n\"%2$s\"</string>
@@ -656,7 +657,7 @@
     <string name="qrscan_contains_text">Gescande QR-codetekst:\n\n %1$s</string>
     <string name="qrscan_contains_url">Gescande QR-code-url:\n\n %1$s</string>
     <string name="qrscan_fingerprint_label">Vingerafdruk</string>
-    <string name="qrscan_x_verified_introduce_myself">%1$s goedgekeurd; vertel iets over jezelf...</string>
+    <string name="qrscan_x_verified_introduce_myself">%1$s is goedgekeurd - vertel iets over jezelf…</string>
     <string name="qrshow_title">QR-uitnodigingscode</string>
     <string name="qrshow_x_joining">%1$s heeft deelgenomen.</string>
     <string name="qrshow_x_verified">%1$s is goedgekeurd.</string>
@@ -719,7 +720,7 @@
     <string name="about_licensed_under_desktop">Deze software is vrijgegeven onder de GNU GPL versie 3 en de broncode is beschikbaar op GitHub.</string>
     <string name="welcome_desktop">Welkom bij Delta Chat</string>
     <string name="login_known_accounts_title_desktop">Bekende accounts</string>
-    <string name="global_menu_preferences_language_desktop">Kies een taal...</string>
+    <string name="global_menu_preferences_language_desktop">Taal</string>
     <string name="global_menu_file_desktop">Bestand</string>
     <string name="global_menu_file_quit_desktop">Afsluiten</string>
     <string name="global_menu_edit_desktop">Bewerken</string>
@@ -813,6 +814,6 @@
     <string name="pref_reliable_service_explain">Vereist een permanente melding</string>
     <string name="perm_enable_bg_reminder_title">Druk hier om berichten te ontvangen als Delta Chat niet geopend is.</string>
     <string name="perm_enable_bg_already_done">Je hebt al toestemming gegeven voor het ophalen van berichten op de achtergrond.\n\nAls het nog steeds niet werkt, controleer dan de systeeminstellingen.</string>
-    <string name="update_1_14_android">Enkele hoogtepunten van de 1.14-update:\n\n🧹 Veeg om te beantwoorden: veeg het bericht waarop je wilt antwoorden naar rechts om een citaat in te voegen en te antwoorden (maar niet hier, want dan krijg je geen antwoord terug 😛).\n\n🔥 Verdwijnende berichten - eindelijk! 😀. In elk gesprek kun je nu verzonden en ontvangen berichten na een bepaalde tijd verwijderen met de optie \'Verdwijnende berichten\' in het gespreksmenu (ook hier geldt: niet in dit gesprek)\n\n👆 Gesprekken scrollen voortaan naar het eerste ongelezen bericht\n\n💾 Stuur items door naar \'Opgeslagen berichten\' (dit kan wél hier: houd dit bericht ingedrukt en druk op de pijl rechtsboven)\n\n🎃 Verder hebben we veel fouten angst aangejaagd - die zien we nooit meer terug!</string>
+    <string name="update_1_20">Verbeterde e-mailcompatibiliteit in versie 1.20:\n\n📫 Lees mailinglijsten\n📭 Lees html-e-mails\n📪 Betere afhandeling van ondersteuningsadressen\n📫 Vele grotere en kleinere problemen opgelost\n\nLees ons nieuwste blogartikel over deze eerste stappen naar e-mail en meer (Engels):</string>
 
 </resources>

@@ -200,6 +200,7 @@
     <string name="menu_scroll_to_bottom">Zum Ende scrollen</string>
     <string name="menu_scroll_to_top">Zum Anfang scrollen</string>
     <string name="menu_help">Hilfe</string>
+    <string name="privacy_policy">Datenschutzerklärung</string>
     <string name="menu_select_all">Alles auswählen</string>
     <string name="select_more">Mehr auswählen</string>
     <string name="menu_expand">Erweitern</string>
@@ -817,6 +818,6 @@ Ihr bisheriges E-Mail-Konto wird dabei nicht gelöscht. Sie können mit der Opti
     <string name="pref_reliable_service_explain">Erfordert immer sichtbaren Hinweis</string>
     <string name="perm_enable_bg_reminder_title">Tippen Sie hier, um Nachrichten zu empfangen, während Delta Chat im Hintergrund läuft.</string>
     <string name="perm_enable_bg_already_done">Sie haben Delta Chat bereits erlaubt, Nachrichten im Hintergrund zu empfangen.\n\nFalls keine Nachrichten eingehen, überprüfen Sie bitte auch Ihre Systemeinstellungen.</string>
-    <string name="update_1_14_android">Neues im 1.14 Update:\n\n🧹 Wischen zum Antworten: Um eine konkrete Nachricht zu beantworten, wischen Sie diese einfach nach rechts (nicht hier! hier kann man nicht antworten 😛) Die Antwort selbst erstellen Sie dann wie gewohnt.\n\n🔥 Verschwindende Nachrichten: Chats können jetzt so konfiguriert werden, dass gesendete und empfangene Nachrichten nach einiger Zeit gelöscht werden. Wählen Sie einfach \"Verschwindende Nachrichten\" aus dem Chat-Menü (wieder: nicht hier)\n\n👆 Chats öffnen sich bei der ersten ungelesenen Nachricht.\n\n💾 Legen Sie Dinge direkt und schnell in den \"Gespeicherte Nachrichten\" ab (dies kann hier versucht werden: Tippen Sie lange auf diese Nachricht und dann auf den Pfeil oben rechts)\n\n🎃 Ausserdem haben wir viele Bugs verschreckt! Die meisten werden kaum zurückkommen.</string>
+    <string name="update_1_20">Verbesserte E-Mail-Kompatibilität in Version 1.20:\n\n📫 Mailinglisten lesen\n📭 HTML-Mails anzeigen\n📪 Bessere Unterstützung von Support-Adressen\n📫 Viele weitere Probleme behoben\n\nLesen Sie unseren neuen Blog-Beitrag über diese ersten Schritte Richtung E-Mail und mehr:</string>
 
 </resources>
