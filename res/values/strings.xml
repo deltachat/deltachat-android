@@ -113,6 +113,7 @@
     <string name="images">Images</string>
     <string name="audio">Audio</string>
     <string name="voice_message">Voice message</string>
+    <string name="forwarded">Forwarded</string>
     <string name="forwarded_message">Forwarded message</string>
     <!-- %1$s will be replaced by the name or the email-address of the person who has forwarded the message -->
     <string name="forwarded_by">Forwarded by %1$s</string>
