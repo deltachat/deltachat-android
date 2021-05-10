@@ -4,6 +4,7 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">了承</string>
     <string name="cancel">取消</string>
+    <string name="clear_search">検索履歴を消す</string>
     <string name="yes">はい</string>
     <string name="no">いいえ</string>
     <string name="select">選択</string>
@@ -114,6 +115,8 @@
     <string name="contact">連絡先</string>
     <string name="verified_contact">確認済みの連絡先</string>
     <string name="camera">カメラ</string>
+    <string name="switch_camera">カメラを切り替える</string>
+    <string name="toggle_fullscreen">フルスクリーン</string>
     <string name="location">場所</string>
     <string name="gallery">画像</string>
     <string name="images_and_videos">画像・映像</string>
@@ -190,6 +193,7 @@
     <string name="menu_scroll_to_bottom">一番下までスクロールする</string>
     <string name="menu_scroll_to_top">一番上までスクロールする</string>
     <string name="menu_help">ヘルプ</string>
+    <string name="privacy_policy">プライバシーについて</string>
     <string name="menu_select_all">全選択</string>
     <string name="select_more">さらに選択</string>
     <string name="menu_expand">広げる</string>
@@ -621,6 +625,7 @@ https://delta.chat</string>
     <string name="qrshow_join_contact_title">自分のQRｺｰﾄﾞ</string>
     <string name="qrshow_join_contact_hint">スキャンして%1$sに連絡します。</string>
     <string name="qrshow_join_contact_no_connection_toast">インターネットに接続されていないので、QRコードの設定ができません。</string>
+    <string name="qraccount_ask_create_and_login">%1$sに新しいメールアドレスを作ってログしますか。</string>
     <string name="contact_verified">%1$sを確認しました。</string>
     <string name="contact_not_verified">%1$sを確認できません。</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
@@ -640,6 +645,12 @@ https://delta.chat</string>
     <!-- permissions -->
     <string name="perm_required_title">アクセス許可が必要です</string>
     <string name="perm_continue">続行</string>
+    <string name="ImageEditorHud_add_text">テキストを作成</string>
+    <string name="ImageEditorHud_blur">ぼかし</string>
+    <string name="ImageEditorHud_crop">切り抜き</string>
+    <string name="ImageEditorHud_flip">反転</string>
+    <string name="ImageEditorHud_rotate">回転</string>
+
     <!-- dc_str_* resources -->
     <string name="encrypted_message">暗号化されたメッセージ</string>
 
