@@ -167,6 +167,7 @@ public class ApplicationDcContext extends DcContext {
     setStockTranslation(94, context.getString(R.string.systemmsg_ephemeral_timer_hours));
     setStockTranslation(95, context.getString(R.string.systemmsg_ephemeral_timer_days));
     setStockTranslation(96, context.getString(R.string.systemmsg_ephemeral_timer_weeks));
+    setStockTranslation(97, context.getString(R.string.forwarded));
   }
 
   public File getImexDir() {
