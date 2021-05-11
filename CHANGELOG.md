@@ -1,5 +1,13 @@
 # Delta Chat Android Changelog
 
+## v1.20.2
+
+* fix crash when receiving some special messages
+* fix downloading some messages multiple times
+* fix formatting of read receipt texts
+* update translations
+
+
 ## v1.20.1
 
 * improved accessibility and screen reader support
