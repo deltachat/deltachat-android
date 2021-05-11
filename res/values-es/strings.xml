@@ -362,7 +362,7 @@
 
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">Nombre del grupo</string>
-    <string name="group_avatar">Avatar del grupo</string>
+    <string name="group_avatar">Imagen del grupo</string>
     <string name="remove_group_image">Eliminar imagen de grupo</string>
     <string name="change_group_image">Cambiar imagen de grupo</string>
     <string name="group_create_button">Crear grupo</string>
@@ -389,7 +389,7 @@
     <string name="welcome_intro1_message">La aplicación de mensajería instantánea con la audiencia más amplia del mundo. Libre e independiente. </string>
     <string name="login_title">Iniciar sesión</string>
     <string name="login_header">Inicie sesión en su servidor</string>
-    <string name="login_explain">Iniciar sesión con una cuenta de e-mail existente</string>
+    <string name="login_explain">Iniciar sesión con una cuenta de correo existente</string>
     <string name="login_subheader">Para los proveedores de correo conocidos, la configuración es realizada automáticamente. A veces, IMAP debe estar habilitado en la interfaz web. Consulte a su proveedor de correo o amigos para obtener ayuda.</string>
     <string name="login_no_servers_hint">No hay servidores de DeltaLab, tus datos permanecen en tu dispositivo!</string>
     <string name="login_inbox">Bandeja de entrada</string>
@@ -551,7 +551,7 @@
     <string name="emoji_people">Personas &amp; Cuerpo</string>
     <string name="emoji_nature">Animales  &amp; Naturaleza</string>
     <string name="emoji_foods">Comida  &amp; Bebida</string>
-    <string name="emoji_activity">Actividades</string>
+    <string name="emoji_activity">Actividad</string>
     <string name="emoji_places">Viaje  &amp; Lugares</string>
     <string name="emoji_objects">Objetos</string>
     <string name="emoji_symbols">Símbolos</string>
@@ -570,7 +570,7 @@
     <string name="autodel_server_ask">¿Deseas borrar %1$d mensajes ahora y todos los mensajes recibidos en \"%2$s\"  al futuro?\n\n⚠️ Esto incluye correos, multimedia y \"Mensajes guardados\" en todas las carpetas del servidor. No uses esta función si quieres mantener tus datos en el servidor o si estas usando otros clientes de correo más allá de DeltaLab\n\n⚠️ No uses esta función si deseas mantener tus datos en el servidor\n\n⚠️ No uses esta función si estás usando otros clientes de correo más allá de DeltaLab</string>
     <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
     <string name="autodel_server_enabled_hint">Esto incluye correos, multimedia  y \"Mensajes guardados\" en todas las carpetas del servidor. No uses esta función si quieres mantener tus datos en el servidor o si estas usando otros clientes de correo más allá de DeltaLab</string>
-    <string name="autodel_confirm">Comprendo, borrar todos los mensajes</string>
+    <string name="autodel_confirm">Comprendo, borrar todos estos mensajes</string>
     <string name="autodel_at_once">Inmediatamente</string>
     <string name="after_30_seconds">Luego de 30 segundos</string>
     <string name="after_1_minute">Luego de 1 minuto</string>
@@ -615,25 +615,25 @@
     <string name="systemmsg_action_by_me">%1$s por mi.</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
     <string name="systemmsg_action_by_user">%1$s por %2$s.</string>
-    <string name="systemmsg_unknown_sender_for_chat">Remitente desconocido. Mira \"info\" para más detalles</string>
+    <string name="systemmsg_unknown_sender_for_chat">Remitente desconocido. Mira \"info\" para más detalles.</string>
     <string name="systemmsg_subject_for_new_contact">Mensaje de %1$s</string>
     <string name="systemmsg_failed_sending_to">Falla en enviar el mensaje a %1$s.</string>
 
-    <string name="systemmsg_ephemeral_timer_disabled">Temporizador de mensajes borrados desactivado</string>
+    <string name="systemmsg_ephemeral_timer_disabled">Temporizador de mensajes borrados desactivado.</string>
     <string name="systemmsg_ephemeral_timer_enabled">Temporizador del borrado de mensajes dispuesto en %1$s s.</string>
-    <string name="systemmsg_ephemeral_timer_minute">Temporizador de borrado de mensaje dispuesto en 1 minuto</string>
-    <string name="systemmsg_ephemeral_timer_hour">Temporizador de borrado de mensaje dispuesto en 1 hora</string>
-    <string name="systemmsg_ephemeral_timer_day">Temporizador de borrado de mensaje dispuesto en 1 día</string>
-    <string name="systemmsg_ephemeral_timer_week">Temporizador de borrado de mensaje dispuesto en 1 semana</string>
-    <string name="systemmsg_ephemeral_timer_four_weeks">Temporizador de borrado de mensaje dispuesto en 4 semanas</string>
-    <string name="systemmsg_ephemeral_timer_minutes">Timer de mensajes borrados dispuesto en %1$s minutos.</string>
-    <string name="systemmsg_ephemeral_timer_hours">Timer de mensajes borrados dispuesto a %1$s horas.</string>
-    <string name="systemmsg_ephemeral_timer_days">Timer de mensajes borrados dispuestos en %1$s días.</string>
-    <string name="systemmsg_ephemeral_timer_weeks">Timer de mensajes borrados dispuestos para %1$s semanas.</string>
+    <string name="systemmsg_ephemeral_timer_minute">Temporizador de borrado de mensaje dispuesto en 1 minuto.</string>
+    <string name="systemmsg_ephemeral_timer_hour">Temporizador de borrado de mensaje dispuesto en 1 hora.</string>
+    <string name="systemmsg_ephemeral_timer_day">Temporizador de borrado de mensaje dispuesto en 1 día.</string>
+    <string name="systemmsg_ephemeral_timer_week">Temporizador de borrado de mensaje dispuesto en 1 semana.</string>
+    <string name="systemmsg_ephemeral_timer_four_weeks">Temporizador de borrado de mensaje dispuesto en 4 semanas.</string>
+    <string name="systemmsg_ephemeral_timer_minutes">Temporizador de mensajes borrados dispuesto en %1$s minutos.</string>
+    <string name="systemmsg_ephemeral_timer_hours">Temporizador de mensajes borrados dispuesto a %1$s horas.</string>
+    <string name="systemmsg_ephemeral_timer_days">Temporizador de mensajes borrados dispuestos en %1$s días.</string>
+    <string name="systemmsg_ephemeral_timer_weeks">Temporizador de mensajes borrados dispuestos para %1$s semanas.</string>
 
     <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
-    <string name="systemmsg_chat_protection_disabled">Protección de chat desactivada</string>
-    <string name="systemmsg_chat_protection_enabled">Protección de chat activa</string>
+    <string name="systemmsg_chat_protection_disabled">Protección de chat desactivada.</string>
+    <string name="systemmsg_chat_protection_enabled">Protección de chat activada.</string>
 
     <!-- screen lock -->
     <string name="screenlock_title">Bloqueo de pantalla</string>
@@ -651,7 +651,7 @@
     <string name="load_qr_code_as_image">Cargar código QR como imagen</string>
     <string name="qrscan_title">Escanear código QR</string>
     <string name="qrscan_hint">Coloque su cámara sobre el código QR</string>
-    <string name="qrscan_failed">Código QR no pudo ser decodificado</string>
+    <string name="qrscan_failed">El código QR no pudo ser decodificado</string>
     <string name="qrscan_ask_join_group">¿Quieres unirte al grupo \"%1$s\"?</string>
     <string name="qrscan_fingerprint_mismatch">La huella digital escaneada no coincide con la última huella vista para \"%1$s\".</string>
     <string name="qrscan_no_addr_found">Este código QR contiene una huella digital pero no una dirección de correo electrónico.\n\nPara una verificación fuera de banda, establezca primero una conexión cifrada con el destinatario.</string>
@@ -672,12 +672,12 @@
     <string name="qraccount_ask_create_and_login">¿Crear una nueva dirección de correo en \"%1$s\" e ingresar allí?</string>
     <string name="qraccount_ask_create_and_login_another">¿Crear una nueva dirección de correo en \"%1$s\" e ingresar ahí?\n\nTu cuenta existente no será eliminada. Usar el ítem \"Cambiar cuenta\" para cambiar entre tus cuentas.</string>
     <string name="qraccount_success_enter_name">Ingreso satisfactorio—tu dirección de email es %1$s\n\nSi lo deseas, puedes ingresar un nombre y una imagen de perfil, que será mostrada a los usuarios que escribas.</string>
-    <string name="qraccount_qr_code_cannot_be_used">El código QR escaneado no puede ser usado para configurar una nueva cuenta</string>
+    <string name="qraccount_qr_code_cannot_be_used">El código QR escaneado no puede ser usado para configurar una nueva cuenta.</string>
     <string name="qraccount_use_on_new_install">El código QR escaneado esta configurando la nueva cuenta. Puedes escanear el código QR cuando estés preparando una nueva instalación de DeltaLab</string>
     <string name="contact_verified">%1$s verificado.</string>
-    <string name="contact_not_verified">No se pudo verificar %1$s</string>
+    <string name="contact_not_verified">No se pudo verificar %1$s.</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
-    <string name="contact_setup_changed">Configuración cambiada para %1$s</string>
+    <string name="contact_setup_changed">Configuración cambiada para %1$s.</string>
     <string name="verified_group_explain">Los grupos verificados (experimentales) brindan seguridad contra ataques activos. Los miembros son verificados con un segundo factor por otros miembros y los mensajes siempre están encriptados de extremo a extremo.</string>
     <string name="copy_qr_data_success">URL del código QR copiado al portapapeles</string>
 
@@ -708,20 +708,20 @@
     <string name="ImageEditorHud_add_text">Añadir texto</string>
     <string name="ImageEditorHud_blur">Difuminar</string>
     <string name="ImageEditorHud_brush_marker">Marcador</string>
-    <string name="ImageEditorHud_brush_highlight">Pincel de resaltad</string>
+    <string name="ImageEditorHud_brush_highlight">Pincel de resaltado</string>
     <string name="ImageEditorHud_crop">Recortar</string>
-    <string name="ImageEditorHud_flip">Recortar</string>
-    <string name="ImageEditorHud_rotate">Recortar</string>
+    <string name="ImageEditorHud_flip">Voltear</string>
+    <string name="ImageEditorHud_rotate">Rotar</string>
 
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Mensaje cifrado</string>
 
     <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
-    <string name="about_offical_app_desktop">Esta es la aplicación oficial de DeltaLab para escritorio</string>
-    <string name="about_licensed_under_desktop">El software está licenciado para GNU GPL version 3 y el código está disponible en GitHub</string>
+    <string name="about_offical_app_desktop">Esta es la aplicación oficial de Delta Chat para escritorio.</string>
+    <string name="about_licensed_under_desktop">Este programa está licenciado bajo GNU GPL versión 3 y el código está disponible en GitHub.</string>
     <string name="welcome_desktop">Bienvenido a DeltaLab</string>
     <string name="login_known_accounts_title_desktop">Cuentas conocidas</string>
-    <string name="global_menu_preferences_language_desktop">Seleccione Idioma...</string>
+    <string name="global_menu_preferences_language_desktop">Idioma</string>
     <string name="global_menu_file_desktop">Archivo</string>
     <string name="global_menu_file_quit_desktop">Salir</string>
     <string name="global_menu_edit_desktop">Editar</string>
@@ -737,7 +737,7 @@
     <string name="global_menu_help_desktop">Ayuda</string>
     <string name="global_menu_help_learn_desktop">Aprender más sobre DeltaLab</string>
     <string name="global_menu_help_contribute_desktop">Contribuir en GitHub</string>
-    <string name="global_menu_help_report_desktop">Reportar un Problema</string>
+    <string name="global_menu_help_report_desktop">Reportar un problema</string>
     <string name="global_menu_help_about_desktop">Sobre DeltaLab</string>
     <string name="no_chat_selected_suggestion_desktop">Selecciona un chat o crea uno nuevo</string>
     <string name="write_message_desktop">Escribe un mensaje</string>
@@ -770,7 +770,7 @@
     <string name="autocrypt_correct_desktop">Configuración de Autocrypt transferida exitosamente!</string>
     <string name="autocrypt_incorrect_desktop">Código de configuración incorrecto. Por favor, inténtalo de nuevo.</string>
     <string name="create_chat_error_desktop">No se pudo crear el chat.</string>
-    <string name="ask_delete_chat_desktop">¿Estás seguro de que deseas eliminar este chat?</string>
+    <string name="ask_delete_chat_desktop">¿Eliminar este chat?</string>
     <string name="email_validation_failed_desktop">Se requiere una dirección de correo.</string>
     <string name="forget_login_confirmation_desktop">¿Borrar esta sesión? Todo se eliminará, incluida la configuración de extremo a extremo, contactos, chats, mensajes y multimedia. Esta acción es definitiva y no puede ser revertida.</string>
     <string name="account_info_hover_tooltip_desktop">E-Mail: %1$s\nTamaño: %2$s\nDirección: %3$s</string>
@@ -795,7 +795,7 @@
     <string name="a11y_delivery_status_invalid">Estado de envío no válido</string>
     <string name="a11y_message_context_menu_btn_label">Acciones del mensaje</string>
     <string name="a11y_background_preview_label">Previsualización del fondo</string>
-    <string name="a11y_disappearing_messages_activated">Borrado de mensajes activo</string>
+    <string name="a11y_disappearing_messages_activated">Desaparición de mensajes activada</string>
 
 
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->

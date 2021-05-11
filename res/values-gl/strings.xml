@@ -113,6 +113,7 @@
     <string name="images">Imaxes</string>
     <string name="audio">Audio</string>
     <string name="voice_message">Mensaxe de voz</string>
+    <string name="forwarded">Reenviada</string>
     <string name="forwarded_message">Mensaxe reenviado</string>
     <!-- %1$s will be replaced by the name or the email-address of the person who has forwarded the message -->
     <string name="forwarded_by">Reenviado por %1$s</string>

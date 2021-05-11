@@ -113,6 +113,7 @@
     <string name="images">Immagine</string>
     <string name="audio">Audio</string>
     <string name="voice_message">Messaggio vocale</string>
+    <string name="forwarded">Inoltrato</string>
     <string name="forwarded_message">Messaggio inoltrato</string>
     <!-- %1$s will be replaced by the name or the email-address of the person who has forwarded the message -->
     <string name="forwarded_by">Inoltrato da %1$s</string>
@@ -200,6 +201,7 @@
     <string name="menu_scroll_to_bottom">Scorri alla fine</string>
     <string name="menu_scroll_to_top">Scorri in cima</string>
     <string name="menu_help">Aiuto</string>
+    <string name="privacy_policy">Privacy policy</string>
     <string name="menu_select_all">Seleziona tutto</string>
     <string name="select_more">Seleziona di più</string>
     <string name="menu_expand">Espandi</string>
