@@ -113,6 +113,7 @@
     <string name="images">Görseller</string>
     <string name="audio">Ses</string>
     <string name="voice_message">Sesli ileti</string>
+    <string name="forwarded">İletildi</string>
     <string name="forwarded_message">İletilen ileti</string>
     <!-- %1$s will be replaced by the name or the email-address of the person who has forwarded the message -->
     <string name="forwarded_by">%1$s tarafından iletildi</string>

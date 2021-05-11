@@ -113,6 +113,7 @@
     <string name="images">Afbeeldingen</string>
     <string name="audio">Audio</string>
     <string name="voice_message">Spraakbericht</string>
+    <string name="forwarded">Doorgestuurd</string>
     <string name="forwarded_message">Bericht doorgestuurd</string>
     <!-- %1$s will be replaced by the name or the email-address of the person who has forwarded the message -->
     <string name="forwarded_by">Doorgestuurd door %1$s</string>

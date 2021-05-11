@@ -107,6 +107,7 @@
     <string name="images">图像</string>
     <string name="audio">录音</string>
     <string name="voice_message">语音消息</string>
+    <string name="forwarded">已转发</string>
     <string name="forwarded_message">转发的消息</string>
     <!-- %1$s will be replaced by the name or the email-address of the person who has forwarded the message -->
     <string name="forwarded_by">转发人 %1$s</string>
