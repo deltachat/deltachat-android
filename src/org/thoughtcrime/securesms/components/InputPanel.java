@@ -297,6 +297,7 @@ public class InputPanel extends ConstraintLayout
         ViewUtil.fadeIn(quickCameraToggle, FADE_TIME);
         ViewUtil.fadeIn(quickAudioToggle, FADE_TIME);
         buttonToggle.animate().alpha(1).setDuration(FADE_TIME).start();
+        composeText.requestFocus();
       }
     });
 
