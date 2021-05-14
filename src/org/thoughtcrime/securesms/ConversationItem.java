@@ -90,7 +90,6 @@ public class ConversationItem extends BaseConversationItem
   private static final Rect SWIPE_RECT = new Rect();
 
   private static final int MAX_MEASURE_CALLS = 3;
-  static long PULSE_HIGHLIGHT_MILLIS = 500;
 
   private DcContact     dcContact;
   private Locale        locale;
@@ -187,7 +186,7 @@ public class ConversationItem extends BaseConversationItem
                    @NonNull Recipient               recipients,
                    boolean                          pulseHighlight)
   {
-    bind(messageRecord, dcChat, batchSelected);
+    bind(messageRecord, dcChat, batchSelected, pulseHighlight);
     this.locale                 = locale;
     this.glideRequests          = glideRequests;
     this.conversationRecipient  = recipients;
@@ -200,7 +199,6 @@ public class ConversationItem extends BaseConversationItem
     setGutterSizes(messageRecord, showSender);
     setMessageShape(messageRecord);
     setMediaAttributes(messageRecord, showSender);
-    setInteractionState(messageRecord, pulseHighlight);
     setBodyText(messageRecord);
     setBubbleState(messageRecord);
     setContactPhoto();
@@ -294,17 +292,9 @@ public class ConversationItem extends BaseConversationItem
     }
   }
 
-  private void setInteractionState(DcMsg messageRecord, boolean pulseHighlight) {
-    if (batchSelected.contains(messageRecord)) {
-      setBackgroundResource(R.drawable.conversation_item_background);
-      setSelected(true);
-    } else if (pulseHighlight) {
-      setBackgroundResource(R.drawable.conversation_item_background_animated);
-      setSelected(true);
-      postDelayed(() -> setSelected(false), PULSE_HIGHLIGHT_MILLIS);
-    } else {
-      setSelected(false);
-    }
+  @Override
+  protected void setInteractionState(DcMsg messageRecord, boolean pulseHighlight) {
+    super.setInteractionState(messageRecord, pulseHighlight);
 
     if (mediaThumbnailStub.resolved()) {
       mediaThumbnailStub.get().setFocusable(!shouldInterceptClicks(messageRecord) && batchSelected.isEmpty());
