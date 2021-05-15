@@ -1615,9 +1615,9 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     searchResult = dcContext.searchMsgs(chatId, normQuery);
 
     if(searchResult.length>0) {
-      searchResultPosition = 0;
+      searchResultPosition = searchResult.length - 1;
       fragment.scrollToMsgId(searchResult[searchResultPosition]);
-      updateResultCounter(0, searchResult.length);
+      updateResultCounter(searchResultPosition, searchResult.length);
     } else {
       searchResultPosition = -1;
       if (normQuery.isEmpty()) {
