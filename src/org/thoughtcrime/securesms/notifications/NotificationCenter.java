@@ -311,8 +311,11 @@ public class NotificationCenter {
         Util.runOnAnyBackgroundThread(() -> {
 
             DcChat dcChat = dcContext.getChat(chatId);
+            DcMsg dcMsg = dcContext.getMsg(msgId);
+            DcMsg quotedMsg = dcMsg.getQuotedMsg();
+            boolean isGroupMention = quotedMsg != null && dcChat.isGroup() && quotedMsg.isOutgoing();
 
-            if (!Prefs.isNotificationsEnabled(context) || dcChat.isMuted()) {
+            if (!Prefs.isNotificationsEnabled(context) || (!isGroupMention &&  dcChat.isMuted())) {
                 return;
             }
 
@@ -328,7 +331,6 @@ public class NotificationCenter {
             // get notification text as a single line
             NotificationPrivacyPreference privacy = Prefs.getNotificationPrivacy(context);
 
-            DcMsg dcMsg = dcContext.getMsg(msgId);
             String line = privacy.isDisplayMessage()? dcMsg.getSummarytext(2000) : context.getString(R.string.notify_new_message);
             if (dcChat.isGroup() && privacy.isDisplayContact()) {
                 line = dcMsg.getSenderName(dcContext.getContact(dcMsg.getFromId()), false) + ": " + line;
