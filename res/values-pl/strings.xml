@@ -439,6 +439,7 @@
     <string name="pref_profile_info_headline">Twój profil</string>
     <string name="pref_profile_photo">Zdjęcie profilowe</string>
     <string name="pref_blocked_contacts">Zablokowane kontakty</string>
+    <string name="blocked_empty_hint">Jeśli zablokujesz kontakty, zostaną one pokazane tutaj.</string>
     <string name="pref_profile_photo_remove_ask">Usunąć zdjęcie profilowe?</string>
     <string name="pref_password_and_account_settings">Hasło i konto</string>
     <string name="pref_who_can_see_profile_explain">Twoje zdjęcie profilowe i nazwa będą wyświetlane wraz z wiadomościami podczas komunikacji z innymi użytkownikami. Już wysłanych informacji nie można skasować ani usunąć.</string>
@@ -661,6 +662,7 @@
     <string name="contact_not_verified">Nie można zweryfikować %1$s</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Zmieniono konfigurację dla %1$s</string>
+    <string name="verified_group_explain">Zweryfikowane grupy (eksperymentalne) zapewniają bezpieczeństwo przed aktywnymi atakami. Członkowie są weryfikowani za pomocą drugiego czynnika przez innych członków, a wiadomości są zawsze szyfrowane metodą end-to-end. </string>
     <string name="copy_qr_data_success">Skopiowano adres kodu QR do schowka</string>
 
 
@@ -792,4 +794,6 @@
     <string name="pref_reliable_service">Niezawodne połączenie w tle</string>
     <string name="pref_reliable_service_explain">Wymaga stałego powiadomienia</string>
     <string name="perm_enable_bg_reminder_title">Dotknij tutaj, aby odbierać wiadomości, podczas gdy Delta Chat działa w tle.</string>
-    </resources>
+    <string name="update_1_20">Poprawiona zgodność z pocztą e-mail w wersji 1.20:\n\n📫 Czytaj listy mailingowe\n📭 Czytaj wiadomości e-mail w formacie HTML\n📪 Lepsza obsługa adresów pomocy\n📫 Naprawiono wiele większych i drobnych niedogodności\n\nPrzeczytaj nasz nowy wpis na blogu na temat pierwszych kroków w kierunku poczty i nie tylko:</string>
+
+</resources>

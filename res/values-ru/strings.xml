@@ -125,6 +125,7 @@
     <string name="images">Изображения</string>
     <string name="audio">Аудио</string>
     <string name="voice_message">Голосовое сообщение</string>
+    <string name="forwarded">Переслано</string>
     <string name="forwarded_message">Пересланное сообщение</string>
     <!-- %1$s will be replaced by the name or the email-address of the person who has forwarded the message -->
     <string name="forwarded_by">Переслано %1$s</string>
