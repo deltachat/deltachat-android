@@ -41,6 +41,10 @@
     <string name="main_menu">Main menu</string>
     <string name="start_chat">Start chat</string>
     <string name="show_full_message">Show full message…</string>
+    <string name="show_full_message_in_browser">Show full message in browser…</string>
+    <string name="loading">Loading</string>
+    <string name="hide">Hide</string>
+    <string name="activate">Activate</string>
     <string name="load_remote_content">Load remote images</string>
     <!-- possible answers to the question are: Never, Always, Once -->
     <string name="load_remote_content_ask">Remote images can be used to track you.\n\nThe setting also allows loading fonts and other content. Even if it is disabled, you may still see embedded or cached images.\n\nLoad remote images?</string>
@@ -182,6 +186,8 @@
     <string name="menu_copy_to_clipboard">Copy to clipboard</string>
     <string name="menu_copy_selection_to_clipboard">Copy selection</string>
     <string name="menu_copy_link_to_clipboard">Copy link</string>
+    <string name="menu_copy_text_to_clipboard">Copy Text</string>
+    <string name="menu_copy_image_to_clipboard">Copy Image</string>
     <string name="paste_from_clipboard">Paste from clipboard</string>
     <string name="menu_forward">Forward message</string>
     <string name="menu_resend">Resend message</string>
@@ -215,6 +221,12 @@
     <string name="menu_zoom_in">Zoom in</string>
     <string name="menu_zoom_out">Zoom out</string>
     <string name="menu_save_log">Save log</string>
+    <string name="menu_more_options">More Options</string>
+    <string name="menu_learn_spelling">Learn Spelling</string>
+    <string name="menu_chat_audit_log">Chat Audit Log</string>
+    <string name="jump_to_message">Jump to Message<string>
+    <string name="copy_json">Copy JSON</string>
+    <string name="replace_draft">replace draft</string>
     <string name="title_share_location">Share location with all group members</string>
     <string name="device_talk">Device messages</string>
     <string name="device_talk_subtitle">Locally generated messages</string>
@@ -339,6 +351,7 @@
     <string name="messaging_disabled_not_in_group">You cannot write because you are not in this group. To join, ask another member.</string>
     <string name="messaging_disabled_device_chat">This chat contains locally generated messages. Therefore you cannot write any messages.</string>
     <string name="messaging_disabled_deaddrop">Click on a message to accept or deny the contact request</string>
+    <string name="messaging_disabled_mailing_list">Sending Messages in Mailinglists is not supported yet<string>
     <string name="cannot_display_unsuported_file_type">Cannot display this file type: %s</string>
     <string name="attachment_failed_to_load">Failed to load attachment</string>
     <!-- For recording Voice messages: Description for the "Lock" button allowing to lift the thumb from the record button while recording continues -->
@@ -347,13 +360,23 @@
     <!-- mailing lists -->
     <string name="mailing_list">Mailing list</string>
     <string name="ask_show_mailing_list">Show mailing list \"%1$s\"?</string>
-
+    <string name="mailing_list_profile_info">These settings (chat name and image) apply to this device only.</string>
 
     <!-- map -->
     <string name="filter_map_on_time">Show locations in time frame</string>
     <string name="show_location_traces">Show traces</string>
     <string name="add_poi">Send point of interest</string>
 
+    <!-- chat audit log -->
+    <string name="chat_audit_log_empty_message">System messages of this chat would appear here</string>
+    <string name="chat_audit_log_title">Audit Log for %1$s</string>
+    <string name="chat_audit_log_description">This view shows only System- and Info-Messages. Useful for finding the last chat actions without scrolling through many normal messages.</string>
+
+    <!-- punycode warning / labeled links -->
+    <string name="open_external_url_trust_domain">Don't ask again for</string>
+    <string name="puny_code_warning_header">Suspicious Link detected</string>
+    <string name="puny_code_warning_question">Are you sure you want to visit $$asciiHostname$$?</string>
+    <string name="puny_code_warning_description">You followed a link which could be misrepresenting characters by using similarly looking ones from different alphabets. Following the link labelled $$originalHostname$$ will lead to $$asciiHostname$$ which is normal for non-Latin characters. If you did not expect such characters this link could be harmful</string>
 
     <!-- search -->
     <string name="search">Search</string>
@@ -543,7 +566,10 @@
     <string name="profile_image_select">Select profile image</string>
     <string name="select_your_new_profile_image">Select your new profile image</string>
     <string name="profile_image_delete">Delete profile image</string>
-
+    <string name="pref_show_tray_icon">Show tray icon</string>
+    <string name="pref_edit_profile">Edit profile</string>
+    <string name="pref_set_profile_photo">Set profile photo</string>
+    <string name="pref_remove_profile_photo">Remove profile photo</string>
 
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Search results</string>
@@ -681,7 +707,9 @@
     <string name="contact_setup_changed">Changed setup for %1$s.</string>
     <string name="verified_group_explain">Verified groups (experimental) provide safety against active attacks. Members are verified with a second factor by other members and messages are always end-to-end-encrypted.</string>
     <string name="copy_qr_data_success">Copied QR url to clipboard</string>
-
+    <string name="mailto_dialog_header_select_chat">Select chat to send the message to</string>
+    <string name="mailto_dialog_confirm_replace_draft">%1$s already has a draft message, do you want to replace it?</string>
+    <string name="mailto_link_could_not_be_decoded">mailto link could not be decoded: %1$s</string>
 
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d new messages in %2$d chats</string>
@@ -740,6 +768,8 @@
     <string name="global_menu_help_contribute_desktop">Contribute on GitHub</string>
     <string name="global_menu_help_report_desktop">Report an issue</string>
     <string name="global_menu_help_about_desktop">About Delta Chat</string>
+    <string name="global_menu_file_open_desktop">Open DeltaChat</string>
+    <string name="global_menu_minimize_to_tray">Minimize</string>
     <string name="no_chat_selected_suggestion_desktop">Select a chat or create a new chat</string>
     <string name="write_message_desktop">Write a message</string>
     <string name="encryption_info_title_desktop">Encryption info</string>
@@ -785,6 +815,10 @@
     <string name="menu.view.developer.open.log.folder">Open the log folder</string>
     <string name="menu.view.developer.open.current.log.file">Open current logfile</string>
     <string name="user_location_permission_explanation">Delta Chat needs the location permission in order to show and share your location.</string>
+    <string name="ask_delete_message_desktop">Are you sure you want to delete this message?</string>
+    <string name="explain_desktop_minimized_disabled_tray_pref">Tray icon cannot be disabled as Delta Chat was started with the --minimized option</string>
+    <string name="no_spellcheck_suggestions_found">No Spelling Suggestions found</string>
+    <string name="mac_show_windows">Show Window</string>
 
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Delivery status: Error</string>
