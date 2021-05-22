@@ -375,10 +375,13 @@
     <string name="chat_audit_log_description">This view shows only System- and Info-Messages. Useful for finding the last chat actions without scrolling through many normal messages.</string>
 
     <!-- punycode warning / labeled links -->
-    <string name="open_external_url_trust_domain">Don't ask again for</string>
+    <!-- placeholder is domain/hostname that should be trusted -->
+    <string name="open_external_url_trust_domain">Don't ask again for %1$s</string>
     <string name="puny_code_warning_header">Suspicious link detected</string>
-    <string name="puny_code_warning_question">Are you sure you want to visit $$asciiHostname$$?</string>
-    <string name="puny_code_warning_description">You followed a link which could be misrepresenting characters by using similarly looking ones from different alphabets. Following the link labelled $$originalHostname$$ will lead to $$asciiHostname$$ which is normal for non-Latin characters. If you did not expect such characters this link could be harmful</string>
+    <!-- placeholder contains the hostname converted to ascii -->
+    <string name="puny_code_warning_question">Are you sure you want to visit %1$s?</string>
+    <!-- first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
+    <string name="puny_code_warning_description">You followed a link which could be misrepresenting characters by using similarly looking ones from different alphabets. Following the link labelled %1$s will lead to %2$s which is normal for non-Latin characters. If you did not expect such characters this link could be harmful</string>
 
     <!-- search -->
     <string name="search">Search</string>
