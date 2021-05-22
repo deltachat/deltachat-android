@@ -376,7 +376,7 @@
 
     <!-- punycode warning / labeled links -->
     <!-- placeholder is domain/hostname that should be trusted -->
-    <string name="open_external_url_trust_domain">Don't ask again for %1$s</string>
+    <string name="open_external_url_trust_domain">Don\'t ask again for %1$s</string>
     <string name="puny_code_warning_header">Suspicious link detected</string>
     <!-- placeholder contains the hostname converted to ascii -->
     <string name="puny_code_warning_question">Are you sure you want to visit %1$s?</string>
