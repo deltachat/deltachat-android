@@ -371,8 +371,8 @@
 
     <!-- chat audit log -->
     <string name="chat_audit_log_empty_message">System messages of this chat would appear here</string>
-    <string name="chat_audit_log_title">Audit Log for %1$s</string>
-    <string name="chat_audit_log_description">This view shows only System- and Info-Messages. Useful for finding the last chat actions without scrolling through many normal messages.</string>
+    <string name="chat_audit_log_title">Chat Audit Log for %1$s</string>
+    <string name="chat_audit_log_description">This view shows only system and info messages. Useful for finding the last chat actions without scrolling through many normal messages.</string>
 
     <!-- punycode warning / labeled links -->
     <!-- placeholder is domain/hostname that should be trusted -->
@@ -380,7 +380,7 @@
     <string name="puny_code_warning_header">Suspicious link detected</string>
     <!-- placeholder contains the hostname converted to ascii -->
     <string name="puny_code_warning_question">Are you sure you want to visit %1$s?</string>
-    <!-- first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
+    <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
     <string name="puny_code_warning_description">You followed a link which could be misrepresenting characters by using similarly looking ones from different alphabets. Following the link labelled %1$s will lead to %2$s which is normal for non-Latin characters. If you did not expect such characters this link could be harmful</string>
 
     <!-- search -->
