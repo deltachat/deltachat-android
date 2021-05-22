@@ -134,6 +134,7 @@
     <string name="contact">Контакт</string>
     <string name="verified_contact">Перевірений контакт</string>
     <string name="camera">Камера</string>
+    <!-- "capture" here means "start a video recording" or "take a photo"; eg. the description of the "shutter button" in the camera controls -->
     <string name="capture">Захопити</string>
     <string name="switch_camera">Перемкнути камеру</string>
     <string name="toggle_fullscreen">Перейти в повноекранний режим</string>

@@ -37,6 +37,10 @@
     <string name="profile">Profil</string>
     <string name="main_menu">Menu główne</string>
     <string name="start_chat">Rozpocznij czat</string>
+    <string name="show_full_message">Pokaż całą wiadomość…</string>
+    <string name="load_remote_content">Załaduj zdalne obrazy</string>
+    <!-- possible answers to the question are: Never, Always, Once -->
+    <string name="load_remote_content_ask">Obrazy zdalne mogą służyć do śledzenia użytkownika.\n\nTo ustawienie umożliwia również ładowanie czcionek i innych treści. Nawet jeśli jest wyłączone, nadal możesz widzieć obrazy osadzone lub zapisane w pamięci podręcznej.\n\nZaładować zdalne obrazy?</string>
     <string name="always">Zawsze</string>
     <string name="once">Jeden raz</string>
     <string name="show_password">Pokaż hasło</string>
@@ -200,6 +204,7 @@
     <string name="menu_help">Pomoc</string>
     <string name="privacy_policy">Polityka prywatności</string>
     <string name="menu_select_all">Zaznacz wszystko</string>
+    <string name="select_more">Zaznacz więcej</string>
     <string name="menu_expand">Rozwiń</string>
     <string name="menu_edit_name">Edytuj nazwę</string>
     <string name="menu_settings">Ustawienia</string>
@@ -338,6 +343,8 @@
     <string name="messaging_disabled_not_in_group">Nie możesz pisać, ponieważ nie jesteś w tej grupie. Aby dołączyć, poproś innego członka.</string>
     <string name="messaging_disabled_device_chat">Ten czat zawiera wiadomości generowane lokalnie dlatego nie możesz pisać żadnych wiadomości.</string>
     <string name="messaging_disabled_deaddrop">Kliknij wiadomość, aby zaakceptować lub odrzucić prośbę o kontakt</string>
+    <string name="cannot_display_unsuported_file_type">Nie można wyświetlić tego typu pliku: %s</string>
+    <string name="attachment_failed_to_load">Nie udało się załadować załącznika</string>
     <!-- mailing lists -->
     <string name="mailing_list">Lista mailingowa</string>
     <string name="ask_show_mailing_list">Wyświetlić listę mailingową „%1$s”?</string>
@@ -424,6 +431,10 @@
     <string name="delete_account_ask">Czy na pewno chcesz usunąć dane swojego konta?</string>
     <string name="delete_account_explain_with_name">Wszystkie dane konta „%s” na tym urządzeniu zostaną usunięte, w tym konfiguracja szyfrowania end-to-end, kontakty, czaty, wiadomości i multimedia. Tej operacji nie można cofnąć.</string>
     <string name="switching_account">Przełączam konto…</string>
+    <string name="try_connect_now">Spróbuj się teraz połączyć</string>
+    <!-- Translations: %1$s will be replaced by a more detailed error message -->
+    <string name="configuration_failed_with_error">Konfiguracja nie powiodła się. Błąd: %1$s</string>
+
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Przekaż do…</string>
@@ -464,6 +475,7 @@
     <string name="pref_notifications_show">Pokaż</string>
     <string name="pref_notifications_priority">Priorytet</string>
     <string name="pref_notifications_explain">Włącz powiadomienia systemowe o nowych wiadomościach</string>
+    <string name="pref_show_notification_content">Pokaż treść wiadomości w powiadomieniu</string>
     <string name="pref_show_notification_content_explain">Pokaż nadawcę i pierwsze słowa wiadomości w powiadomieniach</string>
     <string name="pref_led_color">Kolor LED-a</string>
     <string name="pref_sound">Dźwięk</string>
@@ -641,6 +653,7 @@
     <string name="load_qr_code_as_image">Załaduj kod QR jako obraz</string>
     <string name="qrscan_title">Skanuj kod QR</string>
     <string name="qrscan_hint">Umieść aparat nad kodem QR</string>
+    <string name="qrscan_failed">Nie udało się zdekodować kodu QR</string>
     <string name="qrscan_ask_join_group">Czy chcesz dołączyć do grupy „%1$s?</string>
     <string name="qrscan_fingerprint_mismatch">Zeskanowany odcisk palca nie pasuje do odcisku palca ostatnio widzianego u %1$s</string>
     <string name="qrscan_no_addr_found">Ten kod QR zawiera odcisk palca, ale nie zawiera adresu e-mail.\n\nW celu weryfikacji poza zasadniczym pasmem należy najpierw nawiązać szyfrowane połączenie z odbiorcą.</string>
@@ -658,6 +671,11 @@
     <string name="qrshow_join_contact_hint">Zeskanuj go w celu skonfigurowania kontaktu z %1$s</string>
     <string name="qrshow_join_contact_no_connection_hint">Konfiguracja kodu QR wymaga połączenia z Internetem. Przed kontynuowaniem połącz się z siecią.</string>
     <string name="qrshow_join_contact_no_connection_toast">Brak połączenia z Internetem, nie można przeprowadzić konfiguracji kodu QR.</string>
+    <string name="qraccount_ask_create_and_login">Utworzyć nowy adres e-mail „%1$s” i się zalogować?</string>
+    <string name="qraccount_ask_create_and_login_another">Utworzyć nowy adres e-mail „%1$s” i się zalogować?\n\nTwoje istniejące konto nie zostanie usunięte. Użyj opcji „Przełącz konto”, aby przełączać się między kontami.</string>
+    <string name="qraccount_success_enter_name">Logowanie powiodło się – twój adres e-mail to %1$s\n\nJeśli chcesz, możesz teraz wprowadzić nazwę i zdjęcie profilowe, które będą wyświetlane osobom, do których piszesz.</string>
+    <string name="qraccount_qr_code_cannot_be_used">Zeskanowanego kodu QR nie można użyć do założenia nowego konta.</string>
+    <string name="qraccount_use_on_new_install">Zeskanowany kod QR służy do zakładania nowego konta. Możesz zeskanować kod QR podczas konfigurowania nowej instalacji Delta Chat.</string>
     <string name="contact_verified">Kontakt %1$s zweryfikowany.</string>
     <string name="contact_not_verified">Nie można zweryfikować %1$s</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
@@ -794,6 +812,7 @@
     <string name="pref_reliable_service">Niezawodne połączenie w tle</string>
     <string name="pref_reliable_service_explain">Wymaga stałego powiadomienia</string>
     <string name="perm_enable_bg_reminder_title">Dotknij tutaj, aby odbierać wiadomości, podczas gdy Delta Chat działa w tle.</string>
+    <string name="perm_enable_bg_already_done">Pozwolono już Delta Chat na odbieranie wiadomości w tle.\n\nJeśli wiadomości nadal nie docierają w tle, sprawdź też ustawienia systemu.</string>
     <string name="update_1_20">Poprawiona zgodność z pocztą e-mail w wersji 1.20:\n\n📫 Czytaj listy mailingowe\n📭 Czytaj wiadomości e-mail w formacie HTML\n📪 Lepsza obsługa adresów pomocy\n📫 Naprawiono wiele większych i drobnych niedogodności\n\nPrzeczytaj nasz nowy wpis na blogu na temat pierwszych kroków w kierunku poczty i nie tylko:</string>
 
 </resources>

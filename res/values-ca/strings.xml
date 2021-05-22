@@ -117,6 +117,7 @@
     <string name="contact">Contacte</string>
     <string name="verified_contact">Contacte verificat</string>
     <string name="camera">Càmera</string>
+    <!-- "capture" here means "start a video recording" or "take a photo"; eg. the description of the "shutter button" in the camera controls -->
     <string name="capture">Captura</string>
     <string name="switch_camera">Canvia la càmera</string>
     <string name="location">Ubicació</string>
