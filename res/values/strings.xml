@@ -42,6 +42,7 @@
     <string name="start_chat">Start chat</string>
     <string name="show_full_message">Show full message…</string>
     <string name="show_full_message_in_browser">Show full message in browser…</string>
+    <!-- this is shown as placeholder when something is loading at some places -->
     <string name="loading">Loading…</string>
     <string name="hide">Hide</string>
     <string name="activate">Activate</string>
@@ -284,6 +285,7 @@
         <item quantity="one">Delete %d chat? It will no longer be shown in the chat list, its messages will remain on the server.</item>
         <item quantity="other">Delete %d chats? They will no longer be shown in the chat list, their messages will remain on the server.</item>
     </plurals>
+    <string name="ask_delete_message">Are you sure you want to delete this message?</string>
     <plurals name="ask_delete_messages">
         <item quantity="one">Delete %d message here and on the server?</item>
         <item quantity="other">Delete %d messages here and on the server?</item>
@@ -814,10 +816,9 @@
     <string name="menu.view.developer.open.log.folder">Open the log folder</string>
     <string name="menu.view.developer.open.current.log.file">Open current logfile</string>
     <string name="user_location_permission_explanation">Delta Chat needs the location permission in order to show and share your location.</string>
-    <string name="ask_delete_message_desktop">Are you sure you want to delete this message?</string>
     <string name="explain_desktop_minimized_disabled_tray_pref">Tray icon cannot be disabled as Delta Chat was started with the --minimized option.</string>
     <string name="no_spellcheck_suggestions_found">No spelling suggestions found.</string>
-    <string name="mac_show_windows">Show Window</string>
+    <string name="show_window">Show Window</string>
 
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Delivery status: Error</string>
