@@ -122,6 +122,7 @@
     <string name="contact">Kişi</string>
     <string name="verified_contact">Doğrulanan kişi</string>
     <string name="camera">Kamera</string>
+    <!-- "capture" here means "start a video recording" or "take a photo"; eg. the description of the "shutter button" in the camera controls -->
     <string name="capture">Yakala</string>
     <string name="switch_camera">Kamerayı değiştir</string>
     <string name="toggle_fullscreen">Tam ekran kipine geç</string>

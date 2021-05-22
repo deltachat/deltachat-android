@@ -113,6 +113,7 @@
     <string name="images">Imágenes</string>
     <string name="audio">Audio</string>
     <string name="voice_message">Mensaje de voz</string>
+    <string name="forwarded">Reenviado</string>
     <string name="forwarded_message">Mensaje reenviado</string>
     <!-- %1$s will be replaced by the name or the email-address of the person who has forwarded the message -->
     <string name="forwarded_by">Reenviado por %1$s</string>
@@ -121,6 +122,7 @@
     <string name="contact">Contacto</string>
     <string name="verified_contact">Contacto verificado</string>
     <string name="camera">Cámara</string>
+    <!-- "capture" here means "start a video recording" or "take a photo"; eg. the description of the "shutter button" in the camera controls -->
     <string name="capture">Capturar</string>
     <string name="switch_camera">Cambiar cámara</string>
     <string name="toggle_fullscreen">Alternar modo pantalla completa</string>
@@ -569,7 +571,7 @@
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_server_ask">¿Deseas borrar %1$d mensajes ahora y todos los mensajes recibidos en \"%2$s\"  al futuro?\n\n⚠️ Esto incluye correos, multimedia y \"Mensajes guardados\" en todas las carpetas del servidor. No uses esta función si quieres mantener tus datos en el servidor o si estas usando otros clientes de correo más allá de DeltaLab\n\n⚠️ No uses esta función si deseas mantener tus datos en el servidor\n\n⚠️ No uses esta función si estás usando otros clientes de correo más allá de DeltaLab</string>
     <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
-    <string name="autodel_server_enabled_hint">Esto incluye correos, multimedia  y \"Mensajes guardados\" en todas las carpetas del servidor. No uses esta función si quieres mantener tus datos en el servidor o si estas usando otros clientes de correo más allá de DeltaLab</string>
+    <string name="autodel_server_enabled_hint">Esto incluye correos, multimedia  y \"Mensajes guardados\" en todas las carpetas del servidor. No uses esta función si quieres mantener tus datos en el servidor o si estas usando otros clientes de correo además de DeltaLab</string>
     <string name="autodel_confirm">Comprendo, borrar todos estos mensajes</string>
     <string name="autodel_at_once">Inmediatamente</string>
     <string name="after_30_seconds">Luego de 30 segundos</string>

@@ -122,6 +122,7 @@
     <string name="contact">Contactpersoon</string>
     <string name="verified_contact">Goedgekeurd contactpersoon</string>
     <string name="camera">Camera</string>
+    <!-- "capture" here means "start a video recording" or "take a photo"; eg. the description of the "shutter button" in the camera controls -->
     <string name="capture">Vastleggen</string>
     <string name="switch_camera">Andere camera</string>
     <string name="toggle_fullscreen">Beeldvullende modus aan/uit</string>

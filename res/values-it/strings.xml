@@ -122,6 +122,7 @@
     <string name="contact">Contatto</string>
     <string name="verified_contact">Contatto verificato</string>
     <string name="camera">Camera</string>
+    <!-- "capture" here means "start a video recording" or "take a photo"; eg. the description of the "shutter button" in the camera controls -->
     <string name="capture">Cattura</string>
     <string name="switch_camera">Cambia fotocamera</string>
     <string name="toggle_fullscreen">Attiva/disattiva la modalità a schermo intero</string>
