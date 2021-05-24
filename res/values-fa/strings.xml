@@ -329,7 +329,6 @@
     <string name="show_location_traces">نمایش ردپاها</string>
     <string name="add_poi">ارسال نقطه توجه</string>
 
-
     <!-- search -->
     <string name="search">جستجو</string>
     <string name="search_explain">جستجو برای گفتگوها، مخاطبین و پیام‌ها</string>
@@ -518,8 +517,6 @@
     <string name="profile_image_select">انتخاب تصویر پروفایل</string>
     <string name="select_your_new_profile_image">انتخاب تصویر پروفایل جدید</string>
     <string name="profile_image_delete">حذف تصویر پروفایل</string>
-
-
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">نتایج جستجو</string>
     <string name="emoji_not_found">شکلکی پیدا نشد</string>
@@ -648,8 +645,6 @@
     <string name="contact_setup_changed">تنظیمات برای %1$s تغییر کرد. </string>
     <string name="verified_group_explain">گرو‌ه های تایید شده(آزمایشی) در برابر حمله‌های فعال امنیت دارند. اعضا با یک روش ثانویه هم از طریق دیگر اعضا احراز هویت می‌شوند و پیام‌ها هم همیشه به صورت رمزگذاری شده به صورت گیرنده به گیرنده می‌باشد. </string>
     <string name="copy_qr_data_success">آدرس QR در حافظه ذخیر شد</string>
-
-
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d پیام جدید در %2$d چت</string>
     <string name="notify_mark_read">خوانده شده</string>
@@ -744,7 +739,6 @@
     <string name="menu.view.developer.open.log.folder">پوشه گزارش را باز کن</string>
     <string name="menu.view.developer.open.current.log.file">فایل گزارش فعلی را باز کن</string>
     <string name="user_location_permission_explanation">دلتاچت برای نمایش موقعیت مکانی شما باید مجوز دسترسی به موقعیت مکانی را داشته باشد. </string>
-
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">وضعیت ارسال: خطا</string>
     <string name="a11y_encryption_padlock">قفل رمزگذاری</string>

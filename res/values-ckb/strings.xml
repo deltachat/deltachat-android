@@ -329,8 +329,6 @@
     <!-- mailing lists -->
     <string name="mailing_list">لیستەی ئیمەیلەکان</string>
     <string name="ask_show_mailing_list">لیستەی ئیمەیلەکانی \"%1$s\" پیشان بدرێت؟</string>
-
-
     <!-- map -->
     <string name="filter_map_on_time">شوێنەکان لە نێو چوارچێوەی کاتدا پیشان بدرێت؟</string>
     <string name="show_location_traces">پیشاندانی شوێنپێ</string>
@@ -492,8 +490,6 @@
     <string name="profile_image_select">هەڵبژاردنی وێنەی لادیمەن</string>
     <string name="select_your_new_profile_image">وێنەی لادیمەنە نوێکەت هەڵبژێرە</string>
     <string name="profile_image_delete">سڕینەوەی وێنەی لادیمەن</string>
-
-
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">ئەنجامی گەڕان</string>
     <string name="emoji_not_found">هیچ وێنۆچکەیەک نەدۆزرایەوە</string>
@@ -599,8 +595,6 @@
     <string name="contact_setup_changed">ڕێکخستن بۆ %1$s گۆڕا.</string>
     <string name="verified_group_explain">کۆڕی پشتڕاستکراوە (لە قۆناخی تاقیکردنەوەدایە) پارێزراودەبێت بەرانبەر هێرشەکان. ئەندامان لەلایەن ئەندامانی دیکەوە پشتڕاست دەکرێنەوە و پەیامەکان هەمیشە شفرەکراوی ئەمسەر-ئەوسەر دەبن.</string>
     <string name="copy_qr_data_success">ناونیشانی وێبی QRەکە ڕوونووس کرا.</string>
-
-
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d پەیامی نوێ لە %2$d وتووێژدا</string>
     <string name="notify_mark_read">نیشانەی خوێندنەوە</string>

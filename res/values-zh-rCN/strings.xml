@@ -41,6 +41,11 @@
     <string name="main_menu">主菜单</string>
     <string name="start_chat">开始聊天</string>
     <string name="show_full_message">显示完整消息… </string>
+    <string name="show_full_message_in_browser">在浏览器中显示完整消息…</string>
+    <!-- this is shown as placeholder when something is loading at some places -->
+    <string name="loading">加载中…</string>
+    <string name="hide">隐藏</string>
+    <string name="activate">激活</string>
     <string name="load_remote_content">加载远程图片</string>
     <!-- possible answers to the question are: Never, Always, Once -->
     <string name="load_remote_content_ask">远程图像可被用来跟踪您。\n\n该设置还允许加载字体和其他内容。即使禁用，您仍可能看到嵌入或缓存的图像。\n\n要加载远程图像吗？</string>
@@ -176,6 +181,8 @@
     <string name="menu_copy_to_clipboard">复制到剪贴板</string>
     <string name="menu_copy_selection_to_clipboard">复制所选内容</string>
     <string name="menu_copy_link_to_clipboard">复制链接</string>
+    <string name="menu_copy_text_to_clipboard">复制文本</string>
+    <string name="menu_copy_image_to_clipboard">复制图像</string>
     <string name="paste_from_clipboard">从剪贴板粘贴</string>
     <string name="menu_forward">转发消息</string>
     <string name="menu_resend">重发消息</string>
@@ -209,6 +216,12 @@
     <string name="menu_zoom_in">放大</string>
     <string name="menu_zoom_out">缩小</string>
     <string name="menu_save_log">保存日志</string>
+    <string name="menu_more_options">更多选项</string>
+    <string name="menu_learn_spelling">学习拼写</string>
+    <string name="menu_chat_audit_log">聊天审计日志</string>
+    <string name="jump_to_message">跳转到消息</string>
+    <string name="copy_json">复制 JSON</string>
+    <string name="replace_draft">替换草稿</string>
     <string name="title_share_location">与所有群组成员共享位置</string>
     <string name="device_talk">设备消息</string>
     <string name="device_talk_subtitle">本地生成的消息</string>
@@ -264,6 +277,7 @@
     <plurals name="ask_delete_chat">
         <item quantity="other">删除 %d 个聊天？这个（些）聊天将不再显示在聊天列表中，但它（们）的消息仍将保留于服务器。</item>
     </plurals>
+    <string name="ask_delete_message">您确定要删除这条消息吗？</string>
     <plurals name="ask_delete_messages">
         <item quantity="other">在此处和服务器上删除 %d 条消息？</item>
     </plurals>
@@ -327,6 +341,7 @@
     <string name="messaging_disabled_not_in_group">您无法编写消息，因为您不在此群组中。要加入，请询问其他成员。</string>
     <string name="messaging_disabled_device_chat">此聊天包含本地生成的消息。您不能在这里编写消息。</string>
     <string name="messaging_disabled_deaddrop">点击消息来接受或拒绝联系人请求</string>
+    <string name="messaging_disabled_mailing_list">尚不支持在邮件列表中发送消息</string>
     <string name="cannot_display_unsuported_file_type">无法显示此类文件：%s</string>
     <string name="attachment_failed_to_load">加载附件失败</string>
     <!-- For recording Voice messages: Description for the "Lock" button allowing to lift the thumb from the record button while recording continues -->
@@ -335,13 +350,26 @@
     <!-- mailing lists -->
     <string name="mailing_list">邮件列表</string>
     <string name="ask_show_mailing_list">显示邮件列表 \"%1$s\"吗？</string>
-
+    <string name="mailing_list_profile_info">邮件列表名称和图像的更改仅适用于此设备。 </string>
 
     <!-- map -->
     <string name="filter_map_on_time">显示在时间范围内的位置</string>
     <string name="show_location_traces">显示轨迹</string>
     <string name="add_poi">发送兴趣点</string>
 
+    <!-- chat audit log -->
+    <string name="chat_audit_log_empty_message">此聊天的系统消息会出现在这里</string>
+    <string name="chat_audit_log_title">%1$s 的聊天审计日志</string>
+    <string name="chat_audit_log_description">这个视图只显示系统和信息消息。可用于查找最后聊天操作而无需滚动许多普通消息</string>
+
+    <!-- punycode warning / labeled links -->
+    <!-- placeholder is domain/hostname that should be trusted -->
+    <string name="open_external_url_trust_domain">不再询问 %1$s</string>
+    <string name="puny_code_warning_header">检测到可疑链接</string>
+    <!-- placeholder contains the hostname converted to ascii -->
+    <string name="puny_code_warning_question">你确定你想访问 %1$s 吗？</string>
+    <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
+    <string name="puny_code_warning_description">你将被转到一个链接，该链接可能通过使用来自不同字母表的相似字符来错误地表示字符。打开标记为 %1$s 的链接将把你带到以 ascii 码编码的 %2$s。如果这样的字符出乎你的意料，那么这个链接可能是有害的</string>
 
     <!-- search -->
     <string name="search">搜索</string>
@@ -531,7 +559,8 @@
     <string name="profile_image_select">选择个人资料图片</string>
     <string name="select_your_new_profile_image">选择新的个人资料图片</string>
     <string name="profile_image_delete">删除个人资料图片</string>
-
+    <string name="pref_show_tray_icon">显示托盘图标</string>
+    <string name="pref_edit_profile">编辑概要</string>
 
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">搜索结果</string>
@@ -669,7 +698,10 @@
     <string name="contact_setup_changed">已更改 %1$s 的加密设置</string>
     <string name="verified_group_explain">已验证群组（实验性）可提供针对主动攻击的安全性。其中的成员被其他成员用第二个因素进行了验证，并且消息始终是端到端加密的。</string>
     <string name="copy_qr_data_success">已复制二维码链接到剪贴板</string>
-
+    <string name="mailto_dialog_header_select_chat">选择要发送消息的聊天</string>
+    <!-- first placeholder is the name of the chat -->
+    <string name="mailto_dialog_confirm_replace_draft">%1$s 已经有一条草稿信息，你想替换它吗？</string>
+    <string name="mailto_link_could_not_be_decoded">无法解码 mailto 链接：%1$s</string>
 
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%2$d 个聊天中有 %1$d 条新消息</string>
@@ -728,6 +760,8 @@
     <string name="global_menu_help_contribute_desktop">在 GitHub 上做贡献</string>
     <string name="global_menu_help_report_desktop">报告一个问题</string>
     <string name="global_menu_help_about_desktop">关于 Delta Chat</string>
+    <string name="global_menu_file_open_desktop">打开 Delta Chat</string>
+    <string name="global_menu_minimize_to_tray">最小化</string>
     <string name="no_chat_selected_suggestion_desktop">选择一个聊天或创建新聊天</string>
     <string name="write_message_desktop">写消息</string>
     <string name="encryption_info_title_desktop">加密信息</string>
@@ -773,6 +807,9 @@
     <string name="menu.view.developer.open.log.folder">打开日志文件夹</string>
     <string name="menu.view.developer.open.current.log.file">打开当前日志文件</string>
     <string name="user_location_permission_explanation">Delta Chat 需要位置权限来显示和分享您的位置。</string>
+    <string name="explain_desktop_minimized_disabled_tray_pref">托盘图标不能被禁用，因为Delta Chat 启动时带 --minimized 参数</string>
+    <string name="no_spellcheck_suggestions_found">未找到拼写建议</string>
+    <string name="show_window">显示窗口</string>
 
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">发送状态：错误</string>

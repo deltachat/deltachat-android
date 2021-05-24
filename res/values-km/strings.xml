@@ -325,13 +325,10 @@
     <!-- mailing lists -->
     <string name="mailing_list">អ៊ីម៉ែលការផ្សាយ</string>
     <string name="ask_show_mailing_list">បង្ហាញសារអ៊ីម៉ែលការផ្សាយ \"%1$s\"?</string>
-
-
     <!-- map -->
     <string name="filter_map_on_time">បង្ហាញទីតាំងនៅក្នុងស៊ុមពេលវេលា</string>
     <string name="show_location_traces">បង្ហាញដាន</string>
     <string name="add_poi">ផ្ញើចំណុចចំណាប់អារម្មណ៍</string>
-
 
     <!-- search -->
     <string name="search">ស្វែងរក</string>
@@ -521,8 +518,6 @@
     <string name="profile_image_select">ជ្រើសរើសរូបភាពទិន្ន័យផ្ទាល់ខ្លួន</string>
     <string name="select_your_new_profile_image">ជ្រើសរើសរូបភាពទិន្នន័យផ្ទាល់ខ្លួនថ្មី</string>
     <string name="profile_image_delete">លុបរូបភាពទិន្នន័យផ្ទាល់ខ្លួន</string>
-
-
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">លទ្ធផលស្វែងរក</string>
     <string name="emoji_not_found">រកមិនឃើញរូបសញ្ញាអារម្មណ៍</string>
@@ -659,8 +654,6 @@
     <string name="contact_setup_changed">បានដូរការរៀបចំសម្រាប់ %1$s</string>
     <string name="verified_group_explain">\"ក្រុមបានផ្ទៀងផ្ទាត់\" (ពិសោធន៍) បានផ្តល់សុវត្ថិភាពប្រឆាំងនឹងសកម្មភាពវាយប្រហារ។ សមាជិកត្រូវបានផ្ទៀងផ្ទាត់ជាមុខងារទីពីរ ដោយសមាជិកដទៃទៀត និងសារតែងតែបានអ៊ិនគ្រីប ពីឧបករណ៍ដល់ឧបករណ៍។</string>
     <string name="copy_qr_data_success">បានចម្លង QR-url ទៅក្តារខ្ទាស់</string>
-
-
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">សារ %1$d ថ្មីក្នុងសន្ទនា %2$d</string>
     <string name="notify_mark_read">សម្គាល់ថាអាន</string>
@@ -755,7 +748,6 @@
     <string name="menu.view.developer.open.log.folder">បើកថតឯកសារកត់</string>
     <string name="menu.view.developer.open.current.log.file">បើកឯកសារកត់បច្ចុប្បន្ន</string>
     <string name="user_location_permission_explanation">សា Delta Chat ត្រូវការការអនុញ្ញាតទីតាំង ដើម្បីបង្ហាញ និងចែករំលែកទីតាំងរបស់អ្នក។</string>
-
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">ស្ថានភាពចែកចាយ៖ មានកំហុស</string>
     <string name="a11y_encryption_padlock">សោត្រដោកការអ៊ិនគ្រីប</string>

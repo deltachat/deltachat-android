@@ -328,7 +328,6 @@
     <string name="show_location_traces">Exibir pegadas</string>
     <string name="add_poi">Enviar ponto de interesse</string>
 
-
     <!-- search -->
     <string name="search">Procurar</string>
     <string name="search_explain">Procurar conversas, contatos e mensagens</string>
@@ -517,8 +516,6 @@
     <string name="profile_image_select">Selecione a imagem do perfil</string>
     <string name="select_your_new_profile_image">Selecione sua nova imagem do perfil</string>
     <string name="profile_image_delete">Excluir imagem do perfil</string>
-
-
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Resultados da busca</string>
     <string name="emoji_not_found">Nenhum emoji encontrado</string>
@@ -647,8 +644,6 @@
     <string name="contact_setup_changed">A configuração Autocrypt mudou para %1$s</string>
     <string name="verified_group_explain">Grupos verificados (experimental) fornecem segurança contra ataques ativos. Os membros são verificados com um segundo fator por outros membros e as mensagens são sempre criptografadas de ponta a ponta.</string>
     <string name="copy_qr_data_success">Endereço do código QR copiado para a área de transferência</string>
-
-
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d novas mensagens em %2$d conversas</string>
     <string name="notify_mark_read">Marcar como lida</string>
@@ -743,7 +738,6 @@
     <string name="menu.view.developer.open.log.folder">Abrir pasta de relatórios</string>
     <string name="menu.view.developer.open.current.log.file">Abrir relatório atual</string>
     <string name="user_location_permission_explanation">O Delta Chat precisa acessar sua localização para que você possa exibi-la e compartilhá-la.</string>
-
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Status de entrega: Erro</string>
     <string name="a11y_encryption_padlock">Cadeado de criptografia</string>

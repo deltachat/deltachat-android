@@ -115,6 +115,8 @@
     <string name="contact">連絡先</string>
     <string name="verified_contact">確認済みの連絡先</string>
     <string name="camera">カメラ</string>
+    <!-- "capture" here means "start a video recording" or "take a photo"; eg. the description of the "shutter button" in the camera controls -->
+    <string name="capture">撮影</string>
     <string name="switch_camera">カメラを切り替える</string>
     <string name="toggle_fullscreen">フルスクリーン</string>
     <string name="location">場所</string>
@@ -333,11 +335,8 @@
     <!-- mailing lists -->
     <string name="mailing_list">メーリングリスト</string>
     <string name="ask_show_mailing_list">%1$sのメーリングリストを表示しますか？</string>
-
-
     <string name="show_location_traces">トレースを表示する</string>
     <string name="add_poi">指定位置を送る</string>
-
 
     <!-- search -->
     <string name="search">検索</string>
@@ -525,8 +524,6 @@ https://delta.chat</string>
     <string name="profile_image_select">アイコン画像を選択する</string>
     <string name="select_your_new_profile_image">新しいアイコン画像を選択してください</string>
     <string name="profile_image_delete">アイコン画像を削除する</string>
-
-
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">検索結果</string>
     <string name="emoji_not_found">絵文字がみつかりません</string>
@@ -715,7 +712,6 @@ https://delta.chat</string>
     <string name="menu.view.developer.open.log.folder">ログフォルダを開く</string>
     <string name="menu.view.developer.open.current.log.file">現在のログファイルを開く</string>
     <string name="user_location_permission_explanation">Delta Chatは位置情報を共有出来る様にする為権限が必要です</string>
-
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">送信状態：エラー</string>
     <string name="a11y_delivery_status_sending">送信状態：送信中</string>

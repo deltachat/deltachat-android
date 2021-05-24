@@ -337,13 +337,10 @@
     <!-- mailing lists -->
     <string name="mailing_list">Mejllista</string>
     <string name="ask_show_mailing_list">Visa mejllistan \"%1$s\"?</string>
-
-
     <!-- map -->
     <string name="filter_map_on_time">Visa platser inom tidsramen</string>
     <string name="show_location_traces">Visa spår</string>
     <string name="add_poi">Skicka intressant plats</string>
-
 
     <!-- search -->
     <string name="search">Sök</string>
@@ -714,7 +711,6 @@
     <string name="menu.view.developer.open.log.folder">Öppna loggmappen</string>
     <string name="menu.view.developer.open.current.log.file">Öppna aktuell loggfil</string>
     <string name="user_location_permission_explanation">Delta Chat behöver platsbehörighet, för att kunna visa och dela din plats.</string>
-
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Leveransstatus: Fel</string>
     <string name="a11y_encryption_padlock">Hänglås för kryptering</string>

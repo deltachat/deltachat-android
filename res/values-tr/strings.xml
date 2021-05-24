@@ -41,6 +41,11 @@
     <string name="main_menu">Ana menü</string>
     <string name="start_chat">Sohbete başla</string>
     <string name="show_full_message">Tam iletiyi göster…</string>
+    <string name="show_full_message_in_browser">Tam iletiyi tarayıcıda göster…</string>
+    <!-- this is shown as placeholder when something is loading at some places -->
+    <string name="loading">Yükleniyor…</string>
+    <string name="hide">Gizle</string>
+    <string name="activate">Etkinleştir</string>
     <string name="load_remote_content">Uzak görselleri yükle</string>
     <!-- possible answers to the question are: Never, Always, Once -->
     <string name="load_remote_content_ask">Uzak görseller sizi izlemek için kullanılabilir.\n\nAyar, yazı tiplerinin ve diğer içeriğin de yüklenmesine izin verir. Etkisizleştirildiyse bile katıştırılan ya da önbelleklenen görselleri hâlâ görebilirsiniz.\n\nUzak görseller yüklensin mi?</string>
@@ -182,6 +187,8 @@
     <string name="menu_copy_to_clipboard">Panoya kopyala</string>
     <string name="menu_copy_selection_to_clipboard">Seçimi kopyala</string>
     <string name="menu_copy_link_to_clipboard">Bağlantıyı kopyala</string>
+    <string name="menu_copy_text_to_clipboard">Metni kopyala</string>
+    <string name="menu_copy_image_to_clipboard">Görseli kopyala</string>
     <string name="paste_from_clipboard">Panodan yapıştır</string>
     <string name="menu_forward">İletiyi ilet</string>
     <string name="menu_resend">İletiyi yeniden gönder</string>
@@ -215,6 +222,12 @@
     <string name="menu_zoom_in">Yakınlaştır</string>
     <string name="menu_zoom_out">Uzaklaştır</string>
     <string name="menu_save_log">Günlüğü kaydet</string>
+    <string name="menu_more_options">Daha fazla seçenek</string>
+    <string name="menu_learn_spelling">Yazımı öğrenin</string>
+    <string name="menu_chat_audit_log">Sohbet Denetim Günlüğü</string>
+    <string name="jump_to_message">İletiye atla</string>
+    <string name="copy_json">JSON kopyala</string>
+    <string name="replace_draft">Taslağı değiştir</string>
     <string name="title_share_location">Tüm grup üyeleriyle konum paylaş</string>
     <string name="device_talk">Aygıt iletileri</string>
     <string name="device_talk_subtitle">Yerel olarak oluşturulan iletiler</string>
@@ -264,7 +277,7 @@
     <string name="videochat_instance_explain">Bir video sohbeti örneği tanımlanırsa, her sohbetten video sohbeti başlatabilirsiniz. Video sohbetleri, her iki uçta da uyumlu bir uygulama ya da uyumlu bir tarayıcı gerektirir.\n\nÖrnekler: https://meet.jit.si/$ROOM ya da basicwebrtc:https://your-server</string>
     <string name="videochat_instance_from_qr">\"%1$s\" diğerlerini video sohbetine davet etmek için kullanılsın mı?\n\nBir kez ayarlandığında, her sohbetten video sohbeti başlatabilirsiniz. Varsa bu, video sohbetleri için önceki ayarla değiştirilir.</string>
     <string name="videochat_invitation">Video sohbeti daveti</string>
-    <string name="videochat_invitation_body">Bir video sohbetine davet edildiniz, katılmak için %1$s öğesini tıklayın.</string>
+    <string name="videochat_invitation_body">Bir video sohbetine davet edildiniz; katılmak için %1$s öğesini tıklayın.</string>
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Bu gruptan ayrılmak istediğinizden emin misiniz?</string>
@@ -272,6 +285,7 @@
         <item quantity="one">%d sohbet silinsin mi? Artık sohbet listesinde gösterilmeyecek; iletileri sunucuda kalacak.</item>
         <item quantity="other">%d sohbet silinsin mi? Artık sohbet listesinde gösterilmeyecek; iletileri sunucuda kalacak.</item>
     </plurals>
+    <string name="ask_delete_message">Bu iletiyi silmek istediğinizden emin misiniz?</string>
     <plurals name="ask_delete_messages">
         <item quantity="one">%d ileti buradan ve sunucudan silinsin mi?</item>
         <item quantity="other">%d ileti buradan ve sunucudan silinsin mi?</item>
@@ -339,6 +353,7 @@
     <string name="messaging_disabled_not_in_group">Yazamazsınız çünkü bu grupta değilsiniz. Katılmak için başka bir üyeye sorun.</string>
     <string name="messaging_disabled_device_chat">Bu sohbet, yerel olarak oluşturulan iletileri içerir. Bu nedenle herhangi bir ileti yazamazsınız.</string>
     <string name="messaging_disabled_deaddrop">İletişim isteğini kabul etmek ya da reddetmek için bir iletinin üzerine tıklayın</string>
+    <string name="messaging_disabled_mailing_list">Posta listelerinden gönderilen iletiler henüz desteklenmiyor</string>
     <string name="cannot_display_unsuported_file_type">Bu dosya türü görüntülenemiyor: %s</string>
     <string name="attachment_failed_to_load">İlişiği yükleme başarısız</string>
     <!-- For recording Voice messages: Description for the "Lock" button allowing to lift the thumb from the record button while recording continues -->
@@ -347,14 +362,24 @@
     <!-- mailing lists -->
     <string name="mailing_list">Posta listesi</string>
     <string name="ask_show_mailing_list">\"%1$s\" posta listesi gösterilsin mi?</string>
-
+    <string name="mailing_list_profile_info">Posta listesi adındaki ve görselindeki değişiklikler yalnızca bu aygıta uygulanır.</string>
 
     <!-- map -->
     <string name="filter_map_on_time">Konumları zaman çerçevesinde göster</string>
     <string name="show_location_traces">İzleri göster</string>
     <string name="add_poi">İlgi çekici noktayı gönder</string>
 
+    <!-- chat audit log -->
+    <string name="chat_audit_log_empty_message">Bu sohbetin sistem iletileri burada görünecek</string>
+    <string name="chat_audit_log_title">%1$s için Sohbet Denetim Günlüğü</string>
+    <string name="chat_audit_log_description">Bu görünüm, yalnızca sistem ve bilgi iletilerini gösterir. Birçok normal ileti arasında kaydırmadan son sohbetteki eylemleri bulmak için kullanışlıdır.</string>
 
+    <!-- punycode warning / labeled links -->
+    <!-- placeholder is domain/hostname that should be trusted -->
+    <string name="open_external_url_trust_domain">%1$s için yeniden sorma</string>
+    <string name="puny_code_warning_header">Şüpheli bağlantı algılandı</string>
+    <!-- placeholder contains the hostname converted to ascii -->
+    <string name="puny_code_warning_question">%1$s bağlantısını ziyaret etmek istediğinizden emin misiniz?</string>
     <!-- search -->
     <string name="search">Ara</string>
     <string name="search_explain">Sohbetleri, kişileri ve iletileri ara</string>
@@ -543,7 +568,8 @@
     <string name="profile_image_select">Profil görseli seç</string>
     <string name="select_your_new_profile_image">Yeni profil görselinizi seçin</string>
     <string name="profile_image_delete">Profil görselini sil</string>
-
+    <string name="pref_show_tray_icon">Tepsi simgesi göster</string>
+    <string name="pref_edit_profile">Profili düzenle</string>
 
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Arama sonuçları</string>
@@ -681,7 +707,10 @@
     <string name="contact_setup_changed">%1$s için ayarlama değiştirildi.</string>
     <string name="verified_group_explain">Doğrulanan gruplar (deneysel), etkin saldırılar karşısında güvenlik sağlar. Üyeler, diğer üyeler tarafından ikinci bir etkenle doğrulanır ve iletiler her zaman uçtan uca şifrelenir.</string>
     <string name="copy_qr_data_success">QR URL\'si panoya kopyalandı</string>
-
+    <string name="mailto_dialog_header_select_chat">İletinin gönderileceği sohbeti seçin</string>
+    <!-- first placeholder is the name of the chat -->
+    <string name="mailto_dialog_confirm_replace_draft">%1$s zaten taslak bir ileti; onu değiştirmek istiyor musunuz?</string>
+    <string name="mailto_link_could_not_be_decoded">mailto bağlantısının kodu çözülemedi: %1$s</string>
 
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%2$d sohbette %1$d yeni ileti</string>
@@ -740,6 +769,8 @@
     <string name="global_menu_help_contribute_desktop">GitHub\'da katkıda bulunun</string>
     <string name="global_menu_help_report_desktop">Bir sorun raporla</string>
     <string name="global_menu_help_about_desktop">Delta Chat hakkında</string>
+    <string name="global_menu_file_open_desktop">Delta Chat\'i Aç</string>
+    <string name="global_menu_minimize_to_tray">Küçült</string>
     <string name="no_chat_selected_suggestion_desktop">Bir sohbet seçin ya da yeni bir sohbet oluşturun</string>
     <string name="write_message_desktop">Bir ileti yazın</string>
     <string name="encryption_info_title_desktop">Şifreleme bilgisi</string>
@@ -785,6 +816,9 @@
     <string name="menu.view.developer.open.log.folder">Günlük klasörünü aç</string>
     <string name="menu.view.developer.open.current.log.file">Geçerli günlük dosyasını aç</string>
     <string name="user_location_permission_explanation">Delta Chat\'in konumunuzu göstermesi ya da paylaşması için konum izni gerekir.</string>
+    <string name="explain_desktop_minimized_disabled_tray_pref">Delta Chat --minimized seçeneğiyle başlatıldığından tepsi simgesi etkisizleştirilemez.</string>
+    <string name="no_spellcheck_suggestions_found">Yazım önerileri bulunamadı.</string>
+    <string name="show_window">Pencereyi Göster</string>
 
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Teslimat durumu: Hata</string>

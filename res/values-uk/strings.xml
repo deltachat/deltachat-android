@@ -371,13 +371,10 @@
     <!-- mailing lists -->
     <string name="mailing_list">Список адресатів</string>
     <string name="ask_show_mailing_list">Показати список адресатів \"%1$s\"?</string>
-
-
     <!-- map -->
     <string name="filter_map_on_time">Показати місця у часовому проміжку</string>
     <string name="show_location_traces">Показати треки</string>
     <string name="add_poi">Надіслати точку інтересу</string>
-
 
     <!-- search -->
     <string name="search">Пошук</string>
@@ -567,8 +564,6 @@
     <string name="profile_image_select">Вибрати зображення профілю</string>
     <string name="select_your_new_profile_image">Вибрати ваше нове зображення профілю</string>
     <string name="profile_image_delete">Видалити зображення профілю</string>
-
-
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Результати пошуку</string>
     <string name="emoji_not_found">Емодзі не знайдено</string>
@@ -705,8 +700,6 @@
     <string name="contact_setup_changed">Змінені параметри для %1$s</string>
     <string name="verified_group_explain">Перевірені групи (експеримент) надають захист від активних атак. Члени таких груп перевірені через другий фактор іншими членами групи, а повідомлення завжди наскрізно зашифровані.</string>
     <string name="copy_qr_data_success">URL з QR-коду скопійовано в буфер</string>
-
-
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d нових повідомлень з %2$d чатів</string>
     <string name="notify_mark_read">Позначити прочитаним</string>
@@ -809,7 +802,6 @@
     <string name="menu.view.developer.open.log.folder">Відкрити папку журналів</string>
     <string name="menu.view.developer.open.current.log.file">Відкрити поточний файл журналу</string>
     <string name="user_location_permission_explanation">Delta Chat потребує дозволу на доступ до геоданих щоб ділитися вашим місцезнаходженням.</string>
-
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Статус доставки: Помилка</string>
     <string name="a11y_encryption_padlock">Замок шифрування</string>

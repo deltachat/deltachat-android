@@ -347,13 +347,10 @@
     <!-- mailing lists -->
     <string name="mailing_list">Mailingliste</string>
     <string name="ask_show_mailing_list">Mailingliste \"%1$s\" anzeigen?</string>
-
-
     <!-- map -->
     <string name="filter_map_on_time">Standorte im Zeitrahmen anzeigen</string>
     <string name="show_location_traces">Spuren anzeigen</string>
     <string name="add_poi">Sende eine Ortsmarkierung. </string>
-
 
     <!-- search -->
     <string name="search">Suchen</string>
@@ -545,8 +542,6 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="profile_image_select">Profilbild auswählen</string>
     <string name="select_your_new_profile_image">Wählen Sie Ihr Profilbild aus</string>
     <string name="profile_image_delete">Profilbild löschen</string>
-
-
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Suchergebnisse</string>
     <string name="emoji_not_found">Keine Emoji gefunden</string>
@@ -685,8 +680,6 @@ Ihr bisheriges E-Mail-Konto wird dabei nicht gelöscht. Sie können mit der Opti
     <string name="contact_setup_changed">Geändertes Setup für %1$s</string>
     <string name="verified_group_explain">Verifizierte Gruppen (experimentell) bieten Schutz gegen aktive Angriffe mittels Zwei-Faktor-Authentifizierung aller Mitglieder und immer aktiver Ende-zu-Ende-Verschlüsselung.</string>
     <string name="copy_qr_data_success">QR-Code auf die Zwischenablage kopiert</string>
-
-
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d neue Nachrichten in %2$d Chats</string>
     <string name="notify_mark_read">Als gelesen markieren</string>
@@ -789,7 +782,6 @@ Ihr bisheriges E-Mail-Konto wird dabei nicht gelöscht. Sie können mit der Opti
     <string name="menu.view.developer.open.log.folder">Logdatei öffnen</string>
     <string name="menu.view.developer.open.current.log.file">Aktuelle Logdatei öffnen</string>
     <string name="user_location_permission_explanation">Delta Chat benötigt die Standortberechtigung, um Ihren Standort anzuzeigen und zu teilen.</string>
-
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Übertragungsstatus: Fehler</string>
     <string name="a11y_encryption_padlock">Verschlüsselungsschloss</string>

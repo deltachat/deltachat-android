@@ -347,13 +347,10 @@
     <!-- mailing lists -->
     <string name="mailing_list">Lista de correo</string>
     <string name="ask_show_mailing_list">¿Mostrar lista de correo \"%1$s\"?</string>
-
-
     <!-- map -->
     <string name="filter_map_on_time">Mostrar ubicaciones en el marco de tiempo</string>
     <string name="show_location_traces">Mostrar trazas</string>
     <string name="add_poi">Enviar punto de interés</string>
-
 
     <!-- search -->
     <string name="search">Buscar</string>
@@ -543,8 +540,6 @@
     <string name="profile_image_select">Seleccionar imagen de perfil</string>
     <string name="select_your_new_profile_image">Seleccionar tu nueva imagen de perfil</string>
     <string name="profile_image_delete">Borrar imagen de perfil</string>
-
-
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Resultados de la búsqueda</string>
     <string name="emoji_not_found">No se encontraron emojis</string>
@@ -681,8 +676,6 @@
     <string name="contact_setup_changed">Configuración cambiada para %1$s.</string>
     <string name="verified_group_explain">Los grupos verificados (experimentales) brindan seguridad contra ataques activos. Los miembros son verificados con un segundo factor por otros miembros y los mensajes siempre están encriptados de extremo a extremo.</string>
     <string name="copy_qr_data_success">URL del código QR copiado al portapapeles</string>
-
-
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d nuevos mensajes en %2$d chats</string>
     <string name="notify_mark_read">Marcar como leído</string>
@@ -785,7 +778,6 @@
     <string name="menu.view.developer.open.log.folder">Abrir Carpeta de Logs</string>
     <string name="menu.view.developer.open.current.log.file">Abrir Archivo de Logs Actual</string>
     <string name="user_location_permission_explanation">Delta Chat necesita el permiso de ubicación para mostrar y compartir tu ubicación.</string>
-
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Estado de envío: Error</string>
     <string name="a11y_encryption_padlock">Candado de cifrado</string>

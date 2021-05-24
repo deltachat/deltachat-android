@@ -312,7 +312,6 @@
     <string name="show_location_traces">Ammustra sas rastas</string>
     <string name="add_poi">Imbia puntu de interesse</string>
 
-
     <!-- search -->
     <string name="search">Chirca</string>
     <string name="search_explain">Chirca in sas tzarradas, sos cuntatos e sos messàgios</string>
@@ -499,8 +498,6 @@
     <string name="profile_image_select">Ischerta s\'immàgine de profilu</string>
     <string name="select_your_new_profile_image">Ischerta s\'immàgine de profilu noa tua</string>
     <string name="profile_image_delete">Iscantzella s\'immàgine de profilu</string>
-
-
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Resurtados de sa chirca</string>
     <string name="emoji_not_found">Peruna emoji agatada</string>
