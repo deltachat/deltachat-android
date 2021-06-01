@@ -49,7 +49,7 @@
     </PreferenceCategory>
 
 
-    <PreferenceCategory android:title="@string/pref_privacy">
+    <PreferenceCategory android:title="@string/pref_app_access">
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:defaultValue="false"
             android:key="pref_screen_security"
