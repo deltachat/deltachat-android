@@ -6,11 +6,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.util.Log;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatDelegate;
-import androidx.lifecycle.DefaultLifecycleObserver;
-import androidx.lifecycle.LifecycleOwner;
-import androidx.lifecycle.ProcessLifecycleOwner;
 import androidx.multidex.MultiDexApplication;
 import androidx.work.Constraints;
 import androidx.work.ExistingPeriodicWorkPolicy;
@@ -34,7 +30,7 @@ import org.thoughtcrime.securesms.util.SignalProtocolLoggerProvider;
 import java.util.concurrent.TimeUnit;
 //import com.squareup.leakcanary.LeakCanary;
 
-public class ApplicationContext extends MultiDexApplication implements DefaultLifecycleObserver {
+public class ApplicationContext extends MultiDexApplication {
 
   public ApplicationDcContext   dcContext;
   public DcLocationManager      dcLocationManager;
@@ -70,7 +66,6 @@ public class ApplicationContext extends MultiDexApplication implements DefaultLi
     initializeRandomNumberFix();
     initializeLogging();
     initializeJobManager();
-    ProcessLifecycleOwner.get().getLifecycle().addObserver(this);
     InChatSounds.getInstance(this);
 
     dcLocationManager = new DcLocationManager(this);
@@ -110,10 +105,6 @@ public class ApplicationContext extends MultiDexApplication implements DefaultLi
             ExistingPeriodicWorkPolicy.KEEP,
             fetchWorkRequest);
     AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
-  }
-
-  @Override
-  public void onStart(@NonNull LifecycleOwner owner) {
   }
 
   public JobManager getJobManager() {
