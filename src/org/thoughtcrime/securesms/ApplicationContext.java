@@ -1,26 +1,18 @@
 package org.thoughtcrime.securesms;
 
-import android.annotation.SuppressLint;
-
-import androidx.appcompat.app.AppCompatDelegate;
-import androidx.lifecycle.DefaultLifecycleObserver;
-import androidx.lifecycle.LifecycleOwner;
-import androidx.lifecycle.ProcessLifecycleOwner;
-import androidx.work.Constraints;
-import androidx.work.ExistingPeriodicWorkPolicy;
-import androidx.work.NetworkType;
-import androidx.work.PeriodicWorkRequest;
-import androidx.work.WorkManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.util.Log;
 
-import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.multidex.MultiDexApplication;
-
-import com.b44t.messenger.DcContext;
+import androidx.work.Constraints;
+import androidx.work.ExistingPeriodicWorkPolicy;
+import androidx.work.NetworkType;
+import androidx.work.PeriodicWorkRequest;
+import androidx.work.WorkManager;
 
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.FetchWorker;
@@ -33,18 +25,16 @@ import org.thoughtcrime.securesms.jobmanager.JobManager;
 import org.thoughtcrime.securesms.notifications.InChatSounds;
 import org.thoughtcrime.securesms.util.AndroidSignalProtocolLogger;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
-import org.thoughtcrime.securesms.util.ScreenLockUtil;
 import org.thoughtcrime.securesms.util.SignalProtocolLoggerProvider;
 
 import java.util.concurrent.TimeUnit;
 //import com.squareup.leakcanary.LeakCanary;
 
-public class ApplicationContext extends MultiDexApplication implements DefaultLifecycleObserver {
+public class ApplicationContext extends MultiDexApplication {
 
   public ApplicationDcContext   dcContext;
   public DcLocationManager      dcLocationManager;
   private JobManager            jobManager;
-  private volatile boolean      isAppVisible;
 
   public static ApplicationContext getInstance(Context context) {
     return (ApplicationContext)context.getApplicationContext();
@@ -76,7 +66,6 @@ public class ApplicationContext extends MultiDexApplication implements DefaultLi
     initializeRandomNumberFix();
     initializeLogging();
     initializeJobManager();
-    ProcessLifecycleOwner.get().getLifecycle().addObserver(this);
     InChatSounds.getInstance(this);
 
     dcLocationManager = new DcLocationManager(this);
@@ -118,23 +107,8 @@ public class ApplicationContext extends MultiDexApplication implements DefaultLi
     AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
   }
 
-  @Override
-  public void onStart(@NonNull LifecycleOwner owner) {
-    isAppVisible = true;
-  }
-
-  @Override
-  public void onStop(@NonNull LifecycleOwner owner) {
-    isAppVisible = false;
-    ScreenLockUtil.setShouldLockApp(true);
-  }
-
   public JobManager getJobManager() {
     return jobManager;
-  }
-
-  public boolean isAppVisible() {
-    return isAppVisible;
   }
 
   private void initializeRandomNumberFix() {
