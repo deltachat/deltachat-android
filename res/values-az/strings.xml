@@ -425,11 +425,6 @@
     <string name="systemmsg_action_by_me">%1$s məndən. </string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
     <string name="systemmsg_action_by_user">%1$s ilə %2$s.</string>
-    <!-- screen lock -->
-    <string name="screenlock_unlock_title">Delta Chat-ın kilidini aç</string>
-    <string name="screenlock_unlock_description">Delta Chat-ı blokdan açmaq üçün sistem parolunu daxil edin. </string>
-    <string name="screenlock_authentication_failed">Daxilolma uğursuz oldu.</string>
-
     <string name="qrscan_title">Qr kodu skan edin</string>
     <string name="qrscan_hint">QR kodu kamera ilə izləyin</string>
     <string name="qrscan_ask_join_group">\"%1$s\" qrupa qoşulmaq istəyirsinizmi?</string>

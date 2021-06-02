@@ -439,11 +439,6 @@
     <string name="systemmsg_action_by_me">%1$s per mi.</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
     <string name="systemmsg_action_by_user">%1$s per %2$s.</string>
-    <!-- screen lock -->
-    <string name="screenlock_unlock_title">Desbloqueja Delta Chat</string>
-    <string name="screenlock_unlock_description">Introduïu el sistema secret definit per desbloquejar el Delta Chat.</string>
-    <string name="screenlock_authentication_failed">L\'autenticació ha fallat.</string>
-
     <string name="qrscan_title">Escaneja codi QR</string>
     <string name="qrscan_hint">Poseu la càmera davant del codi QR</string>
     <string name="qrscan_ask_join_group">Voleu unir-vos al grup \"%1$s\"?</string>

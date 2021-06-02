@@ -233,8 +233,6 @@
     <string name="systemmsg_member_added"> %1$s உறுப்பினராக சேர்க்கப்பட்டார்</string>
     <string name="systemmsg_member_removed">உறுப்பினர் %1$s நீக்கப்பட்டார்</string>
     <string name="systemmsg_group_left">குழுவில் இருந்து வெளியேறினது</string>
-    <!-- screen lock -->
-    <string name="screenlock_unlock_title">Delta Chat லைத் திற</string>
     <string name="qrscan_fingerprint_label">கைரேகைகள்</string>
     <string name="notify_reply_button">மறுமொழி</string>
     <string name="notify_new_message">புதிய செய்தி</string>

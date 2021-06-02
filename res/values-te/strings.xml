@@ -198,8 +198,6 @@
     <string name="systemmsg_action_by_me">%1$s నా‌ ద్వరా</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
     <string name="systemmsg_action_by_user">%1$s చే %2$s.</string>
-    <!-- screen lock -->
-    <string name="screenlock_unlock_title">అన్లాక్ Delta Chat</string>
     <string name="qrscan_fingerprint_label">ఫింగర్‌ప్రింట్స్</string>
     <string name="notify_reply_button">జవాబు</string>
     <string name="notify_new_message">కొత్త సందేశం</string>

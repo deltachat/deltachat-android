@@ -659,11 +659,6 @@
     <string name="systemmsg_chat_protection_disabled">Mbrojtja e fjalosjes u çaktivizua.</string>
     <string name="systemmsg_chat_protection_enabled">Mbrojtja e fjalosjes u aktivizua.</string>
 
-    <!-- screen lock -->
-    <string name="screenlock_unlock_title">Shkyçe Delta Chat-in</string>
-    <string name="screenlock_unlock_description">Që të shkyçet Delta Chat-i, ju lutemi, jepni të fshehtën e përcaktuar nga sistemi juaj.</string>
-    <string name="screenlock_authentication_failed">Mirëfilltësimi dështoi.</string>
-
     <!-- qr code stuff -->
     <string name="qr_code">Kod QR</string>
     <string name="load_qr_code_as_image">Ngarkoje kodin QR si figurë</string>

@@ -382,8 +382,6 @@
     <string name="pref_send_copy_to_self">Sendi kopion al mi mem</string>
     <string name="pref_show_emails_all">Ĉiuj</string>
     <string name="autocrypt_prefer_e2ee">Preferi tutvojan ĉifradon</string>
-    <!-- screen lock -->
-    <string name="screenlock_unlock_title">Malŝlosi Delta Chat-on</string>
     <string name="notify_mark_read">Marki legita</string>
     <string name="notify_reply_button">Respondi</string>
     <string name="notify_new_message">Nova mesaĝo</string>

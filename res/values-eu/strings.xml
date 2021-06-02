@@ -483,11 +483,6 @@
     <string name="systemmsg_action_by_me">Nik: %1$s</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
     <string name="systemmsg_action_by_user">%2$s(e)k: %1$s</string>
-    <!-- screen lock -->
-    <string name="screenlock_unlock_title">Desblokeatu Delta Chat</string>
-    <string name="screenlock_unlock_description">Sartu sisteman zehaztutako sekretua Delta Chat desblokeatzeko.</string>
-    <string name="screenlock_authentication_failed">Autentifikazioak huts egin du.</string>
-
     <!-- qr code stuff -->
     <string name="qr_code">QR kodea</string>
     <string name="qrscan_title">Eskaneatu QR kodea</string>

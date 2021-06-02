@@ -610,11 +610,6 @@
     <string name="systemmsg_chat_protection_disabled">Chat-beskyttelse slået fra.</string>
     <string name="systemmsg_chat_protection_enabled">Chat-beskyttelse sluttet til.</string>
 
-    <!-- screen lock -->
-    <string name="screenlock_unlock_title">Lås Delta Chat op</string>
-    <string name="screenlock_unlock_description">Indtast system bestemt hemmelighed for at låse Delta Chat op.</string>
-    <string name="screenlock_authentication_failed">Godkendelse mislykket.</string>
-
     <!-- qr code stuff -->
     <string name="qr_code">QR-kode</string>
     <string name="load_qr_code_as_image">Indlæs QR-kode som billede</string>

@@ -651,11 +651,6 @@
     <string name="systemmsg_chat_protection_disabled">已禁用聊天保护</string>
     <string name="systemmsg_chat_protection_enabled">已启用聊天保护</string>
 
-    <!-- screen lock -->
-    <string name="screenlock_unlock_title">解锁 Delta Chat</string>
-    <string name="screenlock_unlock_description">请输入您的系统密码以解锁 Delta Chat。</string>
-    <string name="screenlock_authentication_failed">认证失败。</string>
-
     <!-- qr code stuff -->
     <string name="qr_code">二维码</string>
     <string name="load_qr_code_as_image">从图像加载二维码</string>

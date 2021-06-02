@@ -660,11 +660,6 @@
     <string name="systemmsg_chat_protection_disabled">Sohbet koruması etkisizleştirildi.</string>
     <string name="systemmsg_chat_protection_enabled">Sohbet koruması etkinleştirildi.</string>
 
-    <!-- screen lock -->
-    <string name="screenlock_unlock_title">Delta Chat kilidini aç</string>
-    <string name="screenlock_unlock_description">Delta Chat kilidini açmak için lütfen sistem tanımlı sırrınızı girin.</string>
-    <string name="screenlock_authentication_failed">Kimlik doğrulama başarısız.</string>
-
     <!-- qr code stuff -->
     <string name="qr_code">QR kod</string>
     <string name="load_qr_code_as_image">QR kodu görsel olarak yükle</string>

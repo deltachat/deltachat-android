@@ -401,8 +401,6 @@
     <string name="systemmsg_action_by_me">%1$s av meg.</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
     <string name="systemmsg_action_by_user">%1$s av %2$s.</string>
-    <!-- screen lock -->
-    <string name="screenlock_unlock_title">Lås opp Delta Chat</string>
     <!-- qr code stuff -->
     <string name="qr_code">QR-kode</string>
     <string name="qrscan_title">Skann QR-kode</string>

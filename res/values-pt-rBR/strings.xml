@@ -597,11 +597,6 @@
     <string name="systemmsg_chat_protection_disabled">Proteção da conversa desligada.</string>
     <string name="systemmsg_chat_protection_enabled">Proteção da conversa ligada.</string>
 
-    <!-- screen lock -->
-    <string name="screenlock_unlock_title">Desbloquear o Delta Chat</string>
-    <string name="screenlock_unlock_description">Por favor, insira sua senha do sistema para desbloquear o Delta Chat.</string>
-    <string name="screenlock_authentication_failed">A autenticação falhou.</string>
-
     <!-- qr code stuff -->
     <string name="qr_code">Código QR</string>
     <string name="load_qr_code_as_image">Carregar o código QR como imagem</string>

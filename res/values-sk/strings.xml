@@ -643,11 +643,6 @@
     <string name="systemmsg_chat_protection_disabled">Ochrana chatu je deaktivovaná.</string>
     <string name="systemmsg_chat_protection_enabled">Ochrana chatu je povolená.</string>
 
-    <!-- screen lock -->
-    <string name="screenlock_unlock_title">Odomknite program Delta Chat</string>
-    <string name="screenlock_unlock_description">Odomknite Delta Chat zadaním vášho systému definovaného tajomstva.</string>
-    <string name="screenlock_authentication_failed">Overenie zlyhalo.</string>
-
     <!-- qr code stuff -->
     <string name="qr_code">QR kód</string>
     <string name="load_qr_code_as_image">Načítajte QR kód ako obrázok</string>

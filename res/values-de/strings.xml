@@ -665,10 +665,8 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="systemmsg_chat_protection_disabled">Chat-Absicherung ausgeschaltet.</string>
     <string name="systemmsg_chat_protection_enabled">Chat-Absicherung eingeschaltet.</string>
 
-    <!-- screen lock -->
-    <string name="screenlock_unlock_title">Delta Chat entsperren</string>
-    <string name="screenlock_unlock_description">Den System-Entsperrcode eingeben, um Delta Chat freizuschalten.</string>
-    <string name="screenlock_authentication_failed">Die Authentifizierung ist fehlgeschlagen.</string>
+    <!-- Some options as "Manage keys" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc. to be entered in a system dialog. This hint is added to the system dialog, below a title as "Manage keys" or "Backup". -->
+    <string name="enter_system_secret_to_continue">Bitte geben Sie den System-Entsperrcode ein, um fortzufahren.</string>
 
     <!-- qr code stuff -->
     <string name="qr_code">QR-Code</string>

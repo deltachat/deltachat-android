@@ -663,11 +663,6 @@
     <string name="systemmsg_chat_protection_disabled">Gespreksbeveiliging is uitgeschakeld.</string>
     <string name="systemmsg_chat_protection_enabled">Gespreksbeveiliging is ingeschakeld.</string>
 
-    <!-- screen lock -->
-    <string name="screenlock_unlock_title">Delta Chat ontgrendelen</string>
-    <string name="screenlock_unlock_description">Voer je op het systeem opgegeven toegangscode in om Delta Chat te ontgrendelen.</string>
-    <string name="screenlock_authentication_failed">Authenticatie mislukt.</string>
-
     <!-- qr code stuff -->
     <string name="qr_code">QR-code</string>
     <string name="load_qr_code_as_image">QR-code als afbeelding laden</string>

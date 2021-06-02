@@ -596,10 +596,6 @@ https://delta.chat</string>
     <string name="systemmsg_chat_protection_disabled">保護が無効です。</string>
     <string name="systemmsg_chat_protection_enabled">保護が有効です。</string>
 
-    <!-- screen lock -->
-    <string name="screenlock_unlock_title">Delta Chatを解錠する</string>
-    <string name="screenlock_authentication_failed">認証に失敗しました。</string>
-
     <!-- qr code stuff -->
     <string name="qr_code">QRコード</string>
     <string name="load_qr_code_as_image">QRコードを画像として読み込む</string>

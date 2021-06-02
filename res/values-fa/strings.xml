@@ -598,11 +598,6 @@
     <string name="systemmsg_chat_protection_disabled">محافظت از گفنگو غیرفعال شد.</string>
     <string name="systemmsg_chat_protection_enabled">محافظت از گفتگو فعال شد.</string>
 
-    <!-- screen lock -->
-    <string name="screenlock_unlock_title">قفل دلتا چت را باز کنید</string>
-    <string name="screenlock_unlock_description">رمز تعیین شده توسط دستگاهتان را وارد کنید تا قفل دلتاچت باز شود. </string>
-    <string name="screenlock_authentication_failed">احراز هویت ناموفق بود</string>
-
     <!-- qr code stuff -->
     <string name="qr_code">کد QR</string>
     <string name="load_qr_code_as_image">بارگیری کدQR به صورت تصویر</string>

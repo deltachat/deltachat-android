@@ -663,6 +663,7 @@
     <string name="systemmsg_chat_protection_disabled">Chat protection disabled.</string>
     <string name="systemmsg_chat_protection_enabled">Chat protection enabled.</string>
 
+    <!-- Some options as "Manage keys" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc. to be entered in a system dialog. This hint is added to the system dialog, below a title as "Manage keys" or "Backup". -->
     <string name="enter_system_secret_to_continue">Please enter your system defined secret to continue.</string>
 
     <!-- qr code stuff -->

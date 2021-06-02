@@ -687,11 +687,6 @@
     <string name="systemmsg_chat_protection_disabled">Захист чату вимкнено.</string>
     <string name="systemmsg_chat_protection_enabled">Захист чату увімкнено.</string>
 
-    <!-- screen lock -->
-    <string name="screenlock_unlock_title">Розблокувати Delta Chat</string>
-    <string name="screenlock_unlock_description">Введіть захисний код, щоб розблокувати Delta Chat.</string>
-    <string name="screenlock_authentication_failed">Не вдалося здійснити аутентифікацію.</string>
-
     <!-- qr code stuff -->
     <string name="qr_code">QR-код</string>
     <string name="load_qr_code_as_image">Завантажити зображення QR-коду</string>

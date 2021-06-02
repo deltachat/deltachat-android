@@ -577,11 +577,6 @@
     <string name="systemmsg_ephemeral_timer_day">Tiduret för meddelandeborttagning är satt till 1 dag.</string>
     <string name="systemmsg_ephemeral_timer_week">Tiduret för meddelandeborttagning är satt till 1 vecka.</string>
     <string name="systemmsg_ephemeral_timer_four_weeks">Tiduret för meddelandeborttagning är satt till 4 veckor.</string>
-    <!-- screen lock -->
-    <string name="screenlock_unlock_title">Lås upp Delta Chat</string>
-    <string name="screenlock_unlock_description">Ange din systemdefinierade säkerhet för att låsa upp Delta Chat</string>
-    <string name="screenlock_authentication_failed">Autentisering misslyckades.</string>
-
     <!-- qr code stuff -->
     <string name="qr_code">QR-kod</string>
     <string name="qrscan_title">Skanna QR-kod</string>

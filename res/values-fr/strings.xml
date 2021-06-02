@@ -620,11 +620,6 @@
     <string name="systemmsg_chat_protection_disabled">Protection de la discussion désactivée.</string>
     <string name="systemmsg_chat_protection_enabled">Protection de la discussion activée.</string>
 
-    <!-- screen lock -->
-    <string name="screenlock_unlock_title">Déverrouiller DeltaChat</string>
-    <string name="screenlock_unlock_description">Veuillez entrer votre secret défini par le système pour déverrouiller DeltaChat.</string>
-    <string name="screenlock_authentication_failed">L\'authentification a échoué.</string>
-
     <!-- qr code stuff -->
     <string name="qr_code">Code QR</string>
     <string name="load_qr_code_as_image">Charger le code QR comme une image</string>

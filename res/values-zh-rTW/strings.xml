@@ -390,11 +390,6 @@
     <string name="systemmsg_action_by_me">我%1$s</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
     <string name="systemmsg_action_by_user">%2$s%1$s</string>
-    <!-- screen lock -->
-    <string name="screenlock_unlock_title">解鎖 Delta Chat</string>
-    <string name="screenlock_unlock_description">請輸入系統密碼以解鎖 Delta Chat</string>
-    <string name="screenlock_authentication_failed">認證失敗</string>
-
     <string name="qrscan_title">掃描QR Code</string>
     <string name="qrscan_hint">請將相機對準 QR Code</string>
     <string name="qrscan_ask_join_group">你要參加群組 %1$s 嗎?</string>

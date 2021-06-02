@@ -607,11 +607,6 @@
     <string name="systemmsg_chat_protection_disabled">ការការពារសន្ទនាត្រូវបានបិទ</string>
     <string name="systemmsg_chat_protection_enabled">ការការពារសន្ទនាត្រូវបានបើក</string>
 
-    <!-- screen lock -->
-    <string name="screenlock_unlock_title">ដោះសោរសា Delta Chat</string>
-    <string name="screenlock_unlock_description">សូមបញ្ចូលការកំណត់ប្រព័ន្ធសុវត្ថិភាពសម្ងាត់របស់អ្នក ដើម្បីដោះសោរ សា Delta Chat ។</string>
-    <string name="screenlock_authentication_failed">ការផ្ទៀងផ្ទាត់បានបរាជ័យ</string>
-
     <!-- qr code stuff -->
     <string name="qr_code">QR កូដ</string>
     <string name="load_qr_code_as_image">ផ្ទុកកូដ QR ជារូបភាព</string>

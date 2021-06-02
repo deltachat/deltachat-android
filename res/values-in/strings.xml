@@ -528,11 +528,6 @@
     <string name="systemmsg_subject_for_new_contact">Pesan dari %1$s</string>
     <string name="systemmsg_failed_sending_to">Gagal mengirim pesan ke %1$s.</string>
 
-    <!-- screen lock -->
-    <string name="screenlock_unlock_title">Buka kunci Delta Chat</string>
-    <string name="screenlock_unlock_description">Silakan tekan sistem rahasia yang sudah Anda tetapkan untuk membuka kunci Delta Chat.</string>
-    <string name="screenlock_authentication_failed">Autentikasi gagal.</string>
-
     <!-- qr code stuff -->
     <string name="qr_code">Kode QR</string>
     <string name="qrscan_title">Pindah kode QR</string>
