@@ -408,8 +408,6 @@
     <string name="pref_outgoing_balanced">Seimbang</string>
     <string name="pref_outgoing_worse">Kualitas rendah, ukuran kecil</string>
     <string name="pref_vibrate">Bergetar</string>
-    <string name="pref_change_secret">Ubah rahasia</string>
-    <string name="pref_change_secret_explain">Ubah PIN / pola / sidik jari melalui setelan sistem</string>
     <string name="pref_screen_security">Keamanan layar</string>
     <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
     <string name="pref_screen_security_explain">Permintaan untuk memblok screenshot di daftar terbaru dan di dalam aplikasi</string>
@@ -531,12 +529,10 @@
     <string name="systemmsg_failed_sending_to">Gagal mengirim pesan ke %1$s.</string>
 
     <!-- screen lock -->
-    <string name="screenlock_title">Kunci Layar</string>
-    <string name="screenlock_explain">Kunci akses dengan kunci layar Android atau sidik jari; kalau tidak mau menampilkan konten sebelumnya, mohon aktifkan pula \"Keamanan Layar\".</string>
-    <string name="screenlock_authentication_failed">Autentikasi gagal.</string>
     <string name="screenlock_unlock_title">Buka kunci Delta Chat</string>
     <string name="screenlock_unlock_description">Silakan tekan sistem rahasia yang sudah Anda tetapkan untuk membuka kunci Delta Chat.</string>
-    <string name="screenlock_inactivity_timeout_explain">Setelah tak aktif selama kurun waktu tertentu Delta Chat terkunci secara otomatis</string>
+    <string name="screenlock_authentication_failed">Autentikasi gagal.</string>
+
     <!-- qr code stuff -->
     <string name="qr_code">Kode QR</string>
     <string name="qrscan_title">Pindah kode QR</string>

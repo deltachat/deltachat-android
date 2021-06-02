@@ -442,8 +442,6 @@
     <string name="pref_outgoing_balanced">Balanceret</string>
     <string name="pref_outgoing_worse">Dårligere kvalitet mindre størrelse</string>
     <string name="pref_vibrate">Vibrere</string>
-    <string name="pref_change_secret">Ændre hemmelighed</string>
-    <string name="pref_change_secret_explain">Ændre PIN / mønster / fingeraftryk via system opsætning</string>
     <string name="pref_screen_security">Skærmsikkerhed</string>
     <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
     <string name="pref_screen_security_explain">Forespørgsel om at blokere skærmbilleder i seneste liste og i programmet</string>
@@ -613,15 +611,9 @@
     <string name="systemmsg_chat_protection_enabled">Chat-beskyttelse sluttet til.</string>
 
     <!-- screen lock -->
-    <string name="screenlock_title">Skærmlås</string>
-    <string name="screenlock_explain">Låse adgang med Android skærmlås eller fingeraftryk; for at undgå at vise det forrige indhold, skal \"Skærm sikkerhed\" også aktiveres.</string>
-    <string name="screenlock_authentication_failed">Godkendelse mislykket.</string>
     <string name="screenlock_unlock_title">Lås Delta Chat op</string>
     <string name="screenlock_unlock_description">Indtast system bestemt hemmelighed for at låse Delta Chat op.</string>
-    <string name="screenlock_inactivity_timeout">Inaktivitet tidsudløb lås</string>
-    <string name="screenlock_inactivity_timeout_explain">Autolås Delta Chat efter angiven tidsinterval med inaktivitet</string>
-    <string name="screenlock_inactivity_timeout_interval">Inaktivitet tidsudløb interval</string>
-
+    <string name="screenlock_authentication_failed">Godkendelse mislykket.</string>
 
     <!-- qr code stuff -->
     <string name="qr_code">QR-kode</string>

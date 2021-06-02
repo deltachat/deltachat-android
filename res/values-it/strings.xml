@@ -374,6 +374,9 @@
     <string name="chat_audit_log_title">Registro di controllo chat per %1$s</string>
     <string name="chat_audit_log_description">Questa visualizzazione mostra solo i messaggi di sistema e informativi. Utile per trovare le ultime azioni di chat senza dover scorrere molti messaggi normali.</string>
 
+    <!-- punycode warning / labeled links -->
+    <!-- placeholder is domain/hostname that should be trusted -->
+    <string name="open_external_url_trust_domain">Non chiedere di nuovo per %1$s</string>
     <string name="puny_code_warning_header">Rilevato link sospetto</string>
     <!-- placeholder contains the hostname converted to ascii -->
     <string name="puny_code_warning_question">Sei sicuro di voler visitare %1$s?</string>
@@ -489,8 +492,6 @@
     <string name="pref_outgoing_balanced">Bilanciata</string>
     <string name="pref_outgoing_worse">Qualità peggiore, dimensione ridotta</string>
     <string name="pref_vibrate">Vibrazione</string>
-    <string name="pref_change_secret">Cambia codice</string>
-    <string name="pref_change_secret_explain">Cambia il pin / sequenza / impronta digitale dalle impostazioni di sistema.</string>
     <string name="pref_screen_security">Sicurezza schermo</string>
     <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
     <string name="pref_screen_security_explain">Impedisci di effettuare screenshot nella lista Recenti e all\'interno dell\'app</string>
@@ -663,15 +664,9 @@
     <string name="systemmsg_chat_protection_enabled">Protezione chat abilitata.</string>
 
     <!-- screen lock -->
-    <string name="screenlock_title">Blocco schermo</string>
-    <string name="screenlock_explain">Blocca l\'accesso all\'app tramite il blocco schermo di Android o l\'impronta digitale; per non mostrare i contenuti precedenti, abilita anche \"Sicurezza Schermo\"</string>
-    <string name="screenlock_authentication_failed">Autenticazione fallita.</string>
     <string name="screenlock_unlock_title">Sblocca Delta Chat</string>
     <string name="screenlock_unlock_description">Inserisci il codice di sistema per sbloccare Delta Chat</string>
-    <string name="screenlock_inactivity_timeout">Tempo di blocco per inattività</string>
-    <string name="screenlock_inactivity_timeout_explain">Blocca automaticamente Delta Chat dopo un tempo di inattività definito</string>
-    <string name="screenlock_inactivity_timeout_interval">Tempo di inattività</string>
-
+    <string name="screenlock_authentication_failed">Autenticazione fallita.</string>
 
     <!-- qr code stuff -->
     <string name="qr_code">Codice QR</string>

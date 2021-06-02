@@ -489,8 +489,6 @@
     <string name="pref_outgoing_balanced">E baraspeshuar</string>
     <string name="pref_outgoing_worse">Cilësia më e ulët, madhësi e vogël</string>
     <string name="pref_vibrate">Dridhu</string>
-    <string name="pref_change_secret">Ndryshoni të fshehtën</string>
-    <string name="pref_change_secret_explain">Ndryshojeni pin-in / rregullsinë / shenjat tuaja të gishtave përmes rregullimeve të sistemit</string>
     <string name="pref_screen_security">Siguri ekrani</string>
     <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
     <string name="pref_screen_security_explain">Kërko të bllokohen foto ekrani në lista të freskëta dhe brenda aplikacionit</string>
@@ -662,15 +660,9 @@
     <string name="systemmsg_chat_protection_enabled">Mbrojtja e fjalosjes u aktivizua.</string>
 
     <!-- screen lock -->
-    <string name="screenlock_title">Kyçje ekrani</string>
-    <string name="screenlock_explain">Kyçni hyrjen me kyçje ekrani apo shenja gishtas Android; për të shmangur shfaqje të lëndës së mëparshme, ju lutemi, aktivizoni edhe \"Siguri ekrani\"</string>
-    <string name="screenlock_authentication_failed">Mirëfilltësimi dështoi.</string>
     <string name="screenlock_unlock_title">Shkyçe Delta Chat-in</string>
     <string name="screenlock_unlock_description">Që të shkyçet Delta Chat-i, ju lutemi, jepni të fshehtën e përcaktuar nga sistemi juaj.</string>
-    <string name="screenlock_inactivity_timeout">Kyçje pas afati mosveprimtarie</string>
-    <string name="screenlock_inactivity_timeout_explain">Vetëkyçje Delta Chat-i pas një intervali të caktuar kohe mosveprimtarie</string>
-    <string name="screenlock_inactivity_timeout_interval">Interval afati mosveprimtarie</string>
-
+    <string name="screenlock_authentication_failed">Mirëfilltësimi dështoi.</string>
 
     <!-- qr code stuff -->
     <string name="qr_code">Kod QR</string>

@@ -297,8 +297,6 @@
     <string name="pref_outgoing_balanced">普通</string>
     <string name="pref_outgoing_worse">低品質</string>
     <string name="pref_vibrate">振動</string>
-    <string name="pref_change_secret">更改密碼</string>
-    <string name="pref_change_secret_explain">使用系統設定更改數字、圖型、指紋密碼</string>
     <string name="pref_screen_security">螢幕安全性</string>
     <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
     <string name="pref_screen_security_explain">要求系統在本通訊軟體中及應用程式列表中禁止擷圖</string>
@@ -393,15 +391,9 @@
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
     <string name="systemmsg_action_by_user">%2$s%1$s</string>
     <!-- screen lock -->
-    <string name="screenlock_title">螢幕鎖</string>
-    <string name="screenlock_explain">使用 Android 螢幕鎖或指紋鎖定，為防止訊息顯示在螢幕上，請一併開啟「螢幕安全」。</string>
-    <string name="screenlock_authentication_failed">認證失敗</string>
     <string name="screenlock_unlock_title">解鎖 Delta Chat</string>
     <string name="screenlock_unlock_description">請輸入系統密碼以解鎖 Delta Chat</string>
-    <string name="screenlock_inactivity_timeout">閒置逾時鎖定</string>
-    <string name="screenlock_inactivity_timeout_explain">在指定的時間間隔內沒有動作的話，自動鎖定 Delta Chat。</string>
-    <string name="screenlock_inactivity_timeout_interval">閒置逾時時間</string>
-
+    <string name="screenlock_authentication_failed">認證失敗</string>
 
     <string name="qrscan_title">掃描QR Code</string>
     <string name="qrscan_hint">請將相機對準 QR Code</string>

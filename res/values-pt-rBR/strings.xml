@@ -437,8 +437,6 @@
     <string name="pref_outgoing_balanced">Equilibrado</string>
     <string name="pref_outgoing_worse">Pior qualidade, tamanho pequeno</string>
     <string name="pref_vibrate">Vibrar</string>
-    <string name="pref_change_secret">Mudar senha</string>
-    <string name="pref_change_secret_explain">Mudar PIN / padrão / digital pelo sistema</string>
     <string name="pref_screen_security">Segurança da tela</string>
     <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
     <string name="pref_screen_security_explain">Não exibir capturas de tela na lista de recentes e no aplicativo</string>
@@ -600,15 +598,9 @@
     <string name="systemmsg_chat_protection_enabled">Proteção da conversa ligada.</string>
 
     <!-- screen lock -->
-    <string name="screenlock_title">Bloqueio de tela</string>
-    <string name="screenlock_explain">Tranque o acesso com o bloqueio de tela do Android ou com sua digital; para evitar que o conteúdo prévio seja exibido habilite também a \"segurança de tela\".</string>
-    <string name="screenlock_authentication_failed">A autenticação falhou.</string>
     <string name="screenlock_unlock_title">Desbloquear o Delta Chat</string>
     <string name="screenlock_unlock_description">Por favor, insira sua senha do sistema para desbloquear o Delta Chat.</string>
-    <string name="screenlock_inactivity_timeout">Bloqueio por inatividade</string>
-    <string name="screenlock_inactivity_timeout_explain">Bloquear acesso ao Delta Chat depois de um tempo de inatividade</string>
-    <string name="screenlock_inactivity_timeout_interval">Limite de inatividade</string>
-
+    <string name="screenlock_authentication_failed">A autenticação falhou.</string>
 
     <!-- qr code stuff -->
     <string name="qr_code">Código QR</string>

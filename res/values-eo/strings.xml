@@ -328,7 +328,6 @@
     <string name="pref_enter_sends">La Eniga klavo kaŭzas sendon</string>
     <string name="pref_enter_sends_explain">Premado de la Eniga klavo sendos mesaĝojn</string>
     <string name="pref_vibrate">Vibrado</string>
-    <string name="pref_change_secret">Ŝanĝi sekreton</string>
     <string name="pref_screen_security">Ekrana sekureco</string>
     <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
     <string name="pref_screen_security_explain">Neebligi ekrankopiojn en la listo de ĵus uzitaj aplikaĵoj kaj ene de la aplikaĵo mem</string>
@@ -384,10 +383,7 @@
     <string name="pref_show_emails_all">Ĉiuj</string>
     <string name="autocrypt_prefer_e2ee">Preferi tutvojan ĉifradon</string>
     <!-- screen lock -->
-    <string name="screenlock_title">Ekranŝloso</string>
-    <string name="screenlock_explain">Lock Delta Chat access with Android screen lock or fingerprint</string>
     <string name="screenlock_unlock_title">Malŝlosi Delta Chat-on</string>
-    <string name="screenlock_inactivity_timeout_explain">Aŭtomate ŝlosi Signal-on post specifa templimo de neaktiveco</string>
     <string name="notify_mark_read">Marki legita</string>
     <string name="notify_reply_button">Respondi</string>
     <string name="notify_new_message">Nova mesaĝo</string>

@@ -489,8 +489,6 @@
     <string name="pref_outgoing_balanced">Dengeli</string>
     <string name="pref_outgoing_worse">Daha kötü kalite, küçük boyut</string>
     <string name="pref_vibrate">Titret</string>
-    <string name="pref_change_secret">Sırrı değiştir</string>
-    <string name="pref_change_secret_explain">PIN / desen / parmak izinizi sistem ayarları üzerinden değiştirin</string>
     <string name="pref_screen_security">Ekran güvenliği</string>
     <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
     <string name="pref_screen_security_explain">Yeni listesinde ve uygulamanın içinde ekran görüntülerinin engellenmesini iste</string>
@@ -663,15 +661,9 @@
     <string name="systemmsg_chat_protection_enabled">Sohbet koruması etkinleştirildi.</string>
 
     <!-- screen lock -->
-    <string name="screenlock_title">Ekran kilidi</string>
-    <string name="screenlock_explain">Android ekran kilidi ya da parmak iziyle erişimi kilitleyin; önceki içeriğin görünmesini önlemek için lütfen \"Ekran güvenliği\"ni de etkinleştirin.</string>
-    <string name="screenlock_authentication_failed">Kimlik doğrulama başarısız.</string>
     <string name="screenlock_unlock_title">Delta Chat kilidini aç</string>
     <string name="screenlock_unlock_description">Delta Chat kilidini açmak için lütfen sistem tanımlı sırrınızı girin.</string>
-    <string name="screenlock_inactivity_timeout">Etkisizlik zaman aşımı kilidi</string>
-    <string name="screenlock_inactivity_timeout_explain">Belirtilen bir etkisizlik zaman diliminden sonra Delta Chat\'i otomatik kilitle</string>
-    <string name="screenlock_inactivity_timeout_interval">Etkin kalma zamanı</string>
-
+    <string name="screenlock_authentication_failed">Kimlik doğrulama başarısız.</string>
 
     <!-- qr code stuff -->
     <string name="qr_code">QR kod</string>

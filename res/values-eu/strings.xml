@@ -367,8 +367,6 @@
     <string name="pref_outgoing_balanced">Orekatua</string>
     <string name="pref_outgoing_worse">Kalitate txarragoa, tamaina txikia</string>
     <string name="pref_vibrate">Bibratu</string>
-    <string name="pref_change_secret">Aldatu sekretua</string>
-    <string name="pref_change_secret_explain">Aldatu zure pina / eredua / hatz-marka sistemako ezarpenetan.</string>
     <string name="pref_screen_security">Pantaila segurtasuna</string>
     <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
     <string name="pref_screen_security_explain">Eskatu pantaila-argazkiak blokeatzea azkenak zerrendan eta aplikazio barruan.</string>
@@ -486,15 +484,9 @@
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
     <string name="systemmsg_action_by_user">%2$s(e)k: %1$s</string>
     <!-- screen lock -->
-    <string name="screenlock_title">Pantila-blokeoa</string>
-    <string name="screenlock_explain">Blokeatu sarbidea Androideko blokeo-pantailarekin edo hatz-markarekin aurreko edukia agertzea ekiditeko, gaitu ere \"Pantaila-segurtasuna\"</string>
-    <string name="screenlock_authentication_failed">Autentifikazioak huts egin du.</string>
     <string name="screenlock_unlock_title">Desblokeatu Delta Chat</string>
     <string name="screenlock_unlock_description">Sartu sisteman zehaztutako sekretua Delta Chat desblokeatzeko.</string>
-    <string name="screenlock_inactivity_timeout">Jarduerarik gabeko denboraren blokeoa</string>
-    <string name="screenlock_inactivity_timeout_explain">Automatikoki blokeatu Delta Chat jarduerarik gabeko denbora bat igaro eta gero</string>
-    <string name="screenlock_inactivity_timeout_interval">Jarduerarik gabeko denbora tartea</string>
-
+    <string name="screenlock_authentication_failed">Autentifikazioak huts egin du.</string>
 
     <!-- qr code stuff -->
     <string name="qr_code">QR kodea</string>

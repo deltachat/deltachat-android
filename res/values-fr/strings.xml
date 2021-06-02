@@ -452,8 +452,6 @@
     <string name="pref_outgoing_balanced">Équilibré</string>
     <string name="pref_outgoing_worse">Pire qualité, taille réduite</string>
     <string name="pref_vibrate">Vibrer</string>
-    <string name="pref_change_secret">Modifier le secret</string>
-    <string name="pref_change_secret_explain">Modifiez votre code PIN / modèle / empreinte digitale via les paramètres du système</string>
     <string name="pref_screen_security">Écran de sécurité</string>
     <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
     <string name="pref_screen_security_explain">Demande de blocage des captures d\'écran dans la liste des captures récentes et à l\'intérieur de l\'application</string>
@@ -623,15 +621,9 @@
     <string name="systemmsg_chat_protection_enabled">Protection de la discussion activée.</string>
 
     <!-- screen lock -->
-    <string name="screenlock_title">Verrouillage de l\'écran</string>
-    <string name="screenlock_explain">Verrouiller l’accès avec le verrouillage d’écran Android ou l’empreinte digitale ; pour éviter d’afficher le contenu précédent, veuillez également activer « Sécurité écran »</string>
-    <string name="screenlock_authentication_failed">L\'authentification a échoué.</string>
     <string name="screenlock_unlock_title">Déverrouiller DeltaChat</string>
     <string name="screenlock_unlock_description">Veuillez entrer votre secret défini par le système pour déverrouiller DeltaChat.</string>
-    <string name="screenlock_inactivity_timeout">Verrouillage du délai d\'inactivité</string>
-    <string name="screenlock_inactivity_timeout_explain">Auto-verrouillage de Delta Chat après un intervalle de temps d\'inactivité spécifié</string>
-    <string name="screenlock_inactivity_timeout_interval">Temps pour rester actif</string>
-
+    <string name="screenlock_authentication_failed">L\'authentification a échoué.</string>
 
     <!-- qr code stuff -->
     <string name="qr_code">Code QR</string>

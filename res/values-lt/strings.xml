@@ -435,8 +435,6 @@
     <string name="pref_outgoing_balanced">Subalansuota</string>
     <string name="pref_outgoing_worse">Blogesnė kokybė, mažas dydis</string>
     <string name="pref_vibrate">Vibruoti</string>
-    <string name="pref_change_secret">Pakeisti paslaptį</string>
-    <string name="pref_change_secret_explain">Pakeisti savo pin / šabloną / piršto atspaudą per sistemos nustatymus</string>
     <string name="pref_screen_security">Ekrano saugumas</string>
     <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
     <string name="pref_screen_security_explain">Prašyti blokuoti ekrano kopijas paskiausiųjų sąraše ir programėlės viduje</string>
@@ -579,14 +577,9 @@
     <string name="systemmsg_chat_protection_enabled">Pokalbio apsauga įjungta.</string>
 
     <!-- screen lock -->
-    <string name="screenlock_title">Ekrano užraktas</string>
-    <string name="screenlock_authentication_failed">Tapatybės nustatymas nepavyko.</string>
     <string name="screenlock_unlock_title">Atrakinti Delta Chat</string>
     <string name="screenlock_unlock_description">Norėdami atrakinti Delta Chat, įveskite savo sistemos apibrėžtą paslaptį.</string>
-    <string name="screenlock_inactivity_timeout">Užraktas esant neveiklumui</string>
-    <string name="screenlock_inactivity_timeout_explain">Automatiškai užrakinti Delta Chat po nurodyto neveiklumo intervalo</string>
-    <string name="screenlock_inactivity_timeout_interval">Neveiklumui skirtas laiko intervalas</string>
-
+    <string name="screenlock_authentication_failed">Tapatybės nustatymas nepavyko.</string>
 
     <!-- qr code stuff -->
     <string name="qr_code">QR kodas</string>

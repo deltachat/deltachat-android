@@ -445,8 +445,6 @@
     <string name="pref_outgoing_balanced">Balanserad</string>
     <string name="pref_outgoing_worse">Sämre kvalitet, mindre storlek</string>
     <string name="pref_vibrate">Vibrera</string>
-    <string name="pref_change_secret">Ändra hemlighet</string>
-    <string name="pref_change_secret_explain">Ändra ditt PIN/mönster/fingeravtryck via systeminställningarna</string>
     <string name="pref_screen_security">Skärmsäkerhet</string>
     <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
     <string name="pref_screen_security_explain">Blockera skärmklipp i tidigare-listan samt inuti programmet</string>
@@ -580,15 +578,9 @@
     <string name="systemmsg_ephemeral_timer_week">Tiduret för meddelandeborttagning är satt till 1 vecka.</string>
     <string name="systemmsg_ephemeral_timer_four_weeks">Tiduret för meddelandeborttagning är satt till 4 veckor.</string>
     <!-- screen lock -->
-    <string name="screenlock_title">Skärmlås</string>
-    <string name="screenlock_explain">Lås åtkomsten med Androids skärmlås eller fingeravtryck. Aktivera även \"Skärmsäkerhet\", för att undvika att visa tidigare innehåll.</string>
-    <string name="screenlock_authentication_failed">Autentisering misslyckades.</string>
     <string name="screenlock_unlock_title">Lås upp Delta Chat</string>
     <string name="screenlock_unlock_description">Ange din systemdefinierade säkerhet för att låsa upp Delta Chat</string>
-    <string name="screenlock_inactivity_timeout">Tidslås för inaktivitet</string>
-    <string name="screenlock_inactivity_timeout_explain">Lås Delta Chat automatiskt efter en specificerad tidsperiod av inaktivitet</string>
-    <string name="screenlock_inactivity_timeout_interval">Tid att fortsätta vara aktiv</string>
-
+    <string name="screenlock_authentication_failed">Autentisering misslyckades.</string>
 
     <!-- qr code stuff -->
     <string name="qr_code">QR-kod</string>

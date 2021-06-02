@@ -347,8 +347,6 @@
     <string name="pref_enter_sends">La tecla \"Intro\" envia</string>
     <string name="pref_enter_sends_explain">Els missatges s\'enviaran prement la tecla \"Intro\"</string>
     <string name="pref_vibrate">Vibració</string>
-    <string name="pref_change_secret">Canvieu el secret</string>
-    <string name="pref_change_secret_explain">Canvieu el vostre pin / patró / empremta digital via preferències del sistema</string>
     <string name="pref_screen_security">Seguretat de la pantalla</string>
     <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
     <string name="pref_screen_security_explain">Demana de bloquejar les captures de pantalla al llistat de recents i dins de l\'app </string>
@@ -442,15 +440,9 @@
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
     <string name="systemmsg_action_by_user">%1$s per %2$s.</string>
     <!-- screen lock -->
-    <string name="screenlock_title">Bloqueja la pantalla</string>
-    <string name="screenlock_explain">Bloqueja l’accés amb el bloqueig de la pantalla d’Android o amb l’empremta digital; per evitar que aparegui el contingut anterior, habiliteu també \"Seguretat de pantalla\"</string>
-    <string name="screenlock_authentication_failed">L\'autenticació ha fallat.</string>
     <string name="screenlock_unlock_title">Desbloqueja Delta Chat</string>
     <string name="screenlock_unlock_description">Introduïu el sistema secret definit per desbloquejar el Delta Chat.</string>
-    <string name="screenlock_inactivity_timeout">Bloqueig per temps d\'inactivitat</string>
-    <string name="screenlock_inactivity_timeout_explain">Bloqueja automàticament Delta Chat després d\'un període específic d\'inactivitat</string>
-    <string name="screenlock_inactivity_timeout_interval">Interval de temps d\'inactivitat </string>
-
+    <string name="screenlock_authentication_failed">L\'autenticació ha fallat.</string>
 
     <string name="qrscan_title">Escaneja codi QR</string>
     <string name="qrscan_hint">Poseu la càmera davant del codi QR</string>

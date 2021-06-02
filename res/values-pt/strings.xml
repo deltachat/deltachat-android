@@ -259,8 +259,6 @@
     <string name="pref_enter_sends">Tecla ENTER para enviar</string>
     <string name="pref_enter_sends_explain">Pressionar a tecla ENTER enviará mensagens de texto</string>
     <string name="pref_vibrate">Vibrar</string>
-    <string name="pref_change_secret">Modificar cóidgo secreto</string>
-    <string name="pref_change_secret_explain">Mude o seu pin/padrão/impressão digital através das configurações do sistema</string>
     <string name="pref_screen_security">Segurança do ecrã</string>
     <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
     <string name="pref_screen_security_explain">Bloquear capturas de ecrã na lista atualizada e no aplicativo</string>
@@ -351,14 +349,9 @@
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
     <string name="systemmsg_action_by_user">%1$s por %2$s.</string>
     <!-- screen lock -->
-    <string name="screenlock_title">Bloqueio do ecrã</string>
-    <string name="screenlock_authentication_failed">Falhou autenticação.</string>
     <string name="screenlock_unlock_title">Desbloquear Delta Chat</string>
     <string name="screenlock_unlock_description">Por favor, entre o valor definido pelo sistema para desbloquear o Delta Chat.</string>
-    <string name="screenlock_inactivity_timeout">Bloqueio por tempo limite de inactividade</string>
-    <string name="screenlock_inactivity_timeout_explain">Bloqueio automático do Delta Chat após um intervalo de tempo de inactividade especificado</string>
-    <string name="screenlock_inactivity_timeout_interval">Intervalo de tempo limite de inactividade</string>
-
+    <string name="screenlock_authentication_failed">Falhou autenticação.</string>
 
     <string name="qrscan_title">Fazer scan do código QR</string>
     <string name="qrscan_hint">Coloque sua câmera sobre o código QR</string>

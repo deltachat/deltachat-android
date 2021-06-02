@@ -439,8 +439,6 @@
     <string name="pref_outgoing_balanced">មានតុល្យភាព</string>
     <string name="pref_outgoing_worse">គុណភាពកាន់តែអាក្រក់ ទំហំតូច</string>
     <string name="pref_vibrate">ញ័រ</string>
-    <string name="pref_change_secret">ផ្លាស់ប្តូរសម្ងាត់</string>
-    <string name="pref_change_secret_explain">ប្តូរ PIN / លំនាំ/ ស្នាមម្រាម របស់អ្នក ដៃ តាមរយះការកំណត់ប្រពន្ធ័។</string>
     <string name="pref_screen_security">សុវត្ថិភាពអេក្រង់</string>
     <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
     <string name="pref_screen_security_explain">ស្នើសុំរារាំងរូបថតអេក្រង់ នៅក្នុងបញ្ជីបច្ចុប្បន្ន និងខាងក្នុងកម្មវិធី។</string>
@@ -610,15 +608,9 @@
     <string name="systemmsg_chat_protection_enabled">ការការពារសន្ទនាត្រូវបានបើក</string>
 
     <!-- screen lock -->
-    <string name="screenlock_title">ចាក់អេក្រង់</string>
-    <string name="screenlock_explain">ចាក់សោរដំណើរការជាមួយ Android ចាក់សោរអេក្រង់ ឬស្នាមម្រាមដៃ ដើម្បីចៀសវាងការបង្ហាញមាតិកាមុន។ សូមបើកដំណើរការ \"អេក្រង់សុវត្ថិភាព\" ផងដែរ។</string>
-    <string name="screenlock_authentication_failed">ការផ្ទៀងផ្ទាត់បានបរាជ័យ</string>
     <string name="screenlock_unlock_title">ដោះសោរសា Delta Chat</string>
     <string name="screenlock_unlock_description">សូមបញ្ចូលការកំណត់ប្រព័ន្ធសុវត្ថិភាពសម្ងាត់របស់អ្នក ដើម្បីដោះសោរ សា Delta Chat ។</string>
-    <string name="screenlock_inactivity_timeout">ចាក់សោរពីព្រោះអស់ពេលអសកម្ម</string>
-    <string name="screenlock_inactivity_timeout_explain">សា Delta Chat បិទដោយស្វ័យប្រវត្តិ បន្ទាប់ពីបានបញ្ជាក់រយះពេលនៃអសកម្ម។</string>
-    <string name="screenlock_inactivity_timeout_interval">ពេលវេលាដើម្បីឲ្យសកម្ម</string>
-
+    <string name="screenlock_authentication_failed">ការផ្ទៀងផ្ទាត់បានបរាជ័យ</string>
 
     <!-- qr code stuff -->
     <string name="qr_code">QR កូដ</string>

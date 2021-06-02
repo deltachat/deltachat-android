@@ -438,8 +438,6 @@
     <string name="pref_outgoing_balanced">متعادل</string>
     <string name="pref_outgoing_worse">بدترین‌ کیفیت، حجم کم</string>
     <string name="pref_vibrate">لرزش</string>
-    <string name="pref_change_secret">تغییر رمز</string>
-    <string name="pref_change_secret_explain">تغییر پین/ الگو/ اثرانگشت از طریق تنظیمات سیستم</string>
     <string name="pref_screen_security">امنیت صفحه</string>
     <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
     <string name="pref_screen_security_explain">درخواست مسدود کردن عکس گرفتن از صفحه در لیست اخیر و درون نرم‌افزار</string>
@@ -601,15 +599,9 @@
     <string name="systemmsg_chat_protection_enabled">محافظت از گفتگو فعال شد.</string>
 
     <!-- screen lock -->
-    <string name="screenlock_title">قفل صفحه</string>
-    <string name="screenlock_explain">قفل کردن صفحه با قفل صفحه اندروید یا اثر انگشت، برای اینکه محتوای قبلی نشان داده نشود لطفا \"امنیت صفحه\" را هم فعال کنید.</string>
-    <string name="screenlock_authentication_failed">احراز هویت ناموفق بود</string>
     <string name="screenlock_unlock_title">قفل دلتا چت را باز کنید</string>
     <string name="screenlock_unlock_description">رمز تعیین شده توسط دستگاهتان را وارد کنید تا قفل دلتاچت باز شود. </string>
-    <string name="screenlock_inactivity_timeout">قفل بر اساس زمان غیر فعال ماندن</string>
-    <string name="screenlock_inactivity_timeout_explain">دلتاچت را به صورت خودکار و پس از یک زمان مشخص غیرفعال بودن قفل می‌شود</string>
-    <string name="screenlock_inactivity_timeout_interval">زمان فعال بودن</string>
-
+    <string name="screenlock_authentication_failed">احراز هویت ناموفق بود</string>
 
     <!-- qr code stuff -->
     <string name="qr_code">کد QR</string>

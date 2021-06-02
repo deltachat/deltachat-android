@@ -448,8 +448,6 @@ https://delta.chat</string>
     <string name="pref_outgoing_balanced">普通</string>
     <string name="pref_outgoing_worse">低画質・サイズが小さい</string>
     <string name="pref_vibrate">振動</string>
-    <string name="pref_change_secret">秘密の変更</string>
-    <string name="pref_change_secret_explain">PIN・パターン・指紋はシステム設定で変更できます</string>
     <string name="pref_screen_security">画面セキュリティ</string>
     <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
     <string name="pref_screen_security_explain">アプリ内や「最近使ったアプリ」でスクリーンショットを禁止する</string>
@@ -599,12 +597,9 @@ https://delta.chat</string>
     <string name="systemmsg_chat_protection_enabled">保護が有効です。</string>
 
     <!-- screen lock -->
-    <string name="screenlock_title">画面ロック</string>
-    <string name="screenlock_explain">Delta Chatを画面ロックや指紋認証でロックする。以前のコンテンツを表示しないように、「画面のセキュリティ」も有効にしてください。</string>
-    <string name="screenlock_authentication_failed">認証に失敗しました。</string>
     <string name="screenlock_unlock_title">Delta Chatを解錠する</string>
-    <string name="screenlock_inactivity_timeout">無操作によるロック</string>
-    <string name="screenlock_inactivity_timeout_explain">一定時間操作がなかったら自動でDelta Chatをロックする</string>
+    <string name="screenlock_authentication_failed">認証に失敗しました。</string>
+
     <!-- qr code stuff -->
     <string name="qr_code">QRコード</string>
     <string name="load_qr_code_as_image">QRコードを画像として読み込む</string>

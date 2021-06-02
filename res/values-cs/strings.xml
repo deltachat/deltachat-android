@@ -476,8 +476,6 @@
     <string name="pref_outgoing_balanced">Vyvážená</string>
     <string name="pref_outgoing_worse">Horší kvalita, malá velikost</string>
     <string name="pref_vibrate">Chvění</string>
-    <string name="pref_change_secret">Změnit tajný kód</string>
-    <string name="pref_change_secret_explain">Změň si PIN / vzor / otisk v nastavení systému</string>
     <string name="pref_screen_security">Zabezpečení obrazovky</string>
     <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
     <string name="pref_screen_security_explain">Požaduj blokaci sejmutí obrazovky v seznamu Nedávné a uvnitř aplikace</string>
@@ -647,15 +645,9 @@
     <string name="systemmsg_chat_protection_enabled">Ochrana rozhovoru zapnuta.</string>
 
     <!-- screen lock -->
-    <string name="screenlock_title">Zámek obrazovky</string>
-    <string name="screenlock_explain">Uzamkni přístup se systémovým zámkem obrazovky nebo otiskem. Zobrazení předchozího obsahu zamezíš zapnutím Zabezpečení obrazovky.</string>
-    <string name="screenlock_authentication_failed">Ověření selhalo.</string>
     <string name="screenlock_unlock_title">Odemkni Delta Chat</string>
     <string name="screenlock_unlock_description">K odemčení Delta Chatu zadej tajemství nastavené ve tvém systému.</string>
-    <string name="screenlock_inactivity_timeout">Uzamčení pro nečinnost</string>
-    <string name="screenlock_inactivity_timeout_explain">Samouzamčení Delta Chatu po zadané časové prodlevě</string>
-    <string name="screenlock_inactivity_timeout_interval">Prodleva</string>
-
+    <string name="screenlock_authentication_failed">Ověření selhalo.</string>
 
     <!-- qr code stuff -->
     <string name="qr_code">QR kód</string>

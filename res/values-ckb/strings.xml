@@ -423,8 +423,6 @@
     <string name="pref_outgoing_balanced">وەکوو خۆی</string>
     <string name="pref_outgoing_worse">نزمترین چۆنێتی، قەبارەی بچووک</string>
     <string name="pref_vibrate">لەرزینەوە</string>
-    <string name="pref_change_secret">گۆڕینی نهێنی</string>
-    <string name="pref_change_secret_explain">لەڕێگای ڕێکخستنەکانی سیستەمەوە، شفرە/نەخشاندن/پەنجەمۆر بگۆڕە  </string>
     <string name="pref_screen_security">پاراستنی شاشە</string>
     <string name="pref_notifications">ئاگادارییەکان</string>
     <string name="pref_notifications_show">پیشاندان</string>
@@ -564,10 +562,9 @@
     <string name="systemmsg_chat_protection_enabled">پاراستنی وتووێژ چالاک کرا.</string>
 
     <!-- screen lock -->
-    <string name="screenlock_title">قفڵی سەر شاشە</string>
-    <string name="screenlock_explain">بۆ بەرگری لە پیشاندرانی بابەتەکان، بە قفڵی شاشەی ئەندرۆید یان پەنجەمۆر، هاتنەژوورەوە قفڵ بکە.</string>
-    <string name="screenlock_authentication_failed">پشتڕاست کردنەوە سەرنەکەوت</string>
     <string name="screenlock_unlock_title">کردنەوەی قفڵی دێڵتا چات</string>
+    <string name="screenlock_authentication_failed">پشتڕاست کردنەوە سەرنەکەوت</string>
+
     <!-- qr code stuff -->
     <string name="qr_code">کۆدی QR</string>
     <string name="load_qr_code_as_image">کۆدی QR وەکوو وێنەیەک بار بکە.</string>

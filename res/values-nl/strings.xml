@@ -492,8 +492,6 @@
     <string name="pref_outgoing_balanced">Normaal</string>
     <string name="pref_outgoing_worse">Lagere kwaliteit, kleinere bestanden</string>
     <string name="pref_vibrate">Trillen</string>
-    <string name="pref_change_secret">Toegangsmethode beheren</string>
-    <string name="pref_change_secret_explain">Wijzig je pincode/patroon/vingerafdruk via de systeeminstellingen</string>
     <string name="pref_screen_security">Schermbeveiliging</string>
     <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
     <string name="pref_screen_security_explain">Geen schermfoto\'s tonen op de \'recent\'-lijst en binnen de app</string>
@@ -666,15 +664,9 @@
     <string name="systemmsg_chat_protection_enabled">Gespreksbeveiliging is ingeschakeld.</string>
 
     <!-- screen lock -->
-    <string name="screenlock_title">Schermvergrendeling</string>
-    <string name="screenlock_explain">Vergendel de toegang middels het Android-vergrendelscherm of je vingerafdruk. Schakel daarnaast ook \"Schermbeveiliging\" in.</string>
-    <string name="screenlock_authentication_failed">Authenticatie mislukt.</string>
     <string name="screenlock_unlock_title">Delta Chat ontgrendelen</string>
     <string name="screenlock_unlock_description">Voer je op het systeem opgegeven toegangscode in om Delta Chat te ontgrendelen.</string>
-    <string name="screenlock_inactivity_timeout">Vergrendeling na inactiviteit</string>
-    <string name="screenlock_inactivity_timeout_explain">Delta Chat automatisch vergrendelen na een opgegeven periode van inactiviteit</string>
-    <string name="screenlock_inactivity_timeout_interval">Periode van inactiviteit</string>
-
+    <string name="screenlock_authentication_failed">Authenticatie mislukt.</string>
 
     <!-- qr code stuff -->
     <string name="qr_code">QR-code</string>

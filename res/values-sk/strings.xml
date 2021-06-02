@@ -475,8 +475,6 @@
     <string name="pref_outgoing_balanced">Vyvážený</string>
     <string name="pref_outgoing_worse">Horšia kvalita, malé rozmery</string>
     <string name="pref_vibrate">Vibrovať</string>
-    <string name="pref_change_secret">Zmeniť secret</string>
-    <string name="pref_change_secret_explain">Zmeňte svoj PIN / vzor / odtlačok prsta pomocou nastavení systému</string>
     <string name="pref_screen_security">Zabezpečenie obrazovky</string>
     <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
     <string name="pref_screen_security_explain">Požiadajte o blokovanie snímok obrazovky v zozname posledných položiek a v aplikácii</string>
@@ -646,15 +644,9 @@
     <string name="systemmsg_chat_protection_enabled">Ochrana chatu je povolená.</string>
 
     <!-- screen lock -->
-    <string name="screenlock_title">Zámok obrazovky</string>
-    <string name="screenlock_explain">Zamknite prístup pomocou zámku obrazovky Android alebo odtlačku prsta; aby ste zabránili zobrazovaniu predchádzajúceho obsahu, povoľte tiež možnosť „Zabezpečenie obrazovky“.</string>
-    <string name="screenlock_authentication_failed">Overenie zlyhalo.</string>
     <string name="screenlock_unlock_title">Odomknite program Delta Chat</string>
     <string name="screenlock_unlock_description">Odomknite Delta Chat zadaním vášho systému definovaného tajomstva.</string>
-    <string name="screenlock_inactivity_timeout">Uzamknutie časového limitu nečinnosti</string>
-    <string name="screenlock_inactivity_timeout_explain">Automaticky uzamknúť program Delta Chat po stanovenom časovom období nečinnosti</string>
-    <string name="screenlock_inactivity_timeout_interval">Čas zostať aktívny</string>
-
+    <string name="screenlock_authentication_failed">Overenie zlyhalo.</string>
 
     <!-- qr code stuff -->
     <string name="qr_code">QR kód</string>

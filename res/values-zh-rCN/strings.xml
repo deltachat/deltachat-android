@@ -480,8 +480,6 @@
     <string name="pref_outgoing_balanced">平衡</string>
     <string name="pref_outgoing_worse">体积小，但质量更差</string>
     <string name="pref_vibrate">振动</string>
-    <string name="pref_change_secret">更改密码</string>
-    <string name="pref_change_secret_explain">通过系统设置来更改您的 PIN 码 / 图案 / 指纹</string>
     <string name="pref_screen_security">屏幕安全</string>
     <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
     <string name="pref_screen_security_explain">请求系统在近期任务列表和本应用内阻止截屏</string>
@@ -654,15 +652,9 @@
     <string name="systemmsg_chat_protection_enabled">已启用聊天保护</string>
 
     <!-- screen lock -->
-    <string name="screenlock_title">屏幕锁定</string>
-    <string name="screenlock_explain">使用 Android 屏幕锁定或指纹锁定访问权限;要避免出现之前的内容，请同时启用“屏幕安全”。</string>
-    <string name="screenlock_authentication_failed">认证失败。</string>
     <string name="screenlock_unlock_title">解锁 Delta Chat</string>
     <string name="screenlock_unlock_description">请输入您的系统密码以解锁 Delta Chat。</string>
-    <string name="screenlock_inactivity_timeout">闲置超时锁定</string>
-    <string name="screenlock_inactivity_timeout_explain">在指定的闲置时间间隔后自动锁定 Delta Chat</string>
-    <string name="screenlock_inactivity_timeout_interval">保持活跃的时长</string>
-
+    <string name="screenlock_authentication_failed">认证失败。</string>
 
     <!-- qr code stuff -->
     <string name="qr_code">二维码</string>
