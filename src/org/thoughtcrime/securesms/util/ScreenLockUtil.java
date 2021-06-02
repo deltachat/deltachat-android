@@ -11,11 +11,11 @@ public class ScreenLockUtil {
 
     public static final int REQUEST_CODE_CONFIRM_CREDENTIALS = 1001;
 
-    public static boolean applyScreenLock(Activity activity, int requestCode) {
+    public static boolean applyScreenLock(Activity activity, String title, int requestCode) {
         KeyguardManager keyguardManager = (KeyguardManager) activity.getSystemService(Context.KEYGUARD_SERVICE);
         Intent intent;
         if (keyguardManager != null && isScreenLockAvailable()) {
-            intent = keyguardManager.createConfirmDeviceCredentialIntent(activity.getString(R.string.screenlock_unlock_title), activity.getString(R.string.screenlock_unlock_description));
+            intent = keyguardManager.createConfirmDeviceCredentialIntent(title, activity.getString(R.string.enter_system_secret_to_continue));
             if (intent != null) {
                 activity.startActivityForResult(intent, requestCode);
                 return true;
