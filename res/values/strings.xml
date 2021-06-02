@@ -663,10 +663,7 @@
     <string name="systemmsg_chat_protection_disabled">Chat protection disabled.</string>
     <string name="systemmsg_chat_protection_enabled">Chat protection enabled.</string>
 
-    <!-- screen lock -->
-    <string name="screenlock_unlock_title">Unlock Delta Chat</string>
-    <string name="screenlock_unlock_description">Please enter your system defined secret to unlock Delta Chat.</string>
-    <string name="screenlock_authentication_failed">Authentication failed.</string>
+    <string name="enter_system_secret_to_continue">Please enter your system defined secret to continue.</string>
 
     <!-- qr code stuff -->
     <string name="qr_code">QR code</string>
