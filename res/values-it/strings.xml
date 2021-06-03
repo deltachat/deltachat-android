@@ -663,6 +663,9 @@
     <string name="systemmsg_chat_protection_disabled">Protezione chat disattivata.</string>
     <string name="systemmsg_chat_protection_enabled">Protezione chat abilitata.</string>
 
+    <!-- Some options as "Manage keys" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc. to be entered in a system dialog. This hint is added to the system dialog, below a title as "Manage keys" or "Backup". -->
+    <string name="enter_system_secret_to_continue">Per favore inserisci il tuo segreto definito dal sistema per continuare.</string>
+
     <!-- qr code stuff -->
     <string name="qr_code">Codice QR</string>
     <string name="load_qr_code_as_image">Carica il codice QR come immagine</string>

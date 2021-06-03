@@ -651,6 +651,9 @@
     <string name="systemmsg_chat_protection_disabled">已禁用聊天保护</string>
     <string name="systemmsg_chat_protection_enabled">已启用聊天保护</string>
 
+    <!-- Some options as "Manage keys" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc. to be entered in a system dialog. This hint is added to the system dialog, below a title as "Manage keys" or "Backup". -->
+    <string name="enter_system_secret_to_continue">请输入你系统定义的 secret 以继续</string>
+
     <!-- qr code stuff -->
     <string name="qr_code">二维码</string>
     <string name="load_qr_code_as_image">从图像加载二维码</string>
