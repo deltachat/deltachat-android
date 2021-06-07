@@ -112,7 +112,7 @@
     <string name="images">图像</string>
     <string name="audio">录音</string>
     <string name="voice_message">语音消息</string>
-    <string name="forwarded">已转发</string>
+    <string name="forwarded">转发了</string>
     <string name="forwarded_message">转发的消息</string>
     <!-- %1$s will be replaced by the name or the email-address of the person who has forwarded the message -->
     <string name="forwarded_by">转发人 %1$s</string>
@@ -581,9 +581,9 @@
     <string name="autodel_device_title">从设备删除消息</string>
     <string name="autodel_server_title">从服务器删除消息</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
-    <string name="autodel_device_ask">您是否要立即删除 %1$d 条消息，并在之后于消息收到“%2$s”删除它们？\n\n• 这包括所有媒体文件\n\n• 无论消息是否被浏览过，它们都将会被删除\n\n• 在本地删除中，“保存的消息”将被跳过</string>
+    <string name="autodel_device_ask">您是否要立即删除 %1$d 条消息，并在之后于消息收到 %2$s 删除它们？\n\n• 这包括所有媒体文件\n\n• 无论消息是否被浏览过，它们都将被删除\n\n• 在本地删除中，“保存的消息”将被跳过</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
-    <string name="autodel_server_ask">您是否要立即删除 %1$d 条消息，并在之后于消息收到“%2$s”删除它们？\n\n⚠️ 这包括所有服务器文件夹中的电子邮件、媒体和“保存的消息”\n\n⚠️ 如果您想在服务器上保存数据，请不要使用此功能\n\n⚠️ 如果您正在使用 Delta Chat 之外的其他电子邮件客户端，请不要使用此功能</string>
+    <string name="autodel_server_ask">您是否要立即删除 %1$d 条消息，并在之后于消息收到 %2$s 删除它们？\n\n⚠️ 这包括服务器所有文件夹中的电子邮件、媒体和“保存的消息”\n\n⚠️ 如果您想在服务器上保留数据，请不要使用此功能\n\n⚠️ 如果您正在使用 Delta Chat 之外的电子邮件客户端，请不要使用此功能</string>
     <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
     <string name="autodel_server_enabled_hint">这包括所有服务器文件夹中的电子邮件、媒体和\"保存的消息\"。如果您想在服务器上保存数据，或者您正在使用除 Delta Chat 之外的其他电子邮件客户端，请不要使用此功能。</string>
     <string name="autodel_confirm">我了解，将这些消息全部删除</string>
@@ -658,7 +658,7 @@
     <string name="qr_code">二维码</string>
     <string name="load_qr_code_as_image">从图像加载二维码</string>
     <string name="qrscan_title">扫描二维码</string>
-    <string name="qrscan_hint">将相机对准二维码。</string>
+    <string name="qrscan_hint">将摄像头对准二维码。</string>
     <string name="qrscan_failed">二维码无法被解码</string>
     <string name="qrscan_ask_join_group">您要加入群组“%1$s”吗？</string>
     <string name="qrscan_fingerprint_mismatch">扫描到的指纹与上次见到的 %1$s 的指纹不匹配。</string>

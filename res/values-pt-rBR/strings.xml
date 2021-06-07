@@ -4,6 +4,7 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancelar</string>
+    <string name="clear_search">Limpar busca</string>
     <string name="yes">Sim</string>
     <string name="no">Não</string>
     <string name="select">Selecionar</string>
@@ -39,6 +40,17 @@
     <string name="profile">Perfil</string>
     <string name="main_menu">Menu principal</string>
     <string name="start_chat">Começar conversa</string>
+    <string name="show_full_message">Mostrar mensagem completa...</string>
+    <string name="show_full_message_in_browser">Mostrar mensagem completa no navegador...</string>
+    <!-- this is shown as placeholder when something is loading at some places -->
+    <string name="loading">Carregando...</string>
+    <string name="hide">Esconder</string>
+    <string name="activate">Ativar</string>
+    <string name="load_remote_content">Carregar imagens remotas</string>
+    <!-- possible answers to the question are: Never, Always, Once -->
+    <string name="load_remote_content_ask">Imagens remotas podem ser usadas para te rastrear.\n\nO ajuste também permite o carregamento de fontes e outros conteúdos. Mesmo que desabilitado, você ainda poderá ver imagens em cache ou embarcadas.\n\nCarregar imagens remotas?</string>
+    <string name="always">Sempre</string>
+    <string name="once">Uma vez</string>
     <string name="show_password">Mostrar senha</string>
     <string name="hide_password">Ocultar senha</string>
     <string name="not_now">Mais tarde</string>
@@ -106,12 +118,19 @@
     <string name="images">Imagens</string>
     <string name="audio">Áudio</string>
     <string name="voice_message">Mensagem de voz</string>
+    <string name="forwarded">Encaminhado</string>
     <string name="forwarded_message">Mensagem encaminhada</string>
+    <!-- %1$s will be replaced by the name or the email-address of the person who has forwarded the message -->
+    <string name="forwarded_by">Encaminhado por %1$s</string>
     <string name="video">Vídeo</string>
     <string name="documents">Documentos</string>
     <string name="contact">Contato</string>
     <string name="verified_contact">Contato verificado</string>
     <string name="camera">Câmera</string>
+    <!-- "capture" here means "start a video recording" or "take a photo"; eg. the description of the "shutter button" in the camera controls -->
+    <string name="capture">Capturar</string>
+    <string name="switch_camera">Trocar câmera</string>
+    <string name="toggle_fullscreen">Ativar modo tela cheia</string>
     <string name="location">Localização</string>
     <string name="gallery">Galeria</string>
     <string name="images_and_videos">Imagens e vídeos</string>
@@ -168,6 +187,8 @@
     <string name="menu_copy_to_clipboard">Copiar para a área de transferência</string>
     <string name="menu_copy_selection_to_clipboard">Copiar seleção</string>
     <string name="menu_copy_link_to_clipboard">Copiar link</string>
+    <string name="menu_copy_text_to_clipboard">Copiar texto</string>
+    <string name="menu_copy_image_to_clipboard">Copiar imagem</string>
     <string name="paste_from_clipboard">Colar a partir da área de transferência</string>
     <string name="menu_forward">Encaminhar mensagem</string>
     <string name="menu_resend">Reenviar mensagem</string>
@@ -179,6 +200,8 @@
     <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
     <string name="show_in_chat">Mostrar na conversa</string>
     <string name="menu_share">Compartilhar</string>
+    <!-- this is the action "to block sth." usually a mailing list or a contact. this is NOT "a large solid piece of hard material" :) -->
+    <string name="block">Bloquear</string>
     <string name="menu_block_contact">Bloquear contato</string>
     <string name="menu_unblock_contact">Desbloquear contato</string>
     <string name="menu_play">Ouvir</string>
@@ -186,7 +209,9 @@
     <string name="menu_scroll_to_bottom">Rolar até o fim</string>
     <string name="menu_scroll_to_top">Rolar até o início</string>
     <string name="menu_help">Ajuda</string>
+    <string name="privacy_policy">Política de privacidade</string>
     <string name="menu_select_all">Selecionar tudo</string>
+    <string name="select_more">Selecionar mais</string>
     <string name="menu_expand">Expandir</string>
     <string name="menu_edit_name">Modificar nome</string>
     <string name="menu_settings">Configurações</string>
@@ -197,6 +222,12 @@
     <string name="menu_zoom_in">Ampliar</string>
     <string name="menu_zoom_out">Afastar</string>
     <string name="menu_save_log">Salvar registro</string>
+    <string name="menu_more_options">Mais opções</string>
+    <string name="menu_learn_spelling">Aprender ortografia</string>
+    <string name="menu_chat_audit_log">Registro de Auditoria do Bate-papo</string>
+    <string name="jump_to_message">Pular para a mensagem</string>
+    <string name="copy_json">Copiar JSON</string>
+    <string name="replace_draft">Substituir rascunho </string>
     <string name="title_share_location">Compartilhar localização com o grupo</string>
     <string name="device_talk">Mensagens desse aparelho</string>
     <string name="device_talk_subtitle">Mensagens geradas localmente</string>
@@ -254,6 +285,7 @@
         <item quantity="one">Delete %d chat? It will no longer be shown in the chat list, its messages will remain on the server.</item>
         <item quantity="other">Apagar %d conversas? Elas não mais serão exibidas na lista, mas ficarão no servidor.</item>
     </plurals>
+    <string name="ask_delete_message">Tem certeza que quer apagar esta mensagem?</string>
     <plurals name="ask_delete_messages">
         <item quantity="one">Delete %d message here and on the server?</item>
         <item quantity="other">Apagar %d mensagens aqui e no servidor?</item>
@@ -321,12 +353,35 @@
     <string name="messaging_disabled_not_in_group">Você não pode escrever porque não está neste grupo. Para entrar, peça a outro membro.</string>
     <string name="messaging_disabled_device_chat">Esta conversa contém mensagens geradas localmente. Portanto, você não pode escrever nenhuma mensagem.</string>
     <string name="messaging_disabled_deaddrop">Clique em uma mensagem para aceitar ou negar a solicitação de contato</string>
+    <string name="messaging_disabled_mailing_list">O envio de mensagens para lista de e-mails ainda não é suportado </string>
     <string name="cannot_display_unsuported_file_type">Não é possível exibir este tipo de arquivo: %s</string>
     <string name="attachment_failed_to_load">Falha ao carregar anexo</string>
+    <!-- For recording Voice messages: Description for the "Lock" button allowing to lift the thumb from the record button while recording continues -->
+    <string name="lock_recording">Travar gravação</string>
+
+    <!-- mailing lists -->
+    <string name="mailing_list">Lista de e-mail</string>
+    <string name="ask_show_mailing_list">Mostrar lista de e-mail \"%1$s\"?</string>
+    <string name="mailing_list_profile_info">Alterações ao nome e imagem da lista de e-mails só se aplicam a este dispositivo.</string>
+
     <!-- map -->
     <string name="filter_map_on_time">Exibir localização no tempo.</string>
     <string name="show_location_traces">Exibir pegadas</string>
     <string name="add_poi">Enviar ponto de interesse</string>
+
+    <!-- chat audit log -->
+    <string name="chat_audit_log_empty_message">As mensagens do sistema deste bate-papo apareceriam aqui </string>
+    <string name="chat_audit_log_title">Registro de Auditoria de Bate-papo para  %1$s</string>
+    <string name="chat_audit_log_description">Esta visualização mostra apenas mensagens do sistema e de informações. Útil para localizar as últimas ações do bate-papo sem rolar por muitas mensagens normais. </string>
+
+    <!-- punycode warning / labeled links -->
+    <!-- placeholder is domain/hostname that should be trusted -->
+    <string name="open_external_url_trust_domain">Não perguntar de novo por  %1$s</string>
+    <string name="puny_code_warning_header">Link suspeito detectado</string>
+    <!-- placeholder contains the hostname converted to ascii -->
+    <string name="puny_code_warning_question">Tem certeza que deseja visitar %1$s?</string>
+    <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
+    <string name="puny_code_warning_description">Você clicou em um link que pode estar representando maliciosamente letras de aparência semelhante com o uso de alfabetos diferentes. Seguir o link rotulado como %1$s  levará a %2$s, o que é normal para caracteres não latinos. Se você não esperava esses caracteres, este link pode ser prejudicial</string>
 
     <!-- search -->
     <string name="search">Procurar</string>
@@ -514,6 +569,9 @@
     <string name="profile_image_select">Selecione a imagem do perfil</string>
     <string name="select_your_new_profile_image">Selecione sua nova imagem do perfil</string>
     <string name="profile_image_delete">Excluir imagem do perfil</string>
+    <string name="pref_show_tray_icon">Mostrar ícone da bandeja</string>
+    <string name="pref_edit_profile">Editar perfil</string>
+
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Resultados da busca</string>
     <string name="emoji_not_found">Nenhum emoji encontrado</string>
@@ -544,10 +602,13 @@
     <string name="autodel_at_once">De uma vez só</string>
     <string name="after_30_seconds">Após 30 segundos</string>
     <string name="after_1_minute">Após 1 minuto</string>
+    <string name="after_5_minutes">Após 5 minutos</string>
+    <string name="after_30_minutes">Após 30 minutos</string>
     <string name="autodel_after_1_hour">Após 1 hora</string>
     <string name="autodel_after_1_day">Após 1 dia</string>
     <string name="autodel_after_1_week">Após 1 semana</string>
     <string name="autodel_after_4_weeks">Após 4 semanas</string>
+    <string name="after_5_weeks">Após 5 semanas </string>
     <string name="autodel_after_1_year">Após 1 ano</string>
 
     <!-- autocrypt -->
@@ -593,9 +654,17 @@
     <string name="systemmsg_ephemeral_timer_day">Temporizador de desaparecimento de mensagens definido para 1 dia.</string>
     <string name="systemmsg_ephemeral_timer_week">Temporizador de desaparecimento de mensagens definido para 1 semana.</string>
     <string name="systemmsg_ephemeral_timer_four_weeks">Temporizador de desaparecimento de mensagens definido para 4 semanas.</string>
+    <string name="systemmsg_ephemeral_timer_minutes">Temporizador de mensagens que desaparecem definido para %1$s minutos.</string>
+    <string name="systemmsg_ephemeral_timer_hours">Temporizador de mensagens que desaparecem definido para %1$s horas.</string>
+    <string name="systemmsg_ephemeral_timer_days">Temporizador de mensagens que desaparecem definido para %1$s dias.</string>
+    <string name="systemmsg_ephemeral_timer_weeks">Temporizador de mensagens que desaparecem definido para %1$s semanas.</string>
+
     <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
     <string name="systemmsg_chat_protection_disabled">Proteção da conversa desligada.</string>
     <string name="systemmsg_chat_protection_enabled">Proteção da conversa ligada.</string>
+
+    <!-- Some options as "Manage keys" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc. to be entered in a system dialog. This hint is added to the system dialog, below a title as "Manage keys" or "Backup". -->
+    <string name="enter_system_secret_to_continue">Por favor, insira o segredo de sistema para continuar. </string>
 
     <!-- qr code stuff -->
     <string name="qr_code">Código QR</string>
@@ -631,6 +700,11 @@
     <string name="contact_setup_changed">A configuração Autocrypt mudou para %1$s</string>
     <string name="verified_group_explain">Grupos verificados (experimental) fornecem segurança contra ataques ativos. Os membros são verificados com um segundo fator por outros membros e as mensagens são sempre criptografadas de ponta a ponta.</string>
     <string name="copy_qr_data_success">Endereço do código QR copiado para a área de transferência</string>
+    <string name="mailto_dialog_header_select_chat">Selecione o bate-papo para enviar a mensagem</string>
+    <!-- first placeholder is the name of the chat -->
+    <string name="mailto_dialog_confirm_replace_draft">%1$s já tem um rascunho de mensagem, deseja substituí-lo?</string>
+    <string name="mailto_link_could_not_be_decoded">link mailto não pôde ser decodificado: %1$s</string>
+
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d novas mensagens em %2$d conversas</string>
     <string name="notify_mark_read">Marcar como lida</string>
@@ -654,6 +728,14 @@
 
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Desenhe em qualquer lugar para desfocar</string>
+    <string name="ImageEditorHud_add_text">Adicionar texto</string>
+    <string name="ImageEditorHud_blur">Embaçar</string>
+    <string name="ImageEditorHud_brush_marker">Pincel marcador</string>
+    <string name="ImageEditorHud_brush_highlight">Pincel de realce</string>
+    <string name="ImageEditorHud_crop">Cortar</string>
+    <string name="ImageEditorHud_flip">Girar</string>
+    <string name="ImageEditorHud_rotate">Rodar</string>
+
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Mensagem criptografada</string>
 
@@ -680,6 +762,8 @@
     <string name="global_menu_help_contribute_desktop">Contribua no GitHub</string>
     <string name="global_menu_help_report_desktop">Relatar um erro</string>
     <string name="global_menu_help_about_desktop">Sobre o Delta Chat</string>
+    <string name="global_menu_file_open_desktop">Abrir o Delta Chat </string>
+    <string name="global_menu_minimize_to_tray">Minimizar</string>
     <string name="no_chat_selected_suggestion_desktop">Selecione uma conversa ou crie uma nova</string>
     <string name="write_message_desktop">Escrever uma mensagem</string>
     <string name="encryption_info_title_desktop">Informações da criptografia</string>
@@ -725,6 +809,10 @@
     <string name="menu.view.developer.open.log.folder">Abrir pasta de relatórios</string>
     <string name="menu.view.developer.open.current.log.file">Abrir relatório atual</string>
     <string name="user_location_permission_explanation">O Delta Chat precisa acessar sua localização para que você possa exibi-la e compartilhá-la.</string>
+    <string name="explain_desktop_minimized_disabled_tray_pref">O ícone da bandeja não pode ser desativado porque o Delta Chat foi iniciado com a opção --minimized.</string>
+    <string name="no_spellcheck_suggestions_found">Nenhuma sugestão de ortografia encontrada.</string>
+    <string name="show_window">Mostrar Janela</string>
+
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Status de entrega: Erro</string>
     <string name="a11y_encryption_padlock">Cadeado de criptografia</string>
@@ -755,4 +843,6 @@
     <string name="pref_reliable_service_explain">Requer uma notificação permanente</string>
     <string name="perm_enable_bg_reminder_title">Toque aqui para receber mensagens enquanto o Delta Chat estiver em segundo plano.</string>
     <string name="perm_enable_bg_already_done">Você já permitiu que o Delta Chat receba mensagens em segundo plano.\n\nSe as mensagens ainda não chegarem em segundo plano, verifique também as configurações do sistema.</string>
-    </resources>
+    <string name="update_1_20">Compatibilidade de e-mail aprimorada na versão 1.20:\n\n📫 Leitura de listas de e-mail\n📭 Leitura de e-mails HTML\n📪 Tratamento melhorado de endereços de suporte\n📫 Muitos incômodos maiores e menores corrigidos\n\nLeia nossa nova postagem no blog sobre esses primeiros passos em relação ao e-mail e muito mais:</string>
+
+</resources>
