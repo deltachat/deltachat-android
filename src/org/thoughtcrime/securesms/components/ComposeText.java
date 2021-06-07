@@ -126,7 +126,11 @@ public class ComposeText extends EmojiEditText {
     if (mediaListener == null)      return inputConnection;
     if (inputConnection == null)    return null;
 
-    EditorInfoCompat.setContentMimeTypes(editorInfo, new String[] {"image/jpeg", "image/png", "image/gif"});
+    // media with mime-types defined by setContentMimeTypes() may be selected in the system keyboard
+    // and are passed to onCommitContent() then;
+    // from there we use them as stickers.
+    EditorInfoCompat.setContentMimeTypes(editorInfo, new String[] {"image/jpeg", "image/png", "image/gif", "image/webp"});
+
     return InputConnectionCompat.createWrapper(inputConnection, editorInfo, new CommitContentListener(mediaListener));
   }
 
