@@ -1,6 +1,27 @@
 # Delta Chat Android Changelog
 
+## v1.20.5
+2021-06
+
+* fix downscaling images
+* fix outgoing messages popping up in "Saved messages" for some providers
+* fix: do not allow deleting contacts with ongoing chats
+* fix: ignore drafts folder when scanning
+* fix: scan folders also when inbox is not watched
+* fix: adapt attached audio's background to theme
+* fix: request composer's focus after recording is done
+* fix sharing messages with attachments
+* fix highlighting messages in search results
+* fix: set correct navigation bar color in dark mode
+* fix: use the same emoji theme throughout the app
+* in in-chat search, start searching at the most recent message
+* improve error handling and logging
+* remove screen lock as announced in v1.14.0
+* update translations and provider database
+
+
 ## v1.20.2
+2021-05
 
 * fix crash when receiving some special messages
 * fix downloading some messages multiple times
@@ -9,6 +30,7 @@
 
 
 ## v1.20.1
+2021-05
 
 * improved accessibility and screen reader support
 * use the same emoji style everywhere across the app
