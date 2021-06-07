@@ -68,6 +68,7 @@ import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcMsg;
 
 import org.thoughtcrime.securesms.attachments.Attachment;
+import org.thoughtcrime.securesms.attachments.UriAttachment;
 import org.thoughtcrime.securesms.audio.AudioRecorder;
 import org.thoughtcrime.securesms.audio.AudioSlidePlayer;
 import org.thoughtcrime.securesms.components.AnimatingToggle;
@@ -87,6 +88,7 @@ import org.thoughtcrime.securesms.components.emoji.MediaKeyboard;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.database.AttachmentDatabase;
 import org.thoughtcrime.securesms.map.MapActivity;
 import org.thoughtcrime.securesms.mms.AttachmentManager;
 import org.thoughtcrime.securesms.mms.AttachmentManager.MediaType;
@@ -1356,12 +1358,11 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     }
   }
 
+  // media selected by the system keyboard
   @Override
   public void onMediaSelected(@NonNull Uri uri, String contentType) {
-    if (!TextUtils.isEmpty(contentType) && contentType.trim().equals("image/gif")) {
-      setMedia(uri, MediaType.GIF);
-    } else if (MediaUtil.isImageType(contentType)) {
-      setMedia(uri, MediaType.IMAGE);
+    if (MediaUtil.isImageType(contentType)) {
+      sendSticker(uri, contentType);
     } else if (MediaUtil.isVideoType(contentType)) {
       setMedia(uri, MediaType.VIDEO);
     } else if (MediaUtil.isAudioType(contentType)) {
@@ -1369,6 +1370,15 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     }
   }
 
+  private void sendSticker(@NonNull Uri uri, String contentType) {
+    Attachment attachment = new UriAttachment(uri, null, contentType,
+      AttachmentDatabase.TRANSFER_PROGRESS_STARTED, 0, 0, 0, null, null, false);
+    String path = getRealPathFromAttachment(attachment);
+
+    DcMsg msg = new DcMsg(dcContext, DcMsg.DC_MSG_STICKER);
+    msg.setFile(path, null);
+    dcContext.sendMsg(chatId, msg);
+  }
 
   private void initializeMediaKeyboardProviders(@NonNull MediaKeyboard mediaKeyboard, boolean stickersAvailable) {
     boolean isSystemEmojiPreferred   = Prefs.isSystemEmojiPreferred(this);
