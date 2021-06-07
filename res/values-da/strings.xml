@@ -333,7 +333,6 @@
     <string name="show_location_traces">Vis spor</string>
     <string name="add_poi">Send interessepunkt</string>
 
-
     <!-- search -->
     <string name="search">Søg</string>
     <string name="search_explain">Søg efter samtaler, kontakter og beskeder</string>
@@ -443,8 +442,6 @@
     <string name="pref_outgoing_balanced">Balanceret</string>
     <string name="pref_outgoing_worse">Dårligere kvalitet mindre størrelse</string>
     <string name="pref_vibrate">Vibrere</string>
-    <string name="pref_change_secret">Ændre hemmelighed</string>
-    <string name="pref_change_secret_explain">Ændre PIN / mønster / fingeraftryk via system opsætning</string>
     <string name="pref_screen_security">Skærmsikkerhed</string>
     <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
     <string name="pref_screen_security_explain">Forespørgsel om at blokere skærmbilleder i seneste liste og i programmet</string>
@@ -522,8 +519,6 @@
     <string name="profile_image_select">Vælg profilbillede</string>
     <string name="select_your_new_profile_image">Vælg dit nye profilbillede</string>
     <string name="profile_image_delete">Slet profilbillede</string>
-
-
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Søg i resultater</string>
     <string name="emoji_not_found">Ingen emoji fundet</string>
@@ -615,17 +610,6 @@
     <string name="systemmsg_chat_protection_disabled">Chat-beskyttelse slået fra.</string>
     <string name="systemmsg_chat_protection_enabled">Chat-beskyttelse sluttet til.</string>
 
-    <!-- screen lock -->
-    <string name="screenlock_title">Skærmlås</string>
-    <string name="screenlock_explain">Låse adgang med Android skærmlås eller fingeraftryk; for at undgå at vise det forrige indhold, skal \"Skærm sikkerhed\" også aktiveres.</string>
-    <string name="screenlock_authentication_failed">Godkendelse mislykket.</string>
-    <string name="screenlock_unlock_title">Lås Delta Chat op</string>
-    <string name="screenlock_unlock_description">Indtast system bestemt hemmelighed for at låse Delta Chat op.</string>
-    <string name="screenlock_inactivity_timeout">Inaktivitet tidsudløb lås</string>
-    <string name="screenlock_inactivity_timeout_explain">Autolås Delta Chat efter angiven tidsinterval med inaktivitet</string>
-    <string name="screenlock_inactivity_timeout_interval">Inaktivitet tidsudløb interval</string>
-
-
     <!-- qr code stuff -->
     <string name="qr_code">QR-kode</string>
     <string name="load_qr_code_as_image">Indlæs QR-kode som billede</string>
@@ -660,8 +644,6 @@
     <string name="contact_setup_changed">Ændret opsætning for %1$s</string>
     <string name="verified_group_explain">Bekræftede grupper (eksperimentel) giver sikkerhed mod aktive angreb. Medlemmer bliver bekræftet med en anden faktor af andre medlemmer og beskederne bliver altid end-to-end krypteret.</string>
     <string name="copy_qr_data_success">Kopieret QR url til udklipsholder</string>
-
-
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d nye beskeder i %2$d samtaler</string>
     <string name="notify_mark_read">Markér som læst</string>
@@ -756,7 +738,6 @@
     <string name="menu.view.developer.open.log.folder">Åbn log mappe</string>
     <string name="menu.view.developer.open.current.log.file">Åbn nuværende log fil</string>
     <string name="user_location_permission_explanation">Delta Chat behøver placering tilladelse for at vise og dele placering.</string>
-
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Leveringsstatus: Fejl</string>
     <string name="a11y_encryption_padlock">Krypteringslås</string>

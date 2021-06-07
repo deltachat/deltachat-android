@@ -325,13 +325,10 @@
     <!-- mailing lists -->
     <string name="mailing_list">អ៊ីម៉ែលការផ្សាយ</string>
     <string name="ask_show_mailing_list">បង្ហាញសារអ៊ីម៉ែលការផ្សាយ \"%1$s\"?</string>
-
-
     <!-- map -->
     <string name="filter_map_on_time">បង្ហាញទីតាំងនៅក្នុងស៊ុមពេលវេលា</string>
     <string name="show_location_traces">បង្ហាញដាន</string>
     <string name="add_poi">ផ្ញើចំណុចចំណាប់អារម្មណ៍</string>
-
 
     <!-- search -->
     <string name="search">ស្វែងរក</string>
@@ -442,8 +439,6 @@
     <string name="pref_outgoing_balanced">មានតុល្យភាព</string>
     <string name="pref_outgoing_worse">គុណភាពកាន់តែអាក្រក់ ទំហំតូច</string>
     <string name="pref_vibrate">ញ័រ</string>
-    <string name="pref_change_secret">ផ្លាស់ប្តូរសម្ងាត់</string>
-    <string name="pref_change_secret_explain">ប្តូរ PIN / លំនាំ/ ស្នាមម្រាម របស់អ្នក ដៃ តាមរយះការកំណត់ប្រពន្ធ័។</string>
     <string name="pref_screen_security">សុវត្ថិភាពអេក្រង់</string>
     <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
     <string name="pref_screen_security_explain">ស្នើសុំរារាំងរូបថតអេក្រង់ នៅក្នុងបញ្ជីបច្ចុប្បន្ន និងខាងក្នុងកម្មវិធី។</string>
@@ -521,8 +516,6 @@
     <string name="profile_image_select">ជ្រើសរើសរូបភាពទិន្ន័យផ្ទាល់ខ្លួន</string>
     <string name="select_your_new_profile_image">ជ្រើសរើសរូបភាពទិន្នន័យផ្ទាល់ខ្លួនថ្មី</string>
     <string name="profile_image_delete">លុបរូបភាពទិន្នន័យផ្ទាល់ខ្លួន</string>
-
-
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">លទ្ធផលស្វែងរក</string>
     <string name="emoji_not_found">រកមិនឃើញរូបសញ្ញាអារម្មណ៍</string>
@@ -614,17 +607,6 @@
     <string name="systemmsg_chat_protection_disabled">ការការពារសន្ទនាត្រូវបានបិទ</string>
     <string name="systemmsg_chat_protection_enabled">ការការពារសន្ទនាត្រូវបានបើក</string>
 
-    <!-- screen lock -->
-    <string name="screenlock_title">ចាក់អេក្រង់</string>
-    <string name="screenlock_explain">ចាក់សោរដំណើរការជាមួយ Android ចាក់សោរអេក្រង់ ឬស្នាមម្រាមដៃ ដើម្បីចៀសវាងការបង្ហាញមាតិកាមុន។ សូមបើកដំណើរការ \"អេក្រង់សុវត្ថិភាព\" ផងដែរ។</string>
-    <string name="screenlock_authentication_failed">ការផ្ទៀងផ្ទាត់បានបរាជ័យ</string>
-    <string name="screenlock_unlock_title">ដោះសោរសា Delta Chat</string>
-    <string name="screenlock_unlock_description">សូមបញ្ចូលការកំណត់ប្រព័ន្ធសុវត្ថិភាពសម្ងាត់របស់អ្នក ដើម្បីដោះសោរ សា Delta Chat ។</string>
-    <string name="screenlock_inactivity_timeout">ចាក់សោរពីព្រោះអស់ពេលអសកម្ម</string>
-    <string name="screenlock_inactivity_timeout_explain">សា Delta Chat បិទដោយស្វ័យប្រវត្តិ បន្ទាប់ពីបានបញ្ជាក់រយះពេលនៃអសកម្ម។</string>
-    <string name="screenlock_inactivity_timeout_interval">ពេលវេលាដើម្បីឲ្យសកម្ម</string>
-
-
     <!-- qr code stuff -->
     <string name="qr_code">QR កូដ</string>
     <string name="load_qr_code_as_image">ផ្ទុកកូដ QR ជារូបភាព</string>
@@ -659,8 +641,6 @@
     <string name="contact_setup_changed">បានដូរការរៀបចំសម្រាប់ %1$s</string>
     <string name="verified_group_explain">\"ក្រុមបានផ្ទៀងផ្ទាត់\" (ពិសោធន៍) បានផ្តល់សុវត្ថិភាពប្រឆាំងនឹងសកម្មភាពវាយប្រហារ។ សមាជិកត្រូវបានផ្ទៀងផ្ទាត់ជាមុខងារទីពីរ ដោយសមាជិកដទៃទៀត និងសារតែងតែបានអ៊ិនគ្រីប ពីឧបករណ៍ដល់ឧបករណ៍។</string>
     <string name="copy_qr_data_success">បានចម្លង QR-url ទៅក្តារខ្ទាស់</string>
-
-
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">សារ %1$d ថ្មីក្នុងសន្ទនា %2$d</string>
     <string name="notify_mark_read">សម្គាល់ថាអាន</string>
@@ -755,7 +735,6 @@
     <string name="menu.view.developer.open.log.folder">បើកថតឯកសារកត់</string>
     <string name="menu.view.developer.open.current.log.file">បើកឯកសារកត់បច្ចុប្បន្ន</string>
     <string name="user_location_permission_explanation">សា Delta Chat ត្រូវការការអនុញ្ញាតទីតាំង ដើម្បីបង្ហាញ និងចែករំលែកទីតាំងរបស់អ្នក។</string>
-
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">ស្ថានភាពចែកចាយ៖ មានកំហុស</string>
     <string name="a11y_encryption_padlock">សោត្រដោកការអ៊ិនគ្រីប</string>

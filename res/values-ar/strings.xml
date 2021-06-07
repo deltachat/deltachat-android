@@ -221,10 +221,6 @@
     <string name="pref_background">الخلفية</string>
     <string name="pref_show_emails_all">كلها</string>
     <string name="autocrypt_continue_transfer_retry">أعد المحاولة</string>
-    <!-- screen lock -->
-    <string name="screenlock_title">قفل الشاشة</string>
-    <string name="screenlock_authentication_failed">فشلت المصادقة.</string>
-    <string name="screenlock_inactivity_timeout">نفاذ مهلة قفل الشاشة</string>
     <string name="qrscan_fingerprint_label">البصمة</string>
     <string name="notify_mark_read">اعتبره كمقروء</string>
     <string name="notify_reply_button">رد</string>

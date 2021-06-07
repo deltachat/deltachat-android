@@ -35,7 +35,14 @@
     <string name="main_menu">Pagrindinis meniu</string>
     <string name="start_chat">Pradėti pokalbį</string>
     <string name="show_full_message">Rodyti visą žinutę…</string>
+    <string name="show_full_message_in_browser">Rodyti visą žinutę naršyklėje…</string>
+    <!-- this is shown as placeholder when something is loading at some places -->
+    <string name="loading">Įkeliama…</string>
+    <string name="hide">Slėpti</string>
+    <string name="activate">Aktyvuoti</string>
     <string name="load_remote_content">Įkelti nuotolinius paveikslus</string>
+    <!-- possible answers to the question are: Never, Always, Once -->
+    <string name="load_remote_content_ask">Nuotoliniai paveikslai gali būti naudojami, kad būtumėte sekami.\n\nŠis nustatymas taip pat leidžia šriftų įkėlimą ir kitą turinį. Netgi, jeigu jis yra išjungtas, gali būti, kad vis tiek matysite įterptus paveikslus ar paveikslus iš podėlio.\n\nĮkelti nuotolinius paveikslus?</string>
     <string name="always">Visada</string>
     <string name="once">Vieną kartą</string>
     <string name="show_password">Rodyti slaptažodį</string>
@@ -182,6 +189,8 @@
     <string name="menu_copy_to_clipboard">Kopijuoti į iškarpinę</string>
     <string name="menu_copy_selection_to_clipboard">Kopijuoti žymėjimą</string>
     <string name="menu_copy_link_to_clipboard">Kopijuoti nuorodą</string>
+    <string name="menu_copy_text_to_clipboard">Kopijuoti tekstą</string>
+    <string name="menu_copy_image_to_clipboard">Kopijuoti paveikslą</string>
     <string name="paste_from_clipboard">Įdėti iš iškarpinės</string>
     <string name="menu_forward">Persiųsti žinutę</string>
     <string name="menu_resend">Siųsti žinutę iš naujo</string>
@@ -214,6 +223,9 @@
     <string name="menu_zoom_in">Didinti</string>
     <string name="menu_zoom_out">Mažinti</string>
     <string name="menu_save_log">Įrašyti žurnalą</string>
+    <string name="menu_more_options">Daugiau parinkčių</string>
+    <string name="copy_json">Kopijuoti JSON</string>
+    <string name="replace_draft">Pakeisti juodraštį</string>
     <string name="title_share_location">Bendrinti savo vietą su visais grupės dalyviais</string>
     <string name="device_talk">Įrenginio žinutės</string>
     <string name="edit_contact">Taisyti adresatą</string>
@@ -259,6 +271,7 @@
         <item quantity="many">Ištrinti %d pokalbių? Jie daugiau nebebus rodomi pokalbių sąraše, jų žinutės liks serveryje.</item>
         <item quantity="other">Ištrinti %d pokalbį? Jis daugiau nebebus rodomas pokalbių sąraše, jo žinutės liks serveryje.</item>
     </plurals>
+    <string name="ask_delete_message">Ar tikrai norite ištrinti šią žinutę?</string>
     <plurals name="ask_delete_messages">
         <item quantity="one">Ištrinti %d žinutę čia ir serveryje?</item>
         <item quantity="few">Ištrinti %d žinutes čia ir serveryje?</item>
@@ -322,6 +335,7 @@
     <string name="chat_contact_request">Adresato užklausa</string>
     <string name="send_failed">Nepavyko išsiųsti žinutės</string>
     <string name="attachment_failed_to_load">Nepavyko įkelti priedo</string>
+    <string name="puny_code_warning_header">Aptikta įtartina nuoroda</string>
     <!-- search -->
     <string name="search">Ieškoti</string>
     <string name="search_explain">Ieškokite pokalbių, adresatų ir žinučių</string>
@@ -394,6 +408,7 @@
     <string name="add_account">Pridėti paskyrą</string>
     <string name="delete_account">Ištrinti paskyrą</string>
     <string name="delete_account_ask">Ar tikrai norite ištrinti savo paskyros duomenis?</string>
+    <string name="delete_account_explain_with_name">Visi „%s“ paskyros duomenys šiame įrenginyje bus ištrinti, įskaitant jūsų ištisinio šifravimo sąranką, adresatus, pokalbius, žinutes ir mediją. Šį veiksmą nebeįmanoma bus atšaukti.</string>
     <string name="switching_account">Perjungiama paskyra…</string>
     <!-- Translations: %1$s will be replaced by a more detailed error message -->
     <string name="configuration_failed_with_error">Konfigūracija patyrė nesėkmę. Klaida: %1$s</string>
@@ -422,8 +437,6 @@
     <string name="pref_outgoing_balanced">Subalansuota</string>
     <string name="pref_outgoing_worse">Blogesnė kokybė, mažas dydis</string>
     <string name="pref_vibrate">Vibruoti</string>
-    <string name="pref_change_secret">Pakeisti paslaptį</string>
-    <string name="pref_change_secret_explain">Pakeisti savo pin / šabloną / piršto atspaudą per sistemos nustatymus</string>
     <string name="pref_screen_security">Ekrano saugumas</string>
     <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
     <string name="pref_screen_security_explain">Prašyti blokuoti ekrano kopijas paskiausiųjų sąraše ir programėlės viduje</string>
@@ -488,6 +501,10 @@
     <string name="pref_background_custom_image">Tinkintas paveikslas</string>
     <string name="pref_background_custom_color">Tinkinta spalva</string>
     <string name="export_aborted">Eksportavimas nutrauktas.</string>
+    <string name="profile_image_delete">Ištrinti profilio paveikslą</string>
+    <string name="pref_show_tray_icon">Rodyti dėklo piktogramą</string>
+    <string name="pref_edit_profile">Taisyti profilį</string>
+
     <string name="emoji_recent">Paskiausi</string>
     <string name="emoji_people">Žmonės ir kūnas</string>
     <string name="emoji_nature">Gyvūnai ir gamta</string>
@@ -561,16 +578,6 @@
     <string name="systemmsg_chat_protection_disabled">Pokalbio apsauga išjungta.</string>
     <string name="systemmsg_chat_protection_enabled">Pokalbio apsauga įjungta.</string>
 
-    <!-- screen lock -->
-    <string name="screenlock_title">Ekrano užraktas</string>
-    <string name="screenlock_authentication_failed">Tapatybės nustatymas nepavyko.</string>
-    <string name="screenlock_unlock_title">Atrakinti Delta Chat</string>
-    <string name="screenlock_unlock_description">Norėdami atrakinti Delta Chat, įveskite savo sistemos apibrėžtą paslaptį.</string>
-    <string name="screenlock_inactivity_timeout">Užraktas esant neveiklumui</string>
-    <string name="screenlock_inactivity_timeout_explain">Automatiškai užrakinti Delta Chat po nurodyto neveiklumo intervalo</string>
-    <string name="screenlock_inactivity_timeout_interval">Neveiklumui skirtas laiko intervalas</string>
-
-
     <!-- qr code stuff -->
     <string name="qr_code">QR kodas</string>
     <string name="load_qr_code_as_image">Įkelti QR kodą kaip paveikslą</string>
@@ -591,10 +598,13 @@
     <string name="qrshow_join_contact_no_connection_hint">QR kodo sąranka reikalauja interneto ryšio. Prieš tęsdami, prisijunkite prie tinklo.</string>
     <string name="qrshow_join_contact_no_connection_toast">Nėra interneto ryšio, nepavyksta atlikti QR kodo sąrankos.</string>
     <string name="qraccount_ask_create_and_login">Sukurti naują el. pašto adresą ties „%1$s“ ir prisijungti ten?</string>
+    <string name="qraccount_success_enter_name">Prisijungimas sėkmingas — jūsų el. pašto adresas yra %1$s\n\nJei norite, dabar galite įvesti vardą ir pridėti profilio paveikslą, kuris bus rodomas žmonėms, kuriems rašysite.</string>
     <string name="contact_verified">%1$s patvirtintas.</string>
     <string name="contact_not_verified">Nepavyksta patvirtinti %1$s</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Pakeista sąranka, skirta %1$s.</string>
+    <string name="mailto_link_could_not_be_decoded">nepavyko dekoduoti mailto nuorodos: %1$s</string>
+
     <string name="notify_mark_read">Žymėti kaip skaitytą</string>
     <string name="notify_reply_button">Atsakyti</string>
     <string name="notify_new_message">Nauja žinutė</string>
@@ -609,6 +619,14 @@
     <!-- permissions -->
     <string name="perm_required_title">Reikalingas leidimas</string>
     <string name="perm_continue">Tęsti</string>
+    <!-- ImageEditorHud -->
+    <string name="ImageEditorHud_draw_anywhere_to_blur">Pieškite ten, kur norite sulieti</string>
+    <string name="ImageEditorHud_add_text">Pridėti tekstą</string>
+    <string name="ImageEditorHud_blur">Sulieti</string>
+    <string name="ImageEditorHud_crop">Apkirpti</string>
+    <string name="ImageEditorHud_flip">Apversti</string>
+    <string name="ImageEditorHud_rotate">Pasukti</string>
+
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Šifruota žinutė</string>
 
@@ -632,6 +650,8 @@
     <string name="global_menu_help_contribute_desktop">Talkinti Github svetainėje</string>
     <string name="global_menu_help_report_desktop">Pranešti apie klaidą</string>
     <string name="global_menu_help_about_desktop">Apie Delta Chat</string>
+    <string name="global_menu_file_open_desktop">Atverti Delta Chat</string>
+    <string name="global_menu_minimize_to_tray">Suskleisti</string>
     <string name="no_chat_selected_suggestion_desktop">Pasirinkite arba sukurkite naują pokalbį</string>
     <string name="write_message_desktop">Rašykite žinutę</string>
     <string name="encryption_info_title_desktop">Šifravimo informacija</string>
@@ -674,6 +694,9 @@
     <string name="message_detail_to_desktop">kam</string>
     <string name="menu.view.developer.open.log.folder">Atverti žurnalų aplanką</string>
     <string name="menu.view.developer.open.current.log.file">Atverti dabartinio žurnalo failą</string>
+    <string name="no_spellcheck_suggestions_found">Nerasta jokių rašybos pasiūlymų.</string>
+    <string name="show_window">Rodyti langą</string>
+
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Pristatymo būsena: Klaida</string>
     <string name="a11y_encryption_padlock">Šifravimo spyna</string>

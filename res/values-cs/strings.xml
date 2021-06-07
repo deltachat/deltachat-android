@@ -362,13 +362,10 @@
     <!-- mailing lists -->
     <string name="mailing_list">Hromadná zpráva</string>
     <string name="ask_show_mailing_list">Zobraz seznam hromadné zprávy \"%1$s\"?</string>
-
-
     <!-- map -->
     <string name="filter_map_on_time">Zobraz polohu v časovém rámci</string>
     <string name="show_location_traces">Ukaž trasy</string>
     <string name="add_poi">Pošli polohu zájmu</string>
-
 
     <!-- search -->
     <string name="search">Hledej</string>
@@ -479,8 +476,6 @@
     <string name="pref_outgoing_balanced">Vyvážená</string>
     <string name="pref_outgoing_worse">Horší kvalita, malá velikost</string>
     <string name="pref_vibrate">Chvění</string>
-    <string name="pref_change_secret">Změnit tajný kód</string>
-    <string name="pref_change_secret_explain">Změň si PIN / vzor / otisk v nastavení systému</string>
     <string name="pref_screen_security">Zabezpečení obrazovky</string>
     <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
     <string name="pref_screen_security_explain">Požaduj blokaci sejmutí obrazovky v seznamu Nedávné a uvnitř aplikace</string>
@@ -558,8 +553,6 @@
     <string name="profile_image_select">Vyber profilový obrázek</string>
     <string name="select_your_new_profile_image">Vyber svůj nový profilový obrázek</string>
     <string name="profile_image_delete">Vymaž obrázek profilu</string>
-
-
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Výsledky hledání</string>
     <string name="emoji_not_found">Smajlíky nenalezeny</string>
@@ -651,17 +644,6 @@
     <string name="systemmsg_chat_protection_disabled">Ochrana rozhovoru vypnuta.</string>
     <string name="systemmsg_chat_protection_enabled">Ochrana rozhovoru zapnuta.</string>
 
-    <!-- screen lock -->
-    <string name="screenlock_title">Zámek obrazovky</string>
-    <string name="screenlock_explain">Uzamkni přístup se systémovým zámkem obrazovky nebo otiskem. Zobrazení předchozího obsahu zamezíš zapnutím Zabezpečení obrazovky.</string>
-    <string name="screenlock_authentication_failed">Ověření selhalo.</string>
-    <string name="screenlock_unlock_title">Odemkni Delta Chat</string>
-    <string name="screenlock_unlock_description">K odemčení Delta Chatu zadej tajemství nastavené ve tvém systému.</string>
-    <string name="screenlock_inactivity_timeout">Uzamčení pro nečinnost</string>
-    <string name="screenlock_inactivity_timeout_explain">Samouzamčení Delta Chatu po zadané časové prodlevě</string>
-    <string name="screenlock_inactivity_timeout_interval">Prodleva</string>
-
-
     <!-- qr code stuff -->
     <string name="qr_code">QR kód</string>
     <string name="load_qr_code_as_image">Nahraj QR kód z obrázku</string>
@@ -696,8 +678,6 @@
     <string name="contact_setup_changed">Změněné nastavení pro %1$s.</string>
     <string name="verified_group_explain">Ověřené skupiny (pokusná funkce) zabezpečuje proti aktivním útokům. Noví členové jsou ověřeni ostatními členy druhou cestou a zprávy jsou vždy šifrované end-to-end.</string>
     <string name="copy_qr_data_success">URL z QR kódu zkopírováno do mezipaměti</string>
-
-
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d nových zpráv v %2$d hovorech</string>
     <string name="notify_mark_read">Označit za přečtené</string>
@@ -792,7 +772,6 @@
     <string name="menu.view.developer.open.log.folder">Otevři složku se záznamem běhu</string>
     <string name="menu.view.developer.open.current.log.file">Otevři stávající záznam běhu</string>
     <string name="user_location_permission_explanation">Delta Chat potřebuje povolení ke zobrazení a sdílení tvé polohy.</string>
-
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Stav doručení: Chyba</string>
     <string name="a11y_encryption_padlock">Zámek šifrování</string>

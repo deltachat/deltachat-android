@@ -361,13 +361,10 @@
     <!-- mailing lists -->
     <string name="mailing_list">Zoznam adries</string>
     <string name="ask_show_mailing_list">Zobraziť zoznam adries%1$s?</string>
-
-
     <!-- map -->
     <string name="filter_map_on_time">Zobraziť polohy v časovom rámci</string>
     <string name="show_location_traces">Zobraziť stopy</string>
     <string name="add_poi">Pošlite zaujímavé miesto</string>
-
 
     <!-- search -->
     <string name="search">Vyhľadávanie</string>
@@ -478,8 +475,6 @@
     <string name="pref_outgoing_balanced">Vyvážený</string>
     <string name="pref_outgoing_worse">Horšia kvalita, malé rozmery</string>
     <string name="pref_vibrate">Vibrovať</string>
-    <string name="pref_change_secret">Zmeniť secret</string>
-    <string name="pref_change_secret_explain">Zmeňte svoj PIN / vzor / odtlačok prsta pomocou nastavení systému</string>
     <string name="pref_screen_security">Zabezpečenie obrazovky</string>
     <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
     <string name="pref_screen_security_explain">Požiadajte o blokovanie snímok obrazovky v zozname posledných položiek a v aplikácii</string>
@@ -557,8 +552,6 @@
     <string name="profile_image_select">Vyberte profilový obrázok</string>
     <string name="select_your_new_profile_image">Vyberte svoj nový profilový obrázok</string>
     <string name="profile_image_delete">Odstrániť profilový obrázok</string>
-
-
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Výsledky vyhľadávania</string>
     <string name="emoji_not_found">Nenašli sa žiadne emodži</string>
@@ -650,17 +643,6 @@
     <string name="systemmsg_chat_protection_disabled">Ochrana chatu je deaktivovaná.</string>
     <string name="systemmsg_chat_protection_enabled">Ochrana chatu je povolená.</string>
 
-    <!-- screen lock -->
-    <string name="screenlock_title">Zámok obrazovky</string>
-    <string name="screenlock_explain">Zamknite prístup pomocou zámku obrazovky Android alebo odtlačku prsta; aby ste zabránili zobrazovaniu predchádzajúceho obsahu, povoľte tiež možnosť „Zabezpečenie obrazovky“.</string>
-    <string name="screenlock_authentication_failed">Overenie zlyhalo.</string>
-    <string name="screenlock_unlock_title">Odomknite program Delta Chat</string>
-    <string name="screenlock_unlock_description">Odomknite Delta Chat zadaním vášho systému definovaného tajomstva.</string>
-    <string name="screenlock_inactivity_timeout">Uzamknutie časového limitu nečinnosti</string>
-    <string name="screenlock_inactivity_timeout_explain">Automaticky uzamknúť program Delta Chat po stanovenom časovom období nečinnosti</string>
-    <string name="screenlock_inactivity_timeout_interval">Čas zostať aktívny</string>
-
-
     <!-- qr code stuff -->
     <string name="qr_code">QR kód</string>
     <string name="load_qr_code_as_image">Načítajte QR kód ako obrázok</string>
@@ -695,8 +677,6 @@
     <string name="contact_setup_changed">Zmena nastavenia pre %1$s.</string>
     <string name="verified_group_explain">Overené skupiny (experimentálne) poskytujú bezpečnosť proti aktívnym útokom. Členovia sú overovaní druhým faktorom ostatnými členmi a správy sú vždy šifrované end-to-end.</string>
     <string name="copy_qr_data_success">Skopírovaná adresa URL QR do schránky</string>
-
-
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d nové správy v %2$d četoch</string>
     <string name="notify_mark_read">Označiť ako prečítané</string>
@@ -791,7 +771,6 @@
     <string name="menu.view.developer.open.log.folder">Otvorte priečinok denníka</string>
     <string name="menu.view.developer.open.current.log.file">Otvoriť aktuálny súbor protokolu</string>
     <string name="user_location_permission_explanation">Delta Chat potrebuje na zobrazenie a zdieľanie vašej polohy povolenie na polohu.</string>
-
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Stav doručenia: Chyba</string>
     <string name="a11y_encryption_padlock">Šifrovací zámok</string>

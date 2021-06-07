@@ -41,6 +41,11 @@
     <string name="main_menu">Menu principale</string>
     <string name="start_chat">Inizia una chat</string>
     <string name="show_full_message">Mostra messaggio completo...</string>
+    <string name="show_full_message_in_browser">Mostra messaggio completo nel browser...</string>
+    <!-- this is shown as placeholder when something is loading at some places -->
+    <string name="loading">Caricamento in corso…</string>
+    <string name="hide">Nascondi</string>
+    <string name="activate">Attiva</string>
     <string name="load_remote_content">Carica immagini remote</string>
     <!-- possible answers to the question are: Never, Always, Once -->
     <string name="load_remote_content_ask">Le immagini remote possono essere utilizzate per tracciarti.\n\nL\'impostazione consente anche di caricare caratteri e altri contenuti. Anche se è disabilitato, potresti comunque vedere immagini incorporate o memorizzate nella cache.\n\nCaricare immagini remote?</string>
@@ -125,7 +130,7 @@
     <!-- "capture" here means "start a video recording" or "take a photo"; eg. the description of the "shutter button" in the camera controls -->
     <string name="capture">Cattura</string>
     <string name="switch_camera">Cambia fotocamera</string>
-    <string name="toggle_fullscreen">Attiva/disattiva la modalità a schermo intero</string>
+    <string name="toggle_fullscreen">Attiva/Disattiva la modalità a schermo intero</string>
     <string name="location">Posizione</string>
     <string name="gallery">Galleria</string>
     <string name="images_and_videos">Immagini e video</string>
@@ -182,6 +187,8 @@
     <string name="menu_copy_to_clipboard">Copia negli appunti</string>
     <string name="menu_copy_selection_to_clipboard">Copia selezione</string>
     <string name="menu_copy_link_to_clipboard">Copia link</string>
+    <string name="menu_copy_text_to_clipboard">Copia testo</string>
+    <string name="menu_copy_image_to_clipboard">Copia l\'immagine</string>
     <string name="paste_from_clipboard">Incolla dagli appunti</string>
     <string name="menu_forward">Inoltra messaggio</string>
     <string name="menu_resend">Reinvia messaggio</string>
@@ -215,6 +222,12 @@
     <string name="menu_zoom_in">Zoom in</string>
     <string name="menu_zoom_out">Zoom out</string>
     <string name="menu_save_log">Salva log</string>
+    <string name="menu_more_options">Più opzioni</string>
+    <string name="menu_learn_spelling">Impara l\'ortografia</string>
+    <string name="menu_chat_audit_log">Registro di controllo della chat</string>
+    <string name="jump_to_message">Vai al messaggio</string>
+    <string name="copy_json">Copia JSON</string>
+    <string name="replace_draft">Sostituisci bozza</string>
     <string name="title_share_location">Condividi posizione con tutti i membri</string>
     <string name="device_talk">Messaggi del dispositivo</string>
     <string name="device_talk_subtitle">Messaggi generati localmente</string>
@@ -272,6 +285,7 @@
         <item quantity="one">Eliminare %d chat? Non verrà più mostrata nella lista delle chat, ma i messaggi rimarranno sul server.</item>
         <item quantity="other">Eliminare %d chat? Non verranno più mostrate nella lista delle chat, ma i messaggi rimarranno sul server.</item>
     </plurals>
+    <string name="ask_delete_message">Sei sicuro di voler eliminare questo messaggio?</string>
     <plurals name="ask_delete_messages">
         <item quantity="one">Eliminare %d messaggio qui e sul sever?</item>
         <item quantity="other">Eliminare %d messaggi qui e sul sever?</item>
@@ -339,6 +353,7 @@
     <string name="messaging_disabled_not_in_group">Non puoi scrivere perché non sei in questo gruppo. Per partecipare, chiedi a un altro membro.</string>
     <string name="messaging_disabled_device_chat">Questa chat contiene messaggi generati localmente. Quindi non puoi scrivere alcun messaggio.</string>
     <string name="messaging_disabled_deaddrop">Fare clic su un messaggio per accettare o rifiutare la richiesta di contatto</string>
+    <string name="messaging_disabled_mailing_list">L\'invio dei messaggi nelle mailing list non è ancora supportato</string>
     <string name="cannot_display_unsuported_file_type">Impossibile visualizzare questo tipo di file: %s</string>
     <string name="attachment_failed_to_load">Impossibile caricare l\'allegato</string>
     <!-- For recording Voice messages: Description for the "Lock" button allowing to lift the thumb from the record button while recording continues -->
@@ -347,13 +362,26 @@
     <!-- mailing lists -->
     <string name="mailing_list">Mailing list</string>
     <string name="ask_show_mailing_list">Mostra la mailing list \"%1$s\"?</string>
-
+    <string name="mailing_list_profile_info">Le modifiche al nome e all\'immagine della mailing list si applicano solo a questo dispositivo.</string>
 
     <!-- map -->
     <string name="filter_map_on_time">Mostra le posizioni nel tempo</string>
     <string name="show_location_traces">Mostra tracce</string>
     <string name="add_poi">Invia punto di interesse</string>
 
+    <!-- chat audit log -->
+    <string name="chat_audit_log_empty_message">I messaggi di sistema di questa chat appariranno qui</string>
+    <string name="chat_audit_log_title">Registro di controllo chat per %1$s</string>
+    <string name="chat_audit_log_description">Questa visualizzazione mostra solo i messaggi di sistema e informativi. Utile per trovare le ultime azioni di chat senza dover scorrere molti messaggi normali.</string>
+
+    <!-- punycode warning / labeled links -->
+    <!-- placeholder is domain/hostname that should be trusted -->
+    <string name="open_external_url_trust_domain">Non chiedere di nuovo per %1$s</string>
+    <string name="puny_code_warning_header">Rilevato link sospetto</string>
+    <!-- placeholder contains the hostname converted to ascii -->
+    <string name="puny_code_warning_question">Sei sicuro di voler visitare %1$s?</string>
+    <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
+    <string name="puny_code_warning_description">Hai seguito un link che potrebbe rappresentare in modo errato i caratteri utilizzando caratteri dall\'aspetto simile ad alfabeti diversi. Se si segue il link con l\'etichetta %1$s si arriva a %2$s che è normale per i caratteri non latini. Se non ti aspettavi tali caratteri, questo collegamento potrebbe essere dannoso</string>
 
     <!-- search -->
     <string name="search">Cerca</string>
@@ -464,8 +492,6 @@
     <string name="pref_outgoing_balanced">Bilanciata</string>
     <string name="pref_outgoing_worse">Qualità peggiore, dimensione ridotta</string>
     <string name="pref_vibrate">Vibrazione</string>
-    <string name="pref_change_secret">Cambia codice</string>
-    <string name="pref_change_secret_explain">Cambia il pin / sequenza / impronta digitale dalle impostazioni di sistema.</string>
     <string name="pref_screen_security">Sicurezza schermo</string>
     <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
     <string name="pref_screen_security_explain">Impedisci di effettuare screenshot nella lista Recenti e all\'interno dell\'app</string>
@@ -543,7 +569,8 @@
     <string name="profile_image_select">Seleziona immagine del profilo</string>
     <string name="select_your_new_profile_image">Seleziona la tua nuova immagine del profilo</string>
     <string name="profile_image_delete">Elimina immagine del profilo</string>
-
+    <string name="pref_show_tray_icon">Mostra l\'icona nel vassoio</string>
+    <string name="pref_edit_profile">Modifica profilo</string>
 
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Risultati ricerca</string>
@@ -636,16 +663,8 @@
     <string name="systemmsg_chat_protection_disabled">Protezione chat disattivata.</string>
     <string name="systemmsg_chat_protection_enabled">Protezione chat abilitata.</string>
 
-    <!-- screen lock -->
-    <string name="screenlock_title">Blocco schermo</string>
-    <string name="screenlock_explain">Blocca l\'accesso all\'app tramite il blocco schermo di Android o l\'impronta digitale; per non mostrare i contenuti precedenti, abilita anche \"Sicurezza Schermo\"</string>
-    <string name="screenlock_authentication_failed">Autenticazione fallita.</string>
-    <string name="screenlock_unlock_title">Sblocca Delta Chat</string>
-    <string name="screenlock_unlock_description">Inserisci il codice di sistema per sbloccare Delta Chat</string>
-    <string name="screenlock_inactivity_timeout">Tempo di blocco per inattività</string>
-    <string name="screenlock_inactivity_timeout_explain">Blocca automaticamente Delta Chat dopo un tempo di inattività definito</string>
-    <string name="screenlock_inactivity_timeout_interval">Tempo di inattività</string>
-
+    <!-- Some options as "Manage keys" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc. to be entered in a system dialog. This hint is added to the system dialog, below a title as "Manage keys" or "Backup". -->
+    <string name="enter_system_secret_to_continue">Per favore inserisci il tuo codice segreto definito dal sistema per continuare.</string>
 
     <!-- qr code stuff -->
     <string name="qr_code">Codice QR</string>
@@ -681,7 +700,10 @@
     <string name="contact_setup_changed">Impostazioni modificate per %1$s</string>
     <string name="verified_group_explain">I gruppi verificati (sperimentali) garantiscono sicurezza dagli attacchi. I membri vengono verificati con un secondo fattore dagli altri membri e i messaggi sono sempre cifrati end-to-end. </string>
     <string name="copy_qr_data_success">URL QR copiato negli appunti</string>
-
+    <string name="mailto_dialog_header_select_chat">Seleziona la chat a cui inviare il messaggio</string>
+    <!-- first placeholder is the name of the chat -->
+    <string name="mailto_dialog_confirm_replace_draft">%1$s ha già una bozza di messaggio, vuoi sostituirla?</string>
+    <string name="mailto_link_could_not_be_decoded">Il link mailto non può essere decodificato: %1$s</string>
 
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d nuovi messaggi in %2$d chat</string>
@@ -740,6 +762,8 @@
     <string name="global_menu_help_contribute_desktop">Contribuisci su GitHub</string>
     <string name="global_menu_help_report_desktop">Segnala un problema</string>
     <string name="global_menu_help_about_desktop">Informazioni su Delta Chat</string>
+    <string name="global_menu_file_open_desktop">Apri Delta Chat</string>
+    <string name="global_menu_minimize_to_tray">Minimizza</string>
     <string name="no_chat_selected_suggestion_desktop">Seleziona o crea una nuova chat</string>
     <string name="write_message_desktop">Scrivi un messaggio</string>
     <string name="encryption_info_title_desktop">Informazioni di cifratura</string>
@@ -785,6 +809,9 @@
     <string name="menu.view.developer.open.log.folder">Apri cartella dei Log</string>
     <string name="menu.view.developer.open.current.log.file">Apri il Logfile corrente</string>
     <string name="user_location_permission_explanation">Delta Chat richiede i permessi di localizzazione per mostrare e condividere la posizione.</string>
+    <string name="explain_desktop_minimized_disabled_tray_pref">L\'icona nella barra delle applicazioni non può essere disabilitata poiché Delta Chat è stato avviato con l\'opzione --minimizzato.</string>
+    <string name="no_spellcheck_suggestions_found">Nessun suggerimento ortografico trovato.</string>
+    <string name="show_window">Mostra Finestra</string>
 
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Stato di consegna: errore</string>

@@ -41,6 +41,11 @@
     <string name="main_menu">Головне меню</string>
     <string name="start_chat">Почати розмову</string>
     <string name="show_full_message">Показати повне повідомлення...</string>
+    <string name="show_full_message_in_browser">Показати повне повідомлення у браузері...</string>
+    <!-- this is shown as placeholder when something is loading at some places -->
+    <string name="loading">Завантаження...</string>
+    <string name="hide">Приховати</string>
+    <string name="activate">Активувати</string>
     <string name="load_remote_content">Завантажувати віддалені зображення</string>
     <!-- possible answers to the question are: Never, Always, Once -->
     <string name="load_remote_content_ask">Віддалені зображення можна використовувати для слідкування за вами.\n\nЦе налаштування також дозволяє завантажувати шрифти та інший вміст. Навіть якщо воно вимкнене, ви можете побачити вбудовані або кешовані зображення.\n\nЗавантажувати віддалені зображення?</string>
@@ -194,6 +199,8 @@
     <string name="menu_copy_to_clipboard">Копіювати в буфер обміну</string>
     <string name="menu_copy_selection_to_clipboard">Скопіювати позначене</string>
     <string name="menu_copy_link_to_clipboard">Скопіювати посилання</string>
+    <string name="menu_copy_text_to_clipboard">Копіювати текст</string>
+    <string name="menu_copy_image_to_clipboard">Копіювати зображення</string>
     <string name="paste_from_clipboard">Вставити із буферу обміну</string>
     <string name="menu_forward">Переслати повідомлення</string>
     <string name="menu_resend">Повторно надіслати повідомлення</string>
@@ -227,6 +234,12 @@
     <string name="menu_zoom_in">Наблизити</string>
     <string name="menu_zoom_out">Віддалити</string>
     <string name="menu_save_log">Зберегти лог</string>
+    <string name="menu_more_options">Більше опцій</string>
+    <string name="menu_learn_spelling">Вчити правопис</string>
+    <string name="menu_chat_audit_log">Журнал аудиту чату</string>
+    <string name="jump_to_message">Перейти до повідомлення</string>
+    <string name="copy_json">Копіювати JSON</string>
+    <string name="replace_draft">Замінити чернетку</string>
     <string name="title_share_location">Ділитися геоданими з усіма членами групи</string>
     <string name="device_talk">Повідомлення пристрою</string>
     <string name="device_talk_subtitle">Локально згенеровані повідомлення</string>
@@ -288,6 +301,7 @@
         <item quantity="many">Видалити %d чатів? Вони більше не будуть відображатися у списку чатів, їх повідомлення залишаться на сервері.</item>
         <item quantity="other">Видалити %d чатів? Вони більше не будуть відображатися у списку чатів, їх повідомлення залишаться на сервері.</item>
     </plurals>
+    <string name="ask_delete_message">Ви впевнені, що хочете видалити це повідомлення?</string>
     <plurals name="ask_delete_messages">
         <item quantity="one">Видалити %d повідомлення тут і на сервері?</item>
         <item quantity="few">Видалити %d повідомлення тут і на сервері?</item>
@@ -363,6 +377,7 @@
     <string name="messaging_disabled_not_in_group">Ви не можете тут писати, бо ви не в цій групі. Запитайте іншого члена групи про приєднання.</string>
     <string name="messaging_disabled_device_chat">Цей чат містить повідомлення, створені локально. Тому ви не можете писати жодних повідомлень</string>
     <string name="messaging_disabled_deaddrop">Клацніть на повідомлення, щоб прийняти або відхилити запит на контакт</string>
+    <string name="messaging_disabled_mailing_list">Надсилання повідомлень у списках розсилки поки не підтримується</string>
     <string name="cannot_display_unsuported_file_type">Неможливо відобразити цей тип файлів: %s</string>
     <string name="attachment_failed_to_load">Не вдалося завантажити вкладення</string>
     <!-- For recording Voice messages: Description for the "Lock" button allowing to lift the thumb from the record button while recording continues -->
@@ -371,13 +386,26 @@
     <!-- mailing lists -->
     <string name="mailing_list">Список адресатів</string>
     <string name="ask_show_mailing_list">Показати список адресатів \"%1$s\"?</string>
-
+    <string name="mailing_list_profile_info">Зміни в назві списку розсилки та зображенні стосуються лише цього пристрою.</string>
 
     <!-- map -->
     <string name="filter_map_on_time">Показати місця у часовому проміжку</string>
     <string name="show_location_traces">Показати треки</string>
     <string name="add_poi">Надіслати точку інтересу</string>
 
+    <!-- chat audit log -->
+    <string name="chat_audit_log_empty_message">Тут відображатимуться системні повідомлення цього чату</string>
+    <string name="chat_audit_log_title">Журнал аудиту чату для %1$s</string>
+    <string name="chat_audit_log_description"> На цьому екрані відображаються лише системні та інформаційні повідомлення. Корисно для пошуку останніх дій чату без прокрутки багатьох звичайних повідомлень.</string>
+
+    <!-- punycode warning / labeled links -->
+    <!-- placeholder is domain/hostname that should be trusted -->
+    <string name="open_external_url_trust_domain">Не запитувати знову для %1$s</string>
+    <string name="puny_code_warning_header">Виявлено підозріле посилання</string>
+    <!-- placeholder contains the hostname converted to ascii -->
+    <string name="puny_code_warning_question">Ви впевнені, що хочете відвідати %1$s?</string>
+    <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
+    <string name="puny_code_warning_description">Ви перейшли за посиланням, яке може спотворювати символи, використовуючи подібні до них символи з різних алфавітів. Перехід за посиланням %1$s приведе до %2$s, що є нормальним для нелатинських символів. Якщо ви не очікували таких символів, це посилання може бути шкідливим</string>
 
     <!-- search -->
     <string name="search">Пошук</string>
@@ -488,8 +516,6 @@
     <string name="pref_outgoing_balanced">Збалансовано</string>
     <string name="pref_outgoing_worse">Гірша якість, менший розмір</string>
     <string name="pref_vibrate">Вібрує</string>
-    <string name="pref_change_secret">Змінити захисний код</string>
-    <string name="pref_change_secret_explain">Змініть Ваш PIN-код / графічний ключ / відбиток пальця за допомогою системних налаштувань</string>
     <string name="pref_screen_security">Безпека екрану</string>
     <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
     <string name="pref_screen_security_explain">Запит на блокування скріншотів у списку останніх і всередині програми</string>
@@ -567,7 +593,8 @@
     <string name="profile_image_select">Вибрати зображення профілю</string>
     <string name="select_your_new_profile_image">Вибрати ваше нове зображення профілю</string>
     <string name="profile_image_delete">Видалити зображення профілю</string>
-
+    <string name="pref_show_tray_icon">Показати іконку в треї</string>
+    <string name="pref_edit_profile">Редагувати профіль</string>
 
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Результати пошуку</string>
@@ -660,17 +687,6 @@
     <string name="systemmsg_chat_protection_disabled">Захист чату вимкнено.</string>
     <string name="systemmsg_chat_protection_enabled">Захист чату увімкнено.</string>
 
-    <!-- screen lock -->
-    <string name="screenlock_title">Блокування екрану</string>
-    <string name="screenlock_explain">Блокування доступу за допомогою блокування екрану Android або відбитків пальців; щоб уникнути появи попереднього вмісту, будь ласка, увімкнить «Безпека екрану».</string>
-    <string name="screenlock_authentication_failed">Не вдалося здійснити аутентифікацію.</string>
-    <string name="screenlock_unlock_title">Розблокувати Delta Chat</string>
-    <string name="screenlock_unlock_description">Введіть захисний код, щоб розблокувати Delta Chat.</string>
-    <string name="screenlock_inactivity_timeout">Блокування за бездіяльності</string>
-    <string name="screenlock_inactivity_timeout_explain">Заблокувати додаток через певний період бездіяльності</string>
-    <string name="screenlock_inactivity_timeout_interval">Час бездіяльності</string>
-
-
     <!-- qr code stuff -->
     <string name="qr_code">QR-код</string>
     <string name="load_qr_code_as_image">Завантажити зображення QR-коду</string>
@@ -705,7 +721,10 @@
     <string name="contact_setup_changed">Змінені параметри для %1$s</string>
     <string name="verified_group_explain">Перевірені групи (експеримент) надають захист від активних атак. Члени таких груп перевірені через другий фактор іншими членами групи, а повідомлення завжди наскрізно зашифровані.</string>
     <string name="copy_qr_data_success">URL з QR-коду скопійовано в буфер</string>
-
+    <string name="mailto_dialog_header_select_chat">Виберіть чат, якому потрібно надіслати повідомлення</string>
+    <!-- first placeholder is the name of the chat -->
+    <string name="mailto_dialog_confirm_replace_draft">%1$s вже містить чернетку повідомлення, бажаєте його замінити?</string>
+    <string name="mailto_link_could_not_be_decoded">неможливо декодувати посилання mailto: %1$s</string>
 
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d нових повідомлень з %2$d чатів</string>
@@ -764,6 +783,8 @@
     <string name="global_menu_help_contribute_desktop">Приєднатися до розробки на GitHub</string>
     <string name="global_menu_help_report_desktop">Повідомити про проблему</string>
     <string name="global_menu_help_about_desktop">Про Delta Chat</string>
+    <string name="global_menu_file_open_desktop">Відкрити Delta Chat</string>
+    <string name="global_menu_minimize_to_tray">Згорнути</string>
     <string name="no_chat_selected_suggestion_desktop">Виберіть чат або створіть новий</string>
     <string name="write_message_desktop">Напишіть повідомлення</string>
     <string name="encryption_info_title_desktop">Інформація про шифрування</string>
@@ -809,6 +830,9 @@
     <string name="menu.view.developer.open.log.folder">Відкрити папку журналів</string>
     <string name="menu.view.developer.open.current.log.file">Відкрити поточний файл журналу</string>
     <string name="user_location_permission_explanation">Delta Chat потребує дозволу на доступ до геоданих щоб ділитися вашим місцезнаходженням.</string>
+    <string name="explain_desktop_minimized_disabled_tray_pref">Іконку в треї не можна вимкнути, оскільки Delta Chat було запущено за допомогою параметра --minimized.</string>
+    <string name="no_spellcheck_suggestions_found">Пропозицій щодо написання не знайдено.</string>
+    <string name="show_window">Показати вікно</string>
 
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Статус доставки: Помилка</string>

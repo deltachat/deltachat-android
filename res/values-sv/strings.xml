@@ -337,13 +337,10 @@
     <!-- mailing lists -->
     <string name="mailing_list">Mejllista</string>
     <string name="ask_show_mailing_list">Visa mejllistan \"%1$s\"?</string>
-
-
     <!-- map -->
     <string name="filter_map_on_time">Visa platser inom tidsramen</string>
     <string name="show_location_traces">Visa spår</string>
     <string name="add_poi">Skicka intressant plats</string>
-
 
     <!-- search -->
     <string name="search">Sök</string>
@@ -448,8 +445,6 @@
     <string name="pref_outgoing_balanced">Balanserad</string>
     <string name="pref_outgoing_worse">Sämre kvalitet, mindre storlek</string>
     <string name="pref_vibrate">Vibrera</string>
-    <string name="pref_change_secret">Ändra hemlighet</string>
-    <string name="pref_change_secret_explain">Ändra ditt PIN/mönster/fingeravtryck via systeminställningarna</string>
     <string name="pref_screen_security">Skärmsäkerhet</string>
     <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
     <string name="pref_screen_security_explain">Blockera skärmklipp i tidigare-listan samt inuti programmet</string>
@@ -582,17 +577,6 @@
     <string name="systemmsg_ephemeral_timer_day">Tiduret för meddelandeborttagning är satt till 1 dag.</string>
     <string name="systemmsg_ephemeral_timer_week">Tiduret för meddelandeborttagning är satt till 1 vecka.</string>
     <string name="systemmsg_ephemeral_timer_four_weeks">Tiduret för meddelandeborttagning är satt till 4 veckor.</string>
-    <!-- screen lock -->
-    <string name="screenlock_title">Skärmlås</string>
-    <string name="screenlock_explain">Lås åtkomsten med Androids skärmlås eller fingeravtryck. Aktivera även \"Skärmsäkerhet\", för att undvika att visa tidigare innehåll.</string>
-    <string name="screenlock_authentication_failed">Autentisering misslyckades.</string>
-    <string name="screenlock_unlock_title">Lås upp Delta Chat</string>
-    <string name="screenlock_unlock_description">Ange din systemdefinierade säkerhet för att låsa upp Delta Chat</string>
-    <string name="screenlock_inactivity_timeout">Tidslås för inaktivitet</string>
-    <string name="screenlock_inactivity_timeout_explain">Lås Delta Chat automatiskt efter en specificerad tidsperiod av inaktivitet</string>
-    <string name="screenlock_inactivity_timeout_interval">Tid att fortsätta vara aktiv</string>
-
-
     <!-- qr code stuff -->
     <string name="qr_code">QR-kod</string>
     <string name="qrscan_title">Skanna QR-kod</string>
@@ -714,7 +698,6 @@
     <string name="menu.view.developer.open.log.folder">Öppna loggmappen</string>
     <string name="menu.view.developer.open.current.log.file">Öppna aktuell loggfil</string>
     <string name="user_location_permission_explanation">Delta Chat behöver platsbehörighet, för att kunna visa och dela din plats.</string>
-
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Leveransstatus: Fel</string>
     <string name="a11y_encryption_padlock">Hänglås för kryptering</string>

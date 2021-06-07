@@ -329,8 +329,6 @@
     <!-- mailing lists -->
     <string name="mailing_list">لیستەی ئیمەیلەکان</string>
     <string name="ask_show_mailing_list">لیستەی ئیمەیلەکانی \"%1$s\" پیشان بدرێت؟</string>
-
-
     <!-- map -->
     <string name="filter_map_on_time">شوێنەکان لە نێو چوارچێوەی کاتدا پیشان بدرێت؟</string>
     <string name="show_location_traces">پیشاندانی شوێنپێ</string>
@@ -425,8 +423,6 @@
     <string name="pref_outgoing_balanced">وەکوو خۆی</string>
     <string name="pref_outgoing_worse">نزمترین چۆنێتی، قەبارەی بچووک</string>
     <string name="pref_vibrate">لەرزینەوە</string>
-    <string name="pref_change_secret">گۆڕینی نهێنی</string>
-    <string name="pref_change_secret_explain">لەڕێگای ڕێکخستنەکانی سیستەمەوە، شفرە/نەخشاندن/پەنجەمۆر بگۆڕە  </string>
     <string name="pref_screen_security">پاراستنی شاشە</string>
     <string name="pref_notifications">ئاگادارییەکان</string>
     <string name="pref_notifications_show">پیشاندان</string>
@@ -492,8 +488,6 @@
     <string name="profile_image_select">هەڵبژاردنی وێنەی لادیمەن</string>
     <string name="select_your_new_profile_image">وێنەی لادیمەنە نوێکەت هەڵبژێرە</string>
     <string name="profile_image_delete">سڕینەوەی وێنەی لادیمەن</string>
-
-
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">ئەنجامی گەڕان</string>
     <string name="emoji_not_found">هیچ وێنۆچکەیەک نەدۆزرایەوە</string>
@@ -567,11 +561,6 @@
     <string name="systemmsg_chat_protection_disabled">پاراستنی وتووێژ ناچالاک کرا.</string>
     <string name="systemmsg_chat_protection_enabled">پاراستنی وتووێژ چالاک کرا.</string>
 
-    <!-- screen lock -->
-    <string name="screenlock_title">قفڵی سەر شاشە</string>
-    <string name="screenlock_explain">بۆ بەرگری لە پیشاندرانی بابەتەکان، بە قفڵی شاشەی ئەندرۆید یان پەنجەمۆر، هاتنەژوورەوە قفڵ بکە.</string>
-    <string name="screenlock_authentication_failed">پشتڕاست کردنەوە سەرنەکەوت</string>
-    <string name="screenlock_unlock_title">کردنەوەی قفڵی دێڵتا چات</string>
     <!-- qr code stuff -->
     <string name="qr_code">کۆدی QR</string>
     <string name="load_qr_code_as_image">کۆدی QR وەکوو وێنەیەک بار بکە.</string>
@@ -599,8 +588,6 @@
     <string name="contact_setup_changed">ڕێکخستن بۆ %1$s گۆڕا.</string>
     <string name="verified_group_explain">کۆڕی پشتڕاستکراوە (لە قۆناخی تاقیکردنەوەدایە) پارێزراودەبێت بەرانبەر هێرشەکان. ئەندامان لەلایەن ئەندامانی دیکەوە پشتڕاست دەکرێنەوە و پەیامەکان هەمیشە شفرەکراوی ئەمسەر-ئەوسەر دەبن.</string>
     <string name="copy_qr_data_success">ناونیشانی وێبی QRەکە ڕوونووس کرا.</string>
-
-
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d پەیامی نوێ لە %2$d وتووێژدا</string>
     <string name="notify_mark_read">نیشانەی خوێندنەوە</string>

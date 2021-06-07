@@ -49,6 +49,21 @@
     </PreferenceCategory>
 
 
+    <PreferenceCategory android:title="@string/pref_app_access">
+        <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="pref_screen_security"
+            android:summary="@string/pref_screen_security_explain"
+            android:title="@string/pref_screen_security" />
+
+        <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="pref_incognito_keyboard"
+            android:summary="@string/pref_incognito_keyboard_explain"
+            android:title="@string/pref_incognito_keyboard" />
+    </PreferenceCategory>
+
+
     <PreferenceCategory android:title="@string/pref_experimental_features">
 
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat

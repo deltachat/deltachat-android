@@ -110,8 +110,6 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
     super.onActivityResult(requestCode, resultCode, data);
     if (resultCode == RESULT_OK && requestCode == REQUEST_CODE_CONFIRM_CREDENTIALS_BACKUP) {
       performBackup();
-    } else {
-      Toast.makeText(getActivity(), R.string.screenlock_authentication_failed, Toast.LENGTH_SHORT).show();
     }
   }
 
@@ -211,7 +209,7 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
   private class BackupListener implements Preference.OnPreferenceClickListener {
     @Override
     public boolean onPreferenceClick(Preference preference) {
-      boolean result = ScreenLockUtil.applyScreenLock(getActivity(), REQUEST_CODE_CONFIRM_CREDENTIALS_BACKUP);
+      boolean result = ScreenLockUtil.applyScreenLock(getActivity(), getString(R.string.pref_backup), REQUEST_CODE_CONFIRM_CREDENTIALS_BACKUP);
       if (!result) {
         performBackup();
       }

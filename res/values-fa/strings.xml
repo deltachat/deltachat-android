@@ -329,7 +329,6 @@
     <string name="show_location_traces">نمایش ردپاها</string>
     <string name="add_poi">ارسال نقطه توجه</string>
 
-
     <!-- search -->
     <string name="search">جستجو</string>
     <string name="search_explain">جستجو برای گفتگوها، مخاطبین و پیام‌ها</string>
@@ -439,8 +438,6 @@
     <string name="pref_outgoing_balanced">متعادل</string>
     <string name="pref_outgoing_worse">بدترین‌ کیفیت، حجم کم</string>
     <string name="pref_vibrate">لرزش</string>
-    <string name="pref_change_secret">تغییر رمز</string>
-    <string name="pref_change_secret_explain">تغییر پین/ الگو/ اثرانگشت از طریق تنظیمات سیستم</string>
     <string name="pref_screen_security">امنیت صفحه</string>
     <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
     <string name="pref_screen_security_explain">درخواست مسدود کردن عکس گرفتن از صفحه در لیست اخیر و درون نرم‌افزار</string>
@@ -518,8 +515,6 @@
     <string name="profile_image_select">انتخاب تصویر پروفایل</string>
     <string name="select_your_new_profile_image">انتخاب تصویر پروفایل جدید</string>
     <string name="profile_image_delete">حذف تصویر پروفایل</string>
-
-
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">نتایج جستجو</string>
     <string name="emoji_not_found">شکلکی پیدا نشد</string>
@@ -603,17 +598,6 @@
     <string name="systemmsg_chat_protection_disabled">محافظت از گفنگو غیرفعال شد.</string>
     <string name="systemmsg_chat_protection_enabled">محافظت از گفتگو فعال شد.</string>
 
-    <!-- screen lock -->
-    <string name="screenlock_title">قفل صفحه</string>
-    <string name="screenlock_explain">قفل کردن صفحه با قفل صفحه اندروید یا اثر انگشت، برای اینکه محتوای قبلی نشان داده نشود لطفا \"امنیت صفحه\" را هم فعال کنید.</string>
-    <string name="screenlock_authentication_failed">احراز هویت ناموفق بود</string>
-    <string name="screenlock_unlock_title">قفل دلتا چت را باز کنید</string>
-    <string name="screenlock_unlock_description">رمز تعیین شده توسط دستگاهتان را وارد کنید تا قفل دلتاچت باز شود. </string>
-    <string name="screenlock_inactivity_timeout">قفل بر اساس زمان غیر فعال ماندن</string>
-    <string name="screenlock_inactivity_timeout_explain">دلتاچت را به صورت خودکار و پس از یک زمان مشخص غیرفعال بودن قفل می‌شود</string>
-    <string name="screenlock_inactivity_timeout_interval">زمان فعال بودن</string>
-
-
     <!-- qr code stuff -->
     <string name="qr_code">کد QR</string>
     <string name="load_qr_code_as_image">بارگیری کدQR به صورت تصویر</string>
@@ -648,8 +632,6 @@
     <string name="contact_setup_changed">تنظیمات برای %1$s تغییر کرد. </string>
     <string name="verified_group_explain">گرو‌ه های تایید شده(آزمایشی) در برابر حمله‌های فعال امنیت دارند. اعضا با یک روش ثانویه هم از طریق دیگر اعضا احراز هویت می‌شوند و پیام‌ها هم همیشه به صورت رمزگذاری شده به صورت گیرنده به گیرنده می‌باشد. </string>
     <string name="copy_qr_data_success">آدرس QR در حافظه ذخیر شد</string>
-
-
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d پیام جدید در %2$d چت</string>
     <string name="notify_mark_read">خوانده شده</string>
@@ -744,7 +726,6 @@
     <string name="menu.view.developer.open.log.folder">پوشه گزارش را باز کن</string>
     <string name="menu.view.developer.open.current.log.file">فایل گزارش فعلی را باز کن</string>
     <string name="user_location_permission_explanation">دلتاچت برای نمایش موقعیت مکانی شما باید مجوز دسترسی به موقعیت مکانی را داشته باشد. </string>
-
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">وضعیت ارسال: خطا</string>
     <string name="a11y_encryption_padlock">قفل رمزگذاری</string>

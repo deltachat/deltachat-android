@@ -495,8 +495,6 @@
     <string name="pref_outgoing_balanced">Balanced</string>
     <string name="pref_outgoing_worse">Worse quality, small size</string>
     <string name="pref_vibrate">Vibrate</string>
-    <string name="pref_change_secret">Change secret</string>
-    <string name="pref_change_secret_explain">Change your PIN / pattern / fingerprint via system settings</string>
     <string name="pref_screen_security">Screen security</string>
     <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
     <string name="pref_screen_security_explain">Request to block screenshots in the recents list and inside the app</string>
@@ -668,16 +666,8 @@
     <string name="systemmsg_chat_protection_disabled">Chat protection disabled.</string>
     <string name="systemmsg_chat_protection_enabled">Chat protection enabled.</string>
 
-    <!-- screen lock -->
-    <string name="screenlock_title">Screen lock</string>
-    <string name="screenlock_explain">Lock access with Android screen lock or fingerprint; to avoid showing the prior content, please also enable \"Screen security\".</string>
-    <string name="screenlock_authentication_failed">Authentication failed.</string>
-    <string name="screenlock_unlock_title">Unlock DeltaLab</string>
-    <string name="screenlock_unlock_description">Please enter your system defined secret to unlock DeltaLab.</string>
-    <string name="screenlock_inactivity_timeout">Inactivity timeout lock</string>
-    <string name="screenlock_inactivity_timeout_explain">Auto-lock DeltaLab after a specified time period of inactivity</string>
-    <string name="screenlock_inactivity_timeout_interval">Time to remain active</string>
-
+    <!-- Some options as "Manage keys" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc. to be entered in a system dialog. This hint is added to the system dialog, below a title as "Manage keys" or "Backup". -->
+    <string name="enter_system_secret_to_continue">Please enter your system defined secret to continue.</string>
 
     <!-- qr code stuff -->
     <string name="qr_code">QR code</string>

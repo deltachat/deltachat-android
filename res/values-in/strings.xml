@@ -304,7 +304,6 @@
     <string name="show_location_traces">Tunjukkan jejak</string>
     <string name="add_poi">Kirim titik menarik</string>
 
-
     <!-- search -->
     <string name="search">Cari</string>
     <string name="search_explain">Mencari obrolan, kontak dan pesan</string>
@@ -409,8 +408,6 @@
     <string name="pref_outgoing_balanced">Seimbang</string>
     <string name="pref_outgoing_worse">Kualitas rendah, ukuran kecil</string>
     <string name="pref_vibrate">Bergetar</string>
-    <string name="pref_change_secret">Ubah rahasia</string>
-    <string name="pref_change_secret_explain">Ubah PIN / pola / sidik jari melalui setelan sistem</string>
     <string name="pref_screen_security">Keamanan layar</string>
     <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
     <string name="pref_screen_security_explain">Permintaan untuk memblok screenshot di daftar terbaru dan di dalam aplikasi</string>
@@ -474,8 +471,6 @@
     <string name="profile_image_select">Pilih gambar profil</string>
     <string name="select_your_new_profile_image">Pilih gambar profil baru</string>
     <string name="profile_image_delete">Hapus gambar profil</string>
-
-
     <string name="emoji_not_found">Emoji tidak ditemukan</string>
     <string name="emoji_recent">Terakhir digunakan</string>
     <string name="emoji_nature">Hewan &amp; Alam</string>
@@ -533,13 +528,6 @@
     <string name="systemmsg_subject_for_new_contact">Pesan dari %1$s</string>
     <string name="systemmsg_failed_sending_to">Gagal mengirim pesan ke %1$s.</string>
 
-    <!-- screen lock -->
-    <string name="screenlock_title">Kunci Layar</string>
-    <string name="screenlock_explain">Kunci akses dengan kunci layar Android atau sidik jari; kalau tidak mau menampilkan konten sebelumnya, mohon aktifkan pula \"Keamanan Layar\".</string>
-    <string name="screenlock_authentication_failed">Autentikasi gagal.</string>
-    <string name="screenlock_unlock_title">Buka kunci Delta Chat</string>
-    <string name="screenlock_unlock_description">Silakan tekan sistem rahasia yang sudah Anda tetapkan untuk membuka kunci Delta Chat.</string>
-    <string name="screenlock_inactivity_timeout_explain">Setelah tak aktif selama kurun waktu tertentu Delta Chat terkunci secara otomatis</string>
     <!-- qr code stuff -->
     <string name="qr_code">Kode QR</string>
     <string name="qrscan_title">Pindah kode QR</string>
@@ -570,8 +558,6 @@
     <string name="contact_setup_changed">Ubah pengaturan untuk %1$s.</string>
     <string name="verified_group_explain">Kelompok yang sudah diverifikasi (eksperimental) menjaga keamanan dari serangan aktif. Anggota diverifikasi dengan faktor kedua oleh anggota lain dan selalu dengan pesan yang terinkripsi ujung ke ujung.</string>
     <string name="copy_qr_data_success">Salin QR url ke papan klip</string>
-
-
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$dpesan baru di%2$d obrolan</string>
     <string name="notify_mark_read">Tandai telah dibaca</string>
@@ -662,7 +648,6 @@
     <string name="menu.view.developer.open.log.folder">Buka folder log</string>
     <string name="menu.view.developer.open.current.log.file">Buka log berkas saat ini</string>
     <string name="user_location_permission_explanation">Delta Chat memerlukan izin lokasi untuk menunjukkan dan membagikan lokasi Anda.</string>
-
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Status pengiriman: Kesalahan</string>
     <string name="a11y_encryption_padlock">Enkripsi padlock</string>

@@ -288,8 +288,6 @@
     <string name="systemmsg_member_added">%1$s hozzáadva a csoporthoz.</string>
     <string name="systemmsg_member_removed">%1$s eltávolítva a csoportból.</string>
     <string name="systemmsg_group_left">Kiléptél a csoportból.</string>
-    <!-- screen lock -->
-    <string name="screenlock_title">Képernyőzár</string>
     <!-- qr code stuff -->
     <string name="qr_code">QR-kód</string>
     <string name="qrscan_title">QR-kód olvasása</string>

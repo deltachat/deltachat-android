@@ -62,17 +62,17 @@ public class ApplicationDcContext extends DcContext {
 
     // screen-lock is deprecated, inform users still using it
     try {
-      if (!Prefs.getBooleanPreference(context, "pref_android_screen_lock_checked", false)) {
-        Prefs.setBooleanPreference(context, "pref_android_screen_lock_checked", true);
+      if (!Prefs.getBooleanPreference(context, "pref_android_screen_lock_checked_1", false)) {
+        Prefs.setBooleanPreference(context, "pref_android_screen_lock_checked_1", true);
         if (Prefs.isScreenLockEnabled(context)) {
-          Prefs.setBooleanPreference(context, "pref_android_screen_lock_keep_for_now", true);
+          Prefs.setScreenLockEnabled(context, false);
           DcMsg msg = new DcMsg(this, DcMsg.DC_MSG_TEXT);
-          msg.setText("⚠️ You are using the function \"Screen lock\" " +
-            "that will be removed in one of the next versions for the following reasons:\n" +
+          msg.setText("⚠️ You were using the function \"Screen lock\" " +
+            "that was removed for the following reasons:\n" +
             "\n" +
-            "• It does not add much protection as one just has to repeat the system secret.\n" +
+            "• It did not add much protection as one just has to repeat the system secret.\n" +
             "\n" +
-            "• It is hard to maintain across different Android versions and is not even doable on some." +
+            "• It was hard to maintain across different Android versions and is not even doable on some." +
             " We like to put the resources to other things.\n" +
             "\n" +
             "• It is not planned/possible on iOS or Desktop this way" +
@@ -82,7 +82,7 @@ public class ApplicationDcContext extends DcContext {
             "\n" +
             "\uD83D\uDC49 For the future, we suggest to keep your phone locked " +
             "or use an appropriate app or check the device settings.");
-          addDeviceMsg("android-screen-lock-deprecated14", msg);
+          addDeviceMsg("android-screen-lock-deprecated17", msg);
         }
       }
     } catch (Exception e) {
