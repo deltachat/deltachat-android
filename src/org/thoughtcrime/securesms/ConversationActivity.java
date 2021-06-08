@@ -1375,7 +1375,13 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       AttachmentDatabase.TRANSFER_PROGRESS_STARTED, 0, 0, 0, null, null, false);
     String path = getRealPathFromAttachment(attachment);
 
+    Optional<QuoteModel> quote = inputPanel.getQuote();
+    inputPanel.clearQuote();
+
     DcMsg msg = new DcMsg(dcContext, DcMsg.DC_MSG_STICKER);
+    if (quote.isPresent()) {
+      msg.setQuote(quote.get().getQuotedMsg());
+    }
     msg.setFile(path, null);
     dcContext.sendMsg(chatId, msg);
   }
