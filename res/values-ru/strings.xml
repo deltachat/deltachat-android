@@ -687,6 +687,9 @@
     <string name="systemmsg_chat_protection_disabled">Защита чата отключена.</string>
     <string name="systemmsg_chat_protection_enabled">Защита чата включена</string>
 
+    <!-- Some options as "Manage keys" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc. to be entered in a system dialog. This hint is added to the system dialog, below a title as "Manage keys" or "Backup". -->
+    <string name="enter_system_secret_to_continue">Пожалуйста, введите защитный код вашей системы, чтобы продолжить. </string>
+
     <!-- qr code stuff -->
     <string name="qr_code">QR код</string>
     <string name="load_qr_code_as_image">Загрузить QR код как изображение</string>
