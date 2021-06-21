@@ -53,10 +53,15 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
       @Override
       public boolean shouldOverrideUrlLoading(WebView view, String url) {
         if (url != null) {
-          if (url.startsWith("http://") || url.startsWith("https://") || url.startsWith("mailto:")) {
-            openOnlineUrl(url);
-            // URL opened externally, returning `true` causes the WebView to abort loading
-            return true;
+          String schema = url.split(":")[0].toLowerCase();
+          switch (schema) {
+            case "http":
+            case "https":
+            case "mailto":
+            case "openpgp4fpr":
+              openOnlineUrl(url);
+              // URL opened externally, returning `true` causes the WebView to abort loading
+              return true;
           }
         }
         // by returning `true`, we also abort loading other URLs in our WebView;
