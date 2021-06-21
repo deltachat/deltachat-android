@@ -65,7 +65,9 @@ public class DcLocationManager implements Observer {
         if (serviceBinder == null) {
             return;
         }
+        context.unbindService(serviceConnection);
         serviceBinder.stop();
+        serviceBinder = null;
     }
 
     public void stopSharingLocation(int chatId) {
