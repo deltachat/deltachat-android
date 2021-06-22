@@ -4,6 +4,7 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
     <string name="cancel">Batalkan</string>
+    <string name="clear_search">Hapus pencarian</string>
     <string name="yes">Ya</string>
     <string name="no">Tidak</string>
     <string name="select">Pilih</string>
@@ -32,12 +33,20 @@
     <string name="unarchive">Tidak diarsip</string>
     <string name="mute">Diam</string>
     <string name="ephemeral_messages">Pesan yang berhilangan</string>
+    <string name="ephemeral_messages_hint">Pengaturan ini berlaku untuk semua peserta yang menggunakan Delta Chat. Namun, mereka dapat menyalin, menyimpan, dan meneruskan pesan atau menggunakan klien email lainnya.</string>
     <string name="save">Simpan</string>
     <string name="chat">Chat</string>
     <string name="media">Media</string>
     <string name="profile">Profil</string>
     <string name="main_menu">Menu utama</string>
     <string name="start_chat">Mulai obrolan</string>
+    <string name="show_full_message">Tampilkan semua pesan...</string>
+    <string name="show_full_message_in_browser">Tampilkan semua pesan di browser...</string>
+    <!-- this is shown as placeholder when something is loading at some places -->
+    <string name="loading">Memuat...</string>
+    <string name="hide">Sembunyikan</string>
+    <string name="always">Selalu</string>
+    <string name="once">Sekali</string>
     <string name="show_password">Tunjukkan kata kunci</string>
     <string name="hide_password">Sembunyikan kata kunci</string>
     <string name="not_now">Tidak sekarang</string>
@@ -99,12 +108,16 @@
     <string name="images">Gambar</string>
     <string name="audio">Audio</string>
     <string name="voice_message">Pesan suara</string>
+    <string name="forwarded">Diteruskan</string>
     <string name="forwarded_message">Pesan yang diteruskan</string>
+    <!-- %1$s will be replaced by the name or the email-address of the person who has forwarded the message -->
+    <string name="forwarded_by">Diteruskan oleh %1$s</string>
     <string name="video">Video</string>
     <string name="documents">Dokumen</string>
     <string name="contact">Kontak</string>
     <string name="verified_contact">Kontak terverifikasi</string>
     <string name="camera">Kamera</string>
+    <string name="switch_camera">Ganti kamera</string>
     <string name="location">Lokasi</string>
     <string name="gallery">Galeri</string>
     <string name="images_and_videos">Gambar dan video</string>
@@ -161,6 +174,8 @@
     <string name="menu_copy_to_clipboard">Kopi ke papan klip</string>
     <string name="menu_copy_selection_to_clipboard">Salin yang dipilih</string>
     <string name="menu_copy_link_to_clipboard">Salin pranala</string>
+    <string name="menu_copy_text_to_clipboard">Salin teks</string>
+    <string name="menu_copy_image_to_clipboard">Salin gambar</string>
     <string name="paste_from_clipboard">Tempelkan dari papan klip</string>
     <string name="menu_forward">Teruskan pesan</string>
     <string name="menu_resend">Kirim ulang pesan</string>
@@ -181,6 +196,7 @@
     <string name="menu_help">Bantuan</string>
     <string name="privacy_policy">Kebijakan Privasi</string>
     <string name="menu_select_all">Pilih semua</string>
+    <string name="select_more">Pilih lebih banyak</string>
     <string name="menu_expand">Perluas</string>
     <string name="menu_edit_name">Edit nama</string>
     <string name="menu_settings">Setelan</string>
@@ -191,6 +207,7 @@
     <string name="menu_zoom_in">Zoom perbesar</string>
     <string name="menu_zoom_out">Zoom perkecil</string>
     <string name="menu_save_log">Simpan log</string>
+    <string name="copy_json">Salin JSON</string>
     <string name="title_share_location">Bagikan lokasi kepada seluruh anggota grup</string>
     <string name="device_talk">Pesan perangkat</string>
     <string name="device_talk_subtitle">Pesan-pesan buatan lokal</string>
@@ -453,6 +470,7 @@
     <string name="pref_managekeys_export_explain">Ekspor kunci rahasia ke \"%1$s\"?</string>
     <string name="pref_managekeys_import_secret_keys">Impor kunci rahasia</string>
     <string name="pref_managekeys_import_explain">Impor kunci rahasia dari \"%1$s\"?\n\n• Kunci rahasia sebelumnya tidak akan terhapus\n\n• Kunci terakhir yang diimpo akan digunakan sebagai kunci default baru kecuali ada kata \"legacy\" di nama berkas.</string>
+    <string name="pref_managekeys_secret_keys_exported_to_x">Kunci rahasia berhasil ditulis ke \"%1$s\".</string>
     <string name="pref_managekeys_secret_keys_imported_from_x">Kunci rahasia diimpor dari \"%1$s\".</string>
     <string name="pref_background">Latar belakang</string>
     <string name="pref_background_btn_default">Menggunakan gambar default</string>
@@ -477,6 +495,7 @@
     <string name="emoji_foods">Makanan &amp; Minuman</string>
     <string name="emoji_activity">Aktifitas</string>
     <string name="emoji_places">Perjalanan &amp; Tempat</string>
+    <string name="emoji_objects">objek</string>
     <string name="emoji_symbols">Simbol-simbol</string>
     <!-- automatically delete message -->
     <string name="delete_old_messages">Hapus pesan-pesan lama</string>
@@ -488,10 +507,13 @@
     <string name="autodel_at_once">Segera</string>
     <string name="after_30_seconds">Setelah 30 detik</string>
     <string name="after_1_minute">Setelah 1 menit</string>
+    <string name="after_5_minutes">Setelah 5 menit</string>
+    <string name="after_30_minutes">Setelah 30 menit</string>
     <string name="autodel_after_1_hour">Setelah 1 jam</string>
     <string name="autodel_after_1_day">Setelah 1 hari</string>
     <string name="autodel_after_1_week">Setelah 1 minggu</string>
     <string name="autodel_after_4_weeks">Setelah 4 minggu</string>
+    <string name="after_5_weeks">Setelah 5 minggu</string>
     <string name="autodel_after_1_year">Setelah 1 tahun</string>
 
     <!-- autocrypt -->
@@ -525,11 +547,13 @@
     <string name="systemmsg_action_by_me">%1$s oleh saya.</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
     <string name="systemmsg_action_by_user">%1$s oleh %2$s.</string>
+    <string name="systemmsg_unknown_sender_for_chat">Pengirim tidak dikenal untuk obrolan ini. Lihat \'info\' untuk lebih jelasnya.</string>
     <string name="systemmsg_subject_for_new_contact">Pesan dari %1$s</string>
     <string name="systemmsg_failed_sending_to">Gagal mengirim pesan ke %1$s.</string>
 
     <!-- qr code stuff -->
     <string name="qr_code">Kode QR</string>
+    <string name="load_qr_code_as_image">Muat kode QR sebagai gambar</string>
     <string name="qrscan_title">Pindah kode QR</string>
     <string name="qrscan_hint">Pegang kamera Anda di atas kode QR.</string>
     <string name="qrscan_ask_join_group">Apakah anda ingin bergabung dengan grup \"%1$s\"?</string>
