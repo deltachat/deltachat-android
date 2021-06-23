@@ -206,7 +206,7 @@ public class ApplicationDcContext extends DcContext {
 
       Uri uri;
       if (path.startsWith(getBlobdir())) {
-        uri = Uri.parse("content://" + BuildConfig.APPLICATION_ID + ".attachments/" + file.getName());
+        uri = Uri.parse("content://" + BuildConfig.APPLICATION_ID + ".attachments/" + Uri.encode(file.getName()));
         sharedFiles.put("/" + file.getName(), 1); // as different Android version handle uris in putExtra differently, we also check them on our own
       } else {
         if (Build.VERSION.SDK_INT >= 24) {

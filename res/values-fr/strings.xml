@@ -40,6 +40,7 @@
     <string name="main_menu">Menu principal</string>
     <string name="start_chat">Commencer la discussion</string>
     <string name="show_full_message">Montrer le message complet...</string>
+    <string name="hide">Cacher</string>
     <string name="load_remote_content">Charger les images distantes</string>
     <!-- possible answers to the question are: Never, Always, Once -->
     <string name="load_remote_content_ask">Les images distantes peuvent être utilisées pour vous pister. Ce paramètre autorise également le chargement de polices ou d\'autres contenus. S\'il est désactivé, vous pouvez tout de même voir les images ancrées ou en cache. Souhaitez-vous charger les images distantes ?</string>
