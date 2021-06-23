@@ -98,9 +98,15 @@ public class LogViewFragment extends Fragment {
     logPreview.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
   }
 
-  public void scrollDownLog() { logPreview.setSelection(logPreview.getText().length()); }
+  public void scrollDownLog() {
+    logPreview.requestFocus();
+    logPreview.setSelection(logPreview.getText().length());
+  }
 
-  public void scrollUpLog() { logPreview.setSelection(0); }
+  public void scrollUpLog() {
+    logPreview.requestFocus();
+    logPreview.setSelection(0);
+  }
 
   public boolean saveLogFile() {
 
