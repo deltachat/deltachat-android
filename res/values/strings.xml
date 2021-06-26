@@ -830,7 +830,7 @@
     <string name="InfoPlist_NSContactsUsageDescription">A list of e-mail addresses in your contacts is assembled. It is not sent anywhere.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Your mic is used to record messages and videos with sound to send directly.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Access to your library lets you pick existing files, images and videos to send.</string>
-    <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Access to your gallery is needed to save images and video you capture.</string>
+    <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Gallery access is needed to save images and video you capture.</string>
 
 
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
