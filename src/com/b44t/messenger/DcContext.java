@@ -52,6 +52,10 @@ public class DcContext {
     public final static int DC_QR_TEXT              = 330;
     public final static int DC_QR_URL               = 332;
     public final static int DC_QR_ERROR             = 400;
+    public final static int DC_QR_WITHDRAW_VERIFYCONTACT = 500;
+    public final static int DC_QR_WITHDRAW_VERIFYGROUP   = 502;
+    public final static int DC_QR_REVIVE_VERIFYCONTACT   = 510;
+    public final static int DC_QR_REVIVE_VERIFYGROUP     = 512;
 
     public final static int DC_LP_AUTH_OAUTH2          =     0x2;
     public final static int DC_LP_AUTH_NORMAL          =     0x4;
