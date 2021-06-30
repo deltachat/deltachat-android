@@ -682,8 +682,8 @@
     <string name="withdraw_verifycontact_explain">This QR code can be scanned by others to setup a contact with you.\n\nIf you do not want that any longer, you can withdraw it. You can revive it by scanning it again.</string>
     <string name="withdraw_verifygroup_explain">This QR code can be scanned by others to join the group \"%1$s\".\n\nIf you do not want that any longer, you can withdraw it. You can revive it by scanning it again.</string>
     <string name="withdraw_qr_code">Withdraw QR code</string>
-    <string name="revive_verifycontact_explain">This QR code was withdrawn and was used to setup a contact with you. Currently the QR code is not functional.</string>
-    <string name="revive_verifygroup_explain">This QR code was withdrawn and was used to join the group \"%1$s\". Currently the QR code is not functional.</string>
+    <string name="revive_verifycontact_explain">This QR code could be scanned to setup a contact with you, but was withdrawn. Currently the QR code is not functional.</string>
+    <string name="revive_verifygroup_explain">This QR code could be scanned by others to join the group \"%1$s\", but was withdrawn. Currently the QR code is not functional.</string>
     <string name="revive_qr_code">Revive QR code</string>
     <string name="qrshow_title">QR invite code</string>
     <string name="qrshow_x_joining">%1$s joins.</string>
