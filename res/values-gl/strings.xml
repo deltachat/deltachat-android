@@ -59,7 +59,7 @@
     <string name="done">Feito</string>
     <string name="undo">Desfacer</string>
     <string name="offline">Sen conexión</string>
-    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
+    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in iOS headers, the string should be as short as possible, though. -->
     <string name="next">Seguinte</string>
     <string name="error">Fallo</string>
     <string name="error_x">Fallo: %1$s</string>
@@ -120,7 +120,7 @@
     <string name="voice_message">Mensaxe de voz</string>
     <string name="forwarded">Reenviada</string>
     <string name="forwarded_message">Mensaxe reenviado</string>
-    <!-- %1$s will be replaced by the name or the email-address of the person who has forwarded the message -->
+    <!-- %1$s will be replaced by the name or the e-mail address of the person who has forwarded the message -->
     <string name="forwarded_by">Reenviado por %1$s</string>
     <string name="video">Vídeo</string>
     <string name="documents">Documentos</string>
@@ -433,7 +433,7 @@
     <string name="login_smtp_port">Porto SMTP</string>
     <string name="login_smtp_security">Seguridade SMTP</string>
     <string name="login_auth_method">Método de autorización</string>
-    <!-- Translators: %1$s will be replaced by an email address -->
+    <!-- Translators: %1$s will be replaced by an e-mail address -->
     <string name="login_oauth2_checking_addr">Comprobando %1$s</string>
     <string name="login_info_oauth2_title">Continuar co axuste simplificado?</string>
     <string name="login_info_oauth2_text">O enderezo introducido soporta o axuste simplificado (OAuth 2.0).\n\nNo seguinte paso, permite a Delta Chat actuar como app de Conversa sobre Correo-e.\n\nNon hai servidores Delta Chat, os teus datos permanecen no dispositivo.</string>
@@ -445,7 +445,7 @@
     <string name="import_backup_title">Importar respaldo</string>
     <string name="import_backup_ask">Atopouse un respaldo en \"%1$s\".\n\nQueres importar e utilizar os seus datos e axustes?</string>
     <string name="import_backup_no_backup_found">Non se atoparon respaldos.\n\nCopia o respaldo a \"%1$s\" e inténtao outra vez. Alternativamente, podes premer \"Comezar conversa\" e continuar co proceso normal de axustes.</string>
-    <!-- Translators: %1$s will be replaced by the email address -->
+    <!-- Translators: %1$s will be replaced by the e-mail address -->
     <string name="login_error_cannot_login">Non se puido conectar como \"%1$s\". Comproba o enderezo de correo e o contrasinal.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Resposta desde %1$s: %2$s\n\nAlgúns provedores poñen información adicional na túa caixa de entrada; podes comprobalo por exemplo na interface web. Consulta ao teu provedor ou amigos se atopas problemas.</string>

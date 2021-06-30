@@ -33,7 +33,7 @@
     <string name="not_now">Ne sada</string>
     <string name="never">Nikada</string>
     <string name="one_moment">Samo trenutak...</string>
-    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
+    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in iOS headers, the string should be as short as possible, though. -->
     <string name="next">Dalje</string>
     <string name="error">Greška</string>
     <string name="error_x">Greška: %1$s</string>

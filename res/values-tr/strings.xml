@@ -59,7 +59,7 @@
     <string name="done">Bitti</string>
     <string name="undo">Geri al</string>
     <string name="offline">Çevrimdışı</string>
-    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
+    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in iOS headers, the string should be as short as possible, though. -->
     <string name="next">Sonraki</string>
     <string name="error">Hata</string>
     <string name="error_x">Hata: %1$s</string>
@@ -120,7 +120,7 @@
     <string name="voice_message">Sesli ileti</string>
     <string name="forwarded">İletildi</string>
     <string name="forwarded_message">İletilen ileti</string>
-    <!-- %1$s will be replaced by the name or the email-address of the person who has forwarded the message -->
+    <!-- %1$s will be replaced by the name or the e-mail address of the person who has forwarded the message -->
     <string name="forwarded_by">%1$s tarafından iletildi</string>
     <string name="video">Video</string>
     <string name="documents">Belgeler</string>
@@ -433,7 +433,7 @@
     <string name="login_smtp_port">SMTP bağlantı noktası</string>
     <string name="login_smtp_security">SMTP güvenliği</string>
     <string name="login_auth_method">Yetkilendirme yöntemi</string>
-    <!-- Translators: %1$s will be replaced by an email address -->
+    <!-- Translators: %1$s will be replaced by an e-mail address -->
     <string name="login_oauth2_checking_addr">%1$s denetleniyor</string>
     <string name="login_info_oauth2_title">Basitleştirilen ayarlamayla sürdürülsün mü?</string>
     <string name="login_info_oauth2_text">Girilen e-posta adresi basitleştirilen bir ayarlamayı (OAuth 2.0) destekliyor.\n\nSonraki adımda, lütfen Delta Chat\'in E-posta ile Sohbet uygulamanız olarak davranmasına izin verin.\n\nDelta Chat sunucuları yoktur; verileriniz aygıtınızda kalır.</string>
@@ -445,7 +445,7 @@
     <string name="import_backup_title">Yedeği içe aktar</string>
     <string name="import_backup_ask">\"%1$s\" üzerinde yedek bulundu.\n\nİçe aktarmak ve ondan gelen tüm verileri ve ayarları kullanmak istiyor musunuz?</string>
     <string name="import_backup_no_backup_found">Yedek bulunamadı.\n\nYedeği \"%1$s\" üzerine kopyalayın ve yeniden deneyin. Ek olarak, normal ayarlama işlemiyle sürdürmek için \"İletileşmeye başla\"ya basın.</string>
-    <!-- Translators: %1$s will be replaced by the email address -->
+    <!-- Translators: %1$s will be replaced by the e-mail address -->
     <string name="login_error_cannot_login">\"%1$s\" olarak oturum açılamıyor. Lütfen e-posta adresinin ve parolanın doğru olup olmadığını denetleyin.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">%1$s yanıtı: %2$s\n\nBazı sağlayıcılar size bu sorun hakkında e-posta gönderebilir; ilgili uygulamanızdan ya da web sitesinden gelen kutunuzu denetleyebiliyor olmalısınız. Sorun yaşarsanız sağlayıcınıza ya da arkadaşlarınıza danışın.</string>

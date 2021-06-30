@@ -59,7 +59,7 @@
     <string name="done">Fatto</string>
     <string name="undo">Annulla</string>
     <string name="offline">Disconnesso</string>
-    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
+    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in iOS headers, the string should be as short as possible, though. -->
     <string name="next">Avanti</string>
     <string name="error">Errore</string>
     <string name="error_x">Errore: %1$s</string>
@@ -120,7 +120,7 @@
     <string name="voice_message">Messaggio vocale</string>
     <string name="forwarded">Inoltrato</string>
     <string name="forwarded_message">Messaggio inoltrato</string>
-    <!-- %1$s will be replaced by the name or the email-address of the person who has forwarded the message -->
+    <!-- %1$s will be replaced by the name or the e-mail address of the person who has forwarded the message -->
     <string name="forwarded_by">Inoltrato da %1$s</string>
     <string name="video">Video</string>
     <string name="documents">Documenti</string>
@@ -433,7 +433,7 @@
     <string name="login_smtp_port">Porta SMTP</string>
     <string name="login_smtp_security">Sicurezza SMTP</string>
     <string name="login_auth_method">Metodo di autorizzazione</string>
-    <!-- Translators: %1$s will be replaced by an email address -->
+    <!-- Translators: %1$s will be replaced by an e-mail address -->
     <string name="login_oauth2_checking_addr">Verifica %1$s</string>
     <string name="login_info_oauth2_title">Usare il setup semplificato?</string>
     <string name="login_info_oauth2_text">L\'indirizzo email inserito supporta l\'autenticazione semplificata (OAuth2.0).\n\nContinuando, puoi autorizzare Delta Chat ad operare come app di messaggistica via e-mail.\n\nNon esistono server di Delta Chat, i tuoi dati restano nel tuo dispositivo!</string>
@@ -445,7 +445,7 @@
     <string name="import_backup_title">Importa backup</string>
     <string name="import_backup_ask">Backup trovato in \"%1$s\".\n\nVuoi importarlo e usare i dati e le impostazioni salvati?</string>
     <string name="import_backup_no_backup_found">Nessun backup trovato\n\nCopia il backup in \"%1$s\" e riprova. Altimenti premi \"Inizia a messaggiare\" per procedere con il setup normale.</string>
-    <!-- Translators: %1$s will be replaced by the email address -->
+    <!-- Translators: %1$s will be replaced by the e-mail address -->
     <string name="login_error_cannot_login">Impossibile accedere come \"%1$s\". Verifica che l\'indirizzo email e la password siano corretti.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Risposta da%1$s: %2$s\n\nAlcuni provider inseriscono altre informazioni nella tua casella; puoi controllarle ad es. dalla pagina web. Consulta il provider o i tuoi amici se riscontri problemi.</string>

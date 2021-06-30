@@ -268,7 +268,7 @@
     <string name="import_backup_title">匯入備份</string>
     <string name="import_backup_ask">在 %1$s 找到備份\n\n你要匯入備份，並使用原來的資料和設定嗎?</string>
     <string name="import_backup_no_backup_found">找不到備份\n\n請把備份複製到 %1$s 然後再試一次，或是按「開始傳送訊息」進行標準設定。</string>
-    <!-- Translators: %1$s will be replaced by the email address -->
+    <!-- Translators: %1$s will be replaced by the e-mail address -->
     <string name="login_error_cannot_login">無法登入 %1$s。請確定 email 帳號和密碼是否正確。 </string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">伺服器 %1$s 的回應: %2$s\n\n有些郵件服務商會在你的收件匣提供進一步的資訊，請檢查一下，並看看 web 介面上有沒有相關設定。還是不行的話，請洽詢郵件服務商，或是請朋友幫忙。</string>

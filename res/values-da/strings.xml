@@ -51,7 +51,7 @@
     <string name="done">Færdig</string>
     <string name="undo">Fortryd</string>
     <string name="offline">Offline</string>
-    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
+    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in iOS headers, the string should be as short as possible, though. -->
     <string name="next">Næste</string>
     <string name="error">Fejl</string>
     <string name="error_x">Fejl: %1$s</string>
@@ -383,7 +383,7 @@
     <string name="login_smtp_port">SMTP port</string>
     <string name="login_smtp_security">SMTP sikkerhed</string>
     <string name="login_auth_method">Autorisationsmetode</string>
-    <!-- Translators: %1$s will be replaced by an email address -->
+    <!-- Translators: %1$s will be replaced by an e-mail address -->
     <string name="login_oauth2_checking_addr">Checker %1$s</string>
     <string name="login_info_oauth2_title">Fortsæt med forenklet opsætning?</string>
     <string name="login_info_oauth2_text">Indtastet e-mail adresse understøtter simple opsætning (OAuth2).\n\nTillad i næste trin at Delta Chat agerer som samtale med e-mail program.\n\nDer er ingen Delta Chat servere, data forbliver på enhed.</string>
@@ -395,7 +395,7 @@
     <string name="import_backup_title">Importer sikkerhedskopi</string>
     <string name="import_backup_ask">Sikkerhedskopi fundet hos \"%1$s\".\n\nVil du Importere og bruge al data og opsætning fra den?</string>
     <string name="import_backup_no_backup_found">Ingen sikkerhedskopi fundet.\n\nKopier sikkerhedskopi til \"%1$s\" og prøv igen. Alternativt, klik \"Start samtale\" for at følge normal opsætning proces.</string>
-    <!-- Translators: %1$s will be replaced by the email address -->
+    <!-- Translators: %1$s will be replaced by the e-mail address -->
     <string name="login_error_cannot_login">Kan ikke logge ind som  \"%1$s\". Kontroller om e-mailadresse og adgangskode er korrekt.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Svar fra %1$s: %2$s\n\nNogle udbydere placerer ekstra information i indbakken; det kan kontrolleres f.eks. i net grænsefladen. Kontakt udbyder eller venner hvis disse problemer opstår.</string>

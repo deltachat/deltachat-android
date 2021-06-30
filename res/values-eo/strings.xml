@@ -38,7 +38,7 @@
     <string name="one_moment">Unu momenton…</string>
     <string name="done">Farita</string>
     <string name="undo">Malfari</string>
-    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
+    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in iOS headers, the string should be as short as possible, though. -->
     <string name="next">Sekva</string>
     <string name="error">Eraro</string>
     <string name="error_x">Eraro: %1$s</string>

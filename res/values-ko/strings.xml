@@ -36,7 +36,7 @@
     <string name="one_moment">잠시만 기다려 주세요…</string>
     <string name="done">완료</string>
     <string name="undo">실행취소</string>
-    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
+    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in iOS headers, the string should be as short as possible, though. -->
     <string name="next">확인</string>
     <string name="error">오류</string>
     <string name="contacts_headline">연락처</string>

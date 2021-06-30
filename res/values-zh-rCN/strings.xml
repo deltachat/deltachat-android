@@ -59,7 +59,7 @@
     <string name="done">已完成</string>
     <string name="undo">撤销</string>
     <string name="offline">离线</string>
-    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
+    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in iOS headers, the string should be as short as possible, though. -->
     <string name="next">下一步</string>
     <string name="error">错误</string>
     <string name="error_x">错误： %1$s</string>
@@ -114,7 +114,7 @@
     <string name="voice_message">语音消息</string>
     <string name="forwarded">转发了</string>
     <string name="forwarded_message">转发的消息</string>
-    <!-- %1$s will be replaced by the name or the email-address of the person who has forwarded the message -->
+    <!-- %1$s will be replaced by the name or the e-mail address of the person who has forwarded the message -->
     <string name="forwarded_by">转发人 %1$s</string>
     <string name="video">视频</string>
     <string name="documents">文档</string>
@@ -421,7 +421,7 @@
     <string name="login_smtp_port">SMTP 端口</string>
     <string name="login_smtp_security">SMTP 安全类型</string>
     <string name="login_auth_method">认证方法</string>
-    <!-- Translators: %1$s will be replaced by an email address -->
+    <!-- Translators: %1$s will be replaced by an e-mail address -->
     <string name="login_oauth2_checking_addr">检查 %1$s 中</string>
     <string name="login_info_oauth2_title">使用简化设置继续？</string>
     <string name="login_info_oauth2_text">输入的电子邮件地址支持简化设置（OAuth 2.0）。\n\n在下一步中，请允许 Delta Chat 充当您的“通过电子邮件聊天”应用程序。\n\n不存在 Delta Chat 服务器，您的数据保留于您的设备！</string>
@@ -433,7 +433,7 @@
     <string name="import_backup_title">导入备份</string>
     <string name="import_backup_ask">在“%1$s”找到备份。\n\n您要导入并使用其中的全部数据与设置吗？</string>
     <string name="import_backup_no_backup_found">没有找到备份。\n\n将备份复制到“%1$s”然后再试一次。或者按“开始发送消息”来进行常规设置流程。</string>
-    <!-- Translators: %1$s will be replaced by the email address -->
+    <!-- Translators: %1$s will be replaced by the e-mail address -->
     <string name="login_error_cannot_login">无法作为“%1$s”登录。请检查电子邮件地址和密码是否正确。</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">来自 %1$s 的回应： %2$s\n\n某些提供商会在您的收件箱中放置额外信息; 您可以在 Web 端等处等查看它。 如遇到问题，请咨询您的提供商或朋友。</string>

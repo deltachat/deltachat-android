@@ -59,7 +59,7 @@
     <string name="done">U bë</string>
     <string name="undo">Zhbëje</string>
     <string name="offline">Jo në linjë</string>
-    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
+    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in iOS headers, the string should be as short as possible, though. -->
     <string name="next">Pasuesja</string>
     <string name="error">Gabim</string>
     <string name="error_x">Gabim: %1$s</string>
@@ -120,7 +120,7 @@
     <string name="voice_message">Mesazh zanor</string>
     <string name="forwarded">Përcjellë</string>
     <string name="forwarded_message">Mesazhi u përcoll</string>
-    <!-- %1$s will be replaced by the name or the email-address of the person who has forwarded the message -->
+    <!-- %1$s will be replaced by the name or the e-mail address of the person who has forwarded the message -->
     <string name="forwarded_by">Përcjellë nga %1$s</string>
     <string name="video">Video</string>
     <string name="documents">Dokumente</string>
@@ -430,7 +430,7 @@
     <string name="login_smtp_port">Portë SMTP</string>
     <string name="login_smtp_security">Siguri SMTP</string>
     <string name="login_auth_method">Metodë autorizimi</string>
-    <!-- Translators: %1$s will be replaced by an email address -->
+    <!-- Translators: %1$s will be replaced by an e-mail address -->
     <string name="login_oauth2_checking_addr">Po kontrollohet %1$s</string>
     <string name="login_info_oauth2_title">Të vazhdohet me rregullimin e thjeshtuar?</string>
     <string name="login_info_oauth2_text">Adresa email e dhënë mbulon një ujdisje të thjeshtuar (OAuth2).\n\nNë hapin pasues, ju lutemi, lejojeni Delta Chat-in të veprojë si aplikacioni juaj për Fjalosje Përmes Email-i.\n\nS\’ka shërbyes Delta Chat, të dhënat tuaja rrinë në pajisjen tuaj!</string>
@@ -442,7 +442,7 @@
     <string name="import_backup_title">Importo kopjeruajtje</string>
     <string name="import_backup_ask">U gjet kopjeruajtje te \"%1$s\".\n\nDoni të importohen dhe përdoren krejt të dhënat dhe rregullimet prej atij?</string>
     <string name="import_backup_no_backup_found">S\’u gjetën kopjeruajtje.\n\nKopjojeni kopjeruajtjen te \"%1$s\" dhe riprovoni. Ndryshe, shtypni \"Filloni të shkëmbeni mesazhe\", që të vazhdoni me procesin normal të rregullimit.</string>
-    <!-- Translators: %1$s will be replaced by the email address -->
+    <!-- Translators: %1$s will be replaced by the e-mail address -->
     <string name="login_error_cannot_login">S\’bëhet dot hyrja si %1$s. Ju lutemi, shihni nëse adresa email dhe fjalëkalimi janë të saktë.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Përgjigje nga %1$s: %2$s\n\nDisa shërbime vendosin të dhëna shtesë te kutia juaj e mesazheve të marrë; mund t\’i shihni, për shembull, te pjesa e dukshme web. Nëse hasni probleme, këshillohuni me shërbimin tuaj ose shokë.</string>

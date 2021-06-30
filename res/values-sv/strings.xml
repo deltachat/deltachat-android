@@ -53,7 +53,7 @@
     <string name="done">Klart</string>
     <string name="undo">Ångra</string>
     <string name="offline">Offline</string>
-    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
+    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in iOS headers, the string should be as short as possible, though. -->
     <string name="next">Nästa</string>
     <string name="error">Fel</string>
     <string name="error_x">Fel: %1$s</string>
@@ -113,7 +113,7 @@
     <string name="audio">Ljud</string>
     <string name="voice_message">Röstmeddelande</string>
     <string name="forwarded_message">Vidarebefordrat meddelande</string>
-    <!-- %1$s will be replaced by the name or the email-address of the person who has forwarded the message -->
+    <!-- %1$s will be replaced by the name or the e-mail address of the person who has forwarded the message -->
     <string name="forwarded_by">Vidarebefordrad av %1$s</string>
     <string name="video">Video</string>
     <string name="documents">Dokument</string>
@@ -392,7 +392,7 @@
     <string name="login_smtp_port">SMTP port</string>
     <string name="login_smtp_security">SMTP säkerhet</string>
     <string name="login_auth_method">Auktoriseringsmetod</string>
-    <!-- Translators: %1$s will be replaced by an email address -->
+    <!-- Translators: %1$s will be replaced by an e-mail address -->
     <string name="login_oauth2_checking_addr">Kontrollerar %1$s</string>
     <string name="login_info_oauth2_title">Fortsätta med förenklad installation?</string>
     <string name="login_info_oauth2_text">Den angivna e-postadressen stödjer förenklad inställning (OAuth 2.0).\n\nLåt Delta Chat agera som ditt chatt-över-epost-program, i nästa steg.\n\nDet finns ingen Delta Chat-server, din data stannar på din enhet.</string>
@@ -404,7 +404,7 @@
     <string name="import_backup_title">Importera säkerhetskopia</string>
     <string name="import_backup_ask">Säkerhetskopia hittades på %1$s.\n\n Vill du importera och använda all data och alla inställningar från den?</string>
     <string name="import_backup_no_backup_found">Inga säkerhetskopior hittades.\n\nKopiera säkerhetskopian till \"%1$s\" och försök igen. Alternativt, tryck \"Börja chatta\" för att fortsätta den normala inställningsprocessen.</string>
-    <!-- Translators: %1$s will be replaced by the email address -->
+    <!-- Translators: %1$s will be replaced by the e-mail address -->
     <string name="login_error_cannot_login">Kan inte logga in som \"%1$s\". Kontrollera om e-postadressen och lösenordet är korrekt.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Svar från %1$s: %2$s\n\nVissa e-postleverantörer placerar tilläggsinformation i din inkorg. Du kan kontrollera dem i t.ex. webbgränssnittet. Kontakta din e-postleverantör eller vänner om du stöter på problem.</string>

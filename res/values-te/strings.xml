@@ -36,7 +36,7 @@
     <string name="one_moment">ఒక్క క్షణం ...</string>
     <string name="done">పూర్తయింది</string>
     <string name="undo">దిద్దుబాటు రద్దుచెయ్యి</string>
-    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
+    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in iOS headers, the string should be as short as possible, though. -->
     <string name="next">తరువాత</string>
     <string name="error">లోపం</string>
     <string name="contacts_headline">కాంటాక్ట్స్</string>

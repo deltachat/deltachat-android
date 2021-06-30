@@ -42,7 +42,7 @@
     <string name="one_moment">Et øyeblikk…</string>
     <string name="done">Ferdig</string>
     <string name="undo">Angre</string>
-    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
+    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in iOS headers, the string should be as short as possible, though. -->
     <string name="next">Neste</string>
     <string name="error">Feil</string>
     <string name="error_x">Feil: %1$s</string>

@@ -55,7 +55,7 @@
     <string name="done">Selesai</string>
     <string name="undo">Undo</string>
     <string name="offline">Offline</string>
-    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
+    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in iOS headers, the string should be as short as possible, though. -->
     <string name="next">Berikutnya</string>
     <string name="error">Eror</string>
     <string name="error_x">Eror: %1$s</string>
@@ -110,7 +110,7 @@
     <string name="voice_message">Pesan suara</string>
     <string name="forwarded">Diteruskan</string>
     <string name="forwarded_message">Pesan yang diteruskan</string>
-    <!-- %1$s will be replaced by the name or the email-address of the person who has forwarded the message -->
+    <!-- %1$s will be replaced by the name or the e-mail address of the person who has forwarded the message -->
     <string name="forwarded_by">Diteruskan oleh %1$s</string>
     <string name="video">Video</string>
     <string name="documents">Dokumen</string>
@@ -371,7 +371,7 @@
     <string name="login_smtp_port">SMTP port</string>
     <string name="login_smtp_security">Keamanan SMTP</string>
     <string name="login_auth_method">Metode otorisasi</string>
-    <!-- Translators: %1$s will be replaced by an email address -->
+    <!-- Translators: %1$s will be replaced by an e-mail address -->
     <string name="login_oauth2_checking_addr">Memeriksa %1$s</string>
     <string name="login_info_oauth2_title">Lanjutkan dengan pengaturan yang disederhanakan?</string>
     <string name="login_info_oauth2_text">Bantuan untuk alamat surel yang telah dimasukkan adalah pengaturan yang disederhanakan (OAuth 2.0).\n\nPada langkah selanjutnya, izinkan Delta Chat sebagai Obrolan Anda pada aplikasi Surel.\n\nTidak ada server Delta Chat, obrolan Anda tetap di perangkat Anda.</string>
@@ -383,7 +383,7 @@
     <string name="import_backup_title">Impor cadangan</string>
     <string name="import_backup_ask">Cadangan ditemukan di \"%1$s\".\n\n Apakah Anda ingin mengimpor dan menggunakan semua data dan pengaturan darinya?</string>
     <string name="import_backup_no_backup_found">Cadangan tidak ketemu.\n\nKopi cadangan ke \"%1$s\" dan coba lagi. Cara lain, tekan \"Mulai obrolan\" untuk melanjutkan proses pengaturan normal.</string>
-    <!-- Translators: %1$s will be replaced by the email address -->
+    <!-- Translators: %1$s will be replaced by the e-mail address -->
     <string name="login_error_cannot_login">Tidak bisa login sebagai \"%1$s\". Mohon cek apakah alamat surel dan kata sandi benar.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Tanggapan dari %1$s: %2$s\n\nBeberapa penyedia layanan provider menempatkan informasi tambahan di kotak masuk Anda; Anda bisa memeriksanya, misalnya di beranda depan web. Konsultasikan dengan penyedia atau teman Anda jika Anda mengalami masalah.</string>

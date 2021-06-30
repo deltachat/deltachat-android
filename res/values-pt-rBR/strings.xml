@@ -59,7 +59,7 @@
     <string name="done">Feito</string>
     <string name="undo">Desfazer</string>
     <string name="offline">Desconectado</string>
-    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
+    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in iOS headers, the string should be as short as possible, though. -->
     <string name="next">Avançar</string>
     <string name="error">Erro</string>
     <string name="error_x">Erro: %1$s</string>
@@ -120,7 +120,7 @@
     <string name="voice_message">Mensagem de voz</string>
     <string name="forwarded">Encaminhado</string>
     <string name="forwarded_message">Mensagem encaminhada</string>
-    <!-- %1$s will be replaced by the name or the email-address of the person who has forwarded the message -->
+    <!-- %1$s will be replaced by the name or the e-mail address of the person who has forwarded the message -->
     <string name="forwarded_by">Encaminhado por %1$s</string>
     <string name="video">Vídeo</string>
     <string name="documents">Documentos</string>
@@ -433,7 +433,7 @@
     <string name="login_smtp_port">Porta SMTP</string>
     <string name="login_smtp_security">Segurança SMTP</string>
     <string name="login_auth_method">Método de autorização</string>
-    <!-- Translators: %1$s will be replaced by an email address -->
+    <!-- Translators: %1$s will be replaced by an e-mail address -->
     <string name="login_oauth2_checking_addr">Verificando %1$s</string>
     <string name="login_info_oauth2_title">Prosseguir pela configuração simplificada?</string>
     <string name="login_info_oauth2_text">Seu servidor de e-mail aceita o método de configuração simplificada (OAuth 2.0).\n\n No próximo passo, por favor, permita que o Delta Chat seja seu aplicativo de e-mail.\n\nNão há servidor do Delta Chat. Seus dados ficam no seu aparelho.</string>
@@ -445,7 +445,7 @@
     <string name="import_backup_title">Importar becape</string>
     <string name="import_backup_ask">Becape localizado em \"%1$s\".\n\nVocê quer importá-lo e usar seus dados e configurações?</string>
     <string name="import_backup_no_backup_found">Becapes não localizados.\n\nCopie o becape para \"%1$s\" e tente de novo. Alternativamente, toque em \"comece a conversar\" para prosseguir normalmente.</string>
-    <!-- Translators: %1$s will be replaced by the email address -->
+    <!-- Translators: %1$s will be replaced by the e-mail address -->
     <string name="login_error_cannot_login">Impossível acessar \"%1$s\". Por favor, verifique o e-mail e senha.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Resposta de %1$s: %2$s\n\nAlguns provedores colocam informações adicionais na sua caixa de entrada; verifique-as, por exemplo, na interface web. Consulte o seu provedor ou amigos se você tiver problemas.</string>

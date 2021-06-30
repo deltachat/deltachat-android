@@ -53,7 +53,7 @@
     <string name="done">Hotovo</string>
     <string name="undo">Zpět</string>
     <string name="offline">Nepřipojený</string>
-    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
+    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in iOS headers, the string should be as short as possible, though. -->
     <string name="next">Další</string>
     <string name="error">Chyba</string>
     <string name="error_x">Chyba %1$s</string>
@@ -125,7 +125,7 @@
     <string name="audio">Zvukový záznam</string>
     <string name="voice_message">Hlasová zpráva</string>
     <string name="forwarded_message">Přeposlaná zpráva</string>
-    <!-- %1$s will be replaced by the name or the email-address of the person who has forwarded the message -->
+    <!-- %1$s will be replaced by the name or the e-mail address of the person who has forwarded the message -->
     <string name="forwarded_by">Přeposlal %1$s</string>
     <string name="video">Video</string>
     <string name="documents">Dokumenty</string>
@@ -417,7 +417,7 @@
     <string name="login_smtp_port">SMTP port</string>
     <string name="login_smtp_security">SMTP zabezpečení</string>
     <string name="login_auth_method">Metoda autorizace</string>
-    <!-- Translators: %1$s will be replaced by an email address -->
+    <!-- Translators: %1$s will be replaced by an e-mail address -->
     <string name="login_oauth2_checking_addr">Prohlížím %1$s</string>
     <string name="login_info_oauth2_title">Zkus zjednodušené nastavení?</string>
     <string name="login_info_oauth2_text">Zadaný e-mail podporuje zjednodušené nastavení (OAuth 2.0).\n\nV příštím kroku dej prosím Delta Chatu povolení chovat se jako chat přes e-mail. \n\nŽádné servery Delta Chat nemá, tvá data zůstávají na tvém přístroji.</string>
@@ -429,7 +429,7 @@
     <string name="import_backup_title">Nahrát zálohu</string>
     <string name="import_backup_ask">Záloha nalezena v \"%1$s\"\n\nChceš nahrát  k používání všechna jeho data a nastavení?</string>
     <string name="import_backup_no_backup_found">Žádná záloha nebyla nalezena. \n\nZkopíruj zálohu do \"%1$s\" a zkus to znovu. Případně, stiskni \"Start messaging\"  a pokračuj s běžným postupem pro nastavení.</string>
-    <!-- Translators: %1$s will be replaced by the email address -->
+    <!-- Translators: %1$s will be replaced by the e-mail address -->
     <string name="login_error_cannot_login">Přihlášení jako \"%1$s\" selhalo. Zkontrolujte si prosím ještě jednou e-mail a heslo.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Odpověď od %1$s: %2$s\n\nNěkteří poskytovatelé e-mailují dodatečné informace k tomuto nezdaru; zkus se podívat do doručených e-mailů ve tvé běžné aplikaci. Při potížích se obrať na svého poskytovatele nebo na přátele.</string>

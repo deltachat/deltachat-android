@@ -59,7 +59,7 @@
     <string name="done">Виконано</string>
     <string name="undo">Скасувати</string>
     <string name="offline">Не в мережі</string>
-    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
+    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in iOS headers, the string should be as short as possible, though. -->
     <string name="next">Наступний</string>
     <string name="error">Помилка</string>
     <string name="error_x">Помилка: %1$s</string>
@@ -132,7 +132,7 @@
     <string name="voice_message">Голосове повідомлення</string>
     <string name="forwarded">Переслане</string>
     <string name="forwarded_message">Переслане повідомлення</string>
-    <!-- %1$s will be replaced by the name or the email-address of the person who has forwarded the message -->
+    <!-- %1$s will be replaced by the name or the e-mail address of the person who has forwarded the message -->
     <string name="forwarded_by">Переслано від %1$s</string>
     <string name="video">Відео</string>
     <string name="documents">Документи</string>
@@ -457,7 +457,7 @@
     <string name="login_smtp_port">SMTP-порт</string>
     <string name="login_smtp_security">Налаштування безпеки SMTP</string>
     <string name="login_auth_method">Метод авторизації</string>
-    <!-- Translators: %1$s will be replaced by an email address -->
+    <!-- Translators: %1$s will be replaced by an e-mail address -->
     <string name="login_oauth2_checking_addr">Перевірка %1$s</string>
     <string name="login_info_oauth2_title">Продовжити спрощене налаштування?</string>
     <string name="login_info_oauth2_text">Введена адреса електронної пошти підтримує спрощене налаштування (OAuth2).\n\nНа наступному кроці дозвольте, будь ласка, Delta Chat виступати у якості Вашого додатку для чату за допомогою електронної пошти.\n\nУ Delta Chat немає серверів, Ваші дані залишаються на Вашому пристрої!</string>
@@ -469,7 +469,7 @@
     <string name="import_backup_title">Імпортувати бекап</string>
     <string name="import_backup_ask">Знайдена резервна копія «%1$s».\n\nВідновити з неї всі дані і параметри?</string>
     <string name="import_backup_no_backup_found">Резервних копій не знайдено.\n\nПомістить резервну копію у папку «%1$s» і спробуйте знову запустити відновлення. Для установлення без відновлення параметрів натисніть «Почати спілкування».</string>
-    <!-- Translators: %1$s will be replaced by the email address -->
+    <!-- Translators: %1$s will be replaced by the e-mail address -->
     <string name="login_error_cannot_login">Не вдалося увійти як «%1$s». Будь ласка, перевірте правильність адреси електронної пошти і пароля.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Відповідь сервера %1$s: %2$s\n\nДеякі сервери електронної пошти зберігають додаткову інформацію у папці «Вхідні». Ви можете перевірити цю папку, наприклад, використовуючи доступ через веб-інтерфейс. Якщо Ви зіткнулися з проблемами, проконсультуйтеся з провайдером електронної пошти або знайомими фахівцями.</string>

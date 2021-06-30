@@ -46,7 +46,7 @@
     <string name="done">Fatu</string>
     <string name="undo">Annulla</string>
     <string name="offline">Non in lìnia</string>
-    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
+    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in iOS headers, the string should be as short as possible, though. -->
     <string name="next">Sighi</string>
     <string name="error">Faddina</string>
     <string name="error_x">Faddina: %1$s</string>
@@ -362,7 +362,7 @@
     <string name="login_smtp_port">Ghenna SMTP</string>
     <string name="login_smtp_security">Seguresa SMTP</string>
     <string name="login_auth_method">Manera de autenticatzione</string>
-    <!-- Translators: %1$s will be replaced by an email address -->
+    <!-- Translators: %1$s will be replaced by an e-mail address -->
     <string name="login_oauth2_checking_addr">Verifichende %1$s</string>
     <string name="login_info_oauth2_title">Cheres sighire cun s\'impostatzione semplificada?</string>
     <string name="login_info_oauth2_text">S\'indiritzu de posta eletrònica insertadu suportat un\'impostztione semplificada (OAuth 2.0).\n\n In su passu chi sighet, pro praghere, permite a Delta Chat de operare che a aplicatzione de tzarrada pro mèdiu de posta eletrònica.\n\nNon bi sunt serbidores de Delta Chat, abarrat totu in su dispositivu tuo.</string>
@@ -374,7 +374,7 @@
     <string name="import_backup_title">Importa una còpia de seguresa</string>
     <string name="import_backup_ask">Còpia de seguresa agatada in \"%1$s\".\n\nCheres a l\'importare e a impreare totu sos datos e sas impostatziones dae cue?</string>
     <string name="import_backup_no_backup_found">Peruna còpia de seguresa agatada.\n\nCòpia sa còpia de seguresa in \"%1$s\" e torra a proare. Si nono, incarca. Asinuncas, incarca \"Incumintza a messagiare\" pro sighire cun su protzessu de impostatzione normale.</string>
-    <!-- Translators: %1$s will be replaced by the email address -->
+    <!-- Translators: %1$s will be replaced by the e-mail address -->
     <string name="login_error_cannot_login">Impossìbile atzèdere comente \"%1$s\". pro paghere verìfica si s\'indiritzu de posta eletrònica e sa crae de intrada sunt curretos.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Risposta dae %1$s: %2$s\n\nUnos cantos frunidores insertant informatziones in prus in sa cartella de intrada tua; podes verificare a es. dae sa pàgina web. Si tenes problemas consulta su frunidore tuo o sos amigos tuos.</string>
