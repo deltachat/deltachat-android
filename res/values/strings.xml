@@ -33,7 +33,7 @@
     <string name="unarchive">Unarchive</string>
     <string name="mute">Mute</string>
     <string name="ephemeral_messages">Disappearing messages</string>
-    <string name="ephemeral_messages_hint">These settings apply to all participants using Delta Chat. However, they may copy, save and forward messages or use other e-mail clients.</string>
+    <string name="ephemeral_messages_hint">These settings apply to all chat members using Delta Chat. However, they may copy, save and forward messages or use other e-mail clients.</string>
     <string name="save">Save</string>
     <string name="chat">Chat</string>
     <string name="media">Media</string>
