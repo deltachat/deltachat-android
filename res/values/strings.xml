@@ -59,7 +59,7 @@
     <string name="done">Done</string>
     <string name="undo">Undo</string>
     <string name="offline">Offline</string>
-    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
+    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in iOS headers, the string should be as short as possible, though. -->
     <string name="next">Next</string>
     <string name="error">Error</string>
     <string name="error_x">Error: %1$s</string>
@@ -533,7 +533,7 @@
     <string name="pref_log_header">Log</string>
     <string name="pref_other">Other</string>
     <string name="pref_backup">Backup</string>
-    <string name="pref_backup_explain">Backup chats to external storage</string>
+    <string name="pref_backup_explain">Back up chats to external storage</string>
     <string name="pref_backup_export_explain">A backup helps you to set up a new installation on this or on another device.\n\nThe backup will contain all messages, contacts and chats and your end-to-end Autocrypt setup. Keep the backup file in a safe place or delete it as soon as possible.</string>
     <string name="pref_backup_export_start_button">Start backup</string>
     <string name="pref_backup_written_to_x">Backup written successfully to \"%1$s\".</string>
