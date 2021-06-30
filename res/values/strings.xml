@@ -69,8 +69,8 @@
     <string name="file_not_found">Could not find %1$s.</string>
     <string name="copied_to_clipboard">Copied to clipboard.</string>
     <string name="contacts_headline">Contacts</string>
-    <string name="email_address">Email address</string>
-    <string name="bad_email_address">Bad email address.</string>
+    <string name="email_address">E-mail address</string>
+    <string name="bad_email_address">Bad e-mail address.</string>
     <string name="password">Password</string>
     <string name="existing_password">Existing password</string>
     <string name="now">Now</string>
@@ -120,7 +120,7 @@
     <string name="voice_message">Voice message</string>
     <string name="forwarded">Forwarded</string>
     <string name="forwarded_message">Forwarded message</string>
-    <!-- %1$s will be replaced by the name or the email-address of the person who has forwarded the message -->
+    <!-- %1$s will be replaced by the name or the e-mail address of the person who has forwarded the message -->
     <string name="forwarded_by">Forwarded by %1$s</string>
     <string name="video">Video</string>
     <string name="documents">Documents</string>
@@ -232,7 +232,7 @@
     <string name="device_talk">Device messages</string>
     <string name="device_talk_subtitle">Locally generated messages</string>
     <string name="device_talk_explain">Messages in this chat are generated locally by your Delta Chat app. Its makers use it to inform about app updates and problems during usage.</string>
-    <string name="device_talk_welcome_message">Welcome to Delta Chat! – Delta Chat looks and feels like other popular messenger apps, but does not involve centralized control, tracking or selling you, friends, colleagues or family out to large organizations.\n\nTechnically, Delta Chat is an email application with a modern chat interface. Email in a new dress if you will 👻\n\nUse Delta Chat with anyone out of billions of people: just use their e-mail address. Recipients don\'t need to install Delta Chat, visit websites or sign up anywhere - however, of course, if they like, you may point them to 👉 https://get.delta.chat</string>
+    <string name="device_talk_welcome_message">Welcome to Delta Chat! – Delta Chat looks and feels like other popular messenger apps, but does not involve centralized control, tracking or selling you, friends, colleagues or family out to large organizations.\n\nTechnically, Delta Chat is an e-mail application with a modern chat interface. E-mail in a new dress if you will 👻\n\nUse Delta Chat with anyone out of billions of people: just use their e-mail address. Recipients don\'t need to install Delta Chat, visit websites or sign up anywhere - however, of course, if they like, you may point them to 👉 https://get.delta.chat</string>
     <string name="edit_contact">Edit contact</string>
     <!-- Translators: "Pin" here is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
     <string name="pin_chat">Pin chat</string>
@@ -307,8 +307,8 @@
 
     <!-- contact list -->
     <string name="contacts_title">Contacts</string>
-    <string name="contacts_enter_name_or_email">Enter name or email address</string>
-    <string name="contacts_type_email_above">Type email address above</string>
+    <string name="contacts_enter_name_or_email">Enter name or e-mail address</string>
+    <string name="contacts_type_email_above">Type e-mail address above</string>
     <string name="contacts_empty_hint">No contacts.</string>
 
 
@@ -334,7 +334,7 @@
     <string name="chat_record_slide_to_cancel">Slide to cancel</string>
     <string name="chat_record_explain">Tap and hold to record a voice message, release to send</string>
     <string name="chat_no_chats_yet_title">Empty inbox.\nPress \"+\" to start a new chat.</string>
-    <string name="chat_no_chats_yet_hint">You can chat with other Delta Chat users and with any email address.</string>
+    <string name="chat_no_chats_yet_hint">You can chat with other Delta Chat users and with any e-mail address.</string>
     <string name="chat_all_archived">All chats archived.\nPress \"+\" to start a new chat.</string>
     <string name="chat_share_with_title">Share with</string>
     <string name="chat_input_placeholder">Message</string>
@@ -346,7 +346,7 @@
     <!-- this "Saved" should match the "Saved" from "Saved messages" -->
     <string name="saved">Saved</string>
     <string name="chat_contact_request">Contact request</string>
-    <string name="chat_no_contact_requests">No contact requests.\n\nIf you want classic emails to appear here as contact requests, you can change the corresponding setting in the app settings.</string>
+    <string name="chat_no_contact_requests">No contact requests.\n\nIf you want classic e-mails to appear here as contact requests, you can change the corresponding setting in the app settings.</string>
     <string name="retry_send">Retry to send message</string>
     <string name="send_failed">Could not send message</string>
     <!-- reasons for a disabled message composer -->
@@ -418,8 +418,8 @@
     <string name="welcome_intro1_message">The messenger with the broadest audience in the world. Free and independent.</string>
     <string name="login_title">Log in</string>
     <string name="login_header">Log in to your server</string>
-    <string name="login_explain">Log in with an existing email account</string>
-    <string name="login_subheader">For known email providers additional settings are set up automatically. Sometimes IMAP needs to be enabled in the web settings. Consult your email provider or friends for help.</string>
+    <string name="login_explain">Log in with an existing e-mail account</string>
+    <string name="login_subheader">For known e-mail providers additional settings are set up automatically. Sometimes IMAP needs to be enabled in the web settings. Consult your e-mail provider or friends for help.</string>
     <string name="login_no_servers_hint">There are no Delta Chat servers, your data stays on your device.</string>
     <string name="login_inbox">Inbox</string>
     <string name="login_imap_login">IMAP login name</string>
@@ -433,22 +433,22 @@
     <string name="login_smtp_port">SMTP port</string>
     <string name="login_smtp_security">SMTP security</string>
     <string name="login_auth_method">Authorization method</string>
-    <!-- Translators: %1$s will be replaced by an email address -->
+    <!-- Translators: %1$s will be replaced by an e-mail address -->
     <string name="login_oauth2_checking_addr">Checking %1$s</string>
     <string name="login_info_oauth2_title">Continue with simplified setup?</string>
-    <string name="login_info_oauth2_text">The entered email address supports a simplified setup (OAuth 2.0).\n\nIn the next step, please allow Delta Chat to act as your Chat over Email app.\n\nThere are no Delta Chat servers, your data stays on your device.</string>
+    <string name="login_info_oauth2_text">The entered e-mail address supports a simplified setup (OAuth 2.0).\n\nIn the next step, please allow Delta Chat to act as your Chat over E-mail app.\n\nThere are no Delta Chat servers, your data stays on your device.</string>
     <string name="login_certificate_checks">Certificate checks</string>
-    <string name="login_error_mail">Please enter a valid email address</string>
+    <string name="login_error_mail">Please enter a valid e-mail address</string>
     <string name="login_error_server">Please enter a valid server / IP address</string>
     <string name="login_error_port">Please enter a valid port (1–65535)</string>
-    <string name="login_error_required_fields">Please enter a valid email address and a password</string>
+    <string name="login_error_required_fields">Please enter a valid e-mail address and a password</string>
     <string name="import_backup_title">Import backup</string>
     <string name="import_backup_ask">Backup found at \"%1$s\".\n\nDo you want to import and use all data and settings from it?</string>
     <string name="import_backup_no_backup_found">No backups found.\n\nCopy the backup to \"%1$s\" and try again. Alternatively, press \"Start messaging\" to continue with the normal setup process.</string>
-    <!-- Translators: %1$s will be replaced by the email address -->
-    <string name="login_error_cannot_login">Cannot login as \"%1$s\". Please check if the email address and the password are correct.</string>
+    <!-- Translators: %1$s will be replaced by the e-mail address -->
+    <string name="login_error_cannot_login">Cannot login as \"%1$s\". Please check if the e-mail address and the password are correct.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
-    <string name="login_error_server_response">Response from %1$s: %2$s\n\nSome providers may email you additional information about this problem; you should be able to check your inbox using your regular email app or web site. Consult your provider or friends if you run into problems.</string>
+    <string name="login_error_server_response">Response from %1$s: %2$s\n\nSome providers may e-mail you additional information about this problem; you should be able to check your inbox using your regular e-mail app or web site. Consult your provider or friends if you run into problems.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Accept invalid certificates</string>
     <string name="used_settings">Used settings:</string>
@@ -555,7 +555,7 @@
     <string name="pref_send_copy_to_self">Send copy to self</string>
     <string name="pref_auto_folder_moves">Automatic moves to DeltaChat folder</string>
     <string name="pref_auto_folder_moves_explain">Chat conversations are moved to avoid cluttering the Inbox</string>
-    <string name="pref_show_emails">Show classic emails</string>
+    <string name="pref_show_emails">Show classic e-mails</string>
     <string name="pref_show_emails_no">No, chats only</string>
     <string name="pref_show_emails_accepted_contacts">For accepted contacts</string>
     <string name="pref_show_emails_all">All</string>
@@ -595,9 +595,9 @@
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">Do you want to delete %1$d messages now and all newly fetched messages \"%2$s\" in the future?\n\n• This includes all media\n\n• Messages will be deleted whether they were seen or not\n\n• \"Saved messages\" will be skipped from local deletion</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
-    <string name="autodel_server_ask">Do you want to delete %1$d messages now and all newly fetched messages \"%2$s\" in the future?\n\n⚠️ This includes emails, media and \"Saved messages\" in all server folders\n\n⚠️ Do not use this function if you want to keep data on the server\n\n⚠️ Do not use this function if you are using other email clients besides Delta Chat</string>
+    <string name="autodel_server_ask">Do you want to delete %1$d messages now and all newly fetched messages \"%2$s\" in the future?\n\n⚠️ This includes e-mails, media and \"Saved messages\" in all server folders\n\n⚠️ Do not use this function if you want to keep data on the server\n\n⚠️ Do not use this function if you are using other e-mail clients besides Delta Chat</string>
     <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
-    <string name="autodel_server_enabled_hint">This includes emails, media and \"Saved messages\" in all server folders. Do not use this function if you want to keep data on the server or if you are using other email clients besides Delta Chat.</string>
+    <string name="autodel_server_enabled_hint">This includes e-mails, media and \"Saved messages\" in all server folders. Do not use this function if you want to keep data on the server or if you are using other e-mail clients besides Delta Chat.</string>
     <string name="autodel_confirm">I understand, delete all these messages</string>
     <string name="autodel_at_once">At once</string>
     <string name="after_30_seconds">After 30 seconds</string>
@@ -613,7 +613,7 @@
 
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
-    <string name="autocrypt_explain">Autocrypt is a new and open specification for automatic end-to-end email encryption.\n\nYour end-to-end setup is created automatically as needed and you can transfer it between devices with Autocrypt Setup Messages.</string>
+    <string name="autocrypt_explain">Autocrypt is a new and open specification for automatic end-to-end e-mail encryption.\n\nYour end-to-end setup is created automatically as needed and you can transfer it between devices with Autocrypt Setup Messages.</string>
     <string name="autocrypt_send_asm_title">Send Autocrypt Setup Message</string>
     <string name="autocrypt_send_asm_explain_before">An Autocrypt Setup Message securely shares your end-to-end setup with other Autocrypt-compliant apps.\n\nThe setup will be encrypted by a setup code displayed here and must be typed on the other device.</string>
     <string name="autocrypt_send_asm_button">Send Autocrypt Setup Message</string>
@@ -638,7 +638,7 @@
     <string name="systemmsg_group_left">Group left.</string>
     <string name="systemmsg_read_receipt_subject">Message opened</string>
     <string name="systemmsg_read_receipt_body">The \"%1$s\" message you sent was displayed on the screen of the recipient.\n\nThis is no guarantee the content was read.</string>
-    <string name="systemmsg_cannot_decrypt">This message cannot be decrypted.\n\n• It might already help to simply reply to this message and ask the sender to send the message again.\n\n• In case you re-installed Delta Chat or another email program on this or another device you may want to send an Autocrypt Setup Message from there.</string>
+    <string name="systemmsg_cannot_decrypt">This message cannot be decrypted.\n\n• It might already help to simply reply to this message and ask the sender to send the message again.\n\n• In case you re-installed Delta Chat or another e-mail program on this or another device you may want to send an Autocrypt Setup Message from there.</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). -->
     <string name="systemmsg_action_by_me">%1$s by me.</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
@@ -674,7 +674,7 @@
     <string name="qrscan_failed">QR code could not be decoded</string>
     <string name="qrscan_ask_join_group">Do you want to join the group \"%1$s\"?</string>
     <string name="qrscan_fingerprint_mismatch">The scanned fingerprint does not match the last seen for %1$s.</string>
-    <string name="qrscan_no_addr_found">This QR code contains a fingerprint but no email address.\n\nFor an out-of-band-verification, please establish an encrypted connection to the recipient first.</string>
+    <string name="qrscan_no_addr_found">This QR code contains a fingerprint but no e-mail address.\n\nFor an out-of-band-verification, please establish an encrypted connection to the recipient first.</string>
     <string name="qrscan_contains_text">Scanned QR code text:\n\n%1$s</string>
     <string name="qrscan_contains_url">Scanned QR code URL:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Fingerprint</string>
@@ -691,7 +691,7 @@
     <string name="qrshow_join_contact_no_connection_toast">No internet connection, can\'t perform QR code setup.</string>
     <string name="qraccount_ask_create_and_login">Create new e-mail address on \"%1$s\" and log in there?</string>
     <string name="qraccount_ask_create_and_login_another">Create new e-mail address on \"%1$s\" and log in there?\n\nYour existing account will not be deleted. Use the \"Switch account\" item to switch between your accounts.</string>
-    <string name="qraccount_success_enter_name">Login successful—your email address is %1$s\n\nIf you like, you can now enter a name and an profile image that will be displayed to people you write to.</string>
+    <string name="qraccount_success_enter_name">Login successful—your e-mail address is %1$s\n\nIf you like, you can now enter a name and an profile image that will be displayed to people you write to.</string>
     <string name="qraccount_qr_code_cannot_be_used">The scanned QR code cannot be used to set up a new account.</string>
     <string name="qraccount_use_on_new_install">The scanned QR code is for setting up a new account. You can scan the QR code when setting up a new Delta Chat installation.</string>
     <string name="contact_verified">%1$s verified.</string>
@@ -796,7 +796,7 @@
     <string name="autocrypt_incorrect_desktop">Incorrect setup code. Please try again.</string>
     <string name="create_chat_error_desktop">Could not create chat.</string>
     <string name="ask_delete_chat_desktop">Delete this chat?</string>
-    <string name="email_validation_failed_desktop">Email address required.</string>
+    <string name="email_validation_failed_desktop">E-mail address required.</string>
     <string name="forget_login_confirmation_desktop">Delete this login? Everything will be deleted, including your end-to-end setup, contacts, chats, messages and media. This action cannot be undone.</string>
     <string name="account_info_hover_tooltip_desktop">E-Mail: %1$s\nSize: %2$s\nPath: %3$s</string>
     <string name="me_desktop">me</string>
@@ -828,7 +828,7 @@
 
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat uses your camera to take and send photos and videos and to scan QR codes.</string>
-    <string name="InfoPlist_NSContactsUsageDescription">Delta Chat uses your contacts to show a list of email addresses you can write to. Delta Chat has no server, your contacts are not sent anywhere.</string>
+    <string name="InfoPlist_NSContactsUsageDescription">Delta Chat uses your contacts to show a list of e-mail addresses you can write to. Delta Chat has no server, your contacts are not sent anywhere.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat uses your microphone to record and send voice messages and videos with sound.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat will let you choose which photos from your library to send.</string>
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat wants to save images to your photo library.</string>
@@ -837,7 +837,7 @@
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="pref_background_notifications">Background notifications</string>
     <string name="pref_background_notifications_explain">Uses a background connection to your server and requires ignored battery optimizations.</string>
-    <string name="pref_background_notifications_rationale">To maintain connection to your email server and receive messages in the background, ignore battery optimizations in the next step.\n\nDelta Chat uses few resources and takes care not to drain your battery.</string>
+    <string name="pref_background_notifications_rationale">To maintain connection to your e-mail server and receive messages in the background, ignore battery optimizations in the next step.\n\nDelta Chat uses few resources and takes care not to drain your battery.</string>
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="pref_reliable_service">Reliable background connection</string>
     <string name="pref_reliable_service_explain">Requires a permanent notification</string>
