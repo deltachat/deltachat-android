@@ -117,6 +117,8 @@ public class ConversationListFragment extends Fragment
     dcContext.eventCenter.addObserver(DcContext.DC_EVENT_MSG_DELIVERED, this);
     dcContext.eventCenter.addObserver(DcContext.DC_EVENT_MSG_FAILED, this);
     dcContext.eventCenter.addObserver(DcContext.DC_EVENT_MSG_READ, this);
+    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_MSG_READ, this);
+    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_CONNECTIVITY_CHANGED, this);
   }
 
   @Override
@@ -609,8 +611,13 @@ public class ConversationListFragment extends Fragment
 
   @Override
   public void handleEvent(DcEvent event) {
-    getLoaderManager().restartLoader(0, null, this);
+    if (event.getId() == DcContext.DC_EVENT_CONNECTIVITY_CHANGED) {
+      ((ConversationListActivity) getActivity()).refreshTitle();
+    } else {
+      getLoaderManager().restartLoader(0, null, this);
+    }
   }
+
 }
 
 

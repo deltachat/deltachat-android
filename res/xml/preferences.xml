@@ -25,6 +25,11 @@
                 android:icon="@drawable/ic_advanced_24dp"
                 android:layout="@layout/preference_item" />
 
+    <Preference android:key="preference_category_connectivity"
+                android:title="@string/connectivity"
+                android:icon="@drawable/ic_swap_vert_24dp"
+                android:layout="@layout/preference_item"/>
+
     <Preference android:key="preference_category_help"
                 android:title="@string/menu_help"
                 android:icon="@drawable/ic_help_24dp"

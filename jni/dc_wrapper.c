@@ -616,6 +616,21 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcContext_getInfo(JNIEnv *env, jobject
 }
 
 
+JNIEXPORT jint Java_com_b44t_messenger_DcContext_getConnectivity(JNIEnv *env, jobject obj)
+{
+    return dc_get_connectivity(get_dc_context(env, obj));
+}
+
+
+JNIEXPORT jstring Java_com_b44t_messenger_DcContext_getConnectivityHtml(JNIEnv *env, jobject obj)
+{
+    char* temp = dc_get_connectivity_html(get_dc_context(env, obj));
+        jstring ret = JSTRING_NEW(temp);
+    dc_str_unref(temp);
+    return ret;
+}
+
+
 JNIEXPORT jstring Java_com_b44t_messenger_DcContext_getOauth2Url(JNIEnv *env, jobject obj, jstring addr, jstring redirectUrl)
 {
     CHAR_REF(addr);
