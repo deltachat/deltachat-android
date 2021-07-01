@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import com.b44t.messenger.DcContext;
 
 import org.thoughtcrime.securesms.ApplicationContext;
+import org.thoughtcrime.securesms.R;
 
 public class DcHelper {
 
@@ -68,4 +69,23 @@ public class DcHelper {
         dcContext.setConfig(key, value);
     }
 
+  /**
+   * Gets a string you can show to the user with basic information about connectivity.
+   * @param context
+   * @param connectedString Usually "Connected", but when using this as the title in
+   *                        ConversationListActivity, we want to write "Delta Chat" there instead.
+   * @return
+   */
+  public static String getConnectivitySummary(Context context, int connectedString) {
+      int connectivity = getContext(context).getConnectivity();
+      if (connectivity >= DcContext.DC_CONNECTIVITY_CONNECTED) {
+          return context.getString(connectedString);
+      } else if (connectivity >= DcContext.DC_CONNECTIVITY_WORKING) {
+          return context.getString(R.string.connectivity_getting_new_msgs);
+      } else if (connectivity >= DcContext.DC_CONNECTIVITY_CONNECTING) {
+          return context.getString(R.string.connectivity_connecting);
+      } else {
+          return context.getString(R.string.connectivity_not_connected);
+      }
+  }
 }

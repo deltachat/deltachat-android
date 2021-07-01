@@ -63,7 +63,6 @@
     <string name="next">Next</string>
     <string name="error">Error</string>
     <string name="error_x">Error: %1$s</string>
-    <string name="error_no_network">Network unavailable.</string>
     <string name="no_app_to_handle_data">Can\'t find an app to handle this type of data.</string>
     <string name="no_browser_installed">No browser installed.</string>
     <string name="file_not_found">Could not find %1$s.</string>
@@ -412,6 +411,15 @@
     <string name="tab_docs_empty_hint">Documents, music and other files shared in this chat will be displayed here.</string>
     <string name="media_preview">Media preview</string>
     <string name="send_message">Send message</string>
+
+
+    <!-- Connectivity -->
+    <string name="connectivity">Connectivity</string>
+    <string name="connectivity_not_connected">Not connected</string>
+    <!-- Note that the three dots are a single character (…), not three (...) -->
+    <string name="connectivity_connecting">Connecting…</string>
+    <string name="connectivity_getting_new_msgs">Getting new messages…</string>
+    <string name="connectivity_connected">Connected</string>
 
 
     <!-- welcome and login -->
