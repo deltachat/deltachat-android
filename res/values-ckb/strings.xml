@@ -48,7 +48,7 @@
     <string name="done">ئەنجام بوو</string>
     <string name="undo">گەڕاندنەوە</string>
     <string name="offline">دەرهێڵ</string>
-    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
+    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in iOS headers, the string should be as short as possible, though. -->
     <string name="next">پاشوو</string>
     <string name="error">هەڵە</string>
     <string name="error_x">هەڵە: %1$s</string>
@@ -108,7 +108,7 @@
     <string name="audio">دەنگ</string>
     <string name="voice_message">پەیامی دەنگی</string>
     <string name="forwarded_message">پەیامی هاوبەشکراو</string>
-    <!-- %1$s will be replaced by the name or the email-address of the person who has forwarded the message -->
+    <!-- %1$s will be replaced by the name or the e-mail address of the person who has forwarded the message -->
     <string name="forwarded_by">هاوبەشکراو لە لایەن%1$s</string>
     <string name="video">ڤیدیۆ</string>
     <string name="documents">بەڵگەکان</string>
@@ -380,7 +380,7 @@
     <string name="login_smtp_port">پۆرتی SMTP</string>
     <string name="login_smtp_security">ئاسایشی SMTP</string>
     <string name="login_auth_method">شێوازی پشتڕاشتکردنەوە</string>
-    <!-- Translators: %1$s will be replaced by an email address -->
+    <!-- Translators: %1$s will be replaced by an e-mail address -->
     <string name="login_oauth2_checking_addr">پشکنینی %1$s</string>
     <string name="login_info_oauth2_title">بە ڕێکخستنە ئاسانکراوەکەوە بەردەوام دەبیت؟</string>
     <string name="login_error_mail">تکایە ئیمەیلێکی ڕاست بنووسە</string>
@@ -390,7 +390,7 @@
     <string name="import_backup_title">هاوردەکردنی یەدەک</string>
     <string name="import_backup_ask">یەدەکەکە لە \"%1$s\"دا دۆزرایەوە.\n\n دەتەوێت هەموو داتا و ڕێکخستنەکانی هاوردە بکەیت و بەکاریان بێنیت؟</string>
     <string name="import_backup_no_backup_found">هیچ یەدەکێک نەدۆزرایەوە.\n\n یەدەکەکە کۆپی بکە بۆ\"%1$s\" و دیسان هەوڵبدەوە. یان بۆ بەردەوامبوون لەسەر پرۆسەی ئاسایی دامەزراندنەکە، دەستبنە بە \"دەستپێکی نامەنووسین\"دا .</string>
-    <!-- Translators: %1$s will be replaced by the email address -->
+    <!-- Translators: %1$s will be replaced by the e-mail address -->
     <string name="login_error_cannot_login">\"%1$s\" ناتوانێت بچێتە ژوورەوە. سەرنج بدە بزانە ئیمەیل و تێپەڕوشەکە درووستە.</string>
     <string name="used_settings">ڕێکخستنە بەکارهێنراوەکان:</string>
     <string name="switch_account">گۆڕینی هەژمار</string>

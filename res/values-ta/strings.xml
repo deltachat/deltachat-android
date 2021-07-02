@@ -35,7 +35,7 @@
     <string name="never">எப்போதும் இல்லை</string>
     <string name="one_moment">ஒரு நிமிடம் காத்திருக்கவும் ...</string>
     <string name="done">முடிந்தது</string>
-    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
+    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in iOS headers, the string should be as short as possible, though. -->
     <string name="next">அடுத்தது</string>
     <string name="error">பிழை</string>
     <string name="error_x">பிழை: %1$s</string>

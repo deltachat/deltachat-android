@@ -59,7 +59,7 @@
     <string name="done">Выполнено</string>
     <string name="undo">Отмена</string>
     <string name="offline">Не в сети</string>
-    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
+    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in iOS headers, the string should be as short as possible, though. -->
     <string name="next">Дальше</string>
     <string name="error">Ошибка</string>
     <string name="error_x">Ошибка: %1$s</string>
@@ -132,7 +132,7 @@
     <string name="voice_message">Голосовое сообщение</string>
     <string name="forwarded">Переслано</string>
     <string name="forwarded_message">Пересланное сообщение</string>
-    <!-- %1$s will be replaced by the name or the email-address of the person who has forwarded the message -->
+    <!-- %1$s will be replaced by the name or the e-mail address of the person who has forwarded the message -->
     <string name="forwarded_by">Переслано %1$s</string>
     <string name="video">Видео</string>
     <string name="documents">Документы</string>
@@ -457,7 +457,7 @@
     <string name="login_smtp_port">SMTP порт</string>
     <string name="login_smtp_security">Параметры безопасности SMTP</string>
     <string name="login_auth_method">Метод авторизации</string>
-    <!-- Translators: %1$s will be replaced by an email address -->
+    <!-- Translators: %1$s will be replaced by an e-mail address -->
     <string name="login_oauth2_checking_addr">Проверяем %1$s</string>
     <string name="login_info_oauth2_title">Продолжить упрощенную настройку?</string>
     <string name="login_info_oauth2_text">Введённый адрес электронной почты поддерживает упрощённую настройку (OAuth2).\n\nНа следующем шаге разрешите, пожалуйста, Delta Chat выступать в качестве Вашего приложения для чата с помощью электронной почты.\n\nУ Delta Chat нет серверов, Ваши данные остаются на Вашем устройстве!</string>
@@ -469,7 +469,7 @@
     <string name="import_backup_title">Импорт резервной копии</string>
     <string name="import_backup_ask">Найдена резервная копия в «%1$s».\n\nВы хотите импортировать и использовать все данные и параметры из неё?</string>
     <string name="import_backup_no_backup_found">Резервных копий не найдено.\n\nПоместите резервную копию в папку «%1$s» и попробуйте снова запустить восстановление. Или как альтернатива, нажмите «Начать общение»  в обычном режиме.</string>
-    <!-- Translators: %1$s will be replaced by the email address -->
+    <!-- Translators: %1$s will be replaced by the e-mail address -->
     <string name="login_error_cannot_login">Не удалось выполнить вход с логином \"%1$s\". Убедитесь, что адрес эл. почты и пароль указаны верно.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Ответ от %1$s: %2$s\n\nНекоторые поставщики электронной почты могут сообщить вам о дополнительной проблеме; у вас должна быть возможность проверять свой почтовый ящик с помощью обычного почтового приложения или веб-сайта. Если у вас возникнут проблемы, посоветуйтесь со своим провайдером или друзьями. </string>

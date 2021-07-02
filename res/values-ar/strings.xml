@@ -35,7 +35,7 @@
     <string name="one_moment">لحظة…</string>
     <string name="done">تم</string>
     <string name="undo">ألغ</string>
-    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
+    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in iOS headers, the string should be as short as possible, though. -->
     <string name="next">التالي</string>
     <string name="error">خطأ</string>
     <string name="error_x">خطأ: %1$s</string>
@@ -52,24 +52,6 @@
     <string name="this_month">هذا الشهر</string>
     <string name="last_week">الأسبوع الماضي</string>
     <string name="last_month">الشهر الماضي</string>
-    <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
-    <plurals name="n_minutes">
-        <item quantity="zero">لا دقيقة</item>
-        <item quantity="one">دقيقة واحدة</item>
-        <item quantity="two">دقيقتَيْن</item>
-        <item quantity="few">%d دقائق</item>
-        <item quantity="many">%d دقائق</item>
-        <item quantity="other">%d دقائق</item>
-    </plurals>
-    <!-- Translators: show beside messages that are "N hours old". prefer a short string, prefer abbreviations if they're well-known -->
-    <plurals name="n_hours">
-        <item quantity="zero">لا ساعة</item>
-        <item quantity="one">ساعة واحدة</item>
-        <item quantity="two">ساعتان</item>
-        <item quantity="few">%d ساعات</item>
-        <item quantity="many">%d ساعات</item>
-        <item quantity="other">%d ساعات</item>
-    </plurals>
     <string name="self">أنا</string>
     <string name="draft">مسودة</string>
     <string name="image">صورة</string>

@@ -47,7 +47,7 @@
     <string name="done">انجام شد</string>
     <string name="undo">واگرد</string>
     <string name="offline">آفلاین</string>
-    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
+    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in iOS headers, the string should be as short as possible, though. -->
     <string name="next">بعدی</string>
     <string name="error">خطا</string>
     <string name="error_x">خطا: %1$s</string>
@@ -379,7 +379,7 @@
     <string name="login_smtp_port">SMTP port </string>
     <string name="login_smtp_security">امنیت SMTP  </string>
     <string name="login_auth_method">روش تایید هویت</string>
-    <!-- Translators: %1$s will be replaced by an email address -->
+    <!-- Translators: %1$s will be replaced by an e-mail address -->
     <string name="login_oauth2_checking_addr">بررسی %1$s</string>
     <string name="login_info_oauth2_title">با تنظیمات ساده‌ شده ادامه می‌دهید؟</string>
     <string name="login_info_oauth2_text">آدرس ایمیل وارد شده از تنظیمات ساده پشتیبانی می‌کند(OAuth 2.0).\n\nIn مرحله بعد، لطفا به دلتاچت اجازه دهید که به عنوان نرم‌افزار ایمیل شما عمل نماید\n\n سرور دلتاچت وجود ندارد داده‌های شما در دستگاه خودتان باقی می‌ماند. </string>
@@ -391,7 +391,7 @@
     <string name="import_backup_title">وارد کردن نسخه پشتیبانی</string>
     <string name="import_backup_ask">نسخه پشتیبانی در\"%1$s\" پیدا شد.\n\n آیا می‌خواهید همه داده ها و تنظیمات از آن وارد شود؟</string>
     <string name="import_backup_no_backup_found">نسخه پشتیبانی پیدا نشد.\n\n نسخه پشتیبانی را در\"%1$s\" کپی کرده و دوباره امتحان کنید. در غیر این صورت می‌توانید \"شروع پیام‌رسانی\" را فشار دهید دا فرایند به صورت عادی ادامه یابد. </string>
-    <!-- Translators: %1$s will be replaced by the email address -->
+    <!-- Translators: %1$s will be replaced by the e-mail address -->
     <string name="login_error_cannot_login">امکان ورود با\"%1$s\"وجود ندارد. لطفا صحت ایمیل و رمز عبور را بررسی کنید. </string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">بازخورد از %1$s: %2$s\n\n برخی ارائه دهندگان ایمیل، اطلاعات بیشتری درمورد ابن مشکل برایتان ارسال می‌کنند. می‌توانید صندوق ورودی خود را از طریق وب سایت ایمیل یا نرم‌افزار همیشگی خود بررسی کنید. . اگر به مشکلی برخوردید به ارائه دهندگان ایمیل یا دوستان خود مراجعه کنید. </string>

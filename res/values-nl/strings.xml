@@ -59,7 +59,7 @@
     <string name="done">Klaar</string>
     <string name="undo">Ongedaan maken</string>
     <string name="offline">Offline</string>
-    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
+    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in iOS headers, the string should be as short as possible, though. -->
     <string name="next">Volgende</string>
     <string name="error">Fout</string>
     <string name="error_x">Fout: %1$s</string>
@@ -120,7 +120,7 @@
     <string name="voice_message">Spraakbericht</string>
     <string name="forwarded">Doorgestuurd</string>
     <string name="forwarded_message">Bericht doorgestuurd</string>
-    <!-- %1$s will be replaced by the name or the email-address of the person who has forwarded the message -->
+    <!-- %1$s will be replaced by the name or the e-mail address of the person who has forwarded the message -->
     <string name="forwarded_by">Doorgestuurd door %1$s</string>
     <string name="video">Video</string>
     <string name="documents">Documenten</string>
@@ -433,7 +433,7 @@
     <string name="login_smtp_port">SMTP-poort</string>
     <string name="login_smtp_security">SMTP-beveiliging</string>
     <string name="login_auth_method">Autorisatiemethode</string>
-    <!-- Translators: %1$s will be replaced by an email address -->
+    <!-- Translators: %1$s will be replaced by an e-mail address -->
     <string name="login_oauth2_checking_addr">Bezig met controleren van %1$s</string>
     <string name="login_info_oauth2_title">Wil je doorgaan met vereenvoudigd instellen?</string>
     <string name="login_info_oauth2_text">Het ingevoerde e-mailadres ondersteunt vereenvoudigd instellen (OAuth2).\n\nTijdens de volgende stap moet je Delta Chat toestaan te fungeren als je e-mailapp.\n\nDelta Chat heeft geen eigen servers; jóuw gegevens blijven op jóuw apparaat!</string>
@@ -445,7 +445,7 @@
     <string name="import_backup_title">Back-up importeren</string>
     <string name="import_backup_ask">Back-up aangetroffen in \"%1$s\".\n\nWil je de instellingen en gegevens daaruit importeren?</string>
     <string name="import_backup_no_backup_found">Geen back-ups aangetroffen.\n\nKopieer de back-up naar \"%1$s\" en probeer het opnieuw of druk op \"Aan de slag\" om het normale instelproces te doorlopen.</string>
-    <!-- Translators: %1$s will be replaced by the email address -->
+    <!-- Translators: %1$s will be replaced by the e-mail address -->
     <string name="login_error_cannot_login">Kan niet inloggen als \"%1$s\". Controleer het e-mailadres en wachtwoord.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Antwoord van %1$s: %2$s\n\nSommige providers plaatsen extra informatie in je Postvak IN. Je kunt dit controleren in de app of webversie. Neem contact op met je provider of vrienden als je problemen ervaart.</string>

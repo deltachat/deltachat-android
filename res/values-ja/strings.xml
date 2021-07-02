@@ -54,7 +54,7 @@
     <string name="done">完了</string>
     <string name="undo">元に戻す</string>
     <string name="offline">オフライン</string>
-    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
+    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in iOS headers, the string should be as short as possible, though. -->
     <string name="next">次へ</string>
     <string name="error">エラー</string>
     <string name="error_x">エラー：%1$s</string>
@@ -108,7 +108,7 @@
     <string name="audio">音楽</string>
     <string name="voice_message">音声メッセージ</string>
     <string name="forwarded_message">転送されたメッセージ</string>
-    <!-- %1$s will be replaced by the name or the email-address of the person who has forwarded the message -->
+    <!-- %1$s will be replaced by the name or the e-mail address of the person who has forwarded the message -->
     <string name="forwarded_by">%1$sが転送しました</string>
     <string name="video">動画</string>
     <string name="documents">文章</string>
@@ -388,7 +388,7 @@
     <string name="login_smtp_port">SMTPポート</string>
     <string name="login_smtp_security">SMTP暗号方式</string>
     <string name="login_auth_method">認証方法</string>
-    <!-- Translators: %1$s will be replaced by an email address -->
+    <!-- Translators: %1$s will be replaced by an e-mail address -->
     <string name="login_oauth2_checking_addr">%1$sが確認中</string>
     <string name="login_info_oauth2_title">簡単セットアップを使用しましょうか？</string>
     <string name="login_info_oauth2_text">入力されたメールアドレスは、簡易セットアップ（OAuth 2.0）に対応しています。次に「メールでチャット」を許可してください。Delta Chatにはサーバーがなく、テーダはデバイスにあります。</string>
@@ -400,7 +400,7 @@
     <string name="import_backup_title">バックアップをインポート</string>
     <string name="import_backup_ask">%1$sでバックアップがあります。\n\nすべての設定やデータを取り込んで使用しましょうか？</string>
     <string name="import_backup_no_backup_found">バックアップが見つかりません。\n\n%1$sにバックアップをコピーして、再試行してください。又は、「メッセージの開始」を押して通常のセットアップを続行します。</string>
-    <!-- Translators: %1$s will be replaced by the email address -->
+    <!-- Translators: %1$s will be replaced by the e-mail address -->
     <string name="login_error_cannot_login">%1$sとしてログインできません。メールアドレスとパスワードを確認してください。</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">%1$sから：%2$s\n\nプロバイダーによって問題に関して情報をメールで貰える可能性があります。メールアプリ又はブラウザでメールを確認してください。</string>

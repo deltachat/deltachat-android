@@ -27,7 +27,7 @@
     <string name="one_moment">Egy pillanat...</string>
     <string name="done">Kész</string>
     <string name="undo">Visszavonás</string>
-    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
+    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in iOS headers, the string should be as short as possible, though. -->
     <string name="next">Tovább</string>
     <string name="error">Hiba</string>
     <string name="error_x">Hiba: %1$s</string>

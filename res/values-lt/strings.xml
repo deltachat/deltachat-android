@@ -52,7 +52,7 @@
     <string name="one_moment">Minutėlę…</string>
     <string name="done">Atlikta</string>
     <string name="undo">Atšaukti</string>
-    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
+    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in iOS headers, the string should be as short as possible, though. -->
     <string name="next">Kitas</string>
     <string name="error">Klaida</string>
     <string name="error_x">Klaida: %1$s</string>
@@ -124,7 +124,7 @@
     <string name="audio">Garsas</string>
     <string name="voice_message">Balso žinutė</string>
     <string name="forwarded_message">Persiųsta žinutė</string>
-    <!-- %1$s will be replaced by the name or the email-address of the person who has forwarded the message -->
+    <!-- %1$s will be replaced by the name or the e-mail address of the person who has forwarded the message -->
     <string name="forwarded_by">Persiuntė %1$s</string>
     <string name="video">Vaizdas</string>
     <string name="documents">Dokumentai</string>
@@ -386,7 +386,7 @@
     <string name="login_smtp_port">SMTP prievadas</string>
     <string name="login_smtp_security">SMTP saugumas</string>
     <string name="login_auth_method">Įgaliojimų suteikimo metodas</string>
-    <!-- Translators: %1$s will be replaced by an email address -->
+    <!-- Translators: %1$s will be replaced by an e-mail address -->
     <string name="login_oauth2_checking_addr">Tikrinamas %1$s</string>
     <string name="login_info_oauth2_title">Tęsti, naudojant supaprastintą sąranką?</string>
     <string name="login_certificate_checks">Liudijimų patikrinimai</string>
@@ -397,7 +397,7 @@
     <string name="import_backup_title">Importuoti atsarginę kopjią</string>
     <string name="import_backup_ask">Atsarginė kopija rasta ties \"%1$s\".\n\nAr norite iš jos importuoti ir naudoti visus duomenis ir nustatymus?</string>
     <string name="import_backup_no_backup_found">Nerasta jokių atsarginių kopijų.\n\nNukopijuokite atsarginę kopiją į \"%1$s\" ir bandykite dar kartą. Priešingu atveju, paspauskite \"Pradėti susirašinėjimą\", kad pereitumėte į įprastą sąrankos procesą.</string>
-    <!-- Translators: %1$s will be replaced by the email address -->
+    <!-- Translators: %1$s will be replaced by the e-mail address -->
     <string name="login_error_cannot_login">Nepavyksta prisijungti kaip \"%1$s\". Patikrinkite ar el. pašto adresas ir slaptažodis yra teisingi.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Atsakymas iš %1$s: %2$s\n\nKai kurie teikėjai patalpina papildomą informaciją į jūsų gautųjų laiškų aplanką; galite ją patikrinti, pvz., prisijungę per naršyklę. Jei susidursite su problema, pagalbos teiraukitės savo teikėjo ar draugų.</string>

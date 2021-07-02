@@ -56,7 +56,7 @@
     <string name="done">Gotowe</string>
     <string name="undo">Cofnij</string>
     <string name="offline">Offline</string>
-    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
+    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in iOS headers, the string should be as short as possible, though. -->
     <string name="next">Dalej</string>
     <string name="error">Błąd</string>
     <string name="error_x">Błąd: %1$s</string>
@@ -129,7 +129,7 @@
     <string name="voice_message">Wiadomość głosowa</string>
     <string name="forwarded">Przekazana</string>
     <string name="forwarded_message">Przekazano wiadomość</string>
-    <!-- %1$s will be replaced by the name or the email-address of the person who has forwarded the message -->
+    <!-- %1$s will be replaced by the name or the e-mail address of the person who has forwarded the message -->
     <string name="forwarded_by">Przekazana przez %1$s</string>
     <string name="video">Wideo</string>
     <string name="documents">Dokumenty</string>
@@ -427,7 +427,7 @@
     <string name="login_smtp_port">Port SMTP</string>
     <string name="login_smtp_security">Bezpieczeństwo SMTP</string>
     <string name="login_auth_method">Metoda autoryzacji</string>
-    <!-- Translators: %1$s will be replaced by an email address -->
+    <!-- Translators: %1$s will be replaced by an e-mail address -->
     <string name="login_oauth2_checking_addr">Sprawdzanie %1$s</string>
     <string name="login_info_oauth2_title">Kontynuuj w uproszczonej konfiguracji?</string>
     <string name="login_info_oauth2_text">Wprowadzony adres e-mail obsługuje uproszczoną konfigurację (OAuth2.0).\n\nW następnym kroku pozwól, aby Delta Chat działał jako czat z aplikacją e-mail.\n\nNie ma serwerów Delta Chat, Twoje dane pozostają na Twoim urządzeniu!</string>
@@ -439,7 +439,7 @@
     <string name="import_backup_title">Import kopii zapasowej</string>
     <string name="import_backup_ask">Delta Chat znalazł kopię zapasową w katalogu „%1$s.\n\nCzy chcesz zaimportować i używać wszystkich danych i ustawień z tej kopii zapasowej?</string>
     <string name="import_backup_no_backup_found">Nie znaleziono kopii zapasowej.\n\nSkopiuj kopię zapasową do katalogu „%1$s i spróbuj ponownie. Alternatywnie dotknij \"Uruchom komunikator\", aby rozpocząć normalny proces instalacji.</string>
-    <!-- Translators: %1$s will be replaced by the email address -->
+    <!-- Translators: %1$s will be replaced by the e-mail address -->
     <string name="login_error_cannot_login">Nie można się zalogować jako „%1$s. Sprawdź, czy adres e-mail i hasło są poprawne.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Odpowiedź od %1$s: %2$s\n\nNiektórzy dostawcy umieszczają w skrzynce odbiorczej dodatkowe informacje, które można sprawdzić np. na stronie internetowej. W przypadku wystąpienia problemów należy skonsultować się z dostawcą lub znajomymi.</string>
