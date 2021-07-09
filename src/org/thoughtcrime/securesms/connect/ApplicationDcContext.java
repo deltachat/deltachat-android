@@ -143,7 +143,6 @@ public class ApplicationDcContext extends DcContext {
     setStockTranslation(42, context.getString(R.string.autocrypt_asm_subject));
     setStockTranslation(43, context.getString(R.string.autocrypt_asm_general_body));
     setStockTranslation(60, context.getString(R.string.login_error_cannot_login));
-    setStockTranslation(61, context.getString(R.string.login_error_server_response));
     setStockTranslation(62, context.getString(R.string.systemmsg_action_by_user));
     setStockTranslation(63, context.getString(R.string.systemmsg_action_by_me));
     setStockTranslation(68, context.getString(R.string.device_talk));
@@ -412,16 +411,7 @@ public class ApplicationDcContext extends DcContext {
       if (showAsToast) {
         String toastString = null;
 
-        if (event == DC_EVENT_ERROR_NETWORK) {
-          if (isNetworkConnected()) {
-            toastString = string;
-            showNetworkErrors = true;
-          } else if (showNetworkErrors) {
-            toastString = context.getString(R.string.error_no_network);
-            showNetworkErrors = false;
-          }
-        }
-        else if (event == DC_EVENT_ERROR_SELF_NOT_IN_GROUP) {
+        if (event == DC_EVENT_ERROR_SELF_NOT_IN_GROUP) {
           toastString = context.getString(R.string.group_self_not_in_group);
         }
 
@@ -445,10 +435,6 @@ public class ApplicationDcContext extends DcContext {
         break;
 
       case DC_EVENT_ERROR:
-        handleError(id, event.getData2Str());
-        break;
-
-      case DC_EVENT_ERROR_NETWORK:
         handleError(id, event.getData2Str());
         break;
 

@@ -277,6 +277,11 @@
         android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize">
     </activity>
 
+    <activity android:name=".ConnectivityActivity"
+        android:theme="@style/TextSecure.LightTheme"
+        android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize">
+    </activity>
+
     <activity android:name=".map.MapActivity" />
 
     <activity android:name=".ZhvActivity">
