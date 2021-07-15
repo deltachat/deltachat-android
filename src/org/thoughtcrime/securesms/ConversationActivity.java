@@ -478,7 +478,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     }
 
     if (isGroupConversation()) {
-      if (!dcChat.isMailingList()) { // Leaving mailing lists is currently not supported
+      if (dcChat.canSend()) { // If you can't send, then you can't leave the group
         inflater.inflate(R.menu.conversation_push_group_options, menu);
       }
     }
@@ -965,13 +965,15 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       conversationContainer.setClipToPadding(true);
     }
 
-    if (!dcChat.canSend()) {
-      composePanel.setVisibility(View.GONE);
-    }
+    setComposePanelVisibility();
 
     if (chatId == DcChat.DC_CHAT_ID_DEADDROP) {
       titleView.hideAvatar();
     }
+  }
+
+  private void setComposePanelVisibility() {
+    composePanel.setVisibility(dcChat.canSend() ? View.VISIBLE : View.GONE);
   }
 
   //////// Helper Methods
@@ -1551,6 +1553,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       dcChat = dcContext.getChat(chatId);
       titleView.setTitle(glideRequests, dcChat);
       initializeSecurity(isSecureText, isDefaultSms);
+      setComposePanelVisibility();
     }
   }
 

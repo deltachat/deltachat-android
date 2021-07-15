@@ -690,6 +690,12 @@
     <string name="qrscan_contains_url">Scanned QR code URL:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Fingerprint</string>
     <string name="qrscan_x_verified_introduce_myself">%1$s verified, introduce myself…</string>
+    <string name="withdraw_verifycontact_explain">Prevent others from contacting you when scanning this QR code?\n\n(Can be undone by scanning it yourself afterwards.)</string>
+    <string name="withdraw_verifygroup_explain">Prevent others from joining your \"%1$s\" group when scanning this QR code?\n\n(Can be undone by scanning it yourself afterwards.)</string>
+    <string name="withdraw_qr_code">Withdraw QR code</string>
+    <string name="revive_verifycontact_explain">This QR code could be scanned by others to setup a contact with you, but was withdrawn. Currently the QR code is not functional.</string>
+    <string name="revive_verifygroup_explain">This QR code could be scanned by others to join the group \"%1$s\", but was withdrawn. Currently the QR code is not functional.</string>
+    <string name="revive_qr_code">Revive QR code</string>
     <string name="qrshow_title">QR invite code</string>
     <string name="qrshow_x_joining">%1$s joins.</string>
     <string name="qrshow_x_verified">%1$s verified.</string>
