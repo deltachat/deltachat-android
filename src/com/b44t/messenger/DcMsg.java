@@ -145,8 +145,9 @@ public class DcMsg {
 
     // aliases and higher-level tools
     public static int[] msgSetToIds(final Set<DcMsg> dcMsgs) {
-        if(dcMsgs==null)
+        if (dcMsgs == null) {
             return new int[0];
+        }
         int[] ids = new int[dcMsgs.size()];
         int   i = 0;
         for (DcMsg dcMsg : dcMsgs) {
