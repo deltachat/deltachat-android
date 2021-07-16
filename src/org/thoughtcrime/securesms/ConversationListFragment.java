@@ -486,25 +486,6 @@ public class ConversationListFragment extends Fragment
     }
   }
 
-  static class DeaddropQuestionHelper {
-    public String question;
-    public String answerBlock;
-
-    DeaddropQuestionHelper(Context context, DcMsg dcMsg) {
-      DcContext dcContext = DcHelper.getContext(context);
-      DcChat dcChat = dcContext.getChat(dcMsg.getRealChatId());
-
-      if (dcChat.isMailingList()) {
-        question = context.getString(R.string.ask_show_mailing_list, dcChat.getName());
-        answerBlock = context.getString(R.string.block);
-      } else {
-        DcContact dcContact = dcContext.getContact(dcMsg.getFromId());
-        question = context.getString(R.string.ask_start_chat_with, dcMsg.getSenderName(dcContact, false));
-        answerBlock = context.getString(R.string.menu_block_contact);
-      }
-    }
-  };
-
   @Override
   public void onSwitchToArchive() {
     ((ConversationSelectedListener)getActivity()).onSwitchToArchive();

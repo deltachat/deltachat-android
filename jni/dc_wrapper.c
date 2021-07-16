@@ -438,6 +438,18 @@ JNIEXPORT void Java_com_b44t_messenger_DcContext_deleteChat(JNIEnv *env, jobject
 }
 
 
+JNIEXPORT void Java_com_b44t_messenger_DcContext_blockChat(JNIEnv *env, jobject obj, jint chat_id)
+{
+    dc_block_chat(get_dc_context(env, obj), chat_id);
+}
+
+
+JNIEXPORT void Java_com_b44t_messenger_DcContext_acceptChat(JNIEnv *env, jobject obj, jint chat_id)
+{
+    dc_accept_chat(get_dc_context(env, obj), chat_id);
+}
+
+
 /* DcContext - handle messages */
 
 
