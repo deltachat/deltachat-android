@@ -72,7 +72,7 @@
             android:title="@string/pref_on_demand_location_streaming"/>
 
         <Preference android:key="pref_webrtc_instance"
-            android:title="Video chat instance"
+            android:title="@string/videochat_instance"
             android:summary="@string/none"/>
 
     </PreferenceCategory>
