@@ -58,7 +58,6 @@
     <string name="next">次へ</string>
     <string name="error">エラー</string>
     <string name="error_x">エラー：%1$s</string>
-    <string name="error_no_network">通信不能</string>
     <string name="no_app_to_handle_data">この種類のファイルを開くためのアプリが見つかりません。</string>
     <string name="no_browser_installed">ブラウザーが見つかりません</string>
     <string name="file_not_found">%1$sを見付けられません</string>

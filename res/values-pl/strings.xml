@@ -61,7 +61,6 @@
     <string name="next">Dalej</string>
     <string name="error">Błąd</string>
     <string name="error_x">Błąd: %1$s</string>
-    <string name="error_no_network">Sieć niedostępna.</string>
     <string name="no_app_to_handle_data">Nie można znaleźć aplikacji do obsługi tego typu danych.</string>
     <string name="no_browser_installed">Nie zainstalowano przeglądarki.</string>
     <string name="file_not_found">Nie znaleziono pliku %1$s.</string>

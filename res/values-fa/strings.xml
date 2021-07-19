@@ -51,7 +51,6 @@
     <string name="next">بعدی</string>
     <string name="error">خطا</string>
     <string name="error_x">خطا: %1$s</string>
-    <string name="error_no_network">شبکه در دسترس نیست.</string>
     <string name="no_app_to_handle_data">نرم‌افزاری برای باز کردن این نوع داده یافت نشد</string>
     <string name="no_browser_installed">هیچ مرورگری نصب نیست.</string>
     <string name="file_not_found">عدم یافتن %1$s</string>

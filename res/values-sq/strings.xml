@@ -63,7 +63,6 @@
     <string name="next">Pasuesja</string>
     <string name="error">Gabim</string>
     <string name="error_x">Gabim: %1$s</string>
-    <string name="error_no_network">Rrjet i pakapshëm.</string>
     <string name="no_app_to_handle_data">S\’gjendet dot një aplikacion për trajtimin e këtij lloji të dhënash.</string>
     <string name="no_browser_installed">S\’ka shfletues të instaluar.</string>
     <string name="file_not_found">S\’u gjet dot %1$s.</string>

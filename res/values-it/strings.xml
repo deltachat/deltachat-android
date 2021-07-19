@@ -63,7 +63,6 @@
     <string name="next">Avanti</string>
     <string name="error">Errore</string>
     <string name="error_x">Errore: %1$s</string>
-    <string name="error_no_network">Rete non disponibile.</string>
     <string name="no_app_to_handle_data">Non ho trovato un\'app per gestire questo tipo di dati.</string>
     <string name="no_browser_installed">Nessun browser installato.</string>
     <string name="file_not_found">%1$s non trovato.</string>

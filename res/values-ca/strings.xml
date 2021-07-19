@@ -54,7 +54,6 @@
     <string name="next">Següent</string>
     <string name="error">Error</string>
     <string name="error_x">Error: %1$s</string>
-    <string name="error_no_network">Xarxa no disponible.</string>
     <string name="no_app_to_handle_data">No hi ha cap app per gestionar aquestes dades.</string>
     <string name="no_browser_installed">Cap navegador instal·lat.</string>
     <string name="file_not_found">No s\'ha trobat %1$s.</string>

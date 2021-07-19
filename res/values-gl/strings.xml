@@ -63,7 +63,6 @@
     <string name="next">Seguinte</string>
     <string name="error">Fallo</string>
     <string name="error_x">Fallo: %1$s</string>
-    <string name="error_no_network">Non hai conexión a rede.</string>
     <string name="no_app_to_handle_data">Non se atopa unha app para este tipo de datos.</string>
     <string name="no_browser_installed">Sen navegador instalado.</string>
     <string name="file_not_found">Non se atopou %1$s.</string>

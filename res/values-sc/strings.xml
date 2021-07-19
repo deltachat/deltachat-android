@@ -50,7 +50,6 @@
     <string name="next">Sighi</string>
     <string name="error">Faddina</string>
     <string name="error_x">Faddina: %1$s</string>
-    <string name="error_no_network">Retza non disponìbile.</string>
     <string name="no_app_to_handle_data">No apo agatadu un\'aplicatzione pro amministrare custa casta de datos.</string>
     <string name="no_browser_installed">Non b\'at perunu navigadore/esploradore (browser) instaladu.</string>
     <string name="file_not_found">%1$s no agatadu.</string>

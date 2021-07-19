@@ -63,7 +63,6 @@
     <string name="next">Наступний</string>
     <string name="error">Помилка</string>
     <string name="error_x">Помилка: %1$s</string>
-    <string name="error_no_network">Мережа недоступна.</string>
     <string name="no_app_to_handle_data">Додаток, що дозволяє обробляти цей тип даних, не знайдено.</string>
     <string name="no_browser_installed">Не встановлено браузер.</string>
     <string name="file_not_found">Не вдалося знайти %1$s.</string>

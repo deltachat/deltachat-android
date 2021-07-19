@@ -21,7 +21,6 @@
     <string name="undo">復原</string>
     <string name="error">錯誤</string>
     <string name="error_x">錯誤: %1$s</string>
-    <string name="error_no_network">網路無法連線</string>
     <string name="no_app_to_handle_data">沒有可以處理這種資料的應用程式</string>
     <string name="no_browser_installed">沒有安裝瀏覽器</string>
     <string name="file_not_found">找不到 %1$s</string>

@@ -63,7 +63,6 @@
     <string name="next">下一步</string>
     <string name="error">错误</string>
     <string name="error_x">错误： %1$s</string>
-    <string name="error_no_network">网络不可用。</string>
     <string name="no_app_to_handle_data">无法找到用于处理此类数据的应用程序。</string>
     <string name="no_browser_installed">没有安装浏览器。</string>
     <string name="file_not_found">无法找到 %1$s。</string>

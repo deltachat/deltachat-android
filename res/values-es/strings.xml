@@ -58,7 +58,6 @@
     <string name="next">Siguiente</string>
     <string name="error">Error</string>
     <string name="error_x">Error: %1$s</string>
-    <string name="error_no_network">Red no disponible.</string>
     <string name="no_app_to_handle_data">No se encontró una aplicación compatible con el tipo de contenido</string>
     <string name="no_browser_installed">No hay ningún navegador instalado.</string>
     <string name="file_not_found">No se pudo encontrar %1$s.</string>

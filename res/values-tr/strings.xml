@@ -63,7 +63,6 @@
     <string name="next">Sonraki</string>
     <string name="error">Hata</string>
     <string name="error_x">Hata: %1$s</string>
-    <string name="error_no_network">Ağ kullanım dışı.</string>
     <string name="no_app_to_handle_data">Bu veri türünü işleyen bir uygulama bulunamıyor.</string>
     <string name="no_browser_installed">Kurulu tarayıcı yok.</string>
     <string name="file_not_found">%1$s bulunamadı.</string>

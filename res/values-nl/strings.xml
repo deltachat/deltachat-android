@@ -63,7 +63,6 @@
     <string name="next">Volgende</string>
     <string name="error">Fout</string>
     <string name="error_x">Fout: %1$s</string>
-    <string name="error_no_network">Geen internetverbinding.</string>
     <string name="no_app_to_handle_data">Je hebt geen app die deze inhoud kan openen.</string>
     <string name="no_browser_installed">Geen webbrowser geïnstalleerd.</string>
     <string name="file_not_found">Kan %1$s niet vinden.</string>

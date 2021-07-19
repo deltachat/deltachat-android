@@ -58,7 +58,6 @@
     <string name="next">Suivant</string>
     <string name="error">Erreur</string>
     <string name="error_x">Erreur : %1$s</string>
-    <string name="error_no_network">Réseau inaccessible.</string>
     <string name="no_app_to_handle_data">Aucune application trouvée pour traiter ce type de données.</string>
     <string name="no_browser_installed">Aucun navigateur installé.</string>
     <string name="file_not_found">Impossible de trouver %1$s.</string>
