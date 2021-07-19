@@ -691,7 +691,7 @@
     <string name="withdraw_verifygroup_explain">This QR code can be scanned by others to join the group \"%1$s\".\n\nYou can deactivate the QR code here and reactivate it by scanning it again.</string>
     <string name="withdraw_qr_code">Deactivate QR code</string>
     <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
-    <string name="revive_verifycontact_explain">This QR code could be scanned by others to setup a contact with you.\n\nThe QR code is not active on this device.</string>
+    <string name="revive_verifycontact_explain">This QR code could be scanned by others to contact you.\n\nThe QR code is not active on this device.</string>
     <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
     <string name="revive_verifygroup_explain">This QR code could be scanned by others to join the group \"%1$s\".\n\nThe QR code is not active on this device.</string>
     <string name="revive_qr_code">Activate QR code</string>
