@@ -57,7 +57,6 @@
     <string name="next">បន្ទាប់</string>
     <string name="error">កំហុស</string>
     <string name="error_x">កំហុស: %1$s</string>
-    <string name="error_no_network">បណ្តាញមិនទំនេរ</string>
     <string name="no_app_to_handle_data">មិនអាចរកឃើញកម្មវិធីសម្រាប់ដំណើរការលើទិន្ន័យប្រភេទនេះទេ</string>
     <string name="no_browser_installed">គ្មានកម្មវិធីរុករកត្រូវបានដំឡើងទេ</string>
     <string name="file_not_found">រកមិនឃើញឯកសា %1$s។</string>

@@ -40,7 +40,6 @@
     <string name="next">Следећи</string>
     <string name="error">Грешка</string>
     <string name="error_x">Грешка: %1$s</string>
-    <string name="error_no_network">Мрежа није доступна.</string>
     <string name="no_app_to_handle_data">Нема апликације која обрађује ову врсту података.</string>
     <string name="no_browser_installed">Прегледач није инсталиран.</string>
     <string name="file_not_found">Не могу да нађем %1$s.</string>

@@ -42,7 +42,6 @@
     <string name="next">Hurrengoa</string>
     <string name="error">Errorea</string>
     <string name="error_x">Errorea: %1$s</string>
-    <string name="error_no_network">Sarea ez dago eskuragarri.</string>
     <string name="no_app_to_handle_data">Ezin izan da datu mota hau kudeatzeko aplikaziorik.</string>
     <string name="no_browser_installed">Ez dago nabigatzailerik instalatuta.</string>
     <string name="file_not_found">Ezin izan da %1$s aurkitu.</string>

@@ -59,7 +59,6 @@
     <string name="next">Berikutnya</string>
     <string name="error">Eror</string>
     <string name="error_x">Eror: %1$s</string>
-    <string name="error_no_network">Jaringan tidak tersedia.</string>
     <string name="no_app_to_handle_data">Tidak menemukan aplikasi untuk jenis data ini.</string>
     <string name="no_browser_installed">Tak ada browser yang terpasang.</string>
     <string name="file_not_found">Tak bisa menemukan %1$s.</string>

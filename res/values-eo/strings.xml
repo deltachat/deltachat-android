@@ -42,7 +42,6 @@
     <string name="next">Sekva</string>
     <string name="error">Eraro</string>
     <string name="error_x">Eraro: %1$s</string>
-    <string name="error_no_network">Reto neatingebla.</string>
     <string name="no_app_to_handle_data">Ne povas trovi aplikaĵon por trakti tiun ĉi tipon de datumo.</string>
     <string name="no_browser_installed">Neniu retumilo instalita.</string>
     <string name="file_not_found">Ne povis trovi %1$s.</string>

@@ -63,7 +63,6 @@
     <string name="next">Дальше</string>
     <string name="error">Ошибка</string>
     <string name="error_x">Ошибка: %1$s</string>
-    <string name="error_no_network">Сеть недоступна.</string>
     <string name="no_app_to_handle_data">Приложение, позволяющее обрабатывать этот тип данных, не найдено.</string>
     <string name="no_browser_installed">Браузер не установлен.</string>
     <string name="file_not_found">Невозможно найти %1$s</string>

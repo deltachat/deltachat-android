@@ -37,7 +37,6 @@
     <string name="next">Dalje</string>
     <string name="error">Greška</string>
     <string name="error_x">Greška: %1$s</string>
-    <string name="error_no_network">Mreža nije dostupna.</string>
     <string name="file_not_found">%1$s nije pronađeno.</string>
     <string name="copied_to_clipboard">Kopirano u međuspremnik.</string>
     <string name="contacts_headline">Kontakti</string>

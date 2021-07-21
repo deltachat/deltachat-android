@@ -63,7 +63,6 @@
     <string name="next">Weiter</string>
     <string name="error">Fehler</string>
     <string name="error_x">Fehler: %1$s</string>
-    <string name="error_no_network">Kein Netzwerk.</string>
     <string name="no_app_to_handle_data">Keine passende App zum Öffnen dieses Dateityps gefunden</string>
     <string name="no_browser_installed">Kein Internetbrowser installiert.</string>
     <string name="file_not_found">Kann %1$s nicht finden</string>
@@ -414,6 +413,15 @@
     <string name="send_message">Nachricht senden</string>
 
 
+    <!-- Connectivity -->
+    <string name="connectivity">Verbindungsstatus</string>
+    <string name="connectivity_not_connected">Nicht verbunden</string>
+    <!-- Note that the three dots are a single character (…), not three (...) -->
+    <string name="connectivity_connecting">Verbinde…</string>
+    <string name="connectivity_getting_new_msgs">Neue Nachrichten abholen…</string>
+    <string name="connectivity_connected">Verbunden</string>
+
+
     <!-- welcome and login -->
     <string name="welcome_intro1_message">Der Messenger mit der größten Reichweite der Welt. Frei und unabhängig.</string>
     <string name="login_title">Login</string>
@@ -681,6 +689,14 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="qrscan_contains_url">Gescannter QR-Code URL:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Fingerabdruck</string>
     <string name="qrscan_x_verified_introduce_myself">%1$s verifiziert, mich vorgestellt....</string>
+    <string name="withdraw_verifycontact_explain">Dieser QR-Code kann von anderen gescannt werden, um Sie zu kontaktieren.\n\n Sie können den QR-Code hier deaktivieren und durch erneutes Scannen wieder aktivieren.</string>
+    <string name="withdraw_verifygroup_explain">Dieser QR-Code kann von anderen gescannt werden, um der Gruppe \"%1$s\" beizutreten.\n\n Sie können den QR-Code hier deaktivieren und durch erneutes Scannen wieder aktivieren.</string>
+    <string name="withdraw_qr_code">QR-Code deaktivieren</string>
+    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
+    <string name="revive_verifycontact_explain">Dieser QR-Code konnte von anderen gescannt werden, um Sie zu kontaktieren.\n\nDer QR-Code ist auf diesem Gerät nicht aktiv.</string>
+    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
+    <string name="revive_verifygroup_explain">Dieser QR-Code konnte von anderen gescannt werden, um der Gruppe \"%1$s\" bezutreten.\n\nDer QR-Code ist auf diesem Gerät nicht aktiv.</string>
+    <string name="revive_qr_code">QR-Code aktivieren</string>
     <string name="qrshow_title">QR-Einladungscode</string>
     <string name="qrshow_x_joining">%1$s beigetreten.</string>
     <string name="qrshow_x_verified">%1$s verifiziert.</string>

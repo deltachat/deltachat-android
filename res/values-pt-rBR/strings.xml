@@ -63,7 +63,6 @@
     <string name="next">Avançar</string>
     <string name="error">Erro</string>
     <string name="error_x">Erro: %1$s</string>
-    <string name="error_no_network">Rede indisponível.</string>
     <string name="no_app_to_handle_data">Não foi possível encontrar um app para abrir esse tipo de arquivo.</string>
     <string name="no_browser_installed">Nenhum navegador instalado.</string>
     <string name="file_not_found">Não foi possível encontrar %1$s.</string>

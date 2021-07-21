@@ -56,7 +56,6 @@
     <string name="next">Kitas</string>
     <string name="error">Klaida</string>
     <string name="error_x">Klaida: %1$s</string>
-    <string name="error_no_network">Tinklas neprieinamas.</string>
     <string name="no_app_to_handle_data">Nepavyksta rasti programėlės, kuri apdorotų šį duomenų tipą.</string>
     <string name="no_browser_installed">Neįdiegta jokia naršyklė.</string>
     <string name="file_not_found">Nepavyko rasti %1$s.</string>

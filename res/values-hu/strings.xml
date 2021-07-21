@@ -31,7 +31,6 @@
     <string name="next">Tovább</string>
     <string name="error">Hiba</string>
     <string name="error_x">Hiba: %1$s</string>
-    <string name="error_no_network">A hálózat nem elérhető.</string>
     <string name="no_browser_installed">Nincs böngésző telepítve.</string>
     <string name="file_not_found">%1$s nem található.</string>
     <string name="copied_to_clipboard">Vágólapra másolva.</string>

@@ -38,7 +38,6 @@
     <string name="undo">Geri qaytar</string>
     <string name="error">Xəta</string>
     <string name="error_x">Xəta: %1$s</string>
-    <string name="error_no_network">Şəbəkə əlçatmazdır.</string>
     <string name="no_app_to_handle_data">Bu tip məlumatları idarə etmək üçün bir tətbiq tapılmadı.</string>
     <string name="no_browser_installed">Heç bir brauzer quraşdırılıb.</string>
     <string name="file_not_found">Tapa bilmədim %1$s.</string>

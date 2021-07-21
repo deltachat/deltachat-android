@@ -55,7 +55,6 @@
     <string name="next">Næste</string>
     <string name="error">Fejl</string>
     <string name="error_x">Fejl: %1$s</string>
-    <string name="error_no_network">Netværk utilgængelig</string>
     <string name="no_app_to_handle_data">Kan ikke finde et program til håndtering af denne type data.</string>
     <string name="no_browser_installed">Ingen browser installeret.</string>
     <string name="file_not_found">Kunne ikke finde %1$s.</string>

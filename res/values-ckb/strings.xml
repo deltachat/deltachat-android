@@ -52,7 +52,6 @@
     <string name="next">پاشوو</string>
     <string name="error">هەڵە</string>
     <string name="error_x">هەڵە: %1$s</string>
-    <string name="error_no_network">تۆڕ بەردەست نییە</string>
     <string name="no_app_to_handle_data">نەرمامێرێک نەدۆزرایەوە کە ئەم چەشنە داتایە بخوێنێتەوە.</string>
     <string name="no_browser_installed">هیچ وێبگەڕێک دانەمەزراوە</string>
     <string name="file_not_found">%1$s نەدۆزرایەوە.</string>

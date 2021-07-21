@@ -57,7 +57,6 @@
     <string name="next">Další</string>
     <string name="error">Chyba</string>
     <string name="error_x">Chyba %1$s</string>
-    <string name="error_no_network">Nedostupná síť</string>
     <string name="no_app_to_handle_data">Neznámá aplikace pro tento typ dat.</string>
     <string name="no_browser_installed">Žádná instalace prohlížeče</string>
     <string name="file_not_found">Nemohu najít %1$s</string>
