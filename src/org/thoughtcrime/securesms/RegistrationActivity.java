@@ -430,14 +430,10 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         }
     }
 
-    private boolean matchesEmailPattern(String email) {
-        return !TextUtils.isEmpty(email) && Patterns.EMAIL_ADDRESS.matcher(email).matches();
-    }
-
     private void verifyEmail(TextInputEditText view) {
         String error = getString(R.string.login_error_mail);
         String email = view.getText().toString();
-        if (!matchesEmailPattern(email)) {
+        if (!DcHelper.getContext(this).mayBeValidAddr(email)) {
             view.setError(error);
         }
     }
@@ -447,7 +443,8 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         String server = view.getText().toString();
         if (!TextUtils.isEmpty(server) && !Patterns.DOMAIN_NAME.matcher(server).matches()
                 && !Patterns.IP_ADDRESS.matcher(server).matches()
-                && !Patterns.WEB_URL.matcher(server).matches()) {
+                && !Patterns.WEB_URL.matcher(server).matches()
+                && !"localhost".equals(server)) {
             view.setError(error);
         }
     }
@@ -500,7 +497,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
 
     private boolean verifyRequiredFields() {
         String email = emailInput.getText().toString();
-        return !email.isEmpty() && matchesEmailPattern(email)
+        return DcHelper.getContext(this).mayBeValidAddr(email)
                 && !passwordInput.getText().toString().isEmpty();
     }
 
