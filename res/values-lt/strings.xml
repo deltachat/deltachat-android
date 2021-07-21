@@ -366,6 +366,15 @@
     <string name="send_message">Siųsti žinutę</string>
 
 
+    <!-- Connectivity -->
+    <string name="connectivity">Jungiamumas</string>
+    <string name="connectivity_not_connected">Neprisijungta</string>
+    <!-- Note that the three dots are a single character (…), not three (...) -->
+    <string name="connectivity_connecting">Jungiamasi…</string>
+    <string name="connectivity_getting_new_msgs">Gaunamos naujos žinutės…</string>
+    <string name="connectivity_connected">Prisijungta</string>
+
+
     <!-- welcome and login -->
     <string name="welcome_intro1_message">Pokalbių programa su plačiausia auditorija pasaulyje. Nemokama ir nepriklausoma.</string>
     <string name="login_title">Prisijungti</string>

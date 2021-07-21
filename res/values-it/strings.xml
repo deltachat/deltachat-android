@@ -40,8 +40,8 @@
     <string name="profile">Profilo</string>
     <string name="main_menu">Menu principale</string>
     <string name="start_chat">Inizia una chat</string>
-    <string name="show_full_message">Mostra messaggio completo...</string>
-    <string name="show_full_message_in_browser">Mostra messaggio completo nel browser...</string>
+    <string name="show_full_message">Mostra messaggio completo…</string>
+    <string name="show_full_message_in_browser">Mostra messaggio completo nel browser…</string>
     <!-- this is shown as placeholder when something is loading at some places -->
     <string name="loading">Caricamento in corso…</string>
     <string name="hide">Nascondi</string>
@@ -55,7 +55,7 @@
     <string name="hide_password">Nascondi password</string>
     <string name="not_now">Non ora</string>
     <string name="never">Mai</string>
-    <string name="one_moment">Un momento...</string>
+    <string name="one_moment">Un momento…</string>
     <string name="done">Fatto</string>
     <string name="undo">Annulla</string>
     <string name="offline">Disconnesso</string>
@@ -413,6 +413,15 @@
     <string name="send_message">Invia messaggio</string>
 
 
+    <!-- Connectivity -->
+    <string name="connectivity">Connettività</string>
+    <string name="connectivity_not_connected">Non connesso</string>
+    <!-- Note that the three dots are a single character (…), not three (...) -->
+    <string name="connectivity_connecting">Connessione in corso…</string>
+    <string name="connectivity_getting_new_msgs">Ricezione di nuovi messaggi…</string>
+    <string name="connectivity_connected">Connesso</string>
+
+
     <!-- welcome and login -->
     <string name="welcome_intro1_message">L’applicazione di messaggistica con la maggiore utenza al mondo. Libera e indipendente.</string>
     <string name="login_title">Login</string>
@@ -463,7 +472,7 @@
 
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
-    <string name="forward_to">Inotra a...</string>
+    <string name="forward_to">Inotra a…</string>
     <string name="share_multiple_attachments">Invia %1$d file alla chat selezionata?\n\nI file vengono inviati non modificati nella loro dimensione originale, ad es. immagini e video non vengono ricodificati.</string>
     <string name="share_multiple_attachments_multiple_chats">Invia %1$d file(s) a %2$d chat?\n\nI file vengono inviati non modificati nella loro dimensione originale, ad es. immagini e video non vengono ricodificati.</string>
     <string name="share_text_multiple_chats">Invia questo testo alle %1$d chat?\n\n\"%2$s\"</string>
@@ -678,6 +687,14 @@
     <string name="qrscan_contains_url">URL del codice QR scansionato:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Impronta</string>
     <string name="qrscan_x_verified_introduce_myself">%1$s verificato, mi presento …</string>
+    <string name="withdraw_verifycontact_explain">Questo codice QR può essere scansionato da altri utenti per contattarti.\n\nÈ possibile disattivare il codice QR qui e riattivarlo scansionandolo di nuovo.</string>
+    <string name="withdraw_verifygroup_explain">Questo codice QR può essere scansionato da altri utenti per unirsi al gruppo \"%1$s\".\n\nÈ possibile disattivare il codice QR qui e riattivarlo scansionandolo di nuovo.</string>
+    <string name="withdraw_qr_code">Disattiva il codice QR</string>
+    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
+    <string name="revive_verifycontact_explain">Questo codice QR potrebbe essere scannerizzato da altri utenti per configurare un contatto con l\'utente.\n\nIl codice QR non è attivo in questo dispositivo.</string>
+    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
+    <string name="revive_verifygroup_explain">Questo codice QR potrebbe essere scansionato da altri per unirsi al gruppo \"%1$s\".\n\nIl codice QR non è attivo su questo dispositivo.</string>
+    <string name="revive_qr_code">Attiva codice QR </string>
     <string name="qrshow_title">Codice QR di invito</string>
     <string name="qrshow_x_joining">%1$s entra.</string>
     <string name="qrshow_x_verified">%1$s verificato.</string>
@@ -685,9 +702,9 @@
     <string name="qrshow_join_group_title">Codice QR di invito</string>
     <string name="qrshow_join_group_hint">Scansionalo per entrare nel gruppo \"%1$s\".</string>
     <string name="qrshow_join_contact_title">Codice QR di invito</string>
-    <string name="qrshow_join_contact_hint">Scansionalo per creare un contatto per %1$s</string>
+    <string name="qrshow_join_contact_hint">Scansionalo per creare un contatto con %1$s</string>
     <string name="qrshow_join_contact_no_connection_hint">Il setup tramite codice QR richiede una connessione internet. Collegati a una rete prima di procedere.</string>
-    <string name="qrshow_join_contact_no_connection_toast">Nessuna connessione internet, impossibile effettuare l\'impostazione tramite QR.</string>
+    <string name="qrshow_join_contact_no_connection_toast">Nessuna connessione internet, impossibile effettuare l\'impostazione tramite codice QR.</string>
     <string name="qraccount_ask_create_and_login">Creo un nuovo indirizzo email su \"%1$s\" e accedo?</string>
     <string name="qraccount_ask_create_and_login_another">Crea un nuovo indirizzo e-mail su \"%1$s\" e accedi qui?\n\nIl tuo account esistente non verrà eliminato. Utilizza la voce \"Cambia account\" per passare da un account all\'altro.</string>
     <string name="qraccount_success_enter_name">Accesso completato—il tuo indirizzo email è %1$s\n\nSe vuoi, puoi inserire un nome e un\'immagine profilo che verranno mostrati a chi ti scrive.</string>
@@ -743,7 +760,7 @@
     <string name="about_licensed_under_desktop">Questo software è concesso in licenza con GNU GPL versione 3 e il codice sorgente è disponibile su GitHub.</string>
     <string name="welcome_desktop">Benvenuto in Delta Chat</string>
     <string name="login_known_accounts_title_desktop">Account conosciuti</string>
-    <string name="global_menu_preferences_language_desktop">Scegli la lingua...</string>
+    <string name="global_menu_preferences_language_desktop">Scegli la lingua…</string>
     <string name="global_menu_file_desktop">File</string>
     <string name="global_menu_file_quit_desktop">Esci</string>
     <string name="global_menu_edit_desktop">Modifica</string>
@@ -826,7 +843,7 @@
 
 
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
-    <string name="InfoPlist_NSCameraUsageDescription">Autorizzare l\'accesso alla camera ti permette di fare foto e video</string>
+    <string name="InfoPlist_NSCameraUsageDescription">Delta Chat utilizza la fotocamera per scattare e inviare foto e video e per scansionare i codici QR.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Autorizzare l\'accesso alla rubrica ti permette di chattare con i contatti nel tuo dispositivo.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Autorizzare l\'accesso al microfono ti permette di registrare audio.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Autorizzare l\'accesso alla galleria ti permette di caricare foto da essa.</string>
