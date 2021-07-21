@@ -40,10 +40,10 @@
     <string name="profile">Perfil</string>
     <string name="main_menu">Menú principal</string>
     <string name="start_chat">Inciar chat</string>
-    <string name="show_full_message">Mostrar mensaxe completa...</string>
-    <string name="show_full_message_in_browser">Mostrar mensaxe completa no navegador...</string>
+    <string name="show_full_message">Mostrar mensaxe completa…</string>
+    <string name="show_full_message_in_browser">Mostrar mensaxe completa no navegador…</string>
     <!-- this is shown as placeholder when something is loading at some places -->
-    <string name="loading">Cargando...</string>
+    <string name="loading">Cargando…</string>
     <string name="hide">Ocultar</string>
     <string name="activate">Activar</string>
     <string name="load_remote_content">Cargar imaxes remotas</string>
@@ -55,7 +55,7 @@
     <string name="hide_password">Agochar contrasinal</string>
     <string name="not_now">Agora non</string>
     <string name="never">Nunca</string>
-    <string name="one_moment">Un momento...</string>
+    <string name="one_moment">Un momento…</string>
     <string name="done">Feito</string>
     <string name="undo">Desfacer</string>
     <string name="offline">Sen conexión</string>
@@ -413,6 +413,15 @@
     <string name="send_message">Enviar mensaxe</string>
 
 
+    <!-- Connectivity -->
+    <string name="connectivity">Conectividade</string>
+    <string name="connectivity_not_connected">Non conectado</string>
+    <!-- Note that the three dots are a single character (…), not three (...) -->
+    <string name="connectivity_connecting">Conectando…</string>
+    <string name="connectivity_getting_new_msgs">Obtendo novas mensaxes…</string>
+    <string name="connectivity_connected">Conectado</string>
+
+
     <!-- welcome and login -->
     <string name="welcome_intro1_message">O sistema de conversa con maior audiencia no mundo. Libre e independente.</string>
     <string name="login_title">Conectar</string>
@@ -456,14 +465,14 @@
     <string name="delete_account">Eliminar conta</string>
     <string name="delete_account_ask">Estás seguro de que queres eliminar os datos da túa conta?</string>
     <string name="delete_account_explain_with_name">Todos os datos da conta \"%s\" neste dispositivo vanse eliminar, incluíndo os axustes de cifrado extremo-a-extremo, contactos, conversas, mensaxes e multimedia. Esta acción non ten volta.</string>
-    <string name="switching_account">Cambiando de conta...</string>
+    <string name="switching_account">Cambiando de conta…</string>
     <string name="try_connect_now">Intenta conectar agora</string>
     <!-- Translations: %1$s will be replaced by a more detailed error message -->
     <string name="configuration_failed_with_error">Fallou a configuración. Erro: %1$s</string>
 
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
-    <string name="forward_to">Reenviar a...</string>
+    <string name="forward_to">Reenviar a…</string>
     <string name="share_multiple_attachments">Enviar %1$d ficheiro á conversa seleccionada?\n\nOs ficheiros terán o mesmo tamaño que o orixinal, ex. as imaxes e vídeos non se recodifican.</string>
     <string name="share_multiple_attachments_multiple_chats">Enviar %1$d ficheiro(s) a %2$d conversas?\n\nOs ficheiros terán o mesmo tamaño, ex. imaxes e vídeos non se recodifican.</string>
     <string name="share_text_multiple_chats">Enviar este texto a %1$d conversas?\n\n\"%2$s\"</string>
@@ -677,7 +686,15 @@
     <string name="qrscan_contains_text">Texto escaneado no código QR:\n\n%1$s</string>
     <string name="qrscan_contains_url">URL escaneado no código QR:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Pegada dactilar</string>
-    <string name="qrscan_x_verified_introduce_myself">%1$s verificado, presentándome...</string>
+    <string name="qrscan_x_verified_introduce_myself">%1$s verificado, presentándome…</string>
+    <string name="withdraw_verifycontact_explain">Este código QR permite que outras persoas contacten contigo.\n\nPodes desactivar o código QR aquí e reactivalo volvéndoo a escanear.</string>
+    <string name="withdraw_verifygroup_explain">Este código QR permite que outras persoas se unan ao grupo \"%1$s\".\n\nPodes desactivar aquí o código QR e reactivalo volvéndoo a escanear.</string>
+    <string name="withdraw_qr_code">Desactivar código QR</string>
+    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
+    <string name="revive_verifycontact_explain">Este código QR podía ser escaneado por outras persoas para contactar contigo.\n\nO código QR non está activo neste dispositio.</string>
+    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
+    <string name="revive_verifygroup_explain">O código QR podía ser escaneado por outras persoas para unirse ao grupo \"%1$s\".\n\nO código QR non está activo neste dispositivo.</string>
+    <string name="revive_qr_code">Activar código QR</string>
     <string name="qrshow_title">Código QR de convite</string>
     <string name="qrshow_x_joining">%1$s uneuse.</string>
     <string name="qrshow_x_verified">%1$s verificado.</string>

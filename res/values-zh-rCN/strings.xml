@@ -401,6 +401,15 @@
     <string name="send_message">发送消息</string>
 
 
+    <!-- Connectivity -->
+    <string name="connectivity">连接性</string>
+    <string name="connectivity_not_connected">未连接</string>
+    <!-- Note that the three dots are a single character (…), not three (...) -->
+    <string name="connectivity_connecting">连接中…</string>
+    <string name="connectivity_getting_new_msgs">获取新消息中…</string>
+    <string name="connectivity_connected">已连接</string>
+
+
     <!-- welcome and login -->
     <string name="welcome_intro1_message">本通讯软件有着世界上最广泛的受众。自由且自主。</string>
     <string name="login_title">登录</string>
@@ -666,6 +675,14 @@
     <string name="qrscan_contains_url">已扫描到的二维码 URL：\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">指纹</string>
     <string name="qrscan_x_verified_introduce_myself">%1$s 已验证， 自我介绍中…</string>
+    <string name="withdraw_verifycontact_explain">其他人可以扫描此二维码与您联系。\n\n您可以在此处停用二维码并通过再次扫描来重新激活它。</string>
+    <string name="withdraw_verifygroup_explain">其他人可以扫描此二维码加入群组 \"%1$s\".\n\n您可以在此处停用二维码并通过再次扫描来重新激活它。</string>
+    <string name="withdraw_qr_code">停用二维码</string>
+    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
+    <string name="revive_verifycontact_explain">其他人可能会扫描此二维码以与您联系。\n\n此二维码在此设备上不活动。</string>
+    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
+    <string name="revive_verifygroup_explain">其他人可扫描此二维码加入群组 \"%1$s\".\n\n此设备上的二维码未激活。</string>
+    <string name="revive_qr_code">激活二维码</string>
     <string name="qrshow_title">邀请二维码</string>
     <string name="qrshow_x_joining">%1$s 加入。</string>
     <string name="qrshow_x_verified">%1$s 已验证。</string>

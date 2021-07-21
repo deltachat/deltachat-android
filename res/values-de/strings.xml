@@ -41,7 +41,7 @@
     <string name="main_menu">Hauptmenü</string>
     <string name="start_chat">Chat starten</string>
     <string name="show_full_message">Ganze Nachricht anzeigen…</string>
-    <string name="show_full_message_in_browser">Ganze Nachricht in Browser anzeigen…</string>
+    <string name="show_full_message_in_browser">Ganze Nachricht im Browser anzeigen…</string>
     <!-- this is shown as placeholder when something is loading at some places -->
     <string name="loading">Wird geladen…</string>
     <string name="hide">Verstecken</string>
@@ -69,7 +69,7 @@
     <string name="copied_to_clipboard">In Zwischenablage kopiert.</string>
     <string name="contacts_headline">Kontakte</string>
     <string name="email_address">E-Mail-Adresse</string>
-    <string name="bad_email_address">Ungültige E-Mail-Adresse</string>
+    <string name="bad_email_address">Ungültige E-Mail-Adresse.</string>
     <string name="password">Passwort</string>
     <string name="existing_password">Bestehendes Passwort</string>
     <string name="now">Jetzt</string>
@@ -230,7 +230,7 @@
     <string name="title_share_location">Standort mit allen Gruppenmitgliedern teilen</string>
     <string name="device_talk">Systemnachrichten</string>
     <string name="device_talk_subtitle">Lokal erzeugte Nachrichten</string>
-    <string name="device_talk_explain">Nachrichten in diesem Chat werden lokal von der Delta Chat App erzeugt, um auf Neuigkeiten und Probleme hinzuweisen.</string>
+    <string name="device_talk_explain">Nachrichten in diesem Chat werden lokal von der Delta Chat-App erzeugt. Ihre Entwickler informieren damit über App-Updates und Probleme während der Nutzung.</string>
     <string name="device_talk_welcome_message">Willkommen – Delta Chat sieht aus und funktioniert wie andere populäre Messenger - aber ohne zentrale Überwachung, ohne Tracking, ohne die Daten von Ihnen, Ihren FreundInnen, KollegInnen oder Familienmitgliedern an irgendwelche Firmen zu verkaufen.\n\nTechnisch gesehen ist Delta Chat ein E-Mail-Programm unter einer modernen Chat-Oberfläche - sozusagen E-Mail in neuem Gewand 👻\n\nMit Delta Chat haben Sie Milliarden potentieller ChatpartnerInnen: Verwenden Sie einfach deren E-Mail-Adresse - die EmpfängerInnen selbst müssen Delta Chat dazu nicht installieren oder sich irgendwo anmelden. Sie können sie aber natürlich gerne auf 👉 https://get.delta.chat hinweisen</string>
     <string name="edit_contact">Kontakt bearbeiten</string>
     <!-- Translators: "Pin" here is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->

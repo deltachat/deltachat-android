@@ -410,6 +410,15 @@
     <string name="send_message">Dërgo mesazh</string>
 
 
+    <!-- Connectivity -->
+    <string name="connectivity">Aftësi lidhjeje</string>
+    <string name="connectivity_not_connected">I palidhur</string>
+    <!-- Note that the three dots are a single character (…), not three (...) -->
+    <string name="connectivity_connecting">Po lidhet…</string>
+    <string name="connectivity_getting_new_msgs">Po merren mesazhe të rinj…</string>
+    <string name="connectivity_connected">I lidhur</string>
+
+
     <!-- welcome and login -->
     <string name="welcome_intro1_message">Shkëmbyesi i mesazheve me publikun më të gjerë në botë. I lirë dhe i pavarur.</string>
     <string name="login_title">Hyrje</string>
@@ -674,6 +683,14 @@
     <string name="qrscan_contains_url">URL kodi QR të skanuar:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Shenja gishtash</string>
     <string name="qrscan_x_verified_introduce_myself">%1$s u verifikua, po prezantoj veten…</string>
+    <string name="withdraw_verifycontact_explain">Ky kod QR mund të skanohet nga të tjerë për t’u lidhur me ju.\n\nKodin QR mund ta çaktivizoni këtu dhe ta riaktivizoni duke e riskanuar.</string>
+    <string name="withdraw_verifygroup_explain">Ky kod QR mund të skanohet nga të tjerë për t’u bërë pjesë e grupit \"%1$s\".\n\nKodin QR mund ta çaktivizoni këtu dhe ta riaktivizoni duke e riskanuar.</string>
+    <string name="withdraw_qr_code">Çaktivizoni kodin QR</string>
+    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
+    <string name="revive_verifycontact_explain">Ky kod QR mund të skanohet nga të tjerë për të ujdisur kontakt me ju.\n\nKodi QR s’është aktiv në këtë pajisje.</string>
+    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
+    <string name="revive_verifygroup_explain">Ky kod QR mund të skanohet nga të tjerë për t’u bërë pjesë e grupit \"%1$s\".\n\nKodi QR s’është aktiv në këtë pajisje.</string>
+    <string name="revive_qr_code">Aktivizoni kod QR</string>
     <string name="qrshow_title">Kod QR ftese</string>
     <string name="qrshow_x_joining">%1$s vjen.</string>
     <string name="qrshow_x_verified">%1$s u verifikua.</string>

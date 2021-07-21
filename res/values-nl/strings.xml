@@ -176,7 +176,7 @@
     <string name="menu_add_attachment">Bijlage toevoegen</string>
     <string name="menu_leave_group">Groep verlaten</string>
     <string name="menu_delete_chat">Gesprek verwijderen</string>
-    <string name="ask_delete_named_chat">Weet je zeker dat je \'%1$s\' wilt verwijderen?</string>
+    <string name="ask_delete_named_chat">Weet je zeker dat je ‘%1$s’ wilt verwijderen?</string>
     <string name="menu_delete_messages">Berichten verwijderen</string>
     <string name="menu_delete_image">Afbeelding verwijderen</string>
     <string name="delete_contact">Contactpersoon verwijderen</string>
@@ -261,7 +261,7 @@
         <item quantity="one">Wil je het volgende bestand versturen aan %s?</item>
         <item quantity="other">Wil je de volgende %d bestanden versturen aan %s?</item>
     </plurals>
-    <string name="file_saved_to">Het bestand is opgeslagen in \'%1$s\'.</string>
+    <string name="file_saved_to">Het bestand is opgeslagen in ‘%1$s’.</string>
 
     <string name="videochat">Videogesprek</string>
     <string name="videochat_invite_user_to_videochat">Wil je %1$s uitnodigen voor een videogesprek?</string>
@@ -360,7 +360,7 @@
 
     <!-- mailing lists -->
     <string name="mailing_list">Mailinglijst</string>
-    <string name="ask_show_mailing_list">Wil je de mailinglijst \'%1$s\' tonen?</string>
+    <string name="ask_show_mailing_list">Wil je de mailinglijst ‘%1$s’ tonen?</string>
     <string name="mailing_list_profile_info">Wijzigingen aan de mailinglijstnaam en -afbeelding worden alleen op dit apparaat getoond.</string>
 
     <!-- map -->
@@ -413,6 +413,15 @@
     <string name="send_message">Bericht versturen</string>
 
 
+    <!-- Connectivity -->
+    <string name="connectivity">Verbindingen</string>
+    <string name="connectivity_not_connected">Niet verbonden</string>
+    <!-- Note that the three dots are a single character (…), not three (...) -->
+    <string name="connectivity_connecting">Bezig met verbinden…</string>
+    <string name="connectivity_getting_new_msgs">Bezig met ophalen van nieuwe berichten…</string>
+    <string name="connectivity_connected">Verbonden</string>
+
+
     <!-- welcome and login -->
     <string name="welcome_intro1_message">Dé berichtenapp met het breedste publiek ter wereld. Gratis en onafhankelijk.</string>
     <string name="login_title">Inloggen</string>
@@ -455,7 +464,7 @@
     <string name="add_account">Account toevoegen</string>
     <string name="delete_account">Account verwijderen</string>
     <string name="delete_account_ask">Weet je zeker dat je je accountgegevens wilt verwijderen?</string>
-    <string name="delete_account_explain_with_name">Alle gegevens van \'%s\' worden verwijderd: de eind-tot-eindinstellingen, contactpersonen, gesprekken, berichten en media. Deze actie kan niet ongedaan worden gemaakt.</string>
+    <string name="delete_account_explain_with_name">Alle gegevens van ‘%s’ worden verwijderd: de eind-tot-eindinstellingen, contactpersonen, gesprekken, berichten en media. Deze actie kan niet ongedaan worden gemaakt.</string>
     <string name="switching_account">Bezig met overschakelen…</string>
     <string name="try_connect_now">Probeer te verbinden</string>
     <!-- Translations: %1$s will be replaced by a more detailed error message -->
@@ -493,7 +502,7 @@
     <string name="pref_vibrate">Trillen</string>
     <string name="pref_screen_security">Schermbeveiliging</string>
     <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
-    <string name="pref_screen_security_explain">Geen schermfoto\'s tonen op de \'recent\'-lijst en binnen de app</string>
+    <string name="pref_screen_security_explain">Geen schermfoto\'s tonen op de ‘recent’-lijst en binnen de app</string>
     <string name="pref_screen_security_please_restart_hint">Herstart de app om de wijzigingen toe te passen.</string>
     <string name="pref_notifications">Meldingen</string>
     <string name="pref_notifications_show">Tonen</string>
@@ -535,21 +544,21 @@
     <string name="pref_backup_explain">Gesprekken back-uppen naar externe opslag</string>
     <string name="pref_backup_export_explain">Een back-up helpt je om een nieuwe installatie in te stellen op dit of een ander apparaat.\n\nDe back-up bevat alle berichten, contactpersonen, gesprekken en je eind-tot-eindinstellingen. Bewaar het back-upbestand op een veilige plaats of verwijder het zo snel mogelijk.</string>
     <string name="pref_backup_export_start_button">Nu back-uppen</string>
-    <string name="pref_backup_written_to_x">Back-up weggeschreven naar \'%1$s\'.</string>
+    <string name="pref_backup_written_to_x">De back-up is opgeslagen in ‘%1$s’.</string>
     <string name="pref_managekeys_menu_title">Sleutels beheren</string>
     <string name="pref_managekeys_export_secret_keys">Geheime sleutels exporteren</string>
-    <string name="pref_managekeys_export_explain">Geheime sleutels exporteren naar \'%1$s\'?</string>
+    <string name="pref_managekeys_export_explain">Geheime sleutels exporteren naar ‘%1$s’?</string>
     <string name="pref_managekeys_import_secret_keys">Geheime sleutels importeren</string>
-    <string name="pref_managekeys_import_explain">Wil je geheime sleutels importeren uit \'%1$s\'?\n\n• Bestaande sleutels worden niet verwijderd.\n\n• De laatst geïmporteerde sleutel wordt als standaard gebruikt tenzij de bestandsnaam \"legacy\" bevat.</string>
-    <string name="pref_managekeys_secret_keys_exported_to_x">Geheime sleutels weggeschreven naar \'%1$s\'.</string>
-    <string name="pref_managekeys_secret_keys_imported_from_x">Geheime sleutels geïmporteerd uit \'%1$s\'.</string>
+    <string name="pref_managekeys_import_explain">Wil je geheime sleutels importeren uit ‘%1$s’?\n\n• Reeds aanwezige sleutels worden niet verwijderd.\n\n• De laatst geïmporteerde sleutel wordt als standaardsleutel gebruikt, tenzij de bestandsnaam het woord ‘legacy’ bevat.</string>
+    <string name="pref_managekeys_secret_keys_exported_to_x">De geheime sleutels zijn opgeslagen in ‘%1$s’.</string>
+    <string name="pref_managekeys_secret_keys_imported_from_x">De geheime sleutels zijn geïmporteerd uit ‘%1$s’.</string>
     <string name="pref_background">Achtergrond</string>
     <string name="pref_background_btn_default">Standaardafbeelding gebruiken</string>
     <string name="pref_background_btn_gallery">Kiezen uit galerij</string>
     <string name="pref_imap_folder_handling">IMAP-mappen controleren</string>
     <string name="pref_imap_folder_warn_disable_defaults">Als je deze optie uitschakelt, zorg er dan voor dat je server en overige clients goed ingesteld zijn.\n\nAls dat niet zo is, dan werkt het misschien helemaal niet.</string>
     <string name="pref_watch_inbox_folder">Postvak IN controleren op nieuwe berichten</string>
-    <string name="pref_watch_sent_folder">Map \'Verzonden\' controleren op nieuwe berichten</string>
+    <string name="pref_watch_sent_folder">Map ‘Verzonden’ controleren op nieuwe berichten</string>
     <string name="pref_watch_mvbox_folder">DeltaChat-map controleren op nieuwe berichten</string>
     <string name="pref_send_copy_to_self">Kopie versturen naar mijzelf</string>
     <string name="pref_auto_folder_moves">Automatisch verplaatsen naar DeltaChat-map</string>
@@ -592,11 +601,11 @@
     <string name="autodel_device_title">Berichten verwijderen van apparaat</string>
     <string name="autodel_server_title">Berichten verwijderen van server</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
-    <string name="autodel_device_ask">Wil je nu %1$d berichten verwijderen en toekomstige berichten \'%2$s\'?\n\n• Dit omvat alle media\n\n• Berichten worden verwijderd, ongeacht of ze bekeken zijn\n\n• Het gesprek \'Opgeslagen berichten\' wordt overgeslagen</string>
+    <string name="autodel_device_ask">Wil je nu %1$d berichten verwijderen en toekomstige berichten ‘%2$s’?\n\n• Dit omvat alle media\n\n• Berichten worden verwijderd, ongeacht of ze bekeken zijn\n\n• Het gesprek ‘Opgeslagen berichten’ wordt overgeslagen.</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
-    <string name="autodel_server_ask">Wil je nu %1$d berichten verwijderen en toekomstige berichten %2$s?\n\n⚠️ Dit omvat alle berichten, media en het gesprek \'Opgeslagen berichten\'.\n\n⚠️ Gebruik deze functie niet als je je gegevens wilt bewaren op de server\n\n⚠️ Gebruik deze functie niet als je ook andere e-mailclients gebruikt</string>
+    <string name="autodel_server_ask">Wil je nu %1$d berichten verwijderen en toekomstige berichten ‘%2$s’,?\n\n⚠️ Dit omvat alle berichten, media en het gesprek ‘Opgeslagen berichten’.\n\n⚠️ Gebruik deze functie niet als je je gegevens wilt bewaren op de server\n\n⚠️ Gebruik deze functie niet als je ook andere e-mailclients gebruikt</string>
     <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
-    <string name="autodel_server_enabled_hint">Dit omvat alle berichten, media en het gesprek \'Opgeslagen berichten\'. Gebruik deze functie niet als je je gegevens wilt bewaren op de server of als je ook andere e-mailclients gebruikt.</string>
+    <string name="autodel_server_enabled_hint">Dit omvat alle berichten, media en het gesprek ‘Opgeslagen berichten’. Gebruik deze functie niet als je je gegevens wilt bewaren op de server of als je ook andere e-mailclients gebruikt.</string>
     <string name="autodel_confirm">Ik begrijp het; verwijder alle berichten</string>
     <string name="autodel_at_once">Direct</string>
     <string name="after_30_seconds">Na 30 seconden</string>
@@ -614,7 +623,7 @@
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_explain">Autocrypt is een nieuwe, open specificatie voor het automatisch instellen van eind-tot-eindversleuteling.\n\nJe instellingen worden, indien nodig, automatisch aangemaakt en kunnen worden overgezet naar andere apparaten middels instelberichten.</string>
     <string name="autocrypt_send_asm_title">Autocrypt-instelbericht versturen</string>
-    <string name="autocrypt_send_asm_explain_before">Een \'Autocrypt-instelbericht\' deelt je eind-tot-eindinstellingen veilig met andere Autocrypt-compatibele apps.\n\nDe instellingen zijn versleuteld middels een code die hier wordt getoond en moet worden overgetypt op het andere apparaat.</string>
+    <string name="autocrypt_send_asm_explain_before">Een ‘Autocrypt-instelbericht’ deelt je eind-tot-eindinstellingen veilig met andere Autocrypt-compatibele apps.\n\nDe instellingen zijn versleuteld middels een code die hier wordt getoond en moet worden overgetypt op het andere apparaat.</string>
     <string name="autocrypt_send_asm_button">Autocrypt-instelbericht versturen</string>
     <string name="autocrypt_send_asm_explain_after">Je instellingen zijn aan jezelf verstuurd. Schakel over naar het andere apparaat en open het instelbericht. Je zou nu moeten worden gevraagd om een code. Typ de volgende getallen in het invoerveld:\n\n%1$s</string>
     <string name="autocrypt_prefer_e2ee">Voorkeur voor eind-tot-eindversleuteling</string>
@@ -632,17 +641,17 @@
     <string name="systemmsg_group_name_changed">Groepsnaam gewijzigd van \"%1$s\" in \"%2$s\".</string>
     <string name="systemmsg_group_image_changed">Groepsafbeelding gewijzigd.</string>
     <string name="systemmsg_group_image_deleted">Groepsafbeelding verwijderd.</string>
-    <string name="systemmsg_member_added">Deelnemer \'%1$s\' toegevoegd.</string>
-    <string name="systemmsg_member_removed">Deelnemer \'%1$s\' verwijderd.</string>
+    <string name="systemmsg_member_added">‘%1$s’ is toegevoegd.</string>
+    <string name="systemmsg_member_removed">‘%1$s’ is verwijderd.</string>
     <string name="systemmsg_group_left">Groep verlaten.</string>
     <string name="systemmsg_read_receipt_subject">Leesbevestiging</string>
-    <string name="systemmsg_read_receipt_body">Dit is een leesbevestiging voor het bericht \'%1$s\'.\n\nDit betekent dat het bericht getoond is op het apparaat van de ontvanger, maar niet dat het ook gelezen is.</string>
+    <string name="systemmsg_read_receipt_body">Het door jou verstuurde bericht, “%1$s”, heeft het scherm van de ontvanger bereikt.\n\nDit betekent echter niet dat het ook gelezen is.</string>
     <string name="systemmsg_cannot_decrypt">Dit bericht kan niet worden ontsleuteld.\n\n• Het kan helpen dit bericht te beantwoorden en de afzender te vragen het opnieuw te versturen.\n\n• Als je Delta Chat of een andere e-mailapp opnieuw hebt geïnstalleerd op dit of een ander apparaat, verstuur het instelbericht dan opnieuw.</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). -->
     <string name="systemmsg_action_by_me">%1$s door mij.</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
     <string name="systemmsg_action_by_user">%1$s door %2$s.</string>
-    <string name="systemmsg_unknown_sender_for_chat">Onbekende afzender in dit gesprek. Zie \'Informatie\' voor meer informatie.</string>
+    <string name="systemmsg_unknown_sender_for_chat">Dit gesprek bevat een onbekende afzender. Zie ‘Informatie’ voor meer informatie.</string>
     <string name="systemmsg_subject_for_new_contact">Bericht van %1$s</string>
     <string name="systemmsg_failed_sending_to">Het bericht kan niet worden verstuurd aan %1$s.</string>
 
@@ -678,19 +687,27 @@
     <string name="qrscan_contains_url">Gescande QR-code-url:\n\n %1$s</string>
     <string name="qrscan_fingerprint_label">Vingerafdruk</string>
     <string name="qrscan_x_verified_introduce_myself">%1$s is goedgekeurd - vertel iets over jezelf…</string>
+    <string name="withdraw_verifycontact_explain">Deze qr-code kan door anderen worden gescand om contact met je op te nemen.\n\nJe kunt de qr-code hier deactiveren en opnieuw activeren door deze opnieuw te scannen.</string>
+    <string name="withdraw_verifygroup_explain">Deze qr-code kan door anderen worden gescand om deel te nemen aan de groep ‘%1$s’.\n\nJe kunt de qr-code hier deactiveren en opnieuw activeren door deze opnieuw te scannen.</string>
+    <string name="withdraw_qr_code">QR-code deactiveren</string>
+    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
+    <string name="revive_verifycontact_explain">Deze qr-code kan door anderen worden gescand om contact met je op te nemen.\n\nDe qr-code is niet actief op dit apparaat.</string>
+    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
+    <string name="revive_verifygroup_explain">Deze qr-code kan door anderen worden gescand om deel te nemen aan de groep ‘%1$s’.\n\nDe qr-code is niet actief op dit apparaat.</string>
+    <string name="revive_qr_code">QR-code activeren</string>
     <string name="qrshow_title">QR-uitnodigingscode</string>
     <string name="qrshow_x_joining">%1$s heeft deelgenomen.</string>
     <string name="qrshow_x_verified">%1$s is goedgekeurd.</string>
     <string name="qrshow_x_has_joined_group">%1$s neemt nu deel aan de groep.</string>
     <string name="qrshow_join_group_title">QR-uitnodigingscode</string>
-    <string name="qrshow_join_group_hint">Scan dit om deel te nemen aan de groep \'%1$s\'.</string>
+    <string name="qrshow_join_group_hint">Scan dit om deel te nemen aan de groep ‘%1$s’.</string>
     <string name="qrshow_join_contact_title">QR-uitnodigingscode</string>
     <string name="qrshow_join_contact_hint">Scan dit om een contactpersoon in te stellen met %1$s</string>
     <string name="qrshow_join_contact_no_connection_hint">Voor het instellen van QR-codes is een internetverbinding vereist. Maak verbinding en probeer het opnieuw.</string>
     <string name="qrshow_join_contact_no_connection_toast">Geen internetverbinding; kan QR-codes niet instellen.</string>
-    <string name="qraccount_ask_create_and_login">Wil je een nieuw e-mailadres aanmaken op \'%1$s\' en daarmee inloggen?</string>
-    <string name="qraccount_ask_create_and_login_another">Wil je een nieuw e-mailadres aanmaken op \'%1$s\' en daarmee inloggen?\n\nJe reeds aanwezige account wordt niet verwijderd. Gebruik de knop \'Ander account kiezen\' om tussen accounts te schakelen.</string>
-    <string name="qraccount_success_enter_name">Het inloggen is gelukt. Je e-mailadres is \'%1$s\'.\n\nAls je wilt, kun je een naam en profielafbeelding opgeven die worden getoond aan de mensen waarmee je communiceert.</string>
+    <string name="qraccount_ask_create_and_login">Wil je een nieuw e-mailadres aanmaken op ‘%1$s’ en daarmee inloggen?</string>
+    <string name="qraccount_ask_create_and_login_another">Wil je een nieuw e-mailadres aanmaken op ‘%1$s’ en daarmee inloggen?\n\nJe reeds aanwezige account wordt niet verwijderd. Druk op de knop ‘Ander account kiezen’ om tussen accounts te schakelen.</string>
+    <string name="qraccount_success_enter_name">Het inloggen is gelukt - je e-mailadres is ‘%1$s’.\n\nAls je wilt, kun je een naam en profielafbeelding opgeven die worden getoond aan de mensen waarmee je communiceert.</string>
     <string name="qraccount_qr_code_cannot_be_used">De gescande QR-code kan niet worden gebruikt om een nieuw account in te stellen.</string>
     <string name="qraccount_use_on_new_install">De gescande QR-code is voor het instellen van een nieuw account. Je kunt deze direct scannen na het (opnieuw) installeren van Delta Chat.</string>
     <string name="contact_verified">%1$s is goedgekeurd.</string>
@@ -720,10 +737,10 @@
     <!-- permissions -->
     <string name="perm_required_title">Machtiging vereist</string>
     <string name="perm_continue">Doorgaan</string>
-    <string name="perm_explain_access_to_camera_denied">Delta Chat wil foto\'s en video\'s kunnen maken. Ga naar de app-instellingen, kies \'Rechten\' en schakel \'Camera\' in.</string>
-    <string name="perm_explain_access_to_mic_denied">Delta Chat wil spraakberichten versturen. Ga naar de app-instellingen, kies \'Rechten\' en schakel \'Microfoon\' in.</string>
-    <string name="perm_explain_access_to_storage_denied">Delta Chat wil bestanden kunnen ontvangen of versturen. Ga naar de app-instellingen, kies \'Rechten\' en schakel \'Opslag\' in.</string>
-    <string name="perm_explain_access_to_location_denied">Delta Chat wil je locatie kunnen delen. Ga naar de app-instellingen, kies \'Rechten\' en schakel \'Locatie\' in.</string>
+    <string name="perm_explain_access_to_camera_denied">Delta Chat wil foto\'s en video\'s kunnen maken. Ga naar de app-instellingen, kies ‘Rechten’ en schakel ‘Camera’ in.</string>
+    <string name="perm_explain_access_to_mic_denied">Delta Chat wil spraakberichten versturen. Ga naar de app-instellingen, kies ‘Rechten’ en schakel ‘Microfoon’ in.</string>
+    <string name="perm_explain_access_to_storage_denied">Delta Chat wil bestanden kunnen ontvangen en versturen. Ga naar de app-instellingen, kies ‘Rechten’ en schakel ‘Opslag’ in.</string>
+    <string name="perm_explain_access_to_location_denied">Delta Chat wil je locatie kunnen delen. Ga naar de app-instellingen, kies ‘Rechten’ en schakel ‘Locatie’ in.</string>
 
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Teken met je vinger om vervaging toe te passen</string>
@@ -780,7 +797,7 @@
     <string name="login_required_desktop">vereist</string>
     <string name="name_desktop">Naam</string>
     <string name="autocrypt_key_transfer_desktop">Autocrypt-sleuteloverdracht</string>
-    <string name="initiate_key_transfer_desktop">Een \'Autocrypt-instelbericht\' deelt je eind-tot-eindinstellingen veilig met andere Autocrypt-compatibele apps. De instellingen zijn versleuteld middels een code die hier wordt getoond en moet worden overgetypt op het andere apparaat.</string>
+    <string name="initiate_key_transfer_desktop">Een ‘Autocrypt-instelbericht’ deelt je eind-tot-eindinstellingen veilig met andere Autocrypt-compatibele apps. De instellingen zijn versleuteld middels een code die hier wordt getoond en moet worden overgetypt op het andere apparaat.</string>
     <string name="reply_to_message_desktop">Bericht beantwoorden</string>
     <string name="select_group_image_desktop">Kies een groepsafbeelding</string>
     <string name="imex_progress_title_desktop">Back-upvoortgang</string>
