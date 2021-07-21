@@ -68,7 +68,7 @@
     <string name="file_not_found">Could not find %1$s.</string>
     <string name="copied_to_clipboard">Copied to clipboard.</string>
     <string name="contacts_headline">Contacts</string>
-    <string name="email_address">E-mail Address</string>
+    <string name="email_address">E-Mail Address</string>
     <string name="bad_email_address">Bad e-mail address.</string>
     <string name="password">Password</string>
     <string name="existing_password">Existing Password</string>
@@ -563,7 +563,7 @@
     <string name="pref_send_copy_to_self">Send Copy to Self</string>
     <string name="pref_auto_folder_moves">Automatic Moves to DeltaChat Folder</string>
     <string name="pref_auto_folder_moves_explain">Chat conversations are moved to avoid cluttering the Inbox</string>
-    <string name="pref_show_emails">Show Classic E-mails</string>
+    <string name="pref_show_emails">Show Classic E-Mails</string>
     <string name="pref_show_emails_no">No, chats only</string>
     <string name="pref_show_emails_accepted_contacts">For accepted contacts</string>
     <string name="pref_show_emails_all">All</string>
