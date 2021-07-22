@@ -415,10 +415,13 @@
 
     <!-- Connectivity -->
     <string name="connectivity">Connectivity</string>
+    <!-- Shown eg. in the title bar if the app is "Not connected"; as there is very few room, try to be as short as possible. -->
     <string name="connectivity_not_connected">Not connected</string>
-    <!-- Note that the three dots are a single character (…), not three (...) -->
+    <!-- Shown eg. in the title bar if the app is "Connecting"; as there is very few room, try to be as short as possible. Note that the three dots are a single character (…), not three (...) -->
     <string name="connectivity_connecting">Connecting…</string>
-    <string name="connectivity_getting_new_msgs">Getting new messages…</string>
+    <!-- Shown eg. in the title bar if the app is "Updating" (eg. getting new/old message, sync things); as there is very few room, try to be as short as possible. Note that the three dots are a single character (…), not three (...) -->
+    <string name="connectivity_updating">Updating…</string>
+    <!-- Shown eg. in the setting if the app is "Connected" -->
     <string name="connectivity_connected">Connected</string>
 
 
