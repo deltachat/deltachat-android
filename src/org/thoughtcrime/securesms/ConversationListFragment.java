@@ -158,7 +158,7 @@ public class ConversationListFragment extends Fragment
     super.onResume();
 
     updateReminders();
-    list.getAdapter().notifyDataSetChanged();
+    list.getAdapter().notifyDataSetChanged(); // TODO seems like this is not enough
 
     reloadTimer = new Timer();
     reloadTimer.scheduleAtFixedRate(new TimerTask() {
@@ -557,7 +557,7 @@ public class ConversationListFragment extends Fragment
     if (event.getId() == DcContext.DC_EVENT_CONNECTIVITY_CHANGED) {
       ((ConversationListActivity) getActivity()).refreshTitle();
     } else {
-      getLoaderManager().restartLoader(0, null, this);
+      LoaderManager.getInstance(this).restartLoader(0, null, this);
     }
   }
 

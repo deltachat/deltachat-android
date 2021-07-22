@@ -9,6 +9,7 @@ import androidx.appcompat.widget.AppCompatTextView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.util.ViewUtil;
 
 public class MessageRequestsBottomView extends ConstraintLayout {
 
@@ -154,9 +155,9 @@ public class MessageRequestsBottomView extends ConstraintLayout {
 
   public void setQuestion(String text) {
     if (text == null || text.isEmpty()) {
-      question.setVisibility(GONE);
+      question.setMaxHeight(ViewUtil.dpToPx(5));
     } else {
-      question.setVisibility(VISIBLE);
+      question.setMaxHeight(Integer.MAX_VALUE);
       question.setText(text);
     }
   }

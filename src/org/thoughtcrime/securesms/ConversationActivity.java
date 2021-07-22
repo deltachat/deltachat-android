@@ -1653,12 +1653,11 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     return true; // action handled by listener
   }
 
-  private boolean isInContactRequest() {
-    return messageRequestBottomView.getVisibility() == View.VISIBLE;
-  }
-
   public void initializeContactRequest() {
-    if (!dcChat.isContactRequest()) return;
+    if (!dcChat.isContactRequest()) {
+      messageRequestBottomView.setVisibility(View.GONE);
+      return;
+    };
 
     messageRequestBottomView.setVisibility(View.VISIBLE);
     String question;
@@ -1676,8 +1675,15 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       }
     }
     messageRequestBottomView.setQuestion(question);
-    messageRequestBottomView.setAcceptOnClickListener(v -> dcContext.acceptChat(chatId));
+    messageRequestBottomView.setAcceptOnClickListener(v -> {
+      dcContext.acceptChat(chatId);
+      messageRequestBottomView.setVisibility(View.GONE);
+      composePanel.setVisibility(View.VISIBLE);
+    });
     messageRequestBottomView.setDeleteOnClickListener(v -> handleDeleteChat());
-    messageRequestBottomView.setBlockOnClickListener(v -> dcContext.blockChat(chatId));
+    messageRequestBottomView.setBlockOnClickListener(v -> {
+      dcContext.blockChat(chatId);
+      handleReturnToConversationList();
+    });
   }
 }
