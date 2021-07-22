@@ -54,12 +54,4 @@
 		app:layout_constraintStart_toEndOf="@+id/message_request_delete"
 		app:layout_constraintTop_toTopOf="@id/message_request_block"
 		android:layout_marginRight="16dp" />
-
-	<androidx.constraintlayout.widget.Group
-		android:id="@+id/message_request_normal_buttons"
-		android:layout_width="0dp"
-		android:layout_height="0dp"
-		android:visibility="gone"
-		app:constraint_referenced_ids="message_request_accept,message_request_delete,message_request_block"
-		tools:visibility="gone"/>
 </merge>

@@ -48,13 +48,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcChatlist;
-import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
-import com.b44t.messenger.DcMsg;
 import com.google.android.material.snackbar.Snackbar;
 
-import static org.thoughtcrime.securesms.ConversationActivity.CHAT_ID_EXTRA;
 import org.thoughtcrime.securesms.ConversationListAdapter.ItemClickListener;
 import org.thoughtcrime.securesms.components.recyclerview.DeleteItemAnimator;
 import org.thoughtcrime.securesms.components.registration.PulsingFloatingActionButton;
@@ -300,13 +297,8 @@ public class ConversationListFragment extends Fragment
       @Override
       protected void executeAction(@Nullable Void parameter) {
         for (long chatId : selectedConversations) {
-          if (chatId == DcChat.DC_CHAT_ID_DEADDROP) {
-            dcContext.marknoticedChat(DcChat.DC_CHAT_ID_DEADDROP);
-          }
-          else {
-            dcContext.setChatVisibility((int)chatId,
-                    !archive? DcChat.DC_CHAT_VISIBILITY_ARCHIVED : DcChat.DC_CHAT_VISIBILITY_NORMAL);
-          }
+          dcContext.setChatVisibility((int)chatId,
+                  !archive? DcChat.DC_CHAT_VISIBILITY_ARCHIVED : DcChat.DC_CHAT_VISIBILITY_NORMAL);
         }
       }
 
@@ -348,13 +340,8 @@ public class ConversationListFragment extends Fragment
           @Override
           protected Void doInBackground(Void... params) {
             for (long chatId : selectedConversations) {
-              if (chatId == DcChat.DC_CHAT_ID_DEADDROP) {
-                dcContext.marknoticedChat(DcChat.DC_CHAT_ID_DEADDROP);
-              }
-              else {
-                dcContext.notificationCenter.removeNotifications((int) chatId);
-                dcContext.deleteChat((int) chatId);
-              }
+              dcContext.notificationCenter.removeNotifications((int) chatId);
+              dcContext.deleteChat((int) chatId);
             }
             return null;
           }
@@ -430,31 +417,6 @@ public class ConversationListFragment extends Fragment
   public void onItemClick(ConversationListItem item) {
     if (actionMode == null) {
       int chatId = (int)item.getChatId();
-
-      if (chatId == DcChat.DC_CHAT_ID_DEADDROP) {
-        DcContext dcContext = DcHelper.getContext(getActivity());
-        final int msgId = item.getMsgId();
-        if (DcHelper.getInt(getActivity(), "show_emails") == DcContext.DC_SHOW_EMAILS_ALL) {
-          Intent intent = new Intent(getActivity(), ConversationActivity.class);
-          intent.putExtra(CHAT_ID_EXTRA, DcChat.DC_CHAT_ID_DEADDROP);
-          startActivity(intent);
-        } else {
-          DeaddropQuestionHelper helper = new DeaddropQuestionHelper(getContext(), dcContext.getMsg(msgId));
-          new AlertDialog.Builder(getActivity())
-                  .setPositiveButton(android.R.string.ok, (dialog, which) -> {
-                    int belongingChatId = dcContext.decideOnContactRequest(msgId, DcContext.DC_DECISION_START_CHAT);
-                    if (belongingChatId != 0) {
-                      handleCreateConversation(belongingChatId);
-                    }
-                  })
-                  .setNegativeButton(R.string.not_now, (dialog, which) -> dcContext.decideOnContactRequest(msgId, DcContext.DC_DECISION_NOT_NOW))
-                  .setNeutralButton(helper.answerBlock, (dialog, which) -> dcContext.decideOnContactRequest(msgId, DcContext.DC_DECISION_BLOCK))
-                  .setMessage(helper.question)
-                  .show();
-        }
-        return;
-      }
-
       handleCreateConversation(chatId);
     } else {
       ConversationListAdapter adapter = (ConversationListAdapter) list.getAdapter();

@@ -453,12 +453,6 @@ JNIEXPORT void Java_com_b44t_messenger_DcContext_acceptChat(JNIEnv *env, jobject
 /* DcContext - handle messages */
 
 
-JNIEXPORT jint Java_com_b44t_messenger_DcContext_decideOnContactRequest(JNIEnv *env, jobject obj, jint msg_id, jint decision)
-{
-    return (jint)dc_decide_on_contact_request(get_dc_context(env, obj), msg_id, decision);
-}
-
-
 JNIEXPORT jint Java_com_b44t_messenger_DcContext_getFreshMsgCount(JNIEnv *env, jobject obj, jint chat_id)
 {
     return dc_get_fresh_msg_cnt(get_dc_context(env, obj), chat_id);
@@ -1090,6 +1084,12 @@ JNIEXPORT jboolean Java_com_b44t_messenger_DcChat_isSendingLocations(JNIEnv *env
 }
 
 
+JNIEXPORT jboolean Java_com_b44t_messenger_DcChat_isContactRequest(JNIEnv *env, jobject obj)
+{
+    return dc_chat_is_contact_request(get_dc_chat(env, obj))!=0;
+}
+
+
 JNIEXPORT jintArray Java_com_b44t_messenger_DcContext_getChatMedia(JNIEnv *env, jobject obj, jint chat_id, jint type1, jint type2, jint type3)
 {
     dc_array_t* ca = dc_get_chat_media(get_dc_context(env, obj), chat_id, type1, type2, type3);
@@ -1243,12 +1243,6 @@ JNIEXPORT jint Java_com_b44t_messenger_DcMsg_getState(JNIEnv *env, jobject obj)
 JNIEXPORT jint Java_com_b44t_messenger_DcMsg_getChatId(JNIEnv *env, jobject obj)
 {
     return dc_msg_get_chat_id(get_dc_msg(env, obj));
-}
-
-
-JNIEXPORT jint Java_com_b44t_messenger_DcMsg_getRealChatId(JNIEnv *env, jobject obj)
-{
-    return dc_msg_get_real_chat_id(get_dc_msg(env, obj));
 }
 
 

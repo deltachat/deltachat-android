@@ -165,13 +165,7 @@ public class ConversationListItem extends RelativeLayout
     setBatchState(batchMode);
     setBgColor(thread);
 
-    if(chatId == DcChat.DC_CHAT_ID_DEADDROP) {
-      DcContact dcContact = dcContext.getContact(dcContext.getMsg(msgId).getFromId());
-      this.contactPhotoImage.setAvatar(glideRequests, dcContext.getRecipient(dcContact), false);
-    }
-    else {
-      this.contactPhotoImage.setAvatar(glideRequests, recipient, false);
-    }
+    this.contactPhotoImage.setAvatar(glideRequests, recipient, false);
 
     fromView.setCompoundDrawablesWithIntrinsicBounds(
         thread.isMuted()? R.drawable.ic_volume_off_grey600_18dp : 0,
@@ -305,8 +299,7 @@ public class ConversationListItem extends RelativeLayout
 
   private void setBgColor(ThreadRecord thread) {
     int bg = R.attr.conversation_list_item_background;
-    if (chatId == DcChat.DC_CHAT_ID_DEADDROP
-     || (thread!=null && thread.getVisibility()==DcChat.DC_CHAT_VISIBILITY_PINNED)) {
+    if (thread!=null && thread.getVisibility()==DcChat.DC_CHAT_VISIBILITY_PINNED) {
         bg = R.attr.pinned_list_item_background;
     }
     TypedArray ta = getContext().obtainStyledAttributes(new int[] { bg });

@@ -272,6 +272,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     } else if (isSharing(this)) {
       handleSharing();
     }
+
+    initializeContactRequest();
   }
 
   @Override
@@ -298,6 +300,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
         initializeDraft();
       }
     });
+    initializeContactRequest();
 
     if (fragment != null) {
       fragment.onNewIntent();
@@ -453,10 +456,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   public boolean onPrepareOptionsMenu(Menu menu) {
     MenuInflater inflater = this.getMenuInflater();
     menu.clear();
-
-    if(chatId == DcChat.DC_CHAT_ID_DEADDROP) {
-      return true;
-    }
 
     inflater.inflate(R.menu.conversation, menu);
 
@@ -634,13 +633,11 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void handleProfile() {
-    if(chatId != DcChat.DC_CHAT_ID_DEADDROP) {
-      Intent intent = new Intent(this, ProfileActivity.class);
-      intent.putExtra(ProfileActivity.CHAT_ID_EXTRA, chatId);
-      intent.putExtra(ProfileActivity.FROM_CHAT, true);
-      startActivity(intent);
-      overridePendingTransition(0, 0);
-    }
+    Intent intent = new Intent(this, ProfileActivity.class);
+    intent.putExtra(ProfileActivity.CHAT_ID_EXTRA, chatId);
+    intent.putExtra(ProfileActivity.FROM_CHAT, true);
+    startActivity(intent);
+    overridePendingTransition(0, 0);
   }
 
   private void handleLeaveGroup() {
@@ -968,10 +965,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     }
 
     setComposePanelVisibility();
-
-    if (chatId == DcChat.DC_CHAT_ID_DEADDROP) {
-      titleView.hideAvatar();
-    }
   }
 
   private void setComposePanelVisibility() {
@@ -1557,6 +1550,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       initializeSecurity(isSecureText, isDefaultSms);
       setComposePanelVisibility();
     }
+
+    if (eventId == DcContext.DC_EVENT_CHAT_MODIFIED && event.getData1Int() == chatId) {
+      initializeContactRequest();
+    }
   }
 
 
@@ -1656,18 +1653,27 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     return true; // action handled by listener
   }
 
-  private boolean isInMessageRequest() {
+  private boolean isInContactRequest() {
     return messageRequestBottomView.getVisibility() == View.VISIBLE;
   }
 
-  public void onMessageRequest() {
+  public void initializeContactRequest() {
+    if (!dcChat.isContactRequest()) return;
 
+    messageRequestBottomView.setVisibility(View.VISIBLE);
     String question;
     if (dcChat.isMailingList()) {
       question = getString(R.string.ask_show_mailing_list, dcChat.getName());
     } else {
-      DcContact dcContact = dcContext.getContact(dcMsg.getFromId());
-      question = getString(R.string.ask_start_chat_with, dcMsg.getSenderName(dcContact, false));
+      final int[] members = dcContext.getChatContacts(chatId);
+      if (members.length == 1) {
+        DcContact dcContact = dcContext.getContact(members[0]);
+        question = getString(R.string.ask_start_chat_with, dcContact.getNameNAddr());
+      } else {
+        question = "";
+        // We don't support blocking groups yet.
+        messageRequestBottomView.hideBlockButton();
+      }
     }
     messageRequestBottomView.setQuestion(question);
     messageRequestBottomView.setAcceptOnClickListener(v -> dcContext.acceptChat(chatId));

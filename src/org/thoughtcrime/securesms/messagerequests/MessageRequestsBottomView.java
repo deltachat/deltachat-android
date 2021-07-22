@@ -153,6 +153,15 @@ public class MessageRequestsBottomView extends ConstraintLayout {
   }
 
   public void setQuestion(String text) {
-    question.setText(text);
+    if (text == null || text.isEmpty()) {
+      question.setVisibility(GONE);
+    } else {
+      question.setVisibility(VISIBLE);
+      question.setText(text);
+    }
+  }
+
+  public void hideBlockButton() {
+    block.setVisibility(GONE);
   }
 }
