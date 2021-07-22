@@ -437,6 +437,15 @@
     <string name="send_message">Отправить сообщение</string>
 
 
+    <!-- Connectivity -->
+    <string name="connectivity">Соединение</string>
+    <string name="connectivity_not_connected">Нет соединения</string>
+    <!-- Note that the three dots are a single character (…), not three (...) -->
+    <string name="connectivity_connecting">Соединение…</string>
+    <string name="connectivity_getting_new_msgs">Получение новых сообщений…</string>
+    <string name="connectivity_connected">Соединено</string>
+
+
     <!-- welcome and login -->
     <string name="welcome_intro1_message">Мессенджер с самой широкой аудиторией в мире. Бесплатный и независимый.</string>
     <string name="login_title">Логин</string>
@@ -702,6 +711,14 @@
     <string name="qrscan_contains_url">URL из QR кода:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Отпечаток</string>
     <string name="qrscan_x_verified_introduce_myself">Подлинность %1$s проверена, представляемся…</string>
+    <string name="withdraw_verifycontact_explain">Этот QR-код могут сканировать другие люди, чтобы связаться с вами.\n\nВы можете деактивировать QR-код здесь и снова активировать его, отсканировав снова.</string>
+    <string name="withdraw_verifygroup_explain">Этот QR-код могут сканировать другие люди, чтобы присоединиться к группе \"%1$s\".\n\nВы можете деактивировать QR-код здесь и снова активировать его, отсканировав снова.</string>
+    <string name="withdraw_qr_code">Деактивировать QR-код</string>
+    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
+    <string name="revive_verifycontact_explain">Этот QR-код могут сканировать другие люди, чтобы связаться с вами.\n\nНа этом устройстве QR-код не активен.</string>
+    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
+    <string name="revive_verifygroup_explain">Этот QR-код может быть отсканирован другими, чтобы присоединиться к группе \"%1$s\".\n\nНа этом устройстве QR-код не активен.</string>
+    <string name="revive_qr_code">Активировать QR-код</string>
     <string name="qrshow_title">QR код приглашения</string>
     <string name="qrshow_x_joining">%1$s присоединилось.</string>
     <string name="qrshow_x_verified">%1$s проверен.</string>
