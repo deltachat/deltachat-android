@@ -28,7 +28,7 @@ public class AttachmentsContentProvider extends ContentProvider {
         ApplicationDcContext dcContext = DcHelper.getContext(getContext());
 
         String path = uri.getPath();
-        if (!dcContext.sharedFiles.containsKey(path)) {
+        if (!DcHelper.sharedFiles.containsKey(path)) {
             throw new FileNotFoundException("File was not shared before.");
         }
 

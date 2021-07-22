@@ -201,7 +201,7 @@ class SearchListAdapter extends    RecyclerView.Adapter<SearchListAdapter.Search
               @Nullable String        query)
     {
       ApplicationDcContext dcContext = DcHelper.getContext(context);
-      ThreadRecord threadRecord = dcContext.getThreadRecord(chatlistItem.summary, dcContext.getChat(chatlistItem.chatId));
+      ThreadRecord threadRecord = DcHelper.getThreadRecord(context, chatlistItem.summary, dcContext.getChat(chatlistItem.chatId));
       root.bind(threadRecord, chatlistItem.msgId, chatlistItem.summary, glideRequests, locale, Collections.emptySet(), false, query);
       root.setOnClickListener(view -> eventListener.onConversationClicked(chatlistItem));
     }

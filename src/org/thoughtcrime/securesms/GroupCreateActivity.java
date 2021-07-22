@@ -208,7 +208,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     groupName    = ViewUtil.findById(this, R.id.group_name);
     List<Recipient> initList = new LinkedList<>();
     DcContact self = dcContext.getContact(DC_CONTACT_ID_SELF);
-    initList.add(dcContext.getRecipient(self));
+    initList.add(new Recipient(this, self));
     SelectedRecipientsAdapter adapter = new SelectedRecipientsAdapter(this, initList);
     adapter.setOnRecipientDeletedListener(this);
     lv.setAdapter(adapter);
@@ -503,7 +503,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     @Override
     protected Recipient doInBackground(Integer... recipientIds) {
       Integer recipientsId = recipientIds[0];
-      return activity.dcContext.getRecipient(ApplicationDcContext.RECIPIENT_TYPE_CHAT, recipientsId);
+      return new Recipient(activity, activity.dcContext.getChat(recipientsId));
     }
 
     @Override

@@ -391,7 +391,7 @@ public class NotificationCenter {
             }
 
             // set avatar
-            Recipient recipient = new Recipient(context, dcChat, null);
+            Recipient recipient = new Recipient(context, dcChat);
             if (privacy.isDisplayContact()) {
                 try {
                     Drawable drawable;

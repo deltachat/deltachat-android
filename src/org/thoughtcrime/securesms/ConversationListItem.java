@@ -178,7 +178,7 @@ public class ConversationListItem extends RelativeLayout
                    @Nullable String        highlightSubstring)
   {
     this.selectedThreads = Collections.emptySet();
-    Recipient recipient  = DcHelper.getContext(getContext()).getRecipient(contact);
+    Recipient recipient  = new Recipient(getContext(), contact);
     this.glideRequests   = glideRequests;
 
     fromView.setText(getHighlightedSpan(locale, contact.getDisplayName(), highlightSubstring));
@@ -202,7 +202,7 @@ public class ConversationListItem extends RelativeLayout
     ApplicationDcContext dcContext = DcHelper.getContext(getContext());
     DcContact sender = dcContext.getContact(messageResult.getFromId());
     this.selectedThreads = Collections.emptySet();
-    Recipient recipient  = DcHelper.getContext(getContext()).getRecipient(sender);
+    Recipient recipient  = new Recipient(getContext(), sender);
     this.glideRequests   = glideRequests;
 
     fromView.setText(recipient, true);

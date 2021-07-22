@@ -49,6 +49,7 @@ import org.thoughtcrime.securesms.components.ConversationItemThumbnail;
 import org.thoughtcrime.securesms.components.DocumentView;
 import org.thoughtcrime.securesms.components.QuoteView;
 import org.thoughtcrime.securesms.components.emoji.EmojiTextView;
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.AudioSlide;
 import org.thoughtcrime.securesms.mms.DocumentSlide;
 import org.thoughtcrime.securesms.mms.GlideApp;
@@ -517,7 +518,7 @@ public class ConversationItem extends BaseConversationItem
     if (messageRecord.isOutgoing() || !showSender || dcContact ==null) {
       contactPhoto.setVisibility(View.GONE);
     } else {
-      contactPhoto.setAvatar(glideRequests, dcContext.getRecipient(dcContact), true);
+      contactPhoto.setAvatar(glideRequests, new Recipient(context, dcContact), true);
       contactPhoto.setVisibility(View.VISIBLE);
     }
   }
@@ -542,7 +543,7 @@ public class ConversationItem extends BaseConversationItem
     Recipient author = null;
     SlideDeck slideDeck = new SlideDeck();
     if (msg != null) {
-      author = dcContext.getRecipient(dcContext.getContact(msg.getFromId()));
+      author = new Recipient(context, dcContext.getContact(msg.getFromId()));
       if (msg.getType() != DcMsg.DC_MSG_TEXT) {
         Slide slide = MediaUtil.getSlideForMsg(context, msg);
         if (slide != null) {
@@ -713,7 +714,7 @@ public class ConversationItem extends BaseConversationItem
 
         context.startActivity(intent);
       } else if (slide.getUri() != null) {
-        dcContext.openForViewOrShare(context, slide.getDcMsgId(), Intent.ACTION_VIEW);
+        DcHelper.openForViewOrShare(context, slide.getDcMsgId(), Intent.ACTION_VIEW);
       }
     }
   }

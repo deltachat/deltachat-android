@@ -119,7 +119,7 @@ public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceF
     });
     progressDialog.show();
 
-    imexDir = dcContext.getImexDir().getAbsolutePath();
+    imexDir = DcHelper.getImexDir().getAbsolutePath();
     dcContext.stopIo();
     dcContext.captureNextError();
     dcContext.imex(progressWhat, imexDir);

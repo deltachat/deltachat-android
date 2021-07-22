@@ -122,7 +122,7 @@ public class SendRelayedMessageUtil {
         ext = filename.substring(i);
         filename = filename.substring(0, i);
       }
-      String path = dcContext.getBlobdirFile(filename, ext);
+      String path = DcHelper.getBlobdirFile(dcContext, filename, ext);
 
       // copy content to this file
       if (path != null) {

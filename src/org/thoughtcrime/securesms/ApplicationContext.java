@@ -16,6 +16,7 @@ import androidx.work.WorkManager;
 
 import org.thoughtcrime.securesms.components.emoji.EmojiProvider;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.connect.FetchWorker;
 import org.thoughtcrime.securesms.connect.ForegroundDetector;
 import org.thoughtcrime.securesms.connect.KeepAliveService;
@@ -85,13 +86,13 @@ public class ApplicationContext extends MultiDexApplication {
 
     DynamicTheme.setDefaultDayNightMode(this);
 
-    dcContext.setStockTranslations();
+    DcHelper.setStockTranslations(this);
 
     IntentFilter filter = new IntentFilter(Intent.ACTION_LOCALE_CHANGED);
     registerReceiver(new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            dcContext.setStockTranslations();
+            DcHelper.setStockTranslations(context);
         }
     }, filter);
 

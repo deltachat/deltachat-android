@@ -171,7 +171,7 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
       DcChat chat = dcContext.getChat(chatId);
       DcLot summary = itemDataSharedChats.getSummary(chatlistIndex, chat);
 
-      conversationListItem.bind(dcContext.getThreadRecord(summary, chat),
+      conversationListItem.bind(DcHelper.getThreadRecord(context, summary, chat),
           itemDataSharedChats.getMsgId(chatlistIndex), summary, glideRequests,
           locale, Collections.emptySet(), false);
       conversationListItem.setOnClickListener(view -> clickListener.onSharedChatClicked(chatId));

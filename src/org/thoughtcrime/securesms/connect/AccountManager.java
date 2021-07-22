@@ -102,7 +102,7 @@ public class AccountManager {
         appContext.dcContext.stopIo();
         appContext.dcContext.unref();
         appContext.dcContext = new ApplicationDcContext(context);
-        appContext.dcContext.setStockTranslations();
+        DcHelper.setStockTranslations(context);
     }
 
 

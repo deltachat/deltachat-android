@@ -291,7 +291,7 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
   private void share() {
     MediaItem mediaItem = getCurrentMediaItem();
     if (mediaItem != null) {
-      dcContext.openForViewOrShare(this, mediaItem.msgId, Intent.ACTION_SEND);
+      DcHelper.openForViewOrShare(this, mediaItem.msgId, Intent.ACTION_SEND);
     }
   }
 

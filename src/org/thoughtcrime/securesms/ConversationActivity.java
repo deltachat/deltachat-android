@@ -469,7 +469,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       menu.findItem(R.id.menu_show_map).setVisible(false);
     }
 
-    if (!dcContext.isWebrtcConfigOk() || !dcChat.canVideochat()) {
+    if (!DcHelper.isWebrtcConfigOk(dcContext) || !dcChat.canVideochat()) {
       menu.findItem(R.id.menu_videochat_invite).setVisible(false);
     }
 
@@ -958,7 +958,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     if(chatId == DcChat.DC_CHAT_NO_CHAT)
       throw new IllegalStateException("can't display a conversation for no chat.");
     dcChat           = dcContext.getChat(chatId);
-    recipient        = dcContext.getRecipient(dcChat);
+    recipient        = new Recipient(this, dcChat);
     glideRequests    = GlideApp.with(this);
 
 
@@ -1050,7 +1050,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
           filename = filename.substring(0, i);
         }
       }
-      String path = dcContext.getBlobdirFile(filename, ext);
+      String path = DcHelper.getBlobdirFile(dcContext, filename, ext);
 
       // copy content to this file
       if(path!=null) {
@@ -1518,7 +1518,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   @Override
   public void handleReplyMessage(DcMsg msg) {
     // If you modify these lines you may also want to modify ConversationItem.setQuote():
-    Recipient author = dcContext.getRecipient(dcContext.getContact(msg.getFromId()));
+    Recipient author = new Recipient(this, dcContext.getContact(msg.getFromId()));
 
     SlideDeck slideDeck = new SlideDeck();
     if (msg.getType() != DcMsg.DC_MSG_TEXT) {

@@ -59,7 +59,7 @@ public class DirectShareService extends ChooserTargetService {
       Bundle bundle = new Bundle();
       bundle.putInt(ShareActivity.EXTRA_CHAT_ID, chat.getId());
       bundle.setClassLoader(getClassLoader());
-      Recipient recipient = DcHelper.getContext(this).getRecipient(chat);
+      Recipient recipient = new Recipient(this, chat);
       Bitmap avatar;
       try {
         avatar = GlideApp.with(this)

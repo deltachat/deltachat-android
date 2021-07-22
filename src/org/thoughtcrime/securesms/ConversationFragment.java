@@ -872,7 +872,7 @@ public class ConversationFragment extends MessageSelectorFragment
                     handleDeleteMessages(getListAdapter().getSelectedItems());
                     return true;
                 case R.id.menu_context_share:
-                    dcContext.openForViewOrShare(getContext(), getSelectedMessageRecord(getListAdapter().getSelectedItems()).getId(), Intent.ACTION_SEND);
+                    DcHelper.openForViewOrShare(getContext(), getSelectedMessageRecord(getListAdapter().getSelectedItems()).getId(), Intent.ACTION_SEND);
                     return true;
                 case R.id.menu_context_details:
                     handleDisplayDetails(getSelectedMessageRecord(getListAdapter().getSelectedItems()));

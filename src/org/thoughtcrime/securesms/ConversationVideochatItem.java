@@ -73,7 +73,7 @@ public class ConversationVideochatItem extends LinearLayout
 
     body.setText(TextUtils.concat(line1, "\n", line2));
 
-    contactPhoto.setAvatar(glideRequests, dcContext.getRecipient(dcContact), true);
+    contactPhoto.setAvatar(glideRequests, new Recipient(getContext(), dcContact), true);
 
     setSelected(batchSelected.contains(dcMsg));
     setFooter(dcMsg, locale);

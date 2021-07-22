@@ -39,7 +39,7 @@ public class ForegroundDetector implements Application.ActivityLifecycleCallback
         if (refs == 0) {
             Log.i("DeltaChat", "++++++++++++++++++ first ForegroundDetector.onActivityStarted() ++++++++++++++++++");
             application.dcContext.maybeStartIo();
-            if (application.dcContext.isNetworkConnected()) {
+            if (DcHelper.isNetworkConnected(application)) {
                 new Thread(() -> {
                     Log.i("DeltaChat", "calling maybeNetwork()");
                     application.dcContext.maybeNetwork();

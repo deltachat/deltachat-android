@@ -99,7 +99,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
                 .ifNecessary()
                 .withPermanentDenialDialog(getString(R.string.perm_explain_access_to_storage_denied))
                 .onAllGranted(() -> {
-                    File imexDir = dcContext.getImexDir();
+                    File imexDir = DcHelper.getImexDir();
                     final String backupFile = dcContext.imexHasBackup(imexDir.getAbsolutePath());
                     if (backupFile != null) {
                         new AlertDialog.Builder(this)

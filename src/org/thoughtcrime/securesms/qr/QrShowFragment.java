@@ -122,7 +122,7 @@ public class QrShowFragment extends Fragment implements DcEventCenter.DcEventDel
 
 
     private void setHintText() {
-        if (!dcContext.isNetworkConnected()) {
+        if (!DcHelper.isNetworkConnected(getContext())) {
             hintBelowQr.setText(errorHint);
         } else {
             hintBelowQr.setText(hint);
@@ -132,7 +132,7 @@ public class QrShowFragment extends Fragment implements DcEventCenter.DcEventDel
     @Override
     public void onResume() {
         super.onResume();
-        if (!dcContext.isNetworkConnected()) {
+        if (!DcHelper.isNetworkConnected(getContext())) {
             Toast.makeText(getActivity(), R.string.qrshow_join_contact_no_connection_toast, Toast.LENGTH_LONG).show();
         }
     }
