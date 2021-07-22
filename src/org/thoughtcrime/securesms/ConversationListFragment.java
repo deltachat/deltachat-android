@@ -158,13 +158,15 @@ public class ConversationListFragment extends Fragment
     super.onResume();
 
     updateReminders();
-    list.getAdapter().notifyDataSetChanged(); // TODO seems like this is not enough
+    LoaderManager.getInstance(this).restartLoader(0, null, this);
 
     reloadTimer = new Timer();
     reloadTimer.scheduleAtFixedRate(new TimerTask() {
       @Override
       public void run() {
-        Util.runOnMain(() -> { list.getAdapter().notifyDataSetChanged(); });
+        Util.runOnMain(() ->
+                LoaderManager.getInstance(ConversationListFragment.this)
+                        .restartLoader(0, null, ConversationListFragment.this));
       }
     }, 60 * 1000, 60 * 1000);
   }
