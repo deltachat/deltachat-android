@@ -18,6 +18,8 @@ import android.webkit.WebSettings;
 import android.webkit.WebChromeClient;
 
 import androidx.annotation.NonNull;
+import androidx.webkit.WebSettingsCompat;
+import androidx.webkit.WebViewFeature;
 
 import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
@@ -39,6 +41,7 @@ public class ZhvActivity extends PassphraseRequiredActionBarActivity implements 
     private boolean isSearching = false;
     private JsObject jsObject;
     private String titleWEB = "ZHV";
+    protected WebView webView;
 
     private final DynamicTheme dynamicTheme = new DynamicTheme();
     private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
@@ -63,19 +66,16 @@ public class ZhvActivity extends PassphraseRequiredActionBarActivity implements 
                 jsObject = new JsObject(text, true);
             }
         }
-            /*Don't hide the bar for use it
-        try {
-            //this.getActionBar().hide();
-        } catch (NullPointerException e) {
-        }*/
+
         setContentView(R.layout.activity_zhv);
+	webView = findViewById(R.id.webview);
+
         if (firstTimeInit) {
             handleIntent();
         } else {
-            WebView myWebView = findViewById(R.id.webview);
-            registerForContextMenu(myWebView);
-            myWebView.restoreState(savedInstanceState);
-            configureWebView(myWebView);
+            registerForContextMenu(webView);
+            webView.restoreState(savedInstanceState);
+            configureWebView(webView);
             this.setTitle(titleWEB);
         }
     }
@@ -97,6 +97,14 @@ public class ZhvActivity extends PassphraseRequiredActionBarActivity implements 
               ZhvActivity.this.setTitle(title);
           }
         });
+
+	if (WebViewFeature.isFeatureSupported(WebViewFeature.FORCE_DARK)) {
+	    if (DynamicTheme.isDarkTheme(this)) {
+		WebSettingsCompat.setForceDark(webSettings, WebSettingsCompat.FORCE_DARK_ON);
+	    } else {
+		WebSettingsCompat.setForceDark(webSettings, WebSettingsCompat.FORCE_DARK_OFF);
+	    }
+	}
     }
 
   @Override
@@ -113,15 +121,13 @@ public class ZhvActivity extends PassphraseRequiredActionBarActivity implements 
     searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
         @Override
         public boolean onQueryTextSubmit(String query) {
-            WebView myWebView = findViewById(R.id.webview);
-            myWebView.findNext(true);
+            webView.findNext(true);
             return false;
         }
 
         @Override
         public boolean onQueryTextChange(String newText) {
-            WebView myWebView = findViewById(R.id.webview);
-            myWebView.findAllAsync(newText);
+            webView.findAllAsync(newText);
             return true;
         }
     });
@@ -180,18 +186,16 @@ public class ZhvActivity extends PassphraseRequiredActionBarActivity implements 
             return;
         }
 
-        WebView myWebView = findViewById(R.id.webview);
         jsObject = new JsObject(text, isMarkdown);
-        configureWebView(myWebView);
-        // myWebView.setWebContentsDebuggingEnabled(true);
+        configureWebView(webView);
 
-        myWebView.loadData("", "text/html", null);
+        webView.loadData("", "text/html", null);
         if(isMarkdown){
             // markdown mode
-            myWebView.loadUrl("file:///android_asset/markdown-reader.html");
+            webView.loadUrl("file:///android_asset/markdown-reader.html");
         } else {
             // html mode
-            myWebView.loadDataWithBaseURL("file://index.html", text, "text/html", null, null);
+            webView.loadDataWithBaseURL("file://index.html", text, "text/html", null, null);
         }
         firstTimeInit = false;
     }
@@ -237,8 +241,7 @@ public class ZhvActivity extends PassphraseRequiredActionBarActivity implements 
 
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
-        WebView myWebView = findViewById(R.id.webview);
-        myWebView.saveState(outState);
+        webView.saveState(outState);
         outState.putBoolean(IS_SEARCHING, isSearching);
         outState.putBoolean(FIRST_TIME_INIT, firstTimeInit);
         outState.putString(TITLE_WEB, titleWEB);
