@@ -7,6 +7,7 @@ import android.widget.Toast;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 
+import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.util.Util;
 
@@ -16,7 +17,7 @@ import java.util.Hashtable;
 public class DcEventCenter {
     private Hashtable<Integer, ArrayList<DcEventDelegate>> allObservers = new Hashtable<>();
     private final Object LOCK = new Object();
-    private final Context context;
+    private final ApplicationContext context;
 
     public interface DcEventDelegate {
         void handleEvent(DcEvent event);
@@ -26,7 +27,7 @@ public class DcEventCenter {
     }
 
     public DcEventCenter(Context context) {
-        this.context = context.getApplicationContext();
+        this.context = ApplicationContext.getInstance(context);
     }
 
     /**
@@ -156,6 +157,11 @@ public class DcEventCenter {
   }
 
   public long handleEvent(DcEvent event) {
+    int accountId = event.getAccountId();
+    if (accountId != context.dcContext.getAccountId()) {
+      return 0;
+    }
+
     int id = event.getId();
     switch (id) {
       case DcContext.DC_EVENT_INFO:
