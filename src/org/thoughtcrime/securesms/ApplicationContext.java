@@ -14,7 +14,11 @@ import androidx.work.NetworkType;
 import androidx.work.PeriodicWorkRequest;
 import androidx.work.WorkManager;
 
+import com.b44t.messenger.DcAccounts;
+import com.b44t.messenger.DcContext;
+
 import org.thoughtcrime.securesms.components.emoji.EmojiProvider;
+import org.thoughtcrime.securesms.connect.AccountManager;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.connect.FetchWorker;
@@ -25,17 +29,20 @@ import org.thoughtcrime.securesms.crypto.PRNGFixes;
 import org.thoughtcrime.securesms.geolocation.DcLocationManager;
 import org.thoughtcrime.securesms.jobmanager.JobManager;
 import org.thoughtcrime.securesms.notifications.InChatSounds;
+import org.thoughtcrime.securesms.notifications.NotificationCenter;
 import org.thoughtcrime.securesms.util.AndroidSignalProtocolLogger;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.SignalProtocolLoggerProvider;
 
+import java.io.File;
 import java.util.concurrent.TimeUnit;
 //import com.squareup.leakcanary.LeakCanary;
 
 public class ApplicationContext extends MultiDexApplication {
 
-  public ApplicationDcContext   dcContext;
+  public DcAccounts             dcAccounts;
+  public DcContext              dcContext;
   public DcLocationManager      dcLocationManager;
   private JobManager            jobManager;
 
@@ -62,7 +69,13 @@ public class ApplicationContext extends MultiDexApplication {
     t.start();
 
     System.loadLibrary("native-utils");
-    dcContext = new ApplicationDcContext(this);
+
+    dcAccounts = new DcAccounts("Android "+BuildConfig.VERSION_NAME, new File(getFilesDir(), "accounts").getAbsolutePath());
+    AccountManager.getInstance().migrateToDcAccounts(this);
+    if (dcAccounts.getAll().length == 0) {
+      dcAccounts.addAccount();
+    }
+    dcContext = dcAccounts.getSelectedAccount();
 
     new ForegroundDetector(ApplicationContext.getInstance(this));
 
