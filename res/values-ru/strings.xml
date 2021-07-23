@@ -439,10 +439,11 @@
 
     <!-- Connectivity -->
     <string name="connectivity">Соединение</string>
+    <!-- Shown eg. in the title bar if the app is "Not connected"; as there is very few room, try to be as short as possible. -->
     <string name="connectivity_not_connected">Нет соединения</string>
-    <!-- Note that the three dots are a single character (…), not three (...) -->
+    <!-- Shown eg. in the title bar if the app is "Connecting"; as there is very few room, try to be as short as possible. Note that the three dots are a single character (…), not three (...) -->
     <string name="connectivity_connecting">Соединение…</string>
-    <string name="connectivity_getting_new_msgs">Получение новых сообщений…</string>
+    <!-- Shown eg. in the setting if the app is "Connected" -->
     <string name="connectivity_connected">Соединено</string>
 
 
