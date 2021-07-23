@@ -97,12 +97,14 @@ public class AccountManager {
     private void resetDcContext(Context context) {
         // create an empty DcContext object - this will be set up then, starting with
         // getSelectedAccount()
+      /* TODO
         ApplicationContext appContext = (ApplicationContext)context.getApplicationContext();
         appContext.dcContext.notificationCenter.removeAllNotifiations();
         appContext.dcContext.stopIo();
         appContext.dcContext.unref();
         appContext.dcContext = new ApplicationDcContext(context);
         DcHelper.setStockTranslations(context);
+       */
     }
 
 

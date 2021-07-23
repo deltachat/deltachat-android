@@ -14,13 +14,13 @@ public class ConnectivityActivity extends WebViewActivity implements DcEventCent
     super.onCreate(state, ready);
     refresh();
 
-    DcHelper.getContext(this).eventCenter.addObserver(DcContext.DC_EVENT_CONNECTIVITY_CHANGED, this);
+    DcHelper.getEventCenter(this).addObserver(DcContext.DC_EVENT_CONNECTIVITY_CHANGED, this);
   }
 
   @Override
   public void onDestroy() {
     super.onDestroy();
-    DcHelper.getContext(this).eventCenter.removeObservers(this);
+    DcHelper.getEventCenter(this).removeObservers(this);
   }
 
   private void refresh() {

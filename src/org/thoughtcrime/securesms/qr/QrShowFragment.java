@@ -30,7 +30,6 @@ import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 
 import org.thoughtcrime.securesms.R;
-import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 
@@ -46,7 +45,7 @@ public class QrShowFragment extends Fragment implements DcEventCenter.DcEventDel
 
     private DcEventCenter dcEventCenter;
 
-    private ApplicationDcContext dcContext;
+    private DcContext dcContext;
 
     private String hint;
 
@@ -69,7 +68,7 @@ public class QrShowFragment extends Fragment implements DcEventCenter.DcEventDel
         View view = inflater.inflate(R.layout.qr_show_fragment, container, false);
 
         dcContext = DcHelper.getContext(getActivity());
-        dcEventCenter = dcContext.eventCenter;
+        dcEventCenter = DcHelper.getEventCenter(getActivity());
 
         Bundle extras = getActivity().getIntent().getExtras();
         int chatId = 0;

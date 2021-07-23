@@ -54,7 +54,6 @@ import org.thoughtcrime.securesms.ConversationListAdapter.ItemClickListener;
 import org.thoughtcrime.securesms.components.recyclerview.DeleteItemAnimator;
 import org.thoughtcrime.securesms.components.registration.PulsingFloatingActionButton;
 import org.thoughtcrime.securesms.components.reminder.DozeReminder;
-import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideApp;
@@ -105,22 +104,22 @@ public class ConversationListFragment extends Fragment
     locale = (Locale) getArguments().getSerializable(PassphraseRequiredActionBarActivity.LOCALE_EXTRA);
     archive = getArguments().getBoolean(ARCHIVE, false);
 
-    ApplicationDcContext dcContext = DcHelper.getContext(getActivity());
-    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_CHAT_MODIFIED, this);
-    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_INCOMING_MSG, this);
-    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_MSGS_CHANGED, this);
-    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_MSGS_NOTICED, this);
-    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_MSG_DELIVERED, this);
-    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_MSG_FAILED, this);
-    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_MSG_READ, this);
-    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_MSG_READ, this);
-    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_CONNECTIVITY_CHANGED, this);
+    DcEventCenter eventCenter = DcHelper.getEventCenter(getActivity());
+    eventCenter.addObserver(DcContext.DC_EVENT_CHAT_MODIFIED, this);
+    eventCenter.addObserver(DcContext.DC_EVENT_INCOMING_MSG, this);
+    eventCenter.addObserver(DcContext.DC_EVENT_MSGS_CHANGED, this);
+    eventCenter.addObserver(DcContext.DC_EVENT_MSGS_NOTICED, this);
+    eventCenter.addObserver(DcContext.DC_EVENT_MSG_DELIVERED, this);
+    eventCenter.addObserver(DcContext.DC_EVENT_MSG_FAILED, this);
+    eventCenter.addObserver(DcContext.DC_EVENT_MSG_READ, this);
+    eventCenter.addObserver(DcContext.DC_EVENT_MSG_READ, this);
+    eventCenter.addObserver(DcContext.DC_EVENT_CONNECTIVITY_CHANGED, this);
   }
 
   @Override
   public void onDestroy() {
     super.onDestroy();
-    DcHelper.getContext(getActivity()).eventCenter.removeObservers(this);
+    DcHelper.getEventCenter(getActivity()).removeObservers(this);
   }
 
   @SuppressLint("RestrictedApi")
@@ -315,7 +314,7 @@ public class ConversationListFragment extends Fragment
 
   @SuppressLint("StaticFieldLeak")
   private void handleDeleteAllSelected() {
-    final ApplicationDcContext dcContext          = DcHelper.getContext(getActivity());
+    final DcContext            dcContext          = DcHelper.getContext(getActivity());
     int                        conversationsCount = getListAdapter().getBatchSelections().size();
     AlertDialog.Builder        alert              = new AlertDialog.Builder(getActivity());
     alert.setMessage(getActivity().getResources().getQuantityString(R.plurals.ask_delete_chat,
@@ -341,7 +340,7 @@ public class ConversationListFragment extends Fragment
           @Override
           protected Void doInBackground(Void... params) {
             for (long chatId : selectedConversations) {
-              dcContext.notificationCenter.removeNotifications((int) chatId);
+              DcHelper.getNotificationCenter(getContext()).removeNotifications((int) chatId);
               dcContext.deleteChat((int) chatId);
             }
             return null;
@@ -449,7 +448,7 @@ public class ConversationListFragment extends Fragment
   }
 
   private boolean areSomeSelectedChatsUnpinned() {
-    ApplicationDcContext dcContext = DcHelper.getContext(getActivity());
+    DcContext dcContext = DcHelper.getContext(getActivity());
     final Set<Long> selectedChats = getListAdapter().getBatchSelections();
     for (long chatId : selectedChats) {
       DcChat dcChat = dcContext.getChat((int)chatId);

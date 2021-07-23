@@ -16,6 +16,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.core.content.FileProvider;
 
+import com.b44t.messenger.DcAccounts;
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
@@ -27,6 +28,7 @@ import org.thoughtcrime.securesms.BuildConfig;
 import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.database.model.ThreadRecord;
+import org.thoughtcrime.securesms.notifications.NotificationCenter;
 import org.thoughtcrime.securesms.recipients.Recipient;
 
 import java.io.File;
@@ -63,8 +65,20 @@ public class DcHelper {
     public static final String CONFIG_MEDIA_QUALITY = "media_quality";
     public static final String CONFIG_WEBRTC_INSTANCE = "webrtc_instance";
 
-    public static ApplicationDcContext getContext(@NonNull Context context) {
+    public static DcContext getContext(@NonNull Context context) {
         return ApplicationContext.getInstance(context).dcContext;
+    }
+
+    public static DcAccounts getAccounts(@NonNull Context context) {
+        return ApplicationContext.getInstance(context).dcAccounts;
+    }
+
+    public static DcEventCenter getEventCenter(@NonNull Context context) {
+        return ApplicationContext.getInstance(context).eventCenter;
+    }
+
+    public static NotificationCenter getNotificationCenter(@NonNull Context context) {
+        return ApplicationContext.getInstance(context).notificationCenter;
     }
 
     public static boolean isConfigured(Context context) {

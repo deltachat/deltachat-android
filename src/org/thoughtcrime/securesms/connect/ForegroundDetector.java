@@ -38,11 +38,11 @@ public class ForegroundDetector implements Application.ActivityLifecycleCallback
     public void onActivityStarted(Activity activity) {
         if (refs == 0) {
             Log.i("DeltaChat", "++++++++++++++++++ first ForegroundDetector.onActivityStarted() ++++++++++++++++++");
-            DcHelper.getContext(application).maybeStartIo();
+            DcHelper.getAccounts(application).startIo();
             if (DcHelper.isNetworkConnected(application)) {
                 new Thread(() -> {
                     Log.i("DeltaChat", "calling maybeNetwork()");
-                    DcHelper.getContext(application).maybeNetwork();
+                    DcHelper.getAccounts(application).maybeNetwork();
                     Log.i("DeltaChat", "maybeNetwork() returned");
                 }).start();
             }

@@ -21,7 +21,6 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
 import org.thoughtcrime.securesms.connect.AccountManager;
-import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.permissions.Permissions;
@@ -37,7 +36,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
 
     private boolean manualConfigure = true; // false: configure by QR account creation
     private ProgressDialog progressDialog = null;
-    ApplicationDcContext dcContext;
+    DcContext dcContext;
     private NotificationController notificationController;
 
     @Override
@@ -54,8 +53,9 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
         backupButton.setOnClickListener((view) -> startImportBackup());
 
         dcContext = DcHelper.getContext(this);
-        dcContext.eventCenter.addObserver(DcContext.DC_EVENT_CONFIGURE_PROGRESS, this);
-        dcContext.eventCenter.addObserver(DcContext.DC_EVENT_IMEX_PROGRESS, this);
+        DcEventCenter eventCenter = DcHelper.getEventCenter(this);
+        eventCenter.addObserver(DcContext.DC_EVENT_CONFIGURE_PROGRESS, this);
+        eventCenter.addObserver(DcContext.DC_EVENT_IMEX_PROGRESS, this);
     }
 
     @Override
@@ -71,7 +71,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
     @Override
     public void onDestroy() {
         super.onDestroy();
-        DcHelper.getContext(this).eventCenter.removeObservers(this);
+        DcHelper.getEventCenter(this).removeObservers(this);
     }
 
     @Override
@@ -140,7 +140,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
         });
         progressDialog.show();
 
-        dcContext.captureNextError();
+        DcHelper.getEventCenter(this).captureNextError();
         dcContext.imex(DcContext.DC_IMEX_IMPORT_BACKUP, backupFile);
     }
 
@@ -160,15 +160,15 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
         });
         progressDialog.show();
 
-        dcContext.captureNextError();
+        DcHelper.getEventCenter(this).captureNextError();
 
         if (!dcContext.setConfigFromQr(qrCode)) {
-            progressError(dcContext.getCapturedError());
+            progressError(DcHelper.getEventCenter(this).getCapturedError());
         }
 
         // calling configure() results in
         // receiving multiple DC_EVENT_CONFIGURE_PROGRESS events
-        dcContext.stopIo();
+        DcHelper.getAccounts(this).stopIo();
         dcContext.configure();
     }
 
@@ -183,7 +183,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
     }
 
     private void progressSuccess(boolean enterDisplayname) {
-        dcContext.endCaptureNextError();
+        DcHelper.getEventCenter(this).endCaptureNextError();
         progressDialog.dismiss();
 
         if (enterDisplayname) {
@@ -219,7 +219,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
         if (eventId== DcContext.DC_EVENT_IMEX_PROGRESS ) {
             long progress = event.getData1Int();
             if (progress==0/*error/aborted*/) {
-                progressError(dcContext.getCapturedError());
+                progressError(DcHelper.getEventCenter(this).getCapturedError());
                 notificationController.close();
             }
             else if (progress<1000/*progress in permille*/) {
@@ -227,7 +227,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
                 notificationController.setProgress(1000, progress, String.format(" %d%%", (int) progress / 10));
             }
             else if (progress==1000/*done*/) {
-                dcContext.maybeStartIo();
+                DcHelper.getAccounts(this).startIo();
                 progressSuccess(false);
                 notificationController.close();
             }
@@ -235,7 +235,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
         else if (manualConfigure && eventId==DcContext.DC_EVENT_CONFIGURE_PROGRESS) {
             long progress = event.getData1Int();
             if (progress==1000/*done*/) {
-                dcContext.maybeStartIo();
+                DcHelper.getAccounts(this).startIo();
                 finish(); // remove ourself from the activity stack (finishAffinity is available in API 16, we're targeting API 14)
             }
         }
@@ -248,7 +248,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
                 progressUpdate((int)progress);
             }
             else if (progress==1000/*done*/) {
-                dcContext.maybeStartIo();
+                DcHelper.getAccounts(this).startIo();
                 progressSuccess(true);
             }
         }

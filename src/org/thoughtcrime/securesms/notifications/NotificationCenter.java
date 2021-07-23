@@ -24,13 +24,14 @@ import androidx.core.app.RemoteInput;
 import androidx.core.app.TaskStackBuilder;
 
 import com.b44t.messenger.DcChat;
+import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMsg;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.ConversationListActivity;
 import org.thoughtcrime.securesms.R;
-import org.thoughtcrime.securesms.connect.ApplicationDcContext;
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.contacts.avatars.ContactPhoto;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.preferences.widgets.NotificationPrivacyPreference;
@@ -48,16 +49,16 @@ import java.util.concurrent.TimeUnit;
 
 public class NotificationCenter {
     private static final String TAG = NotificationCenter.class.getSimpleName();
-    @NonNull private ApplicationDcContext dcContext;
+    @NonNull private DcContext dcContext;
     @NonNull private Context context;
     private volatile int visibleChatId = 0;
     private volatile long lastAudibleNotification = 0;
     private static final long MIN_AUDIBLE_PERIOD_MILLIS = TimeUnit.SECONDS.toMillis(2);
     private final HashMap<Integer, ArrayList<String>> inboxes = new HashMap<>(); // contains the last lines of each chat
 
-    public NotificationCenter(ApplicationDcContext dcContext) {
-        this.dcContext = dcContext;
-        this.context = dcContext.context.getApplicationContext();
+    public NotificationCenter(Context context) {
+        this.context = context.getApplicationContext();
+        this.dcContext = DcHelper.getContext(context);
     }
 
     private @Nullable Uri effectiveSound(int chatId) { // chatId=0: return app-global setting

@@ -28,7 +28,6 @@ import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 import com.google.android.material.tabs.TabLayout;
 
-import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideApp;
@@ -65,7 +64,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
   private final DynamicTheme    dynamicTheme    = new DynamicNoActionBarTheme();
   private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
 
-  private ApplicationDcContext dcContext;
+  private DcContext            dcContext;
   private int                  chatId;
   private boolean              chatIsGroup;
   private boolean              chatIsDeviceTalk;
@@ -118,8 +117,9 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
       }
     }
 
-    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_CHAT_MODIFIED, this);
-    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_CONTACTS_CHANGED, this);
+    DcEventCenter eventCenter = DcHelper.getEventCenter(this);
+    eventCenter.addObserver(DcContext.DC_EVENT_CHAT_MODIFIED, this);
+    eventCenter.addObserver(DcContext.DC_EVENT_CONTACTS_CHANGED, this);
   }
 
   @Override
@@ -191,7 +191,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
 
   @Override
   public void onDestroy() {
-    dcContext.eventCenter.removeObservers(this);
+    DcHelper.getEventCenter(this).removeObservers(this);
     super.onDestroy();
   }
 

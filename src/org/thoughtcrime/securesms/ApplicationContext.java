@@ -15,11 +15,14 @@ import androidx.work.PeriodicWorkRequest;
 import androidx.work.WorkManager;
 
 import com.b44t.messenger.DcAccounts;
+import com.b44t.messenger.DcAccountsEventEmitter;
 import com.b44t.messenger.DcContext;
+import com.b44t.messenger.DcEvent;
+import com.b44t.messenger.DcEventEmitter;
 
 import org.thoughtcrime.securesms.components.emoji.EmojiProvider;
 import org.thoughtcrime.securesms.connect.AccountManager;
-import org.thoughtcrime.securesms.connect.ApplicationDcContext;
+import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.connect.FetchWorker;
 import org.thoughtcrime.securesms.connect.ForegroundDetector;
@@ -44,6 +47,8 @@ public class ApplicationContext extends MultiDexApplication {
   public DcAccounts             dcAccounts;
   public DcContext              dcContext;
   public DcLocationManager      dcLocationManager;
+  public DcEventCenter          eventCenter;
+  public NotificationCenter     notificationCenter;
   private JobManager            jobManager;
 
   public static ApplicationContext getInstance(Context context) {
@@ -76,6 +81,20 @@ public class ApplicationContext extends MultiDexApplication {
       dcAccounts.addAccount();
     }
     dcContext = dcAccounts.getSelectedAccount();
+    notificationCenter = new NotificationCenter(this);
+    eventCenter = new DcEventCenter(this);
+    new Thread(() -> {
+      DcAccountsEventEmitter emitter = dcAccounts.getEventEmitter();
+      while (true) {
+        DcEvent event = emitter.getNextEvent();
+        if (event==null) {
+          break;
+        }
+        eventCenter.handleEvent(event);
+      }
+      Log.i("DeltaChat", "shutting down event handler");
+    }, "eventThread").start();
+    dcAccounts.startIo();
 
     new ForegroundDetector(ApplicationContext.getInstance(this));
 

@@ -12,9 +12,9 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.view.ActionMode;
 import androidx.fragment.app.Fragment;
 
+import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMsg;
 
-import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.permissions.Permissions;
@@ -27,7 +27,7 @@ public abstract class MessageSelectorFragment
     implements DcEventCenter.DcEventDelegate
 {
   protected ActionMode actionMode;
-  protected ApplicationDcContext dcContext;
+  protected DcContext dcContext;
 
   protected abstract void setCorrectMenuVisibility(Menu menu);
 

@@ -127,7 +127,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     handleOpenpgp4fpr();
 
     if (getIntent().getBooleanExtra(CLEAR_NOTIFICATIONS, false)) {
-      DcHelper.getContext(this).notificationCenter.removeAllNotifiations();
+      DcHelper.getNotificationCenter(this).removeAllNotifiations();
     }
   }
 

@@ -26,8 +26,7 @@ public class FetchWorker extends Worker {
     @Override
     public @NonNull Result doWork() {
         Log.i("DeltaChat", "++++++++++++++++++ FetchWorker.doWork() started ++++++++++++++++++");
-        ApplicationDcContext dcContext = DcHelper.getContext(context);
-        dcContext.maybeStartIo();
+        DcHelper.getAccounts(context).startIo();
 
         // as we do not know when startIo() has done it's work or if is even doable in one step,
         // we go the easy way and just wait for some amount of time.
