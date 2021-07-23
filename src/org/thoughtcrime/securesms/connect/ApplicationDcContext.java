@@ -116,7 +116,6 @@ public class ApplicationDcContext extends DcContext {
     setStockTranslation(2, context.getString(R.string.self));
     setStockTranslation(3, context.getString(R.string.draft));
     setStockTranslation(7, context.getString(R.string.voice_message));
-    setStockTranslation(8, context.getString(R.string.chat_contact_request));
     setStockTranslation(9, context.getString(R.string.image));
     setStockTranslation(10, context.getString(R.string.video));
     setStockTranslation(11, context.getString(R.string.audio));
