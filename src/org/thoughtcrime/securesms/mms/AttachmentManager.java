@@ -47,6 +47,7 @@ import org.thoughtcrime.securesms.components.AudioView;
 import org.thoughtcrime.securesms.components.DocumentView;
 import org.thoughtcrime.securesms.components.RemovableEditableMediaView;
 import org.thoughtcrime.securesms.components.ThumbnailView;
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.geolocation.DcLocationManager;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
@@ -421,7 +422,7 @@ public class AttachmentManager {
     ApplicationContext applicationContext = ApplicationContext.getInstance(activity);
     DcLocationManager dcLocationManager = applicationContext.dcLocationManager;
 
-    if (applicationContext.dcContext.isSendingLocationsToChat(chatId)) {
+    if (DcHelper.getContext(applicationContext).isSendingLocationsToChat(chatId)) {
       dcLocationManager.stopSharingLocation(chatId);
       return;
     }

@@ -29,6 +29,7 @@ import android.widget.PopupWindow;
 
 import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.ViewUtil;
@@ -168,7 +169,7 @@ public class AttachmentTypeSelector extends PopupWindow {
 
   private void setLocationButtonImage(Context context) {
     int resId;
-    if (ApplicationContext.getInstance(context).dcContext.isSendingLocationsToChat(chatId)) {
+    if (DcHelper.getContext(context).isSendingLocationsToChat(chatId)) {
       resId = R.drawable.ic_location_off_white_24;
     } else {
       resId = R.drawable.ic_location_on_white_24dp;
