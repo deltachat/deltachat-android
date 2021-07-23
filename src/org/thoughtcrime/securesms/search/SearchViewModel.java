@@ -13,7 +13,6 @@ import androidx.annotation.NonNull;
 import com.b44t.messenger.DcChatlist;
 import com.b44t.messenger.DcContext;
 
-import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.search.model.SearchResult;
 import org.thoughtcrime.securesms.util.Util;
@@ -22,7 +21,7 @@ class SearchViewModel extends ViewModel {
   private static final String        TAG = SearchViewModel.class.getSimpleName();
   private final ObservingLiveData    searchResult;
   private String                     lastQuery;
-  private final ApplicationDcContext dcContext;
+  private final DcContext            dcContext;
   private boolean                    queryMessages = true;
   private boolean                    inBgSearch;
   private boolean                    needsAnotherBgSearch;

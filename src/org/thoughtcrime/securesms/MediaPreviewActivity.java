@@ -53,12 +53,12 @@ import androidx.loader.content.Loader;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMediaGalleryElement;
 import com.b44t.messenger.DcMsg;
 
 import org.thoughtcrime.securesms.components.MediaView;
 import org.thoughtcrime.securesms.components.viewpager.ExtendedOnPageChangedListener;
-import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.database.loaders.PagingMediaLoader;
@@ -103,7 +103,7 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
 
   @Nullable
   private DcMsg     messageRecord;
-  private ApplicationDcContext dcContext;
+  private DcContext dcContext;
   private MediaItem initialMedia;
   private ViewPager mediaPager;
   private Recipient conversationRecipient;

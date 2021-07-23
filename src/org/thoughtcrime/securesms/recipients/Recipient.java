@@ -29,7 +29,6 @@ import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 
-import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.contacts.avatars.ContactPhoto;
 import org.thoughtcrime.securesms.contacts.avatars.FallbackContactPhoto;
@@ -69,14 +68,14 @@ public class Recipient {
   private @Nullable DcContact dcContact;
 
   public static @NonNull Recipient fromChat(@NonNull Context context, int dcMsgId) {
-    ApplicationDcContext dcContext = DcHelper.getContext(context);
+    DcContext dcContext = DcHelper.getContext(context);
     return new Recipient(context, dcContext.getChat(dcContext.getMsg(dcMsgId).getChatId()));
   }
 
   @SuppressWarnings("ConstantConditions")
   public static @NonNull Recipient from(@NonNull Context context, @NonNull Address address) {
     if (address == null) throw new AssertionError(address);
-    ApplicationDcContext dcContext = DcHelper.getContext(context);
+    DcContext dcContext = DcHelper.getContext(context);
     if(address.isDcContact()) {
       return new Recipient(context, dcContext.getContact(address.getDcContactId()));
     } else if (address.isDcChat()) {
@@ -168,7 +167,7 @@ public class Recipient {
   public @NonNull List<Recipient> loadParticipants(Context context) {
     List<Recipient> participants = new ArrayList<>();
     if (dcChat!=null) {
-      ApplicationDcContext dcContext = DcHelper.getContext(context);
+      DcContext dcContext = DcHelper.getContext(context);
       int[] contactIds = dcContext.getChatContacts(dcChat.getId());
       for (int contactId : contactIds) {
         participants.add(new Recipient(context, dcContext.getContact(contactId)));

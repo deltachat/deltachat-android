@@ -80,7 +80,6 @@ public class ApplicationDcContext extends DcContext {
   private final Object lastErrorLock = new Object();
   private String lastErrorString = "";
   private boolean showNextErrorAsToast = true;
-  public boolean showNetworkErrors = true; // set to false if one network error was reported while having no internet
 
   public void captureNextError() {
     synchronized (lastErrorLock) {

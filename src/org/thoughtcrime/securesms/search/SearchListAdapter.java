@@ -11,11 +11,11 @@ import android.widget.TextView;
 
 import com.b44t.messenger.DcChatlist;
 import com.b44t.messenger.DcContact;
+import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMsg;
 
 import org.thoughtcrime.securesms.ConversationListItem;
 import org.thoughtcrime.securesms.R;
-import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.model.ThreadRecord;
 import org.thoughtcrime.securesms.mms.GlideRequests;
@@ -40,7 +40,7 @@ class SearchListAdapter extends    RecyclerView.Adapter<SearchListAdapter.Search
   private SearchResult searchResult = SearchResult.EMPTY;
 
   Context              context;
-  ApplicationDcContext dcContext;
+  DcContext            dcContext;
 
   SearchListAdapter(Context                context,
                     @NonNull GlideRequests glideRequests,
@@ -200,7 +200,7 @@ class SearchListAdapter extends    RecyclerView.Adapter<SearchListAdapter.Search
               @NonNull  Locale        locale,
               @Nullable String        query)
     {
-      ApplicationDcContext dcContext = DcHelper.getContext(context);
+      DcContext dcContext = DcHelper.getContext(context);
       ThreadRecord threadRecord = DcHelper.getThreadRecord(context, chatlistItem.summary, dcContext.getChat(chatlistItem.chatId));
       root.bind(threadRecord, chatlistItem.msgId, chatlistItem.summary, glideRequests, locale, Collections.emptySet(), false, query);
       root.setOnClickListener(view -> eventListener.onConversationClicked(chatlistItem));

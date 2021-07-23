@@ -27,9 +27,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcChatlist;
+import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcLot;
 
-import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 
@@ -51,7 +51,7 @@ class ConversationListAdapter extends RecyclerView.Adapter {
   private static final int MESSAGE_TYPE_INBOX_ZERO     = 3;
 
   private final WeakReference<Context>         context;
-  private final @NonNull  ApplicationDcContext dcContext;
+  private final @NonNull  DcContext            dcContext;
   private @NonNull        DcChatlist           dcChatlist;
   private final @NonNull  GlideRequests        glideRequests;
   private final @NonNull  Locale               locale;
