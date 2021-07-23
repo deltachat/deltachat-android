@@ -251,7 +251,7 @@ public class ConversationListItem extends RelativeLayout
     }
     else if (isContactRequest) {
       badgeView.setVisibility(View.VISIBLE);
-      badgeView.setText(R.string.chat_contact_request);
+      badgeView.setText(R.string.chat_request_label);
       deliveryStatusIndicator.setNone();
       unreadIndicator.setVisibility(View.GONE);
     }
