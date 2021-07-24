@@ -12,7 +12,7 @@
 		android:paddingTop="11dp"
 		android:textSize="14sp"
 		tools:text="Chat with Alice In Wondeful Wonderland (alice@wonderland.org)?"
-		app:layout_constraintBottom_toTopOf="@id/message_request_delete"
+		app:layout_constraintBottom_toTopOf="@id/message_request_block"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent" />
 
@@ -20,33 +20,20 @@
 		android:id="@+id/message_request_block"
 		style="@style/Signal.MessageRequest.Button.Deny"
 		android:text="@string/block"
-		android:layout_height="wrap_content"
-		android:layout_marginEnd="8dp"
-		app:layout_constraintBottom_toBottomOf="@id/message_request_delete"
-		app:layout_constraintEnd_toStartOf="@+id/message_request_delete"
-		app:layout_constraintHorizontal_bias="0.5"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toTopOf="@id/message_request_delete"
-		android:layout_marginRight="8dp" />
-
-	<Button
-		android:id="@+id/message_request_delete"
-		style="@style/Signal.MessageRequest.Button.Deny"
-		android:text="@string/delete"
 		android:layout_marginEnd="8dp"
 		android:layout_marginBottom="16dp"
 		android:layout_marginRight="8dp"
 		app:layout_constraintBottom_toBottomOf="parent"
-		app:layout_constraintEnd_toStartOf="@+id/message_request_accept"
+		app:layout_constraintEnd_toStartOf="@id/message_request_accept"
 		app:layout_constraintHorizontal_bias="0.5"
-		app:layout_constraintStart_toEndOf="@+id/message_request_block"/>
+		app:layout_constraintStart_toStartOf="parent"/>
 
 	<Button
 		android:id="@+id/message_request_accept"
 		style="@style/Signal.MessageRequest.Button.Accept"
 		android:text="@string/accept"
-		app:layout_constraintBottom_toBottomOf="@id/message_request_delete"
+		app:layout_constraintBottom_toBottomOf="@id/message_request_block"
 		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toEndOf="@+id/message_request_delete"
-		app:layout_constraintTop_toTopOf="@id/message_request_delete" />
+		app:layout_constraintStart_toEndOf="@id/message_request_block"
+		app:layout_constraintTop_toTopOf="@id/message_request_block" />
 </merge>

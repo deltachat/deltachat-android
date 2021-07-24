@@ -1657,9 +1657,19 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     if (!dcChat.isContactRequest()) {
       messageRequestBottomView.setVisibility(View.GONE);
       return;
-    };
+    }
 
     messageRequestBottomView.setVisibility(View.VISIBLE);
+    messageRequestBottomView.setAcceptOnClickListener(v -> {
+      dcContext.acceptChat(chatId);
+      messageRequestBottomView.setVisibility(View.GONE);
+      composePanel.setVisibility(View.VISIBLE);
+    });
+    messageRequestBottomView.setBlockOnClickListener(v -> {
+      dcContext.blockChat(chatId);
+      handleReturnToConversationList();
+    });
+
     String question;
     if (dcChat.isMailingList()) {
       question = getString(R.string.ask_show_mailing_list, dcChat.getName());
@@ -1670,20 +1680,11 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
         question = getString(R.string.ask_start_chat_with, dcContact.getNameNAddr());
       } else {
         question = "";
-        // We don't support blocking groups yet.
-        messageRequestBottomView.hideBlockButton();
+        // We don't support blocking groups yet, so offer to delete it instead
+        messageRequestBottomView.setBlockText(R.string.delete);
+        messageRequestBottomView.setBlockOnClickListener(v -> handleDeleteChat());
       }
     }
     messageRequestBottomView.setQuestion(question);
-    messageRequestBottomView.setAcceptOnClickListener(v -> {
-      dcContext.acceptChat(chatId);
-      messageRequestBottomView.setVisibility(View.GONE);
-      composePanel.setVisibility(View.VISIBLE);
-    });
-    messageRequestBottomView.setDeleteOnClickListener(v -> handleDeleteChat());
-    messageRequestBottomView.setBlockOnClickListener(v -> {
-      dcContext.blockChat(chatId);
-      handleReturnToConversationList();
-    });
   }
 }

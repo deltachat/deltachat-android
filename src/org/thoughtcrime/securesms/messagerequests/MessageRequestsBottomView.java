@@ -2,7 +2,6 @@ package org.thoughtcrime.securesms.messagerequests;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.widget.AppCompatTextView;
@@ -15,8 +14,7 @@ public class MessageRequestsBottomView extends ConstraintLayout {
 
   private AppCompatTextView question;
   private Button            accept;
-  private View              block;
-  private View              delete;
+  private Button block;
 
   public MessageRequestsBottomView(Context context) {
     super(context);
@@ -36,22 +34,21 @@ public class MessageRequestsBottomView extends ConstraintLayout {
 
     inflate(getContext(), R.layout.message_request_bottom_bar, this);
 
-    question            = findViewById(R.id.message_request_question);
-    accept              = findViewById(R.id.message_request_accept);
-    block               = findViewById(R.id.message_request_block);
-    delete              = findViewById(R.id.message_request_delete);
+    question = findViewById(R.id.message_request_question);
+    accept   = findViewById(R.id.message_request_accept);
+    block    = findViewById(R.id.message_request_block);
   }
 
   public void setAcceptOnClickListener(OnClickListener acceptOnClickListener) {
     accept.setOnClickListener(acceptOnClickListener);
   }
 
-  public void setDeleteOnClickListener(OnClickListener deleteOnClickListener) {
-    delete.setOnClickListener(deleteOnClickListener);
+  public void setBlockOnClickListener(OnClickListener deleteOnClickListener) {
+    block.setOnClickListener(deleteOnClickListener);
   }
 
-  public void setBlockOnClickListener(OnClickListener blockOnClickListener) {
-    block.setOnClickListener(blockOnClickListener);
+  public void setBlockText(int text) {
+    block.setText(text);
   }
 
   public void setQuestion(String text) {
@@ -61,9 +58,5 @@ public class MessageRequestsBottomView extends ConstraintLayout {
       question.setMaxHeight(Integer.MAX_VALUE);
       question.setText(text);
     }
-  }
-
-  public void hideBlockButton() {
-    block.setVisibility(GONE);
   }
 }
