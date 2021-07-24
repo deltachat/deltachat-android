@@ -25,6 +25,7 @@ import org.thoughtcrime.securesms.jobmanager.JobManager;
 import org.thoughtcrime.securesms.notifications.InChatSounds;
 import org.thoughtcrime.securesms.util.AndroidSignalProtocolLogger;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
+import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.SignalProtocolLoggerProvider;
 
 import java.util.concurrent.TimeUnit;
@@ -75,6 +76,8 @@ public class ApplicationContext extends MultiDexApplication {
     catch (Exception e) {
       e.printStackTrace();
     }
+
+    DynamicTheme.setDefaultDayNightMode(this);
 
     dcContext.setStockTranslations();
 
