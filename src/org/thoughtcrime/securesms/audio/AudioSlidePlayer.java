@@ -210,9 +210,13 @@ public class AudioSlidePlayer {
     this.mediaPlayer = null;
   }
 
-  public synchronized static void stopAll() {
+  public static void stopAll() {
     if (playing.isPresent()) {
-      playing.get().stop();
+      synchronized (AudioSlidePlayer.class) {
+        if (playing.isPresent()) {
+          playing.get().stop();
+        }
+      }
     }
   }
 
