@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<color name="accept_button">@color/document_icon_text</color>
+</resources>

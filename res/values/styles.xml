@@ -119,7 +119,7 @@
     </style>
 
     <style name="Signal.MessageRequest.Button.Accept">
-        <item name="android:textColor">@color/core_ultramarine</item>
+        <item name="android:textColor">@color/accept_button</item>
     </style>
 
 </resources>
