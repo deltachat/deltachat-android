@@ -413,6 +413,16 @@
     <string name="send_message">İleti gönder</string>
 
 
+    <!-- Connectivity -->
+    <string name="connectivity">Bağlanabilirlik</string>
+    <!-- Shown eg. in the title bar if the app is "Not connected"; as there is very few room, try to be as short as possible. -->
+    <string name="connectivity_not_connected">Bağlı değil</string>
+    <!-- Shown eg. in the title bar if the app is "Connecting"; as there is very few room, try to be as short as possible. Note that the three dots are a single character (…), not three (...) -->
+    <string name="connectivity_connecting">Bağlanıyor…</string>
+    <!-- Shown eg. in the setting if the app is "Connected" -->
+    <string name="connectivity_connected">Bağlandı</string>
+
+
     <!-- welcome and login -->
     <string name="welcome_intro1_message">Dünyanın en geniş kitleli ulağı. Özgür ve bağımsız.</string>
     <string name="login_title">Oturum aç</string>
@@ -678,6 +688,14 @@
     <string name="qrscan_contains_url">Taranan QR kod URL\'si:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Parmak izi</string>
     <string name="qrscan_x_verified_introduce_myself">%1$s doğrulandı; kendimi tanıtıyorum…</string>
+    <string name="withdraw_verifycontact_explain">Bu QR kod, size ulaşmak için diğerleri tarafından taranabilir.\n\nQR kodu buradan etkisizleştirebilir ve yeniden tarayarak etkinleştirebilirsiniz.</string>
+    <string name="withdraw_verifygroup_explain">Bu QR kod, \"%1$s\" grubuna katılmak için diğerleri tarafından taranabilir.\n\nQR kodu buradan etkisizleştirebilir ve yeniden tarayarak etkinleştirebilirsiniz.</string>
+    <string name="withdraw_qr_code">QR Kodu Etkisizleştir</string>
+    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
+    <string name="revive_verifycontact_explain">Bu QR kod, size ulaşmak için diğerleri tarafından taranmış olabilir.\n\nQR kod bu aygıtta etkin değil.</string>
+    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
+    <string name="revive_verifygroup_explain">Bu QR kod, \"%1$s\" grubuna katılmak için diğerleri tarafından taranmış olabilir.\n\nQR kod bu aygıtta etkin değil.</string>
+    <string name="revive_qr_code">QR Kodu Etkinleştir</string>
     <string name="qrshow_title">QR davet kodu</string>
     <string name="qrshow_x_joining">%1$s katılıyor.</string>
     <string name="qrshow_x_verified">%1$s doğrulandı.</string>

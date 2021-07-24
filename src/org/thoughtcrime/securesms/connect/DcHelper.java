@@ -81,7 +81,7 @@ public class DcHelper {
       if (connectivity >= DcContext.DC_CONNECTIVITY_CONNECTED) {
           return context.getString(connectedString);
       } else if (connectivity >= DcContext.DC_CONNECTIVITY_WORKING) {
-          return context.getString(R.string.connectivity_getting_new_msgs);
+          return context.getString(R.string.connectivity_updating);
       } else if (connectivity >= DcContext.DC_CONNECTIVITY_CONNECTING) {
           return context.getString(R.string.connectivity_connecting);
       } else {
