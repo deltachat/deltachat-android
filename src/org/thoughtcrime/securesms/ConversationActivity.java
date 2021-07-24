@@ -601,7 +601,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void handleReturnToConversationList() {
+    handleReturnToConversationList(null);
+  }
 
+  private void handleReturnToConversationList(@Nullable Bundle extras) {
     if (isRelayingMessageContent(this) || successfulForwardingAttempt) {
       if (isSharing(this)) {
         // we're allowing only 1 try to share, going back to the conversation list will
@@ -615,6 +618,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     Intent intent = new Intent(this, (isArchived() ? ConversationListArchiveActivity.class : ConversationListActivity.class));
     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+    if (extras != null) intent.putExtras(extras);
     startActivity(intent);
     finish();
   }
@@ -1667,7 +1671,9 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     });
     messageRequestBottomView.setBlockOnClickListener(v -> {
       dcContext.blockChat(chatId);
-      handleReturnToConversationList();
+      Bundle extras = new Bundle();
+      extras.putInt(ConversationListFragment.RELOAD_LIST, 1);
+      handleReturnToConversationList(extras);
     });
 
     String question;
