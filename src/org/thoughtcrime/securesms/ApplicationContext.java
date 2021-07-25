@@ -14,6 +14,7 @@ import androidx.work.NetworkType;
 import androidx.work.PeriodicWorkRequest;
 import androidx.work.WorkManager;
 
+import org.thoughtcrime.securesms.components.emoji.EmojiProvider;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.FetchWorker;
 import org.thoughtcrime.securesms.connect.ForegroundDetector;
@@ -52,6 +53,11 @@ public class ApplicationContext extends MultiDexApplication {
     // LeakCanary.install(this);
 
     Log.i("DeltaChat", "++++++++++++++++++ ApplicationContext.onCreate() ++++++++++++++++++");
+
+    // The first call to `getInstance` takes about 100ms-300ms, so, do it on a background thread
+    Thread t = new Thread(() -> EmojiProvider.getInstance(this), "InitEmojiProviderThread");
+    t.setPriority(Thread.MIN_PRIORITY);
+    t.start();
 
     System.loadLibrary("native-utils");
     dcContext = new ApplicationDcContext(this);
