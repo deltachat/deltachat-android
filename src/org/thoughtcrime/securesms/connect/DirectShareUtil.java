@@ -97,7 +97,7 @@ public class DirectShareUtil {
     ApplicationDcContext dcContext = DcHelper.getContext(context);
 
     DcChatlist chatlist = dcContext.getChatlist(
-            DcContext.DC_GCL_ADD_ALLDONE_HINT | DcContext.DC_GCL_FOR_FORWARDING | DcContext.DC_GCL_NO_SPECIALS,
+            DcContext.DC_GCL_FOR_FORWARDING | DcContext.DC_GCL_NO_SPECIALS,
             null,
             0
     );
