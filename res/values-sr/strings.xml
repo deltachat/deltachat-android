@@ -36,11 +36,10 @@
     <string name="one_moment">Тренутак...</string>
     <string name="done">Завршено</string>
     <string name="undo">Опозови</string>
-    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
+    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in iOS headers, the string should be as short as possible, though. -->
     <string name="next">Следећи</string>
     <string name="error">Грешка</string>
     <string name="error_x">Грешка: %1$s</string>
-    <string name="error_no_network">Мрежа није доступна.</string>
     <string name="no_app_to_handle_data">Нема апликације која обрађује ову врсту података.</string>
     <string name="no_browser_installed">Прегледач није инсталиран.</string>
     <string name="file_not_found">Не могу да нађем %1$s.</string>
@@ -248,7 +247,7 @@
     <string name="import_backup_title">Увези резервну копију</string>
     <string name="import_backup_ask">Резервна копија нађена у %1$s.\n\nЖелите ли да увезете и користите све њене податке и поставке?</string>
     <string name="import_backup_no_backup_found">Нема резервних копија.\n\nКопирајте резервну копију у %1$s и покушајте поново. Ако не желите, тапните \"Почни ћаскање\" да бисте почели уобичајени процес поставке.</string>
-    <!-- Translators: %1$s will be replaced by the email address -->
+    <!-- Translators: %1$s will be replaced by the e-mail address -->
     <string name="login_error_cannot_login">Не могу да се пријавим као %1$s. Проверите да ли су е-адреса и лозинка тачни.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Одговор од %1$s: %2$s\n\nНеки пружаоци услуга остављају додатне информације у ваше пријемно сандуче; можете да проверите ово нпр. користећи веб сучеље ваше е-поште. Посаветујте се са пружаоцем услуге или пријатељима ако налетите на проблеме.</string>
@@ -318,10 +317,6 @@
     <string name="systemmsg_action_by_me">%1$s од мене.</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
     <string name="systemmsg_action_by_user">%1$s од стране %2$s.</string>
-    <!-- screen lock -->
-    <string name="screenlock_title">Закључавање екрана</string>
-    <string name="screenlock_explain">Ограничите приступ Сигналу помоћу Андроид екрана за закључавање или отиском прста</string>
-    <string name="screenlock_unlock_title">Откључај Delta Chat</string>
     <!-- qr code stuff -->
     <string name="qr_code">Бар-кôд</string>
     <string name="qrscan_title">Очитај бар-кôд</string>

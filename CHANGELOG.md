@@ -1,5 +1,114 @@
 # Delta Chat Android Changelog
 
+## v1.20.5
+2021-06
+
+* fix downscaling images
+* fix outgoing messages popping up in "Saved messages" for some providers
+* fix: do not allow deleting contacts with ongoing chats
+* fix: ignore drafts folder when scanning
+* fix: scan folders also when inbox is not watched
+* fix: adapt attached audio's background to theme
+* fix: request composer's focus after recording is done
+* fix sharing messages with attachments
+* fix highlighting messages in search results
+* fix: set correct navigation bar color in dark mode
+* fix: use the same emoji theme throughout the app
+* in in-chat search, start searching at the most recent message
+* improve error handling and logging
+* remove screen lock as announced in v1.14.0
+* update translations and provider database
+
+
+## v1.20.2
+2021-05
+
+* fix crash when receiving some special messages
+* fix downloading some messages multiple times
+* fix formatting of read receipt texts
+* update translations
+
+
+## v1.20.1
+2021-05
+
+* improved accessibility and screen reader support
+* use the same emoji style everywhere across the app
+* allow to select and copy text from "message details" and error dialogs
+* show hints about how location data are used
+* fix: don't collapse search menu on group changes
+* add Indonesian, Polish, Ukrainian local help, update other translations
+
+
+## v1.19.2 Preview Release
+2021-04
+
+* opening the contact request chat marks all contact requests as noticed
+  and removes the sticky hint from the chatlist
+* if "Show classic mails" is enabled,
+  the contact request hint in the corresponding chat
+* speedup global search
+* show system message status while sending and on errors
+* improve quote style when replying with a sticker
+* fix clicks on system messages
+* fix sticker scaling
+* fix: disable "reply privately" in contact requests chat
+
+
+## v1.19.1 Preview Release
+2021-04
+
+* show answers to generic support-addresses as info@example.com in context
+* allow different sender for answers to support-addresses as info@example.com
+* add APNG and animated webp support
+* allow videochat-invites for groups
+* let stickers handle taps
+* add more options to Gallery and Documents long-tap menus
+* allow to add POI with text of any length
+* improve detection of quotes
+* ignore classical mails from spam-folder
+* hide share button in media previews, draft images or avatars
+* fix crash when profile tabs are changed during some items are selected
+* add Czech translation, update other translations
+* add Chinese and French local help, update other local helps
+
+
+## v1.17.0 Preview Release
+2021-04
+
+* new mailinglist and better bot support
+* add option to view original-/html-mails
+* check all imap folders for new messages from time to time
+* use more colors for user avatars
+* improve e-mail compatibility
+* improve compatibility with Outlook.com
+  and other providers changing message headers
+* swipe up the voice message record button to lock recording
+* show stickers as such
+* show status/footer messages in contact profiles
+* scale avatars based on media-quality, fix avatar rotation
+* export backups as .tar files
+* enable strict TLS for known providers by default
+* improve and harden secure join
+* new gallery options "Show in chat" and "Share from Delta Chat"
+* display forwarded messages in quotes as such
+* show name of forwarder in groups
+* add chat encryption info
+* tweak ephemeral timeout options
+* show message delivery errors directly when tapping on a message
+* add option to follow system light/dark settings
+* better profile and group picture selection by using attachment selector
+* make the upper left back button return to chat list even if the keyboard is open
+* fix decoding of attachment filenames
+* fix: exclude muted chats from notify-badge/dot
+* fix: do not return quoted messages from the trash chat
+* fix text width for messages with tall images
+* fix disappearing drafts
+* much more bug fixes
+* add Khmer and Kurdish translations, update other translations
+* add Czech local help, update other local help
+
+
 ## v1.14.5
 2020-11
 

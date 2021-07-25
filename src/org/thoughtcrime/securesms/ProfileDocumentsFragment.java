@@ -1,17 +1,13 @@
 package org.thoughtcrime.securesms;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 import androidx.loader.app.LoaderManager;
 import androidx.loader.content.Loader;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.ActionMode;
 import androidx.recyclerview.widget.RecyclerView;
@@ -28,20 +24,17 @@ import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcMsg;
 import com.codewaves.stickyheadergrid.StickyHeaderGridLayoutManager;
 
-import org.thoughtcrime.securesms.connect.ApplicationDcContext;
-import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.loaders.BucketedThreadMediaLoader;
 import org.thoughtcrime.securesms.util.ViewUtil;
-import org.thoughtcrime.securesms.util.task.ProgressDialogAsyncTask;
 
-import java.util.Collection;
 import java.util.Locale;
+import java.util.Set;
 
 public class ProfileDocumentsFragment
-    extends Fragment
+    extends MessageSelectorFragment
     implements LoaderManager.LoaderCallbacks<BucketedThreadMediaLoader.BucketedThreadMedia>,
-               ProfileDocumentsAdapter.ItemClickListener, DcEventCenter.DcEventDelegate
+               ProfileDocumentsAdapter.ItemClickListener
 {
   public static final String LOCALE_EXTRA  = "locale_extra";
   public static final String CHAT_ID_EXTRA = "chat_id";
@@ -49,10 +42,8 @@ public class ProfileDocumentsFragment
   protected TextView noMedia;
   protected RecyclerView recyclerView;
   private StickyHeaderGridLayoutManager gridManager;
-  private ActionMode actionMode;
   private ActionModeCallback actionModeCallback = new ActionModeCallback();
 
-  private ApplicationDcContext dcContext;
   protected int                chatId;
   protected Locale             locale;
 
@@ -145,6 +136,7 @@ public class ProfileDocumentsFragment
       actionMode = null;
     } else {
       actionMode.setTitle(String.valueOf(adapter.getSelectedMediaCount()));
+      setCorrectMenuVisibility(actionMode.getMenu());
     }
   }
 
@@ -172,39 +164,20 @@ public class ProfileDocumentsFragment
     }
   }
 
-  @SuppressLint("StaticFieldLeak")
-  private void handleDeleteMedia(@NonNull Collection<DcMsg> mediaRecords) {
-    int recordCount       = mediaRecords.size();
-    Resources res         = getContext().getResources();
-    String confirmMessage = res.getQuantityString(R.plurals.ask_delete_messages,
-        recordCount,
-        recordCount);
+  @Override
+  protected void setCorrectMenuVisibility(Menu menu) {
+    Set<DcMsg> messageRecords = getListAdapter().getSelectedMedia();
 
-    AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-    builder.setMessage(confirmMessage);
-    builder.setCancelable(true);
+    if (actionMode != null && messageRecords.size() == 0) {
+      actionMode.finish();
+      return;
+    }
 
-    builder.setPositiveButton(R.string.delete, (dialogInterface, i) -> {
-      new ProgressDialogAsyncTask<DcMsg, Void, Void>(getContext(),
-          R.string.one_moment,
-          R.string.one_moment)
-      {
-        @Override
-        protected Void doInBackground(DcMsg... records) {
-          if (records == null || records.length == 0) {
-            return null;
-          }
-
-          for (DcMsg record : records) {
-            dcContext.deleteMsgs(new int[]{record.getId()});
-          }
-          return null;
-        }
-
-      }.execute(mediaRecords.toArray(new DcMsg[mediaRecords.size()]));
-    });
-    builder.setNegativeButton(android.R.string.cancel, null);
-    builder.show();
+    boolean singleSelection = messageRecords.size() == 1;
+    menu.findItem(R.id.details).setVisible(singleSelection);
+    menu.findItem(R.id.show_in_chat).setVisible(singleSelection);
+    menu.findItem(R.id.save).setVisible(singleSelection);
+    menu.findItem(R.id.share).setVisible(singleSelection);
   }
 
   private ProfileDocumentsAdapter getListAdapter() {
@@ -225,6 +198,7 @@ public class ProfileDocumentsFragment
         originalStatusBarColor = window.getStatusBarColor();
         window.setStatusBarColor(getResources().getColor(R.color.action_mode_status_bar));
       }
+      setCorrectMenuVisibility(menu);
       return true;
     }
 
@@ -236,9 +210,22 @@ public class ProfileDocumentsFragment
     @Override
     public boolean onActionItemClicked(ActionMode mode, MenuItem menuItem) {
       switch (menuItem.getItemId()) {
-        case R.id.delete:
-          handleDeleteMedia(getListAdapter().getSelectedMedia());
+        case R.id.details:
+          handleDisplayDetails(getSelectedMessageRecord(getListAdapter().getSelectedMedia()));
           mode.finish();
+          return true;
+        case R.id.delete:
+          handleDeleteMessages(getListAdapter().getSelectedMedia());
+          mode.finish();
+          return true;
+        case R.id.share:
+          handleShare(getSelectedMessageRecord(getListAdapter().getSelectedMedia()));
+          return true;
+        case R.id.show_in_chat:
+          handleShowInChat(getSelectedMessageRecord(getListAdapter().getSelectedMedia()));
+          return true;
+        case R.id.save:
+          handleSaveAttachment(getSelectedMessageRecord(getListAdapter().getSelectedMedia()));
           return true;
       }
       return false;

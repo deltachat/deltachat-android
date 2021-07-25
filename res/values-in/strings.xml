@@ -4,6 +4,7 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
     <string name="cancel">Batalkan</string>
+    <string name="clear_search">Hapus pencarian</string>
     <string name="yes">Ya</string>
     <string name="no">Tidak</string>
     <string name="select">Pilih</string>
@@ -32,12 +33,20 @@
     <string name="unarchive">Tidak diarsip</string>
     <string name="mute">Diam</string>
     <string name="ephemeral_messages">Pesan yang berhilangan</string>
+    <string name="ephemeral_messages_hint">Pengaturan ini berlaku untuk semua peserta yang menggunakan Delta Chat. Namun, mereka dapat menyalin, menyimpan, dan meneruskan pesan atau menggunakan klien email lainnya.</string>
     <string name="save">Simpan</string>
     <string name="chat">Chat</string>
     <string name="media">Media</string>
     <string name="profile">Profil</string>
     <string name="main_menu">Menu utama</string>
     <string name="start_chat">Mulai obrolan</string>
+    <string name="show_full_message">Tampilkan semua pesan...</string>
+    <string name="show_full_message_in_browser">Tampilkan semua pesan di browser...</string>
+    <!-- this is shown as placeholder when something is loading at some places -->
+    <string name="loading">Memuat...</string>
+    <string name="hide">Sembunyikan</string>
+    <string name="always">Selalu</string>
+    <string name="once">Sekali</string>
     <string name="show_password">Tunjukkan kata kunci</string>
     <string name="hide_password">Sembunyikan kata kunci</string>
     <string name="not_now">Tidak sekarang</string>
@@ -46,11 +55,10 @@
     <string name="done">Selesai</string>
     <string name="undo">Undo</string>
     <string name="offline">Offline</string>
-    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
+    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in iOS headers, the string should be as short as possible, though. -->
     <string name="next">Berikutnya</string>
     <string name="error">Eror</string>
     <string name="error_x">Eror: %1$s</string>
-    <string name="error_no_network">Jaringan tidak tersedia.</string>
     <string name="no_app_to_handle_data">Tidak menemukan aplikasi untuk jenis data ini.</string>
     <string name="no_browser_installed">Tak ada browser yang terpasang.</string>
     <string name="file_not_found">Tak bisa menemukan %1$s.</string>
@@ -99,12 +107,16 @@
     <string name="images">Gambar</string>
     <string name="audio">Audio</string>
     <string name="voice_message">Pesan suara</string>
+    <string name="forwarded">Diteruskan</string>
     <string name="forwarded_message">Pesan yang diteruskan</string>
+    <!-- %1$s will be replaced by the name or the e-mail address of the person who has forwarded the message -->
+    <string name="forwarded_by">Diteruskan oleh %1$s</string>
     <string name="video">Video</string>
     <string name="documents">Dokumen</string>
     <string name="contact">Kontak</string>
     <string name="verified_contact">Kontak terverifikasi</string>
     <string name="camera">Kamera</string>
+    <string name="switch_camera">Ganti kamera</string>
     <string name="location">Lokasi</string>
     <string name="gallery">Galeri</string>
     <string name="images_and_videos">Gambar dan video</string>
@@ -161,6 +173,8 @@
     <string name="menu_copy_to_clipboard">Kopi ke papan klip</string>
     <string name="menu_copy_selection_to_clipboard">Salin yang dipilih</string>
     <string name="menu_copy_link_to_clipboard">Salin pranala</string>
+    <string name="menu_copy_text_to_clipboard">Salin teks</string>
+    <string name="menu_copy_image_to_clipboard">Salin gambar</string>
     <string name="paste_from_clipboard">Tempelkan dari papan klip</string>
     <string name="menu_forward">Teruskan pesan</string>
     <string name="menu_resend">Kirim ulang pesan</string>
@@ -179,7 +193,9 @@
     <string name="menu_scroll_to_bottom">Gelincir ke bawah</string>
     <string name="menu_scroll_to_top">Gelincir ke atas</string>
     <string name="menu_help">Bantuan</string>
+    <string name="privacy_policy">Kebijakan Privasi</string>
     <string name="menu_select_all">Pilih semua</string>
+    <string name="select_more">Pilih lebih banyak</string>
     <string name="menu_expand">Perluas</string>
     <string name="menu_edit_name">Edit nama</string>
     <string name="menu_settings">Setelan</string>
@@ -190,6 +206,7 @@
     <string name="menu_zoom_in">Zoom perbesar</string>
     <string name="menu_zoom_out">Zoom perkecil</string>
     <string name="menu_save_log">Simpan log</string>
+    <string name="copy_json">Salin JSON</string>
     <string name="title_share_location">Bagikan lokasi kepada seluruh anggota grup</string>
     <string name="device_talk">Pesan perangkat</string>
     <string name="device_talk_subtitle">Pesan-pesan buatan lokal</string>
@@ -298,13 +315,10 @@
     <string name="send_failed">Tak bisa mengirim pesan</string>
     <string name="cannot_display_unsuported_file_type">Tidak dapat menampilkan tipe berkas ini: %s</string>
     <string name="attachment_failed_to_load">Gagal memuat lampiran</string>
-
-
     <!-- map -->
     <string name="filter_map_on_time">Tunjukkan lokasi dalam jangka waktu</string>
     <string name="show_location_traces">Tunjukkan jejak</string>
     <string name="add_poi">Kirim titik menarik</string>
-
 
     <!-- search -->
     <string name="search">Cari</string>
@@ -356,7 +370,7 @@
     <string name="login_smtp_port">SMTP port</string>
     <string name="login_smtp_security">Keamanan SMTP</string>
     <string name="login_auth_method">Metode otorisasi</string>
-    <!-- Translators: %1$s will be replaced by an email address -->
+    <!-- Translators: %1$s will be replaced by an e-mail address -->
     <string name="login_oauth2_checking_addr">Memeriksa %1$s</string>
     <string name="login_info_oauth2_title">Lanjutkan dengan pengaturan yang disederhanakan?</string>
     <string name="login_info_oauth2_text">Bantuan untuk alamat surel yang telah dimasukkan adalah pengaturan yang disederhanakan (OAuth 2.0).\n\nPada langkah selanjutnya, izinkan Delta Chat sebagai Obrolan Anda pada aplikasi Surel.\n\nTidak ada server Delta Chat, obrolan Anda tetap di perangkat Anda.</string>
@@ -368,7 +382,7 @@
     <string name="import_backup_title">Impor cadangan</string>
     <string name="import_backup_ask">Cadangan ditemukan di \"%1$s\".\n\n Apakah Anda ingin mengimpor dan menggunakan semua data dan pengaturan darinya?</string>
     <string name="import_backup_no_backup_found">Cadangan tidak ketemu.\n\nKopi cadangan ke \"%1$s\" dan coba lagi. Cara lain, tekan \"Mulai obrolan\" untuk melanjutkan proses pengaturan normal.</string>
-    <!-- Translators: %1$s will be replaced by the email address -->
+    <!-- Translators: %1$s will be replaced by the e-mail address -->
     <string name="login_error_cannot_login">Tidak bisa login sebagai \"%1$s\". Mohon cek apakah alamat surel dan kata sandi benar.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Tanggapan dari %1$s: %2$s\n\nBeberapa penyedia layanan provider menempatkan informasi tambahan di kotak masuk Anda; Anda bisa memeriksanya, misalnya di beranda depan web. Konsultasikan dengan penyedia atau teman Anda jika Anda mengalami masalah.</string>
@@ -410,8 +424,6 @@
     <string name="pref_outgoing_balanced">Seimbang</string>
     <string name="pref_outgoing_worse">Kualitas rendah, ukuran kecil</string>
     <string name="pref_vibrate">Bergetar</string>
-    <string name="pref_change_secret">Ubah rahasia</string>
-    <string name="pref_change_secret_explain">Ubah PIN / pola / sidik jari melalui setelan sistem</string>
     <string name="pref_screen_security">Keamanan layar</string>
     <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
     <string name="pref_screen_security_explain">Permintaan untuk memblok screenshot di daftar terbaru dan di dalam aplikasi</string>
@@ -457,6 +469,7 @@
     <string name="pref_managekeys_export_explain">Ekspor kunci rahasia ke \"%1$s\"?</string>
     <string name="pref_managekeys_import_secret_keys">Impor kunci rahasia</string>
     <string name="pref_managekeys_import_explain">Impor kunci rahasia dari \"%1$s\"?\n\n• Kunci rahasia sebelumnya tidak akan terhapus\n\n• Kunci terakhir yang diimpo akan digunakan sebagai kunci default baru kecuali ada kata \"legacy\" di nama berkas.</string>
+    <string name="pref_managekeys_secret_keys_exported_to_x">Kunci rahasia berhasil ditulis ke \"%1$s\".</string>
     <string name="pref_managekeys_secret_keys_imported_from_x">Kunci rahasia diimpor dari \"%1$s\".</string>
     <string name="pref_background">Latar belakang</string>
     <string name="pref_background_btn_default">Menggunakan gambar default</string>
@@ -475,14 +488,13 @@
     <string name="profile_image_select">Pilih gambar profil</string>
     <string name="select_your_new_profile_image">Pilih gambar profil baru</string>
     <string name="profile_image_delete">Hapus gambar profil</string>
-
-
     <string name="emoji_not_found">Emoji tidak ditemukan</string>
     <string name="emoji_recent">Terakhir digunakan</string>
     <string name="emoji_nature">Hewan &amp; Alam</string>
     <string name="emoji_foods">Makanan &amp; Minuman</string>
     <string name="emoji_activity">Aktifitas</string>
     <string name="emoji_places">Perjalanan &amp; Tempat</string>
+    <string name="emoji_objects">objek</string>
     <string name="emoji_symbols">Simbol-simbol</string>
     <!-- automatically delete message -->
     <string name="delete_old_messages">Hapus pesan-pesan lama</string>
@@ -494,10 +506,13 @@
     <string name="autodel_at_once">Segera</string>
     <string name="after_30_seconds">Setelah 30 detik</string>
     <string name="after_1_minute">Setelah 1 menit</string>
+    <string name="after_5_minutes">Setelah 5 menit</string>
+    <string name="after_30_minutes">Setelah 30 menit</string>
     <string name="autodel_after_1_hour">Setelah 1 jam</string>
     <string name="autodel_after_1_day">Setelah 1 hari</string>
     <string name="autodel_after_1_week">Setelah 1 minggu</string>
     <string name="autodel_after_4_weeks">Setelah 4 minggu</string>
+    <string name="after_5_weeks">Setelah 5 minggu</string>
     <string name="autodel_after_1_year">Setelah 1 tahun</string>
 
     <!-- autocrypt -->
@@ -531,18 +546,13 @@
     <string name="systemmsg_action_by_me">%1$s oleh saya.</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
     <string name="systemmsg_action_by_user">%1$s oleh %2$s.</string>
+    <string name="systemmsg_unknown_sender_for_chat">Pengirim tidak dikenal untuk obrolan ini. Lihat \'info\' untuk lebih jelasnya.</string>
     <string name="systemmsg_subject_for_new_contact">Pesan dari %1$s</string>
     <string name="systemmsg_failed_sending_to">Gagal mengirim pesan ke %1$s.</string>
 
-    <!-- screen lock -->
-    <string name="screenlock_title">Kunci Layar</string>
-    <string name="screenlock_explain">Kunci akses dengan kunci layar Android atau sidik jari; kalau tidak mau menampilkan konten sebelumnya, mohon aktifkan pula \"Keamanan Layar\".</string>
-    <string name="screenlock_authentication_failed">Autentikasi gagal.</string>
-    <string name="screenlock_unlock_title">Buka kunci Delta Chat</string>
-    <string name="screenlock_unlock_description">Silakan tekan sistem rahasia yang sudah Anda tetapkan untuk membuka kunci Delta Chat.</string>
-    <string name="screenlock_inactivity_timeout_explain">Setelah tak aktif selama kurun waktu tertentu Delta Chat terkunci secara otomatis</string>
     <!-- qr code stuff -->
     <string name="qr_code">Kode QR</string>
+    <string name="load_qr_code_as_image">Muat kode QR sebagai gambar</string>
     <string name="qrscan_title">Pindah kode QR</string>
     <string name="qrscan_hint">Pegang kamera Anda di atas kode QR.</string>
     <string name="qrscan_ask_join_group">Apakah anda ingin bergabung dengan grup \"%1$s\"?</string>
@@ -571,8 +581,6 @@
     <string name="contact_setup_changed">Ubah pengaturan untuk %1$s.</string>
     <string name="verified_group_explain">Kelompok yang sudah diverifikasi (eksperimental) menjaga keamanan dari serangan aktif. Anggota diverifikasi dengan faktor kedua oleh anggota lain dan selalu dengan pesan yang terinkripsi ujung ke ujung.</string>
     <string name="copy_qr_data_success">Salin QR url ke papan klip</string>
-
-
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$dpesan baru di%2$d obrolan</string>
     <string name="notify_mark_read">Tandai telah dibaca</string>
@@ -596,7 +604,6 @@
 
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Gambar di mana saja untuk diburamkan</string>
-
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Pesan terenkripsi</string>
 
@@ -664,7 +671,6 @@
     <string name="menu.view.developer.open.log.folder">Buka folder log</string>
     <string name="menu.view.developer.open.current.log.file">Buka log berkas saat ini</string>
     <string name="user_location_permission_explanation">Delta Chat memerlukan izin lokasi untuk menunjukkan dan membagikan lokasi Anda.</string>
-
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Status pengiriman: Kesalahan</string>
     <string name="a11y_encryption_padlock">Enkripsi padlock</string>

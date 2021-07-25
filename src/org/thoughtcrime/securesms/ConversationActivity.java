@@ -68,6 +68,7 @@ import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcMsg;
 
 import org.thoughtcrime.securesms.attachments.Attachment;
+import org.thoughtcrime.securesms.attachments.UriAttachment;
 import org.thoughtcrime.securesms.audio.AudioRecorder;
 import org.thoughtcrime.securesms.audio.AudioSlidePlayer;
 import org.thoughtcrime.securesms.components.AnimatingToggle;
@@ -88,6 +89,7 @@ import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.connect.DirectShareUtil;
+import org.thoughtcrime.securesms.database.AttachmentDatabase;
 import org.thoughtcrime.securesms.map.MapActivity;
 import org.thoughtcrime.securesms.mms.AttachmentManager;
 import org.thoughtcrime.securesms.mms.AttachmentManager.MediaType;
@@ -401,7 +403,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     case GROUP_EDIT:
       dcChat = dcContext.getChat(chatId);
       titleView.setTitle(glideRequests, dcChat);
-      supportInvalidateOptionsMenu();
       break;
     case TAKE_PHOTO:
       if (attachmentManager.getImageCaptureUri() != null) {
@@ -457,7 +458,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     if (dcChat.isSelfTalk()) {
       menu.findItem(R.id.menu_mute_notifications).setVisible(false);
-    } else if(Prefs.isChatMuted(dcChat)) {
+    } else if(dcChat.isMuted()) {
       menu.findItem(R.id.menu_mute_notifications).setTitle(R.string.menu_unmute);
     }
 
@@ -474,7 +475,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     }
 
     if (isGroupConversation()) {
-      if (!dcChat.isMailingList()) { // Leaving mailing lists is currently not supported
+      if (dcChat.canSend()) { // If you can't send, then you can't leave the group
         inflater.inflate(R.menu.conversation_push_group_options, menu);
       }
     }
@@ -615,14 +616,14 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void handleMuteNotifications() {
-    if(!Prefs.isChatMuted(dcChat)) {
+    if(!dcChat.isMuted()) {
       MuteDialog.show(this, duration -> {
-        Prefs.setChatMuteDuration(dcContext, chatId, duration);
+        dcContext.setChatMuteDuration(chatId, duration);
         titleView.setTitle(glideRequests, dcChat);
       });
     } else {
       // unmute
-      Prefs.setChatMuteDuration(dcContext, chatId, 0);
+      dcContext.setChatMuteDuration(chatId, 0);
       titleView.setTitle(glideRequests, dcChat);
     }
   }
@@ -691,8 +692,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     sendButton.resetAvailableTransports();
     sendButton.setDefaultTransport(Type.NORMAL_MAIL);
-
-    supportInvalidateOptionsMenu();
   }
 
   private void handleForwarding() {
@@ -963,13 +962,15 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       conversationContainer.setClipToPadding(true);
     }
 
-    if (!dcChat.canSend()) {
-      composePanel.setVisibility(View.GONE);
-    }
+    setComposePanelVisibility();
 
     if (chatId == DcChat.DC_CHAT_ID_DEADDROP) {
       titleView.hideAvatar();
     }
+  }
+
+  private void setComposePanelVisibility() {
+    composePanel.setVisibility(dcChat.canSend() ? View.VISIBLE : View.GONE);
   }
 
   //////// Helper Methods
@@ -1355,12 +1356,11 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     }
   }
 
+  // media selected by the system keyboard
   @Override
   public void onMediaSelected(@NonNull Uri uri, String contentType) {
-    if (!TextUtils.isEmpty(contentType) && contentType.trim().equals("image/gif")) {
-      setMedia(uri, MediaType.GIF);
-    } else if (MediaUtil.isImageType(contentType)) {
-      setMedia(uri, MediaType.IMAGE);
+    if (MediaUtil.isImageType(contentType)) {
+      sendSticker(uri, contentType);
     } else if (MediaUtil.isVideoType(contentType)) {
       setMedia(uri, MediaType.VIDEO);
     } else if (MediaUtil.isAudioType(contentType)) {
@@ -1368,6 +1368,21 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     }
   }
 
+  private void sendSticker(@NonNull Uri uri, String contentType) {
+    Attachment attachment = new UriAttachment(uri, null, contentType,
+      AttachmentDatabase.TRANSFER_PROGRESS_STARTED, 0, 0, 0, null, null, false);
+    String path = getRealPathFromAttachment(attachment);
+
+    Optional<QuoteModel> quote = inputPanel.getQuote();
+    inputPanel.clearQuote();
+
+    DcMsg msg = new DcMsg(dcContext, DcMsg.DC_MSG_STICKER);
+    if (quote.isPresent()) {
+      msg.setQuote(quote.get().getQuotedMsg());
+    }
+    msg.setFile(path, null);
+    dcContext.sendMsg(chatId, msg);
+  }
 
   private void initializeMediaKeyboardProviders(@NonNull MediaKeyboard mediaKeyboard, boolean stickersAvailable) {
     boolean isSystemEmojiPreferred   = Prefs.isSystemEmojiPreferred(this);
@@ -1534,7 +1549,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       dcChat = dcContext.getChat(chatId);
       titleView.setTitle(glideRequests, dcChat);
       initializeSecurity(isSecureText, isDefaultSms);
-      invalidateOptionsMenu();
+      setComposePanelVisibility();
     }
   }
 
@@ -1575,11 +1590,11 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void searchCollapse(final Menu menu, final MenuItem searchItem) {
+    searchMenu = null;
     composePanel.setVisibility(beforeSearchComposeVisibility);
     attachmentManager.setVisibility(beforeSearchAttachVisibility);
 
     ConversationActivity.this.makeSearchMenuVisible(menu, searchItem, false);
-    invalidateOptionsMenu();
   }
 
   private void handleMenuSearchNext(boolean searchNext) {
@@ -1615,9 +1630,9 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     searchResult = dcContext.searchMsgs(chatId, normQuery);
 
     if(searchResult.length>0) {
-      searchResultPosition = 0;
+      searchResultPosition = searchResult.length - 1;
       fragment.scrollToMsgId(searchResult[searchResultPosition]);
-      updateResultCounter(0, searchResult.length);
+      updateResultCounter(searchResultPosition, searchResult.length);
     } else {
       searchResultPosition = -1;
       if (normQuery.isEmpty()) {

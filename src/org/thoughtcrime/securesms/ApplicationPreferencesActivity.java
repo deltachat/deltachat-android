@@ -18,30 +18,31 @@
 package org.thoughtcrime.securesms;
 
 import android.annotation.TargetApi;
-import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
+import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.core.content.ContextCompat;
-import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.preference.Preference;
-import android.widget.Toast;
 
+import com.b44t.messenger.DcContext;
+import com.b44t.messenger.DcEvent;
+
+import org.thoughtcrime.securesms.connect.DcEventCenter;
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.preferences.AdvancedPreferenceFragment;
-import org.thoughtcrime.securesms.preferences.AppProtectionPreferenceFragment;
 import org.thoughtcrime.securesms.preferences.AppearancePreferenceFragment;
 import org.thoughtcrime.securesms.preferences.ChatsPreferenceFragment;
 import org.thoughtcrime.securesms.preferences.CorrectedPreferenceFragment;
@@ -66,10 +67,10 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
 
   private static final String PREFERENCE_CATEGORY_PROFILE        = "preference_category_profile";
   private static final String PREFERENCE_CATEGORY_NOTIFICATIONS  = "preference_category_notifications";
-  private static final String PREFERENCE_CATEGORY_APP_PROTECTION = "preference_category_app_protection";
   private static final String PREFERENCE_CATEGORY_APPEARANCE     = "preference_category_appearance";
   private static final String PREFERENCE_CATEGORY_CHATS          = "preference_category_chats";
   private static final String PREFERENCE_CATEGORY_ADVANCED       = "preference_category_advanced";
+  private static final String PREFERENCE_CATEGORY_CONNECTIVITY   = "preference_category_connectivity";
   private static final String PREFERENCE_CATEGORY_HELP           = "preference_category_help";
 
   public static final int REQUEST_CODE_SET_BACKGROUND            = 11;
@@ -131,7 +132,7 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
     }
   }
 
-  public static class ApplicationPreferenceFragment extends CorrectedPreferenceFragment {
+  public static class ApplicationPreferenceFragment extends CorrectedPreferenceFragment implements DcEventCenter.DcEventDelegate {
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -141,8 +142,8 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
           .setOnPreferenceClickListener(new ProfileClickListener());
       this.findPreference(PREFERENCE_CATEGORY_NOTIFICATIONS)
         .setOnPreferenceClickListener(new CategoryClickListener(PREFERENCE_CATEGORY_NOTIFICATIONS));
-      this.findPreference(PREFERENCE_CATEGORY_APP_PROTECTION)
-        .setOnPreferenceClickListener(new CategoryClickListener(PREFERENCE_CATEGORY_APP_PROTECTION));
+      this.findPreference(PREFERENCE_CATEGORY_CONNECTIVITY)
+        .setOnPreferenceClickListener(new CategoryClickListener(PREFERENCE_CATEGORY_CONNECTIVITY));
       this.findPreference(PREFERENCE_CATEGORY_APPEARANCE)
         .setOnPreferenceClickListener(new CategoryClickListener(PREFERENCE_CATEGORY_APPEARANCE));
       this.findPreference(PREFERENCE_CATEGORY_CHATS)
@@ -156,6 +157,8 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
       if (VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
         tintIcons(getActivity());
       }
+
+      DcHelper.getContext(getActivity()).eventCenter.addObserver(DcContext.DC_EVENT_CONNECTIVITY_CHANGED, this);
     }
 
     @Override
@@ -171,6 +174,20 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
       setCategorySummaries();
     }
 
+    @Override
+    public void onDestroy() {
+      super.onDestroy();
+      DcHelper.getContext(getActivity()).eventCenter.removeObservers(this);
+    }
+
+    @Override
+    public void handleEvent(DcEvent event) {
+      if (event.getId() == DcContext.DC_EVENT_CONNECTIVITY_CHANGED) {
+        this.findPreference(PREFERENCE_CATEGORY_CONNECTIVITY)
+                .setSummary(DcHelper.getConnectivitySummary(getActivity(), R.string.connectivity_connected));
+      }
+    }
+
     private void setCategorySummaries() {
       ((ProfilePreference)this.findPreference(PREFERENCE_CATEGORY_PROFILE)).refresh();
 
@@ -180,6 +197,8 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
           .setSummary(AppearancePreferenceFragment.getSummary(getActivity()));
       this.findPreference(PREFERENCE_CATEGORY_CHATS)
           .setSummary(ChatsPreferenceFragment.getSummary(getActivity()));
+      this.findPreference(PREFERENCE_CATEGORY_CONNECTIVITY)
+          .setSummary(DcHelper.getConnectivitySummary(getActivity(), R.string.connectivity_connected));
       this.findPreference(PREFERENCE_CATEGORY_HELP)
           .setSummary(AdvancedPreferenceFragment.getVersion(getActivity()));
     }
@@ -187,7 +206,7 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
     @TargetApi(11)
     private void tintIcons(Context context) {
       Drawable notifications = DrawableCompat.wrap(ContextCompat.getDrawable(context, R.drawable.ic_notifications_white_24dp));
-      Drawable privacy       = DrawableCompat.wrap(ContextCompat.getDrawable(context, R.drawable.ic_security_white_24dp));
+      Drawable swap          = DrawableCompat.wrap(ContextCompat.getDrawable(context, R.drawable.ic_swap_vert_white_24dp));
       Drawable appearance    = DrawableCompat.wrap(ContextCompat.getDrawable(context, R.drawable.ic_brightness_6_white_24dp));
       Drawable chats         = DrawableCompat.wrap(ContextCompat.getDrawable(context, R.drawable.ic_forum_white_24dp));
       Drawable advanced      = DrawableCompat.wrap(ContextCompat.getDrawable(context, R.drawable.ic_advanced_white_24dp));
@@ -199,14 +218,14 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
       typedArray.recycle();
 
       DrawableCompat.setTint(notifications, color);
-      DrawableCompat.setTint(privacy, color);
+      DrawableCompat.setTint(swap, color);
       DrawableCompat.setTint(appearance, color);
       DrawableCompat.setTint(chats, color);
       DrawableCompat.setTint(advanced, color);
       DrawableCompat.setTint(help, color);
 
       this.findPreference(PREFERENCE_CATEGORY_NOTIFICATIONS).setIcon(notifications);
-      this.findPreference(PREFERENCE_CATEGORY_APP_PROTECTION).setIcon(privacy);
+      this.findPreference(PREFERENCE_CATEGORY_CONNECTIVITY).setIcon(swap);
       this.findPreference(PREFERENCE_CATEGORY_APPEARANCE).setIcon(appearance);
       this.findPreference(PREFERENCE_CATEGORY_CHATS).setIcon(chats);
       this.findPreference(PREFERENCE_CATEGORY_ADVANCED).setIcon(advanced);
@@ -228,8 +247,8 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
         case PREFERENCE_CATEGORY_NOTIFICATIONS:
           fragment = new NotificationsPreferenceFragment();
           break;
-        case PREFERENCE_CATEGORY_APP_PROTECTION:
-          fragment = new AppProtectionPreferenceFragment();
+        case PREFERENCE_CATEGORY_CONNECTIVITY:
+          startActivity(new Intent(getActivity(), ConnectivityActivity.class));
           break;
         case PREFERENCE_CATEGORY_APPEARANCE:
           fragment = new AppearancePreferenceFragment();

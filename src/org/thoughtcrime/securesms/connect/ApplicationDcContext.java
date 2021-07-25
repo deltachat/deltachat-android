@@ -60,17 +60,17 @@ public class ApplicationDcContext extends DcContext {
 
     // screen-lock is deprecated, inform users still using it
     try {
-      if (!Prefs.getBooleanPreference(context, "pref_android_screen_lock_checked", false)) {
-        Prefs.setBooleanPreference(context, "pref_android_screen_lock_checked", true);
+      if (!Prefs.getBooleanPreference(context, "pref_android_screen_lock_checked_1", false)) {
+        Prefs.setBooleanPreference(context, "pref_android_screen_lock_checked_1", true);
         if (Prefs.isScreenLockEnabled(context)) {
-          Prefs.setBooleanPreference(context, "pref_android_screen_lock_keep_for_now", true);
+          Prefs.setScreenLockEnabled(context, false);
           DcMsg msg = new DcMsg(this, DcMsg.DC_MSG_TEXT);
-          msg.setText("⚠️ You are using the function \"Screen lock\" " +
-            "that will be removed in one of the next versions for the following reasons:\n" +
+          msg.setText("⚠️ You were using the function \"Screen lock\" " +
+            "that was removed for the following reasons:\n" +
             "\n" +
-            "• It does not add much protection as one just has to repeat the system secret.\n" +
+            "• It did not add much protection as one just has to repeat the system secret.\n" +
             "\n" +
-            "• It is hard to maintain across different Android versions and is not even doable on some." +
+            "• It was hard to maintain across different Android versions and is not even doable on some." +
             " We like to put the resources to other things.\n" +
             "\n" +
             "• It is not planned/possible on iOS or Desktop this way" +
@@ -80,7 +80,7 @@ public class ApplicationDcContext extends DcContext {
             "\n" +
             "\uD83D\uDC49 For the future, we suggest to keep your phone locked " +
             "or use an appropriate app or check the device settings.");
-          addDeviceMsg("android-screen-lock-deprecated14", msg);
+          addDeviceMsg("android-screen-lock-deprecated17", msg);
         }
       }
     } catch (Exception e) {
@@ -141,7 +141,6 @@ public class ApplicationDcContext extends DcContext {
     setStockTranslation(42, context.getString(R.string.autocrypt_asm_subject));
     setStockTranslation(43, context.getString(R.string.autocrypt_asm_general_body));
     setStockTranslation(60, context.getString(R.string.login_error_cannot_login));
-    setStockTranslation(61, context.getString(R.string.login_error_server_response));
     setStockTranslation(62, context.getString(R.string.systemmsg_action_by_user));
     setStockTranslation(63, context.getString(R.string.systemmsg_action_by_me));
     setStockTranslation(68, context.getString(R.string.device_talk));
@@ -167,6 +166,7 @@ public class ApplicationDcContext extends DcContext {
     setStockTranslation(94, context.getString(R.string.systemmsg_ephemeral_timer_hours));
     setStockTranslation(95, context.getString(R.string.systemmsg_ephemeral_timer_days));
     setStockTranslation(96, context.getString(R.string.systemmsg_ephemeral_timer_weeks));
+    setStockTranslation(97, context.getString(R.string.forwarded));
   }
 
   public File getImexDir() {
@@ -203,7 +203,7 @@ public class ApplicationDcContext extends DcContext {
 
       Uri uri;
       if (path.startsWith(getBlobdir())) {
-        uri = Uri.parse("content://" + BuildConfig.APPLICATION_ID + ".attachments/" + file.getName());
+        uri = Uri.parse("content://" + BuildConfig.APPLICATION_ID + ".attachments/" + Uri.encode(file.getName()));
         sharedFiles.put("/" + file.getName(), 1); // as different Android version handle uris in putExtra differently, we also check them on our own
       } else {
         if (Build.VERSION.SDK_INT >= 24) {
@@ -401,16 +401,7 @@ public class ApplicationDcContext extends DcContext {
       if (showAsToast) {
         String toastString = null;
 
-        if (event == DC_EVENT_ERROR_NETWORK) {
-          if (isNetworkConnected()) {
-            toastString = string;
-            showNetworkErrors = true;
-          } else if (showNetworkErrors) {
-            toastString = context.getString(R.string.error_no_network);
-            showNetworkErrors = false;
-          }
-        }
-        else if (event == DC_EVENT_ERROR_SELF_NOT_IN_GROUP) {
+        if (event == DC_EVENT_ERROR_SELF_NOT_IN_GROUP) {
           toastString = context.getString(R.string.group_self_not_in_group);
         }
 
@@ -434,10 +425,6 @@ public class ApplicationDcContext extends DcContext {
         break;
 
       case DC_EVENT_ERROR:
-        handleError(id, event.getData2Str());
-        break;
-
-      case DC_EVENT_ERROR_NETWORK:
         handleError(id, event.getData2Str());
         break;
 

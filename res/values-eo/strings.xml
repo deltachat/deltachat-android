@@ -38,11 +38,10 @@
     <string name="one_moment">Unu momenton…</string>
     <string name="done">Farita</string>
     <string name="undo">Malfari</string>
-    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
+    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in iOS headers, the string should be as short as possible, though. -->
     <string name="next">Sekva</string>
     <string name="error">Eraro</string>
     <string name="error_x">Eraro: %1$s</string>
-    <string name="error_no_network">Reto neatingebla.</string>
     <string name="no_app_to_handle_data">Ne povas trovi aplikaĵon por trakti tiun ĉi tipon de datumo.</string>
     <string name="no_browser_installed">Neniu retumilo instalita.</string>
     <string name="file_not_found">Ne povis trovi %1$s.</string>
@@ -259,7 +258,6 @@
     <string name="show_location_traces">Montri spurojn</string>
     <string name="add_poi">Sendi punkton de intereso</string>
 
-
     <!-- search -->
     <string name="search">Serĉi</string>
     <string name="search_explain">Serĉi babilojn, kontaktojn, kaj mesaĝojn</string>
@@ -329,7 +327,6 @@
     <string name="pref_enter_sends">La Eniga klavo kaŭzas sendon</string>
     <string name="pref_enter_sends_explain">Premado de la Eniga klavo sendos mesaĝojn</string>
     <string name="pref_vibrate">Vibrado</string>
-    <string name="pref_change_secret">Ŝanĝi sekreton</string>
     <string name="pref_screen_security">Ekrana sekureco</string>
     <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
     <string name="pref_screen_security_explain">Neebligi ekrankopiojn en la listo de ĵus uzitaj aplikaĵoj kaj ene de la aplikaĵo mem</string>
@@ -384,11 +381,6 @@
     <string name="pref_send_copy_to_self">Sendi kopion al mi mem</string>
     <string name="pref_show_emails_all">Ĉiuj</string>
     <string name="autocrypt_prefer_e2ee">Preferi tutvojan ĉifradon</string>
-    <!-- screen lock -->
-    <string name="screenlock_title">Ekranŝloso</string>
-    <string name="screenlock_explain">Lock Delta Chat access with Android screen lock or fingerprint</string>
-    <string name="screenlock_unlock_title">Malŝlosi Delta Chat-on</string>
-    <string name="screenlock_inactivity_timeout_explain">Aŭtomate ŝlosi Signal-on post specifa templimo de neaktiveco</string>
     <string name="notify_mark_read">Marki legita</string>
     <string name="notify_reply_button">Respondi</string>
     <string name="notify_new_message">Nova mesaĝo</string>

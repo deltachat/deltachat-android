@@ -27,7 +27,6 @@ import androidx.annotation.NonNull;
 import androidx.loader.app.LoaderManager;
 
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.google.android.material.textfield.TextInputEditText;
 import com.soundcloud.android.crop.Crop;
 
 import org.thoughtcrime.securesms.components.AvatarSelector;
@@ -71,7 +70,7 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Emoj
   private ImageView              avatar;
   private EditText               name;
   private MediaKeyboard          emojiDrawer;
-  private TextInputEditText statusView;
+  private EditText               statusView;
   private View                   reveal;
 
   private boolean fromWelcome;

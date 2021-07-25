@@ -4,7 +4,10 @@
     <color name="delta_primary_dark">#ff364e59</color>
     <color name="delta_primary_lite">#4c6e7d</color>
 
+    <!-- delta_accent fits in light and in darkmode;
+     delta_accent_darker can be used for less-covered areas as non-bold text  -->
     <color name="delta_accent">#42A5F5</color>
+    <color name="delta_accent_darker">#ff2090ea</color>
 
     <color name="primary_alpha_focus">#882090ea</color>
     <color name="primary_alpha33">#552090ea</color>

@@ -98,9 +98,15 @@ public class LogViewFragment extends Fragment {
     logPreview.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
   }
 
-  public void scrollDownLog() { logPreview.setSelection(logPreview.getText().length()); }
+  public void scrollDownLog() {
+    logPreview.requestFocus();
+    logPreview.setSelection(logPreview.getText().length());
+  }
 
-  public void scrollUpLog() { logPreview.setSelection(0); }
+  public void scrollUpLog() {
+    logPreview.requestFocus();
+    logPreview.setSelection(0);
+  }
 
   public boolean saveLogFile() {
 
@@ -247,7 +253,7 @@ public class LogViewFragment extends Fragment {
               Prefs.reliableService(context)).append("\n");
 
       Locale locale = fragment.dynamicLanguage.getCurrentLocale();
-      builder.append("lang=").append(locale.getLanguage()).append("\n");
+      builder.append("lang=").append(locale.toString()).append("\n");
       if (VERSION.SDK_INT >= VERSION_CODES.JELLY_BEAN_MR1) {
         boolean isRtl = DynamicLanguage.getLayoutDirection(context) == View.LAYOUT_DIRECTION_RTL;
         builder.append("rtl=").append(isRtl).append("\n");

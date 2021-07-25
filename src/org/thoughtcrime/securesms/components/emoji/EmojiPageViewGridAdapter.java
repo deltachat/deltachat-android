@@ -55,6 +55,7 @@ public class EmojiPageViewGridAdapter extends RecyclerView.Adapter<EmojiPageView
     if (drawable != null) {
       viewHolder.textView.setVisibility(View.GONE);
       viewHolder.imageView.setVisibility(View.VISIBLE);
+      viewHolder.imageView.setContentDescription(emoji.getValue());
 
       viewHolder.imageView.setImageDrawable(drawable);
     } else {

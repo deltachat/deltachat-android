@@ -16,11 +16,14 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/conversation_item_update_background"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:gravity="center"
         android:orientation="vertical">
 
         <!--Links should be clickable, see https://github.com/deltachat/deltachat-android/issues/1546-->
-        <TextView
+        <org.thoughtcrime.securesms.components.emoji.EmojiTextView
             android:id="@+id/conversation_update_body"
             style="@style/Delta.Text.UpdateHeader"
             android:layout_width="wrap_content"
@@ -29,12 +32,17 @@
             android:gravity="center"
             android:textColor="?attr/conversation_item_update_text_color"
             android:textColorLink="?attr/conversation_item_update_text_color"
-            android:background="@drawable/conversation_item_update_background"
-            android:paddingLeft="10dp"
             android:paddingTop="3dp"
-            android:paddingRight="10dp"
             android:paddingBottom="3dp"
             tools:text="Gwen Stacy added to group" />
+
+        <ImageView android:id="@+id/delivery_indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|end"
+            android:layout_marginBottom="6dp"
+            android:tint="?attr/conversation_item_update_text_color"
+            android:visibility="gone" />
 
     </LinearLayout>
 

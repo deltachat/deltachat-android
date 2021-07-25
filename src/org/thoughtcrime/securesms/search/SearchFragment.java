@@ -66,9 +66,7 @@ public class SearchFragment extends Fragment implements SearchListAdapter.EventL
 
     this.locale = (Locale) getArguments().getSerializable(EXTRA_LOCALE);
 
-    SearchRepository searchRepository = new SearchRepository(getContext(),
-                                                             Executors.newSingleThreadExecutor());
-    viewModel = ViewModelProviders.of(this, new SearchViewModel.Factory(searchRepository)).get(SearchViewModel.class);
+    viewModel = ViewModelProviders.of(this, new SearchViewModel.Factory(getContext())).get(SearchViewModel.class);
 
     if (pendingQuery != null) {
       viewModel.updateQuery(pendingQuery);

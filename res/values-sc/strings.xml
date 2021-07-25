@@ -46,11 +46,10 @@
     <string name="done">Fatu</string>
     <string name="undo">Annulla</string>
     <string name="offline">Non in lìnia</string>
-    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
+    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in iOS headers, the string should be as short as possible, though. -->
     <string name="next">Sighi</string>
     <string name="error">Faddina</string>
     <string name="error_x">Faddina: %1$s</string>
-    <string name="error_no_network">Retza non disponìbile.</string>
     <string name="no_app_to_handle_data">No apo agatadu un\'aplicatzione pro amministrare custa casta de datos.</string>
     <string name="no_browser_installed">Non b\'at perunu navigadore/esploradore (browser) instaladu.</string>
     <string name="file_not_found">%1$s no agatadu.</string>
@@ -312,7 +311,6 @@
     <string name="show_location_traces">Ammustra sas rastas</string>
     <string name="add_poi">Imbia puntu de interesse</string>
 
-
     <!-- search -->
     <string name="search">Chirca</string>
     <string name="search_explain">Chirca in sas tzarradas, sos cuntatos e sos messàgios</string>
@@ -363,7 +361,7 @@
     <string name="login_smtp_port">Ghenna SMTP</string>
     <string name="login_smtp_security">Seguresa SMTP</string>
     <string name="login_auth_method">Manera de autenticatzione</string>
-    <!-- Translators: %1$s will be replaced by an email address -->
+    <!-- Translators: %1$s will be replaced by an e-mail address -->
     <string name="login_oauth2_checking_addr">Verifichende %1$s</string>
     <string name="login_info_oauth2_title">Cheres sighire cun s\'impostatzione semplificada?</string>
     <string name="login_info_oauth2_text">S\'indiritzu de posta eletrònica insertadu suportat un\'impostztione semplificada (OAuth 2.0).\n\n In su passu chi sighet, pro praghere, permite a Delta Chat de operare che a aplicatzione de tzarrada pro mèdiu de posta eletrònica.\n\nNon bi sunt serbidores de Delta Chat, abarrat totu in su dispositivu tuo.</string>
@@ -375,7 +373,7 @@
     <string name="import_backup_title">Importa una còpia de seguresa</string>
     <string name="import_backup_ask">Còpia de seguresa agatada in \"%1$s\".\n\nCheres a l\'importare e a impreare totu sos datos e sas impostatziones dae cue?</string>
     <string name="import_backup_no_backup_found">Peruna còpia de seguresa agatada.\n\nCòpia sa còpia de seguresa in \"%1$s\" e torra a proare. Si nono, incarca. Asinuncas, incarca \"Incumintza a messagiare\" pro sighire cun su protzessu de impostatzione normale.</string>
-    <!-- Translators: %1$s will be replaced by the email address -->
+    <!-- Translators: %1$s will be replaced by the e-mail address -->
     <string name="login_error_cannot_login">Impossìbile atzèdere comente \"%1$s\". pro paghere verìfica si s\'indiritzu de posta eletrònica e sa crae de intrada sunt curretos.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Risposta dae %1$s: %2$s\n\nUnos cantos frunidores insertant informatziones in prus in sa cartella de intrada tua; podes verificare a es. dae sa pàgina web. Si tenes problemas consulta su frunidore tuo o sos amigos tuos.</string>
@@ -421,8 +419,6 @@
     <string name="pref_outgoing_balanced">Bilantziada</string>
     <string name="pref_outgoing_worse">Calidade pègius, mannària minore</string>
     <string name="pref_vibrate">Vibratzione</string>
-    <string name="pref_change_secret">Càmbia su còdighe</string>
-    <string name="pref_change_secret_explain">Càmbia su PIN / sa secuèntzia / s\'imprenta digitale dae sas impostatziones de sistema</string>
     <string name="pref_screen_security">Seguresa de s\'ischermu</string>
     <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
     <string name="pref_screen_security_explain">Pedi de blocare sas ischermadas in sa lista de sos reghentes e in intro de s\'aplicatzione</string>
@@ -499,8 +495,6 @@
     <string name="profile_image_select">Ischerta s\'immàgine de profilu</string>
     <string name="select_your_new_profile_image">Ischerta s\'immàgine de profilu noa tua</string>
     <string name="profile_image_delete">Iscantzella s\'immàgine de profilu</string>
-
-
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Resurtados de sa chirca</string>
     <string name="emoji_not_found">Peruna emoji agatada</string>

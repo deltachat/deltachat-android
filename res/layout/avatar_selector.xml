@@ -92,7 +92,7 @@
 					android:layout_height="53dp"
 					android:src="@drawable/ic_delete_white_24dp"
 					android:scaleType="center"
-					android:contentDescription="@string/contact"
+					android:contentDescription="@string/profile_image_delete"
 					app:circleColor="#FD3C00"/>
 
 				<TextView
@@ -117,7 +117,7 @@
 					android:layout_height="53dp"
 					android:src="@drawable/ic_keyboard_arrow_down_white_24dp"
 					android:scaleType="center"
-					android:contentDescription="@string/menu_add_attachment"
+					android:contentDescription="@string/cancel"
 					app:circleColor="?attr/close_icon_color"/>
 
 				<TextView android:layout_marginTop="10dp"

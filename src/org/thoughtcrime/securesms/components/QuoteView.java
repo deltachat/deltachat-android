@@ -56,6 +56,7 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
   private CharSequence  body;
   private SlideDeck     attachments;
   private int           messageType;
+  private boolean       hasSticker;
 
   public QuoteView(Context context) {
     super(context);
@@ -115,13 +116,19 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
                        DcMsg msg,
                        @Nullable Recipient author,
                        @Nullable CharSequence body,
-                       @NonNull SlideDeck attachments)
+                       @NonNull SlideDeck attachments,
+                       boolean hasSticker)
   {
     quotedMsg        = msg;
     this.author      = author != null ? author.getDcContact() : null;
     this.body        = body;
     this.attachments = attachments;
+    this.hasSticker  = hasSticker;
 
+    if (hasSticker) {
+      this.setBackgroundResource(R.drawable.conversation_item_update_background);
+      bodyView.setTextColor(getResources().getColor(R.color.core_dark_05));
+    }
     setQuoteAuthor(author);
     setQuoteText(body, attachments);
     setQuoteAttachment(glideRequests, attachments);
@@ -161,8 +168,13 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
       } else {
         authorView.setVisibility(VISIBLE);
         authorView.setText(quotedMsg.getSenderName(contact, true));
-        authorView.setTextColor(Util.rgbToArgbColor(contact.getColor()));
-        quoteBarView.setBackgroundColor(Util.rgbToArgbColor(contact.getColor()));
+        if (hasSticker) {
+          authorView.setTextColor(getResources().getColor(R.color.core_dark_05));
+          quoteBarView.setBackgroundColor(getResources().getColor(R.color.core_dark_05));
+        } else {
+          authorView.setTextColor(Util.rgbToArgbColor(contact.getColor()));
+          quoteBarView.setBackgroundColor(Util.rgbToArgbColor(contact.getColor()));
+        }
       }
     }
   }
@@ -233,6 +245,6 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
   }
 
   private int getForwardedColor() {
-    return getResources().getColor(R.color.unknown_sender);
+    return getResources().getColor(hasSticker? R.color.core_dark_05 : R.color.unknown_sender);
   }
 }

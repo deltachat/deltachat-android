@@ -40,6 +40,7 @@
     <string name="main_menu">Menu principal</string>
     <string name="start_chat">Commencer la discussion</string>
     <string name="show_full_message">Montrer le message complet...</string>
+    <string name="hide">Cacher</string>
     <string name="load_remote_content">Charger les images distantes</string>
     <!-- possible answers to the question are: Never, Always, Once -->
     <string name="load_remote_content_ask">Les images distantes peuvent être utilisées pour vous pister. Ce paramètre autorise également le chargement de polices ou d\'autres contenus. S\'il est désactivé, vous pouvez tout de même voir les images ancrées ou en cache. Souhaitez-vous charger les images distantes ?</string>
@@ -53,11 +54,10 @@
     <string name="done">Fait</string>
     <string name="undo">Annuler</string>
     <string name="offline">Hors ligne</string>
-    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
+    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in iOS headers, the string should be as short as possible, though. -->
     <string name="next">Suivant</string>
     <string name="error">Erreur</string>
     <string name="error_x">Erreur : %1$s</string>
-    <string name="error_no_network">Réseau inaccessible.</string>
     <string name="no_app_to_handle_data">Aucune application trouvée pour traiter ce type de données.</string>
     <string name="no_browser_installed">Aucun navigateur installé.</string>
     <string name="file_not_found">Impossible de trouver %1$s.</string>
@@ -113,7 +113,7 @@
     <string name="audio">Son</string>
     <string name="voice_message">Message vocal</string>
     <string name="forwarded_message">Message transféré</string>
-    <!-- %1$s will be replaced by the name or the email-address of the person who has forwarded the message -->
+    <!-- %1$s will be replaced by the name or the e-mail address of the person who has forwarded the message -->
     <string name="forwarded_by">Transféré par %1$s</string>
     <string name="video">Vidéo</string>
     <string name="documents">Documents</string>
@@ -196,6 +196,7 @@
     <string name="menu_scroll_to_bottom">Faites défiler jusqu\'en bas</string>
     <string name="menu_scroll_to_top">Faites défiler jusqu\'en haut</string>
     <string name="menu_help">Aide</string>
+    <string name="privacy_policy">Politique de confidentialité</string>
     <string name="menu_select_all">Tout sélectionner</string>
     <string name="select_more">Sélectionner plus</string>
     <string name="menu_expand">Étendre</string>
@@ -334,18 +335,13 @@
     <string name="messaging_disabled_deaddrop">Cliquez sur un message pour accepter ou rejeter la demande de contact.</string>
     <string name="cannot_display_unsuported_file_type">Impossible d\'afficher ce type de fichier : %s</string>
     <string name="attachment_failed_to_load">Échec du chargement de la pièce jointe</string>
-
-
     <!-- mailing lists -->
     <string name="mailing_list">Liste de diffusion</string>
     <string name="ask_show_mailing_list">Montrer la liste de diffusion « %1$s » ?</string>
-
-
     <!-- map -->
     <string name="filter_map_on_time">Afficher les positions dans le temps</string>
     <string name="show_location_traces">Afficher les traces</string>
     <string name="add_poi">Afficher les points d\'intérêt</string>
-
 
     <!-- search -->
     <string name="search">Chercher</string>
@@ -397,7 +393,7 @@
     <string name="login_smtp_port">Port SMTP</string>
     <string name="login_smtp_security">Sécurité SMTP</string>
     <string name="login_auth_method">Méthode d\'autorisation</string>
-    <!-- Translators: %1$s will be replaced by an email address -->
+    <!-- Translators: %1$s will be replaced by an e-mail address -->
     <string name="login_oauth2_checking_addr">Vérification de %1$s</string>
     <string name="login_info_oauth2_title">Continuer avec une configuration simplifiée ?</string>
     <string name="login_info_oauth2_text">L\'adresse de courriel saisie prend en charge une configuration simplifiée (OAuth2.0). \n\nDans l\'étape suivante, autorisez Delta Chat à agir comme votre application de Chat avec courriel . Il n\'y a pas de serveur Delta Chat, vos données restent sur votre appareil !</string>
@@ -409,7 +405,7 @@
     <string name="import_backup_title">Importer une sauvegarde</string>
     <string name="import_backup_ask">Sauvegarde trouvée sur \"%1$s\".\n\nVoulez-vous importer et en utiliser toutes les données et paramètres ?</string>
     <string name="import_backup_no_backup_found">Aucune sauvegarde trouvée.\n\nCopiez le fichier de sauvegarde vers \"%1$s\" et essayez à nouveau. Ou bien, appuyez sur \"Démarrage communication\" pour suivre le processus normal de configuration.</string>
-    <!-- Translators: %1$s will be replaced by the email address -->
+    <!-- Translators: %1$s will be replaced by the e-mail address -->
     <string name="login_error_cannot_login">Connexion en tant que \"%1$s\" échouée. Vérifiez s.v.p. que votre adresse courriel et votre mot de passe sont corrects.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Réponse de %1$s : %2$s\n\nCertains fournisseurs peuvent envoyer des informations complémentaires par courriel concernant ce problème ; vous devriez pouvoir vérifier votre boîte de réception grâce à votre client de messagerie habituel ou par son interface web. Consultez votre fournisseur ou vos amis si vous rencontrez des problèmes.</string>
@@ -456,8 +452,6 @@
     <string name="pref_outgoing_balanced">Équilibré</string>
     <string name="pref_outgoing_worse">Pire qualité, taille réduite</string>
     <string name="pref_vibrate">Vibrer</string>
-    <string name="pref_change_secret">Modifier le secret</string>
-    <string name="pref_change_secret_explain">Modifiez votre code PIN / modèle / empreinte digitale via les paramètres du système</string>
     <string name="pref_screen_security">Écran de sécurité</string>
     <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
     <string name="pref_screen_security_explain">Demande de blocage des captures d\'écran dans la liste des captures récentes et à l\'intérieur de l\'application</string>
@@ -535,8 +529,6 @@
     <string name="profile_image_select">Sélectionnez l\'image de profil</string>
     <string name="select_your_new_profile_image">Sélectionnez votre nouvelle image de profil</string>
     <string name="profile_image_delete">Effacer l\'image de profil</string>
-
-
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Résultats de la recherche</string>
     <string name="emoji_not_found">Pas d\'emoji trouvé</string>
@@ -628,17 +620,6 @@
     <string name="systemmsg_chat_protection_disabled">Protection de la discussion désactivée.</string>
     <string name="systemmsg_chat_protection_enabled">Protection de la discussion activée.</string>
 
-    <!-- screen lock -->
-    <string name="screenlock_title">Verrouillage de l\'écran</string>
-    <string name="screenlock_explain">Verrouiller l’accès avec le verrouillage d’écran Android ou l’empreinte digitale ; pour éviter d’afficher le contenu précédent, veuillez également activer « Sécurité écran »</string>
-    <string name="screenlock_authentication_failed">L\'authentification a échoué.</string>
-    <string name="screenlock_unlock_title">Déverrouiller DeltaChat</string>
-    <string name="screenlock_unlock_description">Veuillez entrer votre secret défini par le système pour déverrouiller DeltaChat.</string>
-    <string name="screenlock_inactivity_timeout">Verrouillage du délai d\'inactivité</string>
-    <string name="screenlock_inactivity_timeout_explain">Auto-verrouillage de Delta Chat après un intervalle de temps d\'inactivité spécifié</string>
-    <string name="screenlock_inactivity_timeout_interval">Temps pour rester actif</string>
-
-
     <!-- qr code stuff -->
     <string name="qr_code">Code QR</string>
     <string name="load_qr_code_as_image">Charger le code QR comme une image</string>
@@ -673,8 +654,6 @@
     <string name="contact_setup_changed">Configuration modifiée pour %1$s</string>
     <string name="verified_group_explain">Les groupes vérifiés (fonction expérimentale) offrent une sécurité contre les attaques actives. Les membres sont vérifiés avec un second facteur par d\'autres membres et les messages sont toujours chiffrés de bout en bout.</string>
     <string name="copy_qr_data_success">L\'URL du code QR a été copié dans le presse-papiers</string>
-
-
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d nouveaux messages dans %2$d tchats</string>
     <string name="notify_mark_read">Marquer comme lu</string>
@@ -698,7 +677,6 @@
 
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Dessinez n\'importe où pour flouter</string>
-
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Message chiffré</string>
 
@@ -770,7 +748,6 @@
     <string name="menu.view.developer.open.log.folder">Ouvrir le dossier Journal</string>
     <string name="menu.view.developer.open.current.log.file">Ouvrir le fichier Journal courant</string>
     <string name="user_location_permission_explanation">DeltaChat a besoin de l\'autorisation de votre position pour l\'afficher et la partager.</string>
-
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">État de la livraison : Erreur</string>
     <string name="a11y_encryption_padlock">Cadenas de chiffrement</string>
@@ -801,6 +778,4 @@
     <string name="pref_reliable_service_explain">Requiert une notification permanente</string>
     <string name="perm_enable_bg_reminder_title">Touchez ici pour recevoir des messages pendant que DeltaChat est en arrière-plan.</string>
     <string name="perm_enable_bg_already_done">Vous avez déjà autorisé Delta Chat à recevoir des messages en arrière plan.\n\nSi vous ne les recevez toujours pas en arrière plan, vérifiez les paramètres de votre système.</string>
-    <string name="update_1_14_android">Quelques points forts de la mise à jour 1.14 :\n\n🧹 Glisser pour répondre : pour répondre à un message précis, glissez-le juste vers la droite – pas ici ! vous ne pouvez pas répondre là 😛 Vous verrez une citation au-dessus de la ligne de rédaction et pourrez continuer d\'écrire votre message comme d\'habitude.\n\n🔥 Messages éphémères – le temps est venu 😀 Toute discussion peut maintenant être configurée pour effacer les messages envoyés et reçus après un certain temps. Sélectionnez juste « Messages éphémères » dans le menu de discussion – encore une fois, pas ici.\n\n👆 Les discussions s\'ouvrent au premier message non-lu.\n\n💾 Transférez des choses dans les « Messages sauvegardés » directement et plus rapidement – cela peut être essayé ici : appuyez longtemps sur ce message puis sur la flèche en haut à droite.\n\n🎃 Enfin, nous avons encore effrayés de nombreux bugs ! Beaucoup ont eu tellement peur qu\'ils ne reviendront jamais.</string>
-
-</resources>
+    </resources>

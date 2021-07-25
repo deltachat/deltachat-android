@@ -34,7 +34,9 @@
                       android:layout_toLeftOf="@+id/search_action"
                       android:layout_toStartOf="@+id/search_action"
                       android:layout_marginStart="8dp"
-                      android:layout_marginLeft="8dp"/>
+                      android:layout_marginLeft="8dp"
+                      android:ellipsize="end"
+                      android:maxLines="1"/>
 
             <ImageView android:id="@+id/search_action"
                        android:layout_width="wrap_content"
@@ -48,7 +50,8 @@
                        android:layout_marginBottom="4dp"
                        android:layout_alignParentRight="true"
                        android:layout_alignParentEnd="true"
-                       android:layout_centerVertical="true"/>
+                       android:layout_centerVertical="true"
+                       android:contentDescription="@string/search"/>
 
         </RelativeLayout>
 

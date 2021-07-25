@@ -53,11 +53,10 @@
     <string name="done">រួចរាល់</string>
     <string name="undo">ធ្វើឡើងវិញ</string>
     <string name="offline">ក្រៅបណ្តាញ</string>
-    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
+    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in iOS headers, the string should be as short as possible, though. -->
     <string name="next">បន្ទាប់</string>
     <string name="error">កំហុស</string>
     <string name="error_x">កំហុស: %1$s</string>
-    <string name="error_no_network">បណ្តាញមិនទំនេរ</string>
     <string name="no_app_to_handle_data">មិនអាចរកឃើញកម្មវិធីសម្រាប់ដំណើរការលើទិន្ន័យប្រភេទនេះទេ</string>
     <string name="no_browser_installed">គ្មានកម្មវិធីរុករកត្រូវបានដំឡើងទេ</string>
     <string name="file_not_found">រកមិនឃើញឯកសា %1$s។</string>
@@ -107,7 +106,7 @@
     <string name="audio">សម្លេង</string>
     <string name="voice_message">សារជាសម្លេង</string>
     <string name="forwarded_message">សារដែលបានបញ្ជូនបន្ត</string>
-    <!-- %1$s will be replaced by the name or the email-address of the person who has forwarded the message -->
+    <!-- %1$s will be replaced by the name or the e-mail address of the person who has forwarded the message -->
     <string name="forwarded_by">បញ្ជូនបន្តពី %1$s</string>
     <string name="video">វីដេអូ</string>
     <string name="documents">ឯកសារ</string>
@@ -322,18 +321,13 @@
     <string name="messaging_disabled_deaddrop">ចុចលើសារដើម្បីទទួលយក ឬបដិសេធស្នើសុំទំនាក់ទំនង។</string>
     <string name="cannot_display_unsuported_file_type">មិនអាចបង្ហាញប្រភេទឯកសារនេះ៖ %s</string>
     <string name="attachment_failed_to_load">បានបរាជ័យ ក្នុងការផ្ទុកឯកសារភ្ជាប់។</string>
-
-
     <!-- mailing lists -->
     <string name="mailing_list">អ៊ីម៉ែលការផ្សាយ</string>
     <string name="ask_show_mailing_list">បង្ហាញសារអ៊ីម៉ែលការផ្សាយ \"%1$s\"?</string>
-
-
     <!-- map -->
     <string name="filter_map_on_time">បង្ហាញទីតាំងនៅក្នុងស៊ុមពេលវេលា</string>
     <string name="show_location_traces">បង្ហាញដាន</string>
     <string name="add_poi">ផ្ញើចំណុចចំណាប់អារម្មណ៍</string>
-
 
     <!-- search -->
     <string name="search">ស្វែងរក</string>
@@ -385,7 +379,7 @@
     <string name="login_smtp_port">ច្រករបស SMTP</string>
     <string name="login_smtp_security">សន្តិសុខ SMTP</string>
     <string name="login_auth_method">ការចុះបញ្ជី</string>
-    <!-- Translators: %1$s will be replaced by an email address -->
+    <!-- Translators: %1$s will be replaced by an e-mail address -->
     <string name="login_oauth2_checking_addr">ត្រួតពិនិត្យ %1$s</string>
     <string name="login_info_oauth2_title">បន្តជាមួយការដំឡើងសាមញ្ញ?</string>
     <string name="login_info_oauth2_text">អស័យដ្ឋានអុីម៉េលដែលបានបញ្ចូល គាំទ្រការដំឡើងសាមញ្ញ (OAuth 2.0)\n\nនៅជំហានបន្ទាប់ សូមអនុញ្ញាតឲ្យសាហារីសង្ឃ ដើរតួជាការសន្ទនារបស់អ្នកនៅលើកម្មវិធីអុីម៉េល។\n\nមិនមាន ម៉ាសុីនមេ សាហារីសង្ឃទេ។ ទិន្ន័យរបស់អ្នកស្ថិតនៅលើឧបករណ៍របស់អ្នក។</string>
@@ -397,7 +391,7 @@
     <string name="import_backup_title">នាំចូលពត៌មានចម្លងទុក</string>
     <string name="import_backup_ask">រកឃើញពត៌មានចម្លងទុកនៅ \"%1s\".\n\nតើអ្នកចង់នាំចូល និងប្រើប្រាស់ទិន្នន័យទាំងអស់ និងការកំណត់ពីវា?</string>
     <string name="import_backup_no_backup_found">រក​មិន​ឃើញពត៌មានចម្លងទុកទេ\n\nចម្លង ពត៌មានចម្លងទុកទៅ \"%1$s\" និងសាកល្បងម្តងទៀត\n\nចុច \"ចាប់ផ្តើមផ្ញើសារ\" ដើម្បីបន្តជាមួយដំណើរការរៀបចំធម្មតា។</string>
-    <!-- Translators: %1$s will be replaced by the email address -->
+    <!-- Translators: %1$s will be replaced by the e-mail address -->
     <string name="login_error_cannot_login">មិនអាចកត់ចូលជា \"%1$s\" ។ សូមផ្ទៀតផ្ទាត់មើលអស័យដ្ឋានអុីម៉េល និងពាក្យសម្ងាត់ឲ្យបានត្រឹមត្រូវ។</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">ឆ្លើយតបពី %1$s: %2$s\n\nអ្នកផ្តល់សេវាខ្លះអាចអ៊ីម៉េលមកអ្នក នូវពត៌មានបន្ថែមអំពីបញ្ហានេះ។ អ្នកគួរតែអាចត្រួតពិនិត្យប្រអប់ចូលរបស់អ្នក ប្រើបាស័យដ្ឋានអ៊ីម៉េលទៀងទាត់ប្រាស់កម្មវិធី ឬវេបសាយ។ ពិគ្រោះជាមួយអ្នកផ្តល់សេវា ឬមិត្តរបស់អ្នក ប្រសិនបើអ្នកមានបញ្ហា។</string>
@@ -444,8 +438,6 @@
     <string name="pref_outgoing_balanced">មានតុល្យភាព</string>
     <string name="pref_outgoing_worse">គុណភាពកាន់តែអាក្រក់ ទំហំតូច</string>
     <string name="pref_vibrate">ញ័រ</string>
-    <string name="pref_change_secret">ផ្លាស់ប្តូរសម្ងាត់</string>
-    <string name="pref_change_secret_explain">ប្តូរ PIN / លំនាំ/ ស្នាមម្រាម របស់អ្នក ដៃ តាមរយះការកំណត់ប្រពន្ធ័។</string>
     <string name="pref_screen_security">សុវត្ថិភាពអេក្រង់</string>
     <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
     <string name="pref_screen_security_explain">ស្នើសុំរារាំងរូបថតអេក្រង់ នៅក្នុងបញ្ជីបច្ចុប្បន្ន និងខាងក្នុងកម្មវិធី។</string>
@@ -523,8 +515,6 @@
     <string name="profile_image_select">ជ្រើសរើសរូបភាពទិន្ន័យផ្ទាល់ខ្លួន</string>
     <string name="select_your_new_profile_image">ជ្រើសរើសរូបភាពទិន្នន័យផ្ទាល់ខ្លួនថ្មី</string>
     <string name="profile_image_delete">លុបរូបភាពទិន្នន័យផ្ទាល់ខ្លួន</string>
-
-
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">លទ្ធផលស្វែងរក</string>
     <string name="emoji_not_found">រកមិនឃើញរូបសញ្ញាអារម្មណ៍</string>
@@ -616,17 +606,6 @@
     <string name="systemmsg_chat_protection_disabled">ការការពារសន្ទនាត្រូវបានបិទ</string>
     <string name="systemmsg_chat_protection_enabled">ការការពារសន្ទនាត្រូវបានបើក</string>
 
-    <!-- screen lock -->
-    <string name="screenlock_title">ចាក់អេក្រង់</string>
-    <string name="screenlock_explain">ចាក់សោរដំណើរការជាមួយ Android ចាក់សោរអេក្រង់ ឬស្នាមម្រាមដៃ ដើម្បីចៀសវាងការបង្ហាញមាតិកាមុន។ សូមបើកដំណើរការ \"អេក្រង់សុវត្ថិភាព\" ផងដែរ។</string>
-    <string name="screenlock_authentication_failed">ការផ្ទៀងផ្ទាត់បានបរាជ័យ</string>
-    <string name="screenlock_unlock_title">ដោះសោរសា Delta Chat</string>
-    <string name="screenlock_unlock_description">សូមបញ្ចូលការកំណត់ប្រព័ន្ធសុវត្ថិភាពសម្ងាត់របស់អ្នក ដើម្បីដោះសោរ សា Delta Chat ។</string>
-    <string name="screenlock_inactivity_timeout">ចាក់សោរពីព្រោះអស់ពេលអសកម្ម</string>
-    <string name="screenlock_inactivity_timeout_explain">សា Delta Chat បិទដោយស្វ័យប្រវត្តិ បន្ទាប់ពីបានបញ្ជាក់រយះពេលនៃអសកម្ម។</string>
-    <string name="screenlock_inactivity_timeout_interval">ពេលវេលាដើម្បីឲ្យសកម្ម</string>
-
-
     <!-- qr code stuff -->
     <string name="qr_code">QR កូដ</string>
     <string name="load_qr_code_as_image">ផ្ទុកកូដ QR ជារូបភាព</string>
@@ -661,8 +640,6 @@
     <string name="contact_setup_changed">បានដូរការរៀបចំសម្រាប់ %1$s</string>
     <string name="verified_group_explain">\"ក្រុមបានផ្ទៀងផ្ទាត់\" (ពិសោធន៍) បានផ្តល់សុវត្ថិភាពប្រឆាំងនឹងសកម្មភាពវាយប្រហារ។ សមាជិកត្រូវបានផ្ទៀងផ្ទាត់ជាមុខងារទីពីរ ដោយសមាជិកដទៃទៀត និងសារតែងតែបានអ៊ិនគ្រីប ពីឧបករណ៍ដល់ឧបករណ៍។</string>
     <string name="copy_qr_data_success">បានចម្លង QR-url ទៅក្តារខ្ទាស់</string>
-
-
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">សារ %1$d ថ្មីក្នុងសន្ទនា %2$d</string>
     <string name="notify_mark_read">សម្គាល់ថាអាន</string>
@@ -686,7 +663,6 @@
 
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">គូកន្លែងណាដើម្បីឲ្យព្រិលៗ</string>
-
     <!-- dc_str_* resources -->
     <string name="encrypted_message">សារដែលបានធ្វើឲ្យសម្ងាត់</string>
 
@@ -758,7 +734,6 @@
     <string name="menu.view.developer.open.log.folder">បើកថតឯកសារកត់</string>
     <string name="menu.view.developer.open.current.log.file">បើកឯកសារកត់បច្ចុប្បន្ន</string>
     <string name="user_location_permission_explanation">សា Delta Chat ត្រូវការការអនុញ្ញាតទីតាំង ដើម្បីបង្ហាញ និងចែករំលែកទីតាំងរបស់អ្នក។</string>
-
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">ស្ថានភាពចែកចាយ៖ មានកំហុស</string>
     <string name="a11y_encryption_padlock">សោត្រដោកការអ៊ិនគ្រីប</string>
@@ -789,6 +764,4 @@
     <string name="pref_reliable_service_explain">តម្រូវការជូនដំណឹងជាអចិន្រ្តៃយ៍</string>
     <string name="perm_enable_bg_reminder_title">ប៉ះទីនេះដើម្បីទទួលសារកំឡុងពេល សា Delta Chat គឺស្ថិតនៅក្នុងផ្ទៃខាងក្រោយ។</string>
     <string name="perm_enable_bg_already_done">អ្នកបានអនុញ្ញាតរួចរាល់ហើយឲ្យសា Delta Chat ដើម្បីទទួលសារនៅផ្ទៃខាងក្រោយ\n\nប្រសិនបើ សារនៅតែមិនមកដល់ផ្ទៃខាងក្រោយ សូមពិនិត្យការការកំណត់ប្រពន្ធ័របស់អ្នកផងដែរ។</string>
-    <string name="update_1_14_android">គំនូសពណ៌ខ្លះនៃការធ្វើបច្ចុប្បន្នភាព ១.១៤ :\n\nដើម្បីឆ្លើយតបសារជាក់ស្តែង គ្រាន់តែអូសវាទៅខាងស្តាំ (មិន​នៅ​ទីនេះ! អ្នកមិនអាចឆ្លើយនៅទីនេះទេ 😛)អ្នកនឹងឃើញសម្រង់ពាក្យតែងខាងលើបន្ទាត់ និងអាចបន្តសរសេរសាររបស់អ្នក ដូចធម្មតា។.\n\n🔥បាត់សារ - ពេលវេលាមកដល់ហើយ! 😀 ការជជែកខ្លះ ឥឡូវនេះអាចត្រូវបានដំឡើងដើម្បីលុបសារដែលបានផ្ញើ និងសារដែលបានទទួល នៅពេលបន្ទាប់។ គ្រាន់តែជ្រើស \"កម្មវិធីសារដែលនឹងបាត់បន្ទាប់ពីមួយរយៈ\" ពីបញ្ជីសន្ទនា (ម្តងទៀត៖ មិននៅទីនេះទេ)\n\n👆ការសន្ទនាបើកនៅសារដែលមើលមិនឃើញដំបូង\n\n💾 បញ្ជូនបន្តទៅ \"សារដែលបានរក្សាទុក\" ដោយផ្ទាល់និងលឿនជាងមុន (នេះអាចត្រូវបានសាកល្បងនៅទីនេះ៖ ប៉ះសារនេះយូរហើយ បន្ទាប់មកព្រួញនៅខាងស្តាំ)\n\n🎃 យ៉ាងហោចណាស់យើងបានខ្លាចកំហុសជាច្រើនទៀត! កំហុសជាច្រើនខ្លាចណាស់ពួកគេនឹងមិនត្រឡប់មកវិញទេ។</string>
-
-</resources>
+    </resources>

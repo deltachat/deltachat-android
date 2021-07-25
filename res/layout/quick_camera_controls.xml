@@ -14,7 +14,8 @@
                  android:background="@drawable/quick_camera_shutter_ring"
                  android:src="@drawable/quick_shutter_button"
                  android:enabled="false"
-                 android:padding="20dp"/>
+                 android:padding="20dp"
+                 android:contentDescription="@string/capture"/>
 
     <ImageButton android:id="@+id/fullscreen_button"
                  android:layout_width="wrap_content"
@@ -23,7 +24,8 @@
                  android:layout_alignParentRight="true"
                  android:background="@drawable/circle_touch_highlight_background"
                  android:src="@drawable/quick_camera_fullscreen"
-                 android:padding="20dp" />
+                 android:padding="20dp"
+                 android:contentDescription="@string/toggle_fullscreen" />
 
     <ImageButton android:id="@+id/swap_camera_button"
                  android:layout_width="wrap_content"
@@ -35,6 +37,7 @@
                  android:enabled="false"
                  android:padding="20dp"
                  android:visibility="invisible"
-                 tools:visibility="visible" />
+                 tools:visibility="visible"
+                 android:contentDescription="@string/switch_camera" />
 
 </RelativeLayout>

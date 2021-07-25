@@ -1,32 +1,31 @@
 package org.thoughtcrime.securesms;
 
 import android.content.Context;
+import android.content.res.TypedArray;
+import android.graphics.Color;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import android.util.AttributeSet;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcMsg;
 
+import org.thoughtcrime.securesms.components.DeliveryStatusView;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.recipients.Recipient;
 
 import java.util.Locale;
 import java.util.Set;
 
-public class ConversationUpdateItem extends LinearLayout
-    implements BindableConversationItem
+public class ConversationUpdateItem extends BaseConversationItem
 {
-  private Set<DcMsg>    batchSelected;
-
-  private TextView      body;
-  private DcMsg         messageRecord;
+  private DeliveryStatusView  deliveryStatusView;
+  private int                 textColor;
 
   public ConversationUpdateItem(Context context) {
-    super(context);
+    this(context, null);
   }
 
   public ConversationUpdateItem(Context context, AttributeSet attrs) {
@@ -37,7 +36,14 @@ public class ConversationUpdateItem extends LinearLayout
   public void onFinishInflate() {
     super.onFinishInflate();
 
-    this.body  = findViewById(R.id.conversation_update_body);
+    initializeAttributes();
+
+    bodyText           = findViewById(R.id.conversation_update_body);
+    deliveryStatusView = new DeliveryStatusView(findViewById(R.id.delivery_indicator));
+
+    bodyText.setOnLongClickListener(passthroughClickListener);
+    bodyText.setOnClickListener(passthroughClickListener);
+
   }
 
   @Override
@@ -49,9 +55,18 @@ public class ConversationUpdateItem extends LinearLayout
                    @NonNull Recipient               conversationRecipient,
                             boolean                 pulseUpdate)
   {
-    this.batchSelected = batchSelected;
+    bind(messageRecord, dcChat, batchSelected, pulseUpdate);
+    setGenericInfoRecord(messageRecord);
+  }
 
-    bind(messageRecord);
+  private void initializeAttributes() {
+    final int[]      attributes = new int[] {
+        R.attr.conversation_item_update_text_color,
+    };
+    final TypedArray attrs      = context.obtainStyledAttributes(attributes);
+
+    textColor = attrs.getColor(0, Color.WHITE);
+    attrs.recycle();
   }
 
   @Override
@@ -64,15 +79,21 @@ public class ConversationUpdateItem extends LinearLayout
     return messageRecord;
   }
 
-  private void bind(@NonNull DcMsg messageRecord) {
-    this.messageRecord = messageRecord;
-    setGenericInfoRecord(messageRecord);
-    setSelected(batchSelected.contains(messageRecord));
-  }
-
   private void setGenericInfoRecord(DcMsg messageRecord) {
-    body.setText(messageRecord.getDisplayBody());
-    body.setVisibility(VISIBLE);
+    bodyText.setText(messageRecord.getDisplayBody());
+    bodyText.setVisibility(VISIBLE);
+
+    if      (!messageRecord.isOutgoing())  deliveryStatusView.setNone();
+    else if (messageRecord.isFailed())     deliveryStatusView.setFailed();
+    else if (messageRecord.isPreparing())  deliveryStatusView.setPreparing();
+    else if (messageRecord.isPending())    deliveryStatusView.setPending();
+    else                                   deliveryStatusView.setNone();
+
+    if (messageRecord.isFailed()) {
+      deliveryStatusView.setTint(Color.RED);
+    } else {
+      deliveryStatusView.setTint(textColor);
+    }
   }
 
   @Override

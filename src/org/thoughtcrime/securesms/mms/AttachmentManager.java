@@ -107,7 +107,9 @@ public class AttachmentManager {
       removableMediaView.setRemoveClickListener(new RemoveButtonListener());
       removableMediaView.setEditClickListener(new EditButtonListener());
       thumbnail.setOnClickListener(new ThumbnailClickListener());
-      documentView.getBackground().setColorFilter(ThemeUtil.getThemedColor(context, R.attr.conversation_item_incoming_bubble_color), PorterDuff.Mode.MULTIPLY);
+      int incomingBubbleColor = ThemeUtil.getThemedColor(context, R.attr.conversation_item_incoming_bubble_color);
+      audioView.getBackground().setColorFilter(incomingBubbleColor, PorterDuff.Mode.MULTIPLY);
+      documentView.getBackground().setColorFilter(incomingBubbleColor, PorterDuff.Mode.MULTIPLY);
     }
 
   }
@@ -424,8 +426,11 @@ public class AttachmentManager {
       return;
     }
 
+    // see https://support.google.com/googleplay/android-developer/answer/9799150#zippy=%2Cstep-provide-prominent-in-app-disclosure
+    // for rationale dialog requirements
     Permissions.PermissionsBuilder permissionsBuilder = Permissions.with(activity)
             .ifNecessary()
+            .withRationaleDialog("To share your live location with chat members, allow Delta Chat to use your location data.\n\nTo make live location work gaplessly, location data is used even when the app is closed or not in use.", R.drawable.ic_location_on_white_24dp)
             .withPermanentDenialDialog(activity.getString(R.string.perm_explain_access_to_location_denied))
             .onAllGranted(() -> {
               ShareLocationDialog.show(activity, durationInSeconds -> {

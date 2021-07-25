@@ -27,11 +27,10 @@
     <string name="one_moment">Egy pillanat...</string>
     <string name="done">Kész</string>
     <string name="undo">Visszavonás</string>
-    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
+    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in iOS headers, the string should be as short as possible, though. -->
     <string name="next">Tovább</string>
     <string name="error">Hiba</string>
     <string name="error_x">Hiba: %1$s</string>
-    <string name="error_no_network">A hálózat nem elérhető.</string>
     <string name="no_browser_installed">Nincs böngésző telepítve.</string>
     <string name="file_not_found">%1$s nem található.</string>
     <string name="copied_to_clipboard">Vágólapra másolva.</string>
@@ -288,8 +287,6 @@
     <string name="systemmsg_member_added">%1$s hozzáadva a csoporthoz.</string>
     <string name="systemmsg_member_removed">%1$s eltávolítva a csoportból.</string>
     <string name="systemmsg_group_left">Kiléptél a csoportból.</string>
-    <!-- screen lock -->
-    <string name="screenlock_title">Képernyőzár</string>
     <!-- qr code stuff -->
     <string name="qr_code">QR-kód</string>
     <string name="qrscan_title">QR-kód olvasása</string>

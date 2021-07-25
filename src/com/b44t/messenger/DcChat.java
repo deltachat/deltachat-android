@@ -56,7 +56,7 @@ public class DcChat {
     }
 
     public boolean canVideochat() {
-        return canSend() && !isGroup() && !isSelfTalk();
+        return canSend() && !isSelfTalk();
     }
 
 

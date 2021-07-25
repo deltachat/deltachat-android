@@ -9,7 +9,6 @@ public class DcContext {
     public final static int DC_EVENT_INFO                        = 100;
     public final static int DC_EVENT_WARNING                     = 300;
     public final static int DC_EVENT_ERROR                       = 400;
-    public final static int DC_EVENT_ERROR_NETWORK               = 401;
     public final static int DC_EVENT_ERROR_SELF_NOT_IN_GROUP     = 410;
     public final static int DC_EVENT_MSGS_CHANGED                = 2000;
     public final static int DC_EVENT_INCOMING_MSG                = 2005;
@@ -26,6 +25,7 @@ public class DcContext {
     public final static int DC_EVENT_IMEX_FILE_WRITTEN           = 2052;
     public final static int DC_EVENT_SECUREJOIN_INVITER_PROGRESS = 2060;
     public final static int DC_EVENT_SECUREJOIN_JOINER_PROGRESS  = 2061;
+    public final static int DC_EVENT_CONNECTIVITY_CHANGED        = 2100;
 
     public final static int DC_IMEX_EXPORT_SELF_KEYS = 1;
     public final static int DC_IMEX_IMPORT_SELF_KEYS = 2;
@@ -52,6 +52,10 @@ public class DcContext {
     public final static int DC_QR_TEXT              = 330;
     public final static int DC_QR_URL               = 332;
     public final static int DC_QR_ERROR             = 400;
+    public final static int DC_QR_WITHDRAW_VERIFYCONTACT = 500;
+    public final static int DC_QR_WITHDRAW_VERIFYGROUP   = 502;
+    public final static int DC_QR_REVIVE_VERIFYCONTACT   = 510;
+    public final static int DC_QR_REVIVE_VERIFYGROUP     = 512;
 
     public final static int DC_LP_AUTH_OAUTH2          =     0x2;
     public final static int DC_LP_AUTH_NORMAL          =     0x4;
@@ -71,6 +75,11 @@ public class DcContext {
     public final static int DC_DECISION_START_CHAT = 0;
     public final static int DC_DECISION_BLOCK      = 1;
     public final static int DC_DECISION_NOT_NOW    = 2;
+
+    public final static int DC_CONNECTIVITY_NOT_CONNECTED = 1000;
+    public final static int DC_CONNECTIVITY_CONNECTING = 2000;
+    public final static int DC_CONNECTIVITY_WORKING = 3000;
+    public final static int DC_CONNECTIVITY_CONNECTED = 4000;
 
     public DcContext(String osName, String dbfile) {
         contextCPtr = createContextCPtr(osName, dbfile);
@@ -112,6 +121,8 @@ public class DcContext {
     @Deprecated public String  getConfig            (String key, String def) { return getConfig(key); }
     @Deprecated public int     getConfigInt         (String key, int def) { return getConfigInt(key); }
     public native String       getInfo              ();
+    public native int          getConnectivity      ();
+    public native String       getConnectivityHtml  ();
     public native String       getOauth2Url         (String addr, String redirectUrl);
     public native String       initiateKeyTransfer  ();
     public native boolean      continueKeyTransfer  (int msg_id, String setup_code);

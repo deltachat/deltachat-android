@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -54,8 +55,10 @@ public class BorderlessImageView extends FrameLayout {
     boolean showControls = slide.asAttachment().getDataUri() == null;
 
     if (slide.hasSticker()) {
+      image.setScaleType(ImageView.ScaleType.FIT_CENTER);
       image.setImageResource(glideRequests, slide);
     } else {
+      image.setScaleType(ImageView.ScaleType.CENTER_CROP);
       image.setImageResource(glideRequests, slide, slide.asAttachment().getWidth(), slide.asAttachment().getHeight());
     }
 

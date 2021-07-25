@@ -21,7 +21,6 @@
     <string name="undo">Desfazer</string>
     <string name="error">Erro</string>
     <string name="error_x">Erro: %1$s</string>
-    <string name="error_no_network">Rede indisponível.</string>
     <string name="no_app_to_handle_data">Não é possível encontrar uma aplicação para lidar com esse tipo de dados.</string>
     <string name="no_browser_installed">Navegador da internet não instalado.</string>
     <string name="file_not_found">Não consegui localizar %1$s</string>
@@ -236,7 +235,7 @@
     <string name="import_backup_title">Importar backup</string>
     <string name="import_backup_ask">Backup encontrado em \"%1$s\".\n\nQuer importar e usar todos os dados e respectivas configurações?</string>
     <string name="import_backup_no_backup_found">Nenhum backup encontrado. \n\nCopie o backup para \"%1$s\" e tente novamente. Em alternativa, pressione \"Iniciar mensagem\" para prosseguir com o processo de configuração normal.</string>
-    <!-- Translators: %1$s will be replaced by the email address -->
+    <!-- Translators: %1$s will be replaced by the e-mail address -->
     <string name="login_error_cannot_login">Não é possível fazer o login como \"%1$s\". Por favor, verifique se o endereço de email e a palavra-chave estão corretos.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Resposta de %1$s: %2$s \n\nAlguns provedores colocam informações adicionais na sua caixa de entrada; pode verificá-los, por exemplo, na interface web. Consulte o seu provedor ou amigos se você tiver problemas.</string>
@@ -259,8 +258,6 @@
     <string name="pref_enter_sends">Tecla ENTER para enviar</string>
     <string name="pref_enter_sends_explain">Pressionar a tecla ENTER enviará mensagens de texto</string>
     <string name="pref_vibrate">Vibrar</string>
-    <string name="pref_change_secret">Modificar cóidgo secreto</string>
-    <string name="pref_change_secret_explain">Mude o seu pin/padrão/impressão digital através das configurações do sistema</string>
     <string name="pref_screen_security">Segurança do ecrã</string>
     <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
     <string name="pref_screen_security_explain">Bloquear capturas de ecrã na lista atualizada e no aplicativo</string>
@@ -350,16 +347,6 @@
     <string name="systemmsg_action_by_me">%1$s por mim.</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
     <string name="systemmsg_action_by_user">%1$s por %2$s.</string>
-    <!-- screen lock -->
-    <string name="screenlock_title">Bloqueio do ecrã</string>
-    <string name="screenlock_authentication_failed">Falhou autenticação.</string>
-    <string name="screenlock_unlock_title">Desbloquear Delta Chat</string>
-    <string name="screenlock_unlock_description">Por favor, entre o valor definido pelo sistema para desbloquear o Delta Chat.</string>
-    <string name="screenlock_inactivity_timeout">Bloqueio por tempo limite de inactividade</string>
-    <string name="screenlock_inactivity_timeout_explain">Bloqueio automático do Delta Chat após um intervalo de tempo de inactividade especificado</string>
-    <string name="screenlock_inactivity_timeout_interval">Intervalo de tempo limite de inactividade</string>
-
-
     <string name="qrscan_title">Fazer scan do código QR</string>
     <string name="qrscan_hint">Coloque sua câmera sobre o código QR</string>
     <string name="qrscan_ask_join_group">Quer se juntar-se ao grupo \"%1$s\"?</string>

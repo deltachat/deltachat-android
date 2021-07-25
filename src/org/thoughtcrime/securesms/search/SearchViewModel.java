@@ -1,45 +1,35 @@
 package org.thoughtcrime.securesms.search;
 
+import android.content.Context;
+import android.text.TextUtils;
+import android.util.Log;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.annotation.NonNull;
 
-import androidx.fragment.app.Fragment;
+import com.b44t.messenger.DcChatlist;
+import com.b44t.messenger.DcContext;
 
+import org.thoughtcrime.securesms.connect.ApplicationDcContext;
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.search.model.SearchResult;
-import org.thoughtcrime.securesms.util.Debouncer;
+import org.thoughtcrime.securesms.util.Util;
 
-/**
- * A {@link ViewModel} for handling all the business logic and interactions that take place inside
- * of the {@link SearchFragment}.
- *
- * This class should be view- and Android-agnostic, and therefore should contain no references to
- * things like {@link android.content.Context}, {@link android.view.View},
- * {@link Fragment}, etc.
- */
 class SearchViewModel extends ViewModel {
+  private static final String        TAG = SearchViewModel.class.getSimpleName();
+  private final ObservingLiveData    searchResult;
+  private String                     lastQuery;
+  private final ApplicationDcContext dcContext;
+  private boolean                    queryMessages = true;
+  private boolean                    inBgSearch;
+  private boolean                    needsAnotherBgSearch;
 
-  private final ObservingLiveData searchResult;
-  private final SearchRepository  searchRepository;
-  private final Debouncer         debouncer;
-
-  private String lastQuery;
-
-  SearchViewModel(@NonNull SearchRepository searchRepository) {
+  SearchViewModel(@NonNull Context context) {
+    this.dcContext        = DcHelper.getContext(context.getApplicationContext());
     this.searchResult     = new ObservingLiveData();
-    this.searchRepository = searchRepository;
-    this.debouncer        = new Debouncer(150);
-
-//    searchResult.registerContentObserver(new ContentObserver(new Handler()) {
-//      @Override
-//      public void onChange(boolean selfChange) {
-//        if (!TextUtils.isEmpty(getLastQuery())) {
-//          searchRepository.query(getLastQuery(), searchResult::postValue);
-//        }
-//      }
-//    });
   }
 
   LiveData<SearchResult> getSearchResult() {
@@ -47,12 +37,86 @@ class SearchViewModel extends ViewModel {
   }
 
   public void includeMessageQueries(boolean include) {
-    this.searchRepository.setQueryMessages(include);
+    queryMessages = include;
   }
+
 
   void updateQuery(String query) {
     lastQuery = query;
-    debouncer.publish(() -> searchRepository.query(query, searchResult::postValue));
+
+    if (inBgSearch) {
+      needsAnotherBgSearch = true;
+      Log.i(TAG, "... search call debounced");
+    } else {
+      inBgSearch = true;
+      Util.runOnBackground(() -> {
+
+        Util.sleep(100);
+        needsAnotherBgSearch = false;
+        queryAndCallback(lastQuery, searchResult::postValue);
+
+        while (needsAnotherBgSearch) {
+          Util.sleep(100);
+          needsAnotherBgSearch = false;
+          Log.i(TAG, "... executing debounced search call");
+          queryAndCallback(lastQuery, searchResult::postValue);
+        }
+
+        inBgSearch = false;
+      });
+    }
+  }
+
+  private void queryAndCallback(@NonNull String query, @NonNull SearchRepository.Callback callback) {
+    int overallCnt = 0;
+
+    if (TextUtils.isEmpty(query)) {
+      callback.onResult(SearchResult.EMPTY);
+      return;
+    }
+
+    // #1 search for chats
+    long startMs = System.currentTimeMillis();
+    DcChatlist conversations = dcContext.getChatlist(0, query, 0);
+    overallCnt += conversations.getCnt();
+    Log.i(TAG, "⏰ getChatlist(" + query + "): " + (System.currentTimeMillis() - startMs) + "ms");
+
+    // #2 search for contacts
+    if (!query.equals(lastQuery) && overallCnt > 0) {
+      Log.i(TAG, "... skipping getContacts() and searchMsgs(), more recent search pending");
+      callback.onResult(new SearchResult(query, new int[0], conversations, new int[0]));
+      return;
+    }
+
+    startMs = System.currentTimeMillis();
+    int[] contacts = dcContext.getContacts(DcContext.DC_GCL_ADD_SELF, query);
+    overallCnt += contacts.length;
+    Log.i(TAG, "⏰ getContacts(" + query + "): " + (System.currentTimeMillis() - startMs) + "ms");
+
+    // #3 search for messages
+    if (!queryMessages) {
+      Log.i(TAG, "... searchMsgs() disabled by caller");
+      callback.onResult(new SearchResult(query, contacts, conversations, new int[0]));
+      return;
+    }
+
+    if (query.length() <= 1) {
+      Log.i(TAG, "... skipping searchMsgs(), string too short");
+      callback.onResult(new SearchResult(query, contacts, conversations, new int[0]));
+      return;
+    }
+
+    if (!query.equals(lastQuery) && overallCnt > 0) {
+      Log.i(TAG, "... skipping searchMsgs(), more recent search pending");
+      callback.onResult(new SearchResult(query, contacts, conversations, new int[0]));
+      return;
+    }
+
+    startMs = System.currentTimeMillis();
+    int[] messages = dcContext.searchMsgs(0, query);
+    Log.i(TAG, "⏰ searchMsgs(" + query + "): " + (System.currentTimeMillis() - startMs) + "ms");
+
+    callback.onResult(new SearchResult(query, contacts, conversations, messages));
   }
 
   @NonNull
@@ -62,7 +126,6 @@ class SearchViewModel extends ViewModel {
 
   @Override
   protected void onCleared() {
-    debouncer.clear();
   }
 
   private static class ObservingLiveData extends MutableLiveData<SearchResult> {
@@ -70,16 +133,16 @@ class SearchViewModel extends ViewModel {
 
   public static class Factory extends ViewModelProvider.NewInstanceFactory {
 
-    private final SearchRepository searchRepository;
+    private final Context context;
 
-    public Factory(@NonNull SearchRepository searchRepository) {
-      this.searchRepository = searchRepository;
+    public Factory(@NonNull Context context) {
+      this.context = context;
     }
 
     @NonNull
     @Override
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
-      return modelClass.cast(new SearchViewModel(searchRepository));
+      return modelClass.cast(new SearchViewModel(context));
     }
   }
 }

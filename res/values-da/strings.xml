@@ -51,11 +51,10 @@
     <string name="done">Færdig</string>
     <string name="undo">Fortryd</string>
     <string name="offline">Offline</string>
-    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
+    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in iOS headers, the string should be as short as possible, though. -->
     <string name="next">Næste</string>
     <string name="error">Fejl</string>
     <string name="error_x">Fejl: %1$s</string>
-    <string name="error_no_network">Netværk utilgængelig</string>
     <string name="no_app_to_handle_data">Kan ikke finde et program til håndtering af denne type data.</string>
     <string name="no_browser_installed">Ingen browser installeret.</string>
     <string name="file_not_found">Kunne ikke finde %1$s.</string>
@@ -328,13 +327,10 @@
     <string name="messaging_disabled_deaddrop">Klik på en besked for at acceptere eller afvise kontaktanmodningen </string>
     <string name="cannot_display_unsuported_file_type">Kan ikke vise denne filtype: 1%s</string>
     <string name="attachment_failed_to_load">Visning af vedhæftede fil mislykkedes</string>
-
-
     <!-- map -->
     <string name="filter_map_on_time">Vis placeringer i tidsramme</string>
     <string name="show_location_traces">Vis spor</string>
     <string name="add_poi">Send interessepunkt</string>
-
 
     <!-- search -->
     <string name="search">Søg</string>
@@ -386,7 +382,7 @@
     <string name="login_smtp_port">SMTP port</string>
     <string name="login_smtp_security">SMTP sikkerhed</string>
     <string name="login_auth_method">Autorisationsmetode</string>
-    <!-- Translators: %1$s will be replaced by an email address -->
+    <!-- Translators: %1$s will be replaced by an e-mail address -->
     <string name="login_oauth2_checking_addr">Checker %1$s</string>
     <string name="login_info_oauth2_title">Fortsæt med forenklet opsætning?</string>
     <string name="login_info_oauth2_text">Indtastet e-mail adresse understøtter simple opsætning (OAuth2).\n\nTillad i næste trin at Delta Chat agerer som samtale med e-mail program.\n\nDer er ingen Delta Chat servere, data forbliver på enhed.</string>
@@ -398,7 +394,7 @@
     <string name="import_backup_title">Importer sikkerhedskopi</string>
     <string name="import_backup_ask">Sikkerhedskopi fundet hos \"%1$s\".\n\nVil du Importere og bruge al data og opsætning fra den?</string>
     <string name="import_backup_no_backup_found">Ingen sikkerhedskopi fundet.\n\nKopier sikkerhedskopi til \"%1$s\" og prøv igen. Alternativt, klik \"Start samtale\" for at følge normal opsætning proces.</string>
-    <!-- Translators: %1$s will be replaced by the email address -->
+    <!-- Translators: %1$s will be replaced by the e-mail address -->
     <string name="login_error_cannot_login">Kan ikke logge ind som  \"%1$s\". Kontroller om e-mailadresse og adgangskode er korrekt.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Svar fra %1$s: %2$s\n\nNogle udbydere placerer ekstra information i indbakken; det kan kontrolleres f.eks. i net grænsefladen. Kontakt udbyder eller venner hvis disse problemer opstår.</string>
@@ -445,8 +441,6 @@
     <string name="pref_outgoing_balanced">Balanceret</string>
     <string name="pref_outgoing_worse">Dårligere kvalitet mindre størrelse</string>
     <string name="pref_vibrate">Vibrere</string>
-    <string name="pref_change_secret">Ændre hemmelighed</string>
-    <string name="pref_change_secret_explain">Ændre PIN / mønster / fingeraftryk via system opsætning</string>
     <string name="pref_screen_security">Skærmsikkerhed</string>
     <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
     <string name="pref_screen_security_explain">Forespørgsel om at blokere skærmbilleder i seneste liste og i programmet</string>
@@ -524,8 +518,6 @@
     <string name="profile_image_select">Vælg profilbillede</string>
     <string name="select_your_new_profile_image">Vælg dit nye profilbillede</string>
     <string name="profile_image_delete">Slet profilbillede</string>
-
-
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Søg i resultater</string>
     <string name="emoji_not_found">Ingen emoji fundet</string>
@@ -617,17 +609,6 @@
     <string name="systemmsg_chat_protection_disabled">Chat-beskyttelse slået fra.</string>
     <string name="systemmsg_chat_protection_enabled">Chat-beskyttelse sluttet til.</string>
 
-    <!-- screen lock -->
-    <string name="screenlock_title">Skærmlås</string>
-    <string name="screenlock_explain">Låse adgang med Android skærmlås eller fingeraftryk; for at undgå at vise det forrige indhold, skal \"Skærm sikkerhed\" også aktiveres.</string>
-    <string name="screenlock_authentication_failed">Godkendelse mislykket.</string>
-    <string name="screenlock_unlock_title">Lås Delta Chat op</string>
-    <string name="screenlock_unlock_description">Indtast system bestemt hemmelighed for at låse Delta Chat op.</string>
-    <string name="screenlock_inactivity_timeout">Inaktivitet tidsudløb lås</string>
-    <string name="screenlock_inactivity_timeout_explain">Autolås Delta Chat efter angiven tidsinterval med inaktivitet</string>
-    <string name="screenlock_inactivity_timeout_interval">Inaktivitet tidsudløb interval</string>
-
-
     <!-- qr code stuff -->
     <string name="qr_code">QR-kode</string>
     <string name="load_qr_code_as_image">Indlæs QR-kode som billede</string>
@@ -662,8 +643,6 @@
     <string name="contact_setup_changed">Ændret opsætning for %1$s</string>
     <string name="verified_group_explain">Bekræftede grupper (eksperimentel) giver sikkerhed mod aktive angreb. Medlemmer bliver bekræftet med en anden faktor af andre medlemmer og beskederne bliver altid end-to-end krypteret.</string>
     <string name="copy_qr_data_success">Kopieret QR url til udklipsholder</string>
-
-
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d nye beskeder i %2$d samtaler</string>
     <string name="notify_mark_read">Markér som læst</string>
@@ -687,7 +666,6 @@
 
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Tegn hvor som helst for at sløre</string>
-
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Krypteret besked</string>
 
@@ -759,7 +737,6 @@
     <string name="menu.view.developer.open.log.folder">Åbn log mappe</string>
     <string name="menu.view.developer.open.current.log.file">Åbn nuværende log fil</string>
     <string name="user_location_permission_explanation">Delta Chat behøver placering tilladelse for at vise og dele placering.</string>
-
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Leveringsstatus: Fejl</string>
     <string name="a11y_encryption_padlock">Krypteringslås</string>
@@ -790,6 +767,4 @@
     <string name="pref_reliable_service_explain">Kræver en permanent forbindelse</string>
     <string name="perm_enable_bg_reminder_title">Tryk her for at modtage beskeder når Delta Chat er i baggrunden.</string>
     <string name="perm_enable_bg_already_done">Du har allerede tilladt Delta Chat at modtage beskeder i baggrunden.\n\nHvis beskeder ikke ankommer i baggrunden, undersøg dine systemindstillinger.</string>
-    <string name="update_1_14_android">Nogle højdepunkter af 1.14 opdateringen:\n\n🧹 Swipe for at svare: For at svare på en specifik besked kan du bare swipe til højre (ikke her! du kan ikke svare her 😛) Do vil se et citat over skirve-linjen og kan blive ved med at skrive din besked som sædvanligt.\n\n🔥 Meddelelser ­med tidsudløb - tiden er kommet 😀. Enhver samtale kan nu blive indstillet til at slette sendte og modtagne beskeder efter et bestemt tidsinterval. Bare vælg \"Beskeder med tidsudløb\" fra samtalens menu (igen: ikke her)\n\n👆 Samtaler åbner på første uset besked\n\n💾 Videresend ting til \"Gemte beskeder\" direkte og hurtigere (dette kan afprøves her: tryk lang tid på denne besked og derefter pilen øverst til venstre)\n\n🎃 Igen har vi skræmt mange bugs! Mange var så skræmte at de ikke kommer tilbage.</string>
-
-</resources>
+    </resources>

@@ -33,11 +33,10 @@
     <string name="not_now">Ne sada</string>
     <string name="never">Nikada</string>
     <string name="one_moment">Samo trenutak...</string>
-    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
+    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in iOS headers, the string should be as short as possible, though. -->
     <string name="next">Dalje</string>
     <string name="error">Greška</string>
     <string name="error_x">Greška: %1$s</string>
-    <string name="error_no_network">Mreža nije dostupna.</string>
     <string name="file_not_found">%1$s nije pronađeno.</string>
     <string name="copied_to_clipboard">Kopirano u međuspremnik.</string>
     <string name="contacts_headline">Kontakti</string>
@@ -235,11 +234,6 @@
     <string name="systemmsg_member_removed">Član %1$s uklonjen.</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
     <string name="systemmsg_action_by_user">%1$s od %2$s.</string>
-    <!-- screen lock -->
-    <string name="screenlock_title">Zaključavanje zaslona</string>
-    <string name="screenlock_explain">Zaključi pristup Delta Chat-u putem zaključavanjem ekrana Androida ili otiska prsta.</string>
-    <string name="screenlock_unlock_title">Otključaj Delta Chat</string>
-    <string name="screenlock_inactivity_timeout_explain">Automatski zaključaj Delta Chat nakon određenog vremenskog intervala neaktivnosti</string>
     <!-- qr code stuff -->
     <string name="qr_code">QR kod</string>
     <string name="qrscan_fingerprint_label">Otisak prsta</string>

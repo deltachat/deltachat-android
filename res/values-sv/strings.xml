@@ -53,11 +53,10 @@
     <string name="done">Klart</string>
     <string name="undo">Ångra</string>
     <string name="offline">Offline</string>
-    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
+    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in iOS headers, the string should be as short as possible, though. -->
     <string name="next">Nästa</string>
     <string name="error">Fel</string>
     <string name="error_x">Fel: %1$s</string>
-    <string name="error_no_network">Nätverk ej tillgängligt.</string>
     <string name="no_app_to_handle_data">Kan inte hitta någon app som hanterar denna typ av data.</string>
     <string name="no_browser_installed">Ingen webbläsare installerad.</string>
     <string name="file_not_found">Kunde inte hitta %1$s.</string>
@@ -113,7 +112,7 @@
     <string name="audio">Ljud</string>
     <string name="voice_message">Röstmeddelande</string>
     <string name="forwarded_message">Vidarebefordrat meddelande</string>
-    <!-- %1$s will be replaced by the name or the email-address of the person who has forwarded the message -->
+    <!-- %1$s will be replaced by the name or the e-mail address of the person who has forwarded the message -->
     <string name="forwarded_by">Vidarebefordrad av %1$s</string>
     <string name="video">Video</string>
     <string name="documents">Dokument</string>
@@ -334,18 +333,13 @@
     <string name="messaging_disabled_deaddrop">Tryck på ett meddelande för att acceptera, eller neka en kontaktförfrågan</string>
     <string name="cannot_display_unsuported_file_type">Denna filtyp kan inte visas: %s</string>
     <string name="attachment_failed_to_load">Bilagan kunde inte visas</string>
-
-
     <!-- mailing lists -->
     <string name="mailing_list">Mejllista</string>
     <string name="ask_show_mailing_list">Visa mejllistan \"%1$s\"?</string>
-
-
     <!-- map -->
     <string name="filter_map_on_time">Visa platser inom tidsramen</string>
     <string name="show_location_traces">Visa spår</string>
     <string name="add_poi">Skicka intressant plats</string>
-
 
     <!-- search -->
     <string name="search">Sök</string>
@@ -397,7 +391,7 @@
     <string name="login_smtp_port">SMTP port</string>
     <string name="login_smtp_security">SMTP säkerhet</string>
     <string name="login_auth_method">Auktoriseringsmetod</string>
-    <!-- Translators: %1$s will be replaced by an email address -->
+    <!-- Translators: %1$s will be replaced by an e-mail address -->
     <string name="login_oauth2_checking_addr">Kontrollerar %1$s</string>
     <string name="login_info_oauth2_title">Fortsätta med förenklad installation?</string>
     <string name="login_info_oauth2_text">Den angivna e-postadressen stödjer förenklad inställning (OAuth 2.0).\n\nLåt Delta Chat agera som ditt chatt-över-epost-program, i nästa steg.\n\nDet finns ingen Delta Chat-server, din data stannar på din enhet.</string>
@@ -409,7 +403,7 @@
     <string name="import_backup_title">Importera säkerhetskopia</string>
     <string name="import_backup_ask">Säkerhetskopia hittades på %1$s.\n\n Vill du importera och använda all data och alla inställningar från den?</string>
     <string name="import_backup_no_backup_found">Inga säkerhetskopior hittades.\n\nKopiera säkerhetskopian till \"%1$s\" och försök igen. Alternativt, tryck \"Börja chatta\" för att fortsätta den normala inställningsprocessen.</string>
-    <!-- Translators: %1$s will be replaced by the email address -->
+    <!-- Translators: %1$s will be replaced by the e-mail address -->
     <string name="login_error_cannot_login">Kan inte logga in som \"%1$s\". Kontrollera om e-postadressen och lösenordet är korrekt.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Svar från %1$s: %2$s\n\nVissa e-postleverantörer placerar tilläggsinformation i din inkorg. Du kan kontrollera dem i t.ex. webbgränssnittet. Kontakta din e-postleverantör eller vänner om du stöter på problem.</string>
@@ -450,8 +444,6 @@
     <string name="pref_outgoing_balanced">Balanserad</string>
     <string name="pref_outgoing_worse">Sämre kvalitet, mindre storlek</string>
     <string name="pref_vibrate">Vibrera</string>
-    <string name="pref_change_secret">Ändra hemlighet</string>
-    <string name="pref_change_secret_explain">Ändra ditt PIN/mönster/fingeravtryck via systeminställningarna</string>
     <string name="pref_screen_security">Skärmsäkerhet</string>
     <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
     <string name="pref_screen_security_explain">Blockera skärmklipp i tidigare-listan samt inuti programmet</string>
@@ -513,7 +505,7 @@
     <string name="pref_auto_folder_moves">Flyttas automatiskt till DeltaChat-mappen</string>
     <string name="pref_auto_folder_moves_explain">Chattkonversationer flyttas automatiskt för att undvika att inkorgen belamras</string>
     <string name="pref_show_emails">Visa vanliga e-postmeddelanden</string>
-    <string name="pref_show_emails_no">Nej, bara cattar</string>
+    <string name="pref_show_emails_no">Nej, bara chattar</string>
     <string name="pref_show_emails_accepted_contacts">För godkända kontakter</string>
     <string name="pref_show_emails_all">Alla</string>
     <string name="pref_experimental_features">Experimentella funktioner</string>
@@ -584,17 +576,6 @@
     <string name="systemmsg_ephemeral_timer_day">Tiduret för meddelandeborttagning är satt till 1 dag.</string>
     <string name="systemmsg_ephemeral_timer_week">Tiduret för meddelandeborttagning är satt till 1 vecka.</string>
     <string name="systemmsg_ephemeral_timer_four_weeks">Tiduret för meddelandeborttagning är satt till 4 veckor.</string>
-    <!-- screen lock -->
-    <string name="screenlock_title">Skärmlås</string>
-    <string name="screenlock_explain">Lås åtkomsten med Androids skärmlås eller fingeravtryck. Aktivera även \"Skärmsäkerhet\", för att undvika att visa tidigare innehåll.</string>
-    <string name="screenlock_authentication_failed">Autentisering misslyckades.</string>
-    <string name="screenlock_unlock_title">Lås upp Delta Chat</string>
-    <string name="screenlock_unlock_description">Ange din systemdefinierade säkerhet för att låsa upp Delta Chat</string>
-    <string name="screenlock_inactivity_timeout">Tidslås för inaktivitet</string>
-    <string name="screenlock_inactivity_timeout_explain">Lås Delta Chat automatiskt efter en specificerad tidsperiod av inaktivitet</string>
-    <string name="screenlock_inactivity_timeout_interval">Tid att fortsätta vara aktiv</string>
-
-
     <!-- qr code stuff -->
     <string name="qr_code">QR-kod</string>
     <string name="qrscan_title">Skanna QR-kod</string>
@@ -649,7 +630,6 @@
 
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Rita var som helst för att smeta ut</string>
-
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Krypterat meddelande</string>
 
@@ -717,7 +697,6 @@
     <string name="menu.view.developer.open.log.folder">Öppna loggmappen</string>
     <string name="menu.view.developer.open.current.log.file">Öppna aktuell loggfil</string>
     <string name="user_location_permission_explanation">Delta Chat behöver platsbehörighet, för att kunna visa och dela din plats.</string>
-
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Leveransstatus: Fel</string>
     <string name="a11y_encryption_padlock">Hänglås för kryptering</string>

@@ -44,11 +44,11 @@ docker build --build-arg UID=$(id -u) --build-arg GID=$(id -g) . -t deltachat-an
 
 Then, run the image:
 ```
-podman run --userns=keep-id -it --name deltachat -v $(pwd):/home/app -w /home/app localhost/deltachat-android
+podman run --userns=keep-id -it --name deltachat -v $(pwd):/home/app:z -w /home/app localhost/deltachat-android
 ```
 or
 ```
-docker run -it --name deltachat -v $(pwd):/home/app -w /home/app localhost/deltachat-android
+docker run -it --name deltachat -v $(pwd):/home/app:z -w /home/app localhost/deltachat-android
 ```
 
 You can leave the container with Ctrl+D or by typing `exit` and re-enter it with 

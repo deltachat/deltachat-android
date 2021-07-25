@@ -53,11 +53,10 @@
     <string name="done">Hotovo</string>
     <string name="undo">Vrátenie späť</string>
     <string name="offline">Offline</string>
-    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
+    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in iOS headers, the string should be as short as possible, though. -->
     <string name="next">Ďalšie</string>
     <string name="error">Chyba</string>
     <string name="error_x">Chyba: %1$s</string>
-    <string name="error_no_network">Sieť nedostupná</string>
     <string name="no_app_to_handle_data">Nemôžem nájsť aplikáciu na spracovanie tohto typu údajov.</string>
     <string name="no_browser_installed">Nie je nainštalovaný žiadny prehliadač.</string>
     <string name="file_not_found">Nemohol nájsť %1$s.</string>
@@ -125,7 +124,7 @@
     <string name="audio">Zvuk</string>
     <string name="voice_message">Hlasová správa</string>
     <string name="forwarded_message">Preposlaná správa</string>
-    <!-- %1$s will be replaced by the name or the email-address of the person who has forwarded the message -->
+    <!-- %1$s will be replaced by the name or the e-mail address of the person who has forwarded the message -->
     <string name="forwarded_by">Preposlal %1$s</string>
     <string name="video">Video</string>
     <string name="documents">Dokumenty</string>
@@ -358,18 +357,13 @@
     <string name="messaging_disabled_deaddrop">Kliknutím na správu prijmete alebo odmietnete žiadosť o kontakt</string>
     <string name="cannot_display_unsuported_file_type">Nie je možné zobraziť tento typ súboru: %s</string>
     <string name="attachment_failed_to_load">Prílohu sa nepodarilo načítať</string>
-
-
     <!-- mailing lists -->
     <string name="mailing_list">Zoznam adries</string>
     <string name="ask_show_mailing_list">Zobraziť zoznam adries%1$s?</string>
-
-
     <!-- map -->
     <string name="filter_map_on_time">Zobraziť polohy v časovom rámci</string>
     <string name="show_location_traces">Zobraziť stopy</string>
     <string name="add_poi">Pošlite zaujímavé miesto</string>
-
 
     <!-- search -->
     <string name="search">Vyhľadávanie</string>
@@ -421,7 +415,7 @@
     <string name="login_smtp_port">Port SMTP</string>
     <string name="login_smtp_security">Zabezpečenie SMTP</string>
     <string name="login_auth_method">Metóda autorizácie</string>
-    <!-- Translators: %1$s will be replaced by an email address -->
+    <!-- Translators: %1$s will be replaced by an e-mail address -->
     <string name="login_oauth2_checking_addr">Prebieha kontrola %1$s</string>
     <string name="login_info_oauth2_title">Pokračovať v zjednodušenom nastavovaní?</string>
     <string name="login_info_oauth2_text">Zadaná e-mailová adresa podporuje zjednodušené nastavenie (OAuth 2.0).\n\nV ďalšom kroku povoľte aplikácii Delta Chat, aby fungovala ako vaša aplikácia Chat cez e-mail.\n\nNie sú k dispozícii servery Delta Chat, vaše dáta zostanú vo vašom zariadení .</string>
@@ -433,7 +427,7 @@
     <string name="import_backup_title">Importovať zálohu</string>
     <string name="import_backup_ask">Záloha sa našla na „%1$s“.\n\nChcete z nej importovať a použiť všetky dáta a nastavenia?</string>
     <string name="import_backup_no_backup_found">Neboli nájdené žiadne zálohy.\n\nSkopírujte zálohu na „%1$s“ a skúste to znova. Prípadne stlačte tlačidlo „Spustiť zasielanie správ“ a pokračujte v bežnom procese nastavenia.</string>
-    <!-- Translators: %1$s will be replaced by the email address -->
+    <!-- Translators: %1$s will be replaced by the e-mail address -->
     <string name="login_error_cannot_login">Nie je možné prihlásiť sa ako „%1$s“. Skontrolujte správnosť e-mailovej adresy a hesla.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Odpoveď od %1$s:%2$s\n\nNiektorí poskytovatelia vám môžu poslať e-mailom ďalšie informácie o tomto probléme; mali by ste byť schopní skontrolovať svoju doručenú poštu pomocou svojej bežnej e-mailovej aplikácie alebo webovej stránky. Ak narazíte na problémy, obráťte sa na svojho poskytovateľa alebo priateľov.</string>
@@ -480,8 +474,6 @@
     <string name="pref_outgoing_balanced">Vyvážený</string>
     <string name="pref_outgoing_worse">Horšia kvalita, malé rozmery</string>
     <string name="pref_vibrate">Vibrovať</string>
-    <string name="pref_change_secret">Zmeniť secret</string>
-    <string name="pref_change_secret_explain">Zmeňte svoj PIN / vzor / odtlačok prsta pomocou nastavení systému</string>
     <string name="pref_screen_security">Zabezpečenie obrazovky</string>
     <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
     <string name="pref_screen_security_explain">Požiadajte o blokovanie snímok obrazovky v zozname posledných položiek a v aplikácii</string>
@@ -559,8 +551,6 @@
     <string name="profile_image_select">Vyberte profilový obrázok</string>
     <string name="select_your_new_profile_image">Vyberte svoj nový profilový obrázok</string>
     <string name="profile_image_delete">Odstrániť profilový obrázok</string>
-
-
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Výsledky vyhľadávania</string>
     <string name="emoji_not_found">Nenašli sa žiadne emodži</string>
@@ -652,17 +642,6 @@
     <string name="systemmsg_chat_protection_disabled">Ochrana chatu je deaktivovaná.</string>
     <string name="systemmsg_chat_protection_enabled">Ochrana chatu je povolená.</string>
 
-    <!-- screen lock -->
-    <string name="screenlock_title">Zámok obrazovky</string>
-    <string name="screenlock_explain">Zamknite prístup pomocou zámku obrazovky Android alebo odtlačku prsta; aby ste zabránili zobrazovaniu predchádzajúceho obsahu, povoľte tiež možnosť „Zabezpečenie obrazovky“.</string>
-    <string name="screenlock_authentication_failed">Overenie zlyhalo.</string>
-    <string name="screenlock_unlock_title">Odomknite program Delta Chat</string>
-    <string name="screenlock_unlock_description">Odomknite Delta Chat zadaním vášho systému definovaného tajomstva.</string>
-    <string name="screenlock_inactivity_timeout">Uzamknutie časového limitu nečinnosti</string>
-    <string name="screenlock_inactivity_timeout_explain">Automaticky uzamknúť program Delta Chat po stanovenom časovom období nečinnosti</string>
-    <string name="screenlock_inactivity_timeout_interval">Čas zostať aktívny</string>
-
-
     <!-- qr code stuff -->
     <string name="qr_code">QR kód</string>
     <string name="load_qr_code_as_image">Načítajte QR kód ako obrázok</string>
@@ -697,8 +676,6 @@
     <string name="contact_setup_changed">Zmena nastavenia pre %1$s.</string>
     <string name="verified_group_explain">Overené skupiny (experimentálne) poskytujú bezpečnosť proti aktívnym útokom. Členovia sú overovaní druhým faktorom ostatnými členmi a správy sú vždy šifrované end-to-end.</string>
     <string name="copy_qr_data_success">Skopírovaná adresa URL QR do schránky</string>
-
-
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d nové správy v %2$d četoch</string>
     <string name="notify_mark_read">Označiť ako prečítané</string>
@@ -722,7 +699,6 @@
 
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Ak chcete rozmazať, nakreslite kamkoľvek</string>
-
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Zašifrovaná správa</string>
 
@@ -794,7 +770,6 @@
     <string name="menu.view.developer.open.log.folder">Otvorte priečinok denníka</string>
     <string name="menu.view.developer.open.current.log.file">Otvoriť aktuálny súbor protokolu</string>
     <string name="user_location_permission_explanation">Delta Chat potrebuje na zobrazenie a zdieľanie vašej polohy povolenie na polohu.</string>
-
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Stav doručenia: Chyba</string>
     <string name="a11y_encryption_padlock">Šifrovací zámok</string>
@@ -825,6 +800,4 @@
     <string name="pref_reliable_service_explain">Vyžaduje trvalé upozornenie</string>
     <string name="perm_enable_bg_reminder_title">Klepnutím sem prijmete správy, zatiaľ čo je Delta Chat na pozadí.</string>
     <string name="perm_enable_bg_already_done">Službe Delta Chat ste už povolili príjem správ na pozadí.\n\nAk správy stále neprichádzajú na pozadí, skontrolujte tiež svoje systémové nastavenia.</string>
-    <string name="update_1_14_android">Niektoré najdôležitejšie body aktualizácie 1.14: \n\nPotiahnutím prstom odpoviete: Ak chcete odpovedať na konkrétnu správu, jednoducho potiahnite prstom doprava (nie tu! Tu nemôžete odpovedať You\'ll) Nad riadkom na napísanie príspevku sa zobrazí citát a môžete pokračovať v písaní vaša správa ako obvykle. \n\n🔥 Miznúce správy - nadišiel čas 😀. Teraz je možné nakonfigurovať akýkoľvek chat tak, aby po určitom čase odstránil odoslané a prijaté správy. Stačí v ponuke chatu zvoliť možnosť „Miznúce správy“ (opäť: tu nie)\n\n👆 Chaty sa otvárajú pri prvej nevidenej správe\n\n💾 Preposielať veci na „Uložené správy“ priamo a rýchlejšie (môžete to vyskúšať tu: dlho - klepnite na túto správu a potom na šípku vpravo hore)\n\n🎃 Nakoniec sme opäť vystrašili veľa chýb! Veľa bolo tak vystrašených, že sa už nevrátia.</string>
-
-</resources>
+    </resources>

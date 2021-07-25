@@ -21,7 +21,6 @@
     <string name="undo">復原</string>
     <string name="error">錯誤</string>
     <string name="error_x">錯誤: %1$s</string>
-    <string name="error_no_network">網路無法連線</string>
     <string name="no_app_to_handle_data">沒有可以處理這種資料的應用程式</string>
     <string name="no_browser_installed">沒有安裝瀏覽器</string>
     <string name="file_not_found">找不到 %1$s</string>
@@ -215,7 +214,6 @@
     <string name="show_location_traces">顯示移動足跡</string>
     <string name="add_poi">傳送興趣點</string>
 
-
     <!-- search -->
     <string name="search">搜尋</string>
     <string name="search_explain">搜尋對話紀錄、聯絡人以及訊息</string>
@@ -269,7 +267,7 @@
     <string name="import_backup_title">匯入備份</string>
     <string name="import_backup_ask">在 %1$s 找到備份\n\n你要匯入備份，並使用原來的資料和設定嗎?</string>
     <string name="import_backup_no_backup_found">找不到備份\n\n請把備份複製到 %1$s 然後再試一次，或是按「開始傳送訊息」進行標準設定。</string>
-    <!-- Translators: %1$s will be replaced by the email address -->
+    <!-- Translators: %1$s will be replaced by the e-mail address -->
     <string name="login_error_cannot_login">無法登入 %1$s。請確定 email 帳號和密碼是否正確。 </string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">伺服器 %1$s 的回應: %2$s\n\n有些郵件服務商會在你的收件匣提供進一步的資訊，請檢查一下，並看看 web 介面上有沒有相關設定。還是不行的話，請洽詢郵件服務商，或是請朋友幫忙。</string>
@@ -298,8 +296,6 @@
     <string name="pref_outgoing_balanced">普通</string>
     <string name="pref_outgoing_worse">低品質</string>
     <string name="pref_vibrate">振動</string>
-    <string name="pref_change_secret">更改密碼</string>
-    <string name="pref_change_secret_explain">使用系統設定更改數字、圖型、指紋密碼</string>
     <string name="pref_screen_security">螢幕安全性</string>
     <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
     <string name="pref_screen_security_explain">要求系統在本通訊軟體中及應用程式列表中禁止擷圖</string>
@@ -393,17 +389,6 @@
     <string name="systemmsg_action_by_me">我%1$s</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
     <string name="systemmsg_action_by_user">%2$s%1$s</string>
-    <!-- screen lock -->
-    <string name="screenlock_title">螢幕鎖</string>
-    <string name="screenlock_explain">使用 Android 螢幕鎖或指紋鎖定，為防止訊息顯示在螢幕上，請一併開啟「螢幕安全」。</string>
-    <string name="screenlock_authentication_failed">認證失敗</string>
-    <string name="screenlock_unlock_title">解鎖 Delta Chat</string>
-    <string name="screenlock_unlock_description">請輸入系統密碼以解鎖 Delta Chat</string>
-    <string name="screenlock_inactivity_timeout">閒置逾時鎖定</string>
-    <string name="screenlock_inactivity_timeout_explain">在指定的時間間隔內沒有動作的話，自動鎖定 Delta Chat。</string>
-    <string name="screenlock_inactivity_timeout_interval">閒置逾時時間</string>
-
-
     <string name="qrscan_title">掃描QR Code</string>
     <string name="qrscan_hint">請將相機對準 QR Code</string>
     <string name="qrscan_ask_join_group">你要參加群組 %1$s 嗎?</string>

@@ -9,11 +9,13 @@ import android.provider.Settings;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.view.ActionMode;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -158,7 +160,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
 
     item = menu.findItem(R.id.menu_mute_notifications);
     if(item!=null) {
-      item.setTitle(Prefs.isChatMuted(dcContext.getChat(chatId))? R.string.menu_unmute : R.string.menu_mute);
+      item.setTitle(dcContext.getChat(chatId).isMuted()? R.string.menu_unmute : R.string.menu_mute);
     }
 
     super.onPrepareOptionsMenu(menu);
@@ -262,9 +264,27 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
   }
 
   private class ProfilePagerAdapter extends FragmentStatePagerAdapter {
+    private Object currentFragment = null;
 
     ProfilePagerAdapter(FragmentManager fragmentManager) {
       super(fragmentManager);
+    }
+
+    @Override
+    public void setPrimaryItem(ViewGroup container, int position, Object object) {
+      super.setPrimaryItem(container, position, object);
+      if (currentFragment != null && currentFragment != object) {
+        ActionMode action = null;
+        if (currentFragment instanceof MessageSelectorFragment) {
+          action = ((MessageSelectorFragment) currentFragment).getActionMode();
+        } else if (currentFragment instanceof ProfileSettingsFragment) {
+          action = ((ProfileSettingsFragment) currentFragment).getActionMode();
+        }
+        if (action != null) {
+          action.finish();
+        }
+      }
+      currentFragment = object;
     }
 
     @Override
@@ -375,7 +395,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void onNotifyOnOff() {
-    if (Prefs.isChatMuted(dcContext.getChat(chatId))) {
+    if (dcContext.getChat(chatId).isMuted()) {
       setMuted(0);
     }
     else {
@@ -385,7 +405,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
 
   private void setMuted(final long duration) {
     if (chatId != 0) {
-      Prefs.setChatMuteDuration(dcContext, chatId, duration);
+      dcContext.setChatMuteDuration(chatId, duration);
     }
   }
 
@@ -483,10 +503,10 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void onEncrInfo() {
-    String info_str = isContactProfile() ?
+    String infoStr = isContactProfile() ?
       dcContext.getContactEncrInfo(contactId) : dcContext.getChatEncrInfo(chatId);
     new AlertDialog.Builder(this)
-        .setMessage(info_str)
+        .setMessage(infoStr)
         .setPositiveButton(android.R.string.ok, null)
         .show();
   }

@@ -42,11 +42,10 @@
     <string name="one_moment">Et øyeblikk…</string>
     <string name="done">Ferdig</string>
     <string name="undo">Angre</string>
-    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in ios headers, the string should be as short as possible, though. -->
+    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in iOS headers, the string should be as short as possible, though. -->
     <string name="next">Neste</string>
     <string name="error">Feil</string>
     <string name="error_x">Feil: %1$s</string>
-    <string name="error_no_network">Nettverk utilgjengelig.</string>
     <string name="no_app_to_handle_data">Kan ikke finne en app som kan handtere denne typen data.</string>
     <string name="no_browser_installed">Ingen nettleser installert</string>
     <string name="file_not_found">Filen %1$s ble ikke funnet.</string>
@@ -401,10 +400,6 @@
     <string name="systemmsg_action_by_me">%1$s av meg.</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
     <string name="systemmsg_action_by_user">%1$s av %2$s.</string>
-    <!-- screen lock -->
-    <string name="screenlock_title">Skjermlås</string>
-    <string name="screenlock_explain">Lås Signal tilgang med Android-skjermlås eller fingeravtrykk</string>
-    <string name="screenlock_unlock_title">Lås opp Delta Chat</string>
     <!-- qr code stuff -->
     <string name="qr_code">QR-kode</string>
     <string name="qrscan_title">Skann QR-kode</string>

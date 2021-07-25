@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8" /><meta name="viewport" content="initial-scale=1.0" /><link rel="stylesheet" href="../help.css" /></head><body><ul id="top">
+  <li><a href="#什么是-delta-chat">什么是 Delta Chat？</a>
+    <ul>
+      <li><a href="#如何找到可以聊天的人">如何找到可以聊天的人？</a></li>
+      <li><a href="#与其他通信软件相比delta-chat-有哪些优势">与其他通信软件相比，Delta Chat 有哪些优势？</a></li>
+      <li><a href="#哪些消息会在-delta-chat-中出现">哪些消息会在 Delta Chat 中出现？</a></li>
+      <li><a href="#垃圾信息呢">垃圾信息呢？</a></li>
+      <li><a href="#delta-chat-支持图像视频和其他附件吗">Delta Chat 支持图像、视频和其他附件吗？</a></li>
+      <li><a href="#谁会看见我的个人资料图片">谁会看见我的个人资料图片？</a></li>
+      <li><a href="#delta-chat-支持-html-电子邮件吗">Delta Chat 支持 HTML 电子邮件吗？</a></li>
+      <li><a href="#为什么我必须在-delta-chat-中输入我的电子邮件密码-这样安全吗">为什么我必须在 Delta Chat 中输入我的电子邮件密码？ 这样安全吗？</a></li>
+      <li><a href="#delta-chat-需要哪些权限">Delta Chat 需要哪些权限？</a></li>
+    </ul>
+  </li>
+  <li><a href="#群组">群组</a>
+    <ul>
+      <li><a href="#创建群组">创建群组</a></li>
+      <li><a href="#添加成员到群组">添加成员到群组</a></li>
+      <li><a href="#什么是已验证群组为什么它是实验性的">什么是已验证群组？为什么它是实验性的？</a></li>
+      <li><a href="#我不小心删除了我自己">我不小心删除了我自己。</a></li>
+      <li><a href="#我不想再收到某个群组中的消息了">我不想再收到某个群组中的消息了。</a></li>
+      <li><a href="#群组消息中的双对勾意味着什么每个人都都读我的消息了吗">群组消息中的双对勾意味着什么？每个人都都读我的消息了吗？</a></li>
+    </ul>
+  </li>
+  <li><a href="#encryption">加密</a>
+    <ul>
+      <li><a href="#delta-chat-支持端到端加密吗">Delta Chat 支持端到端加密吗？</a></li>
+      <li><a href="#为了激活端到端加密我必须做什么">为了激活端到端加密，我必须做什么？</a></li>
+      <li><a href="#如果端到端加密不可用则连接是否完全未加密">如果端到端加密不可用，则连接是否完全未加密？</a></li>
+      <li><a href="#如何与发送者验证加密状态">如何与发送者验证加密状态？</a></li>
+      <li><a href="#如何检查消息的加密状态">如何检查消息的加密状态？</a></li>
+      <li><a href="#端到端加密使用了哪些标准">端到端加密使用了哪些标准？</a></li>
+      <li><a href="#已验证群组和跟已验证联系人的一对一聊天有什么区别-">已验证群组和跟已验证联系人的一对一聊天有什么区别 ？</a></li>
+      <li><a href="#delta-chat-支持前向保密吗">Delta Chat 支持前向保密吗？</a></li>
+      <li><a href="#delta-chat-如何保护我的元数据">Delta Chat 如何保护我的元数据？</a></li>
+      <li><a href="#我可以重复使用现有的私钥吗">我可以重复使用现有的私钥吗？</a></li>
+      <li><a href="#我无法将现有的-pgp-密钥导入-delta-chat">我无法将现有的 PGP 密钥导入 Delta Chat。</a></li>
+      <li><a href="#为什么不使用-peppretty-easy-privacy">为什么不使用 pEp（pretty easy privacy）？</a></li>
+    </ul>
+  </li>
+  <li><a href="#multiclient">多客户端</a>
+    <ul>
+      <li><a href="#我能同时在多个设备上使用-delta-chat-吗">我能同时在多个设备上使用 Delta Chat 吗?</a></li>
+      <li><a href="#有推出-delta-chat-web-客户端的计划吗">有推出 Delta Chat Web 客户端的计划吗？</a></li>
+      <li><a href="#为什么我可以选择不监视收件箱">为什么我可以选择不监视收件箱？</a></li>
+      <li><a href="#给自己发送副本设置有什么用处">“给自己发送副本”设置有什么用处？</a></li>
+      <li><a href="#为什么我可以选择监视已发送文件夹">为什么我可以选择监视“已发送”文件夹？</a></li>
+      <li><a href="#为什么我可以选择不监视-deltachat-文件夹">为什么我可以选择不监视 DeltaChat 文件夹？</a></li>
+    </ul>
+  </li>
+  <li><a href="#杂项">杂项</a>
+    <ul>
+      <li><a href="#delta-chat-可用于-我的-电子邮件提供商吗">Delta Chat 可用于 <em>我的</em> 电子邮件提供商吗？</a></li>
+      <li><a href="#使用电子邮件的-delta-chat-真的是-即时-通讯工具吗">使用电子邮件的 Delta Chat 真的是 <em>即时</em> 通讯工具吗？</a></li>
+      <li><a href="#delta-chat-与-protonmail--tutanota--criptext-兼容吗">Delta Chat 与 Protonmail / Tutanota / Criptext 兼容吗？</a></li>
+      <li><a href="#我对技术细节很感兴趣能告诉我更多吗">我对技术细节很感兴趣。能告诉我更多吗？</a></li>
+      <li><a href="#delta-chat-的开发是如何被资助的">Delta Chat 的开发是如何被资助的?</a></li>
+    </ul>
+  </li>
+</ul>
+
+
+
+<h2 id="什么是-delta-chat">
+        
+        
+          什么是 Delta Chat？ <a href="#什么是-delta-chat" class="anchor"></a>
+        
+        
+      </h2>
+
+<p>Delta Chat 是一个新的聊天应用，它通过电子邮件发送消息，并在条件允许情况下使用 Autocrypt 对其进行加密。<strong>您不必在任何地方进行注册，在 Delta Chat 中使用您现有的电子邮件帐户即可。</strong></p>
+
+<p><img style="float:right; width:50%; max-width:360%; margin:1em;" src="../delta-what-optim.png" /></p>
+    
+      <h3 id="如何找到可以聊天的人">
+        
+        
+          如何找到可以聊天的人？ <a href="#如何找到可以聊天的人" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>通过 Delta Chat，您可以发消息到每个现有的电子邮件地址——即使收件人没有使用 Delta Chat 应用。不需要像其他通信软件一样，要收件人安装和您一样的应用。</p>
+    
+      <h3 id="与其他通信软件相比delta-chat-有哪些优势">
+        
+        
+          与其他通信软件相比，Delta Chat 有哪些优势？ <a href="#与其他通信软件相比delta-chat-有哪些优势" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li><em>独立</em> 于任何公司或服务。<em>您</em> 拥有您的数据。</li>
+  <li>您的数据不会保存于中央服务器，除非所有用户都在使用同一个电子邮件服务器。</li>
+  <li>您不会将通讯录分发给任何人。</li>
+  <li><em>快速</em>——使用 Push-IMAP。</li>
+  <li><em>最广泛的用户基础</em>——也可以与 <em>不</em> 使用 Delta Chat 的收件人进行联系。</li>
+  <li><em>兼容</em>——不仅仅对它本身。</li>
+  <li><em>优雅</em>、<em>简洁</em> 的用户界面</li>
+  <li><em>分布式</em> 系统</li>
+  <li><em>没有垃圾信息</em>——默认情况下仅显示已知用户的消息。</li>
+  <li><em>可靠</em>——可以安全地用于专业用途。</li>
+  <li><em>可信赖</em>——甚至可以用于商业讯息。</li>
+  <li>基于 <em>著佐权</em> 与 <em>标准</em> 的自由软件。</li>
+</ul>
+    
+      <h3 id="哪些消息会在-delta-chat-中出现">
+        
+        
+          哪些消息会在 Delta Chat 中出现？ <a href="#哪些消息会在-delta-chat-中出现" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Delta Chat 自动显示：</p>
+
+<ul>
+  <li>来自您<strong>通讯录</strong>中联系人的消息</li>
+  <li>来自<strong>您先前联系的</strong>联系人的消息</li>
+  <li>对您发送的消息的<strong>回复</strong></li>
+</ul>
+
+<p>其他消息不会自动出现，而是可以在<strong>联系人请求</strong>中找到。 如有需要，可以从那里开始聊天。</p>
+    
+      <h3 id="垃圾信息呢">
+        
+        
+          垃圾信息呢？ <a href="#垃圾信息呢" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>普通垃圾邮件文件夹中的消息将被忽略，并且所包含的地址不会被视为已知联系人。</li>
+  <li>由于来自未知联系人的消息不会自动弹出，因此通常情况下<strong>不会出现垃圾信息</strong>。</li>
+  <li>不过，如有需要，您可以<strong>屏蔽</strong>任何联系人。</li>
+</ul>
+    
+      <h3 id="delta-chat-支持图像视频和其他附件吗">
+        
+        
+          Delta Chat 支持图像、视频和其他附件吗？ <a href="#delta-chat-支持图像视频和其他附件吗" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>是的。除纯文本外，所有电子邮件附件均显示为单独的消息。发出消息会根据需要自动获得附件。</li>
+</ul>
+    
+      <h3 id="谁会看见我的个人资料图片">
+        
+        
+          谁会看见我的个人资料图片？ <a href="#谁会看见我的个人资料图片" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>
+    <p>您可以在设置中添加个人资料图片。如果您给您的联系人发消息或者通过二维码添加他们，他们会自动看到您的个人资料图片。</p>
+  </li>
+  <li>
+    <p>不使用 Delta Chat 的联系人将其视为电子邮件附件。</p>
+  </li>
+  <li>
+    <p>出于隐私原因，在您向他们发送消息之前，没有人会看到您的个人资料照片。</p>
+  </li>
+  <li>
+    <p>您的个人资料图片并非随每条消息一起发送，但发送的频率足够高。因此即使您的联系人添加了新设备，也能够重新收到您的个人资料图片。</p>
+  </li>
+</ul>
+    
+      <h3 id="delta-chat-支持-html-电子邮件吗">
+        
+        
+          Delta Chat 支持 HTML 电子邮件吗？ <a href="#delta-chat-支持-html-电子邮件吗" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>是的。 如果收到的电子邮件缺少“纯文本”部分， HTML 电子邮件将在应用中被转换为纯文本。发出电子邮件始终使用纯文本。</li>
+</ul>
+    
+      <h3 id="为什么我必须在-delta-chat-中输入我的电子邮件密码-这样安全吗">
+        
+        
+          为什么我必须在 Delta Chat 中输入我的电子邮件密码？ 这样安全吗？ <a href="#为什么我必须在-delta-chat-中输入我的电子邮件密码-这样安全吗" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>与其他电子邮件程序（比如 Thunderbird、K9-Mail 或 Outlook）一样，本程序需要您的密码来允许您通过它发送邮件。当然，密码仅储存在您的设备上，并只会在登录时发送给您的电子邮件提供商（无论如何，您的提供商总是能够访问您的邮件）。</p>
+
+<p>如果您使用具有 OAuth2 支持的电子邮件提供商，例如 gmail.com 或 yandex.ru，则无需在设备上存储密码。在这种情况下，只有访问令牌被使用。</p>
+
+<p>由于 Delta Chat 是开源的，要验证您的凭据是否被安全地处理了，可以检查<a href="https://github.com/deltachat/deltachat-core-rust/blob/master/src/login_param.rs">源代码</a>。我们很高兴能收到使本应用对我们的所有用户更加安全的反馈。</p>
+    
+      <h3 id="delta-chat-需要哪些权限">
+        
+        
+          Delta Chat 需要哪些权限？ <a href="#delta-chat-需要哪些权限" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>根据使用的操作系统，系统可能会要求您向本应用授予权限。下面 Delta Chat 使用各类权限进行的操作：</p>
+
+<ul>
+  <li>相机<em>（可被禁止）</em>
+    <ul>
+      <li>拍照和录像：用于发送照片</li>
+    </ul>
+  </li>
+  <li>联系人<em>（可被禁止）</em>
+    <ul>
+      <li>读取联系人：发现要与之聊天的联系人</li>
+    </ul>
+  </li>
+  <li>位置<em>（可被禁止）</em>
+    <ul>
+      <li>访问大概位置（基于网络）：用于位置流功能</li>
+      <li>访问精确位置（基于 GPS 和网络）：用于位置流功能</li>
+    </ul>
+  </li>
+  <li>麦克风<em>（可被禁止）</em>
+    <ul>
+      <li>录制音频：用于音频消息</li>
+    </ul>
+  </li>
+  <li>存储<em>（可被禁止）</em>
+    <ul>
+      <li>修改或删除 SD 卡的内容：下载消息附件</li>
+      <li>读取 SD 卡的内容：与联系人分享文件</li>
+    </ul>
+  </li>
+  <li>其他权限
+    <ul>
+      <li>更改音频设置：允许您选择通知和音频消息的铃声和音量</li>
+      <li>开机自启动：您不必手动启动 Delta Chat</li>
+      <li>控制振动：用于通知</li>
+      <li>查看网络连接：连接到您的电子邮件提供商</li>
+      <li>阻止手机进入休眠状态：您可以在 Autocrypt 设置消息中更轻松地复制安全代码</li>
+      <li>具有完全的网络访问权限：连接到您的电子邮件提供商</li>
+      <li>查看 Wi-Fi 连接：连接到您的电子邮件提供商</li>
+      <li>要求忽略电池优化：给希望一直接收消息的用户使用</li>
+    </ul>
+  </li>
+</ul>
+    
+      <h2 id="群组">
+        
+        
+          群组 <a href="#群组" class="anchor"></a>
+        
+        
+      </h2>
+    
+      <h3 id="创建群组">
+        
+        
+          创建群组 <a href="#创建群组" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>从右上角的菜单中选择<strong>新建聊天</strong>，然后选择<strong>新建群组</strong>或在 Android/iOS 上点击相应的按钮。</li>
+  <li>在随后的屏幕上，选择<strong>群组成员</strong>并起一个<strong>群组名称</strong>。您也可以选择一个<strong>群组头像</strong>。</li>
+  <li>当您在群组中发送<strong>第一条消息</strong>时，所有成员都会被告知新群组的信息并可以在该群组中应答（只要您不在群组中发送第一条消息，那么群组对成员就是不可见的）。</li>
+</ul>
+    
+      <h3 id="添加成员到群组">
+        
+        
+          添加成员到群组 <a href="#添加成员到群组" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>每个群组成员均拥有与其他成员<strong>相同的权限</strong>。因此，每个人都可以删除成员或添加新成员。</li>
+  <li>要添加或删除成员，请在聊天中点击群组名称。</li>
+</ul>
+    
+      <h3 id="什么是已验证群组为什么它是实验性的">
+        
+        
+          什么是已验证群组？为什么它是实验性的？ <a href="#什么是已验证群组为什么它是实验性的" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>
+    <p>已验证群组是一个面对主动攻击者时可保证安全的聊天。已验证聊天视图中的所有消息都是端到端加密的，成员可以通过扫描“邀请二维码”加入。这样，所有成员都通过邀请链相互连接，从而保证了面对主动攻击网络和提供商攻击时的加密一致性。要了解该功能背后的研发，请参阅 <a href="https://countermitm.readthedocs.io/en/latest/new.html">countermitm.readthedocs.io</a>。</p>
+  </li>
+  <li>
+    <p>在 2019 年 12 月，“已验证群组”仍然是实验性功能。自 2018 年引入后，该功能一直在不断改进，并且许多 bug 得到了修复。然而，仍然存在出现不一致或消息变得不可读的情况，特别是在大型群组中。2020 年初，一个安全审查将会进行，并且围绕二维码加入协议的多项新开发正在进行中。所以，或许在不远的将来我们就能移除“实验性的”标签。</p>
+  </li>
+</ul>
+    
+      <h3 id="我不小心删除了我自己">
+        
+        
+          我不小心删除了我自己。 <a href="#我不小心删除了我自己" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>由于您不再是群组成员，您无法将自己加入到群组中。但是，问题不大，只需在普通聊天中请求其他群组成员将您重新加入即可。</li>
+</ul>
+    
+      <h3 id="我不想再收到某个群组中的消息了">
+        
+        
+          我不想再收到某个群组中的消息了。 <a href="#我不想再收到某个群组中的消息了" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>
+    <p>从成员列表中删除自己，或者删除整个聊天。如果您之后想再加入该群组，请让其他群组成员添加您。</p>
+  </li>
+  <li>
+    <p>另外，您也可以“静音”群组——这样做意味着您会收到所有消息并且仍可以编写消息，但不会再收到任何新消息的通知。</p>
+  </li>
+</ul>
+    
+      <h3 id="群组消息中的双对勾意味着什么每个人都都读我的消息了吗">
+        
+        
+          群组消息中的双对勾意味着什么？每个人都都读我的消息了吗？ <a href="#群组消息中的双对勾意味着什么每个人都都读我的消息了吗" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>消息被一半以上的接收者在屏幕上看到后，会显示双对勾。</li>
+  <li>请注意，某些接收者可能出于隐私原因禁用了已读回执。</li>
+  <li>如果群组中超过 50％ 的人禁用了已读回执，那么双对勾将永远不会出现。更多信息，请参阅<a href="https://delta.chat/en/2017-07-06-read-receipts-and-social-pressure">这篇博文</a>。</li>
+</ul>
+    
+      <h2 id="encryption">
+        
+        
+          加密 <a href="#encryption" class="anchor"></a>
+        
+        
+      </h2>
+    
+      <h3 id="delta-chat-支持端到端加密吗">
+        
+        
+          Delta Chat 支持端到端加密吗？ <a href="#delta-chat-支持端到端加密吗" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>
+    <p>是的。Delta Chat 实现了 Autocrypt 级别 1 标准，因此可以与其他支持 Autocrypt 的应用程序进行端到端加密的消息收发。</p>
+  </li>
+  <li>
+    <p>Delta Chat 还支持一种强端到端加密形式，其甚至可以抵御主动攻击，请参阅“已验证群组”。</p>
+  </li>
+</ul>
+    
+      <h3 id="为了激活端到端加密我必须做什么">
+        
+        
+          为了激活端到端加密，我必须做什么？ <a href="#为了激活端到端加密我必须做什么" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>
+    <p>什么都不需要。</p>
+  </li>
+  <li>
+    <p>Delta Chat（以及其他兼容 <a href="https://autocrypt.org">Autocrypt</a> 的电子邮件应用程序）会在第一条消息发送时自动分享端到端加密所需的密钥。 
+在此之后，后续所有消息都将自动被端到端加密。
+如果有一个聊天伙伴使用非 Autocrypt 电子邮件应用程序，那么在兼容 Autocrypt 的应用可用之前，后续消息不会被加密。</p>
+  </li>
+  <li>
+    <p>如果您希望默认不使用端到端加密的电子邮件，请修改“设置”或“高级设置”里的相关 Autocrypt 设置。</p>
+  </li>
+</ul>
+    
+      <h3 id="如果端到端加密不可用则连接是否完全未加密">
+        
+        
+          如果端到端加密不可用，则连接是否完全未加密？ <a href="#如果端到端加密不可用则连接是否完全未加密" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>对于大多数邮件服务器，Delta Chat 会建立 <em>传输加密</em>（<a href="https://en.wikipedia.org/wiki/Transport_Layer_Security">TLS</a>）。这仅能保护您的设备和电子邮件服务器之间的连接。而端到端加密可提供在您的设备和朋友设备之间的安全性。</li>
+</ul>
+    
+      <h3 id="如何与发送者验证加密状态">
+        
+        
+          如何与发送者验证加密状态？ <a href="#如何与发送者验证加密状态" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>如果聊天伙伴在您的旁边：</p>
+
+<ul>
+  <li>在一台设备上选择<strong>邀请二维码</strong>，然后在另一台设备上选择<strong>扫描二维码</strong>并扫描显示的二维码。如果两台设备都在线，则他们会在彼此间引入一个聊天频道（如果尚未存在）并验证加密密钥。双方都会在一对一聊天中看到“发送者已验证”系统消息。</li>
+</ul>
+
+<p>如果您离聊天伙伴比较远，您可以在“加密”对话框（在 Android/iOS 的用户概要中，或在桌面版右键一个用户的聊天列表项）中手动检查加密状态：</p>
+
+<ul>
+  <li>
+    <p>对于端到端加密，Delta Chat 会在这里显示两个指纹。如果相同的指纹出现在聊天伙伴的设备上，那么连接就是安全的。</p>
+  </li>
+  <li>
+    <p>对于传输加密，状态就显示在那儿。</p>
+  </li>
+</ul>
+    
+      <h3 id="如何检查消息的加密状态">
+        
+        
+          如何检查消息的加密状态？ <a href="#如何检查消息的加密状态" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>
+    <p>消息旁边的小<strong>挂锁</strong>会指示该消息是否在给定的发送者那里进行了端到端加密。</p>
+  </li>
+  <li>
+    <p>如果<strong>没有挂锁</strong>，那么消息一般是未经加密传输的。例如：您或者发送者关掉了端到端加密，或者发送者使用了不支持端到端加密的应用程序。</p>
+  </li>
+</ul>
+    
+      <h3 id="端到端加密使用了哪些标准">
+        
+        
+          端到端加密使用了哪些标准？ <a href="#端到端加密使用了哪些标准" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>
+    <p><a href="https://autocrypt.org">Autocrypt</a> 被用于和其他 Delta Chat 客户端以及其他兼容 Autocrypt 的邮件应用建立端到端加密。Autocrypt 使用了OpenPGP 功能的一个有限子集。</p>
+  </li>
+  <li>
+    <p>Delta Chat 实现了 <a href="https://countermitm.readthedocs.io/en/latest/new.html">countermitm 设置联系人与已验证群组协议</a>以实现针对主动网络攻击的防护。这超越了基于乐观防护的 Autocrypt 级别 1，同时保持了其易用性。</p>
+  </li>
+</ul>
+    
+      <h3 id="已验证群组和跟已验证联系人的一对一聊天有什么区别-">
+        
+        
+          已验证群组和跟已验证联系人的一对一聊天有什么区别 ？ <a href="#已验证群组和跟已验证联系人的一对一聊天有什么区别-" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>
+    <p>即使已验证群组中只有两个人，跟已验证联系人的一对一聊天和已验证群组也是不同的。一个区别是您可以轻松地将更多人添加到群组中。除此以外，还有其他的不明显区别。</p>
+  </li>
+  <li>
+    <p>已验证群组始终是受保护的。任何破损（明文或签名错误的消息等）都将被标记，并且此类消息不会在该聊天中显示。您可以相信：在这个带有已验证标记的聊天中，所有消息都没有被中间人阅读或修改。</p>
+  </li>
+  <li>
+    <p>一对一聊天是乐观的，这意味着无论人们是否更改/更换了电子邮件客户端、设备和设置等东西，他们都可以进行交流。这就是即使您已经验证了联系人也不会有已验证标记的原因。</p>
+  </li>
+</ul>
+    
+      <h3 id="delta-chat-支持前向保密吗">
+        
+        
+          Delta Chat 支持前向保密吗？ <a href="#delta-chat-支持前向保密吗" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>
+    <p>不支持。OpenPGP 不支持前向保密。前向保密是面向会话的；而电子邮件天生是异步的，并且经常在多个设备上独立使用。这意味着如果您的 Delta Chat 私钥泄露了，并且某（些）人记录了您所有的在途消息，那么他（们）就能读取这些消息。</p>
+  </li>
+  <li>
+    <p>请注意，如果有人夺走或入侵了您正在运行的手机，则无论是否有“前向保密”功能，他们通常都可以阅读所有消息。只要能访问到一个群组成员的单个设备，通常就会暴露出大量社交关系网的内容。而使用不易回溯到人员的电子邮件地址，则可使群组成员在面对设备夺取时更安全。</p>
+  </li>
+  <li>
+    <p>我们正在起草一些方案，以在发生设备夺取事件的时候更好地保护通讯。</p>
+  </li>
+</ul>
+    
+      <h3 id="delta-chat-如何保护我的元数据">
+        
+        
+          Delta Chat 如何保护我的元数据？ <a href="#delta-chat-如何保护我的元数据" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>
+    <p>由于 Delta Chat 是去中心化的通信软件，Delta Chat 用户的元数据不会存储在单个中央服务器上。不过，它们会被存储在发送者和接收者的邮件服务器上。</p>
+  </li>
+  <li>
+    <p>目前，每个邮件服务器可以通过检查未加密的 To/Cc 头来知道谁发送了消息、谁接收了消息并判断哪些电子邮件地址是群组的一部分。Delta Chat 本身完全可以避开未加密的To/Cc 头，并始终只将它们放入加密部分。请参阅<a href="https://github.com/deltachat/deltachat-core-rust/issues/1032">不为已验证群组发送 To/CC 头</a>。对于乐观聊天，主要关心的是这会如何影响参与聊天的其他邮件应用程序。</p>
+  </li>
+  <li>
+    <p>许多其他的电子邮件头，尤其是“Subject”头，是受端到端加密保护的。请参阅将要发布的 <a href="https://datatracker.ietf.org/doc/draft-autocrypt-lamps-protected-headers/">IETF RFC</a>。</p>
+  </li>
+</ul>
+    
+      <h3 id="我可以重复使用现有的私钥吗">
+        
+        
+          我可以重复使用现有的私钥吗？ <a href="#我可以重复使用现有的私钥吗" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>
+    <p>是的。最好的方法是从其他电子邮件客户端发送 Autocrypt 设置消息。在其他客户端的设置中寻找类似于<strong>启动 Autocrypt 设置传输</strong>的东西，然后按那里显示的指示操作。</p>
+  </li>
+  <li>
+    <p>或者，您可以用“设置”或“高级设置”里面的“导入密钥”来手动导入密钥。注意：请确保密钥不受密码保护，或提前移除密码。</p>
+  </li>
+</ul>
+
+<p>如果您没有密钥或者根本就不知道自己是否需要一个——不用担心：Delta Chat 会在需要时自动生成密钥，您不必为此按一个按钮。</p>
+    
+      <h3 id="我无法将现有的-pgp-密钥导入-delta-chat">
+        
+        
+          我无法将现有的 PGP 密钥导入 Delta Chat。 <a href="#我无法将现有的-pgp-密钥导入-delta-chat" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>最可能的原因是您的密钥被加密了和/或使用了密码。Delta Chat 不支持这样的密钥。您可以移除密码，之后再尝试导入。如果想保留密码，您需要创建电子邮件别名来使用 Delta Chat ，这样 Delta Chat 的密钥是绑定到这个电子邮件别名上的。</p>
+
+<p>Delta Chat 支持常见的 OpenPGP 私钥格式。然而，不可能使每种来源的私钥都被完整支持。这不是 Delta Chat 的主要目标。实际上，大多数新用户在使用 Delta Chat 之前根本没有密钥。不过，我们确实在尝试支持尽可能多的私钥来源。</p>
+
+<p>移除私钥密码的操作取决于您用于管理 PGP 密钥的软件。对于 Enigmail，您可以在密钥管理窗口中将密码设为空值。 对于 GnuPG，您可以<a href="https://github.com/deltachat/deltachat-android/issues/98#issuecomment-378383429">通过命令行</a>来进行设置。对于其他程序，您应该能在网上找到解决方案。</p>
+    
+      <h3 id="为什么不使用-peppretty-easy-privacy">
+        
+        
+          为什么不使用 pEp（pretty easy privacy）？ <a href="#为什么不使用-peppretty-easy-privacy" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>Delta Chat 使用 Autocrypt 端到端加密标准。有关 Autocrypt 与 pEp 的讨论，请参阅 <a href="https://autocrypt.org/faq.html#how-does-autocrypt-differ-from-pep">Autocrypt 常见问题</a>。</li>
+</ul>
+    
+      <h2 id="multiclient">
+        
+        
+          多客户端 <a href="#multiclient" class="anchor"></a>
+        
+        
+      </h2>
+    
+      <h3 id="我能同时在多个设备上使用-delta-chat-吗">
+        
+        
+          我能同时在多个设备上使用 Delta Chat 吗? <a href="#我能同时在多个设备上使用-delta-chat-吗" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>要在不同设备上使用<strong>相同帐户</strong>，请从旧设备导出备份，然后将其导入新设备：</p>
+
+<ul>
+  <li>在旧设备上，转到“设置”或“设置/聊天与媒体”，然后转到“备份”。输入屏幕解锁 PIN 码、图案或密码。然后点击“开始备份”。这会将备份文件保存到您的设备上。现在您必须用某种方法将备份文件传输到新设备。</li>
+  <li>在新设备的登录界面，请选择“导入备份”而不是登录您的电子邮件账户。在导入后，您的对话、加密密钥和媒体将会复制到新设备。</li>
+  <li>您现在已经同步了，并且可以使用两台设备与您的通信伙伴收发端到端加密消息。</li>
+</ul>
+    
+      <h3 id="有推出-delta-chat-web-客户端的计划吗">
+        
+        
+          有推出 Delta Chat Web 客户端的计划吗？ <a href="#有推出-delta-chat-web-客户端的计划吗" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>目前没有计划，但有一些初步的想法。</li>
+  <li>有 2-3 种途径来实现 Delta Chat Web 客户端，但是它们都需要巨大的工作量。目前，我们专注于将稳定的版本作为本地应用程序发布到所有应用程序商店（Google Play/iOS/Windows/macOS/Linux 仓库）。</li>
+  <li>如果是因为不能在工作的电脑上安装软件而需要一个 Web 客户端，您可以使用便携版的 Windows 桌面客户端，或者在 Linux 上使用 AppImage 版。您可以在 <a href="https://get.delta.chat">get.delta.chat</a> 找到它们。</li>
+</ul>
+    
+      <h3 id="为什么我可以选择不监视收件箱">
+        
+        
+          为什么我可以选择不监视收件箱？ <a href="#为什么我可以选择不监视收件箱" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>这是提供给尝试服务器端规则的人的实验性设置。在使用某些电子邮件提供商时，您可以将所有带有”Chat-Version”头的邮件移入 DeltaChat 文件夹。并不是所有的提供商都支持此操作；通常情况下，这是由 Delta Chat 应用完成的。</p>
+
+<p>如果您同时进行了下列设置，则可以选择不监视收件箱：</p>
+
+<ul>
+  <li>已经启用了将带有 Chat-Version 头的所有消息移入 DeltaChat 文件夹的服务器端规则；和</li>
+  <li>已将“显示传统电子邮件”设置为“不显示，仅聊天”。</li>
+</ul>
+
+<p>在这种情况下，Delta Chat 不需要监视收件箱。</p>
+    
+      <h3 id="给自己发送副本设置有什么用处">
+        
+        
+          “给自己发送副本”设置有什么用处？ <a href="#给自己发送副本设置有什么用处" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>向自己发送消息的副本可以确保您在所有设备上收到自己的消息。如果您在使用多台设备时没有打开此设置，那么您将只能看到其他人发过来的消息和您从当前设备发出的消息。</p>
+
+<p>副本会被发送到收件箱，然后会被移动到 DeltaChat 文件夹；它不会被放到“已发送”文件夹里。Delta Chat <em>从不</em>将东西上传到已发送文件夹，因为这意味着上传一条消息两次（一次通过 SMTP，一次通过 IMAP 到已发送文件夹）。</p>
+
+<p>给自己发送副本的默认设置是“不”。</p>
+    
+      <h3 id="为什么我可以选择监视已发送文件夹">
+        
+        
+          为什么我可以选择监视“已发送”文件夹？ <a href="#为什么我可以选择监视已发送文件夹" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>监视已发送文件夹的唯一原因是：您在同时使用其他的邮件应用程序（比如 Thunderbird），并且想让邮件分发代理参与聊天对话。</p>
+
+<p>不过，我们推荐使用 Delta Chat 桌面客户端；您可以在 <a href="https://get.delta.chat">get.delta.chat</a> 下载它。监视“已发送”文件夹的选项是在还没有 Delta Chat 桌面客户端的时候引入的，这个选项可能会在未来消失。</p>
+    
+      <h3 id="为什么我可以选择不监视-deltachat-文件夹">
+        
+        
+          为什么我可以选择不监视 DeltaChat 文件夹？ <a href="#为什么我可以选择不监视-deltachat-文件夹" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>有些人将 Delta Chat 用作常规电子邮件客户端并希望将收件箱文件夹用于其邮件，而不是使用 DeltaChat 文件夹。如果禁用了“监视 DeltaChat 文件夹”，则还应该禁用“将聊天消息移动到 DeltaChat”。否则，删除消息或多设备设置可能无法正常工作。</p>
+    
+      <h2 id="杂项">
+        
+        
+          杂项 <a href="#杂项" class="anchor"></a>
+        
+        
+      </h2>
+    
+      <h3 id="delta-chat-可用于-我的-电子邮件提供商吗">
+        
+        
+          Delta Chat 可用于 <em>我的</em> 电子邮件提供商吗？ <a href="#delta-chat-可用于-我的-电子邮件提供商吗" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>有很大的可能性是：可以的 :) 
+不过，某些提供商需要一些特殊设置才能正常工作，请参阅<a href="https://providers.delta.chat">提供商概览</a></li>
+</ul>
+    
+      <h3 id="使用电子邮件的-delta-chat-真的是-即时-通讯工具吗">
+        
+        
+          使用电子邮件的 Delta Chat 真的是 <em>即时</em> 通讯工具吗？ <a href="#使用电子邮件的-delta-chat-真的是-即时-通讯工具吗" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>通常情况下，发送和接收消息会花费数秒。收发消息有时会花费更长时间；但是对于其他的通信软件来说，这也是真的。</li>
+  <li>在双方都积极使用本应用时，即时聊天反应迅速；而当应用运行在后台时，有时就会很慢。</li>
+  <li>由于 Android 与 iOS 都经常阻止 Delta Chat 在后台运行或只是偶尔将其唤醒，接收消息可能要花费数分钟。iOS 上的这种人为延迟通常比 Android 上的更糟糕。</li>
+  <li>请注意 Delta Chat 不使用 Google Cloud Messaging （GCM）或 Apple 推送通知服务（APNS），因为这会导致 Delta Chat 尽力避免的用户跟踪和中央控制。</li>
+  <li>另外，对于很多正常应用来说，Android 和 iOS 杀掉后台应用是一个问题。更多信息，请参阅 <a href="https://dontkillmyapp.com/">dontkillmyapp.com</a>。</li>
+</ul>
+    
+      <h3 id="delta-chat-与-protonmail--tutanota--criptext-兼容吗">
+        
+        
+          Delta Chat 与 Protonmail / Tutanota / Criptext 兼容吗？ <a href="#delta-chat-与-protonmail--tutanota--criptext-兼容吗" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>兼容，也不兼容。</li>
+  <li>您不能用 Protonmail、Tutanota 或 Criptext 账户来使用 Delta Chat；它们不支持使用 IMAP 接收邮件。</li>
+  <li>无论如何，您都可以使用 Delta Chat 将消息发送给使用 Protonmail、Tutanota 或 Criptext 的人。然而，这些消息不会被端到端加密。这些提供商提供的端到端加密仅能在其平台内部使用，不能用于平台外的任何人。</li>
+  <li>Delta Chat 可以通过任何电子邮件提供商与<a href="https://autocrypt.org/dev-status.html">使用了 Autocrypt 的电子邮件应用</a>进行端到端加密。</li>
+</ul>
+    
+      <h3 id="我对技术细节很感兴趣能告诉我更多吗">
+        
+        
+          我对技术细节很感兴趣。能告诉我更多吗？ <a href="#我对技术细节很感兴趣能告诉我更多吗" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>请参阅 <a href="https://github.com/deltachat/deltachat-core-rust/blob/master/standards.md#standards-used-in-delta-chat">Delta Chat 中使用的标准</a>。</li>
+</ul>
+    
+      <h3 id="delta-chat-的开发是如何被资助的">
+        
+        
+          Delta Chat 的开发是如何被资助的? <a href="#delta-chat-的开发是如何被资助的" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>首先，Delta Chat 没有接受风险投资，也没有负债累累，更没有承受产生巨额利润或将用户及其朋友和家人卖给广告商（或更糟）的压力。</p>
+
+<p>到目前为止，对 Delta Chat 开发的资助有四个主要来源：</p>
+
+<ul>
+  <li>
+    <p>在 2017 年和 2018 年，<a href="https://nextleap.eu">NEXTLEAP</a> 欧洲计划资助了已验证群组和设置联系人协议的研究与实现。</p>
+  </li>
+  <li>
+    <p><a href="https://opentechfund.org">开放技术基金</a>提供了两笔赠款。2018/2019 年的第一笔赠款（约 20 万美元）显著改善了安卓应用，允许我们发布一个桌面测试版，同时还使我们根据人权方面的用户体验研究进行了功能开发，请参阅我们的结论<a href="https://delta.chat/en/2019-07-19-uxreport">《需求发现与用户体验报告》</a>。2019/2020 年的第二笔赠款（约 30 万美元）仍在进行中。这笔赠款帮助我们发布 Delta/iOS 版本，将核心库转换到 Rust，以及为所有平台提供新功能。您可以在我们的<a href="https://delta.chat/en/blog">博客</a>上找到最新信息。</p>
+  </li>
+  <li>
+    <p><a href="https://nlnet.nl/">NLnet 基金会</a>捐赠了 4.6 万欧元，用于完成 Rust/Python 绑定和建立聊天机器人生态系统。</p>
+  </li>
+  <li>
+    <p>最后但并非最不重要的是，数位专家与热心人在没有收到或仅收到少量金钱的情况下为 Delta Chat 的开发做出了贡献。没有他们，Delta Chat 不会发展到、甚至无法接近目前的状况。</p>
+  </li>
+</ul>
+
+<p>上面提到的钱款资助是由在弗赖堡（德国）的 merlinux GmbH 组织的，然后分发给了十来个贡献者。</p>
+
+<p>2020/2021 年的资助尚未确定。我们正在与各种组织和合作伙伴一起寻求一些机会。我们也在考虑请求捐款。实际上，我们实验性地开设了一个 <a href="https://liberapay.com/delta.chat/">Delta Chat / Liberapay 捐款账户</a>，但是还未发布。到目前为止，我们还通过 Bjoern（Delta Chat 的原作者）的 PayPal 和比特币捐款渠道收到了 3-4 千欧元。</p>
+
+
+
+
+
+</body></html>

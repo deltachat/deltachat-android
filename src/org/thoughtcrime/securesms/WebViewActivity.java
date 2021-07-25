@@ -15,6 +15,8 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.widget.SearchView;
+import androidx.webkit.WebSettingsCompat;
+import androidx.webkit.WebViewFeature;
 
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
@@ -41,6 +43,10 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
     webView = findViewById(R.id.webview);
+    if (WebViewFeature.isFeatureSupported(WebViewFeature.FORCE_DARK)) {
+      WebSettingsCompat.setForceDark(webView.getSettings(),
+                                     DynamicTheme.isDarkTheme(this) ? WebSettingsCompat.FORCE_DARK_ON : WebSettingsCompat.FORCE_DARK_OFF);
+    }
     webView.setWebViewClient(new WebViewClient() {
       // `shouldOverrideUrlLoading()` is called when the user clicks a URL,
       // returning `true` means, the URL is passed to `loadUrl()`, `false` aborts loading.
@@ -53,10 +59,15 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
       @Override
       public boolean shouldOverrideUrlLoading(WebView view, String url) {
         if (url != null) {
-          if (url.startsWith("http://") || url.startsWith("https://") || url.startsWith("mailto:")) {
-            openOnlineUrl(url);
-            // URL opened externally, returning `true` causes the WebView to abort loading
-            return true;
+          String schema = url.split(":")[0].toLowerCase();
+          switch (schema) {
+            case "http":
+            case "https":
+            case "mailto":
+            case "openpgp4fpr":
+              openOnlineUrl(url);
+              // URL opened externally, returning `true` causes the WebView to abort loading
+              return true;
           }
         }
         // by returning `true`, we also abort loading other URLs in our WebView;

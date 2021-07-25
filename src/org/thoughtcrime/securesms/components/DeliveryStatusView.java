@@ -1,5 +1,6 @@
 package org.thoughtcrime.securesms.components;
 
+import android.content.Context;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
@@ -12,12 +13,14 @@ import org.thoughtcrime.securesms.R;
 public class DeliveryStatusView {
 
   private final ImageView deliveryIndicator;
+  private final Context   context;
   private static RotateAnimation prepareAnimation;
   private static RotateAnimation sendingAnimation;
   private boolean animated;
 
   public DeliveryStatusView(ImageView deliveryIndicator) {
     this.deliveryIndicator = deliveryIndicator;
+    this.context = deliveryIndicator.getContext();
   }
 
   private void animatePrepare()
@@ -66,30 +69,35 @@ public class DeliveryStatusView {
   public void setPreparing() {
     deliveryIndicator.setVisibility(View.VISIBLE);
     deliveryIndicator.setImageResource(R.drawable.ic_delivery_status_sending);
+    deliveryIndicator.setContentDescription(context.getString(R.string.a11y_delivery_status_sending));
     animatePrepare();
   }
 
   public void setPending() {
     deliveryIndicator.setVisibility(View.VISIBLE);
     deliveryIndicator.setImageResource(R.drawable.ic_delivery_status_sending);
+    deliveryIndicator.setContentDescription(context.getString(R.string.a11y_delivery_status_sending));
     animateSending();
   }
 
   public void setSent() {
     deliveryIndicator.setVisibility(View.VISIBLE);
     deliveryIndicator.setImageResource(R.drawable.ic_delivery_status_sent);
+    deliveryIndicator.setContentDescription(context.getString(R.string.a11y_delivery_status_delivered));
     clearAnimation();
   }
 
   public void setRead() {
     deliveryIndicator.setVisibility(View.VISIBLE);
     deliveryIndicator.setImageResource(R.drawable.ic_delivery_status_read);
+    deliveryIndicator.setContentDescription(context.getString(R.string.a11y_delivery_status_read));
     clearAnimation();
   }
 
   public void setFailed() {
     deliveryIndicator.setVisibility(View.VISIBLE);
     deliveryIndicator.setImageResource(R.drawable.ic_delivery_status_failed);
+    deliveryIndicator.setContentDescription(context.getString(R.string.a11y_delivery_status_invalid));
     clearAnimation();
   }
 

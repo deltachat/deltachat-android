@@ -16,20 +16,15 @@
  */
 package org.thoughtcrime.securesms;
 
-import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.content.ClipboardManager;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.text.util.Linkify;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -49,7 +44,6 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.ActionMode;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.OnScrollListener;
@@ -62,16 +56,12 @@ import com.b44t.messenger.DcMsg;
 
 import org.thoughtcrime.securesms.ConversationAdapter.ItemClickListener;
 import org.thoughtcrime.securesms.components.reminder.DozeReminder;
-import org.thoughtcrime.securesms.connect.ApplicationDcContext;
-import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.mms.GlideApp;
-import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.AccessibilityUtil;
 import org.thoughtcrime.securesms.util.Debouncer;
-import org.thoughtcrime.securesms.util.SaveAttachmentTask;
 import org.thoughtcrime.securesms.util.StickyHeaderDecoration;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
@@ -91,8 +81,7 @@ import static org.thoughtcrime.securesms.util.RelayUtil.REQUEST_RELAY;
 import static org.thoughtcrime.securesms.util.RelayUtil.setForwardingMessageIds;
 
 @SuppressLint("StaticFieldLeak")
-public class ConversationFragment extends Fragment
-        implements DcEventCenter.DcEventDelegate
+public class ConversationFragment extends MessageSelectorFragment
 {
     private static final String TAG       = ConversationFragment.class.getSimpleName();
     private static final String KEY_LIMIT = "limit";
@@ -109,7 +98,6 @@ public class ConversationFragment extends Fragment
     private long                        chatId;
     private int                         startingPosition;
     private boolean                     firstLoad;
-    private ActionMode                  actionMode;
     private Locale                      locale;
     private RecyclerView                list;
     private RecyclerView.ItemDecoration lastSeenDecoration;
@@ -117,7 +105,6 @@ public class ConversationFragment extends Fragment
     private View                        scrollToBottomButton;
     private View                        floatingLocationButton;
     private TextView                    noMessageTextView;
-    private ApplicationDcContext        dcContext;
     private Timer                       reloadTimer;
 
     public boolean isPaused;
@@ -324,7 +311,8 @@ public class ConversationFragment extends Fragment
         }
     }
 
-    private void setCorrectMenuVisibility(Menu menu) {
+    @Override
+    protected void setCorrectMenuVisibility(Menu menu) {
         Set<DcMsg>         messageRecords = getListAdapter().getSelectedItems();
 
         if (actionMode != null && messageRecords.size() == 0) {
@@ -346,7 +334,7 @@ public class ConversationFragment extends Fragment
             menu.findItem(R.id.menu_context_save_attachment).setVisible(messageRecord.hasFile());
             boolean canReply = canReplyToMsg(messageRecord);
             menu.findItem(R.id.menu_context_reply).setVisible(chat.canSend() && canReply);
-            boolean showReplyPrivately = chat.isGroup() && !messageRecord.isOutgoing() && canReply;
+            boolean showReplyPrivately = chat.isGroup() && !messageRecord.isOutgoing() && canReply && chat.getId() != DcChat.DC_CHAT_ID_DEADDROP;
             menu.findItem(R.id.menu_context_reply_privately).setVisible(showReplyPrivately);
         }
 
@@ -367,13 +355,6 @@ public class ConversationFragment extends Fragment
 
     private ConversationAdapter getListAdapter() {
         return (ConversationAdapter) list.getAdapter();
-    }
-
-    private DcMsg getSelectedMessageRecord() {
-        Set<DcMsg> messageRecords = getListAdapter().getSelectedItems();
-
-        if (messageRecords.size() == 1) return messageRecords.iterator().next();
-        else                            throw new AssertionError();
     }
 
     public void reload(Recipient recipient, long chatId) {
@@ -442,43 +423,8 @@ public class ConversationFragment extends Fragment
         }
 
         if (result.length() > 0) {
-            try {
-                ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
-                clipboard.setText(result.toString());
-                Toast.makeText(getActivity(), getActivity().getResources().getString(R.string.copied_to_clipboard), Toast.LENGTH_LONG).show();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    private void handleDeleteMessages(final Set<DcMsg> messageRecords) {
-        int                 messagesCount = messageRecords.size();
-
-        new AlertDialog.Builder(getActivity())
-                .setMessage(getActivity().getResources().getQuantityString(R.plurals.ask_delete_messages, messagesCount, messagesCount))
-                .setCancelable(true)
-                .setPositiveButton(R.string.delete, (dialog, which) -> {
-                    int[] ids = DcMsg.msgSetToIds(messageRecords);
-                    dcContext.deleteMsgs(ids);
-                    actionMode.finish();
-                })
-                .setNegativeButton(android.R.string.cancel, null)
-                .show();
-    }
-
-    private void handleDisplayDetails(DcMsg dcMsg) {
-        String info_str = dcContext.getMsgInfo(dcMsg.getId());
-        AlertDialog d = new AlertDialog.Builder(getActivity())
-                .setMessage(info_str)
-                .setPositiveButton(android.R.string.ok, null)
-                .create();
-        d.show();
-        try {
-            //noinspection ConstantConditions
-            Linkify.addLinks((TextView) d.findViewById(android.R.id.message), Linkify.WEB_URLS);
-        } catch(NullPointerException e) {
-            e.printStackTrace();
+            Util.writeTextToClipboard(getActivity(), result.toString());
+            Toast.makeText(getActivity(), getActivity().getResources().getString(R.string.copied_to_clipboard), Toast.LENGTH_LONG).show();
         }
     }
 
@@ -517,23 +463,6 @@ public class ConversationFragment extends Fragment
         }
     }
 
-    private void handleSaveAttachment(final DcMsg message) {
-        SaveAttachmentTask.showWarningDialog(getContext(), (dialogInterface, i) -> {
-            Permissions.with(getActivity())
-                    .request(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)
-                    .ifNecessary()
-                    .withPermanentDenialDialog(getString(R.string.perm_explain_access_to_storage_denied))
-                    .onAllGranted(() -> {
-                        SaveAttachmentTask saveTask = new SaveAttachmentTask(getContext());
-                        SaveAttachmentTask.Attachment attachment = new SaveAttachmentTask.Attachment(
-                                Uri.fromFile(message.getFileAsFile()), message.getFilemime(), message.getDateReceived(), message.getFilename());
-                        saveTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, attachment);
-                        actionMode.finish();
-                    })
-                    .execute();
-        });
-    }
-
     private void reloadList() {
         ConversationAdapter adapter = getListAdapter();
         if (adapter == null) {
@@ -554,7 +483,13 @@ public class ConversationFragment extends Fragment
             Log.e(TAG, "reloadList: getContext() was null");
             return;
         }
-        int[] msgs = DcHelper.getContext(getContext()).getChatMsgs((int) chatId, 0, 0);
+
+        DcContext dcContext = DcHelper.getContext(getContext());
+
+        long startMs = System.currentTimeMillis();
+        int[] msgs = dcContext.getChatMsgs((int) chatId, 0, 0);
+        Log.i(TAG, "⏰ getChatMsgs(" + chatId + "): " + (System.currentTimeMillis() - startMs) + "ms");
+
         adapter.changeData(msgs);
 
         if (firstLoad) {
@@ -945,10 +880,10 @@ public class ConversationFragment extends Fragment
                     handleDeleteMessages(getListAdapter().getSelectedItems());
                     return true;
                 case R.id.menu_context_share:
-                    dcContext.openForViewOrShare(getContext(), getSelectedMessageRecord().getId(), Intent.ACTION_SEND);
+                    dcContext.openForViewOrShare(getContext(), getSelectedMessageRecord(getListAdapter().getSelectedItems()).getId(), Intent.ACTION_SEND);
                     return true;
                 case R.id.menu_context_details:
-                    handleDisplayDetails(getSelectedMessageRecord());
+                    handleDisplayDetails(getSelectedMessageRecord(getListAdapter().getSelectedItems()));
                     actionMode.finish();
                     return true;
                 case R.id.menu_context_forward:
@@ -956,14 +891,14 @@ public class ConversationFragment extends Fragment
                     actionMode.finish();
                     return true;
                 case R.id.menu_context_save_attachment:
-                    handleSaveAttachment(getSelectedMessageRecord());
+                    handleSaveAttachment(getSelectedMessageRecord(getListAdapter().getSelectedItems()));
                     return true;
                 case R.id.menu_context_reply:
-                    handleReplyMessage(getSelectedMessageRecord());
+                    handleReplyMessage(getSelectedMessageRecord(getListAdapter().getSelectedItems()));
                     actionMode.finish();
                     return true;
                 case R.id.menu_context_reply_privately:
-                    handleReplyMessagePrivately(getSelectedMessageRecord());
+                    handleReplyMessagePrivately(getSelectedMessageRecord(getListAdapter().getSelectedItems()));
                     return true;
             }
 

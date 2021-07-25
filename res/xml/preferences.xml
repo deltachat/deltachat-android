@@ -20,15 +20,15 @@
                 android:icon="@drawable/ic_brightness_6_24dp"
                 android:layout="@layout/preference_item" />
 
-    <Preference android:key="preference_category_app_protection"
-                android:title="@string/pref_app_access"
-                android:icon="@drawable/ic_security_24dp"
-                android:layout="@layout/preference_item" />
-
     <Preference android:key="preference_category_advanced"
                 android:title="@string/menu_advanced"
                 android:icon="@drawable/ic_advanced_24dp"
                 android:layout="@layout/preference_item" />
+
+    <Preference android:key="preference_category_connectivity"
+                android:title="@string/connectivity"
+                android:icon="@drawable/ic_swap_vert_24dp"
+                android:layout="@layout/preference_item"/>
 
     <Preference android:key="preference_category_help"
                 android:title="@string/menu_help"

@@ -74,7 +74,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
 
   private ConversationListFragment conversationListFragment;
-  private TextView                 title;
+  public TextView                  title;
   private SearchFragment           searchFragment;
   private SearchToolbar            searchToolbar;
   private ImageView                searchAction;
@@ -92,8 +92,8 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     // it is not needed to keep all past update messages, however, when deleted, also the strings should be deleted.
     DcContext dcContext = DcHelper.getContext(this);
     DcMsg msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
-    msg.setText(getString(R.string.update_1_14_android) + "\n\nhttps://delta.chat/en/2020-11-05-android-update");
-    dcContext.addDeviceMsg("update_1_14j_android", msg); // addDeviceMessage() makes sure, messages with the same id are not added twice
+    msg.setText(getString(R.string.update_1_20) + " https://delta.chat/en/2021-05-05-email-compat");
+    dcContext.addDeviceMsg("update_1_20n_android", msg); // addDeviceMessage() makes sure, messages with the same id are not added twice
 
     // create view
     setContentView(R.layout.conversation_list_activity);
@@ -110,6 +110,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     conversationListFragment = initFragment(R.id.fragment_container, new ConversationListFragment(), dynamicLanguage.getCurrentLocale(), bundle);
 
     initializeSearchListener();
+    initializeTitleListener();
 
     TooltipCompat.setTooltipText(searchAction, getText(R.string.search_explain));
     refresh();
@@ -125,6 +126,15 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   }
 
   private void refresh() {
+    refreshTitle();
+    handleOpenpgp4fpr();
+
+    if (getIntent().getBooleanExtra(CLEAR_NOTIFICATIONS, false)) {
+      DcHelper.getContext(this).notificationCenter.removeAllNotifiations();
+    }
+  }
+
+  public void refreshTitle() {
     if (isRelayingMessageContent(this)) {
       title.setText(isForwarding(this) ? R.string.forward_to : R.string.chat_share_with_title);
       getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -132,13 +142,8 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
         openConversation(getDirectSharingChatId(this), -1);
       }
     } else {
-      title.setText(R.string.app_name);
+      title.setText(DcHelper.getConnectivitySummary(this, R.string.app_name));
       getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-    }
-    handleOpenpgp4fpr();
-
-    if (getIntent().getBooleanExtra(CLEAR_NOTIFICATIONS, false)) {
-      DcHelper.getContext(this).notificationCenter.removeAllNotifiations();
     }
   }
 
@@ -211,6 +216,10 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     });
   }
 
+  private void initializeTitleListener() {
+    title.setOnClickListener(v -> startActivity(new Intent(this, ConnectivityActivity.class)));
+  }
+
   @Override
   public boolean onOptionsItemSelected(MenuItem item) {
     super.onOptionsItemSelected(item);
@@ -260,8 +269,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 
   private void handleResetRelaying() {
     resetRelayingMessageContent(this);
-    title.setText(R.string.app_name);
-    getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+    refreshTitle();
     conversationListFragment.onNewIntent();
     invalidateOptionsMenu();
   }

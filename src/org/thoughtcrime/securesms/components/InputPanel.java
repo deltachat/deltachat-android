@@ -140,7 +140,7 @@ public class InputPanel extends ConstraintLayout
                        @NonNull CharSequence body,
                        @NonNull SlideDeck attachments)
   {
-    this.quoteView.setQuote(glideRequests, msg, author, body, attachments);
+    this.quoteView.setQuote(glideRequests, msg, author, body, attachments, false);
 
     int originalHeight = this.quoteView.getVisibility() == VISIBLE ? this.quoteView.getMeasuredHeight()
             : 0;
@@ -297,6 +297,7 @@ public class InputPanel extends ConstraintLayout
         ViewUtil.fadeIn(quickCameraToggle, FADE_TIME);
         ViewUtil.fadeIn(quickAudioToggle, FADE_TIME);
         buttonToggle.animate().alpha(1).setDuration(FADE_TIME).start();
+        composeText.requestFocus();
       }
     });
 
