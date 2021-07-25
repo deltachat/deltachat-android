@@ -40,7 +40,12 @@
     <string name="profile">Perfil</string>
     <string name="main_menu">Menú principal</string>
     <string name="start_chat">Comenzar chat</string>
-    <string name="show_full_message">Mostrar el mensaje completo...</string>
+    <string name="show_full_message">Mostrar mensaje completo...</string>
+    <string name="show_full_message_in_browser">Mostrar mensaje completo en el navegador…</string>
+    <!-- this is shown as placeholder when something is loading at some places -->
+    <string name="loading">Cargando…</string>
+    <string name="hide">Ocultar</string>
+    <string name="activate">Activar</string>
     <string name="load_remote_content">Cargar imágenes remotas</string>
     <!-- possible answers to the question are: Never, Always, Once -->
     <string name="load_remote_content_ask">Las imágenes remotas pueden ser usadas para seguirte.\n\nLa opción también permite cargar fuentes y otros contenidos. Inclusive si están deshabilitadas, quizás puedas ver imágenes embebidas o en caché.\n\n¿Cargar imágenes remotas?</string>
@@ -181,6 +186,8 @@
     <string name="menu_copy_to_clipboard">Copiar al portapapeles</string>
     <string name="menu_copy_selection_to_clipboard">Copiar selección</string>
     <string name="menu_copy_link_to_clipboard">Copiar enlace</string>
+    <string name="menu_copy_text_to_clipboard">Copiar texto</string>
+    <string name="menu_copy_image_to_clipboard">Copiar imagen</string>
     <string name="paste_from_clipboard">Pegar del portapapeles</string>
     <string name="menu_forward">Reenviar mensaje</string>
     <string name="menu_resend">Reenviar mensaje</string>
@@ -214,6 +221,7 @@
     <string name="menu_zoom_in">Acercar</string>
     <string name="menu_zoom_out">Alejar</string>
     <string name="menu_save_log">Salvar log</string>
+    <string name="menu_more_options">Más opciones</string>
     <string name="title_share_location">Compartir ubicación con todos los miembros del grupo</string>
     <string name="device_talk">Mensajes del dispositivo</string>
     <string name="device_talk_subtitle">Mensajes generados localmente</string>
@@ -380,6 +388,18 @@
     <string name="tab_docs_empty_hint">Documentos, música y otros archivos compartidos en este chat se mostrarán aquí.</string>
     <string name="media_preview">Vista previa de multimedia</string>
     <string name="send_message">Enviar mensaje</string>
+
+
+    <!-- Connectivity -->
+    <string name="connectivity">Conectividad</string>
+    <!-- Shown eg. in the title bar if the app is "Not connected"; as there is very few room, try to be as short as possible. -->
+    <string name="connectivity_not_connected">Desconectado</string>
+    <!-- Shown eg. in the title bar if the app is "Connecting"; as there is very few room, try to be as short as possible. Note that the three dots are a single character (…), not three (...) -->
+    <string name="connectivity_connecting">Conectando…</string>
+    <!-- Shown eg. in the title bar if the app is "Updating" (eg. getting new/old message, sync things); as there is very few room, try to be as short as possible. Note that the three dots are a single character (…), not three (...) -->
+    <string name="connectivity_updating">Actualizando…</string>
+    <!-- Shown eg. in the setting if the app is "Connected" -->
+    <string name="connectivity_connected">Conectado</string>
 
 
     <!-- welcome and login -->

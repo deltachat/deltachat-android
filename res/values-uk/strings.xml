@@ -437,6 +437,18 @@
     <string name="send_message">Надіслати повідомлення</string>
 
 
+    <!-- Connectivity -->
+    <string name="connectivity">Підключення</string>
+    <!-- Shown eg. in the title bar if the app is "Not connected"; as there is very few room, try to be as short as possible. -->
+    <string name="connectivity_not_connected">Не з\'єднано</string>
+    <!-- Shown eg. in the title bar if the app is "Connecting"; as there is very few room, try to be as short as possible. Note that the three dots are a single character (…), not three (...) -->
+    <string name="connectivity_connecting">Підключення...</string>
+    <!-- Shown eg. in the title bar if the app is "Updating" (eg. getting new/old message, sync things); as there is very few room, try to be as short as possible. Note that the three dots are a single character (…), not three (...) -->
+    <string name="connectivity_updating">Оновлення...</string>
+    <!-- Shown eg. in the setting if the app is "Connected" -->
+    <string name="connectivity_connected">Підключено</string>
+
+
     <!-- welcome and login -->
     <string name="welcome_intro1_message">Мессенджер з найширшою аудиторією у світі. Безкоштовний і незалежний.</string>
     <string name="login_title">Увійти</string>
@@ -702,6 +714,14 @@
     <string name="qrscan_contains_url">URL з QR-коду:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Відбиток</string>
     <string name="qrscan_x_verified_introduce_myself">%1$s підтверджено, передається особиста інформація...</string>
+    <string name="withdraw_verifycontact_explain">Цей QR-код можуть сканувати інші, щоб зв’язатися з вами.\n\nВи можете деактивувати QR-код і знову активувати його, відсканувавши повторно.</string>
+    <string name="withdraw_verifygroup_explain">Цей QR-код можуть сканувати інші, щоб приєднатися до групи \"%1$s\".\n\nВи можете деактивувати QR-код і знову активувати його, відсканувавши повторно.</string>
+    <string name="withdraw_qr_code">Деактивувати QR-код</string>
+    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
+    <string name="revive_verifycontact_explain">Цей QR-код можуть сканувати інші, щоб зв’язатися з вами.\n\nQR-код неактивний на цьому пристрої.</string>
+    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
+    <string name="revive_verifygroup_explain">Цей QR-код можуть сканувати інші, щоб приєднатися до групи \"%1$s\".\n\nQR-код неактивний на цьому пристрої.</string>
+    <string name="revive_qr_code">Активувати QR-код</string>
     <string name="qrshow_title">QR-код запрошення</string>
     <string name="qrshow_x_joining">%1$s приєднався(-лася).</string>
     <string name="qrshow_x_verified">%1$s перевірений(-а).</string>

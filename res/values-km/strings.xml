@@ -259,7 +259,7 @@
     <plurals name="ask_delete_messages">
         <item quantity="other">លុបសារទាំង %d នេះ នៅទីនេះ និងនៅលើម៉ាសុីននេ</item>
     </plurals>
-    <string name="ask_forward">បញ្ជូនសារទៅកាន់ %1$d?</string>
+    <string name="ask_forward">បញ្ជូនសារទៅកាន់ %1$s?</string>
     <string name="ask_forward_multiple">បញ្ជូនសារទាំងនេះទៅកាន់សន្ទនា %1$d?</string>
     <string name="ask_export_attachment">នាំចេញឯកសារភ្ជាប់? ការនាំចេញឯកសារភ្ជាប់ នឹងអនុញ្ញាតឲ្យកម្មវិធីផ្សេងទៀត ដំណើរការនៅលើឧបករណ៍របស់អ្នក។\n\nបន្ត?</string>
     <string name="ask_block_contact">បង្ខាំងទំនាក់ទំនងនេះ? អ្នកនឹងមិនបានសារពីទំនាក់ទំនងនេះទៀត</string>

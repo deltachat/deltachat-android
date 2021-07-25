@@ -419,6 +419,8 @@
     <string name="connectivity_not_connected">Niet verbonden</string>
     <!-- Shown eg. in the title bar if the app is "Connecting"; as there is very few room, try to be as short as possible. Note that the three dots are a single character (…), not three (...) -->
     <string name="connectivity_connecting">Bezig met verbinden…</string>
+    <!-- Shown eg. in the title bar if the app is "Updating" (eg. getting new/old message, sync things); as there is very few room, try to be as short as possible. Note that the three dots are a single character (…), not three (...) -->
+    <string name="connectivity_updating">Bezig met bijwerken…</string>
     <!-- Shown eg. in the setting if the app is "Connected" -->
     <string name="connectivity_connected">Verbonden</string>
 
@@ -680,7 +682,7 @@
     <string name="load_qr_code_as_image">QR-code als afbeelding laden</string>
     <string name="qrscan_title">QR-code scannen</string>
     <string name="qrscan_hint">Plaatst je camera boven de QR-code</string>
-    <string name="qrscan_failed">De qr-code kan niet worden ontcijferd</string>
+    <string name="qrscan_failed">De QR-code kan niet worden ontcijferd</string>
     <string name="qrscan_ask_join_group">Wil je deelnemen aan de groep \"%1$s\"?</string>
     <string name="qrscan_fingerprint_mismatch">De gescande vingerafdruk komt niet overeen met de vorige voor %1$s</string>
     <string name="qrscan_no_addr_found">Deze QR-code bevat een vingerafdruk, maar geen e-mailadres.\n\nVoor out-of-bandgoedkeuring, moet je eerst een beveiligde verbinding opzetten met de ontvanger.</string>
@@ -688,13 +690,13 @@
     <string name="qrscan_contains_url">Gescande QR-code-url:\n\n %1$s</string>
     <string name="qrscan_fingerprint_label">Vingerafdruk</string>
     <string name="qrscan_x_verified_introduce_myself">%1$s is goedgekeurd - vertel iets over jezelf…</string>
-    <string name="withdraw_verifycontact_explain">Deze qr-code kan door anderen worden gescand om contact met je op te nemen.\n\nJe kunt de qr-code hier deactiveren en opnieuw activeren door deze opnieuw te scannen.</string>
-    <string name="withdraw_verifygroup_explain">Deze qr-code kan door anderen worden gescand om deel te nemen aan de groep ‘%1$s’.\n\nJe kunt de qr-code hier deactiveren en opnieuw activeren door deze opnieuw te scannen.</string>
+    <string name="withdraw_verifycontact_explain">Deze QR-code kan door anderen worden gescand om contact met je op te nemen.\n\nJe kunt de QR-code hier deactiveren en opnieuw activeren door deze opnieuw te scannen.</string>
+    <string name="withdraw_verifygroup_explain">Deze QR-code kan door anderen worden gescand om deel te nemen aan de groep ‘%1$s’.\n\nJe kunt de QR-code hier deactiveren en opnieuw activeren door deze opnieuw te scannen.</string>
     <string name="withdraw_qr_code">QR-code deactiveren</string>
     <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
-    <string name="revive_verifycontact_explain">Deze qr-code kan door anderen worden gescand om contact met je op te nemen.\n\nDe qr-code is niet actief op dit apparaat.</string>
+    <string name="revive_verifycontact_explain">Deze QR-code kan door anderen worden gescand om contact met je op te nemen.\n\nDe QR-code is niet actief op dit apparaat.</string>
     <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
-    <string name="revive_verifygroup_explain">Deze qr-code kan door anderen worden gescand om deel te nemen aan de groep ‘%1$s’.\n\nDe qr-code is niet actief op dit apparaat.</string>
+    <string name="revive_verifygroup_explain">Deze QR-code kan door anderen worden gescand om deel te nemen aan de groep ‘%1$s’.\n\nDe QR-code is niet actief op dit apparaat.</string>
     <string name="revive_qr_code">QR-code activeren</string>
     <string name="qrshow_title">QR-uitnodigingscode</string>
     <string name="qrshow_x_joining">%1$s heeft deelgenomen.</string>
@@ -716,7 +718,7 @@
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Gewijzigde instellingen voor %1$s</string>
     <string name="verified_group_explain">Goedgekeurde groepen (experimenteel) zijn extra beveiligd tegen aanvallen van buitenaf. Leden worden goedgekeurd door andere leden en berichten zijn altijd eind-tot-eind versleuteld.</string>
-    <string name="copy_qr_data_success">De qr-url is gekopieerd naar het klembord</string>
+    <string name="copy_qr_data_success">De QR-url is gekopieerd naar het klembord</string>
     <string name="mailto_dialog_header_select_chat">Kies in welk gesprek je dit bericht wilt delen</string>
     <!-- first placeholder is the name of the chat -->
     <string name="mailto_dialog_confirm_replace_draft">%1$s bevat al een concept. Wil je dit vervangen?</string>

@@ -144,6 +144,7 @@
     <string name="magenta">I purpurt</string>
     <string name="white">E bardhë</string>
 
+    <string name="zoom">Zoom</string>
     <string name="extra_small">Tejet të vogla</string>
     <string name="small">Të vogla</string>
     <string name="normal">Normale</string>
@@ -416,6 +417,8 @@
     <string name="connectivity_not_connected">I palidhur</string>
     <!-- Shown eg. in the title bar if the app is "Connecting"; as there is very few room, try to be as short as possible. Note that the three dots are a single character (…), not three (...) -->
     <string name="connectivity_connecting">Po lidhet…</string>
+    <!-- Shown eg. in the title bar if the app is "Updating" (eg. getting new/old message, sync things); as there is very few room, try to be as short as possible. Note that the three dots are a single character (…), not three (...) -->
+    <string name="connectivity_updating">Po përditësohet…</string>
     <!-- Shown eg. in the setting if the app is "Connected" -->
     <string name="connectivity_connected">I lidhur</string>
 
