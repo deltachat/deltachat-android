@@ -258,16 +258,18 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity implement
 
       chatId = dcContext.createChatByContactId(contactId);
     }
-    Intent composeIntent = getBaseShareIntent(ConversationListActivity.class);
-    RelayUtil.setSharedUris(composeIntent, resolvedExtras);
+    Intent composeIntent;
     if (chatId != -1) {
-      RelayUtil.setDirectSharing(composeIntent, chatId);
+      composeIntent = getBaseShareIntent(ConversationActivity.class);
+      composeIntent.putExtra(EXTRA_CHAT_ID, chatId);
+    } else {
+      composeIntent = getBaseShareIntent(ConversationListActivity.class);
     }
+    RelayUtil.setSharedUris(composeIntent, resolvedExtras);
     startActivityForResult(composeIntent, REQUEST_RELAY);
     // We use startActivityForResult() here so that the conversations list is correctly updated. (hide "Device messages", ...)a
     // With startActivity() the list was not always updated before and after sharing and incorrectly showed or did not show the device talk.
     finish();
-
   }
 
   private Intent getBaseShareIntent(final @NonNull Class<?> target) {

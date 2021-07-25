@@ -128,6 +128,9 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   private void refresh() {
     refreshTitle();
     handleOpenpgp4fpr();
+    if (isDirectSharing(this)) {
+      openConversation(getDirectSharingChatId(this), -1);
+    }
 
     if (getIntent().getBooleanExtra(CLEAR_NOTIFICATIONS, false)) {
       DcHelper.getContext(this).notificationCenter.removeAllNotifiations();
@@ -138,9 +141,6 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     if (isRelayingMessageContent(this)) {
       title.setText(isForwarding(this) ? R.string.forward_to : R.string.chat_share_with_title);
       getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-      if (isDirectSharing(this)) {
-        openConversation(getDirectSharingChatId(this), -1);
-      }
     } else {
       title.setText(DcHelper.getConnectivitySummary(this, R.string.app_name));
       getSupportActionBar().setDisplayHomeAsUpEnabled(false);
