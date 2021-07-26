@@ -17,13 +17,12 @@
  */
 package org.thoughtcrime.securesms.database.model;
 
-import android.content.Context;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.StyleSpan;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.b44t.messenger.DcLot;
 
@@ -47,6 +46,7 @@ public class ThreadRecord {
   private           final boolean isProtected;
   private           final boolean isSendingLocations;
   private           final boolean isMuted;
+  private           final boolean isContactRequest;
   private @Nullable final DcLot   dcSummary;
 
   public ThreadRecord(@NonNull String body,
@@ -56,6 +56,7 @@ public class ThreadRecord {
                       boolean isProtected,
                       boolean isSendingLocations,
                       boolean isMuted,
+                      boolean isContactRequest,
                       @Nullable DcLot dcSummary)
   {
     this.threadId             = threadId;
@@ -67,6 +68,7 @@ public class ThreadRecord {
     this.isProtected      = isProtected;
     this.isSendingLocations = isSendingLocations;
     this.isMuted          = isMuted;
+    this.isContactRequest = isContactRequest;
     this.dcSummary        = dcSummary;
   }
 
@@ -124,5 +126,9 @@ public class ThreadRecord {
 
   public boolean isMuted() {
     return  isMuted;
+  }
+
+  public boolean isContactRequest() {
+    return isContactRequest;
   }
 }

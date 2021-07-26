@@ -48,7 +48,6 @@ class ConversationListAdapter extends RecyclerView.Adapter {
   private static final int MESSAGE_TYPE_SWITCH_ARCHIVE = 1;
   private static final int MESSAGE_TYPE_THREAD         = 2;
   private static final int MESSAGE_TYPE_INBOX_ZERO     = 3;
-  private static final int MESSAGE_TYPE_DEADDROP       = 4; // DEADDROP and THREAD share the same class, however, for DEADDROP it is modified on construction so it cannot be reused
 
   private final @NonNull  ApplicationDcContext dcContext;
   private @NonNull        DcChatlist           dcChatlist;
@@ -138,10 +137,7 @@ class ConversationListAdapter extends RecyclerView.Adapter {
   public int getItemViewType(int i) {
     int chatId = dcChatlist.getChatId(i);
 
-    if (chatId==DcChat.DC_CHAT_ID_DEADDROP) {
-      return MESSAGE_TYPE_DEADDROP;
-    }
-    else if (chatId == DcChat.DC_CHAT_ID_ARCHIVED_LINK) {
+    if (chatId == DcChat.DC_CHAT_ID_ARCHIVED_LINK) {
       return MESSAGE_TYPE_SWITCH_ARCHIVE;
     } else if(chatId == DcChat.DC_CHAT_ID_ALLDONE_HINT) {
       return MESSAGE_TYPE_INBOX_ZERO;
@@ -189,7 +185,7 @@ class ConversationListAdapter extends RecyclerView.Adapter {
   }
 
   void changeData(@Nullable DcChatlist chatlist) {
-    dcChatlist = chatlist==null? new DcChatlist(0) : chatlist;
+    dcChatlist = chatlist == null ? new DcChatlist(0) : chatlist;
     notifyDataSetChanged();
   }
 }

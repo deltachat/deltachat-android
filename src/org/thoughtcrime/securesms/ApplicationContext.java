@@ -14,6 +14,7 @@ import androidx.work.NetworkType;
 import androidx.work.PeriodicWorkRequest;
 import androidx.work.WorkManager;
 
+import org.thoughtcrime.securesms.components.emoji.EmojiProvider;
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.FetchWorker;
 import org.thoughtcrime.securesms.connect.ForegroundDetector;
@@ -25,6 +26,7 @@ import org.thoughtcrime.securesms.jobmanager.JobManager;
 import org.thoughtcrime.securesms.notifications.InChatSounds;
 import org.thoughtcrime.securesms.util.AndroidSignalProtocolLogger;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
+import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.SignalProtocolLoggerProvider;
 
 import java.util.concurrent.TimeUnit;
@@ -53,6 +55,11 @@ public class ApplicationContext extends MultiDexApplication {
 
     Log.i("DeltaChat", "++++++++++++++++++ ApplicationContext.onCreate() ++++++++++++++++++");
 
+    // The first call to `getInstance` takes about 100ms-300ms, so, do it on a background thread
+    Thread t = new Thread(() -> EmojiProvider.getInstance(this), "InitEmojiProviderThread");
+    t.setPriority(Thread.MIN_PRIORITY);
+    t.start();
+
     System.loadLibrary("native-utils");
     dcContext = new ApplicationDcContext(this);
 
@@ -75,6 +82,8 @@ public class ApplicationContext extends MultiDexApplication {
     catch (Exception e) {
       e.printStackTrace();
     }
+
+    DynamicTheme.setDefaultDayNightMode(this);
 
     dcContext.setStockTranslations();
 

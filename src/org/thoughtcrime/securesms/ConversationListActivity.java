@@ -30,7 +30,6 @@ import android.widget.Toast;
 import androidx.appcompat.widget.Toolbar;
 import androidx.appcompat.widget.TooltipCompat;
 
-import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMsg;
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -239,9 +238,6 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
       case R.id.menu_qr:
         new IntentIntegrator(this).setCaptureActivity(QrActivity.class).initiateScan();
         return true;
-      case R.id.menu_deaddrop:
-        handleDeaddrop();
-        return true;
       case R.id.menu_global_map:
         handleShowMap();
         return true;
@@ -340,12 +336,6 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     } else {
       startActivity(intent);
     }
-  }
-
-  private void handleDeaddrop() {
-    Intent intent = new Intent(this, ConversationActivity.class);
-    intent.putExtra(CHAT_ID_EXTRA, DcChat.DC_CHAT_ID_DEADDROP);
-    startActivity(intent);
   }
 
   @Override

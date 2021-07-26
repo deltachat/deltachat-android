@@ -126,6 +126,7 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
   @Override
   public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
     if (key.equals(Prefs.THEME_PREF)) {
+      DynamicTheme.setDefaultDayNightMode(this);
       recreate();
     } else if (key.equals(Prefs.LANGUAGE_PREF)) {
       recreate();

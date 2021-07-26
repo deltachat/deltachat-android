@@ -33,7 +33,6 @@ import android.os.Bundle;
 import android.os.Vibrator;
 import android.provider.Browser;
 import android.text.Editable;
-import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.util.Pair;
@@ -90,6 +89,7 @@ import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.AttachmentDatabase;
 import org.thoughtcrime.securesms.map.MapActivity;
+import org.thoughtcrime.securesms.messagerequests.MessageRequestsBottomView;
 import org.thoughtcrime.securesms.mms.AttachmentManager;
 import org.thoughtcrime.securesms.mms.AttachmentManager.MediaType;
 import org.thoughtcrime.securesms.mms.AudioSlide;
@@ -191,6 +191,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private   InputAwareLayout            container;
   private   View                        composePanel;
   private   ScaleStableImageView        backgroundView;
+  private   MessageRequestsBottomView   messageRequestBottomView;
 
   private   AttachmentTypeSelector attachmentTypeSelector;
   private   AttachmentManager      attachmentManager;
@@ -271,6 +272,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     } else if (isSharing(this)) {
       handleSharing();
     }
+
+    initializeContactRequest();
   }
 
   @Override
@@ -297,6 +300,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
         initializeDraft();
       }
     });
+    initializeContactRequest();
 
     if (fragment != null) {
       fragment.onNewIntent();
@@ -453,10 +457,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     MenuInflater inflater = this.getMenuInflater();
     menu.clear();
 
-    if(chatId == DcChat.DC_CHAT_ID_DEADDROP) {
-      return true;
-    }
-
     inflater.inflate(R.menu.conversation, menu);
 
     if (dcChat.isSelfTalk()) {
@@ -601,7 +601,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void handleReturnToConversationList() {
+    handleReturnToConversationList(null);
+  }
 
+  private void handleReturnToConversationList(@Nullable Bundle extras) {
     if (isRelayingMessageContent(this) || successfulForwardingAttempt) {
       if (isSharing(this)) {
         // we're allowing only 1 try to share, going back to the conversation list will
@@ -615,6 +618,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     Intent intent = new Intent(this, (isArchived() ? ConversationListArchiveActivity.class : ConversationListActivity.class));
     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+    if (extras != null) intent.putExtras(extras);
     startActivity(intent);
     finish();
   }
@@ -633,13 +637,11 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void handleProfile() {
-    if(chatId != DcChat.DC_CHAT_ID_DEADDROP) {
-      Intent intent = new Intent(this, ProfileActivity.class);
-      intent.putExtra(ProfileActivity.CHAT_ID_EXTRA, chatId);
-      intent.putExtra(ProfileActivity.FROM_CHAT, true);
-      startActivity(intent);
-      overridePendingTransition(0, 0);
-    }
+    Intent intent = new Intent(this, ProfileActivity.class);
+    intent.putExtra(ProfileActivity.CHAT_ID_EXTRA, chatId);
+    intent.putExtra(ProfileActivity.FROM_CHAT, true);
+    startActivity(intent);
+    overridePendingTransition(0, 0);
   }
 
   private void handleLeaveGroup() {
@@ -875,6 +877,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     quickAttachmentToggle = ViewUtil.findById(this, R.id.quick_attachment_toggle);
     inputPanel            = ViewUtil.findById(this, R.id.bottom_panel);
     backgroundView        = ViewUtil.findById(this, R.id.conversation_background);
+    messageRequestBottomView = ViewUtil.findById(this, R.id.conversation_activity_message_request_bottom_bar);
 
     ImageButton quickCameraToggle = ViewUtil.findById(this, R.id.quick_camera_toggle);
 
@@ -966,10 +969,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     }
 
     setComposePanelVisibility();
-
-    if (chatId == DcChat.DC_CHAT_ID_DEADDROP) {
-      titleView.hideAvatar();
-    }
   }
 
   private void setComposePanelVisibility() {
@@ -1555,6 +1554,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       initializeSecurity(isSecureText, isDefaultSms);
       setComposePanelVisibility();
     }
+
+    if (eventId == DcContext.DC_EVENT_CHAT_MODIFIED && event.getData1Int() == chatId) {
+      initializeContactRequest();
+    }
   }
 
 
@@ -1652,5 +1655,45 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       }
     }
     return true; // action handled by listener
+  }
+
+  public void initializeContactRequest() {
+    if (!dcChat.isContactRequest()) {
+      messageRequestBottomView.setVisibility(View.GONE);
+      return;
+    }
+
+    messageRequestBottomView.setVisibility(View.VISIBLE);
+    messageRequestBottomView.setAcceptOnClickListener(v -> {
+      dcContext.acceptChat(chatId);
+      messageRequestBottomView.setVisibility(View.GONE);
+      composePanel.setVisibility(View.VISIBLE);
+    });
+    messageRequestBottomView.setBlockOnClickListener(v -> {
+      dcContext.blockChat(chatId);
+      Bundle extras = new Bundle();
+      extras.putInt(ConversationListFragment.RELOAD_LIST, 1);
+      handleReturnToConversationList(extras);
+    });
+
+    String question = null;
+    if (dcChat.isMailingList()) {
+      question = getString(R.string.ask_show_mailing_list, dcChat.getName());
+    } else {
+      if (dcChat.getType() == DcChat.DC_CHAT_TYPE_GROUP) {
+        // We don't support blocking groups yet, so offer to delete it instead
+        messageRequestBottomView.setBlockText(R.string.delete);
+        messageRequestBottomView.setBlockOnClickListener(v -> handleDeleteChat());
+      } else {
+        int[] members = dcContext.getChatContacts(chatId);
+        if (members.length == 1) {
+          DcContact dcContact = dcContext.getContact(members[0]);
+          question = getString(R.string.ask_start_chat_with, dcContact.getNameNAddr());
+        } else {
+          Log.w(TAG, "Non-group non-mailinglist has " + members.length + " (!= 1) members");
+        }
+      }
+    }
+    messageRequestBottomView.setQuestion(question);
   }
 }

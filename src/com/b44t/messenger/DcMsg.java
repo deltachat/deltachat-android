@@ -91,7 +91,6 @@ public class DcMsg {
     public native int     getType            ();
     public native int     getState           ();
     public native int     getChatId          ();
-    public native int     getRealChatId      ();
     public native int     getFromId          ();
     public native int     getWidth           (int def);
     public native int     getHeight          (int def);

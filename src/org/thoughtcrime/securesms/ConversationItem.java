@@ -406,22 +406,14 @@ public class ConversationItem extends BaseConversationItem
       if (stickerStub.resolved())        stickerStub.get().setVisibility(View.GONE);
 
       //noinspection ConstantConditions
-      if(dcChat.getId() == DcChat.DC_CHAT_ID_DEADDROP) {  // no audio on dead drops
-        // TODO: replace the currently defunct display of a play button with some notification text
-        // to inform the user that here would be audio, if this were a proper chat, then ask the user
-        // if he wants to start the chat on click.
-        audioViewStub.get().setEnabled(false);
-        audioViewStub.get().setOnClickListener(passthroughClickListener);
-      } else {
-        int duration = messageRecord.getDuration();
-        if (duration == 0) {
-          AudioSlide audio = new AudioSlide(context, messageRecord);
-          AudioSlidePlayer audioSlidePlayer = AudioSlidePlayer.createFor(getContext(), audio, new SetDurationListener());
-          audioSlidePlayer.requestDuration();
-        }
-
-        audioViewStub.get().setAudio(new AudioSlide(context, messageRecord), duration);
+      int duration = messageRecord.getDuration();
+      if (duration == 0) {
+        AudioSlide audio = new AudioSlide(context, messageRecord);
+        AudioSlidePlayer audioSlidePlayer = AudioSlidePlayer.createFor(getContext(), audio, new SetDurationListener());
+        audioSlidePlayer.requestDuration();
       }
+
+      audioViewStub.get().setAudio(new AudioSlide(context, messageRecord), duration);
       audioViewStub.get().setOnLongClickListener(passthroughClickListener);
 
       ViewUtil.updateLayoutParams(bodyText, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -733,9 +725,7 @@ public class ConversationItem extends BaseConversationItem
 
   private class ThumbnailClickListener implements SlideClickListener {
     public void onClick(final View v, final Slide slide) {
-      if (dcChat.getId() == DcChat.DC_CHAT_ID_DEADDROP && batchSelected.isEmpty()) {
-        handleDeadDropClick();
-      } else if (shouldInterceptClicks(messageRecord) || !batchSelected.isEmpty()) {
+      if (shouldInterceptClicks(messageRecord) || !batchSelected.isEmpty()) {
         performClick();
       } else if (MediaPreviewActivity.isTypeSupported(slide) && slide.getUri() != null) {
         Intent intent = new Intent(context, MediaPreviewActivity.class);
@@ -754,9 +744,7 @@ public class ConversationItem extends BaseConversationItem
 
   private class StickerClickListener implements SlideClickListener {
     public void onClick(final View v, final Slide slide) {
-      if (dcChat.getId() == DcChat.DC_CHAT_ID_DEADDROP && batchSelected.isEmpty()) {
-        handleDeadDropClick();
-      } else if (shouldInterceptClicks(messageRecord) || !batchSelected.isEmpty()) {
+      if (shouldInterceptClicks(messageRecord) || !batchSelected.isEmpty()) {
         performClick();
       }
     }

@@ -131,4 +131,5 @@
          unknown_sender is used for the sender-name/quote-bar if the sender is unknown -->
     <color name="unknown_sender">#ff999999</color>
 
+    <color name="accept_button">@color/core_ultramarine</color>
 </resources>
