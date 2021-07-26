@@ -116,7 +116,6 @@ public class DcHelper {
     dcContext.setStockTranslation(2, context.getString(R.string.self));
     dcContext.setStockTranslation(3, context.getString(R.string.draft));
     dcContext.setStockTranslation(7, context.getString(R.string.voice_message));
-    dcContext.setStockTranslation(8, context.getString(R.string.chat_contact_request));
     dcContext.setStockTranslation(9, context.getString(R.string.image));
     dcContext.setStockTranslation(10, context.getString(R.string.video));
     dcContext.setStockTranslation(11, context.getString(R.string.audio));
