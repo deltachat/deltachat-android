@@ -1,7 +1,6 @@
 package org.thoughtcrime.securesms;
 
 import android.content.Context;
-import android.content.Intent;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -12,7 +11,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 
 import com.b44t.messenger.DcChat;
-import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMsg;
 
 import org.thoughtcrime.securesms.connect.ApplicationDcContext;
@@ -76,23 +74,6 @@ public abstract class BaseConversationItem extends LinearLayout
     return batchSelected.isEmpty() && (messageRecord.isFailed());
   }
 
-  protected void handleDeadDropClick() {
-    ConversationListFragment.DeaddropQuestionHelper helper = new ConversationListFragment.DeaddropQuestionHelper(context, messageRecord);
-    new AlertDialog.Builder(context)
-      .setPositiveButton(android.R.string.ok, (dialog, which) -> {
-        int chatId = dcContext.decideOnContactRequest(messageRecord.getId(), DcContext.DC_DECISION_START_CHAT);
-        if( chatId != 0 ) {
-          Intent intent = new Intent(context, ConversationActivity.class);
-          intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
-          context.startActivity(intent);
-        }
-      })
-      .setNegativeButton(android.R.string.cancel, null)
-      .setNeutralButton(helper.answerBlock, (dialog, which) -> dcContext.decideOnContactRequest(messageRecord.getId(), DcContext.DC_DECISION_BLOCK))
-      .setMessage(helper.question)
-      .show();
-  }
-
   protected class PassthroughClickListener implements View.OnLongClickListener, View.OnClickListener {
 
     @Override
@@ -118,9 +99,7 @@ public abstract class BaseConversationItem extends LinearLayout
     }
 
     public void onClick(View v) {
-      if (dcChat.getId() == DcChat.DC_CHAT_ID_DEADDROP && batchSelected.isEmpty()) {
-        handleDeadDropClick();
-      } else if (!shouldInterceptClicks(messageRecord) && parent != null) {
+      if (!shouldInterceptClicks(messageRecord) && parent != null) {
         parent.onClick(v);
       } else if (messageRecord.isFailed()) {
         View view = View.inflate(context, R.layout.message_details_view, null);

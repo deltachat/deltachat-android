@@ -203,6 +203,7 @@
     <string name="block">Block</string>
     <string name="menu_block_contact">Block Contact</string>
     <string name="menu_unblock_contact">Unblock Contact</string>
+    <string name="accept">Accept</string>
     <string name="menu_play">Play</string>
     <string name="menu_pause">Pause</string>
     <string name="menu_scroll_to_bottom">Scroll to the Bottom</string>
@@ -338,6 +339,7 @@
     <string name="chat_share_with_title">Share with</string>
     <string name="chat_input_placeholder">Message</string>
     <string name="chat_archived_label">Archived</string>
+    <string name="chat_request_label">Request</string>
     <string name="chat_no_messages">No messages.</string>
     <string name="chat_self_talk_subtitle">Messages I sent to myself</string>
     <string name="saved_messages">Saved Messages</string>

@@ -172,15 +172,7 @@ public class ConversationFragment extends MessageSelectorFragment
 
     private void setNoMessageText() {
         DcChat dcChat = getListAdapter().getChat();
-        if(chatId == DcChat.DC_CHAT_ID_DEADDROP) {
-            if(DcHelper.getInt(getActivity(), "show_emails")!= DcContext.DC_SHOW_EMAILS_ALL) {
-                noMessageTextView.setText(R.string.chat_no_contact_requests);
-            }
-            else {
-                noMessageTextView.setText(R.string.chat_no_messages);
-            }
-        }
-        else if(dcChat.isGroup()){
+        if(dcChat.isGroup()){
             if(dcContext.getChat((int) chatId).isUnpromoted()) {
                 noMessageTextView.setText(R.string.chat_new_group_hint);
             }
@@ -334,7 +326,7 @@ public class ConversationFragment extends MessageSelectorFragment
             menu.findItem(R.id.menu_context_save_attachment).setVisible(messageRecord.hasFile());
             boolean canReply = canReplyToMsg(messageRecord);
             menu.findItem(R.id.menu_context_reply).setVisible(chat.canSend() && canReply);
-            boolean showReplyPrivately = chat.isGroup() && !messageRecord.isOutgoing() && canReply && chat.getId() != DcChat.DC_CHAT_ID_DEADDROP;
+            boolean showReplyPrivately = chat.isGroup() && !messageRecord.isOutgoing() && canReply;
             menu.findItem(R.id.menu_context_reply_privately).setVisible(showReplyPrivately);
         }
 

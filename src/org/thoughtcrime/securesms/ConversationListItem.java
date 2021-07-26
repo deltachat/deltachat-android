@@ -75,7 +75,7 @@ public class ConversationListItem extends RelativeLayout
   private TextView           subjectView;
   private FromTextView       fromView;
   private TextView           dateView;
-  private TextView           archivedView;
+  private TextView badgeView;
   private DeliveryStatusView deliveryStatusIndicator;
   private ImageView          unreadIndicator;
 
@@ -97,7 +97,7 @@ public class ConversationListItem extends RelativeLayout
     this.dateView                = findViewById(R.id.date);
     this.deliveryStatusIndicator = new DeliveryStatusView(findViewById(R.id.delivery_indicator));
     this.contactPhotoImage       = findViewById(R.id.contact_photo_image);
-    this.archivedView            = findViewById(R.id.archived);
+    this.badgeView               = findViewById(R.id.badge);
     this.unreadIndicator         = findViewById(R.id.unread_indicator);
 
     ViewUtil.setTextViewGravityStart(this.fromView, getContext());
@@ -125,8 +125,6 @@ public class ConversationListItem extends RelativeLayout
                    boolean batchMode,
                    @Nullable String highlightSubstring)
   {
-    ApplicationDcContext dcContext = DcHelper.getContext(getContext());
-
     this.dcSummary        = dcSummary;
     this.selectedThreads  = selectedThreads;
     Recipient recipient   = thread.getRecipient();
@@ -161,17 +159,11 @@ public class ConversationListItem extends RelativeLayout
         thread.isSendingLocations()? R.drawable.ic_location_chatlist : 0, 0
     );
 
-    setStatusIcons(thread.getVisibility(), state, unreadCount);
+    setStatusIcons(thread.getVisibility(), state, unreadCount, thread.isContactRequest());
     setBatchState(batchMode);
     setBgColor(thread);
 
-    if(chatId == DcChat.DC_CHAT_ID_DEADDROP) {
-      DcContact dcContact = dcContext.getContact(dcContext.getMsg(msgId).getFromId());
-      this.contactPhotoImage.setAvatar(glideRequests, dcContext.getRecipient(dcContact), false);
-    }
-    else {
-      this.contactPhotoImage.setAvatar(glideRequests, recipient, false);
-    }
+    this.contactPhotoImage.setAvatar(glideRequests, recipient, false);
 
     fromView.setCompoundDrawablesWithIntrinsicBounds(
         thread.isMuted()? R.drawable.ic_volume_off_grey600_18dp : 0,
@@ -194,7 +186,7 @@ public class ConversationListItem extends RelativeLayout
     subjectView.setText(getHighlightedSpan(locale, contact.getAddr(), highlightSubstring));
     dateView.setText("");
     dateView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-    archivedView.setVisibility(GONE);
+    badgeView.setVisibility(GONE);
     unreadIndicator.setVisibility(GONE);
     deliveryStatusIndicator.setNone();
 
@@ -225,7 +217,7 @@ public class ConversationListItem extends RelativeLayout
       dateView.setText("");
     }
     dateView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-    archivedView.setVisibility(GONE);
+    badgeView.setVisibility(GONE);
     unreadIndicator.setVisibility(GONE);
     deliveryStatusIndicator.setNone();
 
@@ -249,16 +241,23 @@ public class ConversationListItem extends RelativeLayout
     return msgId;
   }
 
-  private void setStatusIcons(int visibility, int state, int unreadCount) {
+  private void setStatusIcons(int visibility, int state, int unreadCount, boolean isContactRequest) {
     if (visibility==DcChat.DC_CHAT_VISIBILITY_ARCHIVED)
     {
-      this.archivedView.setVisibility(View.VISIBLE);
+      badgeView.setVisibility(View.VISIBLE);
+      badgeView.setText(R.string.chat_archived_label);
+      deliveryStatusIndicator.setNone();
+      unreadIndicator.setVisibility(View.GONE);
+    }
+    else if (isContactRequest) {
+      badgeView.setVisibility(View.VISIBLE);
+      badgeView.setText(R.string.chat_request_label);
       deliveryStatusIndicator.setNone();
       unreadIndicator.setVisibility(View.GONE);
     }
     else
     {
-      this.archivedView.setVisibility(View.GONE);
+      this.badgeView.setVisibility(View.GONE);
       if (state==DcMsg.DC_STATE_IN_FRESH || state==DcMsg.DC_STATE_IN_NOTICED)
       {
         deliveryStatusIndicator.setNone();
@@ -305,8 +304,7 @@ public class ConversationListItem extends RelativeLayout
 
   private void setBgColor(ThreadRecord thread) {
     int bg = R.attr.conversation_list_item_background;
-    if (chatId == DcChat.DC_CHAT_ID_DEADDROP
-     || (thread!=null && thread.getVisibility()==DcChat.DC_CHAT_VISIBILITY_PINNED)) {
+    if (thread!=null && thread.getVisibility()==DcChat.DC_CHAT_VISIBILITY_PINNED) {
         bg = R.attr.pinned_list_item_background;
     }
     TypedArray ta = getContext().obtainStyledAttributes(new int[] { bg });

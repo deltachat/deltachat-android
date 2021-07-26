@@ -65,32 +65,27 @@ public class ConversationTitleView extends RelativeLayout {
     final DcContext dcContext = DcHelper.getContext(context);
 
     // set title and subtitle texts
-    if( chatId == DcChat.DC_CHAT_ID_DEADDROP ) {
-      title.setText(R.string.menu_deaddrop);
-      subtitle.setText(R.string.menu_deaddrop_subtitle);
-    } else {
-      title.setText(dcChat.getName());
-      String subtitleStr = "ErrSubtitle";
+    title.setText(dcChat.getName());
+    String subtitleStr = "ErrSubtitle";
 
-      int[] chatContacts = dcContext.getChatContacts(chatId);
-      if (dcChat.isMailingList()) {
-        subtitleStr = context.getString(R.string.mailing_list);
-      } else if( dcChat.isGroup() ) {
-        subtitleStr = context.getResources().getQuantityString(R.plurals.n_members, chatContacts.length, chatContacts.length);
-      } else if( chatContacts.length>=1 ) {
-        if( dcChat.isSelfTalk() ) {
-          subtitleStr = context.getString(R.string.chat_self_talk_subtitle);
-        }
-        else if( dcChat.isDeviceTalk() ) {
-          subtitleStr = context.getString(R.string.device_talk_subtitle);
-        }
-        else {
-          subtitleStr = dcContext.getContact(chatContacts[0]).getAddr();
-        }
+    int[] chatContacts = dcContext.getChatContacts(chatId);
+    if (dcChat.isMailingList()) {
+      subtitleStr = context.getString(R.string.mailing_list);
+    } else if( dcChat.isGroup() ) {
+      subtitleStr = context.getResources().getQuantityString(R.plurals.n_members, chatContacts.length, chatContacts.length);
+    } else if( chatContacts.length>=1 ) {
+      if( dcChat.isSelfTalk() ) {
+        subtitleStr = context.getString(R.string.chat_self_talk_subtitle);
       }
-
-      subtitle.setText(subtitleStr);
+      else if( dcChat.isDeviceTalk() ) {
+        subtitleStr = context.getString(R.string.device_talk_subtitle);
+      }
+      else {
+        subtitleStr = dcContext.getContact(chatContacts[0]).getAddr();
+      }
     }
+
+    subtitle.setText(subtitleStr);
 
     // set icons etc.
     int imgLeft = 0;
