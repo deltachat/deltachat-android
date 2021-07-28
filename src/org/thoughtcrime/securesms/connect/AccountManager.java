@@ -199,7 +199,7 @@ public class AccountManager {
         int[] selection = {-1};
         new AlertDialog.Builder(activity)
                 .setTitle(R.string.delete_account)
-                .setSingleChoiceItems(menu.toArray(new String[menu.size()]), -1, (dialog, which) -> selection[0] = which)
+                .setSingleChoiceItems(menu.toArray(new String[0]), -1, (dialog, which) -> selection[0] = which)
                 .setNegativeButton(R.string.cancel, (dialog, which) -> showSwitchAccountMenu(activity))
                 .setPositiveButton(R.string.ok, (dialog, which) -> {
                     if (selection[0] >= 0 && selection[0] < accountIds.length) {
