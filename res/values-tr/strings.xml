@@ -203,6 +203,7 @@
     <string name="block">Engelle</string>
     <string name="menu_block_contact">Kişiyi Engelle</string>
     <string name="menu_unblock_contact">Kişiyi Engelleme</string>
+    <string name="accept">Kabul Et</string>
     <string name="menu_play">Oynat</string>
     <string name="menu_pause">Duraklat</string>
     <string name="menu_scroll_to_bottom">Alta Kaydır</string>
@@ -338,6 +339,7 @@
     <string name="chat_share_with_title">Paylaş</string>
     <string name="chat_input_placeholder">İleti</string>
     <string name="chat_archived_label">Arşivlendi</string>
+    <string name="chat_request_label">İstek</string>
     <string name="chat_no_messages">İleti yok.</string>
     <string name="chat_self_talk_subtitle">Kendime gönderdiğim iletiler</string>
     <string name="saved_messages">Kaydedilen İletiler</string>

@@ -203,6 +203,7 @@
     <string name="block">Bloquear</string>
     <string name="menu_block_contact">Bloquear contacto</string>
     <string name="menu_unblock_contact">Desbloquear contacto</string>
+    <string name="accept">Aceptar</string>
     <string name="menu_play">Reproducir</string>
     <string name="menu_pause">Pausar</string>
     <string name="menu_scroll_to_bottom">Moverse abaixo</string>
@@ -338,6 +339,7 @@
     <string name="chat_share_with_title">Compartir con</string>
     <string name="chat_input_placeholder">Mensaxe</string>
     <string name="chat_archived_label">Arquivado</string>
+    <string name="chat_request_label">Solicitar</string>
     <string name="chat_no_messages">Sen mensaxes.</string>
     <string name="chat_self_talk_subtitle">Mensaxes que me enviei a min mesma</string>
     <string name="saved_messages">Mensaxes gardadas</string>
@@ -420,7 +422,7 @@
     <!-- Shown eg. in the title bar if the app is "Connecting"; as there is very few room, try to be as short as possible. Note that the three dots are a single character (…), not three (...) -->
     <string name="connectivity_connecting">Conectando…</string>
     <!-- Shown eg. in the title bar if the app is "Updating" (eg. getting new/old message, sync things); as there is very few room, try to be as short as possible. Note that the three dots are a single character (…), not three (...) -->
-    <string name="connectivity_updating">Actualizando...</string>
+    <string name="connectivity_updating">Actualizando…</string>
     <!-- Shown eg. in the setting if the app is "Connected" -->
     <string name="connectivity_connected">Conectado</string>
 
