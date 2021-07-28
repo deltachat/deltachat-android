@@ -169,7 +169,7 @@ public class AccountManager {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity)
                 .setTitle(R.string.switch_account)
                 .setNegativeButton(R.string.cancel, null)
-                .setSingleChoiceItems(menu.toArray(new String[menu.size()]), presel, (dialog, which) -> {
+                .setSingleChoiceItems(menu.toArray(new String[0]), presel, (dialog, which) -> {
                     dialog.dismiss();
                     if (which==addAccount) {
                         new SwitchAccountAsyncTask(activity, R.string.one_moment, 0, null).execute();
