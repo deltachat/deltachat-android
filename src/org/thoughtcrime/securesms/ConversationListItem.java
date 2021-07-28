@@ -245,7 +245,11 @@ public class ConversationListItem extends RelativeLayout
     if (visibility==DcChat.DC_CHAT_VISIBILITY_ARCHIVED)
     {
       badgeView.setVisibility(View.VISIBLE);
-      badgeView.setText(R.string.chat_archived_label);
+      if (isContactRequest) {
+        badgeView.setText(getContext().getString(R.string.chat_archived_label) + "  " + getContext().getString(R.string.chat_request_label));
+      } else {
+        badgeView.setText(R.string.chat_archived_label);
+      }
       deliveryStatusIndicator.setNone();
       unreadIndicator.setVisibility(View.GONE);
     }
