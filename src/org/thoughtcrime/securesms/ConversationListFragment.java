@@ -133,8 +133,15 @@ public class ConversationListFragment extends Fragment
     emptyState   = ViewUtil.findById(view, R.id.empty_state);
     emptySearch  = ViewUtil.findById(view, R.id.empty_search);
 
-    if (archive) fab.setVisibility(View.GONE);
-    else         fab.setVisibility(View.VISIBLE);
+    if (archive) {
+      fab.setVisibility(View.GONE);
+      TextView emptyTitle = ViewUtil.findById(view, R.id.empty_title);
+      TextView emptySubtitle = ViewUtil.findById(view, R.id.empty_subtitle);
+      emptyTitle.setText(R.string.archive_empty_hint);
+      emptySubtitle.setVisibility(View.GONE);
+    } else {
+      fab.setVisibility(View.VISIBLE);
+    }
 
     list.setHasFixedSize(true);
     list.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -383,7 +390,7 @@ public class ConversationListFragment extends Fragment
     }
     DcChatlist chatlist = DcHelper.getContext(getContext()).getChatlist(listflags, queryFilter.isEmpty() ? null : queryFilter, 0);
 
-    if (chatlist.getCnt() <= 0 && TextUtils.isEmpty(queryFilter) && !archive) {
+    if (chatlist.getCnt() <= 0 && TextUtils.isEmpty(queryFilter)) {
       list.setVisibility(View.INVISIBLE);
       emptyState.setVisibility(View.VISIBLE);
       emptySearch.setVisibility(View.INVISIBLE);
