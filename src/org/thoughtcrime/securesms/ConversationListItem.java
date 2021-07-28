@@ -133,7 +133,8 @@ public class ConversationListItem extends RelativeLayout
     this.glideRequests    = glideRequests;
 
     int state       = dcSummary.getState();
-    int unreadCount = (state==DcMsg.DC_STATE_IN_FRESH || state==DcMsg.DC_STATE_IN_NOTICED)? thread.getUnreadCount() : 0;
+    int unreadCount = ((state==DcMsg.DC_STATE_IN_FRESH || state==DcMsg.DC_STATE_IN_NOTICED) && !thread.isContactRequest())?
+                        thread.getUnreadCount() : 0;
 
     if (highlightSubstring != null) {
       this.fromView.setText(getHighlightedSpan(locale, recipient.getName(), highlightSubstring));
