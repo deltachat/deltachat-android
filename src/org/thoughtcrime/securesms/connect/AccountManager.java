@@ -104,7 +104,7 @@ public class AccountManager {
 
     private static class SwitchAccountAsyncTask extends ProgressDialogAsyncTask<Void, Void, Void> {
         private final WeakReference<Activity> activityWeakReference;
-        private final @Nullable int destAccountId; // 0 creates a new account
+        private final int destAccountId; // 0 creates a new account
         private final @Nullable String qrAccount;
 
         public SwitchAccountAsyncTask(Activity activity, int title, int destAccountId, @Nullable String qrAccount) {
