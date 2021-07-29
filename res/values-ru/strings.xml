@@ -215,6 +215,7 @@
     <string name="block">Заблокировать</string>
     <string name="menu_block_contact">Заблокировать контакт</string>
     <string name="menu_unblock_contact">Разблокировать контакт</string>
+    <string name="accept">Принять</string>
     <string name="menu_play">Воспроизвести</string>
     <string name="menu_pause">Пауза</string>
     <string name="menu_scroll_to_bottom">Прокрутить вниз</string>
@@ -362,6 +363,7 @@
     <string name="chat_share_with_title">Поделиться с</string>
     <string name="chat_input_placeholder">Сообщение</string>
     <string name="chat_archived_label">Архивировано</string>
+    <string name="chat_request_label">Запрос</string>
     <string name="chat_no_messages">Нет сообщений.</string>
     <string name="chat_self_talk_subtitle">Сообщения отправленные себе</string>
     <string name="saved_messages">Сохранённые сообщения</string>

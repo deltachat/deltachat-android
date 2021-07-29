@@ -203,6 +203,7 @@
     <string name="block">Blokkeren</string>
     <string name="menu_block_contact">Contactpersoon blokkeren</string>
     <string name="menu_unblock_contact">Contactpersoon deblokkeren</string>
+    <string name="accept">Accepteren</string>
     <string name="menu_play">Afspelen</string>
     <string name="menu_pause">Pauzeren</string>
     <string name="menu_scroll_to_bottom">Ga naar het einde</string>
@@ -338,6 +339,7 @@
     <string name="chat_share_with_title">Delen met</string>
     <string name="chat_input_placeholder">Bericht</string>
     <string name="chat_archived_label">Gearchiveerd</string>
+    <string name="chat_request_label">Verzoek</string>
     <string name="chat_no_messages">Geen berichten.</string>
     <string name="chat_self_talk_subtitle">Aan mijzelf gestuurde berichten</string>
     <string name="saved_messages">Opgeslagen berichten</string>

@@ -201,6 +201,7 @@
     <string name="block">Bllokoje</string>
     <string name="menu_block_contact">Bllokoje kontaktin</string>
     <string name="menu_unblock_contact">Zhbllokoje kontaktin</string>
+    <string name="accept">Pranoje</string>
     <string name="menu_play">Luaje</string>
     <string name="menu_pause">Pushoje</string>
     <string name="menu_scroll_to_bottom">Rrëshqit drejt fundit</string>
@@ -336,6 +337,7 @@
     <string name="chat_share_with_title">Ndajeni me </string>
     <string name="chat_input_placeholder">Mesazh</string>
     <string name="chat_archived_label">Arkivuar</string>
+    <string name="chat_request_label">Kërkoje</string>
     <string name="chat_no_messages">S\’ka mesazhe.</string>
     <string name="chat_self_talk_subtitle">Mesazhe që i kam dërguar vetes</string>
     <string name="saved_messages">Mesazhe të ruajtur</string>

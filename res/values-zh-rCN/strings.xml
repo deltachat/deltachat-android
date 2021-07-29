@@ -197,6 +197,7 @@
     <string name="block">屏蔽</string>
     <string name="menu_block_contact">屏蔽联系人</string>
     <string name="menu_unblock_contact">取消屏蔽联系人</string>
+    <string name="accept">接受</string>
     <string name="menu_play">播放</string>
     <string name="menu_pause">暂停</string>
     <string name="menu_scroll_to_bottom">滚动至底部</string>
@@ -326,6 +327,7 @@
     <string name="chat_share_with_title">分享给</string>
     <string name="chat_input_placeholder">输入消息…</string>
     <string name="chat_archived_label">已归档</string>
+    <string name="chat_request_label">请求</string>
     <string name="chat_no_messages">没有消息。</string>
     <string name="chat_self_talk_subtitle">发给自己的消息</string>
     <string name="saved_messages">保存的消息</string>

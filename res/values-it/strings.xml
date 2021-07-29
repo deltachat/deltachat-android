@@ -203,6 +203,7 @@
     <string name="block">Bloccare</string>
     <string name="menu_block_contact">Blocca contatto</string>
     <string name="menu_unblock_contact">Sblocca contatto</string>
+    <string name="accept">Accettare</string>
     <string name="menu_play">Riproduci</string>
     <string name="menu_pause">Pausa</string>
     <string name="menu_scroll_to_bottom">Scorri alla fine</string>
@@ -338,6 +339,7 @@
     <string name="chat_share_with_title">Condividi con</string>
     <string name="chat_input_placeholder">Messaggio</string>
     <string name="chat_archived_label">Archiviato</string>
+    <string name="chat_request_label">Richiesta</string>
     <string name="chat_no_messages">Nessun messaggio.</string>
     <string name="chat_self_talk_subtitle">Messaggi inviati a me stesso</string>
     <string name="saved_messages">Messaggi salvati</string>
