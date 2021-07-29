@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	package="com.b44t.messenger.androidtest">
+
+	<!-- Important: disable debuggable for accurate performance results -->
+	<application
+		android:debuggable="false"
+		tools:ignore="HardcodedDebugMode"
+		tools:replace="android:debuggable" />
+
+</manifest>
