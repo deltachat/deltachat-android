@@ -672,7 +672,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
         .setMessage(getResources().getQuantityString(R.plurals.ask_delete_chat, 1, 1))
         .setPositiveButton(R.string.delete, (dialog, which) -> {
           dcContext.deleteChat(chatId);
-          Toast.makeText(this, getString(R.string.done), Toast.LENGTH_SHORT).show();
           finish();
         })
         .setNegativeButton(R.string.cancel, null)
