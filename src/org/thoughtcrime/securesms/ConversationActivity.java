@@ -672,7 +672,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
         .setMessage(getResources().getQuantityString(R.plurals.ask_delete_chat, 1, 1))
         .setPositiveButton(R.string.delete, (dialog, which) -> {
           dcContext.deleteChat(chatId);
-          Toast.makeText(this, getString(R.string.done), Toast.LENGTH_SHORT).show();
           finish();
         })
         .setNegativeButton(R.string.cancel, null)
@@ -1676,24 +1675,11 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       handleReturnToConversationList(extras);
     });
 
-    String question = null;
-    if (dcChat.isMailingList()) {
-      question = getString(R.string.ask_show_mailing_list, dcChat.getName());
-    } else {
-      if (dcChat.getType() == DcChat.DC_CHAT_TYPE_GROUP) {
-        // We don't support blocking groups yet, so offer to delete it instead
-        messageRequestBottomView.setBlockText(R.string.delete);
-        messageRequestBottomView.setBlockOnClickListener(v -> handleDeleteChat());
-      } else {
-        int[] members = dcContext.getChatContacts(chatId);
-        if (members.length == 1) {
-          DcContact dcContact = dcContext.getContact(members[0]);
-          question = getString(R.string.ask_start_chat_with, dcContact.getNameNAddr());
-        } else {
-          Log.w(TAG, "Non-group non-mailinglist has " + members.length + " (!= 1) members");
-        }
-      }
+    if (dcChat.getType() == DcChat.DC_CHAT_TYPE_GROUP) {
+      // We don't support blocking groups yet, so offer to delete it instead
+      messageRequestBottomView.setBlockText(R.string.delete);
+      messageRequestBottomView.setBlockOnClickListener(v -> handleDeleteChat());
     }
-    messageRequestBottomView.setQuestion(question);
+    messageRequestBottomView.setQuestion(null);
   }
 }
