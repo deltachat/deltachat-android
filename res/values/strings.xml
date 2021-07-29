@@ -342,6 +342,7 @@
     <string name="chat_request_label">Request</string>
     <string name="chat_no_messages">No messages.</string>
     <string name="chat_self_talk_subtitle">Messages I sent to myself</string>
+    <string name="archive_empty_hint">If you archive chats, they will be shown here.</string>
     <string name="saved_messages">Saved Messages</string>
     <string name="saved_messages_explain">• Forward messages here for easy access\n\n• Take notes or voice memos\n\n• Attach media to save them</string>
     <!-- this "Saved" should match the "Saved" from "Saved messages" -->
