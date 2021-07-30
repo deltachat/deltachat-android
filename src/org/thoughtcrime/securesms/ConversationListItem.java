@@ -75,7 +75,8 @@ public class ConversationListItem extends RelativeLayout
   private TextView           subjectView;
   private FromTextView       fromView;
   private TextView           dateView;
-  private TextView badgeView;
+  private TextView           archivedBadgeView;
+  private TextView           requestBadgeView;
   private DeliveryStatusView deliveryStatusIndicator;
   private ImageView          unreadIndicator;
 
@@ -97,7 +98,8 @@ public class ConversationListItem extends RelativeLayout
     this.dateView                = findViewById(R.id.date);
     this.deliveryStatusIndicator = new DeliveryStatusView(findViewById(R.id.delivery_indicator));
     this.contactPhotoImage       = findViewById(R.id.contact_photo_image);
-    this.badgeView               = findViewById(R.id.badge);
+    this.archivedBadgeView       = findViewById(R.id.archived_badge);
+    this.requestBadgeView        = findViewById(R.id.request_badge);
     this.unreadIndicator         = findViewById(R.id.unread_indicator);
 
     ViewUtil.setTextViewGravityStart(this.fromView, getContext());
@@ -187,7 +189,8 @@ public class ConversationListItem extends RelativeLayout
     subjectView.setText(getHighlightedSpan(locale, contact.getAddr(), highlightSubstring));
     dateView.setText("");
     dateView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-    badgeView.setVisibility(GONE);
+    archivedBadgeView.setVisibility(GONE);
+    requestBadgeView.setVisibility(GONE);
     unreadIndicator.setVisibility(GONE);
     deliveryStatusIndicator.setNone();
 
@@ -218,7 +221,8 @@ public class ConversationListItem extends RelativeLayout
       dateView.setText("");
     }
     dateView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-    badgeView.setVisibility(GONE);
+    archivedBadgeView.setVisibility(GONE);
+    requestBadgeView.setVisibility(GONE);
     unreadIndicator.setVisibility(GONE);
     deliveryStatusIndicator.setNone();
 
@@ -245,24 +249,21 @@ public class ConversationListItem extends RelativeLayout
   private void setStatusIcons(int visibility, int state, int unreadCount, boolean isContactRequest) {
     if (visibility==DcChat.DC_CHAT_VISIBILITY_ARCHIVED)
     {
-      badgeView.setVisibility(View.VISIBLE);
-      if (isContactRequest) {
-        badgeView.setText(getContext().getString(R.string.chat_archived_label) + "  " + getContext().getString(R.string.chat_request_label));
-      } else {
-        badgeView.setText(R.string.chat_archived_label);
-      }
+      archivedBadgeView.setVisibility(View.VISIBLE);
+      requestBadgeView.setVisibility(isContactRequest ? View.VISIBLE : View.GONE);
       deliveryStatusIndicator.setNone();
       unreadIndicator.setVisibility(View.GONE);
     }
     else if (isContactRequest) {
-      badgeView.setVisibility(View.VISIBLE);
-      badgeView.setText(R.string.chat_request_label);
+      requestBadgeView.setVisibility(View.VISIBLE);
+      archivedBadgeView.setVisibility(View.GONE);
       deliveryStatusIndicator.setNone();
       unreadIndicator.setVisibility(View.GONE);
     }
     else
     {
-      this.badgeView.setVisibility(View.GONE);
+      requestBadgeView.setVisibility(View.GONE);
+      archivedBadgeView.setVisibility(View.GONE);
       if (state==DcMsg.DC_STATE_IN_FRESH || state==DcMsg.DC_STATE_IN_NOTICED)
       {
         deliveryStatusIndicator.setNone();
