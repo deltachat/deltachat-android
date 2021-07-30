@@ -157,7 +157,7 @@ public class ConversationListFragment extends Fragment
     setHasOptionsMenu(true);
     initializeFabClickListener(false);
     list.setAdapter(new ConversationListAdapter(getActivity(), GlideApp.with(this), locale, this));
-    loadChatlist();
+    loadChatlistAsync();
     chatlistJustLoaded = true;
   }
 
@@ -379,7 +379,13 @@ public class ConversationListFragment extends Fragment
     ((ConversationSelectedListener)getActivity()).onCreateConversation(chatId);
   }
 
-  public void loadChatlist() {
+  private void loadChatlistAsync() {
+    Util.runOnAnyBackgroundThread(() -> {
+      loadChatlist();
+    });
+  }
+
+  private void loadChatlist() {
     int listflags = 0;
     if (archive) {
       listflags |= DcContext.DC_GCL_ARCHIVED_ONLY;
@@ -390,24 +396,26 @@ public class ConversationListFragment extends Fragment
     }
     DcChatlist chatlist = DcHelper.getContext(getContext()).getChatlist(listflags, queryFilter.isEmpty() ? null : queryFilter, 0);
 
-    if (chatlist.getCnt() <= 0 && TextUtils.isEmpty(queryFilter)) {
-      list.setVisibility(View.INVISIBLE);
-      emptyState.setVisibility(View.VISIBLE);
-      emptySearch.setVisibility(View.INVISIBLE);
-      fab.startPulse(3 * 1000);
-    } else if (chatlist.getCnt() <= 0 && !TextUtils.isEmpty(queryFilter)) {
-      list.setVisibility(View.INVISIBLE);
-      emptyState.setVisibility(View.GONE);
-      emptySearch.setVisibility(View.VISIBLE);
-      emptySearch.setText(getString(R.string.search_no_result_for_x, queryFilter));
-    } else {
-      list.setVisibility(View.VISIBLE);
-      emptyState.setVisibility(View.GONE);
-      emptySearch.setVisibility(View.INVISIBLE);
-      fab.stopPulse();
-    }
+    Util.runOnMain(() -> {
+      if (chatlist.getCnt() <= 0 && TextUtils.isEmpty(queryFilter)) {
+        list.setVisibility(View.INVISIBLE);
+        emptyState.setVisibility(View.VISIBLE);
+        emptySearch.setVisibility(View.INVISIBLE);
+        fab.startPulse(3 * 1000);
+      } else if (chatlist.getCnt() <= 0 && !TextUtils.isEmpty(queryFilter)) {
+        list.setVisibility(View.INVISIBLE);
+        emptyState.setVisibility(View.GONE);
+        emptySearch.setVisibility(View.VISIBLE);
+        emptySearch.setText(getString(R.string.search_no_result_for_x, queryFilter));
+      } else {
+        list.setVisibility(View.VISIBLE);
+        emptyState.setVisibility(View.GONE);
+        emptySearch.setVisibility(View.INVISIBLE);
+        fab.stopPulse();
+      }
 
-    getListAdapter().changeData(chatlist);
+      getListAdapter().changeData(chatlist);
+    });
   }
 
   @Override
@@ -554,7 +562,7 @@ public class ConversationListFragment extends Fragment
     if (event.getId() == DcContext.DC_EVENT_CONNECTIVITY_CHANGED) {
       ((ConversationListActivity) getActivity()).refreshTitle();
     } else {
-      loadChatlist();
+      loadChatlistAsync();
     }
   }
 
