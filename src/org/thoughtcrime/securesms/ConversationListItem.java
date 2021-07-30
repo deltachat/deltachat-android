@@ -133,7 +133,8 @@ public class ConversationListItem extends RelativeLayout
     this.glideRequests    = glideRequests;
 
     int state       = dcSummary.getState();
-    int unreadCount = (state==DcMsg.DC_STATE_IN_FRESH || state==DcMsg.DC_STATE_IN_NOTICED)? thread.getUnreadCount() : 0;
+    int unreadCount = ((state==DcMsg.DC_STATE_IN_FRESH || state==DcMsg.DC_STATE_IN_NOTICED) && !thread.isContactRequest())?
+                        thread.getUnreadCount() : 0;
 
     if (highlightSubstring != null) {
       this.fromView.setText(getHighlightedSpan(locale, recipient.getName(), highlightSubstring));
@@ -245,7 +246,11 @@ public class ConversationListItem extends RelativeLayout
     if (visibility==DcChat.DC_CHAT_VISIBILITY_ARCHIVED)
     {
       badgeView.setVisibility(View.VISIBLE);
-      badgeView.setText(R.string.chat_archived_label);
+      if (isContactRequest) {
+        badgeView.setText(getContext().getString(R.string.chat_archived_label) + "  " + getContext().getString(R.string.chat_request_label));
+      } else {
+        badgeView.setText(R.string.chat_archived_label);
+      }
       deliveryStatusIndicator.setNone();
       unreadIndicator.setVisibility(View.GONE);
     }

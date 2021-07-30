@@ -229,6 +229,9 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
       case R.id.menu_new_chat:
         createChat();
         return true;
+      case R.id.menu_archived_chats:
+        onSwitchToArchive();
+        return true;
       case R.id.menu_settings:
         startActivity(new Intent(this, ApplicationPreferencesActivity.class));
         return true;
