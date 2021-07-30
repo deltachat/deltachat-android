@@ -177,7 +177,7 @@ public class ConversationListFragment extends Fragment
     reloadTimer.scheduleAtFixedRate(new TimerTask() {
       @Override
       public void run() {
-        Util.runOnMain(() -> loadChatlist());
+        Util.runOnMain(() -> { list.getAdapter().notifyDataSetChanged(); });
       }
     }, 60 * 1000, 60 * 1000);
   }
