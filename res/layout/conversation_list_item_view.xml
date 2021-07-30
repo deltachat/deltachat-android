@@ -88,10 +88,24 @@
             <LinearLayout
                 android:orientation="horizontal"
                 android:minHeight="21dp"
+                android:showDividers="middle"
+                android:divider="@drawable/badge_divider"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
-                <TextView android:id="@+id/badge"
+                <TextView android:id="@+id/request_badge"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:paddingLeft="5dp"
+                          android:paddingRight="5dp"
+                          android:paddingTop="1dp"
+                          android:paddingBottom="1dp"
+                          style="@style/Signal.Text.Caption"
+                          android:text="@string/chat_request_label"
+                          android:textColor="?attr/conversation_list_item_date_color"
+                          android:background="@drawable/archived_indicator_background" />
+
+                <TextView android:id="@+id/archived_badge"
                           android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
                           android:paddingLeft="5dp"
