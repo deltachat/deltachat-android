@@ -26,6 +26,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -379,10 +380,29 @@ public class ConversationListFragment extends Fragment
     ((ConversationSelectedListener)getActivity()).onCreateConversation(chatId);
   }
 
+  private boolean inLoadChatlist;
+  private boolean needsAnotherLoad;
   private void loadChatlistAsync() {
-    Util.runOnAnyBackgroundThread(() -> {
-      loadChatlist();
-    });
+    if (inLoadChatlist) {
+      needsAnotherLoad = true;
+      Log.i(TAG, "chatlist loading debounced");
+    } else {
+      inLoadChatlist = true;
+      Util.runOnAnyBackgroundThread(() -> {
+
+        needsAnotherLoad = false;
+        loadChatlist();
+
+        while (needsAnotherLoad) {
+          Util.sleep(100);
+          needsAnotherLoad = false;
+          Log.i(TAG, "executing debounced chatlist loading");
+          loadChatlist();
+        }
+
+        inLoadChatlist = false;
+      });
+    }
   }
 
   private void loadChatlist() {
