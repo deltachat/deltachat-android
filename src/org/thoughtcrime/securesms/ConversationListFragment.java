@@ -380,34 +380,34 @@ public class ConversationListFragment extends Fragment
     ((ConversationSelectedListener)getActivity()).onCreateConversation(chatId);
   }
 
+  private final Object loadChatlistLock = new Object();
   private boolean inLoadChatlist;
   private boolean needsAnotherLoad;
   private void loadChatlistAsync() {
-    if (inLoadChatlist) {
+    synchronized (loadChatlistLock) {
       needsAnotherLoad = true;
-      Log.i(TAG, "chatlist loading debounced");
-    } else {
+      if (inLoadChatlist) {
+        Log.i(TAG, "chatlist loading debounced");
+        return;
+      }
       inLoadChatlist = true;
-      Util.runOnAnyBackgroundThread(() -> {
+    }
 
-        needsAnotherLoad = false;
-        loadChatlist();
-
-        while (needsAnotherLoad) {
-          Util.sleep(100);
+    Util.runOnAnyBackgroundThread(() -> {
+      while(true) {
+        synchronized (loadChatlistLock) {
+          if (!needsAnotherLoad) {
+            inLoadChatlist = false;
+            return;
+          }
           needsAnotherLoad = false;
-          Log.i(TAG, "executing debounced chatlist loading");
-          loadChatlist();
         }
 
-        // in theory, here is a potential race condition:
-        // if the background thread is exactly here and the main thread checks `inLoadChatlist` at that moment,
-        // one update will be missing.
-        // that can probably be fixed with some other multi-theading techniques, any suggestions welcome :)
-
-        inLoadChatlist = false;
-      });
-    }
+        Log.i(TAG, "executing debounced chatlist loading");
+        loadChatlist();
+        Util.sleep(100);
+      }
+    });
   }
 
   private void loadChatlist() {
