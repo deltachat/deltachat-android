@@ -9,6 +9,7 @@ import androidx.preference.Preference;
 
 import org.thoughtcrime.securesms.ApplicationPreferencesActivity;
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.Prefs;
 
@@ -65,7 +66,7 @@ public class AppearancePreferenceFragment extends ListSummaryPreferenceFragment 
     // (for pending activities, the locale is updated by calling DynamicLanguage.onResume)
     Context applicationContext = this.getActivity().getApplicationContext();
     DynamicLanguage.setContextLocale(applicationContext, DynamicLanguage.getSelectedLocale(applicationContext));
-    dcContext.setStockTranslations();
+    DcHelper.setStockTranslations(applicationContext);
   }
 
   public static CharSequence getSummary(Context context) {

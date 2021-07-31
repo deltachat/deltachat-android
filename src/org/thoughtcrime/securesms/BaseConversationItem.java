@@ -11,9 +11,9 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 
 import com.b44t.messenger.DcChat;
+import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMsg;
 
-import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 
 import java.util.HashSet;
@@ -29,7 +29,7 @@ public abstract class BaseConversationItem extends LinearLayout
   protected TextView      bodyText;
 
   protected final Context              context;
-  protected final ApplicationDcContext dcContext;
+  protected final DcContext            dcContext;
 
   protected @NonNull  Set<DcMsg> batchSelected = new HashSet<>();
 

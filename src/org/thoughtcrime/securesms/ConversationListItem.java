@@ -38,13 +38,13 @@ import com.amulyakhare.textdrawable.TextDrawable;
 import com.annimon.stream.Stream;
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
+import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcLot;
 import com.b44t.messenger.DcMsg;
 
 import org.thoughtcrime.securesms.components.AvatarImageView;
 import org.thoughtcrime.securesms.components.DeliveryStatusView;
 import org.thoughtcrime.securesms.components.FromTextView;
-import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.model.ThreadRecord;
 import org.thoughtcrime.securesms.mms.GlideRequests;
@@ -181,7 +181,7 @@ public class ConversationListItem extends RelativeLayout
                    @Nullable String        highlightSubstring)
   {
     this.selectedThreads = Collections.emptySet();
-    Recipient recipient  = DcHelper.getContext(getContext()).getRecipient(contact);
+    Recipient recipient  = new Recipient(getContext(), contact);
     this.glideRequests   = glideRequests;
 
     fromView.setText(getHighlightedSpan(locale, contact.getDisplayName(), highlightSubstring));
@@ -203,10 +203,10 @@ public class ConversationListItem extends RelativeLayout
                    @NonNull  Locale        locale,
                    @Nullable String        highlightSubstring)
   {
-    ApplicationDcContext dcContext = DcHelper.getContext(getContext());
+    DcContext dcContext = DcHelper.getContext(getContext());
     DcContact sender = dcContext.getContact(messageResult.getFromId());
     this.selectedThreads = Collections.emptySet();
-    Recipient recipient  = DcHelper.getContext(getContext()).getRecipient(sender);
+    Recipient recipient  = new Recipient(getContext(), sender);
     this.glideRequests   = glideRequests;
 
     fromView.setText(recipient, true);

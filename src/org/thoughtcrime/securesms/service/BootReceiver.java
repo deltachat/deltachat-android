@@ -12,7 +12,7 @@ public class BootReceiver extends BroadcastReceiver {
   public void onReceive(Context context, Intent intent) {
     Log.i("DeltaChat", "*** BootReceiver.onReceive()");
     // there's nothing more to do here as all initialisation stuff is already done in
-    // ApplicationDcContext() which is called before this broadcast is sent.
+    // on program startup which is done before this broadcast is sent.
   }
 
 }

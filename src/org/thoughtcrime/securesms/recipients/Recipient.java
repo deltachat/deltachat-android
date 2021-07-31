@@ -29,7 +29,6 @@ import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 
-import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.contacts.avatars.ContactPhoto;
 import org.thoughtcrime.securesms.contacts.avatars.FallbackContactPhoto;
@@ -69,33 +68,37 @@ public class Recipient {
   private @Nullable DcContact dcContact;
 
   public static @NonNull Recipient fromChat(@NonNull Context context, int dcMsgId) {
-    ApplicationDcContext dcContext = DcHelper.getContext(context);
-    return fromChat(dcContext, dcMsgId);
-  }
-
-  public static @NonNull Recipient fromChat (@NonNull ApplicationDcContext dcContext, int dcMsgId) {
-    return dcContext.getRecipient(dcContext.getChat(dcContext.getMsg(dcMsgId).getChatId()));
+    DcContext dcContext = DcHelper.getContext(context);
+    return new Recipient(context, dcContext.getChat(dcContext.getMsg(dcMsgId).getChatId()));
   }
 
   @SuppressWarnings("ConstantConditions")
   public static @NonNull Recipient from(@NonNull Context context, @NonNull Address address) {
     if (address == null) throw new AssertionError(address);
-    ApplicationDcContext dcContext = DcHelper.getContext(context);
+    DcContext dcContext = DcHelper.getContext(context);
     if(address.isDcContact()) {
-      return dcContext.getRecipient(dcContext.getContact(address.getDcContactId()));
+      return new Recipient(context, dcContext.getContact(address.getDcContactId()));
     } else if (address.isDcChat()) {
-      return dcContext.getRecipient(dcContext.getChat(address.getDcChatId()));
+      return new Recipient(context, dcContext.getChat(address.getDcChatId()));
     }
     else if(address.isEmail()) {
       int contactId = dcContext.lookupContactIdByAddr(address.toEmailString());
       if(contactId!=0) {
-        return dcContext.getRecipient(dcContext.getContact(contactId));
+        return new Recipient(context, dcContext.getContact(contactId));
       }
     }
-    return dcContext.getRecipient(dcContext.getContact(0));
+    return new Recipient(context, dcContext.getContact(0));
   }
 
-  public Recipient(@NonNull Context context, @Nullable DcChat dcChat, @Nullable DcContact dcContact) {
+  public Recipient(@NonNull Context context, @NonNull DcChat dcChat) {
+    this(context, dcChat, null);
+  }
+
+  public Recipient(@NonNull Context context, @NonNull DcContact dcContact) {
+    this(context, null, dcContact);
+  }
+
+  private Recipient(@NonNull Context context, @Nullable DcChat dcChat, @Nullable DcContact dcContact) {
     this.dcChat                = dcChat;
     this.dcContact             = dcContact;
     this.contactUri            = null;
@@ -164,10 +167,10 @@ public class Recipient {
   public @NonNull List<Recipient> loadParticipants(Context context) {
     List<Recipient> participants = new ArrayList<>();
     if (dcChat!=null) {
-      ApplicationDcContext dcContext = DcHelper.getContext(context);
+      DcContext dcContext = DcHelper.getContext(context);
       int[] contactIds = dcContext.getChatContacts(dcChat.getId());
       for (int contactId : contactIds) {
-        participants.add(dcContext.getRecipient(ApplicationDcContext.RECIPIENT_TYPE_CONTACT, contactId));
+        participants.add(new Recipient(context, dcContext.getContact(contactId)));
       }
     }
     return participants;

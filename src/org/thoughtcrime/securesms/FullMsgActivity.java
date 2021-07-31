@@ -7,7 +7,8 @@ import android.webkit.WebSettings;
 
 import androidx.appcompat.app.AlertDialog;
 
-import org.thoughtcrime.securesms.connect.ApplicationDcContext;
+import com.b44t.messenger.DcContext;
+
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.Prefs;
@@ -22,7 +23,7 @@ public class FullMsgActivity extends WebViewActivity
 {
   public static final String MSG_ID_EXTRA = "msg_id";
   private int msgId;
-  private ApplicationDcContext dcContext;
+  private DcContext dcContext;
   private boolean loadRemoteContent = false;
 
   enum LoadRemoteContent {

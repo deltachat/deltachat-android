@@ -856,7 +856,7 @@ public class VideoRecoder {
       }
 
       // recode
-      String tempPath = DcHelper.getContext(context).getBlobdirFile(inPath);
+      String tempPath = DcHelper.getBlobdirFile(DcHelper.getContext(context), inPath);
       VideoRecoder videoRecoder = new VideoRecoder();
       if (!videoRecoder.convertVideo(vei, tempPath)) {
         logNtoast(context, String.format("recoding for %s failed: cannot convert to temporary file %s", inPath, tempPath));

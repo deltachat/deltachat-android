@@ -182,7 +182,7 @@ public class AudioSlidePlayer {
 
         // Failed to play media file, maybe another app can handle it
         int msgId = getAudioSlide().getDcMsgId();
-        DcHelper.getContext(context).openForViewOrShare(context, msgId, Intent.ACTION_VIEW);
+        DcHelper.openForViewOrShare(context, msgId, Intent.ACTION_VIEW);
       }
     });
   }

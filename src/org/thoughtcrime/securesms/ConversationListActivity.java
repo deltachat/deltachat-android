@@ -37,7 +37,6 @@ import com.google.zxing.integration.android.IntentResult;
 
 import org.thoughtcrime.securesms.components.SearchToolbar;
 import org.thoughtcrime.securesms.connect.AccountManager;
-import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.map.MapActivity;
 import org.thoughtcrime.securesms.qr.QrActivity;
@@ -128,7 +127,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     handleOpenpgp4fpr();
 
     if (getIntent().getBooleanExtra(CLEAR_NOTIFICATIONS, false)) {
-      DcHelper.getContext(this).notificationCenter.removeAllNotifiations();
+      DcHelper.getNotificationCenter(this).removeAllNotifiations();
     }
   }
 
@@ -286,7 +285,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   public void openConversation(int chatId, int startingPosition) {
     searchToolbar.clearFocus();
 
-    final ApplicationDcContext dcContext = DcHelper.getContext(this);
+    final DcContext dcContext = DcHelper.getContext(this);
     if (isForwarding(this) && dcContext.getChat(chatId).isSelfTalk()) {
       SendRelayedMessageUtil.immediatelyRelay(this, chatId);
       Toast.makeText(this, DynamicTheme.getCheckmarkEmoji(this) + " " + getString(R.string.saved), Toast.LENGTH_SHORT).show();

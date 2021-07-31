@@ -18,7 +18,6 @@ import com.b44t.messenger.DcChatlist;
 import com.b44t.messenger.DcContext;
 
 import org.thoughtcrime.securesms.ShareActivity;
-import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.recipients.Recipient;
@@ -39,7 +38,7 @@ public class DirectShareService extends ChooserTargetService {
   {
     List<ChooserTarget> results        = new LinkedList<>();
     ComponentName       componentName  = new ComponentName(this, ShareActivity.class);
-    ApplicationDcContext dcContext = DcHelper.getContext(this);
+    DcContext           dcContext = DcHelper.getContext(this);
 
     DcChatlist chatlist = dcContext.getChatlist(
             DcContext.DC_GCL_ADD_ALLDONE_HINT | DcContext.DC_GCL_FOR_FORWARDING | DcContext.DC_GCL_NO_SPECIALS,
@@ -59,7 +58,7 @@ public class DirectShareService extends ChooserTargetService {
       Bundle bundle = new Bundle();
       bundle.putInt(ShareActivity.EXTRA_CHAT_ID, chat.getId());
       bundle.setClassLoader(getClassLoader());
-      Recipient recipient = DcHelper.getContext(this).getRecipient(chat);
+      Recipient recipient = new Recipient(this, chat);
       Bitmap avatar;
       try {
         avatar = GlideApp.with(this)

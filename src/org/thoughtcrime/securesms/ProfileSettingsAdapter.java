@@ -13,9 +13,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcChatlist;
 import com.b44t.messenger.DcContact;
+import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcLot;
 
-import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.contacts.ContactSelectionListItem;
 import org.thoughtcrime.securesms.mms.GlideRequests;
@@ -35,7 +35,7 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
 
   private final @NonNull Context              context;
   private final @NonNull Locale               locale;
-  private final @NonNull ApplicationDcContext dcContext;
+  private final @NonNull DcContext            dcContext;
 
   private @NonNull ArrayList<ItemData>        itemData = new ArrayList<>();
   private int                                 itemDataMemberCount;
@@ -171,7 +171,7 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
       DcChat chat = dcContext.getChat(chatId);
       DcLot summary = itemDataSharedChats.getSummary(chatlistIndex, chat);
 
-      conversationListItem.bind(dcContext.getThreadRecord(summary, chat),
+      conversationListItem.bind(DcHelper.getThreadRecord(context, summary, chat),
           itemDataSharedChats.getMsgId(chatlistIndex), summary, glideRequests,
           locale, Collections.emptySet(), false);
       conversationListItem.setOnClickListener(view -> clickListener.onSharedChatClicked(chatId));

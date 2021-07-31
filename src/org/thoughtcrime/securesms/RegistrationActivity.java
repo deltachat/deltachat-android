@@ -33,7 +33,6 @@ import android.widget.Toast;
 
 import com.b44t.messenger.DcContext;
 
-import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.permissions.Permissions;
@@ -178,7 +177,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
             certCheck.setSelection(certCheckFlags);
         }
 
-        DcHelper.getContext(this).eventCenter.addObserver(DcContext.DC_EVENT_CONFIGURE_PROGRESS, this);
+        DcHelper.getEventCenter(this).addObserver(DcContext.DC_EVENT_CONFIGURE_PROGRESS, this);
     }
 
     @Override
@@ -234,7 +233,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
     @Override
     public void onDestroy() {
         super.onDestroy();
-        DcHelper.getContext(this).eventCenter.removeObservers(this);
+        DcHelper.getEventCenter(this).removeObservers(this);
     }
 
     @Override
@@ -524,10 +523,9 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
 
         // calling configure() results in
         // receiving multiple DC_EVENT_CONFIGURE_PROGRESS events
-        ApplicationDcContext dcContext = DcHelper.getContext(this);
-        dcContext.stopIo();
-        dcContext.captureNextError();
-        dcContext.configure();
+        DcHelper.getAccounts(this).stopIo();
+        DcHelper.getEventCenter(this).captureNextError();
+        DcHelper.getContext(this).configure();
     }
 
     private void setConfig(@IdRes int viewId, String configTarget, boolean doTrim) {
@@ -546,11 +544,10 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
     @Override
     public void handleEvent(DcEvent event) {
         if (event.getId()==DcContext.DC_EVENT_CONFIGURE_PROGRESS) {
-            ApplicationDcContext dcContext = DcHelper.getContext(this);
             long progress = event.getData1Int();
             if (progress==0/*error/aborted*/) {
-                dcContext.maybeStartIo(); // start-io is also needed on errors to make previous config work in case of changes
-                dcContext.endCaptureNextError();
+                DcHelper.getAccounts(this).startIo(); // start-io is also needed on errors to make previous config work in case of changes
+                DcHelper.getEventCenter(this).endCaptureNextError();
                 progressDialog.dismiss();
                 WelcomeActivity.maybeShowConfigurationError(this, event.getData2Str());
             }
@@ -559,8 +556,8 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
                 progressDialog.setMessage(getResources().getString(R.string.one_moment)+String.format(" %d%%", percent));
             }
             else if (progress==1000/*done*/) {
-                dcContext.maybeStartIo();
-                dcContext.endCaptureNextError();
+                DcHelper.getAccounts(this).startIo();
+                DcHelper.getEventCenter(this).endCaptureNextError();
                 progressDialog.dismiss();
                 Intent conversationList = new Intent(getApplicationContext(), ConversationListActivity.class);
                 startActivity(conversationList);

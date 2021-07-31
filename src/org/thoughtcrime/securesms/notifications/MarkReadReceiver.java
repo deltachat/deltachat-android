@@ -6,7 +6,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.util.Util;
 
@@ -27,12 +26,10 @@ public class MarkReadReceiver extends BroadcastReceiver {
       return;
     }
 
-    final ApplicationDcContext dcContext = DcHelper.getContext(context);
-
     Util.runOnAnyBackgroundThread(() -> {
-      dcContext.notificationCenter.removeNotifications(chatId);
+      DcHelper.getNotificationCenter(context).removeNotifications(chatId);
       if (markNoticed) {
-        dcContext.marknoticedChat(chatId);
+        DcHelper.getContext(context).marknoticedChat(chatId);
       }
     });
   }

@@ -1,6 +1,7 @@
 package org.thoughtcrime.securesms.preferences;
 
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -13,7 +14,6 @@ import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 
 import org.thoughtcrime.securesms.R;
-import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.service.GenericForegroundService;
@@ -26,19 +26,19 @@ import java.util.Arrays;
 public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceFragment implements DcEventCenter.DcEventDelegate {
   protected static final int REQUEST_CODE_CONFIRM_CREDENTIALS_BACKUP = ScreenLockUtil.REQUEST_CODE_CONFIRM_CREDENTIALS + 1;
   protected static final int REQUEST_CODE_CONFIRM_CREDENTIALS_KEYS = REQUEST_CODE_CONFIRM_CREDENTIALS_BACKUP + 1;
-  protected ApplicationDcContext dcContext;
+  protected DcContext dcContext;
   private NotificationController notificationController;
 
   @Override
   public void onCreate(Bundle icicle) {
     super.onCreate(icicle);
     dcContext = DcHelper.getContext(getContext());
-    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_IMEX_PROGRESS, this);
+    DcHelper.getEventCenter(getContext()).addObserver(DcContext.DC_EVENT_IMEX_PROGRESS, this);
   }
 
   @Override
   public void onDestroy() {
-    dcContext.eventCenter.removeObservers(this);
+    DcHelper.getEventCenter(getContext()).removeObservers(this);
 
     if (notificationController != null) {
       // cancel backup when settings-activity is destroyed.
@@ -119,9 +119,9 @@ public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceF
     });
     progressDialog.show();
 
-    imexDir = dcContext.getImexDir().getAbsolutePath();
-    dcContext.stopIo();
-    dcContext.captureNextError();
+    imexDir = DcHelper.getImexDir().getAbsolutePath();
+    DcHelper.getAccounts(getActivity()).stopIo();
+    DcHelper.getEventCenter(getActivity()).captureNextError();
     dcContext.imex(progressWhat, imexDir);
   }
 
@@ -129,14 +129,15 @@ public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceF
   public void handleEvent(DcEvent event) {
     if (event.getId()== DcContext.DC_EVENT_IMEX_PROGRESS) {
       long progress = event.getData1Int();
+      Context context = getActivity();
       if (progress==0/*error/aborted*/) {
-        dcContext.endCaptureNextError();
-        dcContext.maybeStartIo();
+        DcHelper.getEventCenter(context).endCaptureNextError();
+        DcHelper.getAccounts(context).startIo();
         progressDialog.dismiss();
         progressDialog = null;
-        if (dcContext.hasCapturedError()) {
-          new AlertDialog.Builder(getActivity())
-                  .setMessage(dcContext.getCapturedError())
+        if (DcHelper.getEventCenter(context).hasCapturedError()) {
+          new AlertDialog.Builder(context)
+                  .setMessage(DcHelper.getEventCenter(context).getCapturedError())
                   .setPositiveButton(android.R.string.ok, null)
                   .show();
         }
@@ -150,23 +151,23 @@ public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceF
         notificationController.setProgress(1000, progress, formattedPercent);
       }
       else if (progress==1000/*done*/) {
-        dcContext.endCaptureNextError();
-        dcContext.maybeStartIo();
+        DcHelper.getEventCenter(context).endCaptureNextError();
+        DcHelper.getAccounts(context).startIo();
         progressDialog.dismiss();
         progressDialog = null;
         notificationController.close();
         notificationController = null;
         String msg = "";
         if (progressWhat==DcContext.DC_IMEX_EXPORT_BACKUP) {
-          msg = getActivity().getString(R.string.pref_backup_written_to_x, imexDir);
+          msg = context.getString(R.string.pref_backup_written_to_x, imexDir);
         }
         else if (progressWhat==DcContext.DC_IMEX_EXPORT_SELF_KEYS) {
-          msg = getActivity().getString(R.string.pref_managekeys_secret_keys_exported_to_x, imexDir);
+          msg = context.getString(R.string.pref_managekeys_secret_keys_exported_to_x, imexDir);
         }
         else if (progressWhat==DcContext.DC_IMEX_IMPORT_SELF_KEYS) {
-          msg = getActivity().getString(R.string.pref_managekeys_secret_keys_imported_from_x, imexDir);
+          msg = context.getString(R.string.pref_managekeys_secret_keys_imported_from_x, imexDir);
         }
-        new AlertDialog.Builder(getActivity())
+        new AlertDialog.Builder(context)
                 .setMessage(msg)
                 .setPositiveButton(android.R.string.ok, null)
                 .show();

@@ -17,6 +17,7 @@ import com.b44t.messenger.DcContext;
 import org.thoughtcrime.securesms.components.AvatarImageView;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideRequests;
+import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
 public class ConversationTitleView extends RelativeLayout {
@@ -98,7 +99,7 @@ public class ConversationTitleView extends RelativeLayout {
       imgRight = R.drawable.ic_verified;
     }
 
-    avatar.setAvatar(glideRequests, DcHelper.getContext(getContext()).getRecipient(dcChat), false);
+    avatar.setAvatar(glideRequests, new Recipient(getContext(), dcChat), false);
     title.setCompoundDrawablesWithIntrinsicBounds(imgLeft, 0, imgRight, 0);
     subtitle.setVisibility(showAddInfo? View.VISIBLE : View.GONE);
 
@@ -109,7 +110,7 @@ public class ConversationTitleView extends RelativeLayout {
   public void setTitle(@NonNull GlideRequests glideRequests, @NonNull DcContact contact) {
     // the verified state is _not_ shown in the title. this will be confusing as in the one-to-one-ChatViews, the verified
     // icon is also not shown as these chats are always opportunistic chats
-    avatar.setAvatar(glideRequests, DcHelper.getContext(getContext()).getRecipient(contact), false);
+    avatar.setAvatar(glideRequests, new Recipient(getContext(), contact), false);
     title.setText(contact.getDisplayName());
     title.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
     subtitle.setText(contact.getAddr());

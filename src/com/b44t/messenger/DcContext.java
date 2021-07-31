@@ -81,8 +81,13 @@ public class DcContext {
     public final static int DC_CONNECTIVITY_WORKING = 3000;
     public final static int DC_CONNECTIVITY_CONNECTED = 4000;
 
+    // when using DcAccounts, use DcAccounts.addAccount() instead
     public DcContext(String osName, String dbfile) {
         contextCPtr = createContextCPtr(osName, dbfile);
+    }
+
+    public DcContext(long contextCPtr) {
+        this.contextCPtr = contextCPtr;
     }
 
     public boolean isOk() {
@@ -102,17 +107,26 @@ public class DcContext {
         }
     }
 
+    public native int          getAccountId         ();
+
+    // when using DcAccounts, use DcAccounts.getEventEmitter() instead
     public DcEventEmitter      getEventEmitter      () { return new DcEventEmitter(getEventEmitterCPtr()); }
+
     public native void         setStockTranslation  (int stockId, String translation);
     public native String       getBlobdir           ();
     public native void         configure            ();
     public native void         stopOngoingProcess   ();
     public native int          isConfigured         ();
 
+    // when using DcAccounts, use DcAccounts.startIo() instead
     public native void         startIo              ();
+
+    // when using DcAccounts, use DcAccounts.stopIo() instead
     public native void         stopIo               ();
 
+    // when using DcAccounts, use DcAccounts.maybeNetwork() instead
     public native void         maybeNetwork         ();
+
     public native void         setConfig            (String key, String value);
     public void                setConfigInt         (String key, int value) { setConfig(key, Integer.toString(value)); }
     public native boolean      setConfigFromQr      (String qr);
@@ -187,6 +201,24 @@ public class DcContext {
     public DcArray             getLocations         (int chat_id, int contact_id, long timestamp_start, long timestamp_end) { return new DcArray(getLocationsCPtr(chat_id, contact_id, timestamp_start, timestamp_end)); }
     public native void         deleteAllLocations   ();
     public DcProvider          getProviderFromEmail (String email) { long cptr = getProviderFromEmailCPtr(email); return cptr!=0 ? new DcProvider(cptr) : null; }
+
+    public String getNameNAddr() {
+      String displayname = getConfig("displayname");
+      String addr = getConfig("addr");
+      String ret = "";
+
+      if (!displayname.isEmpty() && !addr.isEmpty()) {
+        ret = String.format("%s (%s)", displayname, addr);
+      } else if (!addr.isEmpty()) {
+        ret = addr;
+      }
+
+      if (ret.isEmpty() || isConfigured() == 0) {
+        ret += " (not configured)";
+      }
+
+      return ret.trim();
+    }
 
     /**
      * @return true if at least one chat has location streaming enabled
