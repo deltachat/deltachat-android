@@ -26,6 +26,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -157,7 +158,7 @@ public class ConversationListFragment extends Fragment
     setHasOptionsMenu(true);
     initializeFabClickListener(false);
     list.setAdapter(new ConversationListAdapter(getActivity(), GlideApp.with(this), locale, this));
-    loadChatlist();
+    loadChatlistAsync();
     chatlistJustLoaded = true;
   }
 
@@ -177,7 +178,7 @@ public class ConversationListFragment extends Fragment
     reloadTimer.scheduleAtFixedRate(new TimerTask() {
       @Override
       public void run() {
-        Util.runOnMain(() -> loadChatlist());
+        Util.runOnMain(() -> { list.getAdapter().notifyDataSetChanged(); });
       }
     }, 60 * 1000, 60 * 1000);
   }
@@ -379,7 +380,37 @@ public class ConversationListFragment extends Fragment
     ((ConversationSelectedListener)getActivity()).onCreateConversation(chatId);
   }
 
-  public void loadChatlist() {
+  private boolean inLoadChatlist;
+  private boolean needsAnotherLoad;
+  private void loadChatlistAsync() {
+    if (inLoadChatlist) {
+      needsAnotherLoad = true;
+      Log.i(TAG, "chatlist loading debounced");
+    } else {
+      inLoadChatlist = true;
+      Util.runOnAnyBackgroundThread(() -> {
+
+        needsAnotherLoad = false;
+        loadChatlist();
+
+        while (needsAnotherLoad) {
+          Util.sleep(100);
+          needsAnotherLoad = false;
+          Log.i(TAG, "executing debounced chatlist loading");
+          loadChatlist();
+        }
+
+        // in theory, here is a potential race condition:
+        // if the background thread is exactly here and the main thread checks `inLoadChatlist` at that moment,
+        // one update will be missing.
+        // that can probably be fixed with some other multi-theading techniques, any suggestions welcome :)
+
+        inLoadChatlist = false;
+      });
+    }
+  }
+
+  private void loadChatlist() {
     int listflags = 0;
     if (archive) {
       listflags |= DcContext.DC_GCL_ARCHIVED_ONLY;
@@ -390,24 +421,26 @@ public class ConversationListFragment extends Fragment
     }
     DcChatlist chatlist = DcHelper.getContext(getContext()).getChatlist(listflags, queryFilter.isEmpty() ? null : queryFilter, 0);
 
-    if (chatlist.getCnt() <= 0 && TextUtils.isEmpty(queryFilter)) {
-      list.setVisibility(View.INVISIBLE);
-      emptyState.setVisibility(View.VISIBLE);
-      emptySearch.setVisibility(View.INVISIBLE);
-      fab.startPulse(3 * 1000);
-    } else if (chatlist.getCnt() <= 0 && !TextUtils.isEmpty(queryFilter)) {
-      list.setVisibility(View.INVISIBLE);
-      emptyState.setVisibility(View.GONE);
-      emptySearch.setVisibility(View.VISIBLE);
-      emptySearch.setText(getString(R.string.search_no_result_for_x, queryFilter));
-    } else {
-      list.setVisibility(View.VISIBLE);
-      emptyState.setVisibility(View.GONE);
-      emptySearch.setVisibility(View.INVISIBLE);
-      fab.stopPulse();
-    }
+    Util.runOnMain(() -> {
+      if (chatlist.getCnt() <= 0 && TextUtils.isEmpty(queryFilter)) {
+        list.setVisibility(View.INVISIBLE);
+        emptyState.setVisibility(View.VISIBLE);
+        emptySearch.setVisibility(View.INVISIBLE);
+        fab.startPulse(3 * 1000);
+      } else if (chatlist.getCnt() <= 0 && !TextUtils.isEmpty(queryFilter)) {
+        list.setVisibility(View.INVISIBLE);
+        emptyState.setVisibility(View.GONE);
+        emptySearch.setVisibility(View.VISIBLE);
+        emptySearch.setText(getString(R.string.search_no_result_for_x, queryFilter));
+      } else {
+        list.setVisibility(View.VISIBLE);
+        emptyState.setVisibility(View.GONE);
+        emptySearch.setVisibility(View.INVISIBLE);
+        fab.stopPulse();
+      }
 
-    getListAdapter().changeData(chatlist);
+      getListAdapter().changeData(chatlist);
+    });
   }
 
   @Override
@@ -554,7 +587,7 @@ public class ConversationListFragment extends Fragment
     if (event.getId() == DcContext.DC_EVENT_CONNECTIVITY_CHANGED) {
       ((ConversationListActivity) getActivity()).refreshTitle();
     } else {
-      loadChatlist();
+      loadChatlistAsync();
     }
   }
 
