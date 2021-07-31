@@ -111,19 +111,19 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
   private boolean handleImapCheck(Preference preference, Object newValue, String dc_config_name) {
     final boolean newEnabled = (Boolean) newValue;
     if(newEnabled) {
-      dcContext.stopIo();
+      DcHelper.getAccounts(getContext()).stopIo();
       dcContext.setConfigInt(dc_config_name, 1);
-      dcContext.maybeStartIo();
+      DcHelper.getAccounts(getContext()).startIo();
       return true;
     }
     else {
       new AlertDialog.Builder(getContext())
         .setMessage(R.string.pref_imap_folder_warn_disable_defaults)
         .setPositiveButton(R.string.ok, (dialogInterface, i) -> {
-          dcContext.stopIo();
+          DcHelper.getAccounts(getContext()).stopIo();
           dcContext.setConfigInt(dc_config_name, 0);
           ((CheckBoxPreference)preference).setChecked(false);
-          dcContext.maybeStartIo();
+          DcHelper.getAccounts(getContext()).startIo();
         })
         .setNegativeButton(R.string.cancel, null)
         .show();
@@ -217,7 +217,7 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
   private void updateWebrtcSummary() {
     Preference webrtcInstance = this.findPreference("pref_webrtc_instance");
     if (webrtcInstance != null) {
-      webrtcInstance.setSummary(dcContext.isWebrtcConfigOk()?
+      webrtcInstance.setSummary(DcHelper.isWebrtcConfigOk(dcContext)?
               dcContext.getConfig(DcHelper.CONFIG_WEBRTC_INSTANCE) : getString(R.string.none));
     }
   }
@@ -316,7 +316,7 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
                     if (i==0) {
                       new AlertDialog.Builder(getActivity())
                           .setTitle(R.string.pref_managekeys_export_secret_keys)
-                          .setMessage(getActivity().getString(R.string.pref_managekeys_export_explain, dcContext.getImexDir().getAbsolutePath()))
+                          .setMessage(getActivity().getString(R.string.pref_managekeys_export_explain, DcHelper.getImexDir().getAbsolutePath()))
                           .setNegativeButton(android.R.string.cancel, null)
                           .setPositiveButton(android.R.string.ok, (dialogInterface2, i2) -> startImex(DcContext.DC_IMEX_EXPORT_SELF_KEYS))
                           .show();
@@ -324,7 +324,7 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
                     else {
                       new AlertDialog.Builder(getActivity())
                           .setTitle(R.string.pref_managekeys_import_secret_keys)
-                          .setMessage(getActivity().getString(R.string.pref_managekeys_import_explain, dcContext.getImexDir().getAbsolutePath()))
+                          .setMessage(getActivity().getString(R.string.pref_managekeys_import_explain, DcHelper.getImexDir().getAbsolutePath()))
                           .setNegativeButton(android.R.string.cancel, null)
                           .setPositiveButton(android.R.string.ok, (dialogInterface2, i2) -> startImex(DcContext.DC_IMEX_IMPORT_SELF_KEYS))
                           .show();

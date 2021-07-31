@@ -27,12 +27,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcChatlist;
+import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcLot;
 
-import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 
+import java.lang.ref.WeakReference;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Locale;
@@ -49,7 +50,8 @@ class ConversationListAdapter extends RecyclerView.Adapter {
   private static final int MESSAGE_TYPE_THREAD         = 2;
   private static final int MESSAGE_TYPE_INBOX_ZERO     = 3;
 
-  private final @NonNull  ApplicationDcContext dcContext;
+  private final WeakReference<Context>         context;
+  private final @NonNull  DcContext            dcContext;
   private @NonNull        DcChatlist           dcChatlist;
   private final @NonNull  GlideRequests        glideRequests;
   private final @NonNull  Locale               locale;
@@ -86,6 +88,7 @@ class ConversationListAdapter extends RecyclerView.Adapter {
                           @Nullable ItemClickListener clickListener)
   {
     super();
+    this.context        = new WeakReference<>(context);
     this.glideRequests  = glideRequests;
     this.dcContext      = DcHelper.getContext(context);
     this.dcChatlist     = new DcChatlist(0);
@@ -127,10 +130,15 @@ class ConversationListAdapter extends RecyclerView.Adapter {
 
   @Override
   public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int i) {
+    Context context = this.context.get();
+    if (context == null) {
+      return;
+    }
+
     ViewHolder holder = (ViewHolder)viewHolder;
     DcChat chat = dcContext.getChat(dcChatlist.getChatId(i));
     DcLot summary = dcChatlist.getSummary(i, chat);
-    holder.getItem().bind(dcContext.getThreadRecord(summary, chat), dcChatlist.getMsgId(i), summary, glideRequests, locale, batchSet, batchMode);
+    holder.getItem().bind(DcHelper.getThreadRecord(context, summary, chat), dcChatlist.getMsgId(i), summary, glideRequests, locale, batchSet, batchMode);
   }
 
   @Override

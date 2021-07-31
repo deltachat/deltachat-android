@@ -159,7 +159,7 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
         tintIcons(getActivity());
       }
 
-      DcHelper.getContext(getActivity()).eventCenter.addObserver(DcContext.DC_EVENT_CONNECTIVITY_CHANGED, this);
+      DcHelper.getEventCenter(getActivity()).addObserver(DcContext.DC_EVENT_CONNECTIVITY_CHANGED, this);
     }
 
     @Override
@@ -178,7 +178,7 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
     @Override
     public void onDestroy() {
       super.onDestroy();
-      DcHelper.getContext(getActivity()).eventCenter.removeObservers(this);
+      DcHelper.getEventCenter(getActivity()).removeObservers(this);
     }
 
     @Override

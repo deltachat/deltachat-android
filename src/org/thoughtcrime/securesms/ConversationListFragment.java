@@ -26,6 +26,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -54,7 +55,6 @@ import org.thoughtcrime.securesms.ConversationListAdapter.ItemClickListener;
 import org.thoughtcrime.securesms.components.recyclerview.DeleteItemAnimator;
 import org.thoughtcrime.securesms.components.registration.PulsingFloatingActionButton;
 import org.thoughtcrime.securesms.components.reminder.DozeReminder;
-import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideApp;
@@ -105,22 +105,22 @@ public class ConversationListFragment extends Fragment
     locale = (Locale) getArguments().getSerializable(PassphraseRequiredActionBarActivity.LOCALE_EXTRA);
     archive = getArguments().getBoolean(ARCHIVE, false);
 
-    ApplicationDcContext dcContext = DcHelper.getContext(getActivity());
-    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_CHAT_MODIFIED, this);
-    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_INCOMING_MSG, this);
-    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_MSGS_CHANGED, this);
-    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_MSGS_NOTICED, this);
-    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_MSG_DELIVERED, this);
-    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_MSG_FAILED, this);
-    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_MSG_READ, this);
-    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_MSG_READ, this);
-    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_CONNECTIVITY_CHANGED, this);
+    DcEventCenter eventCenter = DcHelper.getEventCenter(getActivity());
+    eventCenter.addObserver(DcContext.DC_EVENT_CHAT_MODIFIED, this);
+    eventCenter.addObserver(DcContext.DC_EVENT_INCOMING_MSG, this);
+    eventCenter.addObserver(DcContext.DC_EVENT_MSGS_CHANGED, this);
+    eventCenter.addObserver(DcContext.DC_EVENT_MSGS_NOTICED, this);
+    eventCenter.addObserver(DcContext.DC_EVENT_MSG_DELIVERED, this);
+    eventCenter.addObserver(DcContext.DC_EVENT_MSG_FAILED, this);
+    eventCenter.addObserver(DcContext.DC_EVENT_MSG_READ, this);
+    eventCenter.addObserver(DcContext.DC_EVENT_MSG_READ, this);
+    eventCenter.addObserver(DcContext.DC_EVENT_CONNECTIVITY_CHANGED, this);
   }
 
   @Override
   public void onDestroy() {
     super.onDestroy();
-    DcHelper.getContext(getActivity()).eventCenter.removeObservers(this);
+    DcHelper.getEventCenter(getActivity()).removeObservers(this);
   }
 
   @SuppressLint("RestrictedApi")
@@ -157,7 +157,7 @@ public class ConversationListFragment extends Fragment
     setHasOptionsMenu(true);
     initializeFabClickListener(false);
     list.setAdapter(new ConversationListAdapter(getActivity(), GlideApp.with(this), locale, this));
-    loadChatlist();
+    loadChatlistAsync();
     chatlistJustLoaded = true;
   }
 
@@ -177,7 +177,7 @@ public class ConversationListFragment extends Fragment
     reloadTimer.scheduleAtFixedRate(new TimerTask() {
       @Override
       public void run() {
-        Util.runOnMain(() -> loadChatlist());
+        Util.runOnMain(() -> { list.getAdapter().notifyDataSetChanged(); });
       }
     }, 60 * 1000, 60 * 1000);
   }
@@ -322,7 +322,7 @@ public class ConversationListFragment extends Fragment
 
   @SuppressLint("StaticFieldLeak")
   private void handleDeleteAllSelected() {
-    final ApplicationDcContext dcContext          = DcHelper.getContext(getActivity());
+    final DcContext            dcContext          = DcHelper.getContext(getActivity());
     int                        conversationsCount = getListAdapter().getBatchSelections().size();
     AlertDialog.Builder        alert              = new AlertDialog.Builder(getActivity());
     alert.setMessage(getActivity().getResources().getQuantityString(R.plurals.ask_delete_chat,
@@ -348,7 +348,7 @@ public class ConversationListFragment extends Fragment
           @Override
           protected Void doInBackground(Void... params) {
             for (long chatId : selectedConversations) {
-              dcContext.notificationCenter.removeNotifications((int) chatId);
+              DcHelper.getNotificationCenter(getContext()).removeNotifications((int) chatId);
               dcContext.deleteChat((int) chatId);
             }
             return null;
@@ -379,7 +379,37 @@ public class ConversationListFragment extends Fragment
     ((ConversationSelectedListener)getActivity()).onCreateConversation(chatId);
   }
 
-  public void loadChatlist() {
+  private final Object loadChatlistLock = new Object();
+  private boolean inLoadChatlist;
+  private boolean needsAnotherLoad;
+  private void loadChatlistAsync() {
+    synchronized (loadChatlistLock) {
+      needsAnotherLoad = true;
+      if (inLoadChatlist) {
+        Log.i(TAG, "chatlist loading debounced");
+        return;
+      }
+      inLoadChatlist = true;
+    }
+
+    Util.runOnAnyBackgroundThread(() -> {
+      while(true) {
+        synchronized (loadChatlistLock) {
+          if (!needsAnotherLoad) {
+            inLoadChatlist = false;
+            return;
+          }
+          needsAnotherLoad = false;
+        }
+
+        Log.i(TAG, "executing debounced chatlist loading");
+        loadChatlist();
+        Util.sleep(100);
+      }
+    });
+  }
+
+  private void loadChatlist() {
     int listflags = 0;
     if (archive) {
       listflags |= DcContext.DC_GCL_ARCHIVED_ONLY;
@@ -390,24 +420,26 @@ public class ConversationListFragment extends Fragment
     }
     DcChatlist chatlist = DcHelper.getContext(getContext()).getChatlist(listflags, queryFilter.isEmpty() ? null : queryFilter, 0);
 
-    if (chatlist.getCnt() <= 0 && TextUtils.isEmpty(queryFilter)) {
-      list.setVisibility(View.INVISIBLE);
-      emptyState.setVisibility(View.VISIBLE);
-      emptySearch.setVisibility(View.INVISIBLE);
-      fab.startPulse(3 * 1000);
-    } else if (chatlist.getCnt() <= 0 && !TextUtils.isEmpty(queryFilter)) {
-      list.setVisibility(View.INVISIBLE);
-      emptyState.setVisibility(View.GONE);
-      emptySearch.setVisibility(View.VISIBLE);
-      emptySearch.setText(getString(R.string.search_no_result_for_x, queryFilter));
-    } else {
-      list.setVisibility(View.VISIBLE);
-      emptyState.setVisibility(View.GONE);
-      emptySearch.setVisibility(View.INVISIBLE);
-      fab.stopPulse();
-    }
+    Util.runOnMain(() -> {
+      if (chatlist.getCnt() <= 0 && TextUtils.isEmpty(queryFilter)) {
+        list.setVisibility(View.INVISIBLE);
+        emptyState.setVisibility(View.VISIBLE);
+        emptySearch.setVisibility(View.INVISIBLE);
+        fab.startPulse(3 * 1000);
+      } else if (chatlist.getCnt() <= 0 && !TextUtils.isEmpty(queryFilter)) {
+        list.setVisibility(View.INVISIBLE);
+        emptyState.setVisibility(View.GONE);
+        emptySearch.setVisibility(View.VISIBLE);
+        emptySearch.setText(getString(R.string.search_no_result_for_x, queryFilter));
+      } else {
+        list.setVisibility(View.VISIBLE);
+        emptyState.setVisibility(View.GONE);
+        emptySearch.setVisibility(View.INVISIBLE);
+        fab.stopPulse();
+      }
 
-    getListAdapter().changeData(chatlist);
+      getListAdapter().changeData(chatlist);
+    });
   }
 
   @Override
@@ -456,7 +488,7 @@ public class ConversationListFragment extends Fragment
   }
 
   private boolean areSomeSelectedChatsUnpinned() {
-    ApplicationDcContext dcContext = DcHelper.getContext(getActivity());
+    DcContext dcContext = DcHelper.getContext(getActivity());
     final Set<Long> selectedChats = getListAdapter().getBatchSelections();
     for (long chatId : selectedChats) {
       DcChat dcChat = dcContext.getChat((int)chatId);
@@ -554,7 +586,7 @@ public class ConversationListFragment extends Fragment
     if (event.getId() == DcContext.DC_EVENT_CONNECTIVITY_CHANGED) {
       ((ConversationListActivity) getActivity()).refreshTitle();
     } else {
-      loadChatlist();
+      loadChatlistAsync();
     }
   }
 

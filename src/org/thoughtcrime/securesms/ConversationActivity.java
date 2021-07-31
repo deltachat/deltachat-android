@@ -84,7 +84,6 @@ import org.thoughtcrime.securesms.components.camera.QuickAttachmentDrawer.Attach
 import org.thoughtcrime.securesms.components.camera.QuickAttachmentDrawer.DrawerState;
 import org.thoughtcrime.securesms.components.emoji.EmojiKeyboardProvider;
 import org.thoughtcrime.securesms.components.emoji.MediaKeyboard;
-import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.AttachmentDatabase;
@@ -202,7 +201,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private   InputPanel             inputPanel;
 
   private Recipient  recipient;
-  private ApplicationDcContext dcContext;
+  private DcContext  dcContext;
   private DcChat     dcChat                = new DcChat(0);
   private int        chatId;
   private final boolean isSecureText          = true;
@@ -263,9 +262,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       }
     });
 
-    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_CHAT_MODIFIED, this);
-    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_CHAT_EPHEMERAL_TIMER_MODIFIED, this);
-    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_CONTACTS_CHANGED, this);
+    DcEventCenter eventCenter = DcHelper.getEventCenter(this);
+    eventCenter.addObserver(DcContext.DC_EVENT_CHAT_MODIFIED, this);
+    eventCenter.addObserver(DcContext.DC_EVENT_CHAT_EPHEMERAL_TIMER_MODIFIED, this);
+    eventCenter.addObserver(DcContext.DC_EVENT_CONTACTS_CHANGED, this);
 
     if (isForwarding(this)) {
       handleForwarding();
@@ -324,7 +324,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     titleView.setTitle(glideRequests, dcChat);
 
-    dcContext.notificationCenter.updateVisibleChat(chatId);
+    DcHelper.getNotificationCenter(this).updateVisibleChat(chatId);
 
     if (doReinitializeDraft) {
       initializeDraft();
@@ -342,7 +342,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       doReinitializeDraft = true;
     }
 
-    dcContext.notificationCenter.updateVisibleChat(0);
+    DcHelper.getNotificationCenter(this).updateVisibleChat(0);
     if (isFinishing()) overridePendingTransition(R.anim.fade_scale_in, R.anim.slide_to_right);
     quickAttachmentDrawer.onPause();
     inputPanel.onPause();
@@ -370,7 +370,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   @Override
   protected void onDestroy() {
-    dcContext.eventCenter.removeObservers(this);
+    DcHelper.getEventCenter(this).removeObservers(this);
     super.onDestroy();
   }
 
@@ -469,7 +469,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       menu.findItem(R.id.menu_show_map).setVisible(false);
     }
 
-    if (!dcContext.isWebrtcConfigOk() || !dcChat.canVideochat()) {
+    if (!DcHelper.isWebrtcConfigOk(dcContext) || !dcChat.canVideochat()) {
       menu.findItem(R.id.menu_videochat_invite).setVisible(false);
     }
 
@@ -957,7 +957,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     if(chatId == DcChat.DC_CHAT_NO_CHAT)
       throw new IllegalStateException("can't display a conversation for no chat.");
     dcChat           = dcContext.getChat(chatId);
-    recipient        = dcContext.getRecipient(dcChat);
+    recipient        = new Recipient(this, dcChat);
     glideRequests    = GlideApp.with(this);
 
 
@@ -1049,7 +1049,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
           filename = filename.substring(0, i);
         }
       }
-      String path = dcContext.getBlobdirFile(filename, ext);
+      String path = DcHelper.getBlobdirFile(dcContext, filename, ext);
 
       // copy content to this file
       if(path!=null) {
@@ -1188,7 +1188,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     if (refreshFragment) {
       fragment.reload(recipient, chatId);
-      dcContext.notificationCenter.updateVisibleChat(chatId);
+      DcHelper.getNotificationCenter(this).updateVisibleChat(chatId);
     }
 
     fragment.scrollToBottom();
@@ -1444,7 +1444,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       }
       else {
         processComposeControls(ACTION_SEND_OUT);
-        dcContext.notificationCenter.maybePlaySendSound(dcChat);
+        DcHelper.getNotificationCenter(ConversationActivity.this).maybePlaySendSound(dcChat);
       }
     }
 
@@ -1517,7 +1517,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   @Override
   public void handleReplyMessage(DcMsg msg) {
     // If you modify these lines you may also want to modify ConversationItem.setQuote():
-    Recipient author = dcContext.getRecipient(dcContext.getContact(msg.getFromId()));
+    Recipient author = new Recipient(this, dcContext.getContact(msg.getFromId()));
 
     SlideDeck slideDeck = new SlideDeck();
     if (msg.getType() != DcMsg.DC_MSG_TEXT) {

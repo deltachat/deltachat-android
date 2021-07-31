@@ -52,7 +52,6 @@ import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 
 import org.thoughtcrime.securesms.components.RecyclerViewFastScroller;
-import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcContactsLoader;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -90,7 +89,7 @@ public class ContactSelectionListFragment extends    Fragment
   public static final String FROM_SHARE_ACTIVITY_EXTRA = "from_share_activity";
   public static final String PRESELECTED_CONTACTS = "preselected_contacts";
 
-  private ApplicationDcContext dcContext;
+  private DcContext dcContext;
 
   private Set<String>               selectedContacts;
   private OnContactSelectedListener onContactSelectedListener;
@@ -106,13 +105,13 @@ public class ContactSelectionListFragment extends    Fragment
     super.onActivityCreated(icicle);
 
     dcContext = DcHelper.getContext(getActivity());
-    dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_CONTACTS_CHANGED);
+    DcHelper.getEventCenter(getActivity()).addObserver(DcContext.DC_EVENT_CONTACTS_CHANGED, this);
     initializeCursor();
   }
 
   @Override
   public void onDestroy() {
-    DcHelper.getContext(getActivity()).eventCenter.removeObservers(this);
+    DcHelper.getEventCenter(getActivity()).removeObservers(this);
     super.onDestroy();
   }
 

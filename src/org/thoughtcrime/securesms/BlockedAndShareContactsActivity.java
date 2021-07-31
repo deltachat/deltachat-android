@@ -18,7 +18,6 @@ import android.widget.TextView;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 
-import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcContactsLoader;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -163,7 +162,7 @@ public class BlockedAndShareContactsActivity extends PassphraseRequiredActionBar
     }
 
     private void unblockContact(int contactId) {
-      ApplicationDcContext dcContext = DcHelper.getContext(getContext());
+      DcContext dcContext = DcHelper.getContext(getContext());
       dcContext.blockContact(contactId, 0);
       restartLoader();
     }

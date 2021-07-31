@@ -12,9 +12,9 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.b44t.messenger.DcContact;
+import com.b44t.messenger.DcContext;
 
 import org.thoughtcrime.securesms.R;
-import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.guava.Optional;
@@ -32,7 +32,7 @@ public class SelectedRecipientsAdapter extends BaseAdapter {
   @NonNull  private Context                    context;
   @Nullable private OnRecipientDeletedListener onRecipientDeletedListener;
   @NonNull  private List<RecipientWrapper>     recipients;
-  @NonNull  private final ApplicationDcContext dcContext;
+  @NonNull  private final DcContext            dcContext;
 
   public SelectedRecipientsAdapter(@NonNull Context context,
                                    @NonNull Collection<Recipient> existingRecipients)

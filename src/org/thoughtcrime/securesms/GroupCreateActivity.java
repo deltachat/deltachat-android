@@ -30,7 +30,6 @@ import com.bumptech.glide.request.transition.Transition;
 import com.soundcloud.android.crop.Crop;
 
 import org.thoughtcrime.securesms.components.AvatarSelector;
-import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.contacts.avatars.ResourceContactPhoto;
@@ -71,7 +70,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
   public static final  int AVATAR_SIZE  = 210;
   private static final int REQUEST_CODE_AVATAR = 2759;
 
-  private ApplicationDcContext dcContext;
+  private DcContext dcContext;
 
   private boolean verified;
   private EditText     groupName;
@@ -112,8 +111,9 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     initializeExistingGroup();
     initializeResources();
 
-    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_CHAT_MODIFIED, this);
-    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_CONTACTS_CHANGED, this);
+    DcEventCenter eventCenter = DcHelper.getEventCenter(this);
+    eventCenter.addObserver(DcContext.DC_EVENT_CHAT_MODIFIED, this);
+    eventCenter.addObserver(DcContext.DC_EVENT_CONTACTS_CHANGED, this);
   }
 
   @Override
@@ -126,7 +126,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
 
   @Override
   protected void onDestroy() {
-    dcContext.eventCenter.removeObservers(this);
+    DcHelper.getEventCenter(this).removeObservers(this);
     super.onDestroy();
   }
 
@@ -208,7 +208,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     groupName    = ViewUtil.findById(this, R.id.group_name);
     List<Recipient> initList = new LinkedList<>();
     DcContact self = dcContext.getContact(DC_CONTACT_ID_SELF);
-    initList.add(dcContext.getRecipient(self));
+    initList.add(new Recipient(this, self));
     SelectedRecipientsAdapter adapter = new SelectedRecipientsAdapter(this, initList);
     adapter.setOnRecipientDeletedListener(this);
     lv.setAdapter(adapter);
@@ -503,7 +503,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     @Override
     protected Recipient doInBackground(Integer... recipientIds) {
       Integer recipientsId = recipientIds[0];
-      return activity.dcContext.getRecipient(ApplicationDcContext.RECIPIENT_TYPE_CHAT, recipientsId);
+      return new Recipient(activity, activity.dcContext.getChat(recipientsId));
     }
 
     @Override

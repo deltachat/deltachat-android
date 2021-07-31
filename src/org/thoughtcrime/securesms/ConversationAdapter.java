@@ -29,10 +29,10 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.b44t.messenger.DcChat;
+import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMsg;
 
 import org.thoughtcrime.securesms.ConversationAdapter.HeaderViewHolder;
-import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.recipients.Recipient;
@@ -94,7 +94,7 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
   private final @NonNull  Context           context;
   private final @NonNull  Calendar          calendar;
 
-  private ApplicationDcContext dcContext;
+  private DcContext            dcContext;
   private @NonNull DcChat      dcChat;
   private @NonNull int[]       dcMsgList = new int[0];
   private int                  positionToPulseHighlight = -1;

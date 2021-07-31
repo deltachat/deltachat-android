@@ -24,6 +24,7 @@ import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcMsg;
 import com.codewaves.stickyheadergrid.StickyHeaderGridLayoutManager;
 
+import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.loaders.BucketedThreadMediaLoader;
 import org.thoughtcrime.securesms.util.ViewUtil;
@@ -74,14 +75,15 @@ public class ProfileDocumentsFragment
     this.recyclerView.setLayoutManager(gridManager);
     this.recyclerView.setHasFixedSize(true);
 
-    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_MSGS_CHANGED, this);
-    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_INCOMING_MSG, this);
+    DcEventCenter eventCenter = DcHelper.getEventCenter(getContext());
+    eventCenter.addObserver(DcContext.DC_EVENT_MSGS_CHANGED, this);
+    eventCenter.addObserver(DcContext.DC_EVENT_INCOMING_MSG, this);
     return view;
   }
 
   @Override
   public void onDestroyView() {
-    dcContext.eventCenter.removeObservers(this);
+    DcHelper.getEventCenter(getContext()).removeObservers(this);
     super.onDestroyView();
   }
 
@@ -151,7 +153,7 @@ public class ProfileDocumentsFragment
       return;
     }
 
-    dcContext.openForViewOrShare(getActivity(), dcMsg.getId(), Intent.ACTION_VIEW);
+    DcHelper.openForViewOrShare(getActivity(), dcMsg.getId(), Intent.ACTION_VIEW);
   }
 
   @Override

@@ -56,6 +56,7 @@ import com.b44t.messenger.DcMsg;
 
 import org.thoughtcrime.securesms.ConversationAdapter.ItemClickListener;
 import org.thoughtcrime.securesms.components.reminder.DozeReminder;
+import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.mms.GlideApp;
@@ -116,12 +117,13 @@ public class ConversationFragment extends MessageSelectorFragment
         this.locale = (Locale) getArguments().getSerializable(PassphraseRequiredActionBarActivity.LOCALE_EXTRA);
         this.dcContext = DcHelper.getContext(getContext());
 
-        dcContext.eventCenter.addObserver(DcContext.DC_EVENT_INCOMING_MSG, this);
-        dcContext.eventCenter.addObserver(DcContext.DC_EVENT_MSGS_CHANGED, this);
-        dcContext.eventCenter.addObserver(DcContext.DC_EVENT_MSG_DELIVERED, this);
-        dcContext.eventCenter.addObserver(DcContext.DC_EVENT_MSG_FAILED, this);
-        dcContext.eventCenter.addObserver(DcContext.DC_EVENT_MSG_READ, this);
-        dcContext.eventCenter.addObserver(DcContext.DC_EVENT_CHAT_MODIFIED, this);
+        DcEventCenter eventCenter = DcHelper.getEventCenter(getContext());
+        eventCenter.addObserver(DcContext.DC_EVENT_INCOMING_MSG, this);
+        eventCenter.addObserver(DcContext.DC_EVENT_MSGS_CHANGED, this);
+        eventCenter.addObserver(DcContext.DC_EVENT_MSG_DELIVERED, this);
+        eventCenter.addObserver(DcContext.DC_EVENT_MSG_FAILED, this);
+        eventCenter.addObserver(DcContext.DC_EVENT_MSG_READ, this);
+        eventCenter.addObserver(DcContext.DC_EVENT_CHAT_MODIFIED, this);
 
         markseenDebouncer = new Debouncer(800);
         reloadTimer = new Timer("reloadTimer", false);
@@ -194,7 +196,7 @@ public class ConversationFragment extends MessageSelectorFragment
 
     @Override
     public void onDestroy() {
-        dcContext.eventCenter.removeObservers(this);
+        DcHelper.getEventCenter(getContext()).removeObservers(this);
         reloadTimer.cancel();
         super.onDestroy();
     }
@@ -872,7 +874,7 @@ public class ConversationFragment extends MessageSelectorFragment
                     handleDeleteMessages(getListAdapter().getSelectedItems());
                     return true;
                 case R.id.menu_context_share:
-                    dcContext.openForViewOrShare(getContext(), getSelectedMessageRecord(getListAdapter().getSelectedItems()).getId(), Intent.ACTION_SEND);
+                    DcHelper.openForViewOrShare(getContext(), getSelectedMessageRecord(getListAdapter().getSelectedItems()).getId(), Intent.ACTION_SEND);
                     return true;
                 case R.id.menu_context_details:
                     handleDisplayDetails(getSelectedMessageRecord(getListAdapter().getSelectedItems()));

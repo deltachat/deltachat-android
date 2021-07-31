@@ -6,8 +6,9 @@ import android.view.MenuItem;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.b44t.messenger.DcContext;
+
 import org.thoughtcrime.securesms.R;
-import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
@@ -22,7 +23,7 @@ public class QrShowActivity extends AppCompatActivity {
 
     DcEventCenter dcEventCenter;
 
-    ApplicationDcContext dcContext;
+    DcContext dcContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +34,7 @@ public class QrShowActivity extends AppCompatActivity {
         setContentView(R.layout.activity_qr_show);
 
         dcContext = DcHelper.getContext(this);
-        dcEventCenter = dcContext.eventCenter;
+        dcEventCenter = DcHelper.getEventCenter(this);
 
         Bundle extras = getIntent().getExtras();
         int chatId = 0;
