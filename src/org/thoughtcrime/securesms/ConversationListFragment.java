@@ -400,6 +400,11 @@ public class ConversationListFragment extends Fragment
           loadChatlist();
         }
 
+        // in theory, here is a potential race condition:
+        // if the background thread is exactly here and the main thread checks `inLoadChatlist` at that moment,
+        // one update will be missing.
+        // that can probably be fixed with some other multi-theading techniques, any suggestions welcome :)
+
         inLoadChatlist = false;
       });
     }
