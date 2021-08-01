@@ -4,6 +4,7 @@
     <string name="app_name">دلتا چت</string>
     <string name="ok">تایید</string>
     <string name="cancel">لغو</string>
+    <string name="clear_search">پاک کردن جستجو</string>
     <string name="yes">بله</string>
     <string name="no">خیر</string>
     <string name="select">انتخاب</string>
@@ -32,13 +33,24 @@
     <string name="unarchive">خروج از بایگانی</string>
     <string name="mute">سکوت</string>
     <string name="ephemeral_messages">پیام‌های ناپدید شونده</string>
-    <string name="ephemeral_messages_hint">این تنظیمات برای تمام افرادی که از دلتاچت استفاده می کنند اعمال می‌شود. با این وجود، آنها ممکن است پیامها را کپی، ذخیره یا فوروارد کنند و یا از سایر برنامه های ایمیل استفاده کند.</string>
+    <string name="ephemeral_messages_hint">این تنظیمات برای تمام افرادی که از دلتاچت استفاده می کنند اعمال می‌شود. ولی ممکن است آن‌ها پیامها را کپی، ذخیره یا فوروارد کرده و یا از سایر برنامه های ایمیل استفاده کنند.</string>
     <string name="save">ذخیره</string>
     <string name="chat">گفتگو</string>
     <string name="media">رسانه</string>
     <string name="profile">پروفایل</string>
     <string name="main_menu">صفحه اصلی</string>
     <string name="start_chat">شروع چت</string>
+    <string name="show_full_message">نمایش پیام کامل...</string>
+    <string name="show_full_message_in_browser">نمایش پیام کامل در مرورگر</string>
+    <!-- this is shown as placeholder when something is loading at some places -->
+    <string name="loading">در حال بارگیری...</string>
+    <string name="hide">مخفی کردن</string>
+    <string name="activate">فعال کردن</string>
+    <string name="load_remote_content">بارگیری تصاویر از آدرس‌های دیگر</string>
+    <!-- possible answers to the question are: Never, Always, Once -->
+    <string name="load_remote_content_ask">تصاویر مربوط به آدرس‌های اینترنتی دیگر می‌توانند برای ردیابی شما استفاده شوند. \n\n این تنظیمات همچنین برای بارگیری فونت‌ها و دیگر محتواها استفاده می‌شود. اگر غیرفعال باشد ممکن است همچنان تصاویر درون پیام و تصاویر دانلود شده را ببینید. \n\n آيا تصاویر خارجی بارگیری شوند؟</string>
+    <string name="always">همیشه</string>
+    <string name="once">همین یک بار</string>
     <string name="show_password">نمایش رمزعبور</string>
     <string name="hide_password">مخفی کردن رمز عبور</string>
     <string name="not_now">اکنون نه</string>
@@ -106,11 +118,17 @@
     <string name="audio">صدا</string>
     <string name="voice_message">پیام صوتی</string>
     <string name="forwarded_message">پیام هدایت شده</string>
+    <!-- %1$s will be replaced by the name or the e-mail address of the person who has forwarded the message -->
+    <string name="forwarded_by">توسط%1$s هدایت شده است</string>
     <string name="video">فیلم</string>
     <string name="documents">اسناد</string>
     <string name="contact">مخاطب</string>
     <string name="verified_contact">مخاطب تایید شده. </string>
     <string name="camera">دوربین</string>
+    <!-- "capture" here means "start a video recording" or "take a photo"; eg. the description of the "shutter button" in the camera controls -->
+    <string name="capture">گرفتن</string>
+    <string name="switch_camera">تغییر دوربین</string>
+    <string name="toggle_fullscreen">تغییر وضعیت تمام صفحه</string>
     <string name="location">موقعیت مکانی</string>
     <string name="gallery">گالری</string>
     <string name="images_and_videos">تصاویر و فیلم‌ها</string>
@@ -167,6 +185,8 @@
     <string name="menu_copy_to_clipboard">کپی در حافظه</string>
     <string name="menu_copy_selection_to_clipboard">رونوشت برداری از انتخاب شده</string>
     <string name="menu_copy_link_to_clipboard">رونوشت برداری از لینک</string>
+    <string name="menu_copy_text_to_clipboard">کپی کردن متن</string>
+    <string name="menu_copy_image_to_clipboard">کپی تصویر</string>
     <string name="paste_from_clipboard">الصاق از حافظه</string>
     <string name="menu_forward">هدایت پیام</string>
     <string name="menu_resend">بازارسال پیام</string>
@@ -178,14 +198,19 @@
     <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
     <string name="show_in_chat">نمایش در گفتگو</string>
     <string name="menu_share">اشتراک</string>
+    <!-- this is the action "to block sth." usually a mailing list or a contact. this is NOT "a large solid piece of hard material" :) -->
+    <string name="block">مسدود کردن</string>
     <string name="menu_block_contact">انسداد مخاطب</string>
     <string name="menu_unblock_contact">عدم انسداد مخاطب</string>
+    <string name="accept">پذیرش</string>
     <string name="menu_play">اجرا</string>
     <string name="menu_pause">توقف</string>
     <string name="menu_scroll_to_bottom">اسکرول تا پایین</string>
     <string name="menu_scroll_to_top">اسکرول تا بالا</string>
     <string name="menu_help">کمک</string>
+    <string name="privacy_policy">خط مشی رازداری</string>
     <string name="menu_select_all">انتخاب همه</string>
+    <string name="select_more">انتخاب بیشتر</string>
     <string name="menu_expand">گسترش</string>
     <string name="menu_edit_name">ویرایش نام</string>
     <string name="menu_settings">تنظیمات</string>
@@ -196,6 +221,7 @@
     <string name="menu_zoom_in">درشت نمایی</string>
     <string name="menu_zoom_out">کوچک نمایی</string>
     <string name="menu_save_log">ذخیره گزارش</string>
+    <string name="menu_more_options">گزینه‌های بیشتر</string>
     <string name="title_share_location">اشتراک موقعیت مکانی با همه اعضای گروه</string>
     <string name="device_talk">پیام‌های دستگاه</string>
     <string name="device_talk_subtitle">پیام‌های  داخلی</string>

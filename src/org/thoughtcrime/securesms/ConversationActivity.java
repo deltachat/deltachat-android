@@ -1669,6 +1669,9 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       composePanel.setVisibility(View.VISIBLE);
     });
     messageRequestBottomView.setBlockOnClickListener(v -> {
+      // avoid showing compose panel on receiving DC_EVENT_CONTACTS_CHANGED for the chat that is no longer a request after blocking
+      DcHelper.getEventCenter(this).removeObserver(DcContext.DC_EVENT_CONTACTS_CHANGED, this);
+
       dcContext.blockChat(chatId);
       Bundle extras = new Bundle();
       extras.putInt(ConversationListFragment.RELOAD_LIST, 1);

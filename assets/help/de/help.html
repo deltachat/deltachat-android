@@ -722,10 +722,9 @@ Allerdings benötigen einige Anbieter besondere Einstellungen, um ordnungsgemä�
 
 <ul>
   <li>Typischerweise benötigt das Senden und Empfangen von Nachrichten nur wenige Sekunden. Es gibt Fälle, in denen es länger dauert, aber das trifft auch auf andere Messenger zu.</li>
-  <li>Das Chatten geht schnell, wenn beide Seiten die App direkt verwenden. Wenn die App im Hintergrund läuft, kann es zu Verzögerungen kommen.</li>
-  <li>Das Empfangen von Nachrichten im Hintergrund kann deshalb manchmal Minuten dauern, weil Android und iOS Delta Chat (und andere Apps) daran hindern, aktiv im Hintergrund zu laufen, und die App so nur gelegentlich aktiv ist.</li>
-  <li>Push-Dienste wie Google Cloud Messaging (GCM) oder Apple Push Notification Services (APNS) werden von Delta Chat nicht verwendet, um Benutzer-Tracking und Kontrolle so gut wie möglich zu vermeiden.</li>
-  <li>Das Problem, dass Android und iOS Apps unaufgefordert Programme, die im Hintergrund laufen, stilllegen, ist ein Problem, das viele Apps haben, siehe <a href="https://dontkillmyapp.com/">dontkillmyapp.com</a>.</li>
+  <li>Das Chatten geht schnell, wenn beide Seiten die App aktiv verwenden. Wenn die App im Hintergrund läuft, kann es zu Verzögerungen kommen.</li>
+  <li>Das Empfangen von Nachrichten im Hintergrund kann deshalb manchmal Minuten dauern, weil Android und iOS Delta Chat daran hindert, im Hintergrund zu laufen, und die App so nur gelegentlich aktiv ist. Diese künstliche Verzögerung ist eher unter iOS zu spüren als unter Android.</li>
+  <li>Dass Android und iOS Apps, die im Hintergrund laufen, beenden, ist allerdings ein Problem, das viele legitime Apps haben. Für weitere Informationen siehe <a href="https://dontkillmyapp.com/">dontkillmyapp.com</a>.</li>
 </ul>
     
       <h3 id="ist-delta-chat-kompatibel-mit-protonmail--tutanota--criptext">

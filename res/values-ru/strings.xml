@@ -366,6 +366,7 @@
     <string name="chat_request_label">Запрос</string>
     <string name="chat_no_messages">Нет сообщений.</string>
     <string name="chat_self_talk_subtitle">Сообщения отправленные себе</string>
+    <string name="archive_empty_hint">Если вы архивируете чаты, они будут показаны здесь.</string>
     <string name="saved_messages">Сохранённые сообщения</string>
     <string name="saved_messages_explain">• Пересылайте сообщения сюда для быстрого доступа\n\n• Делайте текстовые или голосовые заметки\n\n• Прикрепляйте медиафайлы, чтобы сохранить их</string>
     <!-- this "Saved" should match the "Saved" from "Saved messages" -->

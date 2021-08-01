@@ -340,6 +340,7 @@
     <string name="chat_request_label">Kërkoje</string>
     <string name="chat_no_messages">S\’ka mesazhe.</string>
     <string name="chat_self_talk_subtitle">Mesazhe që i kam dërguar vetes</string>
+    <string name="archive_empty_hint">Nëse arkivoni fjalosje, ato do të shfaqen këtu.</string>
     <string name="saved_messages">Mesazhe të ruajtur</string>
     <string name="saved_messages_explain">• Përcillini mesazhet këtu për përdorim të lehtë\n\n• Mbani shënime ose kujtesa zanore\n\n• Bashkëngjitni media për t’i ruajtur</string>
     <!-- this "Saved" should match the "Saved" from "Saved messages" -->
