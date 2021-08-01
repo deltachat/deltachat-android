@@ -342,6 +342,7 @@
     <string name="chat_request_label">Solicitar</string>
     <string name="chat_no_messages">Sen mensaxes.</string>
     <string name="chat_self_talk_subtitle">Mensaxes que me enviei a min mesma</string>
+    <string name="archive_empty_hint">Se arquivas os chats, aparecerán aquí.</string>
     <string name="saved_messages">Mensaxes gardadas</string>
     <string name="saved_messages_explain">• Reenvía aquí as mensaxes para un acceso rápido\n\n• Toma notas de texto ou voz\n\n• Anexa medios para gardalos</string>
     <!-- this "Saved" should match the "Saved" from "Saved messages" -->

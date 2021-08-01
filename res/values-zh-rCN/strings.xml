@@ -330,6 +330,7 @@
     <string name="chat_request_label">请求</string>
     <string name="chat_no_messages">没有消息。</string>
     <string name="chat_self_talk_subtitle">发给自己的消息</string>
+    <string name="archive_empty_hint">被您归档的聊天将显示于此。</string>
     <string name="saved_messages">保存的消息</string>
     <string name="saved_messages_explain">• 转发消息于此以便于访问\n\n• 做笔记或语音备忘录\n\n• 附加媒体以保存它们</string>
     <!-- this "Saved" should match the "Saved" from "Saved messages" -->
@@ -665,7 +666,7 @@
     <string name="systemmsg_chat_protection_enabled">已启用聊天保护</string>
 
     <!-- Some options as "Manage keys" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc. to be entered in a system dialog. This hint is added to the system dialog, below a title as "Manage keys" or "Backup". -->
-    <string name="enter_system_secret_to_continue">请输入你系统定义的 secret 以继续</string>
+    <string name="enter_system_secret_to_continue">请输入您的系统密码以继续。</string>
 
     <!-- qr code stuff -->
     <string name="qr_code">二维码</string>
