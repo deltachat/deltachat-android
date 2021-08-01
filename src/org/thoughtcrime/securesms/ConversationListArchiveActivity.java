@@ -16,6 +16,7 @@ import static org.thoughtcrime.securesms.util.RelayUtil.isSharing;
 public class ConversationListArchiveActivity extends PassphraseRequiredActionBarActivity
     implements ConversationListFragment.ConversationSelectedListener
 {
+  private ConversationListFragment conversationListFragment;
 
   private final DynamicTheme    dynamicTheme    = new DynamicTheme();
   private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
@@ -39,7 +40,13 @@ public class ConversationListArchiveActivity extends PassphraseRequiredActionBar
     Bundle bundle = new Bundle();
     bundle.putBoolean(ConversationListFragment.ARCHIVE, true);
 
-    initFragment(android.R.id.content, new ConversationListFragment(), dynamicLanguage.getCurrentLocale(), bundle);
+    conversationListFragment = initFragment(android.R.id.content, new ConversationListFragment(), dynamicLanguage.getCurrentLocale(), bundle);
+  }
+
+  @Override
+  protected void onNewIntent(Intent intent) {
+    super.onNewIntent(intent);
+    setIntent(intent);
   }
 
   @Override
