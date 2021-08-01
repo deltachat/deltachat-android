@@ -691,11 +691,17 @@ Jednak niektórzy dostawcy potrzebują specjalnych opcji, aby działać poprawni
       </h3>
 
 <ul>
-  <li>Wysyłanie i odbieranie wiadomości zwykle zajmuje kilka sekund. Czasami zdarzają się przypadki, w których trwa to dłużej, ale prawdopodobnie jest to również prawdą w przypadku każdego innego komunikatora.</li>
-  <li>Natychmiastowe czatowanie działa szybko, jeśli obie strony aktywnie korzystają z aplikacji. Czasami działa wolniej, jeśli aplikacja działa w tle.</li>
-  <li>Odbieranie wiadomości może zająć kilka minut, ponieważ zarówno Android, jak i iOS często zatrzymują Delta Chat podczas działaniem w tle i budzą go tylko od czasu do czasu. To sztuczne opóźnienie jest zwykle gorsze na iOS niż na Androidzie.</li>
-  <li>Należy pamiętać, że Delta Chat nie korzysta z Google Cloud Messaging (GCM) ani usługi Apple Push Notification Service (APNS), ponieważ prowadzi to do śledzenia użytkowników i centralnej kontroli, których Delta Chat stara się unikać w jak największym stopniu.</li>
-  <li>Jednak „ubijanie” aplikacji działających w tle na Androida i iOS stanowi problem dla wielu legalnych aplikacji. Aby uzyskać więcej informacji, zobacz <a href="https://dontkillmyapp.com/">dontkillmyapp.com</a>.</li>
+  <li>Sending and receiving messages takes a few seconds, typically. Sometimes
+there are cases where it takes longer but that is arguably true as well for
+any other messenger.</li>
+  <li>Instant chatting works fast if both parties are actively using the app. It’s
+sometimes slower if the app is running in the background.</li>
+  <li>Receiving messages then can take minutes because both Android and iOS often
+stop Delta Chat from running in the background, and only wake it up
+occasionally. This artificial delay is usually worse on iOS than on Android.</li>
+  <li>However, Android and iOS kill apps running in the background is a
+problem for many legitimate apps. For more information, see
+<a href="https://dontkillmyapp.com/">dontkillmyapp.com</a>.</li>
 </ul>
     
       <h3 id="czy-delta-chat-jest-kompatybilny-z-protonmail--tutanota--criptext">
