@@ -46,6 +46,8 @@
         android:id="@+id/login_button"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
         android:text="@string/login_header" />
 
     <androidx.legacy.widget.Space
