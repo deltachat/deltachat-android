@@ -1668,7 +1668,9 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       messageRequestBottomView.setVisibility(View.GONE);
       composePanel.setVisibility(View.VISIBLE);
     });
+    DcEventCenter eventCenter = DcHelper.getEventCenter(this);
     messageRequestBottomView.setBlockOnClickListener(v -> {
+      eventCenter.removeObserver(DcContext.DC_EVENT_CONTACTS_CHANGED, this);
       dcContext.blockChat(chatId);
       Bundle extras = new Bundle();
       extras.putInt(ConversationListFragment.RELOAD_LIST, 1);
