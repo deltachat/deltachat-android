@@ -4,7 +4,7 @@
 2021-08
 
 * fix: avoid possible data loss when the app was not closed gracefully before;
-  this bug was introduced in 1.21.1 and not released outside testing groups -
+  this bug was introduced in 1.21.0 and not released outside testing groups -
   thanks to all testers!
 
 
