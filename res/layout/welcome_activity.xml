@@ -37,19 +37,26 @@
         android:gravity="center"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
-        android:paddingBottom="24dp"
+        android:paddingBottom="16dp"
         android:text="@string/welcome_intro1_message"
         android:textSize="18sp"/>
+
+    <androidx.legacy.widget.Space
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"/>
 
     <Button
         style="@style/ButtonPrimary"
         android:id="@+id/login_button"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
         android:text="@string/login_header" />
 
     <androidx.legacy.widget.Space
-        android:layout_weight="5"
+        android:layout_weight="4"
         android:layout_width="match_parent"
         android:layout_height="0dp"/>
 
