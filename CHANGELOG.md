@@ -1,5 +1,13 @@
 # Delta Chat Android Changelog
 
+## v1.21.1 Testrun Release
+2021-08
+
+* fix: avoid possible data loss when the app was not closed gracefully before;
+  this bug was introduced in 1.21.1 and not released outside testing groups -
+  thanks to all testers!
+
+
 ## v1.21.0 Testrun Release
 2021-08
 
