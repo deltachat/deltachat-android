@@ -52,6 +52,8 @@ public class AccountManager {
 
     public void migrateToDcAccounts(ApplicationContext context) {
         try {
+            int selectAccountId = 0;
+
             File[] files = context.getFilesDir().listFiles();
             for (File file : files) {
                 // old accounts have the pattern "messenger*.db"
@@ -61,10 +63,16 @@ public class AccountManager {
                         String selName = PreferenceManager.getDefaultSharedPreferences(context)
                                 .getString("curr_account_db_name", "messenger.db");
                         if (file.getName().equals(selName)) {
-                            context.dcAccounts.selectAccount(accountId);
+                            // postpone selection as it will otherwise be overwritten by the next migrateAccount() call
+                            // (if more than one account needs to be migrated)
+                            selectAccountId = accountId;
                         }
                     }
                 }
+            }
+
+            if (selectAccountId != 0) {
+                context.dcAccounts.selectAccount(selectAccountId);
             }
         } catch (Exception e) {
             e.printStackTrace();
