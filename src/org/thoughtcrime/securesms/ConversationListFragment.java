@@ -418,7 +418,14 @@ public class ConversationListFragment extends Fragment
     } else {
       listflags |= DcContext.DC_GCL_ADD_ALLDONE_HINT;
     }
-    DcChatlist chatlist = DcHelper.getContext(getContext()).getChatlist(listflags, queryFilter.isEmpty() ? null : queryFilter, 0);
+
+    Context context = getContext();
+    if (context == null) {
+      // can't load chat list at this time, see: https://github.com/deltachat/deltachat-android/issues/2012
+      Log.w(TAG, "Ignoring call to loadChatlist()");
+      return;
+    }
+    DcChatlist chatlist = DcHelper.getContext(context).getChatlist(listflags, queryFilter.isEmpty() ? null : queryFilter, 0);
 
     Util.runOnMain(() -> {
       if (chatlist.getCnt() <= 0 && TextUtils.isEmpty(queryFilter)) {
