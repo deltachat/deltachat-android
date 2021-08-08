@@ -2,14 +2,16 @@ package org.thoughtcrime.securesms;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+
 import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import android.util.Log;
 
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.service.GenericForegroundService;
+import org.thoughtcrime.securesms.util.Prefs;
 
 import java.util.Locale;
 
@@ -17,6 +19,7 @@ public abstract class PassphraseRequiredActionBarActivity extends BaseActionBarA
   private static final String TAG = PassphraseRequiredActionBarActivity.class.getSimpleName();
 
   public static final String LOCALE_EXTRA = "locale_extra";
+  public static final String PRETEND_TO_BE_CONFIGURED = "pretend_to_be_configured";
 
   @Override
   protected final void onCreate(Bundle savedInstanceState) {
@@ -32,7 +35,12 @@ public abstract class PassphraseRequiredActionBarActivity extends BaseActionBarA
       return;
     }
 
-    if (!DcHelper.isConfigured(getApplicationContext())) {
+    if (getIntent().getBooleanExtra(PRETEND_TO_BE_CONFIGURED, false)) {
+      Prefs.setPretendToBeConfigured(getApplicationContext(), true);
+    }
+
+    if (!DcHelper.isConfigured(getApplicationContext())
+        && !Prefs.getPretendToBeConfigured(getApplicationContext())) {
       Intent intent = new Intent(this, WelcomeActivity.class);
       startActivity(intent);
       finish();
