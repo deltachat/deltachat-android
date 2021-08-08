@@ -5,8 +5,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import androidx.annotation.NonNull;
 
-import org.thoughtcrime.securesms.util.NumberUtil;
-
 public class Address implements Parcelable, Comparable<Address> {
 
   public static final Parcelable.Creator<Address> CREATOR = new Parcelable.Creator<Address>() {
@@ -47,18 +45,9 @@ public class Address implements Parcelable, Comparable<Address> {
     return new Address(serialized);
   }
 
-  public boolean isEmail() {
-    return NumberUtil.isValidEmail(address);
-  }
-
   public boolean isDcChat() { return address.startsWith(DC_CHAT_PREFIX); };
 
   public boolean isDcContact() { return address.startsWith(DC_CONTACT_PREFIX); };
-
-  public @NonNull String toEmailString() {
-    if (!isEmail()) throw new AssertionError("Not email: " + address);
-    return address;
-  }
 
   public int getDcChatId() {
     if(!isDcChat()) throw new AssertionError("Not dc chat: " + address);
