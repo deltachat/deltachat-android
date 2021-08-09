@@ -49,6 +49,13 @@ import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentat
 @RunWith(AndroidJUnit4.class)
 @LargeTest
 public class HelloWorldEspressoTest {
+
+  // ==============================================================================================
+  // Set this to true if you already have at least 10 chats on your existing DeltaChat installation
+  // and want to traverse through them instead of 10 newly created chats
+  private final static boolean USE_EXISTING_CHATS = false;
+  // ==============================================================================================
+
   private final static String TAG = HelloWorldEspressoTest.class.getSimpleName();
 
   @Rule
@@ -58,23 +65,28 @@ public class HelloWorldEspressoTest {
     Intent intent =
             Intent.makeMainActivity(
                     new ComponentName(getInstrumentation().getTargetContext(), ConversationListActivity.class));
-    intent.putExtra(PassphraseRequiredActionBarActivity.PRETEND_TO_BE_CONFIGURED, true);
+    if (!USE_EXISTING_CHATS) {
+      intent.putExtra(PassphraseRequiredActionBarActivity.PRETEND_TO_BE_CONFIGURED, true);
+    }
     return intent;
   }
 
   @Test
   public void createAndEnter10Chats() {
     Prefs.setEnterSendsEnabled(getInstrumentation().getTargetContext(), true);
-    createChatAndGoBack("Group #1", "Hello!", "Some links: https://testrun.org", "And a command: /help");
-    createChatAndGoBack("Group #2", "example.org, alice@example.org", "aaaaaaa", "bbbbbb");
-    createChatAndGoBack("Group #3", repeat("Some string ", 600), repeat("Another string", 200), "Hi!!!");
-    createChatAndGoBack("Group #4", "xyzabc", "Hi!!!!", "Let's meet!");
-    createChatAndGoBack("Group #5", repeat("aaaa", 40), "bbbbbbbbbbbbbbbbbb", "ccccccccccccccc");
-    createChatAndGoBack("Group #6", "aaaaaaaaaaa", repeat("Hi! ", 100), "bbbbbbbbbb");
-    createChatAndGoBack("Group #7", repeat("abcdefg ", 500), repeat("xxxxx", 100), "yrrrrrrrrrrrrr");
-    createChatAndGoBack("Group #8", "and a number: 037362/384756", "ccccc", "Nice!");
-    createChatAndGoBack("Group #9", "ddddddddddddddddd", "zuuuuuuuuuuuuuuuu", "ccccc");
-    createChatAndGoBack("Group #10", repeat("xxxxxxyyyyy", 100), repeat("String!!", 10), "abcd");
+
+    if (!USE_EXISTING_CHATS) {
+      createChatAndGoBack("Group #1", "Hello!", "Some links: https://testrun.org", "And a command: /help");
+      createChatAndGoBack("Group #2", "example.org, alice@example.org", "aaaaaaa", "bbbbbb");
+      createChatAndGoBack("Group #3", repeat("Some string ", 600), repeat("Another string", 200), "Hi!!!");
+      createChatAndGoBack("Group #4", "xyzabc", "Hi!!!!", "Let's meet!");
+      createChatAndGoBack("Group #5", repeat("aaaa", 40), "bbbbbbbbbbbbbbbbbb", "ccccccccccccccc");
+      createChatAndGoBack("Group #6", "aaaaaaaaaaa", repeat("Hi! ", 100), "bbbbbbbbbb");
+      createChatAndGoBack("Group #7", repeat("abcdefg ", 500), repeat("xxxxx", 100), "yrrrrrrrrrrrrr");
+      createChatAndGoBack("Group #8", "and a number: 037362/384756", "ccccc", "Nice!");
+      createChatAndGoBack("Group #9", "ddddddddddddddddd", "zuuuuuuuuuuuuuuuu", "ccccc");
+      createChatAndGoBack("Group #10", repeat("xxxxxxyyyyy", 100), repeat("String!!", 10), "abcd");
+    }
 
     String[] times = new String[10];
     for (int i = 0; i<10; i++) {
