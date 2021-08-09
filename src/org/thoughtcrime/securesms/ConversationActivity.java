@@ -272,8 +272,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     } else if (isSharing(this)) {
       handleSharing();
     }
-
-    initializeContactRequest();
   }
 
   @Override
@@ -300,7 +298,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
         initializeDraft();
       }
     });
-    initializeContactRequest();
 
     if (fragment != null) {
       fragment.onNewIntent();
@@ -968,6 +965,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     }
 
     setComposePanelVisibility();
+    initializeContactRequest();
   }
 
   private void setComposePanelVisibility() {
@@ -1552,9 +1550,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       titleView.setTitle(glideRequests, dcChat);
       initializeSecurity(isSecureText, isDefaultSms);
       setComposePanelVisibility();
-    }
-
-    if (eventId == DcContext.DC_EVENT_CHAT_MODIFIED && event.getData1Int() == chatId) {
       initializeContactRequest();
     }
   }
