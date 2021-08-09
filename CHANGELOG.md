@@ -1,5 +1,12 @@
 # Delta Chat Android Changelog
 
+## v1.21.2 Testrun Release
+2021-08
+
+* allow dotless email address being added to groups
+* update translations
+
+
 ## v1.21.1 Testrun Release
 2021-08
 
