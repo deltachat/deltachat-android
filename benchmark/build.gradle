@@ -1,0 +1,54 @@
+apply plugin: 'com.android.library'
+apply plugin: 'androidx.benchmark'
+
+repositories {
+    google()
+    jcenter()
+    maven {
+        // Used only for PhotoView
+        url "https://www.jitpack.io"
+        name 'JitPack Github wrapper'
+    }
+}
+
+android {
+    compileSdkVersion 29
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 29
+
+        // Set this argument to capture profiling information, instead of measuring performance.
+        // Can be one of:
+        //   * None
+        //   * Sampled
+        //   * Method
+        // See full descriptions of available options at: d.android.com/benchmark#profiling
+        testInstrumentationRunnerArgument 'androidx.benchmark.profiling.mode', 'none'
+    }
+
+    testBuildType = "release"
+
+    buildTypes {
+        release {
+            isDefault = true
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'benchmark-proguard-rules.pro'
+            signingConfig signingConfigs.debug
+        }
+    }
+}
+
+dependencies {
+    //implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    androidTestImplementation project(path: ":", configuration: "fatReleaseRuntimeElements")
+    androidTestImplementation "androidx.benchmark:benchmark-junit4:$benchmark_version"
+
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test:rules:1.2.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    //androidTestImplementation 'com.android.support:support-annotations:24.0.0'
+}
