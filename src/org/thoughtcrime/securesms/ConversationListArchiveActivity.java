@@ -8,6 +8,7 @@ import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 
 import static org.thoughtcrime.securesms.ConversationActivity.CHAT_ID_EXTRA;
+import static org.thoughtcrime.securesms.ConversationActivity.FROM_ARCHIVED_CHATS_EXTRA;
 import static org.thoughtcrime.securesms.util.RelayUtil.REQUEST_RELAY;
 import static org.thoughtcrime.securesms.util.RelayUtil.acquireRelayMessageContent;
 import static org.thoughtcrime.securesms.util.RelayUtil.isRelayingMessageContent;
@@ -71,6 +72,7 @@ public class ConversationListArchiveActivity extends PassphraseRequiredActionBar
   public void onCreateConversation(int chatId) {
     Intent intent = new Intent(this, ConversationActivity.class);
     intent.putExtra(CHAT_ID_EXTRA, chatId);
+    intent.putExtra(FROM_ARCHIVED_CHATS_EXTRA, true);
     if (isRelayingMessageContent(this)) {
       acquireRelayMessageContent(this, intent);
       startActivityForResult(intent, REQUEST_RELAY);
