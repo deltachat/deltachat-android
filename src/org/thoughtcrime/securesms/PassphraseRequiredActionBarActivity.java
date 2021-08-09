@@ -9,6 +9,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.b44t.messenger.DcContext;
+
+import org.thoughtcrime.securesms.connect.AccountManager;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.service.GenericForegroundService;
 import org.thoughtcrime.securesms.util.Prefs;
@@ -36,7 +39,12 @@ public abstract class PassphraseRequiredActionBarActivity extends BaseActionBarA
     }
 
     if (getIntent().getBooleanExtra(PRETEND_TO_BE_CONFIGURED, false)) {
+      AccountManager.getInstance().beginAccountCreation(getApplicationContext());
       Prefs.setPretendToBeConfigured(getApplicationContext(), true);
+      DcContext a = DcHelper.getContext(getApplicationContext());
+      a.setConfig("configured_addr", "alice@example.org");
+      a.setConfig("configured_mail_pw", "abcd");
+      a.setConfig("configured", "1");
     }
 
     if (!DcHelper.isConfigured(getApplicationContext())

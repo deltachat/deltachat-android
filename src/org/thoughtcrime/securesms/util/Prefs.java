@@ -123,6 +123,10 @@ public class Prefs {
     return getBooleanPreference(context, IN_THREAD_NOTIFICATION_PREF, true);
   }
 
+  public static void setEnterSendsEnabled(Context context, boolean value) {
+    setBooleanPreference(context, ENTER_SENDS_PREF, value);
+  }
+
   public static boolean isEnterSendsEnabled(Context context) {
     return getBooleanPreference(context, ENTER_SENDS_PREF, false);
   }
