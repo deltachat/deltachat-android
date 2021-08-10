@@ -81,8 +81,8 @@ public class Recipient {
     } else if (address.isDcChat()) {
       return new Recipient(context, dcContext.getChat(address.getDcChatId()));
     }
-    else if(address.isEmail()) {
-      int contactId = dcContext.lookupContactIdByAddr(address.toEmailString());
+    else if(DcHelper.getContext(context).mayBeValidAddr(address.toString())) {
+      int contactId = dcContext.lookupContactIdByAddr(address.toString());
       if(contactId!=0) {
         return new Recipient(context, dcContext.getContact(contactId));
       }

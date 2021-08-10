@@ -107,6 +107,7 @@ public class ConversationListFragment extends Fragment
 
     DcEventCenter eventCenter = DcHelper.getEventCenter(getActivity());
     eventCenter.addObserver(DcContext.DC_EVENT_CHAT_MODIFIED, this);
+    eventCenter.addObserver(DcContext.DC_EVENT_CONTACTS_CHANGED, this);
     eventCenter.addObserver(DcContext.DC_EVENT_INCOMING_MSG, this);
     eventCenter.addObserver(DcContext.DC_EVENT_MSGS_CHANGED, this);
     eventCenter.addObserver(DcContext.DC_EVENT_MSGS_NOTICED, this);
