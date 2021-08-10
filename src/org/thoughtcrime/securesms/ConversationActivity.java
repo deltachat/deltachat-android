@@ -156,6 +156,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private static final String TAG = ConversationActivity.class.getSimpleName();
 
   public static final String CHAT_ID_EXTRA           = "chat_id";
+  public static final String FROM_ARCHIVED_CHATS_EXTRA = "from_archived";
   public static final String TEXT_EXTRA              = "draft_text";
   public static final String STARTING_POSITION_EXTRA = "starting_position";
 
@@ -613,7 +614,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       return;
     }
 
-    Intent intent = new Intent(this, (isArchived() ? ConversationListArchiveActivity.class : ConversationListActivity.class));
+    boolean archived = getIntent().getBooleanExtra(FROM_ARCHIVED_CHATS_EXTRA, false);
+    Intent intent = new Intent(this, (archived ? ConversationListArchiveActivity.class : ConversationListActivity.class));
     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
     if (extras != null) intent.putExtras(extras);
     startActivity(intent);
