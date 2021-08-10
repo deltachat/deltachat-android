@@ -17,7 +17,6 @@ import org.junit.runner.RunWith;
 import org.thoughtcrime.securesms.ConversationListActivity;
 import org.thoughtcrime.securesms.PassphraseRequiredActionBarActivity;
 import org.thoughtcrime.securesms.R;
-import org.thoughtcrime.securesms.connect.AccountManager;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.util.Prefs;
 
@@ -35,7 +34,7 @@ import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentat
 
 @RunWith(AndroidJUnit4.class)
 @LargeTest
-public class HelloWorldEspressoTest {
+public class EnterChatsBenchmark {
 
   // ==============================================================================================
   // Set this to true if you already have at least 10 chats on your existing DeltaChat installation
@@ -48,7 +47,7 @@ public class HelloWorldEspressoTest {
   // PLEASE BACKUP YOUR ACCOUNT BEFORE RUNNING THIS!
   // ==============================================================================================
 
-  private final static String TAG = HelloWorldEspressoTest.class.getSimpleName();
+  private final static String TAG = EnterChatsBenchmark.class.getSimpleName();
 
   @Rule
   public ActivityScenarioRule<ConversationListActivity> activityRule = new ActivityScenarioRule<>(getConversationsListIntent());
