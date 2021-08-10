@@ -3,7 +3,9 @@
 ## v1.21.2 Testrun Release
 2021-08
 
-* allow dotless email address being added to groups
+* fix: allow dotless email address being added to groups
+* fix: keep selection when migrating several accounts
+* fix crash when going back to the chatlist
 * update translations
 
 
