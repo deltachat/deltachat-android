@@ -15,8 +15,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.thoughtcrime.securesms.ConversationListActivity;
-import org.thoughtcrime.securesms.PassphraseRequiredActionBarActivity;
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.connect.AccountManager;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.util.Prefs;
 
@@ -57,7 +57,13 @@ public class EnterChatsBenchmark {
             Intent.makeMainActivity(
                     new ComponentName(getInstrumentation().getTargetContext(), ConversationListActivity.class));
     if (!USE_EXISTING_CHATS) {
-      intent.putExtra(PassphraseRequiredActionBarActivity.PRETEND_TO_BE_CONFIGURED, true);
+      Context context = getInstrumentation().getTargetContext();
+      AccountManager.getInstance().beginAccountCreation(context);
+      Prefs.setPretendToBeConfigured(context, true);
+      DcContext c = DcHelper.getContext(context);
+      c.setConfig("configured_addr", "alice@example.org");
+      c.setConfig("configured_mail_pw", "abcd");
+      c.setConfig("configured", "1");
     }
     return intent;
   }
