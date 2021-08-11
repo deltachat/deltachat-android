@@ -199,7 +199,7 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate,
     }
 
     @Override
-    public void handleEvent(DcEvent event) {
+    public void handleEvent(@NonNull DcEvent event) {
         int eventId = event.getId();
         Log.d(TAG, "updateEvent in MapDataManager called. eventId: " + eventId);
         int contactId = event.getData1Int();

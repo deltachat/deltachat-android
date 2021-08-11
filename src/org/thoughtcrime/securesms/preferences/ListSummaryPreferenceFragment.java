@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
@@ -126,7 +127,7 @@ public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceF
   }
 
   @Override
-  public void handleEvent(DcEvent event) {
+  public void handleEvent(@NonNull DcEvent event) {
     if (event.getId()== DcContext.DC_EVENT_IMEX_PROGRESS) {
       long progress = event.getData1Int();
       Context context = getActivity();

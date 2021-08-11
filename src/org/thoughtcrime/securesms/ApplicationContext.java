@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.multidex.MultiDexApplication;
 import androidx.work.Constraints;
@@ -18,7 +19,6 @@ import com.b44t.messenger.DcAccounts;
 import com.b44t.messenger.DcAccountsEventEmitter;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
-import com.b44t.messenger.DcEventEmitter;
 
 import org.thoughtcrime.securesms.components.emoji.EmojiProvider;
 import org.thoughtcrime.securesms.connect.AccountManager;
@@ -51,7 +51,7 @@ public class ApplicationContext extends MultiDexApplication {
   public NotificationCenter     notificationCenter;
   private JobManager            jobManager;
 
-  public static ApplicationContext getInstance(Context context) {
+  public static ApplicationContext getInstance(@NonNull Context context) {
     return (ApplicationContext)context.getApplicationContext();
   }
 
