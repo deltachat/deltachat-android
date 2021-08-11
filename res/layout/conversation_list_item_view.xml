@@ -6,7 +6,7 @@
         android:background="?attr/conversation_list_item_background"
         android:layout_width="match_parent"
         android:focusable="true"
-        android:nextFocusRight="@id/fab"
+        android:nextFocusRight="@+id/fab"
         android:nextFocusLeft="@+id/container"
         android:layout_height="72dp">
 
