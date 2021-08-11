@@ -68,8 +68,6 @@ public class Prefs {
   public  static final String  ALWAYS_LOAD_REMOTE_CONTENT = "pref_always_load_remote_content";
   public  static final boolean ALWAYS_LOAD_REMOTE_CONTENT_DEFAULT = false;
 
-  public  static final String  PRETEND_TO_BE_CONFIGURED = "pretend_to_be_configured";
-
   public enum VibrateState {
     DEFAULT(0), ENABLED(1), DISABLED(2);
     private final int id;
@@ -290,14 +288,6 @@ public class Prefs {
   public static boolean getAlwaysLoadRemoteContent(Context context) {
     return getBooleanPreference(context, Prefs.ALWAYS_LOAD_REMOTE_CONTENT,
       Prefs.ALWAYS_LOAD_REMOTE_CONTENT_DEFAULT);
-  }
-
-  public static void setPretendToBeConfigured(Context context, boolean value) {
-    setBooleanPreference(context, PRETEND_TO_BE_CONFIGURED, value);
-  }
-
-  public static boolean getPretendToBeConfigured(Context context) {
-    return getBooleanPreference(context, PRETEND_TO_BE_CONFIGURED, false);
   }
 
   // generic preference functions

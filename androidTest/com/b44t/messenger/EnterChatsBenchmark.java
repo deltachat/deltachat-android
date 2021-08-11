@@ -59,7 +59,6 @@ public class EnterChatsBenchmark {
     if (!USE_EXISTING_CHATS) {
       Context context = getInstrumentation().getTargetContext();
       AccountManager.getInstance().beginAccountCreation(context);
-      Prefs.setPretendToBeConfigured(context, true);
       DcContext c = DcHelper.getContext(context);
       c.setConfig("configured_addr", "alice@example.org");
       c.setConfig("configured_mail_pw", "abcd");

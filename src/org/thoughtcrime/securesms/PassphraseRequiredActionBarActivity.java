@@ -11,7 +11,6 @@ import androidx.fragment.app.Fragment;
 
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.service.GenericForegroundService;
-import org.thoughtcrime.securesms.util.Prefs;
 
 import java.util.Locale;
 
@@ -34,8 +33,7 @@ public abstract class PassphraseRequiredActionBarActivity extends BaseActionBarA
       return;
     }
 
-    if (!DcHelper.isConfigured(getApplicationContext())
-        && !Prefs.getPretendToBeConfigured(getApplicationContext())) {
+    if (!DcHelper.isConfigured(getApplicationContext())) {
       Intent intent = new Intent(this, WelcomeActivity.class);
       startActivity(intent);
       finish();
