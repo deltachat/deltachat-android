@@ -901,7 +901,7 @@ public class ConversationFragment extends MessageSelectorFragment
     }
 
     @Override
-    public void handleEvent(DcEvent event) {
+    public void handleEvent(@NonNull DcEvent event) {
         switch (event.getId()) {
             case DcContext.DC_EVENT_MSGS_CHANGED:
                 if (event.getData1Int() == 0 // deleted messages or batch insert

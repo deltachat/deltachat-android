@@ -4,6 +4,8 @@ import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 
@@ -15,30 +17,22 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 
 public class DcEventCenter {
-    private Hashtable<Integer, ArrayList<DcEventDelegate>> allObservers = new Hashtable<>();
+    private @NonNull final Hashtable<Integer, ArrayList<DcEventDelegate>> allObservers = new Hashtable<>();
     private final Object LOCK = new Object();
-    private final ApplicationContext context;
+    private final @NonNull ApplicationContext context;
 
     public interface DcEventDelegate {
-        void handleEvent(DcEvent event);
+        void handleEvent(@NonNull DcEvent event);
         default boolean runOnMain() {
             return true;
         }
     }
 
-    public DcEventCenter(Context context) {
+    public DcEventCenter(@NonNull Context context) {
         this.context = ApplicationContext.getInstance(context);
     }
 
-    /**
-     * @deprecated use addObserver(int, DcEventDelegate) instead.
-     */
-    @Deprecated
-    public void addObserver(DcEventDelegate observer, int eventId) {
-        addObserver(eventId, observer);
-    }
-
-    public void addObserver(int eventId, DcEventDelegate observer) {
+    public void addObserver(int eventId, @NonNull DcEventDelegate observer) {
         synchronized (LOCK) {
             ArrayList<DcEventDelegate> idObservers = allObservers.get(eventId);
             if (idObservers == null) {
@@ -68,7 +62,7 @@ public class DcEventCenter {
         }
     }
 
-    public void sendToObservers(DcEvent event) {
+    public void sendToObservers(@NonNull DcEvent event) {
         synchronized (LOCK) {
             ArrayList<DcEventDelegate> idObservers = allObservers.get(event.getId());
             if (idObservers != null) {
@@ -156,7 +150,7 @@ public class DcEventCenter {
     });
   }
 
-  public long handleEvent(DcEvent event) {
+  public long handleEvent(@NonNull DcEvent event) {
     int accountId = event.getAccountId();
     if (accountId != context.dcContext.getAccountId()) {
       return 0;

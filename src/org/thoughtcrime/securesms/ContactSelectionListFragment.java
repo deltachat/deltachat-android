@@ -439,7 +439,7 @@ public class ContactSelectionListFragment extends    Fragment
   }
 
   @Override
-  public void handleEvent(DcEvent event) {
+  public void handleEvent(@NonNull DcEvent event) {
     if (event.getId()==DcContext.DC_EVENT_CONTACTS_CHANGED) {
       getLoaderManager().restartLoader(0, null, ContactSelectionListFragment.this);
     }

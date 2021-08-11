@@ -217,7 +217,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
     }
 
     @Override
-    public void handleEvent(DcEvent event) {
+    public void handleEvent(@NonNull DcEvent event) {
         int eventId = event.getId();
 
         if (eventId== DcContext.DC_EVENT_IMEX_PROGRESS ) {

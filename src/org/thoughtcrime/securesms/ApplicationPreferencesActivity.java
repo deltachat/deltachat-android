@@ -182,7 +182,7 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
     }
 
     @Override
-    public void handleEvent(DcEvent event) {
+    public void handleEvent(@NonNull DcEvent event) {
       if (event.getId() == DcContext.DC_EVENT_CONNECTIVITY_CHANGED) {
         this.findPreference(PREFERENCE_CATEGORY_CONNECTIVITY)
                 .setSummary(DcHelper.getConnectivitySummary(getActivity(), R.string.connectivity_connected));

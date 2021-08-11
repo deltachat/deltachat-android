@@ -154,7 +154,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
   }
 
   @Override
-  public void handleEvent(DcEvent event) {
+  public void handleEvent(@NonNull DcEvent event) {
     int eventId = event.getId();
     if (eventId== DcContext.DC_EVENT_CHAT_MODIFIED || eventId==DcContext.DC_EVENT_CONTACTS_CHANGED) {
       initializeExistingGroup();
