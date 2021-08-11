@@ -381,6 +381,11 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
     reloadData();
   }
 
+  public void reloadChat() {
+    // should be called when the chat was modified
+    dcChat = dcContext.getChat(dcChat.getId());
+  }
+
   private void reloadData() {
     // should be called when some items in a message are changed, eg. seen-state
     recordCache.clear();
