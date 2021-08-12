@@ -1,6 +1,7 @@
 *.keystore
 .classpath
 project.properties
+gradle.properties
 .project
 .settings
 bin/
