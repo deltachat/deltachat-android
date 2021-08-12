@@ -458,9 +458,18 @@ public class ConversationFragment extends MessageSelectorFragment
     }
 
     private void reloadList() {
+        reloadList(false);
+    }
+
+    private void reloadList(boolean chatModified) {
         ConversationAdapter adapter = getListAdapter();
         if (adapter == null) {
             return;
+        }
+
+        // if chat is a contact request and is accepted/blocked, the DcChat object must be reloaded, otherwise DcChat.canSend() returns wrong values
+        if (chatModified) {
+            adapter.reloadChat();
         }
 
         int oldCount = 0;
@@ -922,7 +931,7 @@ public class ConversationFragment extends MessageSelectorFragment
             case DcContext.DC_EVENT_CHAT_MODIFIED:
                 if (event.getData1Int() == chatId) {
                   updateLocationButton();
-                  reloadList();
+                  reloadList(true);
                 }
                 break;
         }
