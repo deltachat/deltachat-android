@@ -1,7 +1,6 @@
 package com.b44t.messenger;
 
 import android.content.ComponentName;
-import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
@@ -16,8 +15,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.thoughtcrime.securesms.ConversationListActivity;
 import org.thoughtcrime.securesms.R;
-import org.thoughtcrime.securesms.connect.AccountManager;
-import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.util.Prefs;
 
 import static androidx.test.espresso.Espresso.onView;
@@ -57,12 +54,7 @@ public class EnterChatsBenchmark {
             Intent.makeMainActivity(
                     new ComponentName(getInstrumentation().getTargetContext(), ConversationListActivity.class));
     if (!USE_EXISTING_CHATS) {
-      Context context = getInstrumentation().getTargetContext();
-      AccountManager.getInstance().beginAccountCreation(context);
-      DcContext c = DcHelper.getContext(context);
-      c.setConfig("configured_addr", "alice@example.org");
-      c.setConfig("configured_mail_pw", "abcd");
-      c.setConfig("configured", "1");
+      TestUtils.createOfflineAccount();
     }
     return intent;
   }
@@ -132,13 +124,9 @@ public class EnterChatsBenchmark {
   }
 
   @After
-  public void removeMockAccount() {
+  public void cleanup() {
     if (!USE_EXISTING_CHATS) {
-      Context context = getInstrumentation().getTargetContext();
-      DcAccounts accounts = DcHelper.getAccounts(context);
-
-      DcContext selectedAccount = accounts.getSelectedAccount();
-      accounts.removeAccount(selectedAccount.getAccountId());
+      TestUtils.removeAccount();
     }
   }
 }
