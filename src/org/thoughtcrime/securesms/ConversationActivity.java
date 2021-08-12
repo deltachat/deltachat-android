@@ -372,6 +372,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     super.onDestroy();
   }
 
+  @SuppressLint("NewApi")
   @Override
   public void onActivityResult(final int reqCode, int resultCode, Intent data) {
     Log.w(TAG, "onActivityResult called: " + reqCode + ", " + resultCode + " , " + data);
