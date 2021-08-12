@@ -3,10 +3,7 @@ package org.thoughtcrime.securesms.connect;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -19,7 +16,6 @@ import org.thoughtcrime.securesms.ConversationListActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.WelcomeActivity;
 import org.thoughtcrime.securesms.notifications.NotificationCenter;
-import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.task.ProgressDialogAsyncTask;
 
 import java.io.File;
@@ -87,7 +83,7 @@ public class AccountManager {
 
     // add accounts
 
-    private void beginAccountCreation(Context context) {
+    public void beginAccountCreation(Context context) {
         DcHelper.getAccounts(context).addAccount();
         resetDcContext(context);
     }

@@ -184,7 +184,7 @@ public class QrShowFragment extends Fragment implements DcEventCenter.DcEventDel
     }
 
     @Override
-    public void handleEvent(DcEvent event) {
+    public void handleEvent(@NonNull DcEvent event) {
         if (event.getId() == DcContext.DC_EVENT_SECUREJOIN_INVITER_PROGRESS) {
             DcContext dcContext = DcHelper.getContext(getActivity());
             int contact_id = event.getData1Int();

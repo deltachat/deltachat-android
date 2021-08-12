@@ -2,6 +2,8 @@ package org.thoughtcrime.securesms;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 
@@ -31,7 +33,7 @@ public class ConnectivityActivity extends WebViewActivity implements DcEventCent
   }
 
   @Override
-  public void handleEvent(DcEvent event) {
+  public void handleEvent(@NonNull DcEvent event) {
     refresh();
   }
 }

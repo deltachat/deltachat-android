@@ -111,7 +111,7 @@ public class ProfileSettingsFragment extends Fragment
   }
 
   @Override
-  public void handleEvent(DcEvent event) {
+  public void handleEvent(@NonNull DcEvent event) {
     update();
   }
 

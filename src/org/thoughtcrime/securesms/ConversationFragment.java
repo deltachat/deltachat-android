@@ -458,9 +458,18 @@ public class ConversationFragment extends MessageSelectorFragment
     }
 
     private void reloadList() {
+        reloadList(false);
+    }
+
+    private void reloadList(boolean chatModified) {
         ConversationAdapter adapter = getListAdapter();
         if (adapter == null) {
             return;
+        }
+
+        // if chat is a contact request and is accepted/blocked, the DcChat object must be reloaded, otherwise DcChat.canSend() returns wrong values
+        if (chatModified) {
+            adapter.reloadChat();
         }
 
         int oldCount = 0;
@@ -901,7 +910,7 @@ public class ConversationFragment extends MessageSelectorFragment
     }
 
     @Override
-    public void handleEvent(DcEvent event) {
+    public void handleEvent(@NonNull DcEvent event) {
         switch (event.getId()) {
             case DcContext.DC_EVENT_MSGS_CHANGED:
                 if (event.getData1Int() == 0 // deleted messages or batch insert
@@ -922,7 +931,7 @@ public class ConversationFragment extends MessageSelectorFragment
             case DcContext.DC_EVENT_CHAT_MODIFIED:
                 if (event.getData1Int() == chatId) {
                   updateLocationButton();
-                  reloadList();
+                  reloadList(true);
                 }
                 break;
         }

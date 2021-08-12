@@ -542,7 +542,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
     }
 
     @Override
-    public void handleEvent(DcEvent event) {
+    public void handleEvent(@NonNull DcEvent event) {
         if (event.getId()==DcContext.DC_EVENT_CONFIGURE_PROGRESS) {
             long progress = event.getData1Int();
             if (progress==0/*error/aborted*/) {

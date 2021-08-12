@@ -88,7 +88,7 @@ public class ProfileDocumentsFragment
   }
 
   @Override
-  public void handleEvent(DcEvent event) {
+  public void handleEvent(@NonNull DcEvent event) {
     getLoaderManager().restartLoader(0, null, this);
   }
 

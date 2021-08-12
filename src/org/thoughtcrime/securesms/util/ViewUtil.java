@@ -137,6 +137,9 @@ public class ViewUtil {
     final SettableFuture future = new SettableFuture();
     if (view.getVisibility() == visibility) {
       future.set(true);
+    } else if (AccessibilityUtil.areAnimationsDisabled(view.getContext())) {
+      view.setVisibility(visibility);
+      future.set(true);
     } else {
       view.clearAnimation();
       animation.reset();
@@ -161,6 +164,11 @@ public class ViewUtil {
 
   public static void animateIn(final @NonNull View view, final @NonNull Animation animation) {
     if (view.getVisibility() == View.VISIBLE) return;
+
+    if (AccessibilityUtil.areAnimationsDisabled(view.getContext())) {
+      view.setVisibility(View.VISIBLE);
+      return;
+    }
 
     view.clearAnimation();
     animation.reset();

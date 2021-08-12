@@ -3,6 +3,8 @@ package org.thoughtcrime.securesms.qr;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
+
+import androidx.annotation.NonNull;
 import androidx.annotation.StringRes;
 import androidx.appcompat.app.AlertDialog;
 import android.text.Html;
@@ -254,7 +256,7 @@ public class QrCodeHandler implements DcEventCenter.DcEventDelegate {
     }
 
     @Override
-    public void handleEvent(DcEvent event) {
+    public void handleEvent(@NonNull DcEvent event) {
         if (event.getId() == DcContext.DC_EVENT_SECUREJOIN_JOINER_PROGRESS) {
             long contact_id = event.getData1Int();
             long progress = event.getData2Int();

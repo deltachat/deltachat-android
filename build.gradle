@@ -80,6 +80,13 @@ dependencies {
     testImplementation 'org.powermock:powermock-module-junit4-rule:1.6.1'
     testImplementation 'org.powermock:powermock-classloading-xstream:1.6.1'
 
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.3.0'
+    androidTestImplementation 'androidx.test:rules:1.2.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'com.android.support:support-annotations:24.0.0'
+
     androidTestImplementation ('org.assertj:assertj-core:1.7.1') {
         exclude group: 'org.hamcrest', module: 'hamcrest-core'
     }
@@ -116,6 +123,8 @@ android {
         ndk {
             abiFilters "armeabi-v7a", "arm64-v8a" //, "x86", "x86_64"
         }
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     compileOptions {
@@ -205,8 +214,8 @@ android {
             assets.srcDirs = ['assets']
             jniLibs.srcDirs = ['libs']
         }
-        test {
-            java.srcDirs = ['test']
+        androidTest {
+            java.srcDirs = ['androidTest']
         }
     }
 
