@@ -90,7 +90,13 @@ class EmojiPages {
       "(^._.^)\uff89",                                "\u0e05^\u2022\ufecc\u2022^\u0e05",
       "\u0295\u2022\u1d25\u2022\u0294",               "(\u2022_\u2022)",
       " \u25a0-\u25a0\u00ac <(\u2022_\u2022) ",       "(\u25a0_\u25a0\u00ac)",
-      "\u01aa(\u0693\u05f2)\u200e\u01aa\u200b\u200b"
+      "\u01aa(\u0693\u05f2)\u200e\u01aa\u200b\u200b", "( \u0361\u00B0 \u035C\u0296 \u0361\u00B0)",
+      "(\u0CA5\uFE4F\u0CA5)", "( \u02D8 \u025C\u02D8) \u266C\u266A\u266B",
+      "(\u201E\u2022 \u1D17 \u2022\u201E)", "( \u02D8\u2323\u02D8)\u2661(\u02D8\u2323\u02D8 )",
+      "(\u3063\u02D8\u0437(\u02D8\u2323\u02D8 ) \u2661", "(\u2312_\u2312;)",
+      "( `\u03B5\u00B4 )", "(\u222A\uFF61\u222A)\uFF61\uFF61\uFF61zzZ",
+      "(\u30FB\u30FB ) ?", "(\u21BC_\u21BC)", "(\u0CA0_\u0CA0)", "(\u3065\uFFE3 \u00B3\uFFE3)\u3065",
+      "(\u00AC\u203F\u00AC )", "(\uFF1B\u2323\u0300_\u2323\u0301)", "(\u1D54\u25E1\u1D54)"
   }, null);
 
   static final List<EmojiPageModel> DISPLAY_PAGES = Arrays.asList(PAGE_PEOPLE, PAGE_NATURE, PAGE_FOODS, PAGE_ACTIVITY, PAGE_PLACES, PAGE_OBJECTS, PAGE_SYMBOLS, PAGE_FLAGS, PAGE_EMOTICONS);
