@@ -865,6 +865,10 @@
     <string name="pref_reliable_service_explain">Requires a permanent notification</string>
     <string name="perm_enable_bg_reminder_title">Tap here to receive messages while Delta Chat is in the background.</string>
     <string name="perm_enable_bg_already_done">You already allowed Delta Chat to receive messages in the background.\n\nIf messages still do not arrive in background, please also check your system settings.</string>
+
+
+    <!-- device messages for updates -->
     <string name="update_1_20">Improved e-mail compatibility in version 1.20:\n\n📫 Read mailing lists\n📭 Read HTML-mails\n📪 Nice handling of support addresses\n📫 Many major and minor annoyances fixed\n\nRead our new blog post about these first steps towards mail and more:</string>
+    <string name="update_1_22">What\'s new in 1.22?\n\n👋 Chat Requests now pop up as single chats and can be inspected in detail before accepting or blocking\n\n🗄️ The Archive is now easily accessible from the main menu - you\'ll also find your old requests there\n\n📮📮📮 Multi-account improved: Switching accounts is now faster and less often blocked by lengthy updates\n\n🤔 Know what\'s going on: Connection problems are shown in the title bar now, tap for details\n\nMore on the blog:</string>
 
 </resources>
