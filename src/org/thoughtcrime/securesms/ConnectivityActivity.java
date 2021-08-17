@@ -1,6 +1,7 @@
 package org.thoughtcrime.securesms;
 
 import android.os.Bundle;
+import android.view.Menu;
 
 import androidx.annotation.NonNull;
 
@@ -23,6 +24,12 @@ public class ConnectivityActivity extends WebViewActivity implements DcEventCent
   public void onDestroy() {
     super.onDestroy();
     DcHelper.getEventCenter(this).removeObservers(this);
+  }
+
+  @Override
+  public boolean onPrepareOptionsMenu(Menu menu) {
+    // do not call super.onPrepareOptionsMenu() as the default "Search" menu is not needed
+    return true;
   }
 
   private void refresh() {
