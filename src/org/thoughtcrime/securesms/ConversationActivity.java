@@ -429,6 +429,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       break;
     case ScribbleActivity.SCRIBBLE_REQUEST_CODE:
       setMedia(data.getData(), MediaType.IMAGE);
+      doReinitializeDraft = false;
       break;
     case SMS_DEFAULT:
       initializeSecurity(isSecureText, isDefaultSms);
