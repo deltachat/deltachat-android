@@ -104,7 +104,7 @@ android {
 
     defaultConfig {
         versionCode 611
-        versionName "1.21.2"
+        versionName "1.22.0-beta"
 
         applicationId "com.b44t.messenger"
         multiDexEnabled true
