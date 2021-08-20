@@ -224,6 +224,10 @@
     <string name="menu_zoom_out">Alejar</string>
     <string name="menu_save_log">Salvar log</string>
     <string name="menu_more_options">Más opciones</string>
+    <string name="menu_chat_audit_log">Registro de auditoría de chat</string>
+    <string name="jump_to_message">Saltar al mensaje</string>
+    <string name="copy_json">Copiar JSON</string>
+    <string name="replace_draft">Reemplazar borrador</string>
     <string name="title_share_location">Compartir ubicación con todos los miembros del grupo</string>
     <string name="device_talk">Mensajes del dispositivo</string>
     <string name="device_talk_subtitle">Mensajes generados localmente</string>
@@ -281,6 +285,7 @@
         <item quantity="one">¿Eliminar %d chat? No volverá a ser mostrado en la lista de chats, pero sus mensajes permanecerán en el servidor.</item>
         <item quantity="other">¿Eliminar %d chats? No volverán a ser mostrados en la lista de chats, pero sus mensajes permanecerán en el servidor.</item>
     </plurals>
+    <string name="ask_delete_message">¿Seguro que quieres borrar este mensaje?</string>
     <plurals name="ask_delete_messages">
         <item quantity="one">¿Eliminar %d mensaje aquí y en el servidor?</item>
         <item quantity="other">¿Eliminar %d mensajes aquí y en el servidor?</item>
@@ -337,6 +342,7 @@
     <string name="chat_request_label">Solicitud</string>
     <string name="chat_no_messages">No hay mensajes.</string>
     <string name="chat_self_talk_subtitle">Mensajes que envié a mí mismo</string>
+    <string name="archive_empty_hint">Si archiva chats, se mostrarán aquí.</string>
     <string name="saved_messages">Mensajes guardados</string>
     <string name="saved_messages_explain">• Reenvía mensajes aquí para accederlos fácilmente luego\n\n• Toma notas o mensajes de voz\n\n• Adjunta archivos para guardarlos</string>
     <!-- this "Saved" should match the "Saved" from "Saved messages" -->
@@ -349,6 +355,7 @@
     <string name="messaging_disabled_not_in_group">No puedes escribir porque no estás en este grupo. Para unirte, pregúntale a otro miembro.</string>
     <string name="messaging_disabled_device_chat">Este chat contiene mensajes generados localmente. Por eso no puedes escribir ningún mensaje.</string>
     <string name="messaging_disabled_deaddrop">Click en el mensaje para aceptar o denegar el pedido del contacto</string>
+    <string name="messaging_disabled_mailing_list">Todavía no se admite el envío de mensajes en listas de correo</string>
     <string name="cannot_display_unsuported_file_type">No se puede mostrar este tipo de archivo: %s</string>
     <string name="attachment_failed_to_load">Fallo al cargar el adjunto</string>
     <!-- For recording Voice messages: Description for the "Lock" button allowing to lift the thumb from the record button while recording continues -->
@@ -357,15 +364,27 @@
     <!-- mailing lists -->
     <string name="mailing_list">Lista de correo</string>
     <string name="ask_show_mailing_list">¿Mostrar lista de correo \"%1$s\"?</string>
+    <string name="mailing_list_profile_info">Los cambios en el nombre y la imagen de la lista de correo solo se aplican a este dispositivo.</string>
+
     <!-- map -->
     <string name="filter_map_on_time">Mostrar ubicaciones en el marco de tiempo</string>
     <string name="show_location_traces">Mostrar trazas</string>
     <string name="add_poi">Enviar punto de interés</string>
 
+    <!-- chat audit log -->
+    <string name="chat_audit_log_empty_message">Los mensajes del sistema de este chat aparecerían aquí</string>
+    <string name="chat_audit_log_title">Registro de auditoría de chat para %1$s</string>
+    <string name="chat_audit_log_description">Esta vista solo muestra mensajes de información y del sistema. Útil para encontrar las últimas acciones de chat sin tener que desplazarse por muchos mensajes normales.</string>
+
     <!-- punycode warning / labeled links -->
     <!-- placeholder is domain/hostname that should be trusted -->
     <string name="open_external_url_trust_domain">No preguntar nuevamente para %1$s</string>
     <string name="puny_code_warning_header">Enlace sospechoso detectado</string>
+    <!-- placeholder contains the hostname converted to ascii -->
+    <string name="puny_code_warning_question">¿Estás seguro de que quieres visitar %1$s?</string>
+    <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
+    <string name="puny_code_warning_description">Siguió un enlace que podría estar tergiversando caracteres al usar caracteres de diferentes alfabetos con un aspecto similar. Seguir el enlace etiquetado %1$s conducirá a %2$s, que es normal para caracteres no latinos. Si no esperaba tales caracteres, este enlace podría ser dañino</string>
+
     <!-- search -->
     <string name="search">Buscar</string>
     <string name="search_explain">Buscar chats, contactos, y mensajes</string>
@@ -564,6 +583,7 @@
     <string name="profile_image_select">Seleccionar imagen de perfil</string>
     <string name="select_your_new_profile_image">Seleccionar tu nueva imagen de perfil</string>
     <string name="profile_image_delete">Borrar imagen de perfil</string>
+    <string name="pref_show_tray_icon">Mostrar icono de bandeja</string>
     <string name="pref_edit_profile">Editar perfil</string>
 
     <!-- Emoji picker and categories -->
@@ -657,6 +677,9 @@
     <string name="systemmsg_chat_protection_disabled">Protección de chat desactivada.</string>
     <string name="systemmsg_chat_protection_enabled">Protección de chat activada.</string>
 
+    <!-- Some options as "Manage keys" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc. to be entered in a system dialog. This hint is added to the system dialog, below a title as "Manage keys" or "Backup". -->
+    <string name="enter_system_secret_to_continue">Ingrese su secreto del sistema para continuar.</string>
+
     <!-- qr code stuff -->
     <string name="qr_code">Código QR</string>
     <string name="load_qr_code_as_image">Cargar código QR como imagen</string>
@@ -670,7 +693,13 @@
     <string name="qrscan_contains_url">URL del código QR escaneado:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Huella digital</string>
     <string name="qrscan_x_verified_introduce_myself">%1$s verificado, presentarme ...</string>
+    <string name="withdraw_verifycontact_explain">Este código QR puede ser escaneado por otras personas para contactarlo.\n\nPuede desactivar el código QR aquí y reactivarlo escaneándolo de nuevo.</string>
+    <string name="withdraw_verifygroup_explain">Este código QR puede ser escaneado por otros para unirse al grupo \"%1$s\".\n\nPuede desactivar el código QR aquí y reactivarlo escaneándolo de nuevo.</string>
     <string name="withdraw_qr_code">Desactivar código QR</string>
+    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
+    <string name="revive_verifycontact_explain">Este código QR puede ser escaneado por otros para contactarlo.\n\nEl código QR no está activo en este dispositivo.</string>
+    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
+    <string name="revive_verifygroup_explain">Este código QR puede ser escaneado por otros para unirse al grupo \"%1$s\".\n\nEl código QR no está activo en este dispositivo.</string>
     <string name="revive_qr_code">Activar código QR</string>
     <string name="qrshow_title">Código de invitación QR</string>
     <string name="qrshow_x_joining">%1$s se une.</string>
@@ -693,6 +722,11 @@
     <string name="contact_setup_changed">Configuración cambiada para %1$s.</string>
     <string name="verified_group_explain">Los grupos verificados (experimentales) brindan seguridad contra ataques activos. Los miembros son verificados con un segundo factor por otros miembros y los mensajes siempre están encriptados de extremo a extremo.</string>
     <string name="copy_qr_data_success">URL del código QR copiado al portapapeles</string>
+    <string name="mailto_dialog_header_select_chat">Seleccione el chat para enviar el mensaje</string>
+    <!-- first placeholder is the name of the chat -->
+    <string name="mailto_dialog_confirm_replace_draft">%1$s ya tiene un mensaje borrador, ¿quieres reemplazarlo?</string>
+    <string name="mailto_link_could_not_be_decoded">El enlace mailto no se pudo decodificar: %1$s</string>
+
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d nuevos mensajes en %2$d chats</string>
     <string name="notify_mark_read">Marcar como leído</string>
@@ -797,6 +831,8 @@
     <string name="menu.view.developer.open.log.folder">Abrir Carpeta de Logs</string>
     <string name="menu.view.developer.open.current.log.file">Abrir Archivo de Logs Actual</string>
     <string name="user_location_permission_explanation">DeltaLab necesita el permiso de ubicación para mostrar y compartir tu ubicación.</string>
+    <string name="explain_desktop_minimized_disabled_tray_pref">El icono de la bandeja no se puede desactivar ya que DeltaLab se inició con la opción --minimized.</string>
+    <string name="no_spellcheck_suggestions_found">No se encontraron sugerencias ortográficas.</string>
     <string name="show_window">Mostrar ventana</string>
 
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
@@ -834,5 +870,6 @@
     <!-- device messages for updates -->
     <string name="update_1_20">Mejorada la compatibilidad con el correo electrónico en la versión 1.20:\n\n📫 Leer listas de correo\n📭 Leer correos HTML\n📪 Buen manejo de las direcciones de soporte\n📫 Arregladas muchas molestias grandes y pequeñas\n\nLea nuestra nueva publicación sobre estos primeros pasos hacia el correo y más:</string>
     <string name="update_1_22">### DeltaLab:\n* Ahora eres notificado cuando responden a uno de tus mensajes en un grupo silenciado.\n* El visor de html comprimido ahora se adapta al tema claro/oscuro.\n* Añadidos más kaomojis ( \u0361\u00B0 \u035C\u0296 \u0361\u00B0)\n\n### DeltaChat:\n¿Qué hay de nuevo en la versión 1.22?\n\n👋 Las solicitudes de contacto ahora aparecen como chats independientes y pueden ser inspeccionados en detalle antes de aceptar o bloquear\n\n🗄️ Los chats archivados ahora están accesibles desde el menú principal - también encontrarás tus solicitudes de contacto antiguas allí\n\n📮📮📮 Mejorado el soporte multi-cuentas: Cambiar de cuenta ahora es más rápido y menos frecuentemente bloqueado por actualizaciones prolongadas\n\n🤔 Sepa lo que está pasando: los problemas de conexión ahora se muestran en la barra de título, tóquela para obtener más detalles\n\nMás en el blog:</string>
+    <string name="update_1_22_ios">¿Qué hay de nuevo en la versión 1.22?\n\n👋 Las solicitudes de contacto ahora aparecen como chats independientes y pueden ser inspeccionados en detalle antes de aceptar o bloquear\n\n🗄️ Los chats archivados ahora están accesibles desde los ajustes - también encontrarás tus solicitudes de contacto antiguas allí\n\n📮📮📮 Añadido soporte para cuentas múltiples: Cambia y administra cuentas en los ajustes\n\n🤔 Sepa lo que está pasando: los problemas de conexión ahora se muestran en la barra de título, tóquela para obtener más detalles\n\nMás en el blog:</string>
 
-    </resources>
+</resources>
