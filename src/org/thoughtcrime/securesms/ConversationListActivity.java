@@ -89,12 +89,12 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     // it is not needed to keep all past update messages, however, when deleted, also the strings should be deleted.
     DcContext dcContext = DcHelper.getContext(this);
     DcMsg msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
-    msg.setText(getString(R.string.update_1_20_bots));
-    dcContext.addDeviceMsg("update_1_20_bots", msg);
+    msg.setText(getString(R.string.update_1_22_bots));
+    dcContext.addDeviceMsg("update_1_22_bots", msg);
 
     msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
-    msg.setText(getString(R.string.update_1_20) + " https://delta.chat/en/2021-05-05-email-compat");
-    dcContext.addDeviceMsg("update_1_20p_android", msg); // addDeviceMessage() makes sure, messages with the same id are not added twice
+    msg.setText(getString(R.string.update_1_22) + " https://delta.chat/en/blog");
+    dcContext.addDeviceMsg("update_1_22d_android", msg); // addDeviceMessage() makes sure, messages with the same id are not added twice
 
     // create view
     setContentView(R.layout.conversation_list_activity);
