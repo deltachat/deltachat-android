@@ -291,17 +291,24 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
       }
     }
     else if (sharedChats!=null && dcContact!=null) {
+      boolean chatIsDeviceTalk = dcChat != null && dcChat.isDeviceTalk();
+
       itemDataContact = dcContact;
-      itemData.add(new ItemData(ItemData.TYPE_PRIMARY_SETTING, SETTING_NEW_CHAT, context.getString(R.string.send_message)));
+      if (!chatIsDeviceTalk) {
+        itemData.add(new ItemData(ItemData.TYPE_PRIMARY_SETTING, SETTING_NEW_CHAT, context.getString(R.string.send_message)));
+      }
 
       itemDataStatusText = dcContact.getStatus();
       if (!itemDataStatusText.isEmpty()) {
         itemData.add(new ItemData(ItemData.TYPE_STATUS, 0, itemDataStatusText));
       }
+
       itemDataSharedChats = sharedChats;
-      int sharedChatsCnt = sharedChats.getCnt();
-      for (int i = 0; i < sharedChatsCnt; i++) {
-        itemData.add(new ItemData(ItemData.TYPE_SHARED_CHAT, 0, i));
+      if (!chatIsDeviceTalk) {
+        int sharedChatsCnt = sharedChats.getCnt();
+        for (int i = 0; i < sharedChatsCnt; i++) {
+          itemData.add(new ItemData(ItemData.TYPE_SHARED_CHAT, 0, i));
+        }
       }
     }
 

@@ -223,7 +223,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
       }
     }
 
-    if(!isGlobalProfile() && !isSelfProfile() && !chatIsDeviceTalk && !chatIsMailingList) {
+    if(!isGlobalProfile() && !isSelfProfile() && !chatIsMailingList) {
       tabs.add(TAB_SETTINGS);
     }
     tabs.add(TAB_GALLERY);
@@ -329,7 +329,9 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
       int tabId = tabs.get(position);
       switch(tabId) {
         case TAB_SETTINGS:
-          if(isContactProfile()) {
+          if (chatIsDeviceTalk) {
+            return getString(R.string.profile);
+          } else if(isContactProfile()) {
             return getString(R.string.tab_contact);
           }
           else if (chatIsMailingList) {
