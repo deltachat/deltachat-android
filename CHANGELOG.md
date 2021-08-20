@@ -4,6 +4,7 @@
 2021-08
 
 * added: connectivity view shows quota information, if supported by the provider
+* fix editing shared images
 * fix account migration, updates are displayed instantly now
 * fix forwarding mails containing only quotes
 * fix odering of some system messages
