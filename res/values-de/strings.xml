@@ -869,6 +869,11 @@ Ihr bisheriges E-Mail-Konto wird dabei nicht gelöscht. Sie können mit der Opti
     <string name="pref_reliable_service_explain">Erfordert immer sichtbaren Hinweis</string>
     <string name="perm_enable_bg_reminder_title">Tippen Sie hier, um Nachrichten zu empfangen, während Delta Chat im Hintergrund läuft.</string>
     <string name="perm_enable_bg_already_done">Sie haben Delta Chat bereits erlaubt, Nachrichten im Hintergrund zu empfangen.\n\nFalls keine Nachrichten eingehen, überprüfen Sie bitte auch Ihre Systemeinstellungen.</string>
+
+
+    <!-- device messages for updates -->
     <string name="update_1_20">Verbesserte E-Mail-Kompatibilität in Version 1.20:\n\n📫 Mailinglisten lesen\n📭 HTML-Mails anzeigen\n📪 Bessere Unterstützung von Support-Adressen\n📫 Viele weitere Probleme behoben\n\nLesen Sie unseren neuen Blog-Beitrag über diese ersten Schritte Richtung E-Mail und mehr:</string>
+    <string name="update_1_22">Was ist neu in 1.22?\n\n👋 Chat-Anfragen werden jetzt als einzelne Chats angezeigt und können vor Annahme oder Blockieren im Detail geprüft werden\n\n🗄️ Das Archiv ist jetzt leicht vom Hauptmenü aus zugänglich - dort finden Sie auch die alten Chat-Anfragen\n\n📮📮📮📮 Verbessertes Multi-Account: Der Wechsel zwischen Konten geht jetzt schneller und wird weniger durch langwierige Downloads blockiert\n\n🤔 Immer wissen, was los ist: Verbindungsprobleme werden jetzt in der Titelleiste angezeigt, für Details einfach auf den Titel tippen\n\nMehr im Blog:</string>
+    <string name="update_1_22_ios">Was ist neu in 1.22?\n\n👋 Chat-Anfragen werden jetzt als einzelne Chats angezeigt und können vor Annahme oder Blockieren im Detail geprüft werden\n\n🗄️ Das Archiv ist jetzt leicht den  Einstellungen aus zugänglich - dort finden Sie auch die alten Chat-Anfragen\n\n📮📮📮📮 Multi-Account hinzugefügt: Konten in den Einstellungen wechseln und verwalten\n\n🤔 Immer wissen, was los ist: Verbindungsprobleme werden jetzt in der Titelleiste angezeigt, für Details einfach auf den Titel tippen\n\nMehr im Blog:</string>
 
 </resources>

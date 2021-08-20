@@ -865,6 +865,8 @@
     <string name="pref_reliable_service_explain">Richiede una notifica permanente</string>
     <string name="perm_enable_bg_reminder_title">Premi qui per ricevere i messaggi anche quando Delta Chat è in background.</string>
     <string name="perm_enable_bg_already_done">Hai già autorizzato Delta Chat a ricevere messaggi in background.\n\nSe i messaggi non arrivano in background controlla le impostazioni di sistema.</string>
-    <string name="update_1_20">Compatibilità della posta elettronica migliorata nella versione 1.20:\n\n📫 Leggi le mailing lists\n📭 Leggi i messaggi HTML\n📪 Buona gestione degli indirizzi di assistenza\n📫 Risolti molti problemi maggiori e minori\n\nLeggi il nostro nuovo post sul blog su questi primi passi verso la posta e altro:</string>
 
-</resources>
+
+    <!-- device messages for updates -->
+    <string name="update_1_20">Compatibilità della posta elettronica migliorata nella versione 1.20:\n\n📫 Leggi le mailing lists\n📭 Leggi i messaggi HTML\n📪 Buona gestione degli indirizzi di assistenza\n📫 Risolti molti problemi maggiori e minori\n\nLeggi il nostro nuovo post sul blog su questi primi passi verso la posta e altro:</string>
+    </resources>

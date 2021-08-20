@@ -865,6 +865,8 @@
     <string name="pref_reliable_service_explain">Vereist een permanente melding</string>
     <string name="perm_enable_bg_reminder_title">Druk hier om berichten te ontvangen als Delta Chat niet geopend is.</string>
     <string name="perm_enable_bg_already_done">Je hebt al toestemming gegeven voor het ophalen van berichten op de achtergrond.\n\nAls het nog steeds niet werkt, controleer dan de systeeminstellingen.</string>
-    <string name="update_1_20">Verbeterde e-mailcompatibiliteit in versie 1.20:\n\n📫 Lees mailinglijsten\n📭 Lees html-e-mails\n📪 Betere afhandeling van ondersteuningsadressen\n📫 Vele grotere en kleinere problemen opgelost\n\nLees ons nieuwste blogartikel over deze eerste stappen naar e-mail en meer (Engels):</string>
 
-</resources>
+
+    <!-- device messages for updates -->
+    <string name="update_1_20">Verbeterde e-mailcompatibiliteit in versie 1.20:\n\n📫 Lees mailinglijsten\n📭 Lees html-e-mails\n📪 Betere afhandeling van ondersteuningsadressen\n📫 Vele grotere en kleinere problemen opgelost\n\nLees ons nieuwste blogartikel over deze eerste stappen naar e-mail en meer (Engels):</string>
+    </resources>

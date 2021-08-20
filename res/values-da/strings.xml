@@ -767,4 +767,6 @@
     <string name="pref_reliable_service_explain">Kræver en permanent forbindelse</string>
     <string name="perm_enable_bg_reminder_title">Tryk her for at modtage beskeder når Delta Chat er i baggrunden.</string>
     <string name="perm_enable_bg_already_done">Du har allerede tilladt Delta Chat at modtage beskeder i baggrunden.\n\nHvis beskeder ikke ankommer i baggrunden, undersøg dine systemindstillinger.</string>
+
+
     </resources>

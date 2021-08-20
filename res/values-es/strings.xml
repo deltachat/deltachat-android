@@ -828,6 +828,8 @@
     <string name="pref_reliable_service_explain">Requiere notificación permanente</string>
     <string name="perm_enable_bg_reminder_title">Toque aquí para recibir mensajes mientras Delta Chat está en segundo plano.</string>
     <string name="perm_enable_bg_already_done">Ya has permitido que Delta Chat reciba mensajes en segundo plano.\n\nSi los mensajes aún no llegan en segundo plano, compruebe también la configuración de su sistema.</string>
-    <string name="update_1_20">Mejorada la compatibilidad con el correo electrónico en la versión 1.20:\n\n📫 Leer listas de correo\n📭 Leer correos HTML\n📪 Buen manejo de las direcciones de soporte\n📫 Arregladas muchas molestias grandes y pequeñas\n\nLea nuestra nueva publicación sobre estos primeros pasos hacia el correo y más:</string>
 
-</resources>
+
+    <!-- device messages for updates -->
+    <string name="update_1_20">Mejorada la compatibilidad con el correo electrónico en la versión 1.20:\n\n📫 Leer listas de correo\n📭 Leer correos HTML\n📪 Buen manejo de las direcciones de soporte\n📫 Arregladas muchas molestias grandes y pequeñas\n\nLea nuestra nueva publicación sobre estos primeros pasos hacia el correo y más:</string>
+    </resources>

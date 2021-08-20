@@ -853,6 +853,8 @@
     <string name="pref_reliable_service_explain">需要一个永久通知</string>
     <string name="perm_enable_bg_reminder_title">点击此处以在 Delta Chat 处于后台时接收消息。</string>
     <string name="perm_enable_bg_already_done">您已允许 Delta Chat 在后台接收消息。\n\n如果在后台时消息仍没到达，请检查系统设置。</string>
-    <string name="update_1_20">我们在 1.20 版本改进了电子邮件兼容性：\n\n📫 阅读邮件列表\n📭 阅读 HTML 邮件\n📪 很好地处理支持地址\n📫 修复了多处大大小小的错误\n\n详情请阅读我们新的博客文章：</string>
 
-</resources>
+
+    <!-- device messages for updates -->
+    <string name="update_1_20">我们在 1.20 版本改进了电子邮件兼容性：\n\n📫 阅读邮件列表\n📭 阅读 HTML 邮件\n📪 很好地处理支持地址\n📫 修复了多处大大小小的错误\n\n详情请阅读我们新的博客文章：</string>
+    </resources>
