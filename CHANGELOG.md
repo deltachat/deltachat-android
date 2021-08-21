@@ -1,5 +1,18 @@
 # Delta Chat Android Changelog
 
+## v1.22.0
+2021-08
+
+* added: connectivity view shows quota information, if supported by the provider
+* fix editing shared images
+* fix account migration, updates are displayed instantly now
+* fix forwarding mails containing only quotes
+* fix ordering of some system messages
+* fix handling of gmail labels
+* fix connectivity display for outgoing messages
+* update translations and provider database
+
+
 ## v1.21.2 Testrun Release
 2021-08
 
