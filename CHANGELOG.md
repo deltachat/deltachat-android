@@ -7,7 +7,7 @@
 * fix editing shared images
 * fix account migration, updates are displayed instantly now
 * fix forwarding mails containing only quotes
-* fix odering of some system messages
+* fix ordering of some system messages
 * fix handling of gmail labels
 * fix connectivity display for outgoing messages
 * update translations and provider database
