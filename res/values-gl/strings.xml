@@ -869,4 +869,7 @@
 
     <!-- device messages for updates -->
     <string name="update_1_20">Na versión 1.20 melloramos a compatibilidade co email:\n\n📫 Ler listaxes de correo\n📭 Ler emails HTML\n📪 Mellor xestión dos enderezo de axuda\n📫 Arranxamos problemas e problemiños molestos\n\nLe o artigo no blog acerca destas melloras e máis:</string>
-    </resources>
+    <string name="update_1_22">Que novidades trae a 1.22?\n\n👋 As Solicitudes de Chat preséntanse como conversas simples e pódelas examinar antes de aceptar ou rexeitar\n\n🗄️ O Arquivo é fácilmente accesible desde o menú principal - alí tamén están as solicitudes antigas\n\n📮📮📮 Melloras para Múltiples-contas: o cambio entre contas faise máis rápido e bloquéase menos coas grandes actualizacións\n\n🤔 Saber o que acontece: os problemas de conexión móstranse na barra de título, toca nela para máis detalles\n\nMáis info no blog:</string>
+    <string name="update_1_22_ios">Que novidades trae a 1.22?\n\n👋 As Solicitudes de Chat preséntanse como conversas simples e pódelas examinar antes de aceptar ou rexeitar\n\n🗄️ O Arquivo é fácilmente accesible desde o menú principal - alí tamén están as solicitudes antigas\n\n📮📮📮 Engadido Múltiples contas: Cambia e xestiona as contas desde os axustes\n\n🤔 Saber o que acontece: os problemas de conexión móstranse na barra de título, toca nela para máis detalles\n\nMáis info no blog:</string>
+
+</resources>

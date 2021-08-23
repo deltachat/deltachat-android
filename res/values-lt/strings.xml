@@ -372,6 +372,8 @@
     <string name="connectivity_not_connected">Neprisijungta</string>
     <!-- Shown eg. in the title bar if the app is "Connecting"; as there is very few room, try to be as short as possible. Note that the three dots are a single character (…), not three (...) -->
     <string name="connectivity_connecting">Jungiamasi…</string>
+    <!-- Shown eg. in the title bar if the app is "Updating" (eg. getting new/old message, sync things); as there is very few room, try to be as short as possible. Note that the three dots are a single character (…), not three (...) -->
+    <string name="connectivity_updating">Atnaujinama…</string>
     <!-- Shown eg. in the setting if the app is "Connected" -->
     <string name="connectivity_connected">Prisijungta</string>
 
@@ -514,6 +516,8 @@
     <string name="pref_show_tray_icon">Rodyti dėklo piktogramą</string>
     <string name="pref_edit_profile">Taisyti profilį</string>
 
+    <!-- Emoji picker and categories -->
+    <string name="emoji_search_results">Paieškos rezultatai</string>
     <string name="emoji_recent">Paskiausi</string>
     <string name="emoji_people">Žmonės ir kūnas</string>
     <string name="emoji_nature">Gyvūnai ir gamta</string>
