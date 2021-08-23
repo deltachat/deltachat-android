@@ -226,7 +226,7 @@
     <string name="menu_zoom_out">Zoom Out</string>
     <string name="menu_save_log">Save Log</string>
     <string name="menu_more_options">More Options</string>
-    <string name="menu_learn_spelling">Learn Apelling</string>
+    <string name="menu_learn_spelling">Learn Spelling</string>
     <string name="menu_chat_audit_log">Chat Audit Log</string>
     <string name="jump_to_message">Jump to Message</string>
     <string name="copy_json">Copy JSON</string>
