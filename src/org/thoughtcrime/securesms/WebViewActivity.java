@@ -43,6 +43,7 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
     webView = findViewById(R.id.webview);
+    webView.getSettings().setBlockNetworkLoads(true);
     if (WebViewFeature.isFeatureSupported(WebViewFeature.FORCE_DARK)) {
       WebSettingsCompat.setForceDark(webView.getSettings(),
                                      DynamicTheme.isDarkTheme(this) ? WebSettingsCompat.FORCE_DARK_ON : WebSettingsCompat.FORCE_DARK_OFF);
