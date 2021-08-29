@@ -26,6 +26,11 @@ public class DcMsg {
     public final static int DC_STATE_OUT_DELIVERED = 26;
     public final static int DC_STATE_OUT_MDN_RCVD = 28;
 
+    public final static int DC_DOWNLOAD_DONE = 0;
+    public final static int DC_DOWNLOAD_AVAILABLE = 10;
+    public final static int DC_DOWNLOAD_FAILURE = 20;
+    public final static int DC_DOWNLOAD_IN_PROGRESS = 1000;
+
     public static final int DC_MSG_NO_ID = 0;
     public final static int DC_MSG_ID_MARKER1 = 1;
     public final static int DC_MSG_ID_DAYMARKER = 9;
@@ -90,6 +95,7 @@ public class DcMsg {
     public native boolean hasLocation        ();
     public native int     getType            ();
     public native int     getState           ();
+    public native int     getDownloadState   ();
     public native int     getChatId          ();
     public native int     getFromId          ();
     public native int     getWidth           (int def);

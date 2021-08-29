@@ -638,6 +638,12 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcContext_getMsgHtml(JNIEnv *env, jobj
 }
 
 
+JNIEXPORT void Java_com_b44t_messenger_DcContext_downloadFullMsg(JNIEnv *env, jobject obj, jint msg_id)
+{
+    dc_download_full_msg(get_dc_context(env, obj), msg_id);
+}
+
+
 JNIEXPORT void Java_com_b44t_messenger_DcContext_deleteMsgs(JNIEnv *env, jobject obj, jintArray msg_ids)
 {
     int msg_ids_cnt = 0;
@@ -1386,6 +1392,12 @@ JNIEXPORT jint Java_com_b44t_messenger_DcMsg_getType(JNIEnv *env, jobject obj)
 JNIEXPORT jint Java_com_b44t_messenger_DcMsg_getState(JNIEnv *env, jobject obj)
 {
     return dc_msg_get_state(get_dc_msg(env, obj));
+}
+
+
+JNIEXPORT jint Java_com_b44t_messenger_DcMsg_getDownloadState(JNIEnv *env, jobject obj)
+{
+    return dc_msg_get_download_state(get_dc_msg(env, obj));
 }
 
 
