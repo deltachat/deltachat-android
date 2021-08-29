@@ -18,6 +18,7 @@
     <string name="automatic">Automatic</string>
     <string name="strict">Strict</string>
     <string name="open">Open</string>
+    <string name="download">Download</string>
     <string name="open_attachment">Open Attachment</string>
     <string name="join">Join</string>
     <string name="rejoin">Rejoin</string>

@@ -101,7 +101,7 @@ public class ConversationItem extends BaseConversationItem
   private   AvatarImageView        contactPhoto;
   protected ViewGroup              contactPhotoHolder;
   private   ViewGroup              container;
-  private   Button                 showFullMessage;
+  private   Button                 msgActionButton;
 
   private @NonNull  Recipient                       conversationRecipient;
   private @NonNull  Stub<ConversationItemThumbnail> mediaThumbnailStub;
@@ -144,7 +144,7 @@ public class ConversationItem extends BaseConversationItem
     this.quoteView               =            findViewById(R.id.quote_view);
     this.container               =            findViewById(R.id.container);
     this.replyView               =            findViewById(R.id.reply_icon);
-    this.showFullMessage         =            findViewById(R.id.show_full_message);
+    this.msgActionButton         =            findViewById(R.id.msg_action_button);
 
     setOnClickListener(new ClickListener(null));
 
@@ -343,9 +343,21 @@ public class ConversationItem extends BaseConversationItem
       bodyText.setVisibility(View.VISIBLE);
     }
 
-    if (messageRecord.hasHtml()) {
-      showFullMessage.setVisibility(View.VISIBLE);
-      showFullMessage.setOnClickListener(view -> {
+    if (messageRecord.getDownloadState() != DcMsg.DC_DOWNLOAD_DONE) {
+      msgActionButton.setVisibility(View.VISIBLE);
+      msgActionButton.setText(R.string.download);
+      msgActionButton.setOnClickListener(view -> {
+        if (eventListener != null && batchSelected.isEmpty()) {
+          eventListener.onDownloadClicked(messageRecord);
+        } else {
+          passthroughClickListener.onClick(view);
+        }
+      });
+    }
+    else if (messageRecord.hasHtml()) {
+      msgActionButton.setVisibility(View.VISIBLE);
+      msgActionButton.setText(R.string.show_full_message);
+      msgActionButton.setOnClickListener(view -> {
         if (eventListener != null && batchSelected.isEmpty()) {
           eventListener.onShowFullClicked(messageRecord);
         } else {
@@ -353,7 +365,7 @@ public class ConversationItem extends BaseConversationItem
         }
       });
     } else {
-      showFullMessage.setVisibility(View.GONE);
+      msgActionButton.setVisibility(View.GONE);
     }
   }
 
