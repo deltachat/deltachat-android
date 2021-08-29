@@ -66,6 +66,13 @@ public class DeliveryStatusView {
     deliveryIndicator.clearAnimation();
   }
 
+  public void setDownloading() {
+    deliveryIndicator.setVisibility(View.VISIBLE);
+    deliveryIndicator.setImageResource(R.drawable.ic_delivery_status_sending);
+    deliveryIndicator.setContentDescription(context.getString(R.string.one_moment));
+    animatePrepare();
+  }
+
   public void setPreparing() {
     deliveryIndicator.setVisibility(View.VISIBLE);
     deliveryIndicator.setImageResource(R.drawable.ic_delivery_status_sending);
