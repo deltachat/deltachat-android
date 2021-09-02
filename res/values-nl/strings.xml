@@ -203,6 +203,7 @@
     <string name="block">Blokkeren</string>
     <string name="menu_block_contact">Contactpersoon blokkeren</string>
     <string name="menu_unblock_contact">Contactpersoon deblokkeren</string>
+    <string name="accept">Accepteren</string>
     <string name="menu_play">Afspelen</string>
     <string name="menu_pause">Pauzeren</string>
     <string name="menu_scroll_to_bottom">Ga naar het einde</string>
@@ -338,8 +339,10 @@
     <string name="chat_share_with_title">Delen met</string>
     <string name="chat_input_placeholder">Bericht</string>
     <string name="chat_archived_label">Gearchiveerd</string>
+    <string name="chat_request_label">Verzoek</string>
     <string name="chat_no_messages">Geen berichten.</string>
     <string name="chat_self_talk_subtitle">Aan mijzelf gestuurde berichten</string>
+    <string name="archive_empty_hint">Gearchiveerde gesprekken worden hier getoond.</string>
     <string name="saved_messages">Opgeslagen berichten</string>
     <string name="saved_messages_explain">• Stuur berichten door naar hier om ze snel terug te kunnen lezen\n\n• Maak aantekeningen of spraakopnamen\n\n• Voeg media toe om deze op te slaan</string>
     <!-- this "Saved" should match the "Saved" from "Saved messages" -->
@@ -419,6 +422,8 @@
     <string name="connectivity_not_connected">Niet verbonden</string>
     <!-- Shown eg. in the title bar if the app is "Connecting"; as there is very few room, try to be as short as possible. Note that the three dots are a single character (…), not three (...) -->
     <string name="connectivity_connecting">Bezig met verbinden…</string>
+    <!-- Shown eg. in the title bar if the app is "Updating" (eg. getting new/old message, sync things); as there is very few room, try to be as short as possible. Note that the three dots are a single character (…), not three (...) -->
+    <string name="connectivity_updating">Bezig met bijwerken…</string>
     <!-- Shown eg. in the setting if the app is "Connected" -->
     <string name="connectivity_connected">Verbonden</string>
 
@@ -680,7 +685,7 @@
     <string name="load_qr_code_as_image">QR-code als afbeelding laden</string>
     <string name="qrscan_title">QR-code scannen</string>
     <string name="qrscan_hint">Plaatst je camera boven de QR-code</string>
-    <string name="qrscan_failed">De qr-code kan niet worden ontcijferd</string>
+    <string name="qrscan_failed">De QR-code kan niet worden ontcijferd</string>
     <string name="qrscan_ask_join_group">Wil je deelnemen aan de groep \"%1$s\"?</string>
     <string name="qrscan_fingerprint_mismatch">De gescande vingerafdruk komt niet overeen met de vorige voor %1$s</string>
     <string name="qrscan_no_addr_found">Deze QR-code bevat een vingerafdruk, maar geen e-mailadres.\n\nVoor out-of-bandgoedkeuring, moet je eerst een beveiligde verbinding opzetten met de ontvanger.</string>
@@ -688,13 +693,13 @@
     <string name="qrscan_contains_url">Gescande QR-code-url:\n\n %1$s</string>
     <string name="qrscan_fingerprint_label">Vingerafdruk</string>
     <string name="qrscan_x_verified_introduce_myself">%1$s is goedgekeurd - vertel iets over jezelf…</string>
-    <string name="withdraw_verifycontact_explain">Deze qr-code kan door anderen worden gescand om contact met je op te nemen.\n\nJe kunt de qr-code hier deactiveren en opnieuw activeren door deze opnieuw te scannen.</string>
-    <string name="withdraw_verifygroup_explain">Deze qr-code kan door anderen worden gescand om deel te nemen aan de groep ‘%1$s’.\n\nJe kunt de qr-code hier deactiveren en opnieuw activeren door deze opnieuw te scannen.</string>
+    <string name="withdraw_verifycontact_explain">Deze QR-code kan door anderen worden gescand om contact met je op te nemen.\n\nJe kunt de QR-code hier deactiveren en opnieuw activeren door deze opnieuw te scannen.</string>
+    <string name="withdraw_verifygroup_explain">Deze QR-code kan door anderen worden gescand om deel te nemen aan de groep ‘%1$s’.\n\nJe kunt de QR-code hier deactiveren en opnieuw activeren door deze opnieuw te scannen.</string>
     <string name="withdraw_qr_code">QR-code deactiveren</string>
     <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
-    <string name="revive_verifycontact_explain">Deze qr-code kan door anderen worden gescand om contact met je op te nemen.\n\nDe qr-code is niet actief op dit apparaat.</string>
+    <string name="revive_verifycontact_explain">Deze QR-code kan door anderen worden gescand om contact met je op te nemen.\n\nDe QR-code is niet actief op dit apparaat.</string>
     <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
-    <string name="revive_verifygroup_explain">Deze qr-code kan door anderen worden gescand om deel te nemen aan de groep ‘%1$s’.\n\nDe qr-code is niet actief op dit apparaat.</string>
+    <string name="revive_verifygroup_explain">Deze QR-code kan door anderen worden gescand om deel te nemen aan de groep ‘%1$s’.\n\nDe QR-code is niet actief op dit apparaat.</string>
     <string name="revive_qr_code">QR-code activeren</string>
     <string name="qrshow_title">QR-uitnodigingscode</string>
     <string name="qrshow_x_joining">%1$s heeft deelgenomen.</string>
@@ -716,7 +721,7 @@
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Gewijzigde instellingen voor %1$s</string>
     <string name="verified_group_explain">Goedgekeurde groepen (experimenteel) zijn extra beveiligd tegen aanvallen van buitenaf. Leden worden goedgekeurd door andere leden en berichten zijn altijd eind-tot-eind versleuteld.</string>
-    <string name="copy_qr_data_success">De qr-url is gekopieerd naar het klembord</string>
+    <string name="copy_qr_data_success">De QR-url is gekopieerd naar het klembord</string>
     <string name="mailto_dialog_header_select_chat">Kies in welk gesprek je dit bericht wilt delen</string>
     <!-- first placeholder is the name of the chat -->
     <string name="mailto_dialog_confirm_replace_draft">%1$s bevat al een concept. Wil je dit vervangen?</string>
@@ -860,6 +865,11 @@
     <string name="pref_reliable_service_explain">Vereist een permanente melding</string>
     <string name="perm_enable_bg_reminder_title">Druk hier om berichten te ontvangen als Delta Chat niet geopend is.</string>
     <string name="perm_enable_bg_already_done">Je hebt al toestemming gegeven voor het ophalen van berichten op de achtergrond.\n\nAls het nog steeds niet werkt, controleer dan de systeeminstellingen.</string>
+
+
+    <!-- device messages for updates -->
     <string name="update_1_20">Verbeterde e-mailcompatibiliteit in versie 1.20:\n\n📫 Lees mailinglijsten\n📭 Lees html-e-mails\n📪 Betere afhandeling van ondersteuningsadressen\n📫 Vele grotere en kleinere problemen opgelost\n\nLees ons nieuwste blogartikel over deze eerste stappen naar e-mail en meer (Engels):</string>
+    <string name="update_1_22">Wijzigingslog van versie 1.22:\n\n👋 Gespreksverzoeken worden nu getoond als losse gesprekken en kunnen worden bestudeerd alvorens de verzoeken te accepteren of af te wijzen\n\n🗄️ Het archief is voortaan te bereiken via het hoofdmenu, waar je tevens oude gespreksverzoeken vindt\n\n📮📮📮 Verbeterde ondersteuning voor meerdere accounts: het schakelen gaat voortaan veel sneller\n\n🤔 Blijf op de hoogte: verbindingsproblemen worden voortaan getoond in het meldingsgebied\n\nMeer informatie is te vinden op ons blog (Engels):</string>
+    <string name="update_1_22_ios">Wijzigingslog van versie 1.22:\n\n👋 Gespreksverzoeken worden nu getoond als losse gesprekken en kunnen worden bestudeerd alvorens de verzoeken te accepteren of af te wijzen\n\n🗄️ Het archief is voortaan te bereiken via het hoofdmenu, waar je tevens oude gespreksverzoeken vindt\n\n📮📮📮 Verbeterde ondersteuning voor meerdere accounts: het schakelen gaat voortaan veel sneller\n\n🤔 Blijf op de hoogte: verbindingsproblemen worden voortaan getoond in het meldingsgebied\n\nMeer informatie is te vinden op ons blog (Engels):</string>
 
 </resources>

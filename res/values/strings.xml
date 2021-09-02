@@ -203,6 +203,7 @@
     <string name="block">Block</string>
     <string name="menu_block_contact">Block Contact</string>
     <string name="menu_unblock_contact">Unblock Contact</string>
+    <string name="accept">Accept</string>
     <string name="menu_play">Play</string>
     <string name="menu_pause">Pause</string>
     <string name="menu_scroll_to_bottom">Scroll to the Bottom</string>
@@ -222,7 +223,7 @@
     <string name="menu_zoom_out">Zoom Out</string>
     <string name="menu_save_log">Save Log</string>
     <string name="menu_more_options">More Options</string>
-    <string name="menu_learn_spelling">Learn Apelling</string>
+    <string name="menu_learn_spelling">Learn Spelling</string>
     <string name="menu_chat_audit_log">Chat Audit Log</string>
     <string name="jump_to_message">Jump to Message</string>
     <string name="copy_json">Copy JSON</string>
@@ -338,8 +339,10 @@
     <string name="chat_share_with_title">Share with</string>
     <string name="chat_input_placeholder">Message</string>
     <string name="chat_archived_label">Archived</string>
+    <string name="chat_request_label">Request</string>
     <string name="chat_no_messages">No messages.</string>
     <string name="chat_self_talk_subtitle">Messages I sent to myself</string>
+    <string name="archive_empty_hint">If you archive chats, they will be shown here.</string>
     <string name="saved_messages">Saved Messages</string>
     <string name="saved_messages_explain">• Forward messages here for easy access\n\n• Take notes or voice memos\n\n• Attach media to save them</string>
     <!-- this "Saved" should match the "Saved" from "Saved messages" -->
@@ -862,6 +865,11 @@
     <string name="pref_reliable_service_explain">Requires a permanent notification</string>
     <string name="perm_enable_bg_reminder_title">Tap here to receive messages while Delta Chat is in the background.</string>
     <string name="perm_enable_bg_already_done">You already allowed Delta Chat to receive messages in the background.\n\nIf messages still do not arrive in background, please also check your system settings.</string>
+
+
+    <!-- device messages for updates -->
     <string name="update_1_20">Improved e-mail compatibility in version 1.20:\n\n📫 Read mailing lists\n📭 Read HTML-mails\n📪 Nice handling of support addresses\n📫 Many major and minor annoyances fixed\n\nRead our new blog post about these first steps towards mail and more:</string>
+    <string name="update_1_22">What\'s new in 1.22?\n\n👋 Chat Requests now pop up as single chats and can be inspected in detail before accepting or blocking\n\n🗄️ The Archive is now easily accessible from the main menu - you\'ll also find your old requests there\n\n📮📮📮 Multi-account improved: Switching accounts is now faster and less often blocked by lengthy updates\n\n🤔 Know what\'s going on: Connection problems are shown in the title bar now, tap for details\n\nMore on the blog:</string>
+    <string name="update_1_22_ios">What\'s new in 1.22?\n\n👋 Chat Requests now pop up as single chats and can be inspected in detail before accepting or blocking\n\n🗄️ The Archive is now easily accessible from the settings - you\'ll also find your old requests there\n\n📮📮📮 Multi-account added: Switch and manage accounts in the settings\n\n🤔 Know what\'s going on: Connection problems are shown in the title bar now, tap for details\n\nMore on the blog:</string>
 
 </resources>

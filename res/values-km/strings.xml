@@ -259,7 +259,7 @@
     <plurals name="ask_delete_messages">
         <item quantity="other">លុបសារទាំង %d នេះ នៅទីនេះ និងនៅលើម៉ាសុីននេ</item>
     </plurals>
-    <string name="ask_forward">បញ្ជូនសារទៅកាន់ %1$d?</string>
+    <string name="ask_forward">បញ្ជូនសារទៅកាន់ %1$s?</string>
     <string name="ask_forward_multiple">បញ្ជូនសារទាំងនេះទៅកាន់សន្ទនា %1$d?</string>
     <string name="ask_export_attachment">នាំចេញឯកសារភ្ជាប់? ការនាំចេញឯកសារភ្ជាប់ នឹងអនុញ្ញាតឲ្យកម្មវិធីផ្សេងទៀត ដំណើរការនៅលើឧបករណ៍របស់អ្នក។\n\nបន្ត?</string>
     <string name="ask_block_contact">បង្ខាំងទំនាក់ទំនងនេះ? អ្នកនឹងមិនបានសារពីទំនាក់ទំនងនេះទៀត</string>
@@ -764,4 +764,6 @@
     <string name="pref_reliable_service_explain">តម្រូវការជូនដំណឹងជាអចិន្រ្តៃយ៍</string>
     <string name="perm_enable_bg_reminder_title">ប៉ះទីនេះដើម្បីទទួលសារកំឡុងពេល សា Delta Chat គឺស្ថិតនៅក្នុងផ្ទៃខាងក្រោយ។</string>
     <string name="perm_enable_bg_already_done">អ្នកបានអនុញ្ញាតរួចរាល់ហើយឲ្យសា Delta Chat ដើម្បីទទួលសារនៅផ្ទៃខាងក្រោយ\n\nប្រសិនបើ សារនៅតែមិនមកដល់ផ្ទៃខាងក្រោយ សូមពិនិត្យការការកំណត់ប្រពន្ធ័របស់អ្នកផងដែរ។</string>
+
+
     </resources>

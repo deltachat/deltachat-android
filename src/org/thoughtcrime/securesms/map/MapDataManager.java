@@ -8,6 +8,7 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 import com.mapbox.android.core.permissions.PermissionsManager;
 import com.mapbox.geojson.Feature;
@@ -26,7 +27,6 @@ import com.mapbox.mapboxsdk.style.sources.GeoJsonSource;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.components.emoji.EmojiProvider;
-import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.map.DataCollectionTask.DataCollectionCallback;
@@ -127,7 +127,7 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate,
     private int chatId;
     private LatLngBounds.Builder boundingBuilder;
     private Context context;
-    private ApplicationDcContext dcContext;
+    private DcContext dcContext;
     private MapDataState callback;
     private boolean isInitial = true;
     private boolean showTraces = false;
@@ -158,13 +158,13 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate,
         applyLastPositionFilter();
 
         updateSources();
-        dcContext.eventCenter.addObserver(DC_EVENT_LOCATION_CHANGED, this);
+        DcHelper.getEventCenter(context).addObserver(DC_EVENT_LOCATION_CHANGED, this);
 
         Log.d(TAG, "performance test - create map manager finished");
     }
 
     public void onResume() {
-        dcContext.eventCenter.addObserver(DC_EVENT_LOCATION_CHANGED, this);
+        DcHelper.getEventCenter(context).addObserver(DC_EVENT_LOCATION_CHANGED, this);
         if (!isInitial) {
             updateSources();
         }
@@ -172,7 +172,7 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate,
     }
 
     public void onPause() {
-        dcContext.eventCenter.removeObserver(DC_EVENT_LOCATION_CHANGED, this);
+        DcHelper.getEventCenter(context).removeObserver(DC_EVENT_LOCATION_CHANGED, this);
     }
 
     public void onDestroy() {
@@ -199,7 +199,7 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate,
     }
 
     @Override
-    public void handleEvent(DcEvent event) {
+    public void handleEvent(@NonNull DcEvent event) {
         int eventId = event.getId();
         Log.d(TAG, "updateEvent in MapDataManager called. eventId: " + eventId);
         int contactId = event.getData1Int();

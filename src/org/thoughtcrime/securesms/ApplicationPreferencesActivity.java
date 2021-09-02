@@ -126,6 +126,7 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
   @Override
   public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
     if (key.equals(Prefs.THEME_PREF)) {
+      DynamicTheme.setDefaultDayNightMode(this);
       recreate();
     } else if (key.equals(Prefs.LANGUAGE_PREF)) {
       recreate();
@@ -158,7 +159,7 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
         tintIcons(getActivity());
       }
 
-      DcHelper.getContext(getActivity()).eventCenter.addObserver(DcContext.DC_EVENT_CONNECTIVITY_CHANGED, this);
+      DcHelper.getEventCenter(getActivity()).addObserver(DcContext.DC_EVENT_CONNECTIVITY_CHANGED, this);
     }
 
     @Override
@@ -177,11 +178,11 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
     @Override
     public void onDestroy() {
       super.onDestroy();
-      DcHelper.getContext(getActivity()).eventCenter.removeObservers(this);
+      DcHelper.getEventCenter(getActivity()).removeObservers(this);
     }
 
     @Override
-    public void handleEvent(DcEvent event) {
+    public void handleEvent(@NonNull DcEvent event) {
       if (event.getId() == DcContext.DC_EVENT_CONNECTIVITY_CHANGED) {
         this.findPreference(PREFERENCE_CATEGORY_CONNECTIVITY)
                 .setSummary(DcHelper.getConnectivitySummary(getActivity(), R.string.connectivity_connected));

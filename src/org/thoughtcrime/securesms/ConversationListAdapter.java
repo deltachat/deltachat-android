@@ -27,12 +27,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcChatlist;
+import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcLot;
 
-import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 
+import java.lang.ref.WeakReference;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Locale;
@@ -48,9 +49,9 @@ class ConversationListAdapter extends RecyclerView.Adapter {
   private static final int MESSAGE_TYPE_SWITCH_ARCHIVE = 1;
   private static final int MESSAGE_TYPE_THREAD         = 2;
   private static final int MESSAGE_TYPE_INBOX_ZERO     = 3;
-  private static final int MESSAGE_TYPE_DEADDROP       = 4; // DEADDROP and THREAD share the same class, however, for DEADDROP it is modified on construction so it cannot be reused
 
-  private final @NonNull  ApplicationDcContext dcContext;
+  private final WeakReference<Context>         context;
+  private final @NonNull  DcContext            dcContext;
   private @NonNull        DcChatlist           dcChatlist;
   private final @NonNull  GlideRequests        glideRequests;
   private final @NonNull  Locale               locale;
@@ -87,6 +88,7 @@ class ConversationListAdapter extends RecyclerView.Adapter {
                           @Nullable ItemClickListener clickListener)
   {
     super();
+    this.context        = new WeakReference<>(context);
     this.glideRequests  = glideRequests;
     this.dcContext      = DcHelper.getContext(context);
     this.dcChatlist     = new DcChatlist(0);
@@ -128,20 +130,22 @@ class ConversationListAdapter extends RecyclerView.Adapter {
 
   @Override
   public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int i) {
+    Context context = this.context.get();
+    if (context == null) {
+      return;
+    }
+
     ViewHolder holder = (ViewHolder)viewHolder;
     DcChat chat = dcContext.getChat(dcChatlist.getChatId(i));
     DcLot summary = dcChatlist.getSummary(i, chat);
-    holder.getItem().bind(dcContext.getThreadRecord(summary, chat), dcChatlist.getMsgId(i), summary, glideRequests, locale, batchSet, batchMode);
+    holder.getItem().bind(DcHelper.getThreadRecord(context, summary, chat), dcChatlist.getMsgId(i), summary, glideRequests, locale, batchSet, batchMode);
   }
 
   @Override
   public int getItemViewType(int i) {
     int chatId = dcChatlist.getChatId(i);
 
-    if (chatId==DcChat.DC_CHAT_ID_DEADDROP) {
-      return MESSAGE_TYPE_DEADDROP;
-    }
-    else if (chatId == DcChat.DC_CHAT_ID_ARCHIVED_LINK) {
+    if (chatId == DcChat.DC_CHAT_ID_ARCHIVED_LINK) {
       return MESSAGE_TYPE_SWITCH_ARCHIVE;
     } else if(chatId == DcChat.DC_CHAT_ID_ALLDONE_HINT) {
       return MESSAGE_TYPE_INBOX_ZERO;
@@ -189,7 +193,7 @@ class ConversationListAdapter extends RecyclerView.Adapter {
   }
 
   void changeData(@Nullable DcChatlist chatlist) {
-    dcChatlist = chatlist==null? new DcChatlist(0) : chatlist;
+    dcChatlist = chatlist == null ? new DcChatlist(0) : chatlist;
     notifyDataSetChanged();
   }
 }

@@ -7,6 +7,8 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.util.Log;
 
+import com.b44t.messenger.DcContext;
+
 public class NetworkStateReceiver extends BroadcastReceiver {
 
     @Override
@@ -18,15 +20,13 @@ public class NetworkStateReceiver extends BroadcastReceiver {
 
             if (ni != null && ni.getState() == NetworkInfo.State.CONNECTED) {
                 Log.i("DeltaChat", "++++++++++++++++++ Connected ++++++++++++++++++");
-                ApplicationDcContext dcContext = DcHelper.getContext(context);
-                dcContext.showNetworkErrors = true;
                 new Thread(() -> {
                     // call dc_maybe_network() from a worker thread.
                     // theoretically, dc_maybe_network() can be called from the main thread and returns at once,
                     // however, in reality, it does currently halt things for some seconds.
                     // this is a workaround that make things usable for now.
                     Log.i("DeltaChat", "calling maybeNetwork()");
-                    dcContext.maybeNetwork();
+                    DcHelper.getAccounts(context).maybeNetwork();
                     Log.i("DeltaChat", "maybeNetwork() returned");
                 }).start();
             }

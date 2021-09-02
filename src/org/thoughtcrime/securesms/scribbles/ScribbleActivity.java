@@ -1,12 +1,10 @@
 package org.thoughtcrime.securesms.scribbles;
 
 import android.os.Bundle;
-import androidx.annotation.RequiresApi;
 
 import org.thoughtcrime.securesms.PassphraseRequiredActionBarActivity;
 import org.thoughtcrime.securesms.R;
 
-@RequiresApi(19)
 public class ScribbleActivity extends PassphraseRequiredActionBarActivity {
   public static final int SCRIBBLE_REQUEST_CODE       = 31424;
   ImageEditorFragment imageEditorFragment;

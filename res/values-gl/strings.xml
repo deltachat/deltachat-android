@@ -203,6 +203,7 @@
     <string name="block">Bloquear</string>
     <string name="menu_block_contact">Bloquear contacto</string>
     <string name="menu_unblock_contact">Desbloquear contacto</string>
+    <string name="accept">Aceptar</string>
     <string name="menu_play">Reproducir</string>
     <string name="menu_pause">Pausar</string>
     <string name="menu_scroll_to_bottom">Moverse abaixo</string>
@@ -338,8 +339,10 @@
     <string name="chat_share_with_title">Compartir con</string>
     <string name="chat_input_placeholder">Mensaxe</string>
     <string name="chat_archived_label">Arquivado</string>
+    <string name="chat_request_label">Solicitar</string>
     <string name="chat_no_messages">Sen mensaxes.</string>
     <string name="chat_self_talk_subtitle">Mensaxes que me enviei a min mesma</string>
+    <string name="archive_empty_hint">Se arquivas os chats, aparecerán aquí.</string>
     <string name="saved_messages">Mensaxes gardadas</string>
     <string name="saved_messages_explain">• Reenvía aquí as mensaxes para un acceso rápido\n\n• Toma notas de texto ou voz\n\n• Anexa medios para gardalos</string>
     <!-- this "Saved" should match the "Saved" from "Saved messages" -->
@@ -419,6 +422,8 @@
     <string name="connectivity_not_connected">Non conectado</string>
     <!-- Shown eg. in the title bar if the app is "Connecting"; as there is very few room, try to be as short as possible. Note that the three dots are a single character (…), not three (...) -->
     <string name="connectivity_connecting">Conectando…</string>
+    <!-- Shown eg. in the title bar if the app is "Updating" (eg. getting new/old message, sync things); as there is very few room, try to be as short as possible. Note that the three dots are a single character (…), not three (...) -->
+    <string name="connectivity_updating">Actualizando…</string>
     <!-- Shown eg. in the setting if the app is "Connected" -->
     <string name="connectivity_connected">Conectado</string>
 
@@ -860,6 +865,11 @@
     <string name="pref_reliable_service_explain">Require unha notificación permanente</string>
     <string name="perm_enable_bg_reminder_title">Toca aquí para recibir mensaxes mentras Delta Chat está en segundo plano.</string>
     <string name="perm_enable_bg_already_done">Xa permitiches que Delta Chat reciba mensaxes en segundo plano\n\nSe aínda así non recibes as mensaxes, por favor comproba os axustes do sistema.</string>
+
+
+    <!-- device messages for updates -->
     <string name="update_1_20">Na versión 1.20 melloramos a compatibilidade co email:\n\n📫 Ler listaxes de correo\n📭 Ler emails HTML\n📪 Mellor xestión dos enderezo de axuda\n📫 Arranxamos problemas e problemiños molestos\n\nLe o artigo no blog acerca destas melloras e máis:</string>
+    <string name="update_1_22">Que novidades trae a 1.22?\n\n👋 As Solicitudes de Chat preséntanse como conversas simples e pódelas examinar antes de aceptar ou rexeitar\n\n🗄️ O Arquivo é fácilmente accesible desde o menú principal - alí tamén están as solicitudes antigas\n\n📮📮📮 Melloras para Múltiples-contas: o cambio entre contas faise máis rápido e bloquéase menos coas grandes actualizacións\n\n🤔 Saber o que acontece: os problemas de conexión móstranse na barra de título, toca nela para máis detalles\n\nMáis info no blog:</string>
+    <string name="update_1_22_ios">Que novidades trae a 1.22?\n\n👋 As Solicitudes de Chat preséntanse como conversas simples e pódelas examinar antes de aceptar ou rexeitar\n\n🗄️ O Arquivo é fácilmente accesible desde o menú principal - alí tamén están as solicitudes antigas\n\n📮📮📮 Engadido Múltiples contas: Cambia e xestiona as contas desde os axustes\n\n🤔 Saber o que acontece: os problemas de conexión móstranse na barra de título, toca nela para máis detalles\n\nMáis info no blog:</string>
 
 </resources>

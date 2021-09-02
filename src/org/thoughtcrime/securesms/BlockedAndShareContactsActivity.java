@@ -2,6 +2,8 @@ package org.thoughtcrime.securesms;
 
 import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.loader.app.LoaderManager;
@@ -18,7 +20,6 @@ import android.widget.TextView;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 
-import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcContactsLoader;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -135,7 +136,7 @@ public class BlockedAndShareContactsActivity extends PassphraseRequiredActionBar
     }
 
     @Override
-    public void handleEvent(DcEvent event) {
+    public void handleEvent(@NonNull DcEvent event) {
       if (event.getId()==DcContext.DC_EVENT_CONTACTS_CHANGED) {
         restartLoader();
       }
@@ -163,7 +164,7 @@ public class BlockedAndShareContactsActivity extends PassphraseRequiredActionBar
     }
 
     private void unblockContact(int contactId) {
-      ApplicationDcContext dcContext = DcHelper.getContext(getContext());
+      DcContext dcContext = DcHelper.getContext(getContext());
       dcContext.blockContact(contactId, 0);
       restartLoader();
     }

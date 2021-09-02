@@ -29,10 +29,10 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.b44t.messenger.DcContact;
+import com.b44t.messenger.DcContext;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.components.RecyclerViewFastScroller.FastScrollAdapter;
-import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcContactsLoader;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.contacts.ContactSelectionListAdapter.HeaderViewHolder;
@@ -70,7 +70,7 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter
           Collections.synchronizedMap(new LRUCache<Integer,SoftReference<DcContact>>(MAX_CACHE_SIZE));
 
   private final @NonNull Context              context;
-  private final @NonNull ApplicationDcContext dcContext;
+  private final @NonNull DcContext            dcContext;
   private @NonNull int[]                      dcContactList = new int[0];
   private String                              query;
   private final boolean                       multiSelect;

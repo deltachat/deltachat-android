@@ -8,6 +8,7 @@ import android.os.Build;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.StyleRes;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import org.thoughtcrime.securesms.R;
 
@@ -46,6 +47,21 @@ public class DynamicTheme {
       //CachedInflater.from(activity).clear();
     }
   }
+
+  public static void setDefaultDayNightMode(@NonNull Context context) {
+    String theme = Prefs.getTheme(context);
+
+    if (theme.equals(SYSTEM)) {
+      AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+    } else if (DynamicTheme.isDarkTheme(context)) {
+      AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+    } else {
+      AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+    }
+
+    //CachedInflater.from(context).clear();
+  }
+
 
   private @StyleRes int getSelectedTheme(Activity activity) {
     if (isDarkTheme(activity)) {

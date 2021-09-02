@@ -18,11 +18,11 @@ import android.widget.TextView;
 
 import com.b44t.messenger.DcChatlist;
 import com.b44t.messenger.DcContact;
+import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMsg;
 
 import org.thoughtcrime.securesms.ConversationListActivity;
 import org.thoughtcrime.securesms.R;
-import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.search.model.SearchResult;
@@ -139,7 +139,7 @@ public class SearchFragment extends Fragment implements SearchListAdapter.EventL
   public void onContactClicked(@NonNull DcContact contact) {
     ConversationListActivity conversationList = (ConversationListActivity) getActivity();
     if (conversationList != null) {
-      ApplicationDcContext dcContext = DcHelper.getContext(getContext());
+      DcContext dcContext = DcHelper.getContext(getContext());
       int chatId = dcContext.getChatIdByContactId(contact.getId());
       if(chatId==0) {
         new AlertDialog.Builder(getContext())
@@ -161,7 +161,7 @@ public class SearchFragment extends Fragment implements SearchListAdapter.EventL
   public void onMessageClicked(@NonNull DcMsg message) {
     ConversationListActivity conversationList = (ConversationListActivity) getActivity();
     if (conversationList != null) {
-      ApplicationDcContext dcContext = DcHelper.getContext(getContext());
+      DcContext dcContext = DcHelper.getContext(getContext());
       int chatId = message.getChatId();
       int msgId = message.getId();
       int startingPosition = DcMsg.getMessagePosition(message, dcContext);

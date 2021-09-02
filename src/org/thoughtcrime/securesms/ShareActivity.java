@@ -31,7 +31,8 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.pm.ShortcutManagerCompat;
 
-import org.thoughtcrime.securesms.connect.ApplicationDcContext;
+import com.b44t.messenger.DcContext;
+
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.PartAuthority;
 import org.thoughtcrime.securesms.permissions.Permissions;
@@ -62,7 +63,7 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity implement
   private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
 
   private ArrayList<Uri>               resolvedExtras;
-  private ApplicationDcContext         dcContext;
+  private DcContext                    dcContext;
   private boolean                      isResolvingUrisOnMainThread;
 
   @Override

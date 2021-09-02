@@ -4,6 +4,7 @@
     <string name="app_name">دلتا چت</string>
     <string name="ok">تایید</string>
     <string name="cancel">لغو</string>
+    <string name="clear_search">پاک کردن جستجو</string>
     <string name="yes">بله</string>
     <string name="no">خیر</string>
     <string name="select">انتخاب</string>
@@ -32,13 +33,24 @@
     <string name="unarchive">خروج از بایگانی</string>
     <string name="mute">سکوت</string>
     <string name="ephemeral_messages">پیام‌های ناپدید شونده</string>
-    <string name="ephemeral_messages_hint">این تنظیمات برای تمام افرادی که از دلتاچت استفاده می کنند اعمال می‌شود. با این وجود، آنها ممکن است پیامها را کپی، ذخیره یا فوروارد کنند و یا از سایر برنامه های ایمیل استفاده کند.</string>
+    <string name="ephemeral_messages_hint">این تنظیمات برای تمام افرادی که از دلتاچت استفاده می کنند اعمال می‌شود. ولی ممکن است آن‌ها  از پیامها را زونوشت گرفته، پیام‌ها را  ذخیره یا هدایت کرده و یا از سایر برنامه های ایمیل استفاده کنند.</string>
     <string name="save">ذخیره</string>
     <string name="chat">گفتگو</string>
     <string name="media">رسانه</string>
-    <string name="profile">پروفایل</string>
+    <string name="profile">نمایه</string>
     <string name="main_menu">صفحه اصلی</string>
-    <string name="start_chat">شروع چت</string>
+    <string name="start_chat">شروع گفتگو</string>
+    <string name="show_full_message">نمایش پیام کامل...</string>
+    <string name="show_full_message_in_browser">نمایش پیام کامل در مرورگر</string>
+    <!-- this is shown as placeholder when something is loading at some places -->
+    <string name="loading">در حال بارگیری...</string>
+    <string name="hide">مخفی کردن</string>
+    <string name="activate">فعال کردن</string>
+    <string name="load_remote_content">بارگیری تصاویر از بیرون</string>
+    <!-- possible answers to the question are: Never, Always, Once -->
+    <string name="load_remote_content_ask">تصاویر مربوط به نشانی‌های اینترنتی دیگر می‌توانند برای ردیابی شما استفاده شوند. \n\n این تنظیمات همچنین برای بارگیری فونت‌ها و دیگر محتواها استفاده می‌شوند. اگر غیرفعال باشد ممکن است همچنان تصاویر درون پیام و تصاویر بارگیری شده را ببینید. \n\n آيا تصاویر خارجی بارگیری شوند؟</string>
+    <string name="always">همیشه</string>
+    <string name="once">همین یک بار</string>
     <string name="show_password">نمایش رمزعبور</string>
     <string name="hide_password">مخفی کردن رمز عبور</string>
     <string name="not_now">اکنون نه</string>
@@ -56,10 +68,10 @@
     <string name="file_not_found">عدم یافتن %1$s</string>
     <string name="copied_to_clipboard">در حافظه کپی شد.</string>
     <string name="contacts_headline">مخاطبین</string>
-    <string name="email_address">آدرس‌های ایمیل</string>
-    <string name="bad_email_address">آدرس رایانامه نادرست است.</string>
+    <string name="email_address">نشانی رایانامه</string>
+    <string name="bad_email_address">نشانی رایانامه ایراد دارد.</string>
     <string name="password">رمزعبور</string>
-    <string name="existing_password">رمزعبور فعلی</string>
+    <string name="existing_password">رمزعبور موجود</string>
     <string name="now">اکنون</string>
     <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
     <string name="danger">خطر</string>
@@ -81,7 +93,7 @@
     </plurals>
     <plurals name="n_chats">
         <item quantity="one">%d چت</item>
-        <item quantity="other">%d چت</item>
+        <item quantity="other">%d گپ</item>
     </plurals>
     <plurals name="n_contacts">
         <item quantity="one">%d مخاطب</item>
@@ -105,12 +117,19 @@
     <string name="images">تصاویر</string>
     <string name="audio">صدا</string>
     <string name="voice_message">پیام صوتی</string>
+    <string name="forwarded">هدایت</string>
     <string name="forwarded_message">پیام هدایت شده</string>
+    <!-- %1$s will be replaced by the name or the e-mail address of the person who has forwarded the message -->
+    <string name="forwarded_by">توسط %1$s هدایت شده است</string>
     <string name="video">فیلم</string>
     <string name="documents">اسناد</string>
     <string name="contact">مخاطب</string>
     <string name="verified_contact">مخاطب تایید شده. </string>
     <string name="camera">دوربین</string>
+    <!-- "capture" here means "start a video recording" or "take a photo"; eg. the description of the "shutter button" in the camera controls -->
+    <string name="capture">گرفتن</string>
+    <string name="switch_camera">تغییر دوربین</string>
+    <string name="toggle_fullscreen">تغییر وضعیت تمام صفحه</string>
     <string name="location">موقعیت مکانی</string>
     <string name="gallery">گالری</string>
     <string name="images_and_videos">تصاویر و فیلم‌ها</string>
@@ -143,20 +162,20 @@
 
     <!-- menu labels (or icon, buttons...) -->
     <string name="menu_new_contact">مخاطب جدید</string>
-    <string name="menu_new_chat">چت جدید</string>
+    <string name="menu_new_chat">گفتگوی جدید</string>
     <string name="menu_new_group">گروه جدید</string>
     <string name="menu_new_verified_group">گروه تایید شده جدید</string>
     <string name="menu_send">ارسال</string>
-    <string name="menu_toggle_keyboard">کیبورد شکلک</string>
+    <string name="menu_toggle_keyboard">تعییر صفحه کلید شکلک‌ها</string>
     <string name="menu_edit_group">ویرایش گروه</string>
     <string name="menu_group_name_and_image">نام و تصویر گروه</string>
     <string name="menu_show_map">نمایش نقشه</string>
     <string name="menu_show_global_map">نمایش همه موقعیت‌های مکانی</string>
-    <string name="menu_archive_chat">بایگانی چت</string>
+    <string name="menu_archive_chat">بایگانی گفتگو</string>
     <string name="menu_unarchive_chat">خروج چت از بایگانی</string>
     <string name="menu_add_attachment">افزودن ضمیمه</string>
     <string name="menu_leave_group">ترک گروه</string>
-    <string name="menu_delete_chat">حذف چت</string>
+    <string name="menu_delete_chat">حذف کل گفتگو</string>
     <string name="ask_delete_named_chat">اطمینان دارید می‌خواهید \"%1$s\" را پاک کنید؟</string>
     <string name="menu_delete_messages">حذف پیام‌ها</string>
     <string name="menu_delete_image">حذف تصویر</string>
@@ -164,28 +183,35 @@
     <string name="menu_delete_locations">حذف همه موقعیت‌های مکانی؟</string>
     <string name="menu_delete_location">حذف این موقعیت مکانی؟</string>
     <string name="menu_message_details">جزئیات پیام</string>
-    <string name="menu_copy_to_clipboard">کپی در حافظه</string>
+    <string name="menu_copy_to_clipboard">رونوشت‌برداری در حافظه</string>
     <string name="menu_copy_selection_to_clipboard">رونوشت برداری از انتخاب شده</string>
     <string name="menu_copy_link_to_clipboard">رونوشت برداری از لینک</string>
-    <string name="paste_from_clipboard">الصاق از حافظه</string>
+    <string name="menu_copy_text_to_clipboard">رونوشت گرفتن از متن</string>
+    <string name="menu_copy_image_to_clipboard">رونوشت گرفتن از تصویر</string>
+    <string name="paste_from_clipboard">چسباندن از حافظه</string>
     <string name="menu_forward">هدایت پیام</string>
     <string name="menu_resend">بازارسال پیام</string>
     <string name="menu_reply">پاسخ به پیام</string>
     <string name="menu_mute">ساکت کردن اعلان</string>
-    <string name="menu_unmute">صدا دار</string>
+    <string name="menu_unmute">صدا دار کردن</string>
     <string name="menu_export_attachment">صادر کردن ضمیمه</string>
     <string name="menu_all_media">همه رسانه‌ها</string>
     <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
     <string name="show_in_chat">نمایش در گفتگو</string>
     <string name="menu_share">اشتراک</string>
+    <!-- this is the action "to block sth." usually a mailing list or a contact. this is NOT "a large solid piece of hard material" :) -->
+    <string name="block">مسدود کردن</string>
     <string name="menu_block_contact">انسداد مخاطب</string>
-    <string name="menu_unblock_contact">عدم انسداد مخاطب</string>
+    <string name="menu_unblock_contact">لغو انسداد مخاطب</string>
+    <string name="accept">پذیرش</string>
     <string name="menu_play">اجرا</string>
     <string name="menu_pause">توقف</string>
-    <string name="menu_scroll_to_bottom">اسکرول تا پایین</string>
-    <string name="menu_scroll_to_top">اسکرول تا بالا</string>
+    <string name="menu_scroll_to_bottom">رفتن به پایین</string>
+    <string name="menu_scroll_to_top">رفن تا بالا</string>
     <string name="menu_help">کمک</string>
+    <string name="privacy_policy">خط مشی رازداری</string>
     <string name="menu_select_all">انتخاب همه</string>
+    <string name="select_more">انتخاب بیشتر</string>
     <string name="menu_expand">گسترش</string>
     <string name="menu_edit_name">ویرایش نام</string>
     <string name="menu_settings">تنظیمات</string>
@@ -196,11 +222,17 @@
     <string name="menu_zoom_in">درشت نمایی</string>
     <string name="menu_zoom_out">کوچک نمایی</string>
     <string name="menu_save_log">ذخیره گزارش</string>
+    <string name="menu_more_options">گزینه‌های بیشتر</string>
+    <string name="menu_learn_spelling">یادگرفتن املا </string>
+    <string name="menu_chat_audit_log">گزارش بررسی گفتگو</string>
+    <string name="jump_to_message">رفتن به پیام</string>
+    <string name="copy_json">JSON رونوشت برداری از </string>
+    <string name="replace_draft">جایگزین کردن پیش‌نویس</string>
     <string name="title_share_location">اشتراک موقعیت مکانی با همه اعضای گروه</string>
     <string name="device_talk">پیام‌های دستگاه</string>
     <string name="device_talk_subtitle">پیام‌های  داخلی</string>
-    <string name="device_talk_explain">پیام‌ها در این گفتگو به صورت داخلی و توسط نرم‌افزار دلتا چت تولید شده‌اند. سازنده‌ها از این محل برای اعلان به روز‌رسانی‌ها و مشکلات پیش آمده حین کار استفاده می‌کنند. </string>
-    <string name="device_talk_welcome_message">به دلتا چت خوش آمدید! - دلتا چت حال و هوای دیگر پیام‌رسان‌ها را دارد ولی هیچ کنترل مرکزی  در آن وجود ندارد و اطلاعات شما، دوستان و خانواده شما به سازمان‌های  بزرگ فروخته نمی‌شود. \n\nدرواقع دلتا چت یک نرم‌افزار ایمیل با یک رابط گرافیکی چت مدرن است. درواقع ایمیل در یک لباس جدید. \n\n دلتا چت را برای ارتباط با هر فرد از ملیاردها نفر استفاده کنید: فقط کافی است از آدرس ایمیل آن‌ها استفاده کنید. مخاطب نیاز نیست نرم افزار دلتا چت را نصب کند، وارد سایت خاصی شود یا جایی ثبت نام کند.  ولی اگر دوست داشتید می‌توانید آن‌ها را به اینجا راهنمایی کنید
+    <string name="device_talk_explain">پیام‌ها در این گفتگو به صورت داخلی و توسط نرم‌افزار دلتاچت تولید شده‌اند. سازنده‌ها از این محل برای اعلان به روز‌رسانی‌ها و مشکلات پیش آمده حین کار استفاده می‌کنند. </string>
+    <string name="device_talk_welcome_message">به دلتاچت خوش آمدید! - دلتا چت حال و هوای دیگر پیام‌رسان‌ها را دارد ولی هیچ کنترل مرکزی  در آن وجود ندارد و اطلاعات شما، دوستان و خانواده شما به سازمان‌های بزرگ فروخته نمی‌شود. \n\nدرواقع دلتا چت یک نرم‌افزار ایمیل با یک رابط گرافیکی مدرن است. درواقع ایمیل در یک لباس جدید. \n\n می‌توانید دلتا چت را برای ارتباط با هر فرد از ملیاردها نفر استفاده کنید: فقط کافی است از آدرس ایمیل آن‌ها استفاده کنید. مخاطب نیاز نیست نرم افزار دلتا چت را نصب کند، وارد سایت خاصی شود یا جایی ثبت نام کند.  ولی اگر دوست داشتید می‌توانید آن‌ها را به اینجا راهنمایی کنید
  https://get.delta.chat 👉</string>
     <string name="edit_contact">ویرایش مخاطب</string>
     <!-- Translators: "Pin" here is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
@@ -214,37 +246,41 @@
     <string name="ConversationFragment_quoted_message_not_found">پیام اصلی یافت نشد</string>
     <string name="reply_privately">پاسخ دادن به صورت خصوصی</string>
 
-    <string name="mute_for_one_hour">ساکت کردن به مدت 1 ساعت</string>
-    <string name="mute_for_two_hours">ساکت کردن به مدت 2 ساعت</string>
-    <string name="mute_for_one_day">ساکت کردن به مدت 1 روز</string>
-    <string name="mute_for_seven_days">ساکت کردن به مدت7 روز</string>
+    <string name="mute_for_one_hour">ساکت کردن به مدت۱ ساعت</string>
+    <string name="mute_for_two_hours">ساکت کردن به مدت ۲ ساعت</string>
+    <string name="mute_for_one_day">ساکت کردن به مدت ۱ روز</string>
+    <string name="mute_for_seven_days">ساکت کردن به مدت۷ روز</string>
     <string name="mute_forever">ساکت کردن دائمی</string>
 
     <string name="share_location_once">یک بار</string>
-    <string name="share_location_for_5_minutes">به مدت 5 دقیقه</string>
-    <string name="share_location_for_30_minutes">به مدت 30 دقیقه</string>
-    <string name="share_location_for_one_hour">به مدت 1 ساعت</string>
-    <string name="share_location_for_two_hours">به مدت 2 ساعت</string>
-    <string name="share_location_for_six_hours">به مدت 6 ساعت</string>
+    <string name="share_location_for_5_minutes">به مدت ۵ دقیقه</string>
+    <string name="share_location_for_30_minutes">به مدت ۳۰ دقیقه</string>
+    <string name="share_location_for_one_hour">به مدت ۱ ساعت</string>
+    <string name="share_location_for_two_hours">به مدت ۲ ساعت</string>
+    <string name="share_location_for_six_hours">به مدت ۶ ساعت</string>
 
     <plurals name="ask_send_following_n_files_to">
         <item quantity="one">ارسال این فایل به %s؟</item>
         <item quantity="other">ارسال این%d فایل به %s؟</item>
     </plurals>
-    <string name="file_saved_to">فایل در \"%1$s\" ذخیره شد</string>
+    <string name="file_saved_to">فایل  در \"%1$s\" ذخیره شد</string>
 
     <string name="videochat">گفتگوی تصویری</string>
     <string name="videochat_invite_user_to_videochat">دعوت کردن %1$sبه گفتگوی تصویری</string>
     <string name="videochat_invite_user_hint">این عمل، به نرم افزار یا مرورگر سازگار برای هردوطرف مکالمه نیاز دارد. </string>
-    <string name="videochat_contact_invited_hint">%1$sبه تماس تصویری دعوت شد. </string>
+    <string name="videochat_contact_invited_hint">%1$s دعوت به تماس تصویری  </string>
     <string name="videochat_you_invited_hint">شما به تماس تصویری دعوت شده‌اید.</string>
     <string name="videochat_will_open_in_your_browser">این تماس تصویری در مرورگر شما باز خواهد شد.</string>
     <string name="videochat_tap_to_join">برای پیوستن ضربه بزنید. </string>
     <string name="videochat_tap_to_open">برای باز کردن ضربه بزنید. </string>
     <string name="videochat_instance">جلسه تماس تصویری</string>
     <string name="videochat_instance_placeholder">جلسه تماس تصویری شما</string>
-    <string name="videochat_instance_explain">اگر یک روش تماس تصویری تعریف شود؛ می‌توانید در هر گفتگوی یک-به-یک تماسی تصویری برقرار کنید.  تماس تصویری نیازمند یک نرم‌افزار  سازگار یا یک مرورگرسازگار در هر دو طرف است. /n/n مثال‌ها:‌https://meet.jit.si/$ROOM یا basicwebrtc:https://your-server</string>
-    <string name="videochat_instance_from_qr">می‌خواهید از \"%1$s\" برای دعوت دیگران به گفتگوی تصویری استفاده کنید؟/n/n وقتی تعیین شد، می‌توانید یک گفتگوی تصویری را از هر گفتگوی یک به یک شروع کنید. این کار، تنظیمات قبلی تماس تصویری در صورت وچود را تغییر می‌دهد.</string>
+    <string name="videochat_instance_explain">اگر یک روش تماس تصویری تعریف شود؛ می‌توانید در هر گفتگوی یک-به-یک تماسی تصویری برقرار کنید.  تماس تصویری نیازمند یک نرم‌افزار سازگار یا یک مرورگر سازگار در هر دو طرف است. 
+مثال‌ها:
+‌https://meet.jit.si/$ROOM 
+یا
+ basicwebrtc:https://your-server</string>
+    <string name="videochat_instance_from_qr">می‌خواهید از \"%1$s\" برای دعوت دیگران به گفتگوی تصویری استفاده کنید؟/n/n وقتی تعیین شد، می‌توانید در هر گفتگوی فرد به فرد یک مکالمه تصویری شروع کنید. این کار، تنظیمات قبلی تماس تصویری(در صورت وجود تنظیمات قبلی) را تغییر می‌دهد.</string>
     <string name="videochat_invitation">دعوت به مکالمه تصویری.</string>
     <string name="videochat_invitation_body">شما به مکالمه تصویری دعوت شده اید برای پیوستن%1$s را بزنید.</string>
 
@@ -254,17 +290,18 @@
         <item quantity="one">پاک کردن %d گفتگو؟ دیگر در لیست گفتگوها نشان داده نخواهد شد ولی پیام‌ها در سرور باقی می‌مانند. </item>
         <item quantity="other">پاک کردن %d گفتگو؟ دیگر در لیست گفتگوها نشان داده نخواهند شد ولی پیام‌ها در سرور باقی می‌مانند. </item>
     </plurals>
+    <string name="ask_delete_message">مطمئن هستید می‌خواهید این پیام را پاک کنید؟</string>
     <plurals name="ask_delete_messages">
         <item quantity="one">پاک کردن %d گفتگو از اینجا و سرور؟</item>
         <item quantity="other">پاک کردن %d گفتگو از اینجا و سرور؟</item>
     </plurals>
     <string name="ask_forward">پیام‌ها به %1$sهدایت شوند؟</string>
-    <string name="ask_forward_multiple">انتقال پیام‌ها به %1$d چت؟</string>
+    <string name="ask_forward_multiple">انتقال پیام‌ها به %1$d گفتگو؟</string>
     <string name="ask_export_attachment">ضمیمه صادر شود؟ صادر کردن ضمیمه باعث می‌شود دیگر نرم‌افزارهای روی دستگاه شما بتوانند به آن دسترسی داشته باشند. \n\nادامه می‌دهید؟</string>
     <string name="ask_block_contact">مخاطب مسدود شود؟ شما دیگر پیامی از این مخاطب دریافت نخواهید کرد.</string>
     <string name="ask_unblock_contact">رفع مسدودیت مخاطب؟ دوباره قادر خواهید بود پیام‌های ارسال شده توسط این مخاطب را دریافت کنید.</string>
     <string name="ask_delete_contacts">مخاطبین حذف شوند؟\n\nمخاطبینی که گفتگوی فعال دارند و مخاطبینی که در دفتر تلفن سیستم هستند را نمی‌توان به صورت دائمی حذف کرد. </string>
-    <string name="ask_delete_contact">حذف مخاطب %1$s؟ \n\nمخاطبین با گگفتگوی فعال و مخاطبینی که در دفتر تلفن سیستم هستند را نمی‌توان به صورت دائمی حذف کرد. </string>
+    <string name="ask_delete_contact">حذف مخاطب %1$s؟ \n\nمخاطبین با گفتگوی فعال و مخاطبینی که در دفتر تلفن سیستم هستند را نمی‌توان به صورت دائمی حذف کرد. </string>
     <string name="cannot_delete_contacts_in_use">نمی‌توان مخاطبین گفتگو‌های فعال را حذف کرد. </string>
     <string name="ask_start_chat_with">گفتگو با %1$s؟</string>
     <string name="ask_delete_value">پاک کردن %s؟</string>
@@ -275,8 +312,8 @@
 
     <!-- contact list -->
     <string name="contacts_title">مخاطبین</string>
-    <string name="contacts_enter_name_or_email">نام یا آدرس ایمیل را وارد کنید</string>
-    <string name="contacts_type_email_above">ادرس ایمیل را در بخش بالا وارد کنید</string>
+    <string name="contacts_enter_name_or_email">نام یا نشانی رایانامه را وارد کنید</string>
+    <string name="contacts_type_email_above">نشانی رایانامه را در بخش بالا وارد کنید</string>
     <string name="contacts_empty_hint">بدون مخاطب.</string>
 
 
@@ -302,13 +339,15 @@
     <string name="chat_record_slide_to_cancel">برای لغو بکشید.</string>
     <string name="chat_record_explain">برای ضبط پیام صوتی فشار داده و نگهدارید، برای ارسال رها کنید. </string>
     <string name="chat_no_chats_yet_title">جعبه ورودی خالی. \n برای شروع گفتگو جدید \"+\" را فشار دهید.</string>
-    <string name="chat_no_chats_yet_hint">می‌توانیدبا دیگر کاربران دلتا چت و هر آدرس رایانامه‌ای گفتگو را آغاز کنید.</string>
+    <string name="chat_no_chats_yet_hint">می‌توانید با دیگر کاربران دلتا چت و هر نشانی رایانامه‌ای گفتگو را آغاز کنید.</string>
     <string name="chat_all_archived">همه گفتگوها بایگانی شده‌اند. /n برای شروع گفتگو \"+\" را فشار دهید. </string>
     <string name="chat_share_with_title">اشتراک گذاری با</string>
     <string name="chat_input_placeholder">پیام</string>
     <string name="chat_archived_label">بایگانی شد</string>
+    <string name="chat_request_label">درخواست</string>
     <string name="chat_no_messages">پیامی نیست. </string>
     <string name="chat_self_talk_subtitle">پیام‌هایی که برای خودم  ارسال کرده‌ام. </string>
+    <string name="archive_empty_hint">اگر گفتگوها را بایگانی کنید در اینجا نمایش داده می‌شوند. </string>
     <string name="saved_messages">پیام‌های ذخیره شده. </string>
     <string name="saved_messages_explain">برای دسترسی راحت‌تر پیام‌ها را به اینجا هدایت کنید\n\n• می‌توانید یادداشت متنی یا صوتی تهیه کنید\n\n• برای ذخیره رسانه‌ آن را ضمیمه کنید. </string>
     <!-- this "Saved" should match the "Saved" from "Saved messages" -->
@@ -321,12 +360,35 @@
     <string name="messaging_disabled_not_in_group">نمی‌توانید بنویسید چرا که در این گروه نیستید. برای عضو شدن از یکی از اعضا درخواست کنید. </string>
     <string name="messaging_disabled_device_chat">این گفتگو شامل پیام‌های تولید شده به صورت داخلی است. برای همین نمی‌توانید پیامی بنویسید. </string>
     <string name="messaging_disabled_deaddrop">برای رد یا قبول درخواست تماس روی یک پیام کلیک کنید</string>
+    <string name="messaging_disabled_mailing_list">ارسال پیام در لیست‌های ایمیل فعلا پشتیبانی نمی‌شود.</string>
     <string name="cannot_display_unsuported_file_type">امکان نمایش این نوع فایل وجود ندارد: %s</string>
     <string name="attachment_failed_to_load">ناموفق در بارگیری ضمیمه</string>
+    <!-- For recording Voice messages: Description for the "Lock" button allowing to lift the thumb from the record button while recording continues -->
+    <string name="lock_recording">قفل کردن ضبط کردن</string>
+
+    <!-- mailing lists -->
+    <string name="mailing_list">لیست ایمیل</string>
+    <string name="ask_show_mailing_list">نمایش لیست ایمیل\"%1$s\"؟</string>
+    <string name="mailing_list_profile_info">تغییرات انجام شده روی اسم و تصویر لیست ایمیل فقط در این دستگاه اعمال شود.</string>
+
     <!-- map -->
     <string name="filter_map_on_time">نمایش موقعیت‌های مکانی در چارچوب زمان</string>
     <string name="show_location_traces">نمایش ردپاها</string>
     <string name="add_poi">ارسال نقطه توجه</string>
+
+    <!-- chat audit log -->
+    <string name="chat_audit_log_empty_message">پیام‌های سیستم مربوط به این گفتگو اینجا نمایش داده خواهند شد.</string>
+    <string name="chat_audit_log_title">گزارش بررسی گفتگو برای %1$s</string>
+    <string name="chat_audit_log_description">این نمایش فقط اطلاعات پیام‌ها و سیستم را نشان می‌دهد و برای پیدا کردن آخرین فعالیت‌های گفتگو بدون گشتن بین تعداد زیادی پیام معمولی مناسب است.</string>
+
+    <!-- punycode warning / labeled links -->
+    <!-- placeholder is domain/hostname that should be trusted -->
+    <string name="open_external_url_trust_domain">دوباره درمورد %1$s سوال نشود</string>
+    <string name="puny_code_warning_header">لینک مشکوک شناسایی شد</string>
+    <!-- placeholder contains the hostname converted to ascii -->
+    <string name="puny_code_warning_question">مطمئن هستید می‌خواهید به %1$s مراجعه کنید؟</string>
+    <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
+    <string name="puny_code_warning_description">شما لینکی را دنبال کرده‌اید که با نمایش حروفی که از نظر ظاهری شباهت دارند ممکن است شما را به جای دیگری ببرد. دنبال کردن لینک با برچسب %1$s شما را به %2$s خواهد برد که حالت عادی برای حروف انگلیسی است. اگر انتظار این حروف را نداشتید ممکن است لینک مورد نظر مضر باشد. </string>
 
     <!-- search -->
     <string name="search">جستجو</string>
@@ -336,7 +398,7 @@
 
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">نام گروه</string>
-    <string name="group_avatar">آواتار گروه</string>
+    <string name="group_avatar">تصویر گروه</string>
     <string name="remove_group_image">حذف تصویر گروه</string>
     <string name="change_group_image">حذف تصویر گروه</string>
     <string name="group_create_button">ایجاد گروه</string>
@@ -353,39 +415,54 @@
     <string name="tab_docs">اسناد</string>
     <string name="tab_links">لینک‌ها</string>
     <string name="tab_map">نقشه</string>
-    <string name="tab_gallery_empty_hint">عکس‌ها و فیلم‌هایی که در این گفتگو به اشتراک گذاشته شده اند در اینجا نمایش داده خواهد شد. </string>
+    <string name="tab_gallery_empty_hint">عکس‌ها و فیلم‌هایی که در این گفتگو به اشتراک گذاشته شده‌اند در اینجا نمایش داده خواهد شد. </string>
     <string name="tab_docs_empty_hint">اسناد، آهنگ‌ها و دیگر فایل‌هایی که در این گفتگو به اشتراک گذاشته شده باشند در اینجا نمایش داده خواهند شد. </string>
     <string name="media_preview">نمایش رسانه</string>
     <string name="send_message">ارسال پیام</string>
 
 
+    <!-- Connectivity -->
+    <string name="connectivity">اتصالات</string>
+    <!-- Shown eg. in the title bar if the app is "Not connected"; as there is very few room, try to be as short as possible. -->
+    <string name="connectivity_not_connected">متصل نیست</string>
+    <!-- Shown eg. in the title bar if the app is "Connecting"; as there is very few room, try to be as short as possible. Note that the three dots are a single character (…), not three (...) -->
+    <string name="connectivity_connecting">در حال اتصال</string>
+    <!-- Shown eg. in the title bar if the app is "Updating" (eg. getting new/old message, sync things); as there is very few room, try to be as short as possible. Note that the three dots are a single character (…), not three (...) -->
+    <string name="connectivity_updating">درحال به روز رسانی...</string>
+    <!-- Shown eg. in the setting if the app is "Connected" -->
+    <string name="connectivity_connected">متصل شد</string>
+
+
     <!-- welcome and login -->
-    <string name="welcome_intro1_message">پیام‌رسانی با وسیع‌ترین طیف مخاطب در جهان. آزاد و مستقل. </string>
+    <string name="welcome_intro1_message">پیام‌رسانی با وسیع‌ترین طیف مخاطبین در جهان. آزاد و مستقل. </string>
     <string name="login_title">ورود</string>
     <string name="login_header">به سرور خود وارد شوید</string>
-    <string name="login_explain">ورود با یک ایمیل موجود</string>
-    <string name="login_subheader">برای ارائه دهندگان ایمیل شناخته شده تنظبمات اضافه به صورت خودکار تنظیم می‌شود. گاهی اوقات IMAP باید در تنظیمات ایمیل شما فعال شود. از ارائه دهنده ایمیل یا دوستانتان در این مورد کمک بگیرید. </string>
+    <string name="login_explain">ورود با یک رایانامه موجود</string>
+    <string name="login_subheader">برای ارائه دهندگان شناخته شده تنظبمات اضافه به صورت خودکار انجام می‌شود. گاهی اوقات آی‌مپ باید در تنظیمات رایانامه شما فعال شود. از ارائه دهنده ایمیل یا دوستانتان در این مورد کمک بگیرید. 
+آی‌مپ=IMAP</string>
     <string name="login_no_servers_hint">دلتاچت هیچ سروری ندارد، داده‌های شما در دستگاه شما باقی می‌ماند.</string>
     <string name="login_inbox">ورودی</string>
-    <string name="login_imap_login">نام ورود IMAP</string>
-    <string name="login_imap_server">سرورIMAP</string>
+    <string name="login_imap_login">IMAP Login Name</string>
+    <string name="login_imap_server">IMAP Server</string>
     <string name="login_imap_port">IMAP port </string>
-    <string name="login_imap_security">امنیت IMAP</string>
+    <string name="login_imap_security">IMAP Security</string>
     <string name="login_outbox">خروجی</string>
-    <string name="login_smtp_login">نام ورودی SMTP</string>
-    <string name="login_smtp_password">رمز عبور SMTP</string>
-    <string name="login_smtp_server">سرور SMTP</string>
-    <string name="login_smtp_port">SMTP port </string>
-    <string name="login_smtp_security">امنیت SMTP  </string>
-    <string name="login_auth_method">روش تایید هویت</string>
+    <string name="login_smtp_login">SMTP Login Name</string>
+    <string name="login_smtp_password">SMTP Password</string>
+    <string name="login_smtp_server">SMTP Server</string>
+    <string name="login_smtp_port">SMTP Port</string>
+    <string name="login_smtp_security">SMTP Security</string>
+    <string name="login_auth_method">Authorization Method</string>
     <!-- Translators: %1$s will be replaced by an e-mail address -->
     <string name="login_oauth2_checking_addr">بررسی %1$s</string>
     <string name="login_info_oauth2_title">با تنظیمات ساده‌ شده ادامه می‌دهید؟</string>
-    <string name="login_info_oauth2_text">آدرس ایمیل وارد شده از تنظیمات ساده پشتیبانی می‌کند(OAuth 2.0).\n\nIn مرحله بعد، لطفا به دلتاچت اجازه دهید که به عنوان نرم‌افزار ایمیل شما عمل نماید\n\n سرور دلتاچت وجود ندارد داده‌های شما در دستگاه خودتان باقی می‌ماند. </string>
+    <string name="login_info_oauth2_text">نشانی رایانامه وارد شده از تنظیمات ساده پشتیبانی می‌کند
+(OAuth 2.0).\n\nIn
+ لطفا در مرحله بعد، به دلتاچت اجازه دهید که به عنوان نرم‌افزار رایانامه شما عمل نماید\n\n دلتاچت سرور ندارد؛ داده‌های شما در دستگاه خودتان باقی می‌ماند. </string>
     <string name="login_certificate_checks">بررسی تاییدیه</string>
-    <string name="login_error_mail">لطفا یک آدرس ایمیل صحیح وارد کنید</string>
-    <string name="login_error_server">لطفا یک ایمیل/IP صحیح وارد کنید</string>
-    <string name="login_error_port">لظفا یک پورت صحیح وارد کنید(1–65535) </string>
+    <string name="login_error_mail">لطفا یک نشانی ایمیل صحیح وارد کنید</string>
+    <string name="login_error_server">لطفا یک نشانی ایمیل/آی پی صحیح وارد کنید</string>
+    <string name="login_error_port">لظفا یک پورت صحیح وارد کنید(1–65535)</string>
     <string name="login_error_required_fields">لطفا یک ایمیل و رمزعبور صحیح وارد کنید</string>
     <string name="import_backup_title">وارد کردن نسخه پشتیبانی</string>
     <string name="import_backup_ask">نسخه پشتیبانی در\"%1$s\" پیدا شد.\n\n آیا می‌خواهید همه داده ها و تنظیمات از آن وارد شود؟</string>
@@ -430,9 +507,10 @@
     <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
     <string name="pref_default_status_label">متن امضا</string>
     <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
-    <string name="pref_default_status_text">ارسال شده با پیام‌رسان دلتاچت: https://delta.chat</string>
+    <string name="pref_default_status_text">ارسال شده با پیام‌رسان دلتاچت:
+ https://delta.chat</string>
     <string name="pref_enter_sends">ورود کلیدهای ارسال</string>
-    <string name="pref_enter_sends_explain">فشاردادن کلید Enter پیام‌ها را ارسال می‌کند</string>
+    <string name="pref_enter_sends_explain">فشاردادن کلید اینتر پیام‌ها را ارسال می‌کند</string>
     <string name="pref_outgoing_media_quality">کیفیت رسانه خروجی</string>
     <string name="pref_outgoing_balanced">متعادل</string>
     <string name="pref_outgoing_worse">بدترین‌ کیفیت، حجم کم</string>
@@ -447,7 +525,7 @@
     <string name="pref_notifications_explain">فعال کردن اعلان‌های سیستم برای پیام‌های جدید</string>
     <string name="pref_show_notification_content">نمایش محتوای پیام در اعلان</string>
     <string name="pref_show_notification_content_explain">نمایش ارسال کننده و اولین کلمات پیام در اعلان</string>
-    <string name="pref_led_color">رنگ LED</string>
+    <string name="pref_led_color"> LED رنگ</string>
     <string name="pref_sound">صدا</string>
     <string name="pref_silent">سکوت</string>
     <string name="pref_privacy">حریم خصوصی</string>
@@ -471,7 +549,7 @@
     <string name="pref_communication">ارتباط</string>
     <string name="pref_chats">گفتگوها</string>
     <string name="pref_in_chat_sounds">صداهای مربوط به گفتگو</string>
-    <string name="pref_message_text_size">اندازه فونت پیام</string>
+    <string name="pref_message_text_size">اندازه نوشته‌های پیام</string>
     <string name="pref_view_log">نمایش گزارش</string>
     <string name="pref_saved_log">گزارش را در پوشه\"دانلودها\" ذخیره کن </string>
     <string name="pref_save_log_failed">ذخیره گزارش ناموفق بود</string>
@@ -479,29 +557,31 @@
     <string name="pref_other">دیگر</string>
     <string name="pref_backup">نسخه پشتیبان</string>
     <string name="pref_backup_explain">تهیه نسخه پشتیبان از گفتگوها در حافظه خارجی</string>
-    <string name="pref_backup_export_explain">تهیه نسخه پشتیبان به شما  کمک می‌کند روی این دستگاه یا دستگاه دیگر نرم‌افزار را دوباره نصب کنید.\n\n نسخه پشتیبان حاوی همه پیام‌ها، مخاطبین، گفتگوها و سیستم رمزگذاری خودکار گیرنده به گیرنده  شما هواهد بود. فایل پشتیبانی را در یک جای امن نگه دارید و در اسرع وقت آن را پاک کنید.</string>
+    <string name="pref_backup_export_explain">تهیه نسخه پشتیبان به شما  کمک می‌کند روی این دستگاه یا دستگاه دیگر نرم‌افزار را دوباره نصب کنید.\n\n نسخه پشتیبان حاوی همه پیام‌ها، مخاطبین، گفتگوها و سیستم رمزگذاری خودکار گیرنده به گیرنده  شما خواهد بود. فایل پشتیبانی را در یک جای امن نگه دارید و در اسرع وقت آن را پاک کنید.</string>
     <string name="pref_backup_export_start_button">شروع تهیه نسخه پشتیبان</string>
     <string name="pref_backup_written_to_x">نسخه پشتیبان با موفقیت در\"%1$s\" ذخیره شد.</string>
     <string name="pref_managekeys_menu_title">مدیریت کلیدها</string>
     <string name="pref_managekeys_export_secret_keys">صادر کردن کلید خصوصی</string>
     <string name="pref_managekeys_export_explain">صادر کردن کلیدهای خصوصی به\"%1$s\"؟</string>
     <string name="pref_managekeys_import_secret_keys">وارد کردن کلیدهای خصوصی</string>
-    <string name="pref_managekeys_import_explain">وارد کردن کلیدهای خصوصی از\"%1$s\"؟\n\n• کلیدهای خصوصی موجود پاک نخواهند شد\n\n•  آخرین کلید وارد شده به عنوان کلید پیش‌فرض جدید استفاده می شود مگر اینکه در اسم فایل آن کلمه \"Legacy\" وجود داشته باشد. </string>
+    <string name="pref_managekeys_import_explain">وارد کردن کلیدهای خصوصی از\"%1$s\"؟\n\n• کلیدهای خصوصی موجود پاک نخواهند شد\n\n•  آخرین کلید وارد شده به عنوان کلید پیش‌فرض جدید استفاده می شود مگر اینکه در اسم فایل کلمه
+ \"Legacy\"
+ وجود داشته باشد. </string>
     <string name="pref_managekeys_secret_keys_exported_to_x">کلیدهای خصوصی با موفقیت در\"%1$s\" ذخیره شدند. </string>
     <string name="pref_managekeys_secret_keys_imported_from_x">کلیدهای خصوصی از \"%1$s\" وارد شدند. </string>
     <string name="pref_background">تصویرزمینه</string>
     <string name="pref_background_btn_default">استفاده از تصویر پیش‌فرض</string>
     <string name="pref_background_btn_gallery">انتخاب از گالری</string>
-    <string name="pref_imap_folder_handling">نحوه مدیریت پوشه IMAP</string>
+    <string name="pref_imap_folder_handling">IMAP نحوه مدیریت پوشه </string>
     <string name="pref_imap_folder_warn_disable_defaults">اگر این گزینه را غیر فعال می‌کنید از اینکه سرور شما و حساب‌هایتان هم بر این اساس تنظیم شده باشند.\n\n در غیر این صورت ممکن است هیچ چیز کار نکند. </string>
-    <string name="pref_watch_inbox_folder">پوشه صندوق ورودی را نگاه کنید</string>
-    <string name="pref_watch_sent_folder">پوشه ارسال شده‌ها را نگاه کنید</string>
-    <string name="pref_watch_mvbox_folder">پوشه دلتاچت را نگاه کنید</string>
-    <string name="pref_send_copy_to_self">ارسال کپی به خودم</string>
+    <string name="pref_watch_inbox_folder">پوشه صندوق ورودی را نگاه کن</string>
+    <string name="pref_watch_sent_folder">پوشه ارسال شده‌ها را نگاه کن</string>
+    <string name="pref_watch_mvbox_folder">پوشه دلتاچت را نگاه کن</string>
+    <string name="pref_send_copy_to_self">ارسال رونوشت به خودم</string>
     <string name="pref_auto_folder_moves">انتقال خودکار به پوشه دلتاچت</string>
     <string name="pref_auto_folder_moves_explain">گفتگوها برای جلوگیری از پر شدن صندوق ورودی جابجا شده‌اند</string>
     <string name="pref_show_emails">نمایش ایمیل‌های معمولی</string>
-    <string name="pref_show_emails_no">نه، فقط چت‌ها</string>
+    <string name="pref_show_emails_no">نه، فقط گفتگوها</string>
     <string name="pref_show_emails_accepted_contacts">برای مخاطبین پذیرفته شده</string>
     <string name="pref_show_emails_all">همه</string>
     <string name="pref_experimental_features">ویژگی‌های آزمایشی</string>
@@ -511,25 +591,28 @@
     <string name="pref_background_custom_image">تصویر ترجیحی</string>
     <string name="pref_background_custom_color">رنگ ترجیحی</string>
     <string name="export_aborted">فرایند صدور متوقف شد.</string>
-    <string name="profile_image_select">انتخاب تصویر پروفایل</string>
+    <string name="profile_image_select">انتخاب تصویر نمایه</string>
     <string name="select_your_new_profile_image">انتخاب تصویر پروفایل جدید</string>
-    <string name="profile_image_delete">حذف تصویر پروفایل</string>
+    <string name="profile_image_delete">حذف تصویر نمایه</string>
+    <string name="pref_show_tray_icon">نمایش نمادک در زیر صفحه</string>
+    <string name="pref_edit_profile">ویرایش نمایه</string>
+
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">نتایج جستجو</string>
     <string name="emoji_not_found">شکلکی پیدا نشد</string>
     <string name="emoji_recent">اخیرا استفاده شده</string>
-    <string name="emoji_people">افراد و amp; بدن</string>
-    <string name="emoji_nature">حیوانات و amp; طبیعت</string>
-    <string name="emoji_foods">غذا و amp; نوشیدنی</string>
+    <string name="emoji_people">افراد و بدن</string>
+    <string name="emoji_nature">حیوانات و  طبیعت</string>
+    <string name="emoji_foods">غذا و  نوشیدنی</string>
     <string name="emoji_activity">فعالیت</string>
-    <string name="emoji_places">مسافرت و amp; مکان‌ها</string>
+    <string name="emoji_places">مسافرت و مکان‌ها</string>
     <string name="emoji_objects">اشیاء</string>
     <string name="emoji_symbols">نمادها</string>
     <string name="emoji_flags">پرچم‌ها</string>
 
 
     <!-- automatically delete message -->
-    <string name="delete_old_messages">پاک کردن پیام های قدیمی</string>
+    <string name="delete_old_messages">پاک کردن پیام‌های قدیمی</string>
     <!-- devs: autodel_title is deprecated, use delete_old_messages instead -->
     <string name="autodel_title">پاک کردن خودکار پیام‌ها</string>
     <string name="autodel_device_title">پاک کردن پیام‌ها از دستگاه</string>
@@ -542,30 +625,33 @@
     <string name="autodel_server_enabled_hint">این شامل ایمیل‌ها، رسانه و \"پیام‌های ذخیره شده\" در همه پوشه‌های سرور می‌شود. اگر می‌خواهید داده‌ها را در سرور نگه دارید از این قابلیت استفاده نکنید. اگر از دیگر نرم‌افزارهای ایمیل به جز دلتا چت استفاده می‌کنید از این قابلیت استفاده نکنید.</string>
     <string name="autodel_confirm">متوجه هستم، همه پیام‌ها حذف شوند</string>
     <string name="autodel_at_once">یک بار</string>
-    <string name="after_30_seconds">بعد از 30 ثانیه</string>
-    <string name="after_1_minute">بعد از 1 دقیقه</string>
-    <string name="autodel_after_1_hour">بعد از 1 ساعت</string>
-    <string name="autodel_after_1_day">بعد از 1  روز</string>
-    <string name="autodel_after_1_week">بعد از 1 هفته</string>
-    <string name="autodel_after_4_weeks">بعد از 4 هفته</string>
-    <string name="autodel_after_1_year">بعد از 1 سال</string>
+    <string name="after_30_seconds">بعد از ۳۰ ثانیه</string>
+    <string name="after_1_minute">بعد از ۱ دقیقه</string>
+    <string name="after_5_minutes">بعد از ۵ دقیقه</string>
+    <string name="after_30_minutes">بعد از ۳۰ دقیقه</string>
+    <string name="autodel_after_1_hour">بعد از ۱ ساعت</string>
+    <string name="autodel_after_1_day">بعد از ۱  روز</string>
+    <string name="autodel_after_1_week">بعد از ۱ هفته</string>
+    <string name="autodel_after_4_weeks">بعد از۴ هفته</string>
+    <string name="after_5_weeks">بعد از ۵ هفته</string>
+    <string name="autodel_after_1_year">بعد از ۱ سال</string>
 
     <!-- autocrypt -->
-    <string name="autocrypt">Autocrypt</string>
-    <string name="autocrypt_explain">Autocrypt یک ویژگی جدید و باز برای رمزگذاری گیرنده به گیرنده خودکار برای رمزگذاری ایمیل است.\n\n تنظیمات رمزگذاری گیرنده به گیرنده در موقع لازم به صورت خودکار ایجاد می‌شود و می‌توانید با پیام تنظیماتAutocrypt را بین دستگاه‌ها  انتقال دهید. </string>
-    <string name="autocrypt_send_asm_title">ارسال پیام تنظیمات Autocrypt</string>
-    <string name="autocrypt_send_asm_explain_before">پیام تنظیمات Autocrypt تنظیمات رمزگذاری گیرنده به گیرنده شما را به شکلی امن با دیگرپذیرنده‌ها به اشتراک می‌گذارد.\n\n تنظیمات با یک کد نصب که در اینجا نمایش داده می‌شود رمزگذاری می‌شوند و باید در دستگاه دیگر تایپ شود. </string>
-    <string name="autocrypt_send_asm_button">ارسال پیام تنظیمات Autocrypt</string>
+    <string name="autocrypt">خودرمز</string>
+    <string name="autocrypt_explain">خودرمز  یک ویژگی جدید و باز برای رمزگذاری گیرنده به گیرنده خودکار ایمیل است.\n\n تنظیمات رمزگذاری گیرنده به گیرنده در موقع لازم به صورت خودکار ایجاد می‌شود و می‌توانید آن را  با پیام تنظیم خودرمز بین دستگاه‌ها  انتقال دهید. </string>
+    <string name="autocrypt_send_asm_title">ارسال پیام تنظیمات خودرمز</string>
+    <string name="autocrypt_send_asm_explain_before">پیام تنظیم خودرمز تنظیمات رمزگذاری گیرنده به گیرنده شما را به شکلی امن با دیگر پذیرنده‌ها به اشتراک می‌گذارد.\n\n تنظیمات با یک کد نصب که در اینجا نمایش داده می‌شود رمزگذاری می‌شوند و باید در دستگاه دیگر تایپ شود. </string>
+    <string name="autocrypt_send_asm_button">ارسال پیام تنظیمات خودرمز</string>
     <string name="autocrypt_send_asm_explain_after">تنظیمات شما برای خودتان ارسال شد. پیام تنظیمات را در دستگاه دیگر باز کنید. یک کد نصب از شما خواسته می‌شود. این ارقام را وارد کنید:\n\n %1$s </string>
     <string name="autocrypt_prefer_e2ee">ترجیح رمزگذاری گیرنده به گیرنده</string>
-    <string name="autocrypt_asm_subject">پیام تنظیمات Autocrypt</string>
-    <string name="autocrypt_asm_general_body">این پیام تنظیمات Autocrypt تنظیمات مربوط به رمزگذاری گیرنده به گیرنده شما را بین دستگاه‌ها جابجا می‌کند.\n\n برای رمزگشایی و استفاده از آن پیام را در یک سیستم که با Autocrypt همخوانی دارد باز کنید و کد نصب که در دستگاه تولید کننده پیام به شما داده می شود را وارد نمایید. </string>
-    <string name="autocrypt_asm_click_body">این پیام تنظیمات Autocrypt تنظیمات مربوط به رمزگذاری گیرنده به گیرنده شما را بین دستگاه‌ها جابجا می‌کند.\n\n برای رمزگشایی و استفاده از نصل، روی این پیام بزنید یا کلیک کنید. </string>
-    <string name="autocrypt_continue_transfer_title">پیام تنظیمات Autocrypt </string>
+    <string name="autocrypt_asm_subject">پیام تنظیمات خودرمز</string>
+    <string name="autocrypt_asm_general_body">این پیام تنظیمات خودرمز است و تنظیمات مربوط به رمزگذاری گیرنده به گیرنده شما را بین دستگاه‌ها جابجا می‌کند.\n\n برای رمزگشایی و استفاده از آن، پیام را در یک سیستم که با خودرمز همخوانی دارد باز کنید و کد نصب که در دستگاه تولید کننده پیام، به شما داده می شود را وارد نمایید. </string>
+    <string name="autocrypt_asm_click_body">این پیام تنظیم خودرمز است که تنظیمات مربوط به رمزگذاری گیرنده به گیرنده شما را بین دستگاه‌ها جابجا می‌کند.\n\n برای رمزگشایی و استفاده، روی این پیام بزنید یا کلیک کنید. </string>
+    <string name="autocrypt_continue_transfer_title">پیام تنظیم خودرمز</string>
     <string name="autocrypt_continue_transfer_please_enter_code">لطفا کد نصب نمایش داده شده در دستگاه دیگر را وارد کنید. </string>
-    <string name="autocrypt_continue_transfer_succeeded">تنظیمات رمزگذاری گیرنده به گیرنده انتقال یافت. این دستگاه اکنون برای استفاده از Autocrypt  به همان نحوی که در دستگاه دیگر وجود داشت قابل استفاده است. </string>
+    <string name="autocrypt_continue_transfer_succeeded">تنظیمات رمزگذاری گیرنده به گیرنده انتقال یافت. این دستگاه اکنون برای استفاده از خودرمز به همان نحوی که در دستگاه دیگر وجود داشت قابل استفاده است. </string>
     <string name="autocrypt_continue_transfer_retry">تلاش مجدد</string>
-    <string name="autocrypt_bad_setup_code">کد نصب نادرست. لطفا دوباره تلاش کنید. \n\n اگر کد نصب را فراموش کرده اید یک پیام جدید تنظیمات Autocrypt از دستگاه دیگر ارسال کنید. </string>
+    <string name="autocrypt_bad_setup_code">کد نصب نادرست. لطفا دوباره تلاش کنید. \n\n اگر کد نصب را فراموش کرده‌اید یک پیام جدید تنظیمات خودرمز را از دستگاه دیگر ارسال کنید. </string>
 
 
     <!-- system messages -->
@@ -577,7 +663,7 @@
     <string name="systemmsg_group_left">گروه ترک شد. </string>
     <string name="systemmsg_read_receipt_subject">پیام باز شد</string>
     <string name="systemmsg_read_receipt_body">پیام\"%1$s\" که ارسال کرده بودید در ثفحه گیرنده نمایش داده شد\n\n. تضمینی وجود ندارد که محتوای پیام را خوانده باشد. </string>
-    <string name="systemmsg_cannot_decrypt">این پیام را نمی‌توان رمزگشایی کرد.\n\n• ممکن است بهتر باشد که به همین پیام پاسخ داده و از ارسال کننده بخواهید دوباره آن را بفرستد. \n\n• اگر دوباره دلتاچت را نصب کرده اید یا از یک ایمیل دیگر هم روی این دستگاه یا دستگاه دیگر استفاده می‌کنید ممکن است لازم باشد یک پیام تنظیمات Autocrypt از آن دستگاه ارسال کنید. </string>
+    <string name="systemmsg_cannot_decrypt">این پیام را نمی‌توان رمزگشایی کرد.\n\n• ممکن است بهتر باشد که به همین پیام پاسخ داده و از ارسال کننده بخواهید دوباره آن را بفرستد. \n\n• اگر دوباره دلتاچت را نصب کرده‌اید یا از یک ایمیل دیگر هم روی این دستگاه یا دستگاه دیگر استفاده می‌کنید ممکن است لازم باشد یک پیام تنظیمات خودرمز از آن دستگاه ارسال کنید. </string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). -->
     <string name="systemmsg_action_by_me">%1$sتوسط من</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
@@ -593,47 +679,68 @@
     <string name="systemmsg_ephemeral_timer_day">زمان سنج پیام های ناپدید شونده برای 1 روز تنظیم شد.</string>
     <string name="systemmsg_ephemeral_timer_week">زمان سنج پیام های ناپدید شونده برای 1 هفته تنظیم شد.</string>
     <string name="systemmsg_ephemeral_timer_four_weeks">زمان سنج پیام های ناپدید شونده برای 4 هفته تنظیم شد.</string>
+    <string name="systemmsg_ephemeral_timer_minutes">زمان‌سنج پیام‌های ناپدید شونده روی %1$s دقیقه تنظیم شد.</string>
+    <string name="systemmsg_ephemeral_timer_hours">زمان‌سنج پیام ناپدید شونده روی %1$s ساعت تنظیم شد.</string>
+    <string name="systemmsg_ephemeral_timer_days">زمان‌سنج پیام ناپدید شونده روی %1$s روز تنظیم شد.</string>
+    <string name="systemmsg_ephemeral_timer_weeks">زمان‌سنج پیام ناپدید شونده روی %1$s هفته تنظیم شد.</string>
+
     <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
     <string name="systemmsg_chat_protection_disabled">محافظت از گفنگو غیرفعال شد.</string>
     <string name="systemmsg_chat_protection_enabled">محافظت از گفتگو فعال شد.</string>
 
+    <!-- Some options as "Manage keys" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc. to be entered in a system dialog. This hint is added to the system dialog, below a title as "Manage keys" or "Backup". -->
+    <string name="enter_system_secret_to_continue">برای ادامه، لطفا رمز تعیین شده توسط سیستم خود را وارد کنید</string>
+
     <!-- qr code stuff -->
     <string name="qr_code">کد QR</string>
-    <string name="load_qr_code_as_image">بارگیری کدQR به صورت تصویر</string>
-    <string name="qrscan_title">اسکن کردن کد QR</string>
-    <string name="qrscan_hint">دوربین خود را روی کد QR نگه دارید. </string>
-    <string name="qrscan_failed">امکان رمزگشایی کدQR وجود ندارد</string>
+    <string name="load_qr_code_as_image">بارگیری کیو آر کد به صورت تصویر</string>
+    <string name="qrscan_title">اسکن کردن کد کیو آر</string>
+    <string name="qrscan_hint">دوربین خود را روی کد کیوآر نگه دارید. </string>
+    <string name="qrscan_failed">امکان رمزگشایی کد کیوآر وجود ندارد</string>
     <string name="qrscan_ask_join_group">آیا می خواهید به گروه\"%1$s\" ملحق شوید؟</string>
     <string name="qrscan_fingerprint_mismatch">اثرانگشت اسکن شده با انچه که برای %1$sمشاهده شده بود انطباق ندارد. </string>
-    <string name="qrscan_no_addr_found">این QR حاوی اثر انگشت است ولی ادرس ایمیلی در آن نیست. \n\n برای یک تاییدیه به روش‌های دیگر لطفا ابتدا یک ارتباط رمزگذاری شده با دریافت کننده برقرار کنید. </string>
-    <string name="qrscan_contains_text">QR کد اسکن شده:\n\n %1$s</string>
-    <string name="qrscan_contains_url">آدرس اینترنتی QR اسکن شده:\n\n %1$s</string>
+    <string name="qrscan_no_addr_found">این کیوآر حاوی یک شناساگر است ولی ادرس ایمیلی در آن نیست. \n\n برای یک تاییدیه به روش‌های دیگر لطفا ابتدا یک ارتباط رمزگذاری شده با دریافت کننده برقرار کنید. </string>
+    <string name="qrscan_contains_text">کیوآر کد اسکن شده:\n\n %1$s</string>
+    <string name="qrscan_contains_url">آدرس اینترنتی کیوآر اسکن شده:\n\n %1$s</string>
     <string name="qrscan_fingerprint_label">اثر انگشت</string>
     <string name="qrscan_x_verified_introduce_myself">%1$s تایید شده است، معرفی خودم...</string>
-    <string name="qrshow_title">کد دعوت QR</string>
+    <string name="withdraw_verifycontact_explain">دیگران برای ارتباط با شما می‌توانند این کد کیوآر را اسکن کنند. \n\n می‌توان کد کیوآر را در اینجا غیر فعال کنید و با اسکن کردن مجدد، آن را فعال کنید. </string>
+    <string name="withdraw_verifygroup_explain">این کد کیوآر می‌تواند توسط دیگران و برای پیوستن به گروه \"%1$s\" اسکن شود.\n\n شما می‌تواند این کد کیوآر را در اینجا غیرفعال کنید و با اسکن کردن مجدد، آن را فعال نمایید. </string>
+    <string name="withdraw_qr_code">غیرفعال کردن کد کیوآر</string>
+    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
+    <string name="revive_verifycontact_explain">دیگران برای تماس با شما می‌توانند این کد کیوآر را اسکن کنند. \n\n این کد کیوآر در این دستگاه فعال نیست. </string>
+    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
+    <string name="revive_verifygroup_explain">دیگران می‌توانند برای پیوستن به گروه \"%1$s\" این کد کیوآر را اسکن کنند. این کد کیوآر روی این دستگاه فعال نیست. </string>
+    <string name="revive_qr_code">فعال کردن کد کیوآر</string>
+    <string name="qrshow_title">کد دعوت کیوآر</string>
     <string name="qrshow_x_joining">%1$sعضو شد.</string>
     <string name="qrshow_x_verified">%1$s تایید شد.</string>
     <string name="qrshow_x_has_joined_group">%1$sعضو گروه شد. </string>
-    <string name="qrshow_join_group_title">کد دعوت QR</string>
+    <string name="qrshow_join_group_title">کد دعوت کیوآر</string>
     <string name="qrshow_join_group_hint">برای عضو شدن در گروه\"%1$s\" این را اسکن کنید.</string>
-    <string name="qrshow_join_contact_title">کد دعوت QR</string>
+    <string name="qrshow_join_contact_title">کد دعوت کیوآر</string>
     <string name="qrshow_join_contact_hint">برای ارتباط با %1$s این را اسکن کنید.</string>
-    <string name="qrshow_join_contact_no_connection_hint">کد نصب QR به ارتباط با اینترنت نیاز دارد. لطفا قبل از ادامه به یک شبکه متصل شوید. </string>
-    <string name="qrshow_join_contact_no_connection_toast">اتصال اینترنت نیست. نمیتوان نصب کد QR را انجام داد. </string>
+    <string name="qrshow_join_contact_no_connection_hint">کد نصب کیوآر به ارتباط با اینترنت نیاز دارد. لطفا قبل از ادامه به یک شبکه متصل شوید. </string>
+    <string name="qrshow_join_contact_no_connection_toast">اتصال اینترنت نیست. نمیتوان نصب کد کیوآر را انجام داد. </string>
     <string name="qraccount_ask_create_and_login">ایجاد ایمیل جدید روی \"%1$s\" و ورود در آن‌جا؟</string>
     <string name="qraccount_ask_create_and_login_another">ایجاد آدرس ایمیل جدید روی \"%1$s\" وارد شدن به آن؟/n/n حساب فعلی شما پاک نمی‌شود. از بخش \"تغییر حساب کاربری\" برای جابجایی بین حساب‌ها استفاده کنید</string>
-    <string name="qraccount_success_enter_name">ورود موفق—آدرس ایمیل شما %1$sاست.\n\n اگر دوست دارید می‌توانید اکنون یک اسم وارد کرده و تصویر اواتاری که هنگام نوشتن برای دیگران نشان داده می‌شود را انتخاب نمایید. </string>
-    <string name="qraccount_qr_code_cannot_be_used">این کد QR اسکن شده را نمی‌توان برای راه اندازی اکانت جدید استفاده کرد. </string>
-    <string name="qraccount_use_on_new_install">کد QR اسکن شده برای راه اندازی یک اکانت جدید است. می‌توانید در حال تنظیم یک دلتاچت تازه نصب شده QR  را اسکن کنید.</string>
+    <string name="qraccount_success_enter_name">ورود موفق—آدرس ایمیل شما %1$sاست.\n\n اگر دوست دارید می‌توانید اکنون یک اسم وارد کرده و تصویر نمایه‌ای که هنگام نوشتن برای دیگران نشان داده می‌شود را انتخاب نمایید. </string>
+    <string name="qraccount_qr_code_cannot_be_used">این کد کیوآر اسکن شده را نمی‌توان برای راه اندازی اکانت جدید استفاده کرد. </string>
+    <string name="qraccount_use_on_new_install">کد کیوآر اسکن شده برای راه اندازی یک اکانت جدید است. می‌توانید در حال تنظیم یک دلتاچت تازه نصب شده کیوآر  را اسکن کنید.</string>
     <string name="contact_verified">%1$sتایید شد.</string>
     <string name="contact_not_verified">%1$sتایید نشد. </string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">تنظیمات برای %1$s تغییر کرد. </string>
     <string name="verified_group_explain">گرو‌ه های تایید شده(آزمایشی) در برابر حمله‌های فعال امنیت دارند. اعضا با یک روش ثانویه هم از طریق دیگر اعضا احراز هویت می‌شوند و پیام‌ها هم همیشه به صورت رمزگذاری شده به صورت گیرنده به گیرنده می‌باشد. </string>
-    <string name="copy_qr_data_success">آدرس QR در حافظه ذخیر شد</string>
+    <string name="copy_qr_data_success">آدرس کیوآر در حافظه ذخیر شد</string>
+    <string name="mailto_dialog_header_select_chat">گفتگو را برای ارسال پیام انتخاب کنید</string>
+    <!-- first placeholder is the name of the chat -->
+    <string name="mailto_dialog_confirm_replace_draft">%1$s همین حالا هم یک پیام پیش‌نویس دارد. می‌خواهید آن را جایگزین کنید؟</string>
+    <string name="mailto_link_could_not_be_decoded">امکان رمزگشایی ایمیل به لینک وجود ندارد: %1$s</string>
+
     <!-- notifications  -->
-    <string name="notify_n_messages_in_m_chats">%1$d پیام جدید در %2$d چت</string>
-    <string name="notify_mark_read">خوانده شده</string>
+    <string name="notify_n_messages_in_m_chats">%1$d پیام جدید در %2$d گفتگو</string>
+    <string name="notify_mark_read">علامت گذاری به عنوان خوانده شده</string>
     <string name="notify_reply_button">پاسخ</string>
     <string name="notify_new_message">پیام جدید</string>
     <string name="notify_background_connection_enabled">اتصالات پیش زمینه فعال شد</string>
@@ -647,19 +754,49 @@
     <!-- permissions -->
     <string name="perm_required_title">مجوز لازم است</string>
     <string name="perm_continue">ادامه</string>
-    <string name="perm_explain_access_to_camera_denied">برای گرفتن فیلم و عکس به app settings بروید و \"Permissions\"  را انتخاب کرده و \"Camera\" را فعال کنید.  </string>
-    <string name="perm_explain_access_to_mic_denied">برای ارسال پیام صوتی به تنظیمات نرم‌افزار رفته و پس از انتخاب \"Permissions\" گزینه \"Microphone\" را فعال نمایید. </string>
-    <string name="perm_explain_access_to_storage_denied">برای دریافت یا ارسال فایل به تنظیمات نرم‌افزار برویرد و از \"Permissions\" گزینه \"Storage\" را فعال نمایید. </string>
-    <string name="perm_explain_access_to_location_denied">برای افزودن موقعیت مکانی به تنظیمات نرم‌افزار رفته و از \"Permissions\" گزینه\"Location\" را فعال نمایید.</string>
+    <string name="perm_explain_access_to_camera_denied">برای گرفتن فیلم و عکس به
+ app settings 
+بروید و 
+\"Permissions\"  
+را انتخاب کرده و 
+\"Camera\" 
+را فعال کنید.  </string>
+    <string name="perm_explain_access_to_mic_denied">برای ارسال پیام صوتی به تنظیمات نرم‌افزار رفته و پس از انتخاب 
+\"Permissions\"
+ گزینه 
+\"Microphone\"
+ را فعال نمایید. </string>
+    <string name="perm_explain_access_to_storage_denied">برای دریافت یا ارسال فایل به تنظیمات نرم‌افزار برویرد و از
+ \"Permissions\"
+ گزینه
+ \"Storage\" 
+را فعال نمایید. </string>
+    <string name="perm_explain_access_to_location_denied">برای افزودن موقعیت مکانی به تنظیمات نرم‌افزار رفته و از 
+\"Permissions\" 
+گزینه
+\"Location\" 
+را فعال نمایید.</string>
 
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">هر کجا مایلید شروع به رسم کردن کنید تا مات شود.</string>
+    <string name="ImageEditorHud_add_text">افزودن متن</string>
+    <string name="ImageEditorHud_blur">مات کردن</string>
+    <string name="ImageEditorHud_brush_marker">قلم‌ علامت گذاری</string>
+    <string name="ImageEditorHud_brush_highlight">قلم  هایلایت</string>
+    <string name="ImageEditorHud_crop">بریدن</string>
+    <string name="ImageEditorHud_flip">برعکس کردن</string>
+    <string name="ImageEditorHud_rotate">چرخاندن</string>
+
     <!-- dc_str_* resources -->
     <string name="encrypted_message">پیام رمزگذاری شده</string>
 
     <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
     <string name="about_offical_app_desktop">این نرم‌افزار رسمی دلتاچت در محیط رایانه است.</string>
-    <string name="about_licensed_under_desktop">این نرم افزار تحت مجوز GNU GPL ورژن ۳ منتشر شده و کد منبع در GitHub در دسترس است.</string>
+    <string name="about_licensed_under_desktop">این نرم افزار تحت مجوز 
+GNU GPL ورژن ۳
+ منتشر شده و کد منبع در
+ GitHub
+ در دسترس است.</string>
     <string name="welcome_desktop">به دلتاچت خوش‌آمدید</string>
     <string name="login_known_accounts_title_desktop">اکانت‌های شناخته شده</string>
     <string name="global_menu_preferences_language_desktop">زبان</string>
@@ -670,7 +807,7 @@
     <string name="global_menu_edit_redo_desktop">دوباره انجام دادن</string>
     <string name="global_menu_edit_cut_desktop">بریدن</string>
     <string name="global_menu_edit_copy_desktop">کپی</string>
-    <string name="global_menu_edit_paste_desktop">صاق</string>
+    <string name="global_menu_edit_paste_desktop">چسباندن</string>
     <string name="global_menu_view_desktop">نمایش</string>
     <string name="global_menu_view_floatontop_desktop">شناور در بالا</string>
     <string name="global_menu_view_developer_desktop">برنامه‌نویس</string>
@@ -680,6 +817,8 @@
     <string name="global_menu_help_contribute_desktop">کمک به گیت‌هاب</string>
     <string name="global_menu_help_report_desktop">گزارش یک مشکل</string>
     <string name="global_menu_help_about_desktop">درباره دلتاچت</string>
+    <string name="global_menu_file_open_desktop">بازکردن دلتاچت</string>
+    <string name="global_menu_minimize_to_tray">بردن زیر صفحه</string>
     <string name="no_chat_selected_suggestion_desktop">یک گفتگو را انتخاب کرده یا یک گفتگو ایجاد نمایید</string>
     <string name="write_message_desktop">نوشتن پیام</string>
     <string name="encryption_info_title_desktop">مشخصات رمزگذاری</string>
@@ -696,24 +835,24 @@
     <string name="add_contact_desktop">افزودن مخاطب</string>
     <string name="login_required_desktop">لازم است</string>
     <string name="name_desktop">نام</string>
-    <string name="autocrypt_key_transfer_desktop">انتقال کلید Autocrypt</string>
-    <string name="initiate_key_transfer_desktop">یک پیام تنظیمات Autocrypt تنظیمات مربوط به رمزگذاری گیرنده به گیرنده را برای دیگر نرم افزارهایی که با Autocrypt همخوانی دارند به اشتراک می‌گذارد. تنظیمات با یک کد نصب رمزگذاری خواهند شد که در اینجا نمایش داده می‌شود و باید ان را در دستگاه دیگر وارد کنید. </string>
+    <string name="autocrypt_key_transfer_desktop">انتقال کلید خودرمز</string>
+    <string name="initiate_key_transfer_desktop">یک پیام تنظیمات خودرمز،  تنظیمات مربوط به رمزگذاری گیرنده به گیرنده را برای دیگر نرم افزارهایی که با خودرمز همخوانی دارند به اشتراک می‌گذارد. تنظیمات با یک کد نصب رمزگذاری خواهند شد که در اینجا نمایش داده می‌شود که باید آن  را در دستگاه دیگر وارد کنید. </string>
     <string name="reply_to_message_desktop">پاسخ به پیام</string>
     <string name="select_group_image_desktop">انتخاب تصویر گروه</string>
     <string name="imex_progress_title_desktop">فرایند تهیه نسخه پشتیبان</string>
-    <string name="download_attachment_desktop">ضمیمه دانلود شده</string>
+    <string name="download_attachment_desktop">بارگیری ضمیمه</string>
     <string name="export_backup_desktop">صادر کردن نسخه پشتیبان</string>
     <string name="transfer_key_desktop">کلید انتقال</string>
     <string name="show_key_transfer_message_desktop">کلید برایتان ارسال شد. به دستگاه دیگر رفته و پیام نصب را باز کنید. از شما یک کد نصب خواسته می‌شود. این ارقام را آن‌جا وارد کنید:</string>
     <string name="new_message_from_desktop">پیام جدید از</string>
     <string name="unblock_contacts_desktop">مخاطبین را رفع انسداد کن</string>
     <string name="none_blocked_desktop">هنوز مخاطب مسدودی وجود ندارد</string>
-    <string name="autocrypt_correct_desktop">تنظیمات Autocrypt انتقال یافت.</string>
+    <string name="autocrypt_correct_desktop">تنظیمات خودرمز انتقال یافت.</string>
     <string name="autocrypt_incorrect_desktop">کد نصب نادرست. لطفا دوباره امتحان کنید. </string>
-    <string name="create_chat_error_desktop">امکان ایجاد چت وجود ندارد. </string>
+    <string name="create_chat_error_desktop">امکان ایجاد گفتگو وجود ندارد. </string>
     <string name="ask_delete_chat_desktop">پاک کردن گفتگو؟</string>
-    <string name="email_validation_failed_desktop">آدرس ایمیل لازم است.</string>
-    <string name="forget_login_confirmation_desktop">پاک کردن این ورود؟ همه چیز پاک می شود که شامل رمزگذاری گیرنده به گیرنده، مخاطبین، چت‌ها، پیام‌ها و رسانه می‌شود. این عملیات قابل بازگردانی نیست.</string>
+    <string name="email_validation_failed_desktop">نشانی ایمیل لازم است.</string>
+    <string name="forget_login_confirmation_desktop">پاک کردن این ورود؟ همه چیز پاک می شود که شامل رمزگذاری گیرنده به گیرنده، مخاطبین، گفتگوها، پیام‌ها و رسانه می‌شود. این عملیات قابل بازگردانی نیست.</string>
     <string name="account_info_hover_tooltip_desktop">ایمیل: %1$s/nاندازه: %2$sn/مسیر: %3$s</string>
     <string name="me_desktop">من</string>
     <string name="in_this_group_desktop">اعضای گروه</string>
@@ -723,8 +862,12 @@
     <string name="message_detail_from_desktop">از</string>
     <string name="message_detail_to_desktop"> به</string>
     <string name="menu.view.developer.open.log.folder">پوشه گزارش را باز کن</string>
-    <string name="menu.view.developer.open.current.log.file">فایل گزارش فعلی را باز کن</string>
+    <string name="menu.view.developer.open.current.log.file">پوشه گزارش فعلی را باز کن</string>
     <string name="user_location_permission_explanation">دلتاچت برای نمایش موقعیت مکانی شما باید مجوز دسترسی به موقعیت مکانی را داشته باشد. </string>
+    <string name="explain_desktop_minimized_disabled_tray_pref">چون دلتاچت با تنظیمات --زیرصفحه شروع به کار کرده است نمی‌توان نمادک زیر صفحه را غیر فعال کرد. </string>
+    <string name="no_spellcheck_suggestions_found">هیچ پیشنهادی برای املا پیدا نشد</string>
+    <string name="show_window">نمایش پنجره</string>
+
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">وضعیت ارسال: خطا</string>
     <string name="a11y_encryption_padlock">قفل رمزگذاری</string>
@@ -739,7 +882,7 @@
 
 
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
-    <string name="InfoPlist_NSCameraUsageDescription">دلتاچت برای گرفتن و ارسال عکس و فیلم و برای اسکن کردن QR کد از دوربین شما استفاده می‌کند. </string>
+    <string name="InfoPlist_NSCameraUsageDescription">دلتاچت برای گرفتن و ارسال عکس و فیلم و برای اسکن کردن کیوآر کد از دوربین شما استفاده می‌کند. </string>
     <string name="InfoPlist_NSContactsUsageDescription">دلتاچت از مخاطبین شما برای نمایش لیست ایمیل‌هایی که می‌توانید برایشان پیام ارسال کنید استفاده می‌کند. دلتاچت سرور ندارد مخاطبین شما به جایی ارسال نمی‌شوند. </string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">دلتاچت از میکروفون برای ذخیره و ارسال پیام صوتی یا فیلم دارای صدا استفاده می‌کند.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">دلتاچت به شما اجازه می دهد تصویر موردنظر برای ارسال را انتخاب کنید.</string>
@@ -754,5 +897,12 @@
     <string name="pref_reliable_service">اتصالات پیش زمینه قابل اطمینان</string>
     <string name="pref_reliable_service_explain">به یک اعلان دائمی احتیاج دارد.</string>
     <string name="perm_enable_bg_reminder_title">برای دریافت پیام‌ها به صورت پس زمینه در دلتاچت این جا را ضربه بزنید. </string>
-    <string name="perm_enable_bg_already_done">قبلا اجازه دسترسی به فعالیت در پس زمینه را به دلتا چت داده‌اید. \n\n اگر پیام‌ها هنوز هم در شرایط پس زمینه نمی‌آمد لطفا تنظیمات سیستم را نیز بررسی نمایید. </string>
-    </resources>
+    <string name="perm_enable_bg_already_done">قبلا اجازه دسترسی به فعالیت در پس زمینه را به دلتاچت داده‌اید. \n\n اگر پیام‌ها هنوز هم در شرایط پس زمینه نمی‌آمد لطفا تنظیمات سیستم را نیز بررسی نمایید. </string>
+
+
+    <!-- device messages for updates -->
+    <string name="update_1_20">بهبود سازگاری با ایمیل در نسخه 1.20:\n\n📫 امکان خواندن لیست‌های ایمیل\n📭 امکان خواندن ایمیل‌های اچ تی ام ال در نسخه جدید\n📪 دستورزی بهتر نشانی‌های پشتیبانی\n📪 حل بسیاری از مشکلات اعصاب خورد کن کوچک و بزرگ\n\n پست جدید وبلاگ ما درمورد این گام‌های اولیه به سوی  ایمیل و بیشتر را بخوانید: </string>
+    <string name="update_1_22">چه چیزهایی در نسخه 1.22 جدید است؟\n\n👋 درخواست گفتگو از این به بعد به صورت یک پنجره جدید و به صورت یک چت منفرد نمایش داده می‌شود و می‌توانید قبل از رد،‌ تایید یا مسدود کردن، جزئیات آن را بررسی کنید. \n\n🗄️ بایگانی اکنون خیلی راحت تر و از طریق فهرست اصلی قابل دسترسی است- درخواست‌های قدیمی خود را نیز می‌توانید آنجا ببینید\n\n📮📮📮 قابلیت داشتن چند حساب کاربری بهبود پیدا کرده است. جابجایی بین حساب‌ها اکنون راحت‌تر و سریع‌تر است و دیگر با به روزرسانی‌های طولانی همراه نیست\n\n🤔 خُب حالا چه خبر است: مشکلات مربوط به اتصلات در بالای صفحه نشان داده می‌شوند و می‌توانید برای جزئیات بیشتر روی آن بزنید\n\n برای مطالب بیشتر به بلاگ مراجعه کنید:</string>
+    <string name="update_1_22_ios">چه چیزهایی در نسخته 1.22 جدید است؟\n\n👋 درخواست گفتگو از این به بعد به صورت یک پنجره جدید و به صورت یک چت منفرد نمایش داده می‌شود و می‌توانید قبل از رد،‌ تایید یا مسدود کردن، جزئیات آن را بررسی کنید. \n\n🗄️ بایگانی اکنون خیلی راحت تر و از طریق فهرست اصلی قابل دسترسی است- درخواست‌های قدیمی خود را نیز می‌توانید آنجا ببینید\n\n📮📮📮 قابلیت داشتن چند حساب کاربری بهبود پیدا کرده است. جابجایی بین حساب‌ها اکنون راحت‌تر و سریع‌تر است و دیگر با به روزرسانی‌های طولانی همراه نیست\n\n🤔 خُب حالا چه خبر است: مشکلات مربوط به اتصلات در بالای صفحه نشان داده می‌شوند و می‌توانید برای جزئیات بیشتر روی آن بزنید\n\n برای مطالب بیشتر به بلاگ مراجعه کنید:</string>
+
+</resources>

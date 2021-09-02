@@ -144,6 +144,7 @@
     <string name="magenta">I purpurt</string>
     <string name="white">E bardhë</string>
 
+    <string name="zoom">Zoom</string>
     <string name="extra_small">Tejet të vogla</string>
     <string name="small">Të vogla</string>
     <string name="normal">Normale</string>
@@ -200,6 +201,7 @@
     <string name="block">Bllokoje</string>
     <string name="menu_block_contact">Bllokoje kontaktin</string>
     <string name="menu_unblock_contact">Zhbllokoje kontaktin</string>
+    <string name="accept">Pranoje</string>
     <string name="menu_play">Luaje</string>
     <string name="menu_pause">Pushoje</string>
     <string name="menu_scroll_to_bottom">Rrëshqit drejt fundit</string>
@@ -335,8 +337,10 @@
     <string name="chat_share_with_title">Ndajeni me </string>
     <string name="chat_input_placeholder">Mesazh</string>
     <string name="chat_archived_label">Arkivuar</string>
+    <string name="chat_request_label">Kërkoje</string>
     <string name="chat_no_messages">S\’ka mesazhe.</string>
     <string name="chat_self_talk_subtitle">Mesazhe që i kam dërguar vetes</string>
+    <string name="archive_empty_hint">Nëse arkivoni fjalosje, ato do të shfaqen këtu.</string>
     <string name="saved_messages">Mesazhe të ruajtur</string>
     <string name="saved_messages_explain">• Përcillini mesazhet këtu për përdorim të lehtë\n\n• Mbani shënime ose kujtesa zanore\n\n• Bashkëngjitni media për t’i ruajtur</string>
     <!-- this "Saved" should match the "Saved" from "Saved messages" -->
@@ -416,6 +420,8 @@
     <string name="connectivity_not_connected">I palidhur</string>
     <!-- Shown eg. in the title bar if the app is "Connecting"; as there is very few room, try to be as short as possible. Note that the three dots are a single character (…), not three (...) -->
     <string name="connectivity_connecting">Po lidhet…</string>
+    <!-- Shown eg. in the title bar if the app is "Updating" (eg. getting new/old message, sync things); as there is very few room, try to be as short as possible. Note that the three dots are a single character (…), not three (...) -->
+    <string name="connectivity_updating">Po përditësohet…</string>
     <!-- Shown eg. in the setting if the app is "Connected" -->
     <string name="connectivity_connected">I lidhur</string>
 
@@ -854,6 +860,11 @@
     <string name="pref_reliable_service_explain">Lyp një njoftim permanent</string>
     <string name="perm_enable_bg_reminder_title">Prekeni këtu që të merrni mesazhe, teksa Delta Chat rri në prapaskenë.</string>
     <string name="perm_enable_bg_already_done">E keni lejuar tashmë Delta Chat-in të marrë mesazhe në prapaskenë.\n\nNëse mesazhet prapë nuk mbërrijnë në prapaskenë, ju lutemi, kontrolloni edhe rregullimet e sistemit tuaj.</string>
+
+
+    <!-- device messages for updates -->
     <string name="update_1_20">U përmirësua përputhshmëri email-i në versionin 1.20:\n\n📫 Lexoni lista postimesh\n📭 Lexoni email-e HTML\n📪 Trajtim i bukur adresash asistence\n📫 U ndreqën mjaft yçkla të mëdha dhe vockla\n\nLexoni postimin tonë të ri në blog mbi këto hapa të para drejt email-it dhe më tepër:</string>
+    <string name="update_1_22">Ç’ka të re në 1.22?\n\n👋 Kërkesa për fjalosje tanimë hapen si flluska fjalosjesh më vete dhe mund të shqyrtohen në hollësi përpara se të pranohen apo bllokohen\n\n🗄️ Te Arkivi tani mund të hyhet kollaj që nga menuja kryesore - atje do të gjeni edhe kërkesat tuaja të dikurshme\n\n📮📮📮 U përmirësua puna me shumë llogari: Kalimi nga një llogari në një tjetër tanimë është më i shpejtë dhe më rrallë i bllokuar nga përditësime të gjata\n\n🤔 Njihni se ç’po bëhet: Tani e tutje, probleme lidhjeje shfaqen te shtylla e titullit, prekeni për hollësi\n\nMë tepër në blog:</string>
+    <string name="update_1_22_ios">Ç’ka të re në 1.22?\n\n👋 Kërkesa për fjalosje tanimë hapen si flluska fjalosjesh më vete dhe mund të shqyrtohen në hollësi përpara se të pranohen apo bllokohen\n\n🗄️ Te Arkivi tani mund të hyhet kollaj që nga menuja kryesore - atje do të gjeni edhe kërkesat tuaja të dikurshme\n\n📮📮📮 U shtua aftësia për të përdorur disa llogari: Ndërroni dhe administroni llogari te rregullimet\n\n🤔 Njihni se ç’po bëhet: Tani e tutje, probleme lidhjeje shfaqen te shtylla e titullit, prekeni për hollësi\n\nMë tepër në blog:</string>
 
 </resources>

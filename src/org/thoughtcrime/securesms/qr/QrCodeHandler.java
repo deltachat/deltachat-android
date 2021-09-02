@@ -3,6 +3,8 @@ package org.thoughtcrime.securesms.qr;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
+
+import androidx.annotation.NonNull;
 import androidx.annotation.StringRes;
 import androidx.appcompat.app.AlertDialog;
 import android.text.Html;
@@ -16,7 +18,6 @@ import com.google.zxing.integration.android.IntentResult;
 import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.AccountManager;
-import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.util.IntentUtils;
@@ -28,7 +29,7 @@ public class QrCodeHandler implements DcEventCenter.DcEventDelegate {
     private Activity activity;
     ProgressDialog progressDialog;
 
-    private ApplicationDcContext dcContext;
+    private DcContext dcContext;
 
     public QrCodeHandler(Activity activity) {
         this.activity = activity;
@@ -219,13 +220,13 @@ public class QrCodeHandler implements DcEventCenter.DcEventDelegate {
             progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, activity.getString(android.R.string.cancel), (dialog, which) -> dcContext.stopOngoingProcess());
             progressDialog.show();
 
-            dcContext.captureNextError();
+            DcHelper.getEventCenter(activity).captureNextError();
 
             new Thread(() -> {
 
-                    dcContext.eventCenter.addObserver(this, DcContext.DC_EVENT_SECUREJOIN_JOINER_PROGRESS);
+                    DcHelper.getEventCenter(activity).addObserver(DcContext.DC_EVENT_SECUREJOIN_JOINER_PROGRESS, this);
                     int newChatId = dcContext.joinSecurejoin(qrRawString); // joinSecurejoin() runs until all needed messages are sent+received!
-                    dcContext.eventCenter.removeObservers(this);
+                    DcHelper.getEventCenter(activity).removeObservers(this);
 
                     Util.runOnMain(() -> {
                         if (progressDialog != null) {
@@ -233,8 +234,8 @@ public class QrCodeHandler implements DcEventCenter.DcEventDelegate {
                             progressDialog = null;
                         }
 
-                        String errorString = dcContext.getCapturedError();
-                        dcContext.endCaptureNextError();
+                        String errorString = DcHelper.getEventCenter(activity).getCapturedError();
+                        DcHelper.getEventCenter(activity).endCaptureNextError();
                         if (newChatId != 0) {
                             Intent intent = new Intent(activity, ConversationActivity.class);
                             intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, newChatId);
@@ -255,7 +256,7 @@ public class QrCodeHandler implements DcEventCenter.DcEventDelegate {
     }
 
     @Override
-    public void handleEvent(DcEvent event) {
+    public void handleEvent(@NonNull DcEvent event) {
         if (event.getId() == DcContext.DC_EVENT_SECUREJOIN_JOINER_PROGRESS) {
             long contact_id = event.getData1Int();
             long progress = event.getData2Int();

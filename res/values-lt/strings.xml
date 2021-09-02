@@ -10,6 +10,8 @@
     <string name="on">Įjungta</string>
     <string name="off">Išjungta</string>
     <string name="def">Pagal numatymą</string>
+    <string name="default_value">Numatytasis (%1$s)</string>
+    <string name="default_value_as_above">Numatytasis (toks pats kaip aukščiau)</string>
     <string name="custom">Tinkintas</string>
     <string name="none">Nėra</string>
     <string name="automatic">Automatinis</string>
@@ -205,6 +207,7 @@
     <string name="block">Užblokuoti</string>
     <string name="menu_block_contact">Užblokuoti adresatą</string>
     <string name="menu_unblock_contact">Atblokuoti adresatą</string>
+    <string name="accept">Priimti</string>
     <string name="menu_play">Atkurti</string>
     <string name="menu_pause">Pristabdyti</string>
     <string name="menu_scroll_to_bottom">Slinkti į apačią</string>
@@ -322,6 +325,7 @@
     <string name="chat_new_group_hint">Rašykite pirmąją žinutę, taip leisdami kitiems atsakyti šioje grupėje..\n\n• Nieko tokio, jei ne visi dalyviai naudoja Delta Chat.\n\n• Pirmosios žinutės pristatymas gali šiek tiek užtrukti.</string>
     <string name="chat_record_slide_to_cancel">Perbraukite, norėdami atsisakyti</string>
     <string name="chat_record_explain">Bakstelėkite ir laikykite, norėdami įrašyti balso žinutę. Atleiskite, norėdami išsiųsti</string>
+    <string name="chat_no_chats_yet_hint">Galite bendrauti su kitais Delta Chat naudotojais ir bet kuriais el. pašto adresais.</string>
     <string name="chat_share_with_title">Bendrinti su</string>
     <string name="chat_input_placeholder">Žinutė</string>
     <string name="chat_archived_label">Archyvuotas</string>
@@ -333,8 +337,14 @@
     <string name="saved">Įrašyta</string>
     <string name="chat_contact_request">Adresato užklausa</string>
     <string name="send_failed">Nepavyko išsiųsti žinutės</string>
+    <!-- reasons for a disabled message composer -->
+    <string name="messaging_disabled_not_in_group">Jūs negalite rašyti, nes nesate šioje grupėje. Norėdami prisijungti, paprašykite kito nario.</string>
+    <string name="messaging_disabled_device_chat">Šiame pokalbyje yra vietiniu lygmeniu sukurtos žinutės. Štai kodėl negalite rašyti jokių žinučių.</string>
+    <string name="cannot_display_unsuported_file_type">Nepavyksta atvaizduoti šio failo tipo: %s</string>
     <string name="attachment_failed_to_load">Nepavyko įkelti priedo</string>
     <string name="puny_code_warning_header">Aptikta įtartina nuoroda</string>
+    <!-- placeholder contains the hostname converted to ascii -->
+    <string name="puny_code_warning_question">Ar tikrai norite apsilankyti %1$s?</string>
     <!-- search -->
     <string name="search">Ieškoti</string>
     <string name="search_explain">Ieškokite pokalbių, adresatų ir žinučių</string>
@@ -372,6 +382,8 @@
     <string name="connectivity_not_connected">Neprisijungta</string>
     <!-- Shown eg. in the title bar if the app is "Connecting"; as there is very few room, try to be as short as possible. Note that the three dots are a single character (…), not three (...) -->
     <string name="connectivity_connecting">Jungiamasi…</string>
+    <!-- Shown eg. in the title bar if the app is "Updating" (eg. getting new/old message, sync things); as there is very few room, try to be as short as possible. Note that the three dots are a single character (…), not three (...) -->
+    <string name="connectivity_updating">Atnaujinama…</string>
     <!-- Shown eg. in the setting if the app is "Connected" -->
     <string name="connectivity_connected">Prisijungta</string>
 
@@ -453,6 +465,7 @@
     <string name="pref_notifications">Pranešimai</string>
     <string name="pref_notifications_show">Rodyti</string>
     <string name="pref_notifications_priority">Pirmenybė</string>
+    <string name="pref_show_notification_content">Rodyti pranešime žinutės turinį</string>
     <string name="pref_led_color">Šviesos diodo spalva</string>
     <string name="pref_sound">Garsas</string>
     <string name="pref_privacy">Privatumas</string>
@@ -478,6 +491,7 @@
     <string name="pref_in_chat_sounds">Garsai pokalbiuose</string>
     <string name="pref_message_text_size">Žinučių šrifto dydis</string>
     <string name="pref_view_log">Rodyti žurnalą</string>
+    <string name="pref_saved_log">Žurnalas įrašytas į „Atsiuntimų“ aplanką</string>
     <string name="pref_save_log_failed">Nepavyko įrašyti žurnalo</string>
     <string name="pref_log_header">Žurnalas</string>
     <string name="pref_other">Kita</string>
@@ -514,6 +528,8 @@
     <string name="pref_show_tray_icon">Rodyti dėklo piktogramą</string>
     <string name="pref_edit_profile">Taisyti profilį</string>
 
+    <!-- Emoji picker and categories -->
+    <string name="emoji_search_results">Paieškos rezultatai</string>
     <string name="emoji_recent">Paskiausi</string>
     <string name="emoji_people">Žmonės ir kūnas</string>
     <string name="emoji_nature">Gyvūnai ir gamta</string>
@@ -597,6 +613,8 @@
     <string name="qrscan_contains_text">Nuskenuoto QR kodo tekstas:\n\n%1$s</string>
     <string name="qrscan_contains_url">Nuskenuoto QR kodo URL:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Kontrolinis kodas</string>
+    <string name="withdraw_qr_code">Pasyvinti QR kodą</string>
+    <string name="revive_qr_code">Aktyvuoti QR kodą</string>
     <string name="qrshow_title">QR pakvietimo kodas</string>
     <string name="qrshow_x_verified">%1$s patvirtintas.</string>
     <string name="qrshow_x_has_joined_group">%1$s prisijungė prie grupės.</string>
@@ -639,6 +657,7 @@
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Šifruota žinutė</string>
 
+    <string name="about_licensed_under_desktop">Ši programinė įranga yra licencijuota pagal GNU GPL versiją 3, o pirminis kodas yra prieinamas „GitHub“ internetinėje svetainėje.</string>
     <string name="welcome_desktop">Sveiki atvykę į Delta Chat</string>
     <string name="login_known_accounts_title_desktop">Žinomos paskyros</string>
     <string name="global_menu_preferences_language_desktop">Pasirinkti kalbą...</string>
@@ -703,6 +722,7 @@
     <string name="message_detail_to_desktop">kam</string>
     <string name="menu.view.developer.open.log.folder">Atverti žurnalų aplanką</string>
     <string name="menu.view.developer.open.current.log.file">Atverti dabartinio žurnalo failą</string>
+    <string name="explain_desktop_minimized_disabled_tray_pref">Dėklo piktograma negali būti išjungta, nes Delta Chat buvo paleista naudojant --minimized parinktį.</string>
     <string name="no_spellcheck_suggestions_found">Nerasta jokių rašybos pasiūlymų.</string>
     <string name="show_window">Rodyti langą</string>
 
@@ -718,6 +738,7 @@
     <string name="a11y_disappearing_messages_activated">Išnykstančios žinutės aktyvuotos</string>
 
 
+    <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat naudoja mikrofoną, kad įrašytų ir siųstų balso žinutes bei vaizdo įrašus su garsu.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat leis jums pasirinkti, kurias nuotraukas iš savo kolekcijos išsiųsti.</string>
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat nori įrašyti paveikslus į jūsų nuotraukų kolekciją.</string>
 
@@ -728,4 +749,7 @@
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="pref_reliable_service">Patikimas foninis ryšys</string>
     <string name="perm_enable_bg_reminder_title">Bakstelėkite čia, norėdami gauti žinutes, kol Delta Chat veikia fone.</string>
+    <string name="perm_enable_bg_already_done">Jūs jau leidote Delta Chat gauti žinutes fone.\n\nJei žinutės vis tiek nepristatomos fone, patikrinkite taip pat savo sistemos nustatymus.</string>
+
+
     </resources>

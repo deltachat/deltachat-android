@@ -1,6 +1,9 @@
 package org.thoughtcrime.securesms;
 
 import android.os.Bundle;
+import android.view.Menu;
+
+import androidx.annotation.NonNull;
 
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
@@ -14,13 +17,19 @@ public class ConnectivityActivity extends WebViewActivity implements DcEventCent
     super.onCreate(state, ready);
     refresh();
 
-    DcHelper.getContext(this).eventCenter.addObserver(DcContext.DC_EVENT_CONNECTIVITY_CHANGED, this);
+    DcHelper.getEventCenter(this).addObserver(DcContext.DC_EVENT_CONNECTIVITY_CHANGED, this);
   }
 
   @Override
   public void onDestroy() {
     super.onDestroy();
-    DcHelper.getContext(this).eventCenter.removeObservers(this);
+    DcHelper.getEventCenter(this).removeObservers(this);
+  }
+
+  @Override
+  public boolean onPrepareOptionsMenu(Menu menu) {
+    // do not call super.onPrepareOptionsMenu() as the default "Search" menu is not needed
+    return true;
   }
 
   private void refresh() {
@@ -31,7 +40,7 @@ public class ConnectivityActivity extends WebViewActivity implements DcEventCent
   }
 
   @Override
-  public void handleEvent(DcEvent event) {
+  public void handleEvent(@NonNull DcEvent event) {
     refresh();
   }
 }
