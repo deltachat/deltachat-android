@@ -94,7 +94,7 @@ public class DirectShareUtil {
   @RequiresApi(api = Build.VERSION_CODES.M)
   private static List<ShortcutInfoCompat> getChooserTargets(Context context) {
     List<ShortcutInfoCompat> results = new LinkedList<>();
-    ApplicationDcContext dcContext = DcHelper.getContext(context);
+    DcContext dcContext = DcHelper.getContext(context);
 
     DcChatlist chatlist = dcContext.getChatlist(
             DcContext.DC_GCL_FOR_FORWARDING | DcContext.DC_GCL_NO_SPECIALS,
@@ -115,7 +115,7 @@ public class DirectShareUtil {
       intent.setAction(Intent.ACTION_SEND);
       intent.putExtra(ShareActivity.EXTRA_CHAT_ID, chat.getId());
 
-      Recipient recipient = DcHelper.getContext(context).getRecipient(chat);
+      Recipient recipient = new Recipient(context, chat);
       Bitmap avatar = getIconForShortcut(context, recipient);
       results.add(new ShortcutInfoCompat.Builder(context, Integer.toString(chat.getId()))
               .setShortLabel(chat.getName())
