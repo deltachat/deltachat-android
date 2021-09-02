@@ -1,7 +1,5 @@
 package com.b44t.messenger;
 
-import android.content.ComponentName;
-import android.content.Intent;
 import android.util.Log;
 
 import androidx.test.espresso.contrib.RecyclerViewActions;
@@ -47,17 +45,7 @@ public class EnterChatsBenchmark {
   private final static String TAG = EnterChatsBenchmark.class.getSimpleName();
 
   @Rule
-  public ActivityScenarioRule<ConversationListActivity> activityRule = new ActivityScenarioRule<>(getConversationsListIntent());
-
-  private Intent getConversationsListIntent() {
-    Intent intent =
-            Intent.makeMainActivity(
-                    new ComponentName(getInstrumentation().getTargetContext(), ConversationListActivity.class));
-    if (!USE_EXISTING_CHATS) {
-      TestUtils.createOfflineAccount();
-    }
-    return intent;
-  }
+  public ActivityScenarioRule<ConversationListActivity> activityRule = TestUtils.getOfflineActivityRule();
 
   @Test
   public void createAndEnterNChats() {
@@ -126,7 +114,7 @@ public class EnterChatsBenchmark {
   @After
   public void cleanup() {
     if (!USE_EXISTING_CHATS) {
-      TestUtils.removeAccount();
+      TestUtils.cleanup();
     }
   }
 }

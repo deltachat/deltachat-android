@@ -1,15 +1,20 @@
 package com.b44t.messenger;
 
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.test.espresso.NoMatchingViewException;
 import androidx.test.espresso.UiController;
 import androidx.test.espresso.ViewAction;
 import androidx.test.espresso.ViewInteraction;
 import androidx.test.espresso.util.TreeIterables;
+import androidx.test.ext.junit.rules.ActivityScenarioRule;
 
 import org.hamcrest.Matcher;
+import org.thoughtcrime.securesms.ConversationListActivity;
 import org.thoughtcrime.securesms.connect.AccountManager;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.util.Util;
@@ -19,22 +24,38 @@ import static androidx.test.espresso.matcher.ViewMatchers.isRoot;
 import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentation;
 
 class TestUtils {
-  public static void removeAccount() {
-    Context context = getInstrumentation().getTargetContext();
-    DcAccounts accounts = DcHelper.getAccounts(context);
+  private static int createdAccountId = 0;
 
-    DcContext selectedAccount = accounts.getSelectedAccount();
-    accounts.removeAccount(selectedAccount.getAccountId());
+  public static void cleanupCreatedAccount(Context context) {
+    DcAccounts accounts = DcHelper.getAccounts(context);
+    if (createdAccountId != 0) {
+      accounts.removeAccount(createdAccountId);
+      createdAccountId = 0;
+    }
   }
 
+  public static void cleanup() {
+    Context context = getInstrumentation().getTargetContext();
+    cleanupCreatedAccount(context);
+  }
 
   public static void createOfflineAccount() {
     Context context = getInstrumentation().getTargetContext();
-    AccountManager.getInstance().beginAccountCreation(context);
+    cleanupCreatedAccount(context);
+    createdAccountId = AccountManager.getInstance().beginAccountCreation(context);
     DcContext c = DcHelper.getContext(context);
     c.setConfig("configured_addr", "alice@example.org");
     c.setConfig("configured_mail_pw", "abcd");
     c.setConfig("configured", "1");
+  }
+
+  @NonNull
+  static ActivityScenarioRule<ConversationListActivity> getOfflineActivityRule() {
+    Intent intent =
+            Intent.makeMainActivity(
+                    new ComponentName(getInstrumentation().getTargetContext(), ConversationListActivity.class));
+    TestUtils.createOfflineAccount();
+    return new ActivityScenarioRule<>(intent);
   }
 
   /**
@@ -112,5 +133,4 @@ class TestUtils {
 
     throw new RuntimeException("Error finding a view matching $viewMatcher");
   }
-
 }

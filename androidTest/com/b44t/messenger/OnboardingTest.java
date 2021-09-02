@@ -61,6 +61,6 @@ public class OnboardingTest {
 
   @After
   public void cleanup() {
-    TestUtils.removeAccount();
+    TestUtils.cleanup();
   }
 }
