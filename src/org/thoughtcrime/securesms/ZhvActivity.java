@@ -83,6 +83,7 @@ public class ZhvActivity extends PassphraseRequiredActionBarActivity implements 
     @SuppressLint("SetJavaScriptEnabled")
     public void configureWebView(WebView web) {
         WebSettings webSettings = web.getSettings();
+        webSettings.setBlockNetworkLoads(true);
         webSettings.setJavaScriptEnabled(true);
         webSettings.setSupportZoom(true);
         webSettings.setBuiltInZoomControls(true);
