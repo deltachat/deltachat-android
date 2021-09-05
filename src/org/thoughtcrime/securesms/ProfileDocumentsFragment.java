@@ -178,7 +178,6 @@ public class ProfileDocumentsFragment
     boolean singleSelection = messageRecords.size() == 1;
     menu.findItem(R.id.details).setVisible(singleSelection);
     menu.findItem(R.id.show_in_chat).setVisible(singleSelection);
-    menu.findItem(R.id.save).setVisible(singleSelection);
     menu.findItem(R.id.share).setVisible(singleSelection);
   }
 
@@ -227,7 +226,7 @@ public class ProfileDocumentsFragment
           handleShowInChat(getSelectedMessageRecord(getListAdapter().getSelectedMedia()));
           return true;
         case R.id.save:
-          handleSaveAttachment(getSelectedMessageRecord(getListAdapter().getSelectedMedia()));
+          handleSaveAttachment(getListAdapter().getSelectedMedia());
           return true;
       }
       return false;
