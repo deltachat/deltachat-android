@@ -34,7 +34,7 @@ public class VideoSlide extends Slide {
 
   private static Attachment constructVideoAttachment(Context context, Uri uri, long dataSize)
   {
-    Uri thumbnailUri = Uri.fromFile(new File(DcHelper.getContext(context).getBlobdirFile("temp-preview.jpg")));
+    Uri thumbnailUri = Uri.fromFile(new File(DcHelper.getBlobdirFile(DcHelper.getContext(context), "temp-preview.jpg")));
     MediaUtil.ThumbnailSize retWh = new MediaUtil.ThumbnailSize(0, 0);
     MediaUtil.createVideoThumbnailIfNeeded(context, uri, thumbnailUri, retWh);
     return constructAttachmentFromUri(context, uri, MediaUtil.VIDEO_UNSPECIFIED, dataSize, retWh.width, retWh.height, thumbnailUri, null, false);

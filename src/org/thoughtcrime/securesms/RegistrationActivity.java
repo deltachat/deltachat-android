@@ -33,7 +33,6 @@ import android.widget.Toast;
 
 import com.b44t.messenger.DcContext;
 
-import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.permissions.Permissions;
@@ -178,7 +177,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
             certCheck.setSelection(certCheckFlags);
         }
 
-        DcHelper.getContext(this).eventCenter.addObserver(DcContext.DC_EVENT_CONFIGURE_PROGRESS, this);
+        DcHelper.getEventCenter(this).addObserver(DcContext.DC_EVENT_CONFIGURE_PROGRESS, this);
     }
 
     @Override
@@ -234,7 +233,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
     @Override
     public void onDestroy() {
         super.onDestroy();
-        DcHelper.getContext(this).eventCenter.removeObservers(this);
+        DcHelper.getEventCenter(this).removeObservers(this);
     }
 
     @Override
@@ -430,14 +429,10 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         }
     }
 
-    private boolean matchesEmailPattern(String email) {
-        return !TextUtils.isEmpty(email) && Patterns.EMAIL_ADDRESS.matcher(email).matches();
-    }
-
     private void verifyEmail(TextInputEditText view) {
         String error = getString(R.string.login_error_mail);
         String email = view.getText().toString();
-        if (!matchesEmailPattern(email)) {
+        if (!DcHelper.getContext(this).mayBeValidAddr(email)) {
             view.setError(error);
         }
     }
@@ -447,7 +442,8 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         String server = view.getText().toString();
         if (!TextUtils.isEmpty(server) && !Patterns.DOMAIN_NAME.matcher(server).matches()
                 && !Patterns.IP_ADDRESS.matcher(server).matches()
-                && !Patterns.WEB_URL.matcher(server).matches()) {
+                && !Patterns.WEB_URL.matcher(server).matches()
+                && !"localhost".equals(server)) {
             view.setError(error);
         }
     }
@@ -500,7 +496,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
 
     private boolean verifyRequiredFields() {
         String email = emailInput.getText().toString();
-        return !email.isEmpty() && matchesEmailPattern(email)
+        return DcHelper.getContext(this).mayBeValidAddr(email)
                 && !passwordInput.getText().toString().isEmpty();
     }
 
@@ -527,10 +523,9 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
 
         // calling configure() results in
         // receiving multiple DC_EVENT_CONFIGURE_PROGRESS events
-        ApplicationDcContext dcContext = DcHelper.getContext(this);
-        dcContext.stopIo();
-        dcContext.captureNextError();
-        dcContext.configure();
+        DcHelper.getAccounts(this).stopIo();
+        DcHelper.getEventCenter(this).captureNextError();
+        DcHelper.getContext(this).configure();
     }
 
     private void setConfig(@IdRes int viewId, String configTarget, boolean doTrim) {
@@ -547,13 +542,12 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
     }
 
     @Override
-    public void handleEvent(DcEvent event) {
+    public void handleEvent(@NonNull DcEvent event) {
         if (event.getId()==DcContext.DC_EVENT_CONFIGURE_PROGRESS) {
-            ApplicationDcContext dcContext = DcHelper.getContext(this);
             long progress = event.getData1Int();
             if (progress==0/*error/aborted*/) {
-                dcContext.maybeStartIo(); // start-io is also needed on errors to make previous config work in case of changes
-                dcContext.endCaptureNextError();
+                DcHelper.getAccounts(this).startIo(); // start-io is also needed on errors to make previous config work in case of changes
+                DcHelper.getEventCenter(this).endCaptureNextError();
                 progressDialog.dismiss();
                 WelcomeActivity.maybeShowConfigurationError(this, event.getData2Str());
             }
@@ -562,8 +556,8 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
                 progressDialog.setMessage(getResources().getString(R.string.one_moment)+String.format(" %d%%", percent));
             }
             else if (progress==1000/*done*/) {
-                dcContext.maybeStartIo();
-                dcContext.endCaptureNextError();
+                DcHelper.getAccounts(this).startIo();
+                DcHelper.getEventCenter(this).endCaptureNextError();
                 progressDialog.dismiss();
                 Intent conversationList = new Intent(getApplicationContext(), ConversationListActivity.class);
                 startActivity(conversationList);

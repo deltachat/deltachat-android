@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.ParcelFileDescriptor;
 
+import com.b44t.messenger.DcContext;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 
@@ -25,10 +27,10 @@ public class AttachmentsContentProvider extends ContentProvider {
 
     @Override
     public ParcelFileDescriptor openFile(Uri uri, String mode) throws FileNotFoundException {
-        ApplicationDcContext dcContext = DcHelper.getContext(getContext());
+        DcContext dcContext = DcHelper.getContext(getContext());
 
         String path = uri.getPath();
-        if (!dcContext.sharedFiles.containsKey(path)) {
+        if (!DcHelper.sharedFiles.containsKey(path)) {
             throw new FileNotFoundException("File was not shared before.");
         }
 

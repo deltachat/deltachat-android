@@ -24,6 +24,7 @@ import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcMsg;
 import com.codewaves.stickyheadergrid.StickyHeaderGridLayoutManager;
 
+import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.database.loaders.BucketedThreadMediaLoader;
@@ -77,19 +78,21 @@ public class ProfileGalleryFragment
     this.recyclerView.setLayoutManager(gridManager);
     this.recyclerView.setHasFixedSize(true);
 
-    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_MSGS_CHANGED, this);
-    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_INCOMING_MSG, this);
+    DcEventCenter eventCenter = DcHelper.getEventCenter(getContext());
+    eventCenter.addObserver(DcContext.DC_EVENT_MSGS_CHANGED, this);
+    eventCenter.addObserver(DcContext.DC_EVENT_INCOMING_MSG, this);
     return view;
   }
 
   @Override
   public void onDestroyView() {
-    dcContext.eventCenter.removeObservers(this);
+    DcEventCenter eventCenter = DcHelper.getEventCenter(getContext());
+    eventCenter.removeObservers(this);
     super.onDestroyView();
   }
 
   @Override
-  public void handleEvent(DcEvent event) {
+  public void handleEvent(@NonNull DcEvent event) {
     getLoaderManager().restartLoader(0, null, this);
   }
 

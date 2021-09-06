@@ -23,7 +23,6 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
-import android.content.ClipboardManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -57,6 +56,7 @@ import com.b44t.messenger.DcMsg;
 
 import org.thoughtcrime.securesms.ConversationAdapter.ItemClickListener;
 import org.thoughtcrime.securesms.components.reminder.DozeReminder;
+import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.mms.GlideApp;
@@ -117,12 +117,13 @@ public class ConversationFragment extends MessageSelectorFragment
         this.locale = (Locale) getArguments().getSerializable(PassphraseRequiredActionBarActivity.LOCALE_EXTRA);
         this.dcContext = DcHelper.getContext(getContext());
 
-        dcContext.eventCenter.addObserver(DcContext.DC_EVENT_INCOMING_MSG, this);
-        dcContext.eventCenter.addObserver(DcContext.DC_EVENT_MSGS_CHANGED, this);
-        dcContext.eventCenter.addObserver(DcContext.DC_EVENT_MSG_DELIVERED, this);
-        dcContext.eventCenter.addObserver(DcContext.DC_EVENT_MSG_FAILED, this);
-        dcContext.eventCenter.addObserver(DcContext.DC_EVENT_MSG_READ, this);
-        dcContext.eventCenter.addObserver(DcContext.DC_EVENT_CHAT_MODIFIED, this);
+        DcEventCenter eventCenter = DcHelper.getEventCenter(getContext());
+        eventCenter.addObserver(DcContext.DC_EVENT_INCOMING_MSG, this);
+        eventCenter.addObserver(DcContext.DC_EVENT_MSGS_CHANGED, this);
+        eventCenter.addObserver(DcContext.DC_EVENT_MSG_DELIVERED, this);
+        eventCenter.addObserver(DcContext.DC_EVENT_MSG_FAILED, this);
+        eventCenter.addObserver(DcContext.DC_EVENT_MSG_READ, this);
+        eventCenter.addObserver(DcContext.DC_EVENT_CHAT_MODIFIED, this);
 
         markseenDebouncer = new Debouncer(800);
         reloadTimer = new Timer("reloadTimer", false);
@@ -173,15 +174,7 @@ public class ConversationFragment extends MessageSelectorFragment
 
     private void setNoMessageText() {
         DcChat dcChat = getListAdapter().getChat();
-        if(chatId == DcChat.DC_CHAT_ID_DEADDROP) {
-            if(DcHelper.getInt(getActivity(), "show_emails")!= DcContext.DC_SHOW_EMAILS_ALL) {
-                noMessageTextView.setText(R.string.chat_no_contact_requests);
-            }
-            else {
-                noMessageTextView.setText(R.string.chat_no_messages);
-            }
-        }
-        else if(dcChat.isGroup()){
+        if(dcChat.isGroup()){
             if(dcContext.getChat((int) chatId).isUnpromoted()) {
                 noMessageTextView.setText(R.string.chat_new_group_hint);
             }
@@ -203,7 +196,7 @@ public class ConversationFragment extends MessageSelectorFragment
 
     @Override
     public void onDestroy() {
-        dcContext.eventCenter.removeObservers(this);
+        DcHelper.getEventCenter(getContext()).removeObservers(this);
         reloadTimer.cancel();
         super.onDestroy();
     }
@@ -335,7 +328,7 @@ public class ConversationFragment extends MessageSelectorFragment
             menu.findItem(R.id.menu_context_save_attachment).setVisible(messageRecord.hasFile());
             boolean canReply = canReplyToMsg(messageRecord);
             menu.findItem(R.id.menu_context_reply).setVisible(chat.canSend() && canReply);
-            boolean showReplyPrivately = chat.isGroup() && !messageRecord.isOutgoing() && canReply && chat.getId() != DcChat.DC_CHAT_ID_DEADDROP;
+            boolean showReplyPrivately = chat.isGroup() && !messageRecord.isOutgoing() && canReply;
             menu.findItem(R.id.menu_context_reply_privately).setVisible(showReplyPrivately);
         }
 
@@ -424,13 +417,8 @@ public class ConversationFragment extends MessageSelectorFragment
         }
 
         if (result.length() > 0) {
-            try {
-                ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
-                clipboard.setText(result.toString());
-                Toast.makeText(getActivity(), getActivity().getResources().getString(R.string.copied_to_clipboard), Toast.LENGTH_LONG).show();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            Util.writeTextToClipboard(getActivity(), result.toString());
+            Toast.makeText(getActivity(), getActivity().getResources().getString(R.string.copied_to_clipboard), Toast.LENGTH_LONG).show();
         }
     }
 
@@ -470,9 +458,18 @@ public class ConversationFragment extends MessageSelectorFragment
     }
 
     private void reloadList() {
+        reloadList(false);
+    }
+
+    private void reloadList(boolean chatModified) {
         ConversationAdapter adapter = getListAdapter();
         if (adapter == null) {
             return;
+        }
+
+        // if chat is a contact request and is accepted/blocked, the DcChat object must be reloaded, otherwise DcChat.canSend() returns wrong values
+        if (chatModified) {
+            adapter.reloadChat();
         }
 
         int oldCount = 0;
@@ -886,7 +883,7 @@ public class ConversationFragment extends MessageSelectorFragment
                     handleDeleteMessages(getListAdapter().getSelectedItems());
                     return true;
                 case R.id.menu_context_share:
-                    dcContext.openForViewOrShare(getContext(), getSelectedMessageRecord(getListAdapter().getSelectedItems()).getId(), Intent.ACTION_SEND);
+                    DcHelper.openForViewOrShare(getContext(), getSelectedMessageRecord(getListAdapter().getSelectedItems()).getId(), Intent.ACTION_SEND);
                     return true;
                 case R.id.menu_context_details:
                     handleDisplayDetails(getSelectedMessageRecord(getListAdapter().getSelectedItems()));
@@ -913,7 +910,7 @@ public class ConversationFragment extends MessageSelectorFragment
     }
 
     @Override
-    public void handleEvent(DcEvent event) {
+    public void handleEvent(@NonNull DcEvent event) {
         switch (event.getId()) {
             case DcContext.DC_EVENT_MSGS_CHANGED:
                 if (event.getData1Int() == 0 // deleted messages or batch insert
@@ -934,7 +931,7 @@ public class ConversationFragment extends MessageSelectorFragment
             case DcContext.DC_EVENT_CHAT_MODIFIED:
                 if (event.getData1Int() == chatId) {
                   updateLocationButton();
-                  reloadList();
+                  reloadList(true);
                 }
                 break;
         }

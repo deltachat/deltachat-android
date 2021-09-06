@@ -63,7 +63,6 @@
     <string name="next">Avançar</string>
     <string name="error">Erro</string>
     <string name="error_x">Erro: %1$s</string>
-    <string name="error_no_network">Rede indisponível.</string>
     <string name="no_app_to_handle_data">Não foi possível encontrar um app para abrir esse tipo de arquivo.</string>
     <string name="no_browser_installed">Nenhum navegador instalado.</string>
     <string name="file_not_found">Não foi possível encontrar %1$s.</string>
@@ -843,6 +842,8 @@
     <string name="pref_reliable_service_explain">Requer uma notificação permanente</string>
     <string name="perm_enable_bg_reminder_title">Toque aqui para receber mensagens enquanto o Delta Chat estiver em segundo plano.</string>
     <string name="perm_enable_bg_already_done">Você já permitiu que o Delta Chat receba mensagens em segundo plano.\n\nSe as mensagens ainda não chegarem em segundo plano, verifique também as configurações do sistema.</string>
-    <string name="update_1_20">Compatibilidade de e-mail aprimorada na versão 1.20:\n\n📫 Leitura de listas de e-mail\n📭 Leitura de e-mails HTML\n📪 Tratamento melhorado de endereços de suporte\n📫 Muitos incômodos maiores e menores corrigidos\n\nLeia nossa nova postagem no blog sobre esses primeiros passos em relação ao e-mail e muito mais:</string>
 
-</resources>
+
+    <!-- device messages for updates -->
+    <string name="update_1_20">Compatibilidade de e-mail aprimorada na versão 1.20:\n\n📫 Leitura de listas de e-mail\n📭 Leitura de e-mails HTML\n📪 Tratamento melhorado de endereços de suporte\n📫 Muitos incômodos maiores e menores corrigidos\n\nLeia nossa nova postagem no blog sobre esses primeiros passos em relação ao e-mail e muito mais:</string>
+    </resources>

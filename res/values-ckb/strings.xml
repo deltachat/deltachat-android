@@ -52,7 +52,6 @@
     <string name="next">پاشوو</string>
     <string name="error">هەڵە</string>
     <string name="error_x">هەڵە: %1$s</string>
-    <string name="error_no_network">تۆڕ بەردەست نییە</string>
     <string name="no_app_to_handle_data">نەرمامێرێک نەدۆزرایەوە کە ئەم چەشنە داتایە بخوێنێتەوە.</string>
     <string name="no_browser_installed">هیچ وێبگەڕێک دانەمەزراوە</string>
     <string name="file_not_found">%1$s نەدۆزرایەوە.</string>
@@ -688,4 +687,6 @@
     <string name="pref_reliable_service_explain">وریاکەرەوەیەکی هەمیشەیی پێویستە</string>
     <string name="perm_enable_bg_reminder_title">بۆ وەرگرتنی پەیامەکان لەو کاتانەدا کە دێڵتا چات لە پشتخانەوەیە، لێرە کرتە بکە.</string>
     <string name="perm_enable_bg_already_done">تۆ ئێستا ڕێگەت بە دێڵتا چات دا کە لە پشتخانەوە پەیامەکان وەربگرێت.\n\n ئەگەر هێشتا لە پشخاندا پەیامەکان نایەن، سەرنجێکیش لە ڕێکخستنەکانی سیستەم بدەوە.</string>
+
+
     </resources>

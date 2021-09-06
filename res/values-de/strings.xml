@@ -41,7 +41,7 @@
     <string name="main_menu">Hauptmenü</string>
     <string name="start_chat">Chat starten</string>
     <string name="show_full_message">Ganze Nachricht anzeigen…</string>
-    <string name="show_full_message_in_browser">Ganze Nachricht in Browser anzeigen…</string>
+    <string name="show_full_message_in_browser">Ganze Nachricht im Browser anzeigen…</string>
     <!-- this is shown as placeholder when something is loading at some places -->
     <string name="loading">Wird geladen…</string>
     <string name="hide">Verstecken</string>
@@ -63,14 +63,13 @@
     <string name="next">Weiter</string>
     <string name="error">Fehler</string>
     <string name="error_x">Fehler: %1$s</string>
-    <string name="error_no_network">Kein Netzwerk.</string>
     <string name="no_app_to_handle_data">Keine passende App zum Öffnen dieses Dateityps gefunden</string>
     <string name="no_browser_installed">Kein Internetbrowser installiert.</string>
     <string name="file_not_found">Kann %1$s nicht finden</string>
     <string name="copied_to_clipboard">In Zwischenablage kopiert.</string>
     <string name="contacts_headline">Kontakte</string>
     <string name="email_address">E-Mail-Adresse</string>
-    <string name="bad_email_address">Ungültige E-Mail-Adresse</string>
+    <string name="bad_email_address">Ungültige E-Mail-Adresse.</string>
     <string name="password">Passwort</string>
     <string name="existing_password">Bestehendes Passwort</string>
     <string name="now">Jetzt</string>
@@ -204,6 +203,7 @@
     <string name="block">Blockieren</string>
     <string name="menu_block_contact">Kontakt blockieren</string>
     <string name="menu_unblock_contact">Kontakt nicht mehr blockieren</string>
+    <string name="accept">Annehmen</string>
     <string name="menu_play">Wiedergabe</string>
     <string name="menu_pause">Pause</string>
     <string name="menu_scroll_to_bottom">Zum Ende scrollen</string>
@@ -231,7 +231,7 @@
     <string name="title_share_location">Standort mit allen Gruppenmitgliedern teilen</string>
     <string name="device_talk">Systemnachrichten</string>
     <string name="device_talk_subtitle">Lokal erzeugte Nachrichten</string>
-    <string name="device_talk_explain">Nachrichten in diesem Chat werden lokal von der Delta Chat App erzeugt, um auf Neuigkeiten und Probleme hinzuweisen.</string>
+    <string name="device_talk_explain">Nachrichten in diesem Chat werden lokal von der Delta Chat-App erzeugt. Ihre Entwickler informieren damit über App-Updates und Probleme während der Nutzung.</string>
     <string name="device_talk_welcome_message">Willkommen – Delta Chat sieht aus und funktioniert wie andere populäre Messenger - aber ohne zentrale Überwachung, ohne Tracking, ohne die Daten von Ihnen, Ihren FreundInnen, KollegInnen oder Familienmitgliedern an irgendwelche Firmen zu verkaufen.\n\nTechnisch gesehen ist Delta Chat ein E-Mail-Programm unter einer modernen Chat-Oberfläche - sozusagen E-Mail in neuem Gewand 👻\n\nMit Delta Chat haben Sie Milliarden potentieller ChatpartnerInnen: Verwenden Sie einfach deren E-Mail-Adresse - die EmpfängerInnen selbst müssen Delta Chat dazu nicht installieren oder sich irgendwo anmelden. Sie können sie aber natürlich gerne auf 👉 https://get.delta.chat hinweisen</string>
     <string name="edit_contact">Kontakt bearbeiten</string>
     <!-- Translators: "Pin" here is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
@@ -339,8 +339,10 @@
     <string name="chat_share_with_title">Teilen mit</string>
     <string name="chat_input_placeholder">Nachricht</string>
     <string name="chat_archived_label">Archiviert</string>
+    <string name="chat_request_label">Anfrage</string>
     <string name="chat_no_messages">Keine Nachrichten.</string>
     <string name="chat_self_talk_subtitle">Nachrichten, die ich mir selber geschickt habe</string>
+    <string name="archive_empty_hint">Wenn Sie Chats archivieren, werden diese hier angezeigt.</string>
     <string name="saved_messages">Gespeicherte Nachrichten</string>
     <string name="saved_messages_explain">• Nachrichten zum Merken hierher weiterleiten\n\n• Notizen oder Sprachmemos machen\n\n• Medien zum Speichern einfügen</string>
     <!-- this "Saved" should match the "Saved" from "Saved messages" -->
@@ -410,8 +412,20 @@
     <string name="tab_map">Karte</string>
     <string name="tab_gallery_empty_hint">In diesem Chat geteilte Bilder und Videos werden hier angezeigt.</string>
     <string name="tab_docs_empty_hint">In diesem Chat geteilte Dokumente, Musik und Dateien werden hier angezeigt.</string>
-    <string name="media_preview">Media-Vorschau</string>
+    <string name="media_preview">Medien-Vorschau</string>
     <string name="send_message">Nachricht senden</string>
+
+
+    <!-- Connectivity -->
+    <string name="connectivity">Verbindungsstatus</string>
+    <!-- Shown eg. in the title bar if the app is "Not connected"; as there is very few room, try to be as short as possible. -->
+    <string name="connectivity_not_connected">Nicht verbunden</string>
+    <!-- Shown eg. in the title bar if the app is "Connecting"; as there is very few room, try to be as short as possible. Note that the three dots are a single character (…), not three (...) -->
+    <string name="connectivity_connecting">Verbinde…</string>
+    <!-- Shown eg. in the title bar if the app is "Updating" (eg. getting new/old message, sync things); as there is very few room, try to be as short as possible. Note that the three dots are a single character (…), not three (...) -->
+    <string name="connectivity_updating">Aktualisiere…</string>
+    <!-- Shown eg. in the setting if the app is "Connected" -->
+    <string name="connectivity_connected">Verbunden</string>
 
 
     <!-- welcome and login -->
@@ -446,7 +460,7 @@
     <string name="import_backup_ask">Backup \"%1$s\" gefunden.\n\nDieses einlesen und alle Daten und Einstellungen daraus verwenden?</string>
     <string name="import_backup_no_backup_found">Kein Backup gefunden.\n\nDie Sicherung nach \"%1$s\" kopieren und es erneut versuchen. Alternativ \"Jetzt beginnen\" wählen, um den normalen Einrichtungsprozess fortzusetzen.</string>
     <!-- Translators: %1$s will be replaced by the e-mail address -->
-    <string name="login_error_cannot_login">Login als \"%1$s\" nicht möglich. Bitte E-Mail Adresse und Passwort auf Richtigkeit überprüfen.</string>
+    <string name="login_error_cannot_login">Login als \"%1$s\" nicht möglich. Bitte E-Mail-Adresse und Passwort auf Richtigkeit überprüfen.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
     <string name="login_error_server_response">Antwort von %1$s: %2$s
 
@@ -496,7 +510,7 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="pref_vibrate">Vibrieren</string>
     <string name="pref_screen_security">Bildschirmsicherheit</string>
     <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
-    <string name="pref_screen_security_explain">Aufforderung zum Sperren von Screenshots in der Kürzlich erstellten Liste und in der App</string>
+    <string name="pref_screen_security_explain">Aufforderung zum Sperren von Screenshots in der kürzlich erstellten Liste und in der App</string>
     <string name="pref_screen_security_please_restart_hint">Um die Bildschirmsicherheitseinstellungen anzuwenden, bitte App neu starten.</string>
     <string name="pref_notifications">Benachrichtigungen</string>
     <string name="pref_notifications_show">Anzeigen</string>
@@ -527,7 +541,7 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="pref_app_access">App-Zugriff</string>
     <string name="pref_communication">Kommunikation</string>
     <string name="pref_chats">Chats</string>
-    <string name="pref_in_chat_sounds">In-Chat Klänge</string>
+    <string name="pref_in_chat_sounds">In-Chat-Klänge</string>
     <string name="pref_message_text_size">Schriftgröße</string>
     <string name="pref_view_log">Protokoll anzeigen</string>
     <string name="pref_saved_log">Die Logdatei wurde im Downloads Ordner gespeichert.</string>
@@ -681,6 +695,14 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="qrscan_contains_url">Gescannter QR-Code URL:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Fingerabdruck</string>
     <string name="qrscan_x_verified_introduce_myself">%1$s verifiziert, mich vorgestellt....</string>
+    <string name="withdraw_verifycontact_explain">Dieser QR-Code kann von anderen gescannt werden, um Sie zu kontaktieren.\n\n Sie können den QR-Code hier deaktivieren und durch erneutes Scannen wieder aktivieren.</string>
+    <string name="withdraw_verifygroup_explain">Dieser QR-Code kann von anderen gescannt werden, um der Gruppe \"%1$s\" beizutreten.\n\n Sie können den QR-Code hier deaktivieren und durch erneutes Scannen wieder aktivieren.</string>
+    <string name="withdraw_qr_code">QR-Code deaktivieren</string>
+    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
+    <string name="revive_verifycontact_explain">Dieser QR-Code konnte von anderen gescannt werden, um Sie zu kontaktieren.\n\nDer QR-Code ist auf diesem Gerät nicht aktiv.</string>
+    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
+    <string name="revive_verifygroup_explain">Dieser QR-Code konnte von anderen gescannt werden, um der Gruppe \"%1$s\" bezutreten.\n\nDer QR-Code ist auf diesem Gerät nicht aktiv.</string>
+    <string name="revive_qr_code">QR-Code aktivieren</string>
     <string name="qrshow_title">QR-Einladungscode</string>
     <string name="qrshow_x_joining">%1$s beigetreten.</string>
     <string name="qrshow_x_verified">%1$s verifiziert.</string>
@@ -847,6 +869,11 @@ Ihr bisheriges E-Mail-Konto wird dabei nicht gelöscht. Sie können mit der Opti
     <string name="pref_reliable_service_explain">Erfordert immer sichtbaren Hinweis</string>
     <string name="perm_enable_bg_reminder_title">Tippen Sie hier, um Nachrichten zu empfangen, während Delta Chat im Hintergrund läuft.</string>
     <string name="perm_enable_bg_already_done">Sie haben Delta Chat bereits erlaubt, Nachrichten im Hintergrund zu empfangen.\n\nFalls keine Nachrichten eingehen, überprüfen Sie bitte auch Ihre Systemeinstellungen.</string>
+
+
+    <!-- device messages for updates -->
     <string name="update_1_20">Verbesserte E-Mail-Kompatibilität in Version 1.20:\n\n📫 Mailinglisten lesen\n📭 HTML-Mails anzeigen\n📪 Bessere Unterstützung von Support-Adressen\n📫 Viele weitere Probleme behoben\n\nLesen Sie unseren neuen Blog-Beitrag über diese ersten Schritte Richtung E-Mail und mehr:</string>
+    <string name="update_1_22">Was ist neu in 1.22?\n\n👋 Chat-Anfragen werden jetzt als einzelne Chats angezeigt und können vor Annahme oder Blockieren im Detail geprüft werden\n\n🗄️ Das Archiv ist jetzt leicht vom Hauptmenü aus zugänglich - dort finden Sie auch die alten Chat-Anfragen\n\n📮📮📮📮 Verbessertes Multi-Account: Der Wechsel zwischen Konten geht jetzt schneller und wird weniger durch langwierige Downloads blockiert\n\n🤔 Immer wissen, was los ist: Verbindungsprobleme werden jetzt in der Titelleiste angezeigt, für Details einfach auf den Titel tippen\n\nMehr im Blog:</string>
+    <string name="update_1_22_ios">Was ist neu in 1.22?\n\n👋 Chat-Anfragen werden jetzt als einzelne Chats angezeigt und können vor Annahme oder Blockieren im Detail geprüft werden\n\n🗄️ Das Archiv ist jetzt leicht den  Einstellungen aus zugänglich - dort finden Sie auch die alten Chat-Anfragen\n\n📮📮📮📮 Multi-Account hinzugefügt: Konten in den Einstellungen wechseln und verwalten\n\n🤔 Immer wissen, was los ist: Verbindungsprobleme werden jetzt in der Titelleiste angezeigt, für Details einfach auf den Titel tippen\n\nMehr im Blog:</string>
 
 </resources>

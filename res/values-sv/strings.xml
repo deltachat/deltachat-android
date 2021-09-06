@@ -57,7 +57,6 @@
     <string name="next">Nästa</string>
     <string name="error">Fel</string>
     <string name="error_x">Fel: %1$s</string>
-    <string name="error_no_network">Nätverk ej tillgängligt.</string>
     <string name="no_app_to_handle_data">Kan inte hitta någon app som hanterar denna typ av data.</string>
     <string name="no_browser_installed">Ingen webbläsare installerad.</string>
     <string name="file_not_found">Kunde inte hitta %1$s.</string>
@@ -725,4 +724,6 @@
     <string name="pref_reliable_service_explain">Kräver permanent avisering</string>
     <string name="perm_enable_bg_reminder_title">Tryck här för att ta emot meddelanden medan Delta Chat är i bakgrunden.</string>
     <string name="perm_enable_bg_already_done">Du har redan gett Delta Chatt tillstånd att ta emot meddelanden i bakgrunden.\n\nKontrollera dina systeminställningar också, om det fortfarande inte kommer några meddelanden i bakgrunden.</string>
+
+
     </resources>

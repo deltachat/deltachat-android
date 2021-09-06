@@ -33,7 +33,6 @@ import android.os.Bundle;
 import android.os.Vibrator;
 import android.provider.Browser;
 import android.text.Editable;
-import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.util.Pair;
@@ -85,11 +84,11 @@ import org.thoughtcrime.securesms.components.camera.QuickAttachmentDrawer.Attach
 import org.thoughtcrime.securesms.components.camera.QuickAttachmentDrawer.DrawerState;
 import org.thoughtcrime.securesms.components.emoji.EmojiKeyboardProvider;
 import org.thoughtcrime.securesms.components.emoji.MediaKeyboard;
-import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.AttachmentDatabase;
 import org.thoughtcrime.securesms.map.MapActivity;
+import org.thoughtcrime.securesms.messagerequests.MessageRequestsBottomView;
 import org.thoughtcrime.securesms.mms.AttachmentManager;
 import org.thoughtcrime.securesms.mms.AttachmentManager.MediaType;
 import org.thoughtcrime.securesms.mms.AudioSlide;
@@ -157,6 +156,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private static final String TAG = ConversationActivity.class.getSimpleName();
 
   public static final String CHAT_ID_EXTRA           = "chat_id";
+  public static final String FROM_ARCHIVED_CHATS_EXTRA = "from_archived";
   public static final String TEXT_EXTRA              = "draft_text";
   public static final String STARTING_POSITION_EXTRA = "starting_position";
 
@@ -191,6 +191,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private   InputAwareLayout            container;
   private   View                        composePanel;
   private   ScaleStableImageView        backgroundView;
+  private   MessageRequestsBottomView   messageRequestBottomView;
 
   private   AttachmentTypeSelector attachmentTypeSelector;
   private   AttachmentManager      attachmentManager;
@@ -201,7 +202,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private   InputPanel             inputPanel;
 
   private Recipient  recipient;
-  private ApplicationDcContext dcContext;
+  private DcContext  dcContext;
   private DcChat     dcChat                = new DcChat(0);
   private int        chatId;
   private final boolean isSecureText          = true;
@@ -262,9 +263,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       }
     });
 
-    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_CHAT_MODIFIED, this);
-    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_CHAT_EPHEMERAL_TIMER_MODIFIED, this);
-    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_CONTACTS_CHANGED, this);
+    DcEventCenter eventCenter = DcHelper.getEventCenter(this);
+    eventCenter.addObserver(DcContext.DC_EVENT_CHAT_MODIFIED, this);
+    eventCenter.addObserver(DcContext.DC_EVENT_CHAT_EPHEMERAL_TIMER_MODIFIED, this);
+    eventCenter.addObserver(DcContext.DC_EVENT_CONTACTS_CHANGED, this);
 
     if (isForwarding(this)) {
       handleForwarding();
@@ -320,7 +322,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     titleView.setTitle(glideRequests, dcChat);
 
-    dcContext.notificationCenter.updateVisibleChat(chatId);
+    DcHelper.getNotificationCenter(this).updateVisibleChat(chatId);
 
     if (doReinitializeDraft) {
       initializeDraft();
@@ -338,7 +340,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       doReinitializeDraft = true;
     }
 
-    dcContext.notificationCenter.updateVisibleChat(0);
+    DcHelper.getNotificationCenter(this).updateVisibleChat(0);
     if (isFinishing()) overridePendingTransition(R.anim.fade_scale_in, R.anim.slide_to_right);
     quickAttachmentDrawer.onPause();
     inputPanel.onPause();
@@ -366,7 +368,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   @Override
   protected void onDestroy() {
-    dcContext.eventCenter.removeObservers(this);
+    DcHelper.getEventCenter(this).removeObservers(this);
     super.onDestroy();
   }
 
@@ -427,6 +429,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       break;
     case ScribbleActivity.SCRIBBLE_REQUEST_CODE:
       setMedia(data.getData(), MediaType.IMAGE);
+      doReinitializeDraft = false;
       break;
     case SMS_DEFAULT:
       initializeSecurity(isSecureText, isDefaultSms);
@@ -453,10 +456,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     MenuInflater inflater = this.getMenuInflater();
     menu.clear();
 
-    if(chatId == DcChat.DC_CHAT_ID_DEADDROP) {
-      return true;
-    }
-
     inflater.inflate(R.menu.conversation, menu);
 
     if (dcChat.isSelfTalk()) {
@@ -469,7 +468,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       menu.findItem(R.id.menu_show_map).setVisible(false);
     }
 
-    if (!dcContext.isWebrtcConfigOk() || !dcChat.canVideochat()) {
+    if (!DcHelper.isWebrtcConfigOk(dcContext) || !dcChat.canVideochat()) {
       menu.findItem(R.id.menu_videochat_invite).setVisible(false);
     }
 
@@ -478,7 +477,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     }
 
     if (isGroupConversation()) {
-      if (!dcChat.isMailingList()) { // Leaving mailing lists is currently not supported
+      if (dcChat.canSend()) { // If you can't send, then you can't leave the group
         inflater.inflate(R.menu.conversation_push_group_options, menu);
       }
     }
@@ -601,7 +600,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void handleReturnToConversationList() {
+    handleReturnToConversationList(null);
+  }
 
+  private void handleReturnToConversationList(@Nullable Bundle extras) {
     if (isRelayingMessageContent(this) || successfulForwardingAttempt) {
       if (isSharing(this)) {
         // we're allowing only 1 try to share, going back to the conversation list will
@@ -613,8 +615,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       return;
     }
 
-    Intent intent = new Intent(this, (isArchived() ? ConversationListArchiveActivity.class : ConversationListActivity.class));
+    boolean archived = getIntent().getBooleanExtra(FROM_ARCHIVED_CHATS_EXTRA, false);
+    Intent intent = new Intent(this, (archived ? ConversationListArchiveActivity.class : ConversationListActivity.class));
     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+    if (extras != null) intent.putExtras(extras);
     startActivity(intent);
     finish();
   }
@@ -633,13 +637,11 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void handleProfile() {
-    if(chatId != DcChat.DC_CHAT_ID_DEADDROP) {
-      Intent intent = new Intent(this, ProfileActivity.class);
-      intent.putExtra(ProfileActivity.CHAT_ID_EXTRA, chatId);
-      intent.putExtra(ProfileActivity.FROM_CHAT, true);
-      startActivity(intent);
-      overridePendingTransition(0, 0);
-    }
+    Intent intent = new Intent(this, ProfileActivity.class);
+    intent.putExtra(ProfileActivity.CHAT_ID_EXTRA, chatId);
+    intent.putExtra(ProfileActivity.FROM_CHAT, true);
+    startActivity(intent);
+    overridePendingTransition(0, 0);
   }
 
   private void handleLeaveGroup() {
@@ -670,7 +672,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
         .setMessage(getResources().getQuantityString(R.plurals.ask_delete_chat, 1, 1))
         .setPositiveButton(R.string.delete, (dialog, which) -> {
           dcContext.deleteChat(chatId);
-          Toast.makeText(this, getString(R.string.done), Toast.LENGTH_SHORT).show();
           finish();
         })
         .setNegativeButton(R.string.cancel, null)
@@ -875,6 +876,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     quickAttachmentToggle = ViewUtil.findById(this, R.id.quick_attachment_toggle);
     inputPanel            = ViewUtil.findById(this, R.id.bottom_panel);
     backgroundView        = ViewUtil.findById(this, R.id.conversation_background);
+    messageRequestBottomView = ViewUtil.findById(this, R.id.conversation_activity_message_request_bottom_bar);
 
     ImageButton quickCameraToggle = ViewUtil.findById(this, R.id.quick_camera_toggle);
 
@@ -955,7 +957,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     if(chatId == DcChat.DC_CHAT_NO_CHAT)
       throw new IllegalStateException("can't display a conversation for no chat.");
     dcChat           = dcContext.getChat(chatId);
-    recipient        = dcContext.getRecipient(dcChat);
+    recipient        = new Recipient(this, dcChat);
     glideRequests    = GlideApp.with(this);
 
 
@@ -965,13 +967,12 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       conversationContainer.setClipToPadding(true);
     }
 
-    if (!dcChat.canSend()) {
-      composePanel.setVisibility(View.GONE);
-    }
+    setComposePanelVisibility();
+    initializeContactRequest();
+  }
 
-    if (chatId == DcChat.DC_CHAT_ID_DEADDROP) {
-      titleView.hideAvatar();
-    }
+  private void setComposePanelVisibility() {
+    composePanel.setVisibility(dcChat.canSend() ? View.VISIBLE : View.GONE);
   }
 
   //////// Helper Methods
@@ -1049,7 +1050,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
           filename = filename.substring(0, i);
         }
       }
-      String path = dcContext.getBlobdirFile(filename, ext);
+      String path = DcHelper.getBlobdirFile(dcContext, filename, ext);
 
       // copy content to this file
       if(path!=null) {
@@ -1188,7 +1189,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     if (refreshFragment) {
       fragment.reload(recipient, chatId);
-      dcContext.notificationCenter.updateVisibleChat(chatId);
+      DcHelper.getNotificationCenter(this).updateVisibleChat(chatId);
     }
 
     fragment.scrollToBottom();
@@ -1444,7 +1445,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       }
       else {
         processComposeControls(ACTION_SEND_OUT);
-        dcContext.notificationCenter.maybePlaySendSound(dcChat);
+        DcHelper.getNotificationCenter(ConversationActivity.this).maybePlaySendSound(dcChat);
       }
     }
 
@@ -1517,7 +1518,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   @Override
   public void handleReplyMessage(DcMsg msg) {
     // If you modify these lines you may also want to modify ConversationItem.setQuote():
-    Recipient author = dcContext.getRecipient(dcContext.getContact(msg.getFromId()));
+    Recipient author = new Recipient(this, dcContext.getContact(msg.getFromId()));
 
     SlideDeck slideDeck = new SlideDeck();
     if (msg.getType() != DcMsg.DC_MSG_TEXT) {
@@ -1543,7 +1544,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   @Override
-  public void handleEvent(DcEvent event) {
+  public void handleEvent(@NonNull DcEvent event) {
     int eventId = event.getId();
     if ((eventId == DcContext.DC_EVENT_CHAT_MODIFIED && event.getData1Int() == chatId)
      || (eventId == DcContext.DC_EVENT_CHAT_EPHEMERAL_TIMER_MODIFIED && event.getData1Int() == chatId)
@@ -1551,6 +1552,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       dcChat = dcContext.getChat(chatId);
       titleView.setTitle(glideRequests, dcChat);
       initializeSecurity(isSecureText, isDefaultSms);
+      setComposePanelVisibility();
+      initializeContactRequest();
     }
   }
 
@@ -1649,5 +1652,35 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       }
     }
     return true; // action handled by listener
+  }
+
+  public void initializeContactRequest() {
+    if (!dcChat.isContactRequest()) {
+      messageRequestBottomView.setVisibility(View.GONE);
+      return;
+    }
+
+    messageRequestBottomView.setVisibility(View.VISIBLE);
+    messageRequestBottomView.setAcceptOnClickListener(v -> {
+      dcContext.acceptChat(chatId);
+      messageRequestBottomView.setVisibility(View.GONE);
+      composePanel.setVisibility(View.VISIBLE);
+    });
+    messageRequestBottomView.setBlockOnClickListener(v -> {
+      // avoid showing compose panel on receiving DC_EVENT_CONTACTS_CHANGED for the chat that is no longer a request after blocking
+      DcHelper.getEventCenter(this).removeObserver(DcContext.DC_EVENT_CONTACTS_CHANGED, this);
+
+      dcContext.blockChat(chatId);
+      Bundle extras = new Bundle();
+      extras.putInt(ConversationListFragment.RELOAD_LIST, 1);
+      handleReturnToConversationList(extras);
+    });
+
+    if (dcChat.getType() == DcChat.DC_CHAT_TYPE_GROUP) {
+      // We don't support blocking groups yet, so offer to delete it instead
+      messageRequestBottomView.setBlockText(R.string.delete);
+      messageRequestBottomView.setBlockOnClickListener(v -> handleDeleteChat());
+    }
+    messageRequestBottomView.setQuestion(null);
   }
 }

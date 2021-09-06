@@ -182,7 +182,7 @@ public class AudioSlidePlayer {
 
         // Failed to play media file, maybe another app can handle it
         int msgId = getAudioSlide().getDcMsgId();
-        DcHelper.getContext(context).openForViewOrShare(context, msgId, Intent.ACTION_VIEW);
+        DcHelper.openForViewOrShare(context, msgId, Intent.ACTION_VIEW);
       }
     });
   }
@@ -210,9 +210,13 @@ public class AudioSlidePlayer {
     this.mediaPlayer = null;
   }
 
-  public synchronized static void stopAll() {
+  public static void stopAll() {
     if (playing.isPresent()) {
-      playing.get().stop();
+      synchronized (AudioSlidePlayer.class) {
+        if (playing.isPresent()) {
+          playing.get().stop();
+        }
+      }
     }
   }
 

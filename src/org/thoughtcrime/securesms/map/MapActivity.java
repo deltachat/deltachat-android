@@ -289,7 +289,7 @@ public class MapActivity extends BaseActivity implements Observer,
             Log.d(TAG, "found feature: " + feature.toJson());
 
             int messageId = feature.getNumberProperty(MESSAGE_ID).intValue();
-            DcMsg dcMsg = ApplicationContext.getInstance(this).dcContext.getMsg(messageId);
+            DcMsg dcMsg = DcHelper.getContext(this).getMsg(messageId);
             int dcMsgChatId = dcMsg.getChatId();
             if (dcMsgChatId == DC_CHAT_NO_CHAT) {
                 continue;
@@ -343,7 +343,7 @@ public class MapActivity extends BaseActivity implements Observer,
                             int messageId = feature.getNumberProperty(MESSAGE_ID).intValue();
                             int[] messages = new int[1];
                             messages[0] = messageId;
-                            ApplicationContext.getInstance(MapActivity.this).dcContext.deleteMsgs(messages);
+                            DcHelper.getContext(MapActivity.this).deleteMsgs(messages);
                             int contactId = feature.getNumberProperty(CONTACT_ID).intValue();
                             if (mapDataManager.isSelected(feature)) {
                                 mapDataManager.unselectMarker();

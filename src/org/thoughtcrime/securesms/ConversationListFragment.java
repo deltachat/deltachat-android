@@ -26,6 +26,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -41,26 +42,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.ActionMode;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.loader.app.LoaderManager;
-import androidx.loader.content.Loader;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcChatlist;
-import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
-import com.b44t.messenger.DcMsg;
 import com.google.android.material.snackbar.Snackbar;
 
-import static org.thoughtcrime.securesms.ConversationActivity.CHAT_ID_EXTRA;
 import org.thoughtcrime.securesms.ConversationListAdapter.ItemClickListener;
 import org.thoughtcrime.securesms.components.recyclerview.DeleteItemAnimator;
 import org.thoughtcrime.securesms.components.registration.PulsingFloatingActionButton;
 import org.thoughtcrime.securesms.components.reminder.DozeReminder;
-import org.thoughtcrime.securesms.connect.ApplicationDcContext;
-import org.thoughtcrime.securesms.connect.DcChatlistLoader;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideApp;
@@ -87,8 +81,9 @@ import static org.thoughtcrime.securesms.util.RelayUtil.isRelayingMessageContent
 
 
 public class ConversationListFragment extends Fragment
-        implements LoaderManager.LoaderCallbacks<DcChatlist>, ActionMode.Callback, ItemClickListener, DcEventCenter.DcEventDelegate {
+        implements ActionMode.Callback, ItemClickListener, DcEventCenter.DcEventDelegate {
   public static final String ARCHIVE = "archive";
+  public static final String RELOAD_LIST = "reload_list";
 
   @SuppressWarnings("unused")
   private static final String TAG = ConversationListFragment.class.getSimpleName();
@@ -102,6 +97,7 @@ public class ConversationListFragment extends Fragment
   private String                      queryFilter  = "";
   private boolean                     archive;
   private Timer                       reloadTimer;
+  private boolean                     chatlistJustLoaded;
 
   @Override
   public void onCreate(Bundle icicle) {
@@ -109,22 +105,23 @@ public class ConversationListFragment extends Fragment
     locale = (Locale) getArguments().getSerializable(PassphraseRequiredActionBarActivity.LOCALE_EXTRA);
     archive = getArguments().getBoolean(ARCHIVE, false);
 
-    ApplicationDcContext dcContext = DcHelper.getContext(getActivity());
-    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_CHAT_MODIFIED, this);
-    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_INCOMING_MSG, this);
-    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_MSGS_CHANGED, this);
-    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_MSGS_NOTICED, this);
-    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_MSG_DELIVERED, this);
-    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_MSG_FAILED, this);
-    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_MSG_READ, this);
-    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_MSG_READ, this);
-    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_CONNECTIVITY_CHANGED, this);
+    DcEventCenter eventCenter = DcHelper.getEventCenter(getActivity());
+    eventCenter.addObserver(DcContext.DC_EVENT_CHAT_MODIFIED, this);
+    eventCenter.addObserver(DcContext.DC_EVENT_CONTACTS_CHANGED, this);
+    eventCenter.addObserver(DcContext.DC_EVENT_INCOMING_MSG, this);
+    eventCenter.addObserver(DcContext.DC_EVENT_MSGS_CHANGED, this);
+    eventCenter.addObserver(DcContext.DC_EVENT_MSGS_NOTICED, this);
+    eventCenter.addObserver(DcContext.DC_EVENT_MSG_DELIVERED, this);
+    eventCenter.addObserver(DcContext.DC_EVENT_MSG_FAILED, this);
+    eventCenter.addObserver(DcContext.DC_EVENT_MSG_READ, this);
+    eventCenter.addObserver(DcContext.DC_EVENT_MSG_READ, this);
+    eventCenter.addObserver(DcContext.DC_EVENT_CONNECTIVITY_CHANGED, this);
   }
 
   @Override
   public void onDestroy() {
     super.onDestroy();
-    DcHelper.getContext(getActivity()).eventCenter.removeObservers(this);
+    DcHelper.getEventCenter(getActivity()).removeObservers(this);
   }
 
   @SuppressLint("RestrictedApi")
@@ -137,8 +134,15 @@ public class ConversationListFragment extends Fragment
     emptyState   = ViewUtil.findById(view, R.id.empty_state);
     emptySearch  = ViewUtil.findById(view, R.id.empty_search);
 
-    if (archive) fab.setVisibility(View.GONE);
-    else         fab.setVisibility(View.VISIBLE);
+    if (archive) {
+      fab.setVisibility(View.GONE);
+      TextView emptyTitle = ViewUtil.findById(view, R.id.empty_title);
+      TextView emptySubtitle = ViewUtil.findById(view, R.id.empty_subtitle);
+      emptyTitle.setText(R.string.archive_empty_hint);
+      emptySubtitle.setVisibility(View.GONE);
+    } else {
+      fab.setVisibility(View.VISIBLE);
+    }
 
     list.setHasFixedSize(true);
     list.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -153,7 +157,9 @@ public class ConversationListFragment extends Fragment
 
     setHasOptionsMenu(true);
     initializeFabClickListener(false);
-    initializeListAdapter();
+    list.setAdapter(new ConversationListAdapter(getActivity(), GlideApp.with(this), locale, this));
+    loadChatlistAsync();
+    chatlistJustLoaded = true;
   }
 
   @Override
@@ -161,7 +167,12 @@ public class ConversationListFragment extends Fragment
     super.onResume();
 
     updateReminders();
-    list.getAdapter().notifyDataSetChanged();
+
+    if (getActivity().getIntent().getIntExtra(RELOAD_LIST, 0) == 1
+        && !chatlistJustLoaded) {
+      loadChatlist();
+    }
+    chatlistJustLoaded = false;
 
     reloadTimer = new Timer();
     reloadTimer.scheduleAtFixedRate(new TimerTask() {
@@ -249,11 +260,6 @@ public class ConversationListFragment extends Fragment
     }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, getActivity());
   }
 
-  private void initializeListAdapter() {
-    list.setAdapter(new ConversationListAdapter(getActivity(), GlideApp.with(this), locale, this));
-    getLoaderManager().restartLoader(0, null, this);
-  }
-
   private void handlePinAllSelected() {
     final DcContext dcContext             = DcHelper.getContext(getActivity());
     final Set<Long> selectedConversations = new HashSet<>(getListAdapter().getBatchSelections());
@@ -300,13 +306,8 @@ public class ConversationListFragment extends Fragment
       @Override
       protected void executeAction(@Nullable Void parameter) {
         for (long chatId : selectedConversations) {
-          if (chatId == DcChat.DC_CHAT_ID_DEADDROP) {
-            dcContext.marknoticedChat(DcChat.DC_CHAT_ID_DEADDROP);
-          }
-          else {
-            dcContext.setChatVisibility((int)chatId,
-                    !archive? DcChat.DC_CHAT_VISIBILITY_ARCHIVED : DcChat.DC_CHAT_VISIBILITY_NORMAL);
-          }
+          dcContext.setChatVisibility((int)chatId,
+                  !archive? DcChat.DC_CHAT_VISIBILITY_ARCHIVED : DcChat.DC_CHAT_VISIBILITY_NORMAL);
         }
       }
 
@@ -322,7 +323,7 @@ public class ConversationListFragment extends Fragment
 
   @SuppressLint("StaticFieldLeak")
   private void handleDeleteAllSelected() {
-    final ApplicationDcContext dcContext          = DcHelper.getContext(getActivity());
+    final DcContext            dcContext          = DcHelper.getContext(getActivity());
     int                        conversationsCount = getListAdapter().getBatchSelections().size();
     AlertDialog.Builder        alert              = new AlertDialog.Builder(getActivity());
     alert.setMessage(getActivity().getResources().getQuantityString(R.plurals.ask_delete_chat,
@@ -348,13 +349,8 @@ public class ConversationListFragment extends Fragment
           @Override
           protected Void doInBackground(Void... params) {
             for (long chatId : selectedConversations) {
-              if (chatId == DcChat.DC_CHAT_ID_DEADDROP) {
-                dcContext.marknoticedChat(DcChat.DC_CHAT_ID_DEADDROP);
-              }
-              else {
-                dcContext.notificationCenter.removeNotifications((int) chatId);
-                dcContext.deleteChat((int) chatId);
-              }
+              DcHelper.getNotificationCenter(getContext()).removeNotifications((int) chatId);
+              dcContext.deleteChat((int) chatId);
             }
             return null;
           }
@@ -384,8 +380,37 @@ public class ConversationListFragment extends Fragment
     ((ConversationSelectedListener)getActivity()).onCreateConversation(chatId);
   }
 
-  @Override
-  public Loader<DcChatlist> onCreateLoader(int arg0, Bundle arg1) {
+  private final Object loadChatlistLock = new Object();
+  private boolean inLoadChatlist;
+  private boolean needsAnotherLoad;
+  private void loadChatlistAsync() {
+    synchronized (loadChatlistLock) {
+      needsAnotherLoad = true;
+      if (inLoadChatlist) {
+        Log.i(TAG, "chatlist loading debounced");
+        return;
+      }
+      inLoadChatlist = true;
+    }
+
+    Util.runOnAnyBackgroundThread(() -> {
+      while(true) {
+        synchronized (loadChatlistLock) {
+          if (!needsAnotherLoad) {
+            inLoadChatlist = false;
+            return;
+          }
+          needsAnotherLoad = false;
+        }
+
+        Log.i(TAG, "executing debounced chatlist loading");
+        loadChatlist();
+        Util.sleep(100);
+      }
+    });
+  }
+
+  private void loadChatlist() {
     int listflags = 0;
     if (archive) {
       listflags |= DcContext.DC_GCL_ARCHIVED_ONLY;
@@ -394,67 +419,41 @@ public class ConversationListFragment extends Fragment
     } else {
       listflags |= DcContext.DC_GCL_ADD_ALLDONE_HINT;
     }
-    return new DcChatlistLoader(getActivity(), listflags, queryFilter.isEmpty()? null : queryFilter, 0);
-  }
 
-
-  @Override
-  public void onLoadFinished(Loader<DcChatlist> arg0, DcChatlist chatlist) {
-    if (chatlist.getCnt() <= 0 && TextUtils.isEmpty(queryFilter) && !archive) {
-      list.setVisibility(View.INVISIBLE);
-      emptyState.setVisibility(View.VISIBLE);
-      emptySearch.setVisibility(View.INVISIBLE);
-      fab.startPulse(3 * 1000);
-    } else if (chatlist.getCnt() <= 0 && !TextUtils.isEmpty(queryFilter)) {
-      list.setVisibility(View.INVISIBLE);
-      emptyState.setVisibility(View.GONE);
-      emptySearch.setVisibility(View.VISIBLE);
-      emptySearch.setText(getString(R.string.search_no_result_for_x, queryFilter));
-    } else {
-      list.setVisibility(View.VISIBLE);
-      emptyState.setVisibility(View.GONE);
-      emptySearch.setVisibility(View.INVISIBLE);
-      fab.stopPulse();
+    Context context = getContext();
+    if (context == null) {
+      // can't load chat list at this time, see: https://github.com/deltachat/deltachat-android/issues/2012
+      Log.w(TAG, "Ignoring call to loadChatlist()");
+      return;
     }
+    DcChatlist chatlist = DcHelper.getContext(context).getChatlist(listflags, queryFilter.isEmpty() ? null : queryFilter, 0);
 
-    getListAdapter().changeData(chatlist);
+    Util.runOnMain(() -> {
+      if (chatlist.getCnt() <= 0 && TextUtils.isEmpty(queryFilter)) {
+        list.setVisibility(View.INVISIBLE);
+        emptyState.setVisibility(View.VISIBLE);
+        emptySearch.setVisibility(View.INVISIBLE);
+        fab.startPulse(3 * 1000);
+      } else if (chatlist.getCnt() <= 0 && !TextUtils.isEmpty(queryFilter)) {
+        list.setVisibility(View.INVISIBLE);
+        emptyState.setVisibility(View.GONE);
+        emptySearch.setVisibility(View.VISIBLE);
+        emptySearch.setText(getString(R.string.search_no_result_for_x, queryFilter));
+      } else {
+        list.setVisibility(View.VISIBLE);
+        emptyState.setVisibility(View.GONE);
+        emptySearch.setVisibility(View.INVISIBLE);
+        fab.stopPulse();
+      }
 
-  }
-
-  @Override
-  public void onLoaderReset(Loader<DcChatlist> arg0) {
-    getListAdapter().changeData(null);
+      getListAdapter().changeData(chatlist);
+    });
   }
 
   @Override
   public void onItemClick(ConversationListItem item) {
     if (actionMode == null) {
       int chatId = (int)item.getChatId();
-
-      if (chatId == DcChat.DC_CHAT_ID_DEADDROP) {
-        DcContext dcContext = DcHelper.getContext(getActivity());
-        final int msgId = item.getMsgId();
-        if (DcHelper.getInt(getActivity(), "show_emails") == DcContext.DC_SHOW_EMAILS_ALL) {
-          Intent intent = new Intent(getActivity(), ConversationActivity.class);
-          intent.putExtra(CHAT_ID_EXTRA, DcChat.DC_CHAT_ID_DEADDROP);
-          startActivity(intent);
-        } else {
-          DeaddropQuestionHelper helper = new DeaddropQuestionHelper(getContext(), dcContext.getMsg(msgId));
-          new AlertDialog.Builder(getActivity())
-                  .setPositiveButton(android.R.string.ok, (dialog, which) -> {
-                    int belongingChatId = dcContext.decideOnContactRequest(msgId, DcContext.DC_DECISION_START_CHAT);
-                    if (belongingChatId != 0) {
-                      handleCreateConversation(belongingChatId);
-                    }
-                  })
-                  .setNegativeButton(R.string.not_now, (dialog, which) -> dcContext.decideOnContactRequest(msgId, DcContext.DC_DECISION_NOT_NOW))
-                  .setNeutralButton(helper.answerBlock, (dialog, which) -> dcContext.decideOnContactRequest(msgId, DcContext.DC_DECISION_BLOCK))
-                  .setMessage(helper.question)
-                  .show();
-        }
-        return;
-      }
-
       handleCreateConversation(chatId);
     } else {
       ConversationListAdapter adapter = (ConversationListAdapter) list.getAdapter();
@@ -486,25 +485,6 @@ public class ConversationListFragment extends Fragment
     }
   }
 
-  static class DeaddropQuestionHelper {
-    public String question;
-    public String answerBlock;
-
-    DeaddropQuestionHelper(Context context, DcMsg dcMsg) {
-      DcContext dcContext = DcHelper.getContext(context);
-      DcChat dcChat = dcContext.getChat(dcMsg.getRealChatId());
-
-      if (dcChat.isMailingList()) {
-        question = context.getString(R.string.ask_show_mailing_list, dcChat.getName());
-        answerBlock = context.getString(R.string.block);
-      } else {
-        DcContact dcContact = dcContext.getContact(dcMsg.getFromId());
-        question = context.getString(R.string.ask_start_chat_with, dcMsg.getSenderName(dcContact, false));
-        answerBlock = context.getString(R.string.menu_block_contact);
-      }
-    }
-  };
-
   @Override
   public void onSwitchToArchive() {
     ((ConversationSelectedListener)getActivity()).onSwitchToArchive();
@@ -516,7 +496,7 @@ public class ConversationListFragment extends Fragment
   }
 
   private boolean areSomeSelectedChatsUnpinned() {
-    ApplicationDcContext dcContext = DcHelper.getContext(getActivity());
+    DcContext dcContext = DcHelper.getContext(getActivity());
     final Set<Long> selectedChats = getListAdapter().getBatchSelections();
     for (long chatId : selectedChats) {
       DcChat dcChat = dcContext.getChat((int)chatId);
@@ -610,11 +590,11 @@ public class ConversationListFragment extends Fragment
   }
 
   @Override
-  public void handleEvent(DcEvent event) {
+  public void handleEvent(@NonNull DcEvent event) {
     if (event.getId() == DcContext.DC_EVENT_CONNECTIVITY_CHANGED) {
       ((ConversationListActivity) getActivity()).refreshTitle();
     } else {
-      getLoaderManager().restartLoader(0, null, this);
+      loadChatlistAsync();
     }
   }
 

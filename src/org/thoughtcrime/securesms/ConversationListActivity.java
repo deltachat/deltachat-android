@@ -30,7 +30,6 @@ import android.widget.Toast;
 import androidx.appcompat.widget.Toolbar;
 import androidx.appcompat.widget.TooltipCompat;
 
-import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMsg;
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -38,7 +37,6 @@ import com.google.zxing.integration.android.IntentResult;
 
 import org.thoughtcrime.securesms.components.SearchToolbar;
 import org.thoughtcrime.securesms.connect.AccountManager;
-import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.map.MapActivity;
 import org.thoughtcrime.securesms.qr.QrActivity;
@@ -91,8 +89,8 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     // it is not needed to keep all past update messages, however, when deleted, also the strings should be deleted.
     DcContext dcContext = DcHelper.getContext(this);
     DcMsg msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
-    msg.setText(getString(R.string.update_1_20) + " https://delta.chat/en/2021-05-05-email-compat");
-    dcContext.addDeviceMsg("update_1_20n_android", msg); // addDeviceMessage() makes sure, messages with the same id are not added twice
+    msg.setText(getString(R.string.update_1_22) + " https://delta.chat/en/blog");
+    dcContext.addDeviceMsg("update_1_22d_android", msg); // addDeviceMessage() makes sure, messages with the same id are not added twice
 
     // create view
     setContentView(R.layout.conversation_list_activity);
@@ -129,7 +127,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     handleOpenpgp4fpr();
 
     if (getIntent().getBooleanExtra(CLEAR_NOTIFICATIONS, false)) {
-      DcHelper.getContext(this).notificationCenter.removeAllNotifiations();
+      DcHelper.getNotificationCenter(this).removeAllNotifiations();
     }
   }
 
@@ -226,6 +224,9 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
       case R.id.menu_new_chat:
         createChat();
         return true;
+      case R.id.menu_archived_chats:
+        onSwitchToArchive();
+        return true;
       case R.id.menu_settings:
         startActivity(new Intent(this, ApplicationPreferencesActivity.class));
         return true;
@@ -234,9 +235,6 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
         return true;
       case R.id.menu_qr:
         new IntentIntegrator(this).setCaptureActivity(QrActivity.class).initiateScan();
-        return true;
-      case R.id.menu_deaddrop:
-        handleDeaddrop();
         return true;
       case R.id.menu_global_map:
         handleShowMap();
@@ -287,7 +285,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   public void openConversation(int chatId, int startingPosition) {
     searchToolbar.clearFocus();
 
-    final ApplicationDcContext dcContext = DcHelper.getContext(this);
+    final DcContext dcContext = DcHelper.getContext(this);
     if (isForwarding(this) && dcContext.getChat(chatId).isSelfTalk()) {
       SendRelayedMessageUtil.immediatelyRelay(this, chatId);
       Toast.makeText(this, DynamicTheme.getCheckmarkEmoji(this) + " " + getString(R.string.saved), Toast.LENGTH_SHORT).show();
@@ -336,12 +334,6 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     } else {
       startActivity(intent);
     }
-  }
-
-  private void handleDeaddrop() {
-    Intent intent = new Intent(this, ConversationActivity.class);
-    intent.putExtra(CHAT_ID_EXTRA, DcChat.DC_CHAT_ID_DEADDROP);
-    startActivity(intent);
   }
 
   @Override

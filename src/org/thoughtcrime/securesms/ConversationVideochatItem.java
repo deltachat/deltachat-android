@@ -13,11 +13,11 @@ import android.widget.TextView;
 
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
+import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMsg;
 
 import org.thoughtcrime.securesms.components.AvatarImageView;
 import org.thoughtcrime.securesms.components.ConversationItemFooter;
-import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.recipients.Recipient;
@@ -63,7 +63,7 @@ public class ConversationVideochatItem extends LinearLayout
                             boolean                 pulseUpdate)
   {
     this.dcMsg = dcMsg;
-    ApplicationDcContext dcContext = DcHelper.getContext(getContext());
+    DcContext dcContext = DcHelper.getContext(getContext());
     DcContact dcContact = dcContext.getContact(dcMsg.getFromId());
 
     CharSequence line1 = dcMsg.isOutgoing()? getContext().getString(R.string.videochat_you_invited_hint) :
@@ -73,7 +73,7 @@ public class ConversationVideochatItem extends LinearLayout
 
     body.setText(TextUtils.concat(line1, "\n", line2));
 
-    contactPhoto.setAvatar(glideRequests, dcContext.getRecipient(dcContact), true);
+    contactPhoto.setAvatar(glideRequests, new Recipient(getContext(), dcContact), true);
 
     setSelected(batchSelected.contains(dcMsg));
     setFooter(dcMsg, locale);

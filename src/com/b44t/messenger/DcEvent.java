@@ -16,6 +16,7 @@ public class DcEvent {
     public native int    getData1Int ();
     public native int    getData2Int ();
     public native String getData2Str ();
+    public native int    getAccountId();
 
     // working with raw c-data
     private long        eventCPtr;    // CAVE: the name is referenced in the JNI

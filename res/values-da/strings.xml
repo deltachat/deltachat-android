@@ -55,7 +55,6 @@
     <string name="next">Næste</string>
     <string name="error">Fejl</string>
     <string name="error_x">Fejl: %1$s</string>
-    <string name="error_no_network">Netværk utilgængelig</string>
     <string name="no_app_to_handle_data">Kan ikke finde et program til håndtering af denne type data.</string>
     <string name="no_browser_installed">Ingen browser installeret.</string>
     <string name="file_not_found">Kunne ikke finde %1$s.</string>
@@ -768,4 +767,6 @@
     <string name="pref_reliable_service_explain">Kræver en permanent forbindelse</string>
     <string name="perm_enable_bg_reminder_title">Tryk her for at modtage beskeder når Delta Chat er i baggrunden.</string>
     <string name="perm_enable_bg_already_done">Du har allerede tilladt Delta Chat at modtage beskeder i baggrunden.\n\nHvis beskeder ikke ankommer i baggrunden, undersøg dine systemindstillinger.</string>
+
+
     </resources>

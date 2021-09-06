@@ -41,6 +41,10 @@
     <string name="main_menu">メインメニュー</string>
     <string name="start_chat">チャットを開始する</string>
     <string name="show_full_message">メッセージ全体を表示</string>
+    <string name="show_full_message_in_browser">ブラウザにフルメッセージを表示</string>
+    <!-- this is shown as placeholder when something is loading at some places -->
+    <string name="loading">読み込み中</string>
+    <string name="hide">非表示</string>
     <string name="load_remote_content">リモート画像を読み込む</string>
     <!-- possible answers to the question are: Never, Always, Once -->
     <string name="load_remote_content_ask">リモート画像で追跡ができる。\n\nこの設定はフォントや他のコンテツを読み込むことも許可する。無効にしても埋め込まれた画像やキャッシュされた画像を表示されます。\n\nリモート画像を読み込む？</string>
@@ -58,7 +62,6 @@
     <string name="next">次へ</string>
     <string name="error">エラー</string>
     <string name="error_x">エラー：%1$s</string>
-    <string name="error_no_network">通信不能</string>
     <string name="no_app_to_handle_data">この種類のファイルを開くためのアプリが見つかりません。</string>
     <string name="no_browser_installed">ブラウザーが見つかりません</string>
     <string name="file_not_found">%1$sを見付けられません</string>
@@ -107,6 +110,7 @@
     <string name="images">画像</string>
     <string name="audio">音楽</string>
     <string name="voice_message">音声メッセージ</string>
+    <string name="forwarded">転送された</string>
     <string name="forwarded_message">転送されたメッセージ</string>
     <!-- %1$s will be replaced by the name or the e-mail address of the person who has forwarded the message -->
     <string name="forwarded_by">%1$sが転送しました</string>
@@ -175,6 +179,8 @@
     <string name="menu_copy_to_clipboard">クリップボードにコピー</string>
     <string name="menu_copy_selection_to_clipboard">コピー</string>
     <string name="menu_copy_link_to_clipboard">リンクをコピー</string>
+    <string name="menu_copy_text_to_clipboard">テキストをコピー</string>
+    <string name="menu_copy_image_to_clipboard">画像をコピー</string>
     <string name="paste_from_clipboard">クリップボードのデータを貼り付ける</string>
     <string name="menu_forward">メッセージを転送</string>
     <string name="menu_resend">メッセージを再送信</string>
@@ -208,6 +214,8 @@
     <string name="menu_zoom_in">拡大</string>
     <string name="menu_zoom_out">縮小</string>
     <string name="menu_save_log">ログ保存</string>
+    <string name="jump_to_message">メッセージへ移動</string>
+    <string name="copy_json">JSONをコピー</string>
     <string name="title_share_location">現在地を全員に公開する</string>
     <string name="device_talk">デバイスのメッセージ</string>
     <string name="device_talk_subtitle">ローカルで生成されたメッセージ</string>
@@ -264,6 +272,7 @@
     <plurals name="ask_delete_chat">
         <item quantity="other">%d個のチャットを削除しますか？チャットリストには表示されなくなりますが、メッセージはサーバーに残ります。</item>
     </plurals>
+    <string name="ask_delete_message">メッセージを削除してもよろしいですか？</string>
     <plurals name="ask_delete_messages">
         <item quantity="other">こことサーバー上の%dつのメッセージを削除しますか？</item>
     </plurals>
@@ -338,6 +347,7 @@
     <string name="show_location_traces">トレースを表示する</string>
     <string name="add_poi">指定位置を送る</string>
 
+    <string name="puny_code_warning_header">疑わしいリンクが検出された</string>
     <!-- search -->
     <string name="search">検索</string>
     <string name="search_explain">チャット･メッセージ･連絡先を検索</string>
@@ -367,6 +377,18 @@
     <string name="tab_docs_empty_hint">このチャットで共有されたドキュメントや音楽などがここに表示されます。</string>
     <string name="media_preview">メディアのプレビュー</string>
     <string name="send_message">送る</string>
+
+
+    <!-- Connectivity -->
+    <string name="connectivity">接続性</string>
+    <!-- Shown eg. in the title bar if the app is "Not connected"; as there is very few room, try to be as short as possible. -->
+    <string name="connectivity_not_connected">未接続</string>
+    <!-- Shown eg. in the title bar if the app is "Connecting"; as there is very few room, try to be as short as possible. Note that the three dots are a single character (…), not three (...) -->
+    <string name="connectivity_connecting">接続中</string>
+    <!-- Shown eg. in the title bar if the app is "Updating" (eg. getting new/old message, sync things); as there is very few room, try to be as short as possible. Note that the three dots are a single character (…), not three (...) -->
+    <string name="connectivity_updating">アップデート中</string>
+    <!-- Shown eg. in the setting if the app is "Connected" -->
+    <string name="connectivity_connected">接続済み</string>
 
 
     <!-- welcome and login -->
@@ -522,6 +544,9 @@ https://delta.chat</string>
     <string name="profile_image_select">アイコン画像を選択する</string>
     <string name="select_your_new_profile_image">新しいアイコン画像を選択してください</string>
     <string name="profile_image_delete">アイコン画像を削除する</string>
+    <string name="pref_show_tray_icon">トレイアイコンの表示</string>
+    <string name="pref_edit_profile">プロフィール編集</string>
+
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">検索結果</string>
     <string name="emoji_not_found">絵文字がみつかりません</string>
@@ -691,6 +716,7 @@ https://delta.chat</string>
     <string name="unblock_contacts_desktop">拒否を解除</string>
     <string name="none_blocked_desktop">ブロックされた人がいない</string>
     <string name="autocrypt_correct_desktop">自動暗号化設定が転送されました</string>
+    <string name="create_chat_error_desktop">チャットを作成できませんでした。</string>
     <string name="ask_delete_chat_desktop">チャットを削除しますか</string>
     <string name="email_validation_failed_desktop">メールアドレスが必要です</string>
     <string name="account_info_hover_tooltip_desktop">メール：%1$s\nサイズ：%2$s\nPath：%3$s</string>

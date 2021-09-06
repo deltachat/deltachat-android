@@ -63,7 +63,6 @@
     <string name="next">Pasuesja</string>
     <string name="error">Gabim</string>
     <string name="error_x">Gabim: %1$s</string>
-    <string name="error_no_network">Rrjet i pakapshëm.</string>
     <string name="no_app_to_handle_data">S\’gjendet dot një aplikacion për trajtimin e këtij lloji të dhënash.</string>
     <string name="no_browser_installed">S\’ka shfletues të instaluar.</string>
     <string name="file_not_found">S\’u gjet dot %1$s.</string>
@@ -145,6 +144,7 @@
     <string name="magenta">I purpurt</string>
     <string name="white">E bardhë</string>
 
+    <string name="zoom">Zoom</string>
     <string name="extra_small">Tejet të vogla</string>
     <string name="small">Të vogla</string>
     <string name="normal">Normale</string>
@@ -201,6 +201,7 @@
     <string name="block">Bllokoje</string>
     <string name="menu_block_contact">Bllokoje kontaktin</string>
     <string name="menu_unblock_contact">Zhbllokoje kontaktin</string>
+    <string name="accept">Pranoje</string>
     <string name="menu_play">Luaje</string>
     <string name="menu_pause">Pushoje</string>
     <string name="menu_scroll_to_bottom">Rrëshqit drejt fundit</string>
@@ -336,8 +337,10 @@
     <string name="chat_share_with_title">Ndajeni me </string>
     <string name="chat_input_placeholder">Mesazh</string>
     <string name="chat_archived_label">Arkivuar</string>
+    <string name="chat_request_label">Kërkoje</string>
     <string name="chat_no_messages">S\’ka mesazhe.</string>
     <string name="chat_self_talk_subtitle">Mesazhe që i kam dërguar vetes</string>
+    <string name="archive_empty_hint">Nëse arkivoni fjalosje, ato do të shfaqen këtu.</string>
     <string name="saved_messages">Mesazhe të ruajtur</string>
     <string name="saved_messages_explain">• Përcillini mesazhet këtu për përdorim të lehtë\n\n• Mbani shënime ose kujtesa zanore\n\n• Bashkëngjitni media për t’i ruajtur</string>
     <!-- this "Saved" should match the "Saved" from "Saved messages" -->
@@ -409,6 +412,18 @@
     <string name="tab_docs_empty_hint">Dokumentet, muzika dhe kartela të tjera të dhëna në këtë fjalosje do të shfaqen këtu.</string>
     <string name="media_preview">Paraparje media</string>
     <string name="send_message">Dërgo mesazh</string>
+
+
+    <!-- Connectivity -->
+    <string name="connectivity">Aftësi lidhjeje</string>
+    <!-- Shown eg. in the title bar if the app is "Not connected"; as there is very few room, try to be as short as possible. -->
+    <string name="connectivity_not_connected">I palidhur</string>
+    <!-- Shown eg. in the title bar if the app is "Connecting"; as there is very few room, try to be as short as possible. Note that the three dots are a single character (…), not three (...) -->
+    <string name="connectivity_connecting">Po lidhet…</string>
+    <!-- Shown eg. in the title bar if the app is "Updating" (eg. getting new/old message, sync things); as there is very few room, try to be as short as possible. Note that the three dots are a single character (…), not three (...) -->
+    <string name="connectivity_updating">Po përditësohet…</string>
+    <!-- Shown eg. in the setting if the app is "Connected" -->
+    <string name="connectivity_connected">I lidhur</string>
 
 
     <!-- welcome and login -->
@@ -675,6 +690,14 @@
     <string name="qrscan_contains_url">URL kodi QR të skanuar:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Shenja gishtash</string>
     <string name="qrscan_x_verified_introduce_myself">%1$s u verifikua, po prezantoj veten…</string>
+    <string name="withdraw_verifycontact_explain">Ky kod QR mund të skanohet nga të tjerë për t’u lidhur me ju.\n\nKodin QR mund ta çaktivizoni këtu dhe ta riaktivizoni duke e riskanuar.</string>
+    <string name="withdraw_verifygroup_explain">Ky kod QR mund të skanohet nga të tjerë për t’u bërë pjesë e grupit \"%1$s\".\n\nKodin QR mund ta çaktivizoni këtu dhe ta riaktivizoni duke e riskanuar.</string>
+    <string name="withdraw_qr_code">Çaktivizoni kodin QR</string>
+    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
+    <string name="revive_verifycontact_explain">Ky kod QR mund të skanohet nga të tjerë për të ujdisur kontakt me ju.\n\nKodi QR s’është aktiv në këtë pajisje.</string>
+    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
+    <string name="revive_verifygroup_explain">Ky kod QR mund të skanohet nga të tjerë për t’u bërë pjesë e grupit \"%1$s\".\n\nKodi QR s’është aktiv në këtë pajisje.</string>
+    <string name="revive_qr_code">Aktivizoni kod QR</string>
     <string name="qrshow_title">Kod QR ftese</string>
     <string name="qrshow_x_joining">%1$s vjen.</string>
     <string name="qrshow_x_verified">%1$s u verifikua.</string>
@@ -837,6 +860,11 @@
     <string name="pref_reliable_service_explain">Lyp një njoftim permanent</string>
     <string name="perm_enable_bg_reminder_title">Prekeni këtu që të merrni mesazhe, teksa Delta Chat rri në prapaskenë.</string>
     <string name="perm_enable_bg_already_done">E keni lejuar tashmë Delta Chat-in të marrë mesazhe në prapaskenë.\n\nNëse mesazhet prapë nuk mbërrijnë në prapaskenë, ju lutemi, kontrolloni edhe rregullimet e sistemit tuaj.</string>
+
+
+    <!-- device messages for updates -->
     <string name="update_1_20">U përmirësua përputhshmëri email-i në versionin 1.20:\n\n📫 Lexoni lista postimesh\n📭 Lexoni email-e HTML\n📪 Trajtim i bukur adresash asistence\n📫 U ndreqën mjaft yçkla të mëdha dhe vockla\n\nLexoni postimin tonë të ri në blog mbi këto hapa të para drejt email-it dhe më tepër:</string>
+    <string name="update_1_22">Ç’ka të re në 1.22?\n\n👋 Kërkesa për fjalosje tanimë hapen si flluska fjalosjesh më vete dhe mund të shqyrtohen në hollësi përpara se të pranohen apo bllokohen\n\n🗄️ Te Arkivi tani mund të hyhet kollaj që nga menuja kryesore - atje do të gjeni edhe kërkesat tuaja të dikurshme\n\n📮📮📮 U përmirësua puna me shumë llogari: Kalimi nga një llogari në një tjetër tanimë është më i shpejtë dhe më rrallë i bllokuar nga përditësime të gjata\n\n🤔 Njihni se ç’po bëhet: Tani e tutje, probleme lidhjeje shfaqen te shtylla e titullit, prekeni për hollësi\n\nMë tepër në blog:</string>
+    <string name="update_1_22_ios">Ç’ka të re në 1.22?\n\n👋 Kërkesa për fjalosje tanimë hapen si flluska fjalosjesh më vete dhe mund të shqyrtohen në hollësi përpara se të pranohen apo bllokohen\n\n🗄️ Te Arkivi tani mund të hyhet kollaj që nga menuja kryesore - atje do të gjeni edhe kërkesat tuaja të dikurshme\n\n📮📮📮 U shtua aftësia për të përdorur disa llogari: Ndërroni dhe administroni llogari te rregullimet\n\n🤔 Njihni se ç’po bëhet: Tani e tutje, probleme lidhjeje shfaqen te shtylla e titullit, prekeni për hollësi\n\nMë tepër në blog:</string>
 
 </resources>

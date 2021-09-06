@@ -30,5 +30,4 @@
         <item name="android:textColor">?conversation_item_outgoing_text_secondary_color</item>
         <item name="android:shadowRadius">0</item>
     </style>
-
 </resources>

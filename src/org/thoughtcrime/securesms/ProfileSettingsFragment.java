@@ -28,7 +28,6 @@ import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 
-import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideApp;
@@ -59,7 +58,7 @@ public class ProfileSettingsFragment extends Fragment
 
 
   private Locale               locale;
-  private ApplicationDcContext dcContext;
+  private DcContext            dcContext;
   protected int                chatId;
   private int                  contactId;
 
@@ -91,16 +90,17 @@ public class ProfileSettingsFragment extends Fragment
 
     update();
 
-    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_CHAT_MODIFIED, this);
-    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_CONTACTS_CHANGED, this);
-    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_MSGS_CHANGED, this);
-    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_INCOMING_MSG, this);
+    DcEventCenter eventCenter = DcHelper.getEventCenter(getContext());
+    eventCenter.addObserver(DcContext.DC_EVENT_CHAT_MODIFIED, this);
+    eventCenter.addObserver(DcContext.DC_EVENT_CONTACTS_CHANGED, this);
+    eventCenter.addObserver(DcContext.DC_EVENT_MSGS_CHANGED, this);
+    eventCenter.addObserver(DcContext.DC_EVENT_INCOMING_MSG, this);
     return view;
   }
 
   @Override
   public void onDestroyView() {
-    dcContext.eventCenter.removeObservers(this);
+    DcHelper.getEventCenter(getContext()).removeObservers(this);
     super.onDestroyView();
   }
 
@@ -111,7 +111,7 @@ public class ProfileSettingsFragment extends Fragment
   }
 
   @Override
-  public void handleEvent(DcEvent event) {
+  public void handleEvent(@NonNull DcEvent event) {
     update();
   }
 

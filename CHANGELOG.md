@@ -1,5 +1,68 @@
 # Delta Chat Android Changelog
 
+## v1.22.1
+2021-08
+
+* update translations
+
+
+## v1.22.0
+2021-08
+
+* added: connectivity view shows quota information, if supported by the provider
+* fix editing shared images
+* fix account migration, updates are displayed instantly now
+* fix forwarding mails containing only quotes
+* fix ordering of some system messages
+* fix handling of gmail labels
+* fix connectivity display for outgoing messages
+* update translations and provider database
+
+
+## v1.21.2 Testrun Release
+2021-08
+
+* fix: allow dotless email address being added to groups
+* fix: keep selection when migrating several accounts
+* fix crash when going back to the chatlist
+* update translations
+
+
+## v1.21.1 Testrun Release
+2021-08
+
+* fix: avoid possible data loss when the app was not closed gracefully before;
+  this bug was introduced in 1.21.0 and not released outside testing groups -
+  thanks to all testers!
+
+
+## v1.21.0 Testrun Release
+2021-08
+
+* added: every new "contact request" is shown as a separate chat now,
+  you can block or accept or archive or pin them
+  (old contact requests are available in "Archived Chats")
+* added: the title bar shows if the app is not connected
+* added: a tap in the title bar shows connectivity details (also available in settings)
+* deactivate and reactivate your own QR codes by just scanning them
+* when using multiple accounts, the background-accounts now also fetch messages
+  that way, account switching is much faster than before
+  and the destination account is usually directly usable
+* allow dotless email address and localhost server,
+  this allows using eg. yggmail addresses
+* images from "Image keyboards" are sent as stickers now
+* unify appearance of user-generated links
+* don't open chat directly if user clicks in blocked addresses
+* let openpgp4fpr:-links work in html-messages
+* speedup chatlist while messages are downloaded
+* fix: make log view's scroll to top/bottom work
+* fix sharing files with "%" in their name
+* fix: welcome-screen respects dark mode now
+* fix: html-views respect app/system theme
+* fix: hide unnecessary controls if you can't send in a chat
+* fix: disable location service if it is not used anymore
+
+
 ## v1.20.5
 2021-06
 

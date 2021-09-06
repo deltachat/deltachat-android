@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.view.ActionMode;
@@ -28,7 +29,6 @@ import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 import com.google.android.material.tabs.TabLayout;
 
-import org.thoughtcrime.securesms.connect.ApplicationDcContext;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideApp;
@@ -65,7 +65,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
   private final DynamicTheme    dynamicTheme    = new DynamicNoActionBarTheme();
   private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
 
-  private ApplicationDcContext dcContext;
+  private DcContext            dcContext;
   private int                  chatId;
   private boolean              chatIsGroup;
   private boolean              chatIsDeviceTalk;
@@ -118,8 +118,9 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
       }
     }
 
-    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_CHAT_MODIFIED, this);
-    dcContext.eventCenter.addObserver(DcContext.DC_EVENT_CONTACTS_CHANGED, this);
+    DcEventCenter eventCenter = DcHelper.getEventCenter(this);
+    eventCenter.addObserver(DcContext.DC_EVENT_CHAT_MODIFIED, this);
+    eventCenter.addObserver(DcContext.DC_EVENT_CONTACTS_CHANGED, this);
   }
 
   @Override
@@ -191,12 +192,12 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
 
   @Override
   public void onDestroy() {
-    dcContext.eventCenter.removeObservers(this);
+    DcHelper.getEventCenter(this).removeObservers(this);
     super.onDestroy();
   }
 
   @Override
-  public void handleEvent(DcEvent event) {
+  public void handleEvent(@NonNull DcEvent event) {
     updateToolbar();
   }
 
@@ -222,7 +223,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
       }
     }
 
-    if(!isGlobalProfile() && !isSelfProfile() && !chatIsDeviceTalk && !chatIsMailingList) {
+    if(!isGlobalProfile() && !isSelfProfile() && !chatIsMailingList) {
       tabs.add(TAB_SETTINGS);
     }
     tabs.add(TAB_GALLERY);
@@ -328,7 +329,9 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
       int tabId = tabs.get(position);
       switch(tabId) {
         case TAB_SETTINGS:
-          if(isContactProfile()) {
+          if (chatIsDeviceTalk) {
+            return getString(R.string.profile);
+          } else if(isContactProfile()) {
             return getString(R.string.tab_contact);
           }
           else if (chatIsMailingList) {

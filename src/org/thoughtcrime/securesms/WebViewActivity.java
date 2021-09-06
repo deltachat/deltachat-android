@@ -17,6 +17,8 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.widget.SearchView;
+import androidx.webkit.WebSettingsCompat;
+import androidx.webkit.WebViewFeature;
 
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
@@ -46,6 +48,10 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
 
     webView = findViewById(R.id.webview);
     registerForContextMenu(webView);
+    if (WebViewFeature.isFeatureSupported(WebViewFeature.FORCE_DARK)) {
+      WebSettingsCompat.setForceDark(webView.getSettings(),
+                                     DynamicTheme.isDarkTheme(this) ? WebSettingsCompat.FORCE_DARK_ON : WebSettingsCompat.FORCE_DARK_OFF);
+    }
     webView.setWebViewClient(new WebViewClient() {
       // `shouldOverrideUrlLoading()` is called when the user clicks a URL,
       // returning `true` means, the URL is passed to `loadUrl()`, `false` aborts loading.

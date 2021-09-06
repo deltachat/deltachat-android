@@ -69,7 +69,7 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
       this.recipient = null;
     }
     else {
-      this.recipient = DcHelper.getContext(getContext()).getRecipient(contact);
+      this.recipient = new Recipient(getContext(), contact);
       this.recipient.addListener(this);
       if (this.recipient.getName() != null) {
         name = this.recipient.getName();

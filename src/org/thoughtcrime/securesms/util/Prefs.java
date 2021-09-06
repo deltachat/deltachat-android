@@ -8,11 +8,11 @@ import android.net.Uri;
 import android.preference.PreferenceManager;
 import android.provider.ContactsContract;
 import android.provider.Settings;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 
-import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContext;
 import com.mapbox.mapboxsdk.geometry.LatLng;
 
@@ -119,6 +119,10 @@ public class Prefs {
 
   public static boolean isInChatNotifications(Context context) {
     return getBooleanPreference(context, IN_THREAD_NOTIFICATION_PREF, true);
+  }
+
+  public static void setEnterSendsEnabled(Context context, boolean value) {
+    setBooleanPreference(context, ENTER_SENDS_PREF, value);
   }
 
   public static boolean isEnterSendsEnabled(Context context) {

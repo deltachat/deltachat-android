@@ -46,7 +46,6 @@
     <string name="next">Neste</string>
     <string name="error">Feil</string>
     <string name="error_x">Feil: %1$s</string>
-    <string name="error_no_network">Nettverk utilgjengelig.</string>
     <string name="no_app_to_handle_data">Kan ikke finne en app som kan handtere denne typen data.</string>
     <string name="no_browser_installed">Ingen nettleser installert</string>
     <string name="file_not_found">Filen %1$s ble ikke funnet.</string>

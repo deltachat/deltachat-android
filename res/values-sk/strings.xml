@@ -57,7 +57,6 @@
     <string name="next">Ďalšie</string>
     <string name="error">Chyba</string>
     <string name="error_x">Chyba: %1$s</string>
-    <string name="error_no_network">Sieť nedostupná</string>
     <string name="no_app_to_handle_data">Nemôžem nájsť aplikáciu na spracovanie tohto typu údajov.</string>
     <string name="no_browser_installed">Nie je nainštalovaný žiadny prehliadač.</string>
     <string name="file_not_found">Nemohol nájsť %1$s.</string>
@@ -801,4 +800,6 @@
     <string name="pref_reliable_service_explain">Vyžaduje trvalé upozornenie</string>
     <string name="perm_enable_bg_reminder_title">Klepnutím sem prijmete správy, zatiaľ čo je Delta Chat na pozadí.</string>
     <string name="perm_enable_bg_already_done">Službe Delta Chat ste už povolili príjem správ na pozadí.\n\nAk správy stále neprichádzajú na pozadí, skontrolujte tiež svoje systémové nastavenia.</string>
+
+
     </resources>
