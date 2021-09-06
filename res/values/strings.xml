@@ -198,6 +198,7 @@
     <string name="menu_mute">Mute Notifications</string>
     <string name="menu_unmute">Unmute</string>
     <string name="menu_export_attachment">Export Attachment</string>
+    <string name="menu_export_attachments">Export Attachments</string>
     <string name="menu_export_image">Export Image</string>
     <string name="menu_all_media">All Media</string>
     <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
@@ -296,7 +297,7 @@
     </plurals>
     <string name="ask_forward">Forward messages to %1$s?</string>
     <string name="ask_forward_multiple">Forward messages to %1$d chats?</string>
-    <string name="ask_export_attachment">Export attachment? Exporting attachments will allow any other apps on your device to access them.\n\nContinue?</string>
+    <string name="ask_export_attachment">Exporting attachments will allow any other apps on your device to access them.\n\nContinue?</string>
     <string name="ask_block_contact">Block this contact? You will no longer receive messages from this contact.</string>
     <string name="ask_unblock_contact">Unblock this contact? You will once again be able to receive messages from this contact.</string>
     <string name="ask_delete_contacts">Delete contacts?\n\nContacts with ongoing chats and contacts from the system\'s address book cannot be deleted permanently.</string>

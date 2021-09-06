@@ -20,6 +20,6 @@
         app:showAsAction="never"/>
 
     <item android:id="@+id/save"
-        android:title="@string/menu_export_attachment"
+        android:title="@string/menu_export_attachments"
         app:showAsAction="never"/>
 </menu>

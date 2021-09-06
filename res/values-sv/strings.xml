@@ -4,6 +4,7 @@
     <string name="app_name">DeltaLab</string>
     <string name="ok">OK</string>
     <string name="cancel">Avbryt</string>
+    <string name="clear_search">Rensa sök</string>
     <string name="yes">Ja</string>
     <string name="no">Nej</string>
     <string name="select">Välj</string>
@@ -40,6 +41,11 @@
     <string name="main_menu">Huvudmeny</string>
     <string name="start_chat">Starta chatt</string>
     <string name="show_full_message">Visa hela meddelandet...</string>
+    <string name="show_full_message_in_browser">Visa hela meddelandet i webbläsaren...</string>
+    <!-- this is shown as placeholder when something is loading at some places -->
+    <string name="loading">Laddar...</string>
+    <string name="hide">Dölj</string>
+    <string name="activate">Aktivera</string>
     <string name="load_remote_content">Ladda in fjärrbilder</string>
     <!-- possible answers to the question are: Never, Always, Once -->
     <string name="load_remote_content_ask">Fjärrbilder kan användas för att spåra dig.\n\nInställningen att fonter och annat innehåll laddas in. Även om inställningen är inaktiverad kan eventuellt inbäddade eller cachade fjärrbilder visas.\n\nLadda in fjärrbilder?</string>
@@ -111,6 +117,7 @@
     <string name="images">Bilder</string>
     <string name="audio">Ljud</string>
     <string name="voice_message">Röstmeddelande</string>
+    <string name="forwarded">Vidarebefodrat</string>
     <string name="forwarded_message">Vidarebefordrat meddelande</string>
     <!-- %1$s will be replaced by the name or the e-mail address of the person who has forwarded the message -->
     <string name="forwarded_by">Vidarebefordrad av %1$s</string>
@@ -119,6 +126,10 @@
     <string name="contact">Kontakt</string>
     <string name="verified_contact">Verifierad kontakt</string>
     <string name="camera">Kamera</string>
+    <!-- "capture" here means "start a video recording" or "take a photo"; eg. the description of the "shutter button" in the camera controls -->
+    <string name="capture">Fånga</string>
+    <string name="switch_camera">Växla kamera</string>
+    <string name="toggle_fullscreen">Växla fullskärm</string>
     <string name="location">Plats</string>
     <string name="gallery">Galleri</string>
     <string name="images_and_videos">Bilder och videor</string>
@@ -175,6 +186,8 @@
     <string name="menu_copy_to_clipboard">Kopierad till urklipp</string>
     <string name="menu_copy_selection_to_clipboard">Kopiera urval</string>
     <string name="menu_copy_link_to_clipboard">Kopiera länk</string>
+    <string name="menu_copy_text_to_clipboard">Kopiera text</string>
+    <string name="menu_copy_image_to_clipboard">Kopiera bild</string>
     <string name="paste_from_clipboard">Klistra in från urklipp</string>
     <string name="menu_forward">Vidarebefordra meddelande</string>
     <string name="menu_resend">Skicka om meddelandet</string>
@@ -190,11 +203,13 @@
     <string name="block">Blockera</string>
     <string name="menu_block_contact">Blockera kontakt</string>
     <string name="menu_unblock_contact">Avblockera kontakten</string>
+    <string name="accept">Acceptera</string>
     <string name="menu_play">Spela upp</string>
     <string name="menu_pause">Paus</string>
     <string name="menu_scroll_to_bottom">Skrolla till botten</string>
     <string name="menu_scroll_to_top">Bläddra till toppen</string>
     <string name="menu_help">Hjälp</string>
+    <string name="privacy_policy">Integritetspolicy</string>
     <string name="menu_select_all">Markera alla</string>
     <string name="select_more">Välj flera</string>
     <string name="menu_expand">Expandera</string>
@@ -207,6 +222,12 @@
     <string name="menu_zoom_in">Zooma in</string>
     <string name="menu_zoom_out">Zooma ut</string>
     <string name="menu_save_log">Spara logg</string>
+    <string name="menu_more_options">Mer alternativ</string>
+    <string name="menu_learn_spelling">Lär stavning</string>
+    <string name="menu_chat_audit_log">Granskningslogg av chatt</string>
+    <string name="jump_to_message">Hoppa till meddelande</string>
+    <string name="copy_json">Kopiera JSON</string>
+    <string name="replace_draft">Ersätt utkast</string>
     <string name="title_share_location">Dela plats med alla gruppmedlemmar</string>
     <string name="device_talk">Enhetsmeddelanden</string>
     <string name="device_talk_subtitle">Lokalt genererade meddelanden</string>
@@ -264,6 +285,7 @@
         <item quantity="one">Radera %d chatt? Det kommer inte längre synas i chattlistan, meddelanden kommer att finnas kvar på servern.</item>
         <item quantity="other">Radera %d chattar? De kommer inte att visas i chattlistan, deras meddelanden kommer finnas kvar på servern.</item>
     </plurals>
+    <string name="ask_delete_message">Är du säker på att du vill radera detta meddelande?</string>
     <plurals name="ask_delete_messages">
         <item quantity="one">Radera %d meddelande här och på servern.</item>
         <item quantity="other">Radera %d meddelanden här och på servern?</item>
@@ -317,8 +339,10 @@
     <string name="chat_share_with_title">Dela med</string>
     <string name="chat_input_placeholder">Meddelande</string>
     <string name="chat_archived_label">Arkiverat</string>
+    <string name="chat_request_label">Efterfråga</string>
     <string name="chat_no_messages">Inga meddelanden.</string>
     <string name="chat_self_talk_subtitle">Meddelanden jag skickat till mig själv</string>
+    <string name="archive_empty_hint">Om du arkiverar chattar, så kommer de visas här.</string>
     <string name="saved_messages">Sparade meddelanden</string>
     <string name="saved_messages_explain">• Vidarebefordra meddelanden här för enkel åtkomst\n\n• Spara anteckningar eller röstmemon\n\n• Bifoga mediafiler för att spara dom</string>
     <!-- this "Saved" should match the "Saved" from "Saved messages" -->
@@ -331,6 +355,7 @@
     <string name="messaging_disabled_not_in_group">Du kan inte skriva eftersom du inte är med i denna grupp. Be en medlem bjuda in dig, för att gå med</string>
     <string name="messaging_disabled_device_chat">Den här chatten innehåller meddelanden som har genererats lokalt. Därför kan du inte skriva meddelanden.</string>
     <string name="messaging_disabled_deaddrop">Tryck på ett meddelande för att acceptera, eller neka en kontaktförfrågan</string>
+    <string name="messaging_disabled_mailing_list">Att skicka meddelande till e-postlistor stöds inte ännu</string>
     <string name="cannot_display_unsuported_file_type">Denna filtyp kan inte visas: %s</string>
     <string name="attachment_failed_to_load">Bilagan kunde inte visas</string>
     <!-- mailing lists -->
