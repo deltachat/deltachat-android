@@ -136,7 +136,7 @@
                 tools:text="Mango pickle lorem ipsum"/>
 
             <Button
-                android:id="@+id/show_full_message"
+                android:id="@+id/msg_action_button"
                 android:visibility="gone"
                 style="@style/Signal.Text.Body"
                 android:layout_width="wrap_content"
