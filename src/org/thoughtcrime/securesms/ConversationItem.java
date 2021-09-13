@@ -343,9 +343,17 @@ public class ConversationItem extends BaseConversationItem
       bodyText.setVisibility(View.VISIBLE);
     }
 
-    if (messageRecord.getDownloadState() != DcMsg.DC_DOWNLOAD_DONE) {
+    int downloadState = messageRecord.getDownloadState();
+    if (downloadState != DcMsg.DC_DOWNLOAD_DONE) {
       msgActionButton.setVisibility(View.VISIBLE);
-      msgActionButton.setText(R.string.download);
+      if (downloadState==DcMsg.DC_DOWNLOAD_IN_PROGRESS) {
+        msgActionButton.setEnabled(false);
+        msgActionButton.setText(R.string.downloading);
+      } else {
+        msgActionButton.setEnabled(true);
+        msgActionButton.setText(R.string.download);
+      }
+
       msgActionButton.setOnClickListener(view -> {
         if (eventListener != null && batchSelected.isEmpty()) {
           eventListener.onDownloadClicked(messageRecord);
@@ -356,6 +364,7 @@ public class ConversationItem extends BaseConversationItem
     }
     else if (messageRecord.hasHtml()) {
       msgActionButton.setVisibility(View.VISIBLE);
+      msgActionButton.setEnabled(true);
       msgActionButton.setText(R.string.show_full_message);
       msgActionButton.setOnClickListener(view -> {
         if (eventListener != null && batchSelected.isEmpty()) {
