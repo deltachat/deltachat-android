@@ -18,6 +18,8 @@
     <string name="automatic">Automatico</string>
     <string name="strict">Stringente</string>
     <string name="open">Apri</string>
+    <string name="download">Download</string>
+    <string name="downloading">Downloading…</string>
     <string name="open_attachment">Apri Allegato</string>
     <string name="join">Partecipa</string>
     <string name="rejoin">Ripartecipa</string>
@@ -195,6 +197,7 @@
     <string name="menu_mute">Silenzia Notifiche</string>
     <string name="menu_unmute">Abilita Notifiche</string>
     <string name="menu_export_attachment">Esporta Allegato</string>
+    <string name="menu_export_attachments">Esporta Allegati</string>
     <string name="menu_all_media">Tutti i Media</string>
     <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
     <string name="show_in_chat">Mostra in Chat</string>
@@ -580,6 +583,9 @@
     <string name="pref_background_custom_image">Immagine personalizzata</string>
     <string name="pref_background_custom_color">Colore personalizzato</string>
     <string name="export_aborted">Esportazione interrotta.</string>
+    <string name="auto_download_messages">Auto-Download Messaggi</string>
+    <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB -->
+    <string name="up_to_x">Fino a %1$s</string>
     <string name="profile_image_select">Seleziona Immagine Profilo</string>
     <string name="select_your_new_profile_image">Seleziona la tua nuova immagine profilo</string>
     <string name="profile_image_delete">Elimina Immagine Profilo</string>

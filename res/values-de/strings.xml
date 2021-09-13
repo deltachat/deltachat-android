@@ -18,6 +18,8 @@
     <string name="automatic">Automatisch</string>
     <string name="strict">Strikt</string>
     <string name="open">Öffnen</string>
+    <string name="download">Herunterladen</string>
+    <string name="downloading">Herunterladen…</string>
     <string name="open_attachment">Anhang öffnen</string>
     <string name="join">Teilnehmen</string>
     <string name="rejoin">Öffnen</string>
@@ -195,6 +197,7 @@
     <string name="menu_mute">Stummschalten</string>
     <string name="menu_unmute">Stumm aus</string>
     <string name="menu_export_attachment">Datei exportieren</string>
+    <string name="menu_export_attachments">Dateien exportieren</string>
     <string name="menu_all_media">Alle Medien</string>
     <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
     <string name="show_in_chat">Im Chat zeigen</string>
@@ -292,7 +295,7 @@
     </plurals>
     <string name="ask_forward">Nachricht weiterleiten an %1$s?</string>
     <string name="ask_forward_multiple">Nachrichten an %1$d Chats weiterleiten?</string>
-    <string name="ask_export_attachment">Anlage exportieren? Das Exportieren von Anhängen ermöglicht es allen anderen Anwendungen auf Ihrem Gerät, auf diese zuzugreifen.\n\nFortfahren? </string>
+    <string name="ask_export_attachment">Das Exportieren von Anhängen ermöglicht es allen anderen Anwendungen auf Ihrem Gerät, auf diese zuzugreifen.\n\nFortfahren? </string>
     <string name="ask_block_contact">Diesen Kontakt blockieren? Sie werden keine Nachrichten mehr von diesem Kontakt erhalten.</string>
     <string name="ask_unblock_contact">Diesen Kontakt nicht mehr blockieren? Nachrichten von diesem Kontakt werden dann wieder angezeigt.</string>
     <string name="ask_delete_contacts">Kontakte dauerhaft löschen?\n\nKontakte mit laufenden Chats und Kontakte aus dem Adressbuch des Systems können nicht dauerhaft gelöscht werden.</string>
@@ -582,6 +585,16 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="pref_background_custom_image">Benutzerdefiniertes Hintergrundbild</string>
     <string name="pref_background_custom_color">Benutzerdefinierte Farbe</string>
     <string name="export_aborted">Export abgebrochen.</string>
+    <string name="auto_download_messages">Nachrichten automatisch herunterladen</string>
+    <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB -->
+    <string name="up_to_x">Bis zu %1$s</string>
+    <string name="up_to_x_most_worse_quality_images">Bis zu %1$s, die meisten Bilder schlechter Qualität</string>
+    <string name="up_to_x_most_balanced_quality_images">Bis zu %1$s, die meisten Bilder ausgewogener Qualität</string>
+    <string name="no_limit">Keine Begrenzung</string>
+    <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string eg. "1 MiB message" -->
+    <string name="n_bytes_message">%1$s Nachricht</string>
+    <!-- %1$s will be replaced by human-readable date and time -->
+    <string name="download_max_available_until">Download max. verfügbar bis %1$s</string>
     <string name="profile_image_select">Profilbild auswählen</string>
     <string name="select_your_new_profile_image">Wählen Sie Ihr Profilbild aus</string>
     <string name="profile_image_delete">Profilbild löschen</string>

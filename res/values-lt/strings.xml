@@ -199,6 +199,7 @@
     <string name="menu_mute">Išjungti pranešimus</string>
     <string name="menu_unmute">Įjungti pranešimus</string>
     <string name="menu_export_attachment">Eksportuoti priedą</string>
+    <string name="menu_export_attachments">Eksportuoti priedus</string>
     <string name="menu_all_media">Visa medija</string>
     <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
     <string name="show_in_chat">Rodyti pokalbyje</string>
@@ -328,6 +329,7 @@
     <string name="chat_record_slide_to_cancel">Perbraukite, norėdami atsisakyti</string>
     <string name="chat_record_explain">Bakstelėkite ir laikykite, norėdami įrašyti balso žinutę. Atleiskite, norėdami išsiųsti</string>
     <string name="chat_no_chats_yet_hint">Galite bendrauti su kitais Delta Chat naudotojais ir bet kuriais el. pašto adresais.</string>
+    <string name="chat_all_archived">Visi pokalbiai archyvuoti.\nPaspauskite „+“ norėdami pradėti naują pokalbį.</string>
     <string name="chat_share_with_title">Bendrinti su</string>
     <string name="chat_input_placeholder">Žinutė</string>
     <string name="chat_archived_label">Archyvuotas</string>
@@ -629,10 +631,15 @@
     <string name="qrshow_join_contact_no_connection_toast">Nėra interneto ryšio, nepavyksta atlikti QR kodo sąrankos.</string>
     <string name="qraccount_ask_create_and_login">Sukurti naują el. pašto adresą ties „%1$s“ ir prisijungti ten?</string>
     <string name="qraccount_success_enter_name">Prisijungimas sėkmingas — jūsų el. pašto adresas yra %1$s\n\nJei norite, dabar galite įvesti vardą ir pridėti profilio paveikslą, kuris bus rodomas žmonėms, kuriems rašysite.</string>
+    <string name="qraccount_qr_code_cannot_be_used">Nuskenuotas QR kodas negali būti naudojamas naujos paskyros nustatymui.</string>
+    <string name="qraccount_use_on_new_install">Nuskenuotas QR kodas yra skirtas naujos paskyros nustatymui. Galite nuskenuoti QR kodą tuomet, kai nustatote naują Delta Chat diegimą.</string>
     <string name="contact_verified">%1$s patvirtintas.</string>
     <string name="contact_not_verified">Nepavyksta patvirtinti %1$s</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Pakeista sąranka, skirta %1$s.</string>
+    <string name="mailto_dialog_header_select_chat">Pasirinkite pokalbį, į kurį siųsti žinutę</string>
+    <!-- first placeholder is the name of the chat -->
+    <string name="mailto_dialog_confirm_replace_draft">Pokalbyje %1$s jau yra žinutės juodraštis. Ar norite jį pakeisti?</string>
     <string name="mailto_link_could_not_be_decoded">nepavyko dekoduoti mailto nuorodos: %1$s</string>
 
     <string name="notify_mark_read">Žymėti kaip skaitytą</string>
@@ -706,6 +713,7 @@
     <string name="download_attachment_desktop">Atsisiųsti priedą</string>
     <string name="export_backup_desktop">Eksportuoti atsarginę kopiją</string>
     <string name="transfer_key_desktop">Perduoti raktą</string>
+    <string name="show_key_transfer_message_desktop">Jūsų raktas išsiųstas jums patiems. Persijunkite į kitą įrenginį ir atverkite sąrankos žinutę. Jūsų turėtų būti prašoma įvesti sąrankos kodą. Įveskite šiuos skaitmenis:</string>
     <string name="new_message_from_desktop">Nauja žinutė nuo</string>
     <string name="unblock_contacts_desktop">Atblokuoti adresatus</string>
     <string name="none_blocked_desktop">Kol kas nėra užblokuotų adresatų</string>
