@@ -17,6 +17,8 @@
     <string name="automatic">Automatinis</string>
     <string name="strict">Griežtas</string>
     <string name="open">Atverti</string>
+    <string name="download">Atsisiųsti</string>
+    <string name="downloading">Atsisiunčiama…</string>
     <string name="open_attachment">Atverti priedą</string>
     <string name="join">Prisijungti</string>
     <string name="rejoin">Prisijungti iš naujo</string>

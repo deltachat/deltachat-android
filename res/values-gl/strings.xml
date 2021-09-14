@@ -18,6 +18,8 @@
     <string name="automatic">Automático</string>
     <string name="strict">Estrito</string>
     <string name="open">Abrir</string>
+    <string name="download">Descargar</string>
+    <string name="downloading">Descargando...</string>
     <string name="open_attachment">Abrir anexo</string>
     <string name="join">Unirse</string>
     <string name="rejoin">Volta a unirte</string>
@@ -581,6 +583,16 @@
     <string name="pref_background_custom_image">Imaxe persoal</string>
     <string name="pref_background_custom_color">Cor persoal</string>
     <string name="export_aborted">Exportación detida.</string>
+    <string name="auto_download_messages">Descarga automática de mensaxes</string>
+    <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB -->
+    <string name="up_to_x">Ata %1$s</string>
+    <string name="up_to_x_most_worse_quality_images">Ata %1$s, a maioría de imaxes da peor calidade</string>
+    <string name="up_to_x_most_balanced_quality_images">Ata %1$s, a maioría de imaxes de calidade equilibrada</string>
+    <string name="no_limit">Sen límite</string>
+    <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string eg. "1 MiB message" -->
+    <string name="n_bytes_message">%1$s mensaxe</string>
+    <!-- %1$s will be replaced by human-readable date and time -->
+    <string name="download_max_available_until">Descarga o máximo dispoñible ata %1$s</string>
     <string name="profile_image_select">Elixe imaxe de perfil</string>
     <string name="select_your_new_profile_image">Elixe a túa nova imaxe de perfil</string>
     <string name="profile_image_delete">Elimina a imaxe de perfil</string>

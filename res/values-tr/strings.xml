@@ -18,6 +18,8 @@
     <string name="automatic">Otomatik</string>
     <string name="strict">Katı</string>
     <string name="open">Aç</string>
+    <string name="download">İndir</string>
+    <string name="downloading">İndiriliyor…</string>
     <string name="open_attachment">İlişiği Aç</string>
     <string name="join">Katıl</string>
     <string name="rejoin">Yeniden katıl</string>
@@ -581,6 +583,16 @@
     <string name="pref_background_custom_image">Özel görsel</string>
     <string name="pref_background_custom_color">Özel renk</string>
     <string name="export_aborted">Dışa aktarmadan vazgeçildi.</string>
+    <string name="auto_download_messages">İletileri Otomatik İndir</string>
+    <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB -->
+    <string name="up_to_x">%1$s kadar</string>
+    <string name="up_to_x_most_worse_quality_images">%1$s kadar, en kötü kaliteli görseller</string>
+    <string name="up_to_x_most_balanced_quality_images">%1$s kadar, en dengeli kaliteli görseller</string>
+    <string name="no_limit">Sınır yok</string>
+    <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string eg. "1 MiB message" -->
+    <string name="n_bytes_message">%1$s ileti</string>
+    <!-- %1$s will be replaced by human-readable date and time -->
+    <string name="download_max_available_until">İndirme en fazla %1$s zamanına kadar kullanılabilir</string>
     <string name="profile_image_select">Profil Görseli Seç</string>
     <string name="select_your_new_profile_image">Yeni profil görselinizi seçin</string>
     <string name="profile_image_delete">Profil Görselini Sil</string>
