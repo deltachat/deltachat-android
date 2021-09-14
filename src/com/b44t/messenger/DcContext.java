@@ -183,6 +183,7 @@ public class DcContext {
     public DcMsg               getMsg               (int msg_id) { return new DcMsg(getMsgCPtr(msg_id)); }
     public native String       getMsgInfo           (int id);
     public native String       getMsgHtml           (int msg_id);
+    public native void         downloadFullMsg      (int msg_id);
     public native int          getFreshMsgCount     (int chat_id);
     public native int          estimateDeletionCount(boolean from_server, long seconds);
     public native void         deleteMsgs           (int msg_ids[]);

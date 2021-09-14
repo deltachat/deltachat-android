@@ -34,6 +34,12 @@
         android:entryValues="@array/pref_compression_values"
         android:defaultValue="0" />
 
+    <ListPreference
+        android:key="auto_download"
+        android:title="@string/auto_download_messages"
+        android:entries="@array/pref_download_limit_entries"
+        android:entryValues="@array/pref_download_limit_values"/>
+
     <PreferenceCategory android:title="@string/delete_old_messages">
         <ListPreference
             android:key="autodel_device"

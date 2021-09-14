@@ -189,6 +189,7 @@
     <string name="menu_mute">通知静音</string>
     <string name="menu_unmute">取消静音</string>
     <string name="menu_export_attachment">导出附件</string>
+    <string name="menu_export_attachments">导出附件</string>
     <string name="menu_all_media">所有媒体</string>
     <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
     <string name="show_in_chat">在聊天中显示</string>

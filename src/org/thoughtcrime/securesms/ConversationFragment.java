@@ -828,6 +828,11 @@ public class ConversationFragment extends MessageSelectorFragment
         startActivity(intent);
         getActivity().overridePendingTransition(R.anim.slide_from_right, R.anim.fade_scale_out);
       }
+
+      @Override
+      public void onDownloadClicked(DcMsg messageRecord) {
+        dcContext.downloadFullMsg(messageRecord.getId());
+      }
     }
 
     @Override

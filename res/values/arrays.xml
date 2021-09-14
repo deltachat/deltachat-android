@@ -321,4 +321,22 @@
         <item>OAuth2</item>
     </string-array>
 
+    <string-array name="pref_download_limit_entries">
+        <item>@string/no_limit</item>
+        <item>40 KiB</item>
+        <item>160 KiB</item>
+        <item>640 KiB</item>
+        <item>5 MiB</item>
+        <item>25 MiB</item>
+    </string-array>
+
+    <string-array name="pref_download_limit_values">
+        <item>0</item>        <!-- No Limit -->
+        <item>40960</item>    <!--  40 KiB, fine for text -->
+        <item>163840</item>   <!-- 160 KiB, fine for most worse-quality image -->
+        <item>655360</item>   <!-- 640 KiB, fine for most balanced-quality images -->
+        <item>5242880</item>  <!--   5 MiB, fine for many files, music and videos -->
+        <item>26214400</item> <!--  25 MiB, fine for most things send by delta -->
+    </string-array>
+
 </resources>

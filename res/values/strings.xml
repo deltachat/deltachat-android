@@ -19,6 +19,8 @@
     <string name="automatic">Automatic</string>
     <string name="strict">Strict</string>
     <string name="open">Open</string>
+    <string name="download">Download</string>
+    <string name="downloading">Downloading…</string>
     <string name="open_attachment">Open Attachment</string>
     <string name="join">Join</string>
     <string name="rejoin">Rejoin</string>
@@ -585,6 +587,16 @@
     <string name="pref_background_custom_image">Custom image</string>
     <string name="pref_background_custom_color">Custom color</string>
     <string name="export_aborted">Export aborted.</string>
+    <string name="auto_download_messages">Auto-Download Messages</string>
+    <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB -->
+    <string name="up_to_x">Up to %1$s</string>
+    <string name="up_to_x_most_worse_quality_images">Up to %1$s, most worse quality images</string>
+    <string name="up_to_x_most_balanced_quality_images">Up to %1$s, most balanced quality images</string>
+    <string name="no_limit">No limit</string>
+    <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string eg. "1 MiB message" -->
+    <string name="n_bytes_message">%1$s message</string>
+    <!-- %1$s will be replaced by human-readable date and time -->
+    <string name="download_max_available_until">Download maximum available until %1$s</string>
     <string name="profile_image_select">Select Profile Image</string>
     <string name="select_your_new_profile_image">Select your new profile image</string>
     <string name="profile_image_delete">Delete Profile Image</string>
