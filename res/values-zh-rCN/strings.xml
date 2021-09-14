@@ -18,6 +18,8 @@
     <string name="automatic">自动</string>
     <string name="strict">严格</string>
     <string name="open">打开</string>
+    <string name="download">下载</string>
+    <string name="downloading">下载中…</string>
     <string name="open_attachment">打开附件</string>
     <string name="join">加入</string>
     <string name="rejoin">重新加入</string>
@@ -569,6 +571,16 @@
     <string name="pref_background_custom_image">自定义图像</string>
     <string name="pref_background_custom_color">自定义颜色</string>
     <string name="export_aborted">导出已中止。</string>
+    <string name="auto_download_messages">自动下载消息</string>
+    <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB -->
+    <string name="up_to_x">最多 %1$s</string>
+    <string name="up_to_x_most_worse_quality_images">最多 %1$s，分辨率最低的图像</string>
+    <string name="up_to_x_most_balanced_quality_images">最多 %1$s，分辨率最均衡图像</string>
+    <string name="no_limit">无限制</string>
+    <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string eg. "1 MiB message" -->
+    <string name="n_bytes_message">%1$s 条消息</string>
+    <!-- %1$s will be replaced by human-readable date and time -->
+    <string name="download_max_available_until">下载最晚于 %1$s 前可用</string>
     <string name="profile_image_select">选择个人资料图片</string>
     <string name="select_your_new_profile_image">选择新的个人资料图片</string>
     <string name="profile_image_delete">删除个人资料图片</string>

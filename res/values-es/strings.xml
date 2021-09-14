@@ -18,6 +18,8 @@
     <string name="automatic">Automático</string>
     <string name="strict">Estricto</string>
     <string name="open">Abrir</string>
+    <string name="download">Descargar</string>
+    <string name="downloading">Descargando…</string>
     <string name="open_attachment">Abrir adjunto</string>
     <string name="join">Unirse</string>
     <string name="rejoin">Volver a unirse</string>
@@ -196,6 +198,7 @@
     <string name="menu_mute">Silenciar notificaciones</string>
     <string name="menu_unmute">Des-silenciar </string>
     <string name="menu_export_attachment">Exportar adjunto</string>
+    <string name="menu_export_attachments">Exportar adjuntos</string>
     <string name="menu_all_media">Toda la multimedia</string>
     <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
     <string name="show_in_chat">Mostrar en el chat</string>
@@ -224,6 +227,7 @@
     <string name="menu_zoom_out">Alejar</string>
     <string name="menu_save_log">Salvar log</string>
     <string name="menu_more_options">Más opciones</string>
+    <string name="menu_learn_spelling">Aprender ortografía</string>
     <string name="menu_chat_audit_log">Registro de auditoría de chat</string>
     <string name="jump_to_message">Saltar al mensaje</string>
     <string name="copy_json">Copiar JSON</string>
@@ -580,6 +584,16 @@
     <string name="pref_background_custom_image">Imagen personalizada</string>
     <string name="pref_background_custom_color">Color personalizado</string>
     <string name="export_aborted">Exportado abortado.</string>
+    <string name="auto_download_messages">Descarga automática de mensajes</string>
+    <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB -->
+    <string name="up_to_x">Hasta %1$s</string>
+    <string name="up_to_x_most_worse_quality_images">Hasta %1$s, la mayoría de imágenes de peor calidad</string>
+    <string name="up_to_x_most_balanced_quality_images">Hasta %1$s, la mayoría de imágenes de calidad balanceada</string>
+    <string name="no_limit">Sin límite</string>
+    <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string eg. "1 MiB message" -->
+    <string name="n_bytes_message">mensaje de %1$s</string>
+    <!-- %1$s will be replaced by human-readable date and time -->
+    <string name="download_max_available_until">Descarga disponible hasta %1$s</string>
     <string name="profile_image_select">Seleccionar imagen de perfil</string>
     <string name="select_your_new_profile_image">Seleccionar tu nueva imagen de perfil</string>
     <string name="profile_image_delete">Borrar imagen de perfil</string>
