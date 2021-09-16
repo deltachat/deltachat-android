@@ -450,6 +450,11 @@
     <string name="login_smtp_port">SMTP Port</string>
     <string name="login_smtp_security">SMTP Security</string>
     <string name="login_auth_method">Authorization Method</string>
+    <string name="login_socks5_use_socks5">Use SOCKS5</string>
+    <string name="login_socks5_socks5_host">SOCKS5 Host</string>
+    <string name="login_socks5_socks5_port">SOCKS5 Port</string>
+    <string name="login_socks5_socks5_user">SOCKS5 User</string>
+    <string name="login_socks5_socks5_user">SOCKS5 Password</string>
     <!-- Translators: %1$s will be replaced by an e-mail address -->
     <string name="login_oauth2_checking_addr">Checking %1$s</string>
     <string name="login_info_oauth2_title">Continue with simplified setup?</string>
@@ -475,7 +480,10 @@
     <string name="delete_account_ask">Are you sure you want to delete your account data?</string>
     <string name="delete_account_explain_with_name">All account data of \"%s\" on this device will be deleted, including your end-to-end encryption setup, contacts, chats, messages and media. This action cannot be undone.</string>
     <string name="switching_account">Switching account…</string>
+    <string name="unconfigured_account">Unconfigured account</string>
+    <string name="unconfigured_account_hint">Open account to configure it.</string>
     <string name="try_connect_now">Try to connect now</string>
+    <string name="sync_all">Sync All</string>
     <!-- Translations: %1$s will be replaced by a more detailed error message -->
     <string name="configuration_failed_with_error">Configuration failed. Error: %1$s</string>
 
