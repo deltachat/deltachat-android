@@ -641,9 +641,9 @@
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_explain">Autocrypt, otomatik uçtan uca e-posta şifrelemesi için yeni ve açık bir belirtimdir.\n\nUçtan uca ayarlamanız, gerektiğinde otomatik olarak oluşturulur ve Autocrypt Ayarlama İletileri ile aygıtlar arasında aktarabilirsiniz.</string>
-    <string name="autocrypt_send_asm_title">Autocrypt Ayarlama İletisi gönder</string>
+    <string name="autocrypt_send_asm_title">Autocrypt Ayarlama İletisi Gönder</string>
     <string name="autocrypt_send_asm_explain_before">Bir Autocrypt Ayarlama İletisi, uçtan uca ayarlamanızı diğer Autocrypt uyumlu uygulamalarla güvenli olarak paylaşır.\n\nAyarlama, burada görüntülenen ve diğer aygıtta yazılması gereken bir ayarlama kodu tarafından şifrelenecek.</string>
-    <string name="autocrypt_send_asm_button">Autocrypt Ayarlama İletisi gönder</string>
+    <string name="autocrypt_send_asm_button">Autocrypt Ayarlama İletisi Gönder</string>
     <string name="autocrypt_send_asm_explain_after">Ayarlamanız kendinize gönderildi. Diğer aygıta geçin ve ayarlama iletisini açın. Size bir ayarlama kodu sorulmalı. Aşağıdaki sayıları girin:\n\n%1$s</string>
     <string name="autocrypt_prefer_e2ee">Uçtan Uca Şifrelemeyi Yeğle</string>
     <string name="autocrypt_asm_subject">Autocrypt Ayarlama İletisi</string>
