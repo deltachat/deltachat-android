@@ -714,7 +714,7 @@
     <string name="systemmsg_chat_protection_disabled">Chat protection disabled.</string>
     <string name="systemmsg_chat_protection_enabled">Chat protection enabled.</string>
 
-    <string name="devicemsg_self_deleted">You deleted the \"Saved messages\" chat.\n\n\ℹ️ To use the \"Saved messages\" feature again, create a new chat with yourself.</string>
+    <string name="devicemsg_self_deleted">You deleted the \"Saved messages\" chat.\n\nℹ️ To use the \"Saved messages\" feature again, create a new chat with yourself.</string>
     <!-- %1$s will be replaced by the number of storage already used, sth. as '500 MB'. CAVE: if you want to use a simple the percent sign, type in two, so eg. %1$s %% -->
     <string name="devicemsg_storage_exceeding">⚠️ Your provider\'s storage is about to exceed, already %1$s%% are used.\n\nYou may not be able to receive message when the storage is 100%% used.\n\n👉 Please check if you can delete old data in the provider\'s webinterface and consider to enable \"Settings / Delete Old Messages\". You can check your current storage usage anytime at \"Settings / Connectivity\".</string>
     <!-- %1%s will be replaced by date and time in some human-readable format -->
