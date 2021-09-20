@@ -450,6 +450,13 @@
     <string name="login_smtp_port">SMTP Bağlantı Noktası</string>
     <string name="login_smtp_security">SMTP Güvenliği</string>
     <string name="login_auth_method">Yetkilendirme Yöntemi</string>
+    <!-- the word "SOCKS5" here and in the following strings should not be translated in most cases -->
+    <string name="login_socks5">SOCKS5</string>
+    <string name="login_socks5_use_socks5">SOCKS5\'i Kullan</string>
+    <string name="login_socks5_host">SOCKS5 Ana Bilgisayarı</string>
+    <string name="login_socks5_port">SOCKS5 Bağlantı Noktası</string>
+    <string name="login_socks5_user">SOCKS5 Kullanıcısı</string>
+    <string name="login_socks5_password">SOCKS5 Parolası</string>
     <!-- Translators: %1$s will be replaced by an e-mail address -->
     <string name="login_oauth2_checking_addr">%1$s denetleniyor</string>
     <string name="login_info_oauth2_title">Basitleştirilen ayarlamayla sürdürülsün mü?</string>
@@ -475,7 +482,10 @@
     <string name="delete_account_ask">Hesap verilerinizi silmek istediğinizden emin misiniz?</string>
     <string name="delete_account_explain_with_name">Uçtan uca şifreleme ayarlamanızı, kişilerinizi, sohbetlerinizi, iletilerinizi ve ortamlarınızı kapsayarak \"%s\" hesabının bu aygıttaki verilerinin tümü silinecek. Bu eylem geri alınamaz.</string>
     <string name="switching_account">Hesap değiştiriliyor…</string>
+    <string name="unconfigured_account">Yapılandırılmayan hesap</string>
+    <string name="unconfigured_account_hint">Yapılandırmak için hesabı açın.</string>
     <string name="try_connect_now">Şimdi bağlanmayı dene</string>
+    <string name="sync_all">Tümünü Eşzamanla</string>
     <!-- Translations: %1$s will be replaced by a more detailed error message -->
     <string name="configuration_failed_with_error">Yapılandırma başarısız. Hata: %1$s</string>
 
