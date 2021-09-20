@@ -376,6 +376,7 @@
     <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
     <string name="puny_code_warning_description">你将被转到一个链接，该链接可能通过使用来自不同字母表的相似字符来错误地表示字符。打开标记为 %1$s 的链接将把你带到以 ascii 码编码的 %2$s。如果这样的字符出乎你的意料，那么这个链接可能是有害的</string>
 
+
     <!-- search -->
     <string name="search">搜索</string>
     <string name="search_explain">搜索聊天、联系人和消息</string>
@@ -407,7 +408,6 @@
     <string name="send_message">发送消息</string>
 
 
-    <!-- Connectivity -->
     <string name="connectivity">连接性</string>
     <!-- Shown eg. in the title bar if the app is "Not connected"; as there is very few room, try to be as short as possible. -->
     <string name="connectivity_not_connected">未连接</string>
@@ -417,8 +417,6 @@
     <string name="connectivity_updating">更新中…</string>
     <!-- Shown eg. in the setting if the app is "Connected" -->
     <string name="connectivity_connected">已连接</string>
-
-
     <!-- welcome and login -->
     <string name="welcome_intro1_message">本通讯软件有着世界上最广泛的受众。自由且自主。</string>
     <string name="login_title">登录</string>

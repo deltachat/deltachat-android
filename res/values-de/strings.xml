@@ -388,6 +388,7 @@
     <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
     <string name="puny_code_warning_description">Sie sind einem Link gefolgt, der durch die Verwendung ähnlich aussehender Zeichen aus verschiedenen Alphabeten zu einer falschen Darstellung führen könnte. Wenn Sie dem Link mit der Bezeichnung %1$s folgen, gelangen Sie zu %2$s, was für nicht-lateinische Zeichen normal ist. Wenn Sie solche Zeichen nicht erwartet haben, könnte dieser Link schädlich sein.</string>
 
+
     <!-- search -->
     <string name="search">Suchen</string>
     <string name="search_explain">Suche nach Chats, Kontakten und Nachrichten</string>
@@ -419,7 +420,6 @@
     <string name="send_message">Nachricht senden</string>
 
 
-    <!-- Connectivity -->
     <string name="connectivity">Verbindungsstatus</string>
     <!-- Shown eg. in the title bar if the app is "Not connected"; as there is very few room, try to be as short as possible. -->
     <string name="connectivity_not_connected">Nicht verbunden</string>
@@ -429,8 +429,6 @@
     <string name="connectivity_updating">Aktualisiere…</string>
     <!-- Shown eg. in the setting if the app is "Connected" -->
     <string name="connectivity_connected">Verbunden</string>
-
-
     <!-- welcome and login -->
     <string name="welcome_intro1_message">Der Messenger mit der größten Reichweite der Welt. Frei und unabhängig.</string>
     <string name="login_title">Login</string>

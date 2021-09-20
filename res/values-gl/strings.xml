@@ -388,6 +388,7 @@
     <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
     <string name="puny_code_warning_description">Seguiches unha ligazón que podería intentar confundirte utilizando caracteres que semellan parecidos en diferentes alfabetos. Premendo na ligazón %1$s vaite levar a %2$s que é nonrmal para carateres non-Latinos. Se non esperabas estos caracteres a ligazón podería ser maliciosa</string>
 
+
     <!-- search -->
     <string name="search">Buscar</string>
     <string name="search_explain">Buscar conversas, contactos e mensaxes</string>
@@ -419,7 +420,6 @@
     <string name="send_message">Enviar mensaxe</string>
 
 
-    <!-- Connectivity -->
     <string name="connectivity">Conectividade</string>
     <!-- Shown eg. in the title bar if the app is "Not connected"; as there is very few room, try to be as short as possible. -->
     <string name="connectivity_not_connected">Non conectado</string>
@@ -429,8 +429,6 @@
     <string name="connectivity_updating">Actualizando…</string>
     <!-- Shown eg. in the setting if the app is "Connected" -->
     <string name="connectivity_connected">Conectado</string>
-
-
     <!-- welcome and login -->
     <string name="welcome_intro1_message">O sistema de conversa con maior audiencia no mundo. Libre e independente.</string>
     <string name="login_title">Conectar</string>

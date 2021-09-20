@@ -386,6 +386,7 @@
     <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
     <string name="puny_code_warning_description">Ndoqët një lidhje e cila mund të jetë duke shfaqur keq shenja, duke përdorur të ngjashme prej alfabetesh të tjerë. Ndjekja e lidhjes së  quajtur %1$s do të shpjerë te %2$s, çka është normale për shenja alfabetesh jo latinë. Nëse s’prisnit shenja të tilla, kjo lidhje mund të jetë e dëmshme</string>
 
+
     <!-- search -->
     <string name="search">Kërko</string>
     <string name="search_explain">Kërkoni për fjalosje, kontakte dhe mesazhe.</string>
@@ -417,7 +418,6 @@
     <string name="send_message">Dërgo mesazh</string>
 
 
-    <!-- Connectivity -->
     <string name="connectivity">Aftësi lidhjeje</string>
     <!-- Shown eg. in the title bar if the app is "Not connected"; as there is very few room, try to be as short as possible. -->
     <string name="connectivity_not_connected">I palidhur</string>
@@ -427,8 +427,6 @@
     <string name="connectivity_updating">Po përditësohet…</string>
     <!-- Shown eg. in the setting if the app is "Connected" -->
     <string name="connectivity_connected">I lidhur</string>
-
-
     <!-- welcome and login -->
     <string name="welcome_intro1_message">Shkëmbyesi i mesazheve me publikun më të gjerë në botë. I lirë dhe i pavarur.</string>
     <string name="login_title">Hyrje</string>

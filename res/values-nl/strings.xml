@@ -388,6 +388,7 @@
     <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
     <string name="puny_code_warning_description">Je hebt op een link gedrukt welke niet-overeenkomende tekens bevat uit andere talen. Door %1$s te openen kom je op %2$s terecht, welke niet-Latijnse tekens bevat. Als je deze tekens niet verwachtte, dan is de site mogelijk niet te vertrouwen.</string>
 
+
     <!-- search -->
     <string name="search">Zoeken</string>
     <string name="search_explain">Zoek naar gesprekken, contactpersonen en berichten</string>
@@ -419,7 +420,6 @@
     <string name="send_message">Bericht versturen</string>
 
 
-    <!-- Connectivity -->
     <string name="connectivity">Verbindingen</string>
     <!-- Shown eg. in the title bar if the app is "Not connected"; as there is very few room, try to be as short as possible. -->
     <string name="connectivity_not_connected">Niet verbonden</string>
@@ -429,8 +429,6 @@
     <string name="connectivity_updating">Bezig met bijwerken…</string>
     <!-- Shown eg. in the setting if the app is "Connected" -->
     <string name="connectivity_connected">Verbonden</string>
-
-
     <!-- welcome and login -->
     <string name="welcome_intro1_message">Dé berichtenapp met het breedste publiek ter wereld. Gratis en onafhankelijk.</string>
     <string name="login_title">Inloggen</string>

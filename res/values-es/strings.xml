@@ -181,7 +181,7 @@
     <string name="ask_delete_named_chat">¿Estás seguro de que deseas eliminar \"%1$s\"?</string>
     <string name="menu_delete_messages">Eliminar mensajes</string>
     <string name="menu_delete_image">Eliminar imagen</string>
-    <string name="delete_contact">Borrar contacto</string>
+    <string name="delete_contact">Eliminar contacto</string>
     <string name="menu_delete_locations">¿Eliminar todas las ubicaciones?</string>
     <string name="menu_delete_location">¿Eliminar esta ubicación?</string>
     <string name="menu_message_details">Detalles del mensaje</string>
@@ -254,12 +254,12 @@
     <string name="mute_for_seven_days">Silenciar por 7 días</string>
     <string name="mute_forever">Silenciar por siempre</string>
 
-    <string name="share_location_once">una vez</string>
-    <string name="share_location_for_5_minutes">por 5 minutos </string>
-    <string name="share_location_for_30_minutes">por 30 minutos</string>
-    <string name="share_location_for_one_hour">por 1 hora</string>
-    <string name="share_location_for_two_hours">por 2 horas</string>
-    <string name="share_location_for_six_hours">por 6 horas</string>
+    <string name="share_location_once">Una vez</string>
+    <string name="share_location_for_5_minutes">Por 5 minutos </string>
+    <string name="share_location_for_30_minutes">Por 30 minutos</string>
+    <string name="share_location_for_one_hour">Por 1 hora</string>
+    <string name="share_location_for_two_hours">Por 2 horas</string>
+    <string name="share_location_for_six_hours">Por 6 horas</string>
 
     <plurals name="ask_send_following_n_files_to">
         <item quantity="one">¿Enviar el  archivo a %s?</item>
@@ -353,7 +353,7 @@
     <string name="chat_contact_request">Solicitud de contacto</string>
     <string name="chat_no_contact_requests">No hay solicitudes de contacto.\n\nSi desea que los correos electrónicos clásicos aparezcan aquí como solicitudes de contacto, puede cambiar la configuración correspondiente en la configuración de la aplicación.</string>
     <string name="retry_send">Reintentar enviar mensaje</string>
-    <string name="send_failed">Falló enviar el mensaje</string>
+    <string name="send_failed">No se pudo enviar el mensaje</string>
     <!-- reasons for a disabled message composer -->
     <string name="messaging_disabled_not_in_group">No puedes escribir porque no estás en este grupo. Para unirte, pregúntale a otro miembro.</string>
     <string name="messaging_disabled_device_chat">Este chat contiene mensajes generados localmente. Por eso no puedes escribir ningún mensaje.</string>
@@ -388,6 +388,7 @@
     <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
     <string name="puny_code_warning_description">Siguió un enlace que podría estar tergiversando caracteres al usar caracteres de diferentes alfabetos con un aspecto similar. Seguir el enlace etiquetado %1$s conducirá a %2$s, que es normal para caracteres no latinos. Si no esperaba tales caracteres, este enlace podría ser dañino</string>
 
+
     <!-- search -->
     <string name="search">Buscar</string>
     <string name="search_explain">Buscar chats, contactos, y mensajes</string>
@@ -419,7 +420,6 @@
     <string name="send_message">Enviar mensaje</string>
 
 
-    <!-- Connectivity -->
     <string name="connectivity">Conectividad</string>
     <!-- Shown eg. in the title bar if the app is "Not connected"; as there is very few room, try to be as short as possible. -->
     <string name="connectivity_not_connected">Desconectado</string>
@@ -429,8 +429,6 @@
     <string name="connectivity_updating">Actualizando…</string>
     <!-- Shown eg. in the setting if the app is "Connected" -->
     <string name="connectivity_connected">Conectado</string>
-
-
     <!-- welcome and login -->
     <string name="welcome_intro1_message">La aplicación de mensajería instantánea con la audiencia más amplia del mundo. Libre e independiente. </string>
     <string name="login_title">Iniciar sesión</string>
@@ -450,6 +448,13 @@
     <string name="login_smtp_port">Puerto SMTP</string>
     <string name="login_smtp_security">Seguridad SMTP</string>
     <string name="login_auth_method">Método de autorización</string>
+    <!-- the word "SOCKS5" here and in the following strings should not be translated in most cases -->
+    <string name="login_socks5">SOCKS5</string>
+    <string name="login_socks5_use_socks5">Usar SOCKS5</string>
+    <string name="login_socks5_host">Servidor SOCKS5</string>
+    <string name="login_socks5_port">Puerto SOCKS5</string>
+    <string name="login_socks5_user">Usuario SOCKS5</string>
+    <string name="login_socks5_password">Contraseña SOCKS5</string>
     <!-- Translators: %1$s will be replaced by an e-mail address -->
     <string name="login_oauth2_checking_addr">Chequeando %1$s</string>
     <string name="login_info_oauth2_title">¿Continuar con la configuración simplificada?</string>
@@ -475,7 +480,10 @@
     <string name="delete_account_ask">¿Estás seguro de que quieres eliminar los datos de tu cuenta?</string>
     <string name="delete_account_explain_with_name">Todos los datos de la cuenta de \"%s\" este dispositivo serán eliminados. Incluyendo la configuración de encriptado punto a punto, contactos, chats, mensajes y multimedia. Esta acción no puede ser deshecha.</string>
     <string name="switching_account">Cambiando cuenta...</string>
+    <string name="unconfigured_account">Cuenta no configurada</string>
+    <string name="unconfigured_account_hint">Abrir cuenta para configurarla.</string>
     <string name="try_connect_now">Intentar conectar ahora</string>
+    <string name="sync_all">Sincronizar todo</string>
     <!-- Translations: %1$s will be replaced by a more detailed error message -->
     <string name="configuration_failed_with_error">La configuración falló. Error: %1$s</string>
 
