@@ -438,6 +438,13 @@
     <string name="login_smtp_port">SMTP 端口</string>
     <string name="login_smtp_security">SMTP 安全类型</string>
     <string name="login_auth_method">认证方法</string>
+    <!-- the word "SOCKS5" here and in the following strings should not be translated in most cases -->
+    <string name="login_socks5">SOCKS5</string>
+    <string name="login_socks5_use_socks5">使用 SOCKS5 代理</string>
+    <string name="login_socks5_host">SOCKS5 主机</string>
+    <string name="login_socks5_port">SOCKS5 端口</string>
+    <string name="login_socks5_user">SOCKS5 用户名</string>
+    <string name="login_socks5_password">SOCKS5 密码</string>
     <!-- Translators: %1$s will be replaced by an e-mail address -->
     <string name="login_oauth2_checking_addr">检查 %1$s 中</string>
     <string name="login_info_oauth2_title">使用简化设置继续？</string>
@@ -463,7 +470,10 @@
     <string name="delete_account_ask">您确定要删除您的账户数据吗？</string>
     <string name="delete_account_explain_with_name">此设备上“%s”的所有帐户数据都将被删除，包括您的端到端加密设置、联系人、聊天、消息及媒体。 此操作无法撤消。</string>
     <string name="switching_account">切换账户 …</string>
+    <string name="unconfigured_account">未配置的账户</string>
+    <string name="unconfigured_account_hint">打开账户配置它</string>
     <string name="try_connect_now">立即尝试连接</string>
+    <string name="sync_all">同步所有</string>
     <!-- Translations: %1$s will be replaced by a more detailed error message -->
     <string name="configuration_failed_with_error">配置失败。错误：%1$s</string>
 

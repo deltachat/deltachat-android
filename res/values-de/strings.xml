@@ -450,6 +450,13 @@
     <string name="login_smtp_port">SMTP-Port</string>
     <string name="login_smtp_security">SMTP-Sicherheit</string>
     <string name="login_auth_method">Autorisierungsmethode</string>
+    <!-- the word "SOCKS5" here and in the following strings should not be translated in most cases -->
+    <string name="login_socks5">SOCKS5</string>
+    <string name="login_socks5_use_socks5">SOCKS5 verwenden</string>
+    <string name="login_socks5_host">SOCKS5-Host</string>
+    <string name="login_socks5_port">SOCKS5-Port</string>
+    <string name="login_socks5_user">SOCKS5-Anmeldename</string>
+    <string name="login_socks5_password">SOCKS5-Passwort</string>
     <!-- Translators: %1$s will be replaced by an e-mail address -->
     <string name="login_oauth2_checking_addr">Teste %1$s</string>
     <string name="login_info_oauth2_title">Weiter mit vereinfachter Einrichtung?</string>
@@ -477,7 +484,10 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="delete_account_ask">Möchten Sie das E-Mail-Konto und alle Daten wirklich von diesem Gerät löschen?</string>
     <string name="delete_account_explain_with_name">Alle Daten des E-Mail-Kontos \"%s\" werden von diesem Gerät gelöscht, dies schließt Ihre Ende-zu-Ende Autocrypt-Einstellungen, Kontakte, Chats, Nachrichten und Medien mit ein. Diese Aktion kann nicht rückgängig gemacht werden.</string>
     <string name="switching_account">E-Mail-Konto wechseln…</string>
+    <string name="unconfigured_account">Unkonfiguriertes E-Mail-Konto</string>
+    <string name="unconfigured_account_hint">E-Mail-Konto zum Konfigurieren öffnen.</string>
     <string name="try_connect_now">Versuche, zu verbinden</string>
+    <string name="sync_all">Alles synchronisieren</string>
     <!-- Translations: %1$s will be replaced by a more detailed error message -->
     <string name="configuration_failed_with_error">Konfiguration fehlgeschlagen. Fehler: %1$s</string>
 
@@ -585,7 +595,7 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="pref_background_custom_image">Benutzerdefiniertes Hintergrundbild</string>
     <string name="pref_background_custom_color">Benutzerdefinierte Farbe</string>
     <string name="export_aborted">Export abgebrochen.</string>
-    <string name="auto_download_messages">Nachrichten automatisch herunterladen</string>
+    <string name="auto_download_messages">Nachrichten autom. herunterladen</string>
     <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB -->
     <string name="up_to_x">Bis zu %1$s</string>
     <string name="up_to_x_most_worse_quality_images">Bis zu %1$s, die meisten Bilder schlechter Qualität</string>

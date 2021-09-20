@@ -450,6 +450,13 @@
     <string name="login_smtp_port">SMTP-poort</string>
     <string name="login_smtp_security">SMTP-beveiliging</string>
     <string name="login_auth_method">Autorisatiemethode</string>
+    <!-- the word "SOCKS5" here and in the following strings should not be translated in most cases -->
+    <string name="login_socks5">SOCKS5</string>
+    <string name="login_socks5_use_socks5">SOCKS5 gebruiken</string>
+    <string name="login_socks5_host">SOCKS5-host</string>
+    <string name="login_socks5_port">SOCKS5-poort</string>
+    <string name="login_socks5_user">SOCKS5-gebruiker</string>
+    <string name="login_socks5_password">SOCKS5-wachtwoord</string>
     <!-- Translators: %1$s will be replaced by an e-mail address -->
     <string name="login_oauth2_checking_addr">Bezig met controleren van %1$s</string>
     <string name="login_info_oauth2_title">Wil je doorgaan met vereenvoudigd instellen?</string>
@@ -475,7 +482,10 @@
     <string name="delete_account_ask">Weet je zeker dat je je accountgegevens wilt verwijderen?</string>
     <string name="delete_account_explain_with_name">Alle gegevens van ‘%s’ worden verwijderd: de eind-tot-eindinstellingen, contactpersonen, gesprekken, berichten en media. Deze actie kan niet ongedaan worden gemaakt.</string>
     <string name="switching_account">Bezig met overschakelen…</string>
+    <string name="unconfigured_account">Niet-ingesteld account</string>
+    <string name="unconfigured_account_hint">Open een account om het in te stellen.</string>
     <string name="try_connect_now">Probeer te verbinden</string>
+    <string name="sync_all">Alles synchroniseren</string>
     <!-- Translations: %1$s will be replaced by a more detailed error message -->
     <string name="configuration_failed_with_error">Het instellen is mislukt. Foutmelding: %1$s</string>
 
