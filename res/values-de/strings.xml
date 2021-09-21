@@ -116,6 +116,8 @@
     <!-- Translators: Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
     <string name="reply_noun">Antwort</string>
     <string name="gif">Gif</string>
+    <!-- "Stickers" as known from other messengers, please pick up the wording from there; in some languages, "Sticker" in english is just fine. -->
+    <string name="sticker">Sticker</string>
     <string name="images">Bilder</string>
     <string name="audio">Audio</string>
     <string name="voice_message">Sprachnachricht</string>
@@ -420,6 +422,13 @@
     <string name="send_message">Nachricht senden</string>
 
 
+    <!-- Connectivity -->
+    <!-- Used as a headline for the "Inbox" eg. in the "Connectivity" view -->
+    <string name="incoming_messages">Eingehende Nachrichten</string>
+    <!-- Used as a headline for the "Outbox" eg. in the "Connectivity" view -->
+    <string name="outgoing_messages">Ausgehende Nachrichten</string>
+    <!-- Used as a headline in the "Connectivity" view. The placeholder will be replaced by the domain of the configured email-address. -->
+    <string name="storage_on_domain">Speicher auf %1$s</string>
     <string name="connectivity">Verbindungsstatus</string>
     <!-- Shown eg. in the title bar if the app is "Not connected"; as there is very few room, try to be as short as possible. -->
     <string name="connectivity_not_connected">Nicht verbunden</string>
@@ -429,6 +438,13 @@
     <string name="connectivity_updating">Aktualisiere…</string>
     <!-- Shown eg. in the setting if the app is "Connected" -->
     <string name="connectivity_connected">Verbunden</string>
+    <string name="sending">Sende…</string>
+    <string name="last_msg_sent_successfully">Letzte Nachricht erfolgreich versandt.</string>
+    <string name="not_supported_by_provider">Nicht unterstützt von Ihrem E-Mail-Anbieter.</string>
+    <!-- Used as a subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed or so. -->
+    <string name="messages">Nachrichten</string>
+
+
     <!-- welcome and login -->
     <string name="welcome_intro1_message">Der Messenger mit der größten Reichweite der Welt. Frei und unabhängig.</string>
     <string name="login_title">Login</string>
@@ -699,6 +715,13 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
     <string name="systemmsg_chat_protection_disabled">Chat-Absicherung ausgeschaltet.</string>
     <string name="systemmsg_chat_protection_enabled">Chat-Absicherung eingeschaltet.</string>
+
+    <string name="devicemsg_self_deleted">Sie haben den Chat \"Gespeicherte Nachrichten\" gelöscht.\n\nℹ️ Um das Feature \"Gespeicherte Nachrichten\" erneut zu verwenden, erstellen Sie einfach einen Chat mit sich selbst.</string>
+    <!-- %1$s will be replaced by the number of storage already used, sth. as '500 MB'. CAVE: if you want to use a simple the percent sign, type in two, so eg. %1$s %% -->
+    <string name="devicemsg_storage_exceeding">⚠️ Der Speicherplatz Ihres E-Mail-Anbieters ist bald erschöpft; bereits %1$s%% sind verbraucht.\n\nSie können möglicherweise keine Nachrichten mehr empfangen, wenn der Speicherplatz zu 100%% verbraucht ist.\n\n👉 Bitte prüfen Sie, ob Sie alte Daten im Webinterface des  E-Mail-Anbieters löschen können und erwägen Sie \"Einstellungen / Alte Nachrichten löschen\" zu aktivieren. Den aktuellen Speicherverbrauch können Sie jederzeit unter \"Einstellungen / Verbindung\" überprüfen.</string>
+    <!-- %1%s will be replaced by date and time in some human-readable format -->
+    <string name="devicemsg_bad_time">⚠️ Ihr Gerät schein ein falsches Datum oder eine falsche Uhrzeit (%1$s) zu verwenden.\n\nStellen Sie Ihre Uhr richtig ein, ⏰🔧 damit Ihre Nachrichten korrekt empfangen verweden können.</string>
+    <string name="devicemsg_update_reminder">⚠️ Ihre Delta-Chat-Version ist möglicherweise veraltet.\n\nDies kann zu Problemen führen, wenn Ihre Chat-PartnerInnen neuere Versionen verwenden - und Ihnen die neuesten Funktionen fehlen 😳\nBitte überprüfen Sie https://get.delta.chat oder Ihren App-Store auf Updates.</string>
 
     <!-- Some options as "Manage keys" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc. to be entered in a system dialog. This hint is added to the system dialog, below a title as "Manage keys" or "Backup". -->
     <string name="enter_system_secret_to_continue">Bitte geben Sie den System-Entsperrcode ein, um fortzufahren.</string>

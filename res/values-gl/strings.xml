@@ -116,6 +116,8 @@
     <!-- Translators: Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
     <string name="reply_noun">Resposta</string>
     <string name="gif">Gif</string>
+    <!-- "Stickers" as known from other messengers, please pick up the wording from there; in some languages, "Sticker" in english is just fine. -->
+    <string name="sticker">Adhesivo</string>
     <string name="images">Imaxes</string>
     <string name="audio">Audio</string>
     <string name="voice_message">Mensaxe de voz</string>
@@ -420,6 +422,13 @@
     <string name="send_message">Enviar mensaxe</string>
 
 
+    <!-- Connectivity -->
+    <!-- Used as a headline for the "Inbox" eg. in the "Connectivity" view -->
+    <string name="incoming_messages">Mensaxes entrantes</string>
+    <!-- Used as a headline for the "Outbox" eg. in the "Connectivity" view -->
+    <string name="outgoing_messages">Mensaxes saíntes</string>
+    <!-- Used as a headline in the "Connectivity" view. The placeholder will be replaced by the domain of the configured email-address. -->
+    <string name="storage_on_domain">Almacenar en %1$s</string>
     <string name="connectivity">Conectividade</string>
     <!-- Shown eg. in the title bar if the app is "Not connected"; as there is very few room, try to be as short as possible. -->
     <string name="connectivity_not_connected">Non conectado</string>
@@ -429,6 +438,13 @@
     <string name="connectivity_updating">Actualizando…</string>
     <!-- Shown eg. in the setting if the app is "Connected" -->
     <string name="connectivity_connected">Conectado</string>
+    <string name="sending">Enviando...</string>
+    <string name="last_msg_sent_successfully">Enviouse correctamente a última mensaxe.</string>
+    <string name="not_supported_by_provider">O teu provedor non ten soporte</string>
+    <!-- Used as a subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed or so. -->
+    <string name="messages">Mensaxes</string>
+
+
     <!-- welcome and login -->
     <string name="welcome_intro1_message">O sistema de conversa con maior audiencia no mundo. Libre e independente.</string>
     <string name="login_title">Conectar</string>
@@ -448,6 +464,13 @@
     <string name="login_smtp_port">Porto SMTP</string>
     <string name="login_smtp_security">Seguridade SMTP</string>
     <string name="login_auth_method">Método de autorización</string>
+    <!-- the word "SOCKS5" here and in the following strings should not be translated in most cases -->
+    <string name="login_socks5">SOCKS5</string>
+    <string name="login_socks5_use_socks5">Usar SOCKS5</string>
+    <string name="login_socks5_host">Servidor SOCKS5</string>
+    <string name="login_socks5_port">Porto SOCKS5</string>
+    <string name="login_socks5_user">Usuaria SOCKS5</string>
+    <string name="login_socks5_password">Contrasinal SOCKS5</string>
     <!-- Translators: %1$s will be replaced by an e-mail address -->
     <string name="login_oauth2_checking_addr">Comprobando %1$s</string>
     <string name="login_info_oauth2_title">Continuar co axuste simplificado?</string>
@@ -473,7 +496,10 @@
     <string name="delete_account_ask">Estás seguro de que queres eliminar os datos da túa conta?</string>
     <string name="delete_account_explain_with_name">Todos os datos da conta \"%s\" neste dispositivo vanse eliminar, incluíndo os axustes de cifrado extremo-a-extremo, contactos, conversas, mensaxes e multimedia. Esta acción non ten volta.</string>
     <string name="switching_account">Cambiando de conta…</string>
+    <string name="unconfigured_account">Conta non configurada</string>
+    <string name="unconfigured_account_hint">Abrir conta para configurala.</string>
     <string name="try_connect_now">Intenta conectar agora</string>
+    <string name="sync_all">Sinrc Todo</string>
     <!-- Translations: %1$s will be replaced by a more detailed error message -->
     <string name="configuration_failed_with_error">Fallou a configuración. Erro: %1$s</string>
 
@@ -687,6 +713,13 @@
     <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
     <string name="systemmsg_chat_protection_disabled">Protección do chat desactivada.</string>
     <string name="systemmsg_chat_protection_enabled">Protección do chat activada.</string>
+
+    <string name="devicemsg_self_deleted">Eliminaches o chat \"Mensaxes gardadas\".\n\nℹ️ Para usar \"Mensaxes gardadas\" de novo, crea un novo chat contigo mesmo.</string>
+    <!-- %1$s will be replaced by the number of storage already used, sth. as '500 MB'. CAVE: if you want to use a simple the percent sign, type in two, so eg. %1$s %% -->
+    <string name="devicemsg_storage_exceeding">⚠️ A almacenaxe do teu provedor vaise esgotar, xa utilizaches %1$s %%.\n\nPode que non recibas mensaxes cando a almacenaxe chegue a 100%% utilizado.\n\n👉 Mira se podes eliminar datos antigos na interface web do teu provedor e pensa se debes activar \"Axustes / Eliminar Mensaxes Antigas\". Podes ver a almacenaxe actual utilizada en \"Axustes / Conectividade\".</string>
+    <!-- %1%s will be replaced by date and time in some human-readable format -->
+    <string name="devicemsg_bad_time">⚠️ A hora ou data no teu dispositivo poderían ser incorrectas (%1$s).\n\nAxusta o reloxio ⏰🔧 para asegurar que as túas mensaxes son recibidas correctamente.</string>
+    <string name="devicemsg_update_reminder">⚠️ A túa versión de Delta Chat podería estar desactualizada.\n\nEsto podería causar problemas porque os teus correspondentes utilizan versións máis novas - e ademáis non tes as últimas características 😳\nVai a https://get.delta.chat ou tenda de aplicacións para máis detalles.</string>
 
     <!-- Some options as "Manage keys" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc. to be entered in a system dialog. This hint is added to the system dialog, below a title as "Manage keys" or "Backup". -->
     <string name="enter_system_secret_to_continue">Escribe o código establecido no sistema para continuar.</string>

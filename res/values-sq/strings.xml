@@ -116,6 +116,8 @@
     <!-- Translators: Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
     <string name="reply_noun">Përgjigje</string>
     <string name="gif">Gif</string>
+    <!-- "Stickers" as known from other messengers, please pick up the wording from there; in some languages, "Sticker" in english is just fine. -->
+    <string name="sticker">Ngjitës</string>
     <string name="images">Figura</string>
     <string name="audio">Audio</string>
     <string name="voice_message">Mesazh zanor</string>
@@ -418,6 +420,13 @@
     <string name="send_message">Dërgo mesazh</string>
 
 
+    <!-- Connectivity -->
+    <!-- Used as a headline for the "Inbox" eg. in the "Connectivity" view -->
+    <string name="incoming_messages">Mesazhe të Marrë</string>
+    <!-- Used as a headline for the "Outbox" eg. in the "Connectivity" view -->
+    <string name="outgoing_messages">Mesazhe të Dërguar</string>
+    <!-- Used as a headline in the "Connectivity" view. The placeholder will be replaced by the domain of the configured email-address. -->
+    <string name="storage_on_domain">Depozitim në %1$s</string>
     <string name="connectivity">Aftësi lidhjeje</string>
     <!-- Shown eg. in the title bar if the app is "Not connected"; as there is very few room, try to be as short as possible. -->
     <string name="connectivity_not_connected">I palidhur</string>
@@ -427,6 +436,13 @@
     <string name="connectivity_updating">Po përditësohet…</string>
     <!-- Shown eg. in the setting if the app is "Connected" -->
     <string name="connectivity_connected">I lidhur</string>
+    <string name="sending">Po dërgohet…</string>
+    <string name="last_msg_sent_successfully">Mesazhi i fundit i dërguar me sukses.</string>
+    <string name="not_supported_by_provider">I pambuluar nga furnizuesi juaj i shërbimit</string>
+    <!-- Used as a subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed or so. -->
+    <string name="messages">Mesazhe</string>
+
+
     <!-- welcome and login -->
     <string name="welcome_intro1_message">Shkëmbyesi i mesazheve me publikun më të gjerë në botë. I lirë dhe i pavarur.</string>
     <string name="login_title">Hyrje</string>
@@ -446,6 +462,13 @@
     <string name="login_smtp_port">Portë SMTP</string>
     <string name="login_smtp_security">Siguri SMTP</string>
     <string name="login_auth_method">Metodë autorizimi</string>
+    <!-- the word "SOCKS5" here and in the following strings should not be translated in most cases -->
+    <string name="login_socks5">SOCKS5</string>
+    <string name="login_socks5_use_socks5">Përdor SOCKS5</string>
+    <string name="login_socks5_host">Strehë SOCKS5</string>
+    <string name="login_socks5_port">Portë SOCKS5</string>
+    <string name="login_socks5_user">Përdorues SOCKS5</string>
+    <string name="login_socks5_password">Fjalëkalim SOCKS5</string>
     <!-- Translators: %1$s will be replaced by an e-mail address -->
     <string name="login_oauth2_checking_addr">Po kontrollohet %1$s</string>
     <string name="login_info_oauth2_title">Të vazhdohet me rregullimin e thjeshtuar?</string>
@@ -471,7 +494,10 @@
     <string name="delete_account_ask">Jeni i sigurt se doni të fshihen të dhënat e llogarisë tuaj?</string>
     <string name="delete_account_explain_with_name">Krejt të dhënat e llogarisë për \"%s\" në këtë pajisje do të fshihen, përfshi ato të ujdisjes tuaj për fshehtëzim skaj-më-skaj, kontakte, fjalosje, mesazhe dhe media. Ky veprim s’mund të zhbëhet.</string>
     <string name="switching_account">Po ndërrohet llogari…</string>
+    <string name="unconfigured_account">Llogari e paformësuar</string>
+    <string name="unconfigured_account_hint">Që ta formësoni, hapeni llogarinë.</string>
     <string name="try_connect_now">Provo të lidhesh tani</string>
+    <string name="sync_all">Njëkohësoji Krejt</string>
     <!-- Translations: %1$s will be replaced by a more detailed error message -->
     <string name="configuration_failed_with_error">Formësimi dështoi. Gabim: %1$s</string>
 
@@ -684,6 +710,13 @@
     <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
     <string name="systemmsg_chat_protection_disabled">Mbrojtja e fjalosjes u çaktivizua.</string>
     <string name="systemmsg_chat_protection_enabled">Mbrojtja e fjalosjes u aktivizua.</string>
+
+    <string name="devicemsg_self_deleted">Fshitë fjalosjen “Mesazhe të ruajtur”.\n\nℹ️ Që të përdorni sërish veçorinë “Mesazhe të ruajtur”, krijoni një fjalosje të re me veten tuaj.</string>
+    <!-- %1$s will be replaced by the number of storage already used, sth. as '500 MB'. CAVE: if you want to use a simple the percent sign, type in two, so eg. %1$s %% -->
+    <string name="devicemsg_storage_exceeding">⚠️ Po mbaron depozita e shërbimit tuaj, përdoren tashmë %1$s%%.\n\nKur depozita është 100%% e përdorur, mund të mos jeni në gjendje të merrni mesazhe.\n\n👉 Ju lutemi, shihni se mos mund të fshini të dhëna të vjetra që nga ndërfaqja web e furnizuesit të shërbimit dhe shihni mundësinë të aktivizoni “Rregullime / Fshi Mesazhe të Vjetër”. Se sa depozitë është aktualisht e përdorur mund ta kontrolloni kurdo, që nga \"Rregullime / Lidhje\".</string>
+    <!-- %1%s will be replaced by date and time in some human-readable format -->
+    <string name="devicemsg_bad_time">⚠️ Data ose koha e pajisjes tuaj duket të jetë e pasaktë (%1$s).\n\nRregulloni sahatin tuaj ⏰🔧 që të garantohet se mesazhet tuaj merren saktë.</string>
+    <string name="devicemsg_update_reminder">⚠️ Versioni juaj i Delta Chat-it duket të jetë i vjetruar.\n\nKjo mund të shkaktojë probleme, ngaqë partnerët tuaj të fjalosjes përdorin versione të rinj - dhe ju mungojnë veçoritë më të reja 😳\nPër përditësime, ju lutemi, shihni te https://get.delta.chat ose te shitorja juaj e aplikacioneve.</string>
 
     <!-- Some options as "Manage keys" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc. to be entered in a system dialog. This hint is added to the system dialog, below a title as "Manage keys" or "Backup". -->
     <string name="enter_system_secret_to_continue">Që të vazhdohet, ju lutemi, jepni të fshehtën tuaj të përcaktuar nga sistemi.</string>
