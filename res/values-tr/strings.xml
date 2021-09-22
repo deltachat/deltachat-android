@@ -116,6 +116,8 @@
     <!-- Translators: Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
     <string name="reply_noun">Yanıt</string>
     <string name="gif">Gif</string>
+    <!-- "Stickers" as known from other messengers, please pick up the wording from there; in some languages, "Sticker" in english is just fine. -->
+    <string name="sticker">Çıkartma</string>
     <string name="images">Görseller</string>
     <string name="audio">Ses</string>
     <string name="voice_message">Sesli İleti</string>
@@ -420,6 +422,13 @@
     <string name="send_message">İleti Gönder</string>
 
 
+    <!-- Connectivity -->
+    <!-- Used as a headline for the "Inbox" eg. in the "Connectivity" view -->
+    <string name="incoming_messages">Gelen İletiler</string>
+    <!-- Used as a headline for the "Outbox" eg. in the "Connectivity" view -->
+    <string name="outgoing_messages">Giden İletiler</string>
+    <!-- Used as a headline in the "Connectivity" view. The placeholder will be replaced by the domain of the configured email-address. -->
+    <string name="storage_on_domain">%1$s Üzerinde Depolama</string>
     <string name="connectivity">Bağlanabilirlik</string>
     <!-- Shown eg. in the title bar if the app is "Not connected"; as there is very few room, try to be as short as possible. -->
     <string name="connectivity_not_connected">Bağlı değil</string>
@@ -429,6 +438,13 @@
     <string name="connectivity_updating">Güncelleştiriliyor…</string>
     <!-- Shown eg. in the setting if the app is "Connected" -->
     <string name="connectivity_connected">Bağlandı</string>
+    <string name="sending">Gönderiliyor…</string>
+    <string name="last_msg_sent_successfully">Son ileti başarıyla gönderildi.</string>
+    <string name="not_supported_by_provider">Sağlayıcınız tarafından desteklenmiyor.</string>
+    <!-- Used as a subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed or so. -->
+    <string name="messages">İletiler</string>
+
+
     <!-- welcome and login -->
     <string name="welcome_intro1_message">Dünyanın en geniş kitleli ulağı. Özgür ve bağımsız.</string>
     <string name="login_title">Oturum Aç</string>
@@ -697,6 +713,13 @@
     <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
     <string name="systemmsg_chat_protection_disabled">Sohbet koruması etkisizleştirildi.</string>
     <string name="systemmsg_chat_protection_enabled">Sohbet koruması etkinleştirildi.</string>
+
+    <string name="devicemsg_self_deleted">\"Kaydedilen iletiler\" sohbetini sildiniz.\n\nℹ️ \"Kaydedilen iletiler\" özelliğini yeniden kullanmak için kendinizle yeni bir sohbet oluşturun.</string>
+    <!-- %1$s will be replaced by the number of storage already used, sth. as '500 MB'. CAVE: if you want to use a simple the percent sign, type in two, so eg. %1$s %% -->
+    <string name="devicemsg_storage_exceeding">⚠️ Sağlayıcınızın depolaması aşılmak üzere, %1$s%% zaten kullanılıyor.\n\nDepolama 100%% kullanıldığında ileti alamayabilirsiniz.\n\n👉 Lütfen sağlayıcınızın web arabiriminden eski verileri silip silemeyeceğinizi denetleyin ve \"Ayarlar / Eski İletileri Sil\"i etkinleştirmeyi düşünün. Şu anki depolama kullanımınızı her zaman \"Ayarlar / Bağlanabilirlik\"ten denetleyebilirsiniz.</string>
+    <!-- %1%s will be replaced by date and time in some human-readable format -->
+    <string name="devicemsg_bad_time">⚠️ Aygıtınızın tarihi ya da saati yanlış gibi görünüyor (%1$s).\n\nİletilerinizin doğru şekilde alındığından emin olmak için saatinizi ⏰🔧 ayarlayın.</string>
+    <string name="devicemsg_update_reminder">⚠️ Delta Chat sürümünüz eski olabilir.\n\nBu, sorunlara neden olabilir çünkü sohbet ortaklarınız daha yeni sürümleri kullanıyor - ve en yeni özellikleri kaybediyorsunuz 😳\nGüncelleştirmeler için lütfen https://get.delta.chat ya da uygulama mağazanızı denetleyin.</string>
 
     <!-- Some options as "Manage keys" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc. to be entered in a system dialog. This hint is added to the system dialog, below a title as "Manage keys" or "Backup". -->
     <string name="enter_system_secret_to_continue">Sürdürmek için lütfen sistem tanımlı sırrınızı girin.</string>
