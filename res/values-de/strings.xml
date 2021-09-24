@@ -295,6 +295,10 @@
         <item quantity="one">%d Nachricht lokal und vom Server löschen?</item>
         <item quantity="other">%d Nachrichten lokal und vom Server löschen?</item>
     </plurals>
+    <plurals name="ask_delete_messages_simple">
+        <item quantity="one">%d Nachricht löschen?</item>
+        <item quantity="other">%d Nachrichten löschen?</item>
+    </plurals>
     <string name="ask_forward">Nachricht weiterleiten an %1$s?</string>
     <string name="ask_forward_multiple">Nachrichten an %1$d Chats weiterleiten?</string>
     <string name="ask_export_attachment">Das Exportieren von Anhängen ermöglicht es allen anderen Anwendungen auf Ihrem Gerät, auf diese zuzugreifen.\n\nFortfahren? </string>
