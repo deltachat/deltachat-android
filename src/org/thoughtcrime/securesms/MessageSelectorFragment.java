@@ -12,6 +12,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.view.ActionMode;
 import androidx.fragment.app.Fragment;
 
+import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMsg;
 
@@ -52,11 +53,16 @@ public abstract class MessageSelectorFragment
     d.show();
   }
 
-  protected void handleDeleteMessages(final Set<DcMsg> messageRecords) {
+  protected void handleDeleteMessages(int chatId, final Set<DcMsg> messageRecords) {
     int messagesCount = messageRecords.size();
+    DcChat dcChat = DcHelper.getContext(getActivity()).getChat(chatId);
+
+    String text = getActivity().getResources().getQuantityString(
+      dcChat.isDeviceTalk()? R.plurals.ask_delete_messages_simple : R.plurals.ask_delete_messages,
+      messagesCount, messagesCount);
 
     new AlertDialog.Builder(getActivity())
-            .setMessage(getActivity().getResources().getQuantityString(R.plurals.ask_delete_messages, messagesCount, messagesCount))
+            .setMessage(text)
             .setCancelable(true)
             .setPositiveButton(R.string.delete, (dialog, which) -> {
                 int[] ids = DcMsg.msgSetToIds(messageRecords);

@@ -229,7 +229,7 @@ public class ProfileGalleryFragment
           mode.finish();
           return true;
         case R.id.delete:
-          handleDeleteMessages(getListAdapter().getSelectedMedia());
+          handleDeleteMessages(chatId, getListAdapter().getSelectedMedia());
           mode.finish();
           return true;
         case R.id.share:

@@ -53,6 +53,7 @@ import androidx.loader.content.Loader;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMediaGalleryElement;
 import com.b44t.messenger.DcMsg;
@@ -342,17 +343,21 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
       return;
     }
 
+    DcMsg dcMsg = dcContext.getMsg(mediaItem.msgId);
+    DcChat dcChat = dcContext.getChat(dcMsg.getChatId());
+
+    String text = getResources().getQuantityString(
+      dcChat.isDeviceTalk()? R.plurals.ask_delete_messages_simple : R.plurals.ask_delete_messages,
+      1, 1);
+
     AlertDialog.Builder builder = new AlertDialog.Builder(this);
-    builder.setMessage(getResources().getQuantityString(R.plurals.ask_delete_messages, 1, 1));
+    builder.setMessage(text);
     builder.setCancelable(true);
 
     builder.setPositiveButton(R.string.delete, (dialogInterface, which) -> {
       new AsyncTask<Void, Void, Void>() {
         @Override
         protected Void doInBackground(Void... voids) {
-          if (mediaItem.msgId == DcMsg.DC_MSG_NO_ID) {
-            return null;
-          }
           dcContext.deleteMsgs(new int[]{mediaItem.msgId});
           return null;
         }

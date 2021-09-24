@@ -893,7 +893,7 @@ public class ConversationFragment extends MessageSelectorFragment
                     actionMode.finish();
                     return true;
                 case R.id.menu_context_delete_message:
-                    handleDeleteMessages(getListAdapter().getSelectedItems());
+                    handleDeleteMessages((int) chatId, getListAdapter().getSelectedItems());
                     return true;
                 case R.id.menu_context_share:
                     DcHelper.openForViewOrShare(getContext(), getSelectedMessageRecord(getListAdapter().getSelectedItems()).getId(), Intent.ACTION_SEND);
