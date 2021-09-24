@@ -458,7 +458,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     inflater.inflate(R.menu.conversation, menu);
 
-    if (dcChat.isSelfTalk()) {
+    if (dcChat.isSelfTalk() || dcChat.isBroadcast()) {
       menu.findItem(R.id.menu_mute_notifications).setVisible(false);
     } else if(dcChat.isMuted()) {
       menu.findItem(R.id.menu_mute_notifications).setTitle(R.string.menu_unmute);
@@ -472,12 +472,12 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       menu.findItem(R.id.menu_videochat_invite).setVisible(false);
     }
 
-    if (!dcChat.canSend()) {
+    if (!dcChat.canSend() || dcChat.isBroadcast()) {
       menu.findItem(R.id.menu_ephemeral_messages).setVisible(false);
     }
 
     if (isGroupConversation()) {
-      if (dcChat.canSend()) { // If you can't send, then you can't leave the group
+      if (dcChat.canSend() && !dcChat.isBroadcast()) {
         inflater.inflate(R.menu.conversation_push_group_options, menu);
       }
     }

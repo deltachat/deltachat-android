@@ -11,6 +11,7 @@ public class DcContact {
     public final static int DC_CONTACT_ID_NEW_VERIFIED_GROUP = -3; //      - " -
     public final static int DC_CONTACT_ID_ADD_MEMBER         = -4; //      - " -
     public final static int DC_CONTACT_ID_QR_INVITE          = -5; //      - " -
+    public final static int DC_CONTACT_ID_NEW_BROADCAST_LIST = -6; //      - " -
 
     public DcContact(long contactCPtr) {
         this.contactCPtr = contactCPtr;

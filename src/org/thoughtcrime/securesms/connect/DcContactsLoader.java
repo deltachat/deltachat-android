@@ -45,10 +45,11 @@ public class DcContactsLoader extends AsyncLoader<DcContactsLoader.Ret> {
         }
         else if(addCreateGroupLinks) {
             // add "new group" and "new verified group" links
-            final int additional_items = 2; // if someone knows an easier way to prepend sth. to int[] please pr :)
+            final int additional_items = 3; // if someone knows an easier way to prepend sth. to int[] please pr :)
             int all_ids[] = new int[contact_ids.length+additional_items];
             all_ids[0] = DcContact.DC_CONTACT_ID_NEW_GROUP;
             all_ids[1] = DcContact.DC_CONTACT_ID_NEW_VERIFIED_GROUP;
+            all_ids[2] = DcContact.DC_CONTACT_ID_NEW_BROADCAST_LIST;
             for(int i=0; i<contact_ids.length; i++) {
                 all_ids[i+additional_items] = contact_ids[i];
             }

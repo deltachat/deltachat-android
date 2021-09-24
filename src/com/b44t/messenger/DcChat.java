@@ -49,11 +49,15 @@ public class DcChat {
       // isMultiUser() might fit better,
       // however, would result in lots of code changes, so we leave this as is for now.
       int type = getType();
-      return type == DC_CHAT_TYPE_GROUP || type == DC_CHAT_TYPE_MAILINGLIST;
+      return type == DC_CHAT_TYPE_GROUP || type == DC_CHAT_TYPE_MAILINGLIST || type == DC_CHAT_TYPE_BROADCAST;
     }
 
     public boolean isMailingList() {
         return getType() == DC_CHAT_TYPE_MAILINGLIST;
+    }
+
+    public boolean isBroadcast() {
+      return getType() == DC_CHAT_TYPE_BROADCAST;
     }
 
     public boolean canVideochat() {
