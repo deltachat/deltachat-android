@@ -295,6 +295,10 @@
         <item quantity="one">Delete %d message here and on the server?</item>
         <item quantity="other">Delete %d messages here and on the server?</item>
     </plurals>
+    <plurals name="ask_delete_messages_simple">
+        <item quantity="one">Delete %d message?</item>
+        <item quantity="other">Delete %d messages?</item>
+    </plurals>
     <string name="ask_forward">Forward messages to %1$s?</string>
     <string name="ask_forward_multiple">Forward messages to %1$d chats?</string>
     <string name="ask_export_attachment">Exporting attachments will allow any other apps on your device to access them.\n\nContinue?</string>
