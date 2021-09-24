@@ -527,6 +527,15 @@ JNIEXPORT jint Java_com_b44t_messenger_DcContext_createGroupChat(JNIEnv *env, jo
 }
 
 
+JNIEXPORT jint Java_com_b44t_messenger_DcContext_createBroadcastList(JNIEnv *env, jobject obj, jstring name)
+{
+    CHAR_REF(name);
+        jint ret = (jint)dc_create_broadcast_list(get_dc_context(env, obj), namePtr);
+    CHAR_UNREF(name);
+    return ret;
+}
+
+
 JNIEXPORT jboolean Java_com_b44t_messenger_DcContext_isContactInChat(JNIEnv *env, jobject obj, jint chat_id, jint contact_id)
 {
     return (jboolean)dc_is_contact_in_chat(get_dc_context(env, obj), chat_id, contact_id);
