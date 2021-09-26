@@ -429,7 +429,6 @@
     <string name="send_message">Poslať správu</string>
 
 
-    <!-- Connectivity -->
     <string name="connectivity">Pripojenie</string>
     <!-- Shown eg. in the title bar if the app is "Not connected"; as there is very few room, try to be as short as possible. -->
     <string name="connectivity_not_connected">Nepripojené</string>
@@ -439,8 +438,6 @@
     <string name="connectivity_updating">Aktualizujem…</string>
     <!-- Shown eg. in the setting if the app is "Connected" -->
     <string name="connectivity_connected">Pripojené</string>
-
-
     <!-- welcome and login -->
     <string name="welcome_intro1_message">Posol s najširším publikom na svete. Slobodný a nezávislý.</string>
     <string name="login_title">Prihlásiť sa</string>

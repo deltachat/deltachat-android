@@ -322,7 +322,7 @@
     </string-array>
 
     <string-array name="pref_download_limit_entries">
-        <item>@string/no_limit</item>
+        <item>@string/pref_show_emails_all</item>
         <item>40 KiB</item>
         <item>160 KiB</item>
         <item>640 KiB</item>

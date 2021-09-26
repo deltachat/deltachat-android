@@ -116,6 +116,8 @@
     <!-- Translators: Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
     <string name="reply_noun">Antwoord</string>
     <string name="gif">GIF</string>
+    <!-- "Stickers" as known from other messengers, please pick up the wording from there; in some languages, "Sticker" in english is just fine. -->
+    <string name="sticker">Sticker</string>
     <string name="images">Afbeeldingen</string>
     <string name="audio">Audio</string>
     <string name="voice_message">Spraakbericht</string>
@@ -388,6 +390,7 @@
     <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
     <string name="puny_code_warning_description">Je hebt op een link gedrukt welke niet-overeenkomende tekens bevat uit andere talen. Door %1$s te openen kom je op %2$s terecht, welke niet-Latijnse tekens bevat. Als je deze tekens niet verwachtte, dan is de site mogelijk niet te vertrouwen.</string>
 
+
     <!-- search -->
     <string name="search">Zoeken</string>
     <string name="search_explain">Zoek naar gesprekken, contactpersonen en berichten</string>
@@ -420,6 +423,12 @@
 
 
     <!-- Connectivity -->
+    <!-- Used as a headline for the "Inbox" eg. in the "Connectivity" view -->
+    <string name="incoming_messages">Inkomende berichten</string>
+    <!-- Used as a headline for the "Outbox" eg. in the "Connectivity" view -->
+    <string name="outgoing_messages">Uitgaande berichten</string>
+    <!-- Used as a headline in the "Connectivity" view. The placeholder will be replaced by the domain of the configured email-address. -->
+    <string name="storage_on_domain">Opslag op %1$s</string>
     <string name="connectivity">Verbindingen</string>
     <!-- Shown eg. in the title bar if the app is "Not connected"; as there is very few room, try to be as short as possible. -->
     <string name="connectivity_not_connected">Niet verbonden</string>
@@ -429,6 +438,11 @@
     <string name="connectivity_updating">Bezig met bijwerken…</string>
     <!-- Shown eg. in the setting if the app is "Connected" -->
     <string name="connectivity_connected">Verbonden</string>
+    <string name="sending">Bezig met versturen…</string>
+    <string name="last_msg_sent_successfully">Het laatste bericht is verstuurd.</string>
+    <string name="not_supported_by_provider">Wordt niet ondersteund door je provider.</string>
+    <!-- Used as a subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed or so. -->
+    <string name="messages">Berichten</string>
 
 
     <!-- welcome and login -->
@@ -699,6 +713,13 @@
     <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
     <string name="systemmsg_chat_protection_disabled">Gespreksbeveiliging is uitgeschakeld.</string>
     <string name="systemmsg_chat_protection_enabled">Gespreksbeveiliging is ingeschakeld.</string>
+
+    <string name="devicemsg_self_deleted">Je hebt het gesprek ‘Opgeslagen berichten’ verwijderd.\n\nℹ️ Als je weer gebruik wilt maken van deze functie, begin dan een nieuw gesprek met jezelf.</string>
+    <!-- %1$s will be replaced by the number of storage already used, sth. as '500 MB'. CAVE: if you want to use a simple the percent sign, type in two, so eg. %1$s %% -->
+    <string name="devicemsg_storage_exceeding">⚠️ De opslagruimte die je provider je biedt is bijna overschreden - momenteel heb je %1$s%% ervan in gebruik.\n\nAls je 100%% van de ruimte verbruikt hebt, kun je mogelijk geen berichten meer ontvangen.\n\n👉 Kijk of je oude gegevens kunt verwijderen in de webclient van je provider. Overweeg ook ‘Instellingen --> Oude berichten verwijderen’ in te schakelen. Je kunt je huidige gebruik te allen tijde bekijken in ‘Instellingen --> Verbindingen’.</string>
+    <!-- %1%s will be replaced by date and time in some human-readable format -->
+    <string name="devicemsg_bad_time">⚠️ De datum en tijd van je apparaat lijken niet te kloppen (%1$s).\n\nVerzet je klok ⏰🔧 om er zeker van te zijn dat je berichten kunt ontvangen.</string>
+    <string name="devicemsg_update_reminder">⚠️ Je versie van Delta Chat is mogelijk verouderd.\n\nDit kan problemen veroorzaken aangezien je gesprekspartners nieuwe versies gebruiken. Bovendien mis je hierdoor enkele nieuwe functies. 😳\nGa naar https://get.delta.chat of de appwinkel van je apparaat om te controleren op updates.</string>
 
     <!-- Some options as "Manage keys" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc. to be entered in a system dialog. This hint is added to the system dialog, below a title as "Manage keys" or "Backup". -->
     <string name="enter_system_secret_to_continue">Voer je op het systeem opgegeven toegangscode in om verder te gaan.</string>

@@ -383,7 +383,6 @@
     <string name="send_message">Siųsti žinutę</string>
 
 
-    <!-- Connectivity -->
     <string name="connectivity">Jungiamumas</string>
     <!-- Shown eg. in the title bar if the app is "Not connected"; as there is very few room, try to be as short as possible. -->
     <string name="connectivity_not_connected">Neprisijungta</string>
@@ -393,8 +392,6 @@
     <string name="connectivity_updating">Atnaujinama…</string>
     <!-- Shown eg. in the setting if the app is "Connected" -->
     <string name="connectivity_connected">Prisijungta</string>
-
-
     <!-- welcome and login -->
     <string name="welcome_intro1_message">Pokalbių programa su plačiausia auditorija pasaulyje. Nemokama ir nepriklausoma.</string>
     <string name="login_title">Prisijungti</string>

@@ -382,6 +382,7 @@
     <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
     <string name="puny_code_warning_description">Você clicou em um link que pode estar representando maliciosamente letras de aparência semelhante com o uso de alfabetos diferentes. Seguir o link rotulado como %1$s  levará a %2$s, o que é normal para caracteres não latinos. Se você não esperava esses caracteres, este link pode ser prejudicial</string>
 
+
     <!-- search -->
     <string name="search">Procurar</string>
     <string name="search_explain">Procurar conversas, contatos e mensagens</string>

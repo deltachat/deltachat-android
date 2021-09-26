@@ -390,6 +390,7 @@
     <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
     <string name="puny_code_warning_description">شما لینکی را دنبال کرده‌اید که با نمایش حروفی که از نظر ظاهری شباهت دارند ممکن است شما را به جای دیگری ببرد. دنبال کردن لینک با برچسب %1$s شما را به %2$s خواهد برد که حالت عادی برای حروف انگلیسی است. اگر انتظار این حروف را نداشتید ممکن است لینک مورد نظر مضر باشد. </string>
 
+
     <!-- search -->
     <string name="search">جستجو</string>
     <string name="search_explain">جستجو برای گفتگوها، مخاطبین و پیام‌ها</string>
@@ -421,7 +422,6 @@
     <string name="send_message">ارسال پیام</string>
 
 
-    <!-- Connectivity -->
     <string name="connectivity">اتصالات</string>
     <!-- Shown eg. in the title bar if the app is "Not connected"; as there is very few room, try to be as short as possible. -->
     <string name="connectivity_not_connected">متصل نیست</string>
@@ -431,8 +431,6 @@
     <string name="connectivity_updating">درحال به روز رسانی...</string>
     <!-- Shown eg. in the setting if the app is "Connected" -->
     <string name="connectivity_connected">متصل شد</string>
-
-
     <!-- welcome and login -->
     <string name="welcome_intro1_message">پیام‌رسانی با وسیع‌ترین طیف مخاطبین در جهان. آزاد و مستقل. </string>
     <string name="login_title">ورود</string>

@@ -116,6 +116,8 @@
     <!-- Translators: Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
     <string name="reply_noun">Rispondi</string>
     <string name="gif">Gif</string>
+    <!-- "Stickers" as known from other messengers, please pick up the wording from there; in some languages, "Sticker" in english is just fine. -->
+    <string name="sticker">Sticker</string>
     <string name="images">Immagine</string>
     <string name="audio">Audio</string>
     <string name="voice_message">Messaggio Vocale</string>
@@ -388,6 +390,7 @@
     <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
     <string name="puny_code_warning_description">Hai seguito un link che potrebbe rappresentare in modo errato i caratteri utilizzando caratteri dall\'aspetto simile ad alfabeti diversi. Se si segue il link con l\'etichetta %1$s si arriva a %2$s che è normale per i caratteri non latini. Se non ti aspettavi tali caratteri, questo collegamento potrebbe essere dannoso</string>
 
+
     <!-- search -->
     <string name="search">Cerca</string>
     <string name="search_explain">Cerca in chat, contatti e messaggi</string>
@@ -420,6 +423,12 @@
 
 
     <!-- Connectivity -->
+    <!-- Used as a headline for the "Inbox" eg. in the "Connectivity" view -->
+    <string name="incoming_messages">Messaggi in arrivo</string>
+    <!-- Used as a headline for the "Outbox" eg. in the "Connectivity" view -->
+    <string name="outgoing_messages">Messaggi in uscita</string>
+    <!-- Used as a headline in the "Connectivity" view. The placeholder will be replaced by the domain of the configured email-address. -->
+    <string name="storage_on_domain">Memorizzazione su %1$s</string>
     <string name="connectivity">Connettività</string>
     <!-- Shown eg. in the title bar if the app is "Not connected"; as there is very few room, try to be as short as possible. -->
     <string name="connectivity_not_connected">Non connesso</string>
@@ -429,6 +438,11 @@
     <string name="connectivity_updating">Aggiorno…</string>
     <!-- Shown eg. in the setting if the app is "Connected" -->
     <string name="connectivity_connected">Connesso</string>
+    <string name="sending">Invio...</string>
+    <string name="last_msg_sent_successfully">Ultimo messaggio inviato con successo.</string>
+    <string name="not_supported_by_provider">Non supportato dal tuo provider.</string>
+    <!-- Used as a subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed or so. -->
+    <string name="messages">Messaggi</string>
 
 
     <!-- welcome and login -->
@@ -507,7 +521,7 @@
     <string name="blocked_empty_hint">Se blocchi dei contatti, verranno elencati qui.</string>
     <string name="pref_profile_photo_remove_ask">Rimuvere la foto profilo?</string>
     <string name="pref_password_and_account_settings">Password e Account</string>
-    <string name="pref_who_can_see_profile_explain">L\'immagine del tuo profilo e il tuo nome saranno mostrati insieme ai tuoi messaggi quando comunichi con altri utenti. Le informazioni già inviate non possono essere cancellate o rimosse.</string>
+    <string name="pref_who_can_see_profile_explain">L\'immagine del tuo profilo e il tuo nome saranno mostrati insieme ai tuoi messaggi quando comunicherai con altri utenti. Le informazioni già inviate non possono essere cancellate o rimosse.</string>
     <string name="pref_your_name">Il tuo Nome</string>
     <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
     <string name="pref_default_status_label">Firma</string>
@@ -585,7 +599,7 @@
     <string name="pref_show_emails">Mostra E-mail Tradizionali</string>
     <string name="pref_show_emails_no">No, solo chat</string>
     <string name="pref_show_emails_accepted_contacts">Per i contatti accettati</string>
-    <string name="pref_show_emails_all">Tutte</string>
+    <string name="pref_show_emails_all">Tutti</string>
     <string name="pref_experimental_features">Funzionalità Sperimentali</string>
     <string name="pref_on_demand_location_streaming">Streaming su Richiesta della Posizione</string>
     <string name="pref_background_default">Sfondo predefinito</string>
@@ -699,6 +713,13 @@
     <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
     <string name="systemmsg_chat_protection_disabled">Protezione chat disattivata.</string>
     <string name="systemmsg_chat_protection_enabled">Protezione chat abilitata.</string>
+
+    <string name="devicemsg_self_deleted">Hai eliminato la chat \"Messaggi salvati\".\n\nℹ️ Per utilizzare nuovamente la funzione \"Messaggi salvati\", crea una nuova chat con te stesso.</string>
+    <!-- %1$s will be replaced by the number of storage already used, sth. as '500 MB'. CAVE: if you want to use a simple the percent sign, type in two, so eg. %1$s %% -->
+    <string name="devicemsg_storage_exceeding">⚠️ Lo spazio di archiviazione del tuo provider sta già per superare %1$s%% vengono utilizzati.\n\nPotrebbe non essere possibile ricevere messaggi quando lo spazio di archiviazione è 100%% utilizzato.\n\n👉 Si prega di verificare se è possibile eliminare i vecchi dati nell\'interfaccia web del provider e considerare di abilitare \"Impostazioni / Elimina Vecchi Messaggi\". Puoi controllare l\'utilizzo corrente dello spazio di archiviazione in qualsiasi momento in \"Impostazioni / Connettività\".</string>
+    <!-- %1%s will be replaced by date and time in some human-readable format -->
+    <string name="devicemsg_bad_time">⚠️ La data o l\'ora del tuo dispositivo sembrano imprecise (%1$s).\n\nRegola l\'orologio ⏰🔧 per assicurarti che i tuoi messaggi vengano ricevuti correttamente.</string>
+    <string name="devicemsg_update_reminder">⚠️ La tua versione di Delta Chat potrebbe essere obsoleta.\n\nCiò potrebbe causare problemi perché i tuoi partner di chat utilizzano versioni più recenti - e ti mancano le funzionalità più recenti 😳\nControlla https://get.delta.chat o il tuo app store per gli aggiornamenti. </string>
 
     <!-- Some options as "Manage keys" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc. to be entered in a system dialog. This hint is added to the system dialog, below a title as "Manage keys" or "Backup". -->
     <string name="enter_system_secret_to_continue">Per favore inserisci il tuo codice segreto definito dal sistema per continuare.</string>
