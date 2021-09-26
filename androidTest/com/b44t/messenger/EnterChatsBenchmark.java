@@ -13,18 +13,15 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.thoughtcrime.securesms.ConversationListActivity;
 import org.thoughtcrime.securesms.R;
-import org.thoughtcrime.securesms.util.Prefs;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.Espresso.pressBack;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.replaceText;
-import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static androidx.test.espresso.matcher.ViewMatchers.withHint;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
-import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentation;
 
 
 @RunWith(AndroidJUnit4.class)
@@ -49,8 +46,6 @@ public class EnterChatsBenchmark {
 
   @Test
   public void createAndEnterNChats() {
-    Prefs.setEnterSendsEnabled(getInstrumentation().getTargetContext(), true);
-
     if (!USE_EXISTING_CHATS) {
       createChatAndGoBack("Group #1", "Hello!", "Some links: https://testrun.org", "And a command: /help");
       createChatAndGoBack("Group #2", "example.org, alice@example.org", "aaaaaaa", "bbbbbb");
@@ -65,7 +60,7 @@ public class EnterChatsBenchmark {
     }
 
     String[] times = new String[GO_THROUGH_ALL_CHATS_N_TIMES];
-    for (int i = 0; i<GO_THROUGH_ALL_CHATS_N_TIMES; i++) {
+    for (int i = 0; i < GO_THROUGH_ALL_CHATS_N_TIMES; i++) {
       times[i] = "" + timeGoToAllChats();
     }
     Log.i(TAG, "MEASURED RESULTS (Benchmark) - Going thorough all 10 chats: " + String.join(",", times));
@@ -73,7 +68,7 @@ public class EnterChatsBenchmark {
 
   private long timeGoToAllChats() {
     long start = System.currentTimeMillis();
-    for (int i=0; i<10; i++) {
+    for (int i = 0; i < 10; i++) {
       onView(withId(R.id.list)).perform(RecyclerViewActions.actionOnItemAtPosition(i, click()));
       pressBack();
     }
@@ -108,13 +103,11 @@ public class EnterChatsBenchmark {
 
   private void sendText(String text1) {
     onView(withHint(R.string.chat_input_placeholder)).perform(replaceText(text1));
-    onView(withHint(R.string.chat_input_placeholder)).perform(typeText("\n"));
+    TestUtils.pressSend();
   }
 
   @After
   public void cleanup() {
-    if (!USE_EXISTING_CHATS) {
-      TestUtils.cleanup();
-    }
+    TestUtils.cleanup();
   }
 }

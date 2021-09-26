@@ -15,16 +15,21 @@ import androidx.test.ext.junit.rules.ActivityScenarioRule;
 
 import org.hamcrest.Matcher;
 import org.thoughtcrime.securesms.ConversationListActivity;
+import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.AccountManager;
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 
 import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.matcher.ViewMatchers.isRoot;
+import static androidx.test.espresso.matcher.ViewMatchers.withHint;
 import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentation;
 
 class TestUtils {
   private static int createdAccountId = 0;
+  private static boolean resetEnterSends = false;
 
   public static void cleanupCreatedAccount(Context context) {
     DcAccounts accounts = DcHelper.getAccounts(context);
@@ -37,6 +42,9 @@ class TestUtils {
   public static void cleanup() {
     Context context = getInstrumentation().getTargetContext();
     cleanupCreatedAccount(context);
+    if (resetEnterSends) {
+      Prefs.setEnterSendsEnabled(getInstrumentation().getTargetContext(), false);
+    }
   }
 
   public static void createOfflineAccount() {
@@ -132,5 +140,22 @@ class TestUtils {
       }
 
     throw new RuntimeException("Error finding a view matching $viewMatcher");
+  }
+
+  /**
+   * Normally, you would do
+   * onView(withId(R.id.send_button)).perform(click());
+   * to send the draft message. However, in order to change the send button to the attach button
+   * while there is no draft, the send button is made invisible and the attach button is made
+   * visible instead. This confuses the test framework.<br/><br/>
+   *
+   * So, this is a workaround for pressing the send button.
+   */
+  public static void pressSend() {
+    if (!Prefs.isEnterSendsEnabled(getInstrumentation().getTargetContext())) {
+      resetEnterSends = true;
+      Prefs.setEnterSendsEnabled(getInstrumentation().getTargetContext(), true);
+    }
+    onView(withHint(R.string.chat_input_placeholder)).perform(typeText("\n"));
   }
 }
