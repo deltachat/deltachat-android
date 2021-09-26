@@ -329,14 +329,10 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void groupCreateInDb() {
-    String groupName = getGroupName();
-
     if (broadcast) {
-      if (groupName == null) {
-        groupName = getString(R.string.broadcast_list);
-      }
-      groupChatId = dcContext.createBroadcastList(groupName);
+      groupChatId = dcContext.createBroadcastList();
     } else {
+      String groupName = getGroupName();
       if (showGroupNameEmptyToast(groupName)) return;
       groupChatId = dcContext.createGroupChat(verified, groupName);
     }
