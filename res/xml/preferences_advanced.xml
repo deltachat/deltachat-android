@@ -68,6 +68,11 @@
 
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:defaultValue="false"
+            android:key="pref_new_broadcast_list"
+            android:title="@string/new_broadcast_list"/>
+
+        <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
+            android:defaultValue="false"
             android:key="pref_location_streaming_enabled"
             android:title="@string/pref_on_demand_location_streaming"/>
 
