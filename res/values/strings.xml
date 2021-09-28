@@ -315,7 +315,7 @@
     <string name="ask_delete_value">Delete %s?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Remove %1$s from group?</string>
-    <!-- Translators: %1$s will be replaces by a comma separated list of names -->
+    <!-- Translators: %1$s will be replaced by a comma separated list of names -->
     <string name="ask_remove_recipients">Remove %1$s from broadcast list?</string>
     <string name="open_url_confirmation">Do you want to open this link?</string>
 
