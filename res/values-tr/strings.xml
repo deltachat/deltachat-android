@@ -295,6 +295,10 @@
         <item quantity="one">%d ileti buradan ve sunucudan silinsin mi?</item>
         <item quantity="other">%d ileti buradan ve sunucudan silinsin mi?</item>
     </plurals>
+    <plurals name="ask_delete_messages_simple">
+        <item quantity="one">%d ileti silinsin mi?</item>
+        <item quantity="other">%d ileti silinsin mi?</item>
+    </plurals>
     <string name="ask_forward">İletiler %1$s alıcısına iletilsin mi?</string>
     <string name="ask_forward_multiple">İletiler %1$d sohbete iletilsin mi?</string>
     <string name="ask_export_attachment">İlişikleri dışa aktarmak, aygıtınızdaki diğer uygulamaların onlara erişmesine izin verir.\n\nSürdürülsün mü?</string>
@@ -359,7 +363,7 @@
     <!-- reasons for a disabled message composer -->
     <string name="messaging_disabled_not_in_group">Yazamazsınız çünkü bu grupta değilsiniz. Katılmak için başka bir üyeye sorun.</string>
     <string name="messaging_disabled_device_chat">Bu sohbet, yerel olarak oluşturulan iletileri içerir. Bu nedenle herhangi bir ileti yazamazsınız.</string>
-    <string name="messaging_disabled_deaddrop">İletişim isteğini kabul etmek ya da reddetmek için bir iletinin üzerine tıklayın</string>
+    <string name="messaging_disabled_deaddrop">İletişim isteğini kabul etmek ya da reddetmek için bir iletinin üzerinde tıklayın</string>
     <string name="messaging_disabled_mailing_list">Posta listelerinden gönderilen iletiler henüz desteklenmiyor</string>
     <string name="cannot_display_unsuported_file_type">Bu dosya türü görüntülenemiyor: %s</string>
     <string name="attachment_failed_to_load">İlişiği yükleme başarısız</string>

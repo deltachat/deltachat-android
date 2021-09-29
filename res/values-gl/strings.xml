@@ -295,6 +295,10 @@
         <item quantity="one">Eliminar %d mensaxe aquí e no servidor?</item>
         <item quantity="other">Eliminar %d mensaxes aquí e no servidor?</item>
     </plurals>
+    <plurals name="ask_delete_messages_simple">
+        <item quantity="one">Borrar %d mensaxe?</item>
+        <item quantity="other">Borrar %d mensaxes?</item>
+    </plurals>
     <string name="ask_forward">Reenviar mensaxes a %1$s?</string>
     <string name="ask_forward_multiple">¿Reenviar mensaxes a %1$d conversas?</string>
     <string name="ask_export_attachment">Exportar anexo? Ao exportar anexos outras aplicacións no dispositivo terán acceso a eles.\n\nGardar?</string>

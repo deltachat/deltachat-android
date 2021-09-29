@@ -286,6 +286,9 @@
     <plurals name="ask_delete_messages">
         <item quantity="other">在此处和服务器上删除 %d 条消息？</item>
     </plurals>
+    <plurals name="ask_delete_messages_simple">
+        <item quantity="other">删除 %d 条消息吗？</item>
+    </plurals>
     <string name="ask_forward">将消息转发给 %1$s？</string>
     <string name="ask_forward_multiple">转发消息到 %1$d 个聊天？</string>
     <string name="ask_export_attachment">导出附件？导出附件将允许您设备上的任意应用程序访问它们。\n\n是否继续？</string>
@@ -602,7 +605,7 @@
     <string name="up_to_x_most_balanced_quality_images">最多 %1$s，分辨率最均衡图像</string>
     <string name="no_limit">无限制</string>
     <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string eg. "1 MiB message" -->
-    <string name="n_bytes_message">%1$s 条消息</string>
+    <string name="n_bytes_message">%1$s 消息</string>
     <!-- %1$s will be replaced by human-readable date and time -->
     <string name="download_max_available_until">下载最晚于 %1$s 前可用</string>
     <string name="profile_image_select">选择个人资料图片</string>
@@ -702,12 +705,12 @@
     <string name="systemmsg_chat_protection_disabled">已禁用聊天保护</string>
     <string name="systemmsg_chat_protection_enabled">已启用聊天保护</string>
 
-    <string name="devicemsg_self_deleted">你删除了聊天中的“已保存消息”。\n\nℹ️要再次使用“保存消息”功能，请创建一个新的与自己的聊天。</string>
+    <string name="devicemsg_self_deleted">您已删除“保存的消息”聊天。\n\nℹ️要再次使用“保存的消息”功能，请创建一个与自己的新聊天。</string>
     <!-- %1$s will be replaced by the number of storage already used, sth. as '500 MB'. CAVE: if you want to use a simple the percent sign, type in two, so eg. %1$s %% -->
-    <string name="devicemsg_storage_exceeding">⚠️你快要超出邮件服务商提供的存储空间，你已使用 %1$s %%。\n\n你将无法接收消息，当存储用量达到 100 %%。\n\n👉请检查您是否可以在提供商的网络界面中删除旧数据，并考虑启用“设置/删除旧信息”。您可以随时在“设置/连接”查看当前的存储使用情况。</string>
+    <string name="devicemsg_storage_exceeding">⚠️邮件服务商提供的存储空间快满了，已使用 %1$s%%。\n\n当存储用量达到 100%% 时，您可能无法接收消息。\n\n👉请检查是否可以在提供商的网页界面上删除旧数据；您还可以考虑启用“设置/删除旧消息”。您可以随时在“设置/连接性”中查看当前的存储使用情况。</string>
     <!-- %1%s will be replaced by date and time in some human-readable format -->
-    <string name="devicemsg_bad_time">⚠️设备的日期或事件似乎不准确 （%1$s）。\n\n请调整时钟⏰🔧确保正确接收信息。</string>
-    <string name="devicemsg_update_reminder">⚠️你的 Delta Chat 版本可能过时了。\n\n这也许会造成问题，因为您的聊天伙伴很可能使用的是更新的版本，而且您错过了最新的功能😳\n请浏览 https://get.delta.chat 或您的应用商店获取更新。</string>
+    <string name="devicemsg_bad_time">⚠️设备的日期或时间似乎不准确 （%1$s）。\n\n请调整时钟⏰🔧以确保能正确接收信息。</string>
+    <string name="devicemsg_update_reminder">⚠️您的 Delta Chat 版本可能过时了。\n\n这可能会在您的聊天伙伴使用更新的版本时造成问题；并且您缺失了最新功能😳\n请浏览 https://get.delta.chat 或应用商店来获取更新。</string>
 
     <!-- Some options as "Manage keys" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc. to be entered in a system dialog. This hint is added to the system dialog, below a title as "Manage keys" or "Backup". -->
     <string name="enter_system_secret_to_continue">请输入您的系统密码以继续。</string>

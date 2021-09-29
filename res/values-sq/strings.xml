@@ -293,6 +293,10 @@
         <item quantity="one">Të fshihet %d mesazh këtu dhe te shërbyesi?</item>
         <item quantity="other">Të fshihen %d mesazhe këtu dhe te shërbyesi?</item>
     </plurals>
+    <plurals name="ask_delete_messages_simple">
+        <item quantity="one">Të fshihet %d mesazh?</item>
+        <item quantity="other">Të fshihen %d mesazhe?</item>
+    </plurals>
     <string name="ask_forward">Të përcillen mesazhet te %1$s?</string>
     <string name="ask_forward_multiple">Të përcillen mesazhet te %1$d fjalosje?</string>
     <string name="ask_export_attachment">Të eksportohet bashkëngjitja? Eksportimi i bashkëngjitjeve do t\’i lejojë çfarëdo aplikacioni tjetër në pajisjen tuaj t\’i përdorë ato.\n\nTë vazhdohet?</string>

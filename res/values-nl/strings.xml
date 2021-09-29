@@ -295,6 +295,10 @@
         <item quantity="one">Wil je %d bericht verwijderen, zowel hier als op de server?</item>
         <item quantity="other">Wil je %d berichten verwijderen, zowel hier als op de server?</item>
     </plurals>
+    <plurals name="ask_delete_messages_simple">
+        <item quantity="one">Wil je %d bericht verwijderen?</item>
+        <item quantity="other">Wil je %d berichten verwijderen?</item>
+    </plurals>
     <string name="ask_forward">Wil je de berichten doorsturen aan %1$s?</string>
     <string name="ask_forward_multiple">Wil je de berichten doorsturen naar %1$d gesprekken?</string>
     <string name="ask_export_attachment">Als je de bijlage exporteert, geef je andere apps op je apparaat toegang om hem uit te lezen.\n\nWil je doorgaan?</string>

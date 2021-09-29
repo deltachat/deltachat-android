@@ -313,6 +313,12 @@
         <item quantity="many">Видалити %d повідомлень тут і на сервері?</item>
         <item quantity="other">Видалити %d повідомлень тут і на сервері?</item>
     </plurals>
+    <plurals name="ask_delete_messages_simple">
+        <item quantity="one">Видалити %d повідомлення?</item>
+        <item quantity="few">Видалити %d повідомлення?</item>
+        <item quantity="many">Видалити %d повідомлень?</item>
+        <item quantity="other">Видалити %d повідомлення?</item>
+    </plurals>
     <string name="ask_forward">Переслати повідомлення %1$s?</string>
     <string name="ask_forward_multiple">Пересилати повідомлення у %1$d?</string>
     <string name="ask_export_attachment">Експортувати вкладення? Експорт вкладень дозволить будь-якому іншому додатку на Вашому пристрої отримати до них доступ.\n\nПродовжити?</string>
