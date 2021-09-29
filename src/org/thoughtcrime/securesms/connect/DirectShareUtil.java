@@ -49,14 +49,26 @@ public class DirectShareUtil {
 
   public static void clearShortcut(@NonNull Context context, int chatId) {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-      Util.runOnAnyBackgroundThread(() -> ShortcutManagerCompat.removeDynamicShortcuts(context, Collections.singletonList(Integer.toString(chatId))));
+      Util.runOnAnyBackgroundThread(() -> {
+        try {
+          ShortcutManagerCompat.removeDynamicShortcuts(context, Collections.singletonList(Integer.toString(chatId)));
+        } catch (Exception e) {
+          Log.e(TAG, "Clearing shortcut failed: " + e);
+          e.printStackTrace();
+        }
+      });
     }
   }
 
   public static void resetAllShortcuts(@NonNull Context context) {
     Util.runOnBackground(() -> {
-      ShortcutManagerCompat.removeAllDynamicShortcuts(context);
-      triggerRefreshDirectShare(context);
+      try {
+        ShortcutManagerCompat.removeAllDynamicShortcuts(context);
+        triggerRefreshDirectShare(context);
+      } catch (Exception e) {
+        Log.e(TAG, "Resetting shortcuts failed: " + e);
+        e.printStackTrace();
+      }
     });
   }
 
@@ -81,7 +93,7 @@ public class DirectShareUtil {
 
           boolean success = ShortcutManagerCompat.addDynamicShortcuts(context, newShortcuts);
           Log.i(TAG, "Updated dynamic shortcuts, success: " + success);
-        } catch(IllegalArgumentException e) {
+        } catch(Exception e) {
           Log.e(TAG, "Updating dynamic shortcuts failed: " + e);
         }
 
