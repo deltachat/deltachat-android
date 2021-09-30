@@ -476,7 +476,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       menu.findItem(R.id.menu_ephemeral_messages).setVisible(false);
     }
 
-    if (isGroupConversation()) {
+    if (isMultiUser()) {
       if (dcChat.canSend() && !dcChat.isBroadcast()) {
         inflater.inflate(R.menu.conversation_push_group_options, menu);
       }
@@ -854,7 +854,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   {
     final SettableFuture<Boolean> future = new SettableFuture<>();
 
-    handleSecurityChange(currentSecureText || isPushGroupConversation(), currentIsDefaultSms);
+    handleSecurityChange(currentSecureText || isMultiUser(), currentIsDefaultSms);
 
     future.set(true);
     return future;
@@ -1022,12 +1022,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     composeText.append(name + "\n" + mail);
   }
 
-  private boolean isGroupConversation() {
+  private boolean isMultiUser() {
     return dcChat.isMultiUser();
-  }
-
-  private boolean isPushGroupConversation() {
-    return isGroupConversation(); // push groups are non-sms groups, so in delta, these are all groups
   }
 
   private boolean isArchived() {
