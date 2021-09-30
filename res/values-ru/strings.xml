@@ -121,6 +121,13 @@
         <item quantity="many">%d member</item>
         <item quantity="other">%d участников</item>
     </plurals>
+    <plurals name="n_recipients">
+        <item quantity="one">%d получатель</item>
+        <item quantity="few">%d получателя</item>
+        <item quantity="many">%d получателей</item>
+        <item quantity="other">%d получателей</item>
+    </plurals>
+
     <string name="self">Я</string>
     <string name="draft">Черновик</string>
     <string name="image">Изображение</string>
@@ -180,6 +187,11 @@
     <string name="menu_new_chat">Новый чат</string>
     <string name="menu_new_group">Новая группа</string>
     <string name="menu_new_verified_group">Новая проверенная группа</string>
+    <!-- consider keeping the term "broadcast"; check how these lists are called eg. on whatsapp in the destination language -->
+    <string name="broadcast_list">Список рассылки</string>
+    <string name="broadcast_lists">Списки рассылки</string>
+    <string name="new_broadcast_list">Новый список рассылки</string>
+    <string name="add_recipients">Добавить получателей</string>
     <string name="menu_send">Отправить</string>
     <string name="menu_toggle_keyboard">Включить эмодзи клавиатуру</string>
     <string name="menu_edit_group">Редактировать группу</string>
@@ -312,6 +324,12 @@
         <item quantity="many">Delete %d message here and on the server?</item>
         <item quantity="other">Удалить %d сообщений здесь и на сервере?</item>
     </plurals>
+    <plurals name="ask_delete_messages_simple">
+        <item quantity="one">Удалить %d сообщение?</item>
+        <item quantity="few">Удалить %d сообщения?</item>
+        <item quantity="many">Удалить %d сообщений?</item>
+        <item quantity="other">Удалить %d сообщений?</item>
+    </plurals>
     <string name="ask_forward">Переслать сообщения для %1$s?</string>
     <string name="ask_forward_multiple">Отправить сообщения в %1$d чатов?</string>
     <string name="ask_export_attachment">Экспортировать вложения? Экспорт вложений, позволит любому приложению на вашем устройстве получить к ним доступ.\n\nПродолжить?</string>
@@ -324,6 +342,8 @@
     <string name="ask_delete_value">Удалить %s?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Удалить %1$s из группы?</string>
+    <!-- Translators: %1$s will be replaced by a comma separated list of names -->
+    <string name="ask_remove_from_broadcast">Удалить %1$s из списка рассылки?</string>
     <string name="open_url_confirmation">Вы хотите открыть эту ссылку?</string>
 
 
@@ -358,6 +378,7 @@
         <item quantity="other">%d новых сообщений</item>
     </plurals>
     <string name="chat_no_messages_hint">Отправьте сообщение %1$s:\n\n• Это сработает, даже если %2$s не использует Delta Chat.\n\n• Первое сообщение может быть незашифрованным и его доставка может занять некоторое время.</string>
+    <string name="chat_new_broadcast_hint">В списке рассылки другие пользователи будут получать сообщения в своих личных чатах с вами.\n\nПолучатели не будут знать друг о друге.</string>
     <string name="chat_new_group_hint">Напишите первое сообщение, оно позволит другим участникам группы ответить на него.\n\n• Это сработает, даже если не все участники используют Delta Chat.\n\n• Доставка первого сообщения может занять некоторое время.</string>
     <string name="chat_record_slide_to_cancel">Сдвиньте для отмены</string>
     <string name="chat_record_explain">Нажмите и удерживайте для записи голосового сообщения, отпустите для отправки</string>
@@ -736,6 +757,13 @@
     <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
     <string name="systemmsg_chat_protection_disabled">Защита чата отключена.</string>
     <string name="systemmsg_chat_protection_enabled">Защита чата включена</string>
+
+    <string name="devicemsg_self_deleted">Вы удалили чат \"Сохраненные сообщения\".\n\nℹ️ Чтобы снова использовать функцию \"Сохраненные сообщения\", создайте новый чат с самим собой.</string>
+    <!-- %1$s will be replaced by the number of storage already used, sth. as '500 MB'. CAVE: if you want to use a simple the percent sign, type in two, so eg. %1$s %% -->
+    <string name="devicemsg_storage_exceeding">⚠️ Хранилище вашего провайдера скоро будет превышено, уже использовано %1$s%%.\n\nВозможно, вы не сможете получать сообщения, когда хранилище будет использовано на 100%%.\n\n👉 Пожалуйста, проверьте, можете ли вы удалить старые данные в веб-интерфейсе провайдера и подумайте о том, чтобы включить \"Настройки / Удалить старые сообщения\". Вы можете проверить текущее использование хранилища в любое время в \"Настройки / Соединение\".</string>
+    <!-- %1%s will be replaced by date and time in some human-readable format -->
+    <string name="devicemsg_bad_time">⚠️ Дата или время вашего устройства кажутся неточными (%1$s).\n\nНастройте свои часы ⏰🔧, чтобы убедиться, что ваши сообщения принимаются правильно.</string>
+    <string name="devicemsg_update_reminder">⚠️ Ваша версия Delta Chat может быть устаревшей.\n\nЭто может вызвать проблемы, поскольку ваши партнеры по чату используют более новые версии - и вам не хватает последних функций 😳\nПожалуйста, проверьте https://get.delta.chat или магазин приложений на наличие обновлений.</string>
 
     <!-- Some options as "Manage keys" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc. to be entered in a system dialog. This hint is added to the system dialog, below a title as "Manage keys" or "Backup". -->
     <string name="enter_system_secret_to_continue">Пожалуйста, введите защитный код вашей системы, чтобы продолжить. </string>

@@ -109,6 +109,11 @@
         <item quantity="one">%d üye</item>
         <item quantity="other">%d üye</item>
     </plurals>
+    <plurals name="n_recipients">
+        <item quantity="one">%d alıcı</item>
+        <item quantity="other">%d alıcı</item>
+    </plurals>
+
     <string name="self">Ben</string>
     <string name="draft">Taslak</string>
     <string name="image">Görsel</string>
@@ -168,6 +173,11 @@
     <string name="menu_new_chat">Yeni Sohbet</string>
     <string name="menu_new_group">Yeni Grup</string>
     <string name="menu_new_verified_group">Yeni Doğrulanan Grup</string>
+    <!-- consider keeping the term "broadcast"; check how these lists are called eg. on whatsapp in the destination language -->
+    <string name="broadcast_list">Yayın Listesi</string>
+    <string name="broadcast_lists">Yayın Listeleri</string>
+    <string name="new_broadcast_list">Yeni Yayın Listesi</string>
+    <string name="add_recipients">Alıcılar Ekle</string>
     <string name="menu_send">Gönder</string>
     <string name="menu_toggle_keyboard">Emoji Klavyesine Geç</string>
     <string name="menu_edit_group">Grubu Düzenle</string>
@@ -310,6 +320,8 @@
     <string name="ask_delete_value">%s silinsin mi?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">%1$s gruptan kaldırılsın mı?</string>
+    <!-- Translators: %1$s will be replaced by a comma separated list of names -->
+    <string name="ask_remove_from_broadcast">%1$s yayın listesinden kaldırılsın mı?</string>
     <string name="open_url_confirmation">Bu bağlantıyı açmak istiyor musunuz?</string>
 
 
@@ -338,6 +350,7 @@
         <item quantity="other">%d yeni ileti</item>
     </plurals>
     <string name="chat_no_messages_hint">%1$s alıcısına ileti gönder:\n\n• %2$s Delta Chat kullanmıyorsa tamam.\n\n• İlk iletinin teslim edilmesi biraz zaman alabilir ve şifrelenmeyebilir.</string>
+    <string name="chat_new_broadcast_hint">Bir yayın listesinde, diğerleri sizinle olan özel sohbetlerinde ileti alacak.\n\nAlıcılar birbirlerinin farkında olmayacak.</string>
     <string name="chat_new_group_hint">İlk iletiyi oluşturun, diğerlerinin bu grupta yanıtlamasına izin verin.\n\n• Tüm üyeler Delta Chat kullanmıyorsa tamam.\n\n• İlk iletinin teslim edilmesi biraz zaman alabilir.</string>
     <string name="chat_record_slide_to_cancel">Vazgeçmek için kaydırın</string>
     <string name="chat_record_explain">Bir sesli ileti kaydetmek için dokunun ve basılı tutun, göndermek için bırakın</string>

@@ -109,6 +109,11 @@
         <item quantity="one">%d membri</item>
         <item quantity="other">%d membri</item>
     </plurals>
+    <plurals name="n_recipients">
+        <item quantity="one">%d destinatari</item>
+        <item quantity="other">%d destinatari</item>
+    </plurals>
+
     <string name="self">Io</string>
     <string name="draft">Bozza</string>
     <string name="image">Immagine</string>
@@ -168,6 +173,11 @@
     <string name="menu_new_chat">Nuova Chat</string>
     <string name="menu_new_group">Nuovo Gruppo</string>
     <string name="menu_new_verified_group">Nuovo Gruppo Verificato</string>
+    <!-- consider keeping the term "broadcast"; check how these lists are called eg. on whatsapp in the destination language -->
+    <string name="broadcast_list">Lista Trasmissione</string>
+    <string name="broadcast_lists">Liste Trasmissioni</string>
+    <string name="new_broadcast_list">Nuova Lista Trasmissione</string>
+    <string name="add_recipients">Aggiungi Destinatari</string>
     <string name="menu_send">Inviato</string>
     <string name="menu_toggle_keyboard">Alterna la Tastiera Emoji</string>
     <string name="menu_edit_group">Modifica Gruppo</string>
@@ -310,6 +320,8 @@
     <string name="ask_delete_value">Elimina %s?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Rimuovere %1$s dal gruppo?</string>
+    <!-- Translators: %1$s will be replaced by a comma separated list of names -->
+    <string name="ask_remove_from_broadcast">Rimuovere %1$s dalla lista trasmissione?</string>
     <string name="open_url_confirmation">Vuoi aprire questo link?</string>
 
 
@@ -338,6 +350,7 @@
         <item quantity="other">%d nuovi messaggi</item>
     </plurals>
     <string name="chat_no_messages_hint">Invia un messaggio a %1$s:\n\n• Non è necessario che anche %2$s usi Delta Chat.\n\n• L\'invio del primo messaggio può richiedere qualche istante e non essere crittografato. </string>
+    <string name="chat_new_broadcast_hint">In una lista trasmissione, gli altri riceveranno messaggi nelle loro chat private con te.\n\nI destinatari non saranno a conoscenza l\'uno dell\'altro.</string>
     <string name="chat_new_group_hint">Invia il primo messaggio per permettere agli altri di rispondere nel gruppo\n\n• Non è necessario che tutti i membri usino Delta Chat.\n\n• L\'invio del primo messaggio può richiedere qualche istante.</string>
     <string name="chat_record_slide_to_cancel">Scorri per annullare</string>
     <string name="chat_record_explain">Tocca e mantieni per registrare un messaggio vocale, rilascia per inviare </string>

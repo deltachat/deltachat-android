@@ -191,7 +191,7 @@ public class ConversationItem extends BaseConversationItem
     this.locale                 = locale;
     this.glideRequests          = glideRequests;
     this.conversationRecipient  = recipients;
-    this.showSender             = dcChat.isGroup() || messageRecord.getOverrideSenderName() != null;
+    this.showSender             = dcChat.isMultiUser() || messageRecord.getOverrideSenderName() != null;
 
     if (showSender && !messageRecord.isOutgoing()) {
       this.dcContact = dcContext.getContact(messageRecord.getFromId());
