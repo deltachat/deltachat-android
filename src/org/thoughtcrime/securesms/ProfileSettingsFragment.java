@@ -290,7 +290,7 @@ public class ProfileSettingsFragment extends Fragment
                 mode.finish();
               })
               .setNegativeButton(android.R.string.cancel, null)
-              .setMessage(getString(dcChat.isBroadcast()? R.string.ask_remove_recipients : R.string.ask_remove_members, readableToDelList))
+              .setMessage(getString(dcChat.isBroadcast()? R.string.ask_remove_from_broadcast : R.string.ask_remove_members, readableToDelList))
               .show();
           return true;
       }

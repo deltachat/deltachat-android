@@ -173,6 +173,10 @@
     <string name="menu_new_chat">New Chat</string>
     <string name="menu_new_group">New Group</string>
     <string name="menu_new_verified_group">New Verified Group</string>
+    <!-- consider keeping the term "broadcast"; check how these lists are called eg. on whatsapp in the destination language -->
+    <string name="broadcast_list">Broadcast List</string>
+    <string name="new_broadcast_list">New Broadcast List</string>
+    <string name="add_recipients">Add Recipients</string>
     <string name="menu_send">Send</string>
     <string name="menu_toggle_keyboard">Toggle Emoji Keyboard</string>
     <string name="menu_edit_group">Edit Group</string>
@@ -316,7 +320,7 @@
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Remove %1$s from group?</string>
     <!-- Translators: %1$s will be replaced by a comma separated list of names -->
-    <string name="ask_remove_recipients">Remove %1$s from broadcast list?</string>
+    <string name="ask_remove_from_broadcast">Remove %1$s from broadcast list?</string>
     <string name="open_url_confirmation">Do you want to open this link?</string>
 
 
@@ -431,9 +435,6 @@
     <string name="tab_docs_empty_hint">Documents, music and other files shared in this chat will be displayed here.</string>
     <string name="media_preview">Media Preview</string>
     <string name="send_message">Send Message</string>
-    <string name="broadcast_list">Broadcast List</string>
-    <string name="new_broadcast_list">New Broadcast List</string>
-    <string name="add_recipients">Add Recipients</string>
 
 
     <!-- Connectivity -->
