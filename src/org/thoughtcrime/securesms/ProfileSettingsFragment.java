@@ -281,6 +281,7 @@ public class ProfileSettingsFragment extends Fragment
             }
             readableToDelList.append(dcContext.getContact(toDelId).getDisplayName());
           }
+          DcChat dcChat = dcContext.getChat(chatId);
           new AlertDialog.Builder(getContext())
               .setPositiveButton(android.R.string.ok, (dialog, which) -> {
                 for (Integer toDelId : toDelIds) {
@@ -289,7 +290,7 @@ public class ProfileSettingsFragment extends Fragment
                 mode.finish();
               })
               .setNegativeButton(android.R.string.cancel, null)
-              .setMessage(getString(R.string.ask_remove_members, readableToDelList))
+              .setMessage(getString(dcChat.isBroadcast()? R.string.ask_remove_from_broadcast : R.string.ask_remove_members, readableToDelList))
               .show();
           return true;
       }

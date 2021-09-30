@@ -70,6 +70,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
   private boolean              chatIsGroup;
   private boolean              chatIsDeviceTalk;
   private boolean              chatIsMailingList;
+  private boolean              chatIsBroadcast;
   private int                  contactId;
   private boolean              fromChat;
 
@@ -127,6 +128,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
   public boolean onCreateOptionsMenu(Menu menu) {
     if (!isSelfProfile()) {
       getMenuInflater().inflate(R.menu.profile_common, menu);
+      boolean canReceive = true;
 
       if (chatId != 0) {
         if (chatIsDeviceTalk) {
@@ -134,10 +136,16 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
           menu.findItem(R.id.show_encr_info).setVisible(false);
           menu.findItem(R.id.copy_addr_to_clipboard).setVisible(false);
         } else if (chatIsGroup) {
-          menu.findItem(R.id.edit_name).setTitle(R.string.menu_group_name_and_image);
+          if (chatIsBroadcast) {
+            canReceive = false;
+          }
           menu.findItem(R.id.copy_addr_to_clipboard).setVisible(false);
         }
       } else {
+        canReceive = false;
+      }
+
+      if (!canReceive) {
         menu.findItem(R.id.menu_mute_notifications).setVisible(false);
         menu.findItem(R.id.menu_sound).setVisible(false);
         menu.findItem(R.id.menu_vibrate).setVisible(false);
@@ -207,6 +215,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
     chatIsGroup      = false;
     chatIsDeviceTalk = false;
     chatIsMailingList= false;
+    chatIsBroadcast  = false;
     fromChat         = getIntent().getBooleanExtra(FROM_CHAT, false);
 
     if (contactId!=0) {
@@ -217,6 +226,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
       chatIsGroup = dcChat.isGroup();
       chatIsDeviceTalk = dcChat.isDeviceTalk();
       chatIsMailingList = dcChat.isMailingList();
+      chatIsBroadcast = dcChat.isBroadcast();
       if(!chatIsGroup) {
         final int[] members = dcContext.getChatContacts(chatId);
         contactId = members.length>=1? members[0] : 0;
@@ -333,6 +343,9 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
             return getString(R.string.profile);
           } else if(isContactProfile()) {
             return getString(R.string.tab_contact);
+          }
+          else if (chatIsBroadcast) {
+            return getString(R.string.broadcast_list);
           }
           else if (chatIsMailingList) {
             return getString(R.string.mailing_list);
