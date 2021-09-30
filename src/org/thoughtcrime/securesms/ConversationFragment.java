@@ -174,7 +174,7 @@ public class ConversationFragment extends MessageSelectorFragment
 
     private void setNoMessageText() {
         DcChat dcChat = getListAdapter().getChat();
-        if(dcChat.isGroup()){
+        if(dcChat.isMultiUser()){
             if (dcChat.isBroadcast()) {
               noMessageTextView.setText(R.string.chat_new_broadcast_hint);
             } else if (dcChat.isUnpromoted()) {
@@ -328,7 +328,7 @@ public class ConversationFragment extends MessageSelectorFragment
             menu.findItem(R.id.menu_context_share).setVisible(messageRecord.hasFile());
             boolean canReply = canReplyToMsg(messageRecord);
             menu.findItem(R.id.menu_context_reply).setVisible(chat.canSend() && canReply);
-            boolean showReplyPrivately = chat.isGroup() && !messageRecord.isOutgoing() && canReply;
+            boolean showReplyPrivately = chat.isMultiUser() && !messageRecord.isOutgoing() && canReply;
             menu.findItem(R.id.menu_context_reply_privately).setVisible(showReplyPrivately);
         }
 

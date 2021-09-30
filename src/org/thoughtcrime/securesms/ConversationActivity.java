@@ -704,7 +704,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       SendRelayedMessageUtil.immediatelyRelay(this, chatId);
     } else {
       String name = dcChat.getName();
-      if (!dcChat.isGroup()) {
+      if (!dcChat.isMultiUser()) {
         int[] contactIds = dcContext.getChatContacts(chatId);
         if (contactIds.length == 1 || contactIds.length == 2) {
           name = dcContext.getContact(contactIds[0]).getNameNAddr();
@@ -1023,7 +1023,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private boolean isGroupConversation() {
-    return dcChat.isGroup();
+    return dcChat.isMultiUser();
   }
 
   private boolean isPushGroupConversation() {

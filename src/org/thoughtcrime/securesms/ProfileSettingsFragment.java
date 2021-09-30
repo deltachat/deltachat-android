@@ -125,7 +125,7 @@ public class ProfileSettingsFragment extends Fragment
     if (contactId>0) { dcContact = dcContext.getContact(contactId); }
     if (chatId>0)    { dcChat    = dcContext.getChat(chatId); }
 
-    if(dcChat!=null && dcChat.isGroup()) {
+    if(dcChat!=null && dcChat.isMultiUser()) {
       memberList = dcContext.getChatContacts(chatId);
     }
     else if(contactId>0) {

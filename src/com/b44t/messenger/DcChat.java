@@ -45,9 +45,7 @@ public class DcChat {
 
     // aliases and higher-level tools
 
-    public boolean isGroup() {
-      // isMultiUser() might fit better,
-      // however, would result in lots of code changes, so we leave this as is for now.
+    public boolean isMultiUser() {
       int type = getType();
       return type == DC_CHAT_TYPE_GROUP || type == DC_CHAT_TYPE_MAILINGLIST || type == DC_CHAT_TYPE_BROADCAST;
     }

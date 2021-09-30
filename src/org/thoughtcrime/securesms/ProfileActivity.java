@@ -223,7 +223,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
     }
     else if(chatId!=0) {
       DcChat dcChat = dcContext.getChat(chatId);
-      chatIsGroup = dcChat.isGroup();
+      chatIsGroup = dcChat.isMultiUser();
       chatIsDeviceTalk = dcChat.isDeviceTalk();
       chatIsMailingList = dcChat.isMailingList();
       chatIsBroadcast = dcChat.isBroadcast();
