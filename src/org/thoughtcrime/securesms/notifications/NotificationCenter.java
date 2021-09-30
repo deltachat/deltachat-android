@@ -305,7 +305,7 @@ public class NotificationCenter {
             DcChat dcChat = dcContext.getChat(chatId);
             DcMsg dcMsg = dcContext.getMsg(msgId);
             DcMsg quotedMsg = dcMsg.getQuotedMsg();
-            boolean isGroupMention = quotedMsg != null && dcChat.isGroup() && quotedMsg.isOutgoing();
+            boolean isGroupMention = quotedMsg != null && dcChat.isMultiUser() && quotedMsg.isOutgoing();
 
             if (!Prefs.isNotificationsEnabled(context) || (!isGroupMention &&  dcChat.isMuted())) {
                 return;
