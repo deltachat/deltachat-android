@@ -355,7 +355,7 @@
     <string name="cannot_display_unsuported_file_type">មិនអាចបង្ហាញប្រភេទឯកសារនេះ៖ %s</string>
     <string name="attachment_failed_to_load">បានបរាជ័យ ក្នុងការផ្ទុកឯកសារភ្ជាប់។</string>
     <!-- For recording Voice messages: Description for the "Lock" button allowing to lift the thumb from the record button while recording continues -->
-    <string name="lock_recording">ចាក់សោរ ការថត<</string>
+    <string name="lock_recording">ចាក់សោរ ការថត</string>
 
     <!-- mailing lists -->
     <string name="mailing_list">អ៊ីម៉ែលការផ្សាយ</string>
