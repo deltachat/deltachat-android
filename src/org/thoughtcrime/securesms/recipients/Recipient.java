@@ -160,7 +160,7 @@ public class Recipient {
     notifyListeners();
   }
 
-  public boolean isGroupRecipient() {
+  public boolean isMultiUserRecipient() {
     return dcChat!=null && dcChat.isMultiUser();
   }
 
