@@ -175,6 +175,7 @@
     <string name="menu_new_verified_group">New Verified Group</string>
     <!-- consider keeping the term "broadcast"; check how these lists are called eg. on whatsapp in the destination language -->
     <string name="broadcast_list">Broadcast List</string>
+    <string name="broadcast_lists">Broadcast Lists</string>
     <string name="new_broadcast_list">New Broadcast List</string>
     <string name="add_recipients">Add Recipients</string>
     <string name="menu_send">Send</string>

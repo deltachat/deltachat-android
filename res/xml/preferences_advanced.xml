@@ -69,7 +69,7 @@
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:defaultValue="false"
             android:key="pref_new_broadcast_list"
-            android:title="@string/new_broadcast_list"/>
+            android:title="@string/broadcast_lists"/>
 
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:defaultValue="false"
