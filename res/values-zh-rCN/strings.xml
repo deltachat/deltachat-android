@@ -103,7 +103,6 @@
     <plurals name="n_members">
         <item quantity="other">%d 个成员</item>
     </plurals>
-
     <string name="self">我</string>
     <string name="draft">草稿</string>
     <string name="image">图像</string>

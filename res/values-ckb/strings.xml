@@ -96,7 +96,6 @@
         <item quantity="one">%dئەندام</item>
         <item quantity="other">%dئەندام</item>
     </plurals>
-
     <string name="self">من</string>
     <string name="draft">ڕەشنووس</string>
     <string name="image">وێنە</string>

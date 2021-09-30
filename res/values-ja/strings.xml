@@ -100,7 +100,6 @@
     <plurals name="n_members">
         <item quantity="other">%d人のメンバー</item>
     </plurals>
-
     <string name="self">自分</string>
     <string name="draft">下書き</string>
     <string name="image">画像</string>

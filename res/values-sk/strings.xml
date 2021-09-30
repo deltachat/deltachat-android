@@ -119,7 +119,6 @@
         <item quantity="many">%d používatelia</item>
         <item quantity="other">%d používateľ</item>
     </plurals>
-
     <string name="self">Ja</string>
     <string name="draft">Návrh</string>
     <string name="image">Obrázok</string>

@@ -121,7 +121,6 @@
         <item quantity="many">%d member</item>
         <item quantity="other">%d участников</item>
     </plurals>
-
     <string name="self">Я</string>
     <string name="draft">Черновик</string>
     <string name="image">Изображение</string>

@@ -109,7 +109,6 @@
         <item quantity="one">%d deelnemer</item>
         <item quantity="other">%d deelnemers</item>
     </plurals>
-
     <string name="self">Ik</string>
     <string name="draft">Concept</string>
     <string name="image">Afbeelding</string>

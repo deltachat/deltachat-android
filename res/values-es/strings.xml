@@ -109,7 +109,6 @@
         <item quantity="one">%d miembro</item>
         <item quantity="other">%d miembros</item>
     </plurals>
-
     <string name="self">Yo</string>
     <string name="draft">Borrador</string>
     <string name="image">Imagen</string>

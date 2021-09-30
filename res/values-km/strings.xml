@@ -103,7 +103,6 @@
     <plurals name="n_members">
         <item quantity="other">សមាជិក %d</item>
     </plurals>
-
     <string name="self">ខ្ញុំ</string>
     <string name="draft">ពង្រាង</string>
     <string name="image">រូបភាព</string>

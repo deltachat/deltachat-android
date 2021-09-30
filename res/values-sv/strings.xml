@@ -107,7 +107,6 @@
         <item quantity="one">%d medlem</item>
         <item quantity="other">%d medlemmar</item>
     </plurals>
-
     <string name="self">Jag</string>
     <string name="draft">Utkast</string>
     <string name="image">Bild</string>

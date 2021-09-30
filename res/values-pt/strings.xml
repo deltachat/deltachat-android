@@ -58,7 +58,6 @@
         <item quantity="one">%d membro</item>
         <item quantity="other">%d membros</item>
     </plurals>
-
     <string name="self">Eu</string>
     <string name="draft">Rascunho</string>
     <string name="image">Imagem</string>

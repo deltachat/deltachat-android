@@ -113,7 +113,6 @@
         <item quantity="many">%d členů</item>
         <item quantity="other">%d členů</item>
     </plurals>
-
     <string name="self">Já</string>
     <string name="draft">Rozepsané</string>
     <string name="image">Obrázek</string>

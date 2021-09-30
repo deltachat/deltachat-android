@@ -85,7 +85,6 @@
         <item quantity="one">%d ano</item>
         <item quantity="other">%d anoj </item>
     </plurals>
-
     <string name="self">Mi</string>
     <string name="draft">Malneto</string>
     <string name="image">Bildo</string>

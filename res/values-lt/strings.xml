@@ -116,7 +116,6 @@
         <item quantity="many">%d dalyvių</item>
         <item quantity="other">%d dalyvis</item>
     </plurals>
-
     <string name="self">Aš</string>
     <string name="draft">Juodraštis</string>
     <string name="image">Paveikslas</string>

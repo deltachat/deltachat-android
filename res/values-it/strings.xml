@@ -109,7 +109,6 @@
         <item quantity="one">%d membri</item>
         <item quantity="other">%d membri</item>
     </plurals>
-
     <string name="self">Io</string>
     <string name="draft">Bozza</string>
     <string name="image">Immagine</string>

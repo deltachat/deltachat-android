@@ -121,7 +121,6 @@
         <item quantity="many">%d учасників</item>
         <item quantity="other">%d учасників</item>
     </plurals>
-
     <string name="self">Мої</string>
     <string name="draft">Чернетка</string>
     <string name="image">Зображення</string>

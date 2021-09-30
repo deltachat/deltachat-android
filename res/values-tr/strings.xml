@@ -109,7 +109,6 @@
         <item quantity="one">%d üye</item>
         <item quantity="other">%d üye</item>
     </plurals>
-
     <string name="self">Ben</string>
     <string name="draft">Taslak</string>
     <string name="image">Görsel</string>
