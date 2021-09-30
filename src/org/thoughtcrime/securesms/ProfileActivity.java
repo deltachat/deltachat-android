@@ -67,7 +67,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
 
   private DcContext            dcContext;
   private int                  chatId;
-  private boolean              chatIsGroup;
+  private boolean              chatIsMultiUser;
   private boolean              chatIsDeviceTalk;
   private boolean              chatIsMailingList;
   private boolean              chatIsBroadcast;
@@ -135,7 +135,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
           menu.findItem(R.id.edit_name).setVisible(false);
           menu.findItem(R.id.show_encr_info).setVisible(false);
           menu.findItem(R.id.copy_addr_to_clipboard).setVisible(false);
-        } else if (chatIsGroup) {
+        } else if (chatIsMultiUser) {
           if (chatIsBroadcast) {
             canReceive = false;
           }
@@ -212,7 +212,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
   private void initializeResources() {
     chatId           = getIntent().getIntExtra(CHAT_ID_EXTRA, 0);
     contactId        = getIntent().getIntExtra(CONTACT_ID_EXTRA, 0);
-    chatIsGroup      = false;
+    chatIsMultiUser  = false;
     chatIsDeviceTalk = false;
     chatIsMailingList= false;
     chatIsBroadcast  = false;
@@ -223,11 +223,11 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
     }
     else if(chatId!=0) {
       DcChat dcChat = dcContext.getChat(chatId);
-      chatIsGroup = dcChat.isGroup();
+      chatIsMultiUser = dcChat.isMultiUser();
       chatIsDeviceTalk = dcChat.isDeviceTalk();
       chatIsMailingList = dcChat.isMailingList();
       chatIsBroadcast = dcChat.isBroadcast();
-      if(!chatIsGroup) {
+      if(!chatIsMultiUser) {
         final int[] members = dcContext.getChatContacts(chatId);
         contactId = members.length>=1? members[0] : 0;
       }
@@ -267,7 +267,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
 
   private boolean isContactProfile() {
     // contact-profiles are profiles without a chat or with a one-to-one chat
-    return contactId!=0 && (chatId==0 || !chatIsGroup);
+    return contactId!=0 && (chatId==0 || !chatIsMultiUser);
   }
 
   private boolean isSelfProfile() {
@@ -478,7 +478,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
       Intent intent = new Intent(this, MediaPreviewActivity.class);
       intent.setDataAndType(profileImageUri, type);
       intent.putExtra(MediaPreviewActivity.ACTIVITY_TITLE_EXTRA, title);
-      intent.putExtra(MediaPreviewActivity.EDIT_AVATAR_CHAT_ID, chatIsGroup ? chatId : 0); // shows edit-button, might be 0 for a contact-profile
+      intent.putExtra(MediaPreviewActivity.EDIT_AVATAR_CHAT_ID, chatIsMultiUser ? chatId : 0); // shows edit-button, might be 0 for a contact-profile
       startActivity(intent);
     } else {
       onEditName();
@@ -486,7 +486,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void onEditName() {
-    if (chatIsGroup) {
+    if (chatIsMultiUser) {
       Intent intent = new Intent(this, GroupCreateActivity.class);
       intent.putExtra(GroupCreateActivity.EDIT_GROUP_CHAT_ID, chatId);
       if (dcContext.getChat(chatId).isProtected()) {
