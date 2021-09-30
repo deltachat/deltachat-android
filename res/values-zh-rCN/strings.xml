@@ -103,6 +103,10 @@
     <plurals name="n_members">
         <item quantity="other">%d 个成员</item>
     </plurals>
+    <plurals name="n_recipients">
+        <item quantity="other">%d 名收信人 </item>
+    </plurals>
+
     <string name="self">我</string>
     <string name="draft">草稿</string>
     <string name="image">图像</string>
@@ -162,6 +166,11 @@
     <string name="menu_new_chat">新建聊天</string>
     <string name="menu_new_group">新建群组</string>
     <string name="menu_new_verified_group">新建已验证群组</string>
+    <!-- consider keeping the term "broadcast"; check how these lists are called eg. on whatsapp in the destination language -->
+    <string name="broadcast_list">广播列表</string>
+    <string name="broadcast_lists">广播列表</string>
+    <string name="new_broadcast_list">新的广播列表</string>
+    <string name="add_recipients">添加收信人</string>
     <string name="menu_send">发送</string>
     <string name="menu_toggle_keyboard">切换 emoji 键盘</string>
     <string name="menu_edit_group">编辑群组</string>
@@ -300,6 +309,8 @@
     <string name="ask_delete_value">删除 %s？</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">将 %1$s 从群组中移除？</string>
+    <!-- Translators: %1$s will be replaced by a comma separated list of names -->
+    <string name="ask_remove_from_broadcast">从广播列表中移除 %1$s？</string>
     <string name="open_url_confirmation">您要打开此链接吗？</string>
 
 
@@ -325,6 +336,7 @@
         <item quantity="other">%d 条新消息</item>
     </plurals>
     <string name="chat_no_messages_hint">发消息给 %1$s。\n\n• 即使 %2$s 不使用 Delta Chat 也没问题。\n\n• 发送第一条消息可能需要一些时间并且可能未经加密。</string>
+    <string name="chat_new_broadcast_hint">在广播列表中，其他人会在与你的私人聊天中收到消息。\n\n收信人之间不会知道彼此的存在。</string>
     <string name="chat_new_group_hint">撰写第一条消息以允许其他人在此群组内回复。\n\n• 即使有成员不使用 Delta Chat 也没问题。\n\n• 发送第一条消息可能需要一些时间。</string>
     <string name="chat_record_slide_to_cancel">滑动来取消</string>
     <string name="chat_record_explain">按住来录制语音消息，松开来发送</string>
