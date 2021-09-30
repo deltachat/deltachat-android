@@ -89,7 +89,6 @@
         <item quantity="few">%d члана</item>
         <item quantity="other">%d чланова</item>
     </plurals>
-
     <string name="self">Ја</string>
     <string name="draft">Нацрт</string>
     <string name="image">Слика</string>

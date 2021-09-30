@@ -71,7 +71,6 @@
         <item quantity="one">%d tag</item>
         <item quantity="other">%d tag</item>
     </plurals>
-
     <string name="self">Én</string>
     <string name="draft">Piszkozat</string>
     <string name="image">Kép</string>

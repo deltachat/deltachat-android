@@ -110,6 +110,10 @@
         <item quantity="one">%d member</item>
         <item quantity="other">%d members</item>
     </plurals>
+    <plurals name="n_recipients">
+        <item quantity="one">%d recipient</item>
+        <item quantity="other">%d recipients</item>
+    </plurals>
 
     <string name="self">Me</string>
     <string name="draft">Draft</string>
@@ -172,6 +176,11 @@
     <string name="menu_new_chat">New Chat</string>
     <string name="menu_new_group">New Group</string>
     <string name="menu_new_verified_group">New Verified Group</string>
+    <!-- consider keeping the term "broadcast"; check how these lists are called eg. on whatsapp in the destination language -->
+    <string name="broadcast_list">Broadcast List</string>
+    <string name="broadcast_lists">Broadcast Lists</string>
+    <string name="new_broadcast_list">New Broadcast List</string>
+    <string name="add_recipients">Add Recipients</string>
     <string name="menu_send">Send</string>
     <string name="menu_toggle_keyboard">Toggle Emoji Keyboard</string>
     <string name="menu_edit_group">Edit Group</string>
@@ -315,6 +324,8 @@
     <string name="ask_delete_value">Delete %s?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Remove %1$s from group?</string>
+    <!-- Translators: %1$s will be replaced by a comma separated list of names -->
+    <string name="ask_remove_from_broadcast">Remove %1$s from broadcast list?</string>
     <string name="open_url_confirmation">Do you want to open this link?</string>
 
 
@@ -343,6 +354,7 @@
         <item quantity="other">%d new messages</item>
     </plurals>
     <string name="chat_no_messages_hint">Send message to %1$s:\n\n• It is okay if %2$s does not use DeltaLab.\n\n• Delivering the first message may take a while and may be unencrypted.</string>
+    <string name="chat_new_broadcast_hint">In a broadcast list, others will receive messages in their private chats with you.\n\nThe recipients will not be aware of each other.</string>
     <string name="chat_new_group_hint">Compose the first message, allowing others to reply within this group.\n\n• It is okay if not all members use DeltaLab.\n\n• Delivering the first message may take a while.</string>
     <string name="chat_record_slide_to_cancel">Slide to cancel</string>
     <string name="chat_record_explain">Tap and hold to record a voice message, release to send</string>
@@ -727,7 +739,7 @@
     <string name="devicemsg_storage_exceeding">⚠️ Your provider\'s storage is about to exceed, already %1$s%% are used.\n\nYou may not be able to receive message when the storage is 100%% used.\n\n👉 Please check if you can delete old data in the provider\'s web interface and consider to enable \"Settings / Delete Old Messages\". You can check your current storage usage anytime at \"Settings / Connectivity\".</string>
     <!-- %1%s will be replaced by date and time in some human-readable format -->
     <string name="devicemsg_bad_time">⚠️ Date or time of your device seem to be inaccurate (%1$s).\n\nAdjust your clock ⏰🔧 to ensure your messages are received correctly.</string>
-    <string name="devicemsg_update_reminder">⚠️ Your Delta Chat version might be outdated.\n\nThis may cause problems because your chat partners use newer versions - and you are missing the latest features 😳\nPlease check https://get.delta.chat or your app store for updates.</string>
+    <string name="devicemsg_update_reminder">⚠️ Your DeltaLab version might be outdated.\n\nThis may cause problems because your chat partners use newer versions - and you are missing the latest features 😳\nPlease check https://get.delta.chat or your app store for updates.</string>
 
     <!-- Some options as "Manage keys" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc. to be entered in a system dialog. This hint is added to the system dialog, below a title as "Manage keys" or "Backup". -->
     <string name="enter_system_secret_to_continue">Please enter your system defined secret to continue.</string>

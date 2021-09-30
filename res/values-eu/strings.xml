@@ -86,7 +86,6 @@
         <item quantity="one">Kide %d</item>
         <item quantity="other">%d kide</item>
     </plurals>
-
     <string name="self">Ni</string>
     <string name="draft">Zirriborroa</string>
     <string name="image">Irudia</string>

@@ -109,6 +109,10 @@
         <item quantity="one">%d Mitglied</item>
         <item quantity="other">%d Mitglieder</item>
     </plurals>
+    <plurals name="n_recipients">
+        <item quantity="one">%d Empfänger</item>
+        <item quantity="other">%d Empfänger</item>
+    </plurals>
 
     <string name="self">Ich</string>
     <string name="draft">Entwurf</string>
@@ -169,6 +173,11 @@
     <string name="menu_new_chat">Neuer Chat</string>
     <string name="menu_new_group">Neue Gruppe</string>
     <string name="menu_new_verified_group">Neue verifizierte Gruppe</string>
+    <!-- consider keeping the term "broadcast"; check how these lists are called eg. on whatsapp in the destination language -->
+    <string name="broadcast_list">Broadcast-Liste</string>
+    <string name="broadcast_lists">Broadcast-Listen</string>
+    <string name="new_broadcast_list">Neue Broadcast-Liste</string>
+    <string name="add_recipients">Empfänger hinzufügen</string>
     <string name="menu_send">Senden</string>
     <string name="menu_toggle_keyboard">Emojis einblenden</string>
     <string name="menu_edit_group">Gruppe bearbeiten</string>
@@ -311,6 +320,8 @@
     <string name="ask_delete_value">%s löschen?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">%1$s aus der Gruppe löschen?</string>
+    <!-- Translators: %1$s will be replaced by a comma separated list of names -->
+    <string name="ask_remove_from_broadcast">%1$s von der Broadcast-Liste entfernen?</string>
     <string name="open_url_confirmation">Diesen Link öffnen?</string>
 
 
@@ -339,6 +350,7 @@
         <item quantity="other">%d neue Nachrichten</item>
     </plurals>
     <string name="chat_no_messages_hint">Eine Nachricht an %1$s senden:\n\n• Es ist in Ordnung, wenn %2$s kein Delta Chat verwendet.\n\n• Die Übermittlung der ersten Nachricht kann eine Weile dauern und erfolgt unverschlüsselt. </string>
+    <string name="chat_new_broadcast_hint">In Broadcast-Listen erhalten die Empfänger die Nachrichten in den privaten Chats mit Ihnen.\n\nDie Empfänger wissen nicht, wer die anderen Empfänger sind.</string>
     <string name="chat_new_group_hint">Verfassen Sie die erste Nachricht, damit andere innerhalb dieser Gruppe antworten können.\n\n-- Es ist in Ordnung, wenn nicht alle Mitglieder Delta Chat verwenden.\n\n-- Die Zustellung der ersten Nachricht kann einige Zeit dauern.</string>
     <string name="chat_record_slide_to_cancel">Schieben, um abzubrechen</string>
     <string name="chat_record_explain">Tippen und halten, um eine Sprachnachricht aufzunehmen, loslassen um zu senden. </string>

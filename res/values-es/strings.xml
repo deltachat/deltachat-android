@@ -109,7 +109,6 @@
         <item quantity="one">%d miembro</item>
         <item quantity="other">%d miembros</item>
     </plurals>
-
     <string name="self">Yo</string>
     <string name="draft">Borrador</string>
     <string name="image">Imagen</string>
@@ -295,6 +294,10 @@
     <plurals name="ask_delete_messages">
         <item quantity="one">¿Eliminar %d mensaje aquí y en el servidor?</item>
         <item quantity="other">¿Eliminar %d mensajes aquí y en el servidor?</item>
+    </plurals>
+    <plurals name="ask_delete_messages_simple">
+        <item quantity="one">¿Eliminar %d mensaje?</item>
+        <item quantity="other">¿Eliminar %d mensajes?</item>
     </plurals>
     <string name="ask_forward">¿Reenviar mensajes a %1$s?</string>
     <string name="ask_forward_multiple">¿Reenviar mensajes a %1$d chats?</string>

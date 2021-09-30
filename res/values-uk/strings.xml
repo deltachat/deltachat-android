@@ -121,7 +121,6 @@
         <item quantity="many">%d учасників</item>
         <item quantity="other">%d учасників</item>
     </plurals>
-
     <string name="self">Мої</string>
     <string name="draft">Чернетка</string>
     <string name="image">Зображення</string>
@@ -312,6 +311,12 @@
         <item quantity="few">Видалити %d повідомлення тут і на сервері?</item>
         <item quantity="many">Видалити %d повідомлень тут і на сервері?</item>
         <item quantity="other">Видалити %d повідомлень тут і на сервері?</item>
+    </plurals>
+    <plurals name="ask_delete_messages_simple">
+        <item quantity="one">Видалити %d повідомлення?</item>
+        <item quantity="few">Видалити %d повідомлення?</item>
+        <item quantity="many">Видалити %d повідомлень?</item>
+        <item quantity="other">Видалити %d повідомлення?</item>
     </plurals>
     <string name="ask_forward">Переслати повідомлення %1$s?</string>
     <string name="ask_forward_multiple">Пересилати повідомлення у %1$d?</string>

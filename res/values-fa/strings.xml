@@ -107,7 +107,6 @@
         <item quantity="one">%d عضو</item>
         <item quantity="other">%d عضو</item>
     </plurals>
-
     <string name="self">من</string>
     <string name="draft">پیش‌نویس</string>
     <string name="image">تصویر</string>

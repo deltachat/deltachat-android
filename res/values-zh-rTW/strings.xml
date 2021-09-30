@@ -56,7 +56,6 @@
     <plurals name="n_members">
         <item quantity="other">%d位成員</item>
     </plurals>
-
     <string name="self">我</string>
     <string name="draft">草稿</string>
     <string name="image">圖片</string>

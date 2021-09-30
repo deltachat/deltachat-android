@@ -99,7 +99,6 @@
         <item quantity="one">%d medlem</item>
         <item quantity="other">%d medlemmer</item>
     </plurals>
-
     <string name="self">Mig</string>
     <string name="draft">Kladde</string>
     <string name="image">Billede</string>

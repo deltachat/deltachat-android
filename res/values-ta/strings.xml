@@ -71,7 +71,6 @@
         <item quantity="one"> %d உறுப்பினர்கள்</item>
         <item quantity="other"> %d உறுப்பினர்கள்</item>
     </plurals>
-
     <string name="self">நான்</string>
     <string name="draft">வரைவு</string>
     <string name="image">படம்</string>

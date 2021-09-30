@@ -297,6 +297,8 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter
       name = context.getString(R.string.menu_new_group);
     } else if (id == DcContact.DC_CONTACT_ID_NEW_VERIFIED_GROUP) {
       name = context.getString(R.string.menu_new_verified_group);
+    } else if (id == DcContact.DC_CONTACT_ID_NEW_BROADCAST_LIST) {
+      name = context.getString(R.string.new_broadcast_list);
     } else {
       dcContact = getContact(i);
       name = dcContact.getDisplayName();

@@ -94,7 +94,6 @@
         <item quantity="one">%d membru</item>
         <item quantity="other">%d membros</item>
     </plurals>
-
     <string name="self">Deo</string>
     <string name="draft">Abbotzu</string>
     <string name="image">Immàgine</string>

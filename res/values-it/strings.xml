@@ -109,7 +109,6 @@
         <item quantity="one">%d membri</item>
         <item quantity="other">%d membri</item>
     </plurals>
-
     <string name="self">Io</string>
     <string name="draft">Bozza</string>
     <string name="image">Immagine</string>
@@ -295,6 +294,10 @@
         <item quantity="one">Eliminare %d messaggio qui e sul sever?</item>
         <item quantity="other">Eliminare %d messaggi qui e sul sever?</item>
     </plurals>
+    <plurals name="ask_delete_messages_simple">
+        <item quantity="one">Eliminare %d messaggi?</item>
+        <item quantity="other">Eliminare %d messaggi?</item>
+    </plurals>
     <string name="ask_forward">Inoltrare messaggi a %1$s?</string>
     <string name="ask_forward_multiple">Inoltra messaggi a %1$d chat?</string>
     <string name="ask_export_attachment">Esportare allegato? Questo permetterà ad ogni altra app sul tuo dispositivo di accedervi.\n\nContinuare?</string>
@@ -428,7 +431,7 @@
     <!-- Used as a headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Messaggi in uscita</string>
     <!-- Used as a headline in the "Connectivity" view. The placeholder will be replaced by the domain of the configured email-address. -->
-    <string name="storage_on_domain">Memorizzazione su %1$s</string>
+    <string name="storage_on_domain">Spazio su %1$s</string>
     <string name="connectivity">Connettività</string>
     <!-- Shown eg. in the title bar if the app is "Not connected"; as there is very few room, try to be as short as possible. -->
     <string name="connectivity_not_connected">Non connesso</string>

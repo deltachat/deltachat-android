@@ -77,7 +77,6 @@
         <item quantity="few">%d člana</item>
         <item quantity="other">%d članova</item>
     </plurals>
-
     <string name="self">Ja</string>
     <string name="draft">Skica</string>
     <string name="image">Slika</string>

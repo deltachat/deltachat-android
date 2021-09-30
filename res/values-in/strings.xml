@@ -97,7 +97,6 @@
     <plurals name="n_members">
         <item quantity="other">%d anggota</item>
     </plurals>
-
     <string name="self">Saya</string>
     <string name="draft">Draf</string>
     <string name="image">Gambar</string>

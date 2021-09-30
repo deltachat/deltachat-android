@@ -109,7 +109,6 @@
         <item quantity="one">%d deelnemer</item>
         <item quantity="other">%d deelnemers</item>
     </plurals>
-
     <string name="self">Ik</string>
     <string name="draft">Concept</string>
     <string name="image">Afbeelding</string>
@@ -294,6 +293,10 @@
     <plurals name="ask_delete_messages">
         <item quantity="one">Wil je %d bericht verwijderen, zowel hier als op de server?</item>
         <item quantity="other">Wil je %d berichten verwijderen, zowel hier als op de server?</item>
+    </plurals>
+    <plurals name="ask_delete_messages_simple">
+        <item quantity="one">Wil je %d bericht verwijderen?</item>
+        <item quantity="other">Wil je %d berichten verwijderen?</item>
     </plurals>
     <string name="ask_forward">Wil je de berichten doorsturen aan %1$s?</string>
     <string name="ask_forward_multiple">Wil je de berichten doorsturen naar %1$d gesprekken?</string>
