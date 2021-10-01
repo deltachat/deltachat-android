@@ -1,4 +1,4 @@
-package com.b44t.messenger;
+package com.b44t.messenger.uitests.offline;
 
 import android.content.ComponentName;
 import android.content.Intent;
@@ -8,6 +8,9 @@ import androidx.test.espresso.contrib.RecyclerViewActions;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
+
+import com.b44t.messenger.DcContext;
+import com.b44t.messenger.TestUtils;
 
 import org.junit.After;
 import org.junit.Before;
@@ -49,9 +52,7 @@ public class SharingTest {
 
   @Before
   public void createGroup() {
-    activityRule.getScenario().onActivity(a -> {
-      createdGroupId = DcHelper.getContext(a).createGroupChat(false, "group");
-    });
+    activityRule.getScenario().onActivity(a -> createdGroupId = DcHelper.getContext(a).createGroupChat(false, "group"));
   }
 
   @Test

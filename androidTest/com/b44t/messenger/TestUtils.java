@@ -27,7 +27,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.isRoot;
 import static androidx.test.espresso.matcher.ViewMatchers.withHint;
 import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentation;
 
-class TestUtils {
+public class TestUtils {
   private static int createdAccountId = 0;
   private static boolean resetEnterSends = false;
 
@@ -58,7 +58,7 @@ class TestUtils {
   }
 
   @NonNull
-  static ActivityScenarioRule<ConversationListActivity> getOfflineActivityRule() {
+  public static ActivityScenarioRule<ConversationListActivity> getOfflineActivityRule() {
     Intent intent =
             Intent.makeMainActivity(
                     new ComponentName(getInstrumentation().getTargetContext(), ConversationListActivity.class));
