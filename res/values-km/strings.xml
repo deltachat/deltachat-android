@@ -103,6 +103,10 @@
     <plurals name="n_members">
         <item quantity="other">សមាជិក %d</item>
     </plurals>
+    <plurals name="n_recipients">
+        <item quantity="other">%d អ្នកទទួល</item>
+    </plurals>
+
     <string name="self">ខ្ញុំ</string>
     <string name="draft">ពង្រាង</string>
     <string name="image">រូបភាព</string>
@@ -162,6 +166,11 @@
     <string name="menu_new_chat">សន្ទនាថ្មី</string>
     <string name="menu_new_group">ក្រុមថ្មី</string>
     <string name="menu_new_verified_group">ក្រុមដែលបានកំណត់ថ្មី</string>
+    <!-- consider keeping the term "broadcast"; check how these lists are called eg. on whatsapp in the destination language -->
+    <string name="broadcast_list">បញ្ជីចាក់ផ្សាយ</string>
+    <string name="broadcast_lists">បញ្ជីចាក់ផ្សាយ</string>
+    <string name="new_broadcast_list">បញ្ជីចាក់ផ្សាយថ្មី</string>
+    <string name="add_recipients">បន្ថែមអ្នកទទួល</string>
     <string name="menu_send">ផ្ញើ</string>
     <string name="menu_toggle_keyboard">ក្តារចុចបើក/បិទរូបសញ្ញាអារម្មណ៍</string>
     <string name="menu_edit_group">កែក្រុម</string>
@@ -300,6 +309,8 @@
     <string name="ask_delete_value">លុប %s?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">លុប %1$s ពីក្រុមសន្ទនានេះ?</string>
+    <!-- Translators: %1$s will be replaced by a comma separated list of names -->
+    <string name="ask_remove_from_broadcast">លុប %1$s ពីបញ្ជីចាក់ផ្សាយ?</string>
     <string name="open_url_confirmation">តើអ្នកចង់បើកតំណនេះ?</string>
 
 
@@ -325,6 +336,7 @@
         <item quantity="other">មានសារថ្មី %d</item>
     </plurals>
     <string name="chat_no_messages_hint">ផ្ញើសារទៅ %1$s:\n\n• គ្មាន​បញ្ហាប្រសិនបើ %2$s មិនប្រើប្រាស់សា Delta Chat\n\n• ការទទួលសារដំបូងអាចចំណាយពេលមួយស្របក់ និងប្រហែលជាមិនបានធ្វើឲ្យសម្ងាត់ (អ៊ិនគ្រីប)។</string>
+    <string name="chat_new_broadcast_hint">នៅក្នងបញ្ជីចាក់ផ្សាយ អ្នកផ្សេងទៀតនឹងទទួលសារ ក្នុងការជជែកជាឯកជនរបស់ពួកគេ ជាមួយអ្នក។\n\nអ្នកទទួល នឹងមិនស្គាល់គ្នាទេ។</string>
     <string name="chat_new_group_hint">បង្កើតសារដំបូងនឹងអនុញ្ញាតិឲ្យអ្នកផ្សេងទៀតឆ្លើយតបនៅក្នុងក្រុមនេះ។\n\n• មិនអីទេ ប្រសិនបើមិនមែនសមាជិកទាំងអស់ប្រើប្រាស់សា Delta Chat ។\n\n• ការទទួលបានសារដំបូងអាចចំណាយពេលមួយស្របក់។</string>
     <string name="chat_record_slide_to_cancel">អូសដើម្បីផ្អាកសិន</string>
     <string name="chat_record_explain">ប៉ៈ និងសង្កត់ដើម្បីថតសារសម្លេង លែងដើម្បីផ្ញើ។</string>

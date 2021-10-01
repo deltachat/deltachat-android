@@ -109,6 +109,11 @@
         <item quantity="one">%d anëtar</item>
         <item quantity="other">%d anëtarë</item>
     </plurals>
+    <plurals name="n_recipients">
+        <item quantity="one">%d marrës</item>
+        <item quantity="other">%d marrës</item>
+    </plurals>
+
     <string name="self">Unë</string>
     <string name="draft">Skicë</string>
     <string name="image">Figurë</string>
@@ -166,6 +171,7 @@
     <string name="menu_new_chat">Fjalosje e re</string>
     <string name="menu_new_group">Grup i ri</string>
     <string name="menu_new_verified_group">Grup i ri i verifikuar</string>
+    <string name="add_recipients">Shtoni Marrës</string>
     <string name="menu_send">Dërgoje</string>
     <string name="menu_toggle_keyboard">Shfaq/fshih tastierë emoji</string>
     <string name="menu_edit_group">Përpunoni grup</string>
