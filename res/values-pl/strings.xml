@@ -437,8 +437,6 @@
     <string name="sending">Wysyłanie…</string>
     <!-- Used as a subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed or so. -->
     <string name="messages">Wiadomości</string>
-
-
     <!-- welcome and login -->
     <string name="welcome_intro1_message">Komunikator o największym zasięgu na świecie. Darmowy i bezpieczny.</string>
     <string name="login_title">Zaloguj się</string>

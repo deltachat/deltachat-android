@@ -459,8 +459,6 @@
     <string name="not_supported_by_provider">Sağlayıcınız tarafından desteklenmiyor.</string>
     <!-- Used as a subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed or so. -->
     <string name="messages">İletiler</string>
-
-
     <!-- welcome and login -->
     <string name="welcome_intro1_message">Dünyanın en geniş kitleli ulağı. Özgür ve bağımsız.</string>
     <string name="login_title">Oturum Aç</string>

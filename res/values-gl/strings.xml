@@ -459,8 +459,6 @@
     <string name="not_supported_by_provider">O teu provedor non ten soporte</string>
     <!-- Used as a subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed or so. -->
     <string name="messages">Mensaxes</string>
-
-
     <!-- welcome and login -->
     <string name="welcome_intro1_message">O sistema de conversa con maior audiencia no mundo. Libre e independente.</string>
     <string name="login_title">Conectar</string>

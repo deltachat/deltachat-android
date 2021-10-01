@@ -450,8 +450,6 @@
     <string name="not_supported_by_provider">I pambuluar nga furnizuesi juaj i shërbimit</string>
     <!-- Used as a subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed or so. -->
     <string name="messages">Mesazhe</string>
-
-
     <!-- welcome and login -->
     <string name="welcome_intro1_message">Shkëmbyesi i mesazheve me publikun më të gjerë në botë. I lirë dhe i pavarur.</string>
     <string name="login_title">Hyrje</string>
