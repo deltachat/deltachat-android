@@ -1,5 +1,6 @@
 package com.b44t.messenger;
 
+import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -62,8 +63,21 @@ public class TestUtils {
     Intent intent =
             Intent.makeMainActivity(
                     new ComponentName(getInstrumentation().getTargetContext(), ConversationListActivity.class));
-    TestUtils.createOfflineAccount();
+    createOfflineAccount();
+    prepare();
     return new ActivityScenarioRule<>(intent);
+  }
+
+  @NonNull
+  public static <T extends Activity> ActivityScenarioRule<T> getOnlineActivityRule(Class<T> activityClass) {
+    Context context = getInstrumentation().getTargetContext();
+    AccountManager.getInstance().beginAccountCreation(context);
+    prepare();
+    return new ActivityScenarioRule<>(new Intent(getInstrumentation().getTargetContext(), activityClass));
+  }
+
+  private static void prepare() {
+    Prefs.setBooleanPreference(getInstrumentation().getTargetContext(), Prefs.DOZE_ASKED_DIRECTLY, true);
   }
 
   /**
@@ -71,7 +85,7 @@ public class TestUtils {
    *
    * @param matcher Generic Matcher used to find our view
    */
-  static ViewAction searchFor(Matcher<View> matcher) {
+  private static ViewAction searchFor(Matcher<View> matcher) {
     return new ViewAction() {
 
       public Matcher<View> getConstraints() {
