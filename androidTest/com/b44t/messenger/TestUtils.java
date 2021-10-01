@@ -156,6 +156,6 @@ class TestUtils {
       resetEnterSends = true;
       Prefs.setEnterSendsEnabled(getInstrumentation().getTargetContext(), true);
     }
-    onView(withHint(R.string.chat_input_placeholder)).perform(typeText("\n"));
+    waitForView(withHint(R.string.chat_input_placeholder), 10000, 100).perform(typeText("\n"));
   }
 }
