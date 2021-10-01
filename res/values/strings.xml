@@ -459,6 +459,8 @@
     <string name="not_supported_by_provider">Not supported by your provider.</string>
     <!-- Used as a subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed or so. -->
     <string name="messages">Messages</string>
+    <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
+    <string name="part_of_total_used">%1$s of %2$s used</string>
 
 
     <!-- welcome and login -->
