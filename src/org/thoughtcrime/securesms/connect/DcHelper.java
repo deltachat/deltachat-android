@@ -186,7 +186,8 @@ public class DcHelper {
     dcContext.setStockTranslation(112, context.getString(R.string.error_x));
     dcContext.setStockTranslation(113, context.getString(R.string.not_supported_by_provider));
     dcContext.setStockTranslation(114, context.getString(R.string.messages));
-    dcContext.setStockTranslation(116, context.getString(R.string.broadcast_list));
+    dcContext.setStockTranslation(115, context.getString(R.string.broadcast_list));
+    dcContext.setStockTranslation(116, context.getString(R.string.part_of_total_used));
   }
 
   public static File getImexDir() {
