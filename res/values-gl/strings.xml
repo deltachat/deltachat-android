@@ -109,6 +109,11 @@
         <item quantity="one">%d membro</item>
         <item quantity="other">%d membros</item>
     </plurals>
+    <plurals name="n_recipients">
+        <item quantity="one">%d correspondente</item>
+        <item quantity="other">%d correspondentes</item>
+    </plurals>
+
     <string name="self">Eu</string>
     <string name="draft">Borrador</string>
     <string name="image">Imaxe</string>
@@ -168,6 +173,11 @@
     <string name="menu_new_chat">Nova conversa</string>
     <string name="menu_new_group">Novo grupo</string>
     <string name="menu_new_verified_group">Novo grupo verificado</string>
+    <!-- consider keeping the term "broadcast"; check how these lists are called eg. on whatsapp in the destination language -->
+    <string name="broadcast_list">Lista de difusión</string>
+    <string name="broadcast_lists">Listas de difusión</string>
+    <string name="new_broadcast_list">Nova lista de difusión</string>
+    <string name="add_recipients">Engadir correspondentes</string>
     <string name="menu_send">Enviar</string>
     <string name="menu_toggle_keyboard">Activar teclado emoji</string>
     <string name="menu_edit_group">Editar grupo</string>
@@ -310,6 +320,8 @@
     <string name="ask_delete_value">Eliminar %s?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Eliminar  %1$s do grupo?</string>
+    <!-- Translators: %1$s will be replaced by a comma separated list of names -->
+    <string name="ask_remove_from_broadcast">Eliminar %1$s da lista de difusión?</string>
     <string name="open_url_confirmation">Queres abrir esta ligazón?</string>
 
 
@@ -338,6 +350,7 @@
         <item quantity="other">%d novas mensaxes</item>
     </plurals>
     <string name="chat_no_messages_hint">Enviar mensaxe a %1$s:\n\n• Da igual se %2$s non utiliza Delta Chat.\n\n• A entrega da primeira mensaxe podería demorarse un pouco e non estar cifrada.</string>
+    <string name="chat_new_broadcast_hint">Nas listas de difusión, as correspondentes recibirán mensaxes en chats privados contigo.\n\nAs correspondentes non saberán unhas das outras.</string>
     <string name="chat_new_group_hint">Escribe a primeira mensaxe, permita a outras responder a este grupo.\n\n• Da igual se outros membros non utilizan Delta Chat.\n\n• A entrega da primeira mensaxe podería demorarse un pouco.</string>
     <string name="chat_record_slide_to_cancel">Desliza para cancelar</string>
     <string name="chat_record_explain">Toca e mantén para gravar mensaxe de voz, solta para enviar</string>
