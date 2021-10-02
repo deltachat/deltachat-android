@@ -445,6 +445,8 @@
     <string name="not_supported_by_provider">មិនត្រូវបានគាំទ្រ ដោយកម្មវិធីផ្តល់សេវារបស់អ្នកទេ។</string>
     <!-- Used as a subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed or so. -->
     <string name="messages">សារ</string>
+    <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
+    <string name="part_of_total_used">បានប្រើ %1$s នៃ %2$s</string>
 
 
     <!-- welcome and login -->

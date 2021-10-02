@@ -109,6 +109,11 @@
         <item quantity="one">%d miembro</item>
         <item quantity="other">%d miembros</item>
     </plurals>
+    <plurals name="n_recipients">
+        <item quantity="one">%d destinatario</item>
+        <item quantity="other">%d destinatarios</item>
+    </plurals>
+
     <string name="self">Yo</string>
     <string name="draft">Borrador</string>
     <string name="image">Imagen</string>
@@ -169,6 +174,11 @@
     <string name="menu_new_chat">Nuevo chat</string>
     <string name="menu_new_group">Nuevo grupo</string>
     <string name="menu_new_verified_group">Nuevo grupo verificado</string>
+    <!-- consider keeping the term "broadcast"; check how these lists are called eg. on whatsapp in the destination language -->
+    <string name="broadcast_list">Lista de difusión</string>
+    <string name="broadcast_lists">Listas de difusión</string>
+    <string name="new_broadcast_list">Nueva lista de difusión</string>
+    <string name="add_recipients">Agregar destinatarios</string>
     <string name="menu_send">Enviar</string>
     <string name="menu_toggle_keyboard">Alternar teclado emoji</string>
     <string name="menu_edit_group">Editar grupo</string>
@@ -311,6 +321,8 @@
     <string name="ask_delete_value">¿Borrar %s?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">¿Eliminar a %1$s del grupo?</string>
+    <!-- Translators: %1$s will be replaced by a comma separated list of names -->
+    <string name="ask_remove_from_broadcast">¿Eliminar a %1$s de la lista de difusión?</string>
     <string name="open_url_confirmation">¿Quieres abrir este enlace?</string>
 
 
@@ -339,6 +351,7 @@
         <item quantity="other">%d nuevos mensajes</item>
     </plurals>
     <string name="chat_no_messages_hint">Enviar mensaje a %1$s:\n\n• No hay problema si %2$s no usa DeltaLab.\n\n• La entrega del primer mensaje puede tardar un poco y puede estar sin cifrar.</string>
+    <string name="chat_new_broadcast_hint">En una lista de difusión, los otros recibirán los mensajes en sus chats privados contigo.\n\nLos destinatarios no se ven entre sí.</string>
     <string name="chat_new_group_hint">Componga el primer mensaje, permitiendo que otros respondan dentro de este grupo.\n\n• No hay problema si no todos los miembros usan DeltaLab.\n\n• La entrega del primer mensaje puede tardar un poco y puede estar sin cifrar.</string>
     <string name="chat_record_slide_to_cancel">Deslice para cancelar</string>
     <string name="chat_record_explain">Mantenga pulsado para grabar un mensaje de voz, suelte para enviar</string>
@@ -447,6 +460,8 @@
     <string name="not_supported_by_provider">No soportado por tu proveedor.</string>
     <!-- Used as a subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed or so. -->
     <string name="messages">Mensajes</string>
+    <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
+    <string name="part_of_total_used">%1$s de %2$s usado</string>
 
 
     <!-- welcome and login -->

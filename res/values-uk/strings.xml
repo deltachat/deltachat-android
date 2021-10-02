@@ -472,8 +472,6 @@
     <string name="not_supported_by_provider">Не підтримується вашим провайдером електронної пошти.</string>
     <!-- Used as a subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed or so. -->
     <string name="messages">Повідомлення</string>
-
-
     <!-- welcome and login -->
     <string name="welcome_intro1_message">Мессенджер з найширшою аудиторією у світі. Безкоштовний і незалежний.</string>
     <string name="login_title">Увійти</string>

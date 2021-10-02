@@ -445,8 +445,6 @@
     <string name="not_supported_by_provider">你的邮件供应商不支持</string>
     <!-- Used as a subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed or so. -->
     <string name="messages">消息</string>
-
-
     <!-- welcome and login -->
     <string name="welcome_intro1_message">本通讯软件有着世界上最广泛的受众。自由且自主。</string>
     <string name="login_title">登录</string>
