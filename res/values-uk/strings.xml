@@ -121,6 +121,13 @@
         <item quantity="many">%d учасників</item>
         <item quantity="other">%d учасників</item>
     </plurals>
+    <plurals name="n_recipients">
+        <item quantity="one">%d одержувач</item>
+        <item quantity="few">%d одержувачі</item>
+        <item quantity="many">%d одержувачів</item>
+        <item quantity="other">%d одержувачів</item>
+    </plurals>
+
     <string name="self">Мої</string>
     <string name="draft">Чернетка</string>
     <string name="image">Зображення</string>
@@ -180,6 +187,11 @@
     <string name="menu_new_chat">Новий чат</string>
     <string name="menu_new_group">Нова група</string>
     <string name="menu_new_verified_group">Нова перевірена група</string>
+    <!-- consider keeping the term "broadcast"; check how these lists are called eg. on whatsapp in the destination language -->
+    <string name="broadcast_list">Список трансляцій</string>
+    <string name="broadcast_lists">Списки трансляцій</string>
+    <string name="new_broadcast_list">Новий Список трансляцій</string>
+    <string name="add_recipients">Додати одержувачів</string>
     <string name="menu_send">Відправити</string>
     <string name="menu_toggle_keyboard">Увімкнути емодзі-клавіатуру</string>
     <string name="menu_edit_group">Редагувати групу</string>
@@ -330,6 +342,8 @@
     <string name="ask_delete_value">Видалити %s?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Видалити %1$s із групи?</string>
+    <!-- Translators: %1$s will be replaced by a comma separated list of names -->
+    <string name="ask_remove_from_broadcast">Видалити %1$s зі списку трансляцій?</string>
     <string name="open_url_confirmation">Ви впевнені, що хочете відкрити це посилання?</string>
 
 
@@ -364,6 +378,7 @@
         <item quantity="other">%d нових повідомлень</item>
     </plurals>
     <string name="chat_no_messages_hint">Надіслати повідомлення %1$s:\n\n• Це спрацює, якщо %2$s не використовує Delta Chat.\n\n• Перше повідомлення може виявитися незашифрованим, його доставка може зайняти деякий час.</string>
+    <string name="chat_new_broadcast_hint">У списку трансляцій інші отримуватимуть повідомлення у своїх приватних чатах з вами.\n\nОдержувачі не будуть знати один про одного.</string>
     <string name="chat_new_group_hint">Напишіть перше повідомлення, що дасть можливість іншим учасникам групи відповісти на нього.\n\n• Це спрацює, навіть якщо не всі учасники використовують Delta Chat.\n\n• Доставка першого повідомлення може зайняти деякий час.</string>
     <string name="chat_record_slide_to_cancel">Рухайте для скасування</string>
     <string name="chat_record_explain">Натисніть і утримуйте для запису голосового повідомлення, відпустіть для відправки</string>
@@ -472,6 +487,10 @@
     <string name="not_supported_by_provider">Не підтримується вашим провайдером електронної пошти.</string>
     <!-- Used as a subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed or so. -->
     <string name="messages">Повідомлення</string>
+    <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
+    <string name="part_of_total_used">Використано %1$s з %2$s</string>
+
+
     <!-- welcome and login -->
     <string name="welcome_intro1_message">Мессенджер з найширшою аудиторією у світі. Безкоштовний і незалежний.</string>
     <string name="login_title">Увійти</string>
