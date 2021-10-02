@@ -174,9 +174,9 @@
     <string name="menu_new_group">Nieuwe groep</string>
     <string name="menu_new_verified_group">Nieuwe goedgekeurde groep</string>
     <!-- consider keeping the term "broadcast"; check how these lists are called eg. on whatsapp in the destination language -->
-    <string name="broadcast_list">Uitzendlijst</string>
-    <string name="broadcast_lists">Uitzendlijsten</string>
-    <string name="new_broadcast_list">Nieuwe uitzendlijst</string>
+    <string name="broadcast_list">Verzendlijst</string>
+    <string name="broadcast_lists">Verzendlijsten</string>
+    <string name="new_broadcast_list">Nieuwe verzendlijst</string>
     <string name="add_recipients">Ontvangers toevoegen</string>
     <string name="menu_send">Versturen</string>
     <string name="menu_toggle_keyboard">Emoji-toetsenbord tonen/verbergen</string>
@@ -321,7 +321,7 @@
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Wil je %1$s verwijderen uit de groep?</string>
     <!-- Translators: %1$s will be replaced by a comma separated list of names -->
-    <string name="ask_remove_from_broadcast">Wil je %1$s verwijderen van de uitzendlijst?</string>
+    <string name="ask_remove_from_broadcast">Wil je %1$s verwijderen van de verzendlijst?</string>
     <string name="open_url_confirmation">Weet je zeker dat je deze link wilt openen?</string>
 
 
@@ -350,6 +350,7 @@
         <item quantity="other">%d nieuwe berichten</item>
     </plurals>
     <string name="chat_no_messages_hint">Verstuur een bericht aan %1$s:\n\n• %2$s hoeft Delta Chat niet te gebruiken.\n\n• Het afleveren van het eerste bericht kan even duren en onversleuteld zijn.</string>
+    <string name="chat_new_broadcast_hint">Als je een verzendlijst maakt, dan onhvangen anderen bericht van jou in hun privégesprekken.\n\nDe ontvangers kunnen elkaar echter niet zien.</string>
     <string name="chat_new_group_hint">Stel het eerste bericht op, zodat anderen binnen deze groep kunnen reageren.\n\n• Niet alle leden hoeven Delta Chat te gebruiken.\n\n• Het afleveren van het eerste bericht kan even duren.</string>
     <string name="chat_record_slide_to_cancel">Veeg opzij om te annuleren</string>
     <string name="chat_record_explain">Houdt ingedrukt om een spraakbericht op te nemen; laat los om te versturen</string>
@@ -458,6 +459,10 @@
     <string name="not_supported_by_provider">Wordt niet ondersteund door je provider.</string>
     <!-- Used as a subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed or so. -->
     <string name="messages">Berichten</string>
+    <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
+    <string name="part_of_total_used">%1$s van %2$s in gebruik</string>
+
+
     <!-- welcome and login -->
     <string name="welcome_intro1_message">Dé berichtenapp met het breedste publiek ter wereld. Gratis en onafhankelijk.</string>
     <string name="login_title">Inloggen</string>
