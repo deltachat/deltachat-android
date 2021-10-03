@@ -67,7 +67,7 @@
     <PreferenceCategory android:title="@string/pref_experimental_features">
 
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
-            android:defaultValue="false"
+            android:defaultValue="true"
             android:key="pref_new_broadcast_list"
             android:title="@string/broadcast_lists"/>
 
