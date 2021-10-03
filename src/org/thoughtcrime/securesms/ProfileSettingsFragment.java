@@ -208,9 +208,6 @@ public class ProfileSettingsFragment extends Fragment
 
   public void onAddMember() {
     DcChat dcChat = dcContext.getChat(chatId);
-    if (!dcChat.canSend()) {
-      return;
-    }
     Intent intent = new Intent(getContext(), ContactMultiSelectionActivity.class);
     intent.putExtra(ContactSelectionListFragment.SELECT_VERIFIED_EXTRA, dcChat.isProtected());
     ArrayList<String> preselectedContacts = new ArrayList<>();
@@ -223,10 +220,6 @@ public class ProfileSettingsFragment extends Fragment
   }
 
   public void onQrInvite() {
-    DcChat dcChat = dcContext.getChat(chatId);
-    if (!dcChat.canSend()) {
-      return;
-    }
     Intent qrIntent = new Intent(getContext(), QrShowActivity.class);
     qrIntent.putExtra(QrShowActivity.CHAT_ID, chatId);
     startActivity(qrIntent);
