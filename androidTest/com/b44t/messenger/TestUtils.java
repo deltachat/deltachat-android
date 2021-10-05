@@ -1,5 +1,6 @@
 package com.b44t.messenger;
 
+import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -27,7 +28,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.isRoot;
 import static androidx.test.espresso.matcher.ViewMatchers.withHint;
 import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentation;
 
-class TestUtils {
+public class TestUtils {
   private static int createdAccountId = 0;
   private static boolean resetEnterSends = false;
 
@@ -58,12 +59,25 @@ class TestUtils {
   }
 
   @NonNull
-  static ActivityScenarioRule<ConversationListActivity> getOfflineActivityRule() {
+  public static ActivityScenarioRule<ConversationListActivity> getOfflineActivityRule() {
     Intent intent =
             Intent.makeMainActivity(
                     new ComponentName(getInstrumentation().getTargetContext(), ConversationListActivity.class));
-    TestUtils.createOfflineAccount();
+    createOfflineAccount();
+    prepare();
     return new ActivityScenarioRule<>(intent);
+  }
+
+  @NonNull
+  public static <T extends Activity> ActivityScenarioRule<T> getOnlineActivityRule(Class<T> activityClass) {
+    Context context = getInstrumentation().getTargetContext();
+    AccountManager.getInstance().beginAccountCreation(context);
+    prepare();
+    return new ActivityScenarioRule<>(new Intent(getInstrumentation().getTargetContext(), activityClass));
+  }
+
+  private static void prepare() {
+    Prefs.setBooleanPreference(getInstrumentation().getTargetContext(), Prefs.DOZE_ASKED_DIRECTLY, true);
   }
 
   /**
@@ -71,7 +85,7 @@ class TestUtils {
    *
    * @param matcher Generic Matcher used to find our view
    */
-  static ViewAction searchFor(Matcher<View> matcher) {
+  private static ViewAction searchFor(Matcher<View> matcher) {
     return new ViewAction() {
 
       public Matcher<View> getConstraints() {
@@ -156,6 +170,6 @@ class TestUtils {
       resetEnterSends = true;
       Prefs.setEnterSendsEnabled(getInstrumentation().getTargetContext(), true);
     }
-    onView(withHint(R.string.chat_input_placeholder)).perform(typeText("\n"));
+    waitForView(withHint(R.string.chat_input_placeholder), 10000, 100).perform(typeText("\n"));
   }
 }

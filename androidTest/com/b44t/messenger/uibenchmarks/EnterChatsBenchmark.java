@@ -1,4 +1,4 @@
-package com.b44t.messenger;
+package com.b44t.messenger.uibenchmarks;
 
 import android.util.Log;
 
@@ -6,6 +6,8 @@ import androidx.test.espresso.contrib.RecyclerViewActions;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
+
+import com.b44t.messenger.TestUtils;
 
 import org.junit.After;
 import org.junit.Rule;

@@ -1,13 +1,13 @@
-package com.b44t.messenger;
+package com.b44t.messenger.uitests.online;
 
 
-import android.content.Context;
-import android.content.Intent;
 import android.text.TextUtils;
 
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
+
+import com.b44t.messenger.TestUtils;
 
 import org.junit.After;
 import org.junit.Rule;
@@ -16,7 +16,6 @@ import org.junit.runner.RunWith;
 import org.thoughtcrime.securesms.BuildConfig;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.WelcomeActivity;
-import org.thoughtcrime.securesms.connect.AccountManager;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
@@ -26,19 +25,12 @@ import static androidx.test.espresso.matcher.ViewMatchers.isClickable;
 import static androidx.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static androidx.test.espresso.matcher.ViewMatchers.withHint;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
-import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentation;
 
 @RunWith(AndroidJUnit4.class)
 @LargeTest
 public class OnboardingTest {
   @Rule
-  public ActivityScenarioRule<WelcomeActivity> activityRule = new ActivityScenarioRule<>(getIntent());
-
-  private Intent getIntent() {
-    Context context = getInstrumentation().getTargetContext();
-    AccountManager.getInstance().beginAccountCreation(context);
-    return new Intent(getInstrumentation().getTargetContext(), WelcomeActivity.class);
-  }
+  public ActivityScenarioRule<WelcomeActivity> activityRule = TestUtils.getOnlineActivityRule(WelcomeActivity.class);
 
   @Test
   public void testAccountCreation() {
