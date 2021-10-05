@@ -6,7 +6,6 @@ DeltaLab uses a [modified](https://github.com/adbenitez/deltalab-core) version o
 
 <img alt="Screenshot Chat List" src="docs/images/2020-08-chatlist.jpg" width="298" /> <img alt="Screenshot Chat View" src="docs/images/2020-08-chat.jpg" width="298" />
 
-
 # Credits
 
 DeltaLab is based on the [official Delta Chat client](https://github.com/deltachat/deltachat-android) with some small improvements.

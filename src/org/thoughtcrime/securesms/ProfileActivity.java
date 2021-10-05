@@ -138,6 +138,11 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
         } else if (chatIsMultiUser) {
           if (chatIsBroadcast) {
             canReceive = false;
+          } else {
+            DcChat dcChat = dcContext.getChat(chatId);
+            if (!chatIsMailingList && !dcChat.canSend()) {
+              menu.findItem(R.id.edit_name).setVisible(false);
+            }
           }
           menu.findItem(R.id.copy_addr_to_clipboard).setVisible(false);
         }
