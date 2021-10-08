@@ -22,6 +22,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -30,17 +31,21 @@ import android.widget.Toast;
 import androidx.appcompat.widget.Toolbar;
 import androidx.appcompat.widget.TooltipCompat;
 
+import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMsg;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+import org.thoughtcrime.securesms.components.AvatarImageView;
 import org.thoughtcrime.securesms.components.SearchToolbar;
 import org.thoughtcrime.securesms.connect.AccountManager;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.map.MapActivity;
+import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.qr.QrActivity;
 import org.thoughtcrime.securesms.qr.QrCodeHandler;
+import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.search.SearchFragment;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
@@ -72,6 +77,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 
   private ConversationListFragment conversationListFragment;
   public TextView                  title;
+  private AvatarImageView          selfAvatar;
   private SearchFragment           searchFragment;
   private SearchToolbar            searchToolbar;
   private ImageView                searchAction;
@@ -98,6 +104,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     Toolbar toolbar = findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
 
+    selfAvatar               = findViewById(R.id.self_avatar);
     title                    = findViewById(R.id.toolbar_title);
     searchToolbar            = findViewById(R.id.search_toolbar);
     searchAction             = findViewById(R.id.search_action);
@@ -110,6 +117,10 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     initializeTitleListener();
 
     TooltipCompat.setTooltipText(searchAction, getText(R.string.search_explain));
+
+    TooltipCompat.setTooltipText(selfAvatar, getText(R.string.pref_profile_info_headline));
+    selfAvatar.setOnClickListener(v -> startActivity(new Intent(this, CreateProfileActivity.class)));
+
     refresh();
   }
 
@@ -123,6 +134,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   }
 
   private void refresh() {
+    refreshAvatar();
     refreshTitle();
     handleOpenpgp4fpr();
 
@@ -145,12 +157,22 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     }
   }
 
+  public void refreshAvatar() {
+    if (isRelayingMessageContent(this)) {
+      selfAvatar.setVisibility(View.GONE);
+    } else {
+      DcContext dcContext = DcHelper.getContext(this);
+      DcContact self = dcContext.getContact(DcContact.DC_CONTACT_ID_SELF);
+      selfAvatar.setAvatar(GlideApp.with(this), new Recipient(this, self), false);
+    }
+  }
+
   @Override
   public void onResume() {
     super.onResume();
     dynamicTheme.onResume(this);
     dynamicLanguage.onResume(this);
-
+    refreshAvatar();
   }
 
   @Override
