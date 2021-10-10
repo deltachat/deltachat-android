@@ -18,6 +18,7 @@ import org.thoughtcrime.securesms.components.AvatarImageView;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.ViewUtil;
+import org.thoughtcrime.securesms.util.DynamicTheme;
 
 public class AccountSelectionListItem extends LinearLayout {
 
@@ -64,6 +65,7 @@ public class AccountSelectionListItem extends LinearLayout {
       }
     });
 
+    deleteBtn.setColorFilter(DynamicTheme.isDarkTheme(getContext())? Color.WHITE : Color.BLACK);
     ViewUtil.setTextViewGravityStart(this.nameView, getContext());
   }
 
