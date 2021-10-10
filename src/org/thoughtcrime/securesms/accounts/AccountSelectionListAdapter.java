@@ -39,22 +39,33 @@ public class AccountSelectionListAdapter extends RecyclerView.Adapter
       super(itemView);
     }
 
-    public abstract void bind(@NonNull GlideRequests glideRequests, int accountId, DcContact self, String name, String addr, int unreadCount, ItemClickListener listener);
+    public abstract void bind(@NonNull GlideRequests glideRequests, int accountId, DcContact self, String name, String addr, int unreadCount);
     public abstract void unbind(@NonNull GlideRequests glideRequests);
     }
 
   public class AccountViewHolder extends ViewHolder {
 
-    AccountViewHolder(@NonNull  final View itemView) {
+    AccountViewHolder(@NonNull  final View itemView,
+                      @Nullable final ItemClickListener clickListener) {
       super(itemView);
+      itemView.setOnClickListener(view -> {
+        if (clickListener != null) {
+          clickListener.onItemClick(getView());
+        }
+      });
+      getView().getDeleteBtn().setOnClickListener(view -> {
+        if (clickListener != null) {
+          clickListener.onDeleteButtonClick(getView().getAccountId());
+        }
+      });
     }
 
     public AccountSelectionListItem getView() {
       return (AccountSelectionListItem) itemView;
     }
 
-    public void bind(@NonNull GlideRequests glideRequests, int accountId, DcContact self, String name, String addr, int unreadCount, ItemClickListener listener) {
-      getView().bind(glideRequests, accountId, self, name, addr, unreadCount, listener);
+    public void bind(@NonNull GlideRequests glideRequests, int accountId, DcContact self, String name, String addr, int unreadCount) {
+      getView().bind(glideRequests, accountId, self, name, addr, unreadCount);
     }
 
     @Override
@@ -77,7 +88,7 @@ public class AccountSelectionListAdapter extends RecyclerView.Adapter
 
   @Override
   public AccountSelectionListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-    return new AccountViewHolder(li.inflate(R.layout.account_selection_list_item, parent, false));
+    return new AccountViewHolder(li.inflate(R.layout.account_selection_list_item, parent, false), clickListener);
   }
 
   @Override
@@ -104,7 +115,7 @@ public class AccountSelectionListAdapter extends RecyclerView.Adapter
 
     ViewHolder holder = (ViewHolder) viewHolder;
     holder.unbind(glideRequests);
-    holder.bind(glideRequests, id, dcContact, name, addr, unreadCount, clickListener);
+    holder.bind(glideRequests, id, dcContact, name, addr, unreadCount);
   }
 
   public interface ItemClickListener {

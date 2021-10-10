@@ -34,7 +34,6 @@ public class AccountSelectionListItem extends LinearLayout {
 
   private int           accountId;
   private GlideRequests glideRequests;
-  private AccountSelectionListAdapter.ItemClickListener listener;
 
   public AccountSelectionListItem(Context context) {
     super(context);
@@ -54,25 +53,13 @@ public class AccountSelectionListItem extends LinearLayout {
     this.unreadIndicator   = findViewById(R.id.unread_indicator);
     this.deleteBtn         = findViewById(R.id.delete);
 
-    setOnClickListener(view -> {
-      if (listener != null) {
-        listener.onItemClick(this);
-      }
-    });
-    deleteBtn.setOnClickListener(view -> {
-      if (listener != null) {
-        listener.onDeleteButtonClick(accountId);
-      }
-    });
-
     deleteBtn.setColorFilter(DynamicTheme.isDarkTheme(getContext())? Color.WHITE : Color.BLACK);
     ViewUtil.setTextViewGravityStart(this.nameView, getContext());
   }
 
-  public void bind(@NonNull GlideRequests glideRequests, int accountId, DcContact self, String name, String addr, int unreadCount, AccountSelectionListAdapter.ItemClickListener listener) {
+  public void bind(@NonNull GlideRequests glideRequests, int accountId, DcContact self, String name, String addr, int unreadCount) {
     this.glideRequests = glideRequests;
     this.accountId     = accountId;
-    this.listener      = listener;
 
     Recipient recipient;
     if (accountId != DcContact.DC_CONTACT_ID_ADD_ACCOUNT) {
@@ -117,6 +104,10 @@ public class AccountSelectionListItem extends LinearLayout {
     } else {
       this.addrContainer.setVisibility(View.GONE);
     }
+  }
+
+  public ImageButton getDeleteBtn() {
+    return deleteBtn;
   }
 
   public int getAccountId() {
