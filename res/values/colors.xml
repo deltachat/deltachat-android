@@ -51,13 +51,13 @@
   <!-- ========== -->
 
   <!-- INDIGO -->
-  <color name="indigo_primary">#ff3f51b5</color>
-  <color name="indigo_primary_dark">#ff303e9f</color>
-  <color name="indigo_primary_lite">#ff3f51b5</color>
-  <color name="indigo_accent">#3f51b5</color>
+  <color name="indigo_primary">#ff5743ff</color>
+  <color name="indigo_primary_dark">#ff5743ff</color>
+  <color name="indigo_primary_lite">#ff5743ff</color>
+  <color name="indigo_accent">#5743ff</color>
   <color name="indigo_outgoing_bubble">#fffff9d9</color>
-  <color name="indigo_outgoing_label">#ff303e9f</color>
-  <color name="indigo_unreadcount">#3c6afe</color>
+  <color name="indigo_outgoing_label">#ff5743ff</color>
+  <color name="indigo_unreadcount">#5743ff</color>
   <!-- ========== -->
 
     <color name="delta_primary">#ff415e6b</color>
