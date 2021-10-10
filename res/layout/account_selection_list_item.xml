@@ -65,6 +65,10 @@
 
     </LinearLayout>
 
+    <ImageView android:id="@+id/unread_indicator"
+               android:layout_width="24dp"
+               android:layout_height="24dp"/>
+
     <ImageButton
         android:id="@+id/delete"
         android:layout_width="wrap_content"

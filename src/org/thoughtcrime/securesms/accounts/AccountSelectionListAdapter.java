@@ -39,7 +39,7 @@ public class AccountSelectionListAdapter extends RecyclerView.Adapter
       super(itemView);
     }
 
-    public abstract void bind(@NonNull GlideRequests glideRequests, int accountId, DcContact self, String name, String addr, ItemClickListener listener);
+    public abstract void bind(@NonNull GlideRequests glideRequests, int accountId, DcContact self, String name, String addr, int unreadCount, ItemClickListener listener);
     public abstract void unbind(@NonNull GlideRequests glideRequests);
     }
 
@@ -53,8 +53,8 @@ public class AccountSelectionListAdapter extends RecyclerView.Adapter
       return (AccountSelectionListItem) itemView;
     }
 
-    public void bind(@NonNull GlideRequests glideRequests, int accountId, DcContact self, String name, String addr, ItemClickListener listener) {
-      getView().bind(glideRequests, accountId, self, name, addr, listener);
+    public void bind(@NonNull GlideRequests glideRequests, int accountId, DcContact self, String name, String addr, int unreadCount, ItemClickListener listener) {
+      getView().bind(glideRequests, accountId, self, name, addr, unreadCount, listener);
     }
 
     @Override
@@ -87,6 +87,7 @@ public class AccountSelectionListAdapter extends RecyclerView.Adapter
     DcContact dcContact = null;
     String name;
     String addr = null;
+    int unreadCount = 0;
 
     if (id == DcContact.DC_CONTACT_ID_ADD_ACCOUNT) {
       name = context.getString(R.string.add_account);
@@ -98,11 +99,12 @@ public class AccountSelectionListAdapter extends RecyclerView.Adapter
       if (name == "") {
         name = addr;
       }
+      unreadCount = dcContext.getFreshMsgs().length;
     }
 
     ViewHolder holder = (ViewHolder) viewHolder;
     holder.unbind(glideRequests);
-    holder.bind(glideRequests, id, dcContact, name, addr, clickListener);
+    holder.bind(glideRequests, id, dcContact, name, addr, unreadCount, clickListener);
   }
 
   public interface ItemClickListener {

@@ -1,13 +1,16 @@
 package org.thoughtcrime.securesms.accounts;
 
 import android.content.Context;
+import android.graphics.Color;
 import androidx.annotation.NonNull;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.amulyakhare.textdrawable.TextDrawable;
 import com.b44t.messenger.DcContact;
 
 import org.thoughtcrime.securesms.R;
@@ -25,6 +28,7 @@ public class AccountSelectionListItem extends LinearLayout {
   private View            addrContainer;
   private TextView        addrView;
   private TextView        nameView;
+  private ImageView       unreadIndicator;
   private ImageButton     deleteBtn;
 
   private int           accountId;
@@ -46,6 +50,7 @@ public class AccountSelectionListItem extends LinearLayout {
     this.addrContainer     = findViewById(R.id.addr_container);
     this.addrView          = findViewById(R.id.addr);
     this.nameView          = findViewById(R.id.name);
+    this.unreadIndicator   = findViewById(R.id.unread_indicator);
     this.deleteBtn         = findViewById(R.id.delete);
 
     setOnClickListener(view -> {
@@ -62,7 +67,7 @@ public class AccountSelectionListItem extends LinearLayout {
     ViewUtil.setTextViewGravityStart(this.nameView, getContext());
   }
 
-  public void bind(@NonNull GlideRequests glideRequests, int accountId, DcContact self, String name, String addr, AccountSelectionListAdapter.ItemClickListener listener) {
+  public void bind(@NonNull GlideRequests glideRequests, int accountId, DcContact self, String name, String addr, int unreadCount, AccountSelectionListAdapter.ItemClickListener listener) {
     this.glideRequests = glideRequests;
     this.accountId     = accountId;
     this.listener      = listener;
@@ -77,11 +82,28 @@ public class AccountSelectionListItem extends LinearLayout {
     }
     this.contactPhotoImage.setAvatar(glideRequests, recipient, false);
 
+    updateUnreadIndicator(unreadCount);
     setText(name, addr);
   }
 
   public void unbind(GlideRequests glideRequests) {
     contactPhotoImage.clear(glideRequests);
+  }
+
+  private void updateUnreadIndicator(int unreadCount) {
+    if(unreadCount == 0) {
+      unreadIndicator.setVisibility(View.GONE);
+    } else {
+      unreadIndicator.setImageDrawable(TextDrawable.builder()
+          .beginConfig()
+          .width(ViewUtil.dpToPx(getContext(), 24))
+          .height(ViewUtil.dpToPx(getContext(), 24))
+          .textColor(Color.WHITE)
+          .bold()
+          .endConfig()
+          .buildRound(String.valueOf(unreadCount), getResources().getColor(R.color.green_A700)));
+      unreadIndicator.setVisibility(View.VISIBLE);
+    }
   }
 
   private void setText(String name, String addr) {
@@ -90,8 +112,7 @@ public class AccountSelectionListItem extends LinearLayout {
     if(addr != null) {
       this.addrView.setText(addr);
       this.addrContainer.setVisibility(View.VISIBLE);
-    }
-    else {
+    } else {
       this.addrContainer.setVisibility(View.GONE);
     }
   }
