@@ -2,7 +2,7 @@
 <resources>
   <!-- PURPLE -->
   <color name="purple_primary">#ff7b00c8</color>
-  <color name="purple_primary_dark">#ff6300a1</color>
+  <color name="purple_primary_dark">#ff7b00c8</color>
   <color name="purple_primary_lite">#ff7b00c8</color>
   <color name="purple_accent">#7b00c8</color>
   <color name="purple_outgoing_bubble">#fffff9d9</color>
@@ -12,7 +12,7 @@
 
   <!-- GREEN -->
   <color name="green_primary">#ff43a047</color>
-  <color name="green_primary_dark">#ff2f7d32</color>
+  <color name="green_primary_dark">#ff43a047</color>
   <color name="green_primary_lite">#ff43a047</color>
   <color name="green_accent">#43a047</color>
   <color name="green_outgoing_bubble">#fffff9d9</color>
@@ -22,7 +22,7 @@
 
   <!-- BLUE -->
   <color name="blue_primary">#ff517da2</color>
-  <color name="blue_primary_dark">#ff426382</color>
+  <color name="blue_primary_dark">#ff517da2</color>
   <color name="blue_primary_lite">#ff517da2</color>
   <color name="blue_accent">#517da2</color>
   <color name="blue_outgoing_bubble">#fffff9d9</color>
@@ -32,7 +32,7 @@
 
   <!-- RED -->
   <color name="red_primary">#ffb61c1c</color>
-  <color name="red_primary_dark">#ffa41a1a</color>
+  <color name="red_primary_dark">#ffb61c1c</color>
   <color name="red_primary_lite">#ffb61c1c</color>
   <color name="red_accent">#b61c1c</color>
   <color name="red_outgoing_bubble">#fffff9d9</color>
@@ -42,7 +42,7 @@
 
   <!-- PINK -->
   <color name="pink_primary">#ffc84595</color>
-  <color name="pink_primary_dark">#ffa03779</color>
+  <color name="pink_primary_dark">#ffc84595</color>
   <color name="pink_primary_lite">#ffc84595</color>
   <color name="pink_accent">#c84595</color>
   <color name="pink_outgoing_bubble">#fffff9d9</color>
@@ -61,7 +61,7 @@
   <!-- ========== -->
 
     <color name="delta_primary">#ff415e6b</color>
-    <color name="delta_primary_dark">#ff364e59</color>
+    <color name="delta_primary_dark">#ff415e6b</color>
     <color name="delta_primary_lite">#4c6e7d</color>
 
     <!-- delta_accent fits in light and in darkmode;
