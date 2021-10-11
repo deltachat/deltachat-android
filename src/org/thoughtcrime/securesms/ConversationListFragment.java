@@ -55,6 +55,7 @@ import org.thoughtcrime.securesms.ConversationListAdapter.ItemClickListener;
 import org.thoughtcrime.securesms.components.recyclerview.DeleteItemAnimator;
 import org.thoughtcrime.securesms.components.registration.PulsingFloatingActionButton;
 import org.thoughtcrime.securesms.components.reminder.DozeReminder;
+import org.thoughtcrime.securesms.connect.AccountManager;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideApp;
@@ -234,6 +235,7 @@ public class ConversationListFragment extends Fragment
       }
     } else {
       fab.setOnClickListener(v -> startActivity(intent));
+      fab.setOnLongClickListener(v -> {AccountManager.getInstance().showSwitchAccountMenu(getActivity()); return true;});
     }
   }
 
