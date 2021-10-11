@@ -27,7 +27,7 @@ public class AccountSelectionListFragment extends DialogFragment
   @SuppressWarnings("unused")
   private static final String TAG = AccountSelectionListFragment.class.getSimpleName();
 
-  private RecyclerView                                     recyclerView;
+  private RecyclerView recyclerView;
 
   @Override
   public void onActivityCreated(Bundle icicle) {
