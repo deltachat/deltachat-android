@@ -76,6 +76,7 @@
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:padding="6dp"
+        android:contentDescription="@string/delete"
         android:background="#00ffffff"
         android:src="@drawable/ic_close_white_24dp" />
 
