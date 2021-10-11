@@ -100,16 +100,21 @@ class ProfileDocumentsAdapter extends StickyHeaderGridAdapter {
 
       viewHolder.audioView.setVisibility(View.VISIBLE);
       viewHolder.audioView.setAudio((AudioSlide)slide, dcMsg.getDuration());
+      viewHolder.audioView.setOnClickListener(view -> itemClickListener.onMediaClicked(dcMsg));
       viewHolder.audioView.setOnLongClickListener(view -> { itemClickListener.onMediaLongClicked(dcMsg); return true; });
+      viewHolder.audioView.setFocusable(selected.isEmpty());
+      viewHolder.audioView.setClickable(selected.isEmpty());
+      viewHolder.audioView.setLongClickable(selected.isEmpty());
+      viewHolder.itemView.setOnClickListener(view -> itemClickListener.onMediaClicked(dcMsg));
     }
     else if (slide != null && slide.hasDocument()) {
+      viewHolder.audioView.setVisibility(View.GONE);
+
       viewHolder.documentView.setVisibility(View.VISIBLE);
       viewHolder.documentView.setDocument((DocumentSlide)slide);
       viewHolder.documentView.setOnClickListener(view -> itemClickListener.onMediaClicked(dcMsg));
       viewHolder.documentView.setOnLongClickListener(view -> { itemClickListener.onMediaLongClicked(dcMsg); return true; });
       viewHolder.itemView.setOnClickListener(view -> itemClickListener.onMediaClicked(dcMsg));
-
-      viewHolder.audioView.setVisibility(View.GONE);
     }
     else {
       viewHolder.documentView.setVisibility(View.GONE);

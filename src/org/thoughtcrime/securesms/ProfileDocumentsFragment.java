@@ -160,7 +160,6 @@ public class ProfileDocumentsFragment
   public void onMediaLongClicked(DcMsg mediaRecord) {
     if (actionMode == null) {
       ((ProfileDocumentsAdapter) recyclerView.getAdapter()).toggleSelection(mediaRecord);
-      recyclerView.getAdapter().notifyDataSetChanged();
 
       actionMode = ((AppCompatActivity) getActivity()).startSupportActionMode(actionModeCallback);
     }
