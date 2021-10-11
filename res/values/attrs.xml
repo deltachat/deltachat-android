@@ -22,6 +22,7 @@
     <attr name="conversation_received_card_background" format="reference|color"/>
 
     <attr name="send_button_bg" format="reference"/>
+    <attr name="button_bg" format="reference"/>
     <attr name="floating_mini_bg" format="reference"/>
 
     <attr name="fab_color" format="reference|color" />
@@ -74,6 +75,7 @@
     <attr name="recording_lock_background" format="reference"/>
 
     <attr name="conversation_item_background" format="reference"/>
+    <attr name="conversation_item_background_animated" format="reference"/>
     <attr name="conversation_item_incoming_bubble_color" format="reference|color"/>
     <attr name="conversation_item_incoming_bubble_border_color" format="reference|color"/>
     <attr name="conversation_item_incoming_text_primary_color" format="reference|color"/>

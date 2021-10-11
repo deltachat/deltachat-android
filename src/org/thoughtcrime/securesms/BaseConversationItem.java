@@ -1,6 +1,7 @@
 package org.thoughtcrime.securesms;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -15,6 +16,7 @@ import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMsg;
 
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.util.ViewUtil;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -53,11 +55,20 @@ public abstract class BaseConversationItem extends LinearLayout
   }
 
   protected void setInteractionState(DcMsg messageRecord, boolean pulseHighlight) {
+    final int[] attributes = new int[] {
+        R.attr.conversation_item_background,
+        R.attr.conversation_item_background_animated,
+    };
+
     if (batchSelected.contains(messageRecord)) {
-      setBackgroundResource(R.drawable.conversation_item_background);
+     final TypedArray attrs = context.obtainStyledAttributes(attributes);
+      ViewUtil.setBackground(this, attrs.getDrawable(0));
+      attrs.recycle();
       setSelected(true);
     } else if (pulseHighlight) {
-      setBackgroundResource(R.drawable.conversation_item_background_animated);
+     final TypedArray attrs = context.obtainStyledAttributes(attributes);
+      ViewUtil.setBackground(this, attrs.getDrawable(1));
+      attrs.recycle();
       setSelected(true);
       postDelayed(() -> setSelected(false), PULSE_HIGHLIGHT_MILLIS);
     } else {

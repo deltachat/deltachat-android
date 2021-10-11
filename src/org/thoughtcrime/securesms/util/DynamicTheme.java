@@ -22,7 +22,7 @@ public class DynamicTheme {
   public static final String BLUE = "blue";
   public static final String RED = "red";
   public static final String PINK = "pink";
-  public static final String INDIGO = "indigo";
+  public static final String GRAY = "gray";
 
   private int currentTheme;
 
@@ -82,7 +82,7 @@ public class DynamicTheme {
     if (theme.equals(BLUE)) return R.style.TextSecure_BlueTheme;
     if (theme.equals(RED)) return R.style.TextSecure_RedTheme;
     if (theme.equals(PINK)) return R.style.TextSecure_PinkTheme;
-    if (theme.equals(INDIGO)) return R.style.TextSecure_IndigoTheme;
+    if (theme.equals(GRAY)) return R.style.TextSecure_GrayTheme;
     return R.style.TextSecure_LightTheme;
   }
 
@@ -92,7 +92,7 @@ public class DynamicTheme {
     if (theme.equals(BLUE)) return R.style.TextSecure_BlueDarkTheme;
     if (theme.equals(RED)) return R.style.TextSecure_RedDarkTheme;
     if (theme.equals(PINK)) return R.style.TextSecure_PinkDarkTheme;
-    if (theme.equals(INDIGO)) return R.style.TextSecure_IndigoDarkTheme;
+    if (theme.equals(GRAY)) return R.style.TextSecure_GrayDarkTheme;
     return R.style.TextSecure_DarkTheme;
   }
 

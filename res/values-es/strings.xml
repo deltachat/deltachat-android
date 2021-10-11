@@ -154,6 +154,7 @@
     <string name="magenta">Magenta</string>
     <string name="white">Blanco</string>
     <string name="pink">Rosa</string>
+    <string name="gray">Gris</string>
 
     <string name="zoom">Zoom</string>
     <string name="extra_small">Muy pequeño</string>

@@ -26,7 +26,7 @@
 
     <style name="TextSecure.LightActionBar"
            parent="@style/Widget.AppCompat.ActionBar">
-        <item name="background">@color/delta_primary</item>
+        <item name="background">@color/def_primary</item>
         <item name="elevation">4dp</item>
         <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
         <item name="titleTextStyle">@style/TextSecure.TitleTextStyle</item>
@@ -44,8 +44,8 @@
 
     <style name="TextSecure.LightActionBar.TabBar"
         parent="@style/Widget.AppCompat.ActionBar.TabBar">
-        <item name="android:background">@color/delta_primary</item>
-        <item name="background">@color/delta_primary</item>
+        <item name="android:background">@color/def_primary</item>
+        <item name="background">@color/def_primary</item>
         <item name="android:textColorPrimary">@color/white</item>
         <item name="android:textColorSecondary">#BFffffff</item>
         <item name="elevation">4dp</item>
@@ -86,7 +86,7 @@
         <item name="android:textColor">@color/white</item>
         <item name="android:paddingLeft">8dp</item>
         <item name="android:paddingRight">8dp</item>
-        <item name="android:background">@drawable/button_background</item>
+        <item name="android:background">?attr/button_bg</item>
     </style>
 
     <style name="PreferenceThemeOverlay.Fix" parent="PreferenceThemeOverlay.v14.Material">
@@ -220,10 +220,10 @@
     </style>
 
 
-    <!-- INDIGO -->
-    <style name="TextSecure.IndigoActionBar"
+    <!-- GRAY -->
+    <style name="TextSecure.GrayActionBar"
            parent="@style/Widget.AppCompat.ActionBar">
-        <item name="background">@color/indigo_primary</item>
+        <item name="background">@color/gray_primary</item>
         <item name="elevation">4dp</item>
         <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
         <item name="titleTextStyle">@style/TextSecure.TitleTextStyle</item>
@@ -232,10 +232,10 @@
         <item name="android:textColorSecondary">@color/white</item>
     </style>
 
-    <style name="TextSecure.IndigoActionBar.TabBar"
+    <style name="TextSecure.GrayActionBar.TabBar"
         parent="@style/Widget.AppCompat.ActionBar.TabBar">
-        <item name="android:background">@color/indigo_primary</item>
-        <item name="background">@color/indigo_primary</item>
+        <item name="android:background">@color/gray_primary</item>
+        <item name="background">@color/gray_primary</item>
         <item name="android:textColorPrimary">@color/white</item>
         <item name="android:textColorSecondary">#BFffffff</item>
         <item name="elevation">4dp</item>

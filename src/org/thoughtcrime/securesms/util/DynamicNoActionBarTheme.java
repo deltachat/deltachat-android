@@ -12,7 +12,7 @@ public class DynamicNoActionBarTheme extends DynamicTheme {
     if (theme.equals(BLUE)) return R.style.TextSecure_BlueNoActionBar;
     if (theme.equals(RED)) return R.style.TextSecure_RedNoActionBar;
     if (theme.equals(PINK)) return R.style.TextSecure_PinkNoActionBar;
-    if (theme.equals(INDIGO)) return R.style.TextSecure_IndigoNoActionBar;
+    if (theme.equals(GRAY)) return R.style.TextSecure_GrayNoActionBar;
     return R.style.TextSecure_LightNoActionBar;
   }
 
@@ -22,7 +22,7 @@ public class DynamicNoActionBarTheme extends DynamicTheme {
     if (theme.equals(BLUE)) return R.style.TextSecure_BlueDarkNoActionBar;
     if (theme.equals(RED)) return R.style.TextSecure_RedDarkNoActionBar;
     if (theme.equals(PINK)) return R.style.TextSecure_PinkDarkNoActionBar;
-    if (theme.equals(INDIGO)) return R.style.TextSecure_IndigoDarkNoActionBar;
+    if (theme.equals(GRAY)) return R.style.TextSecure_GrayDarkNoActionBar;
     return R.style.TextSecure_DarkNoActionBar;
   }
 }

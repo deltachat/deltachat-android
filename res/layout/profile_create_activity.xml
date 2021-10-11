@@ -92,7 +92,7 @@
         android:layout_marginRight="16dp"
         android:layout_marginTop="16dp"
         android:text="@string/pref_password_and_account_settings"
-        android:textColor="@color/delta_accent"
+        android:textColor="?attr/colorAccent"
         android:textSize="16sp"/>
 
     <org.thoughtcrime.securesms.components.emoji.MediaKeyboard
@@ -108,7 +108,7 @@
         android:id="@+id/reveal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/delta_primary"
+        android:background="?attr/colorPrimary"
         android:visibility="invisible" />
 
 </FrameLayout>

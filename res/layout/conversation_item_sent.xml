@@ -9,7 +9,7 @@
     android:focusable="true"
     android:nextFocusLeft="@id/container"
     android:nextFocusRight="@id/embedded_text_editor"
-    android:background="@drawable/conversation_item_background"
+    android:background="?attr/conversation_item_background"
     android:clipToPadding="false"
     android:clipChildren="false">
 
@@ -149,7 +149,7 @@
                 android:minHeight="1dp"
                 android:minWidth="0dp"
                 android:background="@android:color/transparent"
-                android:textColor="@color/delta_accent_darker"
+                android:textColor="?attr/colorAccent"
                 android:text="@string/show_full_message"
                 android:textAllCaps="false"/>
 

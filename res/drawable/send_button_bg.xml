@@ -2,5 +2,5 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
        android:shape="oval">
     <!-- read issue: https://github.com/deltachat/deltachat-android/issues/480 before introducing an attr here. -->
-    <solid android:color="@color/indigo_primary" />
+    <solid android:color="@color/def_primary" />
 </shape>

@@ -1,9 +1,21 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
+  <!-- DEFAULT -->
+  <color name="def_primary">#ff5743ff</color>
+  <color name="def_primary_dark">#ff5743ff</color>
+  <color name="def_primary_lite">#ff5743ff</color>
+  <color name="def_primary_alpha33">#555743ff</color>
+  <color name="def_accent">#5743ff</color>
+  <color name="def_outgoing_bubble">#fffff9d9</color>
+  <color name="def_outgoing_label">#ff5743ff</color>
+  <color name="def_unreadcount">#5743ff</color>
+  <!-- ========== -->
+
   <!-- PURPLE -->
   <color name="purple_primary">#ff7b00c8</color>
   <color name="purple_primary_dark">#ff7b00c8</color>
   <color name="purple_primary_lite">#ff7b00c8</color>
+  <color name="purple_primary_alpha33">#557b00c8</color>
   <color name="purple_accent">#7b00c8</color>
   <color name="purple_outgoing_bubble">#fffff9d9</color>
   <color name="purple_outgoing_label">#ff7b00c8</color>
@@ -14,6 +26,7 @@
   <color name="green_primary">#ff43a047</color>
   <color name="green_primary_dark">#ff43a047</color>
   <color name="green_primary_lite">#ff43a047</color>
+  <color name="green_primary_alpha33">#5543a047</color>
   <color name="green_accent">#43a047</color>
   <color name="green_outgoing_bubble">#fffff9d9</color>
   <color name="green_outgoing_label">#ff58ab43</color>
@@ -24,6 +37,7 @@
   <color name="blue_primary">#ff517da2</color>
   <color name="blue_primary_dark">#ff517da2</color>
   <color name="blue_primary_lite">#ff517da2</color>
+  <color name="blue_primary_alpha33">#55517da2</color>
   <color name="blue_accent">#517da2</color>
   <color name="blue_outgoing_bubble">#fffff9d9</color>
   <color name="blue_outgoing_label">#ff2f97d6</color>
@@ -34,6 +48,7 @@
   <color name="red_primary">#ffb61c1c</color>
   <color name="red_primary_dark">#ffb61c1c</color>
   <color name="red_primary_lite">#ffb61c1c</color>
+  <color name="red_primary_alpha33">#55b61c1c</color>
   <color name="red_accent">#b61c1c</color>
   <color name="red_outgoing_bubble">#fffff9d9</color>
   <color name="red_outgoing_label">#ffce303e</color>
@@ -44,33 +59,27 @@
   <color name="pink_primary">#ffc84595</color>
   <color name="pink_primary_dark">#ffc84595</color>
   <color name="pink_primary_lite">#ffc84595</color>
+  <color name="pink_primary_alpha33">#55c84595</color>
   <color name="pink_accent">#c84595</color>
   <color name="pink_outgoing_bubble">#fffff9d9</color>
   <color name="pink_outgoing_label">#ffa03779</color>
   <color name="pink_unreadcount">#ff25b7</color>
   <!-- ========== -->
 
-  <!-- INDIGO -->
-  <color name="indigo_primary">#ff5743ff</color>
-  <color name="indigo_primary_dark">#ff5743ff</color>
-  <color name="indigo_primary_lite">#ff5743ff</color>
-  <color name="indigo_accent">#5743ff</color>
-  <color name="indigo_outgoing_bubble">#fffff9d9</color>
-  <color name="indigo_outgoing_label">#ff5743ff</color>
-  <color name="indigo_unreadcount">#5743ff</color>
+  <!-- GRAY -->
+  <color name="gray_primary">#ff415e6b</color>
+  <color name="gray_primary_dark">#ff415e6b</color>
+  <color name="gray_primary_lite">#4c6e7d</color>
+  <color name="gray_primary_alpha33">#55415e6b</color>
+  <color name="gray_accent">#42A5F5</color>
+  <color name="gray_outgoing_bubble">#fffff9d9</color>
+  <color name="gray_outgoing_label">#ff415e6b</color>
+  <color name="gray_unreadcount">#415e6b</color>
   <!-- ========== -->
 
-    <color name="delta_primary">#ff415e6b</color>
-    <color name="delta_primary_dark">#ff415e6b</color>
-    <color name="delta_primary_lite">#4c6e7d</color>
-
-    <!-- delta_accent fits in light and in darkmode;
-     delta_accent_darker can be used for less-covered areas as non-bold text  -->
-    <color name="delta_accent">#42A5F5</color>
-    <color name="delta_accent_darker">#ff2090ea</color>
 
     <color name="primary_alpha_focus">#882090ea</color>
-    <color name="primary_alpha33">#552090ea</color>
+
 
     <color name="white">#ffffffff</color>
     <color name="black">#ff000000</color>

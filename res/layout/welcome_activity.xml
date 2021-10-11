@@ -75,7 +75,7 @@
             android:gravity="center"
             android:text="@string/qrscan_title"
             android:textSize="16sp"
-            android:textColor="@color/delta_accent"/>
+            android:textColor="?attr/colorAccent"/>
 
         <TextView
             android:id="@+id/backup_button"
@@ -85,7 +85,7 @@
             android:gravity="center"
             android:text="@string/import_backup_title"
             android:textSize="16sp"
-            android:textColor="@color/delta_accent"/>
+            android:textColor="?attr/colorAccent"/>
 
     </LinearLayout>
 
