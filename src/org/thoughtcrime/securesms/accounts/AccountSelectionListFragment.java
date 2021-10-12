@@ -3,13 +3,14 @@ package org.thoughtcrime.securesms.accounts;
 import android.app.Activity;
 import android.app.Dialog;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.view.LayoutInflater;
-import android.view.View;
 
 import com.b44t.messenger.DcAccounts;
 
@@ -52,6 +53,7 @@ public class AccountSelectionListFragment extends DialogFragment
     adapter.changeData(ids);
   }
 
+  @NonNull
   @Override
   public Dialog onCreateDialog(Bundle savedInstanceState) {
     AlertDialog.Builder builder = new AlertDialog.Builder(getActivity())
@@ -85,6 +87,7 @@ public class AccountSelectionListFragment extends DialogFragment
     public void onDeleteButtonClick(int accountId) {
       Activity activity = getActivity();
       AccountSelectionListFragment.this.dismiss();
+      if (activity == null) return;
       DcAccounts accounts = DcHelper.getAccounts(activity);
       new AlertDialog.Builder(activity)
         .setTitle(accounts.getAccount(accountId).getNameNAddr())

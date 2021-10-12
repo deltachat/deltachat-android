@@ -1,6 +1,7 @@
 package org.thoughtcrime.securesms.accounts;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,7 @@ import org.thoughtcrime.securesms.mms.GlideRequests;
 
 public class AccountSelectionListAdapter extends RecyclerView.Adapter
 {
+  @SuppressWarnings("unused")
   private final static String TAG = AccountSelectionListAdapter.class.getSimpleName();
 
   private final @NonNull Context              context;
@@ -43,7 +45,7 @@ public class AccountSelectionListAdapter extends RecyclerView.Adapter
     public abstract void unbind(@NonNull GlideRequests glideRequests);
     }
 
-  public class AccountViewHolder extends ViewHolder {
+  public static class AccountViewHolder extends ViewHolder {
 
     AccountViewHolder(@NonNull  final View itemView,
                       @Nullable final ItemClickListener clickListener) {
@@ -86,13 +88,14 @@ public class AccountSelectionListAdapter extends RecyclerView.Adapter
     this.clickListener = clickListener;
   }
 
+  @NonNull
   @Override
-  public AccountSelectionListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+  public AccountSelectionListAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
     return new AccountViewHolder(li.inflate(R.layout.account_selection_list_item, parent, false), clickListener);
   }
 
   @Override
-  public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int i) {
+  public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
 
     int id = accountList[i];
     DcContact dcContact = null;
@@ -107,7 +110,7 @@ public class AccountSelectionListAdapter extends RecyclerView.Adapter
       dcContact = dcContext.getContact(DcContact.DC_CONTACT_ID_SELF);
       addr = dcContact.getAddr();
       name = dcContext.getConfig("displayname");
-      if (name == "") {
+      if (TextUtils.isEmpty(name)) {
         name = addr;
       }
       unreadCount = dcContext.getFreshMsgs().length;

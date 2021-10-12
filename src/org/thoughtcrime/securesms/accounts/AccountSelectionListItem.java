@@ -2,13 +2,14 @@ package org.thoughtcrime.securesms.accounts;
 
 import android.content.Context;
 import android.graphics.Color;
-import androidx.annotation.NonNull;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
 
 import com.amulyakhare.textdrawable.TextDrawable;
 import com.b44t.messenger.DcContact;
@@ -17,8 +18,8 @@ import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.components.AvatarImageView;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.recipients.Recipient;
-import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.DynamicTheme;
+import org.thoughtcrime.securesms.util.ViewUtil;
 
 public class AccountSelectionListItem extends LinearLayout {
 
@@ -33,7 +34,6 @@ public class AccountSelectionListItem extends LinearLayout {
   private ImageButton     deleteBtn;
 
   private int           accountId;
-  private GlideRequests glideRequests;
 
   public AccountSelectionListItem(Context context) {
     super(context);
@@ -58,7 +58,6 @@ public class AccountSelectionListItem extends LinearLayout {
   }
 
   public void bind(@NonNull GlideRequests glideRequests, int accountId, DcContact self, String name, String addr, int unreadCount) {
-    this.glideRequests = glideRequests;
     this.accountId     = accountId;
 
     Recipient recipient;
