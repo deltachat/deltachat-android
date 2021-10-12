@@ -2,6 +2,7 @@ package org.thoughtcrime.securesms.accounts;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageButton;
@@ -57,18 +58,26 @@ public class AccountSelectionListItem extends LinearLayout {
     ViewUtil.setTextViewGravityStart(this.nameView, getContext());
   }
 
-  public void bind(@NonNull GlideRequests glideRequests, int accountId, DcContact self, String name, String addr, int unreadCount) {
+  public void bind(@NonNull GlideRequests glideRequests, int accountId, DcContact self, String name, String addr, int unreadCount, boolean selected) {
     this.accountId     = accountId;
 
     Recipient recipient;
     if (accountId != DcContact.DC_CONTACT_ID_ADD_ACCOUNT) {
-      deleteBtn.setVisibility(View.VISIBLE);
+      deleteBtn.setVisibility(selected? View.INVISIBLE : View.VISIBLE);
       recipient = new Recipient(getContext(), self, name);
     } else {
       deleteBtn.setVisibility(View.GONE);
       recipient = null;
     }
     this.contactPhotoImage.setAvatar(glideRequests, recipient, false);
+
+    if (selected) {
+      addrView.setTypeface(null, Typeface.BOLD);
+      nameView.setTypeface(null, Typeface.BOLD);
+    } else {
+      addrView.setTypeface(null, 0);
+      nameView.setTypeface(null, 0);
+    }
 
     updateUnreadIndicator(unreadCount);
     setText(name, addr);

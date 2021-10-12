@@ -40,17 +40,14 @@ public class AccountSelectionListFragment extends DialogFragment
 
     DcAccounts accounts = DcHelper.getAccounts(getActivity());
     int[] accountIds = accounts.getAll();
-    int selectedAccountId = accounts.getSelectedAccount().getAccountId();
 
-    int[] ids = new int[accountIds.length];
+    int[] ids = new int[accountIds.length + 1];
     ids[0] = DC_CONTACT_ID_ADD_ACCOUNT;
     int j = 0;
     for (int accountId : accountIds) {
-      if (accountId != selectedAccountId) {
-        ids[++j] = accountId;
-      }
+      ids[++j] = accountId;
     }
-    adapter.changeData(ids);
+    adapter.changeData(ids, accounts.getSelectedAccount().getAccountId());
   }
 
   @NonNull
@@ -78,7 +75,7 @@ public class AccountSelectionListFragment extends DialogFragment
       int accountId = contact.getAccountId();
       if (accountId == DC_CONTACT_ID_ADD_ACCOUNT) {
         new SwitchAccountAsyncTask(activity, R.string.one_moment, 0, null).execute();
-      } else {
+      } else if (accountId != DcHelper.getAccounts(activity).getSelectedAccount().getAccountId()) {
         new SwitchAccountAsyncTask(activity, R.string.switching_account, accountId, null).execute();
       }
     }

@@ -26,6 +26,7 @@ public class AccountSelectionListAdapter extends RecyclerView.Adapter
   private final @NonNull Context              context;
   private final @NonNull DcAccounts           accounts;
   private @NonNull int[]                      accountList = new int[0];
+  private int                                 selectedAccountId;
   private final LayoutInflater                li;
   private final ItemClickListener             clickListener;
   private final GlideRequests                 glideRequests;
@@ -41,7 +42,7 @@ public class AccountSelectionListAdapter extends RecyclerView.Adapter
       super(itemView);
     }
 
-    public abstract void bind(@NonNull GlideRequests glideRequests, int accountId, DcContact self, String name, String addr, int unreadCount);
+    public abstract void bind(@NonNull GlideRequests glideRequests, int accountId, DcContact self, String name, String addr, int unreadCount, boolean selected);
     public abstract void unbind(@NonNull GlideRequests glideRequests);
     }
 
@@ -66,8 +67,8 @@ public class AccountSelectionListAdapter extends RecyclerView.Adapter
       return (AccountSelectionListItem) itemView;
     }
 
-    public void bind(@NonNull GlideRequests glideRequests, int accountId, DcContact self, String name, String addr, int unreadCount) {
-      getView().bind(glideRequests, accountId, self, name, addr, unreadCount);
+    public void bind(@NonNull GlideRequests glideRequests, int accountId, DcContact self, String name, String addr, int unreadCount, boolean selected) {
+      getView().bind(glideRequests, accountId, self, name, addr, unreadCount, selected);
     }
 
     @Override
@@ -118,7 +119,7 @@ public class AccountSelectionListAdapter extends RecyclerView.Adapter
 
     ViewHolder holder = (ViewHolder) viewHolder;
     holder.unbind(glideRequests);
-    holder.bind(glideRequests, id, dcContact, name, addr, unreadCount);
+    holder.bind(glideRequests, id, dcContact, name, addr, unreadCount, id == selectedAccountId);
   }
 
   public interface ItemClickListener {
@@ -126,8 +127,9 @@ public class AccountSelectionListAdapter extends RecyclerView.Adapter
     void onDeleteButtonClick(int accountId);
   }
 
-  public void changeData(int[] ids) {
+  public void changeData(int[] ids, int selectedAccountId) {
     this.accountList = ids==null? new int[0] : ids;
+    this.selectedAccountId = selectedAccountId;
     notifyDataSetChanged();
   }
 }
