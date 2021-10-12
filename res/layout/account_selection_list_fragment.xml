@@ -1,26 +1,7 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             xmlns:app="http://schemas.android.com/apk/res-auto"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:orientation="vertical">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="15dp"
-            android:clipToPadding="false"
-            android:scrollbars="vertical" />
-
-        <TextView android:id="@android:id/empty"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center|center_vertical"
-            android:padding="16dp"
-            android:lineSpacingMultiplier="1.3"
-            android:visibility="gone"
-            android:textSize="20sp"
-            tools:text="No accounts." />
-
-</FrameLayout>
+<androidx.recyclerview.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/recycler_view"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:layout_marginTop="15dp"
+	android:clipToPadding="false"
+	android:scrollbars="vertical" />
