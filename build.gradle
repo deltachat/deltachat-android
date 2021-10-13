@@ -33,6 +33,7 @@ dependencies {
     implementation "io.noties.markwon:core:$markwon_version"
     implementation "io.noties.markwon:ext-strikethrough:$markwon_version"
     implementation "io.noties.markwon:ext-tasklist:$markwon_version"
+    implementation 'androidx.sharetarget:sharetarget:1.1.0'
     implementation 'androidx.webkit:webkit:1.4.0'
     implementation 'androidx.multidex:multidex:2.0.1'
     implementation 'androidx.appcompat:appcompat:1.2.0'

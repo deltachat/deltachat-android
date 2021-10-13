@@ -21,13 +21,15 @@ import android.Manifest;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.MenuItem;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.Toolbar;
-import android.util.Log;
-import android.view.MenuItem;
-import android.widget.Toast;
+import androidx.core.content.pm.ShortcutManagerCompat;
 
 import com.b44t.messenger.DcContext;
 
@@ -204,6 +206,11 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity implement
   private void handleResolvedMedia(Intent intent) {
     int       chatId           = intent.getIntExtra(EXTRA_CHAT_ID, -1);
 
+    String shortcutId = intent.getStringExtra(ShortcutManagerCompat.EXTRA_SHORTCUT_ID);
+    if (chatId == -1 && shortcutId != null) {
+      chatId = Integer.parseInt(shortcutId);
+    }
+
     String[] extraEmail = getIntent().getStringArrayExtra(Intent.EXTRA_EMAIL);
     /*
     usually, external app will try to start "e-mail sharing" intent, providing it:
@@ -252,16 +259,18 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity implement
 
       chatId = dcContext.createChatByContactId(contactId);
     }
-    Intent composeIntent = getBaseShareIntent(ConversationListActivity.class);
-    RelayUtil.setSharedUris(composeIntent, resolvedExtras);
+    Intent composeIntent;
     if (chatId != -1) {
-      RelayUtil.setDirectSharing(composeIntent, chatId);
+      composeIntent = getBaseShareIntent(ConversationActivity.class);
+      composeIntent.putExtra(EXTRA_CHAT_ID, chatId);
+    } else {
+      composeIntent = getBaseShareIntent(ConversationListActivity.class);
     }
+    RelayUtil.setSharedUris(composeIntent, resolvedExtras);
     startActivityForResult(composeIntent, REQUEST_RELAY);
     // We use startActivityForResult() here so that the conversations list is correctly updated. (hide "Device messages", ...)a
     // With startActivity() the list was not always updated before and after sharing and incorrectly showed or did not show the device talk.
     finish();
-
   }
 
   private Intent getBaseShareIntent(final @NonNull Class<?> target) {
