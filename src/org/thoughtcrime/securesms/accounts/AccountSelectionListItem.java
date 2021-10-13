@@ -32,6 +32,7 @@ public class AccountSelectionListItem extends LinearLayout {
   private TextView        addrView;
   private TextView        nameView;
   private ImageView       unreadIndicator;
+  private ImageView       checkbox;
   private ImageButton     deleteBtn;
 
   private int           accountId;
@@ -52,6 +53,7 @@ public class AccountSelectionListItem extends LinearLayout {
     this.addrView          = findViewById(R.id.addr);
     this.nameView          = findViewById(R.id.name);
     this.unreadIndicator   = findViewById(R.id.unread_indicator);
+    this.checkbox          = findViewById(R.id.checkbox);
     this.deleteBtn         = findViewById(R.id.delete);
 
     deleteBtn.setColorFilter(DynamicTheme.isDarkTheme(getContext())? Color.WHITE : Color.BLACK);
@@ -74,9 +76,11 @@ public class AccountSelectionListItem extends LinearLayout {
     if (selected) {
       addrView.setTypeface(null, Typeface.BOLD);
       nameView.setTypeface(null, Typeface.BOLD);
+      checkbox.setVisibility(View.VISIBLE);
     } else {
       addrView.setTypeface(null, 0);
       nameView.setTypeface(null, 0);
+      checkbox.setVisibility(View.GONE);
     }
 
     updateUnreadIndicator(unreadCount);

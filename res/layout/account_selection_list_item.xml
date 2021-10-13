@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <org.thoughtcrime.securesms.accounts.AccountSelectionListItem
         xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="60dp"
@@ -13,14 +14,34 @@
         android:paddingRight="10dp"
         android:paddingEnd="10dp">
 
-    <org.thoughtcrime.securesms.components.AvatarImageView
-            android:id="@+id/contact_photo_image"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:foreground="@drawable/contact_photo_background"
-            android:cropToPadding="true"
-            tools:src="@color/blue_600"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="45dp"
+        android:layout_height="50dp">
+
+        <org.thoughtcrime.securesms.components.AvatarImageView
+                android:id="@+id/contact_photo_image"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:foreground="@drawable/contact_photo_background"
+                android:cropToPadding="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@color/blue_600"
+                android:contentDescription="@null" />
+
+        <ImageView
+            android:id="@+id/checkbox"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="@id/contact_photo_image"
+            app:layout_constraintTop_toTopOf="@id/contact_photo_image"
+            android:src="@drawable/ic_circle_checkbox"
             android:contentDescription="@null" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout android:layout_width="0dp"
                   android:layout_height="wrap_content"
