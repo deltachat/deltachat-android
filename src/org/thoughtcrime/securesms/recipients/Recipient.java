@@ -91,20 +91,24 @@ public class Recipient {
   }
 
   public Recipient(@NonNull Context context, @NonNull DcChat dcChat) {
-    this(context, dcChat, null);
+    this(context, dcChat, null, null);
   }
 
   public Recipient(@NonNull Context context, @NonNull DcContact dcContact) {
-    this(context, null, dcContact);
+    this(context, null, dcContact, null);
   }
 
-  private Recipient(@NonNull Context context, @Nullable DcChat dcChat, @Nullable DcContact dcContact) {
+  public Recipient(@NonNull Context context, @NonNull DcContact dcContact, @NonNull String profileName) {
+    this(context, null, dcContact, profileName);
+  }
+
+  private Recipient(@NonNull Context context, @Nullable DcChat dcChat, @Nullable DcContact dcContact, @Nullable String profileName) {
     this.dcChat                = dcChat;
     this.dcContact             = dcContact;
+    this.profileName           = profileName;
     this.contactUri            = null;
     this.systemContactPhoto    = null;
     this.customLabel           = null;
-    this.profileName           = null;
     this.profileAvatar         = null;
 
     if(dcContact!=null) {
@@ -206,8 +210,9 @@ public class Recipient {
 
   public synchronized @NonNull FallbackContactPhoto getFallbackContactPhoto() {
     String name = getName();
-         if (!TextUtils.isEmpty(name)) return new GeneratedContactPhoto(name);
-    else                               return new GeneratedContactPhoto("#");
+    if (!TextUtils.isEmpty(profileName)) return new GeneratedContactPhoto(profileName);
+    else if (!TextUtils.isEmpty(name))   return new GeneratedContactPhoto(name);
+    else                                 return new GeneratedContactPhoto("#");
   }
 
   public synchronized @Nullable ContactPhoto getContactPhoto(Context context) {
