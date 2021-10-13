@@ -43,6 +43,7 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
   private DcContact                           itemDataContact;
   private String                              itemDataStatusText;
   private boolean                             isMailingList;
+  private boolean                             isBroadcast;
   private final Set<Integer>                  selectedMembers;
 
   private final LayoutInflater                layoutInflater;
@@ -146,7 +147,11 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
       String addr = null;
 
       if (contactId == DcContact.DC_CONTACT_ID_ADD_MEMBER) {
-        name = context.getString(R.string.group_add_members);
+        if (isBroadcast) {
+          name = context.getString(R.string.add_recipients);
+        } else {
+          name = context.getString(R.string.group_add_members);
+        }
       }
       else if (contactId == DcContact.DC_CONTACT_ID_QR_INVITE) {
         name = context.getString(R.string.qrshow_title);
@@ -219,6 +224,8 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
       case ItemData.TYPE_MEMBER:
         if (isMailingList) {
           txt = context.getString(R.string.contacts_headline);
+        } else if (isBroadcast) {
+          txt = context.getResources().getQuantityString(R.plurals.n_recipients, (int) itemDataMemberCount, (int) itemDataMemberCount);
         } else {
           txt = context.getResources().getQuantityString(R.plurals.n_members, (int) itemDataMemberCount, (int) itemDataMemberCount);
         }
@@ -277,15 +284,23 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
     itemDataContact = null;
     itemDataStatusText = "";
     isMailingList = false;
+    isBroadcast = false;
 
     if (memberList!=null) {
       itemDataMemberCount = memberList.length;
+      if (dcChat.isBroadcast()) {
+        isBroadcast = true;
+      }
+
       if (dcChat.isMailingList()) {
         isMailingList = true;
-      } else {
+      } else if (dcChat.canSend()) {
         itemData.add(new ItemData(ItemData.TYPE_MEMBER, DcContact.DC_CONTACT_ID_ADD_MEMBER, 0));
-        itemData.add(new ItemData(ItemData.TYPE_MEMBER, DcContact.DC_CONTACT_ID_QR_INVITE, 0));
+        if (!isBroadcast) {
+          itemData.add(new ItemData(ItemData.TYPE_MEMBER, DcContact.DC_CONTACT_ID_QR_INVITE, 0));
+        }
       }
+
       for (int value : memberList) {
         itemData.add(new ItemData(ItemData.TYPE_MEMBER, value, 0));
       }

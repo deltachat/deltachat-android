@@ -18,6 +18,8 @@
     <string name="automatic">Автоматично</string>
     <string name="strict">Суворо</string>
     <string name="open">Відкрити</string>
+    <string name="download">Завантажити</string>
+    <string name="downloading">Завантаження...</string>
     <string name="open_attachment">Відкрити вкладення</string>
     <string name="join">Приєднатися</string>
     <string name="rejoin">Заново приєднатися</string>
@@ -119,6 +121,12 @@
         <item quantity="many">%d учасників</item>
         <item quantity="other">%d учасників</item>
     </plurals>
+    <plurals name="n_recipients">
+        <item quantity="one">%d одержувач</item>
+        <item quantity="few">%d одержувачі</item>
+        <item quantity="many">%d одержувачів</item>
+        <item quantity="other">%d одержувачів</item>
+    </plurals>
 
     <string name="self">Мої</string>
     <string name="draft">Чернетка</string>
@@ -126,6 +134,8 @@
     <!-- Translators: Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
     <string name="reply_noun">Відповідь</string>
     <string name="gif">Gif</string>
+    <!-- "Stickers" as known from other messengers, please pick up the wording from there; in some languages, "Sticker" in english is just fine. -->
+    <string name="sticker">Стікер</string>
     <string name="images">Зображення</string>
     <string name="audio">Аудіо</string>
     <string name="voice_message">Голосове повідомлення</string>
@@ -177,6 +187,11 @@
     <string name="menu_new_chat">Новий чат</string>
     <string name="menu_new_group">Нова група</string>
     <string name="menu_new_verified_group">Нова перевірена група</string>
+    <!-- consider keeping the term "broadcast"; check how these lists are called eg. on whatsapp in the destination language -->
+    <string name="broadcast_list">Список трансляцій</string>
+    <string name="broadcast_lists">Списки трансляцій</string>
+    <string name="new_broadcast_list">Новий Список трансляцій</string>
+    <string name="add_recipients">Додати одержувачів</string>
     <string name="menu_send">Відправити</string>
     <string name="menu_toggle_keyboard">Увімкнути емодзі-клавіатуру</string>
     <string name="menu_edit_group">Редагувати групу</string>
@@ -207,6 +222,7 @@
     <string name="menu_mute">Вимкнути сповіщення</string>
     <string name="menu_unmute">Увімкнути сповіщення</string>
     <string name="menu_export_attachment">Експортувати вкладення</string>
+    <string name="menu_export_attachments">Експортувати вкладення</string>
     <string name="menu_all_media">Всі матеріали</string>
     <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
     <string name="show_in_chat">Показати в чаті</string>
@@ -215,6 +231,7 @@
     <string name="block">Заблокувати</string>
     <string name="menu_block_contact">Заблокувати контакт</string>
     <string name="menu_unblock_contact">Розблокувати контакт</string>
+    <string name="accept">Прийняти</string>
     <string name="menu_play">Грати</string>
     <string name="menu_pause">Пауза</string>
     <string name="menu_scroll_to_bottom">Перейти в кінець</string>
@@ -307,6 +324,12 @@
         <item quantity="many">Видалити %d повідомлень тут і на сервері?</item>
         <item quantity="other">Видалити %d повідомлень тут і на сервері?</item>
     </plurals>
+    <plurals name="ask_delete_messages_simple">
+        <item quantity="one">Видалити %d повідомлення?</item>
+        <item quantity="few">Видалити %d повідомлення?</item>
+        <item quantity="many">Видалити %d повідомлень?</item>
+        <item quantity="other">Видалити %d повідомлення?</item>
+    </plurals>
     <string name="ask_forward">Переслати повідомлення %1$s?</string>
     <string name="ask_forward_multiple">Пересилати повідомлення у %1$d?</string>
     <string name="ask_export_attachment">Експортувати вкладення? Експорт вкладень дозволить будь-якому іншому додатку на Вашому пристрої отримати до них доступ.\n\nПродовжити?</string>
@@ -319,6 +342,8 @@
     <string name="ask_delete_value">Видалити %s?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Видалити %1$s із групи?</string>
+    <!-- Translators: %1$s will be replaced by a comma separated list of names -->
+    <string name="ask_remove_from_broadcast">Видалити %1$s зі списку трансляцій?</string>
     <string name="open_url_confirmation">Ви впевнені, що хочете відкрити це посилання?</string>
 
 
@@ -353,6 +378,7 @@
         <item quantity="other">%d нових повідомлень</item>
     </plurals>
     <string name="chat_no_messages_hint">Надіслати повідомлення %1$s:\n\n• Це спрацює, якщо %2$s не використовує Delta Chat.\n\n• Перше повідомлення може виявитися незашифрованим, його доставка може зайняти деякий час.</string>
+    <string name="chat_new_broadcast_hint">У списку трансляцій інші отримуватимуть повідомлення у своїх приватних чатах з вами.\n\nОдержувачі не будуть знати один про одного.</string>
     <string name="chat_new_group_hint">Напишіть перше повідомлення, що дасть можливість іншим учасникам групи відповісти на нього.\n\n• Це спрацює, навіть якщо не всі учасники використовують Delta Chat.\n\n• Доставка першого повідомлення може зайняти деякий час.</string>
     <string name="chat_record_slide_to_cancel">Рухайте для скасування</string>
     <string name="chat_record_explain">Натисніть і утримуйте для запису голосового повідомлення, відпустіть для відправки</string>
@@ -362,8 +388,10 @@
     <string name="chat_share_with_title">Поділитися</string>
     <string name="chat_input_placeholder">Повідомлення</string>
     <string name="chat_archived_label">Заархівовано</string>
+    <string name="chat_request_label">Запит</string>
     <string name="chat_no_messages">Немає повідомлень.</string>
     <string name="chat_self_talk_subtitle">Повідомлення, відправлені самому собі</string>
+    <string name="archive_empty_hint">Заархівовані вами чати будуть відображені тут.</string>
     <string name="saved_messages">Збережені повідомлення</string>
     <string name="saved_messages_explain">• Пересилайте повідомлення сюди для швидкого доступу\n\n• Робіть нотатки або голосові нагадування\n\n• Вкладайте медіа для збереження</string>
     <!-- this "Saved" should match the "Saved" from "Saved messages" -->
@@ -406,6 +434,7 @@
     <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
     <string name="puny_code_warning_description">Ви перейшли за посиланням, яке може спотворювати символи, використовуючи подібні до них символи з різних алфавітів. Перехід за посиланням %1$s приведе до %2$s, що є нормальним для нелатинських символів. Якщо ви не очікували таких символів, це посилання може бути шкідливим</string>
 
+
     <!-- search -->
     <string name="search">Пошук</string>
     <string name="search_explain">Пошук чатів, контактів і повідомлень</string>
@@ -438,6 +467,12 @@
 
 
     <!-- Connectivity -->
+    <!-- Used as a headline for the "Inbox" eg. in the "Connectivity" view -->
+    <string name="incoming_messages">Вхідні повідомлення</string>
+    <!-- Used as a headline for the "Outbox" eg. in the "Connectivity" view -->
+    <string name="outgoing_messages">Вихідні повідомлення</string>
+    <!-- Used as a headline in the "Connectivity" view. The placeholder will be replaced by the domain of the configured email-address. -->
+    <string name="storage_on_domain">Сховище на %1$s</string>
     <string name="connectivity">Підключення</string>
     <!-- Shown eg. in the title bar if the app is "Not connected"; as there is very few room, try to be as short as possible. -->
     <string name="connectivity_not_connected">Не з\'єднано</string>
@@ -447,6 +482,13 @@
     <string name="connectivity_updating">Оновлення…</string>
     <!-- Shown eg. in the setting if the app is "Connected" -->
     <string name="connectivity_connected">Підключено</string>
+    <string name="sending">Надсилання...</string>
+    <string name="last_msg_sent_successfully">Останнє повідомлення успішно надіслано.</string>
+    <string name="not_supported_by_provider">Не підтримується вашим провайдером електронної пошти.</string>
+    <!-- Used as a subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed or so. -->
+    <string name="messages">Повідомлення</string>
+    <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
+    <string name="part_of_total_used">Використано %1$s з %2$s</string>
 
 
     <!-- welcome and login -->
@@ -468,6 +510,13 @@
     <string name="login_smtp_port">SMTP-порт</string>
     <string name="login_smtp_security">Налаштування безпеки SMTP</string>
     <string name="login_auth_method">Метод авторизації</string>
+    <!-- the word "SOCKS5" here and in the following strings should not be translated in most cases -->
+    <string name="login_socks5">SOCKS5</string>
+    <string name="login_socks5_use_socks5">Використовувати SOCKS5</string>
+    <string name="login_socks5_host">Хост SOCKS5</string>
+    <string name="login_socks5_port">Порт SOCKS5</string>
+    <string name="login_socks5_user">Ім\'я користувача SOCKS5</string>
+    <string name="login_socks5_password">Пароль SOCKS5</string>
     <!-- Translators: %1$s will be replaced by an e-mail address -->
     <string name="login_oauth2_checking_addr">Перевірка %1$s</string>
     <string name="login_info_oauth2_title">Продовжити спрощене налаштування?</string>
@@ -483,7 +532,7 @@
     <!-- Translators: %1$s will be replaced by the e-mail address -->
     <string name="login_error_cannot_login">Не вдалося увійти як «%1$s». Будь ласка, перевірте правильність адреси електронної пошти і пароля.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
-    <string name="login_error_server_response">Відповідь сервера %1$s: %2$s\n\nДеякі сервери електронної пошти зберігають додаткову інформацію у папці «Вхідні». Ви можете перевірити цю папку, наприклад, використовуючи доступ через веб-інтерфейс. Якщо Ви зіткнулися з проблемами, проконсультуйтеся з провайдером електронної пошти або знайомими фахівцями.</string>
+    <string name="login_error_server_response">Відповідь від %1$s: %2$s\n\nДеякі сервери електронної пошти зберігають додаткову інформацію у папці «Вхідні». Ви можете перевірити цю папку, наприклад, використовуючи доступ через веб-інтерфейс. Якщо Ви зіткнулися з проблемами, проконсультуйтеся з провайдером електронної пошти або знайомими фахівцями.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Приймати невірні сертифікати</string>
     <string name="used_settings">Використані налаштування:</string>
@@ -493,7 +542,10 @@
     <string name="delete_account_ask">Ви впевнені, що хочете видалити дані вашого облікового запису?</string>
     <string name="delete_account_explain_with_name">Дані облікового запису \"%s\" на цьому пристрої будуть видалені, включаючи налаштування наскрізного шифрування, контакти, чати, повідомлення та медіа. Ця дія не може бути скасована.</string>
     <string name="switching_account">Перемикаємо обліковий запис...</string>
+    <string name="unconfigured_account">Неналаштований обліковий запис</string>
+    <string name="unconfigured_account_hint">Відкрити обліковий запис для налаштування.</string>
     <string name="try_connect_now">Спробувати підключитися негайно</string>
+    <string name="sync_all">Синхронізувати все</string>
     <!-- Translations: %1$s will be replaced by a more detailed error message -->
     <string name="configuration_failed_with_error">Помилка конфігурації: %1$s</string>
 
@@ -601,6 +653,16 @@
     <string name="pref_background_custom_image">Персональне зображення</string>
     <string name="pref_background_custom_color">Персональний колір</string>
     <string name="export_aborted">Експорт припинено.</string>
+    <string name="auto_download_messages">Автоматично завантажувати повідомлення</string>
+    <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB -->
+    <string name="up_to_x">До %1$s</string>
+    <string name="up_to_x_most_worse_quality_images">До %1$s, зображення найгіршої якості</string>
+    <string name="up_to_x_most_balanced_quality_images">До %1$s, найбільш збалансована якість зображень</string>
+    <string name="no_limit">Без обмежень</string>
+    <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string eg. "1 MiB message" -->
+    <string name="n_bytes_message">Повідомлення розміром %1$s\'</string>
+    <!-- %1$s will be replaced by human-readable date and time -->
+    <string name="download_max_available_until">Максимум завантажень доступний до %1$s</string>
     <string name="profile_image_select">Вибрати зображення профілю</string>
     <string name="select_your_new_profile_image">Вибрати ваше нове зображення профілю</string>
     <string name="profile_image_delete">Видалити зображення профілю</string>
@@ -697,6 +759,13 @@
     <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
     <string name="systemmsg_chat_protection_disabled">Захист чату вимкнено.</string>
     <string name="systemmsg_chat_protection_enabled">Захист чату увімкнено.</string>
+
+    <string name="devicemsg_self_deleted">Ви видалили чат \"Збережені повідомлення\".\n\nℹ️ Аби використовувати функцію \"Збережені повідомлення\" знову, створіть новий чат самі із собою.</string>
+    <!-- %1$s will be replaced by the number of storage already used, sth. as '500 MB'. CAVE: if you want to use a simple the percent sign, type in two, so eg. %1$s %% -->
+    <string name="devicemsg_storage_exceeding">⚠️ Сховище вашого провайдера електронної пошти майже заповнено, вже використовується %1$s%%.\n\nМожливо, ви не зможете отримати повідомлення, коли пам’ять буде використана на 100%%.\n\n👉 Перевірте, чи можна видалити старі дані у веб -інтерфейсі провайдера та включіть \"Налаштування / Видалити старі повідомлення\". Ви можете будь-коли перевірити своє поточне використання сховища в \"Налаштування / Підключення\". </string>
+    <!-- %1%s will be replaced by date and time in some human-readable format -->
+    <string name="devicemsg_bad_time">⚠️ Дата і час на вашому пристрої видаються неточними (%1$s).\n\nНалаштуйте свій годинник ⏰🔧 для правильного отримання ваших повідомлень.</string>
+    <string name="devicemsg_update_reminder">⚠️ Ваша версія Delta Chat може бути застарілою.\n\nЦе може спричинити проблеми, оскільки ваші співрозмовники в чаті використовують новіші версії, а вам не вистачає найновіших функцій 😳 \nПеревірте оновлення на https://get.delta.chat або у вашому магазині додатків. </string>
 
     <!-- Some options as "Manage keys" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc. to be entered in a system dialog. This hint is added to the system dialog, below a title as "Manage keys" or "Backup". -->
     <string name="enter_system_secret_to_continue">Введіть захисний код, щоб продовжити.</string>
@@ -890,4 +959,7 @@
 
     <!-- device messages for updates -->
     <string name="update_1_20">Поліпшена сумісність з електронною поштою у версії 1.20:\n\n📫 Читання списків розсилки\n📭 Читання HTML-листів\n📪 Приємна робота з адресами підтримки\n📫 Виправлено багато значних та незначних неприємностей\n\nПрочитайте наш новий допис у блозі про ці перші кроки до електронної пошти та багато іншого: </string>
-    </resources>
+    <string name="update_1_22">Що нового у 1.22?\n\n👋 Запити на розмови тепер з\'являються як окремі чати, і з ними можна детально ознайомитись перед прийняттям або блокуванням\n\n🗄️ Архів тепер легко досяжний із налаштувань - ви також можете знайти там свої минулі запити\n\n📮📮📮 Додано підтримку мульти-аккаунта: перемикайте та керуйте аккаунтами в налаштуваннях\n\n🤔 Знайте, що відбувається: проблеми зі з’єднанням відображаються у рядку заголовка, торкніться його, щоб дізнатися більше\n\nБільше інформації в блозі:</string>
+    <string name="update_1_22_ios">Що нового у 1.22?\n\n👋 Запити на розмови тепер з\'являються як окремі чати, і з ними можна детально ознайомитись перед прийняттям або блокуванням\n\n🗄️ Архів тепер легко досяжний із налаштувань - ви також можете знайти там свої минулі запити\n\n📮📮📮 Додано підтримку мульти-аккаунта: перемикайте та керуйте аккаунтами в налаштуваннях\n\n🤔 Знайте, що відбувається: проблеми зі з’єднанням відображаються у рядку заголовка, торкніться його, щоб дізнатися більше\n\nБільше інформації в блозі:</string>
+
+</resources>

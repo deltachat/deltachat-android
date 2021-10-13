@@ -130,6 +130,10 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
       openConversation(getDirectSharingChatId(this), -1);
     }
 
+    if (isDirectSharing(this)) {
+      openConversation(getDirectSharingChatId(this), -1);
+    }
+
     if (getIntent().getBooleanExtra(CLEAR_NOTIFICATIONS, false)) {
       DcHelper.getNotificationCenter(this).removeAllNotifiations();
     }

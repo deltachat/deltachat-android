@@ -160,7 +160,6 @@ public class ProfileDocumentsFragment
   public void onMediaLongClicked(DcMsg mediaRecord) {
     if (actionMode == null) {
       ((ProfileDocumentsAdapter) recyclerView.getAdapter()).toggleSelection(mediaRecord);
-      recyclerView.getAdapter().notifyDataSetChanged();
 
       actionMode = ((AppCompatActivity) getActivity()).startSupportActionMode(actionModeCallback);
     }
@@ -178,7 +177,6 @@ public class ProfileDocumentsFragment
     boolean singleSelection = messageRecords.size() == 1;
     menu.findItem(R.id.details).setVisible(singleSelection);
     menu.findItem(R.id.show_in_chat).setVisible(singleSelection);
-    menu.findItem(R.id.save).setVisible(singleSelection);
     menu.findItem(R.id.share).setVisible(singleSelection);
   }
 
@@ -217,7 +215,7 @@ public class ProfileDocumentsFragment
           mode.finish();
           return true;
         case R.id.delete:
-          handleDeleteMessages(getListAdapter().getSelectedMedia());
+          handleDeleteMessages(chatId, getListAdapter().getSelectedMedia());
           mode.finish();
           return true;
         case R.id.share:
@@ -227,7 +225,7 @@ public class ProfileDocumentsFragment
           handleShowInChat(getSelectedMessageRecord(getListAdapter().getSelectedMedia()));
           return true;
         case R.id.save:
-          handleSaveAttachment(getSelectedMessageRecord(getListAdapter().getSelectedMedia()));
+          handleSaveAttachment(getListAdapter().getSelectedMedia());
           return true;
       }
       return false;

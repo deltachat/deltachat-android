@@ -18,6 +18,8 @@
     <string name="automatic">Otomatik</string>
     <string name="strict">Katı</string>
     <string name="open">Aç</string>
+    <string name="download">İndir</string>
+    <string name="downloading">İndiriliyor…</string>
     <string name="open_attachment">İlişiği Aç</string>
     <string name="join">Katıl</string>
     <string name="rejoin">Yeniden katıl</string>
@@ -107,6 +109,10 @@
         <item quantity="one">%d üye</item>
         <item quantity="other">%d üye</item>
     </plurals>
+    <plurals name="n_recipients">
+        <item quantity="one">%d alıcı</item>
+        <item quantity="other">%d alıcı</item>
+    </plurals>
 
     <string name="self">Ben</string>
     <string name="draft">Taslak</string>
@@ -114,6 +120,8 @@
     <!-- Translators: Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
     <string name="reply_noun">Yanıt</string>
     <string name="gif">Gif</string>
+    <!-- "Stickers" as known from other messengers, please pick up the wording from there; in some languages, "Sticker" in english is just fine. -->
+    <string name="sticker">Çıkartma</string>
     <string name="images">Görseller</string>
     <string name="audio">Ses</string>
     <string name="voice_message">Sesli İleti</string>
@@ -165,6 +173,11 @@
     <string name="menu_new_chat">Yeni Sohbet</string>
     <string name="menu_new_group">Yeni Grup</string>
     <string name="menu_new_verified_group">Yeni Doğrulanan Grup</string>
+    <!-- consider keeping the term "broadcast"; check how these lists are called eg. on whatsapp in the destination language -->
+    <string name="broadcast_list">Yayın Listesi</string>
+    <string name="broadcast_lists">Yayın Listeleri</string>
+    <string name="new_broadcast_list">Yeni Yayın Listesi</string>
+    <string name="add_recipients">Alıcılar Ekle</string>
     <string name="menu_send">Gönder</string>
     <string name="menu_toggle_keyboard">Emoji Klavyesine Geç</string>
     <string name="menu_edit_group">Grubu Düzenle</string>
@@ -195,6 +208,7 @@
     <string name="menu_mute">Bildirimleri Sessize Al</string>
     <string name="menu_unmute">Sesini aç</string>
     <string name="menu_export_attachment">İlişiği Dışa Aktar</string>
+    <string name="menu_export_attachments">İlişikleri Dışa Aktar</string>
     <string name="menu_all_media">Tüm Ortamlar</string>
     <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
     <string name="show_in_chat">Sohbette Göster</string>
@@ -290,9 +304,13 @@
         <item quantity="one">%d ileti buradan ve sunucudan silinsin mi?</item>
         <item quantity="other">%d ileti buradan ve sunucudan silinsin mi?</item>
     </plurals>
+    <plurals name="ask_delete_messages_simple">
+        <item quantity="one">%d ileti silinsin mi?</item>
+        <item quantity="other">%d ileti silinsin mi?</item>
+    </plurals>
     <string name="ask_forward">İletiler %1$s alıcısına iletilsin mi?</string>
     <string name="ask_forward_multiple">İletiler %1$d sohbete iletilsin mi?</string>
-    <string name="ask_export_attachment">İlişik dışa aktarılsın mı? İlişikleri dışa aktarmak, aygıtınızdaki diğer uygulamaların onlara erişmesine izin verir.\n\nSürdürülsün mü?</string>
+    <string name="ask_export_attachment">İlişikleri dışa aktarmak, aygıtınızdaki diğer uygulamaların onlara erişmesine izin verir.\n\nSürdürülsün mü?</string>
     <string name="ask_block_contact">Bu kişi engellensin mi? Artık bu kişiden gelen iletileri almayacaksınız.</string>
     <string name="ask_unblock_contact">Bu kişi engellenmesin mi? Bir kez daha bu kişiden gelen iletileri alabileceksiniz.</string>
     <string name="ask_delete_contacts">Kişiler silinsin mi?\n\nSohbetlerin sürdüğü kişiler ve sistemin adres defterinden gelen kişiler kalıcı olarak silinemez.</string>
@@ -302,6 +320,8 @@
     <string name="ask_delete_value">%s silinsin mi?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">%1$s gruptan kaldırılsın mı?</string>
+    <!-- Translators: %1$s will be replaced by a comma separated list of names -->
+    <string name="ask_remove_from_broadcast">%1$s yayın listesinden kaldırılsın mı?</string>
     <string name="open_url_confirmation">Bu bağlantıyı açmak istiyor musunuz?</string>
 
 
@@ -330,6 +350,7 @@
         <item quantity="other">%d yeni ileti</item>
     </plurals>
     <string name="chat_no_messages_hint">%1$s alıcısına ileti gönder:\n\n• %2$s Delta Chat kullanmıyorsa tamam.\n\n• İlk iletinin teslim edilmesi biraz zaman alabilir ve şifrelenmeyebilir.</string>
+    <string name="chat_new_broadcast_hint">Bir yayın listesinde, diğerleri sizinle olan özel sohbetlerinde ileti alacak.\n\nAlıcılar birbirlerinin farkında olmayacak.</string>
     <string name="chat_new_group_hint">İlk iletiyi oluşturun, diğerlerinin bu grupta yanıtlamasına izin verin.\n\n• Tüm üyeler Delta Chat kullanmıyorsa tamam.\n\n• İlk iletinin teslim edilmesi biraz zaman alabilir.</string>
     <string name="chat_record_slide_to_cancel">Vazgeçmek için kaydırın</string>
     <string name="chat_record_explain">Bir sesli ileti kaydetmek için dokunun ve basılı tutun, göndermek için bırakın</string>
@@ -354,7 +375,7 @@
     <!-- reasons for a disabled message composer -->
     <string name="messaging_disabled_not_in_group">Yazamazsınız çünkü bu grupta değilsiniz. Katılmak için başka bir üyeye sorun.</string>
     <string name="messaging_disabled_device_chat">Bu sohbet, yerel olarak oluşturulan iletileri içerir. Bu nedenle herhangi bir ileti yazamazsınız.</string>
-    <string name="messaging_disabled_deaddrop">İletişim isteğini kabul etmek ya da reddetmek için bir iletinin üzerine tıklayın</string>
+    <string name="messaging_disabled_deaddrop">İletişim isteğini kabul etmek ya da reddetmek için bir iletinin üzerinde tıklayın</string>
     <string name="messaging_disabled_mailing_list">Posta listelerinden gönderilen iletiler henüz desteklenmiyor</string>
     <string name="cannot_display_unsuported_file_type">Bu dosya türü görüntülenemiyor: %s</string>
     <string name="attachment_failed_to_load">İlişiği yükleme başarısız</string>
@@ -384,6 +405,7 @@
     <string name="puny_code_warning_question">%1$s bağlantısını ziyaret etmek istediğinizden emin misiniz?</string>
     <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
     <string name="puny_code_warning_description">Farklı alfabelerden benzer görünen karakterleri kullanarak karakterleri yanlış temsil edebilecek bir bağlantı izlediniz. %1$s etiketli bağlantıyı takip etmek, Latin olmayan karakterler için normal olan %2$s dönüşümüne yol açacaktır. Bu tür karakterleri beklemiyorsanız, bu bağlantı zararlı olabilir</string>
+
 
     <!-- search -->
     <string name="search">Ara</string>
@@ -417,6 +439,12 @@
 
 
     <!-- Connectivity -->
+    <!-- Used as a headline for the "Inbox" eg. in the "Connectivity" view -->
+    <string name="incoming_messages">Gelen İletiler</string>
+    <!-- Used as a headline for the "Outbox" eg. in the "Connectivity" view -->
+    <string name="outgoing_messages">Giden İletiler</string>
+    <!-- Used as a headline in the "Connectivity" view. The placeholder will be replaced by the domain of the configured email-address. -->
+    <string name="storage_on_domain">%1$s Üzerinde Depolama</string>
     <string name="connectivity">Bağlanabilirlik</string>
     <!-- Shown eg. in the title bar if the app is "Not connected"; as there is very few room, try to be as short as possible. -->
     <string name="connectivity_not_connected">Bağlı değil</string>
@@ -426,6 +454,13 @@
     <string name="connectivity_updating">Güncelleştiriliyor…</string>
     <!-- Shown eg. in the setting if the app is "Connected" -->
     <string name="connectivity_connected">Bağlandı</string>
+    <string name="sending">Gönderiliyor…</string>
+    <string name="last_msg_sent_successfully">Son ileti başarıyla gönderildi.</string>
+    <string name="not_supported_by_provider">Sağlayıcınız tarafından desteklenmiyor.</string>
+    <!-- Used as a subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed or so. -->
+    <string name="messages">İletiler</string>
+    <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
+    <string name="part_of_total_used">%1$s / %2$s kullanıldı</string>
 
 
     <!-- welcome and login -->
@@ -447,6 +482,13 @@
     <string name="login_smtp_port">SMTP Bağlantı Noktası</string>
     <string name="login_smtp_security">SMTP Güvenliği</string>
     <string name="login_auth_method">Yetkilendirme Yöntemi</string>
+    <!-- the word "SOCKS5" here and in the following strings should not be translated in most cases -->
+    <string name="login_socks5">SOCKS5</string>
+    <string name="login_socks5_use_socks5">SOCKS5\'i Kullan</string>
+    <string name="login_socks5_host">SOCKS5 Ana Bilgisayarı</string>
+    <string name="login_socks5_port">SOCKS5 Bağlantı Noktası</string>
+    <string name="login_socks5_user">SOCKS5 Kullanıcısı</string>
+    <string name="login_socks5_password">SOCKS5 Parolası</string>
     <!-- Translators: %1$s will be replaced by an e-mail address -->
     <string name="login_oauth2_checking_addr">%1$s denetleniyor</string>
     <string name="login_info_oauth2_title">Basitleştirilen ayarlamayla sürdürülsün mü?</string>
@@ -472,7 +514,10 @@
     <string name="delete_account_ask">Hesap verilerinizi silmek istediğinizden emin misiniz?</string>
     <string name="delete_account_explain_with_name">Uçtan uca şifreleme ayarlamanızı, kişilerinizi, sohbetlerinizi, iletilerinizi ve ortamlarınızı kapsayarak \"%s\" hesabının bu aygıttaki verilerinin tümü silinecek. Bu eylem geri alınamaz.</string>
     <string name="switching_account">Hesap değiştiriliyor…</string>
+    <string name="unconfigured_account">Yapılandırılmayan hesap</string>
+    <string name="unconfigured_account_hint">Yapılandırmak için hesabı açın.</string>
     <string name="try_connect_now">Şimdi bağlanmayı dene</string>
+    <string name="sync_all">Tümünü Eşzamanla</string>
     <!-- Translations: %1$s will be replaced by a more detailed error message -->
     <string name="configuration_failed_with_error">Yapılandırma başarısız. Hata: %1$s</string>
 
@@ -580,6 +625,16 @@
     <string name="pref_background_custom_image">Özel görsel</string>
     <string name="pref_background_custom_color">Özel renk</string>
     <string name="export_aborted">Dışa aktarmadan vazgeçildi.</string>
+    <string name="auto_download_messages">İletileri Otomatik İndir</string>
+    <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB -->
+    <string name="up_to_x">%1$s kadar</string>
+    <string name="up_to_x_most_worse_quality_images">%1$s kadar, en kötü kaliteli görseller</string>
+    <string name="up_to_x_most_balanced_quality_images">%1$s kadar, en dengeli kaliteli görseller</string>
+    <string name="no_limit">Sınır yok</string>
+    <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string eg. "1 MiB message" -->
+    <string name="n_bytes_message">%1$s ileti</string>
+    <!-- %1$s will be replaced by human-readable date and time -->
+    <string name="download_max_available_until">İndirme en fazla %1$s zamanına kadar kullanılabilir</string>
     <string name="profile_image_select">Profil Görseli Seç</string>
     <string name="select_your_new_profile_image">Yeni profil görselinizi seçin</string>
     <string name="profile_image_delete">Profil Görselini Sil</string>
@@ -628,9 +683,9 @@
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
     <string name="autocrypt_explain">Autocrypt, otomatik uçtan uca e-posta şifrelemesi için yeni ve açık bir belirtimdir.\n\nUçtan uca ayarlamanız, gerektiğinde otomatik olarak oluşturulur ve Autocrypt Ayarlama İletileri ile aygıtlar arasında aktarabilirsiniz.</string>
-    <string name="autocrypt_send_asm_title">Autocrypt Ayarlama İletisi gönder</string>
+    <string name="autocrypt_send_asm_title">Autocrypt Ayarlama İletisi Gönder</string>
     <string name="autocrypt_send_asm_explain_before">Bir Autocrypt Ayarlama İletisi, uçtan uca ayarlamanızı diğer Autocrypt uyumlu uygulamalarla güvenli olarak paylaşır.\n\nAyarlama, burada görüntülenen ve diğer aygıtta yazılması gereken bir ayarlama kodu tarafından şifrelenecek.</string>
-    <string name="autocrypt_send_asm_button">Autocrypt Ayarlama İletisi gönder</string>
+    <string name="autocrypt_send_asm_button">Autocrypt Ayarlama İletisi Gönder</string>
     <string name="autocrypt_send_asm_explain_after">Ayarlamanız kendinize gönderildi. Diğer aygıta geçin ve ayarlama iletisini açın. Size bir ayarlama kodu sorulmalı. Aşağıdaki sayıları girin:\n\n%1$s</string>
     <string name="autocrypt_prefer_e2ee">Uçtan Uca Şifrelemeyi Yeğle</string>
     <string name="autocrypt_asm_subject">Autocrypt Ayarlama İletisi</string>
@@ -676,6 +731,13 @@
     <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
     <string name="systemmsg_chat_protection_disabled">Sohbet koruması etkisizleştirildi.</string>
     <string name="systemmsg_chat_protection_enabled">Sohbet koruması etkinleştirildi.</string>
+
+    <string name="devicemsg_self_deleted">\"Kaydedilen iletiler\" sohbetini sildiniz.\n\nℹ️ \"Kaydedilen iletiler\" özelliğini yeniden kullanmak için kendinizle yeni bir sohbet oluşturun.</string>
+    <!-- %1$s will be replaced by the number of storage already used, sth. as '500 MB'. CAVE: if you want to use a simple the percent sign, type in two, so eg. %1$s %% -->
+    <string name="devicemsg_storage_exceeding">⚠️ Sağlayıcınızın depolaması aşılmak üzere, %1$s%% zaten kullanılıyor.\n\nDepolama 100%% kullanıldığında ileti alamayabilirsiniz.\n\n👉 Lütfen sağlayıcınızın web arabiriminden eski verileri silip silemeyeceğinizi denetleyin ve \"Ayarlar / Eski İletileri Sil\"i etkinleştirmeyi düşünün. Şu anki depolama kullanımınızı her zaman \"Ayarlar / Bağlanabilirlik\"ten denetleyebilirsiniz.</string>
+    <!-- %1%s will be replaced by date and time in some human-readable format -->
+    <string name="devicemsg_bad_time">⚠️ Aygıtınızın tarihi ya da saati yanlış gibi görünüyor (%1$s).\n\nİletilerinizin doğru şekilde alındığından emin olmak için saatinizi ⏰🔧 ayarlayın.</string>
+    <string name="devicemsg_update_reminder">⚠️ Delta Chat sürümünüz eski olabilir.\n\nBu, sorunlara neden olabilir çünkü sohbet ortaklarınız daha yeni sürümleri kullanıyor - ve en yeni özellikleri kaybediyorsunuz 😳\nGüncelleştirmeler için lütfen https://get.delta.chat ya da uygulama mağazanızı denetleyin.</string>
 
     <!-- Some options as "Manage keys" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc. to be entered in a system dialog. This hint is added to the system dialog, below a title as "Manage keys" or "Backup". -->
     <string name="enter_system_secret_to_continue">Sürdürmek için lütfen sistem tanımlı sırrınızı girin.</string>
@@ -869,4 +931,7 @@
 
     <!-- device messages for updates -->
     <string name="update_1_20">1.20 sürümünde geliştirilen e-posta uyumluluğu:\n\n📫 Posta listelerini okuma\n📭 HTML postaları okuma\n📪 Destek adreslerini iyi işleme\n📫 Çoğu büyük ve küçük sorunlar düzeltildi\n\nPostaya yönelik bu ilk adımlar ve daha fazlası hakkındaki yeni blog gönderimizi okuyun:</string>
-    </resources>
+    <string name="update_1_22">1.22\'de ne yeni?\n\n👋 Sohbet İstekleri artık tekli sohbetler olarak açılır ve kabul etmeden ya da engellemeden önce ayrıntılı incelenebilir\n\n🗄️ Arşiv şimdi ana menüden kolayca erişilebilirdir - orada eski isteklerinizi de bulacaksınız\n\n📮📮📮 Çoklu hesap geliştirildi: Hesaplar arasında geçiş yapmak artık daha hızlı ve uzun güncelleştirmeler tarafından daha az engellenir\n\n🤔 Neler olduğunu bilin: Bağlantı sorunları artık başlık çubuğunda gösterilir, ayrıntılar için dokunun\n\nDaha fazlası blogda:</string>
+    <string name="update_1_22_ios">1.22\'de ne yeni?\n\n👋 Sohbet İstekleri artık tekli sohbetler olarak açılır ve kabul etmeden ya da engellemeden önce ayrıntılı incelenebilir\n\n🗄️ Arşiv şimdi ana menüden kolayca erişilebilirdir - orada eski isteklerinizi de bulacaksınız\n\n📮📮📮 Çoklu hesap geliştirildi: Hesaplar arasında geçiş yapmak artık daha hızlı ve uzun güncelleştirmeler tarafından daha az engellenir\n\n🤔 Neler olduğunu bilin: Bağlantı sorunları artık başlık çubuğunda gösterilir, ayrıntılar için dokunun\n\nDaha fazlası blogda:</string>
+
+</resources>

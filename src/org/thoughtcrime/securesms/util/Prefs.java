@@ -178,6 +178,10 @@ public class Prefs {
     }
   }
 
+  public static boolean isNewBroadcastListAvailable(Context context) {
+    return getBooleanPreference(context, "pref_new_broadcast_list", false);
+  }
+
   // ringtone
 
   public static @NonNull Uri getNotificationRingtone(Context context) {

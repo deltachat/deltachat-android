@@ -79,7 +79,6 @@
         <item quantity="one">%d üzv</item>
         <item quantity="other">%d üzv</item>
     </plurals>
-
     <string name="self">Mənə</string>
     <string name="draft">Laihə</string>
     <string name="image">Şəkil</string>

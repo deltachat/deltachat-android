@@ -18,6 +18,8 @@
     <string name="automatic">Automatisch</string>
     <string name="strict">Strikt</string>
     <string name="open">Openen</string>
+    <string name="download">Downloaden</string>
+    <string name="downloading">Bezig met downloaden…</string>
     <string name="open_attachment">Bijlage openen</string>
     <string name="join">Deelnemen</string>
     <string name="rejoin">Opnieuw deelnemen</string>
@@ -107,6 +109,10 @@
         <item quantity="one">%d deelnemer</item>
         <item quantity="other">%d deelnemers</item>
     </plurals>
+    <plurals name="n_recipients">
+        <item quantity="one">%d ontvanger</item>
+        <item quantity="other">%d ontvangers</item>
+    </plurals>
 
     <string name="self">Ik</string>
     <string name="draft">Concept</string>
@@ -114,6 +120,8 @@
     <!-- Translators: Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
     <string name="reply_noun">Antwoord</string>
     <string name="gif">GIF</string>
+    <!-- "Stickers" as known from other messengers, please pick up the wording from there; in some languages, "Sticker" in english is just fine. -->
+    <string name="sticker">Sticker</string>
     <string name="images">Afbeeldingen</string>
     <string name="audio">Audio</string>
     <string name="voice_message">Spraakbericht</string>
@@ -165,6 +173,11 @@
     <string name="menu_new_chat">Nieuw gesprek</string>
     <string name="menu_new_group">Nieuwe groep</string>
     <string name="menu_new_verified_group">Nieuwe goedgekeurde groep</string>
+    <!-- consider keeping the term "broadcast"; check how these lists are called eg. on whatsapp in the destination language -->
+    <string name="broadcast_list">Verzendlijst</string>
+    <string name="broadcast_lists">Verzendlijsten</string>
+    <string name="new_broadcast_list">Nieuwe verzendlijst</string>
+    <string name="add_recipients">Ontvangers toevoegen</string>
     <string name="menu_send">Versturen</string>
     <string name="menu_toggle_keyboard">Emoji-toetsenbord tonen/verbergen</string>
     <string name="menu_edit_group">Groep aanpassen</string>
@@ -195,6 +208,7 @@
     <string name="menu_mute">Meldingen uitschakelen</string>
     <string name="menu_unmute">Meldingen inschakelen</string>
     <string name="menu_export_attachment">Bijlage exporteren</string>
+    <string name="menu_export_attachments">Bijlagen exporteren</string>
     <string name="menu_all_media">Alle media</string>
     <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
     <string name="show_in_chat">Tonen in bijbehorend gesprek</string>
@@ -290,6 +304,10 @@
         <item quantity="one">Wil je %d bericht verwijderen, zowel hier als op de server?</item>
         <item quantity="other">Wil je %d berichten verwijderen, zowel hier als op de server?</item>
     </plurals>
+    <plurals name="ask_delete_messages_simple">
+        <item quantity="one">Wil je %d bericht verwijderen?</item>
+        <item quantity="other">Wil je %d berichten verwijderen?</item>
+    </plurals>
     <string name="ask_forward">Wil je de berichten doorsturen aan %1$s?</string>
     <string name="ask_forward_multiple">Wil je de berichten doorsturen naar %1$d gesprekken?</string>
     <string name="ask_export_attachment">Als je de bijlage exporteert, geef je andere apps op je apparaat toegang om hem uit te lezen.\n\nWil je doorgaan?</string>
@@ -302,6 +320,8 @@
     <string name="ask_delete_value">Wil je %s verwijderen?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Wil je %1$s verwijderen uit de groep?</string>
+    <!-- Translators: %1$s will be replaced by a comma separated list of names -->
+    <string name="ask_remove_from_broadcast">Wil je %1$s verwijderen van de verzendlijst?</string>
     <string name="open_url_confirmation">Weet je zeker dat je deze link wilt openen?</string>
 
 
@@ -330,6 +350,7 @@
         <item quantity="other">%d nieuwe berichten</item>
     </plurals>
     <string name="chat_no_messages_hint">Verstuur een bericht aan %1$s:\n\n• %2$s hoeft Delta Chat niet te gebruiken.\n\n• Het afleveren van het eerste bericht kan even duren en onversleuteld zijn.</string>
+    <string name="chat_new_broadcast_hint">Als je een verzendlijst maakt, dan onhvangen anderen bericht van jou in hun privégesprekken.\n\nDe ontvangers kunnen elkaar echter niet zien.</string>
     <string name="chat_new_group_hint">Stel het eerste bericht op, zodat anderen binnen deze groep kunnen reageren.\n\n• Niet alle leden hoeven Delta Chat te gebruiken.\n\n• Het afleveren van het eerste bericht kan even duren.</string>
     <string name="chat_record_slide_to_cancel">Veeg opzij om te annuleren</string>
     <string name="chat_record_explain">Houdt ingedrukt om een spraakbericht op te nemen; laat los om te versturen</string>
@@ -385,6 +406,7 @@
     <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
     <string name="puny_code_warning_description">Je hebt op een link gedrukt welke niet-overeenkomende tekens bevat uit andere talen. Door %1$s te openen kom je op %2$s terecht, welke niet-Latijnse tekens bevat. Als je deze tekens niet verwachtte, dan is de site mogelijk niet te vertrouwen.</string>
 
+
     <!-- search -->
     <string name="search">Zoeken</string>
     <string name="search_explain">Zoek naar gesprekken, contactpersonen en berichten</string>
@@ -417,6 +439,12 @@
 
 
     <!-- Connectivity -->
+    <!-- Used as a headline for the "Inbox" eg. in the "Connectivity" view -->
+    <string name="incoming_messages">Inkomende berichten</string>
+    <!-- Used as a headline for the "Outbox" eg. in the "Connectivity" view -->
+    <string name="outgoing_messages">Uitgaande berichten</string>
+    <!-- Used as a headline in the "Connectivity" view. The placeholder will be replaced by the domain of the configured email-address. -->
+    <string name="storage_on_domain">Opslag op %1$s</string>
     <string name="connectivity">Verbindingen</string>
     <!-- Shown eg. in the title bar if the app is "Not connected"; as there is very few room, try to be as short as possible. -->
     <string name="connectivity_not_connected">Niet verbonden</string>
@@ -426,6 +454,13 @@
     <string name="connectivity_updating">Bezig met bijwerken…</string>
     <!-- Shown eg. in the setting if the app is "Connected" -->
     <string name="connectivity_connected">Verbonden</string>
+    <string name="sending">Bezig met versturen…</string>
+    <string name="last_msg_sent_successfully">Het laatste bericht is verstuurd.</string>
+    <string name="not_supported_by_provider">Wordt niet ondersteund door je provider.</string>
+    <!-- Used as a subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed or so. -->
+    <string name="messages">Berichten</string>
+    <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
+    <string name="part_of_total_used">%1$s van %2$s in gebruik</string>
 
 
     <!-- welcome and login -->
@@ -447,6 +482,13 @@
     <string name="login_smtp_port">SMTP-poort</string>
     <string name="login_smtp_security">SMTP-beveiliging</string>
     <string name="login_auth_method">Autorisatiemethode</string>
+    <!-- the word "SOCKS5" here and in the following strings should not be translated in most cases -->
+    <string name="login_socks5">SOCKS5</string>
+    <string name="login_socks5_use_socks5">SOCKS5 gebruiken</string>
+    <string name="login_socks5_host">SOCKS5-host</string>
+    <string name="login_socks5_port">SOCKS5-poort</string>
+    <string name="login_socks5_user">SOCKS5-gebruiker</string>
+    <string name="login_socks5_password">SOCKS5-wachtwoord</string>
     <!-- Translators: %1$s will be replaced by an e-mail address -->
     <string name="login_oauth2_checking_addr">Bezig met controleren van %1$s</string>
     <string name="login_info_oauth2_title">Wil je doorgaan met vereenvoudigd instellen?</string>
@@ -472,7 +514,10 @@
     <string name="delete_account_ask">Weet je zeker dat je je accountgegevens wilt verwijderen?</string>
     <string name="delete_account_explain_with_name">Alle gegevens van ‘%s’ worden verwijderd: de eind-tot-eindinstellingen, contactpersonen, gesprekken, berichten en media. Deze actie kan niet ongedaan worden gemaakt.</string>
     <string name="switching_account">Bezig met overschakelen…</string>
+    <string name="unconfigured_account">Niet-ingesteld account</string>
+    <string name="unconfigured_account_hint">Open een account om het in te stellen.</string>
     <string name="try_connect_now">Probeer te verbinden</string>
+    <string name="sync_all">Alles synchroniseren</string>
     <!-- Translations: %1$s will be replaced by a more detailed error message -->
     <string name="configuration_failed_with_error">Het instellen is mislukt. Foutmelding: %1$s</string>
 
@@ -580,6 +625,16 @@
     <string name="pref_background_custom_image">Eigen afbeelding</string>
     <string name="pref_background_custom_color">Eigen kleur</string>
     <string name="export_aborted">Het exporteren is afgebroken.</string>
+    <string name="auto_download_messages">Berichten automatisch downloaden</string>
+    <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB -->
+    <string name="up_to_x">Tot %1$s</string>
+    <string name="up_to_x_most_worse_quality_images">Tot %1$s - lage afbeeldingskwaliteit</string>
+    <string name="up_to_x_most_balanced_quality_images">Tot %1$s - redelijke afbeeldingskwaliteit</string>
+    <string name="no_limit">Onbeperkt</string>
+    <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string eg. "1 MiB message" -->
+    <string name="n_bytes_message">%1$s bericht</string>
+    <!-- %1$s will be replaced by human-readable date and time -->
+    <string name="download_max_available_until">Maximaal downloaden tot en met een aantal van %1$s</string>
     <string name="profile_image_select">Profielfoto kiezen</string>
     <string name="select_your_new_profile_image">Kies een nieuwe profielfoto</string>
     <string name="profile_image_delete">Profielfoto verwijderen</string>
@@ -676,6 +731,13 @@
     <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
     <string name="systemmsg_chat_protection_disabled">Gespreksbeveiliging is uitgeschakeld.</string>
     <string name="systemmsg_chat_protection_enabled">Gespreksbeveiliging is ingeschakeld.</string>
+
+    <string name="devicemsg_self_deleted">Je hebt het gesprek ‘Opgeslagen berichten’ verwijderd.\n\nℹ️ Als je weer gebruik wilt maken van deze functie, begin dan een nieuw gesprek met jezelf.</string>
+    <!-- %1$s will be replaced by the number of storage already used, sth. as '500 MB'. CAVE: if you want to use a simple the percent sign, type in two, so eg. %1$s %% -->
+    <string name="devicemsg_storage_exceeding">⚠️ De opslagruimte die je provider je biedt is bijna overschreden - momenteel heb je %1$s%% ervan in gebruik.\n\nAls je 100%% van de ruimte verbruikt hebt, kun je mogelijk geen berichten meer ontvangen.\n\n👉 Kijk of je oude gegevens kunt verwijderen in de webclient van je provider. Overweeg ook ‘Instellingen --> Oude berichten verwijderen’ in te schakelen. Je kunt je huidige gebruik te allen tijde bekijken in ‘Instellingen --> Verbindingen’.</string>
+    <!-- %1%s will be replaced by date and time in some human-readable format -->
+    <string name="devicemsg_bad_time">⚠️ De datum en tijd van je apparaat lijken niet te kloppen (%1$s).\n\nVerzet je klok ⏰🔧 om er zeker van te zijn dat je berichten kunt ontvangen.</string>
+    <string name="devicemsg_update_reminder">⚠️ Je versie van Delta Chat is mogelijk verouderd.\n\nDit kan problemen veroorzaken aangezien je gesprekspartners nieuwe versies gebruiken. Bovendien mis je hierdoor enkele nieuwe functies. 😳\nGa naar https://get.delta.chat of de appwinkel van je apparaat om te controleren op updates.</string>
 
     <!-- Some options as "Manage keys" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc. to be entered in a system dialog. This hint is added to the system dialog, below a title as "Manage keys" or "Backup". -->
     <string name="enter_system_secret_to_continue">Voer je op het systeem opgegeven toegangscode in om verder te gaan.</string>

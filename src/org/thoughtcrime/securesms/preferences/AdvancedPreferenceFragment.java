@@ -106,6 +106,35 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
     Preference webrtcInstance = this.findPreference("pref_webrtc_instance");
     webrtcInstance.setOnPreferenceClickListener(new WebrtcInstanceListener());
     updateWebrtcSummary();
+
+    Preference newBroadcastList = this.findPreference("pref_new_broadcast_list");
+    newBroadcastList.setOnPreferenceChangeListener((preference, newValue) -> {
+      if ((Boolean)newValue) {
+        new AlertDialog.Builder(getActivity())
+          .setTitle("Thanks for trying out \"Broadcast Lists\"!")
+          .setMessage("• You can now create new \"Broadcast Lists\" from the \"New Chat\" dialog\n\n"
+            + "• In case you are using more than one device, broadcast lists are currently not synced between them\n\n"
+            + "• If you want to quit the experimental feature, you can disable it at \"Settings / Advanced\"")
+          .setCancelable(false)
+          .setPositiveButton(R.string.ok, null)
+          .show();
+      }
+      return true;
+    });
+
+    Preference locationStreamingEnabled = this.findPreference("pref_location_streaming_enabled");
+    locationStreamingEnabled.setOnPreferenceChangeListener((preference, newValue) -> {
+      if ((Boolean)newValue) {
+        new AlertDialog.Builder(getActivity())
+          .setTitle("Thanks for trying out \"Location Streaming\"!")
+          .setMessage("• You will find a corresponding option in the attach menu (the paper clip) of each chat now\n\n"
+            + "• If you want to quit the experimental feature, you can disable it at \"Settings / Advanced\"")
+          .setCancelable(false)
+          .setPositiveButton(R.string.ok, null)
+          .show();
+      }
+      return true;
+    });
   }
 
   private boolean handleImapCheck(Preference preference, Object newValue, String dc_config_name) {

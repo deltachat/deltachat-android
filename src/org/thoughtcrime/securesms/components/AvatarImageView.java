@@ -67,7 +67,7 @@ public class AvatarImageView extends AppCompatImageView {
   }
 
   private void setAvatarClickHandler(final Recipient recipient, boolean quickContactEnabled) {
-    if (!recipient.isGroupRecipient() && quickContactEnabled) {
+    if (!recipient.isMultiUserRecipient() && quickContactEnabled) {
       super.setOnClickListener(v -> {
         if(recipient.getAddress().isDcContact()) {
           Intent intent = new Intent(getContext(), ProfileActivity.class);

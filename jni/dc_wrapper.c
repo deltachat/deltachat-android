@@ -527,6 +527,12 @@ JNIEXPORT jint Java_com_b44t_messenger_DcContext_createGroupChat(JNIEnv *env, jo
 }
 
 
+JNIEXPORT jint Java_com_b44t_messenger_DcContext_createBroadcastList(JNIEnv *env, jobject obj)
+{
+    return (jint)dc_create_broadcast_list(get_dc_context(env, obj));
+}
+
+
 JNIEXPORT jboolean Java_com_b44t_messenger_DcContext_isContactInChat(JNIEnv *env, jobject obj, jint chat_id, jint contact_id)
 {
     return (jboolean)dc_is_contact_in_chat(get_dc_context(env, obj), chat_id, contact_id);
@@ -635,6 +641,12 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcContext_getMsgHtml(JNIEnv *env, jobj
         jstring ret = JSTRING_NEW(temp);
     dc_str_unref(temp);
     return ret;
+}
+
+
+JNIEXPORT void Java_com_b44t_messenger_DcContext_downloadFullMsg(JNIEnv *env, jobject obj, jint msg_id)
+{
+    dc_download_full_msg(get_dc_context(env, obj), msg_id);
 }
 
 
@@ -1386,6 +1398,12 @@ JNIEXPORT jint Java_com_b44t_messenger_DcMsg_getType(JNIEnv *env, jobject obj)
 JNIEXPORT jint Java_com_b44t_messenger_DcMsg_getState(JNIEnv *env, jobject obj)
 {
     return dc_msg_get_state(get_dc_msg(env, obj));
+}
+
+
+JNIEXPORT jint Java_com_b44t_messenger_DcMsg_getDownloadState(JNIEnv *env, jobject obj)
+{
+    return dc_msg_get_download_state(get_dc_msg(env, obj));
 }
 
 

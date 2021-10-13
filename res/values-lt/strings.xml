@@ -17,6 +17,8 @@
     <string name="automatic">Automatinis</string>
     <string name="strict">Griežtas</string>
     <string name="open">Atverti</string>
+    <string name="download">Atsisiųsti</string>
+    <string name="downloading">Atsisiunčiama…</string>
     <string name="open_attachment">Atverti priedą</string>
     <string name="join">Prisijungti</string>
     <string name="rejoin">Prisijungti iš naujo</string>
@@ -114,7 +116,6 @@
         <item quantity="many">%d dalyvių</item>
         <item quantity="other">%d dalyvis</item>
     </plurals>
-
     <string name="self">Aš</string>
     <string name="draft">Juodraštis</string>
     <string name="image">Paveikslas</string>
@@ -199,6 +200,7 @@
     <string name="menu_mute">Išjungti pranešimus</string>
     <string name="menu_unmute">Įjungti pranešimus</string>
     <string name="menu_export_attachment">Eksportuoti priedą</string>
+    <string name="menu_export_attachments">Eksportuoti priedus</string>
     <string name="menu_all_media">Visa medija</string>
     <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
     <string name="show_in_chat">Rodyti pokalbyje</string>
@@ -265,6 +267,8 @@
     <string name="videochat_tap_to_open">Bakstelėkite norėdami atverti</string>
     <string name="videochat_instance">Vaizdo pokalbio egzempliorius</string>
     <string name="videochat_instance_placeholder">Jūsų vaizdo pokalbio egzempliorius</string>
+    <string name="videochat_instance_explain">Jei yra apibrėžtas vaizdo pokalbių egzempliorius, kiekviename pokalbyje galite pradėti vaizdo pokalbį. Vaizdo pokalbiai reikalauja, kad abi pusės turėtų suderinamą programėlę arba suderinamą naršyklę.\n\nPavyzdžiai: https://meet.jit.si/$KAMBARYS arba basicwebrtc:https://jūsų-serveris</string>
+    <string name="videochat_invitation">Pakvietimas į vaizdo pokalbį</string>
     <!-- get confirmations -->
     <string name="ask_leave_group">Ar tikrai norite išeiti iš šios grupės?</string>
     <plurals name="ask_delete_chat">
@@ -326,11 +330,13 @@
     <string name="chat_record_slide_to_cancel">Perbraukite, norėdami atsisakyti</string>
     <string name="chat_record_explain">Bakstelėkite ir laikykite, norėdami įrašyti balso žinutę. Atleiskite, norėdami išsiųsti</string>
     <string name="chat_no_chats_yet_hint">Galite bendrauti su kitais Delta Chat naudotojais ir bet kuriais el. pašto adresais.</string>
+    <string name="chat_all_archived">Visi pokalbiai archyvuoti.\nPaspauskite „+“ norėdami pradėti naują pokalbį.</string>
     <string name="chat_share_with_title">Bendrinti su</string>
     <string name="chat_input_placeholder">Žinutė</string>
     <string name="chat_archived_label">Archyvuotas</string>
     <string name="chat_no_messages">Žinučių nėra.</string>
     <string name="chat_self_talk_subtitle">Žinutės, kurias siunčiu asmeniškai sau</string>
+    <string name="archive_empty_hint">Jei archyvuosite pokalbius, jie bus rodomi čia.</string>
     <string name="saved_messages">Įrašytos žinutės</string>
     <string name="saved_messages_explain">• Persiųskite žinutes čia, kad lengvai jas pasiektumėte\n\n• Rašykitės pastabas ar įrašynėkite balso žinutes\n\n• Pridėkite mediją, norėdami ją išsaugoti</string>
     <!-- this "Saved" should match the "Saved" from "Saved messages" -->
@@ -342,6 +348,8 @@
     <string name="messaging_disabled_device_chat">Šiame pokalbyje yra vietiniu lygmeniu sukurtos žinutės. Štai kodėl negalite rašyti jokių žinučių.</string>
     <string name="cannot_display_unsuported_file_type">Nepavyksta atvaizduoti šio failo tipo: %s</string>
     <string name="attachment_failed_to_load">Nepavyko įkelti priedo</string>
+    <!-- chat audit log -->
+    <string name="chat_audit_log_empty_message">Čia atsiras šio pokalbio sisteminės žinutės</string>
     <string name="puny_code_warning_header">Aptikta įtartina nuoroda</string>
     <!-- placeholder contains the hostname converted to ascii -->
     <string name="puny_code_warning_question">Ar tikrai norite apsilankyti %1$s?</string>
@@ -376,7 +384,6 @@
     <string name="send_message">Siųsti žinutę</string>
 
 
-    <!-- Connectivity -->
     <string name="connectivity">Jungiamumas</string>
     <!-- Shown eg. in the title bar if the app is "Not connected"; as there is very few room, try to be as short as possible. -->
     <string name="connectivity_not_connected">Neprisijungta</string>
@@ -386,8 +393,8 @@
     <string name="connectivity_updating">Atnaujinama…</string>
     <!-- Shown eg. in the setting if the app is "Connected" -->
     <string name="connectivity_connected">Prisijungta</string>
-
-
+    <string name="sending">Siunčiama…</string>
+    <string name="last_msg_sent_successfully">Paskutinė žinutė sėkmingai išsiųsta.</string>
     <!-- welcome and login -->
     <string name="welcome_intro1_message">Pokalbių programa su plačiausia auditorija pasaulyje. Nemokama ir nepriklausoma.</string>
     <string name="login_title">Prisijungti</string>
@@ -407,6 +414,13 @@
     <string name="login_smtp_port">SMTP prievadas</string>
     <string name="login_smtp_security">SMTP saugumas</string>
     <string name="login_auth_method">Įgaliojimų suteikimo metodas</string>
+    <!-- the word "SOCKS5" here and in the following strings should not be translated in most cases -->
+    <string name="login_socks5">SOCKS5</string>
+    <string name="login_socks5_use_socks5">Naudoti SOCKS5</string>
+    <string name="login_socks5_host">SOCKS5 serveris</string>
+    <string name="login_socks5_port">SOCKS5 prievadas</string>
+    <string name="login_socks5_user">SOCKS5 naudotojas</string>
+    <string name="login_socks5_password">SOCKS5 slaptažodis</string>
     <!-- Translators: %1$s will be replaced by an e-mail address -->
     <string name="login_oauth2_checking_addr">Tikrinamas %1$s</string>
     <string name="login_info_oauth2_title">Tęsti, naudojant supaprastintą sąranką?</string>
@@ -431,6 +445,7 @@
     <string name="delete_account_ask">Ar tikrai norite ištrinti savo paskyros duomenis?</string>
     <string name="delete_account_explain_with_name">Visi „%s“ paskyros duomenys šiame įrenginyje bus ištrinti, įskaitant jūsų ištisinio šifravimo sąranką, adresatus, pokalbius, žinutes ir mediją. Šį veiksmą nebeįmanoma bus atšaukti.</string>
     <string name="switching_account">Perjungiama paskyra…</string>
+    <string name="unconfigured_account_hint">Atverkite paskyrą norėdami ją konfigūruoti.</string>
     <!-- Translations: %1$s will be replaced by a more detailed error message -->
     <string name="configuration_failed_with_error">Konfigūracija patyrė nesėkmę. Klaida: %1$s</string>
 
@@ -603,6 +618,8 @@
     <string name="systemmsg_chat_protection_disabled">Pokalbio apsauga išjungta.</string>
     <string name="systemmsg_chat_protection_enabled">Pokalbio apsauga įjungta.</string>
 
+    <!-- %1%s will be replaced by date and time in some human-readable format -->
+    <string name="devicemsg_bad_time">⚠️ Atrodo, kad jūsų įrenginyje yra nustatyta netiksli data ar laikas (%1$s).\n\nSuderinkite savo laikrodį ⏰🔧 kad užtikrintumėte, jog žinutės bus gaunamos teisingai.</string>
     <!-- qr code stuff -->
     <string name="qr_code">QR kodas</string>
     <string name="load_qr_code_as_image">Įkelti QR kodą kaip paveikslą</string>
@@ -626,10 +643,15 @@
     <string name="qrshow_join_contact_no_connection_toast">Nėra interneto ryšio, nepavyksta atlikti QR kodo sąrankos.</string>
     <string name="qraccount_ask_create_and_login">Sukurti naują el. pašto adresą ties „%1$s“ ir prisijungti ten?</string>
     <string name="qraccount_success_enter_name">Prisijungimas sėkmingas — jūsų el. pašto adresas yra %1$s\n\nJei norite, dabar galite įvesti vardą ir pridėti profilio paveikslą, kuris bus rodomas žmonėms, kuriems rašysite.</string>
+    <string name="qraccount_qr_code_cannot_be_used">Nuskenuotas QR kodas negali būti naudojamas naujos paskyros nustatymui.</string>
+    <string name="qraccount_use_on_new_install">Nuskenuotas QR kodas yra skirtas naujos paskyros nustatymui. Galite nuskenuoti QR kodą tuomet, kai nustatote naują Delta Chat diegimą.</string>
     <string name="contact_verified">%1$s patvirtintas.</string>
     <string name="contact_not_verified">Nepavyksta patvirtinti %1$s</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Pakeista sąranka, skirta %1$s.</string>
+    <string name="mailto_dialog_header_select_chat">Pasirinkite pokalbį, į kurį siųsti žinutę</string>
+    <!-- first placeholder is the name of the chat -->
+    <string name="mailto_dialog_confirm_replace_draft">Pokalbyje %1$s jau yra žinutės juodraštis. Ar norite jį pakeisti?</string>
     <string name="mailto_link_could_not_be_decoded">nepavyko dekoduoti mailto nuorodos: %1$s</string>
 
     <string name="notify_mark_read">Žymėti kaip skaitytą</string>
@@ -703,6 +725,7 @@
     <string name="download_attachment_desktop">Atsisiųsti priedą</string>
     <string name="export_backup_desktop">Eksportuoti atsarginę kopiją</string>
     <string name="transfer_key_desktop">Perduoti raktą</string>
+    <string name="show_key_transfer_message_desktop">Jūsų raktas išsiųstas jums patiems. Persijunkite į kitą įrenginį ir atverkite sąrankos žinutę. Jūsų turėtų būti prašoma įvesti sąrankos kodą. Įveskite šiuos skaitmenis:</string>
     <string name="new_message_from_desktop">Nauja žinutė nuo</string>
     <string name="unblock_contacts_desktop">Atblokuoti adresatus</string>
     <string name="none_blocked_desktop">Kol kas nėra užblokuotų adresatų</string>

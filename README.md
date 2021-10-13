@@ -174,12 +174,26 @@ environment.
   Either select a specific class or select "All in Module" / "OK" /
   Select your configuration in the toolbar / Click on the green "run" button in the toolbar to run the tests
 
+## Get the benchmark results
+
 When the benchmark is done, you will get a result like
 `MEASURED RESULTS (Benchmark) - Going thorough all 10 chats: 11635,11207,11363,11352,11279,11183,11137,11145,11032,11057`.
 You can paste `11635,11207,11363,11352,11279,11183,11137,11145,11032,11057`
 into a cell in a LibreOffice spreadsheet, do "Data" / "Text to columns",
 choose `,` as a separator, hit "OK", and create a diagram.
 
+## Run online tests
+
+For some tests, you need to provide the credentials to an actual email account.
+You have 2 ways to do this:
+
+1. (Recommended): Put them into the file ~/.gradle/gradle.properties (create it if it doesn't exist):
+   ```
+   TEST_ADDR=youraccount@yourdomain.org
+   TEST_MAIL_PW=youpassword
+   ```
+
+2. Or set them via environment variables.
 
 # Credits
 

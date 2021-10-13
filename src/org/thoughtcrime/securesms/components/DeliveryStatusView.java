@@ -1,7 +1,6 @@
 package org.thoughtcrime.securesms.components;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
@@ -66,6 +65,13 @@ public class DeliveryStatusView {
     deliveryIndicator.clearAnimation();
   }
 
+  public void setDownloading() {
+    deliveryIndicator.setVisibility(View.VISIBLE);
+    deliveryIndicator.setImageResource(R.drawable.ic_delivery_status_sending);
+    deliveryIndicator.setContentDescription(context.getString(R.string.one_moment));
+    animatePrepare();
+  }
+
   public void setPreparing() {
     deliveryIndicator.setVisibility(View.VISIBLE);
     deliveryIndicator.setImageResource(R.drawable.ic_delivery_status_sending);
@@ -105,7 +111,6 @@ public class DeliveryStatusView {
     if (color != null) {
       deliveryIndicator.setColorFilter(color);
     } else {
-      Log.w("dbg", "reset tint, color " + color);
       resetTint();
     }
   }

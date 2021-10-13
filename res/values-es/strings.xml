@@ -18,6 +18,8 @@
     <string name="automatic">Automático</string>
     <string name="strict">Estricto</string>
     <string name="open">Abrir</string>
+    <string name="download">Descargar</string>
+    <string name="downloading">Descargando…</string>
     <string name="open_attachment">Abrir adjunto</string>
     <string name="join">Unirse</string>
     <string name="rejoin">Volver a unirse</string>
@@ -107,6 +109,10 @@
         <item quantity="one">%d miembro</item>
         <item quantity="other">%d miembros</item>
     </plurals>
+    <plurals name="n_recipients">
+        <item quantity="one">%d destinatario</item>
+        <item quantity="other">%d destinatarios</item>
+    </plurals>
 
     <string name="self">Yo</string>
     <string name="draft">Borrador</string>
@@ -114,6 +120,8 @@
     <!-- Translators: Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
     <string name="reply_noun">Respuesta</string>
     <string name="gif">Gif</string>
+    <!-- "Stickers" as known from other messengers, please pick up the wording from there; in some languages, "Sticker" in english is just fine. -->
+    <string name="sticker">Sticker</string>
     <string name="images">Imágenes</string>
     <string name="audio">Audio</string>
     <string name="voice_message">Mensaje de voz</string>
@@ -165,6 +173,11 @@
     <string name="menu_new_chat">Nuevo chat</string>
     <string name="menu_new_group">Nuevo grupo</string>
     <string name="menu_new_verified_group">Nuevo grupo verificado</string>
+    <!-- consider keeping the term "broadcast"; check how these lists are called eg. on whatsapp in the destination language -->
+    <string name="broadcast_list">Lista de difusión</string>
+    <string name="broadcast_lists">Listas de difusión</string>
+    <string name="new_broadcast_list">Nueva lista de difusión</string>
+    <string name="add_recipients">Agregar destinatarios</string>
     <string name="menu_send">Enviar</string>
     <string name="menu_toggle_keyboard">Alternar teclado emoji</string>
     <string name="menu_edit_group">Editar grupo</string>
@@ -179,7 +192,7 @@
     <string name="ask_delete_named_chat">¿Estás seguro de que deseas eliminar \"%1$s\"?</string>
     <string name="menu_delete_messages">Eliminar mensajes</string>
     <string name="menu_delete_image">Eliminar imagen</string>
-    <string name="delete_contact">Borrar contacto</string>
+    <string name="delete_contact">Eliminar contacto</string>
     <string name="menu_delete_locations">¿Eliminar todas las ubicaciones?</string>
     <string name="menu_delete_location">¿Eliminar esta ubicación?</string>
     <string name="menu_message_details">Detalles del mensaje</string>
@@ -195,6 +208,7 @@
     <string name="menu_mute">Silenciar notificaciones</string>
     <string name="menu_unmute">Des-silenciar </string>
     <string name="menu_export_attachment">Exportar adjunto</string>
+    <string name="menu_export_attachments">Exportar adjuntos</string>
     <string name="menu_all_media">Toda la multimedia</string>
     <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
     <string name="show_in_chat">Mostrar en el chat</string>
@@ -223,6 +237,7 @@
     <string name="menu_zoom_out">Alejar</string>
     <string name="menu_save_log">Salvar log</string>
     <string name="menu_more_options">Más opciones</string>
+    <string name="menu_learn_spelling">Aprender ortografía</string>
     <string name="menu_chat_audit_log">Registro de auditoría de chat</string>
     <string name="jump_to_message">Saltar al mensaje</string>
     <string name="copy_json">Copiar JSON</string>
@@ -250,12 +265,12 @@
     <string name="mute_for_seven_days">Silenciar por 7 días</string>
     <string name="mute_forever">Silenciar por siempre</string>
 
-    <string name="share_location_once">una vez</string>
-    <string name="share_location_for_5_minutes">por 5 minutos </string>
-    <string name="share_location_for_30_minutes">por 30 minutos</string>
-    <string name="share_location_for_one_hour">por 1 hora</string>
-    <string name="share_location_for_two_hours">por 2 horas</string>
-    <string name="share_location_for_six_hours">por 6 horas</string>
+    <string name="share_location_once">Una vez</string>
+    <string name="share_location_for_5_minutes">Por 5 minutos </string>
+    <string name="share_location_for_30_minutes">Por 30 minutos</string>
+    <string name="share_location_for_one_hour">Por 1 hora</string>
+    <string name="share_location_for_two_hours">Por 2 horas</string>
+    <string name="share_location_for_six_hours">Por 6 horas</string>
 
     <plurals name="ask_send_following_n_files_to">
         <item quantity="one">¿Enviar el  archivo a %s?</item>
@@ -289,6 +304,10 @@
         <item quantity="one">¿Eliminar %d mensaje aquí y en el servidor?</item>
         <item quantity="other">¿Eliminar %d mensajes aquí y en el servidor?</item>
     </plurals>
+    <plurals name="ask_delete_messages_simple">
+        <item quantity="one">¿Eliminar %d mensaje?</item>
+        <item quantity="other">¿Eliminar %d mensajes?</item>
+    </plurals>
     <string name="ask_forward">¿Reenviar mensajes a %1$s?</string>
     <string name="ask_forward_multiple">¿Reenviar mensajes a %1$d chats?</string>
     <string name="ask_export_attachment">¿Exportar adjuntos? Si exporta los adjuntos, serán accesibles desde cualquier otra aplicación en su dispositivo. ¿Desea continuar?</string>
@@ -301,6 +320,8 @@
     <string name="ask_delete_value">¿Borrar %s?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">¿Eliminar a %1$s del grupo?</string>
+    <!-- Translators: %1$s will be replaced by a comma separated list of names -->
+    <string name="ask_remove_from_broadcast">¿Eliminar a %1$s de la lista de difusión?</string>
     <string name="open_url_confirmation">¿Quieres abrir este enlace?</string>
 
 
@@ -329,6 +350,7 @@
         <item quantity="other">%d nuevos mensajes</item>
     </plurals>
     <string name="chat_no_messages_hint">Enviar mensaje a %1$s:\n\n• No hay problema si %2$s no usa Delta Chat.\n\n• La entrega del primer mensaje puede tardar un poco y puede estar sin cifrar.</string>
+    <string name="chat_new_broadcast_hint">En una lista de difusión, los otros recibirán los mensajes en sus chats privados contigo.\n\nLos destinatarios no se ven entre sí.</string>
     <string name="chat_new_group_hint">Componga el primer mensaje, permitiendo que otros respondan dentro de este grupo.\n\n• No hay problema si no todos los miembros usan Delta Chat.\n\n• La entrega del primer mensaje puede tardar un poco y puede estar sin cifrar.</string>
     <string name="chat_record_slide_to_cancel">Deslice para cancelar</string>
     <string name="chat_record_explain">Mantenga pulsado para grabar un mensaje de voz, suelte para enviar</string>
@@ -349,7 +371,7 @@
     <string name="chat_contact_request">Solicitud de contacto</string>
     <string name="chat_no_contact_requests">No hay solicitudes de contacto.\n\nSi desea que los correos electrónicos clásicos aparezcan aquí como solicitudes de contacto, puede cambiar la configuración correspondiente en la configuración de la aplicación.</string>
     <string name="retry_send">Reintentar enviar mensaje</string>
-    <string name="send_failed">Falló enviar el mensaje</string>
+    <string name="send_failed">No se pudo enviar el mensaje</string>
     <!-- reasons for a disabled message composer -->
     <string name="messaging_disabled_not_in_group">No puedes escribir porque no estás en este grupo. Para unirte, pregúntale a otro miembro.</string>
     <string name="messaging_disabled_device_chat">Este chat contiene mensajes generados localmente. Por eso no puedes escribir ningún mensaje.</string>
@@ -384,6 +406,7 @@
     <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
     <string name="puny_code_warning_description">Siguió un enlace que podría estar tergiversando caracteres al usar caracteres de diferentes alfabetos con un aspecto similar. Seguir el enlace etiquetado %1$s conducirá a %2$s, que es normal para caracteres no latinos. Si no esperaba tales caracteres, este enlace podría ser dañino</string>
 
+
     <!-- search -->
     <string name="search">Buscar</string>
     <string name="search_explain">Buscar chats, contactos, y mensajes</string>
@@ -416,6 +439,12 @@
 
 
     <!-- Connectivity -->
+    <!-- Used as a headline for the "Inbox" eg. in the "Connectivity" view -->
+    <string name="incoming_messages">Mensajes entrantes</string>
+    <!-- Used as a headline for the "Outbox" eg. in the "Connectivity" view -->
+    <string name="outgoing_messages">Mensajes salientes</string>
+    <!-- Used as a headline in the "Connectivity" view. The placeholder will be replaced by the domain of the configured email-address. -->
+    <string name="storage_on_domain">Almacenamiento en %1$s</string>
     <string name="connectivity">Conectividad</string>
     <!-- Shown eg. in the title bar if the app is "Not connected"; as there is very few room, try to be as short as possible. -->
     <string name="connectivity_not_connected">Desconectado</string>
@@ -425,6 +454,13 @@
     <string name="connectivity_updating">Actualizando…</string>
     <!-- Shown eg. in the setting if the app is "Connected" -->
     <string name="connectivity_connected">Conectado</string>
+    <string name="sending">Enviando...</string>
+    <string name="last_msg_sent_successfully">El último mensaje fue enviado satisfactoriamente.</string>
+    <string name="not_supported_by_provider">No soportado por tu proveedor.</string>
+    <!-- Used as a subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed or so. -->
+    <string name="messages">Mensajes</string>
+    <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
+    <string name="part_of_total_used">%1$s de %2$s usado</string>
 
 
     <!-- welcome and login -->
@@ -446,6 +482,13 @@
     <string name="login_smtp_port">Puerto SMTP</string>
     <string name="login_smtp_security">Seguridad SMTP</string>
     <string name="login_auth_method">Método de autorización</string>
+    <!-- the word "SOCKS5" here and in the following strings should not be translated in most cases -->
+    <string name="login_socks5">SOCKS5</string>
+    <string name="login_socks5_use_socks5">Usar SOCKS5</string>
+    <string name="login_socks5_host">Servidor SOCKS5</string>
+    <string name="login_socks5_port">Puerto SOCKS5</string>
+    <string name="login_socks5_user">Usuario SOCKS5</string>
+    <string name="login_socks5_password">Contraseña SOCKS5</string>
     <!-- Translators: %1$s will be replaced by an e-mail address -->
     <string name="login_oauth2_checking_addr">Chequeando %1$s</string>
     <string name="login_info_oauth2_title">¿Continuar con la configuración simplificada?</string>
@@ -471,7 +514,10 @@
     <string name="delete_account_ask">¿Estás seguro de que quieres eliminar los datos de tu cuenta?</string>
     <string name="delete_account_explain_with_name">Todos los datos de la cuenta de \"%s\" este dispositivo serán eliminados. Incluyendo la configuración de encriptado punto a punto, contactos, chats, mensajes y multimedia. Esta acción no puede ser deshecha.</string>
     <string name="switching_account">Cambiando cuenta...</string>
+    <string name="unconfigured_account">Cuenta no configurada</string>
+    <string name="unconfigured_account_hint">Abrir cuenta para configurarla.</string>
     <string name="try_connect_now">Intentar conectar ahora</string>
+    <string name="sync_all">Sincronizar todo</string>
     <!-- Translations: %1$s will be replaced by a more detailed error message -->
     <string name="configuration_failed_with_error">La configuración falló. Error: %1$s</string>
 
@@ -579,6 +625,16 @@
     <string name="pref_background_custom_image">Imagen personalizada</string>
     <string name="pref_background_custom_color">Color personalizado</string>
     <string name="export_aborted">Exportado abortado.</string>
+    <string name="auto_download_messages">Descarga automática de mensajes</string>
+    <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB -->
+    <string name="up_to_x">Hasta %1$s</string>
+    <string name="up_to_x_most_worse_quality_images">Hasta %1$s, la mayoría de imágenes de peor calidad</string>
+    <string name="up_to_x_most_balanced_quality_images">Hasta %1$s, la mayoría de imágenes de calidad balanceada</string>
+    <string name="no_limit">Sin límite</string>
+    <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string eg. "1 MiB message" -->
+    <string name="n_bytes_message">Mensaje de %1$s</string>
+    <!-- %1$s will be replaced by human-readable date and time -->
+    <string name="download_max_available_until">Descarga disponible hasta %1$s</string>
     <string name="profile_image_select">Seleccionar imagen de perfil</string>
     <string name="select_your_new_profile_image">Seleccionar tu nueva imagen de perfil</string>
     <string name="profile_image_delete">Borrar imagen de perfil</string>
@@ -675,6 +731,13 @@
     <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
     <string name="systemmsg_chat_protection_disabled">Protección de chat desactivada.</string>
     <string name="systemmsg_chat_protection_enabled">Protección de chat activada.</string>
+
+    <string name="devicemsg_self_deleted">Eliminaste los chats de los \"Mensajes guardados\". \n\nℹ️ Para volver a usar los\"Mensajes guardados\", debes crear un chat contigo mismo.</string>
+    <!-- %1$s will be replaced by the number of storage already used, sth. as '500 MB'. CAVE: if you want to use a simple the percent sign, type in two, so eg. %1$s %% -->
+    <string name="devicemsg_storage_exceeding">⚠️ El almacenamiento de tu proveedor está por excederse, ya tienes %1$s%% en uso.\n\nQuizás no puedas recibir mensajes cuando el almacenamiento esté al 100%% de uso.\n\n👉 Por favor chequea si puedes eliminar los datos antiguos en la página web del proveedor y considera habilitar \"Ajustes / Eliminar mensajes antiguos\". Puedes chequear tu almacenamiento actual en cualquier momento en \"Ajustes / Conectividad\".</string>
+    <!-- %1%s will be replaced by date and time in some human-readable format -->
+    <string name="devicemsg_bad_time">⚠️ Fecha y hora de tu dispositivo parecen ser inadecuadas (%1$s).\n\nAjusta tu reloj ⏰🔧 para asegurarte que los mensajes sean recibidos correctamente.</string>
+    <string name="devicemsg_update_reminder">⚠️ Tu versión de Delta Chat puede estar desactualizada.\n\nEsto puede causar problems porque tus contactos usan nuevas versiones - y tú te estás perdiendo las últimas novedades 😳\nChequea https://get.delta.chat o tu tienda de aplicaciones para actualizaciones.</string>
 
     <!-- Some options as "Manage keys" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc. to be entered in a system dialog. This hint is added to the system dialog, below a title as "Manage keys" or "Backup". -->
     <string name="enter_system_secret_to_continue">Ingrese su secreto del sistema para continuar.</string>

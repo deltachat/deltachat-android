@@ -61,7 +61,6 @@
     <plurals name="n_members">
         <item quantity="other">대화상대 %d명</item>
     </plurals>
-
     <string name="self">나</string>
     <string name="draft">임시저장</string>
     <string name="image">사진</string>

@@ -117,7 +117,7 @@ public class Recipient {
     else if(dcChat!=null) {
       int chatId = dcChat.getId();
       this.address = Address.fromChat(chatId);
-      if (!dcChat.isGroup()) {
+      if (!dcChat.isMultiUser()) {
         DcContext dcContext = DcHelper.getContext(context);
         int[] contacts = dcContext.getChatContacts(chatId);
         if( contacts.length>=1 ) {
@@ -160,8 +160,8 @@ public class Recipient {
     notifyListeners();
   }
 
-  public boolean isGroupRecipient() {
-    return dcChat!=null && dcChat.isGroup();
+  public boolean isMultiUserRecipient() {
+    return dcChat!=null && dcChat.isMultiUser();
   }
 
   public @NonNull List<Recipient> loadParticipants(Context context) {

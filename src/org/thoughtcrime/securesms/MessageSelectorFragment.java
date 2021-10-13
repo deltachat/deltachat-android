@@ -12,6 +12,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.view.ActionMode;
 import androidx.fragment.app.Fragment;
 
+import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMsg;
 
@@ -52,11 +53,16 @@ public abstract class MessageSelectorFragment
     d.show();
   }
 
-  protected void handleDeleteMessages(final Set<DcMsg> messageRecords) {
+  protected void handleDeleteMessages(int chatId, final Set<DcMsg> messageRecords) {
     int messagesCount = messageRecords.size();
+    DcChat dcChat = DcHelper.getContext(getActivity()).getChat(chatId);
+
+    String text = getActivity().getResources().getQuantityString(
+      dcChat.isDeviceTalk()? R.plurals.ask_delete_messages_simple : R.plurals.ask_delete_messages,
+      messagesCount, messagesCount);
 
     new AlertDialog.Builder(getActivity())
-            .setMessage(getActivity().getResources().getQuantityString(R.plurals.ask_delete_messages, messagesCount, messagesCount))
+            .setMessage(text)
             .setCancelable(true)
             .setPositiveButton(R.string.delete, (dialog, which) -> {
                 int[] ids = DcMsg.msgSetToIds(messageRecords);
@@ -67,17 +73,22 @@ public abstract class MessageSelectorFragment
             .show();
   }
 
-  protected void handleSaveAttachment(final DcMsg message) {
+  protected void handleSaveAttachment(final Set<DcMsg> messageRecords) {
     SaveAttachmentTask.showWarningDialog(getContext(), (dialogInterface, i) -> {
         Permissions.with(getActivity())
                 .request(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)
                 .ifNecessary()
                 .withPermanentDenialDialog(getString(R.string.perm_explain_access_to_storage_denied))
                 .onAllGranted(() -> {
-                    SaveAttachmentTask saveTask = new SaveAttachmentTask(getContext());
-                    SaveAttachmentTask.Attachment attachment = new SaveAttachmentTask.Attachment(
+                    SaveAttachmentTask.Attachment[] attachments = new SaveAttachmentTask.Attachment[messageRecords.size()];
+                    int index = 0;
+                    for (DcMsg message : messageRecords) {
+                        attachments[index] = new SaveAttachmentTask.Attachment(
                             Uri.fromFile(message.getFileAsFile()), message.getFilemime(), message.getDateReceived(), message.getFilename());
-                    saveTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, attachment);
+                        index++;
+                    }
+                    SaveAttachmentTask saveTask = new SaveAttachmentTask(getContext());
+                    saveTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, attachments);
                     if (actionMode != null) actionMode.finish();
                 })
                 .execute();

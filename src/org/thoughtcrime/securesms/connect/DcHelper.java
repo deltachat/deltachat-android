@@ -142,6 +142,8 @@ public class DcHelper {
     dcContext.setStockTranslation(60, context.getString(R.string.login_error_cannot_login));
     dcContext.setStockTranslation(62, context.getString(R.string.systemmsg_action_by_user));
     dcContext.setStockTranslation(63, context.getString(R.string.systemmsg_action_by_me));
+    dcContext.setStockTranslation(66, context.getString(R.string.location));
+    dcContext.setStockTranslation(67, context.getString(R.string.sticker));
     dcContext.setStockTranslation(68, context.getString(R.string.device_talk));
     dcContext.setStockTranslation(69, context.getString(R.string.saved_messages));
     dcContext.setStockTranslation(70, context.getString(R.string.device_talk_explain));
@@ -158,14 +160,34 @@ public class DcHelper {
     dcContext.setStockTranslation(82, context.getString(R.string.videochat_invitation));
     dcContext.setStockTranslation(83, context.getString(R.string.videochat_invitation_body));
     dcContext.setStockTranslation(84, context.getString(R.string.configuration_failed_with_error));
+    dcContext.setStockTranslation(85, context.getString(R.string.devicemsg_bad_time));
+    dcContext.setStockTranslation(86, context.getString(R.string.devicemsg_update_reminder));
     dcContext.setStockTranslation(88, context.getString(R.string.systemmsg_chat_protection_enabled));
     dcContext.setStockTranslation(89, context.getString(R.string.systemmsg_chat_protection_disabled));
     dcContext.setStockTranslation(90, context.getString(R.string.reply_noun));
+    dcContext.setStockTranslation(91, context.getString(R.string.devicemsg_self_deleted));
     dcContext.setStockTranslation(93, context.getString(R.string.systemmsg_ephemeral_timer_minutes));
     dcContext.setStockTranslation(94, context.getString(R.string.systemmsg_ephemeral_timer_hours));
     dcContext.setStockTranslation(95, context.getString(R.string.systemmsg_ephemeral_timer_days));
     dcContext.setStockTranslation(96, context.getString(R.string.systemmsg_ephemeral_timer_weeks));
     dcContext.setStockTranslation(97, context.getString(R.string.forwarded));
+    dcContext.setStockTranslation(98, context.getString(R.string.devicemsg_storage_exceeding));
+    dcContext.setStockTranslation(99, context.getString(R.string.n_bytes_message));
+    dcContext.setStockTranslation(100, context.getString(R.string.download_max_available_until));
+    dcContext.setStockTranslation(103, context.getString(R.string.incoming_messages));
+    dcContext.setStockTranslation(104, context.getString(R.string.outgoing_messages));
+    dcContext.setStockTranslation(105, context.getString(R.string.storage_on_domain));
+    dcContext.setStockTranslation(106, context.getString(R.string.one_moment));
+    dcContext.setStockTranslation(107, context.getString(R.string.connectivity_connected));
+    dcContext.setStockTranslation(108, context.getString(R.string.connectivity_connecting));
+    dcContext.setStockTranslation(109, context.getString(R.string.connectivity_updating));
+    dcContext.setStockTranslation(110, context.getString(R.string.sending));
+    dcContext.setStockTranslation(111, context.getString(R.string.last_msg_sent_successfully));
+    dcContext.setStockTranslation(112, context.getString(R.string.error_x));
+    dcContext.setStockTranslation(113, context.getString(R.string.not_supported_by_provider));
+    dcContext.setStockTranslation(114, context.getString(R.string.messages));
+    dcContext.setStockTranslation(115, context.getString(R.string.broadcast_list));
+    dcContext.setStockTranslation(116, context.getString(R.string.part_of_total_used));
   }
 
   public static File getImexDir() {

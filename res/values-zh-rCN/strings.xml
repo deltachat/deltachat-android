@@ -18,6 +18,8 @@
     <string name="automatic">自动</string>
     <string name="strict">严格</string>
     <string name="open">打开</string>
+    <string name="download">下载</string>
+    <string name="downloading">下载中…</string>
     <string name="open_attachment">打开附件</string>
     <string name="join">加入</string>
     <string name="rejoin">重新加入</string>
@@ -101,6 +103,9 @@
     <plurals name="n_members">
         <item quantity="other">%d 个成员</item>
     </plurals>
+    <plurals name="n_recipients">
+        <item quantity="other">%d 名收信人 </item>
+    </plurals>
 
     <string name="self">我</string>
     <string name="draft">草稿</string>
@@ -108,6 +113,8 @@
     <!-- Translators: Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
     <string name="reply_noun">回复</string>
     <string name="gif">Gif</string>
+    <!-- "Stickers" as known from other messengers, please pick up the wording from there; in some languages, "Sticker" in english is just fine. -->
+    <string name="sticker">贴纸</string>
     <string name="images">图像</string>
     <string name="audio">音频</string>
     <string name="voice_message">语音消息</string>
@@ -159,6 +166,11 @@
     <string name="menu_new_chat">新建聊天</string>
     <string name="menu_new_group">新建群组</string>
     <string name="menu_new_verified_group">新建已验证群组</string>
+    <!-- consider keeping the term "broadcast"; check how these lists are called eg. on whatsapp in the destination language -->
+    <string name="broadcast_list">广播列表</string>
+    <string name="broadcast_lists">广播列表</string>
+    <string name="new_broadcast_list">新的广播列表</string>
+    <string name="add_recipients">添加收信人</string>
     <string name="menu_send">发送</string>
     <string name="menu_toggle_keyboard">切换 emoji 键盘</string>
     <string name="menu_edit_group">编辑群组</string>
@@ -189,6 +201,7 @@
     <string name="menu_mute">通知静音</string>
     <string name="menu_unmute">取消静音</string>
     <string name="menu_export_attachment">导出附件</string>
+    <string name="menu_export_attachments">导出附件</string>
     <string name="menu_all_media">所有媒体</string>
     <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
     <string name="show_in_chat">在聊天中显示</string>
@@ -281,6 +294,9 @@
     <plurals name="ask_delete_messages">
         <item quantity="other">在此处和服务器上删除 %d 条消息？</item>
     </plurals>
+    <plurals name="ask_delete_messages_simple">
+        <item quantity="other">删除 %d 条消息吗？</item>
+    </plurals>
     <string name="ask_forward">将消息转发给 %1$s？</string>
     <string name="ask_forward_multiple">转发消息到 %1$d 个聊天？</string>
     <string name="ask_export_attachment">导出附件？导出附件将允许您设备上的任意应用程序访问它们。\n\n是否继续？</string>
@@ -293,6 +309,8 @@
     <string name="ask_delete_value">删除 %s？</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">将 %1$s 从群组中移除？</string>
+    <!-- Translators: %1$s will be replaced by a comma separated list of names -->
+    <string name="ask_remove_from_broadcast">从广播列表中移除 %1$s？</string>
     <string name="open_url_confirmation">您要打开此链接吗？</string>
 
 
@@ -318,6 +336,7 @@
         <item quantity="other">%d 条新消息</item>
     </plurals>
     <string name="chat_no_messages_hint">发消息给 %1$s。\n\n• 即使 %2$s 不使用 Delta Chat 也没问题。\n\n• 发送第一条消息可能需要一些时间并且可能未经加密。</string>
+    <string name="chat_new_broadcast_hint">在广播列表中，其他人会在与你的私人聊天中收到消息。\n\n收信人之间不会知道彼此的存在。</string>
     <string name="chat_new_group_hint">撰写第一条消息以允许其他人在此群组内回复。\n\n• 即使有成员不使用 Delta Chat 也没问题。\n\n• 发送第一条消息可能需要一些时间。</string>
     <string name="chat_record_slide_to_cancel">滑动来取消</string>
     <string name="chat_record_explain">按住来录制语音消息，松开来发送</string>
@@ -373,6 +392,7 @@
     <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
     <string name="puny_code_warning_description">你将被转到一个链接，该链接可能通过使用来自不同字母表的相似字符来错误地表示字符。打开标记为 %1$s 的链接将把你带到以 ascii 码编码的 %2$s。如果这样的字符出乎你的意料，那么这个链接可能是有害的</string>
 
+
     <!-- search -->
     <string name="search">搜索</string>
     <string name="search_explain">搜索聊天、联系人和消息</string>
@@ -405,6 +425,12 @@
 
 
     <!-- Connectivity -->
+    <!-- Used as a headline for the "Inbox" eg. in the "Connectivity" view -->
+    <string name="incoming_messages">传入消息</string>
+    <!-- Used as a headline for the "Outbox" eg. in the "Connectivity" view -->
+    <string name="outgoing_messages">传出消息</string>
+    <!-- Used as a headline in the "Connectivity" view. The placeholder will be replaced by the domain of the configured email-address. -->
+    <string name="storage_on_domain">%1$s 上的存储</string>
     <string name="connectivity">连接性</string>
     <!-- Shown eg. in the title bar if the app is "Not connected"; as there is very few room, try to be as short as possible. -->
     <string name="connectivity_not_connected">未连接</string>
@@ -414,6 +440,13 @@
     <string name="connectivity_updating">更新中…</string>
     <!-- Shown eg. in the setting if the app is "Connected" -->
     <string name="connectivity_connected">已连接</string>
+    <string name="sending">发送中…</string>
+    <string name="last_msg_sent_successfully">上一条消息发送成功。</string>
+    <string name="not_supported_by_provider">你的邮件供应商不支持</string>
+    <!-- Used as a subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed or so. -->
+    <string name="messages">消息</string>
+    <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
+    <string name="part_of_total_used">已使用 %1$s GB，共 %2$s GB</string>
 
 
     <!-- welcome and login -->
@@ -435,6 +468,13 @@
     <string name="login_smtp_port">SMTP 端口</string>
     <string name="login_smtp_security">SMTP 安全类型</string>
     <string name="login_auth_method">认证方法</string>
+    <!-- the word "SOCKS5" here and in the following strings should not be translated in most cases -->
+    <string name="login_socks5">SOCKS5</string>
+    <string name="login_socks5_use_socks5">使用 SOCKS5 代理</string>
+    <string name="login_socks5_host">SOCKS5 主机</string>
+    <string name="login_socks5_port">SOCKS5 端口</string>
+    <string name="login_socks5_user">SOCKS5 用户名</string>
+    <string name="login_socks5_password">SOCKS5 密码</string>
     <!-- Translators: %1$s will be replaced by an e-mail address -->
     <string name="login_oauth2_checking_addr">检查 %1$s 中</string>
     <string name="login_info_oauth2_title">使用简化设置继续？</string>
@@ -460,7 +500,10 @@
     <string name="delete_account_ask">您确定要删除您的账户数据吗？</string>
     <string name="delete_account_explain_with_name">此设备上“%s”的所有帐户数据都将被删除，包括您的端到端加密设置、联系人、聊天、消息及媒体。 此操作无法撤消。</string>
     <string name="switching_account">切换账户 …</string>
+    <string name="unconfigured_account">未配置的账户</string>
+    <string name="unconfigured_account_hint">打开账户配置它</string>
     <string name="try_connect_now">立即尝试连接</string>
+    <string name="sync_all">同步所有</string>
     <!-- Translations: %1$s will be replaced by a more detailed error message -->
     <string name="configuration_failed_with_error">配置失败。错误：%1$s</string>
 
@@ -568,6 +611,16 @@
     <string name="pref_background_custom_image">自定义图像</string>
     <string name="pref_background_custom_color">自定义颜色</string>
     <string name="export_aborted">导出已中止。</string>
+    <string name="auto_download_messages">自动下载消息</string>
+    <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB -->
+    <string name="up_to_x">最多 %1$s</string>
+    <string name="up_to_x_most_worse_quality_images">最多 %1$s，分辨率最低的图像</string>
+    <string name="up_to_x_most_balanced_quality_images">最多 %1$s，分辨率最均衡图像</string>
+    <string name="no_limit">无限制</string>
+    <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string eg. "1 MiB message" -->
+    <string name="n_bytes_message">%1$s 消息</string>
+    <!-- %1$s will be replaced by human-readable date and time -->
+    <string name="download_max_available_until">下载最晚于 %1$s 前可用</string>
     <string name="profile_image_select">选择个人资料图片</string>
     <string name="select_your_new_profile_image">选择新的个人资料图片</string>
     <string name="profile_image_delete">删除个人资料图片</string>
@@ -664,6 +717,13 @@
     <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
     <string name="systemmsg_chat_protection_disabled">已禁用聊天保护</string>
     <string name="systemmsg_chat_protection_enabled">已启用聊天保护</string>
+
+    <string name="devicemsg_self_deleted">您已删除“保存的消息”聊天。\n\nℹ️要再次使用“保存的消息”功能，请创建一个与自己的新聊天。</string>
+    <!-- %1$s will be replaced by the number of storage already used, sth. as '500 MB'. CAVE: if you want to use a simple the percent sign, type in two, so eg. %1$s %% -->
+    <string name="devicemsg_storage_exceeding">⚠️邮件服务商提供的存储空间快满了，已使用 %1$s%%。\n\n当存储用量达到 100%% 时，您可能无法接收消息。\n\n👉请检查是否可以在提供商的网页界面上删除旧数据；您还可以考虑启用“设置/删除旧消息”。您可以随时在“设置/连接性”中查看当前的存储使用情况。</string>
+    <!-- %1%s will be replaced by date and time in some human-readable format -->
+    <string name="devicemsg_bad_time">⚠️设备的日期或时间似乎不准确 （%1$s）。\n\n请调整时钟⏰🔧以确保能正确接收信息。</string>
+    <string name="devicemsg_update_reminder">⚠️您的 Delta Chat 版本可能过时了。\n\n这可能会在您的聊天伙伴使用更新的版本时造成问题；并且您缺失了最新功能😳\n请浏览 https://get.delta.chat 或应用商店来获取更新。</string>
 
     <!-- Some options as "Manage keys" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc. to be entered in a system dialog. This hint is added to the system dialog, below a title as "Manage keys" or "Backup". -->
     <string name="enter_system_secret_to_continue">请输入您的系统密码以继续。</string>

@@ -9,6 +9,7 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.preference.CheckBoxPreference;
@@ -34,6 +35,7 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
 
   private ListPreference showEmails;
   private ListPreference mediaQuality;
+  private ListPreference autoDownload;
   private CheckBoxPreference readReceiptsCheckbox;
 
   private ListPreference autoDelDevice;
@@ -49,6 +51,15 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
       dcContext.setConfigInt(DcHelper.CONFIG_MEDIA_QUALITY, Util.objectToInt(newValue));
       return true;
     });
+
+
+    autoDownload = findPreference("auto_download");
+    autoDownload.setOnPreferenceChangeListener((preference, newValue) -> {
+      updateListSummary(preference, newValue);
+      dcContext.setConfigInt("download_limit", Util.objectToInt(newValue));
+      return true;
+    });
+    nicerAutoDownloadNames();
 
     showEmails = (ListPreference) this.findPreference("pref_show_emails");
     showEmails.setOnPreferenceChangeListener((preference, newValue) -> {
@@ -90,6 +101,11 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
     mediaQuality.setValue(value);
     updateListSummary(mediaQuality, value);
 
+    value = Integer.toString(dcContext.getConfigInt("download_limit"));
+    value = alignToMaxEntry(value, autoDownload.getEntryValues());
+    autoDownload.setValue(value);
+    updateListSummary(autoDownload, value);
+
     readReceiptsCheckbox.setChecked(0 != dcContext.getConfigInt("mdns_enabled"));
 
     initAutodelFromCore();
@@ -103,6 +119,38 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
     value = Integer.toString(dcContext.getConfigInt("delete_device_after"));
     autoDelDevice.setValue(value);
     updateListSummary(autoDelDevice, value);
+  }
+
+  // prefixes "Up to ..." to all entry names but the first one.
+  private void nicerAutoDownloadNames() {
+    CharSequence[] entries = autoDownload.getEntries();
+    for (int i = 1 /*skip first*/; i < entries.length; i++) {
+      if (entries[i].equals("160 KiB")) {
+        entries[i] = getString(R.string.up_to_x_most_worse_quality_images, entries[i]);
+      } else if (entries[i].equals("640 KiB")) {
+        entries[i] = getString(R.string.up_to_x_most_balanced_quality_images, entries[i]);
+      } else {
+        entries[i] = getString(R.string.up_to_x, entries[i]);
+      }
+    }
+    autoDownload.setEntries(entries);
+  }
+
+  // Assumes `entryValues` are sorted smallest (index 0) to largest (last index)
+  // and returns the an item close to `selectedValue`.
+  private String alignToMaxEntry(@NonNull String selectedValue, @NonNull CharSequence[] entryValues) {
+    try {
+      int selectedValueInt = Integer.parseInt(selectedValue);
+      for (int i = entryValues.length - 1; i >= 1 /*first is returned below*/; i--) {
+        int entryValueMin = i == 1 ? (Integer.parseInt(entryValues[i - 1].toString()) + 1) : Integer.parseInt(entryValues[i].toString());
+        if (selectedValueInt >= entryValueMin) {
+          return entryValues[i].toString();
+        }
+      }
+      return entryValues[0].toString();
+    } catch(Exception e) {
+      return selectedValue;
+    }
   }
 
   @Override

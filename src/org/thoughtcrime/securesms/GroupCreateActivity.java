@@ -15,12 +15,14 @@ import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.loader.app.LoaderManager;
 
+import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
@@ -62,6 +64,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
 
   public static final String EDIT_GROUP_CHAT_ID = "edit_group_chat_id";
   public static final String GROUP_CREATE_VERIFIED_EXTRA  = "group_create_verified";
+  public static final String CREATE_BROADCAST  = "group_create_broadcast";
 
   private final DynamicTheme    dynamicTheme    = new DynamicTheme();
   private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
@@ -73,6 +76,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
   private DcContext dcContext;
 
   private boolean verified;
+  private boolean      broadcast;
   private EditText     groupName;
   private ListView     lv;
   private ImageView    avatar;
@@ -95,6 +99,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     setContentView(R.layout.group_create_activity);
     //noinspection ConstantConditions
     verified = getIntent().getBooleanExtra(GROUP_CREATE_VERIFIED_EXTRA, false);
+    broadcast = getIntent().getBooleanExtra(CREATE_BROADCAST, false);
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close_white_24dp);
 
@@ -106,6 +111,8 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     // so always check isEdit()
     if(groupChatId !=0) {
       isEdit = true;
+      DcChat dcChat = dcContext.getChat(groupChatId);
+      broadcast = dcChat.isBroadcast();
     }
 
     initializeExistingGroup();
@@ -137,7 +144,10 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
 
     String title;
     if(isEdit()) {
-      title = getString(R.string.menu_group_name_and_image);
+      title = getString(R.string.global_menu_edit_desktop);
+    }
+    else if(broadcast) {
+      title = getString(R.string.new_broadcast_list);
     }
     else if(verified) {
       title = getString(R.string.menu_new_verified_group);
@@ -203,12 +213,16 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void initializeResources() {
-    lv           = ViewUtil.findById(this, R.id.selected_contacts_list);
-    avatar       = ViewUtil.findById(this, R.id.avatar);
-    groupName    = ViewUtil.findById(this, R.id.group_name);
+    lv                  = ViewUtil.findById(this, R.id.selected_contacts_list);
+    avatar              = ViewUtil.findById(this, R.id.avatar);
+    groupName           = ViewUtil.findById(this, R.id.group_name);
+    TextView groupHints = ViewUtil.findById(this, R.id.group_hints);
+
     List<Recipient> initList = new LinkedList<>();
-    DcContact self = dcContext.getContact(DC_CONTACT_ID_SELF);
-    initList.add(new Recipient(this, self));
+    if (!broadcast) {
+      DcContact self = dcContext.getContact(DC_CONTACT_ID_SELF);
+      initList.add(new Recipient(this, self));
+    }
     SelectedRecipientsAdapter adapter = new SelectedRecipientsAdapter(this, initList);
     adapter.setOnRecipientDeletedListener(this);
     lv.setAdapter(adapter);
@@ -217,8 +231,17 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     ViewUtil.findById(this, R.id.verify_button).setOnClickListener(new ShowQrButtonListener());
     initializeAvatarView();
 
-    if (!verified) {
-      ViewUtil.findById(this, R.id.group_hints).setVisibility(View.GONE);
+    if (broadcast) {
+      ViewUtil.findById(this, R.id.group_image_holder).setVisibility(isEdit()? View.VISIBLE : View.GONE);
+      avatar.setVisibility(View.GONE);
+      groupName.setVisibility(isEdit()? View.VISIBLE : View.GONE);
+      groupName.setHint(R.string.name_desktop);
+      groupHints.setText(R.string.chat_new_broadcast_hint);
+      groupHints.setVisibility(isEdit()? View.GONE : View.VISIBLE);
+      ViewUtil.findById(this, R.id.verify_button).setVisibility(View.INVISIBLE);
+      ((TextView)ViewUtil.findById(this, R.id.add_member_button)).setText(R.string.add_recipients);
+    } else if (!verified) {
+      groupHints.setVisibility(View.GONE);
     }
 
     if(isEdit()) {
@@ -306,10 +329,13 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void groupCreateInDb() {
-    String groupName = getGroupName();
-    if (showGroupNameEmptyToast(groupName)) return;
-
-    groupChatId = dcContext.createGroupChat(verified, groupName);
+    if (broadcast) {
+      groupChatId = dcContext.createBroadcastList();
+    } else {
+      String groupName = getGroupName();
+      if (showGroupNameEmptyToast(groupName)) return;
+      groupChatId = dcContext.createGroupChat(verified, groupName);
+    }
 
     Set<Recipient> recipients = getAdapter().getRecipients();
     for (Recipient recipient : recipients) {

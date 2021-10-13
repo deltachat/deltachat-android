@@ -191,7 +191,6 @@ public class ProfileGalleryFragment
     boolean singleSelection = messageRecords.size() == 1;
     menu.findItem(R.id.details).setVisible(singleSelection);
     menu.findItem(R.id.show_in_chat).setVisible(singleSelection);
-    menu.findItem(R.id.save).setVisible(singleSelection);
     menu.findItem(R.id.share).setVisible(singleSelection);
   }
 
@@ -230,7 +229,7 @@ public class ProfileGalleryFragment
           mode.finish();
           return true;
         case R.id.delete:
-          handleDeleteMessages(getListAdapter().getSelectedMedia());
+          handleDeleteMessages(chatId, getListAdapter().getSelectedMedia());
           mode.finish();
           return true;
         case R.id.share:
@@ -240,7 +239,7 @@ public class ProfileGalleryFragment
           handleShowInChat(getSelectedMessageRecord(getListAdapter().getSelectedMedia()));
           return true;
         case R.id.save:
-          handleSaveAttachment(getSelectedMessageRecord(getListAdapter().getSelectedMedia()));
+          handleSaveAttachment(getListAdapter().getSelectedMedia());
           return true;
       }
       return false;

@@ -18,6 +18,8 @@
     <string name="automatic">Автоматически</string>
     <string name="strict">Строгий</string>
     <string name="open">Открыть</string>
+    <string name="download">Загрузить</string>
+    <string name="downloading">Загрузка…</string>
     <string name="open_attachment">Открыть вложение</string>
     <string name="join">Присоединиться</string>
     <string name="rejoin">Пересоединиться</string>
@@ -119,6 +121,12 @@
         <item quantity="many">%d member</item>
         <item quantity="other">%d участников</item>
     </plurals>
+    <plurals name="n_recipients">
+        <item quantity="one">%d получатель</item>
+        <item quantity="few">%d получателя</item>
+        <item quantity="many">%d получателей</item>
+        <item quantity="other">%d получателей</item>
+    </plurals>
 
     <string name="self">Я</string>
     <string name="draft">Черновик</string>
@@ -126,6 +134,8 @@
     <!-- Translators: Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
     <string name="reply_noun">Ответить</string>
     <string name="gif">GIF</string>
+    <!-- "Stickers" as known from other messengers, please pick up the wording from there; in some languages, "Sticker" in english is just fine. -->
+    <string name="sticker">Стикер</string>
     <string name="images">Изображения</string>
     <string name="audio">Аудио</string>
     <string name="voice_message">Голосовое сообщение</string>
@@ -177,6 +187,11 @@
     <string name="menu_new_chat">Новый чат</string>
     <string name="menu_new_group">Новая группа</string>
     <string name="menu_new_verified_group">Новая проверенная группа</string>
+    <!-- consider keeping the term "broadcast"; check how these lists are called eg. on whatsapp in the destination language -->
+    <string name="broadcast_list">Список рассылки</string>
+    <string name="broadcast_lists">Списки рассылки</string>
+    <string name="new_broadcast_list">Новый список рассылки</string>
+    <string name="add_recipients">Добавить получателей</string>
     <string name="menu_send">Отправить</string>
     <string name="menu_toggle_keyboard">Включить эмодзи клавиатуру</string>
     <string name="menu_edit_group">Редактировать группу</string>
@@ -207,6 +222,7 @@
     <string name="menu_mute">Отключить уведомления</string>
     <string name="menu_unmute">Включить уведомления</string>
     <string name="menu_export_attachment">Экспортировать вложение</string>
+    <string name="menu_export_attachments">Экспортировать вложения</string>
     <string name="menu_all_media">Все медиафайлы</string>
     <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
     <string name="show_in_chat">Показать в чате</string>
@@ -308,6 +324,12 @@
         <item quantity="many">Delete %d message here and on the server?</item>
         <item quantity="other">Удалить %d сообщений здесь и на сервере?</item>
     </plurals>
+    <plurals name="ask_delete_messages_simple">
+        <item quantity="one">Удалить %d сообщение?</item>
+        <item quantity="few">Удалить %d сообщения?</item>
+        <item quantity="many">Удалить %d сообщений?</item>
+        <item quantity="other">Удалить %d сообщений?</item>
+    </plurals>
     <string name="ask_forward">Переслать сообщения для %1$s?</string>
     <string name="ask_forward_multiple">Отправить сообщения в %1$d чатов?</string>
     <string name="ask_export_attachment">Экспортировать вложения? Экспорт вложений, позволит любому приложению на вашем устройстве получить к ним доступ.\n\nПродолжить?</string>
@@ -320,6 +342,8 @@
     <string name="ask_delete_value">Удалить %s?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Удалить %1$s из группы?</string>
+    <!-- Translators: %1$s will be replaced by a comma separated list of names -->
+    <string name="ask_remove_from_broadcast">Удалить %1$s из списка рассылки?</string>
     <string name="open_url_confirmation">Вы хотите открыть эту ссылку?</string>
 
 
@@ -354,6 +378,7 @@
         <item quantity="other">%d новых сообщений</item>
     </plurals>
     <string name="chat_no_messages_hint">Отправьте сообщение %1$s:\n\n• Это сработает, даже если %2$s не использует Delta Chat.\n\n• Первое сообщение может быть незашифрованным и его доставка может занять некоторое время.</string>
+    <string name="chat_new_broadcast_hint">В списке рассылки другие пользователи будут получать сообщения в своих личных чатах с вами.\n\nПолучатели не будут знать друг о друге.</string>
     <string name="chat_new_group_hint">Напишите первое сообщение, оно позволит другим участникам группы ответить на него.\n\n• Это сработает, даже если не все участники используют Delta Chat.\n\n• Доставка первого сообщения может занять некоторое время.</string>
     <string name="chat_record_slide_to_cancel">Сдвиньте для отмены</string>
     <string name="chat_record_explain">Нажмите и удерживайте для записи голосового сообщения, отпустите для отправки</string>
@@ -409,6 +434,7 @@
     <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
     <string name="puny_code_warning_description">Вы перешли по ссылке, которая может искажать символы, используя одинаковые символы из разных алфавитов. Переход по ссылке отмеченной %1$s  приведет к переходу по ней к %2$s что является нормальным для нелатинских символов. Если вы не ожидали появления таких символов, эта ссылка может быть опасной.</string>
 
+
     <!-- search -->
     <string name="search">Поиск</string>
     <string name="search_explain">Поиск чатов, контактов и сообщений</string>
@@ -441,6 +467,12 @@
 
 
     <!-- Connectivity -->
+    <!-- Used as a headline for the "Inbox" eg. in the "Connectivity" view -->
+    <string name="incoming_messages">Входящие сообщения</string>
+    <!-- Used as a headline for the "Outbox" eg. in the "Connectivity" view -->
+    <string name="outgoing_messages">Исходящие сообщения</string>
+    <!-- Used as a headline in the "Connectivity" view. The placeholder will be replaced by the domain of the configured email-address. -->
+    <string name="storage_on_domain">Хранилище на %1$s</string>
     <string name="connectivity">Соединение</string>
     <!-- Shown eg. in the title bar if the app is "Not connected"; as there is very few room, try to be as short as possible. -->
     <string name="connectivity_not_connected">Нет соединения</string>
@@ -450,8 +482,11 @@
     <string name="connectivity_updating">Обновление…</string>
     <!-- Shown eg. in the setting if the app is "Connected" -->
     <string name="connectivity_connected">Соединено</string>
-
-
+    <string name="sending">Отправка…</string>
+    <string name="last_msg_sent_successfully">Последнее сообщение отправлено успешно.</string>
+    <string name="not_supported_by_provider">Не поддерживается вашим провайдером.</string>
+    <!-- Used as a subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed or so. -->
+    <string name="messages">Сообщения</string>
     <!-- welcome and login -->
     <string name="welcome_intro1_message">Мессенджер с самой широкой аудиторией в мире. Бесплатный и независимый.</string>
     <string name="login_title">Логин</string>
@@ -471,6 +506,13 @@
     <string name="login_smtp_port">SMTP порт</string>
     <string name="login_smtp_security">Параметры безопасности SMTP</string>
     <string name="login_auth_method">Метод авторизации</string>
+    <!-- the word "SOCKS5" here and in the following strings should not be translated in most cases -->
+    <string name="login_socks5">SOCKS5</string>
+    <string name="login_socks5_use_socks5">Использовать SOCKS5</string>
+    <string name="login_socks5_host">Сервер SOCKS5</string>
+    <string name="login_socks5_port">Порт SOCKS5</string>
+    <string name="login_socks5_user">Пользователь SOCKS5</string>
+    <string name="login_socks5_password">Пароль SOCKS5</string>
     <!-- Translators: %1$s will be replaced by an e-mail address -->
     <string name="login_oauth2_checking_addr">Проверяем %1$s</string>
     <string name="login_info_oauth2_title">Продолжить упрощенную настройку?</string>
@@ -496,7 +538,10 @@
     <string name="delete_account_ask">Вы уверены, что хотите удалить данные учётной записи?</string>
     <string name="delete_account_explain_with_name">Все данные учётной записи \"%s\" на этом устройстве будут удалены, включая настройки сквозного шифрования, контакты, чаты, сообщения и мультимедиа. Это действие не может быть отменено.</string>
     <string name="switching_account">Меняем аккаунт...</string>
+    <string name="unconfigured_account">Ненастроенный аккаунт</string>
+    <string name="unconfigured_account_hint">Откройте аккаунт чтобы настроить его.</string>
     <string name="try_connect_now">Попробуй подключиться сейчас</string>
+    <string name="sync_all">Синхронизировать все</string>
     <!-- Translations: %1$s will be replaced by a more detailed error message -->
     <string name="configuration_failed_with_error">Ошибка конфигурации. Ошибка: %1$s</string>
 
@@ -604,6 +649,16 @@
     <string name="pref_background_custom_image">Пользовательское изображение</string>
     <string name="pref_background_custom_color">Пользовательский цвет</string>
     <string name="export_aborted">Экспорт прерван.</string>
+    <string name="auto_download_messages">Автозагрузка сообщений</string>
+    <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB -->
+    <string name="up_to_x">До %1$s</string>
+    <string name="up_to_x_most_worse_quality_images">До %1$s, изображения плохого качества</string>
+    <string name="up_to_x_most_balanced_quality_images">До %1$s, изображения среднего качества</string>
+    <string name="no_limit">Без ограничений</string>
+    <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string eg. "1 MiB message" -->
+    <string name="n_bytes_message">%1$s сообщение</string>
+    <!-- %1$s will be replaced by human-readable date and time -->
+    <string name="download_max_available_until">Загрузка доступна до %1$s</string>
     <string name="profile_image_select">Выбрать изображение профиля</string>
     <string name="select_your_new_profile_image">Выбрать новое изображение профиля</string>
     <string name="profile_image_delete">Удалить фото профиля</string>
@@ -700,6 +755,13 @@
     <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
     <string name="systemmsg_chat_protection_disabled">Защита чата отключена.</string>
     <string name="systemmsg_chat_protection_enabled">Защита чата включена</string>
+
+    <string name="devicemsg_self_deleted">Вы удалили чат \"Сохраненные сообщения\".\n\nℹ️ Чтобы снова использовать функцию \"Сохраненные сообщения\", создайте новый чат с самим собой.</string>
+    <!-- %1$s will be replaced by the number of storage already used, sth. as '500 MB'. CAVE: if you want to use a simple the percent sign, type in two, so eg. %1$s %% -->
+    <string name="devicemsg_storage_exceeding">⚠️ Хранилище вашего провайдера скоро будет превышено, уже использовано %1$s%%.\n\nВозможно, вы не сможете получать сообщения, когда хранилище будет использовано на 100%%.\n\n👉 Пожалуйста, проверьте, можете ли вы удалить старые данные в веб-интерфейсе провайдера и подумайте о том, чтобы включить \"Настройки / Удалить старые сообщения\". Вы можете проверить текущее использование хранилища в любое время в \"Настройки / Соединение\".</string>
+    <!-- %1%s will be replaced by date and time in some human-readable format -->
+    <string name="devicemsg_bad_time">⚠️ Дата или время вашего устройства кажутся неточными (%1$s).\n\nНастройте свои часы ⏰🔧, чтобы убедиться, что ваши сообщения принимаются правильно.</string>
+    <string name="devicemsg_update_reminder">⚠️ Ваша версия Delta Chat может быть устаревшей.\n\nЭто может вызвать проблемы, поскольку ваши партнеры по чату используют более новые версии - и вам не хватает последних функций 😳\nПожалуйста, проверьте https://get.delta.chat или магазин приложений на наличие обновлений.</string>
 
     <!-- Some options as "Manage keys" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc. to be entered in a system dialog. This hint is added to the system dialog, below a title as "Manage keys" or "Backup". -->
     <string name="enter_system_secret_to_continue">Пожалуйста, введите защитный код вашей системы, чтобы продолжить. </string>

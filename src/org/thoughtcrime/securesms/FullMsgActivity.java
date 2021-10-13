@@ -16,9 +16,6 @@ import org.thoughtcrime.securesms.util.Util;
 
 import java.lang.ref.WeakReference;
 
-import static android.util.Base64.DEFAULT;
-import static android.util.Base64.encodeToString;
-
 public class FullMsgActivity extends WebViewActivity
 {
   public static final String MSG_ID_EXTRA = "msg_id";
@@ -67,19 +64,14 @@ public class FullMsgActivity extends WebViewActivity
 
   private static void loadHtmlAsync(final WeakReference<FullMsgActivity> activityReference) {
     Util.runOnBackground(() -> {
-      // android9 seems to make problems for non-base64-encoded html,
-      // see eg. https://stackoverflow.com/questions/54516798/webview-loaddata-not-working-on-android-9-0-api-29
-      String html;
-
       try {
         FullMsgActivity activity = activityReference.get();
-        html = activity.dcContext.getMsgHtml(activity.msgId);
-        html = encodeToString(html.getBytes("UTF-8"), DEFAULT);
-        String finalHtml = html;
+        String html = activity.dcContext.getMsgHtml(activity.msgId);
 
         activity.runOnUiThread(() -> {
           try {
-            activityReference.get().webView.loadData(finalHtml, "text/html; charset=utf-8", "base64");
+            // a base URL is needed, otherwise clicking links that reference document sections will not jump to sections
+            activityReference.get().webView.loadDataWithBaseURL("file://index.html", html, "text/html", null, null);
           } catch (Exception e) {
             e.printStackTrace();
           }

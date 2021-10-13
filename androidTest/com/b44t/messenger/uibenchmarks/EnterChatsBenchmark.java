@@ -1,8 +1,5 @@
-package com.b44t.messenger;
+package com.b44t.messenger.uibenchmarks;
 
-import android.content.ComponentName;
-import android.content.Context;
-import android.content.Intent;
 import android.util.Log;
 
 import androidx.test.espresso.contrib.RecyclerViewActions;
@@ -10,26 +7,23 @@ import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
 
+import com.b44t.messenger.TestUtils;
+
 import org.junit.After;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.thoughtcrime.securesms.ConversationListActivity;
 import org.thoughtcrime.securesms.R;
-import org.thoughtcrime.securesms.connect.AccountManager;
-import org.thoughtcrime.securesms.connect.DcHelper;
-import org.thoughtcrime.securesms.util.Prefs;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.Espresso.pressBack;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.replaceText;
-import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static androidx.test.espresso.matcher.ViewMatchers.withHint;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
-import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentation;
 
 
 @RunWith(AndroidJUnit4.class)
@@ -50,27 +44,10 @@ public class EnterChatsBenchmark {
   private final static String TAG = EnterChatsBenchmark.class.getSimpleName();
 
   @Rule
-  public ActivityScenarioRule<ConversationListActivity> activityRule = new ActivityScenarioRule<>(getConversationsListIntent());
-
-  private Intent getConversationsListIntent() {
-    Intent intent =
-            Intent.makeMainActivity(
-                    new ComponentName(getInstrumentation().getTargetContext(), ConversationListActivity.class));
-    if (!USE_EXISTING_CHATS) {
-      Context context = getInstrumentation().getTargetContext();
-      AccountManager.getInstance().beginAccountCreation(context);
-      DcContext c = DcHelper.getContext(context);
-      c.setConfig("configured_addr", "alice@example.org");
-      c.setConfig("configured_mail_pw", "abcd");
-      c.setConfig("configured", "1");
-    }
-    return intent;
-  }
+  public ActivityScenarioRule<ConversationListActivity> activityRule = TestUtils.getOfflineActivityRule();
 
   @Test
   public void createAndEnterNChats() {
-    Prefs.setEnterSendsEnabled(getInstrumentation().getTargetContext(), true);
-
     if (!USE_EXISTING_CHATS) {
       createChatAndGoBack("Group #1", "Hello!", "Some links: https://testrun.org", "And a command: /help");
       createChatAndGoBack("Group #2", "example.org, alice@example.org", "aaaaaaa", "bbbbbb");
@@ -85,7 +62,7 @@ public class EnterChatsBenchmark {
     }
 
     String[] times = new String[GO_THROUGH_ALL_CHATS_N_TIMES];
-    for (int i = 0; i<GO_THROUGH_ALL_CHATS_N_TIMES; i++) {
+    for (int i = 0; i < GO_THROUGH_ALL_CHATS_N_TIMES; i++) {
       times[i] = "" + timeGoToAllChats();
     }
     Log.i(TAG, "MEASURED RESULTS (Benchmark) - Going thorough all 10 chats: " + String.join(",", times));
@@ -93,7 +70,7 @@ public class EnterChatsBenchmark {
 
   private long timeGoToAllChats() {
     long start = System.currentTimeMillis();
-    for (int i=0; i<10; i++) {
+    for (int i = 0; i < 10; i++) {
       onView(withId(R.id.list)).perform(RecyclerViewActions.actionOnItemAtPosition(i, click()));
       pressBack();
     }
@@ -128,17 +105,11 @@ public class EnterChatsBenchmark {
 
   private void sendText(String text1) {
     onView(withHint(R.string.chat_input_placeholder)).perform(replaceText(text1));
-    onView(withHint(R.string.chat_input_placeholder)).perform(typeText("\n"));
+    TestUtils.pressSend();
   }
 
   @After
-  public void removeMockAccount() {
-    if (!USE_EXISTING_CHATS) {
-      Context context = getInstrumentation().getTargetContext();
-      DcAccounts accounts = DcHelper.getAccounts(context);
-
-      DcContext selectedAccount = accounts.getSelectedAccount();
-      accounts.removeAccount(selectedAccount.getAccountId());
-    }
+  public void cleanup() {
+    TestUtils.cleanup();
   }
 }

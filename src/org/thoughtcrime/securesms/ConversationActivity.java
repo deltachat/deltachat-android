@@ -454,7 +454,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     inflater.inflate(R.menu.conversation, menu);
 
-    if (dcChat.isSelfTalk()) {
+    if (dcChat.isSelfTalk() || dcChat.isBroadcast()) {
       menu.findItem(R.id.menu_mute_notifications).setVisible(false);
     } else if(dcChat.isMuted()) {
       menu.findItem(R.id.menu_mute_notifications).setTitle(R.string.menu_unmute);
@@ -468,12 +468,12 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       menu.findItem(R.id.menu_videochat_invite).setVisible(false);
     }
 
-    if (!dcChat.canSend()) {
+    if (!dcChat.canSend() || dcChat.isBroadcast()) {
       menu.findItem(R.id.menu_ephemeral_messages).setVisible(false);
     }
 
-    if (isGroupConversation()) {
-      if (dcChat.canSend()) { // If you can't send, then you can't leave the group
+    if (isMultiUser()) {
+      if (dcChat.canSend() && !dcChat.isBroadcast()) {
         inflater.inflate(R.menu.conversation_push_group_options, menu);
       }
     }
@@ -700,7 +700,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       SendRelayedMessageUtil.immediatelyRelay(this, chatId);
     } else {
       String name = dcChat.getName();
-      if (!dcChat.isGroup()) {
+      if (!dcChat.isMultiUser()) {
         int[] contactIds = dcContext.getChatContacts(chatId);
         if (contactIds.length == 1 || contactIds.length == 2) {
           name = dcContext.getContact(contactIds[0]).getNameNAddr();
@@ -850,7 +850,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   {
     final SettableFuture<Boolean> future = new SettableFuture<>();
 
-    handleSecurityChange(currentSecureText || isPushGroupConversation(), currentIsDefaultSms);
+    handleSecurityChange(currentSecureText || isMultiUser(), currentIsDefaultSms);
 
     future.set(true);
     return future;
@@ -968,7 +968,12 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void setComposePanelVisibility() {
-    composePanel.setVisibility(dcChat.canSend() ? View.VISIBLE : View.GONE);
+    if (dcChat.canSend()) {
+      composePanel.setVisibility(View.VISIBLE);
+    } else {
+      composePanel.setVisibility(View.GONE);
+      hideSoftKeyboard();
+    }
   }
 
   //////// Helper Methods
@@ -1017,12 +1022,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     composeText.append(name + "\n" + mail);
   }
 
-  private boolean isGroupConversation() {
-    return dcChat.isGroup();
-  }
-
-  private boolean isPushGroupConversation() {
-    return isGroupConversation(); // push groups are non-sms groups, so in delta, these are all groups
+  private boolean isMultiUser() {
+    return dcChat.isMultiUser();
   }
 
   private boolean isArchived() {

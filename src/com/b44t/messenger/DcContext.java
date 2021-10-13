@@ -161,6 +161,7 @@ public class DcContext {
     public native int          getChatIdByContactId (int contact_id);
     public native int          createChatByContactId(int contact_id);
     public native int          createGroupChat      (boolean verified, String name);
+    public native int          createBroadcastList  ();
     public native boolean      isContactInChat      (int chat_id, int contact_id);
     public native int          addContactToChat     (int chat_id, int contact_id);
     public native int          removeContactFromChat(int chat_id, int contact_id);
@@ -183,6 +184,7 @@ public class DcContext {
     public DcMsg               getMsg               (int msg_id) { return new DcMsg(getMsgCPtr(msg_id)); }
     public native String       getMsgInfo           (int id);
     public native String       getMsgHtml           (int msg_id);
+    public native void         downloadFullMsg      (int msg_id);
     public native int          getFreshMsgCount     (int chat_id);
     public native int          estimateDeletionCount(boolean from_server, long seconds);
     public native void         deleteMsgs           (int msg_ids[]);

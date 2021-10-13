@@ -15,6 +15,7 @@ public class ConnectivityActivity extends WebViewActivity implements DcEventCent
   @Override
   protected void onCreate(Bundle state, boolean ready) {
     super.onCreate(state, ready);
+    getSupportActionBar().setTitle(R.string.connectivity);
     refresh();
 
     DcHelper.getEventCenter(this).addObserver(DcContext.DC_EVENT_CONNECTIVITY_CHANGED, this);
@@ -33,8 +34,6 @@ public class ConnectivityActivity extends WebViewActivity implements DcEventCent
   }
 
   private void refresh() {
-    getSupportActionBar().setTitle(R.string.connectivity);
-
     String connectivityHtml = DcHelper.getContext(this).getConnectivityHtml();
     webView.loadDataWithBaseURL(null, connectivityHtml, "text/html", "utf-8", null);
   }
@@ -42,5 +41,12 @@ public class ConnectivityActivity extends WebViewActivity implements DcEventCent
   @Override
   public void handleEvent(@NonNull DcEvent event) {
     refresh();
+  }
+
+  @Override
+  public void onBackPressed() {
+    // If we did not override this function, the back button in the connectivity view would sometimes
+    // not work, probably because webView.canGoBack() in WebViewActivity.onBackPressed() wrongly returns true
+    finish();
   }
 }

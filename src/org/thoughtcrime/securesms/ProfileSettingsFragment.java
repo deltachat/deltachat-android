@@ -125,7 +125,7 @@ public class ProfileSettingsFragment extends Fragment
     if (contactId>0) { dcContact = dcContext.getContact(contactId); }
     if (chatId>0)    { dcChat    = dcContext.getChat(chatId); }
 
-    if(dcChat!=null && dcChat.isGroup()) {
+    if(dcChat!=null && dcChat.isMultiUser()) {
       memberList = dcContext.getChatContacts(chatId);
     }
     else if(contactId>0) {
@@ -169,8 +169,11 @@ public class ProfileSettingsFragment extends Fragment
   public void onMemberLongClicked(int contactId) {
     if (contactId>DcContact.DC_CONTACT_ID_LAST_SPECIAL || contactId==DcContact.DC_CONTACT_ID_SELF) {
       if (actionMode==null) {
-        adapter.toggleMemberSelection(contactId);
-        actionMode = ((AppCompatActivity) getActivity()).startSupportActionMode(actionModeCallback);
+        DcChat dcChat = dcContext.getChat(chatId);
+        if (dcChat.canSend()) {
+          adapter.toggleMemberSelection(contactId);
+          actionMode = ((AppCompatActivity) getActivity()).startSupportActionMode(actionModeCallback);
+        }
       } else {
         onMemberClicked(contactId);
       }
@@ -248,8 +251,7 @@ public class ProfileSettingsFragment extends Fragment
     @Override
     public boolean onCreateActionMode(ActionMode mode, Menu menu) {
       mode.getMenuInflater().inflate(R.menu.profile_context, menu);
-      DcChat dcChat = dcContext.getChat(chatId);
-      menu.findItem(R.id.delete).setVisible(!dcChat.isMailingList());
+      menu.findItem(R.id.delete).setVisible(true);
       menu.findItem(R.id.details).setVisible(false);
       menu.findItem(R.id.show_in_chat).setVisible(false);
       menu.findItem(R.id.save).setVisible(false);
@@ -281,6 +283,7 @@ public class ProfileSettingsFragment extends Fragment
             }
             readableToDelList.append(dcContext.getContact(toDelId).getDisplayName());
           }
+          DcChat dcChat = dcContext.getChat(chatId);
           new AlertDialog.Builder(getContext())
               .setPositiveButton(android.R.string.ok, (dialog, which) -> {
                 for (Integer toDelId : toDelIds) {
@@ -289,7 +292,7 @@ public class ProfileSettingsFragment extends Fragment
                 mode.finish();
               })
               .setNegativeButton(android.R.string.cancel, null)
-              .setMessage(getString(R.string.ask_remove_members, readableToDelList))
+              .setMessage(getString(dcChat.isBroadcast()? R.string.ask_remove_from_broadcast : R.string.ask_remove_members, readableToDelList))
               .show();
           return true;
       }

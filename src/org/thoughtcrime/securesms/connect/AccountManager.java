@@ -84,9 +84,10 @@ public class AccountManager {
 
     // add accounts
 
-    public void beginAccountCreation(Context context) {
-        DcHelper.getAccounts(context).addAccount();
+    public int beginAccountCreation(Context context) {
+        int id = DcHelper.getAccounts(context).addAccount();
         resetDcContext(context);
+        return id;
     }
 
     public boolean canRollbackAccountCreation(Context context) {

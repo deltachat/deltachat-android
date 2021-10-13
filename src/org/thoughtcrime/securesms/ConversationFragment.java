@@ -174,8 +174,10 @@ public class ConversationFragment extends MessageSelectorFragment
 
     private void setNoMessageText() {
         DcChat dcChat = getListAdapter().getChat();
-        if(dcChat.isGroup()){
-            if(dcContext.getChat((int) chatId).isUnpromoted()) {
+        if(dcChat.isMultiUser()){
+            if (dcChat.isBroadcast()) {
+              noMessageTextView.setText(R.string.chat_new_broadcast_hint);
+            } else if (dcChat.isUnpromoted()) {
                 noMessageTextView.setText(R.string.chat_new_group_hint);
             }
             else {
@@ -317,7 +319,6 @@ public class ConversationFragment extends MessageSelectorFragment
         if (messageRecords.size() > 1) {
             menu.findItem(R.id.menu_context_details).setVisible(false);
             menu.findItem(R.id.menu_context_share).setVisible(false);
-            menu.findItem(R.id.menu_context_save_attachment).setVisible(false);
             menu.findItem(R.id.menu_context_reply).setVisible(false);
             menu.findItem(R.id.menu_context_reply_privately).setVisible(false);
         } else {
@@ -325,10 +326,9 @@ public class ConversationFragment extends MessageSelectorFragment
             DcChat chat = getListAdapter().getChat();
             menu.findItem(R.id.menu_context_details).setVisible(true);
             menu.findItem(R.id.menu_context_share).setVisible(messageRecord.hasFile());
-            menu.findItem(R.id.menu_context_save_attachment).setVisible(messageRecord.hasFile());
             boolean canReply = canReplyToMsg(messageRecord);
             menu.findItem(R.id.menu_context_reply).setVisible(chat.canSend() && canReply);
-            boolean showReplyPrivately = chat.isGroup() && !messageRecord.isOutgoing() && canReply;
+            boolean showReplyPrivately = chat.isMultiUser() && !messageRecord.isOutgoing() && canReply;
             menu.findItem(R.id.menu_context_reply_privately).setVisible(showReplyPrivately);
         }
 
@@ -341,6 +341,16 @@ public class ConversationFragment extends MessageSelectorFragment
             }
         }
         menu.findItem(R.id.menu_context_forward).setVisible(canForward);
+
+        // if one of the selected items cannot be saved, disable saving.
+        boolean canSave = true;
+        for (DcMsg messageRecord : messageRecords) {
+            if (!messageRecord.hasFile()) {
+                canSave = false;
+                break;
+            }
+        }
+        menu.findItem(R.id.menu_context_save_attachment).setVisible(canSave);
     }
 
     static boolean canReplyToMsg(DcMsg dcMsg) {
@@ -820,6 +830,11 @@ public class ConversationFragment extends MessageSelectorFragment
         startActivity(intent);
         getActivity().overridePendingTransition(R.anim.slide_from_right, R.anim.fade_scale_out);
       }
+
+      @Override
+      public void onDownloadClicked(DcMsg messageRecord) {
+        dcContext.downloadFullMsg(messageRecord.getId());
+      }
     }
 
     @Override
@@ -880,7 +895,7 @@ public class ConversationFragment extends MessageSelectorFragment
                     actionMode.finish();
                     return true;
                 case R.id.menu_context_delete_message:
-                    handleDeleteMessages(getListAdapter().getSelectedItems());
+                    handleDeleteMessages((int) chatId, getListAdapter().getSelectedItems());
                     return true;
                 case R.id.menu_context_share:
                     DcHelper.openForViewOrShare(getContext(), getSelectedMessageRecord(getListAdapter().getSelectedItems()).getId(), Intent.ACTION_SEND);
@@ -894,7 +909,7 @@ public class ConversationFragment extends MessageSelectorFragment
                     actionMode.finish();
                     return true;
                 case R.id.menu_context_save_attachment:
-                    handleSaveAttachment(getSelectedMessageRecord(getListAdapter().getSelectedItems()));
+                    handleSaveAttachment(getListAdapter().getSelectedItems());
                     return true;
                 case R.id.menu_context_reply:
                     handleReplyMessage(getSelectedMessageRecord(getListAdapter().getSelectedItems()));
