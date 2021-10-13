@@ -34,6 +34,7 @@ public class AccountManager {
         appContext.notificationCenter = new NotificationCenter(context);
         appContext.eventCenter = new DcEventCenter(context);
         DcHelper.setStockTranslations(context);
+        DirectShareUtil.resetAllShortcuts(appContext);
     }
 
 

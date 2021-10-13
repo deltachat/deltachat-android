@@ -38,6 +38,7 @@ import com.google.zxing.integration.android.IntentResult;
 import org.thoughtcrime.securesms.components.SearchToolbar;
 import org.thoughtcrime.securesms.connect.AccountManager;
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.connect.DirectShareUtil;
 import org.thoughtcrime.securesms.map.MapActivity;
 import org.thoughtcrime.securesms.qr.QrActivity;
 import org.thoughtcrime.securesms.qr.QrCodeHandler;
@@ -125,6 +126,9 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   private void refresh() {
     refreshTitle();
     handleOpenpgp4fpr();
+    if (isDirectSharing(this)) {
+      openConversation(getDirectSharingChatId(this), -1);
+    }
 
     if (isDirectSharing(this)) {
       openConversation(getDirectSharingChatId(this), -1);
@@ -151,6 +155,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     dynamicTheme.onResume(this);
     dynamicLanguage.onResume(this);
 
+    DirectShareUtil.triggerRefreshDirectShare(this);
   }
 
   @Override
