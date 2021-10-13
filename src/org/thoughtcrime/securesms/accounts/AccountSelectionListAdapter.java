@@ -44,7 +44,7 @@ public class AccountSelectionListAdapter extends RecyclerView.Adapter
 
     public abstract void bind(@NonNull GlideRequests glideRequests, int accountId, DcContact self, String name, String addr, int unreadCount, boolean selected);
     public abstract void unbind(@NonNull GlideRequests glideRequests);
-    }
+  }
 
   public static class AccountViewHolder extends ViewHolder {
 

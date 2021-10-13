@@ -96,13 +96,13 @@ public class AccountSelectionListItem extends LinearLayout {
       unreadIndicator.setVisibility(View.GONE);
     } else {
       unreadIndicator.setImageDrawable(TextDrawable.builder()
-          .beginConfig()
-          .width(ViewUtil.dpToPx(getContext(), 24))
-          .height(ViewUtil.dpToPx(getContext(), 24))
-          .textColor(Color.WHITE)
-          .bold()
-          .endConfig()
-          .buildRound(String.valueOf(unreadCount), getResources().getColor(R.color.green_A700)));
+              .beginConfig()
+              .width(ViewUtil.dpToPx(getContext(), 24))
+              .height(ViewUtil.dpToPx(getContext(), 24))
+              .textColor(Color.WHITE)
+              .bold()
+              .endConfig()
+              .buildRound(String.valueOf(unreadCount), getResources().getColor(R.color.green_A700)));
       unreadIndicator.setVisibility(View.VISIBLE);
     }
   }
