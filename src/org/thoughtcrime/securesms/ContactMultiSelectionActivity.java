@@ -73,12 +73,6 @@ public class ContactMultiSelectionActivity extends ContactSelectionActivity {
     return false;
   }
 
-  @Override
-  public void onBackPressed() {
-    saveSelection();
-    super.onBackPressed();
-  }
-
   private void saveSelection() {
     Intent resultIntent = getIntent();
     List<String> selectedContacts = contactsFragment.getSelectedContacts();
