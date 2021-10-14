@@ -34,15 +34,9 @@
     <item android:id="@+id/menu_videochat_invite"
         android:title="@string/videochat" />
 
-    <item android:title="@string/menu_view_profile"
-          android:id="@+id/menu_profile"/>
-
     <item android:id="@+id/menu_show_map"
         android:title="@string/menu_show_map"
         android:icon="@drawable/ic_map_white_24dp"
         app:showAsAction="ifRoom" />
-
-    <item android:title="@string/menu_add_attachment"
-          android:id="@+id/menu_add_attachment" />
 
 </menu>

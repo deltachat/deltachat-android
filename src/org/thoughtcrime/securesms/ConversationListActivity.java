@@ -41,6 +41,7 @@ import org.thoughtcrime.securesms.components.AvatarImageView;
 import org.thoughtcrime.securesms.components.SearchToolbar;
 import org.thoughtcrime.securesms.connect.AccountManager;
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.connect.DirectShareUtil;
 import org.thoughtcrime.securesms.map.MapActivity;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.qr.QrActivity;
@@ -137,6 +138,9 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     refreshAvatar();
     refreshTitle();
     handleOpenpgp4fpr();
+    if (isDirectSharing(this)) {
+      openConversation(getDirectSharingChatId(this), -1);
+    }
 
     if (isDirectSharing(this)) {
       openConversation(getDirectSharingChatId(this), -1);
@@ -172,7 +176,8 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     super.onResume();
     dynamicTheme.onResume(this);
     dynamicLanguage.onResume(this);
-    refreshAvatar();
+
+    DirectShareUtil.triggerRefreshDirectShare(this);
   }
 
   @Override
