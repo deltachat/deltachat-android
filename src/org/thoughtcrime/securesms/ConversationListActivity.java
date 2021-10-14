@@ -17,6 +17,7 @@
 package org.thoughtcrime.securesms;
 
 import android.content.Intent;
+import android.text.TextUtils;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
@@ -167,7 +168,11 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     } else {
       DcContext dcContext = DcHelper.getContext(this);
       DcContact self = dcContext.getContact(DcContact.DC_CONTACT_ID_SELF);
-      selfAvatar.setAvatar(GlideApp.with(this), new Recipient(this, self), false);
+      String name = dcContext.getConfig("displayname");
+      if (TextUtils.isEmpty(name)) {
+        name = self.getAddr();
+      }
+      selfAvatar.setAvatar(GlideApp.with(this), new Recipient(this, self, name), false);
     }
   }
 
