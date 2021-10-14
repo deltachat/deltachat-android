@@ -1,6 +1,7 @@
 package org.thoughtcrime.securesms.accounts;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
@@ -95,6 +96,9 @@ public class AccountSelectionListItem extends LinearLayout {
     if(unreadCount == 0) {
       unreadIndicator.setVisibility(View.GONE);
     } else {
+      final TypedArray attrs = getContext().obtainStyledAttributes(new int[] {
+               R.attr.conversation_list_item_unreadcount_color,
+      });
       unreadIndicator.setImageDrawable(TextDrawable.builder()
               .beginConfig()
               .width(ViewUtil.dpToPx(getContext(), 24))
@@ -102,7 +106,7 @@ public class AccountSelectionListItem extends LinearLayout {
               .textColor(Color.WHITE)
               .bold()
               .endConfig()
-              .buildRound(String.valueOf(unreadCount), getResources().getColor(R.color.green_A700)));
+              .buildRound(String.valueOf(unreadCount), attrs.getColor(0, Color.BLACK)));
       unreadIndicator.setVisibility(View.VISIBLE);
     }
   }

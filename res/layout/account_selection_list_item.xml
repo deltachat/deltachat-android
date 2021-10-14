@@ -38,7 +38,7 @@
             android:layout_marginTop="20dp"
             app:layout_constraintStart_toStartOf="@id/contact_photo_image"
             app:layout_constraintTop_toTopOf="@id/contact_photo_image"
-            android:src="@drawable/ic_circle_checkbox"
+            android:src="?attr/ic_circle_checkbox"
             android:contentDescription="@null" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

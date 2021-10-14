@@ -74,6 +74,7 @@
         <item name="conversation_list_item_unread_color">@color/core_black</item>
         <item name="conversation_list_item_divider">@drawable/conversation_list_divider_shape</item>
 
+        <item name="ic_circle_checkbox">@drawable/ic_circle_checkbox</item>
         <item name="send_button_bg">@drawable/send_button_bg</item>
         <item name="button_bg">@drawable/button_bg</item>
         <item name="floating_mini_bg">@drawable/floating_mini_bg_light</item>
@@ -225,6 +226,7 @@
         <item name="conversation_list_item_unread_color">@color/core_white</item>
         <item name="conversation_list_item_divider">@drawable/conversation_list_divider_shape_dark</item>
 
+        <item name="ic_circle_checkbox">@drawable/ic_circle_checkbox</item>
         <item name="send_button_bg">@drawable/send_button_bg</item>
         <item name="button_bg">@drawable/button_bg</item>
         <item name="floating_mini_bg">@drawable/floating_mini_bg_dark</item>
@@ -368,6 +370,7 @@
 	<item name="conversation_list_item_unreadcount_color">@color/purple_unreadcount</item>
         <item name="conversation_list_item_background">@drawable/conversation_list_item_background_purple</item>
         <item name="pinned_list_item_background">@drawable/pinned_list_item_background_purple</item>
+        <item name="ic_circle_checkbox">@drawable/ic_circle_checkbox_purple</item>
         <item name="send_button_bg">@drawable/send_button_bg_purple</item>
         <item name="button_bg">@drawable/button_bg_purple</item>
         <item name="fab_color">@color/purple_primary_lite</item>
@@ -404,6 +407,7 @@
 	<item name="conversation_list_item_unreadcount_color">@color/purple_unreadcount</item>
         <item name="conversation_list_item_background">@drawable/conversation_list_item_background_purple</item>
         <item name="pinned_list_item_background">@drawable/pinned_list_item_background_purple</item>
+        <item name="ic_circle_checkbox">@drawable/ic_circle_checkbox_purple</item>
         <item name="send_button_bg">@drawable/send_button_bg_purple</item>
         <item name="button_bg">@drawable/button_bg_purple</item>
         <item name="fab_color">@color/purple_primary_lite</item>
@@ -449,6 +453,7 @@
 	<item name="conversation_list_item_unreadcount_color">@color/green_unreadcount</item>
         <item name="conversation_list_item_background">@drawable/conversation_list_item_background_green</item>
         <item name="pinned_list_item_background">@drawable/pinned_list_item_background_green</item>
+        <item name="ic_circle_checkbox">@drawable/ic_circle_checkbox_green</item>
         <item name="send_button_bg">@drawable/send_button_bg_green</item>
         <item name="button_bg">@drawable/button_bg_green</item>
         <item name="fab_color">@color/green_primary_lite</item>
@@ -485,6 +490,7 @@
 	<item name="conversation_list_item_unreadcount_color">@color/green_unreadcount</item>
         <item name="conversation_list_item_background">@drawable/conversation_list_item_background_green</item>
         <item name="pinned_list_item_background">@drawable/pinned_list_item_background_green</item>
+        <item name="ic_circle_checkbox">@drawable/ic_circle_checkbox_green</item>
         <item name="send_button_bg">@drawable/send_button_bg_green</item>
         <item name="button_bg">@drawable/button_bg_green</item>
         <item name="fab_color">@color/green_primary_lite</item>
@@ -531,6 +537,7 @@
 	<item name="conversation_list_item_unreadcount_color">@color/blue_unreadcount</item>
         <item name="conversation_list_item_background">@drawable/conversation_list_item_background_blue</item>
         <item name="pinned_list_item_background">@drawable/pinned_list_item_background_blue</item>
+        <item name="ic_circle_checkbox">@drawable/ic_circle_checkbox_blue</item>
         <item name="send_button_bg">@drawable/send_button_bg_blue</item>
         <item name="button_bg">@drawable/button_bg_blue</item>
         <item name="fab_color">@color/blue_primary_lite</item>
@@ -567,6 +574,7 @@
 	<item name="conversation_list_item_unreadcount_color">@color/blue_unreadcount</item>
         <item name="conversation_list_item_background">@drawable/conversation_list_item_background_blue</item>
         <item name="pinned_list_item_background">@drawable/pinned_list_item_background_blue</item>
+        <item name="ic_circle_checkbox">@drawable/ic_circle_checkbox_blue</item>
         <item name="send_button_bg">@drawable/send_button_bg_blue</item>
         <item name="button_bg">@drawable/button_bg_blue</item>
         <item name="fab_color">@color/blue_primary_lite</item>
@@ -612,6 +620,7 @@
 	<item name="conversation_list_item_unreadcount_color">@color/red_unreadcount</item>
         <item name="conversation_list_item_background">@drawable/conversation_list_item_background_red</item>
         <item name="pinned_list_item_background">@drawable/pinned_list_item_background_red</item>
+        <item name="ic_circle_checkbox">@drawable/ic_circle_checkbox_red</item>
         <item name="send_button_bg">@drawable/send_button_bg_red</item>
         <item name="button_bg">@drawable/button_bg_red</item>
         <item name="fab_color">@color/red_primary_lite</item>
@@ -648,6 +657,7 @@
 	<item name="conversation_list_item_unreadcount_color">@color/red_unreadcount</item>
         <item name="conversation_list_item_background">@drawable/conversation_list_item_background_red</item>
         <item name="pinned_list_item_background">@drawable/pinned_list_item_background_red</item>
+        <item name="ic_circle_checkbox">@drawable/ic_circle_checkbox_red</item>
         <item name="send_button_bg">@drawable/send_button_bg_red</item>
         <item name="button_bg">@drawable/button_bg_red</item>
         <item name="fab_color">@color/red_primary_lite</item>
@@ -693,6 +703,7 @@
 	<item name="conversation_list_item_unreadcount_color">@color/pink_unreadcount</item>
         <item name="conversation_list_item_background">@drawable/conversation_list_item_background_pink</item>
         <item name="pinned_list_item_background">@drawable/pinned_list_item_background_pink</item>
+        <item name="ic_circle_checkbox">@drawable/ic_circle_checkbox_pink</item>
         <item name="send_button_bg">@drawable/send_button_bg_pink</item>
         <item name="button_bg">@drawable/button_bg_pink</item>
         <item name="fab_color">@color/pink_primary_lite</item>
@@ -729,6 +740,7 @@
 	<item name="conversation_list_item_unreadcount_color">@color/pink_unreadcount</item>
         <item name="conversation_list_item_background">@drawable/conversation_list_item_background_pink</item>
         <item name="pinned_list_item_background">@drawable/pinned_list_item_background_pink</item>
+        <item name="ic_circle_checkbox">@drawable/ic_circle_checkbox_pink</item>
         <item name="send_button_bg">@drawable/send_button_bg_pink</item>
         <item name="button_bg">@drawable/button_bg_pink</item>
         <item name="fab_color">@color/pink_primary_lite</item>
@@ -774,6 +786,7 @@
 	<item name="conversation_list_item_unreadcount_color">@color/gray_unreadcount</item>
         <item name="conversation_list_item_background">@drawable/conversation_list_item_background_gray</item>
         <item name="pinned_list_item_background">@drawable/pinned_list_item_background_gray</item>
+        <item name="ic_circle_checkbox">@drawable/ic_circle_checkbox_gray</item>
         <item name="send_button_bg">@drawable/send_button_bg_gray</item>
         <item name="button_bg">@drawable/button_bg_gray</item>
         <item name="fab_color">@color/gray_primary_lite</item>
@@ -810,6 +823,7 @@
 	<item name="conversation_list_item_unreadcount_color">@color/gray_unreadcount</item>
         <item name="conversation_list_item_background">@drawable/conversation_list_item_background_gray</item>
         <item name="pinned_list_item_background">@drawable/pinned_list_item_background_gray</item>
+        <item name="ic_circle_checkbox">@drawable/ic_circle_checkbox_gray</item>
         <item name="send_button_bg">@drawable/send_button_bg_gray</item>
         <item name="button_bg">@drawable/button_bg_gray</item>
         <item name="fab_color">@color/gray_primary_lite</item>
