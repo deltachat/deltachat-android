@@ -113,51 +113,25 @@ public class AccountManager {
         if (lastAccountId == 0 || !accounts.getAccount(lastAccountId).isOk()) {
             lastAccountId = accounts.getSelectedAccount().getAccountId();
         }
-        new SwitchAccountAsyncTask(activity, R.string.switching_account, lastAccountId, null).execute();
+        switchAccountAndStartActivity(activity, lastAccountId, null);
     }
 
-
-    // helper class for switching accounts gracefully
-
-    public static class SwitchAccountAsyncTask extends ProgressDialogAsyncTask<Void, Void, Void> {
-        private final WeakReference<Activity> activityWeakReference;
-        private final int destAccountId; // 0 creates a new account
-        private final @Nullable String qrAccount;
-
-        public SwitchAccountAsyncTask(Activity activity, int title, int destAccountId, @Nullable String qrAccount) {
-            super(activity, null, activity.getString(title));
-            this.activityWeakReference = new WeakReference<>(activity);
-            this.destAccountId = destAccountId;
-            this.qrAccount = qrAccount;
-        }
-        @Override
-        protected Void doInBackground(Void... voids) {
-            Activity activity = activityWeakReference.get();
-            if (activity!=null) {
-                if (destAccountId==0) {
-                    AccountManager.getInstance().beginAccountCreation(activity);
-                } else {
-                    AccountManager.getInstance().switchAccount(activity, destAccountId);
-                }
-            }
-            return null;
+    public void switchAccountAndStartActivity(Activity activity, int destAccountId, @Nullable String qrAccount) {
+        if (destAccountId==0) {
+            beginAccountCreation(activity);
+        } else {
+            switchAccount(activity, destAccountId);
         }
 
-        @Override
-        protected void onPostExecute(Void result) {
-            Activity activity = activityWeakReference.get();
-            if (activity!=null) {
-                activity.finishAffinity();
-                if (destAccountId==0) {
-                    Intent intent = new Intent(activity, WelcomeActivity.class);
-                    if (qrAccount!=null) {
-                        intent.putExtra(WelcomeActivity.QR_ACCOUNT_EXTRA, qrAccount);
-                    }
-                    activity.startActivity(intent);
-                } else {
-                    activity.startActivity(new Intent(activity.getApplicationContext(), ConversationListActivity.class));
-                }
+        activity.finishAffinity();
+        if (destAccountId==0) {
+            Intent intent = new Intent(activity, WelcomeActivity.class);
+            if (qrAccount!=null) {
+                intent.putExtra(WelcomeActivity.QR_ACCOUNT_EXTRA, qrAccount);
             }
+            activity.startActivity(intent);
+        } else {
+            activity.startActivity(new Intent(activity.getApplicationContext(), ConversationListActivity.class));
         }
     }
 
@@ -169,6 +143,6 @@ public class AccountManager {
     }
 
     public void addAccountFromQr(Activity activity, String qr) {
-        new SwitchAccountAsyncTask(activity, R.string.one_moment, 0, qr).execute();
+        switchAccountAndStartActivity(activity, 0, qr);
     }
 }

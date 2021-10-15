@@ -791,6 +791,7 @@
 
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d new messages in %2$d chats</string>
+    <string name="notify_dismiss">Dismiss</string>
     <string name="notify_mark_read">Mark Read</string>
     <string name="notify_reply_button">Reply</string>
     <string name="notify_new_message">New message</string>
