@@ -16,7 +16,6 @@ import com.b44t.messenger.DcAccounts;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.AccountManager;
-import org.thoughtcrime.securesms.connect.AccountManager.SwitchAccountAsyncTask;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.util.ViewUtil;
@@ -74,9 +73,9 @@ public class AccountSelectionListFragment extends DialogFragment
       AccountSelectionListFragment.this.dismiss();
       int accountId = contact.getAccountId();
       if (accountId == DC_CONTACT_ID_ADD_ACCOUNT) {
-        new SwitchAccountAsyncTask(activity, R.string.one_moment, 0, null).execute();
+        AccountManager.getInstance().switchAccountAndStartActivity(activity, 0, null);
       } else if (accountId != DcHelper.getAccounts(activity).getSelectedAccount().getAccountId()) {
-        new SwitchAccountAsyncTask(activity, R.string.switching_account, accountId, null).execute();
+        AccountManager.getInstance().switchAccountAndStartActivity(activity, accountId, null);
       }
     }
 

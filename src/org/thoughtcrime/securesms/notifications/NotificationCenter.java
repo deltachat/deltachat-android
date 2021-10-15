@@ -421,7 +421,7 @@ public class NotificationCenter {
                     PendingIntent markReadIntent = getMarkAsReadIntent(chatId, true);
 
                     NotificationCompat.Action markAsReadAction = new NotificationCompat.Action(R.drawable.check,
-                            context.getString(R.string.notify_mark_read),
+                            context.getString(R.string.notify_dismiss),
                             markReadIntent);
 
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {

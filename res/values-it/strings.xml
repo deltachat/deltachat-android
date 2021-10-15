@@ -456,11 +456,11 @@
     <string name="connectivity_connected">Connesso</string>
     <string name="sending">Invio...</string>
     <string name="last_msg_sent_successfully">Ultimo messaggio inviato con successo.</string>
-    <string name="not_supported_by_provider">Non supportato dal tuo provider.</string>
+    <string name="not_supported_by_provider">Non supportato dal tuo fornitore.</string>
     <!-- Used as a subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed or so. -->
     <string name="messages">Messaggi</string>
     <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
-    <string name="part_of_total_used">%1$s di %2$s usato</string>
+    <string name="part_of_total_used">%1$s di %2$s usati</string>
 
 
     <!-- welcome and login -->
@@ -468,7 +468,7 @@
     <string name="login_title">Login</string>
     <string name="login_header">Login al Tuo Server</string>
     <string name="login_explain">Accedi con un indirizzo e-mail esistente</string>
-    <string name="login_subheader">Per i provider email conosciuti, le impostazioni aggiuntive vengono configurate automaticamente. A volte, IMAP deve essere abilitato dall\'interfaccia web dell\'email. Se riscontri problemi contatta il tuo provider email o i tuoi amici.</string>
+    <string name="login_subheader">Per i fornitori email conosciuti, le impostazioni aggiuntive vengono configurate automaticamente. A volte, IMAP deve essere abilitato dall\'interfaccia web dell\'email. Se riscontri problemi contatta il tuo fornitore email o i tuoi amici per aiutarti.</string>
     <string name="login_no_servers_hint">Non esistono server di Delta Chat, i tuoi dati restano nel tuo dispositivo!</string>
     <string name="login_inbox">In Arrivo</string>
     <string name="login_imap_login">Nome utente IMAP</string>
@@ -504,7 +504,7 @@
     <!-- Translators: %1$s will be replaced by the e-mail address -->
     <string name="login_error_cannot_login">Impossibile accedere come \"%1$s\". Verifica che l\'indirizzo email e la password siano corretti.</string>
     <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
-    <string name="login_error_server_response">Risposta da%1$s: %2$s\n\nAlcuni provider inseriscono altre informazioni nella tua casella; puoi controllarle ad es. dalla pagina web. Consulta il provider o i tuoi amici se riscontri problemi.</string>
+    <string name="login_error_server_response">Risposta da%1$s: %2$s\n\nAlcuni fornitori inseriscono altre informazioni nella tua casella; puoi controllarle ad es. dalla pagina web. Consulta il fornitore o i tuoi amici se riscontri problemi.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Accetta certificati non validi</string>
     <string name="used_settings">Impostazioni in uso:</string>
@@ -617,7 +617,7 @@
     <string name="pref_show_emails">Mostra E-mail Tradizionali</string>
     <string name="pref_show_emails_no">No, solo chat</string>
     <string name="pref_show_emails_accepted_contacts">Per i contatti accettati</string>
-    <string name="pref_show_emails_all">Tutti</string>
+    <string name="pref_show_emails_all">Sì</string>
     <string name="pref_experimental_features">Funzionalità Sperimentali</string>
     <string name="pref_on_demand_location_streaming">Streaming su Richiesta della Posizione</string>
     <string name="pref_background_default">Sfondo predefinito</string>
@@ -625,7 +625,7 @@
     <string name="pref_background_custom_image">Immagine personalizzata</string>
     <string name="pref_background_custom_color">Colore personalizzato</string>
     <string name="export_aborted">Esportazione interrotta.</string>
-    <string name="auto_download_messages">Scaricamento-Automatico Messaggi</string>
+    <string name="auto_download_messages">Scaricamento Automatico Messaggi</string>
     <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB -->
     <string name="up_to_x">Fino a %1$s</string>
     <string name="up_to_x_most_worse_quality_images">Fino a %1$s, immagini di qualità peggiore</string>
@@ -734,7 +734,7 @@
 
     <string name="devicemsg_self_deleted">Hai eliminato la chat \"Messaggi salvati\".\n\nℹ️ Per utilizzare nuovamente la funzione \"Messaggi salvati\", crea una nuova chat con te stesso.</string>
     <!-- %1$s will be replaced by the number of storage already used, sth. as '500 MB'. CAVE: if you want to use a simple the percent sign, type in two, so eg. %1$s %% -->
-    <string name="devicemsg_storage_exceeding">⚠️ Lo spazio di archiviazione del tuo provider sta già per superare %1$s%% vengono utilizzati.\n\nPotrebbe non essere possibile ricevere messaggi quando lo spazio di archiviazione è 100%% utilizzato.\n\n👉 Si prega di verificare se è possibile eliminare i vecchi dati nell\'interfaccia web del provider e considerare di abilitare \"Impostazioni / Elimina Vecchi Messaggi\". Puoi controllare l\'utilizzo corrente dello spazio di archiviazione in qualsiasi momento in \"Impostazioni / Connettività\".</string>
+    <string name="devicemsg_storage_exceeding">⚠️ Lo spazio di archiviazione del tuo fornitore sta già per superare %1$s%% vengono utilizzati.\n\nPotrebbe non essere possibile ricevere messaggi quando lo spazio di archiviazione è 100%% utilizzato.\n\n👉 Si prega di verificare se è possibile eliminare i vecchi dati nell\'interfaccia web del fornitore e considerare di abilitare \"Impostazioni / Elimina Vecchi Messaggi\". Puoi controllare l\'utilizzo corrente dello spazio di archiviazione in qualsiasi momento in \"Impostazioni / Connettività\".</string>
     <!-- %1%s will be replaced by date and time in some human-readable format -->
     <string name="devicemsg_bad_time">⚠️ La data o l\'ora del tuo dispositivo sembrano imprecise (%1$s).\n\nRegola l\'orologio ⏰🔧 per assicurarti che i tuoi messaggi vengano ricevuti correttamente.</string>
     <string name="devicemsg_update_reminder">⚠️ La tua versione di Delta Chat potrebbe essere obsoleta.\n\nCiò potrebbe causare problemi perché i tuoi partner di chat utilizzano versioni più recenti - e ti mancano le funzionalità più recenti 😳\nControlla https://get.delta.chat o il tuo app store per gli aggiornamenti. </string>
@@ -881,7 +881,7 @@
     <string name="create_chat_error_desktop">Impossibile creare una chat.</string>
     <string name="ask_delete_chat_desktop">Eliminare questa chat?</string>
     <string name="email_validation_failed_desktop">Indirizzo E-mail richiesto.</string>
-    <string name="forget_login_confirmation_desktop">Eliminare questo login? Verrà eliminato tutto, comprese le impostazioni di cifratura, i contatti, le chat, i messaggi e i media. Questa azione non può essere annullata.</string>
+    <string name="forget_login_confirmation_desktop">Eliminare questo accesso? Tutto verrà eliminato, inclusa la configurazione end-to-end, i contatti, le chat, i messaggi e i media. Questa azione non può essere annullata.</string>
     <string name="account_info_hover_tooltip_desktop">E-Mail: %1$s\nDimensione: %2$s\nPercorso: %3$s</string>
     <string name="me_desktop">me</string>
     <string name="in_this_group_desktop">Membri del Gruppo</string>

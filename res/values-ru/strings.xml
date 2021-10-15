@@ -487,6 +487,10 @@
     <string name="not_supported_by_provider">Не поддерживается вашим провайдером.</string>
     <!-- Used as a subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed or so. -->
     <string name="messages">Сообщения</string>
+    <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
+    <string name="part_of_total_used">%1$s из %2$s используется</string>
+
+
     <!-- welcome and login -->
     <string name="welcome_intro1_message">Мессенджер с самой широкой аудиторией в мире. Бесплатный и независимый.</string>
     <string name="login_title">Логин</string>
