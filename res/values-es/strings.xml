@@ -533,7 +533,7 @@
     <!-- preferences -->
     <string name="pref_using_custom">Usando valor personalizado: %s</string>
     <string name="pref_using_default">Usando valor por defecto: %s</string>
-    <string name="pref_profile_info_headline">Información de perfil </string>
+    <string name="pref_profile_info_headline">Información de perfil</string>
     <string name="pref_profile_photo">Foto de perfil</string>
     <string name="pref_blocked_contacts">Contactos bloqueados</string>
     <string name="blocked_empty_hint">Si bloqueas contactos, se mostrarán aquí.</string>
