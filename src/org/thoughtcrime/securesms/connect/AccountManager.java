@@ -109,7 +109,10 @@ public class AccountManager {
           accounts.removeAccount(selectedAccount.getAccountId());
         }
 
-        int lastAccountId = PreferenceManager.getDefaultSharedPreferences(activity).getInt(LAST_ACCOUNT_ID, accounts.getSelectedAccount().getAccountId());
+        int lastAccountId = PreferenceManager.getDefaultSharedPreferences(activity).getInt(LAST_ACCOUNT_ID, 0);
+        if (lastAccountId == 0 || !accounts.getAccount(lastAccountId).isOk()) {
+            lastAccountId = accounts.getSelectedAccount().getAccountId();
+        }
         new SwitchAccountAsyncTask(activity, R.string.switching_account, lastAccountId, null).execute();
     }
 
