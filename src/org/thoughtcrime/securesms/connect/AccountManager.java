@@ -25,6 +25,7 @@ import java.lang.ref.WeakReference;
 public class AccountManager {
 
     private static final String TAG = AccountManager.class.getSimpleName();
+    private static final String LAST_ACCOUNT_ID = "last_account_id";
     private static AccountManager self;
 
     private void resetDcContext(Context context) {
@@ -85,7 +86,13 @@ public class AccountManager {
     // add accounts
 
     public int beginAccountCreation(Context context) {
-        int id = DcHelper.getAccounts(context).addAccount();
+        DcAccounts accounts = DcHelper.getAccounts(context);
+        DcContext selectedAccount = accounts.getSelectedAccount();
+        if (selectedAccount.isOk()) {
+          PreferenceManager.getDefaultSharedPreferences(context).edit().putInt(LAST_ACCOUNT_ID, selectedAccount.getAccountId()).apply();
+        }
+
+        int id = accounts.addAccount();
         resetDcContext(context);
         return id;
     }
@@ -102,7 +109,11 @@ public class AccountManager {
           accounts.removeAccount(selectedAccount.getAccountId());
         }
 
-        switchAccountAndStartActivity(activity, accounts.getSelectedAccount().getAccountId(), null);
+        int lastAccountId = PreferenceManager.getDefaultSharedPreferences(activity).getInt(LAST_ACCOUNT_ID, 0);
+        if (lastAccountId == 0 || !accounts.getAccount(lastAccountId).isOk()) {
+            lastAccountId = accounts.getSelectedAccount().getAccountId();
+        }
+        switchAccountAndStartActivity(activity, lastAccountId, null);
     }
 
     public void switchAccountAndStartActivity(Activity activity, int destAccountId, @Nullable String qrAccount) {
