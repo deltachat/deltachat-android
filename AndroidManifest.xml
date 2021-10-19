@@ -45,7 +45,6 @@
                  android:theme="@style/TextSecure.LightTheme"
                  android:largeHeap="true"
                  tools:ignore="GoogleAppIndexingWarning"
-                 android:requestLegacyExternalStorage="true"
         >
 
     <!-- android car support, see https://developer.android.com/training/auto/start/,

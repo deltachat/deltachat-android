@@ -26,10 +26,8 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.PowerManager;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.TypedValue;
@@ -38,14 +36,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+
 import com.b44t.messenger.DcContext;
 
 import org.thoughtcrime.securesms.connect.DcHelper;
-import org.thoughtcrime.securesms.database.NoExternalStorageException;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Scrubber;
-import org.thoughtcrime.securesms.util.StorageUtil;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -116,7 +115,7 @@ public class LogViewFragment extends Fragment {
     String           logFileName = "deltachat-log-" + dateFormat.format(now) + ".txt";
 
     try {
-      outputDir = StorageUtil.getDownloadDir();
+      outputDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
       String logText =  logPreview.getText().toString();
       if(!logText.trim().equals("")){
         File logFile = new File(outputDir + "/" + logFileName);
@@ -128,7 +127,7 @@ public class LogViewFragment extends Fragment {
         logFileBufferWriter.write(logText);
         logFileBufferWriter.close();
       }
-    } catch (IOException | NoExternalStorageException e) {
+    } catch (IOException e) {
       e.printStackTrace();
       return false;
     }

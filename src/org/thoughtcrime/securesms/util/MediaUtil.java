@@ -4,13 +4,14 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.media.MediaMetadataRetriever;
 import android.net.Uri;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.WorkerThread;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.Pair;
 import android.webkit.MimeTypeMap;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.WorkerThread;
 
 import com.b44t.messenger.DcMsg;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -45,6 +46,7 @@ public class MediaUtil {
   public static final String AUDIO_AAC         = "audio/aac";
   public static final String AUDIO_UNSPECIFIED = "audio/*";
   public static final String VIDEO_UNSPECIFIED = "video/*";
+  public static final String OCTET             = "application/octet-stream";
 
 
   public static Slide getSlideForMsg(Context context, DcMsg dcMsg) {
@@ -192,6 +194,18 @@ public class MediaUtil {
 
   public static boolean isVideoType(String contentType) {
     return (null != contentType) && contentType.startsWith("video/");
+  }
+
+  public static boolean isOctetStream(@Nullable String contentType) {
+    return OCTET.equals(contentType);
+  }
+
+  public static boolean isImageOrVideoType(String contentType) {
+    return isImageType(contentType) || isVideoType(contentType);
+  }
+
+  public static boolean isImageVideoOrAudioType(String contentType) {
+    return isImageOrVideoType(contentType) || isAudioType(contentType);
   }
 
   public static class ThumbnailSize {

@@ -6,8 +6,8 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.view.Menu;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
+
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.view.ActionMode;
 import androidx.fragment.app.Fragment;
@@ -20,6 +20,7 @@ import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.util.SaveAttachmentTask;
+import org.thoughtcrime.securesms.util.StorageUtil;
 
 import java.util.Set;
 
@@ -75,24 +76,31 @@ public abstract class MessageSelectorFragment
 
   protected void handleSaveAttachment(final Set<DcMsg> messageRecords) {
     SaveAttachmentTask.showWarningDialog(getContext(), (dialogInterface, i) -> {
-        Permissions.with(getActivity())
-                .request(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)
-                .ifNecessary()
-                .withPermanentDenialDialog(getString(R.string.perm_explain_access_to_storage_denied))
-                .onAllGranted(() -> {
-                    SaveAttachmentTask.Attachment[] attachments = new SaveAttachmentTask.Attachment[messageRecords.size()];
-                    int index = 0;
-                    for (DcMsg message : messageRecords) {
-                        attachments[index] = new SaveAttachmentTask.Attachment(
-                            Uri.fromFile(message.getFileAsFile()), message.getFilemime(), message.getDateReceived(), message.getFilename());
-                        index++;
-                    }
-                    SaveAttachmentTask saveTask = new SaveAttachmentTask(getContext());
-                    saveTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, attachments);
-                    if (actionMode != null) actionMode.finish();
-                })
-                .execute();
+      if (StorageUtil.canWriteToMediaStore(getContext())) {
+        performSave(messageRecords);
+        return;
+      }
+
+      Permissions.with(getActivity())
+              .request(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+              .ifNecessary()
+              .withPermanentDenialDialog(getString(R.string.perm_explain_access_to_storage_denied))
+              .onAllGranted(() -> performSave(messageRecords))
+              .execute();
     });
+  }
+
+  private void performSave(Set<DcMsg> messageRecords) {
+    SaveAttachmentTask.Attachment[] attachments = new SaveAttachmentTask.Attachment[messageRecords.size()];
+    int index = 0;
+    for (DcMsg message : messageRecords) {
+        attachments[index] = new SaveAttachmentTask.Attachment(
+            Uri.fromFile(message.getFileAsFile()), message.getFilemime(), message.getDateReceived(), message.getFilename());
+        index++;
+    }
+    SaveAttachmentTask saveTask = new SaveAttachmentTask(getContext());
+    saveTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, attachments);
+    if (actionMode != null) actionMode.finish();
   }
 
   protected void handleShowInChat(final DcMsg dcMsg) {
