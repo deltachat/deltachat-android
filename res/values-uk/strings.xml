@@ -819,6 +819,7 @@
 
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d нових повідомлень з %2$d чатів</string>
+    <string name="notify_dismiss">Відхилити</string>
     <string name="notify_mark_read">Позначити прочитаним</string>
     <string name="notify_reply_button">Відповісти</string>
     <string name="notify_new_message">Нове повідомлення</string>

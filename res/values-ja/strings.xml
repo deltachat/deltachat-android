@@ -18,6 +18,8 @@
     <string name="automatic">自動</string>
     <string name="strict">厳重</string>
     <string name="open">開く</string>
+    <string name="download">ダウンロード</string>
+    <string name="downloading">ダウンロード中</string>
     <string name="open_attachment">添付ファイルを開く</string>
     <string name="join">参加</string>
     <string name="rejoin">参加</string>

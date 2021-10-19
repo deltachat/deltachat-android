@@ -619,7 +619,7 @@
     <string name="pref_show_emails_accepted_contacts">Per i contatti accettati</string>
     <string name="pref_show_emails_all">Sì</string>
     <string name="pref_experimental_features">Funzionalità Sperimentali</string>
-    <string name="pref_on_demand_location_streaming">Streaming su Richiesta della Posizione</string>
+    <string name="pref_on_demand_location_streaming">Trasmissione su Richiesta Posizione</string>
     <string name="pref_background_default">Sfondo predefinito</string>
     <string name="pref_background_default_color">Colore predefinito</string>
     <string name="pref_background_custom_image">Immagine personalizzata</string>
@@ -791,6 +791,7 @@
 
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d nuovi messaggi in %2$d chat</string>
+    <string name="notify_dismiss">Abbandona</string>
     <string name="notify_mark_read">Segna come Letto</string>
     <string name="notify_reply_button">Rispondi</string>
     <string name="notify_new_message">Nuovo messaggio</string>
