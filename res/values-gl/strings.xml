@@ -791,6 +791,7 @@
 
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d novas mensaxes en %2$d conversas</string>
+    <string name="notify_dismiss">Desbotar</string>
     <string name="notify_mark_read">Marcar como lido</string>
     <string name="notify_reply_button">Responder</string>
     <string name="notify_new_message">Nova mensaxe</string>

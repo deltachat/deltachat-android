@@ -494,12 +494,15 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
 
   private void onEditName() {
     if (chatIsMultiUser) {
-      Intent intent = new Intent(this, GroupCreateActivity.class);
-      intent.putExtra(GroupCreateActivity.EDIT_GROUP_CHAT_ID, chatId);
-      if (dcContext.getChat(chatId).isProtected()) {
-        intent.putExtra(GroupCreateActivity.GROUP_CREATE_VERIFIED_EXTRA, true);
+      DcChat dcChat = dcContext.getChat(chatId);
+      if (chatIsMailingList || dcChat.canSend()) {
+        Intent intent = new Intent(this, GroupCreateActivity.class);
+        intent.putExtra(GroupCreateActivity.EDIT_GROUP_CHAT_ID, chatId);
+        if (dcChat.isProtected()) {
+          intent.putExtra(GroupCreateActivity.GROUP_CREATE_VERIFIED_EXTRA, true);
+        }
+        startActivity(intent);
       }
-      startActivity(intent);
     }
     else {
       DcContact dcContact = dcContext.getContact(contactId);

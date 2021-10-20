@@ -445,6 +445,7 @@
     <string name="delete_account_ask">Ar tikrai norite ištrinti savo paskyros duomenis?</string>
     <string name="delete_account_explain_with_name">Visi „%s“ paskyros duomenys šiame įrenginyje bus ištrinti, įskaitant jūsų ištisinio šifravimo sąranką, adresatus, pokalbius, žinutes ir mediją. Šį veiksmą nebeįmanoma bus atšaukti.</string>
     <string name="switching_account">Perjungiama paskyra…</string>
+    <string name="unconfigured_account">Nesukonfigūruota paskyra</string>
     <string name="unconfigured_account_hint">Atverkite paskyrą norėdami ją konfigūruoti.</string>
     <!-- Translations: %1$s will be replaced by a more detailed error message -->
     <string name="configuration_failed_with_error">Konfigūracija patyrė nesėkmę. Klaida: %1$s</string>

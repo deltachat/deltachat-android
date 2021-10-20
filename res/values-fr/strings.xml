@@ -4,6 +4,7 @@
     <string name="app_name">DeltaLab</string>
     <string name="ok">OK</string>
     <string name="cancel">Annuler</string>
+    <string name="clear_search">Effacer la recherche</string>
     <string name="yes">Oui</string>
     <string name="no">Non</string>
     <string name="select">Sélectionner</string>
@@ -17,6 +18,8 @@
     <string name="automatic">Automatique</string>
     <string name="strict">Stricte</string>
     <string name="open">Ouvert</string>
+    <string name="download">Télécharger</string>
+    <string name="downloading">Téléchargement en cours</string>
     <string name="open_attachment">Ouvrir la pièce jointe</string>
     <string name="join">Rejoindre</string>
     <string name="rejoin">Réintégrer</string>
@@ -40,7 +43,11 @@
     <string name="main_menu">Menu principal</string>
     <string name="start_chat">Commencer la discussion</string>
     <string name="show_full_message">Montrer le message complet...</string>
+    <string name="show_full_message_in_browser">Afficher le message complet dans le navigateur</string>
+    <!-- this is shown as placeholder when something is loading at some places -->
+    <string name="loading">Chargement...</string>
     <string name="hide">Cacher</string>
+    <string name="activate">Activer</string>
     <string name="load_remote_content">Charger les images distantes</string>
     <!-- possible answers to the question are: Never, Always, Once -->
     <string name="load_remote_content_ask">Les images distantes peuvent être utilisées pour vous pister. Ce paramètre autorise également le chargement de polices ou d\'autres contenus. S\'il est désactivé, vous pouvez tout de même voir les images ancrées ou en cache. Souhaitez-vous charger les images distantes ?</string>
@@ -111,6 +118,7 @@
     <string name="images">Images</string>
     <string name="audio">Son</string>
     <string name="voice_message">Message vocal</string>
+    <string name="forwarded">Transféré</string>
     <string name="forwarded_message">Message transféré</string>
     <!-- %1$s will be replaced by the name or the e-mail address of the person who has forwarded the message -->
     <string name="forwarded_by">Transféré par %1$s</string>
@@ -119,6 +127,10 @@
     <string name="contact">Contact</string>
     <string name="verified_contact">Contact vérifié</string>
     <string name="camera">Caméra</string>
+    <!-- "capture" here means "start a video recording" or "take a photo"; eg. the description of the "shutter button" in the camera controls -->
+    <string name="capture">Enregistrer</string>
+    <string name="switch_camera">Changer de caméra</string>
+    <string name="toggle_fullscreen">Activer le plein écran</string>
     <string name="location">Position</string>
     <string name="gallery">Galerie</string>
     <string name="images_and_videos">Images et vidéos</string>
@@ -154,6 +166,7 @@
     <string name="menu_new_chat">Nouvelle discussion</string>
     <string name="menu_new_group">Nouveau groupe</string>
     <string name="menu_new_verified_group">Nouveau groupe vérifié</string>
+    <string name="add_recipients">Ajouter des destinataires</string>
     <string name="menu_send">Envoyer</string>
     <string name="menu_toggle_keyboard">Basculer le clavier emoji</string>
     <string name="menu_edit_group">Modifier le groupe</string>
@@ -175,6 +188,8 @@
     <string name="menu_copy_to_clipboard">Copier vers presse-papiers</string>
     <string name="menu_copy_selection_to_clipboard">Copier la sélection</string>
     <string name="menu_copy_link_to_clipboard">Copier le lien</string>
+    <string name="menu_copy_text_to_clipboard">Copier le texte</string>
+    <string name="menu_copy_image_to_clipboard">Copier l\'image</string>
     <string name="paste_from_clipboard">Coller depuis le presse-papiers</string>
     <string name="menu_forward">Faire suivre le message</string>
     <string name="menu_resend">Renvoyer le message</string>
@@ -182,6 +197,7 @@
     <string name="menu_mute">Déactiver les notifications</string>
     <string name="menu_unmute">Réactiver</string>
     <string name="menu_export_attachment">Exporter le fichier joint</string>
+    <string name="menu_export_attachments">Exporter les pièces-jointes</string>
     <string name="menu_all_media">Tous les médias</string>
     <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
     <string name="show_in_chat">Montrer dans la discussion</string>
@@ -190,6 +206,7 @@
     <string name="block">Bloquer</string>
     <string name="menu_block_contact">Bloquer ce contact</string>
     <string name="menu_unblock_contact">Débloquer ce contact</string>
+    <string name="accept">Accepter</string>
     <string name="menu_play">Jouer</string>
     <string name="menu_pause">Pause</string>
     <string name="menu_scroll_to_bottom">Faites défiler jusqu\'en bas</string>
@@ -208,6 +225,10 @@
     <string name="menu_zoom_in">Zoom avant</string>
     <string name="menu_zoom_out">Zoom arrière</string>
     <string name="menu_save_log">Sauvegarder le journal</string>
+    <string name="menu_more_options">Plus d\'options</string>
+    <string name="jump_to_message">Aller au message</string>
+    <string name="copy_json">Copier le JSON</string>
+    <string name="replace_draft">Remplacer le brouillon</string>
     <string name="title_share_location">Partager la position avec tous les membres du groupe</string>
     <string name="device_talk">Messages de l\'appareil</string>
     <string name="device_talk_subtitle">Messages générés localement</string>
@@ -265,9 +286,14 @@
         <item quantity="one">Effacer %d tchats ?</item>
         <item quantity="other">Effacer %d discussions ? Elles ne seront plus montrées dans la liste de tchats, mais leurs messages resteront sur le serveur.</item>
     </plurals>
+    <string name="ask_delete_message">Voulez-vous vraiment effacer ce message ?</string>
     <plurals name="ask_delete_messages">
         <item quantity="one">Effacer %d messages ici et sur le serveur ?</item>
         <item quantity="other">Effacer %dmessages ici et sur le serveur ?</item>
+    </plurals>
+    <plurals name="ask_delete_messages_simple">
+        <item quantity="one">Effacer %d message ?</item>
+        <item quantity="other">Effacer %d messages ?</item>
     </plurals>
     <string name="ask_forward">Faire suivre les messages à %1$s ?</string>
     <string name="ask_forward_multiple">Faire suivre les messages à %1$d discussions ?</string>
@@ -320,6 +346,7 @@
     <string name="chat_archived_label">Archivé</string>
     <string name="chat_no_messages">Aucun message.</string>
     <string name="chat_self_talk_subtitle">Messages envoyés à moi-même</string>
+    <string name="archive_empty_hint">Les discussions archivées apparaîtront ici.</string>
     <string name="saved_messages">Messages sauvegardés</string>
     <string name="saved_messages_explain">• Transférez les messages ici pour un accès facile\n\n• Prenez des notes, des mémos vocaux\n\n• Joignez des fichiers pour les sauvegarder</string>
     <!-- this "Saved" should match the "Saved" from "Saved messages" -->
@@ -342,6 +369,12 @@
     <string name="show_location_traces">Afficher les traces</string>
     <string name="add_poi">Afficher les points d\'intérêt</string>
 
+    <!-- punycode warning / labeled links -->
+    <!-- placeholder is domain/hostname that should be trusted -->
+    <string name="open_external_url_trust_domain">Ne pas demander à nouveau pour %1$s</string>
+    <string name="puny_code_warning_header">Lien suspect détecté</string>
+    <!-- placeholder contains the hostname converted to ascii -->
+    <string name="puny_code_warning_question">Voulez-vous vraiment visiter %1$s ?</string>
     <!-- search -->
     <string name="search">Chercher</string>
     <string name="search_explain">Rechercher des discussions, des contacts ou des messages</string>
@@ -373,6 +406,23 @@
     <string name="send_message">Envoyer message</string>
 
 
+    <!-- Connectivity -->
+    <!-- Used as a headline for the "Inbox" eg. in the "Connectivity" view -->
+    <string name="incoming_messages">Messages entrants</string>
+    <!-- Used as a headline for the "Outbox" eg. in the "Connectivity" view -->
+    <string name="outgoing_messages">Messages sortants</string>
+    <string name="connectivity">Connectivité</string>
+    <!-- Shown eg. in the title bar if the app is "Not connected"; as there is very few room, try to be as short as possible. -->
+    <string name="connectivity_not_connected">Non connecté</string>
+    <!-- Shown eg. in the title bar if the app is "Connecting"; as there is very few room, try to be as short as possible. Note that the three dots are a single character (…), not three (...) -->
+    <string name="connectivity_connecting">Connexion...</string>
+    <!-- Shown eg. in the title bar if the app is "Updating" (eg. getting new/old message, sync things); as there is very few room, try to be as short as possible. Note that the three dots are a single character (…), not three (...) -->
+    <string name="connectivity_updating">Mise à jour...</string>
+    <!-- Shown eg. in the setting if the app is "Connected" -->
+    <string name="connectivity_connected">Connecté</string>
+    <string name="sending">Envoi...</string>
+    <!-- Used as a subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed or so. -->
+    <string name="messages">Messages</string>
     <!-- welcome and login -->
     <string name="welcome_intro1_message">Le messager avec le plus large public au monde. Libre et indépendant.</string>
     <string name="login_title">Connexion</string>
@@ -392,6 +442,13 @@
     <string name="login_smtp_port">Port SMTP</string>
     <string name="login_smtp_security">Sécurité SMTP</string>
     <string name="login_auth_method">Méthode d\'autorisation</string>
+    <!-- the word "SOCKS5" here and in the following strings should not be translated in most cases -->
+    <string name="login_socks5">SOCKS5</string>
+    <string name="login_socks5_use_socks5">Utiliser SOCKS5</string>
+    <string name="login_socks5_host">Hôte SOCKS5</string>
+    <string name="login_socks5_port">Port SOCKS5</string>
+    <string name="login_socks5_user">Utilisateur SOCKS5</string>
+    <string name="login_socks5_password">Mot de passe SOCKS5</string>
     <!-- Translators: %1$s will be replaced by an e-mail address -->
     <string name="login_oauth2_checking_addr">Vérification de %1$s</string>
     <string name="login_info_oauth2_title">Continuer avec une configuration simplifiée ?</string>
@@ -417,7 +474,10 @@
     <string name="delete_account_ask">Êtes-vous sûr de vouloir supprimer les données de votre compte ?</string>
     <string name="delete_account_explain_with_name">Toutes les données de compte de « %s » sur cet appareil seront effacées, y compris votre configuration de chiffrement de bout en bout, vos contacts, discussions, messages et médias. Cette action est irrévocable.</string>
     <string name="switching_account">Changement de compte...</string>
+    <string name="unconfigured_account">Compte non configuré</string>
+    <string name="unconfigured_account_hint">Ouvrir le compte pour le configurer</string>
     <string name="try_connect_now">Essayer de se connecter maintenant</string>
+    <string name="sync_all">Tout synchroniser</string>
     <!-- Translations: %1$s will be replaced by a more detailed error message -->
     <string name="configuration_failed_with_error">Échec de la configuration. Erreur : %1$s</string>
 
@@ -525,9 +585,18 @@
     <string name="pref_background_custom_image">Image personnalisée</string>
     <string name="pref_background_custom_color">Couleur personnalisée</string>
     <string name="export_aborted">Exportation annulée.</string>
+    <string name="auto_download_messages">Télécharger les messages automatiquement</string>
+    <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB -->
+    <string name="up_to_x">Jusqu\'à %1$s</string>
+    <string name="up_to_x_most_worse_quality_images">Jusqu\'à %1$s, plus mauvaise qualité d\'image</string>
+    <string name="up_to_x_most_balanced_quality_images">Jusqu\'à %1$s, qualité d\'image raisonnable </string>
+    <string name="no_limit">Pas de limite</string>
     <string name="profile_image_select">Sélectionnez l\'image de profil</string>
     <string name="select_your_new_profile_image">Sélectionnez votre nouvelle image de profil</string>
     <string name="profile_image_delete">Effacer l\'image de profil</string>
+    <string name="pref_show_tray_icon">Afficher l\'icône dans la zone de notifications</string>
+    <string name="pref_edit_profile">Édition du profile</string>
+
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Résultats de la recherche</string>
     <string name="emoji_not_found">Pas d\'emoji trouvé</string>
@@ -655,6 +724,7 @@
     <string name="copy_qr_data_success">L\'URL du code QR a été copié dans le presse-papiers</string>
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d nouveaux messages dans %2$d tchats</string>
+    <string name="notify_dismiss">Rejeter</string>
     <string name="notify_mark_read">Marquer comme lu</string>
     <string name="notify_reply_button">Répondre</string>
     <string name="notify_new_message">Nouveau message</string>
@@ -676,6 +746,12 @@
 
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Dessinez n\'importe où pour flouter</string>
+    <string name="ImageEditorHud_add_text">Ajouter du texte</string>
+    <string name="ImageEditorHud_blur">Flouter</string>
+    <string name="ImageEditorHud_crop">Rogner</string>
+    <string name="ImageEditorHud_flip">Tourner</string>
+    <string name="ImageEditorHud_rotate">Pivoter</string>
+
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Message chiffré</string>
 
@@ -702,6 +778,8 @@
     <string name="global_menu_help_contribute_desktop">Contribuer sur Github</string>
     <string name="global_menu_help_report_desktop">Signaler un problème</string>
     <string name="global_menu_help_about_desktop">À propos de Delta Chat</string>
+    <string name="global_menu_file_open_desktop">Ouvrir Delta Chat</string>
+    <string name="global_menu_minimize_to_tray">Minimiser</string>
     <string name="no_chat_selected_suggestion_desktop">Sélectionner une discussion ou en créer une nouvelle</string>
     <string name="write_message_desktop">Écrire un message</string>
     <string name="encryption_info_title_desktop">Information de chiffrement</string>
@@ -747,6 +825,8 @@
     <string name="menu.view.developer.open.log.folder">Ouvrir le dossier Journal</string>
     <string name="menu.view.developer.open.current.log.file">Ouvrir le fichier Journal courant</string>
     <string name="user_location_permission_explanation">DeltaChat a besoin de l\'autorisation de votre position pour l\'afficher et la partager.</string>
+    <string name="show_window">Afficher la fenêtre</string>
+
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">État de la livraison : Erreur</string>
     <string name="a11y_encryption_padlock">Cadenas de chiffrement</string>
