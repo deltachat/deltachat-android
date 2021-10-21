@@ -223,7 +223,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
       DcContact self = dcContext.getContact(DC_CONTACT_ID_SELF);
       initList.add(new Recipient(this, self));
     }
-    SelectedRecipientsAdapter adapter = new SelectedRecipientsAdapter(this, initList);
+    SelectedRecipientsAdapter adapter = new SelectedRecipientsAdapter(this, GlideApp.with(this), initList);
     adapter.setOnRecipientDeletedListener(this);
     lv.setAdapter(adapter);
 
@@ -549,7 +549,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
       if (isEdit() && recipient.getName()!=null) {
         groupName.setSelection(recipient.getName().length(), recipient.getName().length());
       }
-      SelectedRecipientsAdapter adapter = new SelectedRecipientsAdapter(this, participants);
+      SelectedRecipientsAdapter adapter = new SelectedRecipientsAdapter(this, GlideApp.with(this), participants);
       adapter.setOnRecipientDeletedListener(this);
       lv.setAdapter(adapter);
       updateViewState();

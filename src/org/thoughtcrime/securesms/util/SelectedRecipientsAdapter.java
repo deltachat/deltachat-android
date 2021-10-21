@@ -15,7 +15,10 @@ import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.components.AvatarImageView;
+import org.thoughtcrime.securesms.components.emoji.EmojiTextView;
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.guava.Optional;
 
@@ -33,13 +36,16 @@ public class SelectedRecipientsAdapter extends BaseAdapter {
   @Nullable private OnRecipientDeletedListener onRecipientDeletedListener;
   @NonNull  private List<RecipientWrapper>     recipients;
   @NonNull  private final DcContext            dcContext;
+  @NonNull  private final GlideRequests        glideRequests;
 
   public SelectedRecipientsAdapter(@NonNull Context context,
+                                   @NonNull  GlideRequests glideRequests,
                                    @NonNull Collection<Recipient> existingRecipients)
   {
-    this.context    = context;
-    this.dcContext  = DcHelper.getContext(context);
-    this.recipients = wrapExistingMembers(existingRecipients);
+    this.context       = context;
+    this.glideRequests = glideRequests;
+    this.dcContext     = DcHelper.getContext(context);
+    this.recipients    = wrapExistingMembers(existingRecipients);
   }
 
   public void add(@NonNull Recipient recipient, boolean isPush) {
@@ -113,10 +119,12 @@ public class SelectedRecipientsAdapter extends BaseAdapter {
       dcContact = dcContext.getContact(p.getAddress().getDcContactId());
     }
 
-    TextView    name   = v.findViewById(R.id.name);
-    TextView    phone  = v.findViewById(R.id.phone);
-    ImageButton delete = v.findViewById(R.id.delete);
+    AvatarImageView avatar = v.findViewById(R.id.contact_photo_image);
+    EmojiTextView   name   = v.findViewById(R.id.name);
+    TextView        phone  = v.findViewById(R.id.phone);
+    ImageButton     delete = v.findViewById(R.id.delete);
 
+    avatar.setAvatar(glideRequests, p, false);
     name.setText(dcContact.getDisplayName());
     phone.setText(dcContact.getAddr());
     delete.setVisibility(modifiable ? View.VISIBLE : View.GONE);
