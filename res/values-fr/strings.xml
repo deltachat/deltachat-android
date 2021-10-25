@@ -19,7 +19,7 @@
     <string name="strict">Stricte</string>
     <string name="open">Ouvert</string>
     <string name="download">Télécharger</string>
-    <string name="downloading">Téléchargement en cours</string>
+    <string name="downloading">Téléchargement en cours...</string>
     <string name="open_attachment">Ouvrir la pièce jointe</string>
     <string name="join">Rejoindre</string>
     <string name="rejoin">Réintégrer</string>
@@ -71,7 +71,7 @@
     <string name="copied_to_clipboard">Copié dans le presse-papier.</string>
     <string name="contacts_headline">Contacts</string>
     <string name="email_address">Adresse de courriel</string>
-    <string name="bad_email_address">Mauvaise adresse email.</string>
+    <string name="bad_email_address">Adresse mail incorrecte</string>
     <string name="password">Mot de passe</string>
     <string name="existing_password">Mot de passe existant</string>
     <string name="now">Maintenant</string>
@@ -109,12 +109,19 @@
         <item quantity="one">%d membre</item>
         <item quantity="other">%d membres</item>
     </plurals>
+    <plurals name="n_recipients">
+        <item quantity="one">%d destinataire</item>
+        <item quantity="other">%d destinataires</item>
+    </plurals>
+
     <string name="self">Moi</string>
     <string name="draft">Brouillon</string>
     <string name="image">Image</string>
     <!-- Translators: Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
     <string name="reply_noun">Réponse</string>
     <string name="gif">Gif</string>
+    <!-- "Stickers" as known from other messengers, please pick up the wording from there; in some languages, "Sticker" in english is just fine. -->
+    <string name="sticker">Vignette</string>
     <string name="images">Images</string>
     <string name="audio">Son</string>
     <string name="voice_message">Message vocal</string>
@@ -166,6 +173,10 @@
     <string name="menu_new_chat">Nouvelle discussion</string>
     <string name="menu_new_group">Nouveau groupe</string>
     <string name="menu_new_verified_group">Nouveau groupe vérifié</string>
+    <!-- consider keeping the term "broadcast"; check how these lists are called eg. on whatsapp in the destination language -->
+    <string name="broadcast_list">Liste de diffusion</string>
+    <string name="broadcast_lists">Listes de diffusion</string>
+    <string name="new_broadcast_list">Nouvelle liste de diffusion</string>
     <string name="add_recipients">Ajouter des destinataires</string>
     <string name="menu_send">Envoyer</string>
     <string name="menu_toggle_keyboard">Basculer le clavier emoji</string>
@@ -226,6 +237,8 @@
     <string name="menu_zoom_out">Zoom arrière</string>
     <string name="menu_save_log">Sauvegarder le journal</string>
     <string name="menu_more_options">Plus d\'options</string>
+    <string name="menu_learn_spelling">Ajouter au dictionnaire</string>
+    <string name="menu_chat_audit_log">Journal d\'audit de la discussion</string>
     <string name="jump_to_message">Aller au message</string>
     <string name="copy_json">Copier le JSON</string>
     <string name="replace_draft">Remplacer le brouillon</string>
@@ -307,6 +320,8 @@
     <string name="ask_delete_value">Effacer %s ?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Retirer %1$s du groupe ?</string>
+    <!-- Translators: %1$s will be replaced by a comma separated list of names -->
+    <string name="ask_remove_from_broadcast">Retirer %1$s de la liste de diffusion ?</string>
     <string name="open_url_confirmation">Voulez-vous ouvrir ce lien ?</string>
 
 
@@ -335,6 +350,7 @@
         <item quantity="other">%d nouveaux messages</item>
     </plurals>
     <string name="chat_no_messages_hint">Envoyer un message à %1$s:\n\n• C\'est OK si  %2$s n\'utilise pas Delta Chat.\n\n• La remise du premier message peut prendre un moment et peut ne pas être chiffré.</string>
+    <string name="chat_new_broadcast_hint">Dans une liste de diffusion, les autres personnes recevront les messages dans leur discussion directe/privée avec vous.\n\nLes destinataires ne pourront pas se voir entre eux.</string>
     <string name="chat_new_group_hint">Composez le premier message, permettant aux autres de répondre au sein de ce groupe. C\'est ok même si tous les membres n\'utilisent pas le Chat Delta. La transmission du premier message peut prendre un certain temps.</string>
     <string name="chat_record_slide_to_cancel">Glisser pour annuler</string>
     <string name="chat_record_explain">Appuyez et maintenez pour enregistrer un message vocal, relâchez pour l’envoyer</string>
@@ -344,6 +360,7 @@
     <string name="chat_share_with_title">Partager avec</string>
     <string name="chat_input_placeholder">Message</string>
     <string name="chat_archived_label">Archivé</string>
+    <string name="chat_request_label">Requête</string>
     <string name="chat_no_messages">Aucun message.</string>
     <string name="chat_self_talk_subtitle">Messages envoyés à moi-même</string>
     <string name="archive_empty_hint">Les discussions archivées apparaîtront ici.</string>
@@ -359,15 +376,26 @@
     <string name="messaging_disabled_not_in_group">Vous ne pouvez pas écrire car vous ne faites pas partie de ce groupe. Pour le rejoindre, demandez à un membre.</string>
     <string name="messaging_disabled_device_chat">Cette discussion contient des messages générés localement. Par conséquent, vous ne pouvez pas écrire le moindre message.</string>
     <string name="messaging_disabled_deaddrop">Cliquez sur un message pour accepter ou rejeter la demande de contact.</string>
+    <string name="messaging_disabled_mailing_list">Envoyer des messages dans des listes de diffusion n\'est pas encore possible</string>
     <string name="cannot_display_unsuported_file_type">Impossible d\'afficher ce type de fichier : %s</string>
     <string name="attachment_failed_to_load">Échec du chargement de la pièce jointe</string>
+    <!-- For recording Voice messages: Description for the "Lock" button allowing to lift the thumb from the record button while recording continues -->
+    <string name="lock_recording">Maintenir l\'enregistrement</string>
+
     <!-- mailing lists -->
     <string name="mailing_list">Liste de diffusion</string>
     <string name="ask_show_mailing_list">Montrer la liste de diffusion « %1$s » ?</string>
+    <string name="mailing_list_profile_info">Les changements du nom et de l\'avatar de la liste de diffusion s\'applique uniquement sur cet appareil.</string>
+
     <!-- map -->
     <string name="filter_map_on_time">Afficher les positions dans le temps</string>
     <string name="show_location_traces">Afficher les traces</string>
     <string name="add_poi">Afficher les points d\'intérêt</string>
+
+    <!-- chat audit log -->
+    <string name="chat_audit_log_empty_message">Les messages systèmes de cette discussion devrait apparaître ici</string>
+    <string name="chat_audit_log_title">Journal d\'audit de la discussion pour %1$s</string>
+    <string name="chat_audit_log_description">Cette vue montre seulement les messages système et d\'information. Utile pour trouver les dernières actions dans la discussion sans défiler à travers beaucoup de messages normaux.</string>
 
     <!-- punycode warning / labeled links -->
     <!-- placeholder is domain/hostname that should be trusted -->
@@ -375,6 +403,10 @@
     <string name="puny_code_warning_header">Lien suspect détecté</string>
     <!-- placeholder contains the hostname converted to ascii -->
     <string name="puny_code_warning_question">Voulez-vous vraiment visiter %1$s ?</string>
+    <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
+    <string name="puny_code_warning_description">Vous avez cliqué sur un lien qui pourait avoir des caractères mal représentés du à l\'utilisation de caractères similaires provenant d\'alphabets différents. Suivre le lien marqué comme %1$s aménera à %2$s qui est le lien avec des caractères latins normaux. Si vous ne vous attendez pas à de tel caractères ce lien est potentiellement dangereux</string>
+
+
     <!-- search -->
     <string name="search">Chercher</string>
     <string name="search_explain">Rechercher des discussions, des contacts ou des messages</string>
@@ -411,6 +443,8 @@
     <string name="incoming_messages">Messages entrants</string>
     <!-- Used as a headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Messages sortants</string>
+    <!-- Used as a headline in the "Connectivity" view. The placeholder will be replaced by the domain of the configured email-address. -->
+    <string name="storage_on_domain">Espace de stockage sur %1$s</string>
     <string name="connectivity">Connectivité</string>
     <!-- Shown eg. in the title bar if the app is "Not connected"; as there is very few room, try to be as short as possible. -->
     <string name="connectivity_not_connected">Non connecté</string>
@@ -421,8 +455,14 @@
     <!-- Shown eg. in the setting if the app is "Connected" -->
     <string name="connectivity_connected">Connecté</string>
     <string name="sending">Envoi...</string>
+    <string name="last_msg_sent_successfully">Dernier message envoyé avec succés.</string>
+    <string name="not_supported_by_provider">Non pris en charge par votre fournisseur de mail.</string>
     <!-- Used as a subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed or so. -->
     <string name="messages">Messages</string>
+    <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
+    <string name="part_of_total_used">%1$s sur %2$s utilisé</string>
+
+
     <!-- welcome and login -->
     <string name="welcome_intro1_message">Le messager avec le plus large public au monde. Libre et indépendant.</string>
     <string name="login_title">Connexion</string>
@@ -591,11 +631,15 @@
     <string name="up_to_x_most_worse_quality_images">Jusqu\'à %1$s, plus mauvaise qualité d\'image</string>
     <string name="up_to_x_most_balanced_quality_images">Jusqu\'à %1$s, qualité d\'image raisonnable </string>
     <string name="no_limit">Pas de limite</string>
+    <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string eg. "1 MiB message" -->
+    <string name="n_bytes_message">%1$s message</string>
+    <!-- %1$s will be replaced by human-readable date and time -->
+    <string name="download_max_available_until">Télécharger le plus possible jusqu\'à %1$s</string>
     <string name="profile_image_select">Sélectionnez l\'image de profil</string>
     <string name="select_your_new_profile_image">Sélectionnez votre nouvelle image de profil</string>
     <string name="profile_image_delete">Effacer l\'image de profil</string>
     <string name="pref_show_tray_icon">Afficher l\'icône dans la zone de notifications</string>
-    <string name="pref_edit_profile">Édition du profile</string>
+    <string name="pref_edit_profile">Édition du profil</string>
 
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Résultats de la recherche</string>
@@ -688,6 +732,16 @@
     <string name="systemmsg_chat_protection_disabled">Protection de la discussion désactivée.</string>
     <string name="systemmsg_chat_protection_enabled">Protection de la discussion activée.</string>
 
+    <string name="devicemsg_self_deleted">Vous avez supprimé la discussion \"Message enregistrés\".\n\nℹ️ Pour de nouveau utiliser la fonctionnalité \"Message enregistrés\", commencez une nouvelle discussion avec vous-même.</string>
+    <!-- %1$s will be replaced by the number of storage already used, sth. as '500 MB'. CAVE: if you want to use a simple the percent sign, type in two, so eg. %1$s %% -->
+    <string name="devicemsg_storage_exceeding">⚠️ L\'espace de stockage de votre fournisseur va bientôt être excédé, %1$s sur %% est utilisé.\n\nous ne serez peut-être plus capable de recevoir des messages quand l\'espace de stockage est 100%% utilisé.\n\n👉 Vérifier s\'il vous plaît que vous pouvez supprimer d\'ancienne données depuis l\'interface web de votre fournisseur et considérez d\'activer \"Paramètres / Supprimer les messages anciens\". Vous pouvez jetez un coup d\'oeil à l\'utilisation courante de votre espace de stockage à tout moment depuis \"Paramètres / Connectivité\".</string>
+    <!-- %1%s will be replaced by date and time in some human-readable format -->
+    <string name="devicemsg_bad_time">⚠️ Le temps ou date sur votre appareil semble être décalé (%1$s).\n\nAjustez votre horloge ⏰🔧 pour s\'assurer que vos messages soient bien reçus.</string>
+    <string name="devicemsg_update_reminder">⚠️ Votre version de Delta Chat semble être obsolète.\n\nCeci pourrait poser des problèmes car vos contacts utilisent des versions plus récentes - et vous loupez les dernières fonctionnalités 😳\nVeuillez s\'il vous plaît faire un tour sur https://get.delta.chat ou votre magasin d\'applications pour une mise à jour.</string>
+
+    <!-- Some options as "Manage keys" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc. to be entered in a system dialog. This hint is added to the system dialog, below a title as "Manage keys" or "Backup". -->
+    <string name="enter_system_secret_to_continue">Pour continuer, veuillez s\'il vous plaît entrer votre code secret système.</string>
+
     <!-- qr code stuff -->
     <string name="qr_code">Code QR</string>
     <string name="load_qr_code_as_image">Charger le code QR comme une image</string>
@@ -701,6 +755,14 @@
     <string name="qrscan_contains_url">Url du QR code numérisé :\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Empreinte digitale</string>
     <string name="qrscan_x_verified_introduce_myself">%1$s vérifié, me présenter …</string>
+    <string name="withdraw_verifycontact_explain">Ce code QR pourrait être scanné par d\'autre personnes pour vous contacter.\n\nVous pouvez désactiver le QR code ici et le réactiver en le scannant ici de nouveau.</string>
+    <string name="withdraw_verifygroup_explain">Le code QR peut être scanné par d\'autres personnes pour rejoindre le groupe \"%1$s\".\n\nVous pouvez désactiver le QR code ici et le réactiver en le scannant ici de nouveau.</string>
+    <string name="withdraw_qr_code">Désactiver le QR Code</string>
+    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
+    <string name="revive_verifycontact_explain">Ce code QR pourrait être scanné par d\'autre personnes pour vous contacter.\n\nCe code QR n\'est pas actif sur cet appareil.</string>
+    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
+    <string name="revive_verifygroup_explain">Ce code QR pourrait être scanné par d\'autre personnes pour rejoindre le groupe \"%1$s\".\n\nLe code QR n\'est pas actif sur cet appareil.</string>
+    <string name="revive_qr_code">Activer le QR Code</string>
     <string name="qrshow_title">QR Code d\'Invitation</string>
     <string name="qrshow_x_joining">%1$s rejoints.</string>
     <string name="qrshow_x_verified">%1$s vérifiés.</string>
@@ -722,6 +784,11 @@
     <string name="contact_setup_changed">Configuration modifiée pour %1$s</string>
     <string name="verified_group_explain">Les groupes vérifiés (fonction expérimentale) offrent une sécurité contre les attaques actives. Les membres sont vérifiés avec un second facteur par d\'autres membres et les messages sont toujours chiffrés de bout en bout.</string>
     <string name="copy_qr_data_success">L\'URL du code QR a été copié dans le presse-papiers</string>
+    <string name="mailto_dialog_header_select_chat">Sélectionnez une discussion à qui envoyer le message</string>
+    <!-- first placeholder is the name of the chat -->
+    <string name="mailto_dialog_confirm_replace_draft">%1$sa déjà un message en brouillon, voulez-vous le remplacer?</string>
+    <string name="mailto_link_could_not_be_decoded">Le lien mailto n\'a pas pu être décodé: %1$s</string>
+
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d nouveaux messages dans %2$d tchats</string>
     <string name="notify_dismiss">Rejeter</string>
@@ -748,6 +815,8 @@
     <string name="ImageEditorHud_draw_anywhere_to_blur">Dessinez n\'importe où pour flouter</string>
     <string name="ImageEditorHud_add_text">Ajouter du texte</string>
     <string name="ImageEditorHud_blur">Flouter</string>
+    <string name="ImageEditorHud_brush_marker">Marqueur</string>
+    <string name="ImageEditorHud_brush_highlight">Surbrillance</string>
     <string name="ImageEditorHud_crop">Rogner</string>
     <string name="ImageEditorHud_flip">Tourner</string>
     <string name="ImageEditorHud_rotate">Pivoter</string>
@@ -825,6 +894,8 @@
     <string name="menu.view.developer.open.log.folder">Ouvrir le dossier Journal</string>
     <string name="menu.view.developer.open.current.log.file">Ouvrir le fichier Journal courant</string>
     <string name="user_location_permission_explanation">DeltaChat a besoin de l\'autorisation de votre position pour l\'afficher et la partager.</string>
+    <string name="explain_desktop_minimized_disabled_tray_pref">L\'icône système ne peut pas être enlevé car Delta Chat a été démarré avec l\'option --minimized.</string>
+    <string name="no_spellcheck_suggestions_found">Aucune propositions de correction trouvées.</string>
     <string name="show_window">Afficher la fenêtre</string>
 
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
@@ -859,4 +930,9 @@
     <string name="perm_enable_bg_already_done">Vous avez déjà autorisé Delta Chat à recevoir des messages en arrière plan.\n\nSi vous ne les recevez toujours pas en arrière plan, vérifiez les paramètres de votre système.</string>
 
 
-    </resources>
+    <!-- device messages for updates -->
+    <string name="update_1_20">Compatibilité avec les courriel améliorés en version 1.20:\n\n📫 Lis les listes de diffusion\n📭 Lis les courriels au format HTML\n📪 Bon support des addresses de support\n📫 Beaucoup de nuisances mineures et majeures corrigées\n\nLisez notre nouveau billet de blog à propos de ces avancés sur le mail et plus:</string>
+    <string name="update_1_22">Quoi de neuf dans la 1.22?\n\n👋 Les demandes de contacts apparaissent dorénavant comme une discussion à part et peuvent être inspectées en détail avant de les accepter ou de les bloquer\n\n🗄️ L\'Archive est maintenant facilement accessible depuis les paramètres - vous trouverez aussi par là vos anciennes demande de contacts\n\n📮📮📮 Amélioration du multi-compte: le changement de comptes est maintenant plus rapide et moins souvent bloqué par de longues mises à jour 🤔 Sachez ce qui se passe: les problèmes de connectivité sont maintenant montrés dans le titre de la fenêtre, cliquez dessus pour plus de détails\n\nPlus sur notre blog:</string>
+    <string name="update_1_22_ios">Quoi de neuf dans la 1.22?\n\n👋 Les demandes de contacts apparaissent dorénavant comme une discussion à part et peuvent être inspectées en détail avant de les accepter ou de les bloquer\n\n🗄️ L\'Archive est maintenant facilement accessible depuis les paramètres - vous trouverez aussi par là vos anciennes demande de contacts\n\n📮📮📮 Comptes multiples ajoutés: Passez de l\'un à l\'autre et gérez les depuis vos paramètres\n\n🤔 Sachez ce qui se passe: les problèmes de connectivité sont maintenant montrés dans le titre de la fenêtre, cliquez dessus pour plus de détails\n\nPlus sur notre blog:</string>
+
+</resources>

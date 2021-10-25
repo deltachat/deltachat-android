@@ -2,8 +2,9 @@
 <resources>
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
-    <string name="ok">O.k.</string>
+    <string name="ok">OK</string>
     <string name="cancel">Annuller</string>
+    <string name="clear_search">Ryd søgning</string>
     <string name="yes">Ja</string>
     <string name="no">Nej</string>
     <string name="select">Vælg</string>
@@ -17,14 +18,16 @@
     <string name="automatic">Automatisk</string>
     <string name="strict">Streng</string>
     <string name="open">Åben</string>
-    <string name="open_attachment">Åbn vedhæftede</string>
+    <string name="download">Download</string>
+    <string name="downloading">Downloader...</string>
+    <string name="open_attachment">Åbn vedhæftning</string>
     <string name="join">Tilslut</string>
     <string name="rejoin">Slut til igen</string>
     <string name="delete">Slet</string>
     <string name="info">Info</string>
     <string name="update">Opdatér</string>
     <string name="emoji">Emoji</string>
-    <string name="attachment">Vedhæftet fil</string>
+    <string name="attachment">Vedhæftning</string>
     <string name="back">Tilbage</string>
     <string name="close">Luk</string>
     <string name="forward">Videresend</string>
@@ -40,6 +43,8 @@
     <string name="main_menu">Hovedmenu</string>
     <string name="start_chat">Begynd chat</string>
     <string name="show_full_message">Vis hele beskeden...</string>
+    <string name="hide">Skjul</string>
+    <string name="activate">Aktiver</string>
     <string name="load_remote_content">Hent billeder</string>
     <string name="always">Altid</string>
     <string name="once">En gang</string>
@@ -105,15 +110,21 @@
     <!-- Translators: Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
     <string name="reply_noun">Svar</string>
     <string name="gif">Gif</string>
+    <!-- "Stickers" as known from other messengers, please pick up the wording from there; in some languages, "Sticker" in english is just fine. -->
+    <string name="sticker">Klistermærker</string>
     <string name="images">Billeder</string>
     <string name="audio">Lyd</string>
     <string name="voice_message">Tale besked</string>
+    <string name="forwarded">Videresendt</string>
     <string name="forwarded_message">Videresendt besked</string>
+    <!-- %1$s will be replaced by the name or the e-mail address of the person who has forwarded the message -->
+    <string name="forwarded_by">Videresendt af %1$s</string>
     <string name="video">Video</string>
     <string name="documents">Dokumenter</string>
     <string name="contact">Kontakt</string>
     <string name="verified_contact">Bekræftet kontakt</string>
     <string name="camera">Kamera</string>
+    <string name="switch_camera">Skift kamera</string>
     <string name="location">Placering</string>
     <string name="gallery">Galleri</string>
     <string name="images_and_videos">Billeder og videoer</string>
@@ -170,24 +181,31 @@
     <string name="menu_copy_to_clipboard">Kopiér til udklipsholder</string>
     <string name="menu_copy_selection_to_clipboard">Kopiér markering</string>
     <string name="menu_copy_link_to_clipboard">Kopiér link</string>
+    <string name="menu_copy_text_to_clipboard">Kopier tekst</string>
+    <string name="menu_copy_image_to_clipboard">Kopier billede</string>
     <string name="paste_from_clipboard">Indsæt fra udklipsholder</string>
     <string name="menu_forward">Videresend besked</string>
     <string name="menu_resend">Gensend besked</string>
     <string name="menu_reply">Svar på besked</string>
-    <string name="menu_mute">Dæmp påmindelser</string>
+    <string name="menu_mute">Dæmp notifikationer</string>
     <string name="menu_unmute">Lyd</string>
     <string name="menu_export_attachment">Eksporter vedhæftning</string>
+    <string name="menu_export_attachments">Eksporter vedhæftninger</string>
     <string name="menu_all_media">Alle medier</string>
     <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
     <string name="show_in_chat">Vis i chat</string>
     <string name="menu_share">Del</string>
+    <!-- this is the action "to block sth." usually a mailing list or a contact. this is NOT "a large solid piece of hard material" :) -->
+    <string name="block">Bloker</string>
     <string name="menu_block_contact">Bloker kontakt</string>
     <string name="menu_unblock_contact">Fjern blokering af kontakt</string>
+    <string name="accept">Accepter</string>
     <string name="menu_play">Afspil</string>
     <string name="menu_pause">Pause</string>
     <string name="menu_scroll_to_bottom">Rul til bunden</string>
     <string name="menu_scroll_to_top">Rul til toppen</string>
     <string name="menu_help">Hjælp</string>
+    <string name="privacy_policy">Privatlivspolitik</string>
     <string name="menu_select_all">Vælg alle</string>
     <string name="select_more">Vælg flere</string>
     <string name="menu_expand">Udvid</string>
@@ -200,6 +218,7 @@
     <string name="menu_zoom_in">Forstør</string>
     <string name="menu_zoom_out">Formindsk</string>
     <string name="menu_save_log">Gem log</string>
+    <string name="copy_json">Kopier JSON</string>
     <string name="title_share_location">Del placering med alle gruppemedlemmer</string>
     <string name="device_talk">Enhedsbeskeder</string>
     <string name="device_talk_subtitle">Lokalt genererede beskeder</string>
@@ -257,9 +276,14 @@
         <item quantity="one">Slette %d samtale? Den vil ikke længere blive vist i samtale listen, dens beskeder vil forblive på serveren.</item>
         <item quantity="other">Slet %d samtaler? De vil ikke længere blive vist i samtale listen, deres beskeder vil forblive på serveren.</item>
     </plurals>
+    <string name="ask_delete_message">Er du sikker på at du vil slette denne besked?</string>
     <plurals name="ask_delete_messages">
         <item quantity="one">Slette %d besked her og på serveren?</item>
         <item quantity="other">Slet %d beskeder her og på serveren?</item>
+    </plurals>
+    <plurals name="ask_delete_messages_simple">
+        <item quantity="one">Slet %d besked?</item>
+        <item quantity="other">Slet %d beskeder?</item>
     </plurals>
     <string name="ask_forward">Videresend beskeder til %1$s?</string>
     <string name="ask_forward_multiple">Videresend beskeder til %1$d samtaler?  </string>
@@ -305,7 +329,7 @@
     <string name="chat_record_slide_to_cancel">Træk for at annullere</string>
     <string name="chat_record_explain">Tryk og hold for at optage talebesked, slip for at sende.</string>
     <string name="chat_no_chats_yet_title">Tom indbakke.\nTryk \"+\" for at starte ny samtale.</string>
-    <string name="chat_no_chats_yet_hint">Man kan have samtale med andre Delta Chat brugere og med enhver e-post adresse.</string>
+    <string name="chat_no_chats_yet_hint">Du kan have samtaler med andre Delta Chat brugere og med enhver e-mailadresse.</string>
     <string name="chat_all_archived">Alle samtaler er arkiveret.\nTryk \"+\" for at starte ny samtale.</string>
     <string name="chat_share_with_title">Del med</string>
     <string name="chat_input_placeholder">Besked</string>
@@ -362,6 +386,26 @@
     <string name="send_message">Send besked</string>
 
 
+    <!-- Connectivity -->
+    <!-- Used as a headline for the "Inbox" eg. in the "Connectivity" view -->
+    <string name="incoming_messages">Indkommende beskeder</string>
+    <!-- Used as a headline for the "Outbox" eg. in the "Connectivity" view -->
+    <string name="outgoing_messages">Udgående beskeder</string>
+    <!-- Shown eg. in the title bar if the app is "Not connected"; as there is very few room, try to be as short as possible. -->
+    <string name="connectivity_not_connected">Ikke forbundet</string>
+    <!-- Shown eg. in the title bar if the app is "Connecting"; as there is very few room, try to be as short as possible. Note that the three dots are a single character (…), not three (...) -->
+    <string name="connectivity_connecting">Forbinder...</string>
+    <!-- Shown eg. in the title bar if the app is "Updating" (eg. getting new/old message, sync things); as there is very few room, try to be as short as possible. Note that the three dots are a single character (…), not three (...) -->
+    <string name="connectivity_updating">Opdaterer...</string>
+    <!-- Shown eg. in the setting if the app is "Connected" -->
+    <string name="connectivity_connected">Forbundet</string>
+    <string name="sending">Sender...</string>
+    <!-- Used as a subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed or so. -->
+    <string name="messages">Beskeder</string>
+    <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
+    <string name="part_of_total_used">%1$s af %2$s brugt</string>
+
+
     <!-- welcome and login -->
     <string name="welcome_intro1_message">Budbringeren med verdens bredeste publikum. Fri og uafhængig.</string>
     <string name="login_title">Login</string>
@@ -381,6 +425,13 @@
     <string name="login_smtp_port">SMTP port</string>
     <string name="login_smtp_security">SMTP sikkerhed</string>
     <string name="login_auth_method">Autorisationsmetode</string>
+    <!-- the word "SOCKS5" here and in the following strings should not be translated in most cases -->
+    <string name="login_socks5">SOCKS5</string>
+    <string name="login_socks5_use_socks5">Brug SOCKS5</string>
+    <string name="login_socks5_host">SOCKS5 Værtsnavn</string>
+    <string name="login_socks5_port">SOCKS5 Port</string>
+    <string name="login_socks5_user">SOCKS5 Brugernavn</string>
+    <string name="login_socks5_password">SOCKS5 adgangskode</string>
     <!-- Translators: %1$s will be replaced by an e-mail address -->
     <string name="login_oauth2_checking_addr">Checker %1$s</string>
     <string name="login_info_oauth2_title">Fortsæt med forenklet opsætning?</string>
@@ -389,7 +440,7 @@
     <string name="login_error_mail">Indtast gyldig e-mailadresse</string>
     <string name="login_error_server">Indtast gyldig server / IP adresse</string>
     <string name="login_error_port">Indtast gyldig port (1–65535)</string>
-    <string name="login_error_required_fields">Indtast gyldig e-post adresse og adgangskode</string>
+    <string name="login_error_required_fields">Indtast gyldig e-mailadresse og adgangskode</string>
     <string name="import_backup_title">Importer sikkerhedskopi</string>
     <string name="import_backup_ask">Sikkerhedskopi fundet hos \"%1$s\".\n\nVil du Importere og bruge al data og opsætning fra den?</string>
     <string name="import_backup_no_backup_found">Ingen sikkerhedskopi fundet.\n\nKopier sikkerhedskopi til \"%1$s\" og prøv igen. Alternativt, klik \"Start samtale\" for at følge normal opsætning proces.</string>
@@ -407,6 +458,7 @@
     <string name="delete_account_explain_with_name">Alle konto data for \"%s\" på denne enhed bliver slettet, gælder også opsætningen for din end-to-end kryptering, kontakter, samtaler, beskeder og medier. Denne handling kan ikke fortrydes.</string>
     <string name="switching_account">Skifter konto...</string>
     <string name="try_connect_now">Prøv at forbinde nu</string>
+    <string name="sync_all">Synkroniser Alle</string>
     <!-- Translations: %1$s will be replaced by a more detailed error message -->
     <string name="configuration_failed_with_error">Konfiguration mislykkedes. Fejl: %1$s</string>
 
@@ -439,12 +491,12 @@
     <string name="pref_outgoing_media_quality">Udgående medie kvalitet</string>
     <string name="pref_outgoing_balanced">Balanceret</string>
     <string name="pref_outgoing_worse">Dårligere kvalitet mindre størrelse</string>
-    <string name="pref_vibrate">Vibrere</string>
+    <string name="pref_vibrate">Vibrer</string>
     <string name="pref_screen_security">Skærmsikkerhed</string>
     <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
     <string name="pref_screen_security_explain">Forespørgsel om at blokere skærmbilleder i seneste liste og i programmet</string>
     <string name="pref_screen_security_please_restart_hint">Genstart programmet for at anvende skærm sikkerhed.</string>
-    <string name="pref_notifications">Påmindelser</string>
+    <string name="pref_notifications">Notifikationer</string>
     <string name="pref_notifications_show">Vis</string>
     <string name="pref_notifications_priority">Prioritet</string>
     <string name="pref_notifications_explain">Aktivér systemnotifikationer for nye beskeder</string>
@@ -468,7 +520,7 @@
     <string name="pref_read_receipts">Kvittering for læsning</string>
     <string name="pref_read_receipts_explain">Hvis læst kvittering er deaktiveret vil læst kvittering fra andre ikke blive vist.</string>
     <string name="pref_manage_keys">Håndtér nøgler</string>
-    <string name="pref_use_system_emoji">Bruge system emoji</string>
+    <string name="pref_use_system_emoji">Brug system emoji</string>
     <string name="pref_use_system_emoji_explain">Deaktiver Delta Chat\'s indbygget emoji understøttelse</string>
     <string name="pref_app_access">Programadgang</string>
     <string name="pref_communication">Kommunikation</string>
@@ -514,6 +566,7 @@
     <string name="pref_background_custom_image">Brugerdefineret billede</string>
     <string name="pref_background_custom_color">Brugerdefineret farve</string>
     <string name="export_aborted">Eksport annulleret</string>
+    <string name="no_limit">Ingen grænse</string>
     <string name="profile_image_select">Vælg profilbillede</string>
     <string name="select_your_new_profile_image">Vælg dit nye profilbillede</string>
     <string name="profile_image_delete">Slet profilbillede</string>
@@ -583,7 +636,7 @@
     <string name="systemmsg_group_left">Gruppe forladt.</string>
     <string name="systemmsg_read_receipt_subject">Besked åbnet</string>
     <string name="systemmsg_read_receipt_body">Beskeden \"%1$s\" du har sendt blev vist på modtagerens skærm.\n\nDette er ikke en garanti for at indholdet blev læst.</string>
-    <string name="systemmsg_cannot_decrypt">Denne besked kan ikke dekrypteres.\n\n• Det kan måske hjælpe at svare på beskeden og bede afsender sende beskeden igen.\n\n• I tilfælde at Delta Chat eller andet e-post program på denne enhed eller en anden er blevet gen-installeret bør der sendes en Autocrypt opsætning besked derfra.</string>
+    <string name="systemmsg_cannot_decrypt">Denne besked kan ikke dekrypteres.\n\n• Det kan måske hjælpe at svare på beskeden og bede afsender sende beskeden igen.\n\n• I tilfælde at Delta Chat eller andet e-mail program på denne enhed eller en anden er blevet gen-installeret bør der sendes en Autocrypt opsætning besked derfra.</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). -->
     <string name="systemmsg_action_by_me">%1$s af mig.</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
@@ -609,7 +662,7 @@
     <string name="systemmsg_chat_protection_enabled">Chat-beskyttelse sluttet til.</string>
 
     <!-- qr code stuff -->
-    <string name="qr_code">QR-kode</string>
+    <string name="qr_code">QR kode</string>
     <string name="load_qr_code_as_image">Indlæs QR-kode som billede</string>
     <string name="qrscan_title">Skan QR kode</string>
     <string name="qrscan_hint">Placer kamera over QR kode</string>
@@ -621,6 +674,8 @@
     <string name="qrscan_contains_url">Skannet QR kode URL:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Fingeraftryk</string>
     <string name="qrscan_x_verified_introduce_myself">%1$s efterprøvet, introducere…</string>
+    <string name="withdraw_qr_code">Deaktiver QR kode</string>
+    <string name="revive_qr_code">Aktiver QR kode</string>
     <string name="qrshow_title">QR-invitationskode</string>
     <string name="qrshow_x_joining">%1$s tilslutter.</string>
     <string name="qrshow_x_verified">%1$s bekræftet.</string>
@@ -645,7 +700,7 @@
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d nye beskeder i %2$d samtaler</string>
     <string name="notify_mark_read">Markér som læst</string>
-    <string name="notify_reply_button">Svare</string>
+    <string name="notify_reply_button">Svar</string>
     <string name="notify_new_message">Ny besked</string>
     <string name="notify_background_connection_enabled">Baggrundsforbindelse aktiveret</string>
     <string name="notify_priority_high">Høj</string>
@@ -665,6 +720,8 @@
 
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Tegn hvor som helst for at sløre</string>
+    <string name="ImageEditorHud_rotate">Roter</string>
+
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Krypteret besked</string>
 
@@ -691,6 +748,7 @@
     <string name="global_menu_help_contribute_desktop">Bidrag på GitHub</string>
     <string name="global_menu_help_report_desktop">Rapporter en sag</string>
     <string name="global_menu_help_about_desktop">Om Delta Chat</string>
+    <string name="global_menu_minimize_to_tray">Minimer</string>
     <string name="no_chat_selected_suggestion_desktop">Vælg samtale eller opret en ny samtale</string>
     <string name="write_message_desktop">Skriv en besked</string>
     <string name="encryption_info_title_desktop">Krypteringsinformation</string>

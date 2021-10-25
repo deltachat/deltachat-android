@@ -619,7 +619,7 @@
     <string name="pref_show_emails_accepted_contacts">Per i contatti accettati</string>
     <string name="pref_show_emails_all">Sì</string>
     <string name="pref_experimental_features">Funzionalità Sperimentali</string>
-    <string name="pref_on_demand_location_streaming">Trasmissione su Richiesta Posizione</string>
+    <string name="pref_on_demand_location_streaming">Trasmissione Posizione su Richiesta</string>
     <string name="pref_background_default">Sfondo predefinito</string>
     <string name="pref_background_default_color">Colore predefinito</string>
     <string name="pref_background_custom_image">Immagine personalizzata</string>
