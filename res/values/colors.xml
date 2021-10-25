@@ -5,7 +5,7 @@
   <color name="def_primary_dark">#ff5743ff</color>
   <color name="def_primary_lite">#ff5743ff</color>
   <color name="def_primary_alpha33">#555743ff</color>
-  <color name="def_accent">#4837d2</color>
+  <color name="def_accent">#8576ff</color>
   <color name="def_outgoing_bubble">#fffff9d9</color>
   <color name="def_outgoing_label">#ff5743ff</color>
   <color name="def_unreadcount">#5743ff</color>
@@ -16,21 +16,21 @@
   <color name="purple_primary_dark">#ff7b00c8</color>
   <color name="purple_primary_lite">#ff7b00c8</color>
   <color name="purple_primary_alpha33">#557b00c8</color>
-  <color name="purple_accent">#6300a1</color>
+  <color name="purple_accent">#9646c8</color>
   <color name="purple_outgoing_bubble">#fffff9d9</color>
   <color name="purple_outgoing_label">#ff7b00c8</color>
   <color name="purple_unreadcount">#7b00c8</color>
   <!-- ========== -->
 
   <!-- GREEN -->
-  <color name="green_primary">#ff43a047</color>
-  <color name="green_primary_dark">#ff43a047</color>
-  <color name="green_primary_lite">#ff43a047</color>
-  <color name="green_primary_alpha33">#5543a047</color>
-  <color name="green_accent">#2f7d32</color>
+  <color name="green_primary">#ff009788</color>
+  <color name="green_primary_dark">#ff009788</color>
+  <color name="green_primary_lite">#ff009788</color>
+  <color name="green_primary_alpha33">#55009788</color>
+  <color name="green_accent">#00b7a5</color>
   <color name="green_outgoing_bubble">#fffff9d9</color>
-  <color name="green_outgoing_label">#ff58ab43</color>
-  <color name="green_unreadcount">#5fbf41</color>
+  <color name="green_outgoing_label">#ff009788</color>
+  <color name="green_unreadcount">#00b7a5</color>
   <!-- ========== -->
 
   <!-- BLUE -->
