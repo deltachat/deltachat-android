@@ -782,6 +782,8 @@ Ihr bisheriges E-Mail-Konto wird dabei nicht gelöscht. Sie können mit der Opti
     <string name="qraccount_success_enter_name">Anmeldung erfolgreich — Ihre E-Mail-Adresse ist %1$s\n\nWenn Sie mögen, können Sie nun einen Namen und ein Profilbild festlegen, der den ChatpartnerInnen angezeigt wird.</string>
     <string name="qraccount_qr_code_cannot_be_used">Der eingescannte QR-Code kann nicht dazu verwendet werden, eine neues E-Mail-Konto zu erzeugen.</string>
     <string name="qraccount_use_on_new_install">Der gescannte QR-Code ist zum Erstellen eines neuen E-Mail-Kontos. Sie können den QR-Code nur bei einer neuen Delta Chat Installation verwenden.</string>
+    <string name="secure_join_started">%1$s hat dich zu dieser Gruppe eingeladen.\n\nWarte auf die Antwort des Gerätes von %2$s...</string>
+    <string name="secure_join_replies">%1$s antwortet. Warte, zur Gruppe hinzugefügt zu werden...</string>
     <string name="contact_verified">%1$s verifiziert.</string>
     <string name="contact_not_verified">Kann %1$s nicht verifizieren</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
