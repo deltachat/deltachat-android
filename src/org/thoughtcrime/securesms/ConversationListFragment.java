@@ -117,6 +117,7 @@ public class ConversationListFragment extends Fragment
     eventCenter.addObserver(DcContext.DC_EVENT_MSG_READ, this);
     eventCenter.addObserver(DcContext.DC_EVENT_MSG_READ, this);
     eventCenter.addObserver(DcContext.DC_EVENT_CONNECTIVITY_CHANGED, this);
+    eventCenter.addObserver(DcContext.DC_EVENT_SELFAVATAR_CHANGED, this);
   }
 
   @Override
@@ -595,6 +596,8 @@ public class ConversationListFragment extends Fragment
   public void handleEvent(@NonNull DcEvent event) {
     if (event.getId() == DcContext.DC_EVENT_CONNECTIVITY_CHANGED) {
       ((ConversationListActivity) getActivity()).refreshTitle();
+    } else if (event.getId() == DcContext.DC_EVENT_SELFAVATAR_CHANGED) {
+      ((ConversationListActivity) getActivity()).refreshAvatar();
     } else {
       loadChatlistAsync();
     }
