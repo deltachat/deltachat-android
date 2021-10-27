@@ -18,6 +18,8 @@
     <string name="automatic">Automático</string>
     <string name="strict">Rigoroso</string>
     <string name="open">Abrir</string>
+    <string name="download">Descarregar</string>
+    <string name="downloading">Descarregando…</string>
     <string name="open_attachment">Abrir anexo</string>
     <string name="join">Entrar</string>
     <string name="rejoin">Re-entrar</string>
@@ -107,12 +109,19 @@
         <item quantity="one">%d participantes</item>
         <item quantity="other">%d membros</item>
     </plurals>
+    <plurals name="n_recipients">
+        <item quantity="one">%d destinatário</item>
+        <item quantity="other">%d destinatários</item>
+    </plurals>
+
     <string name="self">Eu</string>
     <string name="draft">Rascunho</string>
     <string name="image">Imagem</string>
     <!-- Translators: Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
     <string name="reply_noun">Responder</string>
     <string name="gif">Gif</string>
+    <!-- "Stickers" as known from other messengers, please pick up the wording from there; in some languages, "Sticker" in english is just fine. -->
+    <string name="sticker">Sticker</string>
     <string name="images">Imagens</string>
     <string name="audio">Áudio</string>
     <string name="voice_message">Mensagem de voz</string>
@@ -164,6 +173,11 @@
     <string name="menu_new_chat">Nova conversa</string>
     <string name="menu_new_group">Novo grupo</string>
     <string name="menu_new_verified_group">Novo grupo verificado</string>
+    <!-- consider keeping the term "broadcast"; check how these lists are called eg. on whatsapp in the destination language -->
+    <string name="broadcast_list">Lista de Transmissão</string>
+    <string name="broadcast_lists">Listas de Transmissão</string>
+    <string name="new_broadcast_list">Nova Lista de Transmissão</string>
+    <string name="add_recipients">Adicionar Destinatários</string>
     <string name="menu_send">Enviar</string>
     <string name="menu_toggle_keyboard">Ativar teclado de emojis</string>
     <string name="menu_edit_group">Modificar grupo</string>
@@ -194,6 +208,7 @@
     <string name="menu_mute">Silenciar notificações</string>
     <string name="menu_unmute">Reativar notificações</string>
     <string name="menu_export_attachment">Exportar o anexo</string>
+    <string name="menu_export_attachments">Exportar anexos</string>
     <string name="menu_all_media">Todos os arquivos de mídia</string>
     <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
     <string name="show_in_chat">Mostrar na conversa</string>
@@ -202,6 +217,7 @@
     <string name="block">Bloquear</string>
     <string name="menu_block_contact">Bloquear contato</string>
     <string name="menu_unblock_contact">Desbloquear contato</string>
+    <string name="accept">Aceitar</string>
     <string name="menu_play">Ouvir</string>
     <string name="menu_pause">Pausar</string>
     <string name="menu_scroll_to_bottom">Rolar até o fim</string>
@@ -288,6 +304,10 @@
         <item quantity="one">Delete %d message here and on the server?</item>
         <item quantity="other">Apagar %d mensagens aqui e no servidor?</item>
     </plurals>
+    <plurals name="ask_delete_messages_simple">
+        <item quantity="one">Apagar %d mensagem?</item>
+        <item quantity="other">Apagar %d mensagens?</item>
+    </plurals>
     <string name="ask_forward">Encaminhar mensagens para %1$s?</string>
     <string name="ask_forward_multiple">Encaminhar mensagens para 1%1$d conversas?</string>
     <string name="ask_export_attachment">Exportar o anexo? Anexos exportados poderão ser acessados por outros aplicativos.\n\nContinuar?</string>
@@ -300,6 +320,8 @@
     <string name="ask_delete_value">Apagar %s?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Remover %1$s do grupo?</string>
+    <!-- Translators: %1$s will be replaced by a comma separated list of names -->
+    <string name="ask_remove_from_broadcast">Remover %1$s da lista de transmissão?</string>
     <string name="open_url_confirmation">Você quer abrir este link?</string>
 
 
@@ -328,6 +350,7 @@
         <item quantity="other">%d novas mensagens</item>
     </plurals>
     <string name="chat_no_messages_hint">Enviar mensagem para %1$s:\n\n• Não tem problema se %2$s não usa o Delta Chat.\n\n• O envio da primeira mensagem pode demorar e não ser criptografada.</string>
+    <string name="chat_new_broadcast_hint">Em uma lista de transmissão, as pessoas receberão mensagens em seus bate-papos privados com você.\n\nOs destinatários não saberão uns dos outros. </string>
     <string name="chat_new_group_hint">Compor a primeira mensagem habilitará os participantes a ingressar no grupo.\n\n• Não tem problema se nem todos usarem o Delta Chat.\n\n• O envio da primeira mensagem pode demorar.</string>
     <string name="chat_record_slide_to_cancel">Deslize para cancelar</string>
     <string name="chat_record_explain">Toque e segure para gravar uma mensagem de voz e, depois, solte para enviar</string>
@@ -337,8 +360,10 @@
     <string name="chat_share_with_title">Compartilhar com</string>
     <string name="chat_input_placeholder">Mensagem</string>
     <string name="chat_archived_label">Arquivado</string>
+    <string name="chat_request_label">Solicitar</string>
     <string name="chat_no_messages">Sem mensagens.</string>
     <string name="chat_self_talk_subtitle">Mensagens para mim mesmo</string>
+    <string name="archive_empty_hint">Se você arquivar bate-papos, eles serão exibidos aqui. </string>
     <string name="saved_messages">Mensagens salvas</string>
     <string name="saved_messages_explain">• Encaminhe mensagens aqui para fácil acesso\n\n• Faça anotações ou gravações de voz\n\n• Anexe mídia para salvá-las</string>
     <!-- this "Saved" should match the "Saved" from "Saved messages" -->
@@ -413,9 +438,34 @@
     <string name="send_message">Enviar mensagem</string>
 
 
+    <!-- Connectivity -->
+    <!-- Used as a headline for the "Inbox" eg. in the "Connectivity" view -->
+    <string name="incoming_messages">Mensagens Recebidas</string>
+    <!-- Used as a headline for the "Outbox" eg. in the "Connectivity" view -->
+    <string name="outgoing_messages">Mensagens Enviadas</string>
+    <!-- Used as a headline in the "Connectivity" view. The placeholder will be replaced by the domain of the configured email-address. -->
+    <string name="storage_on_domain">Armazenamento em %1$s</string>
+    <string name="connectivity">Conectividade</string>
+    <!-- Shown eg. in the title bar if the app is "Not connected"; as there is very few room, try to be as short as possible. -->
+    <string name="connectivity_not_connected">Não conectado</string>
+    <!-- Shown eg. in the title bar if the app is "Connecting"; as there is very few room, try to be as short as possible. Note that the three dots are a single character (…), not three (...) -->
+    <string name="connectivity_connecting">Conectando...</string>
+    <!-- Shown eg. in the title bar if the app is "Updating" (eg. getting new/old message, sync things); as there is very few room, try to be as short as possible. Note that the three dots are a single character (…), not three (...) -->
+    <string name="connectivity_updating">Atualizando...</string>
+    <!-- Shown eg. in the setting if the app is "Connected" -->
+    <string name="connectivity_connected">Conectado</string>
+    <string name="sending">Enviando...</string>
+    <string name="last_msg_sent_successfully">Última mensagem enviada com sucesso.</string>
+    <string name="not_supported_by_provider">Não suportado pelo seu provedor. </string>
+    <!-- Used as a subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed or so. -->
+    <string name="messages">Mensagens</string>
+    <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
+    <string name="part_of_total_used">%1$s de %2$s usado</string>
+
+
     <!-- welcome and login -->
     <string name="welcome_intro1_message">O aplicativo com a maior base de usuários do mundo. Livre e independente.</string>
-    <string name="login_title">Login</string>
+    <string name="login_title">Acessar</string>
     <string name="login_header">Acesse seu servidor</string>
     <string name="login_explain">Acesse com uma conta de email existente</string>
     <string name="login_subheader">Para os provedores de e-mail mais conhecidos as configurações adicionais são detectadas automaticamente. Por vezes, o IMAP precisa estar ativado nas configurações do servidor. Consulte seu provedor de e-mail ou amigos para obter ajuda.</string>
@@ -432,6 +482,13 @@
     <string name="login_smtp_port">Porta SMTP</string>
     <string name="login_smtp_security">Segurança SMTP</string>
     <string name="login_auth_method">Método de autorização</string>
+    <!-- the word "SOCKS5" here and in the following strings should not be translated in most cases -->
+    <string name="login_socks5">SOCKS5</string>
+    <string name="login_socks5_use_socks5">Usar SOCKS5</string>
+    <string name="login_socks5_host">Servidor SOCKS5 </string>
+    <string name="login_socks5_port">Porta SOCKS5</string>
+    <string name="login_socks5_user">Usuário SOCKS5</string>
+    <string name="login_socks5_password">Senha SOCKS5</string>
     <!-- Translators: %1$s will be replaced by an e-mail address -->
     <string name="login_oauth2_checking_addr">Verificando %1$s</string>
     <string name="login_info_oauth2_title">Prosseguir pela configuração simplificada?</string>
@@ -457,7 +514,10 @@
     <string name="delete_account_ask">Tem certeza de que deseja excluir os dados da sua conta?</string>
     <string name="delete_account_explain_with_name">Todos os dados da conta de \"%s\" neste dispositivo serão excluídos, incluindo sua configuração de criptografia de ponta a ponta, contatos, bate-papos, mensagens e mídia. Essa ação não pode ser desfeita.</string>
     <string name="switching_account">Mudando de conta...</string>
+    <string name="unconfigured_account">Conta não configurada</string>
+    <string name="unconfigured_account_hint">Abrir conta para configurá-la.</string>
     <string name="try_connect_now">Tentando conectar agora</string>
+    <string name="sync_all">Sincronizar Tudo</string>
     <!-- Translations: %1$s will be replaced by a more detailed error message -->
     <string name="configuration_failed_with_error">Falha na configuração. Erro: %1$s</string>
 
@@ -527,7 +587,7 @@
     <string name="pref_in_chat_sounds">Sons da conversa</string>
     <string name="pref_message_text_size">Tamanho da fonte de mensagens</string>
     <string name="pref_view_log">Ver relatório</string>
-    <string name="pref_saved_log">Registro salvo em pasta de Downloads</string>
+    <string name="pref_saved_log">Registro salvo na pasta de \"Downloads\"</string>
     <string name="pref_save_log_failed">Falha ao salvar registro</string>
     <string name="pref_log_header">Registro</string>
     <string name="pref_other">Outro</string>
@@ -565,6 +625,16 @@
     <string name="pref_background_custom_image">Imagem personalizada</string>
     <string name="pref_background_custom_color">Cor personalizada</string>
     <string name="export_aborted">Exportação abortada.</string>
+    <string name="auto_download_messages">Descarregar Mensagens Automaticamente</string>
+    <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB -->
+    <string name="up_to_x">Até %1$s</string>
+    <string name="up_to_x_most_worse_quality_images">Até %1$s, imagens de pior qualidade</string>
+    <string name="up_to_x_most_balanced_quality_images">Até %1$s, imagens de qualidade equilibrada</string>
+    <string name="no_limit">Sem limite</string>
+    <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string eg. "1 MiB message" -->
+    <string name="n_bytes_message">Mensagem de %1$s</string>
+    <!-- %1$s will be replaced by human-readable date and time -->
+    <string name="download_max_available_until">Descarregamento máximo disponível até %1$s</string>
     <string name="profile_image_select">Selecione a imagem do perfil</string>
     <string name="select_your_new_profile_image">Selecione sua nova imagem do perfil</string>
     <string name="profile_image_delete">Excluir imagem do perfil</string>
@@ -662,6 +732,13 @@
     <string name="systemmsg_chat_protection_disabled">Proteção da conversa desligada.</string>
     <string name="systemmsg_chat_protection_enabled">Proteção da conversa ligada.</string>
 
+    <string name="devicemsg_self_deleted">Você excluiu o bate-papo \"Mensagens salvas\".\n\nℹ️ Para usar o recurso \"Mensagens salvas\" novamente, crie um novo bate-papo com você mesmo. </string>
+    <!-- %1$s will be replaced by the number of storage already used, sth. as '500 MB'. CAVE: if you want to use a simple the percent sign, type in two, so eg. %1$s %% -->
+    <string name="devicemsg_storage_exceeding">⚠️ O armazenamento em seu provedor está prestes a terminar, %1$s%% já foram utilizados\n\nVocê pode não conseguir receber mensagens quando o armazenamento estiver 100 %% utilizado.\n\n👉 Verifique se você pode excluir dados antigos através da interface da web do provedor e considere habilitar \"Configurações / Excluir Mensagens Antigas\". Você pode verificar o uso de armazenamento atual a qualquer momento em \"Configurações / Conectividade\". </string>
+    <!-- %1%s will be replaced by date and time in some human-readable format -->
+    <string name="devicemsg_bad_time">⚠️ A data ou hora do seu dispositivo parecem imprecisas (%1$s).\n\nAjuste o relógio ⏰🔧 para garantir que suas mensagens sejam recebidas corretamente.</string>
+    <string name="devicemsg_update_reminder">⚠️ Sua versão do Delta Chat pode estar desatualizada.\n\nIsso pode causar problemas porque seus parceiros de bate-papo usam versões mais recentes - e você está perdendo os recursos mais recentes 😳\nEntre em https://get.delta.chat ou seu verifique com seu provedor de aplicativos por atualizações.</string>
+
     <!-- Some options as "Manage keys" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc. to be entered in a system dialog. This hint is added to the system dialog, below a title as "Manage keys" or "Backup". -->
     <string name="enter_system_secret_to_continue">Por favor, insira o segredo de sistema para continuar. </string>
 
@@ -678,6 +755,14 @@
     <string name="qrscan_contains_url">O código QR escaneado contém a seguinte URL:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Impressão</string>
     <string name="qrscan_x_verified_introduce_myself">%1$s verificado, apresentar-me …</string>
+    <string name="withdraw_verifycontact_explain">Este código QR pode ser lido por outras pessoas para entrar em contato com você.\n\nVocê pode desativar o código QR aqui e reativá-lo escaneando-o novamente.</string>
+    <string name="withdraw_verifygroup_explain">Este código QR pode ser lido por outras pessoas para entrar no grupo \"%1$s\".\n\nVocê pode desativar o código QR aqui e reativá-lo escaneando-o novamente.</string>
+    <string name="withdraw_qr_code">Desativar Código QR</string>
+    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
+    <string name="revive_verifycontact_explain">Este código QR pode ser lido por outras pessoas para entrar em contato com você.\n\nO código QR não está ativo neste dispositivo.</string>
+    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
+    <string name="revive_verifygroup_explain">Este código QR pode ser lido por outras pessoas para se juntar ao grupo \"%1$s\".\n\nO código QR não está ativo neste dispositivo.</string>
+    <string name="revive_qr_code">Ativar Código QR</string>
     <string name="qrshow_title">Código QR de convite</string>
     <string name="qrshow_x_joining">%1$s ingressou.</string>
     <string name="qrshow_x_verified">%1$s verificado.</string>
@@ -706,6 +791,7 @@
 
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d novas mensagens em %2$d conversas</string>
+    <string name="notify_dismiss">Descartar</string>
     <string name="notify_mark_read">Marcar como lida</string>
     <string name="notify_reply_button">Responder</string>
     <string name="notify_new_message">Nova mensagem</string>
@@ -784,7 +870,7 @@
     <string name="reply_to_message_desktop">Responder à mensagem</string>
     <string name="select_group_image_desktop">Selecionar avatar de grupo</string>
     <string name="imex_progress_title_desktop">Progresso do becape</string>
-    <string name="download_attachment_desktop">Baixar anexo</string>
+    <string name="download_attachment_desktop">Descarregar anexo</string>
     <string name="export_backup_desktop">Exportar becape</string>
     <string name="transfer_key_desktop">Transferir chaves</string>
     <string name="show_key_transfer_message_desktop">Sua chave foi enviada para você mesmo. Abra a mensagem de configuração no seu outro dispositivo. Lá será exibido uma solicitação de código. Digite-o lá. Depois disso, seu dispositivo estará pronto para usar o Autocrypt.</string>
@@ -846,4 +932,7 @@
 
     <!-- device messages for updates -->
     <string name="update_1_20">Compatibilidade de e-mail aprimorada na versão 1.20:\n\n📫 Leitura de listas de e-mail\n📭 Leitura de e-mails HTML\n📪 Tratamento melhorado de endereços de suporte\n📫 Muitos incômodos maiores e menores corrigidos\n\nLeia nossa nova postagem no blog sobre esses primeiros passos em relação ao e-mail e muito mais:</string>
-    </resources>
+    <string name="update_1_22">O que há de novo no 1.22?\n\n👋As solicitações de bate-papo agora aparecem como bate-papos únicos e podem ser inspecionadas em detalhes antes de aceitar ou bloquear\n\n🗄️ O arquivo agora está facilmente acessível a partir do menu principal - você também encontrará suas solicitações antigas lá\n\n📮📮📮 Multi-conta aprimorada: alternar contas agora é mais rápido e menos frequentemente bloqueado por atualizações demoradas\n\n🤔 Saiba o que está acontecendo: agora problemas de conexão são mostrados na barra de título, toque para obter detalhes\n\nMais no blog:</string>
+    <string name="update_1_22_ios">O que há de novo na 1.22?\n\n👋 As solicitações de bate-papo agora aparecem como bate-papos únicos e podem ser inspecionadas em detalhes antes de aceitar ou bloquear\n\n🗄️ O arquivo agora pode ser acessado facilmente nas configurações - você também encontrará suas antigas solicitações lá\n\n📮📮📮 Multi-contas adicionadas: Alterne e gerencie contas nas configurações\n\n🤔 Saiba o que está acontecendo: Problemas de conexão agora são mostrados na barra de título, toque para obter detalhes\n\nMais no blog: </string>
+
+</resources>
