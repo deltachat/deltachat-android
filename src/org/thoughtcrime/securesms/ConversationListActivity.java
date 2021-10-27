@@ -121,7 +121,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     TooltipCompat.setTooltipText(searchAction, getText(R.string.search_explain));
 
     TooltipCompat.setTooltipText(selfAvatar, getText(R.string.pref_profile_info_headline));
-    selfAvatar.setOnClickListener(v -> startActivity(new Intent(this, CreateProfileActivity.class)));
+    selfAvatar.setOnClickListener(v -> AccountManager.getInstance().showSwitchAccountMenu(this));
 
     refresh();
   }
