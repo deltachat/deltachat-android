@@ -91,7 +91,7 @@
         <item quantity="one">%d godzina</item>
         <item quantity="few">%d godziny</item>
         <item quantity="many">%d godzin</item>
-        <item quantity="other">%d godziny</item>
+        <item quantity="other">%d godzin</item>
     </plurals>
     <plurals name="n_chats">
         <item quantity="one">%d czat</item>
@@ -211,6 +211,7 @@
     <string name="block">Zablokuj</string>
     <string name="menu_block_contact">Blokuj kontakt</string>
     <string name="menu_unblock_contact">Odblokuj kontakt</string>
+    <string name="accept">Akceptuj</string>
     <string name="menu_play">Odtwarzaj</string>
     <string name="menu_pause">Wstrzymaj</string>
     <string name="menu_scroll_to_bottom">Przewiń na dołu</string>
@@ -360,6 +361,7 @@
     <string name="chat_share_with_title">Udostępnij</string>
     <string name="chat_input_placeholder">Wiadomość</string>
     <string name="chat_archived_label">Zarchiwizowane</string>
+    <string name="chat_request_label">Prośba</string>
     <string name="chat_no_messages">Brak wiadomości.</string>
     <string name="chat_self_talk_subtitle">Wiadomości wysłane do siebie</string>
     <string name="archive_empty_hint">Jeśli zarchiwizujesz czaty, zostaną one pokazane tutaj.</string>
@@ -430,13 +432,30 @@
     <string name="send_message">Wyślij wiadomość</string>
 
 
+    <!-- Connectivity -->
+    <!-- Used as a headline for the "Inbox" eg. in the "Connectivity" view -->
+    <string name="incoming_messages">Wiadomości przychodzące</string>
+    <!-- Used as a headline for the "Outbox" eg. in the "Connectivity" view -->
+    <string name="outgoing_messages">Wiadomości wychodzące</string>
+    <!-- Used as a headline in the "Connectivity" view. The placeholder will be replaced by the domain of the configured email-address. -->
+    <string name="storage_on_domain">Zajętość skrzynki %1$s</string>
+    <string name="connectivity">Łączność</string>
+    <!-- Shown eg. in the title bar if the app is "Not connected"; as there is very few room, try to be as short as possible. -->
+    <string name="connectivity_not_connected">Nie połączony</string>
     <!-- Shown eg. in the title bar if the app is "Connecting"; as there is very few room, try to be as short as possible. Note that the three dots are a single character (…), not three (...) -->
     <string name="connectivity_connecting">Łączenie…</string>
     <!-- Shown eg. in the title bar if the app is "Updating" (eg. getting new/old message, sync things); as there is very few room, try to be as short as possible. Note that the three dots are a single character (…), not three (...) -->
     <string name="connectivity_updating">Aktualizowanie…</string>
+    <!-- Shown eg. in the setting if the app is "Connected" -->
+    <string name="connectivity_connected">Połączony</string>
     <string name="sending">Wysyłanie…</string>
+    <string name="last_msg_sent_successfully">Twoja ostatnia wiadomość została pomyślnie wysłana</string>
     <!-- Used as a subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed or so. -->
     <string name="messages">Wiadomości</string>
+    <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
+    <string name="part_of_total_used">%1$s z %2$s </string>
+
+
     <!-- welcome and login -->
     <string name="welcome_intro1_message">Komunikator o największym zasięgu na świecie. Darmowy i bezpieczny.</string>
     <string name="login_title">Zaloguj się</string>
@@ -488,7 +507,10 @@
     <string name="delete_account_ask">Czy na pewno chcesz usunąć dane swojego konta?</string>
     <string name="delete_account_explain_with_name">Wszystkie dane konta „%s” na tym urządzeniu zostaną usunięte, w tym konfiguracja szyfrowania end-to-end, kontakty, czaty, wiadomości i multimedia. Tej operacji nie można cofnąć.</string>
     <string name="switching_account">Przełączam konto…</string>
+    <string name="unconfigured_account">Nieskonfigurowane konto</string>
+    <string name="unconfigured_account_hint">Otwórz konto, aby je skonfigurować</string>
     <string name="try_connect_now">Spróbuj się teraz połączyć</string>
+    <string name="sync_all">Synchronizuj wszystkie</string>
     <!-- Translations: %1$s will be replaced by a more detailed error message -->
     <string name="configuration_failed_with_error">Konfiguracja nie powiodła się. Błąd: %1$s</string>
 

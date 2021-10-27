@@ -25,6 +25,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import androidx.core.app.RemoteInput;
 
+import com.b44t.messenger.DcContext;
+
 import org.thoughtcrime.securesms.connect.DcHelper;
 
 
@@ -53,7 +55,11 @@ public class RemoteReplyReceiver extends BroadcastReceiver {
       new AsyncTask<Void, Void, Void>() {
         @Override
         protected Void doInBackground(Void... params) {
-          DcHelper.getContext(context).sendTextMsg(chatId, responseText.toString());
+          DcContext dcContext = DcHelper.getContext(context);
+          if (dcContext.getChat(chatId).isContactRequest()) {
+            dcContext.acceptChat(chatId);
+          }
+          dcContext.sendTextMsg(chatId, responseText.toString());
           DcHelper.getNotificationCenter(context).removeNotifications(chatId);
           return null;
         }
