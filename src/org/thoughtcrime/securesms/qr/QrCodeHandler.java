@@ -204,24 +204,20 @@ public class QrCodeHandler {
         builder.setMessage(msg);
         builder.setPositiveButton(android.R.string.ok, (dialogInterface, i) -> {
             DcHelper.getEventCenter(activity).captureNextError();
-            new Thread(() -> {
-                    int newChatId = dcContext.joinSecurejoin(qrRawString);
-                    Util.runOnMain(() -> {
-                        String errorString = DcHelper.getEventCenter(activity).getCapturedError();
-                        DcHelper.getEventCenter(activity).endCaptureNextError();
-                        if (newChatId != 0) {
-                            Intent intent = new Intent(activity, ConversationActivity.class);
-                            intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, newChatId);
-                            activity.startActivity(intent);
-                        } else if (!errorString.isEmpty()) {
-                            AlertDialog.Builder builder1 = new AlertDialog.Builder(activity);
-                            builder1.setMessage(errorString);
-                            builder1.setPositiveButton(android.R.string.ok, null);
-                            builder1.create().show();
-                        }
-                    });
-                }
-            ).start();
+            int newChatId = dcContext.joinSecurejoin(qrRawString);
+            String errorString = DcHelper.getEventCenter(activity).getCapturedError();
+            DcHelper.getEventCenter(activity).endCaptureNextError();
+
+            if (newChatId != 0) {
+                Intent intent = new Intent(activity, ConversationActivity.class);
+                intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, newChatId);
+                activity.startActivity(intent);
+            } else if (!errorString.isEmpty()) {
+                AlertDialog.Builder builder1 = new AlertDialog.Builder(activity);
+                builder1.setMessage(errorString);
+                builder1.setPositiveButton(android.R.string.ok, null);
+                builder1.create().show();
+            }
         });
         builder.setNegativeButton(android.R.string.cancel, null);
     }
