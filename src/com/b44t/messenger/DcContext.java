@@ -26,6 +26,7 @@ public class DcContext {
     public final static int DC_EVENT_SECUREJOIN_INVITER_PROGRESS = 2060;
     public final static int DC_EVENT_SECUREJOIN_JOINER_PROGRESS  = 2061;
     public final static int DC_EVENT_CONNECTIVITY_CHANGED        = 2100;
+    public final static int DC_EVENT_SELFAVATAR_CHANGED          = 2110;
 
     public final static int DC_IMEX_EXPORT_SELF_KEYS = 1;
     public final static int DC_IMEX_IMPORT_SELF_KEYS = 2;
