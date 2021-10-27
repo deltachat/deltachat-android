@@ -11,24 +11,19 @@ import android.text.Html;
 import android.widget.Toast;
 
 import com.b44t.messenger.DcContext;
-import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcLot;
 import com.google.zxing.integration.android.IntentResult;
 
 import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.AccountManager;
-import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.util.IntentUtils;
 import org.thoughtcrime.securesms.util.Util;
-import org.thoughtcrime.securesms.util.views.ProgressDialog;
 
-public class QrCodeHandler implements DcEventCenter.DcEventDelegate {
+public class QrCodeHandler {
 
     private Activity activity;
-    ProgressDialog progressDialog;
-
     private DcContext dcContext;
 
     public QrCodeHandler(Activity activity) {
@@ -197,11 +192,6 @@ public class QrCodeHandler implements DcEventCenter.DcEventDelegate {
     }
 
     private void showVerifyContactOrGroup(Activity activity, AlertDialog.Builder builder, String qrRawString, DcLot qrParsed, String nameNAddr) {
-        if (progressDialog != null) {
-            progressDialog.dismiss();
-            progressDialog = null;
-        }
-
         String msg;
         switch (qrParsed.getState()) {
             case DcContext.DC_QR_ASK_VERIFYGROUP:
@@ -213,62 +203,22 @@ public class QrCodeHandler implements DcEventCenter.DcEventDelegate {
         }
         builder.setMessage(msg);
         builder.setPositiveButton(android.R.string.ok, (dialogInterface, i) -> {
-            progressDialog = new ProgressDialog(activity);
-            progressDialog.setMessage(activity.getString(R.string.one_moment));
-            progressDialog.setCanceledOnTouchOutside(false);
-            progressDialog.setCancelable(false);
-            progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, activity.getString(android.R.string.cancel), (dialog, which) -> dcContext.stopOngoingProcess());
-            progressDialog.show();
-
             DcHelper.getEventCenter(activity).captureNextError();
+            int newChatId = dcContext.joinSecurejoin(qrRawString);
+            String errorString = DcHelper.getEventCenter(activity).getCapturedError();
+            DcHelper.getEventCenter(activity).endCaptureNextError();
 
-            new Thread(() -> {
-
-                    DcHelper.getEventCenter(activity).addObserver(DcContext.DC_EVENT_SECUREJOIN_JOINER_PROGRESS, this);
-                    int newChatId = dcContext.joinSecurejoin(qrRawString); // joinSecurejoin() runs until all needed messages are sent+received!
-                    DcHelper.getEventCenter(activity).removeObservers(this);
-
-                    Util.runOnMain(() -> {
-                        if (progressDialog != null) {
-                            progressDialog.dismiss();
-                            progressDialog = null;
-                        }
-
-                        String errorString = DcHelper.getEventCenter(activity).getCapturedError();
-                        DcHelper.getEventCenter(activity).endCaptureNextError();
-                        if (newChatId != 0) {
-                            Intent intent = new Intent(activity, ConversationActivity.class);
-                            intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, newChatId);
-                            activity.startActivity(intent);
-                        } else if (!errorString.isEmpty()) {
-                            AlertDialog.Builder builder1 = new AlertDialog.Builder(activity);
-                            builder1.setMessage(errorString);
-                            builder1.setPositiveButton(android.R.string.ok, null);
-                            builder1.create().show();
-                        }
-                    });
-                }
-            ).start();
-
-
+            if (newChatId != 0) {
+                Intent intent = new Intent(activity, ConversationActivity.class);
+                intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, newChatId);
+                activity.startActivity(intent);
+            } else if (!errorString.isEmpty()) {
+                AlertDialog.Builder builder1 = new AlertDialog.Builder(activity);
+                builder1.setMessage(errorString);
+                builder1.setPositiveButton(android.R.string.ok, null);
+                builder1.create().show();
+            }
         });
         builder.setNegativeButton(android.R.string.cancel, null);
-    }
-
-    @Override
-    public void handleEvent(@NonNull DcEvent event) {
-        if (event.getId() == DcContext.DC_EVENT_SECUREJOIN_JOINER_PROGRESS) {
-            long contact_id = event.getData1Int();
-            long progress = event.getData2Int();
-            String msg = null;
-            if( progress == 400) {
-                msg = activity.getString(R.string.qrscan_x_verified_introduce_myself, dcContext.getContact((int)contact_id).getNameNAddr());
-            }
-
-            if( progressDialog != null && msg != null ) {
-                progressDialog.setMessage(msg);
-            }
-
-        }
     }
 }
