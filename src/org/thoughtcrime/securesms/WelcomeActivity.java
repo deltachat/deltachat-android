@@ -5,14 +5,18 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.text.util.Linkify;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 
 import com.b44t.messenger.DcContext;
@@ -24,6 +28,7 @@ import com.google.zxing.integration.android.IntentResult;
 import org.thoughtcrime.securesms.connect.AccountManager;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.mms.AttachmentManager;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.qr.RegistrationQrActivity;
 import org.thoughtcrime.securesms.service.GenericForegroundService;
@@ -31,12 +36,22 @@ import org.thoughtcrime.securesms.service.NotificationController;
 import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.Util;
+import org.thoughtcrime.securesms.util.StorageUtil;
+import org.thoughtcrime.securesms.util.StreamUtil;
+import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.views.ProgressDialog;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 public class WelcomeActivity extends BaseActionBarActivity implements DcEventCenter.DcEventDelegate {
     public static final String QR_ACCOUNT_EXTRA = "qr_account_extra";
+    public static final int PICK_BACKUP = 20574;
+    private final static String TAG = WelcomeActivity.class.getSimpleName();
+    public static final String TMP_BACKUP_FILE = "tmp-backup-file";
 
     private boolean manualConfigure = true; // false: configure by QR account creation
     private ProgressDialog progressDialog = null;
@@ -106,29 +121,31 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
                 .withPermanentDenialDialog(getString(R.string.perm_explain_access_to_storage_denied))
                 .onAllGranted(() -> {
                     File imexDir = DcHelper.getImexDir();
-                    final String backupFile = dcContext.imexHasBackup(imexDir.getAbsolutePath());
-                    if (backupFile != null) {
-                        new AlertDialog.Builder(this)
-                                .setTitle(R.string.import_backup_title)
-                                .setMessage(String.format(getResources().getString(R.string.import_backup_ask), backupFile))
-                                .setNegativeButton(android.R.string.cancel, null)
-                                .setPositiveButton(android.R.string.ok, (dialog, which) -> {
-                                        startImport(backupFile);
-                                })
-                                .show();
-                    }
-                    else {
-                        new AlertDialog.Builder(this)
-                                .setTitle(R.string.import_backup_title)
-                                .setMessage(String.format(getResources().getString(R.string.import_backup_no_backup_found), imexDir.getAbsolutePath()))
-                                .setPositiveButton(android.R.string.ok, null)
-                                .show();
+                    if (Build.VERSION.SDK_INT >= 29) {
+                        AttachmentManager.selectMediaType(this, "application/x-tar", null, PICK_BACKUP, StorageUtil.getDownloadUri());
+                    } else {
+                        final String backupFile = dcContext.imexHasBackup(imexDir.getAbsolutePath());
+                        if (backupFile != null) {
+                            new AlertDialog.Builder(this)
+                                    .setTitle(R.string.import_backup_title)
+                                    .setMessage(String.format(getResources().getString(R.string.import_backup_ask), backupFile))
+                                    .setNegativeButton(android.R.string.cancel, null)
+                                    .setPositiveButton(android.R.string.ok, (dialog, which) -> startImport(backupFile, null))
+                                    .show();
+                        }
+                        else {
+                            new AlertDialog.Builder(this)
+                                    .setTitle(R.string.import_backup_title)
+                                    .setMessage(String.format(getResources().getString(R.string.import_backup_no_backup_found), imexDir.getAbsolutePath()))
+                                    .setPositiveButton(android.R.string.ok, null)
+                                    .show();
+                        }
                     }
                 })
                 .execute();
     }
 
-    private void startImport(final String backupFile)
+    private void startImport(@Nullable final String backupFile, final @Nullable Uri backupFileUri)
     {
         notificationController = GenericForegroundService.startForegroundTask(this, getString(R.string.import_backup_title));
         if( progressDialog!=null ) {
@@ -143,11 +160,36 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
         progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, getResources().getString(android.R.string.cancel), (dialog, which) -> {
             dcContext.stopOngoingProcess();
             notificationController.close();
+            cleanupTempBackupFile();
         });
         progressDialog.show();
 
-        DcHelper.getEventCenter(this).captureNextError();
-        dcContext.imex(DcContext.DC_IMEX_IMPORT_BACKUP, backupFile);
+        Util.runOnBackground(() -> {
+            String file = backupFile;
+            if (backupFile == null) {
+                try {
+                    file = copyToCacheDir(backupFileUri).getAbsolutePath();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    notificationController.close();
+                    cleanupTempBackupFile();
+                    return;
+                }
+            }
+
+            DcHelper.getEventCenter(this).captureNextError();
+            dcContext.imex(DcContext.DC_IMEX_IMPORT_BACKUP, file);
+        });
+    }
+
+    private File copyToCacheDir(Uri uri) throws IOException {
+        try (InputStream inputStream = getContentResolver().openInputStream(uri)) {
+            File file = File.createTempFile(TMP_BACKUP_FILE, ".tmp", getCacheDir());
+            try (OutputStream outputStream = new FileOutputStream(file)) {
+                StreamUtil.copy(inputStream, outputStream);
+            }
+            return file;
+        }
     }
 
     private void startQrAccountCreation(String qrCode)
@@ -230,6 +272,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
             if (progress==0/*error/aborted*/) {
                 progressError(DcHelper.getEventCenter(this).getCapturedError());
                 notificationController.close();
+                cleanupTempBackupFile();
             }
             else if (progress<1000/*progress in permille*/) {
                 progressUpdate((int)progress);
@@ -239,6 +282,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
                 DcHelper.getAccounts(this).startIo();
                 progressSuccess(false);
                 notificationController.close();
+                cleanupTempBackupFile();
             }
         }
         else if (manualConfigure && eventId==DcContext.DC_EVENT_CONFIGURE_PROGRESS) {
@@ -291,6 +335,27 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
                             .show();
                     break;
             }
+        } else if (requestCode == PICK_BACKUP) {
+            Uri uri = data.getData();
+            if (uri == null) {
+                Log.e(TAG, " Can't import null URI");
+                return;
+            }
+            startImport(null, uri);
+        }
+    }
+
+    private void cleanupTempBackupFile() {
+        try {
+            File[] files = getCacheDir().listFiles((dir, name) -> name.startsWith(TMP_BACKUP_FILE));
+            for (File file : files) {
+                if (file.getName().endsWith("tmp")) {
+                    Log.i(TAG, "Deleting temp backup file " + file);
+                    file.delete();
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

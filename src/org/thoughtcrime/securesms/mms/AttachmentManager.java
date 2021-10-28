@@ -27,6 +27,7 @@ import android.graphics.PorterDuff;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
+import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.provider.OpenableColumns;
 import android.util.Log;
@@ -53,6 +54,7 @@ import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 import org.thoughtcrime.securesms.scribbles.ScribbleActivity;
 import org.thoughtcrime.securesms.util.MediaUtil;
+import org.thoughtcrime.securesms.util.StorageUtil;
 import org.thoughtcrime.securesms.util.ThemeUtil;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.concurrent.ListenableFuture;
@@ -506,12 +508,20 @@ public class AttachmentManager {
         .execute();
   }
 
-  private static void selectMediaType(Activity activity, @NonNull String type, @Nullable String[] extraMimeType, int requestCode) {
+  public static void selectMediaType(Activity activity, @NonNull String type, @Nullable String[] extraMimeType, int requestCode) {
+    selectMediaType(activity, type, extraMimeType, requestCode, null);
+  }
+
+  public static void selectMediaType(Activity activity, @NonNull String type, @Nullable String[] extraMimeType, int requestCode, @Nullable Uri initialUri) {
     final Intent intent = new Intent();
     intent.setType(type);
 
     if (extraMimeType != null && Build.VERSION.SDK_INT >= 19) {
       intent.putExtra(Intent.EXTRA_MIME_TYPES, extraMimeType);
+    }
+
+    if (initialUri != null && Build.VERSION.SDK_INT >= 26) {
+      intent.putExtra(DocumentsContract.EXTRA_INITIAL_URI, initialUri);
     }
 
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {

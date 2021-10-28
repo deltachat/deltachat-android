@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-class StreamUtil {
+public class StreamUtil {
 
   public static long copy(InputStream in, OutputStream out) throws IOException {
     byte[] buffer = new byte[64 * 1024];
