@@ -142,12 +142,10 @@ public class NewConversationActivity extends ContactSelectionActivity {
       Intent intent = new Intent(this, GroupCreateActivity.class);
       intent.putExtra(GroupCreateActivity.GROUP_CREATE_VERIFIED_EXTRA, specialId == DcContact.DC_CONTACT_ID_NEW_VERIFIED_GROUP);
       startActivity(intent);
-      finish();
     } else if(specialId == DcContact.DC_CONTACT_ID_NEW_BROADCAST_LIST) {
       Intent intent = new Intent(this, GroupCreateActivity.class);
       intent.putExtra(GroupCreateActivity.CREATE_BROADCAST, true);
       startActivity(intent);
-      finish();
     }
     else {
       if(!dcContext.mayBeValidAddr(addr)) {
