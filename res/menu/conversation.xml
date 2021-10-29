@@ -39,4 +39,7 @@
         android:icon="@drawable/ic_map_white_24dp"
         app:showAsAction="ifRoom" />
 
+    <item android:title="@string/menu_add_attachment"
+          android:id="@+id/menu_add_attachment" />
+
 </menu>

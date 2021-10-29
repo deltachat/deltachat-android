@@ -20,7 +20,7 @@
       <li><a href="#什么是已验证群组为什么它是实验性的">什么是已验证群组？为什么它是实验性的？</a></li>
       <li><a href="#我不小心删除了我自己">我不小心删除了我自己。</a></li>
       <li><a href="#我不想再收到某个群组中的消息了">我不想再收到某个群组中的消息了。</a></li>
-      <li><a href="#群组消息中的双对勾意味着什么每个人都都读我的消息了吗">群组消息中的双对勾意味着什么？每个人都都读我的消息了吗？</a></li>
+      <li><a href="#what-do-the-ticks-shown-beside-outgoing-messages-mean">What do the ticks shown beside outgoing messages mean?</a></li>
     </ul>
   </li>
   <li><a href="#encryption">加密</a>
@@ -333,18 +333,22 @@
   </li>
 </ul>
     
-      <h3 id="群组消息中的双对勾意味着什么每个人都都读我的消息了吗">
+      <h3 id="what-do-the-ticks-shown-beside-outgoing-messages-mean">
         
         
-          群组消息中的双对勾意味着什么？每个人都都读我的消息了吗？ <a href="#群组消息中的双对勾意味着什么每个人都都读我的消息了吗" class="anchor"></a>
+          What do the ticks shown beside outgoing messages mean? <a href="#what-do-the-ticks-shown-beside-outgoing-messages-mean" class="anchor"></a>
         
         
       </h3>
 
 <ul>
-  <li>消息被一半以上的接收者在屏幕上看到后，会显示双对勾。</li>
-  <li>请注意，某些接收者可能出于隐私原因禁用了已读回执。</li>
-  <li>如果群组中超过 50％ 的人禁用了已读回执，那么双对勾将永远不会出现。更多信息，请参阅<a href="https://delta.chat/en/2017-07-06-read-receipts-and-social-pressure">这篇博文</a>。</li>
+  <li><strong>One tick</strong> means that the message was sent successfully to your provider.</li>
+  <li><strong>Two ticks</strong> mean that at least one recipient’s device
+reported back to having received the message.</li>
+  <li>Recipients may have disabled read-receipts,
+so even if you see only one tick, the message may have been read.</li>
+  <li>The other way round, two ticks do not automatically mean
+that a human has read or understood the message ;)</li>
 </ul>
     
       <h2 id="encryption">
@@ -693,17 +697,10 @@
       </h3>
 
 <ul>
-  <li>Sending and receiving messages takes a few seconds, typically. Sometimes
-there are cases where it takes longer but that is arguably true as well for
-any other messenger.</li>
-  <li>Instant chatting works fast if both parties are actively using the app. It’s
-sometimes slower if the app is running in the background.</li>
-  <li>Receiving messages then can take minutes because both Android and iOS often
-stop Delta Chat from running in the background, and only wake it up
-occasionally. This artificial delay is usually worse on iOS than on Android.</li>
-  <li>However, Android and iOS kill apps running in the background is a
-problem for many legitimate apps. For more information, see
-<a href="https://dontkillmyapp.com/">dontkillmyapp.com</a>.</li>
+  <li>通常情况下，发送和接收消息会花费数秒。收发消息有时会花费更长时间；但是对于其他的通信软件来说，这也是真的。</li>
+  <li>在双方都积极使用本应用时，即时聊天反应迅速；而当应用运行在后台时，有时就会很慢。</li>
+  <li>由于 Android 与 iOS 经常阻止 Delta Chat 在后台运行、偶尔才会唤醒它，接收消息可能要花费数分钟。iOS 上的这种人为延迟通常比 Android 上的更糟糕。</li>
+  <li>另外，对于很多正常应用来说，Android 和 iOS 杀掉后台应用是一个问题。更多信息，请参阅 <a href="https://dontkillmyapp.com/">dontkillmyapp.com</a>。</li>
 </ul>
     
       <h3 id="delta-chat-与-protonmail--tutanota--criptext-兼容吗">
