@@ -209,7 +209,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
         Recipient recipient = result.recipient.get();
         Address address = recipient.getAddress();
         if(address.isDcContact()) {
-          activity.getAdapter().add(recipient, true);
+          activity.getAdapter().add(recipient);
         }
       }
       activity.updateViewState();
