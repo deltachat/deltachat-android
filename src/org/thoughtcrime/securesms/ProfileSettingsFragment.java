@@ -143,8 +143,12 @@ public class ProfileSettingsFragment extends Fragment
   @Override
   public void onSettingsClicked(int settingsId) {
     switch(settingsId) {
-      case ProfileSettingsAdapter.SETTING_NEW_CHAT:
-        onNewChat();
+      case ProfileSettingsAdapter.SETTING_SEND_MESSAGE:
+        onSendMessage();
+        break;
+
+      case ProfileSettingsAdapter.SETTING_NEW_GROUP:
+        onNewGroupWith();
         break;
     }
   }
@@ -233,7 +237,7 @@ public class ProfileSettingsFragment extends Fragment
     getActivity().finish();
   }
 
-  private void onNewChat() {
+  private void onSendMessage() {
     DcContact dcContact = dcContext.getContact(contactId);
     int chatId = dcContext.createChatByContactId(dcContact.getId());
     if (chatId != 0) {
@@ -242,6 +246,11 @@ public class ProfileSettingsFragment extends Fragment
       getActivity().startActivity(intent);
       getActivity().finish();
     }
+  }
+
+  private void onNewGroupWith() {
+    Intent intent = new Intent(getActivity(), GroupCreateActivity.class);
+    getActivity().startActivity(intent);
   }
 
   private class ActionModeCallback implements ActionMode.Callback {
