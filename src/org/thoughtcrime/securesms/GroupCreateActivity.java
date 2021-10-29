@@ -114,6 +114,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     if(groupChatId !=0) {
       isEdit = true;
       DcChat dcChat = dcContext.getChat(groupChatId);
+      verified = dcChat.isProtected();
       broadcast = dcChat.isBroadcast();
     }
 
