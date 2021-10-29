@@ -249,7 +249,11 @@ public class ProfileSettingsFragment extends Fragment
   }
 
   private void onNewGroupWith() {
+    ArrayList<Integer> preselectedContactIds = new ArrayList<>();
+    preselectedContactIds.add(contactId);
+
     Intent intent = new Intent(getActivity(), GroupCreateActivity.class);
+    intent.putExtra(GroupCreateActivity.SUGGESTED_CONTACT_IDS, preselectedContactIds);
     getActivity().startActivity(intent);
   }
 

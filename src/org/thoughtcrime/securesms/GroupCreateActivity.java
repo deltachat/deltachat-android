@@ -65,6 +65,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
   public static final String EDIT_GROUP_CHAT_ID = "edit_group_chat_id";
   public static final String GROUP_CREATE_VERIFIED_EXTRA  = "group_create_verified";
   public static final String CREATE_BROADCAST  = "group_create_broadcast";
+  public static final String SUGGESTED_CONTACT_IDS = "suggested_contact_ids";
 
   private final DynamicTheme    dynamicTheme    = new DynamicTheme();
   private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
@@ -85,6 +86,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
   private boolean      isEdit;
   private boolean      avatarChanged;
   private boolean      imageLoaded;
+  private boolean      hasSuggestedContacts;
   private AttachmentManager attachmentManager;
 
   @Override
@@ -148,6 +150,8 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     }
     else if(broadcast) {
       title = getString(R.string.new_broadcast_list);
+    } else if (hasSuggestedContacts) {
+      title = getString(R.string.new_group_or_subject);
     }
     else if(verified) {
       title = getString(R.string.menu_new_verified_group);
@@ -222,6 +226,13 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     if (!broadcast) {
       DcContact self = dcContext.getContact(DC_CONTACT_ID_SELF);
       initList.add(new Recipient(this, self));
+    }
+    ArrayList<Integer> suggestedContactIds = getIntent().getIntegerArrayListExtra(SUGGESTED_CONTACT_IDS);
+    if (suggestedContactIds != null && !suggestedContactIds.isEmpty()) {
+      hasSuggestedContacts = true;
+      for (Integer contactId : suggestedContactIds) {
+        initList.add(new Recipient(this, dcContext.getContact(contactId)));
+      }
     }
     SelectedRecipientsAdapter adapter = new SelectedRecipientsAdapter(this, GlideApp.with(this), initList);
     adapter.setOnRecipientDeletedListener(this);
