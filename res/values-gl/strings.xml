@@ -778,6 +778,10 @@
     <string name="qraccount_success_enter_name">Conexión correcta—o teu enderezo é %1$s\n\nSe queres, agora podes escribir un nome e unha imaxe de avatar que será mostrado as persoas coas que te comunicas.</string>
     <string name="qraccount_qr_code_cannot_be_used">O código QR escaneado non se pode utilizar para crear unha nova conta.</string>
     <string name="qraccount_use_on_new_install">O código QR escaneado é para crear unha nova conta. Podes escanear o código QR cando configures unha nova instalación de Delta Chat.</string>
+    <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
+    <string name="secure_join_started">%1$s convidoute a este grupo.\n\nAgardando a que responda o dispositivo de %2$s ...</string>
+    <!-- placeholder will be replaced by the name of the inviter. -->
+    <string name="secure_join_replies">%1$s respondeu, agardando a que sexa engadido ao grupo...</string>
     <string name="contact_verified">%1$s verificado.</string>
     <string name="contact_not_verified">Non se puido verificar %1$s.</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->

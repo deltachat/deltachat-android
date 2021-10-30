@@ -132,7 +132,7 @@
     <string name="draft">Черновик</string>
     <string name="image">Изображение</string>
     <!-- Translators: Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
-    <string name="reply_noun">Ответить</string>
+    <string name="reply_noun">Ответ</string>
     <string name="gif">GIF</string>
     <!-- "Stickers" as known from other messengers, please pick up the wording from there; in some languages, "Sticker" in english is just fine. -->
     <string name="sticker">Стикер</string>
@@ -806,6 +806,10 @@
     <string name="qraccount_success_enter_name">Вход успешно выполнен—ваш адрес электронной почты %1$s\n\nЕсли хотите, можете ввести имя и установить аватар, которые будут отображаться людям, которым вы пишете.</string>
     <string name="qraccount_qr_code_cannot_be_used">Отсканированный QR код не может быть использован для создания нового аккаунта.</string>
     <string name="qraccount_use_on_new_install">Отсканированный QR код предназначен для создания нового аккаунта. Вы можете отсканировать QR код при установке Delta Chat.</string>
+    <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
+    <string name="secure_join_started">%1$s пригласил вас в группу.\n\nОжидаем ответа от %2$s…</string>
+    <!-- placeholder will be replaced by the name of the inviter. -->
+    <string name="secure_join_replies">%1$s ответил, ожидаем добавления в группу…</string>
     <string name="contact_verified">%1$s подтвержден.</string>
     <string name="contact_not_verified">Невозможно подтвердить %1$s</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
