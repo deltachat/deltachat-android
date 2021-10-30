@@ -6,19 +6,27 @@
     <string name="cancel">취소</string>
     <string name="yes">예</string>
     <string name="no">아니요</string>
+    <string name="select">선택</string>
     <string name="on">켜기</string>
     <string name="off">끔</string>
     <string name="def">기본값</string>
+    <string name="default_value">기본 (%1$s)</string>
+    <string name="default_value_as_above">기본 (위와 동일함)</string>
     <string name="custom">커스텀</string>
     <string name="none">없음</string>
     <string name="automatic">자동</string>
     <string name="strict">엄격한</string>
     <string name="open">열기</string>
+    <string name="download">다운로드</string>
+    <string name="downloading">다운로드 중...</string>
+    <string name="open_attachment">첨부 파일 열기</string>
+    <string name="join">참가</string>
+    <string name="rejoin">다시 참가</string>
     <string name="delete">삭제</string>
     <string name="info">정보</string>
     <string name="update">최신 정보</string>
-    <string name="emoji">이모티콘</string>
-    <string name="attachment">부착</string>
+    <string name="emoji">이모지</string>
+    <string name="attachment">첨부 파일</string>
     <string name="back">뒤</string>
     <string name="close">닫기</string>
     <string name="forward">전달</string>
@@ -29,18 +37,35 @@
     <string name="save">저장</string>
     <string name="chat">잡담</string>
     <string name="media">매체</string>
+    <string name="profile">프로필</string>
     <string name="main_menu">메인 메뉴</string>
     <string name="start_chat">채팅 시작</string>
+    <string name="show_full_message">전체 메시지 보기...</string>
+    <string name="show_full_message_in_browser">브라우저에서 전체 메시지 보기...</string>
+    <!-- this is shown as placeholder when something is loading at some places -->
+    <string name="loading">로딩 중...</string>
+    <string name="hide">숨기기</string>
+    <string name="activate">활성화</string>
+    <string name="always">항상</string>
+    <string name="show_password">비밀번호 보이기</string>
+    <string name="hide_password">비밀번호 숨기기</string>
     <string name="not_now">나중에</string>
-    <string name="never">안함</string>
+    <string name="never">절대</string>
     <string name="one_moment">잠시만 기다려 주세요…</string>
     <string name="done">완료</string>
     <string name="undo">실행취소</string>
+    <string name="offline">오프라인</string>
     <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in iOS headers, the string should be as short as possible, though. -->
     <string name="next">확인</string>
     <string name="error">오류</string>
+    <string name="error_x">오류: %1$s</string>
+    <string name="file_not_found">%1$s 찾을 수 없음.</string>
+    <string name="copied_to_clipboard">클립보드에 복사했습니다.</string>
     <string name="contacts_headline">연락처</string>
-    <string name="password">잠금번호</string>
+    <string name="email_address">이메일 주소</string>
+    <string name="bad_email_address">잘못된 이메일 주소</string>
+    <string name="password">비밀번호</string>
+    <string name="existing_password">존재하는 비밀번호</string>
     <string name="now">방금 전</string>
     <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
     <string name="danger">위험</string>
@@ -48,12 +73,21 @@
     <string name="yesterday">어제</string>
     <string name="this_week">이번주</string>
     <string name="this_month">이번달</string>
+    <string name="last_week">저번 주</string>
+    <string name="last_month">저번 달</string>
+    <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
+    <plurals name="n_minutes">
+        <item quantity="other">%d 분</item>
+    </plurals>
     <!-- Translators: show beside messages that are "N hours old". prefer a short string, prefer abbreviations if they're well-known -->
     <plurals name="n_hours">
         <item quantity="other">%d시간</item>
     </plurals>
+    <plurals name="n_chats">
+        <item quantity="other">%d 채팅</item>
+    </plurals>
     <plurals name="n_contacts">
-        <item quantity="other">%d명의 대화상대</item>
+        <item quantity="other">%d명의 대화 상대</item>
     </plurals>
     <plurals name="n_messages">
         <item quantity="other">새 메시지 %d건</item>
@@ -61,40 +95,60 @@
     <plurals name="n_members">
         <item quantity="other">대화상대 %d명</item>
     </plurals>
+    <plurals name="n_recipients">
+        <item quantity="other">%d 수신자</item>
+    </plurals>
+
     <string name="self">나</string>
     <string name="draft">임시저장</string>
     <string name="image">사진</string>
-    <string name="gif">GIF파일</string>
+    <!-- Translators: Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
+    <string name="reply_noun">답장</string>
+    <string name="gif">GIF</string>
+    <!-- "Stickers" as known from other messengers, please pick up the wording from there; in some languages, "Sticker" in english is just fine. -->
+    <string name="sticker">스티커</string>
     <string name="images">이미지</string>
     <string name="audio">음악</string>
     <string name="voice_message">음성 메시지</string>
+    <string name="forwarded">전달됨</string>
     <string name="forwarded_message">전달된 메시지</string>
+    <!-- %1$s will be replaced by the name or the e-mail address of the person who has forwarded the message -->
+    <string name="forwarded_by">%1$s에 의해 전달됨</string>
     <string name="video">동영상</string>
     <string name="documents">문서들</string>
     <string name="contact">연락처</string>
     <string name="camera">카메라</string>
+    <!-- "capture" here means "start a video recording" or "take a photo"; eg. the description of the "shutter button" in the camera controls -->
+    <string name="capture">캡쳐</string>
+    <string name="switch_camera">카메라 전환</string>
+    <string name="toggle_fullscreen">전체 화면 모드 토글</string>
     <string name="location">위치</string>
     <string name="gallery">앨범</string>
+    <string name="images_and_videos">이미지와 동영상</string>
     <string name="file">파일</string>
+    <string name="files">파일</string>
     <string name="unknown">알 수 없음</string>
 
     <string name="green">초록</string>
     <string name="red">빨강</string>
     <string name="blue">초록</string>
-    <string name="orange">주황색</string>
-    <string name="cyan">청록색</string>
-    <string name="purple">보라색</string>
-    <string name="magenta">자홍색</string>
+    <string name="orange">주황</string>
+    <string name="cyan">청록</string>
+    <string name="purple">보라</string>
+    <string name="magenta">자홍</string>
     <string name="white">흰색</string>
 
+    <string name="zoom">줌</string>
+    <string name="extra_small">더 작게</string>
     <string name="small">작게</string>
     <string name="normal">보통</string>
     <string name="large">크게</string>
-    <string name="extra_large">더욱 크게</string>
+    <string name="extra_large">더 크게</string>
 
     <string name="fast">빠르게</string>
     <string name="slow">느리게</string>
 
+    <string name="message_delivered">메시지 전달됨</string>
     <string name="message_read">메시지 읽기</string>
 
 
@@ -106,24 +160,41 @@
     <string name="menu_send">보내기</string>
     <string name="menu_toggle_keyboard">이모티콘 키보드 전환</string>
     <string name="menu_edit_group">그룹 편집</string>
-    <string name="menu_archive_chat">보관 채팅</string>
-    <string name="menu_unarchive_chat">보관 처리되지 않은 채팅</string>
+    <string name="menu_show_map">지도 보이기</string>
+    <string name="menu_archive_chat">채팅 보관</string>
+    <string name="menu_unarchive_chat">보관되지 않은 채팅</string>
+    <string name="menu_add_attachment">첨부 파일 추가</string>
     <string name="menu_leave_group">그룹 나가기</string>
     <string name="menu_delete_chat">채팅방 나가기</string>
+    <string name="ask_delete_named_chat">메시지 \"%1$s\"을 지우려는 것이 확실한가요?</string>
     <string name="menu_delete_messages">메시지 삭제</string>
+    <string name="menu_delete_image">이미지 삭제</string>
+    <string name="delete_contact">연락처 삭제</string>
     <string name="menu_message_details">메시지 세부정보</string>
-    <string name="menu_copy_to_clipboard">복사</string>
+    <string name="menu_copy_to_clipboard">클립보드에 복사</string>
+    <string name="menu_copy_selection_to_clipboard">선택 복사</string>
+    <string name="menu_copy_link_to_clipboard">링크 복사</string>
+    <string name="menu_copy_text_to_clipboard">텍스트 복사</string>
+    <string name="menu_copy_image_to_clipboard">이미지 복사</string>
+    <string name="paste_from_clipboard">클립보드에서 복사</string>
     <string name="menu_forward">메시지 전달</string>
     <string name="menu_resend">메시지 다시 보내기</string>
     <string name="menu_reply">메시지 답장</string>
     <string name="menu_mute">알림 음소거</string>
     <string name="menu_unmute">음소거 해제</string>
+    <string name="menu_export_attachment">첨부 파일 내보내기</string>
+    <string name="menu_export_attachments">첨부 파일 내보내기</string>
     <string name="menu_all_media">모든 미디어</string>
     <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
-    <string name="show_in_chat">대화 속에서 보기</string>
+    <string name="show_in_chat">채팅에서 보기</string>
     <string name="menu_share">공유</string>
+    <!-- this is the action "to block sth." usually a mailing list or a contact. this is NOT "a large solid piece of hard material" :) -->
+    <string name="block">차단</string>
     <string name="menu_block_contact">차단</string>
     <string name="menu_unblock_contact">차단 해제</string>
+    <string name="accept">수락</string>
+    <string name="menu_play">재생</string>
+    <string name="menu_pause">정지</string>
     <string name="menu_help">자주 묻는 질문</string>
     <string name="menu_select_all">모두 선택</string>
     <string name="menu_edit_name">이름 편집</string>
@@ -132,12 +203,28 @@
     <string name="menu_deaddrop">사서함</string>
     <string name="menu_zoom_in">확대</string>
     <string name="menu_zoom_out">축소</string>
+    <string name="menu_save_log">로그 저장</string>
+    <string name="copy_json">JSON 복사</string>
     <string name="device_talk">장치 메시지</string>
+    <!-- Translators: "Pin" here is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
+    <string name="pin_chat">채팅 고정</string>
+    <!-- Translators: this is the opposite of "Pin chat", removing the sticky-state from a chat. -->
+    <string name="unpin_chat">채팅 고정 해제</string>
+    <!-- Translators: this is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
+    <string name="pin">고정</string>
+    <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
+    <string name="unpin">고정 해제</string>
     <string name="mute_for_one_hour">1시간 동안 알림 일시 끄기</string>
     <string name="mute_for_two_hours">2시간 동안 알림 일시 끄기</string>
     <string name="mute_for_one_day">하루 동안 알림 일시 끄기</string>
     <string name="mute_for_seven_days">7일 동안 알림 일시 끄기</string>
     <string name="mute_forever">영원히</string>
+
+    <string name="share_location_for_5_minutes">5분 동안</string>
+    <string name="share_location_for_30_minutes">30분 동안</string>
+    <string name="share_location_for_one_hour">1시간 동안</string>
+    <string name="share_location_for_two_hours">2시간 동안</string>
+    <string name="share_location_for_six_hours">6시간 동안</string>
 
     <!-- get confirmations -->
     <string name="ask_leave_group">이 그룹에서 나가시겠습니까?</string>
