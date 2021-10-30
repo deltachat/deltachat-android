@@ -126,6 +126,7 @@ public class SelectedRecipientsAdapter extends BaseAdapter {
 
     avatar.setAvatar(glideRequests, p, false);
     name.setText(dcContact.getDisplayName());
+    name.setCompoundDrawablesWithIntrinsicBounds(0, 0, dcContact.isVerified()? R.drawable.ic_verified : 0, 0);
     phone.setText(dcContact.getAddr());
     delete.setVisibility(modifiable ? View.VISIBLE : View.GONE);
     delete.setColorFilter(DynamicTheme.isDarkTheme(context)? Color.WHITE : Color.BLACK);
