@@ -48,13 +48,13 @@ public class SelectedRecipientsAdapter extends BaseAdapter {
     this.recipients    = wrapExistingMembers(existingRecipients);
   }
 
-  public void add(@NonNull Recipient recipient, boolean isPush) {
+  public void add(@NonNull Recipient recipient) {
     if (!find(recipient).isPresent()) {
       boolean isModifiable = true;
       if (recipient.getAddress().getDcContactId() == DC_CONTACT_ID_SELF) {
         isModifiable = false;
       }
-      RecipientWrapper wrapper = new RecipientWrapper(recipient, isModifiable, isPush);
+      RecipientWrapper wrapper = new RecipientWrapper(recipient, isModifiable);
       this.recipients.add(0, wrapper);
       notifyDataSetChanged();
     }
@@ -146,7 +146,7 @@ public class SelectedRecipientsAdapter extends BaseAdapter {
       if (recipient.getAddress().getDcContactId() == DC_CONTACT_ID_SELF) {
         isModifiable = false;
       }
-      wrapperList.add(new RecipientWrapper(recipient, isModifiable, true));
+      wrapperList.add(new RecipientWrapper(recipient, isModifiable));
     }
     return wrapperList;
   }
@@ -162,15 +162,12 @@ public class SelectedRecipientsAdapter extends BaseAdapter {
   public static class RecipientWrapper {
     private final Recipient recipient;
     private final boolean   modifiable;
-    private final boolean   push;
 
     public RecipientWrapper(final @NonNull Recipient recipient,
-                            final boolean modifiable,
-                            final boolean push)
+                            final boolean modifiable)
     {
       this.recipient  = recipient;
       this.modifiable = modifiable;
-      this.push       = push;
     }
 
     public @NonNull Recipient getRecipient() {
