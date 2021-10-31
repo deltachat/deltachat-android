@@ -19,6 +19,7 @@ package org.thoughtcrime.securesms.util;
 import android.annotation.TargetApi;
 import android.app.ActivityManager;
 import android.content.ClipData;
+import android.content.ClipDescription;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.graphics.Color;
@@ -284,6 +285,16 @@ public class Util {
             (android.content.ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
     ClipData clip = ClipData.newPlainText(context.getString(R.string.app_name), text);
     clipboard.setPrimaryClip(clip);
+  }
+
+  public static String getTextFromClipboard(@NonNull Context context) {
+    android.content.ClipboardManager clipboard =
+            (android.content.ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+    if (clipboard.hasPrimaryClip() && clipboard.getPrimaryClipDescription().hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN)) {
+      ClipData.Item item = clipboard.getPrimaryClip().getItemAt(0);
+      return item.getText().toString();
+    }
+    return "";
   }
 
   public static int toIntExact(long value) {

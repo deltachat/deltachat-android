@@ -4,7 +4,9 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -16,10 +18,12 @@ import com.google.android.material.tabs.TabLayout;
 
 import org.thoughtcrime.securesms.BaseActionBarActivity;
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
 import org.thoughtcrime.securesms.util.DynamicTheme;
+import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
 public class QrActivity extends BaseActionBarActivity {
@@ -86,6 +90,17 @@ public class QrActivity extends BaseActionBarActivity {
     }
 
     @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+      menu.clear();
+      if(tabLayout.getSelectedTabPosition() == TAB_SHOW) {
+        getMenuInflater().inflate(R.menu.qr_show, menu);
+      } else {
+        getMenuInflater().inflate(R.menu.qr_scan, menu);
+      }
+      return super.onPrepareOptionsMenu(menu);
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
 
@@ -108,6 +123,14 @@ public class QrActivity extends BaseActionBarActivity {
             case android.R.id.home:
                 finish();
                 return true;
+            case R.id.copy:
+                Util.writeTextToClipboard(this, DcHelper.getContext(this).getSecurejoinQr(0));
+                Toast.makeText(this, getString(R.string.copied_to_clipboard), Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.paste:
+                QrCodeHandler qrCodeHandler = new QrCodeHandler(this);
+                qrCodeHandler.handleOpenPgp4Fpr(Util.getTextFromClipboard(this));
+                break;
         }
 
         return false;

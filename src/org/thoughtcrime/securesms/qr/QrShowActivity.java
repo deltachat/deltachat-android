@@ -1,7 +1,9 @@
 package org.thoughtcrime.securesms.qr;
 
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,11 +15,13 @@ import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
+import org.thoughtcrime.securesms.util.Util;
 
 public class QrShowActivity extends AppCompatActivity {
 
     private final DynamicTheme dynamicTheme = new DynamicTheme();
     private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
+    private int chatId = 0;
 
     public final static String CHAT_ID = "chat_id";
 
@@ -37,7 +41,6 @@ public class QrShowActivity extends AppCompatActivity {
         dcEventCenter = DcHelper.getEventCenter(this);
 
         Bundle extras = getIntent().getExtras();
-        int chatId = 0;
         if (extras != null) {
             chatId = extras.getInt(CHAT_ID);
         }
@@ -63,6 +66,12 @@ public class QrShowActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+      getMenuInflater().inflate(R.menu.qr_show, menu);
+      return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
         dynamicTheme.onResume(this);
@@ -73,9 +82,14 @@ public class QrShowActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         super.onOptionsItemSelected(item);
 
-        if (item.getItemId() == android.R.id.home) {
-            finish();
-            return true;
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+            case R.id.copy:
+                Util.writeTextToClipboard(this, DcHelper.getContext(this).getSecurejoinQr(chatId));
+                Toast.makeText(this, getString(R.string.copied_to_clipboard), Toast.LENGTH_SHORT).show();
+                break;
         }
 
         return false;
