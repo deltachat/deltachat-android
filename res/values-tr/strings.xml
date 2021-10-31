@@ -172,6 +172,8 @@
     <string name="menu_new_contact">Yeni Kişi</string>
     <string name="menu_new_chat">Yeni Sohbet</string>
     <string name="menu_new_group">Yeni Grup</string>
+    <!-- "Subject" here must be the same wording as used in the e-mail context, so. eg. "Betreff" in german (the idea is to help people coming from the e-mail context) -->
+    <string name="new_group_or_subject">Yeni Grup ya da Konu</string>
     <string name="menu_new_verified_group">Yeni Doğrulanan Grup</string>
     <!-- consider keeping the term "broadcast"; check how these lists are called eg. on whatsapp in the destination language -->
     <string name="broadcast_list">Yayın Listesi</string>
@@ -539,7 +541,7 @@
     <string name="blocked_empty_hint">Kişileri engellerseniz, burada gösterilecekler.</string>
     <string name="pref_profile_photo_remove_ask">Profil görseli kaldırılsın mı?</string>
     <string name="pref_password_and_account_settings">Parola ve Hesap</string>
-    <string name="pref_who_can_see_profile_explain">Diğer kullanıcılarla iletişim kurarken, profil görseliniz ve adınız iletilerinizin yanında gösterilir. Zaten gönderilen bilgiler silinemeyebilir ya da kaldırılamayabilir.</string>
+    <string name="pref_who_can_see_profile_explain">Diğer kullanıcılarla iletişim kurarken; profil görseliniz, adınız ve imzanız iletilerinizle birlikte gönderilecek.</string>
     <string name="pref_your_name">Adınız</string>
     <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
     <string name="pref_default_status_label">İmza Metni</string>

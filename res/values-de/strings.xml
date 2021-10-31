@@ -172,6 +172,8 @@
     <string name="menu_new_contact">Neuer Kontakt</string>
     <string name="menu_new_chat">Neuer Chat</string>
     <string name="menu_new_group">Neue Gruppe</string>
+    <!-- "Subject" here must be the same wording as used in the e-mail context, so. eg. "Betreff" in german (the idea is to help people coming from the e-mail context) -->
+    <string name="new_group_or_subject">Neue Gruppe oder Betreff</string>
     <string name="menu_new_verified_group">Neue verifizierte Gruppe</string>
     <!-- consider keeping the term "broadcast"; check how these lists are called eg. on whatsapp in the destination language -->
     <string name="broadcast_list">Broadcast-Liste</string>
@@ -541,7 +543,7 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="blocked_empty_hint">Wenn Sie Kontakte blockieren, werden diese hier angezeigt.</string>
     <string name="pref_profile_photo_remove_ask">Profilbild entfernen?</string>
     <string name="pref_password_and_account_settings">Passwort und E-Mail-Konto</string>
-    <string name="pref_who_can_see_profile_explain">Das Profilbild und der Name werden neben gesendeten Nachrichten angezeigt. Bereits gesendete Informationen können nicht mehr gelöscht oder entfernt werden.</string>
+    <string name="pref_who_can_see_profile_explain">Ihr Profilbild, Ihr Name und die Signatur werden beim Chatten zusammen mit Ihren Nachrichten gesendet.</string>
     <string name="pref_your_name">Mein Name</string>
     <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
     <string name="pref_default_status_label">Signatur</string>
