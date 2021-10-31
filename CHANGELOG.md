@@ -1,5 +1,44 @@
 # Delta Chat Android Changelog
 
+## v1.24.0
+2021-11
+
+* show the currently selected account in the chatlist;
+  a tap on it shows the new, improved account selector dialog
+* new option "Auto-Download Messages": Define the max. messages size to be downloaded automatically -
+  larger messages, as videos or large images, can be downloaded manually by a simple tap then
+* new: much easier joining of groups via qr-code: nothing blocks
+  and you get all progress information in the immediately created group
+* new: get warnings before your server runs out of space (if quota is supported by your provider)
+* messages are marked as "being read" already when the first recipient opened the message
+  (before, that requires 50% of the recipients to open the message)
+* contact requests are notified as usual now
+* force strict certificate checks when a strict certificate was seen on first login
+* do not forward group names on forwarding messages
+* "Broadcast Lists", as kown from other messengers, added as an experimental feature
+  (you can enable it at "Settings / Advanced")
+* improve accessibility: add some button descriptions
+* remove "view profile" from the chat menu; just tap the chat name to open the profile
+* accept contact request before replying from notification
+* improve selected recipients list on group creation
+* from within a contact's profile, offer group creation with that contact ("New Group or Subject")
+* fix: disappearing messages timer now synced more reliable in groups
+* fix: improve detection of some mailing list names
+* fix "QR process failed" error
+* fix DNS and certificate issues
+* fix: if account creation was aborted, go to the previously selected account, not to the first
+* fix back button not working in connectivity view sometimes
+* fix: disable chat editing options if oneself is not a member of the group
+* fix shared image being set as draft repeatedly
+* fix: hide keyboard when compose panel is hidden
+* fix "jump to section" links html-messages
+* fix: allow to select audio files in multi-select mode in Docs tab
+* fix fullscreen input issues by disabling this mode
+* fix: group creating: don't add members if back button is pressed
+* update provider-database
+* update translations and local help
+
+
 ## v1.22.1
 2021-08
 
