@@ -2,6 +2,11 @@
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <item android:title="@string/menu_share"
+          android:id="@+id/share"
+          android:icon="@drawable/ic_share_white_24dp"
+          app:showAsAction="ifRoom"/>
+
     <item android:title="@string/menu_copy_link_to_clipboard"
           android:id="@+id/copy"
           app:showAsAction="never"/>

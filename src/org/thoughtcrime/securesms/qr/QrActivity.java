@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -18,7 +17,6 @@ import com.google.android.material.tabs.TabLayout;
 
 import org.thoughtcrime.securesms.BaseActionBarActivity;
 import org.thoughtcrime.securesms.R;
-import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
@@ -36,6 +34,7 @@ public class QrActivity extends BaseActionBarActivity {
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
+    private QrShowFragment qrShowFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +45,7 @@ public class QrActivity extends BaseActionBarActivity {
         setContentView(R.layout.activity_qr);
         tabLayout = ViewUtil.findById(this, R.id.tab_layout);
         viewPager = ViewUtil.findById(this, R.id.pager);
-        ProfilePagerAdapter adapter = new ProfilePagerAdapter(getSupportFragmentManager());
+        ProfilePagerAdapter adapter = new ProfilePagerAdapter(this, getSupportFragmentManager());
         viewPager.setAdapter(adapter);
 
         setSupportActionBar(ViewUtil.findById(this, R.id.toolbar));
@@ -64,6 +63,7 @@ public class QrActivity extends BaseActionBarActivity {
 
             @Override
             public void onPageSelected(int position) {
+                QrActivity.this.invalidateOptionsMenu();
                 checkPermissions(position, adapter, viewPager);
             }
 
@@ -123,9 +123,11 @@ public class QrActivity extends BaseActionBarActivity {
             case android.R.id.home:
                 finish();
                 return true;
+            case R.id.share:
+                qrShowFragment.shareQr();
+                break;
             case R.id.copy:
-                Util.writeTextToClipboard(this, DcHelper.getContext(this).getSecurejoinQr(0));
-                Toast.makeText(this, getString(R.string.copied_to_clipboard), Toast.LENGTH_SHORT).show();
+                qrShowFragment.copyQrData();
                 break;
             case R.id.paste:
                 QrCodeHandler qrCodeHandler = new QrCodeHandler(this);
@@ -150,8 +152,11 @@ public class QrActivity extends BaseActionBarActivity {
 
     private class ProfilePagerAdapter extends FragmentStatePagerAdapter {
 
-        ProfilePagerAdapter(FragmentManager fragmentManager) {
+        private QrActivity activity;
+
+        ProfilePagerAdapter(QrActivity activity, FragmentManager fragmentManager) {
             super(fragmentManager, FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+            this.activity = activity;
         }
 
         @NonNull
@@ -161,7 +166,8 @@ public class QrActivity extends BaseActionBarActivity {
 
             switch (position) {
                 case TAB_SHOW:
-                    fragment = new QrShowFragment();
+                    activity.qrShowFragment = new QrShowFragment();
+                    fragment = activity.qrShowFragment;
                     break;
 
                 default:

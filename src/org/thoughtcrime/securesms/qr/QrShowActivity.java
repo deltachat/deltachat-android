@@ -3,7 +3,6 @@ package org.thoughtcrime.securesms.qr;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,19 +14,18 @@ import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
-import org.thoughtcrime.securesms.util.Util;
 
 public class QrShowActivity extends AppCompatActivity {
 
     private final DynamicTheme dynamicTheme = new DynamicTheme();
     private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
-    private int chatId = 0;
 
     public final static String CHAT_ID = "chat_id";
 
     DcEventCenter dcEventCenter;
 
     DcContext dcContext;
+    QrShowFragment fragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,11 +34,13 @@ public class QrShowActivity extends AppCompatActivity {
         dynamicLanguage.onCreate(this);
 
         setContentView(R.layout.activity_qr_show);
+        fragment = (QrShowFragment)getSupportFragmentManager().findFragmentById(R.id.qrScannerFragment);
 
         dcContext = DcHelper.getContext(this);
         dcEventCenter = DcHelper.getEventCenter(this);
 
         Bundle extras = getIntent().getExtras();
+        int chatId = 0;
         if (extras != null) {
             chatId = extras.getInt(CHAT_ID);
         }
@@ -86,9 +86,11 @@ public class QrShowActivity extends AppCompatActivity {
             case android.R.id.home:
                 finish();
                 return true;
+            case R.id.share:
+                fragment.shareQr();
+                break;
             case R.id.copy:
-                Util.writeTextToClipboard(this, DcHelper.getContext(this).getSecurejoinQr(chatId));
-                Toast.makeText(this, getString(R.string.copied_to_clipboard), Toast.LENGTH_SHORT).show();
+                fragment.copyQrData();
                 break;
         }
 
