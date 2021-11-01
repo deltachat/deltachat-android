@@ -498,9 +498,6 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
       if (chatIsMailingList || dcChat.canSend()) {
         Intent intent = new Intent(this, GroupCreateActivity.class);
         intent.putExtra(GroupCreateActivity.EDIT_GROUP_CHAT_ID, chatId);
-        if (dcChat.isProtected()) {
-          intent.putExtra(GroupCreateActivity.GROUP_CREATE_VERIFIED_EXTRA, true);
-        }
         startActivity(intent);
       }
     }

@@ -172,6 +172,8 @@
     <string name="menu_new_contact">Nieuw contactpersoon</string>
     <string name="menu_new_chat">Nieuw gesprek</string>
     <string name="menu_new_group">Nieuwe groep</string>
+    <!-- "Subject" here must be the same wording as used in the e-mail context, so. eg. "Betreff" in german (the idea is to help people coming from the e-mail context) -->
+    <string name="new_group_or_subject">Nieuwe groep of onderwerp</string>
     <string name="menu_new_verified_group">Nieuwe goedgekeurde groep</string>
     <!-- consider keeping the term "broadcast"; check how these lists are called eg. on whatsapp in the destination language -->
     <string name="broadcast_list">Verzendlijst</string>
@@ -539,7 +541,7 @@
     <string name="blocked_empty_hint">Geblokkeerde contactpersonen worden hier getoond.</string>
     <string name="pref_profile_photo_remove_ask">Profielfoto verwijderen?</string>
     <string name="pref_password_and_account_settings">Wachtwoord en account</string>
-    <string name="pref_who_can_see_profile_explain">Je profielfoto en -naam worden getoond in gesprekken, naast je berichten. Reeds verstuurde informatie kan niet worden verwijderd of teruggehaald.</string>
+    <string name="pref_who_can_see_profile_explain">Je profielfoto, -naam en handtekening worden getoond in gesprekken, naast je berichten.</string>
     <string name="pref_your_name">Je naam</string>
     <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
     <string name="pref_default_status_label">Handtekeningtekst</string>
