@@ -19,7 +19,6 @@ package org.thoughtcrime.securesms.mms;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -54,6 +53,7 @@ import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 import org.thoughtcrime.securesms.scribbles.ScribbleActivity;
 import org.thoughtcrime.securesms.util.MediaUtil;
 import org.thoughtcrime.securesms.util.ThemeUtil;
+import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.concurrent.ListenableFuture;
 import org.thoughtcrime.securesms.util.concurrent.ListenableFuture.Listener;
@@ -387,7 +387,7 @@ public class AttachmentManager {
                .request(Manifest.permission.WRITE_EXTERNAL_STORAGE)
                .ifNecessary()
                .withPermanentDenialDialog(activity.getString(R.string.perm_explain_access_to_storage_denied))
-               .onAllGranted(() -> selectMediaType(activity, "*/*", null, requestCode))
+               .onAllGranted(() -> Util.selectMediaType(activity, "*/*", null, requestCode))
                .execute();
   }
 
@@ -396,7 +396,7 @@ public class AttachmentManager {
                .request(Manifest.permission.WRITE_EXTERNAL_STORAGE)
                .ifNecessary()
                .withPermanentDenialDialog(activity.getString(R.string.perm_explain_access_to_storage_denied))
-               .onAllGranted(() -> selectMediaType(activity, "image/*", new String[] {"image/*", "video/*"}, requestCode))
+               .onAllGranted(() -> Util.selectMediaType(activity, "image/*", new String[] {"image/*", "video/*"}, requestCode))
                .execute();
   }
 
@@ -405,7 +405,7 @@ public class AttachmentManager {
             .request(Manifest.permission.WRITE_EXTERNAL_STORAGE)
             .ifNecessary()
             .withPermanentDenialDialog(activity.getString(R.string.perm_explain_access_to_storage_denied))
-            .onAllGranted(() -> selectMediaType(activity, "image/*", null, requestCode))
+            .onAllGranted(() -> Util.selectMediaType(activity, "image/*", null, requestCode))
             .execute();
   }
 
@@ -414,7 +414,7 @@ public class AttachmentManager {
                .request(Manifest.permission.WRITE_EXTERNAL_STORAGE)
                .ifNecessary()
                .withPermanentDenialDialog(activity.getString(R.string.perm_explain_access_to_storage_denied))
-               .onAllGranted(() -> selectMediaType(activity, "audio/*", null, requestCode))
+               .onAllGranted(() -> Util.selectMediaType(activity, "audio/*", null, requestCode))
                .execute();
   }
 
@@ -509,34 +509,6 @@ public class AttachmentManager {
           }
         })
         .execute();
-  }
-
-  private static void selectMediaType(Activity activity, @NonNull String type, @Nullable String[] extraMimeType, int requestCode) {
-    final Intent intent = new Intent();
-    intent.setType(type);
-
-    if (extraMimeType != null && Build.VERSION.SDK_INT >= 19) {
-      intent.putExtra(Intent.EXTRA_MIME_TYPES, extraMimeType);
-    }
-
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-      intent.setAction(Intent.ACTION_OPEN_DOCUMENT);
-      try {
-        activity.startActivityForResult(intent, requestCode);
-        return;
-      } catch (ActivityNotFoundException anfe) {
-        Log.w(TAG, "couldn't complete ACTION_OPEN_DOCUMENT, no activity found. falling back.");
-      }
-    }
-
-    intent.setAction(Intent.ACTION_GET_CONTENT);
-
-    try {
-      activity.startActivityForResult(intent, requestCode);
-    } catch (ActivityNotFoundException anfe) {
-      Log.w(TAG, "couldn't complete ACTION_GET_CONTENT intent, no activity found. falling back.");
-      Toast.makeText(activity, R.string.no_app_to_handle_data, Toast.LENGTH_LONG).show();
-    }
   }
 
   private void previewImageDraft(final @NonNull Slide slide) {

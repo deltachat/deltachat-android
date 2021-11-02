@@ -1,9 +1,15 @@
 package org.thoughtcrime.securesms.qr;
 
 import android.Manifest;
+import android.app.Activity;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -14,6 +20,12 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
+import com.google.zxing.BinaryBitmap;
+import com.google.zxing.MultiFormatReader;
+import com.google.zxing.NotFoundException;
+import com.google.zxing.Result;
+import com.google.zxing.RGBLuminanceSource;
+import com.google.zxing.common.HybridBinarizer;
 
 import org.thoughtcrime.securesms.BaseActionBarActivity;
 import org.thoughtcrime.securesms.R;
@@ -24,11 +36,16 @@ import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+
 public class QrActivity extends BaseActionBarActivity {
 
     private final DynamicTheme dynamicTheme = new DynamicNoActionBarTheme();
     private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
 
+    private final static String TAG = QrActivity.class.getSimpleName();
+    private final static int REQUEST_CODE_IMAGE = 9;
     private final static int TAB_SHOW = 0;
     private final static int TAB_SCAN = 1;
 
@@ -129,6 +146,14 @@ public class QrActivity extends BaseActionBarActivity {
             case R.id.copy:
                 qrShowFragment.copyQrData();
                 break;
+            case R.id.load_from_image:
+                Permissions.with(this)
+                           .request(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                           .ifNecessary()
+                           .withPermanentDenialDialog(getString(R.string.perm_explain_access_to_storage_denied))
+                           .onAllGranted(() -> Util.selectMediaType(this, "image/*", null, REQUEST_CODE_IMAGE))
+                           .execute();
+                break;
             case R.id.paste:
                 QrCodeHandler qrCodeHandler = new QrCodeHandler(this);
                 qrCodeHandler.handleOpenPgp4Fpr(Util.getTextFromClipboard(this));
@@ -147,6 +172,47 @@ public class QrActivity extends BaseActionBarActivity {
             viewPager.setCurrentItem(TAB_SHOW);
             // Workaround because sometimes something else requested the permissions before this class
             // (probably the CameraView) and then this class didn't notice when it was denied
+        }
+    }
+
+    @Override
+    public void onActivityResult(int reqCode, int resultCode, final Intent data) {
+        super.onActivityResult(reqCode, resultCode, data);
+
+        if (resultCode != Activity.RESULT_OK)
+            return;
+
+        switch (reqCode) {
+            case REQUEST_CODE_IMAGE:
+                Uri uri  = (data != null ? data.getData() : null);
+                if (uri != null) {
+                    try {
+                        InputStream inputStream = getContentResolver().openInputStream(uri);
+                        Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                        if (bitmap == null) {
+                            Log.e(TAG, "uri is not a bitmap: " + uri.toString());
+                            return;
+                        }
+                        int width = bitmap.getWidth(), height = bitmap.getHeight();
+                        int[] pixels = new int[width * height];
+                        bitmap.getPixels(pixels, 0, width, 0, 0, width, height);
+                        bitmap.recycle();
+                        bitmap = null;
+                        RGBLuminanceSource source = new RGBLuminanceSource(width, height, pixels);
+                        BinaryBitmap bBitmap = new BinaryBitmap(new HybridBinarizer(source));
+                        MultiFormatReader reader = new MultiFormatReader();
+                        try {
+                            Result result = reader.decode(bBitmap);
+                            QrCodeHandler qrCodeHandler = new QrCodeHandler(this);
+                            qrCodeHandler.handleOpenPgp4Fpr(result.getText());
+                        } catch (NotFoundException e) {
+                            Log.e(TAG, "decode exception", e);
+                        }
+                    } catch (FileNotFoundException e) {
+                        Log.e(TAG, "can not open file: " + uri.toString(), e);
+                    }
+                }
+                break;
         }
     }
 
