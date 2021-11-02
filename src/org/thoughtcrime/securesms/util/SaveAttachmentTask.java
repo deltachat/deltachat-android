@@ -17,6 +17,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.loader.content.CursorLoader;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.mms.PartAuthority;
@@ -29,11 +30,12 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.lang.ref.WeakReference;
 import java.text.SimpleDateFormat;
+import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
-public class SaveAttachmentTask extends ProgressDialogAsyncTask<SaveAttachmentTask.Attachment, Void, Pair<Integer, String>> {
+public class SaveAttachmentTask extends ProgressDialogAsyncTask<SaveAttachmentTask.Attachment, Void, Pair<Integer, Uri>> {
   private static final String TAG = SaveAttachmentTask.class.getSimpleName();
 
           static final int SUCCESS              = 0;
@@ -50,14 +52,14 @@ public class SaveAttachmentTask extends ProgressDialogAsyncTask<SaveAttachmentTa
   }
 
   @Override
-  protected Pair<Integer, String> doInBackground(SaveAttachmentTask.Attachment... attachments) {
+  protected Pair<Integer, Uri> doInBackground(SaveAttachmentTask.Attachment... attachments) {
     if (attachments == null || attachments.length == 0) {
       throw new AssertionError("must pass in at least one attachment");
     }
 
     try {
       Context      context      = contextReference.get();
-      String       directory    = null;
+      Uri          uri          = null;
 
       if (!StorageUtil.canWriteToMediaStore(context)) {
         return new Pair<>(WRITE_ACCESS_FAILURE, null);
@@ -69,19 +71,19 @@ public class SaveAttachmentTask extends ProgressDialogAsyncTask<SaveAttachmentTa
 
       for (Attachment attachment : attachments) {
         if (attachment != null) {
-          directory = saveAttachment(context, attachment);
-          if (directory == null) return new Pair<>(FAILURE, null);
+          uri = saveAttachment(context, attachment);
+          if (uri == null) return new Pair<>(FAILURE, null);
         }
       }
       if (attachments.length > 1) return new Pair<>(SUCCESS, null);
-      else                        return new Pair<>(SUCCESS, directory);
+      else                        return new Pair<>(SUCCESS, uri);
     } catch (IOException ioe) {
       Log.w(TAG, ioe);
       return new Pair<>(FAILURE, null);
     }
   }
 
-  private @Nullable String saveAttachment(Context context, Attachment attachment) throws IOException
+  private @Nullable Uri saveAttachment(Context context, Attachment attachment) throws IOException
   {
     String      contentType = Objects.requireNonNull(MediaUtil.getCorrectedMimeType(attachment.contentType));
     String         fileName = attachment.fileName;
@@ -127,7 +129,22 @@ public class SaveAttachmentTask extends ProgressDialogAsyncTask<SaveAttachmentTa
       getContext().getContentResolver().update(mediaUri, updateValues, null, null);
     }
 
-    return outputUri.getLastPathSegment();
+    return mediaUri;
+  }
+
+  private @Nullable String getRealPathFromURI(Uri contentUri) {
+    String[] proj = {MediaStore.MediaColumns.DATA};
+    CursorLoader loader = new CursorLoader(getContext(), contentUri, proj, null, null, null);
+    Cursor cursor = loader.loadInBackground();
+    int column_index = 0;
+    String result = null;
+    if (cursor != null) {
+      column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+      cursor.moveToFirst();
+      result = cursor.getString(column_index);
+      cursor.close();
+    }
+    return result;
   }
 
   private @NonNull Uri getMediaStoreContentUriForType(@NonNull String contentType) {
@@ -288,7 +305,7 @@ public class SaveAttachmentTask extends ProgressDialogAsyncTask<SaveAttachmentTa
   }
 
   @Override
-  protected void onPostExecute(final Pair<Integer, String> result) {
+  protected void onPostExecute(final Pair<Integer, Uri> result) {
     super.onPostExecute(result);
     final Context context = contextReference.get();
     if (context == null) return;
@@ -300,7 +317,19 @@ public class SaveAttachmentTask extends ProgressDialogAsyncTask<SaveAttachmentTa
                        Toast.LENGTH_LONG).show();
         break;
       case SUCCESS:
-        String dir = result.second();
+        Uri uri = result.second();
+        String dir;
+
+        String path = getRealPathFromURI(uri);
+        if (path != null) uri = Uri.parse(path);
+
+        List<String> segments = uri.getPathSegments();
+        if (segments.size() >= 2) {
+          dir = segments.get(segments.size() - 2);
+        } else {
+          dir = uri.getPath();
+        }
+
         Toast.makeText(context,
                        dir==null? context.getString(R.string.done) : context.getString(R.string.file_saved_to, dir),
                        Toast.LENGTH_LONG).show();
