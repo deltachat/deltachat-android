@@ -52,6 +52,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
     public static final int PICK_BACKUP = 20574;
     private final static String TAG = WelcomeActivity.class.getSimpleName();
     public static final String TMP_BACKUP_FILE = "tmp-backup-file";
+    public static final String DC_REQUEST_ACCOUNT_DATA = "chat.delta.DC_REQUEST_ACCOUNT_DATA";
 
     private boolean manualConfigure = true; // false: configure by QR account creation
     private ProgressDialog progressDialog = null;
@@ -77,6 +78,16 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
         DcEventCenter eventCenter = DcHelper.getEventCenter(this);
         eventCenter.addObserver(DcContext.DC_EVENT_CONFIGURE_PROGRESS, this);
         eventCenter.addObserver(DcContext.DC_EVENT_IMEX_PROGRESS, this);
+
+        if (!DcHelper.hasAnyConfiguredContext(this)) {
+          Intent intent = new Intent();
+          // Since android API 26 only explicit broadcasts are allowed for IPC with a few exceptions.
+          // As a result we have to send for each companion app we want to support an intent with a
+          // specified package
+          intent.setPackage("org.cyberta");
+          intent.setAction(DC_REQUEST_ACCOUNT_DATA);
+          sendBroadcast(intent);
+        }
     }
 
     @Override

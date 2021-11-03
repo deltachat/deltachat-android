@@ -81,10 +81,22 @@ public class DcHelper {
         return ApplicationContext.getInstance(context).notificationCenter;
     }
 
+    public static boolean hasAnyConfiguredContext(Context context) {
+      DcAccounts accounts = getAccounts(context);
+      int[] accountIds = accounts.getAll();
+      for (int accountId : accountIds) {
+        if (accounts.getAccount(accountId).isConfigured() == 1) {
+          return true;
+        }
+      }
+      return false;
+    }
+
     public static boolean isConfigured(Context context) {
         DcContext dcContext = getContext(context);
         return dcContext.isConfigured() == 1;
     }
+
 
     public static int getInt(Context context, String key) {
         DcContext dcContext = getContext(context);
