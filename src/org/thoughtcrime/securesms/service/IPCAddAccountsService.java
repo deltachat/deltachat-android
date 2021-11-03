@@ -14,8 +14,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import org.thoughtcrime.securesms.RegistrationActivity;
+import org.thoughtcrime.securesms.connect.AccountManager;
 
 import java.lang.ref.WeakReference;
+
+import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_ADDRESS;
 
 public class IPCAddAccountsService extends Service {
   public final static int ADD_ACCOUNT = 1;
@@ -33,15 +36,11 @@ public class IPCAddAccountsService extends Service {
     @Override
     public void handleMessage(@NonNull Message msg) {
       Log.d(TAG, "handle Message");
-      if (msg.what == ADD_ACCOUNT) {
-        Log.d(TAG, "ADD ACCOUNT called");
-        Bundle data = msg.getData();
-        Context context = contextRef.get();
-        if (data == null || context == null) {
-          // ignore
-          super.handleMessage(msg);
-          return;
-        }
+      Bundle data = msg.getData();
+      Context context = contextRef.get();
+      if (data != null && context != null && msg.what == ADD_ACCOUNT) {
+        Log.d(TAG, "ADD ACCOUNT called for account: " + data.getString(CONFIG_ADDRESS));
+        AccountManager.getInstance().beginAccountCreation(context);
         Intent registrationIntent = new Intent(context, RegistrationActivity.class);
         registrationIntent.putExtra(ACCOUNT_DATA, data);
         registrationIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
