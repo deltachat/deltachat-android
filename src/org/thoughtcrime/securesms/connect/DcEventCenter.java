@@ -95,25 +95,11 @@ public class DcEventCenter {
     }
 
   private final Object lastErrorLock = new Object();
-  private String lastErrorString = "";
   private boolean showNextErrorAsToast = true;
 
   public void captureNextError() {
     synchronized (lastErrorLock) {
       showNextErrorAsToast = false;
-      lastErrorString = "";
-    }
-  }
-
-  public boolean hasCapturedError() {
-    synchronized (lastErrorLock) {
-      return !lastErrorString.isEmpty();
-    }
-  }
-
-  public String getCapturedError() {
-    synchronized (lastErrorLock) {
-      return lastErrorString;
     }
   }
 
@@ -128,7 +114,6 @@ public class DcEventCenter {
     boolean showAsToast;
     Log.e("DeltaChat", string);
     synchronized (lastErrorLock) {
-      lastErrorString = string;
       showAsToast = showNextErrorAsToast;
       showNextErrorAsToast = true;
     }
