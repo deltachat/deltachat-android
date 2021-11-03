@@ -294,6 +294,16 @@
 
     <service android:name=".service.GenericForegroundService" />
 
+    <service
+        android:name=".service.IPCAddAccountsService"
+        android:enabled="true"
+        android:exported="true"
+        >
+        <intent-filter>
+            <action android:name="chat.delta.addaccount" />
+        </intent-filter>
+    </service>
+
     <receiver android:name=".notifications.MarkReadReceiver"
               android:enabled="true"
               android:exported="false">
