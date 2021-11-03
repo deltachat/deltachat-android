@@ -18,17 +18,13 @@ package org.thoughtcrime.securesms.util;
 
 import android.annotation.TargetApi;
 import android.app.ActivityManager;
-import android.app.Activity;
-import android.content.ActivityNotFoundException;
 import android.content.ClipData;
 import android.content.ClipDescription;
 import android.content.ClipboardManager;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
 import android.os.Handler;
@@ -38,7 +34,6 @@ import android.text.SpannableString;
 import android.text.TextUtils;
 import android.text.style.StyleSpan;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -349,33 +344,5 @@ public class Util {
   /// to argb-color as used by Android.
   public static int rgbToArgbColor(int rgb) {
     return Color.argb(0xFF, Color.red(rgb), Color.green(rgb), Color.blue(rgb));
-  }
-
-  public static void selectMediaType(Activity activity, @NonNull String type, @Nullable String[] extraMimeType, int requestCode) {
-    final Intent intent = new Intent();
-    intent.setType(type);
-
-    if (extraMimeType != null && Build.VERSION.SDK_INT >= 19) {
-      intent.putExtra(Intent.EXTRA_MIME_TYPES, extraMimeType);
-    }
-
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-      intent.setAction(Intent.ACTION_OPEN_DOCUMENT);
-      try {
-        activity.startActivityForResult(intent, requestCode);
-        return;
-      } catch (ActivityNotFoundException anfe) {
-        Log.w(TAG, "couldn't complete ACTION_OPEN_DOCUMENT, no activity found. falling back.");
-      }
-    }
-
-    intent.setAction(Intent.ACTION_GET_CONTENT);
-
-    try {
-      activity.startActivityForResult(intent, requestCode);
-    } catch (ActivityNotFoundException anfe) {
-      Log.w(TAG, "couldn't complete ACTION_GET_CONTENT intent, no activity found. falling back.");
-      Toast.makeText(activity, R.string.no_app_to_handle_data, Toast.LENGTH_LONG).show();
-    }
   }
 }

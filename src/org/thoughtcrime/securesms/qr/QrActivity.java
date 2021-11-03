@@ -29,6 +29,7 @@ import com.google.zxing.common.HybridBinarizer;
 
 import org.thoughtcrime.securesms.BaseActionBarActivity;
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.mms.AttachmentManager;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
@@ -147,12 +148,7 @@ public class QrActivity extends BaseActionBarActivity {
                 qrShowFragment.copyQrData();
                 break;
             case R.id.load_from_image:
-                Permissions.with(this)
-                           .request(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                           .ifNecessary()
-                           .withPermanentDenialDialog(getString(R.string.perm_explain_access_to_storage_denied))
-                           .onAllGranted(() -> Util.selectMediaType(this, "image/*", null, REQUEST_CODE_IMAGE))
-                           .execute();
+                AttachmentManager.selectImage(this, REQUEST_CODE_IMAGE);
                 break;
             case R.id.paste:
                 QrCodeHandler qrCodeHandler = new QrCodeHandler(this);
