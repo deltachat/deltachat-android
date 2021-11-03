@@ -205,16 +205,15 @@ public class QrCodeHandler {
         builder.setPositiveButton(android.R.string.ok, (dialogInterface, i) -> {
             DcHelper.getEventCenter(activity).captureNextError();
             int newChatId = dcContext.joinSecurejoin(qrRawString);
-            String errorString = DcHelper.getEventCenter(activity).getCapturedError();
             DcHelper.getEventCenter(activity).endCaptureNextError();
 
             if (newChatId != 0) {
                 Intent intent = new Intent(activity, ConversationActivity.class);
                 intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, newChatId);
                 activity.startActivity(intent);
-            } else if (!errorString.isEmpty()) {
+            } else {
                 AlertDialog.Builder builder1 = new AlertDialog.Builder(activity);
-                builder1.setMessage(errorString);
+                builder1.setMessage(dcContext.getLastError());
                 builder1.setPositiveButton(android.R.string.ok, null);
                 builder1.create().show();
             }

@@ -211,9 +211,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
         DcHelper.getEventCenter(this).captureNextError();
 
         if (!dcContext.setConfigFromQr(qrCode)) {
-            Util.sleep(100); // hack to avoid a race condition, see https://github.com/deltachat/deltachat-core-rust/issues/2787 for more details and possible fix
-            String err = DcHelper.getEventCenter(this).getCapturedError();
-            progressError(TextUtils.isEmpty(err) ? "Cannot create account from QR code." : err);
+            progressError(dcContext.getLastError());
             return;
         }
 
