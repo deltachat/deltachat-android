@@ -43,7 +43,7 @@ public class IPCAddAccountsService extends Service {
         AccountManager.getInstance().beginAccountCreation(context);
         Intent registrationIntent = new Intent(context, RegistrationActivity.class);
         registrationIntent.putExtra(ACCOUNT_DATA, data);
-        registrationIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        registrationIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         context.startActivity(registrationIntent);
       } else {
         super.handleMessage(msg);
