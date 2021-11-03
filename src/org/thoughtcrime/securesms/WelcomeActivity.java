@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.text.util.Linkify;
 import android.view.View;
 import android.widget.Button;
@@ -29,6 +30,7 @@ import org.thoughtcrime.securesms.service.GenericForegroundService;
 import org.thoughtcrime.securesms.service.NotificationController;
 import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
 import org.thoughtcrime.securesms.util.DynamicTheme;
+import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.views.ProgressDialog;
 
 import java.io.File;
@@ -167,7 +169,10 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
         DcHelper.getEventCenter(this).captureNextError();
 
         if (!dcContext.setConfigFromQr(qrCode)) {
-            progressError(DcHelper.getEventCenter(this).getCapturedError());
+            Util.sleep(100); // hack to avoid a race condition, see https://github.com/deltachat/deltachat-core-rust/issues/2787 for more details and possible fix
+            String err = DcHelper.getEventCenter(this).getCapturedError();
+            progressError(TextUtils.isEmpty(err) ? "Cannot create account from QR code." : err);
+            return;
         }
 
         // calling configure() results in
