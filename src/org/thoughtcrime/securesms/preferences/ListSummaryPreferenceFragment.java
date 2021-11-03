@@ -101,8 +101,10 @@ public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceF
   protected ProgressDialog progressDialog = null;
   protected int            progressWhat = 0;
   protected String         imexDir = "";
+  protected boolean        imexUserAborted = false;
   protected void startImex(int what)
   {
+    imexUserAborted = false;
     notificationController = GenericForegroundService.startForegroundTask(getContext(), getString(R.string.export_backup_desktop));
     if( progressDialog!=null ) {
       progressDialog.dismiss();
@@ -114,6 +116,7 @@ public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceF
     progressDialog.setCanceledOnTouchOutside(false);
     progressDialog.setCancelable(false);
     progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, getActivity().getString(android.R.string.cancel), (dialog, which) -> {
+      imexUserAborted = true;
       dcContext.stopOngoingProcess();
       notificationController.close();
       notificationController = null;
@@ -136,9 +139,9 @@ public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceF
         DcHelper.getAccounts(context).startIo();
         progressDialog.dismiss();
         progressDialog = null;
-        if (DcHelper.getEventCenter(context).hasCapturedError()) {
+        if (!imexUserAborted) {
           new AlertDialog.Builder(context)
-                  .setMessage(DcHelper.getEventCenter(context).getCapturedError())
+                  .setMessage(dcContext.getLastError())
                   .setPositiveButton(android.R.string.ok, null)
                   .show();
         }

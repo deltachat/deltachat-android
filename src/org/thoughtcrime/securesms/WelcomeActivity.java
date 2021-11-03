@@ -55,6 +55,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
 
     private boolean manualConfigure = true; // false: configure by QR account creation
     private ProgressDialog progressDialog = null;
+    private boolean imexUserAborted;
     DcContext dcContext;
     private NotificationController notificationController;
 
@@ -153,11 +154,13 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
             progressDialog = null;
         }
 
+        imexUserAborted = false;
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage(getResources().getString(R.string.one_moment));
         progressDialog.setCanceledOnTouchOutside(false);
         progressDialog.setCancelable(false);
         progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, getResources().getString(android.R.string.cancel), (dialog, which) -> {
+            imexUserAborted = true;
             dcContext.stopOngoingProcess();
             notificationController.close();
             cleanupTempBackupFile();
@@ -268,7 +271,9 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
         if (eventId== DcContext.DC_EVENT_IMEX_PROGRESS ) {
             long progress = event.getData1Int();
             if (progress==0/*error/aborted*/) {
-                progressError(DcHelper.getEventCenter(this).getCapturedError());
+                if (!imexUserAborted) {
+                  progressError(dcContext.getLastError());
+                }
                 notificationController.close();
                 cleanupTempBackupFile();
             }
