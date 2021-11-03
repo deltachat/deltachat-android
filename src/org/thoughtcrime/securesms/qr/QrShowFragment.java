@@ -65,6 +65,7 @@ public class QrShowFragment extends Fragment implements DcEventCenter.DcEventDel
 
     private BroadcastReceiver broadcastReceiver;
 
+    private Bitmap bitmap;
 
     @Override
     public void onCreate(Bundle bundle) {
@@ -119,7 +120,7 @@ public class QrShowFragment extends Fragment implements DcEventCenter.DcEventDel
 
         ImageView imageView = view.findViewById(R.id.qrImage);
         try {
-            Bitmap bitmap = encodeAsBitmap(dcContext.getSecurejoinQr(chatId));
+            bitmap = encodeAsBitmap(dcContext.getSecurejoinQr(chatId));
             imageView.setImageBitmap(bitmap);
         } catch (WriterException e) {
             e.printStackTrace();
@@ -134,7 +135,6 @@ public class QrShowFragment extends Fragment implements DcEventCenter.DcEventDel
             file.createNewFile();
             file.setReadable(true, false);
             FileOutputStream stream = new FileOutputStream(file);
-            Bitmap bitmap = encodeAsBitmap(DcHelper.getContext(getActivity()).getSecurejoinQr(chatId));
             bitmap.compress(Bitmap.CompressFormat.PNG, 90, stream);
             stream.flush();
             stream.close();
