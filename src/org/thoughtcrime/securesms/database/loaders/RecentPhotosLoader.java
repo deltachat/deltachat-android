@@ -25,7 +25,7 @@ public class RecentPhotosLoader extends CursorLoader {
   };
 
   private static final String SELECTION  = Build.VERSION.SDK_INT > 28 ? MediaStore.Images.Media.IS_PENDING + " != 1"
-                                                                      : MediaStore.Images.Media.DATA + " IS NULL";
+                                                                      : null;
 
   private final Context context;
 
