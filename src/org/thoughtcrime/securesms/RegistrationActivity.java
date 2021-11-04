@@ -184,7 +184,6 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
           if (!TextUtils.isEmpty(emailAddress) && !TextUtils.isEmpty(password)) {
             emailInput.setText(emailAddress);
             passwordInput.setText(password);
-            updateProviderInfo();
             onLogin();
           }
         }
