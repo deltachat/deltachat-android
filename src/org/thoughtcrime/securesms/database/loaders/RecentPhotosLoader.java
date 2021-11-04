@@ -25,7 +25,7 @@ public class RecentPhotosLoader extends CursorLoader {
   };
 
   private static final String SELECTION  = Build.VERSION.SDK_INT > 28 ? MediaStore.Images.Media.IS_PENDING + " != 1"
-                                                                      : MediaStore.Images.Media.DATA + " IS NULL";
+                                                                      : null;
 
   private final Context context;
 
@@ -36,7 +36,7 @@ public class RecentPhotosLoader extends CursorLoader {
 
   @Override
   public Cursor loadInBackground() {
-    if (Permissions.hasAll(context, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+    if (Permissions.hasAll(context, Manifest.permission.READ_EXTERNAL_STORAGE)) {
       return context.getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
                                                 PROJECTION, SELECTION, null,
                                                 MediaStore.Images.ImageColumns.DATE_MODIFIED + " DESC");
