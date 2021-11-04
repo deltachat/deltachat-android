@@ -185,6 +185,11 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
             emailInput.setText(emailAddress);
             passwordInput.setText(password);
             onLogin();
+          } else {
+            String errorText = "Companion app auto-configuration failed.";
+            errorText += TextUtils.isEmpty(emailAddress) ? " Missing emailAddress." : "";
+            errorText += TextUtils.isEmpty(password) ? " Missing password." : "";
+            Toast.makeText(this, errorText, Toast.LENGTH_LONG).show();
           }
         }
 
