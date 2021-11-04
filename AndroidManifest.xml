@@ -45,7 +45,6 @@
                  android:theme="@style/TextSecure.LightTheme"
                  android:largeHeap="true"
                  tools:ignore="GoogleAppIndexingWarning"
-                 android:requestLegacyExternalStorage="true"
         >
 
     <!-- android car support, see https://developer.android.com/training/auto/start/,
@@ -123,10 +122,14 @@
             <category android:name="android.intent.category.BROWSABLE"/>
             <!-- Android's scheme matcher is case-sensitive, so include most likely variations -->
             <data android:scheme="openpgp4fpr" />
-            <data android:scheme="OPENPGP4FPR" />
-            <data android:scheme="OpenPGP4FPR" />
-            <data android:scheme="OpenPGP4Fpr" />
-            <data android:scheme="OpenPGP4fpr" />
+            <data android:scheme="OPENPGP4FPR"
+                tools:ignore="AppLinkUrlError" />
+            <data android:scheme="OpenPGP4FPR"
+                tools:ignore="AppLinkUrlError" />
+            <data android:scheme="OpenPGP4Fpr"
+                tools:ignore="AppLinkUrlError" />
+            <data android:scheme="OpenPGP4fpr"
+                tools:ignore="AppLinkUrlError" />
         </intent-filter>
 
         <meta-data android:name="com.sec.minimode.icon.portrait.normal"
@@ -345,6 +348,11 @@
     <meta-data android:name="com.sec.android.multiwindow.DEFAULT_SIZE_H" android:value="598.0dip" />
     <meta-data android:name="com.sec.android.multiwindow.MINIMUM_SIZE_W" android:value="632.0dip" />
     <meta-data android:name="com.sec.android.multiwindow.MINIMUM_SIZE_H" android:value="598.0dip" />
-
 </application>
+
+<queries>
+    <intent>
+        <action android:name="android.media.action.IMAGE_CAPTURE" />
+    </intent>
+</queries>
 </manifest>
