@@ -99,10 +99,6 @@ android {
     compileSdkVersion 30
     useLibrary 'org.apache.http.legacy'
 
-    dexOptions {
-        javaMaxHeapSize "4g"
-    }
-
     defaultConfig {
         versionCode 613
         versionName "1.23.1-beta"
