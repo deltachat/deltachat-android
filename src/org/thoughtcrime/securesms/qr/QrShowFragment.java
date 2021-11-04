@@ -146,7 +146,7 @@ public class QrShowFragment extends Fragment implements DcEventCenter.DcEventDel
             intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             startActivity(Intent.createChooser(intent, getString(R.string.chat_share_with_title)));
         } catch (Exception e) {
-            Log.w(TAG, e);
+            Log.e(TAG, "failed to share QR", e);
         }
     }
 
