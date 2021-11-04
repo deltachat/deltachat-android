@@ -17,6 +17,9 @@
 
 package org.thoughtcrime.securesms;
 
+import static org.thoughtcrime.securesms.util.RelayUtil.REQUEST_RELAY;
+import static org.thoughtcrime.securesms.util.RelayUtil.setSharedText;
+
 import android.Manifest;
 import android.content.Intent;
 import android.net.Uri;
@@ -44,9 +47,6 @@ import org.thoughtcrime.securesms.util.RelayUtil;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.thoughtcrime.securesms.util.RelayUtil.REQUEST_RELAY;
-import static org.thoughtcrime.securesms.util.RelayUtil.setSharedText;
 
 /**
  * An activity to quickly share content with chats
@@ -127,7 +127,7 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity implement
     }
 
     if (needsFilePermission(streamExtras)) {
-      if (Permissions.hasAll(this, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)) {
+      if (Permissions.hasAll(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
         resolveUris(streamExtras);
       } else {
         requestPermissionForFiles(streamExtras);
