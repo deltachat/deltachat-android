@@ -7,6 +7,9 @@
   a tap on it shows the new, improved account selector dialog
 * new option "Auto-Download Messages": Define the max. messages size to be downloaded automatically -
   larger messages, as videos or large images, can be downloaded manually by a simple tap then
+* long tap the app icon to go directly to one of the recent chats
+  (requires Android 7 and a compatible launcher)
+* much more QR code options: copy, paste, save as image, import from image
 * new: much easier joining of groups via qr-code: nothing blocks
   and you get all progress information in the immediately created group
 * new: get warnings before your server runs out of space (if quota is supported by your provider)
