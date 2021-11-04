@@ -131,7 +131,7 @@ public class QrShowFragment extends Fragment implements DcEventCenter.DcEventDel
 
     public void shareQr() {
         try {
-            File file = new File(getActivity().getCacheDir(), "share-qr.png");
+            File file = new File(getActivity().getExternalCacheDir(), "share-qr.png");
             file.createNewFile();
             file.setReadable(true, false);
             FileOutputStream stream = new FileOutputStream(file);
