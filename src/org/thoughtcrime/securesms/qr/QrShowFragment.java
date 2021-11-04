@@ -11,7 +11,6 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
-import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -131,13 +130,15 @@ public class QrShowFragment extends Fragment implements DcEventCenter.DcEventDel
 
     public void shareQr() {
         try {
-            File file = new File(getActivity().getExternalCacheDir(), "share-qr.png");
+            File file = new File(getActivity().getCacheDir(), "share-qr.png");
+            Log.e("dbg", file.toString());
             file.createNewFile();
-            file.setReadable(true, false);
             FileOutputStream stream = new FileOutputStream(file);
             bitmap.compress(Bitmap.CompressFormat.PNG, 90, stream);
             stream.flush();
             stream.close();
+            DcHelper.openForViewOrShare(getActivity(), Intent.ACTION_SEND, );
+
             Uri uri = FileProviderUtil.getUriFor(getActivity(), file);
             Intent intent = new Intent(Intent.ACTION_SEND);
             intent.setType("image/png");

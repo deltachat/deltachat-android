@@ -18,14 +18,12 @@ import androidx.core.content.FileProvider;
 
 import com.b44t.messenger.DcAccounts;
 import com.b44t.messenger.DcChat;
-import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcLot;
 import com.b44t.messenger.DcMsg;
 
 import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.BuildConfig;
-import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.database.model.ThreadRecord;
 import org.thoughtcrime.securesms.notifications.NotificationCenter;
@@ -206,6 +204,15 @@ public class DcHelper {
   public static void openForViewOrShare(Context activity, int msg_id, String cmd) {
     DcContext dcContext = getContext(activity);
 
+    DcMsg msg = dcContext.getMsg(msg_id);
+    String path = msg.getFile();
+    String mimeType = msg.getFilemime();
+    openForViewOrShare(activity, cmd, path, mimeType, msg.getText());
+  }
+
+  private static void openForViewOrShare(Context activity, String cmd, String path, String mimeType, String text) {
+    DcContext dcContext = getContext(activity);
+
     if(!(activity instanceof Activity)) {
       // would be nicer to accepting only Activity objects,
       // however, typically in Android just Context objects are passed around (as this normally does not make a difference).
@@ -214,9 +221,6 @@ public class DcHelper {
       return;
     }
 
-    DcMsg msg = dcContext.getMsg(msg_id);
-    String path = msg.getFile();
-    String mimeType = msg.getFilemime();
     try {
       File file = new File(path);
       if (!file.exists()) {
@@ -246,7 +250,7 @@ public class DcHelper {
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType(mimeType);
         intent.putExtra(Intent.EXTRA_STREAM, uri);
-        intent.putExtra(Intent.EXTRA_TEXT, msg.getText());
+        intent.putExtra(Intent.EXTRA_TEXT, text);
         intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         activity.startActivity(Intent.createChooser(intent, activity.getString(R.string.chat_share_with_title)));
       }
