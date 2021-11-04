@@ -27,6 +27,7 @@ import android.graphics.PorterDuff;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
+import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.provider.OpenableColumns;
 import android.util.Log;
@@ -53,6 +54,7 @@ import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 import org.thoughtcrime.securesms.scribbles.ScribbleActivity;
 import org.thoughtcrime.securesms.util.MediaUtil;
+import org.thoughtcrime.securesms.util.StorageUtil;
 import org.thoughtcrime.securesms.util.ThemeUtil;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.concurrent.ListenableFuture;
@@ -383,17 +385,12 @@ public class AttachmentManager {
   }
 
   public static void selectDocument(Activity activity, int requestCode) {
-    Permissions.with(activity)
-               .request(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-               .ifNecessary()
-               .withPermanentDenialDialog(activity.getString(R.string.perm_explain_access_to_storage_denied))
-               .onAllGranted(() -> selectMediaType(activity, "*/*", null, requestCode))
-               .execute();
+    selectMediaType(activity, "*/*", null, requestCode);
   }
 
   public static void selectGallery(Activity activity, int requestCode) {
     Permissions.with(activity)
-               .request(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+               .request(Manifest.permission.READ_EXTERNAL_STORAGE)
                .ifNecessary()
                .withPermanentDenialDialog(activity.getString(R.string.perm_explain_access_to_storage_denied))
                .onAllGranted(() -> selectMediaType(activity, "image/*", new String[] {"image/*", "video/*"}, requestCode))
@@ -402,7 +399,7 @@ public class AttachmentManager {
 
   public static void selectImage(Activity activity, int requestCode) {
     Permissions.with(activity)
-            .request(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+            .request(Manifest.permission.READ_EXTERNAL_STORAGE)
             .ifNecessary()
             .withPermanentDenialDialog(activity.getString(R.string.perm_explain_access_to_storage_denied))
             .onAllGranted(() -> selectMediaType(activity, "image/*", null, requestCode))
@@ -411,7 +408,7 @@ public class AttachmentManager {
 
   public static void selectAudio(Activity activity, int requestCode) {
     Permissions.with(activity)
-               .request(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+               .request(Manifest.permission.READ_EXTERNAL_STORAGE)
                .ifNecessary()
                .withPermanentDenialDialog(activity.getString(R.string.perm_explain_access_to_storage_denied))
                .onAllGranted(() -> selectMediaType(activity, "audio/*", null, requestCode))
@@ -511,12 +508,20 @@ public class AttachmentManager {
         .execute();
   }
 
-  private static void selectMediaType(Activity activity, @NonNull String type, @Nullable String[] extraMimeType, int requestCode) {
+  public static void selectMediaType(Activity activity, @NonNull String type, @Nullable String[] extraMimeType, int requestCode) {
+    selectMediaType(activity, type, extraMimeType, requestCode, null);
+  }
+
+  public static void selectMediaType(Activity activity, @NonNull String type, @Nullable String[] extraMimeType, int requestCode, @Nullable Uri initialUri) {
     final Intent intent = new Intent();
     intent.setType(type);
 
     if (extraMimeType != null && Build.VERSION.SDK_INT >= 19) {
       intent.putExtra(Intent.EXTRA_MIME_TYPES, extraMimeType);
+    }
+
+    if (initialUri != null && Build.VERSION.SDK_INT >= 26) {
+      intent.putExtra(DocumentsContract.EXTRA_INITIAL_URI, initialUri);
     }
 
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {

@@ -172,6 +172,8 @@
     <string name="menu_new_contact">Nouveau contact</string>
     <string name="menu_new_chat">Nouvelle discussion</string>
     <string name="menu_new_group">Nouveau groupe</string>
+    <!-- "Subject" here must be the same wording as used in the e-mail context, so. eg. "Betreff" in german (the idea is to help people coming from the e-mail context) -->
+    <string name="new_group_or_subject">Nouveau groupe ou sujet.</string>
     <string name="menu_new_verified_group">Nouveau groupe vérifié</string>
     <!-- consider keeping the term "broadcast"; check how these lists are called eg. on whatsapp in the destination language -->
     <string name="broadcast_list">Liste de diffusion</string>
@@ -778,6 +780,10 @@
     <string name="qraccount_success_enter_name">Connexion réussie – votre adresse de courriel est %1$s\n\nSi vous le souhaitez, vous pouvez maintenant choisir un nom et une image de profil qui seront affichés aux personnes à qui vous écrivez.</string>
     <string name="qraccount_qr_code_cannot_be_used">Le code QR scanné ne peut pas être utilisé pour ouvrir un nouveau compte.</string>
     <string name="qraccount_use_on_new_install">Le code QR scanné permet de configurer un nouveau compte. Vous pouvez scanner le code QR à la configuration d\'une nouvelle installation de Delta Chat.</string>
+    <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
+    <string name="secure_join_started">%1$s vous a invité à rejoindre ce groupe.\n\nEn attente de la réponse de l’appareil de %2$s…</string>
+    <!-- placeholder will be replaced by the name of the inviter. -->
+    <string name="secure_join_replies">%1$s a répondu, en attente d’être ajouté au groupe…</string>
     <string name="contact_verified">%1$s vérifié.</string>
     <string name="contact_not_verified">Ne peut pas vérifier %1$s</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->

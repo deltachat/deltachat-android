@@ -295,7 +295,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
         String uriString = uri.toString();
         uriString = uriString.replaceFirst(OPENPGP4FPR, OPENPGP4FPR.toUpperCase());
         QrCodeHandler qrCodeHandler = new QrCodeHandler(this);
-        qrCodeHandler.handleOpenPgp4Fpr(uriString);
+        qrCodeHandler.handleQrData(uriString);
       }
     }
   }

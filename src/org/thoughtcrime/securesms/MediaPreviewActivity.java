@@ -45,14 +45,6 @@ import androidx.loader.content.Loader;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
-import androidx.loader.app.LoaderManager;
-import androidx.loader.content.Loader;
-import androidx.viewpager.widget.PagerAdapter;
-import androidx.viewpager.widget.ViewPager;
-
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMediaGalleryElement;
@@ -73,6 +65,7 @@ import org.thoughtcrime.securesms.util.DateUtils;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.SaveAttachmentTask;
 import org.thoughtcrime.securesms.util.SaveAttachmentTask.Attachment;
+import org.thoughtcrime.securesms.util.StorageUtil;
 import org.thoughtcrime.securesms.util.Util;
 
 import java.io.IOException;
@@ -300,18 +293,27 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
 
     if (mediaItem != null) {
       SaveAttachmentTask.showWarningDialog(this, (dialogInterface, i) -> {
+        if (StorageUtil.canWriteToMediaStore(this)) {
+          performSavetoDisk(mediaItem);
+          return;
+        }
+
         Permissions.with(this)
-                   .request(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)
+                   .request(Manifest.permission.WRITE_EXTERNAL_STORAGE)
                    .ifNecessary()
                    .withPermanentDenialDialog(getString(R.string.perm_explain_access_to_storage_denied))
                    .onAllGranted(() -> {
-                     SaveAttachmentTask saveTask = new SaveAttachmentTask(MediaPreviewActivity.this);
-                     long saveDate = (mediaItem.date > 0) ? mediaItem.date : System.currentTimeMillis();
-                     saveTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Attachment(mediaItem.uri, mediaItem.type, saveDate, null));
+                     performSavetoDisk(mediaItem);
                    })
                    .execute();
       });
     }
+  }
+
+  private void performSavetoDisk(@NonNull MediaItem mediaItem) {
+    SaveAttachmentTask saveTask = new SaveAttachmentTask(MediaPreviewActivity.this);
+    long               saveDate = (mediaItem.date > 0) ? mediaItem.date : System.currentTimeMillis();
+    saveTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Attachment(mediaItem.uri, mediaItem.type, saveDate, null));
   }
 
   private void showInChat() {

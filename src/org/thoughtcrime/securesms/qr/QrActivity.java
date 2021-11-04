@@ -1,10 +1,18 @@
 package org.thoughtcrime.securesms.qr;
 
 import android.Manifest;
+import android.app.Activity;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -13,25 +21,39 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
+import com.google.zxing.BinaryBitmap;
+import com.google.zxing.MultiFormatReader;
+import com.google.zxing.NotFoundException;
+import com.google.zxing.Result;
+import com.google.zxing.RGBLuminanceSource;
+import com.google.zxing.common.HybridBinarizer;
 
 import org.thoughtcrime.securesms.BaseActionBarActivity;
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.mms.AttachmentManager;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
 import org.thoughtcrime.securesms.util.DynamicTheme;
+import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
+
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 
 public class QrActivity extends BaseActionBarActivity {
 
     private final DynamicTheme dynamicTheme = new DynamicNoActionBarTheme();
     private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
 
+    private final static String TAG = QrActivity.class.getSimpleName();
+    private final static int REQUEST_CODE_IMAGE = 46243;
     private final static int TAB_SHOW = 0;
     private final static int TAB_SCAN = 1;
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
+    private QrShowFragment qrShowFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +64,7 @@ public class QrActivity extends BaseActionBarActivity {
         setContentView(R.layout.activity_qr);
         tabLayout = ViewUtil.findById(this, R.id.tab_layout);
         viewPager = ViewUtil.findById(this, R.id.pager);
-        ProfilePagerAdapter adapter = new ProfilePagerAdapter(getSupportFragmentManager());
+        ProfilePagerAdapter adapter = new ProfilePagerAdapter(this, getSupportFragmentManager());
         viewPager.setAdapter(adapter);
 
         setSupportActionBar(ViewUtil.findById(this, R.id.toolbar));
@@ -60,6 +82,7 @@ public class QrActivity extends BaseActionBarActivity {
 
             @Override
             public void onPageSelected(int position) {
+                QrActivity.this.invalidateOptionsMenu();
                 checkPermissions(position, adapter, viewPager);
             }
 
@@ -86,6 +109,17 @@ public class QrActivity extends BaseActionBarActivity {
     }
 
     @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+      menu.clear();
+      if(tabLayout.getSelectedTabPosition() == TAB_SHOW) {
+        getMenuInflater().inflate(R.menu.qr_show, menu);
+      } else {
+        getMenuInflater().inflate(R.menu.qr_scan, menu);
+      }
+      return super.onPrepareOptionsMenu(menu);
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
 
@@ -108,6 +142,19 @@ public class QrActivity extends BaseActionBarActivity {
             case android.R.id.home:
                 finish();
                 return true;
+            case R.id.share:
+                qrShowFragment.shareQr();
+                break;
+            case R.id.copy:
+                qrShowFragment.copyQrData();
+                break;
+            case R.id.load_from_image:
+                AttachmentManager.selectImage(this, REQUEST_CODE_IMAGE);
+                break;
+            case R.id.paste:
+                QrCodeHandler qrCodeHandler = new QrCodeHandler(this);
+                qrCodeHandler.handleQrData(Util.getTextFromClipboard(this));
+                break;
         }
 
         return false;
@@ -125,10 +172,55 @@ public class QrActivity extends BaseActionBarActivity {
         }
     }
 
+    @Override
+    public void onActivityResult(int reqCode, int resultCode, final Intent data) {
+        super.onActivityResult(reqCode, resultCode, data);
+
+        if (resultCode != Activity.RESULT_OK)
+            return;
+
+        switch (reqCode) {
+            case REQUEST_CODE_IMAGE:
+                Uri uri  = (data != null ? data.getData() : null);
+                if (uri != null) {
+                    try {
+                        InputStream inputStream = getContentResolver().openInputStream(uri);
+                        Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                        if (bitmap == null) {
+                            Log.e(TAG, "uri is not a bitmap: " + uri.toString());
+                            return;
+                        }
+                        int width = bitmap.getWidth(), height = bitmap.getHeight();
+                        int[] pixels = new int[width * height];
+                        bitmap.getPixels(pixels, 0, width, 0, 0, width, height);
+                        bitmap.recycle();
+                        bitmap = null;
+                        RGBLuminanceSource source = new RGBLuminanceSource(width, height, pixels);
+                        BinaryBitmap bBitmap = new BinaryBitmap(new HybridBinarizer(source));
+                        MultiFormatReader reader = new MultiFormatReader();
+                        try {
+                            Result result = reader.decode(bBitmap);
+                            QrCodeHandler qrCodeHandler = new QrCodeHandler(this);
+                            qrCodeHandler.handleQrData(result.getText());
+                        } catch (NotFoundException e) {
+                            Log.e(TAG, "decode exception", e);
+                            Toast.makeText(this, getString(R.string.qrscan_failed), Toast.LENGTH_LONG).show();
+                        }
+                    } catch (FileNotFoundException e) {
+                        Log.e(TAG, "can not open file: " + uri.toString(), e);
+                    }
+                }
+                break;
+        }
+    }
+
     private class ProfilePagerAdapter extends FragmentStatePagerAdapter {
 
-        ProfilePagerAdapter(FragmentManager fragmentManager) {
+        private QrActivity activity;
+
+        ProfilePagerAdapter(QrActivity activity, FragmentManager fragmentManager) {
             super(fragmentManager, FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+            this.activity = activity;
         }
 
         @NonNull
@@ -138,7 +230,8 @@ public class QrActivity extends BaseActionBarActivity {
 
             switch (position) {
                 case TAB_SHOW:
-                    fragment = new QrShowFragment();
+                    activity.qrShowFragment = new QrShowFragment();
+                    fragment = activity.qrShowFragment;
                     break;
 
                 default:

@@ -36,10 +36,10 @@ public class QrCodeHandler {
             return; // aborted
         }
 
-        handleOpenPgp4Fpr(scanResult.getContents());
+        handleQrData(scanResult.getContents());
     }
 
-    public void handleOpenPgp4Fpr(String rawString) {
+    public void handleQrData(String rawString) {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         final DcLot qrParsed = dcContext.checkQr(rawString);
         String nameAndAddress = dcContext.getContact(qrParsed.getId()).getNameNAddr();

@@ -174,6 +174,8 @@
     <string name="menu_new_contact">Nuevo contacto</string>
     <string name="menu_new_chat">Nuevo chat</string>
     <string name="menu_new_group">Nuevo grupo</string>
+    <!-- "Subject" here must be the same wording as used in the e-mail context, so. eg. "Betreff" in german (the idea is to help people coming from the e-mail context) -->
+    <string name="new_group_or_subject">Nuevo grupo o asunto</string>
     <string name="menu_new_verified_group">Nuevo grupo verificado</string>
     <!-- consider keeping the term "broadcast"; check how these lists are called eg. on whatsapp in the destination language -->
     <string name="broadcast_list">Lista de difusión</string>
@@ -780,6 +782,10 @@
     <string name="qraccount_success_enter_name">Ingreso satisfactorio—tu dirección de email es %1$s\n\nSi lo deseas, puedes ingresar un nombre y una imagen de perfil, que será mostrada a los usuarios que escribas.</string>
     <string name="qraccount_qr_code_cannot_be_used">El código QR escaneado no puede ser usado para configurar una nueva cuenta.</string>
     <string name="qraccount_use_on_new_install">El código QR escaneado esta configurando la nueva cuenta. Puedes escanear el código QR cuando estés preparando una nueva instalación de DeltaLab</string>
+    <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
+    <string name="secure_join_started">%1$s te invitó a unirte a este grupo.\n\nEsperando que el dispositivo de %2$s responda…</string>
+    <!-- placeholder will be replaced by the name of the inviter. -->
+    <string name="secure_join_replies">%1$s respondió, esperando ser agregado al grupo…</string>
     <string name="contact_verified">%1$s verificado.</string>
     <string name="contact_not_verified">No se pudo verificar %1$s.</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
@@ -793,6 +799,7 @@
 
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d nuevos mensajes en %2$d chats</string>
+    <string name="notify_dismiss">Descartar</string>
     <string name="notify_mark_read">Marcar como leído</string>
     <string name="notify_reply_button">Responder</string>
     <string name="notify_new_message">Nuevo mensaje</string>
