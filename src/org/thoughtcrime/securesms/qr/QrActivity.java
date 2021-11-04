@@ -152,7 +152,7 @@ public class QrActivity extends BaseActionBarActivity {
                 break;
             case R.id.paste:
                 QrCodeHandler qrCodeHandler = new QrCodeHandler(this);
-                qrCodeHandler.handleOpenPgp4Fpr(Util.getTextFromClipboard(this));
+                qrCodeHandler.handleQrData(Util.getTextFromClipboard(this));
                 break;
         }
 
@@ -200,7 +200,7 @@ public class QrActivity extends BaseActionBarActivity {
                         try {
                             Result result = reader.decode(bBitmap);
                             QrCodeHandler qrCodeHandler = new QrCodeHandler(this);
-                            qrCodeHandler.handleOpenPgp4Fpr(result.getText());
+                            qrCodeHandler.handleQrData(result.getText());
                         } catch (NotFoundException e) {
                             Log.e(TAG, "decode exception", e);
                         }
