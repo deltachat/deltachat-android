@@ -336,7 +336,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
                     break;
             }
         } else if (requestCode == PICK_BACKUP) {
-            Uri uri = data.getData();
+            Uri uri = (data != null ? data.getData() : null);
             if (uri == null) {
                 Log.e(TAG, " Can't import null URI");
                 return;
