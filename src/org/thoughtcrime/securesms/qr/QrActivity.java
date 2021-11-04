@@ -12,6 +12,7 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -203,6 +204,7 @@ public class QrActivity extends BaseActionBarActivity {
                             qrCodeHandler.handleQrData(result.getText());
                         } catch (NotFoundException e) {
                             Log.e(TAG, "decode exception", e);
+                            Toast.makeText(this, getString(R.string.qrscan_failed), Toast.LENGTH_LONG).show();
                         }
                     } catch (FileNotFoundException e) {
                         Log.e(TAG, "can not open file: " + uri.toString(), e);
