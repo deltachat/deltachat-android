@@ -172,6 +172,8 @@
     <string name="menu_new_contact">Novo contacto</string>
     <string name="menu_new_chat">Nova conversa</string>
     <string name="menu_new_group">Novo grupo</string>
+    <!-- "Subject" here must be the same wording as used in the e-mail context, so. eg. "Betreff" in german (the idea is to help people coming from the e-mail context) -->
+    <string name="new_group_or_subject">Novo Grupo ou Asunto</string>
     <string name="menu_new_verified_group">Novo grupo verificado</string>
     <!-- consider keeping the term "broadcast"; check how these lists are called eg. on whatsapp in the destination language -->
     <string name="broadcast_list">Lista de difusión</string>

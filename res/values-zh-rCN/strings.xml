@@ -165,6 +165,8 @@
     <string name="menu_new_contact">新建联系人</string>
     <string name="menu_new_chat">新建聊天</string>
     <string name="menu_new_group">新建群组</string>
+    <!-- "Subject" here must be the same wording as used in the e-mail context, so. eg. "Betreff" in german (the idea is to help people coming from the e-mail context) -->
+    <string name="new_group_or_subject">新群组或邮件主题</string>
     <string name="menu_new_verified_group">新建已验证群组</string>
     <!-- consider keeping the term "broadcast"; check how these lists are called eg. on whatsapp in the destination language -->
     <string name="broadcast_list">广播列表</string>

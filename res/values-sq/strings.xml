@@ -170,6 +170,8 @@
     <string name="menu_new_contact">Kontakt i ri</string>
     <string name="menu_new_chat">Fjalosje e re</string>
     <string name="menu_new_group">Grup i ri</string>
+    <!-- "Subject" here must be the same wording as used in the e-mail context, so. eg. "Betreff" in german (the idea is to help people coming from the e-mail context) -->
+    <string name="new_group_or_subject">Grup ose Subjekt i Ri</string>
     <string name="menu_new_verified_group">Grup i ri i verifikuar</string>
     <string name="add_recipients">Shtoni Marrës</string>
     <string name="menu_send">Dërgoje</string>

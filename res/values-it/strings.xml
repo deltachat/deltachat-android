@@ -216,10 +216,10 @@
     <string name="show_in_chat">Mostra in Chat</string>
     <string name="menu_share">Condividi</string>
     <!-- this is the action "to block sth." usually a mailing list or a contact. this is NOT "a large solid piece of hard material" :) -->
-    <string name="block">Bloccare</string>
+    <string name="block">Blocca</string>
     <string name="menu_block_contact">Blocca Contatto</string>
     <string name="menu_unblock_contact">Sblocca Contatto</string>
-    <string name="accept">Accettare</string>
+    <string name="accept">Accetta</string>
     <string name="menu_play">Riproduci</string>
     <string name="menu_pause">Pausa</string>
     <string name="menu_scroll_to_bottom">Scorri alla Fine</string>

@@ -3,7 +3,7 @@
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">Tamam</string>
-    <string name="cancel">Vazgeç</string>
+    <string name="cancel">İptal</string>
     <string name="clear_search">Aramayı Temizle</string>
     <string name="yes">Evet</string>
     <string name="no">Hayır</string>
@@ -22,7 +22,7 @@
     <string name="downloading">İndiriliyor…</string>
     <string name="open_attachment">İlişiği Aç</string>
     <string name="join">Katıl</string>
-    <string name="rejoin">Yeniden katıl</string>
+    <string name="rejoin">Yeniden Katıl</string>
     <string name="delete">Sil</string>
     <string name="info">Bilgi</string>
     <string name="update">Güncelleştir</string>
@@ -33,7 +33,7 @@
     <string name="forward">İlet</string>
     <string name="archive">Arşivle</string>
     <string name="unarchive">Arşivleme</string>
-    <string name="mute">Sessize al</string>
+    <string name="mute">Sessize Al</string>
     <string name="ephemeral_messages">Kaybolan İletiler</string>
     <string name="ephemeral_messages_hint">Bu ayarlar, Delta Chat\'i kullanan tüm sohbet üyelerine uygulanır. Ancak onlar iletileri kopyalayabilir, kaydedebilir ve iletebilir ya da diğer e-posta istemcilerini kullanabilir.</string>
     <string name="save">Kaydet</string>
@@ -59,7 +59,7 @@
     <string name="never">Hiçbir zaman</string>
     <string name="one_moment">Bir dakika…</string>
     <string name="done">Bitti</string>
-    <string name="undo">Geri al</string>
+    <string name="undo">Geri Al</string>
     <string name="offline">Çevrimdışı</string>
     <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in iOS headers, the string should be as short as possible, though. -->
     <string name="next">Sonraki</string>
@@ -208,7 +208,7 @@
     <string name="menu_resend">İletiyi Yeniden Gönder</string>
     <string name="menu_reply">İletiye Yanıt Ver</string>
     <string name="menu_mute">Bildirimleri Sessize Al</string>
-    <string name="menu_unmute">Sesini aç</string>
+    <string name="menu_unmute">Sessize Alma</string>
     <string name="menu_export_attachment">İlişiği Dışa Aktar</string>
     <string name="menu_export_attachments">İlişikleri Dışa Aktar</string>
     <string name="menu_all_media">Tüm Ortamlar</string>
