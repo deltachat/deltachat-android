@@ -9,8 +9,10 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,14 +34,22 @@ import com.google.zxing.common.BitMatrix;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.util.FileProviderUtil;
+import org.thoughtcrime.securesms.util.Util;
+
+import java.io.File;
+import java.io.FileOutputStream;
 
 public class QrShowFragment extends Fragment implements DcEventCenter.DcEventDelegate {
 
+    private final static String TAG = QrShowFragment.class.getSimpleName();
     public final static int WHITE = 0xFFFFFFFF;
     private final static int BLACK = 0xFF000000;
     private final static int WIDTH = 400;
     private final static int HEIGHT = 400;
     private final static String CHAT_ID = "chat_id";
+
+    private int chatId = 0;
 
     private int numJoiners;
 
@@ -55,6 +65,7 @@ public class QrShowFragment extends Fragment implements DcEventCenter.DcEventDel
 
     private BroadcastReceiver broadcastReceiver;
 
+    private Bitmap bitmap;
 
     @Override
     public void onCreate(Bundle bundle) {
@@ -71,7 +82,6 @@ public class QrShowFragment extends Fragment implements DcEventCenter.DcEventDel
         dcEventCenter = DcHelper.getEventCenter(getActivity());
 
         Bundle extras = getActivity().getIntent().getExtras();
-        int chatId = 0;
         if (extras != null) {
             chatId = extras.getInt(CHAT_ID);
         }
@@ -110,7 +120,7 @@ public class QrShowFragment extends Fragment implements DcEventCenter.DcEventDel
 
         ImageView imageView = view.findViewById(R.id.qrImage);
         try {
-            Bitmap bitmap = encodeAsBitmap(dcContext.getSecurejoinQr(chatId));
+            bitmap = encodeAsBitmap(dcContext.getSecurejoinQr(chatId));
             imageView.setImageBitmap(bitmap);
         } catch (WriterException e) {
             e.printStackTrace();
@@ -119,6 +129,31 @@ public class QrShowFragment extends Fragment implements DcEventCenter.DcEventDel
         return view;
     }
 
+    public void shareQr() {
+        try {
+            File file = new File(getActivity().getExternalCacheDir(), "share-qr.png");
+            file.createNewFile();
+            file.setReadable(true, false);
+            FileOutputStream stream = new FileOutputStream(file);
+            bitmap.compress(Bitmap.CompressFormat.PNG, 90, stream);
+            stream.flush();
+            stream.close();
+            Uri uri = FileProviderUtil.getUriFor(getActivity(), file);
+            Intent intent = new Intent(Intent.ACTION_SEND);
+            intent.setType("image/png");
+            intent.putExtra(Intent.EXTRA_STREAM, uri);
+            intent.putExtra(Intent.EXTRA_TEXT, hint);
+            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            startActivity(Intent.createChooser(intent, getString(R.string.chat_share_with_title)));
+        } catch (Exception e) {
+            Log.e(TAG, "failed to share QR", e);
+        }
+    }
+
+    public void copyQrData() {
+        Util.writeTextToClipboard(getActivity(), DcHelper.getContext(getActivity()).getSecurejoinQr(chatId));
+        Toast.makeText(getActivity(), getString(R.string.copied_to_clipboard), Toast.LENGTH_SHORT).show();
+    }
 
     private void setHintText() {
         if (!DcHelper.isNetworkConnected(getContext())) {

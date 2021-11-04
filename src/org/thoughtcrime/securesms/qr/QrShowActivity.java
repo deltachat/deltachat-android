@@ -1,6 +1,7 @@
 package org.thoughtcrime.securesms.qr;
 
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 
 import androidx.appcompat.app.ActionBar;
@@ -24,6 +25,7 @@ public class QrShowActivity extends AppCompatActivity {
     DcEventCenter dcEventCenter;
 
     DcContext dcContext;
+    QrShowFragment fragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +34,7 @@ public class QrShowActivity extends AppCompatActivity {
         dynamicLanguage.onCreate(this);
 
         setContentView(R.layout.activity_qr_show);
+        fragment = (QrShowFragment)getSupportFragmentManager().findFragmentById(R.id.qrScannerFragment);
 
         dcContext = DcHelper.getContext(this);
         dcEventCenter = DcHelper.getEventCenter(this);
@@ -63,6 +66,12 @@ public class QrShowActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+      getMenuInflater().inflate(R.menu.qr_show, menu);
+      return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
         dynamicTheme.onResume(this);
@@ -73,9 +82,16 @@ public class QrShowActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         super.onOptionsItemSelected(item);
 
-        if (item.getItemId() == android.R.id.home) {
-            finish();
-            return true;
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+            case R.id.share:
+                fragment.shareQr();
+                break;
+            case R.id.copy:
+                fragment.copyQrData();
+                break;
         }
 
         return false;
