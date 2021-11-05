@@ -166,6 +166,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     if (isRelayingMessageContent(this)) {
       selfAvatar.setVisibility(View.GONE);
     } else {
+      selfAvatar.setVisibility(View.VISIBLE);
       DcContext dcContext = DcHelper.getContext(this);
       DcContact self = dcContext.getContact(DcContact.DC_CONTACT_ID_SELF);
       String name = dcContext.getConfig("displayname");
