@@ -101,8 +101,8 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     dcContext.addDeviceMsg("update_1_22c_bots", msg);
 
     msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
-    msg.setText(getString(R.string.update_1_22) + " https://delta.chat/en/blog");
-    dcContext.addDeviceMsg("update_1_22e_android", msg); // addDeviceMessage() makes sure, messages with the same id are not added twice
+    msg.setText(getString(R.string.update_1_24_android) + " https://delta.chat/en/blog");
+    dcContext.addDeviceMsg("update_1_24n_android", msg); // addDeviceMessage() makes sure, messages with the same id are not added twice
 
     // create view
     setContentView(R.layout.conversation_list_activity);
@@ -170,6 +170,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     if (isRelayingMessageContent(this)) {
       selfAvatar.setVisibility(View.GONE);
     } else {
+      selfAvatar.setVisibility(View.VISIBLE);
       DcContext dcContext = DcHelper.getContext(this);
       DcContact self = dcContext.getContact(DcContact.DC_CONTACT_ID_SELF);
       String name = dcContext.getConfig("displayname");
@@ -303,6 +304,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   private void handleResetRelaying() {
     resetRelayingMessageContent(this);
     refreshTitle();
+    selfAvatar.setVisibility(View.VISIBLE);
     conversationListFragment.onNewIntent();
     invalidateOptionsMenu();
   }
