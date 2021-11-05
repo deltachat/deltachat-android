@@ -300,6 +300,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   private void handleResetRelaying() {
     resetRelayingMessageContent(this);
     refreshTitle();
+    selfAvatar.setVisibility(View.VISIBLE);
     conversationListFragment.onNewIntent();
     invalidateOptionsMenu();
   }
