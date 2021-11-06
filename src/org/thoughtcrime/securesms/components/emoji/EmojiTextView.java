@@ -213,6 +213,7 @@ public class EmojiTextView extends AppCompatTextView {
   // tools for linkify
 
   private static final Pattern CMD_PATTERN = Pattern.compile("(?<=^|\\s)/[a-zA-Z][a-zA-Z@\\d_/.-]{0,254}");
+  private static final Pattern CUSTOM_PATTERN = Pattern.compile("(?<=^|\\s)(OPENPGP4FPR|openpgp4fpr|mumble):[^ \\n]+");
 
   private static void replaceURLSpan(Spannable messageBody) {
     URLSpan[] urlSpans = messageBody.getSpans(0, messageBody.length(), URLSpan.class);
@@ -229,6 +230,9 @@ public class EmojiTextView extends AppCompatTextView {
     // do this first to avoid `/xkcd_123456` to be treated partly as a phone number
     Linkify.addLinks(messageBody, CMD_PATTERN, "cmd:", null, null);
     EmojiTextView.replaceURLSpan(messageBody); // replace URLSpan so that it is not removed on the next addLinks() call
+
+    Linkify.addLinks(messageBody, CUSTOM_PATTERN, null, null, null);
+    EmojiTextView.replaceURLSpan(messageBody);
 
     // linkyfiy urls etc., this removes all existing URLSpan
     if (Linkify.addLinks(messageBody, Linkify.EMAIL_ADDRESSES|Linkify.WEB_URLS|Linkify.PHONE_NUMBERS)) {
