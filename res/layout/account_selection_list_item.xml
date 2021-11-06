@@ -32,10 +32,10 @@
 
         <ImageView
             android:id="@+id/checkbox"
-            android:layout_width="22dp"
-            android:layout_height="22dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="22dp"
             app:layout_constraintStart_toStartOf="@id/contact_photo_image"
             app:layout_constraintTop_toTopOf="@id/contact_photo_image"
             android:src="@drawable/ic_circle_checkbox"
