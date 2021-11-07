@@ -173,6 +173,10 @@
     <!-- "Subject" here must be the same wording as used in the e-mail context, so. eg. "Betreff" in german (the idea is to help people coming from the e-mail context) -->
     <string name="new_group_or_subject">Grup ose Subjekt i Ri</string>
     <string name="menu_new_verified_group">Grup i ri i verifikuar</string>
+    <!-- consider keeping the term "broadcast"; check how these lists are called eg. on whatsapp in the destination language -->
+    <string name="broadcast_list">Listë Transmetimi</string>
+    <string name="broadcast_lists">Lista Transmetimi</string>
+    <string name="new_broadcast_list">Listë e Re Transmetimi</string>
     <string name="add_recipients">Shtoni Marrës</string>
     <string name="menu_send">Dërgoje</string>
     <string name="menu_toggle_keyboard">Shfaq/fshih tastierë emoji</string>
@@ -316,6 +320,8 @@
     <string name="ask_delete_value">Të fshihet %s?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">Të hiqet %1$s nga grupi?</string>
+    <!-- Translators: %1$s will be replaced by a comma separated list of names -->
+    <string name="ask_remove_from_broadcast">Të hiqen %1$s prej liste transmetimi?</string>
     <string name="open_url_confirmation">Doni të hapet kjo lidhje?</string>
 
 
@@ -344,6 +350,7 @@
         <item quantity="other">%d mesazhe të rinj</item>
     </plurals>
     <string name="chat_no_messages_hint">Dërgoni mesazh te %1$s:\n\n• S\’ka problem nëse %2$s s\’përdor Delta Chat.\n\n• Dërgimi i mesazhit të parë mund të zgjasë ca dhe mund të jetë i pafshehtëzuar.</string>
+    <string name="chat_new_broadcast_hint">Në një listë transmetimesh, të tjerët do të marrin mesazhe në fjalosjet e tyre private me ju.\n\nMarrësit s’do të dinë njëri-tjetrin.</string>
     <string name="chat_new_group_hint">Hartoni mesazhin e parë, duke u lejuar të tjerëve të përgjigjen brenda këtij grupi.\n\n• S\’ka problem nëse Delta Chat-in s\’e përdorin  të tërë anëtarë.\n\n• Dërgimi i mesazhit të parë mund të zgjasë ca.</string>
     <string name="chat_record_slide_to_cancel">Rrëshqiteni që të anulohet</string>
     <string name="chat_record_explain">Prekeni dhe mbajeni të prekur që të incizoni një mesazh zanor; lëshojeni, që të dërgohet</string>
@@ -928,5 +935,6 @@
     <string name="update_1_20">U përmirësua përputhshmëri email-i në versionin 1.20:\n\n📫 Lexoni lista postimesh\n📭 Lexoni email-e HTML\n📪 Trajtim i bukur adresash asistence\n📫 U ndreqën mjaft yçkla të mëdha dhe vockla\n\nLexoni postimin tonë të ri në blog mbi këto hapa të para drejt email-it dhe më tepër:</string>
     <string name="update_1_22">Ç’ka të re në 1.22?\n\n👋 Kërkesa për fjalosje tanimë hapen si flluska fjalosjesh më vete dhe mund të shqyrtohen në hollësi përpara se të pranohen apo bllokohen\n\n🗄️ Te Arkivi tani mund të hyhet kollaj që nga menuja kryesore - atje do të gjeni edhe kërkesat tuaja të dikurshme\n\n📮📮📮 U përmirësua puna me shumë llogari: Kalimi nga një llogari në një tjetër tanimë është më i shpejtë dhe më rrallë i bllokuar nga përditësime të gjata\n\n🤔 Njihni se ç’po bëhet: Tani e tutje, probleme lidhjeje shfaqen te shtylla e titullit, prekeni për hollësi\n\nMë tepër në blog:</string>
     <string name="update_1_22_ios">Ç’ka të re në 1.22?\n\n👋 Kërkesa për fjalosje tanimë hapen si flluska fjalosjesh më vete dhe mund të shqyrtohen në hollësi përpara se të pranohen apo bllokohen\n\n🗄️ Te Arkivi tani mund të hyhet kollaj që nga menuja kryesore - atje do të gjeni edhe kërkesat tuaja të dikurshme\n\n📮📮📮 U shtua aftësia për të përdorur disa llogari: Ndërroni dhe administroni llogari te rregullimet\n\n🤔 Njihni se ç’po bëhet: Tani e tutje, probleme lidhjeje shfaqen te shtylla e titullit, prekeni për hollësi\n\nMë tepër në blog:</string>
-
+    <string name="update_1_24_android">1.24 me një vështrim:\n\n• Ruani prekje: Përzgjedhje llogarish te cepi i sipërm majtas i listës së fjalosjeve\n• Ruani më tepër prekje: Prekeni gjatë ikonën e aplikacionit që të hapen drejtpërsëdrejti fjalosje së fundi\n• Ruani trafik: Shkarkoni kartela të mëdha, sipas nevojës\n• Kurseni nervat: hyrje më të shpejta jo bllokuese, me kod QR dhe mundësi të reja kodi QR\n\nMë tepër te 👉</string>
+    <string name="update_1_24_ios">1.24 me një vështrim:\n\n• Filloni një kërkim brenda fjalosjeje, që prej profilit të fjalosjes\n• Ruani trafik: Shkarkoni kartela të mëdha, sipas nevojës\n• Kurseni nervat: hyrje më të shpejta jo bllokuese, me kod QR dhe mundësi të reja kodi QR\n\nMë tepër te 👉</string>
 </resources>

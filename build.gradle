@@ -100,8 +100,8 @@ android {
     useLibrary 'org.apache.http.legacy'
 
     defaultConfig {
-        versionCode 614
-        versionName "1.24.0"
+        versionCode 616
+        versionName "1.24.2"
 
         applicationId "com.b44t.messenger"
         multiDexEnabled true
@@ -199,7 +199,9 @@ android {
 
     android.applicationVariants.all { variant ->
         variant.outputs.all {
-            outputFileName = outputFileName.replace(".apk", "-${variant.versionName}.apk")
+            outputFileName = outputFileName
+                .replace("deltachat-android", "deltachat")
+                .replace(".apk", "-${variant.versionName}.apk")
         }
     }
 

@@ -1,6 +1,6 @@
 # Delta Chat Android Changelog
 
-## v1.24.0
+## v1.24.2
 2021-11
 
 * show the currently selected account in the chatlist;
