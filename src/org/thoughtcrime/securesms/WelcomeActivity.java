@@ -121,7 +121,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
                 .withPermanentDenialDialog(getString(R.string.perm_explain_access_to_storage_denied))
                 .onAllGranted(() -> {
                     File imexDir = DcHelper.getImexDir();
-                    if (Build.VERSION.SDK_INT >= 29) {
+                    if (Build.VERSION.SDK_INT >= 30) {
                         AttachmentManager.selectMediaType(this, "application/x-tar", null, PICK_BACKUP, StorageUtil.getDownloadUri());
                     } else {
                         final String backupFile = dcContext.imexHasBackup(imexDir.getAbsolutePath());
