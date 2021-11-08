@@ -51,8 +51,6 @@ public class IPCAddAccountsService extends Service {
         registrationIntent.putExtra(ACCOUNT_DATA, data);
         registrationIntent.addFlags(FLAG_ACTIVITY_NEW_TASK | FLAG_ACTIVITY_CLEAR_TASK);
         context.startActivity(registrationIntent);
-      } else {
-        super.handleMessage(msg);
       }
     }
   }
