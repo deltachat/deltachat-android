@@ -342,7 +342,7 @@ public class NotificationCenter {
             String notificationChannel = getNotificationChannel(notificationManager, dcChat);
             NotificationCompat.Builder builder = new NotificationCompat.Builder(context, notificationChannel)
                     .setSmallIcon(R.drawable.icon_notification)
-                    .setColor(context.getResources().getColor(R.color.def_primary))
+                    .setColor(context.getResources().getColor(R.color.def_accent))
                     .setPriority(Prefs.getNotificationPriority(context))
                     .setCategory(NotificationCompat.CATEGORY_MESSAGE)
                     .setOnlyAlertOnce(!signal)
@@ -485,7 +485,7 @@ public class NotificationCenter {
                         .setGroup(GRP_MSG)
                         .setGroupSummary(true)
                         .setSmallIcon(R.drawable.icon_notification)
-                        .setColor(context.getResources().getColor(R.color.def_primary))
+                        .setColor(context.getResources().getColor(R.color.def_accent))
                         .setCategory(NotificationCompat.CATEGORY_MESSAGE)
                         .setContentTitle("Delta Chat") // content title would only be used on SDK <24
                         .setContentText("New messages") // content text would only be used on SDK <24
