@@ -16,12 +16,17 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import org.thoughtcrime.securesms.ConversationListActivity;
 import org.thoughtcrime.securesms.RegistrationActivity;
 import org.thoughtcrime.securesms.connect.AccountManager;
+import org.thoughtcrime.securesms.connect.DcHelper;
 
 import java.lang.ref.WeakReference;
 
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_ADDRESS;
+
+import com.b44t.messenger.DcAccounts;
+import com.b44t.messenger.DcContext;
 
 /**
  * This service is invoked by companion apps aiming to add a new account to Delta Chat
@@ -45,7 +50,25 @@ public class IPCAddAccountsService extends Service {
       Bundle data = msg.getData();
       Context context = contextRef.get();
       if (data != null && context != null && msg.what == ADD_ACCOUNT) {
-        Log.d(TAG, "ADD ACCOUNT called for account: " + data.getString(CONFIG_ADDRESS));
+        String newAddress = data.getString(CONFIG_ADDRESS);
+        Log.d(TAG, "ADD ACCOUNT called for account: " + newAddress);
+
+        // check if account already exists, if so, switch to that account
+        DcAccounts accounts = DcHelper.getAccounts(context);
+        int[] accountIds = accounts.getAll();
+        for (int accountId : accountIds) {
+          DcContext dcContext = accounts.getAccount(accountId);
+          String accountAddress = dcContext.getConfig(CONFIG_ADDRESS);
+          if (accountAddress.equals(newAddress)) {
+            Log.d(TAG, newAddress + " already exists. Switching account.");
+            AccountManager.getInstance().switchAccount(context, accountId);
+            Intent switchAccountIntent = new Intent(context, ConversationListActivity.class);
+            switchAccountIntent.addFlags(FLAG_ACTIVITY_NEW_TASK | FLAG_ACTIVITY_CLEAR_TASK);
+            context.startActivity(switchAccountIntent);
+            return;
+          }
+        }
+
         AccountManager.getInstance().beginAccountCreation(context);
         Intent registrationIntent = new Intent(context, RegistrationActivity.class);
         registrationIntent.putExtra(ACCOUNT_DATA, data);
