@@ -112,7 +112,7 @@ android {
         vectorDrawables.useSupportLibrary = true
 
         // base name of the generated apk
-        project.ext.set("archivesBaseName", "deltalab");
+        project.ext.set("archivesBaseName", "deltachat");
 
         buildConfigField "boolean", "DEV_BUILD", "false"
         buildConfigField "String", "MAP_ACCESS_TOKEN", '"pk.eyJ1IjoiZGVsdGFjaGF0IiwiYSI6ImNqc3c1aWczMzBjejY0M28wZmU0a3cwMzMifQ.ZPTH9dFJaav06RAu4rTYHw"'
@@ -200,7 +200,7 @@ android {
     android.applicationVariants.all { variant ->
         variant.outputs.all {
             outputFileName = outputFileName
-                .replace("deltachat-android", "deltachat")
+                .replace("deltalab-android", "deltalab")
                 .replace(".apk", "-${variant.versionName}.apk")
         }
     }
