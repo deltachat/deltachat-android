@@ -84,7 +84,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
           // Since android API 26 only explicit broadcasts are allowed for IPC with a few exceptions.
           // As a result we have to send for each companion app we want to support an intent with a
           // specified package
-          intent.setPackage("org.cyberta");
+          intent.setPackage("chat.delta.AndroidYggmail");
           intent.setAction(DC_REQUEST_ACCOUNT_DATA);
           sendBroadcast(intent);
         }
