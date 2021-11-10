@@ -29,7 +29,7 @@ import com.b44t.messenger.DcAccounts;
 import com.b44t.messenger.DcContext;
 
 /**
- * This service is invoked by companion apps aiming to add a new account to Delta Chat
+ * This (interprocess communication) service is invoked by companion apps aiming to add a new account to Delta Chat
  */
 
 public class IPCAddAccountsService extends Service {
