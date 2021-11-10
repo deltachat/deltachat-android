@@ -59,6 +59,7 @@ import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SEND_SERVER;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SEND_USER;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SERVER_FLAGS;
 import static org.thoughtcrime.securesms.connect.DcHelper.getContext;
+import static org.thoughtcrime.securesms.service.IPCAddAccountsService.ACCOUNT_DATA;
 
 public class RegistrationActivity extends BaseActionBarActivity implements DcEventCenter.DcEventDelegate {
 
@@ -175,6 +176,21 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
 
             int certCheckFlags = DcHelper.getInt(this, "imap_certificate_checks");
             certCheck.setSelection(certCheckFlags);
+        } else if (getIntent() != null && getIntent().getBundleExtra(ACCOUNT_DATA) != null) {
+          // Companion app might have sent account data
+          Bundle b = getIntent().getBundleExtra(ACCOUNT_DATA);
+          String emailAddress = b.getString(CONFIG_ADDRESS);
+          String password = b.getString(CONFIG_MAIL_PASSWORD);
+          if (!TextUtils.isEmpty(emailAddress) && !TextUtils.isEmpty(password)) {
+            emailInput.setText(emailAddress);
+            passwordInput.setText(password);
+            onLogin();
+          } else {
+            String errorText = "Companion app auto-configuration failed.";
+            errorText += TextUtils.isEmpty(emailAddress) ? " Missing emailAddress." : "";
+            errorText += TextUtils.isEmpty(password) ? " Missing password." : "";
+            Toast.makeText(this, errorText, Toast.LENGTH_LONG).show();
+          }
         }
 
         DcHelper.getEventCenter(this).addObserver(DcContext.DC_EVENT_CONFIGURE_PROGRESS, this);
