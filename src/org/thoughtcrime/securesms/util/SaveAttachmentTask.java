@@ -320,14 +320,18 @@ public class SaveAttachmentTask extends ProgressDialogAsyncTask<SaveAttachmentTa
         Uri uri = result.second();
         String dir;
 
-        String path = getRealPathFromURI(uri);
-        if (path != null) uri = Uri.parse(path);
-
-        List<String> segments = uri.getPathSegments();
-        if (segments.size() >= 2) {
-          dir = segments.get(segments.size() - 2);
+        if (uri == null) {
+          dir = null;
         } else {
-          dir = uri.getPath();
+          String path = getRealPathFromURI(uri);
+          if (path != null) uri = Uri.parse(path);
+
+          List<String> segments = uri.getPathSegments();
+          if (segments.size() >= 2) {
+            dir = segments.get(segments.size() - 2);
+          } else {
+            dir = uri.getPath();
+          }
         }
 
         Toast.makeText(context,
