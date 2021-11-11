@@ -1,5 +1,15 @@
 # Delta Chat Android Changelog
 
+## v1.24.3
+2021-11
+
+* fix crash when exporting several attachments at the same time
+* fix messages added on scanning the QR code of an contact
+* fix incorrect assignment of Delta Chat replies to classic email threads
+* add basic support for remove account creation
+* update translations and local help
+
+
 ## v1.24.2
 2021-11
 
