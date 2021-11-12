@@ -8,7 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: textbook/git-checkout-submodule-action@master
+        with:
+          submodules: recursive
       - run: cp jni/deltachat-core-rust/rust-toolchain .
       - uses: actions-rs/toolchain@v1
       - uses: Swatinem/rust-cache@v1
