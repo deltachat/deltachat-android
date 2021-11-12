@@ -582,6 +582,8 @@
     <string name="pref_incognito_keyboard_explain">Solicitar al teclado deshabilitar el aprendizaje personalizado</string>
     <string name="pref_read_receipts">Acuses de recibo</string>
     <string name="pref_read_receipts_explain">Si los acuses de recibo están deshabilitados, no podrá ver los acuses de recibo de otros.</string>
+    <string name="pref_subject">Asunto</string>
+    <string name="pref_subject_explain">Si el asunto está desactivado, tus mensajes se enviarán sin asunto.</string>
     <string name="pref_manage_keys">Administrar claves</string>
     <string name="pref_use_system_emoji">Usar emoji del sistema</string>
     <string name="pref_use_system_emoji_explain">Deshabilitar el soporte de emoji integrado de DeltaLab</string>

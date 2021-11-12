@@ -584,6 +584,8 @@
     <string name="pref_incognito_keyboard_explain">Request keyboard to disable personalized learning</string>
     <string name="pref_read_receipts">Read Receipts</string>
     <string name="pref_read_receipts_explain">If read receipts are disabled, you won\'t be able to see read receipts from others.</string>
+    <string name="pref_subject">Subject</string>
+    <string name="pref_subject_explain">If subject is disabled, your messages will be sent without a subject.</string>
     <string name="pref_manage_keys">Manage Keys</string>
     <string name="pref_use_system_emoji">Use System Emoji</string>
     <string name="pref_use_system_emoji_explain">Turn off DeltaLab\'s built-in emoji support</string>

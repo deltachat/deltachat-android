@@ -37,6 +37,7 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
   private ListPreference mediaQuality;
   private ListPreference autoDownload;
   private CheckBoxPreference readReceiptsCheckbox;
+  private CheckBoxPreference subjectCheckbox;
 
   private ListPreference autoDelDevice;
   private ListPreference autoDelServer;
@@ -70,6 +71,9 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
 
     readReceiptsCheckbox = (CheckBoxPreference) this.findPreference("pref_read_receipts");
     readReceiptsCheckbox.setOnPreferenceChangeListener(new ReadReceiptToggleListener());
+
+    subjectCheckbox = (CheckBoxPreference) this.findPreference("pref_subject");
+    subjectCheckbox.setOnPreferenceChangeListener(new SubjectToggleListener());
 
     this.findPreference("preference_category_blocked").setOnPreferenceClickListener(new BlockedContactsClickListener());
 
@@ -107,6 +111,7 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
     updateListSummary(autoDownload, value);
 
     readReceiptsCheckbox.setChecked(0 != dcContext.getConfigInt("mdns_enabled"));
+    subjectCheckbox.setChecked(0 != dcContext.getConfigInt("subject_enabled"));
 
     initAutodelFromCore();
   }
@@ -198,6 +203,15 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
     public boolean onPreferenceChange(Preference preference, Object newValue) {
       boolean enabled = (boolean) newValue;
       dcContext.setConfigInt("mdns_enabled", enabled ? 1 : 0);
+      return true;
+    }
+  }
+
+  private class SubjectToggleListener implements Preference.OnPreferenceChangeListener {
+    @Override
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+      boolean enabled = (boolean) newValue;
+      dcContext.setConfigInt("subject_enabled", enabled ? 1 : 0);
       return true;
     }
   }
