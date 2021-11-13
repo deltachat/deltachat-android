@@ -49,5 +49,5 @@ jobs:
       - name: Upload APK
         uses: actions/upload-artifact@v2
         with:
-          name: preview-app.apk
+          name: app-preview.apk
           path: 'build/outputs/apk/gplay/debug/*.apk'
