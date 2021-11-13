@@ -7,8 +7,13 @@ jobs:
     name: Upload Preview APK
     runs-on: ubuntu-latest
     steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.9.1
+        with:
+          access_token: ${{ github.token }}
       - uses: actions/checkout@v2
-      - uses: textbook/git-checkout-submodule-action@master
+        with:
+          submodules: recursive
       - run: cp jni/deltachat-core-rust/rust-toolchain .
       - uses: actions-rs/toolchain@v1
       - uses: Swatinem/rust-cache@v1
@@ -44,5 +49,5 @@ jobs:
       - name: Upload APK
         uses: actions/upload-artifact@v2
         with:
-          name: app.apk
+          name: app-preview.apk
           path: 'build/outputs/apk/gplay/debug/*.apk'
