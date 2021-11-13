@@ -1,0 +1,20 @@
+name: add artifact links to pull request
+on:
+  workflow_run:
+    workflows: ["Upload Preview APK"]
+    types: [completed]
+
+jobs:
+  artifacts-url-comments:
+    name: add artifact links to pull request
+    runs-on: windows-2019
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - name: add artifact links to pull request
+        uses: tonyhallett/artifacts-url-comments@v1.1.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          prefix: 📦 Install this apk to test the changes in this pull request:
+          format: name
+          addTo: pull
