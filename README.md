@@ -15,4 +15,4 @@ DeltaLab is based on the [official Delta Chat client](https://github.com/deltach
 
 Licensed GPLv3+, see the LICENSE file for details.
 
-Copyright © 2020 DeltaLab contributors.
+Copyright © 2021 DeltaLab contributors.
