@@ -15,6 +15,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          prefix: 📦 Install this apk to test the changes in this pull request:
+          prefix: "📦 Install this apk to test the changes in this pull request:"
           format: name
           addTo: pull
