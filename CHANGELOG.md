@@ -1,5 +1,14 @@
 # Delta Chat Android Changelog
 
+## v1.24.4
+2021-11
+
+* fix accidental disabling of ephemeral timers when a message is not auto-downloaded
+* fix: apply existing ephemeral timer also to partially downloaded messages;
+  after full download, the ephemeral timer starts over
+* update translations and local help
+
+
 ## v1.24.3
 2021-11
 
