@@ -18,14 +18,12 @@ import androidx.core.content.FileProvider;
 
 import com.b44t.messenger.DcAccounts;
 import com.b44t.messenger.DcChat;
-import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcLot;
 import com.b44t.messenger.DcMsg;
 
 import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.BuildConfig;
-import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.database.model.ThreadRecord;
 import org.thoughtcrime.securesms.notifications.NotificationCenter;
@@ -133,7 +131,6 @@ public class DcHelper {
     dcContext.setStockTranslation(11, context.getString(R.string.audio));
     dcContext.setStockTranslation(12, context.getString(R.string.file));
     dcContext.setStockTranslation(13, context.getString(R.string.pref_default_status_text));
-    dcContext.setStockTranslation(14, context.getString(R.string.group_hello_draft));
     dcContext.setStockTranslation(15, context.getString(R.string.systemmsg_group_name_changed));
     dcContext.setStockTranslation(16, context.getString(R.string.systemmsg_group_image_changed));
     dcContext.setStockTranslation(17, context.getString(R.string.systemmsg_member_added));
