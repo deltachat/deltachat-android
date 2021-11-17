@@ -904,6 +904,4 @@
     <string name="perm_enable_bg_already_done">Pozwolono już Delta Chat na odbieranie wiadomości w tle.\n\nJeśli wiadomości nadal nie docierają w tle, sprawdź też ustawienia systemu.</string>
 
 
-    <!-- device messages for updates -->
-    <string name="update_1_20">Poprawiona zgodność z pocztą e-mail w wersji 1.20:\n\n📫 Czytaj listy mailingowe\n📭 Czytaj wiadomości e-mail w formacie HTML\n📪 Lepsza obsługa adresów pomocy\n📫 Naprawiono wiele większych i drobnych niedogodności\n\nPrzeczytaj nasz nowy wpis na blogu na temat pierwszych kroków w kierunku poczty i nie tylko:</string>
     </resources>

@@ -353,7 +353,7 @@
     </plurals>
     <string name="chat_no_messages_hint">Eine Nachricht an %1$s senden:\n\n• Es ist in Ordnung, wenn %2$s kein Delta Chat verwendet.\n\n• Die Übermittlung der ersten Nachricht kann eine Weile dauern und erfolgt unverschlüsselt. </string>
     <string name="chat_new_broadcast_hint">In Broadcast-Listen erhalten die Empfänger die Nachrichten in den privaten Chats mit Ihnen.\n\nDie Empfänger wissen nicht, wer die anderen Empfänger sind.</string>
-    <string name="chat_new_group_hint">Verfassen Sie die erste Nachricht, damit andere innerhalb dieser Gruppe antworten können.\n\n-- Es ist in Ordnung, wenn nicht alle Mitglieder Delta Chat verwenden.\n\n-- Die Zustellung der ersten Nachricht kann einige Zeit dauern.</string>
+    <string name="chat_new_group_hint">Andere sehen diese Gruppe erst, nachdem Sie eine erste Nachricht gesendet haben.</string>
     <string name="chat_record_slide_to_cancel">Schieben, um abzubrechen</string>
     <string name="chat_record_explain">Tippen und halten, um eine Sprachnachricht aufzunehmen, loslassen um zu senden. </string>
     <string name="chat_no_chats_yet_title">Posteingang ist leer.\n\"+\" drücken, um einen neuen Chat zu starten.</string>
@@ -941,7 +941,6 @@ Ihr bisheriges E-Mail-Konto wird dabei nicht gelöscht. Sie können mit der Opti
 
 
     <!-- device messages for updates -->
-    <string name="update_1_20">Verbesserte E-Mail-Kompatibilität in Version 1.20:\n\n📫 Mailinglisten lesen\n📭 HTML-Mails anzeigen\n📪 Bessere Unterstützung von Support-Adressen\n📫 Viele weitere Probleme behoben\n\nLesen Sie unseren neuen Blog-Beitrag über diese ersten Schritte Richtung E-Mail und mehr:</string>
     <string name="update_1_22">Was ist neu in 1.22?\n\n👋 Chat-Anfragen werden jetzt als einzelne Chats angezeigt und können vor Annahme oder Blockieren im Detail geprüft werden\n\n🗄️ Das Archiv ist jetzt leicht vom Hauptmenü aus zugänglich - dort finden Sie auch die alten Chat-Anfragen\n\n📮📮📮📮 Verbessertes Multi-Account: Der Wechsel zwischen Konten geht jetzt schneller und wird weniger durch langwierige Downloads blockiert\n\n🤔 Immer wissen, was los ist: Verbindungsprobleme werden jetzt in der Titelleiste angezeigt, für Details einfach auf den Titel tippen\n\nMehr im Blog:</string>
     <string name="update_1_22_ios">Was ist neu in 1.22?\n\n👋 Chat-Anfragen werden jetzt als einzelne Chats angezeigt und können vor Annahme oder Blockieren im Detail geprüft werden\n\n🗄️ Das Archiv ist jetzt leicht den  Einstellungen aus zugänglich - dort finden Sie auch die alten Chat-Anfragen\n\n📮📮📮📮 Multi-Account hinzugefügt: Konten in den Einstellungen wechseln und verwalten\n\n🤔 Immer wissen, was los ist: Verbindungsprobleme werden jetzt in der Titelleiste angezeigt, für Details einfach auf den Titel tippen\n\nMehr im Blog:</string>
     <string name="update_1_24_android">1.24 auf einen Blick:\n\n• Kontoauswahl in der oberen linken Ecke der Chatliste\n• Lang Tippen auf das App-Symbol, um die letzten Chats direkt zu öffnen\n• Große Dateien nach Bedarf herunterladen\n• Schnellere, nicht blockierende QR-Code-Scans und neue QR-Code-Optionen\n\nMehr unter 👉</string>

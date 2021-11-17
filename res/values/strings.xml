@@ -32,7 +32,9 @@
     <string name="back">Back</string>
     <string name="close">Close</string>
     <string name="forward">Forward</string>
+    <!-- In the meaning of "To archive", "Put a chat to the archive". This string does not mean "The Archive". -->
     <string name="archive">Archive</string>
+    <!-- In the meaning of "To unarchive", "Remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Unarchive</string>
     <string name="mute">Mute</string>
     <string name="ephemeral_messages">Disappearing Messages</string>
@@ -357,7 +359,7 @@
     </plurals>
     <string name="chat_no_messages_hint">Send message to %1$s:\n\n• It is okay if %2$s does not use DeltaLab.\n\n• Delivering the first message may take a while and may be unencrypted.</string>
     <string name="chat_new_broadcast_hint">In a broadcast list, others will receive messages in their private chats with you.\n\nThe recipients will not be aware of each other.</string>
-    <string name="chat_new_group_hint">Compose the first message, allowing others to reply within this group.\n\n• It is okay if not all members use DeltaLab.\n\n• Delivering the first message may take a while.</string>
+    <string name="chat_new_group_hint">Others will only see this group after you sent a first message.</string>
     <string name="chat_record_slide_to_cancel">Slide to cancel</string>
     <string name="chat_record_explain">Tap and hold to record a voice message, release to send</string>
     <string name="chat_no_chats_yet_title">Empty inbox.\nPress \"+\" to start a new chat.</string>
@@ -944,9 +946,6 @@
 
     <!-- device messages for updates -->
     <string name="update_1_24_bots">**🤖 Public bots list:**\nhttps://simplebot-org.github.io/simplebot-instances/\n\nThis is a new page, there you can click the bot address to verify the bot! that way you can add the bot to verified groups, verification is important since it ensures the communication is not manipulated</string>
-    <string name="update_1_20">Improved e-mail compatibility in version 1.20:\n\n📫 Read mailing lists\n📭 Read HTML-mails\n📪 Nice handling of support addresses\n📫 Many major and minor annoyances fixed\n\nRead our new blog post about these first steps towards mail and more:</string>
-    <string name="update_1_22">**DeltaLab:**\n* You will be notified if someone replies to your messages in a muted group.\n* Added more Kaomojis( \u0361\u00B0 \u035C\u0296 \u0361\u00B0)\n* Allow to copy image link inside HTML messages on long-press.\n* Added Delta Chat logo sticker to image editor and tweaked glasses sticker.\n* Now you can avoid automatic downloads of big messages with attachments, etc.\n* Now it is possible to export several selected files at once.\n\n**Delta Chat:**\nWhat\'s new in 1.22?\n\n👋 Chat Requests now pop up as single chats and can be inspected in detail before accepting or blocking\n\n🗄️ The Archive is now easily accessible from the main menu - you\'ll also find your old requests there\n\n📮📮📮 Multi-account improved: Switching accounts is now faster and less often blocked by lengthy updates\n\n🤔 Know what\'s going on: Connection problems are shown in the title bar now, tap for details\n\nMore on the blog:</string>
-    <string name="update_1_22_ios">What\'s new in 1.22?\n\n👋 Chat Requests now pop up as single chats and can be inspected in detail before accepting or blocking\n\n🗄️ The Archive is now easily accessible from the settings - you\'ll also find your old requests there\n\n📮📮📮 Multi-account added: Switch and manage accounts in the settings\n\n🤔 Know what\'s going on: Connection problems are shown in the title bar now, tap for details\n\nMore on the blog:</string>
     <string name="update_1_24_android">1.24 at a glance:\n\n• Save taps: Account selection in the upper left corner of the chat list\n• Save more taps: Long-tap the app icon to open recent chats directly\n• Save traffic: Download large files as needed\n• Save nerves: faster, non-blocking QR code joins and new QR code options\n• You can now disable the Subject of your outgoing messages\n• Long-tap the + icon to switch account\n• Group invitation links and Mumble links are now clickable in messages\n• DeltaLab has now a new logo and default theme, also the themes were improved, specially the green theme\n• Now e2e encryption is enabled by default, if you want to disable encryption forcefully use DeltaChat Lite instead, which is available in the same repo than DeltaLab\n• Video call instance is now configured by default\n\nMore at 👉</string>
     <string name="update_1_24_ios">1.24 at a glance:\n\n• Start an in-chat search from the chat\'s profile\n• Save traffic: Download large files as needed\n• Save nerves: faster, non-blocking QR code joins\n\nMore at 👉</string>
 </resources>
