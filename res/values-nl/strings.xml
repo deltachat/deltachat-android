@@ -353,7 +353,7 @@
     </plurals>
     <string name="chat_no_messages_hint">Verstuur een bericht aan %1$s:\n\n• %2$s hoeft Delta Chat niet te gebruiken.\n\n• Het afleveren van het eerste bericht kan even duren en onversleuteld zijn.</string>
     <string name="chat_new_broadcast_hint">Als je een verzendlijst maakt, dan onhvangen anderen bericht van jou in hun privégesprekken.\n\nDe ontvangers kunnen elkaar echter niet zien.</string>
-    <string name="chat_new_group_hint">Stel het eerste bericht op, zodat anderen binnen deze groep kunnen reageren.\n\n• Niet alle leden hoeven Delta Chat te gebruiken.\n\n• Het afleveren van het eerste bericht kan even duren.</string>
+    <string name="chat_new_group_hint">Stel het eerste bericht op, zodat anderen binnen deze groep kunnen reageren.</string>
     <string name="chat_record_slide_to_cancel">Veeg opzij om te annuleren</string>
     <string name="chat_record_explain">Houdt ingedrukt om een spraakbericht op te nemen; laat los om te versturen</string>
     <string name="chat_no_chats_yet_title">Je Postvak IN is leeg.\nDruk op \"+\" om een gesprek te beginnen.</string>

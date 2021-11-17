@@ -31,7 +31,9 @@
     <string name="back">Back</string>
     <string name="close">Close</string>
     <string name="forward">Forward</string>
+    <!-- In the meaning of "To archive", "Put a chat to the archive". This string does not mean "The Archive". -->
     <string name="archive">Archive</string>
+    <!-- In the meaning of "To unarchive", "Remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Unarchive</string>
     <string name="mute">Mute</string>
     <string name="ephemeral_messages">Disappearing Messages</string>
