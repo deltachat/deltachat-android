@@ -4,23 +4,11 @@
 	android:layout_height="match_parent"
 	android:orientation="vertical">
 
-	<ImageView
+	<com.caverock.androidsvg.SVGImageView
 		android:id="@+id/qrImage"
 		android:layout_width="match_parent"
 		android:layout_height="0dp"
 		android:layout_weight="1"
 		android:contentDescription="@string/qrscan_title" />
-
-	<TextView
-		android:id="@+id/qrShowHint"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:layout_marginBottom="16dp"
-		android:layout_marginEnd="8dp"
-		android:layout_marginStart="8dp"
-		android:text=""
-		android:textAlignment="center"
-		android:textAppearance="@style/TextAppearance.AppCompat"
-		android:textSize="16sp" />
 
 </LinearLayout>

@@ -198,6 +198,7 @@ public class DcContext {
     public native boolean      wasDeviceMsgEverAdded(String label);
     public DcLot               checkQr              (String qr) { return new DcLot(checkQrCPtr(qr)); }
     public native String       getSecurejoinQr      (int chat_id);
+    public native String       getSecurejoinQrSvg   (int chat_id);
     public native int          joinSecurejoin       (String qr);
     public native void         sendLocationsToChat  (int chat_id, int seconds);
     public native boolean      isSendingLocationsToChat(int chat_id);
