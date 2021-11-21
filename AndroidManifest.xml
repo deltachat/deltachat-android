@@ -277,6 +277,11 @@
               android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize">
     </activity>
 
+    <activity android:name=".W30Activity"
+              android:theme="@style/TextSecure.LightTheme"
+              android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize">
+    </activity>
+
     <activity android:name=".FullMsgActivity"
         android:theme="@style/TextSecure.LightTheme"
         android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize">
