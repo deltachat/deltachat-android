@@ -2,13 +2,15 @@ package org.thoughtcrime.securesms.map;
 
 import android.content.Context;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.mapbox.mapboxsdk.maps.MapFragment;
 import com.mapbox.mapboxsdk.maps.MapView;
@@ -35,6 +37,7 @@ import java.util.List;
  * @see #getMapAsync(OnMapReadyCallback)
  */
 public class DCMapFragment extends Fragment implements OnMapReadyCallback {
+    private static final String TAG = DCMapFragment.class.getSimpleName();
 
     private final List<OnMapReadyCallback> mapReadyCallbackList = new ArrayList<>();
     private MapFragment.OnMapViewReadyCallback mapViewReadyCallback;
@@ -114,7 +117,12 @@ public class DCMapFragment extends Fragment implements OnMapReadyCallback {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        map.onCreate(savedInstanceState);
+        try {
+            map.onCreate(savedInstanceState);
+        } catch (SecurityException e) {
+            // Catch weird exception, see https://github.com/deltachat/deltachat-android/issues/2140
+            Log.i(TAG, "map.onCreate() threw exception, which should be fine though: " + e);
+        }
         map.getMapAsync(this);
 
         // notify listeners about MapView creation
