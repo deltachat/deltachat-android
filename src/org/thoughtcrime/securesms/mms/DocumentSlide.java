@@ -13,6 +13,7 @@ import org.thoughtcrime.securesms.attachments.DcAttachment;
 import org.thoughtcrime.securesms.util.StorageUtil;
 
 public class DocumentSlide extends Slide {
+  public Integer dcMsgId;
 
   public DocumentSlide(Context context, DcMsg dcMsg) {
     super(context, new DcAttachment(dcMsg));
