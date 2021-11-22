@@ -10,14 +10,12 @@ window.deltachat = (() => {
 
   return {
     getChatName: () => W30.getChatName(),
-    setUpdateEventListener: (cb) => (update_listener = cb),
+    setStateUpdateListener: (cb) => (update_listener = cb),
     getAllStateUpdates: () => {
       return JSON.parse(W30.getAllStateUpdates());
     },
-    sendStateUpdate: (update) => {
-      window.__w30update(W30.sendStateUpdate(update));
+    sendStateUpdate: (description, payload) => {
+      window.__w30update(W30.sendStateUpdate(description, payload));
     },
-    getPreferredLocale: () => undefined, // not implemented yet
-    isDarkThemePreferred: () => W30.preferDarkMode(),
   };
 })();

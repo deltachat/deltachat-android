@@ -106,7 +106,6 @@ public class W30Activity extends Activity implements DcEventCenter.DcEventDelega
 //      WebSettingsCompat.setForceDark(webSettings,
 //        preferDarkMode ? WebSettingsCompat.FORCE_DARK_ON : WebSettingsCompat.FORCE_DARK_OFF);
 //    }
-//    internal_js_api.preferDarkMode = preferDarkMode;
     // disable "safe browsing" as this has privacy issues,
     // eg. at least false positives are sent to the "Safe Browsing Lookup API".
     // as all URLs opened in the WebView are local anyway,
@@ -251,7 +250,6 @@ public class W30Activity extends Activity implements DcEventCenter.DcEventDelega
   }
 
   class InternalJSApi{
-    public boolean preferDarkMode = false;
     String appSessionId;
 
     public InternalJSApi(Integer appMessageId) {
@@ -266,25 +264,20 @@ public class W30Activity extends Activity implements DcEventCenter.DcEventDelega
     }
 
     @JavascriptInterface
-    public Boolean preferDarkMode() {
-      return preferDarkMode;
-    }
-
-    @JavascriptInterface
     public String getChatName() {
       return W30Activity.this.dcChat.getName();
     }
 
     @JavascriptInterface
-    public int sendStateUpdate(String update) {
-      return W30Activity.this.dcContext.sendTextMsg(W30Activity.this.dcChat.getId(), appSessionId + "|:|" + update);
+    public int sendStateUpdate(String _description, String payload) {
+      return W30Activity.this.dcContext.sendTextMsg(W30Activity.this.dcChat.getId(), appSessionId + "|:|" + payload);
     }
 
     String stateMsgToJSON(DcMsg msg) {
       String text = msg.getText();
       try {
         JSONObject json = new JSONObject();
-        json.put("content", text.substring(text.indexOf("|:|")+3));
+        json.put("payload", text.substring(text.indexOf("|:|")+3));
         json.put("authorId", msg.getFromId());
         json.put("authorDisplayName", W30Activity.this.dcContext.getContact(msg.getFromId()).getDisplayName());
         return json.toString();
