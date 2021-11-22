@@ -56,7 +56,7 @@ if test $1 && echo "armeabi-v7a arm64-v8a x86 x86_64" | grep -vwq $1; then
 fi
 
 cd jni
-jnidir=$(pwd)
+jnidir=$PWD
 rm -f armeabi-v7a/*
 rm -f arm64-v8a/*
 rm -f x86/*
