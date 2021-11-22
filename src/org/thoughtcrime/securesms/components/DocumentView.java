@@ -2,6 +2,7 @@ package org.thoughtcrime.securesms.components;
 
 import android.content.Intent;
 import android.content.Context;
+import android.os.Build;
 
 import androidx.annotation.AttrRes;
 import androidx.annotation.NonNull;
@@ -11,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.W30Activity;
@@ -135,7 +137,7 @@ class W30Click implements View.OnClickListener {
       } else {
         // TODO don't show error message on androids bellow api 17
         // see https://developer.android.com/reference/android/webkit/WebView#addJavascriptInterface(java.lang.Object,%20java.lang.String)
-        throw new Exception("android to old");
+        Toast.makeText(v.getContext(), "your version of Android is too old for this feature", Toast.LENGTH_LONG).show();
       }
 
     }
