@@ -1,20 +1,29 @@
 package org.thoughtcrime.securesms.map;
 
+import static com.b44t.messenger.DcChat.DC_CHAT_NO_CHAT;
+import static com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_COLLAPSED;
+import static com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDED;
+import static com.mapbox.mapboxsdk.constants.MapboxConstants.MINIMUM_ZOOM;
+import static org.thoughtcrime.securesms.map.MapDataManager.CONTACT_ID;
+import static org.thoughtcrime.securesms.map.MapDataManager.IS_POI;
+import static org.thoughtcrime.securesms.map.MapDataManager.MARKER_SELECTED;
+import static org.thoughtcrime.securesms.map.MapDataManager.MESSAGE_ID;
+import static org.thoughtcrime.securesms.map.model.MapSource.INFO_WINDOW_LAYER;
+
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.PointF;
 import android.os.Bundle;
-
-import com.google.android.material.bottomsheet.BottomSheetBehavior;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.widget.SwitchCompat;
 import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.SwitchCompat;
+import androidx.fragment.app.FragmentTransaction;
+
 import com.b44t.messenger.DcMsg;
-import com.mapbox.android.telemetry.TelemetryEnabler;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.mapbox.geojson.Feature;
 import com.mapbox.mapboxsdk.Mapbox;
 import com.mapbox.mapboxsdk.camera.CameraPosition;
@@ -22,9 +31,7 @@ import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
 import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.Style;
-import com.mapbox.mapboxsdk.maps.TelemetryDefinition;
 
-import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.BaseActivity;
 import org.thoughtcrime.securesms.BuildConfig;
 import org.thoughtcrime.securesms.ConversationActivity;
@@ -40,16 +47,6 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Random;
-
-import static com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_COLLAPSED;
-import static com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDED;
-import static com.b44t.messenger.DcChat.DC_CHAT_NO_CHAT;
-import static com.mapbox.mapboxsdk.constants.MapboxConstants.MINIMUM_ZOOM;
-import static org.thoughtcrime.securesms.map.MapDataManager.CONTACT_ID;
-import static org.thoughtcrime.securesms.map.MapDataManager.IS_POI;
-import static org.thoughtcrime.securesms.map.MapDataManager.MARKER_SELECTED;
-import static org.thoughtcrime.securesms.map.MapDataManager.MESSAGE_ID;
-import static org.thoughtcrime.securesms.map.model.MapSource.INFO_WINDOW_LAYER;
 
 public class MapActivity extends BaseActivity implements Observer,
         TimeRangeSlider.OnTimestampChangedListener,
@@ -77,11 +74,12 @@ public class MapActivity extends BaseActivity implements Observer,
             // however, implementations may change
             // and the two explicit calls seems to have worked in the past,
             // see https://github.com/mapbox/mapbox-gl-native/issues/13304
-            TelemetryEnabler.updateTelemetryState(TelemetryEnabler.State.DISABLED);
-            TelemetryDefinition telemetry = Mapbox.getTelemetry();
-            if (telemetry != null) {
-                telemetry.setUserTelemetryRequestState(false);
-            }
+            // We are now using MapLibre, so there is no telemetry
+//            TelemetryEnabler.updateTelemetryState(TelemetryEnabler.State.DISABLED);
+//            TelemetryDefinition telemetry = Mapbox.getTelemetry();
+//            if (telemetry != null) {
+//                telemetry.setUserTelemetryRequestState(false);
+//            }
         }
         catch(Exception e) {
             e.printStackTrace();
