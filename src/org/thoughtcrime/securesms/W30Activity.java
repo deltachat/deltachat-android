@@ -15,13 +15,18 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.webkit.WebViewClientCompat;
 
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContext;
+import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcMsg;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 
 import java.io.ByteArrayInputStream;
@@ -30,7 +35,7 @@ import java.io.InputStream;
 import java.util.HashMap;
 
 
-public class W30Activity extends Activity {
+public class W30Activity extends Activity implements DcEventCenter.DcEventDelegate  {
   private static final String INTERNAL_SCHEMA = "web30";
   protected WebView webView;
   //private final DynamicTheme dynamicTheme = new DynamicTheme();
@@ -39,11 +44,27 @@ public class W30Activity extends Activity {
 
   private DcContext dcContext;
   private DcChat dcChat;
+  Integer chatId;
   private DcMsg dcAppMsg;
 
   // Vars we should persist?
   private String titleWEB = "W30";
   // todo message id it was started with
+
+
+  @Override
+  public void handleEvent(@NonNull DcEvent event) {
+    int eventId = event.getId();
+    if ((eventId == DcContext.DC_EVENT_INCOMING_MSG && event.getData1Int() == chatId)) {
+      DcMsg msg = dcContext.getMsg(event.getData2Int());
+      Log.i("WEBVIEW", "handleEvent: "+ msg.getText());
+      if (msg.getText().startsWith(this.internal_js_api.appSessionId)) {
+        Log.i("WEBVIEW", "call JS");
+        webView.loadUrl("javascript:window.__w30update(" + msg.getId() + ");");
+        webView.loadUrl("javascript:console.log(window);");
+      }
+    }
+  }
 
   protected void onPreCreate() {
     //dynamicTheme.onCreate(this);
@@ -55,6 +76,8 @@ public class W30Activity extends Activity {
   }
 
   protected void onStart() {
+    DcEventCenter eventCenter = DcHelper.getEventCenter(W30Activity.this.getApplicationContext());
+    eventCenter.addObserver(DcContext.DC_EVENT_INCOMING_MSG, this);
     super.onStart();
     Log.i("W30Activity", "onCreate: init start");
     setContentView(R.layout.w30_activity);
@@ -65,6 +88,7 @@ public class W30Activity extends Activity {
     this.dcContext = DcHelper.getContext(getApplicationContext());
     this.dcAppMsg = this.dcContext.getMsg(appMessageId);
     this.dcChat = this.dcContext.getChat(this.dcAppMsg.getChatId());
+    chatId = this.dcAppMsg.getChatId();
 
     internal_js_api = new InternalJSApi(appMessageId);
     configureWebView();
@@ -82,13 +106,18 @@ public class W30Activity extends Activity {
 //      WebSettingsCompat.setForceDark(webSettings,
 //        preferDarkMode ? WebSettingsCompat.FORCE_DARK_ON : WebSettingsCompat.FORCE_DARK_OFF);
 //    }
-//    internal_js_api.preferDarkMode = preferDarkMode;
     // disable "safe browsing" as this has privacy issues,
     // eg. at least false positives are sent to the "Safe Browsing Lookup API".
     // as all URLs opened in the WebView are local anyway,
     // "safe browsing" will never be able to report issues, so it can be disabled.
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
       webView.getSettings().setSafeBrowsingEnabled(false);
+    }
+
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+
+        WebView.setWebContentsDebuggingEnabled(true);
+
     }
 
     webSettings.setJavaScriptEnabled(true);
@@ -101,6 +130,7 @@ public class W30Activity extends Activity {
     webView.setWebViewClient(new WebViewClientCompat() {
       // open other sites in external browser
       private boolean internalShouldOverrideUrlLoading(String schema, Uri url) {
+        Log.i("W30Activity", "internalShouldOverrideUrlLoading:" + url);
         switch (schema) {
           case "http":
           case "https":
@@ -198,6 +228,7 @@ public class W30Activity extends Activity {
 
   @Override
   protected void onDestroy() {
+    DcHelper.getEventCenter(this.getApplicationContext()).removeObservers(this);
     super.onDestroy();
   }
 
@@ -218,12 +249,13 @@ public class W30Activity extends Activity {
     }
   }
 
-  class InternalJSApi {
-    public boolean preferDarkMode = false;
-    Integer appMessageId = 0;
+  class InternalJSApi{
+    String appSessionId;
 
     public InternalJSApi(Integer appMessageId) {
-      this.appMessageId = appMessageId;
+      // get session id
+      String msgInfo = W30Activity.this.dcContext.getMsgInfo(appMessageId);
+      appSessionId = msgInfo.split("Message-ID: ")[1].split("\n")[0];
     }
 
     @JavascriptInterface
@@ -232,13 +264,60 @@ public class W30Activity extends Activity {
     }
 
     @JavascriptInterface
-    public Boolean preferDarkMode() {
-      return preferDarkMode;
+    public String getChatName() {
+      return W30Activity.this.dcChat.getName();
     }
 
     @JavascriptInterface
-    public String getChatName() {
-      return W30Activity.this.dcChat.getName();
+    public int sendStateUpdate(String _description, String payload) {
+      return W30Activity.this.dcContext.sendTextMsg(W30Activity.this.dcChat.getId(), appSessionId + "|:|" + payload);
+    }
+
+    String stateMsgToJSON(DcMsg msg) {
+      String text = msg.getText();
+      try {
+        JSONObject json = new JSONObject();
+        json.put("payload", text.substring(text.indexOf("|:|")+3));
+        json.put("authorId", msg.getFromId());
+        json.put("authorDisplayName", W30Activity.this.dcContext.getContact(msg.getFromId()).getDisplayName());
+        return json.toString();
+      } catch (JSONException e) {
+        e.printStackTrace();
+        return null;
+      }
+    }
+
+    @JavascriptInterface
+    public String getStateUpdate(int stateMsgId) {
+      DcMsg msg = W30Activity.this.dcContext.getMsg(stateMsgId);
+
+      if (msg.getText().startsWith(appSessionId)) {
+        return stateMsgToJSON(msg);
+      } else {
+        return null;
+      }
+    }
+
+    @JavascriptInterface
+    public String getAllStateUpdates() {
+      int[] msgs = W30Activity.this.dcContext.searchMsgs(W30Activity.this.chatId, appSessionId);
+
+      StringBuilder result = new StringBuilder("[");
+
+      for (int msgId: msgs) {
+        DcMsg msg = W30Activity.this.dcContext.getMsg(msgId);
+        if (msg.getText().startsWith(appSessionId)) {
+          result.append(stateMsgToJSON(msg)+",");
+        }
+      }
+      if(result.length() > 1) {
+        result.setCharAt(result.length()-1, ']');
+      } else {
+        result.append("]");
+      }
+
+      return result.toString();
+
     }
   }
 }
