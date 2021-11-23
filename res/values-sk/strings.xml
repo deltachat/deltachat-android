@@ -811,7 +811,7 @@
     <string name="qraccount_qr_code_cannot_be_used">Naskenovaný QR kód nie je možné použiť na založenie nového účtu.</string>
     <string name="qraccount_use_on_new_install">Naskenovaný QR kód slúži na založenie nového účtu. QR kód môžete naskenovať pri nastavovaní novej inštalácie Delta Chat.</string>
     <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
-    <string name="secure_join_started">%1$s vás pozval, aby ste sa pripojili k tejto skupine.\in\Čaká sa na odpoveď zo zariadenia používateľa %2$s...</string>
+    <string name="secure_join_started">%1$s vás pozval, aby ste sa pripojili k tejto skupine.\n\nČaká sa na odpoveď zo zariadenia používateľa %2$s...</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$sodpovedal a čaká sa na pridanie do skupiny...</string>
     <string name="contact_verified">%1$s overené.</string>
