@@ -19,6 +19,7 @@ import com.b44t.messenger.DcLot;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.contacts.ContactSelectionListItem;
 import org.thoughtcrime.securesms.mms.GlideRequests;
+import org.thoughtcrime.securesms.util.DateUtils;
 import org.thoughtcrime.securesms.util.StickyHeaderDecoration.StickyHeaderAdapter;
 
 import java.util.ArrayList;
@@ -235,11 +236,12 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
         txt = context.getString(R.string.profile_shared_chats);
         break;
       case ItemData.TYPE_PRIMARY_SETTING:
-        if(itemDataContact!=null && itemDataContact.isVerified()) {
-          txt = context.getString(R.string.verified_contact);
+        long lastSeen = (itemDataContact!=null? itemDataContact.getLastSeen() : 0);
+        if(lastSeen==0) {
+          txt = context.getString(R.string.last_seen_never);
         }
         else {
-          txt = context.getString(R.string.contact);
+          txt = context.getString(R.string.last_seen_at, DateUtils.getExtendedTimeSpanString(context, locale, lastSeen));
         }
         break;
       case ItemData.TYPE_STATUS:
