@@ -69,6 +69,17 @@ public class ConversationTitleView extends RelativeLayout {
     title.setText(dcChat.getName());
     String subtitleStr = "ErrSubtitle";
 
+    // set icons etc.
+    int imgLeft = 0;
+    int imgRight = 0;
+
+    if (dcChat.isMuted()) {
+      imgLeft = R.drawable.ic_volume_off_white_18dp;
+    }
+    if (dcChat.isProtected()) {
+      imgRight = R.drawable.ic_verified;
+    }
+
     int[] chatContacts = dcContext.getChatContacts(chatId);
     if (dcChat.isMailingList()) {
       subtitleStr = context.getString(R.string.mailing_list);
@@ -84,22 +95,15 @@ public class ConversationTitleView extends RelativeLayout {
         subtitleStr = context.getString(R.string.device_talk_subtitle);
       }
       else {
-        subtitleStr = dcContext.getContact(chatContacts[0]).getAddr();
+        DcContact dcContact = dcContext.getContact(chatContacts[0]);
+        subtitleStr = dcContact.getAddr();
+        if (dcContact.isVerified()) {
+          imgRight = R.drawable.ic_verified;
+        }
       }
     }
 
     subtitle.setText(subtitleStr);
-
-    // set icons etc.
-    int imgLeft = 0;
-    int imgRight = 0;
-
-    if (dcChat.isMuted()) {
-      imgLeft = R.drawable.ic_volume_off_white_18dp;
-    }
-    if (dcChat.isProtected()) {
-      imgRight = R.drawable.ic_verified;
-    }
 
     avatar.setAvatar(glideRequests, new Recipient(getContext(), dcChat), false);
     title.setCompoundDrawablesWithIntrinsicBounds(imgLeft, 0, imgRight, 0);
