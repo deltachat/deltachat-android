@@ -22,7 +22,9 @@
     <string name="back">Reen</string>
     <string name="close">Fermi</string>
     <string name="forward">Plusendi</string>
+    <!-- In the meaning of "To archive", "Put a chat to the archive". This string does not mean "The Archive". -->
     <string name="archive">Arĥivi</string>
+    <!-- In the meaning of "To unarchive", "Remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Malarĥivi</string>
     <string name="mute">Muta sciigoj</string>
     <string name="ephemeral_messages">Memviŝontaj mesaĝoj</string>

@@ -27,7 +27,9 @@
     <string name="back">گەڕانەوە</string>
     <string name="close">داخستن</string>
     <string name="forward">بڵاو کردنەوە</string>
+    <!-- In the meaning of "To archive", "Put a chat to the archive". This string does not mean "The Archive". -->
     <string name="archive">ئەرشیڤ کردن</string>
+    <!-- In the meaning of "To unarchive", "Remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">دەرهێنان لە ئەرشیڤ</string>
     <string name="mute">بێدەنگ کردن</string>
     <string name="ephemeral_messages">ئەو پەیامانەی بزر دەبن</string>

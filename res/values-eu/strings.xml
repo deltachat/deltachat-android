@@ -22,7 +22,9 @@
     <string name="back">Atzera</string>
     <string name="close">Itxi</string>
     <string name="forward">Birbidali</string>
+    <!-- In the meaning of "To archive", "Put a chat to the archive". This string does not mean "The Archive". -->
     <string name="archive">Artxibatu</string>
+    <!-- In the meaning of "To unarchive", "Remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Berreskuratu artxibotik</string>
     <string name="mute">Isilarazi</string>
     <string name="ephemeral_messages">Mezuen desagerpena</string>

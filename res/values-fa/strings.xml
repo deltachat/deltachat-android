@@ -29,7 +29,9 @@
     <string name="back">بازگشت</string>
     <string name="close">بستن</string>
     <string name="forward">هدایت</string>
+    <!-- In the meaning of "To archive", "Put a chat to the archive". This string does not mean "The Archive". -->
     <string name="archive">بایگانی</string>
+    <!-- In the meaning of "To unarchive", "Remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">خروج از بایگانی</string>
     <string name="mute">سکوت</string>
     <string name="ephemeral_messages">پیام‌های ناپدید شونده</string>

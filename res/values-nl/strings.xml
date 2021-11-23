@@ -31,7 +31,9 @@
     <string name="back">Terug</string>
     <string name="close">Sluiten</string>
     <string name="forward">Doorsturen</string>
+    <!-- In the meaning of "To archive", "Put a chat to the archive". This string does not mean "The Archive". -->
     <string name="archive">Archiveren</string>
+    <!-- In the meaning of "To unarchive", "Remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">De-archiveren</string>
     <string name="mute">Negeren</string>
     <string name="ephemeral_messages">Verdwijnende berichten</string>

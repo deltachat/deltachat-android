@@ -31,7 +31,9 @@
     <string name="back">Mbrapsht</string>
     <string name="close">Mbylle</string>
     <string name="forward">Përpara</string>
+    <!-- In the meaning of "To archive", "Put a chat to the archive". This string does not mean "The Archive". -->
     <string name="archive">Arkivoje</string>
+    <!-- In the meaning of "To unarchive", "Remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Çarkivoje</string>
     <string name="mute">Heshtoje</string>
     <string name="ephemeral_messages">Mesazhe që zhduken</string>

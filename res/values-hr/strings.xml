@@ -21,7 +21,9 @@
     <string name="back">Nazad</string>
     <string name="close">Zatvori</string>
     <string name="forward">Proslijedi</string>
+    <!-- In the meaning of "To archive", "Put a chat to the archive". This string does not mean "The Archive". -->
     <string name="archive">Arhiviraj</string>
+    <!-- In the meaning of "To unarchive", "Remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Dearhiviraj</string>
     <string name="mute">Prigušiti</string>
     <string name="ephemeral_messages">Nestajuće poruke</string>

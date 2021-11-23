@@ -31,7 +31,9 @@
     <string name="back">Назад</string>
     <string name="close">Закрити</string>
     <string name="forward">Переслати</string>
+    <!-- In the meaning of "To archive", "Put a chat to the archive". This string does not mean "The Archive". -->
     <string name="archive">Архівувати</string>
+    <!-- In the meaning of "To unarchive", "Remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Розархівувати</string>
     <string name="mute">Вимкнути сповіщення</string>
     <string name="ephemeral_messages">Зникнення повідомлень</string>
@@ -381,7 +383,7 @@
     </plurals>
     <string name="chat_no_messages_hint">Надіслати повідомлення %1$s:\n\n• Це спрацює, якщо %2$s не використовує Delta Chat.\n\n• Перше повідомлення може виявитися незашифрованим, його доставка може зайняти деякий час.</string>
     <string name="chat_new_broadcast_hint">У списку трансляцій інші отримуватимуть повідомлення у своїх приватних чатах з вами.\n\nОдержувачі не будуть знати один про одного.</string>
-    <string name="chat_new_group_hint">Напишіть перше повідомлення, що дасть можливість іншим учасникам групи відповісти на нього.\n\n• Це спрацює, навіть якщо не всі учасники використовують Delta Chat.\n\n• Доставка першого повідомлення може зайняти деякий час.</string>
+    <string name="chat_new_group_hint">Інші побачать цю групу лише після того, як ви надішлете перше повідомлення.</string>
     <string name="chat_record_slide_to_cancel">Рухайте для скасування</string>
     <string name="chat_record_explain">Натисніть і утримуйте для запису голосового повідомлення, відпустіть для відправки</string>
     <string name="chat_no_chats_yet_title">Немає вхідних повідомлень.\nНатисніть \"+\" щоб почати новий чат.</string>

@@ -22,7 +22,9 @@
     <string name="back">తిరిగి</string>
     <string name="close">దగ్గరగా</string>
     <string name="forward">ఫార్వర్డ్</string>
+    <!-- In the meaning of "To archive", "Put a chat to the archive". This string does not mean "The Archive". -->
     <string name="archive">ఆర్కైవ్</string>
+    <!-- In the meaning of "To unarchive", "Remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">ఆర్కైవ్ రద్దు</string>
     <string name="mute">నిశబ్ధం</string>
     <string name="ephemeral_messages">అదృశ్యమవుతున్న సందేశాలు</string>

@@ -25,7 +25,9 @@
     <string name="back">Forrige</string>
     <string name="close">Lukk</string>
     <string name="forward">Videresend</string>
+    <!-- In the meaning of "To archive", "Put a chat to the archive". This string does not mean "The Archive". -->
     <string name="archive">Arkiver</string>
+    <!-- In the meaning of "To unarchive", "Remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Fjern fra arkiv</string>
     <string name="mute">Demp</string>
     <string name="ephemeral_messages">Forsvinnende meldinger</string>

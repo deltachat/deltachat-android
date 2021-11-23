@@ -30,7 +30,9 @@
     <string name="back">뒤</string>
     <string name="close">닫기</string>
     <string name="forward">전달</string>
+    <!-- In the meaning of "To archive", "Put a chat to the archive". This string does not mean "The Archive". -->
     <string name="archive">아카이브</string>
+    <!-- In the meaning of "To unarchive", "Remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">보관 취소</string>
     <string name="mute">알림 음소거</string>
     <string name="ephemeral_messages">사라지는 메시지</string>

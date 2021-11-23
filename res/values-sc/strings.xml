@@ -27,7 +27,9 @@
     <string name="back">In palas</string>
     <string name="close">Serra</string>
     <string name="forward">Inoltra</string>
+    <!-- In the meaning of "To archive", "Put a chat to the archive". This string does not mean "The Archive". -->
     <string name="archive">Archìvia</string>
+    <!-- In the meaning of "To unarchive", "Remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Riprìstina</string>
     <string name="mute">Boga su sonu</string>
     <string name="ephemeral_messages">Messàgios chi isparessent</string>

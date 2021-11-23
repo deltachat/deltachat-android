@@ -29,7 +29,9 @@
     <string name="back">Tillbaka</string>
     <string name="close">Stäng</string>
     <string name="forward">Vidarebefordra</string>
-    <string name="archive">Arkiv</string>
+    <!-- In the meaning of "To archive", "Put a chat to the archive". This string does not mean "The Archive". -->
+    <string name="archive">Arkivera</string>
+    <!-- In the meaning of "To unarchive", "Remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Avarkivera</string>
     <string name="mute">Tyst</string>
     <string name="ephemeral_messages">Försvinnande meddelanden</string>

@@ -31,7 +31,9 @@
     <string name="back">Enrere</string>
     <string name="close">Tanca</string>
     <string name="forward">Reenvia</string>
+    <!-- In the meaning of "To archive", "Put a chat to the archive". This string does not mean "The Archive". -->
     <string name="archive">Arxiva</string>
+    <!-- In the meaning of "To unarchive", "Remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Treu de l\'arxiu</string>
     <string name="mute">Emmudeix</string>
     <string name="ephemeral_messages">Missatges efímers</string>

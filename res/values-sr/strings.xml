@@ -22,7 +22,9 @@
     <string name="back">Назад</string>
     <string name="close">Близу</string>
     <string name="forward">Проследи</string>
+    <!-- In the meaning of "To archive", "Put a chat to the archive". This string does not mean "The Archive". -->
     <string name="archive">Архивирај ћаскање</string>
+    <!-- In the meaning of "To unarchive", "Remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Деархивирај ћаскање</string>
     <string name="mute">Искључи обавештења</string>
     <string name="ephemeral_messages">Нестајуће поруке</string>

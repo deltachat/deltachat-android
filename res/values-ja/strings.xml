@@ -31,7 +31,9 @@
     <string name="back">前へ</string>
     <string name="close">閉じる</string>
     <string name="forward">転送</string>
+    <!-- In the meaning of "To archive", "Put a chat to the archive". This string does not mean "The Archive". -->
     <string name="archive">アーカイブ</string>
+    <!-- In the meaning of "To unarchive", "Remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">元に戻す</string>
     <string name="mute">ミュート</string>
     <string name="ephemeral_messages">消えるメッセージ</string>

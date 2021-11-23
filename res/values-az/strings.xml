@@ -22,7 +22,9 @@
     <string name="back">Geri</string>
     <string name="close">Bağla</string>
     <string name="forward">Başqasına göndərmə</string>
+    <!-- In the meaning of "To archive", "Put a chat to the archive". This string does not mean "The Archive". -->
     <string name="archive">Arxivləşmə</string>
+    <!-- In the meaning of "To unarchive", "Remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Arxivdən çıxarma</string>
     <string name="mute">Səssiz</string>
     <string name="ephemeral_messages">Yox olan mesajlar</string>
