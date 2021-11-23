@@ -238,7 +238,7 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
       case ItemData.TYPE_PRIMARY_SETTING:
         long lastSeen = (itemDataContact!=null? itemDataContact.getLastSeen() : 0);
         if (lastSeen == 0) {
-          txt = context.getString(R.string.last_seen_never);
+          txt = context.getString(R.string.last_seen_unknown);
         }
         else {
           txt = context.getString(R.string.last_seen_at, DateUtils.getExtendedTimeSpanString(context, locale, lastSeen));
