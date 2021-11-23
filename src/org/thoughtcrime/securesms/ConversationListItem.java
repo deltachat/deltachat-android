@@ -168,10 +168,20 @@ public class ConversationListItem extends RelativeLayout
 
     this.contactPhotoImage.setAvatar(glideRequests, recipient, false);
 
+    int imgRight = 0;
+    if (thread.isProtected()) {
+      imgRight = R.drawable.ic_verified;
+    } else if (!recipient.isMultiUserRecipient()) {
+      DcContext dcContext = DcHelper.getContext(getContext());
+      int[] members = dcContext.getChatContacts((int)chatId);
+      if (dcContext.getContact(members.length>=1? members[0] : 0).isVerified() || dcContext.getChat((int)chatId).isDeviceTalk()) {
+        imgRight = R.drawable.ic_verified;
+      }
+    }
     fromView.setCompoundDrawablesWithIntrinsicBounds(
         thread.isMuted()? R.drawable.ic_volume_off_grey600_18dp : 0,
         0,
-        thread.isProtected()? R.drawable.ic_verified : 0,
+        imgRight,
         0);
   }
 
@@ -185,7 +195,7 @@ public class ConversationListItem extends RelativeLayout
     this.glideRequests   = glideRequests;
 
     fromView.setText(getHighlightedSpan(locale, contact.getDisplayName(), highlightSubstring));
-    fromView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+    fromView.setCompoundDrawablesWithIntrinsicBounds(0, 0, contact.isVerified()? R.drawable.ic_verified : 0, 0);
     subjectView.setText(getHighlightedSpan(locale, contact.getAddr(), highlightSubstring));
     dateView.setText("");
     dateView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
