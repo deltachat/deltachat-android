@@ -31,8 +31,6 @@
 set -e
 echo "starting time: `date`"
 
-REPO_ROOT=`pwd`
-
 : "${ANDROID_NDK_ROOT:=$ANDROID_NDK_HOME}"
 : "${ANDROID_NDK_ROOT:=$ANDROID_NDK}"
 if test ! -z "$ANDROID_NDK_ROOT"; then
@@ -58,6 +56,7 @@ if test $1 && echo "armeabi-v7a arm64-v8a x86 x86_64" | grep -vwq $1; then
 fi
 
 cd jni
+jnidir=$PWD
 rm -f armeabi-v7a/*
 rm -f arm64-v8a/*
 rm -f x86/*
@@ -83,7 +82,7 @@ if test -z $1 || test $1 = armeabi-v7a; then
     export CFLAGS=-D__ANDROID_API__=16
     TARGET_CC=armv7a-linux-androideabi16-clang \
     cargo +`cat rust-toolchain` build $RELEASEFLAG --target armv7-linux-androideabi -p deltachat_ffi
-    cp target/armv7-linux-androideabi/$RELEASE/libdeltachat.a "$REPO_ROOT/jni/armeabi-v7a/"
+    cp target/armv7-linux-androideabi/$RELEASE/libdeltachat.a $jnidir/armeabi-v7a
 fi
 
 if test -z $1 || test $1 = arm64-v8a; then
@@ -91,7 +90,7 @@ if test -z $1 || test $1 = arm64-v8a; then
     export CFLAGS=-D__ANDROID_API__=21
     TARGET_CC=aarch64-linux-android21-clang \
     cargo +`cat rust-toolchain` build $RELEASEFLAG --target aarch64-linux-android -p deltachat_ffi
-    cp target/aarch64-linux-android/$RELEASE/libdeltachat.a "$REPO_ROOT/jni/arm64-v8a/"
+    cp target/aarch64-linux-android/$RELEASE/libdeltachat.a $jnidir/arm64-v8a
 fi
 
 # if test -z $1 || test $1 = x86; then
@@ -99,7 +98,7 @@ fi
 #     export CFLAGS=-D__ANDROID_API__=16
 #     TARGET_CC=i686-linux-android16-clang \
 #     cargo +`cat rust-toolchain` build $RELEASEFLAG --target i686-linux-android -p deltachat_ffi
-#     cp target/i686-linux-android/$RELEASE/libdeltachat.a ../x86
+#     cp target/i686-linux-android/$RELEASE/libdeltachat.a $jnidir/x86
 # fi
 
 # if test -z $1 || test $1 = x86_64; then
@@ -107,7 +106,7 @@ fi
 #     export CFLAGS=-D__ANDROID_API__=21
 #     TARGET_CC=x86_64-linux-android21-clang \
 #     cargo +`cat rust-toolchain` build $RELEASEFLAG --target x86_64-linux-android -p deltachat_ffi
-#     cp target/x86_64-linux-android/$RELEASE/libdeltachat.a ../x86_64
+#     cp target/x86_64-linux-android/$RELEASE/libdeltachat.a $jnidir/x86_64
 # fi
 
 echo -- ndk-build --

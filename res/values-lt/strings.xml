@@ -29,7 +29,9 @@
     <string name="back">Atgal</string>
     <string name="close">Užverti</string>
     <string name="forward">Persiųsti</string>
+    <!-- In the meaning of "To archive", "Put a chat to the archive". This string does not mean "The Archive". -->
     <string name="archive">Archyvuoti</string>
+    <!-- In the meaning of "To unarchive", "Remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Išarchyvuoti</string>
     <string name="ephemeral_messages">Išnykstančios žinutės</string>
     <string name="ephemeral_messages_hint">Šie nustatymai taikomi visiems Delta Chat besinaudojantiems dalyviams. Vis dėlto, jie gali kopijuoti, įrašyti ir persiųsti žinutes arba naudoti kitas el. pašto kliento programas.</string>

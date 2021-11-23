@@ -31,7 +31,9 @@
     <string name="back">Geri</string>
     <string name="close">Kapat</string>
     <string name="forward">İlet</string>
+    <!-- In the meaning of "To archive", "Put a chat to the archive". This string does not mean "The Archive". -->
     <string name="archive">Arşivle</string>
+    <!-- In the meaning of "To unarchive", "Remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Arşivleme</string>
     <string name="mute">Sessize Al</string>
     <string name="ephemeral_messages">Kaybolan İletiler</string>
@@ -353,7 +355,7 @@
     </plurals>
     <string name="chat_no_messages_hint">%1$s alıcısına ileti gönder:\n\n• %2$s Delta Chat kullanmıyorsa tamam.\n\n• İlk iletinin teslim edilmesi biraz zaman alabilir ve şifrelenmeyebilir.</string>
     <string name="chat_new_broadcast_hint">Bir yayın listesinde, diğerleri sizinle olan özel sohbetlerinde ileti alacak.\n\nAlıcılar birbirlerinin farkında olmayacak.</string>
-    <string name="chat_new_group_hint">İlk iletiyi oluşturun, diğerlerinin bu grupta yanıtlamasına izin verin.\n\n• Tüm üyeler Delta Chat kullanmıyorsa tamam.\n\n• İlk iletinin teslim edilmesi biraz zaman alabilir.</string>
+    <string name="chat_new_group_hint">Diğerleri, yalnızca siz bir ilk ileti gönderdikten sonra bu grubu görecek.</string>
     <string name="chat_record_slide_to_cancel">Vazgeçmek için kaydırın</string>
     <string name="chat_record_explain">Bir sesli ileti kaydetmek için dokunun ve basılı tutun, göndermek için bırakın</string>
     <string name="chat_no_chats_yet_title">Boş gelen kutusu.\nYeni bir sohbete başlamak için \"+\" simgesine basın.</string>

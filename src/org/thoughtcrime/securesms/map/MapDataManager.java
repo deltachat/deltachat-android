@@ -1,50 +1,5 @@
 package org.thoughtcrime.securesms.map;
 
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Looper;
-import android.util.Log;
-
-import androidx.annotation.NonNull;
-
-import com.b44t.messenger.DcContext;
-import com.b44t.messenger.DcEvent;
-import com.mapbox.android.core.permissions.PermissionsManager;
-import com.mapbox.geojson.Feature;
-import com.mapbox.geojson.FeatureCollection;
-import com.mapbox.mapboxsdk.exceptions.InvalidLatLngBoundsException;
-import com.mapbox.mapboxsdk.geometry.LatLngBounds;
-import com.mapbox.mapboxsdk.location.LocationComponent;
-import com.mapbox.mapboxsdk.location.LocationComponentActivationOptions;
-import com.mapbox.mapboxsdk.maps.Style;
-import com.mapbox.mapboxsdk.style.expressions.Expression;
-import com.mapbox.mapboxsdk.style.layers.LineLayer;
-import com.mapbox.mapboxsdk.style.layers.Property;
-import com.mapbox.mapboxsdk.style.layers.PropertyFactory;
-import com.mapbox.mapboxsdk.style.layers.SymbolLayer;
-import com.mapbox.mapboxsdk.style.sources.GeoJsonSource;
-
-import org.thoughtcrime.securesms.R;
-import org.thoughtcrime.securesms.components.emoji.EmojiProvider;
-import org.thoughtcrime.securesms.connect.DcEventCenter;
-import org.thoughtcrime.securesms.connect.DcHelper;
-import org.thoughtcrime.securesms.map.DataCollectionTask.DataCollectionCallback;
-import org.thoughtcrime.securesms.map.GenerateInfoWindowTask.GenerateInfoWindowCallback;
-import org.thoughtcrime.securesms.map.model.FilterProvider;
-import org.thoughtcrime.securesms.map.model.MapSource;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
 import static com.b44t.messenger.DcContext.DC_EVENT_LOCATION_CHANGED;
 import static com.b44t.messenger.DcContext.DC_GCL_ADD_SELF;
 import static com.mapbox.mapboxsdk.location.modes.RenderMode.COMPASS;
@@ -84,6 +39,51 @@ import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.visibility;
 import static org.thoughtcrime.securesms.map.model.MapSource.INFO_WINDOW_LAYER;
 import static org.thoughtcrime.securesms.map.model.MapSource.LINE_FEATURE_LIST;
 import static org.thoughtcrime.securesms.util.BitmapUtil.generateColoredBitmap;
+
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.os.Handler;
+import android.os.Looper;
+import android.util.Log;
+
+import androidx.annotation.NonNull;
+
+import com.b44t.messenger.DcContext;
+import com.b44t.messenger.DcEvent;
+import com.mapbox.geojson.Feature;
+import com.mapbox.geojson.FeatureCollection;
+import com.mapbox.mapboxsdk.exceptions.InvalidLatLngBoundsException;
+import com.mapbox.mapboxsdk.geometry.LatLngBounds;
+import com.mapbox.mapboxsdk.location.LocationComponent;
+import com.mapbox.mapboxsdk.location.LocationComponentActivationOptions;
+import com.mapbox.mapboxsdk.location.permissions.PermissionsManager;
+import com.mapbox.mapboxsdk.maps.Style;
+import com.mapbox.mapboxsdk.style.expressions.Expression;
+import com.mapbox.mapboxsdk.style.layers.LineLayer;
+import com.mapbox.mapboxsdk.style.layers.Property;
+import com.mapbox.mapboxsdk.style.layers.PropertyFactory;
+import com.mapbox.mapboxsdk.style.layers.SymbolLayer;
+import com.mapbox.mapboxsdk.style.sources.GeoJsonSource;
+
+import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.components.emoji.EmojiProvider;
+import org.thoughtcrime.securesms.connect.DcEventCenter;
+import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.map.DataCollectionTask.DataCollectionCallback;
+import org.thoughtcrime.securesms.map.GenerateInfoWindowTask.GenerateInfoWindowCallback;
+import org.thoughtcrime.securesms.map.model.FilterProvider;
+import org.thoughtcrime.securesms.map.model.MapSource;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 
 /**

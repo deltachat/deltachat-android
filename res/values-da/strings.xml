@@ -31,7 +31,9 @@
     <string name="back">Tilbage</string>
     <string name="close">Luk</string>
     <string name="forward">Videresend</string>
+    <!-- In the meaning of "To archive", "Put a chat to the archive". This string does not mean "The Archive". -->
     <string name="archive">Arkivér</string>
+    <!-- In the meaning of "To unarchive", "Remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Fortryd arkivering</string>
     <string name="mute">Udsæt</string>
     <string name="ephemeral_messages">Beskeder med tidsudløb</string>

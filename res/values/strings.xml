@@ -86,6 +86,8 @@
     <string name="this_month">This month</string>
     <string name="last_week">Last week</string>
     <string name="last_month">Last month</string>
+    <string name="last_seen_at">Last seen at %1$s</string>
+    <string name="last_seen_never">Last seen: Never</string>
     <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
     <plurals name="n_minutes">
         <item quantity="one">%d min</item>

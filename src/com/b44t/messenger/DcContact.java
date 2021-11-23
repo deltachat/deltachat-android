@@ -54,6 +54,7 @@ public class DcContact {
     public native String  getProfileImage();
     public native int     getColor       ();
     public native String  getStatus      ();
+    public native long    getLastSeen    ();
     public native boolean isBlocked      ();
     public native boolean isVerified     ();
 

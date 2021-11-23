@@ -28,7 +28,9 @@
     <string name="back">Zpět</string>
     <string name="close">Zavřít</string>
     <string name="forward">Přeposlat</string>
+    <!-- In the meaning of "To archive", "Put a chat to the archive". This string does not mean "The Archive". -->
     <string name="archive">Archivuj</string>
+    <!-- In the meaning of "To unarchive", "Remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Rozbal</string>
     <string name="mute">Umlčet</string>
     <string name="ephemeral_messages">Samomazací zpráva</string>
