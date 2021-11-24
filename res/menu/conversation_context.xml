@@ -39,6 +39,14 @@
         android:id="@+id/menu_context_reply_privately"
         app:showAsAction="never" />
 
+    <item android:title="@string/remove_desktop"
+        android:id="@+id/menu_context_remove_contact"
+        app:showAsAction="never" />
+
+    <item android:title="@string/add_contact_desktop"
+        android:id="@+id/menu_context_add_contact"
+        app:showAsAction="never" />
+
     <!-- The `showAsAction` behaviors are managed by
     ConversationAdaptiveActionsToolbar. The `app:showAsAction`
     values set here don't actually make a difference.-->

@@ -321,6 +321,8 @@ public class ConversationFragment extends MessageSelectorFragment
             menu.findItem(R.id.menu_context_share).setVisible(false);
             menu.findItem(R.id.menu_context_reply).setVisible(false);
             menu.findItem(R.id.menu_context_reply_privately).setVisible(false);
+            menu.findItem(R.id.menu_context_remove_contact).setVisible(false);
+            menu.findItem(R.id.menu_context_add_contact).setVisible(false);
         } else {
             DcMsg messageRecord = messageRecords.iterator().next();
             DcChat chat = getListAdapter().getChat();
@@ -330,6 +332,20 @@ public class ConversationFragment extends MessageSelectorFragment
             menu.findItem(R.id.menu_context_reply).setVisible(chat.canSend() && canReply);
             boolean showReplyPrivately = chat.isMultiUser() && !messageRecord.isOutgoing() && canReply;
             menu.findItem(R.id.menu_context_reply_privately).setVisible(showReplyPrivately);
+
+            boolean isMember = false;
+            boolean canModify = chat.isMultiUser() && !chat.isMailingList() && chat.canSend();
+            if (canModify) {
+                int senderId = messageRecord.getFromId();
+                for (int contactId : dcContext.getChatContacts(chat.getId())) {
+                    if (contactId == senderId) {
+                        isMember = true;
+                        break;
+                    }
+                }
+            }
+            menu.findItem(R.id.menu_context_remove_contact).setVisible(isMember);
+            menu.findItem(R.id.menu_context_add_contact).setVisible(canModify && !isMember);
         }
 
         // if one of the selected item cannot be forwarded, disable forwarding.
@@ -465,6 +481,21 @@ public class ConversationFragment extends MessageSelectorFragment
         } else {
             Log.e(TAG, "Activity was null");
         }
+    }
+
+    private void handleDeleteContact(final DcMsg msg) {
+        new AlertDialog.Builder(getContext())
+            .setPositiveButton(android.R.string.ok, (dialog, which) -> {
+              dcContext.removeContactFromChat((int)chatId, msg.getFromId());
+              actionMode.finish();
+            })
+            .setNegativeButton(android.R.string.cancel, null)
+            .setMessage(getString(R.string.ask_remove_members, dcContext.getContact(msg.getFromId()).getDisplayName()))
+            .show();
+    }
+
+    private void handleAddContact(final DcMsg msg) {
+        dcContext.addContactToChat((int)chatId, msg.getFromId());
     }
 
     private void reloadList() {
@@ -917,6 +948,13 @@ public class ConversationFragment extends MessageSelectorFragment
                     return true;
                 case R.id.menu_context_reply_privately:
                     handleReplyMessagePrivately(getSelectedMessageRecord(getListAdapter().getSelectedItems()));
+                    return true;
+                case R.id.menu_context_remove_contact:
+                    handleDeleteContact(getSelectedMessageRecord(getListAdapter().getSelectedItems()));
+                    return true;
+                case R.id.menu_context_add_contact:
+                    handleAddContact(getSelectedMessageRecord(getListAdapter().getSelectedItems()));
+                    actionMode.finish();
                     return true;
             }
 
