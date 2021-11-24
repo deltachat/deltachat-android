@@ -775,9 +775,9 @@
     <string name="qrshow_x_verified">%1$s verified.</string>
     <string name="qrshow_x_has_joined_group">%1$s joined the group.</string>
     <string name="qrshow_join_group_title">QR Invite Code</string>
-    <string name="qrshow_join_group_hint">Scan this to join the group \"%1$s\".</string>
+    <string name="qrshow_join_group_hint">Scan to join group %1$s</string>
     <string name="qrshow_join_contact_title">QR Invite Code</string>
-    <string name="qrshow_join_contact_hint">Scan this to set up a contact with %1$s.</string>
+    <string name="qrshow_join_contact_hint">Scan to chat with %1$s</string>
     <string name="qrshow_join_contact_no_connection_hint">QR code setup requires an internet connection. Please connect to a network before proceeding.</string>
     <string name="qrshow_join_contact_no_connection_toast">No internet connection, can\'t perform QR code setup.</string>
     <string name="qraccount_ask_create_and_login">Create new e-mail address on \"%1$s\" and log in there?</string>
