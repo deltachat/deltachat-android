@@ -14,7 +14,7 @@ import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 
-import org.thoughtcrime.securesms.components.AvatarImageView;
+import org.thoughtcrime.securesms.components.AvatarView;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.recipients.Recipient;
@@ -27,7 +27,7 @@ public class ConversationTitleView extends RelativeLayout {
 
   private View            content;
   private ImageView       back;
-  private AvatarImageView avatar;
+  private AvatarView      avatar;
   private TextView        title;
   private TextView        subtitle;
   private ImageView       ephemeralIcon;
@@ -49,7 +49,7 @@ public class ConversationTitleView extends RelativeLayout {
     this.content       = ViewUtil.findById(this, R.id.content);
     this.title         = ViewUtil.findById(this, R.id.title);
     this.subtitle      = ViewUtil.findById(this, R.id.subtitle);
-    this.avatar        = ViewUtil.findById(this, R.id.contact_photo_image);
+    this.avatar        = ViewUtil.findById(this, R.id.avatar);
     this.ephemeralIcon = ViewUtil.findById(this, R.id.ephemeral_icon);
 
     ViewUtil.setTextViewGravityStart(this.title, getContext());
@@ -80,6 +80,7 @@ public class ConversationTitleView extends RelativeLayout {
       imgRight = R.drawable.ic_verified;
     }
 
+    boolean isOnline = false;
     int[] chatContacts = dcContext.getChatContacts(chatId);
     if (dcChat.isMailingList()) {
       subtitleStr = context.getString(R.string.mailing_list);
@@ -100,10 +101,12 @@ public class ConversationTitleView extends RelativeLayout {
         if (dcContact.isVerified()) {
           imgRight = R.drawable.ic_verified;
         }
+        isOnline = dcContact.isOnline();
       }
     }
 
     subtitle.setText(subtitleStr);
+    avatar.setStatusEnabled(isOnline);
 
     avatar.setAvatar(glideRequests, new Recipient(getContext(), dcChat), false);
     title.setCompoundDrawablesWithIntrinsicBounds(imgLeft, 0, imgRight, 0);
@@ -114,13 +117,23 @@ public class ConversationTitleView extends RelativeLayout {
   }
 
   public void setTitle(@NonNull GlideRequests glideRequests, @NonNull DcContact contact) {
-    // the verified state is _not_ shown in the title. this will be confusing as in the one-to-one-ChatViews, the verified
-    // icon is also not shown as these chats are always opportunistic chats
+    avatar.setStatusEnabled(contact.isOnline());
     avatar.setAvatar(glideRequests, new Recipient(getContext(), contact), false);
     title.setText(contact.getDisplayName());
-    title.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+    title.setCompoundDrawablesWithIntrinsicBounds(0, 0, contact.isVerified()? R.drawable.ic_verified : 0, 0);
     subtitle.setText(contact.getAddr());
     subtitle.setVisibility(View.VISIBLE);
+  }
+
+  public void updateStatus(DcContext dcContext, int chatId) {
+    boolean isOnline = false;
+    if(!dcContext.getChat(chatId).isMultiUser()) {
+      int[] members = dcContext.getChatContacts(chatId);
+      if(members.length>=1) {
+        isOnline = dcContext.getContact(members[0]).isOnline();
+      }
+    }
+    avatar.setStatusEnabled(isOnline);
   }
 
   public void hideAvatar() {
@@ -130,13 +143,13 @@ public class ConversationTitleView extends RelativeLayout {
   @Override
   public void setOnClickListener(@Nullable OnClickListener listener) {
     this.content.setOnClickListener(listener);
-    this.avatar.setOnClickListener(listener);
+    this.avatar.setOnAvatarClickListener(listener);
   }
 
   @Override
   public void setOnLongClickListener(@Nullable OnLongClickListener listener) {
     this.content.setOnLongClickListener(listener);
-    this.avatar.setOnLongClickListener(listener);
+    this.avatar.setOnAvatarLongClickListener(listener);
   }
 
   public void setOnBackClickedListener(@Nullable OnClickListener listener) {

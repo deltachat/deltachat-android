@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.b44t.messenger.DcContact;
 
 import org.thoughtcrime.securesms.R;
-import org.thoughtcrime.securesms.components.AvatarImageView;
+import org.thoughtcrime.securesms.components.AvatarView;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.recipients.Recipient;
@@ -24,7 +24,7 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
   @SuppressWarnings("unused")
   private static final String TAG = ContactSelectionListItem.class.getSimpleName();
 
-  private AvatarImageView contactPhotoImage;
+  private AvatarView      avatar;
   private View            numberContainer;
   private TextView        numberView;
   private TextView        nameView;
@@ -48,7 +48,7 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
   @Override
   protected void onFinishInflate() {
     super.onFinishInflate();
-    this.contactPhotoImage = findViewById(R.id.contact_photo_image);
+    this.avatar            = findViewById(R.id.avatar);
     this.numberContainer   = findViewById(R.id.number_container);
     this.numberView        = findViewById(R.id.number);
     this.labelView         = findViewById(R.id.label);
@@ -76,7 +76,8 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
         name = this.recipient.getName();
       }
     }
-    this.contactPhotoImage.setAvatar(glideRequests, recipient, false);
+    this.avatar.setAvatar(glideRequests, recipient, false);
+    this.avatar.setStatusEnabled(contact!=null? contact.isOnline() : false);
 
     setText(name, number, label, contact);
     setEnabled(enabled);
@@ -95,7 +96,7 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
       recipient = null;
     }
 
-    contactPhotoImage.clear(glideRequests);
+    avatar.clear(glideRequests);
   }
 
   private void setText(String name, String number, String label, DcContact contact) {
@@ -141,7 +142,9 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
   public void onModified(final Recipient recipient) {
     if (this.recipient == recipient) {
       Util.runOnMain(() -> {
-        contactPhotoImage.setAvatar(glideRequests, recipient, false);
+        avatar.setAvatar(glideRequests, recipient, false);
+        DcContact contact = recipient.getDcContact();
+        avatar.setStatusEnabled(contact!=null? contact.isOnline() : false);
         nameView.setText(recipient.toShortString());
       });
     }

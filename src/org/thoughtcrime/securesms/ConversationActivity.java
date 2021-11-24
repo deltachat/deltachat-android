@@ -267,6 +267,12 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     eventCenter.addObserver(DcContext.DC_EVENT_CHAT_EPHEMERAL_TIMER_MODIFIED, this);
     eventCenter.addObserver(DcContext.DC_EVENT_CONTACTS_CHANGED, this);
 
+    if (!isMultiUser()) {
+      eventCenter.addObserver(DcContext.DC_EVENT_INCOMING_MSG, this);
+      eventCenter.addObserver(DcContext.DC_EVENT_MSG_DELIVERED, this);
+      eventCenter.addObserver(DcContext.DC_EVENT_MSG_READ, this);
+    }
+
     if (isForwarding(this)) {
       handleForwarding();
     } else if (isSharing(this)) {
@@ -1537,15 +1543,30 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   @Override
   public void handleEvent(@NonNull DcEvent event) {
-    int eventId = event.getId();
-    if ((eventId == DcContext.DC_EVENT_CHAT_MODIFIED && event.getData1Int() == chatId)
-     || (eventId == DcContext.DC_EVENT_CHAT_EPHEMERAL_TIMER_MODIFIED && event.getData1Int() == chatId)
-     || eventId == DcContext.DC_EVENT_CONTACTS_CHANGED) {
-      dcChat = dcContext.getChat(chatId);
-      titleView.setTitle(glideRequests, dcChat);
-      initializeSecurity(isSecureText, isDefaultSms);
-      setComposePanelVisibility();
-      initializeContactRequest();
+    switch (event.getId()) {
+      case DcContext.DC_EVENT_CHAT_MODIFIED:
+      case DcContext.DC_EVENT_CHAT_EPHEMERAL_TIMER_MODIFIED:
+        if (event.getData1Int() == chatId) {
+          dcChat = dcContext.getChat(chatId);
+          titleView.setTitle(glideRequests, dcChat);
+          initializeSecurity(isSecureText, isDefaultSms);
+          setComposePanelVisibility();
+          initializeContactRequest();
+        }
+        break;
+      case DcContext.DC_EVENT_CONTACTS_CHANGED:
+        titleView.setTitle(glideRequests, dcContext.getChat(chatId));
+        initializeSecurity(isSecureText, isDefaultSms);
+        setComposePanelVisibility();
+        initializeContactRequest();
+        break;
+      case DcContext.DC_EVENT_INCOMING_MSG:
+      case DcContext.DC_EVENT_MSG_READ:
+      case DcContext.DC_EVENT_MSG_DELIVERED:
+        if (event.getData1Int() == chatId) {
+          titleView.updateStatus(dcContext, chatId);
+        }
+        break;
     }
   }
 

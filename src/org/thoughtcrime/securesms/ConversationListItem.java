@@ -42,7 +42,7 @@ import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcLot;
 import com.b44t.messenger.DcMsg;
 
-import org.thoughtcrime.securesms.components.AvatarImageView;
+import org.thoughtcrime.securesms.components.AvatarView;
 import org.thoughtcrime.securesms.components.DeliveryStatusView;
 import org.thoughtcrime.securesms.components.FromTextView;
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -80,7 +80,7 @@ public class ConversationListItem extends RelativeLayout
   private DeliveryStatusView deliveryStatusIndicator;
   private ImageView          unreadIndicator;
 
-  private AvatarImageView contactPhotoImage;
+  private AvatarView avatar;
 
   public ConversationListItem(Context context) {
     this(context, null);
@@ -97,7 +97,7 @@ public class ConversationListItem extends RelativeLayout
     this.fromView                = findViewById(R.id.from_text);
     this.dateView                = findViewById(R.id.date);
     this.deliveryStatusIndicator = new DeliveryStatusView(findViewById(R.id.delivery_indicator));
-    this.contactPhotoImage       = findViewById(R.id.contact_photo_image);
+    this.avatar                  = findViewById(R.id.avatar);
     this.archivedBadgeView       = findViewById(R.id.archived_badge);
     this.requestBadgeView        = findViewById(R.id.request_badge);
     this.unreadIndicator         = findViewById(R.id.unread_indicator);
@@ -166,18 +166,27 @@ public class ConversationListItem extends RelativeLayout
     setBatchState(batchMode);
     setBgColor(thread);
 
-    this.contactPhotoImage.setAvatar(glideRequests, recipient, false);
+    this.avatar.setAvatar(glideRequests, recipient, false);
 
     int imgRight = 0;
     if (thread.isProtected()) {
       imgRight = R.drawable.ic_verified;
-    } else if (!recipient.isMultiUserRecipient()) {
+    }
+
+    if (recipient.isMultiUserRecipient()) {
+      avatar.setStatusEnabled(false);
+    } else {
       DcContext dcContext = DcHelper.getContext(getContext());
       int[] members = dcContext.getChatContacts((int)chatId);
-      if (dcContext.getContact(members.length>=1? members[0] : 0).isVerified() || dcContext.getChat((int)chatId).isDeviceTalk()) {
+      DcContact contact = dcContext.getContact(members.length>=1? members[0] : 0);
+
+      avatar.setStatusEnabled(contact.isOnline());
+
+      if (contact.isVerified() || dcContext.getChat((int)chatId).isDeviceTalk()) {
         imgRight = R.drawable.ic_verified;
       }
     }
+
     fromView.setCompoundDrawablesWithIntrinsicBounds(
         thread.isMuted()? R.drawable.ic_volume_off_grey600_18dp : 0,
         0,
@@ -205,7 +214,8 @@ public class ConversationListItem extends RelativeLayout
     deliveryStatusIndicator.setNone();
 
     setBatchState(false);
-    contactPhotoImage.setAvatar(glideRequests, recipient, false);
+    avatar.setAvatar(glideRequests, recipient, false);
+    avatar.setStatusEnabled(contact.isOnline());
   }
 
   public void bind(@NonNull  DcMsg         messageResult,
@@ -237,7 +247,8 @@ public class ConversationListItem extends RelativeLayout
     deliveryStatusIndicator.setNone();
 
     setBatchState(false);
-    contactPhotoImage.setAvatar(glideRequests, recipient, false);
+    avatar.setAvatar(glideRequests, recipient, false);
+    avatar.setStatusEnabled(false);
   }
 
   @Override
