@@ -948,6 +948,8 @@
 
 
     <!-- device messages for updates -->
+    <string name="update_1_22">UNUSED</string>
+    <string name="update_1_22_ios">UNUSED</string>
     <string name="update_1_24_bots">**🤖 Public bots list:**\nhttps://simplebot-org.github.io/simplebot-instances/\n\nThis is a new page, there you can click the bot address to verify the bot! that way you can add the bot to verified groups, verification is important since it ensures the communication is not manipulated</string>
     <string name="update_1_24_android">1.24 at a glance:\n\n• Save taps: Account selection in the upper left corner of the chat list\n• Save more taps: Long-tap the app icon to open recent chats directly\n• Save traffic: Download large files as needed\n• Save nerves: faster, non-blocking QR code joins and new QR code options\n• You can now disable the Subject of your outgoing messages\n• Long-tap the + icon to switch account\n• Group invitation links and Mumble links are now clickable in messages\n• DeltaLab has now a new logo and default theme, also the themes were improved, specially the green theme\n• Now e2e encryption is enabled by default, if you want to disable encryption forcefully use DeltaChat Lite instead, which is available in the same repo than DeltaLab\n• Video call instance is now configured by default\n\nMore at 👉</string>
     <string name="update_1_24_ios">1.24 at a glance:\n\n• Start an in-chat search from the chat\'s profile\n• Save traffic: Download large files as needed\n• Save nerves: faster, non-blocking QR code joins\n\nMore at 👉</string>
