@@ -199,6 +199,8 @@ public class DcHelper {
     dcContext.setStockTranslation(116, context.getString(R.string.part_of_total_used));
     dcContext.setStockTranslation(117, context.getString(R.string.secure_join_started));
     dcContext.setStockTranslation(118, context.getString(R.string.secure_join_replies));
+    dcContext.setStockTranslation(119, context.getString(R.string.qrshow_join_contact_hint));
+    dcContext.setStockTranslation(120, context.getString(R.string.qrshow_join_group_hint));
   }
 
   public static File getImexDir() {
