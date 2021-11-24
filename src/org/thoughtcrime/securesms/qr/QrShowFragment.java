@@ -74,7 +74,14 @@ public class QrShowFragment extends Fragment implements DcEventCenter.DcEventDel
 
         SVGImageView imageView = view.findViewById(R.id.qrImage);
         try {
-            SVG svg = SVG.getFromString(dcContext.getSecurejoinQrSvg(chatId));
+            String svg_txt = dcContext.getSecurejoinQrSvg(chatId);
+
+            // HACK: move avatar-letter down, baseline alignment not working,
+            // see https://github.com/deltachat/deltachat-core-rust/pull/2815#issuecomment-978067378 ,
+            // suggestions welcome :)
+            svg_txt = svg_txt.replace("y=\"281.136\"", "y=\"290\"");
+
+            SVG svg = SVG.getFromString(svg_txt);
             imageView.setSVG(svg);
         } catch (SVGParseException e) {
             e.printStackTrace();
