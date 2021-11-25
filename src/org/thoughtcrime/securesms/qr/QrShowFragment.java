@@ -1,24 +1,16 @@
 package org.thoughtcrime.securesms.qr;
 
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
-import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -26,10 +18,10 @@ import androidx.fragment.app.Fragment;
 
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
-import com.google.zxing.BarcodeFormat;
-import com.google.zxing.MultiFormatWriter;
-import com.google.zxing.WriterException;
-import com.google.zxing.common.BitMatrix;
+
+import com.caverock.androidsvg.SVGImageView;
+import com.caverock.androidsvg.SVG;
+import com.caverock.androidsvg.SVGParseException;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
@@ -57,16 +49,6 @@ public class QrShowFragment extends Fragment implements DcEventCenter.DcEventDel
 
     private DcContext dcContext;
 
-    private String hint;
-
-    private String errorHint;
-
-    private TextView hintBelowQr;
-
-    private BroadcastReceiver broadcastReceiver;
-
-    private Bitmap bitmap;
-
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
@@ -86,43 +68,22 @@ public class QrShowFragment extends Fragment implements DcEventCenter.DcEventDel
             chatId = extras.getInt(CHAT_ID);
         }
 
-        errorHint = getString(R.string.qrshow_join_contact_no_connection_hint);
-
-        if (chatId != 0) {
-            // verified-group
-            String groupName = dcContext.getChat(chatId).getName();
-            hint = String.format(this.getString(R.string.qrshow_join_group_hint), groupName);
-        } else {
-            // verify-contact
-            String selfName = DcHelper.get(getActivity(), DcHelper.CONFIG_DISPLAY_NAME); // we cannot use MrContact.getDisplayName() as this would result in "Me" instead of
-            String nameAndAddress;
-            if (selfName.isEmpty()) {
-                selfName = DcHelper.get(getActivity(), DcHelper.CONFIG_ADDRESS, "unknown");
-                nameAndAddress = selfName;
-            } else {
-                nameAndAddress = String.format("%s (%s)", selfName, DcHelper.get(getActivity(), DcHelper.CONFIG_ADDRESS));
-            }
-            hint = String.format(this.getString(R.string.qrshow_join_contact_hint), nameAndAddress);
-        }
-        hintBelowQr = view.findViewById(R.id.qrShowHint);
-        setHintText();
-
         dcEventCenter.addObserver(DcContext.DC_EVENT_SECUREJOIN_INVITER_PROGRESS, this);
-        broadcastReceiver = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                setHintText();
-            }
-        };
-        getActivity().registerReceiver(broadcastReceiver, new IntentFilter(android.net.ConnectivityManager.CONNECTIVITY_ACTION));
 
         numJoiners = 0;
 
-        ImageView imageView = view.findViewById(R.id.qrImage);
+        SVGImageView imageView = view.findViewById(R.id.qrImage);
         try {
-            bitmap = encodeAsBitmap(dcContext.getSecurejoinQr(chatId));
-            imageView.setImageBitmap(bitmap);
-        } catch (WriterException e) {
+            String svg_txt = dcContext.getSecurejoinQrSvg(chatId);
+
+            // HACK: move avatar-letter down, baseline alignment not working,
+            // see https://github.com/deltachat/deltachat-core-rust/pull/2815#issuecomment-978067378 ,
+            // suggestions welcome :)
+            svg_txt = svg_txt.replace("y=\"281.136\"", "y=\"290\"");
+
+            SVG svg = SVG.getFromString(svg_txt);
+            imageView.setSVG(svg);
+        } catch (SVGParseException e) {
             e.printStackTrace();
         }
 
@@ -135,6 +96,11 @@ public class QrShowFragment extends Fragment implements DcEventCenter.DcEventDel
             file.createNewFile();
             file.setReadable(true, false);
             FileOutputStream stream = new FileOutputStream(file);
+            Bitmap bitmap = Bitmap.createBitmap(WIDTH, HEIGHT, Bitmap.Config.ARGB_8888);
+            Canvas canvas = new Canvas(bitmap);
+            canvas.drawRGB(255, 255, 255);  // Clear background to white
+            SVG svg = SVG.getFromString(dcContext.getSecurejoinQrSvg(chatId));
+            svg.renderToCanvas(canvas);
             bitmap.compress(Bitmap.CompressFormat.PNG, 90, stream);
             stream.flush();
             stream.close();
@@ -142,7 +108,6 @@ public class QrShowFragment extends Fragment implements DcEventCenter.DcEventDel
             Intent intent = new Intent(Intent.ACTION_SEND);
             intent.setType("image/png");
             intent.putExtra(Intent.EXTRA_STREAM, uri);
-            intent.putExtra(Intent.EXTRA_TEXT, hint);
             intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             startActivity(Intent.createChooser(intent, getString(R.string.chat_share_with_title)));
         } catch (Exception e) {
@@ -153,14 +118,6 @@ public class QrShowFragment extends Fragment implements DcEventCenter.DcEventDel
     public void copyQrData() {
         Util.writeTextToClipboard(getActivity(), DcHelper.getContext(getActivity()).getSecurejoinQr(chatId));
         Toast.makeText(getActivity(), getString(R.string.copied_to_clipboard), Toast.LENGTH_SHORT).show();
-    }
-
-    private void setHintText() {
-        if (!DcHelper.isNetworkConnected(getContext())) {
-            hintBelowQr.setText(errorHint);
-        } else {
-            hintBelowQr.setText(hint);
-        }
     }
 
     @Override
@@ -175,47 +132,6 @@ public class QrShowFragment extends Fragment implements DcEventCenter.DcEventDel
     public void onDestroyView() {
         super.onDestroyView();
         dcEventCenter.removeObservers(this);
-        getActivity().unregisterReceiver(broadcastReceiver);
-    }
-
-    private Bitmap encodeAsBitmap(String str) throws WriterException {
-        BitMatrix result;
-        try {
-            result = new MultiFormatWriter().encode(str,
-                    BarcodeFormat.QR_CODE, WIDTH, HEIGHT, null);
-        } catch (IllegalArgumentException iae) {
-            // Unsupported format
-            return null;
-        }
-
-        int w = result.getWidth();
-        int h = result.getHeight();
-        int[] pixels = new int[w * h];
-        for (int y = 0; y < h; y++) {
-            int offset = y * w;
-            for (int x = 0; x < w; x++) {
-                pixels[offset + x] = result.get(x, y) ? BLACK : WHITE;
-            }
-        }
-
-        Bitmap bitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
-        bitmap.setPixels(pixels, 0, w, 0, 0, w, h);
-
-        Bitmap overlay = BitmapFactory.decodeResource(this.getResources(), R.drawable.qr_overlay);
-        putOverlay(bitmap, overlay);
-
-        return bitmap;
-    }
-
-    private void putOverlay(Bitmap bitmap, Bitmap overlay) {
-        int bw = bitmap.getWidth();
-        int bh = bitmap.getHeight();
-        int ow = bw / 6;
-        int oh = bh / 6;
-
-        Canvas canvas = new Canvas(bitmap);
-        Paint paint = new Paint(Paint.FILTER_BITMAP_FLAG);
-        canvas.drawBitmap(overlay, null, new Rect(bw / 2 - ow / 2, bh / 2 - oh / 2, bw / 2 + ow / 2, bh / 2 + oh / 2), paint);
     }
 
     @Override

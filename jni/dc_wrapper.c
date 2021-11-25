@@ -757,6 +757,14 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcContext_getSecurejoinQr(JNIEnv *env,
     return ret;
 }
 
+JNIEXPORT jstring Java_com_b44t_messenger_DcContext_getSecurejoinQrSvg(JNIEnv *env, jobject obj, jint chat_id)
+{
+    char* temp = dc_get_securejoin_qr_svg(get_dc_context(env, obj), chat_id);
+        jstring ret = JSTRING_NEW(temp);
+    dc_str_unref(temp);
+    return ret;
+}
+
 JNIEXPORT jint Java_com_b44t_messenger_DcContext_joinSecurejoin(JNIEnv *env, jobject obj, jstring qr)
 {
     CHAR_REF(qr);

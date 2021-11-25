@@ -85,6 +85,9 @@
     <string name="this_month">Deze maand</string>
     <string name="last_week">Vorige week</string>
     <string name="last_month">Vorige maand</string>
+    <!-- the placeholder will be replaced by a date or time, resulting eg. in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
+    <string name="last_seen_at">Laatst gezien om %1$s</string>
+    <string name="last_seen_unknown">Laatst gezien: onbekend</string>
     <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
     <plurals name="n_minutes">
         <item quantity="one">%d minuut</item>
