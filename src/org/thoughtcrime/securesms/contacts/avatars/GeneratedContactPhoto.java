@@ -32,6 +32,8 @@ public class GeneratedContactPhoto implements FallbackContactPhoto {
                        .width(targetSize)
                        .height(targetSize)
                        .textColor(Color.WHITE)
+                       .bold()
+                       .toUpperCase()
                        .endConfig()
                        .buildRound(getCharacter(name), color);
   }
