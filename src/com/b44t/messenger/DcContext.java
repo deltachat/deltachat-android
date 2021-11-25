@@ -115,6 +115,7 @@ public class DcContext {
 
     public native void         setStockTranslation  (int stockId, String translation);
     public native String       getBlobdir           ();
+    public native String       getLastError         ();
     public native void         configure            ();
     public native void         stopOngoingProcess   ();
     public native int          isConfigured         ();

@@ -56,6 +56,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
 
     private boolean manualConfigure = true; // false: configure by QR account creation
     private ProgressDialog progressDialog = null;
+    private boolean imexUserAborted;
     DcContext dcContext;
     private NotificationController notificationController;
 
@@ -164,11 +165,13 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
             progressDialog = null;
         }
 
+        imexUserAborted = false;
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage(getResources().getString(R.string.one_moment));
         progressDialog.setCanceledOnTouchOutside(false);
         progressDialog.setCancelable(false);
         progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, getResources().getString(android.R.string.cancel), (dialog, which) -> {
+            imexUserAborted = true;
             dcContext.stopOngoingProcess();
             notificationController.close();
             cleanupTempBackupFile();
@@ -222,9 +225,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
         DcHelper.getEventCenter(this).captureNextError();
 
         if (!dcContext.setConfigFromQr(qrCode)) {
-            Util.sleep(100); // hack to avoid a race condition, see https://github.com/deltachat/deltachat-core-rust/issues/2787 for more details and possible fix
-            String err = DcHelper.getEventCenter(this).getCapturedError();
-            progressError(TextUtils.isEmpty(err) ? "Cannot create account from QR code." : err);
+            progressError(dcContext.getLastError());
             return;
         }
 
@@ -281,7 +282,9 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
         if (eventId== DcContext.DC_EVENT_IMEX_PROGRESS ) {
             long progress = event.getData1Int();
             if (progress==0/*error/aborted*/) {
-                progressError(DcHelper.getEventCenter(this).getCapturedError());
+                if (!imexUserAborted) {
+                  progressError(dcContext.getLastError());
+                }
                 notificationController.close();
                 cleanupTempBackupFile();
             }
