@@ -777,9 +777,9 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="qrshow_x_verified">%1$s verifiziert.</string>
     <string name="qrshow_x_has_joined_group">%1$s ist der Gruppe beigetreten.</string>
     <string name="qrshow_join_group_title">QR-Einladungscode</string>
-    <string name="qrshow_join_group_hint">Dies scannen, um der Gruppe \"%1$s\" beizutreten.</string>
+    <string name="qrshow_join_group_hint">Scannen, um der Gruppe \"%1$s\" beizutreten</string>
     <string name="qrshow_join_contact_title">QR-Einladungscode</string>
-    <string name="qrshow_join_contact_hint">Scannen, um einen Kontakt mit %1$s herzustellen.</string>
+    <string name="qrshow_join_contact_hint">Scannen für Chat mit %1$s</string>
     <string name="qrshow_join_contact_no_connection_hint">Der Austausch von QR-Codes erfordert eine Verbindung zum Internet. Bitte stellen Sie diese her, bevor Sie fortfahtren.</string>
     <string name="qrshow_join_contact_no_connection_toast">Keine Verbindung zum Internet, Austausch des QR-Codes nicht möglich.</string>
     <string name="qraccount_ask_create_and_login">E-Mail-Konto auf \"%1$s\" erzeugen und dort anmelden?</string>
