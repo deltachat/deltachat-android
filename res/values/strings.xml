@@ -798,7 +798,7 @@
     <string name="copy_qr_data_success">Copied QR url to clipboard</string>
     <string name="mailto_dialog_header_select_chat">Select chat to send the message to</string>
     <!-- first placeholder is the name of the chat -->
-    <string name="mailto_dialog_confirm_replace_draft">%1$s already has a draft message, do you want to replace it?</string>
+    <string name="confirm_replace_draft">%1$s already has a draft message, do you want to replace it?</string>
     <string name="mailto_link_could_not_be_decoded">mailto link could not be decoded: %1$s</string>
 
     <!-- notifications  -->
