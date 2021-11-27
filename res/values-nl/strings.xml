@@ -775,8 +775,10 @@
     <string name="qrshow_x_verified">%1$s is goedgekeurd.</string>
     <string name="qrshow_x_has_joined_group">%1$s neemt nu deel aan de groep.</string>
     <string name="qrshow_join_group_title">QR-uitnodigingscode</string>
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
     <string name="qrshow_join_group_hint">Scan dit om deel te nemen aan de groep ‘%1$s’.</string>
     <string name="qrshow_join_contact_title">QR-uitnodigingscode</string>
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
     <string name="qrshow_join_contact_hint">Scan dit om een gesprek te beginnen met %1$s</string>
     <string name="qrshow_join_contact_no_connection_hint">Voor het instellen van QR-codes is een internetverbinding vereist. Maak verbinding en probeer het opnieuw.</string>
     <string name="qrshow_join_contact_no_connection_toast">Geen internetverbinding; kan QR-codes niet instellen.</string>

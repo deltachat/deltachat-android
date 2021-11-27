@@ -636,8 +636,10 @@ https://delta.chat</string>
     <string name="qrshow_x_verified">%1$sを確認しました。</string>
     <string name="qrshow_x_has_joined_group">%1$sが参加しました</string>
     <string name="qrshow_join_group_title">自分のQRｺｰﾄﾞ</string>
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
     <string name="qrshow_join_group_hint">スキャンして%1$sに参加します</string>
     <string name="qrshow_join_contact_title">自分のQRｺｰﾄﾞ</string>
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
     <string name="qrshow_join_contact_hint">スキャンして%1$sに連絡します。</string>
     <string name="qrshow_join_contact_no_connection_toast">インターネットに接続されていないので、QRコードの設定ができません。</string>
     <string name="qraccount_ask_create_and_login">%1$sに新しいメールアドレスを作ってログしますか。</string>

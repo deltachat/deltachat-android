@@ -85,6 +85,9 @@
     <string name="this_month">Цього місяця</string>
     <string name="last_week">Останнього тижня</string>
     <string name="last_month">Останнього місяця</string>
+    <!-- the placeholder will be replaced by a date or time, resulting eg. in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
+    <string name="last_seen_at">З\'являвся останній раз %1$s</string>
+    <string name="last_seen_unknown">Невідомо коли з\'являвся останній раз</string>
     <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
     <plurals name="n_minutes">
         <item quantity="one">%d хвилину</item>
@@ -800,9 +803,11 @@
     <string name="qrshow_x_verified">%1$s перевірений(-а).</string>
     <string name="qrshow_x_has_joined_group">%1$s приєднався(-лася) до групи.</string>
     <string name="qrshow_join_group_title">QR-код запрошення</string>
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
     <string name="qrshow_join_group_hint">Відскануйте код, щоб приєднатися до групи «%1$s».</string>
     <string name="qrshow_join_contact_title">QR-код запрошення</string>
-    <string name="qrshow_join_contact_hint">Відскануйте код, щоб створити контакт з %1$s</string>
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
+    <string name="qrshow_join_contact_hint">Відскануйте код, щоб спілкуватись з %1$s</string>
     <string name="qrshow_join_contact_no_connection_hint">Налаштування QR-коду потребує інтернет з\'єднання. Будь ласка, під\'єднайтесь до мережі перед тим як продовжити.</string>
     <string name="qrshow_join_contact_no_connection_toast">Відсутнє інтернет з\'єднання, не можу налаштувати QR-код.</string>
     <string name="qraccount_ask_create_and_login">Створити нову електронну адресу на \"%1$s\" та увійти у неї?</string>

@@ -800,8 +800,10 @@
     <string name="qrshow_x_verified">%1$s overené.</string>
     <string name="qrshow_x_has_joined_group">%1$s sa pripojil k skupine.</string>
     <string name="qrshow_join_group_title">QR pozývací kód</string>
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
     <string name="qrshow_join_group_hint">Naskenujte to a pripojte sa k skupine „%1$s“.</string>
     <string name="qrshow_join_contact_title">QR pozývací kód</string>
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
     <string name="qrshow_join_contact_hint">Naskenujte to a vytvorte kontakt s %1$s .</string>
     <string name="qrshow_join_contact_no_connection_hint">Nastavenie QR kódu vyžaduje pripojenie k internetu. Pred pokračovaním sa pripojte k sieti.</string>
     <string name="qrshow_join_contact_no_connection_toast">Nie je pripojenie na internet, nedá sa nastaviť kód QR.</string>

@@ -756,8 +756,10 @@
     <string name="qrshow_x_verified">%1$s បានផ្ទៀងផ្ទាត់</string>
     <string name="qrshow_x_has_joined_group">%1$s បានចូលរួមក្រុមនេះ</string>
     <string name="qrshow_join_group_title">កូដ QR សម្រាប់ការអញ្ជើញ</string>
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
     <string name="qrshow_join_group_hint">ស្គេនទីនេះដើម្បីចូលរួមក្រុម \"%1$s\" នេះ។</string>
     <string name="qrshow_join_contact_title">កូដ QR សម្រាប់ការអញ្ជើញ</string>
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
     <string name="qrshow_join_contact_hint">ស្គេនទីនេះដើម្បីរៀបចំទំនាក់ទំនងជាមួយ %1$s</string>
     <string name="qrshow_join_contact_no_connection_hint">រៀបចំកូដ QR អញ្ជើញតម្រូវការភ្ជាប់សេវាអុិនធ័រណេត។ សូមភ្ជាប់ទៅបណ្តាញមុនពេលដំណើរការ។</string>
     <string name="qrshow_join_contact_no_connection_toast">គ្មានសេវាអុិនធ័រណេត មិនអាចអនុវត្ត ការរៀបចំកូដ QR</string>

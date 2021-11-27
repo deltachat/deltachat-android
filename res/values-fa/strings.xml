@@ -716,8 +716,10 @@
     <string name="qrshow_x_verified">%1$s تایید شد.</string>
     <string name="qrshow_x_has_joined_group">%1$sعضو گروه شد. </string>
     <string name="qrshow_join_group_title">کد دعوت کیوآر</string>
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
     <string name="qrshow_join_group_hint">برای عضو شدن در گروه\"%1$s\" این را اسکن کنید.</string>
     <string name="qrshow_join_contact_title">کد دعوت کیوآر</string>
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
     <string name="qrshow_join_contact_hint">برای ارتباط با %1$s این را اسکن کنید.</string>
     <string name="qrshow_join_contact_no_connection_hint">کد نصب کیوآر به ارتباط با اینترنت نیاز دارد. لطفا قبل از ادامه به یک شبکه متصل شوید. </string>
     <string name="qrshow_join_contact_no_connection_toast">اتصال اینترنت نیست. نمیتوان نصب کد کیوآر را انجام داد. </string>

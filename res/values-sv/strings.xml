@@ -619,8 +619,10 @@
     <string name="qrshow_x_verified">%1$s verifierad.</string>
     <string name="qrshow_x_has_joined_group">%1$s anslöt till gruppen.</string>
     <string name="qrshow_join_group_title">QR-kod för inbjudan</string>
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
     <string name="qrshow_join_group_hint">Skanna det här för att ansluta till gruppen \"%1$s\".</string>
     <string name="qrshow_join_contact_title">QR-kod för inbjudan</string>
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
     <string name="qrshow_join_contact_hint">Skanna det här för att få kontakt med %1$s.</string>
     <string name="qrshow_join_contact_no_connection_hint">QR-kod-inställning kräver en internetanslutning. Anslut till ett nätverk innan du fortsätter.</string>
     <string name="qrshow_join_contact_no_connection_toast">Ingen internetanslutning, kan inte utföra QR-kod-inställning.</string>

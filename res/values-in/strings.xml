@@ -566,8 +566,10 @@
     <string name="qrshow_x_verified">%1$sdiverifikasi.</string>
     <string name="qrshow_x_has_joined_group">%1$sbergabung dengan grup.</string>
     <string name="qrshow_join_group_title">Kode undangan QR</string>
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
     <string name="qrshow_join_group_hint">Pindai ini untuk bergabung dengan grup \"%1$s\".</string>
     <string name="qrshow_join_contact_title">Kode undangan QR</string>
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
     <string name="qrshow_join_contact_hint">Pindai ini untuk mengatur kontak dengan%1$s.</string>
     <string name="qrshow_join_contact_no_connection_hint">Pengaturan kode QR membutuhkan koneksi internet. Mohon nyalakan koneksi ke jaringan sebelum mulai proses.</string>
     <string name="qrshow_join_contact_no_connection_toast">Tidak ada koneksi internet, tidak bisa menjalankan kode pengaturan QR.</string>

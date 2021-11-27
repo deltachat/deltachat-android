@@ -775,8 +775,10 @@
     <string name="qrshow_x_verified">%1$s verificado.</string>
     <string name="qrshow_x_has_joined_group">%1$s uneuse ao grupo.</string>
     <string name="qrshow_join_group_title">Código QR de convite</string>
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
     <string name="qrshow_join_group_hint">Escanea esto para unirte ao grupo \"%1$s\".</string>
     <string name="qrshow_join_contact_title">Código QR de convite</string>
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
     <string name="qrshow_join_contact_hint">Escanea esto para conectar con %1$s-</string>
     <string name="qrshow_join_contact_no_connection_hint">O axuste dun código QR precisa de conexión a internet. Conéctate a rede antes de continuar.</string>
     <string name="qrshow_join_contact_no_connection_toast">Sen conexión a internet, non se pode facer o axuste por código QR</string>

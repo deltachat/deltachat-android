@@ -683,8 +683,10 @@
     <string name="qrshow_x_verified">%1$s bekræftet.</string>
     <string name="qrshow_x_has_joined_group">%1$s tilsluttet gruppen.</string>
     <string name="qrshow_join_group_title">QR-invitationskode</string>
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
     <string name="qrshow_join_group_hint">Skan dette for at deltage i gruppen \"%1$s\".</string>
     <string name="qrshow_join_contact_title">QR-invitationskode</string>
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
     <string name="qrshow_join_contact_hint">Skan dette for at indstille kontakt med %1$s</string>
     <string name="qrshow_join_contact_no_connection_hint">QR-kode opsætning kræver en internet forbindelse. Forbind til et netværk inden der fortsættes.</string>
     <string name="qrshow_join_contact_no_connection_toast">Ingen internet forbindelse, kan ikke udføre QR kode opsætning.</string>

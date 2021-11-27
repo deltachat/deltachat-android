@@ -639,8 +639,10 @@
     <string name="qrshow_x_verified">%1$s patvirtintas.</string>
     <string name="qrshow_x_has_joined_group">%1$s prisijungė prie grupės.</string>
     <string name="qrshow_join_group_title">QR pakvietimo kodas</string>
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
     <string name="qrshow_join_group_hint">Nuskenuokite tai, norėdami prisijungti prie \"%1$s\" grupės.</string>
     <string name="qrshow_join_contact_title">QR pakvietimo kodas</string>
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
     <string name="qrshow_join_contact_hint">Nuskenuokite tai, norėdami užmegzti kontaktą su %1$s</string>
     <string name="qrshow_join_contact_no_connection_hint">QR kodo sąranka reikalauja interneto ryšio. Prieš tęsdami, prisijunkite prie tinklo.</string>
     <string name="qrshow_join_contact_no_connection_toast">Nėra interneto ryšio, nepavyksta atlikti QR kodo sąrankos.</string>

@@ -547,8 +547,10 @@
     <string name="qrshow_x_verified">%1$s verificat.</string>
     <string name="qrshow_x_has_joined_group">%1$s s\'ha unit al grup.</string>
     <string name="qrshow_join_group_title">Codi QR d\'invitació</string>
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
     <string name="qrshow_join_group_hint">Escanegeu això per unir-vos al grup \"%1$s\".</string>
     <string name="qrshow_join_contact_title">Codi QR d\'invitació</string>
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
     <string name="qrshow_join_contact_hint">Escanegeu això per establir contacte amb %1$s</string>
     <string name="contact_verified">%1$s verificat.</string>
     <string name="contact_not_verified">No es pot verificar%1$s</string>

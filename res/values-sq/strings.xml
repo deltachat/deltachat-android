@@ -772,8 +772,10 @@
     <string name="qrshow_x_verified">%1$s u verifikua.</string>
     <string name="qrshow_x_has_joined_group">%1$s u bë pjesë e grupit në mënyrë të sigurt.</string>
     <string name="qrshow_join_group_title">Kod QR ftese</string>
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
     <string name="qrshow_join_group_hint">Që të bëheni pjesë e grupit \"%1$s\", skanoni këtë.</string>
     <string name="qrshow_join_contact_title">Kod QR ftese</string>
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
     <string name="qrshow_join_contact_hint">Skanojeni këtë që të rregullohet një kontakt %1$s</string>
     <string name="qrshow_join_contact_no_connection_hint">Ujdisja e kodit QR lyp lidhje në internet. Ju lutemi, përpara se të ecni më tej, lidhuni me një rrjet.</string>
     <string name="qrshow_join_contact_no_connection_toast">S\’ka lidhje në internet, s\’bëhet dot ujdisja e kodit QR.</string>

@@ -761,8 +761,10 @@
     <string name="qrshow_x_verified">%1$s 已验证。</string>
     <string name="qrshow_x_has_joined_group">%1$s 已加入群组。</string>
     <string name="qrshow_join_group_title">邀请二维码</string>
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
     <string name="qrshow_join_group_hint">扫描此处来加入群组\"%1$s\"。</string>
     <string name="qrshow_join_contact_title">邀请二维码</string>
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
     <string name="qrshow_join_contact_hint">扫描此处来建立联系人 %1$s。</string>
     <string name="qrshow_join_contact_no_connection_hint">二维码设置需要互联网连接。 要继续，请先连接到网络。</string>
     <string name="qrshow_join_contact_no_connection_toast">没有互联网连接，无法进行二维码设置。</string>
