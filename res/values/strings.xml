@@ -208,7 +208,7 @@
     <string name="menu_copy_link_to_clipboard">Copy Link</string>
     <string name="menu_copy_text_to_clipboard">Copy Text</string>
     <string name="menu_copy_image_to_clipboard">Copy Image</string>
-    <string name="menu_copy_email_to_clipboard">Copy Email</string>
+    <string name="menu_copy_email_to_clipboard">Copy E-Mail</string>
     <string name="paste_from_clipboard">Paste from Clipboard</string>
     <string name="menu_forward">Forward Message</string>
     <string name="menu_resend">Resend Message</string>
