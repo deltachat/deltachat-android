@@ -1,5 +1,20 @@
 # Delta Chat Android Changelog
 
+## v1.26.0
+2021-11
+
+* re-layout all QR codes and unify appearance among the different platforms
+* show when a contact was "Last seen" in the contact's profile
+* group creation: skip presetting a draft that is deleted most times anyway
+* display auto-generated avatars and unread counters similar across platforms
+* fix chat assignment when forwarding
+* fix layout bug in chatlist title
+* fix crashes when opening map
+* switch from Mapbox to Maplibre
+* update translations
+* update to core68
+
+
 ## v1.24.4
 2021-11
 
@@ -7,6 +22,7 @@
 * fix: apply existing ephemeral timer also to partially downloaded messages;
   after full download, the ephemeral timer starts over
 * update translations and local help
+* update to core65
 
 
 ## v1.24.3
