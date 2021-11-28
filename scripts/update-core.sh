@@ -12,11 +12,12 @@ git submodule update --init --recursive
 cd jni/deltachat-core-rust
 git checkout master
 git pull
+commitmsg=`git log -1 --pretty=%s`
 cd ../..
 
 # commit changes
 git add jni/deltachat-core-rust
-git commit -m "update deltachat-core-rust submodule"
+git commit -m "update deltachat-core-rust submodule to '$commitmsg'"
 
 echo "changes are commited to local repo."
 echo "use 'git push' to use them or 'git reset HEAD~1; git submodule update --recursive' to abort on your own risk :)"
