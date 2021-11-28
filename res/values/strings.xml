@@ -911,7 +911,7 @@
     <string name="explain_desktop_minimized_disabled_tray_pref">Tray icon cannot be disabled as Delta Chat was started with the --minimized option.</string>
     <string name="no_spellcheck_suggestions_found">No spelling suggestions found.</string>
     <string name="show_window">Show Window</string>
-    <string name="login_socks5_experimental_warning">SOCKS5 support is currently experimental. Please use at your own risk. If you type in an adress in the e-mail field, there will be DNS lookup that won't get tunneld through SOCKS5.</string>
+    <string name="login_socks5_experimental_warning">SOCKS5 support is currently experimental. Please use at your own risk. If you type in an address in the e-mail field, there will be DNS lookup that won\'t get tunneled through SOCKS5.</string>
 
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Delivery status: Error</string>

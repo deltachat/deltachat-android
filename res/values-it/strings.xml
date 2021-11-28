@@ -86,7 +86,7 @@
     <string name="last_week">Ultima settimana</string>
     <string name="last_month">Ultimo mese</string>
     <!-- the placeholder will be replaced by a date or time, resulting eg. in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
-    <string name="last_seen_at">Visto l\'ultima volta a %1$s</string>
+    <string name="last_seen_at">Visto l\'ultima volta alle %1$s</string>
     <string name="last_seen_unknown">Visto l\'ultima volta: Sconosciuto</string>
     <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
     <plurals name="n_minutes">
