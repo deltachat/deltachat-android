@@ -897,7 +897,7 @@
     <string name="ask_delete_chat_desktop">Weet je zeker dat je dit gesprek wilt verwijderen?</string>
     <string name="email_validation_failed_desktop">E-mailadres vereist.</string>
     <string name="forget_login_confirmation_desktop">Wil je dit account verwijderen? Alles wordt verwijderd: je eind-tot-eindinstellingen, contactpersonen, gesprekken, berichten en media. Deze actie kan niet ongedaan worden gemaakt.</string>
-    <string name="account_info_hover_tooltip_desktop2">E-Mail: %1$s\nGrootte: %2$s\nAccount-id: %3$s</string>
+    <string name="account_info_hover_tooltip_desktop2">E-mail: %1$s\nGrootte: %2$s\nAccount-id: %3$s</string>
     <string name="me_desktop">ik</string>
     <string name="in_this_group_desktop">Groepsleden</string>
     <string name="not_in_this_group_desktop">Potentiële groepsleden (niet in de groep)</string>
