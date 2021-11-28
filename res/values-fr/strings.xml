@@ -795,8 +795,6 @@
     <string name="verified_group_explain">Les groupes vérifiés (fonction expérimentale) offrent une sécurité contre les attaques actives. Les membres sont vérifiés avec un second facteur par d\'autres membres et les messages sont toujours chiffrés de bout en bout.</string>
     <string name="copy_qr_data_success">L\'URL du code QR a été copié dans le presse-papiers</string>
     <string name="mailto_dialog_header_select_chat">Sélectionnez une discussion à qui envoyer le message</string>
-    <!-- first placeholder is the name of the chat -->
-    <string name="mailto_dialog_confirm_replace_draft">%1$sa déjà un message en brouillon, voulez-vous le remplacer?</string>
     <string name="mailto_link_could_not_be_decoded">Le lien mailto n\'a pas pu être décodé: %1$s</string>
 
     <!-- notifications  -->
@@ -893,7 +891,6 @@
     <string name="ask_delete_chat_desktop">Effacer cette discussion?</string>
     <string name="email_validation_failed_desktop">Adresse email requise.</string>
     <string name="forget_login_confirmation_desktop">Effacer cette connexion? Tout sera supprimé, y compris vos réglages bout en bout, contacts, discussions, messages et les fichiers multimédia. Cette action ne peut pas être défaite.</string>
-    <string name="account_info_hover_tooltip_desktop">Courriel : %1$s\nTaille : %2$s\nChemin : %3$s</string>
     <string name="me_desktop">moi</string>
     <string name="in_this_group_desktop">Membres du groupe</string>
     <string name="not_in_this_group_desktop">Membres de groupe possibles (pas dans groupe)</string>
@@ -907,7 +904,6 @@
     <string name="explain_desktop_minimized_disabled_tray_pref">L\'icône système ne peut pas être enlevé car Delta Chat a été démarré avec l\'option --minimized.</string>
     <string name="no_spellcheck_suggestions_found">Aucune propositions de correction trouvées.</string>
     <string name="show_window">Afficher la fenêtre</string>
-
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">État de la livraison : Erreur</string>
     <string name="a11y_encryption_padlock">Cadenas de chiffrement</string>

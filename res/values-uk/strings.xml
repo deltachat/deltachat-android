@@ -826,8 +826,6 @@
     <string name="verified_group_explain">Перевірені групи (експеримент) надають захист від активних атак. Члени таких груп перевірені через другий фактор іншими членами групи, а повідомлення завжди наскрізно зашифровані.</string>
     <string name="copy_qr_data_success">URL з QR-коду скопійовано в буфер</string>
     <string name="mailto_dialog_header_select_chat">Виберіть чат, якому потрібно надіслати повідомлення</string>
-    <!-- first placeholder is the name of the chat -->
-    <string name="mailto_dialog_confirm_replace_draft">%1$s вже містить чернетку повідомлення, бажаєте його замінити?</string>
     <string name="mailto_link_could_not_be_decoded">неможливо декодувати посилання mailto: %1$s</string>
 
     <!-- notifications  -->
@@ -924,7 +922,6 @@
     <string name="ask_delete_chat_desktop">Ви впевнені, що хочете видалити цей чат?</string>
     <string name="email_validation_failed_desktop">Потрібна адреса електронної пошти.</string>
     <string name="forget_login_confirmation_desktop">Видалити цей обліковий запис? При цьому будуть видалені всі дані, включно з параметрами наскрізного шифрування, списками контактів, чатами, повідомленнями та медіафайлами. Цю дію не можна буде скасувати.</string>
-    <string name="account_info_hover_tooltip_desktop">E-Mail: %1$s\nРозмір: %2$s\nPath: %3$s</string>
     <string name="me_desktop">Я</string>
     <string name="in_this_group_desktop">Учасники групи</string>
     <string name="not_in_this_group_desktop">Потенційні учасники (не в групі)</string>
@@ -938,7 +935,6 @@
     <string name="explain_desktop_minimized_disabled_tray_pref">Іконку в треї не можна вимкнути, оскільки Delta Chat було запущено за допомогою параметра --minimized.</string>
     <string name="no_spellcheck_suggestions_found">Пропозицій щодо написання не знайдено.</string>
     <string name="show_window">Показати вікно</string>
-
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Статус доставки: Помилка</string>
     <string name="a11y_encryption_padlock">Замок шифрування</string>

@@ -206,6 +206,7 @@
     <string name="menu_copy_link_to_clipboard">Kopjoje lidhjen</string>
     <string name="menu_copy_text_to_clipboard">Kopjo tekstin</string>
     <string name="menu_copy_image_to_clipboard">Kopjo figurën</string>
+    <string name="menu_copy_email_to_clipboard">Kopjo Email</string>
     <string name="paste_from_clipboard">Ngjite prej të papastre</string>
     <string name="menu_forward">Përcille mesazhin</string>
     <string name="menu_resend">Ridërgoje mesazhin</string>
@@ -796,7 +797,7 @@
     <string name="copy_qr_data_success">URL-ja QR u kopjua në të papastër</string>
     <string name="mailto_dialog_header_select_chat">Përzgjidhni fjalosje ku të dërgohet mesazhi</string>
     <!-- first placeholder is the name of the chat -->
-    <string name="mailto_dialog_confirm_replace_draft">%1$s ka tashmë një mesazh skicë, doni të zëvendësohet?</string>
+    <string name="confirm_replace_draft">%1$s përmban tashmë një skicë mesazhi, doni të zëvendësohet?</string>
     <string name="mailto_link_could_not_be_decoded">s’u shkodua dot lidhje mailto: %1$s</string>
 
     <!-- notifications  -->
@@ -891,7 +892,7 @@
     <string name="ask_delete_chat_desktop">Jeni i sigurt se doni të fshihet kjo fjalosje?</string>
     <string name="email_validation_failed_desktop">Adresa email është e domosdoshme.</string>
     <string name="forget_login_confirmation_desktop">Të fshihet kjo hyrje? Do të fshihet gjithçka, përfshi rregullimin tuaj për skaj-më-skaj, kontaktet, fjalosjet, mesazhet dhe mediat. Ky veprim është përfundimtar dhe s\’mund të prapësohet.</string>
-    <string name="account_info_hover_tooltip_desktop">Email: %1$s\nMadhësi: %2$s\nShteg: %3$s</string>
+    <string name="account_info_hover_tooltip_desktop2">Email: %1$s\nMadhësi: %2$s\nID  Llogarie: %3$s</string>
     <string name="me_desktop">unë</string>
     <string name="in_this_group_desktop">Anëtarë grupi</string>
     <string name="not_in_this_group_desktop">Anëtarë potencialë grupi (jo në grup)</string>
@@ -905,6 +906,7 @@
     <string name="explain_desktop_minimized_disabled_tray_pref">Ikona e panelit s’mund të çaktivizohet, ngaqë Delta Chat qe nisur me mundësinë --minimized.</string>
     <string name="no_spellcheck_suggestions_found">S’u gjetën sugjerimi drejtshkrimi.</string>
     <string name="show_window">Shfaq Dritare</string>
+    <string name="login_socks5_experimental_warning">Mbulimi për SOCKS5 aktualisht është eksperimental. Ju lutemi, përdoreni duke pasur parasysh rrezikun. Nëse shtypni një adresë te fusha e email-it, do të ketë kërkim DNS që nuk do të kalohet përmes SOCKS5.</string>
 
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Gjendje dërgimi: Gabim</string>

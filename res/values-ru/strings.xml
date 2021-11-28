@@ -823,8 +823,6 @@
     <string name="verified_group_explain">Проверенные группы (экспериментально) защищены от активных атак. Участники проверяются с помощью второго фактора другими участниками и сообщения всегда передаются посредством cквозного шифрования .</string>
     <string name="copy_qr_data_success">Ссылка из QR кода скопирована в буфер обмена</string>
     <string name="mailto_dialog_header_select_chat">Выберите чат для отправки сообщение</string>
-    <!-- first placeholder is the name of the chat -->
-    <string name="mailto_dialog_confirm_replace_draft">%1$s уже существует в черновике, вы хотите его заменить? </string>
     <string name="mailto_link_could_not_be_decoded">ссылка mailto не может быть декодирована: %1$s</string>
 
     <!-- notifications  -->
@@ -921,7 +919,6 @@
     <string name="ask_delete_chat_desktop">Действительно удалить этот чат?</string>
     <string name="email_validation_failed_desktop">Требуется адрес электронной почты.</string>
     <string name="forget_login_confirmation_desktop">Удалить эту учётную запись? Все данные будут удалены, включая настройки сквозного шифрования, контакты, чаты, сообщения и медиа файлы. Это действие нельзя будет отменить.</string>
-    <string name="account_info_hover_tooltip_desktop">Эл.почта: %1$s\nРазмер: %2$s\nПуть: %3$s</string>
     <string name="me_desktop">мне</string>
     <string name="in_this_group_desktop">Участники группы</string>
     <string name="not_in_this_group_desktop">Потенциальные участники (не в группе)</string>
@@ -935,7 +932,6 @@
     <string name="explain_desktop_minimized_disabled_tray_pref">Значок в трее нельзя отключить, так как Delta Chat был запущен с параметром --свернуть</string>
     <string name="no_spellcheck_suggestions_found">Предложений по правописанию не найдено. </string>
     <string name="show_window">Показать Окно</string>
-
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Статус доставки: Ошибка</string>
     <string name="a11y_encryption_padlock">Значок шифрования</string>

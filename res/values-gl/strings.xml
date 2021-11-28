@@ -798,8 +798,6 @@
     <string name="verified_group_explain">Os grupos verificados (experimental) proporcionan seguridade contra ataques activos. As integrantes son verificadas cun segundo factor por outros membros e as mensaxes van sempre cifradas E2E.</string>
     <string name="copy_qr_data_success">Copiado o url do QR ao portapapeis</string>
     <string name="mailto_dialog_header_select_chat">Elexir chat ao que enviar a mensaxe</string>
-    <!-- first placeholder is the name of the chat -->
-    <string name="mailto_dialog_confirm_replace_draft">%1$s xa ten unha mensaxe borrador, queres substituílo?</string>
     <string name="mailto_link_could_not_be_decoded">a ligazón mailto non se puido descodificar: %1$s</string>
 
     <!-- notifications  -->
@@ -896,7 +894,6 @@
     <string name="ask_delete_chat_desktop">Eliminar a conversa?</string>
     <string name="email_validation_failed_desktop">Correo-e requerido.</string>
     <string name="forget_login_confirmation_desktop">Eliminar esta conexión? Borrarase todo, incluíndo os axustes de cifrado, contactos, conversas, mensaxes e ficheiros de medios. Esta acción non ten volta atrás.</string>
-    <string name="account_info_hover_tooltip_desktop">Email: %1$s\nTamaño: %2$s\nRuta: %3$s</string>
     <string name="me_desktop">eu</string>
     <string name="in_this_group_desktop">Membros do grupo</string>
     <string name="not_in_this_group_desktop">Membros potenciais do grupo (fóra do grupo)</string>
@@ -910,7 +907,6 @@
     <string name="explain_desktop_minimized_disabled_tray_pref">A icona da bandexa do sistema non se pode desactivar porque Delta Chat iniciouse coa opción --minimized.</string>
     <string name="no_spellcheck_suggestions_found">Non se atopan suxestións de escrita.</string>
     <string name="show_window">Mostrar xanela</string>
-
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Estado da entrega: Fallo</string>
     <string name="a11y_encryption_padlock">Cadeado do cifrado</string>

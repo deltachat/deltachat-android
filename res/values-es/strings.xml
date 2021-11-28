@@ -795,8 +795,6 @@
     <string name="verified_group_explain">Los grupos verificados (experimentales) brindan seguridad contra ataques activos. Los miembros son verificados con un segundo factor por otros miembros y los mensajes siempre están encriptados de extremo a extremo.</string>
     <string name="copy_qr_data_success">URL del código QR copiado al portapapeles</string>
     <string name="mailto_dialog_header_select_chat">Seleccione el chat para enviar el mensaje</string>
-    <!-- first placeholder is the name of the chat -->
-    <string name="mailto_dialog_confirm_replace_draft">%1$s ya tiene un mensaje borrador, ¿quieres reemplazarlo?</string>
     <string name="mailto_link_could_not_be_decoded">El enlace mailto no se pudo decodificar: %1$s</string>
 
     <!-- notifications  -->
@@ -893,7 +891,6 @@
     <string name="ask_delete_chat_desktop">¿Eliminar este chat?</string>
     <string name="email_validation_failed_desktop">Se requiere una dirección de correo.</string>
     <string name="forget_login_confirmation_desktop">¿Borrar esta sesión? Todo se eliminará, incluida la configuración de extremo a extremo, contactos, chats, mensajes y multimedia. Esta acción es definitiva y no puede ser revertida.</string>
-    <string name="account_info_hover_tooltip_desktop">E-Mail: %1$s\nTamaño: %2$s\nDirección: %3$s</string>
     <string name="me_desktop">Yo</string>
     <string name="in_this_group_desktop">Miembros del grupo</string>
     <string name="not_in_this_group_desktop">Miembros potenciales del grupo (no en el grupo)</string>
@@ -907,7 +904,6 @@
     <string name="explain_desktop_minimized_disabled_tray_pref">El icono de la bandeja no se puede desactivar ya que Delta Chat se inició con la opción --minimized.</string>
     <string name="no_spellcheck_suggestions_found">No se encontraron sugerencias ortográficas.</string>
     <string name="show_window">Mostrar ventana</string>
-
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Estado de envío: Error</string>
     <string name="a11y_encryption_padlock">Candado de cifrado</string>
