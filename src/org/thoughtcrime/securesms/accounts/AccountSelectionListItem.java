@@ -102,7 +102,7 @@ public class AccountSelectionListItem extends LinearLayout {
               .textColor(Color.WHITE)
               .bold()
               .endConfig()
-              .buildRound(String.valueOf(unreadCount), getResources().getColor(R.color.green_A700)));
+              .buildRound(String.valueOf(unreadCount), getResources().getColor(R.color.unread_count)));
       unreadIndicator.setVisibility(View.VISIBLE);
     }
   }
