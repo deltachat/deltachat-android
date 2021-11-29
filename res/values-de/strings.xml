@@ -208,6 +208,7 @@
     <string name="menu_copy_link_to_clipboard">Link kopieren</string>
     <string name="menu_copy_text_to_clipboard">Text kopieren</string>
     <string name="menu_copy_image_to_clipboard">Bild kopieren</string>
+    <string name="menu_copy_email_to_clipboard">E-Mail kopieren</string>
     <string name="paste_from_clipboard">Von der Zwischenablage einfügen</string>
     <string name="menu_forward">Nachricht weiterleiten</string>
     <string name="menu_resend">Nachricht erneut versenden</string>
@@ -777,9 +778,11 @@ Einige Anbieter platzieren zusätzliche Informationen im Posteingang, die Sie z.
     <string name="qrshow_x_verified">%1$s verifiziert.</string>
     <string name="qrshow_x_has_joined_group">%1$s ist der Gruppe beigetreten.</string>
     <string name="qrshow_join_group_title">QR-Einladungscode</string>
-    <string name="qrshow_join_group_hint">Dies scannen, um der Gruppe \"%1$s\" beizutreten.</string>
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
+    <string name="qrshow_join_group_hint">Scannen, um der Gruppe \"%1$s\" beizutreten</string>
     <string name="qrshow_join_contact_title">QR-Einladungscode</string>
-    <string name="qrshow_join_contact_hint">Scannen, um einen Kontakt mit %1$s herzustellen.</string>
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
+    <string name="qrshow_join_contact_hint">Scannen für Chat mit %1$s</string>
     <string name="qrshow_join_contact_no_connection_hint">Der Austausch von QR-Codes erfordert eine Verbindung zum Internet. Bitte stellen Sie diese her, bevor Sie fortfahtren.</string>
     <string name="qrshow_join_contact_no_connection_toast">Keine Verbindung zum Internet, Austausch des QR-Codes nicht möglich.</string>
     <string name="qraccount_ask_create_and_login">E-Mail-Konto auf \"%1$s\" erzeugen und dort anmelden?</string>
@@ -800,8 +803,6 @@ Ihr bisheriges E-Mail-Konto wird dabei nicht gelöscht. Sie können mit der Opti
     <string name="verified_group_explain">Verifizierte Gruppen (experimentell) bieten Schutz gegen aktive Angriffe mittels Zwei-Faktor-Authentifizierung aller Mitglieder und immer aktiver Ende-zu-Ende-Verschlüsselung.</string>
     <string name="copy_qr_data_success">QR-Code auf die Zwischenablage kopiert</string>
     <string name="mailto_dialog_header_select_chat">Wählen Sie den Chat, an den die Nachricht gesendet werden soll</string>
-    <!-- first placeholder is the name of the chat -->
-    <string name="mailto_dialog_confirm_replace_draft">%1$s hat bereits einen Nachrichtenentwurf, möchten Sie ihn ersetzen?</string>
     <string name="mailto_link_could_not_be_decoded">Mailto-Link konnte nicht dekodiert werden: %1$s</string>
 
     <!-- notifications  -->
@@ -898,7 +899,6 @@ Ihr bisheriges E-Mail-Konto wird dabei nicht gelöscht. Sie können mit der Opti
     <string name="ask_delete_chat_desktop">Chat wirklich löschen?</string>
     <string name="email_validation_failed_desktop">E-Mail-Adresse benötigt.</string>
     <string name="forget_login_confirmation_desktop">Dieses Login löschen? Alles wird gelöscht, einschließlich des Ende-zu-Ende-Setups, der Kontakte, Chats, Nachrichten und Medien. Diese Aktion ist endgültig und kann nicht rückgängig gemacht werden.</string>
-    <string name="account_info_hover_tooltip_desktop">E-Mail: %1$s\nGröße: %2$s\nPfad: %3$s</string>
     <string name="me_desktop">ich</string>
     <string name="in_this_group_desktop">Gruppenmitglieder</string>
     <string name="not_in_this_group_desktop">Potenzielle Gruppenmitglieder (nicht in der Gruppe)</string>
@@ -912,7 +912,6 @@ Ihr bisheriges E-Mail-Konto wird dabei nicht gelöscht. Sie können mit der Opti
     <string name="explain_desktop_minimized_disabled_tray_pref">Benachrichtigungssymbol kann nicht deaktiviert werden, da Delta Chat mit der Option --minimized gestartet wurde.</string>
     <string name="no_spellcheck_suggestions_found">Keine Rechtschreibvorschläge gefunden.</string>
     <string name="show_window">Fenster anzeigen</string>
-
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Übertragungsstatus: Fehler</string>
     <string name="a11y_encryption_padlock">Verschlüsselungsschloss</string>

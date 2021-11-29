@@ -662,8 +662,10 @@
     <string name="qrshow_x_verified">%1$s ověřen.</string>
     <string name="qrshow_x_has_joined_group">%1$s se připojil ke skupině.</string>
     <string name="qrshow_join_group_title">Zvací QR kód</string>
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
     <string name="qrshow_join_group_hint">K připojení ke skupině \"%1$s\" vyfoť kód.</string>
     <string name="qrshow_join_contact_title">Zvací QR kód</string>
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
     <string name="qrshow_join_contact_hint">K navázání spojení s %1$s vyfoť kód.</string>
     <string name="qrshow_join_contact_no_connection_hint">Nastavení pomocí QR kódu vyžaduje připojení k Internetu. Připoj se k síti prosím a pokračuj.</string>
     <string name="qrshow_join_contact_no_connection_toast">Nejsi připojen k Internetu. Nastavení QR kódem nelze provést. </string>
@@ -761,7 +763,6 @@
     <string name="ask_delete_chat_desktop">Vymazat tento hovor?</string>
     <string name="email_validation_failed_desktop">E-mail je nutný.</string>
     <string name="forget_login_confirmation_desktop">Smazat toto přihlášení? Vše bude smazáno, včetně nastavení tvého end-to-end šifrování, kontaktů, hovorů, zpráv a multimedií. Tuto akci nelze vrátit zpět.</string>
-    <string name="account_info_hover_tooltip_desktop">E-Mail: %1$s\nVelikost: %2$s\nCesta: %3$s</string>
     <string name="me_desktop">já</string>
     <string name="in_this_group_desktop">Členové skupiny</string>
     <string name="not_in_this_group_desktop">Případní členové skupiny (nejsou ve skupině)</string>

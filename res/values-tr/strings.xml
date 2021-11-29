@@ -208,6 +208,7 @@
     <string name="menu_copy_link_to_clipboard">Bağlantıyı Kopyala</string>
     <string name="menu_copy_text_to_clipboard">Metni Kopyala</string>
     <string name="menu_copy_image_to_clipboard">Görseli Kopyala</string>
+    <string name="menu_copy_email_to_clipboard">E-Postayı Kopyala</string>
     <string name="paste_from_clipboard">Panodan Yapıştır</string>
     <string name="menu_forward">İletiyi İlet</string>
     <string name="menu_resend">İletiyi Yeniden Gönder</string>
@@ -775,9 +776,11 @@
     <string name="qrshow_x_verified">%1$s doğrulandı.</string>
     <string name="qrshow_x_has_joined_group">%1$s gruba katıldı.</string>
     <string name="qrshow_join_group_title">QR Davet Kodu</string>
-    <string name="qrshow_join_group_hint">\"%1$s\" grubuna katılmak için bunu tarayın.</string>
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
+    <string name="qrshow_join_group_hint">\"%1$s\" grubuna katılmak için bunu tarayın</string>
     <string name="qrshow_join_contact_title">QR Davet Kodu</string>
-    <string name="qrshow_join_contact_hint">%1$s ile bir iletişim ayarlamak için bunu tarayın.</string>
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
+    <string name="qrshow_join_contact_hint">%1$s ile bir iletişim ayarlamak için bunu tarayın</string>
     <string name="qrshow_join_contact_no_connection_hint">QR kod ayarlaması bir Internet bağlantısı gerektirir. İşlemden önce lütfen bir ağa bağlanın.</string>
     <string name="qrshow_join_contact_no_connection_toast">Internet bağlantısı yok; QR kod ayarlaması gerçekleştirilemiyor.</string>
     <string name="qraccount_ask_create_and_login">\"%1$s\" üzerinde yeni e-posta adresi oluşturulsun ve oturum açılsın mı?</string>
@@ -797,7 +800,7 @@
     <string name="copy_qr_data_success">QR URL\'si panoya kopyalandı</string>
     <string name="mailto_dialog_header_select_chat">İletinin gönderileceği sohbeti seçin</string>
     <!-- first placeholder is the name of the chat -->
-    <string name="mailto_dialog_confirm_replace_draft">%1$s zaten taslak bir ileti; onu değiştirmek istiyor musunuz?</string>
+    <string name="confirm_replace_draft">%1$s zaten bir taslak ileti; onu değiştirmek istiyor musunuz?</string>
     <string name="mailto_link_could_not_be_decoded">mailto bağlantısının kodu çözülemedi: %1$s</string>
 
     <!-- notifications  -->
@@ -894,7 +897,7 @@
     <string name="ask_delete_chat_desktop">Bu sohbet silinsin mi?</string>
     <string name="email_validation_failed_desktop">E-posta adresi gerekli.</string>
     <string name="forget_login_confirmation_desktop">Bu oturum silinsin mi? Uçtan uca ayarlamanızı, kişilerinizi, sohbetlerinizi, iletilerinizi ve ortamlarınızı kapsayarak her şey silinecek. Bu eylem geri alınamaz.</string>
-    <string name="account_info_hover_tooltip_desktop">E-posta: %1$s\nBoyut: %2$s\nYol: %3$s</string>
+    <string name="account_info_hover_tooltip_desktop2">E-Mail: %1$s\nSize: %2$s\nAccount Id: %3$s</string>
     <string name="me_desktop">ben</string>
     <string name="in_this_group_desktop">Grup Üyeleri</string>
     <string name="not_in_this_group_desktop">Olası grup üyeleri (grupta değil)</string>
@@ -908,6 +911,7 @@
     <string name="explain_desktop_minimized_disabled_tray_pref">Delta Chat --minimized seçeneğiyle başlatıldığından tepsi simgesi etkisizleştirilemez.</string>
     <string name="no_spellcheck_suggestions_found">Yazım önerileri bulunamadı.</string>
     <string name="show_window">Pencereyi Göster</string>
+    <string name="login_socks5_experimental_warning">SOCKS5 desteği şu anda deneysel. Lütfen riski size ait olarak kullanın. E-posta alanına bir adres yazarsanız, SOCKS5 üzerinden tünellenmeyen DNS araması olacak.</string>
 
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Teslimat durumu: Hata</string>

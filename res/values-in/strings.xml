@@ -566,8 +566,10 @@
     <string name="qrshow_x_verified">%1$sdiverifikasi.</string>
     <string name="qrshow_x_has_joined_group">%1$sbergabung dengan grup.</string>
     <string name="qrshow_join_group_title">Kode undangan QR</string>
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
     <string name="qrshow_join_group_hint">Pindai ini untuk bergabung dengan grup \"%1$s\".</string>
     <string name="qrshow_join_contact_title">Kode undangan QR</string>
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
     <string name="qrshow_join_contact_hint">Pindai ini untuk mengatur kontak dengan%1$s.</string>
     <string name="qrshow_join_contact_no_connection_hint">Pengaturan kode QR membutuhkan koneksi internet. Mohon nyalakan koneksi ke jaringan sebelum mulai proses.</string>
     <string name="qrshow_join_contact_no_connection_toast">Tidak ada koneksi internet, tidak bisa menjalankan kode pengaturan QR.</string>
@@ -661,7 +663,6 @@
     <string name="ask_delete_chat_desktop">Hapus obrolan ini?</string>
     <string name="email_validation_failed_desktop">Alamat email dibutuhkan</string>
     <string name="forget_login_confirmation_desktop">Hapus login ini? Semuanya akan dihapus, termasuk pengaturan ujung ke ujung, kontak, obrolan, pesan dan media. Kalau diklik tidak bisa balik lagi.</string>
-    <string name="account_info_hover_tooltip_desktop">E-Mail: %1$s\nSize: %2$s\nPath: %3$s</string>
     <string name="me_desktop">saya</string>
     <string name="in_this_group_desktop">Anggota kelompok</string>
     <string name="not_in_this_group_desktop">Anggota kelompok potensial (tidak dalam kelompok)</string>

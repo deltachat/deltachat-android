@@ -800,8 +800,10 @@
     <string name="qrshow_x_verified">%1$s overené.</string>
     <string name="qrshow_x_has_joined_group">%1$s sa pripojil k skupine.</string>
     <string name="qrshow_join_group_title">QR pozývací kód</string>
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
     <string name="qrshow_join_group_hint">Naskenujte to a pripojte sa k skupine „%1$s“.</string>
     <string name="qrshow_join_contact_title">QR pozývací kód</string>
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
     <string name="qrshow_join_contact_hint">Naskenujte to a vytvorte kontakt s %1$s .</string>
     <string name="qrshow_join_contact_no_connection_hint">Nastavenie QR kódu vyžaduje pripojenie k internetu. Pred pokračovaním sa pripojte k sieti.</string>
     <string name="qrshow_join_contact_no_connection_toast">Nie je pripojenie na internet, nedá sa nastaviť kód QR.</string>
@@ -821,8 +823,6 @@
     <string name="verified_group_explain">Overené skupiny (experimentálne) poskytujú bezpečnosť proti aktívnym útokom. Členovia sú overovaní druhým faktorom ostatnými členmi a správy sú vždy šifrované end-to-end.</string>
     <string name="copy_qr_data_success">Skopírovaná adresa URL QR do schránky</string>
     <string name="mailto_dialog_header_select_chat">Vyberte čet, kam bude správa odoslaná</string>
-    <!-- first placeholder is the name of the chat -->
-    <string name="mailto_dialog_confirm_replace_draft">Pre %1$s už máte uložený koncept, chcete ho nahradiť?</string>
     <string name="mailto_link_could_not_be_decoded">prepojenie mailto sa nepodarilo dekódovať: %1$s</string>
 
     <!-- notifications  -->
@@ -919,7 +919,6 @@
     <string name="ask_delete_chat_desktop">Odstrániť tento rozhovor?</string>
     <string name="email_validation_failed_desktop">Vyžaduje sa e-mailová adresa.</string>
     <string name="forget_login_confirmation_desktop">Odstrániť tieto prihlasovacie údaje? Odstráni sa všetko vrátane vášho kompletného nastavenia, kontaktov, četov, správ a médií. Túto akciu nie je možné vrátiť späť.</string>
-    <string name="account_info_hover_tooltip_desktop">E-mail: %1$s\nVeľkosť: %2$s\nCesta: %3$s</string>
     <string name="me_desktop">ja</string>
     <string name="in_this_group_desktop">Členovia skupiny</string>
     <string name="not_in_this_group_desktop">Potenciálni členovia skupiny (nie sú v skupine)</string>
@@ -933,7 +932,6 @@
     <string name="explain_desktop_minimized_disabled_tray_pref">Ikonu v systémovej lište nie je možné vypnúť, pretože Delta Chat bol spustený s prepínačom --minimized.</string>
     <string name="no_spellcheck_suggestions_found">Neboli nájdené žiadne návrhy opravy preklepov.</string>
     <string name="show_window">Zobraziť okno</string>
-
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Stav doručenia: Chyba</string>
     <string name="a11y_encryption_padlock">Šifrovací zámok</string>

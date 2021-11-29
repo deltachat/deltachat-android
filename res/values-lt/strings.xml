@@ -639,8 +639,10 @@
     <string name="qrshow_x_verified">%1$s patvirtintas.</string>
     <string name="qrshow_x_has_joined_group">%1$s prisijungė prie grupės.</string>
     <string name="qrshow_join_group_title">QR pakvietimo kodas</string>
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
     <string name="qrshow_join_group_hint">Nuskenuokite tai, norėdami prisijungti prie \"%1$s\" grupės.</string>
     <string name="qrshow_join_contact_title">QR pakvietimo kodas</string>
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
     <string name="qrshow_join_contact_hint">Nuskenuokite tai, norėdami užmegzti kontaktą su %1$s</string>
     <string name="qrshow_join_contact_no_connection_hint">QR kodo sąranka reikalauja interneto ryšio. Prieš tęsdami, prisijunkite prie tinklo.</string>
     <string name="qrshow_join_contact_no_connection_toast">Nėra interneto ryšio, nepavyksta atlikti QR kodo sąrankos.</string>
@@ -653,8 +655,6 @@
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Pakeista sąranka, skirta %1$s.</string>
     <string name="mailto_dialog_header_select_chat">Pasirinkite pokalbį, į kurį siųsti žinutę</string>
-    <!-- first placeholder is the name of the chat -->
-    <string name="mailto_dialog_confirm_replace_draft">Pokalbyje %1$s jau yra žinutės juodraštis. Ar norite jį pakeisti?</string>
     <string name="mailto_link_could_not_be_decoded">nepavyko dekoduoti mailto nuorodos: %1$s</string>
 
     <string name="notify_mark_read">Žymėti kaip skaitytą</string>
@@ -738,7 +738,6 @@
     <string name="ask_delete_chat_desktop">Ar tikrai norite ištrinti šį pokalbį?</string>
     <string name="email_validation_failed_desktop">Reikalingas el. pašto adresas.</string>
     <string name="forget_login_confirmation_desktop">Ištrinti šį prisijungimą? Viskas bus ištrinta, įskaitant jūsų ištisinę sąranką, adresatus, pokalbius, žinutes ir mediją. Šis veiksmas yra galutinis ir negalės būti panaikintas.</string>
-    <string name="account_info_hover_tooltip_desktop">El. paštas: %1$s\nDydis: %2$s\nKelias: %3$s</string>
     <string name="me_desktop">aš</string>
     <string name="in_this_group_desktop">Grupės dalyviai</string>
     <string name="not_in_this_group_desktop">Potencialūs grupės dalyviai (nėra grupėje)</string>
@@ -751,7 +750,6 @@
     <string name="explain_desktop_minimized_disabled_tray_pref">Dėklo piktograma negali būti išjungta, nes Delta Chat buvo paleista naudojant --minimized parinktį.</string>
     <string name="no_spellcheck_suggestions_found">Nerasta jokių rašybos pasiūlymų.</string>
     <string name="show_window">Rodyti langą</string>
-
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Pristatymo būsena: Klaida</string>
     <string name="a11y_encryption_padlock">Šifravimo spyna</string>

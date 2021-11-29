@@ -85,6 +85,9 @@
     <string name="this_month">Este mes</string>
     <string name="last_week">La semana pasada</string>
     <string name="last_month">El mes pasado</string>
+    <!-- the placeholder will be replaced by a date or time, resulting eg. in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
+    <string name="last_seen_at">Visto por última vez: %1$s</string>
+    <string name="last_seen_unknown">Visto por última vez: Desconocido</string>
     <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
     <plurals name="n_minutes">
         <item quantity="one">%d min</item>
@@ -207,6 +210,7 @@
     <string name="menu_copy_link_to_clipboard">Copiar enlace</string>
     <string name="menu_copy_text_to_clipboard">Copiar texto</string>
     <string name="menu_copy_image_to_clipboard">Copiar imagen</string>
+    <string name="menu_copy_email_to_clipboard">Copiar correo electrónico</string>
     <string name="paste_from_clipboard">Pegar del portapapeles</string>
     <string name="menu_forward">Reenviar mensaje</string>
     <string name="menu_resend">Reenviar mensaje</string>
@@ -776,8 +780,10 @@
     <string name="qrshow_x_verified">%1$s verificado.</string>
     <string name="qrshow_x_has_joined_group">%1$s se unió al grupo.</string>
     <string name="qrshow_join_group_title">Código de invitación QR</string>
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
     <string name="qrshow_join_group_hint">Escanea esto para unirte al grupo verificado \"%1$s\".</string>
     <string name="qrshow_join_contact_title">Código de invitación QR</string>
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
     <string name="qrshow_join_contact_hint">Escanea esto para configurar un contacto con %1$s</string>
     <string name="qrshow_join_contact_no_connection_hint">La configuración con código QR requiere conexión a Internet. Por favor, conéctese a una red antes de continuar.</string>
     <string name="qrshow_join_contact_no_connection_toast">No hay conexión a Internet, no se puede configurar con código QR.</string>
@@ -798,7 +804,7 @@
     <string name="copy_qr_data_success">URL del código QR copiado al portapapeles</string>
     <string name="mailto_dialog_header_select_chat">Seleccione el chat para enviar el mensaje</string>
     <!-- first placeholder is the name of the chat -->
-    <string name="mailto_dialog_confirm_replace_draft">%1$s ya tiene un mensaje borrador, ¿quieres reemplazarlo?</string>
+    <string name="confirm_replace_draft">%1$s ya tiene un mensaje borrador, ¿quieres reemplazarlo?</string>
     <string name="mailto_link_could_not_be_decoded">El enlace mailto no se pudo decodificar: %1$s</string>
 
     <!-- notifications  -->
@@ -895,7 +901,7 @@
     <string name="ask_delete_chat_desktop">¿Eliminar este chat?</string>
     <string name="email_validation_failed_desktop">Se requiere una dirección de correo.</string>
     <string name="forget_login_confirmation_desktop">¿Borrar esta sesión? Todo se eliminará, incluida la configuración de extremo a extremo, contactos, chats, mensajes y multimedia. Esta acción es definitiva y no puede ser revertida.</string>
-    <string name="account_info_hover_tooltip_desktop">E-Mail: %1$s\nTamaño: %2$s\nDirección: %3$s</string>
+    <string name="account_info_hover_tooltip_desktop2">Correo: %1$s\nTamaño: %2$s\nID de la cuenta: %3$s</string>
     <string name="me_desktop">Yo</string>
     <string name="in_this_group_desktop">Miembros del grupo</string>
     <string name="not_in_this_group_desktop">Miembros potenciales del grupo (no en el grupo)</string>
@@ -909,6 +915,7 @@
     <string name="explain_desktop_minimized_disabled_tray_pref">El icono de la bandeja no se puede desactivar ya que DeltaLab se inició con la opción --minimized.</string>
     <string name="no_spellcheck_suggestions_found">No se encontraron sugerencias ortográficas.</string>
     <string name="show_window">Mostrar ventana</string>
+    <string name="login_socks5_experimental_warning">La compatibilidad con SOCKS5 es experimental actualmente. Por favor, use bajo su propio riesgo. Si escribe una dirección en el campo de correo electrónico, habrá una búsqueda de DNS que no se canalizará a través de SOCKS5.</string>
 
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Estado de envío: Error</string>

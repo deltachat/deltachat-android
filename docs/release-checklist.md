@@ -15,12 +15,12 @@ this will take some time - meanwhile we're doing some housekeeping:
    $ ./scripts/tx-pull-translations.sh
    $ ./scripts/create-local-help.sh
 
-4. add a device message to ConversationListActivity::onCreate()
-   and update CHANGELOG.md
-   (the core-changelog at
-   https://github.com/deltachat/deltachat-core-rust/blob/master/CHANGELOG.md
-   and the "N commits to master since last release" on
-   https://github.com/deltachat/deltachat-android/releases gives some hints)
+4. a) update CHANGELOG.md
+      from https://github.com/deltachat/deltachat-core-rust/blob/master/CHANGELOG.md
+      and https://github.com/deltachat/deltachat-android/pulls?q=is%3Apr+is%3Aclosed+sort%3Aupdated-desc
+   b) add used core version to CHANGELOG.md
+   c) add a device message to ConversationListActivity::onCreate()
+      or remove the old one
 
 in Android Studio:
 

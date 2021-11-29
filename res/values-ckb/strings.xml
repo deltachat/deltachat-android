@@ -576,8 +576,10 @@
     <string name="qrshow_x_verified">%1$s پشتڕاست کرایەوە</string>
     <string name="qrshow_x_has_joined_group">%1$s بەشداری کۆڕ بوو</string>
     <string name="qrshow_join_group_title">کۆدی QRی بانگهێشت کردن</string>
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
     <string name="qrshow_join_group_hint">بۆ بەشداربوون لە کۆڕ ئەمە سکان بکە: \"%1$s\"</string>
     <string name="qrshow_join_contact_title">کۆدی QRی بانگهێشت کردن</string>
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
     <string name="qrshow_join_contact_hint">بۆ ڕێکخستنی پێوەندی لەگەڵ %1$s، ئەم کۆدە سکان بکە. </string>
     <string name="qrshow_join_contact_no_connection_toast">هێڵی ئینتەرنێت بەردەست نییە، ڕێکخستنی کۆدی QR جێبەجێ ناکرێ.</string>
     <string name="qraccount_ask_create_and_login">دەتەوێت ناونیشانی ئیمەیلێکی نوێ لەسەر \"%1$s\" درووست بکەیت و لەوێ بچیتە ژوورەوە؟</string>

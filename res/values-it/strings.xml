@@ -86,7 +86,7 @@
     <string name="last_week">Ultima settimana</string>
     <string name="last_month">Ultimo mese</string>
     <!-- the placeholder will be replaced by a date or time, resulting eg. in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
-    <string name="last_seen_at">Visto l\'ultima volta a %1$s</string>
+    <string name="last_seen_at">Visto l\'ultima volta alle %1$s</string>
     <string name="last_seen_unknown">Visto l\'ultima volta: Sconosciuto</string>
     <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
     <plurals name="n_minutes">
@@ -208,6 +208,7 @@
     <string name="menu_copy_link_to_clipboard">Copia Link</string>
     <string name="menu_copy_text_to_clipboard">Copia Testo</string>
     <string name="menu_copy_image_to_clipboard">Copia l\'Immagine</string>
+    <string name="menu_copy_email_to_clipboard">Copia E-Mail</string>
     <string name="paste_from_clipboard">Incolla dagli Appunti</string>
     <string name="menu_forward">Inoltra Messaggio</string>
     <string name="menu_resend">Reinvia Messaggio</string>
@@ -252,8 +253,8 @@
     <string name="title_share_location">Condividi posizione con tutti i membri</string>
     <string name="device_talk">Messaggi del Dispositivo</string>
     <string name="device_talk_subtitle">Messaggi generati localmente</string>
-    <string name="device_talk_explain">I messaggi in questa chat vengono generati localmente da Delta Chat. Gli sviluppatori li usano per informarti sugli aggiornamenti o sui problemi d\'utilizzo.</string>
-    <string name="device_talk_welcome_message">Benvenuto in Delta Chat! - Delta Chat ha l\'aspetto e lo stile di altre popolari applicazioni di messaggistica, ma non costringe ad un controllo centralizzato, al tracciamento o alla vendita tua, dei tuoi amici, colleghi o familiari a grandi organizzazioni.\n\nTecnicamente, Delta Chat è un\'applicazione di posta elettronica con un\'interfaccia moderna. L\'email in una nuova veste 👻\n\nUtilizza Delta Chat con chiunque: basta conoscere il loro indirizzo e-mail. I destinatari non hanno bisogno di installare Delta Chat, visitare siti web o iscriversi da nessuna parte - ma, naturalmente se lo desiderano, puoi suggerirgli 👉 https://get.delta.chat</string>
+    <string name="device_talk_explain">I messaggi in questa chat vengono generati localmente da Delta Chat. Gli sviluppatori li usano per informarti sugli aggiornamenti o sui problemi di utilizzo.</string>
+    <string name="device_talk_welcome_message">Benvenuto in Delta Chat! - Delta Chat ha l\'aspetto e lo stile di altre popolari applicazioni di messaggistica, ma non costringe a un controllo centralizzato, al tracciamento o alla vendita tua, dei tuoi amici, colleghi o familiari a grandi organizzazioni.\n\nTecnicamente, Delta Chat è un\'applicazione di posta elettronica con un\'interfaccia moderna. L\'email in una nuova veste 👻\n\nUtilizza Delta Chat con chiunque: basta conoscere il loro indirizzo e-mail. I destinatari non hanno bisogno di installare Delta Chat, visitare siti web o iscriversi da nessuna parte - ma, naturalmente se lo desiderano, puoi suggerirgli 👉 https://get.delta.chat</string>
     <string name="edit_contact">Modifica Contatto</string>
     <!-- Translators: "Pin" here is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
     <string name="pin_chat">Fissa Chat</string>
@@ -380,7 +381,7 @@
     <string name="retry_send">Riprova l\'invio del messaggio</string>
     <string name="send_failed">Invio del messaggio fallito</string>
     <!-- reasons for a disabled message composer -->
-    <string name="messaging_disabled_not_in_group">Non puoi scrivere perché non sei in questo gruppo. Per partecipare, chiedi a un altro membro.</string>
+    <string name="messaging_disabled_not_in_group">Non puoi scrivere perché non sei in questo gruppo. Per partecipare, chiedi ad un altro membro.</string>
     <string name="messaging_disabled_device_chat">Questa chat contiene messaggi generati localmente. Quindi non puoi scrivere alcun messaggio.</string>
     <string name="messaging_disabled_deaddrop">Fare clic su un messaggio per accettare o rifiutare la richiesta di contatto</string>
     <string name="messaging_disabled_mailing_list">L\'invio dei messaggi nelle mailing list non è ancora supportato</string>
@@ -499,7 +500,7 @@
     <!-- Translators: %1$s will be replaced by an e-mail address -->
     <string name="login_oauth2_checking_addr">Verifica %1$s</string>
     <string name="login_info_oauth2_title">Usare il setup semplificato?</string>
-    <string name="login_info_oauth2_text">L\'indirizzo email inserito supporta l\'autenticazione semplificata (OAuth2.0).\n\nContinuando, puoi autorizzare Delta Chat ad operare come app di messaggistica via e-mail.\n\nNon esistono server di Delta Chat, i tuoi dati restano nel tuo dispositivo!</string>
+    <string name="login_info_oauth2_text">L\'indirizzo email inserito supporta l\'autenticazione semplificata (OAuth2.0).\n\nContinuando, puoi autorizzare Delta Chat a operare come app di messaggistica via e-mail.\n\nNon esistono server di Delta Chat, i tuoi dati restano nel tuo dispositivo!</string>
     <string name="login_certificate_checks">Controlli Certificato</string>
     <string name="login_error_mail">Inserisci un indirizzo email valido</string>
     <string name="login_error_server">Inserisci un server / indirizzo IP valido</string>
@@ -600,7 +601,7 @@
     <string name="pref_other">Altro</string>
     <string name="pref_backup">Backup</string>
     <string name="pref_backup_explain">Backup Chats su Memoria Esterna</string>
-    <string name="pref_backup_export_explain">Un backup ti aiuta ad impostare una nuova installazione su questo o un altro dispositivo.\n\nIl backup conterrà tutti i messaggi, i contatti, le chat e le impostazioni Autocrypt. Tienilo al sicuro o eliminalo il prima possibile. </string>
+    <string name="pref_backup_export_explain">Un backup ti aiuta a impostare una nuova installazione su questo o un altro dispositivo.\n\nIl backup conterrà tutti i messaggi, i contatti, le chat e le impostazioni Autocrypt. Tienilo al sicuro o eliminalo il prima possibile. </string>
     <string name="pref_backup_export_start_button">Avvia Backup</string>
     <string name="pref_backup_written_to_x">Backup scritto con successo in %1$s</string>
     <string name="pref_managekeys_menu_title">Gestisci Chiavi</string>
@@ -775,10 +776,12 @@
     <string name="qrshow_x_verified">%1$s verificato.</string>
     <string name="qrshow_x_has_joined_group">%1$s è entrato nel gruppo.</string>
     <string name="qrshow_join_group_title">Codice QR di Invito</string>
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
     <string name="qrshow_join_group_hint">Scansionalo per entrare nel gruppo \"%1$s\".</string>
     <string name="qrshow_join_contact_title">Codice QR di Invito</string>
-    <string name="qrshow_join_contact_hint">Scansionalo per creare un contatto con %1$s</string>
-    <string name="qrshow_join_contact_no_connection_hint">Il setup tramite codice QR richiede una connessione internet. Collegati a una rete prima di procedere.</string>
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
+    <string name="qrshow_join_contact_hint">Scansionalo per chattare con %1$s</string>
+    <string name="qrshow_join_contact_no_connection_hint">Il setup tramite codice QR richiede una connessione internet. Collegati ad una rete prima di procedere.</string>
     <string name="qrshow_join_contact_no_connection_toast">Nessuna connessione internet, impossibile effettuare l\'impostazione tramite codice QR.</string>
     <string name="qraccount_ask_create_and_login">Creo un nuovo indirizzo email su \"%1$s\" e accedo?</string>
     <string name="qraccount_ask_create_and_login_another">Crea un nuovo indirizzo e-mail su \"%1$s\" e accedi qui?\n\nIl tuo account esistente non verrà eliminato. Utilizza la voce \"Cambia account\" per passare da un account all\'altro.</string>
@@ -786,7 +789,7 @@
     <string name="qraccount_qr_code_cannot_be_used">Il codice QR scansionato non può essere usato per creare un nuovo account.</string>
     <string name="qraccount_use_on_new_install">Il codice QR scansionato serve a creare un nuovo account. Puoi scansionare il codice quando configuri una nuova installazione di Delta Chat.</string>
     <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
-    <string name="secure_join_started">%1$s ti ha invitato a unirti a questo gruppo.\n\nIn attesa che il dispositivo di %2$s risponda…</string>
+    <string name="secure_join_started">%1$s ti ha invitato ad unirti a questo gruppo.\n\nIn attesa che il dispositivo di %2$s risponda…</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s ha risposto, in attesa di essere aggiunto al gruppo…</string>
     <string name="contact_verified">%1$s verificato.</string>
@@ -797,7 +800,7 @@
     <string name="copy_qr_data_success">URL QR copiato negli appunti</string>
     <string name="mailto_dialog_header_select_chat">Seleziona la chat a cui inviare il messaggio</string>
     <!-- first placeholder is the name of the chat -->
-    <string name="mailto_dialog_confirm_replace_draft">%1$s ha già una bozza di messaggio, vuoi sostituirla?</string>
+    <string name="confirm_replace_draft">%1$s ha già una bozza di messaggio, vuoi sostituirla?</string>
     <string name="mailto_link_could_not_be_decoded">Il link mailto non può essere decodificato: %1$s</string>
 
     <!-- notifications  -->
@@ -894,7 +897,7 @@
     <string name="ask_delete_chat_desktop">Eliminare questa chat?</string>
     <string name="email_validation_failed_desktop">Indirizzo E-mail richiesto.</string>
     <string name="forget_login_confirmation_desktop">Eliminare questo accesso? Tutto verrà eliminato, inclusa la configurazione end-to-end, i contatti, le chat, i messaggi e i media. Questa azione non può essere annullata.</string>
-    <string name="account_info_hover_tooltip_desktop">E-Mail: %1$s\nDimensione: %2$s\nPercorso: %3$s</string>
+    <string name="account_info_hover_tooltip_desktop2">E-Mail: %1$s\nDimensione: %2$s\nAccount Id: %3$s</string>
     <string name="me_desktop">me</string>
     <string name="in_this_group_desktop">Membri del Gruppo</string>
     <string name="not_in_this_group_desktop">Membri potenziali (non nel gruppo)</string>
@@ -908,6 +911,7 @@
     <string name="explain_desktop_minimized_disabled_tray_pref">L\'icona nella barra delle applicazioni non può essere disabilitata poiché Delta Chat è stato avviato con l\'opzione --minimizzato.</string>
     <string name="no_spellcheck_suggestions_found">Nessun suggerimento ortografico trovato.</string>
     <string name="show_window">Mostra Finestra</string>
+    <string name="login_socks5_experimental_warning">Il supporto SOCKS5 è attualmente sperimentale. Usatelo a vostro rischio e pericolo. Se si digita un indirizzo nel campo e-mail, ci sarà una ricerca DNS che non verrà trasferita tramite SOCKS5.</string>
 
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Stato di consegna: Errore</string>

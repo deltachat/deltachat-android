@@ -756,8 +756,10 @@
     <string name="qrshow_x_verified">%1$s បានផ្ទៀងផ្ទាត់</string>
     <string name="qrshow_x_has_joined_group">%1$s បានចូលរួមក្រុមនេះ</string>
     <string name="qrshow_join_group_title">កូដ QR សម្រាប់ការអញ្ជើញ</string>
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
     <string name="qrshow_join_group_hint">ស្គេនទីនេះដើម្បីចូលរួមក្រុម \"%1$s\" នេះ។</string>
     <string name="qrshow_join_contact_title">កូដ QR សម្រាប់ការអញ្ជើញ</string>
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
     <string name="qrshow_join_contact_hint">ស្គេនទីនេះដើម្បីរៀបចំទំនាក់ទំនងជាមួយ %1$s</string>
     <string name="qrshow_join_contact_no_connection_hint">រៀបចំកូដ QR អញ្ជើញតម្រូវការភ្ជាប់សេវាអុិនធ័រណេត។ សូមភ្ជាប់ទៅបណ្តាញមុនពេលដំណើរការ។</string>
     <string name="qrshow_join_contact_no_connection_toast">គ្មានសេវាអុិនធ័រណេត មិនអាចអនុវត្ត ការរៀបចំកូដ QR</string>
@@ -773,8 +775,6 @@
     <string name="verified_group_explain">\"ក្រុមបានផ្ទៀងផ្ទាត់\" (ពិសោធន៍) បានផ្តល់សុវត្ថិភាពប្រឆាំងនឹងសកម្មភាពវាយប្រហារ។ សមាជិកត្រូវបានផ្ទៀងផ្ទាត់ជាមុខងារទីពីរ ដោយសមាជិកដទៃទៀត និងសារតែងតែបានអ៊ិនគ្រីប ពីឧបករណ៍ដល់ឧបករណ៍។</string>
     <string name="copy_qr_data_success">បានចម្លង QR-url ទៅក្តារខ្ទាស់</string>
     <string name="mailto_dialog_header_select_chat">ជ្រើសរើសការជជែក ដើម្បីផ្ញើសារទៅកាន់</string>
-    <!-- first placeholder is the name of the chat -->
-    <string name="mailto_dialog_confirm_replace_draft">%1$s មានសារព្រាងរួចហើយ តើអ្នកចង់ជំនួសវាទេ?</string>
     <string name="mailto_link_could_not_be_decoded">សំបុត្រទៅតំណភ្ជាប់ មិនអាចឌិកូដទេ: %1$s</string>
 
     <!-- notifications  -->
@@ -870,7 +870,6 @@
     <string name="ask_delete_chat_desktop">លុបការសន្ទនានេះ?</string>
     <string name="email_validation_failed_desktop">ទាមទារអស័យដ្ឋានអុីម៉េល</string>
     <string name="forget_login_confirmation_desktop">លុបការកត់ចូលនេះ? គ្រប់យ៉ាងនឹងត្រូវបានលុប រួមបញ្ចូលទាំងការរៀបចំ ទៅបញ្ចប់ការអុិនគ្រឹបឧបករណ៍ដល់ឧបករណ៍ ទំនាក់ទំនង សន្ទនា សារ និងប្រពន្ធ័ផ្សព្វផ្សាយ។ សកម្មភាពនេះមិនអាចធ្វើឡើងវិញបានទេ។</string>
-    <string name="account_info_hover_tooltip_desktop">អុីម៉េល: %1$s\nទំហំ: %2$s\nផ្លូវ: %3$s</string>
     <string name="me_desktop">ខ្ញុំ</string>
     <string name="in_this_group_desktop">សមាជិកក្រុម</string>
     <string name="not_in_this_group_desktop">សក្តានុពលសមាជិកក្រុម (មិននៅក្នុងក្រុម)</string>
@@ -884,7 +883,6 @@
     <string name="explain_desktop_minimized_disabled_tray_pref">រូបតំណាងថាស មិនអាចបិទបានទេដោយសារ Delta Chat ត្រូវបានចាប់ផ្តើមជាមួយជម្រើសបង្រួមអប្បបរមា។</string>
     <string name="no_spellcheck_suggestions_found">រកមិនឃើញការណែនាំអក្ខរាវិរុទ្ធទេ។</string>
     <string name="show_window">បង្ហាញក្របខ័ណ្ឌ</string>
-
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">ស្ថានភាពចែកចាយ៖ មានកំហុស</string>
     <string name="a11y_encryption_padlock">សោត្រដោកការអ៊ិនគ្រីប</string>

@@ -201,6 +201,7 @@
     <string name="menu_copy_link_to_clipboard">复制链接</string>
     <string name="menu_copy_text_to_clipboard">复制文本</string>
     <string name="menu_copy_image_to_clipboard">复制图像</string>
+    <string name="menu_copy_email_to_clipboard">复制电子邮件</string>
     <string name="paste_from_clipboard">从剪贴板粘贴</string>
     <string name="menu_forward">转发消息</string>
     <string name="menu_resend">重发消息</string>
@@ -761,8 +762,10 @@
     <string name="qrshow_x_verified">%1$s 已验证。</string>
     <string name="qrshow_x_has_joined_group">%1$s 已加入群组。</string>
     <string name="qrshow_join_group_title">邀请二维码</string>
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
     <string name="qrshow_join_group_hint">扫描此处来加入群组\"%1$s\"。</string>
     <string name="qrshow_join_contact_title">邀请二维码</string>
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
     <string name="qrshow_join_contact_hint">扫描此处来建立联系人 %1$s。</string>
     <string name="qrshow_join_contact_no_connection_hint">二维码设置需要互联网连接。 要继续，请先连接到网络。</string>
     <string name="qrshow_join_contact_no_connection_toast">没有互联网连接，无法进行二维码设置。</string>
@@ -783,7 +786,7 @@
     <string name="copy_qr_data_success">已复制二维码链接到剪贴板</string>
     <string name="mailto_dialog_header_select_chat">选择要发送消息的聊天</string>
     <!-- first placeholder is the name of the chat -->
-    <string name="mailto_dialog_confirm_replace_draft">%1$s 已经有一条草稿信息，要替换它吗？</string>
+    <string name="confirm_replace_draft">%1$s 已经有一条草稿信息，要替换它吗？</string>
     <string name="mailto_link_could_not_be_decoded">无法解码 mailto 链接：%1$s</string>
 
     <!-- notifications  -->
@@ -880,7 +883,7 @@
     <string name="ask_delete_chat_desktop">删除此聊天？</string>
     <string name="email_validation_failed_desktop">需要电子邮件地址。</string>
     <string name="forget_login_confirmation_desktop">删除此登录？ 一切都将被删除，包括您的端到端设置、联系人、聊天、消息及媒体。 此操作无法撤消。</string>
-    <string name="account_info_hover_tooltip_desktop">电子邮件：%1$s\n大小：%2$s\n路径：%3$s</string>
+    <string name="account_info_hover_tooltip_desktop2">电子邮件：%1$s\n大小：%2$s\n账户 Id：%3$s</string>
     <string name="me_desktop">我</string>
     <string name="in_this_group_desktop">群组成员</string>
     <string name="not_in_this_group_desktop">潜在的群组成员（不在群组中）</string>
@@ -894,6 +897,7 @@
     <string name="explain_desktop_minimized_disabled_tray_pref">在 Delta Chat 带 --minimized 参数启动时，无法禁用托盘图标。</string>
     <string name="no_spellcheck_suggestions_found">未找到拼写建议</string>
     <string name="show_window">显示窗口</string>
+    <string name="login_socks5_experimental_warning">SOCKS5 支持目前还处于试验阶段。请自行承担使用风险。如果您在电子邮件字段中输入一个地址，会有不流经 SOCKS5 隧道的 DNS 查找流量。</string>
 
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">发送状态：错误</string>

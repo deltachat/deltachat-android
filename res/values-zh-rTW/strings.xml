@@ -391,6 +391,7 @@
     <string name="qrscan_title">掃描QR Code</string>
     <string name="qrscan_hint">請將相機對準 QR Code</string>
     <string name="qrscan_ask_join_group">你要參加群組 %1$s 嗎?</string>
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
     <string name="qrshow_join_contact_hint">掃描 QRCode 以新增 %1$s</string>
     <string name="contact_detail_title_desktop">聯絡人詳細資料</string>
     <string name="contact_request_title_desktop">聯絡請求</string>

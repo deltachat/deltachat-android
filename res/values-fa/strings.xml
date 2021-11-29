@@ -716,8 +716,10 @@
     <string name="qrshow_x_verified">%1$s تایید شد.</string>
     <string name="qrshow_x_has_joined_group">%1$sعضو گروه شد. </string>
     <string name="qrshow_join_group_title">کد دعوت کیوآر</string>
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
     <string name="qrshow_join_group_hint">برای عضو شدن در گروه\"%1$s\" این را اسکن کنید.</string>
     <string name="qrshow_join_contact_title">کد دعوت کیوآر</string>
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
     <string name="qrshow_join_contact_hint">برای ارتباط با %1$s این را اسکن کنید.</string>
     <string name="qrshow_join_contact_no_connection_hint">کد نصب کیوآر به ارتباط با اینترنت نیاز دارد. لطفا قبل از ادامه به یک شبکه متصل شوید. </string>
     <string name="qrshow_join_contact_no_connection_toast">اتصال اینترنت نیست. نمیتوان نصب کد کیوآر را انجام داد. </string>
@@ -733,8 +735,6 @@
     <string name="verified_group_explain">گرو‌ه های تایید شده(آزمایشی) در برابر حمله‌های فعال امنیت دارند. اعضا با یک روش ثانویه هم از طریق دیگر اعضا احراز هویت می‌شوند و پیام‌ها هم همیشه به صورت رمزگذاری شده به صورت گیرنده به گیرنده می‌باشد. </string>
     <string name="copy_qr_data_success">آدرس کیوآر در حافظه ذخیر شد</string>
     <string name="mailto_dialog_header_select_chat">گفتگو را برای ارسال پیام انتخاب کنید</string>
-    <!-- first placeholder is the name of the chat -->
-    <string name="mailto_dialog_confirm_replace_draft">%1$s همین حالا هم یک پیام پیش‌نویس دارد. می‌خواهید آن را جایگزین کنید؟</string>
     <string name="mailto_link_could_not_be_decoded">امکان رمزگشایی ایمیل به لینک وجود ندارد: %1$s</string>
 
     <!-- notifications  -->
@@ -852,7 +852,6 @@ GNU GPL ورژن ۳
     <string name="ask_delete_chat_desktop">پاک کردن گفتگو؟</string>
     <string name="email_validation_failed_desktop">نشانی ایمیل لازم است.</string>
     <string name="forget_login_confirmation_desktop">پاک کردن این ورود؟ همه چیز پاک می شود که شامل رمزگذاری گیرنده به گیرنده، مخاطبین، گفتگوها، پیام‌ها و رسانه می‌شود. این عملیات قابل بازگردانی نیست.</string>
-    <string name="account_info_hover_tooltip_desktop">ایمیل: %1$s/nاندازه: %2$sn/مسیر: %3$s</string>
     <string name="me_desktop">من</string>
     <string name="in_this_group_desktop">اعضای گروه</string>
     <string name="not_in_this_group_desktop">اعضای گروه بالقوه(عضو گروه نیستند)</string>
@@ -866,7 +865,6 @@ GNU GPL ورژن ۳
     <string name="explain_desktop_minimized_disabled_tray_pref">چون دلتاچت با تنظیمات --زیرصفحه شروع به کار کرده است نمی‌توان نمادک زیر صفحه را غیر فعال کرد. </string>
     <string name="no_spellcheck_suggestions_found">هیچ پیشنهادی برای املا پیدا نشد</string>
     <string name="show_window">نمایش پنجره</string>
-
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">وضعیت ارسال: خطا</string>
     <string name="a11y_encryption_padlock">قفل رمزگذاری</string>

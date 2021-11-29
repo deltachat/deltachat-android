@@ -772,8 +772,10 @@
     <string name="qrshow_x_verified">%1$s verificado.</string>
     <string name="qrshow_x_has_joined_group">%1$s ingressou no grupo.</string>
     <string name="qrshow_join_group_title">Código QR de convite</string>
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
     <string name="qrshow_join_group_hint">Escanear para ingressar no grupo \"%1$s\".</string>
     <string name="qrshow_join_contact_title">Código QR de convite</string>
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
     <string name="qrshow_join_contact_hint">Escanear para estabelecer contato com %1$s</string>
     <string name="qrshow_join_contact_no_connection_hint">A configuração por código QR necessita de uma conexão à rede. Por favor conecte-se à uma rede antes de continuar.</string>
     <string name="qrshow_join_contact_no_connection_toast">Sem conexão à rede não é possível realizar configuração por código QR.</string>
@@ -793,8 +795,6 @@
     <string name="verified_group_explain">Grupos verificados (experimental) fornecem segurança contra ataques ativos. Os membros são verificados com um segundo fator por outros membros e as mensagens são sempre criptografadas de ponta a ponta.</string>
     <string name="copy_qr_data_success">Endereço do código QR copiado para a área de transferência</string>
     <string name="mailto_dialog_header_select_chat">Selecione o bate-papo para enviar a mensagem</string>
-    <!-- first placeholder is the name of the chat -->
-    <string name="mailto_dialog_confirm_replace_draft">%1$s já tem um rascunho de mensagem, deseja substituí-lo?</string>
     <string name="mailto_link_could_not_be_decoded">link mailto não pôde ser decodificado: %1$s</string>
 
     <!-- notifications  -->
@@ -891,7 +891,6 @@
     <string name="ask_delete_chat_desktop">Tem certeza que quer apagar esta conversa?</string>
     <string name="email_validation_failed_desktop">E-mail necessário.</string>
     <string name="forget_login_confirmation_desktop">Apagar este login? Tudo será apagado, incluindo sua configuração de criptografia, contatos, conversas, mensagens e mídia. Esta ação é final e irreversível.</string>
-    <string name="account_info_hover_tooltip_desktop">E-Mail: %1$s\nTamanho: %2$s\nCaminho: %3$s</string>
     <string name="me_desktop">Eu</string>
     <string name="in_this_group_desktop">Participantes do grupo</string>
     <string name="not_in_this_group_desktop">Potenciais participantes do grupo (não inclusos)</string>
@@ -905,7 +904,6 @@
     <string name="explain_desktop_minimized_disabled_tray_pref">O ícone da bandeja não pode ser desativado porque o Delta Chat foi iniciado com a opção --minimized.</string>
     <string name="no_spellcheck_suggestions_found">Nenhuma sugestão de ortografia encontrada.</string>
     <string name="show_window">Mostrar Janela</string>
-
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Status de entrega: Erro</string>
     <string name="a11y_encryption_padlock">Cadeado de criptografia</string>
