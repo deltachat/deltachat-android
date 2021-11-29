@@ -208,6 +208,7 @@
     <string name="menu_copy_link_to_clipboard">Copiar ligazón</string>
     <string name="menu_copy_text_to_clipboard">Copiar texto</string>
     <string name="menu_copy_image_to_clipboard">Copiar imaxe</string>
+    <string name="menu_copy_email_to_clipboard">Copiar email</string>
     <string name="paste_from_clipboard">Pegar desde portapapeis</string>
     <string name="menu_forward">Reenviar mensaxe</string>
     <string name="menu_resend">Voltar a enviar mensaxes</string>
@@ -798,6 +799,8 @@
     <string name="verified_group_explain">Os grupos verificados (experimental) proporcionan seguridade contra ataques activos. As integrantes son verificadas cun segundo factor por outros membros e as mensaxes van sempre cifradas E2E.</string>
     <string name="copy_qr_data_success">Copiado o url do QR ao portapapeis</string>
     <string name="mailto_dialog_header_select_chat">Elexir chat ao que enviar a mensaxe</string>
+    <!-- first placeholder is the name of the chat -->
+    <string name="confirm_replace_draft">%1$s xa ten un borrador, queres susbstituílo?</string>
     <string name="mailto_link_could_not_be_decoded">a ligazón mailto non se puido descodificar: %1$s</string>
 
     <!-- notifications  -->
@@ -894,6 +897,7 @@
     <string name="ask_delete_chat_desktop">Eliminar a conversa?</string>
     <string name="email_validation_failed_desktop">Correo-e requerido.</string>
     <string name="forget_login_confirmation_desktop">Eliminar esta conexión? Borrarase todo, incluíndo os axustes de cifrado, contactos, conversas, mensaxes e ficheiros de medios. Esta acción non ten volta atrás.</string>
+    <string name="account_info_hover_tooltip_desktop2">Email: %1$s \nTamaño: %2$s \nId. da conta: %3$s</string>
     <string name="me_desktop">eu</string>
     <string name="in_this_group_desktop">Membros do grupo</string>
     <string name="not_in_this_group_desktop">Membros potenciais do grupo (fóra do grupo)</string>
@@ -907,6 +911,8 @@
     <string name="explain_desktop_minimized_disabled_tray_pref">A icona da bandexa do sistema non se pode desactivar porque Delta Chat iniciouse coa opción --minimized.</string>
     <string name="no_spellcheck_suggestions_found">Non se atopan suxestións de escrita.</string>
     <string name="show_window">Mostrar xanela</string>
+    <string name="login_socks5_experimental_warning">O soporte para SOCKS5 aínda é experimental. Úsao baixo a túa responsabilidade. Se escribes un enderezo no campo do email realizará unha busca DNS que non pasará a través de SOCKS5.</string>
+
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Estado da entrega: Fallo</string>
     <string name="a11y_encryption_padlock">Cadeado do cifrado</string>
@@ -940,8 +946,7 @@
 
 
     <!-- device messages for updates -->
-    <string name="update_1_22">Que novidades trae a 1.22?\n\n👋 As Solicitudes de Chat preséntanse como conversas simples e pódelas examinar antes de aceptar ou rexeitar\n\n🗄️ O Arquivo é fácilmente accesible desde o menú principal - alí tamén están as solicitudes antigas\n\n📮📮📮 Melloras para Múltiples-contas: o cambio entre contas faise máis rápido e bloquéase menos coas grandes actualizacións\n\n🤔 Saber o que acontece: os problemas de conexión móstranse na barra de título, toca nela para máis detalles\n\nMáis info no blog:</string>
-    <string name="update_1_22_ios">Que novidades trae a 1.22?\n\n👋 As Solicitudes de Chat preséntanse como conversas simples e pódelas examinar antes de aceptar ou rexeitar\n\n🗄️ O Arquivo é fácilmente accesible desde o menú principal - alí tamén están as solicitudes antigas\n\n📮📮📮 Engadido Múltiples contas: Cambia e xestiona as contas desde os axustes\n\n🤔 Saber o que acontece: os problemas de conexión móstranse na barra de título, toca nela para máis detalles\n\nMáis info no blog:</string>
     <string name="update_1_24_android">1.24 dunha ollada:\n\n• Aforra toques: Selección de conta no canto superior esquerdo na lista de chats\n• Aforra máis toques: Presión longa na icona da app para abrir chats recentes\n• Aforra datos: Descarga ficheiros grandes baixo demanda\n• Por tranquilidade: únete con códigos QR sen bloqueos e máis rápido e novas opcións para os códigos QR\n\nMáis en 👉</string>
     <string name="update_1_24_ios">1.24 dunha ollada:\n\n• Fai unha busca no chat desde o perfil do chat\n• Aforra datos: Descarga ficheiros grandes baixo demanda\n• Por tranquilidade: únete con códigos QR sen bloqueo e máis rápido\n\nMáis en 👉</string>
+    <string name="update_1_26">1.26 embelecido 💅\n\n• Tras facer que os códigos QR non bloqueasen a 1.24, agora son moito máis bonitos - en tódalas plataformas\n• Os avatares e insignias teñen aspecto máis homoxéneo en tódalas plataformas\n• Arranxamos moitos pequenos fallos</string>
 </resources>
