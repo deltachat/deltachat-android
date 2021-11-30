@@ -1,6 +1,6 @@
 # Delta Chat Android Changelog
 
-## v1.26.0
+## v1.26.1
 2021-11
 
 * re-layout all QR codes and unify appearance among the different platforms
@@ -10,9 +10,11 @@
 * fix chat assignment when forwarding
 * fix layout bug in chatlist title
 * fix crashes when opening map
+* fix group-related system messages appearing as normal messages in multi-device setups
+* fix log in failures for "Google Workspace" (former "G Suite") addresses using oauth2
 * switch from Mapbox to Maplibre
 * update translations
-* update to core68
+* update to core69
 
 
 ## v1.24.4
