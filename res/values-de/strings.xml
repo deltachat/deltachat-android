@@ -803,6 +803,8 @@ Ihr bisheriges E-Mail-Konto wird dabei nicht gelöscht. Sie können mit der Opti
     <string name="verified_group_explain">Verifizierte Gruppen (experimentell) bieten Schutz gegen aktive Angriffe mittels Zwei-Faktor-Authentifizierung aller Mitglieder und immer aktiver Ende-zu-Ende-Verschlüsselung.</string>
     <string name="copy_qr_data_success">QR-Code auf die Zwischenablage kopiert</string>
     <string name="mailto_dialog_header_select_chat">Wählen Sie den Chat, an den die Nachricht gesendet werden soll</string>
+    <!-- first placeholder is the name of the chat -->
+    <string name="confirm_replace_draft">%1$s hat bereits einen Entwurft. Möchten Sie diesen ersetzen?</string>
     <string name="mailto_link_could_not_be_decoded">Mailto-Link konnte nicht dekodiert werden: %1$s</string>
 
     <!-- notifications  -->
@@ -899,6 +901,7 @@ Ihr bisheriges E-Mail-Konto wird dabei nicht gelöscht. Sie können mit der Opti
     <string name="ask_delete_chat_desktop">Chat wirklich löschen?</string>
     <string name="email_validation_failed_desktop">E-Mail-Adresse benötigt.</string>
     <string name="forget_login_confirmation_desktop">Dieses Login löschen? Alles wird gelöscht, einschließlich des Ende-zu-Ende-Setups, der Kontakte, Chats, Nachrichten und Medien. Diese Aktion ist endgültig und kann nicht rückgängig gemacht werden.</string>
+    <string name="account_info_hover_tooltip_desktop2">E-Mail: %1$s\nGröße: %2$s\nAccount-ID: %3$s</string>
     <string name="me_desktop">ich</string>
     <string name="in_this_group_desktop">Gruppenmitglieder</string>
     <string name="not_in_this_group_desktop">Potenzielle Gruppenmitglieder (nicht in der Gruppe)</string>
@@ -912,6 +915,8 @@ Ihr bisheriges E-Mail-Konto wird dabei nicht gelöscht. Sie können mit der Opti
     <string name="explain_desktop_minimized_disabled_tray_pref">Benachrichtigungssymbol kann nicht deaktiviert werden, da Delta Chat mit der Option --minimized gestartet wurde.</string>
     <string name="no_spellcheck_suggestions_found">Keine Rechtschreibvorschläge gefunden.</string>
     <string name="show_window">Fenster anzeigen</string>
+    <string name="login_socks5_experimental_warning">Die Unterstützung von SOCKS5 ist derzeit experimentell. Die Verwendung erfolgt auf eigene Gefahr. Wenn Sie eine Adresse in das E-Mail-Feld eingeben, wird eine DNS-Suche durchgeführt, die nicht durch SOCKS5 getunnelt wird.</string>
+
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Übertragungsstatus: Fehler</string>
     <string name="a11y_encryption_padlock">Verschlüsselungsschloss</string>
@@ -945,8 +950,7 @@ Ihr bisheriges E-Mail-Konto wird dabei nicht gelöscht. Sie können mit der Opti
 
 
     <!-- device messages for updates -->
-    <string name="update_1_22">Was ist neu in 1.22?\n\n👋 Chat-Anfragen werden jetzt als einzelne Chats angezeigt und können vor Annahme oder Blockieren im Detail geprüft werden\n\n🗄️ Das Archiv ist jetzt leicht vom Hauptmenü aus zugänglich - dort finden Sie auch die alten Chat-Anfragen\n\n📮📮📮📮 Verbessertes Multi-Account: Der Wechsel zwischen Konten geht jetzt schneller und wird weniger durch langwierige Downloads blockiert\n\n🤔 Immer wissen, was los ist: Verbindungsprobleme werden jetzt in der Titelleiste angezeigt, für Details einfach auf den Titel tippen\n\nMehr im Blog:</string>
-    <string name="update_1_22_ios">Was ist neu in 1.22?\n\n👋 Chat-Anfragen werden jetzt als einzelne Chats angezeigt und können vor Annahme oder Blockieren im Detail geprüft werden\n\n🗄️ Das Archiv ist jetzt leicht den  Einstellungen aus zugänglich - dort finden Sie auch die alten Chat-Anfragen\n\n📮📮📮📮 Multi-Account hinzugefügt: Konten in den Einstellungen wechseln und verwalten\n\n🤔 Immer wissen, was los ist: Verbindungsprobleme werden jetzt in der Titelleiste angezeigt, für Details einfach auf den Titel tippen\n\nMehr im Blog:</string>
     <string name="update_1_24_android">1.24 auf einen Blick:\n\n• Kontoauswahl in der oberen linken Ecke der Chatliste\n• Lang Tippen auf das App-Symbol, um die letzten Chats direkt zu öffnen\n• Große Dateien nach Bedarf herunterladen\n• Schnellere, nicht blockierende QR-Code-Scans und neue QR-Code-Optionen\n\nMehr unter 👉</string>
     <string name="update_1_24_ios">1.24 auf einen Blick:\n\n• Starten Sie eine In-Chat-Suche aus dem Chat-Profil heraus\n• Große Dateien nach Bedarf herunterladen\n• Schnellere, nicht-blockierende QR-Code-Scans\n\nMehr unter 👉</string>
+    <string name="update_1_26">1.26 aufpoliert 💅\n\n• Nachdem auf QR-Code-Scans seit 1.24 nicht mehr gewartet werden muss, sehen diese nun auch viel schöner aus - und das auf allen Plattformen\n• Gleiches gilt für Avatare und einige andere Elemente\n• Viele Bugs wurden gefixt</string>
 </resources>

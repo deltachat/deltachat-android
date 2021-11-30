@@ -965,8 +965,6 @@
 
 
     <!-- device messages for updates -->
-    <string name="update_1_22">Čo je nové vo verzii 1.22?\n\n👋 Žiadosti o čet sa teraz zobrazujú ako jednotlivé čety a možno ich pred prijatím alebo zablokovaním podrobne skontrolovať\n\n🗄️ Archív je teraz ľahko dostupný z hlavnej ponuky – nájdete tu aj svoje staré žiadosti\n\n📮📮📮 Vylepšenie viacerých účtov: Prepínanie účtov je teraz rýchlejšie a menej často blokované zdĺhavými aktualizáciami\n\n🤔 Zistite, čo sa deje: Problémy s pripojením sa teraz zobrazujú v záhlaví, klepnutím zobrazíte podrobnosti \n\nViac na blogu:</string>
-    <string name="update_1_22_ios">Čo je nové vo verzii 1.22?\n\n👋 Žiadosti o čet sa teraz zobrazujú ako jednotlivé čety a možno ich pred prijatím alebo zablokovaním podrobne skontrolovať\n\n🗄️ Archív je teraz ľahko dostupný z nastavení – nájdete v ňom aj svoje staré žiadosti\n\n📮📮📮 Pridané viaceré účty: Prepínajte a spravujte účty v nastaveniach\n\n🤔 Zistite, čo sa deje: Problémy s pripojením sa teraz zobrazujú v záhlaví, klepnutím zobrazíte podrobnosti\n\nViac na blogu:</string>
     <string name="update_1_24_android">1.24 v skratke:\n\n• Uloženie klepnutím: Výber účtu v ľavom hornom rohu zoznamu četov\n• Uloženie viacerými klepnutiami: Dlhým klepnutím na ikonu aplikácie priamo otvoríte nedávne čety\n• Ušetrite premávku: sťahujte veľké súbory podľa potreby\n• Ušetrite nervy: rýchlejšie pripojenie QR kódu bez blokovania a nové možnosti kódu QR\n\nViac na 👉 </string>
     <string name="update_1_24_ios">1.24 v skratke:\n\n• Spustite vyhľadávanie v čete z profilu četu\n• Ušetrite premávku: sťahujte veľké súbory podľa potreby\n• Ušetrite nervy: rýchlejšie pripájanie na QR kódy bez blokovania\n\nViac na 👉</string>
-</resources>
+    </resources>
