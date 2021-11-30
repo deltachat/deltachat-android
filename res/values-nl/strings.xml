@@ -948,4 +948,5 @@
     <!-- device messages for updates -->
     <string name="update_1_24_android">1.24 samengevat:\n\n• Bespaar moeite: accountkeuze zit nu links bovenaan de gesprekslijst\n• Bespaar nóg meer moeite: houd het app-pictogram lang ingedrukt om recente gesprekken direct te openen\n• Bespaar data: download grote bestanden alléén indien nodig\n• Bespaar frustratie: snellere, niet-in-de-weg-zittende QR-codes en nieuwe QR-code-opties\n\nMeer informatie is te vinden op 👉</string>
     <string name="update_1_24_ios">1.24 samengevat:\n\n• Doorzoek gesprekken vanuit profielen\n• Bespaar data: download grote bestanden alléén indien nodig\n• Bespaar frustratie: snellere, niet-in-de-weg-zittende QR-codes en nieuwe QR-code-opties\n\nMeer informatie 👉</string>
-    </resources>
+    <string name="update_1_26">1.26 oppoetsen 💅\n\n• Sinds 1.24 zitten QR-codes niet langer in de weg, maar sinds deze versie zien ze er ook nog eens beter uit - op alle ondersteunde systemen!\n• Profielfoto\'s en tellers zien er nu overal hetzelfde uit\n• Heel veel bugs opgelost</string>
+</resources>
