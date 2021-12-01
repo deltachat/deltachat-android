@@ -32,6 +32,8 @@ in Android Studio:
       (not: App Bundle as this would require uploading the signing key)
    b) select flavor `gplayRelease` with V1 signature enabled
       (needed for easy APK verification), V2 is optional
+   c) if you want to use upload-testrun.sh, generate a debug apk additionally at
+      "Build / Build Bundle(s)/APK / Build APK(s)"
 
 on success, the generated APK is at
 `gplay/release/deltachat-gplay-release-VERSION.apk`
