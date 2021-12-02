@@ -18,6 +18,8 @@
     <string name="automatic">خودکار</string>
     <string name="strict">سخت‌گیرانه</string>
     <string name="open">بازکردن</string>
+    <string name="download">بارگیری</string>
+    <string name="downloading">در حال بارگیری...</string>
     <string name="open_attachment">باز کردن ضمیمه</string>
     <string name="join">پیوستن</string>
     <string name="rejoin">پیوستن مجدد</string>
@@ -83,6 +85,9 @@
     <string name="this_month">این ماه</string>
     <string name="last_week">هفته گذشته</string>
     <string name="last_month">ماه گذشته</string>
+    <!-- the placeholder will be replaced by a date or time, resulting eg. in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
+    <string name="last_seen_at">آخرین بار در %1$s دیده شده</string>
+    <string name="last_seen_unknown">آخرین زمان مشاهده: نامشخص</string>
     <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
     <plurals name="n_minutes">
         <item quantity="one">%d دقیقه</item>
@@ -109,12 +114,19 @@
         <item quantity="one">%d عضو</item>
         <item quantity="other">%d عضو</item>
     </plurals>
+    <plurals name="n_recipients">
+        <item quantity="one">%d گیرنده</item>
+        <item quantity="other">%d گیرنده‌ </item>
+    </plurals>
+
     <string name="self">من</string>
     <string name="draft">پیش‌نویس</string>
     <string name="image">تصویر</string>
     <!-- Translators: Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
     <string name="reply_noun">پاسخ</string>
     <string name="gif">Gif</string>
+    <!-- "Stickers" as known from other messengers, please pick up the wording from there; in some languages, "Sticker" in english is just fine. -->
+    <string name="sticker">استیکر</string>
     <string name="images">تصاویر</string>
     <string name="audio">صدا</string>
     <string name="voice_message">پیام صوتی</string>
@@ -165,7 +177,14 @@
     <string name="menu_new_contact">مخاطب جدید</string>
     <string name="menu_new_chat">گفتگوی جدید</string>
     <string name="menu_new_group">گروه جدید</string>
+    <!-- "Subject" here must be the same wording as used in the e-mail context, so. eg. "Betreff" in german (the idea is to help people coming from the e-mail context) -->
+    <string name="new_group_or_subject">گروه یا عنوان جدید</string>
     <string name="menu_new_verified_group">گروه تایید شده جدید</string>
+    <!-- consider keeping the term "broadcast"; check how these lists are called eg. on whatsapp in the destination language -->
+    <string name="broadcast_list">لیست Broadcast</string>
+    <string name="broadcast_lists">لیست‌های Broadcast</string>
+    <string name="new_broadcast_list">لیست Broadcast جدید</string>
+    <string name="add_recipients">افزودن گیرنده</string>
     <string name="menu_send">ارسال</string>
     <string name="menu_toggle_keyboard">تعییر صفحه کلید شکلک‌ها</string>
     <string name="menu_edit_group">ویرایش گروه</string>
@@ -189,6 +208,7 @@
     <string name="menu_copy_link_to_clipboard">رونوشت برداری از لینک</string>
     <string name="menu_copy_text_to_clipboard">رونوشت گرفتن از متن</string>
     <string name="menu_copy_image_to_clipboard">رونوشت گرفتن از تصویر</string>
+    <string name="menu_copy_email_to_clipboard">کپی کردن رایانامه</string>
     <string name="paste_from_clipboard">چسباندن از حافظه</string>
     <string name="menu_forward">هدایت پیام</string>
     <string name="menu_resend">بازارسال پیام</string>
@@ -196,6 +216,7 @@
     <string name="menu_mute">ساکت کردن اعلان</string>
     <string name="menu_unmute">صدا دار کردن</string>
     <string name="menu_export_attachment">صادر کردن ضمیمه</string>
+    <string name="menu_export_attachments">صادر کردن ضمیمه</string>
     <string name="menu_all_media">همه رسانه‌ها</string>
     <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
     <string name="show_in_chat">نمایش در گفتگو</string>
@@ -296,6 +317,10 @@
         <item quantity="one">پاک کردن %d گفتگو از اینجا و سرور؟</item>
         <item quantity="other">پاک کردن %d گفتگو از اینجا و سرور؟</item>
     </plurals>
+    <plurals name="ask_delete_messages_simple">
+        <item quantity="one">می‌خواهید %dپیام پاک شود؟</item>
+        <item quantity="other">می‌خواهید %d پیام پاک شود؟</item>
+    </plurals>
     <string name="ask_forward">پیام‌ها به %1$sهدایت شوند؟</string>
     <string name="ask_forward_multiple">انتقال پیام‌ها به %1$d گفتگو؟</string>
     <string name="ask_export_attachment">ضمیمه صادر شود؟ صادر کردن ضمیمه باعث می‌شود دیگر نرم‌افزارهای روی دستگاه شما بتوانند به آن دسترسی داشته باشند. \n\nادامه می‌دهید؟</string>
@@ -308,6 +333,8 @@
     <string name="ask_delete_value">پاک کردن %s؟</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">حذف %1$s از گروه؟</string>
+    <!-- Translators: %1$s will be replaced by a comma separated list of names -->
+    <string name="ask_remove_from_broadcast">آيا%1$s از لیست Broadcast پاک شود؟ </string>
     <string name="open_url_confirmation">آیا می‌خواهید این لینک را باز کنید؟</string>
 
 
@@ -336,6 +363,8 @@
         <item quantity="other">%d پیام جدید</item>
     </plurals>
     <string name="chat_no_messages_hint">به %1$sپیام ارسال کنید:\n\n• مشکلی نیست اگر %2$s از دلتاچت استفاده نمی‌کند. \n\n• دریافت اولین پیام ممکن است زمان ببرد و ممکن است پیام اول رمزگذاری نشده باشد. </string>
+    <string name="chat_new_broadcast_hint">در لیست Broadcast، دیگران پیام‌ها را در گفتگو‌های خصوصی با شما دریافت می‌کنند. 
+ گیرنده‌ها از یکدیگر خبر نخواهند داشت. </string>
     <string name="chat_new_group_hint">نوشتن اولین پیام به دیگران امکان می‌دهد در این گروه پاسخ دهند. \n\n• مشکلی نیست اگر همه اعضا از دلتاچت استفاده نکنند\n\n• دریافت اولین پیام ممکن است به زمان بیشتری نیاز داشته باشد. </string>
     <string name="chat_record_slide_to_cancel">برای لغو بکشید.</string>
     <string name="chat_record_explain">برای ضبط پیام صوتی فشار داده و نگهدارید، برای ارسال رها کنید. </string>
@@ -423,6 +452,13 @@
     <string name="send_message">ارسال پیام</string>
 
 
+    <!-- Connectivity -->
+    <!-- Used as a headline for the "Inbox" eg. in the "Connectivity" view -->
+    <string name="incoming_messages">پیام‌های ورودی</string>
+    <!-- Used as a headline for the "Outbox" eg. in the "Connectivity" view -->
+    <string name="outgoing_messages">پیام‌های خروجی</string>
+    <!-- Used as a headline in the "Connectivity" view. The placeholder will be replaced by the domain of the configured email-address. -->
+    <string name="storage_on_domain">ذخیره کردن در %1$s</string>
     <string name="connectivity">اتصالات</string>
     <!-- Shown eg. in the title bar if the app is "Not connected"; as there is very few room, try to be as short as possible. -->
     <string name="connectivity_not_connected">متصل نیست</string>
@@ -432,6 +468,15 @@
     <string name="connectivity_updating">درحال به روز رسانی...</string>
     <!-- Shown eg. in the setting if the app is "Connected" -->
     <string name="connectivity_connected">متصل شد</string>
+    <string name="sending">در حال ارسال...</string>
+    <string name="last_msg_sent_successfully">آخرین پیام با موفقیت ارسال شد.</string>
+    <string name="not_supported_by_provider">ارائه دهنده شما از این پشتیبانی نمی‌کند</string>
+    <!-- Used as a subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed or so. -->
+    <string name="messages">پیام‌ها</string>
+    <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
+    <string name="part_of_total_used">مقدار %1$s از %2$s استفاده شده است. </string>
+
+
     <!-- welcome and login -->
     <string name="welcome_intro1_message">پیام‌رسانی با وسیع‌ترین طیف مخاطبین در جهان. آزاد و مستقل. </string>
     <string name="login_title">ورود</string>
@@ -452,6 +497,13 @@
     <string name="login_smtp_port">SMTP Port</string>
     <string name="login_smtp_security">SMTP Security</string>
     <string name="login_auth_method">Authorization Method</string>
+    <!-- the word "SOCKS5" here and in the following strings should not be translated in most cases -->
+    <string name="login_socks5">SOCKS5</string>
+    <string name="login_socks5_use_socks5">استفاده از SOCKS5</string>
+    <string name="login_socks5_host">SOCKS5 Host</string>
+    <string name="login_socks5_port">SOCKS5 Port</string>
+    <string name="login_socks5_user">SOCKS5 User</string>
+    <string name="login_socks5_password">SOCKS5 Password</string>
     <!-- Translators: %1$s will be replaced by an e-mail address -->
     <string name="login_oauth2_checking_addr">بررسی %1$s</string>
     <string name="login_info_oauth2_title">با تنظیمات ساده‌ شده ادامه می‌دهید؟</string>
@@ -479,7 +531,10 @@
     <string name="delete_account_ask">آیا از حذف حساب کاربری اطمینان دارید؟</string>
     <string name="delete_account_explain_with_name">همه اطلاعات حساب مربوط به \"%s\" روی این دستگاه پاک می‌شود که شامل تنظیمات رمزگذاری گیرنده به گیرنده ، مخاطبین، پیام‌ها و رسانه می‌شود. این عمل قابل بازگشت نیست.</string>
     <string name="switching_account">درحال تغییر حساب کاربری</string>
+    <string name="unconfigured_account">حساب تنظیم نشده</string>
+    <string name="unconfigured_account_hint">بازکردن حساب برای تنظیم آن</string>
     <string name="try_connect_now">اکنون برای اتصال تلاش کنید</string>
+    <string name="sync_all">به روزرسانی همه </string>
     <!-- Translations: %1$s will be replaced by a more detailed error message -->
     <string name="configuration_failed_with_error">پیکربندی ناموفق. خطا:‌%1$s</string>
 
@@ -590,6 +645,16 @@
     <string name="pref_background_custom_image">تصویر ترجیحی</string>
     <string name="pref_background_custom_color">رنگ ترجیحی</string>
     <string name="export_aborted">فرایند صدور متوقف شد.</string>
+    <string name="auto_download_messages">بارگیری خودکار پیام‌ها</string>
+    <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB -->
+    <string name="up_to_x">تا سقف %1$s</string>
+    <string name="up_to_x_most_worse_quality_images">تا سقف %1$s، بدترین کیفیت تصویر</string>
+    <string name="up_to_x_most_balanced_quality_images">تا سقف %1$s، متعادل‌ترین کیفیت تصویر</string>
+    <string name="no_limit">بدون محدودیت</string>
+    <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string eg. "1 MiB message" -->
+    <string name="n_bytes_message">پیام %1$s </string>
+    <!-- %1$s will be replaced by human-readable date and time -->
+    <string name="download_max_available_until">سقف دانلود تا %1$s فعال خواهد بود</string>
     <string name="profile_image_select">انتخاب تصویر نمایه</string>
     <string name="select_your_new_profile_image">انتخاب تصویر پروفایل جدید</string>
     <string name="profile_image_delete">حذف تصویر نمایه</string>
@@ -687,6 +752,19 @@
     <string name="systemmsg_chat_protection_disabled">محافظت از گفنگو غیرفعال شد.</string>
     <string name="systemmsg_chat_protection_enabled">محافظت از گفتگو فعال شد.</string>
 
+    <string name="devicemsg_self_deleted">شما گفتگوی «پیام‌های ذخیره شده» را پاک کردید. 
+ℹ️ برای استفاده مجدد از «پیام‌های ذخیره شده» کافی است یک گفتگوی جدید با خودتان درست کنید. </string>
+    <!-- %1$s will be replaced by the number of storage already used, sth. as '500 MB'. CAVE: if you want to use a simple the percent sign, type in two, so eg. %1$s %% -->
+    <string name="devicemsg_storage_exceeding">هشدار⚠️، میزان حجم در دسترس ارایه‌دهنده شما در حال تمام شدن است. %1$s از %% استفاده شده است. 
+اگر ۱۰۰%% استفاده شود ممکن است دیگر نتوانید پیامی دریافت کنید. 
+👉  لطفا پیام‌های قدیمی در رایانامه خود را از طریق نسخه وب رایانامه پاک کنید. همچنین می‌توانید گزینه پاک کردن پیام‌های قدیمی در دلتا چت را فعال نمایید. هروقت خواستید می‌توانید حجم در دسترس را از تنظیمات/اتصالات بررسی کنید. </string>
+    <!-- %1%s will be replaced by date and time in some human-readable format -->
+    <string name="devicemsg_bad_time">هشدار⚠️ به نظر می‌رسد زمان و تاریخ دستگاه شما دقیق نیست(%1$s).
+ساعت دستگاه خود را تنظیم کنید ⏰🔧 تا پیام‌ها به درستی دریافت شوند. </string>
+    <string name="devicemsg_update_reminder">هشدار⚠️ ممکن است نسخه دلتاچت مورد استفاده قدیمی شده باشد. 
+این موضوع ممکن است مشکلاتی ایجاد کند چون مخاطبین شما از نسخه‌های جدیدتر استفاده می‌کنند. همچنین قابلیت‌های جدید را هم از دست می‌دهید😳
+لطفا برای دریافت نسخه جدید به app store یا https://get.delta.chat مراجعه کنید. </string>
+
     <!-- Some options as "Manage keys" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc. to be entered in a system dialog. This hint is added to the system dialog, below a title as "Manage keys" or "Backup". -->
     <string name="enter_system_secret_to_continue">برای ادامه، لطفا رمز تعیین شده توسط سیستم خود را وارد کنید</string>
 
@@ -728,6 +806,11 @@
     <string name="qraccount_success_enter_name">ورود موفق—آدرس ایمیل شما %1$sاست.\n\n اگر دوست دارید می‌توانید اکنون یک اسم وارد کرده و تصویر نمایه‌ای که هنگام نوشتن برای دیگران نشان داده می‌شود را انتخاب نمایید. </string>
     <string name="qraccount_qr_code_cannot_be_used">این کد کیوآر اسکن شده را نمی‌توان برای راه اندازی اکانت جدید استفاده کرد. </string>
     <string name="qraccount_use_on_new_install">کد کیوآر اسکن شده برای راه اندازی یک اکانت جدید است. می‌توانید در حال تنظیم یک دلتاچت تازه نصب شده کیوآر  را اسکن کنید.</string>
+    <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
+    <string name="secure_join_started">کاربر %1$s شما را دعوت کرده است تا عضو این گروه شوید.
+در انتظار دستگاه %2$s برای پاسخگویی...</string>
+    <!-- placeholder will be replaced by the name of the inviter. -->
+    <string name="secure_join_replies">کاربر %1$s پاسخ داد، در انتظار اضافه شدن به گروه...</string>
     <string name="contact_verified">%1$sتایید شد.</string>
     <string name="contact_not_verified">%1$sتایید نشد. </string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
@@ -735,10 +818,13 @@
     <string name="verified_group_explain">گرو‌ه های تایید شده(آزمایشی) در برابر حمله‌های فعال امنیت دارند. اعضا با یک روش ثانویه هم از طریق دیگر اعضا احراز هویت می‌شوند و پیام‌ها هم همیشه به صورت رمزگذاری شده به صورت گیرنده به گیرنده می‌باشد. </string>
     <string name="copy_qr_data_success">آدرس کیوآر در حافظه ذخیر شد</string>
     <string name="mailto_dialog_header_select_chat">گفتگو را برای ارسال پیام انتخاب کنید</string>
+    <!-- first placeholder is the name of the chat -->
+    <string name="confirm_replace_draft">گفتگوی %1$s همین حالا هم یک پیام پیشنویس دارد؛ آیا می‌خواهید آن را جایگزین کنید؟</string>
     <string name="mailto_link_could_not_be_decoded">امکان رمزگشایی ایمیل به لینک وجود ندارد: %1$s</string>
 
     <!-- notifications  -->
     <string name="notify_n_messages_in_m_chats">%1$d پیام جدید در %2$d گفتگو</string>
+    <string name="notify_dismiss">صرف نظر</string>
     <string name="notify_mark_read">علامت گذاری به عنوان خوانده شده</string>
     <string name="notify_reply_button">پاسخ</string>
     <string name="notify_new_message">پیام جدید</string>
@@ -852,6 +938,9 @@ GNU GPL ورژن ۳
     <string name="ask_delete_chat_desktop">پاک کردن گفتگو؟</string>
     <string name="email_validation_failed_desktop">نشانی ایمیل لازم است.</string>
     <string name="forget_login_confirmation_desktop">پاک کردن این ورود؟ همه چیز پاک می شود که شامل رمزگذاری گیرنده به گیرنده، مخاطبین، گفتگوها، پیام‌ها و رسانه می‌شود. این عملیات قابل بازگردانی نیست.</string>
+    <string name="account_info_hover_tooltip_desktop2">رایانامه: %1$s
+فضا: %2$s
+شناسه حساب:‌%3$s</string>
     <string name="me_desktop">من</string>
     <string name="in_this_group_desktop">اعضای گروه</string>
     <string name="not_in_this_group_desktop">اعضای گروه بالقوه(عضو گروه نیستند)</string>
@@ -865,6 +954,8 @@ GNU GPL ورژن ۳
     <string name="explain_desktop_minimized_disabled_tray_pref">چون دلتاچت با تنظیمات --زیرصفحه شروع به کار کرده است نمی‌توان نمادک زیر صفحه را غیر فعال کرد. </string>
     <string name="no_spellcheck_suggestions_found">هیچ پیشنهادی برای املا پیدا نشد</string>
     <string name="show_window">نمایش پنجره</string>
+    <string name="login_socks5_experimental_warning">پشتیبانی از قابلیت SOCKS5 هنوز آزمایشی است. لطفا در صورت استفاده،‌خطرات را بپذیرید. اگر یک آدرس را در بخش رایانامه وارد کنید همچنان  DNS lookup  رخ می‌دهد که ممکن است از طریق SOCKS5 صورت نگیرد. </string>
+
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">وضعیت ارسال: خطا</string>
     <string name="a11y_encryption_padlock">قفل رمزگذاری</string>
@@ -897,4 +988,20 @@ GNU GPL ورژن ۳
     <string name="perm_enable_bg_already_done">قبلا اجازه دسترسی به فعالیت در پس زمینه را به دلتاچت داده‌اید. \n\n اگر پیام‌ها هنوز هم در شرایط پس زمینه نمی‌آمد لطفا تنظیمات سیستم را نیز بررسی نمایید. </string>
 
 
-    </resources>
+    <!-- device messages for updates -->
+    <string name="update_1_24_android">نگاهی اجمالی به نسخه ۱.۲۴:
+سربرگ‌های ذخیره:  انتخاب حساب‌ها در بخش بالا و چپ لیست گفتگو‌ها
+ذخیره کردن سربرگ‌های بیشتر: آیکون نرم‌افزار را برای مدت طولانی نگه دارید تا گفتگوهای اخیر مستقیما باز شوند. 
+ترافیک ذخیره: بارگیری تصاویر بزرگ در صورت نیاز. 
+نجات اعصاب:‌امکانات جدید کد QR، و کدهای QR سریع‌تر و بدون انسداد.
+بیشتر در  
+👉</string>
+    <string name="update_1_24_ios">نگاهی اجمالی به ۱.۲۴: 
+جستجوی درون گفتگو را می‌توانید از نمایه‌‌ی گفتگو انجام دهید. 
+ذخیره ترافیک: بارگیری فایل‌های بزرگ تنها در صورت لزوم. 
+نجات اعصاب:‌امکانات جدید کد QR، و کدهای QR سریع‌تر و بدون انسداد.
+بیشتر در 👉
+</string>
+    <string name="update_1_26">پرداخت جزئیات در نسخه ۱.۲۶.
+پس از غیر انسدادی کردن کدهای QR در نسخه ۱.۲۴ اکنون ظاهر آن‌ها هم در همه پلتفرم‌ها بهبود داده شده است. آواتارها و عکس‌ها در همه پلتفرم‌ها شبیه هم شده‌اند. بسیاری از اشکالات اصلاح شد. </string>
+</resources>
