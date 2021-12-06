@@ -135,19 +135,18 @@ public class ConversationListItem extends RelativeLayout
     this.glideRequests    = glideRequests;
 
     int state       = dcSummary.getState();
-    int unreadCount = ((state==DcMsg.DC_STATE_IN_FRESH || state==DcMsg.DC_STATE_IN_NOTICED) && !thread.isContactRequest())?
-                        thread.getUnreadCount() : 0;
+    int unreadCount = thread.getUnreadCount();
 
     if (highlightSubstring != null) {
       this.fromView.setText(getHighlightedSpan(locale, recipient.getName(), highlightSubstring));
     } else {
-      this.fromView.setText(recipient, unreadCount == 0);
+      this.fromView.setText(recipient, state!=DcMsg.DC_STATE_IN_FRESH);
     }
 
     this.subjectView.setText(thread.getDisplayBody());
-    this.subjectView.setTypeface(unreadCount == 0 ? LIGHT_TYPEFACE : BOLD_TYPEFACE);
-    this.subjectView.setTextColor(unreadCount == 0 ? ThemeUtil.getThemedColor(getContext(), R.attr.conversation_list_item_subject_color)
-                                                   : ThemeUtil.getThemedColor(getContext(), R.attr.conversation_list_item_unread_color));
+    this.subjectView.setTypeface(state==DcMsg.DC_STATE_IN_FRESH ? BOLD_TYPEFACE : LIGHT_TYPEFACE);
+    this.subjectView.setTextColor(state==DcMsg.DC_STATE_IN_FRESH ? ThemeUtil.getThemedColor(getContext(), R.attr.conversation_list_item_unread_color)
+                                                                 : ThemeUtil.getThemedColor(getContext(), R.attr.conversation_list_item_subject_color));
 
     if (thread.getDate() > 0) {
       CharSequence date = DateUtils.getBriefRelativeTimeSpanString(getContext(), locale, thread.getDate());
@@ -264,46 +263,39 @@ public class ConversationListItem extends RelativeLayout
     {
       requestBadgeView.setVisibility(View.GONE);
       archivedBadgeView.setVisibility(View.GONE);
-      if (state==DcMsg.DC_STATE_IN_FRESH || state==DcMsg.DC_STATE_IN_NOTICED)
-      {
-        deliveryStatusIndicator.setNone();
-        if(unreadCount==0) {
-          unreadIndicator.setVisibility(View.GONE);
-        }
-        else {
-          unreadIndicator.setImageDrawable(TextDrawable.builder()
-              .beginConfig()
-              .width(ViewUtil.dpToPx(getContext(), 24))
-              .height(ViewUtil.dpToPx(getContext(), 24))
-              .textColor(Color.WHITE)
-              .bold()
-              .endConfig()
-              .buildRound(String.valueOf(unreadCount), getResources().getColor(R.color.unread_count)));
-          unreadIndicator.setVisibility(View.VISIBLE);
-        }
-      }
-      else
-      {
-        unreadIndicator.setVisibility(View.GONE);
-        if (state == DcMsg.DC_STATE_OUT_ERROR) {
-          deliveryStatusIndicator.setFailed();
-        } else if (state == DcMsg.DC_STATE_OUT_MDN_RCVD) {
-          deliveryStatusIndicator.setRead();
-        } else if (state == DcMsg.DC_STATE_OUT_DELIVERED) {
-          deliveryStatusIndicator.setSent();
-        } else if (state == DcMsg.DC_STATE_OUT_PREPARING) {
-          deliveryStatusIndicator.setPreparing();
-        } else if (state == DcMsg.DC_STATE_OUT_PENDING) {
-          deliveryStatusIndicator.setPending();
-        } else {
-          deliveryStatusIndicator.setNone();
-        }
 
-        if (state == DcMsg.DC_STATE_OUT_ERROR) {
-          deliveryStatusIndicator.setTint(Color.RED);
-        } else {
-          deliveryStatusIndicator.resetTint();
-        }
+      if(unreadCount==0) {
+        unreadIndicator.setVisibility(View.GONE);
+      } else {
+        unreadIndicator.setImageDrawable(TextDrawable.builder()
+                .beginConfig()
+                .width(ViewUtil.dpToPx(getContext(), 24))
+                .height(ViewUtil.dpToPx(getContext(), 24))
+                .textColor(Color.WHITE)
+                .bold()
+                .endConfig()
+                .buildRound(String.valueOf(unreadCount), getResources().getColor(R.color.unread_count)));
+        unreadIndicator.setVisibility(View.VISIBLE);
+      }
+
+      if (state == DcMsg.DC_STATE_OUT_ERROR) {
+        deliveryStatusIndicator.setFailed();
+      } else if (state == DcMsg.DC_STATE_OUT_MDN_RCVD) {
+        deliveryStatusIndicator.setRead();
+      } else if (state == DcMsg.DC_STATE_OUT_DELIVERED) {
+        deliveryStatusIndicator.setSent();
+      } else if (state == DcMsg.DC_STATE_OUT_PREPARING) {
+        deliveryStatusIndicator.setPreparing();
+      } else if (state == DcMsg.DC_STATE_OUT_PENDING) {
+        deliveryStatusIndicator.setPending();
+      } else {
+        deliveryStatusIndicator.setNone();
+      }
+
+      if (state == DcMsg.DC_STATE_OUT_ERROR) {
+        deliveryStatusIndicator.setTint(Color.RED);
+      } else {
+        deliveryStatusIndicator.resetTint();
       }
     }
   }
