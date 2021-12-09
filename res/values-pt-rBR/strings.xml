@@ -85,6 +85,9 @@
     <string name="this_month">Este mês</string>
     <string name="last_week">Semana passada</string>
     <string name="last_month">Mês passado</string>
+    <!-- the placeholder will be replaced by a date or time, resulting eg. in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
+    <string name="last_seen_at">Visto pela última vez às %1$s</string>
+    <string name="last_seen_unknown">Visto pela última vez: desconhecido</string>
     <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
     <plurals name="n_minutes">
         <item quantity="one">%d min</item>
@@ -205,6 +208,7 @@
     <string name="menu_copy_link_to_clipboard">Copiar link</string>
     <string name="menu_copy_text_to_clipboard">Copiar texto</string>
     <string name="menu_copy_image_to_clipboard">Copiar imagem</string>
+    <string name="menu_copy_email_to_clipboard">Copiar E-mail </string>
     <string name="paste_from_clipboard">Colar a partir da área de transferência</string>
     <string name="menu_forward">Encaminhar mensagem</string>
     <string name="menu_resend">Reenviar mensagem</string>
@@ -795,6 +799,8 @@
     <string name="verified_group_explain">Grupos verificados (experimental) fornecem segurança contra ataques ativos. Os membros são verificados com um segundo fator por outros membros e as mensagens são sempre criptografadas de ponta a ponta.</string>
     <string name="copy_qr_data_success">Endereço do código QR copiado para a área de transferência</string>
     <string name="mailto_dialog_header_select_chat">Selecione o bate-papo para enviar a mensagem</string>
+    <!-- first placeholder is the name of the chat -->
+    <string name="confirm_replace_draft">%1$s já tem um rascunho de mensagem, deseja substituí-lo?</string>
     <string name="mailto_link_could_not_be_decoded">link mailto não pôde ser decodificado: %1$s</string>
 
     <!-- notifications  -->
@@ -891,6 +897,7 @@
     <string name="ask_delete_chat_desktop">Tem certeza que quer apagar esta conversa?</string>
     <string name="email_validation_failed_desktop">E-mail necessário.</string>
     <string name="forget_login_confirmation_desktop">Apagar este login? Tudo será apagado, incluindo sua configuração de criptografia, contatos, conversas, mensagens e mídia. Esta ação é final e irreversível.</string>
+    <string name="account_info_hover_tooltip_desktop2">E-Mail: %1$s\nTamanho: %2$s\nConta Id: %3$s</string>
     <string name="me_desktop">Eu</string>
     <string name="in_this_group_desktop">Participantes do grupo</string>
     <string name="not_in_this_group_desktop">Potenciais participantes do grupo (não inclusos)</string>
@@ -904,6 +911,8 @@
     <string name="explain_desktop_minimized_disabled_tray_pref">O ícone da bandeja não pode ser desativado porque o Delta Chat foi iniciado com a opção --minimized.</string>
     <string name="no_spellcheck_suggestions_found">Nenhuma sugestão de ortografia encontrada.</string>
     <string name="show_window">Mostrar Janela</string>
+    <string name="login_socks5_experimental_warning">O suporte a SOCKS5 é atualmente experimental. Por favor, use a seu próprio risco. Se você digitar um endereço no campo de e-mail, haverá uma pesquisa de DNS que não será encapsulada pelo SOCKS5. </string>
+
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Status de entrega: Erro</string>
     <string name="a11y_encryption_padlock">Cadeado de criptografia</string>
@@ -939,4 +948,5 @@
     <!-- device messages for updates -->
     <string name="update_1_24_android">1.24 em resumo:\n\n• Lembre de toques: seleção de conta no canto superior esquerdo da lista de bate-papo\n• Lembre mais toques: toque longo no ícone do aplicativo para abrir os bate-papos recentes diretamente\n• Economize tráfego: faça download grande arquivos conforme necessário\n• Não fique nervoso: uso de código QR mais rápido e sem bloqueio e novas opções de código QR\n\nMais em 👉</string>
     <string name="update_1_24_ios">1.24 em resumo:\n\n• Inicie uma pesquisa no bate-papo a partir do perfil do bate-papo\n• Economize tráfego: baixe arquivos grandes conforme necessário\n• Não fique nervoso: uso de código QR mais rápido e não bloqueante\n\nMais em 👉</string>
-    </resources>
+    <string name="update_1_26">Polimentos na 1.26 💅\n\n• Depois de tornar os códigos QR não bloqueadores na 1.24, eles também estão muito melhores agora - em todas as plataformas\n• Avatares e emblemas parecem semelhantes em todas as plataformas\n• Muitos bugs corrigidos</string>
+</resources>
