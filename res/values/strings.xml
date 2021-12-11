@@ -169,10 +169,6 @@
     <string name="fast">Fast</string>
     <string name="slow">Slow</string>
 
-    <string name="message_delivered">Message delivered</string>
-    <string name="message_read">Message read</string>
-
-
     <!-- menu labels (or icon, buttons...) -->
     <string name="menu_new_contact">New Contact</string>
     <string name="menu_new_chat">New Chat</string>
@@ -198,9 +194,7 @@
     <string name="menu_delete_chat">Delete Chat</string>
     <string name="ask_delete_named_chat">Are you sure you want to delete \"%1$s\"?</string>
     <string name="menu_delete_messages">Delete Messages</string>
-    <string name="menu_delete_image">Delete Image</string>
     <string name="delete_contact">Delete Contact</string>
-    <string name="menu_delete_locations">Delete all Locations?</string>
     <string name="menu_delete_location">Delete this Location?</string>
     <string name="menu_message_details">Message Details</string>
     <string name="menu_copy_to_clipboard">Copy to Clipboard</string>
@@ -211,7 +205,6 @@
     <string name="menu_copy_email_to_clipboard">Copy E-Mail</string>
     <string name="paste_from_clipboard">Paste from Clipboard</string>
     <string name="menu_forward">Forward Message</string>
-    <string name="menu_resend">Resend Message</string>
     <string name="menu_reply">Reply to Message</string>
     <string name="menu_mute">Mute Notifications</string>
     <string name="menu_unmute">Unmute</string>
@@ -234,12 +227,9 @@
     <string name="privacy_policy">Privacy Policy</string>
     <string name="menu_select_all">Select All</string>
     <string name="select_more">Select more</string>
-    <string name="menu_expand">Expand</string>
     <string name="menu_edit_name">Edit Name</string>
     <string name="menu_settings">Settings</string>
     <string name="menu_advanced">Advanced</string>
-    <string name="menu_deaddrop">Contact Requests</string>
-    <string name="menu_deaddrop_subtitle">Press message to start chatting</string>
     <string name="menu_view_profile">View Profile</string>
     <string name="menu_zoom_in">Zoom In</string>
     <string name="menu_zoom_out">Zoom Out</string>
@@ -273,7 +263,6 @@
     <string name="mute_for_seven_days">Mute for 7 days</string>
     <string name="mute_forever">Mute forever</string>
 
-    <string name="share_location_once">Once</string>
     <string name="share_location_for_5_minutes">For 5 minutes</string>
     <string name="share_location_for_30_minutes">For 30 minutes</string>
     <string name="share_location_for_one_hour">For 1 hour</string>
@@ -291,7 +280,6 @@
     <string name="videochat_invite_user_hint">This requires a compatible app or a compatible browser on both ends.</string>
     <string name="videochat_contact_invited_hint">%1$s invited to a video chat.</string>
     <string name="videochat_you_invited_hint">You invited to a video chat.</string>
-    <string name="videochat_will_open_in_your_browser">This video chat will open in your browser.</string>
     <string name="videochat_tap_to_join">Tap to Join</string>
     <string name="videochat_tap_to_open">Tap to Open</string>
     <string name="videochat_instance">Video Chat Instance</string>
@@ -378,14 +366,10 @@
     <string name="saved_messages_explain">• Forward messages here for easy access\n\n• Take notes or voice memos\n\n• Attach media to save them</string>
     <!-- this "Saved" should match the "Saved" from "Saved messages" -->
     <string name="saved">Saved</string>
-    <string name="chat_contact_request">Contact Request</string>
-    <string name="chat_no_contact_requests">No contact requests.\n\nIf you want classic e-mails to appear here as contact requests, you can change the corresponding setting in the app settings.</string>
     <string name="retry_send">Retry to send message</string>
-    <string name="send_failed">Could not send message</string>
     <!-- reasons for a disabled message composer -->
     <string name="messaging_disabled_not_in_group">You cannot write because you are not in this group. To join, ask another member.</string>
     <string name="messaging_disabled_device_chat">This chat contains locally generated messages. Therefore you cannot write any messages.</string>
-    <string name="messaging_disabled_deaddrop">Click on a message to accept or deny the contact request</string>
     <string name="messaging_disabled_mailing_list">Sending messages in mailing lists is not supported yet</string>
     <string name="cannot_display_unsuported_file_type">Cannot display this file type: %s</string>
     <string name="attachment_failed_to_load">Failed to load attachment</string>
@@ -394,7 +378,6 @@
 
     <!-- mailing lists -->
     <string name="mailing_list">Mailing List</string>
-    <string name="ask_show_mailing_list">Show mailing list \"%1$s\"?</string>
     <string name="mailing_list_profile_info">Changes on mailing list name and image apply to this device only.</string>
 
     <!-- map -->
@@ -431,7 +414,6 @@
     <string name="group_create_button">Create Group</string>
     <string name="group_please_enter_group_name">Please enter a name for the group.</string>
     <string name="group_add_members">Add Members</string>
-    <string name="group_hello_draft">Hello, I\'ve just created the group \"%1$s\" for us.</string>
     <string name="group_self_not_in_group">You must be a member of the group to perform this action.</string>
     <string name="profile_encryption">Encryption</string>
     <string name="profile_shared_chats">Shared Chats</string>
@@ -513,8 +495,6 @@
     <string name="import_backup_no_backup_found">No backups found.\n\nCopy the backup to \"%1$s\" and try again. Alternatively, press \"Start messaging\" to continue with the normal setup process.</string>
     <!-- Translators: %1$s will be replaced by the e-mail address -->
     <string name="login_error_cannot_login">Cannot login as \"%1$s\". Please check if the e-mail address and the password are correct.</string>
-    <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
-    <string name="login_error_server_response">Response from %1$s: %2$s\n\nSome providers may e-mail you additional information about this problem; you should be able to check your inbox using your regular e-mail app or web site. Consult your provider or friends if you run into problems.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Accept invalid certificates</string>
     <string name="used_settings">Used settings:</string>
@@ -523,7 +503,6 @@
     <string name="delete_account">Delete Account</string>
     <string name="delete_account_ask">Are you sure you want to delete your account data?</string>
     <string name="delete_account_explain_with_name">All account data of \"%s\" on this device will be deleted, including your end-to-end encryption setup, contacts, chats, messages and media. This action cannot be undone.</string>
-    <string name="switching_account">Switching account…</string>
     <string name="unconfigured_account">Unconfigured account</string>
     <string name="unconfigured_account_hint">Open account to configure it.</string>
     <string name="try_connect_now">Try to connect now</string>
@@ -547,7 +526,6 @@
     <string name="pref_profile_photo">Profile Image</string>
     <string name="pref_blocked_contacts">Blocked Contacts</string>
     <string name="blocked_empty_hint">If you block contacts, they will be shown here.</string>
-    <string name="pref_profile_photo_remove_ask">Remove profile image?</string>
     <string name="pref_password_and_account_settings">Password and Account</string>
     <string name="pref_who_can_see_profile_explain">Your profile image, name and signature will be sent together with your messages when communicating with other users.</string>
     <string name="pref_your_name">Your Name</string>
@@ -668,8 +646,6 @@
 
     <!-- automatically delete message -->
     <string name="delete_old_messages">Delete Old Messages</string>
-    <!-- devs: autodel_title is deprecated, use delete_old_messages instead -->
-    <string name="autodel_title">Auto-Delete Messages</string>
     <string name="autodel_device_title">Delete Messages from Device</string>
     <string name="autodel_server_title">Delete Messages from Server</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
@@ -765,7 +741,6 @@
     <string name="qrscan_contains_text">Scanned QR code text:\n\n%1$s</string>
     <string name="qrscan_contains_url">Scanned QR code URL:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Fingerprint</string>
-    <string name="qrscan_x_verified_introduce_myself">%1$s verified, introduce myself…</string>
     <string name="withdraw_verifycontact_explain">This QR code can be scanned by others to contact you.\n\nYou can deactivate the QR code here and reactivate it by scanning it again.</string>
     <string name="withdraw_verifygroup_explain">This QR code can be scanned by others to join the group \"%1$s\".\n\nYou can deactivate the QR code here and reactivate it by scanning it again.</string>
     <string name="withdraw_qr_code">Deactivate QR Code</string>
@@ -784,7 +759,6 @@
     <string name="qrshow_join_contact_title">QR Invite Code</string>
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
     <string name="qrshow_join_contact_hint">Scan to chat with %1$s</string>
-    <string name="qrshow_join_contact_no_connection_hint">QR code setup requires an internet connection. Please connect to a network before proceeding.</string>
     <string name="qrshow_join_contact_no_connection_toast">No internet connection, can\'t perform QR code setup.</string>
     <string name="qraccount_ask_create_and_login">Create new e-mail address on \"%1$s\" and log in there?</string>
     <string name="qraccount_ask_create_and_login_another">Create new e-mail address on \"%1$s\" and log in there?\n\nYour existing account will not be deleted. Use the \"Switch account\" item to switch between your accounts.</string>
@@ -807,9 +781,7 @@
     <string name="mailto_link_could_not_be_decoded">mailto link could not be decoded: %1$s</string>
 
     <!-- notifications  -->
-    <string name="notify_n_messages_in_m_chats">%1$d new messages in %2$d chats</string>
     <string name="notify_dismiss">Dismiss</string>
-    <string name="notify_mark_read">Mark Read</string>
     <string name="notify_reply_button">Reply</string>
     <string name="notify_new_message">New message</string>
     <string name="notify_background_connection_enabled">Background connection enabled</string>
@@ -869,48 +841,28 @@
     <string name="no_chat_selected_suggestion_desktop">Select a chat or create a new chat</string>
     <string name="write_message_desktop">Write a message</string>
     <string name="encryption_info_title_desktop">Encryption Info</string>
-    <string name="contact_detail_title_desktop">Contact Detail</string>
-    <string name="contact_request_title_desktop">Contact Request</string>
     <string name="delete_message_desktop">Delete Message</string>
     <string name="more_info_desktop">More Info</string>
-    <string name="logout_desktop">Logout</string>
     <string name="timestamp_format_m_desktop">MMM D</string>
     <string name="encryption_info_desktop">Show Encryption Info</string>
-    <string name="verified_desktop">verified</string>
     <string name="remove_desktop">Remove</string>
     <string name="save_desktop">Save</string>
-    <string name="add_contact_desktop">Add Contact</string>
-    <string name="login_required_desktop">required</string>
     <string name="name_desktop">Name</string>
     <string name="autocrypt_key_transfer_desktop">Autocrypt key transfer</string>
     <string name="initiate_key_transfer_desktop">An Autocrypt Setup Message securely shares your end-to-end setup with other Autocrypt-compliant apps. The setup will be encrypted by a setup code displayed here and must be typed on the other device.</string>
-    <string name="reply_to_message_desktop">Reply to Message</string>
     <string name="select_group_image_desktop">Select Group Image</string>
     <string name="imex_progress_title_desktop">Backup Progress</string>
-    <string name="download_attachment_desktop">Download Attachment</string>
     <string name="export_backup_desktop">Export Backup</string>
-    <string name="transfer_key_desktop">Transfer Key</string>
     <string name="show_key_transfer_message_desktop">Your key has been sent to yourself. Switch to the other device and open the setup message. You should be asked for a setup code. Enter the following digits:</string>
-    <string name="new_message_from_desktop">New message from</string>
-    <string name="unblock_contacts_desktop">Unblock Contacts</string>
-    <string name="none_blocked_desktop">No blocked contacts yet</string>
     <string name="autocrypt_correct_desktop">Autocrypt setup transferred.</string>
     <string name="autocrypt_incorrect_desktop">Incorrect setup code. Please try again.</string>
     <string name="create_chat_error_desktop">Could not create chat.</string>
-    <string name="ask_delete_chat_desktop">Delete this chat?</string>
-    <string name="email_validation_failed_desktop">E-mail address required.</string>
     <string name="forget_login_confirmation_desktop">Delete this login? Everything will be deleted, including your end-to-end setup, contacts, chats, messages and media. This action cannot be undone.</string>
     <string name="account_info_hover_tooltip_desktop2">E-Mail: %1$s\nSize: %2$s\nAccount Id: %3$s</string>
-    <string name="me_desktop">me</string>
-    <string name="in_this_group_desktop">Group Members</string>
-    <string name="not_in_this_group_desktop">Potential group members (not in group)</string>
     <string name="message_detail_sent_desktop">sent</string>
     <string name="message_detail_received_desktop">received</string>
-    <string name="message_detail_from_desktop">from</string>
-    <string name="message_detail_to_desktop">to</string>
     <string name="menu.view.developer.open.log.folder">Open the Log Folder</string>
     <string name="menu.view.developer.open.current.log.file">Open Current Logfile</string>
-    <string name="user_location_permission_explanation">Delta Chat needs the location permission in order to show and share your location.</string>
     <string name="explain_desktop_minimized_disabled_tray_pref">Tray icon cannot be disabled as Delta Chat was started with the --minimized option.</string>
     <string name="no_spellcheck_suggestions_found">No spelling suggestions found.</string>
     <string name="show_window">Show Window</string>
