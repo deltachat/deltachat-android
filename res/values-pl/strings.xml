@@ -18,11 +18,14 @@
     <string name="automatic">Automatyczne</string>
     <string name="strict">Dokładne</string>
     <string name="open">Otwórz</string>
+    <string name="download">Pobierz</string>
+    <string name="downloading">Pobieranie…</string>
     <string name="open_attachment">Otwórz załącznik</string>
     <string name="join">Dołącz</string>
     <string name="rejoin">Dołącz ponownie</string>
     <string name="delete">Usuń</string>
     <string name="info">Informacje</string>
+    <string name="update">Aktualizacja</string>
     <string name="emoji">Emoji</string>
     <string name="attachment">Załącznik</string>
     <string name="back">Wróć</string>
@@ -32,6 +35,7 @@
     <string name="archive">Archiwizuj</string>
     <!-- In the meaning of "To unarchive", "Remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Przywróć z archiwum</string>
+    <string name="mute">Wyłącz powiadomienia</string>
     <string name="ephemeral_messages">Znikające wiadomości</string>
     <string name="ephemeral_messages_hint">Te ustawienia dotyczą wszystkich uczestników korzystających z Delta Chat. Mogą jednak kopiować, zapisywać i przekazywać wiadomości lub korzystać z innych klientów poczty e-mail.</string>
     <string name="save">Zapisz</string>
@@ -659,8 +663,11 @@
     <string name="up_to_x_most_worse_quality_images">Do %1$s, większość obrazów gorszej jakości.</string>
     <string name="up_to_x_most_balanced_quality_images">Do %1$s, obrazy o najbardziej zrównoważonej jakości</string>
     <string name="no_limit">Bez limitu</string>
+    <string name="download_failed">Pobieranie nie udane</string>
     <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string eg. "1 MiB message" -->
     <string name="n_bytes_message">Wiadomość %1$s</string>
+    <!-- %1$s will be replaced by human-readable date and time -->
+    <string name="download_max_available_until">Maksymalna ilość do pobrania dostępna do %1$s</string>
     <string name="profile_image_select">Wybierz zdjęcie profilowe</string>
     <string name="select_your_new_profile_image">Wybierz nowe zdjęcie profilowe</string>
     <string name="profile_image_delete">Usuń zdjęcie profilowe</string>

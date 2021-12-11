@@ -639,6 +639,7 @@
     <string name="up_to_x_most_worse_quality_images">Fino a %1$s, immagini di qualità peggiore</string>
     <string name="up_to_x_most_balanced_quality_images">Fino a %1$s, immagini di qualità più equilibrata</string>
     <string name="no_limit">Senza limiti</string>
+    <string name="download_failed">Scaricamento fallito</string>
     <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string eg. "1 MiB message" -->
     <string name="n_bytes_message">%1$s messaggio</string>
     <!-- %1$s will be replaced by human-readable date and time -->

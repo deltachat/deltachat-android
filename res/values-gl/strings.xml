@@ -639,6 +639,7 @@
     <string name="up_to_x_most_worse_quality_images">Ata %1$s, a maioría de imaxes da peor calidade</string>
     <string name="up_to_x_most_balanced_quality_images">Ata %1$s, a maioría de imaxes de calidade equilibrada</string>
     <string name="no_limit">Sen límite</string>
+    <string name="download_failed">Fallou a descarga</string>
     <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string eg. "1 MiB message" -->
     <string name="n_bytes_message">%1$s mensaxe</string>
     <!-- %1$s will be replaced by human-readable date and time -->
