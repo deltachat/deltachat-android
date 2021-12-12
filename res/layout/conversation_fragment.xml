@@ -23,7 +23,7 @@
         android:layout_gravity="center"
         android:visibility="visible"
         style="@style/NoMessagesTextView"
-        tools:text="@string/chat_no_messages_hint"
+        tools:text="@string/chat_new_one_to_one_hint"
         />
 
     <View
