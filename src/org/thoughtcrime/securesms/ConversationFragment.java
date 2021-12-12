@@ -191,7 +191,7 @@ public class ConversationFragment extends MessageSelectorFragment
             noMessageTextView.setText(R.string.device_talk_explain);
         }
         else {
-            String message = getString(R.string.chat_no_messages_hint, dcChat.getName(), dcChat.getName());
+            String message = getString(R.string.chat_new_one_to_one_hint, dcChat.getName());
             noMessageTextView.setText(message);
         }
     }
