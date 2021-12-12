@@ -359,7 +359,7 @@
     </plurals>
     <string name="chat_no_messages_hint">Send message to %1$s:\n\n• It is okay if %2$s does not use Delta Chat.\n\n• Delivering the first message may take a while and may be unencrypted.</string>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
-    <string name="chat_new_one_to_one_hint">Send a first message to %1$s.</string>
+    <string name="chat_new_one_to_one_hint">Send a message. It is okay if %1$s does not use Delta Chat.</string>
     <string name="chat_new_broadcast_hint">In a broadcast list, others will receive messages in their private chats with you.\n\nThe recipients will not be aware of each other.</string>
     <string name="chat_new_group_hint">Others will only see this group after you sent a first message.</string>
     <string name="chat_record_slide_to_cancel">Slide to cancel</string>
