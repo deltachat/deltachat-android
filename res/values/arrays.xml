@@ -36,6 +36,7 @@
       <!-- ru     Russian -->                <item>Pусский</item>
       <!-- sr     Serbian -->                <item>Српски</item>
       <!-- uk     Ukranian -->               <item>Українська</item>
+      <!-- bg     Bulgarian -->              <item>Български</item>
       <!-- ar     Arabic -->                 <item>عربى</item>
       <!-- fa     Persian/Farsi -->          <item>فارسی</item>
       <!-- ckb    Central Kurdish/Sorani --> <item>کوردی</item>
@@ -79,6 +80,7 @@
       <item>ru</item>
       <item>sr</item>
       <item>uk</item>
+      <item>bg</item>
       <item>ar</item>
       <item>fa</item>
       <item>ckb</item>
