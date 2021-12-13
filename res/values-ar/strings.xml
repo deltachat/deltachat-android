@@ -97,11 +97,9 @@
     <string name="menu_leave_group">غادر الفريق</string>
     <string name="menu_delete_chat">احدف المحادثة</string>
     <string name="menu_delete_messages">احذف الرسائل</string>
-    <string name="menu_delete_image">احذف الصورة</string>
     <string name="menu_message_details">تفاصيل الرسالة</string>
     <string name="menu_copy_to_clipboard">انسخ إلى الحافظة</string>
     <string name="menu_forward">إعادة توجيه الرسالة</string>
-    <string name="menu_resend">إعادة الإرسال</string>
     <string name="menu_reply">الرَدّ على الرسالة</string>
     <string name="menu_mute">كتم الإشعارات</string>
     <string name="menu_unmute">إلغاء الكتم.</string>
@@ -204,7 +202,6 @@
     <string name="pref_show_emails_all">كلها</string>
     <string name="autocrypt_continue_transfer_retry">أعد المحاولة</string>
     <string name="qrscan_fingerprint_label">البصمة</string>
-    <string name="notify_mark_read">اعتبره كمقروء</string>
     <string name="notify_reply_button">رد</string>
     <string name="notify_new_message">رسالة جديدة</string>
     <string name="notify_priority_high">عالي</string>
@@ -231,12 +228,7 @@
     <string name="global_menu_help_desktop">المساعدة</string>
     <string name="delete_message_desktop">حذف الرسالة</string>
     <string name="more_info_desktop">تفاصيل أكثر</string>
-    <string name="logout_desktop">الخروج</string>
     <string name="remove_desktop">أزِل</string>
     <string name="save_desktop">حفظ</string>
     <string name="name_desktop">الاسم</string>
-    <string name="new_message_from_desktop">رسالة جديدة مِن</string>
-    <string name="none_blocked_desktop">لا توجد جهات اتصال محظورة</string>
-    <string name="ask_delete_chat_desktop">هل أنت متأكد مِن أنك تريد حذف هذا؟</string>
-    <string name="in_this_group_desktop">أعضاء المجموعة</string>
     </resources>

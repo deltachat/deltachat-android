@@ -158,10 +158,6 @@
     <string name="fast">빠르게</string>
     <string name="slow">느리게</string>
 
-    <string name="message_delivered">메시지 전달됨</string>
-    <string name="message_read">메시지 읽기</string>
-
-
     <!-- menu labels (or icon, buttons...) -->
     <string name="menu_new_contact">대화상대 추가</string>
     <string name="menu_new_chat">채팅 시작</string>
@@ -181,7 +177,6 @@
     <string name="menu_delete_chat">채팅방 나가기</string>
     <string name="ask_delete_named_chat">메시지 \"%1$s\"을 지우려는 것이 확실한가요?</string>
     <string name="menu_delete_messages">메시지 삭제</string>
-    <string name="menu_delete_image">이미지 삭제</string>
     <string name="delete_contact">연락처 삭제</string>
     <string name="menu_message_details">메시지 세부정보</string>
     <string name="menu_copy_to_clipboard">클립보드에 복사</string>
@@ -192,7 +187,6 @@
     <string name="menu_copy_email_to_clipboard">이메일 복사</string>
     <string name="paste_from_clipboard">클립보드에서 붙여넣기</string>
     <string name="menu_forward">메시지 전달</string>
-    <string name="menu_resend">메시지 다시 보내기</string>
     <string name="menu_reply">메시지 답장</string>
     <string name="menu_mute">알림 음소거</string>
     <string name="menu_unmute">음소거 해제</string>
@@ -214,7 +208,6 @@
     <string name="menu_edit_name">이름 편집</string>
     <string name="menu_settings">설정</string>
     <string name="menu_advanced">고급 설정</string>
-    <string name="menu_deaddrop">연락 요청</string>
     <string name="menu_view_profile">프로필 보기</string>
     <string name="menu_zoom_in">확대</string>
     <string name="menu_zoom_out">축소</string>
@@ -236,7 +229,6 @@
     <string name="mute_for_seven_days">7일 동안 알림 일시 끄기</string>
     <string name="mute_forever">영원히</string>
 
-    <string name="share_location_once">한 번</string>
     <string name="share_location_for_5_minutes">5분 동안</string>
     <string name="share_location_for_30_minutes">30분 동안</string>
     <string name="share_location_for_one_hour">1시간 동안</string>
@@ -266,7 +258,6 @@
     <string name="chat_input_placeholder">메시지</string>
     <string name="chat_archived_label">보관됨</string>
     <string name="chat_no_messages">메시지가 없습니다…</string>
-    <string name="chat_contact_request">사서함</string>
     <!-- search -->
     <string name="search">검색</string>
     <!-- create/edit groups, contact/group profile -->
@@ -321,7 +312,6 @@
     <string name="pref_other">기타</string>
     <string name="pref_background">채팅방 배경화면</string>
     <string name="systemmsg_group_left">그룹이 남았습니다.</string>
-    <string name="notify_mark_read">읽음으로 표시</string>
     <string name="notify_reply_button">답장</string>
     <string name="notify_new_message">새 메시지</string>
     <string name="notify_priority_high">높게</string>
@@ -340,12 +330,7 @@
     <string name="global_menu_edit_desktop">편집</string>
     <string name="global_menu_view_desktop">우선순위</string>
     <string name="global_menu_help_desktop">도움말</string>
-    <string name="contact_request_title_desktop">사서함</string>
     <string name="more_info_desktop">더 많은 정보</string>
     <string name="remove_desktop">삭제</string>
     <string name="save_desktop">저장</string>
-    <string name="add_contact_desktop">대화상대 추가</string>
-    <string name="none_blocked_desktop">차단한 친구가 없습니다</string>
-    <string name="me_desktop">나</string>
-    <string name="message_detail_from_desktop">보낸 사람</string>
     </resources>

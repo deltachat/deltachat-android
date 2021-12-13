@@ -105,10 +105,6 @@
     <string name="fast">Gyors</string>
     <string name="slow">Lassú</string>
 
-    <string name="message_delivered">Üzenet kézbesítve</string>
-    <string name="message_read">Üzenet elolvasva</string>
-
-
     <!-- menu labels (or icon, buttons...) -->
     <string name="menu_new_contact">Új partner</string>
     <string name="menu_new_chat">Új beszélgetés</string>
@@ -126,13 +122,10 @@
     <string name="menu_leave_group">Csoport elhagyása</string>
     <string name="menu_delete_chat">Beszélgetés törlése</string>
     <string name="menu_delete_messages">Üzenetek törlése</string>
-    <string name="menu_delete_image">Kép törlése</string>
-    <string name="menu_delete_locations">Minden helyszínt törölsz?</string>
     <string name="menu_delete_location">Törlöd ezt a helyszínt?</string>
     <string name="menu_message_details">Üzenet részletei</string>
     <string name="menu_copy_to_clipboard">Vágólapra másolás</string>
     <string name="menu_forward">Üzenet továbbítása</string>
-    <string name="menu_resend">Üzenet újraküldése</string>
     <string name="menu_reply">Válasz az üzenetre</string>
     <string name="menu_mute">Értesítések némítása</string>
     <string name="menu_unmute">Némítás kikapcsolása</string>
@@ -150,7 +143,6 @@
     <string name="menu_edit_name">Név módosítása</string>
     <string name="menu_settings">Beállítások</string>
     <string name="menu_advanced">Haladó</string>
-    <string name="menu_deaddrop">Levelesláda</string>
     <string name="menu_view_profile">Profil megtekintése</string>
     <string name="menu_save_log">Naplófájl mentése</string>
     <string name="title_share_location">Hely megosztása a csoport összes tagjával</string>
@@ -160,7 +152,6 @@
     <string name="mute_for_seven_days">Némítás 7 napra</string>
     <string name="mute_forever">Némítás örökre</string>
 
-    <string name="share_location_once">egyszer</string>
     <string name="share_location_for_5_minutes">5 percig</string>
     <string name="share_location_for_30_minutes">30 percig</string>
     <string name="share_location_for_one_hour">1 óráig</string>
@@ -188,7 +179,6 @@
         <item quantity="one">%d új üzenet</item>
         <item quantity="other">%d új üzenet</item>
     </plurals>
-    <string name="chat_no_messages_hint">Üzenetküldés %1$s partnernek:\n\n• Nincs gond, ha %2$s nem használja a Delta Chatet.\n\n• Az első üzenet kézbesítése kicsit lassabb lehet.</string>
     <string name="chat_new_group_hint">Írj egy kezdőüzenetet, hogy a többiek válaszolhassanak a csoportban.\n\n• Nincs gond, ha nem használja minden tag a Delta Chatet.\n\n• Az első üzenet kézbesítése kicsit lassabb lehet.</string>
     <string name="chat_record_slide_to_cancel">Visszavonás csúsztatással</string>
     <string name="chat_no_chats_yet_title">Üres a postaláda.\nNyomd meg a \"+\" gombot új beszélgetés indításához.</string>
@@ -198,7 +188,6 @@
     <string name="chat_archived_label">Archivált</string>
     <string name="chat_no_messages">Nincs üzenet.</string>
     <string name="chat_self_talk_subtitle">Magamnak küldött üzenetek</string>
-    <string name="chat_contact_request">Levelesláda</string>
     <!-- search -->
     <string name="search">Keresés</string>
     <!-- create/edit groups, contact/group profile -->
@@ -207,7 +196,6 @@
     <string name="group_create_button">Csoport készítése</string>
     <string name="group_please_enter_group_name">Nevezd el a csoportot.</string>
     <string name="group_add_members">Tagok felvétele</string>
-    <string name="group_hello_draft">Helló, indítottam magunknak egy csoportot „%1$s” néven.</string>
     <string name="group_self_not_in_group">A csoport tagjának kell lenned, hogy ezt megtehesd.</string>
     <string name="profile_encryption">Titkosítás</string>
     <string name="tab_contact">Névjegy</string>
@@ -295,9 +283,6 @@
     <string name="qrshow_x_has_joined_group">%1$s csatlakozott a csoporthoz.</string>
     <string name="contact_verified">%1$s ellenőrizve.</string>
     <string name="contact_not_verified">%1$s nem ellenőrizhető</string>
-    <!-- notifications  -->
-    <string name="notify_n_messages_in_m_chats">%1$dúj üzenet %2$d beszélgetésben</string>
-    <string name="notify_mark_read">Olvasottnak jelöl</string>
     <string name="notify_reply_button">Válasz</string>
     <string name="notify_new_message">Új üzenet</string>
     <string name="notify_priority_high">Magas</string>
@@ -326,18 +311,11 @@
     <string name="global_menu_view_desktop">Nézet</string>
     <string name="global_menu_help_desktop">Súgó</string>
     <string name="no_chat_selected_suggestion_desktop">Válassz ki egy beszélgetést vagy indíts egy újat</string>
-    <string name="contact_request_title_desktop">Levelesláda</string>
     <string name="more_info_desktop">További információ</string>
     <string name="remove_desktop">Eltávolítás</string>
     <string name="save_desktop">Mentés</string>
-    <string name="add_contact_desktop">Új partner</string>
     <string name="name_desktop">Név</string>
-    <string name="download_attachment_desktop">Csatolmány letöltése</string>
     <string name="export_backup_desktop">Biztonsági mentés exportálása</string>
-    <string name="unblock_contacts_desktop">Tiltás feloldása</string>
-    <string name="none_blocked_desktop">Nincs letiltott partner</string>
-    <string name="me_desktop">Én</string>
-    <string name="message_detail_from_desktop">feladó</string>
     <string name="menu.view.developer.open.log.folder">Naplófájlok könyvtárának megnyitása</string>
     <string name="menu.view.developer.open.current.log.file">Jelenlegi naplófájl megnyitása</string>
     </resources>

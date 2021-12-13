@@ -107,9 +107,6 @@
     <string name="fast">வேகமாக</string>
     <string name="slow">மெதுவாக</string>
 
-    <string name="message_read">செய்தி வாசிக்கப்பட்டது</string>
-
-
     <!-- menu labels (or icon, buttons...) -->
     <string name="menu_new_contact">புதிய தொடர்பு</string>
     <string name="menu_new_chat">புது அரட்டை</string>
@@ -122,7 +119,6 @@
     <string name="menu_message_details">செய்தி விவரங்கள்</string>
     <string name="menu_copy_to_clipboard">பிடிப்பு பலகை</string>
     <string name="menu_forward">செய்தியை முன்னோக்கியனுப்பு</string>
-    <string name="menu_resend">செய்தியை மீண்டும் அனுப்பு</string>
     <string name="menu_reply">செய்திக்கு பதில்</string>
     <string name="menu_mute">அறிவிப்புகளை ஊமையாக்கு</string>
     <string name="menu_unmute">ஊமையாக்குதலை தவிர்க்கவும்</string>
@@ -135,7 +131,6 @@
     <string name="menu_edit_name">பெயரை திருத்தவும்</string>
     <string name="menu_settings">அமைப்புகள்</string>
     <string name="menu_advanced">மேம்பட்ட அமைப்புகள்</string>
-    <string name="menu_deaddrop">தொடர்பு கோரிக்கை</string>
     <string name="menu_view_profile">சுயவிவரத்தை காண்பி</string>
     <string name="mute_for_one_hour">1 மணி இதற்காக ஊமையாக்கு</string>
     <string name="mute_for_two_hours">2 மணிகள் இதற்காக ஊமையாக்கு</string>
@@ -168,14 +163,12 @@
     <string name="chat_archived_label">ஆவண காக்கப்படுத்தப்பட்டது</string>
     <string name="chat_no_messages">சேதிகள் இல்லை</string>
     <string name="chat_self_talk_subtitle">தங்களுக்கே அனுப்பி கொண்ட செய்திகள்</string>
-    <string name="chat_contact_request">தொடர்பு கோரிக்கை</string>
     <!-- search -->
     <string name="search">தேடு</string>
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">குழுவின் பெயர்</string>
     <string name="group_please_enter_group_name">குழுவிற்கு ஒரு பெயரை சூட்டவும்</string>
     <string name="group_add_members">உறுப்பினர்களை சேர்க்க</string>
-    <string name="group_hello_draft">வணக்கம் , நான் நமக்கு \"%1$s\" என்ற பெயரில் குழுவை உருவாக்கி உள்ளேன்</string>
     <string name="profile_encryption">மறைகுறியாக்கம்</string>
     <string name="tab_contact">தொடர்பு</string>
     <string name="tab_gallery">காட்சி கூடம்</string>
@@ -257,14 +250,8 @@
     <string name="global_menu_view_desktop">பார்வை</string>
     <string name="global_menu_help_desktop">உதவி</string>
     <string name="global_menu_help_about_desktop">Delta Chat பற்றி</string>
-    <string name="contact_request_title_desktop">தொடர்பு கோரிக்கை</string>
     <string name="more_info_desktop">மேலும் தகவல்</string>
     <string name="remove_desktop">நீக்கு</string>
     <string name="save_desktop">சேமி</string>
-    <string name="add_contact_desktop">புதிய தொடர்பு</string>
     <string name="name_desktop">பெயர்</string>
-    <string name="unblock_contacts_desktop">தொடர்பு தடுப்பினை நீக்கவும்</string>
-    <string name="none_blocked_desktop">இதுவரையில் எந்த தொடர்பும் தடுக்கப்படவில்லை</string>
-    <string name="me_desktop">நான்</string>
-    <string name="message_detail_from_desktop">அனுப்புதல்</string>
     </resources>

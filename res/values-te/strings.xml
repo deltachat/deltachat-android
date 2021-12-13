@@ -87,9 +87,6 @@
     <string name="fast">త్వరగా</string>
     <string name="slow">మెల్లిగా</string>
 
-    <string name="message_read">సందేశం చదవబడింది</string>
-
-
     <!-- menu labels (or icon, buttons...) -->
     <string name="menu_new_contact">కొత్త పరిచయం</string>
     <string name="menu_new_chat">క్రొత్త చాట్</string>
@@ -104,7 +101,6 @@
     <string name="menu_message_details">సందేశం వివరాలు</string>
     <string name="menu_copy_to_clipboard">క్లిప్బోర్డ్ కు కాపీ చేయి</string>
     <string name="menu_forward">సందేశాన్ని బదలాయించు</string>
-    <string name="menu_resend">సందేశాన్ని తిరిగి పంపు</string>
     <string name="menu_reply">సందేశానికి ప్రత్యుత్తరం ఇవ్వండి</string>
     <string name="menu_mute">నోటిఫికేషన్ల ను నిలిపివేయి</string>
     <string name="menu_unmute">మ్యూట్ తీసివేయి</string>
@@ -118,7 +114,6 @@
     <string name="menu_edit_name">పేరును మార్చు</string>
     <string name="menu_settings">సెట్టింగులు</string>
     <string name="menu_advanced">ఆధునిక</string>
-    <string name="menu_deaddrop">పరిచయ అభ్యర్ధనలు</string>
     <string name="menu_zoom_in">పెద్దదిగా చూపు</string>
     <string name="menu_zoom_out">పెద్దది చెయ్యి</string>
     <string name="mute_for_one_hour">1 గంట నిశబ్దంగా ఉంచు</string>
@@ -140,7 +135,6 @@
     <string name="chat_input_placeholder">సందేశం</string>
     <string name="chat_archived_label">ఆర్చివ్ అయినది</string>
     <string name="chat_no_messages">సందేశాలు లేవు</string>
-    <string name="chat_contact_request">పరిచయ అభ్యర్ధనలు</string>
     <!-- search -->
     <string name="search">వెతుకు</string>
     <!-- create/edit groups, contact/group profile -->
@@ -156,7 +150,6 @@
     <string name="pref_profile_info_headline">మీ రూప సమాచారం</string>
     <string name="pref_profile_photo">రూపచిత్రం</string>
     <string name="pref_blocked_contacts">నిరోధించిన పరిచయాలు</string>
-    <string name="pref_profile_photo_remove_ask">రూపచిత్రం తీసివేయాలా?</string>
     <string name="pref_password_and_account_settings">ఖాతా సెట్టింగులు</string>
     <string name="pref_your_name">మీ పేరు</string>
     <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
@@ -222,13 +215,8 @@
     <string name="global_menu_view_desktop">చూడు</string>
     <string name="global_menu_help_desktop">సహాయం</string>
     <string name="global_menu_help_about_desktop">Delta Chat గురించి</string>
-    <string name="contact_request_title_desktop">పరిచయ అభ్యర్ధనలు</string>
     <string name="more_info_desktop">మరింత సమాచారం</string>
     <string name="remove_desktop">తొలగించు</string>
     <string name="save_desktop">భద్రపరుచు</string>
-    <string name="reply_to_message_desktop">సందేశానికి ప్రత్యుత్తరం ఇవ్వండి</string>
     <string name="export_backup_desktop">బ్యాకప్ ఎగుమతి చెయి</string>
-    <string name="unblock_contacts_desktop">పరిచయం నిరోధాన్ని నిలిపివేయి</string>
-    <string name="me_desktop">నేను</string>
-    <string name="message_detail_from_desktop">నుండీ</string>
     </resources>

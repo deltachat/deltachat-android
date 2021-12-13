@@ -122,10 +122,6 @@
     <string name="fast">Rapida</string>
     <string name="slow">Malrapida</string>
 
-    <string name="message_delivered">Mesaĝo sendita</string>
-    <string name="message_read">Mesaĝo legita</string>
-
-
     <!-- menu labels (or icon, buttons...) -->
     <string name="menu_new_contact">Nova kontakto</string>
     <string name="menu_new_chat">Nova babilo</string>
@@ -143,13 +139,10 @@
     <string name="menu_leave_group">Forlasi grupon</string>
     <string name="menu_delete_chat">Forigi babilon</string>
     <string name="menu_delete_messages">Forigi mesaĝojn</string>
-    <string name="menu_delete_image">Forigi bildon</string>
-    <string name="menu_delete_locations">Ĉu forigi ĉiujn lokojn?</string>
     <string name="menu_delete_location">Ĉu forigi tiun ĉi lokon?</string>
     <string name="menu_message_details">Mesaĝ-detaloj</string>
     <string name="menu_copy_to_clipboard">Kopii al tondujo</string>
     <string name="menu_forward">Plusendi mesaĝon</string>
-    <string name="menu_resend">Resendi mesaĝon</string>
     <string name="menu_reply">Respondi al mesaĝo</string>
     <string name="menu_mute">Silentigi sciigojn</string>
     <string name="menu_unmute">Malsilentigi</string>
@@ -164,12 +157,9 @@
     <string name="menu_scroll_to_top">Rulumi al la supro</string>
     <string name="menu_help">Helpo</string>
     <string name="menu_select_all">Elekti ĉion</string>
-    <string name="menu_expand">Etendi</string>
     <string name="menu_edit_name">Redakti nomon</string>
     <string name="menu_settings">Agordoj</string>
     <string name="menu_advanced">Speciala</string>
-    <string name="menu_deaddrop">Kontakt-petoj</string>
-    <string name="menu_deaddrop_subtitle">Premu mesaĝon por komenci babiladon</string>
     <string name="menu_view_profile">Vidi profilon</string>
     <string name="menu_zoom_in">Zomi</string>
     <string name="menu_zoom_out">Malzomi</string>
@@ -194,7 +184,6 @@
     <string name="mute_for_seven_days">Silentigi por 7 tagoj</string>
     <string name="mute_forever">Silentigi por ĉiam</string>
 
-    <string name="share_location_once">unufoje</string>
     <string name="share_location_for_5_minutes">por 5 minutoj</string>
     <string name="share_location_for_30_minutes">por 30 minutoj</string>
     <string name="share_location_for_one_hour">por 1 horo</string>
@@ -242,7 +231,6 @@
         <item quantity="one">%d nova mesaĝo</item>
         <item quantity="other">%d novaj mesaĝoj</item>
     </plurals>
-    <string name="chat_no_messages_hint">Sendi mesaĝon al %1$s:\n\n• Ne estas problemo se %2$s ne uzas Delta Chat-on.\n\n• Liveri la unuan mesaĝon eble prenos iom da tempo kaj eble ne estos ĉifrita.</string>
     <string name="chat_record_slide_to_cancel">Gliti por nuligi</string>
     <string name="chat_record_explain">Tuŝadi por registri voĉan mesaĝon, maltuŝadi por sendi</string>
     <string name="chat_no_chats_yet_hint">Vi povas babili kun aliaj uzantoj de Delta Chat kaj kun iu ajn retadreso.</string>
@@ -253,9 +241,7 @@
     <string name="chat_no_messages">Neniu mesaĝo.</string>
     <string name="chat_self_talk_subtitle">Mesaĝoj senditaj al mi mem</string>
     <string name="saved_messages">Konservitaj mesaĝoj</string>
-    <string name="chat_contact_request">Kontakt-peto</string>
     <string name="retry_send">Reprovi sendi mesaĝon</string>
-    <string name="send_failed">Ne povis sendi mesaĝon</string>
     <string name="show_location_traces">Montri spurojn</string>
     <string name="add_poi">Sendi punkton de intereso</string>
 
@@ -271,7 +257,6 @@
     <string name="group_create_button">Krei grupon</string>
     <string name="group_please_enter_group_name">Bonvolu enigi nomon por la grupo.</string>
     <string name="group_add_members">Aldoni anojn</string>
-    <string name="group_hello_draft">Saluton, mi ĵus kreis la grupon \"%1$s\" por ni.</string>
     <string name="group_self_not_in_group">Vi devas esti grupano por fari tion.</string>
     <string name="profile_encryption">Ĉifrado</string>
     <string name="profile_shared_chats">Kunhavigitaj babiloj</string>
@@ -320,7 +305,6 @@
 
     <string name="pref_profile_photo">Profilbildo</string>
     <string name="pref_blocked_contacts">Blokitaj kontaktoj</string>
-    <string name="pref_profile_photo_remove_ask">Ĉu forigi profilbildon?</string>
     <string name="pref_password_and_account_settings">Pasvorto kaj konto</string>
     <string name="pref_your_name">Via nomo</string>
     <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
@@ -382,7 +366,6 @@
     <string name="pref_send_copy_to_self">Sendi kopion al mi mem</string>
     <string name="pref_show_emails_all">Ĉiuj</string>
     <string name="autocrypt_prefer_e2ee">Preferi tutvojan ĉifradon</string>
-    <string name="notify_mark_read">Marki legita</string>
     <string name="notify_reply_button">Respondi</string>
     <string name="notify_new_message">Nova mesaĝo</string>
     <string name="notify_priority_high">Alta</string>
@@ -405,6 +388,4 @@
     <string name="timestamp_format_m_desktop">MMM D</string>
     <string name="remove_desktop">Forviŝi</string>
     <string name="save_desktop">Konservi</string>
-    <string name="me_desktop">mi</string>
-    <string name="message_detail_from_desktop">De</string>
     </resources>

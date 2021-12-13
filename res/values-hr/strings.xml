@@ -109,10 +109,6 @@
     <string name="fast">Brzo</string>
     <string name="slow">Sporo</string>
 
-    <string name="message_delivered">Poruka isporučena</string>
-    <string name="message_read">Poruka pročitana</string>
-
-
     <!-- menu labels (or icon, buttons...) -->
     <string name="menu_new_contact">Novi kontakt</string>
     <string name="menu_new_group">Nova grupa</string>
@@ -123,13 +119,10 @@
     <string name="menu_add_attachment">Dodaj privitak</string>
     <string name="menu_leave_group">Napusti grupu</string>
     <string name="menu_delete_messages">Obriši poruke</string>
-    <string name="menu_delete_image">Obriši sliku</string>
-    <string name="menu_delete_locations">Obrisati sve lokacije?</string>
     <string name="menu_delete_location">Obrisati ovu lokaciju?</string>
     <string name="menu_message_details">Detalji poruke</string>
     <string name="menu_copy_to_clipboard">Kopiraj u međuspremnik</string>
     <string name="menu_forward">Proslijedi poruku</string>
-    <string name="menu_resend">Ponovno pošalji poruku</string>
     <string name="menu_reply">Odgovori na poruku</string>
     <string name="menu_mute">Utišaj obavijesti</string>
     <string name="menu_unmute">Ukloni utišanje</string>
@@ -188,7 +181,6 @@
     <string name="forward_to">Proslijedi do...</string>
     <string name="pref_profile_photo">Profilna slika</string>
     <string name="pref_blocked_contacts">Blokirani kontakti</string>
-    <string name="pref_profile_photo_remove_ask">Ukloniti profilnu sliku?</string>
     <string name="pref_password_and_account_settings">Lozinka i račun</string>
     <string name="pref_your_name">Vaše ime</string>
     <string name="pref_enter_sends">Enter šalje poruku</string>
@@ -238,7 +230,6 @@
     <!-- qr code stuff -->
     <string name="qr_code">QR kod</string>
     <string name="qrscan_fingerprint_label">Otisak prsta</string>
-    <string name="notify_mark_read">Označi pročitano</string>
     <string name="notify_reply_button">Odgovori</string>
     <string name="notify_new_message">Nova poruka</string>
     <string name="notify_priority_high">Visoko</string>
@@ -267,16 +258,7 @@
     <string name="timestamp_format_m_desktop">MMM D</string>
     <string name="remove_desktop">Ukloni</string>
     <string name="save_desktop">Spremi</string>
-    <string name="add_contact_desktop">Dodaj kontakt</string>
-    <string name="login_required_desktop">zahtjevano</string>
     <string name="name_desktop">Ime</string>
-    <string name="reply_to_message_desktop">Odgovori na poruku</string>
-    <string name="download_attachment_desktop">Preuzmi privitak</string>
-    <string name="new_message_from_desktop">Nova poruka od</string>
-    <string name="me_desktop">ja</string>
-    <string name="in_this_group_desktop">Članovi grupe</string>
     <string name="message_detail_sent_desktop">poslano</string>
     <string name="message_detail_received_desktop">primljeno</string>
-    <string name="message_detail_from_desktop">od</string>
-    <string name="message_detail_to_desktop">za</string>
     </resources>

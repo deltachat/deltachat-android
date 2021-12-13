@@ -153,10 +153,6 @@
     <string name="fast">Hurtig</string>
     <string name="slow">Langsom</string>
 
-    <string name="message_delivered">Besked leveret</string>
-    <string name="message_read">Besked læst</string>
-
-
     <!-- menu labels (or icon, buttons...) -->
     <string name="menu_new_contact">Ny kontakt</string>
     <string name="menu_new_chat">Ny samtale</string>
@@ -175,9 +171,7 @@
     <string name="menu_delete_chat">Slet samtale</string>
     <string name="ask_delete_named_chat">Er du sikker på at du vil slette \"%1$s\"?</string>
     <string name="menu_delete_messages">Slet beskeder</string>
-    <string name="menu_delete_image">Slet billede</string>
     <string name="delete_contact">Slet kontakt</string>
-    <string name="menu_delete_locations">Slet alle placeringer?</string>
     <string name="menu_delete_location">Slet denne placering?</string>
     <string name="menu_message_details">Beskeddetaljer</string>
     <string name="menu_copy_to_clipboard">Kopiér til udklipsholder</string>
@@ -187,7 +181,6 @@
     <string name="menu_copy_image_to_clipboard">Kopier billede</string>
     <string name="paste_from_clipboard">Indsæt fra udklipsholder</string>
     <string name="menu_forward">Videresend besked</string>
-    <string name="menu_resend">Gensend besked</string>
     <string name="menu_reply">Svar på besked</string>
     <string name="menu_mute">Dæmp notifikationer</string>
     <string name="menu_unmute">Lyd</string>
@@ -210,12 +203,9 @@
     <string name="privacy_policy">Privatlivspolitik</string>
     <string name="menu_select_all">Vælg alle</string>
     <string name="select_more">Vælg flere</string>
-    <string name="menu_expand">Udvid</string>
     <string name="menu_edit_name">Rediger navn</string>
     <string name="menu_settings">Opsætning</string>
     <string name="menu_advanced">Avanceret</string>
-    <string name="menu_deaddrop">Kontaktanmodninger</string>
-    <string name="menu_deaddrop_subtitle">Tryk på besked for at starte samtale</string>
     <string name="menu_view_profile">Vis profil</string>
     <string name="menu_zoom_in">Forstør</string>
     <string name="menu_zoom_out">Formindsk</string>
@@ -244,7 +234,6 @@
     <string name="mute_for_seven_days">Dæmp i 7 dage</string>
     <string name="mute_forever">Stille for altid</string>
 
-    <string name="share_location_once">en gang</string>
     <string name="share_location_for_5_minutes">i 5 minutter</string>
     <string name="share_location_for_30_minutes">i 30 minutter</string>
     <string name="share_location_for_one_hour">i 1 time</string>
@@ -262,7 +251,6 @@
     <string name="videochat_invite_user_hint">Dette kræver en kompatibel app eller en kompatibel webbrowser hos både afsender og modtager.</string>
     <string name="videochat_contact_invited_hint">%1$s inviterede dig til en videochat.</string>
     <string name="videochat_you_invited_hint">Du inviterede til en videochat.</string>
-    <string name="videochat_will_open_in_your_browser">Denne videochat åbner i din webbrowser.</string>
     <string name="videochat_tap_to_join">Tryk for at forbinde</string>
     <string name="videochat_tap_to_open">Tryk for at åbne</string>
     <string name="videochat_instance">Videochat instans</string>
@@ -326,7 +314,6 @@
         <item quantity="one">%d ny besked</item>
         <item quantity="other">%d nye beskeder</item>
     </plurals>
-    <string name="chat_no_messages_hint">Send besked til %1$s:\n\n• Det er o.k. hvis %2$s ikke bruger Delta Chat.\n\n• Levering af første besked kan tage nogen tid og kan være ukrypteret.</string>
     <string name="chat_new_group_hint">Skriv første besked, tillader andre at svare i denne gruppe.\n\n• Det er o.k hvis ikke alle medlemmer bruger Delta Chat.\n\n• Levering af første besked kan tage nogen tid.</string>
     <string name="chat_record_slide_to_cancel">Træk for at annullere</string>
     <string name="chat_record_explain">Tryk og hold for at optage talebesked, slip for at sende.</string>
@@ -342,14 +329,10 @@
     <string name="saved_messages_explain">Videresend beskeder her for at have nem adgang\n\n Tage notater eller voicememoer \n\n Vedhæft filer for at gemme dem</string>
     <!-- this "Saved" should match the "Saved" from "Saved messages" -->
     <string name="saved">Gemt</string>
-    <string name="chat_contact_request">Kontaktanmodning</string>
-    <string name="chat_no_contact_requests">Ingen kontaktanmodninger.\n\nØnskes klassisk e-mail vist her som kontaktanmodninger, kan den tilsvarende indstilling i program opsætning ændres.</string>
     <string name="retry_send">Forsøg igen at sende besked</string>
-    <string name="send_failed">Kunne ikke sende besked</string>
     <!-- reasons for a disabled message composer -->
     <string name="messaging_disabled_not_in_group">Du kan ikke skrive, fordi du ikke er medlem af denne gruppe. For at tilslutte dig, spørg et andet medlem.</string>
     <string name="messaging_disabled_device_chat">Denne chat indeholder lokalt generede beskeder. Derfor kan du ikke skrive nogen beskeder.</string>
-    <string name="messaging_disabled_deaddrop">Klik på en besked for at acceptere eller afvise kontaktanmodningen </string>
     <string name="cannot_display_unsuported_file_type">Kan ikke vise denne filtype: 1%s</string>
     <string name="attachment_failed_to_load">Visning af vedhæftede fil mislykkedes</string>
     <!-- map -->
@@ -371,7 +354,6 @@
     <string name="group_create_button">Oprette gruppe</string>
     <string name="group_please_enter_group_name">Indtast et navn til gruppen.</string>
     <string name="group_add_members">Tilføj medlemmer</string>
-    <string name="group_hello_draft">Hej, jeg har lige oprettet gruppen  \"%1$s\" til os.</string>
     <string name="group_self_not_in_group">Man skal være medlem af gruppen for at udføre denne handling.</string>
     <string name="profile_encryption">Kryptering</string>
     <string name="profile_shared_chats">Delte samtaler</string>
@@ -448,8 +430,6 @@
     <string name="import_backup_no_backup_found">Ingen sikkerhedskopi fundet.\n\nKopier sikkerhedskopi til \"%1$s\" og prøv igen. Alternativt, klik \"Start samtale\" for at følge normal opsætning proces.</string>
     <!-- Translators: %1$s will be replaced by the e-mail address -->
     <string name="login_error_cannot_login">Kan ikke logge ind som  \"%1$s\". Kontroller om e-mailadresse og adgangskode er korrekt.</string>
-    <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
-    <string name="login_error_server_response">Svar fra %1$s: %2$s\n\nNogle udbydere placerer ekstra information i indbakken; det kan kontrolleres f.eks. i net grænsefladen. Kontakt udbyder eller venner hvis disse problemer opstår.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Acceptér ugyldige certifikater</string>
     <string name="used_settings">Benyttede indstillinger:</string>
@@ -458,7 +438,6 @@
     <string name="delete_account">Slet konto</string>
     <string name="delete_account_ask">Er du sikker på at du vil slette dine konto data?</string>
     <string name="delete_account_explain_with_name">Alle konto data for \"%s\" på denne enhed bliver slettet, gælder også opsætningen for din end-to-end kryptering, kontakter, samtaler, beskeder og medier. Denne handling kan ikke fortrydes.</string>
-    <string name="switching_account">Skifter konto...</string>
     <string name="try_connect_now">Prøv at forbinde nu</string>
     <string name="sync_all">Synkroniser Alle</string>
     <!-- Translations: %1$s will be replaced by a more detailed error message -->
@@ -480,7 +459,6 @@
     <string name="pref_profile_photo">Profilbillede</string>
     <string name="pref_blocked_contacts">Blokerede kontakter</string>
     <string name="blocked_empty_hint">Hvis du blokerer kontakter, bliver de vist her.</string>
-    <string name="pref_profile_photo_remove_ask">Fjern profilbillede?</string>
     <string name="pref_password_and_account_settings">Adgangskode og konto</string>
     <string name="pref_who_can_see_profile_explain">Profilbillede og navn vises sammen med beskeder, når der kommunikeres med andre brugere. Allerede sendt information kan ikke slettes eller fjernes.</string>
     <string name="pref_your_name">Dit navn</string>
@@ -588,8 +566,6 @@
 
     <!-- automatically delete message -->
     <string name="delete_old_messages">Slet gamle beskeder</string>
-    <!-- devs: autodel_title is deprecated, use delete_old_messages instead -->
-    <string name="autodel_title">Slet automatisk beskeder</string>
     <string name="autodel_device_title">Slet beskeder fra enhed</string>
     <string name="autodel_server_title">Slet beskeder fra server</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
@@ -675,7 +651,6 @@
     <string name="qrscan_contains_text">Skannet QR kode tekst:\n\n%1$s</string>
     <string name="qrscan_contains_url">Skannet QR kode URL:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Fingeraftryk</string>
-    <string name="qrscan_x_verified_introduce_myself">%1$s efterprøvet, introducere…</string>
     <string name="withdraw_qr_code">Deaktiver QR kode</string>
     <string name="revive_qr_code">Aktiver QR kode</string>
     <string name="qrshow_title">QR-invitationskode</string>
@@ -688,7 +663,6 @@
     <string name="qrshow_join_contact_title">QR-invitationskode</string>
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
     <string name="qrshow_join_contact_hint">Skan dette for at indstille kontakt med %1$s</string>
-    <string name="qrshow_join_contact_no_connection_hint">QR-kode opsætning kræver en internet forbindelse. Forbind til et netværk inden der fortsættes.</string>
     <string name="qrshow_join_contact_no_connection_toast">Ingen internet forbindelse, kan ikke udføre QR kode opsætning.</string>
     <string name="qraccount_ask_create_and_login">Opret ny e-mail adresse på \"%1$s\" og log ind der?</string>
     <string name="qraccount_ask_create_and_login_another">Opret ny e-mail adresse på \"%1$s\" og log ind der?\n\nDin eksisterende konto bliver ikke slettet. Brug \"Skift konto\" for at skifte imellem dine konti.</string>
@@ -701,9 +675,6 @@
     <string name="contact_setup_changed">Ændret opsætning for %1$s</string>
     <string name="verified_group_explain">Bekræftede grupper (eksperimentel) giver sikkerhed mod aktive angreb. Medlemmer bliver bekræftet med en anden faktor af andre medlemmer og beskederne bliver altid end-to-end krypteret.</string>
     <string name="copy_qr_data_success">Kopieret QR url til udklipsholder</string>
-    <!-- notifications  -->
-    <string name="notify_n_messages_in_m_chats">%1$d nye beskeder i %2$d samtaler</string>
-    <string name="notify_mark_read">Markér som læst</string>
     <string name="notify_reply_button">Svar</string>
     <string name="notify_new_message">Ny besked</string>
     <string name="notify_background_connection_enabled">Baggrundsforbindelse aktiveret</string>
@@ -756,47 +727,27 @@
     <string name="no_chat_selected_suggestion_desktop">Vælg samtale eller opret en ny samtale</string>
     <string name="write_message_desktop">Skriv en besked</string>
     <string name="encryption_info_title_desktop">Krypteringsinformation</string>
-    <string name="contact_detail_title_desktop">Kontaktdetaljer</string>
-    <string name="contact_request_title_desktop">Kontaktanmodning</string>
     <string name="delete_message_desktop">Slet besked</string>
     <string name="more_info_desktop">Mere information</string>
-    <string name="logout_desktop">Log ud</string>
     <string name="timestamp_format_m_desktop">MMM D</string>
     <string name="encryption_info_desktop">Vis krypteringsinformation</string>
-    <string name="verified_desktop">bekræftet</string>
     <string name="remove_desktop">Fjern</string>
     <string name="save_desktop">Gem</string>
-    <string name="add_contact_desktop">Tilføj kontakt</string>
-    <string name="login_required_desktop">påkrævet</string>
     <string name="name_desktop">Navn</string>
     <string name="autocrypt_key_transfer_desktop">Autocrypt nøgleoverførsel</string>
     <string name="initiate_key_transfer_desktop">En Autocrypt opsætning beskeddeler sikkert ende-til-ende opsætning med andre Autocrypt kompatible programmer. Opsætninger er krypteret med en opsætning kode som er vist her og skal indtastes på de andre enheder.</string>
-    <string name="reply_to_message_desktop">Svar besked</string>
     <string name="select_group_image_desktop">Vælg gruppebillede</string>
     <string name="imex_progress_title_desktop">Sikkerhedskopiering fremgang</string>
-    <string name="download_attachment_desktop">Hent vedhæftning</string>
     <string name="export_backup_desktop">Eksporter sikkerhedskopi</string>
-    <string name="transfer_key_desktop">Overfør nøgle</string>
     <string name="show_key_transfer_message_desktop">Nøgle er sendt til dig selv. Skift til den anden enhed og åben opsætning beskeden. Der bliver promptet for en opsætning kode.. Indtast følgende cifre i prompten. Når det er afsluttet vil den anden enhed være klar til at bruge Autocrypt.</string>
-    <string name="new_message_from_desktop">Ny besked fra</string>
-    <string name="unblock_contacts_desktop">Fjern blokering af kontakter</string>
-    <string name="none_blocked_desktop">Ingen blokerede kontakter</string>
     <string name="autocrypt_correct_desktop">Autocrypt opsætning overført!</string>
     <string name="autocrypt_incorrect_desktop">Forkert opsætningskode. Prøv igen.</string>
     <string name="create_chat_error_desktop">Kunne ikke oprette samtale</string>
-    <string name="ask_delete_chat_desktop">Slet denne samtale?</string>
-    <string name="email_validation_failed_desktop">E-mail-adresse påkrævet</string>
     <string name="forget_login_confirmation_desktop">Slet login? Alt vil blive slettet, din end-to-end opsætning, kontakter, samtaler, meddelelser og medier. Denne handling er endelig og kan ikke fortrydes.</string>
-    <string name="me_desktop">mig</string>
-    <string name="in_this_group_desktop">Gruppemedlemmer</string>
-    <string name="not_in_this_group_desktop">Mulige gruppemedlemmer (ikke i gruppe)</string>
     <string name="message_detail_sent_desktop">sendt</string>
     <string name="message_detail_received_desktop">modtaget</string>
-    <string name="message_detail_from_desktop">fra</string>
-    <string name="message_detail_to_desktop">til</string>
     <string name="menu.view.developer.open.log.folder">Åbn log mappe</string>
     <string name="menu.view.developer.open.current.log.file">Åbn nuværende log fil</string>
-    <string name="user_location_permission_explanation">Delta Chat behøver placering tilladelse for at vise og dele placering.</string>
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Leveringsstatus: Fejl</string>
     <string name="a11y_encryption_padlock">Krypteringslås</string>

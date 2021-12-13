@@ -163,10 +163,6 @@
     <string name="fast">Greitas</string>
     <string name="slow">Lėtas</string>
 
-    <string name="message_delivered">Žinutė pristatyta</string>
-    <string name="message_read">Žinutė perskaityta</string>
-
-
     <!-- menu labels (or icon, buttons...) -->
     <string name="menu_new_contact">Naujas adresatas</string>
     <string name="menu_new_chat">Naujas pokalbis</string>
@@ -185,9 +181,7 @@
     <string name="menu_delete_chat">Ištrinti pokalbį</string>
     <string name="ask_delete_named_chat">Ar tikrai norite ištrinti „%1$s“?</string>
     <string name="menu_delete_messages">Ištrinti žinutes</string>
-    <string name="menu_delete_image">Ištrinti paveikslą</string>
     <string name="delete_contact">Ištrinti adresatą</string>
-    <string name="menu_delete_locations">Ištrinti visas vietas?</string>
     <string name="menu_delete_location">Ištrinti šią vietą?</string>
     <string name="menu_message_details">Išsamesnė žinutės informacija</string>
     <string name="menu_copy_to_clipboard">Kopijuoti į iškarpinę</string>
@@ -197,7 +191,6 @@
     <string name="menu_copy_image_to_clipboard">Kopijuoti paveikslą</string>
     <string name="paste_from_clipboard">Įdėti iš iškarpinės</string>
     <string name="menu_forward">Persiųsti žinutę</string>
-    <string name="menu_resend">Siųsti žinutę iš naujo</string>
     <string name="menu_reply">Atsakyti į žinutę</string>
     <string name="menu_mute">Išjungti pranešimus</string>
     <string name="menu_unmute">Įjungti pranešimus</string>
@@ -219,12 +212,9 @@
     <string name="menu_help">Žinynas</string>
     <string name="privacy_policy">Privatumo politika</string>
     <string name="menu_select_all">Žymėti viską</string>
-    <string name="menu_expand">Išplėsti</string>
     <string name="menu_edit_name">Taisyti vardą</string>
     <string name="menu_settings">Nustatymai</string>
     <string name="menu_advanced">Išplėstiniai</string>
-    <string name="menu_deaddrop">Adresatų užklausos</string>
-    <string name="menu_deaddrop_subtitle">Norėdami pradėti pokalbį, paspauskite ant žinutės</string>
     <string name="menu_view_profile">Rodyti profilį</string>
     <string name="menu_zoom_in">Didinti</string>
     <string name="menu_zoom_out">Mažinti</string>
@@ -252,7 +242,6 @@
     <string name="mute_for_seven_days">Išjungti 7 dienoms</string>
     <string name="mute_forever">Išjungti visam laikui</string>
 
-    <string name="share_location_once">vieną kartą</string>
     <string name="share_location_for_5_minutes">5 minutėms</string>
     <string name="share_location_for_30_minutes">30 minučių</string>
     <string name="share_location_for_one_hour">1 valandai</string>
@@ -264,7 +253,6 @@
     <string name="videochat">Vaizdo pokalbis</string>
     <string name="videochat_invite_user_to_videochat">Pakviesti %1$s į vaizdo pokalbį?</string>
     <string name="videochat_invite_user_hint">Tai reikalauja, kad abu pašnekovai turėtų suderinamą programėlę ar suderinamą naršyklę.</string>
-    <string name="videochat_will_open_in_your_browser">Šis vaizdo pokalbis bus atvertas jūsų naršyklėje.</string>
     <string name="videochat_tap_to_join">Bakstelėkite norėdami prisijungti</string>
     <string name="videochat_tap_to_open">Bakstelėkite norėdami atverti</string>
     <string name="videochat_instance">Vaizdo pokalbio egzempliorius</string>
@@ -327,7 +315,6 @@
         <item quantity="many">%d naujų žinučių</item>
         <item quantity="other">%d nauja žinutė</item>
     </plurals>
-    <string name="chat_no_messages_hint">Siųskite žinutę %1$s:\n\n• Nieko tokio, jei %2$s nenaudoja Delta Chat.\n\n• Pirmosios žinutės pristatymas gali šiek tiek užtrukti ir gali būti nešifruotas.</string>
     <string name="chat_new_group_hint">Rašykite pirmąją žinutę, taip leisdami kitiems atsakyti šioje grupėje..\n\n• Nieko tokio, jei ne visi dalyviai naudoja Delta Chat.\n\n• Pirmosios žinutės pristatymas gali šiek tiek užtrukti.</string>
     <string name="chat_record_slide_to_cancel">Perbraukite, norėdami atsisakyti</string>
     <string name="chat_record_explain">Bakstelėkite ir laikykite, norėdami įrašyti balso žinutę. Atleiskite, norėdami išsiųsti</string>
@@ -343,8 +330,6 @@
     <string name="saved_messages_explain">• Persiųskite žinutes čia, kad lengvai jas pasiektumėte\n\n• Rašykitės pastabas ar įrašynėkite balso žinutes\n\n• Pridėkite mediją, norėdami ją išsaugoti</string>
     <!-- this "Saved" should match the "Saved" from "Saved messages" -->
     <string name="saved">Įrašyta</string>
-    <string name="chat_contact_request">Adresato užklausa</string>
-    <string name="send_failed">Nepavyko išsiųsti žinutės</string>
     <!-- reasons for a disabled message composer -->
     <string name="messaging_disabled_not_in_group">Jūs negalite rašyti, nes nesate šioje grupėje. Norėdami prisijungti, paprašykite kito nario.</string>
     <string name="messaging_disabled_device_chat">Šiame pokalbyje yra vietiniu lygmeniu sukurtos žinutės. Štai kodėl negalite rašyti jokių žinučių.</string>
@@ -369,7 +354,6 @@
     <string name="group_create_button">Sukurti grupę</string>
     <string name="group_please_enter_group_name">Įveskite grupės pavadinimą.</string>
     <string name="group_add_members">Pridėti dalyvius</string>
-    <string name="group_hello_draft">Sveiki, aš ką tik sukūriau mums grupę \"%1$s\".</string>
     <string name="group_self_not_in_group">Norėdami atlikti šį veiksmą, privalote būti grupės dalyviu.</string>
     <string name="profile_encryption">Šifravimas</string>
     <string name="profile_shared_chats">Bendrinami pokalbiai</string>
@@ -436,8 +420,6 @@
     <string name="import_backup_no_backup_found">Nerasta jokių atsarginių kopijų.\n\nNukopijuokite atsarginę kopiją į \"%1$s\" ir bandykite dar kartą. Priešingu atveju, paspauskite \"Pradėti susirašinėjimą\", kad pereitumėte į įprastą sąrankos procesą.</string>
     <!-- Translators: %1$s will be replaced by the e-mail address -->
     <string name="login_error_cannot_login">Nepavyksta prisijungti kaip \"%1$s\". Patikrinkite ar el. pašto adresas ir slaptažodis yra teisingi.</string>
-    <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
-    <string name="login_error_server_response">Atsakymas iš %1$s: %2$s\n\nKai kurie teikėjai patalpina papildomą informaciją į jūsų gautųjų laiškų aplanką; galite ją patikrinti, pvz., prisijungę per naršyklę. Jei susidursite su problema, pagalbos teiraukitės savo teikėjo ar draugų.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Priimti negaliojančius liudijimus</string>
     <string name="used_settings">Naudoti nustatymai:</string>
@@ -446,7 +428,6 @@
     <string name="delete_account">Ištrinti paskyrą</string>
     <string name="delete_account_ask">Ar tikrai norite ištrinti savo paskyros duomenis?</string>
     <string name="delete_account_explain_with_name">Visi „%s“ paskyros duomenys šiame įrenginyje bus ištrinti, įskaitant jūsų ištisinio šifravimo sąranką, adresatus, pokalbius, žinutes ir mediją. Šį veiksmą nebeįmanoma bus atšaukti.</string>
-    <string name="switching_account">Perjungiama paskyra…</string>
     <string name="unconfigured_account">Nesukonfigūruota paskyra</string>
     <string name="unconfigured_account_hint">Atverkite paskyrą norėdami ją konfigūruoti.</string>
     <!-- Translations: %1$s will be replaced by a more detailed error message -->
@@ -462,7 +443,6 @@
     <string name="pref_profile_photo">Profilio nuotrauka</string>
     <string name="pref_blocked_contacts">Užblokuoti adresatai</string>
     <string name="blocked_empty_hint">Jei užblokuosite adresatus, jie bus rodomi čia.</string>
-    <string name="pref_profile_photo_remove_ask">Šalinti profilio nuotrauką?</string>
     <string name="pref_password_and_account_settings">Slaptažodis ir paskyra</string>
     <string name="pref_who_can_see_profile_explain">Bendraujant su kitais naudotojais, jūsų profilio paveikslas ir vardas bus rodomi kartu su jūsų žinutėmis. Jau išsiųsta informacija negalės būti ištrinta ar pašalinta.</string>
     <string name="pref_your_name">Jūsų vardas</string>
@@ -644,7 +624,6 @@
     <string name="qrshow_join_contact_title">QR pakvietimo kodas</string>
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
     <string name="qrshow_join_contact_hint">Nuskenuokite tai, norėdami užmegzti kontaktą su %1$s</string>
-    <string name="qrshow_join_contact_no_connection_hint">QR kodo sąranka reikalauja interneto ryšio. Prieš tęsdami, prisijunkite prie tinklo.</string>
     <string name="qrshow_join_contact_no_connection_toast">Nėra interneto ryšio, nepavyksta atlikti QR kodo sąrankos.</string>
     <string name="qraccount_ask_create_and_login">Sukurti naują el. pašto adresą ties „%1$s“ ir prisijungti ten?</string>
     <string name="qraccount_success_enter_name">Prisijungimas sėkmingas — jūsų el. pašto adresas yra %1$s\n\nJei norite, dabar galite įvesti vardą ir pridėti profilio paveikslą, kuris bus rodomas žmonėms, kuriems rašysite.</string>
@@ -657,7 +636,6 @@
     <string name="mailto_dialog_header_select_chat">Pasirinkite pokalbį, į kurį siųsti žinutę</string>
     <string name="mailto_link_could_not_be_decoded">nepavyko dekoduoti mailto nuorodos: %1$s</string>
 
-    <string name="notify_mark_read">Žymėti kaip skaitytą</string>
     <string name="notify_reply_button">Atsakyti</string>
     <string name="notify_new_message">Nauja žinutė</string>
     <string name="notify_background_connection_enabled">Foninis ryšys įjungtas</string>
@@ -708,43 +686,25 @@
     <string name="no_chat_selected_suggestion_desktop">Pasirinkite arba sukurkite naują pokalbį</string>
     <string name="write_message_desktop">Rašykite žinutę</string>
     <string name="encryption_info_title_desktop">Šifravimo informacija</string>
-    <string name="contact_detail_title_desktop">Išsamesnė adresato informacija</string>
-    <string name="contact_request_title_desktop">Adresato užklausa</string>
     <string name="delete_message_desktop">Ištrinti žinutę</string>
     <string name="more_info_desktop">Daugiau informacijos</string>
-    <string name="logout_desktop">Atsijungti</string>
     <string name="timestamp_format_m_desktop">MMM D</string>
     <string name="encryption_info_desktop">Rodyti šifravimo informaciją</string>
     <string name="remove_desktop">Šalinti</string>
     <string name="save_desktop">Išsaugoti</string>
-    <string name="add_contact_desktop">Pridėti adresatą</string>
-    <string name="login_required_desktop">būtina</string>
     <string name="name_desktop">Vardas</string>
     <string name="autocrypt_key_transfer_desktop">Autocrypt rakto perdavimas</string>
     <string name="initiate_key_transfer_desktop">Autocrypt sąrankos žinutė saugiai bendrina jūsų ištisinę sąranką su kitomis su Autocrypt suderinamomis programomis. Sąranka bus užšifruota sąrankos kodu, kuris yra rodomas čia ir privalės būti įvestas kitame įrenginyje.</string>
-    <string name="reply_to_message_desktop">Atsakyti į žinutę</string>
     <string name="select_group_image_desktop">Pasirinkti grupės paveikslą</string>
     <string name="imex_progress_title_desktop">Atsarginės kopijos eiga</string>
-    <string name="download_attachment_desktop">Atsisiųsti priedą</string>
     <string name="export_backup_desktop">Eksportuoti atsarginę kopiją</string>
-    <string name="transfer_key_desktop">Perduoti raktą</string>
     <string name="show_key_transfer_message_desktop">Jūsų raktas išsiųstas jums patiems. Persijunkite į kitą įrenginį ir atverkite sąrankos žinutę. Jūsų turėtų būti prašoma įvesti sąrankos kodą. Įveskite šiuos skaitmenis:</string>
-    <string name="new_message_from_desktop">Nauja žinutė nuo</string>
-    <string name="unblock_contacts_desktop">Atblokuoti adresatus</string>
-    <string name="none_blocked_desktop">Kol kas nėra užblokuotų adresatų</string>
     <string name="autocrypt_correct_desktop">Autocrypt sąranka sėkmingai perduota!</string>
     <string name="autocrypt_incorrect_desktop">Neteisingas sąrankos kodas. Bandykite dar kartą.</string>
     <string name="create_chat_error_desktop">Nepavyko sukurti pokalbio.</string>
-    <string name="ask_delete_chat_desktop">Ar tikrai norite ištrinti šį pokalbį?</string>
-    <string name="email_validation_failed_desktop">Reikalingas el. pašto adresas.</string>
     <string name="forget_login_confirmation_desktop">Ištrinti šį prisijungimą? Viskas bus ištrinta, įskaitant jūsų ištisinę sąranką, adresatus, pokalbius, žinutes ir mediją. Šis veiksmas yra galutinis ir negalės būti panaikintas.</string>
-    <string name="me_desktop">aš</string>
-    <string name="in_this_group_desktop">Grupės dalyviai</string>
-    <string name="not_in_this_group_desktop">Potencialūs grupės dalyviai (nėra grupėje)</string>
     <string name="message_detail_sent_desktop">išsiųsta</string>
     <string name="message_detail_received_desktop">gauta</string>
-    <string name="message_detail_from_desktop">nuo</string>
-    <string name="message_detail_to_desktop">kam</string>
     <string name="menu.view.developer.open.log.folder">Atverti žurnalų aplanką</string>
     <string name="menu.view.developer.open.current.log.file">Atverti dabartinio žurnalo failą</string>
     <string name="explain_desktop_minimized_disabled_tray_pref">Dėklo piktograma negali būti išjungta, nes Delta Chat buvo paleista naudojant --minimized parinktį.</string>
