@@ -26,6 +26,7 @@ ffpr
 test/androidTestEspresso/res/values/arrays.xml
 obj/
 jni/libspeex/.deps/
+ndkArch
 
 # ignore debug symbols created by ./tools/upload-release.sh
 *-symbols.zip
