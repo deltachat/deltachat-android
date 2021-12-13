@@ -389,7 +389,7 @@
     <string name="tab_gallery">Galeria</string>
     <string name="media_preview">Previsualització multimèdia</string>
     <!-- welcome and login -->
-    <string name="welcome_intro1_message">El programa de missatgeria amb més ususaris del món. Gratuït i independent.</string>
+    <string name="welcome_intro1_message">El programa de missatgeria amb més usuaris del món. Gratuït i independent.</string>
     <string name="login_title">Identifiqueu-vos</string>
     <string name="login_header">Identifiqueu-vos al vostre servidor</string>
     <string name="login_subheader">Als proveïdors de mail coneguts els paràmetres es configuren automàticament. De vegades l\'IMAP s\'ha d\'activar a la interfície web. Consulta el teu proveïdor de correu electrònic o a un amic perquè t\'ajudi. </string>

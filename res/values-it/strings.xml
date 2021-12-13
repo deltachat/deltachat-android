@@ -358,6 +358,8 @@
         <item quantity="other">%d nuovi messaggi</item>
     </plurals>
     <string name="chat_no_messages_hint">Invia un messaggio a %1$s:\n\n• Non è necessario che anche %2$s usi Delta Chat.\n\n• L\'invio del primo messaggio può richiedere qualche istante e non essere crittografato. </string>
+    <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
+    <string name="chat_new_one_to_one_hint">Invia un messaggio. Va bene se %1$s non utilizza Delta Chat.</string>
     <string name="chat_new_broadcast_hint">In una lista trasmissione, gli altri riceveranno i messaggi nelle loro chat private con te.\n\nI destinatari non saranno a conoscenza l\'uno dell\'altro.</string>
     <string name="chat_new_group_hint">Invia il primo messaggio per permettere agli altri di rispondere nel gruppo\n\n• Non è necessario che tutti i membri usino Delta Chat.\n\n• L\'invio del primo messaggio può richiedere qualche istante.</string>
     <string name="chat_record_slide_to_cancel">Scorri per annullare</string>
@@ -787,7 +789,7 @@
     <string name="qraccount_ask_create_and_login">Creo un nuovo indirizzo email su \"%1$s\" e accedo?</string>
     <string name="qraccount_ask_create_and_login_another">Crea un nuovo indirizzo e-mail su \"%1$s\" e accedi qui?\n\nIl tuo account esistente non verrà eliminato. Utilizza la voce \"Cambia account\" per passare da un account all\'altro.</string>
     <string name="qraccount_success_enter_name">Accesso completato—il tuo indirizzo email è %1$s\n\nSe vuoi, puoi inserire un nome e un\'immagine profilo che verranno mostrati a chi ti scrive.</string>
-    <string name="qraccount_qr_code_cannot_be_used">Il codice QR scansionato non può essere usato per creare un nuovo account.</string>
+    <string name="qraccount_qr_code_cannot_be_used">Il codice QR scansionato non può essere utilizzato per creare un nuovo account.</string>
     <string name="qraccount_use_on_new_install">Il codice QR scansionato serve a creare un nuovo account. Puoi scansionare il codice quando configuri una nuova installazione di Delta Chat.</string>
     <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s ti ha invitato ad unirti a questo gruppo.\n\nIn attesa che il dispositivo di %2$s risponda…</string>

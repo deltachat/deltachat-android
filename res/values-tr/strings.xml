@@ -358,6 +358,8 @@
         <item quantity="other">%d yeni ileti</item>
     </plurals>
     <string name="chat_no_messages_hint">%1$s alıcısına ileti gönder:\n\n• %2$s Delta Chat kullanmıyorsa tamam.\n\n• İlk iletinin teslim edilmesi biraz zaman alabilir ve şifrelenmeyebilir.</string>
+    <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
+    <string name="chat_new_one_to_one_hint">Bir ileti gönderin. %1$s Delta Chat kullanmıyorsa tamam.</string>
     <string name="chat_new_broadcast_hint">Bir yayın listesinde, diğerleri sizinle olan özel sohbetlerinde ileti alacak.\n\nAlıcılar birbirlerinin farkında olmayacak.</string>
     <string name="chat_new_group_hint">Diğerleri, yalnızca siz bir ilk ileti gönderdikten sonra bu grubu görecek.</string>
     <string name="chat_record_slide_to_cancel">Vazgeçmek için kaydırın</string>

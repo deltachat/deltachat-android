@@ -356,6 +356,8 @@
         <item quantity="other">%d mesazhe të rinj</item>
     </plurals>
     <string name="chat_no_messages_hint">Dërgoni mesazh te %1$s:\n\n• S\’ka problem nëse %2$s s\’përdor Delta Chat.\n\n• Dërgimi i mesazhit të parë mund të zgjasë ca dhe mund të jetë i pafshehtëzuar.</string>
+    <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
+    <string name="chat_new_one_to_one_hint">Dërgoni një mesazh. S’ka problem nëse %1$s nuk përdor Delta Chat.</string>
     <string name="chat_new_broadcast_hint">Në një listë transmetimesh, të tjerët do të marrin mesazhe në fjalosjet e tyre private me ju.\n\nMarrësit s’do të dinë njëri-tjetrin.</string>
     <string name="chat_new_group_hint">Hartoni mesazhin e parë, duke u lejuar të tjerëve të përgjigjen brenda këtij grupi.\n\n• S\’ka problem nëse Delta Chat-in s\’e përdorin  të tërë anëtarë.\n\n• Dërgimi i mesazhit të parë mund të zgjasë ca.</string>
     <string name="chat_record_slide_to_cancel">Rrëshqiteni që të anulohet</string>

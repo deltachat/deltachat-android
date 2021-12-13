@@ -358,6 +358,8 @@
         <item quantity="other">%d neue Nachrichten</item>
     </plurals>
     <string name="chat_no_messages_hint">Eine Nachricht an %1$s senden:\n\n• Es ist in Ordnung, wenn %2$s kein Delta Chat verwendet.\n\n• Die Übermittlung der ersten Nachricht kann eine Weile dauern und erfolgt unverschlüsselt. </string>
+    <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
+    <string name="chat_new_one_to_one_hint">Senden Sie eine Nachricht. Es ist in Ordnung, wenn %1$s kein Delta Chat hat.</string>
     <string name="chat_new_broadcast_hint">In Broadcast-Listen erhalten die Empfänger die Nachrichten in den privaten Chats mit Ihnen.\n\nDie Empfänger wissen nicht, wer die anderen Empfänger sind.</string>
     <string name="chat_new_group_hint">Andere sehen diese Gruppe erst, nachdem Sie eine erste Nachricht gesendet haben.</string>
     <string name="chat_record_slide_to_cancel">Schieben, um abzubrechen</string>

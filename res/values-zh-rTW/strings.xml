@@ -4,21 +4,67 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">確定</string>
     <string name="cancel">取消</string>
+    <string name="clear_search">清除搜尋</string>
     <string name="yes">是</string>
     <string name="no">否</string>
-    <string name="on">開</string>
-    <string name="off">關</string>
+    <string name="select">選擇</string>
+    <string name="on">開啟</string>
+    <string name="off">關閉</string>
     <string name="def">預設</string>
+    <string name="default_value">預設 (%1$s)</string>
+    <string name="default_value_as_above">預設 (同上)</string>
     <string name="custom">自訂</string>
     <string name="none">無</string>
+    <string name="automatic">自動</string>
+    <string name="strict">嚴格</string>
     <string name="open">開啟</string>
+    <string name="download">下載</string>
+    <string name="downloading">下載中⋯</string>
+    <string name="open_attachment">開啟附件</string>
+    <string name="join">加入</string>
+    <string name="rejoin">重新加入</string>
     <string name="delete">刪除</string>
+    <string name="info">資訊</string>
+    <string name="update">更新</string>
+    <string name="emoji">表情符號</string>
+    <string name="attachment">附件</string>
+    <string name="back">返回</string>
+    <string name="close">關閉</string>
+    <string name="forward">轉發</string>
+    <!-- In the meaning of "To archive", "Put a chat to the archive". This string does not mean "The Archive". -->
+    <string name="archive">封存</string>
+    <!-- In the meaning of "To unarchive", "Remove a chat from the archive", opposite of the previous string -->
+    <string name="unarchive">取消封存</string>
+    <string name="mute">靜音</string>
     <string name="ephemeral_messages">自動銷毀訊息</string>
-    <string name="not_now">不要</string>
+    <string name="ephemeral_messages_hint">這些設定將會套用在所有使用 Delta Chat 的聊天成員上。但他們依然可以複製、儲存和轉發訊息，或使用其他的電子郵件客戶端。</string>
+    <string name="save">儲存</string>
+    <string name="chat">聊天</string>
+    <string name="media">多媒體</string>
+    <string name="profile">個人檔案</string>
+    <string name="main_menu">主選單</string>
+    <string name="start_chat">開始對話</string>
+    <string name="show_full_message">顯示完整訊息⋯</string>
+    <string name="show_full_message_in_browser">在瀏覽器中顯示完整訊息⋯</string>
+    <!-- this is shown as placeholder when something is loading at some places -->
+    <string name="loading">載入中⋯</string>
+    <string name="hide">隱藏</string>
+    <string name="activate">啟用</string>
+    <string name="load_remote_content">載入遠端圖片</string>
+    <!-- possible answers to the question are: Never, Always, Once -->
+    <string name="load_remote_content_ask">遠端圖檔可以用來追蹤你。\n\n這個設定也會同時載入字體和其他內容。即使這個設定被關閉，你依然還是會看到嵌入或快取圖檔。\n\n要載入遠端圖檔嗎？</string>
+    <string name="always">永遠</string>
+    <string name="once">僅一次</string>
+    <string name="show_password">顯示密碼</string>
+    <string name="hide_password">隱藏密碼</string>
+    <string name="not_now">現在不要</string>
     <string name="never">永遠不要</string>
-    <string name="one_moment">請稍候…</string>
+    <string name="one_moment">請稍候⋯</string>
     <string name="done">完成</string>
     <string name="undo">復原</string>
+    <string name="offline">離線</string>
+    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in iOS headers, the string should be as short as possible, though. -->
+    <string name="next">下一個</string>
     <string name="error">錯誤</string>
     <string name="error_x">錯誤: %1$s</string>
     <string name="no_app_to_handle_data">沒有可以處理這種資料的應用程式</string>
@@ -29,13 +75,19 @@
     <string name="email_address">電子郵件信箱</string>
     <string name="bad_email_address">錯誤的電子郵件信箱</string>
     <string name="password">密碼</string>
+    <string name="existing_password">既有密碼</string>
     <string name="now">現在</string>
+    <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
+    <string name="danger">注意</string>
     <string name="today">今天</string>
     <string name="yesterday">昨天</string>
     <string name="this_week">本週</string>
     <string name="this_month">本月</string>
     <string name="last_week">上週</string>
     <string name="last_month">上個月</string>
+    <!-- the placeholder will be replaced by a date or time, resulting eg. in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
+    <string name="last_seen_at">最後上線時間：%1$s</string>
+    <string name="last_seen_unknown">最後上線時間：未知</string>
     <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
     <plurals name="n_minutes">
         <item quantity="other">%d分前</item>
@@ -56,22 +108,39 @@
     <plurals name="n_members">
         <item quantity="other">%d位成員</item>
     </plurals>
+    <plurals name="n_recipients">
+        <item quantity="other">%d位對象</item>
+    </plurals>
+
     <string name="self">我</string>
     <string name="draft">草稿</string>
     <string name="image">圖片</string>
-    <string name="gif">Gif</string>
+    <!-- Translators: Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
+    <string name="reply_noun">回覆</string>
+    <string name="gif">GIF</string>
+    <!-- "Stickers" as known from other messengers, please pick up the wording from there; in some languages, "Sticker" in english is just fine. -->
+    <string name="sticker">貼圖</string>
     <string name="images">圖片</string>
     <string name="audio">音訊</string>
     <string name="voice_message">語音訊息</string>
+    <string name="forwarded">已轉發</string>
     <string name="forwarded_message">轉發的訊息</string>
-    <string name="video">視訊</string>
+    <!-- %1$s will be replaced by the name or the e-mail address of the person who has forwarded the message -->
+    <string name="forwarded_by">由%1$s轉發</string>
+    <string name="video">影片</string>
     <string name="documents">文件</string>
     <string name="contact">聯絡人</string>
     <string name="verified_contact">驗證過的聯絡人</string>
     <string name="camera">相機</string>
+    <!-- "capture" here means "start a video recording" or "take a photo"; eg. the description of the "shutter button" in the camera controls -->
+    <string name="capture">拍攝</string>
+    <string name="switch_camera">切換相機</string>
+    <string name="toggle_fullscreen">切換全螢幕模式</string>
     <string name="location">所在地</string>
     <string name="gallery">相簿</string>
+    <string name="images_and_videos">圖片和影片</string>
     <string name="file">檔案</string>
+    <string name="files">檔案</string>
     <string name="unknown">未知</string>
 
     <string name="green">綠色</string>
@@ -83,15 +152,17 @@
     <string name="magenta">洋紅色</string>
     <string name="white">白色</string>
 
+    <string name="zoom">縮放</string>
+    <string name="extra_small">最小</string>
     <string name="small">小</string>
     <string name="normal">正常</string>
     <string name="large">大</string>
-    <string name="extra_large">特大</string>
+    <string name="extra_large">最大</string>
 
     <string name="fast">快</string>
     <string name="slow">慢</string>
 
-    <string name="message_delivered">訊息已抵達</string>
+    <string name="message_delivered">訊息已傳達</string>
     <string name="message_read">訊息已讀</string>
 
 
@@ -99,7 +170,14 @@
     <string name="menu_new_contact">新增聯絡人</string>
     <string name="menu_new_chat">新增對話</string>
     <string name="menu_new_group">新增群組</string>
-    <string name="menu_new_verified_group">新增驗證專用群組</string>
+    <!-- "Subject" here must be the same wording as used in the e-mail context, so. eg. "Betreff" in german (the idea is to help people coming from the e-mail context) -->
+    <string name="new_group_or_subject">新增群組或主題</string>
+    <string name="menu_new_verified_group">新增已驗證群組</string>
+    <!-- consider keeping the term "broadcast"; check how these lists are called eg. on whatsapp in the destination language -->
+    <string name="broadcast_list">廣播列表</string>
+    <string name="broadcast_lists">廣播列表</string>
+    <string name="new_broadcast_list">新增廣播列表</string>
+    <string name="add_recipients">新增對象</string>
     <string name="menu_send">送出</string>
     <string name="menu_toggle_keyboard">切換表情符號鍵盤</string>
     <string name="menu_edit_group">編輯群組</string>
@@ -111,28 +189,44 @@
     <string name="menu_add_attachment">新增附件</string>
     <string name="menu_leave_group">退出群組</string>
     <string name="menu_delete_chat">刪除對話</string>
+    <string name="ask_delete_named_chat">你確定你要刪除\"%1$s\"？</string>
     <string name="menu_delete_messages">刪除訊息</string>
     <string name="menu_delete_image">刪除圖片</string>
+    <string name="delete_contact">刪除聯絡人</string>
     <string name="menu_delete_locations">刪除所有地點？</string>
-    <string name="menu_delete_location">刪除本地點？</string>
+    <string name="menu_delete_location">刪除這個地點？</string>
     <string name="menu_message_details">訊息詳細內容</string>
     <string name="menu_copy_to_clipboard">複製到剪貼簿</string>
+    <string name="menu_copy_selection_to_clipboard">複製選取範圍</string>
+    <string name="menu_copy_link_to_clipboard">複製連結</string>
+    <string name="menu_copy_text_to_clipboard">複製文字</string>
+    <string name="menu_copy_image_to_clipboard">複製圖片</string>
+    <string name="menu_copy_email_to_clipboard">複製電子郵件</string>
+    <string name="paste_from_clipboard">從剪貼簿貼上</string>
     <string name="menu_forward">轉發訊息</string>
     <string name="menu_resend">重發訊息</string>
     <string name="menu_reply">回覆訊息</string>
     <string name="menu_mute">關閉通知</string>
     <string name="menu_unmute">開啟通知</string>
     <string name="menu_export_attachment">另存附件</string>
-    <string name="menu_all_media">全部的媒體</string>
+    <string name="menu_export_attachments">另存附件</string>
+    <string name="menu_all_media">所有媒體</string>
+    <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
+    <string name="show_in_chat">在對話中顯示</string>
     <string name="menu_share">分享</string>
+    <!-- this is the action "to block sth." usually a mailing list or a contact. this is NOT "a large solid piece of hard material" :) -->
+    <string name="block">封鎖</string>
     <string name="menu_block_contact">封鎖聯絡人</string>
     <string name="menu_unblock_contact">解除封鎖聯絡人</string>
+    <string name="accept">接受</string>
     <string name="menu_play">播放</string>
     <string name="menu_pause">暫停</string>
     <string name="menu_scroll_to_bottom">捲動到底端</string>
     <string name="menu_scroll_to_top">捲動到頂端</string>
-    <string name="menu_help">求助</string>
+    <string name="menu_help">幫助</string>
+    <string name="privacy_policy">隱私權政策</string>
     <string name="menu_select_all">全選</string>
+    <string name="select_more">多選</string>
     <string name="menu_expand">展開</string>
     <string name="menu_edit_name">編輯名稱</string>
     <string name="menu_settings">設定</string>
@@ -142,7 +236,30 @@
     <string name="menu_view_profile">查看個人檔案</string>
     <string name="menu_zoom_in">放大</string>
     <string name="menu_zoom_out">縮小</string>
+    <string name="menu_save_log">儲存日誌</string>
+    <string name="menu_more_options">更多選項</string>
+    <string name="menu_learn_spelling">學習拼寫</string>
+    <string name="menu_chat_audit_log">對話審查紀錄</string>
+    <string name="jump_to_message">移動至訊息</string>
+    <string name="copy_json">複製 JSON 內容</string>
+    <string name="replace_draft">取代草稿</string>
     <string name="title_share_location">分享所在地給所有群組成員</string>
+    <string name="device_talk">裝置訊息</string>
+    <string name="device_talk_subtitle">本機產生的訊息</string>
+    <string name="device_talk_explain">這個聊天室內的訊息是由 Delta Chat 軟體在本地產生的。開發者會在這裡發送軟體更新和使用幫助。</string>
+    <string name="device_talk_welcome_message">歡迎使用 Delta Chat！Delta Chat 看起來就如同大部分的聊天軟體一樣，但並沒有集中式的控制，且不會追蹤或販賣你、或與你有關人士的資料給大公司。\n\n嚴格來說，Delta Chat 是一款擁有聊天界面的電子郵件軟體；簡單來說就是幫電子郵件穿上新衣啦👻\n\n使用 Delta Chat 來跟全世界的人溝通，全程只需要他們的電郵地址。對方不需要安裝 Delta Chat、造訪網頁或額外註冊帳號 - 但如果他們想要的話，你也可以透過這個連結來分享給他們 👉 https://get.delta.chat</string>
+    <string name="edit_contact">編輯聯絡人</string>
+    <!-- Translators: "Pin" here is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
+    <string name="pin_chat">釘選聯絡人</string>
+    <!-- Translators: this is the opposite of "Pin chat", removing the sticky-state from a chat. -->
+    <string name="unpin_chat">取消釘選聯絡人</string>
+    <!-- Translators: this is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
+    <string name="pin">釘選</string>
+    <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
+    <string name="unpin">取消釘選</string>
+    <string name="ConversationFragment_quoted_message_not_found">找不到原始訊息</string>
+    <string name="reply_privately">私下回覆</string>
+
     <string name="mute_for_one_hour">靜音1小時</string>
     <string name="mute_for_two_hours">靜音2小時</string>
     <string name="mute_for_one_day">靜音1天</string>
@@ -156,23 +273,52 @@
     <string name="share_location_for_two_hours">2小時</string>
     <string name="share_location_for_six_hours">6小時</string>
 
+    <plurals name="ask_send_following_n_files_to">
+        <item quantity="other">要將%d個檔案傳送給%s？</item>
+    </plurals>
+    <string name="file_saved_to">檔案已儲存至\"%1$s\"。</string>
+
+    <string name="videochat">視訊通話</string>
+    <string name="videochat_invite_user_to_videochat">邀請%1$s至視訊通話？</string>
+    <string name="videochat_invite_user_hint">這個動作需要雙方有相容的應用程式或瀏覽器。</string>
+    <string name="videochat_contact_invited_hint">已將%1$s邀請至視訊通話。</string>
+    <string name="videochat_you_invited_hint">你已經被邀請至視訊通話。</string>
+    <string name="videochat_will_open_in_your_browser">這個視訊通話將在你的瀏覽器內開啟。</string>
+    <string name="videochat_tap_to_join">點擊以加入</string>
+    <string name="videochat_tap_to_open">點擊以開啟</string>
+    <string name="videochat_instance">視訊通話服務商</string>
+    <string name="videochat_instance_placeholder">你的視訊通話服務商</string>
+    <string name="videochat_instance_explain">如果你已經定義了視訊通話服務商，你可以在每個聊天室內開啟視訊通話。視訊通話必須要雙方有一個相容的應用程式或是瀏覽器。\n\n例如：https://meet.jit.si/$ROOM 或 basicwebrtc:https://your-server</string>
+    <string name="videochat_instance_from_qr">要使用\"%1$s\"來邀請其他人加入視訊通話嗎？\n\n一旦設定完成，你可以在每個聊天室內開啟視訊通話。這將會取代先前的視訊通話設定。</string>
+    <string name="videochat_invitation">視訊通話邀請</string>
+    <string name="videochat_invitation_body">你被邀請至視訊電話，點擊%1$s以加入。</string>
+
     <!-- get confirmations -->
     <string name="ask_leave_group">確定要離開本群組？</string>
     <plurals name="ask_delete_chat">
         <item quantity="other">確定刪除%d個對話嗎？將會從對話紀錄中刪除，然而伺服器中仍會保留對話。</item>
     </plurals>
+    <string name="ask_delete_message">你確定要刪除這則訊息？</string>
     <plurals name="ask_delete_messages">
         <item quantity="other">刪除本地及伺服器上的%d個訊息？</item>
     </plurals>
+    <plurals name="ask_delete_messages_simple">
+        <item quantity="other">刪除%d則訊息？</item>
+    </plurals>
     <string name="ask_forward">轉發訊息給%1$s？</string>
-    <string name="ask_export_attachment">要匯出附件嗎？匯出的附件可以用裝置上的其它 App 打開。\n\n繼續？</string>
+    <string name="ask_forward_multiple">轉發訊息到%1$d個聊天室？</string>
+    <string name="ask_export_attachment">要匯出附件嗎？匯出的附件可以用裝置上的其它應用程式打開。\n\n要繼續嗎？</string>
     <string name="ask_block_contact">要封鎖這個人嗎？你之後不會再收到這個人的訊息。</string>
     <string name="ask_unblock_contact">要解除封鎖嗎？你之後可以繼續收到這個人的訊息。</string>
     <string name="ask_delete_contacts">要刪除聯絡人嗎？選定的聯絡人將被永久刪除。\n\n正在進行對話的聯絡人、以及系統通訊錄中的聯絡人，無法被永久刪除。</string>
-    <string name="cannot_delete_contacts_in_use">正在對話的聯絡人不能刪除。</string>
+    <string name="ask_delete_contact">要刪除%1$s聯絡人嗎？\n\n聊天室中的聯絡人和系統聯絡人將不會被永久刪除。</string>
+    <string name="cannot_delete_contacts_in_use">無法刪除聊天室內的聯絡人。</string>
     <string name="ask_start_chat_with">要和%1$s開始對話嗎？</string>
+    <string name="ask_delete_value">刪除%s？</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">要把%1$s移出群組嗎？</string>
+    <!-- Translators: %1$s will be replaced by a comma separated list of names -->
+    <string name="ask_remove_from_broadcast">將%1$s自廣播列表中移除？</string>
     <!-- contact list -->
     <string name="contacts_title">聯絡人清單</string>
     <string name="contacts_enter_name_or_email">請輸入姓名或email地址</string>

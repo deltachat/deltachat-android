@@ -344,6 +344,8 @@
         <item quantity="other">%d 条新消息</item>
     </plurals>
     <string name="chat_no_messages_hint">发消息给 %1$s。\n\n• 即使 %2$s 不使用 Delta Chat 也没问题。\n\n• 发送第一条消息可能需要一些时间并且可能未经加密。</string>
+    <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
+    <string name="chat_new_one_to_one_hint">发一条消息。即使 %1$s 不使用 Delta Chat 也没问题。</string>
     <string name="chat_new_broadcast_hint">在广播列表中，其他人会在与你的私人聊天中收到消息。\n\n收信人之间不会知道彼此的存在。</string>
     <string name="chat_new_group_hint">撰写第一条消息以允许其他人在此群组内回复。\n\n• 即使有成员不使用 Delta Chat 也没问题。\n\n• 发送第一条消息可能需要一些时间。</string>
     <string name="chat_record_slide_to_cancel">滑动来取消</string>

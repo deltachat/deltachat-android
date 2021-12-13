@@ -358,6 +358,8 @@
         <item quantity="other">%d nieuwe berichten</item>
     </plurals>
     <string name="chat_no_messages_hint">Verstuur een bericht aan %1$s:\n\n• %2$s hoeft Delta Chat niet te gebruiken.\n\n• Het afleveren van het eerste bericht kan even duren en onversleuteld zijn.</string>
+    <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
+    <string name="chat_new_one_to_one_hint">Verstuur een bericht. %1$s hoeft voor dit gesprek geen gebruik te maken van Delta Chat.</string>
     <string name="chat_new_broadcast_hint">Als je een verzendlijst maakt, dan onhvangen anderen bericht van jou in hun privégesprekken.\n\nDe ontvangers kunnen elkaar echter niet zien.</string>
     <string name="chat_new_group_hint">Stel het eerste bericht op, zodat anderen binnen deze groep kunnen reageren.</string>
     <string name="chat_record_slide_to_cancel">Veeg opzij om te annuleren</string>
