@@ -137,10 +137,6 @@
     <string name="fast">Lestru</string>
     <string name="slow">Lentu</string>
 
-    <string name="message_delivered">Messàgiu intregadu</string>
-    <string name="message_read">Messàgiu lèghidu</string>
-
-
     <!-- menu labels (or icon, buttons...) -->
     <string name="menu_new_contact">Cuntatu nou</string>
     <string name="menu_new_chat">Tzarrada noa</string>
@@ -159,13 +155,10 @@
     <string name="menu_delete_chat">Iscantzella sa tzarrada</string>
     <string name="ask_delete_named_chat">Ses seguru de chèrrere iscantzellare \"%1$s\"?</string>
     <string name="menu_delete_messages">Iscantzella sos messàgios</string>
-    <string name="menu_delete_image">Iscantzella s\'immàgine</string>
-    <string name="menu_delete_locations">Iscantzellare totu sas positziones?</string>
     <string name="menu_delete_location">Iscantzellare custa positzione?</string>
     <string name="menu_message_details">Detàllios de su messàgiu</string>
     <string name="menu_copy_to_clipboard">Còpia in punta de billete</string>
     <string name="menu_forward">Inoltra su messàgiu</string>
-    <string name="menu_resend">Torra a imbiare su messàgiu</string>
     <string name="menu_reply">Risponde a su messàgiu</string>
     <string name="menu_mute">Istuda sas notìficas</string>
     <string name="menu_unmute">Allughe sas notìficas</string>
@@ -180,12 +173,9 @@
     <string name="menu_scroll_to_top">Iscurre a pitzus</string>
     <string name="menu_help">Agiudu</string>
     <string name="menu_select_all">Ischerta totu</string>
-    <string name="menu_expand">Ismànnia</string>
     <string name="menu_edit_name">Modìfica su nùmene</string>
     <string name="menu_settings">Impostatziones</string>
     <string name="menu_advanced">Avantzadas</string>
-    <string name="menu_deaddrop">Rechestas de cuntatu</string>
-    <string name="menu_deaddrop_subtitle">Incarca Messàgiu pro incumentzare a tzarrare</string>
     <string name="menu_view_profile">Pòmpia su profilu</string>
     <string name="menu_zoom_in">Ismànnia</string>
     <string name="menu_zoom_out">Mìnima</string>
@@ -210,7 +200,6 @@
     <string name="mute_for_seven_days">A sa muda pro 7 dies</string>
     <string name="mute_forever">A sa muda pro semper</string>
 
-    <string name="share_location_once">una borta</string>
     <string name="share_location_for_5_minutes">pro 5 minutos</string>
     <string name="share_location_for_30_minutes">pro 30 minutos</string>
     <string name="share_location_for_one_hour">pro 1 ora</string>
@@ -224,7 +213,6 @@
     <string name="videochat_invite_user_hint">Custu bisòngiat de un\'aplicatzione cumpatìbile o unu navigadore cumpatìbile dae ambas alas.</string>
     <string name="videochat_contact_invited_hint">%1$s t\'at invitadu a una vìdeu-tzarrada.</string>
     <string name="videochat_you_invited_hint">As invitadu a una vìdeu-tzarrada.</string>
-    <string name="videochat_will_open_in_your_browser">Custa vìdeu-tzarrada s\'at a abèrrere in su navigadore web tuo.</string>
     <string name="videochat_tap_to_join">Toca pro bi pigare parte</string>
     <string name="videochat_tap_to_open">Toca pro abèrrere</string>
     <string name="videochat_instance">Istàntzia de vìdeu-tzarrada</string>
@@ -282,7 +270,6 @@
         <item quantity="one">%d messàgiu nou</item>
         <item quantity="other">%dmessàgios noos</item>
     </plurals>
-    <string name="chat_no_messages_hint">Imbia unu messàgiu a %1$s:\n\n• Lu podes fàghere fintzas si %2$s no impreat Delta Chat.\n\n• Sa cunsinna de su primu messàgiu diat pòdere pigare un\'agigu de tempus e no èssere critografada.</string>
     <string name="chat_new_group_hint">Imbia su primu messàgiu, permitende a sos àteros de ti rispòndere in intro de custu grupu.\n\n•Lu podes fàghere fintzas si non totu sos membros impreant Delta Chat.Sa cunsinna de su primu messàgiu diat pòdere pigare un\'agigu de tempus.</string>
     <string name="chat_record_slide_to_cancel">Iscurre pro annulare</string>
     <string name="chat_record_explain">Incarca e mantene incarcadu pro registrare unu messàgiu vocale, lassa pro imbiare</string>
@@ -298,14 +285,10 @@
     <string name="saved_messages_explain">• Inoltra sos messàgios inoghe pro bi pòdere atzèdere in manera lestra\n\n• Sarva notas iscritas o sonoras\n\n• Allega mèdios pro los sarvare</string>
     <!-- this "Saved" should match the "Saved" from "Saved messages" -->
     <string name="saved">Sarvadu</string>
-    <string name="chat_contact_request">Rechesta de cuntatu</string>
-    <string name="chat_no_contact_requests">Peruna rechesta de cuntatu.\n\nSi cheres chi sas lìteras eletrònicas clàssicas apàrgiant inoghe comente rechestas de cuntatu, podes mudare s\'impostatzione chi li pertocat in sas impostatziones de s\'aplicatzione.</string>
     <string name="retry_send">Torra a proare a imbiare su messàgiu</string>
-    <string name="send_failed">Imbiu de su messàgiu fallidu</string>
     <!-- reasons for a disabled message composer -->
     <string name="messaging_disabled_not_in_group">Non podes iscrìere ca non ses in custu grupu. Pro b\'intrare pedi a un\'àteru membru.</string>
     <string name="messaging_disabled_device_chat">Custa tzarrada cuntenet messàgios ingendrados localmente. Duncas non podet iscrìere messàgiu perunu.</string>
-    <string name="messaging_disabled_deaddrop">Incarca in unu messàgiu pro atzetare o negare sa rechesta de cuntatu.</string>
     <string name="cannot_display_unsuported_file_type">Impossìbile ammustrare custa casta de documentu: %s</string>
     <!-- map -->
     <string name="filter_map_on_time">Ammustra sas positziones in su tempus</string>
@@ -326,7 +309,6 @@
     <string name="group_create_button">Crea unu grupu</string>
     <string name="group_please_enter_group_name">Inserta unu nùmene pro su grupu.</string>
     <string name="group_add_members">Annanghe mambros</string>
-    <string name="group_hello_draft">Salude, apo creadu su grupu \"%1$s\" como como pro nois.</string>
     <string name="group_self_not_in_group">Depes èssre unu membru de su grupu pro fàghere cust\'atzione.</string>
     <string name="profile_encryption">Tzifradura</string>
     <string name="profile_shared_chats">Tzarradas cumpartzidas</string>
@@ -376,8 +358,6 @@
     <string name="import_backup_no_backup_found">Peruna còpia de seguresa agatada.\n\nCòpia sa còpia de seguresa in \"%1$s\" e torra a proare. Si nono, incarca. Asinuncas, incarca \"Incumintza a messagiare\" pro sighire cun su protzessu de impostatzione normale.</string>
     <!-- Translators: %1$s will be replaced by the e-mail address -->
     <string name="login_error_cannot_login">Impossìbile atzèdere comente \"%1$s\". pro paghere verìfica si s\'indiritzu de posta eletrònica e sa crae de intrada sunt curretos.</string>
-    <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
-    <string name="login_error_server_response">Risposta dae %1$s: %2$s\n\nUnos cantos frunidores insertant informatziones in prus in sa cartella de intrada tua; podes verificare a es. dae sa pàgina web. Si tenes problemas consulta su frunidore tuo o sos amigos tuos.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Atzetat tzertificados non vàlidos</string>
     <string name="used_settings">Impostatziones impreadas:</string>
@@ -385,7 +365,6 @@
     <string name="add_account">Annanghe unu contu</string>
     <string name="delete_account">Iscantzella su contu</string>
     <string name="delete_account_ask">Ses seguru de chèrrere iscantzellare sos datos de su contu tuo?</string>
-    <string name="switching_account">Cambiende contu…</string>
     <string name="try_connect_now">Proa a ti collegare como</string>
     <!-- Translations: %1$s will be replaced by a more detailed error message -->
     <string name="configuration_failed_with_error">Configuratzione fallida. Errore: %1$s</string>
@@ -406,7 +385,6 @@
     <string name="pref_profile_photo">Fotografia de profilu</string>
     <string name="pref_blocked_contacts">Cuntatos blocados</string>
     <string name="blocked_empty_hint">Si as a blocare cuntatos ant a èssere allistados inoghe.</string>
-    <string name="pref_profile_photo_remove_ask">Bogare sa fotografia de profilu?</string>
     <string name="pref_password_and_account_settings">Crae de intrada e contu</string>
     <string name="pref_who_can_see_profile_explain">S\'immàgine de profilu tua e su nùmene tuo ant a èssere ammustrados in paris cun sos messàgios tuos cando ses comunichende cun àteros impreadores. Sas informatziones giai imbiadas non podent èssere iscantzelladas o bogadas.</string>
     <string name="pref_your_name">Su nùmene tuo</string>
@@ -501,8 +479,6 @@
     <string name="emoji_not_found">Peruna emoji agatada</string>
     <!-- automatically delete message -->
     <string name="delete_old_messages">Iscantzella sos messàgios betzos</string>
-    <!-- devs: autodel_title is deprecated, use delete_old_messages instead -->
-    <string name="autodel_title">Iscantzella sos messàgios automaticamente</string>
     <string name="autodel_device_title">Iscantzella sos messàgios dae su dispositivu</string>
     <string name="autodel_server_title">Iscantzella sos messàgios dae su servidore</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->

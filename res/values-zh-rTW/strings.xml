@@ -162,10 +162,6 @@
     <string name="fast">快</string>
     <string name="slow">慢</string>
 
-    <string name="message_delivered">訊息已傳達</string>
-    <string name="message_read">訊息已讀</string>
-
-
     <!-- menu labels (or icon, buttons...) -->
     <string name="menu_new_contact">新增聯絡人</string>
     <string name="menu_new_chat">新增對話</string>
@@ -191,9 +187,7 @@
     <string name="menu_delete_chat">刪除對話</string>
     <string name="ask_delete_named_chat">你確定你要刪除\"%1$s\"？</string>
     <string name="menu_delete_messages">刪除訊息</string>
-    <string name="menu_delete_image">刪除圖片</string>
     <string name="delete_contact">刪除聯絡人</string>
-    <string name="menu_delete_locations">刪除所有地點？</string>
     <string name="menu_delete_location">刪除這個地點？</string>
     <string name="menu_message_details">訊息詳細內容</string>
     <string name="menu_copy_to_clipboard">複製到剪貼簿</string>
@@ -204,7 +198,6 @@
     <string name="menu_copy_email_to_clipboard">複製電子郵件</string>
     <string name="paste_from_clipboard">從剪貼簿貼上</string>
     <string name="menu_forward">轉發訊息</string>
-    <string name="menu_resend">重發訊息</string>
     <string name="menu_reply">回覆訊息</string>
     <string name="menu_mute">關閉通知</string>
     <string name="menu_unmute">開啟通知</string>
@@ -227,12 +220,9 @@
     <string name="privacy_policy">隱私權政策</string>
     <string name="menu_select_all">全選</string>
     <string name="select_more">多選</string>
-    <string name="menu_expand">展開</string>
     <string name="menu_edit_name">編輯名稱</string>
     <string name="menu_settings">設定</string>
     <string name="menu_advanced">進階</string>
-    <string name="menu_deaddrop">聯絡請求</string>
-    <string name="menu_deaddrop_subtitle">按訊息鍵開始交談</string>
     <string name="menu_view_profile">查看個人檔案</string>
     <string name="menu_zoom_in">放大</string>
     <string name="menu_zoom_out">縮小</string>
@@ -266,7 +256,6 @@
     <string name="mute_for_seven_days">靜音7天</string>
     <string name="mute_forever">永遠靜音</string>
 
-    <string name="share_location_once">單次</string>
     <string name="share_location_for_5_minutes">5分鐘</string>
     <string name="share_location_for_30_minutes">30分鐘</string>
     <string name="share_location_for_one_hour">1小時</string>
@@ -283,7 +272,6 @@
     <string name="videochat_invite_user_hint">這個動作需要雙方有相容的應用程式或瀏覽器。</string>
     <string name="videochat_contact_invited_hint">已將%1$s邀請至視訊通話。</string>
     <string name="videochat_you_invited_hint">你已經被邀請至視訊通話。</string>
-    <string name="videochat_will_open_in_your_browser">這個視訊通話將在你的瀏覽器內開啟。</string>
     <string name="videochat_tap_to_join">點擊以加入</string>
     <string name="videochat_tap_to_open">點擊以開啟</string>
     <string name="videochat_instance">視訊通話服務商</string>
@@ -340,7 +328,6 @@
     <plurals name="chat_n_new_messages">
         <item quantity="other">%d個新訊息</item>
     </plurals>
-    <string name="chat_no_messages_hint">傳送訊息給%1$s:\n\n• 即使%2$s沒有使用 Delta Chat 也沒關係\n\n• 傳送的第一個訊息可能要一點時間，而且可能沒有加密</string>
     <string name="chat_new_group_hint">請傳送第一條訊息，以便其它人在群組內回覆\n\n• 即使群組內有些人沒使用 Delta Chat 也沒關係(請注意在他們那端可能沒加密)\n\n• 傳送第一條訊息需要花一點時間。</string>
     <string name="chat_record_slide_to_cancel">滑動以取消</string>
     <string name="chat_record_explain">按住不放錄音，放開後傳送</string>
@@ -352,8 +339,6 @@
     <string name="chat_archived_label">封存</string>
     <string name="chat_no_messages">沒有訊息</string>
     <string name="chat_self_talk_subtitle">傳送給自己的訊息</string>
-    <string name="chat_contact_request">聯絡請求</string>
-    <string name="chat_no_contact_requests">沒有聯絡請求。\n\n如果你希望在這裡看到一般的 email 信件的話，請在「設定」中開啟相關設定。</string>
     <!-- map -->
     <string name="filter_map_on_time">顯示指定時間內的所在地</string>
     <string name="show_location_traces">顯示移動足跡</string>
@@ -371,7 +356,6 @@
     <string name="group_create_button">建立群組</string>
     <string name="group_please_enter_group_name">請輸入群組的名稱</string>
     <string name="group_add_members">新增成員</string>
-    <string name="group_hello_draft">嗨! 我剛建立了 %1$s 群組</string>
     <string name="group_self_not_in_group">你必須先加入群組，才能執行本功能。</string>
     <string name="profile_encryption">加密</string>
     <string name="profile_shared_chats">共享的對話</string>
@@ -414,8 +398,6 @@
     <string name="import_backup_no_backup_found">找不到備份\n\n請把備份複製到 %1$s 然後再試一次，或是按「開始傳送訊息」進行標準設定。</string>
     <!-- Translators: %1$s will be replaced by the e-mail address -->
     <string name="login_error_cannot_login">無法登入 %1$s。請確定 email 帳號和密碼是否正確。 </string>
-    <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
-    <string name="login_error_server_response">伺服器 %1$s 的回應: %2$s\n\n有些郵件服務商會在你的收件匣提供進一步的資訊，請檢查一下，並看看 web 介面上有沒有相關設定。還是不行的話，請洽詢郵件服務商，或是請朋友幫忙。</string>
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">轉發給...</string>
@@ -428,7 +410,6 @@
     <string name="pref_profile_info_headline">你的個人資料</string>
     <string name="pref_profile_photo">大頭照</string>
     <string name="pref_blocked_contacts">已封鎖的聯絡人</string>
-    <string name="pref_profile_photo_remove_ask">移除大頭照?</string>
     <string name="pref_who_can_see_profile_explain">你的名字和大頭照在通訊的過程中，會提供給對方看到。已傳送的資訊無法被刪除或移除。</string>
     <string name="pref_your_name">你的名字</string>
     <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
@@ -539,10 +520,5 @@
     <string name="qrscan_ask_join_group">你要參加群組 %1$s 嗎?</string>
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
     <string name="qrshow_join_contact_hint">掃描 QRCode 以新增 %1$s</string>
-    <string name="contact_detail_title_desktop">聯絡人詳細資料</string>
-    <string name="contact_request_title_desktop">聯絡請求</string>
-    <string name="add_contact_desktop">新增聯絡人</string>
-    <string name="unblock_contacts_desktop">解除封鎖聯絡人</string>
-    <string name="none_blocked_desktop">沒有封鎖的聯絡人</string>
     <string name="forget_login_confirmation_desktop">確定要刪除這裡的登入嗎? 所有的設定都會被刪除，包括端到端加密設定、聯絡人、對話、訊息、媒體檔案等。本動作不能復原。</string>
     </resources>

@@ -126,9 +126,6 @@
     <string name="fast">Брзо</string>
     <string name="slow">Спор</string>
 
-    <string name="message_read">Порука прочитана</string>
-
-
     <!-- menu labels (or icon, buttons...) -->
     <string name="menu_new_contact">Нови контакт</string>
     <string name="menu_new_chat">Ново ћаскање</string>
@@ -144,11 +141,9 @@
     <string name="menu_leave_group">Напусти групу</string>
     <string name="menu_delete_chat">Обриши ћаскање</string>
     <string name="menu_delete_messages">Избришите поруке</string>
-    <string name="menu_delete_image">Избриши слику</string>
     <string name="menu_message_details">Детаљи поруке</string>
     <string name="menu_copy_to_clipboard">Копирај у клипборд</string>
     <string name="menu_forward">Прослеђена порука</string>
-    <string name="menu_resend">Понови слање</string>
     <string name="menu_reply">Одговори на поруку</string>
     <string name="menu_mute">Искључи обавештења</string>
     <string name="menu_unmute">Укључи</string>
@@ -166,7 +161,6 @@
     <string name="menu_edit_name">Уреди назив</string>
     <string name="menu_settings">Поставке</string>
     <string name="menu_advanced">Напредно</string>
-    <string name="menu_deaddrop">Захтеви за контакт</string>
     <string name="menu_view_profile">Прикажи профил</string>
     <string name="menu_zoom_in">Увеличати</string>
     <string name="menu_zoom_out">Умањи умањивање</string>
@@ -178,7 +172,6 @@
     <string name="mute_for_seven_days">Утишај 7 сати</string>
     <string name="mute_forever">Увек утишан</string>
 
-    <string name="share_location_once">једном</string>
     <!-- get confirmations -->
     <string name="ask_leave_group">Желите ли заиста да напустите ову групу?</string>
     <plurals name="ask_delete_messages">
@@ -201,7 +194,6 @@
         <item quantity="few">%d нове поруке</item>
         <item quantity="other">%d нових порука</item>
     </plurals>
-    <string name="chat_no_messages_hint">Пошаљи поруку за %1$s:\n\n• У реду је ако %2$s не користи Делта ћаскање.\n\n• Испорука прве поруке ће можда да потраје.</string>
     <string name="chat_new_group_hint">Саставите прву поруку и тиме омогућите осталима да пишу у групи.\n\n• У реду је ако сви чланови не користе Делта ћаскање.\n\n• Испорука прве поруке ће можда да потраје.</string>
     <string name="chat_record_slide_to_cancel">Превуците за отказивање</string>
     <string name="chat_record_explain">Тапните и држите за снимање гласовне поруке, пустите за слање</string>
@@ -211,7 +203,6 @@
     <string name="chat_no_messages">Нема порука.</string>
     <string name="chat_self_talk_subtitle">Поруке које сам слао себи</string>
     <string name="saved_messages">Сачуване поруке</string>
-    <string name="chat_contact_request">Захтеви за контакт</string>
     <!-- search -->
     <string name="search">Претрага</string>
     <!-- create/edit groups, contact/group profile -->
@@ -220,7 +211,6 @@
     <string name="group_create_button">Створити групу</string>
     <string name="group_please_enter_group_name">Унесите назив групе</string>
     <string name="group_add_members">Додајте чланове</string>
-    <string name="group_hello_draft">Здраво, управо направих групу „%1$s“ за нас.</string>
     <string name="group_self_not_in_group">Морате бити члан групе да бисте извршили ову радњу.</string>
     <string name="profile_encryption">Шифровање</string>
     <string name="profile_shared_chats">Дељена ћаскања</string>
@@ -250,8 +240,6 @@
     <string name="import_backup_no_backup_found">Нема резервних копија.\n\nКопирајте резервну копију у %1$s и покушајте поново. Ако не желите, тапните \"Почни ћаскање\" да бисте почели уобичајени процес поставке.</string>
     <!-- Translators: %1$s will be replaced by the e-mail address -->
     <string name="login_error_cannot_login">Не могу да се пријавим као %1$s. Проверите да ли су е-адреса и лозинка тачни.</string>
-    <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
-    <string name="login_error_server_response">Одговор од %1$s: %2$s\n\nНеки пружаоци услуга остављају додатне информације у ваше пријемно сандуче; можете да проверите ово нпр. користећи веб сучеље ваше е-поште. Посаветујте се са пружаоцем услуге или пријатељима ако налетите на проблеме.</string>
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Проследи за…</string>
@@ -327,7 +315,6 @@
     <string name="qrscan_contains_text">Очитани текст бар-кôда:\n\n%1$s</string>
     <string name="qrscan_contains_url">Очитани УРЛ бар-кôда:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Отисак</string>
-    <string name="qrscan_x_verified_introduce_myself">%1$s потврђен, представљам се…</string>
     <string name="qrshow_title">Бар-кôд за потврду</string>
     <string name="qrshow_x_joining">%1$s се придружи.</string>
     <string name="qrshow_x_verified">%1$s потврђен.</string>
@@ -335,7 +322,6 @@
     <string name="qrshow_join_group_title">Бар-кôд за потврду</string>
     <string name="qrshow_join_contact_title">Бар-кôд за потврду</string>
     <string name="contact_verified">%1$s потврђен.</string>
-    <string name="notify_mark_read">Означи прочитаним</string>
     <string name="notify_reply_button">Одговори</string>
     <string name="notify_new_message">Нова порука</string>
     <string name="notify_priority_high">Висок</string>
@@ -355,12 +341,9 @@
     <string name="global_menu_preferences_language_desktop">Језик</string>
     <string name="global_menu_file_desktop">Фајл</string>
     <string name="global_menu_help_desktop">Помоћ</string>
-    <string name="contact_request_title_desktop">Захтеви за контакт</string>
     <string name="more_info_desktop">Више података</string>
     <string name="remove_desktop">Уклони</string>
     <string name="save_desktop">Сачувај</string>
-    <string name="add_contact_desktop">Нови контакт</string>
     <string name="name_desktop">Име</string>
     <string name="export_backup_desktop">Извези резервну копију</string>
-    <string name="me_desktop">Ја</string>
     </resources>

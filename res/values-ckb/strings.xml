@@ -141,10 +141,6 @@
     <string name="fast">خێرا</string>
     <string name="slow">خاو</string>
 
-    <string name="message_delivered">پەیامەکە گەیشت</string>
-    <string name="message_read">پەیامەکە خوێندرایەوە</string>
-
-
     <!-- menu labels (or icon, buttons...) -->
     <string name="menu_new_contact">بەردەنگی نوێ</string>
     <string name="menu_new_chat">وتووێژی نوێ</string>
@@ -162,9 +158,7 @@
     <string name="menu_delete_chat">سڕینەوەی وتووێژ</string>
     <string name="ask_delete_named_chat">دڵنیای دەتەوێت \"%1$s\" بسڕیتەوە؟</string>
     <string name="menu_delete_messages">سڕینەوەی پەیامەکان</string>
-    <string name="menu_delete_image">سڕینەوەی وێنە</string>
     <string name="delete_contact">سڕینەوەی بەردەنگ</string>
-    <string name="menu_delete_locations">هەموو شوێنەکان دەسڕیتەوە؟</string>
     <string name="menu_delete_location">ئەم شوێنە دەسڕیتەوە؟</string>
     <string name="menu_message_details">وردەکارییەکانی پەیامەکە</string>
     <string name="menu_copy_to_clipboard">ڕوونووس کردن</string>
@@ -172,7 +166,6 @@
     <string name="menu_copy_link_to_clipboard">بەستەر کۆپی بکە</string>
     <string name="paste_from_clipboard">ڕوونووسەکە بلکێنە</string>
     <string name="menu_forward">هاوبەش کردنی پەیام</string>
-    <string name="menu_resend">دیسان پەیامەکە بنێرەوە</string>
     <string name="menu_reply">وەڵام دانەوە بە پەیام</string>
     <string name="menu_mute">بێدەنگ کردنی وریاکەرەوەکان</string>
     <string name="menu_unmute">دەنگدار کردن</string>
@@ -192,12 +185,9 @@
     <string name="menu_help">یارمەتی</string>
     <string name="menu_select_all">هەمووی هەڵبژێرە</string>
     <string name="select_more">هەڵبژاردنی زۆرتر</string>
-    <string name="menu_expand">ئاوەڵا کردن</string>
     <string name="menu_edit_name">دەستکاری ناو</string>
     <string name="menu_settings">ڕێکخستنەکان</string>
     <string name="menu_advanced">پێشکەوتوو</string>
-    <string name="menu_deaddrop">داواکارییەکان بۆ پەیوەندی</string>
-    <string name="menu_deaddrop_subtitle">بۆ دەستپێکردنی وتووێژ، لەسەر پەیامەکە کرتە بکە</string>
     <string name="menu_view_profile">دیتنی پرۆفایل</string>
     <string name="menu_zoom_in">نێزیک کردنەوە</string>
     <string name="menu_zoom_out">دوور کردنەوە</string>
@@ -225,7 +215,6 @@
     <string name="mute_for_seven_days">بێدەنگ کردن بۆ ماوەی 7 ڕۆژ</string>
     <string name="mute_forever">بێدەنگ کردن بۆ هەمیشە</string>
 
-    <string name="share_location_once">یەکجار</string>
     <string name="share_location_for_5_minutes">بۆ ماوەی 5 خولەک</string>
     <string name="share_location_for_30_minutes">بۆ ماوەی 30 خولەک</string>
     <string name="share_location_for_one_hour">بۆ ماوەی 1 کاتژمێر</string>
@@ -243,7 +232,6 @@
     <string name="videochat_invite_user_hint">نەرمامێر یان وێبگەڕێکی گونجاو، لەلایەن هەردووکتانەوە، پێویستە.</string>
     <string name="videochat_contact_invited_hint">%1$s بانگێشت کرا بۆ وتووێژی ڤیدیۆیی.</string>
     <string name="videochat_you_invited_hint">بانگهێشت کراوی بۆ وتووێژێکی ڤیدیۆیی</string>
-    <string name="videochat_will_open_in_your_browser">ئەم وتووێژە ڤیدیۆییە لە نێو وێبگەڕەکەتدا دەکرێتەوە.</string>
     <string name="videochat_tap_to_join">بۆ بەشدار بوون کرتە بکە.</string>
     <string name="videochat_tap_to_open">بۆ کردنەوە کرتە بکە.</string>
     <string name="videochat_instance">نموونەی وتووێژی ڤیدیۆیی</string>
@@ -301,7 +289,6 @@
         <item quantity="one">%d پەیامی نوێ</item>
         <item quantity="other">%d پەیامی نوێ</item>
     </plurals>
-    <string name="chat_no_messages_hint">پەیام دەنێری بۆ %1$s:\n\n• کێشە نییە ئەگەر %2$s دێڵتاچات بەکارناهێنێت.\n\n• گەیشتنی یەکەم پەیام لەوانەیە ماوەیەک بخایەنێت و لەوانەیە شفرەنەکراو بێت.</string>
     <string name="chat_new_group_hint">پەیامی یەکەم بنێرە، ئیدی کەسانی دیکەش دەتوانن لەنێو ئەم کۆڕەدا وتووێژ بکەن. \n\n• کێشە نییە ئەگەر هەموو ئەندامان دێڵتا چات بەکارنەهێنن.\n\n• لەوانەیە گەیشتنی یەکەمین پەیام هەندێک کات ببات.</string>
     <string name="chat_record_slide_to_cancel">بیخشێنە بۆ وازهێنان</string>
     <string name="chat_record_explain">کرتە بکە و دەست لەسەری ڕابگرە بۆ تۆمارکردنی پەیامێکی دەنگی، پاشان دەستبەردە بۆ هەناردنی.</string>
@@ -317,18 +304,14 @@
     <string name="saved_messages_explain">• پەیامەکان بنێرە ئێرە تاکوو بەئاسانی لەبەردەست بن\n\n• ڕەشنووسی دەق یان دەنگی دابنە\n\n• ڕەنگاڵە پەیوەست بکە تاکوو پاشەکەوت بکرێن</string>
     <!-- this "Saved" should match the "Saved" from "Saved messages" -->
     <string name="saved">پاشەکەوت کرا</string>
-    <string name="chat_contact_request">داخوازی بەردەنگ بوون</string>
     <string name="retry_send">دیسان هەوڵ بدەوە بۆ هەناردنی پەیامەکە</string>
-    <string name="send_failed">پەیامەکە نەهەناردرا</string>
     <!-- reasons for a disabled message composer -->
     <string name="messaging_disabled_not_in_group">تۆ ناتوانیت لێرە بنووسیت چونکە لەم کۆڕەدا بەشدار نیت. بۆ بەشدار بوون لە ئەندامێکی کۆڕەکە داوابکە بەشدارت بکات.</string>
     <string name="messaging_disabled_device_chat">ئەم وتووێژە پەیامگەلێکی تێدایە کە بە شێوازی ناوخۆیی درووستکراون. ئیدی ناتوانیت لێرە هیچ بنووسیت.</string>
-    <string name="messaging_disabled_deaddrop">لەسەر پەیامێک کرتە بکە بۆ قەبووڵکردن یان ڕەتکردنەوەی داخوازی بەردەنگبوون.</string>
     <string name="cannot_display_unsuported_file_type">ئەم چەشنە پەڕگەیە پیشان نادرێت: %s</string>
     <string name="attachment_failed_to_load">پێوەلکاوەکە دانەگیرا</string>
     <!-- mailing lists -->
     <string name="mailing_list">لیستەی ئیمەیلەکان</string>
-    <string name="ask_show_mailing_list">لیستەی ئیمەیلەکانی \"%1$s\" پیشان بدرێت؟</string>
     <!-- map -->
     <string name="filter_map_on_time">شوێنەکان لە نێو چوارچێوەی کاتدا پیشان بدرێت؟</string>
     <string name="show_location_traces">پیشاندانی شوێنپێ</string>
@@ -346,7 +329,6 @@
     <string name="group_create_button">کۆڕێک درووست بکە</string>
     <string name="group_please_enter_group_name">تکایە ناوێک بنووسە بۆ کۆڕەکە.</string>
     <string name="group_add_members">ئەندام زیاد بکە</string>
-    <string name="group_hello_draft">سڵاو، کۆڕی \"%1$s\"م درووست کرد بۆ خۆمان.</string>
     <string name="group_self_not_in_group">بۆ ئەم کردارە دەبێت ئەندامی کۆڕەکە بیت.</string>
     <string name="profile_encryption">شفرەکردن</string>
     <string name="profile_shared_chats">وتووێژە هاوبەشکراوەکان</string>
@@ -398,7 +380,6 @@
     <string name="delete_account">سڕینەوەی هەژمار</string>
     <string name="delete_account_ask">دڵنیای دەتەوێت داتاکانی هەژمارەکەت بسڕیتەوە؟</string>
     <string name="delete_account_explain_with_name">هەموو داتاکانی هەژماری \"%s\" لەسەر ئەم ئامێرەدا دەسڕدرێتەوە؛ هەموو ڕێکخستنەکانی شفرەی ئەمسەر-ئەوسەر و هەموو بەردەنگ و وتووێژ و پەیام و ڕەنگاڵەکان و ئیدی ناگەڕێنەوە.</string>
-    <string name="switching_account">گۆڕانی هەژمار...</string>
     <string name="try_connect_now">هەوڵدان بۆ گرێدان</string>
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
@@ -412,7 +393,6 @@
     <string name="pref_profile_photo">وێنەی لادیمەن</string>
     <string name="pref_blocked_contacts">هەژمارە ئاستەنگکراوەکان</string>
     <string name="blocked_empty_hint">ئەگەر هەژمارێک ئاستەنگ بکەیت، لێرەدا پیشان دەدرێت.</string>
-    <string name="pref_profile_photo_remove_ask">وێنەی لادیمەنەکەت دەسڕیتەوە؟</string>
     <string name="pref_password_and_account_settings">هەژمار و تێپەڕوشە</string>
     <string name="pref_your_name">ناو</string>
     <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
@@ -504,8 +484,6 @@
 
     <!-- automatically delete message -->
     <string name="delete_old_messages">سڕینەوەی پەیامە کۆنەکان</string>
-    <!-- devs: autodel_title is deprecated, use delete_old_messages instead -->
-    <string name="autodel_title">سڕینەوەی-خۆکاری پەیامەکان</string>
     <string name="autodel_device_title">سڕینەوەی پەیامەکان لەسەر مۆبایەلەکت</string>
     <string name="autodel_server_title">سڕینەوەی پەیامەکان لەسەر سێرڤەر</string>
     <string name="autodel_confirm">تێگەیشتم، هەموو ئەم پەیامانە بسڕەوە</string>
@@ -590,9 +568,6 @@
     <string name="contact_setup_changed">ڕێکخستن بۆ %1$s گۆڕا.</string>
     <string name="verified_group_explain">کۆڕی پشتڕاستکراوە (لە قۆناخی تاقیکردنەوەدایە) پارێزراودەبێت بەرانبەر هێرشەکان. ئەندامان لەلایەن ئەندامانی دیکەوە پشتڕاست دەکرێنەوە و پەیامەکان هەمیشە شفرەکراوی ئەمسەر-ئەوسەر دەبن.</string>
     <string name="copy_qr_data_success">ناونیشانی وێبی QRەکە ڕوونووس کرا.</string>
-    <!-- notifications  -->
-    <string name="notify_n_messages_in_m_chats">%1$d پەیامی نوێ لە %2$d وتووێژدا</string>
-    <string name="notify_mark_read">نیشانەی خوێندنەوە</string>
     <string name="notify_reply_button">وەڵام دانەوە</string>
     <string name="notify_new_message">پەیامی نوێ</string>
     <string name="notify_background_connection_enabled">پەیوەندی پشتخان چالاک کرا</string>
@@ -635,36 +610,19 @@
     <string name="no_chat_selected_suggestion_desktop">وتووێژێک هەڵبژێرە یان وتووێژێکی نوێ درووست بکە</string>
     <string name="write_message_desktop">پەیامێک بنووسە</string>
     <string name="encryption_info_title_desktop">زانیاری شفرەکردن</string>
-    <string name="contact_detail_title_desktop">پێناسەی بەردەنگ</string>
-    <string name="contact_request_title_desktop">داخوازی بەردەنگ بوون</string>
     <string name="delete_message_desktop">سڕینەوەی پەیام</string>
     <string name="more_info_desktop">زانیاری زۆرتر</string>
-    <string name="logout_desktop">چوونەدەرەوە</string>
     <string name="encryption_info_desktop">پیشاندانی زانیاری شفرەکردن</string>
-    <string name="verified_desktop">پشتڕاستکراوە</string>
     <string name="remove_desktop">سڕینەوە</string>
     <string name="save_desktop">پاشەکەوت کردن</string>
-    <string name="add_contact_desktop">زیادکردنی بەردەنگ</string>
-    <string name="login_required_desktop">پێویستە</string>
     <string name="name_desktop">ناو</string>
     <string name="autocrypt_key_transfer_desktop">گواستنەوەی کلیلی ئۆتۆکریپت</string>
-    <string name="reply_to_message_desktop">وەڵامی ئەو پەیامە بدەوە</string>
     <string name="select_group_image_desktop">هەڵبژاردنی وێنەی کۆڕ</string>
     <string name="imex_progress_title_desktop">پرۆسەی یەدەک هەڵگرتن</string>
-    <string name="download_attachment_desktop">داگرتنی پێوەلکاو</string>
     <string name="export_backup_desktop">هەناردەکردنی یەدەک</string>
-    <string name="new_message_from_desktop">پەیامی نوێ لەلایەن</string>
-    <string name="unblock_contacts_desktop">لابردنی ئاستەنگی بەردەنگەکان</string>
-    <string name="none_blocked_desktop">تا ئێستا هیچ بەردەنگێک ئاستەنگ نەکراوە</string>
     <string name="create_chat_error_desktop">وتووێژەکە ڕێک نەخرا.</string>
-    <string name="ask_delete_chat_desktop">ئەم وتووێژە دەسڕیتەوە؟</string>
-    <string name="email_validation_failed_desktop">ناونیشانی ئیمەیل پێویستە</string>
-    <string name="me_desktop">من</string>
-    <string name="in_this_group_desktop">ئەندامەکانی کۆڕ</string>
     <string name="message_detail_sent_desktop">هەنێردراو</string>
     <string name="message_detail_received_desktop">وەرگیراو</string>
-    <string name="message_detail_from_desktop">لەلایەن</string>
-    <string name="message_detail_to_desktop">بۆ</string>
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">دۆخی گەیشتن: هەڵە</string>
     <string name="a11y_encryption_padlock">قفڵی شفرەکردن</string>

@@ -169,10 +169,6 @@
     <string name="fast">Snel</string>
     <string name="slow">Langzaam</string>
 
-    <string name="message_delivered">Bericht afgeleverd</string>
-    <string name="message_read">Bericht gelezen</string>
-
-
     <!-- menu labels (or icon, buttons...) -->
     <string name="menu_new_contact">Nieuw contactpersoon</string>
     <string name="menu_new_chat">Nieuw gesprek</string>
@@ -198,9 +194,7 @@
     <string name="menu_delete_chat">Gesprek verwijderen</string>
     <string name="ask_delete_named_chat">Weet je zeker dat je ‘%1$s’ wilt verwijderen?</string>
     <string name="menu_delete_messages">Berichten verwijderen</string>
-    <string name="menu_delete_image">Afbeelding verwijderen</string>
     <string name="delete_contact">Contactpersoon verwijderen</string>
-    <string name="menu_delete_locations">Wil je alle locaties verwijderen?</string>
     <string name="menu_delete_location">Wil je deze locatie verwijderen?</string>
     <string name="menu_message_details">Berichtinformatie</string>
     <string name="menu_copy_to_clipboard">Kopiëren naar klembord</string>
@@ -211,7 +205,6 @@
     <string name="menu_copy_email_to_clipboard">E-mailadres kopiëren</string>
     <string name="paste_from_clipboard">Plakken van klembord</string>
     <string name="menu_forward">Bericht doorsturen</string>
-    <string name="menu_resend">Bericht opnieuw versturen</string>
     <string name="menu_reply">Bericht beantwoorden</string>
     <string name="menu_mute">Meldingen uitschakelen</string>
     <string name="menu_unmute">Meldingen inschakelen</string>
@@ -234,12 +227,9 @@
     <string name="privacy_policy">Privacybeleid</string>
     <string name="menu_select_all">Alles selecteren</string>
     <string name="select_more">Meer selecteren</string>
-    <string name="menu_expand">Uitvouwen</string>
     <string name="menu_edit_name">Naam wijzigen</string>
     <string name="menu_settings">Instellingen</string>
     <string name="menu_advanced">Geavanceerd</string>
-    <string name="menu_deaddrop">Contactpersoonverzoeken</string>
-    <string name="menu_deaddrop_subtitle">Druk op een bericht om een gesprek te beginnen</string>
     <string name="menu_view_profile">Profiel bekijken</string>
     <string name="menu_zoom_in">Inzoomen</string>
     <string name="menu_zoom_out">Uitzoomen</string>
@@ -273,7 +263,6 @@
     <string name="mute_for_seven_days">7 dagen lang uitschakelen</string>
     <string name="mute_forever">Permanent uitschakelen</string>
 
-    <string name="share_location_once">eenmalig</string>
     <string name="share_location_for_5_minutes">5 minuten lang</string>
     <string name="share_location_for_30_minutes">30 minuten lang</string>
     <string name="share_location_for_one_hour">1 uur lang</string>
@@ -291,7 +280,6 @@
     <string name="videochat_invite_user_hint">Hiervoor hebben jullie beiden een compatibele app of webbrowser nodig.</string>
     <string name="videochat_contact_invited_hint">%1$s is uitgenodigd voor een videogesprek.</string>
     <string name="videochat_you_invited_hint">Je bent uitgenodigd voor een videogesprek.</string>
-    <string name="videochat_will_open_in_your_browser">Het videogesprek wordt geopend in je webbrowser.</string>
     <string name="videochat_tap_to_join">Druk om deel te nemen</string>
     <string name="videochat_tap_to_open">Druk om te openen</string>
     <string name="videochat_instance">Videogespreksinstantie</string>
@@ -357,7 +345,6 @@
         <item quantity="one">%d nieuw bericht</item>
         <item quantity="other">%d nieuwe berichten</item>
     </plurals>
-    <string name="chat_no_messages_hint">Verstuur een bericht aan %1$s:\n\n• %2$s hoeft Delta Chat niet te gebruiken.\n\n• Het afleveren van het eerste bericht kan even duren en onversleuteld zijn.</string>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
     <string name="chat_new_one_to_one_hint">Verstuur een bericht. %1$s hoeft voor dit gesprek geen gebruik te maken van Delta Chat.</string>
     <string name="chat_new_broadcast_hint">Als je een verzendlijst maakt, dan onhvangen anderen bericht van jou in hun privégesprekken.\n\nDe ontvangers kunnen elkaar echter niet zien.</string>
@@ -378,14 +365,10 @@
     <string name="saved_messages_explain">• Stuur berichten door naar hier om ze snel terug te kunnen lezen\n\n• Maak aantekeningen of spraakopnamen\n\n• Voeg media toe om deze op te slaan</string>
     <!-- this "Saved" should match the "Saved" from "Saved messages" -->
     <string name="saved">Opgeslagen</string>
-    <string name="chat_contact_request">Contactpersoonverzoek</string>
-    <string name="chat_no_contact_requests">Geen contactpersoonverzoeken.\n\nAls je wilt dat klassieke e-mail hier verschijnt in de vorm van contactpersoonverzoeken, dan kun je dat aangeven in de app-instellingen.</string>
     <string name="retry_send">Bericht opnieuw versturen</string>
-    <string name="send_failed">Kan bericht niet versturen</string>
     <!-- reasons for a disabled message composer -->
     <string name="messaging_disabled_not_in_group">Alleen leden kunnen berichten versturen aan deze groep. Vraag aan een lid om lid te worden.</string>
     <string name="messaging_disabled_device_chat">Je kunt geen berichten versturen omdat dit gesprek alleen lokaal gegenereerde berichten bevat.</string>
-    <string name="messaging_disabled_deaddrop">Druk op een bericht om het contactpersoonverzoek goed te keuren of af te wijzen</string>
     <string name="messaging_disabled_mailing_list">Het versturen van berichten naar mailinglijsten wordt nog niet ondersteund</string>
     <string name="cannot_display_unsuported_file_type">Het volgende bestandstype kan niet worden getoond: %s</string>
     <string name="attachment_failed_to_load">De bijlage kan niet worden geladen</string>
@@ -394,7 +377,6 @@
 
     <!-- mailing lists -->
     <string name="mailing_list">Mailinglijst</string>
-    <string name="ask_show_mailing_list">Wil je de mailinglijst ‘%1$s’ tonen?</string>
     <string name="mailing_list_profile_info">Wijzigingen aan de mailinglijstnaam en -afbeelding worden alleen op dit apparaat getoond.</string>
 
     <!-- map -->
@@ -431,7 +413,6 @@
     <string name="group_create_button">Groep aanmaken</string>
     <string name="group_please_enter_group_name">Voer een naam in voor de groep.</string>
     <string name="group_add_members">Deelnemers toevoegen</string>
-    <string name="group_hello_draft">Hallo, ik heb zojuist de groep \"%1$s\" voor ons gemaakt.</string>
     <string name="group_self_not_in_group">Om deze actie uit te kunnen voeren moet je deelnemen aan de groep.</string>
     <string name="profile_encryption">Versleuteling</string>
     <string name="profile_shared_chats">Gedeelde gesprekken</string>
@@ -513,8 +494,6 @@
     <string name="import_backup_no_backup_found">Geen back-ups aangetroffen.\n\nKopieer de back-up naar \"%1$s\" en probeer het opnieuw of druk op \"Aan de slag\" om het normale instelproces te doorlopen.</string>
     <!-- Translators: %1$s will be replaced by the e-mail address -->
     <string name="login_error_cannot_login">Kan niet inloggen als \"%1$s\". Controleer het e-mailadres en wachtwoord.</string>
-    <!-- Translators: %1$s will be replaced by the server name (eg. imap.somewhere.org) and %2$s will be replaced by the human-readable response from the server. this response may be a single word or some sentences and may or may not be localized. -->
-    <string name="login_error_server_response">Antwoord van %1$s: %2$s\n\nSommige providers plaatsen extra informatie in je Postvak IN. Je kunt dit controleren in de app of webversie. Neem contact op met je provider of vrienden als je problemen ervaart.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Ongeldige certificaten accepteren</string>
     <string name="used_settings">Gebruikte instellingen:</string>
@@ -523,7 +502,6 @@
     <string name="delete_account">Account verwijderen</string>
     <string name="delete_account_ask">Weet je zeker dat je je accountgegevens wilt verwijderen?</string>
     <string name="delete_account_explain_with_name">Alle gegevens van ‘%s’ worden verwijderd: de eind-tot-eindinstellingen, contactpersonen, gesprekken, berichten en media. Deze actie kan niet ongedaan worden gemaakt.</string>
-    <string name="switching_account">Bezig met overschakelen…</string>
     <string name="unconfigured_account">Niet-ingesteld account</string>
     <string name="unconfigured_account_hint">Open een account om het in te stellen.</string>
     <string name="try_connect_now">Probeer te verbinden</string>
@@ -547,7 +525,6 @@
     <string name="pref_profile_photo">Profielfoto</string>
     <string name="pref_blocked_contacts">Geblokkeerde contactpersonen</string>
     <string name="blocked_empty_hint">Geblokkeerde contactpersonen worden hier getoond.</string>
-    <string name="pref_profile_photo_remove_ask">Profielfoto verwijderen?</string>
     <string name="pref_password_and_account_settings">Wachtwoord en account</string>
     <string name="pref_who_can_see_profile_explain">Je profielfoto, -naam en handtekening worden getoond in gesprekken, naast je berichten.</string>
     <string name="pref_your_name">Je naam</string>
@@ -668,8 +645,6 @@
 
     <!-- automatically delete message -->
     <string name="delete_old_messages">Oude berichten verwijderen</string>
-    <!-- devs: autodel_title is deprecated, use delete_old_messages instead -->
-    <string name="autodel_title">Berichten automatisch verwijderen</string>
     <string name="autodel_device_title">Berichten verwijderen van apparaat</string>
     <string name="autodel_server_title">Berichten verwijderen van server</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
@@ -765,7 +740,6 @@
     <string name="qrscan_contains_text">Gescande QR-codetekst:\n\n %1$s</string>
     <string name="qrscan_contains_url">Gescande QR-code-url:\n\n %1$s</string>
     <string name="qrscan_fingerprint_label">Vingerafdruk</string>
-    <string name="qrscan_x_verified_introduce_myself">%1$s is goedgekeurd - vertel iets over jezelf…</string>
     <string name="withdraw_verifycontact_explain">Deze QR-code kan door anderen worden gescand om contact met je op te nemen.\n\nJe kunt de QR-code hier deactiveren en opnieuw activeren door deze opnieuw te scannen.</string>
     <string name="withdraw_verifygroup_explain">Deze QR-code kan door anderen worden gescand om deel te nemen aan de groep ‘%1$s’.\n\nJe kunt de QR-code hier deactiveren en opnieuw activeren door deze opnieuw te scannen.</string>
     <string name="withdraw_qr_code">QR-code deactiveren</string>
@@ -784,7 +758,6 @@
     <string name="qrshow_join_contact_title">QR-uitnodigingscode</string>
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
     <string name="qrshow_join_contact_hint">Scan dit om een gesprek te beginnen met %1$s</string>
-    <string name="qrshow_join_contact_no_connection_hint">Voor het instellen van QR-codes is een internetverbinding vereist. Maak verbinding en probeer het opnieuw.</string>
     <string name="qrshow_join_contact_no_connection_toast">Geen internetverbinding; kan QR-codes niet instellen.</string>
     <string name="qraccount_ask_create_and_login">Wil je een nieuw e-mailadres aanmaken op ‘%1$s’ en daarmee inloggen?</string>
     <string name="qraccount_ask_create_and_login_another">Wil je een nieuw e-mailadres aanmaken op ‘%1$s’ en daarmee inloggen?\n\nJe reeds aanwezige account wordt niet verwijderd. Druk op de knop ‘Ander account kiezen’ om tussen accounts te schakelen.</string>
@@ -807,9 +780,7 @@
     <string name="mailto_link_could_not_be_decoded">De mailto-link kan niet worden ontcijferd: %1$s</string>
 
     <!-- notifications  -->
-    <string name="notify_n_messages_in_m_chats">%1$d nieuwe berichten in %2$d gesprekken</string>
     <string name="notify_dismiss">Verwerpen</string>
-    <string name="notify_mark_read">Markeren als gelezen</string>
     <string name="notify_reply_button">Beantwoorden</string>
     <string name="notify_new_message">Nieuw bericht</string>
     <string name="notify_background_connection_enabled">Achtergrondverbinding ingeschakeld</string>
@@ -869,48 +840,28 @@
     <string name="no_chat_selected_suggestion_desktop">Kies een gesprek of begin een gesprek</string>
     <string name="write_message_desktop">Schrijf een bericht</string>
     <string name="encryption_info_title_desktop">Versleutelingsinformatie</string>
-    <string name="contact_detail_title_desktop">Contactpersoongegevens</string>
-    <string name="contact_request_title_desktop">Contactpersoonverzoek</string>
     <string name="delete_message_desktop">Bericht verwijderen</string>
     <string name="more_info_desktop">Meer informatie</string>
-    <string name="logout_desktop">Uitloggen</string>
     <string name="timestamp_format_m_desktop">MMM D</string>
     <string name="encryption_info_desktop">Versleutelingsinformatie tonen</string>
-    <string name="verified_desktop">goedgekeurd</string>
     <string name="remove_desktop">Verwijderen</string>
     <string name="save_desktop">Opslaan</string>
-    <string name="add_contact_desktop">Contactpersoon toevoegen</string>
-    <string name="login_required_desktop">vereist</string>
     <string name="name_desktop">Naam</string>
     <string name="autocrypt_key_transfer_desktop">Autocrypt-sleuteloverdracht</string>
     <string name="initiate_key_transfer_desktop">Een ‘Autocrypt-instelbericht’ deelt je eind-tot-eindinstellingen veilig met andere Autocrypt-compatibele apps. De instellingen zijn versleuteld middels een code die hier wordt getoond en moet worden overgetypt op het andere apparaat.</string>
-    <string name="reply_to_message_desktop">Bericht beantwoorden</string>
     <string name="select_group_image_desktop">Kies een groepsafbeelding</string>
     <string name="imex_progress_title_desktop">Back-upvoortgang</string>
-    <string name="download_attachment_desktop">Bijlage downloaden</string>
     <string name="export_backup_desktop">Back-up exporteren</string>
-    <string name="transfer_key_desktop">Sleuteloverdracht</string>
     <string name="show_key_transfer_message_desktop">Je sleutel is aan jezelf verstuurd. Ga naar het andere apparaat en open het instelbericht. Je zou nu moeten worden gevraagd om een code. Typ de volgende getallen in het invoerveld:</string>
-    <string name="new_message_from_desktop">Nieuw bericht van</string>
-    <string name="unblock_contacts_desktop">Contactpersonen deblokkeren</string>
-    <string name="none_blocked_desktop">Nog geen geblokkeerde contactpersonen</string>
     <string name="autocrypt_correct_desktop">Autocrypt-instellingen overgedragen!</string>
     <string name="autocrypt_incorrect_desktop">Onjuiste instelcode; probeer het opnieuw.</string>
     <string name="create_chat_error_desktop">Kan geen gesprek beginnen.</string>
-    <string name="ask_delete_chat_desktop">Weet je zeker dat je dit gesprek wilt verwijderen?</string>
-    <string name="email_validation_failed_desktop">E-mailadres vereist.</string>
     <string name="forget_login_confirmation_desktop">Wil je dit account verwijderen? Alles wordt verwijderd: je eind-tot-eindinstellingen, contactpersonen, gesprekken, berichten en media. Deze actie kan niet ongedaan worden gemaakt.</string>
     <string name="account_info_hover_tooltip_desktop2">E-mail: %1$s\nGrootte: %2$s\nAccount-id: %3$s</string>
-    <string name="me_desktop">ik</string>
-    <string name="in_this_group_desktop">Groepsleden</string>
-    <string name="not_in_this_group_desktop">Potentiële groepsleden (niet in de groep)</string>
     <string name="message_detail_sent_desktop">verstuurd</string>
     <string name="message_detail_received_desktop">ontvangen</string>
-    <string name="message_detail_from_desktop">van</string>
-    <string name="message_detail_to_desktop">aan</string>
     <string name="menu.view.developer.open.log.folder">Map met logbestanden openen</string>
     <string name="menu.view.developer.open.current.log.file">Huidig logbestand openen</string>
-    <string name="user_location_permission_explanation">Delta Chat heeft het locatietoegangsrecht nodig om je locatie te tonen en delen.</string>
     <string name="explain_desktop_minimized_disabled_tray_pref">Het systeemvakpictogram is uitgeschakeld omdat Delta Chat is gestart met de optie --minimized</string>
     <string name="no_spellcheck_suggestions_found">Geen suggesties gevonden.</string>
     <string name="show_window">Venster tonen</string>
