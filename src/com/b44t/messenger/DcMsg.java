@@ -15,12 +15,14 @@ public class DcMsg {
     public final static int DC_MSG_VIDEO = 50;
     public final static int DC_MSG_FILE = 60;
     public final static int DC_MSG_VIDEOCHAT_INVITATION = 70;
+    public final static int DC_MSG_W30 = 80;
 
     public final static int DC_STATE_UNDEFINED =  0;
     public final static int DC_STATE_IN_FRESH = 10;
     public final static int DC_STATE_IN_NOTICED = 13;
     public final static int DC_STATE_IN_SEEN = 16;
     public final static int DC_STATE_OUT_PREPARING = 18;
+    public final static int DC_STATE_OUT_DRAFT = 19;
     public final static int DC_STATE_OUT_PENDING = 20;
     public final static int DC_STATE_OUT_ERROR = 24;
     public final static int DC_STATE_OUT_DELIVERED = 26;
