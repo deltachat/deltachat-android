@@ -1,21 +1,17 @@
 package org.thoughtcrime.securesms.components;
 
-import android.content.Intent;
+
 import android.content.Context;
-import android.os.Build;
 
 import androidx.annotation.AttrRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.thoughtcrime.securesms.R;
-import org.thoughtcrime.securesms.W30Activity;
 import org.thoughtcrime.securesms.mms.DocumentSlide;
 import org.thoughtcrime.securesms.mms.SlideClickListener;
 import org.thoughtcrime.securesms.util.Util;
@@ -60,11 +56,7 @@ public class DocumentView extends FrameLayout {
         + " " + getFileType(documentSlide.getFileName()).toUpperCase();
     this.fileSize.setText(fileSize);
 
-    if (documentSlide.getFileName().or(getContext().getString(R.string.unknown)).endsWith("w30")) {
-      this.setOnClickListener(new W30Click(documentSlide.dcMsgId));
-    } else {
-      this.setOnClickListener(new OpenClickedListener(documentSlide));
-    }
+    this.setOnClickListener(new OpenClickedListener(documentSlide));
   }
 
   @Override
@@ -115,30 +107,4 @@ public class DocumentView extends FrameLayout {
     }
   }
 
-}
-
-class W30Click implements View.OnClickListener {
-  Integer messageId;
-  public W30Click(Integer appMessageId){
-    super();
-    messageId=appMessageId;
-  }
-
-   @Override
-    public void onClick (View v) {
-    Log.i("W30Click", "onClick");
-
-      if (Build.VERSION.SDK_INT >=  Build.VERSION_CODES.JELLY_BEAN_MR1) {
-        Intent intent =new Intent(v.getContext(), W30Activity.class);
-        intent.putExtra("appMessageId", messageId);
-  
-        v.getContext().startActivity(intent);
-        Log.i("W30Click", "called W30Activity to start");
-      } else {
-        // TODO don't show error message on androids bellow api 17
-        // see https://developer.android.com/reference/android/webkit/WebView#addJavascriptInterface(java.lang.Object,%20java.lang.String)
-        Toast.makeText(v.getContext(), "your version of Android is too old for this feature", Toast.LENGTH_LONG).show();
-      }
-
-    }
 }

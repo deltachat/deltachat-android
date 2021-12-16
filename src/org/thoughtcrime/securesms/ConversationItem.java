@@ -22,6 +22,7 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.Rect;
+import android.os.Build;
 import android.text.SpannableString;
 import android.text.TextUtils;
 import android.util.AttributeSet;
@@ -31,6 +32,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.DimenRes;
 import androidx.annotation.NonNull;
@@ -331,6 +333,10 @@ public class ConversationItem extends BaseConversationItem
       bodyText.setText(context.getString(R.string.autocrypt_asm_click_body));
       bodyText.setVisibility(View.VISIBLE);
     }
+    else if (messageRecord.getType() == DcMsg.DC_MSG_W30) {
+      bodyText.setText("[" + messageRecord.getFilename() + "] " + text);
+      bodyText.setVisibility(View.VISIBLE);
+    }
     else if (text.isEmpty()) {
       bodyText.setVisibility(View.GONE);
     }
@@ -359,6 +365,19 @@ public class ConversationItem extends BaseConversationItem
           eventListener.onDownloadClicked(messageRecord);
         } else {
           passthroughClickListener.onClick(view);
+        }
+      });
+    } else if (messageRecord.getType() == DcMsg.DC_MSG_W30) {
+      msgActionButton.setVisibility(View.VISIBLE);
+      msgActionButton.setEnabled(true);
+      msgActionButton.setText("Start…");
+      msgActionButton.setOnClickListener(view -> {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+          Intent intent =new Intent(context, W30Activity.class);
+          intent.putExtra("appMessageId", messageRecord.getId());
+          context.startActivity(intent);
+        } else {
+          Toast.makeText(view.getContext(), "At least Android 4.3 (Jelly Bean) required for w30 apps.", Toast.LENGTH_LONG).show();
         }
       });
     }
