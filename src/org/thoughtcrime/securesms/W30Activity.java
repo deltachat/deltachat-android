@@ -12,13 +12,10 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
-import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcMsg;
 
-import org.json.JSONException;
-import org.json.JSONObject;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 
@@ -32,8 +29,6 @@ public class W30Activity extends WebViewActivity implements DcEventCenter.DcEven
   private static final String INTERNAL_DOMAIN = "local.app";
   private InternalJSApi internalJSApi;
   private DcContext dcContext;
-  private DcChat dcChat;
-  private Integer chatId;
   private DcMsg dcAppMsg;
 
   @Override
@@ -47,10 +42,8 @@ public class W30Activity extends WebViewActivity implements DcEventCenter.DcEven
 
     this.dcContext = DcHelper.getContext(getApplicationContext());
     this.dcAppMsg = this.dcContext.getMsg(appMessageId);
-    this.dcChat = this.dcContext.getChat(this.dcAppMsg.getChatId());
-    chatId = this.dcAppMsg.getChatId();
 
-    internalJSApi = new InternalJSApi(appMessageId);
+    internalJSApi = new InternalJSApi();
 
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
         WebView.setWebContentsDebuggingEnabled(true);
@@ -103,86 +96,34 @@ public class W30Activity extends WebViewActivity implements DcEventCenter.DcEven
   @Override
   public void handleEvent(@NonNull DcEvent event) {
     int eventId = event.getId();
-    if ((eventId == DcContext.DC_EVENT_INCOMING_MSG && event.getData1Int() == chatId)) {
-      DcMsg msg = dcContext.getMsg(event.getData2Int());
-      Log.i(TAG, "handleEvent: "+ msg.getText());
-      if (msg.getText().startsWith(this.internalJSApi.appSessionId)) {
-        Log.i(TAG, "call JS");
-        webView.loadUrl("javascript:window.__w30update(" + msg.getId() + ");");
-        webView.loadUrl("javascript:console.log(window);");
-      }
+    if ((eventId == DcContext.DC_EVENT_W30_STATUS_UPDATE && event.getData1Int() == dcAppMsg.getId())) {
+      Log.i(TAG, "handleEvent");
+      webView.loadUrl("javascript:window.__w30update(" + event.getData2Int() + ");");
     }
   }
 
   class InternalJSApi {
-    String appSessionId;
-
-    public InternalJSApi(Integer appMessageId) {
-      // get session id
-      String msgInfo = W30Activity.this.dcContext.getMsgInfo(appMessageId);
-      appSessionId = msgInfo.split("Message-ID: ")[1].split("\n")[0];
+    @JavascriptInterface
+    public String selfAddr() {
+      return W30Activity.this.dcContext.getConfig("addr");
     }
 
     @JavascriptInterface
-    public String toString() {
-      return "[internal W30 api Object]";
-    }
-
-    @JavascriptInterface
-    public String getChatName() {
-      return W30Activity.this.dcChat.getName();
-    }
-
-    @JavascriptInterface
-    public int sendStatusUpdate(String _description, String payload) {
+    public boolean sendStatusUpdate(String descr, String payload) {
       Log.i(TAG, "sendStatusUpdate");
-      return W30Activity.this.dcContext.sendTextMsg(W30Activity.this.dcChat.getId(), appSessionId + "|:|" + payload);
-    }
-
-    String stateMsgToJSON(DcMsg msg) {
-      String text = msg.getText();
-      try {
-        JSONObject json = new JSONObject();
-        json.put("payload", text.substring(text.indexOf("|:|")+3));
-        json.put("authorId", msg.getFromId());
-        json.put("authorDisplayName", W30Activity.this.dcContext.getContact(msg.getFromId()).getDisplayName());
-        return json.toString();
-      } catch (JSONException e) {
-        e.printStackTrace();
-        return null;
-      }
+      return W30Activity.this.dcContext.sendW30StatusUpdate(W30Activity.this.dcAppMsg.getId(), descr, payload);
     }
 
     @JavascriptInterface
-    public String getStatusUpdate(int stateMsgId) {
-      DcMsg msg = W30Activity.this.dcContext.getMsg(stateMsgId);
-
-      if (msg.getText().startsWith(appSessionId)) {
-        return stateMsgToJSON(msg);
-      } else {
-        return null;
-      }
+    public String getStatusUpdate(int statusUpdateId) {
+      Log.i(TAG, "getStatusUpdate");
+      return W30Activity.this.dcContext.getW30StatusUpdates(W30Activity.this.dcAppMsg.getId(), statusUpdateId);
     }
 
     @JavascriptInterface
     public String getAllStatusUpdates() {
-      int[] msgs = W30Activity.this.dcContext.searchMsgs(W30Activity.this.chatId, appSessionId);
-
-      StringBuilder result = new StringBuilder("[");
-
-      for (int msgId: msgs) {
-        DcMsg msg = W30Activity.this.dcContext.getMsg(msgId);
-        if (msg.getText().startsWith(appSessionId)) {
-          result.append(stateMsgToJSON(msg)+",");
-        }
-      }
-      if(result.length() > 1) {
-        result.setCharAt(result.length()-1, ']');
-      } else {
-        result.append("]");
-      }
-
-      return result.toString();
+      Log.i(TAG, "getAllStatusUpdates");
+      return W30Activity.this.dcContext.getW30StatusUpdates(W30Activity.this.dcAppMsg.getId(), 0);
     }
   }
 }
