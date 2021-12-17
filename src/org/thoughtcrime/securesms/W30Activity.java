@@ -134,7 +134,8 @@ public class W30Activity extends WebViewActivity implements DcEventCenter.DcEven
     }
 
     @JavascriptInterface
-    public int sendStateUpdate(String _description, String payload) {
+    public int sendStatusUpdate(String _description, String payload) {
+      Log.i(TAG, "sendStatusUpdate");
       return W30Activity.this.dcContext.sendTextMsg(W30Activity.this.dcChat.getId(), appSessionId + "|:|" + payload);
     }
 
@@ -153,7 +154,7 @@ public class W30Activity extends WebViewActivity implements DcEventCenter.DcEven
     }
 
     @JavascriptInterface
-    public String getStateUpdate(int stateMsgId) {
+    public String getStatusUpdate(int stateMsgId) {
       DcMsg msg = W30Activity.this.dcContext.getMsg(stateMsgId);
 
       if (msg.getText().startsWith(appSessionId)) {
@@ -164,7 +165,7 @@ public class W30Activity extends WebViewActivity implements DcEventCenter.DcEven
     }
 
     @JavascriptInterface
-    public String getAllStateUpdates() {
+    public String getAllStatusUpdates() {
       int[] msgs = W30Activity.this.dcContext.searchMsgs(W30Activity.this.chatId, appSessionId);
 
       StringBuilder result = new StringBuilder("[");
