@@ -46,7 +46,7 @@ public class W30Activity extends WebViewActivity implements DcEventCenter.DcEven
     webSettings.setJavaScriptEnabled(true);
     webSettings.setAllowFileAccess(false);
     webSettings.setBlockNetworkLoads(true);
-    webView.addJavascriptInterface(new InternalJSApi(), "W30");
+    webView.addJavascriptInterface(new InternalJSApi(), "InternalJSApi");
 
     webView.loadUrl(INTERNAL_SCHEMA + "://" + INTERNAL_DOMAIN + "/index.html");
   }
