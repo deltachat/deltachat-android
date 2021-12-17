@@ -27,7 +27,6 @@ public class W30Activity extends WebViewActivity implements DcEventCenter.DcEven
   private static final String TAG = W30Activity.class.getSimpleName();
   private static final String INTERNAL_SCHEMA = "web30";
   private static final String INTERNAL_DOMAIN = "local.app";
-  private InternalJSApi internalJSApi;
   private DcContext dcContext;
   private DcMsg dcAppMsg;
 
@@ -43,17 +42,11 @@ public class W30Activity extends WebViewActivity implements DcEventCenter.DcEven
     this.dcContext = DcHelper.getContext(getApplicationContext());
     this.dcAppMsg = this.dcContext.getMsg(appMessageId);
 
-    internalJSApi = new InternalJSApi();
-
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-        WebView.setWebContentsDebuggingEnabled(true);
-    }
-
     WebSettings webSettings = webView.getSettings();
     webSettings.setJavaScriptEnabled(true);
     webSettings.setAllowFileAccess(false);
     webSettings.setBlockNetworkLoads(true);
-    webView.addJavascriptInterface(internalJSApi, "W30");
+    webView.addJavascriptInterface(new InternalJSApi(), "W30");
 
     webView.loadUrl(INTERNAL_SCHEMA + "://" + INTERNAL_DOMAIN + "/index.html");
   }
