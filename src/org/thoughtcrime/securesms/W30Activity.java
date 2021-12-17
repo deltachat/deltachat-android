@@ -1,13 +1,11 @@
 package org.thoughtcrime.securesms;
 
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebResourceResponse;
 import android.webkit.WebSettings;
-import android.webkit.WebView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -108,15 +106,9 @@ public class W30Activity extends WebViewActivity implements DcEventCenter.DcEven
     }
 
     @JavascriptInterface
-    public String getStatusUpdate(int statusUpdateId) {
-      Log.i(TAG, "getStatusUpdate");
+    public String getStatusUpdates(int statusUpdateId) {
+      Log.i(TAG, "getStatusUpdates");
       return W30Activity.this.dcContext.getW30StatusUpdates(W30Activity.this.dcAppMsg.getId(), statusUpdateId);
-    }
-
-    @JavascriptInterface
-    public String getAllStatusUpdates() {
-      Log.i(TAG, "getAllStatusUpdates");
-      return W30Activity.this.dcContext.getW30StatusUpdates(W30Activity.this.dcAppMsg.getId(), 0);
     }
   }
 }
