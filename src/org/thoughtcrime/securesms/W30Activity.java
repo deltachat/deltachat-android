@@ -27,6 +27,7 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 
 public class W30Activity extends WebViewActivity implements DcEventCenter.DcEventDelegate  {
+  private static final String TAG = W30Activity.class.getSimpleName();
   private static final String INTERNAL_SCHEMA = "web30";
   private static final String INTERNAL_DOMAIN = "local.app";
   private InternalJSApi internalJSApi;
@@ -77,7 +78,7 @@ public class W30Activity extends WebViewActivity implements DcEventCenter.DcEven
 
   @Override
   protected WebResourceResponse interceptRequest(String rawUrl) {
-    Log.i("W30Activity", "interceptRequest: " + rawUrl);
+    Log.i(TAG, "interceptRequest: " + rawUrl);
     try {
       if (rawUrl == null) {
         throw new Exception("no url specified");
@@ -104,9 +105,9 @@ public class W30Activity extends WebViewActivity implements DcEventCenter.DcEven
     int eventId = event.getId();
     if ((eventId == DcContext.DC_EVENT_INCOMING_MSG && event.getData1Int() == chatId)) {
       DcMsg msg = dcContext.getMsg(event.getData2Int());
-      Log.i("WEBVIEW", "handleEvent: "+ msg.getText());
+      Log.i(TAG, "handleEvent: "+ msg.getText());
       if (msg.getText().startsWith(this.internalJSApi.appSessionId)) {
-        Log.i("WEBVIEW", "call JS");
+        Log.i(TAG, "call JS");
         webView.loadUrl("javascript:window.__w30update(" + msg.getId() + ");");
         webView.loadUrl("javascript:console.log(window);");
       }
