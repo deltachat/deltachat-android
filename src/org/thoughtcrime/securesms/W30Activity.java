@@ -28,6 +28,7 @@ import java.io.InputStream;
 
 public class W30Activity extends WebViewActivity implements DcEventCenter.DcEventDelegate  {
   private static final String INTERNAL_SCHEMA = "web30";
+  private static final String INTERNAL_DOMAIN = "local.app";
   private InternalJSApi internalJSApi;
   private DcContext dcContext;
   private DcChat dcChat;
@@ -60,7 +61,7 @@ public class W30Activity extends WebViewActivity implements DcEventCenter.DcEven
     webSettings.setBlockNetworkLoads(true);
     webView.addJavascriptInterface(internalJSApi, "W30");
 
-    webView.loadUrl(INTERNAL_SCHEMA + "://app/index.html");
+    webView.loadUrl(INTERNAL_SCHEMA + "://" + INTERNAL_DOMAIN + "/index.html");
   }
 
   @Override
