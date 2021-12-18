@@ -15,7 +15,7 @@ window.deltachat = (() => {
       return JSON.parse(InternalJSApi.getStatusUpdates(0));
     },
     sendStatusUpdate: (description, payload) => {
-      InternalJSApi.sendStatusUpdate(description, payload);
+      InternalJSApi.sendStatusUpdate(description, JSON.stringify(payload));
     },
   };
 })();
