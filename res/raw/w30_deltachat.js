@@ -3,7 +3,7 @@ window.deltachat = (() => {
 
   window.__w30update = (statusUpdateId) => {
     var updates = JSON.parse(InternalJSApi.getStatusUpdates(statusUpdateId));
-    if (updates.lenght == 1) {
+    if (updates.length === 1) {
       update_listener(updates[0]);
     }
   };
