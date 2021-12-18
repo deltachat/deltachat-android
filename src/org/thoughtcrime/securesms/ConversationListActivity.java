@@ -16,10 +16,22 @@
  */
 package org.thoughtcrime.securesms;
 
+import static org.thoughtcrime.securesms.ConversationActivity.CHAT_ID_EXTRA;
+import static org.thoughtcrime.securesms.ConversationActivity.STARTING_POSITION_EXTRA;
+import static org.thoughtcrime.securesms.map.MapDataManager.ALL_CHATS_GLOBAL_MAP;
+import static org.thoughtcrime.securesms.util.RelayUtil.REQUEST_RELAY;
+import static org.thoughtcrime.securesms.util.RelayUtil.acquireRelayMessageContent;
+import static org.thoughtcrime.securesms.util.RelayUtil.getDirectSharingChatId;
+import static org.thoughtcrime.securesms.util.RelayUtil.isDirectSharing;
+import static org.thoughtcrime.securesms.util.RelayUtil.isForwarding;
+import static org.thoughtcrime.securesms.util.RelayUtil.isRelayingMessageContent;
+import static org.thoughtcrime.securesms.util.RelayUtil.resetRelayingMessageContent;
+
 import android.content.Intent;
-import android.text.TextUtils;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -29,6 +41,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
 import androidx.appcompat.widget.TooltipCompat;
 
@@ -55,23 +68,13 @@ import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.SendRelayedMessageUtil;
 
-import static org.thoughtcrime.securesms.ConversationActivity.CHAT_ID_EXTRA;
-import static org.thoughtcrime.securesms.ConversationActivity.STARTING_POSITION_EXTRA;
-import static org.thoughtcrime.securesms.map.MapDataManager.ALL_CHATS_GLOBAL_MAP;
-import static org.thoughtcrime.securesms.util.RelayUtil.REQUEST_RELAY;
-import static org.thoughtcrime.securesms.util.RelayUtil.acquireRelayMessageContent;
-import static org.thoughtcrime.securesms.util.RelayUtil.getDirectSharingChatId;
-import static org.thoughtcrime.securesms.util.RelayUtil.isDirectSharing;
-import static org.thoughtcrime.securesms.util.RelayUtil.isForwarding;
-import static org.thoughtcrime.securesms.util.RelayUtil.isRelayingMessageContent;
-import static org.thoughtcrime.securesms.util.RelayUtil.resetRelayingMessageContent;
-
 public class ConversationListActivity extends PassphraseRequiredActionBarActivity
     implements ConversationListFragment.ConversationSelectedListener
 {
   @SuppressWarnings("unused")
   private static final String TAG = ConversationListActivity.class.getSimpleName();
   private static final String OPENPGP4FPR = "openpgp4fpr";
+  private static final String NDK_ARCH_WARNED = "ndk_arch_warned";
   public static final String CLEAR_NOTIFICATIONS = "clear_notifications";
 
   private final DynamicTheme    dynamicTheme    = new DynamicNoActionBarTheme();
@@ -109,7 +112,6 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 
     Toolbar toolbar = findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
-
     selfAvatar               = findViewById(R.id.self_avatar);
     title                    = findViewById(R.id.toolbar_title);
     searchToolbar            = findViewById(R.id.search_toolbar);
@@ -128,6 +130,63 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     selfAvatar.setOnClickListener(v -> AccountManager.getInstance().showSwitchAccountMenu(this));
 
     refresh();
+
+    if (BuildConfig.DEBUG) checkNdkArchitecture();
+  }
+
+  /**
+   * If the build script is invoked with a specific architecture (e.g.`./ndk-make.sh arm64-v8a`), it
+   * will compile the core only for this arch. This method checks if the arch was correct.
+   *
+   * In order to do this, `ndk-make.sh` writes its argument into the file `ndkArch`.
+   * `getNdkArch()` in `build.gradle` then reads this file and its content is assigned to
+   * `BuildConfig.NDK_ARCH`.
+   */
+  @SuppressWarnings("ConstantConditions")
+  private void checkNdkArchitecture() {
+    boolean wrongArch = false;
+
+    if (!TextUtils.isEmpty(BuildConfig.NDK_ARCH)) {
+      String archProperty = System.getProperty("os.arch");
+      String arch;
+
+      if (archProperty.startsWith("armv7")) arch = "armeabi-v7a";
+      else if (archProperty.equals("aarch64")) arch = "arm64-v8a";
+      else if (archProperty.equals("i686")) arch = "x86";
+      else if (archProperty.equals("x86_64")) arch = "x86_64";
+      else {
+        Log.e(TAG, "Unknown os.arch: " + archProperty);
+        arch = "";
+      }
+
+      if (!arch.equals(BuildConfig.NDK_ARCH)) {
+        wrongArch = true;
+
+        String message;
+        if (arch.equals("")) {
+          message = "This phone has the unknown architecture " + archProperty + ".\n\n"+
+                  "Please open an issue at https://github.com/deltachat/deltachat-android/issues.";
+        } else {
+          message = "Apparently you used `ndk-make.sh " + BuildConfig.NDK_ARCH + "`, but this device is " + arch + ".\n\n" +
+                  "You can use the app, but changes you made to the Rust code were not applied.\n\n" +
+                  "To compile in your changes, you can:\n" +
+                  "- Either run `ndk-make.sh " + arch + "` to build only for " + arch + " in debug mode\n" +
+                  "- Or run `ndk-make.sh` without argument to build for all architectures in release mode\n\n" +
+                  "If something doesn't work, please open an issue at https://github.com/deltachat/deltachat-android/issues!!";
+        }
+        Log.e(TAG, message);
+
+        if (!Prefs.getBooleanPreference(this, NDK_ARCH_WARNED, false)) {
+          new AlertDialog.Builder(this)
+                  .setMessage(message)
+                  .setPositiveButton(android.R.string.ok, null)
+                  .show();
+          Prefs.setBooleanPreference(this, NDK_ARCH_WARNED, true);
+        }
+      }
+    }
+
+    if (!wrongArch) Prefs.setBooleanPreference(this, NDK_ARCH_WARNED, false);
   }
 
   @Override

@@ -121,6 +121,7 @@ android {
 
         buildConfigField("String", "TEST_ADDR", buildConfigProperty("TEST_ADDR"))
         buildConfigField("String", "TEST_MAIL_PW", buildConfigProperty("TEST_MAIL_PW"))
+        buildConfigField("String", "NDK_ARCH", getNdkArch())
     }
 
     compileOptions {
@@ -229,8 +230,18 @@ String propertyOrEmpty(String name) {
     return (String) p
 }
 
-String environmentVariable(String name) {
+static String environmentVariable(String name) {
     String env = System.getenv(name)
     if (env == null) return ""
     return env
+}
+
+String getNdkArch() {
+    Properties properties = new Properties()
+    def file = project.rootProject.file('ndkArch')
+    if (!file.exists()) return "\"\""
+    properties.load(file.newDataInputStream())
+    def arch = properties.getProperty('NDK_ARCH')
+    if (arch == null) return "\"\""
+    return "\"$arch\""
 }

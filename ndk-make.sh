@@ -10,9 +10,9 @@
 #
 #     adb shell uname -m
 #
-# or:
-#
-#     adb shell cat /proc/cpuinfo
+# Or you just guess your phone's architecture to be arm64-v8a and if you
+# guessed wrongly, a warning message will pop up inside the app, telling
+# you what the correct one is.
 #
 # The values in the following lines mean the same:
 #
@@ -27,6 +27,9 @@
 # typing `nmake`:
 #
 # nmake() {(cd ../..; ./ndk-make.sh arm64-v8a && ./gradlew installFatDebug; notify-send "install finished")}
+#
+#
+# If anything doesn't work, please open an issue!!
 
 set -e
 echo "starting time: `date`"
@@ -142,5 +145,11 @@ ndk-build
 cd jni
 # Restore old Application.mk:
 echo "$oldDotMk" > Application.mk
+
+if test $1; then
+    echo "NDK_ARCH=$1" > ../ndkArch
+else
+    rm ../ndkArch 2>/dev/null || true # Remove ndkArch, ignore if it doesn't exist
+fi
 
 echo "ending time: `date`"
