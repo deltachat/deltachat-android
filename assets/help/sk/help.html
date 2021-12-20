@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8" /><meta name="viewport" content="initial-scale=1.0" /><link rel="stylesheet" href="../help.css" /></head><body><ul id="top">
+  <li><a href="#čo-je-to-delta-chat">Čo je to Delta Chat?</a>
+    <ul>
+      <li><a href="#ako-nájdem-ľudí-s-ktorými-môžem-chatovať">Ako nájdem ľudí s ktorými môžem chatovať?</a></li>
+      <li><a href="#aké-sú-výhody-delta-chatu-v-porovnaní-s-inými-messengermi">Aké sú výhody Delta Chatu v porovnaní s inými messengermi?</a></li>
+      <li><a href="#ktoré-správy-sa-zobrazujú-v-delta-chate">Ktoré správy sa zobrazujú v Delta Chate?</a></li>
+      <li><a href="#podporuje-delta-chat-obrázky-videá-a-iné-prílohy">Podporuje Delta Chat obrázky, videá a iné prílohy?</a></li>
+      <li><a href="#kto-vidí-moju-profilovú-fotku">Kto vidí moju profilovú fotku?</a></li>
+      <li><a href="#podporuje-delta-chat-e-maily-html">Podporuje Delta Chat e-maily HTML?</a></li>
+      <li><a href="#prečo-musím-zadávať-svoje-e-mailové-heslo-do-delta-chat-je-to-bezpečné">Prečo musím zadávať svoje e-mailové heslo do Delta Chat? Je to bezpečné?</a></li>
+      <li><a href="#aké-povolenia-potrebuje-delta-chat">Aké povolenia potrebuje Delta Chat?</a></li>
+    </ul>
+  </li>
+  <li><a href="#skupiny">Skupiny</a>
+    <ul>
+      <li><a href="#vytvorenie-skupiny">Vytvorenie skupiny</a></li>
+      <li><a href="#pridajte-členov-do-skupiny">Pridajte členov do skupiny</a></li>
+      <li><a href="#čo-je-overená-skupina-prečo-je-to-experimentálne">Čo je overená skupina? Prečo je to experimentálne?</a></li>
+      <li><a href="#omylom-som-sa-vymazal">Omylom som sa vymazal.</a></li>
+      <li><a href="#už-viac-nechcem-dostávať-správy-od-skupiny">Už viac nechcem dostávať správy od skupiny.</a></li>
+      <li><a href="#čo-znamenajú-zaškrtnutia-zobrazené-vedľa-odchádzajúcich-správ">Čo znamenajú zaškrtnutia zobrazené vedľa odchádzajúcich správ?</a></li>
+    </ul>
+  </li>
+  <li><a href="#encryption">Šifrovanie</a>
+    <ul>
+      <li><a href="#podporuje-delta-chat-šifrovanie-typu-end-to-end">Podporuje Delta Chat šifrovanie typu end-to-end?</a></li>
+      <li><a href="#čo-musím-urobiť-aby-som-aktivoval-šifrovanie-typu-end-to-end">Čo musím urobiť, aby som aktivoval šifrovanie typu end-to-end?</a></li>
+      <li><a href="#ak-nie-je-k-dispozícii-šifrovanie-typu-end-to-end-nie-je-pripojenie-šifrované-vôbec">Ak nie je k dispozícii šifrovanie typu end-to-end, nie je pripojenie šifrované vôbec?</a></li>
+      <li><a href="#ako-môžem-overiť-kryptografický-stav-u-odosielateľa">Ako môžem overiť kryptografický stav u odosielateľa?</a></li>
+      <li><a href="#ako-môžem-skontrolovať-šifrovanie-správ">Ako môžem skontrolovať šifrovanie správ?</a></li>
+      <li><a href="#ktoré-štandardy-sa-používajú-na-šifrovanie-typu-end-to-end">Ktoré štandardy sa používajú na šifrovanie typu end-to-end?</a></li>
+      <li><a href="#aký-je-rozdiel-medzi-overenými-skupinami-a-rozhovormi-11-s-overenými-kontaktmi">Aký je rozdiel medzi overenými skupinami a rozhovormi 1:1 s overenými kontaktmi?</a></li>
+      <li><a href="#podporuje-delta-chat-perfect-forward-secrecy">Podporuje Delta Chat Perfect Forward Secrecy?</a></li>
+      <li><a href="#ako-delta-chat-chráni-moje-metadáta">Ako Delta Chat chráni moje metadáta?</a></li>
+      <li><a href="#môžem-znova-použiť-svoj-existujúci-súkromný-kľúč">Môžem znova použiť svoj existujúci súkromný kľúč?</a></li>
+      <li><a href="#nemôžem-importovať-môj-existujúci-pgp-kľúč-do-delta-chat">Nemôžem importovať môj existujúci PGP kľúč do Delta Chat.</a></li>
+      <li><a href="#prečo-nepoužívate-pep-pretty-easy-privacy">Prečo nepoužívate pEp (pretty easy privacy)?</a></li>
+    </ul>
+  </li>
+  <li><a href="#multiclient">Multiklient</a>
+    <ul>
+      <li><a href="#môžem-používať-delta-chat-na-viacerých-zariadeniach-súčasne">Môžem používať Delta Chat na viacerých zariadeniach súčasne?</a></li>
+      <li><a href="#máte-nejaké-plány-na-zavedenie-webového-klienta-delta-chat">Máte nejaké plány na zavedenie webového klienta Delta Chat?</a></li>
+      <li><a href="#prečo-sa-môžem-rozhodnúť-nesledovať-doručenú-poštu">Prečo sa môžem rozhodnúť nesledovať doručenú poštu?</a></li>
+      <li><a href="#na-čo-je-dobré-nastavenie-odoslať-kópiu-sebe">Na čo je dobré nastavenie „Odoslať kópiu sebe“?</a></li>
+      <li><a href="#prečo-si-môžem-vybrať-sledovanie-priečinka-odoslané">Prečo si môžem vybrať sledovanie priečinka „Odoslané“?</a></li>
+      <li><a href="#prečo-sa-môžem-rozhodnúť-nesledovať-priečinok-deltachat">Prečo sa môžem rozhodnúť nesledovať priečinok DeltaChat?</a></li>
+    </ul>
+  </li>
+  <li><a href="#rôzne">Rôzne</a>
+    <ul>
+      <li><a href="#funguje-delta-chat-s-mojím-poskytovateľom-e-mailov">Funguje Delta Chat s mojím poskytovateľom e-mailov?</a></li>
+      <li><a href="#ak-delta-chat-používa-e-mail-je-to-naozaj-instantný-messenger">Ak Delta Chat používa e-mail, je to naozaj <em>Instantný</em> Messenger?</a></li>
+      <li><a href="#je-delta-chat-kompatibilný-s-protonmail--tutanota--criptext">Je Delta Chat kompatibilný s Protonmail / Tutanota / Criptext?</a></li>
+      <li><a href="#zaujímajú-ma-technické-detaily-môžete-mi-povedať-viac">Zaujímajú ma technické detaily. Môžete mi povedať viac?</a></li>
+      <li><a href="#ako-sa-financuje-vývoj-delta-chat">Ako sa financuje vývoj Delta Chat?</a></li>
+    </ul>
+  </li>
+</ul>
+
+
+
+<h2 id="čo-je-to-delta-chat">
+        
+        
+          Čo je to Delta Chat? <a href="#čo-je-to-delta-chat" class="anchor"></a>
+        
+        
+      </h2>
+
+<p>Delta Chat je nová chatovacia aplikácia, ktorá odosiela správy prostredníctvom e-mailov, ak je to možné, šifrované pomocou funkcie Autocrypt.
+<em>*Nemusíte sa nikde prihlasovať, stačí použiť svoj existujúci e-mailový účet s Delta Chat.</em></p>
+
+<p><img style="float:right; width:50%; max-width:360%; margin:1em;" src="../delta-what-optim.png" /></p>
+    
+      <h3 id="ako-nájdem-ľudí-s-ktorými-môžem-chatovať">
+        
+        
+          Ako nájdem ľudí s ktorými môžem chatovať? <a href="#ako-nájdem-ľudí-s-ktorými-môžem-chatovať" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>S Delta Chatom môžete písať na každú existujúcu e-mailovú adresu – dokonca
+aj ak príjemca nepoužíva aplikáciu Delta Chat. Nie je potrebné
+pre príjemcu, aby si nainštaloval rovnakú aplikáciu, ako je tá vaša, ako pri iných messengeroch.</p>
+    
+      <h3 id="aké-sú-výhody-delta-chatu-v-porovnaní-s-inými-messengermi">
+        
+        
+          Aké sú výhody Delta Chatu v porovnaní s inými messengermi? <a href="#aké-sú-výhody-delta-chatu-v-porovnaní-s-inými-messengermi" class="anchor"></a>
+        
+        
+      </h3>
+
+<p><em>Nezávislý</em> od akejkoľvek spoločnosti alebo služieb. <em>Vy</em> vlastníte svoje údaje.</p>
+<ul>
+  <li>Vaše údaje nie sú uložené na centrálnom serveri, okrem prípadov keď všetci používatelia používajú rovnaký mailový server
+ rovnaké e-mailové servery</li>
+  <li>Svoj adresár nikomu nedistribuujete.</li>
+  <li><em>Rýchlo</em> pomocou Push-IMAP.</li>
+  <li><em>Najväčšia užívateľská základňa</em> - používatelia ktorý nemajú Delta Chat môžu byť taktiež kontaktovaný.</li>
+  <li><em>Kompatibilné</em> - nielen so sebou.</li>
+  <li><em>Elegantné</em> a <em>jednoduché</em> používateľské rozhranie.</li>
+  <li><em>Distribuovaný</em> systém.</li>
+  <li><em>Žiadny Spam</em> - predvolene sa zobrazujú iba správy od známych používateľov.</li>
+  <li><em>Spoľahlivý</em> - bezpečný pre profesionálne použitie.</li>
+  <li><em>Dôveryhodný</em> - možno použiť aj na obchodné správy.</li>
+  <li>Softvér založený na <em>Copyleft</em> and <em>Standards</em>.</li>
+</ul>
+    
+      <h3 id="ktoré-správy-sa-zobrazujú-v-delta-chate">
+        
+        
+          Ktoré správy sa zobrazujú v Delta Chate? <a href="#ktoré-správy-sa-zobrazujú-v-delta-chate" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Delta Chat automaticky zobrazuje:</p>
+
+<ul>
+  <li>Správy od kontaktov vo vašom <strong>adresári</strong></li>
+  <li>Správy od kontaktov <strong>kontaktovaných vami</strong></li>
+  <li><strong>Odpovede</strong> na správy, ktoré ste poslali vy</li>
+</ul>
+
+<p>Ostatné správy sa nezobrazujú automaticky a nájdete ich v časti <strong>Požiadavky na kontakt</strong>. V prípade potreby je možné odtiaľ začať chat.</p>
+    
+      <h3 id="podporuje-delta-chat-obrázky-videá-a-iné-prílohy">
+        
+        
+          Podporuje Delta Chat obrázky, videá a iné prílohy? <a href="#podporuje-delta-chat-obrázky-videá-a-iné-prílohy" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>Áno. Okrem čistého textu sa všetky prílohy e-mailov zobrazujú ako samostatné správy. Odchádzajúce správy dostávajú prílohy podľa potreby automaticky.</li>
+</ul>
+    
+      <h3 id="kto-vidí-moju-profilovú-fotku">
+        
+        
+          Kto vidí moju profilovú fotku? <a href="#kto-vidí-moju-profilovú-fotku" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>
+    <p>V nastaveniach si môžete pridať profilový obrázok. Ak napíšete svojim kontaktom
+alebo si ich pridáte pomocou QR kódu, automaticky to vidia ako váš profilový obrázok.</p>
+  </li>
+  <li>
+    <p>Kontakty, ktoré nepoužívajú Delta Chat, nevidia profilový obrázok
+(samozrejme, môžu si nainštalovať Delta Chat :)</p>
+  </li>
+  <li>
+    <p>Z dôvodu ochrany osobných údajov nikto nevidí váš profilový obrázok, kým im nenapíšete
+správu.</p>
+  </li>
+  <li>
+    <p>Váš profilový obrázok sa neposiela s každou správou, ale dostatočne pravidelne
+aby vaše kontakty znova dostali váš profilový obrázok, aj keď pridajú nové
+zariadenie.</p>
+  </li>
+</ul>
+    
+      <h3 id="podporuje-delta-chat-e-maily-html">
+        
+        
+          Podporuje Delta Chat e-maily HTML? <a href="#podporuje-delta-chat-e-maily-html" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>Áno. V prípade potreby dostanú prichádzajúce správy tlačidlo „Zobraziť celú správu“. Odchádzajúce e-maily vždy používajú obyčajný text.</li>
+</ul>
+    
+      <h3 id="prečo-musím-zadávať-svoje-e-mailové-heslo-do-delta-chat-je-to-bezpečné">
+        
+        
+          Prečo musím zadávať svoje e-mailové heslo do Delta Chat? Je to bezpečné? <a href="#prečo-musím-zadávať-svoje-e-mailové-heslo-do-delta-chat-je-to-bezpečné" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Rovnako ako v prípade iných e-mailových programov, ako sú Thunderbird, K9-Mail alebo Outlook,
+program potrebuje heslo, aby ste ho mohli používať na odosielanie e-mailov. Samozrejme,
+heslo je uložené iba vo vašom zariadení. Heslo sa prenáša iba na vášho poskytovateľa e-mailu (keď sa prihlásite), ktorý má aj tak prístup k vašim e-mailom.</p>
+
+<p>Ak používate poskytovateľa e-mailu s podporou OAuth2, ako je gmail.com alebo yandex.ru,
+nie je potrebné ukladať heslo do zariadenia. V tomto prípade iba 
+používa sa prístupový token.</p>
+
+<p>Keďže Delta Chat je Open Source, môžete skontrolovať <a href="https://github.com/deltachat/deltachat-core-rust/blob/master/src/login_param.rs">Zdrojový
+Kód</a>
+ak chcete overiť, že vaše poverenia sú spracované bezpečne. Sme radi
+o spätnej väzbe, vďaka ktorej je aplikácia bezpečnejšia pre všetkých našich používateľov.</p>
+    
+      <h3 id="aké-povolenia-potrebuje-delta-chat">
+        
+        
+          Aké povolenia potrebuje Delta Chat? <a href="#aké-povolenia-potrebuje-delta-chat" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>V závislosti od používaného operačného systému
+môžete byť požiadaní o udelenie povolení aplikácii.
+Delta Chat robí toto s týmito povoleniami:</p>
+
+<ul>
+  <li>Fotoaparát <em>(možno zakázať)</em>
+    <ul>
+      <li>fotografujte a natáčajte videá: na odosielanie fotografií</li>
+    </ul>
+  </li>
+  <li>Kontakty <em>(možno zakázať)</em>
+    <ul>
+      <li>prehliadnite si svoje kontakty: objavte kontakty, s ktorými môžete chatovať</li>
+    </ul>
+  </li>
+  <li>Poloha <em>(možno zakázať)</em>
+    <ul>
+      <li>prístup k približnej polohe (zdrojom polohy v sieti): pre funkciu streamovania polohy</li>
+      <li>prístup k presnej polohe (GPS a sieťové zdroje polohy): pre funkciu streamovania polohy</li>
+    </ul>
+  </li>
+  <li>Mikrofón <em>(možno zakázať)</em>
+    <ul>
+      <li>nahrávať zvuk: pre zvukové správy</li>
+    </ul>
+  </li>
+  <li>Úložisko <em>(možno zakázať)</em>
+    <ul>
+      <li>upraviť alebo odstrániť obsah vašej SD karty: na stiahnutie príloh správ</li>
+      <li>čítať obsah SD karty: zdieľať súbory so svojimi kontaktmi</li>
+    </ul>
+  </li>
+  <li>Ďalšie možnosti aplikácie
+    <ul>
+      <li>zmeniť nastavenia zvuku: aby ste si mohli si vybrať vyzváňacie tóny a hlasitosť pre upozornenia a zvukové správy</li>
+      <li>spustiť pri štarte: takže nemusíte spúšťať Delta Chat manuálne</li>
+      <li>ovládanie vibrácií: pre upozornenia</li>
+      <li>zobraziť sieťové pripojenia: na pripojenie k vášmu poskytovateľovi e-mailu</li>
+      <li>zabrániť spánku telefónu: takže môžete jednoduchšie skopírovať bezpečnostný kód počas správy nastavenia automatického šifrovania</li>
+      <li>mať úplný prístup k sieti: na pripojenie k vášmu poskytovateľovi e-mailu</li>
+      <li>zobraziť pripojenia Wi-Fi: na pripojenie k poskytovateľovi e-mailu</li>
+      <li>požiadať o ignorovanie optimalizácie batérie: pre používateľov, ktorí chcú neustále dostávať správy</li>
+    </ul>
+  </li>
+</ul>
+    
+      <h2 id="skupiny">
+        
+        
+          Skupiny <a href="#skupiny" class="anchor"></a>
+        
+        
+      </h2>
+    
+      <h3 id="vytvorenie-skupiny">
+        
+        
+          Vytvorenie skupiny <a href="#vytvorenie-skupiny" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>Vyberte <strong>Nový chat</strong> a potom <strong>Nová skupina</strong> z ponuky v pravom hornom rohu alebo stlačte príslušné tlačidlo v systéme Android/iOS.</li>
+  <li>Na nasledujúcej obrazovke vyberte <strong>členov skupiny</strong> a definujte <strong>názov skupiny</strong>. Môžete si tiež vybrať <strong>avatara skupiny</strong>.</li>
+  <li>Hneď ako napíšete <strong>prvú správu</strong> v skupine, všetci členovia sú informovaní o novej skupine a môžu odpovedať v skupine (pokiaľ nenapíšete správu v skupine, skupina je pre skupinu neviditeľná členovia).</li>
+</ul>
+    
+      <h3 id="pridajte-členov-do-skupiny">
+        
+        
+          Pridajte členov do skupiny <a href="#pridajte-členov-do-skupiny" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>Každý člen skupiny má <strong>rovnaké práva</strong> ako ktorýkoľvek iný. Z tohto dôvodu môže každý vymazať každého člena alebo pridať nového.</li>
+  <li>Ak chcete pridať alebo odstrániť členov, kliknite na názov skupiny v chate.</li>
+</ul>
+    
+      <h3 id="čo-je-overená-skupina-prečo-je-to-experimentálne">
+        
+        
+          Čo je overená skupina? Prečo je to experimentálne? <a href="#čo-je-overená-skupina-prečo-je-to-experimentálne" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>
+    <p>Overená skupina je chat, ktorý zaručuje bezpečnosť pred aktívnym
+útočníkom. Všetky správy v overenom zobrazení chatu sú šifrované e2e a
+členovia sa môžu pripojiť naskenovaním „QR pozývacieho kódu“. Všetci členovia sú tak
+navzájom prepojený reťazou pozvaní, ktoré zaručujú
+kryptografická konzistentnosť proti útokom aktívnej siete alebo útokom poskytovateľa.
+Viac o R&amp;D tejto funkcie je na: <a href="https://countermitm.readthedocs.io/en/latest/new.html">countermitm.readthedocs.io</a></p>
+  </li>
+  <li>
+    <p>Od decembra 2019 zostáva „overená skupina“ experimentálnou funkciou. 
+ Neustále sa zlepšuje a odvtedy bolo opravených veľa chýb od
+pôvodného zavedenie v roku 2018. Zostávajú však prípady, najmä
+ s veľkými skupinami, kde sa môžu vyskytnúť nezrovnalosti alebo sú správy
+nečitateľné. Začiatkom roku 2020 sa blíži bezpečnostná kontrola a niekoľko nových
+vývoj okolo protokolov qr-join prebieha tak šanca
+, že odstránime označenie „experimentálne“ v blízkej budúcnosti.</p>
+  </li>
+</ul>
+    
+      <h3 id="omylom-som-sa-vymazal">
+        
+        
+          Omylom som sa vymazal. <a href="#omylom-som-sa-vymazal" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>Keďže už nie ste členom skupiny, nemôžete sa znova pridať. 
+Žiadny problém, jednoducho požiadajte ktoréhokoľvek iného člena skupiny v bežnom chate, aby vás znova pridal.</li>
+</ul>
+    
+      <h3 id="už-viac-nechcem-dostávať-správy-od-skupiny">
+        
+        
+          Už viac nechcem dostávať správy od skupiny. <a href="#už-viac-nechcem-dostávať-správy-od-skupiny" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>
+    <p>Vymažte sa zo zoznamu členov alebo odstráňte celý chat.
+ Ak sa chcete neskôr znova pripojiť k skupine, požiadajte iného člena skupiny, aby vás znova pridal.</p>
+  </li>
+  <li>
+    <p>Ako alternatívu môžete tiež “Stlmiť” skupinu - znamená to, že budete dostávať všetky správy a
+môžete stále písať, ale už nebudete upozorňovaní na žiadne nové správy.</p>
+  </li>
+</ul>
+    
+      <h3 id="čo-znamenajú-zaškrtnutia-zobrazené-vedľa-odchádzajúcich-správ">
+        
+        
+          Čo znamenajú zaškrtnutia zobrazené vedľa odchádzajúcich správ? <a href="#čo-znamenajú-zaškrtnutia-zobrazené-vedľa-odchádzajúcich-správ" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li><strong>Jedno zaškrtnutie</strong> znamená, že správa bola úspešne odoslaná vášmu poskytovateľovi.</li>
+  <li><strong>Dve začiarknutia</strong> znamenajú, že aspoň jedno zariadenie príjemcov
+nahlásilo, že dostali správu.</li>
+  <li>Príjemcovia môžu mať zakázané potvrdenia o prečítaní,
+takže aj keď vidíte len jedno zaškrtnutie, správa môže byť prečítaná.</li>
+  <li>Naopak, dve zaškrtnutia automaticky neznamenajú
+že človek správu prečítal alebo jej porozumel ;)</li>
+</ul>
+    
+      <h2 id="encryption">
+        
+        
+          Šifrovanie <a href="#encryption" class="anchor"></a>
+        
+        
+      </h2>
+    
+      <h3 id="podporuje-delta-chat-šifrovanie-typu-end-to-end">
+        
+        
+          Podporuje Delta Chat šifrovanie typu end-to-end? <a href="#podporuje-delta-chat-šifrovanie-typu-end-to-end" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>
+    <p>Áno. Delta Chat implementuje štandard Autocrypt Level 1 a môže
+teda E2E-šifrovať správy s inými aplikáciami schopnými Autocrypt.</p>
+  </li>
+  <li>
+    <p>Delta Chat tiež podporuje silnú formu end-to-end šifrovania, ktoré je dokonca bezpečná proti aktívnym útokom, pozri „overené skupiny“ nižšie.</p>
+  </li>
+</ul>
+    
+      <h3 id="čo-musím-urobiť-aby-som-aktivoval-šifrovanie-typu-end-to-end">
+        
+        
+          Čo musím urobiť, aby som aktivoval šifrovanie typu end-to-end? <a href="#čo-musím-urobiť-aby-som-aktivoval-šifrovanie-typu-end-to-end" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>
+    <p>Nič.</p>
+  </li>
+  <li>
+    <p>Aplikácie Delta Chat (a ďalšie kompatibilné s <a href="https://autocrypt.org">Autocrypt</a>.
+e-mailové aplikácie) automaticky zdieľajú kľúče potrebné na šifrovanie typu end-to-end
+ako sú odoslané prvé správy.
+Potom sú všetky nasledujúce správy automaticky šifrované end-to-end.
+Ak jeden z partnerov chatu používa e-mailovú aplikáciu bez funkcie Autocrypt, potom
+správy nie sú zašifrované, kým nebude opäť dostupná aplikácia kompatibilná s automatickým šifrovaním.</p>
+  </li>
+  <li>
+    <p>Ak sa chcete štandardne radšej vyhnúť e-mailom so šifrovaním end-to-end,
+použite príslušné nastavenie automatického šifrovania v časti „Nastavenia“ alebo „Rozšírené nastavenia“.</p>
+  </li>
+</ul>
+    
+      <h3 id="ak-nie-je-k-dispozícii-šifrovanie-typu-end-to-end-nie-je-pripojenie-šifrované-vôbec">
+        
+        
+          Ak nie je k dispozícii šifrovanie typu end-to-end, nie je pripojenie šifrované vôbec? <a href="#ak-nie-je-k-dispozícii-šifrovanie-typu-end-to-end-nie-je-pripojenie-šifrované-vôbec" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>Na väčšine mailových serverov vytvára Delta Chat <em>transport šifrovanie</em>
+(<a href="https://en.wikipedia.org/wiki/Transport_Layer_Security">TLS</a>).
+Tým sa zabezpečí iba spojenie medzi vaším zariadením a e-mailovým
+serverom. Zatiaľ čo e2e-šifrovanie poskytuje bezpečnosť medzi
+vaším zariadením a zariadením priateľa.</li>
+</ul>
+    
+      <h3 id="ako-môžem-overiť-kryptografický-stav-u-odosielateľa">
+        
+        
+          Ako môžem overiť kryptografický stav u odosielateľa? <a href="#ako-môžem-overiť-kryptografický-stav-u-odosielateľa" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Ak ste v bezprostrednej vzdialenosti od partnera chatu:</p>
+
+<ul>
+  <li>Vyberte <strong>QR pozývací kód</strong> na jednom zariadení a potom <strong>Naskenujte QR kód</strong>
+na druhom a naskenujte kód. Ak sú obe zariadenia online,
+zavedú medzi sebou chatovací kanál (ak ešte neexistuje)
+a overia sa aj šifrovacie kľúče. Obaja uvidia a
+systémová správa „overený odosielateľ“ vo svojom rozhovore 1:1.</li>
+</ul>
+
+<p>Ak sa nenachádzate v blízkosti partnera chatu, stav môžete skontrolovať manuálne v dialógovom okne „Šifrovanie“.
+(používateľský profil v systéme Android/iOS alebo kliknite pravým tlačidlom myši na položku zoznamu chatov používateľa na Desktope):</p>
+
+<ul>
+  <li>
+    <p>Pre šifrovanie typu end-to-end zobrazuje Delta Chat dva odtlačky prstov.
+Ak sa rovnaké odtlačky prstov objavia na zariadení vášho partnera na rozhovor,
+spojenie je bezpečné.</p>
+  </li>
+  <li>
+    <p>Pri transportnom šifrovaní sa tento stav zobrazuje iba tam</p>
+  </li>
+</ul>
+    
+      <h3 id="ako-môžem-skontrolovať-šifrovanie-správ">
+        
+        
+          Ako môžem skontrolovať šifrovanie správ? <a href="#ako-môžem-skontrolovať-šifrovanie-správ" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>
+    <p>Malý <strong>zámok</strong> zobrazený vedľa správy označuje, či je správa od daného odosielateľa end-to-end šifrovaná.</p>
+  </li>
+  <li>
+    <p>Ak tam <strong>nie je zámok</strong>, správa sa zvyčajne prenáša nešifrovaná napr. pretože vy alebo odosielateľ ste vypli šifrovanie typu end-to-end alebo odosielateľ používa aplikáciu bez podpory šifrovania typu end-to-end.</p>
+  </li>
+</ul>
+    
+      <h3 id="ktoré-štandardy-sa-používajú-na-šifrovanie-typu-end-to-end">
+        
+        
+          Ktoré štandardy sa používajú na šifrovanie typu end-to-end? <a href="#ktoré-štandardy-sa-používajú-na-šifrovanie-typu-end-to-end" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>
+    <p><a href="https://autocrypt.org">Autocrypt</a> Sa používa na vytvorenie e2e-šifrovanie 
+s inými aplikáciami ako Delta Chat a inými mailovými aplikáciami s podporou Autocrypt.
+Autocrypt využíva obmedzenú podmnožinu funkcií OpenPGP.</p>
+  </li>
+  <li>
+    <p>Delta Chat implementuje <a href="https://countermitm.readthedocs.io/en/latest/new.html">countermitm nastavovacie-kontaktné a overené skupinové protokoly</a> na dosiahnutie ochrany pred aktívnymi sieťovými útokmi. Toto presahuje rámec príležitostnej 
+základnej ochrane Autocrypt Level 1 pri zachovaní jednoduchosti používania.</p>
+  </li>
+</ul>
+    
+      <h3 id="aký-je-rozdiel-medzi-overenými-skupinami-a-rozhovormi-11-s-overenými-kontaktmi">
+        
+        
+          Aký je rozdiel medzi overenými skupinami a rozhovormi 1:1 s overenými kontaktmi? <a href="#aký-je-rozdiel-medzi-overenými-skupinami-a-rozhovormi-11-s-overenými-kontaktmi" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>
+    <p>1:1 rozhovory s overeným kontaktom a overenými skupinami nie sú rovnaké, dokonca
+ak sú v overenej skupine iba 2 osoby. Jeden rozdiel je v tom, že ty
+môžeš ľahko pridať viac ľudí do skupiny, ale existujú aj iné rozdiely.</p>
+  </li>
+  <li>
+    <p>Overené skupiny sú vždy zabezpečené. Akékoľvek vniknutie (čirý text alebo nesprávne
+podpísané správy atď.) bude označené a takéto správy sa nezobrazia
+v tomto chat. Môžete dôverovať všetkým správam v tomto overenom čete so začiarknutím
+neboli prečítané/zmenené strednými stranami.</p>
+  </li>
+  <li>
+    <p>1:1 chaty sú šifrované príležitostne, majú ľuďom umožniť komunikovať 
+nezáleží na tom, či zmenia e-mailových klientov, zariadenia, nastavenia atď. Preto
+ nie je 
+žiadna overovacia značka, aj keď ste kontakt overili.</p>
+  </li>
+</ul>
+    
+      <h3 id="podporuje-delta-chat-perfect-forward-secrecy">
+        
+        
+          Podporuje Delta Chat Perfect Forward Secrecy? <a href="#podporuje-delta-chat-perfect-forward-secrecy" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>
+    <p>Nie, OpenPGP nepodporuje Perfect Forward Secrecy. Perfect Forward Secrecy
+funguje session-oriented , ale e-mail je svojou povahou asynchrónny
+a často sa používa z viacerých zariadení nezávisle. To znamená, že ak váš
+Súkromný kľúč Delta Chat unikol a niekto má záznam
+zo všetkých vašich správ v tranzite, budú si ich môcť prečítať.</p>
+  </li>
+  <li>
+    <p>Zapamätajete si, že ak sa niekto zmocnil alebo hackol váš bežiaci telefón,
+oni
+zvyčajne dokážu prečítať všetky správy, bez ohľadu na to, či je Perfect Forward Secrecy
+použitý alebo nie. Mať prístup k jednému zariadeniu od člena skupiny,
+zvyčajne odhalí veľkú časť sociálneho grafu. Pomocou e-mailových adries, ktoré
+nie sú ľahko vystopovateľné späť k osobám, pomáha členom skupiny zostať v bezpečí pred
+následkami zabavenia zariadenia.</p>
+  </li>
+  <li>
+    <p>Načrtávame spôsoby, ako lepšie chrániť komunikáciu pred udalosťou
+odcudzenia zariadenia.</p>
+  </li>
+</ul>
+    
+      <h3 id="ako-delta-chat-chráni-moje-metadáta">
+        
+        
+          Ako Delta Chat chráni moje metadáta? <a href="#ako-delta-chat-chráni-moje-metadáta" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>
+    <p>Keďže Delta Chat je decentralizovaný messenger, metadáta používateľov Delta Chatu
+nie sú uložené na jednom centrálnom serveri. Sú však uložené na mailových
+serveroch odosielateľa a príjemcu správy.</p>
+  </li>
+  <li>
+    <p>Každý mailový server v súčasnosti vie o tom, kto poslal a kto prijal správu pomocou
+kontroly nezašifrovaných hlavičiek To/Cc a teda určenie, ktoré e-mailové adresy
+sú súčasťou skupiny. Samotný Delta Chat by sa mohol celkom vyhnúť nešifrovaným hlavičkám To/Cc
+a vždy ich vkladať len do zašifrovanej sekcie. Pozri
+<a href="https://github.com/deltachat/deltachat-core-rust/issues/1032">Vyhnite sa odosielaniu hlavičiek To/CC pre overené skupiny</a>.
+V prípade oportunistických chatov je hlavným problémom to, ako to ovplyvňuje iné poštové aplikácie, ktoré
+sa môžu zúčastniť chatov.</p>
+  </li>
+  <li>
+    <p>Mnohé ďalšie hlavičky e-mailov, najmä hlavička “Predmet”, sú
+chránené end-to-end šifrovaním, pozrite si aj túto pripravovanú <a href="https://datatracker.ietf.org/doc/draft-autocrypt-lamps-protected-headers/">IETF
+RFC</a>.</p>
+  </li>
+</ul>
+    
+      <h3 id="môžem-znova-použiť-svoj-existujúci-súkromný-kľúč">
+        
+        
+          Môžem znova použiť svoj existujúci súkromný kľúč? <a href="#môžem-znova-použiť-svoj-existujúci-súkromný-kľúč" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>
+    <p>Áno. Najlepším spôsobom je odoslať správu o nastavení automatického šifrovania z iného e-mailového klienta. V nastaveniach druhého klienta vyhľadajte niečo ako <strong>Spustiť prenos nastavenia automatického šifrovania</strong> a postupujte podľa zobrazených pokynov.</p>
+  </li>
+  <li>
+    <p>Prípadne môžete kľúč importovať manuálne v časti „Nastavenia“ alebo „Rozšírené nastavenia“ a potom v časti „Importovať tajné kľúče“. Upozornenie: Uistite sa, že kľúč nie je chránený heslom, alebo predtým heslo odstráňte.</p>
+  </li>
+</ul>
+
+<p>Ak nemáte kľúč alebo ani neviete, že by ste ho potrebovali – nebojte sa: Delta Chat generuje kľúče podľa potreby, nemusíte pre to stláčať tlačidlo.</p>
+    
+      <h3 id="nemôžem-importovať-môj-existujúci-pgp-kľúč-do-delta-chat">
+        
+        
+          Nemôžem importovať môj existujúci PGP kľúč do Delta Chat. <a href="#nemôžem-importovať-môj-existujúci-pgp-kľúč-do-delta-chat" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Najpravdepodobnejšou príčinou je, že váš kľúč je zašifrovaný a/alebo používa
+heslo. Delta Chat takéto kľúče nepodporuje. Mohli by ste odstrániť
+zašifrovanie prístupovej frázy a heslo a skúsiť import znova. Ak chcete
+aby ste si zachovali svoju prístupovú frázu, budete si musieť vytvoriť e-mailový alias
+s Delta Chatom tak, že kľúč Delta Chat je zviazaný s týmto e-mailovým aliasom.</p>
+
+<p>Delta Chat podporuje bežné formáty súkromných kľúčov OpenPGP
+avšak je nepravdepodobné, že budú plne podporované súkromné kľúče zo všetkých zdrojov. Toto
+nie je hlavným cieľom Delta Chat. V skutočnosti väčšina nových používateľov
+nebude mať pred použitím Delta Chat žiadny kľúč.
+Snažíme sa však podporovať súkromné kľúče z čo najväčšieho počtu zdrojov.</p>
+
+<p>Odstránenie hesla zo súkromného kľúča bude závisieť od
+softvéru, ktorý používate na správu kľúčov PGP. S Enigmailom si môžete nastaviť svoje
+heslo na prázdnu hodnotu v okne Key Management. Pomocou GnuPG to môžete nastaviť
+<a href="https://github.com/deltachat/deltachat-android/issues/98#issuecomment-378383429">prostredníctvom príkazu
+riadok</a>.
+Pre iné programy by ste mali vedieť nájsť riešenie online.</p>
+    
+      <h3 id="prečo-nepoužívate-pep-pretty-easy-privacy">
+        
+        
+          Prečo nepoužívate pEp (pretty easy privacy)? <a href="#prečo-nepoužívate-pep-pretty-easy-privacy" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>Delta Chat používa šifrovací štandard Autocrypt e2e. Pre
+diskusiu o Autocrypt a pEp pozrite <a href="https://autocrypt.org/faq.html#how-does-autocrypt-differ-from-pep">Autocrypt
+FAQ</a>.</li>
+</ul>
+    
+      <h2 id="multiclient">
+        
+        
+          Multiklient <a href="#multiclient" class="anchor"></a>
+        
+        
+      </h2>
+    
+      <h3 id="môžem-používať-delta-chat-na-viacerých-zariadeniach-súčasne">
+        
+        
+          Môžem používať Delta Chat na viacerých zariadeniach súčasne? <a href="#môžem-používať-delta-chat-na-viacerých-zariadeniach-súčasne" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Ak chcete používať <strong>rovnaký účet</strong> na rôznych zariadeniach, mali by ste exportovať
+zálohu zo starého zariadenia a importovať do nového zariadenia:</p>
+
+<ul>
+  <li>Na starom zariadení prejdite na „Nastavenia“ alebo „Nastavenia / Rozhovory a médiá“ a potom na „Zálohovanie“. Zadajte svoje
+PIN, vzor alebo heslo na odomknutie obrazovky. Potom môžete kliknúť na „Štart
+Zálohovať”. Týmto sa súbor zálohy uloží do vášho zariadenia. Teraz ho musíte nejako preniesť
+do nového zariadenia.</li>
+  <li>Na novom zariadení na prihlasovacej obrazovke namiesto prihlásenia do e-mailu
+účtu, zvoľte “Importovať zálohu”. Po importe, vaše konverzácie, šifrovacie
+kľúče a médiá by sa mali skopírovať do nového zariadenia.</li>
+  <li>Teraz ste synchronizovaní a môžete použiť obe zariadenia na odosielanie a prijímanie
+E2E-šifrovaných správ s vašimi komunikačnými partnermi.</li>
+</ul>
+    
+      <h3 id="máte-nejaké-plány-na-zavedenie-webového-klienta-delta-chat">
+        
+        
+          Máte nejaké plány na zavedenie webového klienta Delta Chat? <a href="#máte-nejaké-plány-na-zavedenie-webového-klienta-delta-chat" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Neexistujú žiadne okamžité plány, ale niekoľko predbežných myšlienok.</p>
+<ul>
+  <li>Existujú 2-3 spôsoby zavedenia webového klienta Delta Chat, ale všetky vyžadujú
+významnú prácu. Zatiaľ sa zameriavame na to, aby sme dostali stabilné vydania do všetkých
+obchodov s aplikáciami (repozitáre Google Play/iOS/Windows/macOS/Linux) ako natívne aplikácie.</li>
+  <li>Ak potrebujete webového klienta, pretože nemáte povolené inštalovať softvér
+na počítač, s ktorým pracujete, môžete použiť prenosného klienta Windows Desktop Client,
+alebo AppImage pre Linux. Nájdete ich na
+<a href="https://get.delta.chat">get.delta.chat</a>.</li>
+</ul>
+    
+      <h3 id="prečo-sa-môžem-rozhodnúť-nesledovať-doručenú-poštu">
+        
+        
+          Prečo sa môžem rozhodnúť nesledovať doručenú poštu? <a href="#prečo-sa-môžem-rozhodnúť-nesledovať-doručenú-poštu" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Toto je experimentálne nastavenie pre niektorých ľudí, ktorí experimentujú
+pravidlá na strane servera. Nie všetci poskytovatelia to podporujú, no s niektorými môžete pohnúť
+všetky e-maily s hlavičkou “Chat-Version” do priečinka DeltaChat. Normálne toto
+vykonáva aplikácia Delta Chat.</p>
+
+<p>Sledovanie doručenej pošty má zmysel vypnúť, ak máte oboje:</p>
+
+<ul>
+  <li>povolené pravidlo na strane servera na presun všetkých správ s hlavičkou Chat-Version do priečinka DeltaChat a</li>
+  <li>nastaviť “Zobraziť klasické e-maily” na “nie, iba chaty”.</li>
+</ul>
+
+<p>V tomto prípade Delta Chat nemusí sledovať doručenú poštu.</p>
+    
+      <h3 id="na-čo-je-dobré-nastavenie-odoslať-kópiu-sebe">
+        
+        
+          Na čo je dobré nastavenie „Odoslať kópiu sebe“? <a href="#na-čo-je-dobré-nastavenie-odoslať-kópiu-sebe" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Odoslaním kópie správ sebe samému zaistíte,                               že dostanete svoje vlastné
+správy na všetkých zariadeniach. Ak máte viacero zariadení a nezapnete ich, vy
+uvidíte iba správy od iných ľudí a správy, ktoré vy                 odošlete z
+ aktuálneho zariadenia.</p>
+
+<p>Kópia sa odošle do priečinka Doručená pošta a potom sa presunie do priečinka DeltaChat; nie je vložená do priečinka „Odoslané“. Delta Chat <em>nikdy</em> nič neodovzdáva do priečinka “Odoslané”, pretože by to znamenalo nahrať správu dvakrát (raz cez SMTP, a raz cez IMAP do priečinka Odoslané).</p>
+
+<p>Predvolené nastavenie pre kópia pre seba je “nie”.</p>
+    
+      <h3 id="prečo-si-môžem-vybrať-sledovanie-priečinka-odoslané">
+        
+        
+          Prečo si môžem vybrať sledovanie priečinka „Odoslané“? <a href="#prečo-si-môžem-vybrať-sledovanie-priečinka-odoslané" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Jediný dôvod, prečo chcete sledovať priečinok Odoslané, je, ak používate iný
+poštový program (napríklad Thunderbird) vedľa vašej aplikácie Delta Chat a chcete svoj MUA
+ aby sa zúčastňoval chatových konverzácií.</p>
+
+<p>Odporúčame však použiť Delta Chat Desktop Client; môžete si ho stiahnuť
+na <a href="https://get.delta.chat">get.delta.chat</a>. Možnosť sledovať „Odoslané“
+priečinok môže v budúcnosti zmiznúť. Bolo to zavedené v čase, kedy nebol
+Delta Chat Desktop dostupný na všetkých platformách.</p>
+    
+      <h3 id="prečo-sa-môžem-rozhodnúť-nesledovať-priečinok-deltachat">
+        
+        
+          Prečo sa môžem rozhodnúť nesledovať priečinok DeltaChat? <a href="#prečo-sa-môžem-rozhodnúť-nesledovať-priečinok-deltachat" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Niektorí ľudia používajú Delta Chat ako bežný e-mailový klient a chcú používať priečinok Doručená pošta
+pre ich mail, namiesto priečinku DeltaChat. Ak zakážete „Sledovať
+priečinok DeltaChat“, mali by ste tiež zakázať „presunúť chatové správy do DeltaChat“.
+V opačnom prípade nemusí odstraňovanie správ alebo nastavenia viacerých zariadení fungovať správne.</p>
+    
+      <h2 id="rôzne">
+        
+        
+          Rôzne <a href="#rôzne" class="anchor"></a>
+        
+        
+      </h2>
+    
+      <h3 id="funguje-delta-chat-s-mojím-poskytovateľom-e-mailov">
+        
+        
+          Funguje Delta Chat s mojím poskytovateľom e-mailov? <a href="#funguje-delta-chat-s-mojím-poskytovateľom-e-mailov" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>S pomerne dobrou šancou: Áno :)
+Niektorí poskytovatelia však potrebujú na správne fungovanie špeciálne možnosti,
+pozrite si <a href="https://providers.delta.chat">Prehľad poskytovateľa</a></li>
+</ul>
+    
+      <h3 id="ak-delta-chat-používa-e-mail-je-to-naozaj-instantný-messenger">
+        
+        
+          Ak Delta Chat používa e-mail, je to naozaj <em>Instantný</em> Messenger? <a href="#ak-delta-chat-používa-e-mail-je-to-naozaj-instantný-messenger" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>Odosielanie a prijímanie správ zvyčajne trvá niekoľko sekúnd. Niekedy
+ existujú prípady, keď to trvá dlhšie, ale to platí pravdepodobne aj pre
+ akýkoľvek iný messenger.</li>
+  <li>Okamžité chatovanie funguje rýchlo, ak obe strany aktívne používajú aplikáciu. to je
+niekedy pomalšie, ak aplikácia beží na pozadí.</li>
+  <li>Prijímanie správ potom môže trvať niekoľko minút, pretože Android aj iOS často
+zastavia spustenie Delta Chatu na pozadí a iba príležitostne ho prebudia. Toto umelé oneskorenie je zvyčajne horšie na iOS ako na Androide.</li>
+  <li>Avšak, Android a iOS killne aplikácie bežiace na pozadí
+je to
+problém mnohých legitímnych aplikácií. Ďalšie informácie nájdete v časti
+<a href="https://dontkillmyapp.com/">dontkillmyapp.com</a>.</li>
+</ul>
+    
+      <h3 id="je-delta-chat-kompatibilný-s-protonmail--tutanota--criptext">
+        
+        
+          Je Delta Chat kompatibilný s Protonmail / Tutanota / Criptext? <a href="#je-delta-chat-kompatibilný-s-protonmail--tutanota--criptext" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>Áno a nie.</li>
+  <li>Nie, nemôžete používať svoj účet Protonmail, Tutanota alebo Criptext s Delta
+Chat; neponúkajú prijímanie pošty cez IMAP.</li>
+  <li>V každom prípade môžete použiť Delta Chat na odosielanie správ ľuďom, ktorí to používajú
+Protonmail, Tutanota alebo Criptext. Avšak tieto správy nebudú End-to-End
+zašifrované. Šifrovanie typu End-to-End, ktoré títo poskytovatelia                                ponúkajú, funguje iba <br />
+na ich platformách a nie sú kompatibilné s nikým mimo.</li>
+  <li>Delta Chat môže e2e šifrovať prostredníctvom akéhokoľvek poskytovateľa e-mailu s ktoroukoľvek
+<a href="https://autocrypt.org/dev-status.html">E-mailovou aplikáciou s povoleným automatickým šifrovaním</a>.</li>
+</ul>
+    
+      <h3 id="zaujímajú-ma-technické-detaily-môžete-mi-povedať-viac">
+        
+        
+          Zaujímajú ma technické detaily. Môžete mi povedať viac? <a href="#zaujímajú-ma-technické-detaily-môžete-mi-povedať-viac" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>Pozrite si <a href="https://github.com/deltachat/deltachat-core-rust/blob/master/standards.md#standards-used-in-delta-chat">Štandardy používané v Delta Chate</a>.</li>
+</ul>
+    
+      <h3 id="ako-sa-financuje-vývoj-delta-chat">
+        
+        
+          Ako sa financuje vývoj Delta Chat? <a href="#ako-sa-financuje-vývoj-delta-chat" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Po prvé, Delta Chat nedostáva žiadny rizikový kapitál a
+nie je zadlžená a nie je pod tlakom, aby produkovala obrovské zisky, resp
+predávať používateľov a ich priateľov a rodinu inzerentom (alebo ešte horšie).</p>
+
+<p>Vývoj Delta Chatu bol doteraz financovaný zo štyroch hlavných zdrojov:</p>
+
+<ul>
+  <li>
+    <p>Výskum financoval projekt EÚ <a href="https://nextleap.eu">NEXTLEAP</a>.
+ a implementáciu overených skupín a nastavenie kontaktných protokolov
+ v rokoch 2017 a 2018.</p>
+  </li>
+  <li>
+    <p><a href="https://opentechfund.org">Otvorený technologický fond</a> udelil dva granty.
+Prvý grant 2018/2019 (~ 200 000 $) výrazne zlepšil aplikáciu pre Android
+a umožnili nám vydať beta verziu aplikácie pre Desktop
+a taktiež zakotvila náš vývoj funkcií vo výskume UX v kontexte ľudských práv,
+pozrite si našu záverečnú správu <a href="https://delta.chat/en/2019-07-19-uxreport">Needfinding and UX report</a>.
+Druhý grant 2019/2020 (~ 300 000 $) stále prebieha a pomáha nám
+uvoľniť verzie Delta/iOS, aby sme previedli našu základnú knižnicu na Rust a
+poskytovali nové funkcie pre všetky platformy. Pozrite si
+prebiehajúce <a href="https://delta.chat/en/blog">príspevky na blogu</a>, kde nájdete ďalšie informácie.</p>
+  </li>
+  <li>
+    <p><a href="https://nlnet.nl/">nadácia NLnet</a> poskytla 46 000 EUR na
+dokončenie väzieb Rust/Python a podnietenie ekosystému Chat-botov.</p>
+  </li>
+  <li>
+    <p>V neposlednom rade k vývoju Delta Chat prispelo a prispieva viacero pro-bono odborníkov a nadšencov
+ bez toho, aby dostávali peniaze alebo dostávali iba
+ malé množstvá. Bez nich by Delta Chat nebol tam, kde je dnes
+ ani zďaleka.</p>
+  </li>
+</ul>
+
+<p>Vyššie uvedené peňažné financovanie organizovala spoločnosť merlinux GmbH v
+Freiburg (Nemecko) a následne distribuované takmer tuctu prispievateľov.</p>
+
+<p>Financovanie na roky 2020/2021 ešte nie je určené. Sledujeme niekoľko
+šancí s rôznymi organizáciami a partnermi. My tiež
+zvažujeme požiadať o dary. V skutočnosti sme už trochu experimentálne
+začali <a href="https://liberapay.com/delta.chat/">Delta Chat / Darcovský účet Liberapay</a>
+ale toto sme ešte nezverejnili. Doposiaľ bolo tiež okolo 3-4K EUR
+darované Bjoernovi (pôvodnému autorovi Delta Chatu) na paypalové a bitcoinové účty.</p>
+
+
+
+
+
+</body></html>

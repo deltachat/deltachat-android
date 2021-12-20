@@ -369,6 +369,8 @@
         <item quantity="many">%d nowe wiadomości</item>
         <item quantity="other">%d nowych wiadomości</item>
     </plurals>
+    <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
+    <string name="chat_new_one_to_one_hint">Wyślij wiadomość. Nie szkodzi, jeśli %1$s nie korzysta z Delta Chat.</string>
     <string name="chat_new_broadcast_hint">Na liście rozgłoszeniowej inne osoby będą otrzymywać wiadomości w swoich prywatnych czatach z Tobą.\n\nOdbiorcy nie będą o sobie nawzajem wiedzieć.</string>
     <string name="chat_new_group_hint">Napisz pierwszą wiadomość, by inni mogli odpowiedzieć w tej grupie.\n\n• Nie ma problemu, jeśli nie wszyscy członkowie korzystają z Delta Chat.\n\n• Dostarczenie pierwszej wiadomości może chwilę potrwać.</string>
     <string name="chat_record_slide_to_cancel">PRZESUŃ, BY ANULOWAĆ</string>

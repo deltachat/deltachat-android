@@ -85,6 +85,9 @@
     <string name="this_month">Tento mesiac</string>
     <string name="last_week">Minulý týždeň</string>
     <string name="last_month">Minulý mesiac</string>
+    <!-- the placeholder will be replaced by a date or time, resulting eg. in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
+    <string name="last_seen_at">Naposledy videné o%1$s</string>
+    <string name="last_seen_unknown">Naposledy videné: Neznáme</string>
     <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
     <plurals name="n_minutes">
         <item quantity="one">%d minúta</item>
@@ -213,6 +216,7 @@
     <string name="menu_copy_link_to_clipboard">Skopírovať odkaz</string>
     <string name="menu_copy_text_to_clipboard">Kopírovať text</string>
     <string name="menu_copy_image_to_clipboard">Kopírovať obrázok</string>
+    <string name="menu_copy_email_to_clipboard">Kopírovať E-Mail</string>
     <string name="paste_from_clipboard">Prilepiť zo schránky</string>
     <string name="menu_forward">Preposlať správu</string>
     <string name="menu_reply">Odpovedať na správu</string>
@@ -369,6 +373,8 @@
         <item quantity="many">%dnové správy</item>
         <item quantity="other">%d nové správy</item>
     </plurals>
+    <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
+    <string name="chat_new_one_to_one_hint">Pošlite správu. Je v poriadku ak%1$s nepoužíva Delta Chat.</string>
     <string name="chat_new_broadcast_hint">V zozname rozosielania, ostatní budú dostávať správy do ich osobných chatov s vami.\n\nPríjemcovia sa navzájom o sebe nedozvedia.</string>
     <string name="chat_new_group_hint">Vytvorte prvú správu a umožnite ostatným odpovedať v rámci tejto skupiny.\n\n• Je v poriadku, ak nie všetci členovia používajú Delta Chat.\n\n• Doručenie prvej správy môže chvíľu trvať.</string>
     <string name="chat_record_slide_to_cancel">Posunutím akciu zrušíte</string>
@@ -640,6 +646,7 @@
     <string name="up_to_x_most_worse_quality_images">Až do %1$s, väčšina obrázkov v horšej kvalite</string>
     <string name="up_to_x_most_balanced_quality_images">Až do %1$s, väčšina obrázkov vo vyváženej kvalite</string>
     <string name="no_limit">Žiadny limit</string>
+    <string name="download_failed">Sťahovanie zlyhalo</string>
     <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string eg. "1 MiB message" -->
     <string name="n_bytes_message">%1$s správa</string>
     <!-- %1$s will be replaced by human-readable date and time -->
@@ -796,6 +803,8 @@
     <string name="verified_group_explain">Overené skupiny (experimentálne) poskytujú bezpečnosť proti aktívnym útokom. Členovia sú overovaní druhým faktorom ostatnými členmi a správy sú vždy šifrované end-to-end.</string>
     <string name="copy_qr_data_success">Skopírovaná adresa URL QR do schránky</string>
     <string name="mailto_dialog_header_select_chat">Vyberte čet, kam bude správa odoslaná</string>
+    <!-- first placeholder is the name of the chat -->
+    <string name="confirm_replace_draft">%1$s už má koncept správy, chcete ho nahradiť?</string>
     <string name="mailto_link_could_not_be_decoded">prepojenie mailto sa nepodarilo dekódovať: %1$s</string>
 
     <!-- notifications  -->
@@ -876,6 +885,7 @@
     <string name="autocrypt_incorrect_desktop">Nesprávny kód nastavenia. Prosím skúste znova.</string>
     <string name="create_chat_error_desktop">Nepodarilo sa vytvoriť rozhovor.</string>
     <string name="forget_login_confirmation_desktop">Odstrániť tieto prihlasovacie údaje? Odstráni sa všetko vrátane vášho kompletného nastavenia, kontaktov, četov, správ a médií. Túto akciu nie je možné vrátiť späť.</string>
+    <string name="account_info_hover_tooltip_desktop2">E-Mail: %1$s\nVeľkosť: %2$s\n ID Účtu: %3$s</string>
     <string name="message_detail_sent_desktop">odoslané</string>
     <string name="message_detail_received_desktop">prijaté</string>
     <string name="menu.view.developer.open.log.folder">Otvoriť priečinok denníka</string>
@@ -883,6 +893,8 @@
     <string name="explain_desktop_minimized_disabled_tray_pref">Ikonu v systémovej lište nie je možné vypnúť, pretože Delta Chat bol spustený s prepínačom --minimized.</string>
     <string name="no_spellcheck_suggestions_found">Neboli nájdené žiadne návrhy opravy preklepov.</string>
     <string name="show_window">Zobraziť okno</string>
+    <string name="login_socks5_experimental_warning">Podpora SOCKS5 je momentálne experimentálna. Prosím, používajte na vlastné riziko. Ak zadáte adresu do poľa e-mail, vykoná sa vyhľadávanie DNS, ktoré nebude tunelované cez SOCKS5.</string>
+
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Stav doručenia: Chyba</string>
     <string name="a11y_encryption_padlock">Šifrovací zámok</string>
@@ -918,4 +930,5 @@
     <!-- device messages for updates -->
     <string name="update_1_24_android">1.24 v skratke:\n\n• Uloženie klepnutím: Výber účtu v ľavom hornom rohu zoznamu četov\n• Uloženie viacerými klepnutiami: Dlhým klepnutím na ikonu aplikácie priamo otvoríte nedávne čety\n• Ušetrite premávku: sťahujte veľké súbory podľa potreby\n• Ušetrite nervy: rýchlejšie pripojenie QR kódu bez blokovania a nové možnosti kódu QR\n\nViac na 👉 </string>
     <string name="update_1_24_ios">1.24 v skratke:\n\n• Spustite vyhľadávanie v čete z profilu četu\n• Ušetrite premávku: sťahujte veľké súbory podľa potreby\n• Ušetrite nervy: rýchlejšie pripájanie na QR kódy bez blokovania\n\nViac na 👉</string>
-    </resources>
+    <string name="update_1_26">1.26 vylepšenia 💅\n\n• Po tom, čo boli QR kódy vo verzii 1.24 neblokovateľné, teraz vyzerajú oveľa krajšie – na všetkých platformách\n• Avatary a odznaky vyzerajú na všetkých platformách podobne\n• Opravených veľa chýb</string>
+</resources>

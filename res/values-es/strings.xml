@@ -345,6 +345,8 @@
         <item quantity="one">%d nuevo mensaje</item>
         <item quantity="other">%d nuevos mensajes</item>
     </plurals>
+    <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
+    <string name="chat_new_one_to_one_hint">Envíe un mensaje. Está bien si %1$s no usa Delta Chat.</string>
     <string name="chat_new_broadcast_hint">En una lista de difusión, los otros recibirán los mensajes en sus chats privados contigo.\n\nLos destinatarios no se ven entre sí.</string>
     <string name="chat_new_group_hint">Componga el primer mensaje, permitiendo que otros respondan dentro de este grupo.\n\n• No hay problema si no todos los miembros usan Delta Chat.\n\n• La entrega del primer mensaje puede tardar un poco y puede estar sin cifrar.</string>
     <string name="chat_record_slide_to_cancel">Deslice para cancelar</string>
@@ -616,6 +618,7 @@
     <string name="up_to_x_most_worse_quality_images">Hasta %1$s, la mayoría de imágenes de peor calidad</string>
     <string name="up_to_x_most_balanced_quality_images">Hasta %1$s, la mayoría de imágenes de calidad balanceada</string>
     <string name="no_limit">Sin límite</string>
+    <string name="download_failed">Descarga fallida</string>
     <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string eg. "1 MiB message" -->
     <string name="n_bytes_message">Mensaje de %1$s</string>
     <!-- %1$s will be replaced by human-readable date and time -->
