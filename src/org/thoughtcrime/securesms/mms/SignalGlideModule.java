@@ -5,6 +5,9 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 import android.util.Log;
 
+import com.airbnb.lottie.LottieComposition;
+import com.airbnb.lottie.LottieDrawable;
+
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.GlideBuilder;
 import com.bumptech.glide.Registry;
@@ -14,6 +17,8 @@ import com.bumptech.glide.module.AppGlideModule;
 
 import org.thoughtcrime.securesms.contacts.avatars.ContactPhoto;
 import org.thoughtcrime.securesms.glide.ContactPhotoLoader;
+import org.thoughtcrime.securesms.glide.lottie.LottieDecoder;
+import org.thoughtcrime.securesms.glide.lottie.LottieDrawableTranscoder;
 import org.thoughtcrime.securesms.mms.DecryptableStreamUriLoader.DecryptableUri;
 
 import java.io.File;
@@ -49,5 +54,9 @@ public class SignalGlideModule extends AppGlideModule {
     registry.append(ContactPhoto.class, InputStream.class, new ContactPhotoLoader.Factory(context));
     registry.append(DecryptableUri.class, InputStream.class, new DecryptableStreamUriLoader.Factory(context));
     //registry.replace(GlideUrl.class, InputStream.class, new OkHttpUrlLoader.Factory());
+
+    registry
+        .register(LottieComposition.class, LottieDrawable.class, new LottieDrawableTranscoder())
+        .append(InputStream.class, LottieComposition.class, new LottieDecoder());
   }
 }
