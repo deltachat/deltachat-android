@@ -257,6 +257,12 @@ public class ThumbnailView extends FrameLayout {
           }
         }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
       }
+      if(slide.hasSticker())
+      {
+        GlideRequest request = glideRequests.load(new DecryptableUri(slide.getThumbnailUri()))
+            .diskCacheStrategy(DiskCacheStrategy.NONE);
+        request.into(new GlideDrawableListeningTarget(image, result));
+      }
       else
       {
         GlideRequest request = glideRequests.load(new DecryptableUri(slide.getThumbnailUri()))
