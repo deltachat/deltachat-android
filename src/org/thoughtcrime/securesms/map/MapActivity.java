@@ -306,7 +306,7 @@ public class MapActivity extends BaseActivity implements Observer,
     }
 
     private boolean handleAddPoiClick(LatLng point) {
-        if (chatId == 0) {
+        if (chatId == 0 || !DcHelper.getContext(this).getChat(chatId).canSend()) {
             return false;
         }
 
