@@ -79,6 +79,12 @@ public class W30Activity extends WebViewActivity implements DcEventCenter.DcEven
         }
         String ext = MimeTypeMap.getFileExtensionFromUrl(path);
         String mimeType = MimeTypeMap.getSingleton().getMimeTypeFromExtension(ext);
+        if (mimeType == null) {
+          switch (ext) {
+            case "js": mimeType = "text/javascript"; break;
+            default:   mimeType = "application/octet-stream"; Log.i(TAG, "unknown mime type for " + rawUrl); break;
+          }
+        }
         String encoding = mimeType.startsWith("text/")? "UTF-8" : null;
         InputStream targetStream = new ByteArrayInputStream(blob);
         return new WebResourceResponse(mimeType, encoding, targetStream);
