@@ -4,6 +4,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.webkit.JavascriptInterface;
+import android.webkit.MimeTypeMap;
 import android.webkit.WebResourceResponse;
 import android.webkit.WebSettings;
 import android.widget.Toast;
@@ -68,14 +69,19 @@ public class W30Activity extends WebViewActivity implements DcEventCenter.DcEven
         throw new Exception("no url specified");
       }
       String path = Uri.parse(rawUrl).getPath();
-      if (path.equals("/index.html")) {
-        InputStream targetStream = new ByteArrayInputStream(this.dcAppMsg.getBlobFromArchive("index.html"));
-        return new WebResourceResponse("text/html", "UTF-8", targetStream);
-      } else if (path.equalsIgnoreCase("/deltachat.js")) {
+      if (path.equalsIgnoreCase("/deltachat.js")) {
         InputStream targetStream = getResources().openRawResource(R.raw.w30_deltachat);
         return new WebResourceResponse("text/javascript", "UTF-8", targetStream);
       } else {
-        throw new Exception("\"" + path + "\" not found");
+        byte[] blob = this.dcAppMsg.getBlobFromArchive(path);
+        if (blob == null) {
+          throw new Exception("\"" + path + "\" not found");
+        }
+        String ext = MimeTypeMap.getFileExtensionFromUrl(path);
+        String mimeType = MimeTypeMap.getSingleton().getMimeTypeFromExtension(ext);
+        String encoding = mimeType.startsWith("text/")? "UTF-8" : null;
+        InputStream targetStream = new ByteArrayInputStream(blob);
+        return new WebResourceResponse(mimeType, encoding, targetStream);
       }
     } catch (Exception e) {
       e.printStackTrace();
