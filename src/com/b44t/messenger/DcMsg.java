@@ -112,6 +112,7 @@ public class DcMsg {
     public native String  getFilemime        ();
     public native String  getFilename        ();
     public native long    getFilebytes       ();
+    public native byte[]  getBlobFromArchive (String filename);
     public native boolean isForwarded        ();
     public native boolean isInfo             ();
     public native boolean isSetupMessage     ();

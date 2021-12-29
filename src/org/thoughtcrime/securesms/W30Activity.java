@@ -69,7 +69,7 @@ public class W30Activity extends WebViewActivity implements DcEventCenter.DcEven
       }
       String path = Uri.parse(rawUrl).getPath();
       if (path.equals("/index.html")) {
-        InputStream targetStream = new FileInputStream(this.dcAppMsg.getFileAsFile());
+        InputStream targetStream = new ByteArrayInputStream(this.dcAppMsg.getBlobFromArchive("index.html"));
         return new WebResourceResponse("text/html", "UTF-8", targetStream);
       } else if (path.equalsIgnoreCase("/deltachat.js")) {
         InputStream targetStream = getResources().openRawResource(R.raw.w30_deltachat);

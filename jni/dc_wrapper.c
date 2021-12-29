@@ -86,6 +86,19 @@ static jstring jstring_new__(JNIEnv* env, const char* a)
 #define CTIMESTAMP(a) (((jlong)a)/((jlong)1000))
 
 
+static jbyteArray ptr2jbyteArray(JNIEnv *env, const void* ptr, size_t len) {
+    if (ptr == NULL || len <= 0) {
+        return NULL;
+    }
+    jbyteArray ret = (*env)->NewByteArray(env, len);
+    if (ret == NULL) {
+        return NULL;
+    }
+    (*env)->SetByteArrayRegion(env, ret, 0, len, (const jbyte*)ptr);
+    return ret;
+}
+
+
 static jintArray dc_array2jintArray_n_unref(JNIEnv *env, dc_array_t* ca)
 {
     /* takes a C-array of type dc_array_t and converts it it a Java-Array.
@@ -1544,6 +1557,19 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcMsg_getFilename(JNIEnv *env, jobject
     char* temp = dc_msg_get_filename(get_dc_msg(env, obj));
         jstring ret =  JSTRING_NEW(temp);
     dc_str_unref(temp);
+    return ret;
+}
+
+
+JNIEXPORT jbyteArray Java_com_b44t_messenger_DcMsg_getBlobFromArchive(JNIEnv *env, jobject obj, jstring filename)
+{
+    jbyteArray ret = NULL;
+    CHAR_REF(filename)
+        size_t ptrSize = 0;
+        char* ptr = dc_msg_get_blob_from_archive(get_dc_msg(env, obj), filenamePtr, &ptrSize);
+        ret = ptr2jbyteArray(env, ptr, ptrSize);
+        dc_str_unref(ptr);
+    CHAR_UNREF(filename)
     return ret;
 }
 
