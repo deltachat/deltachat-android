@@ -34,9 +34,7 @@ import static android.app.Activity.RESULT_OK;
 import static android.text.InputType.TYPE_TEXT_VARIATION_URI;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_BCC_SELF;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_E2EE_ENABLED;
-import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_INBOX_WATCH;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_MVBOX_MOVE;
-import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_MVBOX_WATCH;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SENTBOX_WATCH;
 
 
@@ -49,9 +47,7 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
 
 
   CheckBoxPreference preferE2eeCheckbox;
-  CheckBoxPreference inboxWatchCheckbox;
   CheckBoxPreference sentboxWatchCheckbox;
-  CheckBoxPreference mvboxWatchCheckbox;
   CheckBoxPreference bccSelfCheckbox;
   CheckBoxPreference mvboxMoveCheckbox;
 
@@ -65,19 +61,9 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
     preferE2eeCheckbox = (CheckBoxPreference) this.findPreference("pref_prefer_e2ee");
     preferE2eeCheckbox.setOnPreferenceChangeListener(new PreferE2eeListener());
 
-    inboxWatchCheckbox = (CheckBoxPreference) this.findPreference("pref_inbox_watch");
-    inboxWatchCheckbox.setOnPreferenceChangeListener((preference, newValue) ->
-      handleImapCheck(preference, newValue, CONFIG_INBOX_WATCH)
-    );
-
     sentboxWatchCheckbox = (CheckBoxPreference) this.findPreference("pref_sentbox_watch");
     sentboxWatchCheckbox.setOnPreferenceChangeListener((preference, newValue) ->
       handleImapCheck(preference, newValue, CONFIG_SENTBOX_WATCH)
-    );
-
-    mvboxWatchCheckbox = (CheckBoxPreference) this.findPreference("pref_mvbox_watch");
-    mvboxWatchCheckbox.setOnPreferenceChangeListener((preference, newValue) ->
-      handleImapCheck(preference, newValue, CONFIG_MVBOX_WATCH)
     );
 
     bccSelfCheckbox = (CheckBoxPreference) this.findPreference("pref_bcc_self");
@@ -172,9 +158,7 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
     ((ApplicationPreferencesActivity) getActivity()).getSupportActionBar().setTitle(R.string.menu_advanced);
 
     preferE2eeCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_E2EE_ENABLED));
-    inboxWatchCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_INBOX_WATCH));
     sentboxWatchCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_SENTBOX_WATCH));
-    mvboxWatchCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_MVBOX_WATCH));
     bccSelfCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_BCC_SELF));
     mvboxMoveCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_MVBOX_MOVE));
   }
