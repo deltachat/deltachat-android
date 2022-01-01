@@ -333,7 +333,7 @@ public class ConversationItem extends BaseConversationItem
       bodyText.setText(context.getString(R.string.autocrypt_asm_click_body));
       bodyText.setVisibility(View.VISIBLE);
     }
-    else if (messageRecord.getType() == DcMsg.DC_MSG_W30) {
+    else if (messageRecord.getType() == DcMsg.DC_MSG_WEBXDC) {
       bodyText.setText("[" + messageRecord.getFilename() + "] " + text);
       bodyText.setVisibility(View.VISIBLE);
     }
@@ -367,17 +367,17 @@ public class ConversationItem extends BaseConversationItem
           passthroughClickListener.onClick(view);
         }
       });
-    } else if (messageRecord.getType() == DcMsg.DC_MSG_W30) {
+    } else if (messageRecord.getType() == DcMsg.DC_MSG_WEBXDC) {
       msgActionButton.setVisibility(View.VISIBLE);
       msgActionButton.setEnabled(true);
       msgActionButton.setText("Start…");
       msgActionButton.setOnClickListener(view -> {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-          Intent intent =new Intent(context, W30Activity.class);
+          Intent intent =new Intent(context, WebxdcActivity.class);
           intent.putExtra("appMessageId", messageRecord.getId());
           context.startActivity(intent);
         } else {
-          Toast.makeText(view.getContext(), "At least Android 4.3 (Jelly Bean) required for w30 apps.", Toast.LENGTH_LONG).show();
+          Toast.makeText(view.getContext(), "At least Android 4.3 (Jelly Bean) required for webxdc.", Toast.LENGTH_LONG).show();
         }
       });
     }

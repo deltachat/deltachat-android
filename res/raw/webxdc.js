@@ -1,7 +1,7 @@
-window.deltachat = (() => {
+window.webxdc = (() => {
   var update_listener = () => {};
 
-  window.__w30update = (updateId) => {
+  window.__webxdcUpdate = (updateId) => {
     var updates = JSON.parse(InternalJSApi.getStatusUpdates(updateId));
     if (updates.length === 1) {
       update_listener(updates[0]);

@@ -717,20 +717,20 @@ JNIEXPORT jint Java_com_b44t_messenger_DcContext_sendVideochatInvitation(JNIEnv 
 }
 
 
-JNIEXPORT jboolean Java_com_b44t_messenger_DcContext_sendW30StatusUpdate(JNIEnv *env, jobject obj, jint msg_id, jstring descr, jstring payload)
+JNIEXPORT jboolean Java_com_b44t_messenger_DcContext_sendWebxdcStatusUpdate(JNIEnv *env, jobject obj, jint msg_id, jstring descr, jstring payload)
 {
     CHAR_REF(descr);
     CHAR_REF(payload);
-        jboolean ret = dc_send_w30_status_update(get_dc_context(env, obj), msg_id, descrPtr, payloadPtr) != 0;
+        jboolean ret = dc_send_webxdc_status_update(get_dc_context(env, obj), msg_id, descrPtr, payloadPtr) != 0;
     CHAR_UNREF(payload);
     CHAR_UNREF(descr);
     return ret;
 }
 
 
-JNIEXPORT jstring Java_com_b44t_messenger_DcContext_getW30StatusUpdates(JNIEnv *env, jobject obj, jint msg_id, jint status_update_id)
+JNIEXPORT jstring Java_com_b44t_messenger_DcContext_getWebxdcStatusUpdates(JNIEnv *env, jobject obj, jint msg_id, jint status_update_id)
 {
-    char* temp = dc_get_w30_status_updates(get_dc_context(env, obj), msg_id, status_update_id);
+    char* temp = dc_get_webxdc_status_updates(get_dc_context(env, obj), msg_id, status_update_id);
         jstring ret = JSTRING_NEW(temp);
     dc_str_unref(temp);
     return ret;

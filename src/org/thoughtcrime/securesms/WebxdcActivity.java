@@ -19,12 +19,11 @@ import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 
 import java.io.ByteArrayInputStream;
-import java.io.FileInputStream;
 import java.io.InputStream;
 
-public class W30Activity extends WebViewActivity implements DcEventCenter.DcEventDelegate  {
-  private static final String TAG = W30Activity.class.getSimpleName();
-  private static final String INTERNAL_SCHEMA = "web30";
+public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcEventDelegate  {
+  private static final String TAG = WebxdcActivity.class.getSimpleName();
+  private static final String INTERNAL_SCHEMA = "webxdc";
   private static final String INTERNAL_DOMAIN = "local.app";
   private DcContext dcContext;
   private DcMsg dcAppMsg;
@@ -32,7 +31,7 @@ public class W30Activity extends WebViewActivity implements DcEventCenter.DcEven
   @Override
   protected void onCreate(Bundle state, boolean ready) {
     super.onCreate(state, ready);
-    DcEventCenter eventCenter = DcHelper.getEventCenter(W30Activity.this.getApplicationContext());
+    DcEventCenter eventCenter = DcHelper.getEventCenter(WebxdcActivity.this.getApplicationContext());
     eventCenter.addObserver(DcContext.DC_EVENT_INCOMING_MSG, this);
     
     Bundle b = getIntent().getExtras();
@@ -70,7 +69,7 @@ public class W30Activity extends WebViewActivity implements DcEventCenter.DcEven
       }
       String path = Uri.parse(rawUrl).getPath();
       if (path.equalsIgnoreCase("/deltachat.js")) {
-        InputStream targetStream = getResources().openRawResource(R.raw.w30_deltachat);
+        InputStream targetStream = getResources().openRawResource(R.raw.webxdc);
         return new WebResourceResponse("text/javascript", "UTF-8", targetStream);
       } else {
         byte[] blob = this.dcAppMsg.getBlobFromArchive(path);
@@ -91,7 +90,7 @@ public class W30Activity extends WebViewActivity implements DcEventCenter.DcEven
       }
     } catch (Exception e) {
       e.printStackTrace();
-      InputStream targetStream = new ByteArrayInputStream(("W30 Request Error: " + e.getMessage()).getBytes());
+      InputStream targetStream = new ByteArrayInputStream(("Webxdc Request Error: " + e.getMessage()).getBytes());
       return new WebResourceResponse("text/plain", "UTF-8", targetStream);
     }
   }
@@ -99,28 +98,28 @@ public class W30Activity extends WebViewActivity implements DcEventCenter.DcEven
   @Override
   public void handleEvent(@NonNull DcEvent event) {
     int eventId = event.getId();
-    if ((eventId == DcContext.DC_EVENT_W30_STATUS_UPDATE && event.getData1Int() == dcAppMsg.getId())) {
+    if ((eventId == DcContext.DC_EVENT_WEBXDC_STATUS_UPDATE && event.getData1Int() == dcAppMsg.getId())) {
       Log.i(TAG, "handleEvent");
-      webView.loadUrl("javascript:window.__w30update(" + event.getData2Int() + ");");
+      webView.loadUrl("javascript:window.__webxdcUpdate(" + event.getData2Int() + ");");
     }
   }
 
   class InternalJSApi {
     @JavascriptInterface
     public String selfAddr() {
-      return W30Activity.this.dcContext.getConfig("addr");
+      return WebxdcActivity.this.dcContext.getConfig("addr");
     }
 
     @JavascriptInterface
     public boolean sendStatusUpdate(String descr, String payload) {
       Log.i(TAG, "sendStatusUpdate");
-      return W30Activity.this.dcContext.sendW30StatusUpdate(W30Activity.this.dcAppMsg.getId(), descr, payload);
+      return WebxdcActivity.this.dcContext.sendWebxdcStatusUpdate(WebxdcActivity.this.dcAppMsg.getId(), descr, payload);
     }
 
     @JavascriptInterface
     public String getStatusUpdates(int statusUpdateId) {
       Log.i(TAG, "getStatusUpdates");
-      return W30Activity.this.dcContext.getW30StatusUpdates(W30Activity.this.dcAppMsg.getId(), statusUpdateId);
+      return WebxdcActivity.this.dcContext.getWebxdcStatusUpdates(WebxdcActivity.this.dcAppMsg.getId(), statusUpdateId);
     }
   }
 }

@@ -15,7 +15,7 @@ public class DcMsg {
     public final static int DC_MSG_VIDEO = 50;
     public final static int DC_MSG_FILE = 60;
     public final static int DC_MSG_VIDEOCHAT_INVITATION = 70;
-    public final static int DC_MSG_W30 = 80;
+    public final static int DC_MSG_WEBXDC = 80;
 
     public final static int DC_STATE_UNDEFINED =  0;
     public final static int DC_STATE_IN_FRESH = 10;
