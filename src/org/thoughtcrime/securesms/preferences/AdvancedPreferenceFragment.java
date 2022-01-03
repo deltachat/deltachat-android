@@ -62,9 +62,13 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
     preferE2eeCheckbox.setOnPreferenceChangeListener(new PreferE2eeListener());
 
     sentboxWatchCheckbox = (CheckBoxPreference) this.findPreference("pref_sentbox_watch");
-    sentboxWatchCheckbox.setOnPreferenceChangeListener((preference, newValue) ->
-      handleImapCheck(preference, newValue, CONFIG_SENTBOX_WATCH)
-    );
+    sentboxWatchCheckbox.setOnPreferenceChangeListener((preference, newValue) -> {
+      boolean enabled = (Boolean) newValue;
+      DcHelper.getAccounts(getContext()).stopIo();
+      dcContext.setConfigInt(CONFIG_SENTBOX_WATCH, enabled? 1 : 0);
+      DcHelper.getAccounts(getContext()).startIo();
+      return true;
+    });
 
     bccSelfCheckbox = (CheckBoxPreference) this.findPreference("pref_bcc_self");
     bccSelfCheckbox.setOnPreferenceChangeListener((preference, newValue) -> {
@@ -121,30 +125,6 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
       }
       return true;
     });
-  }
-
-  private boolean handleImapCheck(Preference preference, Object newValue, String dc_config_name) {
-    final boolean newEnabled = (Boolean) newValue;
-    if(newEnabled) {
-      DcHelper.getAccounts(getContext()).stopIo();
-      dcContext.setConfigInt(dc_config_name, 1);
-      DcHelper.getAccounts(getContext()).startIo();
-      return true;
-    }
-    else {
-      new AlertDialog.Builder(getContext())
-        .setMessage(R.string.pref_imap_folder_warn_disable_defaults)
-        .setPositiveButton(R.string.ok, (dialogInterface, i) -> {
-          DcHelper.getAccounts(getContext()).stopIo();
-          dcContext.setConfigInt(dc_config_name, 0);
-          ((CheckBoxPreference)preference).setChecked(false);
-          DcHelper.getAccounts(getContext()).startIo();
-        })
-        .setNegativeButton(R.string.cancel, null)
-        .show();
-      return false;
-    }
-
   }
 
   @Override
