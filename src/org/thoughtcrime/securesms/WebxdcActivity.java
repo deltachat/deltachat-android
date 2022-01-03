@@ -33,7 +33,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
   protected void onCreate(Bundle state, boolean ready) {
     super.onCreate(state, ready);
     DcEventCenter eventCenter = DcHelper.getEventCenter(WebxdcActivity.this.getApplicationContext());
-    eventCenter.addObserver(DcContext.DC_EVENT_INCOMING_MSG, this);
+    eventCenter.addObserver(DcContext.DC_EVENT_WEBXDC_STATUS_UPDATE, this);
     
     Bundle b = getIntent().getExtras();
     int appMessageId = b.getInt("appMessageId");
