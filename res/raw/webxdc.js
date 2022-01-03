@@ -11,6 +11,8 @@ window.webxdc = (() => {
   return {
     selfAddr: () => InternalJSApi.selfAddr(),
 
+    selfName: () => InternalJSApi.selfName(),
+
     setUpdateListener: (cb) => (update_listener = cb),
 
     getAllUpdates: () => {

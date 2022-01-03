@@ -111,6 +111,11 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     }
 
     @JavascriptInterface
+    public String selfName() {
+      return WebxdcActivity.this.dcContext.getConfig("displayname");
+    }
+
+    @JavascriptInterface
     public boolean sendStatusUpdate(String descr, String payload) {
       Log.i(TAG, "sendStatusUpdate");
       return WebxdcActivity.this.dcContext.sendWebxdcStatusUpdate(WebxdcActivity.this.dcAppMsg.getId(), descr, payload);
