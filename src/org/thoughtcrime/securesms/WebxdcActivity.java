@@ -2,6 +2,7 @@ package org.thoughtcrime.securesms;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.webkit.JavascriptInterface;
 import android.webkit.MimeTypeMap;
@@ -112,7 +113,11 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
 
     @JavascriptInterface
     public String selfName() {
-      return WebxdcActivity.this.dcContext.getConfig("displayname");
+      String name = WebxdcActivity.this.dcContext.getConfig("displayname");
+      if (TextUtils.isEmpty(name)) {
+        name = selfAddr();
+      }
+      return name;
     }
 
     @JavascriptInterface
