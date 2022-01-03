@@ -73,7 +73,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
         InputStream targetStream = getResources().openRawResource(R.raw.webxdc);
         return new WebResourceResponse("text/javascript", "UTF-8", targetStream);
       } else {
-        byte[] blob = this.dcAppMsg.getBlobFromArchive(path);
+        byte[] blob = this.dcAppMsg.getWebxdcBlob(path);
         if (blob == null) {
           throw new Exception("\"" + path + "\" not found");
         }

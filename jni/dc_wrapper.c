@@ -1561,12 +1561,12 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcMsg_getFilename(JNIEnv *env, jobject
 }
 
 
-JNIEXPORT jbyteArray Java_com_b44t_messenger_DcMsg_getBlobFromArchive(JNIEnv *env, jobject obj, jstring filename)
+JNIEXPORT jbyteArray Java_com_b44t_messenger_DcMsg_getWebxdcBlob(JNIEnv *env, jobject obj, jstring filename)
 {
     jbyteArray ret = NULL;
     CHAR_REF(filename)
         size_t ptrSize = 0;
-        char* ptr = dc_msg_get_blob_from_archive(get_dc_msg(env, obj), filenamePtr, &ptrSize);
+        char* ptr = dc_msg_get_webxdc_blob(get_dc_msg(env, obj), filenamePtr, &ptrSize);
         ret = ptr2jbyteArray(env, ptr, ptrSize);
         dc_str_unref(ptr);
     CHAR_UNREF(filename)
