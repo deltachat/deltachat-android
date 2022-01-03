@@ -69,7 +69,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
         throw new Exception("no url specified");
       }
       String path = Uri.parse(rawUrl).getPath();
-      if (path.equalsIgnoreCase("/deltachat.js")) {
+      if (path.equalsIgnoreCase("/webxdc.js")) {
         InputStream targetStream = getResources().openRawResource(R.raw.webxdc);
         return new WebResourceResponse("text/javascript", "UTF-8", targetStream);
       } else {
