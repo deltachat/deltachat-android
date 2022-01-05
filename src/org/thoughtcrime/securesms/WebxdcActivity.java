@@ -16,8 +16,10 @@ import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcMsg;
 
+import org.json.JSONObject;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.util.Util;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -48,6 +50,17 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     webView.addJavascriptInterface(new InternalJSApi(), "InternalJSApi");
 
     webView.loadUrl(INTERNAL_SCHEMA + "://" + INTERNAL_DOMAIN + "/index.html");
+
+    Util.runOnAnyBackgroundThread(() -> {
+      JSONObject info = this.dcAppMsg.getWebxdcInfo();
+      Util.runOnMain(() -> {
+        try {
+          getSupportActionBar().setTitle(info.getString("name"));
+        } catch (Exception e) {
+          e.printStackTrace();
+        }
+      });
+    });
   }
 
   @Override

@@ -1574,6 +1574,15 @@ JNIEXPORT jbyteArray Java_com_b44t_messenger_DcMsg_getWebxdcBlob(JNIEnv *env, jo
 }
 
 
+JNIEXPORT jstring Java_com_b44t_messenger_DcMsg_getWebxdcInfoJson(JNIEnv *env, jobject obj)
+{
+    char* temp = dc_msg_get_webxdc_info(get_dc_msg(env, obj));
+        jstring ret =  JSTRING_NEW(temp);
+    dc_str_unref(temp);
+    return ret;
+}
+
+
 JNIEXPORT jboolean Java_com_b44t_messenger_DcMsg_isForwarded(JNIEnv *env, jobject obj)
 {
     return dc_msg_is_forwarded(get_dc_msg(env, obj))!=0;
