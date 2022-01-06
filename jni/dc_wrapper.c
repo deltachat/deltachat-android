@@ -717,13 +717,13 @@ JNIEXPORT jint Java_com_b44t_messenger_DcContext_sendVideochatInvitation(JNIEnv 
 }
 
 
-JNIEXPORT jboolean Java_com_b44t_messenger_DcContext_sendWebxdcStatusUpdate(JNIEnv *env, jobject obj, jint msg_id, jstring descr, jstring payload)
+JNIEXPORT jboolean Java_com_b44t_messenger_DcContext_sendWebxdcStatusUpdate(JNIEnv *env, jobject obj, jint msg_id, jstring payload, jstring descr)
 {
-    CHAR_REF(descr);
     CHAR_REF(payload);
-        jboolean ret = dc_send_webxdc_status_update(get_dc_context(env, obj), msg_id, descrPtr, payloadPtr) != 0;
-    CHAR_UNREF(payload);
+    CHAR_REF(descr);
+        jboolean ret = dc_send_webxdc_status_update(get_dc_context(env, obj), msg_id, payloadPtr, descrPtr) != 0;
     CHAR_UNREF(descr);
+    CHAR_UNREF(payload);
     return ret;
 }
 

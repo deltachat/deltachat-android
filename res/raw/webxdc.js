@@ -19,8 +19,8 @@ window.webxdc = (() => {
       return JSON.parse(InternalJSApi.getStatusUpdates(0));
     },
 
-    sendUpdate: (description, payload) => {
-      InternalJSApi.sendStatusUpdate(description, JSON.stringify(payload));
+    sendUpdate: (payload, descr) => {
+      InternalJSApi.sendStatusUpdate(JSON.stringify(payload), descr);
     },
   };
 })();

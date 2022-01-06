@@ -196,7 +196,7 @@ public class DcContext {
     public native int          sendMsg              (int chat_id, DcMsg msg);
     public native int          sendTextMsg          (int chat_id, String text);
     public native int          sendVideochatInvitation(int chat_id);
-    public native boolean      sendWebxdcStatusUpdate(int msg_id, String descr, String payload);
+    public native boolean      sendWebxdcStatusUpdate(int msg_id, String payload, String descr);
     public native String       getWebxdcStatusUpdates(int msg_id, int status_update_id);
     public native int          addDeviceMsg         (String label, DcMsg msg);
     public native boolean      wasDeviceMsgEverAdded(String label);
