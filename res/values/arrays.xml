@@ -46,7 +46,7 @@
       <!-- zh_TW  Chinese trad. (Taiwan) --> <item>繁體中文</item>
       <!-- km     Khmer -->                  <item>ភាសាខ្មែរ</item>
       <!-- ta     Tamil -->                  <item>தமிழ்</item>
-      <!-- te     Telugo -->                 <item>తెలుగు</item>
+      <!-- te     Telugu -->                 <item>తెలుగు</item>
   </string-array>
 
   <string-array name="language_values">
