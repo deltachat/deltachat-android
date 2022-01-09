@@ -22,18 +22,8 @@
 
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:defaultValue="true"
-            android:key="pref_inbox_watch"
-            android:title="@string/pref_watch_inbox_folder"/>
-
-        <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
-            android:defaultValue="true"
             android:key="pref_sentbox_watch"
             android:title="@string/pref_watch_sent_folder"/>
-
-        <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
-            android:defaultValue="true"
-            android:key="pref_mvbox_watch"
-            android:title="@string/pref_watch_mvbox_folder"/>
 
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:defaultValue="true"
