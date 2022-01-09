@@ -373,6 +373,8 @@
         <item quantity="many">%d нових повідомлень</item>
         <item quantity="other">%d нових повідомлень</item>
     </plurals>
+    <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
+    <string name="chat_new_one_to_one_hint">Відправити повідомлення. Це нічого, якщо %1$s не використовує Delta Chat.</string>
     <string name="chat_new_broadcast_hint">У списку трансляцій інші отримуватимуть повідомлення у своїх приватних чатах з вами.\n\nОдержувачі не будуть знати один про одного.</string>
     <string name="chat_new_group_hint">Інші побачать цю групу лише після того, як ви надішлете перше повідомлення.</string>
     <string name="chat_record_slide_to_cancel">Рухайте для скасування</string>
