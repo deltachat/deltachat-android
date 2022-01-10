@@ -13,14 +13,13 @@ import com.b44t.messenger.DcContext;
 
 import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.ConversationListActivity;
-import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.WelcomeActivity;
 import org.thoughtcrime.securesms.accounts.AccountSelectionListFragment;
+import org.thoughtcrime.securesms.crypto.DatabaseSecret;
+import org.thoughtcrime.securesms.crypto.DatabaseSecretProvider;
 import org.thoughtcrime.securesms.notifications.NotificationCenter;
-import org.thoughtcrime.securesms.util.task.ProgressDialogAsyncTask;
 
 import java.io.File;
-import java.lang.ref.WeakReference;
 
 public class AccountManager {
 
@@ -133,6 +132,22 @@ public class AccountManager {
         } else {
             activity.startActivity(new Intent(activity.getApplicationContext(), ConversationListActivity.class));
         }
+    }
+
+    public void switchToEncrypted(Activity activity) {
+        DcAccounts accounts = DcHelper.getAccounts(activity);
+        DcContext selectedAccount = accounts.getSelectedAccount();
+        if (selectedAccount.isConfigured() == 1) {
+            throw new RuntimeException("Can't switch to encrypted account if already configured");
+        }
+
+        int selectedAccountId = selectedAccount.getAccountId();
+        accounts.addClosedAccount();
+        accounts.removeAccount(selectedAccountId);
+
+        DcContext newAccount = accounts.getSelectedAccount();
+        DatabaseSecret secret = DatabaseSecretProvider.getOrCreateDatabaseSecret(activity);
+        newAccount.open(secret.asString());
     }
 
     // ui

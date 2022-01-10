@@ -28,6 +28,8 @@ import org.thoughtcrime.securesms.connect.FetchWorker;
 import org.thoughtcrime.securesms.connect.ForegroundDetector;
 import org.thoughtcrime.securesms.connect.KeepAliveService;
 import org.thoughtcrime.securesms.connect.NetworkStateReceiver;
+import org.thoughtcrime.securesms.crypto.DatabaseSecret;
+import org.thoughtcrime.securesms.crypto.DatabaseSecretProvider;
 import org.thoughtcrime.securesms.crypto.PRNGFixes;
 import org.thoughtcrime.securesms.geolocation.DcLocationManager;
 import org.thoughtcrime.securesms.jobmanager.JobManager;
@@ -77,7 +79,15 @@ public class ApplicationContext extends MultiDexApplication {
 
     dcAccounts = new DcAccounts("Android "+BuildConfig.VERSION_NAME, new File(getFilesDir(), "accounts").getAbsolutePath());
     AccountManager.getInstance().migrateToDcAccounts(this);
-    if (dcAccounts.getAll().length == 0) {
+    int[] allAccounts = dcAccounts.getAll();
+    for (int accountId : allAccounts) {
+      DcContext ac = dcAccounts.getAccount(accountId);
+      if (!ac.isOpen()) {
+        DatabaseSecret secret = DatabaseSecretProvider.getOrCreateDatabaseSecret(this);
+        ac.open(secret.asString());
+      }
+    }
+    if (allAccounts.length == 0) {
       dcAccounts.addAccount();
     }
     dcContext = dcAccounts.getSelectedAccount();

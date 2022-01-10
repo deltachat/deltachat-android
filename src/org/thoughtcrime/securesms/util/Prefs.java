@@ -1,5 +1,7 @@
 package org.thoughtcrime.securesms.util;
 
+import static com.mapbox.mapboxsdk.constants.MapboxConstants.MINIMUM_ZOOM;
+
 import android.content.ContentUris;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -25,8 +27,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static com.mapbox.mapboxsdk.constants.MapboxConstants.MINIMUM_ZOOM;
-
 public class Prefs {
 
   private static final String TAG = Prefs.class.getSimpleName();
@@ -35,6 +35,9 @@ public class Prefs {
   public  static final String THEME_PREF                       = "pref_theme";
   public  static final String LANGUAGE_PREF                    = "pref_language";
   public  static final String BACKGROUND_PREF                  = "pref_chat_background";
+
+  private static final String DATABASE_ENCRYPTED_SECRET        = "pref_database_encrypted_secret";
+  private static final String DATABASE_UNENCRYPTED_SECRET      = "pref_database_unencrypted_secret";
 
   public  static final String RINGTONE_PREF                    = "pref_key_ringtone";
   private static final String VIBRATE_PREF                     = "pref_key_vibrate";
@@ -82,6 +85,22 @@ public class Prefs {
 
   public static void setScreenLockEnabled(@NonNull Context context, boolean value) {
     setBooleanPreference(context, SCREEN_LOCK, value);
+  }
+
+  public static void setDatabaseEncryptedSecret(@NonNull Context context, @NonNull String secret) {
+    setStringPreference(context, DATABASE_ENCRYPTED_SECRET, secret);
+  }
+
+  public static void setDatabaseUnencryptedSecret(@NonNull Context context, @Nullable String secret) {
+    setStringPreference(context, DATABASE_UNENCRYPTED_SECRET, secret);
+  }
+
+  public static @Nullable String getDatabaseUnencryptedSecret(@NonNull Context context) {
+    return getStringPreference(context, DATABASE_UNENCRYPTED_SECRET, null);
+  }
+
+  public static @Nullable String getDatabaseEncryptedSecret(@NonNull Context context) {
+    return getStringPreference(context, DATABASE_ENCRYPTED_SECRET, null);
   }
 
   public static boolean isIncognitoKeyboardEnabled(Context context) {

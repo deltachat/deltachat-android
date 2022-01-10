@@ -25,6 +25,7 @@ public class DcAccounts {
     public native void            maybeNetwork         ();
 
     public native int             addAccount           ();
+    public native int             addClosedAccount     ();
     public native int             migrateAccount       (String dbfile);
     public native boolean         removeAccount        (int accountId);
     public native int[]           getAll               ();
