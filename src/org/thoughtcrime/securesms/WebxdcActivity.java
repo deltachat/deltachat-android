@@ -1,6 +1,9 @@
 package org.thoughtcrime.securesms;
 
+import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -30,6 +33,16 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
   private static final String INTERNAL_DOMAIN = "local.app";
   private DcContext dcContext;
   private DcMsg dcAppMsg;
+
+  public static void openWebxdcActivity(Context context, DcMsg instance) {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+      Intent intent =new Intent(context, WebxdcActivity.class);
+      intent.putExtra("appMessageId", instance.getId());
+      context.startActivity(intent);
+    } else {
+      Toast.makeText(context, "At least Android 4.3 (Jelly Bean) required for webxdc.", Toast.LENGTH_LONG).show();
+    }
+  }
 
   @Override
   protected void onCreate(Bundle state, boolean ready) {

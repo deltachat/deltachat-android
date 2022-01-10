@@ -22,7 +22,6 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.Rect;
-import android.os.Build;
 import android.text.SpannableString;
 import android.text.TextUtils;
 import android.util.AttributeSet;
@@ -32,7 +31,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.DimenRes;
 import androidx.annotation.NonNull;
@@ -319,7 +317,8 @@ public class ConversationItem extends BaseConversationItem
   }
 
   private boolean hasDocument(DcMsg dcMsg) {
-    return dcMsg.getType()==DcMsg.DC_MSG_FILE && !dcMsg.isSetupMessage();
+    return (dcMsg.getType()==DcMsg.DC_MSG_FILE || dcMsg.getType()==DcMsg.DC_MSG_WEBXDC)
+      && !dcMsg.isSetupMessage();
   }
 
   private void setBodyText(DcMsg messageRecord) {
@@ -331,10 +330,6 @@ public class ConversationItem extends BaseConversationItem
 
     if (messageRecord.isSetupMessage()) {
       bodyText.setText(context.getString(R.string.autocrypt_asm_click_body));
-      bodyText.setVisibility(View.VISIBLE);
-    }
-    else if (messageRecord.getType() == DcMsg.DC_MSG_WEBXDC) {
-      bodyText.setText("[" + messageRecord.getFilename() + "] " + text);
       bodyText.setVisibility(View.VISIBLE);
     }
     else if (text.isEmpty()) {
@@ -372,13 +367,7 @@ public class ConversationItem extends BaseConversationItem
       msgActionButton.setEnabled(true);
       msgActionButton.setText("Start…");
       msgActionButton.setOnClickListener(view -> {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-          Intent intent =new Intent(context, WebxdcActivity.class);
-          intent.putExtra("appMessageId", messageRecord.getId());
-          context.startActivity(intent);
-        } else {
-          Toast.makeText(view.getContext(), "At least Android 4.3 (Jelly Bean) required for webxdc.", Toast.LENGTH_LONG).show();
-        }
+        WebxdcActivity.openWebxdcActivity(getContext(), messageRecord);
       });
     }
     else if (messageRecord.hasHtml()) {
@@ -744,6 +733,8 @@ public class ConversationItem extends BaseConversationItem
     public void onClick(final View v, final Slide slide) {
       if (shouldInterceptClicks(messageRecord) || !batchSelected.isEmpty()) {
         performClick();
+      } else if (messageRecord.getType() == DcMsg.DC_MSG_WEBXDC) {
+        WebxdcActivity.openWebxdcActivity(context, messageRecord);
       } else if (MediaPreviewActivity.isTypeSupported(slide) && slide.getUri() != null) {
         Intent intent = new Intent(context, MediaPreviewActivity.class);
         intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
