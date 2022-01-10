@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+       xmlns:tools="http://schemas.android.com/tools"
+       xmlns:app="http://schemas.android.com/apk/res-auto"
+       tools:context="org.thoughtcrime.securesms.components.WebxdcView">
+
+        <LinearLayout android:id="@+id/webxdc_container"
+                      android:layout_width="fill_parent"
+                      android:layout_height="wrap_content"
+                      android:clickable="false"
+                      android:focusable="false"
+                      android:gravity="center_vertical"
+                      android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/webxdc_icon"
+                android:layout_marginTop="2dp"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/ic_chevron_up"/>
+
+            <LinearLayout android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_marginTop="2dp"
+                          android:layout_marginLeft="6dp"
+                          android:layout_marginStart="6dp"
+                          android:orientation="vertical"
+                          android:focusable="false"
+                          android:clickable="false">
+
+                <TextView android:id="@+id/webxdc_app_name"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          style="@style/Signal.Text.Body"
+                          android:singleLine="true"
+                          android:maxLines="1"
+                          android:clickable="false"
+                          android:ellipsize="end"
+                          android:textColor="?conversation_item_incoming_text_primary_color"
+                          android:textStyle="bold"
+                          tools:text="Great App"/>
+
+                <TextView android:id="@+id/webxdc_subtitle"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          style="@style/Signal.Text.Caption"
+                          android:clickable="false"
+                          android:textColor="?conversation_item_incoming_text_primary_color"
+                          tools:text="24kb"/>
+            </LinearLayout>
+        </LinearLayout>
+</merge>

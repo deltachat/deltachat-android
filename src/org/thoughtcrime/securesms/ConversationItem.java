@@ -48,6 +48,7 @@ import org.thoughtcrime.securesms.components.ConversationItemFooter;
 import org.thoughtcrime.securesms.components.ConversationItemThumbnail;
 import org.thoughtcrime.securesms.components.DocumentView;
 import org.thoughtcrime.securesms.components.QuoteView;
+import org.thoughtcrime.securesms.components.WebxdcView;
 import org.thoughtcrime.securesms.components.emoji.EmojiTextView;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.AudioSlide;
@@ -107,6 +108,7 @@ public class ConversationItem extends BaseConversationItem
   private @NonNull  Stub<ConversationItemThumbnail> mediaThumbnailStub;
   private @NonNull  Stub<AudioView>                 audioViewStub;
   private @NonNull  Stub<DocumentView>              documentViewStub;
+  private @NonNull  Stub<WebxdcView>                webxdcViewStub;
   private           Stub<BorderlessImageView>       stickerStub;
   private @Nullable EventListener                   eventListener;
 
@@ -139,6 +141,7 @@ public class ConversationItem extends BaseConversationItem
     this.mediaThumbnailStub      = new Stub<>(findViewById(R.id.image_view_stub));
     this.audioViewStub           = new Stub<>(findViewById(R.id.audio_view_stub));
     this.documentViewStub        = new Stub<>(findViewById(R.id.document_view_stub));
+    this.webxdcViewStub          = new Stub<>(findViewById(R.id.webxdc_view_stub));
     this.stickerStub             = new Stub<>(findViewById(R.id.sticker_view_stub));
     this.groupSenderHolder       =            findViewById(R.id.group_sender_holder);
     this.quoteView               =            findViewById(R.id.quote_view);
@@ -289,6 +292,11 @@ public class ConversationItem extends BaseConversationItem
       documentViewStub.get().setFocusable(!shouldInterceptClicks(messageRecord) && batchSelected.isEmpty());
       documentViewStub.get().setClickable(batchSelected.isEmpty());
     }
+
+    if (webxdcViewStub.resolved()) {
+      webxdcViewStub.get().setFocusable(!shouldInterceptClicks(messageRecord) && batchSelected.isEmpty());
+      webxdcViewStub.get().setClickable(batchSelected.isEmpty());
+    }
   }
 
   private boolean hasAudio(DcMsg messageRecord) {
@@ -313,12 +321,16 @@ public class ConversationItem extends BaseConversationItem
     return hasThumbnail(messageRecord) &&
 	   !hasAudio(messageRecord)    &&
 	   !hasDocument(messageRecord) &&
+	   !hasWebxdc(messageRecord) &&
 	   !hasSticker(messageRecord);
   }
 
+  private boolean hasWebxdc(DcMsg dcMsg) {
+    return dcMsg.getType()==DcMsg.DC_MSG_WEBXDC;
+  }
+
   private boolean hasDocument(DcMsg dcMsg) {
-    return (dcMsg.getType()==DcMsg.DC_MSG_FILE || dcMsg.getType()==DcMsg.DC_MSG_WEBXDC)
-      && !dcMsg.isSetupMessage();
+    return dcMsg.getType()==DcMsg.DC_MSG_FILE && !dcMsg.isSetupMessage();
   }
 
   private void setBodyText(DcMsg messageRecord) {
@@ -409,6 +421,7 @@ public class ConversationItem extends BaseConversationItem
       audioViewStub.get().setVisibility(View.VISIBLE);
       if (mediaThumbnailStub.resolved()) mediaThumbnailStub.get().setVisibility(View.GONE);
       if (documentViewStub.resolved())   documentViewStub.get().setVisibility(View.GONE);
+      if (webxdcViewStub.resolved())     webxdcViewStub.get().setVisibility(View.GONE);
       if (stickerStub.resolved())        stickerStub.get().setVisibility(View.GONE);
 
       //noinspection ConstantConditions
@@ -430,6 +443,7 @@ public class ConversationItem extends BaseConversationItem
       documentViewStub.get().setVisibility(View.VISIBLE);
       if (mediaThumbnailStub.resolved()) mediaThumbnailStub.get().setVisibility(View.GONE);
       if (audioViewStub.resolved())      audioViewStub.get().setVisibility(View.GONE);
+      if (webxdcViewStub.resolved())     webxdcViewStub.get().setVisibility(View.GONE);
       if (stickerStub.resolved())        stickerStub.get().setVisibility(View.GONE);
 
       //noinspection ConstantConditions
@@ -441,10 +455,26 @@ public class ConversationItem extends BaseConversationItem
       ViewUtil.updateLayoutParams(groupSenderHolder, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
       footer.setVisibility(VISIBLE);
     }
+    else if (hasWebxdc(messageRecord)) {
+      webxdcViewStub.get().setVisibility(View.VISIBLE);
+      if (mediaThumbnailStub.resolved()) mediaThumbnailStub.get().setVisibility(View.GONE);
+      if (audioViewStub.resolved())      audioViewStub.get().setVisibility(View.GONE);
+      if (documentViewStub.resolved())   documentViewStub.get().setVisibility(View.GONE);
+      if (stickerStub.resolved())        stickerStub.get().setVisibility(View.GONE);
+
+      webxdcViewStub.get().setWebxdc(messageRecord);
+      webxdcViewStub.get().setWebxdcClickListener(new ThumbnailClickListener());
+      webxdcViewStub.get().setOnLongClickListener(passthroughClickListener);
+
+      ViewUtil.updateLayoutParams(bodyText, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+      ViewUtil.updateLayoutParams(groupSenderHolder, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+      footer.setVisibility(VISIBLE);
+    }
     else if (hasThumbnail(messageRecord)) {
       mediaThumbnailStub.get().setVisibility(View.VISIBLE);
       if (audioViewStub.resolved())    audioViewStub.get().setVisibility(View.GONE);
       if (documentViewStub.resolved()) documentViewStub.get().setVisibility(View.GONE);
+      if (audioViewStub.resolved())    audioViewStub.get().setVisibility(View.GONE);
       if (stickerStub.resolved())        stickerStub.get().setVisibility(View.GONE);
 
       Slide slide = MediaUtil.getSlideForMsg(context, messageRecord);
@@ -481,6 +511,7 @@ public class ConversationItem extends BaseConversationItem
       stickerStub.get().setVisibility(View.VISIBLE);
       if (audioViewStub.resolved())      audioViewStub.get().setVisibility(View.GONE);
       if (documentViewStub.resolved())   documentViewStub.get().setVisibility(View.GONE);
+      if (webxdcViewStub.resolved())     webxdcViewStub.get().setVisibility(View.GONE);
       if (mediaThumbnailStub.resolved()) mediaThumbnailStub.get().setVisibility(View.GONE);
 
       bodyBubble.setBackgroundColor(Color.TRANSPARENT);
@@ -500,6 +531,7 @@ public class ConversationItem extends BaseConversationItem
       if (mediaThumbnailStub.resolved()) mediaThumbnailStub.get().setVisibility(View.GONE);
       if (audioViewStub.resolved())      audioViewStub.get().setVisibility(View.GONE);
       if (documentViewStub.resolved())   documentViewStub.get().setVisibility(View.GONE);
+      if (webxdcViewStub.resolved())     webxdcViewStub.get().setVisibility(View.GONE);
 
       ViewUtil.updateLayoutParams(bodyText, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
       ViewUtil.updateLayoutParams(groupSenderHolder, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
