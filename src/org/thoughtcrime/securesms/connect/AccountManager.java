@@ -134,11 +134,15 @@ public class AccountManager {
         }
     }
 
+    /**
+     * Deletes the current account (must be unconfigured) and creates an encrypted account instead.
+     * @throws IllegalStateException if the currently selected account is already configured.
+     */
     public void switchToEncrypted(Activity activity) {
         DcAccounts accounts = DcHelper.getAccounts(activity);
         DcContext selectedAccount = accounts.getSelectedAccount();
         if (selectedAccount.isConfigured() == 1) {
-            throw new RuntimeException("Can't switch to encrypted account if already configured");
+            throw new IllegalStateException("Can't switch to encrypted account if already configured");
         }
 
         int selectedAccountId = selectedAccount.getAccountId();
