@@ -46,6 +46,7 @@ import android.view.View.OnFocusChangeListener;
 import android.view.View.OnKeyListener;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
+import android.webkit.MimeTypeMap;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -393,7 +394,16 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
       break;
     case PICK_DOCUMENT:
-      setMedia(data.getData(), MediaType.DOCUMENT);
+      if (data.getData().toString().endsWith(".xdc")) {
+        DcMsg msg = new DcMsg(dcContext, DcMsg.DC_MSG_WEBXDC);
+        Attachment attachment = new UriAttachment(data.getData(), null, MediaUtil.WEBXDC, AttachmentDatabase.TRANSFER_PROGRESS_STARTED, 0, 0, 0, null, null, false);
+        String path = getRealPathFromAttachment(attachment);
+        msg.setFile(path, MediaUtil.WEBXDC);
+        dcContext.setDraft(dcChat.getId(), msg);
+        setMedia(msg, MediaType.DOCUMENT);
+      } else {
+        setMedia(data.getData(), MediaType.DOCUMENT);
+      }
       break;
     case PICK_AUDIO:
       setMedia(data.getData(), MediaType.AUDIO);
@@ -836,6 +846,9 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       case DcMsg.DC_MSG_VIDEO:
         setMedia(uri, MediaType.VIDEO).addListener(listener);
         break;
+      case DcMsg.DC_MSG_WEBXDC:
+        setMedia(draft, MediaType.DOCUMENT).addListener(listener);
+        break;
       default:
         setMedia(uri, MediaType.DOCUMENT).addListener(listener);
         break;
@@ -1012,7 +1025,11 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       return new SettableFuture<>(false);
     }
 
-    return attachmentManager.setMedia(glideRequests, uri, mediaType, 0, 0);
+    return attachmentManager.setMedia(glideRequests, uri, null, mediaType, 0, 0);
+  }
+
+  private ListenableFuture<Boolean> setMedia(DcMsg msg, @NonNull MediaType mediaType) {
+    return attachmentManager.setMedia(glideRequests, Uri.fromFile(new File(msg.getFile())), msg, mediaType, 0, 0);
   }
 
   private void addAttachmentContactInfo(Intent data) {

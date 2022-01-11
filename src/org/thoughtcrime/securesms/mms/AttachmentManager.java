@@ -38,6 +38,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.b44t.messenger.DcContext;
+import com.b44t.messenger.DcMsg;
+
 import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.MediaPreviewActivity;
 import org.thoughtcrime.securesms.R;
@@ -48,6 +51,7 @@ import org.thoughtcrime.securesms.components.AudioView;
 import org.thoughtcrime.securesms.components.DocumentView;
 import org.thoughtcrime.securesms.components.RemovableEditableMediaView;
 import org.thoughtcrime.securesms.components.ThumbnailView;
+import org.thoughtcrime.securesms.components.WebxdcView;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.geolocation.DcLocationManager;
 import org.thoughtcrime.securesms.permissions.Permissions;
@@ -84,6 +88,7 @@ public class AttachmentManager {
   private ThumbnailView              thumbnail;
   private AudioView                  audioView;
   private DocumentView               documentView;
+  private WebxdcView                 webxdcView;
   //private SignalMapView              mapView;
 
   private @NonNull  List<Uri>       garbage = new LinkedList<>();
@@ -104,6 +109,7 @@ public class AttachmentManager {
       this.thumbnail          = ViewUtil.findById(root, R.id.attachment_thumbnail);
       this.audioView          = ViewUtil.findById(root, R.id.attachment_audio);
       this.documentView       = ViewUtil.findById(root, R.id.attachment_document);
+      this.webxdcView         = ViewUtil.findById(root, R.id.attachment_webxdc);
       //this.mapView            = ViewUtil.findById(root, R.id.attachment_location);
       this.removableMediaView = ViewUtil.findById(root, R.id.removable_media_view);
 
@@ -113,6 +119,7 @@ public class AttachmentManager {
       int incomingBubbleColor = ThemeUtil.getThemedColor(context, R.attr.conversation_item_incoming_bubble_color);
       audioView.getBackground().setColorFilter(incomingBubbleColor, PorterDuff.Mode.MULTIPLY);
       documentView.getBackground().setColorFilter(incomingBubbleColor, PorterDuff.Mode.MULTIPLY);
+      webxdcView.getBackground().setColorFilter(incomingBubbleColor, PorterDuff.Mode.MULTIPLY);
     }
 
   }
@@ -220,6 +227,7 @@ public class AttachmentManager {
   @SuppressLint("StaticFieldLeak")
   public ListenableFuture<Boolean> setMedia(@NonNull final GlideRequests glideRequests,
                                             @NonNull final Uri uri,
+                                            @Nullable final DcMsg msg,
                                             @NonNull final MediaType mediaType,
                                                      final int width,
                                                      final int height)
@@ -238,7 +246,10 @@ public class AttachmentManager {
       @Override
       protected @Nullable Slide doInBackground(Void... params) {
         try {
-          if (PartAuthority.isLocalUri(uri)) {
+          if (msg != null && msg.getType() == DcMsg.DC_MSG_WEBXDC) {
+            return new DocumentSlide(context, msg);
+          }
+          else if (PartAuthority.isLocalUri(uri)) {
             return getManuallyCalculatedSlideInfo(uri, width, height);
           } else {
             Slide result = getContentResolverSlideInfo(uri, width, height);
@@ -291,8 +302,14 @@ public class AttachmentManager {
             removableMediaView.display(audioView, false);
             result.set(true);
           } else if (slide.hasDocument()) {
-            documentView.setDocument((DocumentSlide) slide);
-            removableMediaView.display(documentView, false);
+            if (slide.isWebxdcDocument()) {
+              DcContext dcContext = DcHelper.getContext(context);
+              webxdcView.setWebxdc(dcContext.getMsg(slide.dcMsgId));
+              removableMediaView.display(webxdcView, false);
+            } else {
+              documentView.setDocument((DocumentSlide) slide);
+              removableMediaView.display(documentView, false);
+            }
             result.set(true);
           } else {
             Attachment attachment = slide.asAttachment();
