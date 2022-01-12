@@ -1158,7 +1158,12 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
         DcMsg msg = (DcMsg)param[0];
         Integer recompress = (Integer)param[1];
         if (action==ACTION_SEND_OUT) {
-          dcContext.setDraft(dcChat.getId(), null);
+
+          // for WEBXDC, draft are just sent out as is.
+          // for preparations and other cases, cleanup draft soon.
+          if (msg.getType() != DcMsg.DC_MSG_WEBXDC) {
+            dcContext.setDraft(dcChat.getId(), null);
+          }
 
           if(msg!=null)
           {
