@@ -24,7 +24,6 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.util.Patterns;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -185,7 +184,6 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
             encryptCheckbox.setHeight(0);
             encryptCheckbox.setClickable(false);
             encryptCheckbox.setFocusable(false);
-            Log.e("dbg", "set vis to gone, dbg");
         } else if (getIntent() != null && getIntent().getBundleExtra(ACCOUNT_DATA) != null) {
           // Companion app might have sent account data
           Bundle b = getIntent().getBundleExtra(ACCOUNT_DATA);
