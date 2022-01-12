@@ -152,6 +152,7 @@ public class AccountManager {
         DcContext newAccount = accounts.getSelectedAccount();
         DatabaseSecret secret = DatabaseSecretProvider.getOrCreateDatabaseSecret(activity);
         newAccount.open(secret.asString());
+        resetDcContext(activity);
     }
 
     // ui
