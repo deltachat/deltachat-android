@@ -1112,29 +1112,30 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       }
 
       try {
-        List<Attachment> attachments = slideDeck.asAttachments();
-        for (Attachment attachment : attachments) {
-          String contentType = attachment.getContentType();
-          if (MediaUtil.isImageType(contentType) && slideDeck.getDocumentSlide()==null) {
-            msg = new DcMsg(dcContext,
-                    MediaUtil.isGif(contentType) ? DcMsg.DC_MSG_GIF : DcMsg.DC_MSG_IMAGE);
-            msg.setDimension(attachment.getWidth(), attachment.getHeight());
+        if (slideDeck.getWebxdctDraftId() != 0) {
+          msg = dcContext.getDraft(chatId);
+        } else {
+          List<Attachment> attachments = slideDeck.asAttachments();
+          for (Attachment attachment : attachments) {
+            String contentType = attachment.getContentType();
+            if (MediaUtil.isImageType(contentType) && slideDeck.getDocumentSlide() == null) {
+              msg = new DcMsg(dcContext,
+                MediaUtil.isGif(contentType) ? DcMsg.DC_MSG_GIF : DcMsg.DC_MSG_IMAGE);
+              msg.setDimension(attachment.getWidth(), attachment.getHeight());
+            } else if (MediaUtil.isAudioType(contentType)) {
+              msg = new DcMsg(dcContext,
+                attachment.isVoiceNote() ? DcMsg.DC_MSG_VOICE : DcMsg.DC_MSG_AUDIO);
+            } else if (MediaUtil.isVideoType(contentType) && slideDeck.getDocumentSlide() == null) {
+              msg = new DcMsg(dcContext, DcMsg.DC_MSG_VIDEO);
+              recompress = DcMsg.DC_MSG_VIDEO;
+            } else {
+              msg = new DcMsg(dcContext, DcMsg.DC_MSG_FILE);
+            }
+            String path = getRealPathFromAttachment(attachment);
+            msg.setFile(path, null);
           }
-          else if (MediaUtil.isAudioType(contentType)) {
-            msg = new DcMsg(dcContext,
-                attachment.isVoiceNote()? DcMsg.DC_MSG_VOICE : DcMsg.DC_MSG_AUDIO);
-          }
-          else if (MediaUtil.isVideoType(contentType) && slideDeck.getDocumentSlide()==null) {
-            msg = new DcMsg(dcContext, DcMsg.DC_MSG_VIDEO);
-            recompress = DcMsg.DC_MSG_VIDEO;
-          }
-          else {
-            msg = new DcMsg(dcContext, DcMsg.DC_MSG_FILE);
-          }
-          String path = getRealPathFromAttachment(attachment);
-          msg.setFile(path, null);
-          msg.setText(body);
         }
+        msg.setText(body);
       }
       catch(Exception e) {
         e.printStackTrace();

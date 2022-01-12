@@ -45,6 +45,7 @@ import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.MediaPreviewActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.ShareLocationDialog;
+import org.thoughtcrime.securesms.WebxdcActivity;
 import org.thoughtcrime.securesms.attachments.Attachment;
 import org.thoughtcrime.securesms.audio.AudioSlidePlayer;
 import org.thoughtcrime.securesms.components.AudioView;
@@ -303,8 +304,10 @@ public class AttachmentManager {
             result.set(true);
           } else if (slide.hasDocument()) {
             if (slide.isWebxdcDocument()) {
-              DcContext dcContext = DcHelper.getContext(context);
-              webxdcView.setWebxdc(dcContext.getMsg(slide.dcMsgId));
+              webxdcView.setWebxdc(msg);
+              webxdcView.setWebxdcClickListener((v, s) -> {
+                WebxdcActivity.openWebxdcActivity(context, msg);
+              });
               removableMediaView.display(webxdcView, false);
             } else {
               documentView.setDocument((DocumentSlide) slide);

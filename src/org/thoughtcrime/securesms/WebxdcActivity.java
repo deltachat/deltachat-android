@@ -54,6 +54,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     int appMessageId = b.getInt("appMessageId");
 
     this.dcContext = DcHelper.getContext(getApplicationContext());
+    // TODO: this fails for drafts. might be dc_get_msg() does not work for drafts at all (in the past dc_get_draft() was used always)
     this.dcAppMsg = this.dcContext.getMsg(appMessageId);
 
     WebSettings webSettings = webView.getSettings();
