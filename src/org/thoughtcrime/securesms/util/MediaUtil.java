@@ -63,7 +63,8 @@ public class MediaUtil {
     } else if (dcMsg.getType() == DcMsg.DC_MSG_AUDIO
             || dcMsg.getType() == DcMsg.DC_MSG_VOICE) {
       slide = new AudioSlide(context, dcMsg);
-    } else if (dcMsg.getType() == DcMsg.DC_MSG_FILE) {
+    } else if (dcMsg.getType() == DcMsg.DC_MSG_FILE
+            || dcMsg.getType() == DcMsg.DC_MSG_WEBXDC) {
       slide = new DocumentSlide(context, dcMsg);
     }
 
