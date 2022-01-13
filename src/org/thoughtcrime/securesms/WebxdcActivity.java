@@ -7,6 +7,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Menu;
 import android.webkit.JavascriptInterface;
 import android.webkit.MimeTypeMap;
 import android.webkit.WebResourceResponse;
@@ -81,6 +82,12 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
   protected void onDestroy() {
     DcHelper.getEventCenter(this.getApplicationContext()).removeObservers(this);
     super.onDestroy();
+  }
+
+  @Override
+  public boolean onPrepareOptionsMenu(Menu menu) {
+    // do not call super.onPrepareOptionsMenu() as the default "Search" menu is not needed
+    return true;
   }
 
   @Override
