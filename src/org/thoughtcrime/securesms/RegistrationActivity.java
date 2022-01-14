@@ -525,9 +525,10 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
     }
 
     private void setupConfig() {
-        if (encryptCheckbox.isSelected()) {
+        if (encryptCheckbox.isChecked()) {
             AccountManager accountManager = AccountManager.getInstance();
             accountManager.switchToEncrypted(this);
+            encryptCheckbox.setEnabled(false); // Prevent the user from disabling the checkbox again
         }
 
         setConfig(R.id.email_text, "addr", true);
