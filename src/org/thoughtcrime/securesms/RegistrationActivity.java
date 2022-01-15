@@ -54,6 +54,7 @@ import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.IntentUtils;
+import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.concurrent.ListenableFuture;
 import org.thoughtcrime.securesms.util.concurrent.SettableFuture;
 import org.thoughtcrime.securesms.util.task.ProgressDialogAsyncTask;
@@ -201,6 +202,10 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
           }
         }
 
+        registerForEvents();
+    }
+
+    private void registerForEvents() {
         DcHelper.getEventCenter(this).addObserver(DcContext.DC_EVENT_CONFIGURE_PROGRESS, this);
     }
 
@@ -503,6 +508,36 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
             Toast.makeText(this, R.string.login_error_required_fields, Toast.LENGTH_LONG).show();
             return;
         }
+
+        if (encryptCheckbox.isChecked()) {
+            AccountManager accountManager = AccountManager.getInstance();
+
+            if (progressDialog != null) {
+                progressDialog.dismiss();
+                progressDialog = null;
+            }
+
+            progressDialog = new ProgressDialog(this);
+            progressDialog.setMessage(getString(R.string.one_moment));
+            progressDialog.setCanceledOnTouchOutside(false);
+            progressDialog.setCancelable(false);
+            progressDialog.show();
+
+            // Prevent the user from disabling the checkbox again, switching to unencrypted account is currently not implemented
+            encryptCheckbox.setEnabled(false);
+            Util.runOnBackground(() -> {
+                DcHelper.getEventCenter(this).removeObservers(this);
+                accountManager.switchToEncrypted(this);
+                // Event center changed, register for events again
+                registerForEvents();
+                Util.runOnMain(this::continueLogin);
+            });
+        } else {
+            continueLogin();
+        }
+    }
+
+    private void continueLogin() {
         setupConfig();
 
         if (progressDialog != null) {
@@ -525,12 +560,6 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
     }
 
     private void setupConfig() {
-        if (encryptCheckbox.isChecked()) {
-            AccountManager accountManager = AccountManager.getInstance();
-            accountManager.switchToEncrypted(this);
-            encryptCheckbox.setEnabled(false); // Prevent the user from disabling the checkbox again
-        }
-
         setConfig(R.id.email_text, "addr", true);
         setConfig(R.id.password_text, "mail_pw", false);
         setConfig(R.id.imap_server_text, "mail_server", true);
