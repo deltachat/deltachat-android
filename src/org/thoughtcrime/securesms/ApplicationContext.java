@@ -45,6 +45,7 @@ import java.util.concurrent.TimeUnit;
 //import com.squareup.leakcanary.LeakCanary;
 
 public class ApplicationContext extends MultiDexApplication {
+  private static final String TAG = ApplicationContext.class.getSimpleName();
 
   public DcAccounts             dcAccounts;
   public DcContext              dcContext;
@@ -83,8 +84,10 @@ public class ApplicationContext extends MultiDexApplication {
     for (int accountId : allAccounts) {
       DcContext ac = dcAccounts.getAccount(accountId);
       if (!ac.isOpen()) {
-        DatabaseSecret secret = DatabaseSecretProvider.getOrCreateDatabaseSecret(this);
-        ac.open(secret.asString());
+        DatabaseSecret secret = DatabaseSecretProvider.getOrCreateDatabaseSecret(this, accountId);
+        int res = ac.open(secret.asString());
+        if (res == 1) Log.i(TAG, "Successfully opened account " + accountId);
+        else Log.e(TAG, "Error opening account " + accountId);
       }
     }
     if (allAccounts.length == 0) {

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.preference.PreferenceManager;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
@@ -139,6 +140,7 @@ public class AccountManager {
      * @throws IllegalStateException if the currently selected account is already configured.
      */
     public void switchToEncrypted(Activity activity) {
+        Log.i(TAG, "Switching to encrypted account...");
         DcAccounts accounts = DcHelper.getAccounts(activity);
         DcContext selectedAccount = accounts.getSelectedAccount();
         if (selectedAccount.isConfigured() == 1) {
@@ -150,7 +152,7 @@ public class AccountManager {
         accounts.removeAccount(selectedAccountId);
 
         DcContext newAccount = accounts.getSelectedAccount();
-        DatabaseSecret secret = DatabaseSecretProvider.getOrCreateDatabaseSecret(activity);
+        DatabaseSecret secret = DatabaseSecretProvider.getOrCreateDatabaseSecret(activity, newAccount.getAccountId());
         newAccount.open(secret.asString());
         resetDcContext(activity);
     }

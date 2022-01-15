@@ -10,6 +10,7 @@ import org.thoughtcrime.securesms.util.Prefs;
 
 import java.io.IOException;
 import java.security.SecureRandom;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * It can be rather expensive to read from the keystore, so this class caches the key in memory
@@ -17,33 +18,33 @@ import java.security.SecureRandom;
  */
 public final class DatabaseSecretProvider {
 
-  private static volatile DatabaseSecret instance;
+  private static final ConcurrentHashMap<Integer, DatabaseSecret> instances = new ConcurrentHashMap<>();
 
-  public static DatabaseSecret getOrCreateDatabaseSecret(@NonNull Context context) {
-    if (instance == null) {
+  public static DatabaseSecret getOrCreateDatabaseSecret(@NonNull Context context, int accountId) {
+    if (instances.get(accountId) == null) {
       synchronized (DatabaseSecretProvider.class) {
-        if (instance == null) {
-          instance = getOrCreate(context);
+        if (instances.get(accountId) == null) {
+          instances.put(accountId, getOrCreate(context, accountId));
         }
       }
     }
 
-    return instance;
+    return instances.get(accountId);
   }
 
   private DatabaseSecretProvider() {
   }
 
-  private static @NonNull DatabaseSecret getOrCreate(@NonNull Context context) {
-    String unencryptedSecret = Prefs.getDatabaseUnencryptedSecret(context);
-    String encryptedSecret   = Prefs.getDatabaseEncryptedSecret(context);
+  private static @NonNull DatabaseSecret getOrCreate(@NonNull Context context, int accountId) {
+    String unencryptedSecret = Prefs.getDatabaseUnencryptedSecret(context, accountId);
+    String encryptedSecret   = Prefs.getDatabaseEncryptedSecret(context, accountId);
 
-    if      (unencryptedSecret != null) return getUnencryptedDatabaseSecret(context, unencryptedSecret);
+    if      (unencryptedSecret != null) return getUnencryptedDatabaseSecret(context, unencryptedSecret, accountId);
     else if (encryptedSecret != null)   return getEncryptedDatabaseSecret(encryptedSecret);
-    else                                return createAndStoreDatabaseSecret(context);
+    else                                return createAndStoreDatabaseSecret(context, accountId);
   }
 
-  private static @NonNull DatabaseSecret getUnencryptedDatabaseSecret(@NonNull Context context, @NonNull String unencryptedSecret)
+  private static @NonNull DatabaseSecret getUnencryptedDatabaseSecret(@NonNull Context context, @NonNull String unencryptedSecret, int accountId)
   {
     try {
       DatabaseSecret databaseSecret = new DatabaseSecret(unencryptedSecret);
@@ -53,8 +54,8 @@ public final class DatabaseSecretProvider {
       } else {
         KeyStoreHelper.SealedData encryptedSecret = KeyStoreHelper.seal(databaseSecret.asBytes());
 
-        Prefs.setDatabaseEncryptedSecret(context, encryptedSecret.serialize());
-        Prefs.setDatabaseUnencryptedSecret(context, null);
+        Prefs.setDatabaseEncryptedSecret(context, encryptedSecret.serialize(), accountId);
+        Prefs.setDatabaseUnencryptedSecret(context, null, accountId);
 
         return databaseSecret;
       }
@@ -72,7 +73,7 @@ public final class DatabaseSecretProvider {
     }
   }
 
-  private static @NonNull DatabaseSecret createAndStoreDatabaseSecret(@NonNull Context context) {
+  private static @NonNull DatabaseSecret createAndStoreDatabaseSecret(@NonNull Context context, int accountId) {
     SecureRandom random = new SecureRandom();
     byte[]       secret = new byte[32];
     random.nextBytes(secret);
@@ -81,9 +82,9 @@ public final class DatabaseSecretProvider {
 
     if (Build.VERSION.SDK_INT >= 23) {
       KeyStoreHelper.SealedData encryptedSecret = KeyStoreHelper.seal(databaseSecret.asBytes());
-      Prefs.setDatabaseEncryptedSecret(context, encryptedSecret.serialize());
+      Prefs.setDatabaseEncryptedSecret(context, encryptedSecret.serialize(), accountId);
     } else {
-      Prefs.setDatabaseUnencryptedSecret(context, databaseSecret.asString());
+      Prefs.setDatabaseUnencryptedSecret(context, databaseSecret.asString(), accountId);
     }
 
     return databaseSecret;
