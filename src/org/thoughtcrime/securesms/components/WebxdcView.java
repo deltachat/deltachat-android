@@ -74,7 +74,11 @@ public class WebxdcView extends FrameLayout {
       appName.setText(info.getString("name"));
 
       // subtitle
-      appSubtitle.setText(Util.getPrettyFileSize(dcMsg.getFilebytes()) + " Webxdc");
+      String summary = info.optString("summary");
+      if (summary.isEmpty()) {
+        summary = Util.getPrettyFileSize(dcMsg.getFilebytes()) + " Webxdc";
+      }
+      appSubtitle.setText(summary);
     } catch (Exception e) {
       e.printStackTrace();
     }
