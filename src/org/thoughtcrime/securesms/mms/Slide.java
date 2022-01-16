@@ -18,9 +18,11 @@ package org.thoughtcrime.securesms.mms;
 
 import android.content.Context;
 import android.net.Uri;
-import androidx.annotation.DrawableRes;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import com.b44t.messenger.DcMsg;
 
 import org.thoughtcrime.securesms.attachments.Attachment;
 import org.thoughtcrime.securesms.attachments.UriAttachment;
@@ -48,7 +50,7 @@ public abstract class Slide {
     return dcMsgId;
   }
 
-  public String getContentType() {
+public String getContentType() {
     return attachment.getContentType();
   }
 
@@ -94,8 +96,8 @@ public abstract class Slide {
     return false;
   }
 
-  public boolean isWebxdcDocument() {
-    return false;
+  public DcMsg getWebxdcMsg() {
+    return null;
   }
 
   public boolean hasLocation() {

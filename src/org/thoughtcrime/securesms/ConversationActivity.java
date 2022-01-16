@@ -16,6 +16,13 @@
  */
 package org.thoughtcrime.securesms;
 
+import static org.thoughtcrime.securesms.NewConversationActivity.MAILTO;
+import static org.thoughtcrime.securesms.TransportOption.Type;
+import static org.thoughtcrime.securesms.util.RelayUtil.getSharedText;
+import static org.thoughtcrime.securesms.util.RelayUtil.isForwarding;
+import static org.thoughtcrime.securesms.util.RelayUtil.isRelayingMessageContent;
+import static org.thoughtcrime.securesms.util.RelayUtil.isSharing;
+
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.ActivityNotFoundException;
@@ -46,7 +53,6 @@ import android.view.View.OnFocusChangeListener;
 import android.view.View.OnKeyListener;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
-import android.webkit.MimeTypeMap;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -96,7 +102,6 @@ import org.thoughtcrime.securesms.mms.AttachmentManager.MediaType;
 import org.thoughtcrime.securesms.mms.AudioSlide;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.mms.GlideRequests;
-import org.thoughtcrime.securesms.mms.PartAuthority;
 import org.thoughtcrime.securesms.mms.QuoteModel;
 import org.thoughtcrime.securesms.mms.SlideDeck;
 import org.thoughtcrime.securesms.permissions.Permissions;
@@ -121,21 +126,9 @@ import org.thoughtcrime.securesms.video.recode.VideoRecoder;
 import org.thoughtcrime.securesms.videochat.VideochatUtil;
 
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
-
-import static org.thoughtcrime.securesms.NewConversationActivity.MAILTO;
-import static org.thoughtcrime.securesms.TransportOption.Type;
-import static org.thoughtcrime.securesms.util.RelayUtil.getSharedText;
-import static org.thoughtcrime.securesms.util.RelayUtil.isForwarding;
-import static org.thoughtcrime.securesms.util.RelayUtil.isRelayingMessageContent;
-import static org.thoughtcrime.securesms.util.RelayUtil.isSharing;
 
 /**
  * Activity for displaying a message thread, as well as
@@ -394,15 +387,9 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
       break;
     case PICK_DOCUMENT:
-      if (data.getData().toString().endsWith(".xdc")) {
-        DcMsg msg = new DcMsg(dcContext, DcMsg.DC_MSG_WEBXDC);
-        Attachment attachment = new UriAttachment(data.getData(), null, MediaUtil.WEBXDC, AttachmentDatabase.TRANSFER_PROGRESS_STARTED, 0, 0, 0, null, null, false);
-        String path = getRealPathFromAttachment(attachment);
-        msg.setFile(path, MediaUtil.WEBXDC);
-        dcContext.setDraft(dcChat.getId(), msg);
-        setMedia(msg, MediaType.DOCUMENT);
-      } else {
-        setMedia(data.getData(), MediaType.DOCUMENT);
+      setMedia(data.getData(), MediaType.DOCUMENT);
+      if (attachmentManager.getWebxdcDraftMsg() != null) {
+        dcContext.setDraft(dcChat.getId(), attachmentManager.getWebxdcDraftMsg());
       }
       break;
     case PICK_AUDIO:
@@ -1046,39 +1033,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     return dcChat.getVisibility() == DcChat.DC_CHAT_VISIBILITY_ARCHIVED;
   }
 
-  private String getRealPathFromAttachment(Attachment attachment) {
-    try {
-      // get file in the blobdir as `<blobdir>/<name>[-<uniqueNumber>].<ext>`
-      String filename = attachment.getFileName();
-      String ext = "";
-      if(filename==null) {
-        filename = new SimpleDateFormat("yyyy-MM-dd-HH-mm").format(new Date());
-        ext = "." + MediaUtil.getExtensionFromMimeType(attachment.getContentType());
-      }
-      else {
-        int i = filename.lastIndexOf(".");
-        if(i>=0) {
-          ext = filename.substring(i);
-          filename = filename.substring(0, i);
-        }
-      }
-      String path = DcHelper.getBlobdirFile(dcContext, filename, ext);
-
-      // copy content to this file
-      if(path!=null) {
-        InputStream inputStream = PartAuthority.getAttachmentStream(this, attachment.getDataUri());
-        OutputStream outputStream = new FileOutputStream(path);
-        Util.copy(inputStream, outputStream);
-      }
-
-      return path;
-    }
-    catch(Exception e) {
-      e.printStackTrace();
-      return null;
-    }
-  }
-
   //////// send message or save draft
 
   protected static final int ACTION_SEND_OUT = 1;
@@ -1131,7 +1085,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
             } else {
               msg = new DcMsg(dcContext, DcMsg.DC_MSG_FILE);
             }
-            String path = getRealPathFromAttachment(attachment);
+            String path = MediaUtil.getRealPathFromAttachment(this, attachment);
             msg.setFile(path, null);
           }
         }
@@ -1392,7 +1346,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private void sendSticker(@NonNull Uri uri, String contentType) {
     Attachment attachment = new UriAttachment(uri, null, contentType,
       AttachmentDatabase.TRANSFER_PROGRESS_STARTED, 0, 0, 0, null, null, false);
-    String path = getRealPathFromAttachment(attachment);
+    String path = MediaUtil.getRealPathFromAttachment(this, attachment);
 
     Optional<QuoteModel> quote = inputPanel.getQuote();
     inputPanel.clearQuote();

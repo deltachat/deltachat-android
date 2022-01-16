@@ -3,22 +3,20 @@ package org.thoughtcrime.securesms.mms;
 
 import android.content.Context;
 import android.net.Uri;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.b44t.messenger.DcMsg;
 
-import org.thoughtcrime.securesms.attachments.Attachment;
 import org.thoughtcrime.securesms.attachments.DcAttachment;
 import org.thoughtcrime.securesms.util.StorageUtil;
 
 public class DocumentSlide extends Slide {
-  private int dcMsgType = DcMsg.DC_MSG_UNDEFINED;
 
   public DocumentSlide(Context context, DcMsg dcMsg) {
     super(context, new DcAttachment(dcMsg));
     dcMsgId = dcMsg.getId();
-    dcMsgType = dcMsg.getType();
   }
 
   public DocumentSlide(@NonNull Context context, @NonNull Uri uri,
@@ -34,7 +32,13 @@ public class DocumentSlide extends Slide {
   }
 
   @Override
-  public boolean isWebxdcDocument() {
-    return dcMsgType == DcMsg.DC_MSG_WEBXDC;
+  public DcMsg getWebxdcMsg() {
+    if (attachment instanceof DcAttachment) {
+      DcMsg dcMsg = ((DcAttachment) attachment).getDcMsg();
+      if (dcMsg.getType() == DcMsg.DC_MSG_WEBXDC) {
+        return dcMsg;
+      }
+    }
+    return null;
   }
 }

@@ -17,6 +17,8 @@ import com.b44t.messenger.DcMsg;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.gif.GifDrawable;
 
+import org.thoughtcrime.securesms.attachments.Attachment;
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.AudioSlide;
 import org.thoughtcrime.securesms.mms.DecryptableStreamUriLoader.DecryptableUri;
 import org.thoughtcrime.securesms.mms.DocumentSlide;
@@ -34,6 +36,9 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.concurrent.ExecutionException;
 
 public class MediaUtil {
@@ -208,6 +213,39 @@ public class MediaUtil {
 
   public static boolean isImageVideoOrAudioType(String contentType) {
     return isImageOrVideoType(contentType) || isAudioType(contentType);
+  }
+
+  public static String getRealPathFromAttachment(Context context, Attachment attachment) {
+    try {
+      // get file in the blobdir as `<blobdir>/<name>[-<uniqueNumber>].<ext>`
+      String filename = attachment.getFileName();
+      String ext = "";
+      if(filename==null) {
+        filename = new SimpleDateFormat("yyyy-MM-dd-HH-mm").format(new Date());
+        ext = "." + getExtensionFromMimeType(attachment.getContentType());
+      }
+      else {
+        int i = filename.lastIndexOf(".");
+        if(i>=0) {
+          ext = filename.substring(i);
+          filename = filename.substring(0, i);
+        }
+      }
+      String path = DcHelper.getBlobdirFile(DcHelper.getContext(context), filename, ext);
+
+      // copy content to this file
+      if(path!=null) {
+        InputStream inputStream = PartAuthority.getAttachmentStream(context, attachment.getDataUri());
+        OutputStream outputStream = new FileOutputStream(path);
+        Util.copy(inputStream, outputStream);
+      }
+
+      return path;
+    }
+    catch(Exception e) {
+      e.printStackTrace();
+      return null;
+    }
   }
 
   public static class ThumbnailSize {

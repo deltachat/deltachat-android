@@ -1,12 +1,14 @@
 package org.thoughtcrime.securesms.attachments;
 
-import java.io.File;
 import android.net.Uri;
+
 import androidx.annotation.Nullable;
 
 import com.b44t.messenger.DcMsg;
 
 import org.thoughtcrime.securesms.database.AttachmentDatabase;
+
+import java.io.File;
 
 public class DcAttachment extends Attachment {
 
@@ -34,5 +36,9 @@ public class DcAttachment extends Attachment {
       return Uri.fromFile(new File(dcMsg.getFile()+"-preview.jpg"));
     }
     return getDataUri();
+  }
+
+  public DcMsg getDcMsg() {
+    return dcMsg;
   }
 }

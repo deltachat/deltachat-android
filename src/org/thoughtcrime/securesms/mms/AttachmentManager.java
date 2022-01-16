@@ -47,6 +47,7 @@ import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.ShareLocationDialog;
 import org.thoughtcrime.securesms.WebxdcActivity;
 import org.thoughtcrime.securesms.attachments.Attachment;
+import org.thoughtcrime.securesms.attachments.UriAttachment;
 import org.thoughtcrime.securesms.audio.AudioSlidePlayer;
 import org.thoughtcrime.securesms.components.AudioView;
 import org.thoughtcrime.securesms.components.DocumentView;
@@ -54,12 +55,12 @@ import org.thoughtcrime.securesms.components.RemovableEditableMediaView;
 import org.thoughtcrime.securesms.components.ThumbnailView;
 import org.thoughtcrime.securesms.components.WebxdcView;
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.database.AttachmentDatabase;
 import org.thoughtcrime.securesms.geolocation.DcLocationManager;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 import org.thoughtcrime.securesms.scribbles.ScribbleActivity;
 import org.thoughtcrime.securesms.util.MediaUtil;
-import org.thoughtcrime.securesms.util.StorageUtil;
 import org.thoughtcrime.securesms.util.ThemeUtil;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.concurrent.ListenableFuture;
@@ -303,7 +304,8 @@ public class AttachmentManager {
             removableMediaView.display(audioView, false);
             result.set(true);
           } else if (slide.hasDocument()) {
-            if (slide.isWebxdcDocument()) {
+            if (slide.getWebxdcMsg() != null) {
+              DcMsg msg = slide.getWebxdcMsg();
               webxdcView.setWebxdc(msg);
               webxdcView.setWebxdcClickListener((v, s) -> {
                 WebxdcActivity.openWebxdcActivity(context, msg);
@@ -402,6 +404,10 @@ public class AttachmentManager {
     SlideDeck deck = new SlideDeck();
     if (slide.isPresent()) deck.addSlide(slide.get());
     return deck;
+  }
+
+  public DcMsg getWebxdcDraftMsg() {
+    return slide.isPresent() ? slide.get().getWebxdcMsg() : null;
   }
 
   public static void selectDocument(Activity activity, int requestCode) {
@@ -629,7 +635,19 @@ public class AttachmentManager {
       case GIF:      return new GifSlide(context, uri, dataSize, width, height);
       case AUDIO:    return new AudioSlide(context, uri, dataSize, false, fileName);
       case VIDEO:    return new VideoSlide(context, uri, dataSize);
-      case DOCUMENT: return new DocumentSlide(context, uri, mimeType, dataSize, fileName);
+      case DOCUMENT:
+        // We have to special-case WEBxDC slides: The user can interact with them as soon as a draft
+        // is set. Therefore we need to create a DcMsg already now.
+        if (fileName != null && fileName.endsWith(".xdc")) {
+          DcContext dcContext = DcHelper.getContext(context);
+          DcMsg msg = new DcMsg(dcContext, DcMsg.DC_MSG_WEBXDC);
+          Attachment attachment = new UriAttachment(uri, null, MediaUtil.WEBXDC, AttachmentDatabase.TRANSFER_PROGRESS_STARTED, 0, 0, 0, fileName, null, false);
+          String path = MediaUtil.getRealPathFromAttachment(context, attachment);
+          msg.setFile(path, MediaUtil.WEBXDC);
+          return new DocumentSlide(context, msg);
+        } else {
+          return new DocumentSlide(context, uri, mimeType, dataSize, fileName);
+        }
       default:       throw  new AssertionError("unrecognized enum");
       }
     }

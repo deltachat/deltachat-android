@@ -19,8 +19,6 @@ package org.thoughtcrime.securesms.mms;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.b44t.messenger.DcMsg;
-
 import org.thoughtcrime.securesms.attachments.Attachment;
 
 import java.util.LinkedList;
@@ -78,7 +76,7 @@ public class SlideDeck {
   // Webxdc requires draft-ids to be used; this function returns the previously used draft-id, if any.
   public int getWebxdctDraftId() {
     for (Slide slide: slides) {
-      if (slide.isWebxdcDocument()) {
+      if (slide.getWebxdcMsg() != null) {
         return slide.dcMsgId;
       }
     }
