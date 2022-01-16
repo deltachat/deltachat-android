@@ -61,6 +61,10 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     webSettings.setJavaScriptEnabled(true);
     webSettings.setAllowFileAccess(false);
     webSettings.setBlockNetworkLoads(true);
+    webSettings.setAllowContentAccess(false);
+    webSettings.setGeolocationEnabled(false);
+    webSettings.setAllowFileAccessFromFileURLs(false);
+    webSettings.setAllowUniversalAccessFromFileURLs(false);
     webView.addJavascriptInterface(new InternalJSApi(), "InternalJSApi");
 
     webView.loadUrl(INTERNAL_SCHEMA + "://" + INTERNAL_DOMAIN + "/index.html");
