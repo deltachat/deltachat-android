@@ -394,16 +394,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
       break;
     case PICK_DOCUMENT:
-      if (data.getData().toString().endsWith(".xdc")) {
-        DcMsg msg = new DcMsg(dcContext, DcMsg.DC_MSG_WEBXDC);
-        Attachment attachment = new UriAttachment(data.getData(), null, MediaUtil.WEBXDC, AttachmentDatabase.TRANSFER_PROGRESS_STARTED, 0, 0, 0, null, null, false);
-        String path = getRealPathFromAttachment(attachment);
-        msg.setFile(path, MediaUtil.WEBXDC);
-        dcContext.setDraft(dcChat.getId(), msg);
-        setMedia(msg, MediaType.DOCUMENT);
-      } else {
-        setMedia(data.getData(), MediaType.DOCUMENT);
-      }
+      setMedia(data.getData(), MediaType.DOCUMENT);
       break;
     case PICK_AUDIO:
       setMedia(data.getData(), MediaType.AUDIO);
@@ -1025,11 +1016,11 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       return new SettableFuture<>(false);
     }
 
-    return attachmentManager.setMedia(glideRequests, uri, null, mediaType, 0, 0);
+    return attachmentManager.setMedia(glideRequests, uri, null, mediaType, 0, 0, chatId);
   }
 
   private ListenableFuture<Boolean> setMedia(DcMsg msg, @NonNull MediaType mediaType) {
-    return attachmentManager.setMedia(glideRequests, Uri.fromFile(new File(msg.getFile())), msg, mediaType, 0, 0);
+    return attachmentManager.setMedia(glideRequests, Uri.fromFile(new File(msg.getFile())), msg, mediaType, 0, 0, chatId);
   }
 
   private void addAttachmentContactInfo(Intent data) {
@@ -1046,7 +1037,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     return dcChat.getVisibility() == DcChat.DC_CHAT_VISIBILITY_ARCHIVED;
   }
 
-  private String getRealPathFromAttachment(Attachment attachment) {
+  public static String getRealPathFromAttachment(Context context, Attachment attachment) {
     try {
       // get file in the blobdir as `<blobdir>/<name>[-<uniqueNumber>].<ext>`
       String filename = attachment.getFileName();
@@ -1062,11 +1053,11 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
           filename = filename.substring(0, i);
         }
       }
-      String path = DcHelper.getBlobdirFile(dcContext, filename, ext);
+      String path = DcHelper.getBlobdirFile(DcHelper.getContext(context), filename, ext);
 
       // copy content to this file
       if(path!=null) {
-        InputStream inputStream = PartAuthority.getAttachmentStream(this, attachment.getDataUri());
+        InputStream inputStream = PartAuthority.getAttachmentStream(context, attachment.getDataUri());
         OutputStream outputStream = new FileOutputStream(path);
         Util.copy(inputStream, outputStream);
       }
@@ -1131,7 +1122,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
             } else {
               msg = new DcMsg(dcContext, DcMsg.DC_MSG_FILE);
             }
-            String path = getRealPathFromAttachment(attachment);
+            String path = getRealPathFromAttachment(this, attachment);
             msg.setFile(path, null);
           }
         }
@@ -1392,7 +1383,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private void sendSticker(@NonNull Uri uri, String contentType) {
     Attachment attachment = new UriAttachment(uri, null, contentType,
       AttachmentDatabase.TRANSFER_PROGRESS_STARTED, 0, 0, 0, null, null, false);
-    String path = getRealPathFromAttachment(attachment);
+    String path = getRealPathFromAttachment(this, attachment);
 
     Optional<QuoteModel> quote = inputPanel.getQuote();
     inputPanel.clearQuote();
