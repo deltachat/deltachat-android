@@ -36,12 +36,12 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
   private DcMsg dcAppMsg;
 
   public static void openWebxdcActivity(Context context, DcMsg instance) {
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
       Intent intent =new Intent(context, WebxdcActivity.class);
       intent.putExtra("appMessageId", instance.getId());
       context.startActivity(intent);
     } else {
-      Toast.makeText(context, "At least Android 4.3 (Jelly Bean) required for webxdc.", Toast.LENGTH_LONG).show();
+      Toast.makeText(context, "At least Android 5.0 (Lollipop) required for Webxdc.", Toast.LENGTH_LONG).show();
     }
   }
 
