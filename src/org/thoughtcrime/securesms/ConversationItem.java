@@ -379,7 +379,11 @@ public class ConversationItem extends BaseConversationItem
       msgActionButton.setEnabled(true);
       msgActionButton.setText("Start…");
       msgActionButton.setOnClickListener(view -> {
-        WebxdcActivity.openWebxdcActivity(getContext(), messageRecord);
+        if (batchSelected.isEmpty()) {
+          WebxdcActivity.openWebxdcActivity(getContext(), messageRecord);
+        } else {
+          passthroughClickListener.onClick(view);
+        }
       });
     }
     else if (messageRecord.hasHtml()) {
