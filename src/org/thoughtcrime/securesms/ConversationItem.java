@@ -478,7 +478,7 @@ public class ConversationItem extends BaseConversationItem
       mediaThumbnailStub.get().setVisibility(View.VISIBLE);
       if (audioViewStub.resolved())    audioViewStub.get().setVisibility(View.GONE);
       if (documentViewStub.resolved()) documentViewStub.get().setVisibility(View.GONE);
-      if (audioViewStub.resolved())    audioViewStub.get().setVisibility(View.GONE);
+      if (webxdcViewStub.resolved())   webxdcViewStub.get().setVisibility(View.GONE);
       if (stickerStub.resolved())        stickerStub.get().setVisibility(View.GONE);
 
       Slide slide = MediaUtil.getSlideForMsg(context, messageRecord);
