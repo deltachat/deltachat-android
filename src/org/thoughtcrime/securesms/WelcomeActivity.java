@@ -165,15 +165,6 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
                                     .setNegativeButton(android.R.string.cancel, null)
                                     .setPositiveButton(android.R.string.ok, (dialog, which) -> startImport(backupFile, null, encryptCheckbox.isChecked()))
                                     .show();
-
-
-
-//                            new AlertDialog.Builder(this)
-//                                    .setTitle(R.string.import_backup_title)
-//                                    .setMessage(String.format(getResources().getString(R.string.import_backup_ask), backupFile))
-//                                    .setNegativeButton(android.R.string.cancel, null)
-//                                    .setPositiveButton(android.R.string.ok, (dialog, which) -> startImport(backupFile, null, false))
-//                                    .show();
                         }
                         else {
                             new AlertDialog.Builder(this)
