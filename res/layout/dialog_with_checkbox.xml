@@ -14,7 +14,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/autodel_ask_msg"
+            android:id="@+id/dialog_message"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="16sp"
@@ -23,8 +23,8 @@
             tools:text="Really delete these msgs?" />
 
         <CheckBox
-            android:id="@+id/i_understand"
-            android:text="@string/autodel_confirm"
+            android:id="@+id/dialog_checkbox"
+            tools:text="@string/autodel_confirm"
             android:textSize="16sp"
             android:textColor="@color/red_500"
             android:layout_width="wrap_content"

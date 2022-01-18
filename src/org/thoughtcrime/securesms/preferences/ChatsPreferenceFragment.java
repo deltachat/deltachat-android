@@ -1,5 +1,8 @@
 package org.thoughtcrime.securesms.preferences;
 
+import static android.app.Activity.RESULT_OK;
+import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SHOW_EMAILS;
+
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
@@ -7,7 +10,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,9 +27,6 @@ import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.util.ScreenLockUtil;
 import org.thoughtcrime.securesms.util.Util;
-
-import static android.app.Activity.RESULT_OK;
-import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SHOW_EMAILS;
 
 public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
   private static final String TAG = ChatsPreferenceFragment.class.getSimpleName();
@@ -217,15 +216,16 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
         boolean fromServer = coreKey.equals("delete_server_after");
         int delCount = DcHelper.getContext(context).estimateDeletionCount(fromServer, timeout);
 
-        View gl = View.inflate(getActivity(), R.layout.autodel_confirm, null);
-        CheckBox confirmCheckbox = gl.findViewById(R.id.i_understand);
-        TextView msg = gl.findViewById(R.id.autodel_ask_msg);
+        View gl = View.inflate(getActivity(), R.layout.dialog_with_checkbox, null);
+        CheckBox confirmCheckbox = gl.findViewById(R.id.dialog_checkbox);
+        TextView msg = gl.findViewById(R.id.dialog_message);
 
         // If we'd use both `setMessage()` and `setView()` on the same AlertDialog, on small screens the
         // "OK" and "Cancel" buttons would not be show. So, put the message into our custom view:
         msg.setText(String.format(context.getString(fromServer?
                 R.string.autodel_server_ask : R.string.autodel_device_ask),
                 delCount, getSelectedSummary(preference, newValue)));
+        confirmCheckbox.setText(R.string.autodel_confirm);
 
         new AlertDialog.Builder(context)
                 .setTitle(preference.getTitle())

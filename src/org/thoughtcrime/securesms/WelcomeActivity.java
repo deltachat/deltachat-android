@@ -5,14 +5,16 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.text.util.Linkify;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -35,7 +37,6 @@ import org.thoughtcrime.securesms.service.GenericForegroundService;
 import org.thoughtcrime.securesms.service.NotificationController;
 import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
 import org.thoughtcrime.securesms.util.DynamicTheme;
-import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.StorageUtil;
 import org.thoughtcrime.securesms.util.StreamUtil;
 import org.thoughtcrime.securesms.util.Util;
@@ -75,10 +76,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
         scanQrButton.setOnClickListener((view) -> startRegistrationQrActivity());
         backupButton.setOnClickListener((view) -> startImportBackup());
 
-        dcContext = DcHelper.getContext(this);
-        DcEventCenter eventCenter = DcHelper.getEventCenter(this);
-        eventCenter.addObserver(DcContext.DC_EVENT_CONFIGURE_PROGRESS, this);
-        eventCenter.addObserver(DcContext.DC_EVENT_IMEX_PROGRESS, this);
+        registerForEvents();
 
         if (!DcHelper.hasAnyConfiguredContext(this)) {
           Intent intent = new Intent();
@@ -89,6 +87,13 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
           intent.setAction(DC_REQUEST_ACCOUNT_DATA);
           sendBroadcast(intent);
         }
+    }
+
+    private void registerForEvents() {
+        dcContext = DcHelper.getContext(this);
+        DcEventCenter eventCenter = DcHelper.getEventCenter(this);
+        eventCenter.addObserver(DcContext.DC_EVENT_CONFIGURE_PROGRESS, this);
+        eventCenter.addObserver(DcContext.DC_EVENT_IMEX_PROGRESS, this);
     }
 
     @Override
@@ -138,12 +143,37 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
                     } else {
                         final String backupFile = dcContext.imexHasBackup(imexDir.getAbsolutePath());
                         if (backupFile != null) {
+
+
+                            View gl = View.inflate(this, R.layout.dialog_with_checkbox, null);
+                            CheckBox encryptCheckbox = gl.findViewById(R.id.dialog_checkbox);
+                            TextView msg = gl.findViewById(R.id.dialog_message);
+
+                            // If we'd use both `setMessage()` and `setView()` on the same AlertDialog, on small screens the
+                            // "OK" and "Cancel" buttons would not be show. So, put the message into our custom view:
+                            msg.setText(String.format(getResources().getString(R.string.import_backup_ask), backupFile) );
+                            encryptCheckbox.setText("Encrypt database (highly experimental, use at your own risk)");
+                            int[]      tintAttr   = new int[]{android.R.attr.textColorSecondary};
+                            TypedArray typedArray = obtainStyledAttributes(tintAttr);
+                            int        color      = typedArray.getColor(0, Color.GRAY);
+                            typedArray.recycle();
+                            encryptCheckbox.setTextColor(color);
+
                             new AlertDialog.Builder(this)
                                     .setTitle(R.string.import_backup_title)
-                                    .setMessage(String.format(getResources().getString(R.string.import_backup_ask), backupFile))
+                                    .setView(gl)
                                     .setNegativeButton(android.R.string.cancel, null)
-                                    .setPositiveButton(android.R.string.ok, (dialog, which) -> startImport(backupFile, null))
+                                    .setPositiveButton(android.R.string.ok, (dialog, which) -> startImport(backupFile, null, encryptCheckbox.isChecked()))
                                     .show();
+
+
+
+//                            new AlertDialog.Builder(this)
+//                                    .setTitle(R.string.import_backup_title)
+//                                    .setMessage(String.format(getResources().getString(R.string.import_backup_ask), backupFile))
+//                                    .setNegativeButton(android.R.string.cancel, null)
+//                                    .setPositiveButton(android.R.string.ok, (dialog, which) -> startImport(backupFile, null, false))
+//                                    .show();
                         }
                         else {
                             new AlertDialog.Builder(this)
@@ -157,9 +187,38 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
                 .execute();
     }
 
-    private void startImport(@Nullable final String backupFile, final @Nullable Uri backupFileUri)
+    private void startImport(@Nullable final String backupFile, final @Nullable Uri backupFileUri, boolean encrypt)
     {
         notificationController = GenericForegroundService.startForegroundTask(this, getString(R.string.import_backup_title));
+
+        if (encrypt) {
+            AccountManager accountManager = AccountManager.getInstance();
+
+            if (progressDialog != null) {
+                progressDialog.dismiss();
+                progressDialog = null;
+            }
+
+            progressDialog = new ProgressDialog(this);
+            progressDialog.setMessage(getString(R.string.one_moment));
+            progressDialog.setCanceledOnTouchOutside(false);
+            progressDialog.setCancelable(false);
+            progressDialog.show();
+
+            Util.runOnBackground(() -> {
+                DcHelper.getEventCenter(this).removeObservers(this);
+                accountManager.switchToEncrypted(this);
+                // Event center changed, register for events again
+                registerForEvents();
+                Util.runOnMain(() -> continueStartBackup(backupFile, backupFileUri));
+            });
+        } else {
+            continueStartBackup(backupFile, backupFileUri);
+        }
+
+    }
+
+    private void continueStartBackup(String backupFile, Uri backupFileUri) {
         if( progressDialog!=null ) {
             progressDialog.dismiss();
             progressDialog = null;
@@ -355,7 +414,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
                 Log.e(TAG, " Can't import null URI");
                 return;
             }
-            startImport(null, uri);
+            startImport(null, uri, false);
         }
     }
 

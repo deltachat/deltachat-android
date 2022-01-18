@@ -155,7 +155,7 @@
             android:id="@+id/encrypt_checkbox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Encrypt database (experimental)"
+            android:text="Encrypt database (highly experimental, use at your own risk)"
             android:layout_marginTop="12dp"
             android:layout_marginBottom="12dp"
             app:layout_constraintStart_toStartOf="@id/guideline_root_start"
