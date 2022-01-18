@@ -1164,7 +1164,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
             }
 
             if (doSend) {
-              dcContext.sendMsg(dcChat.getId(), msg);
+              if (dcContext.sendMsg(dcChat.getId(), msg) == 0) {
+                Util.runOnMain(()-> Toast.makeText(ConversationActivity.this, dcContext.getLastError(), Toast.LENGTH_LONG).show());
+                return null;
+              }
             }
 
             Util.runOnMain(()-> sendComplete(dcChat.getId()));
