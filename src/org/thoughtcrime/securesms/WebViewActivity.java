@@ -9,11 +9,14 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.webkit.WebResourceRequest;
+import android.webkit.WebResourceResponse;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.widget.SearchView;
 import androidx.webkit.WebSettingsCompat;
 import androidx.webkit.WebViewFeature;
@@ -74,6 +77,26 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
         // eg. that might be weird or internal protocols.
         // if we come over really useful things, we should allow that explicitly.
         return true;
+      }
+
+      @Override
+      @SuppressWarnings("deprecation")
+      public WebResourceResponse shouldInterceptRequest(WebView view, String url) {
+        WebResourceResponse res = interceptRequest(url);
+        if (res!=null) {
+          return res;
+        }
+        return super.shouldInterceptRequest(view, url);
+      }
+
+      @Override
+      @RequiresApi(21)
+      public WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request) {
+        WebResourceResponse res = interceptRequest(request.getUrl().toString());
+        if (res!=null) {
+          return res;
+        }
+        return super.shouldInterceptRequest(view, request);
       }
     });
     webView.setFindListener(this);
@@ -243,6 +266,10 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
     } catch (ActivityNotFoundException e) {
       Toast.makeText(this, R.string.no_browser_installed, Toast.LENGTH_LONG).show();
     }
+  }
+
+  protected WebResourceResponse interceptRequest(String url) {
+    return null;
   }
 
   @Override

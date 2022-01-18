@@ -47,6 +47,7 @@ public class MediaUtil {
   public static final String AUDIO_UNSPECIFIED = "audio/*";
   public static final String VIDEO_UNSPECIFIED = "video/*";
   public static final String OCTET             = "application/octet-stream";
+  public static final String WEBXDC            = "application/webxdc+zip";
 
 
   public static Slide getSlideForMsg(Context context, DcMsg dcMsg) {
@@ -62,7 +63,8 @@ public class MediaUtil {
     } else if (dcMsg.getType() == DcMsg.DC_MSG_AUDIO
             || dcMsg.getType() == DcMsg.DC_MSG_VOICE) {
       slide = new AudioSlide(context, dcMsg);
-    } else if (dcMsg.getType() == DcMsg.DC_MSG_FILE) {
+    } else if (dcMsg.getType() == DcMsg.DC_MSG_FILE
+            || dcMsg.getType() == DcMsg.DC_MSG_WEBXDC) {
       slide = new DocumentSlide(context, dcMsg);
     }
 
@@ -259,6 +261,8 @@ public class MediaUtil {
         return "aac";
       case IMAGE_WEBP:
         return "webp";
+      case WEBXDC:
+        return "xdc";
     }
     return null;
   }

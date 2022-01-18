@@ -38,17 +38,25 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.b44t.messenger.DcContext;
+import com.b44t.messenger.DcMsg;
+
 import org.thoughtcrime.securesms.ApplicationContext;
+import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.MediaPreviewActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.ShareLocationDialog;
+import org.thoughtcrime.securesms.WebxdcActivity;
 import org.thoughtcrime.securesms.attachments.Attachment;
+import org.thoughtcrime.securesms.attachments.UriAttachment;
 import org.thoughtcrime.securesms.audio.AudioSlidePlayer;
 import org.thoughtcrime.securesms.components.AudioView;
 import org.thoughtcrime.securesms.components.DocumentView;
 import org.thoughtcrime.securesms.components.RemovableEditableMediaView;
 import org.thoughtcrime.securesms.components.ThumbnailView;
+import org.thoughtcrime.securesms.components.WebxdcView;
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.database.AttachmentDatabase;
 import org.thoughtcrime.securesms.geolocation.DcLocationManager;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
@@ -84,6 +92,7 @@ public class AttachmentManager {
   private ThumbnailView              thumbnail;
   private AudioView                  audioView;
   private DocumentView               documentView;
+  private WebxdcView                 webxdcView;
   //private SignalMapView              mapView;
 
   private @NonNull  List<Uri>       garbage = new LinkedList<>();
@@ -104,6 +113,7 @@ public class AttachmentManager {
       this.thumbnail          = ViewUtil.findById(root, R.id.attachment_thumbnail);
       this.audioView          = ViewUtil.findById(root, R.id.attachment_audio);
       this.documentView       = ViewUtil.findById(root, R.id.attachment_document);
+      this.webxdcView         = ViewUtil.findById(root, R.id.attachment_webxdc);
       //this.mapView            = ViewUtil.findById(root, R.id.attachment_location);
       this.removableMediaView = ViewUtil.findById(root, R.id.removable_media_view);
 
@@ -113,6 +123,7 @@ public class AttachmentManager {
       int incomingBubbleColor = ThemeUtil.getThemedColor(context, R.attr.conversation_item_incoming_bubble_color);
       audioView.getBackground().setColorFilter(incomingBubbleColor, PorterDuff.Mode.MULTIPLY);
       documentView.getBackground().setColorFilter(incomingBubbleColor, PorterDuff.Mode.MULTIPLY);
+      webxdcView.getBackground().setColorFilter(incomingBubbleColor, PorterDuff.Mode.MULTIPLY);
     }
 
   }
@@ -220,9 +231,11 @@ public class AttachmentManager {
   @SuppressLint("StaticFieldLeak")
   public ListenableFuture<Boolean> setMedia(@NonNull final GlideRequests glideRequests,
                                             @NonNull final Uri uri,
+                                            @Nullable final DcMsg msg,
                                             @NonNull final MediaType mediaType,
                                                      final int width,
-                                                     final int height)
+                                                     final int height,
+                                                     final int chatId)
   {
     inflateStub();
 
@@ -238,10 +251,13 @@ public class AttachmentManager {
       @Override
       protected @Nullable Slide doInBackground(Void... params) {
         try {
-          if (PartAuthority.isLocalUri(uri)) {
+          if (msg != null && msg.getType() == DcMsg.DC_MSG_WEBXDC) {
+            return new DocumentSlide(context, msg);
+          }
+          else if (PartAuthority.isLocalUri(uri)) {
             return getManuallyCalculatedSlideInfo(uri, width, height);
           } else {
-            Slide result = getContentResolverSlideInfo(uri, width, height);
+            Slide result = getContentResolverSlideInfo(uri, width, height, chatId);
 
             if (result == null) return getManuallyCalculatedSlideInfo(uri, width, height);
             else                return result;
@@ -291,8 +307,17 @@ public class AttachmentManager {
             removableMediaView.display(audioView, false);
             result.set(true);
           } else if (slide.hasDocument()) {
-            documentView.setDocument((DocumentSlide) slide);
-            removableMediaView.display(documentView, false);
+            if (slide.isWebxdcDocument()) {
+              DcMsg instance = msg != null ? msg : DcHelper.getContext(context).getMsg(slide.dcMsgId);
+              webxdcView.setWebxdc(instance);
+              webxdcView.setWebxdcClickListener((v, s) -> {
+                WebxdcActivity.openWebxdcActivity(context, instance);
+              });
+              removableMediaView.display(webxdcView, false);
+            } else {
+              documentView.setDocument((DocumentSlide) slide);
+              removableMediaView.display(documentView, false);
+            }
             result.set(true);
           } else {
             Attachment attachment = slide.asAttachment();
@@ -304,7 +329,7 @@ public class AttachmentManager {
         }
       }
 
-      private @Nullable Slide getContentResolverSlideInfo(Uri uri, int width, int height) {
+      private @Nullable Slide getContentResolverSlideInfo(Uri uri, int width, int height, int chatId) {
         Cursor cursor = null;
         long   start  = System.currentTimeMillis();
 
@@ -323,7 +348,7 @@ public class AttachmentManager {
             }
 
             Log.w(TAG, "remote slide with size " + fileSize + " took " + (System.currentTimeMillis() - start) + "ms");
-            return mediaType.createSlide(context, uri, fileName, mimeType, fileSize, width, height);
+            return mediaType.createSlide(context, uri, fileName, mimeType, fileSize, width, height, chatId);
           }
         } finally {
           if (cursor != null) cursor.close();
@@ -367,7 +392,7 @@ public class AttachmentManager {
         }
 
         Log.w(TAG, "local slide with size " + mediaSize + " took " + (System.currentTimeMillis() - start) + "ms");
-        return mediaType.createSlide(context, uri, fileName, mimeType, mediaSize, width, height);
+        return mediaType.createSlide(context, uri, fileName, mimeType, mediaSize, width, height, chatId);
       }
     }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
 
@@ -598,7 +623,8 @@ public class AttachmentManager {
                                       @Nullable String mimeType,
                                                 long    dataSize,
                                                 int     width,
-                                                int     height)
+                                                int     height,
+                                                int     chatId)
     {
       if (mimeType == null) {
         mimeType = "application/octet-stream";
@@ -609,7 +635,20 @@ public class AttachmentManager {
       case GIF:      return new GifSlide(context, uri, dataSize, width, height);
       case AUDIO:    return new AudioSlide(context, uri, dataSize, false, fileName);
       case VIDEO:    return new VideoSlide(context, uri, dataSize);
-      case DOCUMENT: return new DocumentSlide(context, uri, mimeType, dataSize, fileName);
+      case DOCUMENT:
+        // We have to special-case Webxdc slides: The user can interact with them as soon as a draft
+        // is set. Therefore we need to create a DcMsg already now.
+        if (fileName != null && fileName.endsWith(".xdc")) {
+          DcContext dcContext = DcHelper.getContext(context);
+          DcMsg msg = new DcMsg(dcContext, DcMsg.DC_MSG_WEBXDC);
+          Attachment attachment = new UriAttachment(uri, null, MediaUtil.WEBXDC, AttachmentDatabase.TRANSFER_PROGRESS_STARTED, 0, 0, 0, fileName, null, false);
+          String path = ConversationActivity.getRealPathFromAttachment(context, attachment);
+          msg.setFile(path, MediaUtil.WEBXDC);
+          dcContext.setDraft(chatId, msg);
+          return new DocumentSlide(context, msg);
+        } else {
+          return new DocumentSlide(context, uri, mimeType, dataSize, fileName);
+        }
       default:       throw  new AssertionError("unrecognized enum");
       }
     }

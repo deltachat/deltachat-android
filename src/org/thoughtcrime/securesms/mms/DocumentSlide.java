@@ -13,10 +13,12 @@ import org.thoughtcrime.securesms.attachments.DcAttachment;
 import org.thoughtcrime.securesms.util.StorageUtil;
 
 public class DocumentSlide extends Slide {
+  private int dcMsgType = DcMsg.DC_MSG_UNDEFINED;
 
   public DocumentSlide(Context context, DcMsg dcMsg) {
     super(context, new DcAttachment(dcMsg));
     dcMsgId = dcMsg.getId();
+    dcMsgType = dcMsg.getType();
   }
 
   public DocumentSlide(@NonNull Context context, @NonNull Uri uri,
@@ -31,4 +33,8 @@ public class DocumentSlide extends Slide {
     return true;
   }
 
+  @Override
+  public boolean isWebxdcDocument() {
+    return dcMsgType == DcMsg.DC_MSG_WEBXDC;
+  }
 }

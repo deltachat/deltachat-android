@@ -46,6 +46,7 @@ import android.view.View.OnFocusChangeListener;
 import android.view.View.OnKeyListener;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
+import android.webkit.MimeTypeMap;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -836,6 +837,9 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       case DcMsg.DC_MSG_VIDEO:
         setMedia(uri, MediaType.VIDEO).addListener(listener);
         break;
+      case DcMsg.DC_MSG_WEBXDC:
+        setMedia(draft, MediaType.DOCUMENT).addListener(listener);
+        break;
       default:
         setMedia(uri, MediaType.DOCUMENT).addListener(listener);
         break;
@@ -1012,7 +1016,11 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       return new SettableFuture<>(false);
     }
 
-    return attachmentManager.setMedia(glideRequests, uri, mediaType, 0, 0);
+    return attachmentManager.setMedia(glideRequests, uri, null, mediaType, 0, 0, chatId);
+  }
+
+  private ListenableFuture<Boolean> setMedia(DcMsg msg, @NonNull MediaType mediaType) {
+    return attachmentManager.setMedia(glideRequests, Uri.fromFile(new File(msg.getFile())), msg, mediaType, 0, 0, chatId);
   }
 
   private void addAttachmentContactInfo(Intent data) {
@@ -1029,7 +1037,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     return dcChat.getVisibility() == DcChat.DC_CHAT_VISIBILITY_ARCHIVED;
   }
 
-  private String getRealPathFromAttachment(Attachment attachment) {
+  public static String getRealPathFromAttachment(Context context, Attachment attachment) {
     try {
       // get file in the blobdir as `<blobdir>/<name>[-<uniqueNumber>].<ext>`
       String filename = attachment.getFileName();
@@ -1045,11 +1053,11 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
           filename = filename.substring(0, i);
         }
       }
-      String path = DcHelper.getBlobdirFile(dcContext, filename, ext);
+      String path = DcHelper.getBlobdirFile(DcHelper.getContext(context), filename, ext);
 
       // copy content to this file
       if(path!=null) {
-        InputStream inputStream = PartAuthority.getAttachmentStream(this, attachment.getDataUri());
+        InputStream inputStream = PartAuthority.getAttachmentStream(context, attachment.getDataUri());
         OutputStream outputStream = new FileOutputStream(path);
         Util.copy(inputStream, outputStream);
       }
@@ -1095,29 +1103,30 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       }
 
       try {
-        List<Attachment> attachments = slideDeck.asAttachments();
-        for (Attachment attachment : attachments) {
-          String contentType = attachment.getContentType();
-          if (MediaUtil.isImageType(contentType) && slideDeck.getDocumentSlide()==null) {
-            msg = new DcMsg(dcContext,
-                    MediaUtil.isGif(contentType) ? DcMsg.DC_MSG_GIF : DcMsg.DC_MSG_IMAGE);
-            msg.setDimension(attachment.getWidth(), attachment.getHeight());
+        if (slideDeck.getWebxdctDraftId() != 0) {
+          msg = dcContext.getDraft(chatId);
+        } else {
+          List<Attachment> attachments = slideDeck.asAttachments();
+          for (Attachment attachment : attachments) {
+            String contentType = attachment.getContentType();
+            if (MediaUtil.isImageType(contentType) && slideDeck.getDocumentSlide() == null) {
+              msg = new DcMsg(dcContext,
+                MediaUtil.isGif(contentType) ? DcMsg.DC_MSG_GIF : DcMsg.DC_MSG_IMAGE);
+              msg.setDimension(attachment.getWidth(), attachment.getHeight());
+            } else if (MediaUtil.isAudioType(contentType)) {
+              msg = new DcMsg(dcContext,
+                attachment.isVoiceNote() ? DcMsg.DC_MSG_VOICE : DcMsg.DC_MSG_AUDIO);
+            } else if (MediaUtil.isVideoType(contentType) && slideDeck.getDocumentSlide() == null) {
+              msg = new DcMsg(dcContext, DcMsg.DC_MSG_VIDEO);
+              recompress = DcMsg.DC_MSG_VIDEO;
+            } else {
+              msg = new DcMsg(dcContext, DcMsg.DC_MSG_FILE);
+            }
+            String path = getRealPathFromAttachment(this, attachment);
+            msg.setFile(path, null);
           }
-          else if (MediaUtil.isAudioType(contentType)) {
-            msg = new DcMsg(dcContext,
-                attachment.isVoiceNote()? DcMsg.DC_MSG_VOICE : DcMsg.DC_MSG_AUDIO);
-          }
-          else if (MediaUtil.isVideoType(contentType) && slideDeck.getDocumentSlide()==null) {
-            msg = new DcMsg(dcContext, DcMsg.DC_MSG_VIDEO);
-            recompress = DcMsg.DC_MSG_VIDEO;
-          }
-          else {
-            msg = new DcMsg(dcContext, DcMsg.DC_MSG_FILE);
-          }
-          String path = getRealPathFromAttachment(attachment);
-          msg.setFile(path, null);
-          msg.setText(body);
         }
+        msg.setText(body);
       }
       catch(Exception e) {
         e.printStackTrace();
@@ -1140,7 +1149,12 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
         DcMsg msg = (DcMsg)param[0];
         Integer recompress = (Integer)param[1];
         if (action==ACTION_SEND_OUT) {
-          dcContext.setDraft(dcChat.getId(), null);
+
+          // for WEBXDC, drafts are just sent out as is.
+          // for preparations and other cases, cleanup draft soon.
+          if (msg.getType() != DcMsg.DC_MSG_WEBXDC) {
+            dcContext.setDraft(dcChat.getId(), null);
+          }
 
           if(msg!=null)
           {
@@ -1369,7 +1383,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private void sendSticker(@NonNull Uri uri, String contentType) {
     Attachment attachment = new UriAttachment(uri, null, contentType,
       AttachmentDatabase.TRANSFER_PROGRESS_STARTED, 0, 0, 0, null, null, false);
-    String path = getRealPathFromAttachment(attachment);
+    String path = getRealPathFromAttachment(this, attachment);
 
     Optional<QuoteModel> quote = inputPanel.getQuote();
     inputPanel.clearQuote();

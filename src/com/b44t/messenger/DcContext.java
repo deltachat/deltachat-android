@@ -27,6 +27,7 @@ public class DcContext {
     public final static int DC_EVENT_SECUREJOIN_JOINER_PROGRESS  = 2061;
     public final static int DC_EVENT_CONNECTIVITY_CHANGED        = 2100;
     public final static int DC_EVENT_SELFAVATAR_CHANGED          = 2110;
+    public final static int DC_EVENT_WEBXDC_STATUS_UPDATE        = 2120;
 
     public final static int DC_IMEX_EXPORT_SELF_KEYS = 1;
     public final static int DC_IMEX_IMPORT_SELF_KEYS = 2;
@@ -195,6 +196,8 @@ public class DcContext {
     public native int          sendMsg              (int chat_id, DcMsg msg);
     public native int          sendTextMsg          (int chat_id, String text);
     public native int          sendVideochatInvitation(int chat_id);
+    public native boolean      sendWebxdcStatusUpdate(int msg_id, String payload, String descr);
+    public native String       getWebxdcStatusUpdates(int msg_id, int status_update_id);
     public native int          addDeviceMsg         (String label, DcMsg msg);
     public native boolean      wasDeviceMsgEverAdded(String label);
     public DcLot               checkQr              (String qr) { return new DcLot(checkQrCPtr(qr)); }

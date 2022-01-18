@@ -94,6 +94,10 @@ public abstract class Slide {
     return false;
   }
 
+  public boolean isWebxdcDocument() {
+    return false;
+  }
+
   public boolean hasLocation() {
     return false;
   }

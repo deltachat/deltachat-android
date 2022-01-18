@@ -1,5 +1,8 @@
 package com.b44t.messenger;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.File;
 import java.util.Set;
 
@@ -15,12 +18,14 @@ public class DcMsg {
     public final static int DC_MSG_VIDEO = 50;
     public final static int DC_MSG_FILE = 60;
     public final static int DC_MSG_VIDEOCHAT_INVITATION = 70;
+    public final static int DC_MSG_WEBXDC = 80;
 
     public final static int DC_STATE_UNDEFINED =  0;
     public final static int DC_STATE_IN_FRESH = 10;
     public final static int DC_STATE_IN_NOTICED = 13;
     public final static int DC_STATE_IN_SEEN = 16;
     public final static int DC_STATE_OUT_PREPARING = 18;
+    public final static int DC_STATE_OUT_DRAFT = 19;
     public final static int DC_STATE_OUT_PENDING = 20;
     public final static int DC_STATE_OUT_ERROR = 24;
     public final static int DC_STATE_OUT_DELIVERED = 26;
@@ -110,6 +115,15 @@ public class DcMsg {
     public native String  getFilemime        ();
     public native String  getFilename        ();
     public native long    getFilebytes       ();
+    public native byte[]  getWebxdcBlob      (String filename);
+    public JSONObject     getWebxdcInfo      () {
+      try {
+        return new JSONObject(getWebxdcInfoJson());
+      } catch(Exception e) {
+        e.printStackTrace();
+        return new JSONObject();
+      }
+    }
     public native boolean isForwarded        ();
     public native boolean isInfo             ();
     public native boolean isSetupMessage     ();
@@ -206,4 +220,5 @@ public class DcMsg {
     private native long getSummaryCPtr  (long chatCPtr);
     private native void setQuoteCPtr    (long quoteCPtr);
     private native long getQuotedMsgCPtr ();
+    private native String getWebxdcInfoJson ();
 };
