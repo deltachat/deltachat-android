@@ -85,8 +85,8 @@ public class ApplicationContext extends MultiDexApplication {
       DcContext ac = dcAccounts.getAccount(accountId);
       if (!ac.isOpen()) {
         DatabaseSecret secret = DatabaseSecretProvider.getOrCreateDatabaseSecret(this, accountId);
-        int res = ac.open(secret.asString());
-        if (res == 1) Log.i(TAG, "Successfully opened account " + accountId + ", path: " + ac.getBlobdir());
+        boolean res = ac.open(secret.asString());
+        if (res) Log.i(TAG, "Successfully opened account " + accountId + ", path: " + ac.getBlobdir());
         else Log.e(TAG, "Error opening account " + accountId);
       }
     }

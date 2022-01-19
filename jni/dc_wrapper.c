@@ -313,13 +313,13 @@ JNIEXPORT jlong Java_com_b44t_messenger_DcContext_createContextCPtr(JNIEnv *env,
 }
 
 
-JNIEXPORT jint Java_com_b44t_messenger_DcContext_open(JNIEnv *env, jobject obj, jstring passphrase)
+JNIEXPORT jboolean Java_com_b44t_messenger_DcContext_open(JNIEnv *env, jobject obj, jstring passphrase)
 {
     CHAR_REF(passphrase);
-    jint ret = dc_context_open(get_dc_context(env, obj), passphrasePtr);
+    jboolean ret = dc_context_open(get_dc_context(env, obj), passphrasePtr);
     CHAR_UNREF(passphrase);
     return ret;
-} // TODO should maybe return jboolean
+}
 
 
 JNIEXPORT jboolean Java_com_b44t_messenger_DcContext_isOpen(JNIEnv *env, jobject obj)
