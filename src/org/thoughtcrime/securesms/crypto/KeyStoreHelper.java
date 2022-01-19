@@ -43,7 +43,7 @@ import javax.crypto.spec.GCMParameterSpec;
 public final class KeyStoreHelper {
 
   private static final String ANDROID_KEY_STORE = "AndroidKeyStore";
-  private static final String KEY_ALIAS         = "SignalSecret";
+  private static final String KEY_ALIAS         = "DeltaSecret";
 
   @RequiresApi(Build.VERSION_CODES.M)
   public static SealedData seal(@NonNull byte[] input) {
