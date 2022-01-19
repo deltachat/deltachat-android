@@ -156,6 +156,11 @@ public class DcMsg {
         return cPtr != 0 ? new DcMsg(cPtr) : null;
     }
 
+    public DcMsg getParent() {
+      long cPtr = getParentCPtr();
+      return cPtr != 0 ? new DcMsg(cPtr) : null;
+    }
+
     public File getFileAsFile() {
         if(getFile()==null)
             throw new AssertionError("expected a file to be present.");
@@ -220,5 +225,6 @@ public class DcMsg {
     private native long getSummaryCPtr  (long chatCPtr);
     private native void setQuoteCPtr    (long quoteCPtr);
     private native long getQuotedMsgCPtr ();
+    private native long getParentCPtr   ();
     private native String getWebxdcInfoJson ();
 };

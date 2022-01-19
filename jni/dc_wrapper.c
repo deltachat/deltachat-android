@@ -1694,6 +1694,12 @@ JNIEXPORT jlong Java_com_b44t_messenger_DcMsg_getQuotedMsgCPtr(JNIEnv *env, jobj
 }
 
 
+JNIEXPORT jlong Java_com_b44t_messenger_DcMsg_getParentCPtr(JNIEnv *env, jobject obj)
+{
+    return (jlong)dc_msg_get_parent(get_dc_msg(env, obj));
+}
+
+
 JNIEXPORT jstring Java_com_b44t_messenger_DcMsg_getError(JNIEnv *env, jobject obj)
 {
     char* temp = dc_msg_get_error(get_dc_msg(env, obj));
