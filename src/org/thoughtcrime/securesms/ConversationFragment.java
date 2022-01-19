@@ -556,6 +556,27 @@ public class ConversationFragment extends MessageSelectorFragment
             Log.e(TAG, "msgId {} not found for scrolling");
         }
     }
+    
+    private void scrollMaybeSmoothToMsgId(final int msgId) {
+      LinearLayoutManager layout = ((LinearLayoutManager) list.getLayoutManager());
+      boolean smooth = false;
+      ConversationAdapter adapter = (ConversationAdapter) list.getAdapter();
+      if (adapter == null) return;
+      int position = adapter.msgIdToPosition(msgId);
+      if (layout != null) {
+        int distance1 = Math.abs(position - layout.findFirstVisibleItemPosition());
+        int distance2 = Math.abs(position - layout.findLastVisibleItemPosition());
+        int distance = Math.min(distance1, distance2);
+        smooth = distance < 15;
+        Log.i(TAG, "Scrolling to destMsg, smoth: " + smooth + ", distance: " + distance);
+      }
+
+      if (position != -1) {
+        scrollAndHighlight(position, smooth);
+      } else {
+        Log.e(TAG, "msgId not found for scrolling: " + msgId);
+      }
+    }
 
     public interface ConversationFragmentListener {
         void handleReplyMessage(DcMsg messageRecord);
@@ -758,6 +779,9 @@ public class ConversationFragment extends MessageSelectorFragment
             else if(DozeReminder.isDozeReminderMsg(getContext(), messageRecord)) {
                 DozeReminder.dozeReminderTapped(getContext());
             }
+            else if(messageRecord.isInfo() && messageRecord.getParent() != null) {
+                scrollMaybeSmoothToMsgId(messageRecord.getParent().getId());
+            }
             else {
                 String self_mail = dcContext.getConfig("configured_mail_user");
                 if (self_mail != null && !self_mail.isEmpty()
@@ -802,24 +826,7 @@ public class ConversationFragment extends MessageSelectorFragment
                     Log.e(TAG, "Activity was null");
                 }
             } else {
-                LinearLayoutManager layout = ((LinearLayoutManager) list.getLayoutManager());
-                boolean smooth = false;
-                ConversationAdapter adapter = (ConversationAdapter) list.getAdapter();
-                if (adapter == null) return;
-                int position = adapter.msgIdToPosition(quoted.getId());
-                if (layout != null) {
-                    int distance1 = Math.abs(position - layout.findFirstVisibleItemPosition());
-                    int distance2 = Math.abs(position - layout.findLastVisibleItemPosition());
-                    int distance = Math.min(distance1, distance2);
-                    smooth = distance < 15;
-                    Log.i(TAG, "Scrolling to quote, smoth: " + smooth + ", distance: " + distance);
-                }
-
-                if (position != -1) {
-                    scrollAndHighlight(position, smooth);
-                } else {
-                    Log.e(TAG, "msgId not found for scrolling: " + quoted.getId());
-                }
+                scrollMaybeSmoothToMsgId(quoted.getId());
             }
         }
 
