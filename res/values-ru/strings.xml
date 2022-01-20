@@ -374,7 +374,7 @@
         <item quantity="other">%d новых сообщений</item>
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
-    <string name="chat_new_one_to_one_hint">Отправьте сообщение. Ничего страшного, если %1$s не использует Delta Chat.</string>
+    <string name="chat_new_one_to_one_hint">Отправьте сообщение. Всё нормально, даже если %1$s не использует Delta Chat.</string>
     <string name="chat_new_broadcast_hint">В списке рассылки другие пользователи будут получать сообщения в своих личных чатах с вами.\n\nПолучатели не будут знать друг о друге.</string>
     <string name="chat_new_group_hint">Другие пользователи смогут видеть эту группу только после того, как вы отправите первое сообщение.</string>
     <string name="chat_record_slide_to_cancel">Сдвиньте для отмены</string>
@@ -650,7 +650,7 @@
     <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string eg. "1 MiB message" -->
     <string name="n_bytes_message">%1$s сообщение</string>
     <!-- %1$s will be replaced by human-readable date and time -->
-    <string name="download_max_available_until">Загрузка доступна до %1$s</string>
+    <string name="download_max_available_until">Максимальная загрузка доступна до %1$s</string>
     <string name="profile_image_select">Выбрать изображение профиля</string>
     <string name="select_your_new_profile_image">Выбрать новое изображение профиля</string>
     <string name="profile_image_delete">Удалить фото профиля</string>
@@ -673,14 +673,14 @@
 
     <!-- automatically delete message -->
     <string name="delete_old_messages">Удалить старые сообщения</string>
-    <string name="autodel_device_title">Удалять сообщения с устройства</string>
-    <string name="autodel_server_title">Удалять сообщения с сервера</string>
+    <string name="autodel_device_title">Удалить сообщения с устройства</string>
+    <string name="autodel_server_title">Удалить сообщения с сервера</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">Вы хотите удалить %1$d сообщений сейчас и все новые загруженные сообщения \"%2$s\" в будущем?\n\n• Это включает в себя все медиафайлы\n\n• Сообщения будут удалены независимо от того, просмотрены они или нет\n\n• \"Сохранённые сообщения\" будут пропущены при локальном удалении</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
-    <string name="autodel_server_ask">Вы хотите удалить %1$d сообщений сейчас и все недавно доставленные сообщения \"%2$s\" в будущем?\n\n⚠️ Это включает письма, медиафайлы и сохранённые сообщения во всех папках сервера.\n\n⚠️ Не используйте эту функцию, если вы хотите сохранить данные на сервере.\n\n⚠️ Не используйте эту функцию, если вы используете другие почтовые клиенты помимо Delta Chat</string>
+    <string name="autodel_server_ask">Вы хотите удалить %1$d сообщений сейчас и все недавно доставленные сообщения \"%2$s\" в будущем?\n\n⚠️ Включая письма, медиафайлы и \"Сохранённые сообщения\"  во всех папках сервера\n\n⚠️ Не используйте эту функцию, если вы хотите сохранить данные на сервере\n\n⚠️ Не используйте эту функцию, если вы используете другие почтовые клиенты помимо Delta Chat</string>
     <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
-    <string name="autodel_server_enabled_hint">Это включает почту, медиафайлы и сохранённые сообщения во всех папках сервера. Не используйте эту функцию, если вы хотите сохранить данные на сервере или если используете другие почтовые клиенты помимо Delta Chat.</string>
+    <string name="autodel_server_enabled_hint">Это включает почту, медиафайлы и \"Сохранённые сообщения\" во всех папках сервера. Не используйте эту функцию, если вы хотите сохранить данные на сервере или если используете другие почтовые клиенты помимо Delta Chat.</string>
     <string name="autodel_confirm">Я понимаю, удалить все эти сообщения</string>
     <string name="autodel_at_once">Сразу</string>
     <string name="after_30_seconds">Через 30 секунд</string>
@@ -696,7 +696,7 @@
 
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
-    <string name="autocrypt_explain">Autocrypt — новый и открытый протокол установления сквозного шифрования для электронной почты.\n\n Необходимые параметры шифрования назначаются автоматически, вы можете передавать их между устройствами используя сообщения настройки Autocrypt.</string>
+    <string name="autocrypt_explain">Autocrypt — новый и открытый протокол установления сквозного шифрования для электронной почты.\n\n Ваши настройки шифрования создаются автоматически, вы можете передавать их между устройствами используя сообщения настройки Autocrypt.</string>
     <string name="autocrypt_send_asm_title">Сообщение с параметрами Autocrypt</string>
     <string name="autocrypt_send_asm_explain_before">\"Сообщение с параметрами Autocrypt\" служит для безопасной передачи параметров шифрования между собственными приложениями для работы с электронной почтой, поддерживающими протокол Autocrypt.\n\nЭти параметры шифруются с использованием специального кода, который показан здесь и должен быть введён в настраиваемом приложении.  </string>
     <string name="autocrypt_send_asm_button">Отправить сообщение с параметрами Autocrypt</string>
@@ -768,7 +768,7 @@
     <string name="qrscan_contains_text">Текст из QR-кода:\n\n%1$s</string>
     <string name="qrscan_contains_url">URL из QR-кода:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Отпечаток</string>
-    <string name="withdraw_verifycontact_explain">Этот QR-код могут отсканировать другие люди, чтобы связаться с вами.\n\nВы можете деактивировать QR-код здесь и активировать вновь, отсканировав его снова.</string>
+    <string name="withdraw_verifycontact_explain">Этот QR код могут сканировать другие люди, чтобы связаться с вами.\n\nВы можете деактивировать QR код здесь и активировать вновь, отсканировав его снова.</string>
     <string name="withdraw_verifygroup_explain">Этот QR-код могут отсканировать другие люди, чтобы присоединиться к группе \"%1$s\".\n\nВы можете деактивировать QR-код здесь и активировать вновь, отсканировав его снова.</string>
     <string name="withdraw_qr_code">Деактивировать QR-код</string>
     <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
