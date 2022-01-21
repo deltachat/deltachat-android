@@ -12,6 +12,7 @@ import android.webkit.JavascriptInterface;
 import android.webkit.MimeTypeMap;
 import android.webkit.WebResourceResponse;
 import android.webkit.WebSettings;
+import android.webkit.WebView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -23,6 +24,7 @@ import com.b44t.messenger.DcMsg;
 import org.json.JSONObject;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 
 import java.io.ByteArrayInputStream;
@@ -37,6 +39,10 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
 
   public static void openWebxdcActivity(Context context, DcMsg instance) {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+      if (Prefs.getBooleanPreference(context, "pref_developer_mode_enabled", false)) {
+        WebView.setWebContentsDebuggingEnabled(true);
+      }
+
       Intent intent =new Intent(context, WebxdcActivity.class);
       intent.putExtra("appMessageId", instance.getId());
       context.startActivity(intent);

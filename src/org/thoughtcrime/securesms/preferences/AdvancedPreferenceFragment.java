@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -129,7 +130,9 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
 
     Preference developerModeEnabled = this.findPreference("pref_developer_mode_enabled");
     developerModeEnabled.setOnPreferenceChangeListener((preference, newValue) -> {
-      WebView.setWebContentsDebuggingEnabled((Boolean)newValue);
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        WebView.setWebContentsDebuggingEnabled((Boolean) newValue);
+      }
       return true;
     });
   }
