@@ -39,7 +39,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
 
   public static void openWebxdcActivity(Context context, DcMsg instance) {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-      if (Prefs.getBooleanPreference(context, "pref_developer_mode_enabled", false)) {
+      if (Prefs.isDeveloperModeEnabled(context)) {
         WebView.setWebContentsDebuggingEnabled(true);
       }
 
