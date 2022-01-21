@@ -8,6 +8,7 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -123,6 +124,12 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
           .setPositiveButton(R.string.ok, null)
           .show();
       }
+      return true;
+    });
+
+    Preference developerModeEnabled = this.findPreference("pref_developer_mode_enabled");
+    developerModeEnabled.setOnPreferenceChangeListener((preference, newValue) -> {
+      WebView.setWebContentsDebuggingEnabled((Boolean)newValue);
       return true;
     });
   }

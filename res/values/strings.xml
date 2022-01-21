@@ -607,6 +607,8 @@
     <string name="pref_show_emails_all">All</string>
     <string name="pref_experimental_features">Experimental Features</string>
     <string name="pref_on_demand_location_streaming">On-demand Location Streaming</string>
+    <string name="pref_developer_mode">Developer mode</string>
+    <string name="pref_developer_mode_explain">The developer mode activates hidden features and may also make the application less stable. For developers only!</string>
     <string name="pref_background_default">Default background</string>
     <string name="pref_background_default_color">Default color</string>
     <string name="pref_background_custom_image">Custom image</string>
