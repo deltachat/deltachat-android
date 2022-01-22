@@ -377,7 +377,7 @@ public class ConversationItem extends BaseConversationItem
     } else if (messageRecord.getType() == DcMsg.DC_MSG_WEBXDC) {
       msgActionButton.setVisibility(View.VISIBLE);
       msgActionButton.setEnabled(true);
-      msgActionButton.setText("Start…");
+      msgActionButton.setText(R.string.start_app);
       msgActionButton.setOnClickListener(view -> {
         if (batchSelected.isEmpty()) {
           WebxdcActivity.openWebxdcActivity(getContext(), messageRecord);
