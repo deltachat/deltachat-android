@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.preference.PreferenceManager;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
@@ -13,14 +14,13 @@ import com.b44t.messenger.DcContext;
 
 import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.ConversationListActivity;
-import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.WelcomeActivity;
 import org.thoughtcrime.securesms.accounts.AccountSelectionListFragment;
+import org.thoughtcrime.securesms.crypto.DatabaseSecret;
+import org.thoughtcrime.securesms.crypto.DatabaseSecretProvider;
 import org.thoughtcrime.securesms.notifications.NotificationCenter;
-import org.thoughtcrime.securesms.util.task.ProgressDialogAsyncTask;
 
 import java.io.File;
-import java.lang.ref.WeakReference;
 
 public class AccountManager {
 
@@ -133,6 +133,28 @@ public class AccountManager {
         } else {
             activity.startActivity(new Intent(activity.getApplicationContext(), ConversationListActivity.class));
         }
+    }
+
+    /**
+     * Deletes the current account (must be unconfigured) and creates an encrypted account instead.
+     * @throws IllegalStateException if the currently selected account is already configured.
+     */
+    public void switchToEncrypted(Activity activity) {
+        Log.i(TAG, "Switching to encrypted account...");
+        DcAccounts accounts = DcHelper.getAccounts(activity);
+        DcContext selectedAccount = accounts.getSelectedAccount();
+        if (selectedAccount.isConfigured() == 1) {
+            throw new IllegalStateException("Can't switch to encrypted account if already configured");
+        }
+
+        int selectedAccountId = selectedAccount.getAccountId();
+        accounts.addClosedAccount();
+        accounts.removeAccount(selectedAccountId);
+
+        DcContext newAccount = accounts.getSelectedAccount();
+        DatabaseSecret secret = DatabaseSecretProvider.getOrCreateDatabaseSecret(activity, newAccount.getAccountId());
+        newAccount.open(secret.asString());
+        resetDcContext(activity);
     }
 
     // ui

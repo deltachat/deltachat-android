@@ -120,6 +120,8 @@ public class DcContext {
     public native void         configure            ();
     public native void         stopOngoingProcess   ();
     public native int          isConfigured         ();
+    public native boolean      open                 (String passphrase);
+    public native boolean      isOpen               ();
 
     // when using DcAccounts, use DcAccounts.startIo() instead
     public native void         startIo              ();

@@ -219,6 +219,12 @@ JNIEXPORT jint Java_com_b44t_messenger_DcAccounts_addAccount(JNIEnv *env, jobjec
 }
 
 
+JNIEXPORT jint Java_com_b44t_messenger_DcAccounts_addClosedAccount(JNIEnv *env, jobject obj)
+{
+    return dc_accounts_add_closed_account(get_dc_accounts(env, obj));
+}
+
+
 JNIEXPORT jint Java_com_b44t_messenger_DcAccounts_migrateAccount(JNIEnv *env, jobject obj, jstring dbfile)
 {
     CHAR_REF(dbfile);
@@ -317,6 +323,21 @@ JNIEXPORT jlong Java_com_b44t_messenger_DcContext_createContextCPtr(JNIEnv *env,
     CHAR_UNREF(dbfile)
     CHAR_UNREF(osname);
     return contextCPtr;
+}
+
+
+JNIEXPORT jboolean Java_com_b44t_messenger_DcContext_open(JNIEnv *env, jobject obj, jstring passphrase)
+{
+    CHAR_REF(passphrase);
+    jboolean ret = dc_context_open(get_dc_context(env, obj), passphrasePtr);
+    CHAR_UNREF(passphrase);
+    return ret;
+}
+
+
+JNIEXPORT jboolean Java_com_b44t_messenger_DcContext_isOpen(JNIEnv *env, jobject obj)
+{
+    return dc_context_is_open(get_dc_context(env, obj));
 }
 
 

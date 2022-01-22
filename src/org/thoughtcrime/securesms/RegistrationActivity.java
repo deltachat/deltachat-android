@@ -1,51 +1,5 @@
 package org.thoughtcrime.securesms;
 
-import android.content.ActivityNotFoundException;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.net.Uri;
-import android.os.Bundle;
-import androidx.annotation.IdRes;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.Group;
-
-import com.b44t.messenger.DcEvent;
-import com.b44t.messenger.DcProvider;
-import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AlertDialog;
-
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.util.Patterns;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import com.b44t.messenger.DcContext;
-
-import org.thoughtcrime.securesms.connect.DcEventCenter;
-import org.thoughtcrime.securesms.connect.DcHelper;
-import org.thoughtcrime.securesms.permissions.Permissions;
-import org.thoughtcrime.securesms.util.DynamicTheme;
-import org.thoughtcrime.securesms.util.IntentUtils;
-import org.thoughtcrime.securesms.util.concurrent.ListenableFuture;
-import org.thoughtcrime.securesms.util.concurrent.SettableFuture;
-import org.thoughtcrime.securesms.util.task.ProgressDialogAsyncTask;
-import org.thoughtcrime.securesms.util.views.ProgressDialog;
-
-import java.lang.ref.WeakReference;
-import java.util.concurrent.ExecutionException;
-
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_ADDRESS;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_MAIL_PASSWORD;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_MAIL_PORT;
@@ -60,6 +14,54 @@ import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SEND_USER;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SERVER_FLAGS;
 import static org.thoughtcrime.securesms.connect.DcHelper.getContext;
 import static org.thoughtcrime.securesms.service.IPCAddAccountsService.ACCOUNT_DATA;
+
+import android.content.ActivityNotFoundException;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.net.Uri;
+import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.util.Patterns;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.IdRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
+import androidx.constraintlayout.widget.Group;
+
+import com.b44t.messenger.DcContext;
+import com.b44t.messenger.DcEvent;
+import com.b44t.messenger.DcProvider;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
+
+import org.thoughtcrime.securesms.connect.AccountManager;
+import org.thoughtcrime.securesms.connect.DcEventCenter;
+import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.permissions.Permissions;
+import org.thoughtcrime.securesms.util.DynamicTheme;
+import org.thoughtcrime.securesms.util.IntentUtils;
+import org.thoughtcrime.securesms.util.Util;
+import org.thoughtcrime.securesms.util.concurrent.ListenableFuture;
+import org.thoughtcrime.securesms.util.concurrent.SettableFuture;
+import org.thoughtcrime.securesms.util.task.ProgressDialogAsyncTask;
+import org.thoughtcrime.securesms.util.views.ProgressDialog;
+
+import java.lang.ref.WeakReference;
+import java.util.concurrent.ExecutionException;
 
 public class RegistrationActivity extends BaseActionBarActivity implements DcEventCenter.DcEventDelegate {
 
@@ -78,6 +80,8 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
     private TextView providerHint;
     private TextView providerLink;
     private @Nullable DcProvider provider;
+
+    private CheckBox encryptCheckbox;
 
     private Group advancedGroup;
     private ImageView advancedIcon;
@@ -102,6 +106,8 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         providerHint = findViewById(R.id.provider_hint);
         providerLink = findViewById(R.id.provider_link);
         providerLink.setOnClickListener(l -> onProviderLink());
+
+        encryptCheckbox = findViewById(R.id.encrypt_checkbox);
 
         advancedGroup = findViewById(R.id.advanced_group);
         advancedIcon = findViewById(R.id.advanced_icon);
@@ -176,6 +182,9 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
 
             int certCheckFlags = DcHelper.getInt(this, "imap_certificate_checks");
             certCheck.setSelection(certCheckFlags);
+            encryptCheckbox.setHeight(0);
+            encryptCheckbox.setClickable(false);
+            encryptCheckbox.setFocusable(false);
         } else if (getIntent() != null && getIntent().getBundleExtra(ACCOUNT_DATA) != null) {
           // Companion app might have sent account data
           Bundle b = getIntent().getBundleExtra(ACCOUNT_DATA);
@@ -193,6 +202,10 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
           }
         }
 
+        registerForEvents();
+    }
+
+    private void registerForEvents() {
         DcHelper.getEventCenter(this).addObserver(DcContext.DC_EVENT_CONFIGURE_PROGRESS, this);
     }
 
@@ -495,6 +508,36 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
             Toast.makeText(this, R.string.login_error_required_fields, Toast.LENGTH_LONG).show();
             return;
         }
+
+        if (encryptCheckbox.isChecked()) {
+            AccountManager accountManager = AccountManager.getInstance();
+
+            if (progressDialog != null) {
+                progressDialog.dismiss();
+                progressDialog = null;
+            }
+
+            progressDialog = new ProgressDialog(this);
+            progressDialog.setMessage(getString(R.string.one_moment));
+            progressDialog.setCanceledOnTouchOutside(false);
+            progressDialog.setCancelable(false);
+            progressDialog.show();
+
+            // Prevent the user from disabling the checkbox again, switching to unencrypted account is currently not implemented
+            encryptCheckbox.setEnabled(false);
+            Util.runOnBackground(() -> {
+                DcHelper.getEventCenter(this).removeObservers(this);
+                accountManager.switchToEncrypted(this);
+                // Event center changed, register for events again
+                registerForEvents();
+                Util.runOnMain(this::continueLogin);
+            });
+        } else {
+            continueLogin();
+        }
+    }
+
+    private void continueLogin() {
         setupConfig();
 
         if (progressDialog != null) {

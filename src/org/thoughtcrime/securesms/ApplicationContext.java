@@ -28,6 +28,8 @@ import org.thoughtcrime.securesms.connect.FetchWorker;
 import org.thoughtcrime.securesms.connect.ForegroundDetector;
 import org.thoughtcrime.securesms.connect.KeepAliveService;
 import org.thoughtcrime.securesms.connect.NetworkStateReceiver;
+import org.thoughtcrime.securesms.crypto.DatabaseSecret;
+import org.thoughtcrime.securesms.crypto.DatabaseSecretProvider;
 import org.thoughtcrime.securesms.crypto.PRNGFixes;
 import org.thoughtcrime.securesms.geolocation.DcLocationManager;
 import org.thoughtcrime.securesms.jobmanager.JobManager;
@@ -43,6 +45,7 @@ import java.util.concurrent.TimeUnit;
 //import com.squareup.leakcanary.LeakCanary;
 
 public class ApplicationContext extends MultiDexApplication {
+  private static final String TAG = ApplicationContext.class.getSimpleName();
 
   public DcAccounts             dcAccounts;
   public DcContext              dcContext;
@@ -77,7 +80,22 @@ public class ApplicationContext extends MultiDexApplication {
 
     dcAccounts = new DcAccounts("Android "+BuildConfig.VERSION_NAME, new File(getFilesDir(), "accounts").getAbsolutePath());
     AccountManager.getInstance().migrateToDcAccounts(this);
-    if (dcAccounts.getAll().length == 0) {
+    int[] allAccounts = dcAccounts.getAll();
+    for (int accountId : allAccounts) {
+      DcContext ac = dcAccounts.getAccount(accountId);
+      if (!ac.isOpen()) {
+        try {
+          DatabaseSecret secret = DatabaseSecretProvider.getOrCreateDatabaseSecret(this, accountId);
+          boolean res = ac.open(secret.asString());
+          if (res) Log.i(TAG, "Successfully opened account " + accountId + ", path: " + ac.getBlobdir());
+          else Log.e(TAG, "Error opening account " + accountId + ", path: " + ac.getBlobdir());
+        } catch (Exception e) {
+          Log.e(TAG, "Failed to open account " + accountId + ", path: " + ac.getBlobdir() + ": " + e);
+          e.printStackTrace();
+        }
+      }
+    }
+    if (allAccounts.length == 0) {
       dcAccounts.addAccount();
     }
     dcContext = dcAccounts.getSelectedAccount();
