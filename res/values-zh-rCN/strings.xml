@@ -593,6 +593,8 @@
     <string name="pref_show_emails_all">全部</string>
     <string name="pref_experimental_features">实验性功能</string>
     <string name="pref_on_demand_location_streaming">按需位置流</string>
+    <string name="pref_developer_mode">开发者模式</string>
+    <string name="pref_developer_mode_explain">激活调试选项，使应用程序不太稳定。仅供开发人员。</string>
     <string name="pref_background_default">默认背景</string>
     <string name="pref_background_default_color">默认颜色</string>
     <string name="pref_background_custom_image">自定义图像</string>

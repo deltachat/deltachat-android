@@ -607,6 +607,8 @@
     <string name="pref_show_emails_all">Alle</string>
     <string name="pref_experimental_features">Experimentelle Features</string>
     <string name="pref_on_demand_location_streaming">Standortübertragung nach Bedarf</string>
+    <string name="pref_developer_mode">Entwicklungsoptionen</string>
+    <string name="pref_developer_mode_explain">Aktiviert Debug-Optionen; kann die Stabilität der App beeinträchtigen. Nur zum Entwickeln.</string>
     <string name="pref_background_default">Voreingestellter Hintergrund</string>
     <string name="pref_background_default_color">Voreingestellte Farbe</string>
     <string name="pref_background_custom_image">Benutzerdefiniertes Hintergrundbild</string>
