@@ -380,6 +380,9 @@
     <string name="mailing_list_profile_info">Changes on mailing list name and image apply to this device only.</string>
 
     <!-- webxdc -->
+    <!-- "Start..." button for an app -->
+    <string name="start_app">Start…</string>
+    <!-- this is a warning that is shown when one tries to send something to a chat that is not yet accepted. -->
     <string name="accept_request_first">Please accept the chat request first.</string>
 
     <!-- map -->
