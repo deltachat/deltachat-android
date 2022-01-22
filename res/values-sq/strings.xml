@@ -604,6 +604,8 @@
     <string name="pref_show_emails_accepted_contacts">Për kontakte të pranuar</string>
     <string name="pref_show_emails_all">Krejt</string>
     <string name="pref_experimental_features">Veçori eksperimentale</string>
+    <string name="pref_developer_mode">Mënyra Zhvillues</string>
+    <string name="pref_developer_mode_explain">Aktivizon mundësi diagnostikimi dhe mund ta bëjë aplikacionin më pak të qëndrueshëm. Vetëm për zhvillues.</string>
     <string name="pref_background_default">Sfond parazgjedhje</string>
     <string name="pref_background_default_color">Ngjyrë parazgjedhje</string>
     <string name="pref_background_custom_image">Figurë vetjake</string>

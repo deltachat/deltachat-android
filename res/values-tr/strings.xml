@@ -607,6 +607,8 @@
     <string name="pref_show_emails_all">Tümü</string>
     <string name="pref_experimental_features">Deneysel Özellikler</string>
     <string name="pref_on_demand_location_streaming">İsteğe Bağlı Konum Akışı</string>
+    <string name="pref_developer_mode">Geliştirici Kipi</string>
+    <string name="pref_developer_mode_explain">Hata ayıklama seçeneklerini etkinleştirir ve uygulamayı daha az kararlı yapabilir. Yalnızca geliştiriciler içindir.</string>
     <string name="pref_background_default">Varsayılan arka plan</string>
     <string name="pref_background_default_color">Varsayılan renk</string>
     <string name="pref_background_custom_image">Özel görsel</string>
