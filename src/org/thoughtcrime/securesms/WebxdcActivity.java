@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcMsg;
@@ -166,7 +167,16 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     @JavascriptInterface
     public boolean sendStatusUpdate(String payload, String descr) {
       Log.i(TAG, "sendStatusUpdate");
-      return WebxdcActivity.this.dcContext.sendWebxdcStatusUpdate(WebxdcActivity.this.dcAppMsg.getId(), payload, descr);
+      if (!WebxdcActivity.this.dcContext.sendWebxdcStatusUpdate(WebxdcActivity.this.dcAppMsg.getId(), payload, descr)) {
+        DcChat dcChat =  WebxdcActivity.this.dcContext.getChat(WebxdcActivity.this.dcAppMsg.getChatId());
+        Toast.makeText(WebxdcActivity.this,
+                      dcChat.isContactRequest() ?
+                          WebxdcActivity.this.getString(R.string.accept_request_first) :
+                          WebxdcActivity.this.dcContext.getLastError(),
+                      Toast.LENGTH_LONG).show();
+        return false;
+      }
+      return true;
     }
 
     @JavascriptInterface

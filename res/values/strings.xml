@@ -379,6 +379,9 @@
     <string name="mailing_list">Mailing List</string>
     <string name="mailing_list_profile_info">Changes on mailing list name and image apply to this device only.</string>
 
+    <!-- webxdc -->
+    <string name="accept_request_first">Please accept the chat request first.</string>
+
     <!-- map -->
     <string name="filter_map_on_time">Show locations in time frame</string>
     <string name="show_location_traces">Show traces</string>
