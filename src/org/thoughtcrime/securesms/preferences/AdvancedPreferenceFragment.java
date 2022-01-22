@@ -5,9 +5,11 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -122,6 +124,14 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
           .setCancelable(false)
           .setPositiveButton(R.string.ok, null)
           .show();
+      }
+      return true;
+    });
+
+    Preference developerModeEnabled = this.findPreference("pref_developer_mode_enabled");
+    developerModeEnabled.setOnPreferenceChangeListener((preference, newValue) -> {
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        WebView.setWebContentsDebuggingEnabled((Boolean) newValue);
       }
       return true;
     });
