@@ -379,6 +379,12 @@
     <string name="mailing_list">Mailing List</string>
     <string name="mailing_list_profile_info">Le modifiche al nome e all\'immagine della mailing list si applicano solo a questo dispositivo.</string>
 
+    <!-- webxdc -->
+    <!-- "Start..." button for an app -->
+    <string name="start_app">Avvia...</string>
+    <!-- this is a warning that is shown when one tries to send something to a chat that is not yet accepted. -->
+    <string name="accept_request_first">Per favore, accetta prima la richiesta di chat.</string>
+
     <!-- map -->
     <string name="filter_map_on_time">Mostra le posizioni nel tempo</string>
     <string name="show_location_traces">Mostra tracce</string>
