@@ -1,5 +1,31 @@
 # Delta Chat Android Changelog
 
+## v1.27.0
+2022-01
+
+* add option to create encrypted database at "Add Account / Advanced",
+  the database passphrase is generated automatically and is stored in the system's keychain,
+  subsequent versions will probably get more options to handle passphrases
+* add initial support for Webxdc extensions
+* add "Advanced / Developer Mode" to help on creating Webxdc extensions
+* add writing support for supported mailinglist types; other mailinglist types stay read-only
+* "Message Info" show routes
+* explicit "Watch Inbox folder" and "Watch DeltaChat folder" settings no longer required;
+  the folders are watched automatically as needed
+* detect correctly signed messages from Thunderbird and show them as such
+* synchronize Seen status across devices
+* more reliable group memberlist and group avatar updates
+* recognize MS Exchange read receipts as such
+* fix leaving groups
+* fix unread count issues in account switcher
+* fix crash when selecting thumbnail image
+* fix add POI if the user cannot send in a chat
+* fix "Reply Privately" in contact request chats
+* add Bulgarian translations, update other translations and local help
+* update provider-database
+* update to core71
+
+
 ## v1.26.2
 2021-12
 
