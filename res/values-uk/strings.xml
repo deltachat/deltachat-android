@@ -407,6 +407,12 @@
     <string name="mailing_list">Список адресатів</string>
     <string name="mailing_list_profile_info">Зміни в назві списку розсилки та зображенні стосуються лише цього пристрою.</string>
 
+    <!-- webxdc -->
+    <!-- "Start..." button for an app -->
+    <string name="start_app">Старт...</string>
+    <!-- this is a warning that is shown when one tries to send something to a chat that is not yet accepted. -->
+    <string name="accept_request_first">Будь ласка, спочатку прийміть запит на чат.</string>
+
     <!-- map -->
     <string name="filter_map_on_time">Показати місця у часовому проміжку</string>
     <string name="show_location_traces">Показати треки</string>
@@ -635,6 +641,8 @@
     <string name="pref_show_emails_all">Всі</string>
     <string name="pref_experimental_features">Експериментальні функції</string>
     <string name="pref_on_demand_location_streaming">Стримінг геоданих за вимогою</string>
+    <string name="pref_developer_mode">Режим розробника</string>
+    <string name="pref_developer_mode_explain">Активує опції режиму налагодження та може зробити програму менш стабільною. Тільки для розробників.</string>
     <string name="pref_background_default">Фон за замовчуванням</string>
     <string name="pref_background_default_color">Колір за замовчуванням</string>
     <string name="pref_background_custom_image">Персональне зображення</string>

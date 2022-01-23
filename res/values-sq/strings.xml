@@ -377,6 +377,12 @@
     <string name="mailing_list">Listë postimesh</string>
     <string name="mailing_list_profile_info">Ndryshime në emër dhe figurë liste postimesh aplikohen vetëm në këtë pajisje.</string>
 
+    <!-- webxdc -->
+    <!-- "Start..." button for an app -->
+    <string name="start_app">Fillo…</string>
+    <!-- this is a warning that is shown when one tries to send something to a chat that is not yet accepted. -->
+    <string name="accept_request_first">Ju lutemi, së pari pranoni kërkesën për fjalosje.</string>
+
     <!-- map -->
     <string name="filter_map_on_time">Shfaq vendndodhje në rrjedhë kohore</string>
     <string name="show_location_traces">Shfaq gjurmë</string>
@@ -802,6 +808,8 @@
     <string name="ImageEditorHud_draw_anywhere_to_blur">Që të turbullohet, vizatoni kudo qoftë</string>
     <string name="ImageEditorHud_add_text">Shtoni tekst</string>
     <string name="ImageEditorHud_blur">Turbulloje</string>
+    <string name="ImageEditorHud_brush_marker">Penel Shënimesh</string>
+    <string name="ImageEditorHud_brush_highlight">Penel Theksimesh</string>
     <string name="ImageEditorHud_crop">Qethe</string>
     <string name="ImageEditorHud_flip">Ktheje në anë tjetër</string>
     <string name="ImageEditorHud_rotate">Rrotulloje</string>

@@ -365,6 +365,12 @@
     <string name="mailing_list">邮件列表</string>
     <string name="mailing_list_profile_info">邮件列表名称和图像的更改仅适用于此设备。 </string>
 
+    <!-- webxdc -->
+    <!-- "Start..." button for an app -->
+    <string name="start_app">启动…</string>
+    <!-- this is a warning that is shown when one tries to send something to a chat that is not yet accepted. -->
+    <string name="accept_request_first">请先接受聊天请求</string>
+
     <!-- map -->
     <string name="filter_map_on_time">显示时间范围内的位置</string>
     <string name="show_location_traces">显示轨迹</string>

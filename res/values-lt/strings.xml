@@ -125,12 +125,12 @@
     <string name="reply_noun">Atsakymas</string>
     <string name="gif">Gif</string>
     <string name="images">Paveikslai</string>
-    <string name="audio">Garsas</string>
+    <string name="audio">Garso įrašai</string>
     <string name="voice_message">Balso žinutė</string>
     <string name="forwarded_message">Persiųsta žinutė</string>
     <!-- %1$s will be replaced by the name or the e-mail address of the person who has forwarded the message -->
     <string name="forwarded_by">Persiuntė %1$s</string>
-    <string name="video">Vaizdas</string>
+    <string name="video">Vaizdo įrašai</string>
     <string name="documents">Dokumentai</string>
     <string name="contact">Adresatas</string>
     <string name="verified_contact">Patvirtintas adresatas</string>
@@ -168,6 +168,7 @@
     <string name="menu_new_chat">Naujas pokalbis</string>
     <string name="menu_new_group">Nauja grupė</string>
     <string name="menu_new_verified_group">Nauja patvirtinta grupė</string>
+    <string name="add_recipients">Pridėti gavėjus</string>
     <string name="menu_send">Siųsti</string>
     <string name="menu_toggle_keyboard">Perjungti šypsniukų klaviatūrą</string>
     <string name="menu_edit_group">Taisyti grupę</string>
@@ -220,10 +221,12 @@
     <string name="menu_zoom_out">Mažinti</string>
     <string name="menu_save_log">Įrašyti žurnalą</string>
     <string name="menu_more_options">Daugiau parinkčių</string>
+    <string name="menu_chat_audit_log">Pokalbių audito žurnalas</string>
     <string name="copy_json">Kopijuoti JSON</string>
     <string name="replace_draft">Pakeisti juodraštį</string>
     <string name="title_share_location">Bendrinti savo vietą su visais grupės dalyviais</string>
     <string name="device_talk">Įrenginio žinutės</string>
+    <string name="device_talk_subtitle">Vietiniu mastu sugeneruotos žinutės</string>
     <string name="edit_contact">Taisyti adresatą</string>
     <!-- Translators: "Pin" here is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
     <string name="pin_chat">Prisegti pokalbį</string>
@@ -253,12 +256,16 @@
     <string name="videochat">Vaizdo pokalbis</string>
     <string name="videochat_invite_user_to_videochat">Pakviesti %1$s į vaizdo pokalbį?</string>
     <string name="videochat_invite_user_hint">Tai reikalauja, kad abu pašnekovai turėtų suderinamą programėlę ar suderinamą naršyklę.</string>
+    <string name="videochat_contact_invited_hint">%1$s pakvietė į vaizdo pokalbį.</string>
+    <string name="videochat_you_invited_hint">Jūs pakvietėte į vaizdo pokalbį.</string>
     <string name="videochat_tap_to_join">Bakstelėkite norėdami prisijungti</string>
     <string name="videochat_tap_to_open">Bakstelėkite norėdami atverti</string>
     <string name="videochat_instance">Vaizdo pokalbio egzempliorius</string>
     <string name="videochat_instance_placeholder">Jūsų vaizdo pokalbio egzempliorius</string>
-    <string name="videochat_instance_explain">Jei yra apibrėžtas vaizdo pokalbių egzempliorius, kiekviename pokalbyje galite pradėti vaizdo pokalbį. Vaizdo pokalbiai reikalauja, kad abi pusės turėtų suderinamą programėlę arba suderinamą naršyklę.\n\nPavyzdžiai: https://meet.jit.si/$KAMBARYS arba basicwebrtc:https://jūsų-serveris</string>
+    <string name="videochat_instance_explain">Jei yra apibrėžtas vaizdo pokalbių egzempliorius, kiekviename pokalbyje galite pradėti vaizdo pokalbį. Vaizdo pokalbiai reikalauja, kad abi pusės turėtų suderinamą programėlę arba suderinamą naršyklę.\n\nPavyzdžiai: https://meet.jit.si/$ROOM arba basicwebrtc:https://jūsų-serveris</string>
     <string name="videochat_invitation">Pakvietimas į vaizdo pokalbį</string>
+    <string name="videochat_invitation_body">Jūs esate kviečiami į vaizdo pokalbį. Spustelėkite %1$s jei norite prisijungti.</string>
+
     <!-- get confirmations -->
     <string name="ask_leave_group">Ar tikrai norite išeiti iš šios grupės?</string>
     <plurals name="ask_delete_chat">
@@ -273,6 +280,12 @@
         <item quantity="few">Ištrinti %d žinutes čia ir serveryje?</item>
         <item quantity="many">Ištrinti %d žinučių čia ir serveryje?</item>
         <item quantity="other">Ištrinti %d žinutę čia ir serveryje?</item>
+    </plurals>
+    <plurals name="ask_delete_messages_simple">
+        <item quantity="one">Ištrinti %d žinutę?</item>
+        <item quantity="few">Ištrinti %d žinutes?</item>
+        <item quantity="many">Ištrinti %d žinučių?</item>
+        <item quantity="other">Ištrinti %d žinutę?</item>
     </plurals>
     <string name="ask_forward">Persiųsti žinutes %1$s?</string>
     <string name="ask_export_attachment">Eksportuoti priedą? Priedų eksportavimas leis bet kurioms kitoms programėlėms jūsų įrenginyje turėti prieigą prie šių priedų.\n\nTęsti?</string>
@@ -327,7 +340,7 @@
     <string name="chat_self_talk_subtitle">Žinutės, kurias siunčiu asmeniškai sau</string>
     <string name="archive_empty_hint">Jei archyvuosite pokalbius, jie bus rodomi čia.</string>
     <string name="saved_messages">Įrašytos žinutės</string>
-    <string name="saved_messages_explain">• Persiųskite žinutes čia, kad lengvai jas pasiektumėte\n\n• Rašykitės pastabas ar įrašynėkite balso žinutes\n\n• Pridėkite mediją, norėdami ją išsaugoti</string>
+    <string name="saved_messages_explain">• Persiųskite žinutes čia, kad lengvai jas pasiektumėte\n\n• Rašykitės pastabas ar įrašinėkite balso žinutes\n\n• Pridėkite mediją, norėdami ją išsaugoti</string>
     <!-- this "Saved" should match the "Saved" from "Saved messages" -->
     <string name="saved">Įrašyta</string>
     <!-- reasons for a disabled message composer -->
@@ -337,6 +350,9 @@
     <string name="attachment_failed_to_load">Nepavyko įkelti priedo</string>
     <!-- chat audit log -->
     <string name="chat_audit_log_empty_message">Čia atsiras šio pokalbio sisteminės žinutės</string>
+    <string name="chat_audit_log_title">Pokalbio audito žurnalas, skirtas %1$s</string>
+    <string name="chat_audit_log_description">Šiame rodinyje yra rodomi tik sisteminiai ir informaciniai pranešimai. Naudinga, jei norite rasti paskiausius pokalbio veiksmus, be būtinybės slinkti per daugelį įprastų žinučių.</string>
+
     <string name="puny_code_warning_header">Aptikta įtartina nuoroda</string>
     <!-- placeholder contains the hostname converted to ascii -->
     <string name="puny_code_warning_question">Ar tikrai norite apsilankyti %1$s?</string>
@@ -370,6 +386,11 @@
     <string name="send_message">Siųsti žinutę</string>
 
 
+    <!-- Connectivity -->
+    <!-- Used as a headline for the "Inbox" eg. in the "Connectivity" view -->
+    <string name="incoming_messages">Gaunamosios žinutės</string>
+    <!-- Used as a headline for the "Outbox" eg. in the "Connectivity" view -->
+    <string name="outgoing_messages">Siunčiamosios žinutės</string>
     <string name="connectivity">Jungiamumas</string>
     <!-- Shown eg. in the title bar if the app is "Not connected"; as there is very few room, try to be as short as possible. -->
     <string name="connectivity_not_connected">Neprisijungta</string>
@@ -381,6 +402,8 @@
     <string name="connectivity_connected">Prisijungta</string>
     <string name="sending">Siunčiama…</string>
     <string name="last_msg_sent_successfully">Paskutinė žinutė sėkmingai išsiųsta.</string>
+    <!-- Used as a subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed or so. -->
+    <string name="messages">Žinutės</string>
     <!-- welcome and login -->
     <string name="welcome_intro1_message">Pokalbių programa su plačiausia auditorija pasaulyje. Nemokama ir nepriklausoma.</string>
     <string name="login_title">Prisijungti</string>
@@ -415,7 +438,7 @@
     <string name="login_error_server">Įveskite teisingą serverį / IP adresą</string>
     <string name="login_error_port">Įveskite teisingą prievadą (1–65535)</string>
     <string name="login_error_required_fields">Įveskite teisingą el. pašto adresą ir slaptažodį</string>
-    <string name="import_backup_title">Importuoti atsarginę kopjią</string>
+    <string name="import_backup_title">Importuoti atsarginę kopiją</string>
     <string name="import_backup_ask">Atsarginė kopija rasta ties \"%1$s\".\n\nAr norite iš jos importuoti ir naudoti visus duomenis ir nustatymus?</string>
     <string name="import_backup_no_backup_found">Nerasta jokių atsarginių kopijų.\n\nNukopijuokite atsarginę kopiją į \"%1$s\" ir bandykite dar kartą. Priešingu atveju, paspauskite \"Pradėti susirašinėjimą\", kad pereitumėte į įprastą sąrankos procesą.</string>
     <!-- Translators: %1$s will be replaced by the e-mail address -->
@@ -430,6 +453,7 @@
     <string name="delete_account_explain_with_name">Visi „%s“ paskyros duomenys šiame įrenginyje bus ištrinti, įskaitant jūsų ištisinio šifravimo sąranką, adresatus, pokalbius, žinutes ir mediją. Šį veiksmą nebeįmanoma bus atšaukti.</string>
     <string name="unconfigured_account">Nesukonfigūruota paskyra</string>
     <string name="unconfigured_account_hint">Atverkite paskyrą norėdami ją konfigūruoti.</string>
+    <string name="sync_all">Sinchronizuoti visas</string>
     <!-- Translations: %1$s will be replaced by a more detailed error message -->
     <string name="configuration_failed_with_error">Konfigūracija patyrė nesėkmę. Klaida: %1$s</string>
 
@@ -463,7 +487,9 @@
     <string name="pref_notifications">Pranešimai</string>
     <string name="pref_notifications_show">Rodyti</string>
     <string name="pref_notifications_priority">Pirmenybė</string>
+    <string name="pref_notifications_explain">Įjungti sistemos pranešimus apie naujas žinutes</string>
     <string name="pref_show_notification_content">Rodyti pranešime žinutės turinį</string>
+    <string name="pref_show_notification_content_explain">Rodyti pranešimuose siuntėjo vardą ir pirmuosius žinutės žodžius</string>
     <string name="pref_led_color">Šviesos diodo spalva</string>
     <string name="pref_sound">Garsas</string>
     <string name="pref_privacy">Privatumas</string>
@@ -516,18 +542,32 @@
     <string name="pref_send_copy_to_self">Siųsti kopiją sau pačiam</string>
     <string name="pref_auto_folder_moves">Automatiniai perkėlimai į DeltaChat aplanką</string>
     <string name="pref_auto_folder_moves_explain">Pokalbiai yra perkeliami, kad nebūtų sujauktas Gautųjų aplankas</string>
+    <string name="pref_show_emails">Rodyti klasikinius el. laiškus</string>
+    <string name="pref_show_emails_no">Ne, tik pokalbius</string>
+    <string name="pref_show_emails_accepted_contacts">Iš priimtų adresatų</string>
+    <string name="pref_show_emails_all">Iš visų</string>
     <string name="pref_experimental_features">Eksperimentinės ypatybės</string>
     <string name="pref_background_default">Numatytasis fonas</string>
     <string name="pref_background_default_color">Numatytoji spalva</string>
     <string name="pref_background_custom_image">Tinkintas paveikslas</string>
     <string name="pref_background_custom_color">Tinkinta spalva</string>
     <string name="export_aborted">Eksportavimas nutrauktas.</string>
+    <string name="auto_download_messages">Automatinis žinučių atsisiuntimas</string>
+    <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB -->
+    <string name="up_to_x">Iki %1$s</string>
+    <string name="up_to_x_most_worse_quality_images">Iki %1$s, iš esmės, blogos kokybės paveikslus</string>
+    <string name="up_to_x_most_balanced_quality_images">Iki %1$s, iš esmės, subalansuotos kokybės paveikslus</string>
+    <string name="no_limit">Be ribos</string>
+    <string name="download_failed">Atsiuntimas nepavyko</string>
+    <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string eg. "1 MiB message" -->
+    <string name="n_bytes_message">%1$s žinutė</string>
     <string name="profile_image_delete">Ištrinti profilio paveikslą</string>
     <string name="pref_show_tray_icon">Rodyti dėklo piktogramą</string>
     <string name="pref_edit_profile">Taisyti profilį</string>
 
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Paieškos rezultatai</string>
+    <string name="emoji_not_found">Nerasta jokių šypsniukų</string>
     <string name="emoji_recent">Paskiausi</string>
     <string name="emoji_people">Žmonės ir kūnas</string>
     <string name="emoji_nature">Gyvūnai ir gamta</string>

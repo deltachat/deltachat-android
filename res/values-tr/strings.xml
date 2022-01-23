@@ -379,6 +379,12 @@
     <string name="mailing_list">Posta Listesi</string>
     <string name="mailing_list_profile_info">Posta listesi adındaki ve görselindeki değişiklikler yalnızca bu aygıta uygulanır.</string>
 
+    <!-- webxdc -->
+    <!-- "Start..." button for an app -->
+    <string name="start_app">Başlat…</string>
+    <!-- this is a warning that is shown when one tries to send something to a chat that is not yet accepted. -->
+    <string name="accept_request_first">Lütfen önce sohbet isteğini kabul edin.</string>
+
     <!-- map -->
     <string name="filter_map_on_time">Konumları zaman çerçevesinde göster</string>
     <string name="show_location_traces">İzleri göster</string>

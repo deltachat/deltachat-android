@@ -379,6 +379,12 @@
     <string name="mailing_list">Mailinglijst</string>
     <string name="mailing_list_profile_info">Wijzigingen aan de mailinglijstnaam en -afbeelding worden alleen op dit apparaat getoond.</string>
 
+    <!-- webxdc -->
+    <!-- "Start..." button for an app -->
+    <string name="start_app">Starten…</string>
+    <!-- this is a warning that is shown when one tries to send something to a chat that is not yet accepted. -->
+    <string name="accept_request_first">Accepteer eerst het gespreksverzoek.</string>
+
     <!-- map -->
     <string name="filter_map_on_time">Locaties tonen in tijdsbeeld</string>
     <string name="show_location_traces">Sporen tonen</string>
