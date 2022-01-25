@@ -1,5 +1,12 @@
 # Delta Chat Android Changelog
 
+## 1.27.1
+2022-01
+
+* fix backup import issue introduced in 1.27.0
+* update to core72
+
+
 ## v1.27.0
 2022-01
 
