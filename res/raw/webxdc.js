@@ -15,6 +15,11 @@ window.webxdc = (() => {
 
     setUpdateListener: (cb) => (update_listener = cb),
 
+    async allUpdates: () => {
+      return JSON.parse(InternalJSApi.getStatusUpdates(0));
+    },
+
+    // deprecated, use `await updates = getUpdates()` instead
     getAllUpdates: () => {
       return JSON.parse(InternalJSApi.getStatusUpdates(0));
     },
