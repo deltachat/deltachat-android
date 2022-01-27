@@ -58,6 +58,7 @@ public class DcHelper {
     public static final String CONFIG_SENTBOX_WATCH = "sentbox_watch";
     public static final String CONFIG_MVBOX_WATCH = "mvbox_watch";
     public static final String CONFIG_MVBOX_MOVE = "mvbox_move";
+    public static final String CONFIG_ONLY_FETCH_MVBOX = "only_fetch_mvbox";
     public static final String CONFIG_BCC_SELF = "bcc_self";
     public static final String CONFIG_SHOW_EMAILS = "show_emails";
     public static final String CONFIG_MEDIA_QUALITY = "media_quality";
