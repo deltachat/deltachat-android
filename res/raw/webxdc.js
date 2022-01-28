@@ -19,7 +19,7 @@ window.webxdc = (() => {
       return Promise.resolve(JSON.parse(InternalJSApi.getStatusUpdates(0)));
     },
 
-    // deprecated, use `await updates = getUpdates()` instead
+    // deprecated, use `await updates = allUpdates()` instead
     getAllUpdates: () => {
       return JSON.parse(InternalJSApi.getStatusUpdates(0));
     },
