@@ -13,6 +13,7 @@ public class LocalHelpActivity extends WebViewActivity
   @Override
   protected void onCreate(Bundle state, boolean ready) {
     super.onCreate(state, ready);
+    setForceDark();
     getSupportActionBar().setTitle(getString(R.string.menu_help));
 
     String helpPath = "help/LANG/help.html";

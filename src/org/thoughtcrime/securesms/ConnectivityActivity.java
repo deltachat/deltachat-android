@@ -15,6 +15,7 @@ public class ConnectivityActivity extends WebViewActivity implements DcEventCent
   @Override
   protected void onCreate(Bundle state, boolean ready) {
     super.onCreate(state, ready);
+    setForceDark();
     getSupportActionBar().setTitle(R.string.connectivity);
     refresh();
 
