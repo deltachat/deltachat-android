@@ -1,5 +1,14 @@
 # Delta Chat Android Changelog
 
+## 1.27.2
+2022-01
+
+* improve webxdc bubble layout
+* async webxdc api and reworked webxdc properties
+* fix: do not shared cached files between xdc's
+* fix: do not force dark mode for webxdc and html-messages
+
+
 ## 1.27.1
 2022-01
 
