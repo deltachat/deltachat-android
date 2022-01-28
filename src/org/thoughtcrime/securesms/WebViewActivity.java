@@ -46,10 +46,6 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
     webView = findViewById(R.id.webview);
-    if (WebViewFeature.isFeatureSupported(WebViewFeature.FORCE_DARK)) {
-      WebSettingsCompat.setForceDark(webView.getSettings(),
-                                     DynamicTheme.isDarkTheme(this) ? WebSettingsCompat.FORCE_DARK_ON : WebSettingsCompat.FORCE_DARK_OFF);
-    }
     webView.setWebViewClient(new WebViewClient() {
       // `shouldOverrideUrlLoading()` is called when the user clicks a URL,
       // returning `true` means, the URL is passed to `loadUrl()`, `false` aborts loading.
@@ -107,6 +103,13 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
     // "safe browsing" will never be able to report issues, so it can be disabled.
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
       webView.getSettings().setSafeBrowsingEnabled(false);
+    }
+  }
+
+  protected void setForceDark() {
+    if (WebViewFeature.isFeatureSupported(WebViewFeature.FORCE_DARK)) {
+      WebSettingsCompat.setForceDark(webView.getSettings(),
+                                     DynamicTheme.isDarkTheme(this) ? WebSettingsCompat.FORCE_DARK_ON : WebSettingsCompat.FORCE_DARK_OFF);
     }
   }
 
