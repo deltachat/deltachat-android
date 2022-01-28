@@ -9,14 +9,14 @@ window.webxdc = (() => {
   };
 
   return {
-    selfAddr: () => InternalJSApi.selfAddr(),
+    selfAddr: InternalJSApi.selfAddr(),
 
-    selfName: () => InternalJSApi.selfName(),
+    selfName: InternalJSApi.selfName(),
 
     setUpdateListener: (cb) => (update_listener = cb),
 
     getAllUpdates: () => {
-      return JSON.parse(InternalJSApi.getStatusUpdates(0));
+      return Promise.resolve(JSON.parse(InternalJSApi.getStatusUpdates(0)));
     },
 
     sendUpdate: (payload, descr) => {
