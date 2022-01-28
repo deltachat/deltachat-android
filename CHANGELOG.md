@@ -5,7 +5,7 @@
 
 * improve webxdc bubble layout
 * async webxdc api and reworked webxdc properties
-* fix: do not shared cached files between xdc's
+* fix: do not share cached files between xdc's
 * fix: do not force dark mode for webxdc and html-messages
 
 
