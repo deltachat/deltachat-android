@@ -309,7 +309,7 @@ public class AttachmentManager {
           } else if (slide.hasDocument()) {
             if (slide.isWebxdcDocument()) {
               DcMsg instance = msg != null ? msg : DcHelper.getContext(context).getMsg(slide.dcMsgId);
-              webxdcView.setWebxdc(instance);
+              webxdcView.setWebxdc(instance, context.getString(R.string.videochat_tap_to_open));
               webxdcView.setWebxdcClickListener((v, s) -> {
                 WebxdcActivity.openWebxdcActivity(context, instance);
               });
