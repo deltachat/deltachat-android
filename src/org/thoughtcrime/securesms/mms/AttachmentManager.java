@@ -399,6 +399,18 @@ public class AttachmentManager {
     return result;
   }
 
+  // should be called when the attachement manager comes into view again.
+  // if the attachment manager contains a webxdc, its summary is updated.
+  public void onResume() {
+    if (slide.isPresent()) {
+      if (slide.get().isWebxdcDocument()) {
+        if (webxdcView != null) {
+          webxdcView.setWebxdc(DcHelper.getContext(context).getMsg(slide.get().dcMsgId), context.getString(R.string.videochat_tap_to_open));
+        }
+      }
+    }
+  }
+
   public boolean isAttachmentPresent() {
     return attachmentViewStub.resolved() && attachmentViewStub.get().getVisibility() == View.VISIBLE;
   }
