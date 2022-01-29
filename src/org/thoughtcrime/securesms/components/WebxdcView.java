@@ -55,7 +55,7 @@ public class WebxdcView extends FrameLayout {
     this.viewListener = listener;
   }
 
-  public void setWebxdc(final @NonNull DcMsg dcMsg)
+  public void setWebxdc(final @NonNull DcMsg dcMsg, String defaultSummary)
   {
     try {
       JSONObject info = dcMsg.getWebxdcInfo();
@@ -76,7 +76,7 @@ public class WebxdcView extends FrameLayout {
       // subtitle
       String summary = info.optString("summary");
       if (summary.isEmpty()) {
-        summary = Util.getPrettyFileSize(dcMsg.getFilebytes()) + " Webxdc";
+        summary = defaultSummary;
       }
       appSubtitle.setText(summary);
     } catch (Exception e) {
