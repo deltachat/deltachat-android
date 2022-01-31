@@ -607,6 +607,8 @@
     <string name="pref_send_copy_to_self">Kendime Kopya Gönder</string>
     <string name="pref_auto_folder_moves">DeltaChat Klasörüne Otomatik Taşınsın</string>
     <string name="pref_auto_folder_moves_explain">Sohbet görüşmeleri, Gelen Kutusu\'ndaki dağınıklığı önlemek için taşınır</string>
+    <string name="pref_only_fetch_mvbox_title">Yalnızca DeltaChat Klasöründen Getir</string>
+    <string name="pref_only_fetch_mvbox_explain">Diğer klasörleri yoksay. Sunucunuzun sohbet iletilerini DeltaChat klasörüne taşımasını gerektirir.</string>
     <string name="pref_show_emails">Klasik E-Postaları Göster</string>
     <string name="pref_show_emails_no">Hayır, yalnızca sohbetler</string>
     <string name="pref_show_emails_accepted_contacts">Kabul edilen kişiler için</string>

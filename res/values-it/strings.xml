@@ -605,9 +605,9 @@
     <string name="pref_watch_sent_folder">Controlla Cartella Inviata</string>
     <string name="pref_watch_mvbox_folder">Controlla Cartella DeltaChat</string>
     <string name="pref_send_copy_to_self">Auto-invia Copia</string>
-    <string name="pref_auto_folder_moves">Sposta Automaticamente nella Cartella DeltaChat</string>
+    <string name="pref_auto_folder_moves">Sposta nella Cartella DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">Le chat vengono spostate per evitare di riempire la cartella In Arrivo</string>
-    <string name="pref_only_fetch_mvbox_title">Recupera Solo dalla Cartella DeltaChat</string>
+    <string name="pref_only_fetch_mvbox_title">Recupera dalla Cartella DeltaChat</string>
     <string name="pref_only_fetch_mvbox_explain">Ignora altre cartelle. Richiede che il tuo server sposti i messaggi di chat nella cartella DeltaChat.</string>
     <string name="pref_show_emails">Mostra E-mail Tradizionali</string>
     <string name="pref_show_emails_no">No, solo chat</string>
