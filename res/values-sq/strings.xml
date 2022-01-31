@@ -605,6 +605,8 @@
     <string name="pref_send_copy_to_self">Dërgojini kopje vetes</string>
     <string name="pref_auto_folder_moves">Lëvizje të Vetvetishme te dosja DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">Bisedat zhvendosen, që të shmanget rrëmuja te dosja Të marrë</string>
+    <string name="pref_only_fetch_mvbox_title">Sill Vetëm nga Dosje DeltaChat</string>
+    <string name="pref_only_fetch_mvbox_explain">Shpërfill dosje të tjera. Lyp që shërbyesi juaj të kalojë mesazhe fjalosjeje te dosje DeltaChat.</string>
     <string name="pref_show_emails">Shfaq email-e klasikë</string>
     <string name="pref_show_emails_no">Jo, vetëm fjalosje</string>
     <string name="pref_show_emails_accepted_contacts">Për kontakte të pranuar</string>

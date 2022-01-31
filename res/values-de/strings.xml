@@ -607,6 +607,8 @@
     <string name="pref_send_copy_to_self">Kopie an mich selbst senden</string>
     <string name="pref_auto_folder_moves">Autom. Verschieben in den DeltaChat-Ordner</string>
     <string name="pref_auto_folder_moves_explain">Konversationen verschieben für einen übersichtlichen Posteingang</string>
+    <string name="pref_only_fetch_mvbox_title">Nur aus DeltaChat-Ordner lesen</string>
+    <string name="pref_only_fetch_mvbox_explain">Andere Ordner ignorieren. Erfordert, dass Ihr Server Chat-Nachrichten in den DeltaChat-Ordner verschiebt.</string>
     <string name="pref_show_emails">Normale E-Mails anzeigen</string>
     <string name="pref_show_emails_no">Nein, nur Chats</string>
     <string name="pref_show_emails_accepted_contacts">Akzeptierte Kontakte</string>
