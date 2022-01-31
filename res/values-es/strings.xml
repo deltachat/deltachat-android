@@ -379,6 +379,12 @@
     <string name="mailing_list">Lista de correo</string>
     <string name="mailing_list_profile_info">Los cambios en el nombre y la imagen de la lista de correo solo se aplican a este dispositivo.</string>
 
+    <!-- webxdc -->
+    <!-- "Start..." button for an app -->
+    <string name="start_app">Iniciar…</string>
+    <!-- this is a warning that is shown when one tries to send something to a chat that is not yet accepted. -->
+    <string name="accept_request_first">Primero acepte la solicitud de chat.</string>
+
     <!-- map -->
     <string name="filter_map_on_time">Mostrar ubicaciones en el marco de tiempo</string>
     <string name="show_location_traces">Mostrar trazas</string>
@@ -607,6 +613,8 @@
     <string name="pref_show_emails_all">Todos</string>
     <string name="pref_experimental_features">Características experimentales</string>
     <string name="pref_on_demand_location_streaming">Transmisión de ubicación bajo demanda</string>
+    <string name="pref_developer_mode">Modo desarrollador</string>
+    <string name="pref_developer_mode_explain">Activa las opciones de depuración y puede hacer que la aplicación sea menos estable. Solo para desarrolladores.</string>
     <string name="pref_background_default">Fondo por defecto</string>
     <string name="pref_background_default_color">Color por defecto</string>
     <string name="pref_background_custom_image">Imagen personalizada</string>
