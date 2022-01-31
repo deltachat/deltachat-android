@@ -78,7 +78,6 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
     bccSelfCheckbox.setOnPreferenceChangeListener((preference, newValue) -> {
       boolean enabled = (Boolean) newValue;
       dcContext.setConfigInt(CONFIG_BCC_SELF, enabled? 1 : 0);
-      DcHelper.getAccounts(getContext()).startIo();
       return true;
     });
 
