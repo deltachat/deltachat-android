@@ -70,7 +70,6 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
       boolean enabled = (Boolean) newValue;
       DcHelper.getAccounts(getContext()).stopIo();
       dcContext.setConfigInt(CONFIG_SENTBOX_WATCH, enabled? 1 : 0);
-      refreshFromCore();
       DcHelper.getAccounts(getContext()).startIo();
       return true;
     });
@@ -88,7 +87,6 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
       boolean enabled = (Boolean) newValue;
       DcHelper.getAccounts(getContext()).stopIo();
       dcContext.setConfigInt(CONFIG_MVBOX_MOVE, enabled? 1 : 0);
-      refreshFromCore();
       DcHelper.getAccounts(getContext()).startIo();
       return true;
     });
@@ -98,7 +96,6 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
       boolean enabled = (Boolean) newValue;
       DcHelper.getAccounts(getContext()).stopIo();
       dcContext.setConfigInt(CONFIG_ONLY_FETCH_MVBOX, enabled? 1 : 0);
-      refreshFromCore();
       DcHelper.getAccounts(getContext()).startIo();
       return true;
     }));
@@ -164,10 +161,6 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
     super.onResume();
     ((ApplicationPreferencesActivity) getActivity()).getSupportActionBar().setTitle(R.string.menu_advanced);
 
-    refreshFromCore();
-  }
-
-  private void refreshFromCore() {
     preferE2eeCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_E2EE_ENABLED));
     sentboxWatchCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_SENTBOX_WATCH));
     bccSelfCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_BCC_SELF));

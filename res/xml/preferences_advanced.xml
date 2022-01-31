@@ -23,7 +23,6 @@
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:defaultValue="true"
             android:key="pref_sentbox_watch"
-            android:dependency="pref_only_fetch_mvbox"
             android:title="@string/pref_watch_sent_folder"/>
 
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
@@ -34,12 +33,10 @@
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:defaultValue="true"
             android:key="pref_mvbox_move"
-            android:dependency="pref_only_fetch_mvbox"
             android:title="@string/pref_auto_folder_moves"
             android:summary="@string/pref_auto_folder_moves_explain"/>
 
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
-            android:disableDependentsState="true"
             android:defaultValue="false"
             android:key="pref_only_fetch_mvbox"
             android:title="@string/pref_only_fetch_mvbox_title"
