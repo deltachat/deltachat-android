@@ -911,4 +911,4 @@
     <string name="update_1_24_android">1.24 de forma resumida:\n\n• Ahorre toques: Selección de cuenta en la esquina superior izquierda de la lista de chats\n• Ahorre más toques: Mantenga presionado el ícono de la aplicación para abrir los chats recientes directamente\n• Ahorre tráfico: Descargue archivos grandes según sea necesario\n• Ahorre tiempo: invitación de códigos QR más rápidas, sin bloqueo y nuevas opciones de códigos QR\n\nMás en 👉</string>
     <string name="update_1_24_ios">1.24 de forma resumida:\n\n• Inicie una búsqueda en el chat desde el perfil del chat\n• Ahorre tráfico: Descargue archivos grandes según sea necesario\n• Ahorre tiempo: invitación de códigos QR más rápidas y sin bloqueo\n\nMás en 👉</string>
     <string name="update_1_26">1.26 pulido 💅\n\n• Después de hacer que los códigos QR funcionen más rápido en 1.24, también se ven mucho mejor ahora, en todas las plataformas\n• Los avatares y las insignias tienen un aspecto similar en todas las plataformas\n• Se corrigieron muchos errores</string>
-</resources>
+    </resources>

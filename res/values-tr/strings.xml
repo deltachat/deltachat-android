@@ -913,4 +913,4 @@
     <string name="update_1_24_android">Bir bakışta 1.24:\n\n• Dokunmaları kaydedin: Sohbet listesinin sol üst köşesinden hesap seçimi\n• Daha fazla dokunmayı kaydedin: Son sohbetleri doğrudan açmak için uygulama simgesine uzun dokunun\n• Akışı kaydedin: Gerektiğinde büyük dosyaları indirin\n• Sinirleri kaydedin: Daha hızlı, engellenmeyen QR kod katılımları ve yeni QR kod seçenekleri\n\nDaha fazlası 👉</string>
     <string name="update_1_24_ios">Bir bakışta 1.24:\n\n• Sohbetin profilinden bir sohbet içi arama başlatın\n• \n• Akışı kaydedin: Gerektiğinde büyük dosyaları indirin\n• Sinirleri kaydedin: Daha hızlı, engellenmeyen QR kod katılımları\n\nDaha fazlası 👉</string>
     <string name="update_1_26">1.26\'dan öne çıkanlar 💅\n\n• 1.24\'te QR kodları engelsiz yaptıktan sonra, artık daha güzel görünüyorlar - tüm platformlarda\n• Avatarlar ve rozetler, platform genelinde benzer görünüyor\n• Hataların çoğu düzeltildi</string>
-</resources>
+    </resources>

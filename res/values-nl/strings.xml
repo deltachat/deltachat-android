@@ -607,6 +607,8 @@
     <string name="pref_send_copy_to_self">Kopie versturen naar mijzelf</string>
     <string name="pref_auto_folder_moves">Automatisch verplaatsen naar DeltaChat-map</string>
     <string name="pref_auto_folder_moves_explain">Gesprekken worden verplaatst om je Postvak IN netjes te houden</string>
+    <string name="pref_only_fetch_mvbox_title">Alleen DeltaChat-map controleren</string>
+    <string name="pref_only_fetch_mvbox_explain">Negeer andere mappen. Hiervoor is vereist dat je server gesprekken kan verplaatsen naar de DeltaChat-map.</string>
     <string name="pref_show_emails">Klassieke e-mails tonen</string>
     <string name="pref_show_emails_no">Nee, alleen gesprekken</string>
     <string name="pref_show_emails_accepted_contacts">Van goedgekeurde contactpersonen</string>
@@ -911,4 +913,4 @@
     <string name="update_1_24_android">1.24 samengevat:\n\n• Bespaar moeite: accountkeuze zit nu links bovenaan de gesprekslijst\n• Bespaar nóg meer moeite: houd het app-pictogram lang ingedrukt om recente gesprekken direct te openen\n• Bespaar data: download grote bestanden alléén indien nodig\n• Bespaar frustratie: snellere, niet-in-de-weg-zittende QR-codes en nieuwe QR-code-opties\n\nMeer informatie is te vinden op 👉</string>
     <string name="update_1_24_ios">1.24 samengevat:\n\n• Doorzoek gesprekken vanuit profielen\n• Bespaar data: download grote bestanden alléén indien nodig\n• Bespaar frustratie: snellere, niet-in-de-weg-zittende QR-codes en nieuwe QR-code-opties\n\nMeer informatie 👉</string>
     <string name="update_1_26">1.26 oppoetsen 💅\n\n• Sinds 1.24 zitten QR-codes niet langer in de weg, maar sinds deze versie zien ze er ook nog eens beter uit - op alle ondersteunde systemen!\n• Profielfoto\'s en tellers zien er nu overal hetzelfde uit\n• Heel veel bugs opgelost</string>
-</resources>
+    </resources>

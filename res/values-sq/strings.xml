@@ -910,4 +910,4 @@
     <string name="update_1_24_android">1.24 me një vështrim:\n\n• Ruani prekje: Përzgjedhje llogarish te cepi i sipërm majtas i listës së fjalosjeve\n• Ruani më tepër prekje: Prekeni gjatë ikonën e aplikacionit që të hapen drejtpërsëdrejti fjalosje së fundi\n• Ruani trafik: Shkarkoni kartela të mëdha, sipas nevojës\n• Kurseni nervat: hyrje më të shpejta jo bllokuese, me kod QR dhe mundësi të reja kodi QR\n\nMë tepër te 👉</string>
     <string name="update_1_24_ios">1.24 me një vështrim:\n\n• Filloni një kërkim brenda fjalosjeje, që prej profilit të fjalosjes\n• Ruani trafik: Shkarkoni kartela të mëdha, sipas nevojës\n• Kurseni nervat: hyrje më të shpejta jo bllokuese, me kod QR dhe mundësi të reja kodi QR\n\nMë tepër te 👉</string>
     <string name="update_1_26">1.26 po lustrohen 💅\n\n• Pasi kodet QR u bënë jo bllokues, në 1.24, tani ata duken shumë të hijshëm - në krejt platformat\n• Avatarët dhe stemat duken të ngjashëm nëpër platforma të ndryshme\n• Plot ndreqje të metash</string>
-</resources>
+    </resources>
