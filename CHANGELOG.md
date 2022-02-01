@@ -1,5 +1,25 @@
 # Delta Chat Android Changelog
 
+## 1.28.0
+2022-01
+
+* add option "Advanced / Only Fetch from DeltaChat Folder";
+  this is useful if you can configure your server to move chat messages to the DeltaChat folder
+* to safe traffic and connections, "Advanced / Watch Sent Folder" is disabled by default;
+  as all other IMAP folders, the folder is still checked on a regular base
+* fix: use webxdc name in chatlist, quotes and drafts
+* fix splitting off text from webxdc messages
+* fix: show correct webxdc summary on drafts
+* fix: speed up folder scanning
+* fix: make it possible to cancel message sending by removing the message;
+  this was temporarily impossible since 1.27.0
+* fix: avoid endless reconnection loop
+* fix display of qr-group-invite code text
+* update translations
+* update provider-database
+* update to core74
+
+
 ## 1.27.2
 2022-01
 
