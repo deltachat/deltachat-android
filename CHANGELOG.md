@@ -17,7 +17,7 @@
 * fix display of qr-group-invite code text
 * update translations
 * update provider-database
-* update to core74
+* update to core75
 
 
 ## 1.27.2
