@@ -1,15 +1,15 @@
 # Delta Chat Android Changelog
 
-## 1.28.0
+## v1.28.0
 2022-01
 
 * add option "Advanced / Only Fetch from DeltaChat Folder";
   this is useful if you can configure your server to move chat messages to the DeltaChat folder
 * to safe traffic and connections, "Advanced / Watch Sent Folder" is disabled by default;
   as all other IMAP folders, the folder is still checked on a regular base
-* fix: use webxdc name in chatlist, quotes and drafts
-* fix splitting off text from webxdc messages
-* fix: show correct webxdc summary on drafts
+* fix: use Webxdc name in chatlist, quotes and drafts
+* fix splitting off text from Webxdc messages
+* fix: show correct Webxdc summary on drafts
 * fix: speed up folder scanning
 * fix: make it possible to cancel message sending by removing the message;
   this was temporarily impossible since 1.27.0
@@ -20,29 +20,29 @@
 * update to core75
 
 
-## 1.27.2
+## v1.27.2 Testrun Release
 2022-01
 
-* improve webxdc bubble layout
-* async webxdc api and reworked webxdc properties
-* fix: do not share cached files between xdc's
-* fix: do not force dark mode for webxdc and html-messages
+* improve Webxdc bubble layout
+* async Webxdc API and reworked Webxdc properties
+* fix: do not share cached files between Webxdc's
+* fix: do not force dark mode for Webxdc and HTML-messages
 
 
-## 1.27.1
+## v1.27.1 Testrun Release
 2022-01
 
 * fix backup import issue introduced in 1.27.0
 * update to core72
 
 
-## v1.27.0
+## v1.27.0 Testrun Release
 2022-01
 
 * add option to create encrypted database at "Add Account / Advanced",
   the database passphrase is generated automatically and is stored in the system's keychain,
   subsequent versions will probably get more options to handle passphrases
-* add initial support for Webxdc extensions
+* add experimental support for Webxdc extensions
 * add "Advanced / Developer Mode" to help on creating Webxdc extensions
 * add writing support for supported mailinglist types; other mailinglist types stay read-only
 * "Message Info" show routes
