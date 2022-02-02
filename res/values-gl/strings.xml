@@ -379,6 +379,12 @@
     <string name="mailing_list">Lista de correo</string>
     <string name="mailing_list_profile_info">Cambios no nome da lista de correo e imaxe só se aplican neste dispositivo.</string>
 
+    <!-- webxdc -->
+    <!-- "Start..." button for an app -->
+    <string name="start_app">Comezar...</string>
+    <!-- this is a warning that is shown when one tries to send something to a chat that is not yet accepted. -->
+    <string name="accept_request_first">Primeiro acepta a solicitude de conversa.</string>
+
     <!-- map -->
     <string name="filter_map_on_time">Mostrar localizacións no marco temporal</string>
     <string name="show_location_traces">Mostrar trazas</string>
@@ -601,6 +607,8 @@
     <string name="pref_send_copy_to_self">Enviar copia a ti mesmo</string>
     <string name="pref_auto_folder_moves">Mover automáticamente ao cartafol DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">As conversas móvense do cartafol de Entrada para evitar saturalo.</string>
+    <string name="pref_only_fetch_mvbox_title">Obter só desde cartafol DeltaChat</string>
+    <string name="pref_only_fetch_mvbox_explain">Ignorar outros cartafoles. Require que o teu servidor mova as mensaxes de chat ao cartafol DeltaChat.</string>
     <string name="pref_show_emails">Mostrar correos clásicos</string>
     <string name="pref_show_emails_no">Non, só conversas</string>
     <string name="pref_show_emails_accepted_contacts">Para os contactos aceptados</string>
@@ -905,4 +913,7 @@
     <string name="update_1_24_android">1.24 dunha ollada:\n\n• Aforra toques: Selección de conta no canto superior esquerdo na lista de chats\n• Aforra máis toques: Presión longa na icona da app para abrir chats recentes\n• Aforra datos: Descarga ficheiros grandes baixo demanda\n• Por tranquilidade: únete con códigos QR sen bloqueos e máis rápido e novas opcións para os códigos QR\n\nMáis en 👉</string>
     <string name="update_1_24_ios">1.24 dunha ollada:\n\n• Fai unha busca no chat desde o perfil do chat\n• Aforra datos: Descarga ficheiros grandes baixo demanda\n• Por tranquilidade: únete con códigos QR sen bloqueo e máis rápido\n\nMáis en 👉</string>
     <string name="update_1_26">1.26 embelecido 💅\n\n• Tras facer que os códigos QR non bloqueasen a 1.24, agora son moito máis bonitos - en tódalas plataformas\n• Os avatares e insignias teñen aspecto máis homoxéneo en tódalas plataformas\n• Arranxamos moitos pequenos fallos</string>
-    </resources>
+    <string name="update_1_28_android">Destacado en 1.28:\n\n🔒 Cifrado: unha nova opción experimental para gardar contactos, chaves de cifrado e mensaxes de texto cifrados no teu dispositivo. Só dispoñible cando creas a conta e importas ficheiros de copia de apoio.\n\n📫 Escribir a listas de correo\n\n💫 Configuración inicial máis rápida para servidores de email e opcións de rede simplificadas para evitar problemas de configuración\n\n🐜Mais un looooote de problemiñas que as usuarias nos comentaron</string>
+    <string name="update_1_28_ios_extra_line">...e podes elexir o tapiz en \"Axustes / Fondo\" :)</string>
+
+</resources>

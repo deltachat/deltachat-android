@@ -153,6 +153,8 @@
     <string name="contact">Kontakt</string>
     <string name="verified_contact">Zweryfikowany kontakt</string>
     <string name="camera">Kamera</string>
+    <!-- "capture" here means "start a video recording" or "take a photo"; eg. the description of the "shutter button" in the camera controls -->
+    <string name="capture">Zrób to</string>
     <string name="switch_camera">Przełącz kamerę</string>
     <string name="toggle_fullscreen">Przełącz na tryb pełnoekranowy</string>
     <string name="location">Lokalizacja</string>
@@ -267,6 +269,8 @@
     <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
     <string name="unpin">Odepnij</string>
     <string name="ConversationFragment_quoted_message_not_found">Nie znaleziono oryginalnej wiadomości</string>
+    <string name="reply_privately">Odpowiedz prywatnie </string>
+
     <string name="mute_for_one_hour">Wyłącz na 1 godzinę</string>
     <string name="mute_for_two_hours">Wyłącz na 2 godziny</string>
     <string name="mute_for_one_day">Wyłącz na 1 dzień</string>
@@ -402,6 +406,9 @@
     <!-- mailing lists -->
     <string name="mailing_list">Lista mailingowa</string>
     <string name="mailing_list_profile_info">Zmiany nazwy i obrazu listy adresowej dotyczą tylko tego urządzenia.</string>
+
+    <!-- this is a warning that is shown when one tries to send something to a chat that is not yet accepted. -->
+    <string name="accept_request_first">Najpierw zaakceptuj prośbę o czat.</string>
 
     <!-- map -->
     <string name="filter_map_on_time">Pokaż lokalizacje w ramach czasowych</string>
@@ -625,12 +632,16 @@
     <string name="pref_send_copy_to_self">Wyślij kopię do siebie</string>
     <string name="pref_auto_folder_moves">Automatyczne przenoszenie do folderu DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">Rozmowy na czacie są przenoszone, aby nie zaśmiecać folderu Skrzynka odbiorcza</string>
+    <string name="pref_only_fetch_mvbox_title">Pobieraj tylko z folderu DeltaChat</string>
+    <string name="pref_only_fetch_mvbox_explain">Zignoruj inne foldery. Wymaga, aby twój serwer przenosił wiadomości czatu do folderu DeltaChat.</string>
     <string name="pref_show_emails">Pokaż klasyczne e-maile</string>
     <string name="pref_show_emails_no">Nie, tylko czaty</string>
     <string name="pref_show_emails_accepted_contacts">Dla zaakceptowanych kontaktów</string>
     <string name="pref_show_emails_all">Wszystkie</string>
     <string name="pref_experimental_features">Funkcje eksperymentalne</string>
     <string name="pref_on_demand_location_streaming">Przesyłanie strumieniowe lokalizacji na żądanie</string>
+    <string name="pref_developer_mode">Tryb programisty</string>
+    <string name="pref_developer_mode_explain">Aktywuje opcje debugowania i może spowodować, że aplikacja będzie mniej stabilna. Tylko dla programistów.</string>
     <string name="pref_background_default">Domyślne tło</string>
     <string name="pref_background_default_color">Domyślny kolor</string>
     <string name="pref_background_custom_image">Własny obraz</string>
@@ -923,4 +934,7 @@
     <string name="update_1_24_android">1.24 w skrócie:\n\n• Zapisywanie dotknięć: wybór konta w lewym górnym rogu listy czatu\n• Zapisywanie kolejnych dotknięć: dotknij i przytrzymaj ikony aplikacji, aby bezpośrednio otwierać ostatnie czaty\n• Oszczędzaj transfer: pobierz duże pliki w razie potrzeby\n• Oszczędzaj nerwy: szybsze, nieblokujące dołączanie za pomocą kodów QR i nowe opcje kodów QR\n\nWięcej na 👉</string>
     <string name="update_1_24_ios">1.24 w skrócie:\n\n• Rozpocznij wyszukiwanie na czacie z profilu czatu\n• Oszczędzaj transfer: pobierz duże pliki w razie potrzeby\n• Oszczędzaj nerwy: szybsze, nieblokujące dołączanie za pomocą kodów QR \n\nWięcej na 👉</string>
     <string name="update_1_26">1.26 dopracowanie 💅\n\n• Po tym jak w 1.24 kody QR przestały się blokować, teraz również wyglądają dużo ładniej - na wszystkich platformach\n• Awatary i plakietki wyglądają podobnie na różnych platformach\n• Naprawiono wiele błędów</string>
-    </resources>
+    <string name="update_1_28_android">1.28 Najważniejsze informacje:\n\n🔒 Szyfrowanie: Nowa eksperymentalna opcja do utrzymywania kontaktów, szyfrowania sekretnych i tekstowych wiadomości zaszyfrowanych na twoim urządzeniu. Dostępne tylko podczas tworzenia konta i importowania plików kopii zapasowych.\n\n📫 Zapisywanie do listy dyskusyjnej\n\n💫 Szybsza konfiguracja początkowa dla większej liczby serwerów e-mail i usprawnionych opcji sieciowych, aby zapobiec przypadkowej błędnej konfiguracji\n\n🐜 Prawdopodobnie naprawione zgłaszane przez użytkownika problemy</string>
+    <string name="update_1_28_ios_extra_line">… i już teraz możesz wybrać tapetę w „Ustawienia » Tło” :) </string>
+
+</resources>

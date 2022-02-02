@@ -916,4 +916,6 @@ Ihr bisheriges E-Mail-Konto wird dabei nicht gelöscht. Sie können mit der Opti
     <string name="update_1_24_ios">1.24 auf einen Blick:\n\n• Starten Sie eine In-Chat-Suche aus dem Chat-Profil heraus\n• Große Dateien nach Bedarf herunterladen\n• Schnellere, nicht-blockierende QR-Code-Scans\n\nMehr unter 👉</string>
     <string name="update_1_26">1.26 aufpoliert 💅\n\n• Nachdem auf QR-Code-Scans seit 1.24 nicht mehr gewartet werden muss, sehen diese nun auch viel schöner aus - und das auf allen Plattformen\n• Gleiches gilt für Avatare und einige andere Elemente\n• Viele Bugs wurden gefixt</string>
     <string name="update_1_28_android">1.28 Highlights:\n\n🔒 Verschlüsselung: Eine neue, experimentelle Option, die Ihre Kontakte und Textnachrichten verschlüsselt auf Ihrem Gerät speichert. Die Option ist bei der Kontoerstellung und beim Import verfügbar.\n\n📫 Auf Mailinglisten schreiben\n\n💫 Schnellere Ersteinrichtung bei mehr E-Mail-Providern und optimierte Netzwerkoptionen, die versehentliche Fehlkonfigurationen vermeiden\n\n🐜 Viele von Benutzern gemeldete Probleme wurden behoben</string>
-    </resources>
+    <string name="update_1_28_ios_extra_line">… und unter \"Einstellungen\" können Sie nun Ihr eigenes Hintergrundbild auswählen :)</string>
+
+</resources>
