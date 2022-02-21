@@ -147,7 +147,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     int eventId = event.getId();
     if ((eventId == DcContext.DC_EVENT_WEBXDC_STATUS_UPDATE && event.getData1Int() == dcAppMsg.getId())) {
       Log.i(TAG, "handleEvent");
-      webView.loadUrl("javascript:window.__webxdcUpdate(" + event.getData2Int() + ");");
+      webView.loadUrl("javascript:window.__webxdcUpdate();");
     }
   }
 
