@@ -1,5 +1,16 @@
 # Delta Chat Android Changelog
 
+## v1.28.2
+
+* faster message moving and deletion on the server
+* parse MS Exchange read receipts and mark the original message as read
+* fix a bug where messages in the Spam folder created contact requests
+* fix a bug where drafts disappeared after some days
+* fix: do not retry message sending infinitely in case of permanent SMTP failure
+* fix: set message state to failed when retry limit is exceeded
+* fix: avoid archived, fresh chats
+* update translations
+
 
 ## v1.28.1
 2022-02
