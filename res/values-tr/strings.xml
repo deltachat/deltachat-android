@@ -596,7 +596,7 @@
     <string name="pref_managekeys_import_explain">Sır anahtarlar \"%1$s\" üzerinden içe aktarılsın mı?\n\n• Varolan sır anahtarlar silinmeyecek\n\n• Son içe aktarılan anahtar, dosya adında \"legacy\" sözcüğü olmadıkça yeni varsayılan anahtar olarak kullanılacak.</string>
     <string name="pref_managekeys_secret_keys_exported_to_x">Sır anahtarlar \"%1$s\" üzerine başarıyla yazıldı.</string>
     <string name="pref_managekeys_secret_keys_imported_from_x">Sır anahtarlar \"%1$s\" üzerinden içe aktarıldı.</string>
-    <string name="pref_background">Arka plan</string>
+    <string name="pref_background">Arka Plan</string>
     <string name="pref_background_btn_default">Varsayılan Görseli Kullan</string>
     <string name="pref_background_btn_gallery">Galeriden Seç</string>
     <string name="pref_imap_folder_handling">IMAP Klasör İşleme</string>
@@ -913,4 +913,7 @@
     <string name="update_1_24_android">Bir bakışta 1.24:\n\n• Dokunmaları kaydedin: Sohbet listesinin sol üst köşesinden hesap seçimi\n• Daha fazla dokunmayı kaydedin: Son sohbetleri doğrudan açmak için uygulama simgesine uzun dokunun\n• Akışı kaydedin: Gerektiğinde büyük dosyaları indirin\n• Sinirleri kaydedin: Daha hızlı, engellenmeyen QR kod katılımları ve yeni QR kod seçenekleri\n\nDaha fazlası 👉</string>
     <string name="update_1_24_ios">Bir bakışta 1.24:\n\n• Sohbetin profilinden bir sohbet içi arama başlatın\n• \n• Akışı kaydedin: Gerektiğinde büyük dosyaları indirin\n• Sinirleri kaydedin: Daha hızlı, engellenmeyen QR kod katılımları\n\nDaha fazlası 👉</string>
     <string name="update_1_26">1.26\'dan öne çıkanlar 💅\n\n• 1.24\'te QR kodları engelsiz yaptıktan sonra, artık daha güzel görünüyorlar - tüm platformlarda\n• Avatarlar ve rozetler, platform genelinde benzer görünüyor\n• Hataların çoğu düzeltildi</string>
-    </resources>
+    <string name="update_1_28_android">1.28 Öne Çıkanlar:\n\n🔒 Şifreleme: Kişilerinizi, şifreleme sırlarınızı ve metin iletilerinizi aygıtınızda şifreli tutmak için yeni bir deneysel seçenek. Yalnızca hesap oluşturma ve yedek dosyaları içe aktarma sırasında kullanılabilir.\n\n📫 Posta listelerine yazma\n\n💫 Daha fazla e-posta sunucusu için daha hızlı ilk kurulum ve kazara yanlış yapılandırmayı önlemek için düzenlenen ağ seçenekleri\n\n🐜 Kullanıcıların raporladığı çoğu sorun çözüldü</string>
+    <string name="update_1_28_ios_extra_line">… ve şimdi \"Ayarlar / Arka Plan\"dan bir duvar kâğıdı seçebilirsiniz :)</string>
+
+</resources>

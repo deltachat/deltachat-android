@@ -172,7 +172,7 @@
     <!-- consider keeping the term "broadcast"; check how these lists are called eg. on whatsapp in the destination language -->
     <string name="broadcast_list">广播列表</string>
     <string name="broadcast_lists">广播列表</string>
-    <string name="new_broadcast_list">新的广播列表</string>
+    <string name="new_broadcast_list">新建广播列表</string>
     <string name="add_recipients">添加收信人</string>
     <string name="menu_send">发送</string>
     <string name="menu_toggle_keyboard">切换 emoji 键盘</string>
@@ -223,7 +223,7 @@
     <string name="menu_edit_name">编辑名称</string>
     <string name="menu_settings">设置</string>
     <string name="menu_advanced">高级</string>
-    <string name="menu_view_profile"> 查看概要</string>
+    <string name="menu_view_profile">查看概要</string>
     <string name="menu_zoom_in">放大</string>
     <string name="menu_zoom_out">缩小</string>
     <string name="menu_save_log">保存日志</string>
@@ -367,7 +367,7 @@
 
     <!-- webxdc -->
     <!-- "Start..." button for an app -->
-    <string name="start_app">启动…</string>
+    <string name="start_app">开始…</string>
     <!-- this is a warning that is shown when one tries to send something to a chat that is not yet accepted. -->
     <string name="accept_request_first">请先接受聊天请求</string>
 
@@ -439,7 +439,7 @@
     <string name="connectivity_connected">已连接</string>
     <string name="sending">发送中…</string>
     <string name="last_msg_sent_successfully">上一条消息发送成功。</string>
-    <string name="not_supported_by_provider">你的邮件供应商不支持</string>
+    <string name="not_supported_by_provider">不被您的邮件提供商支持。</string>
     <!-- Used as a subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed or so. -->
     <string name="messages">消息</string>
     <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
@@ -473,8 +473,8 @@
     <string name="login_socks5_user">SOCKS5 用户名</string>
     <string name="login_socks5_password">SOCKS5 密码</string>
     <!-- Translators: %1$s will be replaced by an e-mail address -->
-    <string name="login_oauth2_checking_addr">检查 %1$s 中</string>
-    <string name="login_info_oauth2_title">使用简化设置继续？</string>
+    <string name="login_oauth2_checking_addr">正在检查 %1$s</string>
+    <string name="login_info_oauth2_title">使用简易设置继续？</string>
     <string name="login_info_oauth2_text">输入的电子邮件地址支持简化设置（OAuth 2.0）。\n\n在下一步中，请允许 Delta Chat 充当您的“通过电子邮件聊天”应用程序。\n\n不存在 Delta Chat 服务器，您的数据保留于您的设备！</string>
     <string name="login_certificate_checks">证书检查</string>
     <string name="login_error_mail">请输入有效的电子邮件地址</string>
@@ -610,9 +610,9 @@
     <string name="export_aborted">导出已中止。</string>
     <string name="auto_download_messages">自动下载消息</string>
     <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB -->
-    <string name="up_to_x">最多 %1$s</string>
-    <string name="up_to_x_most_worse_quality_images">最多 %1$s，分辨率最低的图像</string>
-    <string name="up_to_x_most_balanced_quality_images">最多 %1$s，分辨率最均衡图像</string>
+    <string name="up_to_x">%1$s 以下</string>
+    <string name="up_to_x_most_worse_quality_images">%1$s 以下，图像质量最差</string>
+    <string name="up_to_x_most_balanced_quality_images">%1$s 以下，图像质量最均衡</string>
     <string name="no_limit">无限制</string>
     <string name="download_failed">下载失败</string>
     <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string eg. "1 MiB message" -->

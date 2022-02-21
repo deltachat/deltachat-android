@@ -345,6 +345,8 @@
         <item quantity="one">%d novas mensagens</item>
         <item quantity="other">%d novas mensagens</item>
     </plurals>
+    <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
+    <string name="chat_new_one_to_one_hint">Envie uma mensagem. Tudo bem se %1$s não usar o Chat Delta.  </string>
     <string name="chat_new_broadcast_hint">Em uma lista de transmissão, as pessoas receberão mensagens em seus bate-papos privados com você.\n\nOs destinatários não saberão uns dos outros. </string>
     <string name="chat_new_group_hint">Compor a primeira mensagem habilitará os participantes a ingressar no grupo.\n\n• Não tem problema se nem todos usarem o Delta Chat.\n\n• O envio da primeira mensagem pode demorar.</string>
     <string name="chat_record_slide_to_cancel">Deslize para cancelar</string>
@@ -376,6 +378,12 @@
     <!-- mailing lists -->
     <string name="mailing_list">Lista de e-mail</string>
     <string name="mailing_list_profile_info">Alterações ao nome e imagem da lista de e-mails só se aplicam a este dispositivo.</string>
+
+    <!-- webxdc -->
+    <!-- "Start..." button for an app -->
+    <string name="start_app">Iniciar...</string>
+    <!-- this is a warning that is shown when one tries to send something to a chat that is not yet accepted. -->
+    <string name="accept_request_first">Por favor, aceite o pedido de bate-papo primeiro.</string>
 
     <!-- map -->
     <string name="filter_map_on_time">Exibir localização no tempo.</string>
@@ -599,12 +607,16 @@
     <string name="pref_send_copy_to_self">Enviar cópia para mim</string>
     <string name="pref_auto_folder_moves">Mover automaticamente para a pasta DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">Conversas serão movidas para evitar desordem na caixa de entrada</string>
+    <string name="pref_only_fetch_mvbox_title">Apenas pegar da pasta DeltaChat</string>
+    <string name="pref_only_fetch_mvbox_explain">Ignore outras pastas. Requer que seu servidor mova mensagens de bate-papo para a pasta DeltaChat. </string>
     <string name="pref_show_emails">Exibir e-mails normais</string>
     <string name="pref_show_emails_no">Não, somente conversas</string>
     <string name="pref_show_emails_accepted_contacts">Para contatos aceitos</string>
     <string name="pref_show_emails_all">Todos</string>
     <string name="pref_experimental_features">Recursos experimentais</string>
     <string name="pref_on_demand_location_streaming">Streaming de localização sob demanda</string>
+    <string name="pref_developer_mode">Modo de Desenvolvedor</string>
+    <string name="pref_developer_mode_explain">Ativa as opções de depuração e pode tornar o aplicativo menos estável. Apenas para desenvolvedores.</string>
     <string name="pref_background_default">Fundo padrão</string>
     <string name="pref_background_default_color">Cor padrão</string>
     <string name="pref_background_custom_image">Imagem personalizada</string>
@@ -901,4 +913,7 @@
     <string name="update_1_24_android">1.24 em resumo:\n\n• Lembre de toques: seleção de conta no canto superior esquerdo da lista de bate-papo\n• Lembre mais toques: toque longo no ícone do aplicativo para abrir os bate-papos recentes diretamente\n• Economize tráfego: faça download grande arquivos conforme necessário\n• Não fique nervoso: uso de código QR mais rápido e sem bloqueio e novas opções de código QR\n\nMais em 👉</string>
     <string name="update_1_24_ios">1.24 em resumo:\n\n• Inicie uma pesquisa no bate-papo a partir do perfil do bate-papo\n• Economize tráfego: baixe arquivos grandes conforme necessário\n• Não fique nervoso: uso de código QR mais rápido e não bloqueante\n\nMais em 👉</string>
     <string name="update_1_26">Polimentos na 1.26 💅\n\n• Depois de tornar os códigos QR não bloqueadores na 1.24, eles também estão muito melhores agora - em todas as plataformas\n• Avatares e emblemas parecem semelhantes em todas as plataformas\n• Muitos bugs corrigidos</string>
-    </resources>
+    <string name="update_1_28_android">Destaques da 1.28:\n\n🔒 Criptografia: uma nova opção experimental para manter seus contatos, segredos de criptografia e mensagens de texto criptografadas em seu dispositivo. Disponível apenas na criação de conta e importação de arquivos de backup.\n\n📫 Escrever para lista de e-mails\n\n💫 Configuração inicial mais rápida para mais servidores de e-mail e opções de rede simplificadas para evitar configurações incorretas acidentais\n\n🐜 Muuuuuuitos problemas relatados por usuários corrigidos</string>
+    <string name="update_1_28_ios_extra_line">… e você pode selecionar um papel de parede em \"Configurações / Papel de Parede\" agora :)</string>
+
+</resources>
