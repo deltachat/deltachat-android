@@ -1,6 +1,6 @@
 # Delta Chat Android Changelog
 
-## v1.28.2
+## v1.28.3
 
 * faster message moving and deletion on the server
 * parse MS Exchange read receipts and mark the original message as read
