@@ -22,7 +22,7 @@ window.webxdc = (() => {
 
     // deprecated 2022-02-20 all updates are returned through the callback set by setUpdateListener
     getAllUpdates: () => {
-      return [];
+      return Promise.resolve([]);
     },
 
     sendUpdate: (payload, descr) => {
