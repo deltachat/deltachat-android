@@ -182,9 +182,9 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     }
 
     @JavascriptInterface
-    public String getStatusUpdates(int statusUpdateId) {
+    public String getStatusUpdates(int lastKnownSerial) {
       Log.i(TAG, "getStatusUpdates");
-      return WebxdcActivity.this.dcContext.getWebxdcStatusUpdates(WebxdcActivity.this.dcAppMsg.getId(), statusUpdateId);
+      return WebxdcActivity.this.dcContext.getWebxdcStatusUpdates(WebxdcActivity.this.dcAppMsg.getId(), lastKnownSerial    );
     }
   }
 }
