@@ -199,7 +199,7 @@ public class DcContext {
     public native int          sendTextMsg          (int chat_id, String text);
     public native int          sendVideochatInvitation(int chat_id);
     public native boolean      sendWebxdcStatusUpdate(int msg_id, String payload, String descr);
-    public native String       getWebxdcStatusUpdates(int msg_id, int status_update_id);
+    public native String       getWebxdcStatusUpdates(int msg_id, int last_known_serial);
     public native int          addDeviceMsg         (String label, DcMsg msg);
     public native boolean      wasDeviceMsgEverAdded(String label);
     public DcLot               checkQr              (String qr) { return new DcLot(checkQrCPtr(qr)); }

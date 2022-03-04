@@ -749,9 +749,9 @@ JNIEXPORT jboolean Java_com_b44t_messenger_DcContext_sendWebxdcStatusUpdate(JNIE
 }
 
 
-JNIEXPORT jstring Java_com_b44t_messenger_DcContext_getWebxdcStatusUpdates(JNIEnv *env, jobject obj, jint msg_id, jint status_update_id)
+JNIEXPORT jstring Java_com_b44t_messenger_DcContext_getWebxdcStatusUpdates(JNIEnv *env, jobject obj, jint msg_id, jint last_known_serial)
 {
-    char* temp = dc_get_webxdc_status_updates(get_dc_context(env, obj), msg_id, status_update_id);
+    char* temp = dc_get_webxdc_status_updates(get_dc_context(env, obj), msg_id, last_known_serial);
         jstring ret = JSTRING_NEW(temp);
     dc_str_unref(temp);
     return ret;
