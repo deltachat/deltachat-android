@@ -70,13 +70,15 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     webSettings.setGeolocationEnabled(false);
     webSettings.setAllowFileAccessFromFileURLs(false);
     webSettings.setAllowUniversalAccessFromFileURLs(false);
+    webSettings.setDatabaseEnabled(true);
+    webSettings.setDomStorageEnabled(true);
     webView.addJavascriptInterface(new InternalJSApi(), "InternalJSApi");
 
     // `msg_id` in the subdomain makes sure, different apps using same files do not share the same cache entry
     // (WebView may use a global cache shared across objects).
     // (a random-id would also work, but would need maintenance and does not add benefits as we regard the file-part interceptRequest() only,
     // also a random-id is not that useful for debugging)
-    webView.loadUrl("webxdc://msg" + appMessageId + ".localhost/index.html");
+    webView.loadUrl("https://msg" + appMessageId + ".localhost/index.html");
 
     Util.runOnAnyBackgroundThread(() -> {
       JSONObject info = this.dcAppMsg.getWebxdcInfo();
