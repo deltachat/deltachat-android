@@ -1,5 +1,10 @@
 # Delta Chat Android Changelog
 
+## Unreleased
+
+* add finnish translation
+
+
 ## v1.28.3
 
 * faster message moving and deletion on the server

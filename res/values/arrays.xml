@@ -31,6 +31,7 @@
       <!-- sc     Sardinian -->              <item>Sardu</item>
       <!-- sq     Albanian -->               <item>Shqip</item>
       <!-- sk     Slovak -->                 <item>Slovenčina</item>
+      <!-- fi     Finnish -->                <item>Suomi</item>
       <!-- sv     Swedish -->                <item>Svenska</item>
       <!-- tr     Turkish -->                <item>Türkçe</item>
       <!-- ru     Russian -->                <item>Pусский</item>
@@ -75,6 +76,7 @@
       <item>sc</item>
       <item>sq</item>
       <item>sk</item>
+      <item>fi</item>
       <item>sv</item>
       <item>tr</item>
       <item>ru</item>

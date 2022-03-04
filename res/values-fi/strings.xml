@@ -1,0 +1,919 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- common strings without special context -->
+    <string name="app_name">Delta Chat</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Peruuta</string>
+    <string name="clear_search">Tyhjennä haku</string>
+    <string name="yes">Kyllä</string>
+    <string name="no">Ei</string>
+    <string name="select">Valitse</string>
+    <string name="on">Päällä</string>
+    <string name="off">Pois</string>
+    <string name="def">Oletus</string>
+    <string name="default_value">Oletus (%1$s)</string>
+    <string name="default_value_as_above">Oletus (sama kuin yllä)</string>
+    <string name="custom">Mukautettu</string>
+    <string name="none">Ei mitään</string>
+    <string name="automatic">Automaattinen</string>
+    <string name="strict">Tiukka</string>
+    <string name="open">Avoin</string>
+    <string name="download">Lataa</string>
+    <string name="downloading">Ladataan</string>
+    <string name="open_attachment">Avaa liite</string>
+    <string name="join">Liity</string>
+    <string name="rejoin">Liity uudelleen</string>
+    <string name="delete">Poista</string>
+    <string name="info">Lisätietoja</string>
+    <string name="update">Päivitä</string>
+    <string name="emoji">Emoji</string>
+    <string name="attachment">Liite</string>
+    <string name="back">Takaisin</string>
+    <string name="close">Sulje</string>
+    <string name="forward">Eteenpäin</string>
+    <!-- In the meaning of "To archive", "Put a chat to the archive". This string does not mean "The Archive". -->
+    <string name="archive">Arkistoi</string>
+    <!-- In the meaning of "To unarchive", "Remove a chat from the archive", opposite of the previous string -->
+    <string name="unarchive">Poista arkistosta</string>
+    <string name="mute">Mykistä</string>
+    <string name="ephemeral_messages">Katoavat viestit</string>
+    <string name="ephemeral_messages_hint">Nämä asetukset pätevät kaikkiin Delta Chat -käyttäjiin. He voivat kuitenkin kopioida, tallentaa ja välittää viestejä tai käyttää toisia sähköpostisovelluksia.</string>
+    <string name="save">Tallenna</string>
+    <string name="chat">Keskustelu</string>
+    <string name="media">Media</string>
+    <string name="profile">Profiili</string>
+    <string name="main_menu">Päävalikko</string>
+    <string name="start_chat">Aloita keskustelu</string>
+    <string name="show_full_message">Näytä koko viesti...</string>
+    <string name="show_full_message_in_browser">Näytä koko viesti selaimessa...</string>
+    <!-- this is shown as placeholder when something is loading at some places -->
+    <string name="loading">Ladataan...</string>
+    <string name="hide">Piilota</string>
+    <string name="activate">Aktivoi</string>
+    <string name="load_remote_content">Lataa etäkuvat</string>
+    <!-- possible answers to the question are: Never, Always, Once -->
+    <string name="load_remote_content_ask">Etäkuvien avulla sinua voidaan seurata.\n\nAsetus mahdollistaa myös fonttien ja muun sisällön lataamisen. Voit nähdä upotettuja kuvia, vaikka asetus olisi pois.\n\nLataa etäkuvat?</string>
+    <string name="always">Aina</string>
+    <string name="once">Kerran</string>
+    <string name="show_password">Näytä salasana</string>
+    <string name="hide_password">Piilota salasana</string>
+    <string name="not_now">Ei nyt</string>
+    <string name="never">Ei koskaan</string>
+    <string name="one_moment">Hetki...</string>
+    <string name="done">Valmis</string>
+    <string name="undo">Peru</string>
+    <string name="offline">Ei verkkoyhteyttä</string>
+    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in iOS headers, the string should be as short as possible, though. -->
+    <string name="next">Seuraava</string>
+    <string name="error">Virhe</string>
+    <string name="error_x">Virhe: %1$s</string>
+    <string name="no_app_to_handle_data">Tiedoston avaamiseen sopivaa sovellusta ei löydetty.</string>
+    <string name="no_browser_installed">Selainta ei asennettu.</string>
+    <string name="file_not_found">%1$s ei löytynyt. </string>
+    <string name="copied_to_clipboard">Kopioitu leikepöydälle</string>
+    <string name="contacts_headline">Yhteystiedot</string>
+    <string name="email_address">Sähköpostiosoite</string>
+    <string name="bad_email_address">Virheellinen sähköpostiosoite</string>
+    <string name="password">Salasana</string>
+    <string name="existing_password">Vanha salasana</string>
+    <string name="now">Heti</string>
+    <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
+    <string name="danger">Varoitus</string>
+    <string name="today">Tänään</string>
+    <string name="yesterday">Eilen</string>
+    <string name="this_week">Tällä viikolla</string>
+    <string name="this_month">Tässä kuussa</string>
+    <string name="last_week">Viime viikolla</string>
+    <string name="last_month">Viime kuussa</string>
+    <!-- the placeholder will be replaced by a date or time, resulting eg. in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
+    <string name="last_seen_at">Nähty viimeksi %1$s</string>
+    <string name="last_seen_unknown">Nähty viimeksi: ei tiedossa</string>
+    <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
+    <plurals name="n_minutes">
+        <item quantity="one">%d minuutti</item>
+        <item quantity="other">%d minuuttia</item>
+    </plurals>
+    <!-- Translators: show beside messages that are "N hours old". prefer a short string, prefer abbreviations if they're well-known -->
+    <plurals name="n_hours">
+        <item quantity="one">%d tunti</item>
+        <item quantity="other">%d tuntia</item>
+    </plurals>
+    <plurals name="n_chats">
+        <item quantity="one">%d keskustelu</item>
+        <item quantity="other">%d keskustelua</item>
+    </plurals>
+    <plurals name="n_contacts">
+        <item quantity="one">%d yhteystieto</item>
+        <item quantity="other">%d yhteystietoa</item>
+    </plurals>
+    <plurals name="n_messages">
+        <item quantity="one">%d viesti</item>
+        <item quantity="other">%d viestiä</item>
+    </plurals>
+    <plurals name="n_members">
+        <item quantity="one">%d jäsen</item>
+        <item quantity="other">%d jäsentä</item>
+    </plurals>
+    <plurals name="n_recipients">
+        <item quantity="one">%d vastaanottaja</item>
+        <item quantity="other">%d vastaanottajaa</item>
+    </plurals>
+
+    <string name="self">Minä</string>
+    <string name="draft">Luonnos</string>
+    <string name="image">Kuva</string>
+    <!-- Translators: Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
+    <string name="reply_noun">Vastaus</string>
+    <string name="gif">Gif</string>
+    <!-- "Stickers" as known from other messengers, please pick up the wording from there; in some languages, "Sticker" in english is just fine. -->
+    <string name="sticker">Tarra</string>
+    <string name="images">Kuvat</string>
+    <string name="audio">Äänite</string>
+    <string name="voice_message">Ääniviesti</string>
+    <string name="forwarded">Välitetty</string>
+    <string name="forwarded_message">Välitetty viesti</string>
+    <!-- %1$s will be replaced by the name or the e-mail address of the person who has forwarded the message -->
+    <string name="forwarded_by">Välittäjä: %1$s</string>
+    <string name="video">Video</string>
+    <string name="documents">Asiakirjat</string>
+    <string name="contact">Yhteyshenkilö</string>
+    <string name="verified_contact">Varmistettu yhteyshenkilö</string>
+    <string name="camera">Kamera</string>
+    <!-- "capture" here means "start a video recording" or "take a photo"; eg. the description of the "shutter button" in the camera controls -->
+    <string name="capture">Kuvaa</string>
+    <string name="switch_camera">Vaihda kamera</string>
+    <string name="toggle_fullscreen">Kytke koko näytön tila</string>
+    <string name="location">Sijainti</string>
+    <string name="gallery">Galleria</string>
+    <string name="images_and_videos">Kuvat ja videot</string>
+    <string name="file">Tiedosto</string>
+    <string name="files">Tiedostot</string>
+    <string name="unknown">Tuntematon</string>
+
+    <string name="green">Vihreä</string>
+    <string name="red">Punainen</string>
+    <string name="blue">Sininen</string>
+    <string name="orange">Oranssi</string>
+    <string name="cyan">Sinivihreä</string>
+    <string name="purple">Violetti</string>
+    <string name="magenta">Magenta</string>
+    <string name="white">Valkoinen</string>
+
+    <string name="zoom">Suurennos</string>
+    <string name="extra_small">Erittäin pieni</string>
+    <string name="small">Pieni</string>
+    <string name="normal">Tavallinen</string>
+    <string name="large">Suuri</string>
+    <string name="extra_large">Erittäin suuri</string>
+
+    <string name="fast">Nopea</string>
+    <string name="slow">Hidas</string>
+
+    <!-- menu labels (or icon, buttons...) -->
+    <string name="menu_new_contact">Uusi yhteystieto</string>
+    <string name="menu_new_chat">Uusi keskustelu</string>
+    <string name="menu_new_group">Uusi ryhmä</string>
+    <!-- "Subject" here must be the same wording as used in the e-mail context, so. eg. "Betreff" in german (the idea is to help people coming from the e-mail context) -->
+    <string name="new_group_or_subject">Uusi ryhmä tai aihe</string>
+    <string name="menu_new_verified_group">Uusi varmistettu ryhmä</string>
+    <!-- consider keeping the term "broadcast"; check how these lists are called eg. on whatsapp in the destination language -->
+    <string name="broadcast_list">Kuulutuslista</string>
+    <string name="broadcast_lists">Kuulutuslistat</string>
+    <string name="new_broadcast_list">Uusi kuulutuslista</string>
+    <string name="add_recipients">Lisää vastaanottajia</string>
+    <string name="menu_send">Lähetä</string>
+    <string name="menu_toggle_keyboard">Näytä emoji-näppäimistö</string>
+    <string name="menu_edit_group">Muokkaa ryhmä</string>
+    <string name="menu_group_name_and_image">Ryhmän nimi ja kuva</string>
+    <string name="menu_show_map">Näytä kartta</string>
+    <string name="menu_show_global_map">Näytä kaikki sijainnit</string>
+    <string name="menu_archive_chat">Arkistoi keskustelu</string>
+    <string name="menu_unarchive_chat">Siirrä keskustelu pois arkistosta</string>
+    <string name="menu_add_attachment">Lisää liite</string>
+    <string name="menu_leave_group">Poistu ryhmästä</string>
+    <string name="menu_delete_chat">Poista keskustelu</string>
+    <string name="ask_delete_named_chat">Haluatko varmasti poistaa \"%1$s\"?</string>
+    <string name="menu_delete_messages">Poista viestit</string>
+    <string name="delete_contact">Poista yhteystieto</string>
+    <string name="menu_delete_location">Poista tämä sijainti?</string>
+    <string name="menu_message_details">Viestin tiedot</string>
+    <string name="menu_copy_to_clipboard">Kopioi leikepöydälle</string>
+    <string name="menu_copy_selection_to_clipboard">Kopioi valinta</string>
+    <string name="menu_copy_link_to_clipboard">Kopioi linkki</string>
+    <string name="menu_copy_text_to_clipboard">Kopioi teksti</string>
+    <string name="menu_copy_image_to_clipboard">Kopioi kuva</string>
+    <string name="menu_copy_email_to_clipboard">Kopioi sähköpostiosoite</string>
+    <string name="paste_from_clipboard">Liitä leikepöydältä</string>
+    <string name="menu_forward">Välitä viesti</string>
+    <string name="menu_reply">Vastaa viestiin</string>
+    <string name="menu_mute">Mykistä ilmoitukset</string>
+    <string name="menu_unmute">Poista mykistys</string>
+    <string name="menu_export_attachment">Vie liite</string>
+    <string name="menu_export_attachments">Vie liitteet</string>
+    <string name="menu_all_media">Kaikki media</string>
+    <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
+    <string name="show_in_chat">Näytä keskustelussa</string>
+    <string name="menu_share">Jaa</string>
+    <!-- this is the action "to block sth." usually a mailing list or a contact. this is NOT "a large solid piece of hard material" :) -->
+    <string name="block">Estä</string>
+    <string name="menu_block_contact">Estä yhteystieto</string>
+    <string name="menu_unblock_contact">Salli yhteystieto</string>
+    <string name="accept">Hyväksy</string>
+    <string name="menu_play">Soita</string>
+    <string name="menu_pause">Tauko</string>
+    <string name="menu_scroll_to_bottom">Vieritä alas</string>
+    <string name="menu_scroll_to_top">Vieritä ylös</string>
+    <string name="menu_help">Apua</string>
+    <string name="privacy_policy">Yksityisyyskäytäntö</string>
+    <string name="menu_select_all">Valitse kaikki</string>
+    <string name="select_more">Valitse lisää</string>
+    <string name="menu_edit_name">Muokkaa nimeä</string>
+    <string name="menu_settings">Asetukset</string>
+    <string name="menu_advanced">Edistyneet</string>
+    <string name="menu_view_profile">Näytä profiili</string>
+    <string name="menu_zoom_in">Suurenna</string>
+    <string name="menu_zoom_out">Pienennä</string>
+    <string name="menu_save_log">Tallenna loki</string>
+    <string name="menu_more_options">Lisää asetuksia</string>
+    <string name="menu_learn_spelling">Opi tavaus</string>
+    <string name="menu_chat_audit_log">Keskustelun tarkastusloki</string>
+    <string name="jump_to_message">Siirry viestiin</string>
+    <string name="copy_json">Kopioi JSON</string>
+    <string name="replace_draft">Korvaa luonnos</string>
+    <string name="title_share_location">Jaa sijainti kaikille ryhmän jäsenille</string>
+    <string name="device_talk">Laitteen viestit</string>
+    <string name="device_talk_subtitle">Paikallisesti luodut viestit</string>
+    <string name="device_talk_explain">Viestit tässä keskustelussa luodaan paikallisesti Delta Chat -sovelluksessa. Kehittäjät ilmoittavat niiden avulla sovelluksen päivityksistä ja mahdollisista ongelmista.</string>
+    <string name="device_talk_welcome_message">Tervetuloa Delta Chatiin! – Delta Chat näyttää ja tuntuu samalta kuin suositut pikaviestintäsovellukset, kuitenkin ilman keskitettyä kontrollia, seurantaa tai käyttäjien tietojen myymistä isoille yrityksille.\n\nTeknisesti Delta Chat on sähköpostisovellus nykyaikaisella pikaviestikäyttöliittymällä. Sähköposti uusissa vaatteissa, jos niin voi sanoa 👻\n\nDelta Chat toimii miljardien ihmisten kanssa: lähetä vain viesti heidän sähköpostiosoitteeseensa. Viestien vastaanottajien ei tarvitse asentaa Delta Chatia, käydä nettisivustoilla tai liittyä mihinkään - paitsi jos he haluavat. Silloin voit ohjata heidät osoitteeseen 👉 https://get.delta.chat</string>
+    <string name="edit_contact">Muokkaa yhteystietoa</string>
+    <!-- Translators: "Pin" here is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
+    <string name="pin_chat">Kiinnitä keskustelu</string>
+    <!-- Translators: this is the opposite of "Pin chat", removing the sticky-state from a chat. -->
+    <string name="unpin_chat">Irrota keskustelu</string>
+    <!-- Translators: this is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
+    <string name="pin">Kiinnitä</string>
+    <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
+    <string name="unpin">Irrota</string>
+    <string name="ConversationFragment_quoted_message_not_found">Alkuperäistä viestiä ei löydy</string>
+    <string name="reply_privately">Vastaa yksityisesti</string>
+
+    <string name="mute_for_one_hour">Mykistä 1 tunniksi</string>
+    <string name="mute_for_two_hours">Mykistä 2 tunniksi</string>
+    <string name="mute_for_one_day">Mykistä 1 päiväksi</string>
+    <string name="mute_for_seven_days">Mykistä 7 päiväksi</string>
+    <string name="mute_forever">Mykistä ikuisesti</string>
+
+    <string name="share_location_for_5_minutes">5 minuutiksi</string>
+    <string name="share_location_for_30_minutes">30 minuutiksi</string>
+    <string name="share_location_for_one_hour">1 tunniksi</string>
+    <string name="share_location_for_two_hours">2 tunniksi</string>
+    <string name="share_location_for_six_hours">6 tunniksi</string>
+
+    <plurals name="ask_send_following_n_files_to">
+        <item quantity="one">Lähetä seuraava tiedosto yhteystiedolle%s?</item>
+        <item quantity="other">Lähetä seuraavat %dtiedostot yhteystiedolle%s?</item>
+    </plurals>
+    <string name="file_saved_to">Tiedosto tallennettu \"%1$s\".</string>
+
+    <string name="videochat">Videopuhelu</string>
+    <string name="videochat_invite_user_to_videochat">Kutsu %1$s videokeskusteluun?</string>
+    <string name="videochat_invite_user_hint">Tämä vaatii molemmilta yhteensopivan sovelluksen tai selaimen.</string>
+    <string name="videochat_contact_invited_hint">%1$s kutsui sinut videokeskusteluun.</string>
+    <string name="videochat_you_invited_hint">Lähetit kutsun videokeskusteluun.</string>
+    <string name="videochat_tap_to_join">Napauta liittyäksesi</string>
+    <string name="videochat_tap_to_open">Napauta avataksesi</string>
+    <string name="videochat_instance">Videopuhelun tarjoaja</string>
+    <string name="videochat_instance_placeholder">Videopuhelusi tarjoaja</string>
+    <string name="videochat_instance_explain">Jos videopuhelun tarjoaja määritellään, voit aloittaa videopuhelun mistä tahansa keskustelusta. Videopuhelu vaatii molemmilta yhteensopivan sovelluksen tai selaimen.\n\nEsimerkkejä: https://meet.jit.si/$ROOM tai basicwebrtc:https://sinun-palvelimesi</string>
+    <string name="videochat_instance_from_qr">Käytä \"%1$s\" videopuhelupyyntöihin?\n\nTämän jälkeen voit aloittaa videopuhelun mistä tahansa keskustelusta. Tämä korvaa edellisen videokeskusteluasetuksen, jos sellainen on.</string>
+    <string name="videochat_invitation">Videokeskustelukutsu</string>
+    <string name="videochat_invitation_body">Sinut on kutsuttu videokeskusteluun, klikkaa %1$s liittyäksesi.</string>
+
+    <!-- get confirmations -->
+    <string name="ask_leave_group">Haluatko varmasti poistua tästä ryhmästä?</string>
+    <plurals name="ask_delete_chat">
+        <item quantity="one">Poista %d keskustelu? Se ei enää näy keskustelulistauksessa, mutta sen viestit jäävät palvelimelle.</item>
+        <item quantity="other">Poista %d keskustelua? Ne eivät enää näy keskustelulistauksessa, mutta niiden viestit jäävät palvelimelle.</item>
+    </plurals>
+    <string name="ask_delete_message">Haluatko varmasti poistaa tämän viestin?</string>
+    <plurals name="ask_delete_messages">
+        <item quantity="one">Poista %d viesti täältä ja palvelimelta?</item>
+        <item quantity="other">Poista %d viestiä täältä ja palvelimelta?</item>
+    </plurals>
+    <plurals name="ask_delete_messages_simple">
+        <item quantity="one">Poista %d viesti?</item>
+        <item quantity="other">Poista %d viestiä?</item>
+    </plurals>
+    <string name="ask_forward">Välitä viestit yhteystiedolle %1$s?</string>
+    <string name="ask_forward_multiple">Välitä viestit %1$d keskustelulle?</string>
+    <string name="ask_export_attachment">Liitteiden vieminen antaa muille laitteen sovelluksille mahdollisuuden lukea niitä.\n\nJatka?</string>
+    <string name="ask_block_contact">Estä tämä yhteystieto? Et enää saa viestejä tästä osoitteesta.</string>
+    <string name="ask_unblock_contact">Poista yhteystiedon esto? Saat taas viestejä tältä yhteystiedolta.</string>
+    <string name="ask_delete_contacts">Poista yhteystiedot?\n\nEt voi poistaa yhteystietoja, joiden kanssa sinulla on aktiivinen keskustelu tai jotka on noudettu laitteen osoitekirjasta.</string>
+    <string name="ask_delete_contact">Poista yhteystieto %1$s?\n\nEt voi poistaa yhteystietoja, joiden kanssa sinulla on aktiivinen keskustelu tai jotka on noudettu laitteen osoitekirjasta.</string>
+    <string name="cannot_delete_contacts_in_use">Aktiivisten keskustelujen yhteystietoja ei voi poistaa.</string>
+    <string name="ask_start_chat_with">Aloita keskustelu yhteystiedon %1$s kanssa?</string>
+    <string name="ask_delete_value">Poista %s?</string>
+    <!-- Translators: %1$s will be replaces by a comma separated list of names -->
+    <string name="ask_remove_members">Poista %1$s ryhmästä?</string>
+    <!-- Translators: %1$s will be replaced by a comma separated list of names -->
+    <string name="ask_remove_from_broadcast">Poista %1$s kuulutuslistalta?</string>
+    <string name="open_url_confirmation">Haluatko avata tämän linkin?</string>
+
+
+    <!-- contact list -->
+    <string name="contacts_title">Yhteystiedot</string>
+    <string name="contacts_enter_name_or_email">Anna nimi tai sähköpostiosoite</string>
+    <string name="contacts_type_email_above">Kirjoita sähköpostiosoite ylle</string>
+    <string name="contacts_empty_hint">Ei yhteystietoja</string>
+
+
+    <!-- chatlist and chat view -->
+    <plurals name="chat_archived">
+        <item quantity="one">%d keskustelu arkistoitu</item>
+        <item quantity="other">%d keskustelua arkistoitu</item>
+    </plurals>
+    <plurals name="chat_unarchived">
+        <item quantity="one">%d keskustelu siirretty pois arkistosta</item>
+        <item quantity="other">%d keskustelua siirretty pois arkistosta</item>
+    </plurals>
+    <string name="chat_archived_chats_title">Arkistoidut keskustelut</string>
+    <string name="chat_please_enter_message">Kirjoita viesti.</string>
+    <string name="chat_camera_unavailable">Kamera ei saatavilla.</string>
+    <string name="chat_unable_to_record_audio">Äänen tallentaminen ei onnistu.</string>
+    <plurals name="chat_n_new_messages">
+        <item quantity="one">%d uusi viesti</item>
+        <item quantity="other">%d uutta viestiä</item>
+    </plurals>
+    <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
+    <string name="chat_new_one_to_one_hint">Lähetä viesti. Ei haittaa, vaikka %1$s ei käyttäisi Delta Chatia.</string>
+    <string name="chat_new_broadcast_hint">Kuulutuslistalla olevat saavat viestisi yksityisviesteinä sinulta.\n\nVastaanottajat eivät tiedä toisistaan.</string>
+    <string name="chat_new_group_hint">Muut näkevät ryhmän vasta, kun lähetät ensimmäisen viestin.</string>
+    <string name="chat_record_slide_to_cancel">Pyyhkäise peruuttaaksesi</string>
+    <string name="chat_record_explain">Pidä painettuna nauhoittaaksesi ääniviestin, irrota lähettääksesi</string>
+    <string name="chat_no_chats_yet_title">Saapuneet-kansio on tyhjä\nPaina \"+\" aloittaaksesi uuden keskustelun.</string>
+    <string name="chat_no_chats_yet_hint">Voit keskustella Delta Chat -käyttäjien kanssa tai minkä tahansa sähköpostiosoitteen kanssa.</string>
+    <string name="chat_all_archived">Kaikki keskustelut arkistoitu.\nPaina \"+\" aloittaaksesi uuden keskustelun.</string>
+    <string name="chat_share_with_title">Jaa</string>
+    <string name="chat_input_placeholder">Viesti</string>
+    <string name="chat_archived_label">Arkistoitu</string>
+    <string name="chat_request_label">Pyyntö</string>
+    <string name="chat_no_messages">Ei viestejä</string>
+    <string name="chat_self_talk_subtitle">Viestit, jotka lähetin itselleni</string>
+    <string name="archive_empty_hint">Arkistoimasi keskustelut näkyvät täällä</string>
+    <string name="saved_messages">Tallennetut viestit</string>
+    <string name="saved_messages_explain">• Välitä viestejä tänne helppoa pääsyä varten\n\n• Kirjoita tai äänitä muistiinpanoja\n\n• Liitä mediaa tallentaaksesi ne</string>
+    <!-- this "Saved" should match the "Saved" from "Saved messages" -->
+    <string name="saved">Tallennettu</string>
+    <string name="retry_send">Yritä uudelleen lähettääksesi viestin</string>
+    <!-- reasons for a disabled message composer -->
+    <string name="messaging_disabled_not_in_group">Et voi kirjoittaa, koska et ole ryhmän jäsen. Liittyäksesi pyydä, että joku jäsen liittää sinut ryhmään.</string>
+    <string name="messaging_disabled_device_chat">Tämän keskustelun viestit on luotu paikallisesti. Et voi kirjoittaa viestejä tänne.</string>
+    <string name="messaging_disabled_mailing_list">Sähköpostilistoille vastaamista ei vielä tueta</string>
+    <string name="cannot_display_unsuported_file_type">Tiedostotyypin näyttäminen epäonnistui: %s</string>
+    <string name="attachment_failed_to_load">Liitteiden lataaminen epäonnistui</string>
+    <!-- For recording Voice messages: Description for the "Lock" button allowing to lift the thumb from the record button while recording continues -->
+    <string name="lock_recording">Lukitse äänitys</string>
+
+    <!-- mailing lists -->
+    <string name="mailing_list">Sähköpostilista</string>
+    <string name="mailing_list_profile_info">Muutokset sähköpostilistan nimeen ja kuvaan tallentuvat vain tähän laitteeseen.</string>
+
+    <!-- webxdc -->
+    <!-- "Start..." button for an app -->
+    <string name="start_app">Aloita...</string>
+    <!-- this is a warning that is shown when one tries to send something to a chat that is not yet accepted. -->
+    <string name="accept_request_first">Hyväksy keskustelupyyntö ensin.</string>
+
+    <!-- map -->
+    <string name="filter_map_on_time">Näytä sijainnit aikajanalla</string>
+    <string name="show_location_traces">Näytä jäljet</string>
+    <string name="add_poi">Lähetä erikseen valittu piste</string>
+
+    <!-- chat audit log -->
+    <string name="chat_audit_log_empty_message">Keskustelun järjestelmäviestit näkyvät tässä</string>
+    <string name="chat_audit_log_title">Keskustelun tarkastusloki yhteystiedolle %1$s</string>
+    <string name="chat_audit_log_description">Tässä näytetään vain järjestelmä- ja ohjeviestit. Tämä näkymä helpottaa viimeisimpien tapahtumien löytämistä tavallisten viestien joukosta.</string>
+
+    <!-- punycode warning / labeled links -->
+    <!-- placeholder is domain/hostname that should be trusted -->
+    <string name="open_external_url_trust_domain">Älä kysy enää osoitteelle %1$s</string>
+    <string name="puny_code_warning_header">Epäilyttävä linkki havaittu</string>
+    <!-- placeholder contains the hostname converted to ascii -->
+    <string name="puny_code_warning_question">Haluatko varmasti vierailla osoitteessa %1$s?</string>
+    <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
+    <string name="puny_code_warning_description">Seurasit linkkiä, joka saattaa näyttää toisten aakkostojen merkkejä huijaussivustolle johtamiseen. Linkin teksti %1$s johtaa osoitteeseen %2$s, mikä on tavallista ei-latinalaisille merkistöille. Jos et odottanut tätä, tämä linkki voi olla vahingollinen.</string>
+
+
+    <!-- search -->
+    <string name="search">Etsi</string>
+    <string name="search_explain">Etsi keskusteluja, yhteystietoja ja viestejä</string>
+    <string name="search_no_result_for_x">Ei tuloksia haulle \"%s\"</string>
+
+
+    <!-- create/edit groups, contact/group profile -->
+    <string name="group_name">Ryhmän nimi</string>
+    <string name="group_avatar">Ryhmän kuva</string>
+    <string name="remove_group_image">Poista ryhmän kuva</string>
+    <string name="change_group_image">Muuta ryhmän kuvaa</string>
+    <string name="group_create_button">Luo ryhmä</string>
+    <string name="group_please_enter_group_name">Anna ryhmän nimi</string>
+    <string name="group_add_members">Lisää jäseniä</string>
+    <string name="group_self_not_in_group">Sinun täytyy olla ryhmän jäsen suorittaaksesi tämän toiminnon.</string>
+    <string name="profile_encryption">Salaus</string>
+    <string name="profile_shared_chats">Jaetut keskustelut</string>
+    <string name="tab_contact">Yhteystieto</string>
+    <string name="tab_group">Ryhmä</string>
+    <string name="tab_members">Jäsenet</string>
+    <string name="tab_gallery">Galleria</string>
+    <string name="tab_docs">Asiakirjat</string>
+    <string name="tab_links">Linkit</string>
+    <string name="tab_map">Kartta</string>
+    <string name="tab_gallery_empty_hint">Tässä keskustelussa jaetut kuvat ja videot näkyvät tässä.</string>
+    <string name="tab_docs_empty_hint">Tässä keskustelussa jaetut asiakirjat, musiikki ja muut tiedostot näkyvät tässä.</string>
+    <string name="media_preview">Median esikatselu</string>
+    <string name="send_message">Lähetä viesti</string>
+
+
+    <!-- Connectivity -->
+    <!-- Used as a headline for the "Inbox" eg. in the "Connectivity" view -->
+    <string name="incoming_messages">Saapuvat viestit</string>
+    <!-- Used as a headline for the "Outbox" eg. in the "Connectivity" view -->
+    <string name="outgoing_messages">Lähtevät viestit</string>
+    <!-- Used as a headline in the "Connectivity" view. The placeholder will be replaced by the domain of the configured email-address. -->
+    <string name="storage_on_domain">Tallennustila palvelimella %1$s</string>
+    <string name="connectivity">Yhteys</string>
+    <!-- Shown eg. in the title bar if the app is "Not connected"; as there is very few room, try to be as short as possible. -->
+    <string name="connectivity_not_connected">Ei yhdistetty</string>
+    <!-- Shown eg. in the title bar if the app is "Connecting"; as there is very few room, try to be as short as possible. Note that the three dots are a single character (…), not three (...) -->
+    <string name="connectivity_connecting">Yhdistetään...</string>
+    <!-- Shown eg. in the title bar if the app is "Updating" (eg. getting new/old message, sync things); as there is very few room, try to be as short as possible. Note that the three dots are a single character (…), not three (...) -->
+    <string name="connectivity_updating">Päivitetään...</string>
+    <!-- Shown eg. in the setting if the app is "Connected" -->
+    <string name="connectivity_connected">Yhdistetty</string>
+    <string name="sending">Lähetetään</string>
+    <string name="last_msg_sent_successfully">Viimeinen viesti lähetetty onnistuneesti.</string>
+    <string name="not_supported_by_provider">Palveluntarjoajasi ei tue tätä.</string>
+    <!-- Used as a subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed or so. -->
+    <string name="messages">Viestit</string>
+    <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
+    <string name="part_of_total_used">%1$s / %2$s käytössä</string>
+
+
+    <!-- welcome and login -->
+    <string name="welcome_intro1_message">Viestisovellus, jolla on maailman laajin yleisö. Ilmainen ja riippumaton.</string>
+    <string name="login_title">Kirjaudu sisään</string>
+    <string name="login_header">Kirjaudu palvelimellesi</string>
+    <string name="login_explain">Kirjaudu olemassa olevalla sähköpostitilillä</string>
+    <string name="login_subheader">Tunnetuille sähköpostipalveluntarjoajille muut asetukset luodaan automaattisesti. Joskus IMAP täytyy laittaa päälle verkkoasetuksissa. Kysy apua palveluntarjoajaltasi tai ystäviltäsi.</string>
+    <string name="login_no_servers_hint">Delta Chatilla ei ole palvelimia, tietosi säilyvät sinun laitteellasi.</string>
+    <string name="login_inbox">Saapuvan postin laatikko</string>
+    <string name="login_imap_login">IMAP-kirjautumistunnus</string>
+    <string name="login_imap_server">IMAP-palvelin</string>
+    <string name="login_imap_port">IMAP-portti</string>
+    <string name="login_imap_security">IMAP-turvallisuusprotokolla</string>
+    <string name="login_outbox">Lähtevän postin laatikko</string>
+    <string name="login_smtp_login">SMTP-kirjautumistunnus</string>
+    <string name="login_smtp_password">SMTP-salasana</string>
+    <string name="login_smtp_server">SMTP-palvelin</string>
+    <string name="login_smtp_port">SMTP-portti</string>
+    <string name="login_smtp_security">SMTP-turvallisuusprotokolla</string>
+    <string name="login_auth_method">Kirjautumismenetelmä</string>
+    <!-- the word "SOCKS5" here and in the following strings should not be translated in most cases -->
+    <string name="login_socks5">SOCKS5</string>
+    <string name="login_socks5_use_socks5">Käytä SOCKS5</string>
+    <string name="login_socks5_host">SOCKS5-isäntä</string>
+    <string name="login_socks5_port">SOCKS5-portti</string>
+    <string name="login_socks5_user">SOCKS5-käyttäjä</string>
+    <string name="login_socks5_password">SOCKS5-salasana</string>
+    <!-- Translators: %1$s will be replaced by an e-mail address -->
+    <string name="login_oauth2_checking_addr">Tarkistetaan %1$s</string>
+    <string name="login_info_oauth2_title">Jatka yksinkertaisella asennuksella?</string>
+    <string name="login_info_oauth2_text">Annettu sähköpostiosoite tukee yksinkertaista asennusta (OAuth 2.0).\n\nSeuraavaksi sinun täytyy sallia Delta Chatin toiminta Chat over E-mail -sovelluksena.\n\nDelta Chatilla ei ole palvelimia, tietosi pysyvät laitteellasi.</string>
+    <string name="login_certificate_checks">Varmennetarkastukset</string>
+    <string name="login_error_mail">Anna kelvollinen sähköpostiosoite</string>
+    <string name="login_error_server">Anna kelvollinen palvelin tai IP-osoite</string>
+    <string name="login_error_port">Anna kelvollinen portti (1-65535)</string>
+    <string name="login_error_required_fields">Anna kelvollinen sähköpostiosoite ja salasana</string>
+    <string name="import_backup_title">Tuo varmuuskopio</string>
+    <string name="import_backup_ask">Varmuuskopio löydetty kohteesta \"%1$s\".\n\nHaluatko tuoda kaikki sen tiedot ja asetukset?</string>
+    <string name="import_backup_no_backup_found">Varmuuskopioita ei löytynyt.\n\nKopioi varmuuskopio kohteeseen \"%1$s\" ja yritä uudelleen. Vaihtoehtoisesti, paina \"Aloita viestittely\" jatkaaksesi tavallista asennusprosessia.</string>
+    <!-- Translators: %1$s will be replaced by the e-mail address -->
+    <string name="login_error_cannot_login">Kirjautuminen osoitteella \"%1$s\" epäonnistui. Tarkista, että sähköpostiosoite ja salasanat on kirjoitettu oikein.</string>
+    <!-- TLS certificate checks -->
+    <string name="accept_invalid_certificates">Hyväksy epäpätevät varmenteet</string>
+    <string name="used_settings">Käytetyt asetukset:</string>
+    <string name="switch_account">Vaihda tili</string>
+    <string name="add_account">Lisää tili</string>
+    <string name="delete_account">Poista tili</string>
+    <string name="delete_account_ask">Haluatko varmasti poistaa tilisi tiedot?</string>
+    <string name="delete_account_explain_with_name">Kaikki tilin \"%s\" tiedot poistetaan tältä laitteelta, mukaan lukien salausasetukset, yhteystiedot, keskustelut, viestit ja media. Tämä toiminto on peruuttamaton.</string>
+    <string name="unconfigured_account">Tilin asetuksia ei ole tehty</string>
+    <string name="unconfigured_account_hint">Avaa tili luodaksesi asetukset</string>
+    <string name="try_connect_now">Yritä yhdistää heti</string>
+    <string name="sync_all">Synkronoi kaikki</string>
+    <!-- Translations: %1$s will be replaced by a more detailed error message -->
+    <string name="configuration_failed_with_error">Asetusten luominen epäonnistui. Virhe: %1$s</string>
+
+    <!-- share and forward messages -->
+    <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
+    <string name="forward_to">Välitä yhteystiedolle...</string>
+    <string name="share_multiple_attachments">Lähetä %1$d tiedostoa valittuun keskusteluun?\n\nTiedostot lähetetään muokkaamattomina ja alkuperäisen kokoisina, kuvia tai videoita ei pakata uudelleen.</string>
+    <string name="share_multiple_attachments_multiple_chats">Lähetä %1$d tiedosto(a) %2$d keskusteluun?\n\nTiedostot lähetetään muokkaamattomina ja alkuperäisen kokoisina, kuvia ja videoita ei pakata uudelleen.</string>
+    <string name="share_text_multiple_chats">Lähetä tämä teksti %1$d keskusteluun?\n\n\"%2$s\"</string>
+    <string name="share_abort">Jakaminen keskeytetty käyttöoikeuksien puuttumisen vuoksi</string>
+
+
+    <!-- preferences -->
+    <string name="pref_using_custom">Käytetään mukautettua: %s</string>
+    <string name="pref_using_default">Käytetään oletusta: %s</string>
+    <string name="pref_profile_info_headline">Profiilisi tiedot</string>
+    <string name="pref_profile_photo">Profiilikuva</string>
+    <string name="pref_blocked_contacts">Estetyt yhteystiedot</string>
+    <string name="blocked_empty_hint">Estämäsi yhteystiedot näkyvät tässä</string>
+    <string name="pref_password_and_account_settings">Salasana ja tili</string>
+    <string name="pref_who_can_see_profile_explain">Profiilikuvasi, nimesi ja allekirjoituksesi lähetetään yhdessä viestiesi kanssa muille käyttäjille.</string>
+    <string name="pref_your_name">Nimesi</string>
+    <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
+    <string name="pref_default_status_label">Allekirjoitus</string>
+    <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
+    <string name="pref_default_status_text">Lähetetty Delta Chat -sovelluksesta: https://delta.chat</string>
+    <string name="pref_enter_sends">Enter-painike lähettää</string>
+    <string name="pref_enter_sends_explain">Enter-painikkeen painaminen lähettää viestejä</string>
+    <string name="pref_outgoing_media_quality">Lähtevän median laatu</string>
+    <string name="pref_outgoing_balanced">Tasapainotettu</string>
+    <string name="pref_outgoing_worse">Huonompi laatu, pienempi koko</string>
+    <string name="pref_vibrate">Värinä</string>
+    <string name="pref_screen_security">Näytön turvallisuus</string>
+    <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
+    <string name="pref_screen_security_explain">Pyydä järjestelmää estämään näyttökuvien tallentaminen sovelluksessa ja \"viimeiset\"-näkymässä.</string>
+    <string name="pref_screen_security_please_restart_hint">Näyttölukon käyttöönotto vaatii sovelluksen uudelleenkäynnistyksen.</string>
+    <string name="pref_notifications">Ilmoitukset</string>
+    <string name="pref_notifications_show">Näytä</string>
+    <string name="pref_notifications_priority">Tärkeys</string>
+    <string name="pref_notifications_explain">Kytke päälle järjestelmän ilmoitukset uusista viesteistä</string>
+    <string name="pref_show_notification_content">Näytä viestien sisältö ilmoituksissa</string>
+    <string name="pref_show_notification_content_explain">Näyttää lähettäjän nimen ja viestin ensimmäiset sanat ilmoituksessa</string>
+    <string name="pref_led_color">LED-väri</string>
+    <string name="pref_sound">Ääni</string>
+    <string name="pref_silent">Äänetön</string>
+    <string name="pref_privacy">Yksityisyys</string>
+    <string name="pref_chats_and_media">Keskustelut ja media</string>
+    <string name="pref_system_default">Järjestelmän oletus</string>
+    <!-- Translators: "light" in the meaning "opposite of dark" -->
+    <string name="pref_light_theme">Vaalea</string>
+    <string name="pref_dark_theme">Tumma</string>
+    <string name="pref_appearance">Ulkonäkö</string>
+    <string name="pref_theme">Teema</string>
+    <string name="pref_language">Kieli</string>
+    <string name="pref_incognito_keyboard">Näppäimistön yksityisyys</string>
+    <!-- Translators: Keep in mind that this is a Request - it must be clear in the wording that this cannot be enforced. -->
+    <string name="pref_incognito_keyboard_explain">Pyydä näppäimistöä kytkemään yksilöity oppiminen pois päältä</string>
+    <string name="pref_read_receipts">Lukukuittaukset</string>
+    <string name="pref_read_receipts_explain">Jos lukukuittaukset kytketään pois, et näe kuittauksia myöskään muilta</string>
+    <string name="pref_manage_keys">Hallinnoi avaimia</string>
+    <string name="pref_use_system_emoji">Käytä järjestelmän emojeja</string>
+    <string name="pref_use_system_emoji_explain">Kytke pois Delta Chatin sisäänrakennettu emoji-tuki</string>
+    <string name="pref_app_access">Pääsy sovellukseen</string>
+    <string name="pref_communication">Viestintä</string>
+    <string name="pref_chats">Keskustelut</string>
+    <string name="pref_in_chat_sounds">Keskustelun äänet</string>
+    <string name="pref_message_text_size">Viestin fonttikoko</string>
+    <string name="pref_view_log">Näytä lok</string>
+    <string name="pref_saved_log">Tallenna loki Lataukset-kansioon</string>
+    <string name="pref_save_log_failed">Lokin tallennus epäonnistui</string>
+    <string name="pref_log_header">Lok</string>
+    <string name="pref_other">Mu</string>
+    <string name="pref_backup">Varmuuskopiointi</string>
+    <string name="pref_backup_explain">Varmuuskopioi keskustelut ulkoiseen tallennustilaan</string>
+    <string name="pref_backup_export_explain">Varmuuskopion avulla voit helpommin siirtää asetuksesi uuteen Delta Chat -asennukseen tällä tai toisella laitteella.\n\nVarmuuskopio sisältää kaikki viestit, yhteystiedot ja keskustelut sekä Autocrypt-asetukset. Säilytä varmuuskopiota turvallisessa paikassa ja poista se heti kun mahdollista.</string>
+    <string name="pref_backup_export_start_button">Aloita varmuuskopiointi</string>
+    <string name="pref_backup_written_to_x">Varmuuskopio kirjoitettu onnistuneesti kohteeseen \"%1$s\".</string>
+    <string name="pref_managekeys_menu_title">Hallinnoi avaimia</string>
+    <string name="pref_managekeys_export_secret_keys">Vie salaiset avaimet</string>
+    <string name="pref_managekeys_export_explain">Vie salaiset avaimet kohteeseen \"%1$s\"?</string>
+    <string name="pref_managekeys_import_secret_keys">Tuo salaiset avaimet</string>
+    <string name="pref_managekeys_import_explain">Tuo salaiset avaimet kohteesta \"%1$s\"?\n\n• Olemassa olevia salaisia avaimia ei poisteta\n\n• Viimeistä tuotua avainta käytetään oletusavaimena, paitsi jos sen tiedostonimessä on sana \"legacy\".</string>
+    <string name="pref_managekeys_secret_keys_exported_to_x">Salaiset avaimet kirjoitettu onnistuneesti kohteeseen \"%1$s\".</string>
+    <string name="pref_managekeys_secret_keys_imported_from_x">Salaiset avaimet tuotu kohteesta \"%1$s\".</string>
+    <string name="pref_background">Tausta</string>
+    <string name="pref_background_btn_default">Käytä oletuskuvaa</string>
+    <string name="pref_background_btn_gallery">Valitse galleriasta</string>
+    <string name="pref_imap_folder_handling">IMAP-kansioiden käsittely</string>
+    <string name="pref_imap_folder_warn_disable_defaults">Jos poistat tämän asetuksen käytöstä, varmista, että palvelimessasi ja muissa asiakasohjelmissasi on oikeat asetukset.\n\nMuuten ne eivät ehkä toimi ollenkaan.</string>
+    <string name="pref_watch_inbox_folder">Tarkkaile Saapuneet-kansiota</string>
+    <string name="pref_watch_sent_folder">Tarkkaile Lähetetyt-kansiota</string>
+    <string name="pref_watch_mvbox_folder">Tarkkaile DeltaChat-kansiota</string>
+    <string name="pref_send_copy_to_self">Lähetä kopio itselle</string>
+    <string name="pref_auto_folder_moves">Siirrä automaattisesti DeltaChat-kansioon</string>
+    <string name="pref_auto_folder_moves_explain">Pikaviestikeskustelut siirretään Saapuneet-kansion sotkemisen välttämiseksi</string>
+    <string name="pref_only_fetch_mvbox_title">Nouda vain DeltaChat-kansiosta</string>
+    <string name="pref_only_fetch_mvbox_explain">Jätä muut kansiot huomiotta. Palvelimen on siirrettävä pikaviestit DeltaChat-kansioon.</string>
+    <string name="pref_show_emails">Näytä perinteiset sähköpostiviestit</string>
+    <string name="pref_show_emails_no">Ei, pelkät pikaviestit</string>
+    <string name="pref_show_emails_accepted_contacts">Hyväksytyille yhteystiedoille</string>
+    <string name="pref_show_emails_all">Kaikk</string>
+    <string name="pref_experimental_features">Kokeelliset ominaisuudet</string>
+    <string name="pref_on_demand_location_streaming">Sijainnin jako pyydettäessä</string>
+    <string name="pref_developer_mode">Kehittäjätila</string>
+    <string name="pref_developer_mode_explain">Kytkee päälle testausvalinnat ja voi tehdä sovelluksesta epävakaamman. Vain kehittäjille.</string>
+    <string name="pref_background_default">Oletustausta</string>
+    <string name="pref_background_default_color">Oletusväri</string>
+    <string name="pref_background_custom_image">Mukautettu kuva</string>
+    <string name="pref_background_custom_color">Mukautettu väri</string>
+    <string name="export_aborted">Vienti keskeytetty.</string>
+    <string name="auto_download_messages">Lataa viestit automaattisesti</string>
+    <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB -->
+    <string name="up_to_x">Korkeintaan %1$s</string>
+    <string name="up_to_x_most_worse_quality_images">Korkeintaan %1$s, suurin osa alhaisen laadun kuvista</string>
+    <string name="up_to_x_most_balanced_quality_images">Korkeintaan %1$s, suurin osa tasapainoisen laadun kuvista</string>
+    <string name="no_limit">Ei rajaa</string>
+    <string name="download_failed">Lataus epäonnistui</string>
+    <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string eg. "1 MiB message" -->
+    <string name="n_bytes_message">%1$s viesti</string>
+    <!-- %1$s will be replaced by human-readable date and time -->
+    <string name="download_max_available_until">Latauksen yläraja ennen %1$s</string>
+    <string name="profile_image_select">Valitse profiilikuva</string>
+    <string name="select_your_new_profile_image">Valitse uusi profiilikuvasi</string>
+    <string name="profile_image_delete">Poista profiilikuva</string>
+    <string name="pref_show_tray_icon">Näytä työkalupalkin kuvake</string>
+    <string name="pref_edit_profile">Muokkaa profiilia</string>
+
+    <!-- Emoji picker and categories -->
+    <string name="emoji_search_results">Hakutulokset</string>
+    <string name="emoji_not_found">Emojia ei löytynyt</string>
+    <string name="emoji_recent">Viimeksi käytetyt</string>
+    <string name="emoji_people">Ihmiset &amp; Keho</string>
+    <string name="emoji_nature">Eläimet &amp; Luonto</string>
+    <string name="emoji_foods">Ruoka &amp; Juoma</string>
+    <string name="emoji_activity">Aktiviteetit</string>
+    <string name="emoji_places">Matkustelu &amp; Paikat</string>
+    <string name="emoji_objects">Esineet</string>
+    <string name="emoji_symbols">Symbolit</string>
+    <string name="emoji_flags">Liput</string>
+
+
+    <!-- automatically delete message -->
+    <string name="delete_old_messages">Poista vanhat viestit</string>
+    <string name="autodel_device_title">Poista viestit laitteelta</string>
+    <string name="autodel_server_title">Poista viestit palvelimelta</string>
+    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
+    <string name="autodel_device_ask">Haluatko poistaa %1$d viestiä heti ja kaikki uudet viestit \"%2$s\" jatkossa?\n\n• Tämä sisältää kaiken median\n\n• Viestit poistetaan riippumatta siitä onko ne nähty vai ei\n\n• \"Tallennetut viestit\" jätetään paikalliselle laitteelle</string>
+    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
+    <string name="autodel_server_ask">Haluatko poistaa %1$d viestiä heti ja kaikki uudet viestit \"%2$s\" jatkossa?\n\n⚠️ Tämä sisältää sähköpostiviestit, median ja kaikki \"Tallennetut viestit\" kaikissa palvelimen kansioissa\n\n⚠️ Älä käytä tätä toimintoa, jos haluat säilyttää tiedot palvelimella\n\n⚠️ Älä käytä tätä toimintoa, jos käytät muita sähköpostisovelluksia Delta Chatin lisäksi</string>
+    <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
+    <string name="autodel_server_enabled_hint">Tämä sisältää sähköpostit, median ja \"Tallennetut viestit\" kaikissa palvelimen kansioissa. Älä käytä tätä toimintoa, jos haluat pitää tietosi palvelimella tai jos käytät muita sähköpostisovelluksia Delta Chatin lisäksi.</string>
+    <string name="autodel_confirm">Ymmärrän, poista kaikki nämä viestit</string>
+    <string name="autodel_at_once">Heti</string>
+    <string name="after_30_seconds">30 sekunnin päästä</string>
+    <string name="after_1_minute">1 minuutin päästä</string>
+    <string name="after_5_minutes">5 minuutin päästä</string>
+    <string name="after_30_minutes">30 minuutin päästä</string>
+    <string name="autodel_after_1_hour">1 tunnin päästä</string>
+    <string name="autodel_after_1_day">1 päivän päästä</string>
+    <string name="autodel_after_1_week">1 viikon päästä</string>
+    <string name="autodel_after_4_weeks">4 viikon päästä</string>
+    <string name="after_5_weeks">5 viikon päästä</string>
+    <string name="autodel_after_1_year">1 vuoden päästä</string>
+
+    <!-- autocrypt -->
+    <string name="autocrypt">Autocrypt</string>
+    <string name="autocrypt_explain">Autocrypt on uusi ja avoin spesifikaatio sähköpostien automaattiselle päästä-päähän-salaukselle.\n\nPäästä-päähän-salauksen asetukset luodaan automaattisesti tarpeen mukaan ja ne voidaan siirtää laitteiden välillä Autocrypt -asetusviestien avulla.</string>
+    <string name="autocrypt_send_asm_title">Lähetä Autocrypt -asetusviesti</string>
+    <string name="autocrypt_send_asm_explain_before">Autocrypt -asetusviesti jakaa turvallisesti päästä-päähän-salauksen asetukset toisten Autocrypt-sopivien sovellusten kanssa.\n\nAsetuksen salataan tässä näytettävällä asetuskoodilla, joka on syötettävä toiseen laitteeseen.</string>
+    <string name="autocrypt_send_asm_button">Lähetä Autocrypt -asetusviesti</string>
+    <string name="autocrypt_send_asm_explain_after">Asetusviesti on lähetetty sinulle itsellesi. Avaa viesti toisella laitteella. Sinulta pyydetään asennuskoodia. Anna seuraavat numerot:\n\n%1$s</string>
+    <string name="autocrypt_prefer_e2ee">Suosi päästä-päähän-salausta</string>
+    <string name="autocrypt_asm_subject">Autocrypt -asetusviesti</string>
+    <string name="autocrypt_asm_general_body">Tätä Autocrypt -asetusviestiä käytetään päästä-päähän-salauksen asetusten kopioimiseksi toiselle laitteelle.\n\nSalauksen purkamiseksi ja asetusten käyttöön ottamiseksi, avaa viesti toisella Autocrypt-yhteensopivalla sovelluksella ja anna asennuskoodi laitteelta, jolla koodi luotiin.</string>
+    <string name="autocrypt_asm_click_body">Tätä Autocrypt -asetusviestiä käytetään päästä-päähän-salauksen asetusten kopioimiseksi toiselle laitteelle.\n\nSalauksen purkamiseksi ja asetusten käyttöön ottamiseksi, napauta tai klikkaa tätä viestiä.</string>
+    <string name="autocrypt_continue_transfer_title">Autocrypt -asetusviesti</string>
+    <string name="autocrypt_continue_transfer_please_enter_code">Anna toisella laitteella näkyvä asennuskoodi.</string>
+    <string name="autocrypt_continue_transfer_succeeded">Päästä-päähän-salauksen asetuksen siirretty. Autocrypt toimii nyt tässä laitteessa samoilla asetuksilla kuin toisessa laitteessa.</string>
+    <string name="autocrypt_continue_transfer_retry">Uudelleen</string>
+    <string name="autocrypt_bad_setup_code">Virheellinen asennuskoodi. Yritä uudelleen.\n\nJos et muista asennuskoodia, lähetä uusi Autocrypt -asetusviesti toisella laitteella.</string>
+
+
+    <!-- system messages -->
+    <string name="systemmsg_group_name_changed">Ryhmän nimi vaihdettu: \"%1$s\" --> \"%2$s\".</string>
+    <string name="systemmsg_group_image_changed">Ryhmän kuva vaihdettu.</string>
+    <string name="systemmsg_group_image_deleted">Ryhmän kuva poistettu</string>
+    <string name="systemmsg_member_added">Jäsen %1$s lisätty</string>
+    <string name="systemmsg_member_removed">Jäsen %1$s poistettu</string>
+    <string name="systemmsg_group_left">Poistuit ryhmästä.</string>
+    <string name="systemmsg_read_receipt_subject">Viesti avattu</string>
+    <string name="systemmsg_read_receipt_body">Lähettämäsi viesti \"%1$s\" näytettiin vastaanottajan näytöllä.\n\nTämä ei takaa, että sisältö luettiin.</string>
+    <string name="systemmsg_cannot_decrypt">Viestin salausta ei voi purkaa.\n\n• Pyydä lähettäjää lähettämään viesti uudelleen.\n\n• Jos asensit Delta Chatin tai toisen sähköpostisovelluksen uudelleen tälle tai toiselle laitteelle, Autocrypt -asetusviestin lähettäminen siitä sovelluksesta voi auttaa.</string>
+    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). -->
+    <string name="systemmsg_action_by_me">%1$s minun toimestani.</string>
+    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
+    <string name="systemmsg_action_by_user">%1$s käyttäjän %2$s toimesta.</string>
+    <string name="systemmsg_unknown_sender_for_chat">Tuntematon lähettäjä. Katso \"lisätietoja\".</string>
+    <string name="systemmsg_subject_for_new_contact">Viesti lähettäjältä %1$s</string>
+    <string name="systemmsg_failed_sending_to">Viestin lähettäminen kohteeseen %1$s epäonnistui.</string>
+
+    <string name="systemmsg_ephemeral_timer_disabled">Katoavien viestien ajastin poistettiin.</string>
+    <string name="systemmsg_ephemeral_timer_enabled">Katoavien viestien ajastin asetettu %1$s sekuntiin.</string>
+    <string name="systemmsg_ephemeral_timer_minute">Katoavien viestien ajastin asetettu 1 minuuttiin.</string>
+    <string name="systemmsg_ephemeral_timer_hour">Katoavien viestien ajastin asetettu 1 tuntiin.</string>
+    <string name="systemmsg_ephemeral_timer_day">Katoavien viestien ajastin asetettu 1 päivään.</string>
+    <string name="systemmsg_ephemeral_timer_week">Katoavien viestien ajastin asetettu 1 viikkoon.</string>
+    <string name="systemmsg_ephemeral_timer_four_weeks">Katoavien viestien ajastin asetettu 4 viikkoon.</string>
+    <string name="systemmsg_ephemeral_timer_minutes">Katoavien viestien ajastin asetettu %1$s minuuttiin.</string>
+    <string name="systemmsg_ephemeral_timer_hours">Katoavien viestien ajastin asetettu %1$s tuntiin.</string>
+    <string name="systemmsg_ephemeral_timer_days">Katoavien viestien ajastin asetettu %1$s päivään.</string>
+    <string name="systemmsg_ephemeral_timer_weeks">Katoavien viestien ajastin asetettu %1$s viikkoon.</string>
+
+    <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
+    <string name="systemmsg_chat_protection_disabled">Keskustelusuojaus poistettu</string>
+    <string name="systemmsg_chat_protection_enabled">Keskustelusuojaus käytössä</string>
+
+    <string name="devicemsg_self_deleted">Poistit \"Tallennetut viestit\" -keskustelun.\n\nℹ️ Käyttääksesi \"Tallennetut viestit\" -ominaisuutta jälleen, aloita uusi keskustelu itsesi kanssa.</string>
+    <!-- %1$s will be replaced by the number of storage already used, sth. as '500 MB'. CAVE: if you want to use a simple the percent sign, type in two, so eg. %1$s %% -->
+    <string name="devicemsg_storage_exceeding">⚠️ Palveluntarjoajasi tallennuskiintiö ylitetään pian, käytössä on jo %1$s / %%.\n\nEt välttämättä enää voi vastaanottaa viestejäsi, kun 100 %% on käytössä.\n\n👉 Kokeile poistaa viestejä palveluntarjoajasi internetkäyttöliittymästä. Kannattaa myös ehkä kytkeä päälle \"Asetukset / Poista vanhat viestit\". Voit tarkistaa tämän hetkisen tallennustilan käytön \"Asetukset / Yhteys\".</string>
+    <!-- %1%s will be replaced by date and time in some human-readable format -->
+    <string name="devicemsg_bad_time">⚠️ Laitteesi päivämäärä tai aika vaikuttaa olevan väärässä (%1$s).\n\nAseta kellonaika ⏰🔧 varmistaaksesi, että viestin vastaanottaminen onnistuu.</string>
+    <string name="devicemsg_update_reminder">⚠️ Delta Chat -versio saattaa olla vanhentunut.\n\nTämä saattaa aiheuttaa ongelmia, koska muut käyttävät uudempia versioita - ja saatat jäädä paitsi uusista ominaisuuksista. 😳\nTarkista uudet päivitykset sovelluskaupastasi tai https://get.delta.chat</string>
+
+    <!-- Some options as "Manage keys" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc. to be entered in a system dialog. This hint is added to the system dialog, below a title as "Manage keys" or "Backup". -->
+    <string name="enter_system_secret_to_continue">Anna järjestelmän määrittämä koodi jatkaaksesi.</string>
+
+    <!-- qr code stuff -->
+    <string name="qr_code">QR-koodi</string>
+    <string name="load_qr_code_as_image">Lataa QR-koodi kuvana</string>
+    <string name="qrscan_title">Skannaa QR-koodi</string>
+    <string name="qrscan_hint">Näytä QR-koodia kameraan</string>
+    <string name="qrscan_failed">QR-koodia ei voitu selvittää</string>
+    <string name="qrscan_ask_join_group">Haluatko liittyä ryhmään \"%1$s\"?</string>
+    <string name="qrscan_fingerprint_mismatch">Skannattu sormenjälki ei vastaa viimeksi nähtyä %1$s.</string>
+    <string name="qrscan_no_addr_found">Tämä QR-koodi sisältää sormenjäljen mutta ei sähköpostiosoitetta.\n\nOffline-varmentamista varten tulee ensin luoda salattu yhteys vastaanottajaan.</string>
+    <string name="qrscan_contains_text">Skannattu QR-koodin teksti:\n\n%1$s</string>
+    <string name="qrscan_contains_url">Skannattu QR-koodin URL:\n\n%1$s</string>
+    <string name="qrscan_fingerprint_label">Sormenjälki</string>
+    <string name="withdraw_verifycontact_explain">Muut voivat skannata tämän QR-koodin ottaakseen yhteyttä sinuun.\n\nVoit kytkeä QR-koodin pois täällä ja aktivoida sen uudelleen skannaamalla uudestaan.</string>
+    <string name="withdraw_verifygroup_explain">Muut voivat skannata tämän QR-koodin liittyäkseen ryhmään \"%1$s\".\n\nVoit kytkeä QR-koodin pois täällä ja aktivoida sen uudelleen skannaamalla.</string>
+    <string name="withdraw_qr_code">Kytke QR-koodi pois käytöstä</string>
+    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
+    <string name="revive_verifycontact_explain">Muut voivat skannata tämän QR-koodin ottaakseen yhteyttä sinuun.\n\nQR-koodi ei ole aktiivinen tällä laitteella.</string>
+    <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
+    <string name="revive_verifygroup_explain">Muut voivat skannata tämän QR-koodin liittyäkseen ryhmään \"%1$s\".\n\nQR-koodi ei ole aktiivinen tällä laitteella.</string>
+    <string name="revive_qr_code">Aktivoi QR-koodi</string>
+    <string name="qrshow_title">QR-kutsukoodi</string>
+    <string name="qrshow_x_joining">%1$s liittyy</string>
+    <string name="qrshow_x_verified">%1$s varmistettu</string>
+    <string name="qrshow_x_has_joined_group">%1$s liittyi ryhmään.</string>
+    <string name="qrshow_join_group_title">QR-kutsukoodi</string>
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
+    <string name="qrshow_join_group_hint">Skannaa liittyäksesi ryhmään \"%1$s\"</string>
+    <string name="qrshow_join_contact_title">QR-kutsukoodi</string>
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
+    <string name="qrshow_join_contact_hint">Skannaa aloittaaksesi keskustelun käyttäjän %1$s kanssa</string>
+    <string name="qrshow_join_contact_no_connection_toast">Ei internetyhteyttä, QR-koodin luominen ei onnistu.</string>
+    <string name="qraccount_ask_create_and_login">Luo uusi sähköpostiosoite palvelimella \"%1$s\" ja kirjaudu sisään?</string>
+    <string name="qraccount_ask_create_and_login_another">Luo uusi sähköpostiosoite palvelimella \"%1$s\" ja kirjaudu sisään?\n\nNykyistä tiliäsi ei poisteta. Käytä valintaa \"Vaihda tiliä\" vaihtaaksesi tilien välillä.</string>
+    <string name="qraccount_success_enter_name">Kirjautuminen onnistui - sähköpostiosoitteesa on %1$s\n\nVoit nyt halutessasi antaa nimen ja profiilikuvan, jotka näytetään muille kirjoittaessasi heille.</string>
+    <string name="qraccount_qr_code_cannot_be_used">Uutta tiliä ei voida luoda skannatulla QR-koodilla.</string>
+    <string name="qraccount_use_on_new_install">Skannattu QR-koodi on käytössä uuden tilin luomiseksi. Voit skannata QR-koodin uuden Delta Chat -asennuksen yhteydessä.</string>
+    <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
+    <string name="secure_join_started">%1$s kutsui sinut tähän ryhmään.\n\nOdotetaan vastausta yhteystiedon %2$s laitteelta...</string>
+    <!-- placeholder will be replaced by the name of the inviter. -->
+    <string name="secure_join_replies">Vastaus saatu käyttäjältä %1$s, odotetaan lisäystä ryhmään...</string>
+    <string name="contact_verified">%1$s varmistettu.</string>
+    <string name="contact_not_verified">Ei voida varmistaa %1$s.</string>
+    <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
+    <string name="contact_setup_changed">Asetukset muutettu kohteessa %1$s.</string>
+    <string name="verified_group_explain">(Kokeelliset) varmistetut ryhmät suojaavat aktiivisilta hyökkäyksiltä. Jokainen käyttäjä varmistetaan erikseen ja viestit ovat aina päästä-päähän-salattuja.</string>
+    <string name="copy_qr_data_success">QR-osoite kopioitu leikepöydälle</string>
+    <string name="mailto_dialog_header_select_chat">Valitse keskustelu viestien lähettämiseen</string>
+    <!-- first placeholder is the name of the chat -->
+    <string name="confirm_replace_draft">Keskustelussa %1$s on jo luonnos. Haluatko korvata sen?</string>
+    <string name="mailto_link_could_not_be_decoded">mailto-linkkiä ei voitu selvittää: %1$s</string>
+
+    <!-- notifications  -->
+    <string name="notify_dismiss">Hylkää</string>
+    <string name="notify_reply_button">Vastaa</string>
+    <string name="notify_new_message">Uusi viesti</string>
+    <string name="notify_background_connection_enabled">Yhteys käynnissä taustalla</string>
+    <string name="notify_priority_high">Korkea</string>
+    <string name="notify_priority_max">Maksimi</string>
+    <string name="notify_name_and_message">Nimi ja viesti</string>
+    <string name="notify_name_only">Pelkkä nimi</string>
+    <string name="notify_no_name_or_message">Ei nimeä eikä viestiä</string>
+
+
+    <!-- permissions -->
+    <string name="perm_required_title">Pääsylupa vaaditaan</string>
+    <string name="perm_continue">Jatka</string>
+    <string name="perm_explain_access_to_camera_denied">Ottaaksesi kuvia tai videoita mene sovelluksen asetuksiin, valitse \"Käyttöluvat\" ja kytke päälle \"Kamera\".</string>
+    <string name="perm_explain_access_to_mic_denied">Lähettääksesi ääniviestin mene sovelluksen asetuksiin, valitse \"Käyttöluvat\" ja kytke päälle \"Mikrofoni\".</string>
+    <string name="perm_explain_access_to_storage_denied">Lähettääksesi tai vastaanottaaksesi tiedostoja mene sovelluksen asetuksiin, valitse \"Käyttöluvat\" ja kytke päälle \"Tallennustila\".</string>
+    <string name="perm_explain_access_to_location_denied">Jakaaksesi sijaintisi mene sovelluksen asetuksiin, valitse \"Käyttöluvat\" ja kytke päälle \"Sijainti\".</string>
+
+    <!-- ImageEditorHud -->
+    <string name="ImageEditorHud_draw_anywhere_to_blur">Piirrää sumentaaksesi</string>
+    <string name="ImageEditorHud_add_text">Lisää teksti</string>
+    <string name="ImageEditorHud_blur">Sumennus</string>
+    <string name="ImageEditorHud_brush_marker">Merkkaustussi</string>
+    <string name="ImageEditorHud_brush_highlight">Korostuskynä</string>
+    <string name="ImageEditorHud_crop">Rajaa</string>
+    <string name="ImageEditorHud_flip">Käännä</string>
+    <string name="ImageEditorHud_rotate">Pyöritä</string>
+
+    <!-- dc_str_* resources -->
+    <string name="encrypted_message">Salattu viesti</string>
+
+    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
+    <string name="about_offical_app_desktop">Tämä on virallinen Delta Chat -työpöytäsovellus.</string>
+    <string name="about_licensed_under_desktop">Tämä ohjelmisto on GNU GPL v3 -lisensoitu, ja lähdekoodi on saatavilla GitHubissa.</string>
+    <string name="welcome_desktop">Tervetuloa Delta Chatiin</string>
+    <string name="login_known_accounts_title_desktop">Tunnetut tilit</string>
+    <string name="global_menu_preferences_language_desktop">Kieli</string>
+    <string name="global_menu_file_desktop">Tiedosto</string>
+    <string name="global_menu_file_quit_desktop">Sulje</string>
+    <string name="global_menu_edit_desktop">Muokkaa</string>
+    <string name="global_menu_edit_undo_desktop">Kumoa</string>
+    <string name="global_menu_edit_redo_desktop">Tee uudelleen</string>
+    <string name="global_menu_edit_cut_desktop">Leikkaa</string>
+    <string name="global_menu_edit_copy_desktop">Kopioi</string>
+    <string name="global_menu_edit_paste_desktop">Liitä</string>
+    <string name="global_menu_view_desktop">Näytä</string>
+    <string name="global_menu_view_floatontop_desktop">Pidä päällimmäisenä</string>
+    <string name="global_menu_view_developer_desktop">Kehittäjä</string>
+    <string name="global_menu_view_developer_tools_desktop">Kehittäjätyökalut</string>
+    <string name="global_menu_help_desktop">Ohje</string>
+    <string name="global_menu_help_learn_desktop">Opi lisää Delta Chatista</string>
+    <string name="global_menu_help_contribute_desktop">Osallistu GitHubissa</string>
+    <string name="global_menu_help_report_desktop">Ilmoita ongelma</string>
+    <string name="global_menu_help_about_desktop">Tietoja Delta Chatista</string>
+    <string name="global_menu_file_open_desktop">Avaa Delta Chat</string>
+    <string name="global_menu_minimize_to_tray">Pienennä</string>
+    <string name="no_chat_selected_suggestion_desktop">Valitse tai luo keskustelu</string>
+    <string name="write_message_desktop">Kirjoita viesti</string>
+    <string name="encryption_info_title_desktop">Salaustiedot</string>
+    <string name="delete_message_desktop">Poista viesti</string>
+    <string name="more_info_desktop">Lisätietoja</string>
+    <string name="timestamp_format_m_desktop">MMM D</string>
+    <string name="encryption_info_desktop">Näytä salaustiedot</string>
+    <string name="remove_desktop">Poista</string>
+    <string name="save_desktop">Tallenna</string>
+    <string name="name_desktop">Nimi</string>
+    <string name="autocrypt_key_transfer_desktop">Autocrypt-avainten siirto</string>
+    <string name="initiate_key_transfer_desktop">Autocrypt -asetusviesti jakaa turvallisesti päästä-päähän-salauksen asetukset toisten Autocrypt-sopivien sovellusten kanssa. Asetukset salataan tässä näytettävällä asetuskoodilla, joka on syötettävä toiseen laitteeseen.</string>
+    <string name="select_group_image_desktop">Valitse ryhmän kuva</string>
+    <string name="imex_progress_title_desktop">Varmuuskopioinnin tila</string>
+    <string name="export_backup_desktop">Vie varmuuskopio</string>
+    <string name="show_key_transfer_message_desktop">Asetusviesti on lähetetty sinulle itsellesi. Avaa viesti toisella laitteella. Sinulta pyydetään asennuskoodia. Anna seuraavat numerot:</string>
+    <string name="autocrypt_correct_desktop">Autocrypt-asetukset siirretty.</string>
+    <string name="autocrypt_incorrect_desktop">Virheellinen asennuskoodi. Yritä uudelleen.</string>
+    <string name="create_chat_error_desktop">Keskustelua ei voitu luoda.</string>
+    <string name="forget_login_confirmation_desktop">Poista tämä kirjautuminen? Kaikki tiedot poistetaan, mukaan lukien päästä-päähän-salauksen asetukset, yhteystiedot, keskustelut, viestit ja media. Tämä toiminto on peruuttamaton.</string>
+    <string name="account_info_hover_tooltip_desktop2">Sähköposti: %1$s\nKoko: %2$s\nTilin tunniste: %3$s</string>
+    <string name="message_detail_sent_desktop">lähetetty</string>
+    <string name="message_detail_received_desktop">vastaanotettu</string>
+    <string name="menu.view.developer.open.log.folder">Avaa lokikansio</string>
+    <string name="menu.view.developer.open.current.log.file">Avaa nykyinen lokitiedosto</string>
+    <string name="explain_desktop_minimized_disabled_tray_pref">Työkalupalkin kuvaketta ei voida poistaa, koska Delta Chat käynnistettiin \"Käynnistä pienennettynä\" -valinnalla.</string>
+    <string name="no_spellcheck_suggestions_found">Oikeinkirjoitusehdotusta ei löydy.</string>
+    <string name="show_window">Näytä ikkuna</string>
+    <string name="login_socks5_experimental_warning">SOCKS5-tuki on kokeellinen. Käytä omalla vastuulla. Jos annat osoitteen sähköpostikenttään, DNS-etsintää ei tunneloida SOCKS5 läpi.</string>
+
+    <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
+    <string name="a11y_delivery_status_error">Toimituksen tila: virhe</string>
+    <string name="a11y_encryption_padlock">Salauksen lukko</string>
+    <string name="a11y_delivery_status_sending">Toimituksen tila: lähetetään</string>
+    <string name="a11y_delivery_status_draft">Toimituksen tila: luonnos</string>
+    <string name="a11y_delivery_status_delivered">Toimituksen tila: toimitettu</string>
+    <string name="a11y_delivery_status_read">Toimituksen tila: luettu</string>
+    <string name="a11y_delivery_status_invalid">Toimituksen tila virheellinen</string>
+    <string name="a11y_message_context_menu_btn_label">Viestin toiminnot</string>
+    <string name="a11y_background_preview_label">Esikatselu taustalla</string>
+    <string name="a11y_disappearing_messages_activated">Viestien katoaminen päällä</string>
+
+
+    <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
+    <string name="InfoPlist_NSCameraUsageDescription">Delta Chat käyttää kameraa kuvien ja videoiden kuvaamiseen ja lähettämiseen sekä QR-koodien skannaamiseen.</string>
+    <string name="InfoPlist_NSContactsUsageDescription">Delta Chat käyttää yhteystietojasi näyttämään listan sähköpostiosoitteista, joihin voit kirjoittaa. Delta Chatilla ei ole palvelimia, eikä yhteystietojasi lähetetä mihinkään.</string>
+    <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat käyttää mikrofonia ääniviestien ja äänellisten videoiden tallentamiseen ja lähettämiseen.</string>
+    <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat antaa sinun valita, mitkä kuvat kirjastostasi haluat lähettää.</string>
+    <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat haluaa tallentaa kuvia kirjastoosi.</string>
+
+
+    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+    <string name="pref_background_notifications">Ilmoitukset taustalla</string>
+    <string name="pref_background_notifications_explain">Käyttää yhteyttä palvelimeesi taustalla. Akun käytön optimointi on poistettava käytöstä.</string>
+    <string name="pref_background_notifications_rationale">Yhteyden ylläpitämiseksi sähköpostipalvelimen kanssa ja viestien vastaanottamiseksi taustalla, poista akun käytön optimointi käytöstä seuraavassa vaiheessa.\n\nDelta Chat käyttää vain vähän laitteen suorituskyvystä, eikä juurikaan kuluta akkua.</string>
+    <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
+    <string name="pref_reliable_service">Luotettava yhteys taustalla</string>
+    <string name="pref_reliable_service_explain">Vaatii pysyvän ilmoituksen</string>
+    <string name="perm_enable_bg_reminder_title">Napauta vastaanottaaksesi viestejä, kun Delta Chat on taustalla.</string>
+    <string name="perm_enable_bg_already_done">Annoit jo luvan viestien vastaanottamiselle taustalla.\n\nJos et saa viestejä taustalla, tarkista myös järjestelmäasetukset.</string>
+
+
+    <!-- device messages for updates -->
+    <string name="update_1_24_android">1.24 pikakatsaus:\n\n• Säästä napautuksia: vaihda tiliä ylävasemmalla keskustelulistan yltä\n• Säästä lisää napautuksia: napauta sovelluskuvaketta pitkään valitaksesi keskusteluja suoraan.\n• Säästä dataa: lataa suuria tiedostoja tarpeen mukaan.\n• Säästä hermoja: nopeammat liittymiset QR-koodien avulla ja lisää QR-koodivalintoja\n\nLisää 👉</string>
+    <string name="update_1_24_ios">1.24 pikakatsaus:\n\n• Keskustelun sisäinen haku keskustelun profiilisivulta.\n• Säästä dataa lataamalla suuria tiedostoja tarpeen mukaan.\n• Säästä hermoja liittymällä nopeammin QR-koodien kautta\n\nLisää 👉</string>
+    <string name="update_1_26">1.26 hiomista 💅\n\n•QR-koodit näyttävät paremmilta kaikilla alustoilla.\n• Avatarit ja mitalit näyttävät samankaltaisilta eri alustojen välillä.\n• Paljon ongelmia korjattu.</string>
+    <string name="update_1_28_android">1.28 Nostot:\n\n🔒Salaus: Uusi kokeellinen valinta yhteystietojen, salausavainten ja tekstiviestien säilyttämiseksi salattuina latteellasi. Saatavilla ainoastaan tilin luomisen ja varmuuskopioiden tuomisen yhteydessä.\n\n📫 Kirjoita sähköpostilistoille.\n\n💫 Nopeampi asetusten luonti monille sähköpostipalvelimille ja yksinkertaistetut verkkoasetukset virheellisten asetusten ehkäisemiseksi\n\n🐜 Paljon käyttäjien raportoimien ongelmien korjauksia.</string>
+    <string name="update_1_28_ios_extra_line">... ja nyt voit vaihtaa taustakuvan: \"Asetukset / Taustakuva\" :)</string>
+
+</resources>
