@@ -636,7 +636,7 @@
     <string name="pref_auto_folder_moves">Автоматически Перемещать в папку DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">Сообщения чатов переносятся, чтобы избежать путаницы в папке «Входящие»</string>
     <string name="pref_only_fetch_mvbox_title">Загружать только из папки DeltaChat</string>
-    <string name="pref_only_fetch_mvbox_explain">Игнорировать другие папки. Для этого требуется, чтобы ваш сервер сам перемещал сообщения в папку DeltaChat.</string>
+    <string name="pref_only_fetch_mvbox_explain">Игнорировать другие папки. Необходимо чтобы ваш сервер перемещал сообщения в папку DeltaChat.</string>
     <string name="pref_show_emails">Показывать обычную почту</string>
     <string name="pref_show_emails_no">Нет, только чаты</string>
     <string name="pref_show_emails_accepted_contacts">Для принятых контактов</string>
