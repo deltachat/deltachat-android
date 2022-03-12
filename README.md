@@ -103,7 +103,7 @@ and mimic what it does.
 
 First, you need to setup Android SDK and Android NDK. Configure
 `ANDROID_NDK_ROOT` environment variable to point to the Android NDK
-installation directory by adding this to your `.bashrc`:
+installation directory e.g. by adding this to your `.bashrc`:
 
 ```bash
 export ANDROID_NDK_ROOT=${HOME}/Android/Sdk/ndk/[version] # (or whereever your NDK is) Note that there is no `/` at the end!
@@ -157,7 +157,7 @@ environment.
    called something like `android-ndk-r23b-linux`; move this folder e.g. to `~/android-ndk`.
 
 7. Export the folder path to your environment as `ANDROID_NDK_ROOT` and add it to `PATH`.
-   You can achieve this e.g. by adding the following lines to `.bashrc`
+   You can achieve this e.g. by adding this to your `.bashrc`
    ```bash
    export ANDROID_NDK_ROOT=${HOME}/android-ndk
    export PATH=${PATH}:${ANDROID_NDK_ROOT}/toolchains/llvm/prebuilt/linux-x86_64/bin/:${ANDROID_NDK_ROOT}
