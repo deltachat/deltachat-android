@@ -101,9 +101,16 @@ See https://wiki.archlinux.org/index.php/Podman#Rootless_Podman for more informa
 To setup build environment manually, you can read the `Dockerfile`
 and mimic what it does.
 
-First, you need to setup Android SDK and Android NDK.  Configure
+First, you need to setup Android SDK and Android NDK. Configure
 `ANDROID_NDK_ROOT` environment variable to point to the Android NDK
-installation directory.  Currently ndk20b is the minimum required version.
+installation directory e.g. by adding this to your `.bashrc`:
+
+```bash
+export ANDROID_NDK_ROOT=${HOME}/Android/Sdk/ndk/[version] # (or whereever your NDK is) Note that there is no `/` at the end!
+export PATH=${PATH}:${ANDROID_NDK_ROOT}/toolchains/llvm/prebuilt/linux-x86_64/bin/:${ANDROID_NDK_ROOT}
+```
+
+Currently ndk20b is the minimum required version.
 Newer versions will likely work, however, are not tested and not used
 in official releases, in general, changes on the ndk-version should be
 done with care.
@@ -147,13 +154,14 @@ environment.
 6. Download Android NDK from
    [NDK Archives](https://developer.android.com/ndk/downloads)
    and extract the archive containing a single folder
-   called `android-ndk-r…`; move this folder e.g. to `~/android-ndk-r…`.
+   called something like `android-ndk-r23b-linux`; move this folder e.g. to `~/android-ndk`.
 
-7. Export the folder path to your environment as `ANDROID_NDK` and add it to `PATH`.
-   You can achieve this e.g. by adding the following lines to `.bashrc`
-   `export ANDROID_NDK=/home/USERNAME/android-ndk-r…`
-   `export PATH=$PATH:$ANDROID_NDK`.
-
+7. Export the folder path to your environment as `ANDROID_NDK_ROOT` and add it to `PATH`.
+   You can achieve this e.g. by adding this to your `.bashrc`
+   ```bash
+   export ANDROID_NDK_ROOT=${HOME}/android-ndk
+   export PATH=${PATH}:${ANDROID_NDK_ROOT}/toolchains/llvm/prebuilt/linux-x86_64/bin/:${ANDROID_NDK_ROOT}
+   ```
 
 # Run UI Tests and Benchmarks
 
