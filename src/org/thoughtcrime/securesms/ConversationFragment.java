@@ -670,7 +670,7 @@ public class ConversationFragment extends MessageSelectorFragment
         int index = 0;
         for(int pos = firstPos; pos <= lastPos; pos++) {
             DcMsg message = ((ConversationAdapter) list.getAdapter()).getMsg(pos);
-            if (message.getFromId() != DC_CONTACT_ID_SELF && !message.isSeen()) {
+            if (message.getFromId() != DC_CONTACT_ID_SELF) {
                 ids[index] = message.getId();
                 index++;
             }
