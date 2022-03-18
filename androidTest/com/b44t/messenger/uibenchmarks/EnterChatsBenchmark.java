@@ -47,35 +47,68 @@ public class EnterChatsBenchmark {
   public ActivityScenarioRule<ConversationListActivity> activityRule = TestUtils.getOfflineActivityRule();
 
   @Test
-  public void createAndEnterNChats() {
-    if (!USE_EXISTING_CHATS) {
-      createChatAndGoBack("Group #1", "Hello!", "Some links: https://testrun.org", "And a command: /help");
-      createChatAndGoBack("Group #2", "example.org, alice@example.org", "aaaaaaa", "bbbbbb");
-      createChatAndGoBack("Group #3", repeat("Some string ", 600), repeat("Another string", 200), "Hi!!!");
-      createChatAndGoBack("Group #4", "xyzabc", "Hi!!!!", "Let's meet!");
-      createChatAndGoBack("Group #5", repeat("aaaa", 40), "bbbbbbbbbbbbbbbbbb", "ccccccccccccccc");
-      createChatAndGoBack("Group #6", "aaaaaaaaaaa", repeat("Hi! ", 1000), "bbbbbbbbbb");
-      createChatAndGoBack("Group #7", repeat("abcdefg ", 500), repeat("xxxxx", 100), "yrrrrrrrrrrrrr");
-      createChatAndGoBack("Group #8", "and a number: 037362/384756", "ccccc", "Nice!");
-      createChatAndGoBack("Group #9", "ddddddddddddddddd", "zuuuuuuuuuuuuuuuu", "ccccc");
-      createChatAndGoBack("Group #10", repeat("xxxxxxyyyyy", 100), repeat("String!!", 10), "abcd");
-    }
+  public void createAndEnter10FilledChats() {
+    create10Chats(true);
 
     String[] times = new String[GO_THROUGH_ALL_CHATS_N_TIMES];
     for (int i = 0; i < GO_THROUGH_ALL_CHATS_N_TIMES; i++) {
-      times[i] = "" + timeGoToAllChats();
+      times[i] = "" + timeGoToNChats(10); // 10 group chats were created
     }
     Log.i(TAG, "MEASURED RESULTS (Benchmark) - Going thorough all 10 chats: " + String.join(",", times));
   }
 
-  private long timeGoToAllChats() {
+  @Test
+  public void createAndEnterEmptyChats() {
+    create10Chats(false);
+
+    String[] times = new String[GO_THROUGH_ALL_CHATS_N_TIMES];
+    for (int i = 0; i < GO_THROUGH_ALL_CHATS_N_TIMES; i++) {
+      times[i] = "" + timeGoToNChats(1);
+    }
+    Log.i(TAG, "MEASURED RESULTS (Benchmark) - Entering and leaving 1 empty chat: " + String.join(",", times));
+  }
+
+  @Test
+  public void enterFilledChat() {
+    createChatAndGoBack("Group #1", "Hello!", "Some links: https://testrun.org", "And a command: /help", true);
+
+    String[] times = new String[50];
+    for (int i = 0; i < times.length; i++) {
+      long start = System.currentTimeMillis();
+      onView(withId(R.id.list)).perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
+      long end = System.currentTimeMillis();
+      long diff = end - start;
+      pressBack();
+      Log.i(TAG, "Measured (Benchmark) " + (i+1) + "/" + times.length + ": Entering 1 filled chat took " + diff + "ms " + "(going back took " + (System.currentTimeMillis() - end) + "ms)");
+
+      times[i] = "" + diff;
+    }
+    Log.i(TAG, "MEASURED RESULTS (Benchmark) - Entering 1 filled chat: " + String.join(",", times));
+  }
+
+  private void create10Chats(boolean fillWithMsgs) {
+    if (!USE_EXISTING_CHATS) {
+      createChatAndGoBack("Group #1", "Hello!", "Some links: https://testrun.org", "And a command: /help", fillWithMsgs);
+      createChatAndGoBack("Group #2", "example.org, alice@example.org", "aaaaaaa", "bbbbbb", fillWithMsgs);
+      createChatAndGoBack("Group #3", repeat("Some string ", 600), repeat("Another string", 200), "Hi!!!", fillWithMsgs);
+      createChatAndGoBack("Group #4", "xyzabc", "Hi!!!!", "Let's meet!", fillWithMsgs);
+      createChatAndGoBack("Group #5", repeat("aaaa", 40), "bbbbbbbbbbbbbbbbbb", "ccccccccccccccc", fillWithMsgs);
+      createChatAndGoBack("Group #6", "aaaaaaaaaaa", repeat("Hi! ", 1000), "bbbbbbbbbb", fillWithMsgs);
+      createChatAndGoBack("Group #7", repeat("abcdefg ", 500), repeat("xxxxx", 100), "yrrrrrrrrrrrrr", fillWithMsgs);
+      createChatAndGoBack("Group #8", "and a number: 037362/384756", "ccccc", "Nice!", fillWithMsgs);
+      createChatAndGoBack("Group #9", "ddddddddddddddddd", "zuuuuuuuuuuuuuuuu", "ccccc", fillWithMsgs);
+      createChatAndGoBack("Group #10", repeat("xxxxxxyyyyy", 100), repeat("String!!", 10), "abcd", fillWithMsgs);
+    }
+  }
+
+  private long timeGoToNChats(int numChats) {
     long start = System.currentTimeMillis();
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < numChats; i++) {
       onView(withId(R.id.list)).perform(RecyclerViewActions.actionOnItemAtPosition(i, click()));
       pressBack();
     }
     long diff = System.currentTimeMillis() - start;
-    Log.i(TAG, "Measured (Benchmark): Going through all chats took " + diff + "ms");
+    Log.i(TAG, "Measured (Benchmark): Going through " + numChats + " chats took " + diff + "ms");
     return diff;
   }
 
@@ -87,17 +120,20 @@ public class EnterChatsBenchmark {
     return s.toString();
   }
 
-  private void createChatAndGoBack(String groupName, String text1, String text2, String text3) {
+  private void createChatAndGoBack(String groupName, String text1, String text2, String text3, boolean fillWithMsgs) {
     onView(withId(R.id.fab)).perform(click());
     onView(withText(R.string.menu_new_group)).perform(click());
     onView(withHint(R.string.name_desktop)).perform(replaceText(groupName));
     onView(withContentDescription(R.string.group_create_button)).perform(click());
-    sendText(text1);
-    sendText(text2);
-    sendText(text3);
-    sendText(text1);
-    sendText(text2);
-    sendText(text3);
+
+    if (fillWithMsgs) {
+      sendText(text1);
+      sendText(text2);
+      sendText(text3);
+      sendText(text1);
+      sendText(text2);
+      sendText(text3);
+    }
 
     pressBack();
     pressBack();
