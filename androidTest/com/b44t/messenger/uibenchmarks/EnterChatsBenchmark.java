@@ -90,7 +90,7 @@ public class EnterChatsBenchmark {
   private void createChatAndGoBack(String groupName, String text1, String text2, String text3) {
     onView(withId(R.id.fab)).perform(click());
     onView(withText(R.string.menu_new_group)).perform(click());
-    onView(withHint(R.string.group_name)).perform(replaceText(groupName));
+    onView(withHint(R.string.name_desktop)).perform(replaceText(groupName));
     onView(withContentDescription(R.string.group_create_button)).perform(click());
     sendText(text1);
     sendText(text2);
