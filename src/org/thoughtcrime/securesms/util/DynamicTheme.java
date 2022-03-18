@@ -44,7 +44,7 @@ public class DynamicTheme {
       OverridePendingTransition.invoke(activity);
       activity.startActivity(intent);
       OverridePendingTransition.invoke(activity);
-      //CachedInflater.from(activity).clear();
+      CachedInflater.from(activity).clear();
     }
   }
 

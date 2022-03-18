@@ -165,6 +165,12 @@ public class ConversationListFragment extends Fragment
   }
 
   @Override
+  public void onStart() {
+    super.onStart();
+    ConversationFragment.prepare(requireContext());
+  }
+
+  @Override
   public void onResume() {
     super.onResume();
 

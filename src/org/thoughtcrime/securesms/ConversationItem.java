@@ -153,8 +153,6 @@ public class ConversationItem extends BaseConversationItem
 
     bodyText.setOnLongClickListener(passthroughClickListener);
     bodyText.setOnClickListener(passthroughClickListener);
-
-    bodyText.setMovementMethod(LongClickMovementMethod.getInstance(getContext()));
   }
 
   @Override
@@ -337,6 +335,7 @@ public class ConversationItem extends BaseConversationItem
     bodyText.setClickable(false);
     bodyText.setFocusable(false);
     bodyText.setTextSize(TypedValue.COMPLEX_UNIT_SP, Prefs.getMessageBodyTextSize(context));
+    bodyText.setMovementMethod(LongClickMovementMethod.getInstance(getContext()));
 
     String text = messageRecord.getText();
 

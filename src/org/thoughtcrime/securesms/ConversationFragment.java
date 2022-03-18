@@ -39,6 +39,7 @@ import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -65,6 +66,7 @@ import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.AccessibilityUtil;
+import org.thoughtcrime.securesms.util.CachedInflater;
 import org.thoughtcrime.securesms.util.Debouncer;
 import org.thoughtcrime.securesms.util.StickyHeaderDecoration;
 import org.thoughtcrime.securesms.util.Util;
@@ -109,6 +111,16 @@ public class ConversationFragment extends MessageSelectorFragment
 
     public boolean isPaused;
     private Debouncer markseenDebouncer;
+
+    public static void prepare(@NonNull Context context) {
+        FrameLayout parent = new FrameLayout(context);
+        parent.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.WRAP_CONTENT));
+
+        CachedInflater.from(context).cacheUntilLimit(R.layout.conversation_item_received, parent, 10);
+        CachedInflater.from(context).cacheUntilLimit(R.layout.conversation_item_sent, parent, 10);
+        CachedInflater.from(context).cacheUntilLimit(R.layout.conversation_item_update, parent, 5);
+        CachedInflater.from(context).cacheUntilLimit(R.layout.conversation_item_videochat, parent, 1);
+    }
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -283,6 +295,7 @@ public class ConversationFragment extends MessageSelectorFragment
 
             dateDecoration = new StickyHeaderDecoration(adapter, false, false);
             list.addItemDecoration(dateDecoration);
+            ConversationAdapter.initializePool(list.getRecycledViewPool());
 
             int freshMsgs = dcContext.getFreshMsgCount((int) chatId);
             SetStartingPositionLinearLayoutManager layoutManager = (SetStartingPositionLinearLayoutManager) list.getLayoutManager();

@@ -52,6 +52,7 @@ import java.security.SecureRandom;
 import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 
 public class Util {
@@ -75,6 +76,10 @@ public class Util {
 
   public static boolean isEmpty(ComposeText value) {
     return value == null || value.getText() == null || TextUtils.isEmpty(value.getTextTrimmed());
+  }
+
+  public static <K, V> V getOrDefault(@NonNull Map<K, V> map, K key, V defaultValue) {
+    return map.containsKey(key) ? map.get(key) : defaultValue;
   }
 
   public static CharSequence getBoldedString(String value) {

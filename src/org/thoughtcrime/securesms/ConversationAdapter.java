@@ -18,6 +18,7 @@ package org.thoughtcrime.securesms;
 
 import android.content.Context;
 import androidx.annotation.LayoutRes;
+import androidx.annotation.MainThread;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
@@ -36,6 +37,7 @@ import org.thoughtcrime.securesms.ConversationAdapter.HeaderViewHolder;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.recipients.Recipient;
+import org.thoughtcrime.securesms.util.CachedInflater;
 import org.thoughtcrime.securesms.util.DateUtils;
 import org.thoughtcrime.securesms.util.LRUCache;
 import org.thoughtcrime.securesms.util.StickyHeaderDecoration;
@@ -90,7 +92,6 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
   private final @NonNull  GlideRequests     glideRequests;
   private final @NonNull  Locale            locale;
   private final @NonNull  Recipient         recipient;
-  private final @NonNull  LayoutInflater    inflater;
   private final @NonNull  Context           context;
   private final @NonNull  Calendar          calendar;
 
@@ -195,11 +196,6 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
       textView = ViewUtil.findById(itemView, R.id.text);
     }
 
-    HeaderViewHolder(TextView textView) {
-      super(textView);
-      this.textView = textView;
-    }
-
     public void setText(CharSequence text) {
       textView.setText(text);
     }
@@ -223,7 +219,6 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
     this.clickListener = clickListener;
     this.recipient = recipient;
     this.context = context;
-    this.inflater = LayoutInflater.from(context);
     this.calendar = Calendar.getInstance();
     this.dcContext     = DcHelper.getContext(context);
 
@@ -256,7 +251,7 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
 
   @Override
   public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-    final V itemView = ViewUtil.inflate(inflater, parent, getLayoutForViewType(viewType));
+    final V itemView = CachedInflater.from(parent.getContext()).inflate(getLayoutForViewType(viewType), parent, false);
     itemView.setOnClickListener(view -> {
       if (clickListener != null) {
         clickListener.onItemClick(itemView.getMessageRecord());
@@ -327,6 +322,16 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
     batchSelected.clear();
   }
 
+  /**
+   * Provided a pool, this will initialize it with view counts that make sense.
+   */
+  @MainThread
+  static void initializePool(@NonNull RecyclerView.RecycledViewPool pool) {
+    pool.setMaxRecycledViews(MESSAGE_TYPE_OUTGOING, 15);
+    pool.setMaxRecycledViews(MESSAGE_TYPE_INCOMING, 15);
+    // No idea what would be sensible values for the other types
+  }
+
   public Set<DcMsg> getSelectedItems() {
     return Collections.unmodifiableSet(new HashSet<>(batchSelected));
   }
@@ -363,7 +368,7 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
 
   @Override
   public HeaderViewHolder onCreateHeaderViewHolder(ViewGroup parent) {
-    return new HeaderViewHolder(LayoutInflater.from(getContext()).inflate(R.layout.conversation_item_header, parent, false));
+    return new HeaderViewHolder(CachedInflater.from(getContext()).inflate(R.layout.conversation_item_header, parent, false));
   }
 
   /**
