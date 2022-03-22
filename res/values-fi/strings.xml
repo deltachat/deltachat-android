@@ -275,17 +275,17 @@
     </plurals>
     <string name="file_saved_to">Tiedosto tallennettu \"%1$s\".</string>
 
-    <string name="videochat">Videopuhelu</string>
+    <string name="videochat">Videokeskustelu</string>
     <string name="videochat_invite_user_to_videochat">Kutsu %1$s videokeskusteluun?</string>
     <string name="videochat_invite_user_hint">Tämä vaatii molemmilta yhteensopivan sovelluksen tai selaimen.</string>
     <string name="videochat_contact_invited_hint">%1$s kutsui sinut videokeskusteluun.</string>
     <string name="videochat_you_invited_hint">Lähetit kutsun videokeskusteluun.</string>
     <string name="videochat_tap_to_join">Napauta liittyäksesi</string>
     <string name="videochat_tap_to_open">Napauta avataksesi</string>
-    <string name="videochat_instance">Videopuhelun tarjoaja</string>
-    <string name="videochat_instance_placeholder">Videopuhelusi tarjoaja</string>
-    <string name="videochat_instance_explain">Jos videopuhelun tarjoaja määritellään, voit aloittaa videopuhelun mistä tahansa keskustelusta. Videopuhelu vaatii molemmilta yhteensopivan sovelluksen tai selaimen.\n\nEsimerkkejä: https://meet.jit.si/$ROOM tai basicwebrtc:https://sinun-palvelimesi</string>
-    <string name="videochat_instance_from_qr">Käytä \"%1$s\" videopuhelupyyntöihin?\n\nTämän jälkeen voit aloittaa videopuhelun mistä tahansa keskustelusta. Tämä korvaa edellisen videokeskusteluasetuksen, jos sellainen on.</string>
+    <string name="videochat_instance">Videokeskustelun tarjoaja</string>
+    <string name="videochat_instance_placeholder">Videokeskustelusi tarjoaja</string>
+    <string name="videochat_instance_explain">Jos videokeskustelun tarjoaja määritellään, voit aloittaa videokeskustelun mistä tahansa keskustelusta. Videokeskustelu vaatii molemmilta yhteensopivan sovelluksen tai selaimen.\n\nEsimerkkejä: https://meet.jit.si/$ROOM tai basicwebrtc:https://sinun-palvelimesi</string>
+    <string name="videochat_instance_from_qr">Käytä \"%1$s\" videokeskustelupyyntöihin?\n\nTämän jälkeen voit aloittaa videokeskustelun mistä tahansa keskustelusta. Tämä korvaa edellisen videokeskusteluasetuksen, jos sellainen on.</string>
     <string name="videochat_invitation">Videokeskustelukutsu</string>
     <string name="videochat_invitation_body">Sinut on kutsuttu videokeskusteluun, klikkaa %1$s liittyäksesi.</string>
 
@@ -538,8 +538,8 @@
     <string name="pref_default_status_label">Allekirjoitus</string>
     <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
     <string name="pref_default_status_text">Lähetetty Delta Chat -sovelluksesta: https://delta.chat</string>
-    <string name="pref_enter_sends">Enter-painike lähettää</string>
-    <string name="pref_enter_sends_explain">Enter-painikkeen painaminen lähettää viestejä</string>
+    <string name="pref_enter_sends">Enter-näppäin lähettää</string>
+    <string name="pref_enter_sends_explain">Enter-näppäimen painaminen lähettää viestin</string>
     <string name="pref_outgoing_media_quality">Lähtevän median laatu</string>
     <string name="pref_outgoing_balanced">Tasapainotettu</string>
     <string name="pref_outgoing_worse">Huonompi laatu, pienempi koko</string>
@@ -551,9 +551,9 @@
     <string name="pref_notifications">Ilmoitukset</string>
     <string name="pref_notifications_show">Näytä</string>
     <string name="pref_notifications_priority">Tärkeys</string>
-    <string name="pref_notifications_explain">Kytke päälle järjestelmän ilmoitukset uusista viesteistä</string>
+    <string name="pref_notifications_explain">Järjestelmän ilmoitukset uusista viesteistä</string>
     <string name="pref_show_notification_content">Näytä viestien sisältö ilmoituksissa</string>
-    <string name="pref_show_notification_content_explain">Näyttää lähettäjän nimen ja viestin ensimmäiset sanat ilmoituksessa</string>
+    <string name="pref_show_notification_content_explain">Näytä lähettäjän nimi ja viestin ensimmäiset sanat ilmoituksessa</string>
     <string name="pref_led_color">LED-väri</string>
     <string name="pref_sound">Ääni</string>
     <string name="pref_silent">Äänetön</string>
@@ -841,7 +841,7 @@
     <string name="global_menu_view_developer_desktop">Kehittäjä</string>
     <string name="global_menu_view_developer_tools_desktop">Kehittäjätyökalut</string>
     <string name="global_menu_help_desktop">Ohje</string>
-    <string name="global_menu_help_learn_desktop">Opi lisää Delta Chatista</string>
+    <string name="global_menu_help_learn_desktop">Lisätietoja Delta Chatista</string>
     <string name="global_menu_help_contribute_desktop">Osallistu GitHubissa</string>
     <string name="global_menu_help_report_desktop">Ilmoita ongelma</string>
     <string name="global_menu_help_about_desktop">Tietoja Delta Chatista</string>

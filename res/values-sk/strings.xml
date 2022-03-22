@@ -50,9 +50,9 @@
     <string name="loading">Načítam…</string>
     <string name="hide">Skryť</string>
     <string name="activate">Zapnúť</string>
-    <string name="load_remote_content">Načítajte vzdialené obrázky</string>
+    <string name="load_remote_content">Načítať vzdialené obrázky</string>
     <!-- possible answers to the question are: Never, Always, Once -->
-    <string name="load_remote_content_ask">Na sledovanie vás možno použiť obrázky na diaľku.\n\nToto nastavenie tiež umožňuje načítať písma a ďalší obsah. Aj keď je vypnutá, stále sa vám môžu zobrazovať vložené alebo uložené obrázky.\n\nNačítať vzdialené obrázky?</string>
+    <string name="load_remote_content_ask">Na sledovanie vás možno použiť obrázky nadiaľku.\n\nToto nastavenie tiež umožňuje načítať písma a ďalší obsah. Aj keď je vypnutá, stále sa vám môžu zobrazovať vložené alebo uložené obrázky.\n\nNačítať vzdialené obrázky?</string>
     <string name="always">Vždy</string>
     <string name="once">Raz</string>
     <string name="show_password">Ukáž heslo</string>
@@ -271,10 +271,10 @@
     <string name="ConversationFragment_quoted_message_not_found">Pôvodná správa sa nenašla</string>
     <string name="reply_privately">Odpovedajte súkromne</string>
 
-    <string name="mute_for_one_hour">Stíšiť 1 hodinu</string>
-    <string name="mute_for_two_hours">Stíšiť 2 hodiny</string>
-    <string name="mute_for_one_day">Stíšiť 1 deň</string>
-    <string name="mute_for_seven_days">Stíšiť 7 dní</string>
+    <string name="mute_for_one_hour">Stíšiť na 1 hodinu</string>
+    <string name="mute_for_two_hours">Stíšiť na 2 hodiny</string>
+    <string name="mute_for_one_day">Stíšiť na 1 deň</string>
+    <string name="mute_for_seven_days">Stíšiť na 7 dní</string>
     <string name="mute_forever">Stlmiť navždy</string>
 
     <string name="share_location_for_5_minutes">po dobu 5 minút</string>
@@ -406,6 +406,12 @@
     <!-- mailing lists -->
     <string name="mailing_list">Zoznam adries</string>
     <string name="mailing_list_profile_info">Zmeny v zozname adries a obrázku sa vzťahujú iba na toto zariadenie.</string>
+
+    <!-- webxdc -->
+    <!-- "Start..." button for an app -->
+    <string name="start_app">Spustiť...</string>
+    <!-- this is a warning that is shown when one tries to send something to a chat that is not yet accepted. -->
+    <string name="accept_request_first">Prosím, najprv prijmite požiadavku na čet.</string>
 
     <!-- map -->
     <string name="filter_map_on_time">Zobraziť polohy v časovom rámci</string>
@@ -561,7 +567,7 @@
     <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
     <string name="pref_default_status_text">Odoslané pomocou Delta Chat Messenger-a: https://delta.chat</string>
     <string name="pref_enter_sends">Zadajte odoslanie kľúča</string>
-    <string name="pref_enter_sends_explain">Stlačením klávesu Enter sa odošlú textové správy</string>
+    <string name="pref_enter_sends_explain">Textové správy sa odošlú po stlačení Enteru</string>
     <string name="pref_outgoing_media_quality">Kvalita odchádzajúcich médií</string>
     <string name="pref_outgoing_balanced">Vyvážený</string>
     <string name="pref_outgoing_worse">Horšia kvalita, malé rozmery</string>
@@ -593,7 +599,7 @@
     <string name="pref_incognito_keyboard_explain">Požiadajte o klávesnicu, aby deaktivovala prispôsobené učenie</string>
     <string name="pref_read_receipts">Prečítajte si potvrdenia</string>
     <string name="pref_read_receipts_explain">Ak sú potvrdenia o prečítaní zakázané, neuvidíte potvrdenia o prečítaní od ostatných.</string>
-    <string name="pref_manage_keys">Spravujte kľúče</string>
+    <string name="pref_manage_keys">Správa kľúčov</string>
     <string name="pref_use_system_emoji">Používajte systémové emodži</string>
     <string name="pref_use_system_emoji_explain">Vypnite vstavanú podporu emodži v aplikácii Delta Chat</string>
     <string name="pref_app_access">Prístup k aplikácii</string>
@@ -611,10 +617,10 @@
     <string name="pref_backup_export_explain">Záloha vám pomôže nastaviť novú inštaláciu na tomto alebo na inom zariadení.\n\nZáloha bude obsahovať všetky správy, kontakty a čety a vaše úplné nastavenie automatického šifrovania. Uložte záložný súbor na bezpečnom mieste alebo ho čo najskôr odstráňte.</string>
     <string name="pref_backup_export_start_button">Spustiť zálohovanie</string>
     <string name="pref_backup_written_to_x">Záloha bola úspešne zapísaná do priečinka „%1$s“.</string>
-    <string name="pref_managekeys_menu_title">Spravujte kľúče</string>
-    <string name="pref_managekeys_export_secret_keys">Exportujte tajné kľúče</string>
+    <string name="pref_managekeys_menu_title">Správa kľúčov</string>
+    <string name="pref_managekeys_export_secret_keys">Exportovať tajné kľúče</string>
     <string name="pref_managekeys_export_explain">Exportovať tajné kľúče do priečinka „%1$s“?</string>
-    <string name="pref_managekeys_import_secret_keys">Importujte tajné kľúče</string>
+    <string name="pref_managekeys_import_secret_keys">Importovať tajné kľúče</string>
     <string name="pref_managekeys_import_explain">Importovať tajné kľúče z priečinka „%1$s“?\n\n• Existujúce tajné kľúče nebudú odstránené\n\n• Posledný importovaný kľúč sa použije ako nový predvolený kľúč, pokiaľ v názve súboru nebude slovo „legacy“.</string>
     <string name="pref_managekeys_secret_keys_exported_to_x">Tajné kľúče boli úspešne zapísané do priečinka „%1$s“.</string>
     <string name="pref_managekeys_secret_keys_imported_from_x">Tajné kľúče importované z „%1$s“.</string>
@@ -627,14 +633,18 @@
     <string name="pref_watch_sent_folder">Pozrieť priečinok Odoslané</string>
     <string name="pref_watch_mvbox_folder">Sledujte priečinok DeltaChat</string>
     <string name="pref_send_copy_to_self">Odoslať kópiu sebe</string>
-    <string name="pref_auto_folder_moves">Automatické presuny do priečinka DeltaChat</string>
-    <string name="pref_auto_folder_moves_explain">Četové konverzácie sa presúvajú, aby sa predišlo preplneniu doručenej pošty</string>
+    <string name="pref_auto_folder_moves">Automaticky presúvať do priečinka DeltaChat</string>
+    <string name="pref_auto_folder_moves_explain">Četové konverzácie sa presunú, aby sa predišlo preplneniu doručenej pošty</string>
+    <string name="pref_only_fetch_mvbox_title">Prijímať iba z priečinka DeltaChat</string>
+    <string name="pref_only_fetch_mvbox_explain">Ignorovať zvyšné priečinky. Vyžaduje, aby váš server presúvať správy četu do priečinka DeltaChat.</string>
     <string name="pref_show_emails">Zobraziť klasické e-maily</string>
     <string name="pref_show_emails_no">Nie, iba čety</string>
     <string name="pref_show_emails_accepted_contacts">Pre prijaté kontakty</string>
     <string name="pref_show_emails_all">Všetky</string>
     <string name="pref_experimental_features">Experimentálne vlastnosti</string>
     <string name="pref_on_demand_location_streaming">Streamovanie polohy na požiadanie</string>
+    <string name="pref_developer_mode">Režim pre vývojárov</string>
+    <string name="pref_developer_mode_explain">Zapína voľby pre ladenie a môže spôsobiť nižšiu stabilitu aplikácie. Iba pre vývojárov.</string>
     <string name="pref_background_default">Predvolené pozadie</string>
     <string name="pref_background_default_color">Predvolená farba</string>
     <string name="pref_background_custom_image">Vlastný obrázok</string>
@@ -701,7 +711,7 @@
     <string name="autocrypt_send_asm_explain_before">Správa o nastavení automatického šifrovania bezpečne zdieľa vaše komplexné nastavenie s ostatnými aplikáciami kompatibilnými s automatickým šifrovaním.\n\nNastavenie bude šifrované tu zobrazeným nastavovacím kódom a musí byť zadané na druhom zariadení.</string>
     <string name="autocrypt_send_asm_button">Pošlite správu s nastavením autokryptovania</string>
     <string name="autocrypt_send_asm_explain_after">Vaše nastavenie bolo odoslané vám. Prepnite na druhé zariadenie a otvorte správu o nastavení. Mali by ste byť požiadaní o nastavovací kód. Zadajte nasledujúce číslice:\n\n%1$s</string>
-    <string name="autocrypt_prefer_e2ee">Uprednostnite šifrovanie typu end-to-end</string>
+    <string name="autocrypt_prefer_e2ee">Preferovať šifrovanie typu end-to-end</string>
     <string name="autocrypt_asm_subject">Správa o nastavení automatického šifrovania</string>
     <string name="autocrypt_asm_general_body">Toto je správa o nastavení automatického šifrovania, ktorá sa používa na prenos komplexného nastavenia medzi klientmi.\n\nAk chcete dešifrovať a použiť svoje nastavenie, otvorte správu v klientovi kompatibilnom s automatickým šifrovaním a zadajte inštalačný kód uvedený na generujúcom zariadení.</string>
     <string name="autocrypt_asm_click_body">Toto je správa o automatickom šifrovaní, ktorá sa používa na prenos komplexného nastavenia medzi klientmi.\n\nAk chcete dešifrovať a použiť svoje nastavenie, klepnite na túto správu alebo na ňu kliknite.</string>
@@ -782,10 +792,10 @@
     <string name="qrshow_x_has_joined_group">%1$s sa pripojil k skupine.</string>
     <string name="qrshow_join_group_title">QR pozývací kód</string>
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
-    <string name="qrshow_join_group_hint">Naskenujte to a pripojte sa k skupine „%1$s“.</string>
+    <string name="qrshow_join_group_hint">Naskenujte a pripojte sa ku skupine „%1$s“.</string>
     <string name="qrshow_join_contact_title">QR pozývací kód</string>
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
-    <string name="qrshow_join_contact_hint">Naskenujte to a vytvorte kontakt s %1$s .</string>
+    <string name="qrshow_join_contact_hint">Naskenujte a vytvorte kontakt s %1$s .</string>
     <string name="qrshow_join_contact_no_connection_toast">Nie je pripojenie na internet, nedá sa nastaviť kód QR.</string>
     <string name="qraccount_ask_create_and_login">Vytvoriť novú e-mailovú adresu na „%1$s“ a prihlásiť sa tam?</string>
     <string name="qraccount_ask_create_and_login_another">Vytvorte novú e-mailovú adresu na „%1$s“ a prihláste sa tam?\n\nVáš existujúci účet nebude odstránený. Medzi položkami môžete prepínať pomocou položky „Prepnúť účet“.</string>
@@ -853,7 +863,7 @@
     <string name="global_menu_edit_redo_desktop">Znova</string>
     <string name="global_menu_edit_cut_desktop">Vystrihnúť</string>
     <string name="global_menu_edit_copy_desktop">Kopírovať</string>
-    <string name="global_menu_edit_paste_desktop">Vložiť</string>
+    <string name="global_menu_edit_paste_desktop">Prilepiť</string>
     <string name="global_menu_view_desktop">Zobraziť</string>
     <string name="global_menu_view_floatontop_desktop">Plávajúce okno navrchu</string>
     <string name="global_menu_view_developer_desktop">Vývojár</string>
@@ -931,4 +941,6 @@
     <string name="update_1_24_android">1.24 v skratke:\n\n• Uloženie klepnutím: Výber účtu v ľavom hornom rohu zoznamu četov\n• Uloženie viacerými klepnutiami: Dlhým klepnutím na ikonu aplikácie priamo otvoríte nedávne čety\n• Ušetrite premávku: sťahujte veľké súbory podľa potreby\n• Ušetrite nervy: rýchlejšie pripojenie QR kódu bez blokovania a nové možnosti kódu QR\n\nViac na 👉 </string>
     <string name="update_1_24_ios">1.24 v skratke:\n\n• Spustite vyhľadávanie v čete z profilu četu\n• Ušetrite premávku: sťahujte veľké súbory podľa potreby\n• Ušetrite nervy: rýchlejšie pripájanie na QR kódy bez blokovania\n\nViac na 👉</string>
     <string name="update_1_26">1.26 vylepšenia 💅\n\n• Po tom, čo boli QR kódy vo verzii 1.24 neblokovateľné, teraz vyzerajú oveľa krajšie – na všetkých platformách\n• Avatary a odznaky vyzerajú na všetkých platformách podobne\n• Opravených veľa chýb</string>
-    </resources>
+    <string name="update_1_28_ios_extra_line">… a teraz môžete vybrať pozadie v ponuke \"Nastavenia / Pozadie\" :)</string>
+
+</resources>
