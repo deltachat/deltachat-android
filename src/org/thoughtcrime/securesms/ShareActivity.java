@@ -17,7 +17,6 @@
 
 package org.thoughtcrime.securesms;
 
-import static org.thoughtcrime.securesms.util.RelayUtil.REQUEST_RELAY;
 import static org.thoughtcrime.securesms.util.RelayUtil.setSharedText;
 
 import android.Manifest;
@@ -263,11 +262,13 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity implement
     if (chatId != -1) {
       composeIntent = getBaseShareIntent(ConversationActivity.class);
       composeIntent.putExtra(EXTRA_CHAT_ID, chatId);
+      RelayUtil.setSharedUris(composeIntent, resolvedExtras);
+      startActivity(composeIntent);
     } else {
-      composeIntent = getBaseShareIntent(ConversationListActivity.class);
+      composeIntent = getBaseShareIntent(ConversationListRelayingActivity.class);
+      RelayUtil.setSharedUris(composeIntent, resolvedExtras);
+      ConversationListRelayingActivity.start(this, composeIntent);
     }
-    RelayUtil.setSharedUris(composeIntent, resolvedExtras);
-    startActivityForResult(composeIntent, REQUEST_RELAY);
     // We use startActivityForResult() here so that the conversations list is correctly updated. (hide "Device messages", ...)a
     // With startActivity() the list was not always updated before and after sharing and incorrectly showed or did not show the device talk.
     finish();

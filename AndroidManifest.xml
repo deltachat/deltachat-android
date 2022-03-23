@@ -153,6 +153,12 @@
                 android:value="org.thoughtcrime.securesms.ConversationListActivity" />
     </activity>
 
+    <activity android:name=".ConversationListRelayingActivity"
+              android:label="@string/app_name"
+              android:launchMode="singleTask"
+              android:theme="@style/TextSecure.LightNoActionBar"
+              android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize" />
+
     <activity android:name=".ConversationActivity"
               android:windowSoftInputMode="stateUnchanged"
               android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"

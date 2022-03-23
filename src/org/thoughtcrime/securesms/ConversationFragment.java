@@ -16,6 +16,9 @@
  */
 package org.thoughtcrime.securesms;
 
+import static com.b44t.messenger.DcContact.DC_CONTACT_ID_SELF;
+import static org.thoughtcrime.securesms.util.RelayUtil.setForwardingMessageIds;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
@@ -76,10 +79,6 @@ import java.util.Locale;
 import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
-
-import static com.b44t.messenger.DcContact.DC_CONTACT_ID_SELF;
-import static org.thoughtcrime.securesms.util.RelayUtil.REQUEST_RELAY;
-import static org.thoughtcrime.securesms.util.RelayUtil.setForwardingMessageIds;
 
 @SuppressLint("StaticFieldLeak")
 public class ConversationFragment extends MessageSelectorFragment
@@ -433,10 +432,10 @@ public class ConversationFragment extends MessageSelectorFragment
     }
 
     private void handleForwardMessage(final Set<DcMsg> messageRecords) {
-        Intent composeIntent = new Intent(getActivity(), ConversationListActivity.class);
+        Intent composeIntent = new Intent();
         int[] msgIds = DcMsg.msgSetToIds(messageRecords);
         setForwardingMessageIds(composeIntent, msgIds);
-        startActivityForResult(composeIntent, REQUEST_RELAY);
+        ConversationListRelayingActivity.start(this, composeIntent);
         getActivity().overridePendingTransition(R.anim.slide_from_right, R.anim.fade_scale_out);
     }
 
