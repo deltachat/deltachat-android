@@ -97,7 +97,7 @@ android {
 
     defaultConfig {
         versionCode 628
-        versionName "1.28.3"
+        versionName "1.29.0"
 
         applicationId "com.b44t.messenger"
         multiDexEnabled true
