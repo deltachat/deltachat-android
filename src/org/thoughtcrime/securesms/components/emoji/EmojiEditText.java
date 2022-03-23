@@ -7,7 +7,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatEditText;
 import android.text.InputFilter;
 import android.util.AttributeSet;
-import android.view.inputmethod.EditorInfo;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.components.emoji.EmojiProvider.EmojiDrawable;
@@ -30,7 +29,6 @@ public class EmojiEditText extends AppCompatEditText {
     if (!Prefs.isSystemEmojiPreferred(getContext())) {
       setFilters(appendEmojiFilter(this.getFilters()));
     }
-    setImeOptions(getImeOptions() | EditorInfo.IME_FLAG_NO_FULLSCREEN);
   }
 
   public void insertEmoji(String emoji) {
