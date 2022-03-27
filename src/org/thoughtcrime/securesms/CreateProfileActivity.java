@@ -10,7 +10,6 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -27,6 +26,8 @@ import androidx.annotation.NonNull;
 import androidx.loader.app.LoaderManager;
 
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.transition.Transition;
 import com.soundcloud.android.crop.Crop;
 
 import org.thoughtcrime.securesms.components.AvatarSelector;
@@ -48,11 +49,11 @@ import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.security.SecureRandom;
+
 
 @SuppressLint("StaticFieldLeak")
 public class CreateProfileActivity extends BaseActionBarActivity implements EmojiKeyboardProvider.EmojiEventListener {
@@ -74,8 +75,10 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Emoj
   private View                   reveal;
 
   private boolean fromWelcome;
+  private boolean avatarChanged;
+  private boolean imageLoaded;
 
-  private byte[] avatarBytes;
+  private Bitmap avatarBmp;
   private AttachmentManager attachmentManager;
 
 
@@ -94,6 +97,7 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Emoj
     getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close_white_24dp);
 
     attachmentManager = new AttachmentManager(this, () -> {});
+    avatarChanged = false;
     initializeResources();
     initializeEmojiInput();
     initializeProfileName();
@@ -170,47 +174,36 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Emoj
 
       case Crop.REQUEST_CROP:
         if (resultCode == Activity.RESULT_OK) {
-
-          new AsyncTask<Void, Void, byte[]>() {
-            @Override
-            protected byte[] doInBackground(Void... params) {
-              try {
-                try {
-                  Uri imageUri = Crop.getOutput(data);
-                  Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), imageUri);
-                  ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                  bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
-                  return stream.toByteArray();
-                } catch (Exception any) {
-                  Log.e(TAG, "could not send raw JPG to core. Using scaled JPG.", any);
-                }
-                BitmapUtil.ScaleResult result =
-                    BitmapUtil.createScaledBytes(CreateProfileActivity.this, Crop.getOutput(data), new ProfileMediaConstraints());
-                return result.getBitmap();
-              } catch (BitmapDecodingException e) {
-                Log.w(TAG, e);
-                return null;
-              }
-            }
-
-            @Override
-            protected void onPostExecute(byte[] result) {
-              if (result != null) {
-                avatarBytes = result;
-                GlideApp.with(CreateProfileActivity.this)
-                        .load(avatarBytes)
-                        .skipMemoryCache(true)
-                        .diskCacheStrategy(DiskCacheStrategy.NONE)
-                        .circleCrop()
-                        .into(avatar);
-              } else {
-                Toast.makeText(CreateProfileActivity.this, R.string.error, Toast.LENGTH_LONG).show();
-              }
-            }
-          }.execute();
+          setAvatarView(data);
         }
         break;
     }
+  }
+
+  private void setAvatarView(Intent data) {
+    final Uri output = Crop.getOutput(data);
+    final ProfileMediaConstraints constraints = new ProfileMediaConstraints();
+    GlideApp.with(this)
+            .asBitmap()
+            .load(output)
+            .skipMemoryCache(true)
+            .diskCacheStrategy(DiskCacheStrategy.NONE)
+            .centerCrop()
+            .override(constraints.getImageMaxWidth(this), constraints.getImageMaxHeight(this))
+        .into(new SimpleTarget<Bitmap>() {
+              @Override
+              public void onResourceReady(@NonNull Bitmap resource, Transition<? super Bitmap> transition) {
+                avatarChanged = true;
+                imageLoaded = true;
+                avatarBmp = resource;
+              }
+            });
+    GlideApp.with(this)
+            .load(output)
+            .circleCrop()
+            .skipMemoryCache(true)
+            .diskCacheStrategy(DiskCacheStrategy.NONE)
+            .into(avatar);
   }
 
   private void onFileSelected(Uri inputFile) {
@@ -231,13 +224,6 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Emoj
     this.container    = ViewUtil.findById(this, R.id.container);
     this.reveal       = ViewUtil.findById(this, R.id.reveal);
     this.statusView   = ViewUtil.findById(this, R.id.status_text);
-
-    this.avatar.setImageDrawable(new ResourceContactPhoto(R.drawable.ic_camera_alt_white_24dp).asDrawable(this, getResources().getColor(R.color.grey_400)));
-
-    this.avatar.setOnClickListener(view ->
-            new AvatarSelector(this, LoaderManager.getInstance(this), new AvatarSelectedListener(), avatarBytes != null)
-                    .show(this, avatar)
-    );
 
     passwordAccountSettings.setOnClickListener(view -> {
       Intent intent = new Intent(this, RegistrationActivity.class);
@@ -264,32 +250,21 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Emoj
   }
 
   private void initializeProfileAvatar() {
-    String address = DcHelper.get(this, DcHelper.CONFIG_ADDRESS);
-
-    if (AvatarHelper.getSelfAvatarFile(this).exists() && AvatarHelper.getSelfAvatarFile(this).length() > 0) {
-      new AsyncTask<Void, Void, byte[]>() {
-        @Override
-        protected byte[] doInBackground(Void... params) {
-          try {
-            return Util.readFully(new FileInputStream(AvatarHelper.getSelfAvatarFile(CreateProfileActivity.this)));
-          } catch (IOException e) {
-            Log.w(TAG, e);
-            return null;
-          }
-        }
-
-        @Override
-        protected void onPostExecute(byte[] result) {
-          if (result != null) {
-            avatarBytes = result;
-            GlideApp.with(CreateProfileActivity.this)
-                    .load(result)
-                    .circleCrop()
-                    .into(avatar);
-          }
-        }
-      }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+    File avatarFile = AvatarHelper.getSelfAvatarFile(this);
+    if (avatarFile.exists() && avatarFile.length() > 0) {
+      imageLoaded = true;
+      GlideApp.with(this)
+              .load(avatarFile)
+              .circleCrop()
+              .into(avatar);
+    } else {
+      imageLoaded = false;
+      avatar.setImageDrawable(new ResourceContactPhoto(R.drawable.ic_camera_alt_white_24dp).asDrawable(this, getResources().getColor(R.color.grey_400)));
     }
+    avatar.setOnClickListener(view ->
+            new AvatarSelector(this, LoaderManager.getInstance(this), new AvatarSelectedListener(), imageLoaded)
+                    .show(this, avatar)
+    );
   }
 
 
@@ -337,12 +312,14 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Emoj
         DcHelper.set(context, DcHelper.CONFIG_DISPLAY_NAME, name);
         setStatusText();
 
-        try {
-          AvatarHelper.setSelfAvatar(CreateProfileActivity.this, avatarBytes);
-          Prefs.setProfileAvatarId(CreateProfileActivity.this, new SecureRandom().nextInt());
-        } catch (IOException e) {
-          Log.w(TAG, e);
-          return false;
+        if (avatarChanged) {
+          try {
+            AvatarHelper.setSelfAvatar(CreateProfileActivity.this, avatarBmp);
+            Prefs.setProfileAvatarId(CreateProfileActivity.this, new SecureRandom().nextInt());
+          } catch (IOException e) {
+            Log.w(TAG, e);
+            return false;
+          }
         }
 
         return true;
@@ -378,7 +355,9 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Emoj
           AttachmentManager.selectImage(CreateProfileActivity.this, REQUEST_CODE_AVATAR);
           break;
         case AvatarSelector.REMOVE_PHOTO:
-          avatarBytes = null;
+          avatarBmp = null;
+          imageLoaded = false;
+          avatarChanged = true;
           avatar.setImageDrawable(new ResourceContactPhoto(R.drawable.ic_camera_alt_white_24dp).asDrawable(CreateProfileActivity.this, getResources().getColor(R.color.grey_400)));
           break;
         case AvatarSelector.TAKE_PHOTO:
