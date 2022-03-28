@@ -38,7 +38,7 @@
                 tools:src="@drawable/ic_contact_picture"
                 android:contentDescription="@string/pref_profile_info_headline" />
 
-            <TextView style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+            <TextView style="@style/TextSecure.TitleTextStyle"
                       android:id="@+id/toolbar_title"
                       android:layout_width="0dp"
                       android:layout_height="wrap_content"
