@@ -407,6 +407,9 @@
     <string name="mailing_list">Lista mailingowa</string>
     <string name="mailing_list_profile_info">Zmiany nazwy i obrazu listy adresowej dotyczą tylko tego urządzenia.</string>
 
+    <!-- webxdc -->
+    <!-- "Start..." button for an app -->
+    <string name="start_app">Uruchom…</string>
     <!-- this is a warning that is shown when one tries to send something to a chat that is not yet accepted. -->
     <string name="accept_request_first">Najpierw zaakceptuj prośbę o czat.</string>
 
