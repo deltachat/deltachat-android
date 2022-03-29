@@ -17,11 +17,13 @@ window.webxdc = (() => {
 
     setUpdateListener: (cb, serial) => {
         last_serial = typeof serial === "undefined" ? 0 : parseInt(serial);
+        update_listener = cb
         window.__webxdcUpdate();
     },
 
     // deprecated 2022-02-20 all updates are returned through the callback set by setUpdateListener
     getAllUpdates: () => {
+      console.error("deprecated 2022-02-20 all updates are returned through the callback set by setUpdateListener")
       return Promise.resolve([]);
     },
 
