@@ -70,7 +70,7 @@ public class EnterChatsBenchmark {
 
   @Test
   public void enterFilledChat() {
-    createChatAndGoBack("Group #1", "Hello!", "Some links: https://testrun.org", "And a command: /help", true);
+    createChatAndGoBack("Group #1", true, "Hello!", "Some links: https://testrun.org", "And a command: /help");
 
     String[] times = new String[50];
     for (int i = 0; i < times.length; i++) {
@@ -88,16 +88,16 @@ public class EnterChatsBenchmark {
 
   private void create10Chats(boolean fillWithMsgs) {
     if (!USE_EXISTING_CHATS) {
-      createChatAndGoBack("Group #1", "Hello!", "Some links: https://testrun.org", "And a command: /help", fillWithMsgs);
-      createChatAndGoBack("Group #2", "example.org, alice@example.org", "aaaaaaa", "bbbbbb", fillWithMsgs);
-      createChatAndGoBack("Group #3", repeat("Some string ", 600), repeat("Another string", 200), "Hi!!!", fillWithMsgs);
-      createChatAndGoBack("Group #4", "xyzabc", "Hi!!!!", "Let's meet!", fillWithMsgs);
-      createChatAndGoBack("Group #5", repeat("aaaa", 40), "bbbbbbbbbbbbbbbbbb", "ccccccccccccccc", fillWithMsgs);
-      createChatAndGoBack("Group #6", "aaaaaaaaaaa", repeat("Hi! ", 1000), "bbbbbbbbbb", fillWithMsgs);
-      createChatAndGoBack("Group #7", repeat("abcdefg ", 500), repeat("xxxxx", 100), "yrrrrrrrrrrrrr", fillWithMsgs);
-      createChatAndGoBack("Group #8", "and a number: 037362/384756", "ccccc", "Nice!", fillWithMsgs);
-      createChatAndGoBack("Group #9", "ddddddddddddddddd", "zuuuuuuuuuuuuuuuu", "ccccc", fillWithMsgs);
-      createChatAndGoBack("Group #10", repeat("xxxxxxyyyyy", 100), repeat("String!!", 10), "abcd", fillWithMsgs);
+      createChatAndGoBack("Group #1", fillWithMsgs, "Hello!", "Some links: https://testrun.org", "And a command: /help");
+      createChatAndGoBack("Group #2", fillWithMsgs, "example.org, alice@example.org", "aaaaaaa", "bbbbbb");
+      createChatAndGoBack("Group #3", fillWithMsgs, repeat("Some string ", 600), repeat("Another string", 200), "Hi!!!");
+      createChatAndGoBack("Group #4", fillWithMsgs, "xyzabc", "Hi!!!!", "Let's meet!");
+      createChatAndGoBack("Group #5", fillWithMsgs, repeat("aaaa", 40), "bbbbbbbbbbbbbbbbbb", "ccccccccccccccc");
+      createChatAndGoBack("Group #6", fillWithMsgs, "aaaaaaaaaaa", repeat("Hi! ", 1000), "bbbbbbbbbb");
+      createChatAndGoBack("Group #7", fillWithMsgs, repeat("abcdefg ", 500), repeat("xxxxx", 100), "yrrrrrrrrrrrrr");
+      createChatAndGoBack("Group #8", fillWithMsgs, "and a number: 037362/384756", "ccccc", "Nice!");
+      createChatAndGoBack("Group #9", fillWithMsgs, "ddddddddddddddddd", "zuuuuuuuuuuuuuuuu", "ccccc");
+      createChatAndGoBack("Group #10", fillWithMsgs, repeat("xxxxxxyyyyy", 100), repeat("String!!", 10), "abcd");
     }
   }
 
@@ -120,19 +120,19 @@ public class EnterChatsBenchmark {
     return s.toString();
   }
 
-  private void createChatAndGoBack(String groupName, String text1, String text2, String text3, boolean fillWithMsgs) {
+  private void createChatAndGoBack(String groupName, boolean fillWithMsgs, String... texts) {
     onView(withId(R.id.fab)).perform(click());
     onView(withText(R.string.menu_new_group)).perform(click());
     onView(withHint(R.string.name_desktop)).perform(replaceText(groupName));
     onView(withContentDescription(R.string.group_create_button)).perform(click());
 
     if (fillWithMsgs) {
-      sendText(text1);
-      sendText(text2);
-      sendText(text3);
-      sendText(text1);
-      sendText(text2);
-      sendText(text3);
+      for (String t: texts) {
+        sendText(t);
+      }
+      for (String t: texts) {
+        sendText(t);
+      }
     }
 
     pressBack();
