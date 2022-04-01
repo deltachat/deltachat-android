@@ -42,13 +42,13 @@ public class AvatarHelper {
         return new File(dirString);
     }
 
-    public static void setSelfAvatar(@NonNull Context context, @Nullable byte[] data) throws IOException {
-        if (data == null) {
+    public static void setSelfAvatar(@NonNull Context context, @Nullable Bitmap bitmap) throws IOException {
+        if (bitmap == null) {
             DcHelper.set(context, DcHelper.CONFIG_SELF_AVATAR, null);
         } else {
             File avatar = File.createTempFile("selfavatar", ".jpg", context.getCacheDir());
             FileOutputStream out = new FileOutputStream(avatar);
-            out.write(data);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
             out.close();
             DcHelper.set(context, DcHelper.CONFIG_SELF_AVATAR, avatar.getPath()); // The avatar is copied to the blobs directory here...
             //noinspection ResultOfMethodCallIgnored
