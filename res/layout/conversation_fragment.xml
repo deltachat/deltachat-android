@@ -22,6 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:visibility="visible"
+        android:text="@string/loading"
         style="@style/NoMessagesTextView"
         tools:text="@string/chat_new_one_to_one_hint"
         />

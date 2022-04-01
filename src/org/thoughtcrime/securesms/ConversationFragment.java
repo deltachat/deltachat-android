@@ -168,7 +168,6 @@ public class ConversationFragment extends MessageSelectorFragment
         super.onActivityCreated(bundle);
 
         initializeResources();
-        initializeListAdapter();
     }
 
     private void setNoMessageText() {
@@ -243,7 +242,12 @@ public class ConversationFragment extends MessageSelectorFragment
         }
 
         initializeResources();
-        initializeListAdapter();
+
+        long startMs = System.currentTimeMillis();
+        int[] msgs = dcContext.getChatMsgs((int) chatId, 0, 0);
+        Log.i(TAG, "⏰ getChatMsgs(" + chatId + "): " + (System.currentTimeMillis() - startMs) + "ms");
+
+        initializeListAdapter(msgs);
 
         if (chatId == -1) {
             reloadList();
@@ -276,7 +280,7 @@ public class ConversationFragment extends MessageSelectorFragment
         list.addOnScrollListener(scrollListener);
     }
 
-    private void initializeListAdapter() {
+    public void initializeListAdapter(int[] msgs) {
         if (this.recipient != null && this.chatId != -1) {
             ConversationAdapter adapter = new ConversationAdapter(getActivity(), this.recipient.getChat(), GlideApp.with(this), locale, selectionClickListener, this.recipient);
             list.setAdapter(adapter);
@@ -292,7 +296,7 @@ public class ConversationFragment extends MessageSelectorFragment
                 layoutManager.setStartingPosition(freshMsgs - 1);
             }
 
-            reloadList();
+            reloadList(false, msgs);
             updateLocationButton();
 
             if (freshMsgs > 0) {
@@ -365,7 +369,12 @@ public class ConversationFragment extends MessageSelectorFragment
 
         if (this.chatId != chatId) {
             this.chatId = chatId;
-            initializeListAdapter();
+
+            long startMs = System.currentTimeMillis();
+            int[] msgs = dcContext.getChatMsgs((int) chatId, 0, 0);
+            Log.i(TAG, "⏰ getChatMsgs(" + chatId + "): " + (System.currentTimeMillis() - startMs) + "ms");
+
+            initializeListAdapter(msgs);
         }
     }
 
@@ -467,10 +476,14 @@ public class ConversationFragment extends MessageSelectorFragment
     }
 
     private void reloadList() {
-        reloadList(false);
+        long startMs = System.currentTimeMillis();
+        int[] msgs = dcContext.getChatMsgs((int) chatId, 0, 0);
+        Log.i(TAG, "⏰ getChatMsgs(" + chatId + "): " + (System.currentTimeMillis() - startMs) + "ms");
+
+        reloadList(false, msgs);
     }
 
-    private void reloadList(boolean chatModified) {
+    private void reloadList(boolean chatModified, int[] msgs) {
         ConversationAdapter adapter = getListAdapter();
         if (adapter == null) {
             return;
@@ -498,10 +511,6 @@ public class ConversationFragment extends MessageSelectorFragment
 
         DcContext dcContext = DcHelper.getContext(getContext());
 
-        long startMs = System.currentTimeMillis();
-        int[] msgs = dcContext.getChatMsgs((int) chatId, 0, 0);
-        Log.i(TAG, "⏰ getChatMsgs(" + chatId + "): " + (System.currentTimeMillis() - startMs) + "ms");
-
         adapter.changeData(msgs);
 
         if (firstLoad) {
@@ -520,6 +529,7 @@ public class ConversationFragment extends MessageSelectorFragment
 
         if(!adapter.isActive()){
             setNoMessageText();
+            noMessageTextView.setVisibility(View.GONE);
             noMessageTextView.setVisibility(View.VISIBLE);
         }
         else{
@@ -952,7 +962,10 @@ public class ConversationFragment extends MessageSelectorFragment
             case DcContext.DC_EVENT_CHAT_MODIFIED:
                 if (event.getData1Int() == chatId) {
                   updateLocationButton();
-                  reloadList(true);
+                  long startMs = System.currentTimeMillis();
+                  int[] msgs = dcContext.getChatMsgs((int) chatId, 0, 0);
+                  Log.i(TAG, "⏰ getChatMsgs(" + chatId + "): " + (System.currentTimeMillis() - startMs) + "ms");
+                  reloadList(true, msgs);
                 }
                 break;
         }

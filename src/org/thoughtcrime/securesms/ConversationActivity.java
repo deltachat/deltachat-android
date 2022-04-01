@@ -228,6 +228,15 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   protected void onCreate(Bundle state, boolean ready) {
     final Context context = getApplicationContext();
     this.dcContext = DcHelper.getContext(context);
+    chatId = getIntent().getIntExtra(CHAT_ID_EXTRA, -1);
+
+    Util.runOnBackground(() -> {
+      long startMs = System.currentTimeMillis();
+      final int[] msgs = dcContext.getChatMsgs((int) chatId, 0, 0);
+      Log.i(TAG, "⏰ getChatMsgs(" + chatId + "): " + (System.currentTimeMillis() - startMs) + "ms");
+
+      Util.runOnMain(() -> fragment.initializeListAdapter(msgs));
+    });
 
     supportRequestWindowFeature(WindowCompat.FEATURE_ACTION_BAR_OVERLAY);
     setContentView(R.layout.conversation_activity);
@@ -278,6 +287,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   @Override
   protected void onNewIntent(Intent intent) {
     super.onNewIntent(intent);
+    chatId = getIntent().getIntExtra(CHAT_ID_EXTRA, -1);
 
     if (isFinishing()) {
       return;
@@ -954,7 +964,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void initializeResources() {
-    chatId = getIntent().getIntExtra(CHAT_ID_EXTRA, -1);
     if(chatId == DcChat.DC_CHAT_NO_CHAT)
       throw new IllegalStateException("can't display a conversation for no chat.");
     dcChat           = dcContext.getChat(chatId);
