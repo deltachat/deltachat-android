@@ -523,6 +523,8 @@ public class ConversationFragment extends MessageSelectorFragment
 
         if(!adapter.isActive()){
             setNoMessageText();
+            // The text may have changed. Without the next line, the size of the text view
+            // would not be adapted to the shorter or longer text:
             noMessageTextView.setVisibility(View.GONE);
             noMessageTextView.setVisibility(View.VISIBLE);
         }
