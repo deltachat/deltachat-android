@@ -82,6 +82,9 @@ public class MediaUtil {
     if (type == null) {
       final String extension = MimeTypeMap.getFileExtensionFromUrl(uri.toString());
       type = MimeTypeMap.getSingleton().getMimeTypeFromExtension(extension.toLowerCase());
+      if (type == null) {
+        type = "application/octet-stream";
+      }
     }
     return getCorrectedMimeType(type);
   }
