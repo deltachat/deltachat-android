@@ -231,10 +231,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     chatId = getIntent().getIntExtra(CHAT_ID_EXTRA, -1);
 
     Util.runOnBackground(() -> {
-      long startMs = System.currentTimeMillis();
-      final int[] msgs = dcContext.getChatMsgs((int) chatId, 0, 0);
-      Log.i(TAG, "⏰ getChatMsgs(" + chatId + "): " + (System.currentTimeMillis() - startMs) + "ms");
-
+      final int[] msgs = DcHelper.getChatMsgs(dcContext, chatId);
       Util.runOnMain(() -> fragment.initializeListAdapter(msgs));
     });
 

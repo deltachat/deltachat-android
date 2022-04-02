@@ -243,9 +243,7 @@ public class ConversationFragment extends MessageSelectorFragment
 
         initializeResources();
 
-        long startMs = System.currentTimeMillis();
-        int[] msgs = dcContext.getChatMsgs((int) chatId, 0, 0);
-        Log.i(TAG, "⏰ getChatMsgs(" + chatId + "): " + (System.currentTimeMillis() - startMs) + "ms");
+        int[] msgs = DcHelper.getChatMsgs(dcContext, chatId);
 
         initializeListAdapter(msgs);
 
@@ -370,9 +368,7 @@ public class ConversationFragment extends MessageSelectorFragment
         if (this.chatId != chatId) {
             this.chatId = chatId;
 
-            long startMs = System.currentTimeMillis();
-            int[] msgs = dcContext.getChatMsgs((int) chatId, 0, 0);
-            Log.i(TAG, "⏰ getChatMsgs(" + chatId + "): " + (System.currentTimeMillis() - startMs) + "ms");
+            int[] msgs = DcHelper.getChatMsgs(dcContext, chatId);
 
             initializeListAdapter(msgs);
         }
@@ -476,9 +472,7 @@ public class ConversationFragment extends MessageSelectorFragment
     }
 
     private void reloadList() {
-        long startMs = System.currentTimeMillis();
-        int[] msgs = dcContext.getChatMsgs((int) chatId, 0, 0);
-        Log.i(TAG, "⏰ getChatMsgs(" + chatId + "): " + (System.currentTimeMillis() - startMs) + "ms");
+        int[] msgs = DcHelper.getChatMsgs(dcContext, chatId);
 
         reloadList(false, msgs);
     }
@@ -962,9 +956,7 @@ public class ConversationFragment extends MessageSelectorFragment
             case DcContext.DC_EVENT_CHAT_MODIFIED:
                 if (event.getData1Int() == chatId) {
                   updateLocationButton();
-                  long startMs = System.currentTimeMillis();
-                  int[] msgs = dcContext.getChatMsgs((int) chatId, 0, 0);
-                  Log.i(TAG, "⏰ getChatMsgs(" + chatId + "): " + (System.currentTimeMillis() - startMs) + "ms");
+                  int[] msgs = DcHelper.getChatMsgs(dcContext, chatId);
                   reloadList(true, msgs);
                 }
                 break;

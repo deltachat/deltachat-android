@@ -24,6 +24,7 @@ import com.b44t.messenger.DcMsg;
 
 import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.BuildConfig;
+import org.thoughtcrime.securesms.ConversationFragment;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.database.model.ThreadRecord;
 import org.thoughtcrime.securesms.notifications.NotificationCenter;
@@ -376,5 +377,12 @@ public class DcHelper {
       } else {
           return context.getString(R.string.connectivity_not_connected);
       }
+  }
+
+  public static int[] getChatMsgs(DcContext dcContext, long chatId) {
+      long startMs = System.currentTimeMillis();
+      int[] msgs = dcContext.getChatMsgs((int) chatId, 0, 0);
+      Log.i(TAG, "⏰ getChatMsgs(" + chatId + "): " + (System.currentTimeMillis() - startMs) + "ms");
+      return msgs;
   }
 }
