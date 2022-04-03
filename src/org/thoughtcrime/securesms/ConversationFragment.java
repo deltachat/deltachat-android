@@ -778,7 +778,7 @@ public class ConversationFragment extends MessageSelectorFragment
             else if(DozeReminder.isDozeReminderMsg(getContext(), messageRecord)) {
                 DozeReminder.dozeReminderTapped(getContext());
             }
-            else if(messageRecord.isInfo() && messageRecord.getParent() != null) {
+            else if(messageRecord.isInfo() && messageRecord.getParent() != null && messageRecord.getParent().getType() == DcMsg.DC_MSG_WEBXDC) {
                 scrollMaybeSmoothToMsgId(messageRecord.getParent().getId());
             }
             else {
