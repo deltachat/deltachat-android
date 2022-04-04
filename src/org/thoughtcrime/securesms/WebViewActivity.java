@@ -114,15 +114,23 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
   }
 
   @Override
+  protected void onPause() {
+    super.onPause();
+    webView.onPause();
+  }
+
+  @Override
   public void onResume() {
     super.onResume();
     dynamicTheme.onResume(this);
     dynamicLanguage.onResume(this);
+    webView.onResume();
   }
 
   @Override
   protected void onDestroy() {
     super.onDestroy();
+    webView.destroy();
   }
 
   @Override
