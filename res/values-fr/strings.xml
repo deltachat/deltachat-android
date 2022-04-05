@@ -85,6 +85,9 @@
     <string name="this_month">Ce mois-ci</string>
     <string name="last_week">La semaine dernière</string>
     <string name="last_month">Le mois dernier</string>
+    <!-- the placeholder will be replaced by a date or time, resulting eg. in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
+    <string name="last_seen_at">Vu·e pour la dernière fois à %1$s</string>
+    <string name="last_seen_unknown">Vu·e pour la dernière fois : inconnu</string>
     <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
     <plurals name="n_minutes">
         <item quantity="one">%d min</item>
@@ -199,6 +202,7 @@
     <string name="menu_copy_link_to_clipboard">Copier le lien</string>
     <string name="menu_copy_text_to_clipboard">Copier le texte</string>
     <string name="menu_copy_image_to_clipboard">Copier l\'image</string>
+    <string name="menu_copy_email_to_clipboard">Copier l\'adresse de courriel</string>
     <string name="paste_from_clipboard">Coller depuis le presse-papiers</string>
     <string name="menu_forward">Faire suivre le message</string>
     <string name="menu_reply">Répondre au message</string>
@@ -341,8 +345,10 @@
         <item quantity="one">%dnouveaux messages</item>
         <item quantity="other">%d nouveaux messages</item>
     </plurals>
+    <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
+    <string name="chat_new_one_to_one_hint">Envoyez un message. Il n\'y a pas de problème si %1$s n\'utilise pas Delta Chat.</string>
     <string name="chat_new_broadcast_hint">Dans une liste de diffusion, les autres personnes recevront les messages dans leur discussion directe/privée avec vous.\n\nLes destinataires ne pourront pas se voir entre eux.</string>
-    <string name="chat_new_group_hint">Composez le premier message, permettant aux autres de répondre au sein de ce groupe. C\'est ok même si tous les membres n\'utilisent pas le Chat Delta. La transmission du premier message peut prendre un certain temps.</string>
+    <string name="chat_new_group_hint">Les autres participants ne verront ce groupe qu\'après que vous avez envoyé un premier message.</string>
     <string name="chat_record_slide_to_cancel">Glisser pour annuler</string>
     <string name="chat_record_explain">Appuyez et maintenez pour enregistrer un message vocal, relâchez pour l’envoyer</string>
     <string name="chat_no_chats_yet_title">Boîte de réception vide. Appuyez sur \"+\" pour commencer une nouvelle discussion.</string>
@@ -372,6 +378,12 @@
     <!-- mailing lists -->
     <string name="mailing_list">Liste de diffusion</string>
     <string name="mailing_list_profile_info">Les changements du nom et de l\'avatar de la liste de diffusion s\'applique uniquement sur cet appareil.</string>
+
+    <!-- webxdc -->
+    <!-- "Start..." button for an app -->
+    <string name="start_app">Démarrer...</string>
+    <!-- this is a warning that is shown when one tries to send something to a chat that is not yet accepted. -->
+    <string name="accept_request_first">Veuillez d\'abord accepter l\'invitation.</string>
 
     <!-- map -->
     <string name="filter_map_on_time">Afficher les positions dans le temps</string>
@@ -520,7 +532,7 @@
     <string name="pref_blocked_contacts">Contacts bloqués</string>
     <string name="blocked_empty_hint">Si vous bloquez des contacts, ils seront affichés ici.</string>
     <string name="pref_password_and_account_settings">Mot de passe et compte</string>
-    <string name="pref_who_can_see_profile_explain">L\'image et le nom de votre profil seront affichés à côté de vos messages lorsque vous communiquez avec d\'autres utilisateurs. Les informations déjà envoyées ne peuvent pas être effacées ou supprimées.</string>
+    <string name="pref_who_can_see_profile_explain">Votre image de profil, votre nom et votre signature seront envoyés au côté de vos messages lorsque vous communiquerez avec d\'autres utilisateurs.</string>
     <string name="pref_your_name">Votre nom</string>
     <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
     <string name="pref_default_status_label">Signature</string>
@@ -595,12 +607,16 @@
     <string name="pref_send_copy_to_self">M\'envoyer une copie</string>
     <string name="pref_auto_folder_moves">Déplacer automatiquement vers le dossier DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">Les discussions sont déplacées pour éviter d\'encombrer le dossier Boîte de réception</string>
+    <string name="pref_only_fetch_mvbox_title">Ne consulter que le dossier DeltaChat</string>
+    <string name="pref_only_fetch_mvbox_explain">Ignorer les autres répertoires. Cela requiert que votre serveur déplace tous les messages de tchate dans le répertoire DeltaChat.</string>
     <string name="pref_show_emails">Voir les courriels classiques</string>
     <string name="pref_show_emails_no">Non, seulement les tchats</string>
     <string name="pref_show_emails_accepted_contacts">Pour les contacts acceptés</string>
     <string name="pref_show_emails_all">Tout</string>
     <string name="pref_experimental_features">Fonctionnalités expérimentales</string>
     <string name="pref_on_demand_location_streaming">Envoi de la géolocalisation à la demande</string>
+    <string name="pref_developer_mode">Mode développeur</string>
+    <string name="pref_developer_mode_explain">Active les options de débogage et peut rendre l\'application moins stable. Seulement pour les développeurs.</string>
     <string name="pref_background_default">Arrière-plan par défaut</string>
     <string name="pref_background_default_color">Couleur par défaut</string>
     <string name="pref_background_custom_image">Image personnalisée</string>
@@ -612,6 +628,7 @@
     <string name="up_to_x_most_worse_quality_images">Jusqu\'à %1$s, plus mauvaise qualité d\'image</string>
     <string name="up_to_x_most_balanced_quality_images">Jusqu\'à %1$s, qualité d\'image raisonnable </string>
     <string name="no_limit">Pas de limite</string>
+    <string name="download_failed">Échec du téléchargement</string>
     <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string eg. "1 MiB message" -->
     <string name="n_bytes_message">%1$s message</string>
     <!-- %1$s will be replaced by human-readable date and time -->
@@ -855,6 +872,8 @@
     <string name="explain_desktop_minimized_disabled_tray_pref">L\'icône système ne peut pas être enlevé car Delta Chat a été démarré avec l\'option --minimized.</string>
     <string name="no_spellcheck_suggestions_found">Aucune propositions de correction trouvées.</string>
     <string name="show_window">Afficher la fenêtre</string>
+    <string name="login_socks5_experimental_warning">Le support de SOCK5 est actuellement expérimental. Son utilisation est à vos risques et périls. Si vous saisissez une adresse de courriel, une requête DNS sera effectuée sans passer par SOCK5.</string>
+
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">État de la livraison : Erreur</string>
     <string name="a11y_encryption_padlock">Cadenas de chiffrement</string>
@@ -887,4 +906,6 @@
     <string name="perm_enable_bg_already_done">Vous avez déjà autorisé Delta Chat à recevoir des messages en arrière plan.\n\nSi vous ne les recevez toujours pas en arrière plan, vérifiez les paramètres de votre système.</string>
 
 
-    </resources>
+    <string name="update_1_28_ios_extra_line">... et vous pouvez désormais sélectionner un arrière-plan dans \"Configuration / Arrière-plan\" :)</string>
+
+</resources>
