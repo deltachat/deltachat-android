@@ -49,6 +49,7 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
     this.findPreference(Prefs.RINGTONE_PREF)
         .setOnPreferenceClickListener(preference -> {
           Uri current = Prefs.getNotificationRingtone(getContext());
+          if (current.toString().isEmpty()) current = null;  // silent
 
           Intent intent = new Intent(RingtoneManager.ACTION_RINGTONE_PICKER);
           intent.putExtra(RingtoneManager.EXTRA_RINGTONE_SHOW_DEFAULT, true);
