@@ -48,7 +48,7 @@ public class SharingTest {
   private static int createdGroupId;
 
   @Rule
-  public ActivityScenarioRule<ConversationListActivity> activityRule = TestUtils.getOfflineActivityRule();
+  public ActivityScenarioRule<ConversationListActivity> activityRule = TestUtils.getOfflineActivityRule(false);
 
   @Before
   public void createGroup() {

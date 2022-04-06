@@ -44,7 +44,7 @@ public class EnterChatsBenchmark {
   private final static String TAG = EnterChatsBenchmark.class.getSimpleName();
 
   @Rule
-  public ActivityScenarioRule<ConversationListActivity> activityRule = TestUtils.getOfflineActivityRule();
+  public ActivityScenarioRule<ConversationListActivity> activityRule = TestUtils.getOfflineActivityRule(USE_EXISTING_CHATS);
 
   @Test
   public void createAndEnter10FilledChats() {
@@ -70,7 +70,9 @@ public class EnterChatsBenchmark {
 
   @Test
   public void enterFilledChat() {
-    createChatAndGoBack("Group #1", true, "Hello!", "Some links: https://testrun.org", "And a command: /help");
+    if (!USE_EXISTING_CHATS) {
+      createChatAndGoBack("Group #1", true, "Hello!", "Some links: https://testrun.org", "And a command: /help");
+    }
 
     String[] times = new String[50];
     for (int i = 0; i < times.length; i++) {
