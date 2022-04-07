@@ -715,6 +715,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
                 successfulForwardingAttempt = true;
               })
               .setNegativeButton(R.string.cancel, (dialogInterface, i) -> finish())
+              .setOnCancelListener(dialog -> finish())
               .show();
     }
   }
