@@ -59,11 +59,13 @@ public class TestUtils {
   }
 
   @NonNull
-  public static ActivityScenarioRule<ConversationListActivity> getOfflineActivityRule() {
+  public static ActivityScenarioRule<ConversationListActivity> getOfflineActivityRule(boolean useExistingChats) {
     Intent intent =
             Intent.makeMainActivity(
                     new ComponentName(getInstrumentation().getTargetContext(), ConversationListActivity.class));
-    createOfflineAccount();
+    if (!useExistingChats) {
+      createOfflineAccount();
+    }
     prepare();
     return new ActivityScenarioRule<>(intent);
   }
