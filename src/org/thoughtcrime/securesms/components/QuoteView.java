@@ -22,6 +22,7 @@ import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcMsg;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
+import org.json.JSONObject;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.attachments.Attachment;
 import org.thoughtcrime.securesms.mms.DecryptableStreamUriLoader.DecryptableUri;
@@ -189,29 +190,42 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
   }
 
   private void setQuoteAttachment(@NonNull GlideRequests glideRequests, @NonNull SlideDeck slideDeck) {
-    List<Slide> imageVideoSlides = Stream.of(slideDeck.getSlides()).filter(s -> s.hasImage() || s.hasVideo() || s.hasSticker()).limit(1).toList();
+    List<Slide> thumbnailSlides = Stream.of(slideDeck.getSlides()).filter(s -> s.hasImage() || s.hasVideo() || s.hasSticker() || s.isWebxdcDocument()).limit(1).toList();
     List<Slide> audioSlides = Stream.of(slideDeck.getSlides()).filter(s -> s.hasAudio()).limit(1).toList();
     List<Slide> documentSlides = Stream.of(attachments.getSlides()).filter(Slide::hasDocument).limit(1).toList();
 
     attachmentVideoOverlayView.setVisibility(GONE);
 
-    if (!imageVideoSlides.isEmpty() && imageVideoSlides.get(0).getUri() != null) {
+    if (!thumbnailSlides.isEmpty() && thumbnailSlides.get(0).getUri() != null) {
       thumbnailView.setVisibility(VISIBLE);
       attachmentContainerView.setVisibility(GONE);
       dismissView.setBackgroundResource(R.drawable.dismiss_background);
 
-      Uri thumbnailUri = imageVideoSlides.get(0).getUri();
-      if (imageVideoSlides.get(0).hasVideo()) {
-        attachmentVideoOverlayView.setVisibility(VISIBLE);
-        MediaUtil.createVideoThumbnailIfNeeded(getContext(), imageVideoSlides.get(0).getUri(), imageVideoSlides.get(0).getThumbnailUri(), null);
-        thumbnailUri = imageVideoSlides.get(0).getThumbnailUri();
+      if (thumbnailSlides.get(0).isWebxdcDocument()) {
+        try {
+          JSONObject info = quotedMsg.getWebxdcInfo();
+          byte[] blob = quotedMsg.getWebxdcBlob(info.getString("icon"));
+          glideRequests.load(blob)
+                  .centerCrop()
+                  .override(getContext().getResources().getDimensionPixelSize(R.dimen.quote_thumb_size))
+                  .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
+                  .into(thumbnailView);
+        } catch (Exception e) {
+          e.printStackTrace();
+        }
+      } else {
+        Uri thumbnailUri = thumbnailSlides.get(0).getUri();
+        if (thumbnailSlides.get(0).hasVideo()) {
+          attachmentVideoOverlayView.setVisibility(VISIBLE);
+          MediaUtil.createVideoThumbnailIfNeeded(getContext(), thumbnailSlides.get(0).getUri(), thumbnailSlides.get(0).getThumbnailUri(), null);
+          thumbnailUri = thumbnailSlides.get(0).getThumbnailUri();
+        }
+        glideRequests.load(new DecryptableUri(thumbnailUri))
+                .centerCrop()
+                .override(getContext().getResources().getDimensionPixelSize(R.dimen.quote_thumb_size))
+                .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
+                .into(thumbnailView);
       }
-      glideRequests.load(new DecryptableUri(thumbnailUri))
-              .centerCrop()
-              .override(getContext().getResources().getDimensionPixelSize(R.dimen.quote_thumb_size))
-              .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
-              .into(thumbnailView);
-
     } else if(!audioSlides.isEmpty()) {
       thumbnailView.setVisibility(GONE);
       attachmentContainerView.setVisibility(GONE);
