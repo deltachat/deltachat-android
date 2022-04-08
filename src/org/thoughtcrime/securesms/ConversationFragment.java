@@ -47,6 +47,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.ActionMode;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.OnScrollListener;
@@ -279,8 +280,9 @@ public class ConversationFragment extends MessageSelectorFragment
     }
 
     public void initializeListAdapter(int[] msgs) {
-        if (this.recipient != null && this.chatId != -1) {
-            ConversationAdapter adapter = new ConversationAdapter(getActivity(), this.recipient.getChat(), GlideApp.with(this), locale, selectionClickListener, this.recipient);
+        FragmentActivity activity = getActivity();
+        if (this.recipient != null && this.chatId != -1 && activity != null) {
+            ConversationAdapter adapter = new ConversationAdapter(activity, this.recipient.getChat(), GlideApp.with(this), locale, selectionClickListener, this.recipient);
             list.setAdapter(adapter);
 
             dateDecoration = new StickyHeaderDecoration(adapter, false, false);
@@ -394,7 +396,11 @@ public class ConversationFragment extends MessageSelectorFragment
     }
 
     void setLastSeen(long lastSeen) {
-        getListAdapter().setLastSeen(lastSeen);
+        ConversationAdapter listAdapter = getListAdapter();
+        if (listAdapter == null) {
+            return;
+        }
+        listAdapter.setLastSeen(lastSeen);
         if (lastSeenDecoration != null) {
             list.removeItemDecoration(lastSeenDecoration);
         }
