@@ -54,8 +54,6 @@ public abstract class BaseActionBarActivity extends AppCompatActivity {
             Prefs.isScreenSecurityEnabled(this))
     {
       getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);
-    } else {
-      getWindow().clearFlags(WindowManager.LayoutParams.FLAG_SECURE);
     }
   }
 
