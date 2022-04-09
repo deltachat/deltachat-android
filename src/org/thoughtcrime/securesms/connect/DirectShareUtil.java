@@ -97,9 +97,9 @@ public class DirectShareUtil {
           Log.e(TAG, "Updating dynamic shortcuts failed: " + e);
         }
 
-        // Wait  500ms, this is called by onResume(), and we want to make sure that refreshing
+        // Wait  1500ms, this is called by onResume(), and we want to make sure that refreshing
         // shortcuts does not delay loading of the chatlist
-      }, 500);
+      }, 1500);
     }
   }
 
