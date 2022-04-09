@@ -113,11 +113,11 @@ public class DirectShareUtil {
             null,
             0
     );
-    int max = 4;
+    int max = 5;
     if (chatlist.getCnt() < max) {
       max = chatlist.getCnt();
     }
-    for (int i = 0; i <= max; i++) {
+    for (int i = 0; i < max; i++) {
       DcChat chat = chatlist.getChat(i);
       if (!chat.canSend()) {
         continue;
