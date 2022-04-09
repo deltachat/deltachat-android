@@ -212,14 +212,13 @@ public class ConversationFragment extends MessageSelectorFragment
     public void onResume() {
         super.onResume();
 
-        dcContext.marknoticedChat((int) chatId);
         if (list.getAdapter() != null) {
             list.getAdapter().notifyDataSetChanged();
         }
 
         if (isPaused) {
             isPaused = false;
-            markseenDebouncer.publish(() -> manageMessageSeenState());
+            markseenDebouncer.publish(() -> manageMessageSeenState(true));
         }
     }
 
@@ -539,7 +538,8 @@ public class ConversationFragment extends MessageSelectorFragment
         }
 
         if (!isPaused) {
-            markseenDebouncer.publish(() -> manageMessageSeenState());
+            dcContext.marknoticedChat((int) chatId);
+            markseenDebouncer.publish(() -> manageMessageSeenState(false));
         }
     }
 
@@ -630,7 +630,7 @@ public class ConversationFragment extends MessageSelectorFragment
             wasAtZoomScrollHeight = currentlyAtZoomScrollHeight;
 //            lastPositionId        = positionId;
 
-            markseenDebouncer.publish(() -> manageMessageSeenState());
+            markseenDebouncer.publish(() -> manageMessageSeenState(false));
         }
 
         @Override
@@ -667,8 +667,7 @@ public class ConversationFragment extends MessageSelectorFragment
  //       }
     }
 
-    private void manageMessageSeenState() {
-
+    private void manageMessageSeenState(boolean markNoticed) {
         LinearLayoutManager layoutManager = (LinearLayoutManager)list.getLayoutManager();
 
         int firstPos = layoutManager.findFirstVisibleItemPosition();
@@ -687,6 +686,7 @@ public class ConversationFragment extends MessageSelectorFragment
             }
         }
         dcContext.markseenMsgs(ids);
+        if (markNoticed) dcContext.marknoticedChat((int) chatId);
     }
 
 
