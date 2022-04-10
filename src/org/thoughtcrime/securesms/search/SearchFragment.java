@@ -11,6 +11,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,10 +20,12 @@ import android.widget.TextView;
 import com.b44t.messenger.DcChatlist;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
+import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcMsg;
 
 import org.thoughtcrime.securesms.ConversationListActivity;
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.search.model.SearchResult;
@@ -36,7 +39,7 @@ import static org.thoughtcrime.securesms.util.RelayUtil.isRelayingMessageContent
 /**
  * A fragment that is displayed to do full-text search of messages, groups, and contacts.
  */
-public class SearchFragment extends Fragment implements SearchListAdapter.EventListener {
+public class SearchFragment extends Fragment implements SearchListAdapter.EventListener, DcEventCenter.DcEventDelegate {
 
   public static final String TAG          = "SearchFragment";
   public static final String EXTRA_LOCALE = "locale";
@@ -67,6 +70,15 @@ public class SearchFragment extends Fragment implements SearchListAdapter.EventL
     this.locale = (Locale) getArguments().getSerializable(EXTRA_LOCALE);
 
     viewModel = ViewModelProviders.of(this, new SearchViewModel.Factory(getContext())).get(SearchViewModel.class);
+    DcEventCenter eventCenter = DcHelper.getEventCenter(getContext());
+    eventCenter.addObserver(DcContext.DC_EVENT_CHAT_MODIFIED, this);
+    eventCenter.addObserver(DcContext.DC_EVENT_CONTACTS_CHANGED, this);
+    eventCenter.addObserver(DcContext.DC_EVENT_INCOMING_MSG, this);
+    eventCenter.addObserver(DcContext.DC_EVENT_MSGS_CHANGED, this);
+    eventCenter.addObserver(DcContext.DC_EVENT_MSGS_NOTICED, this);
+    eventCenter.addObserver(DcContext.DC_EVENT_MSG_DELIVERED, this);
+    eventCenter.addObserver(DcContext.DC_EVENT_MSG_FAILED, this);
+    eventCenter.addObserver(DcContext.DC_EVENT_MSG_READ, this);
 
     if (pendingQuery != null) {
       viewModel.updateQuery(pendingQuery);
@@ -126,6 +138,11 @@ public class SearchFragment extends Fragment implements SearchListAdapter.EventL
     }
   }
 
+  @Override
+  public void onDestroy() {
+    DcHelper.getEventCenter(getContext()).removeObservers(this);
+    super.onDestroy();
+  }
 
   @Override
   public void onConversationClicked(@NonNull DcChatlist.Item chatlistItem) {
@@ -173,6 +190,13 @@ public class SearchFragment extends Fragment implements SearchListAdapter.EventL
       viewModel.updateQuery(query);
     } else {
       pendingQuery = query;
+    }
+  }
+
+  @Override
+  public void handleEvent(@NonNull DcEvent event) {
+    if (viewModel != null) {
+      viewModel.updateQuery();
     }
   }
 }
