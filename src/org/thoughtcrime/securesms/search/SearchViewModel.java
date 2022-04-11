@@ -42,7 +42,10 @@ class SearchViewModel extends ViewModel {
 
   void updateQuery(String query) {
     lastQuery = query;
+    updateQuery();
+  }
 
+  public void updateQuery() {
     if (inBgSearch) {
       needsAnotherBgSearch = true;
       Log.i(TAG, "... search call debounced");
