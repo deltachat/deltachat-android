@@ -253,4 +253,8 @@
         <attr name="aat_max_shown" format="integer" />
     </declare-styleable>
 
+    <declare-styleable name="WebxdcView">
+        <attr name="compact" format="boolean" />
+    </declare-styleable>
+
 </resources>

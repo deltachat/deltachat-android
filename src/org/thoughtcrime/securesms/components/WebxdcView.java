@@ -2,6 +2,7 @@ package org.thoughtcrime.securesms.components;
 
 
 import android.content.Context;
+import android.content.res.TypedArray;
 
 import androidx.annotation.AttrRes;
 import androidx.annotation.NonNull;
@@ -44,7 +45,14 @@ public class WebxdcView extends FrameLayout {
 
   public WebxdcView(@NonNull Context context, @Nullable AttributeSet attrs, @AttrRes int defStyleAttr) {
     super(context, attrs, defStyleAttr);
-    inflate(context, R.layout.webxdc_view, this);
+
+    TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.WebxdcView, 0, 0);
+    boolean compact = a.getBoolean(R.styleable.WebxdcView_compact, false);
+    if (compact) {
+      inflate(context, R.layout.webxdc_compact_view, this);
+    } else {
+      inflate(context, R.layout.webxdc_view, this);
+    }
 
     this.icon        = findViewById(R.id.webxdc_icon);
     this.appName     = findViewById(R.id.webxdc_app_name);

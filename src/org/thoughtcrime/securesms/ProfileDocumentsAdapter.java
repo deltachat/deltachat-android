@@ -12,6 +12,7 @@ import com.codewaves.stickyheadergrid.StickyHeaderGridAdapter;
 
 import org.thoughtcrime.securesms.components.AudioView;
 import org.thoughtcrime.securesms.components.DocumentView;
+import org.thoughtcrime.securesms.components.WebxdcView;
 import org.thoughtcrime.securesms.database.loaders.BucketedThreadMediaLoader.BucketedThreadMedia;
 import org.thoughtcrime.securesms.mms.AudioSlide;
 import org.thoughtcrime.securesms.mms.DocumentSlide;
@@ -39,12 +40,14 @@ class ProfileDocumentsAdapter extends StickyHeaderGridAdapter {
   private static class ViewHolder extends StickyHeaderGridAdapter.ItemViewHolder {
     private final DocumentView documentView;
     private final AudioView    audioView;
+    private final WebxdcView   webxdcView;
     private final TextView     date;
 
     public ViewHolder(View v) {
       super(v);
       documentView      = v.findViewById(R.id.document_view);
       audioView         = v.findViewById(R.id.audio_view);
+      webxdcView        = v.findViewById(R.id.webxdc_view);
       date              = v.findViewById(R.id.date);
     }
   }
@@ -97,6 +100,7 @@ class ProfileDocumentsAdapter extends StickyHeaderGridAdapter {
 
     if (slide != null && slide.hasAudio()) {
       viewHolder.documentView.setVisibility(View.GONE);
+      viewHolder.webxdcView.setVisibility(View.GONE);
 
       viewHolder.audioView.setVisibility(View.VISIBLE);
       viewHolder.audioView.setAudio((AudioSlide)slide, dcMsg.getDuration());
@@ -107,8 +111,19 @@ class ProfileDocumentsAdapter extends StickyHeaderGridAdapter {
       viewHolder.audioView.setLongClickable(selected.isEmpty());
       viewHolder.itemView.setOnClickListener(view -> itemClickListener.onMediaClicked(dcMsg));
     }
+    else if (slide != null && slide.isWebxdcDocument()) {
+      viewHolder.audioView.setVisibility(View.GONE);
+      viewHolder.documentView.setVisibility(View.GONE);
+
+      viewHolder.webxdcView.setVisibility(View.VISIBLE);
+      viewHolder.webxdcView.setWebxdc(dcMsg, "Webxdc");
+      viewHolder.webxdcView.setOnClickListener(view -> itemClickListener.onMediaClicked(dcMsg));
+      viewHolder.webxdcView.setOnLongClickListener(view -> { itemClickListener.onMediaLongClicked(dcMsg); return true; });
+      viewHolder.itemView.setOnClickListener(view -> itemClickListener.onMediaClicked(dcMsg));
+    }
     else if (slide != null && slide.hasDocument()) {
       viewHolder.audioView.setVisibility(View.GONE);
+      viewHolder.webxdcView.setVisibility(View.GONE);
 
       viewHolder.documentView.setVisibility(View.VISIBLE);
       viewHolder.documentView.setDocument((DocumentSlide)slide);
@@ -119,6 +134,7 @@ class ProfileDocumentsAdapter extends StickyHeaderGridAdapter {
     else {
       viewHolder.documentView.setVisibility(View.GONE);
       viewHolder.audioView.setVisibility(View.GONE);
+      viewHolder.webxdcView.setVisibility(View.GONE);
     }
 
     viewHolder.itemView.setOnLongClickListener(view -> { itemClickListener.onMediaLongClicked(dcMsg); return true; });
