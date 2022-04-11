@@ -153,7 +153,11 @@ public class ProfileDocumentsFragment
       return;
     }
 
-    DcHelper.openForViewOrShare(getActivity(), dcMsg.getId(), Intent.ACTION_VIEW);
+    if (dcMsg.getType() == DcMsg.DC_MSG_WEBXDC) {
+      WebxdcActivity.openWebxdcActivity(context, dcMsg);
+    } else {
+      DcHelper.openForViewOrShare(getActivity(), dcMsg.getId(), Intent.ACTION_VIEW);
+    }
   }
 
   @Override
