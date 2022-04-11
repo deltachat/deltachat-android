@@ -453,10 +453,14 @@ public class ConversationListFragment extends Fragment
     });
   }
 
+  static public long tapMs;
+
   @Override
   public void onItemClick(ConversationListItem item) {
     if (actionMode == null) {
       int chatId = (int)item.getChatId();
+      ConversationListFragment.tapMs = System.currentTimeMillis();
+      Log.i(TAG, "getChatMsgs(" + chatId + ") profiling: cell tapped ...");
       handleCreateConversation(chatId);
     } else {
       ConversationListAdapter adapter = (ConversationListAdapter) list.getAdapter();

@@ -328,6 +328,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     }
 
     attachmentManager.onResume();
+
+    Log.i(TAG, "getChatMsgs("+chatId+") profiling: ConversationActivity.onResume() finished " + (System.currentTimeMillis() - ConversationListFragment.tapMs) + "ms after tap");
   }
 
   @Override

@@ -169,6 +169,8 @@ public class ConversationFragment extends MessageSelectorFragment
 
         initializeResources();
         initializeListAdapter();
+
+        Log.i(TAG, "getChatMsgs("+chatId+") profiling: ConversationFragment.onActivityCreated() finished " + (System.currentTimeMillis() - ConversationListFragment.tapMs) + "ms after tap");
     }
 
     private void setNoMessageText() {
@@ -221,6 +223,8 @@ public class ConversationFragment extends MessageSelectorFragment
             isPaused = false;
             markseenDebouncer.publish(() -> manageMessageSeenState());
         }
+
+       Log.i(TAG, "getChatMsgs("+chatId+") profiling: ConversationFragment.onResume() finished " + (System.currentTimeMillis() - ConversationListFragment.tapMs) + "ms after tap");
     }
 
 
