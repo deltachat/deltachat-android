@@ -532,7 +532,7 @@
     <string name="pref_blocked_contacts">Contacts bloqués</string>
     <string name="blocked_empty_hint">Si vous bloquez des contacts, ils seront affichés ici.</string>
     <string name="pref_password_and_account_settings">Mot de passe et compte</string>
-    <string name="pref_who_can_see_profile_explain">Votre image de profil, votre nom et votre signature seront envoyés au côté de vos messages lorsque vous communiquerez avec d\'autres utilisateurs.</string>
+    <string name="pref_who_can_see_profile_explain">Votre image de profil, votre nom et votre signature seront envoyés avec vos messages lorsque vous communiquerez avec d\'autres utilisateurs.</string>
     <string name="pref_your_name">Votre nom</string>
     <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
     <string name="pref_default_status_label">Signature</string>
@@ -767,7 +767,7 @@
     <string name="qrshow_join_group_hint">Scannez ceci pour rejoindre le groupe \"%1$s\".</string>
     <string name="qrshow_join_contact_title">QR code d\'invitation</string>
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
-    <string name="qrshow_join_contact_hint">Scanner ceci pour créer un contact avec %1$s</string>
+    <string name="qrshow_join_contact_hint">Scanner pour discuter avec %1$s</string>
     <string name="qrshow_join_contact_no_connection_toast">Pas de connexion Internet, ne peut pas effectuer la configuration du QR code.</string>
     <string name="qraccount_ask_create_and_login">Créer une nouvelle adresse de courriel sur « %1$s » et se connecter ici ?</string>
     <string name="qraccount_ask_create_and_login_another">Créer une nouvelle adresse de courriel sur « %1$s » et se connecter ici ?\n\nVotre compte existant ne sera pas effacé. Utilisez l\'élément de menu « Changer de compte » pour passer d\'un compte à l\'autre.</string>
@@ -785,6 +785,8 @@
     <string name="verified_group_explain">Les groupes vérifiés (fonction expérimentale) offrent une sécurité contre les attaques actives. Les membres sont vérifiés avec un second facteur par d\'autres membres et les messages sont toujours chiffrés de bout en bout.</string>
     <string name="copy_qr_data_success">L\'URL du code QR a été copié dans le presse-papiers</string>
     <string name="mailto_dialog_header_select_chat">Sélectionnez une discussion à qui envoyer le message</string>
+    <!-- first placeholder is the name of the chat -->
+    <string name="confirm_replace_draft">%1$sa déjà un message en brouillon, voulez-vous le remplacer?</string>
     <string name="mailto_link_could_not_be_decoded">Le lien mailto n\'a pas pu être décodé: %1$s</string>
 
     <!-- notifications  -->
@@ -865,6 +867,7 @@
     <string name="autocrypt_incorrect_desktop">Code de configuration incorrect. Veuillez réessayer.</string>
     <string name="create_chat_error_desktop">La discussion n’a pas pu être créée.</string>
     <string name="forget_login_confirmation_desktop">Effacer cette connexion? Tout sera supprimé, y compris vos réglages bout en bout, contacts, discussions, messages et les fichiers multimédia. Cette action ne peut pas être défaite.</string>
+    <string name="account_info_hover_tooltip_desktop2">Adresse: %1$s\nTaille: %2$s\nID du compte: %3$s</string>
     <string name="message_detail_sent_desktop">envoyé</string>
     <string name="message_detail_received_desktop">reçu</string>
     <string name="menu.view.developer.open.log.folder">Ouvrir le dossier Journal</string>
@@ -872,7 +875,7 @@
     <string name="explain_desktop_minimized_disabled_tray_pref">L\'icône système ne peut pas être enlevé car Delta Chat a été démarré avec l\'option --minimized.</string>
     <string name="no_spellcheck_suggestions_found">Aucune propositions de correction trouvées.</string>
     <string name="show_window">Afficher la fenêtre</string>
-    <string name="login_socks5_experimental_warning">Le support de SOCK5 est actuellement expérimental. Son utilisation est à vos risques et périls. Si vous saisissez une adresse de courriel, une requête DNS sera effectuée sans passer par SOCK5.</string>
+    <string name="login_socks5_experimental_warning">Le support de SOCK5 est actuellement expérimental. Utilisez le à vos risques et périls. Si vous saisissez une adresse de courriel, une requête DNS sera effectuée sans passer par SOCK5.</string>
 
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">État de la livraison : Erreur</string>
@@ -906,6 +909,10 @@
     <string name="perm_enable_bg_already_done">Vous avez déjà autorisé Delta Chat à recevoir des messages en arrière plan.\n\nSi vous ne les recevez toujours pas en arrière plan, vérifiez les paramètres de votre système.</string>
 
 
+    <!-- device messages for updates -->
+    <string name="update_1_24_android">La 1.24 au premier abord:\n\n• Moins d\'effort: la sélection de compte est dans le coin supérieur gauche de la liste de discussion\n• Encore moins d\'effort: tapez longuement l\'icône de l\'application pour ouvrir directement les récentes discussions\n• Économisez de la bande passante: téléchargez de large fichiers sur demande\n• Moins casse-tête: invitations par QRCode non-bloquantes et plus rapide, nouvelles options pour les QRCodes\n\nPlus de détails sur 👉</string>
+    <string name="update_1_26">Peaufinage de la 1.26 💅\n\n• Après avoir rendu les QRCodes non bloquants en 1.24, ils sont maintenant bien plus plaisants visuellement\n• Les badges et avatars ont une apparence consistante sur toutes les plateformes\n• Beaucoup de bugs corrigés</string>
+    <string name="update_1_28_android">1.28 Changements marquants:\n\n🔒 Chiffrement: Une nouvelle option expérimentale pour garder vos contacts, vos secrets de chiffrement et vos messages texte chiffrés sur votre appareil. Disponible seulement lors de la création de compte et l\'import de fichiers de sauvegardes\n\n📫 Envoi de messages à une liste de distribution\n\n💫 Configuration initiale plus rapide pour davantage de serveurs mail et options réseaux éclaircies pour éviter d\'accidentelles mauvaises configurations\n\n🐜 Beaaaaaucoup de problèmes rapportés par les utilisateurs corrigés</string>
     <string name="update_1_28_ios_extra_line">... et vous pouvez désormais sélectionner un arrière-plan dans \"Configuration / Arrière-plan\" :)</string>
 
 </resources>
