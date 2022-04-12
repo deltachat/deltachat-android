@@ -600,7 +600,7 @@
     <string name="pref_background_btn_default">Use Default Image</string>
     <string name="pref_background_btn_gallery">Select From Gallery</string>
     <string name="pref_imap_folder_handling">IMAP Folder Handling</string>
-    <string name="pref_imap_folder_warn_disable_defaults">If you disable this option, make sure, your server and your other clients are configured accordingly.\n\nOtherwise things may not work at all.</string>
+    <string name="pref_imap_folder_warn_disable_defaults">If you change this option, make sure, your server and your other clients are configured accordingly.\n\nOtherwise things may not work at all.</string>
     <string name="pref_watch_inbox_folder">Watch Inbox Folder</string>
     <string name="pref_watch_sent_folder">Watch Sent Folder</string>
     <string name="pref_watch_mvbox_folder">Watch DeltaChat Folder</string>

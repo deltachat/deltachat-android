@@ -92,11 +92,25 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
 
     onlyFetchMvboxCheckbox = this.findPreference("pref_only_fetch_mvbox");
     onlyFetchMvboxCheckbox.setOnPreferenceChangeListener(((preference, newValue) -> {
-      boolean enabled = (Boolean) newValue;
-      DcHelper.getAccounts(getContext()).stopIo();
-      dcContext.setConfigInt(CONFIG_ONLY_FETCH_MVBOX, enabled? 1 : 0);
-      DcHelper.getAccounts(getContext()).startIo();
-      return true;
+      final boolean enabled = (Boolean) newValue;
+      if (enabled) {
+        new AlertDialog.Builder(getContext())
+                .setMessage(R.string.pref_imap_folder_warn_disable_defaults)
+                .setPositiveButton(R.string.ok, (dialogInterface, i) -> {
+                  DcHelper.getAccounts(getContext()).stopIo();
+                  dcContext.setConfigInt(CONFIG_ONLY_FETCH_MVBOX, 1);
+                  ((CheckBoxPreference)preference).setChecked(true);
+                  DcHelper.getAccounts(getContext()).startIo();
+                })
+                .setNegativeButton(R.string.cancel, null)
+                .show();
+        return false;
+      } else {
+        DcHelper.getAccounts(getContext()).stopIo();
+        dcContext.setConfigInt(CONFIG_ONLY_FETCH_MVBOX, 0);
+        DcHelper.getAccounts(getContext()).startIo();
+        return true;
+      }
     }));
 
     Preference manageKeys = this.findPreference("pref_manage_keys");
