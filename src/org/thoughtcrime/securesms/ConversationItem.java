@@ -362,6 +362,9 @@ public class ConversationItem extends BaseConversationItem
       if (downloadState==DcMsg.DC_DOWNLOAD_IN_PROGRESS) {
         msgActionButton.setEnabled(false);
         msgActionButton.setText(R.string.downloading);
+      } else if (downloadState==DcMsg.DC_DOWNLOAD_FAILURE) {
+        msgActionButton.setEnabled(true);
+        msgActionButton.setText(R.string.download_failed);
       } else {
         msgActionButton.setEnabled(true);
         msgActionButton.setText(R.string.download);
