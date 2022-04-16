@@ -187,7 +187,6 @@ public class DcHelper {
     dcContext.setStockTranslation(103, context.getString(R.string.incoming_messages));
     dcContext.setStockTranslation(104, context.getString(R.string.outgoing_messages));
     dcContext.setStockTranslation(105, context.getString(R.string.storage_on_domain));
-    dcContext.setStockTranslation(106, context.getString(R.string.one_moment));
     dcContext.setStockTranslation(107, context.getString(R.string.connectivity_connected));
     dcContext.setStockTranslation(108, context.getString(R.string.connectivity_connecting));
     dcContext.setStockTranslation(109, context.getString(R.string.connectivity_updating));
@@ -206,6 +205,7 @@ public class DcHelper {
     // until that is fixed, we fix the most obvious errors (core uses encode_minimal, so this does not affect so many characters)
     // cmp. https://github.com/deltachat/deltachat-android/issues/2187
     dcContext.setStockTranslation(120, context.getString(R.string.qrshow_join_group_hint).replace("\"", ""));
+    dcContext.setStockTranslation(121, context.getString(R.string.connectivity_not_connected));
   }
 
   public static File getImexDir() {
