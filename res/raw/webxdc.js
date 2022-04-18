@@ -1,4 +1,5 @@
 window.webxdc = (() => {
+  let setUpdateListenerPromise = null
   var update_listener = () => {};
   var last_serial = 0;
 
@@ -8,6 +9,10 @@ window.webxdc = (() => {
         update_listener(update);
         last_serial = update.serial;
     });
+    if (setUpdateListenerPromise) {
+      setUpdateListenerPromise()
+      setUpdateListenerPromise = null
+    }
   };
 
   return {
@@ -18,7 +23,11 @@ window.webxdc = (() => {
     setUpdateListener: (cb, serial) => {
         last_serial = typeof serial === "undefined" ? 0 : parseInt(serial);
         update_listener = cb
+        var promise = new Promise((res, _rej) => {
+          setUpdateListenerPromise = res
+        })
         window.__webxdcUpdate();
+        return promise
     },
 
     // deprecated 2022-02-20 all updates are returned through the callback set by setUpdateListener
