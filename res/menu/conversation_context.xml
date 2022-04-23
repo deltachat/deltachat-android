@@ -39,6 +39,10 @@
         android:id="@+id/menu_context_reply_privately"
         app:showAsAction="never" />
 
+    <item android:title="@string/resend"
+        android:id="@+id/menu_resend"
+        app:showAsAction="never" />
+
     <!-- The `showAsAction` behaviors are managed by
     ConversationAdaptiveActionsToolbar. The `app:showAsAction`
     values set here don't actually make a difference.-->

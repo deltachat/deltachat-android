@@ -466,6 +466,20 @@ public class ConversationFragment extends MessageSelectorFragment
         }
     }
 
+    private void handleResendMessage(final Set<DcMsg> dcMsgsSet) {
+        int[] ids = DcMsg.msgSetToIds(dcMsgsSet);
+        if (dcContext.resendMsgs(ids)) {
+            actionMode.finish();
+            Toast.makeText(getContext(), R.string.sending, Toast.LENGTH_SHORT).show();
+        } else {
+            new AlertDialog.Builder(getContext())
+                .setMessage(dcContext.getLastError())
+                .setCancelable(false)
+                .setPositiveButton(android.R.string.ok, null)
+                .show();
+        }
+    }
+
     private void reloadList() {
         reloadList(false);
     }
@@ -923,6 +937,9 @@ public class ConversationFragment extends MessageSelectorFragment
                     return true;
                 case R.id.menu_context_reply_privately:
                     handleReplyMessagePrivately(getSelectedMessageRecord(getListAdapter().getSelectedItems()));
+                    return true;
+                case R.id.menu_resend:
+                    handleResendMessage(getListAdapter().getSelectedItems());
                     return true;
             }
 
