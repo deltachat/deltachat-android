@@ -463,9 +463,11 @@
 
 
     <!-- welcome and login -->
+    <string name="welcome_chat_over_email">Chat over E-Mail.</string>
+    <string name="scan_invitation_code">Scan Invitation Code</string>
     <string name="welcome_intro1_message">The messenger with the broadest audience in the world. Free and independent.</string>
     <string name="login_title">Log In</string>
-    <string name="login_header">Log In to Your Server</string>
+    <string name="login_header">Log into your E-Mail Account</string>
     <string name="login_explain">Log in with an existing e-mail account</string>
     <string name="login_subheader">For known e-mail providers additional settings are set up automatically. Sometimes IMAP needs to be enabled in the web settings. Consult your e-mail provider or friends for help.</string>
     <string name="login_no_servers_hint">There are no Delta Chat servers, your data stays on your device.</string>
@@ -497,7 +499,7 @@
     <string name="login_error_server">Please enter a valid server / IP address</string>
     <string name="login_error_port">Please enter a valid port (1–65535)</string>
     <string name="login_error_required_fields">Please enter a valid e-mail address and a password</string>
-    <string name="import_backup_title">Import Backup</string>
+    <string name="import_backup_title">Restore from Backup</string>
     <string name="import_backup_ask">Backup found at \"%1$s\".\n\nDo you want to import and use all data and settings from it?</string>
     <string name="import_backup_no_backup_found">No backups found.\n\nCopy the backup to \"%1$s\" and try again. Alternatively, press \"Start messaging\" to continue with the normal setup process.</string>
     <!-- Translators: %1$s will be replaced by the e-mail address -->
