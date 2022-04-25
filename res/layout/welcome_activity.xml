@@ -26,20 +26,9 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:padding="16dp"
-        android:text="@string/welcome_desktop"
+        android:text="@string/welcome_chat_over_email"
         android:textSize="22sp"
         android:textStyle="bold"/>
-
-    <TextView
-        android:id="@+id/welcome_sub_header"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        android:paddingBottom="16dp"
-        android:text="@string/welcome_intro1_message"
-        android:textSize="18sp"/>
 
     <androidx.legacy.widget.Space
         android:layout_weight="1"
@@ -73,7 +62,7 @@
             android:layout_height="wrap_content"
             android:padding="16dp"
             android:gravity="center"
-            android:text="@string/qrscan_title"
+            android:text="@string/scan_invitation_code"
             android:textSize="16sp"
             android:textColor="@color/delta_accent"/>
 
