@@ -453,7 +453,6 @@
     <string name="part_of_total_used">Използвани са %1$s от %2$s</string>
 
 
-    <!-- welcome and login -->
     <string name="welcome_intro1_message">Приложението за обмен на съобщения с най-широка публика в света. Свободно и независимо.</string>
     <string name="login_title">Влизане</string>
     <string name="login_header">Влизане във Вашия сървър</string>

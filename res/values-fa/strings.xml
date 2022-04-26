@@ -466,7 +466,6 @@
     <string name="part_of_total_used">مقدار %1$s از %2$s استفاده شده است. </string>
 
 
-    <!-- welcome and login -->
     <string name="welcome_intro1_message">پیام‌رسانی با وسیع‌ترین طیف مخاطبین در جهان. آزاد و مستقل. </string>
     <string name="login_title">ورود</string>
     <string name="login_header">به سرور خود وارد شوید</string>

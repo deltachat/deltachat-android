@@ -488,7 +488,6 @@
     <string name="part_of_total_used">Використано %1$s з %2$s</string>
 
 
-    <!-- welcome and login -->
     <string name="welcome_intro1_message">Мессенджер з найширшою аудиторією у світі. Безкоштовний і незалежний.</string>
     <string name="login_title">Увійти</string>
     <string name="login_header">Увійти на свій сервер</string>

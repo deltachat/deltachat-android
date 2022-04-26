@@ -284,7 +284,6 @@
     <string name="send_message">Bidali mezua</string>
 
 
-    <!-- welcome and login -->
     <string name="welcome_intro1_message">Munduan erabiltzaile gehien dituen mezularitza aplikazioa. Librea eta independentea.</string>
     <string name="login_title">Hasi saioa</string>
     <string name="login_header">Hasi saioa zure zerbitzarian</string>

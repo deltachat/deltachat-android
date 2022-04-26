@@ -458,7 +458,6 @@
     <string name="part_of_total_used">%1$s nga %2$s gjithsej</string>
 
 
-    <!-- welcome and login -->
     <string name="welcome_intro1_message">Shkëmbyesi i mesazheve me publikun më të gjerë në botë. I lirë dhe i pavarur.</string>
     <string name="login_title">Hyrje</string>
     <string name="login_header">Hyrje te shërbyesi juaj</string>

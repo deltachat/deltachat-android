@@ -460,7 +460,6 @@
     <string name="part_of_total_used">%1$s / %2$s käytössä</string>
 
 
-    <!-- welcome and login -->
     <string name="welcome_intro1_message">Viestisovellus, jolla on maailman laajin yleisö. Ilmainen ja riippumaton.</string>
     <string name="login_title">Kirjaudu sisään</string>
     <string name="login_header">Kirjaudu palvelimellesi</string>

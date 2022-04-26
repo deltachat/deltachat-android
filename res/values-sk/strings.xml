@@ -488,7 +488,6 @@
     <string name="part_of_total_used">%1$s z %2$svyužitých </string>
 
 
-    <!-- welcome and login -->
     <string name="welcome_intro1_message">Posol s najširším publikom na svete. Slobodný a nezávislý.</string>
     <string name="login_title">Prihlásiť sa</string>
     <string name="login_header">Prihláste sa na server</string>

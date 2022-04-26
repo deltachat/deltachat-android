@@ -390,7 +390,6 @@
     <string name="part_of_total_used">%1$s af %2$s brugt</string>
 
 
-    <!-- welcome and login -->
     <string name="welcome_intro1_message">Budbringeren med verdens bredeste publikum. Fri og uafhængig.</string>
     <string name="login_title">Login</string>
     <string name="login_header">Login til server</string>

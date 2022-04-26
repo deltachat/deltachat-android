@@ -372,7 +372,6 @@
     <string name="tab_contact">Contacte</string>
     <string name="tab_gallery">Galeria</string>
     <string name="media_preview">Previsualització multimèdia</string>
-    <!-- welcome and login -->
     <string name="welcome_intro1_message">El programa de missatgeria amb més usuaris del món. Gratuït i independent.</string>
     <string name="login_title">Identifiqueu-vos</string>
     <string name="login_header">Identifiqueu-vos al vostre servidor</string>

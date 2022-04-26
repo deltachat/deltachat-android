@@ -460,7 +460,6 @@
     <string name="part_of_total_used">%1$s van %2$s in gebruik</string>
 
 
-    <!-- welcome and login -->
     <string name="welcome_intro1_message">Dé berichtenapp met het breedste publiek ter wereld. Gratis en onafhankelijk.</string>
     <string name="login_title">Inloggen</string>
     <string name="login_header">Inloggen op je server</string>

@@ -372,7 +372,6 @@
     <string name="connectivity_updating">アップデート中</string>
     <!-- Shown eg. in the setting if the app is "Connected" -->
     <string name="connectivity_connected">接続済み</string>
-    <!-- welcome and login -->
     <string name="welcome_intro1_message">世界で最も大衆的なメッセンジャーです。自由に使えて独立している。</string>
     <string name="login_title">ログイン</string>
     <string name="login_header">自分のメールサーバーにログインする</string>

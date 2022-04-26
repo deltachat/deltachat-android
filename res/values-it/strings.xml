@@ -31,6 +31,8 @@
     <string name="back">Indietro</string>
     <string name="close">Chiudi</string>
     <string name="forward">Inoltra</string>
+    <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
+    <string name="resend">Reinvia</string>
     <!-- In the meaning of "To archive", "Put a chat to the archive". This string does not mean "The Archive". -->
     <string name="archive">Archivia</string>
     <!-- In the meaning of "To unarchive", "Remove a chat from the archive", opposite of the previous string -->
@@ -461,6 +463,8 @@
 
 
     <!-- welcome and login -->
+    <string name="welcome_chat_over_email">Chat via E-mail.</string>
+    <string name="scan_invitation_code">Scansiona Codice d\' Invito</string>
     <string name="welcome_intro1_message">L’applicazione di messaggistica con la maggiore utenza al mondo. Libera e indipendente.</string>
     <string name="login_title">Login</string>
     <string name="login_header">Login al Tuo Server</string>

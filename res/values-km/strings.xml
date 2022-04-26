@@ -432,7 +432,6 @@
     <string name="part_of_total_used">បានប្រើ %1$s នៃ %2$s</string>
 
 
-    <!-- welcome and login -->
     <string name="welcome_intro1_message">អ្នកនាំសារជាមួយនឹងវិសាលភាពទស្សនិកក្នុងពិភពលោក។ ដោយឥតគិតថ្លៃ និងឯករាជ្យ។</string>
     <string name="login_title">កត់ចូល</string>
     <string name="login_header">កត់ចូលទៅម៉ាសុីនមេរបស់អ្នក</string>

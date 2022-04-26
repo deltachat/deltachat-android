@@ -460,7 +460,6 @@
     <string name="part_of_total_used">%1$s de %2$s usado</string>
 
 
-    <!-- welcome and login -->
     <string name="welcome_intro1_message">O aplicativo com a maior base de usuários do mundo. Livre e independente.</string>
     <string name="login_title">Acessar</string>
     <string name="login_header">Acesse seu servidor</string>

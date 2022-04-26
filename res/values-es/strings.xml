@@ -460,7 +460,6 @@
     <string name="part_of_total_used">%1$s de %2$s usado</string>
 
 
-    <!-- welcome and login -->
     <string name="welcome_intro1_message">La aplicación de mensajería instantánea con la audiencia más amplia del mundo. Libre e independiente. </string>
     <string name="login_title">Iniciar sesión</string>
     <string name="login_header">Inicie sesión en su servidor</string>

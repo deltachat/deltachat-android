@@ -258,7 +258,6 @@
     <string name="tab_gallery_empty_hint">Bu çatda paylaşılan şəkillər və videolar burada nümayiş olunacaq.</string>
     <string name="tab_docs_empty_hint">Bu söhbətdə paylaşılan sənədlər, musiqi və digər fayllar burada göstəriləcək.</string>
     <string name="media_preview">Fayllara baxmaq</string>
-    <!-- welcome and login -->
     <string name="welcome_intro1_message">Dünyanın ən böyük auditoriyasına sahib olan mesenjeri. Azad və müstəqil.</string>
     <string name="login_title">Daxil ol</string>
     <string name="login_header">Serverinə daxil ol</string>

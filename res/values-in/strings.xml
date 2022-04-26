@@ -335,7 +335,6 @@
     <string name="send_message">Kirim pesan</string>
 
 
-    <!-- welcome and login -->
     <string name="welcome_intro1_message">Percakapan dengan pemirsa terluas di dunia. Gratis dan independen.</string>
     <string name="login_title">Masuk</string>
     <string name="login_header">Masuk ke server Anda</string>

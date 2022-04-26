@@ -196,7 +196,6 @@
     <string name="group_self_not_in_group">Você deve ser um membro do grupo para executar essa ação.</string>
     <string name="profile_encryption">Encriptação</string>
     <string name="media_preview">Visualização de mídia</string>
-    <!-- welcome and login -->
     <string name="welcome_intro1_message">O mensageiro com o público mais amplo do mundo. Livre e independente.</string>
     <string name="login_title">Login</string>
     <string name="login_header">Login no seu servidor</string>

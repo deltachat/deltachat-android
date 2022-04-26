@@ -460,7 +460,6 @@
     <string name="part_of_total_used">%1$s / %2$s kullanıldı</string>
 
 
-    <!-- welcome and login -->
     <string name="welcome_intro1_message">Dünyanın en geniş kitleli ulağı. Özgür ve bağımsız.</string>
     <string name="login_title">Oturum Aç</string>
     <string name="login_header">Sunucunuzda Oturum Açın</string>

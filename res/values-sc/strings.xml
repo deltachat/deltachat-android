@@ -325,7 +325,6 @@
     <string name="send_message">Imbia messàgiu</string>
 
 
-    <!-- welcome and login -->
     <string name="welcome_intro1_message">S\'aplicatzione de messagìstica cun prus impreadores in su mundu. Lìbera e indipendente.</string>
     <string name="login_title">Intra</string>
     <string name="login_header">Intra in su servidore tuo</string>

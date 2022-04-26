@@ -460,7 +460,6 @@
     <string name="part_of_total_used">%1$s sur %2$s utilisé</string>
 
 
-    <!-- welcome and login -->
     <string name="welcome_intro1_message">Le messager avec le plus large public au monde. Libre et indépendant.</string>
     <string name="login_title">Connexion</string>
     <string name="login_header">Connexion vers votre serveur</string>
