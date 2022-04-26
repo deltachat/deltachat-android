@@ -600,7 +600,7 @@
     <string name="pref_background_btn_default">Standard-Bild verwenden</string>
     <string name="pref_background_btn_gallery">Aus Galerie auswählen</string>
     <string name="pref_imap_folder_handling">IMAP-Ordnereinstellungen</string>
-    <string name="pref_imap_folder_warn_disable_defaults">Wenn Sie diese Option deaktivieren, stellen Sie sicher, dass Ihr Server und Ihre anderen Geräte entsprechend konfiguriert sind\n\nAndernfalls funktionieren Dinge möglicherweise nicht wie erwartet.</string>
+    <string name="pref_imap_folder_warn_disable_defaults">Wenn Sie diese Option ändern, stellen Sie sicher, dass Ihr Server und Ihre anderen Geräte entsprechend konfiguriert sind\n\nAndernfalls funktionieren Dinge möglicherweise nicht wie erwartet.</string>
     <string name="pref_watch_inbox_folder">Posteingang beobachten</string>
     <string name="pref_watch_sent_folder">Gesendet-Ordner beobachten</string>
     <string name="pref_watch_mvbox_folder">DeltaChat-Ordner beobachten</string>

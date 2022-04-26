@@ -532,7 +532,7 @@
     <string name="pref_blocked_contacts">Engellenen Kişiler</string>
     <string name="blocked_empty_hint">Kişileri engellerseniz, burada gösterilecekler.</string>
     <string name="pref_password_and_account_settings">Parola ve Hesap</string>
-    <string name="pref_who_can_see_profile_explain">Diğer kullanıcılarla iletişim kurarken; profil görseliniz, adınız ve imzanız iletilerinizle birlikte gönderilecek.</string>
+    <string name="pref_who_can_see_profile_explain">Diğer kullanıcılarla iletişim kurulurken; profil görseliniz, adınız ve imzanız iletilerinizle birlikte gönderilecek.</string>
     <string name="pref_your_name">Adınız</string>
     <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
     <string name="pref_default_status_label">İmza Metni</string>
@@ -773,7 +773,7 @@
     <string name="qraccount_ask_create_and_login_another">\"%1$s\" üzerinde yeni e-posta adresi oluşturulsun ve oturum açılsın mı?\n\nVarolan hesabınız silinmeyecek. Hesaplarınız arasında geçiş yapmak için \"Hesap değiştir\" öğesini kullanın.</string>
     <string name="qraccount_success_enter_name">Oturum açma başarılı—e-posta adresiniz %1$s\n\nİsterseniz şimdi yazdığınız insanlara görüntülenecek bir ad ve bir profil görseli girebilirsiniz.</string>
     <string name="qraccount_qr_code_cannot_be_used">Taranan QR kod yeni bir hesap ayarlamak için kullanılamıyor.</string>
-    <string name="qraccount_use_on_new_install">Taranan QR kod yeni bir hesap ayarlamak içindir. QR kodu yeni bir Delta Chat kurulumunu ayarlarken tarayabilirsiniz.</string>
+    <string name="qraccount_use_on_new_install">Taranan QR kod yeni bir hesap ayarlamak içindir. QR kodu yeni bir Delta Chat kurulumu ayarlanırken tarayabilirsiniz.</string>
     <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s sizi bu gruba katılmaya davet etti.\n\n%2$s kişisinin aygıtının yanıt vermesi bekleniyor…</string>
     <!-- placeholder will be replaced by the name of the inviter. -->

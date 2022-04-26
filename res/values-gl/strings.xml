@@ -462,18 +462,18 @@
 
     <!-- welcome and login -->
     <string name="welcome_intro1_message">O sistema de conversa con maior audiencia no mundo. Libre e independente.</string>
-    <string name="login_title">Conectar</string>
-    <string name="login_header">Conecta co teu servidor</string>
-    <string name="login_explain">Conecta cunha conta de correo existente</string>
+    <string name="login_title">Acceder</string>
+    <string name="login_header">Accede ao teu servidor</string>
+    <string name="login_explain">Accede cunha conta de correo existente</string>
     <string name="login_subheader">Para os provedores de correo máis frecuentes os axustes establécense automaticamente. Porén poderías ter que activar IMAP nos seus axustes. Consulta o teu provedor de correo ou aos amigos se tes dúbidas.</string>
     <string name="login_no_servers_hint">Non hai servidores Delta Chat, os teus datos permanecen no dispositivo.</string>
     <string name="login_inbox">Entrada</string>
-    <string name="login_imap_login">nome usuario IMAP</string>
+    <string name="login_imap_login">identificador IMAP</string>
     <string name="login_imap_server">Servidor IMAP</string>
     <string name="login_imap_port">Porto IMAP</string>
     <string name="login_imap_security">Seguridade IMAP</string>
     <string name="login_outbox">Saída</string>
-    <string name="login_smtp_login">nome usuario SMTP</string>
+    <string name="login_smtp_login">identificador SMTP</string>
     <string name="login_smtp_password">Contrasinal SMTP</string>
     <string name="login_smtp_server">Servidor SMTP</string>
     <string name="login_smtp_port">Porto SMTP</string>
@@ -499,7 +499,7 @@
     <string name="import_backup_ask">Atopouse un respaldo en \"%1$s\".\n\nQueres importar e utilizar os seus datos e axustes?</string>
     <string name="import_backup_no_backup_found">Non se atoparon respaldos.\n\nCopia o respaldo a \"%1$s\" e inténtao outra vez. Alternativamente, podes premer \"Comezar conversa\" e continuar co proceso normal de axustes.</string>
     <!-- Translators: %1$s will be replaced by the e-mail address -->
-    <string name="login_error_cannot_login">Non se puido conectar como \"%1$s\". Comproba o enderezo de correo e o contrasinal.</string>
+    <string name="login_error_cannot_login">Non se puido acceder como \"%1$s\". Comproba o enderezo de correo e o contrasinal.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Aceptar certificados non válidos</string>
     <string name="used_settings">Axustes utilizados:</string>
@@ -769,9 +769,9 @@
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
     <string name="qrshow_join_contact_hint">Escanea esto para conectar con %1$s-</string>
     <string name="qrshow_join_contact_no_connection_toast">Sen conexión a internet, non se pode facer o axuste por código QR</string>
-    <string name="qraccount_ask_create_and_login">Crear un novo enderezo de correo en \"%1$s\" e conectar ali?</string>
-    <string name="qraccount_ask_create_and_login_another">Crear un novo enderezo de email en \"%1$s\" e conectarte?\n\nNon se eliminará a conta actual. Usa \"Cambiar de conta\" para cambiar entre as túas contas.</string>
-    <string name="qraccount_success_enter_name">Conexión correcta—o teu enderezo é %1$s\n\nSe queres, agora podes escribir un nome e unha imaxe de avatar que será mostrado as persoas coas que te comunicas.</string>
+    <string name="qraccount_ask_create_and_login">Crear un novo enderezo de correo en \"%1$s\" e acceder ali?</string>
+    <string name="qraccount_ask_create_and_login_another">Crear un novo enderezo de email en \"%1$s\" e acceder?\n\nNon se eliminará a conta actual. Usa \"Cambiar de conta\" para cambiar entre as túas contas.</string>
+    <string name="qraccount_success_enter_name">Conexión correcta—o teu enderezo é %1$s\n\nSe queres, agora podes escribir un nome e unha imaxe de avatar que será mostrado ás persoas coas que te comunicas.</string>
     <string name="qraccount_qr_code_cannot_be_used">O código QR escaneado non se pode utilizar para crear unha nova conta.</string>
     <string name="qraccount_use_on_new_install">O código QR escaneado é para crear unha nova conta. Podes escanear o código QR cando configures unha nova instalación de Delta Chat.</string>
     <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
