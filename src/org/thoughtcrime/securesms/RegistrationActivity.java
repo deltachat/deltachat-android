@@ -382,7 +382,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
     }
 
     private void updateProviderInfo() {
-        provider = getContext(this).getProviderFromEmail(emailInput.getText().toString());
+        provider = getContext(this).getProviderFromEmailWithDns(emailInput.getText().toString());
         if (provider!=null) {
             Resources res = getResources();
             providerHint.setText(provider.getBeforeLoginHint());
@@ -412,7 +412,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
 
     private void maybeCleanProviderInfo() {
         if (provider!=null && providerLayout.getVisibility()==View.VISIBLE) {
-            DcProvider newProvider = getContext(this).getProviderFromEmail(emailInput.getText().toString());
+            DcProvider newProvider = getContext(this).getProviderFromEmailWithDns(emailInput.getText().toString());
             if (newProvider == null
              || !newProvider.getOverviewPage().equals(provider.getOverviewPage())) {
                 provider = null;
