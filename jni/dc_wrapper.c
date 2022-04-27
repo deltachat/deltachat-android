@@ -977,10 +977,10 @@ JNIEXPORT void Java_com_b44t_messenger_DcContext_deleteAllLocations(JNIEnv *env,
 }
 
 
-JNIEXPORT jlong Java_com_b44t_messenger_DcContext_getProviderFromEmailCPtr(JNIEnv *env, jobject obj, jstring email)
+JNIEXPORT jlong Java_com_b44t_messenger_DcContext_getProviderFromEmailWithDnsCPtr(JNIEnv *env, jobject obj, jstring email)
 {
     CHAR_REF(email);
-        jlong ret = (jlong)dc_provider_new_from_email(get_dc_context(env, obj), emailPtr);
+        jlong ret = (jlong)dc_provider_new_from_email_with_dns(get_dc_context(env, obj), emailPtr);
     CHAR_UNREF(email);
     return ret;
 }
