@@ -31,6 +31,8 @@
     <string name="back">Geri</string>
     <string name="close">Kapat</string>
     <string name="forward">İlet</string>
+    <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
+    <string name="resend">Yeniden Gönder</string>
     <!-- In the meaning of "To archive", "Put a chat to the archive". This string does not mean "The Archive". -->
     <string name="archive">Arşivle</string>
     <!-- In the meaning of "To unarchive", "Remove a chat from the archive", opposite of the previous string -->
@@ -460,9 +462,12 @@
     <string name="part_of_total_used">%1$s / %2$s kullanıldı</string>
 
 
+    <!-- welcome and login -->
+    <string name="welcome_chat_over_email">E-Posta Üzerinden Sohbet.</string>
+    <string name="scan_invitation_code">Davet Kodunu Tara</string>
     <string name="welcome_intro1_message">Dünyanın en geniş kitleli ulağı. Özgür ve bağımsız.</string>
     <string name="login_title">Oturum Aç</string>
-    <string name="login_header">Sunucunuzda Oturum Açın</string>
+    <string name="login_header">E-Posta Hesabınıza Oturum Açın</string>
     <string name="login_explain">Varolan bir e-posta hesabıyla oturum açın</string>
     <string name="login_subheader">Bilinen e-posta sağlayıcıları için ek ayarlar otomatik olarak ayarlanır. Bazen IMAP\'nin web ayarlarından etkinleştirilmesi gerekir. Yardım için e-posta sağlayıcınıza ya da arkadaşlarınıza danışın.</string>
     <string name="login_no_servers_hint">Delta Chat sunucuları yoktur; verileriniz aygıtınızda kalır.</string>
@@ -494,7 +499,7 @@
     <string name="login_error_server">Lütfen geçerli bir sunucu / IP adresi girin</string>
     <string name="login_error_port">Lütfen geçerli bir bağlantı noktası (1–65535) girin</string>
     <string name="login_error_required_fields">Lütfen geçerli bir e-posta adresi ve bir parola girin</string>
-    <string name="import_backup_title">Yedeği İçe Aktar</string>
+    <string name="import_backup_title">Yedekten Geri Yükle</string>
     <string name="import_backup_ask">\"%1$s\" üzerinde yedek bulundu.\n\nİçe aktarmak ve ondan gelen tüm verileri ve ayarları kullanmak istiyor musunuz?</string>
     <string name="import_backup_no_backup_found">Yedek bulunamadı.\n\nYedeği \"%1$s\" üzerine kopyalayın ve yeniden deneyin. Ek olarak, normal ayarlama işlemiyle sürdürmek için \"İletileşmeye başla\"ya basın.</string>
     <!-- Translators: %1$s will be replaced by the e-mail address -->
@@ -599,7 +604,7 @@
     <string name="pref_background_btn_default">Varsayılan Görseli Kullan</string>
     <string name="pref_background_btn_gallery">Galeriden Seç</string>
     <string name="pref_imap_folder_handling">IMAP Klasör İşleme</string>
-    <string name="pref_imap_folder_warn_disable_defaults">Bu seçeneği etkisizleştirirseniz, sunucunuzun ve diğer istemcilerinizin uygun olarak yapılandırıldığından emin olun.\n\nYoksa hiç çalışmayabilir.</string>
+    <string name="pref_imap_folder_warn_disable_defaults">Bu seçeneği değiştirirseniz, sunucunuzun ve diğer istemcilerinizin uygun olarak yapılandırıldığından emin olun.\n\nDeğilse özellikler hiç çalışmayabilir.</string>
     <string name="pref_watch_inbox_folder">Gelen Kutusu Klasörünü İzle</string>
     <string name="pref_watch_sent_folder">Gönderilen Klasörünü İzle</string>
     <string name="pref_watch_mvbox_folder">DeltaChat Klasörünü İzle</string>
@@ -866,7 +871,7 @@
     <string name="autocrypt_incorrect_desktop">Yanlış ayarlama kodu. Lütfen yeniden deneyin.</string>
     <string name="create_chat_error_desktop">Sohbet oluşturulamadı.</string>
     <string name="forget_login_confirmation_desktop">Bu oturum silinsin mi? Uçtan uca ayarlamanızı, kişilerinizi, sohbetlerinizi, iletilerinizi ve ortamlarınızı kapsayarak her şey silinecek. Bu eylem geri alınamaz.</string>
-    <string name="account_info_hover_tooltip_desktop2">E-Mail: %1$s\nSize: %2$s\nAccount Id: %3$s</string>
+    <string name="account_info_hover_tooltip_desktop2">E-Posta: %1$s\nBoyut: %2$s\nHesap Kimliği: %3$s</string>
     <string name="message_detail_sent_desktop">gönderilme</string>
     <string name="message_detail_received_desktop">alınma</string>
     <string name="menu.view.developer.open.log.folder">Günlük Klasörünü Aç</string>

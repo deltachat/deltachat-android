@@ -93,7 +93,7 @@
     <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
     <plurals name="n_minutes">
         <item quantity="one">%d min</item>
-        <item quantity="other">%d min.</item>
+        <item quantity="other">%d min</item>
     </plurals>
     <!-- Translators: show beside messages that are "N hours old". prefer a short string, prefer abbreviations if they're well-known -->
     <plurals name="n_hours">
@@ -102,7 +102,7 @@
     </plurals>
     <plurals name="n_chats">
         <item quantity="one">%d chat</item>
-        <item quantity="other">%d chat</item>
+        <item quantity="other">%d chats</item>
     </plurals>
     <plurals name="n_contacts">
         <item quantity="one">%d contatto</item>
@@ -129,7 +129,7 @@
     <string name="gif">Gif</string>
     <!-- "Stickers" as known from other messengers, please pick up the wording from there; in some languages, "Sticker" in english is just fine. -->
     <string name="sticker">Sticker</string>
-    <string name="images">Immagine</string>
+    <string name="images">Immagini</string>
     <string name="audio">Audio</string>
     <string name="voice_message">Messaggio Vocale</string>
     <string name="forwarded">Inoltrato</string>
@@ -161,7 +161,7 @@
     <string name="magenta">Magenta</string>
     <string name="white">Bianco</string>
 
-    <string name="zoom">Ingrandisci</string>
+    <string name="zoom">Ingrandimento</string>
     <string name="extra_small">Extra piccolo</string>
     <string name="small">Piccolo</string>
     <string name="normal">Normale</string>
@@ -233,8 +233,8 @@
     <string name="menu_settings">Impostazioni</string>
     <string name="menu_advanced">Avanzate</string>
     <string name="menu_view_profile">Vedi Profilo</string>
-    <string name="menu_zoom_in">Zoom In</string>
-    <string name="menu_zoom_out">Zoom Out</string>
+    <string name="menu_zoom_in">Ingrandisci</string>
+    <string name="menu_zoom_out">Rimpicciolisci</string>
     <string name="menu_save_log">Salva Log</string>
     <string name="menu_more_options">Più Opzioni</string>
     <string name="menu_learn_spelling">Impara l\'Ortografia</string>
@@ -326,7 +326,7 @@
     <!-- contact list -->
     <string name="contacts_title">Contatti</string>
     <string name="contacts_enter_name_or_email">Inserisci nome o indirizzo e-mail</string>
-    <string name="contacts_type_email_above">Inserisci qui sopra l\'indirizzo email</string>
+    <string name="contacts_type_email_above">Inserisci qui sopra l\'indirizzo e-mail</string>
     <string name="contacts_empty_hint">Nessun contatto.</string>
 
 
@@ -340,7 +340,7 @@
         <item quantity="other">%d chat ripristinate</item>
     </plurals>
     <string name="chat_archived_chats_title">Chat Archiviate</string>
-    <string name="chat_please_enter_message">Scrivere un messaggio.</string>
+    <string name="chat_please_enter_message">Scrivi un messaggio.</string>
     <string name="chat_camera_unavailable">Fotocamera non disponibile.</string>
     <string name="chat_unable_to_record_audio">Impossibile registrare audio.</string>
     <plurals name="chat_n_new_messages">
@@ -464,10 +464,10 @@
 
     <!-- welcome and login -->
     <string name="welcome_chat_over_email">Chat via E-mail.</string>
-    <string name="scan_invitation_code">Scansiona Codice d\' Invito</string>
+    <string name="scan_invitation_code">Scansiona Invito</string>
     <string name="welcome_intro1_message">L’applicazione di messaggistica con la maggiore utenza al mondo. Libera e indipendente.</string>
     <string name="login_title">Login</string>
-    <string name="login_header">Login al Tuo Server</string>
+    <string name="login_header">Accedi al tuo Account E-Mail</string>
     <string name="login_explain">Accedi con un indirizzo e-mail esistente</string>
     <string name="login_subheader">Per i fornitori email conosciuti, le impostazioni aggiuntive vengono configurate automaticamente. A volte, IMAP deve essere abilitato dall\'interfaccia web dell\'email. Se riscontri problemi contatta il tuo fornitore email o i tuoi amici per aiutarti.</string>
     <string name="login_no_servers_hint">Non esistono server di Delta Chat, i tuoi dati restano nel tuo dispositivo!</string>
@@ -907,7 +907,7 @@
     <string name="pref_background_notifications_explain">Utilizza una connessione in background al tuo server e richiede ignora ottimizzazioni della batteria.</string>
     <string name="pref_background_notifications_rationale">Per mantenere la connessione al tuo server di posta e ricevere messaggi in background, ignora le ottimizzazioni della batteria nel passaggio successivo.\n\nDelta Chat utilizza poche risorse e fa attenzione a non consumare la batteria.</string>
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
-    <string name="pref_reliable_service">Connessione in Background Affidabile</string>
+    <string name="pref_reliable_service">Connessione Affidabile</string>
     <string name="pref_reliable_service_explain">Richiede una notifica permanente</string>
     <string name="perm_enable_bg_reminder_title">Premi qui per ricevere i messaggi anche quando Delta Chat è in background.</string>
     <string name="perm_enable_bg_already_done">Hai già autorizzato Delta Chat a ricevere messaggi in background.\n\nSe i messaggi non arrivano in background controlla le impostazioni di sistema.</string>

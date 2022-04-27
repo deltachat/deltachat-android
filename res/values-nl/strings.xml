@@ -31,6 +31,8 @@
     <string name="back">Terug</string>
     <string name="close">Sluiten</string>
     <string name="forward">Doorsturen</string>
+    <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
+    <string name="resend">Opnieuw versturen</string>
     <!-- In the meaning of "To archive", "Put a chat to the archive". This string does not mean "The Archive". -->
     <string name="archive">Archiveren</string>
     <!-- In the meaning of "To unarchive", "Remove a chat from the archive", opposite of the previous string -->
@@ -460,6 +462,9 @@
     <string name="part_of_total_used">%1$s van %2$s in gebruik</string>
 
 
+    <!-- welcome and login -->
+    <string name="welcome_chat_over_email">Chatten via e-mail.</string>
+    <string name="scan_invitation_code">Uitnodigingscode scannen</string>
     <string name="welcome_intro1_message">Dé berichtenapp met het breedste publiek ter wereld. Gratis en onafhankelijk.</string>
     <string name="login_title">Inloggen</string>
     <string name="login_header">Inloggen op je server</string>

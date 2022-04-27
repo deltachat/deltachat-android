@@ -31,6 +31,8 @@
     <string name="back">Mbrapsht</string>
     <string name="close">Mbylle</string>
     <string name="forward">Përpara</string>
+    <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
+    <string name="resend">Ridërgoje</string>
     <!-- In the meaning of "To archive", "Put a chat to the archive". This string does not mean "The Archive". -->
     <string name="archive">Arkivoje</string>
     <!-- In the meaning of "To unarchive", "Remove a chat from the archive", opposite of the previous string -->
@@ -458,6 +460,9 @@
     <string name="part_of_total_used">%1$s nga %2$s gjithsej</string>
 
 
+    <!-- welcome and login -->
+    <string name="welcome_chat_over_email">Fjalosje përmes Email-i</string>
+    <string name="scan_invitation_code">Skanoni Kod Ftese</string>
     <string name="welcome_intro1_message">Shkëmbyesi i mesazheve me publikun më të gjerë në botë. I lirë dhe i pavarur.</string>
     <string name="login_title">Hyrje</string>
     <string name="login_header">Hyrje te shërbyesi juaj</string>
