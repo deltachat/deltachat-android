@@ -31,6 +31,8 @@
     <string name="back">Atrás</string>
     <string name="close">Pechar</string>
     <string name="forward">Reenviar</string>
+    <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
+    <string name="resend">Reenviar</string>
     <!-- In the meaning of "To archive", "Put a chat to the archive". This string does not mean "The Archive". -->
     <string name="archive">Arquivar</string>
     <!-- In the meaning of "To unarchive", "Remove a chat from the archive", opposite of the previous string -->
@@ -460,6 +462,9 @@
     <string name="part_of_total_used">Utilizado %1$s de %2$s</string>
 
 
+    <!-- welcome and login -->
+    <string name="welcome_chat_over_email">Chat a través de Email.</string>
+    <string name="scan_invitation_code">Escanear código de convite</string>
     <string name="welcome_intro1_message">O sistema de conversa con maior audiencia no mundo. Libre e independente.</string>
     <string name="login_title">Acceder</string>
     <string name="login_header">Accede ao teu servidor</string>
