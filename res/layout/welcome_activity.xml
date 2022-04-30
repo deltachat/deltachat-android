@@ -8,37 +8,30 @@
     tools:context=".WelcomeActivity">
 
     <androidx.legacy.widget.Space
-        android:layout_weight="5"
+        android:layout_weight="2"
         android:layout_width="match_parent"
         android:layout_height="0dp"/>
 
     <ImageView
         android:id="@+id/welcome_icon"
-        android:layout_width="128dp"
-        android:layout_height="128dp"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="16"
+        android:gravity="bottom"
         android:src="@drawable/intro1"
-        android:padding="8dp"
+        android:padding="16dp"
         tools:ignore="contentDescription"/>
-
-    <androidx.legacy.widget.Space
-        android:layout_weight="1"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"/>
 
     <TextView
         android:id="@+id/welcome_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:padding="16dp"
+        android:padding="8dp"
+        android:layout_marginBottom="24dp"
         android:text="@string/welcome_chat_over_email"
         android:textSize="22sp"
         android:textStyle="bold"/>
-
-    <androidx.legacy.widget.Space
-        android:layout_weight="1"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"/>
 
     <LinearLayout
         android:orientation="vertical"
@@ -76,7 +69,7 @@
     </LinearLayout>
 
     <androidx.legacy.widget.Space
-        android:layout_weight="7"
+        android:layout_weight="6"
         android:layout_width="match_parent"
         android:layout_height="0dp"/>
 
