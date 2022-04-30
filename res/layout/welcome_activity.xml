@@ -52,14 +52,17 @@
             android:text="@string/login_header"/>
 
         <Button
+            style="@style/ButtonSecondary"
             android:id="@+id/backup_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="24dp"
             android:paddingRight="24dp"
+            android:layout_marginBottom="16dp"
             android:text="@string/import_backup_title"/>
 
         <Button
+            style="@style/ButtonSecondary"
             android:id="@+id/scan_qr_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

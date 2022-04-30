@@ -20,6 +20,7 @@
     <attr name="conversation_group_member_name" format="reference|color"/>
     <attr name="conversation_received_card_background" format="reference|color"/>
 
+    <attr name="secondary_button_fg" format="reference"/>
     <attr name="send_button_bg" format="reference"/>
     <attr name="floating_mini_bg" format="reference"/>
 

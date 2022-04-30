@@ -73,6 +73,7 @@
         <item name="conversation_list_item_unread_color">@color/core_black</item>
         <item name="conversation_list_item_divider">@drawable/conversation_list_divider_shape</item>
 
+        <item name="secondary_button_fg">@color/delta_primary</item>
         <item name="send_button_bg">@drawable/send_button_bg_light</item>
         <item name="floating_mini_bg">@drawable/floating_mini_bg_light</item>
 
@@ -221,6 +222,7 @@
         <item name="conversation_list_item_unread_color">@color/core_white</item>
         <item name="conversation_list_item_divider">@drawable/conversation_list_divider_shape_dark</item>
 
+        <item name="secondary_button_fg">@color/gray10</item>
         <item name="send_button_bg">@drawable/send_button_bg_dark</item>
         <item name="floating_mini_bg">@drawable/floating_mini_bg_dark</item>
 
