@@ -8,18 +8,19 @@
     tools:context=".WelcomeActivity">
 
     <androidx.legacy.widget.Space
-        android:layout_weight="2"
+        android:layout_weight="3"
         android:layout_width="match_parent"
         android:layout_height="0dp"/>
 
     <ImageView
         android:id="@+id/welcome_icon"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:layout_height="128dp"
         android:layout_weight="16"
         android:gravity="bottom"
         android:src="@drawable/intro1"
-        android:padding="16dp"
+        android:paddingLeft="32dp"
+        android:paddingRight="32dp"
         tools:ignore="contentDescription"/>
 
     <TextView
@@ -69,7 +70,7 @@
     </LinearLayout>
 
     <androidx.legacy.widget.Space
-        android:layout_weight="6"
+        android:layout_weight="5"
         android:layout_width="match_parent"
         android:layout_height="0dp"/>
 
