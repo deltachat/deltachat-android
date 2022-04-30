@@ -90,6 +90,13 @@
         <item name="android:background">@drawable/button_background</item>
     </style>
 
+    <style name="ButtonSecondary">
+        <item name="android:textColor">?attr/secondary_button_fg</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:paddingRight">8dp</item>
+        <item name="android:background">@drawable/button_secondary_background</item>
+    </style>
+
     <style name="PreferenceThemeOverlay.Fix" parent="PreferenceThemeOverlay.v14.Material">
     </style>
 
