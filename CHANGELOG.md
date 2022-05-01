@@ -1,11 +1,62 @@
 # Delta Chat Android Changelog
 
-## Unreleased
+## v1.30.0
+2022-05
 
-* add finnish translation
+* speed up loading of chat messages by a factor of 20
+* speed up finding the correct server after logging in
+* speed up marking messages as being seen and use fewer network data by batch processing
+* speed up messages deletion and use fewer network data for that
+* speed up webxdc parsing by not loading the whole file into memory
+* speed up message receiving a bit
+* speed up chat list
+* speed up opening chat
+* speed up various parts by caching config values
+* revamped welcome screen
+* archived+muted chats are no longer unarchived when new messages arrive;
+  this behavior is also known by other messengers
+* warn when enabling "Only Fetch from DeltaChat Folder"
+* fix: do not create empty contact requests with "setup changed" messages;
+  instead, send a "setup changed" message into all chats we share with the peer
+* fix an issue where the app crashes when trying to export a backup
+* fix outgoing messages appearing twice with Amazon SES
+* fix unwanted deletion of messages that have no Message-ID set or are duplicated otherwise
+* fix: assign replies from a different email address to the correct chat
+* fix: assign outgoing private replies to the correct chat
+* fix: ensure ephemeral timer is started eventually also on rare states
+* fix: do not try to use stale SMTP connections
+* fix: retry message sending automatically and do not wait for the next message being sent
+* fix a bug where sometimes the file extension of a long filename containing a dot was cropped
+* fix messages being treated as spam by placing small MIME-headers before the larger Autocrypt:-header
+* fix: keep track of QR code joins in database to survive restarts
+* fix: automatically accept chats with outgoing messages
+* fix connectivity view's "One moment..." message being stuck when there is no network
+* fix wrong avatar rotation when selecting self-avatar from gallery
+* fix wrong font size in app title
+* fix quitting app when forwarding on android4 and android11+
+* fix emojis on android4
+* fix: do not disable fullscreen keyboard
+* fix: mark messages as seen more reliable and faster
+* fix sound notifications, allow to set to "silent"
+* fix ux issue in the forward dialog
+* fix: update search results when the chatlist changes
+* fix: show download failures
+* fix sending webxdc via share-to-delta
+* fix potential webxdc id collision
+* fix: don't jump to parent message if parent messagse is not a webxdc
+* fix webxdc backgound mode so that music stops playing
+* webxdc: improve display of webxdc items in the gallery's "docs" tab
+* webxdc: show icon in quotes
+* webxdc: long-tap on a message allows resending own messages
+* webxdc: allow sessionStorage, localStorage and IndexedDB
+* webxdc: remove getAllUpdates(), setUpdateListener() improved
+* webxdc: option to set minimal API in the manifests
+* add finnish translation, update other translations
+* update to core78
 
 
 ## v1.28.3
+2022-02
 
 * faster message moving and deletion on the server
 * parse MS Exchange read receipts and mark the original message as read
@@ -15,6 +66,7 @@
 * fix: set message state to failed when retry limit is exceeded
 * fix: avoid archived, fresh chats
 * update translations
+* update to core76
 
 
 ## v1.28.1
