@@ -106,14 +106,14 @@ First, you need to setup Android SDK and Android NDK. Configure
 installation directory e.g. by adding this to your `.bashrc`:
 
 ```bash
-export ANDROID_NDK_ROOT=${HOME}/Android/Sdk/ndk/[version] # (or whereever your NDK is) Note that there is no `/` at the end!
+export ANDROID_NDK_ROOT=${HOME}/Android/Sdk/ndk/22.1.7171670 # (or whereever your NDK is) Note that there is no `/` at the end!
 export PATH=${PATH}:${ANDROID_NDK_ROOT}/toolchains/llvm/prebuilt/linux-x86_64/bin/:${ANDROID_NDK_ROOT}
 ```
 
+You should to use NDK version r22b (22.1.7171670). Versions that are a bit newer
+or older will also work, but if your version is too new or too old, you will get
+an error.
 Currently ndk20b is the minimum required version.
-Newer versions will likely work, however, are not tested and not used
-in official releases, in general, changes on the ndk-version should be
-done with care.
 
 Then, install Rust using [rustup](https://rustup.rs/). Install Rust
 toolchains for cross-compilation by executing `scripts/install-toolchains.sh`.

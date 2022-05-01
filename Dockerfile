@@ -23,6 +23,9 @@ USER $USER
 ENV ANDROID_SDK_ROOT /home/${USER}/android-sdk
 RUN mkdir ${ANDROID_SDK_ROOT}
 WORKDIR $ANDROID_SDK_ROOT
+
+# If you change the version here (6200805, meaning r22b/22.1.7171670),
+# also change the recommended version in README.md.
 RUN wget -q https://dl.google.com/android/repository/commandlinetools-linux-6200805_latest.zip && \
   unzip commandlinetools-linux-6200805_latest.zip && \
   rm commandlinetools-linux-6200805_latest.zip
