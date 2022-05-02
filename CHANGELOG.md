@@ -43,8 +43,11 @@
 * fix: show download failures
 * fix sending webxdc via share-to-delta
 * fix potential webxdc id collision
+* fix: send locations in the background regardless of other sending activity
+* fix rare crashes when stopping IMAP and SMTP
+* fix correct message escaping consisting of a dot in SMTP protocol
 * fix: don't jump to parent message if parent messagse is not a webxdc
-* fix webxdc backgound mode so that music stops playing
+* fix webxdc background mode so that music stops playing
 * webxdc: improve display of webxdc items in the gallery's "docs" tab
 * webxdc: show icon in quotes
 * webxdc: long-tap on a message allows resending own messages
@@ -52,7 +55,7 @@
 * webxdc: remove getAllUpdates(), setUpdateListener() improved
 * webxdc: option to set minimal API in the manifests
 * add finnish translation, update other translations
-* update to core78
+* update to core79
 
 
 ## v1.28.3
