@@ -31,6 +31,8 @@
     <string name="back">Takaisin</string>
     <string name="close">Sulje</string>
     <string name="forward">Eteenpäin</string>
+    <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
+    <string name="resend">Lähetä uudelleen</string>
     <!-- In the meaning of "To archive", "Put a chat to the archive". This string does not mean "The Archive". -->
     <string name="archive">Arkistoi</string>
     <!-- In the meaning of "To unarchive", "Remove a chat from the archive", opposite of the previous string -->
@@ -460,6 +462,9 @@
     <string name="part_of_total_used">%1$s / %2$s käytössä</string>
 
 
+    <!-- welcome and login -->
+    <string name="welcome_chat_over_email">Chattaa sähköpostilla.</string>
+    <string name="scan_invitation_code">Skannaa kutsukoodi</string>
     <string name="welcome_intro1_message">Viestisovellus, jolla on maailman laajin yleisö. Ilmainen ja riippumaton.</string>
     <string name="login_title">Kirjaudu sisään</string>
     <string name="login_header">Kirjaudu palvelimellesi</string>
@@ -909,10 +914,6 @@
 
 
     <!-- device messages for updates -->
-    <string name="update_1_24_android">1.24 pikakatsaus:\n\n• Säästä napautuksia: vaihda tiliä ylävasemmalla keskustelulistan yltä\n• Säästä lisää napautuksia: napauta sovelluskuvaketta pitkään valitaksesi keskusteluja suoraan.\n• Säästä dataa: lataa suuria tiedostoja tarpeen mukaan.\n• Säästä hermoja: nopeammat liittymiset QR-koodien avulla ja lisää QR-koodivalintoja\n\nLisää 👉</string>
-    <string name="update_1_24_ios">1.24 pikakatsaus:\n\n• Keskustelun sisäinen haku keskustelun profiilisivulta.\n• Säästä dataa lataamalla suuria tiedostoja tarpeen mukaan.\n• Säästä hermoja liittymällä nopeammin QR-koodien kautta\n\nLisää 👉</string>
-    <string name="update_1_26">1.26 hiomista 💅\n\n•QR-koodit näyttävät paremmilta kaikilla alustoilla.\n• Avatarit ja mitalit näyttävät samankaltaisilta eri alustojen välillä.\n• Paljon ongelmia korjattu.</string>
     <string name="update_1_28_android">1.28 Nostot:\n\n🔒Salaus: Uusi kokeellinen valinta yhteystietojen, salausavainten ja tekstiviestien säilyttämiseksi salattuina latteellasi. Saatavilla ainoastaan tilin luomisen ja varmuuskopioiden tuomisen yhteydessä.\n\n📫 Kirjoita sähköpostilistoille.\n\n💫 Nopeampi asetusten luonti monille sähköpostipalvelimille ja yksinkertaistetut verkkoasetukset virheellisten asetusten ehkäisemiseksi\n\n🐜 Paljon käyttäjien raportoimien ongelmien korjauksia.</string>
     <string name="update_1_28_ios_extra_line">... ja nyt voit vaihtaa taustakuvan: \"Asetukset / Taustakuva\" :)</string>
-
-</resources>
+    </resources>

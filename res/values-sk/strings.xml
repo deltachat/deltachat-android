@@ -31,6 +31,8 @@
     <string name="back">Späť</string>
     <string name="close">Zatvoriť</string>
     <string name="forward">Vpred</string>
+    <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
+    <string name="resend">Znovu poslať</string>
     <!-- In the meaning of "To archive", "Put a chat to the archive". This string does not mean "The Archive". -->
     <string name="archive">Archivovať</string>
     <!-- In the meaning of "To unarchive", "Remove a chat from the archive", opposite of the previous string -->
@@ -488,6 +490,9 @@
     <string name="part_of_total_used">%1$s z %2$svyužitých </string>
 
 
+    <!-- welcome and login -->
+    <string name="welcome_chat_over_email">Chatovanie cez e-mail.</string>
+    <string name="scan_invitation_code">Skenovať kód pozvánky</string>
     <string name="welcome_intro1_message">Posol s najširším publikom na svete. Slobodný a nezávislý.</string>
     <string name="login_title">Prihlásiť sa</string>
     <string name="login_header">Prihláste sa na server</string>
@@ -936,10 +941,5 @@
     <string name="perm_enable_bg_already_done">Službe Delta Chat ste už povolili príjem správ na pozadí.\n\nAk správy stále neprichádzajú na pozadí, skontrolujte tiež svoje systémové nastavenia.</string>
 
 
-    <!-- device messages for updates -->
-    <string name="update_1_24_android">1.24 v skratke:\n\n• Uloženie klepnutím: Výber účtu v ľavom hornom rohu zoznamu četov\n• Uloženie viacerými klepnutiami: Dlhým klepnutím na ikonu aplikácie priamo otvoríte nedávne čety\n• Ušetrite premávku: sťahujte veľké súbory podľa potreby\n• Ušetrite nervy: rýchlejšie pripojenie QR kódu bez blokovania a nové možnosti kódu QR\n\nViac na 👉 </string>
-    <string name="update_1_24_ios">1.24 v skratke:\n\n• Spustite vyhľadávanie v čete z profilu četu\n• Ušetrite premávku: sťahujte veľké súbory podľa potreby\n• Ušetrite nervy: rýchlejšie pripájanie na QR kódy bez blokovania\n\nViac na 👉</string>
-    <string name="update_1_26">1.26 vylepšenia 💅\n\n• Po tom, čo boli QR kódy vo verzii 1.24 neblokovateľné, teraz vyzerajú oveľa krajšie – na všetkých platformách\n• Avatary a odznaky vyzerajú na všetkých platformách podobne\n• Opravených veľa chýb</string>
     <string name="update_1_28_ios_extra_line">… a teraz môžete vybrať pozadie v ponuke \"Nastavenia / Pozadie\" :)</string>
-
-</resources>
+    </resources>

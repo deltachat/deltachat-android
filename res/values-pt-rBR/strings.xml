@@ -909,10 +909,6 @@
 
 
     <!-- device messages for updates -->
-    <string name="update_1_24_android">1.24 em resumo:\n\n• Lembre de toques: seleção de conta no canto superior esquerdo da lista de bate-papo\n• Lembre mais toques: toque longo no ícone do aplicativo para abrir os bate-papos recentes diretamente\n• Economize tráfego: faça download grande arquivos conforme necessário\n• Não fique nervoso: uso de código QR mais rápido e sem bloqueio e novas opções de código QR\n\nMais em 👉</string>
-    <string name="update_1_24_ios">1.24 em resumo:\n\n• Inicie uma pesquisa no bate-papo a partir do perfil do bate-papo\n• Economize tráfego: baixe arquivos grandes conforme necessário\n• Não fique nervoso: uso de código QR mais rápido e não bloqueante\n\nMais em 👉</string>
-    <string name="update_1_26">Polimentos na 1.26 💅\n\n• Depois de tornar os códigos QR não bloqueadores na 1.24, eles também estão muito melhores agora - em todas as plataformas\n• Avatares e emblemas parecem semelhantes em todas as plataformas\n• Muitos bugs corrigidos</string>
     <string name="update_1_28_android">Destaques da 1.28:\n\n🔒 Criptografia: uma nova opção experimental para manter seus contatos, segredos de criptografia e mensagens de texto criptografadas em seu dispositivo. Disponível apenas na criação de conta e importação de arquivos de backup.\n\n📫 Escrever para lista de e-mails\n\n💫 Configuração inicial mais rápida para mais servidores de e-mail e opções de rede simplificadas para evitar configurações incorretas acidentais\n\n🐜 Muuuuuuitos problemas relatados por usuários corrigidos</string>
     <string name="update_1_28_ios_extra_line">… e você pode selecionar um papel de parede em \"Configurações / Papel de Parede\" agora :)</string>
-
-</resources>
+    </resources>
