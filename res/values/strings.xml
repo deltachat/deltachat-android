@@ -916,6 +916,6 @@
     <!-- device messages for updates -->
     <string name="update_1_28_android">1.28 Highlights:\n\n🔒 Encryption: A new experimental option for keeping your contacts, encryption secrets and text messages encrypted on your device. Only available on account creation and importing backup files.\n\n📫 Write to mailing list\n\n💫 Faster initial setup for more e-mail servers and streamlined networking options to prevent accidental misconfiguration\n\n🐜 Maaaaaany user-reported issues fixed</string>
     <string name="update_1_28_ios_extra_line">… and you can select a wallpaper at \"Settings / Background\" now :)</string>
-    <string name="update_1_30">Faster. More stable.\n\nFor 1.30 releases, we focused on speed and reliability, fixing dozens bugs. Check our changelogs if your favorite bug is fixed: https://get.delta.chat/#changelogs 🚀</string>
+    <string name="update_1_30">Faster. More stable.\n\nFor 1.30 releases, we focused on speed and reliability, fixing dozens of bugs. Check our changelogs if your favorite bug is fixed: https://get.delta.chat/#changelogs 🚀</string>
 
 </resources>
