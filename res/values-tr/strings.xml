@@ -916,4 +916,6 @@
     <!-- device messages for updates -->
     <string name="update_1_28_android">1.28 Öne Çıkanlar:\n\n🔒 Şifreleme: Kişilerinizi, şifreleme sırlarınızı ve metin iletilerinizi aygıtınızda şifreli tutmak için yeni bir deneysel seçenek. Yalnızca hesap oluşturma ve yedek dosyaları içe aktarma sırasında kullanılabilir.\n\n📫 Posta listelerine yazma\n\n💫 Daha fazla e-posta sunucusu için daha hızlı ilk kurulum ve kazara yanlış yapılandırmayı önlemek için düzenlenen ağ seçenekleri\n\n🐜 Kullanıcıların raporladığı çoğu sorun çözüldü</string>
     <string name="update_1_28_ios_extra_line">… ve şimdi \"Ayarlar / Arka Plan\"dan bir duvar kâğıdı seçebilirsiniz :)</string>
-    </resources>
+    <string name="update_1_30">Daha hızlı. Daha kararlı.\n\n1.30 sürümleri için hıza ve güvenilirliğe odaklandık, düzinelerce hata düzeltildi. Favorilerinizden biri düzeltildiyse değişiklik günlüklerimizi denetleyin: https://get.delta.chat/#changelogs 🚀</string>
+
+</resources>

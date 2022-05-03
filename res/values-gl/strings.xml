@@ -916,4 +916,6 @@
     <!-- device messages for updates -->
     <string name="update_1_28_android">Destacado en 1.28:\n\n🔒 Cifrado: unha nova opción experimental para gardar contactos, chaves de cifrado e mensaxes de texto cifrados no teu dispositivo. Só dispoñible cando creas a conta e importas ficheiros de copia de apoio.\n\n📫 Escribir a listas de correo\n\n💫 Configuración inicial máis rápida para servidores de email e opcións de rede simplificadas para evitar problemas de configuración\n\n🐜Mais un looooote de problemiñas que as usuarias nos comentaron</string>
     <string name="update_1_28_ios_extra_line">...e podes elexir o tapiz en \"Axustes / Fondo\" :)</string>
-    </resources>
+    <string name="update_1_30">Máis rápido. Máis estable.\n\nNa versión 1.30 poñemos o foco na velocidade e fiabilidade, arranxando dúcias de problemiñas. Mira o rexistro de cambios se algún que ti vises foi arranxado: https://get.delta.chat/#changelogs 🚀</string>
+
+</resources>

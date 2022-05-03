@@ -916,4 +916,6 @@
     <!-- device messages for updates -->
     <string name="update_1_28_android">1.28 Uitgelicht:\n\n🔒 Versleuteling: er is een nieuwe, experimentele optie beschikbaar voor het versleutelen van je contactpersonen, inloggegevens en tekstberichten op je apparaat zelf. Let op: deze optie is alléén beschikbaar tijdens het toevoegen van een account en het importeren van back-upbestanden.\n\n📫 Schrijf berichten aan een mailinglijst\n\n💫 Snellere initiële instelmethode voor meer e-mailservers en vereenvoudigde netwerkopties om onopzettelijke instellingen te voorkomen\n\n🐜 Héél véél gemelde problemen opgelost!</string>
     <string name="update_1_28_ios_extra_line">…en je kunt voortaan een achtergrond kiezen via ‘Instellingen → Achtergrond’. :)</string>
-    </resources>
+    <string name="update_1_30">Sneller en stabieler. Dát zijn de kernpunten van versie 1.30.\n\n We hebben ruim 15 bugs opgelost. Neem het wijzigingslog door om te zien of er eentje tussenstaat waar je last van had: https://get.delta.chat/#changelogs 🚀</string>
+
+</resources>
