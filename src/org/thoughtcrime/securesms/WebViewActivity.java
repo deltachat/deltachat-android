@@ -65,7 +65,6 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
             case "https":
             case "mailto":
             case "openpgp4fpr":
-              // open URL externally
               return openOnlineUrl(url);
           }
         }
