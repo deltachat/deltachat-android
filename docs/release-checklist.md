@@ -28,7 +28,7 @@ in Android Studio:
    update _both_, versionCode and versionName
 
 6. if `./ndk-make.sh` from step 2. is finished successfully:
-   a) select "Build / Generate signed APK"
+   a) select "Build / Generate Signed Bundle or APK" and then "APK"
       (not: App Bundle as this would require uploading the signing key)
    b) select flavor `gplayRelease` with V1 signature enabled
       (needed for easy APK verification), V2 is optional
