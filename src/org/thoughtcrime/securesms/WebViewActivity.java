@@ -48,7 +48,8 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
     webView = findViewById(R.id.webview);
     webView.setWebViewClient(new WebViewClient() {
       // `shouldOverrideUrlLoading()` is called when the user clicks a URL,
-      // returning `true` means, the URL is passed to `loadUrl()`, `false` aborts loading.
+      // returning `true` causes the WebView to abort loading the URL,
+      // returning `false` causes the WebView to continue loading the URL as usual.
       // the method is not called for POST request nor for on-page-links.
       //
       // nb: from API 24, `shouldOverrideUrlLoading(String)` is deprecated and
@@ -64,9 +65,8 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
             case "https":
             case "mailto":
             case "openpgp4fpr":
-              openOnlineUrl(url);
-              // URL opened externally, returning `true` causes the WebView to abort loading
-              return true;
+              // open URL externally
+              return openOnlineUrl(url);
           }
         }
         // by returning `true`, we also abort loading other URLs in our WebView;
@@ -271,12 +271,14 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
     }
   }
 
-  protected void openOnlineUrl(String url) {
+  protected boolean openOnlineUrl(String url) {
     try {
       startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
     } catch (ActivityNotFoundException e) {
       Toast.makeText(this, R.string.no_browser_installed, Toast.LENGTH_LONG).show();
     }
+    // returning `true` causes the WebView to abort loading
+    return true;
   }
 
   protected WebResourceResponse interceptRequest(String url) {

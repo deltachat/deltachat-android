@@ -35,6 +35,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
   private static final String TAG = WebxdcActivity.class.getSimpleName();
   private DcContext dcContext;
   private DcMsg dcAppMsg;
+  private String baseURL;
 
   public static void openWebxdcActivity(Context context, DcMsg instance) {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -105,8 +106,12 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
   }
 
   @Override
-  protected void openOnlineUrl(String url) {
-    Toast.makeText(this, "Please embed needed resources.", Toast.LENGTH_LONG).show();
+  protected boolean openOnlineUrl(String url) {
+    if (url.startsWith(baseURL +"/")) {
+      // internal page, continue loading in the WebView
+      return false;
+    }
+    return super.openOnlineUrl(url);
   }
 
   @Override
