@@ -893,7 +893,27 @@
     <string name="a11y_background_preview_label">Background preview</string>
     <string name="a11y_disappearing_messages_activated">Disappearing messages activated</string>
 
-
+    <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
+    <string name="stop_sharing_location">Stop sharing location</string>
+    <string name="a11y_voice_message_hint_ios">After recording double-tap to send. To discard the recording scrub left-right with two fingers.</string>
+    <string name="login_error_no_internet_connection">No internet connection, login failed.</string>
+    <string name="share_account_not_configured">Account is not configured.</string>
+    <string name="cannot_play_audio_file">The audio file cannot be played.</string>
+    <!-- iOS camera permission alert -->
+    <string name="perm_ios_explain_access_to_camera_denied">To take photos, capture videos or use the QR-Code scanner, open the system settings and enable \"Camera\".</string>
+    <string name="open_settings">Open Settings</string>
+    <!-- iOS device contact alert -->
+    <string name="import_device_contacts">Import device contacts</string>
+    <string name="import_device_contacts_hint">To chat with contacts from your device open Settings and enable Contacts.</string>
+    <!-- iOS notification settings -->
+    <string name="disabled_in_dc">Disabled in Delta Chat</string>
+    <string name="disabled_in_system_settings">Disabled in system settings</string>
+    <string name="bg_app_refresh_disabled">\"Background App Refresh\" disabled in system settings</string>
+    <!-- iOS connectivity view -->
+    <string name="delayed">Delayed</string>
+    <string name="notifications_avg_minutes">On average every %1$d minutes</string>
+    <string name="notifications_avg_hours">On average every %1$d hours</string>
+    <string name="last_check_at">Checked at %1$@</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat uses your camera to take and send photos and videos and to scan QR codes.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat uses your contacts to show a list of e-mail addresses you can write to. Delta Chat has no server, your contacts are not sent anywhere.</string>
