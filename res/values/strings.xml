@@ -904,7 +904,7 @@
     <string name="open_settings">Open Settings</string>
     <!-- iOS device contact alert -->
     <string name="import_device_contacts">Import device contacts</string>
-    <string name="import_contacts_message">To chat with contacts from your device open Settings and enable Contacts.</string>
+    <string name="import_device_contacts_hint">To chat with contacts from your device open Settings and enable Contacts.</string>
     <!-- iOS notification settings -->
     <string name="disabled_in_dc">Disabled in Delta Chat</string>
     <string name="disabled_in_system_settings">Disabled in system settings</string>
