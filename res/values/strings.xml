@@ -898,7 +898,7 @@
     <string name="a11y_voice_message_hint_ios">After recording double-tap to send. To discard the recording scrub left-right with two fingers.</string>
     <string name="login_error_no_internet_connection">No internet connection, login failed.</string>
     <string name="share_account_not_configured">Account is not configured.</string>
-    <string name="cannot_play_unsupported_file_type">The audio file cannot be played.</string>
+    <string name="cannot_play_audio_file">The audio file cannot be played.</string>
     <!-- iOS camera permission alert -->
     <string name="perm_ios_explain_access_to_camera_denied">To take photos, capture videos or use the QR-Code scanner, open the system settings and enable \"Camera\".</string>
     <string name="open_settings">Open Settings</string>
