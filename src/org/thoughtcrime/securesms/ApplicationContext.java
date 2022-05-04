@@ -112,6 +112,10 @@ public class ApplicationContext extends MultiDexApplication {
       }
       Log.i("DeltaChat", "shutting down event handler");
     }, "eventThread").start();
+
+    // set translations before starting I/O to avoid sending untranslated MDNs (issue #2288)
+    DcHelper.setStockTranslations(this);
+
     dcAccounts.startIo();
 
     new ForegroundDetector(ApplicationContext.getInstance(this));
@@ -135,8 +139,6 @@ public class ApplicationContext extends MultiDexApplication {
     }
 
     DynamicTheme.setDefaultDayNightMode(this);
-
-    DcHelper.setStockTranslations(this);
 
     IntentFilter filter = new IntentFilter(Intent.ACTION_LOCALE_CHANGED);
     registerReceiver(new BroadcastReceiver() {
