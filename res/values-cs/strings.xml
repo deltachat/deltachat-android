@@ -734,7 +734,6 @@
     <string name="a11y_background_preview_label">Náhled pozadí</string>
     <string name="a11y_disappearing_messages_activated">Samomazací zprávy jsou zapnuty</string>
 
-
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat využívá kameru k focení, filmování a snímání QR kódů.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat používá tvé kontakty k zobrazení e-mailů na které můžeš psát. Delta Chat nemá žádné vlastní servery - tvé kontakty se nikam noposílají.</string>

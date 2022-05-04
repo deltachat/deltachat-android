@@ -893,7 +893,6 @@
     <string name="a11y_background_preview_label">Vista previa do fondo</string>
     <string name="a11y_disappearing_messages_activated">Activada a desaparición de mensaxes</string>
 
-
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Conceder acceso a cámara permíteche tomar fotos e vídeos.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Permitir o acceso a libreta de enderezos permíteche conversar con contactos do dispositivo.</string>

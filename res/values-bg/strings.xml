@@ -867,7 +867,6 @@ votes
     <string name="a11y_message_context_menu_btn_label">Действия, свързани със съобщението</string>
     <string name="a11y_disappearing_messages_activated">Активирани са изчезващите съобщения</string>
 
-
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat използва Вашата камера, за да прави и изпраща снимки и видеоклипове, както и да сканира QR кодове.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat използва Вашите контакти, за да показва списък на e-mail адресите, до които можете да пишете. Delta Chat няма собствен сървър, Вашите контакти не се пращат никъде.</string>

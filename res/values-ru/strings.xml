@@ -921,7 +921,6 @@
     <string name="a11y_background_preview_label">Предпросмотр фона</string>
     <string name="a11y_disappearing_messages_activated">Исчезающие сообщения включены</string>
 
-
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat использует вашу камеру для фото и видео съёмки и сканирования QR-кодов.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat использует ваши контакты для просмотра имеющихся у них адресов электронной почты, которым вы можете написать. Delta Chat не имеет сервера, ваши контакты никуда не будут отправлены.</string>

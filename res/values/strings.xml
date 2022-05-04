@@ -913,7 +913,7 @@
     <string name="delayed">Delayed</string>
     <string name="notifications_avg_minutes">On average every %1$d minutes</string>
     <string name="notifications_avg_hours">On average every %1$d hours</string>
-    <string name="last_check_at">Checked at %1$@</string>
+    <string name="last_check_at">Checked at %1$s</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat uses your camera to take and send photos and videos and to scan QR codes.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat uses your contacts to show a list of e-mail addresses you can write to. Delta Chat has no server, your contacts are not sent anywhere.</string>

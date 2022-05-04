@@ -921,7 +921,6 @@
     <string name="a11y_background_preview_label">Ukážka na pozadí</string>
     <string name="a11y_disappearing_messages_activated">Miznúce správy boli aktivované</string>
 
-
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat používa váš fotoaparát na snímanie a odosielanie fotografií a videí a na skenovanie QR kódov.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat používa vaše kontakty na zobrazenie zoznamu e-mailových adries, na ktoré môžete písať. Delta Chat nemá žiadny server, vaše kontakty sa nikam neposielajú.</string>

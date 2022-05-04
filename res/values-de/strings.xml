@@ -895,7 +895,27 @@ Ihr bisheriges E-Mail-Konto wird dabei nicht gelöscht. Sie können mit der Opti
     <string name="a11y_background_preview_label">Vorschau für Hintergrundbild</string>
     <string name="a11y_disappearing_messages_activated">Verschwindende Nachrichten eingeschaltet</string>
 
-
+    <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
+    <string name="stop_sharing_location">Teilen des Standorts beenden</string>
+    <string name="a11y_voice_message_hint_ios">Nach der Aufnahme zum Senden doppelt tippen. Um die Aufnahme zu verwerfen, mit zwei Fingern links-rechts hin- und herwischen.</string>
+    <string name="login_error_no_internet_connection">Keine Internetverbindung, Anmeldung fehlgeschlagen.</string>
+    <string name="share_account_not_configured">E-Mail-Konto nicht konfiguriert.</string>
+    <string name="cannot_play_audio_file">Audiodatei kann nicht abgespielt werden.</string>
+    <!-- iOS camera permission alert -->
+    <string name="perm_ios_explain_access_to_camera_denied">Um Fotos oder Videos aufzunehmen oder den QR-Code-Scanner zu verwenden, öffnen Sie die Systemeinstellungen und aktivieren Sie \"Kamera\".</string>
+    <string name="open_settings">Einstellungen öffnen</string>
+    <!-- iOS device contact alert -->
+    <string name="import_device_contacts">Kontakte vom Gerät importieren</string>
+    <string name="import_device_contacts_hint">Um mit Kontakten auf Ihrem Gerät zu chatten, öffnen Sie die Systemeinstellungen und aktivieren Sie \"Kontakte\".</string>
+    <!-- iOS notification settings -->
+    <string name="disabled_in_dc">Deaktiviert in Delta Chat</string>
+    <string name="disabled_in_system_settings">Deaktiviert in den Systemeinstellungen</string>
+    <string name="bg_app_refresh_disabled">\"App Hintergrundaktivität\" deaktiviert in den Systemeinstellungen</string>
+    <!-- iOS connectivity view -->
+    <string name="delayed">Verzögert</string>
+    <string name="notifications_avg_minutes">Im Mittel alle %1$d Minuten</string>
+    <string name="notifications_avg_hours">Im Mittel alle %1$d Stunden</string>
+    <string name="last_check_at">Überprüft um %1$s</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat verwendet die Kamera, um Fotos aufzunehmen und zu versenden und um QR-Codes zu scannen.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat verwendet die Kontakte, um eine Liste von E-Mail-Adressen anzuzeigen, an die Sie schreiben können. Delta Chat hat keine Server; das Adressbuch wird nicht versandt.</string>

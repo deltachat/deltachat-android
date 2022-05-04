@@ -844,7 +844,6 @@
     <string name="a11y_background_preview_label">ការមើលផ្ទៃខាងក្រោយ</string>
     <string name="a11y_disappearing_messages_activated">កម្មវិធីសារដែលនឹងបាត់បន្ទាប់ពីមួយរយៈ បានធ្វើឱ្យសកម្ម</string>
 
-
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">សាហារីសង្ឃ ប្រើកាម៉េរ៉ារបស់អ្នកដើម្បីថតរូប និងផ្ញើរូបថត និងវីដេអូ និងស្កេនកូដ QR។</string>
     <string name="InfoPlist_NSContactsUsageDescription">សា Delta Chat ប្រើទំនាក់ទំនងរបស់អ្នកដើម្បីបង្ហាញបញ្ជីអស័យដ្ឋានអុីម៉េល ដែលអ្នកអាចសរសេរទៅ។ សា Delta Chat គ្មានម៉ាសុីនមេទេ។ ទំនាក់ទំនងរបស់អ្នកមិនត្រូវបានផ្ញើទៅណាទេ។</string>

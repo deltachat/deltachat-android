@@ -888,7 +888,6 @@
     <string name="a11y_background_preview_label">Pré-visualização do fundo</string>
     <string name="a11y_disappearing_messages_activated">Mensagens que desaparecem ativadas</string>
 
-
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat usa sua câmera para tirar e enviar fotos e vídeos e para escanear códigos QR.</string>
     <string name="InfoPlist_NSContactsUsageDescription">O Delta Chat usa seus contatos para mostrar uma lista de endereços de e-mail para os quais você pode escrever. O Delta Chat não tem servidor, seus contatos não são enviados a lugar nenhum.</string>

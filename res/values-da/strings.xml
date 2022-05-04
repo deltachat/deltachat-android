@@ -759,7 +759,6 @@
     <string name="a11y_background_preview_label">Baggrundsvisning</string>
     <string name="a11y_disappearing_messages_activated">Beskeder med tidsudløb aktiveret</string>
 
-
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat bruger dit kamera til at sende billeder, videoer og skanne QR-koder</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat bruger dine kontakter til at vise en liste af e-mail adresser du kan skrive til. Delta Chat har ikke nogen server, dine kontakter bliver ikke sendt nogen steder.</string>

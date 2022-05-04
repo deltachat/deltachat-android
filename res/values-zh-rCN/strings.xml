@@ -879,7 +879,6 @@
     <string name="a11y_background_preview_label">背景预览</string>
     <string name="a11y_disappearing_messages_activated">消息定时销毁已激活</string>
 
-
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat 使用相机来拍摄、发送照片和视频以及扫描二维码。</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat 使用您的联系人来显示您可以写信到的电子邮件地址列表。 Delta Chat 没有服务器，您的联系人不会被发送到任何地方。</string>
@@ -902,6 +901,6 @@
     <!-- device messages for updates -->
     <string name="update_1_28_android">1.28 版主要变化：\n\n🔒 加密：一个新的实验性选项，可以在你的设备上保加密存你的联系人、加密信息和短信。仅在帐户创建和导入备份文件时可用。\n\n📫写信给邮件列表\n\n💫更快地对更多电子邮件服务器进行初始化设置，简化网络选项以防止意外的错误配置\n\n🐜 修复了许多用户报告的问题</string>
     <string name="update_1_28_ios_extra_line">… 另外，你现在可以在“设置/背景”处选择壁纸了 :)</string>
-    <string name="update_1_30">更快。更稳定。\n\n对于 1.30 版本，我们专注于速度和可靠性，修复了几十个 bug。查看我们的更新记录，了解你曾遇到过的 bug 是否已经修复：https://get.delta.chat/#changelogs 🚀</string>
+    <string name="update_1_30">更快。更稳定。\n\n对于 1.30 版本，我们专注于速度和可靠性，修复了几十个 bug。查看我们的更新记录，了解你曾遇到的 bug 是否已经修复： https://get.delta.chat/#changelogs 🚀</string>
 
 </resources>
