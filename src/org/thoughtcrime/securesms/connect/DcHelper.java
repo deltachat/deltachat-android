@@ -63,6 +63,7 @@ public class DcHelper {
     public static final String CONFIG_SHOW_EMAILS = "show_emails";
     public static final String CONFIG_MEDIA_QUALITY = "media_quality";
     public static final String CONFIG_WEBRTC_INSTANCE = "webrtc_instance";
+    public static final String CONFIG_DEBUG_LOGGING = "debug_logging";
 
     public static DcContext getContext(@NonNull Context context) {
         return ApplicationContext.getInstance(context).dcContext;

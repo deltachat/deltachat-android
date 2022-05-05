@@ -3,6 +3,7 @@ package org.thoughtcrime.securesms.preferences;
 import static android.app.Activity.RESULT_OK;
 import static android.text.InputType.TYPE_TEXT_VARIATION_URI;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_BCC_SELF;
+import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_DEBUG_LOGGING;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_E2EE_ENABLED;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_MVBOX_MOVE;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_ONLY_FETCH_MVBOX;
@@ -54,6 +55,7 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
   CheckBoxPreference bccSelfCheckbox;
   CheckBoxPreference mvboxMoveCheckbox;
   CheckBoxPreference onlyFetchMvboxCheckbox;
+  CheckBoxPreference debugLoggingCheckbox;
 
   @Override
   public void onCreate(Bundle paramBundle) {
@@ -162,6 +164,13 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
       }
       return true;
     });
+
+    debugLoggingCheckbox = (CheckBoxPreference) this.findPreference("pref_debug_logging_enabled");
+    debugLoggingCheckbox.setOnPreferenceChangeListener((preference, newValue) -> {
+      boolean enabled = (Boolean) newValue;
+      dcContext.setConfigInt(CONFIG_DEBUG_LOGGING, enabled? 1 : 0);
+      return true;
+    });
   }
 
   @Override
@@ -179,6 +188,7 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
     bccSelfCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_BCC_SELF));
     mvboxMoveCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_MVBOX_MOVE));
     onlyFetchMvboxCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_ONLY_FETCH_MVBOX));
+    debugLoggingCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_DEBUG_LOGGING));
   }
 
   @Override
