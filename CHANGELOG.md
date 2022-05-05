@@ -1,5 +1,15 @@
 # Delta Chat Android Changelog
 
+## v1.30.1
+2022-05
+* fix wrong language in read receipts
+* fix encoding issue in QR code descriptions
+* webxdc: allow internal pages
+* update translations and local help
+* update provider database
+* update to core80
+
+
 ## v1.30.0
 2022-05
 
