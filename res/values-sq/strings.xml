@@ -890,6 +890,25 @@
     <string name="a11y_background_preview_label">Paraparje sfondi</string>
     <string name="a11y_disappearing_messages_activated">Zhdukja e mesazheve është e aktivizuar</string>
 
+    <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
+    <string name="stop_sharing_location">Ndale tregimin e vendndodhjes</string>
+    <string name="a11y_voice_message_hint_ios">Pas regjistrimit, prekeni dy herë që të dërgohet. Për ta hedhur regjistrimin tej, fërkojeni majtas-djathtas me dy gishta.</string>
+    <string name="login_error_no_internet_connection">S’ka lidhje internet, hyrja dështoi.</string>
+    <string name="share_account_not_configured">Llogaria s’është e formësuar.</string>
+    <string name="cannot_play_audio_file">Kartela audio s’luhet dot.</string>
+    <!-- iOS camera permission alert -->
+    <string name="perm_ios_explain_access_to_camera_denied">Për të bërë foto, regjistruar video ose përdorur skanerin QR-Code, hapni rregullimet e sistemit dhe aktivizoni “Kamera”.</string>
+    <string name="open_settings">Hap Rregullimet</string>
+    <!-- iOS device contact alert -->
+    <string name="import_device_contacts">Importo kontakte pajisjeje</string>
+    <string name="import_device_contacts_hint">Për t’u fjalosur me kontakte nga pajisja juaj, hapni Rregullime dhe aktivizoni Kontaktet.</string>
+    <!-- iOS notification settings -->
+    <string name="disabled_in_dc">Çaktivizuar në Delta Chat</string>
+    <string name="disabled_in_system_settings">Çaktivizuar te rregullimet e sistemit</string>
+    <string name="bg_app_refresh_disabled">“Rifreskim Aplikacionesh Në Prapaskenë” çaktivizuar te rregullimet e sistemit</string>
+    <string name="notifications_avg_minutes">Mesatarisht çdo %1$d minuta</string>
+    <string name="notifications_avg_hours">Mesatarisht %1$d orë</string>
+    <string name="last_check_at">Kontrolluar më %1$s</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Lejimi i përdorimi të kamerës ju bën të mundur të bëni foto dhe video.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Lejimi i përdorimi të librit tuaj të adresave kamerës ju bën të mundur të bisedoni me kontakte prej pajisjes tuaj.</string>
@@ -912,4 +931,6 @@
     <!-- device messages for updates -->
     <string name="update_1_28_android">1.28 Në pah:\n\n🔒 Fshehtëzim: Një mundësi e re eksperimentale për të mbajtur të fshehtëzuara në pajisjen tuaj kontaktet, të fshehtat dhe mesazhe tekst tuajt. E mundshme vetëm gjatë krijimi llogarish dhe importimi kartelash kopjeruajtjeje.\n\n📫 Shkruani te listë postimesh\n\n💫 Ujdisje fillestare më e shpejtë për më tepër shërbyes email-i dhe mundësi të thjeshtuara punimi në rrjet, për të parandaluar formësim të gabuar aksidentalisht\n\n🐜 U ndreqën mjaaaaaaft probleme të njoftuara nga përdoruesit</string>
     <string name="update_1_28_ios_extra_line">… dhe ju tani mund të përzgjidhni një sfond që nga “Rregullime / Sfond” :)</string>
-    </resources>
+    <string name="update_1_30">Më shpejtë. Me më tepër qëndrueshmëri.\n\nPër hedhjet në qarkullim të serisë 1.30, u përqendruam në shpejtësinë dhe qëndrueshmërinë, duke ndrequr dhjetëra. Shihni regjistrat tanë të ndryshimeve, për të parë nëse e juaja është ndrequr: https://get.delta.chat/#changelogs 🚀</string>
+
+</resources>

@@ -893,6 +893,27 @@
     <string name="a11y_background_preview_label">Anteprima sfondo</string>
     <string name="a11y_disappearing_messages_activated">Messaggi che scompaiono attivati</string>
 
+    <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
+    <string name="stop_sharing_location">Smetti di condividere la posizione</string>
+    <string name="a11y_voice_message_hint_ios">Dopo la registrazione doppio tocco per inviare. Per scartare la registrazione striscia a destra con due dita.</string>
+    <string name="login_error_no_internet_connection">Nessuna connessione internet, accesso fallito.</string>
+    <string name="share_account_not_configured">L\'account non è configurato.</string>
+    <string name="cannot_play_audio_file">Il file audio non può essere riprodotto.</string>
+    <!-- iOS camera permission alert -->
+    <string name="perm_ios_explain_access_to_camera_denied">Per scattare foto, filmare video o usare la scansione Codice QR, apri le impostazioni di sistema e autorizza \"Fotocamera\".</string>
+    <string name="open_settings">Apri Impostazioni</string>
+    <!-- iOS device contact alert -->
+    <string name="import_device_contacts">Importa i contatti del dispositivo</string>
+    <string name="import_device_contacts_hint">Per chattare coi contatti dal tuo dispositivo apri Impostazioni e abilita Contatti.</string>
+    <!-- iOS notification settings -->
+    <string name="disabled_in_dc">Disabilitato in Delta Chat</string>
+    <string name="disabled_in_system_settings">Disabilitato nelle impostazioni di sistema</string>
+    <string name="bg_app_refresh_disabled">\"Aggiornamento App in Background\" disabilitato nelle impostazioni di sistema</string>
+    <!-- iOS connectivity view -->
+    <string name="delayed">Ritardato</string>
+    <string name="notifications_avg_minutes">In media ogni %1$d minuti</string>
+    <string name="notifications_avg_hours">In media ogni %1$d ore</string>
+    <string name="last_check_at">Controllato a %1$s</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat utilizza la fotocamera per scattare e inviare foto e video e per scansionare i codici QR.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat usa i tuoi contatti per mostrare una lista di indirizzi e-mail a cui puoi scrivere. Delta Chat non ha un server, i tuoi contatti non vengono inviati da nessuna parte.</string>
@@ -915,8 +936,6 @@
     <!-- device messages for updates -->
     <string name="update_1_28_android">1.28 In evidenza:\n\n🔒 Crittografia: Una nuova opzione sperimentale per mantenere i contatti, le chiavi crittografiche e i messaggi di testo crittografati sul tuo dispositivo. Disponibile solo per la creazione di account e l\'importazione di file di backup.\n\n📫 Scrivi nella mailing list\n\n💫 Configurazione iniziale più rapida per più server di posta elettronica e opzioni di rete semplificate per prevenire configurazioni errate accidentali\n\n🐜 Moooooolti problemi riportati dagli utenti risolti</string>
     <string name="update_1_28_ios_extra_line">... e ora puoi selezionare uno sfondo in \"Impostazioni / Sfondo\" :)</string>
-    <string name="update_1_30">Più veloce. Più stabile.\n\nPer la versione 1.30 abbiamo puntato su velocità e affidabilità, risolvendo decine di problemi. Controlla nei nostri elenchi delle modifiche se il tuo preferito è risolto:
-https://get.delta.chat/#changelogs 🚀
- </string>
+    <string name="update_1_30">Più veloce. Più stabile.\n\nPer la versione 1.30 abbiamo puntato su velocità e affidabilità, risolvendo decine di problemi. Controlla nei nostri elenchi delle modifiche se il tuo preferito è risolto:https://get.delta.chat/#changelogs 🚀</string>
 
 </resources>

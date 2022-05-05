@@ -46,8 +46,8 @@
     <string name="profile">Profiel</string>
     <string name="main_menu">Hoofdmenu</string>
     <string name="start_chat">Gesprek beginnen</string>
-    <string name="show_full_message">Volledige bericht tonen…</string>
-    <string name="show_full_message_in_browser">Volledige bericht in browser tonen…</string>
+    <string name="show_full_message">Volledig bericht tonen…</string>
+    <string name="show_full_message_in_browser">Volledig bericht in browser tonen…</string>
     <!-- this is shown as placeholder when something is loading at some places -->
     <string name="loading">Bezig met laden…</string>
     <string name="hide">Verbergen</string>
@@ -893,6 +893,27 @@
     <string name="a11y_background_preview_label">Achtergrondvoorbeeld</string>
     <string name="a11y_disappearing_messages_activated">Verdwijnende berichten zijn ingeschakeld</string>
 
+    <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
+    <string name="stop_sharing_location">Stop locatiedeling</string>
+    <string name="a11y_voice_message_hint_ios">Dubbeltik op de opname om hem te versturen. Veeg met twee vingers van links naar rechts om de opname af te breken.</string>
+    <string name="login_error_no_internet_connection">Het inloggen is mislukt omdat er geen internetverbinding is.</string>
+    <string name="share_account_not_configured">Dit account is niet ingesteld.</string>
+    <string name="cannot_play_audio_file">Dit audiobestand kan niet worden afgespeeld.</string>
+    <!-- iOS camera permission alert -->
+    <string name="perm_ios_explain_access_to_camera_denied">Voor het maken van foto\'s, opnemen van video\'s en gebruik van de QR-codescanner is cameratoegang vereist. Open de systeeminstellingen en verleen deze toegang.</string>
+    <string name="open_settings">Open instellingen</string>
+    <!-- iOS device contact alert -->
+    <string name="import_device_contacts">Importeer lokale contactpersonen</string>
+    <string name="import_device_contacts_hint">Voor het voeren van gesprekken met lokale contactpersonen is contactpersoontoegang vereist. Open de systeeminstellingen en verleen deze toegang.</string>
+    <!-- iOS notification settings -->
+    <string name="disabled_in_dc">Uitgenschakeld in Delta Chat</string>
+    <string name="disabled_in_system_settings">Uitgeschakeld in systeeminstellingen</string>
+    <string name="bg_app_refresh_disabled">App op de achtergrond vernieuwen is uitgeschakeld in de systeeminstellingen</string>
+    <!-- iOS connectivity view -->
+    <string name="delayed">Vertraagd</string>
+    <string name="notifications_avg_minutes">Gemiddeld elke %1$d minuten</string>
+    <string name="notifications_avg_hours">Gemiddeld elke %1$d uur</string>
+    <string name="last_check_at">Gecontroleerd om %1$s</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Geef Delta Chat toegang tot je camera om foto\'s en video\'s te maken en QR-codes te scannen.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Geef Delta Chat toegang tot je adresboek om gesprekken te voeren met contactpersonen. Delta Chat heeft geen servers, dus ze worden niet aan ons opgestuurd.</string>

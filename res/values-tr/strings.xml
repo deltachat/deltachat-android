@@ -893,6 +893,27 @@
     <string name="a11y_background_preview_label">Arka plan önizlemesi</string>
     <string name="a11y_disappearing_messages_activated">Kaybolan iletiler etkinleştirildi</string>
 
+    <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
+    <string name="stop_sharing_location">Konum paylaşımını durdur</string>
+    <string name="a11y_voice_message_hint_ios">Kaydettikten sonra göndermek için iki kez dokunun. Kaydı atmak için iki parmakla sola-sağa fırçalayın.</string>
+    <string name="login_error_no_internet_connection">Internet bağlantısı yok; oturum açma başarısız.</string>
+    <string name="share_account_not_configured">Hesap yapılandırılmadı.</string>
+    <string name="cannot_play_audio_file">Ses dosyası oynatılamıyor.</string>
+    <!-- iOS camera permission alert -->
+    <string name="perm_ios_explain_access_to_camera_denied">Fotoğraflar çekmek, videolar yakalamak ya da QR Kod tarayıcısını kullanmak için sistem ayarlarını açın ve \"Kamera\"\'yı etkinleştirin.</string>
+    <string name="open_settings">Ayarlar\'ı Aç</string>
+    <!-- iOS device contact alert -->
+    <string name="import_device_contacts">Aygıt kişilerini içe aktar</string>
+    <string name="import_device_contacts_hint">Aygıtınızdan gelen kişilerle sohbet etmek için Ayarlar\'ı açın ve Kişiler\'i etkinleştirin.</string>
+    <!-- iOS notification settings -->
+    <string name="disabled_in_dc">Delta Chat\'ten etkisizleştirildi</string>
+    <string name="disabled_in_system_settings">Sistem ayarlarından etkisizleştirildi</string>
+    <string name="bg_app_refresh_disabled">\"Arka Planda Uygulama Yenileme\" sistem ayarlarından etkisizleştirildi</string>
+    <!-- iOS connectivity view -->
+    <string name="delayed">Gecikmeli</string>
+    <string name="notifications_avg_minutes">Ortalama olarak her %1$d dakikada bir</string>
+    <string name="notifications_avg_hours">Ortalama olarak her %1$d saatte bir</string>
+    <string name="last_check_at">Denetleme %1$s</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat, fotoğraflar ve videolar çekmek ve göndermek için ve QR kodları taramak için kameranızı kullanır.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat, yazabileceğiniz e-posta adreslerinin bir listesini göstermek için kişilerinizi kullanır. Delta Chat sunucusu yoktur; kişileriniz herhangi bir yere gönderilmez.</string>

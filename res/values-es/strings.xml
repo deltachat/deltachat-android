@@ -893,6 +893,18 @@
     <string name="a11y_background_preview_label">Previsualización del fondo</string>
     <string name="a11y_disappearing_messages_activated">Desaparición de mensajes activada</string>
 
+    <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
+    <string name="stop_sharing_location">Dejar de compartir ubicación</string>
+    <string name="a11y_voice_message_hint_ios">Después de grabar, toque dos veces para enviar. Para descartar la grabación, deslice de izquierda a derecha con dos dedos.</string>
+    <string name="login_error_no_internet_connection">No hay conexión a Internet, el inicio de sesión falló.</string>
+    <string name="share_account_not_configured">La cuenta no está configurada.</string>
+    <string name="cannot_play_audio_file">El archivo de audio no se puede reproducir.</string>
+    <string name="open_settings">Abrir configuración</string>
+    <!-- iOS device contact alert -->
+    <string name="import_device_contacts">Importar contactos del dispositivo</string>
+    <!-- iOS notification settings -->
+    <string name="disabled_in_dc">Deshabilitado en Delta Chat</string>
+    <string name="disabled_in_system_settings">Deshabilitado en la configuración del sistema</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Al permitir el acceso a la cámara podrás tomar fotos y videos.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Al permitir acceder a tu libreta de direcciones podrás chatear con los contactos de tu dispositivo.</string>

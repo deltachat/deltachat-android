@@ -879,6 +879,27 @@
     <string name="a11y_background_preview_label">背景预览</string>
     <string name="a11y_disappearing_messages_activated">消息定时销毁已激活</string>
 
+    <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
+    <string name="stop_sharing_location">停止共享位置</string>
+    <string name="a11y_voice_message_hint_ios">录音后轻按两次发送。要丢弃录音，用两根手指左右滑动。</string>
+    <string name="login_error_no_internet_connection">无互联网连接，登录失败。</string>
+    <string name="share_account_not_configured">账户未配置。</string>
+    <string name="cannot_play_audio_file">无法播放音频文件。</string>
+    <!-- iOS camera permission alert -->
+    <string name="perm_ios_explain_access_to_camera_denied">要拍照、拍摄视频或使用二维码扫描仪，请打开系统设置并启用“相机”。</string>
+    <string name="open_settings">打开设置</string>
+    <!-- iOS device contact alert -->
+    <string name="import_device_contacts">导入设备联系人</string>
+    <string name="import_device_contacts_hint">要与你设备中的联系人聊天，请打开“设置”并启用“联系人”。</string>
+    <!-- iOS notification settings -->
+    <string name="disabled_in_dc">在 Delta Chat 中被禁用</string>
+    <string name="disabled_in_system_settings">在系统设置中禁用</string>
+    <string name="bg_app_refresh_disabled">在系统设置中禁用了“后台应用刷新”</string>
+    <!-- iOS connectivity view -->
+    <string name="delayed">延迟</string>
+    <string name="notifications_avg_minutes">平均每 %1$d 分钟</string>
+    <string name="notifications_avg_hours">平均每 %1$d 小时</string>
+    <string name="last_check_at">检查于 %1$s</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat 使用相机来拍摄、发送照片和视频以及扫描二维码。</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat 使用您的联系人来显示您可以写信到的电子邮件地址列表。 Delta Chat 没有服务器，您的联系人不会被发送到任何地方。</string>
