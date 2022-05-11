@@ -84,9 +84,10 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
 
     Util.runOnAnyBackgroundThread(() -> {
       JSONObject info = this.dcAppMsg.getWebxdcInfo();
+      String chatName =  WebxdcActivity.this.dcContext.getChat(WebxdcActivity.this.dcAppMsg.getChatId()).getName();
       Util.runOnMain(() -> {
         try {
-          getSupportActionBar().setTitle(info.getString("name"));
+          getSupportActionBar().setTitle(chatName + " – " + info.getString("name"));
         } catch (Exception e) {
           e.printStackTrace();
         }
