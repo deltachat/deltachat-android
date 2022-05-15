@@ -59,7 +59,7 @@ on https://play.google.com/apps/publish/ :
    b) fill out "Release details/Release notes" (500 characters max),
       release name should be default ("123 (1.2.3)")
    c) click "Save" and then "Review release"
-   d) rollout to 20% by default is fine
+   d) set "Rollout Percentage" to 1% and then 2%, 5%, 10%, 20%, 50%, 100% the next days
 
 
 # Release new F-Droid version
