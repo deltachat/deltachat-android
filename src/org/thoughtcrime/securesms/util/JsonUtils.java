@@ -46,6 +46,14 @@ public class JsonUtils {
     return objectMapper;
   }
 
+  public static String optString(JSONObject obj, String name) {
+    try {
+      return obj.optString(name);
+    } catch(Exception e) {
+      return "";
+    }
+  }
+
   public static class SaneJSONObject {
 
     private final JSONObject delegate;
