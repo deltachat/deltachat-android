@@ -25,6 +25,7 @@ import com.b44t.messenger.DcMsg;
 import org.json.JSONObject;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.util.JsonUtils;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 
@@ -83,14 +84,12 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     webView.loadUrl(this.baseURL + "/index.html");
 
     Util.runOnAnyBackgroundThread(() -> {
-      JSONObject info = this.dcAppMsg.getWebxdcInfo();
-      String chatName =  WebxdcActivity.this.dcContext.getChat(WebxdcActivity.this.dcAppMsg.getChatId()).getName();
+      final JSONObject info = this.dcAppMsg.getWebxdcInfo();
+      final String docName = JsonUtils.optString(info, "document");
+      final String xdcName = JsonUtils.optString(info, "name");
+      final String chatName =  WebxdcActivity.this.dcContext.getChat(WebxdcActivity.this.dcAppMsg.getChatId()).getName();
       Util.runOnMain(() -> {
-        try {
-          getSupportActionBar().setTitle(info.getString("name") + " – " + chatName);
-        } catch (Exception e) {
-          e.printStackTrace();
-        }
+        getSupportActionBar().setTitle((docName.isEmpty() ? xdcName : docName) + " – " + chatName);
       });
     });
   }
