@@ -21,6 +21,7 @@ import org.json.JSONObject;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.mms.DocumentSlide;
 import org.thoughtcrime.securesms.mms.SlideClickListener;
+import org.thoughtcrime.securesms.util.JsonUtils;
 import org.thoughtcrime.securesms.util.Util;
 
 import java.io.ByteArrayInputStream;
@@ -65,31 +66,28 @@ public class WebxdcView extends FrameLayout {
 
   public void setWebxdc(final @NonNull DcMsg dcMsg, String defaultSummary)
   {
-    try {
-      JSONObject info = dcMsg.getWebxdcInfo();
-      setOnClickListener(new OpenClickedListener(getContext(), dcMsg));
+    JSONObject info = dcMsg.getWebxdcInfo();
+    setOnClickListener(new OpenClickedListener(getContext(), dcMsg));
 
-      // icon
-      byte[] blob = dcMsg.getWebxdcBlob(info.getString("icon"));
-      if (blob == null) {
-        throw new Exception("webxdc icon not found");
-      }
+    // icon
+    byte[] blob = dcMsg.getWebxdcBlob(JsonUtils.optString(info, "icon"));
+    if (blob != null) {
       ByteArrayInputStream is = new ByteArrayInputStream(blob);
       Drawable drawable = Drawable.createFromStream(is, "icon");
       icon.setImageDrawable(drawable);
-
-      // name
-      appName.setText(info.getString("name"));
-
-      // subtitle
-      String summary = info.optString("summary");
-      if (summary.isEmpty()) {
-        summary = defaultSummary;
-      }
-      appSubtitle.setText(summary);
-    } catch (Exception e) {
-      e.printStackTrace();
     }
+
+    // name
+    String docName = JsonUtils.optString(info, "document");
+    String xdcName = JsonUtils.optString(info, "name");
+    appName.setText(docName.isEmpty() ? xdcName : (docName + " – " + xdcName));
+
+    // subtitle
+    String summary = info.optString("summary");
+    if (summary.isEmpty()) {
+      summary = defaultSummary;
+    }
+    appSubtitle.setText(summary);
   }
 
   private class OpenClickedListener implements View.OnClickListener {
