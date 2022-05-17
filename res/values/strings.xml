@@ -622,6 +622,8 @@
     <string name="pref_on_demand_location_streaming">On-demand Location Streaming</string>
     <string name="pref_developer_mode">Developer Mode</string>
     <string name="pref_developer_mode_explain">Activates debugging options and can make the app less stable. For developers only.</string>
+    <string name="pref_debug_logging">Debug logging</string>
+    <string name="pref_debug_logging_explain">Enable some extra debug logs which can be viewed in \'Device messages\'. Will slow down the device a bit.</string>
     <string name="pref_background_default">Default background</string>
     <string name="pref_background_default_color">Default color</string>
     <string name="pref_background_custom_image">Custom image</string>
@@ -941,5 +943,4 @@
     <string name="update_1_28_android">1.28 Highlights:\n\n🔒 Encryption: A new experimental option for keeping your contacts, encryption secrets and text messages encrypted on your device. Only available on account creation and importing backup files.\n\n📫 Write to mailing list\n\n💫 Faster initial setup for more e-mail servers and streamlined networking options to prevent accidental misconfiguration\n\n🐜 Maaaaaany user-reported issues fixed</string>
     <string name="update_1_28_ios_extra_line">… and you can select a wallpaper at \"Settings / Background\" now :)</string>
     <string name="update_1_30">Faster. More stable.\n\nFor 1.30 releases, we focused on speed and reliability, fixing dozens of bugs. Check our changelogs if your favorite one is fixed: https://get.delta.chat/#changelogs 🚀</string>
-
 </resources>
