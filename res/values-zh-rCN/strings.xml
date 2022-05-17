@@ -882,6 +882,7 @@
     <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="stop_sharing_location">停止共享位置</string>
     <string name="a11y_voice_message_hint_ios">录音后轻按两次发送。要丢弃录音，用两根手指左右滑动。</string>
+    <string name="a11y_connectivity_hint">轻按两次查看连接详情</string>
     <string name="login_error_no_internet_connection">无互联网连接，登录失败。</string>
     <string name="share_account_not_configured">账户未配置。</string>
     <string name="cannot_play_audio_file">无法播放音频文件。</string>

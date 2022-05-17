@@ -896,6 +896,7 @@
     <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="stop_sharing_location">Stop locatiedeling</string>
     <string name="a11y_voice_message_hint_ios">Dubbeltik op de opname om hem te versturen. Veeg met twee vingers van links naar rechts om de opname af te breken.</string>
+    <string name="a11y_connectivity_hint">Dubbeltik om de verbindingsinformatie te bekijken.</string>
     <string name="login_error_no_internet_connection">Het inloggen is mislukt omdat er geen internetverbinding is.</string>
     <string name="share_account_not_configured">Dit account is niet ingesteld.</string>
     <string name="cannot_play_audio_file">Dit audiobestand kan niet worden afgespeeld.</string>

@@ -737,7 +737,7 @@
     <string name="systemmsg_read_receipt_body">%1$s Správa, ktorú ste poslali, sa zobrazila na obrazovke príjemcu.\n\nZaručujeme, že obsah nebol prečítaný.</string>
     <string name="systemmsg_cannot_decrypt">Túto správu nie je možné dešifrovať.\n\n• Už by mohlo pomôcť jednoducho odpovedať na túto správu a požiadať odosielateľa, aby správu odoslal znova.\n\n• V prípade, že ste na ňu znova nainštalovali program Delta Chat alebo iný e-mailový program alebo iné zariadenie, z ktorého budete pravdepodobne chcieť odoslať správu o nastavení automatického šifrovania.</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). -->
-    <string name="systemmsg_action_by_me">%1$smnou.</string>
+    <string name="systemmsg_action_by_me">%1$s mnou.</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
     <string name="systemmsg_action_by_user">%1$sod%2$s.</string>
     <string name="systemmsg_unknown_sender_for_chat">Neznámy odosielateľ pre túto konverzáciu. Ďalšie informácie nájdete v časti „Informácie“.</string>
@@ -924,6 +924,7 @@
     <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="stop_sharing_location">Vypnúť zdieľanie polohy</string>
     <string name="a11y_voice_message_hint_ios">Po zaznamenaní nahrávky ju dvojitým klepnutím odošlete. Nahrávku zahodíte potiahnutím dvoma prstami vľavo-vpravo.</string>
+    <string name="a11y_connectivity_hint">Dvakrát ťuknite pre otvorenie podrobností o pripojení.</string>
     <string name="login_error_no_internet_connection">Chýbajúce pripojenie k internetu, prihlásenie sa nepodarilo</string>
     <string name="share_account_not_configured">Účet nie je nastavený.</string>
     <string name="cannot_play_audio_file">Audio súbor sa nepodarilo prehrať.</string>
@@ -962,4 +963,6 @@
 
 
     <string name="update_1_28_ios_extra_line">… a teraz môžete vybrať pozadie v ponuke \"Nastavenia / Pozadie\" :)</string>
-    </resources>
+    <string name="update_1_30">Rýchlejší. Stabilnejší.\n\nVo vydaní 1.30 sme sa zamerali na rýchlosť a spoľahlivosť, opravili sme desiatky chýb. Prečítajte si prehľad o zmenách a pozrite sa, či sme opravili vašu obľúbenú chybu: https://get.delta.chat/#changelogs 🚀</string>
+
+</resources>

@@ -14,7 +14,7 @@
     <string name="default_value">Varsayılan (%1$s)</string>
     <string name="default_value_as_above">Varsayılan (yukarıdakinin aynısı)</string>
     <string name="custom">Özel</string>
-    <string name="none">Hiçbiri</string>
+    <string name="none">Yok</string>
     <string name="automatic">Otomatik</string>
     <string name="strict">Katı</string>
     <string name="open">Aç</string>
@@ -144,7 +144,7 @@
     <!-- "capture" here means "start a video recording" or "take a photo"; eg. the description of the "shutter button" in the camera controls -->
     <string name="capture">Yakala</string>
     <string name="switch_camera">Kamerayı Değiştir</string>
-    <string name="toggle_fullscreen">Tam Ekran Kipine Geç</string>
+    <string name="toggle_fullscreen">Tam Ekran Moduna Geç</string>
     <string name="location">Konum</string>
     <string name="gallery">Galeri</string>
     <string name="images_and_videos">Görseller ve Videolar</string>
@@ -223,8 +223,8 @@
     <string name="accept">Kabul Et</string>
     <string name="menu_play">Oynat</string>
     <string name="menu_pause">Duraklat</string>
-    <string name="menu_scroll_to_bottom">Alta Kaydır</string>
-    <string name="menu_scroll_to_top">Üste Kaydır</string>
+    <string name="menu_scroll_to_bottom">En Alta Kaydır</string>
+    <string name="menu_scroll_to_top">En Üste Kaydır</string>
     <string name="menu_help">Yardım</string>
     <string name="privacy_policy">Gizlilik İlkesi</string>
     <string name="menu_select_all">Tümünü Seç</string>
@@ -246,7 +246,7 @@
     <string name="device_talk">Aygıt İletileri</string>
     <string name="device_talk_subtitle">Yerel olarak oluşturulan iletiler</string>
     <string name="device_talk_explain">Bu sohbetteki iletiler, Delta Chat uygulamanız tarafından yerel olarak oluşturulur. Oluşturucuları, uygulama güncelleştirmeleri ve kullanım sırasındaki sorunlar hakkında bilgilendirmek için onu kullanır.</string>
-    <string name="device_talk_welcome_message">Delta Chat\'e hoş geldiniz! – Delta Chat, diğer yaygın ulak uygulamaları gibi görünür ve hissettirir ama merkezi denetim, izleme içermez ya da sizi, arkadaşlarınızı, iş arkadaşlarınızı ya da ailenizi büyük kuruluşlara satmaz.\n\nTeknik olarak Delta Chat, çağdaş bir sohbet arabirimli bir e-posta uygulamasıdır. 👻 olacaksanız, e-posta yeni bir elbisedir\n\nMilyarlarca insanın herhangi biriyle Delta Chat kullanın: Yalnızca onların e-posta adresini kullanın. Alıcıların Delta Chat\'i kurması, web sitelerini ziyaret etmesi ya da herhangi bir yere kaydolması gerekmez - ancak, elbette isterlerse, onlara 👉 https://get.delta.chat adresini işaret edebilirsiniz</string>
+    <string name="device_talk_welcome_message">Delta Chat\'e hoş geldiniz! – Delta Chat, diğer yaygın ulak uygulamaları gibi görünür ve hissettirir; ama merkezi denetim, izleme içermez ya da sizi, arkadaşlarınızı, iş arkadaşlarınızı ya da ailenizi büyük kuruluşlara satmaz.\n\nTeknik olarak Delta Chat, çağdaş bir sohbet arabirimli bir e-posta uygulamasıdır. 👻 olacaksanız, e-posta yeni bir elbisedir\n\nMilyarlarca insanın herhangi biriyle Delta Chat kullanın: Yalnızca onların e-posta adresini kullanın. Alıcıların Delta Chat\'i kurması, web sitelerini ziyaret etmesi ya da herhangi bir yere kaydolması gerekmez - ancak elbette isterlerse onlara 👉 https://get.delta.chat adresini işaret edebilirsiniz</string>
     <string name="edit_contact">Kişiyi Düzenle</string>
     <!-- Translators: "Pin" here is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
     <string name="pin_chat">Sohbeti Sabitle</string>
@@ -294,8 +294,8 @@
     <!-- get confirmations -->
     <string name="ask_leave_group">Bu gruptan ayrılmak istediğinizden emin misiniz?</string>
     <plurals name="ask_delete_chat">
-        <item quantity="one">%d sohbet silinsin mi? Artık sohbet listesinde gösterilmeyecek; iletileri sunucuda kalacak.</item>
-        <item quantity="other">%d sohbet silinsin mi? Artık sohbet listesinde gösterilmeyecek; iletileri sunucuda kalacak.</item>
+        <item quantity="one">%d sohbet silinsin mi? O artık sohbet listesinde gösterilmeyecek; iletileri sunucuda kalacak.</item>
+        <item quantity="other">%d sohbet silinsin mi? Onlar artık sohbet listesinde gösterilmeyecek; iletileri sunucuda kalacak.</item>
     </plurals>
     <string name="ask_delete_message">Bu iletiyi silmek istediğinizden emin misiniz?</string>
     <plurals name="ask_delete_messages">
@@ -349,9 +349,9 @@
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
     <string name="chat_new_one_to_one_hint">Bir ileti gönderin. %1$s Delta Chat kullanmıyorsa tamam.</string>
-    <string name="chat_new_broadcast_hint">Bir yayın listesinde, diğerleri sizinle olan özel sohbetlerinde ileti alacak.\n\nAlıcılar birbirlerinin farkında olmayacak.</string>
+    <string name="chat_new_broadcast_hint">Bir yayın listesinde, diğerleri sizinle olan özel sohbetlerinde ileti alacak.\n\nAlıcılar birbirinin farkında olmayacak.</string>
     <string name="chat_new_group_hint">Diğerleri, yalnızca siz bir ilk ileti gönderdikten sonra bu grubu görecek.</string>
-    <string name="chat_record_slide_to_cancel">Vazgeçmek için kaydırın</string>
+    <string name="chat_record_slide_to_cancel">İptal etmek için kaydırın</string>
     <string name="chat_record_explain">Bir sesli ileti kaydetmek için dokunun ve basılı tutun, göndermek için bırakın</string>
     <string name="chat_no_chats_yet_title">Boş gelen kutusu.\nYeni bir sohbete başlamak için \"+\" simgesine basın.</string>
     <string name="chat_no_chats_yet_hint">Diğer Delta Chat kullanıcılarıyla ve herhangi bir e-posta adresiyle sohbet edebilirsiniz.</string>
@@ -369,9 +369,9 @@
     <string name="saved">Kaydedilen</string>
     <string name="retry_send">İletiyi göndermeyi yeniden dene</string>
     <!-- reasons for a disabled message composer -->
-    <string name="messaging_disabled_not_in_group">Yazamazsınız çünkü bu grupta değilsiniz. Katılmak için başka bir üyeye sorun.</string>
+    <string name="messaging_disabled_not_in_group">Yazamazsınız; çünkü bu grupta değilsiniz. Katılmak için başka bir üyeye sorun.</string>
     <string name="messaging_disabled_device_chat">Bu sohbet, yerel olarak oluşturulan iletileri içerir. Bu nedenle herhangi bir ileti yazamazsınız.</string>
-    <string name="messaging_disabled_mailing_list">Posta listelerinden gönderilen iletiler henüz desteklenmiyor</string>
+    <string name="messaging_disabled_mailing_list">Posta listelerine iletiler gönderme henüz desteklenmiyor</string>
     <string name="cannot_display_unsuported_file_type">Bu dosya türü görüntülenemiyor: %s</string>
     <string name="attachment_failed_to_load">İlişiği yükleme başarısız</string>
     <!-- For recording Voice messages: Description for the "Lock" button allowing to lift the thumb from the record button while recording continues -->
@@ -446,7 +446,7 @@
     <string name="storage_on_domain">%1$s Üzerinde Depolama</string>
     <string name="connectivity">Bağlanabilirlik</string>
     <!-- Shown eg. in the title bar if the app is "Not connected"; as there is very few room, try to be as short as possible. -->
-    <string name="connectivity_not_connected">Bağlı değil</string>
+    <string name="connectivity_not_connected">Bağlanmadı</string>
     <!-- Shown eg. in the title bar if the app is "Connecting"; as there is very few room, try to be as short as possible. Note that the three dots are a single character (…), not three (...) -->
     <string name="connectivity_connecting">Bağlanıyor…</string>
     <!-- Shown eg. in the title bar if the app is "Updating" (eg. getting new/old message, sync things); as there is very few room, try to be as short as possible. Note that the three dots are a single character (…), not three (...) -->
@@ -493,7 +493,7 @@
     <!-- Translators: %1$s will be replaced by an e-mail address -->
     <string name="login_oauth2_checking_addr">%1$s denetleniyor</string>
     <string name="login_info_oauth2_title">Basitleştirilen ayarlamayla sürdürülsün mü?</string>
-    <string name="login_info_oauth2_text">Girilen e-posta adresi basitleştirilen bir ayarlamayı (OAuth 2.0) destekliyor.\n\nSonraki adımda, lütfen Delta Chat\'in E-posta ile Sohbet uygulamanız olarak davranmasına izin verin.\n\nDelta Chat sunucuları yoktur; verileriniz aygıtınızda kalır.</string>
+    <string name="login_info_oauth2_text">Girilen e-posta adresi basitleştirilen bir ayarlamayı (OAuth 2.0) destekliyor.\n\nSonraki adımda, lütfen Delta Chat\'in E-posta Üzerinden Sohbet uygulamanız olarak davranmasına izin verin.\n\nDelta Chat sunucuları yoktur; verileriniz aygıtınızda kalır.</string>
     <string name="login_certificate_checks">Sertifika Denetimleri</string>
     <string name="login_error_mail">Lütfen geçerli bir e-posta adresi girin</string>
     <string name="login_error_server">Lütfen geçerli bir sunucu / IP adresi girin</string>
@@ -534,7 +534,7 @@
     <string name="pref_profile_info_headline">Profil Bilginiz</string>
     <string name="pref_profile_photo">Profil Görseli</string>
     <string name="pref_blocked_contacts">Engellenen Kişiler</string>
-    <string name="blocked_empty_hint">Kişileri engellerseniz, burada gösterilecekler.</string>
+    <string name="blocked_empty_hint">Kişileri engellerseniz, onlar burada gösterilecek.</string>
     <string name="pref_password_and_account_settings">Parola ve Hesap</string>
     <string name="pref_who_can_see_profile_explain">Diğer kullanıcılarla iletişim kurulurken; profil görseliniz, adınız ve imzanız iletilerinizle birlikte gönderilecek.</string>
     <string name="pref_your_name">Adınız</string>
@@ -543,7 +543,7 @@
     <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
     <string name="pref_default_status_text">Delta Chat Messenger\'ımla gönderildi: https://delta.chat</string>
     <string name="pref_enter_sends">Enter Tuşu Göndersin</string>
-    <string name="pref_enter_sends_explain">Enter tuşuna basmak metin iletileri gönderecek</string>
+    <string name="pref_enter_sends_explain">Enter tuşuna basma, metin iletileri gönderecek</string>
     <string name="pref_outgoing_media_quality">Giden Ortam Kalitesi</string>
     <string name="pref_outgoing_balanced">Dengeli</string>
     <string name="pref_outgoing_worse">Daha kötü kalite, küçük boyut</string>
@@ -573,8 +573,8 @@
     <string name="pref_incognito_keyboard">Gizlenen Klavye</string>
     <!-- Translators: Keep in mind that this is a Request - it must be clear in the wording that this cannot be enforced. -->
     <string name="pref_incognito_keyboard_explain">Kişiselleştirilen öğrenmeyi etkisizleştirmek için klavye iste</string>
-    <string name="pref_read_receipts">Okundu Bilgileri</string>
-    <string name="pref_read_receipts_explain">Okundu bilgileri etkisizleştirilirse, diğerlerinden gelen okundu bilgilerini göremeyeceksiniz.</string>
+    <string name="pref_read_receipts">Okunma Onayları</string>
+    <string name="pref_read_receipts_explain">Okunma onayları etkisizleştirilirse, diğerlerinden gelen okunma onaylarını göremeyeceksiniz.</string>
     <string name="pref_manage_keys">Anahtarları Yönet</string>
     <string name="pref_use_system_emoji">Sistem Emojisini Kullan</string>
     <string name="pref_use_system_emoji_explain">Delta Chat\'in gömülü emoji desteğini kapat</string>
@@ -590,7 +590,7 @@
     <string name="pref_other">Diğer</string>
     <string name="pref_backup">Yedekleme</string>
     <string name="pref_backup_explain">Sohbetleri Dış Depolamaya Yedekle</string>
-    <string name="pref_backup_export_explain">Bir yedek, bu ya da başka bir aygıtta yeni bir kurulum ayarlamanıza yardım eder.\n\nYedek, tüm iletileri, kişileri ve sohbetleri ve uçtan uca Autocrypt ayarlamanızı içerecek. Yedek dosyasını güvenli bir yerde tutun ya da olanaklıysa en kısa sürede silin.</string>
+    <string name="pref_backup_export_explain">Bir yedek, bu ya da başka bir aygıtta yeni bir kurulum ayarlamanıza yardımcı olur.\n\nYedek; tüm iletileri, kişileri ve sohbetleri ve uçtan uca Autocrypt ayarlamanızı içerecek. Yedek dosyasını güvenli bir yerde tutun ya da olanaklıysa en kısa sürede silin.</string>
     <string name="pref_backup_export_start_button">Yedeklemeye Başla</string>
     <string name="pref_backup_written_to_x">Yedek \"%1$s\" üzerine başarıyla yazıldı.</string>
     <string name="pref_managekeys_menu_title">Anahtarları Yönet</string>
@@ -619,7 +619,7 @@
     <string name="pref_show_emails_all">Tümü</string>
     <string name="pref_experimental_features">Deneysel Özellikler</string>
     <string name="pref_on_demand_location_streaming">İsteğe Bağlı Konum Akışı</string>
-    <string name="pref_developer_mode">Geliştirici Kipi</string>
+    <string name="pref_developer_mode">Geliştirici Modu</string>
     <string name="pref_developer_mode_explain">Hata ayıklama seçeneklerini etkinleştirir ve uygulamayı daha az kararlı yapabilir. Yalnızca geliştiriciler içindir.</string>
     <string name="pref_background_default">Varsayılan arka plan</string>
     <string name="pref_background_default_color">Varsayılan renk</string>
@@ -664,9 +664,9 @@
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">%1$d iletiyi şimdi ve gelecekte yeni getirilen tüm iletileri \"%2$s\" silmek istiyor musunuz?\n\n• Bu, tüm ortamları kapsar\n\n• İletiler görülse de görülmese de silinecek\n\n• \"Kaydedilen iletiler\" yerel silmeden atlanacak</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
-    <string name="autodel_server_ask">%1$d iletiyi şimdi ve gelecekte yeni getirilen tüm iletileri \"%2$s\" silmek istiyor musunuz?\n\n⚠️ Bu, tüm sunucu klasörlerindeki e-postaları, ortamları ve \"Kaydedilen iletileri\" kapsar\n\n⚠️ Verileri sunucuda tutmak istiyorsanız bu işlevi kullanmayın\n\n⚠️ Delta Chat\'in dışında diğer e-posta istemcileri kullanıyorsanız bu işlevi kullanmayın</string>
+    <string name="autodel_server_ask">%1$d iletiyi şimdi ve gelecekte yeni getirilen tüm iletileri \"%2$s\" silmek istiyor musunuz?\n\n⚠️ Bu, tüm sunucu klasörlerindeki e-postaları, ortamları ve \"Kaydedilen iletileri\" kapsar\n\n⚠️ Verileri sunucuda tutmak istiyorsanız bu işlevi kullanmayın\n\n⚠️ Delta Chat\'in dışında diğer e-posta istemcilerini kullanıyorsanız bu işlevi kullanmayın</string>
     <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
-    <string name="autodel_server_enabled_hint">Bu, tüm sunucu klasörlerindeki e-postaları, ortamları ve \"Kaydedilen iletileri\" kapsar. Verileri sunucuda tutmak istiyorsanız ya da Delta Chat\'in dışında diğer e-posta istemcileri kullanıyorsanız bu işlevi kullanmayın.</string>
+    <string name="autodel_server_enabled_hint">Bu, tüm sunucu klasörlerindeki e-postaları, ortamları ve \"Kaydedilen iletileri\" kapsar. Verileri sunucuda tutmak istiyorsanız ya da Delta Chat\'in dışında diğer e-posta istemcilerini kullanıyorsanız bu işlevi kullanmayın.</string>
     <string name="autodel_confirm">Anladım, tüm bu iletileri sil</string>
     <string name="autodel_at_once">Bir kerede</string>
     <string name="after_30_seconds">30 saniye sonra</string>
@@ -695,7 +695,7 @@
     <string name="autocrypt_continue_transfer_please_enter_code">Lütfen diğer aygıtta görüntülenen ayarlama kodunu girin.</string>
     <string name="autocrypt_continue_transfer_succeeded">Uçtan uca ayarlaması aktarıldı. Bu aygıt artık aynı ayarlamayla diğer aygıt gibi Autocrypt kullanmaya hazır.</string>
     <string name="autocrypt_continue_transfer_retry">Yeniden dene</string>
-    <string name="autocrypt_bad_setup_code">Yanlış ayarlama kodu. Lütfen yeniden deneyin.\n\nAyarlama kodunu anımsamıyorsanız, diğer aygıttan yeni bir Autocrypt Ayarlama İletisi göndermeniz yeterli.</string>
+    <string name="autocrypt_bad_setup_code">Yanlış ayarlama kodu. Lütfen yeniden deneyin.\n\nAyarlama kodunu anımsamıyorsanız, diğer aygıttan yeni bir Autocrypt Ayarlama İletisi gönderin.</string>
 
 
     <!-- system messages -->
@@ -706,14 +706,14 @@
     <string name="systemmsg_member_removed">%1$s üyesi kaldırıldı.</string>
     <string name="systemmsg_group_left">Gruptan ayrılındı.</string>
     <string name="systemmsg_read_receipt_subject">İleti açıldı</string>
-    <string name="systemmsg_read_receipt_body">Gönderdiğiniz \"%1$s\" iletisi alıcının ekranında görüntülendi.\n\nBu, içeriğin okunma güvencesi değildir.</string>
-    <string name="systemmsg_cannot_decrypt">Bu ileti şifresi çözülemiyor.\n\n• Bu iletiye basitçe yanıt vermek ve gönderene iletiyi yeniden gönderip gönderemeyeceğini sormak zaten yardım edebilir.\n\n• Delta Chat\'i ya da başka bir e-posta programını bu ya da başka bir aygıta yeniden kurduysanız, oradan bir Autocrypt Ayarlama İletisi göndermek isteyebilirsiniz.</string>
+    <string name="systemmsg_read_receipt_body">Gönderdiğiniz \"%1$s\" iletisi alıcının ekranında görüntülendi.\n\nBu, içeriğin okunduğunun güvencesi değildir.</string>
+    <string name="systemmsg_cannot_decrypt">Bu iletinin şifresi çözülemiyor.\n\n• Bu iletiye basitçe yanıt vermek ve gönderene iletiyi yeniden gönderip gönderemeyeceğini sormak zaten yardımcı olabilir.\n\n• Delta Chat\'i ya da başka bir e-posta programını bu ya da başka bir aygıta yeniden kurduysanız, oradan bir Autocrypt Ayarlama İletisi göndermek isteyebilirsiniz.</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). -->
     <string name="systemmsg_action_by_me">Benim tarafımdan %1$s.</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
     <string name="systemmsg_action_by_user">%2$s tarafından %1$s.</string>
     <string name="systemmsg_unknown_sender_for_chat">Bu sohbet için bilinmeyen gönderen. Daha fazla ayrıntı için \'bilgi\'ye bakın.</string>
-    <string name="systemmsg_subject_for_new_contact">Şundan ileti: %1$s</string>
+    <string name="systemmsg_subject_for_new_contact">%1$s kişisinden gelen ileti</string>
     <string name="systemmsg_failed_sending_to">%1$s alıcısına ileti gönderme başarısız.</string>
 
     <string name="systemmsg_ephemeral_timer_disabled">Kaybolan iletiler zamanlayıcısı etkisizleştirildi.</string>
@@ -734,34 +734,34 @@
 
     <string name="devicemsg_self_deleted">\"Kaydedilen iletiler\" sohbetini sildiniz.\n\nℹ️ \"Kaydedilen iletiler\" özelliğini yeniden kullanmak için kendinizle yeni bir sohbet oluşturun.</string>
     <!-- %1$s will be replaced by the number of storage already used, sth. as '500 MB'. CAVE: if you want to use a simple the percent sign, type in two, so eg. %1$s %% -->
-    <string name="devicemsg_storage_exceeding">⚠️ Sağlayıcınızın depolaması aşılmak üzere, %1$s%% zaten kullanılıyor.\n\nDepolama 100%% kullanıldığında ileti alamayabilirsiniz.\n\n👉 Lütfen sağlayıcınızın web arabiriminden eski verileri silip silemeyeceğinizi denetleyin ve \"Ayarlar / Eski İletileri Sil\"i etkinleştirmeyi düşünün. Şu anki depolama kullanımınızı her zaman \"Ayarlar / Bağlanabilirlik\"ten denetleyebilirsiniz.</string>
+    <string name="devicemsg_storage_exceeding">⚠️ Sağlayıcınızın depolaması aşılmak üzere; %1$s%% zaten kullanılıyor.\n\nDepolama 100%% kullanıldığında ileti alamayabilirsiniz.\n\n👉 Lütfen sağlayıcınızın web arabiriminden eski verileri silip silemeyeceğinizi denetleyin ve \"Ayarlar / Eski İletileri Sil\"i etkinleştirmeyi düşünün. Şu anki depolama kullanımınızı her zaman \"Ayarlar / Bağlanabilirlik\"ten denetleyebilirsiniz.</string>
     <!-- %1%s will be replaced by date and time in some human-readable format -->
     <string name="devicemsg_bad_time">⚠️ Aygıtınızın tarihi ya da saati yanlış gibi görünüyor (%1$s).\n\nİletilerinizin doğru şekilde alındığından emin olmak için saatinizi ⏰🔧 ayarlayın.</string>
-    <string name="devicemsg_update_reminder">⚠️ Delta Chat sürümünüz eski olabilir.\n\nBu, sorunlara neden olabilir çünkü sohbet ortaklarınız daha yeni sürümleri kullanıyor - ve en yeni özellikleri kaybediyorsunuz 😳\nGüncelleştirmeler için lütfen https://get.delta.chat ya da uygulama mağazanızı denetleyin.</string>
+    <string name="devicemsg_update_reminder">⚠️ Delta Chat sürümünüz eski olabilir.\n\nBu, sorunlara neden olabilir; çünkü sohbet ortaklarınız daha yeni sürümleri kullanıyor - ve en yeni özellikleri kaybediyorsunuz 😳\nGüncelleştirmeler için lütfen https://get.delta.chat ya da uygulama mağazanızı denetleyin.</string>
 
     <!-- Some options as "Manage keys" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc. to be entered in a system dialog. This hint is added to the system dialog, below a title as "Manage keys" or "Backup". -->
     <string name="enter_system_secret_to_continue">Sürdürmek için lütfen sistem tanımlı sırrınızı girin.</string>
 
     <!-- qr code stuff -->
-    <string name="qr_code">QR Kod</string>
-    <string name="load_qr_code_as_image">QR Kodu Görsel Olarak Yükle</string>
-    <string name="qrscan_title">QR Kod Tara</string>
-    <string name="qrscan_hint">Kameranızı QR kodun üzerine tutun.</string>
-    <string name="qrscan_failed">QR kod çözülemedi</string>
+    <string name="qr_code">QR Kodu</string>
+    <string name="load_qr_code_as_image">QR Kodunu Görsel Olarak Yükle</string>
+    <string name="qrscan_title">QR Kodu Tara</string>
+    <string name="qrscan_hint">Kameranızı QR kodunun üzerinde tutun.</string>
+    <string name="qrscan_failed">QR kodu çözülemedi</string>
     <string name="qrscan_ask_join_group">\"%1$s\" grubuna katılmak istiyor musunuz?</string>
     <string name="qrscan_fingerprint_mismatch">Taranan parmak izi, %1$s için son görülenle eşleşmiyor.</string>
-    <string name="qrscan_no_addr_found">Bu QR kod bir parmak izi içeriyor ama e-posta adresi yok.\n\nBir bant dışı doğrulama için lütfen önce alıcıya şifrelenen bir bağlantı kurun.</string>
-    <string name="qrscan_contains_text">Taranan QR kod metni:\n\n%1$s</string>
-    <string name="qrscan_contains_url">Taranan QR kod URL\'si:\n\n%1$s</string>
+    <string name="qrscan_no_addr_found">Bu QR kodu, bir parmak izi içeriyor; ama e-posta adresi yok.\n\nBir bant dışı doğrulama için lütfen önce alıcıya şifrelenen bir bağlantı kurun.</string>
+    <string name="qrscan_contains_text">Taranan QR kodu metni:\n\n%1$s</string>
+    <string name="qrscan_contains_url">Taranan QR kodu URL\'si:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Parmak izi</string>
-    <string name="withdraw_verifycontact_explain">Bu QR kod, size ulaşmak için diğerleri tarafından taranabilir.\n\nQR kodu buradan etkisizleştirebilir ve yeniden tarayarak etkinleştirebilirsiniz.</string>
-    <string name="withdraw_verifygroup_explain">Bu QR kod, \"%1$s\" grubuna katılmak için diğerleri tarafından taranabilir.\n\nQR kodu buradan etkisizleştirebilir ve yeniden tarayarak etkinleştirebilirsiniz.</string>
-    <string name="withdraw_qr_code">QR Kodu Etkisizleştir</string>
+    <string name="withdraw_verifycontact_explain">Bu QR kodu, size ulaşmak için diğerleri tarafından taranabilir.\n\nQR kodunu buradan etkisizleştirebilir ve yeniden tarayarak etkinleştirebilirsiniz.</string>
+    <string name="withdraw_verifygroup_explain">Bu QR kodu, \"%1$s\" grubuna katılmak için diğerleri tarafından taranabilir.\n\nQR kodunu buradan etkisizleştirebilir ve yeniden tarayarak etkinleştirebilirsiniz.</string>
+    <string name="withdraw_qr_code">QR Kodunu Etkisizleştir</string>
     <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
-    <string name="revive_verifycontact_explain">Bu QR kod, size ulaşmak için diğerleri tarafından taranmış olabilir.\n\nQR kod bu aygıtta etkin değil.</string>
+    <string name="revive_verifycontact_explain">Bu QR kodu, size ulaşmak için diğerleri tarafından taranmış olabilir.\n\nQR kodu bu aygıtta etkin değil.</string>
     <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
-    <string name="revive_verifygroup_explain">Bu QR kod, \"%1$s\" grubuna katılmak için diğerleri tarafından taranmış olabilir.\n\nQR kod bu aygıtta etkin değil.</string>
-    <string name="revive_qr_code">QR Kodu Etkinleştir</string>
+    <string name="revive_verifygroup_explain">Bu QR kodu, \"%1$s\" grubuna katılmak için diğerleri tarafından taranmış olabilir.\n\nQR kodu bu aygıtta etkin değil.</string>
+    <string name="revive_qr_code">QR Kodunu Etkinleştir</string>
     <string name="qrshow_title">QR Davet Kodu</string>
     <string name="qrshow_x_joining">%1$s katılıyor.</string>
     <string name="qrshow_x_verified">%1$s doğrulandı.</string>
@@ -771,13 +771,13 @@
     <string name="qrshow_join_group_hint">\"%1$s\" grubuna katılmak için bunu tarayın</string>
     <string name="qrshow_join_contact_title">QR Davet Kodu</string>
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
-    <string name="qrshow_join_contact_hint">%1$s ile bir iletişim ayarlamak için bunu tarayın</string>
-    <string name="qrshow_join_contact_no_connection_toast">Internet bağlantısı yok; QR kod ayarlaması gerçekleştirilemiyor.</string>
+    <string name="qrshow_join_contact_hint">%1$s ile sohbet etmek için bunu tarayın</string>
+    <string name="qrshow_join_contact_no_connection_toast">Internet bağlantısı yok; QR kodu ayarlaması gerçekleştirilemiyor.</string>
     <string name="qraccount_ask_create_and_login">\"%1$s\" üzerinde yeni e-posta adresi oluşturulsun ve oturum açılsın mı?</string>
     <string name="qraccount_ask_create_and_login_another">\"%1$s\" üzerinde yeni e-posta adresi oluşturulsun ve oturum açılsın mı?\n\nVarolan hesabınız silinmeyecek. Hesaplarınız arasında geçiş yapmak için \"Hesap değiştir\" öğesini kullanın.</string>
     <string name="qraccount_success_enter_name">Oturum açma başarılı—e-posta adresiniz %1$s\n\nİsterseniz şimdi yazdığınız insanlara görüntülenecek bir ad ve bir profil görseli girebilirsiniz.</string>
-    <string name="qraccount_qr_code_cannot_be_used">Taranan QR kod yeni bir hesap ayarlamak için kullanılamıyor.</string>
-    <string name="qraccount_use_on_new_install">Taranan QR kod yeni bir hesap ayarlamak içindir. QR kodu yeni bir Delta Chat kurulumu ayarlanırken tarayabilirsiniz.</string>
+    <string name="qraccount_qr_code_cannot_be_used">Taranan QR kodu, yeni bir hesap ayarlamak için kullanılamıyor.</string>
+    <string name="qraccount_use_on_new_install">Taranan QR kodu, yeni bir hesap ayarlamak içindir. QR kodu yeni bir Delta Chat kurulumu ayarlanırken tarayabilirsiniz.</string>
     <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s sizi bu gruba katılmaya davet etti.\n\n%2$s kişisinin aygıtının yanıt vermesi bekleniyor…</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
@@ -788,7 +788,7 @@
     <string name="contact_setup_changed">%1$s için ayarlama değiştirildi.</string>
     <string name="verified_group_explain">Doğrulanan gruplar (deneysel), etkin saldırılar karşısında güvenlik sağlar. Üyeler, diğer üyeler tarafından ikinci bir etkenle doğrulanır ve iletiler her zaman uçtan uca şifrelenir.</string>
     <string name="copy_qr_data_success">QR URL\'si panoya kopyalandı</string>
-    <string name="mailto_dialog_header_select_chat">İletinin gönderileceği sohbeti seçin</string>
+    <string name="mailto_dialog_header_select_chat">İletiyi göndermek için sohbet seçin</string>
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s zaten bir taslak ileti; onu değiştirmek istiyor musunuz?</string>
     <string name="mailto_link_could_not_be_decoded">mailto bağlantısının kodu çözülemedi: %1$s</string>
@@ -810,7 +810,7 @@
     <string name="perm_continue">Sürdür</string>
     <string name="perm_explain_access_to_camera_denied">Fotoğraflar çekmek ya da videolar yakalamak için uygulama ayarlarına gidin, \"İzinler\"i seçin ve \"Kamera\"yı etkinleştirin.</string>
     <string name="perm_explain_access_to_mic_denied">Sesli iletiler göndermek için uygulama ayarlarına gidin, \"İzinler\"i seçin ve \"Mikrofon\"u etkinleştirin.</string>
-    <string name="perm_explain_access_to_storage_denied">Dosyaları almak ya da göndermek için uygulama ayarlarına gidin, \"İzinler\"i seçin ve \"Depolama\"yı etkinleştirin.</string>
+    <string name="perm_explain_access_to_storage_denied">Dosyalar almak ya da göndermek için uygulama ayarlarına gidin, \"İzinler\"i seçin ve \"Depolama\"yı etkinleştirin.</string>
     <string name="perm_explain_access_to_location_denied">Bir konum iliştirmek için uygulama ayarlarına gidin, \"İzinler\"i seçin ve \"Konum\"u etkinleştirin.</string>
 
     <!-- ImageEditorHud -->
@@ -895,12 +895,13 @@
 
     <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="stop_sharing_location">Konum paylaşımını durdur</string>
-    <string name="a11y_voice_message_hint_ios">Kaydettikten sonra göndermek için iki kez dokunun. Kaydı atmak için iki parmakla sola-sağa fırçalayın.</string>
+    <string name="a11y_voice_message_hint_ios">Kaydettikten sonra göndermek için çift dokunun. Kaydı atmak için iki parmakla sarın.</string>
+    <string name="a11y_connectivity_hint">Bağlanabilirlik ayrıntılarını görüntülemek için çift dokunun.</string>
     <string name="login_error_no_internet_connection">Internet bağlantısı yok; oturum açma başarısız.</string>
     <string name="share_account_not_configured">Hesap yapılandırılmadı.</string>
     <string name="cannot_play_audio_file">Ses dosyası oynatılamıyor.</string>
     <!-- iOS camera permission alert -->
-    <string name="perm_ios_explain_access_to_camera_denied">Fotoğraflar çekmek, videolar yakalamak ya da QR Kod tarayıcısını kullanmak için sistem ayarlarını açın ve \"Kamera\"\'yı etkinleştirin.</string>
+    <string name="perm_ios_explain_access_to_camera_denied">Fotoğraflar çekmek, videolar yakalamak ya da QR Kodu tarayıcısını kullanmak için sistem ayarlarını açın ve \"Kamera\"\'yı etkinleştirin.</string>
     <string name="open_settings">Ayarlar\'ı Aç</string>
     <!-- iOS device contact alert -->
     <string name="import_device_contacts">Aygıt kişilerini içe aktar</string>
@@ -915,7 +916,7 @@
     <string name="notifications_avg_hours">Ortalama olarak her %1$d saatte bir</string>
     <string name="last_check_at">Denetleme %1$s</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
-    <string name="InfoPlist_NSCameraUsageDescription">Delta Chat, fotoğraflar ve videolar çekmek ve göndermek için ve QR kodları taramak için kameranızı kullanır.</string>
+    <string name="InfoPlist_NSCameraUsageDescription">Delta Chat, fotoğraflar ve videolar çekmek ve göndermek için ve QR kodlarını taramak için kameranızı kullanır.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat, yazabileceğiniz e-posta adreslerinin bir listesini göstermek için kişilerinizi kullanır. Delta Chat sunucusu yoktur; kişileriniz herhangi bir yere gönderilmez.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat, sesli iletiler ve sesli videolar kaydetmek ve göndermek için mikrofonunuzu kullanır.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat, göndermek için kitaplığınızdan fotoğraflar seçmenizi sağlayacak.</string>

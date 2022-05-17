@@ -896,6 +896,7 @@
     <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="stop_sharing_location">Smetti di condividere la posizione</string>
     <string name="a11y_voice_message_hint_ios">Dopo la registrazione doppio tocco per inviare. Per scartare la registrazione striscia a destra con due dita.</string>
+    <string name="a11y_connectivity_hint">Doppio tocco per visualizzare i dettagli sulla connettività.</string>
     <string name="login_error_no_internet_connection">Nessuna connessione internet, accesso fallito.</string>
     <string name="share_account_not_configured">L\'account non è configurato.</string>
     <string name="cannot_play_audio_file">Il file audio non può essere riprodotto.</string>
