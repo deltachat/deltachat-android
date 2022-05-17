@@ -1,6 +1,7 @@
 package org.thoughtcrime.securesms;
 
 import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
@@ -270,12 +271,16 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
     }
   }
 
-  protected boolean openOnlineUrl(String url) {
+  public static void openUrlInBrowser(Context context, String url) {
     try {
-      startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+      context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
     } catch (ActivityNotFoundException e) {
-      Toast.makeText(this, R.string.no_browser_installed, Toast.LENGTH_LONG).show();
+      Toast.makeText(context, R.string.no_browser_installed, Toast.LENGTH_LONG).show();
     }
+  }
+
+  protected boolean openOnlineUrl(String url) {
+    openUrlInBrowser(this, url);
     // returning `true` causes the WebView to abort loading
     return true;
   }
