@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.webkit.JavascriptInterface;
 import android.webkit.MimeTypeMap;
 import android.webkit.WebResourceResponse;
@@ -37,6 +38,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
   private DcContext dcContext;
   private DcMsg dcAppMsg;
   private String baseURL;
+  private boolean hasSourceCodeUrl;
 
   public static void openWebxdcActivity(Context context, DcMsg instance) {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -82,7 +84,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     webView.addJavascriptInterface(new InternalJSApi(), "InternalJSApi");
 
     webView.loadUrl(this.baseURL + "/index.html");
-    updateTitle();
+    updateTitleAndMenu();
   }
 
   @Override
@@ -94,7 +96,21 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
   @Override
   public boolean onPrepareOptionsMenu(Menu menu) {
     // do not call super.onPrepareOptionsMenu() as the default "Search" menu is not needed
+    menu.clear();
+    this.getMenuInflater().inflate(R.menu.webxdc, menu);
+    menu.findItem(R.id.source_code).setVisible(hasSourceCodeUrl);
     return true;
+  }
+
+  @Override
+  public boolean onOptionsItemSelected(MenuItem item) {
+    super.onOptionsItemSelected(item);
+    switch (item.getItemId()) {
+      case R.id.source_code:
+        openUrlInBrowser(this, JsonUtils.optString(dcAppMsg.getWebxdcInfo(), "source_code_url"));
+        return true;
+    }
+    return false;
   }
 
   @Override
@@ -149,18 +165,24 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
       Log.i(TAG, "handleEvent");
       webView.loadUrl("javascript:window.__webxdcUpdate();");
     } else if ((eventId == DcContext.DC_EVENT_MSGS_CHANGED && event.getData2Int() == dcAppMsg.getId())) {
-      updateTitle();
+      updateTitleAndMenu();
     }
   }
 
-  private void updateTitle() {
+  private void updateTitleAndMenu() {
     Util.runOnAnyBackgroundThread(() -> {
       final JSONObject info = this.dcAppMsg.getWebxdcInfo();
       final String docName = JsonUtils.optString(info, "document");
       final String xdcName = JsonUtils.optString(info, "name");
       final String chatName =  WebxdcActivity.this.dcContext.getChat(WebxdcActivity.this.dcAppMsg.getChatId()).getName();
+      final boolean currHasSourceCodeUrl = !JsonUtils.optString(info, "source_code_url").isEmpty();
+
       Util.runOnMain(() -> {
         getSupportActionBar().setTitle((docName.isEmpty() ? xdcName : docName) + " – " + chatName);
+        if (hasSourceCodeUrl != currHasSourceCodeUrl) {
+          hasSourceCodeUrl = currHasSourceCodeUrl;
+          invalidateOptionsMenu();
+        }
       });
     });
   }
