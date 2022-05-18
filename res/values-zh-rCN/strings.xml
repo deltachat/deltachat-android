@@ -251,7 +251,6 @@
     <string name="unpin">取消固定</string>
     <string name="ConversationFragment_quoted_message_not_found">原消息未找到</string>
     <string name="reply_privately">私下回复</string>
-
     <string name="mute_for_one_hour">静音 1 小时</string>
     <string name="mute_for_two_hours">静音 2 小时</string>
     <string name="mute_for_one_day">静音 1 天</string>

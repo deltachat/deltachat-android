@@ -236,7 +236,6 @@
     <string name="unpin">Lösgör</string>
     <string name="ConversationFragment_quoted_message_not_found">Original meddelandet hittas inte</string>
     <string name="reply_privately">Svara säkert</string>
-
     <string name="mute_for_one_hour">Tysta 1 timma</string>
     <string name="mute_for_two_hours">Tysta 2 timmar</string>
     <string name="mute_for_one_day">Tysta 1 dag</string>

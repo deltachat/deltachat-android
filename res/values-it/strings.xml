@@ -258,7 +258,6 @@
     <string name="unpin">Sblocca</string>
     <string name="ConversationFragment_quoted_message_not_found">Messaggio originale non trovato</string>
     <string name="reply_privately">Rispondi in Privato</string>
-
     <string name="mute_for_one_hour">Silenzia per 1 ora</string>
     <string name="mute_for_two_hours">Silenzia per 2 ore</string>
     <string name="mute_for_one_day">Silenzia per 1 giorno</string>

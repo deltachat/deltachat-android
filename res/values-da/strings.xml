@@ -227,7 +227,6 @@
     <string name="unpin">Løsn</string>
     <string name="ConversationFragment_quoted_message_not_found">Oprindelig besked ikke fundet</string>
     <string name="reply_privately">Svar privat</string>
-
     <string name="mute_for_one_hour">Dæmp i 1 time</string>
     <string name="mute_for_two_hours">Dæmp i 2 timer</string>
     <string name="mute_for_one_day">Dæmp i 1 dag</string>

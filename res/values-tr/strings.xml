@@ -258,7 +258,6 @@
     <string name="unpin">Sabitleme</string>
     <string name="ConversationFragment_quoted_message_not_found">Özgün ileti bulunamadı</string>
     <string name="reply_privately">Özel Olarak Yanıtla</string>
-
     <string name="mute_for_one_hour">1 saatliğine sessize al</string>
     <string name="mute_for_two_hours">2 saatliğine sessize al</string>
     <string name="mute_for_one_day">1 günlüğüne sessize al</string>
@@ -901,7 +900,7 @@
     <string name="share_account_not_configured">Hesap yapılandırılmadı.</string>
     <string name="cannot_play_audio_file">Ses dosyası oynatılamıyor.</string>
     <!-- iOS camera permission alert -->
-    <string name="perm_ios_explain_access_to_camera_denied">Fotoğraflar çekmek, videolar yakalamak ya da QR Kodu tarayıcısını kullanmak için sistem ayarlarını açın ve \"Kamera\"\'yı etkinleştirin.</string>
+    <string name="perm_ios_explain_access_to_camera_denied">Fotoğraflar çekmek, videolar yakalamak ya da QR Kodu tarayıcısını kullanmak için sistem ayarlarını açın ve \"Kamera\"yı etkinleştirin.</string>
     <string name="open_settings">Ayarlar\'ı Aç</string>
     <!-- iOS device contact alert -->
     <string name="import_device_contacts">Aygıt kişilerini içe aktar</string>

@@ -258,6 +258,7 @@
     <string name="unpin">Loslösen</string>
     <string name="ConversationFragment_quoted_message_not_found">Originalnachricht nicht gefunden</string>
     <string name="reply_privately">Privat antworten</string>
+    <string name="source_code">Quelltext</string>
 
     <string name="mute_for_one_hour">Stumm für 1 Stunde</string>
     <string name="mute_for_two_hours">Stumm für 2 Stunden</string>

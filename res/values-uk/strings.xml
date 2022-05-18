@@ -270,7 +270,6 @@
     <string name="unpin">Відкрипити</string>
     <string name="ConversationFragment_quoted_message_not_found">Первісне повідомлення не знайдено</string>
     <string name="reply_privately">Відповісти приватно</string>
-
     <string name="mute_for_one_hour">Відключити сповіщення на 1 годину</string>
     <string name="mute_for_two_hours">Відключити сповіщення на 2 години</string>
     <string name="mute_for_one_day">Відключити сповіщення на 1 день</string>

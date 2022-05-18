@@ -249,7 +249,6 @@
     <string name="unpin">Desfixa</string>
     <string name="ConversationFragment_quoted_message_not_found">No s\'ha trobat el missatge original</string>
     <string name="reply_privately">Respon en privat</string>
-
     <string name="mute_for_one_hour">Silencia 1 hora</string>
     <string name="mute_for_two_hours">Silencia 2 hores</string>
     <string name="mute_for_one_day">Silencia 1 dia</string>

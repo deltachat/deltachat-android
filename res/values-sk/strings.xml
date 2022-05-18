@@ -272,7 +272,6 @@
     <string name="unpin">Uvoľniť</string>
     <string name="ConversationFragment_quoted_message_not_found">Pôvodná správa sa nenašla</string>
     <string name="reply_privately">Odpovedajte súkromne</string>
-
     <string name="mute_for_one_hour">Stíšiť na 1 hodinu</string>
     <string name="mute_for_two_hours">Stíšiť na 2 hodiny</string>
     <string name="mute_for_one_day">Stíšiť na 1 deň</string>

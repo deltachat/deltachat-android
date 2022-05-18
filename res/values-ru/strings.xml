@@ -272,7 +272,6 @@
     <string name="unpin">Открепить</string>
     <string name="ConversationFragment_quoted_message_not_found">Оригинальное сообщение не найдено</string>
     <string name="reply_privately">Ответить лично</string>
-
     <string name="mute_for_one_hour">1 час</string>
     <string name="mute_for_two_hours">На 2 часа</string>
     <string name="mute_for_one_day">На 1 день</string>

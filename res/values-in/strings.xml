@@ -214,7 +214,6 @@
     <string name="unpin">Lepas pin</string>
     <string name="ConversationFragment_quoted_message_not_found">Pesan orisinil tidak ditemukan</string>
     <string name="reply_privately">Balas secara privat</string>
-
     <string name="mute_for_one_hour">Diamkan untuk 1 jam</string>
     <string name="mute_for_two_hours">Diamkan untuk 2 jam</string>
     <string name="mute_for_one_day">Diamkan untuk 1 hari</string>

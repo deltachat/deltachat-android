@@ -255,7 +255,6 @@
     <string name="unpin">Премахване от забодените</string>
     <string name="ConversationFragment_quoted_message_not_found">Оригиналното съобщение не е открито</string>
     <string name="reply_privately">Личен отговор</string>
-
     <string name="mute_for_one_hour">Спиране на звука за 1 час</string>
     <string name="mute_for_two_hours">Спиране на звука за 2 часа</string>
     <string name="mute_for_one_day">Спиране на звука за 1 ден</string>

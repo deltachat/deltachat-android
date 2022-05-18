@@ -256,7 +256,6 @@
     <string name="unpin">Çfiksoje</string>
     <string name="ConversationFragment_quoted_message_not_found">S’u gjet mesazhi origjinal</string>
     <string name="reply_privately">Përgjigjuni privatisht</string>
-
     <string name="mute_for_one_hour">Heshtoji për 1 orë</string>
     <string name="mute_for_two_hours">Heshtoji për 2 orë</string>
     <string name="mute_for_one_day">Heshtoji për 1 ditë</string>

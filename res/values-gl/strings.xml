@@ -258,7 +258,6 @@
     <string name="unpin">Desafixar</string>
     <string name="ConversationFragment_quoted_message_not_found">Non se atopa a mensaxe orixinal</string>
     <string name="reply_privately">Responder de xeito privado</string>
-
     <string name="mute_for_one_hour">Acalar durante 1 h.</string>
     <string name="mute_for_two_hours">Acalar durante 2 h.</string>
     <string name="mute_for_one_day">Acalar durante 1 día</string>

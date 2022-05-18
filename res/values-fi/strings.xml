@@ -258,7 +258,6 @@
     <string name="unpin">Irrota</string>
     <string name="ConversationFragment_quoted_message_not_found">Alkuperäistä viestiä ei löydy</string>
     <string name="reply_privately">Vastaa yksityisesti</string>
-
     <string name="mute_for_one_hour">Mykistä 1 tunniksi</string>
     <string name="mute_for_two_hours">Mykistä 2 tunniksi</string>
     <string name="mute_for_one_day">Mykistä 1 päiväksi</string>
@@ -583,11 +582,11 @@
     <string name="pref_chats">Keskustelut</string>
     <string name="pref_in_chat_sounds">Keskustelun äänet</string>
     <string name="pref_message_text_size">Viestin fonttikoko</string>
-    <string name="pref_view_log">Näytä lok</string>
+    <string name="pref_view_log">Näytä loki</string>
     <string name="pref_saved_log">Tallenna loki Lataukset-kansioon</string>
     <string name="pref_save_log_failed">Lokin tallennus epäonnistui</string>
-    <string name="pref_log_header">Lok</string>
-    <string name="pref_other">Mu</string>
+    <string name="pref_log_header">Loki</string>
+    <string name="pref_other">Muu</string>
     <string name="pref_backup">Varmuuskopiointi</string>
     <string name="pref_backup_explain">Varmuuskopioi keskustelut ulkoiseen tallennustilaan</string>
     <string name="pref_backup_export_explain">Varmuuskopion avulla voit helpommin siirtää asetuksesi uuteen Delta Chat -asennukseen tällä tai toisella laitteella.\n\nVarmuuskopio sisältää kaikki viestit, yhteystiedot ja keskustelut sekä Autocrypt-asetukset. Säilytä varmuuskopiota turvallisessa paikassa ja poista se heti kun mahdollista.</string>
@@ -893,6 +892,28 @@
     <string name="a11y_background_preview_label">Esikatselu taustalla</string>
     <string name="a11y_disappearing_messages_activated">Viestien katoaminen päällä</string>
 
+    <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
+    <string name="stop_sharing_location">Lopeta sijainnin jakaminen</string>
+    <string name="a11y_voice_message_hint_ios">Nauhoittamisen jälkeen napauta kahdesti lähettääksesi. Hylätäksesi nauhoitteen pyyhkäise vasemmalta oikealle kahdella sormella.</string>
+    <string name="a11y_connectivity_hint">Napauta kahdesti nähdäksesi yksityiskohtia yhteydestä.</string>
+    <string name="login_error_no_internet_connection">Ei internet-yhteyttä, sisäänkirjaus epäonnistui.</string>
+    <string name="share_account_not_configured">Tiliä ei ole määritetty.</string>
+    <string name="cannot_play_audio_file">Äänitiedostoa ei voi toistaa.</string>
+    <!-- iOS camera permission alert -->
+    <string name="perm_ios_explain_access_to_camera_denied">Avaa järjestelmäasetukset ja kytke päälle \"Kamera\" ottaaksesi kuvia tai videoita tai käyttääksesi QR-koodinlukijaa.</string>
+    <string name="open_settings">Avaa asetukset</string>
+    <!-- iOS device contact alert -->
+    <string name="import_device_contacts">Tuo laitteen yhteystiedot</string>
+    <string name="import_device_contacts_hint">Avaa asetukset ja kytke päälle \"Yhteystiedot\" viestiäksesi laitteen yhteystietojen kanssa.</string>
+    <!-- iOS notification settings -->
+    <string name="disabled_in_dc">Kytketty pois Delta Chatissa</string>
+    <string name="disabled_in_system_settings">Kytketty pois järjestelmäasetuksissa</string>
+    <string name="bg_app_refresh_disabled">Taustasovelluksen päivitys kytketty pois järjestelmäasetuksissa</string>
+    <!-- iOS connectivity view -->
+    <string name="delayed">Viivästynyt</string>
+    <string name="notifications_avg_minutes">Keskimäärin%1$d minuutin välein</string>
+    <string name="notifications_avg_hours">Keskimäärin %1$d tunnin välein</string>
+    <string name="last_check_at">Tarkistettu %1$s</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat käyttää kameraa kuvien ja videoiden kuvaamiseen ja lähettämiseen sekä QR-koodien skannaamiseen.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat käyttää yhteystietojasi näyttämään listan sähköpostiosoitteista, joihin voit kirjoittaa. Delta Chatilla ei ole palvelimia, eikä yhteystietojasi lähetetä mihinkään.</string>
@@ -915,4 +936,6 @@
     <!-- device messages for updates -->
     <string name="update_1_28_android">1.28 Nostot:\n\n🔒Salaus: Uusi kokeellinen valinta yhteystietojen, salausavainten ja tekstiviestien säilyttämiseksi salattuina latteellasi. Saatavilla ainoastaan tilin luomisen ja varmuuskopioiden tuomisen yhteydessä.\n\n📫 Kirjoita sähköpostilistoille.\n\n💫 Nopeampi asetusten luonti monille sähköpostipalvelimille ja yksinkertaistetut verkkoasetukset virheellisten asetusten ehkäisemiseksi\n\n🐜 Paljon käyttäjien raportoimien ongelmien korjauksia.</string>
     <string name="update_1_28_ios_extra_line">... ja nyt voit vaihtaa taustakuvan: \"Asetukset / Taustakuva\" :)</string>
-    </resources>
+    <string name="update_1_30">Nopeampi. Vakaampi.\n\n1.30-versioissa keskityimme nopeuteen ja luotettavuuteen, ja korjasimme kasan bugeja ja virheitä. Tarkista muutoslokistamme korjasimmeko sinusta tärkeimmän: https://get.delta.chat/#changelogs 🚀</string>
+
+</resources>

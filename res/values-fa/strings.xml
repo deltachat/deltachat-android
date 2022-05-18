@@ -257,7 +257,6 @@
     <string name="unpin">سنجاق برداری</string>
     <string name="ConversationFragment_quoted_message_not_found">پیام اصلی یافت نشد</string>
     <string name="reply_privately">پاسخ دادن به صورت خصوصی</string>
-
     <string name="mute_for_one_hour">ساکت کردن به مدت۱ ساعت</string>
     <string name="mute_for_two_hours">ساکت کردن به مدت ۲ ساعت</string>
     <string name="mute_for_one_day">ساکت کردن به مدت ۱ روز</string>

@@ -258,7 +258,6 @@
     <string name="unpin">Desanclar</string>
     <string name="ConversationFragment_quoted_message_not_found">Mensaje original no encontrado</string>
     <string name="reply_privately">Responder en privado</string>
-
     <string name="mute_for_one_hour">Silenciar por 1 hora</string>
     <string name="mute_for_two_hours">Silenciar por 2 horas</string>
     <string name="mute_for_one_day">Silenciar por 1 día</string>

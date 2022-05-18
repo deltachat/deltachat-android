@@ -258,7 +258,6 @@
     <string name="unpin">Losmaken</string>
     <string name="ConversationFragment_quoted_message_not_found">Geen oorspronkelijk bericht gevonden</string>
     <string name="reply_privately">Privé beantwoorden</string>
-
     <string name="mute_for_one_hour">1 uur lang uitschakelen</string>
     <string name="mute_for_two_hours">2 uur lang uitschakelen</string>
     <string name="mute_for_one_day">1 dag lang uitschakelen</string>

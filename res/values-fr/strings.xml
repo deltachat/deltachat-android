@@ -256,7 +256,6 @@
     <string name="unpin">Désépingler</string>
     <string name="ConversationFragment_quoted_message_not_found">Le message original n\'a pas été trouvé</string>
     <string name="reply_privately">Répondre en privé</string>
-
     <string name="mute_for_one_hour">Déactiver pour 1 heure</string>
     <string name="mute_for_two_hours">Déactiver pour 2 heures</string>
     <string name="mute_for_one_day">Déactiver pour 1 jour</string>

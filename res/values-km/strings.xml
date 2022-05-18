@@ -243,7 +243,6 @@
     <string name="unpin">ដកខ្ទាស់</string>
     <string name="ConversationFragment_quoted_message_not_found">រកមិនឃើញសារដើម</string>
     <string name="reply_privately">ឆ្លើយតបដោយឯកជន</string>
-
     <string name="mute_for_one_hour">ធ្វើឲ្យមិនឃើញមិនលឺរយៈពេល១ម៉ោង</string>
     <string name="mute_for_two_hours">ធ្វើឲ្យមិនឃើញមិនលឺរយៈពេល២ម៉ោង</string>
     <string name="mute_for_one_day">ធ្វើឲ្យមិនឃើញមិនលឺរយៈពេល១ថ្ងៃ</string>

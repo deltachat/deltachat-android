@@ -227,7 +227,6 @@
     <string name="unpin">Odpíchnout</string>
     <string name="ConversationFragment_quoted_message_not_found">Původní zprávu nelze najít</string>
     <string name="reply_privately">Odpověz soukromě</string>
-
     <string name="mute_for_one_hour">Umlčet na 1 hodinu</string>
     <string name="mute_for_two_hours">Umlčet na 2 hodiny</string>
     <string name="mute_for_one_day">Umlčet na 1 den</string>
