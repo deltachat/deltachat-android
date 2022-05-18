@@ -38,7 +38,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
   private DcContext dcContext;
   private DcMsg dcAppMsg;
   private String baseURL;
-  private boolean hasSourceCodeUrl;
+  private String sourceCodeUrl = "";
 
   public static void openWebxdcActivity(Context context, DcMsg instance) {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -98,7 +98,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     // do not call super.onPrepareOptionsMenu() as the default "Search" menu is not needed
     menu.clear();
     this.getMenuInflater().inflate(R.menu.webxdc, menu);
-    menu.findItem(R.id.source_code).setVisible(hasSourceCodeUrl);
+    menu.findItem(R.id.source_code).setVisible(!sourceCodeUrl.isEmpty());
     return true;
   }
 
@@ -107,7 +107,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     super.onOptionsItemSelected(item);
     switch (item.getItemId()) {
       case R.id.source_code:
-        openUrlInBrowser(this, JsonUtils.optString(dcAppMsg.getWebxdcInfo(), "source_code_url"));
+        openUrlInBrowser(this, sourceCodeUrl);
         return true;
     }
     return false;
@@ -175,12 +175,12 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
       final String docName = JsonUtils.optString(info, "document");
       final String xdcName = JsonUtils.optString(info, "name");
       final String chatName =  WebxdcActivity.this.dcContext.getChat(WebxdcActivity.this.dcAppMsg.getChatId()).getName();
-      final boolean currHasSourceCodeUrl = !JsonUtils.optString(info, "source_code_url").isEmpty();
+      final String currSourceCodeUrl = JsonUtils.optString(info, "source_code_url");
 
       Util.runOnMain(() -> {
         getSupportActionBar().setTitle((docName.isEmpty() ? xdcName : docName) + " – " + chatName);
-        if (hasSourceCodeUrl != currHasSourceCodeUrl) {
-          hasSourceCodeUrl = currHasSourceCodeUrl;
+        if (!sourceCodeUrl.equals(currSourceCodeUrl)) {
+          sourceCodeUrl = currSourceCodeUrl;
           invalidateOptionsMenu();
         }
       });
