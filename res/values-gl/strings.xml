@@ -258,6 +258,8 @@
     <string name="unpin">Desafixar</string>
     <string name="ConversationFragment_quoted_message_not_found">Non se atopa a mensaxe orixinal</string>
     <string name="reply_privately">Responder de xeito privado</string>
+    <string name="source_code">Código Fonte</string>
+
     <string name="mute_for_one_hour">Acalar durante 1 h.</string>
     <string name="mute_for_two_hours">Acalar durante 2 h.</string>
     <string name="mute_for_one_day">Acalar durante 1 día</string>
@@ -892,9 +894,33 @@
     <string name="a11y_background_preview_label">Vista previa do fondo</string>
     <string name="a11y_disappearing_messages_activated">Activada a desaparición de mensaxes</string>
 
+    <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
+    <string name="stop_sharing_location">Deixar de compartir localización</string>
+    <string name="a11y_voice_message_hint_ios">Tras gravar, dobre toque para enviar. Para desbotar a gravación, rabuña con dous dedos.</string>
+    <string name="a11y_connectivity_hint">Dobre toque para ver detalles da conectividade.</string>
+    <string name="login_error_no_internet_connection">Sen conexión a internet, fallou o acceso.</string>
+    <string name="share_account_not_configured">A conta non está configurada.</string>
+    <string name="cannot_play_audio_file">Non se pode reproducir o ficheiro de audio.</string>
+    <!-- iOS camera permission alert -->
+    <string name="perm_ios_explain_access_to_camera_denied">Para facer fotos, vídeos ou usar o escáner de Códigos-QR, abre os axustes do sistema e activa \"Cámara\".</string>
+    <string name="open_settings">Abrir Axustes</string>
+    <!-- iOS device contact alert -->
+    <string name="import_device_contacts">Importar contactos desde o dispositivo</string>
+    <string name="import_device_contacts_hint">Para conversar con contactos do teu dispositivo abre os Axustes e activa \"Contactos\".</string>
+    <!-- iOS notification settings -->
+    <string name="disabled_in_dc">Desactivado en Delta Chat</string>
+    <string name="disabled_in_system_settings">Desactivado nos axustes do sistema</string>
+    <string name="bg_app_refresh_disabled">\"Actualización en segundo plano da app\" desactivado nos axustes do sistema</string>
+    <!-- iOS connectivity view -->
+    <string name="delayed">Con retraso</string>
+    <string name="notifications_avg_minutes">De media cada %1$d minutos</string>
+    <string name="notifications_avg_hours">De media cada %1$d horas</string>
+    <string name="last_check_at">Comprobado en %1$s</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Conceder acceso a cámara permíteche tomar fotos e vídeos.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Permitir o acceso a libreta de enderezos permíteche conversar con contactos do dispositivo.</string>
+    <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">Delta Chat precisa o permiso de localización para poder compartir a túa localización durante o tempo indicado na compartición da localización.</string>
+    <string name="InfoPlist_NSLocationWhenInUseUsageDescription">Delta Chat precisa o permiso de localización para poder compartir a túa localización durante o tempo indicado na compartición da localización.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Permitindo o acceso ao micrófono poderás gravar audio.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Permitindo o acceso a galería de fotos poderás subir imaxes desde ela.</string>
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat quere gardar imaxes na galería de fotos.</string>

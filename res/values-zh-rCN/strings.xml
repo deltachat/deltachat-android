@@ -251,6 +251,8 @@
     <string name="unpin">取消固定</string>
     <string name="ConversationFragment_quoted_message_not_found">原消息未找到</string>
     <string name="reply_privately">私下回复</string>
+    <string name="source_code">源代码</string>
+
     <string name="mute_for_one_hour">静音 1 小时</string>
     <string name="mute_for_two_hours">静音 2 小时</string>
     <string name="mute_for_one_day">静音 1 天</string>
@@ -903,6 +905,8 @@
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat 使用相机来拍摄、发送照片和视频以及扫描二维码。</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat 使用您的联系人来显示您可以写信到的电子邮件地址列表。 Delta Chat 没有服务器，您的联系人不会被发送到任何地方。</string>
+    <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">Delta Chat 需要位置权限，以便在你启用位置共享的时间范围内共享你的位置。</string>
+    <string name="InfoPlist_NSLocationWhenInUseUsageDescription">Delta Chat 需要位置权限，以便在你启用位置共享的时间范围内共享你的位置。</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat 使用麦克风来录制、发送语音消息和带有声音的视频。</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat 将让您选择要从图库中发送哪些照片。</string>
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat 想将图像保存到图库。</string>

@@ -258,6 +258,8 @@
     <string name="unpin">Sabitleme</string>
     <string name="ConversationFragment_quoted_message_not_found">Özgün ileti bulunamadı</string>
     <string name="reply_privately">Özel Olarak Yanıtla</string>
+    <string name="source_code">Kaynak Kodu</string>
+
     <string name="mute_for_one_hour">1 saatliğine sessize al</string>
     <string name="mute_for_two_hours">2 saatliğine sessize al</string>
     <string name="mute_for_one_day">1 günlüğüne sessize al</string>
@@ -904,7 +906,7 @@
     <string name="open_settings">Ayarlar\'ı Aç</string>
     <!-- iOS device contact alert -->
     <string name="import_device_contacts">Aygıt kişilerini içe aktar</string>
-    <string name="import_device_contacts_hint">Aygıtınızdan gelen kişilerle sohbet etmek için Ayarlar\'ı açın ve Kişiler\'i etkinleştirin.</string>
+    <string name="import_device_contacts_hint">Aygıtınızdan gelen kişilerle sohbet etmek için Ayarlar\'ı açın ve \"Kişiler\"i etkinleştirin.</string>
     <!-- iOS notification settings -->
     <string name="disabled_in_dc">Delta Chat\'ten etkisizleştirildi</string>
     <string name="disabled_in_system_settings">Sistem ayarlarından etkisizleştirildi</string>
@@ -917,6 +919,8 @@
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat, fotoğraflar ve videolar çekmek ve göndermek için ve QR kodlarını taramak için kameranızı kullanır.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat, yazabileceğiniz e-posta adreslerinin bir listesini göstermek için kişilerinizi kullanır. Delta Chat sunucusu yoktur; kişileriniz herhangi bir yere gönderilmez.</string>
+    <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">Konum paylaşımını etkinleştirdiğiniz zaman aralığında konumunuzu paylaşmak için Delta Chat\'e konum izni gerekir.</string>
+    <string name="InfoPlist_NSLocationWhenInUseUsageDescription">Konum paylaşımını etkinleştirdiğiniz zaman aralığında konumunuzu paylaşmak için Delta Chat\'e konum izni gerekir.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat, sesli iletiler ve sesli videolar kaydetmek ve göndermek için mikrofonunuzu kullanır.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat, göndermek için kitaplığınızdan fotoğraflar seçmenizi sağlayacak.</string>
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat, görselleri fotoğraf kitaplığınıza kaydetmek istiyor.</string>
