@@ -1,7 +1,23 @@
 # Delta Chat Android Changelog
 
+## v1.30.2
+2022-05
+
+* show document and chat name in webxdc titles
+* add menu entry access the webxdc's source code
+* remove anyway unused com.google.android.gms from binary to avoid being flagged
+* send normal messages with higher priority than read receipts
+* improve chat encryption info, make it easier to find contacts without keys
+* improve error reporting when creating a folder fails
+* fix: repair encrypted mails "mixed up" by Google Workspace "Append footer" function
+* fix: use same contact-color if email address differ only in upper-/lowercase
+* update translations
+* update to core83
+
+
 ## v1.30.1
 2022-05
+
 * fix wrong language in read receipts
 * fix encoding issue in QR code descriptions
 * webxdc: allow internal pages
