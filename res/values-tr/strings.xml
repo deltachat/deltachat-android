@@ -401,7 +401,7 @@
     <!-- punycode warning / labeled links -->
     <!-- placeholder is domain/hostname that should be trusted -->
     <string name="open_external_url_trust_domain">%1$s için yeniden sorma</string>
-    <string name="puny_code_warning_header">Şüpheli bağlantı algılandı</string>
+    <string name="puny_code_warning_header">Kuşkulu bağlantı algılandı</string>
     <!-- placeholder contains the hostname converted to ascii -->
     <string name="puny_code_warning_question">%1$s bağlantısını ziyaret etmek istediğinizden emin misiniz?</string>
     <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
@@ -700,8 +700,8 @@
 
 
     <!-- system messages -->
-    <string name="systemmsg_group_name_changed">\"%1$s\" grup adı \"%2$s\" olarak değiştirildi.</string>
-    <string name="systemmsg_group_image_changed">Grup görseli değiştirildi.</string>
+    <string name="systemmsg_group_name_changed">\"%1$s\" grup adı \"%2$s\" olarak değişti.</string>
+    <string name="systemmsg_group_image_changed">Grup görseli değişti.</string>
     <string name="systemmsg_group_image_deleted">Grup görseli silindi.</string>
     <string name="systemmsg_member_added">%1$s üyesi eklendi.</string>
     <string name="systemmsg_member_removed">%1$s üyesi kaldırıldı.</string>
@@ -786,7 +786,7 @@
     <string name="contact_verified">%1$s doğrulandı.</string>
     <string name="contact_not_verified">%1$s doğrulanamıyor.</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
-    <string name="contact_setup_changed">%1$s için ayarlama değiştirildi.</string>
+    <string name="contact_setup_changed">%1$s için ayarlama değişti.</string>
     <string name="verified_group_explain">Doğrulanan gruplar (deneysel), etkin saldırılar karşısında güvenlik sağlar. Üyeler, diğer üyeler tarafından ikinci bir etkenle doğrulanır ve iletiler her zaman uçtan uca şifrelenir.</string>
     <string name="copy_qr_data_success">QR URL\'si panoya kopyalandı</string>
     <string name="mailto_dialog_header_select_chat">İletiyi göndermek için sohbet seçin</string>

@@ -258,6 +258,8 @@
     <string name="unpin">Losmaken</string>
     <string name="ConversationFragment_quoted_message_not_found">Geen oorspronkelijk bericht gevonden</string>
     <string name="reply_privately">Privé beantwoorden</string>
+    <string name="source_code">Broncode</string>
+
     <string name="mute_for_one_hour">1 uur lang uitschakelen</string>
     <string name="mute_for_two_hours">2 uur lang uitschakelen</string>
     <string name="mute_for_one_day">1 dag lang uitschakelen</string>
@@ -917,6 +919,8 @@
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Geef Delta Chat toegang tot je camera om foto\'s en video\'s te maken en QR-codes te scannen.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Geef Delta Chat toegang tot je adresboek om gesprekken te voeren met contactpersonen. Delta Chat heeft geen servers, dus ze worden niet aan ons opgestuurd.</string>
+    <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">Delta Chat heeft het locatietoegangsrecht nodig om je locatie te tonen en delen voor de door jou aangegeven duur.</string>
+    <string name="InfoPlist_NSLocationWhenInUseUsageDescription">Delta Chat heeft het locatietoegangsrecht nodig om je locatie te tonen en delen voor de door jou aangegeven duur.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Geef Delta Chat toegang tot je microfoon om audio op te nemen voor spraakberichten en video\'s.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Geef Delta Chat toegang tot je foto\'s om afbeeldingen te versturen.</string>
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat wil afbeeldingen opslaan in je fotogalerij.</string>

@@ -93,31 +93,38 @@
     <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
     <plurals name="n_minutes">
         <item quantity="one">%d min</item>
+        <item quantity="many">%d min</item>
         <item quantity="other">%d min</item>
     </plurals>
     <!-- Translators: show beside messages that are "N hours old". prefer a short string, prefer abbreviations if they're well-known -->
     <plurals name="n_hours">
         <item quantity="one">%d ora</item>
+        <item quantity="many">%d ore</item>
         <item quantity="other">%d ore</item>
     </plurals>
     <plurals name="n_chats">
         <item quantity="one">%d chat</item>
+        <item quantity="many">%d chats</item>
         <item quantity="other">%d chats</item>
     </plurals>
     <plurals name="n_contacts">
         <item quantity="one">%d contatto</item>
+        <item quantity="many">%d contatti</item>
         <item quantity="other">%d contatti</item>
     </plurals>
     <plurals name="n_messages">
         <item quantity="one">%d messaggio</item>
+        <item quantity="many">%d messaggi</item>
         <item quantity="other">%d messaggi</item>
     </plurals>
     <plurals name="n_members">
         <item quantity="one">%d membri</item>
+        <item quantity="many">%d membri</item>
         <item quantity="other">%d membri</item>
     </plurals>
     <plurals name="n_recipients">
         <item quantity="one">%d destinatari</item>
+        <item quantity="many">%d destinatari</item>
         <item quantity="other">%d destinatari</item>
     </plurals>
 
@@ -258,6 +265,8 @@
     <string name="unpin">Sblocca</string>
     <string name="ConversationFragment_quoted_message_not_found">Messaggio originale non trovato</string>
     <string name="reply_privately">Rispondi in Privato</string>
+    <string name="source_code">Codice Sorgente</string>
+
     <string name="mute_for_one_hour">Silenzia per 1 ora</string>
     <string name="mute_for_two_hours">Silenzia per 2 ore</string>
     <string name="mute_for_one_day">Silenzia per 1 giorno</string>
@@ -272,6 +281,7 @@
 
     <plurals name="ask_send_following_n_files_to">
         <item quantity="one">Invia il seguente file a %s?</item>
+        <item quantity="many">Inviare i seguenti %d files a %s?</item>
         <item quantity="other">Inviare i seguenti %d files a %s?</item>
     </plurals>
     <string name="file_saved_to">File salvato su \"%1$s\".</string>
@@ -294,15 +304,18 @@
     <string name="ask_leave_group">Sei sicuro di voler abbandonare il gruppo?</string>
     <plurals name="ask_delete_chat">
         <item quantity="one">Eliminare %d chat? Non verrà più mostrata nella lista delle chat, ma i messaggi rimarranno sul server.</item>
+        <item quantity="many">Eliminare %d chat? Non verranno più mostrate nella lista delle chat, ma i messaggi rimarranno sul server.</item>
         <item quantity="other">Eliminare %d chat? Non verranno più mostrate nella lista delle chat, ma i messaggi rimarranno sul server.</item>
     </plurals>
     <string name="ask_delete_message">Sei sicuro di voler eliminare questo messaggio?</string>
     <plurals name="ask_delete_messages">
         <item quantity="one">Eliminare %d messaggio qui e sul sever?</item>
+        <item quantity="many">Eliminare %d messaggi qui e sul sever?</item>
         <item quantity="other">Eliminare %d messaggi qui e sul sever?</item>
     </plurals>
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Eliminare %d messaggi?</item>
+        <item quantity="many">Eliminare %d messaggi?</item>
         <item quantity="other">Eliminare %d messaggi?</item>
     </plurals>
     <string name="ask_forward">Inoltrare messaggi a %1$s?</string>
@@ -332,10 +345,12 @@
     <!-- chatlist and chat view -->
     <plurals name="chat_archived">
         <item quantity="one">%d chat archiviata</item>
+        <item quantity="many">%d chat archiviate</item>
         <item quantity="other">%d chat archiviate</item>
     </plurals>
     <plurals name="chat_unarchived">
         <item quantity="one">%d chat ripristinata</item>
+        <item quantity="many">%d chat ripristinate</item>
         <item quantity="other">%d chat ripristinate</item>
     </plurals>
     <string name="chat_archived_chats_title">Chat Archiviate</string>
@@ -344,6 +359,7 @@
     <string name="chat_unable_to_record_audio">Impossibile registrare audio.</string>
     <plurals name="chat_n_new_messages">
         <item quantity="one">%d nuovo messaggio</item>
+        <item quantity="many">%d nuovi messaggi</item>
         <item quantity="other">%d nuovi messaggi</item>
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
@@ -917,6 +933,8 @@
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat utilizza la fotocamera per scattare e inviare foto e video e per scansionare i codici QR.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat usa i tuoi contatti per mostrare una lista di indirizzi e-mail a cui puoi scrivere. Delta Chat non ha un server, i tuoi contatti non vengono inviati da nessuna parte.</string>
+    <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">Delta Chat ha bisogno dell\'autorizzazione di localizzazione per condividere la vostra posizione per il periodo di tempo in cui avete abilitato la condivisione della posizione.</string>
+    <string name="InfoPlist_NSLocationWhenInUseUsageDescription">Delta Chat ha bisogno dell\'autorizzazione di localizzazione per condividere la vostra posizione per il periodo di tempo in cui avete abilitato la condivisione della posizione.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat utilizza il tuo microfono per registrare e inviare messaggi vocali e video con audio.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat ti permetterà di scegliere quali foto della tua libreria inviare.</string>
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat vuole salvare le immagini nella tua libreria fotografica.</string>

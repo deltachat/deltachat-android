@@ -39,23 +39,28 @@
     <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
     <plurals name="n_minutes">
         <item quantity="one">%d min</item>
+        <item quantity="many">%d min</item>
         <item quantity="other">%d min</item>
     </plurals>
     <!-- Translators: show beside messages that are "N hours old". prefer a short string, prefer abbreviations if they're well-known -->
     <plurals name="n_hours">
         <item quantity="one">%d hora</item>
+        <item quantity="many">%d horas</item>
         <item quantity="other">%d horas</item>
     </plurals>
     <plurals name="n_chats">
         <item quantity="one">%d conversas</item>
+        <item quantity="many">%d chats</item>
         <item quantity="other">%d chats</item>
     </plurals>
     <plurals name="n_messages">
         <item quantity="one">%d mensagens</item>
+        <item quantity="many">%d mensagens</item>
         <item quantity="other">%d mensagens</item>
     </plurals>
     <plurals name="n_members">
         <item quantity="one">%d membro</item>
+        <item quantity="many">%d membros</item>
         <item quantity="other">%d membros</item>
     </plurals>
     <string name="self">Eu</string>
@@ -140,10 +145,12 @@
     <string name="ask_leave_group">Tem certeza que deseja deixar este grupo?</string>
     <plurals name="ask_delete_chat">
         <item quantity="one">Apagar %d conversas? Elas não serão mais mostrados na lista, mas permanecerão no servidor.</item>
+        <item quantity="many">Apagar %d conversas? Elas não serão mais mostrados na lista, mas permanecerão no servidor.</item>
         <item quantity="other">Apagar %d conversas? Elas não serão mais mostrados na lista, mas permanecerão no servidor.</item>
     </plurals>
     <plurals name="ask_delete_messages">
         <item quantity="one">Apagar %d mensagens aqui e no servidor?</item>
+        <item quantity="many">Apagar %d mensagens aqui e no servidor?</item>
         <item quantity="other">Apagar %d mensagens aqui e no servidor?</item>
     </plurals>
     <string name="ask_forward">Reencaminhar mensages para %1$s?</string>
@@ -163,10 +170,12 @@
     <!-- chatlist and chat view -->
     <plurals name="chat_archived">
         <item quantity="one">%d conversas arquivadas</item>
+        <item quantity="many">%d conversas arquivadas</item>
         <item quantity="other">%d conversas arquivadas</item>
     </plurals>
     <plurals name="chat_unarchived">
         <item quantity="one">%d conversas desarquivadas</item>
+        <item quantity="many">%d conversas desarquivadas</item>
         <item quantity="other">%d conversas desarquivadas</item>
     </plurals>
     <string name="chat_archived_chats_title">chats arquivadas</string>

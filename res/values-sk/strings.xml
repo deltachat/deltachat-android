@@ -206,7 +206,7 @@
     <string name="menu_archive_chat">Archivovať konverzáciu</string>
     <string name="menu_unarchive_chat">Zrušiť archiváciu konverzácie</string>
     <string name="menu_add_attachment">Pridať prílohu</string>
-    <string name="menu_leave_group">Opustit skupinu</string>
+    <string name="menu_leave_group">Opustiť skupinu</string>
     <string name="menu_delete_chat">Odstrániť konverzáciu</string>
     <string name="ask_delete_named_chat">Naozaj chcete položku odstrániť  \"%1$s\" ?</string>
     <string name="menu_delete_messages">Odstrániť správy</string>
@@ -272,6 +272,8 @@
     <string name="unpin">Uvoľniť</string>
     <string name="ConversationFragment_quoted_message_not_found">Pôvodná správa sa nenašla</string>
     <string name="reply_privately">Odpovedajte súkromne</string>
+    <string name="source_code">Zdrojový kód</string>
+
     <string name="mute_for_one_hour">Stíšiť na 1 hodinu</string>
     <string name="mute_for_two_hours">Stíšiť na 2 hodiny</string>
     <string name="mute_for_one_day">Stíšiť na 1 deň</string>
@@ -447,7 +449,7 @@
     <string name="change_group_image">Zmeniť skupinový obrázok</string>
     <string name="group_create_button">Vytvorte skupinu</string>
     <string name="group_please_enter_group_name">Zadajte názov skupiny.</string>
-    <string name="group_add_members">Pridajte členov</string>
+    <string name="group_add_members">Pridať členov</string>
     <string name="group_self_not_in_group">Ak chcete vykonať túto akciu, musíte byť členom skupiny.</string>
     <string name="profile_encryption">Šifrovanie</string>
     <string name="profile_shared_chats">Zdieľané konverzácie</string>
@@ -945,6 +947,7 @@
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat používa váš fotoaparát na snímanie a odosielanie fotografií a videí a na skenovanie QR kódov.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat používa vaše kontakty na zobrazenie zoznamu e-mailových adries, na ktoré môžete písať. Delta Chat nemá žiadny server, vaše kontakty sa nikam neposielajú.</string>
+    <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">Delta Chat vyžaduje oprávnenia na získanie polohy, aby ste mohli zdieľať Vašu polohu počas doby, ktorú ste stanovili.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Aplikácia Delta Chat používa váš mikrofón na zaznamenávanie a odosielanie hlasových správ a videí so zvukom.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat vám umožní zvoliť si, ktoré fotografie z vašej knižnice chcete odoslať.</string>
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat chce uložiť obrázky do vašej knižnice fotografií.</string>

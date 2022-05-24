@@ -91,31 +91,38 @@
     <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
     <plurals name="n_minutes">
         <item quantity="one">%d min</item>
+        <item quantity="many">%d min</item>
         <item quantity="other">%d min</item>
     </plurals>
     <!-- Translators: show beside messages that are "N hours old". prefer a short string, prefer abbreviations if they're well-known -->
     <plurals name="n_hours">
         <item quantity="one">%d horas</item>
+        <item quantity="many">%d horas</item>
         <item quantity="other">%d horas</item>
     </plurals>
     <plurals name="n_chats">
         <item quantity="one">%d conversa</item>
+        <item quantity="many">%d conversas</item>
         <item quantity="other">%d conversas</item>
     </plurals>
     <plurals name="n_contacts">
         <item quantity="one">%d contatos</item>
+        <item quantity="many">%d contatos</item>
         <item quantity="other">%d contatos</item>
     </plurals>
     <plurals name="n_messages">
         <item quantity="one">%d message</item>
+        <item quantity="many">%d mensagens</item>
         <item quantity="other">%d mensagens</item>
     </plurals>
     <plurals name="n_members">
         <item quantity="one">%d participantes</item>
+        <item quantity="many">%d membros</item>
         <item quantity="other">%d membros</item>
     </plurals>
     <plurals name="n_recipients">
         <item quantity="one">%d destinatário</item>
+        <item quantity="many">%d destinatários</item>
         <item quantity="other">%d destinatários</item>
     </plurals>
 
@@ -270,6 +277,7 @@
 
     <plurals name="ask_send_following_n_files_to">
         <item quantity="one">Enviar o seguinte arquivo para %s?</item>
+        <item quantity="many">Enviar os seguintes arquivos %d para %s?</item>
         <item quantity="other">Enviar os seguintes arquivos %d para %s?</item>
     </plurals>
     <string name="file_saved_to">Arquivo salvo em \"%1$s\".</string>
@@ -292,15 +300,18 @@
     <string name="ask_leave_group">Quer mesmo sair do grupo?</string>
     <plurals name="ask_delete_chat">
         <item quantity="one">Delete %d chat? It will no longer be shown in the chat list, its messages will remain on the server.</item>
+        <item quantity="many">Apagar %d conversas? Elas não mais serão exibidas na lista, mas ficarão no servidor.</item>
         <item quantity="other">Apagar %d conversas? Elas não mais serão exibidas na lista, mas ficarão no servidor.</item>
     </plurals>
     <string name="ask_delete_message">Tem certeza que quer apagar esta mensagem?</string>
     <plurals name="ask_delete_messages">
         <item quantity="one">Delete %d message here and on the server?</item>
+        <item quantity="many">Apagar %d mensagens aqui e no servidor?</item>
         <item quantity="other">Apagar %d mensagens aqui e no servidor?</item>
     </plurals>
     <plurals name="ask_delete_messages_simple">
         <item quantity="one">Apagar %d mensagem?</item>
+        <item quantity="many">Apagar %d mensagens?</item>
         <item quantity="other">Apagar %d mensagens?</item>
     </plurals>
     <string name="ask_forward">Encaminhar mensagens para %1$s?</string>
@@ -330,10 +341,12 @@
     <!-- chatlist and chat view -->
     <plurals name="chat_archived">
         <item quantity="one">%d chat archived</item>
+        <item quantity="many">%d conversas arquivadas</item>
         <item quantity="other">%d conversas arquivadas</item>
     </plurals>
     <plurals name="chat_unarchived">
         <item quantity="one">%d chat unarchived</item>
+        <item quantity="many">%d conversas desarquivadas</item>
         <item quantity="other">%d conversas desarquivadas</item>
     </plurals>
     <string name="chat_archived_chats_title">Conversas arquivadas</string>
@@ -342,6 +355,7 @@
     <string name="chat_unable_to_record_audio">Impossível gravar áudio.</string>
     <plurals name="chat_n_new_messages">
         <item quantity="one">%d novas mensagens</item>
+        <item quantity="many">%d novas mensagens</item>
         <item quantity="other">%d novas mensagens</item>
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
