@@ -18,16 +18,16 @@ APKGPLAY="gplay/release/deltachat-gplay-release-$VERSION.apk"
 APKDEV="build/outputs/apk/fat/debug/deltachat-fat-debug-$VERSION.apk"
 ls -l $APKGPLAY
 ls -l $APKDEV
-read -p "upload these apks to testrun.org? ENTER to continue, CTRL-C to abort."
+read -p "upload these apks to mailadm.testrun.org? ENTER to continue, CTRL-C to abort."
 
-scp $APKGPLAY root@testrun.org:/var/www/testrun.org/
-scp $APKDEV root@testrun.org:/var/www/testrun.org/
+scp $APKGPLAY root@mailadm.testrun.org:/var/www/testrun.org/
+scp $APKDEV root@mailadm.testrun.org:/var/www/testrun.org/
 
 echo "upload done."
 echo ""
 echo "and now: here is Delta Chat $VERSION - choose your flavour and mind your backups:"
-echo "- 🍋 https://testrun.org/deltachat-gplay-release-$VERSION.apk (android, overwrites existing gplay installs, should keep data)"
-echo "- 🍉 https://testrun.org/deltachat-fat-debug-$VERSION.apk (android, can be installed beside gplay)"
+echo "- 🍋 https://mailadm.testrun.org/deltachat-gplay-release-$VERSION.apk (android, overwrites existing gplay installs, should keep data)"
+echo "- 🍉 https://mailadm.testrun.org/deltachat-fat-debug-$VERSION.apk (android, can be installed beside gplay)"
 echo "- 🍏 https://testflight.apple.com/join/uEMc1NxS (ios, update to $VERSION may take a day or so)"
 
 
