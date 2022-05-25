@@ -2,8 +2,10 @@
 VERSION=$1
 
 if [ -z "$VERSION" ]; then
-    echo "this script uploads apk and symbols to get.delta.chat"
-    echo "the script does not upload things to gplay or other stores."
+    echo "this script uploads release-ready apk and symbols to download.delta.chat/android"
+    echo "- for showing up on get.delta.chat"
+    echo "  you still need to change deltachat-pages/_includes/download-boxes.html"
+    echo "- the script does not upload things to gplay or other stores."
     echo ""
     echo "usage: ./scripts/upload-release.sh <VERSION>"
     exit
@@ -16,7 +18,7 @@ fi
 cd gplay/release
 APK="deltachat-gplay-release-$VERSION.apk"
 ls -l $APK
-read -p "upload this apk and belonging symbols to get.delta.chat? ENTER to continue, CTRL-C to abort."
+read -p "upload this apk and belonging symbols to download.delta.chat/android? ENTER to continue, CTRL-C to abort."
 
 # you need the private SSH key of the jekyll user; you can find it in this file:
 # https://github.com/hpk42/otf-deltachat/blob/master/secrets/delta.chat
