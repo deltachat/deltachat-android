@@ -13,7 +13,7 @@
 # F-Droid Build status
 
 - <https://monitor.f-droid.org/builds>
-  shows F-Droids overall build status,
+  shows F-Droid's overall build status,
   if Delta Chat shows up at "Need updating" or "Running",
   things are working as expected :)
 
