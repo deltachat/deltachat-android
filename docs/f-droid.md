@@ -20,6 +20,9 @@
 - <https://f-droid.org/repo/com.b44t.messenger_VERSIONCODE.apk>  
   (with VERSIONCODE = 537 or so) links to successfully built apk
   even if it is not yet in the index (which may take some more time).
+  F-Droid keeps the last 3 successful builds in the main repo,
+  while the rest will be moved to the Archive repo:
+  <https://f-droid.org/archive/com.b44t.messenger_VERSIONCODE.apk>
 
 
 # Use F-Droid-tools locally
