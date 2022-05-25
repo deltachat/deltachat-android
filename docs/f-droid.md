@@ -1,22 +1,28 @@
 # F-Droid - Overview
 
-- https://gitlab.com/fdroid/fdroiddata/blob/master/metadata/com.b44t.messenger.yml
-  contains the descripion and all meta data shown for Delta Chat on F-Droid
+- <https://gitlab.com/fdroid/fdroiddata/blob/master/metadata/com.b44t.messenger.yml>
+  contains the description and all meta data shown for Delta Chat on F-Droid;
+  you can also check if F-Droid recognizes a new version here (they show up at the end)
 
-- when a new tag in the form `v1.2.3` is added to the deltachat-android repo,
-  F-Droid will pick up this version and distribute it - 
-  this may take some days or even weeks.  
-  before creating a new version, please have a look at docs/release-checklist.md
+- new versions are recognized by tags in the form `v1.2.3` -
+  before adding tags like that, have a look at `docs/release-checklist.md`
+  the build and distribution is expected to take
+  [up to 5 days](https://gitlab.com/fdroid/wiki/-/wikis/FAQ#how-long-does-it-take-for-my-app-to-show-up-on-website-and-client).
 
 
 # F-Droid Build status
 
-- <https://f-droid.org/wiki/page/com.b44t.messenger/lastbuild>  
-  shows the last build attempt
+- <https://monitor.f-droid.org/builds>
+  shows F-Droid's overall build status,
+  if Delta Chat shows up at "Need updating" or "Running",
+  things are working as expected :)
 
 - <https://f-droid.org/repo/com.b44t.messenger_VERSIONCODE.apk>  
   (with VERSIONCODE = 537 or so) links to successfully built apk
   even if it is not yet in the index (which may take some more time).
+  F-Droid keeps the last 3 successful builds in the main repo,
+  while the rest will be moved to the Archive repo:
+  <https://f-droid.org/archive/com.b44t.messenger_VERSIONCODE.apk>
 
 
 # Use F-Droid-tools locally
