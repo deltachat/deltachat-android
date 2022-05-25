@@ -12,8 +12,10 @@
 
 # F-Droid Build status
 
-- <https://monitor.f-droid.org/builds/running>
-  shows the current build pipeline
+- <https://monitor.f-droid.org/builds>
+  shows F-Droids overall build status,
+  if Delta Chat shows up at "Need updating" or "Running",
+  things are working as expected :)
 
 - <https://f-droid.org/repo/com.b44t.messenger_VERSIONCODE.apk>  
   (with VERSIONCODE = 537 or so) links to successfully built apk
