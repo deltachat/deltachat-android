@@ -262,14 +262,8 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
     return false;
   }
 
-  @Override
-  public void onBackPressed() {
-    if (webView.canGoBack()) {
-      webView.goBack();
-    } else {
-      super.onBackPressed();
-    }
-  }
+  // onBackPressed() can be overwritten by derived classes as needed.
+  // the default behavior (close the activity) is just fine eg. for Webxdc, Connectivity, HTML-mails
 
   public static void openUrlInBrowser(Context context, String url) {
     try {

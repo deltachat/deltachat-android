@@ -43,11 +43,4 @@ public class ConnectivityActivity extends WebViewActivity implements DcEventCent
   public void handleEvent(@NonNull DcEvent event) {
     refresh();
   }
-
-  @Override
-  public void onBackPressed() {
-    // If we did not override this function, the back button in the connectivity view would sometimes
-    // not work, probably because webView.canGoBack() in WebViewActivity.onBackPressed() wrongly returns true
-    finish();
-  }
 }
