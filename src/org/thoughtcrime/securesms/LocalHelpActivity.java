@@ -69,6 +69,15 @@ public class LocalHelpActivity extends WebViewActivity
     return false;
   }
 
+  @Override
+  public void onBackPressed() {
+    if (webView.canGoBack()) {
+      webView.goBack();
+    } else {
+      super.onBackPressed();
+    }
+  }
+
   private boolean assetExists(String fileName) {
     // test using AssetManager.open();
     // AssetManager.list() is unreliable eg. on my Android 7 Moto G
