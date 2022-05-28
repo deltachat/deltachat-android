@@ -1,5 +1,9 @@
 # F-Droid - Overview
 
+- <https://f-droid.org/en/packages/com.b44t.messenger/>
+  is the Delta Chat page on F-Droid.org,
+  the F-Droid-app will show similar information.
+
 - <https://gitlab.com/fdroid/fdroiddata/blob/master/metadata/com.b44t.messenger.yml>
   contains the description and all meta data shown for Delta Chat on F-Droid;
   you can also check if F-Droid recognizes a new version here (they show up at the end)
