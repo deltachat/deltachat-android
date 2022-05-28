@@ -23,18 +23,20 @@ USER $USER
 ENV ANDROID_SDK_ROOT /home/${USER}/android-sdk
 RUN mkdir ${ANDROID_SDK_ROOT}
 WORKDIR $ANDROID_SDK_ROOT
-RUN wget -q https://dl.google.com/android/repository/commandlinetools-linux-6200805_latest.zip && \
-  unzip commandlinetools-linux-6200805_latest.zip && \
-  rm commandlinetools-linux-6200805_latest.zip
+RUN wget -q https://dl.google.com/android/repository/commandlinetools-linux-8512546_latest.zip && \
+  unzip commandlinetools-linux-8512546_latest.zip && \
+  rm commandlinetools-linux-8512546_latest.zip
 
-RUN yes | ${ANDROID_SDK_ROOT}/tools/bin/sdkmanager --sdk_root=${ANDROID_SDK_ROOT} --licenses
+RUN yes | ${ANDROID_SDK_ROOT}/cmdline-tools/bin/sdkmanager --sdk_root=${ANDROID_SDK_ROOT} --licenses
 
-ENV PATH ${PATH}:${ANDROID_SDK_ROOT}/tools/bin
+ENV PATH ${PATH}:${ANDROID_SDK_ROOT}/cmdline-tools/bin
 
 # Install NDK manually. Other SDK parts are installed automatically by gradle.
-RUN sdkmanager --sdk_root=${ANDROID_SDK_ROOT} ndk-bundle
+#
+# NDK version r23c LTS aka 23.2.8568313
+RUN sdkmanager --sdk_root=${ANDROID_SDK_ROOT} 'ndk;23.2.8568313'
 
-ENV ANDROID_NDK_ROOT ${ANDROID_SDK_ROOT}/ndk-bundle
+ENV ANDROID_NDK_ROOT ${ANDROID_SDK_ROOT}/ndk/23.2.8568313
 ENV PATH ${PATH}:${ANDROID_NDK_ROOT}/toolchains/llvm/prebuilt/linux-x86_64/bin/:${ANDROID_NDK_ROOT}
 
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain none
