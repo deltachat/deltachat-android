@@ -93,7 +93,10 @@ fi
 # It is built against r22b NDK toolchains and still requires -lgcc instead of -lunwind used in newer r23 NDK.
 # See discussion at <https://github.com/rust-lang/rust/pull/85806>
 TMPLIB="$(mktemp -d)"
-echo 'INPUT(-lunwind)' >"$TMPLIB/libgcc.a"
+if test -z "$(find "$ANDROID_NDK_ROOT" -name libgcc.a -print -quit)"; then
+    # NDK is does not contain libgcc.a, add a linker script to fake it.
+    echo 'INPUT(-lunwind)' >"$TMPLIB/libgcc.a"
+fi
 
 if test -z $1 || test $1 = armeabi-v7a; then
     echo "-- cross compiling to armv7-linux-androideabi (arm) --"
