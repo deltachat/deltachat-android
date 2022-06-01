@@ -31,6 +31,8 @@
     <string name="back">Voltar</string>
     <string name="close">Fechar</string>
     <string name="forward">Encaminhar</string>
+    <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
+    <string name="resend">Re-enviar</string>
     <!-- In the meaning of "To archive", "Put a chat to the archive". This string does not mean "The Archive". -->
     <string name="archive">Arquivar</string>
     <!-- In the meaning of "To unarchive", "Remove a chat from the archive", opposite of the previous string -->
@@ -263,6 +265,8 @@
     <string name="unpin">Desafixar</string>
     <string name="ConversationFragment_quoted_message_not_found">Mensagem original não encontrada</string>
     <string name="reply_privately">Responder em privado</string>
+    <string name="source_code">Código Fonte</string>
+
     <string name="mute_for_one_hour">Silenciar por 1 hora</string>
     <string name="mute_for_two_hours">Silenciar por 2 horas</string>
     <string name="mute_for_one_day">Silenciar por 1 dia</string>
@@ -473,6 +477,9 @@
     <string name="part_of_total_used">%1$s de %2$s usado</string>
 
 
+    <!-- welcome and login -->
+    <string name="welcome_chat_over_email">Bate-papo por E-mail</string>
+    <string name="scan_invitation_code">Escanear Código De Convite</string>
     <string name="welcome_intro1_message">O aplicativo com a maior base de usuários do mundo. Livre e independente.</string>
     <string name="login_title">Acessar</string>
     <string name="login_header">Acesse seu servidor</string>
@@ -507,7 +514,7 @@
     <string name="login_error_server">Por favor, insira um servidor ou IP válido</string>
     <string name="login_error_port">Por favor, insira uma porta válida (1-65535)</string>
     <string name="login_error_required_fields">Por favor, insira e-mail e senha válidos</string>
-    <string name="import_backup_title">Importar becape</string>
+    <string name="import_backup_title">Importar da Cópia de Segurança</string>
     <string name="import_backup_ask">Becape localizado em \"%1$s\".\n\nVocê quer importá-lo e usar seus dados e configurações?</string>
     <string name="import_backup_no_backup_found">Becapes não localizados.\n\nCopie o becape para \"%1$s\" e tente de novo. Alternativamente, toque em \"comece a conversar\" para prosseguir normalmente.</string>
     <!-- Translators: %1$s will be replaced by the e-mail address -->
@@ -612,7 +619,7 @@
     <string name="pref_background_btn_default">Usar imagem padrão</string>
     <string name="pref_background_btn_gallery">Selecionar da galeria</string>
     <string name="pref_imap_folder_handling">Gerenciar pastas IMAP</string>
-    <string name="pref_imap_folder_warn_disable_defaults">Se você desabilitar esta opção, certifique-se que seu servidor e demais aplicativos estejam configurados de acordo.\n\nDo contrário não vai funcionar.</string>
+    <string name="pref_imap_folder_warn_disable_defaults">Se você mudar esta opção, certifique-se de que seu servidor e demais aplicativos estejam configurados de acordo.\n\nDo contrário, funcionalidades podem não funcionar.</string>
     <string name="pref_watch_inbox_folder">Verificar a caixa de entrada</string>
     <string name="pref_watch_sent_folder">Verificar a caixa de saída</string>
     <string name="pref_watch_mvbox_folder">Verificar a pasta DeltaChat</string>
@@ -901,9 +908,33 @@
     <string name="a11y_background_preview_label">Pré-visualização do fundo</string>
     <string name="a11y_disappearing_messages_activated">Mensagens que desaparecem ativadas</string>
 
+    <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
+    <string name="stop_sharing_location">Parar de compartilhar localização</string>
+    <string name="a11y_voice_message_hint_ios">Após a gravação, toque duas vezes para enviar. Para descartar a gravação, deslize com dois dedos.</string>
+    <string name="a11y_connectivity_hint">Toque duas vezes para ver os detalhes de conectividade.</string>
+    <string name="login_error_no_internet_connection">Sem conexão com a Internet, o registro falhou.</string>
+    <string name="share_account_not_configured">A conta não está configurada.</string>
+    <string name="cannot_play_audio_file">O arquivo de áudio não pode ser reproduzido.</string>
+    <!-- iOS camera permission alert -->
+    <string name="perm_ios_explain_access_to_camera_denied">Para tirar fotos, capturar vídeos ou usar o escâner de QR-Code, abra as configurações do sistema e ative \"Câmera\".</string>
+    <string name="open_settings">Abrir Configurações</string>
+    <!-- iOS device contact alert -->
+    <string name="import_device_contacts">Importar contatos do dispositivo</string>
+    <string name="import_device_contacts_hint">Para conversar com os contatos do seu dispositivo, abra as Configurações e ative \"Contatos\".</string>
+    <!-- iOS notification settings -->
+    <string name="disabled_in_dc">Desativado no Delta Chat</string>
+    <string name="disabled_in_system_settings">Desativado nas configurações do sistema</string>
+    <string name="bg_app_refresh_disabled">\"Atualização do Aplicativo em Segundo Plano\" desativada nas configurações do sistema</string>
+    <!-- iOS connectivity view -->
+    <string name="delayed">Atrasada</string>
+    <string name="notifications_avg_minutes">Em média, a cada %1$d minutos</string>
+    <string name="notifications_avg_hours">Em média, a cada %1$d horas</string>
+    <string name="last_check_at">Verificado em %1$s</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat usa sua câmera para tirar e enviar fotos e vídeos e para escanear códigos QR.</string>
     <string name="InfoPlist_NSContactsUsageDescription">O Delta Chat usa seus contatos para mostrar uma lista de endereços de e-mail para os quais você pode escrever. O Delta Chat não tem servidor, seus contatos não são enviados a lugar nenhum.</string>
+    <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">O Delta Chat precisa da permissão de localização para compartilhar sua localização durante o período de tempo em que você ativou o compartilhamento de localização.</string>
+    <string name="InfoPlist_NSLocationWhenInUseUsageDescription">O Delta Chat precisa de permissão de localização para compartilhar sua localização durante o período em que o compartilhamento de localização estiver ativado.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">O Delta Chat usa seu microfone para gravar e enviar mensagens de voz e vídeos com som.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">O Delta Chat permite que você escolha fotos de sua biblioteca para enviar.</string>
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">O Delta Chat deseja salvar imagens em sua biblioteca de fotos.</string>
@@ -923,4 +954,7 @@
     <!-- device messages for updates -->
     <string name="update_1_28_android">Destaques da 1.28:\n\n🔒 Criptografia: uma nova opção experimental para manter seus contatos, segredos de criptografia e mensagens de texto criptografadas em seu dispositivo. Disponível apenas na criação de conta e importação de arquivos de backup.\n\n📫 Escrever para lista de e-mails\n\n💫 Configuração inicial mais rápida para mais servidores de e-mail e opções de rede simplificadas para evitar configurações incorretas acidentais\n\n🐜 Muuuuuuitos problemas relatados por usuários corrigidos</string>
     <string name="update_1_28_ios_extra_line">… e você pode selecionar um papel de parede em \"Configurações / Papel de Parede\" agora :)</string>
-    </resources>
+    <string name="update_1_30">Mais rápido. Mais estável.\n\nPara as versões 1.30, nos concentramos em velocidade e confiabilidade, corrigindo dezenas de bugs. Verifique nossos changelogs para ver se o seu bug favorito foi corrigido: https://get.delta.chat/#changelogs 🚀
+</string>
+
+</resources>
