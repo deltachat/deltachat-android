@@ -151,6 +151,8 @@
     <string name="file">File</string>
     <string name="files">Files</string>
     <string name="unknown">Unknown</string>
+    <string name="version">Version</string>
+    <string name="about">About</string>
 
     <string name="green">Green</string>
     <string name="red">Red</string>
@@ -287,7 +289,9 @@
     <string name="videochat_tap_to_open">Tap to Open</string>
     <string name="videochat_instance">Video Chat Instance</string>
     <string name="videochat_instance_placeholder">Your Video Chat Instance</string>
+    <string name="videochat_instance_example">Examples: https://meet.jit.si/$ROOM or basicwebrtc:https://your-server</string>
     <string name="videochat_instance_explain">If a video chat instance is defined, you can start a video chat from each chat. Video chats require a compatible app or a compatible browser on both ends.\n\nExamples: https://meet.jit.si/$ROOM or basicwebrtc:https://your-server</string>
+    <string name="videochat_instance_explain_2">If video chat is enabled, you can start a video chat from each chat. Video chats require a compatible app or a compatible browser on both ends.</string>
     <string name="videochat_instance_from_qr">Use \"%1$s\" to invite others to video chats?\n\nOnce set, you can start a video chat from each chat. This will replace the previous setting for video chats, if any.</string>
     <string name="videochat_invitation">Video chat invitation</string>
     <string name="videochat_invitation_body">You are invited to a video chat, click %1$s to join.</string>
@@ -368,6 +372,7 @@
     <string name="saved_messages_explain">• Forward messages here for easy access\n\n• Take notes or voice memos\n\n• Attach media to save them</string>
     <!-- this "Saved" should match the "Saved" from "Saved messages" -->
     <string name="saved">Saved</string>
+    <string name="save_as">Saved</string>
     <string name="retry_send">Retry to send message</string>
     <!-- reasons for a disabled message composer -->
     <string name="messaging_disabled_not_in_group">You cannot write because you are not in this group. To join, ask another member.</string>
@@ -383,6 +388,8 @@
     <string name="mailing_list_profile_info">Changes on mailing list name and image apply to this device only.</string>
 
     <!-- webxdc -->
+    <!-- atleast desktop needs this string -->
+    <string name="webxdc">Webxdc</string>
     <!-- "Start..." button for an app -->
     <string name="start_app">Start…</string>
     <!-- this is a warning that is shown when one tries to send something to a chat that is not yet accepted. -->
@@ -434,9 +441,12 @@
     <string name="tab_map">Map</string>
     <string name="tab_gallery_empty_hint">Images and videos shared in this chat will be displayed here.</string>
     <string name="tab_docs_empty_hint">Documents, music and other files shared in this chat will be displayed here.</string>
+    <string name="tab_image_empty_hint">Images shared in this chat will be displayed here.</string>
+    <string name="tab_video_empty_hint">Videos shared in this chat will be displayed here.</string>
+    <string name="tab_audio_empty_hint">Audio Files and Voice Messages shared in this chat will be displayed here.</string>
+    <string name="tab_webxdc_empty_hint">Webxdc content shared in this chat will be displayed here.</string>
     <string name="media_preview">Media Preview</string>
     <string name="send_message">Send Message</string>
-
 
     <!-- Connectivity -->
     <!-- Used as a headline for the "Inbox" eg. in the "Connectivity" view -->
@@ -610,6 +620,7 @@
     <string name="pref_watch_sent_folder">Watch Sent Folder</string>
     <string name="pref_watch_mvbox_folder">Watch DeltaChat Folder</string>
     <string name="pref_send_copy_to_self">Send Copy to Self</string>
+    <string name="pref_send_copy_to_self_explain">Required for multi-device setup.</string>
     <string name="pref_auto_folder_moves">Automatic Moves to DeltaChat Folder</string>
     <string name="pref_auto_folder_moves_explain">Chat conversations are moved to avoid cluttering the Inbox</string>
     <string name="pref_only_fetch_mvbox_title">Only Fetch from DeltaChat Folder</string>
@@ -828,6 +839,7 @@
     <string name="encrypted_message">Encrypted message</string>
 
     <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
+    <string name="delta_chat_desktop">Delta Chat Desktop</string>
     <string name="about_offical_app_desktop">This is the official Delta Chat Desktop app.</string>
     <string name="about_licensed_under_desktop">This software is licensed under GNU GPL version 3 and the source code is available on GitHub.</string>
     <string name="welcome_desktop">Welcome to Delta Chat</string>
@@ -881,6 +893,20 @@
     <string name="no_spellcheck_suggestions_found">No spelling suggestions found.</string>
     <string name="show_window">Show Window</string>
     <string name="login_socks5_experimental_warning">SOCKS5 support is currently experimental. Please use at your own risk. If you type in an address in the e-mail field, there will be DNS lookup that won\'t get tunneled through SOCKS5.</string>
+
+    <!-- desktop keybindings -->
+    <string name="desktop_keybindings_composer">MessageInput / Composer</string>
+    <string name="desktop_keybindings_global">Global Shortcuts</string>
+    <string name="desktop_keybindings_action_switch_between_chats">Switch between Chats</string>
+    <string name="desktop_keybindings_action_scroll_messages">Scroll Messages</string>
+    <string name="desktop_keybindings_action_jump_to_search">Jump to Search</string>
+    <string name="desktop_keybindings_action_focus_composer">Focus Composer</string>
+    <string name="desktop_keybindings_action_open_help">Open Help</string>
+    <string name="desktop_keybindings_action_open_settings">Open Settings</string>
+    <string name="desktop_keybindings_action_force_refresh_network">Force Refresh Network</string>
+    <string name="desktop_keybindings_action_send_message">Send Message</string>
+    <string name="desktop_keybindings_action_insert_newline">Insert Newline</string>
+    <string name="desktop_keybindings_dialog_title">Keybindings</string>
 
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Delivery status: Error</string>
