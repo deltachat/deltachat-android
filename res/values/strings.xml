@@ -893,9 +893,6 @@
 
     <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
     <string name="keybindings">Keybindings</string>
-    <!-- this is the name of the text field where the user inputs their text, images and so on -->
-    <string name="message_input">Message Input</string>
-    <string name="global_shortcuts">Global Shortcuts</string>
     <string name="switch_between_chats">Switch between Chats</string>
     <string name="scroll_messages">Scroll Messages</string>
     <string name="jump_to_search">Jump to Search</string>
