@@ -893,7 +893,9 @@
     <string name="keybindings">Keybindings</string>
     <string name="switch_between_chats">Switch between Chats</string>
     <string name="scroll_messages">Scroll Messages</string>
-    <string name="jump_to_search">Jump to Search</string>
+    <!-- command to put the cursor to the search input field -->
+    <string name="focus_search_input">Focus Search</string>
+    <!-- command to put the cursor to the message input field -->
     <string name="focus_message_input">Focus Message Input</string>
     <string name="force_refresh_network">Force Refresh Network</string>
     <string name="insert_newline">Insert Newline</string>
