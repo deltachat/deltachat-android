@@ -435,7 +435,6 @@
     <string name="media_preview">Paraparje media</string>
     <string name="send_message">Dërgo mesazh</string>
 
-
     <!-- Connectivity -->
     <!-- Used as a headline for the "Inbox" eg. in the "Connectivity" view -->
     <string name="incoming_messages">Mesazhe të Marrë</string>

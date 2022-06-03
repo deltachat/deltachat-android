@@ -449,7 +449,6 @@
     <string name="media_preview">Vista previa de multimedia</string>
     <string name="send_message">Enviar mensaje</string>
 
-
     <!-- Connectivity -->
     <!-- Used as a headline for the "Inbox" eg. in the "Connectivity" view -->
     <string name="incoming_messages">Mensajes entrantes</string>

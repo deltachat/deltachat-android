@@ -439,7 +439,6 @@
     <string name="media_preview">نمایش رسانه</string>
     <string name="send_message">ارسال پیام</string>
 
-
     <!-- Connectivity -->
     <!-- Used as a headline for the "Inbox" eg. in the "Connectivity" view -->
     <string name="incoming_messages">پیام‌های ورودی</string>

@@ -235,7 +235,7 @@
     <string name="menu_view_profile">Profil anzeigen</string>
     <string name="menu_zoom_in">Ansicht vergrößern</string>
     <string name="menu_zoom_out">Ansicht verkleinern</string>
-    <string name="menu_save_log">Logdatei sichern</string>
+    <string name="menu_save_log">Logdatei speichern</string>
     <string name="menu_more_options">Mehr Optionen</string>
     <string name="menu_learn_spelling">Rechtschreibung lernen</string>
     <string name="menu_chat_audit_log">Chat-Überwachungsprotokoll</string>
@@ -287,7 +287,9 @@
     <string name="videochat_tap_to_open">Öffnen</string>
     <string name="videochat_instance">Videochat-Instanz</string>
     <string name="videochat_instance_placeholder">Videochat-Instanz</string>
+    <string name="videochat_instance_example">Beispiele: https://meet.jit.si/$ROOM oder basicwebrtc:https://your-server</string>
     <string name="videochat_instance_explain">Wenn eine Videochat-Instanz definiert ist, können Sie einen Videochat von jedem Chat aus starten. Videochats erfordern beidseitig eine kompatible App oder einen kompatiblen Browser.\n\nBeispiele: https://meet.jit.si/$ROOM oder basicwebrtc:https://your-server</string>
+    <string name="videochat_instance_explain_2">Wenn Videochat eingeschaltet ist, können Sie einen Videochat von jedem Chat aus starten. Videochats erfordern beidseitig eine kompatible App oder einen kompatiblen Browser.</string>
     <string name="videochat_instance_from_qr">\"%1$s\" verwenden, um andere zu Videochats einzuladen?\n\nWenn Sie diese Einstellung vornehmen, können Sie von jedem Chat aus einen Videochat starten. Dies überschreibt, falls vorhanden, die bisherige Einstellung zu Videochats.</string>
     <string name="videochat_invitation">Videochat-Einladung</string>
     <string name="videochat_invitation_body">Sie sind zu einem Videochat eingeladen, klicken Sie auf %1$s , um teilzunehmen.</string>
@@ -368,6 +370,7 @@
     <string name="saved_messages_explain">• Nachrichten zum Merken hierher weiterleiten\n\n• Notizen oder Sprachmemos machen\n\n• Medien zum Speichern einfügen</string>
     <!-- this "Saved" should match the "Saved" from "Saved messages" -->
     <string name="saved">Gespeichert</string>
+    <string name="save_as">Speichern unter</string>
     <string name="retry_send">Nachricht erneut senden</string>
     <!-- reasons for a disabled message composer -->
     <string name="messaging_disabled_not_in_group">Sie können nicht schreiben, da Sie kein Mitglied dieser Gruppe sind. Bitten Sie ein anderes Mitglied, Sie hinzuzufügen.</string>
@@ -434,9 +437,12 @@
     <string name="tab_map">Karte</string>
     <string name="tab_gallery_empty_hint">In diesem Chat geteilte Bilder und Videos werden hier angezeigt.</string>
     <string name="tab_docs_empty_hint">In diesem Chat geteilte Dokumente, Musik und Dateien werden hier angezeigt.</string>
+    <string name="tab_image_empty_hint">In diesem Chat geteilte Bilder werden hier angezeigt.</string>
+    <string name="tab_video_empty_hint">In diesem Chat geteilte Videos werden hier angezeigt.</string>
+    <string name="tab_audio_empty_hint">In diesem Chat geteilte Audiodateien und Sprachnachrichten werden hier angezeigt.</string>
+    <string name="tab_webxdc_empty_hint">In diesem Chat geteilte Webxdc werden hier angezeigt.</string>
     <string name="media_preview">Medien-Vorschau</string>
     <string name="send_message">Nachricht senden</string>
-
 
     <!-- Connectivity -->
     <!-- Used as a headline for the "Inbox" eg. in the "Connectivity" view -->
@@ -610,6 +616,7 @@
     <string name="pref_watch_sent_folder">Gesendet-Ordner beobachten</string>
     <string name="pref_watch_mvbox_folder">DeltaChat-Ordner beobachten</string>
     <string name="pref_send_copy_to_self">Kopie an mich selbst senden</string>
+    <string name="pref_send_copy_to_self_explain">Erforderlich bei Verwendung des E-Mail-Kontos auf mehreren Geräten.</string>
     <string name="pref_auto_folder_moves">Autom. Verschieben in den DeltaChat-Ordner</string>
     <string name="pref_auto_folder_moves_explain">Konversationen verschieben für einen übersichtlichen Posteingang</string>
     <string name="pref_only_fetch_mvbox_title">Nur aus DeltaChat-Ordner lesen</string>
@@ -883,6 +890,17 @@ Ihr bisheriges E-Mail-Konto wird dabei nicht gelöscht. Sie können mit der Opti
     <string name="no_spellcheck_suggestions_found">Keine Rechtschreibvorschläge gefunden.</string>
     <string name="show_window">Fenster anzeigen</string>
     <string name="login_socks5_experimental_warning">Die Unterstützung von SOCKS5 ist derzeit experimentell. Die Verwendung erfolgt auf eigene Gefahr. Wenn Sie eine Adresse in das E-Mail-Feld eingeben, wird eine DNS-Suche durchgeführt, die nicht durch SOCKS5 getunnelt wird.</string>
+
+    <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
+    <string name="keybindings">Tastaturbelegung</string>
+    <string name="switch_between_chats">Chats durchschalten</string>
+    <string name="scroll_messages">Nachrichten scrollen</string>
+    <!-- command to put the cursor to the search input field -->
+    <string name="focus_search_input">Suche aktivieren</string>
+    <!-- command to put the cursor to the message input field -->
+    <string name="focus_message_input">Eingabefeld aktivieren</string>
+    <string name="force_refresh_network">Neu Verbinden</string>
+    <string name="insert_newline">Neue Zeile einfügen</string>
 
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Übertragungsstatus: Fehler</string>

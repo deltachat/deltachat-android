@@ -437,7 +437,6 @@
     <string name="media_preview">Median esikatselu</string>
     <string name="send_message">Lähetä viesti</string>
 
-
     <!-- Connectivity -->
     <!-- Used as a headline for the "Inbox" eg. in the "Connectivity" view -->
     <string name="incoming_messages">Saapuvat viestit</string>

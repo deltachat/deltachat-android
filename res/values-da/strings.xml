@@ -368,7 +368,6 @@
     <string name="media_preview">Medie forhåndsvisning</string>
     <string name="send_message">Send besked</string>
 
-
     <!-- Connectivity -->
     <!-- Used as a headline for the "Inbox" eg. in the "Connectivity" view -->
     <string name="incoming_messages">Indkommende beskeder</string>

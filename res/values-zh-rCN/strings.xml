@@ -279,7 +279,9 @@
     <string name="videochat_tap_to_open">点击来打开</string>
     <string name="videochat_instance">视频聊天实例</string>
     <string name="videochat_instance_placeholder">您的视频聊天实例</string>
+    <string name="videochat_instance_example">示例： https://meet.jit.si/$ROOM 或 basicwebrtc:https://your-server</string>
     <string name="videochat_instance_explain">定义了视频聊天实例后，您可以在聊天里发起视频聊天。视频聊天的两端都需要有兼容的应用或兼容的浏览器。\n\n示例: https://meet.jit.si/$ROOM 或 basicwebrtc:https://your-server</string>
+    <string name="videochat_instance_explain_2">如启用视频聊天，你可以从每个聊天启动一个视频聊天。视频聊天需要双方均装有兼容的应用或浏览器</string>
     <string name="videochat_instance_from_qr">使用“%1$s”邀请其他人加入视频聊天吗？\n\n设置好后，您就可以在聊天里发起视频聊天了。 这会取代之前的视频聊天设置（如果有的话）。</string>
     <string name="videochat_invitation">视频聊天邀请</string>
     <string name="videochat_invitation_body">您被邀请参加视频聊天，点击 %1$s 来加入。</string>
@@ -354,6 +356,7 @@
     <string name="saved_messages_explain">• 转发消息于此以便于访问\n\n• 做笔记或语音备忘录\n\n• 附加媒体以保存它们</string>
     <!-- this "Saved" should match the "Saved" from "Saved messages" -->
     <string name="saved">已保存</string>
+    <string name="save_as">另存为</string>
     <string name="retry_send">尝试重发消息</string>
     <!-- reasons for a disabled message composer -->
     <string name="messaging_disabled_not_in_group">您无法编写消息，因为您不在此群组中。要加入，请询问其他成员。</string>
@@ -420,9 +423,12 @@
     <string name="tab_map">地图</string>
     <string name="tab_gallery_empty_hint">在此聊天中分享的图像和视频将显示于此。</string>
     <string name="tab_docs_empty_hint">在此聊天中分享的文档、音乐和其他文件将显示于此。</string>
+    <string name="tab_image_empty_hint">此聊天中分享的图片将显示在这里</string>
+    <string name="tab_video_empty_hint">此聊天中分享的视频将显示在这里</string>
+    <string name="tab_audio_empty_hint">此聊天中分享的音频文件和语音消息将显示在这里。</string>
+    <string name="tab_webxdc_empty_hint">此聊天内分享的 Webxdc 内容将显示在这里</string>
     <string name="media_preview">媒体预览</string>
     <string name="send_message">发送消息</string>
-
 
     <!-- Connectivity -->
     <!-- Used as a headline for the "Inbox" eg. in the "Connectivity" view -->
@@ -596,6 +602,7 @@
     <string name="pref_watch_sent_folder">监视已发送文件夹</string>
     <string name="pref_watch_mvbox_folder">监视 DeltaChat 文件夹</string>
     <string name="pref_send_copy_to_self">给自己发送副本</string>
+    <string name="pref_send_copy_to_self_explain">当在多台设备上使用此账户时，这是必需的</string>
     <string name="pref_auto_folder_moves">自动移动至 DeltaChat 文件夹</string>
     <string name="pref_auto_folder_moves_explain">移动聊天对话以免弄乱收件箱</string>
     <string name="pref_only_fetch_mvbox_title">只从 DeltaChat 文件夹获取</string>
@@ -867,6 +874,15 @@
     <string name="no_spellcheck_suggestions_found">未找到拼写建议</string>
     <string name="show_window">显示窗口</string>
     <string name="login_socks5_experimental_warning">SOCKS5 支持目前还处于试验阶段。请自行承担使用风险。如果您在电子邮件字段中输入一个地址，会有不流经 SOCKS5 隧道的 DNS 查找流量。</string>
+
+    <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
+    <string name="keybindings">密钥绑定</string>
+    <string name="switch_between_chats">在不同聊天间切换</string>
+    <string name="scroll_messages">滚动消息</string>
+    <!-- command to put the cursor to the message input field -->
+    <string name="focus_message_input">聚焦消息输入</string>
+    <string name="force_refresh_network">强制刷新网络</string>
+    <string name="insert_newline">插入新行</string>
 
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">发送状态：错误</string>

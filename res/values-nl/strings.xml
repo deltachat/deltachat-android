@@ -287,7 +287,9 @@
     <string name="videochat_tap_to_open">Druk om te openen</string>
     <string name="videochat_instance">Videogespreksinstantie</string>
     <string name="videochat_instance_placeholder">Mijn videogespreksinstantie</string>
+    <string name="videochat_instance_example">Voorbeeld: https://meet.jit.si/$KAMER of basicwebrtc:https://mijn-server</string>
     <string name="videochat_instance_explain">Als je een videogespreksinstantie opgeeft, kun je een videogesprek starten vanuit elk één-op-ééngesprek. Voor videogesprekken hebben zowel jij als je gesprekspartner een compatibele app of webbrowser nodig.\n\nVoorbeelden: https://meet.jit.si/$KAMER of basicwebrtc:https://mijn-server</string>
+    <string name="videochat_instance_explain_2">Als je videogesprekken inschakelt, dan kun je een videogesprek starten vanuit elk één-op-ééngesprek. Voor videogesprekken hebben zowel jij als je gesprekspartner een compatibele app of webbrowser nodig.</string>
     <string name="videochat_instance_from_qr">Wil je \"%1$s\" gebruiken om anderen uit te nodigen voor videogesprekken?\n\nNa het instellen kun je een videogesprek starten vanuit elk één-op-ééngesprek. Deze instelling vervangt de vorige videogespreksinstelling.</string>
     <string name="videochat_invitation">Uitnodiging voor videogesprek</string>
     <string name="videochat_invitation_body">Je bent uitgenodigd voor een videogesprek. Druk op %1$s om deel te nemen.</string>
@@ -368,6 +370,7 @@
     <string name="saved_messages_explain">• Stuur berichten door naar hier om ze snel terug te kunnen lezen\n\n• Maak aantekeningen of spraakopnamen\n\n• Voeg media toe om deze op te slaan</string>
     <!-- this "Saved" should match the "Saved" from "Saved messages" -->
     <string name="saved">Opgeslagen</string>
+    <string name="save_as">Opslaan als</string>
     <string name="retry_send">Bericht opnieuw versturen</string>
     <!-- reasons for a disabled message composer -->
     <string name="messaging_disabled_not_in_group">Alleen leden kunnen berichten versturen aan deze groep. Vraag aan een lid om lid te worden.</string>
@@ -434,9 +437,12 @@
     <string name="tab_map">Kaart</string>
     <string name="tab_gallery_empty_hint">De in dit gesprek gedeelde afbeeldingen en video\'s verschijnen hier.</string>
     <string name="tab_docs_empty_hint">De in dit gesprek gedeelde documenten, muziek en overige bestanden verschijnen hier.</string>
+    <string name="tab_image_empty_hint">De in dit gesprek gedeelde afbeeldingen verschijnen hier.</string>
+    <string name="tab_video_empty_hint">De in dit gesprek gedeelde video\'s verschijnen hier.</string>
+    <string name="tab_audio_empty_hint">De in dit gesprek gedeelde audiobestanden en spraakberichten verschijnen hier.</string>
+    <string name="tab_webxdc_empty_hint">De in dit gesprek gedeelde webxdc-inhoud verschijnt hier.</string>
     <string name="media_preview">Mediavoorbeeld</string>
     <string name="send_message">Bericht versturen</string>
-
 
     <!-- Connectivity -->
     <!-- Used as a headline for the "Inbox" eg. in the "Connectivity" view -->
@@ -610,6 +616,7 @@
     <string name="pref_watch_sent_folder">Map ‘Verzonden’ controleren op nieuwe berichten</string>
     <string name="pref_watch_mvbox_folder">DeltaChat-map controleren op nieuwe berichten</string>
     <string name="pref_send_copy_to_self">Kopie versturen naar mijzelf</string>
+    <string name="pref_send_copy_to_self_explain">Vereist bij gebruik van dit account op meerdere apparaten.</string>
     <string name="pref_auto_folder_moves">Automatisch verplaatsen naar DeltaChat-map</string>
     <string name="pref_auto_folder_moves_explain">Gesprekken worden verplaatst om je Postvak IN netjes te houden</string>
     <string name="pref_only_fetch_mvbox_title">Alleen DeltaChat-map controleren</string>
@@ -881,6 +888,15 @@
     <string name="no_spellcheck_suggestions_found">Geen suggesties gevonden.</string>
     <string name="show_window">Venster tonen</string>
     <string name="login_socks5_experimental_warning">De SOCKS5-ondersteuning is momenteel nog experimenteel - gebruik hiervan is op eigen risico. Als je een e-mailadres invoert, dan vindt er een dns-opzoeking plaats die niet wordt doorgesluisd via SOCKS5.</string>
+
+    <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
+    <string name="keybindings">Sneltoetsen</string>
+    <string name="switch_between_chats">Wisselen van gesprek</string>
+    <string name="scroll_messages">Scrollen door berichten</string>
+    <!-- command to put the cursor to the message input field -->
+    <string name="focus_message_input">Invoerveld focussen</string>
+    <string name="force_refresh_network">Netwerk gedwongen vernieuwen</string>
+    <string name="insert_newline">Nieuwe regel invoegen</string>
 
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Bezorgstatus: afleveren mislukt</string>

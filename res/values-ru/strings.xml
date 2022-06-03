@@ -463,7 +463,6 @@
     <string name="media_preview">Предпросмотр медиафайлов</string>
     <string name="send_message">Отправить сообщение</string>
 
-
     <!-- Connectivity -->
     <!-- Used as a headline for the "Inbox" eg. in the "Connectivity" view -->
     <string name="incoming_messages">Входящие сообщения</string>

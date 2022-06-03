@@ -361,7 +361,6 @@
     <string name="media_preview">メディアのプレビュー</string>
     <string name="send_message">送る</string>
 
-
     <string name="connectivity">接続性</string>
     <!-- Shown eg. in the title bar if the app is "Not connected"; as there is very few room, try to be as short as possible. -->
     <string name="connectivity_not_connected">未接続</string>

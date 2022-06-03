@@ -287,7 +287,9 @@
     <string name="videochat_tap_to_open">Açmak için Dokunun</string>
     <string name="videochat_instance">Video Sohbeti Örneği</string>
     <string name="videochat_instance_placeholder">Video Sohbeti Örneğiniz</string>
+    <string name="videochat_instance_example">Örnekler: https://meet.jit.si/$ROOM ya da basicwebrtc:https://your-server</string>
     <string name="videochat_instance_explain">Bir video sohbeti örneği tanımlanırsa, her sohbetten video sohbeti başlatabilirsiniz. Video sohbetleri, her iki uçta da uyumlu bir uygulama ya da uyumlu bir tarayıcı gerektirir.\n\nÖrnekler: https://meet.jit.si/$ROOM ya da basicwebrtc:https://your-server</string>
+    <string name="videochat_instance_explain_2">Video sohbeti etkinleştirilirse, her sohbetten video sohbeti başlatabilirsiniz. Video sohbetleri, her iki uçta da uyumlu bir uygulama ya da uyumlu bir tarayıcı gerektirir.</string>
     <string name="videochat_instance_from_qr">\"%1$s\" diğerlerini video sohbetine davet etmek için kullanılsın mı?\n\nBir kez ayarlandığında, her sohbetten video sohbeti başlatabilirsiniz. Varsa bu, video sohbetleri için önceki ayarla değiştirilir.</string>
     <string name="videochat_invitation">Video sohbeti daveti</string>
     <string name="videochat_invitation_body">Bir video sohbetine davet edildiniz; katılmak için %1$s öğesini tıklayın.</string>
@@ -368,6 +370,7 @@
     <string name="saved_messages_explain">• Kolay erişim için iletileri buraya iletin\n\n• Notlar ya da sesli notlar alın\n\n• Onları kaydetmek için ortamlar iliştirin</string>
     <!-- this "Saved" should match the "Saved" from "Saved messages" -->
     <string name="saved">Kaydedilen</string>
+    <string name="save_as">Farklı Kaydet</string>
     <string name="retry_send">İletiyi göndermeyi yeniden dene</string>
     <!-- reasons for a disabled message composer -->
     <string name="messaging_disabled_not_in_group">Yazamazsınız; çünkü bu grupta değilsiniz. Katılmak için başka bir üyeye sorun.</string>
@@ -434,9 +437,12 @@
     <string name="tab_map">Harita</string>
     <string name="tab_gallery_empty_hint">Bu sohbette paylaşılan görseller ve videolar burada görüntülenecek.</string>
     <string name="tab_docs_empty_hint">Bu sohbette paylaşılan belgeler, müzik ve diğer dosyalar burada görüntülenecek.</string>
+    <string name="tab_image_empty_hint">Bu sohbette paylaşılan görseller burada görüntülenecek.</string>
+    <string name="tab_video_empty_hint">Bu sohbette paylaşılan videolar burada görüntülenecek.</string>
+    <string name="tab_audio_empty_hint">Bu sohbette paylaşılan ses dosyaları ve sesli iletiler burada görüntülenecek.</string>
+    <string name="tab_webxdc_empty_hint">Bu sohbette paylaşılan Webxdc içeriği burada görüntülenecek.</string>
     <string name="media_preview">Ortam Önizlemesi</string>
     <string name="send_message">İleti Gönder</string>
-
 
     <!-- Connectivity -->
     <!-- Used as a headline for the "Inbox" eg. in the "Connectivity" view -->
@@ -610,6 +616,7 @@
     <string name="pref_watch_sent_folder">Gönderilen Klasörünü İzle</string>
     <string name="pref_watch_mvbox_folder">DeltaChat Klasörünü İzle</string>
     <string name="pref_send_copy_to_self">Kendime Kopya Gönder</string>
+    <string name="pref_send_copy_to_self_explain">Bu hesap çoklu aygıtlarda kullanılırken gereklidir.</string>
     <string name="pref_auto_folder_moves">DeltaChat Klasörüne Otomatik Taşınsın</string>
     <string name="pref_auto_folder_moves_explain">Sohbet görüşmeleri, Gelen Kutusu\'ndaki dağınıklığı önlemek için taşınır</string>
     <string name="pref_only_fetch_mvbox_title">Yalnızca DeltaChat Klasöründen Getir</string>
@@ -881,6 +888,15 @@
     <string name="no_spellcheck_suggestions_found">Yazım önerileri bulunamadı.</string>
     <string name="show_window">Pencereyi Göster</string>
     <string name="login_socks5_experimental_warning">SOCKS5 desteği şu anda deneysel. Lütfen riski size ait olarak kullanın. E-posta alanına bir adres yazarsanız, SOCKS5 üzerinden tünellenmeyen DNS araması olacak.</string>
+
+    <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
+    <string name="keybindings">Tuş Bağları</string>
+    <string name="switch_between_chats">Sohbetler Arasında Geçiş Yap</string>
+    <string name="scroll_messages">İletileri Kaydır</string>
+    <!-- command to put the cursor to the message input field -->
+    <string name="focus_message_input">İleti Girişine Odaklan</string>
+    <string name="force_refresh_network">Ağı Yenilemeye Zorla</string>
+    <string name="insert_newline">Yeni Satır Ekle</string>
 
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Teslimat durumu: Hata</string>

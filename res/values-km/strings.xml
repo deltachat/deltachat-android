@@ -405,7 +405,6 @@
     <string name="media_preview">ការមើលប្រព័ន្ធផ្សព្វផ្សាយជាមុន</string>
     <string name="send_message">ផ្ញើ​សារ</string>
 
-
     <!-- Connectivity -->
     <!-- Used as a headline for the "Inbox" eg. in the "Connectivity" view -->
     <string name="incoming_messages">សារចូល</string>

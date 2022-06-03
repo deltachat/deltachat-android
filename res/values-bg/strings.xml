@@ -426,7 +426,6 @@
     <string name="media_preview">Предварителен преглед на медия</string>
     <string name="send_message">Изпращане на съобщение</string>
 
-
     <!-- Connectivity -->
     <!-- Used as a headline for the "Inbox" eg. in the "Connectivity" view -->
     <string name="incoming_messages">Входящи съобщения</string>

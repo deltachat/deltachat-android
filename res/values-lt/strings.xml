@@ -384,7 +384,6 @@
     <string name="media_preview">Medijos peržiūra</string>
     <string name="send_message">Siųsti žinutę</string>
 
-
     <!-- Connectivity -->
     <!-- Used as a headline for the "Inbox" eg. in the "Connectivity" view -->
     <string name="incoming_messages">Gaunamosios žinutės</string>

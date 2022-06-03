@@ -461,7 +461,6 @@
     <string name="media_preview">Попередній перегляд медіа</string>
     <string name="send_message">Надіслати повідомлення</string>
 
-
     <!-- Connectivity -->
     <!-- Used as a headline for the "Inbox" eg. in the "Connectivity" view -->
     <string name="incoming_messages">Вхідні повідомлення</string>

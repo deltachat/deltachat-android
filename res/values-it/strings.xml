@@ -295,7 +295,9 @@
     <string name="videochat_tap_to_open">Tocca per Aprire</string>
     <string name="videochat_instance">Istanza Video Chat</string>
     <string name="videochat_instance_placeholder">La Tua Istanza Video Chat</string>
+    <string name="videochat_instance_example">Esempi: https://meet.jit.si/$ROOM o basicwebrtc:https://your-server</string>
     <string name="videochat_instance_explain">Se viene definita un\'istanza video chat, è possibile avviare una video chat da ciascuna chat uno a uno. Le video chat richiedono un\'app compatibile o un browser compatibile da entrambe le parti.\n\nEsempi: https://meet.jit.si/$ROOM o basicwebrtc:https://your-server</string>
+    <string name="videochat_instance_explain_2">Se la video chat è abilitata, è possibile avviare una video chat da ogni chat. Le video chat richiedono un\'applicazione compatibile o un browser compatibile da entrambe le parti.</string>
     <string name="videochat_instance_from_qr">Utilizzare \"%1$s\" per invitare altri alla video chat?\n\nUna volta impostato, è possibile avviare una video chat da ogni chat uno a uno. Ciò sostituirà l\'eventuale impostazione precedente per le video chat.</string>
     <string name="videochat_invitation">Invito alla video chat</string>
     <string name="videochat_invitation_body">Sei invitato a una video chat, fai clic %1$s per partecipare.</string>
@@ -382,6 +384,7 @@
     <string name="saved_messages_explain">• Inoltra i messaggi per trovarli facilmente\n\n• Memorizza note scritte o vocali\n\n• Allega oggetti per salvarli</string>
     <!-- this "Saved" should match the "Saved" from "Saved messages" -->
     <string name="saved">Salvato</string>
+    <string name="save_as">Salva Con Nome</string>
     <string name="retry_send">Riprova l\'invio del messaggio</string>
     <!-- reasons for a disabled message composer -->
     <string name="messaging_disabled_not_in_group">Non puoi scrivere perché non sei in questo gruppo. Per partecipare, chiedi ad un altro membro.</string>
@@ -448,9 +451,12 @@
     <string name="tab_map">Mappa</string>
     <string name="tab_gallery_empty_hint">Immagini e video condivisi in questa chat vengono mostrati qui.</string>
     <string name="tab_docs_empty_hint">Documenti, musica e altri file condivisi in questa chat vengono mostrati qui.</string>
+    <string name="tab_image_empty_hint">Le immagini condivise in questa chat saranno visualizzate qui.</string>
+    <string name="tab_video_empty_hint">I video condivisi in questa chat saranno visualizzati qui.</string>
+    <string name="tab_audio_empty_hint">I File Audio e i Messaggi Vocali condivisi in questa chat saranno visualizzati qui.</string>
+    <string name="tab_webxdc_empty_hint">I contenuti Webxdc condivisi in questa chat saranno visualizzati qui.</string>
     <string name="media_preview">Anteprima dei Media</string>
     <string name="send_message">Invia Messaggio</string>
-
 
     <!-- Connectivity -->
     <!-- Used as a headline for the "Inbox" eg. in the "Connectivity" view -->
@@ -624,6 +630,7 @@
     <string name="pref_watch_sent_folder">Controlla Cartella Inviata</string>
     <string name="pref_watch_mvbox_folder">Controlla Cartella DeltaChat</string>
     <string name="pref_send_copy_to_self">Auto-invia Copia</string>
+    <string name="pref_send_copy_to_self_explain">Richiesto quando si utilizza questo account su più dispositivi.</string>
     <string name="pref_auto_folder_moves">Sposta nella Cartella DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">Le chat vengono spostate per evitare di riempire la cartella In Arrivo</string>
     <string name="pref_only_fetch_mvbox_title">Recupera dalla Cartella DeltaChat</string>
@@ -895,6 +902,15 @@
     <string name="no_spellcheck_suggestions_found">Nessun suggerimento ortografico trovato.</string>
     <string name="show_window">Mostra Finestra</string>
     <string name="login_socks5_experimental_warning">Il supporto SOCKS5 è attualmente sperimentale. Usatelo a vostro rischio e pericolo. Se si digita un indirizzo nel campo e-mail, ci sarà una ricerca DNS che non verrà trasferita tramite SOCKS5.</string>
+
+    <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
+    <string name="keybindings">Scorciatoie Tastiera</string>
+    <string name="switch_between_chats">Passa da una Chat all\'altra</string>
+    <string name="scroll_messages">Scorri i Messaggi</string>
+    <!-- command to put the cursor to the message input field -->
+    <string name="focus_message_input">Focalizzazione Inserimento Messaggio</string>
+    <string name="force_refresh_network">Forza Aggiornamento Rete</string>
+    <string name="insert_newline">Inserisci Nuova Riga</string>
 
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Stato di consegna: Errore</string>
