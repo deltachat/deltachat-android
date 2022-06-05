@@ -8,8 +8,8 @@
     android:focusable="true"
     android:gravity="center"
     android:orientation="vertical"
-    android:paddingTop="13dp"
-    android:paddingBottom="13dp"
+    android:paddingTop="5dp"
+    android:paddingBottom="7dp"
     android:paddingLeft="28dp"
     android:paddingRight="28dp">
 
