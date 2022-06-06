@@ -876,9 +876,11 @@
     <string name="login_socks5_experimental_warning">SOCKS5 支持目前还处于试验阶段。请自行承担使用风险。如果您在电子邮件字段中输入一个地址，会有不流经 SOCKS5 隧道的 DNS 查找流量。</string>
 
     <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
-    <string name="keybindings">密钥绑定</string>
+    <string name="keybindings">按键绑定</string>
     <string name="switch_between_chats">在不同聊天间切换</string>
     <string name="scroll_messages">滚动消息</string>
+    <!-- command to put the cursor to the search input field -->
+    <string name="focus_search_input">聚焦搜索</string>
     <!-- command to put the cursor to the message input field -->
     <string name="focus_message_input">聚焦消息输入</string>
     <string name="force_refresh_network">强制刷新网络</string>

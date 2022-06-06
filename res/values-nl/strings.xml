@@ -893,6 +893,8 @@
     <string name="keybindings">Sneltoetsen</string>
     <string name="switch_between_chats">Wisselen van gesprek</string>
     <string name="scroll_messages">Scrollen door berichten</string>
+    <!-- command to put the cursor to the search input field -->
+    <string name="focus_search_input">Zoekbalk focussen</string>
     <!-- command to put the cursor to the message input field -->
     <string name="focus_message_input">Invoerveld focussen</string>
     <string name="force_refresh_network">Netwerk gedwongen vernieuwen</string>

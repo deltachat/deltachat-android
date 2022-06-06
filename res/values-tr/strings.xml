@@ -655,7 +655,7 @@
     <string name="emoji_search_results">Arama Sonuçları</string>
     <string name="emoji_not_found">Emoji bulunamadı</string>
     <string name="emoji_recent">Son Kullanılan</string>
-    <string name="emoji_people">İnsanlar &amp; Gövde</string>
+    <string name="emoji_people">İnsanlar &amp; Beden</string>
     <string name="emoji_nature">Hayvanlar &amp; Doğa</string>
     <string name="emoji_foods">Yiyecek &amp; İçecek</string>
     <string name="emoji_activity">Etkinlik</string>
@@ -785,7 +785,7 @@
     <string name="qraccount_ask_create_and_login_another">\"%1$s\" üzerinde yeni e-posta adresi oluşturulsun ve oturum açılsın mı?\n\nVarolan hesabınız silinmeyecek. Hesaplarınız arasında geçiş yapmak için \"Hesap değiştir\" öğesini kullanın.</string>
     <string name="qraccount_success_enter_name">Oturum açma başarılı—e-posta adresiniz %1$s\n\nİsterseniz şimdi yazdığınız insanlara görüntülenecek bir ad ve bir profil görseli girebilirsiniz.</string>
     <string name="qraccount_qr_code_cannot_be_used">Taranan QR kodu, yeni bir hesap ayarlamak için kullanılamıyor.</string>
-    <string name="qraccount_use_on_new_install">Taranan QR kodu, yeni bir hesap ayarlamak içindir. QR kodu yeni bir Delta Chat kurulumu ayarlanırken tarayabilirsiniz.</string>
+    <string name="qraccount_use_on_new_install">Taranan QR kodu, yeni bir hesap ayarlamak içindir. QR kodunu yeni bir Delta Chat kurulumu ayarlanırken tarayabilirsiniz.</string>
     <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s sizi bu gruba katılmaya davet etti.\n\n%2$s kişisinin aygıtının yanıt vermesi bekleniyor…</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
@@ -836,7 +836,7 @@
 
     <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
     <string name="about_offical_app_desktop">Bu, resmî Delta Chat Masaüstü uygulamasıdır.</string>
-    <string name="about_licensed_under_desktop">Bu yazılım, GNU GPL sürüm 3 altında lisanslıdır ve kaynak kod GitHub\'da kullanılabilir.</string>
+    <string name="about_licensed_under_desktop">Bu yazılım, GNU GPL sürüm 3 altında lisanslıdır ve kaynak kodu GitHub\'da kullanılabilir.</string>
     <string name="welcome_desktop">Delta Chat\'e hoş geldiniz</string>
     <string name="login_known_accounts_title_desktop">Bilinen Hesaplar</string>
     <string name="global_menu_preferences_language_desktop">Dil</string>
@@ -893,6 +893,8 @@
     <string name="keybindings">Tuş Bağları</string>
     <string name="switch_between_chats">Sohbetler Arasında Geçiş Yap</string>
     <string name="scroll_messages">İletileri Kaydır</string>
+    <!-- command to put the cursor to the search input field -->
+    <string name="focus_search_input">Aramaya Odaklan</string>
     <!-- command to put the cursor to the message input field -->
     <string name="focus_message_input">İleti Girişine Odaklan</string>
     <string name="force_refresh_network">Ağı Yenilemeye Zorla</string>

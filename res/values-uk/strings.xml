@@ -31,6 +31,8 @@
     <string name="back">Назад</string>
     <string name="close">Закрити</string>
     <string name="forward">Переслати</string>
+    <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
+    <string name="resend">Відправити знову</string>
     <!-- In the meaning of "To archive", "Put a chat to the archive". This string does not mean "The Archive". -->
     <string name="archive">Архівувати</string>
     <!-- In the meaning of "To unarchive", "Remove a chat from the archive", opposite of the previous string -->
@@ -270,6 +272,8 @@
     <string name="unpin">Відкрипити</string>
     <string name="ConversationFragment_quoted_message_not_found">Первісне повідомлення не знайдено</string>
     <string name="reply_privately">Відповісти приватно</string>
+    <string name="source_code">Вихідний код</string>
+
     <string name="mute_for_one_hour">Відключити сповіщення на 1 годину</string>
     <string name="mute_for_two_hours">Відключити сповіщення на 2 години</string>
     <string name="mute_for_one_day">Відключити сповіщення на 1 день</string>
@@ -299,7 +303,9 @@
     <string name="videochat_tap_to_open">Торкніться щоб відкрити</string>
     <string name="videochat_instance">Відео чат</string>
     <string name="videochat_instance_placeholder">Ваш відео чат</string>
+    <string name="videochat_instance_example">Приклади: https://meet.jit.si/$ROOM або basicwebrtc:https://your-server</string>
     <string name="videochat_instance_explain">Якщо визначено екземпляр відеочату, ви можете розпочати відеочат із кожного індивідуального чату. Для відеочату потрібен сумісний додаток або сумісний браузер з обох кінців.\n\nПриклади: https://meet.jit.si/$ROOM або basicwebrtc:https://your-server</string>
+    <string name="videochat_instance_explain_2">Якщо визначено екземпляр відеочату, ви можете розпочати відеочат із кожного індивідуального чату. Для відеочату потрібен сумісний додаток або сумісний браузер з обох кінців.</string>
     <string name="videochat_instance_from_qr">Використовуйте \"%1$s\" аби запросити інших у відеочат?\n\nПісля встановлення ви можете розпочати відеочат із кожного індивідуального чату. Це замінить попереднє налаштування для відеочату, якщо воно є.</string>
     <string name="videochat_invitation">Запрошення до відео чату</string>
     <string name="videochat_invitation_body">Вас запрошено у відео-чат, клікніть %1$s аби приєднатися.</string>
@@ -392,6 +398,7 @@
     <string name="saved_messages_explain">• Пересилайте повідомлення сюди для швидкого доступу\n\n• Робіть нотатки або голосові нагадування\n\n• Вкладайте медіа для збереження</string>
     <!-- this "Saved" should match the "Saved" from "Saved messages" -->
     <string name="saved">Збережені</string>
+    <string name="save_as">Зберегти як</string>
     <string name="retry_send">Спробувати надіслати повідомлення ще раз</string>
     <!-- reasons for a disabled message composer -->
     <string name="messaging_disabled_not_in_group">Ви не можете тут писати, бо ви не в цій групі. Запитайте іншого члена групи про приєднання.</string>
@@ -458,6 +465,10 @@
     <string name="tab_map">Карта</string>
     <string name="tab_gallery_empty_hint">Зображення та відео, якими поділилися у цьому чаті, будуть відображатися тут.</string>
     <string name="tab_docs_empty_hint">Документи, музика та інші файли, якими поділилися у цьому чаті, будуть відображатися тут.</string>
+    <string name="tab_image_empty_hint">Зображення, якими поділилися у цьому чаті, будуть відображатися тут.</string>
+    <string name="tab_video_empty_hint">Відео, якими поділилися у цьому чаті, будуть відображатися тут.</string>
+    <string name="tab_audio_empty_hint">Аудіозаписи, якими поділилися у цьому чаті, будуть відображатися тут.</string>
+    <string name="tab_webxdc_empty_hint">Webxdc-контент, яким поділилися у цьому чаті, буде відображатися тут.</string>
     <string name="media_preview">Попередній перегляд медіа</string>
     <string name="send_message">Надіслати повідомлення</string>
 
@@ -486,6 +497,9 @@
     <string name="part_of_total_used">Використано %1$s з %2$s</string>
 
 
+    <!-- welcome and login -->
+    <string name="welcome_chat_over_email">Чат через електронну пошту.</string>
+    <string name="scan_invitation_code">Сканувати код запрошення</string>
     <string name="welcome_intro1_message">Мессенджер з найширшою аудиторією у світі. Безкоштовний і незалежний.</string>
     <string name="login_title">Увійти</string>
     <string name="login_header">Увійти на свій сервер</string>
@@ -630,6 +644,7 @@
     <string name="pref_watch_sent_folder">Стежити за папкою «Надіслані»</string>
     <string name="pref_watch_mvbox_folder">Стежити за папкою DeltaChat</string>
     <string name="pref_send_copy_to_self">Відправити копію собі</string>
+    <string name="pref_send_copy_to_self_explain">Обов’язковий при використанні цього облікового запису на кількох пристроях.</string>
     <string name="pref_auto_folder_moves">Автоматично пересувати до папки DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">Чати були переміщені, щоб уникнути плутанини у папці «Вхідні».</string>
     <string name="pref_only_fetch_mvbox_title">Збирати лише з теки DeltaChat.</string>
@@ -902,6 +917,17 @@
     <string name="show_window">Показати вікно</string>
     <string name="login_socks5_experimental_warning">Підтримка SOCKS5 наразі експериментальна. Використовуйте її на власний ризик. Якщо ви введете адресу в поле \"e-mail\", буде здійснено запит до DNS який не буде тунельовано через SOCKS5.</string>
 
+    <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
+    <string name="keybindings">Прив\'язки клавіш</string>
+    <string name="switch_between_chats">Переключитися між чатами</string>
+    <string name="scroll_messages">Прокрутити повідомлення</string>
+    <!-- command to put the cursor to the search input field -->
+    <string name="focus_search_input">Сфокусуватись на пошуку</string>
+    <!-- command to put the cursor to the message input field -->
+    <string name="focus_message_input">Сфокусуватись на вводі повідомлення</string>
+    <string name="force_refresh_network">Примусове оновлення мережі</string>
+    <string name="insert_newline">Вставити новий рядок</string>
+
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Статус доставки: Помилка</string>
     <string name="a11y_encryption_padlock">Замок шифрування</string>
@@ -914,9 +940,33 @@
     <string name="a11y_background_preview_label">Попередній перегляд фону</string>
     <string name="a11y_disappearing_messages_activated">Активовано зникнення повідомлень</string>
 
+    <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
+    <string name="stop_sharing_location">Припинити надсилати геодані</string>
+    <string name="a11y_voice_message_hint_ios">Після запису двічі торкніться, щоб надіслати. Щоб викинути запис потріть двома пальцями.</string>
+    <string name="a11y_connectivity_hint">Двічі торкніться, щоб переглянути деталі підключення.</string>
+    <string name="login_error_no_internet_connection">Немає підключення до Інтернету, не вдалося ввійти.</string>
+    <string name="share_account_not_configured">Обліковий запис не налаштовано.</string>
+    <string name="cannot_play_audio_file">Неможливо відтворити аудіофайл.</string>
+    <!-- iOS camera permission alert -->
+    <string name="perm_ios_explain_access_to_camera_denied">Щоб фотографувати, знімати відео або використовувати сканер QR-коду, відкрийте налаштування системи та ввімкніть камеру.</string>
+    <string name="open_settings">Відкрити налаштування</string>
+    <!-- iOS device contact alert -->
+    <string name="import_device_contacts">Імпорт контактів з пристрою</string>
+    <string name="import_device_contacts_hint">Щоб спілкуватися з контактами зі свого пристрою, відкрийте «Налаштування» та ввімкніть «Контакти».</string>
+    <!-- iOS notification settings -->
+    <string name="disabled_in_dc">Вимкнено в Delta Chat</string>
+    <string name="disabled_in_system_settings">Вимкнено в налаштуваннях системи</string>
+    <string name="bg_app_refresh_disabled">«Фонове оновлення додатка» вимкнено в налаштуваннях системи</string>
+    <!-- iOS connectivity view -->
+    <string name="delayed">Запізнюється</string>
+    <string name="notifications_avg_minutes">В середньому %1$d хвилин</string>
+    <string name="notifications_avg_hours">В середньому %1$d годин</string>
+    <string name="last_check_at">Перевірено о %1$s</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat використовує вашу камеру для знімання та надсилання фото та відео, а також для сканування QR-кодів.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat використовує ваші контакти аби показати список адрес ел.пошти на які ви можете написати. Delta Chat не має сервера, тож ваші контакти нікуди не надсилаються.</string>
+    <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">Delta Chat потребує дозволу на доступ до геоданих щоб ділитися вашим місцезнаходженням на протязі часу який ви встановили в налаштуваннях місцезнаходження.</string>
+    <string name="InfoPlist_NSLocationWhenInUseUsageDescription">Delta Chat потребує дозволу на доступ до геоданих щоб ділитися вашим місцезнаходженням на протязі часу який ви встановили в налаштуваннях місцезнаходження.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat використовує ваш мікрофон для запису і надсилання голосових повідомлень та відео зі звуком.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat дасть вам обрати які фото з вашої бібліотеки надіслати.</string>
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat хоче зберігати зображення у вашу фото-бібліотеку.</string>
@@ -936,4 +986,6 @@
     <!-- device messages for updates -->
     <string name="update_1_28_android">Основні моменти версії 1.28:\n\n🔒 Шифрування: новий експериментальний варіант для збереження ваших контактів, секретів шифрування та текстових повідомлень у зашифрованому вигляді на вашому пристрої. Доступно лише під час створення облікового запису та імпортування файлів резервної копії.\n\n📫 Списки розсилки\n\n💫 Швидше початкове налаштування для більшої кількості серверів електронної пошти та спрощених мережевих параметрів, щоб запобігти випадковому неправильному налаштуванню\n\n🐜 Виправлено багаааааато помилок, про які повідомляли користувачі</string>
     <string name="update_1_28_ios_extra_line">... і тепер ви можете обрати шпалери у \"Налаштування/Фон\":) </string>
-    </resources>
+    <string name="update_1_30">Швидший. Стабільніший.\n\nДля релізів 1.30, ми зосередилися на швидкості та надійності, виправивши десятки помилок. Перегляньте наші журнали змін: https://get.delta.chat/#changelogs 🚀</string>
+
+</resources>
