@@ -1,5 +1,23 @@
 # Delta Chat Android Changelog
 
+## v1.30.3
+2022-06
+
+* cleanup series of webxdc-info-messages
+* fix: make chat names always searchable
+* fix: do not reset database if backup cannot be decrypted
+* fix: do not add legacy info-messages on resending webxdc
+* fix: webxdc "back" button always closes webxdc
+* fix: let "Only Fetch from DeltaChat Folder" ignore other folders
+* fix: Autocrypt Setup Messages updates own key immediately
+* fix: do not skip Sent and Spam folders on gmail
+* fix: cleanup read-receipts saved by gmail to the Sent folder
+* fix: handle decryption errors explicitly and don't get confused by encrypted mail attachments
+* update provider datanase, add hermes.radio subdomains
+* update translations
+* update to core86
+
+
 ## v1.30.2
 2022-05
 
