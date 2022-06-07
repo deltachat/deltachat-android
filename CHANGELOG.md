@@ -13,7 +13,7 @@
 * fix: do not skip Sent and Spam folders on gmail
 * fix: cleanup read-receipts saved by gmail to the Sent folder
 * fix: handle decryption errors explicitly and don't get confused by encrypted mail attachments
-* update provider datanase, add hermes.radio subdomains
+* update provider database, add hermes.radio subdomains
 * update translations
 * update to core86
 
