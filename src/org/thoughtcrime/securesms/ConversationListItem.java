@@ -278,7 +278,7 @@ public class ConversationListItem extends RelativeLayout
         unreadIndicator.setVisibility(View.VISIBLE);
       }
 
-      if (state == DcMsg.DC_STATE_OUT_ERROR) {
+      if (state == DcMsg.DC_STATE_OUT_FAILED) {
         deliveryStatusIndicator.setFailed();
       } else if (state == DcMsg.DC_STATE_OUT_MDN_RCVD) {
         deliveryStatusIndicator.setRead();
@@ -292,7 +292,7 @@ public class ConversationListItem extends RelativeLayout
         deliveryStatusIndicator.setNone();
       }
 
-      if (state == DcMsg.DC_STATE_OUT_ERROR) {
+      if (state == DcMsg.DC_STATE_OUT_FAILED) {
         deliveryStatusIndicator.setTint(Color.RED);
       } else {
         deliveryStatusIndicator.resetTint();
