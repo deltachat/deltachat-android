@@ -1,6 +1,5 @@
 package com.b44t.messenger;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
@@ -27,7 +26,7 @@ public class DcMsg {
     public final static int DC_STATE_OUT_PREPARING = 18;
     public final static int DC_STATE_OUT_DRAFT = 19;
     public final static int DC_STATE_OUT_PENDING = 20;
-    public final static int DC_STATE_OUT_ERROR = 24;
+    public final static int DC_STATE_OUT_FAILED = 24;
     public final static int DC_STATE_OUT_DELIVERED = 26;
     public final static int DC_STATE_OUT_MDN_RCVD = 28;
 
@@ -197,7 +196,7 @@ public class DcMsg {
     }
 
     public boolean isFailed() {
-        return getState() == DC_STATE_OUT_ERROR;
+        return getState() == DC_STATE_OUT_FAILED;
     }
     public boolean isPreparing() {
         return getState() == DC_STATE_OUT_PREPARING;
