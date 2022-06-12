@@ -142,29 +142,22 @@ cd ..
 # Set the right arch in Application.mk:
 oldDotMk="$(cat Application.mk)"
 
+TMP=$(mktemp)
 if test $1; then
-    # Using temporary file because `sed -i` is not portable
-    TMP=$(mktemp)
     sed "s/APP_ABI.*/APP_ABI := $1/g" Application.mk >"$TMP"
-    mv "$TMP" Application.mk
 else
     # We are compiling for all architectures:
-    TMP=$(mktemp)
     sed "s/APP_ABI.*/APP_ABI := armeabi-v7a arm64-v8a x86 x86_64/g" Application.mk >"$TMP"
-    mv "$TMP" Application.mk
 fi
 
 cd ..
-ndk-build
-
-cd jni
-# Restore old Application.mk:
-echo "$oldDotMk" > Application.mk
+ndk-build NDK_APPLICATION_MK=$TMP
+rm "$TMP"
 
 if test $1; then
-    echo "NDK_ARCH=$1" > ../ndkArch
+    echo "NDK_ARCH=$1" >ndkArch
 else
-    rm ../ndkArch 2>/dev/null || true # Remove ndkArch, ignore if it doesn't exist
+    rm -f ndkArch # Remove ndkArch, ignore if it doesn't exist
 fi
 
 echo "ending time: `date`"
