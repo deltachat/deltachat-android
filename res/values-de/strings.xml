@@ -120,6 +120,11 @@
         <item quantity="one">%d Empfänger</item>
         <item quantity="other">%d Empfänger</item>
     </plurals>
+    <!-- short title, used for "N Chats Selected" or "N Messages Selected", however, requires a shorter form, eg. "N Selected" in english -->
+    <plurals name="n_selected">
+        <item quantity="one">%d ausgewählt</item>
+        <item quantity="other">%d ausgewählt</item>
+    </plurals>
 
     <string name="self">Ich</string>
     <string name="draft">Entwurf</string>

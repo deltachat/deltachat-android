@@ -134,7 +134,6 @@
         <item quantity="many">%d одержувачів</item>
         <item quantity="other">%d одержувачів</item>
     </plurals>
-
     <string name="self">Мої</string>
     <string name="draft">Чернетка</string>
     <string name="image">Зображення</string>

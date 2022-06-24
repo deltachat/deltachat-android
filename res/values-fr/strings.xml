@@ -127,7 +127,6 @@
         <item quantity="many">%d destinataires</item>
         <item quantity="other">%d destinataires</item>
     </plurals>
-
     <string name="self">Moi</string>
     <string name="draft">Brouillon</string>
     <string name="image">Image</string>

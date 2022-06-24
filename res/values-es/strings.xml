@@ -127,7 +127,6 @@
         <item quantity="many">%d destinatarios</item>
         <item quantity="other">%d destinatarios</item>
     </plurals>
-
     <string name="self">Yo</string>
     <string name="draft">Borrador</string>
     <string name="image">Imagen</string>

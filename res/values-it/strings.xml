@@ -127,7 +127,6 @@
         <item quantity="many">%d destinatari</item>
         <item quantity="other">%d destinatari</item>
     </plurals>
-
     <string name="self">Io</string>
     <string name="draft">Bozza</string>
     <string name="image">Immagine</string>
@@ -907,6 +906,8 @@
     <string name="keybindings">Scorciatoie Tastiera</string>
     <string name="switch_between_chats">Passa da una Chat all\'altra</string>
     <string name="scroll_messages">Scorri i Messaggi</string>
+    <!-- command to put the cursor to the search input field -->
+    <string name="focus_search_input">Ricerca Focalizzata</string>
     <!-- command to put the cursor to the message input field -->
     <string name="focus_message_input">Focalizzazione Inserimento Messaggio</string>
     <string name="force_refresh_network">Forza Aggiornamento Rete</string>
@@ -970,6 +971,6 @@
     <!-- device messages for updates -->
     <string name="update_1_28_android">1.28 In evidenza:\n\n🔒 Crittografia: Una nuova opzione sperimentale per mantenere i contatti, le chiavi crittografiche e i messaggi di testo crittografati sul tuo dispositivo. Disponibile solo per la creazione di account e l\'importazione di file di backup.\n\n📫 Scrivi nella mailing list\n\n💫 Configurazione iniziale più rapida per più server di posta elettronica e opzioni di rete semplificate per prevenire configurazioni errate accidentali\n\n🐜 Moooooolti problemi riportati dagli utenti risolti</string>
     <string name="update_1_28_ios_extra_line">... e ora puoi selezionare uno sfondo in \"Impostazioni / Sfondo\" :)</string>
-    <string name="update_1_30">Più veloce. Più stabile.\n\nPer la versione 1.30 abbiamo puntato su velocità e affidabilità, risolvendo decine di problemi. Controlla nei nostri elenchi delle modifiche se il tuo preferito è risolto:https://get.delta.chat/#changelogs 🚀</string>
+    <string name="update_1_30">Più veloce. Più stabile.\n\nPer la versione 1.30 abbiamo puntato su velocità e affidabilità, risolvendo decine di problemi. Controlla nei nostri elenchi delle modifiche se il tuo preferito è risolto: https://get.delta.chat/#changelogs 🚀</string>
 
 </resources>

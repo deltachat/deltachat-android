@@ -118,7 +118,6 @@
         <item quantity="one">%d получател</item>
         <item quantity="other">%d получателя</item>
     </plurals>
-
     <string name="self">Аз</string>
     <string name="draft">Чернова</string>
     <string name="image">Изображение</string>

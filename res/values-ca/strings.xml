@@ -115,7 +115,6 @@
         <item quantity="one">%d destinatari</item>
         <item quantity="other">%d destinataris</item>
     </plurals>
-
     <string name="self">Jo</string>
     <string name="draft">Esborrany</string>
     <string name="image">Imatge</string>

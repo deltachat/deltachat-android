@@ -120,7 +120,6 @@
         <item quantity="one">%d correspondente</item>
         <item quantity="other">%d correspondentes</item>
     </plurals>
-
     <string name="self">Eu</string>
     <string name="draft">Borrador</string>
     <string name="image">Imaxe</string>

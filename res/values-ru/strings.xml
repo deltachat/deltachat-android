@@ -134,7 +134,6 @@
         <item quantity="many">%d получателей</item>
         <item quantity="other">%d получателей</item>
     </plurals>
-
     <string name="self">Я</string>
     <string name="draft">Черновик</string>
     <string name="image">Изображение</string>
@@ -272,6 +271,8 @@
     <string name="unpin">Открепить</string>
     <string name="ConversationFragment_quoted_message_not_found">Оригинальное сообщение не найдено</string>
     <string name="reply_privately">Ответить лично</string>
+    <string name="source_code">Исходный код</string>
+
     <string name="mute_for_one_hour">1 час</string>
     <string name="mute_for_two_hours">На 2 часа</string>
     <string name="mute_for_one_day">На 1 день</string>
@@ -301,7 +302,9 @@
     <string name="videochat_tap_to_open">Нажмите, чтобы открыть.</string>
     <string name="videochat_instance">Инстанс видеочатов</string>
     <string name="videochat_instance_placeholder">Ваш инстанс видеочатов</string>
+    <string name="videochat_instance_example">Примеры: https://meet.jit.si/$ROOM или basicwebrtc:https://your-server</string>
     <string name="videochat_instance_explain">Если инстанс видеочатов определён, вы можете начинать видеочат из каждого чата. Видеочаты требуют совместимого приложения или совместимого браузера на обоих концах.\n\nПримеры: https://meet.jit.si/$ROOM или basicwebrtc:https://your-server</string>
+    <string name="videochat_instance_explain_2">Если видеочат включён, вы можете начать его из любого чата. Для видеочата требуется совместимое приложение или совместимый браузер у обоих участников.</string>
     <string name="videochat_instance_from_qr">Использовать \"%1$s\" чтобы приглашать других в видеочаты?\n\nНастроив один раз, вы можете начинать видеочат из каждого чата. Это заменит предыдущие настройки видеочатов, если они были.</string>
     <string name="videochat_invitation">Приглашение в видеочат</string>
     <string name="videochat_invitation_body">Вы приглашены в видеочат, нажмите %1$s, чтобы присоединиться.</string>
@@ -394,6 +397,7 @@
     <string name="saved_messages_explain">• Пересылайте сообщения сюда для быстрого доступа\n\n• Делайте текстовые или голосовые заметки\n\n• Прикрепляйте медиафайлы, чтобы сохранить их</string>
     <!-- this "Saved" should match the "Saved" from "Saved messages" -->
     <string name="saved">Сохранено</string>
+    <string name="save_as">Сохранить как…</string>
     <string name="retry_send">Повторить отправку сообщения</string>
     <!-- reasons for a disabled message composer -->
     <string name="messaging_disabled_not_in_group">Вы не можете писать, потому что вы не в этой группе. Чтобы присоединиться, попросите другого участника.</string>
@@ -460,6 +464,10 @@
     <string name="tab_map">Карта</string>
     <string name="tab_gallery_empty_hint">Здесь будут отображены совместные фото и видео файлы которыми поделились в этом чате.</string>
     <string name="tab_docs_empty_hint">Здесь будут отображены совместные документы, музыка и другие файлы которыми поделились в этом чате.</string>
+    <string name="tab_image_empty_hint">Изображения, размещённые в этом чате, будут отображаться здесь.</string>
+    <string name="tab_video_empty_hint">Видео, размещённые в этом чате, будут отображаться здесь.</string>
+    <string name="tab_audio_empty_hint">Аудиофайлы и голосовые сообщения, размещённые в этом чате, будут отображаться здесь.</string>
+    <string name="tab_webxdc_empty_hint">Содержимое Webxdc, размещённое в этом чате, будет отображаться здесь.</string>
     <string name="media_preview">Предпросмотр медиафайлов</string>
     <string name="send_message">Отправить сообщение</string>
 
@@ -635,6 +643,7 @@
     <string name="pref_watch_sent_folder">Следить за папкой Исходящие</string>
     <string name="pref_watch_mvbox_folder">Следить за папкой DeltaChat</string>
     <string name="pref_send_copy_to_self">Отправлять копию себе</string>
+    <string name="pref_send_copy_to_self_explain">Требуется при использовании этого аккаунта на нескольких устройствах.</string>
     <string name="pref_auto_folder_moves">Автоматически Перемещать в папку DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">Сообщения чатов переносятся, чтобы избежать путаницы в папке «Входящие»</string>
     <string name="pref_only_fetch_mvbox_title">Загружать только из папки DeltaChat</string>
@@ -907,6 +916,17 @@
     <string name="show_window">Показать Окно</string>
     <string name="login_socks5_experimental_warning">Поддержка SOCKS5 в настоящее время экспериментальная. Используйте на свой риск. Если вы введете адрес электронной почты, DNS-запросы, которые не туннелируются через SOCKS5, не будут произведены.</string>
 
+    <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
+    <string name="keybindings">Привязка кнопок</string>
+    <string name="switch_between_chats">Переключение между чатами</string>
+    <string name="scroll_messages">Прокрутка сообщений</string>
+    <!-- command to put the cursor to the search input field -->
+    <string name="focus_search_input">Фокус на поиск</string>
+    <!-- command to put the cursor to the message input field -->
+    <string name="focus_message_input">Фокус на ввод сообщения</string>
+    <string name="force_refresh_network">Принудительное обновление сети</string>
+    <string name="insert_newline">Вставить новую строку</string>
+
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Статус доставки: Ошибка</string>
     <string name="a11y_encryption_padlock">Значок шифрования</string>
@@ -944,6 +964,8 @@
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat использует вашу камеру для фото и видео съёмки и сканирования QR-кодов.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat использует ваши контакты для просмотра имеющихся у них адресов электронной почты, которым вы можете написать. Delta Chat не имеет сервера, ваши контакты никуда не будут отправлены.</string>
+    <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">Delta Chat требует разрешения на определение местоположения, чтобы делиться их в течение разрешённого вами времени.</string>
+    <string name="InfoPlist_NSLocationWhenInUseUsageDescription">Delta Chat требует разрешения на определение местоположения, чтобы делиться их в течение разрешённого вами времени.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat использует микрофон для записи и отправки голосовых сообщений а также видео со звуком.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat предоставит вам возможность выбирать какие фотографии и из какой галереи отправлять.</string>
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat хочет сохранить изображения в вашу галерею.</string>

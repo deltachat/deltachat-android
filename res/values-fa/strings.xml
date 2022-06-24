@@ -118,7 +118,6 @@
         <item quantity="one">%d گیرنده</item>
         <item quantity="other">%d گیرنده‌ </item>
     </plurals>
-
     <string name="self">من</string>
     <string name="draft">پیش‌نویس</string>
     <string name="image">تصویر</string>

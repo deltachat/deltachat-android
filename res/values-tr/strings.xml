@@ -120,7 +120,6 @@
         <item quantity="one">%d alıcı</item>
         <item quantity="other">%d alıcı</item>
     </plurals>
-
     <string name="self">Ben</string>
     <string name="draft">Taslak</string>
     <string name="image">Görsel</string>

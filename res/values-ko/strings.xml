@@ -107,7 +107,6 @@
     <plurals name="n_recipients">
         <item quantity="other">%d 수신자</item>
     </plurals>
-
     <string name="self">나</string>
     <string name="draft">임시 저장</string>
     <string name="image">이미지</string>

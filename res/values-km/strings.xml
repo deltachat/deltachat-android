@@ -108,7 +108,6 @@
     <plurals name="n_recipients">
         <item quantity="other">%d អ្នកទទួល</item>
     </plurals>
-
     <string name="self">ខ្ញុំ</string>
     <string name="draft">ពង្រាង</string>
     <string name="image">រូបភាព</string>

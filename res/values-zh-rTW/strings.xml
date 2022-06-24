@@ -111,7 +111,6 @@
     <plurals name="n_recipients">
         <item quantity="other">%d位對象</item>
     </plurals>
-
     <string name="self">我</string>
     <string name="draft">草稿</string>
     <string name="image">圖片</string>

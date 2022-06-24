@@ -120,7 +120,6 @@
         <item quantity="one">%d marrës</item>
         <item quantity="other">%d marrës</item>
     </plurals>
-
     <string name="self">Unë</string>
     <string name="draft">Skicë</string>
     <string name="image">Figurë</string>

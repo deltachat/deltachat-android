@@ -113,7 +113,6 @@
     <plurals name="n_recipients">
         <item quantity="other">%d 名收信人 </item>
     </plurals>
-
     <string name="self">我</string>
     <string name="draft">草稿</string>
     <string name="image">图像</string>

@@ -120,7 +120,6 @@
         <item quantity="one">%d ontvanger</item>
         <item quantity="other">%d ontvangers</item>
     </plurals>
-
     <string name="self">Ik</string>
     <string name="draft">Concept</string>
     <string name="image">Afbeelding</string>

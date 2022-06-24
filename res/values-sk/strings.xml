@@ -134,7 +134,6 @@
         <item quantity="many">%d príjemcovia</item>
         <item quantity="other">%d príjemcovia</item>
     </plurals>
-
     <string name="self">Ja</string>
     <string name="draft">Návrh</string>
     <string name="image">Obrázok</string>

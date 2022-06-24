@@ -124,9 +124,9 @@
     </plurals>
     <plurals name="n_members">
         <item quantity="one">%d członek</item>
-        <item quantity="few">%dczłonków </item>
-        <item quantity="many">%dczłonków</item>
-        <item quantity="other">%dczłonka</item>
+        <item quantity="few">%d członków </item>
+        <item quantity="many">%d członków</item>
+        <item quantity="other">%d członków</item>
     </plurals>
     <plurals name="n_recipients">
         <item quantity="one">%d odbiorca</item>
@@ -134,7 +134,6 @@
         <item quantity="many">%d odbiorców</item>
         <item quantity="other">%d odbiorcy</item>
     </plurals>
-
     <string name="self">Ja</string>
     <string name="draft">Szkic</string>
     <string name="image">Obraz</string>
@@ -272,6 +271,8 @@
     <string name="unpin">Odepnij</string>
     <string name="ConversationFragment_quoted_message_not_found">Nie znaleziono oryginalnej wiadomości</string>
     <string name="reply_privately">Odpowiedz prywatnie </string>
+    <string name="source_code">Kod źródłowy</string>
+
     <string name="mute_for_one_hour">Wyłącz na 1 godzinę</string>
     <string name="mute_for_two_hours">Wyłącz na 2 godziny</string>
     <string name="mute_for_one_day">Wyłącz na 1 dzień</string>
@@ -301,7 +302,9 @@
     <string name="videochat_tap_to_open">Dotknij, aby otworzyć</string>
     <string name="videochat_instance">Instancja czatu wideo</string>
     <string name="videochat_instance_placeholder">Twoja instancja czatu wideo</string>
+    <string name="videochat_instance_example">Przykład: https://meet.jit.si/$ROOM lub basicwebrtc:https://your-server</string>
     <string name="videochat_instance_explain">Jeśli zdefiniowano instancję czatu wideo, możesz rozpocząć rozmowę wideo z każdego czatu indywidualnego. Czaty wideo wymagają kompatybilnej aplikacji lub kompatybilnej przeglądarki po obu stronach.\n\nPrzykłady: https://meet.jit.si/$ROOM lub basicwebrtc:https://your-server</string>
+    <string name="videochat_instance_explain_2">Jeśli czat wideo jest włączony, możesz rozpocząć rozmowę wideo z każdego czatu indywidualnego. Czaty wideo wymagają kompatybilnej aplikacji lub kompatybilnej przeglądarki po obu stronach.</string>
     <string name="videochat_instance_from_qr">Czy użyć „%1$s”, aby zaprosić innych do czatów wideo?\n\nPo ustawieniu możesz rozpocząć czat wideo z każdego czatu indywidualnego. Spowoduje to zastąpienie poprzedniego ustawienia czatów wideo, jeśli takie istnieją.</string>
     <string name="videochat_invitation">Zaproszenie do czatu wideo</string>
     <string name="videochat_invitation_body">Masz zaproszenie do czatu wideo, naciśnij %1$s, aby dołączyć.</string>
@@ -394,6 +397,7 @@
     <string name="saved_messages_explain">• Przesyłaj tu wiadomości, aby mieć je pod ręką\n\n• Rób notatki lub notatki głosowe\n\n• Dołączaj media, aby je zachować</string>
     <!-- this "Saved" should match the "Saved" from "Saved messages" -->
     <string name="saved">Zapisana</string>
+    <string name="save_as">Zapisz jako</string>
     <string name="retry_send">Spróbuj ponownie wysłać wiadomość</string>
     <!-- reasons for a disabled message composer -->
     <string name="messaging_disabled_not_in_group">Nie możesz pisać, ponieważ nie jesteś w tej grupie. Aby dołączyć, poproś innego członka.</string>
@@ -420,7 +424,7 @@
     <string name="add_poi">Wyślij interesujący punkt</string>
 
     <!-- chat audit log -->
-    <string name="chat_audit_log_empty_message">Tutaj pojawią się wiadomości systemowe tego czatu</string>
+    <string name="chat_audit_log_empty_message">Tutaj pojawią się wiadomości systemowe z tego czatu</string>
     <string name="chat_audit_log_title">Dziennik audytu czatu dla %1$s</string>
     <string name="chat_audit_log_description">Ten widok pokazuje tylko komunikaty systemowe i informacyjne. Przydatne do wyszukiwania ostatnich działań na czacie bez przewijania wielu zwykłych wiadomości.</string>
 
@@ -460,6 +464,10 @@
     <string name="tab_map">Mapa</string>
     <string name="tab_gallery_empty_hint">Tutaj zostaną wyświetlone zdjęcia i filmy udostępnione na tym czacie.</string>
     <string name="tab_docs_empty_hint">Tutaj zostaną wyświetlone dokumenty, muzyka i inne pliki udostępnione na tym czacie.</string>
+    <string name="tab_image_empty_hint">Tutaj  będą wyświetlane zdjęcia udostępnione w tym czacie.</string>
+    <string name="tab_video_empty_hint">Tutaj będą wyświetlane filmy udostępnione w tym czacie.</string>
+    <string name="tab_audio_empty_hint">Tutaj będą wyświetlane pliki dźwiękowe i wiadomości głosowe udostępnione w tym czacie.</string>
+    <string name="tab_webxdc_empty_hint">Tutaj będzie wyświetlona treść Webxdc udostępniona na tym czacie.</string>
     <string name="media_preview">Podgląd multimediów</string>
     <string name="send_message">Wyślij wiadomość</string>
 
@@ -635,6 +643,7 @@
     <string name="pref_watch_sent_folder">Oglądaj katalog Wysłane</string>
     <string name="pref_watch_mvbox_folder">Oglądaj folder DeltaChat</string>
     <string name="pref_send_copy_to_self">Wyślij kopię do siebie</string>
+    <string name="pref_send_copy_to_self_explain">Wymagane kiedy korzystasz z tego konta na wielu urządzeniach.</string>
     <string name="pref_auto_folder_moves">Automatyczne przenoszenie do folderu DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">Rozmowy na czacie są przenoszone, aby nie zaśmiecać folderu Skrzynka odbiorcza</string>
     <string name="pref_only_fetch_mvbox_title">Pobieraj tylko z folderu DeltaChat</string>
@@ -903,6 +912,10 @@
     <string name="no_spellcheck_suggestions_found">Nie znaleziono propozycji pisowni.</string>
     <string name="show_window">Pokaż okno</string>
     <string name="login_socks5_experimental_warning">Obsługa SOCKS5 jest obecnie eksperymentalna. Proszę używać na własne ryzyko. Jeśli wpiszesz adres w polu e-mail, nastąpi wyszukiwanie DNS, które nie będzie tunelowane przez SOCKS5.</string>
+
+    <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
+    <string name="keybindings">Przypisanie klawiszy</string>
+    <string name="insert_newline">Wstaw nową linię</string>
 
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Status dostawy: Błąd</string>
