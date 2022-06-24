@@ -435,7 +435,6 @@
     <string name="profile_shared_chats">Shared Chats</string>
     <string name="tab_contact">Contact</string>
     <string name="tab_group">Group</string>
-    <string name="tab_members">Members</string>
     <string name="tab_gallery">Gallery</string>
     <string name="tab_docs">Docs</string>
     <string name="tab_links">Links</string>
@@ -591,7 +590,6 @@
     <string name="pref_use_system_emoji">Use System Emoji</string>
     <string name="pref_use_system_emoji_explain">Turn off Delta Chat\'s built-in emoji support</string>
     <string name="pref_app_access">App Access</string>
-    <string name="pref_communication">Communication</string>
     <string name="pref_chats">Chats</string>
     <string name="pref_in_chat_sounds">In-Chat Sounds</string>
     <string name="pref_message_text_size">Message Font Size</string>
@@ -617,9 +615,7 @@
     <string name="pref_background_btn_gallery">Select From Gallery</string>
     <string name="pref_imap_folder_handling">IMAP Folder Handling</string>
     <string name="pref_imap_folder_warn_disable_defaults">If you change this option, make sure, your server and your other clients are configured accordingly.\n\nOtherwise things may not work at all.</string>
-    <string name="pref_watch_inbox_folder">Watch Inbox Folder</string>
     <string name="pref_watch_sent_folder">Watch Sent Folder</string>
-    <string name="pref_watch_mvbox_folder">Watch DeltaChat Folder</string>
     <string name="pref_send_copy_to_self">Send Copy to Self</string>
     <string name="pref_send_copy_to_self_explain">Required when using this account on multiple devices.</string>
     <string name="pref_auto_folder_moves">Automatic Moves to DeltaChat Folder</string>
@@ -644,7 +640,6 @@
     <string name="up_to_x">Up to %1$s</string>
     <string name="up_to_x_most_worse_quality_images">Up to %1$s, most worse quality images</string>
     <string name="up_to_x_most_balanced_quality_images">Up to %1$s, most balanced quality images</string>
-    <string name="no_limit">No limit</string>
     <string name="download_failed">Download failed</string>
     <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string eg. "1 MiB message" -->
     <string name="n_bytes_message">%1$s message</string>
@@ -961,8 +956,6 @@
 
 
     <!-- device messages for updates -->
-    <string name="update_1_28_android">1.28 Highlights:\n\n🔒 Encryption: A new experimental option for keeping your contacts, encryption secrets and text messages encrypted on your device. Only available on account creation and importing backup files.\n\n📫 Write to mailing list\n\n💫 Faster initial setup for more e-mail servers and streamlined networking options to prevent accidental misconfiguration\n\n🐜 Maaaaaany user-reported issues fixed</string>
-    <string name="update_1_28_ios_extra_line">… and you can select a wallpaper at \"Settings / Background\" now :)</string>
     <string name="update_1_30">Faster. More stable.\n\nFor 1.30 releases, we focused on speed and reliability, fixing dozens of bugs. Check our changelogs if your favorite one is fixed: https://get.delta.chat/#changelogs 🚀</string>
 
 </resources>
