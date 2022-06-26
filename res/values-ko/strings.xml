@@ -65,6 +65,8 @@
     <string name="next">확인</string>
     <string name="error">오류</string>
     <string name="error_x">오류: %1$s</string>
+    <string name="no_app_to_handle_data">이 데이터 타입을 다루는 어플을 찾지 못했습니다.</string>
+    <string name="no_browser_installed">설치된 브라우저가 없습니다.</string>
     <string name="file_not_found">%1$s 찾을 수 없음.</string>
     <string name="copied_to_clipboard">클립보드에 복사했습니다.</string>
     <string name="contacts_headline">연락처</string>
@@ -107,6 +109,11 @@
     <plurals name="n_recipients">
         <item quantity="other">%d 수신자</item>
     </plurals>
+    <!-- short title, used for "N Chats Selected" or "N Messages Selected", however, requires a shorter form, eg. "N Selected" in english -->
+    <plurals name="n_selected">
+        <item quantity="other">%d 선택됨</item>
+    </plurals>
+
     <string name="self">나</string>
     <string name="draft">임시 저장</string>
     <string name="image">이미지</string>
@@ -169,6 +176,7 @@
     <string name="menu_edit_group">그룹 편집</string>
     <string name="menu_group_name_and_image">그룹 이름과 이미지</string>
     <string name="menu_show_map">지도 보이기</string>
+    <string name="menu_show_global_map">모든 위치 보기</string>
     <string name="menu_archive_chat">채팅 보관</string>
     <string name="menu_unarchive_chat">보관되지 않은 채팅</string>
     <string name="menu_add_attachment">첨부 파일 추가</string>
@@ -177,6 +185,7 @@
     <string name="ask_delete_named_chat">메시지 \"%1$s\"을 지우려는 것이 확실한가요?</string>
     <string name="menu_delete_messages">메시지 삭제</string>
     <string name="delete_contact">연락처 삭제</string>
+    <string name="menu_delete_location">이 위치를 삭제하시겠습니까?</string>
     <string name="menu_message_details">메시지 세부정보</string>
     <string name="menu_copy_to_clipboard">클립보드에 복사</string>
     <string name="menu_copy_selection_to_clipboard">선택 복사</string>
@@ -202,7 +211,10 @@
     <string name="accept">수락</string>
     <string name="menu_play">재생</string>
     <string name="menu_pause">정지</string>
+    <string name="menu_scroll_to_bottom">밑으로 스크롤하다</string>
+    <string name="menu_scroll_to_top">위로 스크롤하다</string>
     <string name="menu_help">자주 묻는 질문</string>
+    <string name="privacy_policy">개인 정보 보호 정책</string>
     <string name="menu_select_all">모두 선택</string>
     <string name="menu_edit_name">이름 편집</string>
     <string name="menu_settings">설정</string>
@@ -211,8 +223,14 @@
     <string name="menu_zoom_in">확대</string>
     <string name="menu_zoom_out">축소</string>
     <string name="menu_save_log">로그 저장</string>
+    <string name="menu_more_options">더 많은 옵션</string>
+    <string name="menu_learn_spelling">맞춤법 배우기</string>
+    <string name="jump_to_message">메시지로 이동</string>
     <string name="copy_json">JSON 복사</string>
+    <string name="title_share_location">그룹 구성원과 위치 공유하기</string>
     <string name="device_talk">기기 메시지</string>
+    <string name="device_talk_subtitle">로컬에서 생성된 메시지</string>
+    <string name="device_talk_explain">이 채팅의 메시지는 델타 채팅 앱에서 로컬로 생성됩니다. 제작자는 이것을 앱 업데이트와 사용 중 발생하는 문제에 대해 알리기 위해 사용한다.</string>
     <string name="edit_contact">연락처 수정</string>
     <!-- Translators: "Pin" here is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
     <string name="pin_chat">채팅 고정</string>
@@ -222,6 +240,10 @@
     <string name="pin">고정</string>
     <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
     <string name="unpin">고정 해제</string>
+    <string name="ConversationFragment_quoted_message_not_found">원본 메시지를 찾을 수 없음</string>
+    <string name="reply_privately">비공개로 응답</string>
+    <string name="source_code">소스 코드</string>
+
     <string name="mute_for_one_hour">1시간 동안 알림 일시 끄기</string>
     <string name="mute_for_two_hours">2시간 동안 알림 일시 끄기</string>
     <string name="mute_for_one_day">하루 동안 알림 일시 끄기</string>
@@ -239,24 +261,82 @@
     </plurals>
     <string name="file_saved_to">파일 \"%1$s\"에 저장됨.</string>
 
+    <string name="videochat">비디오 채팅</string>
+    <string name="videochat_you_invited_hint">영상 채팅에 초대되었습니다.</string>
+    <string name="videochat_tap_to_join">참여를 위해 탭하기</string>
+    <string name="videochat_tap_to_open">열기 위해 탭하기</string>
+    <string name="videochat_instance_example">예시: https://meet.jit.si/$ROOM 또는 basicwebrtc:https://your-server</string>
+    <string name="videochat_instance_explain_2">비디오 채팅을 사용할 수 있는 경우 각 채팅에서 비디오 채팅을 시작할 수 있습니다. 화상 채팅을 하려면 호환되는 앱 또는 호환 가능한 브라우저가 양쪽 끝에 필요합니다.</string>
+    <string name="videochat_invitation">비디오 채팅 초대</string>
+    <string name="videochat_invitation_body">당신은 비디오 채팅에 초대되었습니다. 참여를 위해 %1$s를 클릭하세요.</string>
+
     <!-- get confirmations -->
     <string name="ask_leave_group">이 그룹에서 나가시겠습니까?</string>
+    <plurals name="ask_delete_chat">
+        <item quantity="other">채팅 %d을/를 삭제하시겠습니까? 대화 상대의 메시지는 더 이상 대화 목록에 표시되지 않고 서버에 남아 있습니다.</item>
+    </plurals>
+    <string name="ask_delete_message">이 메시지를 삭제하시겠습니까?</string>
+    <plurals name="ask_delete_messages">
+        <item quantity="other">%d 메시지를 여기 그리고 서버에서 삭제하시겠습니까?</item>
+    </plurals>
+    <plurals name="ask_delete_messages_simple">
+        <item quantity="other">%d 메시지를 삭제하시겠습니까?</item>
+    </plurals>
     <string name="ask_forward">%1$s님에게 메시지를 전달할까요?</string>
+    <string name="ask_forward_multiple">%1$d 채팅으로 메시지를 전달하시겠습니까?</string>
+    <string name="ask_export_attachment">첨부 파일을 내보내면 단말기의 다른 앱에서 해당 첨부 파일에 액세스할 수 있습니다.\n\n계속하시겠습니까?</string>
     <string name="ask_block_contact">대화상대를 차단할까요?</string>
+    <string name="ask_unblock_contact">대화 상대 차단을 해제하시겠습니까? 대화 상대로부터 다시 메시지를 받을 수 있습니다.</string>
+    <string name="ask_delete_contacts">연락처를 삭제하시겠습니까?\n\n시스템 주소록에서 진행 중인 채팅 및 연락처가 있는 연락처는 영구적으로 삭제할 수 없습니다.</string>
+    <string name="ask_delete_contact">%1$s 연락처를 삭제하시겠습니까?\n\n시스템 주소록에서 진행 중인 채팅 및 연락처가 있는 연락처는 영구적으로 삭제할 수 없습니다.</string>
+    <string name="cannot_delete_contacts_in_use">대화가 진행 중인 대화 상대를 삭제할 수 없습니다.</string>
+    <string name="ask_start_chat_with">%1$s와 채팅하시겠습니까?</string>
+    <string name="ask_delete_value">%s를 삭제하시겠습니까?</string>
+    <!-- Translators: %1$s will be replaces by a comma separated list of names -->
+    <string name="ask_remove_members">그룹에서 %1$s을/를 제거하시겠습니까?</string>
+    <!-- Translators: %1$s will be replaced by a comma separated list of names -->
+    <string name="ask_remove_from_broadcast">브로드 캐스트 목록에서 %1$s을/를 제거하시겠습니까?</string>
+    <string name="open_url_confirmation">이 링크를 열길 원하십니까?</string>
+
+
     <!-- contact list -->
     <string name="contacts_title">연락처</string>
+    <string name="contacts_enter_name_or_email">이름 또는 이메일 주소를 입력하세요.</string>
+    <string name="contacts_type_email_above">위에 이메일 주소를 입력하세요.</string>
     <string name="contacts_empty_hint">대화상대가 없습니다</string>
 
 
     <string name="chat_archived_chats_title">보관 된 채팅</string>
+    <string name="chat_please_enter_message">메시지를 입력하세요.</string>
+    <string name="chat_camera_unavailable">카메라를 사용할 수 없습니다.</string>
+    <string name="chat_unable_to_record_audio">오디오를 녹음할 수 없습니다.</string>
     <plurals name="chat_n_new_messages">
         <item quantity="other">새 메시지 %d건</item>
     </plurals>
+    <string name="chat_new_group_hint">당신이 첫 번째 메시지를 보낸 후에만 다른 사용자들이 이 그룹을 볼 것입니다.</string>
     <string name="chat_record_slide_to_cancel">밀어서 취소</string>
+    <string name="chat_no_chats_yet_hint">다른 Delta Chat 사용자 그리고 어떤 이메일 주소라도 채팅할 수 있습니다.</string>
     <string name="chat_share_with_title">공유 대상</string>
     <string name="chat_input_placeholder">메시지</string>
     <string name="chat_archived_label">보관됨</string>
     <string name="chat_no_messages">메시지가 없습니다…</string>
+    <string name="chat_self_talk_subtitle">나에게 보낸 메시지</string>
+    <string name="archive_empty_hint">대화를 보관하면 여기에 표시됩니다.</string>
+    <string name="saved_messages">저장된 메시지</string>
+    <string name="retry_send">메시지 전송 다시 시도</string>
+    <!-- reasons for a disabled message composer -->
+    <string name="messaging_disabled_not_in_group">이 그룹에 속해 있지 않기 때문에 쓸 수 없습니다. 가입하려면, 다른 구성원에게 문의하십시오.</string>
+    <string name="messaging_disabled_device_chat">이 대화는 로컬에서 생성된 메시지를 포함합니다. 따라서 메시지를 쓸 수 없습니다.</string>
+    <string name="messaging_disabled_mailing_list">메일링 목록의 메시지 발송은 아직 지원되지 않습니다.</string>
+    <string name="cannot_display_unsuported_file_type">파일 형식을 표시할 수 없습니다: %s</string>
+    <string name="attachment_failed_to_load">첨부 파일을 불러오지 못했습니다.</string>
+    <string name="mailing_list_profile_info">메일링 목록 이름 및 이미지의 변경 사항은 이 장치에만 적용됩니다.</string>
+
+    <!-- this is a warning that is shown when one tries to send something to a chat that is not yet accepted. -->
+    <string name="accept_request_first">채팅 요청을 먼저 수락하십시오.</string>
+
+    <!-- chat audit log -->
+    <string name="chat_audit_log_empty_message">이 채팅의 시스템 메시지가 여기에 나타납니다.</string>
     <!-- search -->
     <string name="search">검색</string>
     <!-- create/edit groups, contact/group profile -->
@@ -308,11 +388,68 @@
     <string name="pref_chats">대화</string>
     <string name="pref_in_chat_sounds">앱 내 알림</string>
     <string name="pref_message_text_size">메시지 폰트 크기</string>
+    <string name="pref_saved_log">로그를 \"다운로드\" 폴더에 저장했습니다.</string>
+    <string name="pref_save_log_failed">로그 저장을 실패했습니다.</string>
+    <string name="pref_log_header">로그</string>
     <string name="pref_other">기타</string>
+    <string name="pref_backup">백업</string>
     <string name="pref_background">채팅방 배경화면</string>
+    <string name="auto_download_messages">메시지 자동 다운로드</string>
+    <string name="no_limit">제한없음</string>
+    <string name="download_failed">다운로드 실패</string>
+    <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string eg. "1 MiB message" -->
+    <string name="n_bytes_message">%1$s 메시지</string>
+    <string name="profile_image_select">프로필 이미지 선택</string>
+    <string name="select_your_new_profile_image">새로운 프로필 이미지 선택</string>
+    <string name="profile_image_delete">프로필 이미지 삭제</string>
+    <string name="pref_show_tray_icon">트레이 아이콘 표시</string>
+    <string name="pref_edit_profile">프로필 편집</string>
+
+    <string name="emoji_not_found">이모티콘을 찾을 수 없습니다.</string>
+    <string name="emoji_recent">최근에 사용됨</string>
+    <!-- automatically delete message -->
+    <string name="delete_old_messages">오래된 메시지 삭제</string>
+    <string name="autodel_device_title">기기에서 메시지 삭제</string>
+    <string name="autodel_server_title">서버에서 메시지 삭제</string>
+    <string name="autodel_confirm">알겠습니다. 모든 메시지를 삭제하세요.</string>
+    <string name="after_30_seconds">30초 후</string>
+    <string name="after_1_minute">1분 후</string>
+    <string name="after_5_minutes">5분 후</string>
+    <string name="after_30_minutes">30분 후</string>
+    <string name="autodel_after_1_hour">1시간 후</string>
+    <string name="autodel_after_1_day">1일 후</string>
+    <string name="autodel_after_1_week">1주 후</string>
+    <string name="autodel_after_4_weeks">4주 후</string>
+    <string name="after_5_weeks">5주 후</string>
+    <string name="autodel_after_1_year">1년 후</string>
+
+    <!-- autocrypt -->
+    <string name="autocrypt">자동암호화</string>
+    <string name="autocrypt_send_asm_title">자동 암호화 설정된 메시지 전송</string>
+    <string name="systemmsg_group_image_changed">그룹 이미지 변경</string>
+    <string name="systemmsg_group_image_deleted">그룹 이미지 삭제</string>
     <string name="systemmsg_group_left">그룹이 남았습니다.</string>
+    <string name="systemmsg_unknown_sender_for_chat">이 채팅의 발신자를 알 수 없습니다. 자세한 내용은 \'info\'를 확인하세요.</string>
+    <string name="systemmsg_failed_sending_to">%1$s에게 메시지를 보내지 못했습니다.</string>
+
+    <string name="systemmsg_ephemeral_timer_disabled">메시지 타이머를 사용할 수 없습니다.</string>
+    <string name="systemmsg_ephemeral_timer_enabled">메시지 타이머가 %1$s초로 설정되었습니다.</string>
+    <string name="systemmsg_ephemeral_timer_minute">메시지 타이머가 1분으로 설정되었습니다.</string>
+    <string name="systemmsg_ephemeral_timer_hour">메시지 타이머가 1시간으로 설정되었습니다.</string>
+    <string name="systemmsg_ephemeral_timer_day">메시지 타이머가 1일로 설정되었습니다.</string>
+    <string name="systemmsg_ephemeral_timer_week">메시지 타이머가 1주로 설정되었습니다.</string>
+    <string name="systemmsg_ephemeral_timer_four_weeks">메시지 타이머가 4주로 설정되었습니다.</string>
+    <string name="systemmsg_ephemeral_timer_minutes">메시지 타이머가 %1$s분으로 설정되었습니다.</string>
+    <string name="systemmsg_ephemeral_timer_hours">메시지 타이머가 %1$s시간으로 설정되었습니다.</string>
+    <string name="systemmsg_ephemeral_timer_days">메시지 타이머가 %1$s일로 설정되었습니다.</string>
+    <string name="systemmsg_ephemeral_timer_weeks">메시지 타이머가 %1$s주로 설정되었습니다.</string>
+
+    <string name="qrscan_title">QR코드를 스캔하세요</string>
+    <string name="qrscan_ask_join_group">\"%1$s\" 그룹에 참여하시겠습니까?</string>
+    <string name="qrshow_join_contact_no_connection_toast">인터넷에 연결되어 있지 않아 QR 코드 설정을 수행할 수 없습니다.</string>
     <string name="notify_reply_button">답장</string>
     <string name="notify_new_message">새 메시지</string>
+    <string name="notify_background_connection_enabled">백그라운드 연결 사용</string>
     <string name="notify_priority_high">높게</string>
     <string name="notify_priority_max">최대</string>
     <string name="notify_name_and_message">이름과 메시지</string>
@@ -326,10 +463,27 @@
     <string name="welcome_desktop">Delta Chat에 오신 것을 환영합니다.</string>
     <string name="global_menu_preferences_language_desktop">언어</string>
     <string name="global_menu_file_desktop">파일</string>
+    <string name="global_menu_file_quit_desktop">그만두기</string>
     <string name="global_menu_edit_desktop">편집</string>
+    <string name="global_menu_edit_undo_desktop">원상복귀</string>
+    <string name="global_menu_edit_redo_desktop">재실행</string>
+    <string name="global_menu_edit_cut_desktop">잘라내기</string>
+    <string name="global_menu_edit_copy_desktop">복사하기</string>
+    <string name="global_menu_edit_paste_desktop">붙여넣기</string>
     <string name="global_menu_view_desktop">우선순위</string>
+    <string name="global_menu_view_developer_desktop">개발자</string>
+    <string name="global_menu_view_developer_tools_desktop">개발자 도구</string>
     <string name="global_menu_help_desktop">도움말</string>
+    <string name="global_menu_help_learn_desktop">Delta Chat에 대해 더 알아보기</string>
+    <string name="global_menu_minimize_to_tray">최소화하다</string>
+    <string name="no_chat_selected_suggestion_desktop">채팅 선택 또는 새로운 채팅 생성</string>
+    <string name="write_message_desktop">메시지 작성</string>
+    <string name="delete_message_desktop">메시지 삭제</string>
     <string name="more_info_desktop">더 많은 정보</string>
     <string name="remove_desktop">삭제</string>
     <string name="save_desktop">저장</string>
+    <string name="name_desktop">이름</string>
+    <string name="select_group_image_desktop">그룹 이미지 선택</string>
+    <string name="autocrypt_incorrect_desktop">잘못된 설정 코드입니다. 다시 시도하십시오.</string>
+    <string name="create_chat_error_desktop">대화를 만들 수 없습니다.</string>
     </resources>

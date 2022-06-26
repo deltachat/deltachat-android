@@ -120,6 +120,12 @@
         <item quantity="one">%d marrës</item>
         <item quantity="other">%d marrës</item>
     </plurals>
+    <!-- short title, used for "N Chats Selected" or "N Messages Selected", however, requires a shorter form, eg. "N Selected" in english -->
+    <plurals name="n_selected">
+        <item quantity="one">%d e Përzgjedhur</item>
+        <item quantity="other">%d të Përzgjedhur</item>
+    </plurals>
+
     <string name="self">Unë</string>
     <string name="draft">Skicë</string>
     <string name="image">Figurë</string>
@@ -284,7 +290,9 @@
     <string name="videochat_tap_to_open">Prekeni që të hapet</string>
     <string name="videochat_instance">Instancë fjalosjeje me video</string>
     <string name="videochat_instance_placeholder">Instanca juaj e fjalosjes me video</string>
+    <string name="videochat_instance_example">Shembuj: https://meet.jit.si/$ROOM, ose basicwebrtc:https://shërbyesi-juaj</string>
     <string name="videochat_instance_explain">Nëse është përkufizuar një instancë fjalosjeje me video, mund të nisni një fjalosje me video prej secilës anë të fjalosjes tek-për-tek. Fjalosjet me video kanë të domosdoshëm në të dy skajet një aplikacion të përputhshëm ose një shfletues të përputhshëm.\n\nShembuj: https://meet.jit.si/$ROOM ose basicwebrtc:https://your-server</string>
+    <string name="videochat_instance_explain_2">Nëse është aktivizuar fjalosje me video, mund të nisni një fjalosje me video prej secilës fjalosje. Fjalosjet me video kanë të domosdoshëm në të dy skajet një aplikacion të përputhshëm ose një shfletues të përputhshëm.</string>
     <string name="videochat_instance_from_qr">Të përdoret \"%1$s\" për të ftuar të tjerë në fjalosje me video?\n\nPasi të ujdiset kjo, mund të filloni një fjalosje me video që prej një fjalosjeje tek-për-tek. Kështu do të zëvendësohet rregullimi i mëparshëm për fjalosje video, në pastë.</string>
     <string name="videochat_invitation">Ftesë për fjalosje me video</string>
     <string name="videochat_invitation_body">Jeni ftuar në një fjalosje video, klikoni mbi %1$s që të hyni në të.</string>
@@ -365,6 +373,7 @@
     <string name="saved_messages_explain">• Përcillini mesazhet këtu për përdorim të lehtë\n\n• Mbani shënime ose kujtesa zanore\n\n• Bashkëngjitni media për t’i ruajtur</string>
     <!-- this "Saved" should match the "Saved" from "Saved messages" -->
     <string name="saved">Të ruajtur</string>
+    <string name="save_as">Ruaje Si</string>
     <string name="retry_send">Riprovo të dërgosh mesazhin</string>
     <!-- reasons for a disabled message composer -->
     <string name="messaging_disabled_not_in_group">S’mund të shkruani, ngaqë s’jeni në këtë grup. Për t’u bërë pjesë, kërkojani një anëtari tjetër.</string>
@@ -431,6 +440,10 @@
     <string name="tab_map">Hartë</string>
     <string name="tab_gallery_empty_hint">Figurat dhe videot e dhëna në këtë fjalosje do të shfaqen këtu.</string>
     <string name="tab_docs_empty_hint">Dokumentet, muzika dhe kartela të tjera të dhëna në këtë fjalosje do të shfaqen këtu.</string>
+    <string name="tab_image_empty_hint">Figurat e dhëna në këtë fjalosje do të shfaqen këtu.</string>
+    <string name="tab_video_empty_hint">Videot e dhëna në këtë fjalosje do të shfaqen këtu.</string>
+    <string name="tab_audio_empty_hint">Kartelat Audio dhe Mesazhet Zanore të dhëna në këtë fjalosje do të shfaqen këtu.</string>
+    <string name="tab_webxdc_empty_hint">Lëndë Webxdc e dhënë në këtë fjalosje do të shfaqet këtu.</string>
     <string name="media_preview">Paraparje media</string>
     <string name="send_message">Dërgo mesazh</string>
 
@@ -606,6 +619,7 @@
     <string name="pref_watch_sent_folder">Vëzhgo dosje Të dërguarish</string>
     <string name="pref_watch_mvbox_folder">Vëzhgo dosje DeltaChat</string>
     <string name="pref_send_copy_to_self">Dërgojini kopje vetes</string>
+    <string name="pref_send_copy_to_self_explain">E domosdoshme kur kjo llogari përdoret në një numër pajisjesh.</string>
     <string name="pref_auto_folder_moves">Lëvizje të Vetvetishme te dosja DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">Bisedat zhvendosen, që të shmanget rrëmuja te dosja Të marrë</string>
     <string name="pref_only_fetch_mvbox_title">Sill Vetëm nga Dosje DeltaChat</string>
@@ -876,6 +890,15 @@
     <string name="no_spellcheck_suggestions_found">S’u gjetën sugjerimi drejtshkrimi.</string>
     <string name="show_window">Shfaq Dritare</string>
     <string name="login_socks5_experimental_warning">Mbulimi për SOCKS5 aktualisht është eksperimental. Ju lutemi, përdoreni duke pasur parasysh rrezikun. Nëse shtypni një adresë te fusha e email-it, do të ketë kërkim DNS që nuk do të kalohet përmes SOCKS5.</string>
+
+    <string name="switch_between_chats">Kaloni nga një Fjalosje në tjetrën</string>
+    <string name="scroll_messages">Rrëshqitni nëpër Mesazhe</string>
+    <!-- command to put the cursor to the search input field -->
+    <string name="focus_search_input">Fokusohu te Kërkimi</string>
+    <!-- command to put the cursor to the message input field -->
+    <string name="focus_message_input">Fokusohu te Dhënie Mesazhi</string>
+    <string name="force_refresh_network">Detyro Freskim Rrjeti</string>
+    <string name="insert_newline">Futni Rresht të Ri</string>
 
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Gjendje dërgimi: Gabim</string>

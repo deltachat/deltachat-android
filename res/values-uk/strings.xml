@@ -134,6 +134,14 @@
         <item quantity="many">%d одержувачів</item>
         <item quantity="other">%d одержувачів</item>
     </plurals>
+    <!-- short title, used for "N Chats Selected" or "N Messages Selected", however, requires a shorter form, eg. "N Selected" in english -->
+    <plurals name="n_selected">
+        <item quantity="one">%d обраний</item>
+        <item quantity="few">%d обрано</item>
+        <item quantity="many">%d обрано</item>
+        <item quantity="other">%d обрано</item>
+    </plurals>
+
     <string name="self">Мої</string>
     <string name="draft">Чернетка</string>
     <string name="image">Зображення</string>

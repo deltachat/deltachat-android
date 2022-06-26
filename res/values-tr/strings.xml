@@ -120,6 +120,12 @@
         <item quantity="one">%d alıcı</item>
         <item quantity="other">%d alıcı</item>
     </plurals>
+    <!-- short title, used for "N Chats Selected" or "N Messages Selected", however, requires a shorter form, eg. "N Selected" in english -->
+    <plurals name="n_selected">
+        <item quantity="one">%d Seçildi</item>
+        <item quantity="other">%d Seçildi</item>
+    </plurals>
+
     <string name="self">Ben</string>
     <string name="draft">Taslak</string>
     <string name="image">Görsel</string>
@@ -407,7 +413,7 @@
     <!-- placeholder contains the hostname converted to ascii -->
     <string name="puny_code_warning_question">%1$s bağlantısını ziyaret etmek istediğinizden emin misiniz?</string>
     <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
-    <string name="puny_code_warning_description">Farklı alfabelerden benzer görünen karakterleri kullanarak karakterleri yanlış temsil edebilecek bir bağlantı izlediniz. %1$s etiketli bağlantıyı takip etmek, Latin olmayan karakterler için normal olan %2$s dönüşümüne yol açacaktır. Bu tür karakterleri beklemiyorsanız, bu bağlantı zararlı olabilir</string>
+    <string name="puny_code_warning_description">Farklı abecelerden benzer görünen karakterleri kullanarak karakterleri yanlış temsil edebilecek bir bağlantı izlediniz. %1$s etiketli bağlantıyı izlemek, Latin olmayan karakterler için normal olan %2$s dönüşümüyle sonuçlanacak. Böyle karakterleri beklemediyseniz, bu bağlantı zararlı olabilir</string>
 
 
     <!-- search -->
