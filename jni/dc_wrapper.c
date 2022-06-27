@@ -7,6 +7,15 @@
 #include "deltachat-core-rust/deltachat-ffi/deltachat.h"
 
 
+#if __ANDROID_API__ < 21
+#include <sys/epoll.h>
+int epoll_create1(int flags) {
+    int fd = epoll_create(1000);
+    return fd;
+}
+#endif
+
+
 static dc_msg_t* get_dc_msg(JNIEnv *env, jobject obj);
 
 
