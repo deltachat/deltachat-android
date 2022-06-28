@@ -384,7 +384,6 @@
     <string name="pref_use_system_emoji">시스템 이모티콘 사용</string>
     <string name="pref_use_system_emoji_explain">Delta Chat 이모티콘 사용 중지</string>
     <string name="pref_app_access">앱 접근</string>
-    <string name="pref_communication">연결</string>
     <string name="pref_chats">대화</string>
     <string name="pref_in_chat_sounds">앱 내 알림</string>
     <string name="pref_message_text_size">메시지 폰트 크기</string>
@@ -395,7 +394,6 @@
     <string name="pref_backup">백업</string>
     <string name="pref_background">채팅방 배경화면</string>
     <string name="auto_download_messages">메시지 자동 다운로드</string>
-    <string name="no_limit">제한없음</string>
     <string name="download_failed">다운로드 실패</string>
     <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string eg. "1 MiB message" -->
     <string name="n_bytes_message">%1$s 메시지</string>

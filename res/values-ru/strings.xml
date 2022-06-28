@@ -457,7 +457,6 @@
     <string name="profile_shared_chats">Общие чаты</string>
     <string name="tab_contact">Контакты</string>
     <string name="tab_group">Группа</string>
-    <string name="tab_members">Участники</string>
     <string name="tab_gallery">Галерея</string>
     <string name="tab_docs">Документы</string>
     <string name="tab_links">Ссылки</string>
@@ -613,7 +612,6 @@
     <string name="pref_use_system_emoji">Использовать системные эмодзи</string>
     <string name="pref_use_system_emoji_explain">Отключить поддержку встроенных эмодзи Delta Chat</string>
     <string name="pref_app_access">Доступ приложения</string>
-    <string name="pref_communication">Связь</string>
     <string name="pref_chats">Чаты</string>
     <string name="pref_in_chat_sounds">Звуки в чате</string>
     <string name="pref_message_text_size">Размер шрифта сообщения</string>
@@ -639,9 +637,7 @@
     <string name="pref_background_btn_gallery">Выбрать из галереи</string>
     <string name="pref_imap_folder_handling">Параметры папки IMAP</string>
     <string name="pref_imap_folder_warn_disable_defaults">При отключении этого параметра убедитесь, что сервер и ваши другие приложения для работы с электронной почтой настроены таким же образом.\n\nВ противном случае, всё может перестать работать.</string>
-    <string name="pref_watch_inbox_folder">Следить за папкой Входящие</string>
     <string name="pref_watch_sent_folder">Следить за папкой Исходящие</string>
-    <string name="pref_watch_mvbox_folder">Следить за папкой DeltaChat</string>
     <string name="pref_send_copy_to_self">Отправлять копию себе</string>
     <string name="pref_send_copy_to_self_explain">Требуется при использовании этого аккаунта на нескольких устройствах.</string>
     <string name="pref_auto_folder_moves">Автоматически Перемещать в папку DeltaChat</string>
@@ -666,7 +662,6 @@
     <string name="up_to_x">До %1$s</string>
     <string name="up_to_x_most_worse_quality_images">До %1$s, изображения плохого качества</string>
     <string name="up_to_x_most_balanced_quality_images">До %1$s, изображения среднего качества</string>
-    <string name="no_limit">Без ограничений</string>
     <string name="download_failed">Загрузка не удалась</string>
     <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string eg. "1 MiB message" -->
     <string name="n_bytes_message">%1$s сообщение</string>
@@ -984,8 +979,6 @@
 
 
     <!-- device messages for updates -->
-    <string name="update_1_28_android">Новое в 1.28:\n\n🔒 Шифрование: новая экспериментальная опция, чтобы держать ваши контакты, ключи шифрования и текстовые сообщения зашифрованными на устройстве. Доступно только при создании аккаунта и импорте бэкапа.\n\n📫 Возможность писать в списки рассылки\n\n💫 Ускоренная настройка для большего числа почтовых серверов и упрощение сетевых опций\n\n🐜 Исправлено оооочень много ошибок</string>
-    <string name="update_1_28_ios_extra_line">… и теперь вы можете выбирать обои в «Настройки / Фон» :)</string>
     <string name="update_1_30">Быстрее. Стабильнее.\n\nВ релизах 1.30 мы сфокусировались на скорости и надежности, исправили десятки ошибок. Подробнее смотрите в списках изменений: https://get.delta.chat/#changelogs 🚀</string>
 
 </resources>

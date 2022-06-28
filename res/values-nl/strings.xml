@@ -435,7 +435,6 @@
     <string name="profile_shared_chats">Gedeelde gesprekken</string>
     <string name="tab_contact">Contactpersoon</string>
     <string name="tab_group">Groep</string>
-    <string name="tab_members">Deelnemers</string>
     <string name="tab_gallery">Galerij</string>
     <string name="tab_docs">Documenten</string>
     <string name="tab_links">Links</string>
@@ -591,7 +590,6 @@
     <string name="pref_use_system_emoji">Systeememoji gebruiken</string>
     <string name="pref_use_system_emoji_explain">Schakel Delta Chat\'s ingebouwde emoji-ondersteuning uit</string>
     <string name="pref_app_access">App-toegang</string>
-    <string name="pref_communication">Communicatie</string>
     <string name="pref_chats">Gesprekken</string>
     <string name="pref_in_chat_sounds">Gespreksgeluiden</string>
     <string name="pref_message_text_size">Tekstgrootte van berichten</string>
@@ -617,9 +615,7 @@
     <string name="pref_background_btn_gallery">Kiezen uit galerij</string>
     <string name="pref_imap_folder_handling">IMAP-mappen controleren</string>
     <string name="pref_imap_folder_warn_disable_defaults">Als je deze optie uitschakelt, zorg er dan voor dat je server en overige clients goed ingesteld zijn.\n\nAls dat niet zo is, dan werkt het misschien helemaal niet.</string>
-    <string name="pref_watch_inbox_folder">Postvak IN controleren op nieuwe berichten</string>
     <string name="pref_watch_sent_folder">Map ‘Verzonden’ controleren op nieuwe berichten</string>
-    <string name="pref_watch_mvbox_folder">DeltaChat-map controleren op nieuwe berichten</string>
     <string name="pref_send_copy_to_self">Kopie versturen naar mijzelf</string>
     <string name="pref_send_copy_to_self_explain">Vereist bij gebruik van dit account op meerdere apparaten.</string>
     <string name="pref_auto_folder_moves">Automatisch verplaatsen naar DeltaChat-map</string>
@@ -644,7 +640,6 @@
     <string name="up_to_x">Tot %1$s</string>
     <string name="up_to_x_most_worse_quality_images">Tot %1$s - lage afbeeldingskwaliteit</string>
     <string name="up_to_x_most_balanced_quality_images">Tot %1$s - redelijke afbeeldingskwaliteit</string>
-    <string name="no_limit">Onbeperkt</string>
     <string name="download_failed">Het downloaden is mislukt</string>
     <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string eg. "1 MiB message" -->
     <string name="n_bytes_message">%1$s bericht</string>
@@ -961,8 +956,6 @@
 
 
     <!-- device messages for updates -->
-    <string name="update_1_28_android">1.28 Uitgelicht:\n\n🔒 Versleuteling: er is een nieuwe, experimentele optie beschikbaar voor het versleutelen van je contactpersonen, inloggegevens en tekstberichten op je apparaat zelf. Let op: deze optie is alléén beschikbaar tijdens het toevoegen van een account en het importeren van back-upbestanden.\n\n📫 Schrijf berichten aan een mailinglijst\n\n💫 Snellere initiële instelmethode voor meer e-mailservers en vereenvoudigde netwerkopties om onopzettelijke instellingen te voorkomen\n\n🐜 Héél véél gemelde problemen opgelost!</string>
-    <string name="update_1_28_ios_extra_line">…en je kunt voortaan een achtergrond kiezen via ‘Instellingen → Achtergrond’. :)</string>
     <string name="update_1_30">Sneller en stabieler. Dát zijn de kernpunten van versie 1.30.\n\n We hebben ruim 15 bugs opgelost. Neem het wijzigingslog door om te zien of er eentje tussenstaat waar je last van had: https://get.delta.chat/#changelogs 🚀</string>
 
 </resources>

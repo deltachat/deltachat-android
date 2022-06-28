@@ -250,7 +250,6 @@
     <string name="profile_shared_chats">Çatlar göndərildi</string>
     <string name="tab_contact">Kontakt</string>
     <string name="tab_group">Qrup</string>
-    <string name="tab_members">Üzvlər</string>
     <string name="tab_gallery">Şəkillər</string>
     <string name="tab_docs">Sənədlər</string>
     <string name="tab_links">Linklər</string>
@@ -338,7 +337,6 @@
     <string name="pref_use_system_emoji">Sistem emojisini istifadə edin</string>
     <string name="pref_use_system_emoji_explain">Emoji Delta chat üçün daxili dəstəyi bağlayın. </string>
     <string name="pref_app_access">Daxil oldu</string>
-    <string name="pref_communication">Əlaqə</string>
     <string name="pref_chats">Çatlar</string>
     <string name="pref_in_chat_sounds">Çatda olan səslər</string>
     <string name="pref_message_text_size">Mətnin ölçüsü</string>
@@ -363,9 +361,7 @@
     <string name="pref_background_btn_gallery">Fotoalbomdan götürün</string>
     <string name="pref_imap_folder_handling">IMAP qovluqunun idarə edilməsi</string>
     <string name="pref_imap_folder_warn_disable_defaults">Bu seçimi ləğv etsəniz, serverinizin və digər müştərilərinizin müvafiq olaraq konfiqurasiya olunduğundan əmin olun. \n\nAyrıca şeylər işləməyəcəkdir.</string>
-    <string name="pref_watch_inbox_folder">Daxil olanla qovluğunu izləyin</string>
     <string name="pref_watch_sent_folder">Göndərilmişlərin qovluğunu izləyin</string>
-    <string name="pref_watch_mvbox_folder">DeltaChat qovluğunu izləyin</string>
     <string name="pref_send_copy_to_self">Özünə kopya göndər</string>
     <string name="pref_auto_folder_moves">DeltaChat qovluğuna avtomatik keçid</string>
     <string name="pref_auto_folder_moves_explain">Çat söhbətləri Daxil olanlar qovluğunun yığılmaması üçün taşınır</string>

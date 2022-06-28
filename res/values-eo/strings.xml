@@ -262,7 +262,6 @@
     <string name="profile_shared_chats">Kunhavigitaj babiloj</string>
     <string name="tab_contact">Kontakto</string>
     <string name="tab_group">Grupo</string>
-    <string name="tab_members">Anoj</string>
     <string name="tab_gallery">Galerio</string>
     <string name="tab_docs">Dokumentoj</string>
     <string name="tab_links">Ligiloj</string>
@@ -338,7 +337,6 @@
     <string name="pref_use_system_emoji">Uzi sisteman emoĝiaron</string>
     <string name="pref_use_system_emoji_explain">Malebligi emoĝiaron de Delta Chat</string>
     <string name="pref_app_access">Aliro al aplikaĵo</string>
-    <string name="pref_communication">Komunikado</string>
     <string name="pref_chats">Interparoloj</string>
     <string name="pref_in_chat_sounds">Sonoj dum interparolado</string>
     <string name="pref_message_text_size">Mesaĝa tipargrando</string>
@@ -359,9 +357,7 @@
     <string name="pref_background_btn_default">Uzi defaŭltan bildon</string>
     <string name="pref_background_btn_gallery">Elekti el galerio</string>
     <string name="pref_imap_folder_handling">IMAP dosieruja traktado</string>
-    <string name="pref_watch_inbox_folder">Kontroli ricevujon</string>
     <string name="pref_watch_sent_folder">Kontroli senditujon</string>
-    <string name="pref_watch_mvbox_folder">Kontroli DeltaChat dosierujon</string>
     <string name="pref_send_copy_to_self">Sendi kopion al mi mem</string>
     <string name="pref_show_emails_all">Ĉiuj</string>
     <string name="autocrypt_prefer_e2ee">Preferi tutvojan ĉifradon</string>

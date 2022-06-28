@@ -435,7 +435,6 @@
     <string name="profile_shared_chats">Paylaşılan Sohbetler</string>
     <string name="tab_contact">Kişi</string>
     <string name="tab_group">Grup</string>
-    <string name="tab_members">Üyeler</string>
     <string name="tab_gallery">Galeri</string>
     <string name="tab_docs">Belgeler</string>
     <string name="tab_links">Bağlantılar</string>
@@ -591,7 +590,6 @@
     <string name="pref_use_system_emoji">Sistem Emojisini Kullan</string>
     <string name="pref_use_system_emoji_explain">Delta Chat\'in gömülü emoji desteğini kapat</string>
     <string name="pref_app_access">Uygulama Erişimi</string>
-    <string name="pref_communication">İletişim</string>
     <string name="pref_chats">Sohbetler</string>
     <string name="pref_in_chat_sounds">Sohbet İçi Sesler</string>
     <string name="pref_message_text_size">İleti Yazı Tipi Boyutu</string>
@@ -617,9 +615,7 @@
     <string name="pref_background_btn_gallery">Galeriden Seç</string>
     <string name="pref_imap_folder_handling">IMAP Klasör İşleme</string>
     <string name="pref_imap_folder_warn_disable_defaults">Bu seçeneği değiştirirseniz, sunucunuzun ve diğer istemcilerinizin uygun olarak yapılandırıldığından emin olun.\n\nDeğilse özellikler hiç çalışmayabilir.</string>
-    <string name="pref_watch_inbox_folder">Gelen Kutusu Klasörünü İzle</string>
     <string name="pref_watch_sent_folder">Gönderilen Klasörünü İzle</string>
-    <string name="pref_watch_mvbox_folder">DeltaChat Klasörünü İzle</string>
     <string name="pref_send_copy_to_self">Kendime Kopya Gönder</string>
     <string name="pref_send_copy_to_self_explain">Bu hesap çoklu aygıtlarda kullanılırken gereklidir.</string>
     <string name="pref_auto_folder_moves">DeltaChat Klasörüne Otomatik Taşınsın</string>
@@ -644,7 +640,6 @@
     <string name="up_to_x">%1$s kadar</string>
     <string name="up_to_x_most_worse_quality_images">%1$s kadar, en kötü kaliteli görseller</string>
     <string name="up_to_x_most_balanced_quality_images">%1$s kadar, en dengeli kaliteli görseller</string>
-    <string name="no_limit">Sınır yok</string>
     <string name="download_failed">İndirme başarısız</string>
     <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string eg. "1 MiB message" -->
     <string name="n_bytes_message">%1$s ileti</string>
@@ -961,8 +956,6 @@
 
 
     <!-- device messages for updates -->
-    <string name="update_1_28_android">1.28 Öne Çıkanlar:\n\n🔒 Şifreleme: Kişilerinizi, şifreleme sırlarınızı ve metin iletilerinizi aygıtınızda şifreli tutmak için yeni bir deneysel seçenek. Yalnızca hesap oluşturma ve yedek dosyaları içe aktarma sırasında kullanılabilir.\n\n📫 Posta listelerine yazma\n\n💫 Daha fazla e-posta sunucusu için daha hızlı ilk kurulum ve kazara yanlış yapılandırmayı önlemek için düzenlenen ağ seçenekleri\n\n🐜 Kullanıcıların raporladığı çoğu sorun çözüldü</string>
-    <string name="update_1_28_ios_extra_line">… ve şimdi \"Ayarlar / Arka Plan\"dan bir duvar kâğıdı seçebilirsiniz :)</string>
     <string name="update_1_30">Daha hızlı. Daha kararlı.\n\n1.30 sürümleri için hıza ve güvenilirliğe odaklandık, düzinelerce hata düzeltildi. Favorilerinizden biri düzeltildiyse değişiklik günlüklerimizi denetleyin: https://get.delta.chat/#changelogs 🚀</string>
 
 </resources>

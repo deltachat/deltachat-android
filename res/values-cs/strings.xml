@@ -367,7 +367,6 @@
     <string name="profile_shared_chats">Sdílené hovory</string>
     <string name="tab_contact">Kontakt</string>
     <string name="tab_group">Skupina</string>
-    <string name="tab_members">Členové</string>
     <string name="tab_gallery">Galerie</string>
     <string name="tab_docs">Dokumenty</string>
     <string name="tab_links">Odkazy</string>
@@ -481,7 +480,6 @@
     <string name="pref_use_system_emoji">Použij systémové smajlíky</string>
     <string name="pref_use_system_emoji_explain">Vypni vestavěné smajlíky Data Chatu</string>
     <string name="pref_app_access">Přístup aplikace</string>
-    <string name="pref_communication">Komunikace</string>
     <string name="pref_chats">Hovory</string>
     <string name="pref_in_chat_sounds">Zvuky v rámci hovoru</string>
     <string name="pref_message_text_size">Velikost písma zprávy</string>
@@ -507,9 +505,7 @@
     <string name="pref_background_btn_gallery">Vyber z galerie</string>
     <string name="pref_imap_folder_handling">Používání složky IMAP</string>
     <string name="pref_imap_folder_warn_disable_defaults">Při vypnutí této možnosti se ujisti, že server a tvé ostatní klientské aplikace mají odpovídající nastavení.\n\nJinak může vše přestat fungovat.</string>
-    <string name="pref_watch_inbox_folder">Sleduj Příchozí složku</string>
     <string name="pref_watch_sent_folder">Sleduj Odchozí složku</string>
-    <string name="pref_watch_mvbox_folder">Sleduj DeltaChat složku</string>
     <string name="pref_send_copy_to_self">Posílat si kopie</string>
     <string name="pref_auto_folder_moves">Samočinně přesouvat do složky DeltaChat </string>
     <string name="pref_auto_folder_moves_explain">Zprávy hovorů jsou přesouvány aby nezahlcovali Příchozí složku</string>

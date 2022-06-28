@@ -415,7 +415,6 @@
     <string name="profile_shared_chats">Споделени чатове</string>
     <string name="tab_contact">Контакт</string>
     <string name="tab_group">Група</string>
-    <string name="tab_members">Членове</string>
     <string name="tab_gallery">Галерия</string>
     <string name="tab_docs">Документи</string>
     <string name="tab_links">Връзки</string>
@@ -562,7 +561,6 @@
     <string name="pref_use_system_emoji">Да се използва Emoji на системата</string>
     <string name="pref_use_system_emoji_explain">Изключване на вградената поддръжка за Emoji на Delta Chat</string>
     <string name="pref_app_access">Достъп до приложението</string>
-    <string name="pref_communication">Комуникация</string>
     <string name="pref_chats">Чатове</string>
     <string name="pref_in_chat_sounds">Вътрешни за чата звуци</string>
     <string name="pref_message_text_size">Размер на шрифта на съобщението</string>
@@ -588,9 +586,7 @@
     <string name="pref_background_btn_gallery">Избор от галерията</string>
     <string name="pref_imap_folder_handling">Обработка на папките на IMAP</string>
     <string name="pref_imap_folder_warn_disable_defaults">Ако забраните тази опция, се уверете, че Вашият сървър и другите Ви клиенти са конфигурирани по съответен начин.\n\nВ противен случай е възможно нещата въобще да не работят.</string>
-    <string name="pref_watch_inbox_folder">Наблюдаване на папката \"Входящи\"</string>
     <string name="pref_watch_sent_folder">Наблюдаване на папката \"Изпратени\"</string>
-    <string name="pref_watch_mvbox_folder">Наблюдаване на папката \"DeltaChat\"</string>
     <string name="pref_send_copy_to_self">Изпращане на копие до себе си</string>
     <string name="pref_auto_folder_moves">Автоматично преместване в папката DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">Разговорите в чата са преместени, за да се избегне претрупване на папката \"Входящи\"</string>
@@ -610,7 +606,6 @@
     <string name="up_to_x">До %1$s</string>
     <string name="up_to_x_most_worse_quality_images">До %1$s, повечето от които изображения с по-лошо качество</string>
     <string name="up_to_x_most_balanced_quality_images">До %1$s, повечето от които изображения с балансирано качество</string>
-    <string name="no_limit">Без ограничение</string>
     <string name="download_failed">Неуспешно сваляне</string>
     <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string eg. "1 MiB message" -->
     <string name="n_bytes_message">%1$s съобщение</string>

@@ -358,7 +358,6 @@
     <string name="profile_shared_chats">Delte samtaler</string>
     <string name="tab_contact">Kontakt</string>
     <string name="tab_group">Gruppe</string>
-    <string name="tab_members">Medlemmer</string>
     <string name="tab_gallery">Galleri</string>
     <string name="tab_docs">Dokumenter</string>
     <string name="tab_links">Henvisninger</string>
@@ -500,7 +499,6 @@
     <string name="pref_use_system_emoji">Brug system emoji</string>
     <string name="pref_use_system_emoji_explain">Deaktiver Delta Chat\'s indbygget emoji understøttelse</string>
     <string name="pref_app_access">Programadgang</string>
-    <string name="pref_communication">Kommunikation</string>
     <string name="pref_chats">Samtaler</string>
     <string name="pref_in_chat_sounds">In-chat-lyde</string>
     <string name="pref_message_text_size">Besked tekststørrelse</string>
@@ -526,9 +524,7 @@
     <string name="pref_background_btn_gallery">Vælg fra galleri</string>
     <string name="pref_imap_folder_handling">IMAP-mappe håndtering</string>
     <string name="pref_imap_folder_warn_disable_defaults">Ved deaktivering af denne indstiiling vær sikker på at server og andre klienter er indstillet tilsvarende.\n\nEllers fungerer det måske slet ikke.</string>
-    <string name="pref_watch_inbox_folder">Overvåg indbakkemappe</string>
     <string name="pref_watch_sent_folder">Overvåg sendt mappe</string>
-    <string name="pref_watch_mvbox_folder">Overvåg DeltaChat-mappe</string>
     <string name="pref_send_copy_to_self">Send kopi til mig selv</string>
     <string name="pref_auto_folder_moves">Flytter automatisk til DeltaChat mappe</string>
     <string name="pref_auto_folder_moves_explain">Samtaler er flyttet for at undgå rodet indbakke</string>
@@ -543,7 +539,6 @@
     <string name="pref_background_custom_image">Brugerdefineret billede</string>
     <string name="pref_background_custom_color">Brugerdefineret farve</string>
     <string name="export_aborted">Eksport annulleret</string>
-    <string name="no_limit">Ingen grænse</string>
     <string name="profile_image_select">Vælg profilbillede</string>
     <string name="select_your_new_profile_image">Vælg dit nye profilbillede</string>
     <string name="profile_image_delete">Slet profilbillede</string>

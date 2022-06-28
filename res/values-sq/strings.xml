@@ -433,7 +433,6 @@
     <string name="profile_shared_chats">Fjalosje të përbashkëta</string>
     <string name="tab_contact">Kontakt</string>
     <string name="tab_group">Grup</string>
-    <string name="tab_members">Anëtarë</string>
     <string name="tab_gallery">Galeri</string>
     <string name="tab_docs">Dokumente</string>
     <string name="tab_links">Lidhje</string>
@@ -589,7 +588,6 @@
     <string name="pref_use_system_emoji">Përdor emoji sistemi</string>
     <string name="pref_use_system_emoji_explain">Çaktivizo mbulimin e brendshëm Delta Chat për emoji-t</string>
     <string name="pref_app_access">Hyrje aplikacioni</string>
-    <string name="pref_communication">Komunikim</string>
     <string name="pref_chats">Fjalosje</string>
     <string name="pref_in_chat_sounds">Tinguj brenda fjalosjeje</string>
     <string name="pref_message_text_size">Madhësi shkronjash mesazhi</string>
@@ -615,9 +613,7 @@
     <string name="pref_background_btn_gallery">Përzgjidhni nga galeri</string>
     <string name="pref_imap_folder_handling">Trajtim dosjeje IMAP</string>
     <string name="pref_imap_folder_warn_disable_defaults">Nëse e çaktivizoni këtë mundësi, garantoni që shërbyesi juaj dhe klientët tuaj të tjerët të jenë formësuar për këtë.\n\nPërndryshe gjërat mund të mos punojnë fare.</string>
-    <string name="pref_watch_inbox_folder">Vëzhgo dosje Të marrësh</string>
     <string name="pref_watch_sent_folder">Vëzhgo dosje Të dërguarish</string>
-    <string name="pref_watch_mvbox_folder">Vëzhgo dosje DeltaChat</string>
     <string name="pref_send_copy_to_self">Dërgojini kopje vetes</string>
     <string name="pref_send_copy_to_self_explain">E domosdoshme kur kjo llogari përdoret në një numër pajisjesh.</string>
     <string name="pref_auto_folder_moves">Lëvizje të Vetvetishme te dosja DeltaChat</string>
@@ -641,7 +637,6 @@
     <string name="up_to_x">Deri në %1$s</string>
     <string name="up_to_x_most_worse_quality_images">Deri në %1$s, figura me cilësinë më të dobët</string>
     <string name="up_to_x_most_balanced_quality_images">Deri në %1$s, figurat me cilësinë më të baraspeshuar</string>
-    <string name="no_limit">Pa kufi</string>
     <string name="download_failed">Shkarkimi dështoi</string>
     <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string eg. "1 MiB message" -->
     <string name="n_bytes_message">Mesazh %1$s</string>
@@ -954,8 +949,6 @@
 
 
     <!-- device messages for updates -->
-    <string name="update_1_28_android">1.28 Në pah:\n\n🔒 Fshehtëzim: Një mundësi e re eksperimentale për të mbajtur të fshehtëzuara në pajisjen tuaj kontaktet, të fshehtat dhe mesazhe tekst tuajt. E mundshme vetëm gjatë krijimi llogarish dhe importimi kartelash kopjeruajtjeje.\n\n📫 Shkruani te listë postimesh\n\n💫 Ujdisje fillestare më e shpejtë për më tepër shërbyes email-i dhe mundësi të thjeshtuara punimi në rrjet, për të parandaluar formësim të gabuar aksidentalisht\n\n🐜 U ndreqën mjaaaaaaft probleme të njoftuara nga përdoruesit</string>
-    <string name="update_1_28_ios_extra_line">… dhe ju tani mund të përzgjidhni një sfond që nga “Rregullime / Sfond” :)</string>
     <string name="update_1_30">Më shpejtë. Me më tepër qëndrueshmëri.\n\nPër hedhjet në qarkullim të serisë 1.30, u përqendruam në shpejtësinë dhe qëndrueshmërinë, duke ndrequr dhjetëra. Shihni regjistrat tanë të ndryshimeve, për të parë nëse e juaja është ndrequr: https://get.delta.chat/#changelogs 🚀</string>
 
 </resources>

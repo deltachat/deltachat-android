@@ -314,7 +314,6 @@
     <string name="profile_shared_chats">Tzarradas cumpartzidas</string>
     <string name="tab_contact">Cuntatu</string>
     <string name="tab_group">Grupu</string>
-    <string name="tab_members">Membros</string>
     <string name="tab_gallery">Galleria</string>
     <string name="tab_docs">Documentos</string>
     <string name="tab_links">Ligàmenes</string>
@@ -426,7 +425,6 @@
     <string name="pref_use_system_emoji">Imprea sas emoji de sistema</string>
     <string name="pref_use_system_emoji_explain">Istuda su suportu de sas emoji incorporadu in Delta Chat</string>
     <string name="pref_app_access">Atzessu a s\'aplicatzione</string>
-    <string name="pref_communication">Comunicatzione</string>
     <string name="pref_chats">Tzarradas</string>
     <string name="pref_in_chat_sounds">Sonos in sa tzarrada</string>
     <string name="pref_message_text_size">Mannària de sos caràteres in sos messàgios</string>
@@ -452,9 +450,7 @@
     <string name="pref_background_btn_gallery">Ischerta dae sa galleria</string>
     <string name="pref_imap_folder_handling">Amministratzione de sa cartella IMAP</string>
     <string name="pref_imap_folder_warn_disable_defaults">Si disabìlitas custa opztione assegura·ti chi su serbidore tuo e totu sos àteros clientes siant cunfigurados in sa matessi manera\n\nSi nono sas cosas diant pòdere non funtzionare pro nudda.</string>
-    <string name="pref_watch_inbox_folder">Pòmpia sa cartella de intrada</string>
     <string name="pref_watch_sent_folder">Pòmpia sa cartella de sos imbiados</string>
-    <string name="pref_watch_mvbox_folder">Pòmpia sa cartella DeltaChat</string>
     <string name="pref_send_copy_to_self">Imbia·ti·nche una còpia</string>
     <string name="pref_auto_folder_moves">Tramudòngios automàticos a sa cartella DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">Sos arresonos de sas tzarradas benint tramudados pro evitare su prenamentu de sa cartella de intrada</string>

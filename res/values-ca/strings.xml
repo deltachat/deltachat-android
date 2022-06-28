@@ -447,7 +447,6 @@
     <string name="pref_use_system_emoji">Useu emojis de sistema</string>
     <string name="pref_use_system_emoji_explain">Deshabilita el suport de sèrie per emoticones a Delta Chat</string>
     <string name="pref_app_access">Accés a l\'aplicació</string>
-    <string name="pref_communication">Comunicació</string>
     <string name="pref_chats">Xats</string>
     <string name="pref_in_chat_sounds">Sons d\'entrada</string>
     <string name="pref_message_text_size">Mida de la font del missatge</string>
@@ -470,9 +469,7 @@
     <string name="pref_background_btn_gallery">Tria de la galeria</string>
     <string name="pref_imap_folder_handling">Gestió de carpetes IMAP</string>
     <string name="pref_imap_folder_warn_disable_defaults">Si desactiveu aquesta opció, assegureu-vos que el vostre servidor i els altres programes estiguin configurats de la mateixa manera.\n\nAltrament podeu tenir problemes de funcionament.</string>
-    <string name="pref_watch_inbox_folder">Mostra la safata d\'entrada</string>
     <string name="pref_watch_sent_folder">Mostra la safata de sortida</string>
-    <string name="pref_watch_mvbox_folder">Mostra la safata DeltaChat</string>
     <string name="pref_auto_folder_moves">Moure automàticament a la carpeta de Delta Chat</string>
     <string name="pref_auto_folder_moves_explain">Les converses de xat s\'han mogut per no atapeir la safata d’entrada</string>
     <string name="pref_show_emails">Mostra els e-mails clàssics</string>

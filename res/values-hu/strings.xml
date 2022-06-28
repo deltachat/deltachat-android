@@ -200,7 +200,6 @@
     <string name="profile_encryption">Titkosítás</string>
     <string name="tab_contact">Névjegy</string>
     <string name="tab_group">Csoport</string>
-    <string name="tab_members">Tagok</string>
     <string name="tab_gallery">Galéria</string>
     <string name="tab_docs">Dokumentumok</string>
     <string name="tab_links">Linkek</string>
@@ -256,7 +255,6 @@
     <string name="pref_use_system_emoji">Rendszer emojik használata</string>
     <string name="pref_use_system_emoji_explain">A Delta Chat beépített emoji-támogatásának letiltása</string>
     <string name="pref_app_access">Alkalmazás hozzáférés</string>
-    <string name="pref_communication">Kommunikáció</string>
     <string name="pref_chats">Csevegések</string>
     <string name="pref_in_chat_sounds">Csevegésen belüli hangok</string>
     <string name="pref_message_text_size">Üzenetek betűmérete</string>

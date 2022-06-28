@@ -216,7 +216,6 @@
     <string name="profile_shared_chats">Дељена ћаскања</string>
     <string name="tab_contact">Контакт</string>
     <string name="tab_group">Група</string>
-    <string name="tab_members">Чланови</string>
     <string name="tab_gallery">Галерија</string>
     <string name="tab_docs">Документи</string>
     <string name="media_preview">Преглед медијума</string>
@@ -274,7 +273,6 @@
     <string name="pref_use_system_emoji">Користи системски емоџи</string>
     <string name="pref_use_system_emoji_explain">Искључи уграђене Delta Chat-ове емоџије</string>
     <string name="pref_app_access">Приступ апликацији</string>
-    <string name="pref_communication">Комуникација</string>
     <string name="pref_chats">Ћаскања</string>
     <string name="pref_in_chat_sounds">Звуци ћаскања</string>
     <string name="pref_message_text_size">Величина фонта поруке</string>

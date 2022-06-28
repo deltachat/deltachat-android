@@ -443,7 +443,6 @@
     <string name="profile_shared_chats">Conversas compartilhadas</string>
     <string name="tab_contact">Contato</string>
     <string name="tab_group">Grupo</string>
-    <string name="tab_members">Membros</string>
     <string name="tab_gallery">Galeria</string>
     <string name="tab_docs">Documentos</string>
     <string name="tab_links">Links</string>
@@ -599,7 +598,6 @@
     <string name="pref_use_system_emoji">Usar emojis do sistema</string>
     <string name="pref_use_system_emoji_explain">Desabilitar emojis do Delta Chat</string>
     <string name="pref_app_access">Acesso do aplicativo</string>
-    <string name="pref_communication">Comunicação</string>
     <string name="pref_chats">Conversas</string>
     <string name="pref_in_chat_sounds">Sons da conversa</string>
     <string name="pref_message_text_size">Tamanho da fonte de mensagens</string>
@@ -625,9 +623,7 @@
     <string name="pref_background_btn_gallery">Selecionar da galeria</string>
     <string name="pref_imap_folder_handling">Gerenciar pastas IMAP</string>
     <string name="pref_imap_folder_warn_disable_defaults">Se você mudar esta opção, certifique-se de que seu servidor e demais aplicativos estejam configurados de acordo.\n\nDo contrário, funcionalidades podem não funcionar.</string>
-    <string name="pref_watch_inbox_folder">Verificar a caixa de entrada</string>
     <string name="pref_watch_sent_folder">Verificar a caixa de saída</string>
-    <string name="pref_watch_mvbox_folder">Verificar a pasta DeltaChat</string>
     <string name="pref_send_copy_to_self">Enviar cópia para mim</string>
     <string name="pref_send_copy_to_self_explain">Necessário ao utilizar esta conta em múltiplos dispositivos.</string>
     <string name="pref_auto_folder_moves">Mover automaticamente para a pasta DeltaChat</string>
@@ -652,7 +648,6 @@
     <string name="up_to_x">Até %1$s</string>
     <string name="up_to_x_most_worse_quality_images">Até %1$s, imagens de pior qualidade</string>
     <string name="up_to_x_most_balanced_quality_images">Até %1$s, imagens de qualidade equilibrada</string>
-    <string name="no_limit">Sem limite</string>
     <string name="download_failed">Falha no Download</string>
     <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string eg. "1 MiB message" -->
     <string name="n_bytes_message">Mensagem de %1$s</string>
@@ -969,8 +964,6 @@
 
 
     <!-- device messages for updates -->
-    <string name="update_1_28_android">Destaques da 1.28:\n\n🔒 Criptografia: uma nova opção experimental para manter seus contatos, segredos de criptografia e mensagens de texto criptografadas em seu dispositivo. Disponível apenas na criação de conta e importação de arquivos de backup.\n\n📫 Escrever para lista de e-mails\n\n💫 Configuração inicial mais rápida para mais servidores de e-mail e opções de rede simplificadas para evitar configurações incorretas acidentais\n\n🐜 Muuuuuuitos problemas relatados por usuários corrigidos</string>
-    <string name="update_1_28_ios_extra_line">… e você pode selecionar um papel de parede em \"Configurações / Papel de Parede\" agora :)</string>
     <string name="update_1_30">Mais rápido. Mais estável.\n\nPara as versões 1.30, nos concentramos em velocidade e confiabilidade, corrigindo dezenas de bugs. Verifique nossos changelogs para ver se o seu bug favorito foi corrigido: https://get.delta.chat/#changelogs 🚀
 </string>
 

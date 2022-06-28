@@ -280,7 +280,6 @@
     <string name="profile_shared_chats">Delte sludringer</string>
     <string name="tab_contact">Kontakt</string>
     <string name="tab_group">Gruppe</string>
-    <string name="tab_members">Medlemmer</string>
     <string name="tab_gallery">Galleri</string>
     <string name="tab_docs">Dokumenter</string>
     <string name="media_preview">Forhåndsvisning av medier</string>
@@ -341,7 +340,6 @@
     <string name="pref_use_system_emoji">Bruk systemets emoji</string>
     <string name="pref_use_system_emoji_explain">Slå av innebygd emoji-støtte i Delta Chat</string>
     <string name="pref_app_access">Programtilgang</string>
-    <string name="pref_communication">Kommunikasjon</string>
     <string name="pref_chats">Sludringer</string>
     <string name="pref_in_chat_sounds">Merknader i programmet</string>
     <string name="pref_message_text_size">Skriftstørrelse i meldinger</string>

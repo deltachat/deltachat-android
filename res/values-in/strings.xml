@@ -323,7 +323,6 @@
     <string name="profile_shared_chats">Obrolan terbagi</string>
     <string name="tab_contact">Kontak</string>
     <string name="tab_group">Grup</string>
-    <string name="tab_members">Anggota</string>
     <string name="tab_gallery">Galeri</string>
     <string name="tab_docs">Dokumen</string>
     <string name="tab_links">Tautan</string>
@@ -427,7 +426,6 @@
     <string name="pref_use_system_emoji">Gunakan emoji sistem</string>
     <string name="pref_use_system_emoji_explain">Matikan dukungan emoji Delta Chat yang ada</string>
     <string name="pref_app_access">Akes Aplikasi</string>
-    <string name="pref_communication">Komunikasi</string>
     <string name="pref_chats">Obrolan</string>
     <string name="pref_in_chat_sounds">Suara dalam obrolan</string>
     <string name="pref_message_text_size">Ukuran huruf pesan</string>
@@ -451,7 +449,6 @@
     <string name="pref_background">Latar belakang</string>
     <string name="pref_background_btn_default">Menggunakan gambar default</string>
     <string name="pref_background_btn_gallery">Pilih dari galeri</string>
-    <string name="pref_watch_mvbox_folder">Saksikan berkas DeltaChat</string>
     <string name="pref_send_copy_to_self">Kirim salinan ke saya</string>
     <string name="pref_auto_folder_moves">Perpindahan otomatis ke berkas DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">Percakapan dipindahkan untuk menghindari memenuhi kotak masuk</string>

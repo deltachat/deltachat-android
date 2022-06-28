@@ -428,7 +428,6 @@
     <string name="profile_shared_chats">گفتگوهای اشتراک گذاری شده</string>
     <string name="tab_contact">مخاطب</string>
     <string name="tab_group">گروه</string>
-    <string name="tab_members">اعضا</string>
     <string name="tab_gallery">گالری</string>
     <string name="tab_docs">اسناد</string>
     <string name="tab_links">لینک‌ها</string>
@@ -581,7 +580,6 @@
     <string name="pref_use_system_emoji">استفاده از شکلک‌های سیستم</string>
     <string name="pref_use_system_emoji_explain">غیرفعال کردن شکلک‌های داخلی دلتاچت</string>
     <string name="pref_app_access">دسترسی نرم‌افزار</string>
-    <string name="pref_communication">ارتباط</string>
     <string name="pref_chats">گفتگوها</string>
     <string name="pref_in_chat_sounds">صداهای مربوط به گفتگو</string>
     <string name="pref_message_text_size">اندازه نوشته‌های پیام</string>
@@ -609,9 +607,7 @@
     <string name="pref_background_btn_gallery">انتخاب از گالری</string>
     <string name="pref_imap_folder_handling">IMAP نحوه مدیریت پوشه </string>
     <string name="pref_imap_folder_warn_disable_defaults">اگر این گزینه را غیر فعال می‌کنید از اینکه سرور شما و حساب‌هایتان هم بر این اساس تنظیم شده باشند.\n\n در غیر این صورت ممکن است هیچ چیز کار نکند. </string>
-    <string name="pref_watch_inbox_folder">پوشه صندوق ورودی را نگاه کن</string>
     <string name="pref_watch_sent_folder">پوشه ارسال شده‌ها را نگاه کن</string>
-    <string name="pref_watch_mvbox_folder">پوشه دلتاچت را نگاه کن</string>
     <string name="pref_send_copy_to_self">ارسال رونوشت به خودم</string>
     <string name="pref_auto_folder_moves">انتقال خودکار به پوشه دلتاچت</string>
     <string name="pref_auto_folder_moves_explain">گفتگوها برای جلوگیری از پر شدن صندوق ورودی جابجا شده‌اند</string>
@@ -635,7 +631,6 @@
     <string name="up_to_x">تا سقف %1$s</string>
     <string name="up_to_x_most_worse_quality_images">تا سقف %1$s، بدترین کیفیت تصویر</string>
     <string name="up_to_x_most_balanced_quality_images">تا سقف %1$s، متعادل‌ترین کیفیت تصویر</string>
-    <string name="no_limit">بدون محدودیت</string>
     <string name="download_failed">بارگیری ناموفق</string>
     <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string eg. "1 MiB message" -->
     <string name="n_bytes_message">پیام %1$s </string>
@@ -947,10 +942,4 @@ GNU GPL ورژن ۳
     <string name="perm_enable_bg_already_done">قبلا اجازه دسترسی به فعالیت در پس زمینه را به دلتاچت داده‌اید. \n\n اگر پیام‌ها هنوز هم در شرایط پس زمینه نمی‌آمد لطفا تنظیمات سیستم را نیز بررسی نمایید. </string>
 
 
-    <!-- device messages for updates -->
-    <string name="update_1_28_android">نکات مهم نسخه ۱.۲۸: 🔒 رمزگذاری: یک گزینه آزمایشی جدید ایجاد شده است تا بتوانید مخاطبین، کلیدهای رمزگذاری و پیام‌های آن‌ها را به صورت رمزگذاری شده روی دستگاه خود نگهداری کنید که فقط در هنگام ایجاد حساب و بازگرداندن نسخه پشتیبان قابل استفاده است.
-ارسال به لیست‌های رایانامه📫
-تنظیم اولیه سریع‌تر برای سرورهای رایانامه💫 و گزینه‌های شبکه خطی‌تر برای جلوگیری از تنظیمات اشتباه
-باگ‌ها🐜: خیییییییییلی از اشکالاتی که کاربران گزارش کرده بودند اصلاح شد. </string>
-    <string name="update_1_28_ios_extra_line">...و اکنون می‌توانید از بخش «تنظیمات/ پس‌زمینه » یک پس زمینه انتخاب کنید :)</string>
     </resources>

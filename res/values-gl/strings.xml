@@ -426,7 +426,6 @@
     <string name="profile_shared_chats">Conversas compartidas</string>
     <string name="tab_contact">Contacto</string>
     <string name="tab_group">Grupo</string>
-    <string name="tab_members">Membros</string>
     <string name="tab_gallery">Galería</string>
     <string name="tab_docs">Docs</string>
     <string name="tab_links">Ligazóns</string>
@@ -578,7 +577,6 @@
     <string name="pref_use_system_emoji">Utilizar emoji do sistema</string>
     <string name="pref_use_system_emoji_explain">Desactivar o soporte interno para emoji de Delta Chat</string>
     <string name="pref_app_access">Acceso a app</string>
-    <string name="pref_communication">Comunicación</string>
     <string name="pref_chats">Conversas</string>
     <string name="pref_in_chat_sounds">Sons na conversa</string>
     <string name="pref_message_text_size">Tamaño da letra na mensaxe</string>
@@ -604,9 +602,7 @@
     <string name="pref_background_btn_gallery">Escoller na galería</string>
     <string name="pref_imap_folder_handling">Xestión cartafol IMAP</string>
     <string name="pref_imap_folder_warn_disable_defaults">Se desactivas esta opción, asegúrate de que o servidor e os teus outros clientes están configurados de xeito acorde.\n\nSe non, algo podería fallar.</string>
-    <string name="pref_watch_inbox_folder">Vixiar cartafol de Entrada</string>
     <string name="pref_watch_sent_folder">Vixiar cartafol Enviados</string>
-    <string name="pref_watch_mvbox_folder">Vixiar cartafol DeltaChat</string>
     <string name="pref_send_copy_to_self">Enviar copia a ti mesmo</string>
     <string name="pref_auto_folder_moves">Mover automáticamente ao cartafol DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">As conversas móvense do cartafol de Entrada para evitar saturalo.</string>
@@ -630,7 +626,6 @@
     <string name="up_to_x">Ata %1$s</string>
     <string name="up_to_x_most_worse_quality_images">Ata %1$s, a maioría de imaxes da peor calidade</string>
     <string name="up_to_x_most_balanced_quality_images">Ata %1$s, a maioría de imaxes de calidade equilibrada</string>
-    <string name="no_limit">Sen límite</string>
     <string name="download_failed">Fallou a descarga</string>
     <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string eg. "1 MiB message" -->
     <string name="n_bytes_message">%1$s mensaxe</string>
@@ -936,8 +931,6 @@
 
 
     <!-- device messages for updates -->
-    <string name="update_1_28_android">Destacado en 1.28:\n\n🔒 Cifrado: unha nova opción experimental para gardar contactos, chaves de cifrado e mensaxes de texto cifrados no teu dispositivo. Só dispoñible cando creas a conta e importas ficheiros de copia de apoio.\n\n📫 Escribir a listas de correo\n\n💫 Configuración inicial máis rápida para servidores de email e opcións de rede simplificadas para evitar problemas de configuración\n\n🐜Mais un looooote de problemiñas que as usuarias nos comentaron</string>
-    <string name="update_1_28_ios_extra_line">...e podes elexir o tapiz en \"Axustes / Fondo\" :)</string>
     <string name="update_1_30">Máis rápido. Máis estable.\n\nNa versión 1.30 poñemos o foco na velocidade e fiabilidade, arranxando dúcias de problemiñas. Mira o rexistro de cambios se algún que ti vises foi arranxado: https://get.delta.chat/#changelogs 🚀</string>
 
 </resources>

@@ -420,7 +420,6 @@
     <string name="profile_shared_chats">共有聊天</string>
     <string name="tab_contact">联系人</string>
     <string name="tab_group">群组</string>
-    <string name="tab_members">成员</string>
     <string name="tab_gallery">图库</string>
     <string name="tab_docs">文档</string>
     <string name="tab_links">链接</string>
@@ -576,7 +575,6 @@
     <string name="pref_use_system_emoji">使用系统 emoji</string>
     <string name="pref_use_system_emoji_explain">关闭 Delta Chat 内置 emoji 支持</string>
     <string name="pref_app_access">应用程序访问</string>
-    <string name="pref_communication">通讯</string>
     <string name="pref_chats">聊天</string>
     <string name="pref_in_chat_sounds">聊天音</string>
     <string name="pref_message_text_size">消息字体大小</string>
@@ -602,9 +600,7 @@
     <string name="pref_background_btn_gallery">从图库中选择</string>
     <string name="pref_imap_folder_handling">IMAP 文件夹处理</string>
     <string name="pref_imap_folder_warn_disable_defaults">若要更改此选项，请您务必调整服务器以及其他客户端的相应设置。\n\n否则软件可能无法正常工作。</string>
-    <string name="pref_watch_inbox_folder">监视收件箱文件夹</string>
     <string name="pref_watch_sent_folder">监视已发送文件夹</string>
-    <string name="pref_watch_mvbox_folder">监视 DeltaChat 文件夹</string>
     <string name="pref_send_copy_to_self">给自己发送副本</string>
     <string name="pref_send_copy_to_self_explain">当在多台设备上使用此账户时，这是必需的</string>
     <string name="pref_auto_folder_moves">自动移动至 DeltaChat 文件夹</string>
@@ -629,7 +625,6 @@
     <string name="up_to_x">%1$s 以下</string>
     <string name="up_to_x_most_worse_quality_images">%1$s 以下，图像质量最差</string>
     <string name="up_to_x_most_balanced_quality_images">%1$s 以下，图像质量最均衡</string>
-    <string name="no_limit">无限制</string>
     <string name="download_failed">下载失败</string>
     <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string eg. "1 MiB message" -->
     <string name="n_bytes_message">%1$s 消息</string>
@@ -946,8 +941,6 @@
 
 
     <!-- device messages for updates -->
-    <string name="update_1_28_android">1.28 版主要变化：\n\n🔒 加密：一个新的实验性选项，可以在你的设备上保加密存你的联系人、加密信息和短信。仅在帐户创建和导入备份文件时可用。\n\n📫写信给邮件列表\n\n💫更快地对更多电子邮件服务器进行初始化设置，简化网络选项以防止意外的错误配置\n\n🐜 修复了许多用户报告的问题</string>
-    <string name="update_1_28_ios_extra_line">… 另外，你现在可以在“设置/背景”处选择壁纸了 :)</string>
     <string name="update_1_30">更快。更稳定。\n\n对于 1.30 版本，我们专注于速度和可靠性，修复了几十个 bug。查看我们的更新记录，了解你曾遇到的 bug 是否已经修复： https://get.delta.chat/#changelogs 🚀</string>
 
 </resources>

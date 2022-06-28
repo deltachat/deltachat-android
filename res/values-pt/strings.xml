@@ -278,7 +278,6 @@
     <string name="pref_use_system_emoji">Utilizar o emoji do sistema</string>
     <string name="pref_use_system_emoji_explain">Desactivar o suporte integrado de emojis no Delta Chat</string>
     <string name="pref_app_access">Acesso à App</string>
-    <string name="pref_communication">Comunicação</string>
     <string name="pref_chats">chats</string>
     <string name="pref_in_chat_sounds">Sons na chat</string>
     <string name="pref_message_text_size">Tamanho do texto das mensagens</string>
@@ -299,9 +298,7 @@
     <string name="pref_background">Fundo</string>
     <string name="pref_imap_folder_handling">Manipulação da pasta do IMAP</string>
     <string name="pref_imap_folder_warn_disable_defaults">Se desabilitar esta opção, verifique se seu servidor e seus outros clientes estão configurados adequadamente. \n\ncaso contrário, as coisas podem não funcionar.</string>
-    <string name="pref_watch_inbox_folder">Ver a caixa de entrada</string>
     <string name="pref_watch_sent_folder">Ver a pasta de enviados</string>
-    <string name="pref_watch_mvbox_folder">Ver a pasta do Delta Chat</string>
     <string name="pref_auto_folder_moves">Mover pasta automaticamente para o Delta Chat</string>
     <string name="pref_auto_folder_moves_explain">As chats de chat são movidas para evitar atravancar da pasta Inbox</string>
     <string name="pref_show_emails">Exibir e-mails comuns</string>

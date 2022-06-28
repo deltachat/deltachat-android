@@ -394,7 +394,6 @@
     <string name="profile_shared_chats">សន្ទនាដែលបានចែករំលែក</string>
     <string name="tab_contact">ទំនាក់ទំនង</string>
     <string name="tab_group">ក្រុម</string>
-    <string name="tab_members">សមាជិក</string>
     <string name="tab_gallery">វិចិត្រសាលរូបភាពនិងវីដេអូ</string>
     <string name="tab_docs">វិចិត្រសាលឯកសារ</string>
     <string name="tab_links">វិចិត្រសាលតំណខ្ពស់</string>
@@ -543,7 +542,6 @@
     <string name="pref_use_system_emoji">ប្រើប្រាស់រូបសញ្ញាអារម្មណ៍របសប្រពន្ធ័</string>
     <string name="pref_use_system_emoji_explain">បិទការប្រើប្រាស់រូបសញ្ញាអារម្មណ៍ ពិសា Delta Chat</string>
     <string name="pref_app_access">ចូលដំណើរការកម្មវិធី</string>
-    <string name="pref_communication">មធ្យោបាយទំនាក់ទំនង</string>
     <string name="pref_chats">សន្ទនា</string>
     <string name="pref_in_chat_sounds">សម្លេងនៅក្នុងសន្ទនា</string>
     <string name="pref_message_text_size">ទំហំអក្សរសារ</string>
@@ -569,9 +567,7 @@
     <string name="pref_background_btn_gallery">ជ្រើសរើសពីវិចិត្រសាល</string>
     <string name="pref_imap_folder_handling">ការប្រគល់ឯកសារ IMAP</string>
     <string name="pref_imap_folder_warn_disable_defaults">ប្រសិនបើអ្នកបិទជម្រើសនេះ ត្រូវប្រាកដថា ម៉ាសុីនបម្រើរបស់អ្នក និងសេវាបម្រើផ្សេងទៀតរបស់អ្នក បានដំឡើងតាម\n\nបើមិនដូច្នោះទេ អ្វីៗនឹងមិនដំណើរការទាល់តែសោះ។</string>
-    <string name="pref_watch_inbox_folder">មើលថតប្រអប់ទទួល</string>
     <string name="pref_watch_sent_folder">មើលថតប្រអប់បានផ្ញើ</string>
-    <string name="pref_watch_mvbox_folder">មើលថតប្រអប់សា Delta Chat</string>
     <string name="pref_send_copy_to_self">ផ្ញើចម្លងទៅខ្លួនឯង</string>
     <string name="pref_auto_folder_moves">ផ្លាស់ទីដោយស្វ័យប្រវត្តិទៅ ប្រអប់សា Delta Chat</string>
     <string name="pref_auto_folder_moves_explain">ការនិយាយសន្ទនា បានផ្លាស់ទីដើម្បីជៀសវាងការប៉ៈពាល់ប្រអប់ទទួល។</string>
@@ -591,7 +587,6 @@
     <string name="up_to_x">រហូតដល់ %1$s</string>
     <string name="up_to_x_most_worse_quality_images">រហូតដល់ %1$s រូបភាពគុណភាពអាក្រក់បំផុត</string>
     <string name="up_to_x_most_balanced_quality_images">រហូតដល់ %1$s រូបភាពដែលមានគុណភាពមានតុល្យភាពបំផុត</string>
-    <string name="no_limit">គ្មានដែនកំណត់</string>
     <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string eg. "1 MiB message" -->
     <string name="n_bytes_message">សារ %1$s</string>
     <!-- %1$s will be replaced by human-readable date and time -->

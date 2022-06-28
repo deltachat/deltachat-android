@@ -181,7 +181,6 @@
     <string name="pref_use_system_emoji">యంత్రము యొక్క  ఎమొజిలను  ఉపయొగించు</string>
     <string name="pref_use_system_emoji_explain">Delta Chat యొక్క అంతర్నిర్మిత ఎమోజి మద్దతును నిలిపివేయి</string>
     <string name="pref_app_access">అనువర్తన ప్రాప్యత</string>
-    <string name="pref_communication">సమాచారం</string>
     <string name="pref_chats">చాట్లు</string>
     <string name="pref_in_chat_sounds">యాప్-లోపల నోటిఫికేషన్లు</string>
     <string name="pref_message_text_size">సందేశం ఫాంట్ పరిమాణం</string>

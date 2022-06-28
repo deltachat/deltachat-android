@@ -435,7 +435,6 @@
     <string name="profile_shared_chats">Gemeinsame Chats</string>
     <string name="tab_contact">Kontakt</string>
     <string name="tab_group">Gruppe</string>
-    <string name="tab_members">Mitglieder</string>
     <string name="tab_gallery">Galerie</string>
     <string name="tab_docs">Dokumente</string>
     <string name="tab_links">Links</string>
@@ -591,7 +590,6 @@
     <string name="pref_use_system_emoji">System-Emoji benutzen</string>
     <string name="pref_use_system_emoji_explain">Eingebaute Emoji-Unterstützung von Delta Chat deaktivieren</string>
     <string name="pref_app_access">App-Zugriff</string>
-    <string name="pref_communication">Kommunikation</string>
     <string name="pref_chats">Chats</string>
     <string name="pref_in_chat_sounds">In-Chat-Klänge</string>
     <string name="pref_message_text_size">Schriftgröße</string>
@@ -617,9 +615,7 @@
     <string name="pref_background_btn_gallery">Aus Galerie auswählen</string>
     <string name="pref_imap_folder_handling">IMAP-Ordnereinstellungen</string>
     <string name="pref_imap_folder_warn_disable_defaults">Wenn Sie diese Option ändern, stellen Sie sicher, dass Ihr Server und Ihre anderen Geräte entsprechend konfiguriert sind\n\nAndernfalls funktionieren Dinge möglicherweise nicht wie erwartet.</string>
-    <string name="pref_watch_inbox_folder">Posteingang beobachten</string>
     <string name="pref_watch_sent_folder">Gesendet-Ordner beobachten</string>
-    <string name="pref_watch_mvbox_folder">DeltaChat-Ordner beobachten</string>
     <string name="pref_send_copy_to_self">Kopie an mich selbst senden</string>
     <string name="pref_send_copy_to_self_explain">Erforderlich bei Verwendung des E-Mail-Kontos auf mehreren Geräten.</string>
     <string name="pref_auto_folder_moves">Autom. Verschieben in den DeltaChat-Ordner</string>
@@ -644,7 +640,6 @@
     <string name="up_to_x">Bis zu %1$s</string>
     <string name="up_to_x_most_worse_quality_images">Bis zu %1$s, die meisten Bilder schlechter Qualität</string>
     <string name="up_to_x_most_balanced_quality_images">Bis zu %1$s, die meisten Bilder ausgewogener Qualität</string>
-    <string name="no_limit">Keine Begrenzung</string>
     <string name="download_failed">Download gescheitert</string>
     <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string eg. "1 MiB message" -->
     <string name="n_bytes_message">%1$s Nachricht</string>
@@ -963,8 +958,6 @@ Ihr bisheriges E-Mail-Konto wird dabei nicht gelöscht. Sie können mit der Opti
 
 
     <!-- device messages for updates -->
-    <string name="update_1_28_android">1.28 Highlights:\n\n🔒 Verschlüsselung: Eine neue, experimentelle Option, die Ihre Kontakte und Textnachrichten verschlüsselt auf Ihrem Gerät speichert. Die Option ist bei der Kontoerstellung und beim Import verfügbar.\n\n📫 Auf Mailinglisten schreiben\n\n💫 Schnellere Ersteinrichtung bei mehr E-Mail-Providern und optimierte Netzwerkoptionen, die versehentliche Fehlkonfigurationen vermeiden\n\n🐜 Viele von Benutzern gemeldete Probleme wurden behoben</string>
-    <string name="update_1_28_ios_extra_line">… und unter \"Einstellungen\" können Sie nun Ihr eigenes Hintergrundbild auswählen :)</string>
     <string name="update_1_30">Schneller. Stabiler.\n\nFür die Version 1.30 haben wir uns auf Geschwindigkeit und Zuverlässigkeit konzentriert und Dutzende Fehler behoben. Ist Ihr Lieblingsfehler dabei? Details im Changelog: https://get.delta.chat/#changelogs 🚀</string>
 
 </resources>

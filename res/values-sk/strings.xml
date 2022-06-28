@@ -454,7 +454,6 @@
     <string name="profile_shared_chats">Zdieľané konverzácie</string>
     <string name="tab_contact">Kontakt</string>
     <string name="tab_group">Skupina</string>
-    <string name="tab_members">Členovia</string>
     <string name="tab_gallery">Galéria</string>
     <string name="tab_docs">Dokumentácia</string>
     <string name="tab_links">Odkazy</string>
@@ -606,7 +605,6 @@
     <string name="pref_use_system_emoji">Používajte systémové emodži</string>
     <string name="pref_use_system_emoji_explain">Vypnite vstavanú podporu emodži v aplikácii Delta Chat</string>
     <string name="pref_app_access">Prístup k aplikácii</string>
-    <string name="pref_communication">Komunikácia</string>
     <string name="pref_chats">Konverzácie</string>
     <string name="pref_in_chat_sounds">Zvuky v konverzáciách</string>
     <string name="pref_message_text_size">Veľkosť písma správy</string>
@@ -632,9 +630,7 @@
     <string name="pref_background_btn_gallery">Vyberte z galérie</string>
     <string name="pref_imap_folder_handling">Spracovanie priečinka IMAP</string>
     <string name="pref_imap_folder_warn_disable_defaults">Ak túto možnosť zakážete, uistite sa, že váš server a ostatní klienti sú zodpovedajúcim spôsobom nakonfigurovaní.\n\nV opačnom prípade nemusí fungovať vôbec.</string>
-    <string name="pref_watch_inbox_folder">Sledujte priečinok Doručená pošta</string>
     <string name="pref_watch_sent_folder">Pozrieť priečinok Odoslané</string>
-    <string name="pref_watch_mvbox_folder">Sledovať priečinok DeltaChat</string>
     <string name="pref_send_copy_to_self">Odoslať kópiu sebe</string>
     <string name="pref_auto_folder_moves">Automaticky presúvať do priečinka DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">Konverzácie sa presunú, aby sa predišlo preplneniu doručenej pošty</string>
@@ -658,7 +654,6 @@
     <string name="up_to_x">Až do %1$s</string>
     <string name="up_to_x_most_worse_quality_images">Až do %1$s, väčšina obrázkov v horšej kvalite</string>
     <string name="up_to_x_most_balanced_quality_images">Až do %1$s, väčšina obrázkov vo vyváženej kvalite</string>
-    <string name="no_limit">Žiadny limit</string>
     <string name="download_failed">Sťahovanie zlyhalo</string>
     <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string eg. "1 MiB message" -->
     <string name="n_bytes_message">%1$s správa</string>
@@ -962,7 +957,7 @@
     <string name="perm_enable_bg_already_done">Službe Delta Chat ste už povolili príjem správ na pozadí.\n\nAk správy stále neprichádzajú na pozadí, skontrolujte tiež svoje systémové nastavenia.</string>
 
 
-    <string name="update_1_28_ios_extra_line">… a teraz môžete vybrať pozadie v ponuke \"Nastavenia / Pozadie\" :)</string>
+    <!-- device messages for updates -->
     <string name="update_1_30">Rýchlejší. Stabilnejší.\n\nVo vydaní 1.30 sme sa zamerali na rýchlosť a spoľahlivosť, opravili sme desiatky chýb. Prečítajte si prehľad o zmenách a pozrite sa, či sme opravili vašu obľúbenú chybu: https://get.delta.chat/#changelogs 🚀</string>
 
 </resources>

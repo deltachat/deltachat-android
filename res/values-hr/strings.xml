@@ -167,7 +167,6 @@
     <string name="profile_encryption">Šifriranje</string>
     <string name="tab_contact">Kontakt</string>
     <string name="tab_group">Grupa</string>
-    <string name="tab_members">Članovi</string>
     <string name="tab_gallery">Galerija</string>
     <string name="tab_map">Mapa</string>
     <string name="media_preview">Prikaz medija</string>
@@ -212,7 +211,6 @@
     <string name="pref_use_system_emoji">Koristi emotikone sustava</string>
     <string name="pref_use_system_emoji_explain">Onemogući ugrađenu Delta Chat podršku za emotikone</string>
     <string name="pref_app_access">Pristup aplikaciji</string>
-    <string name="pref_communication">Komunikacija</string>
     <string name="pref_chats">Razgovori</string>
     <string name="pref_in_chat_sounds">Zvuk unutar razgovora</string>
     <string name="pref_message_text_size">Veličina fonta poruke</string>

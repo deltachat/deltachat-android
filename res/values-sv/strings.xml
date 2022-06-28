@@ -368,7 +368,6 @@
     <string name="profile_shared_chats">Delade chattar</string>
     <string name="tab_contact">Kontakt</string>
     <string name="tab_group">Grupp</string>
-    <string name="tab_members">Medlemmar</string>
     <string name="tab_gallery">Galleri</string>
     <string name="tab_docs">Dokument</string>
     <string name="tab_links">Länkar</string>
@@ -473,7 +472,6 @@
     <string name="pref_use_system_emoji">Använd systemets emojier</string>
     <string name="pref_use_system_emoji_explain">Inaktivera Delta Chat\'s inbyggda emojier</string>
     <string name="pref_app_access">Programåtkomst</string>
-    <string name="pref_communication">Kommunikation</string>
     <string name="pref_chats">Chattar</string>
     <string name="pref_in_chat_sounds">Ljud i konversationer</string>
     <string name="pref_message_text_size">Teckenstorlek för meddelanden</string>
@@ -499,9 +497,7 @@
     <string name="pref_background_btn_gallery">Välj från galleriet</string>
     <string name="pref_imap_folder_handling">IMAP mapphantering</string>
     <string name="pref_imap_folder_warn_disable_defaults">Om du inaktiverar det här alternativet, tillse att servern och dina andra klienter är konfigurerade i enlighet med detta.\n\nAnnars kanske saker och ting inte fungerar alls.</string>
-    <string name="pref_watch_inbox_folder">Övervaka mappen \"Inkorg\"</string>
     <string name="pref_watch_sent_folder">Övervaka mappen \"Skickat\"</string>
-    <string name="pref_watch_mvbox_folder">Övervaka mappen \"DeltaChat\"</string>
     <string name="pref_send_copy_to_self">Skicka kopia till mig själv</string>
     <string name="pref_auto_folder_moves">Flyttas automatiskt till DeltaChat-mappen</string>
     <string name="pref_auto_folder_moves_explain">Chattkonversationer flyttas automatiskt för att undvika att inkorgen belamras</string>

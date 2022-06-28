@@ -457,7 +457,6 @@
     <string name="profile_shared_chats">Wspólne czaty</string>
     <string name="tab_contact">Kontakt</string>
     <string name="tab_group">Grupa</string>
-    <string name="tab_members">Członkowie</string>
     <string name="tab_gallery">Galeria</string>
     <string name="tab_docs">Dokumenty</string>
     <string name="tab_links">Linki</string>
@@ -613,7 +612,6 @@
     <string name="pref_use_system_emoji">Użyj emoji systemowych</string>
     <string name="pref_use_system_emoji_explain">Wyłącza wbudowaną obsługę emoji Delta Chat</string>
     <string name="pref_app_access">Dostęp do aplikacji</string>
-    <string name="pref_communication">Komunikacja</string>
     <string name="pref_chats">Czaty</string>
     <string name="pref_in_chat_sounds">Dźwięki w czacie</string>
     <string name="pref_message_text_size">Rozmiar czcionki w wiadomości</string>
@@ -639,9 +637,7 @@
     <string name="pref_background_btn_gallery">Wybierz z galerii</string>
     <string name="pref_imap_folder_handling">Obsługa folderów IMAP</string>
     <string name="pref_imap_folder_warn_disable_defaults">Jeśli wyłączysz tę opcję, upewnij się, że twój serwer i inni klienci są odpowiednio skonfigurowani.\n\nW przeciwnym razie wszystko może w ogóle nie działać.</string>
-    <string name="pref_watch_inbox_folder">Oglądaj katalog Skrzynka odbiorcza</string>
     <string name="pref_watch_sent_folder">Oglądaj katalog Wysłane</string>
-    <string name="pref_watch_mvbox_folder">Oglądaj folder DeltaChat</string>
     <string name="pref_send_copy_to_self">Wyślij kopię do siebie</string>
     <string name="pref_send_copy_to_self_explain">Wymagane kiedy korzystasz z tego konta na wielu urządzeniach.</string>
     <string name="pref_auto_folder_moves">Automatyczne przenoszenie do folderu DeltaChat</string>
@@ -666,7 +662,6 @@
     <string name="up_to_x">Do %1$s</string>
     <string name="up_to_x_most_worse_quality_images">Do %1$s, większość obrazów gorszej jakości.</string>
     <string name="up_to_x_most_balanced_quality_images">Do %1$s, obrazy o najbardziej zrównoważonej jakości</string>
-    <string name="no_limit">Bez limitu</string>
     <string name="download_failed">Pobieranie nie udane</string>
     <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string eg. "1 MiB message" -->
     <string name="n_bytes_message">Wiadomość %1$s</string>
@@ -947,7 +942,4 @@
     <string name="perm_enable_bg_already_done">Pozwolono już Delta Chat na odbieranie wiadomości w tle.\n\nJeśli wiadomości nadal nie docierają w tle, sprawdź też ustawienia systemu.</string>
 
 
-    <!-- device messages for updates -->
-    <string name="update_1_28_android">1.28 Najważniejsze informacje:\n\n🔒 Szyfrowanie: Nowa eksperymentalna opcja do utrzymywania kontaktów, szyfrowania sekretnych i tekstowych wiadomości zaszyfrowanych na twoim urządzeniu. Dostępne tylko podczas tworzenia konta i importowania plików kopii zapasowych.\n\n📫 Zapisywanie do listy dyskusyjnej\n\n💫 Szybsza konfiguracja początkowa dla większej liczby serwerów e-mail i usprawnionych opcji sieciowych, aby zapobiec przypadkowej błędnej konfiguracji\n\n🐜 Prawdopodobnie naprawione zgłaszane przez użytkownika problemy</string>
-    <string name="update_1_28_ios_extra_line">… i już teraz możesz wybrać tapetę w „Ustawienia » Tło” :) </string>
     </resources>

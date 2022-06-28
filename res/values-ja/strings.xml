@@ -351,7 +351,6 @@
     <string name="profile_shared_chats">共有チャット</string>
     <string name="tab_contact">連絡先</string>
     <string name="tab_group">グループ</string>
-    <string name="tab_members">メンバー</string>
     <string name="tab_gallery">画像</string>
     <string name="tab_docs">文章</string>
     <string name="tab_links">リンク</string>
@@ -475,7 +474,6 @@ https://delta.chat</string>
     <string name="pref_use_system_emoji">システムの絵文字を使う</string>
     <string name="pref_use_system_emoji_explain">Delta Chat独自の絵文字機能を無効にする</string>
     <string name="pref_app_access">アプリのアクセス</string>
-    <string name="pref_communication">通信</string>
     <string name="pref_chats">チャット</string>
     <string name="pref_in_chat_sounds">着信音</string>
     <string name="pref_message_text_size">文字の大きさ</string>
@@ -498,9 +496,7 @@ https://delta.chat</string>
     <string name="pref_background">背景</string>
     <string name="pref_background_btn_default">デフォルトの画像を使う</string>
     <string name="pref_background_btn_gallery">ギャラリーから選ぶ</string>
-    <string name="pref_watch_inbox_folder">受信トレイを監視する</string>
     <string name="pref_watch_sent_folder">送信トレイを監視する</string>
-    <string name="pref_watch_mvbox_folder">DeltaChatフォルダを監視する</string>
     <string name="pref_send_copy_to_self">自分にコピーを送る</string>
     <string name="pref_auto_folder_moves">DeltaChatフォルダに自動で移動する</string>
     <string name="pref_auto_folder_moves_explain">チャットは受信箱の邪魔にならないように移動されます。</string>

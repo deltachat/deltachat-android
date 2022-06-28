@@ -359,7 +359,6 @@
     <string name="profile_shared_chats">共享的對話</string>
     <string name="tab_contact">聯絡人</string>
     <string name="tab_group">群組</string>
-    <string name="tab_members">成員</string>
     <string name="tab_gallery">相簿</string>
     <string name="tab_docs">文件</string>
     <string name="tab_links">連結</string>
@@ -447,7 +446,6 @@
     <string name="pref_use_system_emoji">使用系統的表情符號</string>
     <string name="pref_use_system_emoji_explain">停用 Delta Chat 內建的表情符號</string>
     <string name="pref_app_access">App 存取</string>
-    <string name="pref_communication">通訊</string>
     <string name="pref_chats">對話</string>
     <string name="pref_in_chat_sounds">對話內的音效</string>
     <string name="pref_message_text_size">訊息的字型大小</string>
@@ -471,9 +469,7 @@
     <string name="pref_background_btn_gallery">從相簿中挑選</string>
     <string name="pref_imap_folder_handling">處理 IMAP 資料夾</string>
     <string name="pref_imap_folder_warn_disable_defaults">如果關閉本選項的話，請務必確定你的伺服器和其它客戶端應用程式都使用相同的設定，否則很可能不能運作。</string>
-    <string name="pref_watch_inbox_folder">監看收件匣</string>
     <string name="pref_watch_sent_folder">監看送件匣</string>
-    <string name="pref_watch_mvbox_folder">監看 DeltaChat 資料夾</string>
     <string name="pref_auto_folder_moves">自動搬移到 DeltaChat 資料夾</string>
     <string name="pref_auto_folder_moves_explain">搬移對話以避免塞爆收件匣</string>
     <string name="pref_show_emails">顯示傳統email</string>

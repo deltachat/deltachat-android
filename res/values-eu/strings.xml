@@ -273,7 +273,6 @@
     <string name="profile_shared_chats">Partekatutako txatak</string>
     <string name="tab_contact">Kontaktua</string>
     <string name="tab_group">Taldea</string>
-    <string name="tab_members">Kideak</string>
     <string name="tab_gallery">Galeria</string>
     <string name="tab_docs">Dokumentuak</string>
     <string name="tab_links">Estekak</string>
@@ -373,7 +372,6 @@
     <string name="pref_use_system_emoji">Erabili sistemako emojiak</string>
     <string name="pref_use_system_emoji_explain">Desgaitu Delta Chat-en barne emoji euskarria</string>
     <string name="pref_app_access">Aplikazio sarbidea</string>
-    <string name="pref_communication">Komunikazioa</string>
     <string name="pref_chats">Txatak</string>
     <string name="pref_in_chat_sounds">Txat bitarteko soinuak</string>
     <string name="pref_message_text_size">Mezuen letra tamaina</string>
@@ -399,9 +397,7 @@
     <string name="pref_background_btn_gallery">Hautatu galeriatik</string>
     <string name="pref_imap_folder_handling">IMAP karpeten kudeaketa</string>
     <string name="pref_imap_folder_warn_disable_defaults">Aukera hau desaktibatuz gero, egiaztatu zure zerbitzaria eta beste bezeroen konfigurazioa bat datorrela.\n\nBestela agian gauzak ez dabiltza.</string>
-    <string name="pref_watch_inbox_folder">Begiztatu sarrera karpeta</string>
     <string name="pref_watch_sent_folder">Begiztatu bidalitakoak karpeta</string>
-    <string name="pref_watch_mvbox_folder">Begiztatu DeltaChat karpeta</string>
     <string name="pref_send_copy_to_self">Bidali kopia norberari</string>
     <string name="pref_auto_folder_moves">Automatikoki mugitzen du DeltaChat karpetara</string>
     <string name="pref_auto_folder_moves_explain">Txat elkarrizketak lekuz aldatzen dira sarrera ontzian enbarazu ez egiteko</string>

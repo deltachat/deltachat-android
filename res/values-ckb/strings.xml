@@ -333,7 +333,6 @@
     <string name="profile_shared_chats">وتووێژە هاوبەشکراوەکان</string>
     <string name="tab_contact">بەردەنگ</string>
     <string name="tab_group">کۆڕ</string>
-    <string name="tab_members">ئەندامان</string>
     <string name="tab_gallery">پیشانگە</string>
     <string name="tab_docs">بەڵگەکان</string>
     <string name="tab_links">بەستەرەکان</string>
@@ -429,7 +428,6 @@
     <string name="pref_use_system_emoji">بەکارهێنانی وێنۆچکەکانی سیستەم</string>
     <string name="pref_use_system_emoji_explain">ئیمۆجییە ناوخۆییەکانی دێڵتا چات، ناچالاک دەبێتەوە.</string>
     <string name="pref_app_access">ڕێگەپێدان</string>
-    <string name="pref_communication">پێوەندی</string>
     <string name="pref_chats">وتووێژەکان</string>
     <string name="pref_in_chat_sounds">دەنگەکانی نێو-وتووێژی</string>
     <string name="pref_message_text_size">قەبارەی فۆنتی پەیامەکان</string>
@@ -448,9 +446,7 @@
     <string name="pref_background">پشتخان</string>
     <string name="pref_background_btn_default">بەکارهێنانی وێنەی بنەڕەتی</string>
     <string name="pref_background_btn_gallery">هەڵبژاردن لە پیشانگا</string>
-    <string name="pref_watch_inbox_folder">دیتنی بوخچەی وەرگیراوەکان</string>
     <string name="pref_watch_sent_folder">دیتنی بوخچەی هەنێردراوەکان</string>
-    <string name="pref_watch_mvbox_folder">دیتنی بوخچەی دێڵتاچات</string>
     <string name="pref_send_copy_to_self">هەناردنی ڕوونووسێک بۆ خۆت</string>
     <string name="pref_auto_folder_moves">هەناردنی خۆکار بۆ بوخچەی دێڵتاچات</string>
     <string name="pref_show_emails">پیشاندانی ئیمەیلە کلاسیکەکان</string>
