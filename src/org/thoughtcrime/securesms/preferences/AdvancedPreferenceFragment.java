@@ -233,7 +233,7 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
       inputField.setInputType(TYPE_TEXT_VARIATION_URI);
       new AlertDialog.Builder(getActivity())
               .setTitle(R.string.videochat_instance)
-              .setMessage(R.string.videochat_instance_explain)
+              .setMessage(getString(R.string.videochat_instance_explain_2)+"\n\n"+getString(R.string.videochat_instance_example))
               .setView(gl)
               .setNegativeButton(android.R.string.cancel, null)
               .setPositiveButton(android.R.string.ok, (dialog, which) -> {
