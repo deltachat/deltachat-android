@@ -31,6 +31,8 @@
     <string name="back">Enrere</string>
     <string name="close">Tanca</string>
     <string name="forward">Reenvia</string>
+    <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
+    <string name="resend">Torna-ho a enviar</string>
     <!-- In the meaning of "To archive", "Put a chat to the archive". This string does not mean "The Archive". -->
     <string name="archive">Arxiva</string>
     <!-- In the meaning of "To unarchive", "Remove a chat from the archive", opposite of the previous string -->
@@ -85,6 +87,9 @@
     <string name="this_month">Aquest mes</string>
     <string name="last_week">La setmana passada</string>
     <string name="last_month">El mes passat</string>
+    <!-- the placeholder will be replaced by a date or time, resulting eg. in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
+    <string name="last_seen_at">Vist per darrer cop a les %1$s</string>
+    <string name="last_seen_unknown">Vist per darrer cop: Ves a saber</string>
     <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
     <plurals name="n_minutes">
         <item quantity="one">%d min</item>
@@ -115,6 +120,12 @@
         <item quantity="one">%d destinatari</item>
         <item quantity="other">%d destinataris</item>
     </plurals>
+    <!-- short title, used for "N Chats Selected" or "N Messages Selected", however, requires a shorter form, eg. "N Selected" in english -->
+    <plurals name="n_selected">
+        <item quantity="one">%d Triat</item>
+        <item quantity="other">%d Triats</item>
+    </plurals>
+
     <string name="self">Jo</string>
     <string name="draft">Esborrany</string>
     <string name="image">Imatge</string>
@@ -169,6 +180,8 @@
     <string name="menu_new_contact">Contacte nou</string>
     <string name="menu_new_chat">Nova conversa</string>
     <string name="menu_new_group">Grup nou</string>
+    <!-- "Subject" here must be the same wording as used in the e-mail context, so. eg. "Betreff" in german (the idea is to help people coming from the e-mail context) -->
+    <string name="new_group_or_subject">Grup o Tema nou</string>
     <string name="menu_new_verified_group">Nou grup verificat</string>
     <!-- consider keeping the term "broadcast"; check how these lists are called eg. on whatsapp in the destination language -->
     <string name="broadcast_list">Llista de difusió</string>
@@ -196,6 +209,7 @@
     <string name="menu_copy_link_to_clipboard">Enllaç de còpia</string>
     <string name="menu_copy_text_to_clipboard">Copia el text</string>
     <string name="menu_copy_image_to_clipboard">Copia la imatge</string>
+    <string name="menu_copy_email_to_clipboard">Copia l\'email</string>
     <string name="paste_from_clipboard">Enganxa des del porta-retalls</string>
     <string name="menu_forward">Reenvia el missatge</string>
     <string name="menu_reply">Respon el missatge</string>
@@ -237,6 +251,7 @@
     <string name="device_talk">Missatges del dispositiu</string>
     <string name="device_talk_subtitle">Missatges generats localment</string>
     <string name="device_talk_explain">Els missatges d\'aquest xat són generats localment per la vostra app de Delta Chat. Els seus creadors els usen per informar-vos d\'actualitzacions de l\'app i problemes durant el seu ús.</string>
+    <string name="device_talk_welcome_message">Benvingut a Delta Chat! – Delta Chat te la pinta d\'altres apps de missatgeria, però no comporta un control centralitzat, ni un seguiment o una venda teva ni dels teus amics, col·legues o família a una corporació.\n\nTecnicament, Delta Chat és una aplicació de  correu electrònic amb una interfície de xat moderna. Per dir-ho així, correu electrònic en un vestit nou 👻\n\nUseu Delta Chat amb qualsevol dels milers de milions de persones: només us cal la seva adreça de correu electrònic. Als destinataris no els cal instal·lar-se Delta Chat, visitar webs o donar-se d\'alta enlloc - tot i que, només faltaria, si volen, els podeu adreçar a 👉 https://get.delta.chat</string>
     <string name="edit_contact">Edita el contacte</string>
     <!-- Translators: "Pin" here is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
     <string name="pin_chat">Fixa el xat</string>
@@ -248,6 +263,8 @@
     <string name="unpin">Desfixa</string>
     <string name="ConversationFragment_quoted_message_not_found">No s\'ha trobat el missatge original</string>
     <string name="reply_privately">Respon en privat</string>
+    <string name="source_code">Codi Font</string>
+
     <string name="mute_for_one_hour">Silencia 1 hora</string>
     <string name="mute_for_two_hours">Silencia 2 hores</string>
     <string name="mute_for_one_day">Silencia 1 dia</string>
@@ -275,6 +292,7 @@
     <string name="videochat_tap_to_open">Toca per obrir-ho</string>
     <string name="videochat_instance">Instància de vídeo xat</string>
     <string name="videochat_instance_placeholder">La vostra instància de vídeo xat</string>
+    <string name="videochat_instance_example">Exemples: https://meet.jit.si/$ROOM o basicwebrtc:https://your-server</string>
     <string name="videochat_invitation">Invitació a un vídeo xat</string>
     <string name="videochat_invitation_body">Heu sigut convidats a un vídeo xat, cliqueu %1$s per unir-vos-hi.</string>
 
@@ -333,6 +351,8 @@
         <item quantity="one">%d nou missatge</item>
         <item quantity="other">%d nous missatges</item>
     </plurals>
+    <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
+    <string name="chat_new_one_to_one_hint">Envieu un missatge. No hi fa pas res si %1$s no fa servir Delta Chat.</string>
     <string name="chat_new_broadcast_hint">En una llista de difusió, els altres reben els missatges en els seus xats privats amb vostè.\n\nEls destinataris no podran veure\'s entre ells.</string>
     <string name="chat_new_group_hint">Escriviu el primer missatge i així els altres podran respondre a tot el grup.\n\n• No patiu si hi ha membres que no fan servir Delta Chat.\n\n• El lliurament del primer missatge pot trigar una estona.</string>
     <string name="chat_record_slide_to_cancel">Llisca per cancel·lar</string>
@@ -350,9 +370,41 @@
     <string name="saved_messages">Missatges desats</string>
     <!-- this "Saved" should match the "Saved" from "Saved messages" -->
     <string name="saved">Desat</string>
+    <string name="save_as">Desa com</string>
+    <string name="retry_send">Torna a provar d\'enviar el missatge</string>
+    <!-- reasons for a disabled message composer -->
+    <string name="messaging_disabled_not_in_group">No hi podeu escriure perquè no sou en aquest grup. Per ser-hi, demaneu-ho a un altre membre.</string>
+    <string name="messaging_disabled_device_chat">Aquest xat només té missatges generats localment. A més no hi podeu escriure cap missatge.</string>
+    <string name="messaging_disabled_mailing_list">L\'enviament de missatges a una llista de correu encara no funciona</string>
+    <string name="cannot_display_unsuported_file_type">Aquest tipus de fitxer: %s no es pot mostrar</string>
+    <string name="attachment_failed_to_load">La càrrega de l\'adjunt ha fallat</string>
+    <!-- For recording Voice messages: Description for the "Lock" button allowing to lift the thumb from the record button while recording continues -->
+    <string name="lock_recording">Bloqueja la gravació</string>
+
+    <!-- mailing lists -->
+    <string name="mailing_list">Llista de correu</string>
+    <string name="mailing_list_profile_info">Els canvis al nom i la imatge de la llista de correu només s\'aplicaran en aquest dispositiu.</string>
+
+    <!-- webxdc -->
+    <!-- "Start..." button for an app -->
+    <string name="start_app">Comença...</string>
+    <!-- this is a warning that is shown when one tries to send something to a chat that is not yet accepted. -->
+    <string name="accept_request_first">Si us plau accepteu primer el requeriment del xat.</string>
+
     <!-- map -->
     <string name="filter_map_on_time">Mostra les ubicacions al llarg del temps</string>
     <string name="show_location_traces">Mostra el rastre</string>
+    <string name="add_poi">Envia el punt d\'interès</string>
+
+    <!-- chat audit log -->
+    <string name="chat_audit_log_empty_message">Els missatges de sistema d\'aquest xat es mostraran aquí</string>
+    <string name="chat_audit_log_title">Registre de l\'auditoria del xat per %1$s</string>
+    <!-- punycode warning / labeled links -->
+    <!-- placeholder is domain/hostname that should be trusted -->
+    <string name="open_external_url_trust_domain">No em tornis a demanar per %1$s</string>
+    <string name="puny_code_warning_header">S\'ha detectat un enllaç sospitós</string>
+    <!-- placeholder contains the hostname converted to ascii -->
+    <string name="puny_code_warning_question">Esteu segur de voler visitar %1$s?</string>
     <!-- search -->
     <string name="search">Busca</string>
     <string name="search_explain">Busca als xats, contactes i missatges</string>
@@ -362,14 +414,49 @@
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">Nom del grup</string>
     <string name="group_avatar">Imatge del grup</string>
+    <string name="remove_group_image">Esborra la imatge del grup</string>
+    <string name="change_group_image">Canvia la imatge del grup</string>
     <string name="group_create_button">Crea el grup</string>
     <string name="group_please_enter_group_name">Si us plau, poseu nom al grup.</string>
     <string name="group_add_members">Afegiu-hi membres</string>
     <string name="group_self_not_in_group">Has de ser membre del grup per poder fer això.</string>
     <string name="profile_encryption">Encriptació</string>
+    <string name="profile_shared_chats">Xats compartits</string>
     <string name="tab_contact">Contacte</string>
+    <string name="tab_group">Grup</string>
     <string name="tab_gallery">Galeria</string>
+    <string name="tab_docs">Docs</string>
+    <string name="tab_links">Enllaços</string>
+    <string name="tab_map">Mapa</string>
     <string name="media_preview">Previsualització multimèdia</string>
+    <string name="send_message">Envia el missatge</string>
+
+    <!-- Connectivity -->
+    <!-- Used as a headline for the "Inbox" eg. in the "Connectivity" view -->
+    <string name="incoming_messages">Missatges entrants</string>
+    <!-- Used as a headline for the "Outbox" eg. in the "Connectivity" view -->
+    <string name="outgoing_messages">Missatges sortints</string>
+    <string name="connectivity">Connectivitat</string>
+    <!-- Shown eg. in the title bar if the app is "Not connected"; as there is very few room, try to be as short as possible. -->
+    <string name="connectivity_not_connected">Desconnectat</string>
+    <!-- Shown eg. in the title bar if the app is "Connecting"; as there is very few room, try to be as short as possible. Note that the three dots are a single character (…), not three (...) -->
+    <string name="connectivity_connecting">Connectant...</string>
+    <!-- Shown eg. in the title bar if the app is "Updating" (eg. getting new/old message, sync things); as there is very few room, try to be as short as possible. Note that the three dots are a single character (…), not three (...) -->
+    <string name="connectivity_updating">Actualitzant...</string>
+    <!-- Shown eg. in the setting if the app is "Connected" -->
+    <string name="connectivity_connected">Connectat</string>
+    <string name="sending">Enviant...</string>
+    <string name="last_msg_sent_successfully">Últim missatge enviat bé.</string>
+    <string name="not_supported_by_provider">No suportat pel vostre proveïdor.</string>
+    <!-- Used as a subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed or so. -->
+    <string name="messages">Missatges</string>
+    <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
+    <string name="part_of_total_used">%1$s de %2$s usats</string>
+
+
+    <!-- welcome and login -->
+    <string name="welcome_chat_over_email">Xateja via Email</string>
+    <string name="scan_invitation_code">Escaneja el Codi d\'Invitació</string>
     <string name="welcome_intro1_message">El programa de missatgeria amb més usuaris del món. Gratuït i independent.</string>
     <string name="login_title">Identifiqueu-vos</string>
     <string name="login_header">Identifiqueu-vos al vostre servidor</string>
@@ -387,6 +474,8 @@
     <string name="login_smtp_port">Port SMTP</string>
     <string name="login_smtp_security">Seguretat SMTP</string>
     <string name="login_auth_method">Mètode d\'autorització</string>
+    <!-- the word "SOCKS5" here and in the following strings should not be translated in most cases -->
+    <string name="login_socks5">SOCKS5</string>
     <string name="login_info_oauth2_title">Voleu continuar amb la configuració simplificada?</string>
     <string name="login_info_oauth2_text">L’adreça d\'e-mail que heu introduït admet una configuració simplificada. (OAuth2).\n\nEn el pas següent, permeteu que Delta Chat actuï com a xat amb l\'aplicació de correu electrònic..\n\nNo hi ha servidors de Delta Chat, les vostres dades romanen al vostre dispositiu!</string>
     <string name="login_error_mail">Si us plau poseu una adreça d\'email vàlida</string>
@@ -398,6 +487,7 @@
     <string name="import_backup_no_backup_found">No s\'han trobat còpies de seguretat.\n\nCopieu la còpia de seguretat a \"%1$s\" i torneu-ho a provar. Com a alternativa, premeu \"Comença a escriure\" per encetar el procés de configuració habitual.</string>
     <!-- Translators: %1$s will be replaced by the e-mail address -->
     <string name="login_error_cannot_login">No es pot iniciar la sessió com a \"%1$s\". Comproveu que l\'adreça electrònica i la contrasenya són correctes.</string>
+    <string name="add_account">Afegeix un compte</string>
     <!-- share and forward messages -->
     <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
     <string name="forward_to">Reenvia a ...</string>

@@ -291,7 +291,6 @@
     <string name="videochat_instance">Instancë fjalosjeje me video</string>
     <string name="videochat_instance_placeholder">Instanca juaj e fjalosjes me video</string>
     <string name="videochat_instance_example">Shembuj: https://meet.jit.si/$ROOM, ose basicwebrtc:https://shërbyesi-juaj</string>
-    <string name="videochat_instance_explain">Nëse është përkufizuar një instancë fjalosjeje me video, mund të nisni një fjalosje me video prej secilës anë të fjalosjes tek-për-tek. Fjalosjet me video kanë të domosdoshëm në të dy skajet një aplikacion të përputhshëm ose një shfletues të përputhshëm.\n\nShembuj: https://meet.jit.si/$ROOM ose basicwebrtc:https://your-server</string>
     <string name="videochat_instance_explain_2">Nëse është aktivizuar fjalosje me video, mund të nisni një fjalosje me video prej secilës fjalosje. Fjalosjet me video kanë të domosdoshëm në të dy skajet një aplikacion të përputhshëm ose një shfletues të përputhshëm.</string>
     <string name="videochat_instance_from_qr">Të përdoret \"%1$s\" për të ftuar të tjerë në fjalosje me video?\n\nPasi të ujdiset kjo, mund të filloni një fjalosje me video që prej një fjalosjeje tek-për-tek. Kështu do të zëvendësohet rregullimi i mëparshëm për fjalosje video, në pastë.</string>
     <string name="videochat_invitation">Ftesë për fjalosje me video</string>

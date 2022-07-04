@@ -274,7 +274,6 @@
     <string name="videochat_tap_to_open">點擊以開啟</string>
     <string name="videochat_instance">視訊通話服務商</string>
     <string name="videochat_instance_placeholder">你的視訊通話服務商</string>
-    <string name="videochat_instance_explain">如果你已經定義了視訊通話服務商，你可以在每個聊天室內開啟視訊通話。視訊通話必須要雙方有一個相容的應用程式或是瀏覽器。\n\n例如：https://meet.jit.si/$ROOM 或 basicwebrtc:https://your-server</string>
     <string name="videochat_instance_from_qr">要使用\"%1$s\"來邀請其他人加入視訊通話嗎？\n\n一旦設定完成，你可以在每個聊天室內開啟視訊通話。這將會取代先前的視訊通話設定。</string>
     <string name="videochat_invitation">視訊通話邀請</string>
     <string name="videochat_invitation_body">你被邀請至視訊電話，點擊%1$s以加入。</string>

@@ -281,7 +281,6 @@
     <string name="videochat_tap_to_open">Натиснете, за да отворите</string>
     <string name="videochat_instance">Сървър за видеочат</string>
     <string name="videochat_instance_placeholder">Вашият сървър за видеочат</string>
-    <string name="videochat_instance_explain">Ако има дефиниран сървър за видеочат, можете да започвате видеочат от всеки чат. Видеочатовете изискват съвместимо приложение или съвместим браузър от двете страни.\n\nПримери: https://meet.jit.si/$ROOM или basicwebrtc:https://your-server</string>
     <string name="videochat_instance_from_qr">Да се използва ли \"%1$s\" за поканване на други към видеочатове?\n\nСлед като тази настройка бъде зададена, ще можете да започвате видеочат от всеки чат. Тя ще замени предишната настройка за видеочатове, ако има такава.</string>
     <string name="videochat_invitation">Покана за видеочат</string>
     <string name="videochat_invitation_body">Поканени сте във видеочат, натиснете върху%1$s, за да се присъедините</string>

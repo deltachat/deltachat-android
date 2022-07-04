@@ -256,7 +256,6 @@
     <string name="videochat_tap_to_open">Otevři stiskem</string>
     <string name="videochat_instance">Připravený video hovor</string>
     <string name="videochat_instance_placeholder">Tvůj připravený video hovor</string>
-    <string name="videochat_instance_explain">Pokud je video hovor připravený, lze video spustit z každého hovoru jeden na jednoho. Video vyžaduje na obou koncích prohlížeč, který podporuje video přenos.\n\nNapř. https://meet.jit.si/$ROOM or basicwebrtc:https://your-server</string>
     <string name="videochat_instance_from_qr">Použít \"%1$s\" k pozvání na video hovory?\n\nPokud nastaveno, můžete začít video hovor v každém hovoru jeden na jednoho. Toto nahradí jakékoli předchzí nastavení video hovorů.</string>
     <string name="videochat_invitation">Výzva k video hovoru</string>
     <string name="videochat_invitation_body">Jste vyzváni k video hovoru, připojte se stiskem %1$s</string>

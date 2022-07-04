@@ -127,6 +127,13 @@
         <item quantity="many">%d destinatari</item>
         <item quantity="other">%d destinatari</item>
     </plurals>
+    <!-- short title, used for "N Chats Selected" or "N Messages Selected", however, requires a shorter form, eg. "N Selected" in english -->
+    <plurals name="n_selected">
+        <item quantity="one">%d Selezionato</item>
+        <item quantity="many">%d Selezionati</item>
+        <item quantity="other">%d Selezionati</item>
+    </plurals>
+
     <string name="self">Io</string>
     <string name="draft">Bozza</string>
     <string name="image">Immagine</string>
@@ -295,7 +302,6 @@
     <string name="videochat_instance">Istanza Video Chat</string>
     <string name="videochat_instance_placeholder">La Tua Istanza Video Chat</string>
     <string name="videochat_instance_example">Esempi: https://meet.jit.si/$ROOM o basicwebrtc:https://your-server</string>
-    <string name="videochat_instance_explain">Se viene definita un\'istanza video chat, è possibile avviare una video chat da ciascuna chat uno a uno. Le video chat richiedono un\'app compatibile o un browser compatibile da entrambe le parti.\n\nEsempi: https://meet.jit.si/$ROOM o basicwebrtc:https://your-server</string>
     <string name="videochat_instance_explain_2">Se la video chat è abilitata, è possibile avviare una video chat da ogni chat. Le video chat richiedono un\'applicazione compatibile o un browser compatibile da entrambe le parti.</string>
     <string name="videochat_instance_from_qr">Utilizzare \"%1$s\" per invitare altri alla video chat?\n\nUna volta impostato, è possibile avviare una video chat da ogni chat uno a uno. Ciò sostituirà l\'eventuale impostazione precedente per le video chat.</string>
     <string name="videochat_invitation">Invito alla video chat</string>

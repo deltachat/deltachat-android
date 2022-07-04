@@ -303,7 +303,6 @@
     <string name="videochat_instance">Инстанс видеочатов</string>
     <string name="videochat_instance_placeholder">Ваш инстанс видеочатов</string>
     <string name="videochat_instance_example">Примеры: https://meet.jit.si/$ROOM или basicwebrtc:https://your-server</string>
-    <string name="videochat_instance_explain">Если инстанс видеочатов определён, вы можете начинать видеочат из каждого чата. Видеочаты требуют совместимого приложения или совместимого браузера на обоих концах.\n\nПримеры: https://meet.jit.si/$ROOM или basicwebrtc:https://your-server</string>
     <string name="videochat_instance_explain_2">Если видеочат включён, вы можете начать его из любого чата. Для видеочата требуется совместимое приложение или совместимый браузер у обоих участников.</string>
     <string name="videochat_instance_from_qr">Использовать \"%1$s\" чтобы приглашать других в видеочаты?\n\nНастроив один раз, вы можете начинать видеочат из каждого чата. Это заменит предыдущие настройки видеочатов, если они были.</string>
     <string name="videochat_invitation">Приглашение в видеочат</string>

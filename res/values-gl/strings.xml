@@ -120,6 +120,12 @@
         <item quantity="one">%d correspondente</item>
         <item quantity="other">%d correspondentes</item>
     </plurals>
+    <!-- short title, used for "N Chats Selected" or "N Messages Selected", however, requires a shorter form, eg. "N Selected" in english -->
+    <plurals name="n_selected">
+        <item quantity="one">%d Seleccionados</item>
+        <item quantity="other">%d Seleccionado</item>
+    </plurals>
+
     <string name="self">Eu</string>
     <string name="draft">Borrador</string>
     <string name="image">Imaxe</string>
@@ -286,7 +292,8 @@
     <string name="videochat_tap_to_open">Toca para abrir</string>
     <string name="videochat_instance">Instancia para video chat</string>
     <string name="videochat_instance_placeholder">A túa instancia para video chat</string>
-    <string name="videochat_instance_explain">Se está definida unha instancia de video chat podes iniciar o chat desde calquera conversa un-a-un. Os chats de vídeo requiren unha app ou navegador compatibles para as participantes.\n\nExemplos: https://meet.jit.si/$ROOM ou basicwebrtc:https://your-server</string>
+    <string name="videochat_instance_example">Exemplos: https://meet.jit.si/$ROOM ou basicwebrtc:https://your-server</string>
+    <string name="videochat_instance_explain_2">Se o chat por vídeo está activado, podes iniciar o chat de vídeo desde cada chat. Os chats de vídeo requiren unha app compatible ou un navegador compatible nos dous extremos.</string>
     <string name="videochat_instance_from_qr">¿Usar \"%1$s\" para convidar a outras a chats de vídeo?\n\nUnha vez establecido podes iniciar o chat desde a conversa un-a-un. Esto restablece o axuste anterior para video chats se existise.</string>
     <string name="videochat_invitation">Convite a chat de vídeo</string>
     <string name="videochat_invitation_body">Convidáronte a un chat de vídeo, preme %1$s para unirte.</string>
@@ -367,6 +374,7 @@
     <string name="saved_messages_explain">• Reenvía aquí as mensaxes para un acceso rápido\n\n• Toma notas de texto ou voz\n\n• Anexa medios para gardalos</string>
     <!-- this "Saved" should match the "Saved" from "Saved messages" -->
     <string name="saved">Gardado</string>
+    <string name="save_as">Gardar com</string>
     <string name="retry_send">Reintentar o envío da mensaxe</string>
     <!-- reasons for a disabled message composer -->
     <string name="messaging_disabled_not_in_group">Non podes escribir porque non estás no grupo. Para unirte, solicítallo a outro membro.</string>
@@ -432,6 +440,10 @@
     <string name="tab_map">Mapa</string>
     <string name="tab_gallery_empty_hint">As imaxes e vídeos compartidos nesta conversa móstranse aquí.</string>
     <string name="tab_docs_empty_hint">Aquí están os documentos, música e outros ficheiros compartidos na conversa.</string>
+    <string name="tab_image_empty_hint">As imaxes compartidas neste chat serán visibles aquí.</string>
+    <string name="tab_video_empty_hint">Os vídeos compartidos neste chat serán visibles aquí.</string>
+    <string name="tab_audio_empty_hint">Os ficheiros de Audio e de Mensaxes de Voz compartidos neste chat serán mostrados aquí.</string>
+    <string name="tab_webxdc_empty_hint">Contido Webxdc compartido neste chat será mostrado aquí.</string>
     <string name="media_preview">Vista previa dos medios</string>
     <string name="send_message">Enviar mensaxe</string>
 
@@ -604,6 +616,7 @@
     <string name="pref_imap_folder_warn_disable_defaults">Se desactivas esta opción, asegúrate de que o servidor e os teus outros clientes están configurados de xeito acorde.\n\nSe non, algo podería fallar.</string>
     <string name="pref_watch_sent_folder">Vixiar cartafol Enviados</string>
     <string name="pref_send_copy_to_self">Enviar copia a ti mesmo</string>
+    <string name="pref_send_copy_to_self_explain">Requerido se utilizas esta conta en varios dispositivos.</string>
     <string name="pref_auto_folder_moves">Mover automáticamente ao cartafol DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">As conversas móvense do cartafol de Entrada para evitar saturalo.</string>
     <string name="pref_only_fetch_mvbox_title">Obter só desde cartafol DeltaChat</string>
@@ -874,6 +887,17 @@
     <string name="no_spellcheck_suggestions_found">Non se atopan suxestións de escrita.</string>
     <string name="show_window">Mostrar xanela</string>
     <string name="login_socks5_experimental_warning">O soporte para SOCKS5 aínda é experimental. Úsao baixo a túa responsabilidade. Se escribes un enderezo no campo do email realizará unha busca DNS que non pasará a través de SOCKS5.</string>
+
+    <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
+    <string name="keybindings">Atallos</string>
+    <string name="switch_between_chats">Cambiar entre Chats</string>
+    <string name="scroll_messages">Desprazar as mensaxes</string>
+    <!-- command to put the cursor to the search input field -->
+    <string name="focus_search_input">Foco na Busca</string>
+    <!-- command to put the cursor to the message input field -->
+    <string name="focus_message_input">Foco en Escribir mensaxe</string>
+    <string name="force_refresh_network">Foco en Actualizar rede</string>
+    <string name="insert_newline">Inserir nova liña</string>
 
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Estado da entrega: Fallo</string>

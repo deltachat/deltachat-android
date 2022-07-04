@@ -263,7 +263,6 @@
     <string name="videochat_tap_to_open">Tryck för att öppna</string>
     <string name="videochat_instance">Videochattinstans</string>
     <string name="videochat_instance_placeholder">Din videochattinstans</string>
-    <string name="videochat_instance_explain">Om en videochattinstans har definierats kan du starta en videochatt från varje en-till-en-chatt. Videochattar kräver en kompatibel app eller en kompatibel webbläsare i båda ändar.\n\nExempel: https://meet.jit.si/$ROOM or basicwebrtc:https://your-server</string>
     <string name="videochat_instance_from_qr">Vill du använda \"%1$s\" för att bjuda in andra till videochattar?\n\nNär det väl är inställt kan du starta en videochatt från vilken en-till-en-chatt som helst. Detta ersätter den tidigare inställningen för eventuella videochattar.</string>
     <string name="videochat_invitation">Videochattinbjudan</string>
     <string name="videochat_invitation_body">Du är inbjuden till en videochatt, klicka på %1$s för att ansluta.</string>

@@ -254,7 +254,6 @@
     <string name="videochat_tap_to_open">Tryk for at åbne</string>
     <string name="videochat_instance">Videochat instans</string>
     <string name="videochat_instance_placeholder">Din videochat instans</string>
-    <string name="videochat_instance_explain">Hvis en videochat instans er defineret kan du starte en videochat fra hver en-til-en chat. Videochats kræver en kompatibel app eller en kompatibel browser i begge ender.\n\nEksempler: https://meet.jit.si/$ROOM eller basicwebrtc:https://your-server</string>
     <string name="videochat_instance_from_qr">Brug \"%1$s\" til at invitere andre til videochats?\n\nNår det er sat kan du starte en videochat fra hver en-til-en chat. Dette vil erstatte den tidligere indstilling for videochats hvis den findes.</string>
     <string name="videochat_invitation">Videochat-invitation</string>
     <string name="videochat_invitation_body">Du er inviteret til en videochat, klik %1$s for at tilslutte dig.</string>

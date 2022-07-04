@@ -293,7 +293,6 @@
     <string name="videochat_instance">Videochat-Instanz</string>
     <string name="videochat_instance_placeholder">Videochat-Instanz</string>
     <string name="videochat_instance_example">Beispiele: https://meet.jit.si/$ROOM oder basicwebrtc:https://your-server</string>
-    <string name="videochat_instance_explain">Wenn eine Videochat-Instanz definiert ist, können Sie einen Videochat von jedem Chat aus starten. Videochats erfordern beidseitig eine kompatible App oder einen kompatiblen Browser.\n\nBeispiele: https://meet.jit.si/$ROOM oder basicwebrtc:https://your-server</string>
     <string name="videochat_instance_explain_2">Wenn Videochat eingeschaltet ist, können Sie einen Videochat von jedem Chat aus starten. Videochats erfordern beidseitig eine kompatible App oder einen kompatiblen Browser.</string>
     <string name="videochat_instance_from_qr">\"%1$s\" verwenden, um andere zu Videochats einzuladen?\n\nWenn Sie diese Einstellung vornehmen, können Sie von jedem Chat aus einen Videochat starten. Dies überschreibt, falls vorhanden, die bisherige Einstellung zu Videochats.</string>
     <string name="videochat_invitation">Videochat-Einladung</string>

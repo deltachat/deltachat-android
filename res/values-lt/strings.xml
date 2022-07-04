@@ -261,7 +261,6 @@
     <string name="videochat_tap_to_open">Bakstelėkite norėdami atverti</string>
     <string name="videochat_instance">Vaizdo pokalbio egzempliorius</string>
     <string name="videochat_instance_placeholder">Jūsų vaizdo pokalbio egzempliorius</string>
-    <string name="videochat_instance_explain">Jei yra apibrėžtas vaizdo pokalbių egzempliorius, kiekviename pokalbyje galite pradėti vaizdo pokalbį. Vaizdo pokalbiai reikalauja, kad abi pusės turėtų suderinamą programėlę arba suderinamą naršyklę.\n\nPavyzdžiai: https://meet.jit.si/$ROOM arba basicwebrtc:https://jūsų-serveris</string>
     <string name="videochat_invitation">Pakvietimas į vaizdo pokalbį</string>
     <string name="videochat_invitation_body">Jūs esate kviečiami į vaizdo pokalbį. Spustelėkite %1$s jei norite prisijungti.</string>
 

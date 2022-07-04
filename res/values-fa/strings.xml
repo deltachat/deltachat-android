@@ -283,11 +283,6 @@
     <string name="videochat_tap_to_open">برای باز کردن ضربه بزنید. </string>
     <string name="videochat_instance">جلسه تماس تصویری</string>
     <string name="videochat_instance_placeholder">جلسه تماس تصویری شما</string>
-    <string name="videochat_instance_explain">اگر یک روش تماس تصویری تعریف شود؛ می‌توانید در هر گفتگوی یک-به-یک تماسی تصویری برقرار کنید.  تماس تصویری نیازمند یک نرم‌افزار سازگار یا یک مرورگر سازگار در هر دو طرف است. 
-مثال‌ها:
-‌https://meet.jit.si/$ROOM 
-یا
- basicwebrtc:https://your-server</string>
     <string name="videochat_instance_from_qr">می‌خواهید از \"%1$s\" برای دعوت دیگران به گفتگوی تصویری استفاده کنید؟/n/n وقتی تعیین شد، می‌توانید در هر گفتگوی فرد به فرد یک مکالمه تصویری شروع کنید. این کار، تنظیمات قبلی تماس تصویری(در صورت وجود تنظیمات قبلی) را تغییر می‌دهد.</string>
     <string name="videochat_invitation">دعوت به مکالمه تصویری.</string>
     <string name="videochat_invitation_body">شما به مکالمه تصویری دعوت شده اید برای پیوستن%1$s را بزنید.</string>

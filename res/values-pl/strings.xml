@@ -303,7 +303,6 @@
     <string name="videochat_instance">Instancja czatu wideo</string>
     <string name="videochat_instance_placeholder">Twoja instancja czatu wideo</string>
     <string name="videochat_instance_example">Przykład: https://meet.jit.si/$ROOM lub basicwebrtc:https://your-server</string>
-    <string name="videochat_instance_explain">Jeśli zdefiniowano instancję czatu wideo, możesz rozpocząć rozmowę wideo z każdego czatu indywidualnego. Czaty wideo wymagają kompatybilnej aplikacji lub kompatybilnej przeglądarki po obu stronach.\n\nPrzykłady: https://meet.jit.si/$ROOM lub basicwebrtc:https://your-server</string>
     <string name="videochat_instance_explain_2">Jeśli czat wideo jest włączony, możesz rozpocząć rozmowę wideo z każdego czatu indywidualnego. Czaty wideo wymagają kompatybilnej aplikacji lub kompatybilnej przeglądarki po obu stronach.</string>
     <string name="videochat_instance_from_qr">Czy użyć „%1$s”, aby zaprosić innych do czatów wideo?\n\nPo ustawieniu możesz rozpocząć czat wideo z każdego czatu indywidualnego. Spowoduje to zastąpienie poprzedniego ustawienia czatów wideo, jeśli takie istnieją.</string>
     <string name="videochat_invitation">Zaproszenie do czatu wideo</string>

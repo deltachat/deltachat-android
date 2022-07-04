@@ -295,7 +295,6 @@
     <string name="videochat_instance">Instância de conversa de vídeo</string>
     <string name="videochat_instance_placeholder">Sua instância de conversa de vídeo</string>
     <string name="videochat_instance_example">Exemplos: https://meet.jit.si/$ROOM o basicwebrtc:https://your-server</string>
-    <string name="videochat_instance_explain">Se uma instância de chat de vídeo for definida, você pode iniciar um chat de vídeo para cada conversa individual. Os chats de vídeo requerem um aplicativo ou navegador compatível para os dois interlocutores.\n \nExemplos: https://meet.jit.si/$ROOM ou basicwebrtc:https://seu-servidor</string>
     <string name="videochat_instance_explain_2">Se o video chat estiver habilitado, você pode iniciar uma ligação de video a partir de cada chat. Os bate-papos de vídeo exigem um aplicativo compatível ou um navegador compatível nos dos lados.</string>
     <string name="videochat_instance_from_qr">Use \"%1$s\" para convidar outros para a conversas de vídeo?\n\nUma vez configurado, você pode iniciar uma conversa de vídeo para cada conversa um-para-um. Isto irá substituir os ajustes prévios para conversas de vídeo, caso existam.</string>
     <string name="videochat_invitation">Convite para conversa de vídeo</string>

@@ -294,7 +294,6 @@
     <string name="videochat_tap_to_open">Appuyez pour ouvrir</string>
     <string name="videochat_instance">Instance de discussion vidéo</string>
     <string name="videochat_instance_placeholder">Votre instance de discussion vidéo</string>
-    <string name="videochat_instance_explain">Si une instance de discussion vidéo est définie, vous pouvez démarrer une discussion vidéo depuis chaque discussion privée. Une discussion vidéo nécessite une application compatible ou un navigateur web compatible des deux côtés.\n\nExemples : https://meet.jit.si/$ROOM ou basicwebrtc:https://votre-serveur</string>
     <string name="videochat_instance_from_qr">Utiliser « %1$s » pour inviter les autres à des discussions vidéos ?\n\nUne fois configuré, vous pouvez démarrer une discussion vidéo depuis chaque discussion privée. Ceci va remplacer la précédente configuration pour les discussions vidéos, s\'il y en a une.</string>
     <string name="videochat_invitation">Invitation de discussion vidéo</string>
     <string name="videochat_invitation_body">Vous êtes invité à une discussion vidéo, cliquez sur %1$s pour la rejoindre.</string>
@@ -477,7 +476,7 @@
     <string name="scan_invitation_code">Scanner le code d\'invitation</string>
     <string name="welcome_intro1_message">Le messager avec le plus large public au monde. Libre et indépendant.</string>
     <string name="login_title">Connexion</string>
-    <string name="login_header">Connexion vers votre serveur</string>
+    <string name="login_header">Se connecter au compte</string>
     <string name="login_explain">Se connecter avec un compte de courriel existant.</string>
     <string name="login_subheader">Pour les fournisseurs de courriel connus, des paramètres supplémentaires sont automatiquement configurés. Parfois, IMAP doit être activé dans l\'interface Web. Consultez votre fournisseur de courriel ou vos amis pour obtenir de l\'aide.</string>
     <string name="login_no_servers_hint">Il n\'y a pas de serveur Delta Chat, vos données restent sur votre appareil !</string>

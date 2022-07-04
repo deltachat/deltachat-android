@@ -311,7 +311,6 @@
     <string name="videochat_instance">Відео чат</string>
     <string name="videochat_instance_placeholder">Ваш відео чат</string>
     <string name="videochat_instance_example">Приклади: https://meet.jit.si/$ROOM або basicwebrtc:https://your-server</string>
-    <string name="videochat_instance_explain">Якщо визначено екземпляр відеочату, ви можете розпочати відеочат із кожного індивідуального чату. Для відеочату потрібен сумісний додаток або сумісний браузер з обох кінців.\n\nПриклади: https://meet.jit.si/$ROOM або basicwebrtc:https://your-server</string>
     <string name="videochat_instance_explain_2">Якщо визначено екземпляр відеочату, ви можете розпочати відеочат із кожного індивідуального чату. Для відеочату потрібен сумісний додаток або сумісний браузер з обох кінців.</string>
     <string name="videochat_instance_from_qr">Використовуйте \"%1$s\" аби запросити інших у відеочат?\n\nПісля встановлення ви можете розпочати відеочат із кожного індивідуального чату. Це замінить попереднє налаштування для відеочату, якщо воно є.</string>
     <string name="videochat_invitation">Запрошення до відео чату</string>

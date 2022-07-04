@@ -217,7 +217,6 @@
     <string name="videochat_tap_to_open">Toca pro abèrrere</string>
     <string name="videochat_instance">Istàntzia de vìdeu-tzarrada</string>
     <string name="videochat_instance_placeholder">S\'istàntzia de vìdeu-tzarrada tua</string>
-    <string name="videochat_instance_explain">Si benit definida un\'istàntzia de vìdeu-tzarrada, podes fàghere incumentzare una vìdeu-tzarrada dae cada tzarrada unu-a-unu. Sas vìdeu-tzarradas tenent bisòngiu de un\'aplicatzione cumpatìbile o de unu navigadore web cumpatìbile dae ambas alas..\n\nEsèmpios: https://meet.jit.si/$ROOM o basicwebrtc:https://your-server</string>
     <string name="videochat_instance_from_qr">Cheres impreare \"%1$s\" pro invitare calicun\'àteru a sa vìdeu-tzarrada?\n\nA pustis de s\'impostatzione, podes fàghere incumentzare una vìdeu-tzarrada dae cada tzarrada unu-a-unu. Custu at a remplasare sas impostatziones antepostas pro sas vìdeu-tzarradas, si bi nde fiant.</string>
     <string name="videochat_invitation">Invitu a sa vìdeu-tzarrada</string>
     <string name="videochat_invitation_body">Ses invitadu a una vìdeu-tzarrada. Incarca %1$s pro bi pigare parte.</string>

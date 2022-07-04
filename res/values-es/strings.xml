@@ -292,7 +292,6 @@
     <string name="videochat_tap_to_open">Toca para abrir</string>
     <string name="videochat_instance">Instancia de videollamada</string>
     <string name="videochat_instance_placeholder">Tu instancia de videollamada</string>
-    <string name="videochat_instance_explain">Si una instancia de videollamada esta definida, puedes iniciar una videollamada desde el chat individual. La videollamada requiere una app o navegador compatible en ambos usuarios.\n\nEjemplos: https://meet.jit.si/$ROOM o basicwebrtc:https://your-server</string>
     <string name="videochat_instance_from_qr">¿Usa \"%1$s\" para invitar a otros a la videollamada?\n\nUna vez configurado, puedes iniciar una videollamada desde el chat individual. Esto reemplaza la configuración previa de videollamadas. Si la hubiera.</string>
     <string name="videochat_invitation">Invitación a videollamada</string>
     <string name="videochat_invitation_body">Fuiste invitado a una videollamada, click en %1$s para unirse.</string>

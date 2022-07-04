@@ -293,7 +293,6 @@
     <string name="videochat_instance">Video Sohbeti Örneği</string>
     <string name="videochat_instance_placeholder">Video Sohbeti Örneğiniz</string>
     <string name="videochat_instance_example">Örnekler: https://meet.jit.si/$ROOM ya da basicwebrtc:https://your-server</string>
-    <string name="videochat_instance_explain">Bir video sohbeti örneği tanımlanırsa, her sohbetten video sohbeti başlatabilirsiniz. Video sohbetleri, her iki uçta da uyumlu bir uygulama ya da uyumlu bir tarayıcı gerektirir.\n\nÖrnekler: https://meet.jit.si/$ROOM ya da basicwebrtc:https://your-server</string>
     <string name="videochat_instance_explain_2">Video sohbeti etkinleştirilirse, her sohbetten video sohbeti başlatabilirsiniz. Video sohbetleri, her iki uçta da uyumlu bir uygulama ya da uyumlu bir tarayıcı gerektirir.</string>
     <string name="videochat_instance_from_qr">\"%1$s\" diğerlerini video sohbetine davet etmek için kullanılsın mı?\n\nBir kez ayarlandığında, her sohbetten video sohbeti başlatabilirsiniz. Varsa bu, video sohbetleri için önceki ayarla değiştirilir.</string>
     <string name="videochat_invitation">Video sohbeti daveti</string>

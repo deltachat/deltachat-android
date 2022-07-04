@@ -252,7 +252,6 @@
     <string name="videochat_tap_to_open">タップして開く</string>
     <string name="videochat_instance">ビデオ通話サーバー</string>
     <string name="videochat_instance_placeholder">選んだビデオ通話サーバー</string>
-    <string name="videochat_instance_explain">ビデオ通話サーバーが入力されたらチャットでビデオ通話を開始することができます。互換性のあるブラウザ又はアプリが必要です。\n\n例えば　https://meet.jit.si/$ROOM 或いは basicwebrtc:https://your-server</string>
     <string name="videochat_instance_from_qr">%1$sで他人をビデオ通話に招待しますか？設定次第に各チャットからビデオ通話を開始することができます。以前の設定も置き換えます。</string>
     <string name="videochat_invitation">ビデオ通話に招待</string>
     <string name="videochat_invitation_body">ビデオ通話に招待されて、%1$sで参加</string>

@@ -293,7 +293,6 @@
     <string name="videochat_instance">Videogespreksinstantie</string>
     <string name="videochat_instance_placeholder">Mijn videogespreksinstantie</string>
     <string name="videochat_instance_example">Voorbeeld: https://meet.jit.si/$KAMER of basicwebrtc:https://mijn-server</string>
-    <string name="videochat_instance_explain">Als je een videogespreksinstantie opgeeft, kun je een videogesprek starten vanuit elk één-op-ééngesprek. Voor videogesprekken hebben zowel jij als je gesprekspartner een compatibele app of webbrowser nodig.\n\nVoorbeelden: https://meet.jit.si/$KAMER of basicwebrtc:https://mijn-server</string>
     <string name="videochat_instance_explain_2">Als je videogesprekken inschakelt, dan kun je een videogesprek starten vanuit elk één-op-ééngesprek. Voor videogesprekken hebben zowel jij als je gesprekspartner een compatibele app of webbrowser nodig.</string>
     <string name="videochat_instance_from_qr">Wil je \"%1$s\" gebruiken om anderen uit te nodigen voor videogesprekken?\n\nNa het instellen kun je een videogesprek starten vanuit elk één-op-ééngesprek. Deze instelling vervangt de vorige videogespreksinstelling.</string>
     <string name="videochat_invitation">Uitnodiging voor videogesprek</string>

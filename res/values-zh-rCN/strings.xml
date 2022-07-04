@@ -284,7 +284,6 @@
     <string name="videochat_instance">视频聊天实例</string>
     <string name="videochat_instance_placeholder">您的视频聊天实例</string>
     <string name="videochat_instance_example">示例： https://meet.jit.si/$ROOM 或 basicwebrtc:https://your-server</string>
-    <string name="videochat_instance_explain">定义了视频聊天实例后，您可以在聊天里发起视频聊天。视频聊天的两端都需要有兼容的应用或兼容的浏览器。\n\n示例: https://meet.jit.si/$ROOM 或 basicwebrtc:https://your-server</string>
     <string name="videochat_instance_explain_2">如启用视频聊天，你可以从每个聊天启动一个视频聊天。视频聊天需要双方均装有兼容的应用或浏览器</string>
     <string name="videochat_instance_from_qr">使用“%1$s”邀请其他人加入视频聊天吗？\n\n设置好后，您就可以在聊天里发起视频聊天了。 这会取代之前的视频聊天设置（如果有的话）。</string>
     <string name="videochat_invitation">视频聊天邀请</string>

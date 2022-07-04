@@ -268,7 +268,6 @@
     <string name="videochat_tap_to_open">ប៉ៈដើម្បីបើក</string>
     <string name="videochat_instance">សន្ទនាវីដេអូផុសឡើង</string>
     <string name="videochat_instance_placeholder">សន្ទនាវីដេអូរបស់អ្នកផុសឡើង</string>
-    <string name="videochat_instance_explain">ប្រសិនបើការសន្ទនាជាវីដេអូផុសឡើង ត្រូវបានកំណត់រួចហើយ អ្នកអាចចាប់ផ្តើម វីដេអូសន្ទនា ពីការសន្ទនាមួយទៅមួយទៀត។ ការសន្ទនាជាវីដេអូតម្រូវឲ្យមានកម្មវិធីដែលត្រូវគ្នា រឺកម្មវិធីរុករកដែលត្រូវគ្នាដល់ចុងបញ្ចប់។\n\nឧទាហរណ៍៖ https://meet.jit.si/$ROOM ឬ basicwebrtc:https://your-server</string>
     <string name="videochat_instance_from_qr">ប្រើ \"%1$s\" ដើម្បីអញ្ជើញអ្នកផ្សេងទៀតទៅកាន់សន្ទនាវីដេអូ?\n\nកំណត់ម្តង អ្នកអាចចាប់ផ្តើមសន្ទនាវីដេអូ ពីការសន្ទនាមួយទៅមួយទៀត។ បើធ្វើសន្ទនាវីដេអូនេះនឹងជំនួសការកំណត់មុនៗ។</string>
     <string name="videochat_invitation">ការអញ្ជើញសន្ទនាវីដេអូ</string>
     <string name="videochat_invitation_body">អ្នកត្រូវបានអញ្ជើញដើម្បីសន្ទនាជាវីដេអូ។ ចុច %1$s ដើម្បីចូលរួម។</string>
