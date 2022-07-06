@@ -287,7 +287,7 @@
     <string name="videochat_invite_user_to_videochat">Invite %1$s to a video chat?</string>
     <string name="videochat_invite_user_hint">This requires a compatible app or browser on both ends.</string>
     <string name="videochat_contact_invited_hint">%1$s invited to a video chat.</string>
-    <string name="videochat_you_invited_hint">You were invited to a video chat.</string>
+    <string name="videochat_you_invited_hint">You sent a video chat invitation.</string>
     <string name="videochat_tap_to_join">Tap to Join</string>
     <string name="videochat_tap_to_open">Tap to Open</string>
     <string name="videochat_instance">Video Chat Instance</string>
@@ -368,18 +368,18 @@
     <string name="chat_archived_label">Archived</string>
     <string name="chat_request_label">Request</string>
     <string name="chat_no_messages">No messages.</string>
-    <string name="chat_self_talk_subtitle">Messages I sent to myself</string>
-    <string name="archive_empty_hint">If you archive chats, they will be shown here.</string>
+    <string name="chat_self_talk_subtitle">Note to Self</string>
+    <string name="archive_empty_hint">Archived chats will appear here.</string>
     <string name="saved_messages">Saved Messages</string>
     <string name="saved_messages_explain">• Forward messages here for easy access\n\n• Take notes or voice memos\n\n• Attach media to save them</string>
-    <!-- this "Saved" should match the "Saved" from "Saved messages" -->
+    <!-- Should match "Saved" from "Saved messages" -->
     <string name="saved">Saved</string>
     <string name="save_as">Save As</string>
     <string name="retry_send">Retry to send message</string>
     <!-- reasons for a disabled message composer -->
-    <string name="messaging_disabled_not_in_group">You cannot write because you are not in this group. To join, ask another member.</string>
-    <string name="messaging_disabled_device_chat">This chat contains locally generated messages. Therefore you cannot write any messages.</string>
-    <string name="messaging_disabled_mailing_list">Sending messages in mailing lists is not supported yet</string>
+    <string name="messaging_disabled_not_in_group">You must be in this group to post a message. To join, ask another member.</string>
+    <string name="messaging_disabled_device_chat">This chat contains locally generated messages; writing is disabled.</string>
+    <string name="messaging_disabled_mailing_list">Sending messages in mailing lists is not yet supported</string>
     <string name="cannot_display_unsuported_file_type">Cannot display this file type: %s</string>
     <string name="attachment_failed_to_load">Failed to load attachment</string>
     <!-- For recording Voice messages: Description for the "Lock" button allowing to lift the thumb from the record button while recording continues -->
@@ -387,7 +387,7 @@
 
     <!-- mailing lists -->
     <string name="mailing_list">Mailing List</string>
-    <string name="mailing_list_profile_info">Changes on mailing list name and image apply to this device only.</string>
+    <string name="mailing_list_profile_info">Changes to mailing list name and image apply on this device only.</string>
 
     <!-- webxdc -->
     <!-- "Start..." button for an app -->
@@ -401,9 +401,9 @@
     <string name="add_poi">Send point of interest</string>
 
     <!-- chat audit log -->
-    <string name="chat_audit_log_empty_message">System messages of this chat would appear here</string>
+    <string name="chat_audit_log_empty_message">System messages for this chat appear here</string>
     <string name="chat_audit_log_title">Chat Audit Log for %1$s</string>
-    <string name="chat_audit_log_description">This view shows only system and info messages. Useful for finding the last chat actions without scrolling through many normal messages.</string>
+    <string name="chat_audit_log_description">Shows only system and info messages; useful for finding the last chat actions without scrolling through many normal messages.</string>
 
     <!-- punycode warning / labeled links -->
     <!-- placeholder is domain/hostname that should be trusted -->
@@ -412,7 +412,7 @@
     <!-- placeholder contains the hostname converted to ascii -->
     <string name="puny_code_warning_question">Are you sure you want to visit %1$s?</string>
     <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
-    <string name="puny_code_warning_description">You followed a link which could be misrepresenting characters by using similarly looking ones from different alphabets. Following the link labelled %1$s will lead to %2$s which is normal for non-Latin characters. If you did not expect such characters this link could be harmful</string>
+    <string name="puny_code_warning_description">This link may misrepresent characters with similar looking ones from different alphabets. Following the link labelled %1$s will lead to %2$s which is normal for non-Latin characters. If you did not expect such characters this link could be harmful</string>
 
 
     <!-- search -->
@@ -438,35 +438,35 @@
     <string name="tab_docs">Docs</string>
     <string name="tab_links">Links</string>
     <string name="tab_map">Map</string>
-    <string name="tab_gallery_empty_hint">Images and videos shared in this chat will be displayed here.</string>
-    <string name="tab_docs_empty_hint">Documents, music and other files shared in this chat will be displayed here.</string>
-    <string name="tab_image_empty_hint">Images shared in this chat will be displayed here.</string>
-    <string name="tab_video_empty_hint">Videos shared in this chat will be displayed here.</string>
-    <string name="tab_audio_empty_hint">Audio Files and Voice Messages shared in this chat will be displayed here.</string>
-    <string name="tab_webxdc_empty_hint">Webxdc content shared in this chat will be displayed here.</string>
+    <string name="tab_gallery_empty_hint">Images and videos shared in this chat will appear here.</string>
+    <string name="tab_docs_empty_hint">Documents, music, and other files shared in this chat will appear here.</string>
+    <string name="tab_image_empty_hint">Images shared in this chat will appear here.</string>
+    <string name="tab_video_empty_hint">Videos shared in this chat will appear here.</string>
+    <string name="tab_audio_empty_hint">Audio Files and Voice Messages shared in this chat will appear here.</string>
+    <string name="tab_webxdc_empty_hint">Webxdc content shared in this chat will appear here.</string>
     <string name="media_preview">Media Preview</string>
     <string name="send_message">Send Message</string>
 
     <!-- Connectivity -->
-    <!-- Used as a headline for the "Inbox" eg. in the "Connectivity" view -->
+    <!-- Headline for the "Inbox" eg. in the "Connectivity" view -->
     <string name="incoming_messages">Incoming Messages</string>
-    <!-- Used as a headline for the "Outbox" eg. in the "Connectivity" view -->
+    <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Outgoing Messages</string>
-    <!-- Used as a headline in the "Connectivity" view. The placeholder will be replaced by the domain of the configured email-address. -->
+    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by the domain of the configured email-address. -->
     <string name="storage_on_domain">Storage on %1$s</string>
     <string name="connectivity">Connectivity</string>
-    <!-- Shown eg. in the title bar if the app is "Not connected"; as there is very few room, try to be as short as possible. -->
+    <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
     <string name="connectivity_not_connected">Not connected</string>
-    <!-- Shown eg. in the title bar if the app is "Connecting"; as there is very few room, try to be as short as possible. Note that the three dots are a single character (…), not three (...) -->
+    <!-- Shown in the title bar if the app is "Connecting"; prefer short strings. The ellipsis is a single character (…), not three (...) -->
     <string name="connectivity_connecting">Connecting…</string>
-    <!-- Shown eg. in the title bar if the app is "Updating" (eg. getting new/old message, sync things); as there is very few room, try to be as short as possible. Note that the three dots are a single character (…), not three (...) -->
+    <!-- Shown in the title bar if the app is "Updating" (eg. getting new/old message, sync things); prefer short strings. The ellipsis is a single character (…), not three (...) -->
     <string name="connectivity_updating">Updating…</string>
-    <!-- Shown eg. in the setting if the app is "Connected" -->
+    <!-- Shown in the setting if the app is "Connected" -->
     <string name="connectivity_connected">Connected</string>
     <string name="sending">Sending…</string>
     <string name="last_msg_sent_successfully">Last message sent successfully.</string>
     <string name="not_supported_by_provider">Not supported by your provider.</string>
-    <!-- Used as a subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed or so. -->
+    <!-- Subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Messages</string>
     <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
     <string name="part_of_total_used">%1$s of %2$s used</string>
@@ -530,10 +530,10 @@
     <string name="configuration_failed_with_error">Configuration failed. Error: %1$s</string>
 
     <!-- share and forward messages -->
-    <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
+    <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">Forward to…</string>
-    <string name="share_multiple_attachments">Send %1$d files to the selected chat?\n\nThe files are sent unmodified in their original size, eg. images and videos are not recoded.</string>
-    <string name="share_multiple_attachments_multiple_chats">Send %1$d file(s) to %2$d chats?\n\nThe files are sent unmodified in their original size, eg. images and videos are not recoded.</string>
+    <string name="share_multiple_attachments">Send %1$d files to the selected chat?\n\nThe files are sent unmodified in their original size (eg. images and videos are not re-encoded).</string>
+    <string name="share_multiple_attachments_multiple_chats">Send %1$d file(s) to %2$d chats?\n\nThe files are sent unmodified in their original size (eg. images and videos are not re-encoded).</string>
     <string name="share_text_multiple_chats">Send this text to %1$d chats?\n\n\"%2$s\"</string>
     <string name="share_abort">Sharing aborted due to missing permissions.</string>
 
@@ -544,13 +544,13 @@
     <string name="pref_profile_info_headline">Your Profile Info</string>
     <string name="pref_profile_photo">Profile Image</string>
     <string name="pref_blocked_contacts">Blocked Contacts</string>
-    <string name="blocked_empty_hint">If you block contacts, they will be shown here.</string>
+    <string name="blocked_empty_hint">Block contacts will appear here.</string>
     <string name="pref_password_and_account_settings">Password and Account</string>
     <string name="pref_who_can_see_profile_explain">Your profile image, name and signature will be sent together with your messages when communicating with other users.</string>
     <string name="pref_your_name">Your Name</string>
-    <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
+    <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
     <string name="pref_default_status_label">Signature Text</string>
-    <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
+    <!-- Translators: The URL should not be localized as it is unclear which language the receiver prefers; the language will be automatically detected on the server -->
     <string name="pref_default_status_text">Sent with my Delta Chat Messenger: https://delta.chat</string>
     <string name="pref_enter_sends">Enter Key Sends</string>
     <string name="pref_enter_sends_explain">Pressing the Enter key will send text messages</string>
@@ -559,7 +559,7 @@
     <string name="pref_outgoing_worse">Worse quality, small size</string>
     <string name="pref_vibrate">Vibrate</string>
     <string name="pref_screen_security">Screen Security</string>
-    <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
+    <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_screen_security_explain">Request to block screenshots in the recents list and inside the app</string>
     <string name="pref_screen_security_please_restart_hint">To apply the screen security setting please restart the app.</string>
     <string name="pref_notifications">Notifications</string>
@@ -574,14 +574,14 @@
     <string name="pref_privacy">Privacy</string>
     <string name="pref_chats_and_media">Chats and Media</string>
     <string name="pref_system_default">System default</string>
-    <!-- Translators: "light" in the meaning "opposite of dark" -->
+    <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">Light</string>
     <string name="pref_dark_theme">Dark</string>
     <string name="pref_appearance">Appearance</string>
     <string name="pref_theme">Theme</string>
     <string name="pref_language">Language</string>
     <string name="pref_incognito_keyboard">Incognito Keyboard</string>
-    <!-- Translators: Keep in mind that this is a Request - it must be clear in the wording that this cannot be enforced. -->
+    <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_incognito_keyboard_explain">Request keyboard to disable personalized learning</string>
     <string name="pref_read_receipts">Read Receipts</string>
     <string name="pref_read_receipts_explain">If read receipts are disabled, you won\'t be able to see read receipts from others.</string>
@@ -617,10 +617,10 @@
     <string name="pref_watch_sent_folder">Watch Sent Folder</string>
     <string name="pref_send_copy_to_self">Send Copy to Self</string>
     <string name="pref_send_copy_to_self_explain">Required when using this account on multiple devices.</string>
-    <string name="pref_auto_folder_moves">Automatic Moves to DeltaChat Folder</string>
+    <string name="pref_auto_folder_moves">Move automatically to Delta Chat Folder</string>
     <string name="pref_auto_folder_moves_explain">Chat conversations are moved to avoid cluttering the Inbox</string>
-    <string name="pref_only_fetch_mvbox_title">Only Fetch from DeltaChat Folder</string>
-    <string name="pref_only_fetch_mvbox_explain">Ignore other folders. Requires your server to move chat messages to the DeltaChat folder.</string>
+    <string name="pref_only_fetch_mvbox_title">Only Fetch from Delta Chat Folder</string>
+    <string name="pref_only_fetch_mvbox_explain">Ignore other folders. Requires your server to move chat messages to the Delta Chat folder.</string>
     <string name="pref_show_emails">Show Classic E-Mails</string>
     <string name="pref_show_emails_no">No, chats only</string>
     <string name="pref_show_emails_accepted_contacts">For accepted contacts</string>
@@ -711,13 +711,13 @@
     <string name="systemmsg_group_image_deleted">Group image deleted.</string>
     <string name="systemmsg_member_added">Member %1$s added.</string>
     <string name="systemmsg_member_removed">Member %1$s removed.</string>
-    <string name="systemmsg_group_left">Group left.</string>
+    <string name="systemmsg_group_left">You left the group.</string>
     <string name="systemmsg_read_receipt_subject">Message opened</string>
     <string name="systemmsg_read_receipt_body">The \"%1$s\" message you sent was displayed on the screen of the recipient.\n\nThis is no guarantee the content was read.</string>
     <string name="systemmsg_cannot_decrypt">This message cannot be decrypted.\n\n• It might already help to simply reply to this message and ask the sender to send the message again.\n\n• In case you re-installed Delta Chat or another e-mail program on this or another device you may want to send an Autocrypt Setup Message from there.</string>
-    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). -->
+    <!-- Translators: %1$s will be replaced by sth. as "ACTION by me". -->
     <string name="systemmsg_action_by_me">%1$s by me.</string>
-    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
+    <!-- Translators: %1$s will be replaced by an action and %2$s will be replaced by the name/addr of the person who did it, as "ACTION by MEMBER". -->
     <string name="systemmsg_action_by_user">%1$s by %2$s.</string>
     <string name="systemmsg_unknown_sender_for_chat">Unknown sender for this chat. See \'info\' for more details.</string>
     <string name="systemmsg_subject_for_new_contact">Message from %1$s</string>
@@ -740,10 +740,10 @@
     <string name="systemmsg_chat_protection_enabled">Chat protection enabled.</string>
 
     <string name="devicemsg_self_deleted">You deleted the \"Saved messages\" chat.\n\nℹ️ To use the \"Saved messages\" feature again, create a new chat with yourself.</string>
-    <!-- %1$s will be replaced by the number of storage already used, sth. as '500 MB'. CAVE: if you want to use a simple the percent sign, type in two, so eg. %1$s %% -->
-    <string name="devicemsg_storage_exceeding">⚠️ Your provider\'s storage is about to exceed, already %1$s%% are used.\n\nYou may not be able to receive message when the storage is 100%% used.\n\n👉 Please check if you can delete old data in the provider\'s web interface and consider to enable \"Settings / Delete Old Messages\". You can check your current storage usage anytime at \"Settings / Connectivity\".</string>
+    <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
+    <string name="devicemsg_storage_exceeding">⚠️ Your provider\'s storage is about to run out: %1$s%% are already used.\n\nYou may not be able to receive messages if storage is full.\n\n👉 Please check if you can delete old data in the provider\'s web interface and consider enabling \"Settings / Delete Old Messages\". You can check your current storage usage anytime at \"Settings / Connectivity\".</string>
     <!-- %1%s will be replaced by date and time in some human-readable format -->
-    <string name="devicemsg_bad_time">⚠️ Date or time of your device seem to be inaccurate (%1$s).\n\nAdjust your clock ⏰🔧 to ensure your messages are received correctly.</string>
+    <string name="devicemsg_bad_time">⚠️ Date or time on your device seems to be inaccurate (%1$s).\n\nAdjust your clock ⏰🔧 to ensure your messages are received correctly.</string>
     <string name="devicemsg_update_reminder">⚠️ Your Delta Chat version might be outdated.\n\nThis may cause problems because your chat partners use newer versions - and you are missing the latest features 😳\nPlease check https://get.delta.chat or your app store for updates.</string>
 
     <!-- Some options as "Manage keys" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc. to be entered in a system dialog. This hint is added to the system dialog, below a title as "Manage keys" or "Backup". -->
@@ -933,7 +933,7 @@
     <string name="notifications_avg_minutes">On average every %1$d minutes</string>
     <string name="notifications_avg_hours">On average every %1$d hours</string>
     <string name="last_check_at">Checked at %1$s</string>
-    <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
+    <!-- iOS permissions, copy from "delta Chat-ios/Info.plist", which is used on missing translations in "delta Chat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat uses your camera to take and send photos and videos and to scan QR codes.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat uses your contacts to show a list of e-mail addresses you can write to. Delta Chat has no server, your contacts are not sent anywhere.</string>
     <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">Delta Chat needs the location permission in order to share your location for the timespan you have enabled location sharing.</string>
