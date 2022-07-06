@@ -711,7 +711,7 @@
     <string name="systemmsg_group_image_deleted">Group image deleted.</string>
     <string name="systemmsg_member_added">Member %1$s added.</string>
     <string name="systemmsg_member_removed">Member %1$s removed.</string>
-    <string name="systemmsg_group_left">You left the group.</string>
+    <string name="systemmsg_group_left">Group left.</string>
     <string name="systemmsg_read_receipt_subject">Message opened</string>
     <string name="systemmsg_read_receipt_body">The \"%1$s\" message you sent was displayed on the screen of the recipient.\n\nThis is no guarantee the content was read.</string>
     <string name="systemmsg_cannot_decrypt">This message cannot be decrypted.\n\n• It might already help to simply reply to this message and ask the sender to send the message again.\n\n• In case you re-installed Delta Chat or another e-mail program on this or another device you may want to send an Autocrypt Setup Message from there.</string>
