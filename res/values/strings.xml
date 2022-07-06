@@ -4,7 +4,7 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
-    <string name="clear_search">Clear Search</string>
+    <string name="clear_search">Clear search</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="select">Select</string>
@@ -20,7 +20,7 @@
     <string name="open">Open</string>
     <string name="download">Download</string>
     <string name="downloading">Downloading…</string>
-    <string name="open_attachment">Open Attachment</string>
+    <string name="open_attachment">Open attachment</string>
     <string name="join">Join</string>
     <string name="rejoin">Rejoin</string>
     <string name="delete">Delete</string>
@@ -33,27 +33,27 @@
     <string name="forward">Forward</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">Resend</string>
-    <!-- In the meaning of "To archive", "Put a chat to the archive". This string does not mean "The Archive". -->
+    <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
     <string name="archive">Archive</string>
-    <!-- In the meaning of "To unarchive", "Remove a chat from the archive", opposite of the previous string -->
+    <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Unarchive</string>
     <string name="mute">Mute</string>
-    <string name="ephemeral_messages">Disappearing Messages</string>
-    <string name="ephemeral_messages_hint">These settings apply to all chat members using Delta Chat. However, they may copy, save and forward messages or use other e-mail clients.</string>
+    <string name="ephemeral_messages">Disappearing messages</string>
+    <string name="ephemeral_messages_hint">Removes messages after the specified duration from all members of this chat; this applies only if they use Delta Chat and does not prevent copying, saving, and forwarding messages or using other e-mail clients.</string>
     <string name="save">Save</string>
     <string name="chat">Chat</string>
     <string name="media">Media</string>
     <string name="profile">Profile</string>
     <string name="main_menu">Main Menu</string>
-    <string name="start_chat">Start Chat</string>
-    <string name="show_full_message">Show Full Message…</string>
-    <string name="show_full_message_in_browser">Show Full Message in Browser…</string>
-    <!-- this is shown as placeholder when something is loading at some places -->
+    <string name="start_chat">Start chat</string>
+    <string name="show_full_message">Show full message…</string>
+    <string name="show_full_message_in_browser">Show full message in browser…</string>
+    <!-- Placeholder text when something is loading -->
     <string name="loading">Loading…</string>
     <string name="hide">Hide</string>
     <string name="activate">Activate</string>
-    <string name="load_remote_content">Load Remote Images</string>
-    <!-- possible answers to the question are: Never, Always, Once -->
+    <string name="load_remote_content">Load remote images</string>
+    <!-- Possible answers to the question are: Never, Always, Once -->
     <string name="load_remote_content_ask">Remote images can be used to track you.\n\nThe setting also allows loading fonts and other content. Even if it is disabled, you may still see embedded or cached images.\n\nLoad remote images?</string>
     <string name="always">Always</string>
     <string name="once">Once</string>
