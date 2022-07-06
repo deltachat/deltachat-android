@@ -39,7 +39,7 @@
     <string name="unarchive">Unarchive</string>
     <string name="mute">Mute</string>
     <string name="ephemeral_messages">Disappearing Messages</string>
-    <string name="ephemeral_messages_hint">Removes messages after the specified duration from all members of this chat; this applies only if they use Delta Chat and does not prevent copying, saving, and forwarding messages or using other e-mail clients.</string>
+    <string name="ephemeral_messages_hint">Applies to all members of this chat if they use Delta Chat; they can still copy, save, and forward messages or use other e-mail clients.</string>
     <string name="save">Save</string>
     <string name="chat">Chat</string>
     <string name="media">Media</string>
