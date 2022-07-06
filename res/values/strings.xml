@@ -250,16 +250,16 @@
     <string name="title_share_location">Share location with all group members</string>
     <string name="device_talk">Device Messages</string>
     <string name="device_talk_subtitle">Locally generated messages</string>
-    <string name="device_talk_explain">Messages in this chat are generated locally by your Delta Chat app. Its makers use it to inform about app updates and problems during usage.</string>
+    <string name="device_talk_explain">Messages in this chat are generated on your device and come from the makers of Delta Chat to inform about app updates and problems during usage.</string>
     <string name="device_talk_welcome_message">Welcome to Delta Chat! – Delta Chat looks and feels like other popular messenger apps, but does not involve centralized control, tracking or selling you, friends, colleagues or family out to large organizations.\n\nTechnically, Delta Chat is an e-mail application with a modern chat interface. E-mail in a new dress if you will 👻\n\nUse Delta Chat with anyone out of billions of people: just use their e-mail address. Recipients don\'t need to install Delta Chat, visit websites or sign up anywhere - however, of course, if they like, you may point them to 👉 https://get.delta.chat</string>
     <string name="edit_contact">Edit Contact</string>
-    <!-- Translators: "Pin" here is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
     <string name="pin_chat">Pin Chat</string>
-    <!-- Translators: this is the opposite of "Pin chat", removing the sticky-state from a chat. -->
+    <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin_chat">Unpin Chat</string>
-    <!-- Translators: this is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
     <string name="pin">Pin</string>
-    <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
+    <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin">Unpin</string>
     <string name="ConversationFragment_quoted_message_not_found">Original message not found</string>
     <string name="reply_privately">Reply Privately</string>
@@ -285,24 +285,24 @@
 
     <string name="videochat">Video Chat</string>
     <string name="videochat_invite_user_to_videochat">Invite %1$s to a video chat?</string>
-    <string name="videochat_invite_user_hint">This requires a compatible app or a compatible browser on both ends.</string>
+    <string name="videochat_invite_user_hint">This requires a compatible app or browser on both ends.</string>
     <string name="videochat_contact_invited_hint">%1$s invited to a video chat.</string>
-    <string name="videochat_you_invited_hint">You invited to a video chat.</string>
+    <string name="videochat_you_invited_hint">You were invited to a video chat.</string>
     <string name="videochat_tap_to_join">Tap to Join</string>
     <string name="videochat_tap_to_open">Tap to Open</string>
     <string name="videochat_instance">Video Chat Instance</string>
     <string name="videochat_instance_placeholder">Your Video Chat Instance</string>
     <string name="videochat_instance_example">Examples: https://meet.jit.si/$ROOM or basicwebrtc:https://your-server</string>
-    <string name="videochat_instance_explain_2">If video chat is enabled, you can start a video chat from each chat. Video chats require a compatible app or a compatible browser on both ends.</string>
-    <string name="videochat_instance_from_qr">Use \"%1$s\" to invite others to video chats?\n\nOnce set, you can start a video chat from each chat. This will replace the previous setting for video chats, if any.</string>
+    <string name="videochat_instance_explain_2">If enabled, you can start a video chat from each chat. Require a compatible app or a browser on both ends.</string>
+    <string name="videochat_instance_from_qr">Use \"%1$s\" to invite others to video chats?\n\nOnce set, you can start a video chat from each chat. This replaces any previous setting for video chats.</string>
     <string name="videochat_invitation">Video chat invitation</string>
     <string name="videochat_invitation_body">You are invited to a video chat, click %1$s to join.</string>
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Are you sure you want to leave this group?</string>
     <plurals name="ask_delete_chat">
-        <item quantity="one">Delete %d chat? It will no longer be shown in the chat list, its messages will remain on the server.</item>
-        <item quantity="other">Delete %d chats? They will no longer be shown in the chat list, their messages will remain on the server.</item>
+        <item quantity="one">Delete %d chat? It will no longer be shown in the chat list; its messages will remain on the server.</item>
+        <item quantity="other">Delete %d chats? They will no longer be shown in the chat list; their messages will remain on the server.</item>
     </plurals>
     <string name="ask_delete_message">Are you sure you want to delete this message?</string>
     <plurals name="ask_delete_messages">
@@ -315,17 +315,17 @@
     </plurals>
     <string name="ask_forward">Forward messages to %1$s?</string>
     <string name="ask_forward_multiple">Forward messages to %1$d chats?</string>
-    <string name="ask_export_attachment">Exporting attachments will allow any other apps on your device to access them.\n\nContinue?</string>
-    <string name="ask_block_contact">Block this contact? You will no longer receive messages from this contact.</string>
-    <string name="ask_unblock_contact">Unblock this contact? You will once again be able to receive messages from this contact.</string>
-    <string name="ask_delete_contacts">Delete contacts?\n\nContacts with ongoing chats and contacts from the system\'s address book cannot be deleted permanently.</string>
-    <string name="ask_delete_contact">Delete contact %1$s?\n\nContacts with ongoing chats and contacts from the system\'s address book cannot be deleted permanently.</string>
+    <string name="ask_export_attachment">Exporting attachments will allow other apps on your device to access them.\n\nContinue?</string>
+    <string name="ask_block_contact">Block this contact? You will no longer receive messages from them.</string>
+    <string name="ask_unblock_contact">Unblock this contact? You will then be able to receive messages from them.</string>
+    <string name="ask_delete_contacts">Delete contacts?\n\nContacts with ongoing chats and from the system address book cannot be deleted permanently.</string>
+    <string name="ask_delete_contact">Delete contact %1$s?\n\nContacts with ongoing chats and contacts from the system address book cannot be deleted permanently.</string>
     <string name="cannot_delete_contacts_in_use">Cannot delete contacts with ongoing chats.</string>
     <string name="ask_start_chat_with">Chat with %1$s?</string>
     <string name="ask_delete_value">Delete %s?</string>
-    <!-- Translators: %1$s will be replaces by a comma separated list of names -->
+    <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Remove %1$s from group?</string>
-    <!-- Translators: %1$s will be replaced by a comma separated list of names -->
+    <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_from_broadcast">Remove %1$s from broadcast list?</string>
     <string name="open_url_confirmation">Do you want to open this link?</string>
 
@@ -355,7 +355,7 @@
         <item quantity="other">%d new messages</item>
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
-    <string name="chat_new_one_to_one_hint">Send a message. It is okay if %1$s does not use Delta Chat.</string>
+    <string name="chat_new_one_to_one_hint">Send a message to %1$s; they can even receive it without Delta Chat.</string>
     <string name="chat_new_broadcast_hint">In a broadcast list, others will receive messages in their private chats with you.\n\nThe recipients will not be aware of each other.</string>
     <string name="chat_new_group_hint">Others will only see this group after you sent a first message.</string>
     <string name="chat_record_slide_to_cancel">Slide to cancel</string>
