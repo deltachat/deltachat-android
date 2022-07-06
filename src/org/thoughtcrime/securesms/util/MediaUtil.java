@@ -80,7 +80,7 @@ public class MediaUtil {
 
     String type = context.getContentResolver().getType(uri);
     if (type == null) {
-      final String extension = MimeTypeMap.getFileExtensionFromUrl(uri.toString());
+      final String extension = getFileExtensionFromUrl(uri.toString());
       type = MimeTypeMap.getSingleton().getMimeTypeFromExtension(extension.toLowerCase());
       if (type == null) {
         type = "application/octet-stream";
@@ -100,6 +100,41 @@ public class MediaUtil {
     default:
       return mimeType;
     }
+  }
+
+  /**
+   * This is a version of android.webkit.MimeTypeMap.getFileExtensionFromUrl() that
+   * doesn't refuse to do its job when there are characters in the URL it doesn't know.
+   * Using MimeTypeMap.getFileExtensionFromUrl() led to bugs like this one:
+   * https://github.com/deltachat/deltachat-android/issues/2306
+   *
+   * @return The url's file extension, or "" if there is none.
+   */
+  public static String getFileExtensionFromUrl(String url) {
+    if (TextUtils.isEmpty(url)) return "";
+
+    int fragment = url.lastIndexOf('#');
+    if (fragment > 0) {
+      url = url.substring(0, fragment);
+    }
+
+    int query = url.lastIndexOf('?');
+    if (query > 0) {
+      url = url.substring(0, query);
+    }
+
+    int filenamePos = url.lastIndexOf('/');
+    String filename =
+            0 <= filenamePos ? url.substring(filenamePos + 1) : url;
+
+    if (!filename.isEmpty()) {
+      int dotPos = filename.lastIndexOf('.');
+      if (0 <= dotPos) {
+        return filename.substring(dotPos + 1);
+      }
+    }
+
+    return "";
   }
 
   public static long getMediaSize(Context context, Uri uri) throws IOException {

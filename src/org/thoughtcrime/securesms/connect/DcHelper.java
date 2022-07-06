@@ -28,6 +28,7 @@ import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.database.model.ThreadRecord;
 import org.thoughtcrime.securesms.notifications.NotificationCenter;
 import org.thoughtcrime.securesms.recipients.Recipient;
+import org.thoughtcrime.securesms.util.MediaUtil;
 
 import java.io.File;
 import java.util.Date;
@@ -286,7 +287,7 @@ public class DcHelper {
   private static String checkMime(String path, String mimeType) {
     if(mimeType == null || mimeType.equals("application/octet-stream")) {
       path = path.replaceAll(" ", "");
-      String extension = MimeTypeMap.getFileExtensionFromUrl(path);
+      String extension = MediaUtil.getFileExtensionFromUrl(path);
       String newType = MimeTypeMap.getSingleton().getMimeTypeFromExtension(extension);
       if(newType != null) return newType;
     }

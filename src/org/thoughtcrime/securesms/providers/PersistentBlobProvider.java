@@ -196,7 +196,7 @@ public class PersistentBlobProvider {
 
   private static @NonNull String getMimeTypeFromExtension(@NonNull Uri uri) {
     final String mimeType = MimeTypeMap.getSingleton()
-        .getMimeTypeFromExtension(MimeTypeMap.getFileExtensionFromUrl(uri.toString()));
+        .getMimeTypeFromExtension(MediaUtil.getFileExtensionFromUrl(uri.toString()));
     return mimeType != null ? mimeType : "application/octet-stream";
   }
 
