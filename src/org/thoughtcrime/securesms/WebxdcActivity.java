@@ -120,6 +120,10 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
       // internal page, continue loading in the WebView
       return false;
     }
+    if (url.startsWith("mailto:")) {
+      return super.openOnlineUrl(url);
+    }
+
     Toast.makeText(this, "Please embed needed resources.", Toast.LENGTH_LONG).show();
     return true; // returning `true` causes the WebView to abort loading
   }
