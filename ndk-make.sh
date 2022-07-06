@@ -138,21 +138,14 @@ rm -fr "$TMPLIB"
 
 echo -- ndk-build --
 
-cd ..
-# Set the right arch in Application.mk:
-oldDotMk="$(cat Application.mk)"
+cd ../..
 
-TMP=$(mktemp)
 if test $1; then
-    sed "s/APP_ABI.*/APP_ABI := $1/g" Application.mk >"$TMP"
+    ndk-build APP_ABI="$1"
 else
-    # We are compiling for all architectures:
-    sed "s/APP_ABI.*/APP_ABI := armeabi-v7a arm64-v8a x86 x86_64/g" Application.mk >"$TMP"
+    # We are compiling for all architectures defined in Application.mk
+    ndk-build
 fi
-
-cd ..
-ndk-build NDK_APPLICATION_MK=$TMP
-rm "$TMP"
 
 if test $1; then
     echo "NDK_ARCH=$1" >ndkArch
