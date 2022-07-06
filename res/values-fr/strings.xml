@@ -127,6 +127,13 @@
         <item quantity="many">%d destinataires</item>
         <item quantity="other">%d destinataires</item>
     </plurals>
+    <!-- short title, used for "N Chats Selected" or "N Messages Selected", however, requires a shorter form, eg. "N Selected" in english -->
+    <plurals name="n_selected">
+        <item quantity="one">%d Sélectionné</item>
+        <item quantity="many">%d Sélectionné</item>
+        <item quantity="other">%d Sélectionné</item>
+    </plurals>
+
     <string name="self">Moi</string>
     <string name="draft">Brouillon</string>
     <string name="image">Image</string>
@@ -214,7 +221,7 @@
     <string name="paste_from_clipboard">Coller depuis le presse-papiers</string>
     <string name="menu_forward">Faire suivre le message</string>
     <string name="menu_reply">Répondre au message</string>
-    <string name="menu_mute">Déactiver les notifications</string>
+    <string name="menu_mute">Désactiver les notifications</string>
     <string name="menu_unmute">Réactiver</string>
     <string name="menu_export_attachment">Exporter le fichier joint</string>
     <string name="menu_export_attachments">Exporter les pièces-jointes</string>
@@ -380,6 +387,7 @@
     <string name="saved_messages_explain">• Transférez les messages ici pour un accès facile\n\n• Prenez des notes, des mémos vocaux\n\n• Joignez des fichiers pour les sauvegarder</string>
     <!-- this "Saved" should match the "Saved" from "Saved messages" -->
     <string name="saved">Sauvegardés</string>
+    <string name="save_as">Sauvegarder</string>
     <string name="retry_send">Réessayer d\'envoyer le message</string>
     <!-- reasons for a disabled message composer -->
     <string name="messaging_disabled_not_in_group">Vous ne pouvez pas écrire car vous ne faites pas partie de ce groupe. Pour le rejoindre, demandez à un membre.</string>

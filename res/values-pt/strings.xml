@@ -115,7 +115,7 @@
     <string name="menu_copy_to_clipboard">Copiar para área de transferência</string>
     <string name="menu_forward">Reencaminhar mensagem</string>
     <string name="menu_reply">Responder</string>
-    <string name="menu_mute">Calar</string>
+    <string name="menu_mute">Silenciar notificações</string>
     <string name="menu_unmute">Falar</string>
     <string name="menu_export_attachment">Exportar anexo</string>
     <string name="menu_all_media">Todos os arquivos de mídia</string>
