@@ -1,5 +1,21 @@
 # Delta Chat Android Changelog
 
+## v1.31.0 Testrun
+2022-07
+
+* experimental "Automatic E-mail Address Porting" (AEAP):
+  You can configure a new address now, and when receivers get messages
+  they will automatically recognize your moving to a new address
+* combine read receipts and webxdc updates and avoid sending too many messages
+* message lines starting with `>` are sent as quotes to non-Delta-Chat clients
+* support IMAP ID extension that is required by some providers
+* fix: allow DeltaChat folder being hidden
+* fix: cleanup read receipts storage
+* fix: mailing list: remove square-brackets only for first name
+* fix: do not use footers from mailinglists as the contact status
+* update to core88
+
+
 ## v1.30.3
 2022-06
 
