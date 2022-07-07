@@ -9,6 +9,9 @@
 * combine read receipts and webxdc updates and avoid sending too many messages
 * message lines starting with `>` are sent as quotes to non-Delta-Chat clients
 * support IMAP ID extension that is required by some providers
+* forward info messages as plain text
+* allow mailto: links in webxdc
+* fix: allow sharing filenames containing the character `~`
 * fix: allow DeltaChat folder being hidden
 * fix: cleanup read receipts storage
 * fix: mailing list: remove square-brackets only for first name
