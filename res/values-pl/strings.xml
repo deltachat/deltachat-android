@@ -134,6 +134,14 @@
         <item quantity="many">%d odbiorców</item>
         <item quantity="other">%d odbiorcy</item>
     </plurals>
+    <!-- short title, used for "N Chats Selected" or "N Messages Selected", however, requires a shorter form, eg. "N Selected" in english -->
+    <plurals name="n_selected">
+        <item quantity="one">Wybrano %d</item>
+        <item quantity="few">Wybrano %d</item>
+        <item quantity="many">Wybrano %d</item>
+        <item quantity="other">Wybrano %d</item>
+    </plurals>
+
     <string name="self">Ja</string>
     <string name="draft">Szkic</string>
     <string name="image">Obraz</string>
@@ -846,7 +854,10 @@
     <string name="ImageEditorHud_draw_anywhere_to_blur">Rysuj gdziekolwiek, aby rozmyć</string>
     <string name="ImageEditorHud_add_text">Dodaj tekst</string>
     <string name="ImageEditorHud_blur">Rozmycie</string>
+    <string name="ImageEditorHud_brush_marker">Marker</string>
+    <string name="ImageEditorHud_brush_highlight">Podkreślacz</string>
     <string name="ImageEditorHud_crop">Przytnij</string>
+    <string name="ImageEditorHud_flip">Odwróć</string>
     <string name="ImageEditorHud_rotate">Obróć</string>
 
     <!-- dc_str_* resources -->
@@ -909,6 +920,13 @@
 
     <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
     <string name="keybindings">Przypisanie klawiszy</string>
+    <string name="switch_between_chats">Przełącz się między czatami</string>
+    <string name="scroll_messages">Przewiń wiadomości</string>
+    <!-- command to put the cursor to the search input field -->
+    <string name="focus_search_input">Szukaj</string>
+    <!-- command to put the cursor to the message input field -->
+    <string name="focus_message_input">Wpisz wiadomość</string>
+    <string name="force_refresh_network">Wymuś odświeżenie sieci</string>
     <string name="insert_newline">Wstaw nową linię</string>
 
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
@@ -919,12 +937,37 @@
     <string name="a11y_delivery_status_delivered">Status dostawy: Dostarczone</string>
     <string name="a11y_delivery_status_read">Status dostawy: Przeczytane</string>
     <string name="a11y_delivery_status_invalid">Nieprawidłowy status dostawy</string>
+    <string name="a11y_message_context_menu_btn_label">Działania na wiadomości</string>
     <string name="a11y_background_preview_label">Podgląd tła</string>
     <string name="a11y_disappearing_messages_activated">Aktywowano znikające wiadomości</string>
 
+    <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
+    <string name="stop_sharing_location">Zatrzymaj udostępnianie lokalizacji</string>
+    <string name="a11y_voice_message_hint_ios">Po nagraniu dotknij dwukrotnie, aby wysłać. Aby odrzucić nagranie, przeciągnij dwoma palcami.</string>
+    <string name="a11y_connectivity_hint">Naciśnij dwukrotnie, aby wyświetlić szczegóły połączenia.</string>
+    <string name="login_error_no_internet_connection">Brak połączenia internetowego, logowanie nie powiodło się.</string>
+    <string name="share_account_not_configured">Konto nie jest skonfigurowane.</string>
+    <string name="cannot_play_audio_file">Nie można odtworzyć pliku audio.</string>
+    <!-- iOS camera permission alert -->
+    <string name="perm_ios_explain_access_to_camera_denied">Aby robić zdjęcia, nagrywać filmy lub używać skanera kodów QR, otwórz ustawienia systemowe i włącz „Aparat”.</string>
+    <string name="open_settings">Otwórz ustawienia</string>
+    <!-- iOS device contact alert -->
+    <string name="import_device_contacts">Importuj kontakty z urządzenia</string>
+    <string name="import_device_contacts_hint">Aby rozmawiać z kontaktami ze swojego urządzenia, otwórz ustawienia i włącz „Kontakty”.</string>
+    <!-- iOS notification settings -->
+    <string name="disabled_in_dc">Wyłącz w Delta Chat</string>
+    <string name="disabled_in_system_settings">Wyłącz w ustawieniach systemu</string>
+    <string name="bg_app_refresh_disabled">„Odświeżanie aplikacji w tle” wyłączone w ustawieniach systemu</string>
+    <!-- iOS connectivity view -->
+    <string name="delayed">Opóźniony</string>
+    <string name="notifications_avg_minutes">Średnio co %1$d min.</string>
+    <string name="notifications_avg_hours">Średnio co %1$d godz.</string>
+    <string name="last_check_at">Sprawdzono o %1$s</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat używa aparatu do robienia i wysyłania zdjęć i filmów oraz do skanowania kodów QR.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Zezwolenie na dostęp do książki adresowej pozwala czatować z kontaktami z urządzenia.</string>
+    <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">Delta Chat potrzebuje pozwolenia na lokalizację, aby udostępniać twoją lokalizację w okresie, w którym włączono udostępnianie lokalizacji.</string>
+    <string name="InfoPlist_NSLocationWhenInUseUsageDescription">Delta Chat potrzebuje pozwolenia na lokalizację, aby udostępniać twoją lokalizację w okresie, w którym włączono udostępnianie lokalizacji.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Zezwolenie na dostęp do mikrofonu pozwala nagrywać dźwięk.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Zezwolenie na dostęp do biblioteki zdjęć umożliwia przesyłanie z niej zdjęć.</string>
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat chce zapisać obrazy w twojej bibliotece zdjęć.</string>
@@ -941,4 +984,8 @@
     <string name="perm_enable_bg_already_done">Pozwolono już Delta Chat na odbieranie wiadomości w tle.\n\nJeśli wiadomości nadal nie docierają w tle, sprawdź też ustawienia systemu.</string>
 
 
-    </resources>
+    <!-- device messages for updates -->
+    <string name="update_1_30">Szybciej. Bardziej stabilnie.\n\nW wersji 1.30 skupiliśmy się na szybkości i niezawodności, naprawiając dziesiątki błędów. Sprawdź nasze dzienniki zmian, może twój najważniejszy został naprawiony:
+https://get.delta.chat/#changelogs 🚀</string>
+
+</resources>
