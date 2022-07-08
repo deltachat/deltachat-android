@@ -293,7 +293,7 @@
     <string name="videochat_instance">Video Chat Instance</string>
     <string name="videochat_instance_placeholder">Your Video Chat Instance</string>
     <string name="videochat_instance_example">Examples: https://meet.jit.si/$ROOM or basicwebrtc:https://your-server</string>
-    <string name="videochat_instance_explain_2">If enabled, you can start a video chat from each chat. Require a compatible app or a browser on both ends.</string>
+    <string name="videochat_instance_explain_2">If enabled, you can start a video chat from each chat. Requires a compatible app or a browser on both ends.</string>
     <string name="videochat_instance_from_qr">Use \"%1$s\" to invite others to video chats?\n\nOnce set, you can start a video chat from each chat. This replaces any previous setting for video chats.</string>
     <string name="videochat_invitation">Video chat invitation</string>
     <string name="videochat_invitation_body">You are invited to a video chat, click %1$s to join.</string>
@@ -403,7 +403,7 @@
     <!-- chat audit log -->
     <string name="chat_audit_log_empty_message">System messages for this chat appear here</string>
     <string name="chat_audit_log_title">Chat Audit Log for %1$s</string>
-    <string name="chat_audit_log_description">Shows only system and info messages; useful for finding the last chat actions without scrolling through many normal messages.</string>
+    <string name="chat_audit_log_description">Shows only system and info messages; useful for finding the last chat actions without scrolling through many messages.</string>
 
     <!-- punycode warning / labeled links -->
     <!-- placeholder is domain/hostname that should be trusted -->
@@ -412,7 +412,7 @@
     <!-- placeholder contains the hostname converted to ascii -->
     <string name="puny_code_warning_question">Are you sure you want to visit %1$s?</string>
     <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
-    <string name="puny_code_warning_description">This link may misrepresent characters with similar looking ones from different alphabets. Following the link labelled %1$s will lead to %2$s which is normal for non-Latin characters. If you did not expect such characters this link could be harmful</string>
+    <string name="puny_code_warning_description">This link may misrepresent characters with similar looking ones from different alphabets. Following the link labelled %1$s will lead to %2$s which is normal for non-Latin characters. If you did not expect such characters this link could be harmful.</string>
 
 
     <!-- search -->
