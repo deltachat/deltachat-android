@@ -544,7 +544,7 @@
     <string name="pref_profile_info_headline">Your Profile Info</string>
     <string name="pref_profile_photo">Profile Image</string>
     <string name="pref_blocked_contacts">Blocked Contacts</string>
-    <string name="blocked_empty_hint">Block contacts will appear here.</string>
+    <string name="blocked_empty_hint">Blocked contacts will appear here.</string>
     <string name="pref_password_and_account_settings">Password and Account</string>
     <string name="pref_who_can_see_profile_explain">Your profile image, name and signature will be sent together with your messages when communicating with other users.</string>
     <string name="pref_your_name">Your Name</string>
