@@ -33,6 +33,7 @@ import android.os.Bundle;
 import android.os.Vibrator;
 import android.provider.Browser;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.util.Pair;
@@ -752,48 +753,22 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
    * @return
    */
   private ListenableFuture<Boolean> initializeDraft() {
-    if (isMailToIntent()) {
-      return initializeDraftFromIntent();
-    } else {
-      return initializeDraftFromDatabase();
-    }
-  }
-
-  boolean isMailToIntent() {
-    return getIntent() != null && getIntent().getData() != null && MAILTO.equals(getIntent().getData().getScheme());
-  }
-
-  private ListenableFuture<Boolean> initializeDraftFromIntent() {
-    SettableFuture<Boolean> result = new SettableFuture<>();
-    final String draftText = RelayUtil.getSharedText(this);
-
-    if (draftText != null) {
-      composeText.setText(draftText);
-    }
-
-    result.set(draftText != null);
-    updateToggleButtonState();
-    return result;
-  }
-
-  private void initializeEnabledCheck() {
-    boolean enabled = true;
-    inputPanel.setEnabled(enabled);
-    sendButton.setEnabled(enabled);
-    attachButton.setEnabled(enabled);
-  }
-
-  private ListenableFuture<Boolean> initializeDraftFromDatabase() {
     final SettableFuture<Boolean> future = new SettableFuture<>();
     DcMsg draft = dcContext.getDraft(chatId);
+    final String sharedText = RelayUtil.getSharedText(this);
 
     if (draft == null) {
-      future.set(false);
+      if (TextUtils.isEmpty(sharedText)) {
+        future.set(false);
+      } else {
+        composeText.setText(sharedText);
+        future.set(true);
+      }
       updateToggleButtonState();
       return future;
     }
 
-    final String text = draft.getText();
+    final String text = TextUtils.isEmpty(sharedText)? draft.getText() : sharedText;
     if(!text.isEmpty()) {
       composeText.setText(text);
       composeText.setSelection(composeText.getText().length());
@@ -849,6 +824,13 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     }
 
     return future;
+  }
+
+  private void initializeEnabledCheck() {
+    boolean enabled = true;
+    inputPanel.setEnabled(enabled);
+    sendButton.setEnabled(enabled);
+    attachButton.setEnabled(enabled);
   }
 
   private ListenableFuture<Boolean> initializeSecurity(final boolean currentSecureText,
