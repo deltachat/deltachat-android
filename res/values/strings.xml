@@ -318,8 +318,8 @@
     <string name="ask_export_attachment">Exporting attachments will allow other apps on your device to access them.\n\nContinue?</string>
     <string name="ask_block_contact">Block this contact? You will no longer receive messages from them.</string>
     <string name="ask_unblock_contact">Unblock this contact? You will then be able to receive messages from them.</string>
-    <string name="ask_delete_contacts">Delete contacts?\n\nContacts with ongoing chats and from the system address book cannot be deleted permanently.</string>
-    <string name="ask_delete_contact">Delete contact %1$s?\n\nContacts with ongoing chats and contacts from the system address book cannot be deleted permanently.</string>
+    <string name="ask_delete_contacts">Delete contacts?\n\nContacts with ongoing chats or from the system address book cannot be deleted permanently.</string>
+    <string name="ask_delete_contact">Delete contact %1$s?\n\nContacts with ongoing chats or from the system address book cannot be deleted permanently.</string>
     <string name="cannot_delete_contacts_in_use">Cannot delete contacts with ongoing chats.</string>
     <string name="ask_start_chat_with">Chat with %1$s?</string>
     <string name="ask_delete_value">Delete %s?</string>
