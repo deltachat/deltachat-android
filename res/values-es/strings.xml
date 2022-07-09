@@ -32,7 +32,7 @@
     <string name="close">Cerrar</string>
     <string name="forward">Reenviar</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
-    <string name="resend">Enviar de nuevo</string>
+    <string name="resend">Reenviar</string>
     <!-- In the meaning of "To archive", "Put a chat to the archive". This string does not mean "The Archive". -->
     <string name="archive">Archivar</string>
     <!-- In the meaning of "To unarchive", "Remove a chat from the archive", opposite of the previous string -->
@@ -69,7 +69,7 @@
     <string name="next">Siguiente</string>
     <string name="error">Error</string>
     <string name="error_x">Error: %1$s</string>
-    <string name="no_app_to_handle_data">No se encontró una aplicación compatible con el tipo de contenido</string>
+    <string name="no_app_to_handle_data">No se puede encontrar una aplicación compatible con este tipo de contenido</string>
     <string name="no_browser_installed">No hay ningún navegador instalado.</string>
     <string name="file_not_found">No se pudo encontrar %1$s.</string>
     <string name="copied_to_clipboard">Copiado al portapapeles.</string>
@@ -127,6 +127,13 @@
         <item quantity="many">%d destinatarios</item>
         <item quantity="other">%d destinatarios</item>
     </plurals>
+    <!-- short title, used for "N Chats Selected" or "N Messages Selected", however, requires a shorter form, eg. "N Selected" in english -->
+    <plurals name="n_selected">
+        <item quantity="one">%d seleccionado</item>
+        <item quantity="many">%d seleccionados</item>
+        <item quantity="other">%d seleccionados</item>
+    </plurals>
+
     <string name="self">Yo</string>
     <string name="draft">Borrador</string>
     <string name="image">Imagen</string>
@@ -149,7 +156,7 @@
     <string name="camera">Cámara</string>
     <!-- "capture" here means "start a video recording" or "take a photo"; eg. the description of the "shutter button" in the camera controls -->
     <string name="capture">Capturar</string>
-    <string name="switch_camera">Cambiar cámara</string>
+    <string name="switch_camera">Alternar cámara</string>
     <string name="toggle_fullscreen">Alternar modo pantalla completa</string>
     <string name="location">Ubicación</string>
     <string name="gallery">Galería</string>
@@ -252,7 +259,7 @@
     <string name="device_talk">Mensajes del dispositivo</string>
     <string name="device_talk_subtitle">Mensajes generados localmente</string>
     <string name="device_talk_explain">Los mensajes en este chat son generados localmente por tu aplicación Delta Chat. Los creadores lo usan para informar sobre actualizaciones y problemas durante el uso de la aplicación.</string>
-    <string name="device_talk_welcome_message">¡Bienvenido a Delta Chat! – Delta Chat luce como otras aplicaciones de mensajería populares, pero sin control centralizado, seguimiento ni venta de tus datos, o los de tus amigos, colegas o familiares a grandes organizaciones.\n\nTécnicamente, Delta Chat es una aplicación de correo electrónico con una interfaz de chat moderna. Correo electrónico en un nuevo vestido si quieres 👻\n\nUsa Delta Chat con cualquiera de miles de millones de personas: solo necesitas su dirección de correo electrónico. Los destinatarios no necesitan instalar Delta Chat, visitar sitios web o registrarse en ningún lugar - sin embargo, por supuesto, si lo desean, puedes indicarles 👉 https://get.delta.chat</string>
+    <string name="device_talk_welcome_message">¡Bienvenido a Delta Chat! – Delta Chat parece como otras aplicaciones de mensajería populares, pero sin control centralizado, seguimiento ni venta de tus datos, o los de tus amigos, colegas o familiares a grandes organizaciones.\n\nTécnicamente, Delta Chat es una aplicación de correo electrónico con una interfaz de chat moderna. Correo electrónico en un nuevo vestido si quieres 👻\n\nUsa Delta Chat con cualquiera de miles de millones de personas: solo necesitas su dirección de correo electrónico. Los destinatarios no necesitan instalar Delta Chat, visitar sitios web o registrarse en ningún lugar - sin embargo, por supuesto, si lo desean, puedes indicarles 👉 https://get.delta.chat</string>
     <string name="edit_contact">Editar contacto</string>
     <!-- Translators: "Pin" here is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
     <string name="pin_chat">Anclar chat</string>
@@ -264,6 +271,8 @@
     <string name="unpin">Desanclar</string>
     <string name="ConversationFragment_quoted_message_not_found">Mensaje original no encontrado</string>
     <string name="reply_privately">Responder en privado</string>
+    <string name="source_code">Código fuente</string>
+
     <string name="mute_for_one_hour">Silenciar por 1 hora</string>
     <string name="mute_for_two_hours">Silenciar por 2 horas</string>
     <string name="mute_for_one_day">Silenciar por 1 día</string>
@@ -285,13 +294,15 @@
 
     <string name="videochat">Video llamada</string>
     <string name="videochat_invite_user_to_videochat">¿Invitar a %1$s a una videollamada?</string>
-    <string name="videochat_invite_user_hint">Esto requiere una app compatible o un navegador compatible en ambos extremos.</string>
+    <string name="videochat_invite_user_hint">Esto requiere una app compatible o un navegador compatible en los dos lados.</string>
     <string name="videochat_contact_invited_hint">%1$s invitado a una videollamada.</string>
     <string name="videochat_you_invited_hint">Invitaste a una videollamada.</string>
     <string name="videochat_tap_to_join">Toca para unirte</string>
     <string name="videochat_tap_to_open">Toca para abrir</string>
     <string name="videochat_instance">Instancia de videollamada</string>
     <string name="videochat_instance_placeholder">Tu instancia de videollamada</string>
+    <string name="videochat_instance_example">Ejemplos: https://meet.jit.si/$ROOM o basicwebrtc:https://your-server</string>
+    <string name="videochat_instance_explain_2">Si el videochat está activado, puedes iniciar un videochat desde cada chat. Los chats de vídeo necesitan una aplicación o un navegador compatible en los dos lados.</string>
     <string name="videochat_instance_from_qr">¿Usa \"%1$s\" para invitar a otros a la videollamada?\n\nUna vez configurado, puedes iniciar una videollamada desde el chat individual. Esto reemplaza la configuración previa de videollamadas. Si la hubiera.</string>
     <string name="videochat_invitation">Invitación a videollamada</string>
     <string name="videochat_invitation_body">Fuiste invitado a una videollamada, click en %1$s para unirse.</string>
@@ -303,7 +314,7 @@
         <item quantity="many">¿Eliminar %d chats? No volverán a ser mostrados en la lista de chats, pero sus mensajes permanecerán en el servidor.</item>
         <item quantity="other">¿Eliminar %d chats? No volverán a ser mostrados en la lista de chats, pero sus mensajes permanecerán en el servidor.</item>
     </plurals>
-    <string name="ask_delete_message">¿Seguro que quieres borrar este mensaje?</string>
+    <string name="ask_delete_message">¿Seguro que quieres eliminar este mensaje?</string>
     <plurals name="ask_delete_messages">
         <item quantity="one">¿Eliminar %d mensaje aquí y en el servidor?</item>
         <item quantity="many">¿Eliminar %d mensajes aquí y en el servidor?</item>
@@ -316,18 +327,18 @@
     </plurals>
     <string name="ask_forward">¿Reenviar mensajes a %1$s?</string>
     <string name="ask_forward_multiple">¿Reenviar mensajes a %1$d chats?</string>
-    <string name="ask_export_attachment">¿Exportar adjuntos? Si exporta los adjuntos, serán accesibles desde cualquier otra aplicación en su dispositivo. ¿Desea continuar?</string>
+    <string name="ask_export_attachment">Los adjuntos exportados serán accesibles desde cualquier otra aplicación en su dispositivo. ¿Continuar?</string>
     <string name="ask_block_contact">¿Bloquear este contacto? Ya no recibirás mensajes de este contacto.</string>
     <string name="ask_unblock_contact">¿Desbloquear este contacto? Una vez más podrá recibir mensajes de este contacto.</string>
-    <string name="ask_delete_contacts">¿Eliminar contactos? Esto eliminará de forma permanente los contactos seleccionados.\n\nContactos con un chat en curso y contactos de la libreta de direcciones del sistema no pueden ser eliminados de forma permanente.</string>
-    <string name="ask_delete_contact">¿Eliminar de forma permanente a %1$s?\n\nContactos con chats en curso y contactos de la libreta de direcciones del sistema no pueden ser eliminados.</string>
+    <string name="ask_delete_contacts">¿Eliminar contactos?\n\nContactos con un chat en curso y contactos de la libreta de direcciones del sistema no pueden ser eliminados de forma permanente.</string>
+    <string name="ask_delete_contact">¿Eliminar contacto %1$s?\n\nContactos con chats en curso o de la libreta de direcciones del sistema no pueden ser eliminados.</string>
     <string name="cannot_delete_contacts_in_use">No se puede eliminar contactos con chats en curso.</string>
     <string name="ask_start_chat_with">¿Chatear con %1$s?</string>
     <string name="ask_delete_value">¿Borrar %s?</string>
     <!-- Translators: %1$s will be replaces by a comma separated list of names -->
     <string name="ask_remove_members">¿Eliminar a %1$s del grupo?</string>
     <!-- Translators: %1$s will be replaced by a comma separated list of names -->
-    <string name="ask_remove_from_broadcast">¿Eliminar a %1$s de la lista de difusión?</string>
+    <string name="ask_remove_from_broadcast">¿Eliminar %1$s de la lista de difusión?</string>
     <string name="open_url_confirmation">¿Quieres abrir este enlace?</string>
 
 
@@ -361,7 +372,7 @@
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
     <string name="chat_new_one_to_one_hint">Envíe un mensaje. Está bien si %1$s no usa Delta Chat.</string>
     <string name="chat_new_broadcast_hint">En una lista de difusión, los otros recibirán los mensajes en sus chats privados contigo.\n\nLos destinatarios no se ven entre sí.</string>
-    <string name="chat_new_group_hint">Componga el primer mensaje, permitiendo que otros respondan dentro de este grupo.\n\n• No hay problema si no todos los miembros usan Delta Chat.\n\n• La entrega del primer mensaje puede tardar un poco y puede estar sin cifrar.</string>
+    <string name="chat_new_group_hint">Los demás sólo verán este grupo después de que hayas enviado un primer mensaje.</string>
     <string name="chat_record_slide_to_cancel">Deslice para cancelar</string>
     <string name="chat_record_explain">Mantenga pulsado para grabar un mensaje de voz, suelte para enviar</string>
     <string name="chat_no_chats_yet_title">Bandeja de entrada vacía.\nPresiona \"+\" para iniciar un nuevo chat.</string>
@@ -373,11 +384,12 @@
     <string name="chat_request_label">Solicitud</string>
     <string name="chat_no_messages">No hay mensajes.</string>
     <string name="chat_self_talk_subtitle">Mensajes que envié a mí mismo</string>
-    <string name="archive_empty_hint">Si archiva chats, se mostrarán aquí.</string>
+    <string name="archive_empty_hint">Chats arquivados se mostrarán aquí.</string>
     <string name="saved_messages">Mensajes guardados</string>
     <string name="saved_messages_explain">• Reenvía mensajes aquí para accederlos fácilmente luego\n\n• Toma notas o mensajes de voz\n\n• Adjunta archivos para guardarlos</string>
     <!-- this "Saved" should match the "Saved" from "Saved messages" -->
     <string name="saved">Guardado</string>
+    <string name="save_as">Guardar como</string>
     <string name="retry_send">Reintentar enviar mensaje</string>
     <!-- reasons for a disabled message composer -->
     <string name="messaging_disabled_not_in_group">No puedes escribir porque no estás en este grupo. Para unirte, pregúntale a otro miembro.</string>
@@ -443,6 +455,10 @@
     <string name="tab_map">Mapa</string>
     <string name="tab_gallery_empty_hint">Las imágenes y videos compartidos en este chat se mostrarán aquí.</string>
     <string name="tab_docs_empty_hint">Documentos, música y otros archivos compartidos en este chat se mostrarán aquí.</string>
+    <string name="tab_image_empty_hint">Imágenes compartidas en este chat se mostrarán aquí.</string>
+    <string name="tab_video_empty_hint">Vídeos compartidos en este chat se mostrarán aquí.</string>
+    <string name="tab_audio_empty_hint">Los archivos de audio y los mensajes de voz compartidos en este chat se mostrarán aquí.</string>
+    <string name="tab_webxdc_empty_hint">El contenido de Webxdc compartido en este chat se mostrará aquí.</string>
     <string name="media_preview">Vista previa de multimedia</string>
     <string name="send_message">Enviar mensaje</string>
 
@@ -553,7 +569,7 @@
     <string name="pref_default_status_text">Enviado con mi aplicación de mensajería Delta Chat: https://delta.chat</string>
     <string name="pref_enter_sends">Tecla Intro envía</string>
     <string name="pref_enter_sends_explain">La tecla Intro enviará tu mensaje</string>
-    <string name="pref_outgoing_media_quality">Calidad multimedia saliente</string>
+    <string name="pref_outgoing_media_quality">Calidad de multimedia saliente</string>
     <string name="pref_outgoing_balanced">Balanceada</string>
     <string name="pref_outgoing_worse">Peor calidad, tamaño pequeño</string>
     <string name="pref_vibrate">Vibrar</string>
@@ -582,8 +598,8 @@
     <string name="pref_incognito_keyboard">Teclado incógnito</string>
     <!-- Translators: Keep in mind that this is a Request - it must be clear in the wording that this cannot be enforced. -->
     <string name="pref_incognito_keyboard_explain">Solicitar al teclado deshabilitar el aprendizaje personalizado</string>
-    <string name="pref_read_receipts">Acuses de recibo</string>
-    <string name="pref_read_receipts_explain">Si los acuses de recibo están deshabilitados, no podrá ver los acuses de recibo de otros.</string>
+    <string name="pref_read_receipts">Recibos de leer</string>
+    <string name="pref_read_receipts_explain">Si los recibos de lectura están deshabilitados, no podrá ver los recibos de lectura de otros.</string>
     <string name="pref_manage_keys">Administrar claves</string>
     <string name="pref_use_system_emoji">Usar emoji del sistema</string>
     <string name="pref_use_system_emoji_explain">Deshabilitar el soporte de emoji integrado de Delta Chat</string>
@@ -615,6 +631,7 @@
     <string name="pref_imap_folder_warn_disable_defaults">Si deshabilita esta opción, asegúrese de que su servidor y sus otros clientes estén configurados en consecuencia.\n\nDe lo contrario, las cosas pueden no funcionar en absoluto.</string>
     <string name="pref_watch_sent_folder">Monitorear carpeta Enviados</string>
     <string name="pref_send_copy_to_self">Enviar autocopia</string>
+    <string name="pref_send_copy_to_self_explain">Necesario cuando utilizando esta cuenta en varios dispositivos.</string>
     <string name="pref_auto_folder_moves">Mover automáticamente a la carpeta DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">Las conversaciones son movidas para evitar saturar la Bandeja de entrada</string>
     <string name="pref_only_fetch_mvbox_title">Solo obtener de la carpeta DeltaChat</string>
@@ -653,10 +670,10 @@
     <string name="emoji_not_found">No se encontraron emojis</string>
     <string name="emoji_recent">Usados</string>
     <string name="emoji_people">Personas &amp; Cuerpo</string>
-    <string name="emoji_nature">Animales  &amp; Naturaleza</string>
-    <string name="emoji_foods">Comida  &amp; Bebida</string>
+    <string name="emoji_nature">Animales &amp; Naturaleza</string>
+    <string name="emoji_foods">Comida &amp; Bebida</string>
     <string name="emoji_activity">Actividad</string>
-    <string name="emoji_places">Viaje  &amp; Lugares</string>
+    <string name="emoji_places">Viaje &amp; Lugares</string>
     <string name="emoji_objects">Objetos</string>
     <string name="emoji_symbols">Símbolos</string>
     <string name="emoji_flags">Banderas</string>
@@ -710,8 +727,8 @@
     <string name="systemmsg_member_added">Miembro %1$s añadido.</string>
     <string name="systemmsg_member_removed">Miembro %1$s eliminado.</string>
     <string name="systemmsg_group_left">Grupo abandonado.</string>
-    <string name="systemmsg_read_receipt_subject">Acuse de recibo</string>
-    <string name="systemmsg_read_receipt_body">Este es un acuse de recibo para el mensaje \"%1$s\".\n\nSignifica que el mensaje se mostró en el dispositivo del destinatario, pero no necesariamente que se leyó el contenido.</string>
+    <string name="systemmsg_read_receipt_subject">Recibo de lectura</string>
+    <string name="systemmsg_read_receipt_body">El \"%1$s\" mensaje se mostró en el dispositivo del destinatario, pero no necesariamente que se leyó el contenido.</string>
     <string name="systemmsg_cannot_decrypt">Este mensaje no puede ser descifrado.\n\n• Es posible que sea útil simplemente responderlo y pedirle al remitente que lo envíe nuevamente.\n\n• En caso de que haya reinstalado Delta Chat u otro programa de correo en este u otro dispositivo, puede que quiera enviar un Mensaje de Configuración de Autocrypt desde allí.</string>
     <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). -->
     <string name="systemmsg_action_by_me">%1$s por mi.</string>
@@ -741,8 +758,8 @@
     <!-- %1$s will be replaced by the number of storage already used, sth. as '500 MB'. CAVE: if you want to use a simple the percent sign, type in two, so eg. %1$s %% -->
     <string name="devicemsg_storage_exceeding">⚠️ El almacenamiento de tu proveedor está por excederse, ya tienes %1$s%% en uso.\n\nQuizás no puedas recibir mensajes cuando el almacenamiento esté al 100%% de uso.\n\n👉 Por favor chequea si puedes eliminar los datos antiguos en la página web del proveedor y considera habilitar \"Ajustes / Eliminar mensajes antiguos\". Puedes chequear tu almacenamiento actual en cualquier momento en \"Ajustes / Conectividad\".</string>
     <!-- %1%s will be replaced by date and time in some human-readable format -->
-    <string name="devicemsg_bad_time">⚠️ Fecha y hora de tu dispositivo parecen ser inadecuadas (%1$s).\n\nAjusta tu reloj ⏰🔧 para asegurarte que los mensajes sean recibidos correctamente.</string>
-    <string name="devicemsg_update_reminder">⚠️ Tu versión de Delta Chat puede estar desactualizada.\n\nEsto puede causar problems porque tus contactos usan nuevas versiones - y tú te estás perdiendo las últimas novedades 😳\nChequea https://get.delta.chat o tu tienda de aplicaciones para actualizaciones.</string>
+    <string name="devicemsg_bad_time">⚠️ Fecha y hora de tu dispositivo parecen ser inexactas (%1$s).\n\nAjusta tu reloj ⏰🔧 para asegurarte que los mensajes sean recibidos correctamente.</string>
+    <string name="devicemsg_update_reminder">⚠️ Tu versión de Delta Chat puede ser desactualizada.\n\nEso puede crear problems porque tus contactos usan nuevas versiones - y tú te estás perdiendo las últimas novedades 😳\nChequea https://get.delta.chat o tu tienda de aplicaciones para actualizaciones.</string>
 
     <!-- Some options as "Manage keys" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc. to be entered in a system dialog. This hint is added to the system dialog, below a title as "Manage keys" or "Backup". -->
     <string name="enter_system_secret_to_continue">Ingrese su secreto del sistema para continuar.</string>
@@ -813,10 +830,10 @@
     <!-- permissions -->
     <string name="perm_required_title">Permiso requerido</string>
     <string name="perm_continue">Continuar</string>
-    <string name="perm_explain_access_to_camera_denied">Delta Chat requiere el permiso de Cámara para tomar fotos o videos, pero ha sido denegado de forma permanente. Por favor, vaya al menú de configuración de aplicaciones, seleccione \"Permisos\" y habilite \"Cámara\".</string>
-    <string name="perm_explain_access_to_mic_denied">Delta Chat requiere el permiso de Micrófono para enviar mensajes de audio, pero ha sido denegado de forma permanente. Por favor, vaya al menú de configuración de aplicaciones, seleccione \"Permisos\" y habilite \"Micrófono\".</string>
-    <string name="perm_explain_access_to_storage_denied">Delta Chat requiere el permiso de Almacenamiento para adjuntar o exportar fotos, videos o audio, pero ha sido denegado de forma permanente. Por favor, vaya al menú de configuración de aplicaciones, seleccione \"Permisos\" y habilite \"Almacenamiento\".</string>
-    <string name="perm_explain_access_to_location_denied">Delta Chat requiere el permiso de Ubicación para adjuntar una ubicación, pero ha sido denegado de forma permanente. Por favor, vaya al menú de configuración de aplicaciones, seleccione \"Permisos\" y habilite \"Ubicación\".</string>
+    <string name="perm_explain_access_to_camera_denied">Para tomar fotos o videos, vaya a la configuración de aplicaciones, seleccione \"Permisos\" y habilite \"Cámara\".</string>
+    <string name="perm_explain_access_to_mic_denied">Para enviar mensajes de audio, vaya al menú de configuración de aplicaciones, seleccione \"Permisos\" y habilite \"Micrófono\".</string>
+    <string name="perm_explain_access_to_storage_denied">Para adjuntar o exportar fotos, videos o audio, vaya al menú de configuración de aplicaciones, seleccione \"Permisos\" y habilite \"Almacenamiento\".</string>
+    <string name="perm_explain_access_to_location_denied">Para adjuntar una ubicación, vaya al menú de configuración de aplicaciones, seleccione \"Permisos\" y habilite \"Ubicación\".</string>
 
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Dibuja para difuminar</string>
@@ -871,7 +888,7 @@
     <string name="select_group_image_desktop">Seleccionar imagen de grupo</string>
     <string name="imex_progress_title_desktop">Progreso de copia de respaldo</string>
     <string name="export_backup_desktop">Exportar copia de respaldo</string>
-    <string name="show_key_transfer_message_desktop">Tu llave ha sido enviada a ti mismo. Cámbiate al otro dispositivo y abre el mensaje de configuración. Se te debe pedir un código de configuración. Escribe los siguientes dígitos en el indicador. Una vez que hayas terminado, tu otro dispositivo estará listo para usar Autocrypt.</string>
+    <string name="show_key_transfer_message_desktop">Tu llave ha sido enviada a ti mismo. Cámbiate al otro dispositivo y abre el mensaje de configuración. Se te debe pedir un código de configuración. Escribe los siguientes dígitos:</string>
     <string name="autocrypt_correct_desktop">Configuración de Autocrypt transferida exitosamente!</string>
     <string name="autocrypt_incorrect_desktop">Código de configuración incorrecto. Por favor, inténtalo de nuevo.</string>
     <string name="create_chat_error_desktop">No se pudo crear el chat.</string>
@@ -885,6 +902,17 @@
     <string name="no_spellcheck_suggestions_found">No se encontraron sugerencias ortográficas.</string>
     <string name="show_window">Mostrar ventana</string>
     <string name="login_socks5_experimental_warning">La compatibilidad con SOCKS5 es experimental actualmente. Por favor, use bajo su propio riesgo. Si escribe una dirección en el campo de correo electrónico, habrá una búsqueda de DNS que no se canalizará a través de SOCKS5.</string>
+
+    <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
+    <string name="keybindings">Atajos de tecla</string>
+    <string name="switch_between_chats">Alternar entre chats</string>
+    <string name="scroll_messages">Desplazarse por los mensajes</string>
+    <!-- command to put the cursor to the search input field -->
+    <string name="focus_search_input">Enfocar la búsqueda</string>
+    <!-- command to put the cursor to the message input field -->
+    <string name="focus_message_input">Enfocar la entrada de mensajes</string>
+    <string name="force_refresh_network">Forzar actualización de red</string>
+    <string name="insert_newline">Insertar nueva línea</string>
 
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Estado de envío: Error</string>
@@ -901,18 +929,30 @@
     <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="stop_sharing_location">Dejar de compartir ubicación</string>
     <string name="a11y_voice_message_hint_ios">Después de grabar, toque dos veces para enviar. Para descartar la grabación, deslice de izquierda a derecha con dos dedos.</string>
+    <string name="a11y_connectivity_hint">Toca dos veces para ver los detalles de conectividad.</string>
     <string name="login_error_no_internet_connection">No hay conexión a Internet, el inicio de sesión falló.</string>
     <string name="share_account_not_configured">La cuenta no está configurada.</string>
     <string name="cannot_play_audio_file">El archivo de audio no se puede reproducir.</string>
+    <!-- iOS camera permission alert -->
+    <string name="perm_ios_explain_access_to_camera_denied">Para hacer fotos, capturar vídeos o utilizar el escáner de códigos QR, abra los ajustes del sistema y active \"Cámara\".</string>
     <string name="open_settings">Abrir configuración</string>
     <!-- iOS device contact alert -->
     <string name="import_device_contacts">Importar contactos del dispositivo</string>
+    <string name="import_device_contacts_hint">Para chatear con los contactos de tu dispositivo abre los ajustes y activa \"Contactos\".</string>
     <!-- iOS notification settings -->
     <string name="disabled_in_dc">Deshabilitado en Delta Chat</string>
     <string name="disabled_in_system_settings">Deshabilitado en la configuración del sistema</string>
+    <string name="bg_app_refresh_disabled">\"Actualización de aplicaciones en segundo plano\" desactivada en los ajustes del sistema</string>
+    <!-- iOS connectivity view -->
+    <string name="delayed">Demorado</string>
+    <string name="notifications_avg_minutes">Promedio cada %1$d minutos</string>
+    <string name="notifications_avg_hours">Promedio cada %1$d horas</string>
+    <string name="last_check_at">Comprobado en %1$s</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Al permitir el acceso a la cámara podrás tomar fotos y videos.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Al permitir acceder a tu libreta de direcciones podrás chatear con los contactos de tu dispositivo.</string>
+    <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">Delta Chat necesita permiso para poder compartir tu ubicación mientras el compartimiento de ubicación está habilitado.</string>
+    <string name="InfoPlist_NSLocationWhenInUseUsageDescription">Delta Chat necesita permiso para poder compartir tu ubicación mientras el compartimiento de ubicación está habilitado.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Al permitir el acceso al micrófono podrás grabar audio.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Al permitir el acceso a la galería de fotos podrás subir tus imágenes desde allí.</string>
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat quiere guardar imágenes en tu galería</string>

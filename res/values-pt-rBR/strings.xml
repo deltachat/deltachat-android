@@ -37,9 +37,9 @@
     <string name="archive">Arquivar</string>
     <!-- In the meaning of "To unarchive", "Remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Desarquivar</string>
-    <string name="mute">Mudo</string>
+    <string name="mute">Silenciar</string>
     <string name="ephemeral_messages">Mensagens efêmeras</string>
-    <string name="ephemeral_messages_hint">Estas configurações se aplicam a todos os participantes usando o Delta Chat. No entanto, eles podem copiar, salvar e encaminhar mensagens ou usar outros clientes de email.</string>
+    <string name="ephemeral_messages_hint">Essas configurações se aplicam a todos os participantes usando o Delta Chat. No entanto, eles podem copiar, salvar e encaminhar mensagens ou usar outros clientes de email.</string>
     <string name="save">Salvar</string>
     <string name="chat">Conversa</string>
     <string name="media">Mídia</string>
@@ -127,6 +127,13 @@
         <item quantity="many">%d destinatários</item>
         <item quantity="other">%d destinatários</item>
     </plurals>
+    <!-- short title, used for "N Chats Selected" or "N Messages Selected", however, requires a shorter form, eg. "N Selected" in english -->
+    <plurals name="n_selected">
+        <item quantity="one">%d selecionado</item>
+        <item quantity="many">%d selecionados</item>
+        <item quantity="other">%d selecionados</item>
+    </plurals>
+
     <string name="self">Eu</string>
     <string name="draft">Rascunho</string>
     <string name="image">Imagem</string>

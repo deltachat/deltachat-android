@@ -301,6 +301,8 @@
     <string name="videochat_tap_to_open">Appuyez pour ouvrir</string>
     <string name="videochat_instance">Instance de discussion vidéo</string>
     <string name="videochat_instance_placeholder">Votre instance de discussion vidéo</string>
+    <string name="videochat_instance_example">Exemples : https://meet.jit.si/$ROOM ou basicwebrtc:https://your-server</string>
+    <string name="videochat_instance_explain_2">Si vous avez activé les discussions vidéo, vous pouvez démarrer une conversation vidéo dans chacune de vos discussions. Il faut que chaque participant-e ait une application ou un navigateur compatibles pour pouvoir utiliser cette option.</string>
     <string name="videochat_instance_from_qr">Utiliser « %1$s » pour inviter les autres à des discussions vidéos ?\n\nUne fois configuré, vous pouvez démarrer une discussion vidéo depuis chaque discussion privée. Ceci va remplacer la précédente configuration pour les discussions vidéos, s\'il y en a une.</string>
     <string name="videochat_invitation">Invitation de discussion vidéo</string>
     <string name="videochat_invitation_body">Vous êtes invité à une discussion vidéo, cliquez sur %1$s pour la rejoindre.</string>
@@ -453,6 +455,10 @@
     <string name="tab_map">Carte</string>
     <string name="tab_gallery_empty_hint">Les images et vidéos partagées dans ce tchat seront affichées ici.</string>
     <string name="tab_docs_empty_hint">Les documents, musiques et autres fichiers partagés dans ce chat seront affichés ici.</string>
+    <string name="tab_image_empty_hint">Les images partagées dans cette discussion seront affichées ici.</string>
+    <string name="tab_video_empty_hint">Les vidéos partagées dans cette discussion seront affichées ici.</string>
+    <string name="tab_audio_empty_hint">Les fichiers audio et messages vocaux partagés dans cette discussion seront affichés ici.</string>
+    <string name="tab_webxdc_empty_hint">Les contenus Webxdc partagés dans cette discussion seront affichés ici.</string>
     <string name="media_preview">Prévisualiser le fichier multimédia</string>
     <string name="send_message">Envoyer message</string>
 
@@ -481,10 +487,12 @@
     <string name="part_of_total_used">%1$s sur %2$s utilisé</string>
 
 
+    <!-- welcome and login -->
+    <string name="welcome_chat_over_email">Messagerie instantanée par courriel.</string>
     <string name="scan_invitation_code">Scanner le code d\'invitation</string>
     <string name="welcome_intro1_message">Le messager avec le plus large public au monde. Libre et indépendant.</string>
     <string name="login_title">Connexion</string>
-    <string name="login_header">Se connecter au compte</string>
+    <string name="login_header">Se connecter au compte courriel</string>
     <string name="login_explain">Se connecter avec un compte de courriel existant.</string>
     <string name="login_subheader">Pour les fournisseurs de courriel connus, des paramètres supplémentaires sont automatiquement configurés. Parfois, IMAP doit être activé dans l\'interface Web. Consultez votre fournisseur de courriel ou vos amis pour obtenir de l\'aide.</string>
     <string name="login_no_servers_hint">Il n\'y a pas de serveur Delta Chat, vos données restent sur votre appareil !</string>
@@ -516,7 +524,7 @@
     <string name="login_error_server">Entre un serveur / adresse IP valide</string>
     <string name="login_error_port">Entrez un port valide (1-65535)</string>
     <string name="login_error_required_fields">Entrez une adresse email et un mot de passe valides</string>
-    <string name="import_backup_title">Importer une sauvegarde</string>
+    <string name="import_backup_title">Rétablir une sauvegarde</string>
     <string name="import_backup_ask">Sauvegarde trouvée sur \"%1$s\".\n\nVoulez-vous importer et en utiliser toutes les données et paramètres ?</string>
     <string name="import_backup_no_backup_found">Aucune sauvegarde trouvée.\n\nCopiez le fichier de sauvegarde vers \"%1$s\" et essayez à nouveau. Ou bien, appuyez sur \"Démarrage communication\" pour suivre le processus normal de configuration.</string>
     <!-- Translators: %1$s will be replaced by the e-mail address -->
@@ -620,9 +628,10 @@
     <string name="pref_background_btn_default">Utilisez l\'image par défaut</string>
     <string name="pref_background_btn_gallery">Sélectionner depuis la galerie</string>
     <string name="pref_imap_folder_handling">Gestion de dossier IMAP</string>
-    <string name="pref_imap_folder_warn_disable_defaults">Si vous désactivez cette option, assurez-vous que votre serveur et vos autres clients sont configurés en conséquence.\n\nSinon les choses pourraient ne pas fonctionner du tout.</string>
+    <string name="pref_imap_folder_warn_disable_defaults">Si vous désactivez cette option, assurez-vous que votre serveur et vos autres clients sont configurés en conséquence.\n\nSinon des choses pourraient ne pas fonctionner du tout.</string>
     <string name="pref_watch_sent_folder">Regarder le dossier Messages envoyés</string>
     <string name="pref_send_copy_to_self">M\'envoyer une copie</string>
+    <string name="pref_send_copy_to_self_explain">Obligatoire pour utiliser ce compte sur plusieurs appareils.</string>
     <string name="pref_auto_folder_moves">Déplacer automatiquement vers le dossier DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">Les discussions sont déplacées pour éviter d\'encombrer le dossier Boîte de réception</string>
     <string name="pref_only_fetch_mvbox_title">Ne consulter que le dossier DeltaChat</string>
@@ -894,6 +903,17 @@
     <string name="show_window">Afficher la fenêtre</string>
     <string name="login_socks5_experimental_warning">Le support de SOCK5 est actuellement expérimental. Utilisez le à vos risques et périls. Si vous saisissez une adresse de courriel, une requête DNS sera effectuée sans passer par SOCK5.</string>
 
+    <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
+    <string name="keybindings">Raccourcis clavier</string>
+    <string name="switch_between_chats">Naviguer entre les discussions</string>
+    <string name="scroll_messages">Faire défiler les messages</string>
+    <!-- command to put the cursor to the search input field -->
+    <string name="focus_search_input">Focaliser la recherche</string>
+    <!-- command to put the cursor to the message input field -->
+    <string name="focus_message_input">Focaliser la saisie de message</string>
+    <string name="force_refresh_network">Forcer la recharge du réseau</string>
+    <string name="insert_newline">Insérer nouvelle ligne</string>
+
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">État de la livraison : Erreur</string>
     <string name="a11y_encryption_padlock">Cadenas de chiffrement</string>
@@ -907,26 +927,32 @@
     <string name="a11y_disappearing_messages_activated">Messages éphémères activés</string>
 
     <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
-    <string name="stop_sharing_location">Arrêter de partager la géolocalisation</string>
+    <string name="stop_sharing_location">Arrêter de partager la localisation</string>
+    <string name="a11y_voice_message_hint_ios">Après l\'enregistrement, poussez deux fois pour envoyer. Pour le supprimer, balayez l\'écran avec deux doigts.</string>
     <string name="a11y_connectivity_hint">Double-cliquez pour afficher les détails de la connectivité.</string>
-    <string name="login_error_no_internet_connection">Pas de connexion internet, connexion échouée.</string>
+    <string name="login_error_no_internet_connection">Pas de connexion Internet, connexion échouée.</string>
     <string name="share_account_not_configured">Le compte n\'est pas configuré.</string>
-    <string name="cannot_play_audio_file">Le fichier audio ne peut être joué.</string>
+    <string name="cannot_play_audio_file">Le fichier audio ne peut pas être joué.</string>
     <!-- iOS camera permission alert -->
-    <string name="perm_ios_explain_access_to_camera_denied">Pour prendre des photos, des vidéos ou utiliser le Scanner de QR-Code, ouvrez les paramètres système et activez \"Caméra\".</string>
+    <string name="perm_ios_explain_access_to_camera_denied">Pour prendre des photos, des vidéos ou utiliser le scanneur de QR-Code, ouvrez les paramètres du système et activez \"Appareil photo\".</string>
     <string name="open_settings">Ouvrir les paramètres</string>
+    <!-- iOS device contact alert -->
+    <string name="import_device_contacts">Importer les contacts de l\'appareil</string>
     <string name="import_device_contacts_hint">Pour discuter avec des contacts de votre appareils, ouvrez les paramètre et activez \"Contacts\".</string>
     <!-- iOS notification settings -->
     <string name="disabled_in_dc">Désactivé dans Delta Chat</string>
     <string name="disabled_in_system_settings">Désactivé dans les paramètres système</string>
-    <string name="bg_app_refresh_disabled">\"Le rafraîchissement des applications en arrière-plan\" est désactivé dans les paramètres du système.</string>
+    <string name="bg_app_refresh_disabled">\"La recharge des applications en arrière-plan\" est désactivé dans les paramètres du système.</string>
     <!-- iOS connectivity view -->
     <string name="delayed">Retardé</string>
+    <string name="notifications_avg_minutes">Toutes les %1$d minutes en moyenne</string>
+    <string name="notifications_avg_hours">Toutes les %1$d heures en moyenne</string>
+    <string name="last_check_at">Dernièrement vu à %1$s</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat utilise votre appareil photo pour pendre et envoyer des photos et des vidéos et pour scanner des QR codes.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat utilise vos contacts pour montrer une liste d\'adresses de courriel auxquels vous pouvez écrire. Delta Chat n\'a pas de serveur, vos contacts ne sont envoyés nulle part.</string>
-    <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">Delta Chat a besoin de la permission d\'utiliser votre géolocalisation pour partager votre emplacement pour la durée pour laquelle vous avez activé le partage de localisation.</string>
-    <string name="InfoPlist_NSLocationWhenInUseUsageDescription">Delta Chat a besoin de la permission d\'utiliser votre géolocalisation pour partager votre emplacement pour la durée pour laquelle vous avez activé le partage de localisation.</string>
+    <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">Delta Chat a besoin de la permission pour partager votre location pendant que vous avez activé le partage de localisation.</string>
+    <string name="InfoPlist_NSLocationWhenInUseUsageDescription">Delta Chat a besoin de la permission de partager votre location pendent que vous avez activé le partage de localisation.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat utilise votre micro pour enregistrer et envoyer des messages vocaux et des vidéos avec bande son.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat vous laisse choisir quelles photos envoyer de votre photothèque. </string>
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat veut enregistrer les images dans votre bibliothèque photo.</string>
@@ -944,6 +970,6 @@
 
 
     <!-- device messages for updates -->
-    <string name="update_1_30">Plus rapide. Plus stable.\n\nPour la version 1.30, nous nous sommes focalisés sur la vitesse et la fiabilité, pour fixer des dizaines de bogues. Vérifiez le journal des changements voir si votre bogue favori a été corrigé : https://get.delta.chat/#changelogs 🚀</string>
+    <string name="update_1_30">Plus rapide. Plus stable.\n\nPour la version 1.30, nous avons focalisés sur la vitesse et la fiabilité, en réglant des douzaines de bogues. Vérifiez dans notre journal des changements si votre bogue favori était corrigé : https://get.delta.chat/#changelogs 🚀</string>
 
 </resources>
