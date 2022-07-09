@@ -8,6 +8,7 @@ import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.util.AccessibilityUtil;
 
 public class DeliveryStatusView {
 
@@ -24,6 +25,8 @@ public class DeliveryStatusView {
 
   private void animatePrepare()
   {
+    if (AccessibilityUtil.areAnimationsDisabled(context)) return;
+    
     if(prepareAnimation ==null) {
       prepareAnimation = new RotateAnimation(360f, 0f,
           Animation.RELATIVE_TO_SELF, 0.5f,
@@ -39,6 +42,8 @@ public class DeliveryStatusView {
 
   private void animateSending()
   {
+    if (AccessibilityUtil.areAnimationsDisabled(context)) return;
+
     if(sendingAnimation ==null) {
       sendingAnimation = new RotateAnimation(0, 360f,
           Animation.RELATIVE_TO_SELF, 0.5f,
