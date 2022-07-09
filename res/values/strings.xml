@@ -913,7 +913,7 @@
 
     <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="stop_sharing_location">Stop sharing location</string>
-    <string name="a11y_voice_message_hint_ios">After recording double-tap to send. To discard the recording scrub with two fingers.</string>
+    <string name="a11y_voice_message_hint_ios">After recording, double-tap to send. To discard the recording, scrub with two fingers.</string>
     <string name="a11y_connectivity_hint">Double tap to view connectivity details.</string>
     <string name="login_error_no_internet_connection">No internet connection, login failed.</string>
     <string name="share_account_not_configured">Account is not configured.</string>
