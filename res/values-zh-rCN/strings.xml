@@ -33,9 +33,9 @@
     <string name="forward">转发</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">重新发送</string>
-    <!-- In the meaning of "To archive", "Put a chat to the archive". This string does not mean "The Archive". -->
+    <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
     <string name="archive">归档</string>
-    <!-- In the meaning of "To unarchive", "Remove a chat from the archive", opposite of the previous string -->
+    <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">解档</string>
     <string name="mute">静音</string>
     <string name="ephemeral_messages">消息定时销毁</string>
@@ -48,12 +48,12 @@
     <string name="start_chat">开始聊天</string>
     <string name="show_full_message">显示完整消息… </string>
     <string name="show_full_message_in_browser">在浏览器中显示完整消息…</string>
-    <!-- this is shown as placeholder when something is loading at some places -->
+    <!-- Placeholder text when something is loading -->
     <string name="loading">加载中…</string>
     <string name="hide">隐藏</string>
     <string name="activate">激活</string>
     <string name="load_remote_content">加载远程图片</string>
-    <!-- possible answers to the question are: Never, Always, Once -->
+    <!-- Possible answers to the question are: Never, Always, Once -->
     <string name="load_remote_content_ask">远程图像可被用来跟踪您。\n\n该设置还允许加载字体和其他内容。即使禁用，您仍可能看到嵌入或缓存的图像。\n\n要加载远程图像吗？</string>
     <string name="always">始终</string>
     <string name="once">一次</string>
@@ -65,7 +65,7 @@
     <string name="done">已完成</string>
     <string name="undo">撤销</string>
     <string name="offline">离线</string>
-    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in iOS headers, the string should be as short as possible, though. -->
+    <!-- For the next view or as "continue". Should be as short as possible. -->
     <string name="next">下一步</string>
     <string name="error">错误</string>
     <string name="error_x">错误： %1$s</string>
@@ -79,7 +79,7 @@
     <string name="password">密码</string>
     <string name="existing_password">现有密码</string>
     <string name="now">现在</string>
-    <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
+    <!-- Headline for destructive actions with no undo. Could also be "Caution" or "Warning". -->
     <string name="danger">危险</string>
     <string name="today">今天</string>
     <string name="yesterday">昨天</string>
@@ -87,14 +87,14 @@
     <string name="this_month">本月</string>
     <string name="last_week">上周</string>
     <string name="last_month">上个月</string>
-    <!-- the placeholder will be replaced by a date or time, resulting eg. in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
+    <!-- Placeholder replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
     <string name="last_seen_at">最后见到时间：%1$s</string>
     <string name="last_seen_unknown">最后见到时间：未知</string>
-    <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
+    <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="other">%d 分钟</item>
     </plurals>
-    <!-- Translators: show beside messages that are "N hours old". prefer a short string, prefer abbreviations if they're well-known -->
+    <!-- Shown beside messages that are "N hours old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_hours">
         <item quantity="other">%d 小时</item>
     </plurals>
@@ -113,7 +113,7 @@
     <plurals name="n_recipients">
         <item quantity="other">%d 名收信人 </item>
     </plurals>
-    <!-- short title, used for "N Chats Selected" or "N Messages Selected", however, requires a shorter form, eg. "N Selected" in english -->
+    <!-- Short form for "N Chats Selected" or "N Messages Selected": in English, "N Selected" -->
     <plurals name="n_selected">
         <item quantity="other">选中了 %d</item>
     </plurals>
@@ -121,24 +121,24 @@
     <string name="self">我</string>
     <string name="draft">草稿</string>
     <string name="image">图像</string>
-    <!-- Translators: Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
+    <!-- Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
     <string name="reply_noun">回复</string>
     <string name="gif">Gif</string>
-    <!-- "Stickers" as known from other messengers, please pick up the wording from there; in some languages, "Sticker" in english is just fine. -->
+    <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">贴纸</string>
     <string name="images">图像</string>
     <string name="audio">音频</string>
     <string name="voice_message">语音消息</string>
     <string name="forwarded">转发了</string>
     <string name="forwarded_message">转发的消息</string>
-    <!-- %1$s will be replaced by the name or the e-mail address of the person who has forwarded the message -->
+    <!-- %1$s will be replaced by the name or the e-mail address of the person who forwards the message -->
     <string name="forwarded_by">转发人 %1$s</string>
     <string name="video">视频</string>
     <string name="documents">文档</string>
     <string name="contact">联系人</string>
     <string name="verified_contact">已验证的联系人</string>
     <string name="camera">相机</string>
-    <!-- "capture" here means "start a video recording" or "take a photo"; eg. the description of the "shutter button" in the camera controls -->
+    <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">捕获</string>
     <string name="switch_camera">切换摄像头</string>
     <string name="toggle_fullscreen">切换全屏模式</string>
@@ -172,10 +172,10 @@
     <string name="menu_new_contact">新建联系人</string>
     <string name="menu_new_chat">新建聊天</string>
     <string name="menu_new_group">新建群组</string>
-    <!-- "Subject" here must be the same wording as used in the e-mail context, so. eg. "Betreff" in german (the idea is to help people coming from the e-mail context) -->
+    <!-- Use the same wording as "Subject" to help people coming from the e-mail context; eg. "Betreff" in German -->
     <string name="new_group_or_subject">新群组或邮件主题</string>
     <string name="menu_new_verified_group">新建已验证群组</string>
-    <!-- consider keeping the term "broadcast"; check how these lists are called eg. on whatsapp in the destination language -->
+    <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">广播列表</string>
     <string name="broadcast_lists">广播列表</string>
     <string name="new_broadcast_list">新建广播列表</string>
@@ -210,10 +210,10 @@
     <string name="menu_export_attachment">导出附件</string>
     <string name="menu_export_attachments">导出附件</string>
     <string name="menu_all_media">所有媒体</string>
-    <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
+    <!-- Command to jump to the original message corresponding to a gallery image or document -->
     <string name="show_in_chat">在聊天中显示</string>
     <string name="menu_share">分享</string>
-    <!-- this is the action "to block sth." usually a mailing list or a contact. this is NOT "a large solid piece of hard material" :) -->
+    <!-- Verb "to block sth." usually a mailing list or a contact, not a noun -->
     <string name="block">屏蔽</string>
     <string name="menu_block_contact">屏蔽联系人</string>
     <string name="menu_unblock_contact">取消屏蔽联系人</string>
@@ -245,13 +245,13 @@
     <string name="device_talk_explain">此聊天中的消息是由 Delta Chat 应用本地生成的。 它的制作者使用它来通知应用更新和使用过程中出现的问题。</string>
     <string name="device_talk_welcome_message">欢迎使用 Delta Chat！ – Delta Chat 看起来、用起来就跟其他流行的通讯应用一样，但是却不涉及中心化的控制、跟踪以及将您、朋友、同事或家庭出卖给大型组织。\n\n从技术上来说，Delta Chat 是具有现代聊天界面的电子邮件应用程序。若您愿意，电子邮件将装扮一新👻\n\n与数十亿人中的任何人一起使用 Delta Chat：只需使用他们的电子邮件地址即可。收件人不需要安装 Delta Chat、访问网站或是在什么地方注册 - 当然，如果他们愿意，您可以指给他们👉 https://get.delta.chat</string>
     <string name="edit_contact">编辑联系人</string>
-    <!-- Translators: "Pin" here is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
     <string name="pin_chat">固定聊天</string>
-    <!-- Translators: this is the opposite of "Pin chat", removing the sticky-state from a chat. -->
+    <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin_chat">取消固定聊天</string>
-    <!-- Translators: this is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
     <string name="pin">固定</string>
-    <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
+    <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin">取消固定</string>
     <string name="ConversationFragment_quoted_message_not_found">原消息未找到</string>
     <string name="reply_privately">私下回复</string>
@@ -311,9 +311,9 @@
     <string name="cannot_delete_contacts_in_use">无法删除仍有在进行中的聊天的联系人。</string>
     <string name="ask_start_chat_with">与 %1$s 聊天？</string>
     <string name="ask_delete_value">删除 %s？</string>
-    <!-- Translators: %1$s will be replaces by a comma separated list of names -->
+    <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">将 %1$s 从群组中移除？</string>
-    <!-- Translators: %1$s will be replaced by a comma separated list of names -->
+    <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_from_broadcast">从广播列表中移除 %1$s？</string>
     <string name="open_url_confirmation">您要打开此链接吗？</string>
 
@@ -357,7 +357,7 @@
     <string name="archive_empty_hint">被您归档的聊天将显示于此。</string>
     <string name="saved_messages">保存的消息</string>
     <string name="saved_messages_explain">• 转发消息于此以便于访问\n\n• 做笔记或语音备忘录\n\n• 附加媒体以保存它们</string>
-    <!-- this "Saved" should match the "Saved" from "Saved messages" -->
+    <!-- Should match "Saved" from "Saved messages" -->
     <string name="saved">已保存</string>
     <string name="save_as">另存为</string>
     <string name="retry_send">尝试重发消息</string>
@@ -433,25 +433,25 @@
     <string name="send_message">发送消息</string>
 
     <!-- Connectivity -->
-    <!-- Used as a headline for the "Inbox" eg. in the "Connectivity" view -->
+    <!-- Headline for the "Inbox" eg. in the "Connectivity" view -->
     <string name="incoming_messages">传入消息</string>
-    <!-- Used as a headline for the "Outbox" eg. in the "Connectivity" view -->
+    <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">传出消息</string>
-    <!-- Used as a headline in the "Connectivity" view. The placeholder will be replaced by the domain of the configured email-address. -->
+    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by the domain of the configured email-address. -->
     <string name="storage_on_domain">%1$s 上的存储</string>
     <string name="connectivity">连接性</string>
-    <!-- Shown eg. in the title bar if the app is "Not connected"; as there is very few room, try to be as short as possible. -->
+    <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
     <string name="connectivity_not_connected">未连接</string>
-    <!-- Shown eg. in the title bar if the app is "Connecting"; as there is very few room, try to be as short as possible. Note that the three dots are a single character (…), not three (...) -->
+    <!-- Shown in the title bar if the app is "Connecting"; prefer short strings. The ellipsis is a single character (…), not three (...) -->
     <string name="connectivity_connecting">连接中…</string>
-    <!-- Shown eg. in the title bar if the app is "Updating" (eg. getting new/old message, sync things); as there is very few room, try to be as short as possible. Note that the three dots are a single character (…), not three (...) -->
+    <!-- Shown in the title bar if the app is "Updating" (eg. getting new/old message, sync things); prefer short strings. The ellipsis is a single character (…), not three (...) -->
     <string name="connectivity_updating">更新中…</string>
-    <!-- Shown eg. in the setting if the app is "Connected" -->
+    <!-- Shown in the setting if the app is "Connected" -->
     <string name="connectivity_connected">已连接</string>
     <string name="sending">发送中…</string>
     <string name="last_msg_sent_successfully">上一条消息发送成功。</string>
     <string name="not_supported_by_provider">不被您的邮件提供商支持。</string>
-    <!-- Used as a subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed or so. -->
+    <!-- Subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">消息</string>
     <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
     <string name="part_of_total_used">已使用 %1$s GB，共 %2$s GB</string>
@@ -515,7 +515,7 @@
     <string name="configuration_failed_with_error">配置失败。错误：%1$s</string>
 
     <!-- share and forward messages -->
-    <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
+    <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">转发给…</string>
     <string name="share_multiple_attachments">发送 %1$d 个文件到所选聊天？\n\n文件将以未经修改的、保持原大小的方式发送，例如：图像和视频不会被重新编码。</string>
     <string name="share_multiple_attachments_multiple_chats">发送 %1$d 个文件到 %2$d 个聊天？\n\n文件将以未经修改的、保持原大小的方式发送，例如：图像和视频不会被重新编码。</string>
@@ -533,9 +533,9 @@
     <string name="pref_password_and_account_settings">密码和账户</string>
     <string name="pref_who_can_see_profile_explain">在与其他用户交流时，您的个人资料图片和名称将与您的消息一起显示。 已经发送的信息不能被删除或者移除。</string>
     <string name="pref_your_name">您的名称</string>
-    <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
+    <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
     <string name="pref_default_status_label">签名档</string>
-    <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
+    <!-- Translators: The URL should not be localized as it is unclear which language the receiver prefers; the language will be automatically detected on the server -->
     <string name="pref_default_status_text">由我的 Delta Chat Messenger 发送： https://delta.chat</string>
     <string name="pref_enter_sends">回车键发送</string>
     <string name="pref_enter_sends_explain">按回车键发送文本消息</string>
@@ -544,7 +544,7 @@
     <string name="pref_outgoing_worse">体积小，但质量更差</string>
     <string name="pref_vibrate">振动</string>
     <string name="pref_screen_security">屏幕安全</string>
-    <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
+    <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_screen_security_explain">请求系统在近期任务列表和本应用内阻止截屏</string>
     <string name="pref_screen_security_please_restart_hint">要应用屏幕安全设置，请重新启动本应用。</string>
     <string name="pref_notifications">通知</string>
@@ -559,14 +559,14 @@
     <string name="pref_privacy">隐私</string>
     <string name="pref_chats_and_media">聊天与媒体</string>
     <string name="pref_system_default">系统默认</string>
-    <!-- Translators: "light" in the meaning "opposite of dark" -->
+    <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">明亮</string>
     <string name="pref_dark_theme">黑暗</string>
     <string name="pref_appearance">外观</string>
     <string name="pref_theme">主题</string>
     <string name="pref_language">语言</string>
     <string name="pref_incognito_keyboard">无痕键盘</string>
-    <!-- Translators: Keep in mind that this is a Request - it must be clear in the wording that this cannot be enforced. -->
+    <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_incognito_keyboard_explain">请求键盘禁用个性化学习</string>
     <string name="pref_read_receipts">已读回执</string>
     <string name="pref_read_receipts_explain">如果禁用已读回执，您将无法看到其他人的已读回执。</string>
@@ -700,9 +700,9 @@
     <string name="systemmsg_read_receipt_subject">消息已被打开</string>
     <string name="systemmsg_read_receipt_body">您发送的“%1$s”消息已在接收者的屏幕上显示过。\n\n这并不保证内容已被阅读。</string>
     <string name="systemmsg_cannot_decrypt">此消息无法解密。\n\n• 简单回复此消息并要求发送者重发该消息可能会有所帮助。\n\n• 如果您在此设备或其他设备上重新安装了 Delta Chat 或其他电子邮件程序，则可能需要从别处发送 Autocrypt 设置消息。</string>
-    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). -->
+    <!-- Translators: %1$s will be replaced by sth. as "ACTION by me". -->
     <string name="systemmsg_action_by_me">我 %1$s。</string>
-    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
+    <!-- Translators: %1$s will be replaced by an action and %2$s will be replaced by the name/addr of the person who did it, as "ACTION by MEMBER". -->
     <string name="systemmsg_action_by_user">%2$s %1$s。</string>
     <string name="systemmsg_unknown_sender_for_chat">此聊天发送者未知。查看“信息”来获取更多详情。</string>
     <string name="systemmsg_subject_for_new_contact">来自 %1$s 的消息</string>
@@ -725,7 +725,7 @@
     <string name="systemmsg_chat_protection_enabled">已启用聊天保护</string>
 
     <string name="devicemsg_self_deleted">您已删除“保存的消息”聊天。\n\nℹ️要再次使用“保存的消息”功能，请创建一个与自己的新聊天。</string>
-    <!-- %1$s will be replaced by the number of storage already used, sth. as '500 MB'. CAVE: if you want to use a simple the percent sign, type in two, so eg. %1$s %% -->
+    <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
     <string name="devicemsg_storage_exceeding">⚠️邮件服务商提供的存储空间快满了，已使用 %1$s%%。\n\n当存储用量达到 100%% 时，您可能无法接收消息。\n\n👉请检查是否可以在提供商的网页界面上删除旧数据；您还可以考虑启用“设置/删除旧消息”。您可以随时在“设置/连接性”中查看当前的存储使用情况。</string>
     <!-- %1%s will be replaced by date and time in some human-readable format -->
     <string name="devicemsg_bad_time">⚠️设备的日期或时间似乎不准确 （%1$s）。\n\n请调整时钟⏰🔧以确保能正确接收信息。</string>

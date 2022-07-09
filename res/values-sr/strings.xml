@@ -22,9 +22,9 @@
     <string name="back">Назад</string>
     <string name="close">Близу</string>
     <string name="forward">Проследи</string>
-    <!-- In the meaning of "To archive", "Put a chat to the archive". This string does not mean "The Archive". -->
+    <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
     <string name="archive">Архивирај ћаскање</string>
-    <!-- In the meaning of "To unarchive", "Remove a chat from the archive", opposite of the previous string -->
+    <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Деархивирај ћаскање</string>
     <string name="mute">Искључи обавештења</string>
     <string name="ephemeral_messages">Нестајуће поруке</string>
@@ -38,7 +38,7 @@
     <string name="one_moment">Тренутак...</string>
     <string name="done">Завршено</string>
     <string name="undo">Опозови</string>
-    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in iOS headers, the string should be as short as possible, though. -->
+    <!-- For the next view or as "continue". Should be as short as possible. -->
     <string name="next">Следећи</string>
     <string name="error">Грешка</string>
     <string name="error_x">Грешка: %1$s</string>
@@ -51,7 +51,7 @@
     <string name="bad_email_address">Лоша е-адреса.</string>
     <string name="password">Лозинка</string>
     <string name="now">Сада</string>
-    <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
+    <!-- Headline for destructive actions with no undo. Could also be "Caution" or "Warning". -->
     <string name="danger">Опасност</string>
     <string name="today">Данас</string>
     <string name="yesterday">Јуче</string>
@@ -59,13 +59,13 @@
     <string name="this_month">Овог месеца</string>
     <string name="last_week">Прошле недеље</string>
     <string name="last_month">Прошлог месеца</string>
-    <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
+    <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="one">%d мин</item>
         <item quantity="few">%d мин</item>
         <item quantity="other">%d мин</item>
     </plurals>
-    <!-- Translators: show beside messages that are "N hours old". prefer a short string, prefer abbreviations if they're well-known -->
+    <!-- Shown beside messages that are "N hours old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_hours">
         <item quantity="one">%d сат</item>
         <item quantity="few">%d сата</item>
@@ -181,7 +181,7 @@
     </plurals>
     <string name="ask_forward">Да проследим изабране поруке за %1$s?</string>
     <string name="ask_start_chat_with">Ћаскати са %1$s?</string>
-    <!-- Translators: %1$s will be replaces by a comma separated list of names -->
+    <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Уклонити %1$s из групе?</string>
     <!-- contact list -->
     <string name="contacts_title">Контакти</string>
@@ -240,17 +240,17 @@
     <!-- Translators: %1$s will be replaced by the e-mail address -->
     <string name="login_error_cannot_login">Не могу да се пријавим као %1$s. Проверите да ли су е-адреса и лозинка тачни.</string>
     <!-- share and forward messages -->
-    <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
+    <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">Проследи за…</string>
     <string name="pref_profile_info_headline">Подаци вашег профила</string>
     <string name="pref_blocked_contacts">Блокирани контакти</string>
     <string name="pref_your_name">Ваше име</string>
-    <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
+    <!-- Translators: The URL should not be localized as it is unclear which language the receiver prefers; the language will be automatically detected on the server -->
     <string name="pref_default_status_text">Послато Делта ћаскањем: https://delta.chat</string>
     <string name="pref_enter_sends">Шаљи ЕНТЕР тастером</string>
     <string name="pref_vibrate">Вибрирање</string>
     <string name="pref_screen_security">Безбедност екрана</string>
-    <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
+    <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_screen_security_explain">Блокирање снимка екрана у списку недавних апликација и унутар апликације</string>
     <string name="pref_notifications">Обавештења</string>
     <string name="pref_notifications_show">Прикажи</string>
@@ -260,7 +260,7 @@
     <string name="pref_silent">Без звука</string>
     <string name="pref_privacy">Приватност</string>
     <string name="pref_chats_and_media">Ћаскања и медији</string>
-    <!-- Translators: "light" in the meaning "opposite of dark" -->
+    <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">Светла</string>
     <string name="pref_dark_theme">Тамна</string>
     <string name="pref_appearance">Изглед</string>
@@ -300,9 +300,9 @@
     <string name="systemmsg_member_added">Члан %1$s је додат.</string>
     <string name="systemmsg_member_removed">Члан %1$s је уклоњен.</string>
     <string name="systemmsg_group_left">Група напуштена.</string>
-    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). -->
+    <!-- Translators: %1$s will be replaced by sth. as "ACTION by me". -->
     <string name="systemmsg_action_by_me">%1$s од мене.</string>
-    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
+    <!-- Translators: %1$s will be replaced by an action and %2$s will be replaced by the name/addr of the person who did it, as "ACTION by MEMBER". -->
     <string name="systemmsg_action_by_user">%1$s од стране %2$s.</string>
     <!-- qr code stuff -->
     <string name="qr_code">Бар-кôд</string>

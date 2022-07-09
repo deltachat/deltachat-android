@@ -33,9 +33,9 @@
     <string name="forward">Переслати</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">Відправити знову</string>
-    <!-- In the meaning of "To archive", "Put a chat to the archive". This string does not mean "The Archive". -->
+    <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
     <string name="archive">Архівувати</string>
-    <!-- In the meaning of "To unarchive", "Remove a chat from the archive", opposite of the previous string -->
+    <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Розархівувати</string>
     <string name="mute">Вимкнути сповіщення</string>
     <string name="ephemeral_messages">Зникнення повідомлень</string>
@@ -48,12 +48,12 @@
     <string name="start_chat">Почати розмову</string>
     <string name="show_full_message">Показати повне повідомлення...</string>
     <string name="show_full_message_in_browser">Показати повне повідомлення у браузері...</string>
-    <!-- this is shown as placeholder when something is loading at some places -->
+    <!-- Placeholder text when something is loading -->
     <string name="loading">Завантаження...</string>
     <string name="hide">Приховати</string>
     <string name="activate">Активувати</string>
     <string name="load_remote_content">Завантажувати віддалені зображення</string>
-    <!-- possible answers to the question are: Never, Always, Once -->
+    <!-- Possible answers to the question are: Never, Always, Once -->
     <string name="load_remote_content_ask">Віддалені зображення можна використовувати для слідкування за вами.\n\nЦе налаштування також дозволяє завантажувати шрифти та інший вміст. Навіть якщо воно вимкнене, ви можете побачити вбудовані або кешовані зображення.\n\nЗавантажувати віддалені зображення?</string>
     <string name="always">Завжди</string>
     <string name="once">Один раз</string>
@@ -65,7 +65,7 @@
     <string name="done">Виконано</string>
     <string name="undo">Скасувати</string>
     <string name="offline">Не в мережі</string>
-    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in iOS headers, the string should be as short as possible, though. -->
+    <!-- For the next view or as "continue". Should be as short as possible. -->
     <string name="next">Наступний</string>
     <string name="error">Помилка</string>
     <string name="error_x">Помилка: %1$s</string>
@@ -79,7 +79,7 @@
     <string name="password">Пароль</string>
     <string name="existing_password">Наявний пароль</string>
     <string name="now">Зараз</string>
-    <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
+    <!-- Headline for destructive actions with no undo. Could also be "Caution" or "Warning". -->
     <string name="danger">Небезпека</string>
     <string name="today">Сьогодні</string>
     <string name="yesterday">Вчора</string>
@@ -87,17 +87,17 @@
     <string name="this_month">Цього місяця</string>
     <string name="last_week">Останнього тижня</string>
     <string name="last_month">Останнього місяця</string>
-    <!-- the placeholder will be replaced by a date or time, resulting eg. in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
+    <!-- Placeholder replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
     <string name="last_seen_at">З\'являвся останній раз %1$s</string>
     <string name="last_seen_unknown">Невідомо коли з\'являвся останній раз</string>
-    <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
+    <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="one">%d хвилину</item>
         <item quantity="few">%d хвилини</item>
         <item quantity="many">%d хвилин</item>
         <item quantity="other">%d хвилин</item>
     </plurals>
-    <!-- Translators: show beside messages that are "N hours old". prefer a short string, prefer abbreviations if they're well-known -->
+    <!-- Shown beside messages that are "N hours old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_hours">
         <item quantity="one">%d годину</item>
         <item quantity="few">%d години</item>
@@ -134,7 +134,7 @@
         <item quantity="many">%d одержувачів</item>
         <item quantity="other">%d одержувачів</item>
     </plurals>
-    <!-- short title, used for "N Chats Selected" or "N Messages Selected", however, requires a shorter form, eg. "N Selected" in english -->
+    <!-- Short form for "N Chats Selected" or "N Messages Selected": in English, "N Selected" -->
     <plurals name="n_selected">
         <item quantity="one">%d обраний</item>
         <item quantity="few">%d обрано</item>
@@ -145,24 +145,24 @@
     <string name="self">Мої</string>
     <string name="draft">Чернетка</string>
     <string name="image">Зображення</string>
-    <!-- Translators: Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
+    <!-- Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
     <string name="reply_noun">Відповідь</string>
     <string name="gif">Gif</string>
-    <!-- "Stickers" as known from other messengers, please pick up the wording from there; in some languages, "Sticker" in english is just fine. -->
+    <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">Стікер</string>
     <string name="images">Зображення</string>
     <string name="audio">Аудіо</string>
     <string name="voice_message">Голосове повідомлення</string>
     <string name="forwarded">Переслане</string>
     <string name="forwarded_message">Переслане повідомлення</string>
-    <!-- %1$s will be replaced by the name or the e-mail address of the person who has forwarded the message -->
+    <!-- %1$s will be replaced by the name or the e-mail address of the person who forwards the message -->
     <string name="forwarded_by">Переслано від %1$s</string>
     <string name="video">Відео</string>
     <string name="documents">Документи</string>
     <string name="contact">Контакт</string>
     <string name="verified_contact">Перевірений контакт</string>
     <string name="camera">Камера</string>
-    <!-- "capture" here means "start a video recording" or "take a photo"; eg. the description of the "shutter button" in the camera controls -->
+    <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Захопити</string>
     <string name="switch_camera">Перемкнути камеру</string>
     <string name="toggle_fullscreen">Перейти в повноекранний режим</string>
@@ -196,10 +196,10 @@
     <string name="menu_new_contact">Новий контакт</string>
     <string name="menu_new_chat">Новий чат</string>
     <string name="menu_new_group">Нова група</string>
-    <!-- "Subject" here must be the same wording as used in the e-mail context, so. eg. "Betreff" in german (the idea is to help people coming from the e-mail context) -->
+    <!-- Use the same wording as "Subject" to help people coming from the e-mail context; eg. "Betreff" in German -->
     <string name="new_group_or_subject">Нова група або тема</string>
     <string name="menu_new_verified_group">Нова перевірена група</string>
-    <!-- consider keeping the term "broadcast"; check how these lists are called eg. on whatsapp in the destination language -->
+    <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">Список трансляцій</string>
     <string name="broadcast_lists">Списки трансляцій</string>
     <string name="new_broadcast_list">Новий Список трансляцій</string>
@@ -234,10 +234,10 @@
     <string name="menu_export_attachment">Експортувати вкладення</string>
     <string name="menu_export_attachments">Експортувати вкладення</string>
     <string name="menu_all_media">Всі матеріали</string>
-    <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
+    <!-- Command to jump to the original message corresponding to a gallery image or document -->
     <string name="show_in_chat">Показати в чаті</string>
     <string name="menu_share">Поділитися</string>
-    <!-- this is the action "to block sth." usually a mailing list or a contact. this is NOT "a large solid piece of hard material" :) -->
+    <!-- Verb "to block sth." usually a mailing list or a contact, not a noun -->
     <string name="block">Заблокувати</string>
     <string name="menu_block_contact">Заблокувати контакт</string>
     <string name="menu_unblock_contact">Розблокувати контакт</string>
@@ -269,13 +269,13 @@
     <string name="device_talk_explain">Повідомлення у цьому чаті згенеровані локально вашим додатком Delta Chat. Його розробники використовують його для інформування про оновлення додатку та проблеми при використанні.</string>
     <string name="device_talk_welcome_message">Вітаємо у Delta Chat! - Delta Chat дуже схожий на інші популярні програми обміну повідомленнями, але не передбачає централізованого контролю, відстеження або продажу вас, друзів, колег чи родини великим організаціям.\n\nТехнічно, Delta Chat - це програма електронної пошти з сучасним інтерфейсом чату. Електронна пошта у новому вбранні, якщо вам забажається 👻\n\nВикористовуйте Delta Chat з будь ким із мільярдів людей: просто використовуйте їхню електронну адресу. Одержувачам не потрібно встановлювати Delta Chat, відвідувати веб-сайти або десь реєструватись - однак, звичайно, ви можете направити їх на 👉 https://get.delta.chat</string>
     <string name="edit_contact">Редагувати контакт</string>
-    <!-- Translators: "Pin" here is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
     <string name="pin_chat">Закріпити чат</string>
-    <!-- Translators: this is the opposite of "Pin chat", removing the sticky-state from a chat. -->
+    <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin_chat">Відкріпити чат</string>
-    <!-- Translators: this is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
     <string name="pin">Закріпити</string>
-    <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
+    <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin">Відкрипити</string>
     <string name="ConversationFragment_quoted_message_not_found">Первісне повідомлення не знайдено</string>
     <string name="reply_privately">Відповісти приватно</string>
@@ -347,9 +347,9 @@
     <string name="cannot_delete_contacts_in_use">Неможливо видалити контакти, з якими є активні чати.</string>
     <string name="ask_start_chat_with">Створити чат з %1$s?</string>
     <string name="ask_delete_value">Видалити %s?</string>
-    <!-- Translators: %1$s will be replaces by a comma separated list of names -->
+    <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Видалити %1$s із групи?</string>
-    <!-- Translators: %1$s will be replaced by a comma separated list of names -->
+    <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_from_broadcast">Видалити %1$s зі списку трансляцій?</string>
     <string name="open_url_confirmation">Ви впевнені, що хочете відкрити це посилання?</string>
 
@@ -402,7 +402,7 @@
     <string name="archive_empty_hint">Заархівовані вами чати будуть відображені тут.</string>
     <string name="saved_messages">Збережені повідомлення</string>
     <string name="saved_messages_explain">• Пересилайте повідомлення сюди для швидкого доступу\n\n• Робіть нотатки або голосові нагадування\n\n• Вкладайте медіа для збереження</string>
-    <!-- this "Saved" should match the "Saved" from "Saved messages" -->
+    <!-- Should match "Saved" from "Saved messages" -->
     <string name="saved">Збережені</string>
     <string name="save_as">Зберегти як</string>
     <string name="retry_send">Спробувати надіслати повідомлення ще раз</string>
@@ -478,25 +478,25 @@
     <string name="send_message">Надіслати повідомлення</string>
 
     <!-- Connectivity -->
-    <!-- Used as a headline for the "Inbox" eg. in the "Connectivity" view -->
+    <!-- Headline for the "Inbox" eg. in the "Connectivity" view -->
     <string name="incoming_messages">Вхідні повідомлення</string>
-    <!-- Used as a headline for the "Outbox" eg. in the "Connectivity" view -->
+    <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Вихідні повідомлення</string>
-    <!-- Used as a headline in the "Connectivity" view. The placeholder will be replaced by the domain of the configured email-address. -->
+    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by the domain of the configured email-address. -->
     <string name="storage_on_domain">Сховище на %1$s</string>
     <string name="connectivity">Підключення</string>
-    <!-- Shown eg. in the title bar if the app is "Not connected"; as there is very few room, try to be as short as possible. -->
+    <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
     <string name="connectivity_not_connected">Не з\'єднано</string>
-    <!-- Shown eg. in the title bar if the app is "Connecting"; as there is very few room, try to be as short as possible. Note that the three dots are a single character (…), not three (...) -->
+    <!-- Shown in the title bar if the app is "Connecting"; prefer short strings. The ellipsis is a single character (…), not three (...) -->
     <string name="connectivity_connecting">Підключення...</string>
-    <!-- Shown eg. in the title bar if the app is "Updating" (eg. getting new/old message, sync things); as there is very few room, try to be as short as possible. Note that the three dots are a single character (…), not three (...) -->
+    <!-- Shown in the title bar if the app is "Updating" (eg. getting new/old message, sync things); prefer short strings. The ellipsis is a single character (…), not three (...) -->
     <string name="connectivity_updating">Оновлення…</string>
-    <!-- Shown eg. in the setting if the app is "Connected" -->
+    <!-- Shown in the setting if the app is "Connected" -->
     <string name="connectivity_connected">Підключено</string>
     <string name="sending">Надсилання...</string>
     <string name="last_msg_sent_successfully">Останнє повідомлення успішно надіслано.</string>
     <string name="not_supported_by_provider">Не підтримується вашим провайдером електронної пошти.</string>
-    <!-- Used as a subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed or so. -->
+    <!-- Subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Повідомлення</string>
     <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
     <string name="part_of_total_used">Використано %1$s з %2$s</string>
@@ -560,7 +560,7 @@
     <string name="configuration_failed_with_error">Помилка конфігурації: %1$s</string>
 
     <!-- share and forward messages -->
-    <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
+    <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">Переслати...</string>
     <string name="share_multiple_attachments">Надіслати %1$d файлів у обраний чат?\n\nФайли надсилаються незмінними в оригінальному розмірі, тобто зображення та відео не перекодовуються.</string>
     <string name="share_multiple_attachments_multiple_chats">Надіслати %1$d файлів у %2$d чати?\n\nФайли надсилаються незмінними в оригінальному розмірі, тобто зображення та відео не перекодовуються.</string>
@@ -578,9 +578,9 @@
     <string name="pref_password_and_account_settings">Пароль та обліковий запис</string>
     <string name="pref_who_can_see_profile_explain">Зображення профілю та ім\'я будуть відображатися в чатах з іншими користувачами. Відправлена інформація не може бути видалена або відкликана.</string>
     <string name="pref_your_name">Ваше ім\'я</string>
-    <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
+    <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
     <string name="pref_default_status_label">Текст підпису</string>
-    <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
+    <!-- Translators: The URL should not be localized as it is unclear which language the receiver prefers; the language will be automatically detected on the server -->
     <string name="pref_default_status_text">Відправлено з мого Delta Chat: https://delta.chat</string>
     <string name="pref_enter_sends">Відправлення клавішею Enter</string>
     <string name="pref_enter_sends_explain">Натискання клавіші Enter відправить текстові повідомлення</string>
@@ -589,7 +589,7 @@
     <string name="pref_outgoing_worse">Гірша якість, менший розмір</string>
     <string name="pref_vibrate">Вібрує</string>
     <string name="pref_screen_security">Безпека екрану</string>
-    <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
+    <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_screen_security_explain">Запит на блокування скріншотів у списку останніх і всередині програми</string>
     <string name="pref_screen_security_please_restart_hint">Для застосування налаштувань безпеки екрану перезавантажте додаток.</string>
     <string name="pref_notifications">Сповіщення</string>
@@ -604,14 +604,14 @@
     <string name="pref_privacy">Конфіденційність</string>
     <string name="pref_chats_and_media">Чати і медіа</string>
     <string name="pref_system_default">Системне значення за замовчуванням</string>
-    <!-- Translators: "light" in the meaning "opposite of dark" -->
+    <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">Світла</string>
     <string name="pref_dark_theme">Темна</string>
     <string name="pref_appearance">Зовнішній вигляд</string>
     <string name="pref_theme">Тема</string>
     <string name="pref_language">Мова</string>
     <string name="pref_incognito_keyboard">Клавіатура Інкогніто</string>
-    <!-- Translators: Keep in mind that this is a Request - it must be clear in the wording that this cannot be enforced. -->
+    <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_incognito_keyboard_explain">Вимагати вимкнення персоналізації підказок клавіатури</string>
     <string name="pref_read_receipts">Отримувати сповіщення про прочитання</string>
     <string name="pref_read_receipts_explain">Якщо сповіщення про прочитання відключені, Ви не будете бачити підтвердження прочитання повідомлень іншими користувачами.</string>
@@ -745,9 +745,9 @@
     <string name="systemmsg_read_receipt_subject">Сповіщення про прочитання.</string>
     <string name="systemmsg_read_receipt_body">Це підтвердження того, що повідомлення «%1$s» було відкрито на пристрої одержувача. Дане підтвердження не означає, що повідомлення було прочитано.</string>
     <string name="systemmsg_cannot_decrypt">Це повідомлення не може бути розшифроване.\n\n• Можливо, має сенс просто відповісти на нього і попросити відправника повторно відправити повідомлення.\n\n• У випадку, якщо Ви переустановили Delta Chat або іншу поштову програму на цьому або іншому пристрої, Ви, можливо, захочете відправити повідомлення з параметрами Autocrypt звідти.</string>
-    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). -->
+    <!-- Translators: %1$s will be replaced by sth. as "ACTION by me". -->
     <string name="systemmsg_action_by_me">%1$s мною.</string>
-    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
+    <!-- Translators: %1$s will be replaced by an action and %2$s will be replaced by the name/addr of the person who did it, as "ACTION by MEMBER". -->
     <string name="systemmsg_action_by_user">%1$s користувачем %2$s.</string>
     <string name="systemmsg_unknown_sender_for_chat">Невідомий відправник для цього чату. Дивіться \"Інформацію\" для деталей.</string>
     <string name="systemmsg_subject_for_new_contact">Повідомлення від %1$s</string>
@@ -770,7 +770,7 @@
     <string name="systemmsg_chat_protection_enabled">Захист чату увімкнено.</string>
 
     <string name="devicemsg_self_deleted">Ви видалили чат \"Збережені повідомлення\".\n\nℹ️ Аби використовувати функцію \"Збережені повідомлення\" знову, створіть новий чат самі із собою.</string>
-    <!-- %1$s will be replaced by the number of storage already used, sth. as '500 MB'. CAVE: if you want to use a simple the percent sign, type in two, so eg. %1$s %% -->
+    <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
     <string name="devicemsg_storage_exceeding">⚠️ Сховище вашого провайдера електронної пошти майже заповнено, вже використовується %1$s%%.\n\nМожливо, ви не зможете отримати повідомлення, коли пам’ять буде використана на 100%%.\n\n👉 Перевірте, чи можна видалити старі дані у веб -інтерфейсі провайдера та включіть \"Налаштування / Видалити старі повідомлення\". Ви можете будь-коли перевірити своє поточне використання сховища в \"Налаштування / Підключення\". </string>
     <!-- %1%s will be replaced by date and time in some human-readable format -->
     <string name="devicemsg_bad_time">⚠️ Дата і час на вашому пристрої видаються неточними (%1$s).\n\nНалаштуйте свій годинник ⏰🔧 для правильного отримання ваших повідомлень.</string>

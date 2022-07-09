@@ -22,9 +22,9 @@
     <string name="back">Reen</string>
     <string name="close">Fermi</string>
     <string name="forward">Plusendi</string>
-    <!-- In the meaning of "To archive", "Put a chat to the archive". This string does not mean "The Archive". -->
+    <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
     <string name="archive">Arĥivi</string>
-    <!-- In the meaning of "To unarchive", "Remove a chat from the archive", opposite of the previous string -->
+    <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Malarĥivi</string>
     <string name="mute">Muta sciigoj</string>
     <string name="ephemeral_messages">Memviŝontaj mesaĝoj</string>
@@ -40,7 +40,7 @@
     <string name="one_moment">Unu momenton…</string>
     <string name="done">Farita</string>
     <string name="undo">Malfari</string>
-    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in iOS headers, the string should be as short as possible, though. -->
+    <!-- For the next view or as "continue". Should be as short as possible. -->
     <string name="next">Sekva</string>
     <string name="error">Eraro</string>
     <string name="error_x">Eraro: %1$s</string>
@@ -53,7 +53,7 @@
     <string name="bad_email_address">Malbona retadreso.</string>
     <string name="password">Pasvorto</string>
     <string name="now">Nun</string>
-    <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
+    <!-- Headline for destructive actions with no undo. Could also be "Caution" or "Warning". -->
     <string name="danger">Danĝero</string>
     <string name="today">Hodiaŭ</string>
     <string name="yesterday">Hieraŭ</string>
@@ -61,12 +61,12 @@
     <string name="this_month">Ĉi-monate</string>
     <string name="last_week">Pasint-semajne</string>
     <string name="last_month">Pasint-monate</string>
-    <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
+    <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="one">%d min</item>
         <item quantity="other">%d min</item>
     </plurals>
-    <!-- Translators: show beside messages that are "N hours old". prefer a short string, prefer abbreviations if they're well-known -->
+    <!-- Shown beside messages that are "N hours old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_hours">
         <item quantity="one">%d horo</item>
         <item quantity="other">%d horoj</item>
@@ -170,13 +170,13 @@
     <string name="device_talk_explain">Mesaĝoj en tiu ĉi babilo estas surloke generataj de via Delta Chat apo. Ĝiaj kreintoj uzas ilin por informi pri apaj ĝisdatigoj kaj problemoj dum uzado.</string>
     <string name="device_talk_welcome_message">Bonvenon al Delta Chat! – Delta Chat aspektas kvazaŭ aliaj popularaj mesaĝiloj, sed al ĝi mankas centra regado, sekvado de kaj perfido al vi, viaj amikoj, kolegoj kaj familianoj je la servo de grandaj organizoj.\n\nVere, Delta Chat estas retpoŝta aplikaĵo kun moderna babila interfaco. Alivorte, retpoŝto kun novaj vestaĵoj 👻\n\nUzu Delta Chat-on kun iu ajn el miliardoj da homoj: simple uzu la retadreson. Ricevantoj ne devas instali Delta Chat-on, viziti retejojn aŭ registriĝi ie ajn - sed, kompreneble, se ili volas, vi povas atentigi ilin al 👉 https://get.delta.chat</string>
     <string name="edit_contact">Redakti kontakton</string>
-    <!-- Translators: "Pin" here is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
     <string name="pin_chat">Alpingli babilon</string>
-    <!-- Translators: this is the opposite of "Pin chat", removing the sticky-state from a chat. -->
+    <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin_chat">Depingli babilon</string>
-    <!-- Translators: this is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
     <string name="pin">Alpingli</string>
-    <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
+    <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin">Depingli</string>
     <string name="mute_for_one_hour">Silentigi por 1 horo</string>
     <string name="mute_for_two_hours">Silentigi por 2 horoj</string>
@@ -205,7 +205,7 @@
     <string name="ask_forward">Plusendi mesaĝojn al %1$s?</string>
     <string name="cannot_delete_contacts_in_use">Ne eblas forigi kontaktojn kun aktualaj babiloj.</string>
     <string name="ask_start_chat_with">Babili kun %1$s?</string>
-    <!-- Translators: %1$s will be replaces by a comma separated list of names -->
+    <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Forigi %1$sel la grupo?</string>
     <!-- contact list -->
     <string name="contacts_title">Kontaktoj</string>
@@ -296,7 +296,7 @@
     <string name="delete_account">Forigi konton</string>
     <string name="delete_account_ask">Ĉu vi certas, ke vi volas forigi ĉiujn datumojn de vi konto?</string>
     <!-- share and forward messages -->
-    <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
+    <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">Plusendi al…</string>
     <string name="share_abort">Kunhavigado ĉesis pro manko de permesoj.</string>
 
@@ -305,13 +305,13 @@
     <string name="pref_blocked_contacts">Blokitaj kontaktoj</string>
     <string name="pref_password_and_account_settings">Pasvorto kaj konto</string>
     <string name="pref_your_name">Via nomo</string>
-    <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
+    <!-- Translators: The URL should not be localized as it is unclear which language the receiver prefers; the language will be automatically detected on the server -->
     <string name="pref_default_status_text">Sendita per mia Delta Chat mesaĝilo: https://delta.chat</string>
     <string name="pref_enter_sends">La Eniga klavo kaŭzas sendon</string>
     <string name="pref_enter_sends_explain">Premado de la Eniga klavo sendos mesaĝojn</string>
     <string name="pref_vibrate">Vibrado</string>
     <string name="pref_screen_security">Ekrana sekureco</string>
-    <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
+    <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_screen_security_explain">Neebligi ekrankopiojn en la listo de ĵus uzitaj aplikaĵoj kaj ene de la aplikaĵo mem</string>
     <string name="pref_notifications">Sciigoj</string>
     <string name="pref_notifications_show">Montri</string>
@@ -322,14 +322,14 @@
     <string name="pref_privacy">Privateco</string>
     <string name="pref_chats_and_media">Interparoloj kaj aŭdvidaĵoj</string>
     <string name="pref_system_default">Sistema defaŭlto</string>
-    <!-- Translators: "light" in the meaning "opposite of dark" -->
+    <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">Hela</string>
     <string name="pref_dark_theme">Malhela</string>
     <string name="pref_appearance">Aspekto</string>
     <string name="pref_theme">Etoso</string>
     <string name="pref_language">Lingvo</string>
     <string name="pref_incognito_keyboard">Inkognita klavaro</string>
-    <!-- Translators: Keep in mind that this is a Request - it must be clear in the wording that this cannot be enforced. -->
+    <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_incognito_keyboard_explain">Peti al la klavaro malŝalti personan lernadon</string>
     <string name="pref_read_receipts">Legokonfirmoj</string>
     <string name="pref_read_receipts_explain">Se legokonfirmoj ne estas ŝaltitaj, vi ne vidos aliulajn legokonfirmojn.</string>

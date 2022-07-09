@@ -29,9 +29,9 @@
     <string name="back">Atgal</string>
     <string name="close">Užverti</string>
     <string name="forward">Persiųsti</string>
-    <!-- In the meaning of "To archive", "Put a chat to the archive". This string does not mean "The Archive". -->
+    <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
     <string name="archive">Archyvuoti</string>
-    <!-- In the meaning of "To unarchive", "Remove a chat from the archive", opposite of the previous string -->
+    <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Išarchyvuoti</string>
     <string name="ephemeral_messages">Išnykstančios žinutės</string>
     <string name="ephemeral_messages_hint">Šie nustatymai taikomi visiems Delta Chat besinaudojantiems dalyviams. Vis dėlto, jie gali kopijuoti, įrašyti ir persiųsti žinutes arba naudoti kitas el. pašto kliento programas.</string>
@@ -42,12 +42,12 @@
     <string name="start_chat">Pradėti pokalbį</string>
     <string name="show_full_message">Rodyti visą žinutę…</string>
     <string name="show_full_message_in_browser">Rodyti visą žinutę naršyklėje…</string>
-    <!-- this is shown as placeholder when something is loading at some places -->
+    <!-- Placeholder text when something is loading -->
     <string name="loading">Įkeliama…</string>
     <string name="hide">Slėpti</string>
     <string name="activate">Aktyvuoti</string>
     <string name="load_remote_content">Įkelti nuotolinius paveikslus</string>
-    <!-- possible answers to the question are: Never, Always, Once -->
+    <!-- Possible answers to the question are: Never, Always, Once -->
     <string name="load_remote_content_ask">Nuotoliniai paveikslai gali būti naudojami, kad būtumėte sekami.\n\nŠis nustatymas taip pat leidžia šriftų įkėlimą ir kitą turinį. Netgi, jeigu jis yra išjungtas, gali būti, kad vis tiek matysite įterptus paveikslus ar paveikslus iš podėlio.\n\nĮkelti nuotolinius paveikslus?</string>
     <string name="always">Visada</string>
     <string name="once">Vieną kartą</string>
@@ -58,7 +58,7 @@
     <string name="one_moment">Minutėlę…</string>
     <string name="done">Atlikta</string>
     <string name="undo">Atšaukti</string>
-    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in iOS headers, the string should be as short as possible, though. -->
+    <!-- For the next view or as "continue". Should be as short as possible. -->
     <string name="next">Kitas</string>
     <string name="error">Klaida</string>
     <string name="error_x">Klaida: %1$s</string>
@@ -72,7 +72,7 @@
     <string name="password">Slaptažodis</string>
     <string name="existing_password">Esamas slaptažodis</string>
     <string name="now">Dabar</string>
-    <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
+    <!-- Headline for destructive actions with no undo. Could also be "Caution" or "Warning". -->
     <string name="danger">Dėmesio</string>
     <string name="today">Šiandien</string>
     <string name="yesterday">Vakar</string>
@@ -80,14 +80,14 @@
     <string name="this_month">Šį mėnesį</string>
     <string name="last_week">Praeitą savaitę</string>
     <string name="last_month">Praeitą mėnesį</string>
-    <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
+    <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="one">%d min.</item>
         <item quantity="few">%d min.</item>
         <item quantity="many">%d min.</item>
         <item quantity="other">%d min.</item>
     </plurals>
-    <!-- Translators: show beside messages that are "N hours old". prefer a short string, prefer abbreviations if they're well-known -->
+    <!-- Shown beside messages that are "N hours old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_hours">
         <item quantity="one">%d val.</item>
         <item quantity="few">%d val.</item>
@@ -121,14 +121,14 @@
     <string name="self">Aš</string>
     <string name="draft">Juodraštis</string>
     <string name="image">Paveikslas</string>
-    <!-- Translators: Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
+    <!-- Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
     <string name="reply_noun">Atsakymas</string>
     <string name="gif">Gif</string>
     <string name="images">Paveikslai</string>
     <string name="audio">Garso įrašai</string>
     <string name="voice_message">Balso žinutė</string>
     <string name="forwarded_message">Persiųsta žinutė</string>
-    <!-- %1$s will be replaced by the name or the e-mail address of the person who has forwarded the message -->
+    <!-- %1$s will be replaced by the name or the e-mail address of the person who forwards the message -->
     <string name="forwarded_by">Persiuntė %1$s</string>
     <string name="video">Vaizdo įrašai</string>
     <string name="documents">Dokumentai</string>
@@ -198,10 +198,10 @@
     <string name="menu_export_attachment">Eksportuoti priedą</string>
     <string name="menu_export_attachments">Eksportuoti priedus</string>
     <string name="menu_all_media">Visa medija</string>
-    <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
+    <!-- Command to jump to the original message corresponding to a gallery image or document -->
     <string name="show_in_chat">Rodyti pokalbyje</string>
     <string name="menu_share">Bendrinti</string>
-    <!-- this is the action "to block sth." usually a mailing list or a contact. this is NOT "a large solid piece of hard material" :) -->
+    <!-- Verb "to block sth." usually a mailing list or a contact, not a noun -->
     <string name="block">Užblokuoti</string>
     <string name="menu_block_contact">Užblokuoti adresatą</string>
     <string name="menu_unblock_contact">Atblokuoti adresatą</string>
@@ -228,13 +228,13 @@
     <string name="device_talk">Įrenginio žinutės</string>
     <string name="device_talk_subtitle">Vietiniu mastu sugeneruotos žinutės</string>
     <string name="edit_contact">Taisyti adresatą</string>
-    <!-- Translators: "Pin" here is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
     <string name="pin_chat">Prisegti pokalbį</string>
-    <!-- Translators: this is the opposite of "Pin chat", removing the sticky-state from a chat. -->
+    <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin_chat">Atsegti pokalbį</string>
-    <!-- Translators: this is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
     <string name="pin">Prisegti</string>
-    <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
+    <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin">Atsegti</string>
     <string name="ConversationFragment_quoted_message_not_found">Pradinė žinutė nerasta</string>
     <string name="reply_privately">Atsakyti privačiai</string>
@@ -291,7 +291,7 @@
     <string name="ask_unblock_contact">Atblokuoti šį adresatą? Jūs ir vėl galėsite gauti žinutes nuo šio adresato.</string>
     <string name="ask_start_chat_with">Pradėti pokalbį su %1$s?</string>
     <string name="ask_delete_value">Ištrinti %s?</string>
-    <!-- Translators: %1$s will be replaces by a comma separated list of names -->
+    <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Pašalinti %1$s iš grupės?</string>
     <string name="open_url_confirmation">Ar norite atverti šią nuorodą?</string>
 
@@ -339,7 +339,7 @@
     <string name="archive_empty_hint">Jei archyvuosite pokalbius, jie bus rodomi čia.</string>
     <string name="saved_messages">Įrašytos žinutės</string>
     <string name="saved_messages_explain">• Persiųskite žinutes čia, kad lengvai jas pasiektumėte\n\n• Rašykitės pastabas ar įrašinėkite balso žinutes\n\n• Pridėkite mediją, norėdami ją išsaugoti</string>
-    <!-- this "Saved" should match the "Saved" from "Saved messages" -->
+    <!-- Should match "Saved" from "Saved messages" -->
     <string name="saved">Įrašyta</string>
     <!-- reasons for a disabled message composer -->
     <string name="messaging_disabled_not_in_group">Jūs negalite rašyti, nes nesate šioje grupėje. Norėdami prisijungti, paprašykite kito nario.</string>
@@ -383,22 +383,22 @@
     <string name="send_message">Siųsti žinutę</string>
 
     <!-- Connectivity -->
-    <!-- Used as a headline for the "Inbox" eg. in the "Connectivity" view -->
+    <!-- Headline for the "Inbox" eg. in the "Connectivity" view -->
     <string name="incoming_messages">Gaunamosios žinutės</string>
-    <!-- Used as a headline for the "Outbox" eg. in the "Connectivity" view -->
+    <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Siunčiamosios žinutės</string>
     <string name="connectivity">Jungiamumas</string>
-    <!-- Shown eg. in the title bar if the app is "Not connected"; as there is very few room, try to be as short as possible. -->
+    <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
     <string name="connectivity_not_connected">Neprisijungta</string>
-    <!-- Shown eg. in the title bar if the app is "Connecting"; as there is very few room, try to be as short as possible. Note that the three dots are a single character (…), not three (...) -->
+    <!-- Shown in the title bar if the app is "Connecting"; prefer short strings. The ellipsis is a single character (…), not three (...) -->
     <string name="connectivity_connecting">Jungiamasi…</string>
-    <!-- Shown eg. in the title bar if the app is "Updating" (eg. getting new/old message, sync things); as there is very few room, try to be as short as possible. Note that the three dots are a single character (…), not three (...) -->
+    <!-- Shown in the title bar if the app is "Updating" (eg. getting new/old message, sync things); prefer short strings. The ellipsis is a single character (…), not three (...) -->
     <string name="connectivity_updating">Atnaujinama…</string>
-    <!-- Shown eg. in the setting if the app is "Connected" -->
+    <!-- Shown in the setting if the app is "Connected" -->
     <string name="connectivity_connected">Prisijungta</string>
     <string name="sending">Siunčiama…</string>
     <string name="last_msg_sent_successfully">Paskutinė žinutė sėkmingai išsiųsta.</string>
-    <!-- Used as a subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed or so. -->
+    <!-- Subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Žinutės</string>
     <string name="welcome_intro1_message">Pokalbių programa su plačiausia auditorija pasaulyje. Nemokama ir nepriklausoma.</string>
     <string name="login_title">Prisijungti</string>
@@ -453,7 +453,7 @@
     <string name="configuration_failed_with_error">Konfigūracija patyrė nesėkmę. Klaida: %1$s</string>
 
     <!-- share and forward messages -->
-    <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
+    <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">Kam persiųsti …</string>
     <string name="share_abort">Bendrinimas nutrauktas dėl trūkstamų leidimų.</string>
 
@@ -465,9 +465,9 @@
     <string name="pref_password_and_account_settings">Slaptažodis ir paskyra</string>
     <string name="pref_who_can_see_profile_explain">Bendraujant su kitais naudotojais, jūsų profilio paveikslas ir vardas bus rodomi kartu su jūsų žinutėmis. Jau išsiųsta informacija negalės būti ištrinta ar pašalinta.</string>
     <string name="pref_your_name">Jūsų vardas</string>
-    <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
+    <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
     <string name="pref_default_status_label">Parašo tekstas</string>
-    <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
+    <!-- Translators: The URL should not be localized as it is unclear which language the receiver prefers; the language will be automatically detected on the server -->
     <string name="pref_default_status_text">Išsiųsta iš mano Delta Chat pokalbių programos: https://delta.chat</string>
     <string name="pref_enter_sends">Įvedimo (Enter) klavišas išsiunčia</string>
     <string name="pref_enter_sends_explain">Paspaudus įvedimo (Enter) klavišą, bus išsiunčiamos tekstinės žinutės</string>
@@ -476,7 +476,7 @@
     <string name="pref_outgoing_worse">Blogesnė kokybė, mažas dydis</string>
     <string name="pref_vibrate">Vibruoti</string>
     <string name="pref_screen_security">Ekrano saugumas</string>
-    <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
+    <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_screen_security_explain">Prašyti blokuoti ekrano kopijas paskiausiųjų sąraše ir programėlės viduje</string>
     <string name="pref_screen_security_please_restart_hint">Norėdami pritaikyti ekrano saugumo nustatymą, paleiskite programėlę iš naujo.</string>
     <string name="pref_notifications">Pranešimai</string>
@@ -490,14 +490,14 @@
     <string name="pref_privacy">Privatumas</string>
     <string name="pref_chats_and_media">Pokalbiai ir medija</string>
     <string name="pref_system_default">Sistemos numatytoji</string>
-    <!-- Translators: "light" in the meaning "opposite of dark" -->
+    <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">Šviesus</string>
     <string name="pref_dark_theme">Tamsus</string>
     <string name="pref_appearance">Išvaizda</string>
     <string name="pref_theme">Apipavidalinimas</string>
     <string name="pref_language">Kalba</string>
     <string name="pref_incognito_keyboard">Inkognito klaviatūra</string>
-    <!-- Translators: Keep in mind that this is a Request - it must be clear in the wording that this cannot be enforced. -->
+    <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_incognito_keyboard_explain">Prašyti klaviatūros išjungti suasmenintą mokymąsi</string>
     <string name="pref_read_receipts">Pranešimai apie skaitymą</string>
     <string name="pref_read_receipts_explain">Jei pranešimai apie skaitymą yra išjungti, jūs negalėsite matyti pranešimų apie skaitymą iš kitų žmonių.</string>

@@ -28,9 +28,9 @@
     <string name="back">Zpět</string>
     <string name="close">Zavřít</string>
     <string name="forward">Přeposlat</string>
-    <!-- In the meaning of "To archive", "Put a chat to the archive". This string does not mean "The Archive". -->
+    <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
     <string name="archive">Archivuj</string>
-    <!-- In the meaning of "To unarchive", "Remove a chat from the archive", opposite of the previous string -->
+    <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Rozbal</string>
     <string name="mute">Umlčet</string>
     <string name="ephemeral_messages">Samomazací zpráva</string>
@@ -43,7 +43,7 @@
     <string name="start_chat">Začni hovor</string>
     <string name="show_full_message">Zobraz celou zprávu…</string>
     <string name="load_remote_content">Nahraj vzdálené obrázky</string>
-    <!-- possible answers to the question are: Never, Always, Once -->
+    <!-- Possible answers to the question are: Never, Always, Once -->
     <string name="load_remote_content_ask">Vzdálené obrázky mohou umožnit sledování vaší činnosti.\n\nNastavení také povolí stahování fontů a dalšího obsahu. Obrázky z vyrovnávací paměti nebo součásti zprávy uvidíš i při vyptutí tohoto nastavení.\n\nNahrávat vzdálené obrázky?</string>
     <string name="always">Vždy</string>
     <string name="once">Jednou</string>
@@ -55,7 +55,7 @@
     <string name="done">Hotovo</string>
     <string name="undo">Zpět</string>
     <string name="offline">Nepřipojený</string>
-    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in iOS headers, the string should be as short as possible, though. -->
+    <!-- For the next view or as "continue". Should be as short as possible. -->
     <string name="next">Další</string>
     <string name="error">Chyba</string>
     <string name="error_x">Chyba %1$s</string>
@@ -69,7 +69,7 @@
     <string name="password">Heslo</string>
     <string name="existing_password">Stávající heslo</string>
     <string name="now">Nyní</string>
-    <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
+    <!-- Headline for destructive actions with no undo. Could also be "Caution" or "Warning". -->
     <string name="danger">Nebezbečí</string>
     <string name="today">Dnes</string>
     <string name="yesterday">Včera</string>
@@ -77,14 +77,14 @@
     <string name="this_month">Tento měsíc</string>
     <string name="last_week">Minulý týden</string>
     <string name="last_month">Minulý měsíc</string>
-    <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
+    <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="one">%d minuta</item>
         <item quantity="few">%d minuty</item>
         <item quantity="many">%d minut</item>
         <item quantity="other">%d minut</item>
     </plurals>
-    <!-- Translators: show beside messages that are "N hours old". prefer a short string, prefer abbreviations if they're well-known -->
+    <!-- Shown beside messages that are "N hours old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_hours">
         <item quantity="one">%d hodina</item>
         <item quantity="few">%d hodiny</item>
@@ -118,14 +118,14 @@
     <string name="self">Já</string>
     <string name="draft">Rozepsané</string>
     <string name="image">Obrázek</string>
-    <!-- Translators: Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
+    <!-- Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
     <string name="reply_noun">Odpověď</string>
     <string name="gif">GIF</string>
     <string name="images">Obrázky</string>
     <string name="audio">Zvukový záznam</string>
     <string name="voice_message">Hlasová zpráva</string>
     <string name="forwarded_message">Přeposlaná zpráva</string>
-    <!-- %1$s will be replaced by the name or the e-mail address of the person who has forwarded the message -->
+    <!-- %1$s will be replaced by the name or the e-mail address of the person who forwards the message -->
     <string name="forwarded_by">Přeposlal %1$s</string>
     <string name="video">Video</string>
     <string name="documents">Dokumenty</string>
@@ -189,10 +189,10 @@
     <string name="menu_unmute">Zruš umlčení</string>
     <string name="menu_export_attachment">Ulož přílohu</string>
     <string name="menu_all_media">Všechna multimedia</string>
-    <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
+    <!-- Command to jump to the original message corresponding to a gallery image or document -->
     <string name="show_in_chat">Ukaž v hovoru</string>
     <string name="menu_share">Sdílet</string>
-    <!-- this is the action "to block sth." usually a mailing list or a contact. this is NOT "a large solid piece of hard material" :) -->
+    <!-- Verb "to block sth." usually a mailing list or a contact, not a noun -->
     <string name="block">Zablokovat</string>
     <string name="menu_block_contact">Zablokuj kontakt</string>
     <string name="menu_unblock_contact">Odblokuj kontakt</string>
@@ -217,13 +217,13 @@
     <string name="device_talk_explain">Zprávy v tomto hovoru jsou vytvořeny aplikací Delta Chat. Její tvůrci tak informují o aktualizacích a potížích při používání.</string>
     <string name="device_talk_welcome_message">Vítej v Delta Chatu! – Delta Chat se chová jako všeobecně známé chatovací aplikace, ale bez centralizované kontroly, sledování. Neprodává zážitky tvých přátel, kolegů, rodiny ani tvé vlastní velkým organizacím.\n\nTechnicky je Delta Chat e-mailový program, ale s uživatelským rozhraním chatu. Převlečený e-mail, chceš-li. Delta Chat používej s kýmkoli z miliard lidí; prostě použij jejich e-mailovou adresu. Příjemce si nemusí Delta Chat instalovat, ani se přihlašovat přes nové webové stránky. Můžeš je však, budou-li chtít, odkázat na 👉 https://get.delta.chat</string>
     <string name="edit_contact">Uprav kontakt</string>
-    <!-- Translators: "Pin" here is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
     <string name="pin_chat">Připíchni hovor</string>
-    <!-- Translators: this is the opposite of "Pin chat", removing the sticky-state from a chat. -->
+    <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin_chat">Odpíchni hovor</string>
-    <!-- Translators: this is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
     <string name="pin">Připíchnout</string>
-    <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
+    <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin">Odpíchnout</string>
     <string name="ConversationFragment_quoted_message_not_found">Původní zprávu nelze najít</string>
     <string name="reply_privately">Odpověz soukromě</string>
@@ -284,7 +284,7 @@
     <string name="cannot_delete_contacts_in_use">Kontakty v nastavených hovorech nelze vymazat</string>
     <string name="ask_start_chat_with">Hovor s %1$s?</string>
     <string name="ask_delete_value">Vymazat %s?</string>
-    <!-- Translators: %1$s will be replaces by a comma separated list of names -->
+    <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Odstranit %1$s ze skupiny?</string>
     <string name="open_url_confirmation">Otevřít tento odkaz?</string>
 
@@ -332,7 +332,7 @@
     <string name="chat_self_talk_subtitle">Zprávy poslané sobě</string>
     <string name="saved_messages">Uložené zprávy</string>
     <string name="saved_messages_explain">• Přepošli si sem zprávy pro jednoduchý přístup\n\n• Dělej si poznámky textové i hlasové\n\n• Přiložená multimedia se hned uloží</string>
-    <!-- this "Saved" should match the "Saved" from "Saved messages" -->
+    <!-- Should match "Saved" from "Saved messages" -->
     <string name="saved">Uloženo</string>
     <string name="retry_send">Opakuj pokus o zaslání zprávy</string>
     <!-- reasons for a disabled message composer -->
@@ -420,7 +420,7 @@
     <string name="configuration_failed_with_error">Nastavení selhalo. Chyba: %1$s</string>
 
     <!-- share and forward messages -->
-    <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
+    <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">Přeposlat komu ...</string>
     <string name="share_multiple_attachments">Poslat %1$d soubory do zvoleného hovoru?\n\nSoubory budou zachovány v původní velikosti. Obrázky a videa nebudou překódována.</string>
     <string name="share_multiple_attachments_multiple_chats">Poslat %1$d soubor(y) do %2$d hovorů?\n\nSoubory budou zachovány v původní velikosti. Obrázky a videa nebudou překódována.</string>
@@ -438,9 +438,9 @@
     <string name="pref_password_and_account_settings">Heslo a účet</string>
     <string name="pref_who_can_see_profile_explain">Tvůj profilový obrázek a jméno budou zobrazeny vedle zpráv poslaných ostatním uživatelům. Data která jsou již jednou odeslaná nelze smazat ani odstranit. </string>
     <string name="pref_your_name">Tvé jméno</string>
-    <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
+    <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
     <string name="pref_default_status_label">Text s podpisem</string>
-    <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
+    <!-- Translators: The URL should not be localized as it is unclear which language the receiver prefers; the language will be automatically detected on the server -->
     <string name="pref_default_status_text">Posláno pomocí Delta Chatu: https://delta.chat</string>
     <string name="pref_enter_sends">Nový řádek odesílá</string>
     <string name="pref_enter_sends_explain">Stisk klávesy pro nový řádek odešle zprávu</string>
@@ -449,7 +449,7 @@
     <string name="pref_outgoing_worse">Horší kvalita, malá velikost</string>
     <string name="pref_vibrate">Chvění</string>
     <string name="pref_screen_security">Zabezpečení obrazovky</string>
-    <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
+    <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_screen_security_explain">Požaduj blokaci sejmutí obrazovky v seznamu Nedávné a uvnitř aplikace</string>
     <string name="pref_screen_security_please_restart_hint">K použití nastavení zabezpečení obrazovky restartuj aplikaci.</string>
     <string name="pref_notifications">Upozornění</string>
@@ -464,14 +464,14 @@
     <string name="pref_privacy">Soukromí</string>
     <string name="pref_chats_and_media">Hovory a multimedia</string>
     <string name="pref_system_default">Podle systému</string>
-    <!-- Translators: "light" in the meaning "opposite of dark" -->
+    <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">Světlý</string>
     <string name="pref_dark_theme">Tmavý</string>
     <string name="pref_appearance">Vzhled</string>
     <string name="pref_theme">Vzor vzhledu</string>
     <string name="pref_language">Jazyk</string>
     <string name="pref_incognito_keyboard">Chráněná klávesnice</string>
-    <!-- Translators: Keep in mind that this is a Request - it must be clear in the wording that this cannot be enforced. -->
+    <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_incognito_keyboard_explain">Požaduj klávesnici s vypnutým učením slov</string>
     <string name="pref_read_receipts">Číst potvrzení</string>
     <string name="pref_read_receipts_explain">Při vypnutém čtení potvrzení se nezobrazí potvrzení o příjetí od ostatních.</string>
@@ -587,9 +587,9 @@
     <string name="systemmsg_read_receipt_subject">Zpráva otevřena</string>
     <string name="systemmsg_read_receipt_body">Odeslaná zpráva \"%1$s\" byla příjemci zobrazena na jeho přístroji.\n\nNicméně přečtení obsahu není zaručeno.</string>
     <string name="systemmsg_cannot_decrypt">Zprávu nelze dešifrovat.\n\n• Může pomoct jednoduchá odpověď odesílateli s požadavkem o znovuzaslání zprávy.\n\n• Pokud jde o novou instalaci Delta Chatu či jiného e-mailového programu na tomto nebo jiném zařízení, může být nutné poslat si z nich Nastavení Autocryptu.</string>
-    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). -->
+    <!-- Translators: %1$s will be replaced by sth. as "ACTION by me". -->
     <string name="systemmsg_action_by_me">%1$s ode mě.</string>
-    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
+    <!-- Translators: %1$s will be replaced by an action and %2$s will be replaced by the name/addr of the person who did it, as "ACTION by MEMBER". -->
     <string name="systemmsg_action_by_user">%1$s od %2$s.</string>
     <string name="systemmsg_unknown_sender_for_chat">Neznámý odesilatel v tomto hovoru. Více najdeš v Popisu.</string>
     <string name="systemmsg_subject_for_new_contact">Zpráva od %1$s</string>

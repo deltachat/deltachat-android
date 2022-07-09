@@ -22,9 +22,9 @@
     <string name="back">Geri</string>
     <string name="close">Bağla</string>
     <string name="forward">Başqasına göndərmə</string>
-    <!-- In the meaning of "To archive", "Put a chat to the archive". This string does not mean "The Archive". -->
+    <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
     <string name="archive">Arxivləşmə</string>
-    <!-- In the meaning of "To unarchive", "Remove a chat from the archive", opposite of the previous string -->
+    <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Arxivdən çıxarma</string>
     <string name="mute">Səssiz</string>
     <string name="ephemeral_messages">Yox olan mesajlar</string>
@@ -55,12 +55,12 @@
     <string name="this_month">Bu ay</string>
     <string name="last_week">Keçən həftə</string>
     <string name="last_month">Keçən ay</string>
-    <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
+    <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="one">%d dəqiqə</item>
         <item quantity="other">%d dəqiqə</item>
     </plurals>
-    <!-- Translators: show beside messages that are "N hours old". prefer a short string, prefer abbreviations if they're well-known -->
+    <!-- Shown beside messages that are "N hours old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_hours">
         <item quantity="one">%d saat</item>
         <item quantity="other">%d saat</item>
@@ -189,7 +189,7 @@
     <string name="ask_delete_contacts">Kontaktları silmək? Bu əməliyyat seçilmiş kontaktları daimi olaraq silməyəcək. \n\n Sistem kontakt kitabından davam edən söhbətlər və kontaktlar ilə əlaqə saxlanıla bilməz.</string>
     <string name="cannot_delete_contacts_in_use">Davam edən çatlarla kontakt silinmir.</string>
     <string name="ask_start_chat_with">%1$s ilə çat? </string>
-    <!-- Translators: %1$s will be replaces by a comma separated list of names -->
+    <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">%1$s qrupdan silmək? </string>
     <!-- contact list -->
     <string name="contacts_title">Kontaktlar</string>
@@ -287,7 +287,7 @@
     <!-- Translators: %1$s will be replaced by the e-mail address -->
     <string name="login_error_cannot_login"> \"%1$s\" kimi giriş alınmadı. E-poçt ünvanı və parolun düzgün olub olmadığını yoxlayın.</string>
     <!-- share and forward messages -->
-    <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
+    <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">İrəli ...</string>
     <string name="share_abort">İcazə olmadığına görə göndərmə kəsildi</string>
 
@@ -300,9 +300,9 @@
     <string name="pref_blocked_contacts">Bloklanmış kontaktlar</string>
     <string name="pref_who_can_see_profile_explain">Digər istifadəçilərlə ünsiyyət qurarkən profil şəkliniz və adınız mesajlarınızla birlikdə göstərilir. Zatən göndərilən məlumat silinməyəcək. </string>
     <string name="pref_your_name">Adın</string>
-    <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
+    <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
     <string name="pref_default_status_label">Yazını mətni</string>
-    <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
+    <!-- Translators: The URL should not be localized as it is unclear which language the receiver prefers; the language will be automatically detected on the server -->
     <string name="pref_default_status_text">Delta Chat Messenger-lə göndərdim : https://delta.chat</string>
     <string name="pref_enter_sends">Enter açarı ilə göndərmək</string>
     <string name="pref_enter_sends_explain">Enter düyməsini basaraq mətn mesajları göndərəcək</string>
@@ -311,7 +311,7 @@
     <string name="pref_outgoing_worse">Daha pis keyfiyyət, kiçik ölçülü</string>
     <string name="pref_vibrate">Vibrasiya</string>
     <string name="pref_screen_security">Ekran təhlükəsizliyi</string>
-    <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
+    <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_screen_security_explain">Son proqramlar siyahısında və proqramın daxilində ekran çəkməyi qadağan etmə</string>
     <string name="pref_screen_security_please_restart_hint">Ekranın təhlükəsizlik tənzimləmələrini tətbiq etmək üçün proqramı yenidən başladın.</string>
     <string name="pref_notifications">Bildirişlər</string>
@@ -322,14 +322,14 @@
     <string name="pref_silent">Səssiz</string>
     <string name="pref_privacy">Gizlilik</string>
     <string name="pref_chats_and_media">Çatlar və faillar</string>
-    <!-- Translators: "light" in the meaning "opposite of dark" -->
+    <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">Açıq</string>
     <string name="pref_dark_theme">Tünd</string>
     <string name="pref_appearance">Görünüş</string>
     <string name="pref_theme">Tema</string>
     <string name="pref_language">Dillər</string>
     <string name="pref_incognito_keyboard">Məxfi klaviatura</string>
-    <!-- Translators: Keep in mind that this is a Request - it must be clear in the wording that this cannot be enforced. -->
+    <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_incognito_keyboard_explain">Klaviaturanın personal öyrənməyini söndürmək</string>
     <string name="pref_read_receipts">Qəbul olunanları oxuyun</string>
     <string name="pref_read_receipts_explain">Bildirişlər aradan qaldırılırsa, başqalarının oxuduğu bildirişləri görə bilməyəcəksiniz.</string>
@@ -399,9 +399,9 @@
     <string name="systemmsg_group_left">Qrup buraxdı.</string>
     <string name="systemmsg_read_receipt_subject">Qəbul olunanları oxuyun</string>
     <string name="systemmsg_cannot_decrypt">Bu mesaj şifresi çözülə bilməz. \n\n • Bu mesaja yalnız cavab vermək və göndərənin mesajı yenidən göndərməsini xahiş edə bilər. \n\n • Bu barədə Delta Chat və ya başqa bir e-poçt proqramını yenidən quraşdırdığınız halda oradan Autocrypt Kurulum Mesajı göndərmək istədiyiniz başqa bir qurğudan istifadə edə bilərsiniz.</string>
-    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). -->
+    <!-- Translators: %1$s will be replaced by sth. as "ACTION by me". -->
     <string name="systemmsg_action_by_me">%1$s məndən. </string>
-    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
+    <!-- Translators: %1$s will be replaced by an action and %2$s will be replaced by the name/addr of the person who did it, as "ACTION by MEMBER". -->
     <string name="systemmsg_action_by_user">%1$s ilə %2$s.</string>
     <string name="qrscan_title">Qr kodu skan edin</string>
     <string name="qrscan_hint">QR kodu kamera ilə izləyin</string>

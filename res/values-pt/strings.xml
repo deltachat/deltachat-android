@@ -36,13 +36,13 @@
     <string name="this_month">Este mês</string>
     <string name="last_week">Semana passada</string>
     <string name="last_month">Mês passado</string>
-    <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
+    <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="one">%d min</item>
         <item quantity="many">%d min</item>
         <item quantity="other">%d min</item>
     </plurals>
-    <!-- Translators: show beside messages that are "N hours old". prefer a short string, prefer abbreviations if they're well-known -->
+    <!-- Shown beside messages that are "N hours old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_hours">
         <item quantity="one">%d hora</item>
         <item quantity="many">%d horas</item>
@@ -233,7 +233,7 @@
     <!-- Translators: %1$s will be replaced by the e-mail address -->
     <string name="login_error_cannot_login">Não é possível fazer o login como \"%1$s\". Por favor, verifique se o endereço de email e a palavra-chave estão corretos.</string>
     <!-- share and forward messages -->
-    <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
+    <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">Reencaminhar ...</string>
     <!-- preferences -->
     <string name="pref_using_custom">Utilizando personalizado %s</string>
@@ -243,15 +243,15 @@
     <string name="pref_blocked_contacts">Bloquear contactos</string>
     <string name="pref_who_can_see_profile_explain">A sua foto e nome de perfil serão mostrados ao lado das suas mensagens ao comunicar com outros utilizadores. As informações já enviadas não podem ser excluídas ou removidas</string>
     <string name="pref_your_name">O seu nome</string>
-    <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
+    <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
     <string name="pref_default_status_label">Informação do estado</string>
-    <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
+    <!-- Translators: The URL should not be localized as it is unclear which language the receiver prefers; the language will be automatically detected on the server -->
     <string name="pref_default_status_text">Enviado com meu Delta Chat Messenger: https://delta.chat</string>
     <string name="pref_enter_sends">Tecla ENTER para enviar</string>
     <string name="pref_enter_sends_explain">Pressionar a tecla ENTER enviará mensagens de texto</string>
     <string name="pref_vibrate">Vibrar</string>
     <string name="pref_screen_security">Segurança do ecrã</string>
-    <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
+    <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_screen_security_explain">Bloquear capturas de ecrã na lista atualizada e no aplicativo</string>
     <string name="pref_screen_security_please_restart_hint">Para aplicar a configuração de segurança do ecrã, reinicie o aplicativo.</string>
     <string name="pref_notifications">Notificações</string>
@@ -263,14 +263,14 @@
     <string name="pref_privacy">Privacidade</string>
     <string name="pref_chats_and_media">chats e mídia</string>
     <string name="pref_system_default">Configuração por omissão</string>
-    <!-- Translators: "light" in the meaning "opposite of dark" -->
+    <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">Luz</string>
     <string name="pref_dark_theme">Escuro</string>
     <string name="pref_appearance">Aparência</string>
     <string name="pref_theme">Tema</string>
     <string name="pref_language">Língua</string>
     <string name="pref_incognito_keyboard">Teclado incognito</string>
-    <!-- Translators: Keep in mind that this is a Request - it must be clear in the wording that this cannot be enforced. -->
+    <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_incognito_keyboard_explain">Desligar aprendizagem automática no teclado</string>
     <string name="pref_read_receipts">Ler recibos</string>
     <string name="pref_read_receipts_explain">Se as confirmações de leitura estiverem desactivadas, não poderá ver os recibos de leitura de outras pessoas.</string>
@@ -332,9 +332,9 @@
     <string name="systemmsg_read_receipt_subject">Ler recibos</string>
     <string name="systemmsg_read_receipt_body">Este é um recibo de confirmação de leitura da mensagem \"%1$s\".\n\nEsta mensagem foi exibida no dispositivo do destinatário, não necessariamente que o conteúdo foi lido.</string>
     <string name="systemmsg_cannot_decrypt">Esta mensagem não pode ser descriptada.\n\n • Talvez seja útil simplesmente responder a esta mensagem e solicitar que o remetente envie a mensagem novamente.\n\n • Caso você tenha re-instalado o Delta Chat ou outro programa de e-mail neste ou noutro dispositivo poderá querer enviar uma mensagem de configuração Autocrypt do dispositvo.</string>
-    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). -->
+    <!-- Translators: %1$s will be replaced by sth. as "ACTION by me". -->
     <string name="systemmsg_action_by_me">%1$s por mim.</string>
-    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
+    <!-- Translators: %1$s will be replaced by an action and %2$s will be replaced by the name/addr of the person who did it, as "ACTION by MEMBER". -->
     <string name="systemmsg_action_by_user">%1$s por %2$s.</string>
     <string name="qrscan_title">Fazer scan do código QR</string>
     <string name="qrscan_hint">Coloque sua câmera sobre o código QR</string>

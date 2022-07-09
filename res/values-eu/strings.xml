@@ -22,9 +22,9 @@
     <string name="back">Atzera</string>
     <string name="close">Itxi</string>
     <string name="forward">Birbidali</string>
-    <!-- In the meaning of "To archive", "Put a chat to the archive". This string does not mean "The Archive". -->
+    <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
     <string name="archive">Artxibatu</string>
-    <!-- In the meaning of "To unarchive", "Remove a chat from the archive", opposite of the previous string -->
+    <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Berreskuratu artxibotik</string>
     <string name="mute">Isilarazi</string>
     <string name="ephemeral_messages">Mezuen desagerpena</string>
@@ -40,7 +40,7 @@
     <string name="one_moment">Unetxo bat...</string>
     <string name="done">Egina</string>
     <string name="undo">Desegin</string>
-    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in iOS headers, the string should be as short as possible, though. -->
+    <!-- For the next view or as "continue". Should be as short as possible. -->
     <string name="next">Hurrengoa</string>
     <string name="error">Errorea</string>
     <string name="error_x">Errorea: %1$s</string>
@@ -54,7 +54,7 @@
     <string name="password">Pasahitza</string>
     <string name="existing_password">Oraingo pasahitza</string>
     <string name="now">Orain</string>
-    <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
+    <!-- Headline for destructive actions with no undo. Could also be "Caution" or "Warning". -->
     <string name="danger">Arriskua</string>
     <string name="today">Gaur</string>
     <string name="yesterday">Atzo</string>
@@ -62,12 +62,12 @@
     <string name="this_month">Hilabete honetan</string>
     <string name="last_week">Azken astea</string>
     <string name="last_month">Azken hilabetea</string>
-    <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
+    <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="one">min %d</item>
         <item quantity="other">%d min</item>
     </plurals>
-    <!-- Translators: show beside messages that are "N hours old". prefer a short string, prefer abbreviations if they're well-known -->
+    <!-- Shown beside messages that are "N hours old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_hours">
         <item quantity="one">ordu %d</item>
         <item quantity="other">%d ordu</item>
@@ -171,13 +171,13 @@
     <string name="device_talk_explain">Txat honetako mezuak zure Delta Chat aplikazioak sortu ditu lokalki. Egileek aplikazioaren eguneraketei buruz eta erabileran arazoei buruz informatzeko erabiltzen dute.</string>
     <string name="device_talk_welcome_message">Ongi etorri Delta Chat-era! Delta Chat beste bat bateko mezularitza aplikazioen itxura du, baina ez du kontrol zentralizaturik, ez dizu jarraitzen edo saltzen, ez zu ez zure lagunak, lankideak edo familia elkarte handi bati.\n\nTeknikoki, Delta Chat e-mail aplikazio bat da interfaze berri batekin. E-maila jantzi berri batekin esan genezake 👻\n\nErabili Delta Chat milaka miloika pertsonekin,  erabili bere e-mail helbidea eta kitto. Hartzaileek ez dute zertan Delta Chat instalatu behar, ez webguneak bisitatu edo izena eman inon. Hala ere, jakina, instalatu nahi badute hona bideratu ditzakezu 👉 https://get.delta.chat</string>
     <string name="edit_contact">Editatu kontaktua</string>
-    <!-- Translators: "Pin" here is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
     <string name="pin_chat">Finkatu txata</string>
-    <!-- Translators: this is the opposite of "Pin chat", removing the sticky-state from a chat. -->
+    <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin_chat">Desfinkatu txata</string>
-    <!-- Translators: this is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
     <string name="pin">Finkatu</string>
-    <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
+    <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin">Desfinkatu</string>
     <string name="mute_for_one_hour">Mututu ordubete</string>
     <string name="mute_for_two_hours">Mututu 2 ordu</string>
@@ -211,7 +211,7 @@
     <string name="ask_delete_contact">Ezabatu %1$s kontaktua behin betiko?\n\nAbian dauden txatak dituzten kontaktuak eta sistemaren helbide liburuan dauden kontaktuak ezin dira behin betiko ezabatu.</string>
     <string name="cannot_delete_contacts_in_use">Ezin dira txatak abian dituzten kontaktuak ezabatu</string>
     <string name="ask_start_chat_with">Txateatu %1$s erabiltzailearekin?</string>
-    <!-- Translators: %1$s will be replaces by a comma separated list of names -->
+    <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Kendu %1$s taldetik?</string>
     <!-- contact list -->
     <string name="contacts_title">Kontaktuak</string>
@@ -320,7 +320,7 @@
     <string name="delete_account">Ezabatu kontua</string>
     <string name="delete_account_ask">Ziur al zaude zure kontuaren datuak ezabatu nahi dituzula?</string>
     <!-- share and forward messages -->
-    <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
+    <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">Birbidali honi …</string>
     <string name="share_abort">Partekatzea eten da baimenak falta direlako.</string>
 
@@ -334,9 +334,9 @@
     <string name="pref_password_and_account_settings">Pasahitza eta kontua</string>
     <string name="pref_who_can_see_profile_explain">Zure profileko argazkia eta izena zure mezuekin batera erakutsiko dira beste erabiltzaileekin komunikatzen zarenean. Informazioa behin bidalita ezin da ezabatu edo kendu.</string>
     <string name="pref_your_name">Zure izena</string>
-    <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
+    <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
     <string name="pref_default_status_label">Sinaduraren testua</string>
-    <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
+    <!-- Translators: The URL should not be localized as it is unclear which language the receiver prefers; the language will be automatically detected on the server -->
     <string name="pref_default_status_text">Delta Chat mezulariarekin bidalita: https://delta.chat</string>
     <string name="pref_enter_sends">Enter teklarekin bidali</string>
     <string name="pref_enter_sends_explain">Enter tekla sakatzeak mezua bidaliko du</string>
@@ -345,7 +345,7 @@
     <string name="pref_outgoing_worse">Kalitate txarragoa, tamaina txikia</string>
     <string name="pref_vibrate">Bibratu</string>
     <string name="pref_screen_security">Pantaila segurtasuna</string>
-    <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
+    <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_screen_security_explain">Eskatu pantaila-argazkiak blokeatzea azkenak zerrendan eta aplikazio barruan.</string>
     <string name="pref_screen_security_please_restart_hint">Pantailaren segurtasun ezarpenak aplikatzeko berrabiarazi aplikazioa.</string>
     <string name="pref_notifications">Jakinarazpenak</string>
@@ -357,14 +357,14 @@
     <string name="pref_privacy">Pribatutasuna</string>
     <string name="pref_chats_and_media">Txatak eta multimedia</string>
     <string name="pref_system_default">Sisteman lehenetsia</string>
-    <!-- Translators: "light" in the meaning "opposite of dark" -->
+    <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">Argia</string>
     <string name="pref_dark_theme">Iluna</string>
     <string name="pref_appearance">Itxura</string>
     <string name="pref_theme">Azala</string>
     <string name="pref_language">Hizkuntza</string>
     <string name="pref_incognito_keyboard">Teklatu pribatua</string>
-    <!-- Translators: Keep in mind that this is a Request - it must be clear in the wording that this cannot be enforced. -->
+    <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_incognito_keyboard_explain">Eskatu teklatuari pertsonalizatutako ikasketa desgaitzea</string>
     <string name="pref_read_receipts">Irakurragiriak</string>
     <string name="pref_read_receipts_explain">Irakurragiriak desgaituta badaude, ezin izango dituzu besteen irakurragiriak ikusi.</string>
@@ -451,9 +451,9 @@
     <string name="systemmsg_read_receipt_subject">Irakurragiria</string>
     <string name="systemmsg_read_receipt_body">Hau \"%1$s\" mezuaren irakurragiri bat da.\n\nHonek mezua jasotzailearen gailuan bistaratu dela esan nahi du, ez edukia irakurri dela.</string>
     <string name="systemmsg_cannot_decrypt">Ezin da mezu hau deszifratu.\n\n• Mezuari erantzun diezaiokezu eta berriro bidaltzea eskatu.\n\n• Delta Chat berrinstalatu baduzu edo beste posta programa bat instalatu baduzu gailu honetan edo beste batean, AutoCrypt ezarpen mezua handik hona birbidaltzen saiatu zaitezke.</string>
-    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). -->
+    <!-- Translators: %1$s will be replaced by sth. as "ACTION by me". -->
     <string name="systemmsg_action_by_me">Nik: %1$s</string>
-    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
+    <!-- Translators: %1$s will be replaced by an action and %2$s will be replaced by the name/addr of the person who did it, as "ACTION by MEMBER". -->
     <string name="systemmsg_action_by_user">%2$s(e)k: %1$s</string>
     <!-- qr code stuff -->
     <string name="qr_code">QR kodea</string>

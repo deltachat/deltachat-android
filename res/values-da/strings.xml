@@ -31,9 +31,9 @@
     <string name="back">Tilbage</string>
     <string name="close">Luk</string>
     <string name="forward">Videresend</string>
-    <!-- In the meaning of "To archive", "Put a chat to the archive". This string does not mean "The Archive". -->
+    <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
     <string name="archive">Arkivér</string>
-    <!-- In the meaning of "To unarchive", "Remove a chat from the archive", opposite of the previous string -->
+    <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Fortryd arkivering</string>
     <string name="mute">Udsæt</string>
     <string name="ephemeral_messages">Beskeder med tidsudløb</string>
@@ -58,7 +58,7 @@
     <string name="done">Færdig</string>
     <string name="undo">Fortryd</string>
     <string name="offline">Offline</string>
-    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in iOS headers, the string should be as short as possible, though. -->
+    <!-- For the next view or as "continue". Should be as short as possible. -->
     <string name="next">Næste</string>
     <string name="error">Fejl</string>
     <string name="error_x">Fejl: %1$s</string>
@@ -72,7 +72,7 @@
     <string name="password">Adgangskode</string>
     <string name="existing_password">Eksisterende adgangskode</string>
     <string name="now">Nu</string>
-    <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
+    <!-- Headline for destructive actions with no undo. Could also be "Caution" or "Warning". -->
     <string name="danger">Fare</string>
     <string name="today">I dag</string>
     <string name="yesterday">I går</string>
@@ -80,12 +80,12 @@
     <string name="this_month">Denne måned</string>
     <string name="last_week">Sidste uge</string>
     <string name="last_month">Sidste måned</string>
-    <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
+    <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="one">%d min.</item>
         <item quantity="other">%d min.</item>
     </plurals>
-    <!-- Translators: show beside messages that are "N hours old". prefer a short string, prefer abbreviations if they're well-known -->
+    <!-- Shown beside messages that are "N hours old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_hours">
         <item quantity="one">%d time</item>
         <item quantity="other">%d timer</item>
@@ -109,17 +109,17 @@
     <string name="self">Mig</string>
     <string name="draft">Kladde</string>
     <string name="image">Billede</string>
-    <!-- Translators: Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
+    <!-- Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
     <string name="reply_noun">Svar</string>
     <string name="gif">Gif</string>
-    <!-- "Stickers" as known from other messengers, please pick up the wording from there; in some languages, "Sticker" in english is just fine. -->
+    <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">Klistermærker</string>
     <string name="images">Billeder</string>
     <string name="audio">Lyd</string>
     <string name="voice_message">Tale besked</string>
     <string name="forwarded">Videresendt</string>
     <string name="forwarded_message">Videresendt besked</string>
-    <!-- %1$s will be replaced by the name or the e-mail address of the person who has forwarded the message -->
+    <!-- %1$s will be replaced by the name or the e-mail address of the person who forwards the message -->
     <string name="forwarded_by">Videresendt af %1$s</string>
     <string name="video">Video</string>
     <string name="documents">Dokumenter</string>
@@ -187,10 +187,10 @@
     <string name="menu_export_attachment">Eksporter vedhæftning</string>
     <string name="menu_export_attachments">Eksporter vedhæftninger</string>
     <string name="menu_all_media">Alle medier</string>
-    <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
+    <!-- Command to jump to the original message corresponding to a gallery image or document -->
     <string name="show_in_chat">Vis i chat</string>
     <string name="menu_share">Del</string>
-    <!-- this is the action "to block sth." usually a mailing list or a contact. this is NOT "a large solid piece of hard material" :) -->
+    <!-- Verb "to block sth." usually a mailing list or a contact, not a noun -->
     <string name="block">Bloker</string>
     <string name="menu_block_contact">Bloker kontakt</string>
     <string name="menu_unblock_contact">Fjern blokering af kontakt</string>
@@ -217,13 +217,13 @@
     <string name="device_talk_explain">Beskederne i denne chat er blevet generated lokalt af din Delta Chat app. Skaberne af appen bruger dette til at informere om app-opdateringer og problemer under brug.</string>
     <string name="device_talk_welcome_message">Velkommen til Delta Chat! - Delta Chat ser ud og føles som andre populære messenger apps men kontrolleres ikke fra centralt hold, tracker ikke eller sælger ikke dine, dine venners, dine kollegaers og din families oplysninger til store organisationer.\n\nTeknisk set er Delta Chat en email-klient med et moderne chat interface. E-mail i nye klæder om man vil. 👻\n\nBrug Delta Chat med hvem som helst ud af milliarder af mennesker: brug blot deres email-adresse. Modtagerne behøver ikke at installere Delta Chat, besøge websider eller melde sig ind nogen steder - men, selvfølgelig, hvis du vil kan du henvise dem til 👉https://get.delta.chat</string>
     <string name="edit_contact">Rediger kontakt</string>
-    <!-- Translators: "Pin" here is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
     <string name="pin_chat">Fastgør chat</string>
-    <!-- Translators: this is the opposite of "Pin chat", removing the sticky-state from a chat. -->
+    <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin_chat">Løsn samtale</string>
-    <!-- Translators: this is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
     <string name="pin">Fastgør</string>
-    <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
+    <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin">Løsn</string>
     <string name="ConversationFragment_quoted_message_not_found">Oprindelig besked ikke fundet</string>
     <string name="reply_privately">Svar privat</string>
@@ -283,7 +283,7 @@
     <string name="cannot_delete_contacts_in_use">Kan ikke slette kontakter med igangværende samtaler.</string>
     <string name="ask_start_chat_with">Samtale med %1$s?</string>
     <string name="ask_delete_value">Slet 1%s?</string>
-    <!-- Translators: %1$s will be replaces by a comma separated list of names -->
+    <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Fjern %1$s fra gruppe?</string>
     <string name="open_url_confirmation">Vil du åbne dette link?</string>
 
@@ -325,7 +325,7 @@
     <string name="chat_self_talk_subtitle">Beskeder sendt til mig selv</string>
     <string name="saved_messages">Gemte beskeder</string>
     <string name="saved_messages_explain">Videresend beskeder her for at have nem adgang\n\n Tage notater eller voicememoer \n\n Vedhæft filer for at gemme dem</string>
-    <!-- this "Saved" should match the "Saved" from "Saved messages" -->
+    <!-- Should match "Saved" from "Saved messages" -->
     <string name="saved">Gemt</string>
     <string name="retry_send">Forsøg igen at sende besked</string>
     <!-- reasons for a disabled message composer -->
@@ -367,20 +367,20 @@
     <string name="send_message">Send besked</string>
 
     <!-- Connectivity -->
-    <!-- Used as a headline for the "Inbox" eg. in the "Connectivity" view -->
+    <!-- Headline for the "Inbox" eg. in the "Connectivity" view -->
     <string name="incoming_messages">Indkommende beskeder</string>
-    <!-- Used as a headline for the "Outbox" eg. in the "Connectivity" view -->
+    <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Udgående beskeder</string>
-    <!-- Shown eg. in the title bar if the app is "Not connected"; as there is very few room, try to be as short as possible. -->
+    <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
     <string name="connectivity_not_connected">Ikke forbundet</string>
-    <!-- Shown eg. in the title bar if the app is "Connecting"; as there is very few room, try to be as short as possible. Note that the three dots are a single character (…), not three (...) -->
+    <!-- Shown in the title bar if the app is "Connecting"; prefer short strings. The ellipsis is a single character (…), not three (...) -->
     <string name="connectivity_connecting">Forbinder...</string>
-    <!-- Shown eg. in the title bar if the app is "Updating" (eg. getting new/old message, sync things); as there is very few room, try to be as short as possible. Note that the three dots are a single character (…), not three (...) -->
+    <!-- Shown in the title bar if the app is "Updating" (eg. getting new/old message, sync things); prefer short strings. The ellipsis is a single character (…), not three (...) -->
     <string name="connectivity_updating">Opdaterer...</string>
-    <!-- Shown eg. in the setting if the app is "Connected" -->
+    <!-- Shown in the setting if the app is "Connected" -->
     <string name="connectivity_connected">Forbundet</string>
     <string name="sending">Sender...</string>
-    <!-- Used as a subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed or so. -->
+    <!-- Subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Beskeder</string>
     <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
     <string name="part_of_total_used">%1$s af %2$s brugt</string>
@@ -439,7 +439,7 @@
     <string name="configuration_failed_with_error">Konfiguration mislykkedes. Fejl: %1$s</string>
 
     <!-- share and forward messages -->
-    <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
+    <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">Videresend til …</string>
     <string name="share_multiple_attachments">Send %1$d filer til den valgte samtale?\n\nFilerne bliver sendt umodificeret i deres originale størrelse, f.eks. billeder og videoer bliver ikke ændret.</string>
     <string name="share_multiple_attachments_multiple_chats">Send %1$d file(er) til %2$d samtaler?\n\nFilerne bliver sendt umodificeret i deres originale størrelse, f.eks. billeder og videoer bliver ikke ændret.</string>
@@ -457,9 +457,9 @@
     <string name="pref_password_and_account_settings">Adgangskode og konto</string>
     <string name="pref_who_can_see_profile_explain">Profilbillede og navn vises sammen med beskeder, når der kommunikeres med andre brugere. Allerede sendt information kan ikke slettes eller fjernes.</string>
     <string name="pref_your_name">Dit navn</string>
-    <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
+    <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
     <string name="pref_default_status_label">Underskrift tekst</string>
-    <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
+    <!-- Translators: The URL should not be localized as it is unclear which language the receiver prefers; the language will be automatically detected on the server -->
     <string name="pref_default_status_text">Sendt med Delta Chat Messenger: https://delta.chat</string>
     <string name="pref_enter_sends">Enter tast sender</string>
     <string name="pref_enter_sends_explain">Tryk på enter tast vil sende tekst beskeden</string>
@@ -468,7 +468,7 @@
     <string name="pref_outgoing_worse">Dårligere kvalitet mindre størrelse</string>
     <string name="pref_vibrate">Vibrer</string>
     <string name="pref_screen_security">Skærmsikkerhed</string>
-    <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
+    <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_screen_security_explain">Forespørgsel om at blokere skærmbilleder i seneste liste og i programmet</string>
     <string name="pref_screen_security_please_restart_hint">Genstart programmet for at anvende skærm sikkerhed.</string>
     <string name="pref_notifications">Notifikationer</string>
@@ -483,14 +483,14 @@
     <string name="pref_privacy">Privatliv</string>
     <string name="pref_chats_and_media">Samtaler og medie</string>
     <string name="pref_system_default">Systemstandard</string>
-    <!-- Translators: "light" in the meaning "opposite of dark" -->
+    <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">Lys</string>
     <string name="pref_dark_theme">Mørk</string>
     <string name="pref_appearance">Udseende</string>
     <string name="pref_theme">Tema</string>
     <string name="pref_language">Sprog</string>
     <string name="pref_incognito_keyboard">Inkognito tastatur</string>
-    <!-- Translators: Keep in mind that this is a Request - it must be clear in the wording that this cannot be enforced. -->
+    <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_incognito_keyboard_explain">Anmod tastatur om at deaktivere personlig indlæring</string>
     <string name="pref_read_receipts">Kvittering for læsning</string>
     <string name="pref_read_receipts_explain">Hvis læst kvittering er deaktiveret vil læst kvittering fra andre ikke blive vist.</string>
@@ -606,9 +606,9 @@
     <string name="systemmsg_read_receipt_subject">Besked åbnet</string>
     <string name="systemmsg_read_receipt_body">Beskeden \"%1$s\" du har sendt blev vist på modtagerens skærm.\n\nDette er ikke en garanti for at indholdet blev læst.</string>
     <string name="systemmsg_cannot_decrypt">Denne besked kan ikke dekrypteres.\n\n• Det kan måske hjælpe at svare på beskeden og bede afsender sende beskeden igen.\n\n• I tilfælde at Delta Chat eller andet e-mail program på denne enhed eller en anden er blevet gen-installeret bør der sendes en Autocrypt opsætning besked derfra.</string>
-    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). -->
+    <!-- Translators: %1$s will be replaced by sth. as "ACTION by me". -->
     <string name="systemmsg_action_by_me">%1$s af mig.</string>
-    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
+    <!-- Translators: %1$s will be replaced by an action and %2$s will be replaced by the name/addr of the person who did it, as "ACTION by MEMBER". -->
     <string name="systemmsg_action_by_user">%1$s af %2$s.</string>
     <string name="systemmsg_unknown_sender_for_chat">Ukent afsender af denne chat. Se \'info\' for flere detaljer.</string>
     <string name="systemmsg_subject_for_new_contact">Besked fra %1$s</string>

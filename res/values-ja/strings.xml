@@ -31,9 +31,9 @@
     <string name="back">前へ</string>
     <string name="close">閉じる</string>
     <string name="forward">転送</string>
-    <!-- In the meaning of "To archive", "Put a chat to the archive". This string does not mean "The Archive". -->
+    <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
     <string name="archive">アーカイブ</string>
-    <!-- In the meaning of "To unarchive", "Remove a chat from the archive", opposite of the previous string -->
+    <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">元に戻す</string>
     <string name="mute">ミュート</string>
     <string name="ephemeral_messages">消えるメッセージ</string>
@@ -46,11 +46,11 @@
     <string name="start_chat">チャットを開始する</string>
     <string name="show_full_message">メッセージ全体を表示</string>
     <string name="show_full_message_in_browser">ブラウザにフルメッセージを表示</string>
-    <!-- this is shown as placeholder when something is loading at some places -->
+    <!-- Placeholder text when something is loading -->
     <string name="loading">読み込み中</string>
     <string name="hide">非表示</string>
     <string name="load_remote_content">リモート画像を読み込む</string>
-    <!-- possible answers to the question are: Never, Always, Once -->
+    <!-- Possible answers to the question are: Never, Always, Once -->
     <string name="load_remote_content_ask">リモート画像で追跡ができる。\n\nこの設定はフォントや他のコンテツを読み込むことも許可する。無効にしても埋め込まれた画像やキャッシュされた画像を表示されます。\n\nリモート画像を読み込む？</string>
     <string name="always">常に</string>
     <string name="once">一回のみ</string>
@@ -62,7 +62,7 @@
     <string name="done">完了</string>
     <string name="undo">元に戻す</string>
     <string name="offline">オフライン</string>
-    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in iOS headers, the string should be as short as possible, though. -->
+    <!-- For the next view or as "continue". Should be as short as possible. -->
     <string name="next">次へ</string>
     <string name="error">エラー</string>
     <string name="error_x">エラー：%1$s</string>
@@ -76,7 +76,7 @@
     <string name="password">パスワード</string>
     <string name="existing_password">既存のパスワード</string>
     <string name="now">現在</string>
-    <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
+    <!-- Headline for destructive actions with no undo. Could also be "Caution" or "Warning". -->
     <string name="danger">危険</string>
     <string name="today">今日</string>
     <string name="yesterday">昨日</string>
@@ -84,11 +84,11 @@
     <string name="this_month">今月</string>
     <string name="last_week">先週</string>
     <string name="last_month">先月</string>
-    <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
+    <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="other">%d分</item>
     </plurals>
-    <!-- Translators: show beside messages that are "N hours old". prefer a short string, prefer abbreviations if they're well-known -->
+    <!-- Shown beside messages that are "N hours old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_hours">
         <item quantity="other">%d時間</item>
     </plurals>
@@ -107,7 +107,7 @@
     <string name="self">自分</string>
     <string name="draft">下書き</string>
     <string name="image">画像</string>
-    <!-- Translators: Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
+    <!-- Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
     <string name="reply_noun">返信</string>
     <string name="gif">Gif</string>
     <string name="images">画像</string>
@@ -115,14 +115,14 @@
     <string name="voice_message">音声メッセージ</string>
     <string name="forwarded">転送された</string>
     <string name="forwarded_message">転送されたメッセージ</string>
-    <!-- %1$s will be replaced by the name or the e-mail address of the person who has forwarded the message -->
+    <!-- %1$s will be replaced by the name or the e-mail address of the person who forwards the message -->
     <string name="forwarded_by">%1$sが転送しました</string>
     <string name="video">動画</string>
     <string name="documents">文章</string>
     <string name="contact">連絡先</string>
     <string name="verified_contact">確認済みの連絡先</string>
     <string name="camera">カメラ</string>
-    <!-- "capture" here means "start a video recording" or "take a photo"; eg. the description of the "shutter button" in the camera controls -->
+    <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">撮影</string>
     <string name="switch_camera">カメラを切り替える</string>
     <string name="toggle_fullscreen">フルスクリーン</string>
@@ -185,10 +185,10 @@
     <string name="menu_unmute">ミュート解除</string>
     <string name="menu_export_attachment">添付ファイルのエクスポート</string>
     <string name="menu_all_media">全ての写真･動画･音楽</string>
-    <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
+    <!-- Command to jump to the original message corresponding to a gallery image or document -->
     <string name="show_in_chat">チャットに表示</string>
     <string name="menu_share">共有</string>
-    <!-- this is the action "to block sth." usually a mailing list or a contact. this is NOT "a large solid piece of hard material" :) -->
+    <!-- Verb "to block sth." usually a mailing list or a contact, not a noun -->
     <string name="block">ブロック</string>
     <string name="menu_block_contact">拒否する</string>
     <string name="menu_unblock_contact">拒否を解除</string>
@@ -216,13 +216,13 @@
     <string name="device_talk_welcome_message">Delta Chatへようこそ。Delta Chatは人気のメッセンジャーアプリに似ていますが、中央集権・トラッキング・個人情報の販売が実施されていません。具体的端正なチャットインターフェースを実装したメールアプリです。
 メールアドレスがあれば誰とでもDelta Chatを使えます。受信者がDelta Chatをインストールしなくてもメッセージが届きますが、お気軽に https://get.delta.chat を教えてください。</string>
     <string name="edit_contact">連絡先を編集</string>
-    <!-- Translators: "Pin" here is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
     <string name="pin_chat">チャットをピン留め</string>
-    <!-- Translators: this is the opposite of "Pin chat", removing the sticky-state from a chat. -->
+    <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin_chat">チャットのピン留めを解除</string>
-    <!-- Translators: this is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
     <string name="pin">ピン留め</string>
-    <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
+    <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin">ピン留めを解除</string>
     <string name="ConversationFragment_quoted_message_not_found">メッセージが見つかりません</string>
     <string name="reply_privately">個別に返信する</string>
@@ -275,7 +275,7 @@
     <string name="cannot_delete_contacts_in_use">チャット中の連絡先は削除できません。</string>
     <string name="ask_start_chat_with">%1$sとチャットしますか</string>
     <string name="ask_delete_value">%sを削除しますか？</string>
-    <!-- Translators: %1$s will be replaces by a comma separated list of names -->
+    <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">%1$sをグループから排除しますか</string>
     <string name="open_url_confirmation">このリンクを開きますか？</string>
 
@@ -314,7 +314,7 @@
     <string name="chat_self_talk_subtitle">自分に送ったメッセージ</string>
     <string name="saved_messages">保存したメッセージ</string>
     <string name="saved_messages_explain">ここにメッセージを転送しておけば、簡単にアクセスできます。メモやボイスメモも保存できます。メディアを添付して保存します。</string>
-    <!-- this "Saved" should match the "Saved" from "Saved messages" -->
+    <!-- Should match "Saved" from "Saved messages" -->
     <string name="saved">保存しました</string>
     <string name="retry_send">メッセージの配信を再試行します</string>
     <!-- reasons for a disabled message composer -->
@@ -360,13 +360,13 @@
     <string name="send_message">送る</string>
 
     <string name="connectivity">接続性</string>
-    <!-- Shown eg. in the title bar if the app is "Not connected"; as there is very few room, try to be as short as possible. -->
+    <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
     <string name="connectivity_not_connected">未接続</string>
-    <!-- Shown eg. in the title bar if the app is "Connecting"; as there is very few room, try to be as short as possible. Note that the three dots are a single character (…), not three (...) -->
+    <!-- Shown in the title bar if the app is "Connecting"; prefer short strings. The ellipsis is a single character (…), not three (...) -->
     <string name="connectivity_connecting">接続中</string>
-    <!-- Shown eg. in the title bar if the app is "Updating" (eg. getting new/old message, sync things); as there is very few room, try to be as short as possible. Note that the three dots are a single character (…), not three (...) -->
+    <!-- Shown in the title bar if the app is "Updating" (eg. getting new/old message, sync things); prefer short strings. The ellipsis is a single character (…), not three (...) -->
     <string name="connectivity_updating">アップデート中</string>
-    <!-- Shown eg. in the setting if the app is "Connected" -->
+    <!-- Shown in the setting if the app is "Connected" -->
     <string name="connectivity_connected">接続済み</string>
     <string name="welcome_intro1_message">世界で最も大衆的なメッセンジャーです。自由に使えて独立している。</string>
     <string name="login_title">ログイン</string>
@@ -413,7 +413,7 @@
     <string name="configuration_failed_with_error">設定失敗。エラー：%1$s</string>
 
     <!-- share and forward messages -->
-    <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
+    <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">転送</string>
     <string name="share_multiple_attachments">%1$dをチャットに送りますか。\n\nファイルは圧縮されずに送られます。</string>
     <string name="share_multiple_attachments_multiple_chats">%1$dつのファイルを%2$d個のチャットに送りますか。\n\nファイルは圧縮されずに送られます。</string>
@@ -431,9 +431,9 @@
     <string name="pref_password_and_account_settings">パスワードとアカウント</string>
     <string name="pref_who_can_see_profile_explain">アイコン画像や名前は他のユーザーに連絡するとメッセージとともに表示されます。既に送信された情報を削除することができます。</string>
     <string name="pref_your_name">あなたの名前</string>
-    <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
+    <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
     <string name="pref_default_status_label">署名</string>
-    <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
+    <!-- Translators: The URL should not be localized as it is unclear which language the receiver prefers; the language will be automatically detected on the server -->
     <string name="pref_default_status_text">Delta Chat Messengerから送信しております｡
 https://delta.chat</string>
     <string name="pref_enter_sends">エンターキーで送信</string>
@@ -443,7 +443,7 @@ https://delta.chat</string>
     <string name="pref_outgoing_worse">低画質・サイズが小さい</string>
     <string name="pref_vibrate">振動</string>
     <string name="pref_screen_security">画面セキュリティ</string>
-    <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
+    <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_screen_security_explain">アプリ内や「最近使ったアプリ」でスクリーンショットを禁止する</string>
     <string name="pref_screen_security_please_restart_hint">画面のセキュリティ設定を適用してアプリを再起動してください。</string>
     <string name="pref_notifications">通知</string>
@@ -458,14 +458,14 @@ https://delta.chat</string>
     <string name="pref_privacy">機密保護</string>
     <string name="pref_chats_and_media">チャットと写真･動画･音楽</string>
     <string name="pref_system_default">システム既定</string>
-    <!-- Translators: "light" in the meaning "opposite of dark" -->
+    <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">白</string>
     <string name="pref_dark_theme">黒</string>
     <string name="pref_appearance">外観</string>
     <string name="pref_theme">見た目</string>
     <string name="pref_language">言語</string>
     <string name="pref_incognito_keyboard">シークレットキーボード</string>
-    <!-- Translators: Keep in mind that this is a Request - it must be clear in the wording that this cannot be enforced. -->
+    <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_incognito_keyboard_explain">予測入力を無効にする</string>
     <string name="pref_read_receipts">既読通知</string>
     <string name="pref_read_receipts_explain">既読通知を無効にすると、相手の既読通知も受け取れません。</string>
@@ -565,9 +565,9 @@ https://delta.chat</string>
     <string name="systemmsg_member_removed">%1$sが退会されました。</string>
     <string name="systemmsg_group_left">グループを退会しました。</string>
     <string name="systemmsg_read_receipt_subject">既読</string>
-    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). -->
+    <!-- Translators: %1$s will be replaced by sth. as "ACTION by me". -->
     <string name="systemmsg_action_by_me">自分から%1$s</string>
-    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
+    <!-- Translators: %1$s will be replaced by an action and %2$s will be replaced by the name/addr of the person who did it, as "ACTION by MEMBER". -->
     <string name="systemmsg_action_by_user">%2$sから%1$s</string>
     <string name="systemmsg_subject_for_new_contact">%1$sさんからのメッセージ</string>
     <string name="systemmsg_failed_sending_to">%1$sさんへのメッセージ送信に失敗しました。</string>

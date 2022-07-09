@@ -30,9 +30,9 @@
     <string name="back">뒤</string>
     <string name="close">닫기</string>
     <string name="forward">전달</string>
-    <!-- In the meaning of "To archive", "Put a chat to the archive". This string does not mean "The Archive". -->
+    <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
     <string name="archive">아카이브</string>
-    <!-- In the meaning of "To unarchive", "Remove a chat from the archive", opposite of the previous string -->
+    <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">보관 취소</string>
     <string name="mute">알림 음소거</string>
     <string name="ephemeral_messages">사라지는 메시지</string>
@@ -44,12 +44,12 @@
     <string name="start_chat">채팅 시작</string>
     <string name="show_full_message">전체 메시지 보기...</string>
     <string name="show_full_message_in_browser">브라우저에서 전체 메시지 보기...</string>
-    <!-- this is shown as placeholder when something is loading at some places -->
+    <!-- Placeholder text when something is loading -->
     <string name="loading">로딩 중...</string>
     <string name="hide">숨기기</string>
     <string name="activate">활성화</string>
     <string name="load_remote_content">원격 이미지 불러오기</string>
-    <!-- possible answers to the question are: Never, Always, Once -->
+    <!-- Possible answers to the question are: Never, Always, Once -->
     <string name="load_remote_content_ask">원격 이미지는 당신을 추적하기 위해 사용될 수 있습니다.\n\n이 설정은 폰트와 다른 콘텐츠를 불러오는 것도 허용합니다. 만약 비활성화되어도, 내장 또는 캐시된 이미지를 볼 수 있습니다.\n\n원격 이미지를 불러올까요?</string>
     <string name="always">항상</string>
     <string name="once">한번만</string>
@@ -61,7 +61,7 @@
     <string name="done">완료</string>
     <string name="undo">실행 취소</string>
     <string name="offline">오프라인</string>
-    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in iOS headers, the string should be as short as possible, though. -->
+    <!-- For the next view or as "continue". Should be as short as possible. -->
     <string name="next">확인</string>
     <string name="error">오류</string>
     <string name="error_x">오류: %1$s</string>
@@ -75,7 +75,7 @@
     <string name="password">비밀번호</string>
     <string name="existing_password">존재하는 비밀번호</string>
     <string name="now">방금 전</string>
-    <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
+    <!-- Headline for destructive actions with no undo. Could also be "Caution" or "Warning". -->
     <string name="danger">위험</string>
     <string name="today">오늘</string>
     <string name="yesterday">어제</string>
@@ -83,14 +83,14 @@
     <string name="this_month">이번달</string>
     <string name="last_week">저번 주</string>
     <string name="last_month">저번 달</string>
-    <!-- the placeholder will be replaced by a date or time, resulting eg. in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
+    <!-- Placeholder replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
     <string name="last_seen_at">%1$s에 마지막 접속 </string>
     <string name="last_seen_unknown">마지막 접속: 알 수 없음</string>
-    <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
+    <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="other">%d 분</item>
     </plurals>
-    <!-- Translators: show beside messages that are "N hours old". prefer a short string, prefer abbreviations if they're well-known -->
+    <!-- Shown beside messages that are "N hours old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_hours">
         <item quantity="other">%d시간</item>
     </plurals>
@@ -109,7 +109,7 @@
     <plurals name="n_recipients">
         <item quantity="other">%d 수신자</item>
     </plurals>
-    <!-- short title, used for "N Chats Selected" or "N Messages Selected", however, requires a shorter form, eg. "N Selected" in english -->
+    <!-- Short form for "N Chats Selected" or "N Messages Selected": in English, "N Selected" -->
     <plurals name="n_selected">
         <item quantity="other">%d 선택됨</item>
     </plurals>
@@ -117,24 +117,24 @@
     <string name="self">나</string>
     <string name="draft">임시 저장</string>
     <string name="image">이미지</string>
-    <!-- Translators: Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
+    <!-- Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
     <string name="reply_noun">답장</string>
     <string name="gif">GIF</string>
-    <!-- "Stickers" as known from other messengers, please pick up the wording from there; in some languages, "Sticker" in english is just fine. -->
+    <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">스티커</string>
     <string name="images">이미지</string>
     <string name="audio">음악</string>
     <string name="voice_message">음성 메시지</string>
     <string name="forwarded">전달됨</string>
     <string name="forwarded_message">전달된 메시지</string>
-    <!-- %1$s will be replaced by the name or the e-mail address of the person who has forwarded the message -->
+    <!-- %1$s will be replaced by the name or the e-mail address of the person who forwards the message -->
     <string name="forwarded_by">%1$s에 의해 전달됨</string>
     <string name="video">동영상</string>
     <string name="documents">문서</string>
     <string name="contact">연락처</string>
     <string name="verified_contact">확인된 연락처</string>
     <string name="camera">카메라</string>
-    <!-- "capture" here means "start a video recording" or "take a photo"; eg. the description of the "shutter button" in the camera controls -->
+    <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">캡쳐</string>
     <string name="switch_camera">카메라 전환</string>
     <string name="toggle_fullscreen">전체 화면 모드 토글</string>
@@ -168,7 +168,7 @@
     <string name="menu_new_contact">대화상대 추가</string>
     <string name="menu_new_chat">채팅 시작</string>
     <string name="menu_new_group">새 그룹</string>
-    <!-- "Subject" here must be the same wording as used in the e-mail context, so. eg. "Betreff" in german (the idea is to help people coming from the e-mail context) -->
+    <!-- Use the same wording as "Subject" to help people coming from the e-mail context; eg. "Betreff" in German -->
     <string name="new_group_or_subject">새 그룹이나 주제</string>
     <string name="menu_new_verified_group">새 확인된 그룹</string>
     <string name="menu_send">보내기</string>
@@ -201,10 +201,10 @@
     <string name="menu_export_attachment">첨부 파일 내보내기</string>
     <string name="menu_export_attachments">첨부 파일 내보내기</string>
     <string name="menu_all_media">모든 미디어</string>
-    <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
+    <!-- Command to jump to the original message corresponding to a gallery image or document -->
     <string name="show_in_chat">채팅에서 보기</string>
     <string name="menu_share">공유</string>
-    <!-- this is the action "to block sth." usually a mailing list or a contact. this is NOT "a large solid piece of hard material" :) -->
+    <!-- Verb "to block sth." usually a mailing list or a contact, not a noun -->
     <string name="block">차단</string>
     <string name="menu_block_contact">차단</string>
     <string name="menu_unblock_contact">차단 해제</string>
@@ -232,13 +232,13 @@
     <string name="device_talk_subtitle">로컬에서 생성된 메시지</string>
     <string name="device_talk_explain">이 채팅의 메시지는 델타 채팅 앱에서 로컬로 생성됩니다. 제작자는 이것을 앱 업데이트와 사용 중 발생하는 문제에 대해 알리기 위해 사용한다.</string>
     <string name="edit_contact">연락처 수정</string>
-    <!-- Translators: "Pin" here is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
     <string name="pin_chat">채팅 고정</string>
-    <!-- Translators: this is the opposite of "Pin chat", removing the sticky-state from a chat. -->
+    <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin_chat">채팅 고정 해제</string>
-    <!-- Translators: this is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
     <string name="pin">고정</string>
-    <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
+    <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin">고정 해제</string>
     <string name="ConversationFragment_quoted_message_not_found">원본 메시지를 찾을 수 없음</string>
     <string name="reply_privately">비공개로 응답</string>
@@ -292,9 +292,9 @@
     <string name="cannot_delete_contacts_in_use">대화가 진행 중인 대화 상대를 삭제할 수 없습니다.</string>
     <string name="ask_start_chat_with">%1$s와 채팅하시겠습니까?</string>
     <string name="ask_delete_value">%s를 삭제하시겠습니까?</string>
-    <!-- Translators: %1$s will be replaces by a comma separated list of names -->
+    <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">그룹에서 %1$s을/를 제거하시겠습니까?</string>
-    <!-- Translators: %1$s will be replaced by a comma separated list of names -->
+    <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_from_broadcast">브로드 캐스트 목록에서 %1$s을/를 제거하시겠습니까?</string>
     <string name="open_url_confirmation">이 링크를 열길 원하십니까?</string>
 
@@ -349,7 +349,7 @@
     <string name="tab_gallery">앨범</string>
     <string name="media_preview">미디어 미리보기</string>
     <!-- share and forward messages -->
-    <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
+    <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">채팅방 선택</string>
     <string name="pref_profile_info_headline">내 프로필</string>
     <string name="pref_profile_photo">프로필 사진</string>
@@ -359,7 +359,7 @@
     <string name="pref_enter_sends">엔터키로 메시지 전송</string>
     <string name="pref_vibrate">진동</string>
     <string name="pref_screen_security">화면 보안</string>
-    <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
+    <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_screen_security_explain">최근 사용 목록/개요 및 앱 안에서 스크린샷 차단</string>
     <string name="pref_notifications">알림</string>
     <string name="pref_notifications_show">보이기</string>
@@ -370,14 +370,14 @@
     <string name="pref_privacy">개인정보 보호</string>
     <string name="pref_chats_and_media">대화 및 미디어</string>
     <string name="pref_system_default">시스템 기본값</string>
-    <!-- Translators: "light" in the meaning "opposite of dark" -->
+    <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">밝게</string>
     <string name="pref_dark_theme">어둡게</string>
     <string name="pref_appearance">모양</string>
     <string name="pref_theme">테마</string>
     <string name="pref_language">언어</string>
     <string name="pref_incognito_keyboard">사생활 보호 키보드</string>
-    <!-- Translators: Keep in mind that this is a Request - it must be clear in the wording that this cannot be enforced. -->
+    <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_incognito_keyboard_explain">개인 맞춤화를 사용하지 않도록 키보드에 요청합니다</string>
     <string name="pref_read_receipts">열람 안내</string>
     <string name="pref_read_receipts_explain">열람 안내 기능이 꺼져 있다면, 다른 사람이 메시지를 열람했는지의 여부 또한 볼 수 없습니다.</string>

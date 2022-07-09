@@ -27,7 +27,7 @@
     <string name="one_moment">Egy pillanat...</string>
     <string name="done">Kész</string>
     <string name="undo">Visszavonás</string>
-    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in iOS headers, the string should be as short as possible, though. -->
+    <!-- For the next view or as "continue". Should be as short as possible. -->
     <string name="next">Tovább</string>
     <string name="error">Hiba</string>
     <string name="error_x">Hiba: %1$s</string>
@@ -45,12 +45,12 @@
     <string name="this_month">Ebben a hónapban</string>
     <string name="last_week">Múlt héten</string>
     <string name="last_month">Múlt hónapban</string>
-    <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
+    <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="one">%d perce</item>
         <item quantity="other">%d perce</item>
     </plurals>
-    <!-- Translators: show beside messages that are "N hours old". prefer a short string, prefer abbreviations if they're well-known -->
+    <!-- Shown beside messages that are "N hours old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_hours">
         <item quantity="one">%d órája</item>
         <item quantity="other">%d órája</item>
@@ -162,7 +162,7 @@
     <string name="ask_leave_group">Biztosan ki akarsz lépni a csoportból?</string>
     <string name="ask_forward">Továbbítod az üzenetet %1$s részére?</string>
     <string name="ask_start_chat_with">Beszélgetést indítasz %1$s partnerrel?</string>
-    <!-- Translators: %1$s will be replaces by a comma separated list of names -->
+    <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Kiveszed a csoportból %1$s partnert?</string>
     <!-- contact list -->
     <string name="contacts_title">Kontaktok</string>
@@ -218,18 +218,18 @@
     <string name="login_smtp_port">SMTP port</string>
     <string name="import_backup_title">Biztonsági mentés importálása</string>
     <!-- share and forward messages -->
-    <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
+    <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">Továbbítás…</string>
     <string name="pref_profile_info_headline">Profilod adatai</string>
     <string name="pref_profile_photo">Profilkép</string>
     <string name="pref_blocked_contacts">Letiltott partnerek</string>
     <string name="pref_your_name">Neved</string>
-    <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
+    <!-- Translators: The URL should not be localized as it is unclear which language the receiver prefers; the language will be automatically detected on the server -->
     <string name="pref_default_status_text">A Delta Chat Messengeremmel küldtem: https://delta.chat</string>
     <string name="pref_enter_sends">Küldés \"enterrel\"</string>
     <string name="pref_vibrate">Rezgés</string>
     <string name="pref_screen_security">Képernyőbiztonság</string>
-    <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
+    <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_screen_security_explain">Képernyőképek készítésének blokkolása a futó alkalmazások listájában és az alkalmazáson belül</string>
     <string name="pref_notifications">Értesítések</string>
     <string name="pref_notifications_show">Megjelenítés</string>
@@ -240,14 +240,14 @@
     <string name="pref_privacy">Privacy</string>
     <string name="pref_chats_and_media">Csevegések és média</string>
     <string name="pref_system_default">Alapbeállítás</string>
-    <!-- Translators: "light" in the meaning "opposite of dark" -->
+    <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">Világos</string>
     <string name="pref_dark_theme">Sötét</string>
     <string name="pref_appearance">Megjelenés</string>
     <string name="pref_theme">Sötét</string>
     <string name="pref_language">Nyelv</string>
     <string name="pref_incognito_keyboard">Inkognitó billentyűzet</string>
-    <!-- Translators: Keep in mind that this is a Request - it must be clear in the wording that this cannot be enforced. -->
+    <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_incognito_keyboard_explain">Tanulás letiltásának kérése a billentyűzettől (személyre szabás kikapcsolása)</string>
     <string name="pref_read_receipts">Olvasási nyugták</string>
     <string name="pref_read_receipts_explain">Ha az olvasási nyugták le vannak tiltva, te sem fogod látni mások olvasási nyugtáit.</string>

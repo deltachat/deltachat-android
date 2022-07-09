@@ -33,9 +33,9 @@
     <string name="forward">Encaminhar</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">Re-enviar</string>
-    <!-- In the meaning of "To archive", "Put a chat to the archive". This string does not mean "The Archive". -->
+    <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
     <string name="archive">Arquivar</string>
-    <!-- In the meaning of "To unarchive", "Remove a chat from the archive", opposite of the previous string -->
+    <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Desarquivar</string>
     <string name="mute">Silenciar</string>
     <string name="ephemeral_messages">Mensagens efêmeras</string>
@@ -48,12 +48,12 @@
     <string name="start_chat">Começar conversa</string>
     <string name="show_full_message">Mostrar mensagem completa...</string>
     <string name="show_full_message_in_browser">Mostrar mensagem completa no navegador...</string>
-    <!-- this is shown as placeholder when something is loading at some places -->
+    <!-- Placeholder text when something is loading -->
     <string name="loading">Carregando...</string>
     <string name="hide">Esconder</string>
     <string name="activate">Ativar</string>
     <string name="load_remote_content">Carregar imagens remotas</string>
-    <!-- possible answers to the question are: Never, Always, Once -->
+    <!-- Possible answers to the question are: Never, Always, Once -->
     <string name="load_remote_content_ask">Imagens remotas podem ser usadas para te rastrear.\n\nO ajuste também permite o carregamento de fontes e outros conteúdos. Mesmo que desabilitado, você ainda poderá ver imagens em cache ou embarcadas.\n\nCarregar imagens remotas?</string>
     <string name="always">Sempre</string>
     <string name="once">Uma vez</string>
@@ -65,7 +65,7 @@
     <string name="done">Feito</string>
     <string name="undo">Desfazer</string>
     <string name="offline">Desconectado</string>
-    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in iOS headers, the string should be as short as possible, though. -->
+    <!-- For the next view or as "continue". Should be as short as possible. -->
     <string name="next">Avançar</string>
     <string name="error">Erro</string>
     <string name="error_x">Erro: %1$s</string>
@@ -79,7 +79,7 @@
     <string name="password">Senha</string>
     <string name="existing_password">Senha existente</string>
     <string name="now">Agora</string>
-    <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
+    <!-- Headline for destructive actions with no undo. Could also be "Caution" or "Warning". -->
     <string name="danger">Perigo</string>
     <string name="today">Hoje</string>
     <string name="yesterday">Ontem</string>
@@ -87,16 +87,16 @@
     <string name="this_month">Este mês</string>
     <string name="last_week">Semana passada</string>
     <string name="last_month">Mês passado</string>
-    <!-- the placeholder will be replaced by a date or time, resulting eg. in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
+    <!-- Placeholder replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
     <string name="last_seen_at">Visto pela última vez às %1$s</string>
     <string name="last_seen_unknown">Visto pela última vez: desconhecido</string>
-    <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
+    <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="one">%d min</item>
         <item quantity="many">%d min</item>
         <item quantity="other">%d min</item>
     </plurals>
-    <!-- Translators: show beside messages that are "N hours old". prefer a short string, prefer abbreviations if they're well-known -->
+    <!-- Shown beside messages that are "N hours old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_hours">
         <item quantity="one">%d horas</item>
         <item quantity="many">%d horas</item>
@@ -127,7 +127,7 @@
         <item quantity="many">%d destinatários</item>
         <item quantity="other">%d destinatários</item>
     </plurals>
-    <!-- short title, used for "N Chats Selected" or "N Messages Selected", however, requires a shorter form, eg. "N Selected" in english -->
+    <!-- Short form for "N Chats Selected" or "N Messages Selected": in English, "N Selected" -->
     <plurals name="n_selected">
         <item quantity="one">%d selecionado</item>
         <item quantity="many">%d selecionados</item>
@@ -137,24 +137,24 @@
     <string name="self">Eu</string>
     <string name="draft">Rascunho</string>
     <string name="image">Imagem</string>
-    <!-- Translators: Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
+    <!-- Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
     <string name="reply_noun">Responder</string>
     <string name="gif">Gif</string>
-    <!-- "Stickers" as known from other messengers, please pick up the wording from there; in some languages, "Sticker" in english is just fine. -->
+    <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">Sticker</string>
     <string name="images">Imagens</string>
     <string name="audio">Áudio</string>
     <string name="voice_message">Mensagem de voz</string>
     <string name="forwarded">Encaminhado</string>
     <string name="forwarded_message">Mensagem encaminhada</string>
-    <!-- %1$s will be replaced by the name or the e-mail address of the person who has forwarded the message -->
+    <!-- %1$s will be replaced by the name or the e-mail address of the person who forwards the message -->
     <string name="forwarded_by">Encaminhado por %1$s</string>
     <string name="video">Vídeo</string>
     <string name="documents">Documentos</string>
     <string name="contact">Contato</string>
     <string name="verified_contact">Contato verificado</string>
     <string name="camera">Câmera</string>
-    <!-- "capture" here means "start a video recording" or "take a photo"; eg. the description of the "shutter button" in the camera controls -->
+    <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Capturar</string>
     <string name="switch_camera">Trocar câmera</string>
     <string name="toggle_fullscreen">Ativar modo tela cheia</string>
@@ -188,10 +188,10 @@
     <string name="menu_new_contact">Novo contato</string>
     <string name="menu_new_chat">Nova conversa</string>
     <string name="menu_new_group">Novo grupo</string>
-    <!-- "Subject" here must be the same wording as used in the e-mail context, so. eg. "Betreff" in german (the idea is to help people coming from the e-mail context) -->
+    <!-- Use the same wording as "Subject" to help people coming from the e-mail context; eg. "Betreff" in German -->
     <string name="new_group_or_subject">Novo Grupo ou Assunto</string>
     <string name="menu_new_verified_group">Novo grupo verificado</string>
-    <!-- consider keeping the term "broadcast"; check how these lists are called eg. on whatsapp in the destination language -->
+    <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">Lista de Transmissão</string>
     <string name="broadcast_lists">Listas de Transmissão</string>
     <string name="new_broadcast_list">Nova Lista de Transmissão</string>
@@ -226,10 +226,10 @@
     <string name="menu_export_attachment">Exportar o anexo</string>
     <string name="menu_export_attachments">Exportar anexos</string>
     <string name="menu_all_media">Todos os arquivos de mídia</string>
-    <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
+    <!-- Command to jump to the original message corresponding to a gallery image or document -->
     <string name="show_in_chat">Mostrar na conversa</string>
     <string name="menu_share">Compartilhar</string>
-    <!-- this is the action "to block sth." usually a mailing list or a contact. this is NOT "a large solid piece of hard material" :) -->
+    <!-- Verb "to block sth." usually a mailing list or a contact, not a noun -->
     <string name="block">Bloquear</string>
     <string name="menu_block_contact">Bloquear contato</string>
     <string name="menu_unblock_contact">Desbloquear contato</string>
@@ -261,13 +261,13 @@
     <string name="device_talk_explain">Mensagens nesta conversa são geradas localmente pelo app Delta Chat. Essas mensagens são para informar sobre atualizações do app e problemas durante seu uso.</string>
     <string name="device_talk_welcome_message">Bem vindo ao Delta Chat! - O Delta Chat se parece com outros aplicativos de mensagens populares, mas não envolve controle centralizado, rastreamento ou venda de você, amigos, colegas ou família para grandes organizações.\n\nTecnicamente, o Delta Chat é um aplicativo de e-mail com uma interface de bate-papo moderna. E-mail de cara nova se você 👻\n\nUtilize o Delta Chat com qualquer pessoa dentre bilhões de pessoas: basta usar o endereço de e-mail. Os destinatários não precisam instalar o Delta Chat, visitar sites ou se inscrever em qualquer lugar - no entanto, é claro, se quiserem, você pode direcioná-los para 👉 https://get.delta.chat</string>
     <string name="edit_contact">Editar contato</string>
-    <!-- Translators: "Pin" here is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
     <string name="pin_chat">Fixar conversa</string>
-    <!-- Translators: this is the opposite of "Pin chat", removing the sticky-state from a chat. -->
+    <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin_chat">Desafixar conversa</string>
-    <!-- Translators: this is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
     <string name="pin">Fixar</string>
-    <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
+    <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin">Desafixar</string>
     <string name="ConversationFragment_quoted_message_not_found">Mensagem original não encontrada</string>
     <string name="reply_privately">Responder em privado</string>
@@ -335,9 +335,9 @@
     <string name="cannot_delete_contacts_in_use">Impossível apagar contatos com conversas em curso.</string>
     <string name="ask_start_chat_with">Conversar com %1$s?</string>
     <string name="ask_delete_value">Apagar %s?</string>
-    <!-- Translators: %1$s will be replaces by a comma separated list of names -->
+    <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Remover %1$s do grupo?</string>
-    <!-- Translators: %1$s will be replaced by a comma separated list of names -->
+    <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_from_broadcast">Remover %1$s da lista de transmissão?</string>
     <string name="open_url_confirmation">Você quer abrir este link?</string>
 
@@ -387,7 +387,7 @@
     <string name="archive_empty_hint">Se você arquivar bate-papos, eles serão exibidos aqui. </string>
     <string name="saved_messages">Mensagens salvas</string>
     <string name="saved_messages_explain">• Encaminhe mensagens aqui para fácil acesso\n\n• Faça anotações ou gravações de voz\n\n• Anexe mídia para salvá-las</string>
-    <!-- this "Saved" should match the "Saved" from "Saved messages" -->
+    <!-- Should match "Saved" from "Saved messages" -->
     <string name="saved">Salvo</string>
     <string name="save_as">Guardar como</string>
     <string name="retry_send">Tentar enviar mensagem novamente</string>
@@ -463,25 +463,25 @@
     <string name="send_message">Enviar mensagem</string>
 
     <!-- Connectivity -->
-    <!-- Used as a headline for the "Inbox" eg. in the "Connectivity" view -->
+    <!-- Headline for the "Inbox" eg. in the "Connectivity" view -->
     <string name="incoming_messages">Mensagens Recebidas</string>
-    <!-- Used as a headline for the "Outbox" eg. in the "Connectivity" view -->
+    <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Mensagens Enviadas</string>
-    <!-- Used as a headline in the "Connectivity" view. The placeholder will be replaced by the domain of the configured email-address. -->
+    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by the domain of the configured email-address. -->
     <string name="storage_on_domain">Armazenamento em %1$s</string>
     <string name="connectivity">Conectividade</string>
-    <!-- Shown eg. in the title bar if the app is "Not connected"; as there is very few room, try to be as short as possible. -->
+    <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
     <string name="connectivity_not_connected">Não conectado</string>
-    <!-- Shown eg. in the title bar if the app is "Connecting"; as there is very few room, try to be as short as possible. Note that the three dots are a single character (…), not three (...) -->
+    <!-- Shown in the title bar if the app is "Connecting"; prefer short strings. The ellipsis is a single character (…), not three (...) -->
     <string name="connectivity_connecting">Conectando...</string>
-    <!-- Shown eg. in the title bar if the app is "Updating" (eg. getting new/old message, sync things); as there is very few room, try to be as short as possible. Note that the three dots are a single character (…), not three (...) -->
+    <!-- Shown in the title bar if the app is "Updating" (eg. getting new/old message, sync things); prefer short strings. The ellipsis is a single character (…), not three (...) -->
     <string name="connectivity_updating">Atualizando...</string>
-    <!-- Shown eg. in the setting if the app is "Connected" -->
+    <!-- Shown in the setting if the app is "Connected" -->
     <string name="connectivity_connected">Conectado</string>
     <string name="sending">Enviando...</string>
     <string name="last_msg_sent_successfully">Última mensagem enviada com sucesso.</string>
     <string name="not_supported_by_provider">Não suportado pelo seu provedor. </string>
-    <!-- Used as a subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed or so. -->
+    <!-- Subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Mensagens</string>
     <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
     <string name="part_of_total_used">%1$s de %2$s usado</string>
@@ -545,7 +545,7 @@
     <string name="configuration_failed_with_error">Falha na configuração. Erro: %1$s</string>
 
     <!-- share and forward messages -->
-    <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
+    <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">Encaminhar para...</string>
     <string name="share_multiple_attachments">Enviar %1$d arquivos para a conversa selecionada?\n\nOs arquivos são enviados sem modificações em seu tamanho original, ex. imagens e vídeos não são gravados.</string>
     <string name="share_multiple_attachments_multiple_chats">Enviar %1$d arquivo(s) para %2$d conversas?\n\nOs arquivos são enviados sem modificações em seu tamanho original, ex. imagens e vídeos não são gravados.</string>
@@ -563,9 +563,9 @@
     <string name="pref_password_and_account_settings">Senha e conta</string>
     <string name="pref_who_can_see_profile_explain">Sua foto de perfil e nome serão exibidos com suas mensagens a outros usuários. Informações já enviadas não podem ser apagas ou removidas.</string>
     <string name="pref_your_name">Seu nome</string>
-    <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
+    <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
     <string name="pref_default_status_label">Assinatura</string>
-    <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
+    <!-- Translators: The URL should not be localized as it is unclear which language the receiver prefers; the language will be automatically detected on the server -->
     <string name="pref_default_status_text">Enviado pelo meu Delta Chat Messenger: https://delta.chat</string>
     <string name="pref_enter_sends">O botão enter envia</string>
     <string name="pref_enter_sends_explain">As mensagens serão enviadas pressionando-se o enter</string>
@@ -574,7 +574,7 @@
     <string name="pref_outgoing_worse">Pior qualidade, tamanho pequeno</string>
     <string name="pref_vibrate">Vibrar</string>
     <string name="pref_screen_security">Segurança da tela</string>
-    <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
+    <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_screen_security_explain">Não exibir capturas de tela na lista de recentes e no aplicativo</string>
     <string name="pref_screen_security_please_restart_hint">Para aplicar as configurações de segurança da tela, por favor, reinicie o aplicativo.</string>
     <string name="pref_notifications">Notificações</string>
@@ -589,14 +589,14 @@
     <string name="pref_privacy">Privacidade</string>
     <string name="pref_chats_and_media">Conversas e mídia</string>
     <string name="pref_system_default">Padrão do sistema</string>
-    <!-- Translators: "light" in the meaning "opposite of dark" -->
+    <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">Claro</string>
     <string name="pref_dark_theme">Escuro</string>
     <string name="pref_appearance">Aparência</string>
     <string name="pref_theme">Tema</string>
     <string name="pref_language">Língua</string>
     <string name="pref_incognito_keyboard">Teclado incógnito</string>
-    <!-- Translators: Keep in mind that this is a Request - it must be clear in the wording that this cannot be enforced. -->
+    <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_incognito_keyboard_explain">Desligar aprendizagem automática do teclado</string>
     <string name="pref_read_receipts">Confirmações de leitura</string>
     <string name="pref_read_receipts_explain">Se sua confirmações de leitura estiverem desativas você não verá as dos demais.</string>
@@ -730,9 +730,9 @@
     <string name="systemmsg_read_receipt_subject">Confirmação de leitura</string>
     <string name="systemmsg_read_receipt_body">Confirmação de recebimento da mensagem \"%1$s\".\n\nEsta confirmação somente assegura que a mensagem foi exibida no aparelho do destinatário, mas não há garantia de que ele tenha lido o seu conteúdo.</string>
     <string name="systemmsg_cannot_decrypt">Impossível descriptografar esta mensagem.\n\n• Pode resolver pedir que ela seja reenviada.\n\n• Caso você tenha reinstalado o Delta Chat ou outro programa de e-mail, neste ou noutro dispositivo, será necessário enviar uma \"mensagem de configuração do Autocrypt\".</string>
-    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). -->
+    <!-- Translators: %1$s will be replaced by sth. as "ACTION by me". -->
     <string name="systemmsg_action_by_me">%1$s por mim.</string>
-    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
+    <!-- Translators: %1$s will be replaced by an action and %2$s will be replaced by the name/addr of the person who did it, as "ACTION by MEMBER". -->
     <string name="systemmsg_action_by_user">%1$s por %2$s.</string>
     <string name="systemmsg_unknown_sender_for_chat">Remetente desconhecido para esta conversa. Veja \'informações\' para mais detalhes.</string>
     <string name="systemmsg_subject_for_new_contact">Mensagem de %1$s</string>
@@ -755,7 +755,7 @@
     <string name="systemmsg_chat_protection_enabled">Proteção da conversa ligada.</string>
 
     <string name="devicemsg_self_deleted">Você excluiu o bate-papo \"Mensagens salvas\".\n\nℹ️ Para usar o recurso \"Mensagens salvas\" novamente, crie um novo bate-papo com você mesmo. </string>
-    <!-- %1$s will be replaced by the number of storage already used, sth. as '500 MB'. CAVE: if you want to use a simple the percent sign, type in two, so eg. %1$s %% -->
+    <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
     <string name="devicemsg_storage_exceeding">⚠️ O armazenamento em seu provedor está prestes a terminar, %1$s%% já foram utilizados\n\nVocê pode não conseguir receber mensagens quando o armazenamento estiver 100 %% utilizado.\n\n👉 Verifique se você pode excluir dados antigos através da interface da web do provedor e considere habilitar \"Configurações / Excluir Mensagens Antigas\". Você pode verificar o uso de armazenamento atual a qualquer momento em \"Configurações / Conectividade\". </string>
     <!-- %1%s will be replaced by date and time in some human-readable format -->
     <string name="devicemsg_bad_time">⚠️ A data ou hora do seu dispositivo parecem imprecisas (%1$s).\n\nAjuste o relógio ⏰🔧 para garantir que suas mensagens sejam recebidas corretamente.</string>

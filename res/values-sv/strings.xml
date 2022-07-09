@@ -29,9 +29,9 @@
     <string name="back">Tillbaka</string>
     <string name="close">Stäng</string>
     <string name="forward">Vidarebefordra</string>
-    <!-- In the meaning of "To archive", "Put a chat to the archive". This string does not mean "The Archive". -->
+    <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
     <string name="archive">Arkivera</string>
-    <!-- In the meaning of "To unarchive", "Remove a chat from the archive", opposite of the previous string -->
+    <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Avarkivera</string>
     <string name="mute">Tyst</string>
     <string name="ephemeral_messages">Försvinnande meddelanden</string>
@@ -44,12 +44,12 @@
     <string name="start_chat">Starta chatt</string>
     <string name="show_full_message">Visa hela meddelandet...</string>
     <string name="show_full_message_in_browser">Visa hela meddelandet i webbläsaren...</string>
-    <!-- this is shown as placeholder when something is loading at some places -->
+    <!-- Placeholder text when something is loading -->
     <string name="loading">Laddar...</string>
     <string name="hide">Dölj</string>
     <string name="activate">Aktivera</string>
     <string name="load_remote_content">Ladda in fjärrbilder</string>
-    <!-- possible answers to the question are: Never, Always, Once -->
+    <!-- Possible answers to the question are: Never, Always, Once -->
     <string name="load_remote_content_ask">Fjärrbilder kan användas för att spåra dig.\n\nInställningen att fonter och annat innehåll laddas in. Även om inställningen är inaktiverad kan eventuellt inbäddade eller cachade fjärrbilder visas.\n\nLadda in fjärrbilder?</string>
     <string name="always">Alltid</string>
     <string name="once">en gång</string>
@@ -61,7 +61,7 @@
     <string name="done">Klart</string>
     <string name="undo">Ångra</string>
     <string name="offline">Offline</string>
-    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in iOS headers, the string should be as short as possible, though. -->
+    <!-- For the next view or as "continue". Should be as short as possible. -->
     <string name="next">Nästa</string>
     <string name="error">Fel</string>
     <string name="error_x">Fel: %1$s</string>
@@ -75,7 +75,7 @@
     <string name="password">Lösenord</string>
     <string name="existing_password">Befintligt lösenord</string>
     <string name="now">Nu</string>
-    <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
+    <!-- Headline for destructive actions with no undo. Could also be "Caution" or "Warning". -->
     <string name="danger">Fara</string>
     <string name="today">Idag</string>
     <string name="yesterday">Igår</string>
@@ -83,12 +83,12 @@
     <string name="this_month">Denna månad</string>
     <string name="last_week">Förra veckan</string>
     <string name="last_month">Förra månaden</string>
-    <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
+    <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="one">%d min</item>
         <item quantity="other">%d min</item>
     </plurals>
-    <!-- Translators: show beside messages that are "N hours old". prefer a short string, prefer abbreviations if they're well-known -->
+    <!-- Shown beside messages that are "N hours old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_hours">
         <item quantity="one">%d timme</item>
         <item quantity="other">%d timmar</item>
@@ -112,7 +112,7 @@
     <string name="self">Jag</string>
     <string name="draft">Utkast</string>
     <string name="image">Bild</string>
-    <!-- Translators: Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
+    <!-- Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
     <string name="reply_noun">Svara</string>
     <string name="gif">GIF</string>
     <string name="images">Bilder</string>
@@ -120,14 +120,14 @@
     <string name="voice_message">Röstmeddelande</string>
     <string name="forwarded">Vidarebefodrat</string>
     <string name="forwarded_message">Vidarebefordrat meddelande</string>
-    <!-- %1$s will be replaced by the name or the e-mail address of the person who has forwarded the message -->
+    <!-- %1$s will be replaced by the name or the e-mail address of the person who forwards the message -->
     <string name="forwarded_by">Vidarebefordrad av %1$s</string>
     <string name="video">Video</string>
     <string name="documents">Dokument</string>
     <string name="contact">Kontakt</string>
     <string name="verified_contact">Verifierad kontakt</string>
     <string name="camera">Kamera</string>
-    <!-- "capture" here means "start a video recording" or "take a photo"; eg. the description of the "shutter button" in the camera controls -->
+    <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Fånga</string>
     <string name="switch_camera">Växla kamera</string>
     <string name="toggle_fullscreen">Växla fullskärm</string>
@@ -191,10 +191,10 @@
     <string name="menu_export_attachment">Exportera bilaga</string>
     <string name="menu_export_attachments">Exportera bilaga</string>
     <string name="menu_all_media">All media</string>
-    <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
+    <!-- Command to jump to the original message corresponding to a gallery image or document -->
     <string name="show_in_chat">Visa i chatten</string>
     <string name="menu_share">Dela</string>
-    <!-- this is the action "to block sth." usually a mailing list or a contact. this is NOT "a large solid piece of hard material" :) -->
+    <!-- Verb "to block sth." usually a mailing list or a contact, not a noun -->
     <string name="block">Blockera</string>
     <string name="menu_block_contact">Blockera kontakt</string>
     <string name="menu_unblock_contact">Avblockera kontakten</string>
@@ -226,13 +226,13 @@
     <string name="device_talk_explain">Meddelanden i denna chatt är lokalt genererade av din Delta Chat-app. Dess skapare använder den för att informera om app-uppdateringar och problem vid användning.</string>
     <string name="device_talk_welcome_message">Välkommen till Delta Chat! - Delta Chat ser ut och känns som andra populära meddelandeappar, men innefattar ingen centraliserad kontroll eller spårning eller säljer dig och dina vänner, kollegor eller familj till stora organisationer/företag.\n\nTekniskt är Delta Chat ett e-postprogram med modernt utseende. E-post i ny skrud, om du vill. 👻\n\nAnvänd Delta Chat med vem som helst av alla miljarder människor som har en e-postadress. Mottagaren behöver inte installera Delta Chat, besöka webbsidor eller registrera sig någonstans, men om de vill så kan du såklart visa dem till 👉 https://get.delta.chat</string>
     <string name="edit_contact">Redigera kontakt</string>
-    <!-- Translators: "Pin" here is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
     <string name="pin_chat">Fäst chatten</string>
-    <!-- Translators: this is the opposite of "Pin chat", removing the sticky-state from a chat. -->
+    <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin_chat">Lösgör chatten</string>
-    <!-- Translators: this is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
     <string name="pin">Fäst</string>
-    <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
+    <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin">Lösgör</string>
     <string name="ConversationFragment_quoted_message_not_found">Original meddelandet hittas inte</string>
     <string name="reply_privately">Svara säkert</string>
@@ -288,7 +288,7 @@
     <string name="cannot_delete_contacts_in_use">Det går inte att ta bort kontakter med pågående chattar.</string>
     <string name="ask_start_chat_with">Chatta med %1$s ?</string>
     <string name="ask_delete_value">Ta bort %s?</string>
-    <!-- Translators: %1$s will be replaces by a comma separated list of names -->
+    <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Ta bort %1$s från gruppen?</string>
     <string name="open_url_confirmation">Vill du öppna denna länk?</string>
 
@@ -332,7 +332,7 @@
     <string name="archive_empty_hint">Om du arkiverar chattar, så kommer de visas här.</string>
     <string name="saved_messages">Sparade meddelanden</string>
     <string name="saved_messages_explain">• Vidarebefordra meddelanden här för enkel åtkomst\n\n• Spara anteckningar eller röstmemon\n\n• Bifoga mediafiler för att spara dom</string>
-    <!-- this "Saved" should match the "Saved" from "Saved messages" -->
+    <!-- Should match "Saved" from "Saved messages" -->
     <string name="saved">Sparad</string>
     <string name="retry_send">Skicka om meddelandet</string>
     <!-- reasons for a disabled message composer -->
@@ -416,7 +416,7 @@
     <string name="delete_account">Ta bort konto</string>
     <string name="delete_account_ask">Är du säker på att du vill ta bort din kontodata?</string>
     <!-- share and forward messages -->
-    <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
+    <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">Vidarebefordra till...</string>
     <string name="share_multiple_attachments">Vill du skicka %1$d filer till den valda chatten?\n\nFilerna skickas oförändrade i ursprunglig storlek, t.ex. bilder och videor kodas inte om.</string>
     <string name="share_multiple_attachments_multiple_chats">Vill du skicka %1$d fil(er) till %2$d chattar?\n\nFilerna skickas oförändrade i ursprunglig storlek, t.ex. bilder och videor kodas inte om.</string>
@@ -433,9 +433,9 @@
     <string name="pref_password_and_account_settings">Lösenord och konto</string>
     <string name="pref_who_can_see_profile_explain">Din profilbild och ditt namn visas tillsammans med dina meddelanden när du kommunicerar med andra användare. Information som redan skickats kan inte tas bort eller flyttas.</string>
     <string name="pref_your_name">Ditt namn</string>
-    <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
+    <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
     <string name="pref_default_status_label">Signaturtext</string>
-    <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
+    <!-- Translators: The URL should not be localized as it is unclear which language the receiver prefers; the language will be automatically detected on the server -->
     <string name="pref_default_status_text">Skickat från Delta Chat: https://delta.chat</string>
     <string name="pref_enter_sends">Returtangenten skickar</string>
     <string name="pref_enter_sends_explain">Tryck på returtangenten för att skicka textmeddelanden</string>
@@ -444,7 +444,7 @@
     <string name="pref_outgoing_worse">Sämre kvalitet, mindre storlek</string>
     <string name="pref_vibrate">Vibrera</string>
     <string name="pref_screen_security">Skärmsäkerhet</string>
-    <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
+    <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_screen_security_explain">Blockera skärmklipp i tidigare-listan samt inuti programmet</string>
     <string name="pref_screen_security_please_restart_hint">Starta om programmet för att tillämpa skärmsäkerhetsinställningarna</string>
     <string name="pref_notifications">Avisering</string>
@@ -456,14 +456,14 @@
     <string name="pref_privacy">Integritet</string>
     <string name="pref_chats_and_media">Chattar och media</string>
     <string name="pref_system_default">Systemets standardinställning</string>
-    <!-- Translators: "light" in the meaning "opposite of dark" -->
+    <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">Ljust</string>
     <string name="pref_dark_theme">Mörkt</string>
     <string name="pref_appearance">Utseende</string>
     <string name="pref_theme">Tema</string>
     <string name="pref_language">Språk</string>
     <string name="pref_incognito_keyboard">Inkognito-tangentbord</string>
-    <!-- Translators: Keep in mind that this is a Request - it must be clear in the wording that this cannot be enforced. -->
+    <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_incognito_keyboard_explain">Begär att tangentbordet stänger av personlig inlärning</string>
     <string name="pref_read_receipts">Returkvitto</string>
     <string name="pref_read_receipts_explain">Om läskvittenser är avstängda kan du inte se läskvittenser från andra.</string>
@@ -555,9 +555,9 @@
     <string name="systemmsg_read_receipt_subject">Meddelande öppnat</string>
     <string name="systemmsg_read_receipt_body">\"%1$s\" meddelandet du skickade visades på mottagarens skärm.\n\nDet är ingen garanti för att innehållet har lästs.</string>
     <string name="systemmsg_cannot_decrypt">Meddelandet kan inte avkrypteras.\n\n• Det kanske kan hjälpa, att svara på detta meddelande och be avsändaren skicka det igen.\n\n• Ifall du har ominstallerat Delta Chat eller något annat e-postprogram på denna eller någon annan enhet, kanske du behöver skicka ett nytt Autocryp inställningsmeddelande därifrån.</string>
-    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). -->
+    <!-- Translators: %1$s will be replaced by sth. as "ACTION by me". -->
     <string name="systemmsg_action_by_me">%1$s av mig.</string>
-    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
+    <!-- Translators: %1$s will be replaced by an action and %2$s will be replaced by the name/addr of the person who did it, as "ACTION by MEMBER". -->
     <string name="systemmsg_action_by_user">%1$s av %2$s.</string>
     <string name="systemmsg_unknown_sender_for_chat">Okänd avsändare för denna chatt. Se info för fler detaljer.</string>
     <string name="systemmsg_subject_for_new_contact">Meddelande från %1$s</string>

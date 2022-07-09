@@ -35,7 +35,7 @@
     <string name="one_moment">لحظة…</string>
     <string name="done">تم</string>
     <string name="undo">ألغ</string>
-    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in iOS headers, the string should be as short as possible, though. -->
+    <!-- For the next view or as "continue". Should be as short as possible. -->
     <string name="next">التالي</string>
     <string name="error">خطأ</string>
     <string name="error_x">خطأ: %1$s</string>
@@ -44,7 +44,7 @@
     <string name="email_address">عنوان البريد الإلكتروني</string>
     <string name="password">الكلمة السرية</string>
     <string name="now">الآن</string>
-    <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
+    <!-- Headline for destructive actions with no undo. Could also be "Caution" or "Warning". -->
     <string name="danger">خطر</string>
     <string name="today">اليوم</string>
     <string name="yesterday">البارحة</string>
@@ -104,7 +104,7 @@
     <string name="menu_mute">كتم الإشعارات</string>
     <string name="menu_unmute">إلغاء الكتم.</string>
     <string name="menu_all_media">جميع الوسائط</string>
-    <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
+    <!-- Command to jump to the original message corresponding to a gallery image or document -->
     <string name="show_in_chat">إظهار في المحادثة</string>
     <string name="menu_share">شارك</string>
     <string name="menu_play">شغّل</string>
@@ -171,7 +171,7 @@
     <string name="pref_blocked_contacts">المراسلون المحبوسون</string>
     <string name="pref_password_and_account_settings">الكلمة السرية والحساب</string>
     <string name="pref_your_name">اسمك</string>
-    <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
+    <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
     <string name="pref_default_status_label">التوقيع</string>
     <string name="pref_enter_sends">مفتاح الدخول يقوم بالإرسا</string>
     <string name="pref_vibrate">إهتز</string>
@@ -183,7 +183,7 @@
     <string name="pref_privacy">الخصوصية</string>
     <string name="pref_chats_and_media">الدردشة والوسائط</string>
     <string name="pref_system_default">افتراضيات النظام</string>
-    <!-- Translators: "light" in the meaning "opposite of dark" -->
+    <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">فاتح</string>
     <string name="pref_dark_theme">داكن</string>
     <string name="pref_appearance">المظهر</string>

@@ -22,9 +22,9 @@
     <string name="back">மீண்டும்</string>
     <string name="close">நெருக்கமான</string>
     <string name="forward">முன்னோக்கு</string>
-    <!-- In the meaning of "To archive", "Put a chat to the archive". This string does not mean "The Archive". -->
+    <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
     <string name="archive">காப்பகத்தை</string>
-    <!-- In the meaning of "To unarchive", "Remove a chat from the archive", opposite of the previous string -->
+    <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">மீட்டெடுக்கலாம்</string>
     <string name="mute">ஓசையற்ற</string>
     <string name="ephemeral_messages">காணாமல் போகும் செய்திகள்</string>
@@ -37,7 +37,7 @@
     <string name="never">எப்போதும் இல்லை</string>
     <string name="one_moment">ஒரு நிமிடம் காத்திருக்கவும் ...</string>
     <string name="done">முடிந்தது</string>
-    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in iOS headers, the string should be as short as possible, though. -->
+    <!-- For the next view or as "continue". Should be as short as possible. -->
     <string name="next">அடுத்தது</string>
     <string name="error">பிழை</string>
     <string name="error_x">பிழை: %1$s</string>
@@ -46,13 +46,13 @@
     <string name="bad_email_address">தவறான மின் அஞ்சல் முகவரி</string>
     <string name="password">கடவுச்சொல்</string>
     <string name="now">இப்போது</string>
-    <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
+    <!-- Headline for destructive actions with no undo. Could also be "Caution" or "Warning". -->
     <string name="danger">ஆபத்து</string>
     <string name="today">இன்று</string>
     <string name="yesterday">நேற்று</string>
     <string name="this_week">இந்த வாரம்</string>
     <string name="this_month">இந்த மாதம்</string>
-    <!-- Translators: show beside messages that are "N hours old". prefer a short string, prefer abbreviations if they're well-known -->
+    <!-- Shown beside messages that are "N hours old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_hours">
         <item quantity="one">%d மணி</item>
         <item quantity="other">%d மணிகள்</item>
@@ -183,12 +183,12 @@
     <string name="pref_blocked_contacts">தடுக்கபட்ட தொடர்புகள்</string>
     <string name="pref_password_and_account_settings">கணக்கு அமைப்புகள்</string>
     <string name="pref_your_name">எனது பெயர்</string>
-    <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
+    <!-- Translators: The URL should not be localized as it is unclear which language the receiver prefers; the language will be automatically detected on the server -->
     <string name="pref_default_status_text">என்னுடைய Delta Chat செயலியில் இருந்து அனுப்பி உள்ளேன் : https://delta.chat</string>
     <string name="pref_enter_sends">\"enter\" மூலம் அனுப்பவும்</string>
     <string name="pref_vibrate">அதிர்வு உண்டாக்கு</string>
     <string name="pref_screen_security">திரை பாதுகாப்பு</string>
-    <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
+    <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_screen_security_explain">அண்மை பட்டியல் மற்றும் மென்பொருளுக்கு உள்ளே திரையை படம் எடுப்பதை தடுக்கவும்</string>
     <string name="pref_notifications">அறிவிப்புகள்</string>
     <string name="pref_notifications_show">காட்டு</string>
@@ -199,14 +199,14 @@
     <string name="pref_privacy">தனியுரிமை</string>
     <string name="pref_chats_and_media">அரட்டைகள் மற்றும் ஊடகங்கள்</string>
     <string name="pref_system_default">கருவி இயல்புநிலை</string>
-    <!-- Translators: "light" in the meaning "opposite of dark" -->
+    <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">வெளிச்சமிக்க</string>
     <string name="pref_dark_theme">இருள்கொண்ட</string>
     <string name="pref_appearance">தோற்றம்</string>
     <string name="pref_theme">நிறவடிவமைப்பு</string>
     <string name="pref_language">மொழி</string>
     <string name="pref_incognito_keyboard">மறைநிலை விசைப்பலகை</string>
-    <!-- Translators: Keep in mind that this is a Request - it must be clear in the wording that this cannot be enforced. -->
+    <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_incognito_keyboard_explain">தனிப்பயனாக்கப்பட்ட கற்றலை முடக்க விசைப்பலகை கோருங்கள்</string>
     <string name="pref_read_receipts">ரசீதுகளைப் படியுங்கள்</string>
     <string name="pref_read_receipts_explain">வாசிப்பு ரசீதுகள் முடக்கப்பட்டிருந்தால், மற்றவர்களிடமிருந்து வாசிப்பு ரசீதுகளை நீங்கள் </string>

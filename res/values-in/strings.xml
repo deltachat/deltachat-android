@@ -29,9 +29,9 @@
     <string name="back">Kembali</string>
     <string name="close">Tutup</string>
     <string name="forward">Teruskan</string>
-    <!-- In the meaning of "To archive", "Put a chat to the archive". This string does not mean "The Archive". -->
+    <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
     <string name="archive">Arsip</string>
-    <!-- In the meaning of "To unarchive", "Remove a chat from the archive", opposite of the previous string -->
+    <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Tidak diarsip</string>
     <string name="mute">Diam</string>
     <string name="ephemeral_messages">Pesan yang berhilangan</string>
@@ -44,7 +44,7 @@
     <string name="start_chat">Mulai obrolan</string>
     <string name="show_full_message">Tampilkan semua pesan...</string>
     <string name="show_full_message_in_browser">Tampilkan semua pesan di browser...</string>
-    <!-- this is shown as placeholder when something is loading at some places -->
+    <!-- Placeholder text when something is loading -->
     <string name="loading">Memuat...</string>
     <string name="hide">Sembunyikan</string>
     <string name="always">Selalu</string>
@@ -57,7 +57,7 @@
     <string name="done">Selesai</string>
     <string name="undo">Undo</string>
     <string name="offline">Offline</string>
-    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in iOS headers, the string should be as short as possible, though. -->
+    <!-- For the next view or as "continue". Should be as short as possible. -->
     <string name="next">Berikutnya</string>
     <string name="error">Eror</string>
     <string name="error_x">Eror: %1$s</string>
@@ -71,7 +71,7 @@
     <string name="password">Kata kunci</string>
     <string name="existing_password">Kata sandi sudah pernah</string>
     <string name="now">Sekarang</string>
-    <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
+    <!-- Headline for destructive actions with no undo. Could also be "Caution" or "Warning". -->
     <string name="danger">Bahaya</string>
     <string name="today">Hari ini</string>
     <string name="yesterday">Kemarin</string>
@@ -79,11 +79,11 @@
     <string name="this_month">Bulan ini</string>
     <string name="last_week">Minggu lalu</string>
     <string name="last_month">Bulan lalu</string>
-    <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
+    <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="other">%d menit</item>
     </plurals>
-    <!-- Translators: show beside messages that are "N hours old". prefer a short string, prefer abbreviations if they're well-known -->
+    <!-- Shown beside messages that are "N hours old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_hours">
         <item quantity="other">%d jam</item>
     </plurals>
@@ -102,7 +102,7 @@
     <string name="self">Saya</string>
     <string name="draft">Draf</string>
     <string name="image">Gambar</string>
-    <!-- Translators: Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
+    <!-- Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
     <string name="reply_noun">Balas</string>
     <string name="gif">Gif</string>
     <string name="images">Gambar</string>
@@ -110,7 +110,7 @@
     <string name="voice_message">Pesan suara</string>
     <string name="forwarded">Diteruskan</string>
     <string name="forwarded_message">Pesan yang diteruskan</string>
-    <!-- %1$s will be replaced by the name or the e-mail address of the person who has forwarded the message -->
+    <!-- %1$s will be replaced by the name or the e-mail address of the person who forwards the message -->
     <string name="forwarded_by">Diteruskan oleh %1$s</string>
     <string name="video">Video</string>
     <string name="documents">Dokumen</string>
@@ -177,7 +177,7 @@
     <string name="menu_unmute">Aktifkan notifikasi</string>
     <string name="menu_export_attachment">Ekspor lampiran</string>
     <string name="menu_all_media">Semua media</string>
-    <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
+    <!-- Command to jump to the original message corresponding to a gallery image or document -->
     <string name="show_in_chat">Tunjukkan dalam chat</string>
     <string name="menu_share">Bagikan</string>
     <string name="menu_block_contact">Blokir kontak</string>
@@ -204,13 +204,13 @@
     <string name="device_talk_explain">Pesan dalam obrolan ini dihasilkan dalam aplikasi Delta Chat anda secara lokal. Para penciptanya memakai obrolan ini untuk memberi tahu aplikasi mutakhir dan masalah-masalah selama digunakan.</string>
     <string name="device_talk_welcome_message">Selamat datang di Delta Chat! – Delta Chat tampak dan terasa seperti aplikasi percakapan populer lainnya, tapi tidak menggunakan kontrol yang tersentralisasi, melacak atau menjual anda, teman, kolega atau keluarga ke organisasi-organisasi besar.\n\nSecara teknis, Delta Chat merupakan sebuah aplikasi surel dengan tampilan obrolan modern. Katakanlah surel dengan tampilan baru 👻\n\nGunakan Delta Chat dengan siapa pun dari milyaran orang di luar sana: cukup gunakan alamat surel mereka. Penerima tak harus mengunduh Delta Chat, kunjungi laman atau daftar di mana pun - karena tentu saja, jika mereka menyukai anda, ajaklah mereka ke 👉 https://get.delta.chat</string>
     <string name="edit_contact">Edit kontak</string>
-    <!-- Translators: "Pin" here is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
     <string name="pin_chat">Pin obrolan</string>
-    <!-- Translators: this is the opposite of "Pin chat", removing the sticky-state from a chat. -->
+    <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin_chat">Lepas pin obrolan</string>
-    <!-- Translators: this is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
     <string name="pin">Sematkan</string>
-    <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
+    <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin">Lepas pin</string>
     <string name="ConversationFragment_quoted_message_not_found">Pesan orisinil tidak ditemukan</string>
     <string name="reply_privately">Balas secara privat</string>
@@ -255,7 +255,7 @@
     <string name="cannot_delete_contacts_in_use">Tak bisa menghapus kontak yang sedang dalam obrolan.</string>
     <string name="ask_start_chat_with">Ngobrol dengan %1$s?</string>
     <string name="ask_delete_value">Hapus %s?</string>
-    <!-- Translators: %1$s will be replaces by a comma separated list of names -->
+    <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Hapus %1$s dari grup?</string>
     <string name="open_url_confirmation">Apakah anda ingin membuka pranala ini?</string>
 
@@ -294,7 +294,7 @@
     <string name="chat_self_talk_subtitle">Pesan yang saya kirimkan pada saya sendiri</string>
     <string name="saved_messages">Pesan yang disimpan</string>
     <string name="saved_messages_explain">• Teruskan pesan di sini untuk akses yang mudah\n\n• Buat catatan atau memo suara\n\n• Lampirkan media untuk menyimpannya</string>
-    <!-- this "Saved" should match the "Saved" from "Saved messages" -->
+    <!-- Should match "Saved" from "Saved messages" -->
     <string name="saved">Sudah disimpan</string>
     <string name="retry_send">Coba lagi mengirim pesan</string>
     <string name="cannot_display_unsuported_file_type">Tidak dapat menampilkan tipe berkas ini: %s</string>
@@ -376,7 +376,7 @@
     <string name="configuration_failed_with_error">Konfigurasi gagal. Error: %1$s</string>
 
     <!-- share and forward messages -->
-    <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
+    <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">Diteruskan ke…</string>
     <string name="share_abort">Pembagian dibatalkan karena tidak ada izin.</string>
 
@@ -390,9 +390,9 @@
     <string name="pref_password_and_account_settings">Kata sandi dan akun</string>
     <string name="pref_who_can_see_profile_explain">Foto dan nama profil Anda akan tampak bersama dengan pesan-pesan ketika berkomunikasi dengan pengguna lain. Informasi yang telah dikirimkan tidak dapat dihapus atau dipindah.</string>
     <string name="pref_your_name">Nama Anda</string>
-    <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
+    <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
     <string name="pref_default_status_label">Signature text</string>
-    <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
+    <!-- Translators: The URL should not be localized as it is unclear which language the receiver prefers; the language will be automatically detected on the server -->
     <string name="pref_default_status_text">Kirim dengan Percakapan Delta Chat: https://delta.chat</string>
     <string name="pref_enter_sends">Tombol Enter mengirim</string>
     <string name="pref_enter_sends_explain">Menekan tombol Enter akan mengirimkan teks pesan</string>
@@ -401,7 +401,7 @@
     <string name="pref_outgoing_worse">Kualitas rendah, ukuran kecil</string>
     <string name="pref_vibrate">Bergetar</string>
     <string name="pref_screen_security">Keamanan layar</string>
-    <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
+    <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_screen_security_explain">Permintaan untuk memblok screenshot di daftar terbaru dan di dalam aplikasi</string>
     <string name="pref_screen_security_please_restart_hint">Untuk menjalankan fungsi keamanan layar mohon aplikasi dibuka ulang.</string>
     <string name="pref_notifications">Notifikasi</string>
@@ -413,7 +413,7 @@
     <string name="pref_silent">Sunyi</string>
     <string name="pref_privacy">Privasi</string>
     <string name="pref_chats_and_media">Obrolan dan media</string>
-    <!-- Translators: "light" in the meaning "opposite of dark" -->
+    <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">Cahaya</string>
     <string name="pref_dark_theme">Gelap</string>
     <string name="pref_appearance">Penampilan</string>
@@ -514,9 +514,9 @@
     <string name="systemmsg_read_receipt_subject">Pesan dibuka</string>
     <string name="systemmsg_read_receipt_body">Pesan \"%1$s\" yang Anda kirimkan tampak di layar penerima.\n\nIni bukan jaminan kalau isinya dibaca.</string>
     <string name="systemmsg_cannot_decrypt">Pesan ini tidak bisa dienkripsi.\n\n• Ada baiknya menjawab pesan ini dan meminta pengirimnya untuk kirim ulang.\n\n• Dalam kasus Anda menginstal ulang Delta Chat atau program surel lain di perangkat ini atau perangkat lain, sebaiknya Anda mengirim Pengaturan Pesan Autocrypt dari sana.</string>
-    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). -->
+    <!-- Translators: %1$s will be replaced by sth. as "ACTION by me". -->
     <string name="systemmsg_action_by_me">%1$s oleh saya.</string>
-    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
+    <!-- Translators: %1$s will be replaced by an action and %2$s will be replaced by the name/addr of the person who did it, as "ACTION by MEMBER". -->
     <string name="systemmsg_action_by_user">%1$s oleh %2$s.</string>
     <string name="systemmsg_unknown_sender_for_chat">Pengirim tidak dikenal untuk obrolan ini. Lihat \'info\' untuk lebih jelasnya.</string>
     <string name="systemmsg_subject_for_new_contact">Pesan dari %1$s</string>

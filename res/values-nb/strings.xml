@@ -25,9 +25,9 @@
     <string name="back">Forrige</string>
     <string name="close">Lukk</string>
     <string name="forward">Videresend</string>
-    <!-- In the meaning of "To archive", "Put a chat to the archive". This string does not mean "The Archive". -->
+    <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
     <string name="archive">Arkiver</string>
-    <!-- In the meaning of "To unarchive", "Remove a chat from the archive", opposite of the previous string -->
+    <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Fjern fra arkiv</string>
     <string name="mute">Demp</string>
     <string name="ephemeral_messages">Forsvinnende meldinger</string>
@@ -44,7 +44,7 @@
     <string name="one_moment">Et øyeblikk…</string>
     <string name="done">Ferdig</string>
     <string name="undo">Angre</string>
-    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in iOS headers, the string should be as short as possible, though. -->
+    <!-- For the next view or as "continue". Should be as short as possible. -->
     <string name="next">Neste</string>
     <string name="error">Feil</string>
     <string name="error_x">Feil: %1$s</string>
@@ -58,7 +58,7 @@
     <string name="password">Passord</string>
     <string name="existing_password">Eksisterende passord</string>
     <string name="now">Nå</string>
-    <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
+    <!-- Headline for destructive actions with no undo. Could also be "Caution" or "Warning". -->
     <string name="danger">Fare</string>
     <string name="today">I dag</string>
     <string name="yesterday">I går</string>
@@ -66,12 +66,12 @@
     <string name="this_month">Denne måneden</string>
     <string name="last_week">Forrige uken</string>
     <string name="last_month">Forrige måneden</string>
-    <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
+    <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="one">%d minutt</item>
         <item quantity="other">%d minutter</item>
     </plurals>
-    <!-- Translators: show beside messages that are "N hours old". prefer a short string, prefer abbreviations if they're well-known -->
+    <!-- Shown beside messages that are "N hours old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_hours">
         <item quantity="one">%d time</item>
         <item quantity="other">%d timer</item>
@@ -177,13 +177,13 @@
     <string name="device_talk_explain">Meldinger i denne chatten blir generert lokalt av Delta Chat-appen. Produsentene bruker den for å informere om appoppdateringer og problemer under bruk.</string>
     <string name="device_talk_welcome_message">Velkommen til Delta Chat! – Delta Chat ser ut og føles som andre populære messenger-apper, men involverer ikke sentralisert kontroll, sporing eller salg av deg, venner, kolleger eller familie til store organisasjoner.\n\nTeknisk er Delta Chat en e-postapplikasjon med et moderne chattegrensesnitt. E-post i en nye klær hvis du vil 👻\n\nBruk Delta Chat med hvem som helst av milliarder av mennesker: bare bruk e-postadressen deres. Mottakere trenger ikke installere Delta Chat, besøke nettsteder eller registrere seg noen steder – men selvfølgelig, hvis de vil, kan du peke dem til 👉 https://get.delta.chat</string>
     <string name="edit_contact">Rediger kontakt</string>
-    <!-- Translators: "Pin" here is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
     <string name="pin_chat">Fest chat</string>
-    <!-- Translators: this is the opposite of "Pin chat", removing the sticky-state from a chat. -->
+    <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin_chat">Løsne chat</string>
-    <!-- Translators: this is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
     <string name="pin">Fest</string>
-    <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
+    <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin">Løsn</string>
     <string name="mute_for_one_hour">Demp i 1 time</string>
     <string name="mute_for_two_hours">Demp i 2 timer</string>
@@ -231,7 +231,7 @@
     <string name="ask_delete_contact">Slett kontakter %1$s?\n\nKontakter med pågående chatter og kontakter fra systemets adressebok, kan ikke slettes permanent.</string>
     <string name="cannot_delete_contacts_in_use">Kan ikke slette kontakter med pågående chatter.</string>
     <string name="ask_start_chat_with">Begynn å sludre med %1$s?</string>
-    <!-- Translators: %1$s will be replaces by a comma separated list of names -->
+    <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Fjern %1$s fra gruppen?</string>
     <!-- contact list -->
     <string name="contacts_title">Kontakter</string>
@@ -299,21 +299,21 @@
     <string name="import_backup_title">Importer sikkerhetskopi</string>
     <string name="import_backup_no_backup_found">Fant ingen sikkerhetskopier.\n\nKopier sikkerhetskopien til %1$s og prøv igjen. Alternativt, trykk \"Start meldingsforsendelse\" for normal oppsettsprosess.</string>
     <!-- share and forward messages -->
-    <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
+    <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">Videresend til…</string>
     <string name="pref_profile_info_headline">Din profilinfo</string>
     <string name="pref_profile_photo">Profilbilde</string>
     <string name="pref_blocked_contacts">Blokkerte kontakter</string>
     <string name="pref_password_and_account_settings">Kontoinnstillinger</string>
     <string name="pref_your_name">Mitt navn</string>
-    <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
+    <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
     <string name="pref_default_status_label">Signaturtekst</string>
-    <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
+    <!-- Translators: The URL should not be localized as it is unclear which language the receiver prefers; the language will be automatically detected on the server -->
     <string name="pref_default_status_text">Sendt med Delta Chat: https://delta.chat</string>
     <string name="pref_enter_sends">Send med \"Enter\"</string>
     <string name="pref_vibrate">Vibrer</string>
     <string name="pref_screen_security">Skjermsikkerhet</string>
-    <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
+    <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_screen_security_explain">Blokker skjermbilder i sist brukte-liste og i programmet</string>
     <string name="pref_notifications">Merknader</string>
     <string name="pref_notifications_show">Vis</string>
@@ -324,14 +324,14 @@
     <string name="pref_privacy">Personvern</string>
     <string name="pref_chats_and_media">Sludringer og medier</string>
     <string name="pref_system_default">System standard</string>
-    <!-- Translators: "light" in the meaning "opposite of dark" -->
+    <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">Lys</string>
     <string name="pref_dark_theme">Mørk</string>
     <string name="pref_appearance">Utseende</string>
     <string name="pref_theme">Tema</string>
     <string name="pref_language">Språk</string>
     <string name="pref_incognito_keyboard">Inkognito-tastatur</string>
-    <!-- Translators: Keep in mind that this is a Request - it must be clear in the wording that this cannot be enforced. -->
+    <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_incognito_keyboard_explain">Be tastatur om å slå av lærefunksjon</string>
     <string name="pref_read_receipts">Meldingskvitteringer</string>
     <string name="pref_read_receipts_explain">Hvis du slår av lesebekreftelser, får du heller ikke se lesebekreftelser fra andre.</string>
@@ -379,9 +379,9 @@
     <string name="systemmsg_read_receipt_subject">Meldingskvittering</string>
     <string name="systemmsg_read_receipt_body">Dette er en meldingskvittering for meldingen \"%1$s\".\n\nDenne meldingskvitteringen bekrefter bare at meldingen ble vist på mottakerens enhet. Det finnes ingen garanti for at mottakeren har lest meldingsinnholdet.</string>
     <string name="systemmsg_cannot_decrypt">Denne meldingen kan ikke dekrypteres.\n\n• Det kan hjelpe å svare på denne meldingen og spørre avsenderen om å sende den igjen.\n\n• I fall du har reinstallert Delta Chat eller et annet e-postprogram på denne eller en annen enhet, kan du sende en Autocrypt-oppsettsmelding derfra.</string>
-    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). -->
+    <!-- Translators: %1$s will be replaced by sth. as "ACTION by me". -->
     <string name="systemmsg_action_by_me">%1$s av meg.</string>
-    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
+    <!-- Translators: %1$s will be replaced by an action and %2$s will be replaced by the name/addr of the person who did it, as "ACTION by MEMBER". -->
     <string name="systemmsg_action_by_user">%1$s av %2$s.</string>
     <!-- qr code stuff -->
     <string name="qr_code">QR-kode</string>

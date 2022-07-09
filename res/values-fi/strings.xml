@@ -33,9 +33,9 @@
     <string name="forward">Eteenpäin</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">Lähetä uudelleen</string>
-    <!-- In the meaning of "To archive", "Put a chat to the archive". This string does not mean "The Archive". -->
+    <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
     <string name="archive">Arkistoi</string>
-    <!-- In the meaning of "To unarchive", "Remove a chat from the archive", opposite of the previous string -->
+    <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Poista arkistosta</string>
     <string name="mute">Mykistä</string>
     <string name="ephemeral_messages">Katoavat viestit</string>
@@ -48,12 +48,12 @@
     <string name="start_chat">Aloita keskustelu</string>
     <string name="show_full_message">Näytä koko viesti...</string>
     <string name="show_full_message_in_browser">Näytä koko viesti selaimessa...</string>
-    <!-- this is shown as placeholder when something is loading at some places -->
+    <!-- Placeholder text when something is loading -->
     <string name="loading">Ladataan...</string>
     <string name="hide">Piilota</string>
     <string name="activate">Aktivoi</string>
     <string name="load_remote_content">Lataa etäkuvat</string>
-    <!-- possible answers to the question are: Never, Always, Once -->
+    <!-- Possible answers to the question are: Never, Always, Once -->
     <string name="load_remote_content_ask">Etäkuvien avulla sinua voidaan seurata.\n\nAsetus mahdollistaa myös fonttien ja muun sisällön lataamisen. Voit nähdä upotettuja kuvia, vaikka asetus olisi pois.\n\nLataa etäkuvat?</string>
     <string name="always">Aina</string>
     <string name="once">Kerran</string>
@@ -65,7 +65,7 @@
     <string name="done">Valmis</string>
     <string name="undo">Peru</string>
     <string name="offline">Ei verkkoyhteyttä</string>
-    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in iOS headers, the string should be as short as possible, though. -->
+    <!-- For the next view or as "continue". Should be as short as possible. -->
     <string name="next">Seuraava</string>
     <string name="error">Virhe</string>
     <string name="error_x">Virhe: %1$s</string>
@@ -79,7 +79,7 @@
     <string name="password">Salasana</string>
     <string name="existing_password">Vanha salasana</string>
     <string name="now">Heti</string>
-    <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
+    <!-- Headline for destructive actions with no undo. Could also be "Caution" or "Warning". -->
     <string name="danger">Varoitus</string>
     <string name="today">Tänään</string>
     <string name="yesterday">Eilen</string>
@@ -87,15 +87,15 @@
     <string name="this_month">Tässä kuussa</string>
     <string name="last_week">Viime viikolla</string>
     <string name="last_month">Viime kuussa</string>
-    <!-- the placeholder will be replaced by a date or time, resulting eg. in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
+    <!-- Placeholder replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
     <string name="last_seen_at">Nähty viimeksi %1$s</string>
     <string name="last_seen_unknown">Nähty viimeksi: ei tiedossa</string>
-    <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
+    <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="one">%d minuutti</item>
         <item quantity="other">%d minuuttia</item>
     </plurals>
-    <!-- Translators: show beside messages that are "N hours old". prefer a short string, prefer abbreviations if they're well-known -->
+    <!-- Shown beside messages that are "N hours old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_hours">
         <item quantity="one">%d tunti</item>
         <item quantity="other">%d tuntia</item>
@@ -120,7 +120,7 @@
         <item quantity="one">%d vastaanottaja</item>
         <item quantity="other">%d vastaanottajaa</item>
     </plurals>
-    <!-- short title, used for "N Chats Selected" or "N Messages Selected", however, requires a shorter form, eg. "N Selected" in english -->
+    <!-- Short form for "N Chats Selected" or "N Messages Selected": in English, "N Selected" -->
     <plurals name="n_selected">
         <item quantity="one">%d valittu</item>
         <item quantity="other">%d valittu</item>
@@ -129,24 +129,24 @@
     <string name="self">Minä</string>
     <string name="draft">Luonnos</string>
     <string name="image">Kuva</string>
-    <!-- Translators: Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
+    <!-- Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
     <string name="reply_noun">Vastaus</string>
     <string name="gif">Gif</string>
-    <!-- "Stickers" as known from other messengers, please pick up the wording from there; in some languages, "Sticker" in english is just fine. -->
+    <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">Tarra</string>
     <string name="images">Kuvat</string>
     <string name="audio">Äänite</string>
     <string name="voice_message">Ääniviesti</string>
     <string name="forwarded">Välitetty</string>
     <string name="forwarded_message">Välitetty viesti</string>
-    <!-- %1$s will be replaced by the name or the e-mail address of the person who has forwarded the message -->
+    <!-- %1$s will be replaced by the name or the e-mail address of the person who forwards the message -->
     <string name="forwarded_by">Välittäjä: %1$s</string>
     <string name="video">Video</string>
     <string name="documents">Asiakirjat</string>
     <string name="contact">Yhteyshenkilö</string>
     <string name="verified_contact">Varmistettu yhteyshenkilö</string>
     <string name="camera">Kamera</string>
-    <!-- "capture" here means "start a video recording" or "take a photo"; eg. the description of the "shutter button" in the camera controls -->
+    <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Kuvaa</string>
     <string name="switch_camera">Vaihda kamera</string>
     <string name="toggle_fullscreen">Koko näytön tila</string>
@@ -180,10 +180,10 @@
     <string name="menu_new_contact">Uusi yhteystieto</string>
     <string name="menu_new_chat">Uusi keskustelu</string>
     <string name="menu_new_group">Uusi ryhmä</string>
-    <!-- "Subject" here must be the same wording as used in the e-mail context, so. eg. "Betreff" in german (the idea is to help people coming from the e-mail context) -->
+    <!-- Use the same wording as "Subject" to help people coming from the e-mail context; eg. "Betreff" in German -->
     <string name="new_group_or_subject">Uusi ryhmä tai aihe</string>
     <string name="menu_new_verified_group">Uusi varmistettu ryhmä</string>
-    <!-- consider keeping the term "broadcast"; check how these lists are called eg. on whatsapp in the destination language -->
+    <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">Kuulutuslista</string>
     <string name="broadcast_lists">Kuulutuslistat</string>
     <string name="new_broadcast_list">Uusi kuulutuslista</string>
@@ -218,10 +218,10 @@
     <string name="menu_export_attachment">Vie liite</string>
     <string name="menu_export_attachments">Vie liitteet</string>
     <string name="menu_all_media">Kaikki media</string>
-    <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
+    <!-- Command to jump to the original message corresponding to a gallery image or document -->
     <string name="show_in_chat">Näytä keskustelussa</string>
     <string name="menu_share">Jaa</string>
-    <!-- this is the action "to block sth." usually a mailing list or a contact. this is NOT "a large solid piece of hard material" :) -->
+    <!-- Verb "to block sth." usually a mailing list or a contact, not a noun -->
     <string name="block">Estä</string>
     <string name="menu_block_contact">Estä yhteystieto</string>
     <string name="menu_unblock_contact">Salli yhteystieto</string>
@@ -253,13 +253,13 @@
     <string name="device_talk_explain">Viestit tässä keskustelussa luodaan paikallisesti Delta Chat -sovelluksessa. Kehittäjät ilmoittavat niiden avulla sovelluksen päivityksistä ja mahdollisista ongelmista.</string>
     <string name="device_talk_welcome_message">Tervetuloa Delta Chatiin! – Delta Chat näyttää ja tuntuu samalta kuin suositut pikaviestintäsovellukset, kuitenkin ilman keskitettyä kontrollia, seurantaa tai käyttäjien tietojen myymistä isoille yrityksille.\n\nTeknisesti Delta Chat on sähköpostisovellus nykyaikaisella pikaviestikäyttöliittymällä. Sähköposti uusissa vaatteissa, jos niin voi sanoa 👻\n\nDelta Chat toimii miljardien ihmisten kanssa: lähetä vain viesti heidän sähköpostiosoitteeseensa. Viestien vastaanottajien ei tarvitse asentaa Delta Chatia, käydä nettisivustoilla tai liittyä mihinkään - paitsi jos he haluavat. Silloin voit ohjata heidät osoitteeseen 👉 https://get.delta.chat</string>
     <string name="edit_contact">Muokkaa yhteystietoa</string>
-    <!-- Translators: "Pin" here is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
     <string name="pin_chat">Kiinnitä keskustelu</string>
-    <!-- Translators: this is the opposite of "Pin chat", removing the sticky-state from a chat. -->
+    <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin_chat">Irrota keskustelu</string>
-    <!-- Translators: this is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
     <string name="pin">Kiinnitä</string>
-    <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
+    <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin">Irrota</string>
     <string name="ConversationFragment_quoted_message_not_found">Alkuperäistä viestiä ei löydy</string>
     <string name="reply_privately">Vastaa yksityisesti</string>
@@ -323,9 +323,9 @@
     <string name="cannot_delete_contacts_in_use">Aktiivisten keskustelujen yhteystietoja ei voi poistaa.</string>
     <string name="ask_start_chat_with">Aloita keskustelu yhteystiedon %1$s kanssa?</string>
     <string name="ask_delete_value">Poista %s?</string>
-    <!-- Translators: %1$s will be replaces by a comma separated list of names -->
+    <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Poista %1$s ryhmästä?</string>
-    <!-- Translators: %1$s will be replaced by a comma separated list of names -->
+    <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_from_broadcast">Poista %1$s kuulutuslistalta?</string>
     <string name="open_url_confirmation">Haluatko avata tämän linkin?</string>
 
@@ -372,7 +372,7 @@
     <string name="archive_empty_hint">Arkistoimasi keskustelut näkyvät täällä</string>
     <string name="saved_messages">Tallennetut viestit</string>
     <string name="saved_messages_explain">• Välitä viestejä tänne helppoa pääsyä varten\n\n• Kirjoita tai äänitä muistiinpanoja\n\n• Liitä mediaa tallentaaksesi ne</string>
-    <!-- this "Saved" should match the "Saved" from "Saved messages" -->
+    <!-- Should match "Saved" from "Saved messages" -->
     <string name="saved">Tallennettu</string>
     <string name="save_as">Tallenna nimellä</string>
     <string name="retry_send">Yritä uudelleen lähettääksesi viestin</string>
@@ -448,25 +448,25 @@
     <string name="send_message">Lähetä viesti</string>
 
     <!-- Connectivity -->
-    <!-- Used as a headline for the "Inbox" eg. in the "Connectivity" view -->
+    <!-- Headline for the "Inbox" eg. in the "Connectivity" view -->
     <string name="incoming_messages">Saapuvat viestit</string>
-    <!-- Used as a headline for the "Outbox" eg. in the "Connectivity" view -->
+    <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Lähtevät viestit</string>
-    <!-- Used as a headline in the "Connectivity" view. The placeholder will be replaced by the domain of the configured email-address. -->
+    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by the domain of the configured email-address. -->
     <string name="storage_on_domain">Tallennustila palvelimella %1$s</string>
     <string name="connectivity">Yhteys</string>
-    <!-- Shown eg. in the title bar if the app is "Not connected"; as there is very few room, try to be as short as possible. -->
+    <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
     <string name="connectivity_not_connected">Ei yhdistetty</string>
-    <!-- Shown eg. in the title bar if the app is "Connecting"; as there is very few room, try to be as short as possible. Note that the three dots are a single character (…), not three (...) -->
+    <!-- Shown in the title bar if the app is "Connecting"; prefer short strings. The ellipsis is a single character (…), not three (...) -->
     <string name="connectivity_connecting">Yhdistetään...</string>
-    <!-- Shown eg. in the title bar if the app is "Updating" (eg. getting new/old message, sync things); as there is very few room, try to be as short as possible. Note that the three dots are a single character (…), not three (...) -->
+    <!-- Shown in the title bar if the app is "Updating" (eg. getting new/old message, sync things); prefer short strings. The ellipsis is a single character (…), not three (...) -->
     <string name="connectivity_updating">Päivitetään...</string>
-    <!-- Shown eg. in the setting if the app is "Connected" -->
+    <!-- Shown in the setting if the app is "Connected" -->
     <string name="connectivity_connected">Yhdistetty</string>
     <string name="sending">Lähetetään</string>
     <string name="last_msg_sent_successfully">Viimeinen viesti lähetetty onnistuneesti.</string>
     <string name="not_supported_by_provider">Palveluntarjoajasi ei tue tätä.</string>
-    <!-- Used as a subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed or so. -->
+    <!-- Subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Viestit</string>
     <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
     <string name="part_of_total_used">%1$s / %2$s käytössä</string>
@@ -530,7 +530,7 @@
     <string name="configuration_failed_with_error">Asetusten luominen epäonnistui. Virhe: %1$s</string>
 
     <!-- share and forward messages -->
-    <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
+    <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">Välitä yhteystiedolle...</string>
     <string name="share_multiple_attachments">Lähetä %1$d tiedostoa valittuun keskusteluun?\n\nTiedostot lähetetään muokkaamattomina ja alkuperäisen kokoisina, kuvia tai videoita ei pakata uudelleen.</string>
     <string name="share_multiple_attachments_multiple_chats">Lähetä %1$d tiedosto(a) %2$d keskusteluun?\n\nTiedostot lähetetään muokkaamattomina ja alkuperäisen kokoisina, kuvia ja videoita ei pakata uudelleen.</string>
@@ -548,9 +548,9 @@
     <string name="pref_password_and_account_settings">Salasana ja tili</string>
     <string name="pref_who_can_see_profile_explain">Profiilikuvasi, nimesi ja allekirjoituksesi lähetetään yhdessä viestiesi kanssa muille käyttäjille.</string>
     <string name="pref_your_name">Nimesi</string>
-    <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
+    <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
     <string name="pref_default_status_label">Allekirjoitus</string>
-    <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
+    <!-- Translators: The URL should not be localized as it is unclear which language the receiver prefers; the language will be automatically detected on the server -->
     <string name="pref_default_status_text">Lähetetty Delta Chat -sovelluksesta: https://delta.chat</string>
     <string name="pref_enter_sends">Enter-näppäin lähettää</string>
     <string name="pref_enter_sends_explain">Enter-näppäimen painaminen lähettää viestin</string>
@@ -559,7 +559,7 @@
     <string name="pref_outgoing_worse">Huonompi laatu, pienempi koko</string>
     <string name="pref_vibrate">Värinä</string>
     <string name="pref_screen_security">Näytön turvallisuus</string>
-    <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
+    <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_screen_security_explain">Pyydä järjestelmää estämään näyttökuvien tallentaminen sovelluksessa ja \"viimeiset\"-näkymässä.</string>
     <string name="pref_screen_security_please_restart_hint">Näyttölukon käyttöönotto vaatii sovelluksen uudelleenkäynnistyksen.</string>
     <string name="pref_notifications">Ilmoitukset</string>
@@ -574,14 +574,14 @@
     <string name="pref_privacy">Yksityisyys</string>
     <string name="pref_chats_and_media">Keskustelut ja media</string>
     <string name="pref_system_default">Järjestelmän oletus</string>
-    <!-- Translators: "light" in the meaning "opposite of dark" -->
+    <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">Vaalea</string>
     <string name="pref_dark_theme">Tumma</string>
     <string name="pref_appearance">Ulkonäkö</string>
     <string name="pref_theme">Teema</string>
     <string name="pref_language">Kieli</string>
     <string name="pref_incognito_keyboard">Näppäimistön yksityisyys</string>
-    <!-- Translators: Keep in mind that this is a Request - it must be clear in the wording that this cannot be enforced. -->
+    <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_incognito_keyboard_explain">Pyydä näppäimistöä kytkemään yksilöity oppiminen pois päältä</string>
     <string name="pref_read_receipts">Lukukuittaukset</string>
     <string name="pref_read_receipts_explain">Jos lukukuittaukset kytketään pois, et näe kuittauksia myöskään muilta</string>
@@ -715,9 +715,9 @@
     <string name="systemmsg_read_receipt_subject">Viesti avattu</string>
     <string name="systemmsg_read_receipt_body">Lähettämäsi viesti \"%1$s\" näytettiin vastaanottajan näytöllä.\n\nTämä ei takaa, että sisältö luettiin.</string>
     <string name="systemmsg_cannot_decrypt">Viestin salausta ei voi purkaa.\n\n• Pyydä lähettäjää lähettämään viesti uudelleen.\n\n• Jos asensit Delta Chatin tai toisen sähköpostisovelluksen uudelleen tälle tai toiselle laitteelle, Autocrypt-asetusviestin lähettäminen siitä sovelluksesta voi auttaa.</string>
-    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). -->
+    <!-- Translators: %1$s will be replaced by sth. as "ACTION by me". -->
     <string name="systemmsg_action_by_me">%1$s minun toimestani.</string>
-    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
+    <!-- Translators: %1$s will be replaced by an action and %2$s will be replaced by the name/addr of the person who did it, as "ACTION by MEMBER". -->
     <string name="systemmsg_action_by_user">%1$s käyttäjän %2$s toimesta.</string>
     <string name="systemmsg_unknown_sender_for_chat">Tuntematon lähettäjä. Katso \"lisätietoja\".</string>
     <string name="systemmsg_subject_for_new_contact">Viesti lähettäjältä %1$s</string>
@@ -740,7 +740,7 @@
     <string name="systemmsg_chat_protection_enabled">Keskustelusuojaus käytössä</string>
 
     <string name="devicemsg_self_deleted">Poistit \"Tallennetut viestit\" -keskustelun.\n\nℹ️ Käyttääksesi \"Tallennetut viestit\" -ominaisuutta jälleen, aloita uusi keskustelu itsesi kanssa.</string>
-    <!-- %1$s will be replaced by the number of storage already used, sth. as '500 MB'. CAVE: if you want to use a simple the percent sign, type in two, so eg. %1$s %% -->
+    <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
     <string name="devicemsg_storage_exceeding">⚠️ Palveluntarjoajasi tallennuskiintiö ylitetään pian, käytössä on jo %1$s / %%.\n\nEt välttämättä enää voi vastaanottaa viestejäsi, kun 100 %% on käytössä.\n\n👉 Kokeile poistaa viestejä palveluntarjoajasi internetkäyttöliittymästä. Kannattaa myös ehkä kytkeä päälle \"Asetukset / Poista vanhat viestit\". Voit tarkistaa tämän hetkisen tallennustilan käytön \"Asetukset / Yhteys\".</string>
     <!-- %1%s will be replaced by date and time in some human-readable format -->
     <string name="devicemsg_bad_time">⚠️ Laitteesi päivämäärä tai aika vaikuttaa olevan väärässä (%1$s).\n\nAseta kellonaika ⏰🔧 varmistaaksesi, että viestin vastaanottaminen onnistuu.</string>
