@@ -39,7 +39,7 @@
     <string name="unarchive">Arşivleme</string>
     <string name="mute">Sessize Al</string>
     <string name="ephemeral_messages">Kaybolan İletiler</string>
-    <string name="ephemeral_messages_hint">Bu ayarlar, Delta Chat\'i kullanan tüm sohbet üyelerine uygulanır. Ancak onlar iletileri kopyalayabilir, kaydedebilir ve iletebilir ya da diğer e-posta istemcilerini kullanabilir.</string>
+    <string name="ephemeral_messages_hint">Delta Chat\'i kullanıyorlarsa, bu sohbetin tüm üyelerine uygulanır; ancak onlar iletileri kopyalayabilir, kaydedebilir ve iletebilir ya da diğer e-posta istemcilerini kullanabilir.</string>
     <string name="save">Kaydet</string>
     <string name="chat">Sohbet</string>
     <string name="media">Ortam</string>
@@ -54,7 +54,7 @@
     <string name="activate">Etkinleştir</string>
     <string name="load_remote_content">Uzak Görselleri Yükle</string>
     <!-- Possible answers to the question are: Never, Always, Once -->
-    <string name="load_remote_content_ask">Uzak görseller sizi izlemek için kullanılabilir.\n\nAyar, yazı tiplerinin ve diğer içeriğin de yüklenmesine izin verir. Etkisizleştirildiyse bile katıştırılan ya da önbelleklenen görselleri hâlâ görebilirsiniz.\n\nUzak görseller yüklensin mi?</string>
+    <string name="load_remote_content_ask">Uzak görseller sizi izleyebilir.\n\nBu ayar, yazı tiplerini ve diğer içeriği de yükler. Etkisizleştirilirse, katıştırılan ya da önbelleklenen görselleri görebilirsiniz.\n\nUzak görseller yüklensin mi?</string>
     <string name="always">Her zaman</string>
     <string name="once">Bir kez</string>
     <string name="show_password">Parolayı Göster</string>
@@ -131,7 +131,7 @@
     <string name="image">Görsel</string>
     <!-- Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
     <string name="reply_noun">Yanıt</string>
-    <string name="gif">Gif</string>
+    <string name="gif">GIF</string>
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">Çıkartma</string>
     <string name="images">Görseller</string>
@@ -250,7 +250,7 @@
     <string name="title_share_location">Tüm grup üyeleriyle konum paylaş</string>
     <string name="device_talk">Aygıt İletileri</string>
     <string name="device_talk_subtitle">Yerel olarak oluşturulan iletiler</string>
-    <string name="device_talk_explain">Bu sohbetteki iletiler, Delta Chat uygulamanız tarafından yerel olarak oluşturulur. Oluşturucuları, uygulama güncelleştirmeleri ve kullanım sırasındaki sorunlar hakkında bilgilendirmek için onu kullanır.</string>
+    <string name="device_talk_explain">Bu sohbetteki iletiler, uygulama güncelleştirmeleri ve kullanım sırasındaki sorunlar hakkında bilgilendirmek için aygıtınızda oluşturulur.</string>
     <string name="device_talk_welcome_message">Delta Chat\'e hoş geldiniz! – Delta Chat, diğer yaygın ulak uygulamaları gibi görünür ve hissettirir; ama merkezi denetim, izleme içermez ya da sizi, arkadaşlarınızı, iş arkadaşlarınızı ya da ailenizi büyük kuruluşlara satmaz.\n\nTeknik olarak Delta Chat, çağdaş bir sohbet arabirimli bir e-posta uygulamasıdır. 👻 olacaksanız, e-posta yeni bir elbisedir\n\nMilyarlarca insanın herhangi biriyle Delta Chat kullanın: Yalnızca onların e-posta adresini kullanın. Alıcıların Delta Chat\'i kurması, web sitelerini ziyaret etmesi ya da herhangi bir yere kaydolması gerekmez - ancak elbette isterlerse onlara 👉 https://get.delta.chat adresini işaret edebilirsiniz</string>
     <string name="edit_contact">Kişiyi Düzenle</string>
     <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
@@ -285,16 +285,16 @@
 
     <string name="videochat">Video Sohbeti</string>
     <string name="videochat_invite_user_to_videochat">%1$s bir video sohbetine davet edilsin mi?</string>
-    <string name="videochat_invite_user_hint">Bu, her iki uçta da uyumlu bir uygulama ya da uyumlu bir tarayıcı gerektirir.</string>
+    <string name="videochat_invite_user_hint">Bu, her iki uçta da uyumlu bir uygulama ya da tarayıcı gerektirir.</string>
     <string name="videochat_contact_invited_hint">%1$s video sohbetine davet etti.</string>
-    <string name="videochat_you_invited_hint">Video sohbetine davet ettiniz.</string>
+    <string name="videochat_you_invited_hint">Bir video sohbeti daveti gönderdiniz.</string>
     <string name="videochat_tap_to_join">Katılmak için Dokunun</string>
     <string name="videochat_tap_to_open">Açmak için Dokunun</string>
     <string name="videochat_instance">Video Sohbeti Örneği</string>
     <string name="videochat_instance_placeholder">Video Sohbeti Örneğiniz</string>
     <string name="videochat_instance_example">Örnekler: https://meet.jit.si/$ROOM ya da basicwebrtc:https://your-server</string>
-    <string name="videochat_instance_explain_2">Video sohbeti etkinleştirilirse, her sohbetten video sohbeti başlatabilirsiniz. Video sohbetleri, her iki uçta da uyumlu bir uygulama ya da uyumlu bir tarayıcı gerektirir.</string>
-    <string name="videochat_instance_from_qr">\"%1$s\" diğerlerini video sohbetine davet etmek için kullanılsın mı?\n\nBir kez ayarlandığında, her sohbetten video sohbeti başlatabilirsiniz. Varsa bu, video sohbetleri için önceki ayarla değiştirilir.</string>
+    <string name="videochat_instance_explain_2">Etkinleştirilirse, her sohbetten video sohbeti başlatabilirsiniz. Her iki uçta da uyumlu bir uygulama ya da bir tarayıcı gerektirir.</string>
+    <string name="videochat_instance_from_qr">\"%1$s\" diğerlerini video sohbetlerine davet etmek için kullanılsın mı?\n\nBir kez ayarlandığında, her sohbetten video sohbeti başlatabilirsiniz. Bu, video sohbetleri için herhangi bir önceki ayarın yerini alır.</string>
     <string name="videochat_invitation">Video sohbeti daveti</string>
     <string name="videochat_invitation_body">Bir video sohbetine davet edildiniz; katılmak için %1$s öğesini tıklayın.</string>
 
@@ -316,10 +316,10 @@
     <string name="ask_forward">İletiler %1$s alıcısına iletilsin mi?</string>
     <string name="ask_forward_multiple">İletiler %1$d sohbete iletilsin mi?</string>
     <string name="ask_export_attachment">İlişikleri dışa aktarmak, aygıtınızdaki diğer uygulamaların onlara erişmesine izin verir.\n\nSürdürülsün mü?</string>
-    <string name="ask_block_contact">Bu kişi engellensin mi? Artık bu kişiden gelen iletileri almayacaksınız.</string>
-    <string name="ask_unblock_contact">Bu kişi engellenmesin mi? Bir kez daha bu kişiden gelen iletileri alabileceksiniz.</string>
-    <string name="ask_delete_contacts">Kişiler silinsin mi?\n\nSohbetlerin sürdüğü kişiler ve sistemin adres defterinden gelen kişiler kalıcı olarak silinemez.</string>
-    <string name="ask_delete_contact">%1$s kişisi silinsin mi?\n\nSohbetlerin sürdüğü kişiler ve sistemin adres defterinden gelen kişiler kalıcı olarak silinemez.</string>
+    <string name="ask_block_contact">Bu kişi engellensin mi? Artık ondan gelen iletileri almayacaksınız.</string>
+    <string name="ask_unblock_contact">Bu kişi engellenmesin mi? Bundan sonra ondan gelen iletileri alabileceksiniz.</string>
+    <string name="ask_delete_contacts">Kişiler silinsin mi?\n\nSohbetlerin sürdüğü ya da sistem adres defterinden gelen kişiler kalıcı olarak silinemez.</string>
+    <string name="ask_delete_contact">%1$s kişisi silinsin mi?\n\nSohbetlerin sürdüğü ve sistem adres defterinden gelen kişiler kalıcı olarak silinemez.</string>
     <string name="cannot_delete_contacts_in_use">Sohbetlerin sürdüğü kişiler silinemez.</string>
     <string name="ask_start_chat_with">%1$s ile sohbet edilsin mi?</string>
     <string name="ask_delete_value">%s silinsin mi?</string>
@@ -355,7 +355,7 @@
         <item quantity="other">%d yeni ileti</item>
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
-    <string name="chat_new_one_to_one_hint">Bir ileti gönderin. %1$s Delta Chat kullanmıyorsa tamam.</string>
+    <string name="chat_new_one_to_one_hint">%1$s alıcısına bir ileti gönderin; Delta Chat olmadan bile onu alabilir.</string>
     <string name="chat_new_broadcast_hint">Bir yayın listesinde, diğerleri sizinle olan özel sohbetlerinde ileti alacak.\n\nAlıcılar birbirinin farkında olmayacak.</string>
     <string name="chat_new_group_hint">Diğerleri, yalnızca siz bir ilk ileti gönderdikten sonra bu grubu görecek.</string>
     <string name="chat_record_slide_to_cancel">İptal etmek için kaydırın</string>
@@ -368,8 +368,8 @@
     <string name="chat_archived_label">Arşivlendi</string>
     <string name="chat_request_label">İstek</string>
     <string name="chat_no_messages">İleti yok.</string>
-    <string name="chat_self_talk_subtitle">Kendime gönderdiğim iletiler</string>
-    <string name="archive_empty_hint">Sohbetleri arşivlerseniz, onlar burada gösterilecek.</string>
+    <string name="chat_self_talk_subtitle">Kendime İletiler</string>
+    <string name="archive_empty_hint">Arşivlenen sohbetler burada görünecek.</string>
     <string name="saved_messages">Kaydedilen İletiler</string>
     <string name="saved_messages_explain">• Kolay erişim için iletileri buraya iletin\n\n• Notlar ya da sesli notlar alın\n\n• Onları kaydetmek için ortamlar iliştirin</string>
     <!-- Should match "Saved" from "Saved messages" -->
@@ -377,8 +377,8 @@
     <string name="save_as">Farklı Kaydet</string>
     <string name="retry_send">İletiyi göndermeyi yeniden dene</string>
     <!-- reasons for a disabled message composer -->
-    <string name="messaging_disabled_not_in_group">Yazamazsınız; çünkü bu grupta değilsiniz. Katılmak için başka bir üyeye sorun.</string>
-    <string name="messaging_disabled_device_chat">Bu sohbet, yerel olarak oluşturulan iletileri içerir. Bu nedenle herhangi bir ileti yazamazsınız.</string>
+    <string name="messaging_disabled_not_in_group">Bir ileti göndermek için bu grupta olmalısınız. Katılmak için başka bir üyeye sorun.</string>
+    <string name="messaging_disabled_device_chat">Bu sohbet, yerel olarak oluşturulan iletileri içerir; yazma etkisiz.</string>
     <string name="messaging_disabled_mailing_list">Posta listelerine iletiler gönderme henüz desteklenmiyor</string>
     <string name="cannot_display_unsuported_file_type">Bu dosya türü görüntülenemiyor: %s</string>
     <string name="attachment_failed_to_load">İlişiği yükleme başarısız</string>
@@ -387,7 +387,7 @@
 
     <!-- mailing lists -->
     <string name="mailing_list">Posta Listesi</string>
-    <string name="mailing_list_profile_info">Posta listesi adındaki ve görselindeki değişiklikler yalnızca bu aygıta uygulanır.</string>
+    <string name="mailing_list_profile_info">Posta listesi adındaki ve görselindeki değişiklikler yalnızca bu aygıtta uygulanır.</string>
 
     <!-- webxdc -->
     <!-- "Start..." button for an app -->
@@ -401,9 +401,9 @@
     <string name="add_poi">İlgi çekici noktayı gönder</string>
 
     <!-- chat audit log -->
-    <string name="chat_audit_log_empty_message">Bu sohbetin sistem iletileri burada görünecek</string>
+    <string name="chat_audit_log_empty_message">Bu sohbet için sistem iletileri burada görünür</string>
     <string name="chat_audit_log_title">%1$s için Sohbet Denetim Günlüğü</string>
-    <string name="chat_audit_log_description">Bu görünüm, yalnızca sistem ve bilgi iletilerini gösterir. Birçok normal ileti arasında kaydırmadan son sohbetteki eylemleri bulmak için kullanışlıdır.</string>
+    <string name="chat_audit_log_description">Yalnızca sistem ve bilgi iletilerini gösterir; birçok ileti arasında kaydırmadan son sohbet eylemlerini bulmak için kullanışlıdır.</string>
 
     <!-- punycode warning / labeled links -->
     <!-- placeholder is domain/hostname that should be trusted -->
@@ -412,7 +412,7 @@
     <!-- placeholder contains the hostname converted to ascii -->
     <string name="puny_code_warning_question">%1$s bağlantısını ziyaret etmek istediğinizden emin misiniz?</string>
     <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
-    <string name="puny_code_warning_description">Farklı abecelerden benzer görünen karakterleri kullanarak karakterleri yanlış temsil edebilecek bir bağlantı izlediniz. %1$s etiketli bağlantıyı izlemek, Latin olmayan karakterler için normal olan %2$s dönüşümüyle sonuçlanacak. Böyle karakterleri beklemediyseniz, bu bağlantı zararlı olabilir</string>
+    <string name="puny_code_warning_description">Farklı abecelerden benzer görünen karakterleri kullanarak karakterleri yanlış temsil edebilecek bir bağlantı izlediniz. Aşağıdaki %1$s etiketli bağlantıyı izlemek, Latin olmayan karakterler için normal olan %2$s dönüşümüyle sonuçlanacak. Böyle karakterleri beklemediyseniz, bu bağlantı zararlı olabilir.</string>
 
 
     <!-- search -->
@@ -438,12 +438,12 @@
     <string name="tab_docs">Belgeler</string>
     <string name="tab_links">Bağlantılar</string>
     <string name="tab_map">Harita</string>
-    <string name="tab_gallery_empty_hint">Bu sohbette paylaşılan görseller ve videolar burada görüntülenecek.</string>
-    <string name="tab_docs_empty_hint">Bu sohbette paylaşılan belgeler, müzik ve diğer dosyalar burada görüntülenecek.</string>
-    <string name="tab_image_empty_hint">Bu sohbette paylaşılan görseller burada görüntülenecek.</string>
-    <string name="tab_video_empty_hint">Bu sohbette paylaşılan videolar burada görüntülenecek.</string>
-    <string name="tab_audio_empty_hint">Bu sohbette paylaşılan ses dosyaları ve sesli iletiler burada görüntülenecek.</string>
-    <string name="tab_webxdc_empty_hint">Bu sohbette paylaşılan Webxdc içeriği burada görüntülenecek.</string>
+    <string name="tab_gallery_empty_hint">Bu sohbette paylaşılan görseller ve videolar burada görünecek.</string>
+    <string name="tab_docs_empty_hint">Bu sohbette paylaşılan belgeler, müzik ve diğer dosyalar burada görünecek.</string>
+    <string name="tab_image_empty_hint">Bu sohbette paylaşılan görseller burada görünecek.</string>
+    <string name="tab_video_empty_hint">Bu sohbette paylaşılan videolar burada görünecek.</string>
+    <string name="tab_audio_empty_hint">Bu sohbette paylaşılan ses dosyaları ve sesli iletiler burada görünecek.</string>
+    <string name="tab_webxdc_empty_hint">Bu sohbette paylaşılan Webxdc içeriği burada görünecek.</string>
     <string name="media_preview">Ortam Önizlemesi</string>
     <string name="send_message">İleti Gönder</string>
 
@@ -532,8 +532,8 @@
     <!-- share and forward messages -->
     <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">İlet…</string>
-    <string name="share_multiple_attachments">%1$d dosya seçilen sohbete gönderilsin mi?\n\nDosyalar, değiştirilmeden özgün boyutlarında gönderilir; ör. görseller ve videolar yeniden kodlanmaz.</string>
-    <string name="share_multiple_attachments_multiple_chats">%1$d dosya %2$d sohbete gönderilsin mi?\n\nDosyalar, değiştirilmeden özgün boyutlarında gönderilir; ör. görseller ve videolar yeniden kodlanmaz.</string>
+    <string name="share_multiple_attachments">%1$d dosya seçilen sohbete gönderilsin mi?\n\nDosyalar, değiştirilmeden özgün boyutlarında gönderilir (ör. görseller ve videolar yeniden kodlanmaz).</string>
+    <string name="share_multiple_attachments_multiple_chats">%1$d dosya %2$d sohbete gönderilsin mi?\n\nDosyalar, değiştirilmeden özgün boyutlarında gönderilir (ör. görseller ve videolar yeniden kodlanmaz).</string>
     <string name="share_text_multiple_chats">Bu metin %1$d sohbete gönderilsin mi?\n\n\"%2$s\"</string>
     <string name="share_abort">Eksik izinlerden dolayı paylaşımdan vazgeçildi.</string>
 
@@ -544,7 +544,7 @@
     <string name="pref_profile_info_headline">Profil Bilginiz</string>
     <string name="pref_profile_photo">Profil Görseli</string>
     <string name="pref_blocked_contacts">Engellenen Kişiler</string>
-    <string name="blocked_empty_hint">Kişileri engellerseniz, onlar burada gösterilecek.</string>
+    <string name="blocked_empty_hint">Engellenen kişiler burada görünecek.</string>
     <string name="pref_password_and_account_settings">Parola ve Hesap</string>
     <string name="pref_who_can_see_profile_explain">Diğer kullanıcılarla iletişim kurulurken; profil görseliniz, adınız ve imzanız iletilerinizle birlikte gönderilecek.</string>
     <string name="pref_your_name">Adınız</string>
@@ -617,7 +617,7 @@
     <string name="pref_watch_sent_folder">Gönderilen Klasörünü İzle</string>
     <string name="pref_send_copy_to_self">Kendime Kopya Gönder</string>
     <string name="pref_send_copy_to_self_explain">Bu hesap çoklu aygıtlarda kullanılırken gereklidir.</string>
-    <string name="pref_auto_folder_moves">DeltaChat Klasörüne Otomatik Taşınsın</string>
+    <string name="pref_auto_folder_moves">DeltaChat Klasörüne Otomatik Olarak Taşı</string>
     <string name="pref_auto_folder_moves_explain">Sohbet görüşmeleri, Gelen Kutusu\'ndaki dağınıklığı önlemek için taşınır</string>
     <string name="pref_only_fetch_mvbox_title">Yalnızca DeltaChat Klasöründen Getir</string>
     <string name="pref_only_fetch_mvbox_explain">Diğer klasörleri yoksay. Sunucunuzun sohbet iletilerini DeltaChat klasörüne taşımasını gerektirir.</string>
@@ -741,9 +741,9 @@
 
     <string name="devicemsg_self_deleted">\"Kaydedilen iletiler\" sohbetini sildiniz.\n\nℹ️ \"Kaydedilen iletiler\" özelliğini yeniden kullanmak için kendinizle yeni bir sohbet oluşturun.</string>
     <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
-    <string name="devicemsg_storage_exceeding">⚠️ Sağlayıcınızın depolaması aşılmak üzere; %1$s%% zaten kullanılıyor.\n\nDepolama 100%% kullanıldığında ileti alamayabilirsiniz.\n\n👉 Lütfen sağlayıcınızın web arabiriminden eski verileri silip silemeyeceğinizi denetleyin ve \"Ayarlar / Eski İletileri Sil\"i etkinleştirmeyi düşünün. Şu anki depolama kullanımınızı her zaman \"Ayarlar / Bağlanabilirlik\"ten denetleyebilirsiniz.</string>
+    <string name="devicemsg_storage_exceeding">⚠️ Sağlayıcınızın depolama alanı tükenmek üzere: %1$s%% zaten kullanılıyor.\n\nDepolama alanı dolarsa iletileri alamayabilirsiniz.\n\n👉 Lütfen sağlayıcınızın web arabiriminden eski verileri silip silemeyeceğinizi denetleyin ve \"Ayarlar / Eski İletileri Sil\"i etkinleştirmeyi düşünün. Şu anki depolama alanı kullanımınızı herhangi bir zamanda \"Ayarlar / Bağlanabilirlik\"ten denetleyebilirsiniz.</string>
     <!-- %1%s will be replaced by date and time in some human-readable format -->
-    <string name="devicemsg_bad_time">⚠️ Aygıtınızın tarihi ya da saati yanlış gibi görünüyor (%1$s).\n\nİletilerinizin doğru şekilde alındığından emin olmak için saatinizi ⏰🔧 ayarlayın.</string>
+    <string name="devicemsg_bad_time">⚠️ Aygıtınızdaki tarih ya da saat yanlış görünüyor (%1$s).\n\nİletilerinizin doğru şekilde alınmasını sağlamak için saatinizi ⏰🔧 ayarlayın.</string>
     <string name="devicemsg_update_reminder">⚠️ Delta Chat sürümünüz eski olabilir.\n\nBu, sorunlara neden olabilir; çünkü sohbet ortaklarınız daha yeni sürümleri kullanıyor - ve en yeni özellikleri kaybediyorsunuz 😳\nGüncelleştirmeler için lütfen https://get.delta.chat ya da uygulama mağazanızı denetleyin.</string>
 
     <!-- Some options as "Manage keys" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc. to be entered in a system dialog. This hint is added to the system dialog, below a title as "Manage keys" or "Backup". -->
@@ -936,8 +936,8 @@
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat, fotoğraflar ve videolar çekmek ve göndermek için ve QR kodlarını taramak için kameranızı kullanır.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat, yazabileceğiniz e-posta adreslerinin bir listesini göstermek için kişilerinizi kullanır. Delta Chat sunucusu yoktur; kişileriniz herhangi bir yere gönderilmez.</string>
-    <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">Konum paylaşımını etkinleştirdiğiniz zaman aralığında konumunuzu paylaşmak için Delta Chat\'e konum izni gerekir.</string>
-    <string name="InfoPlist_NSLocationWhenInUseUsageDescription">Konum paylaşımını etkinleştirdiğiniz zaman aralığında konumunuzu paylaşmak için Delta Chat\'e konum izni gerekir.</string>
+    <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">Konum paylaşımını etkinleştirdiğiniz zaman aralığında konumunuzu paylaşmak için Delta Chat\'e izin gerekir.</string>
+    <string name="InfoPlist_NSLocationWhenInUseUsageDescription">Konum paylaşımını etkinleştirdiğiniz zaman aralığında konumunuzu paylaşmak için Delta Chat\'e izin gerekir.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat, sesli iletiler ve sesli videolar kaydetmek ve göndermek için mikrofonunuzu kullanır.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat, göndermek için kitaplığınızdan fotoğraflar seçmenizi sağlayacak.</string>
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat, görselleri fotoğraf kitaplığınıza kaydetmek istiyor.</string>

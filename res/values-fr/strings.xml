@@ -39,7 +39,7 @@
     <string name="unarchive">Désarchiver</string>
     <string name="mute">Sourdine</string>
     <string name="ephemeral_messages">Messages éphémères</string>
-    <string name="ephemeral_messages_hint">Ces paramètres s\'appliquent à tous les participants utilisant Delta Chat. Cependant, ils peuvent copier, enregistrer et faire suivre des messages ou utiliser un autre client de messagerie.</string>
+    <string name="ephemeral_messages_hint">Ces paramètres s\'appliquent à tous les participants utilisant Delta Chat; ils peuvent copier, enregistrer et faire suivre des messages ou utiliser un autre client de e-mail.</string>
     <string name="save">Sauvegarder</string>
     <string name="chat">Discussion</string>
     <string name="media">Média</string>
