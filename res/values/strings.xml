@@ -33,13 +33,13 @@
     <string name="forward">Forward</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">Resend</string>
-    <!-- In the meaning of "To archive", "Put a chat to the archive". This string does not mean "The Archive". -->
+    <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
     <string name="archive">Archive</string>
-    <!-- In the meaning of "To unarchive", "Remove a chat from the archive", opposite of the previous string -->
+    <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Unarchive</string>
     <string name="mute">Mute</string>
     <string name="ephemeral_messages">Disappearing Messages</string>
-    <string name="ephemeral_messages_hint">These settings apply to all chat members using Delta Chat. However, they may copy, save and forward messages or use other e-mail clients.</string>
+    <string name="ephemeral_messages_hint">Applies to all members of this chat if they use Delta Chat; they can still copy, save, and forward messages or use other e-mail clients.</string>
     <string name="save">Save</string>
     <string name="chat">Chat</string>
     <string name="media">Media</string>
@@ -48,13 +48,13 @@
     <string name="start_chat">Start Chat</string>
     <string name="show_full_message">Show Full Message…</string>
     <string name="show_full_message_in_browser">Show Full Message in Browser…</string>
-    <!-- this is shown as placeholder when something is loading at some places -->
+    <!-- Placeholder text when something is loading -->
     <string name="loading">Loading…</string>
     <string name="hide">Hide</string>
     <string name="activate">Activate</string>
     <string name="load_remote_content">Load Remote Images</string>
-    <!-- possible answers to the question are: Never, Always, Once -->
-    <string name="load_remote_content_ask">Remote images can be used to track you.\n\nThe setting also allows loading fonts and other content. Even if it is disabled, you may still see embedded or cached images.\n\nLoad remote images?</string>
+    <!-- Possible answers to the question are: Never, Always, Once -->
+    <string name="load_remote_content_ask">Remote images can track you.\n\nThis setting also may load fonts and other content. If disabled, embedded or cached images may appear.\n\nLoad remote images?</string>
     <string name="always">Always</string>
     <string name="once">Once</string>
     <string name="show_password">Show Password</string>
@@ -65,7 +65,7 @@
     <string name="done">Done</string>
     <string name="undo">Undo</string>
     <string name="offline">Offline</string>
-    <!-- Translators: used eg. for the next view, could also be "continue" or so. as used in iOS headers, the string should be as short as possible, though. -->
+    <!-- For the next view or as "continue". Should be as short as possible. -->
     <string name="next">Next</string>
     <string name="error">Error</string>
     <string name="error_x">Error: %1$s</string>
@@ -79,7 +79,7 @@
     <string name="password">Password</string>
     <string name="existing_password">Existing Password</string>
     <string name="now">Now</string>
-    <!-- Translators: used as a headline in sections with actions that cannot be undone. could also be "Caution" or "Cave" or so. -->
+    <!-- Headline for destructive actions with no undo. Could also be "Caution" or "Warning". -->
     <string name="danger">Danger</string>
     <string name="today">Today</string>
     <string name="yesterday">Yesterday</string>
@@ -87,15 +87,15 @@
     <string name="this_month">This month</string>
     <string name="last_week">Last week</string>
     <string name="last_month">Last month</string>
-    <!-- the placeholder will be replaced by a date or time, resulting eg. in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
+    <!-- Placeholder replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
     <string name="last_seen_at">Last seen at %1$s</string>
     <string name="last_seen_unknown">Last seen: Unknown</string>
-    <!-- Translators: show beside messages that are "N minutes old". prefer a short string, prefer abbreviations if they're well-known -->
+    <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="one">%d min</item>
         <item quantity="other">%d min</item>
     </plurals>
-    <!-- Translators: show beside messages that are "N hours old". prefer a short string, prefer abbreviations if they're well-known -->
+    <!-- Shown beside messages that are "N hours old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_hours">
         <item quantity="one">%d hour</item>
         <item quantity="other">%d hours</item>
@@ -120,7 +120,7 @@
         <item quantity="one">%d recipient</item>
         <item quantity="other">%d recipients</item>
     </plurals>
-    <!-- short title, used for "N Chats Selected" or "N Messages Selected", however, requires a shorter form, eg. "N Selected" in english -->
+    <!-- Short form for "N Chats Selected" or "N Messages Selected": in English, "N Selected" -->
     <plurals name="n_selected">
         <item quantity="one">%d Selected</item>
         <item quantity="other">%d Selected</item>
@@ -129,24 +129,24 @@
     <string name="self">Me</string>
     <string name="draft">Draft</string>
     <string name="image">Image</string>
-    <!-- Translators: Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
+    <!-- Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
     <string name="reply_noun">Reply</string>
-    <string name="gif">Gif</string>
-    <!-- "Stickers" as known from other messengers, please pick up the wording from there; in some languages, "Sticker" in english is just fine. -->
+    <string name="gif">GIF</string>
+    <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">Sticker</string>
     <string name="images">Images</string>
     <string name="audio">Audio</string>
     <string name="voice_message">Voice Message</string>
     <string name="forwarded">Forwarded</string>
     <string name="forwarded_message">Forwarded Message</string>
-    <!-- %1$s will be replaced by the name or the e-mail address of the person who has forwarded the message -->
+    <!-- %1$s will be replaced by the name or the e-mail address of the person who forwards the message -->
     <string name="forwarded_by">Forwarded by %1$s</string>
     <string name="video">Video</string>
     <string name="documents">Documents</string>
     <string name="contact">Contact</string>
     <string name="verified_contact">Verified Contact</string>
     <string name="camera">Camera</string>
-    <!-- "capture" here means "start a video recording" or "take a photo"; eg. the description of the "shutter button" in the camera controls -->
+    <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Capture</string>
     <string name="switch_camera">Switch Camera</string>
     <string name="toggle_fullscreen">Toggle Full Screen Mode</string>
@@ -180,10 +180,10 @@
     <string name="menu_new_contact">New Contact</string>
     <string name="menu_new_chat">New Chat</string>
     <string name="menu_new_group">New Group</string>
-    <!-- "Subject" here must be the same wording as used in the e-mail context, so. eg. "Betreff" in german (the idea is to help people coming from the e-mail context) -->
+    <!-- Use the same wording as "Subject" to help people coming from the e-mail context; eg. "Betreff" in German -->
     <string name="new_group_or_subject">New Group or Subject</string>
     <string name="menu_new_verified_group">New Verified Group</string>
-    <!-- consider keeping the term "broadcast"; check how these lists are called eg. on whatsapp in the destination language -->
+    <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">Broadcast List</string>
     <string name="broadcast_lists">Broadcast Lists</string>
     <string name="new_broadcast_list">New Broadcast List</string>
@@ -218,10 +218,10 @@
     <string name="menu_export_attachment">Export Attachment</string>
     <string name="menu_export_attachments">Export Attachments</string>
     <string name="menu_all_media">All Media</string>
-    <!-- menu entry that opens eg. a gallery image or a document in the chat at the correct position -->
+    <!-- Command to jump to the original message corresponding to a gallery image or document -->
     <string name="show_in_chat">Show in Chat</string>
     <string name="menu_share">Share</string>
-    <!-- this is the action "to block sth." usually a mailing list or a contact. this is NOT "a large solid piece of hard material" :) -->
+    <!-- Verb "to block sth." usually a mailing list or a contact, not a noun -->
     <string name="block">Block</string>
     <string name="menu_block_contact">Block Contact</string>
     <string name="menu_unblock_contact">Unblock Contact</string>
@@ -250,16 +250,16 @@
     <string name="title_share_location">Share location with all group members</string>
     <string name="device_talk">Device Messages</string>
     <string name="device_talk_subtitle">Locally generated messages</string>
-    <string name="device_talk_explain">Messages in this chat are generated locally by your Delta Chat app. Its makers use it to inform about app updates and problems during usage.</string>
+    <string name="device_talk_explain">Messages in this chat are generated on your device to inform about app updates and problems during usage.</string>
     <string name="device_talk_welcome_message">Welcome to Delta Chat! – Delta Chat looks and feels like other popular messenger apps, but does not involve centralized control, tracking or selling you, friends, colleagues or family out to large organizations.\n\nTechnically, Delta Chat is an e-mail application with a modern chat interface. E-mail in a new dress if you will 👻\n\nUse Delta Chat with anyone out of billions of people: just use their e-mail address. Recipients don\'t need to install Delta Chat, visit websites or sign up anywhere - however, of course, if they like, you may point them to 👉 https://get.delta.chat</string>
     <string name="edit_contact">Edit Contact</string>
-    <!-- Translators: "Pin" here is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
     <string name="pin_chat">Pin Chat</string>
-    <!-- Translators: this is the opposite of "Pin chat", removing the sticky-state from a chat. -->
+    <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin_chat">Unpin Chat</string>
-    <!-- Translators: this is the verb for pinning, making sth. sticky. this is NOT the appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
     <string name="pin">Pin</string>
-    <!-- Translators: this is the opposite of "Pin", removing the sticky-state from sth. -->
+    <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin">Unpin</string>
     <string name="ConversationFragment_quoted_message_not_found">Original message not found</string>
     <string name="reply_privately">Reply Privately</string>
@@ -285,24 +285,24 @@
 
     <string name="videochat">Video Chat</string>
     <string name="videochat_invite_user_to_videochat">Invite %1$s to a video chat?</string>
-    <string name="videochat_invite_user_hint">This requires a compatible app or a compatible browser on both ends.</string>
+    <string name="videochat_invite_user_hint">This requires a compatible app or browser on both ends.</string>
     <string name="videochat_contact_invited_hint">%1$s invited to a video chat.</string>
-    <string name="videochat_you_invited_hint">You invited to a video chat.</string>
+    <string name="videochat_you_invited_hint">You sent a video chat invitation.</string>
     <string name="videochat_tap_to_join">Tap to Join</string>
     <string name="videochat_tap_to_open">Tap to Open</string>
     <string name="videochat_instance">Video Chat Instance</string>
     <string name="videochat_instance_placeholder">Your Video Chat Instance</string>
     <string name="videochat_instance_example">Examples: https://meet.jit.si/$ROOM or basicwebrtc:https://your-server</string>
-    <string name="videochat_instance_explain_2">If video chat is enabled, you can start a video chat from each chat. Video chats require a compatible app or a compatible browser on both ends.</string>
-    <string name="videochat_instance_from_qr">Use \"%1$s\" to invite others to video chats?\n\nOnce set, you can start a video chat from each chat. This will replace the previous setting for video chats, if any.</string>
+    <string name="videochat_instance_explain_2">If enabled, you can start a video chat from each chat. Requires a compatible app or a browser on both ends.</string>
+    <string name="videochat_instance_from_qr">Use \"%1$s\" to invite others to video chats?\n\nOnce set, you can start a video chat from each chat. This replaces any previous setting for video chats.</string>
     <string name="videochat_invitation">Video chat invitation</string>
     <string name="videochat_invitation_body">You are invited to a video chat, click %1$s to join.</string>
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Are you sure you want to leave this group?</string>
     <plurals name="ask_delete_chat">
-        <item quantity="one">Delete %d chat? It will no longer be shown in the chat list, its messages will remain on the server.</item>
-        <item quantity="other">Delete %d chats? They will no longer be shown in the chat list, their messages will remain on the server.</item>
+        <item quantity="one">Delete %d chat? It will no longer be shown in the chat list; its messages will remain on the server.</item>
+        <item quantity="other">Delete %d chats? They will no longer be shown in the chat list; their messages will remain on the server.</item>
     </plurals>
     <string name="ask_delete_message">Are you sure you want to delete this message?</string>
     <plurals name="ask_delete_messages">
@@ -315,17 +315,17 @@
     </plurals>
     <string name="ask_forward">Forward messages to %1$s?</string>
     <string name="ask_forward_multiple">Forward messages to %1$d chats?</string>
-    <string name="ask_export_attachment">Exporting attachments will allow any other apps on your device to access them.\n\nContinue?</string>
-    <string name="ask_block_contact">Block this contact? You will no longer receive messages from this contact.</string>
-    <string name="ask_unblock_contact">Unblock this contact? You will once again be able to receive messages from this contact.</string>
-    <string name="ask_delete_contacts">Delete contacts?\n\nContacts with ongoing chats and contacts from the system\'s address book cannot be deleted permanently.</string>
-    <string name="ask_delete_contact">Delete contact %1$s?\n\nContacts with ongoing chats and contacts from the system\'s address book cannot be deleted permanently.</string>
+    <string name="ask_export_attachment">Exporting attachments will allow other apps on your device to access them.\n\nContinue?</string>
+    <string name="ask_block_contact">Block this contact? You will no longer receive messages from them.</string>
+    <string name="ask_unblock_contact">Unblock this contact? You will then be able to receive messages from them.</string>
+    <string name="ask_delete_contacts">Delete contacts?\n\nContacts with ongoing chats or from the system address book cannot be deleted permanently.</string>
+    <string name="ask_delete_contact">Delete contact %1$s?\n\nContacts with ongoing chats or from the system address book cannot be deleted permanently.</string>
     <string name="cannot_delete_contacts_in_use">Cannot delete contacts with ongoing chats.</string>
     <string name="ask_start_chat_with">Chat with %1$s?</string>
     <string name="ask_delete_value">Delete %s?</string>
-    <!-- Translators: %1$s will be replaces by a comma separated list of names -->
+    <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Remove %1$s from group?</string>
-    <!-- Translators: %1$s will be replaced by a comma separated list of names -->
+    <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_from_broadcast">Remove %1$s from broadcast list?</string>
     <string name="open_url_confirmation">Do you want to open this link?</string>
 
@@ -355,7 +355,7 @@
         <item quantity="other">%d new messages</item>
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
-    <string name="chat_new_one_to_one_hint">Send a message. It is okay if %1$s does not use Delta Chat.</string>
+    <string name="chat_new_one_to_one_hint">Send a message to %1$s; they can even receive it without Delta Chat.</string>
     <string name="chat_new_broadcast_hint">In a broadcast list, others will receive messages in their private chats with you.\n\nThe recipients will not be aware of each other.</string>
     <string name="chat_new_group_hint">Others will only see this group after you sent a first message.</string>
     <string name="chat_record_slide_to_cancel">Slide to cancel</string>
@@ -368,18 +368,18 @@
     <string name="chat_archived_label">Archived</string>
     <string name="chat_request_label">Request</string>
     <string name="chat_no_messages">No messages.</string>
-    <string name="chat_self_talk_subtitle">Messages I sent to myself</string>
-    <string name="archive_empty_hint">If you archive chats, they will be shown here.</string>
+    <string name="chat_self_talk_subtitle">Messages to Self</string>
+    <string name="archive_empty_hint">Archived chats will appear here.</string>
     <string name="saved_messages">Saved Messages</string>
     <string name="saved_messages_explain">• Forward messages here for easy access\n\n• Take notes or voice memos\n\n• Attach media to save them</string>
-    <!-- this "Saved" should match the "Saved" from "Saved messages" -->
+    <!-- Should match "Saved" from "Saved messages" -->
     <string name="saved">Saved</string>
     <string name="save_as">Save As</string>
     <string name="retry_send">Retry to send message</string>
     <!-- reasons for a disabled message composer -->
-    <string name="messaging_disabled_not_in_group">You cannot write because you are not in this group. To join, ask another member.</string>
-    <string name="messaging_disabled_device_chat">This chat contains locally generated messages. Therefore you cannot write any messages.</string>
-    <string name="messaging_disabled_mailing_list">Sending messages in mailing lists is not supported yet</string>
+    <string name="messaging_disabled_not_in_group">You must be in this group to post a message. To join, ask another member.</string>
+    <string name="messaging_disabled_device_chat">This chat contains locally generated messages; writing is disabled.</string>
+    <string name="messaging_disabled_mailing_list">Sending messages in mailing lists is not yet supported</string>
     <string name="cannot_display_unsuported_file_type">Cannot display this file type: %s</string>
     <string name="attachment_failed_to_load">Failed to load attachment</string>
     <!-- For recording Voice messages: Description for the "Lock" button allowing to lift the thumb from the record button while recording continues -->
@@ -387,7 +387,7 @@
 
     <!-- mailing lists -->
     <string name="mailing_list">Mailing List</string>
-    <string name="mailing_list_profile_info">Changes on mailing list name and image apply to this device only.</string>
+    <string name="mailing_list_profile_info">Changes to mailing list name and image apply on this device only.</string>
 
     <!-- webxdc -->
     <!-- "Start..." button for an app -->
@@ -401,9 +401,9 @@
     <string name="add_poi">Send point of interest</string>
 
     <!-- chat audit log -->
-    <string name="chat_audit_log_empty_message">System messages of this chat would appear here</string>
+    <string name="chat_audit_log_empty_message">System messages for this chat appear here</string>
     <string name="chat_audit_log_title">Chat Audit Log for %1$s</string>
-    <string name="chat_audit_log_description">This view shows only system and info messages. Useful for finding the last chat actions without scrolling through many normal messages.</string>
+    <string name="chat_audit_log_description">Shows only system and info messages; useful for finding the last chat actions without scrolling through many messages.</string>
 
     <!-- punycode warning / labeled links -->
     <!-- placeholder is domain/hostname that should be trusted -->
@@ -412,7 +412,7 @@
     <!-- placeholder contains the hostname converted to ascii -->
     <string name="puny_code_warning_question">Are you sure you want to visit %1$s?</string>
     <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
-    <string name="puny_code_warning_description">You followed a link which could be misrepresenting characters by using similarly looking ones from different alphabets. Following the link labelled %1$s will lead to %2$s which is normal for non-Latin characters. If you did not expect such characters this link could be harmful</string>
+    <string name="puny_code_warning_description">This link may misrepresent characters with similar looking ones from different alphabets. Following the link labelled %1$s will lead to %2$s which is normal for non-Latin characters. If you did not expect such characters this link could be harmful.</string>
 
 
     <!-- search -->
@@ -438,35 +438,35 @@
     <string name="tab_docs">Docs</string>
     <string name="tab_links">Links</string>
     <string name="tab_map">Map</string>
-    <string name="tab_gallery_empty_hint">Images and videos shared in this chat will be displayed here.</string>
-    <string name="tab_docs_empty_hint">Documents, music and other files shared in this chat will be displayed here.</string>
-    <string name="tab_image_empty_hint">Images shared in this chat will be displayed here.</string>
-    <string name="tab_video_empty_hint">Videos shared in this chat will be displayed here.</string>
-    <string name="tab_audio_empty_hint">Audio Files and Voice Messages shared in this chat will be displayed here.</string>
-    <string name="tab_webxdc_empty_hint">Webxdc content shared in this chat will be displayed here.</string>
+    <string name="tab_gallery_empty_hint">Images and videos shared in this chat will appear here.</string>
+    <string name="tab_docs_empty_hint">Documents, music, and other files shared in this chat will appear here.</string>
+    <string name="tab_image_empty_hint">Images shared in this chat will appear here.</string>
+    <string name="tab_video_empty_hint">Videos shared in this chat will appear here.</string>
+    <string name="tab_audio_empty_hint">Audio Files and Voice Messages shared in this chat will appear here.</string>
+    <string name="tab_webxdc_empty_hint">Webxdc content shared in this chat will appear here.</string>
     <string name="media_preview">Media Preview</string>
     <string name="send_message">Send Message</string>
 
     <!-- Connectivity -->
-    <!-- Used as a headline for the "Inbox" eg. in the "Connectivity" view -->
+    <!-- Headline for the "Inbox" eg. in the "Connectivity" view -->
     <string name="incoming_messages">Incoming Messages</string>
-    <!-- Used as a headline for the "Outbox" eg. in the "Connectivity" view -->
+    <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Outgoing Messages</string>
-    <!-- Used as a headline in the "Connectivity" view. The placeholder will be replaced by the domain of the configured email-address. -->
+    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by the domain of the configured email-address. -->
     <string name="storage_on_domain">Storage on %1$s</string>
     <string name="connectivity">Connectivity</string>
-    <!-- Shown eg. in the title bar if the app is "Not connected"; as there is very few room, try to be as short as possible. -->
+    <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
     <string name="connectivity_not_connected">Not connected</string>
-    <!-- Shown eg. in the title bar if the app is "Connecting"; as there is very few room, try to be as short as possible. Note that the three dots are a single character (…), not three (...) -->
+    <!-- Shown in the title bar if the app is "Connecting"; prefer short strings. The ellipsis is a single character (…), not three (...) -->
     <string name="connectivity_connecting">Connecting…</string>
-    <!-- Shown eg. in the title bar if the app is "Updating" (eg. getting new/old message, sync things); as there is very few room, try to be as short as possible. Note that the three dots are a single character (…), not three (...) -->
+    <!-- Shown in the title bar if the app is "Updating" (eg. getting new/old message, sync things); prefer short strings. The ellipsis is a single character (…), not three (...) -->
     <string name="connectivity_updating">Updating…</string>
-    <!-- Shown eg. in the setting if the app is "Connected" -->
+    <!-- Shown in the setting if the app is "Connected" -->
     <string name="connectivity_connected">Connected</string>
     <string name="sending">Sending…</string>
     <string name="last_msg_sent_successfully">Last message sent successfully.</string>
     <string name="not_supported_by_provider">Not supported by your provider.</string>
-    <!-- Used as a subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed or so. -->
+    <!-- Subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Messages</string>
     <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
     <string name="part_of_total_used">%1$s of %2$s used</string>
@@ -530,10 +530,10 @@
     <string name="configuration_failed_with_error">Configuration failed. Error: %1$s</string>
 
     <!-- share and forward messages -->
-    <!-- Translators: Title shown above a chat/contact list; the user selects the recipient of the messages he wants to forward to -->
+    <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">Forward to…</string>
-    <string name="share_multiple_attachments">Send %1$d files to the selected chat?\n\nThe files are sent unmodified in their original size, eg. images and videos are not recoded.</string>
-    <string name="share_multiple_attachments_multiple_chats">Send %1$d file(s) to %2$d chats?\n\nThe files are sent unmodified in their original size, eg. images and videos are not recoded.</string>
+    <string name="share_multiple_attachments">Send %1$d files to the selected chat?\n\nThe files are sent unmodified in their original size (eg. images and videos are not re-encoded).</string>
+    <string name="share_multiple_attachments_multiple_chats">Send %1$d file(s) to %2$d chats?\n\nThe files are sent unmodified in their original size (eg. images and videos are not re-encoded).</string>
     <string name="share_text_multiple_chats">Send this text to %1$d chats?\n\n\"%2$s\"</string>
     <string name="share_abort">Sharing aborted due to missing permissions.</string>
 
@@ -544,13 +544,13 @@
     <string name="pref_profile_info_headline">Your Profile Info</string>
     <string name="pref_profile_photo">Profile Image</string>
     <string name="pref_blocked_contacts">Blocked Contacts</string>
-    <string name="blocked_empty_hint">If you block contacts, they will be shown here.</string>
+    <string name="blocked_empty_hint">Blocked contacts will appear here.</string>
     <string name="pref_password_and_account_settings">Password and Account</string>
     <string name="pref_who_can_see_profile_explain">Your profile image, name and signature will be sent together with your messages when communicating with other users.</string>
     <string name="pref_your_name">Your Name</string>
-    <!-- Translators: The value entered here is visible only to recipients who DO NOT use Deltachat, so its not a "Status" but the last line in the E-Mail. -->
+    <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
     <string name="pref_default_status_label">Signature Text</string>
-    <!-- Translators: The URL should not be localized, it is not clear which language the receiver prefers and the language will be detected on the server -->
+    <!-- Translators: The URL should not be localized as it is unclear which language the receiver prefers; the language will be automatically detected on the server -->
     <string name="pref_default_status_text">Sent with my Delta Chat Messenger: https://delta.chat</string>
     <string name="pref_enter_sends">Enter Key Sends</string>
     <string name="pref_enter_sends_explain">Pressing the Enter key will send text messages</string>
@@ -559,7 +559,7 @@
     <string name="pref_outgoing_worse">Worse quality, small size</string>
     <string name="pref_vibrate">Vibrate</string>
     <string name="pref_screen_security">Screen Security</string>
-    <!-- Translators: The wording must indicate that we can't guarantee that, its a System flag that we set. But the System in question must honor it. -->
+    <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_screen_security_explain">Request to block screenshots in the recents list and inside the app</string>
     <string name="pref_screen_security_please_restart_hint">To apply the screen security setting please restart the app.</string>
     <string name="pref_notifications">Notifications</string>
@@ -574,14 +574,14 @@
     <string name="pref_privacy">Privacy</string>
     <string name="pref_chats_and_media">Chats and Media</string>
     <string name="pref_system_default">System default</string>
-    <!-- Translators: "light" in the meaning "opposite of dark" -->
+    <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">Light</string>
     <string name="pref_dark_theme">Dark</string>
     <string name="pref_appearance">Appearance</string>
     <string name="pref_theme">Theme</string>
     <string name="pref_language">Language</string>
     <string name="pref_incognito_keyboard">Incognito Keyboard</string>
-    <!-- Translators: Keep in mind that this is a Request - it must be clear in the wording that this cannot be enforced. -->
+    <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_incognito_keyboard_explain">Request keyboard to disable personalized learning</string>
     <string name="pref_read_receipts">Read Receipts</string>
     <string name="pref_read_receipts_explain">If read receipts are disabled, you won\'t be able to see read receipts from others.</string>
@@ -617,7 +617,7 @@
     <string name="pref_watch_sent_folder">Watch Sent Folder</string>
     <string name="pref_send_copy_to_self">Send Copy to Self</string>
     <string name="pref_send_copy_to_self_explain">Required when using this account on multiple devices.</string>
-    <string name="pref_auto_folder_moves">Automatic Moves to DeltaChat Folder</string>
+    <string name="pref_auto_folder_moves">Move automatically to DeltaChat Folder</string>
     <string name="pref_auto_folder_moves_explain">Chat conversations are moved to avoid cluttering the Inbox</string>
     <string name="pref_only_fetch_mvbox_title">Only Fetch from DeltaChat Folder</string>
     <string name="pref_only_fetch_mvbox_explain">Ignore other folders. Requires your server to move chat messages to the DeltaChat folder.</string>
@@ -715,9 +715,9 @@
     <string name="systemmsg_read_receipt_subject">Message opened</string>
     <string name="systemmsg_read_receipt_body">The \"%1$s\" message you sent was displayed on the screen of the recipient.\n\nThis is no guarantee the content was read.</string>
     <string name="systemmsg_cannot_decrypt">This message cannot be decrypted.\n\n• It might already help to simply reply to this message and ask the sender to send the message again.\n\n• In case you re-installed Delta Chat or another e-mail program on this or another device you may want to send an Autocrypt Setup Message from there.</string>
-    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). -->
+    <!-- Translators: %1$s will be replaced by sth. as "ACTION by me". -->
     <string name="systemmsg_action_by_me">%1$s by me.</string>
-    <!-- Translators: %1$s will be replaced by sth. as "member xy added" (trailing full-stop removed). %2$s will be replaced by the name/addr of the person who did this action. -->
+    <!-- Translators: %1$s will be replaced by an action and %2$s will be replaced by the name/addr of the person who did it, as "ACTION by MEMBER". -->
     <string name="systemmsg_action_by_user">%1$s by %2$s.</string>
     <string name="systemmsg_unknown_sender_for_chat">Unknown sender for this chat. See \'info\' for more details.</string>
     <string name="systemmsg_subject_for_new_contact">Message from %1$s</string>
@@ -740,10 +740,10 @@
     <string name="systemmsg_chat_protection_enabled">Chat protection enabled.</string>
 
     <string name="devicemsg_self_deleted">You deleted the \"Saved messages\" chat.\n\nℹ️ To use the \"Saved messages\" feature again, create a new chat with yourself.</string>
-    <!-- %1$s will be replaced by the number of storage already used, sth. as '500 MB'. CAVE: if you want to use a simple the percent sign, type in two, so eg. %1$s %% -->
-    <string name="devicemsg_storage_exceeding">⚠️ Your provider\'s storage is about to exceed, already %1$s%% are used.\n\nYou may not be able to receive message when the storage is 100%% used.\n\n👉 Please check if you can delete old data in the provider\'s web interface and consider to enable \"Settings / Delete Old Messages\". You can check your current storage usage anytime at \"Settings / Connectivity\".</string>
+    <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
+    <string name="devicemsg_storage_exceeding">⚠️ Your provider\'s storage is about to run out: %1$s%% are already used.\n\nYou may not be able to receive messages if storage is full.\n\n👉 Please check if you can delete old data in the provider\'s web interface and consider enabling \"Settings / Delete Old Messages\". You can check your current storage usage anytime at \"Settings / Connectivity\".</string>
     <!-- %1%s will be replaced by date and time in some human-readable format -->
-    <string name="devicemsg_bad_time">⚠️ Date or time of your device seem to be inaccurate (%1$s).\n\nAdjust your clock ⏰🔧 to ensure your messages are received correctly.</string>
+    <string name="devicemsg_bad_time">⚠️ Date or time on your device seems to be inaccurate (%1$s).\n\nAdjust your clock ⏰🔧 to ensure your messages are received correctly.</string>
     <string name="devicemsg_update_reminder">⚠️ Your Delta Chat version might be outdated.\n\nThis may cause problems because your chat partners use newer versions - and you are missing the latest features 😳\nPlease check https://get.delta.chat or your app store for updates.</string>
 
     <!-- Some options as "Manage keys" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc. to be entered in a system dialog. This hint is added to the system dialog, below a title as "Manage keys" or "Backup". -->
@@ -913,7 +913,7 @@
 
     <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="stop_sharing_location">Stop sharing location</string>
-    <string name="a11y_voice_message_hint_ios">After recording double-tap to send. To discard the recording scrub with two fingers.</string>
+    <string name="a11y_voice_message_hint_ios">After recording, double-tap to send. To discard the recording, scrub with two fingers.</string>
     <string name="a11y_connectivity_hint">Double tap to view connectivity details.</string>
     <string name="login_error_no_internet_connection">No internet connection, login failed.</string>
     <string name="share_account_not_configured">Account is not configured.</string>
@@ -936,8 +936,8 @@
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat uses your camera to take and send photos and videos and to scan QR codes.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat uses your contacts to show a list of e-mail addresses you can write to. Delta Chat has no server, your contacts are not sent anywhere.</string>
-    <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">Delta Chat needs the location permission in order to share your location for the timespan you have enabled location sharing.</string>
-    <string name="InfoPlist_NSLocationWhenInUseUsageDescription">Delta Chat needs the location permission in order to share your location for the timespan you have enabled location sharing.</string>
+    <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">Delta Chat needs permission to share your location for the timespan you have enabled location sharing.</string>
+    <string name="InfoPlist_NSLocationWhenInUseUsageDescription">Delta Chat needs permission to share your location for the timespan you have enabled location sharing.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat uses your microphone to record and send voice messages and videos with sound.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat will let you choose which photos from your library to send.</string>
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat wants to save images to your photo library.</string>
