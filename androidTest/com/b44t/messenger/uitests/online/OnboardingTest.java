@@ -39,7 +39,7 @@ public class OnboardingTest {
               "either in gradle.properties or via an environment variable. " +
               "See README.md for more details.");
     }
-    onView(withText(R.string.qrscan_title)).check(matches(isClickable()));
+    onView(withText(R.string.scan_invitation_code)).check(matches(isClickable()));
     onView(withText(R.string.import_backup_title)).check(matches(isClickable()));
     onView(withText(R.string.login_header)).perform(click());
     onView(withHint(R.string.email_address)).perform(replaceText(BuildConfig.TEST_ADDR));
