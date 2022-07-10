@@ -39,7 +39,7 @@
     <string name="unarchive">Arşivleme</string>
     <string name="mute">Sessize Al</string>
     <string name="ephemeral_messages">Kaybolan İletiler</string>
-    <string name="ephemeral_messages_hint">Delta Chat\'i kullanıyorlarsa, bu sohbetin tüm üyelerine uygulanır; ancak onlar iletileri kopyalayabilir, kaydedebilir ve iletebilir ya da diğer e-posta istemcilerini kullanabilir.</string>
+    <string name="ephemeral_messages_hint">Delta Chat\'i kullanıyorlarsa, bu sohbetin tüm üyelerine uygulanır; onlar iletileri kopyalayabilir, kaydedebilir ve iletebilir ya da diğer e-posta istemcilerini kullanabilir.</string>
     <string name="save">Kaydet</string>
     <string name="chat">Sohbet</string>
     <string name="media">Ortam</string>
@@ -278,8 +278,8 @@
     <string name="share_location_for_six_hours">6 saatliğine</string>
 
     <plurals name="ask_send_following_n_files_to">
-        <item quantity="one">Aşağıdaki dosya %s alıcısına gönderilsin mi?</item>
-        <item quantity="other">Aşağıdaki %d dosya %s alıcısına gönderilsin mi?</item>
+        <item quantity="one">Aşağıdaki dosya %s kişisine gönderilsin mi?</item>
+        <item quantity="other">Aşağıdaki %d dosya %s kişisine gönderilsin mi?</item>
     </plurals>
     <string name="file_saved_to">Dosya \"%1$s\" üzerine kaydedildi.</string>
 
@@ -313,13 +313,13 @@
         <item quantity="one">%d ileti silinsin mi?</item>
         <item quantity="other">%d ileti silinsin mi?</item>
     </plurals>
-    <string name="ask_forward">İletiler %1$s alıcısına iletilsin mi?</string>
+    <string name="ask_forward">İletiler %1$s kişisine iletilsin mi?</string>
     <string name="ask_forward_multiple">İletiler %1$d sohbete iletilsin mi?</string>
     <string name="ask_export_attachment">İlişikleri dışa aktarmak, aygıtınızdaki diğer uygulamaların onlara erişmesine izin verir.\n\nSürdürülsün mü?</string>
     <string name="ask_block_contact">Bu kişi engellensin mi? Artık ondan gelen iletileri almayacaksınız.</string>
-    <string name="ask_unblock_contact">Bu kişi engellenmesin mi? Bundan sonra ondan gelen iletileri alabileceksiniz.</string>
+    <string name="ask_unblock_contact">Bu kişi engellenmesin mi? Artık ondan gelen iletileri alabileceksiniz.</string>
     <string name="ask_delete_contacts">Kişiler silinsin mi?\n\nSohbetlerin sürdüğü ya da sistem adres defterinden gelen kişiler kalıcı olarak silinemez.</string>
-    <string name="ask_delete_contact">%1$s kişisi silinsin mi?\n\nSohbetlerin sürdüğü ve sistem adres defterinden gelen kişiler kalıcı olarak silinemez.</string>
+    <string name="ask_delete_contact">%1$s kişisi silinsin mi?\n\nSohbetlerin sürdüğü ya da sistem adres defterinden gelen kişiler kalıcı olarak silinemez.</string>
     <string name="cannot_delete_contacts_in_use">Sohbetlerin sürdüğü kişiler silinemez.</string>
     <string name="ask_start_chat_with">%1$s ile sohbet edilsin mi?</string>
     <string name="ask_delete_value">%s silinsin mi?</string>
@@ -355,7 +355,7 @@
         <item quantity="other">%d yeni ileti</item>
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
-    <string name="chat_new_one_to_one_hint">%1$s alıcısına bir ileti gönderin; Delta Chat olmadan bile onu alabilir.</string>
+    <string name="chat_new_one_to_one_hint">%1$s kişisine bir ileti gönderin; Delta Chat olmadan bile onu alabilir.</string>
     <string name="chat_new_broadcast_hint">Bir yayın listesinde, diğerleri sizinle olan özel sohbetlerinde ileti alacak.\n\nAlıcılar birbirinin farkında olmayacak.</string>
     <string name="chat_new_group_hint">Diğerleri, yalnızca siz bir ilk ileti gönderdikten sonra bu grubu görecek.</string>
     <string name="chat_record_slide_to_cancel">İptal etmek için kaydırın</string>
@@ -378,7 +378,7 @@
     <string name="retry_send">İletiyi göndermeyi yeniden dene</string>
     <!-- reasons for a disabled message composer -->
     <string name="messaging_disabled_not_in_group">Bir ileti göndermek için bu grupta olmalısınız. Katılmak için başka bir üyeye sorun.</string>
-    <string name="messaging_disabled_device_chat">Bu sohbet, yerel olarak oluşturulan iletileri içerir; yazma etkisiz.</string>
+    <string name="messaging_disabled_device_chat">Bu sohbet, yerel olarak oluşturulan iletileri içerir; yazma etkisizleştirilir.</string>
     <string name="messaging_disabled_mailing_list">Posta listelerine iletiler gönderme henüz desteklenmiyor</string>
     <string name="cannot_display_unsuported_file_type">Bu dosya türü görüntülenemiyor: %s</string>
     <string name="attachment_failed_to_load">İlişiği yükleme başarısız</string>
@@ -456,13 +456,13 @@
     <string name="storage_on_domain">%1$s Üzerinde Depolama</string>
     <string name="connectivity">Bağlanabilirlik</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
-    <string name="connectivity_not_connected">Bağlanmadı</string>
+    <string name="connectivity_not_connected">Bağlı değil</string>
     <!-- Shown in the title bar if the app is "Connecting"; prefer short strings. The ellipsis is a single character (…), not three (...) -->
     <string name="connectivity_connecting">Bağlanıyor…</string>
     <!-- Shown in the title bar if the app is "Updating" (eg. getting new/old message, sync things); prefer short strings. The ellipsis is a single character (…), not three (...) -->
     <string name="connectivity_updating">Güncelleştiriliyor…</string>
     <!-- Shown in the setting if the app is "Connected" -->
-    <string name="connectivity_connected">Bağlandı</string>
+    <string name="connectivity_connected">Bağlı</string>
     <string name="sending">Gönderiliyor…</string>
     <string name="last_msg_sent_successfully">Son ileti başarıyla gönderildi.</string>
     <string name="not_supported_by_provider">Sağlayıcınız tarafından desteklenmiyor.</string>
@@ -721,7 +721,7 @@
     <string name="systemmsg_action_by_user">%2$s tarafından %1$s.</string>
     <string name="systemmsg_unknown_sender_for_chat">Bu sohbet için bilinmeyen gönderen. Daha fazla ayrıntı için \'bilgi\'ye bakın.</string>
     <string name="systemmsg_subject_for_new_contact">%1$s kişisinden gelen ileti</string>
-    <string name="systemmsg_failed_sending_to">%1$s alıcısına ileti gönderme başarısız.</string>
+    <string name="systemmsg_failed_sending_to">%1$s kişisine ileti gönderme başarısız.</string>
 
     <string name="systemmsg_ephemeral_timer_disabled">Kaybolan iletiler zamanlayıcısı etkisizleştirildi.</string>
     <string name="systemmsg_ephemeral_timer_enabled">Kaybolan iletiler zamanlayıcısı %1$s s\'ye ayarlandı.</string>
