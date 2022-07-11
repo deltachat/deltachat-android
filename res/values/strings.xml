@@ -817,7 +817,7 @@
     <string name="perm_continue">Continue</string>
     <string name="perm_explain_access_to_camera_denied">To take photos or capture videos, go to the app settings, select \"Permissions\", and enable \"Camera\".</string>
     <string name="perm_explain_access_to_mic_denied">To send audio messages, go to the app settings, select \"Permissions\", and enable \"Microphone\".</string>
-    <string name="perm_explain_access_to_storage_denied">To recieve or send files, go to the app settings, select \"Permissions\", and enable \"Storage\".</string>
+    <string name="perm_explain_access_to_storage_denied">To receive or send files, go to the app settings, select \"Permissions\", and enable \"Storage\".</string>
     <string name="perm_explain_access_to_location_denied">To attach a location, go to the app settings, select \"Permissions\", and enable \"Location\".</string>
 
     <!-- ImageEditorHud -->
