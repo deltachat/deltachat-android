@@ -362,7 +362,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
           return getString(R.string.tab_gallery);
 
         case TAB_DOCS:
-          return getString(R.string.tab_docs);
+          return getString(R.string.files);
 
         case TAB_LINKS:
           return getString(R.string.tab_links);
