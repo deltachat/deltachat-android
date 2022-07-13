@@ -446,7 +446,9 @@
     <string name="tab_webxdc_empty_hint">Webxdc content shared in this chat will appear here.</string>
     <string name="media_preview">Media Preview</string>
     <string name="send_message">Send Message</string>
+    <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
     <string name="aeap_addr_changed">%1$s changed their address from %2$s to %3$s</string>
+    <!-- the explanation is shown (1) as a modal dialog with the buttons "Cancel" and "Continue" as well as (2) as a device message -->
     <string name="aeap_explanation">You changed your email address.\n\nContacts using Delta Chat will automatically replace you in the groups you send a message to.\n\nIf possible, set up your old email provider to forward all emails to your new email address.</string>
 
     <!-- Connectivity -->
