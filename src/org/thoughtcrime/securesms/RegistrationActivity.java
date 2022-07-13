@@ -61,9 +61,12 @@ import org.thoughtcrime.securesms.util.task.ProgressDialogAsyncTask;
 import org.thoughtcrime.securesms.util.views.ProgressDialog;
 
 import java.lang.ref.WeakReference;
+import java.util.Locale;
 import java.util.concurrent.ExecutionException;
 
 public class RegistrationActivity extends BaseActionBarActivity implements DcEventCenter.DcEventDelegate {
+
+    private static final String AEAP_BLOG_LINK = "https://delta.chat/550/en/2022-07-10-aeap";
 
     private enum VerificationType {
         EMAIL,
@@ -233,23 +236,20 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         int id = item.getItemId();
 
         if (id == R.id.do_register) {
-            // "log in" button clicked - even if oauth2DeclinedByUser is true,
-            // we will ask for oauth2 to allow reverting the decision.
-            checkOauth2start().addListener(new ListenableFuture.Listener<Boolean>() {
-                @Override
-                public void onSuccess(Boolean oauth2started) {
-                    if(!oauth2started) {
-                        updateProviderInfo();
-                        onLogin();
-                    }
-                }
-
-                @Override
-                public void onFailure(ExecutionException e) {
-                    updateProviderInfo();
-                    onLogin();
-                }
-            });
+            String oldAddr = DcHelper.getSelfAddr(this);
+            String newAddr = emailInput.getText().toString();
+            if (!TextUtils.isEmpty(oldAddr)
+                    && !TextUtils.equals(oldAddr.toLowerCase(Locale.ROOT), newAddr.toLowerCase(Locale.ROOT))) {
+                // Tell the user about AEAP if they are about to change their address
+                new AlertDialog.Builder(this)
+                        .setMessage(R.string.aeap_explanation)
+                        .setNeutralButton(R.string.more_info_desktop, (d, w) -> IntentUtils.showBrowserIntent(this, AEAP_BLOG_LINK))
+                        .setNegativeButton(R.string.cancel, (d, w) -> {})
+                        .setPositiveButton(R.string.perm_continue, (d, w) -> do_register())
+                        .show();
+            } else {
+                do_register();
+            }
             return true;
         } else if (id == android.R.id.home) {
             // handle close button click here
@@ -257,6 +257,26 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void do_register() {
+        // "log in" button clicked - even if oauth2DeclinedByUser is true,
+        // we will ask for oauth2 to allow reverting the decision.
+        checkOauth2start().addListener(new ListenableFuture.Listener<Boolean>() {
+            @Override
+            public void onSuccess(Boolean oauth2started) {
+                if(!oauth2started) {
+                    updateProviderInfo();
+                    onLogin();
+                }
+            }
+
+            @Override
+            public void onFailure(ExecutionException e) {
+                updateProviderInfo();
+                onLogin();
+            }
+        });
     }
 
     @Override

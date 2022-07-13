@@ -45,7 +45,11 @@ public abstract class ProgressDialogAsyncTask<Params, Progress, Result> extends 
 
   @Override
   protected void onPostExecute(Result result) {
-    if (progress != null) progress.dismiss();
+    try {
+      if (progress != null) progress.dismiss();
+    } catch(Exception e) {
+      e.printStackTrace();
+    }
   }
 
   protected Context getContext() {
