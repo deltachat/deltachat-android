@@ -39,6 +39,7 @@ public class DcHelper {
   private static final String TAG = DcHelper.class.getSimpleName();
 
     public static final String CONFIG_ADDRESS = "addr";
+    public static final String CONFIG_CONFIGURED_ADDRESS = "configured_addr";
     public static final String CONFIG_MAIL_SERVER = "mail_server";
     public static final String CONFIG_MAIL_USER = "mail_user";
     public static final String CONFIG_MAIL_PASSWORD = "mail_pw";
@@ -97,6 +98,10 @@ public class DcHelper {
         return dcContext.isConfigured() == 1;
     }
 
+    public static String getSelfAddr(Context context) {
+        DcContext dcContext = getContext(context);
+        return dcContext.getConfig(CONFIG_CONFIGURED_ADDRESS);
+    }
 
     public static int getInt(Context context, String key) {
         DcContext dcContext = getContext(context);
@@ -207,6 +212,8 @@ public class DcHelper {
     // cmp. https://github.com/deltachat/deltachat-android/issues/2187
     dcContext.setStockTranslation(120, context.getString(R.string.qrshow_join_group_hint).replace("\"", ""));
     dcContext.setStockTranslation(121, context.getString(R.string.connectivity_not_connected));
+    dcContext.setStockTranslation(122, context.getString(R.string.aeap_addr_changed));
+    dcContext.setStockTranslation(123, context.getString(R.string.aeap_explanation));
   }
 
   public static File getImexDir() {
