@@ -1,5 +1,6 @@
 package org.thoughtcrime.securesms;
 
+import static org.thoughtcrime.securesms.connect.DcHelper.AEAP_BLOG_LINK;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_ADDRESS;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_MAIL_PASSWORD;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_MAIL_PORT;
@@ -65,8 +66,6 @@ import java.util.Locale;
 import java.util.concurrent.ExecutionException;
 
 public class RegistrationActivity extends BaseActionBarActivity implements DcEventCenter.DcEventDelegate {
-
-    private static final String AEAP_BLOG_LINK = "https://delta.chat/550/en/2022-07-10-aeap";
 
     private enum VerificationType {
         EMAIL,
