@@ -620,7 +620,7 @@
     <string name="pref_auto_folder_moves">Move Automatically to DeltaChat Folder</string>
     <string name="pref_auto_folder_moves_explain">Chat conversations are moved to avoid cluttering the Inbox</string>
     <string name="pref_only_fetch_mvbox_title">Only Fetch from DeltaChat Folder</string>
-    <string name="pref_only_fetch_mvbox_explain">Ignores other folders. Requires your server to move chat messages to the DeltaChat folder.</string>
+    <string name="pref_only_fetch_mvbox_explain">Ignore other folders. Requires your server to move chat messages to the DeltaChat folder.</string>
     <string name="pref_show_emails">Show Classic E-Mails</string>
     <string name="pref_show_emails_no">No, chats only</string>
     <string name="pref_show_emails_accepted_contacts">For accepted contacts</string>
