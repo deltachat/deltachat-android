@@ -241,7 +241,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
                     && !TextUtils.equals(oldAddr.toLowerCase(Locale.ROOT), newAddr.toLowerCase(Locale.ROOT))) {
                 // Tell the user about AEAP if they are about to change their address
                 new AlertDialog.Builder(this)
-                        .setMessage(R.string.aeap_explanation)
+                        .setMessage(getString(R.string.aeap_explanation, oldAddr, newAddr))
                         .setNeutralButton(R.string.more_info_desktop, (d, w) -> IntentUtils.showBrowserIntent(this, AEAP_BLOG_LINK))
                         .setNegativeButton(R.string.cancel, (d, w) -> {})
                         .setPositiveButton(R.string.perm_continue, (d, w) -> do_register())

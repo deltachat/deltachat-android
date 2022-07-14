@@ -38,7 +38,7 @@ public class DcHelper {
 
   private static final String TAG = DcHelper.class.getSimpleName();
 
-  public static final String AEAP_BLOG_LINK = "https://delta.chat/550/en/2022-07-10-aeap";
+  public static final String AEAP_BLOG_LINK = "https://delta.chat/en/2022-07-10-aeap";
 
     public static final String CONFIG_ADDRESS = "addr";
     public static final String CONFIG_CONFIGURED_ADDRESS = "configured_addr";
