@@ -706,7 +706,7 @@
 
 
     <!-- system messages -->
-    <string name="systemmsg_group_name_changed">Name of group %1$s changed as \"%2$s\".</string>
+    <string name="systemmsg_group_name_changed">Name of group \"%1$s\" changed as \"%2$s\".</string>
     <string name="systemmsg_group_image_changed">Group image changed.</string>
     <string name="systemmsg_group_image_deleted">Group image deleted.</string>
     <string name="systemmsg_member_added">Member %1$s added.</string>
