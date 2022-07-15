@@ -199,7 +199,7 @@
     <string name="menu_add_attachment">Add Attachment</string>
     <string name="menu_leave_group">Leave Group</string>
     <string name="menu_delete_chat">Delete Chat</string>
-    <string name="ask_delete_named_chat">Are you sure you want to delete chat named \"%1$s\"?</string>
+    <string name="ask_delete_named_chat">Are you sure you want to delete chat \"%1$s\"?</string>
     <string name="menu_delete_messages">Delete Messages</string>
     <string name="delete_contact">Delete Contact</string>
     <string name="menu_delete_location">Delete this Location?</string>
