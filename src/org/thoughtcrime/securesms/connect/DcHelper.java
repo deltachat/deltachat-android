@@ -38,8 +38,6 @@ public class DcHelper {
 
   private static final String TAG = DcHelper.class.getSimpleName();
 
-  public static final String AEAP_BLOG_LINK = "https://delta.chat/en/2022-07-10-aeap";
-
     public static final String CONFIG_ADDRESS = "addr";
     public static final String CONFIG_CONFIGURED_ADDRESS = "configured_addr";
     public static final String CONFIG_MAIL_SERVER = "mail_server";
@@ -215,7 +213,7 @@ public class DcHelper {
     dcContext.setStockTranslation(120, context.getString(R.string.qrshow_join_group_hint).replace("\"", ""));
     dcContext.setStockTranslation(121, context.getString(R.string.connectivity_not_connected));
     dcContext.setStockTranslation(122, context.getString(R.string.aeap_addr_changed));
-    dcContext.setStockTranslation(123, context.getString(R.string.aeap_explanation) + "\n\n" + AEAP_BLOG_LINK);
+    dcContext.setStockTranslation(123, context.getString(R.string.aeap_explanation));
   }
 
   public static File getImexDir() {
