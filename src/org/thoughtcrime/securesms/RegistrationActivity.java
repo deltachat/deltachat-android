@@ -1,6 +1,5 @@
 package org.thoughtcrime.securesms;
 
-import static org.thoughtcrime.securesms.connect.DcHelper.AEAP_BLOG_LINK;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_ADDRESS;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_MAIL_PASSWORD;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_MAIL_PORT;
@@ -242,7 +241,6 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
                 // Tell the user about AEAP if they are about to change their address
                 new AlertDialog.Builder(this)
                         .setMessage(getString(R.string.aeap_explanation, oldAddr, newAddr))
-                        .setNeutralButton(R.string.more_info_desktop, (d, w) -> IntentUtils.showBrowserIntent(this, AEAP_BLOG_LINK))
                         .setNegativeButton(R.string.cancel, (d, w) -> {})
                         .setPositiveButton(R.string.perm_continue, (d, w) -> do_register())
                         .show();
