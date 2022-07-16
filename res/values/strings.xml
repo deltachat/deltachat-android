@@ -439,7 +439,7 @@
     <string name="tab_links">Links</string>
     <string name="tab_map">Map</string>
     <string name="tab_gallery_empty_hint">Images and videos shared in this chat will appear here.</string>
-    <string name="tab_docs_empty_hint">Documents, music, and other files shared in this chat will appear here.</string>
+    <string name="tab_docs_empty_hint">Documents and other files shared in this chat will appear here.</string>
     <string name="tab_image_empty_hint">Images shared in this chat will appear here.</string>
     <string name="tab_video_empty_hint">Videos shared in this chat will appear here.</string>
     <string name="tab_audio_empty_hint">Audio files and voice messages shared in this chat will appear here.</string>
