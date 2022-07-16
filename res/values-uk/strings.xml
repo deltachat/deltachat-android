@@ -476,7 +476,6 @@
     <string name="tab_webxdc_empty_hint">Webxdc-контент, яким поділилися у цьому чаті, буде відображатися тут.</string>
     <string name="media_preview">Попередній перегляд медіа</string>
     <string name="send_message">Надіслати повідомлення</string>
-
     <!-- Connectivity -->
     <!-- Headline for the "Inbox" eg. in the "Connectivity" view -->
     <string name="incoming_messages">Вхідні повідомлення</string>

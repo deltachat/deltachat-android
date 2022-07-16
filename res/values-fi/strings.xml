@@ -446,7 +446,6 @@
     <string name="tab_webxdc_empty_hint">Tässä keskustelussa jaettu webxdc-sisältö näkyy tässä.</string>
     <string name="media_preview">Median esikatselu</string>
     <string name="send_message">Lähetä viesti</string>
-
     <!-- Connectivity -->
     <!-- Headline for the "Inbox" eg. in the "Connectivity" view -->
     <string name="incoming_messages">Saapuvat viestit</string>

@@ -431,7 +431,6 @@
     <string name="tab_docs_empty_hint">اسناد، آهنگ‌ها و دیگر فایل‌هایی که در این گفتگو به اشتراک گذاشته شده باشند در اینجا نمایش داده خواهند شد. </string>
     <string name="media_preview">نمایش رسانه</string>
     <string name="send_message">ارسال پیام</string>
-
     <!-- Connectivity -->
     <!-- Headline for the "Inbox" eg. in the "Connectivity" view -->
     <string name="incoming_messages">پیام‌های ورودی</string>

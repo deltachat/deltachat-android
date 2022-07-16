@@ -431,7 +431,6 @@
     <string name="tab_webxdc_empty_hint">此聊天内分享的 Webxdc 内容将显示在这里</string>
     <string name="media_preview">媒体预览</string>
     <string name="send_message">发送消息</string>
-
     <!-- Connectivity -->
     <!-- Headline for the "Inbox" eg. in the "Connectivity" view -->
     <string name="incoming_messages">传入消息</string>

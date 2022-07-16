@@ -430,7 +430,6 @@
     <string name="tab_map">Mapa</string>
     <string name="media_preview">Previsualització multimèdia</string>
     <string name="send_message">Envia el missatge</string>
-
     <!-- Connectivity -->
     <!-- Headline for the "Inbox" eg. in the "Connectivity" view -->
     <string name="incoming_messages">Missatges entrants</string>

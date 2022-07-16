@@ -365,7 +365,6 @@
     <string name="tab_docs_empty_hint">Dokumenter, musik og andre filer delt i denne samtale vises her.</string>
     <string name="media_preview">Medie forhåndsvisning</string>
     <string name="send_message">Send besked</string>
-
     <!-- Connectivity -->
     <!-- Headline for the "Inbox" eg. in the "Connectivity" view -->
     <string name="incoming_messages">Indkommende beskeder</string>

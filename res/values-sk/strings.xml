@@ -461,7 +461,6 @@
     <string name="tab_docs_empty_hint">Tu sa zobrazia dokumenty, hudba a ďalšie súbory zdieľané v tejto konverzácii.</string>
     <string name="media_preview">Ukážka pre médiá</string>
     <string name="send_message">Poslať správu</string>
-
     <!-- Connectivity -->
     <!-- Headline for the "Inbox" eg. in the "Connectivity" view -->
     <string name="incoming_messages">Prichádzajúce Správy</string>

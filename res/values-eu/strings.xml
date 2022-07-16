@@ -281,7 +281,6 @@
     <string name="tab_docs_empty_hint">Txat honetan partekatutako dokumentuak, musika, eta bestelako fitxategiak agertuko dira hemen</string>
     <string name="media_preview">Multimediaren aurrebista</string>
     <string name="send_message">Bidali mezua</string>
-
     <string name="welcome_intro1_message">Munduan erabiltzaile gehien dituen mezularitza aplikazioa. Librea eta independentea.</string>
     <string name="login_title">Hasi saioa</string>
     <string name="login_header">Hasi saioa zure zerbitzarian</string>

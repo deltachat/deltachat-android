@@ -439,14 +439,13 @@
     <string name="tab_links">Bağlantılar</string>
     <string name="tab_map">Harita</string>
     <string name="tab_gallery_empty_hint">Bu sohbette paylaşılan görseller ve videolar burada görünecek.</string>
-    <string name="tab_docs_empty_hint">Bu sohbette paylaşılan belgeler, müzik ve diğer dosyalar burada görünecek.</string>
+    <string name="tab_docs_empty_hint">Bu sohbette paylaşılan belgeler ve diğer dosyalar burada görünecek.</string>
     <string name="tab_image_empty_hint">Bu sohbette paylaşılan görseller burada görünecek.</string>
     <string name="tab_video_empty_hint">Bu sohbette paylaşılan videolar burada görünecek.</string>
     <string name="tab_audio_empty_hint">Bu sohbette paylaşılan ses dosyaları ve sesli iletiler burada görünecek.</string>
     <string name="tab_webxdc_empty_hint">Bu sohbette paylaşılan Webxdc içeriği burada görünecek.</string>
     <string name="media_preview">Ortam Önizlemesi</string>
     <string name="send_message">İleti Gönder</string>
-
     <!-- Connectivity -->
     <!-- Headline for the "Inbox" eg. in the "Connectivity" view -->
     <string name="incoming_messages">Gelen İletiler</string>

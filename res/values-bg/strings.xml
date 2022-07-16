@@ -422,7 +422,6 @@
     <string name="tab_docs_empty_hint">Документите, музикалните файлове и други файлове, споделени в този чат, ще се показват тук.</string>
     <string name="media_preview">Предварителен преглед на медия</string>
     <string name="send_message">Изпращане на съобщение</string>
-
     <!-- Connectivity -->
     <!-- Headline for the "Inbox" eg. in the "Connectivity" view -->
     <string name="incoming_messages">Входящи съобщения</string>

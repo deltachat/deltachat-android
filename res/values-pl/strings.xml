@@ -476,7 +476,6 @@
     <string name="tab_webxdc_empty_hint">Tutaj będzie wyświetlona treść Webxdc udostępniona na tym czacie.</string>
     <string name="media_preview">Podgląd multimediów</string>
     <string name="send_message">Wyślij wiadomość</string>
-
     <!-- Connectivity -->
     <!-- Headline for the "Inbox" eg. in the "Connectivity" view -->
     <string name="incoming_messages">Wiadomości przychodzące</string>

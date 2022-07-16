@@ -358,7 +358,6 @@
     <string name="tab_docs_empty_hint">このチャットで共有されたドキュメントや音楽などがここに表示されます。</string>
     <string name="media_preview">メディアのプレビュー</string>
     <string name="send_message">送る</string>
-
     <string name="connectivity">接続性</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
     <string name="connectivity_not_connected">未接続</string>

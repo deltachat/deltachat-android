@@ -401,7 +401,6 @@
     <string name="tab_docs_empty_hint">ឯកសារ និងសំលេងដែលបានចែករំលែកនៅក្នុងការសន្ទនានេះ បង្ហាញនៅទីនេះ។</string>
     <string name="media_preview">ការមើលប្រព័ន្ធផ្សព្វផ្សាយជាមុន</string>
     <string name="send_message">ផ្ញើ​សារ</string>
-
     <!-- Connectivity -->
     <!-- Headline for the "Inbox" eg. in the "Connectivity" view -->
     <string name="incoming_messages">សារចូល</string>

@@ -461,7 +461,6 @@
     <string name="tab_webxdc_empty_hint">Les contenus Webxdc partagés dans cette discussion seront affichés ici.</string>
     <string name="media_preview">Prévisualiser le fichier multimédia</string>
     <string name="send_message">Envoyer message</string>
-
     <!-- Connectivity -->
     <!-- Headline for the "Inbox" eg. in the "Connectivity" view -->
     <string name="incoming_messages">Messages entrants</string>
