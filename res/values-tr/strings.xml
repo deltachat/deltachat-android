@@ -479,7 +479,7 @@
     <string name="login_title">Oturum Aç</string>
     <string name="login_header">E-Posta Hesabınıza Oturum Açın</string>
     <string name="login_explain">Varolan bir e-posta hesabıyla oturum açın</string>
-    <string name="login_subheader">Bilinen e-posta sağlayıcıları için ek ayarlar otomatik olarak ayarlanır. Bazen IMAP\'nin web ayarlarından etkinleştirilmesi gerekir. Yardım için e-posta sağlayıcınıza ya da arkadaşlarınıza danışın.</string>
+    <string name="login_subheader">Bilinen e-posta sağlayıcıları için ek ayarlar otomatik olarak ayarlanır. Bazen IMAP\'in web ayarlarından etkinleştirilmesi gerekir. Yardım için e-posta sağlayıcınıza ya da arkadaşlarınıza danışın.</string>
     <string name="login_no_servers_hint">Delta Chat sunucuları yoktur; verileriniz aygıtınızda kalır.</string>
     <string name="login_inbox">Gelen Kutusu</string>
     <string name="login_imap_login">IMAP Oturum Açma Adı</string>
@@ -517,7 +517,7 @@
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Geçersiz sertifikaları kabul et</string>
     <string name="used_settings">Kullanılan ayarlar:</string>
-    <string name="switch_account">Hesap Değiştir</string>
+    <string name="switch_account">Hesabı Değiştir</string>
     <string name="add_account">Hesap Ekle</string>
     <string name="delete_account">Hesabı Sil</string>
     <string name="delete_account_ask">Hesap verilerinizi silmek istediğinizden emin misiniz?</string>
@@ -546,7 +546,7 @@
     <string name="pref_blocked_contacts">Engellenen Kişiler</string>
     <string name="blocked_empty_hint">Engellenen kişiler burada görünecek.</string>
     <string name="pref_password_and_account_settings">Parola ve Hesap</string>
-    <string name="pref_who_can_see_profile_explain">Diğer kullanıcılarla iletişim kurulurken; profil görseliniz, adınız ve imzanız iletilerinizle birlikte gönderilecek.</string>
+    <string name="pref_who_can_see_profile_explain">Profil görseliniz, adınız ve imzanız diğer kullanıcılarla iletişim kurulurken iletilerinizle birlikte gönderilecek.</string>
     <string name="pref_your_name">Adınız</string>
     <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
     <string name="pref_default_status_label">İmza Metni</string>
@@ -620,7 +620,7 @@
     <string name="pref_auto_folder_moves">DeltaChat Klasörüne Otomatik Olarak Taşı</string>
     <string name="pref_auto_folder_moves_explain">Sohbet görüşmeleri, Gelen Kutusu\'ndaki dağınıklığı önlemek için taşınır</string>
     <string name="pref_only_fetch_mvbox_title">Yalnızca DeltaChat Klasöründen Getir</string>
-    <string name="pref_only_fetch_mvbox_explain">Diğer klasörleri yoksay. Sunucunuzun sohbet iletilerini DeltaChat klasörüne taşımasını gerektirir.</string>
+    <string name="pref_only_fetch_mvbox_explain">Diğer klasörleri yok sayar. Sunucunuzun sohbet iletilerini DeltaChat klasörüne taşımasını gerektirir.</string>
     <string name="pref_show_emails">Klasik E-Postaları Göster</string>
     <string name="pref_show_emails_no">Hayır, yalnızca sohbetler</string>
     <string name="pref_show_emails_accepted_contacts">Kabul edilen kişiler için</string>
@@ -706,8 +706,8 @@
 
 
     <!-- system messages -->
-    <string name="systemmsg_group_name_changed">\"%1$s\" grup adı \"%2$s\" olarak değişti.</string>
-    <string name="systemmsg_group_image_changed">Grup görseli değişti.</string>
+    <string name="systemmsg_group_name_changed">\"%1$s\" grup adı \"%2$s\" olarak değiştirildi.</string>
+    <string name="systemmsg_group_image_changed">Grup görseli değiştirildi.</string>
     <string name="systemmsg_group_image_deleted">Grup görseli silindi.</string>
     <string name="systemmsg_member_added">%1$s üyesi eklendi.</string>
     <string name="systemmsg_member_removed">%1$s üyesi kaldırıldı.</string>
@@ -781,7 +781,7 @@
     <string name="qrshow_join_contact_hint">%1$s ile sohbet etmek için bunu tarayın</string>
     <string name="qrshow_join_contact_no_connection_toast">Internet bağlantısı yok; QR kodu ayarlaması gerçekleştirilemiyor.</string>
     <string name="qraccount_ask_create_and_login">\"%1$s\" üzerinde yeni e-posta adresi oluşturulsun ve oturum açılsın mı?</string>
-    <string name="qraccount_ask_create_and_login_another">\"%1$s\" üzerinde yeni e-posta adresi oluşturulsun ve oturum açılsın mı?\n\nVarolan hesabınız silinmeyecek. Hesaplarınız arasında geçiş yapmak için \"Hesap değiştir\" öğesini kullanın.</string>
+    <string name="qraccount_ask_create_and_login_another">\"%1$s\" üzerinde yeni e-posta adresi oluşturulsun ve oturum açılsın mı?\n\nVarolan hesabınız silinmeyecek. Hesaplarınız arasında geçiş yapmak için \"Hesabı Değiştir\" öğesini kullanın.</string>
     <string name="qraccount_success_enter_name">Oturum açma başarılı—e-posta adresiniz %1$s\n\nİsterseniz şimdi yazdığınız insanlara görüntülenecek bir ad ve bir profil görseli girebilirsiniz.</string>
     <string name="qraccount_qr_code_cannot_be_used">Taranan QR kodu, yeni bir hesap ayarlamak için kullanılamıyor.</string>
     <string name="qraccount_use_on_new_install">Taranan QR kodu, yeni bir hesap ayarlamak içindir. QR kodunu yeni bir Delta Chat kurulumu ayarlanırken tarayabilirsiniz.</string>
@@ -792,7 +792,7 @@
     <string name="contact_verified">%1$s doğrulandı.</string>
     <string name="contact_not_verified">%1$s doğrulanamıyor.</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
-    <string name="contact_setup_changed">%1$s için ayarlama değişti.</string>
+    <string name="contact_setup_changed">%1$s için ayarlama değiştirildi.</string>
     <string name="verified_group_explain">Doğrulanan gruplar (deneysel), etkin saldırılar karşısında güvenlik sağlar. Üyeler, diğer üyeler tarafından ikinci bir etkenle doğrulanır ve iletiler her zaman uçtan uca şifrelenir.</string>
     <string name="copy_qr_data_success">QR URL\'si panoya kopyalandı</string>
     <string name="mailto_dialog_header_select_chat">İletiyi göndermek için sohbet seçin</string>
@@ -945,8 +945,8 @@
 
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="pref_background_notifications">Arka Plan Bildirimleri</string>
-    <string name="pref_background_notifications_explain">Sunucunuza bir arka plan bağlantısı kullanır ve pil iyileştirmelerinin yoksayılmasını gerektirir.</string>
-    <string name="pref_background_notifications_rationale">E-posta sunucunuza bağlantıyı sürdürmek ve arka planda iletileri almak için sonraki adımda pil iyileştirmelerini yoksayın.\n\nDelta Chat, kaynakların en azını kullanır ve pilinizi boşaltmamaya özen gösterir.</string>
+    <string name="pref_background_notifications_explain">Sunucunuza bir arka plan bağlantısı kullanır ve pil iyileştirmelerinin yok sayılmasını gerektirir.</string>
+    <string name="pref_background_notifications_rationale">E-posta sunucunuza bağlantıyı sürdürmek ve arka planda iletileri almak için sonraki adımda pil iyileştirmelerini yok sayın.\n\nDelta Chat, kaynakların en azını kullanır ve pilinizi boşaltmamaya özen gösterir.</string>
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="pref_reliable_service">Güvenilir Arka Plan Bağlantısı</string>
     <string name="pref_reliable_service_explain">Kalıcı bir bildirim gerektirir</string>

@@ -857,7 +857,7 @@
     <string name="ImageEditorHud_brush_marker">Marker</string>
     <string name="ImageEditorHud_brush_highlight">Podkreślacz</string>
     <string name="ImageEditorHud_crop">Przytnij</string>
-    <string name="ImageEditorHud_flip">Odwróć</string>
+    <string name="ImageEditorHud_flip">Przełącz</string>
     <string name="ImageEditorHud_rotate">Obróć</string>
 
     <!-- dc_str_* resources -->
