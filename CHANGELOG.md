@@ -1,5 +1,17 @@
 # Delta Chat Android Changelog
 
+## v1.31.1 Testrun
+2022-07
+
+* AEAP: show confirmation dialog before changing e-mail address
+* AEAP: add a device message after changing e-mail address
+* AEAP replaces e-mail addresses only in verified groups for now
+* fix: handle updates for not yet downloaded webxdc instances
+* fix: better information on several configuration and non-delivery errors
+* update translations, revise english source
+* update to core90
+
+
 ## v1.31.0 Testrun
 2022-07
 
