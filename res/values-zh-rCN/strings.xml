@@ -431,6 +431,11 @@
     <string name="tab_webxdc_empty_hint">此聊天内分享的 Webxdc 内容将显示在这里</string>
     <string name="media_preview">媒体预览</string>
     <string name="send_message">发送消息</string>
+    <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
+    <string name="aeap_addr_changed">%1$s 将邮箱从 %2$s 更改为 %3$s</string>
+    <!-- the explanation is shown (1) as a modal dialog with the buttons "Cancel" and "Continue" as well as (2) as a device message -->
+    <string name="aeap_explanation">你将邮箱从 %1$s 改为了 %2$s。\n\n如果你现在发送一条消息到已验证的群组，那里的联系人将自动用你的新邮箱替换旧邮箱。\n\n我们建议你配置旧邮箱将所有邮件转发到新邮箱。否则，你可能收不到还不知道你新邮箱的联系人发过来的消息。</string>
+
     <!-- Connectivity -->
     <!-- Headline for the "Inbox" eg. in the "Connectivity" view -->
     <string name="incoming_messages">传入消息</string>
