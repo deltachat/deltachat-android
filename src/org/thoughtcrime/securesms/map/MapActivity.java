@@ -26,6 +26,7 @@ import com.b44t.messenger.DcMsg;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.mapbox.geojson.Feature;
 import com.mapbox.mapboxsdk.Mapbox;
+import com.mapbox.mapboxsdk.WellKnownTileServer;
 import com.mapbox.mapboxsdk.camera.CameraPosition;
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
 import com.mapbox.mapboxsdk.geometry.LatLng;
@@ -68,7 +69,7 @@ public class MapActivity extends BaseActivity implements Observer,
 
     public static void lazyMapboxInit(Context context) {
         try {
-            Mapbox.getInstance(context, BuildConfig.MAP_ACCESS_TOKEN);
+            Mapbox.getInstance(context, BuildConfig.MAP_ACCESS_TOKEN, WellKnownTileServer.Mapbox);
 
             // disable telemetry. these functions are currently partly redundant,
             // however, implementations may change
@@ -111,7 +112,7 @@ public class MapActivity extends BaseActivity implements Observer,
             mapFragment = (DCMapFragment) getSupportFragmentManager().findFragmentByTag(MAP_TAG);
         }
 
-        mapFragment.getMapAsync(mapboxMap -> mapboxMap.setStyle(Style.MAPBOX_STREETS, style -> {
+        mapFragment.getMapAsync(mapboxMap -> mapboxMap.setStyle(Style.getPredefinedStyle("Streets"), style -> {
 
             this.mapboxMap = mapboxMap;
             this.markerViewManager = new MarkerViewManager(mapFragment.getMapView(), mapboxMap);
