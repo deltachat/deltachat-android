@@ -1,5 +1,13 @@
 # Delta Chat Android Changelog
 
+## v1.32.0
+2022-07
+
+* update Maplibre
+* update translations
+* using core90
+
+
 ## v1.31.1 Testrun
 2022-07
 
