@@ -446,6 +446,11 @@
     <string name="tab_webxdc_empty_hint">Contido Webxdc compartido neste chat será mostrado aquí.</string>
     <string name="media_preview">Vista previa dos medios</string>
     <string name="send_message">Enviar mensaxe</string>
+    <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
+    <string name="aeap_addr_changed">%1$s cambiou o seu enderezo de %2$s a %3$s</string>
+    <!-- the explanation is shown (1) as a modal dialog with the buttons "Cancel" and "Continue" as well as (2) as a device message -->
+    <string name="aeap_explanation">Cambiaches o teu enderezo de email de %1$s a %2$s.\n\nSe envías unha mensaxe a un grupo verificado os contactos cambiarán automáticamente o enderezo antigo polo novo.\n\nÉ moi recomendable que configures o email antigo para que che reenvíe todo o correo ao novo enderezo. De non facelo poderías perder mensaxes de contactos que aínda non coñezan o teu novo enderezo.</string>
+
     <!-- Connectivity -->
     <!-- Headline for the "Inbox" eg. in the "Connectivity" view -->
     <string name="incoming_messages">Mensaxes entrantes</string>

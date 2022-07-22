@@ -427,7 +427,7 @@
     <!-- placeholder contains the hostname converted to ascii -->
     <string name="puny_code_warning_question">¿Estás seguro de que quieres visitar %1$s?</string>
     <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
-    <string name="puny_code_warning_description">Siguió un enlace que podría estar tergiversando caracteres al usar caracteres de diferentes alfabetos con un aspecto similar. Seguir el enlace etiquetado %1$s conducirá a %2$s, que es normal para caracteres no latinos. Si no esperaba tales caracteres, este enlace podría ser dañino</string>
+    <string name="puny_code_warning_description">Siguió un enlace que podría estar tergiversando caracteres al usar caracteres de diferentes alfabetos con un aspecto similar. Seguir el enlace etiquetado %1$s conducirá a %2$s, que es normal para caracteres no latinos. Si no esperaba tales caracteres, este enlace podría ser dañino.</string>
 
 
     <!-- search -->
@@ -461,6 +461,11 @@
     <string name="tab_webxdc_empty_hint">El contenido de Webxdc compartido en este chat se mostrará aquí.</string>
     <string name="media_preview">Vista previa de multimedia</string>
     <string name="send_message">Enviar mensaje</string>
+    <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
+    <string name="aeap_addr_changed">%1$s cambió su dirección de %2$s a %3$s</string>
+    <!-- the explanation is shown (1) as a modal dialog with the buttons "Cancel" and "Continue" as well as (2) as a device message -->
+    <string name="aeap_explanation">Has cambiado tu dirección de correo electrónico de %1$s a %2$s.\n\nSi ahora envías un mensaje a un grupo verificado, los contactos de éste sustituirán automáticamente la antigua por tu nueva dirección.\n\nEs muy recomendable que configures tu antiguo proveedor de correo electrónico para que reenvíe todos los mensajes a tu nueva dirección. De lo contrario, podrías perderte los mensajes de los contactos que aún no han recibido tu nueva dirección.</string>
+
     <!-- Connectivity -->
     <!-- Headline for the "Inbox" eg. in the "Connectivity" view -->
     <string name="incoming_messages">Mensajes entrantes</string>

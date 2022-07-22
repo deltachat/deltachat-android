@@ -461,6 +461,11 @@
     <string name="tab_webxdc_empty_hint">O conteúdo Webxdc compartilhado neste chat será exibido aqui.</string>
     <string name="media_preview">Pré-visualização.</string>
     <string name="send_message">Enviar mensagem</string>
+    <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
+    <string name="aeap_addr_changed">%1$s mudou seu endereço de %2$s para %3$s</string>
+    <!-- the explanation is shown (1) as a modal dialog with the buttons "Cancel" and "Continue" as well as (2) as a device message -->
+    <string name="aeap_explanation">Você mudou seu endereço de e-mail de %1$s para %2$s.\n\nSe você agora enviar uma mensagem para um grupo verificado, os contatos lá substituirão automaticamente o antigo por seu novo endereço.\n\nÉ altamente recomendável configurar seu antigo provedor de e-mail para encaminhar todos os e-mails para seu novo endereço de e-mail. Caso contrário, você pode perder mensagens de contatos que ainda não receberam seu novo endereço.</string>
+
     <!-- Connectivity -->
     <!-- Headline for the "Inbox" eg. in the "Connectivity" view -->
     <string name="incoming_messages">Mensagens Recebidas</string>
@@ -831,7 +836,7 @@
     <string name="perm_continue">Continuar</string>
     <string name="perm_explain_access_to_camera_denied">O Delta Chat precisa acessar sua câmera para tirar fotos e gravar vídeos, mas o acesso foi negado. Por favor, habilite a câmera nas configurações de permissões do aplicativo.</string>
     <string name="perm_explain_access_to_mic_denied">O Delta Chat precisa acessar seu microfone para que você possa enviar mensagens de voz, mas o acesso foi negado. Por favor, habilite o microfone nas configurações de permissões do aplicativo.</string>
-    <string name="perm_explain_access_to_storage_denied">O Delta Chat precisa acessar seu armazenamento para que você possa enviar e salvar fotos, vídeos, músicas e outras mídias, mas o acesso foi negado. Por favor, habilite o seu acesso nas configurações de permissões do aplicativo.</string>
+    <string name="perm_explain_access_to_storage_denied">Para receber o enviar arquivos, vai nas configurações do aplicativo, escolhe \"Permissões\", e ativar \"Armazenamento\".</string>
     <string name="perm_explain_access_to_location_denied">O Delta Chat precisa acessar sua localização para que você possa enviá-la, mas o acesso foi negado. Por favor, habilite o seu acesso nas configurações de permissões do aplicativo.</string>
 
     <!-- ImageEditorHud -->
@@ -950,8 +955,8 @@
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat usa sua câmera para tirar e enviar fotos e vídeos e para escanear códigos QR.</string>
     <string name="InfoPlist_NSContactsUsageDescription">O Delta Chat usa seus contatos para mostrar uma lista de endereços de e-mail para os quais você pode escrever. O Delta Chat não tem servidor, seus contatos não são enviados a lugar nenhum.</string>
-    <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">O Delta Chat precisa da permissão de localização para compartilhar sua localização durante o período de tempo em que você ativou o compartilhamento de localização.</string>
-    <string name="InfoPlist_NSLocationWhenInUseUsageDescription">O Delta Chat precisa de permissão de localização para compartilhar sua localização durante o período em que o compartilhamento de localização estiver ativado.</string>
+    <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">O Delta Chat precisa da permissão para compartilhar sua localização durante o período de tempo em que você ativou o compartilhamento de localização.</string>
+    <string name="InfoPlist_NSLocationWhenInUseUsageDescription">O Delta Chat precisa de permissão para compartilhar sua localização durante o período em que o compartilhamento de localização estiver ativado.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">O Delta Chat usa seu microfone para gravar e enviar mensagens de voz e vídeos com som.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">O Delta Chat permite que você escolha fotos de sua biblioteca para enviar.</string>
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">O Delta Chat deseja salvar imagens em sua biblioteca de fotos.</string>

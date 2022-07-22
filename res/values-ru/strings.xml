@@ -476,6 +476,11 @@
     <string name="tab_webxdc_empty_hint">Содержимое Webxdc-приложения, размещённые в этом чате, будут отображаться здесь.</string>
     <string name="media_preview">Предпросмотр медиафайлов</string>
     <string name="send_message">Отправить сообщение</string>
+    <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
+    <string name="aeap_addr_changed">%1$s изменила свой адрес с %2$s на %3$s</string>
+    <!-- the explanation is shown (1) as a modal dialog with the buttons "Cancel" and "Continue" as well as (2) as a device message -->
+    <string name="aeap_explanation">Вы изменили свой адрес электронной почты с %1$s на %2$s.\n\nЕсли теперь вы отправите сообщение в проверенную группу, контакты там автоматически заменят старый адрес на ваш новый.\n\nНастоятельно рекомендуется настроить вашего старого поставщика услуг электронной почты на пересылку всех писем на ваш новый адрес электронной почты. В противном случае вы можете пропустить сообщения контактов, которые еще не получили ваш новый адрес.</string>
+
     <!-- Connectivity -->
     <!-- Headline for the "Inbox" eg. in the "Connectivity" view -->
     <string name="incoming_messages">Входящие сообщения</string>

@@ -469,13 +469,18 @@
     <string name="tab_links">Посилання</string>
     <string name="tab_map">Карта</string>
     <string name="tab_gallery_empty_hint">Зображення та відео, якими поділилися у цьому чаті, будуть відображатися тут.</string>
-    <string name="tab_docs_empty_hint">Документи, музика та інші файли, якими поділилися у цьому чаті, будуть відображатися тут.</string>
+    <string name="tab_docs_empty_hint">Документи та інші файли, якими поділилися у цьому чаті, будуть відображатися тут.</string>
     <string name="tab_image_empty_hint">Зображення, якими поділилися у цьому чаті, будуть відображатися тут.</string>
     <string name="tab_video_empty_hint">Відео, якими поділилися у цьому чаті, будуть відображатися тут.</string>
     <string name="tab_audio_empty_hint">Аудіозаписи та голосові повідомлення, якими поділилися у цьому чаті, будуть відображатися тут.</string>
     <string name="tab_webxdc_empty_hint">Webxdc-контент, яким поділилися у цьому чаті, буде відображатися тут.</string>
     <string name="media_preview">Попередній перегляд медіа</string>
     <string name="send_message">Надіслати повідомлення</string>
+    <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
+    <string name="aeap_addr_changed">%1$s змінили їх адресу з %2$s на %3$s</string>
+    <!-- the explanation is shown (1) as a modal dialog with the buttons "Cancel" and "Continue" as well as (2) as a device message -->
+    <string name="aeap_explanation">Ви змінили вашу електронну адресу з %1$s на %2$s.\n\nЯкщо зараз ви відправите повідомлення у підтверджену групу, контакти в ній автоматично замінять вашу стару адресу на нову.\n\nНастійно рекомендується налаштувати старий аккаунт електронної пошти на пересилання всіх електронних листів на вашу нову електронну адресу. Інакше ви можете пропустити повідомлення контактів, які ще не отримали вашу нову адресу.</string>
+
     <!-- Connectivity -->
     <!-- Headline for the "Inbox" eg. in the "Connectivity" view -->
     <string name="incoming_messages">Вхідні повідомлення</string>
