@@ -107,6 +107,9 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
   public boolean onOptionsItemSelected(MenuItem item) {
     super.onOptionsItemSelected(item);
     switch (item.getItemId()) {
+      case R.id.menu_add_to_home_screen:
+        addToHomeScreen(this, dcAppMsg.getId());
+        return true;
       case R.id.source_code:
         openUrlInBrowser(this, sourceCodeUrl);
         return true;
@@ -190,6 +193,11 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
         }
       });
     });
+  }
+
+  public static void addToHomeScreen(Context context, int msgId) {
+    // TODO
+    Toast.makeText(context, R.string.done, Toast.LENGTH_LONG).show();
   }
 
   class InternalJSApi {
