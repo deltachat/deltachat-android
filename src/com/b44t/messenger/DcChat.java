@@ -31,6 +31,7 @@ public class DcChat {
     public native int     getType           ();
     public native int     getVisibility     ();
     public native String  getName           ();
+    public native String  getMailinglistAddr();
     public native String  getProfileImage   ();
     public native int     getColor          ();
     public native boolean isUnpromoted      ();
