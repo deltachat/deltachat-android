@@ -57,10 +57,10 @@ public class ConversationTitleView extends RelativeLayout {
   }
 
   public void setTitle(@NonNull GlideRequests glideRequests, @NonNull DcChat dcChat) {
-    setTitle(glideRequests, dcChat, true);
+    setTitle(glideRequests, dcChat, false);
   }
 
-  public void setTitle(@NonNull GlideRequests glideRequests, @NonNull DcChat dcChat, boolean showAddInfo) {
+  public void setTitle(@NonNull GlideRequests glideRequests, @NonNull DcChat dcChat, boolean profileView) {
     final int chatId = dcChat.getId();
     final Context context = getContext();
     final DcContext dcContext = DcHelper.getContext(context);
@@ -106,7 +106,7 @@ public class ConversationTitleView extends RelativeLayout {
     avatar.setAvatar(glideRequests, new Recipient(getContext(), dcChat), false);
 
     subtitle.setText(subtitleStr);
-    subtitle.setVisibility(showAddInfo? View.VISIBLE : View.GONE);
+    subtitle.setVisibility(profileView? View.GONE : View.VISIBLE);
 
     title.setCompoundDrawablesWithIntrinsicBounds(imgLeft, 0, imgRight, 0);
 
