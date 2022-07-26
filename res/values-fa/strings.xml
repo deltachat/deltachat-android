@@ -31,6 +31,8 @@
     <string name="back">بازگشت</string>
     <string name="close">بستن</string>
     <string name="forward">هدایت</string>
+    <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
+    <string name="resend">ارسال مجدد</string>
     <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
     <string name="archive">بایگانی</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
@@ -118,6 +120,12 @@
         <item quantity="one">%d گیرنده</item>
         <item quantity="other">%d گیرنده‌ </item>
     </plurals>
+    <!-- Short form for "N Chats Selected" or "N Messages Selected": in English, "N Selected" -->
+    <plurals name="n_selected">
+        <item quantity="one">تعداد %d انتخاب شده است</item>
+        <item quantity="other">تعداد  %dانتخاب شده است</item>
+    </plurals>
+
     <string name="self">من</string>
     <string name="draft">پیش‌نویس</string>
     <string name="image">تصویر</string>
@@ -256,6 +264,8 @@
     <string name="unpin">سنجاق برداری</string>
     <string name="ConversationFragment_quoted_message_not_found">پیام اصلی یافت نشد</string>
     <string name="reply_privately">پاسخ دادن به صورت خصوصی</string>
+    <string name="source_code">کد منبع</string>
+
     <string name="mute_for_one_hour">ساکت کردن به مدت۱ ساعت</string>
     <string name="mute_for_two_hours">ساکت کردن به مدت ۲ ساعت</string>
     <string name="mute_for_one_day">ساکت کردن به مدت ۱ روز</string>
@@ -283,6 +293,11 @@
     <string name="videochat_tap_to_open">برای باز کردن ضربه بزنید. </string>
     <string name="videochat_instance">جلسه تماس تصویری</string>
     <string name="videochat_instance_placeholder">جلسه تماس تصویری شما</string>
+    <string name="videochat_instance_example">مثال‌ها: 
+https://meet.jit.si/$ROOM 
+یا
+ basicwebrtc:https://your-server</string>
+    <string name="videochat_instance_explain_2">در صورت فعال‌سازی می‌توانید یک مکالمه تصویری را در هر گفتگو شروع کنید. نیازمند نرم‌افزار مورد نیاز یا مرورگر در هر دو طرف است. </string>
     <string name="videochat_instance_from_qr">می‌خواهید از \"%1$s\" برای دعوت دیگران به گفتگوی تصویری استفاده کنید؟/n/n وقتی تعیین شد، می‌توانید در هر گفتگوی فرد به فرد یک مکالمه تصویری شروع کنید. این کار، تنظیمات قبلی تماس تصویری(در صورت وجود تنظیمات قبلی) را تغییر می‌دهد.</string>
     <string name="videochat_invitation">دعوت به مکالمه تصویری.</string>
     <string name="videochat_invitation_body">شما به مکالمه تصویری دعوت شده اید برای پیوستن%1$s را بزنید.</string>
@@ -364,6 +379,7 @@
     <string name="saved_messages_explain">برای دسترسی راحت‌تر پیام‌ها را به اینجا هدایت کنید\n\n• می‌توانید یادداشت متنی یا صوتی تهیه کنید\n\n• برای ذخیره رسانه‌ آن را ضمیمه کنید. </string>
     <!-- Should match "Saved" from "Saved messages" -->
     <string name="saved">ذخیره شد</string>
+    <string name="save_as">ذخیره به عنوان</string>
     <string name="retry_send">برای ارسال پیام دوباره تلاش کنید. </string>
     <!-- reasons for a disabled message composer -->
     <string name="messaging_disabled_not_in_group">نمی‌توانید بنویسید چرا که در این گروه نیستید. برای عضو شدن از یکی از اعضا درخواست کنید. </string>
@@ -429,8 +445,19 @@
     <string name="tab_map">نقشه</string>
     <string name="tab_gallery_empty_hint">عکس‌ها و فیلم‌هایی که در این گفتگو به اشتراک گذاشته شده‌اند در اینجا نمایش داده خواهد شد. </string>
     <string name="tab_docs_empty_hint">اسناد، آهنگ‌ها و دیگر فایل‌هایی که در این گفتگو به اشتراک گذاشته شده باشند در اینجا نمایش داده خواهند شد. </string>
+    <string name="tab_image_empty_hint">تصاوری که در این گفتگو اشتراک گذاری شده‌ باشند در اینجا نمایش داده می‌شوند. </string>
+    <string name="tab_video_empty_hint">فیلم‌هایی که در این گفتگو اشتراک گذاری شده باشند در اینجا نمایش داده می‌شوند. </string>
+    <string name="tab_audio_empty_hint">فایل‌ها و پیام‌های صوتی که در این گفتگو اشتراک گذاری شده‌‌اند در اینجا نمایش داده می‌شوند.</string>
+    <string name="tab_webxdc_empty_hint">محتوای Webxdc اشتراک گذاری شده در این گفتگو در اینجا نمایش داده می‌شود. </string>
     <string name="media_preview">نمایش رسانه</string>
     <string name="send_message">ارسال پیام</string>
+    <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
+    <string name="aeap_addr_changed">مخاطب %1$s نشانی خود را از %2$s به %3$s تغییر داده است.  </string>
+    <!-- the explanation is shown (1) as a modal dialog with the buttons "Cancel" and "Continue" as well as (2) as a device message -->
+    <string name="aeap_explanation">شما نشانی رایانامه خود را از %1$s به %2$s تغییر داده‌اید. 
+اگر به گروه‌های تایید شده یا مخاطبین خود پیامی ارسال کنید؛ به صورت خودکار نشانی جدید را جایگزین نشانی پیشین می‌کنند. 
+به شدت توصیه می‌شود که نشانی رایانامه پیشین خود را به نحوی تنظیم کنید که همه رایانامه‌ها را به نشانی جدید شما هدایت کند؛ در غیر این صورت ممکن است پیام‌های مخاطبینی که از تغییر نشانی شما مطلع نشده‌اند را از دست بدهید. </string>
+
     <!-- Connectivity -->
     <!-- Headline for the "Inbox" eg. in the "Connectivity" view -->
     <string name="incoming_messages">پیام‌های ورودی</string>
@@ -456,6 +483,9 @@
     <string name="part_of_total_used">مقدار %1$s از %2$s استفاده شده است. </string>
 
 
+    <!-- welcome and login -->
+    <string name="welcome_chat_over_email">گفتگو از طریق رایانامه</string>
+    <string name="scan_invitation_code">اسکن کردن کد دعوت</string>
     <string name="welcome_intro1_message">پیام‌رسانی با وسیع‌ترین طیف مخاطبین در جهان. آزاد و مستقل. </string>
     <string name="login_title">ورود</string>
     <string name="login_header">به سرور خود وارد شوید</string>
@@ -516,7 +546,7 @@
     <!-- share and forward messages -->
     <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">هدایت به...</string>
-    <string name="share_multiple_attachments">ارسال %1$dفابل به گفتگوی انتخاب شده؟ n/n/ فایل‌ها بدون تغییر و در اندازه اصلی ارسال شده و تصاویر و فیلم ها فشرده نمی‌شوند.</string>
+    <string name="share_multiple_attachments">ارسال %1$dفایل به گفتگوی انتخاب شده؟ n/n/ فایل‌ها بدون تغییر و در اندازه اصلی ارسال شده و تصاویر و فیلم ها فشرده نمی‌شوند.</string>
     <string name="share_multiple_attachments_multiple_chats">ارسال  %1$dفایل به %2$d گفتگو؟n/n/ فایل‌(ها) بدون تغییر ارسال می‌شوند به این معنا که تصاویر و فیلم‌ها فشرده نمی‌شوند. </string>
     <string name="share_text_multiple_chats">ارسال این متن به %1$d گفتگو؟n/n/ \"%2$s\"</string>
     <string name="share_abort">اشتراک گذاری به دلیل نبود مجوز‌ها متوقف شد.</string>
@@ -603,6 +633,7 @@
     <string name="pref_imap_folder_warn_disable_defaults">اگر این گزینه را غیر فعال می‌کنید از اینکه سرور شما و حساب‌هایتان هم بر این اساس تنظیم شده باشند.\n\n در غیر این صورت ممکن است هیچ چیز کار نکند. </string>
     <string name="pref_watch_sent_folder">پوشه ارسال شده‌ها را نگاه کن</string>
     <string name="pref_send_copy_to_self">ارسال رونوشت به خودم</string>
+    <string name="pref_send_copy_to_self_explain">درصورت استفاده از این حساب در چند دستگاه مورد نیاز است. </string>
     <string name="pref_auto_folder_moves">انتقال خودکار به پوشه دلتاچت</string>
     <string name="pref_auto_folder_moves_explain">گفتگوها برای جلوگیری از پر شدن صندوق ورودی جابجا شده‌اند</string>
     <string name="pref_only_fetch_mvbox_title">فقط پوشه دلتاچت را بررسی کن</string>
@@ -728,9 +759,9 @@
     <string name="devicemsg_self_deleted">شما گفتگوی «پیام‌های ذخیره شده» را پاک کردید. 
 ℹ️ برای استفاده مجدد از «پیام‌های ذخیره شده» کافی است یک گفتگوی جدید با خودتان درست کنید. </string>
     <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
-    <string name="devicemsg_storage_exceeding">هشدار⚠️، میزان حجم در دسترس ارایه‌دهنده شما در حال تمام شدن است. %1$s از %% استفاده شده است. 
-اگر ۱۰۰%% استفاده شود ممکن است دیگر نتوانید پیامی دریافت کنید. 
-👉  لطفا پیام‌های قدیمی در رایانامه خود را از طریق نسخه وب رایانامه پاک کنید. همچنین می‌توانید گزینه پاک کردن پیام‌های قدیمی در دلتا چت را فعال نمایید. هروقت خواستید می‌توانید حجم در دسترس را از تنظیمات/اتصالات بررسی کنید. </string>
+    <string name="devicemsg_storage_exceeding">هشدار⚠️، میزان فضای در دسترس ارایه‌دهنده شما در حال تمام شدن است. %1$s از %% استفاده شده است. 
+اگر فضای ذخیره کاملا پر شده باشد دیگر امکان دریافت پیام را نخواهید داشت.  
+👉  لطفا پیام‌های قدیمی در رایانامه خود را از طریق نسخه وب رایانامه پاک کنید. همچنین می‌توانید گزینه پاک کردن پیام‌های قدیمی در دلتا چت را فعال نمایید. هروقت خواستید می‌توانید فضای در دسترس را از تنظیمات/اتصالات بررسی کنید. </string>
     <!-- %1%s will be replaced by date and time in some human-readable format -->
     <string name="devicemsg_bad_time">هشدار⚠️ به نظر می‌رسد زمان و تاریخ دستگاه شما دقیق نیست(%1$s).
 ساعت دستگاه خود را تنظیم کنید ⏰🔧 تا پیام‌ها به درستی دریافت شوند. </string>
@@ -773,7 +804,8 @@
     <string name="qrshow_join_contact_hint">برای ارتباط با %1$s این را اسکن کنید.</string>
     <string name="qrshow_join_contact_no_connection_toast">اتصال اینترنت نیست. نمیتوان نصب کد کیوآر را انجام داد. </string>
     <string name="qraccount_ask_create_and_login">ایجاد ایمیل جدید روی \"%1$s\" و ورود در آن‌جا؟</string>
-    <string name="qraccount_ask_create_and_login_another">ایجاد آدرس ایمیل جدید روی \"%1$s\" وارد شدن به آن؟/n/n حساب فعلی شما پاک نمی‌شود. از بخش \"تغییر حساب کاربری\" برای جابجایی بین حساب‌ها استفاده کنید</string>
+    <string name="qraccount_ask_create_and_login_another">نشانی جدید رایانامه روی «%1$s» ایجاد شده  و به آن وارد شود؟
+ حساب فعلی شما پاک نمی‌شود. از بخش «تغییر حساب کاربری» برای جابجایی بین حساب‌ها استفاده کنید</string>
     <string name="qraccount_success_enter_name">ورود موفق—آدرس ایمیل شما %1$sاست.\n\n اگر دوست دارید می‌توانید اکنون یک اسم وارد کرده و تصویر نمایه‌ای که هنگام نوشتن برای دیگران نشان داده می‌شود را انتخاب نمایید. </string>
     <string name="qraccount_qr_code_cannot_be_used">این کد کیوآر اسکن شده را نمی‌توان برای راه اندازی اکانت جدید استفاده کرد. </string>
     <string name="qraccount_use_on_new_install">کد کیوآر اسکن شده برای راه اندازی یک اکانت جدید است. می‌توانید در حال تنظیم یک دلتاچت تازه نصب شده کیوآر  را اسکن کنید.</string>
@@ -905,6 +937,17 @@ GNU GPL ورژن ۳
     <string name="show_window">نمایش پنجره</string>
     <string name="login_socks5_experimental_warning">پشتیبانی از قابلیت SOCKS5 هنوز آزمایشی است. لطفا در صورت استفاده،‌خطرات را بپذیرید. اگر یک آدرس را در بخش رایانامه وارد کنید همچنان  DNS lookup  رخ می‌دهد که ممکن است از طریق SOCKS5 صورت نگیرد. </string>
 
+    <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
+    <string name="keybindings">کلیدهای میانبر</string>
+    <string name="switch_between_chats">جابجا شدن میان گفتگوها</string>
+    <string name="scroll_messages">حرکت کردن میان پیام‌ها</string>
+    <!-- command to put the cursor to the search input field -->
+    <string name="focus_search_input">تمرکز نشانگر بر بخش جستجو</string>
+    <!-- command to put the cursor to the message input field -->
+    <string name="focus_message_input">تمرکز نشانگر بر بخش پیام</string>
+    <string name="force_refresh_network">تازه کردن اجباری شبکه</string>
+    <string name="insert_newline">افزودن خط جدید</string>
+
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">وضعیت ارسال: خطا</string>
     <string name="a11y_encryption_padlock">قفل رمزگذاری</string>
@@ -917,9 +960,33 @@ GNU GPL ورژن ۳
     <string name="a11y_background_preview_label">نمایش پس زمینه</string>
     <string name="a11y_disappearing_messages_activated">پیام‌های ناپدید شونده فعال شدند</string>
 
+    <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
+    <string name="stop_sharing_location">توقف اشتراک موقعیت مکانی</string>
+    <string name="a11y_voice_message_hint_ios">پس از ضبط کردن برای ارسال دوبار ضربه بزنید. برای حذف و رد ضبط کردن با دو انگشت خود بکشید. </string>
+    <string name="a11y_connectivity_hint">برای مشاهده اطلاعات اتصال دوبار ضربه بزنید</string>
+    <string name="login_error_no_internet_connection">بدون اتصال اینترنت. ورود ناموفق</string>
+    <string name="share_account_not_configured">حساب تنظیم نشده است</string>
+    <string name="cannot_play_audio_file">امکان پخش کردن فایل صوتی وجود ندارد</string>
+    <!-- iOS camera permission alert -->
+    <string name="perm_ios_explain_access_to_camera_denied">برای عکس یا فیلم گرفتن یا اسکن کردن کد کیو آر، وارد تنظیمات سیستم شده و دسترسی به دوربین را فعال کنید. </string>
+    <string name="open_settings">تنظیمات را باز کنید</string>
+    <!-- iOS device contact alert -->
+    <string name="import_device_contacts">وارد کردن مخاطبین</string>
+    <string name="import_device_contacts_hint">برای شروع گفتگو با مخاطبین دستگاه خود، تنظیمات را باز کرده و دسترسی به مخاطبین را روشن کنید. </string>
+    <!-- iOS notification settings -->
+    <string name="disabled_in_dc">در دلتاچت غیر فعال شده است. </string>
+    <string name="disabled_in_system_settings">در تنظیمات سیستم غیر فعال شده است. </string>
+    <string name="bg_app_refresh_disabled">گزینه «Background App Refresh» در تنظیمات سیستم غیر فعال شده است. </string>
+    <!-- iOS connectivity view -->
+    <string name="delayed">دارای تاخیر</string>
+    <string name="notifications_avg_minutes">به صورت متوسط هر%1$d دقیقه</string>
+    <string name="notifications_avg_hours">به صورت متوسط هر %1$d ساعت</string>
+    <string name="last_check_at">بررسی شده در %1$s</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">دلتاچت برای گرفتن و ارسال عکس و فیلم و برای اسکن کردن کیوآر کد از دوربین شما استفاده می‌کند. </string>
     <string name="InfoPlist_NSContactsUsageDescription">دلتاچت از مخاطبین شما برای نمایش لیست ایمیل‌هایی که می‌توانید برایشان پیام ارسال کنید استفاده می‌کند. دلتاچت سرور ندارد مخاطبین شما به جایی ارسال نمی‌شوند. </string>
+    <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">دلتا چت برای اشتراک موقعیت مکانی شما در زمانی که اشتراک موقعیت مکانی را فعال کرده باشید به مجوز نیاز دارد. </string>
+    <string name="InfoPlist_NSLocationWhenInUseUsageDescription">دلتا چت برای اشتراک موقعیت مکانی شما در زمانی که اشتراک موقعیت مکانی را فعال کرده‌ باشید به مجوز نیاز دارد. </string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">دلتاچت از میکروفون برای ذخیره و ارسال پیام صوتی یا فیلم دارای صدا استفاده می‌کند.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">دلتاچت به شما اجازه می دهد تصویر موردنظر برای ارسال را انتخاب کنید.</string>
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">دلتاچت میخواهد تصاویر را در آلبوم شما ذخیره کند.</string>
@@ -936,4 +1003,10 @@ GNU GPL ورژن ۳
     <string name="perm_enable_bg_already_done">قبلا اجازه دسترسی به فعالیت در پس زمینه را به دلتاچت داده‌اید. \n\n اگر پیام‌ها هنوز هم در شرایط پس زمینه نمی‌آمد لطفا تنظیمات سیستم را نیز بررسی نمایید. </string>
 
 
-    </resources>
+    <!-- device messages for updates -->
+    <string name="update_1_30">سریع‌تر و پایدارتر
+
+در نسخه‌های ۱.۳۰ بر سرعت، قابلیت اطمینان و بر طرف کردن ده‌ها اشکال تمرکز کرده‌ایم. اگر می‌خواهید ببینید یکی از مشکلات شما رفع شده است به شرح تغییرات مراجعه کنید:
+https://get.delta.chat/#changelogs 🚀</string>
+
+</resources>
