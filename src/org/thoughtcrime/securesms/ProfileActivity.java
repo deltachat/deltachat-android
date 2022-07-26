@@ -259,7 +259,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
     }
     else if (chatId > 0) {
       DcChat dcChat  = dcContext.getChat(chatId);
-      titleView.setTitle(GlideApp.with(this), dcChat, isContactProfile());
+      titleView.setTitle(GlideApp.with(this), dcChat, true);
     }
     else if (isContactProfile()){
       titleView.setTitle(GlideApp.with(this), dcContext.getContact(contactId));
