@@ -103,14 +103,15 @@ public class ConversationTitleView extends RelativeLayout {
       }
     }
 
-    subtitle.setText(subtitleStr);
-
     avatar.setAvatar(glideRequests, new Recipient(getContext(), dcChat), false);
-    title.setCompoundDrawablesWithIntrinsicBounds(imgLeft, 0, imgRight, 0);
+
+    subtitle.setText(subtitleStr);
     subtitle.setVisibility(showAddInfo? View.VISIBLE : View.GONE);
 
+    title.setCompoundDrawablesWithIntrinsicBounds(imgLeft, 0, imgRight, 0);
+
     boolean isEphemeral = dcContext.getChatEphemeralTimer(chatId) != 0;
-    ephemeralIcon.setVisibility((showAddInfo && isEphemeral)? View.VISIBLE : View.GONE);
+    ephemeralIcon.setVisibility(isEphemeral? View.VISIBLE : View.GONE);
   }
 
   public void setTitle(@NonNull GlideRequests glideRequests, @NonNull DcContact contact) {
