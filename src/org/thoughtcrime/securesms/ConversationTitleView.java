@@ -1,6 +1,7 @@
 package org.thoughtcrime.securesms;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
@@ -67,7 +68,7 @@ public class ConversationTitleView extends RelativeLayout {
 
     // set title and subtitle texts
     title.setText(dcChat.getName());
-    String subtitleStr = "ErrSubtitle";
+    String subtitleStr = null;
 
     // set icons etc.
     int imgLeft = 0;
@@ -82,11 +83,19 @@ public class ConversationTitleView extends RelativeLayout {
 
     int[] chatContacts = dcContext.getChatContacts(chatId);
     if (dcChat.isMailingList()) {
-      subtitleStr = context.getString(R.string.mailing_list);
+      if (profileView) {
+        subtitleStr = dcChat.getMailinglistAddr();
+      } else {
+        subtitleStr = context.getString(R.string.mailing_list);
+      }
     } else if (dcChat.isBroadcast()) {
-      subtitleStr = context.getResources().getQuantityString(R.plurals.n_recipients, chatContacts.length, chatContacts.length);
+      if (!profileView) {
+        subtitleStr = context.getResources().getQuantityString(R.plurals.n_recipients, chatContacts.length, chatContacts.length);
+      }
     } else if( dcChat.isMultiUser() ) {
-      subtitleStr = context.getResources().getQuantityString(R.plurals.n_members, chatContacts.length, chatContacts.length);
+      if (!profileView) {
+        subtitleStr = context.getResources().getQuantityString(R.plurals.n_members, chatContacts.length, chatContacts.length);
+      }
     } else if( chatContacts.length>=1 ) {
       if( dcChat.isSelfTalk() ) {
         subtitleStr = context.getString(R.string.chat_self_talk_subtitle);
@@ -105,8 +114,12 @@ public class ConversationTitleView extends RelativeLayout {
 
     avatar.setAvatar(glideRequests, new Recipient(getContext(), dcChat), false);
 
-    subtitle.setText(subtitleStr);
-    subtitle.setVisibility(profileView? View.GONE : View.VISIBLE);
+    if (!TextUtils.isEmpty(subtitleStr)) {
+      subtitle.setText(subtitleStr);
+      subtitle.setVisibility(View.VISIBLE);
+    } else {
+      subtitle.setVisibility(View.GONE);
+    }
 
     title.setCompoundDrawablesWithIntrinsicBounds(imgLeft, 0, imgRight, 0);
 
