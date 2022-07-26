@@ -112,17 +112,16 @@ public class ConversationTitleView extends RelativeLayout {
       }
     }
 
-    avatar.setAvatar(glideRequests, new Recipient(getContext(), dcChat), false);
+    subtitle.setText(subtitleStr);
 
+    avatar.setAvatar(glideRequests, new Recipient(getContext(), dcChat), false);
+    title.setCompoundDrawablesWithIntrinsicBounds(imgLeft, 0, imgRight, 0);
     if (!TextUtils.isEmpty(subtitleStr)) {
       subtitle.setText(subtitleStr);
       subtitle.setVisibility(View.VISIBLE);
     } else {
       subtitle.setVisibility(View.GONE);
     }
-
-    title.setCompoundDrawablesWithIntrinsicBounds(imgLeft, 0, imgRight, 0);
-
     boolean isEphemeral = dcContext.getChatEphemeralTimer(chatId) != 0;
     ephemeralIcon.setVisibility(isEphemeral? View.VISIBLE : View.GONE);
   }
