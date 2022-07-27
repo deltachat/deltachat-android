@@ -921,7 +921,7 @@ public class ConversationFragment extends MessageSelectorFragment
                     actionMode.finish();
                     return true;
                 case R.id.menu_add_to_home_screen:
-                    WebxdcActivity.addToHomeScreen(getContext(), getSelectedMessageRecord(getListAdapter().getSelectedItems()).getId());
+                    WebxdcActivity.addToHomeScreen(getActivity(), getSelectedMessageRecord(getListAdapter().getSelectedItems()).getId());
                     actionMode.finish();
                     return true;
                 case R.id.menu_context_save_attachment:
