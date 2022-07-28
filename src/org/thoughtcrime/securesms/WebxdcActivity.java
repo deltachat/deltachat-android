@@ -87,6 +87,12 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     // also a random-id is not that useful for debugging)
     this.baseURL = "https://acc" + dcContext.getAccountId() + "-msg" + appMessageId + ".localhost";
 
+    if (dcContext.getAccountId() != b.getInt("accountId")) {
+      Toast.makeText(this, "Switch to belonging account first.", Toast.LENGTH_LONG).show();
+      finish();
+      return;
+    }
+
     WebSettings webSettings = webView.getSettings();
     webSettings.setJavaScriptEnabled(true);
     webSettings.setAllowFileAccess(false);
