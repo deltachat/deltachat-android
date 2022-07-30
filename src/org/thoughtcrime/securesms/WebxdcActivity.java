@@ -96,18 +96,24 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     int appMessageId = b.getInt("appMessageId");
 
     this.dcContext = DcHelper.getContext(getApplicationContext());
-    this.dcAppMsg = this.dcContext.getMsg(appMessageId);
-    // `msg_id` in the subdomain makes sure, different apps using same files do not share the same cache entry
-    // (WebView may use a global cache shared across objects).
-    // (a random-id would also work, but would need maintenance and does not add benefits as we regard the file-part interceptRequest() only,
-    // also a random-id is not that useful for debugging)
-    this.baseURL = "https://acc" + dcContext.getAccountId() + "-msg" + appMessageId + ".localhost";
-
     if (dcContext.getAccountId() != b.getInt("accountId")) {
       Toast.makeText(this, "Switch to belonging account first.", Toast.LENGTH_LONG).show();
       finish();
       return;
     }
+
+    this.dcAppMsg = this.dcContext.getMsg(appMessageId);
+    if (!this.dcAppMsg.isOk()) {
+      Toast.makeText(this, "Webxdc does no longer exist.", Toast.LENGTH_LONG).show();
+      finish();
+      return;
+    }
+
+    // `msg_id` in the subdomain makes sure, different apps using same files do not share the same cache entry
+    // (WebView may use a global cache shared across objects).
+    // (a random-id would also work, but would need maintenance and does not add benefits as we regard the file-part interceptRequest() only,
+    // also a random-id is not that useful for debugging)
+    this.baseURL = "https://acc" + dcContext.getAccountId() + "-msg" + appMessageId + ".localhost";
 
     WebSettings webSettings = webView.getSettings();
     webSettings.setJavaScriptEnabled(true);
