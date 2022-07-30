@@ -21,6 +21,7 @@ import android.webkit.WebView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.TaskStackBuilder;
 import androidx.core.content.pm.ShortcutInfoCompat;
 import androidx.core.content.pm.ShortcutManagerCompat;
 import androidx.core.graphics.drawable.IconCompat;
@@ -68,6 +69,21 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     intent.putExtra("accountId", dcContext.getAccountId());
     intent.putExtra("appMessageId", msgId);
     return intent;
+  }
+
+  private static Intent[] getWebxdcIntentWithParentStack(Context context, int msgId) {
+    DcContext dcContext = DcHelper.getContext(context);
+
+    final Intent chatIntent = new Intent(context, ConversationActivity.class)
+      .putExtra(ConversationActivity.CHAT_ID_EXTRA, dcContext.getMsg(msgId).getChatId())
+      .setAction(Intent.ACTION_VIEW);
+
+    final Intent webxdcIntent = getWebxdcIntent(context, msgId);
+
+    return TaskStackBuilder.create(context)
+      .addNextIntentWithParentStack(chatIntent)
+      .addNextIntent(webxdcIntent)
+      .getIntents();
   }
 
   @Override
@@ -233,7 +249,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
       ShortcutInfoCompat shortcutInfoCompat = new ShortcutInfoCompat.Builder(context, "xdc-" + dcContext.getAccountId() + "-" + msgId)
         .setShortLabel(docName.isEmpty() ? xdcName : docName)
         .setIcon(IconCompat.createWithBitmap(bitmap))
-        .setIntent(getWebxdcIntent(context, msgId))
+        .setIntents(getWebxdcIntentWithParentStack(context, msgId))
         .build();
 
       if (ShortcutManagerCompat.requestPinShortcut(context, shortcutInfoCompat, null)) {
