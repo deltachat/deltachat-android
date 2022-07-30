@@ -144,10 +144,10 @@ echo -- ndk-build --
 cd ../..
 
 if test $1; then
-    ndk-build APP_ABI="$1"
+    "$ANDROID_NDK_ROOT/ndk-build" APP_ABI="$1"
 else
     # We are compiling for all architectures defined in Application.mk
-    ndk-build
+    "$ANDROID_NDK_ROOT/ndk-build"
 fi
 
 if test $1; then

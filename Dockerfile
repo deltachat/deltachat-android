@@ -37,7 +37,7 @@ ENV PATH ${PATH}:${ANDROID_SDK_ROOT}/cmdline-tools/bin
 RUN sdkmanager --sdk_root=${ANDROID_SDK_ROOT} 'ndk;23.2.8568313'
 
 ENV ANDROID_NDK_ROOT ${ANDROID_SDK_ROOT}/ndk/23.2.8568313
-ENV PATH ${PATH}:${ANDROID_NDK_ROOT}/toolchains/llvm/prebuilt/linux-x86_64/bin/:${ANDROID_NDK_ROOT}
+ENV PATH ${PATH}:${ANDROID_NDK_ROOT}/toolchains/llvm/prebuilt/linux-x86_64/bin/
 
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain none
 ENV PATH ${PATH}:/home/${USER}/.cargo/bin
