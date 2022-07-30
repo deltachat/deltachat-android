@@ -36,21 +36,24 @@ echo "starting time: `date`"
 
 : "${ANDROID_NDK_ROOT:=$ANDROID_NDK_HOME}"
 : "${ANDROID_NDK_ROOT:=$ANDROID_NDK}"
-if test ! -z "$ANDROID_NDK_ROOT"; then
-    echo Setting CARGO_TARGET environment variables.
-
-    if test -z "$NDK_HOST_TAG"; then
-        KERNEL="$(uname -s | tr '[:upper:]' '[:lower:]')"
-        ARCH="$(uname -m)"
-        NDK_HOST_TAG="$KERNEL-$ARCH"
-    fi
-
-    TOOLCHAIN="$ANDROID_NDK_ROOT/toolchains/llvm/prebuilt/$NDK_HOST_TAG"
-    export CARGO_TARGET_ARMV7_LINUX_ANDROIDEABI_LINKER="$TOOLCHAIN/bin/armv7a-linux-androideabi16-clang"
-    export CARGO_TARGET_AARCH64_LINUX_ANDROID_LINKER="$TOOLCHAIN/bin/aarch64-linux-android21-clang"
-    export CARGO_TARGET_I686_LINUX_ANDROID_LINKER="$TOOLCHAIN/bin/i686-linux-android16-clang"
-    export CARGO_TARGET_X86_64_LINUX_ANDROID_LINKER="$TOOLCHAIN/bin/x86_64-linux-android21-clang"
+if test -z "$ANDROID_NDK_ROOT"; then
+    echo "ANDROID_NDK_ROOT is not set"
+    exit 1
 fi
+
+echo Setting CARGO_TARGET environment variables.
+
+if test -z "$NDK_HOST_TAG"; then
+    KERNEL="$(uname -s | tr '[:upper:]' '[:lower:]')"
+    ARCH="$(uname -m)"
+    NDK_HOST_TAG="$KERNEL-$ARCH"
+fi
+
+TOOLCHAIN="$ANDROID_NDK_ROOT/toolchains/llvm/prebuilt/$NDK_HOST_TAG"
+export CARGO_TARGET_ARMV7_LINUX_ANDROIDEABI_LINKER="$TOOLCHAIN/bin/armv7a-linux-androideabi16-clang"
+export CARGO_TARGET_AARCH64_LINUX_ANDROID_LINKER="$TOOLCHAIN/bin/aarch64-linux-android21-clang"
+export CARGO_TARGET_I686_LINUX_ANDROID_LINKER="$TOOLCHAIN/bin/i686-linux-android16-clang"
+export CARGO_TARGET_X86_64_LINUX_ANDROID_LINKER="$TOOLCHAIN/bin/x86_64-linux-android21-clang"
 
 # Check if the argument is a correct architecture:
 if test $1 && echo "armeabi-v7a arm64-v8a x86 x86_64" | grep -vwq $1; then
