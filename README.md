@@ -57,7 +57,7 @@ You can leave the container with Ctrl+D or by typing `exit` and re-enter it with
 Within the container, install toolchains and build the native library:
 ```
 deltachat@6012dcb974fe:/home/app$ scripts/install-toolchains.sh
-deltachat@6012dcb974fe:/home/app$ ./ndk-make.sh
+deltachat@6012dcb974fe:/home/app$ scripts/ndk-make.sh
 ```
 
 Then, [build an APK](https://developer.android.com/studio/build/building-cmdline):
@@ -118,7 +118,7 @@ done with care.
 Then, install Rust using [rustup](https://rustup.rs/). Install Rust
 toolchains for cross-compilation by executing `scripts/install-toolchains.sh`.
 
-After that, call `./ndk-make.sh` in the root directory to build core-rust.
+After that, call `scripts/ndk-make.sh` in the root directory to build core-rust.
 Afterwards run the project in Android Studio. The project requires API 25.
 
 With chance, that's it :) - if not, read on how to set up a proper development
