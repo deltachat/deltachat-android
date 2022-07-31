@@ -43,6 +43,9 @@ jobs:
           export PATH="${PATH}:${ANDROID_NDK_ROOT}/toolchains/llvm/prebuilt/linux-x86_64/bin/:${ANDROID_NDK_ROOT}"
           ./scripts/install-toolchains.sh && ./ndk-make.sh
 
+      - name: Validate Gradle Wrapper
+        uses: gradle/wrapper-validation-action@v1
+
       - name: Build APK
         run: ./gradlew --no-daemon assembleGplayDebug
 
