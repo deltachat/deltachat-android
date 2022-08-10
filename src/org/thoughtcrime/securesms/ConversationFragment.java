@@ -333,13 +333,21 @@ public class ConversationFragment extends MessageSelectorFragment
 
         // if one of the selected items cannot be saved, disable saving.
         boolean canSave = true;
+        // if one of the selected items is not from self, disable resending.
+        boolean canResend = true;
         for (DcMsg messageRecord : messageRecords) {
-            if (!messageRecord.hasFile()) {
+            if (canSave && !messageRecord.hasFile()) {
                 canSave = false;
+            }
+            if (canResend && !messageRecord.isOutgoing()) {
+                canResend = false;
+            }
+            if (!canSave && !canResend) {
                 break;
             }
         }
         menu.findItem(R.id.menu_context_save_attachment).setVisible(canSave);
+        menu.findItem(R.id.menu_resend).setVisible(canResend);
     }
 
     static boolean canReplyToMsg(DcMsg dcMsg) {
