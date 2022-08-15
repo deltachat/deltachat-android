@@ -320,6 +320,7 @@ public class ConversationFragment extends MessageSelectorFragment
             menu.findItem(R.id.menu_context_share).setVisible(false);
             menu.findItem(R.id.menu_context_reply).setVisible(false);
             menu.findItem(R.id.menu_context_reply_privately).setVisible(false);
+            menu.findItem(R.id.menu_add_to_home_screen).setVisible(false);
         } else {
             DcMsg messageRecord = messageRecords.iterator().next();
             DcChat chat = getListAdapter().getChat();
@@ -329,6 +330,7 @@ public class ConversationFragment extends MessageSelectorFragment
             menu.findItem(R.id.menu_context_reply).setVisible(chat.canSend() && canReply);
             boolean showReplyPrivately = chat.isMultiUser() && !messageRecord.isOutgoing() && canReply;
             menu.findItem(R.id.menu_context_reply_privately).setVisible(showReplyPrivately);
+            menu.findItem(R.id.menu_add_to_home_screen).setVisible(messageRecord.getType() == DcMsg.DC_MSG_WEBXDC);
         }
 
         // if one of the selected items cannot be saved, disable saving.
@@ -924,6 +926,10 @@ public class ConversationFragment extends MessageSelectorFragment
                     return true;
                 case R.id.menu_context_forward:
                     handleForwardMessage(getListAdapter().getSelectedItems());
+                    actionMode.finish();
+                    return true;
+                case R.id.menu_add_to_home_screen:
+                    WebxdcActivity.addToHomeScreen(getActivity(), getSelectedMessageRecord(getListAdapter().getSelectedItems()).getId());
                     actionMode.finish();
                     return true;
                 case R.id.menu_context_save_attachment:

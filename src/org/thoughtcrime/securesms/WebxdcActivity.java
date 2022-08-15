@@ -1,7 +1,11 @@
 package org.thoughtcrime.securesms;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -17,6 +21,10 @@ import android.webkit.WebView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.TaskStackBuilder;
+import androidx.core.content.pm.ShortcutInfoCompat;
+import androidx.core.content.pm.ShortcutManagerCompat;
+import androidx.core.graphics.drawable.IconCompat;
 
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContext;
@@ -41,18 +49,41 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
   private String baseURL;
   private String sourceCodeUrl = "";
 
+
+
   public static void openWebxdcActivity(Context context, DcMsg instance) {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
       if (Prefs.isDeveloperModeEnabled(context)) {
         WebView.setWebContentsDebuggingEnabled(true);
       }
-
-      Intent intent =new Intent(context, WebxdcActivity.class);
-      intent.putExtra("appMessageId", instance.getId());
-      context.startActivity(intent);
+      context.startActivity(getWebxdcIntent(context, instance.getId()));
     } else {
       Toast.makeText(context, "At least Android 5.0 (Lollipop) required for Webxdc.", Toast.LENGTH_LONG).show();
     }
+  }
+
+  private static Intent getWebxdcIntent(Context context, int msgId) {
+    DcContext dcContext = DcHelper.getContext(context);
+    Intent intent = new Intent(context, WebxdcActivity.class);
+    intent.setAction(Intent.ACTION_VIEW);
+    intent.putExtra("accountId", dcContext.getAccountId());
+    intent.putExtra("appMessageId", msgId);
+    return intent;
+  }
+
+  private static Intent[] getWebxdcIntentWithParentStack(Context context, int msgId) {
+    DcContext dcContext = DcHelper.getContext(context);
+
+    final Intent chatIntent = new Intent(context, ConversationActivity.class)
+      .putExtra(ConversationActivity.CHAT_ID_EXTRA, dcContext.getMsg(msgId).getChatId())
+      .setAction(Intent.ACTION_VIEW);
+
+    final Intent webxdcIntent = getWebxdcIntent(context, msgId);
+
+    return TaskStackBuilder.create(context)
+      .addNextIntentWithParentStack(chatIntent)
+      .addNextIntent(webxdcIntent)
+      .getIntents();
   }
 
   @Override
@@ -65,7 +96,19 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     int appMessageId = b.getInt("appMessageId");
 
     this.dcContext = DcHelper.getContext(getApplicationContext());
+    if (dcContext.getAccountId() != b.getInt("accountId")) {
+      Toast.makeText(this, "Switch to belonging account first.", Toast.LENGTH_LONG).show();
+      finish();
+      return;
+    }
+
     this.dcAppMsg = this.dcContext.getMsg(appMessageId);
+    if (!this.dcAppMsg.isOk()) {
+      Toast.makeText(this, "Webxdc does no longer exist.", Toast.LENGTH_LONG).show();
+      finish();
+      return;
+    }
+
     // `msg_id` in the subdomain makes sure, different apps using same files do not share the same cache entry
     // (WebView may use a global cache shared across objects).
     // (a random-id would also work, but would need maintenance and does not add benefits as we regard the file-part interceptRequest() only,
@@ -107,6 +150,9 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
   public boolean onOptionsItemSelected(MenuItem item) {
     super.onOptionsItemSelected(item);
     switch (item.getItemId()) {
+      case R.id.menu_add_to_home_screen:
+        addToHomeScreen(this, dcAppMsg.getId());
+        return true;
       case R.id.source_code:
         openUrlInBrowser(this, sourceCodeUrl);
         return true;
@@ -190,6 +236,36 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
         }
       });
     });
+  }
+
+  public static void addToHomeScreen(Activity activity, int msgId) {
+    Context context = activity.getApplicationContext();
+    try {
+      DcContext dcContext = DcHelper.getContext(context);
+      DcMsg msg = dcContext.getMsg(msgId);
+      final JSONObject info = msg.getWebxdcInfo();
+
+      final String docName = JsonUtils.optString(info, "document");
+      final String xdcName = JsonUtils.optString(info, "name");
+      byte[] blob = msg.getWebxdcBlob(JsonUtils.optString(info, "icon"));
+      ByteArrayInputStream is = new ByteArrayInputStream(blob);
+      BitmapDrawable drawable = (BitmapDrawable) Drawable.createFromStream(is, "icon");
+      Bitmap bitmap = drawable.getBitmap();
+
+      ShortcutInfoCompat shortcutInfoCompat = new ShortcutInfoCompat.Builder(context, "xdc-" + dcContext.getAccountId() + "-" + msgId)
+        .setShortLabel(docName.isEmpty() ? xdcName : docName)
+        .setIcon(IconCompat.createWithBitmap(bitmap))
+        .setIntents(getWebxdcIntentWithParentStack(context, msgId))
+        .build();
+
+      if (ShortcutManagerCompat.requestPinShortcut(context, shortcutInfoCompat, null)) {
+        Toast.makeText(context, R.string.done, Toast.LENGTH_SHORT).show();
+      } else {
+        Toast.makeText(context, "ErrAddToHomescreen: requestPinShortcut() failed", Toast.LENGTH_LONG).show();
+      }
+    } catch(Exception e) {
+      Toast.makeText(context, "ErrAddToHomescreen: " + e, Toast.LENGTH_LONG).show();
+    }
   }
 
   class InternalJSApi {

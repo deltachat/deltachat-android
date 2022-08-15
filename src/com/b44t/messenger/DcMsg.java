@@ -52,6 +52,10 @@ public class DcMsg {
         this.msgCPtr = msgCPtr;
     }
 
+    public boolean isOk() {
+      return msgCPtr != 0;
+    }
+
     @Override
     protected void finalize() throws Throwable {
         super.finalize();

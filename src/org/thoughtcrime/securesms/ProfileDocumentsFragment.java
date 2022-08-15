@@ -182,6 +182,9 @@ public class ProfileDocumentsFragment
     menu.findItem(R.id.details).setVisible(singleSelection);
     menu.findItem(R.id.show_in_chat).setVisible(singleSelection);
     menu.findItem(R.id.share).setVisible(singleSelection);
+
+    boolean webxdcApp = singleSelection && messageRecords.iterator().next().getType() == DcMsg.DC_MSG_WEBXDC;
+    menu.findItem(R.id.menu_add_to_home_screen).setVisible(webxdcApp);
   }
 
   private ProfileDocumentsAdapter getListAdapter() {
@@ -224,6 +227,10 @@ public class ProfileDocumentsFragment
           return true;
         case R.id.share:
           handleShare(getSelectedMessageRecord(getListAdapter().getSelectedMedia()));
+          return true;
+        case R.id.menu_add_to_home_screen:
+          WebxdcActivity.addToHomeScreen(getActivity(), getSelectedMessageRecord(getListAdapter().getSelectedMedia()).getId());
+          mode.finish();
           return true;
         case R.id.show_in_chat:
           handleShowInChat(getSelectedMessageRecord(getListAdapter().getSelectedMedia()));
