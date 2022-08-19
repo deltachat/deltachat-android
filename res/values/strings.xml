@@ -791,6 +791,8 @@
     <string name="qraccount_success_enter_name">Login successful—your e-mail address is %1$s\n\nIf you like, you can now enter a name and an profile image that will be displayed to people you write to.</string>
     <string name="qraccount_qr_code_cannot_be_used">The scanned QR code cannot be used to set up a new account.</string>
     <string name="qraccount_use_on_new_install">The scanned QR code is for setting up a new account. You can scan the QR code when setting up a new Delta Chat installation.</string>
+    <string name="qrlogin_ask_login">Login to \"%1$s\"?</string>
+    <string name="qrlogin_ask_login_another">Login to \"%1$s\"?\n\nYour existing account will not be deleted. Use the \"Switch Account\" item to switch between your accounts.</string>
     <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s invited you to join this group.\n\nWaiting for the device of %2$s to reply…</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
