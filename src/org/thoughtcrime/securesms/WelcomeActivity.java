@@ -102,7 +102,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
         String qrAccount = getIntent().getStringExtra(QR_ACCOUNT_EXTRA);
         if (qrAccount!=null) {
             manualConfigure = false;
-            startQrAccountCreation(qrAccount);
+            startQrAccountOrQrLoginCreation(qrAccount);
         }
     }
 
@@ -256,7 +256,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
         }
     }
 
-    private void startQrAccountCreation(String qrCode)
+    private void startQrAccountOrQrLoginCreation(String qrCode)
     {
         if (progressDialog!=null) {
             progressDialog.dismiss();
@@ -382,11 +382,21 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
             String qrRaw = scanResult.getContents();
             DcLot qrParsed = dcContext.checkQr(qrRaw);
             switch (qrParsed.getState()) {
+                case DcContext.DC_QR_LOGIN:
+                    String address = qrParsed.getText1();
+                    new AlertDialog.Builder(this)
+                            .setMessage(getString(R.string.qrlogin_ask_login, address))
+                            .setPositiveButton(R.string.ok, (dialog, which) -> startQrAccountOrQrLoginCreation(qrRaw))
+                            .setNegativeButton(R.string.cancel, null)
+                            .setCancelable(false)
+                            .show();
+                    break;
+
                 case DcContext.DC_QR_ACCOUNT:
                     String domain = qrParsed.getText1();
                     new AlertDialog.Builder(this)
                             .setMessage(getString(R.string.qraccount_ask_create_and_login, domain))
-                            .setPositiveButton(R.string.ok, (dialog, which) -> startQrAccountCreation(qrRaw))
+                            .setPositiveButton(R.string.ok, (dialog, which) -> startQrAccountOrQrLoginCreation(qrRaw))
                             .setNegativeButton(R.string.cancel, null)
                             .setCancelable(false)
                             .show();

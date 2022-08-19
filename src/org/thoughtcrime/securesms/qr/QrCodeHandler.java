@@ -75,6 +75,16 @@ public class QrCodeHandler {
                 builder.setNegativeButton(R.string.cancel, null);
                 builder.setCancelable(false);
                 break;
+            
+            case DcContext.DC_QR_LOGIN:
+                String email = qrParsed.getText1();
+                builder.setMessage(activity.getString(R.string.qrlogin_ask_login_another, email));
+                builder.setPositiveButton(R.string.ok, (dialog, which) -> {
+                    AccountManager.getInstance().addAccountFromQr(activity, rawString);
+                });
+                builder.setNegativeButton(R.string.cancel, null);
+                builder.setCancelable(false);
+                break;
 
             case DcContext.DC_QR_WEBRTC:
                 builder.setMessage(activity.getString(R.string.videochat_instance_from_qr, qrParsed.getText1()));
