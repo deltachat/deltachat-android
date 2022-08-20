@@ -75,6 +75,7 @@ public class QrCodeHandler {
                 builder.setNegativeButton(R.string.cancel, null);
                 builder.setCancelable(false);
                 break;
+
             case DcContext.DC_QR_LOGIN:
                 String email = qrParsed.getText1();
                 builder.setMessage(activity.getString(R.string.qrlogin_ask_login_another, email));
