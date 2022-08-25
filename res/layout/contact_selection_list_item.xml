@@ -13,14 +13,10 @@
         android:paddingRight="24dp"
         android:paddingEnd="24dp">
 
-    <org.thoughtcrime.securesms.components.AvatarImageView
-            android:id="@+id/contact_photo_image"
+    <org.thoughtcrime.securesms.components.AvatarView
+            android:id="@+id/avatar"
             android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:foreground="@drawable/contact_photo_background"
-            android:cropToPadding="true"
-            tools:src="@color/blue_600"
-            android:contentDescription="@null" />
+            android:layout_height="40dp" />
 
     <LinearLayout android:layout_width="0dp"
                   android:layout_height="wrap_content"
