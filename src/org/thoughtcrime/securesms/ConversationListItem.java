@@ -167,14 +167,8 @@ public class ConversationListItem extends RelativeLayout
 
     this.avatar.setAvatar(glideRequests, recipient, false);
 
-    if (recipient.isMultiUserRecipient()) {
-      avatar.setSeenRecently(false);
-    } else {
-      DcContext dcContext = DcHelper.getContext(getContext());
-      int[] members = dcContext.getChatContacts((int)chatId);
-      DcContact contact = dcContext.getContact(members.length>=1? members[0] : 0);
-      avatar.setSeenRecently(contact.isSeenRecently());
-    }
+    DcContact contact = recipient.getDcContact();
+    avatar.setSeenRecently(contact!=null? contact.isSeenRecently() : false);
 
     fromView.setCompoundDrawablesWithIntrinsicBounds(
         thread.isMuted()? R.drawable.ic_volume_off_grey600_18dp : 0,

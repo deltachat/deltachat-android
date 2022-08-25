@@ -1579,7 +1579,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
                 || eventId == DcContext.DC_EVENT_MSG_READ
                 || eventId == DcContext.DC_EVENT_MSG_DELIVERED)
                && event.getData1Int() == chatId) {
-        titleView.updateStatus(dcContext, chatId);
+        DcContact contact = recipient.getDcContact();
+        titleView.setSeenRecently(contact!=null? contact.isSeenRecently() : false);
     }
   }
 

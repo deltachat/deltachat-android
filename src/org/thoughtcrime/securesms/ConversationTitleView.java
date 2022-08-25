@@ -140,15 +140,8 @@ public class ConversationTitleView extends RelativeLayout {
     subtitle.setVisibility(View.VISIBLE);
   }
 
-  public void updateStatus(DcContext dcContext, int chatId) {
-    boolean isOnline = false;
-    if(!dcContext.getChat(chatId).isMultiUser()) {
-      int[] members = dcContext.getChatContacts(chatId);
-      if(members.length>=1) {
-        isOnline = dcContext.getContact(members[0]).isSeenRecently();
-      }
-    }
-    avatar.setSeenRecently(isOnline);
+  public void setSeenRecently(boolean seenRecently) {
+    avatar.setSeenRecently(seenRecently);
   }
 
   public void hideAvatar() {
