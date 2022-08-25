@@ -63,7 +63,6 @@ public class Recipient {
   private @Nullable String         profileName;
   private @Nullable String         profileAvatar;
 
-  // either dcChat or dcContact are set
   private @Nullable DcChat dcChat;
   private @Nullable DcContact dcContact;
 
@@ -125,7 +124,8 @@ public class Recipient {
         DcContext dcContext = DcHelper.getContext(context);
         int[] contacts = dcContext.getChatContacts(chatId);
         if( contacts.length>=1 ) {
-          maybeSetSystemContactPhoto(context, dcContext.getContact(contacts[0]));
+          this.dcContact = dcContext.getContact(contacts[0]);
+          maybeSetSystemContactPhoto(context, this.dcContact);
         }
       }
     }
@@ -194,11 +194,11 @@ public class Recipient {
 
   public int getFallbackAvatarColor() {
     int rgb = 0x00808080;
-    if(dcContact!=null) {
-      rgb = dcContact.getColor();
-    }
-    else if(dcChat!=null){
+    if(dcChat!=null) {
       rgb = dcChat.getColor();
+    }
+    else if(dcContact!=null) {
+      rgb = dcContact.getColor();
     }
     int argb = Color.argb(0xFF, Color.red(rgb), Color.green(rgb), Color.blue(rgb));
     return argb;

@@ -268,6 +268,12 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     eventCenter.addObserver(DcContext.DC_EVENT_CHAT_EPHEMERAL_TIMER_MODIFIED, this);
     eventCenter.addObserver(DcContext.DC_EVENT_CONTACTS_CHANGED, this);
 
+    if (!isMultiUser()) {
+      eventCenter.addObserver(DcContext.DC_EVENT_INCOMING_MSG, this);
+      eventCenter.addObserver(DcContext.DC_EVENT_MSG_DELIVERED, this);
+      eventCenter.addObserver(DcContext.DC_EVENT_MSG_READ, this);
+    }
+
     if (isForwarding(this)) {
       handleForwarding();
     } else if (isSharing(this)) {
@@ -1569,6 +1575,12 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       initializeSecurity(isSecureText, isDefaultSms);
       setComposePanelVisibility();
       initializeContactRequest();
+    } else if ((eventId == DcContext.DC_EVENT_INCOMING_MSG
+                || eventId == DcContext.DC_EVENT_MSG_READ
+                || eventId == DcContext.DC_EVENT_MSG_DELIVERED)
+               && event.getData1Int() == chatId) {
+        DcContact contact = recipient.getDcContact();
+        titleView.setSeenRecently(contact!=null? contact.isSeenRecently() : false);
     }
   }
 

@@ -42,7 +42,7 @@ import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcLot;
 import com.b44t.messenger.DcMsg;
 
-import org.thoughtcrime.securesms.components.AvatarImageView;
+import org.thoughtcrime.securesms.components.AvatarView;
 import org.thoughtcrime.securesms.components.DeliveryStatusView;
 import org.thoughtcrime.securesms.components.FromTextView;
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -80,7 +80,7 @@ public class ConversationListItem extends RelativeLayout
   private DeliveryStatusView deliveryStatusIndicator;
   private ImageView          unreadIndicator;
 
-  private AvatarImageView contactPhotoImage;
+  private AvatarView avatar;
 
   public ConversationListItem(Context context) {
     this(context, null);
@@ -97,7 +97,7 @@ public class ConversationListItem extends RelativeLayout
     this.fromView                = findViewById(R.id.from_text);
     this.dateView                = findViewById(R.id.date);
     this.deliveryStatusIndicator = new DeliveryStatusView(findViewById(R.id.delivery_indicator));
-    this.contactPhotoImage       = findViewById(R.id.contact_photo_image);
+    this.avatar                  = findViewById(R.id.avatar);
     this.archivedBadgeView       = findViewById(R.id.archived_badge);
     this.requestBadgeView        = findViewById(R.id.request_badge);
     this.unreadIndicator         = findViewById(R.id.unread_indicator);
@@ -165,7 +165,10 @@ public class ConversationListItem extends RelativeLayout
     setBatchState(batchMode);
     setBgColor(thread);
 
-    this.contactPhotoImage.setAvatar(glideRequests, recipient, false);
+    this.avatar.setAvatar(glideRequests, recipient, false);
+
+    DcContact contact = recipient.getDcContact();
+    avatar.setSeenRecently(contact!=null? contact.isSeenRecently() : false);
 
     fromView.setCompoundDrawablesWithIntrinsicBounds(
         thread.isMuted()? R.drawable.ic_volume_off_grey600_18dp : 0,
@@ -194,7 +197,8 @@ public class ConversationListItem extends RelativeLayout
     deliveryStatusIndicator.setNone();
 
     setBatchState(false);
-    contactPhotoImage.setAvatar(glideRequests, recipient, false);
+    avatar.setAvatar(glideRequests, recipient, false);
+    avatar.setSeenRecently(contact.isSeenRecently());
   }
 
   public void bind(@NonNull  DcMsg         messageResult,
@@ -226,7 +230,8 @@ public class ConversationListItem extends RelativeLayout
     deliveryStatusIndicator.setNone();
 
     setBatchState(false);
-    contactPhotoImage.setAvatar(glideRequests, recipient, false);
+    avatar.setAvatar(glideRequests, recipient, false);
+    avatar.setSeenRecently(false);
   }
 
   @Override

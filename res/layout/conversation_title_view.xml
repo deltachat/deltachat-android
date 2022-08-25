@@ -25,9 +25,8 @@
                android:contentDescription="@string/back"
                android:visibility="visible"/>
 
-    <org.thoughtcrime.securesms.components.AvatarImageView
-            android:id="@+id/contact_photo_image"
-            android:foreground="@drawable/contact_photo_background"
+    <org.thoughtcrime.securesms.components.AvatarView
+            android:id="@+id/avatar"
             android:layout_width="46dp"
             android:layout_height="46dp"
             android:layout_toRightOf="@id/up_button"
@@ -36,7 +35,6 @@
             android:cropToPadding="true"
             android:clickable="true"
             app:inverted="true"
-            tools:src="@drawable/ic_contact_picture"
             android:contentDescription="@string/pref_profile_photo"/>
 
     <LinearLayout
@@ -47,8 +45,8 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:layout_centerVertical="true"
-        android:layout_toEndOf="@id/contact_photo_image"
-        android:layout_toRightOf="@id/contact_photo_image">
+        android:layout_toEndOf="@id/avatar"
+        android:layout_toRightOf="@id/avatar">
 
         <LinearLayout android:orientation="horizontal"
             android:layout_width="wrap_content"

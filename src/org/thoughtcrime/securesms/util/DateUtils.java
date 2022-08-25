@@ -36,7 +36,7 @@ public class DateUtils extends android.text.format.DateUtils {
   @SuppressWarnings("unused")
   private static final String           TAG         = DateUtils.class.getSimpleName();
 
-  private static boolean isWithin(final long millis, final long span, final TimeUnit unit) {
+  public static boolean isWithin(final long millis, final long span, final TimeUnit unit) {
     return System.currentTimeMillis() - millis <= unit.toMillis(span);
   }
 
