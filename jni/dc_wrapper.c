@@ -1860,6 +1860,11 @@ JNIEXPORT jlong Java_com_b44t_messenger_DcContact_getLastSeen(JNIEnv *env, jobje
 }
 
 
+JNIEXPORT jboolean Java_com_b44t_messenger_DcContact_wasSeenRecently(JNIEnv *env, jobject obj)
+{
+    return (jboolean)(dc_contact_was_seen_recently(get_dc_contact(env, obj))!=0);
+}
+
 JNIEXPORT jboolean Java_com_b44t_messenger_DcContact_isBlocked(JNIEnv *env, jobject obj)
 {
     return (jboolean)(dc_contact_is_blocked(get_dc_contact(env, obj))!=0);

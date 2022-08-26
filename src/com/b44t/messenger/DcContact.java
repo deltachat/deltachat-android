@@ -63,6 +63,7 @@ public class DcContact {
     public native int     getColor       ();
     public native String  getStatus      ();
     public native long    getLastSeen    ();
+    public native boolean wasSeenRecently();
     public native boolean isBlocked      ();
     public native boolean isVerified     ();
 
