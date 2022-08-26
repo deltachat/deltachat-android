@@ -1,9 +1,5 @@
 package com.b44t.messenger;
 
-import org.thoughtcrime.securesms.util.DateUtils;
-
-import java.util.concurrent.TimeUnit;
-
 public class DcContact {
 
     public final static int DC_CONTACT_ID_SELF               = 1;
@@ -50,10 +46,6 @@ public class DcContact {
         return getAddr();
     }
 
-    public boolean isSeenRecently() {
-        return DateUtils.isWithin(getLastSeen(), 10, TimeUnit.MINUTES);
-    }
-
     public native int     getId          ();
     public native String  getName        ();
     public native String  getDisplayName ();
@@ -63,6 +55,7 @@ public class DcContact {
     public native int     getColor       ();
     public native String  getStatus      ();
     public native long    getLastSeen    ();
+    public native boolean wasSeenRecently();
     public native boolean isBlocked      ();
     public native boolean isVerified     ();
 
