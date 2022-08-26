@@ -50,10 +50,6 @@ public class DcContact {
         return getAddr();
     }
 
-    public boolean isSeenRecently() {
-        return DateUtils.isWithin(getLastSeen(), 10, TimeUnit.MINUTES);
-    }
-
     public native int     getId          ();
     public native String  getName        ();
     public native String  getDisplayName ();

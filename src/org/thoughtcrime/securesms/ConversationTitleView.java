@@ -110,7 +110,7 @@ public class ConversationTitleView extends RelativeLayout {
         if (dcContact.isVerified()) {
           imgRight = R.drawable.ic_verified;
         }
-        isOnline = dcContact.isSeenRecently();
+        isOnline = dcContact.wasSeenRecently();
       }
     }
 
@@ -133,7 +133,7 @@ public class ConversationTitleView extends RelativeLayout {
     // the verified state is _not_ shown in the title. this will be confusing as in the one-to-one-ChatViews, the verified
     // icon is also not shown as these chats are always opportunistic chats
     avatar.setAvatar(glideRequests, new Recipient(getContext(), contact), false);
-    avatar.setSeenRecently(contact.isSeenRecently());
+    avatar.setSeenRecently(contact.wasSeenRecently());
     title.setText(contact.getDisplayName());
     title.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
     subtitle.setText(contact.getAddr());
