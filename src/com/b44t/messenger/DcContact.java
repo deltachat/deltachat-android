@@ -1,9 +1,5 @@
 package com.b44t.messenger;
 
-import org.thoughtcrime.securesms.util.DateUtils;
-
-import java.util.concurrent.TimeUnit;
-
 public class DcContact {
 
     public final static int DC_CONTACT_ID_SELF               = 1;
