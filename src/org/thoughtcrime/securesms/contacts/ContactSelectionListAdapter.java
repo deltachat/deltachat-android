@@ -32,14 +32,10 @@ import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 
 import org.thoughtcrime.securesms.R;
-import org.thoughtcrime.securesms.components.RecyclerViewFastScroller.FastScrollAdapter;
 import org.thoughtcrime.securesms.connect.DcContactsLoader;
 import org.thoughtcrime.securesms.connect.DcHelper;
-import org.thoughtcrime.securesms.contacts.ContactSelectionListAdapter.HeaderViewHolder;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.util.LRUCache;
-import org.thoughtcrime.securesms.util.StickyHeaderDecoration.StickyHeaderAdapter;
-import org.thoughtcrime.securesms.util.Util;
 
 import java.lang.ref.SoftReference;
 import java.util.Collections;
@@ -53,8 +49,6 @@ import java.util.Set;
  * @author Jake McGinty
  */
 public class ContactSelectionListAdapter extends RecyclerView.Adapter
-                                         implements FastScrollAdapter,
-                                                    StickyHeaderAdapter<HeaderViewHolder>
 {
   private final static String TAG = ContactSelectionListAdapter.class.getSimpleName();
 
@@ -243,12 +237,6 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter
     }
   }
 
-  static class HeaderViewHolder extends RecyclerView.ViewHolder {
-    HeaderViewHolder(View itemView) {
-      super(itemView);
-    }
-  }
-
   public ContactSelectionListAdapter(@NonNull  Context context,
                                      @NonNull  GlideRequests glideRequests,
                                      @Nullable ItemClickListener clickListener,
@@ -328,11 +316,6 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter
     return VIEW_TYPE_CONTACT;
   }
 
-  @Override
-  public CharSequence getBubbleText(int position) {
-    return getHeaderString(position);
-  }
-
   public Set<String> getSelectedContacts() {
     return selectedContacts;
   }
@@ -346,38 +329,6 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter
 
     void onItemLongClick(ContactSelectionListItem view);
   }
-
-  @Override
-  public long getHeaderId(int position) {
-    if (position < 0 || position >= getItemCount()) {
-      return -1;
-    }
-
-    return Util.hashCode(getHeaderString(position));
-  }
-
-  private @NonNull String getHeaderString(int position) {
-    DcContact dcContact = getContact(position);
-    String name = dcContact.getDisplayName();
-    if (!TextUtils.isEmpty(name)) {
-      String firstChar = name.trim().substring(0, 1).toUpperCase();
-      if (Character.isLetterOrDigit(firstChar.codePointAt(0))) {
-        return firstChar;
-      }
-    }
-    return "";
-  }
-
-  @Override
-  public HeaderViewHolder onCreateHeaderViewHolder(ViewGroup parent) {
-    return new HeaderViewHolder(LayoutInflater.from(context).inflate(R.layout.contact_selection_recyclerview_header, parent, false));
-  }
-
-  @Override
-  public void onBindHeaderViewHolder(HeaderViewHolder viewHolder, int position) {
-    ((TextView)viewHolder.itemView).setText(getHeaderString(position));
-  }
-
 
   public void changeData(DcContactsLoader.Ret loaderRet) {
     this.dcContactList = loaderRet==null? new int[0] : loaderRet.ids;

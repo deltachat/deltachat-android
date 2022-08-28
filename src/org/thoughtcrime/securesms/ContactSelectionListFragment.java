@@ -20,7 +20,6 @@ package org.thoughtcrime.securesms;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.os.AsyncTask;
@@ -44,14 +43,12 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 
-import org.thoughtcrime.securesms.components.RecyclerViewFastScroller;
 import org.thoughtcrime.securesms.connect.DcContactsLoader;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -60,7 +57,6 @@ import org.thoughtcrime.securesms.contacts.ContactSelectionListAdapter;
 import org.thoughtcrime.securesms.contacts.ContactSelectionListItem;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.permissions.Permissions;
-import org.thoughtcrime.securesms.util.StickyHeaderDecoration;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
@@ -95,8 +91,6 @@ public class ContactSelectionListFragment extends    Fragment
   private OnContactSelectedListener onContactSelectedListener;
   private String                    cursorFilter;
   private RecyclerView              recyclerView;
-  private StickyHeaderDecoration    listDecoration;
-  private RecyclerViewFastScroller  fastScroller;
   private ActionMode                actionMode;
   private ActionMode.Callback       actionModeCallback;
 
@@ -131,7 +125,6 @@ public class ContactSelectionListFragment extends    Fragment
     View view = inflater.inflate(R.layout.contact_selection_list_fragment, container, false);
 
     recyclerView            = ViewUtil.findById(view, R.id.recycler_view);
-    fastScroller            = ViewUtil.findById(view, R.id.fast_scroller);
     recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
     actionModeCallback = new ActionMode.Callback() {
       @Override
@@ -181,12 +174,6 @@ public class ContactSelectionListFragment extends    Fragment
     };
 
     return view;
-  }
-
-  @Override
-  public void onConfigurationChanged(Configuration newConfig) {
-    super.onConfigurationChanged(newConfig);
-    listDecoration.onConfigurationChanged(newConfig);
   }
 
   private void handleSelectAll() {
@@ -286,25 +273,11 @@ public class ContactSelectionListFragment extends    Fragment
       selectedContacts.addAll(preselectedContacts);
     }
     recyclerView.setAdapter(adapter);
-    listDecoration = new StickyHeaderDecoration(adapter, true, true);
-    recyclerView.addItemDecoration(listDecoration);
   }
 
   public void setQueryFilter(String filter) {
     this.cursorFilter = filter;
     this.getLoaderManager().restartLoader(0, null, this);
-  }
-
-  public void resetQueryFilter() {
-    setQueryFilter(null);
-  }
-
-  public void reset() {
-    selectedContacts.clear();
-
-    if (!isDetached() && !isRemoving() && getActivity() != null && !getActivity().isFinishing()) {
-      getLoaderManager().restartLoader(0, null, this);
-    }
   }
 
   @Override
@@ -320,18 +293,11 @@ public class ContactSelectionListFragment extends    Fragment
   @Override
   public void onLoadFinished(Loader<DcContactsLoader.Ret> loader, DcContactsLoader.Ret data) {
     ((ContactSelectionListAdapter) recyclerView.getAdapter()).changeData(data);
-    boolean useFastScroller = (recyclerView.getAdapter().getItemCount() > 20);
-    recyclerView.setVerticalScrollBarEnabled(!useFastScroller);
-    if (useFastScroller) {
-      fastScroller.setVisibility(View.VISIBLE);
-      fastScroller.setRecyclerView(recyclerView);
-    }
   }
 
   @Override
   public void onLoaderReset(Loader<DcContactsLoader.Ret> loader) {
     ((ContactSelectionListAdapter) recyclerView.getAdapter()).changeData(null);
-    fastScroller.setVisibility(View.GONE);
   }
 
   @SuppressLint("StaticFieldLeak")
