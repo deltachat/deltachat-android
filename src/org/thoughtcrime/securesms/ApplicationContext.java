@@ -16,7 +16,7 @@ import androidx.work.PeriodicWorkRequest;
 import androidx.work.WorkManager;
 
 import com.b44t.messenger.DcAccounts;
-import com.b44t.messenger.DcAccountsEventEmitter;
+import com.b44t.messenger.DcEventEmitter;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 
@@ -102,7 +102,7 @@ public class ApplicationContext extends MultiDexApplication {
     notificationCenter = new NotificationCenter(this);
     eventCenter = new DcEventCenter(this);
     new Thread(() -> {
-      DcAccountsEventEmitter emitter = dcAccounts.getEventEmitter();
+      DcEventEmitter emitter = dcAccounts.getEventEmitter();
       while (true) {
         DcEvent event = emitter.getNextEvent();
         if (event==null) {
