@@ -19,7 +19,7 @@ public class DcAccounts {
         }
     }
 
-    public DcAccountsEventEmitter getEventEmitter      () { return new DcAccountsEventEmitter(getEventEmitterCPtr()); }
+    public DcEventEmitter         getEventEmitter      () { return new DcEventEmitter(getEventEmitterCPtr()); }
     public native void            startIo              ();
     public native void            stopIo               ();
     public native void            maybeNetwork         ();

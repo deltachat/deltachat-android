@@ -280,37 +280,6 @@ JNIEXPORT jboolean Java_com_b44t_messenger_DcAccounts_selectAccount(JNIEnv *env,
 
 
 /*******************************************************************************
- * DcAccountsEventEmitter
- ******************************************************************************/
-
-
-static dc_accounts_event_emitter_t* get_dc_accounts_event_emitter(JNIEnv *env, jobject obj)
-{
-    static jfieldID fid = 0;
-    if (fid==0) {
-        jclass cls = (*env)->GetObjectClass(env, obj);
-        fid = (*env)->GetFieldID(env, cls, "accountsEventEmitterCPtr", "J" /*Signature, J=long*/);
-    }
-    if (fid) {
-        return (dc_accounts_event_emitter_t*)(*env)->GetLongField(env, obj, fid);
-    }
-    return NULL;
-}
-
-
-JNIEXPORT void Java_com_b44t_messenger_DcAccountsEventEmitter_unrefAccountsEventEmitterCPtr(JNIEnv *env, jobject obj)
-{
-    dc_accounts_event_emitter_unref(get_dc_accounts_event_emitter(env, obj));
-}
-
-
-JNIEXPORT jlong Java_com_b44t_messenger_DcAccountsEventEmitter_getNextEventCPtr(JNIEnv *env, jobject obj)
-{
-    return (jlong)dc_accounts_get_next_event(get_dc_accounts_event_emitter(env, obj));
-}
-
-
-/*******************************************************************************
  * DcContext
  ******************************************************************************/
 
