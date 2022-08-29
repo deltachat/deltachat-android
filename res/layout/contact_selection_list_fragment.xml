@@ -22,11 +22,4 @@
             android:textSize="20sp"
             tools:text="No contacts." />
 
-    <org.thoughtcrime.securesms.components.RecyclerViewFastScroller
-        android:id="@+id/fast_scroller"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:visibility="gone"
-        android:layout_gravity="end"/>
-
 </FrameLayout>

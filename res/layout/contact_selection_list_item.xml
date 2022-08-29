@@ -8,10 +8,8 @@
         android:gravity="center_vertical"
         android:focusable="true"
         android:background="?attr/conversation_list_item_background"
-        android:paddingLeft="48dp"
-        android:paddingStart="48dp"
-        android:paddingRight="24dp"
-        android:paddingEnd="24dp">
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp">
 
     <org.thoughtcrime.securesms.components.AvatarView
             android:id="@+id/avatar"
