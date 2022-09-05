@@ -48,6 +48,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
   private DcMsg dcAppMsg;
   private String baseURL;
   private String sourceCodeUrl = "";
+  private boolean internetAccess = false;
 
   public static void openWebxdcActivity(Context context, DcMsg instance) {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -114,11 +115,12 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     this.baseURL = "https://acc" + dcContext.getAccountId() + "-msg" + appMessageId + ".localhost";
 
     final JSONObject info = this.dcAppMsg.getWebxdcInfo();
+    internetAccess = JsonUtils.optBoolean(info, "internet_access");
 
     WebSettings webSettings = webView.getSettings();
     webSettings.setJavaScriptEnabled(true);
     webSettings.setAllowFileAccess(false);
-    webSettings.setBlockNetworkLoads(!JsonUtils.optBoolean(info, "internet_access"));
+    webSettings.setBlockNetworkLoads(!internetAccess);
     webSettings.setAllowContentAccess(false);
     webSettings.setGeolocationEnabled(false);
     webSettings.setAllowFileAccessFromFileURLs(false);
@@ -194,6 +196,9 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
       } else {
         byte[] blob = this.dcAppMsg.getWebxdcBlob(path);
         if (blob == null) {
+          if (internetAccess) {
+            return null; // do not intercept request
+          }
           throw new Exception("\"" + path + "\" not found");
         }
         String ext = MediaUtil.getFileExtensionFromUrl(path);
