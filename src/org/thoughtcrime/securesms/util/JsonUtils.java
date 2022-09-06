@@ -54,6 +54,14 @@ public class JsonUtils {
     }
   }
 
+  public static boolean optBoolean(JSONObject obj, String name) {
+    try {
+      return obj.optBoolean(name);
+    } catch(Exception e) {
+      return false;
+    }
+  }
+
   public static class SaneJSONObject {
 
     private final JSONObject delegate;

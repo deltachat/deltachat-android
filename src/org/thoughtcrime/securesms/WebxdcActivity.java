@@ -48,8 +48,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
   private DcMsg dcAppMsg;
   private String baseURL;
   private String sourceCodeUrl = "";
-
-
+  private boolean internetAccess = false;
 
   public static void openWebxdcActivity(Context context, DcMsg instance) {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -115,10 +114,13 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     // also a random-id is not that useful for debugging)
     this.baseURL = "https://acc" + dcContext.getAccountId() + "-msg" + appMessageId + ".localhost";
 
+    final JSONObject info = this.dcAppMsg.getWebxdcInfo();
+    internetAccess = JsonUtils.optBoolean(info, "internet_access");
+
     WebSettings webSettings = webView.getSettings();
     webSettings.setJavaScriptEnabled(true);
     webSettings.setAllowFileAccess(false);
-    webSettings.setBlockNetworkLoads(true);
+    webSettings.setBlockNetworkLoads(!internetAccess);
     webSettings.setAllowContentAccess(false);
     webSettings.setGeolocationEnabled(false);
     webSettings.setAllowFileAccessFromFileURLs(false);
@@ -128,7 +130,13 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     webView.addJavascriptInterface(new InternalJSApi(), "InternalJSApi");
 
     webView.loadUrl(this.baseURL + "/index.html");
-    updateTitleAndMenu();
+
+    Util.runOnAnyBackgroundThread(() -> {
+      final DcChat chat = dcContext.getChat(dcAppMsg.getChatId());
+      Util.runOnMain(() -> {
+        updateTitleAndMenu(info, chat);
+      });
+    });
   }
 
   @Override
@@ -188,6 +196,9 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
       } else {
         byte[] blob = this.dcAppMsg.getWebxdcBlob(path);
         if (blob == null) {
+          if (internetAccess) {
+            return null; // do not intercept request
+          }
           throw new Exception("\"" + path + "\" not found");
         }
         String ext = MediaUtil.getFileExtensionFromUrl(path);
@@ -216,26 +227,25 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
       Log.i(TAG, "handleEvent");
       webView.loadUrl("javascript:window.__webxdcUpdate();");
     } else if ((eventId == DcContext.DC_EVENT_MSGS_CHANGED && event.getData2Int() == dcAppMsg.getId())) {
-      updateTitleAndMenu();
+      Util.runOnAnyBackgroundThread(() -> {
+        final JSONObject info = dcAppMsg.getWebxdcInfo();
+        final DcChat chat = dcContext.getChat(dcAppMsg.getChatId());
+        Util.runOnMain(() -> {
+          updateTitleAndMenu(info, chat);
+        });
+      });
     }
   }
 
-  private void updateTitleAndMenu() {
-    Util.runOnAnyBackgroundThread(() -> {
-      final JSONObject info = this.dcAppMsg.getWebxdcInfo();
+  private void updateTitleAndMenu(JSONObject info, DcChat chat) {
       final String docName = JsonUtils.optString(info, "document");
       final String xdcName = JsonUtils.optString(info, "name");
-      final String chatName =  WebxdcActivity.this.dcContext.getChat(WebxdcActivity.this.dcAppMsg.getChatId()).getName();
       final String currSourceCodeUrl = JsonUtils.optString(info, "source_code_url");
-
-      Util.runOnMain(() -> {
-        getSupportActionBar().setTitle((docName.isEmpty() ? xdcName : docName) + " – " + chatName);
-        if (!sourceCodeUrl.equals(currSourceCodeUrl)) {
-          sourceCodeUrl = currSourceCodeUrl;
-          invalidateOptionsMenu();
-        }
-      });
-    });
+      getSupportActionBar().setTitle((docName.isEmpty() ? xdcName : docName) + " – " + chat.getName());
+      if (!sourceCodeUrl.equals(currSourceCodeUrl)) {
+        sourceCodeUrl = currSourceCodeUrl;
+        invalidateOptionsMenu();
+      }
   }
 
   public static void addToHomeScreen(Activity activity, int msgId) {
