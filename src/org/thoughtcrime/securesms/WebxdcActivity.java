@@ -264,7 +264,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
 
       ShortcutInfoCompat shortcutInfoCompat = new ShortcutInfoCompat.Builder(context, "xdc-" + dcContext.getAccountId() + "-" + msgId)
         .setShortLabel(docName.isEmpty() ? xdcName : docName)
-        .setIcon(IconCompat.createWithAdaptiveBitmap(bitmap))
+        .setIcon(IconCompat.createWithBitmap(bitmap)) // createWithAdaptiveBitmap() removes decorations but cuts out a too small circle and defamiliarize the icon too much
         .setIntents(getWebxdcIntentWithParentStack(context, msgId))
         .build();
 
