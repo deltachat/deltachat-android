@@ -762,43 +762,70 @@
     <!-- deprecated -->
     <string name="systemmsg_chat_protection_enabled">Chat protection enabled.</string>
 
+    <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
     <string name="group_name_changed_by_you">You changed the group name from \"%1$s\" to \"%2$s\".</string>
+    <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
     <string name="group_name_changed_by_other">Group name changed from \"%1$s\" to \"%2$s\" by %3$s.</string>
     <string name="group_image_changed_by_you">You changed the group image.</string>
+    <!-- %1$s will be replaced by name and address of the contact who did the action -->
     <string name="group_image_changed_by_other">Group image changed by %1$s.</string>
+    <!-- %1$s will be replaced by name and address of the contact added to the group -->
     <string name="add_member_by_you">You added member %1$s.</string>
+    <!-- %1$s will be replaced by name and address of the contact added to the group, %2$s will be replaced by name and address of the contact who did the action -->
     <string name="add_member_by_other">Member %1$s added by %2$s.</string>
+    <!-- %1$s will be replaced by name and address of the contact removed from the group -->
     <string name="remove_member_by_you">You removed member %1$s.</string>
+    <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
     <string name="remove_member_by_other">Member %1$s removed by %2$s.</string>
     <string name="group_left_by_you">You left the group.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
     <string name="group_left_by_other">Group left by %1$s.</string>
     <string name="group_image_deleted_by_you">You deleted the group image.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
     <string name="group_image_deleted_by_other">Group image deleted by %1$s.</string>
     <string name="location_enabled_by_you">You enabled location streaming.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
     <string name="location_enabled_by_other">Location streaming enabled by %1$s.</string>
     <string name="ephemeral_timer_disabled_by_you">You disabled disappearing messages timer.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_disabled_by_other">Disappearing messages timer disabled by %1$s.</string>
+    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to -->
     <string name="ephemeral_timer_seconds_by_you">You set disappearing messages timer to %1$s s</string>
+    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_seconds_by_other">Disappearing messages timer set to %1$s s by %2$s.</string>
     <string name="ephemeral_timer_1_minute_by_you">You set disappearing messages timer to 1 minute.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_1_minute_by_other">Disappearing messages timer set to 1 minute by %1$s.</string>
     <string name="ephemeral_timer_1_hour_by_you">You set disappearing messages timer to 1 hour.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_1_hour_by_other">Disappearing messages timer set to 1 hour by %1$s.</string>
     <string name="ephemeral_timer_1_day_by_you">You set disappearing messages timer to 1 day.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_1_day_by_other">Disappearing messages timer set to 1 day by %1$s.</string>
     <string name="ephemeral_timer_1_week_by_you">You set disappearing messages timer to 1 week.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_1_week_by_other">Disappearing messages timer set to 1 week by %1$s.</string>
+    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to -->
     <string name="ephemeral_timer_minutes_by_you">You set disappearing messages timer to %1$s minutes.</string>
+    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_minutes_by_other">Disappearing messages timer set to %1$s minutes by %2$s.</string>
+    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to -->
     <string name="ephemeral_timer_hours_by_you">You set disappearing messages timer to %1$s hours.</string>
+    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_hours_by_other">Disappearing messages timer set to %1$s hours by %2$s.</string>
+    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to -->
     <string name="ephemeral_timer_days_by_you">You set disappearing messages timer to %1$s days.</string>
+    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_days_by_other">Disappearing messages timer set to %1$s days by %2$s.</string>
+    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to -->
     <string name="ephemeral_timer_weeks_by_you">You set disappearing messages timer to %1$s weeks.</string>
+    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_weeks_by_other">Disappearing messages timer set to %1$s weeks by %2$s.</string>
     <string name="protection_enabled_by_you">You enabled chat protection.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
     <string name="protection_enabled_by_other">Chat protection enabled by %1$s.</string>
     <string name="protection_disabled_by_you">You disabled chat protection.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
     <string name="protection_disabled_by_other">Chat protection disabled by %1$s.</string>
 
     <string name="devicemsg_self_deleted">You deleted the \"Saved messages\" chat.\n\nℹ️ To use the \"Saved messages\" feature again, create a new chat with yourself.</string>
