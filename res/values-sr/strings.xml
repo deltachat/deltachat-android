@@ -294,15 +294,21 @@
     <string name="autocrypt_continue_transfer_title">Порука поставки за аутошфровање</string>
     <string name="autocrypt_continue_transfer_retry">Покушај поново</string>
     <!-- system messages -->
+    <!-- deprecated -->
     <string name="systemmsg_group_name_changed">Назив групе је измењен из „%1$s“ у „%2$s“.</string>
+    <!-- deprecated -->
     <string name="systemmsg_group_image_changed">Слика групе је промењена.</string>
+    <!-- deprecated -->
     <string name="systemmsg_group_image_deleted">Слика групе је обрисана.</string>
+    <!-- deprecated -->
     <string name="systemmsg_member_added">Члан %1$s је додат.</string>
+    <!-- deprecated -->
     <string name="systemmsg_member_removed">Члан %1$s је уклоњен.</string>
+    <!-- deprecated -->
     <string name="systemmsg_group_left">Група напуштена.</string>
-    <!-- Translators: %1$s will be replaced by sth. as "ACTION by me". -->
+    <!-- deprecated -->
     <string name="systemmsg_action_by_me">%1$s од мене.</string>
-    <!-- Translators: %1$s will be replaced by an action and %2$s will be replaced by the name/addr of the person who did it, as "ACTION by MEMBER". -->
+    <!-- deprecated -->
     <string name="systemmsg_action_by_user">%1$s од стране %2$s.</string>
     <!-- qr code stuff -->
     <string name="qr_code">Бар-кôд</string>

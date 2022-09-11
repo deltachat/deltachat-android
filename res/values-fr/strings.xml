@@ -272,7 +272,6 @@
     <string name="ConversationFragment_quoted_message_not_found">Le message original n\'a pas été trouvé</string>
     <string name="reply_privately">Répondre en privé</string>
     <string name="source_code">Code source</string>
-
     <string name="mute_for_one_hour">Déactiver pour 1 heure</string>
     <string name="mute_for_two_hours">Déactiver pour 2 heures</string>
     <string name="mute_for_one_day">Déactiver pour 1 jour</string>
@@ -725,37 +724,54 @@
 
 
     <!-- system messages -->
+    <!-- deprecated -->
     <string name="systemmsg_group_name_changed">Nom de groupe modifié de \"%1$s\" en \"%2$s\".</string>
+    <!-- deprecated -->
     <string name="systemmsg_group_image_changed">Image de groupe modifiée.</string>
+    <!-- deprecated -->
     <string name="systemmsg_group_image_deleted">Image de groupe effacée.</string>
+    <!-- deprecated -->
     <string name="systemmsg_member_added">Membre %1$s ajouté.</string>
+    <!-- deprecated -->
     <string name="systemmsg_member_removed">Membre %1$s retiré.</string>
+    <!-- deprecated -->
     <string name="systemmsg_group_left">Groupe quitté.</string>
     <string name="systemmsg_read_receipt_subject">Accusé de lecture</string>
     <string name="systemmsg_read_receipt_body">Ceci est un accusé de lecture pour le message \"%1$s\".\n\nCela signifie que le message a été affiché sur l\'appareil du destinataire, pas forcément que le contenu ait été lu.</string>
     <string name="systemmsg_cannot_decrypt">Ce message ne peut pas être déchiffré.\n\n• Il peut déjà être utile de simplement répondre à ce message et demander à l\'expéditeur de l\'envoyer à nouveau.\n\n• Au cas où vous auriez réinstallé Delta Chat ou un autre programme de messagerie sur cet appareil ou un autre, vous voudrez peut-être envoyer un message de configuration d\'Autocrypt depuis ce dernier.</string>
-    <!-- Translators: %1$s will be replaced by sth. as "ACTION by me". -->
+    <!-- deprecated -->
     <string name="systemmsg_action_by_me">%1$s par moi.</string>
-    <!-- Translators: %1$s will be replaced by an action and %2$s will be replaced by the name/addr of the person who did it, as "ACTION by MEMBER". -->
+    <!-- deprecated -->
     <string name="systemmsg_action_by_user">%1$s sur %2$s.</string>
     <string name="systemmsg_unknown_sender_for_chat">Expéditeur inconnu de cette discussion. Voir « Info » pour plus de détails.</string>
     <string name="systemmsg_subject_for_new_contact">Message de %1$s</string>
     <string name="systemmsg_failed_sending_to">Échec de l\'envoi du message à %1$s.</string>
 
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_disabled">Temporisation des messages éphémères désactivée.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_enabled">Temporisation des messages éphémères réglée à %1$s s.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_minute">Temporisation des messages éphémères réglée à 1 minute.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_hour">Temporisation des messages éphémères réglée à 1 heure.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_day">Temporisation des messages éphémères réglée à 1 journée.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_week">Temporisation des messages éphémères réglée à 1 semaine.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_four_weeks">Temporisation des messages éphémères réglée à 4 semaines.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_minutes">Régler le temps d\'affichage des messages éphémères à %1$s minute(s).</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_hours">Régler le temps d\'affichage des messages éphémères à %1$s heure(s).</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_days">Régler le temps d\'affichage des messages éphémères à %1$s jour(s).</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_weeks">Régler le temps d\'affichage des messages éphémères à %1$s semaine(s).</string>
-
-    <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
+    <!-- deprecated -->
     <string name="systemmsg_chat_protection_disabled">Protection de la discussion désactivée.</string>
+    <!-- deprecated -->
     <string name="systemmsg_chat_protection_enabled">Protection de la discussion activée.</string>
 
     <string name="devicemsg_self_deleted">Vous avez supprimé la discussion \"Message enregistrés\".\n\nℹ️ Pour de nouveau utiliser la fonctionnalité \"Message enregistrés\", commencez une nouvelle discussion avec vous-même.</string>

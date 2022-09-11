@@ -545,29 +545,42 @@
 
 
     <!-- system messages -->
+    <!-- deprecated -->
     <string name="systemmsg_group_name_changed">Gruppnamnet ändrades från \"%1$s\" till \"%2$s\".</string>
+    <!-- deprecated -->
     <string name="systemmsg_group_image_changed">Gruppbilden ändrades.</string>
+    <!-- deprecated -->
     <string name="systemmsg_group_image_deleted">Gruppbilden togs bort.</string>
+    <!-- deprecated -->
     <string name="systemmsg_member_added">Medlemmen %1$s lades till.</string>
+    <!-- deprecated -->
     <string name="systemmsg_member_removed">Medlemmen %1$s togs bort.</string>
+    <!-- deprecated -->
     <string name="systemmsg_group_left">Grupp lämnade.</string>
     <string name="systemmsg_read_receipt_subject">Meddelande öppnat</string>
     <string name="systemmsg_read_receipt_body">\"%1$s\" meddelandet du skickade visades på mottagarens skärm.\n\nDet är ingen garanti för att innehållet har lästs.</string>
     <string name="systemmsg_cannot_decrypt">Meddelandet kan inte avkrypteras.\n\n• Det kanske kan hjälpa, att svara på detta meddelande och be avsändaren skicka det igen.\n\n• Ifall du har ominstallerat Delta Chat eller något annat e-postprogram på denna eller någon annan enhet, kanske du behöver skicka ett nytt Autocryp inställningsmeddelande därifrån.</string>
-    <!-- Translators: %1$s will be replaced by sth. as "ACTION by me". -->
+    <!-- deprecated -->
     <string name="systemmsg_action_by_me">%1$s av mig.</string>
-    <!-- Translators: %1$s will be replaced by an action and %2$s will be replaced by the name/addr of the person who did it, as "ACTION by MEMBER". -->
+    <!-- deprecated -->
     <string name="systemmsg_action_by_user">%1$s av %2$s.</string>
     <string name="systemmsg_unknown_sender_for_chat">Okänd avsändare för denna chatt. Se info för fler detaljer.</string>
     <string name="systemmsg_subject_for_new_contact">Meddelande från %1$s</string>
     <string name="systemmsg_failed_sending_to">Kunde inte skicka meddelande till %1$s.</string>
 
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_disabled">Tiduret för meddelandeborttagning är inaktiverat.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_enabled">Tiduret för meddelandeborttagning är satt till %1$s s.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_minute">Tiduret för meddelandeborttagning är satt till 1 minut.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_hour">Tiduret för meddelandeborttagning är satt till 1 timma.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_day">Tiduret för meddelandeborttagning är satt till 1 dag.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_week">Tiduret för meddelandeborttagning är satt till 1 vecka.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_four_weeks">Tiduret för meddelandeborttagning är satt till 4 veckor.</string>
     <!-- qr code stuff -->
     <string name="qr_code">QR-kod</string>

@@ -669,37 +669,54 @@
 
 
     <!-- system messages -->
+    <!-- deprecated -->
     <string name="systemmsg_group_name_changed">Името на групата е променено от \"%1$s\" на \"%2$s\".</string>
+    <!-- deprecated -->
     <string name="systemmsg_group_image_changed">Изображението на групата е променено.</string>
+    <!-- deprecated -->
     <string name="systemmsg_group_image_deleted">Изображението на глупата е изтрито.</string>
+    <!-- deprecated -->
     <string name="systemmsg_member_added">Добавен е членът %1$s</string>
+    <!-- deprecated -->
     <string name="systemmsg_member_removed">Членът %1$s е премахнат</string>
+    <!-- deprecated -->
     <string name="systemmsg_group_left">Напуснахте групата.</string>
     <string name="systemmsg_read_receipt_subject">Съобщението е отворено</string>
     <string name="systemmsg_read_receipt_body">Съобщението \"%1$s\", което изпратихте, беше показано на екрана на получателя.\n\nТова не е гаранция, че съдържанието му е прочетено.</string>
     <string name="systemmsg_cannot_decrypt">Това съобщение не може да бъде декриптирано.\n\n• Вероятно вече имате средство за помощ - може просто да отговорите на това съобщение и да поискате от подателя да го изпрати отново.\n\n• В случай, че сте преинсталирали Delta Chat или друга програма за електронна поща на това или друго устройство, бихте могли да изпратите съобщение за настройка на Autocrypt от там.</string>
-    <!-- Translators: %1$s will be replaced by sth. as "ACTION by me". -->
+    <!-- deprecated -->
     <string name="systemmsg_action_by_me">%1$s от мен</string>
-    <!-- Translators: %1$s will be replaced by an action and %2$s will be replaced by the name/addr of the person who did it, as "ACTION by MEMBER". -->
+    <!-- deprecated -->
     <string name="systemmsg_action_by_user">%1$s от %2$s</string>
     <string name="systemmsg_unknown_sender_for_chat">Неизвестен подател за този чат. Вижте \"информация\" за повече подробности.</string>
     <string name="systemmsg_subject_for_new_contact">Съобщение от %1$s</string>
     <string name="systemmsg_failed_sending_to">Неуспешно изпращане на съобщение до %1$s.</string>
 
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_disabled">Таймерът на изчезващите съобщения е деактивиран.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_enabled">Таймерът на изчезващите съобщение е установен на %1$sсек.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_minute">Таймерът на изчезващите съобщения е установен на 1 минута.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_hour">Таймерът на изчезващите съобщения е установен на 1 час.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_day">Таймерът на изчезващите съобщения е установен на 1 ден.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_week">Таймерът на изчезващите съобщения е установен на 1 седмица.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_four_weeks">Таймерът на изчезващите съобщения е установен на 4 седмици.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_minutes">Таймерът на изчезващите съобщения е установен на %1$s минути.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_hours">Таймерът на изчезващите съобщения е установен на %1$s часа.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_days">Таймерът на изчезващите съобщения е установен на %1$s дни.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_weeks">Таймерът на изчезващите съобщения е установен на %1$s седмици.</string>
-
-    <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
+    <!-- deprecated -->
     <string name="systemmsg_chat_protection_disabled">Защитата на чата е изключена.</string>
+    <!-- deprecated -->
     <string name="systemmsg_chat_protection_enabled">Защитата на чата е включена.</string>
 
     <string name="devicemsg_self_deleted">Изтрихте чата \"Записани съобщения\".\n\nℹ️ За да използвате възможността \"Записани съобщения\" отново, създайте нов чат със себе си.</string>

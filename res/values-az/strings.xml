@@ -391,17 +391,23 @@
 
 
     <!-- system messages -->
+    <!-- deprecated -->
     <string name="systemmsg_group_name_changed">Qrupun adı \"%1$s\" - dən \"%2$s\" - yə deyişildi.</string>
+    <!-- deprecated -->
     <string name="systemmsg_group_image_changed">Qrup şəkili dəyişildi. </string>
+    <!-- deprecated -->
     <string name="systemmsg_group_image_deleted">Qrupun şəkili silindi. </string>
+    <!-- deprecated -->
     <string name="systemmsg_member_added">Üzv %1$s əlavə olundu. </string>
+    <!-- deprecated -->
     <string name="systemmsg_member_removed">%1$s üzv silindi. </string>
+    <!-- deprecated -->
     <string name="systemmsg_group_left">Qrup buraxdı.</string>
     <string name="systemmsg_read_receipt_subject">Qəbul olunanları oxuyun</string>
     <string name="systemmsg_cannot_decrypt">Bu mesaj şifresi çözülə bilməz. \n\n • Bu mesaja yalnız cavab vermək və göndərənin mesajı yenidən göndərməsini xahiş edə bilər. \n\n • Bu barədə Delta Chat və ya başqa bir e-poçt proqramını yenidən quraşdırdığınız halda oradan Autocrypt Kurulum Mesajı göndərmək istədiyiniz başqa bir qurğudan istifadə edə bilərsiniz.</string>
-    <!-- Translators: %1$s will be replaced by sth. as "ACTION by me". -->
+    <!-- deprecated -->
     <string name="systemmsg_action_by_me">%1$s məndən. </string>
-    <!-- Translators: %1$s will be replaced by an action and %2$s will be replaced by the name/addr of the person who did it, as "ACTION by MEMBER". -->
+    <!-- deprecated -->
     <string name="systemmsg_action_by_user">%1$s ilə %2$s.</string>
     <string name="qrscan_title">Qr kodu skan edin</string>
     <string name="qrscan_hint">QR kodu kamera ilə izləyin</string>

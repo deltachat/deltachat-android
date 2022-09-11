@@ -264,7 +264,6 @@
     <string name="ConversationFragment_quoted_message_not_found">Alkuperäistä viestiä ei löydy</string>
     <string name="reply_privately">Vastaa yksityisesti</string>
     <string name="source_code">Lähdekoodi</string>
-
     <string name="mute_for_one_hour">Mykistä 1 tunniksi</string>
     <string name="mute_for_two_hours">Mykistä 2 tunniksi</string>
     <string name="mute_for_one_day">Mykistä 1 päiväksi</string>
@@ -710,37 +709,54 @@
 
 
     <!-- system messages -->
+    <!-- deprecated -->
     <string name="systemmsg_group_name_changed">Ryhmän nimi vaihdettu: \"%1$s\" --> \"%2$s\".</string>
+    <!-- deprecated -->
     <string name="systemmsg_group_image_changed">Ryhmän kuva vaihdettu.</string>
+    <!-- deprecated -->
     <string name="systemmsg_group_image_deleted">Ryhmän kuva poistettu</string>
+    <!-- deprecated -->
     <string name="systemmsg_member_added">Jäsen %1$s lisätty</string>
+    <!-- deprecated -->
     <string name="systemmsg_member_removed">Jäsen %1$s poistettu</string>
+    <!-- deprecated -->
     <string name="systemmsg_group_left">Poistuttiin ryhmästä.</string>
     <string name="systemmsg_read_receipt_subject">Viesti avattu</string>
     <string name="systemmsg_read_receipt_body">Lähettämäsi viesti \"%1$s\" näytettiin vastaanottajan näytöllä.\n\nTämä ei takaa, että sisältö luettiin.</string>
     <string name="systemmsg_cannot_decrypt">Viestin salausta ei voi purkaa.\n\n• Pyydä lähettäjää lähettämään viesti uudelleen.\n\n• Jos asensit Delta Chatin tai toisen sähköpostisovelluksen uudelleen tälle tai toiselle laitteelle, Autocrypt-asetusviestin lähettäminen siitä sovelluksesta voi auttaa.</string>
-    <!-- Translators: %1$s will be replaced by sth. as "ACTION by me". -->
+    <!-- deprecated -->
     <string name="systemmsg_action_by_me">%1$s minun toimestani.</string>
-    <!-- Translators: %1$s will be replaced by an action and %2$s will be replaced by the name/addr of the person who did it, as "ACTION by MEMBER". -->
+    <!-- deprecated -->
     <string name="systemmsg_action_by_user">%1$s käyttäjän %2$s toimesta.</string>
     <string name="systemmsg_unknown_sender_for_chat">Tuntematon lähettäjä. Katso \"lisätietoja\".</string>
     <string name="systemmsg_subject_for_new_contact">Viesti lähettäjältä %1$s</string>
     <string name="systemmsg_failed_sending_to">Viestin lähettäminen kohteeseen %1$s epäonnistui.</string>
 
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_disabled">Katoavien viestien ajastin poistettiin.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_enabled">Katoavien viestien ajastin asetettu %1$s sekuntiin.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_minute">Katoavien viestien ajastin asetettu 1 minuuttiin.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_hour">Katoavien viestien ajastin asetettu 1 tuntiin.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_day">Katoavien viestien ajastin asetettu 1 päivään.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_week">Katoavien viestien ajastin asetettu 1 viikkoon.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_four_weeks">Katoavien viestien ajastin asetettu 4 viikkoon.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_minutes">Katoavien viestien ajastin asetettu %1$s minuuttiin.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_hours">Katoavien viestien ajastin asetettu %1$s tuntiin.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_days">Katoavien viestien ajastin asetettu %1$s päivään.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_weeks">Katoavien viestien ajastin asetettu %1$s viikkoon.</string>
-
-    <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
+    <!-- deprecated -->
     <string name="systemmsg_chat_protection_disabled">Keskustelusuojaus poistettu</string>
+    <!-- deprecated -->
     <string name="systemmsg_chat_protection_enabled">Keskustelusuojaus käytössä</string>
 
     <string name="devicemsg_self_deleted">Poistit \"Tallennetut viestit\" -keskustelun.\n\nℹ️ Käyttääksesi \"Tallennetut viestit\" -ominaisuutta jälleen, aloita uusi keskustelu itsesi kanssa.</string>

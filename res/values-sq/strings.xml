@@ -262,7 +262,6 @@
     <string name="ConversationFragment_quoted_message_not_found">S’u gjet mesazhi origjinal</string>
     <string name="reply_privately">Përgjigjuni privatisht</string>
     <string name="source_code">Kod Burim</string>
-
     <string name="mute_for_one_hour">Heshtoji për 1 orë</string>
     <string name="mute_for_two_hours">Heshtoji për 2 orë</string>
     <string name="mute_for_one_day">Heshtoji për 1 ditë</string>
@@ -707,37 +706,54 @@
 
 
     <!-- system messages -->
+    <!-- deprecated -->
     <string name="systemmsg_group_name_changed">Emri i grupit u ndryshua nga \"%1$s\" në \"%2$s\".</string>
+    <!-- deprecated -->
     <string name="systemmsg_group_image_changed">Figura e grupit ndryshoi.</string>
+    <!-- deprecated -->
     <string name="systemmsg_group_image_deleted">Figura e grupit u fshi.</string>
+    <!-- deprecated -->
     <string name="systemmsg_member_added">U shtua anëtari %1$s.</string>
+    <!-- deprecated -->
     <string name="systemmsg_member_removed">U hoq anëtari %1$s.</string>
+    <!-- deprecated -->
     <string name="systemmsg_group_left">U braktis grupi.</string>
     <string name="systemmsg_read_receipt_subject">Dëftesë leximi</string>
     <string name="systemmsg_read_receipt_body">Kjo është dëftesë leximi për mesazhin \"%1$s\".\n\nDo të thotë që mesazhi u shfaq te pajisja e marrësit, jo domosdo që lënda u lexua.</string>
     <string name="systemmsg_cannot_decrypt">Ky mesazh s\’mund të shfshehtëzohet.\n\n• Mundet që të ndihmojë dërgimi thjesht i një përgjigjeje këtij mesazhi dhe t\’i kërkohet dërguesit ta ridërgojë mesazhin.\n\n• Në rast se ri-instaluat Delta Chat-in apo një tjetër program email-esh në këtë apo në një tjetër pajisje, mund të donit të dërgonit një Mesazh Rregullimi Autocrypt-i që prej andej.</string>
-    <!-- Translators: %1$s will be replaced by sth. as "ACTION by me". -->
+    <!-- deprecated -->
     <string name="systemmsg_action_by_me">%1$s nga unë.</string>
-    <!-- Translators: %1$s will be replaced by an action and %2$s will be replaced by the name/addr of the person who did it, as "ACTION by MEMBER". -->
+    <!-- deprecated -->
     <string name="systemmsg_action_by_user">%1$s nga %2$s.</string>
     <string name="systemmsg_unknown_sender_for_chat">Dërgues i panjohur për këtë fjalosje. Për më tepër hollësi, shihni \'info\'.</string>
     <string name="systemmsg_subject_for_new_contact">Mesazh nga %1$s</string>
     <string name="systemmsg_failed_sending_to">S’u arrit të dërgohej mesazh te %1$s.</string>
 
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_disabled">Kohëmatësi për mesazhe që zhduken është i çaktivizuar.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_enabled">Kohëmatësi i zhdukjes së mesazheve është vënë në %1$s s.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_minute">Kohëmatësi për mesazhe që zhduken është vënë në 1 minutë.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_hour">Kohëmatësi për mesazhe që zhduken është vënë në 1 orë.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_day">Kohëmatësi për mesazhe që zhduken është vënë në 1 ditë.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_week">Kohëmatësi për mesazhe që zhduken është vënë në 1 javë.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_four_weeks">Kohëmatësi për mesazhe që zhduken është vënë në 4 javë.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_minutes">Kohëmatësi për mesazhe që zhduken është vënë në %1$s minuta.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_hours">Kohëmatësi për mesazhe që zhduken është vënë në %1$s orë.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_days">Kohëmatësi i zhdukjes së mesazheve është vënë në %1$s ditë.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_weeks">Kohëmatësi për mesazhe që zhduken është vënë në %1$s javë.</string>
-
-    <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
+    <!-- deprecated -->
     <string name="systemmsg_chat_protection_disabled">Mbrojtja e fjalosjes u çaktivizua.</string>
+    <!-- deprecated -->
     <string name="systemmsg_chat_protection_enabled">Mbrojtja e fjalosjes u aktivizua.</string>
 
     <string name="devicemsg_self_deleted">Fshitë fjalosjen “Mesazhe të ruajtur”.\n\nℹ️ Që të përdorni sërish veçorinë “Mesazhe të ruajtur”, krijoni një fjalosje të re me veten tuaj.</string>

@@ -651,37 +651,54 @@
 
 
     <!-- system messages -->
+    <!-- deprecated -->
     <string name="systemmsg_group_name_changed">ឈ្មោះក្រុមត្រូវបានប្តូរពី \"%1$s\" ទៅកាន់ \"%2$s\"</string>
+    <!-- deprecated -->
     <string name="systemmsg_group_image_changed">រូបភាពក្រុមត្រូវបានប្តូរ</string>
+    <!-- deprecated -->
     <string name="systemmsg_group_image_deleted">រូបភាពក្រុមត្រូវបានលុប</string>
+    <!-- deprecated -->
     <string name="systemmsg_member_added">សមាជិក %1$s ត្រូវបានបន្ថែម</string>
+    <!-- deprecated -->
     <string name="systemmsg_member_removed">សមាជិក %1$s ត្រូវបានយកចេញ</string>
+    <!-- deprecated -->
     <string name="systemmsg_group_left">អ្នកត្រូវបានចាកចេញពីក្រុម</string>
     <string name="systemmsg_read_receipt_subject">សារត្រូវបានបើក</string>
     <string name="systemmsg_read_receipt_body">\"%1$s\" សារដែលអ្នកបានផ្ញើត្រូវបានបង្ហាញនៅលើ អេក្រង់របស់អ្នកទទួល\n\nនេះមិនមែនជាការធានាថា មាតិកាត្រួវបានអានទេ។</string>
     <string name="systemmsg_cannot_decrypt">សារនេះមិនអាចត្រូវបានឌិគ្រីប\n\n• វាអាចជួយឆ្លើយតបជំនួសសារនេះ និងសួរអ្នកផ្ញើដើម្បីផ្ញើសារម្តងទៀត\n\n• ក្នុងករណីអ្នកបានតម្លើងសា Delta Chat ម្តងទៀត ឬកម្មវិធីអុីម៉េលមួយទៀត លើឧបករណ៍នេះ ឬឧបករណ៍មួយផ្សេងទៀត អ្នកប្រហែលជាចង់ផ្ញើ សារការតម្លើងអ៊ិនគ្រីបស្វ័យប្រវត្តិ  (ផ្ញើនិងទទួលដោយសម្ងាត់) ពីទីនោះ។</string>
-    <!-- Translators: %1$s will be replaced by sth. as "ACTION by me". -->
+    <!-- deprecated -->
     <string name="systemmsg_action_by_me">%1$s ដោយខ្ញុំ</string>
-    <!-- Translators: %1$s will be replaced by an action and %2$s will be replaced by the name/addr of the person who did it, as "ACTION by MEMBER". -->
+    <!-- deprecated -->
     <string name="systemmsg_action_by_user">%1$s ដោយ %2$s</string>
     <string name="systemmsg_unknown_sender_for_chat">មិនស្គាល់អ្នកផ្ញើការសន្ទនានេះ។ មើល \'ពត៌មាន\' សម្រាប់ពត៌មានលំអិត</string>
     <string name="systemmsg_subject_for_new_contact">សារពី %1$s</string>
     <string name="systemmsg_failed_sending_to">បានបរាបានក្នុងការផ្ញើសារទៅ %1$s</string>
 
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_disabled">បានបិទបាត់កម្មវិធីសារដែលនឹងបាត់បន្ទាប់ពីមួយរយៈ</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_enabled">កម្មវិធីសារដែលនឹងបាត់បន្ទាប់ពីមួយរយៈបាន កំណត់ទៅ %1$s វិនាទី។</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_minute">កម្មវិធីសារដែលនឹងបាត់បន្ទាប់ពីមួយរយៈបាន កំណត់ទៅ ១នាទី។</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_hour">កម្មវិធីសារដែលនឹងបាត់បន្ទាប់ពីមួយរយៈបាន កំណត់ទៅ ១ម៉ោង។</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_day">កម្មវិធីសារដែលនឹងបាត់បន្ទាប់ពីមួយរយៈបាន កំណត់ទៅ ១ថ្ងៃ។</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_week">កម្មវិធីសារដែលនឹងបាត់បន្ទាប់ពីមួយរយៈបាន កំណត់ទៅ ១សប្តាហ៍។</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_four_weeks">កម្មវិធីសារដែលនឹងបាត់បន្ទាប់ពីមួយរយៈបាន កំណត់ទៅ ៤សប្តាហ៍</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_minutes">កម្មវិធីសារដែលនឹងបាត់បន្ទាប់ពីមួយរយៈបាន កំណត់ទៅ %1$s នាទី។</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_hours">កម្មវិធីសារដែលនឹងបាត់បន្ទាប់ពីមួយរយៈបាន កំណត់ទៅ %1$s ម៉ោង។</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_days">កម្មវិធីសារដែលនឹងបាត់បន្ទាប់ពីមួយរយៈបាន កំណត់ទៅ %1$s ថ្ងៃ។</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_weeks">កម្មវិធីសារដែលនឹងបាត់បន្ទាប់ពីមួយរយៈបាន កំណត់ទៅ %1$s ថ្ងៃ។</string>
-
-    <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
+    <!-- deprecated -->
     <string name="systemmsg_chat_protection_disabled">ការការពារសន្ទនាត្រូវបានបិទ</string>
+    <!-- deprecated -->
     <string name="systemmsg_chat_protection_enabled">ការការពារសន្ទនាត្រូវបានបើក</string>
 
     <string name="devicemsg_self_deleted">អ្នកបានលុប \"សារដែលបានរក្សាទុក\" សន្ទនា។\n\nℹ️ ដើម្បីប្រើមុខងារ \"សារដែលបានរក្សាទុក\" ជាថ្មីម្តងទៀត សូមបង្កើតសន្ទនាថ្មីជាមួយខ្លួនអ្នក។</string>

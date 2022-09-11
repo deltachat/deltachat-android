@@ -280,7 +280,6 @@
     <string name="ConversationFragment_quoted_message_not_found">Nie znaleziono oryginalnej wiadomości</string>
     <string name="reply_privately">Odpowiedz prywatnie </string>
     <string name="source_code">Kod źródłowy</string>
-
     <string name="mute_for_one_hour">Wyłącz na 1 godzinę</string>
     <string name="mute_for_two_hours">Wyłącz na 2 godziny</string>
     <string name="mute_for_one_day">Wyłącz na 1 dzień</string>
@@ -740,37 +739,54 @@
 
 
     <!-- system messages -->
+    <!-- deprecated -->
     <string name="systemmsg_group_name_changed">Zmieniono nazwę grupy z \"%1$s\" na \"%2$s\".</string>
+    <!-- deprecated -->
     <string name="systemmsg_group_image_changed">Zmieniono obraz grupy.</string>
+    <!-- deprecated -->
     <string name="systemmsg_group_image_deleted">Usunięto obraz grupy.</string>
+    <!-- deprecated -->
     <string name="systemmsg_member_added">Dodano członka %1$s</string>
+    <!-- deprecated -->
     <string name="systemmsg_member_removed">Usunięto członka %1$s</string>
+    <!-- deprecated -->
     <string name="systemmsg_group_left">Grupa opuszczona.</string>
     <string name="systemmsg_read_receipt_subject">Potwierdzenie odczytu</string>
     <string name="systemmsg_read_receipt_body">To jest potwierdzenie odczytu dla wiadomości ”%1$s„.\n\nTo potwierdzenie odczytu tylko informuje, że wiadomość została wyświetlona na urządzeniu odbiorcy. Nie ma gwarancji, że odbiorca przeczytał treść wiadomości.</string>
     <string name="systemmsg_cannot_decrypt">Tej wiadomości nie można odszyfrować.\n\n• Możesz teraz pomóc odpowiadając po prostu na tą wiadomość i poprosić nadawcę o ponowne wysłanie wiadomości.\n\n• W przypadku ponownego zainstalowania Delta Chat lub innego programu mailowego na tym lub innym urządzeniu, może być konieczne wysłanie stąd klucza automatycznego szyfrowania.</string>
-    <!-- Translators: %1$s will be replaced by sth. as "ACTION by me". -->
+    <!-- deprecated -->
     <string name="systemmsg_action_by_me">%1$s przeze mnie.</string>
-    <!-- Translators: %1$s will be replaced by an action and %2$s will be replaced by the name/addr of the person who did it, as "ACTION by MEMBER". -->
+    <!-- deprecated -->
     <string name="systemmsg_action_by_user">%1$s przez %2$s.</string>
     <string name="systemmsg_unknown_sender_for_chat">Nieznany nadawca tego czatu. Więcej szczegółów znajdziesz w sekcji „Informacje”.</string>
     <string name="systemmsg_subject_for_new_contact">Wiadomość od %1$s</string>
     <string name="systemmsg_failed_sending_to">Nie udało się wysłać wiadomości do %1$s.</string>
 
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_disabled">Wyłączono zegar znikających wiadomości.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_enabled">Ustawiono zegar znikających wiadomości na %1$s s.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_minute">Ustawiono zegar znikających wiadomości na 1 minutę.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_hour">Ustawiono zegar znikających wiadomości na 1 godzinę.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_day">Ustawiono zegar znikających wiadomości na 1 dzień.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_week">Ustawiono zegar znikających wiadomości na 1 tydzień.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_four_weeks">Ustawiono zegar znikających wiadomości na 4 tygodnie.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_minutes">Ustawiono zegar znikających wiadomości na czas %1$s minut.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_hours">Ustawiono zegar znikających wiadomości na czas %1$s godzin.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_days">Ustawiono zegar znikających wiadomości na czas %1$s dni.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_weeks">Ustawiono zegar znikających wiadomości na czas %1$s tygodni.</string>
-
-    <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
+    <!-- deprecated -->
     <string name="systemmsg_chat_protection_disabled">Ochrona czatu wyłączona.</string>
+    <!-- deprecated -->
     <string name="systemmsg_chat_protection_enabled">Ochrona czatu włączona.</string>
 
     <string name="devicemsg_self_deleted">Usunięto czat „Zapisane wiadomości”.\n\nℹ️ Aby ponownie użyć funkcji „Zapisane wiadomości”, utwórz nowy czat ze sobą.</string>

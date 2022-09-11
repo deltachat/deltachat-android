@@ -494,18 +494,24 @@
 
 
     <!-- system messages -->
+    <!-- deprecated -->
     <string name="systemmsg_group_name_changed">群組名稱已從 %1$s 更改為 %2$s</string>
+    <!-- deprecated -->
     <string name="systemmsg_group_image_changed">已更改群組圖片。</string>
+    <!-- deprecated -->
     <string name="systemmsg_group_image_deleted">已刪除群組圖片。</string>
+    <!-- deprecated -->
     <string name="systemmsg_member_added">已新增成員 %1$s</string>
+    <!-- deprecated -->
     <string name="systemmsg_member_removed">已移除成員 %1$s</string>
+    <!-- deprecated -->
     <string name="systemmsg_group_left">已退出群組。</string>
     <string name="systemmsg_read_receipt_subject">收執回條</string>
     <string name="systemmsg_read_receipt_body">這是訊息 %1$s 的收執回條，表示本訊息已經顯示在收件人的裝置上了，但不代表收件人已讀。</string>
     <string name="systemmsg_cannot_decrypt">本訊息無法解密。\n\n請試著回覆本訊息，並請發送者重發一遍。\n\n如果你曾經在本裝置或其它裝置重新安裝 Delta Chat 或其它郵件軟體的話，請重新發送AutoCrypt設定訊息。</string>
-    <!-- Translators: %1$s will be replaced by sth. as "ACTION by me". -->
+    <!-- deprecated -->
     <string name="systemmsg_action_by_me">我%1$s</string>
-    <!-- Translators: %1$s will be replaced by an action and %2$s will be replaced by the name/addr of the person who did it, as "ACTION by MEMBER". -->
+    <!-- deprecated -->
     <string name="systemmsg_action_by_user">%2$s%1$s</string>
     <string name="qrscan_title">掃描QR Code</string>
     <string name="qrscan_hint">請將相機對準 QR Code</string>

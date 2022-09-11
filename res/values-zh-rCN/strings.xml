@@ -256,7 +256,6 @@
     <string name="ConversationFragment_quoted_message_not_found">原消息未找到</string>
     <string name="reply_privately">私下回复</string>
     <string name="source_code">源代码</string>
-
     <string name="mute_for_one_hour">静音 1 小时</string>
     <string name="mute_for_two_hours">静音 2 小时</string>
     <string name="mute_for_one_day">静音 1 天</string>
@@ -695,37 +694,54 @@
 
 
     <!-- system messages -->
+    <!-- deprecated -->
     <string name="systemmsg_group_name_changed">已更改群组名称：从“%1$s”更改为\"%2$s\"</string>
+    <!-- deprecated -->
     <string name="systemmsg_group_image_changed">已更改群组图像</string>
+    <!-- deprecated -->
     <string name="systemmsg_group_image_deleted">已删除群组图像</string>
+    <!-- deprecated -->
     <string name="systemmsg_member_added">已添加成员 %1$s</string>
+    <!-- deprecated -->
     <string name="systemmsg_member_removed">已移除成员 %1$s </string>
+    <!-- deprecated -->
     <string name="systemmsg_group_left">已离开群组</string>
     <string name="systemmsg_read_receipt_subject">消息已被打开</string>
     <string name="systemmsg_read_receipt_body">您发送的“%1$s”消息已在接收者的屏幕上显示过。\n\n这并不保证内容已被阅读。</string>
     <string name="systemmsg_cannot_decrypt">此消息无法解密。\n\n• 简单回复此消息并要求发送者重发该消息可能会有所帮助。\n\n• 如果您在此设备或其他设备上重新安装了 Delta Chat 或其他电子邮件程序，则可能需要从别处发送 Autocrypt 设置消息。</string>
-    <!-- Translators: %1$s will be replaced by sth. as "ACTION by me". -->
+    <!-- deprecated -->
     <string name="systemmsg_action_by_me">我 %1$s。</string>
-    <!-- Translators: %1$s will be replaced by an action and %2$s will be replaced by the name/addr of the person who did it, as "ACTION by MEMBER". -->
+    <!-- deprecated -->
     <string name="systemmsg_action_by_user">%2$s %1$s。</string>
     <string name="systemmsg_unknown_sender_for_chat">此聊天发送者未知。查看“信息”来获取更多详情。</string>
     <string name="systemmsg_subject_for_new_contact">来自 %1$s 的消息</string>
     <string name="systemmsg_failed_sending_to">发送消息给 %1$s 失败。</string>
 
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_disabled">已禁用消息定时销毁计时器</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_enabled">设置消息定时销毁计时器为 %1$s 秒</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_minute">设置消息定时销毁计时器为 1 分钟</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_hour">设置消息定时销毁计时器为 1 小时</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_day">设置消息定时销毁计时器为 1 天</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_week">设置消息定时销毁计时器为 1 周</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_four_weeks">设置消息定时销毁计时器为 4 周</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_minutes">设置消息定时销毁计时器为 %1$s 分钟</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_hours">设置消息定时销毁计时器为 %1$s 小时</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_days">设置消息定时销毁计时器为 %1$s 天</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_weeks">设置消息定时销毁计时器为 %1$s 周</string>
-
-    <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
+    <!-- deprecated -->
     <string name="systemmsg_chat_protection_disabled">已禁用聊天保护</string>
+    <!-- deprecated -->
     <string name="systemmsg_chat_protection_enabled">已启用聊天保护</string>
 
     <string name="devicemsg_self_deleted">您已删除“保存的消息”聊天。\n\nℹ️要再次使用“保存的消息”功能，请创建一个与自己的新聊天。</string>

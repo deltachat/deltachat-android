@@ -264,7 +264,6 @@
     <string name="ConversationFragment_quoted_message_not_found">No s\'ha trobat el missatge original</string>
     <string name="reply_privately">Respon en privat</string>
     <string name="source_code">Codi Font</string>
-
     <string name="mute_for_one_hour">Silencia 1 hora</string>
     <string name="mute_for_two_hours">Silencia 2 hores</string>
     <string name="mute_for_one_day">Silencia 1 dia</string>
@@ -584,18 +583,24 @@
 
 
     <!-- system messages -->
+    <!-- deprecated -->
     <string name="systemmsg_group_name_changed">Nom del grup \"%1$s\" canviat a \"%2$s\".</string>
+    <!-- deprecated -->
     <string name="systemmsg_group_image_changed">Imatge de grup canviada.</string>
+    <!-- deprecated -->
     <string name="systemmsg_group_image_deleted">Imatge de grup eliminada.</string>
+    <!-- deprecated -->
     <string name="systemmsg_member_added">Membre %1$s afegit.</string>
+    <!-- deprecated -->
     <string name="systemmsg_member_removed">Membre %1$s eliminat.</string>
+    <!-- deprecated -->
     <string name="systemmsg_group_left">Deixa el grup.</string>
     <string name="systemmsg_read_receipt_subject">Confirmació de lectura</string>
     <string name="systemmsg_read_receipt_body">Confirmació de lectura del missatge \"%1$s\".\n\nVol dir que el missatge s\'ha mostrat al dispositiu del receptor, no necessàriament que s\'hagi llegit.</string>
     <string name="systemmsg_cannot_decrypt">Aquest missatge no es pot desxifrar.\n\n• Proveu de respondre\'l i demanar-li al remitent que us el torni a enviar.\n\n• Si heu reinstal·lat Delta Chat o un altre gestor de correu en aquest dispositiu o en algun altre, proveu d\'enviar un missatge de configuració Autocrypt des d\'allà.</string>
-    <!-- Translators: %1$s will be replaced by sth. as "ACTION by me". -->
+    <!-- deprecated -->
     <string name="systemmsg_action_by_me">%1$s per mi.</string>
-    <!-- Translators: %1$s will be replaced by an action and %2$s will be replaced by the name/addr of the person who did it, as "ACTION by MEMBER". -->
+    <!-- deprecated -->
     <string name="systemmsg_action_by_user">%1$s per %2$s.</string>
     <string name="qrscan_title">Escaneja codi QR</string>
     <string name="qrscan_hint">Poseu la càmera davant del codi QR</string>

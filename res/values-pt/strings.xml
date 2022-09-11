@@ -323,18 +323,24 @@
 
 
     <!-- system messages -->
+    <!-- deprecated -->
     <string name="systemmsg_group_name_changed">O nome do grupo mudou de \"%1$s\" para \"%2$s\".</string>
+    <!-- deprecated -->
     <string name="systemmsg_group_image_changed">Imagem do grupo modificada.</string>
+    <!-- deprecated -->
     <string name="systemmsg_group_image_deleted">Imagem do grupo apagada.</string>
+    <!-- deprecated -->
     <string name="systemmsg_member_added">Membro %1$s adicionado.</string>
+    <!-- deprecated -->
     <string name="systemmsg_member_removed">Membro %1$s removido.</string>
+    <!-- deprecated -->
     <string name="systemmsg_group_left">Saíu do grupo.</string>
     <string name="systemmsg_read_receipt_subject">Ler recibos</string>
     <string name="systemmsg_read_receipt_body">Este é um recibo de confirmação de leitura da mensagem \"%1$s\".\n\nEsta mensagem foi exibida no dispositivo do destinatário, não necessariamente que o conteúdo foi lido.</string>
     <string name="systemmsg_cannot_decrypt">Esta mensagem não pode ser descriptada.\n\n • Talvez seja útil simplesmente responder a esta mensagem e solicitar que o remetente envie a mensagem novamente.\n\n • Caso você tenha re-instalado o Delta Chat ou outro programa de e-mail neste ou noutro dispositivo poderá querer enviar uma mensagem de configuração Autocrypt do dispositvo.</string>
-    <!-- Translators: %1$s will be replaced by sth. as "ACTION by me". -->
+    <!-- deprecated -->
     <string name="systemmsg_action_by_me">%1$s por mim.</string>
-    <!-- Translators: %1$s will be replaced by an action and %2$s will be replaced by the name/addr of the person who did it, as "ACTION by MEMBER". -->
+    <!-- deprecated -->
     <string name="systemmsg_action_by_user">%1$s por %2$s.</string>
     <string name="qrscan_title">Fazer scan do código QR</string>
     <string name="qrscan_hint">Coloque sua câmera sobre o código QR</string>

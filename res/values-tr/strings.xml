@@ -264,7 +264,6 @@
     <string name="ConversationFragment_quoted_message_not_found">Özgün ileti bulunamadı</string>
     <string name="reply_privately">Özel Olarak Yanıtla</string>
     <string name="source_code">Kaynak Kodu</string>
-
     <string name="mute_for_one_hour">1 saatliğine sessize al</string>
     <string name="mute_for_two_hours">2 saatliğine sessize al</string>
     <string name="mute_for_one_day">1 günlüğüne sessize al</string>
@@ -710,37 +709,54 @@
 
 
     <!-- system messages -->
+    <!-- deprecated -->
     <string name="systemmsg_group_name_changed">\"%1$s\" grup adı \"%2$s\" olarak değiştirildi.</string>
+    <!-- deprecated -->
     <string name="systemmsg_group_image_changed">Grup görseli değiştirildi.</string>
+    <!-- deprecated -->
     <string name="systemmsg_group_image_deleted">Grup görseli silindi.</string>
+    <!-- deprecated -->
     <string name="systemmsg_member_added">%1$s üyesi eklendi.</string>
+    <!-- deprecated -->
     <string name="systemmsg_member_removed">%1$s üyesi kaldırıldı.</string>
+    <!-- deprecated -->
     <string name="systemmsg_group_left">Gruptan ayrılındı.</string>
     <string name="systemmsg_read_receipt_subject">İleti açıldı</string>
     <string name="systemmsg_read_receipt_body">Gönderdiğiniz \"%1$s\" iletisi alıcının ekranında görüntülendi.\n\nBu, içeriğin okunduğunun güvencesi değildir.</string>
     <string name="systemmsg_cannot_decrypt">Bu iletinin şifresi çözülemiyor.\n\n• Bu iletiye basitçe yanıt vermek ve gönderene iletiyi yeniden gönderip gönderemeyeceğini sormak zaten yardımcı olabilir.\n\n• Delta Chat\'i ya da başka bir e-posta programını bu ya da başka bir aygıta yeniden kurduysanız, oradan bir Autocrypt Ayarlama İletisi göndermek isteyebilirsiniz.</string>
-    <!-- Translators: %1$s will be replaced by sth. as "ACTION by me". -->
+    <!-- deprecated -->
     <string name="systemmsg_action_by_me">Benim tarafımdan %1$s.</string>
-    <!-- Translators: %1$s will be replaced by an action and %2$s will be replaced by the name/addr of the person who did it, as "ACTION by MEMBER". -->
+    <!-- deprecated -->
     <string name="systemmsg_action_by_user">%2$s tarafından %1$s.</string>
     <string name="systemmsg_unknown_sender_for_chat">Bu sohbet için bilinmeyen gönderen. Daha fazla ayrıntı için \'bilgi\'ye bakın.</string>
     <string name="systemmsg_subject_for_new_contact">%1$s kişisinden gelen ileti</string>
     <string name="systemmsg_failed_sending_to">%1$s kişisine ileti gönderme başarısız.</string>
 
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_disabled">Kaybolan iletiler zamanlayıcısı etkisizleştirildi.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_enabled">Kaybolan iletiler zamanlayıcısı %1$s s\'ye ayarlandı.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_minute">Kaybolan iletiler zamanlayıcısı 1 dakikaya ayarlandı.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_hour">Kaybolan iletiler zamanlayıcısı 1 saate ayarlandı.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_day">Kaybolan iletiler zamanlayıcısı 1 güne ayarlandı.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_week">Kaybolan iletiler zamanlayıcısı 1 haftaya ayarlandı.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_four_weeks">Kaybolan iletiler zamanlayıcısı 4 haftaya ayarlandı.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_minutes">Kaybolan iletiler zamanlayıcısı %1$s dakikaya ayarlandı.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_hours">Kaybolan iletiler zamanlayıcısı %1$s saate ayarlandı.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_days">Kaybolan iletiler zamanlayıcısı %1$s güne ayarlandı.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_weeks">Kaybolan iletiler zamanlayıcısı %1$s haftaya ayarlandı.</string>
-
-    <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
+    <!-- deprecated -->
     <string name="systemmsg_chat_protection_disabled">Sohbet koruması etkisizleştirildi.</string>
+    <!-- deprecated -->
     <string name="systemmsg_chat_protection_enabled">Sohbet koruması etkinleştirildi.</string>
 
     <string name="devicemsg_self_deleted">\"Kaydedilen iletiler\" sohbetini sildiniz.\n\nℹ️ \"Kaydedilen iletiler\" özelliğini yeniden kullanmak için kendinizle yeni bir sohbet oluşturun.</string>

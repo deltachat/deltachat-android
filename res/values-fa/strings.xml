@@ -265,7 +265,6 @@
     <string name="ConversationFragment_quoted_message_not_found">پیام اصلی یافت نشد</string>
     <string name="reply_privately">پاسخ دادن به صورت خصوصی</string>
     <string name="source_code">کد منبع</string>
-
     <string name="mute_for_one_hour">ساکت کردن به مدت۱ ساعت</string>
     <string name="mute_for_two_hours">ساکت کردن به مدت ۲ ساعت</string>
     <string name="mute_for_one_day">ساکت کردن به مدت ۱ روز</string>
@@ -723,37 +722,54 @@ https://meet.jit.si/$ROOM
 
 
     <!-- system messages -->
+    <!-- deprecated -->
     <string name="systemmsg_group_name_changed">اسم گروه از \"%1$s\" به \"%2$s\" تغییر کرد. </string>
+    <!-- deprecated -->
     <string name="systemmsg_group_image_changed">تصویر گروه تغییر کرد.</string>
+    <!-- deprecated -->
     <string name="systemmsg_group_image_deleted">تصویر گروه حذف شد.</string>
+    <!-- deprecated -->
     <string name="systemmsg_member_added">%1$s عضو شد.</string>
+    <!-- deprecated -->
     <string name="systemmsg_member_removed">عضویت %1$sحذف شد. </string>
+    <!-- deprecated -->
     <string name="systemmsg_group_left">گروه ترک شد. </string>
     <string name="systemmsg_read_receipt_subject">پیام باز شد</string>
     <string name="systemmsg_read_receipt_body">پیام\"%1$s\" که ارسال کرده بودید در ثفحه گیرنده نمایش داده شد\n\n. تضمینی وجود ندارد که محتوای پیام را خوانده باشد. </string>
     <string name="systemmsg_cannot_decrypt">این پیام را نمی‌توان رمزگشایی کرد.\n\n• ممکن است بهتر باشد که به همین پیام پاسخ داده و از ارسال کننده بخواهید دوباره آن را بفرستد. \n\n• اگر دوباره دلتاچت را نصب کرده‌اید یا از یک ایمیل دیگر هم روی این دستگاه یا دستگاه دیگر استفاده می‌کنید ممکن است لازم باشد یک پیام تنظیمات خودرمز از آن دستگاه ارسال کنید. </string>
-    <!-- Translators: %1$s will be replaced by sth. as "ACTION by me". -->
+    <!-- deprecated -->
     <string name="systemmsg_action_by_me">%1$sتوسط من</string>
-    <!-- Translators: %1$s will be replaced by an action and %2$s will be replaced by the name/addr of the person who did it, as "ACTION by MEMBER". -->
+    <!-- deprecated -->
     <string name="systemmsg_action_by_user">%1$sتوسط%2$s</string>
     <string name="systemmsg_unknown_sender_for_chat">فرستنده در این گفت و گو ناشناس است. برای جزئیات بیشتر به \"اطلاعات\" مراجعه کنید.</string>
     <string name="systemmsg_subject_for_new_contact">پیام از%1$s</string>
     <string name="systemmsg_failed_sending_to">ارسال ناموفق پیام به %1$s.</string>
 
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_disabled">زمان سنج پیام های ناپدید شونده غیرفعال شد.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_enabled">زمان‌سنج پیام ناپدید شونده روی %1$sثانیه تنظیم شد.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_minute">زمان سنج پیام های ناپدید شونده برای 1 دقیقه تنظیم شد.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_hour">زمان سنج پیام های ناپدید شونده برای 1 ساعت تنظیم شد.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_day">زمان سنج پیام های ناپدید شونده برای 1 روز تنظیم شد.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_week">زمان سنج پیام های ناپدید شونده برای 1 هفته تنظیم شد.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_four_weeks">زمان سنج پیام های ناپدید شونده برای 4 هفته تنظیم شد.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_minutes">زمان‌سنج پیام‌های ناپدید شونده روی %1$s دقیقه تنظیم شد.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_hours">زمان‌سنج پیام ناپدید شونده روی %1$s ساعت تنظیم شد.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_days">زمان‌سنج پیام ناپدید شونده روی %1$s روز تنظیم شد.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_weeks">زمان‌سنج پیام ناپدید شونده روی %1$s هفته تنظیم شد.</string>
-
-    <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
+    <!-- deprecated -->
     <string name="systemmsg_chat_protection_disabled">محافظت از گفنگو غیرفعال شد.</string>
+    <!-- deprecated -->
     <string name="systemmsg_chat_protection_enabled">محافظت از گفتگو فعال شد.</string>
 
     <string name="devicemsg_self_deleted">شما گفتگوی «پیام‌های ذخیره شده» را پاک کردید. 

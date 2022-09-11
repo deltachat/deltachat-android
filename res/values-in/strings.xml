@@ -505,17 +505,22 @@
 
 
     <!-- system messages -->
+    <!-- deprecated -->
     <string name="systemmsg_group_name_changed">Nama grup diganti dari \"%1$s\" ke \"%2$s\".</string>
+    <!-- deprecated -->
     <string name="systemmsg_group_image_changed">Gambar grup telah diubah.</string>
+    <!-- deprecated -->
     <string name="systemmsg_group_image_deleted">Gambar grup telah dihapus.</string>
+    <!-- deprecated -->
     <string name="systemmsg_member_added">Member %1$s telah ditambahkan.</string>
+    <!-- deprecated -->
     <string name="systemmsg_member_removed">Member %1$s telah dikeluarkan.</string>
     <string name="systemmsg_read_receipt_subject">Pesan dibuka</string>
     <string name="systemmsg_read_receipt_body">Pesan \"%1$s\" yang Anda kirimkan tampak di layar penerima.\n\nIni bukan jaminan kalau isinya dibaca.</string>
     <string name="systemmsg_cannot_decrypt">Pesan ini tidak bisa dienkripsi.\n\n• Ada baiknya menjawab pesan ini dan meminta pengirimnya untuk kirim ulang.\n\n• Dalam kasus Anda menginstal ulang Delta Chat atau program surel lain di perangkat ini atau perangkat lain, sebaiknya Anda mengirim Pengaturan Pesan Autocrypt dari sana.</string>
-    <!-- Translators: %1$s will be replaced by sth. as "ACTION by me". -->
+    <!-- deprecated -->
     <string name="systemmsg_action_by_me">%1$s oleh saya.</string>
-    <!-- Translators: %1$s will be replaced by an action and %2$s will be replaced by the name/addr of the person who did it, as "ACTION by MEMBER". -->
+    <!-- deprecated -->
     <string name="systemmsg_action_by_user">%1$s oleh %2$s.</string>
     <string name="systemmsg_unknown_sender_for_chat">Pengirim tidak dikenal untuk obrolan ini. Lihat \'info\' untuk lebih jelasnya.</string>
     <string name="systemmsg_subject_for_new_contact">Pesan dari %1$s</string>

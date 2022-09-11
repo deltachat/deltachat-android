@@ -264,6 +264,8 @@
     <string name="ConversationFragment_quoted_message_not_found">Originalnachricht nicht gefunden</string>
     <string name="reply_privately">Privat antworten</string>
     <string name="source_code">Quelltext</string>
+    <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
+    <string name="add_to_home_screen">Zum Startbildschirm hinzufügen</string>
 
     <string name="mute_for_one_hour">Stumm für 1 Stunde</string>
     <string name="mute_for_two_hours">Stumm für 2 Stunden</string>
@@ -710,38 +712,121 @@
 
 
     <!-- system messages -->
+    <!-- deprecated -->
     <string name="systemmsg_group_name_changed">Gruppenname von \"%1$s\" zu \"%2$s\" geändert.</string>
+    <!-- deprecated -->
     <string name="systemmsg_group_image_changed">Gruppenbild geändert.</string>
+    <!-- deprecated -->
     <string name="systemmsg_group_image_deleted">Gruppenbild gelöscht.</string>
+    <!-- deprecated -->
     <string name="systemmsg_member_added">%1$s hinzugefügt.</string>
+    <!-- deprecated -->
     <string name="systemmsg_member_removed">%1$s entfernt.</string>
+    <!-- deprecated -->
     <string name="systemmsg_group_left">Gruppe verlassen.</string>
     <string name="systemmsg_read_receipt_subject">Empfangsbestätigung</string>
     <string name="systemmsg_read_receipt_body">Ihre Nachricht \"%1$s\" wurde auf dem Empfangsgerät angezeigt.\n\nDas ist keine Garantie dafür, dass sie auch gelesen wurde.</string>
     <string name="systemmsg_cannot_decrypt">Diese Nachricht kann nicht entschlüsselt werden.\n\n• Es könnte bereits helfen, einfach auf diese Nachricht zu antworten und die/den AbsenderIn zu bitten, die Nachricht erneut zu senden.\n\n• Falls Delta Chat oder ein anderes E-Mail-Programm auf diesem oder einem anderen Gerät neu installiert wurde, kann von dort aus eine Autocrypt Setup-Nachricht gesendet werden.</string>
-    <!-- Translators: %1$s will be replaced by sth. as "ACTION by me". -->
+    <!-- deprecated -->
     <string name="systemmsg_action_by_me">%1$s von mir.</string>
-    <!-- Translators: %1$s will be replaced by an action and %2$s will be replaced by the name/addr of the person who did it, as "ACTION by MEMBER". -->
+    <!-- deprecated -->
     <string name="systemmsg_action_by_user">%1$s von %2$s.</string>
     <string name="systemmsg_unknown_sender_for_chat">Absender ist für diesen Chat unbekannt. Siehe \"Info\" für weitere Details,</string>
     <string name="systemmsg_subject_for_new_contact">Nachricht von %1$s</string>
     <string name="systemmsg_failed_sending_to">Nachricht senden an %1$s fehlgeschlagen.</string>
 
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_disabled">Verschwindende Nachrichten ausgeschaltet.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_enabled">Ablaufzeit verschwindender Nachrichten auf %1$s s festgelegt.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_minute">Ablaufzeit verschwindender Nachrichten auf 1 Minute festgelegt.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_hour">Ablaufzeit verschwindender Nachrichten auf 1 Stunde festgelegt.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_day">Ablaufzeit verschwindender Nachrichten auf 1 Tag festgelegt.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_week">Ablaufzeit verschwindender Nachrichten auf 1 Woche festgelegt.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_four_weeks">Ablaufzeit verschwindender Nachrichten auf 4 Wochen festgelegt.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_minutes">Ablaufzeit verschwindender Nachrichten auf %1$s Minuten festgelegt.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_hours">Ablaufzeit verschwindender Nachrichten auf %1$s Stunden festgelegt.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_days">Ablaufzeit verschwindender Nachrichten auf %1$s Tage festgelegt.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_weeks">Ablaufzeit verschwindender Nachrichten auf %1$s Wochen festgelegt.</string>
-
-    <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
+    <!-- deprecated -->
     <string name="systemmsg_chat_protection_disabled">Chat-Absicherung ausgeschaltet.</string>
+    <!-- deprecated -->
     <string name="systemmsg_chat_protection_enabled">Chat-Absicherung eingeschaltet.</string>
+
+    <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
+    <string name="group_name_changed_by_you">Sie haben den Gruppennamen von \"%1$s\" zu \"%2$s\" geändert.</string>
+    <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
+    <string name="group_name_changed_by_other">Gruppenname geändert von \"%1$s\" zu \"%2$s\" von %3$s.</string>
+    <string name="group_image_changed_by_you">Sie haben das Gruppenbild geändert.</string>
+    <!-- %1$s will be replaced by name and address of the contact who did the action -->
+    <string name="group_image_changed_by_other">Gruppenbild geändert von %1$s.</string>
+    <!-- %1$s will be replaced by name and address of the contact added to the group -->
+    <string name="add_member_by_you">Sie haben %1$s hinzugefügt.</string>
+    <!-- %1$s will be replaced by name and address of the contact added to the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <string name="add_member_by_other">%1$s hinzugefügt von %2$s.</string>
+    <!-- %1$s will be replaced by name and address of the contact removed from the group -->
+    <string name="remove_member_by_you">Sie haben %1$s entfernt.</string>
+    <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <string name="remove_member_by_other">%1$s entfernt von %2$s.</string>
+    <string name="group_left_by_you">Sie haben die Gruppe verlassen.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="group_left_by_other">Gruppe verlassen von %1$s.</string>
+    <string name="group_image_deleted_by_you">Sie haben das Gruppenbild gelöscht.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="group_image_deleted_by_other">Gruppenbild gelöscht von %1$s.</string>
+    <string name="location_enabled_by_you">Sie haben Standortübertragung aktiviert.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="location_enabled_by_other">Standortübertragung aktiviert von %1$s.</string>
+    <string name="ephemeral_timer_disabled_by_you">Sie haben Verschwindende Nachrichten ausgeschaltet.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_disabled_by_other">Verschwindende Nachrichten ausgeschaltet von %1$s.</string>
+    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to -->
+    <string name="ephemeral_timer_seconds_by_you">Sie haben die Ablaufzeit verschwindender Nachrichten auf %1$s s gesetzt.</string>
+    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_seconds_by_other">Ablaufzeit verschwindender Nachrichten auf %1$s s gesetzt von %2$s.</string>
+    <string name="ephemeral_timer_1_minute_by_you">Sie haben die Ablaufzeit verschwindender Nachrichten auf 1 Minute gesetzt.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_1_minute_by_other">Ablaufzeit verschwindender Nachrichten auf 1 MInute gesetzt von %1$s.</string>
+    <string name="ephemeral_timer_1_hour_by_you">Sie haben die Ablaufzeit verschwindender Nachrichten auf 1 Stunde gesetzt.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_1_hour_by_other">Ablaufzeit verschwindender Nachrichten auf 1 Stunde gesetzt von %1$s.</string>
+    <string name="ephemeral_timer_1_day_by_you">Sie haben die Ablaufzeit verschwindender Nachrichten auf 1 Tag gesetzt.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_1_day_by_other">Ablaufzeit verschwindender Nachrichten auf 1 Tag gesetzt von %1$s.</string>
+    <string name="ephemeral_timer_1_week_by_you">Sie haben die Ablaufzeit verschwindender Nachrichten auf 1 Woche gesetzt.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_1_week_by_other">Ablaufzeit verschwindender Nachrichten auf 1 Woche gesetzt von %1$s.</string>
+    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to -->
+    <string name="ephemeral_timer_minutes_by_you">Sie haben die Ablaufzeit verschwindender Nachrichten auf %1$s Minuten gesetzt.</string>
+    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_minutes_by_other">Ablaufzeit verschwindender Nachrichten auf %1$s Minuten gesetzt von %2$s.</string>
+    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to -->
+    <string name="ephemeral_timer_hours_by_you">Sie haben die Ablaufzeit verschwindender Nachrichten auf %1$s Stunden gesetzt.</string>
+    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_hours_by_other">Ablaufzeit verschwindender Nachrichten auf %1$s Stunden gesetzt von %2$s.</string>
+    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to -->
+    <string name="ephemeral_timer_days_by_you">Sie haben die Ablaufzeit verschwindender Nachrichten auf %1$s Tage gesetzt.</string>
+    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_days_by_other">Ablaufzeit verschwindender Nachrichten auf %1$s Tage gesetzt von %2$s.</string>
+    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to -->
+    <string name="ephemeral_timer_weeks_by_you">Sie haben die Ablaufzeit verschwindender Nachrichten auf %1$s Wochen gesetzt.</string>
+    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_weeks_by_other">Ablaufzeit verschwindender Nachrichten auf %1$s Wochen gesetzt von %2$s.</string>
+    <string name="protection_enabled_by_you">Sie haben die Chat-Absicherung eingeschaltet.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="protection_enabled_by_other">Chat-Absicherung eingeschaltet von %1$s.</string>
+    <string name="protection_disabled_by_you">Sie haben die Chat-Absicherung ausgeschaltet.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="protection_disabled_by_other">Chat-Absicherung ausgeschaltet von %1$s</string>
 
     <string name="devicemsg_self_deleted">Sie haben den Chat \"Gespeicherte Nachrichten\" gelöscht.\n\nℹ️ Um die Funktion \"Gespeicherte Nachrichten\" erneut zu verwenden, erstellen Sie einfach einen Chat mit sich selbst.</string>
     <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->

@@ -441,18 +441,24 @@
 
 
     <!-- system messages -->
+    <!-- deprecated -->
     <string name="systemmsg_group_name_changed">Taldearen izena \"%1$s\" izatetik \"%2$s\" izatera aldatu da.</string>
+    <!-- deprecated -->
     <string name="systemmsg_group_image_changed">Taldearen irudia aldatuta.</string>
+    <!-- deprecated -->
     <string name="systemmsg_group_image_deleted">Taldearen irudia ezabatuta.</string>
+    <!-- deprecated -->
     <string name="systemmsg_member_added">%1$s kidea gehituta.</string>
+    <!-- deprecated -->
     <string name="systemmsg_member_removed">%1$s kidea kenduta.</string>
+    <!-- deprecated -->
     <string name="systemmsg_group_left">Taldetik aterata.</string>
     <string name="systemmsg_read_receipt_subject">Irakurragiria</string>
     <string name="systemmsg_read_receipt_body">Hau \"%1$s\" mezuaren irakurragiri bat da.\n\nHonek mezua jasotzailearen gailuan bistaratu dela esan nahi du, ez edukia irakurri dela.</string>
     <string name="systemmsg_cannot_decrypt">Ezin da mezu hau deszifratu.\n\n• Mezuari erantzun diezaiokezu eta berriro bidaltzea eskatu.\n\n• Delta Chat berrinstalatu baduzu edo beste posta programa bat instalatu baduzu gailu honetan edo beste batean, AutoCrypt ezarpen mezua handik hona birbidaltzen saiatu zaitezke.</string>
-    <!-- Translators: %1$s will be replaced by sth. as "ACTION by me". -->
+    <!-- deprecated -->
     <string name="systemmsg_action_by_me">Nik: %1$s</string>
-    <!-- Translators: %1$s will be replaced by an action and %2$s will be replaced by the name/addr of the person who did it, as "ACTION by MEMBER". -->
+    <!-- deprecated -->
     <string name="systemmsg_action_by_user">%2$s(e)k: %1$s</string>
     <!-- qr code stuff -->
     <string name="qr_code">QR kodea</string>

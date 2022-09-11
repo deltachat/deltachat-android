@@ -272,7 +272,6 @@
     <string name="ConversationFragment_quoted_message_not_found">Mensaje original no encontrado</string>
     <string name="reply_privately">Responder en privado</string>
     <string name="source_code">Código fuente</string>
-
     <string name="mute_for_one_hour">Silenciar por 1 hora</string>
     <string name="mute_for_two_hours">Silenciar por 2 horas</string>
     <string name="mute_for_one_day">Silenciar por 1 día</string>
@@ -725,37 +724,54 @@
 
 
     <!-- system messages -->
+    <!-- deprecated -->
     <string name="systemmsg_group_name_changed">Nombre de grupo cambiado de \"%1$s\" a \"%2$s\"</string>
+    <!-- deprecated -->
     <string name="systemmsg_group_image_changed">Imagen de grupo cambiada.</string>
+    <!-- deprecated -->
     <string name="systemmsg_group_image_deleted">Imagen de grupo eliminada.</string>
+    <!-- deprecated -->
     <string name="systemmsg_member_added">Miembro %1$s añadido.</string>
+    <!-- deprecated -->
     <string name="systemmsg_member_removed">Miembro %1$s eliminado.</string>
+    <!-- deprecated -->
     <string name="systemmsg_group_left">Grupo abandonado.</string>
     <string name="systemmsg_read_receipt_subject">Recibo de lectura</string>
     <string name="systemmsg_read_receipt_body">El mensaje \"%1$s\" se mostró en el dispositivo del destinatario, pero no necesariamente que se leyó el contenido.</string>
     <string name="systemmsg_cannot_decrypt">Este mensaje no puede ser descifrado.\n\n• Es posible que sea útil simplemente responderlo y pedirle al remitente que lo envíe nuevamente.\n\n• En caso de que haya reinstalado Delta Chat u otro programa de correo en este u otro dispositivo, puede que quiera enviar un Mensaje de Configuración de Autocrypt desde allí.</string>
-    <!-- Translators: %1$s will be replaced by sth. as "ACTION by me". -->
+    <!-- deprecated -->
     <string name="systemmsg_action_by_me">%1$s por mi.</string>
-    <!-- Translators: %1$s will be replaced by an action and %2$s will be replaced by the name/addr of the person who did it, as "ACTION by MEMBER". -->
+    <!-- deprecated -->
     <string name="systemmsg_action_by_user">%1$s por %2$s.</string>
     <string name="systemmsg_unknown_sender_for_chat">Remitente desconocido. Mira \"info\" para más detalles.</string>
     <string name="systemmsg_subject_for_new_contact">Mensaje de %1$s</string>
     <string name="systemmsg_failed_sending_to">Falla en enviar el mensaje a %1$s.</string>
 
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_disabled">Temporizador de mensajes borrados desactivado.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_enabled">Temporizador del borrado de mensajes dispuesto en %1$s s.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_minute">Temporizador de borrado de mensaje dispuesto en 1 minuto.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_hour">Temporizador de borrado de mensaje dispuesto en 1 hora.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_day">Temporizador de borrado de mensaje dispuesto en 1 día.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_week">Temporizador de borrado de mensaje dispuesto en 1 semana.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_four_weeks">Temporizador de borrado de mensaje dispuesto en 4 semanas.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_minutes">Temporizador de mensajes borrados dispuesto en %1$s minutos.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_hours">Temporizador de mensajes borrados dispuesto a %1$s horas.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_days">Temporizador de mensajes borrados dispuestos en %1$s días.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_weeks">Temporizador de mensajes borrados dispuestos para %1$s semanas.</string>
-
-    <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
+    <!-- deprecated -->
     <string name="systemmsg_chat_protection_disabled">Protección de chat desactivada.</string>
+    <!-- deprecated -->
     <string name="systemmsg_chat_protection_enabled">Protección de chat activada.</string>
 
     <string name="devicemsg_self_deleted">Eliminaste los chats de los \"Mensajes guardados\". \n\nℹ️ Para volver a usar los\"Mensajes guardados\", debes crear un chat contigo mismo.</string>

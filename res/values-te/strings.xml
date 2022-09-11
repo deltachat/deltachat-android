@@ -188,9 +188,9 @@
     <string name="pref_backup">బ్యాకప్</string>
     <string name="pref_managekeys_export_secret_keys">రహస్య కీలను ఎగుమతి చెయి</string>
     <string name="pref_background">చాట్ నేపధ్యం</string>
-    <!-- Translators: %1$s will be replaced by sth. as "ACTION by me". -->
+    <!-- deprecated -->
     <string name="systemmsg_action_by_me">%1$s నా‌ ద్వరా</string>
-    <!-- Translators: %1$s will be replaced by an action and %2$s will be replaced by the name/addr of the person who did it, as "ACTION by MEMBER". -->
+    <!-- deprecated -->
     <string name="systemmsg_action_by_user">%1$s చే %2$s.</string>
     <string name="qrscan_fingerprint_label">ఫింగర్‌ప్రింట్స్</string>
     <string name="notify_reply_button">జవాబు</string>

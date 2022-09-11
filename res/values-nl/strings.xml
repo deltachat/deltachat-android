@@ -264,7 +264,6 @@
     <string name="ConversationFragment_quoted_message_not_found">Geen oorspronkelijk bericht gevonden</string>
     <string name="reply_privately">Privé beantwoorden</string>
     <string name="source_code">Broncode</string>
-
     <string name="mute_for_one_hour">1 uur lang uitschakelen</string>
     <string name="mute_for_two_hours">2 uur lang uitschakelen</string>
     <string name="mute_for_one_day">1 dag lang uitschakelen</string>
@@ -710,37 +709,54 @@
 
 
     <!-- system messages -->
+    <!-- deprecated -->
     <string name="systemmsg_group_name_changed">Groepsnaam gewijzigd van \"%1$s\" in \"%2$s\".</string>
+    <!-- deprecated -->
     <string name="systemmsg_group_image_changed">Groepsafbeelding gewijzigd.</string>
+    <!-- deprecated -->
     <string name="systemmsg_group_image_deleted">Groepsafbeelding verwijderd.</string>
+    <!-- deprecated -->
     <string name="systemmsg_member_added">‘%1$s’ is toegevoegd.</string>
+    <!-- deprecated -->
     <string name="systemmsg_member_removed">‘%1$s’ is verwijderd.</string>
+    <!-- deprecated -->
     <string name="systemmsg_group_left">Groep verlaten.</string>
     <string name="systemmsg_read_receipt_subject">Leesbevestiging</string>
     <string name="systemmsg_read_receipt_body">Het door jou verstuurde bericht, “%1$s”, heeft het scherm van de ontvanger bereikt.\n\nDit betekent echter niet dat het ook gelezen is.</string>
     <string name="systemmsg_cannot_decrypt">Dit bericht kan niet worden ontsleuteld.\n\n• Het kan helpen dit bericht te beantwoorden en de afzender te vragen het opnieuw te versturen.\n\n• Als je Delta Chat of een andere e-mailapp opnieuw hebt geïnstalleerd op dit of een ander apparaat, verstuur het instelbericht dan opnieuw.</string>
-    <!-- Translators: %1$s will be replaced by sth. as "ACTION by me". -->
+    <!-- deprecated -->
     <string name="systemmsg_action_by_me">%1$s door mij.</string>
-    <!-- Translators: %1$s will be replaced by an action and %2$s will be replaced by the name/addr of the person who did it, as "ACTION by MEMBER". -->
+    <!-- deprecated -->
     <string name="systemmsg_action_by_user">%1$s door %2$s.</string>
     <string name="systemmsg_unknown_sender_for_chat">Dit gesprek bevat een onbekende afzender. Zie ‘Informatie’ voor meer informatie.</string>
     <string name="systemmsg_subject_for_new_contact">Bericht van %1$s</string>
     <string name="systemmsg_failed_sending_to">Het bericht kan niet worden verstuurd aan %1$s.</string>
 
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_disabled">De tijdklok van verdwijnende berichten is uitgeschakeld.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_enabled">De tijdklok van verdwijnende berichten is ingesteld op %1$s sec.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_minute">De tijdklok van verdwijnende berichten is ingesteld op 1 minuut.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_hour">De tijdklok van verdwijnende berichten is ingesteld op 1 uur.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_day">De tijdklok van verdwijnende berichten is ingesteld op 1 dag.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_week">De tijdklok van verdwijnende berichten is ingesteld op 1 week.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_four_weeks">De tijdklok van verdwijnende berichten is ingesteld op 4 weken.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_minutes">De tijdklok van verdwijnende berichten is ingesteld op %1$s minuten.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_hours">De tijdklok van verdwijnende berichten is ingesteld op %1$s uur.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_days">De tijdklok van verdwijnende berichten is ingesteld op %1$s dagen.</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_weeks">De tijdklok van verdwijnende berichten is ingesteld op %1$s weken.</string>
-
-    <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
+    <!-- deprecated -->
     <string name="systemmsg_chat_protection_disabled">Gespreksbeveiliging is uitgeschakeld.</string>
+    <!-- deprecated -->
     <string name="systemmsg_chat_protection_enabled">Gespreksbeveiliging is ingeschakeld.</string>
 
     <string name="devicemsg_self_deleted">Je hebt het gesprek ‘Opgeslagen berichten’ verwijderd.\n\nℹ️ Als je weer gebruik wilt maken van deze functie, begin dan een nieuw gesprek met jezelf.</string>

@@ -557,34 +557,51 @@ https://delta.chat</string>
     <string name="autocrypt_continue_transfer_title">自動暗号化設定用ﾒｯｾｰｼﾞ</string>
     <string name="autocrypt_continue_transfer_retry">再試行</string>
     <!-- system messages -->
+    <!-- deprecated -->
     <string name="systemmsg_group_name_changed">グループ名を%1$sから%2$sに変更しました。</string>
+    <!-- deprecated -->
     <string name="systemmsg_group_image_changed">グループ画像が変わりました。</string>
+    <!-- deprecated -->
     <string name="systemmsg_group_image_deleted">グループ画像を削除しました。</string>
+    <!-- deprecated -->
     <string name="systemmsg_member_added">%1$sが追加されました。</string>
+    <!-- deprecated -->
     <string name="systemmsg_member_removed">%1$sが退会されました。</string>
+    <!-- deprecated -->
     <string name="systemmsg_group_left">グループを退会しました。</string>
     <string name="systemmsg_read_receipt_subject">既読</string>
-    <!-- Translators: %1$s will be replaced by sth. as "ACTION by me". -->
+    <!-- deprecated -->
     <string name="systemmsg_action_by_me">自分から%1$s</string>
-    <!-- Translators: %1$s will be replaced by an action and %2$s will be replaced by the name/addr of the person who did it, as "ACTION by MEMBER". -->
+    <!-- deprecated -->
     <string name="systemmsg_action_by_user">%2$sから%1$s</string>
     <string name="systemmsg_subject_for_new_contact">%1$sさんからのメッセージ</string>
     <string name="systemmsg_failed_sending_to">%1$sさんへのメッセージ送信に失敗しました。</string>
 
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_disabled">消えるメッセージを無効にしました。</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_enabled">消えるメッセージを%1$s秒にしました。</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_minute">消えるメッセージを1分にしました。</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_hour">消えるメッセージを1時間にしました。</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_day">消えるメッセージを1日にしました。</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_week">消えるメッセージを1週間にしました。</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_four_weeks">消えるメッセージを4週間にしました。</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_minutes">消えるメッセージを%1$s分にしました。</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_hours">消えるメッセージを%1$s時間にしました。</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_days">消えるメッセージを%1$s日にしました。</string>
+    <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_weeks">消えるメッセージを%1$s週間にしました。</string>
-
-    <!-- Translators: Protection disabled/enabled messages may be displayed together with a "big shield" and may be suffixed by systemmsg_action_by_user or systemmsg_action_by_me -->
+    <!-- deprecated -->
     <string name="systemmsg_chat_protection_disabled">保護が無効です。</string>
+    <!-- deprecated -->
     <string name="systemmsg_chat_protection_enabled">保護が有効です。</string>
 
     <!-- qr code stuff -->
