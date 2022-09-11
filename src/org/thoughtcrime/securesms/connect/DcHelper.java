@@ -187,6 +187,45 @@ public class DcHelper {
     dcContext.setStockTranslation(118, context.getString(R.string.secure_join_replies));
     dcContext.setStockTranslation(119, context.getString(R.string.qrshow_join_contact_hint));
 
+    dcContext.setStockTranslation(124, context.getString(R.string.group_name_changed_by_you));
+    dcContext.setStockTranslation(125, context.getString(R.string.group_name_changed_by_other));
+    dcContext.setStockTranslation(126, context.getString(R.string.group_image_changed_by_you));
+    dcContext.setStockTranslation(127, context.getString(R.string.group_image_changed_by_other));
+    dcContext.setStockTranslation(128, context.getString(R.string.add_member_by_you));
+    dcContext.setStockTranslation(129, context.getString(R.string.add_member_by_other));
+    dcContext.setStockTranslation(130, context.getString(R.string.remove_member_by_you));
+    dcContext.setStockTranslation(131, context.getString(R.string.remove_member_by_other));
+    dcContext.setStockTranslation(132, context.getString(R.string.group_left_by_you));
+    dcContext.setStockTranslation(133, context.getString(R.string.group_left_by_other));
+    dcContext.setStockTranslation(134, context.getString(R.string.group_image_deleted_by_you));
+    dcContext.setStockTranslation(135, context.getString(R.string.group_image_deleted_by_other));
+    dcContext.setStockTranslation(136, context.getString(R.string.location_enabled_by_you));
+    dcContext.setStockTranslation(137, context.getString(R.string.location_enabled_by_other));
+    dcContext.setStockTranslation(138, context.getString(R.string.ephemeral_timer_disabled_by_you));
+    dcContext.setStockTranslation(139, context.getString(R.string.ephemeral_timer_disabled_by_other));
+    dcContext.setStockTranslation(140, context.getString(R.string.ephemeral_timer_seconds_by_you));
+    dcContext.setStockTranslation(141, context.getString(R.string.ephemeral_timer_seconds_by_other));
+    dcContext.setStockTranslation(142, context.getString(R.string.ephemeral_timer_1_minute_by_you));
+    dcContext.setStockTranslation(143, context.getString(R.string.ephemeral_timer_1_minute_by_other));
+    dcContext.setStockTranslation(144, context.getString(R.string.ephemeral_timer_1_hour_by_you));
+    dcContext.setStockTranslation(145, context.getString(R.string.ephemeral_timer_1_hour_by_other));
+    dcContext.setStockTranslation(146, context.getString(R.string.ephemeral_timer_1_day_by_you));
+    dcContext.setStockTranslation(147, context.getString(R.string.ephemeral_timer_1_day_by_other));
+    dcContext.setStockTranslation(148, context.getString(R.string.ephemeral_timer_1_week_by_you));
+    dcContext.setStockTranslation(149, context.getString(R.string.ephemeral_timer_1_week_by_other));
+    dcContext.setStockTranslation(150, context.getString(R.string.ephemeral_timer_minutes_by_you));
+    dcContext.setStockTranslation(151, context.getString(R.string.ephemeral_timer_minutes_by_other));
+    dcContext.setStockTranslation(152, context.getString(R.string.ephemeral_timer_hours_by_you));
+    dcContext.setStockTranslation(153, context.getString(R.string.ephemeral_timer_hours_by_other));
+    dcContext.setStockTranslation(154, context.getString(R.string.ephemeral_timer_days_by_you));
+    dcContext.setStockTranslation(155, context.getString(R.string.ephemeral_timer_days_by_other));
+    dcContext.setStockTranslation(156, context.getString(R.string.ephemeral_timer_weeks_by_you));
+    dcContext.setStockTranslation(157, context.getString(R.string.ephemeral_timer_weeks_by_other));
+    dcContext.setStockTranslation(158, context.getString(R.string.protection_enabled_by_you));
+    dcContext.setStockTranslation(159, context.getString(R.string.protection_enabled_by_other));
+    dcContext.setStockTranslation(160, context.getString(R.string.protection_disabled_by_you));
+    dcContext.setStockTranslation(161, context.getString(R.string.protection_disabled_by_other));
+
     // HACK: svg does not handle entities correctly and shows `&quot;` as the text `quot;`.
     // until that is fixed, we fix the most obvious errors (core uses encode_minimal, so this does not affect so many characters)
     // cmp. https://github.com/deltachat/deltachat-android/issues/2187
