@@ -39,7 +39,7 @@
     <string name="unarchive">解档</string>
     <string name="mute">静音</string>
     <string name="ephemeral_messages">消息定时销毁</string>
-    <string name="ephemeral_messages_hint">这些设置适用于所有使用 Delta Chat 的参与者。 但是，他们可能会复制、保存和转发消息或者使用其他的电子邮件客户端。</string>
+    <string name="ephemeral_messages_hint">这些设置适用于所有使用 Delta Chat 的聊天成员。 他们仍然可以复制、保存和转发消息，或者使用其他的电子邮件客户端。</string>
     <string name="save">保存</string>
     <string name="chat">聊天</string>
     <string name="media">媒体</string>
@@ -285,7 +285,7 @@
     <string name="videochat_instance_placeholder">您的视频聊天实例</string>
     <string name="videochat_instance_example">示例： https://meet.jit.si/$ROOM 或 basicwebrtc:https://your-server</string>
     <string name="videochat_instance_explain_2">如启用视频聊天，你可以从每个聊天启动一个视频聊天。视频聊天需要双方均装有兼容的应用或浏览器</string>
-    <string name="videochat_instance_from_qr">使用“%1$s”邀请其他人加入视频聊天吗？\n\n设置好后，您就可以在聊天里发起视频聊天了。 这会取代之前的视频聊天设置（如果有的话）。</string>
+    <string name="videochat_instance_from_qr">使用“%1$s”邀请其他人加入视频聊天吗？\n\n设置好后，您就可以在聊天里发起视频聊天了。 这会取代之前的视频聊天设置。</string>
     <string name="videochat_invitation">视频聊天邀请</string>
     <string name="videochat_invitation_body">您被邀请参加视频聊天，点击 %1$s 来加入。</string>
 
@@ -434,7 +434,7 @@
     <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
     <string name="aeap_addr_changed">%1$s 将邮箱从 %2$s 更改为 %3$s</string>
     <!-- the explanation is shown (1) as a modal dialog with the buttons "Cancel" and "Continue" as well as (2) as a device message -->
-    <string name="aeap_explanation">你将邮箱从 %1$s 改为了 %2$s。\n\n如果你现在发送一条消息到已验证的群组，那里的联系人将自动用你的新邮箱替换旧邮箱。\n\n我们建议你配置旧邮箱将所有邮件转发到新邮箱。否则，你可能收不到还不知道你新邮箱的联系人发过来的消息。</string>
+    <string name="aeap_explanation">你将邮箱从 %1$s 改为了 %2$s。\n\n如果你现在发送一条消息到已验证的群组，那里的联系人将自动用你的新邮箱替换旧邮箱。\n\n我们建议你将旧邮箱配置为转发所有邮件到新邮箱。否则，你可能收不到还不知道你新邮箱的联系人发过来的消息。</string>
 
     <!-- Connectivity -->
     <!-- Headline for the "Inbox" eg. in the "Connectivity" view -->
@@ -443,7 +443,7 @@
     <string name="outgoing_messages">传出消息</string>
     <!-- Headline in the "Connectivity" view. Placeholder will be replaced by the domain of the configured email-address. -->
     <string name="storage_on_domain">%1$s 上的存储</string>
-    <string name="connectivity">连接性</string>
+    <string name="connectivity">连接状态</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
     <string name="connectivity_not_connected">未连接</string>
     <!-- Shown in the title bar if the app is "Connecting"; prefer short strings. The ellipsis is a single character (…), not three (...) -->
@@ -521,8 +521,8 @@
     <!-- share and forward messages -->
     <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">转发给…</string>
-    <string name="share_multiple_attachments">发送 %1$d 个文件到所选聊天？\n\n文件将以未经修改的、保持原大小的方式发送，例如：图像和视频不会被重新编码。</string>
-    <string name="share_multiple_attachments_multiple_chats">发送 %1$d 个文件到 %2$d 个聊天？\n\n文件将以未经修改的、保持原大小的方式发送，例如：图像和视频不会被重新编码。</string>
+    <string name="share_multiple_attachments">发送 %1$d 个文件到所选聊天？\n\n文件将以原样发送（例如：图像和视频不会被重新编码）。</string>
+    <string name="share_multiple_attachments_multiple_chats">发送 %1$d 个文件到 %2$d 个聊天？\n\n文件将以原样发送（例如：图像和视频不会被重新编码）。</string>
     <string name="share_text_multiple_chats">发送这段文字到 %1$d 个聊天？\n\n\"%2$s“</string>
     <string name="share_abort">由于缺少权限，分享中止。</string>
 
@@ -691,7 +691,7 @@
     <string name="autocrypt_continue_transfer_please_enter_code">请输入另一台设备上显示的设置码。</string>
     <string name="autocrypt_continue_transfer_succeeded">端到端设置已传输。此设备已准备好用与另一台设备相同的设置来使用 Autocrypt 了。</string>
     <string name="autocrypt_continue_transfer_retry">重试</string>
-    <string name="autocrypt_bad_setup_code">错误的设置码，请重试。\n\n如果您不记得设置码，从另一台设备发送一个新的 Autocrypt 设置消息即可。</string>
+    <string name="autocrypt_bad_setup_code">错误的设置码，请重试。\n\n如果您忘记了设置码，从另一台设备发送一个新的 Autocrypt 设置消息即可。</string>
 
 
     <!-- system messages -->
@@ -730,7 +730,7 @@
 
     <string name="devicemsg_self_deleted">您已删除“保存的消息”聊天。\n\nℹ️要再次使用“保存的消息”功能，请创建一个与自己的新聊天。</string>
     <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
-    <string name="devicemsg_storage_exceeding">⚠️邮件服务商提供的存储空间快满了，已使用 %1$s%%。\n\n当存储用量达到 100%% 时，您可能无法接收消息。\n\n👉请检查是否可以在提供商的网页界面上删除旧数据；您还可以考虑启用“设置/删除旧消息”。您可以随时在“设置/连接性”中查看当前的存储使用情况。</string>
+    <string name="devicemsg_storage_exceeding">⚠️邮件服务商提供的存储空间快满了，已使用 %1$s%%。\n\n如果存储空间用光，您可能无法接收消息。\n\n👉请检查是否可以在提供商的网页界面上删除旧数据，或考虑启用“设置/删除旧消息”。您可以在“设置/连接状态”中查看当前的存储使用情况。</string>
     <!-- %1%s will be replaced by date and time in some human-readable format -->
     <string name="devicemsg_bad_time">⚠️设备的日期或时间似乎不准确 （%1$s）。\n\n请调整时钟⏰🔧以确保能正确接收信息。</string>
     <string name="devicemsg_update_reminder">⚠️您的 Delta Chat 版本可能过时了。\n\n这可能会在您的聊天伙伴使用更新的版本时造成问题。并且您缺失了最新功能😳\n请浏览 https://get.delta.chat 或应用商店来获取更新。</string>
@@ -767,7 +767,7 @@
     <string name="qrshow_join_group_hint">扫描此处来加入群组\"%1$s\"。</string>
     <string name="qrshow_join_contact_title">邀请二维码</string>
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
-    <string name="qrshow_join_contact_hint">扫描此处来建立联系人 %1$s。</string>
+    <string name="qrshow_join_contact_hint">扫描此处来与 %1$s 聊天。</string>
     <string name="qrshow_join_contact_no_connection_toast">没有互联网连接，无法进行二维码设置。</string>
     <string name="qraccount_ask_create_and_login">在“%1$s”创建新的电子邮件地址并在那登录？</string>
     <string name="qraccount_ask_create_and_login_another">在“%1$s”创建新的电子邮件地址并在那登录？\n\n已存在账户不会被删除。使用“切换账户”来在账户之间切换。</string>
@@ -934,8 +934,8 @@
 
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="pref_background_notifications">后台通知</string>
-    <string name="pref_background_notifications_explain">使用与服务器的后台连接。需要忽略电池优化。</string>
-    <string name="pref_background_notifications_rationale">要保持与您的电子邮件服务器的连接并在后台接收消息，请在下一步中忽略电池优化。\n\nDelta Chat 仅使用少量的资源并且会注意不去耗尽电池电量。</string>
+    <string name="pref_background_notifications_explain">使用到服务器的后台连接。需要忽略电池优化。</string>
+    <string name="pref_background_notifications_rationale">要保持到电子邮件服务器的连接并在后台接收消息，请在下一步中忽略电池优化。\n\nDelta Chat 仅使用少量的资源并且会注意不去耗尽电池电量。</string>
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="pref_reliable_service">可靠后台连接</string>
     <string name="pref_reliable_service_explain">需要一个永久通知</string>
