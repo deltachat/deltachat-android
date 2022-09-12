@@ -786,7 +786,7 @@
     <string name="location_enabled_by_you">Sie haben Standortübertragung aktiviert.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
     <string name="location_enabled_by_other">Standortübertragung aktiviert von %1$s.</string>
-    <string name="ephemeral_timer_disabled_by_you">Sie haben Verschwindende Nachrichten ausgeschaltet.</string>
+    <string name="ephemeral_timer_disabled_by_you">Sie haben verschwindende Nachrichten ausgeschaltet.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_disabled_by_other">Verschwindende Nachrichten ausgeschaltet von %1$s.</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to -->

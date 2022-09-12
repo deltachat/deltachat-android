@@ -272,6 +272,9 @@
     <string name="ConversationFragment_quoted_message_not_found">Mensaje original no encontrado</string>
     <string name="reply_privately">Responder en privado</string>
     <string name="source_code">Código fuente</string>
+    <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
+    <string name="add_to_home_screen">Añadir a la pantalla principal</string>
+
     <string name="mute_for_one_hour">Silenciar por 1 hora</string>
     <string name="mute_for_two_hours">Silenciar por 2 horas</string>
     <string name="mute_for_one_day">Silenciar por 1 día</string>
@@ -737,7 +740,7 @@
     <!-- deprecated -->
     <string name="systemmsg_group_left">Grupo abandonado.</string>
     <string name="systemmsg_read_receipt_subject">Recibo de lectura</string>
-    <string name="systemmsg_read_receipt_body">El mensaje \"%1$s\" se mostró en el dispositivo del destinatario, pero no necesariamente que se leyó el contenido.</string>
+    <string name="systemmsg_read_receipt_body">El mensaje \"%1$s\" que enviaste se mostró en la pantalla del destinatario.\n\nEsto no garantiza que el contenido haya sido leído.</string>
     <string name="systemmsg_cannot_decrypt">Este mensaje no puede ser descifrado.\n\n• Es posible que sea útil simplemente responderlo y pedirle al remitente que lo envíe nuevamente.\n\n• En caso de que haya reinstalado Delta Chat u otro programa de correo en este u otro dispositivo, puede que quiera enviar un Mensaje de Configuración de Autocrypt desde allí.</string>
     <!-- deprecated -->
     <string name="systemmsg_action_by_me">%1$s por mi.</string>
@@ -773,6 +776,72 @@
     <string name="systemmsg_chat_protection_disabled">Protección de chat desactivada.</string>
     <!-- deprecated -->
     <string name="systemmsg_chat_protection_enabled">Protección de chat activada.</string>
+
+    <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
+    <string name="group_name_changed_by_you">Cambiaste el nombre del grupo de \"%1$s\" a \"%2$s\".</string>
+    <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
+    <string name="group_name_changed_by_other">El nombre del grupo fue cambiado de \"%1$s\" a \"%2$s\" por %3$s.</string>
+    <string name="group_image_changed_by_you">Cambiaste la imagen del grupo.</string>
+    <!-- %1$s will be replaced by name and address of the contact who did the action -->
+    <string name="group_image_changed_by_other">Imagen del grupo cambiada por %1$s.</string>
+    <!-- %1$s will be replaced by name and address of the contact added to the group -->
+    <string name="add_member_by_you">Añadiste al miembro %1$s.</string>
+    <!-- %1$s will be replaced by name and address of the contact added to the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <string name="add_member_by_other">Miembro %1$s añadido por %2$s. </string>
+    <!-- %1$s will be replaced by name and address of the contact removed from the group -->
+    <string name="remove_member_by_you">Eliminaste al miembro %1$s.</string>
+    <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <string name="remove_member_by_other">Miembro %1$s eliminado por %2$s.</string>
+    <string name="group_left_by_you">Abandonaste el grupo.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="group_left_by_other">Grupo abandonado por %1$s.</string>
+    <string name="group_image_deleted_by_you">Eliminaste la imagen del grupo.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="group_image_deleted_by_other">Imagen del grupo eliminada por %1$s.</string>
+    <string name="location_enabled_by_you">Habilitaste la transmisión de ubicación.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="location_enabled_by_other">Transmisión de ubicación habilitada por %1$s.</string>
+    <string name="ephemeral_timer_disabled_by_you">Deshabilitaste el temporizador de la desaparición de mensajes.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_disabled_by_other">Temporizador de la desaparición de mensajes deshabilitado por %1$s.</string>
+    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to -->
+    <string name="ephemeral_timer_seconds_by_you">Estableciste el temporizador de la desaparición de mensajes en %1$s s</string>
+    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_seconds_by_other">Temporizador de la desaparición de mensajes establecido en %1$s s por %2$s.</string>
+    <string name="ephemeral_timer_1_minute_by_you">Estableciste el temporizador de la desaparición de mensajes en 1 minuto.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_1_minute_by_other">Temporizador de la desaparición de mensajes establecido en 1 minuto por %1$s.</string>
+    <string name="ephemeral_timer_1_hour_by_you">Estableciste el temporizador de la desaparición de mensajes en 1 hora.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_1_hour_by_other">Temporizador de la desaparición de mensajes establecido en 1 hora por %1$s.</string>
+    <string name="ephemeral_timer_1_day_by_you">Estableciste el temporizador de la desaparición de mensajes en 1 día.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_1_day_by_other">Temporizador de la desaparición de mensajes establecido en 1 día por %1$s.</string>
+    <string name="ephemeral_timer_1_week_by_you">Estableciste el temporizador de la desaparición de mensajes en 1 semana.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_1_week_by_other">Temporizador de la desaparición de mensajes establecido en 1 semana por %1$s.</string>
+    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to -->
+    <string name="ephemeral_timer_minutes_by_you">Estableciste el temporizador de la desaparición de mensajes en %1$s minutos.</string>
+    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_minutes_by_other">Temporizador de la desaparición de mensajes establecido en %1$s minutos por %2$s. </string>
+    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to -->
+    <string name="ephemeral_timer_hours_by_you">Estableciste el temporizador de la desaparición de mensajes en %1$s horas. </string>
+    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_hours_by_other">Temporizador de la desaparición de mensajes establecido en %1$s horas por %2$s.</string>
+    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to -->
+    <string name="ephemeral_timer_days_by_you">Estableciste el temporizador de la desaparición de mensajes en %1$s días.</string>
+    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_days_by_other">Temporizador de la desaparición de mensajes establecido en %1$s días por %2$s.</string>
+    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to -->
+    <string name="ephemeral_timer_weeks_by_you">Estableciste el temporizador de la desaparición de mensajes en %1$s semanas.</string>
+    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_weeks_by_other">Temporizador de la desaparición de mensajes establecido en %1$s semanas por %2$s.</string>
+    <string name="protection_enabled_by_you">Activaste la protección de chat.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="protection_enabled_by_other">Protección de chat habilitada por %1$s.</string>
+    <string name="protection_disabled_by_you">Desactivaste la protección de chat.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="protection_disabled_by_other">Protección de chat deshabilitada por %1$s.</string>
 
     <string name="devicemsg_self_deleted">Eliminaste los chats de los \"Mensajes guardados\". \n\nℹ️ Para volver a usar los\"Mensajes guardados\", debes crear un chat contigo mismo.</string>
     <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
