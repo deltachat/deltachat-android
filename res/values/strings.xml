@@ -1022,6 +1022,12 @@
     <string name="notifications_avg_minutes">On average every %1$d minutes</string>
     <string name="notifications_avg_hours">On average every %1$d hours</string>
     <string name="last_check_at">Checked at %1$s</string>
+    <!-- iOS webxdc selector -->
+    <string name ="webxdcs">Apps</string>
+    <string name ="webxdc_empty_hint">Received or sent apps will appear here. Tap \"Files\" to select downloaded apps.</string>
+    <!-- iOS webxdc shortcut page -->
+    <string name ="shortcut_share_btn">Click the share button</string>
+    <string name ="shortcut_add_to_home_description">Select - Add to Home Screen - to add the app to your home screen.</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat uses your camera to take and send photos and videos and to scan QR codes.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat uses your contacts to show a list of e-mail addresses you can write to. Delta Chat has no server, your contacts are not sent anywhere.</string>
