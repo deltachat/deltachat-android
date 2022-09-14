@@ -280,6 +280,9 @@
     <string name="ConversationFragment_quoted_message_not_found">Первісне повідомлення не знайдено</string>
     <string name="reply_privately">Відповісти приватно</string>
     <string name="source_code">Вихідний код</string>
+    <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
+    <string name="add_to_home_screen">Додати на домашній екран</string>
+
     <string name="mute_for_one_hour">Відключити сповіщення на 1 годину</string>
     <string name="mute_for_two_hours">Відключити сповіщення на 2 години</string>
     <string name="mute_for_one_day">Відключити сповіщення на 1 день</string>
@@ -788,6 +791,72 @@
     <string name="systemmsg_chat_protection_disabled">Захист чату вимкнено.</string>
     <!-- deprecated -->
     <string name="systemmsg_chat_protection_enabled">Захист чату увімкнено.</string>
+
+    <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
+    <string name="group_name_changed_by_you">Ви змінили назву групи з «%1$s» на «%2$s».</string>
+    <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
+    <string name="group_name_changed_by_other">%3$s змінили назву групи з «%1$s» на «%2$s».</string>
+    <string name="group_image_changed_by_you">Ви змінили зображення групи.</string>
+    <!-- %1$s will be replaced by name and address of the contact who did the action -->
+    <string name="group_image_changed_by_other">%1$s змінили зображення групи.</string>
+    <!-- %1$s will be replaced by name and address of the contact added to the group -->
+    <string name="add_member_by_you">Ви додали учасника %1$s.</string>
+    <!-- %1$s will be replaced by name and address of the contact added to the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <string name="add_member_by_other">%2$s додали учасника %1$s.</string>
+    <!-- %1$s will be replaced by name and address of the contact removed from the group -->
+    <string name="remove_member_by_you">Ви видалили учасника %1$s.</string>
+    <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <string name="remove_member_by_other">%2$s видалили учасника %1$s.</string>
+    <string name="group_left_by_you">Ви залишили групу.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="group_left_by_other">%1$s залишили групу.</string>
+    <string name="group_image_deleted_by_you">Ви видалили зображення групи.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="group_image_deleted_by_other">%1$s видалили зображення групи.</string>
+    <string name="location_enabled_by_you">Ви увімкнули стримінг геоданих.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="location_enabled_by_other">%1$s увімкнули стримінг геоданих.</string>
+    <string name="ephemeral_timer_disabled_by_you">Ви вимкнули таймер зникнення повідомлень.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_disabled_by_other">%1$s вимкнули таймер зникнення повідомлень.</string>
+    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to -->
+    <string name="ephemeral_timer_seconds_by_you">Ви встановили таймер зникнення повідомлень на %1$s сек.</string>
+    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_seconds_by_other">%2$s встановили таймер повідомлень, що зникають на %1$s сек.</string>
+    <string name="ephemeral_timer_1_minute_by_you">Ви встановили таймер зникнення повідомлень на 1 хвилину.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_1_minute_by_other">%1$s встановили таймер повідомлень, що зникають на 1 хвилину.</string>
+    <string name="ephemeral_timer_1_hour_by_you">Ви встановили таймер зникнення повідомлень на 1 годину.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_1_hour_by_other">%1$s встановили таймер повідомлень, що зникають на 1 годину.</string>
+    <string name="ephemeral_timer_1_day_by_you">Ви встановили таймер зникнення повідомлень на 1 день.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_1_day_by_other">%1$s встановили таймер повідомлень, що зникають на 1 день.</string>
+    <string name="ephemeral_timer_1_week_by_you">Ви встановили таймер зникнення повідомлень на 1 тиждень.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_1_week_by_other">%1$s встановили таймер повідомлень, що зникають на 1 тиждень.</string>
+    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to -->
+    <string name="ephemeral_timer_minutes_by_you">Ви встановили таймер зникнення повідомлень на %1$s хвилин.</string>
+    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_minutes_by_other">%2$s встановили таймер повідомлень, що зникають на %1$s хвилин.</string>
+    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to -->
+    <string name="ephemeral_timer_hours_by_you">Ви встановили таймер зникнення повідомлень на %1$s годин.</string>
+    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_hours_by_other">%2$s встановили таймер повідомлень, що зникають на %1$s годин.</string>
+    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to -->
+    <string name="ephemeral_timer_days_by_you">Ви встановили таймер зникнення повідомлень на %1$s днів.</string>
+    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_days_by_other">%2$s встановили таймер повідомлень, що зникають на %1$s днів.</string>
+    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to -->
+    <string name="ephemeral_timer_weeks_by_you">Ви встановили таймер зникнення повідомлень на %1$s тижнів.</string>
+    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_weeks_by_other">%2$s встановили таймер повідомлень, що зникають на %1$s тижнів.</string>
+    <string name="protection_enabled_by_you">Ви увімкнули захист чату.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="protection_enabled_by_other">%1$s увімкнули захист чату.</string>
+    <string name="protection_disabled_by_you">Ви вимкнули захист чату.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="protection_disabled_by_other">%1$s вимкнули захист чату.</string>
 
     <string name="devicemsg_self_deleted">Ви видалили чат \"Збережені повідомлення\".\n\nℹ️ Аби використовувати функцію \"Збережені повідомлення\" знову, створіть новий чат самі із собою.</string>
     <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->

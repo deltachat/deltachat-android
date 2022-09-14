@@ -264,6 +264,9 @@
     <string name="ConversationFragment_quoted_message_not_found">Geen oorspronkelijk bericht gevonden</string>
     <string name="reply_privately">Privé beantwoorden</string>
     <string name="source_code">Broncode</string>
+    <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
+    <string name="add_to_home_screen">Toevoegen aan startscherm</string>
+
     <string name="mute_for_one_hour">1 uur lang uitschakelen</string>
     <string name="mute_for_two_hours">2 uur lang uitschakelen</string>
     <string name="mute_for_one_day">1 dag lang uitschakelen</string>
@@ -629,7 +632,7 @@
     <string name="pref_show_emails_accepted_contacts">Van goedgekeurde contactpersonen</string>
     <string name="pref_show_emails_all">Alles</string>
     <string name="pref_experimental_features">Experimentele functies</string>
-    <string name="pref_on_demand_location_streaming">Locatie continue doorgeven (op verzoek)</string>
+    <string name="pref_on_demand_location_streaming">Locatie delen (op verzoek)</string>
     <string name="pref_developer_mode">Ontwikkelaarsmodus</string>
     <string name="pref_developer_mode_explain">Schakelt foutopsporingspoties in die de app mogelijk minder stabiel maken. Alléén voor ontwikkelaars.</string>
     <string name="pref_background_default">Standaardachtergrond</string>
@@ -758,6 +761,72 @@
     <string name="systemmsg_chat_protection_disabled">Gespreksbeveiliging is uitgeschakeld.</string>
     <!-- deprecated -->
     <string name="systemmsg_chat_protection_enabled">Gespreksbeveiliging is ingeschakeld.</string>
+
+    <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
+    <string name="group_name_changed_by_you">Je hebt de groepsnaam gewijzigd. Oude naam: “%1$s” - Nieuwe naam: “%2$s”</string>
+    <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
+    <string name="group_name_changed_by_other">De groepsnaam is gewijzigd door %3$s. Oude naam: “%1$s” - Nieuwe naam: “%2$s”</string>
+    <string name="group_image_changed_by_you">Je hebt de groepsafbeelding gewijzigd.</string>
+    <!-- %1$s will be replaced by name and address of the contact who did the action -->
+    <string name="group_image_changed_by_other">De groepsafbeelding is gewijzigd door %1$s.</string>
+    <!-- %1$s will be replaced by name and address of the contact added to the group -->
+    <string name="add_member_by_you">Je hebt ‘%1$s’ toegevoegd.</string>
+    <!-- %1$s will be replaced by name and address of the contact added to the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <string name="add_member_by_other">‘%1$s’ is toegevoegd door %2$s.</string>
+    <!-- %1$s will be replaced by name and address of the contact removed from the group -->
+    <string name="remove_member_by_you">Je hebt ‘%1$s’ verwijderd.</string>
+    <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <string name="remove_member_by_other">‘%1$s’ is verwijderd door %2$s.</string>
+    <string name="group_left_by_you">Je hebt de groep verlaten.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="group_left_by_other">De groep is verlaten door %1$s.</string>
+    <string name="group_image_deleted_by_you">Je hebt de groepsafbeelding verwijderd.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="group_image_deleted_by_other">De groepsafbeelding is verwijderd door %1$s.</string>
+    <string name="location_enabled_by_you">Je hebt locatiedeling ingeschakeld.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="location_enabled_by_other">Locatiedeling is ingeschakeld door %1$s.</string>
+    <string name="ephemeral_timer_disabled_by_you">Je hebt de tijdklok van verdwijnende berichten uitgeschakeld.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_disabled_by_other">De tijdklok van verdwijnende berichten is uitgeschakeld door %1$s.</string>
+    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to -->
+    <string name="ephemeral_timer_seconds_by_you">Je hebt de tijdklok van verdwijnende berichten ingesteld op %1$s sec.</string>
+    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_seconds_by_other">De tijdklok van verdwijnende berichten is door %2$s ingesteld op %1$s sec.</string>
+    <string name="ephemeral_timer_1_minute_by_you">Je hebt de tijdklok van verdwijnende berichten ingesteld op 1 minuut.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_1_minute_by_other">De tijdklok van verdwijnende berichten is door %1$s ingesteld op 1 minuut.</string>
+    <string name="ephemeral_timer_1_hour_by_you">Je hebt de tijdklok van verdwijnende berichten ingesteld op 1 uur.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_1_hour_by_other">De tijdklok van verdwijnende berichten is door %1$s ingesteld op 1 uur.</string>
+    <string name="ephemeral_timer_1_day_by_you">Je hebt de tijdklok van verdwijnende berichten ingesteld op 1 dag.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_1_day_by_other">De tijdklok van verdwijnende berichten is door %1$s ingesteld op 1 dag.</string>
+    <string name="ephemeral_timer_1_week_by_you">Je hebt de tijdklok van verdwijnende berichten ingesteld op 1 week.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_1_week_by_other">De tijdklok van verdwijnende berichten is door %1$s ingesteld op 1 week.</string>
+    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to -->
+    <string name="ephemeral_timer_minutes_by_you">Je hebt de tijdklok van verdwijnende berichten ingesteld op %1$s minuten.</string>
+    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_minutes_by_other">De tijdklok van verdwijnende berichten is door %2$s ingesteld op %1$s minuten.</string>
+    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to -->
+    <string name="ephemeral_timer_hours_by_you">Je hebt de tijdklok van verdwijnende berichten ingesteld op %1$s uur.</string>
+    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_hours_by_other">De tijdklok van verdwijnende berichten is door %2$s ingesteld op %1$s uur.</string>
+    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to -->
+    <string name="ephemeral_timer_days_by_you">Je hebt de tijdklok van verdwijnende berichten ingesteld op %1$s dagen.</string>
+    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_days_by_other">De tijdklok van verdwijnende berichten is door %2$s ingesteld op %1$s dagen.</string>
+    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to -->
+    <string name="ephemeral_timer_weeks_by_you">Je hebt de tijdklok van verdwijnende berichten ingesteld op %1$s weken.</string>
+    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_weeks_by_other">De tijdklok van verdwijnende berichten is door %2$s ingesteld op %1$s weken.</string>
+    <string name="protection_enabled_by_you">Je hebt gespreksbeveiliging ingeschakeld.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="protection_enabled_by_other">Gespreksbeveiliging is ingeschakeld door %1$s.</string>
+    <string name="protection_disabled_by_you">Je hebt gespreksbeveiliging uitgeschakeld.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="protection_disabled_by_other">Gespreksbeveiliging is uitgeschakeld door %1$s.</string>
 
     <string name="devicemsg_self_deleted">Je hebt het gesprek ‘Opgeslagen berichten’ verwijderd.\n\nℹ️ Als je weer gebruik wilt maken van deze functie, begin dan een nieuw gesprek met jezelf.</string>
     <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->

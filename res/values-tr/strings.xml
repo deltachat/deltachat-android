@@ -264,6 +264,9 @@
     <string name="ConversationFragment_quoted_message_not_found">Özgün ileti bulunamadı</string>
     <string name="reply_privately">Özel Olarak Yanıtla</string>
     <string name="source_code">Kaynak Kodu</string>
+    <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
+    <string name="add_to_home_screen">Ana Ekrana Ekle</string>
+
     <string name="mute_for_one_hour">1 saatliğine sessize al</string>
     <string name="mute_for_two_hours">2 saatliğine sessize al</string>
     <string name="mute_for_one_day">1 günlüğüne sessize al</string>
@@ -758,6 +761,72 @@
     <string name="systemmsg_chat_protection_disabled">Sohbet koruması etkisizleştirildi.</string>
     <!-- deprecated -->
     <string name="systemmsg_chat_protection_enabled">Sohbet koruması etkinleştirildi.</string>
+
+    <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
+    <string name="group_name_changed_by_you">\"%1$s\" grup adını \"%2$s\" olarak değiştirdiniz.</string>
+    <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
+    <string name="group_name_changed_by_other">\"%1$s\" grup adı %3$s tarafından \"%2$s\" olarak değiştirildi.</string>
+    <string name="group_image_changed_by_you">Grup görselini değiştirdiniz.</string>
+    <!-- %1$s will be replaced by name and address of the contact who did the action -->
+    <string name="group_image_changed_by_other">Grup görseli %1$s tarafından değiştirildi.</string>
+    <!-- %1$s will be replaced by name and address of the contact added to the group -->
+    <string name="add_member_by_you">%1$s üyesini eklediniz.</string>
+    <!-- %1$s will be replaced by name and address of the contact added to the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <string name="add_member_by_other">%1$s üyesi %2$s tarafından eklendi.</string>
+    <!-- %1$s will be replaced by name and address of the contact removed from the group -->
+    <string name="remove_member_by_you">%1$s üyesini kaldırdınız.</string>
+    <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <string name="remove_member_by_other">%1$s üyesi %2$s tarafından kaldırıldı.</string>
+    <string name="group_left_by_you">Gruptan ayrıldınız.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="group_left_by_other">%1$s tarafından gruptan ayrılındı.</string>
+    <string name="group_image_deleted_by_you">Grup görselini sildiniz.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="group_image_deleted_by_other">Grup görseli %1$s tarafından silindi.</string>
+    <string name="location_enabled_by_you">Konum akışını etkinleştirdiniz.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="location_enabled_by_other">Konum akışı %1$s tarafından etkinleştirildi.</string>
+    <string name="ephemeral_timer_disabled_by_you">Kaybolan iletiler zamanlayıcısını etkisizleştirdiniz.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_disabled_by_other">Kaybolan iletiler zamanlayıcısı %1$s tarafından etkisizleştirildi.</string>
+    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to -->
+    <string name="ephemeral_timer_seconds_by_you">Kaybolan iletiler zamanlayıcısını %1$s s\'ye ayarladınız.</string>
+    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_seconds_by_other">Kaybolan iletiler zamanlayıcısı %2$s tarafından %1$s s\'ye ayarlandı.</string>
+    <string name="ephemeral_timer_1_minute_by_you">Kaybolan iletiler zamanlayıcısını 1 dakikaya ayarladınız.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_1_minute_by_other">Kaybolan iletiler zamanlayıcısı %1$s tarafından 1 dakikaya ayarlandı.</string>
+    <string name="ephemeral_timer_1_hour_by_you">Kaybolan iletiler zamanlayıcısını 1 saate ayarladınız.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_1_hour_by_other">Kaybolan iletiler zamanlayıcısı %1$s tarafından 1 saate ayarlandı.</string>
+    <string name="ephemeral_timer_1_day_by_you">Kaybolan iletiler zamanlayıcısını 1 güne ayarladınız.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_1_day_by_other">Kaybolan iletiler zamanlayıcısı %1$s tarafından 1 güne ayarlandı.</string>
+    <string name="ephemeral_timer_1_week_by_you">Kaybolan iletiler zamanlayıcısını 1 haftaya ayarladınız.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_1_week_by_other">Kaybolan iletiler zamanlayıcısı %1$s tarafından 1 haftaya ayarlandı.</string>
+    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to -->
+    <string name="ephemeral_timer_minutes_by_you">Kaybolan iletiler zamanlayıcısını %1$s dakikaya ayarladınız.</string>
+    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_minutes_by_other">Kaybolan iletiler zamanlayıcısı %2$s tarafından %1$s dakikaya ayarlandı.</string>
+    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to -->
+    <string name="ephemeral_timer_hours_by_you">Kaybolan iletiler zamanlayıcısını %1$s saate ayarladınız.</string>
+    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_hours_by_other">Kaybolan iletiler zamanlayıcısı %2$s tarafından %1$s saate ayarlandı.</string>
+    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to -->
+    <string name="ephemeral_timer_days_by_you">Kaybolan iletiler zamanlayıcısını %1$s güne ayarladınız.</string>
+    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_days_by_other">Kaybolan iletiler zamanlayıcısı %2$s tarafından %1$s güne ayarlandı.</string>
+    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to -->
+    <string name="ephemeral_timer_weeks_by_you">Kaybolan iletiler zamanlayıcısını %1$s haftaya ayarladınız.</string>
+    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_weeks_by_other">Kaybolan iletiler zamanlayıcısı %2$s tarafından %1$s haftaya ayarlandı.</string>
+    <string name="protection_enabled_by_you">Sohbet korumasını etkinleştirdiniz.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="protection_enabled_by_other">Sohbet koruması %1$s tarafından etkinleştirildi.</string>
+    <string name="protection_disabled_by_you">Sohbet korumasını etkisizleştirdiniz.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="protection_disabled_by_other">Sohbet koruması %1$s tarafından etkisizleştirildi.</string>
 
     <string name="devicemsg_self_deleted">\"Kaydedilen iletiler\" sohbetini sildiniz.\n\nℹ️ \"Kaydedilen iletiler\" özelliğini yeniden kullanmak için kendinizle yeni bir sohbet oluşturun.</string>
     <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
