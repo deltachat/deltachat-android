@@ -1580,7 +1580,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
                 || eventId == DcContext.DC_EVENT_MSG_DELIVERED)
                && event.getData1Int() == chatId) {
         DcContact contact = recipient.getDcContact();
-        titleView.setSeenRecently(contact!=null? contact.wasSeenRecently() : false);
+        titleView.setSeenRecently(contact!=null? dcContext.getContact(contact.getId()).wasSeenRecently() : false);
     }
   }
 
