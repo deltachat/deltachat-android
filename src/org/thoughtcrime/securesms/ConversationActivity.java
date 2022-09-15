@@ -270,8 +270,9 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     if (!isMultiUser()) {
       eventCenter.addObserver(DcContext.DC_EVENT_INCOMING_MSG, this);
-      eventCenter.addObserver(DcContext.DC_EVENT_MSG_DELIVERED, this);
       eventCenter.addObserver(DcContext.DC_EVENT_MSG_READ, this);
+      // handle DC_EVENT_MSG_DELIVERED to hide the seen-recently indicator if needed:
+      eventCenter.addObserver(DcContext.DC_EVENT_MSG_DELIVERED, this);
     }
 
     if (isForwarding(this)) {
