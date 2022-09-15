@@ -482,7 +482,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     }
 
     if (isMultiUser()) {
-      if (dcChat.canSend() && !dcChat.isBroadcast()) {
+      if (dcChat.canSend() && !dcChat.isBroadcast() && !dcChat.isMailingList()) {
         inflater.inflate(R.menu.conversation_push_group_options, menu);
       }
     }
