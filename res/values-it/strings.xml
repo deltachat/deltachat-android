@@ -38,7 +38,7 @@
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Ripristina</string>
     <string name="mute">Silenzia</string>
-    <string name="ephemeral_messages">Messaggi che Scompaiono</string>
+    <string name="ephemeral_messages">Messaggi a Scomparsa</string>
     <string name="ephemeral_messages_hint">Queste impostazioni si applicano a tutti i partecipanti che utilizzano Delta Chat. Tuttavia, possono copiare, salvare e inoltrare messaggi o utilizzare altri client e-mail.</string>
     <string name="save">Salva</string>
     <string name="chat">Chat</string>
@@ -272,6 +272,9 @@
     <string name="ConversationFragment_quoted_message_not_found">Messaggio originale non trovato</string>
     <string name="reply_privately">Rispondi in Privato</string>
     <string name="source_code">Codice Sorgente</string>
+    <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
+    <string name="add_to_home_screen">Aggiungi alla Schermata Home</string>
+
     <string name="mute_for_one_hour">Silenzia per 1 ora</string>
     <string name="mute_for_two_hours">Silenzia per 2 ore</string>
     <string name="mute_for_one_day">Silenzia per 1 giorno</string>
@@ -748,31 +751,97 @@
     <string name="systemmsg_failed_sending_to">Impossibile inviare il messaggio a %1$s.</string>
 
     <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_disabled">Timer scomparsa messaggi disabilitato.</string>
+    <string name="systemmsg_ephemeral_timer_disabled">Timer messaggi a scomparsa disabilitato.</string>
     <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_enabled">Il timer per la scomparsa dei messaggi è impostato su %1$s s.</string>
+    <string name="systemmsg_ephemeral_timer_enabled">Timer messaggi a scomparsa impostato su %1$s s.</string>
     <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_minute">Il timer per la scomparsa dei messaggi è impostato su 1 minuto.</string>
+    <string name="systemmsg_ephemeral_timer_minute">Timer messaggi a scomparsa impostato su 1 minuto.</string>
     <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_hour">Il timer per la scomparsa dei messaggi è impostato su 1 ora.</string>
+    <string name="systemmsg_ephemeral_timer_hour">Timer messaggi a scomparsa impostato su 1 ora.</string>
     <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_day">Il timer per la scomparsa dei messaggi è impostato su 1 giorno.</string>
+    <string name="systemmsg_ephemeral_timer_day">Timer messaggi a scomparsa impostato su 1 giorno.</string>
     <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_week">Il timer per la scomparsa dei messaggi è impostato su 1 settimana.</string>
+    <string name="systemmsg_ephemeral_timer_week">Timer messaggi a scomparsa impostato su 1 settimana.</string>
     <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_four_weeks">Il timer per la scomparsa dei messaggi è impostato su 4 settimane.</string>
+    <string name="systemmsg_ephemeral_timer_four_weeks">Timer messaggi a scomparsa impostato su 4 settimane.</string>
     <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_minutes">Timer di scomparsa dei messaggi impostato su %1$s minuti.</string>
+    <string name="systemmsg_ephemeral_timer_minutes">Timer messaggi a scomparsa impostato su %1$s minuti.</string>
     <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_hours">Timer di scomparsa dei messaggi impostato su %1$s ore.</string>
+    <string name="systemmsg_ephemeral_timer_hours">Timer messaggi a scomparsa impostato su %1$s ore.</string>
     <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_days">Timer di scomparsa dei messaggi impostato su %1$s giorni.</string>
+    <string name="systemmsg_ephemeral_timer_days">Timer messaggi a scomparsa impostato su %1$s giorni.</string>
     <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_weeks">Timer di scomparsa dei messaggi impostato su %1$s settimane.</string>
+    <string name="systemmsg_ephemeral_timer_weeks">Timer messaggi a scomparsa impostato su %1$s settimane.</string>
     <!-- deprecated -->
     <string name="systemmsg_chat_protection_disabled">Protezione chat disattivata.</string>
     <!-- deprecated -->
     <string name="systemmsg_chat_protection_enabled">Protezione chat abilitata.</string>
+
+    <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
+    <string name="group_name_changed_by_you">Hai cambiato il nome del gruppo da \"%1$s\" a \"%2$s\".</string>
+    <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
+    <string name="group_name_changed_by_other">Nome gruppo cambiato da \"%1$s\" a \"%2$s\" da %3$s.</string>
+    <string name="group_image_changed_by_you">Hai cambiato l\'immagine del gruppo.</string>
+    <!-- %1$s will be replaced by name and address of the contact who did the action -->
+    <string name="group_image_changed_by_other">Immagine del gruppo cambiata da %1$s.</string>
+    <!-- %1$s will be replaced by name and address of the contact added to the group -->
+    <string name="add_member_by_you">Hai aggiunto un membro %1$s.</string>
+    <!-- %1$s will be replaced by name and address of the contact added to the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <string name="add_member_by_other">Membro %1$s aggiunto da %2$s.</string>
+    <!-- %1$s will be replaced by name and address of the contact removed from the group -->
+    <string name="remove_member_by_you">Hai rimosso il membro %1$s.</string>
+    <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <string name="remove_member_by_other">Membro %1$s rimosso da %2$s.</string>
+    <string name="group_left_by_you">Hai lasciato il gruppo.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="group_left_by_other">Gruppo lasciato da %1$s.</string>
+    <string name="group_image_deleted_by_you">Hai eliminato l\'immagine del gruppo.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="group_image_deleted_by_other">Immagine gruppo eliminata da %1$s.</string>
+    <string name="location_enabled_by_you">Hai abilitato la trasmissione della posizione.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="location_enabled_by_other">Trasmissione della posizione abilitato da %1$s.</string>
+    <string name="ephemeral_timer_disabled_by_you">Hai disabilitato il timer dei messaggi a scomparsa.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_disabled_by_other">Timer messaggi a scomparsa disabilitato da %1$s.</string>
+    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to -->
+    <string name="ephemeral_timer_seconds_by_you">Hai impostato il timer dei messaggi a scomparsa su %1$s s</string>
+    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_seconds_by_other">Timer messaggi a scomparsa impostato su %1$s s da %2$s.</string>
+    <string name="ephemeral_timer_1_minute_by_you">Hai impostato il timer dei messaggi a scomparsa su 1 minuto.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_1_minute_by_other">Timer messaggi a scomparsa impostato su 1 minuto da %1$s.</string>
+    <string name="ephemeral_timer_1_hour_by_you">Hai impostato il timer dei messaggi a scomparsa su 1 ora.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_1_hour_by_other">Timer messaggi a scomparsa impostato su 1 ora da %1$s.</string>
+    <string name="ephemeral_timer_1_day_by_you">Hai impostato il timer dei messaggi a scomparsa su 1 giorno.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_1_day_by_other">Timer messaggi a scomparsa impostato su 1 giorno da %1$s.</string>
+    <string name="ephemeral_timer_1_week_by_you">Hai impostato il timer dei messaggi a scomparsa su 1 settimana.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_1_week_by_other">Timer messaggi a scomparsa impostato su 1 settimana da %1$s.</string>
+    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to -->
+    <string name="ephemeral_timer_minutes_by_you">Hai impostato il timer dei messaggi a scomparsa su %1$s minuti.</string>
+    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_minutes_by_other">Timer messaggi a scomparsa impostato su %1$s minuti da %2$s.</string>
+    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to -->
+    <string name="ephemeral_timer_hours_by_you">Hai impostato il timer dei messaggi a scomparsa su  %1$s ore.</string>
+    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_hours_by_other">Timer messaggi a scomparsa impostato su %1$s ore da %2$s.</string>
+    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to -->
+    <string name="ephemeral_timer_days_by_you">Hai impostato il timer dei messaggi a scomparsa su %1$s giorni.</string>
+    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_days_by_other">Timer messaggi a scomparsa impostato su %1$s giorni da %2$s.</string>
+    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to -->
+    <string name="ephemeral_timer_weeks_by_you">Hai impostato il timer dei messaggi a scomparsa su %1$s settimane.</string>
+    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_weeks_by_other">Timer messaggi a scomparsa impostato su %1$s settimane da %2$s.</string>
+    <string name="protection_enabled_by_you">Hai abilitato la protezione chat.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="protection_enabled_by_other">Protezione chat abilitata da %1$s.</string>
+    <string name="protection_disabled_by_you">Hai disabilitato la protezione chat.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="protection_disabled_by_other">Protezione chat disabilitata da %1$s.</string>
 
     <string name="devicemsg_self_deleted">Hai eliminato la chat \"Messaggi salvati\".\n\nℹ️ Per utilizzare nuovamente la funzione \"Messaggi salvati\", crea una nuova chat con te stesso.</string>
     <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
