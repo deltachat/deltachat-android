@@ -155,10 +155,9 @@
     <string name="images_and_videos">Images and Videos</string>
     <string name="file">File</string>
     <string name="files">Files</string>
-    <string name="webxdc_app">Webxdc App</string>
-    <!-- Plural of "Webxdc App", used eg. as menu entry or title for an app selector. -->
-    <string name="webxdc_apps">Webxdc Apps</string>
-    <string name="files_and_webxdx_apps">Files and Webxdc Apps</string>
+    <string name="webxdc_app">Private App</string>
+    <string name="webxdc_apps">Private Apps</string>
+    <string name="files_and_webxdx_apps">Files and Private Apps</string>
     <string name="unknown">Unknown</string>
 
     <string name="green">Green</string>
@@ -449,7 +448,7 @@
     <string name="tab_image_empty_hint">Images shared in this chat will appear here.</string>
     <string name="tab_video_empty_hint">Videos shared in this chat will appear here.</string>
     <string name="tab_audio_empty_hint">Audio files and voice messages shared in this chat will appear here.</string>
-    <string name="tab_webxdc_empty_hint">Webxdc apps shared in this chat will appear here.</string>
+    <string name="tab_webxdc_empty_hint">Private apps shared in this chat will appear here.</string>
     <string name="media_preview">Media Preview</string>
     <string name="send_message">Send Message</string>
     <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
