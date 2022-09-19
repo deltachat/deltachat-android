@@ -445,7 +445,6 @@
     <string name="tab_image_empty_hint">Bu sohbette paylaşılan görseller burada görünecek.</string>
     <string name="tab_video_empty_hint">Bu sohbette paylaşılan videolar burada görünecek.</string>
     <string name="tab_audio_empty_hint">Bu sohbette paylaşılan ses dosyaları ve sesli iletiler burada görünecek.</string>
-    <string name="tab_webxdc_empty_hint">Bu sohbette paylaşılan Webxdc içeriği burada görünecek.</string>
     <string name="media_preview">Ortam Önizlemesi</string>
     <string name="send_message">İleti Gönder</string>
     <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->

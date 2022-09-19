@@ -457,7 +457,6 @@
     <string name="tab_image_empty_hint">As imagens compartilhadas neste chat serão exibidas aqui.</string>
     <string name="tab_video_empty_hint">Os vídeos compartilhados neste chat serão exibidos aqui.</string>
     <string name="tab_audio_empty_hint">Os arquivos de áudio e mensagens de voz compartilhados neste chat serão exibidos aqui.</string>
-    <string name="tab_webxdc_empty_hint">O conteúdo Webxdc compartilhado neste chat será exibido aqui.</string>
     <string name="media_preview">Pré-visualização.</string>
     <string name="send_message">Enviar mensagem</string>
     <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->

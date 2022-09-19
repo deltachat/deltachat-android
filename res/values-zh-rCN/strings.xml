@@ -430,7 +430,6 @@
     <string name="tab_image_empty_hint">此聊天中分享的图片将显示在这里</string>
     <string name="tab_video_empty_hint">此聊天中分享的视频将显示在这里</string>
     <string name="tab_audio_empty_hint">此聊天中分享的音频文件和语音消息将显示在这里。</string>
-    <string name="tab_webxdc_empty_hint">此聊天内分享的 Webxdc 内容将显示在这里</string>
     <string name="media_preview">媒体预览</string>
     <string name="send_message">发送消息</string>
     <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->

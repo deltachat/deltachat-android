@@ -442,7 +442,6 @@
     <string name="tab_image_empty_hint">Tässä keskustelussa jaetut kuvat näkyvät tässä.</string>
     <string name="tab_video_empty_hint">Tässä keskustelussa jaetut videot näkyvät tässä.</string>
     <string name="tab_audio_empty_hint">Tässä keskustelussa jaetut äänitiedostot ja -viestit näkyvät tässä.</string>
-    <string name="tab_webxdc_empty_hint">Tässä keskustelussa jaettu webxdc-sisältö näkyy tässä.</string>
     <string name="media_preview">Median esikatselu</string>
     <string name="send_message">Lähetä viesti</string>
     <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->

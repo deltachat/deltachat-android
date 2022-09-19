@@ -440,7 +440,6 @@
     <string name="tab_image_empty_hint">Figurat e dhëna në këtë fjalosje do të shfaqen këtu.</string>
     <string name="tab_video_empty_hint">Videot e dhëna në këtë fjalosje do të shfaqen këtu.</string>
     <string name="tab_audio_empty_hint">Kartelat Audio dhe Mesazhet Zanore të dhëna në këtë fjalosje do të shfaqen këtu.</string>
-    <string name="tab_webxdc_empty_hint">Lëndë Webxdc e dhënë në këtë fjalosje do të shfaqet këtu.</string>
     <string name="media_preview">Paraparje media</string>
     <string name="send_message">Dërgo mesazh</string>
     <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->

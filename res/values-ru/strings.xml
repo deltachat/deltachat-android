@@ -475,7 +475,6 @@
     <string name="tab_image_empty_hint">Изображения, размещённые в этом чате, будут отображаться здесь.</string>
     <string name="tab_video_empty_hint">Видео, размещённые в этом чате, будут отображаться здесь.</string>
     <string name="tab_audio_empty_hint">Аудиофайлы и голосовые сообщения, размещённые в этом чате, будут отображаться здесь.</string>
-    <string name="tab_webxdc_empty_hint">Содержимое Webxdc-приложения, размещённые в этом чате, будут отображаться здесь.</string>
     <string name="media_preview">Предпросмотр медиафайлов</string>
     <string name="send_message">Отправить сообщение</string>
     <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->

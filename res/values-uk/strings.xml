@@ -475,7 +475,6 @@
     <string name="tab_image_empty_hint">Зображення, якими поділилися у цьому чаті, будуть відображатися тут.</string>
     <string name="tab_video_empty_hint">Відео, якими поділилися у цьому чаті, будуть відображатися тут.</string>
     <string name="tab_audio_empty_hint">Аудіозаписи та голосові повідомлення, якими поділилися у цьому чаті, будуть відображатися тут.</string>
-    <string name="tab_webxdc_empty_hint">Webxdc-контент, яким поділилися у цьому чаті, буде відображатися тут.</string>
     <string name="media_preview">Попередній перегляд медіа</string>
     <string name="send_message">Надіслати повідомлення</string>
     <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->

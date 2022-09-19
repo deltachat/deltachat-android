@@ -460,7 +460,6 @@
     <string name="tab_image_empty_hint">Le immagini condivise in questa chat saranno visualizzate qui.</string>
     <string name="tab_video_empty_hint">I video condivisi in questa chat saranno visualizzati qui.</string>
     <string name="tab_audio_empty_hint">I File Audio e i Messaggi Vocali condivisi in questa chat saranno visualizzati qui.</string>
-    <string name="tab_webxdc_empty_hint">I contenuti Webxdc condivisi in questa chat saranno visualizzati qui.</string>
     <string name="media_preview">Anteprima dei Media</string>
     <string name="send_message">Invia Messaggio</string>
     <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->

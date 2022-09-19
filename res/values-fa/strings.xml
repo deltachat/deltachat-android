@@ -447,7 +447,6 @@ https://meet.jit.si/$ROOM
     <string name="tab_image_empty_hint">تصاوری که در این گفتگو اشتراک گذاری شده‌ باشند در اینجا نمایش داده می‌شوند. </string>
     <string name="tab_video_empty_hint">فیلم‌هایی که در این گفتگو اشتراک گذاری شده باشند در اینجا نمایش داده می‌شوند. </string>
     <string name="tab_audio_empty_hint">فایل‌ها و پیام‌های صوتی که در این گفتگو اشتراک گذاری شده‌‌اند در اینجا نمایش داده می‌شوند.</string>
-    <string name="tab_webxdc_empty_hint">محتوای Webxdc اشتراک گذاری شده در این گفتگو در اینجا نمایش داده می‌شود. </string>
     <string name="media_preview">نمایش رسانه</string>
     <string name="send_message">ارسال پیام</string>
     <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
