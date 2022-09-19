@@ -155,7 +155,9 @@
     <string name="images_and_videos">Images and Videos</string>
     <string name="file">File</string>
     <string name="files">Files</string>
+    <!-- "Private App" is used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_app">Private App</string>
+    <!-- plural of "Private App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_apps">Private Apps</string>
     <string name="files_and_webxdx_apps">Files and Private Apps</string>
     <string name="unknown">Unknown</string>
