@@ -10,7 +10,6 @@ import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SENTBOX_WATCH;
 
 import android.Manifest;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -37,8 +36,6 @@ import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.ScreenLockUtil;
-import org.thoughtcrime.securesms.util.Util;
-import org.thoughtcrime.securesms.util.views.ProgressDialog;
 
 
 public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
@@ -265,23 +262,7 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
         .setMessage(getActivity().getString(R.string.autocrypt_send_asm_explain_before))
         .setNegativeButton(android.R.string.cancel, null)
         .setPositiveButton(R.string.autocrypt_send_asm_button, (dialog, which) -> {
-
-          progressDialog = new ProgressDialog(getActivity());
-          progressDialog.setMessage(getActivity().getString(R.string.one_moment));
-          progressDialog.setCanceledOnTouchOutside(false);
-          progressDialog.setCancelable(false);
-          progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, getActivity().getString(android.R.string.cancel), (dialog1, which1) -> dcContext.stopOngoingProcess());
-          progressDialog.show();
-
-
-          new Thread(() -> {
-            final String sc = dcContext.initiateKeyTransfer();
-            Util.runOnMain(() -> {
-              if( progressDialog != null ) {
-                progressDialog.dismiss();
-                progressDialog = null;
-              }
-
+              final String sc = dcContext.initiateKeyTransfer();
               if( sc != null ) {
                 String scFormatted = "";
                 try {
@@ -298,10 +279,6 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
                   .setCancelable(false) // prevent the dialog from being dismissed accidentally (when the dialog is closed, the setup code is gone forever and the user has to create a new setup message)
                   .show();
               }
-            });
-          }).start();
-
-
         })
         .show();
       return true;
