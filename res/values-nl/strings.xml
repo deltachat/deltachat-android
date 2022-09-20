@@ -155,6 +155,11 @@
     <string name="images_and_videos">Foto\'s en video\'s</string>
     <string name="file">Bestand</string>
     <string name="files">Bestanden</string>
+    <!-- "Private App" is used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
+    <string name="webxdc_app">Privé-app</string>
+    <!-- plural of "Private App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
+    <string name="webxdc_apps">Privé-apps</string>
+    <string name="files_and_webxdx_apps">Bestanden en privé-apps</string>
     <string name="unknown">Onbekend</string>
 
     <string name="green">Groen</string>
@@ -445,6 +450,7 @@
     <string name="tab_image_empty_hint">De in dit gesprek gedeelde afbeeldingen verschijnen hier.</string>
     <string name="tab_video_empty_hint">De in dit gesprek gedeelde video\'s verschijnen hier.</string>
     <string name="tab_audio_empty_hint">De in dit gesprek gedeelde audiobestanden en spraakberichten verschijnen hier.</string>
+    <string name="tab_webxdc_empty_hint">Privé-apps in dit gesprek worden hier getoond.</string>
     <string name="media_preview">Mediavoorbeeld</string>
     <string name="send_message">Bericht versturen</string>
     <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
