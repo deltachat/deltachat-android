@@ -39,12 +39,14 @@ public class ProfileDocumentsFragment
 {
   public static final String LOCALE_EXTRA  = "locale_extra";
   public static final String CHAT_ID_EXTRA = "chat_id";
+  public static final String SHOW_AUDIO_EXTRA = "show_audio";
   public static final String SHOW_WEBXDC_EXTRA = "show_webxdc";
 
   protected TextView noMedia;
   protected RecyclerView recyclerView;
   private StickyHeaderGridLayoutManager gridManager;
   private ActionModeCallback actionModeCallback = new ActionModeCallback();
+  private boolean showAudio;
   private boolean showWebxdc;
 
   protected int                chatId;
@@ -56,6 +58,7 @@ public class ProfileDocumentsFragment
 
     dcContext = DcHelper.getContext(getContext());
     chatId = getArguments().getInt(CHAT_ID_EXTRA, -1);
+    showAudio = getArguments().getBoolean(SHOW_AUDIO_EXTRA, false);
     showWebxdc = getArguments().getBoolean(SHOW_WEBXDC_EXTRA, false);
     locale = (Locale)getArguments().getSerializable(LOCALE_EXTRA);
     if (locale == null) throw new AssertionError();
@@ -106,10 +109,12 @@ public class ProfileDocumentsFragment
 
   @Override
   public Loader<BucketedThreadMediaLoader.BucketedThreadMedia> onCreateLoader(int i, Bundle bundle) {
-    if (showWebxdc) {
+    if (showAudio) {
+      return new BucketedThreadMediaLoader(getContext(), chatId, DcMsg.DC_MSG_AUDIO, DcMsg.DC_MSG_VOICE, 0);
+    } else if (showWebxdc) {
       return new BucketedThreadMediaLoader(getContext(), chatId, DcMsg.DC_MSG_WEBXDC, 0, 0);
     } else {
-      return new BucketedThreadMediaLoader(getContext(), chatId, DcMsg.DC_MSG_FILE, DcMsg.DC_MSG_AUDIO, 0);
+      return new BucketedThreadMediaLoader(getContext(), chatId, DcMsg.DC_MSG_FILE, 0, 0);
     }
   }
 
@@ -119,7 +124,9 @@ public class ProfileDocumentsFragment
     ((ProfileDocumentsAdapter) recyclerView.getAdapter()).notifyAllSectionsDataSetChanged();
 
     noMedia.setVisibility(recyclerView.getAdapter().getItemCount() > 0 ? View.GONE : View.VISIBLE);
-    if (showWebxdc) {
+    if (showAudio) {
+      noMedia.setText(R.string.tab_audio_empty_hint);
+    } else if (showWebxdc) {
       noMedia.setText(R.string.tab_webxdc_empty_hint);
     }
     getActivity().invalidateOptionsMenu();
