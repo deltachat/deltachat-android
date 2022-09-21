@@ -163,6 +163,11 @@
     <string name="images_and_videos">Imagens e vídeos</string>
     <string name="file">Arquivo</string>
     <string name="files">Arquivos</string>
+    <!-- "Private App" is used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
+    <string name="webxdc_app">App Privado</string>
+    <!-- plural of "Private App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
+    <string name="webxdc_apps">Apps Privados</string>
+    <string name="files_and_webxdx_apps">Arquivos e Apps Privados</string>
     <string name="unknown">Desconhecido</string>
 
     <string name="green">Verde</string>
@@ -272,6 +277,9 @@
     <string name="ConversationFragment_quoted_message_not_found">Mensagem original não encontrada</string>
     <string name="reply_privately">Responder em privado</string>
     <string name="source_code">Código Fonte</string>
+    <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
+    <string name="add_to_home_screen">Adicionar à Tela Inicial</string>
+
     <string name="mute_for_one_hour">Silenciar por 1 hora</string>
     <string name="mute_for_two_hours">Silenciar por 2 horas</string>
     <string name="mute_for_one_day">Silenciar por 1 dia</string>
@@ -457,6 +465,7 @@
     <string name="tab_image_empty_hint">As imagens compartilhadas neste chat serão exibidas aqui.</string>
     <string name="tab_video_empty_hint">Os vídeos compartilhados neste chat serão exibidos aqui.</string>
     <string name="tab_audio_empty_hint">Os arquivos de áudio e mensagens de voz compartilhados neste chat serão exibidos aqui.</string>
+    <string name="tab_webxdc_empty_hint">Apps privados compartilhados neste chat serão exibidos aqui.</string>
     <string name="media_preview">Pré-visualização.</string>
     <string name="send_message">Enviar mensagem</string>
     <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
@@ -772,6 +781,72 @@
     <string name="systemmsg_chat_protection_disabled">Proteção da conversa desligada.</string>
     <!-- deprecated -->
     <string name="systemmsg_chat_protection_enabled">Proteção da conversa ligada.</string>
+
+    <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
+    <string name="group_name_changed_by_you">Você mudou o nome do grupo de \"%1$s\" para \"%2$s\".</string>
+    <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
+    <string name="group_name_changed_by_other">Nome do grupo mudado de \"%1$s\" para \"%2$s\" por %3$s.</string>
+    <string name="group_image_changed_by_you">Você trocou a imagem do grupo.</string>
+    <!-- %1$s will be replaced by name and address of the contact who did the action -->
+    <string name="group_image_changed_by_other">Imagem do grupo mudada por %1$s.</string>
+    <!-- %1$s will be replaced by name and address of the contact added to the group -->
+    <string name="add_member_by_you">Você adicionou o membro %1$s.</string>
+    <!-- %1$s will be replaced by name and address of the contact added to the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <string name="add_member_by_other">Membro %1$s adicionado por %2$s.</string>
+    <!-- %1$s will be replaced by name and address of the contact removed from the group -->
+    <string name="remove_member_by_you">Você removeu o membro %1$s.</string>
+    <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <string name="remove_member_by_other">Membro %1$s removido por %2$s.</string>
+    <string name="group_left_by_you">Você saiu do grupo.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="group_left_by_other">Grupo deixado por %1$s.</string>
+    <string name="group_image_deleted_by_you">Você removeu a imagem do grupo.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="group_image_deleted_by_other">Imagem do grupo removida por %1$s.</string>
+    <string name="location_enabled_by_you">Você ativou a transmissão da localização.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="location_enabled_by_other">Transmissão da localização habilitada por %1$s.</string>
+    <string name="ephemeral_timer_disabled_by_you">Você desativou o temporizador de desaparecimento de mensagens.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_disabled_by_other">Temporizador de desaparecimento de mensagens desativado por %1$s.</string>
+    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to -->
+    <string name="ephemeral_timer_seconds_by_you">Você definiu o temporizador de desaparecimento de mensagens para %1$s s</string>
+    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_seconds_by_other">Temporizador de desaparecimento de mensagens definido para %1$s s por %2$s.</string>
+    <string name="ephemeral_timer_1_minute_by_you">Você definiu o temporizador de desaparecimento de mensagens para 1 minuto.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_1_minute_by_other">Temporizador de desaparecimento de mensagens definido para 1 minuto por %1$s.</string>
+    <string name="ephemeral_timer_1_hour_by_you">Você definiu o temporizador de desaparecimento de mensagens para 1 hora.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_1_hour_by_other">Temporizador de desaparecimento de mensagens definido para 1 hora por %1$s.</string>
+    <string name="ephemeral_timer_1_day_by_you">Você definiu o temporizador de desaparecimento de mensagens para 1 dia.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_1_day_by_other">Temporizador de desaparecimento de mensagens definido para 1 dia por  %1$s.</string>
+    <string name="ephemeral_timer_1_week_by_you">Você definiu o temporizador de desaparecimento de mensagens para 1 semana.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_1_week_by_other">Temporizador de desaparecimento de mensagens definido para 1 semana por %1$s.</string>
+    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to -->
+    <string name="ephemeral_timer_minutes_by_you">Você definiu o temporizador de desaparecimento de mensagens para %1$s minutos.</string>
+    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_minutes_by_other">Temporizador de desaparecimento de mensagens definido para %1$s minutos por %2$s.</string>
+    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to -->
+    <string name="ephemeral_timer_hours_by_you">Você definiu o temporizador de desaparecimento de mensagens para  %1$s horas.</string>
+    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_hours_by_other">Temporizador de desaparecimento de mensagens definido para %1$s horas por %2$s.</string>
+    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to -->
+    <string name="ephemeral_timer_days_by_you">Você definiu o temporizador de desaparecimento de mensagens para %1$s dias.</string>
+    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_days_by_other">Temporizador de desaparecimento de mensagens definido para %1$s dias por %2$s.</string>
+    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to -->
+    <string name="ephemeral_timer_weeks_by_you">Você definiu o temporizador de desaparecimento de mensagens para  %1$s semanas.</string>
+    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_weeks_by_other">Temporizador de desaparecimento de mensagens definido para %1$s semanas por %2$s.</string>
+    <string name="protection_enabled_by_you">Você habilitou a proteção de chat.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="protection_enabled_by_other">Proteção de chat habilitada por %1$s.</string>
+    <string name="protection_disabled_by_you">Você desabilitou a proteção de chat.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="protection_disabled_by_other">Proteção de chat desabilitada por %1$s.</string>
 
     <string name="devicemsg_self_deleted">Você excluiu o bate-papo \"Mensagens salvas\".\n\nℹ️ Para usar o recurso \"Mensagens salvas\" novamente, crie um novo bate-papo com você mesmo. </string>
     <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
