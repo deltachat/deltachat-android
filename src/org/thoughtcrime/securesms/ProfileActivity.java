@@ -57,6 +57,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
   public static final int TAB_SETTINGS = 10;
   public static final int TAB_GALLERY  = 20;
   public static final int TAB_DOCS     = 30;
+  public static final int TAB_WEBXDC   = 35;
   public static final int TAB_LINKS    = 40;
   public static final int TAB_MAP      = 50;
 
@@ -243,6 +244,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
     }
     tabs.add(TAB_GALLERY);
     tabs.add(TAB_DOCS);
+    tabs.add(TAB_WEBXDC);
     //tabs.add(TAB_LINKS);
     //if(Prefs.isLocationStreamingEnabled(this)) {
     //  tabs.add(TAB_MAP);
@@ -323,6 +325,13 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
           args.putSerializable(ProfileGalleryFragment.LOCALE_EXTRA, dynamicLanguage.getCurrentLocale());
           break;
 
+        case TAB_WEBXDC:
+          fragment = new ProfileDocumentsFragment();
+          args.putInt(ProfileDocumentsFragment.CHAT_ID_EXTRA, (chatId==0&&!isGlobalProfile())? -1 : chatId);
+          args.putBoolean(ProfileDocumentsFragment.SHOW_WEBXDC_EXTRA, true);
+          args.putSerializable(ProfileDocumentsFragment.LOCALE_EXTRA, dynamicLanguage.getCurrentLocale());
+          break;
+
         default:
           fragment = new ProfileDocumentsFragment();
           args.putInt(ProfileGalleryFragment.CHAT_ID_EXTRA, (chatId==0&&!isGlobalProfile())? -1 : chatId);
@@ -363,6 +372,9 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
 
         case TAB_DOCS:
           return getString(R.string.files);
+
+        case TAB_WEBXDC:
+          return getString(R.string.webxdc_apps);
 
         case TAB_LINKS:
           return getString(R.string.tab_links);
