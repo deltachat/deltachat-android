@@ -1027,6 +1027,11 @@
     <string name="notifications_avg_minutes">Ortalama olarak her %1$d dakikada bir</string>
     <string name="notifications_avg_hours">Ortalama olarak her %1$d saatte bir</string>
     <string name="last_check_at">Denetleme %1$s</string>
+    <!-- iOS webxdc selector -->
+    <string name="webxdc_selector_empty_hint">Herhangi bir sohbette alınan ya da gönderilen özel uygulamalar burada görünecek. \"Dosyalar\", yalnızca indirilen özel uygulamaları gösterir.</string>
+    <!-- iOS webxdc shortcut page -->
+    <string name="shortcut_step1_tap_share_btn">Paylaş düğmesini tıklayın</string>
+    <string name="shortcut_step2_tap_add_to_home_screen">Uygulamayı ana ekranınıza eklemek için \"Ana Ekrana Ekle\"yi seçin.</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat, fotoğraflar ve videolar çekmek ve göndermek için ve QR kodlarını taramak için kameranızı kullanır.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat, yazabileceğiniz e-posta adreslerinin bir listesini göstermek için kişilerinizi kullanır. Delta Chat sunucusu yoktur; kişileriniz herhangi bir yere gönderilmez.</string>

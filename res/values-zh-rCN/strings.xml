@@ -1012,6 +1012,11 @@
     <string name="notifications_avg_minutes">平均每 %1$d 分钟</string>
     <string name="notifications_avg_hours">平均每 %1$d 小时</string>
     <string name="last_check_at">检查于 %1$s</string>
+    <!-- iOS webxdc selector -->
+    <string name="webxdc_selector_empty_hint">任何聊天中接收或发送的私人文件都会出现在这里。“文件”显示私人应用刚被下载。</string>
+    <!-- iOS webxdc shortcut page -->
+    <string name="shortcut_step1_tap_share_btn">单机分享按钮</string>
+    <string name="shortcut_step2_tap_add_to_home_screen"><br>选择“添加到主屏”将应用添加到主屏幕。</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat 使用相机来拍摄、发送照片和视频以及扫描二维码。</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat 使用您的联系人来显示您可以写信到的电子邮件地址列表。 Delta Chat 没有服务器，您的联系人不会被发送到任何地方。</string>

@@ -1022,6 +1022,11 @@
     <string name="notifications_avg_minutes">Mesatarisht çdo %1$d minuta</string>
     <string name="notifications_avg_hours">Mesatarisht %1$d orë</string>
     <string name="last_check_at">Kontrolluar më %1$s</string>
+    <!-- iOS webxdc selector -->
+    <string name="webxdc_selector_empty_hint">Këtu do të duken aplikacione private të dërguar apo të marrë në cilëndo fjalosje. “Kartela” shfaq aplikacione private të saposhkarkuara.</string>
+    <!-- iOS webxdc shortcut page -->
+    <string name="shortcut_step1_tap_share_btn">Klikoni butonin për ndarje</string>
+    <string name="shortcut_step2_tap_add_to_home_screen">Që ta shtoni aplikacionin te skena juaj e kreut, përzgjidhni “Shtoje te Skena e Kreut”.</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Lejimi i përdorimi të kamerës ju bën të mundur të bëni foto dhe video.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Lejimi i përdorimi të librit tuaj të adresave kamerës ju bën të mundur të bisedoni me kontakte prej pajisjes tuaj.</string>
