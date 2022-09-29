@@ -32,6 +32,7 @@ import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.AttachmentManager;
 import org.thoughtcrime.securesms.permissions.Permissions;
+import org.thoughtcrime.securesms.qr.QrCodeHandler;
 import org.thoughtcrime.securesms.qr.RegistrationQrActivity;
 import org.thoughtcrime.securesms.service.GenericForegroundService;
 import org.thoughtcrime.securesms.service.NotificationController;
@@ -50,6 +51,8 @@ import java.io.OutputStream;
 
 public class WelcomeActivity extends BaseActionBarActivity implements DcEventCenter.DcEventDelegate {
     public static final String QR_ACCOUNT_EXTRA = "qr_account_extra";
+    private static final String DCACCOUNT = "dcaccount";
+    private static final String DCLOGIN = "dclogin";
     public static final int PICK_BACKUP = 20574;
     private final static String TAG = WelcomeActivity.class.getSimpleName();
     public static final String TMP_BACKUP_FILE = "tmp-backup-file";
@@ -87,6 +90,8 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
           intent.setAction(DC_REQUEST_ACCOUNT_DATA);
           sendBroadcast(intent);
         }
+
+        handleIntent();
     }
 
     private void registerForEvents() {
@@ -94,6 +99,25 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
         DcEventCenter eventCenter = DcHelper.getEventCenter(this);
         eventCenter.addObserver(DcContext.DC_EVENT_CONFIGURE_PROGRESS, this);
         eventCenter.addObserver(DcContext.DC_EVENT_IMEX_PROGRESS, this);
+    }
+
+    private void handleIntent() {
+        if (getIntent() != null && Intent.ACTION_VIEW.equals(getIntent().getAction())) {
+            Uri uri = getIntent().getData();
+            if (uri == null) return;
+
+            if (uri.getScheme().equalsIgnoreCase(DCACCOUNT) || uri.getScheme().equalsIgnoreCase(DCLOGIN)) {
+                QrCodeHandler qrCodeHandler = new QrCodeHandler(this);
+                qrCodeHandler.handleQrData(uri.toString());
+            }
+        }
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
+        handleIntent();
     }
 
     @Override
@@ -382,6 +406,16 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
             String qrRaw = scanResult.getContents();
             DcLot qrParsed = dcContext.checkQr(qrRaw);
             switch (qrParsed.getState()) {
+                case DcContext.DC_QR_LOGIN:
+                    String address = qrParsed.getText1();
+                    new AlertDialog.Builder(this)
+                            .setMessage(getString(R.string.qrlogin_ask_login, address))
+                            .setPositiveButton(R.string.ok, (dialog, which) -> startQrAccountCreation(qrRaw))
+                            .setNegativeButton(R.string.cancel, null)
+                            .setCancelable(false)
+                            .show();
+                    break;
+
                 case DcContext.DC_QR_ACCOUNT:
                     String domain = qrParsed.getText1();
                     new AlertDialog.Builder(this)
