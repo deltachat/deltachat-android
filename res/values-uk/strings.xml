@@ -171,6 +171,11 @@
     <string name="images_and_videos">Зображення та відео</string>
     <string name="file">Файл</string>
     <string name="files">Файли</string>
+    <!-- "Private App" is used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
+    <string name="webxdc_app">Приватний застосунок</string>
+    <!-- plural of "Private App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
+    <string name="webxdc_apps">Приватні застосунки</string>
+    <string name="files_and_webxdx_apps">Файли і приватні застосунки</string>
     <string name="unknown">Невідомо</string>
 
     <string name="green">Зелений</string>
@@ -475,6 +480,7 @@
     <string name="tab_image_empty_hint">Зображення, якими поділилися у цьому чаті, будуть відображатися тут.</string>
     <string name="tab_video_empty_hint">Відео, якими поділилися у цьому чаті, будуть відображатися тут.</string>
     <string name="tab_audio_empty_hint">Аудіозаписи та голосові повідомлення, якими поділилися у цьому чаті, будуть відображатися тут.</string>
+    <string name="tab_webxdc_empty_hint">Приватні застосунки, якими поділилися у цьому чаті, будуть відображатися тут.</string>
     <string name="media_preview">Попередній перегляд медіа</string>
     <string name="send_message">Надіслати повідомлення</string>
     <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
@@ -1051,6 +1057,11 @@
     <string name="notifications_avg_minutes">В середньому %1$d хвилин</string>
     <string name="notifications_avg_hours">В середньому %1$d годин</string>
     <string name="last_check_at">Перевірено о %1$s</string>
+    <!-- iOS webxdc selector -->
+    <string name="webxdc_selector_empty_hint">Приватні застосунки, отримані або надіслані у цьому чаті, будуть відображатися тут. \"Файли\" відображають щойно завантажені приватні застосунки.</string>
+    <!-- iOS webxdc shortcut page -->
+    <string name="shortcut_step1_tap_share_btn">Натисніть кнопку поділитися</string>
+    <string name="shortcut_step2_tap_add_to_home_screen">Виберіть «Додати на головний екран», щоб додати застосунок на головний екран.</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat використовує вашу камеру для знімання та надсилання фото та відео, а також для сканування QR-кодів.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat використовує ваші контакти аби показати список адрес ел.пошти на які ви можете написати. Delta Chat не має сервера, тож ваші контакти нікуди не надсилаються.</string>

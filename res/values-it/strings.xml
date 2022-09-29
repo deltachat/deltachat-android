@@ -167,7 +167,7 @@
     <string name="webxdc_app">App Privata</string>
     <!-- plural of "Private App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_apps">App Private</string>
-    <string name="files_and_webxdx_apps">File e App Private</string>
+    <string name="files_and_webxdx_apps">Files e App Private</string>
     <string name="unknown">Sconosciuto</string>
 
     <string name="green">Verde</string>
@@ -461,10 +461,10 @@
     <string name="tab_links">Collegamenti</string>
     <string name="tab_map">Mappa</string>
     <string name="tab_gallery_empty_hint">Immagini e video condivisi in questa chat vengono mostrati qui.</string>
-    <string name="tab_docs_empty_hint">Documenti, musica e altri file condivisi in questa chat vengono mostrati qui.</string>
+    <string name="tab_docs_empty_hint">Documenti, musica e altri files condivisi in questa chat vengono mostrati qui.</string>
     <string name="tab_image_empty_hint">Le immagini condivise in questa chat saranno visualizzate qui.</string>
     <string name="tab_video_empty_hint">I video condivisi in questa chat saranno visualizzati qui.</string>
-    <string name="tab_audio_empty_hint">I File Audio e i Messaggi Vocali condivisi in questa chat saranno visualizzati qui.</string>
+    <string name="tab_audio_empty_hint">I Files Audio e i Messaggi Vocali condivisi in questa chat saranno visualizzati qui.</string>
     <string name="tab_webxdc_empty_hint">Le app private condivise in questa chat verranno visualizzate qui.</string>
     <string name="media_preview">Anteprima dei Media</string>
     <string name="send_message">Invia Messaggio</string>
@@ -558,8 +558,8 @@
     <!-- share and forward messages -->
     <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">Inotra a…</string>
-    <string name="share_multiple_attachments">Invia %1$d file alla chat selezionata?\n\nI file vengono inviati non modificati nella loro dimensione originale, ad es. immagini e video non vengono ricodificati.</string>
-    <string name="share_multiple_attachments_multiple_chats">Invia %1$d file(s) a %2$d chat?\n\nI file vengono inviati non modificati nella loro dimensione originale, ad es. immagini e video non vengono ricodificati.</string>
+    <string name="share_multiple_attachments">Invia %1$d files alla chat selezionata?\n\nI files vengono inviati non modificati nella loro dimensione originale (ad es. immagini e video non vengono ricodificati).</string>
+    <string name="share_multiple_attachments_multiple_chats">Invia %1$d file(s) a %2$d chat?\n\nI files vengono inviati non modificati nella loro dimensione originale (ad es. immagini e video non vengono ricodificat)i.</string>
     <string name="share_text_multiple_chats">Invia questo testo alle %1$d chat?\n\n\"%2$s\"</string>
     <string name="share_abort">Condivisione annullata per permessi mancanti.</string>
 
@@ -926,7 +926,7 @@
     <string name="perm_continue">Continua</string>
     <string name="perm_explain_access_to_camera_denied">Delta Chat richiede l\'autorizzazione per scattare foto e video, ma è stata bloccata permanentemente. Vai nelle impostazioni delle App, seleziona \"Autorizzazioni\" e abilita \"Fotocamera\".</string>
     <string name="perm_explain_access_to_mic_denied">Delta Chat richiede l\'autorizzazione inviare messaggi audio, ma è stata bloccata permanentemente. Vai nelle impostazioni delle App, seleziona \"Autorizzazioni\" e abilita \"Microfono\".</string>
-    <string name="perm_explain_access_to_storage_denied">Delta Chat richiede l\'autorizzazione per creare allegati, esportare foto, video e audio, ma è stata bloccata permanentemente. Vai nelle impostazioni delle App, seleziona \"Autorizzazioni\" e abilita \"Archiviazione\".</string>
+    <string name="perm_explain_access_to_storage_denied">Per ricevere o inviare files, vai alle impostazioni dell\'app, seleziona \"Autorizzazioni\" e abilita \"Archiviazione\".</string>
     <string name="perm_explain_access_to_location_denied">Delta Chat richiede l\'autorizzazione per allegare la posizione, ma è stata bloccata permanentemente. Vai nelle impostazioni delle App, seleziona \"Autorizzazioni\" e abilita \"Posizione\".</string>
 
     <!-- ImageEditorHud -->
@@ -1042,6 +1042,11 @@
     <string name="notifications_avg_minutes">In media ogni %1$d minuti</string>
     <string name="notifications_avg_hours">In media ogni %1$d ore</string>
     <string name="last_check_at">Controllato a %1$s</string>
+    <!-- iOS webxdc selector -->
+    <string name="webxdc_selector_empty_hint">Le app private ricevute o inviate in qualsiasi chat appariranno qui. \"Files\" mostra le app private appena scaricate.</string>
+    <!-- iOS webxdc shortcut page -->
+    <string name="shortcut_step1_tap_share_btn">Fare clic sul pulsante condividi</string>
+    <string name="shortcut_step2_tap_add_to_home_screen">Seleziona \"Aggiungi alla schermata iniziale\" per aggiungere l\'app alla schermata iniziale.</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat utilizza la fotocamera per scattare e inviare foto e video e per scansionare i codici QR.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat usa i tuoi contatti per mostrare una lista di indirizzi e-mail a cui puoi scrivere. Delta Chat non ha un server, i tuoi contatti non vengono inviati da nessuna parte.</string>

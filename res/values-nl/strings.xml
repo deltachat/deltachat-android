@@ -1027,6 +1027,11 @@
     <string name="notifications_avg_minutes">Gemiddeld elke %1$d minuten</string>
     <string name="notifications_avg_hours">Gemiddeld elke %1$d uur</string>
     <string name="last_check_at">Gecontroleerd om %1$s</string>
+    <!-- iOS webxdc selector -->
+    <string name="webxdc_selector_empty_hint">Privéapps die je verstuurt of ontvangt worden hier getoond. Bij de bestanden zie je de zojuist gedownloade apps.</string>
+    <!-- iOS webxdc shortcut page -->
+    <string name="shortcut_step1_tap_share_btn">Druk op de deelknop</string>
+    <string name="shortcut_step2_tap_add_to_home_screen">Kies ‘Toevoegen aan startscherm’ om de app in kwestie toe te voegen aan je startscherm.</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Geef Delta Chat toegang tot je camera om foto\'s en video\'s te maken en QR-codes te scannen.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Geef Delta Chat toegang tot je adresboek om gesprekken te voeren met contactpersonen. Delta Chat heeft geen servers, dus ze worden niet aan ons opgestuurd.</string>

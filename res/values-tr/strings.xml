@@ -207,7 +207,7 @@
     <string name="ask_delete_named_chat">\"%1$s\" sohbetini silmek istediğinizden emin misiniz?</string>
     <string name="menu_delete_messages">İletileri Sil</string>
     <string name="delete_contact">Kişiyi Sil</string>
-    <string name="menu_delete_location">Bu Konumu Sil?</string>
+    <string name="menu_delete_location">Bu Konumu Sil</string>
     <string name="menu_message_details">İleti Ayrıntıları</string>
     <string name="menu_copy_to_clipboard">Panoya Kopyala</string>
     <string name="menu_copy_selection_to_clipboard">Seçimi Kopyala</string>
@@ -743,25 +743,25 @@
     <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_disabled">Kaybolan iletiler zamanlayıcısı etkisizleştirildi.</string>
     <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_enabled">Kaybolan iletiler zamanlayıcısı %1$s s\'ye ayarlandı.</string>
+    <string name="systemmsg_ephemeral_timer_enabled">Kaybolan iletiler zamanlayıcısı %1$s sn olarak ayarlandı.</string>
     <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_minute">Kaybolan iletiler zamanlayıcısı 1 dakikaya ayarlandı.</string>
+    <string name="systemmsg_ephemeral_timer_minute">Kaybolan iletiler zamanlayıcısı 1 dakika olarak ayarlandı.</string>
     <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_hour">Kaybolan iletiler zamanlayıcısı 1 saate ayarlandı.</string>
+    <string name="systemmsg_ephemeral_timer_hour">Kaybolan iletiler zamanlayıcısı 1 saat olarak ayarlandı.</string>
     <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_day">Kaybolan iletiler zamanlayıcısı 1 güne ayarlandı.</string>
+    <string name="systemmsg_ephemeral_timer_day">Kaybolan iletiler zamanlayıcısı 1 gün olarak ayarlandı.</string>
     <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_week">Kaybolan iletiler zamanlayıcısı 1 haftaya ayarlandı.</string>
+    <string name="systemmsg_ephemeral_timer_week">Kaybolan iletiler zamanlayıcısı 1 hafta olarak ayarlandı.</string>
     <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_four_weeks">Kaybolan iletiler zamanlayıcısı 4 haftaya ayarlandı.</string>
+    <string name="systemmsg_ephemeral_timer_four_weeks">Kaybolan iletiler zamanlayıcısı 4 hafta olarak ayarlandı.</string>
     <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_minutes">Kaybolan iletiler zamanlayıcısı %1$s dakikaya ayarlandı.</string>
+    <string name="systemmsg_ephemeral_timer_minutes">Kaybolan iletiler zamanlayıcısı %1$s dakika olarak ayarlandı.</string>
     <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_hours">Kaybolan iletiler zamanlayıcısı %1$s saate ayarlandı.</string>
+    <string name="systemmsg_ephemeral_timer_hours">Kaybolan iletiler zamanlayıcısı %1$s saat olarak ayarlandı.</string>
     <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_days">Kaybolan iletiler zamanlayıcısı %1$s güne ayarlandı.</string>
+    <string name="systemmsg_ephemeral_timer_days">Kaybolan iletiler zamanlayıcısı %1$s gün olarak ayarlandı.</string>
     <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_weeks">Kaybolan iletiler zamanlayıcısı %1$s haftaya ayarlandı.</string>
+    <string name="systemmsg_ephemeral_timer_weeks">Kaybolan iletiler zamanlayıcısı %1$s hafta olarak ayarlandı.</string>
     <!-- deprecated -->
     <string name="systemmsg_chat_protection_disabled">Sohbet koruması etkisizleştirildi.</string>
     <!-- deprecated -->
@@ -770,68 +770,68 @@
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
     <string name="group_name_changed_by_you">\"%1$s\" grup adını \"%2$s\" olarak değiştirdiniz.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
-    <string name="group_name_changed_by_other">\"%1$s\" grup adı %3$s tarafından \"%2$s\" olarak değiştirildi.</string>
+    <string name="group_name_changed_by_other">%3$s tarafından \"%1$s\" grup adı \"%2$s\" olarak değiştirildi.</string>
     <string name="group_image_changed_by_you">Grup görselini değiştirdiniz.</string>
     <!-- %1$s will be replaced by name and address of the contact who did the action -->
-    <string name="group_image_changed_by_other">Grup görseli %1$s tarafından değiştirildi.</string>
+    <string name="group_image_changed_by_other">%1$s tarafından grup görseli değiştirildi.</string>
     <!-- %1$s will be replaced by name and address of the contact added to the group -->
     <string name="add_member_by_you">%1$s üyesini eklediniz.</string>
     <!-- %1$s will be replaced by name and address of the contact added to the group, %2$s will be replaced by name and address of the contact who did the action -->
-    <string name="add_member_by_other">%1$s üyesi %2$s tarafından eklendi.</string>
+    <string name="add_member_by_other">%2$s tarafından %1$s üyesi eklendi.</string>
     <!-- %1$s will be replaced by name and address of the contact removed from the group -->
     <string name="remove_member_by_you">%1$s üyesini kaldırdınız.</string>
     <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
-    <string name="remove_member_by_other">%1$s üyesi %2$s tarafından kaldırıldı.</string>
+    <string name="remove_member_by_other">%2$s tarafından %1$s üyesi kaldırıldı.</string>
     <string name="group_left_by_you">Gruptan ayrıldınız.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
     <string name="group_left_by_other">%1$s tarafından gruptan ayrılındı.</string>
     <string name="group_image_deleted_by_you">Grup görselini sildiniz.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="group_image_deleted_by_other">Grup görseli %1$s tarafından silindi.</string>
+    <string name="group_image_deleted_by_other">%1$s tarafından grup görseli silindi.</string>
     <string name="location_enabled_by_you">Konum akışını etkinleştirdiniz.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="location_enabled_by_other">Konum akışı %1$s tarafından etkinleştirildi.</string>
+    <string name="location_enabled_by_other">%1$s tarafından konum akışı etkinleştirildi.</string>
     <string name="ephemeral_timer_disabled_by_you">Kaybolan iletiler zamanlayıcısını etkisizleştirdiniz.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="ephemeral_timer_disabled_by_other">Kaybolan iletiler zamanlayıcısı %1$s tarafından etkisizleştirildi.</string>
+    <string name="ephemeral_timer_disabled_by_other">%1$s tarafından kaybolan iletiler zamanlayıcısı etkisizleştirildi.</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to -->
-    <string name="ephemeral_timer_seconds_by_you">Kaybolan iletiler zamanlayıcısını %1$s s\'ye ayarladınız.</string>
+    <string name="ephemeral_timer_seconds_by_you">Kaybolan iletiler zamanlayıcısını %1$s sn olarak ayarladınız.</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
-    <string name="ephemeral_timer_seconds_by_other">Kaybolan iletiler zamanlayıcısı %2$s tarafından %1$s s\'ye ayarlandı.</string>
-    <string name="ephemeral_timer_1_minute_by_you">Kaybolan iletiler zamanlayıcısını 1 dakikaya ayarladınız.</string>
+    <string name="ephemeral_timer_seconds_by_other">%2$s tarafından kaybolan iletiler zamanlayıcısı %1$s sn olarak ayarlandı.</string>
+    <string name="ephemeral_timer_1_minute_by_you">Kaybolan iletiler zamanlayıcısını 1 dakika olarak ayarladınız.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="ephemeral_timer_1_minute_by_other">Kaybolan iletiler zamanlayıcısı %1$s tarafından 1 dakikaya ayarlandı.</string>
-    <string name="ephemeral_timer_1_hour_by_you">Kaybolan iletiler zamanlayıcısını 1 saate ayarladınız.</string>
+    <string name="ephemeral_timer_1_minute_by_other">%1$s tarafından kaybolan iletiler zamanlayıcısı 1 dakika olarak ayarlandı.</string>
+    <string name="ephemeral_timer_1_hour_by_you">Kaybolan iletiler zamanlayıcısını 1 saat olarak ayarladınız.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="ephemeral_timer_1_hour_by_other">Kaybolan iletiler zamanlayıcısı %1$s tarafından 1 saate ayarlandı.</string>
-    <string name="ephemeral_timer_1_day_by_you">Kaybolan iletiler zamanlayıcısını 1 güne ayarladınız.</string>
+    <string name="ephemeral_timer_1_hour_by_other">%1$s tarafından kaybolan iletiler zamanlayıcısı 1 saat olarak ayarlandı.</string>
+    <string name="ephemeral_timer_1_day_by_you">Kaybolan iletiler zamanlayıcısını 1 gün olarak ayarladınız.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="ephemeral_timer_1_day_by_other">Kaybolan iletiler zamanlayıcısı %1$s tarafından 1 güne ayarlandı.</string>
-    <string name="ephemeral_timer_1_week_by_you">Kaybolan iletiler zamanlayıcısını 1 haftaya ayarladınız.</string>
+    <string name="ephemeral_timer_1_day_by_other">%1$s tarafından kaybolan iletiler zamanlayıcısı 1 gün olarak ayarlandı.</string>
+    <string name="ephemeral_timer_1_week_by_you">Kaybolan iletiler zamanlayıcısını 1 hafta olarak ayarladınız.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="ephemeral_timer_1_week_by_other">Kaybolan iletiler zamanlayıcısı %1$s tarafından 1 haftaya ayarlandı.</string>
+    <string name="ephemeral_timer_1_week_by_other">%1$s tarafından kaybolan iletiler zamanlayıcısı 1 gün olarak ayarlandı.</string>
     <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to -->
-    <string name="ephemeral_timer_minutes_by_you">Kaybolan iletiler zamanlayıcısını %1$s dakikaya ayarladınız.</string>
+    <string name="ephemeral_timer_minutes_by_you">Kaybolan iletiler zamanlayıcısını %1$s dakika olarak ayarladınız.</string>
     <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
-    <string name="ephemeral_timer_minutes_by_other">Kaybolan iletiler zamanlayıcısı %2$s tarafından %1$s dakikaya ayarlandı.</string>
+    <string name="ephemeral_timer_minutes_by_other">%2$s tarafından kaybolan iletiler zamanlayıcısı %1$s dakika olarak ayarlandı.</string>
     <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to -->
-    <string name="ephemeral_timer_hours_by_you">Kaybolan iletiler zamanlayıcısını %1$s saate ayarladınız.</string>
+    <string name="ephemeral_timer_hours_by_you">Kaybolan iletiler zamanlayıcısını %1$s saat olarak ayarladınız.</string>
     <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
-    <string name="ephemeral_timer_hours_by_other">Kaybolan iletiler zamanlayıcısı %2$s tarafından %1$s saate ayarlandı.</string>
+    <string name="ephemeral_timer_hours_by_other">%2$s tarafından kaybolan iletiler zamanlayıcısı %1$s saat olarak ayarlandı.</string>
     <!-- %1$s will be replaced by the number of days (always >1) the timer is set to -->
-    <string name="ephemeral_timer_days_by_you">Kaybolan iletiler zamanlayıcısını %1$s güne ayarladınız.</string>
+    <string name="ephemeral_timer_days_by_you">Kaybolan iletiler zamanlayıcısını %1$s gün olarak ayarladınız.</string>
     <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
-    <string name="ephemeral_timer_days_by_other">Kaybolan iletiler zamanlayıcısı %2$s tarafından %1$s güne ayarlandı.</string>
+    <string name="ephemeral_timer_days_by_other">%2$s tarafından kaybolan iletiler zamanlayıcısı %1$s gün olarak ayarlandı.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to -->
-    <string name="ephemeral_timer_weeks_by_you">Kaybolan iletiler zamanlayıcısını %1$s haftaya ayarladınız.</string>
+    <string name="ephemeral_timer_weeks_by_you">Kaybolan iletiler zamanlayıcısını %1$s hafta olarak ayarladınız.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
-    <string name="ephemeral_timer_weeks_by_other">Kaybolan iletiler zamanlayıcısı %2$s tarafından %1$s haftaya ayarlandı.</string>
+    <string name="ephemeral_timer_weeks_by_other">%2$s tarafından kaybolan iletiler zamanlayıcısı %1$s hafta olarak ayarlandı.</string>
     <string name="protection_enabled_by_you">Sohbet korumasını etkinleştirdiniz.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="protection_enabled_by_other">Sohbet koruması %1$s tarafından etkinleştirildi.</string>
+    <string name="protection_enabled_by_other">%1$s tarafından sohbet koruması etkinleştirildi.</string>
     <string name="protection_disabled_by_you">Sohbet korumasını etkisizleştirdiniz.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="protection_disabled_by_other">Sohbet koruması %1$s tarafından etkisizleştirildi.</string>
+    <string name="protection_disabled_by_other">%1$s tarafından sohbet koruması etkisizleştirildi.</string>
 
     <string name="devicemsg_self_deleted">\"Kaydedilen iletiler\" sohbetini sildiniz.\n\nℹ️ \"Kaydedilen iletiler\" özelliğini yeniden kullanmak için kendinizle yeni bir sohbet oluşturun.</string>
     <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
