@@ -126,7 +126,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
         String qrAccount = getIntent().getStringExtra(QR_ACCOUNT_EXTRA);
         if (qrAccount!=null) {
             manualConfigure = false;
-            startQrAccountOrQrLoginCreation(qrAccount);
+            startQrAccountCreation(qrAccount);
         }
     }
 
@@ -280,7 +280,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
         }
     }
 
-    private void startQrAccountOrQrLoginCreation(String qrCode)
+    private void startQrAccountCreation(String qrCode)
     {
         if (progressDialog!=null) {
             progressDialog.dismiss();
@@ -410,7 +410,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
                     String address = qrParsed.getText1();
                     new AlertDialog.Builder(this)
                             .setMessage(getString(R.string.qrlogin_ask_login, address))
-                            .setPositiveButton(R.string.ok, (dialog, which) -> startQrAccountOrQrLoginCreation(qrRaw))
+                            .setPositiveButton(R.string.ok, (dialog, which) -> startQrAccountCreation(qrRaw))
                             .setNegativeButton(R.string.cancel, null)
                             .setCancelable(false)
                             .show();
@@ -420,7 +420,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
                     String domain = qrParsed.getText1();
                     new AlertDialog.Builder(this)
                             .setMessage(getString(R.string.qraccount_ask_create_and_login, domain))
-                            .setPositiveButton(R.string.ok, (dialog, which) -> startQrAccountOrQrLoginCreation(qrRaw))
+                            .setPositiveButton(R.string.ok, (dialog, which) -> startQrAccountCreation(qrRaw))
                             .setNegativeButton(R.string.cancel, null)
                             .setCancelable(false)
                             .show();
