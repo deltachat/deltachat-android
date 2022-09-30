@@ -1014,6 +1014,5 @@
 
 
     <!-- device messages for updates -->
-    <string name="update_1_30">Faster. More stable.\n\nFor 1.30 releases, we focused on speed and reliability, fixing dozens of bugs. Check our changelogs if your favorite one is fixed: https://get.delta.chat/#changelogs 🚀</string>
 
 </resources>
