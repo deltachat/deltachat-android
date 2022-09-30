@@ -342,6 +342,21 @@
     <string name="systemmsg_action_by_me">%1$s por mim.</string>
     <!-- deprecated -->
     <string name="systemmsg_action_by_user">%1$s por %2$s.</string>
+    <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
+    <string name="group_name_changed_by_you">O nome do grupo mudou de \"%1$s\" para \"%2$s\" por mim.</string>
+    <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
+    <string name="group_name_changed_by_other">O nome do grupo mudou de \"%1$s\" para \"%2$s\" por %3$s.</string>
+    <string name="group_image_changed_by_you">Imagem do grupo modificada por mim.</string>
+    <!-- %1$s will be replaced by name and address of the contact who did the action -->
+    <string name="group_image_changed_by_other">Imagem do grupo modificada por %1$s.</string>
+    <!-- %1$s will be replaced by name and address of the contact added to the group -->
+    <string name="add_member_by_you">Membro %1$s adicionado por mim.</string>
+    <!-- %1$s will be replaced by name and address of the contact added to the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <string name="add_member_by_other">Membro %1$s adicionado por %2$s.</string>
+    <!-- %1$s will be replaced by name and address of the contact removed from the group -->
+    <string name="remove_member_by_you">Membro %1$s removido por mim.</string>
+    <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <string name="remove_member_by_other">Membro %1$s removido por %2$s.</string>
     <string name="qrscan_title">Fazer scan do código QR</string>
     <string name="qrscan_hint">Coloque sua câmera sobre o código QR</string>
     <string name="qrscan_ask_join_group">Quer se juntar-se ao grupo \"%1$s\"?</string>

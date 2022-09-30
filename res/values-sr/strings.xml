@@ -310,6 +310,21 @@
     <string name="systemmsg_action_by_me">%1$s од мене.</string>
     <!-- deprecated -->
     <string name="systemmsg_action_by_user">%1$s од стране %2$s.</string>
+    <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
+    <string name="group_name_changed_by_you">Назив групе је измењен из „%1$s“ у „%2$s“ од мене.</string>
+    <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
+    <string name="group_name_changed_by_other">Назив групе је измењен из „%1$s“ у „%2$s“ од стране %3$s.</string>
+    <string name="group_image_changed_by_you">Слика групе је промењена од мене.</string>
+    <!-- %1$s will be replaced by name and address of the contact who did the action -->
+    <string name="group_image_changed_by_other">Слика групе је промењена од стране %1$s.</string>
+    <!-- %1$s will be replaced by name and address of the contact added to the group -->
+    <string name="add_member_by_you">Члан %1$s је додат од мене.</string>
+    <!-- %1$s will be replaced by name and address of the contact added to the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <string name="add_member_by_other">Члан %1$s је додат од стране %2$s.</string>
+    <!-- %1$s will be replaced by name and address of the contact removed from the group -->
+    <string name="remove_member_by_you">Члан %1$s је уклоњен од мене.</string>
+    <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <string name="remove_member_by_other">Члан %1$s је уклоњен од стране %2$s.</string>
     <!-- qr code stuff -->
     <string name="qr_code">Бар-кôд</string>
     <string name="qrscan_title">Очитај бар-кôд</string>

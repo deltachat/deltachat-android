@@ -736,7 +736,7 @@
     <!-- deprecated -->
     <string name="systemmsg_action_by_me">%1$s mnou.</string>
     <!-- deprecated -->
-    <string name="systemmsg_action_by_user">%1$sod%2$s.</string>
+    <string name="systemmsg_action_by_user">%1$s od %2$s.</string>
     <string name="systemmsg_unknown_sender_for_chat">Neznámy odosielateľ pre túto konverzáciu. Ďalšie informácie nájdete v časti „Informácie“.</string>
     <string name="systemmsg_subject_for_new_contact">Správa od %1$s</string>
     <string name="systemmsg_failed_sending_to">Správu sa nepodarilo odoslať %1$s .</string>
@@ -767,6 +767,63 @@
     <string name="systemmsg_chat_protection_disabled">Ochrana konverzácií je vypnutá.</string>
     <!-- deprecated -->
     <string name="systemmsg_chat_protection_enabled">Ochrana konverzácií je zapnutá.</string>
+
+    <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
+    <string name="group_name_changed_by_you">Názov skupiny sa zmenil z „%1$s“ na „%2$s“ mnou.</string>
+    <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
+    <string name="group_name_changed_by_other">Názov skupiny sa zmenil z „%1$s“ na „%2$s“ od %3$s.</string>
+    <string name="group_image_changed_by_you">Skupinový obrázok sa zmenil mnou.</string>
+    <!-- %1$s will be replaced by name and address of the contact who did the action -->
+    <string name="group_image_changed_by_other">Skupinový obrázok sa zmenil od %1$s.</string>
+    <!-- %1$s will be replaced by name and address of the contact added to the group -->
+    <string name="add_member_by_you">Člen %1$s pridaný mnou.</string>
+    <!-- %1$s will be replaced by name and address of the contact added to the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <string name="add_member_by_other">Člen %1$s pridaný od %2$s.</string>
+    <!-- %1$s will be replaced by name and address of the contact removed from the group -->
+    <string name="remove_member_by_you">Člen %1$s bol odstránený mnou.</string>
+    <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <string name="remove_member_by_other">Člen %1$s bol odstránený od %2$s.</string>
+    <string name="ephemeral_timer_disabled_by_you">Časovač zmiznutia správ je deaktivovaný mnou.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_disabled_by_other">Časovač zmiznutia správ je deaktivovaný od %1$s.</string>
+    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to -->
+    <string name="ephemeral_timer_seconds_by_you">Časovač zmiznutia správ nastavený na %1$s s mnou.</string>
+    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_seconds_by_other">Časovač zmiznutia správ nastavený na %1$s s od %2$s.</string>
+    <string name="ephemeral_timer_1_minute_by_you">Časovač zmiznutia správ bol nastavený na 1 minútu mnou.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_1_minute_by_other">Časovač zmiznutia správ bol nastavený na 1 minútu od %1$s.</string>
+    <string name="ephemeral_timer_1_hour_by_you">Časovač zmiznutia správ bol nastavený na 1 hodinu mnou.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_1_hour_by_other">Časovač zmiznutia správ bol nastavený na 1 hodinu od %1$s.</string>
+    <string name="ephemeral_timer_1_day_by_you">Časovač zmiznutia správ nastavený na 1 deň mnou.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_1_day_by_other">Časovač zmiznutia správ nastavený na 1 deň od %1$s.</string>
+    <string name="ephemeral_timer_1_week_by_you">Časovač zmiznutia správ nastavený na 1 týždeň mnou.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_1_week_by_other">Časovač zmiznutia správ nastavený na 1 týždeň od %1$s.</string>
+    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to -->
+    <string name="ephemeral_timer_minutes_by_you">Časovač zmiznutia správ bol nastavený na %1$s minúty mnou.</string>
+    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_minutes_by_other">Časovač zmiznutia správ bol nastavený na %1$s minúty od %2$s.</string>
+    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to -->
+    <string name="ephemeral_timer_hours_by_you">Časovač zmiznutia správ bol nastavený na %1$s hodiny mnou.</string>
+    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_hours_by_other">Časovač zmiznutia správ bol nastavený na %1$s hodiny od %2$s.</string>
+    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to -->
+    <string name="ephemeral_timer_days_by_you">Časovač zmiznutia správ nastavený na %1$s dni mnou.</string>
+    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_days_by_other">Časovač zmiznutia správ nastavený na %1$s dni od %2$s.</string>
+    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to -->
+    <string name="ephemeral_timer_weeks_by_you">Časovač zmiznutia správ nastavený na %1$s týždne mnou.</string>
+    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_weeks_by_other">Časovač zmiznutia správ nastavený na %1$s týždne od %2$s.</string>
+    <string name="protection_enabled_by_you">Ochrana konverzácií je zapnutá mnou.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="protection_enabled_by_other">Ochrana konverzácií je zapnutá od %1$s.</string>
+    <string name="protection_disabled_by_you">Ochrana konverzácií je vypnutá mnou.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="protection_disabled_by_other">Ochrana konverzácií je vypnutá od %1$s.</string>
 
     <string name="devicemsg_self_deleted">Odstránili ste konverzáciu \"Uložené správy\".\n\nℹ️ Aby ste využili funkciu \"Uložené správy\" znova, vytvorte novú konverzáciu so sebou.</string>
     <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
