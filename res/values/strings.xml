@@ -751,9 +751,9 @@
     <!-- %1$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_disabled_by_other">Disappearing messages timer disabled by %1$s.</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to -->
-    <string name="ephemeral_timer_seconds_by_you">You set disappearing messages timer to %1$s s</string>
+    <string name="ephemeral_timer_seconds_by_you">You set disappearing messages timer to %1$s seconds</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
-    <string name="ephemeral_timer_seconds_by_other">Disappearing messages timer set to %1$s s by %2$s.</string>
+    <string name="ephemeral_timer_seconds_by_other">Disappearing messages timer set to %1$s seconds by %2$s.</string>
     <string name="ephemeral_timer_1_minute_by_you">You set disappearing messages timer to 1 minute.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_1_minute_by_other">Disappearing messages timer set to 1 minute by %1$s.</string>

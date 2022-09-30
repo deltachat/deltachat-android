@@ -751,9 +751,9 @@
     <!-- %1$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_disabled_by_other">Verschwindende Nachrichten ausgeschaltet von %1$s.</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to -->
-    <string name="ephemeral_timer_seconds_by_you">Sie haben die Ablaufzeit verschwindender Nachrichten auf %1$s s gesetzt.</string>
+    <string name="ephemeral_timer_seconds_by_you">Sie haben die Ablaufzeit verschwindender Nachrichten auf %1$s Sekunden gesetzt.</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
-    <string name="ephemeral_timer_seconds_by_other">Ablaufzeit verschwindender Nachrichten auf %1$s s gesetzt von %2$s.</string>
+    <string name="ephemeral_timer_seconds_by_other">Ablaufzeit verschwindender Nachrichten auf %1$s Sekunden gesetzt von %2$s.</string>
     <string name="ephemeral_timer_1_minute_by_you">Sie haben die Ablaufzeit verschwindender Nachrichten auf 1 Minute gesetzt.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_1_minute_by_other">Ablaufzeit verschwindender Nachrichten auf 1 MInute gesetzt von %1$s.</string>
