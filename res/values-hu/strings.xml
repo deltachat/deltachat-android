@@ -267,16 +267,6 @@
     <string name="pref_background_btn_gallery">Galériából</string>
     <string name="pref_show_emails_all">Mind</string>
     <string name="autocrypt_continue_transfer_retry">Újra</string>
-    <!-- deprecated -->
-    <string name="systemmsg_group_image_changed">A csoportkép megváltozott.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_group_image_deleted">A csoportkép törölve.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_member_added">%1$s hozzáadva a csoporthoz.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_member_removed">%1$s eltávolítva a csoportból.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_group_left">Kiléptél a csoportból.</string>
     <!-- qr code stuff -->
     <string name="qr_code">QR-kód</string>
     <string name="qrscan_title">QR-kód olvasása</string>
@@ -321,4 +311,6 @@
     <string name="export_backup_desktop">Biztonsági mentés exportálása</string>
     <string name="menu.view.developer.open.log.folder">Naplófájlok könyvtárának megnyitása</string>
     <string name="menu.view.developer.open.current.log.file">Jelenlegi naplófájl megnyitása</string>
-    </resources>
+    <!-- device messages for updates -->
+
+</resources>

@@ -583,25 +583,9 @@
 
 
     <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_group_name_changed">Nom del grup \"%1$s\" canviat a \"%2$s\".</string>
-    <!-- deprecated -->
-    <string name="systemmsg_group_image_changed">Imatge de grup canviada.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_group_image_deleted">Imatge de grup eliminada.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_member_added">Membre %1$s afegit.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_member_removed">Membre %1$s eliminat.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_group_left">Deixa el grup.</string>
     <string name="systemmsg_read_receipt_subject">Confirmació de lectura</string>
     <string name="systemmsg_read_receipt_body">Confirmació de lectura del missatge \"%1$s\".\n\nVol dir que el missatge s\'ha mostrat al dispositiu del receptor, no necessàriament que s\'hagi llegit.</string>
     <string name="systemmsg_cannot_decrypt">Aquest missatge no es pot desxifrar.\n\n• Proveu de respondre\'l i demanar-li al remitent que us el torni a enviar.\n\n• Si heu reinstal·lat Delta Chat o un altre gestor de correu en aquest dispositiu o en algun altre, proveu d\'enviar un missatge de configuració Autocrypt des d\'allà.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_action_by_me">%1$s per mi.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_action_by_user">%1$s per %2$s.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
     <string name="group_name_changed_by_you">Nom del grup \"%1$s\" canviat a \"%2$s\" per mi.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
@@ -705,4 +689,6 @@
     <string name="menu.view.developer.open.log.folder">Obre la carpeta de registre</string>
     <string name="menu.view.developer.open.current.log.file">Obre el fitxer de registre actual</string>
     <string name="perm_enable_bg_reminder_title">Prem aquí per rebre missatges mentre Delta Chat és en segon pla.</string>
-    </resources>
+    <!-- device messages for updates -->
+
+</resources>

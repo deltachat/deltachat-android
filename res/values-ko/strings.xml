@@ -423,37 +423,8 @@
     <!-- autocrypt -->
     <string name="autocrypt">자동암호화</string>
     <string name="autocrypt_send_asm_title">자동 암호화 설정된 메시지 전송</string>
-    <!-- deprecated -->
-    <string name="systemmsg_group_image_changed">그룹 이미지 변경</string>
-    <!-- deprecated -->
-    <string name="systemmsg_group_image_deleted">그룹 이미지 삭제</string>
-    <!-- deprecated -->
-    <string name="systemmsg_group_left">그룹이 남았습니다.</string>
     <string name="systemmsg_unknown_sender_for_chat">이 채팅의 발신자를 알 수 없습니다. 자세한 내용은 \'info\'를 확인하세요.</string>
     <string name="systemmsg_failed_sending_to">%1$s에게 메시지를 보내지 못했습니다.</string>
-
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_disabled">메시지 타이머를 사용할 수 없습니다.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_enabled">메시지 타이머가 %1$s초로 설정되었습니다.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_minute">메시지 타이머가 1분으로 설정되었습니다.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_hour">메시지 타이머가 1시간으로 설정되었습니다.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_day">메시지 타이머가 1일로 설정되었습니다.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_week">메시지 타이머가 1주로 설정되었습니다.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_four_weeks">메시지 타이머가 4주로 설정되었습니다.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_minutes">메시지 타이머가 %1$s분으로 설정되었습니다.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_hours">메시지 타이머가 %1$s시간으로 설정되었습니다.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_days">메시지 타이머가 %1$s일로 설정되었습니다.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_weeks">메시지 타이머가 %1$s주로 설정되었습니다.</string>
     <string name="qrscan_title">QR코드를 스캔하세요</string>
     <string name="qrscan_ask_join_group">\"%1$s\" 그룹에 참여하시겠습니까?</string>
     <string name="qrshow_join_contact_no_connection_toast">인터넷에 연결되어 있지 않아 QR 코드 설정을 수행할 수 없습니다.</string>
@@ -496,4 +467,6 @@
     <string name="select_group_image_desktop">그룹 이미지 선택</string>
     <string name="autocrypt_incorrect_desktop">잘못된 설정 코드입니다. 다시 시도하십시오.</string>
     <string name="create_chat_error_desktop">대화를 만들 수 없습니다.</string>
-    </resources>
+    <!-- device messages for updates -->
+
+</resources>

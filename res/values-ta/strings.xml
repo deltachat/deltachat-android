@@ -221,16 +221,6 @@
     <string name="pref_background">அரட்டை பின்புலம்</string>
     <string name="autocrypt_continue_transfer_please_enter_code">மற்ற சாதனத்தில் காணப்படும் அமைப்பு குறியீடை தயவு செய்து உள்ளீடவும்</string>
     <string name="autocrypt_continue_transfer_retry">மீண்டும் முயற்சி செய்யவும்</string>
-    <!-- deprecated -->
-    <string name="systemmsg_group_image_changed">குழு படம் மாற்றப்பட்டது.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_group_image_deleted">குழு படம் நீக்கப்பட்டது</string>
-    <!-- deprecated -->
-    <string name="systemmsg_member_added"> %1$s உறுப்பினராக சேர்க்கப்பட்டார்</string>
-    <!-- deprecated -->
-    <string name="systemmsg_member_removed">உறுப்பினர் %1$s நீக்கப்பட்டார்</string>
-    <!-- deprecated -->
-    <string name="systemmsg_group_left">குழுவில் இருந்து வெளியேறினது</string>
     <string name="qrscan_fingerprint_label">கைரேகைகள்</string>
     <string name="notify_reply_button">மறுமொழி</string>
     <string name="notify_new_message">புதிய செய்தி</string>
@@ -258,4 +248,6 @@
     <string name="remove_desktop">நீக்கு</string>
     <string name="save_desktop">சேமி</string>
     <string name="name_desktop">பெயர்</string>
-    </resources>
+    <!-- device messages for updates -->
+
+</resources>

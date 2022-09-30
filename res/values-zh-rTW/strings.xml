@@ -494,25 +494,9 @@
 
 
     <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_group_name_changed">群組名稱已從 %1$s 更改為 %2$s</string>
-    <!-- deprecated -->
-    <string name="systemmsg_group_image_changed">已更改群組圖片。</string>
-    <!-- deprecated -->
-    <string name="systemmsg_group_image_deleted">已刪除群組圖片。</string>
-    <!-- deprecated -->
-    <string name="systemmsg_member_added">已新增成員 %1$s</string>
-    <!-- deprecated -->
-    <string name="systemmsg_member_removed">已移除成員 %1$s</string>
-    <!-- deprecated -->
-    <string name="systemmsg_group_left">已退出群組。</string>
     <string name="systemmsg_read_receipt_subject">收執回條</string>
     <string name="systemmsg_read_receipt_body">這是訊息 %1$s 的收執回條，表示本訊息已經顯示在收件人的裝置上了，但不代表收件人已讀。</string>
     <string name="systemmsg_cannot_decrypt">本訊息無法解密。\n\n請試著回覆本訊息，並請發送者重發一遍。\n\n如果你曾經在本裝置或其它裝置重新安裝 Delta Chat 或其它郵件軟體的話，請重新發送AutoCrypt設定訊息。</string>
-    <!-- deprecated -->
-    <string name="systemmsg_action_by_me">我%1$s</string>
-    <!-- deprecated -->
-    <string name="systemmsg_action_by_user">%2$s%1$s</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
     <string name="group_name_changed_by_you">我群組名稱已從 %1$s 更改為 %2$s</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
@@ -537,4 +521,6 @@
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
     <string name="qrshow_join_contact_hint">掃描 QRCode 以新增 %1$s</string>
     <string name="forget_login_confirmation_desktop">確定要刪除這裡的登入嗎? 所有的設定都會被刪除，包括端到端加密設定、聯絡人、對話、訊息、媒體檔案等。本動作不能復原。</string>
-    </resources>
+    <!-- device messages for updates -->
+
+</resources>

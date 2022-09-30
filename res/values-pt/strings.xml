@@ -323,25 +323,9 @@
 
 
     <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_group_name_changed">O nome do grupo mudou de \"%1$s\" para \"%2$s\".</string>
-    <!-- deprecated -->
-    <string name="systemmsg_group_image_changed">Imagem do grupo modificada.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_group_image_deleted">Imagem do grupo apagada.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_member_added">Membro %1$s adicionado.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_member_removed">Membro %1$s removido.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_group_left">Saíu do grupo.</string>
     <string name="systemmsg_read_receipt_subject">Ler recibos</string>
     <string name="systemmsg_read_receipt_body">Este é um recibo de confirmação de leitura da mensagem \"%1$s\".\n\nEsta mensagem foi exibida no dispositivo do destinatário, não necessariamente que o conteúdo foi lido.</string>
     <string name="systemmsg_cannot_decrypt">Esta mensagem não pode ser descriptada.\n\n • Talvez seja útil simplesmente responder a esta mensagem e solicitar que o remetente envie a mensagem novamente.\n\n • Caso você tenha re-instalado o Delta Chat ou outro programa de e-mail neste ou noutro dispositivo poderá querer enviar uma mensagem de configuração Autocrypt do dispositvo.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_action_by_me">%1$s por mim.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_action_by_user">%1$s por %2$s.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
     <string name="group_name_changed_by_you">O nome do grupo mudou de \"%1$s\" para \"%2$s\" por mim.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
@@ -444,4 +428,6 @@
     <string name="menu.view.developer.open.log.folder">Abrir pasta de Log</string>
     <string name="menu.view.developer.open.current.log.file">Abrir o aqrquio do log actual</string>
     <string name="perm_enable_bg_reminder_title">Toque aqui para receber mensagens mesmo que o Delta Chat esteja em segundo plano.</string>
-    </resources>
+    <!-- device messages for updates -->
+
+</resources>

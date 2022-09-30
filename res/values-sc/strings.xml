@@ -502,4 +502,6 @@
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="pref_reliable_service">Connessione de isfundu de fide</string>
     <string name="pref_reliable_service_explain">Tenet bisòngiu de una notìfica permanente</string>
-    </resources>
+    <!-- device messages for updates -->
+
+</resources>

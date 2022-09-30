@@ -718,56 +718,12 @@
 
 
     <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_group_name_changed">Názov skupiny sa zmenil z „%1$s“ na „%2$s“.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_group_image_changed">Skupinový obrázok sa zmenil.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_group_image_deleted">Skupinový obrázok bol odstránený.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_member_added">Člen %1$s pridaný.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_member_removed">Člen %1$s bol odstránený.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_group_left">Skupina odišla.</string>
     <string name="systemmsg_read_receipt_subject">Správa otvorená</string>
     <string name="systemmsg_read_receipt_body">%1$s Správa, ktorú ste poslali, sa zobrazila na obrazovke príjemcu.\n\nZaručujeme, že obsah nebol prečítaný.</string>
     <string name="systemmsg_cannot_decrypt">Túto správu nie je možné dešifrovať.\n\n• Už by mohlo pomôcť jednoducho odpovedať na túto správu a požiadať odosielateľa, aby správu odoslal znova.\n\n• V prípade, že ste na ňu znova nainštalovali program Delta Chat alebo iný e-mailový program alebo iné zariadenie, z ktorého budete pravdepodobne chcieť odoslať správu o nastavení automatického šifrovania.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_action_by_me">%1$s mnou.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_action_by_user">%1$s od %2$s.</string>
     <string name="systemmsg_unknown_sender_for_chat">Neznámy odosielateľ pre túto konverzáciu. Ďalšie informácie nájdete v časti „Informácie“.</string>
     <string name="systemmsg_subject_for_new_contact">Správa od %1$s</string>
     <string name="systemmsg_failed_sending_to">Správu sa nepodarilo odoslať %1$s .</string>
-
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_disabled">Časovač zmiznutia správ je deaktivovaný.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_enabled">Časovač zmiznutia správ nastavený na %1$s s.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_minute">Časovač zmiznutia správ bol nastavený na 1 minútu.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_hour">Časovač zmiznutia správ bol nastavený na 1 hodinu.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_day">Časovač zmiznutia správ nastavený na 1 deň.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_week">Časovač zmiznutia správ nastavený na 1 týždeň.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_four_weeks">Časovač zmiznutia správ nastavený na 4 týždne.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_minutes">Časovač zmiznutia správ bol nastavený na %1$s minúty.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_hours">Časovač zmiznutia správ bol nastavený na %1$s hodiny.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_days">Časovač zmiznutia správ nastavený na %1$s dni.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_weeks">Časovač zmiznutia správ nastavený na %1$s týždne.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_chat_protection_disabled">Ochrana konverzácií je vypnutá.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_chat_protection_enabled">Ochrana konverzácií je zapnutá.</string>
-
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
     <string name="group_name_changed_by_you">Názov skupiny sa zmenil z „%1$s“ na „%2$s“ mnou.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
@@ -1032,6 +988,5 @@
 
 
     <!-- device messages for updates -->
-    <string name="update_1_30">Rýchlejší. Stabilnejší.\n\nVo vydaní 1.30 sme sa zamerali na rýchlosť a spoľahlivosť, opravili sme desiatky chýb. Prečítajte si prehľad o zmenách a pozrite sa, či sme opravili vašu obľúbenú chybu: https://get.delta.chat/#changelogs 🚀</string>
 
 </resources>

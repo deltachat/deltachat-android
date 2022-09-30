@@ -717,56 +717,12 @@
 
 
     <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_group_name_changed">\"%1$s\" grup adı \"%2$s\" olarak değiştirildi.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_group_image_changed">Grup görseli değiştirildi.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_group_image_deleted">Grup görseli silindi.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_member_added">%1$s üyesi eklendi.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_member_removed">%1$s üyesi kaldırıldı.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_group_left">Gruptan ayrılındı.</string>
     <string name="systemmsg_read_receipt_subject">İleti açıldı</string>
     <string name="systemmsg_read_receipt_body">Gönderdiğiniz \"%1$s\" iletisi alıcının ekranında görüntülendi.\n\nBu, içeriğin okunduğunun güvencesi değildir.</string>
     <string name="systemmsg_cannot_decrypt">Bu iletinin şifresi çözülemiyor.\n\n• Bu iletiye basitçe yanıt vermek ve gönderene iletiyi yeniden gönderip gönderemeyeceğini sormak zaten yardımcı olabilir.\n\n• Delta Chat\'i ya da başka bir e-posta programını bu ya da başka bir aygıta yeniden kurduysanız, oradan bir Autocrypt Ayarlama İletisi göndermek isteyebilirsiniz.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_action_by_me">Benim tarafımdan %1$s.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_action_by_user">%2$s tarafından %1$s.</string>
     <string name="systemmsg_unknown_sender_for_chat">Bu sohbet için bilinmeyen gönderen. Daha fazla ayrıntı için \'bilgi\'ye bakın.</string>
     <string name="systemmsg_subject_for_new_contact">%1$s kişisinden gelen ileti</string>
     <string name="systemmsg_failed_sending_to">%1$s kişisine ileti gönderme başarısız.</string>
-
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_disabled">Kaybolan iletiler zamanlayıcısı etkisizleştirildi.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_enabled">Kaybolan iletiler zamanlayıcısı %1$s sn olarak ayarlandı.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_minute">Kaybolan iletiler zamanlayıcısı 1 dakika olarak ayarlandı.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_hour">Kaybolan iletiler zamanlayıcısı 1 saat olarak ayarlandı.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_day">Kaybolan iletiler zamanlayıcısı 1 gün olarak ayarlandı.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_week">Kaybolan iletiler zamanlayıcısı 1 hafta olarak ayarlandı.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_four_weeks">Kaybolan iletiler zamanlayıcısı 4 hafta olarak ayarlandı.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_minutes">Kaybolan iletiler zamanlayıcısı %1$s dakika olarak ayarlandı.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_hours">Kaybolan iletiler zamanlayıcısı %1$s saat olarak ayarlandı.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_days">Kaybolan iletiler zamanlayıcısı %1$s gün olarak ayarlandı.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_weeks">Kaybolan iletiler zamanlayıcısı %1$s hafta olarak ayarlandı.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_chat_protection_disabled">Sohbet koruması etkisizleştirildi.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_chat_protection_enabled">Sohbet koruması etkinleştirildi.</string>
-
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
     <string name="group_name_changed_by_you">\"%1$s\" grup adını \"%2$s\" olarak değiştirdiniz.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
@@ -1058,6 +1014,5 @@
 
 
     <!-- device messages for updates -->
-    <string name="update_1_30">Daha hızlı. Daha kararlı.\n\n1.30 sürümleri için hıza ve güvenilirliğe odaklandık, düzinelerce hata düzeltildi. Favorilerinizden biri düzeltildiyse değişiklik günlüklerimizi denetleyin: https://get.delta.chat/#changelogs 🚀</string>
 
 </resources>

@@ -623,49 +623,10 @@
 
 
     <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_group_name_changed">Grupės pavadinimas pasikeitė iš \"%1$s\" į \"%2$s\".</string>
-    <!-- deprecated -->
-    <string name="systemmsg_group_image_changed">Grupės paveikslas pakeistas.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_group_image_deleted">Grupės paveikslas ištrintas.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_member_added">Dalyvis %1$s pridėtas.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_member_removed">Dalyvis %1$s pašalintas.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_group_left">Išeita iš grupės.</string>
     <string name="systemmsg_read_receipt_subject">Pranešimas apie skaitymą</string>
     <string name="systemmsg_read_receipt_body">Tai yra pranešimas apie žinutės \"%1$s\" skaitymą.\n\nTai reiškia, kad žinutė buvo atvaizduota gavėjo įrenginyje, tačiau neužtikrina, kad jos turinys buvo perskaitytas.</string>
     <string name="systemmsg_cannot_decrypt">Nepavyksta iššifruoti šios žinutės.\n\n• Galima, tiesiog, atsakyti į šią žinutę ir paprašyti siuntėjo dar kartą išsiųsti šią žinutę.\n\n• Tuo atveju, jeigu iš naujo įdiegėte Delta Chat ar kitą el. pašto programą šiame ar kitame įrenginyje, jūs galite pageidauti išsiųsti Autocrypt sąrankos žinutę iš to įrenginio.</string>
     <string name="systemmsg_subject_for_new_contact">Žinutė nuo %1$s</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_disabled">Išnykstančių žinučių laikmatis išjungtas.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_enabled">Išnykstančių žinučių laikmatis nustatytas į %1$s sek.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_minute">Išnykstančių žinučių laikmatis nustatytas į 1 minutę.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_hour">Išnykstančių žinučių laikmatis nustatytas į 1 valandą.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_day">Išnykstančių žinučių laikmatis nustatytas į 1 dieną.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_week">Išnykstančių žinučių laikmatis nustatytas į 1 savaitę.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_four_weeks">Išnykstančių žinučių laikmatis nustatytas į 4 savaites.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_minutes">Išnykstančių žinučių laikmatis nustatytas į %1$s min.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_hours">Išnykstančių žinučių laikmatis nustatytas į %1$s val.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_days">Išnykstančių žinučių laikmatis nustatytas į %1$s d.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_weeks">Išnykstančių žinučių laikmatis nustatytas į %1$s sav.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_chat_protection_disabled">Pokalbio apsauga išjungta.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_chat_protection_enabled">Pokalbio apsauga įjungta.</string>
-
     <string name="group_image_deleted_by_you">Jūs ištrynėte grupės paveikslą.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
     <string name="group_image_deleted_by_other">%1$s ištrynė grupės paveikslą.</string>
@@ -811,4 +772,6 @@
     <string name="perm_enable_bg_already_done">Jūs jau leidote Delta Chat gauti žinutes fone.\n\nJei žinutės vis tiek nepristatomos fone, patikrinkite taip pat savo sistemos nustatymus.</string>
 
 
-    </resources>
+    <!-- device messages for updates -->
+
+</resources>
