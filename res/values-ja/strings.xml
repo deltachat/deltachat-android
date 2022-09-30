@@ -604,6 +604,63 @@ https://delta.chat</string>
     <!-- deprecated -->
     <string name="systemmsg_chat_protection_enabled">保護が有効です。</string>
 
+    <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
+    <string name="group_name_changed_by_you">自分からグループ名を%1$sから%2$sに変更しました。</string>
+    <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
+    <string name="group_name_changed_by_other">%3$sからグループ名を%1$sから%2$sに変更しました。</string>
+    <string name="group_image_changed_by_you">自分からグループ画像が変わりました。</string>
+    <!-- %1$s will be replaced by name and address of the contact who did the action -->
+    <string name="group_image_changed_by_other">%1$sからグループ画像が変わりました。</string>
+    <!-- %1$s will be replaced by name and address of the contact added to the group -->
+    <string name="add_member_by_you">自分から%1$sが追加されました。</string>
+    <!-- %1$s will be replaced by name and address of the contact added to the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <string name="add_member_by_other">%2$sから%1$sが追加されました。</string>
+    <!-- %1$s will be replaced by name and address of the contact removed from the group -->
+    <string name="remove_member_by_you">自分から%1$sが退会されました。</string>
+    <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <string name="remove_member_by_other">%2$sから%1$sが退会されました。</string>
+    <string name="ephemeral_timer_disabled_by_you">自分から消えるメッセージを無効にしました。</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_disabled_by_other">%1$sから消えるメッセージを無効にしました。</string>
+    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to -->
+    <string name="ephemeral_timer_seconds_by_you">自分から消えるメッセージを%1$s秒にしました。</string>
+    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_seconds_by_other">%2$sから消えるメッセージを%1$s秒にしました。</string>
+    <string name="ephemeral_timer_1_minute_by_you">自分から消えるメッセージを1分にしました。</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_1_minute_by_other">%1$sから消えるメッセージを1分にしました。</string>
+    <string name="ephemeral_timer_1_hour_by_you">自分から消えるメッセージを1時間にしました。</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_1_hour_by_other">%1$sから消えるメッセージを1時間にしました。</string>
+    <string name="ephemeral_timer_1_day_by_you">自分から消えるメッセージを1日にしました。</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_1_day_by_other">%1$sから消えるメッセージを1日にしました。</string>
+    <string name="ephemeral_timer_1_week_by_you">自分から消えるメッセージを1週間にしました。</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_1_week_by_other">%1$sから消えるメッセージを1週間にしました。</string>
+    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to -->
+    <string name="ephemeral_timer_minutes_by_you">自分から消えるメッセージを%1$s分にしました。</string>
+    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_minutes_by_other">%2$sから消えるメッセージを%1$s分にしました。</string>
+    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to -->
+    <string name="ephemeral_timer_hours_by_you">自分から消えるメッセージを%1$s時間にしました。</string>
+    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_hours_by_other">%2$sから消えるメッセージを%1$s時間にしました。</string>
+    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to -->
+    <string name="ephemeral_timer_days_by_you">自分から消えるメッセージを%1$s日にしました。</string>
+    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_days_by_other">%2$sから消えるメッセージを%1$s日にしました。</string>
+    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to -->
+    <string name="ephemeral_timer_weeks_by_you">自分から消えるメッセージを%1$s週間にしました。</string>
+    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_weeks_by_other">%2$sから消えるメッセージを%1$s週間にしました。</string>
+    <string name="protection_enabled_by_you">自分から保護が有効です。</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="protection_enabled_by_other">%1$sから保護が有効です。</string>
+    <string name="protection_disabled_by_you">自分から保護が無効です。</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="protection_disabled_by_other">%1$sから保護が無効です。</string>
+
     <!-- qr code stuff -->
     <string name="qr_code">QRコード</string>
     <string name="load_qr_code_as_image">QRコードを画像として読み込む</string>

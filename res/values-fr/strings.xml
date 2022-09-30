@@ -773,6 +773,63 @@
     <!-- deprecated -->
     <string name="systemmsg_chat_protection_enabled">Protection de la discussion activée.</string>
 
+    <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
+    <string name="group_name_changed_by_you">Nom de groupe modifié de \"%1$s\" en \"%2$s\" par moi.</string>
+    <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
+    <string name="group_name_changed_by_other">Nom de groupe modifié de \"%1$s\" en \"%2$s\" sur %3$s.</string>
+    <string name="group_image_changed_by_you">Image de groupe modifiée par moi.</string>
+    <!-- %1$s will be replaced by name and address of the contact who did the action -->
+    <string name="group_image_changed_by_other">Image de groupe modifiée sur %1$s.</string>
+    <!-- %1$s will be replaced by name and address of the contact added to the group -->
+    <string name="add_member_by_you">Membre %1$s ajouté par moi.</string>
+    <!-- %1$s will be replaced by name and address of the contact added to the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <string name="add_member_by_other">Membre %1$s ajouté sur %2$s.</string>
+    <!-- %1$s will be replaced by name and address of the contact removed from the group -->
+    <string name="remove_member_by_you">Membre %1$s retiré par moi.</string>
+    <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <string name="remove_member_by_other">Membre %1$s retiré sur %2$s.</string>
+    <string name="ephemeral_timer_disabled_by_you">Temporisation des messages éphémères désactivée par moi.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_disabled_by_other">Temporisation des messages éphémères désactivée sur %1$s.</string>
+    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to -->
+    <string name="ephemeral_timer_seconds_by_you">Temporisation des messages éphémères réglée à %1$s s par moi.</string>
+    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_seconds_by_other">Temporisation des messages éphémères réglée à %1$s s sur %2$s.</string>
+    <string name="ephemeral_timer_1_minute_by_you">Temporisation des messages éphémères réglée à 1 minute par moi.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_1_minute_by_other">Temporisation des messages éphémères réglée à 1 minute sur %1$s.</string>
+    <string name="ephemeral_timer_1_hour_by_you">Temporisation des messages éphémères réglée à 1 heure par moi.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_1_hour_by_other">Temporisation des messages éphémères réglée à 1 heure sur %1$s.</string>
+    <string name="ephemeral_timer_1_day_by_you">Temporisation des messages éphémères réglée à 1 journée par moi.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_1_day_by_other">Temporisation des messages éphémères réglée à 1 journée sur %1$s.</string>
+    <string name="ephemeral_timer_1_week_by_you">Temporisation des messages éphémères réglée à 1 semaine par moi.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_1_week_by_other">Temporisation des messages éphémères réglée à 1 semaine sur %1$s.</string>
+    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to -->
+    <string name="ephemeral_timer_minutes_by_you">Régler le temps d\'affichage des messages éphémères à %1$s minute(s) par moi.</string>
+    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_minutes_by_other">Régler le temps d\'affichage des messages éphémères à %1$s minute(s) sur %2$s.</string>
+    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to -->
+    <string name="ephemeral_timer_hours_by_you">Régler le temps d\'affichage des messages éphémères à %1$s heure(s) par moi.</string>
+    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_hours_by_other">Régler le temps d\'affichage des messages éphémères à %1$s heure(s) sur %2$s.</string>
+    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to -->
+    <string name="ephemeral_timer_days_by_you">Régler le temps d\'affichage des messages éphémères à %1$s jour(s) par moi.</string>
+    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_days_by_other">Régler le temps d\'affichage des messages éphémères à %1$s jour(s) sur %2$s.</string>
+    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to -->
+    <string name="ephemeral_timer_weeks_by_you">Régler le temps d\'affichage des messages éphémères à %1$s semaine(s) par moi.</string>
+    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_weeks_by_other">Régler le temps d\'affichage des messages éphémères à %1$s semaine(s) sur %2$s.</string>
+    <string name="protection_enabled_by_you">Protection de la discussion activée par moi.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="protection_enabled_by_other">Protection de la discussion activée sur %1$s.</string>
+    <string name="protection_disabled_by_you">Protection de la discussion désactivée par moi.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="protection_disabled_by_other">Protection de la discussion désactivée sur %1$s.</string>
+
     <string name="devicemsg_self_deleted">Vous avez supprimé la discussion \"Message enregistrés\".\n\nℹ️ Pour de nouveau utiliser la fonctionnalité \"Message enregistrés\", commencez une nouvelle discussion avec vous-même.</string>
     <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
     <string name="devicemsg_storage_exceeding">⚠️ L\'espace de stockage de votre fournisseur va bientôt être excédé, %1$s sur %% est utilisé.\n\nous ne serez peut-être plus capable de recevoir des messages quand l\'espace de stockage est 100%% utilisé.\n\n👉 Vérifier s\'il vous plaît que vous pouvez supprimer d\'ancienne données depuis l\'interface web de votre fournisseur et considérez d\'activer \"Paramètres / Supprimer les messages anciens\". Vous pouvez jetez un coup d\'oeil à l\'utilisation courante de votre espace de stockage à tout moment depuis \"Paramètres / Connectivité\".</string>

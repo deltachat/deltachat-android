@@ -719,6 +719,63 @@
     <!-- deprecated -->
     <string name="systemmsg_chat_protection_enabled">Защитата на чата е включена.</string>
 
+    <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
+    <string name="group_name_changed_by_you">Името на групата е променено от \"%1$s\" на \"%2$s\" от мен</string>
+    <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
+    <string name="group_name_changed_by_other">Името на групата е променено от \"%1$s\" на \"%2$s\" от %3$s</string>
+    <string name="group_image_changed_by_you">Изображението на групата е променено от мен</string>
+    <!-- %1$s will be replaced by name and address of the contact who did the action -->
+    <string name="group_image_changed_by_other">Изображението на групата е променено от %1$s</string>
+    <!-- %1$s will be replaced by name and address of the contact added to the group -->
+    <string name="add_member_by_you">Добавен е членът %1$s от мен</string>
+    <!-- %1$s will be replaced by name and address of the contact added to the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <string name="add_member_by_other">Добавен е членът %1$s от %2$s</string>
+    <!-- %1$s will be replaced by name and address of the contact removed from the group -->
+    <string name="remove_member_by_you">Членът %1$s е премахнат от мен</string>
+    <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <string name="remove_member_by_other">Членът %1$s е премахнат от %2$s</string>
+    <string name="ephemeral_timer_disabled_by_you">Таймерът на изчезващите съобщения е деактивиран от мен</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_disabled_by_other">Таймерът на изчезващите съобщения е деактивиран от %1$s</string>
+    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to -->
+    <string name="ephemeral_timer_seconds_by_you">Таймерът на изчезващите съобщение е установен на %1$sсек от мен</string>
+    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_seconds_by_other">Таймерът на изчезващите съобщение е установен на %1$sсек от %2$s</string>
+    <string name="ephemeral_timer_1_minute_by_you">Таймерът на изчезващите съобщения е установен на 1 минута от мен</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_1_minute_by_other">Таймерът на изчезващите съобщения е установен на 1 минута от %1$s</string>
+    <string name="ephemeral_timer_1_hour_by_you">Таймерът на изчезващите съобщения е установен на 1 час от мен</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_1_hour_by_other">Таймерът на изчезващите съобщения е установен на 1 час от %1$s</string>
+    <string name="ephemeral_timer_1_day_by_you">Таймерът на изчезващите съобщения е установен на 1 ден от мен</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_1_day_by_other">Таймерът на изчезващите съобщения е установен на 1 ден от %1$s</string>
+    <string name="ephemeral_timer_1_week_by_you">Таймерът на изчезващите съобщения е установен на 1 седмица от мен</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_1_week_by_other">Таймерът на изчезващите съобщения е установен на 1 седмица от %1$s</string>
+    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to -->
+    <string name="ephemeral_timer_minutes_by_you">Таймерът на изчезващите съобщения е установен на %1$s минути от мен</string>
+    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_minutes_by_other">Таймерът на изчезващите съобщения е установен на %1$s минути от %2$s</string>
+    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to -->
+    <string name="ephemeral_timer_hours_by_you">Таймерът на изчезващите съобщения е установен на %1$s часа от мен</string>
+    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_hours_by_other">Таймерът на изчезващите съобщения е установен на %1$s часа от %2$s</string>
+    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to -->
+    <string name="ephemeral_timer_days_by_you">Таймерът на изчезващите съобщения е установен на %1$s дни от мен</string>
+    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_days_by_other">Таймерът на изчезващите съобщения е установен на %1$s дни от %2$s</string>
+    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to -->
+    <string name="ephemeral_timer_weeks_by_you">Таймерът на изчезващите съобщения е установен на %1$s седмици от мен</string>
+    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_weeks_by_other">Таймерът на изчезващите съобщения е установен на %1$s седмици от %2$s</string>
+    <string name="protection_enabled_by_you">Защитата на чата е включена от мен</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="protection_enabled_by_other">Защитата на чата е включена от %1$s</string>
+    <string name="protection_disabled_by_you">Защитата на чата е изключена от мен</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="protection_disabled_by_other">Защитата на чата е изключена от %1$s</string>
+
     <string name="devicemsg_self_deleted">Изтрихте чата \"Записани съобщения\".\n\nℹ️ За да използвате възможността \"Записани съобщения\" отново, създайте нов чат със себе си.</string>
     <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
     <string name="devicemsg_storage_exceeding">⚠️ Мястото за съхранение, предоставено от Вашия доставчик, скоро ще бъде изчерпано, %1$s%% вече са използвани.\n\nВероятно няма да можете да получавате съобщения, когато 100%% от мястото за съхранение са заети.\n\n👉 Моля, проверете дали не бихте могли да изтриете стари данни през уеб интерфейса на доставчика и обмислете дали да не включите \"Настройки / Изтриване на старите съобщения\". Можете по всяко време да проверите текущо наличното място за съхранение в \"Настройки / Свързаност\".</string>

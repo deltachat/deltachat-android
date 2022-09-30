@@ -701,6 +701,63 @@
     <!-- deprecated -->
     <string name="systemmsg_chat_protection_enabled">ការការពារសន្ទនាត្រូវបានបើក</string>
 
+    <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
+    <string name="group_name_changed_by_you">ឈ្មោះក្រុមត្រូវបានប្តូរពី \"%1$s\" ទៅកាន់ \"%2$s\" ដោយខ្ញុំ</string>
+    <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
+    <string name="group_name_changed_by_other">ឈ្មោះក្រុមត្រូវបានប្តូរពី \"%1$s\" ទៅកាន់ \"%2$s\" ដោយ %3$s</string>
+    <string name="group_image_changed_by_you">រូបភាពក្រុមត្រូវបានប្តូរ ដោយខ្ញុំ</string>
+    <!-- %1$s will be replaced by name and address of the contact who did the action -->
+    <string name="group_image_changed_by_other">រូបភាពក្រុមត្រូវបានប្តូរ ដោយ %1$s</string>
+    <!-- %1$s will be replaced by name and address of the contact added to the group -->
+    <string name="add_member_by_you">សមាជិក %1$s ត្រូវបានបន្ថែម ដោយខ្ញុំ</string>
+    <!-- %1$s will be replaced by name and address of the contact added to the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <string name="add_member_by_other">សមាជិក %1$s ត្រូវបានបន្ថែម ដោយ %2$s</string>
+    <!-- %1$s will be replaced by name and address of the contact removed from the group -->
+    <string name="remove_member_by_you">សមាជិក %1$s ត្រូវបានយកចេញ ដោយខ្ញុំ</string>
+    <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <string name="remove_member_by_other">សមាជិក %1$s ត្រូវបានយកចេញ ដោយ %2$s</string>
+    <string name="ephemeral_timer_disabled_by_you">បានបិទបាត់កម្មវិធីសារដែលនឹងបាត់បន្ទាប់ពីមួយរយៈ ដោយខ្ញុំ</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_disabled_by_other">បានបិទបាត់កម្មវិធីសារដែលនឹងបាត់បន្ទាប់ពីមួយរយៈ ដោយ %1$s</string>
+    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to -->
+    <string name="ephemeral_timer_seconds_by_you">កម្មវិធីសារដែលនឹងបាត់បន្ទាប់ពីមួយរយៈបាន កំណត់ទៅ %1$s វិនាទី។ ដោយខ្ញុំ</string>
+    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_seconds_by_other">កម្មវិធីសារដែលនឹងបាត់បន្ទាប់ពីមួយរយៈបាន កំណត់ទៅ %1$s វិនាទី។ ដោយ %2$s</string>
+    <string name="ephemeral_timer_1_minute_by_you">កម្មវិធីសារដែលនឹងបាត់បន្ទាប់ពីមួយរយៈបាន កំណត់ទៅ ១នាទី។ ដោយខ្ញុំ</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_1_minute_by_other">កម្មវិធីសារដែលនឹងបាត់បន្ទាប់ពីមួយរយៈបាន កំណត់ទៅ ១នាទី។ ដោយ %1$s</string>
+    <string name="ephemeral_timer_1_hour_by_you">កម្មវិធីសារដែលនឹងបាត់បន្ទាប់ពីមួយរយៈបាន កំណត់ទៅ ១ម៉ោង។ ដោយខ្ញុំ</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_1_hour_by_other">កម្មវិធីសារដែលនឹងបាត់បន្ទាប់ពីមួយរយៈបាន កំណត់ទៅ ១ម៉ោង។ ដោយ %1$s</string>
+    <string name="ephemeral_timer_1_day_by_you">កម្មវិធីសារដែលនឹងបាត់បន្ទាប់ពីមួយរយៈបាន កំណត់ទៅ ១ថ្ងៃ។ ដោយខ្ញុំ</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_1_day_by_other">កម្មវិធីសារដែលនឹងបាត់បន្ទាប់ពីមួយរយៈបាន កំណត់ទៅ ១ថ្ងៃ។ ដោយ %1$s</string>
+    <string name="ephemeral_timer_1_week_by_you">កម្មវិធីសារដែលនឹងបាត់បន្ទាប់ពីមួយរយៈបាន កំណត់ទៅ ១សប្តាហ៍។ ដោយខ្ញុំ</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_1_week_by_other">កម្មវិធីសារដែលនឹងបាត់បន្ទាប់ពីមួយរយៈបាន កំណត់ទៅ ១សប្តាហ៍។ ដោយ %1$s</string>
+    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to -->
+    <string name="ephemeral_timer_minutes_by_you">កម្មវិធីសារដែលនឹងបាត់បន្ទាប់ពីមួយរយៈបាន កំណត់ទៅ %1$s នាទី។ ដោយខ្ញុំ</string>
+    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_minutes_by_other">កម្មវិធីសារដែលនឹងបាត់បន្ទាប់ពីមួយរយៈបាន កំណត់ទៅ %1$s នាទី។ ដោយ %2$s</string>
+    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to -->
+    <string name="ephemeral_timer_hours_by_you">កម្មវិធីសារដែលនឹងបាត់បន្ទាប់ពីមួយរយៈបាន កំណត់ទៅ %1$s ម៉ោង។ ដោយខ្ញុំ</string>
+    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_hours_by_other">កម្មវិធីសារដែលនឹងបាត់បន្ទាប់ពីមួយរយៈបាន កំណត់ទៅ %1$s ម៉ោង។ ដោយ %2$s</string>
+    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to -->
+    <string name="ephemeral_timer_days_by_you">កម្មវិធីសារដែលនឹងបាត់បន្ទាប់ពីមួយរយៈបាន កំណត់ទៅ %1$s ថ្ងៃ។ ដោយខ្ញុំ</string>
+    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_days_by_other">កម្មវិធីសារដែលនឹងបាត់បន្ទាប់ពីមួយរយៈបាន កំណត់ទៅ %1$s ថ្ងៃ។ ដោយ %2$s</string>
+    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to -->
+    <string name="ephemeral_timer_weeks_by_you">កម្មវិធីសារដែលនឹងបាត់បន្ទាប់ពីមួយរយៈបាន កំណត់ទៅ %1$s ថ្ងៃ។ ដោយខ្ញុំ</string>
+    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_weeks_by_other">កម្មវិធីសារដែលនឹងបាត់បន្ទាប់ពីមួយរយៈបាន កំណត់ទៅ %1$s ថ្ងៃ។ ដោយ %2$s</string>
+    <string name="protection_enabled_by_you">ការការពារសន្ទនាត្រូវបានបើក ដោយខ្ញុំ</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="protection_enabled_by_other">ការការពារសន្ទនាត្រូវបានបើក ដោយ %1$s</string>
+    <string name="protection_disabled_by_you">ការការពារសន្ទនាត្រូវបានបិទ ដោយខ្ញុំ</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="protection_disabled_by_other">ការការពារសន្ទនាត្រូវបានបិទ ដោយ %1$s</string>
+
     <string name="devicemsg_self_deleted">អ្នកបានលុប \"សារដែលបានរក្សាទុក\" សន្ទនា។\n\nℹ️ ដើម្បីប្រើមុខងារ \"សារដែលបានរក្សាទុក\" ជាថ្មីម្តងទៀត សូមបង្កើតសន្ទនាថ្មីជាមួយខ្លួនអ្នក។</string>
     <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
     <string name="devicemsg_storage_exceeding">⚠️️ឃ្លាំងផ្ទុករបស់កម្មវិធីផ្តល់សេវាឲ្យអ្នក ជិតអស់ហើយត្រូវបានប្រើ %1$s%% រួចហើយ។\n\n អ្នកប្រហែលជាមិនអាចទទួលបានសារទេនៅពេលប្រើទំហំផ្ទុក ១០០%% ។\n\n👉 សូមពិនិត្យមើលថាតើ អ្នកអាចលុបទិន្នន័យចាស់នៅក្នុងចំណុចប្រទាក់គេហទំព័ររបស់កម្មវិធីផ្តល់សេវាកម្មហើយពិចារណាបើក \"ការកំណត់ / លុបសារចាស់ \"។ អ្នកអាចពិនិត្យមើលការប្រើប្រាស់ទំហំផ្ទុកបច្ចុប្បន្នរបស់អ្នកបានគ្រប់ពេលនៅ \"ការកំណត់ / ការតភ្ជាប់និងសេវាកម្ម\" ។</string>

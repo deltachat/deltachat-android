@@ -513,6 +513,21 @@
     <string name="systemmsg_action_by_me">我%1$s</string>
     <!-- deprecated -->
     <string name="systemmsg_action_by_user">%2$s%1$s</string>
+    <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
+    <string name="group_name_changed_by_you">我群組名稱已從 %1$s 更改為 %2$s</string>
+    <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
+    <string name="group_name_changed_by_other">%3$s群組名稱已從 %1$s 更改為 %2$s</string>
+    <string name="group_image_changed_by_you">我已更改群組圖片。</string>
+    <!-- %1$s will be replaced by name and address of the contact who did the action -->
+    <string name="group_image_changed_by_other">%1$s已更改群組圖片。</string>
+    <!-- %1$s will be replaced by name and address of the contact added to the group -->
+    <string name="add_member_by_you">我已新增成員 %1$s</string>
+    <!-- %1$s will be replaced by name and address of the contact added to the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <string name="add_member_by_other">%2$s已新增成員 %1$s</string>
+    <!-- %1$s will be replaced by name and address of the contact removed from the group -->
+    <string name="remove_member_by_you">我已移除成員 %1$s</string>
+    <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <string name="remove_member_by_other">%2$s已移除成員 %1$s</string>
     <string name="qrscan_title">掃描QR Code</string>
     <string name="qrscan_hint">請將相機對準 QR Code</string>
     <string name="qrscan_ask_join_group">你要參加群組 %1$s 嗎?</string>

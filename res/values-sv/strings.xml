@@ -582,6 +582,40 @@
     <string name="systemmsg_ephemeral_timer_week">Tiduret för meddelandeborttagning är satt till 1 vecka.</string>
     <!-- deprecated -->
     <string name="systemmsg_ephemeral_timer_four_weeks">Tiduret för meddelandeborttagning är satt till 4 veckor.</string>
+    <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
+    <string name="group_name_changed_by_you">Gruppnamnet ändrades från \"%1$s\" till \"%2$s\" av mig.</string>
+    <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
+    <string name="group_name_changed_by_other">Gruppnamnet ändrades från \"%1$s\" till \"%2$s\" av %3$s.</string>
+    <string name="group_image_changed_by_you">Gruppbilden ändrades av mig.</string>
+    <!-- %1$s will be replaced by name and address of the contact who did the action -->
+    <string name="group_image_changed_by_other">Gruppbilden ändrades av %1$s.</string>
+    <!-- %1$s will be replaced by name and address of the contact added to the group -->
+    <string name="add_member_by_you">Medlemmen %1$s lades till av mig.</string>
+    <!-- %1$s will be replaced by name and address of the contact added to the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <string name="add_member_by_other">Medlemmen %1$s lades till av %2$s.</string>
+    <!-- %1$s will be replaced by name and address of the contact removed from the group -->
+    <string name="remove_member_by_you">Medlemmen %1$s togs bort av mig.</string>
+    <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <string name="remove_member_by_other">Medlemmen %1$s togs bort av %2$s.</string>
+    <string name="ephemeral_timer_disabled_by_you">Tiduret för meddelandeborttagning är inaktiverat av mig.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_disabled_by_other">Tiduret för meddelandeborttagning är inaktiverat av %1$s.</string>
+    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to -->
+    <string name="ephemeral_timer_seconds_by_you">Tiduret för meddelandeborttagning är satt till %1$s s av mig.</string>
+    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_seconds_by_other">Tiduret för meddelandeborttagning är satt till %1$s s av %2$s.</string>
+    <string name="ephemeral_timer_1_minute_by_you">Tiduret för meddelandeborttagning är satt till 1 minut av mig.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_1_minute_by_other">Tiduret för meddelandeborttagning är satt till 1 minut av %1$s.</string>
+    <string name="ephemeral_timer_1_hour_by_you">Tiduret för meddelandeborttagning är satt till 1 timma av mig.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_1_hour_by_other">Tiduret för meddelandeborttagning är satt till 1 timma av %1$s.</string>
+    <string name="ephemeral_timer_1_day_by_you">Tiduret för meddelandeborttagning är satt till 1 dag av mig.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_1_day_by_other">Tiduret för meddelandeborttagning är satt till 1 dag av %1$s.</string>
+    <string name="ephemeral_timer_1_week_by_you">Tiduret för meddelandeborttagning är satt till 1 vecka av mig.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_1_week_by_other">Tiduret för meddelandeborttagning är satt till 1 vecka av %1$s.</string>
     <!-- qr code stuff -->
     <string name="qr_code">QR-kod</string>
     <string name="qrscan_title">Skanna QR-kod</string>

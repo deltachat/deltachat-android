@@ -788,6 +788,63 @@
     <!-- deprecated -->
     <string name="systemmsg_chat_protection_enabled">Ochrona czatu włączona.</string>
 
+    <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
+    <string name="group_name_changed_by_you">Zmieniono nazwę grupy z \"%1$s\" na \"%2$s\" przeze mnie.</string>
+    <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
+    <string name="group_name_changed_by_other">Zmieniono nazwę grupy z \"%1$s\" na \"%2$s\" przez %3$s.</string>
+    <string name="group_image_changed_by_you">Zmieniono obraz grupy przeze mnie.</string>
+    <!-- %1$s will be replaced by name and address of the contact who did the action -->
+    <string name="group_image_changed_by_other">Zmieniono obraz grupy przez %1$s.</string>
+    <!-- %1$s will be replaced by name and address of the contact added to the group -->
+    <string name="add_member_by_you">Dodano członka %1$s przeze mnie.</string>
+    <!-- %1$s will be replaced by name and address of the contact added to the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <string name="add_member_by_other">Dodano członka %1$s przez %2$s.</string>
+    <!-- %1$s will be replaced by name and address of the contact removed from the group -->
+    <string name="remove_member_by_you">Usunięto członka %1$s przeze mnie.</string>
+    <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <string name="remove_member_by_other">Usunięto członka %1$s przez %2$s.</string>
+    <string name="ephemeral_timer_disabled_by_you">Wyłączono zegar znikających wiadomości przeze mnie.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_disabled_by_other">Wyłączono zegar znikających wiadomości przez %1$s.</string>
+    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to -->
+    <string name="ephemeral_timer_seconds_by_you">Ustawiono zegar znikających wiadomości na %1$s s przeze mnie.</string>
+    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_seconds_by_other">Ustawiono zegar znikających wiadomości na %1$s s przez %2$s.</string>
+    <string name="ephemeral_timer_1_minute_by_you">Ustawiono zegar znikających wiadomości na 1 minutę przeze mnie.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_1_minute_by_other">Ustawiono zegar znikających wiadomości na 1 minutę przez %1$s.</string>
+    <string name="ephemeral_timer_1_hour_by_you">Ustawiono zegar znikających wiadomości na 1 godzinę przeze mnie.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_1_hour_by_other">Ustawiono zegar znikających wiadomości na 1 godzinę przez %1$s.</string>
+    <string name="ephemeral_timer_1_day_by_you">Ustawiono zegar znikających wiadomości na 1 dzień przeze mnie.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_1_day_by_other">Ustawiono zegar znikających wiadomości na 1 dzień przez %1$s.</string>
+    <string name="ephemeral_timer_1_week_by_you">Ustawiono zegar znikających wiadomości na 1 tydzień przeze mnie.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_1_week_by_other">Ustawiono zegar znikających wiadomości na 1 tydzień przez %1$s.</string>
+    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to -->
+    <string name="ephemeral_timer_minutes_by_you">Ustawiono zegar znikających wiadomości na czas %1$s minut przeze mnie.</string>
+    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_minutes_by_other">Ustawiono zegar znikających wiadomości na czas %1$s minut przez %2$s.</string>
+    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to -->
+    <string name="ephemeral_timer_hours_by_you">Ustawiono zegar znikających wiadomości na czas %1$s godzin przeze mnie.</string>
+    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_hours_by_other">Ustawiono zegar znikających wiadomości na czas %1$s godzin przez %2$s.</string>
+    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to -->
+    <string name="ephemeral_timer_days_by_you">Ustawiono zegar znikających wiadomości na czas %1$s dni przeze mnie.</string>
+    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_days_by_other">Ustawiono zegar znikających wiadomości na czas %1$s dni przez %2$s.</string>
+    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to -->
+    <string name="ephemeral_timer_weeks_by_you">Ustawiono zegar znikających wiadomości na czas %1$s tygodni przeze mnie.</string>
+    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_weeks_by_other">Ustawiono zegar znikających wiadomości na czas %1$s tygodni przez %2$s.</string>
+    <string name="protection_enabled_by_you">Ochrona czatu włączona przeze mnie.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="protection_enabled_by_other">Ochrona czatu włączona przez %1$s.</string>
+    <string name="protection_disabled_by_you">Ochrona czatu wyłączona przeze mnie.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="protection_disabled_by_other">Ochrona czatu wyłączona przez %1$s.</string>
+
     <string name="devicemsg_self_deleted">Usunięto czat „Zapisane wiadomości”.\n\nℹ️ Aby ponownie użyć funkcji „Zapisane wiadomości”, utwórz nowy czat ze sobą.</string>
     <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
     <string name="devicemsg_storage_exceeding">⚠️ Limit pamięci u twojego dostawcy wkrótce zostanie przekroczony, wykorzystano już %1$s%%.\n\nMożesz nie być w stanie otrzymywać wiadomości, gdy pamięć zostanie wykorzystana w 100%%.\n\n👉 Sprawdzić, czy możesz usunąć stare dane w interfejsie internetowym dostawcy i rozważyć włączenie opcji \"Ustawienia » Czaty i media » Usuń stare wiadomości\". W dowolnym momencie możesz sprawdzić swoje bieżące wykorzystanie pamięci w \"Ustawienia » Łączność\".</string>

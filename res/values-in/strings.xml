@@ -526,6 +526,21 @@
     <string name="systemmsg_subject_for_new_contact">Pesan dari %1$s</string>
     <string name="systemmsg_failed_sending_to">Gagal mengirim pesan ke %1$s.</string>
 
+    <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
+    <string name="group_name_changed_by_you">Nama grup diganti dari \"%1$s\" ke \"%2$s\" oleh saya.</string>
+    <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
+    <string name="group_name_changed_by_other">Nama grup diganti dari \"%1$s\" ke \"%2$s\" oleh %3$s.</string>
+    <string name="group_image_changed_by_you">Gambar grup telah diubah oleh saya.</string>
+    <!-- %1$s will be replaced by name and address of the contact who did the action -->
+    <string name="group_image_changed_by_other">Gambar grup telah diubah oleh %1$s.</string>
+    <!-- %1$s will be replaced by name and address of the contact added to the group -->
+    <string name="add_member_by_you">Member %1$s telah ditambahkan oleh saya.</string>
+    <!-- %1$s will be replaced by name and address of the contact added to the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <string name="add_member_by_other">Member %1$s telah ditambahkan oleh %2$s.</string>
+    <!-- %1$s will be replaced by name and address of the contact removed from the group -->
+    <string name="remove_member_by_you">Member %1$s telah dikeluarkan oleh saya.</string>
+    <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
+    <string name="remove_member_by_other">Member %1$s telah dikeluarkan oleh %2$s.</string>
     <!-- qr code stuff -->
     <string name="qr_code">Kode QR</string>
     <string name="load_qr_code_as_image">Muat kode QR sebagai gambar</string>
