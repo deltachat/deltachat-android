@@ -15,3 +15,6 @@ grep --include='strings.xml' -r "\\\\[^n\"'’]" .
 
 # check for usage of a single `&` - this has to be an `&amp;`
 grep --include='strings.xml' -r "&[^a]" .
+
+# single <br> is not needed - and not allowed in xml, leading to error "matching end tag missing"
+grep --include='strings.xml' -r "<br" .
