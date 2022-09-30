@@ -714,56 +714,12 @@
 
 
     <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_group_name_changed">Emri i grupit u ndryshua nga \"%1$s\" në \"%2$s\".</string>
-    <!-- deprecated -->
-    <string name="systemmsg_group_image_changed">Figura e grupit ndryshoi.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_group_image_deleted">Figura e grupit u fshi.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_member_added">U shtua anëtari %1$s.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_member_removed">U hoq anëtari %1$s.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_group_left">U braktis grupi.</string>
     <string name="systemmsg_read_receipt_subject">Dëftesë leximi</string>
     <string name="systemmsg_read_receipt_body">Kjo është dëftesë leximi për mesazhin \"%1$s\".\n\nDo të thotë që mesazhi u shfaq te pajisja e marrësit, jo domosdo që lënda u lexua.</string>
     <string name="systemmsg_cannot_decrypt">Ky mesazh s\’mund të shfshehtëzohet.\n\n• Mundet që të ndihmojë dërgimi thjesht i një përgjigjeje këtij mesazhi dhe t\’i kërkohet dërguesit ta ridërgojë mesazhin.\n\n• Në rast se ri-instaluat Delta Chat-in apo një tjetër program email-esh në këtë apo në një tjetër pajisje, mund të donit të dërgonit një Mesazh Rregullimi Autocrypt-i që prej andej.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_action_by_me">%1$s nga unë.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_action_by_user">%1$s nga %2$s.</string>
     <string name="systemmsg_unknown_sender_for_chat">Dërgues i panjohur për këtë fjalosje. Për më tepër hollësi, shihni \'info\'.</string>
     <string name="systemmsg_subject_for_new_contact">Mesazh nga %1$s</string>
     <string name="systemmsg_failed_sending_to">S’u arrit të dërgohej mesazh te %1$s.</string>
-
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_disabled">Kohëmatësi për mesazhe që zhduken është i çaktivizuar.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_enabled">Kohëmatësi i zhdukjes së mesazheve është vënë në %1$s s.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_minute">Kohëmatësi për mesazhe që zhduken është vënë në 1 minutë.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_hour">Kohëmatësi për mesazhe që zhduken është vënë në 1 orë.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_day">Kohëmatësi për mesazhe që zhduken është vënë në 1 ditë.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_week">Kohëmatësi për mesazhe që zhduken është vënë në 1 javë.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_four_weeks">Kohëmatësi për mesazhe që zhduken është vënë në 4 javë.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_minutes">Kohëmatësi për mesazhe që zhduken është vënë në %1$s minuta.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_hours">Kohëmatësi për mesazhe që zhduken është vënë në %1$s orë.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_days">Kohëmatësi i zhdukjes së mesazheve është vënë në %1$s ditë.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_weeks">Kohëmatësi për mesazhe që zhduken është vënë në %1$s javë.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_chat_protection_disabled">Mbrojtja e fjalosjes u çaktivizua.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_chat_protection_enabled">Mbrojtja e fjalosjes u aktivizua.</string>
-
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
     <string name="group_name_changed_by_you">E ndryshuat emrin e grupit nga “%1$s” në “%2$s”.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
@@ -1053,6 +1009,5 @@
 
 
     <!-- device messages for updates -->
-    <string name="update_1_30">Më shpejtë. Me më tepër qëndrueshmëri.\n\nPër hedhjet në qarkullim të serisë 1.30, u përqendruam në shpejtësinë dhe qëndrueshmërinë, duke ndrequr dhjetëra. Shihni regjistrat tanë të ndryshimeve, për të parë nëse e juaja është ndrequr: https://get.delta.chat/#changelogs 🚀</string>
 
 </resources>

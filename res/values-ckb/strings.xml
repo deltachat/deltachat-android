@@ -502,52 +502,10 @@
     <string name="autocrypt_continue_transfer_title">پەیامی ڕێکخستنی ئۆتۆکریپت</string>
     <string name="autocrypt_continue_transfer_retry">دیسان هەوڵدانەوە</string>
     <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_group_name_changed">ناوی کۆڕ لە \"%1$s\" گۆڕا بۆ \"%2$s\".</string>
-    <!-- deprecated -->
-    <string name="systemmsg_group_image_changed">وێنەی کۆڕ گۆڕا.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_group_image_deleted">وێنەی کۆڕ سڕاوە.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_member_added">%1$s زیاد کرا بە کۆڕ.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_member_removed">ئەندامی %1$s سڕدرایەوە.</string>
     <string name="systemmsg_read_receipt_subject">پەیامەکە کرایەوە</string>
-    <!-- deprecated -->
-    <string name="systemmsg_action_by_me">%1$s لەلایەن منەوە.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_action_by_user">%1$s لەلایەن %2$s.</string>
     <string name="systemmsg_unknown_sender_for_chat">پەیامنێری ئەم وتووێژە نەناسراوە. بۆ وردەکاری زۆرتر سەیری \'زانیارییەکان\' بکە.</string>
     <string name="systemmsg_subject_for_new_contact">پەیام لەلایەن %1$s</string>
     <string name="systemmsg_failed_sending_to">هەناردنی پەیام بۆ %1$s سەرنەکەوت</string>
-
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_disabled">دەمژمێری پەیامە خۆشارەوەکان ناچالاک کرا.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_enabled">دەمژمێری پەیام خۆشارەوەکان لەسەر %1$s چرکە ڕێکخرا.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_minute">دەمژمێری پەیام خۆشارەوەکان لەسەر 1  خولەک ڕێکخرا.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_hour">دەمژمێری پەیام خۆشارەوەکان لەسەر 1 سەعات ڕێکخرا.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_day">دەمژمێری پەیام خۆشارەوەکان لەسەر 1 ڕۆژ ڕێکخرا.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_week">دەمژمێری پەیام خۆشارەوەکان لەسەر 1 حەوتە ڕێکخرا.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_four_weeks">دەمژمێری پەیام خۆشارەوەکان لەسەر 4 ڕۆژ ڕێکخرا.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_minutes">دەمژمێری پەیام خۆشارەوەکان لەسەر%1$s خولەک ڕێکخرا.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_hours">دەمژمێری پەیام خۆشارەوەکان لەسەر %1$s سەعات ڕێکخرا.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_days">دەمژمێری پەیام خۆشارەوەکان لەسەر %1$s ڕۆژ ڕێکخرا.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_weeks">دەمژمێری پەیام خۆشارەوەکان لەسەر %1$s حەوتە ڕێکخرا.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_chat_protection_disabled">پاراستنی وتووێژ ناچالاک کرا.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_chat_protection_enabled">پاراستنی وتووێژ چالاک کرا.</string>
-
     <!-- qr code stuff -->
     <string name="qr_code">کۆدی QR</string>
     <string name="load_qr_code_as_image">کۆدی QR وەکوو وێنەیەک بار بکە.</string>
@@ -658,4 +616,6 @@
     <string name="perm_enable_bg_already_done">تۆ ئێستا ڕێگەت بە دێڵتا چات دا کە لە پشتخانەوە پەیامەکان وەربگرێت.\n\n ئەگەر هێشتا لە پشخاندا پەیامەکان نایەن، سەرنجێکیش لە ڕێکخستنەکانی سیستەم بدەوە.</string>
 
 
-    </resources>
+    <!-- device messages for updates -->
+
+</resources>

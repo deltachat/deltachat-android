@@ -732,56 +732,12 @@
 
 
     <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_group_name_changed">Nome do grupo alterado de \"%1$s\" para \"%2$s\".</string>
-    <!-- deprecated -->
-    <string name="systemmsg_group_image_changed">Avatar do grupo modificado.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_group_image_deleted">Avatar do grupo apagado.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_member_added">Participante %1$s adicionado.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_member_removed">Participante %1$s removido.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_group_left">Grupo abandonado.</string>
     <string name="systemmsg_read_receipt_subject">Confirmação de leitura</string>
     <string name="systemmsg_read_receipt_body">Confirmação de recebimento da mensagem \"%1$s\".\n\nEsta confirmação somente assegura que a mensagem foi exibida no aparelho do destinatário, mas não há garantia de que ele tenha lido o seu conteúdo.</string>
     <string name="systemmsg_cannot_decrypt">Impossível descriptografar esta mensagem.\n\n• Pode resolver pedir que ela seja reenviada.\n\n• Caso você tenha reinstalado o Delta Chat ou outro programa de e-mail, neste ou noutro dispositivo, será necessário enviar uma \"mensagem de configuração do Autocrypt\".</string>
-    <!-- deprecated -->
-    <string name="systemmsg_action_by_me">%1$s por mim.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_action_by_user">%1$s por %2$s.</string>
     <string name="systemmsg_unknown_sender_for_chat">Remetente desconhecido para esta conversa. Veja \'informações\' para mais detalhes.</string>
     <string name="systemmsg_subject_for_new_contact">Mensagem de %1$s</string>
     <string name="systemmsg_failed_sending_to">Falha ao enviar mensagem para %1$s.</string>
-
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_disabled">Temporizador de desaparecimento de mensagens desativado.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_enabled">Temporizador de desaparecimento de mensagens definido para %1$s s.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_minute">Temporizador de desaparecimento de mensagens definido para 1 minuto.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_hour">Temporizador de desaparecimento de mensagens definido para 1 hora.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_day">Temporizador de desaparecimento de mensagens definido para 1 dia.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_week">Temporizador de desaparecimento de mensagens definido para 1 semana.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_four_weeks">Temporizador de desaparecimento de mensagens definido para 4 semanas.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_minutes">Temporizador de mensagens que desaparecem definido para %1$s minutos.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_hours">Temporizador de mensagens que desaparecem definido para %1$s horas.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_days">Temporizador de mensagens que desaparecem definido para %1$s dias.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_weeks">Temporizador de mensagens que desaparecem definido para %1$s semanas.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_chat_protection_disabled">Proteção da conversa desligada.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_chat_protection_enabled">Proteção da conversa ligada.</string>
-
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
     <string name="group_name_changed_by_you">Você mudou o nome do grupo de \"%1$s\" para \"%2$s\".</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
@@ -1064,7 +1020,5 @@
 
 
     <!-- device messages for updates -->
-    <string name="update_1_30">Mais rápido. Mais estável.\n\nPara as versões 1.30, nos concentramos em velocidade e confiabilidade, corrigindo dezenas de bugs. Verifique nossos changelogs para ver se o seu bug favorito foi corrigido: https://get.delta.chat/#changelogs 🚀
-</string>
 
 </resources>

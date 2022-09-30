@@ -741,56 +741,12 @@
 
 
     <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_group_name_changed">Название группы изменено с «%1$s» на «%2$s».</string>
-    <!-- deprecated -->
-    <string name="systemmsg_group_image_changed">Изображение группы изменено.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_group_image_deleted">Изображение группы удалено.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_member_added">Добавлен участник %1$s.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_member_removed">Участник %1$s удалён.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_group_left">Группа покинута.</string>
     <string name="systemmsg_read_receipt_subject">Уведомление о прочтении</string>
     <string name="systemmsg_read_receipt_body">Это подтверждение того, что сообщение \"%1$s\" было открыто на устройстве получателя. Данное подтверждение не означает, что сообщение было прочитано.</string>
     <string name="systemmsg_cannot_decrypt">Это сообщение не может быть расшифровано.\n\n• Возможно, поможет просто ответить на это сообщение и попросить отправителя отправить сообщение еще раз.\n\n • В случае, если вы переустановили Delta Chat или другую почтовую программу на этом или другом устройстве, возможно, вы захотите отправить сообщение с параметрами Autocrypt оттуда.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_action_by_me">%1$s мной.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_action_by_user">%1$s пользователем %2$s.</string>
     <string name="systemmsg_unknown_sender_for_chat">Неизвестный отправитель для данного чата. Смотрите \"информацию\" для подробностей.</string>
     <string name="systemmsg_subject_for_new_contact">Сообщение от %1$s</string>
     <string name="systemmsg_failed_sending_to">Не удалось отправить сообщение %1$s.</string>
-
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_disabled">Таймер исчезающих сообщений отключён.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_enabled">Таймер исчезающих сообщений установлен на %1$s с.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_minute">Таймер исчезающих сообщений установлен на 1 минуту.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_hour">Таймер исчезающих сообщений установлен на 1 час.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_day">Таймер исчезающих сообщений установлен на 1 день.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_week">Таймер исчезающих сообщений установлен на 1 неделю.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_four_weeks">Таймер исчезающих сообщений установлен на 4 недели.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_minutes">Таймер исчезающих сообщений установлен на %1$s минут.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_hours">Таймер исчезающих сообщений установлен на %1$s часов.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_days">Таймер исчезающих сообщений установлен на %1$s дней.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_weeks">Таймер исчезающих сообщений установлен на %1$s недель.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_chat_protection_disabled">Защита чата отключена.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_chat_protection_enabled">Защита чата включена</string>
-
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
     <string name="group_name_changed_by_you">Вы изменили название группы с «%1$s» на «%2$s».</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
@@ -1074,6 +1030,5 @@
 
 
     <!-- device messages for updates -->
-    <string name="update_1_30">Быстрее. Стабильнее.\n\nВ релизах 1.30 мы сфокусировались на скорости и надежности, исправили десятки ошибок. Подробнее смотрите в списках изменений: https://get.delta.chat/#changelogs 🚀</string>
 
 </resources>

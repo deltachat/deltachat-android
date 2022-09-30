@@ -221,12 +221,6 @@
     <string name="pref_show_emails_all">Sve</string>
     <string name="pref_background_default">Zadana pozadina</string>
     <string name="pref_background_default_color">Zadana boja</string>
-    <!-- deprecated -->
-    <string name="systemmsg_member_added">Član %1$s dodan.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_member_removed">Član %1$s uklonjen.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_action_by_user">%1$s od %2$s.</string>
     <!-- qr code stuff -->
     <string name="qr_code">QR kod</string>
     <string name="qrscan_fingerprint_label">Otisak prsta</string>
@@ -261,4 +255,6 @@
     <string name="name_desktop">Ime</string>
     <string name="message_detail_sent_desktop">poslano</string>
     <string name="message_detail_received_desktop">primljeno</string>
-    </resources>
+    <!-- device messages for updates -->
+
+</resources>

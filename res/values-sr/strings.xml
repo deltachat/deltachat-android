@@ -293,23 +293,6 @@
     <string name="autocrypt_asm_subject">Порука поставки за аутошфровање</string>
     <string name="autocrypt_continue_transfer_title">Порука поставки за аутошфровање</string>
     <string name="autocrypt_continue_transfer_retry">Покушај поново</string>
-    <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_group_name_changed">Назив групе је измењен из „%1$s“ у „%2$s“.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_group_image_changed">Слика групе је промењена.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_group_image_deleted">Слика групе је обрисана.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_member_added">Члан %1$s је додат.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_member_removed">Члан %1$s је уклоњен.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_group_left">Група напуштена.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_action_by_me">%1$s од мене.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_action_by_user">%1$s од стране %2$s.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
     <string name="group_name_changed_by_you">Назив групе је измењен из „%1$s“ у „%2$s“ од мене.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
@@ -368,4 +351,6 @@
     <string name="save_desktop">Сачувај</string>
     <string name="name_desktop">Име</string>
     <string name="export_backup_desktop">Извези резервну копију</string>
-    </resources>
+    <!-- device messages for updates -->
+
+</resources>

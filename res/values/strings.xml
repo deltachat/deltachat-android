@@ -717,56 +717,12 @@
 
 
     <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_group_name_changed">Group name changed from \"%1$s\" to \"%2$s\".</string>
-    <!-- deprecated -->
-    <string name="systemmsg_group_image_changed">Group image changed.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_group_image_deleted">Group image deleted.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_member_added">Member %1$s added.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_member_removed">Member %1$s removed.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_group_left">Group left.</string>
     <string name="systemmsg_read_receipt_subject">Message opened</string>
     <string name="systemmsg_read_receipt_body">The \"%1$s\" message you sent was displayed on the screen of the recipient.\n\nThis is no guarantee the content was read.</string>
     <string name="systemmsg_cannot_decrypt">This message cannot be decrypted.\n\n• It might already help to simply reply to this message and ask the sender to send the message again.\n\n• In case you re-installed Delta Chat or another e-mail program on this or another device you may want to send an Autocrypt Setup Message from there.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_action_by_me">%1$s by me.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_action_by_user">%1$s by %2$s.</string>
     <string name="systemmsg_unknown_sender_for_chat">Unknown sender for this chat. See \'info\' for more details.</string>
     <string name="systemmsg_subject_for_new_contact">Message from %1$s</string>
     <string name="systemmsg_failed_sending_to">Failed to send message to %1$s.</string>
-
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_disabled">Disappearing messages timer disabled.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_enabled">Disappearing messages timer set to %1$s s.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_minute">Disappearing messages timer set to 1 minute.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_hour">Disappearing messages timer set to 1 hour.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_day">Disappearing messages timer set to 1 day.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_week">Disappearing messages timer set to 1 week.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_four_weeks">Disappearing messages timer set to 4 weeks.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_minutes">Disappearing messages timer set to %1$s minutes.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_hours">Disappearing messages timer set to %1$s hours.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_days">Disappearing messages timer set to %1$s days.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_weeks">Disappearing messages timer set to %1$s weeks.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_chat_protection_disabled">Chat protection disabled.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_chat_protection_enabled">Chat protection enabled.</string>
-
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
     <string name="group_name_changed_by_you">You changed the group name from \"%1$s\" to \"%2$s\".</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
@@ -1058,6 +1014,5 @@
 
 
     <!-- device messages for updates -->
-    <string name="update_1_30">Faster. More stable.\n\nFor 1.30 releases, we focused on speed and reliability, fixing dozens of bugs. Check our changelogs if your favorite one is fixed: https://get.delta.chat/#changelogs 🚀</string>
 
 </resources>

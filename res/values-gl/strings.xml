@@ -717,56 +717,12 @@
 
 
     <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_group_name_changed">Nome do grupo cambiado de \"%1$s\" a \"%2$s\".</string>
-    <!-- deprecated -->
-    <string name="systemmsg_group_image_changed">Cambiouse a imaxe do grupo.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_group_image_deleted">Imaxe do grupo borrada.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_member_added">Engadeuse a %1$s.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_member_removed">Eliminouse a %1$s.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_group_left">Saír do Grupo.</string>
     <string name="systemmsg_read_receipt_subject">Mensaxe aberta</string>
     <string name="systemmsg_read_receipt_body">A mensaxe \"%1$s\" que enviaches mostrouse na pantalla do correspondente.\n\nNon hai garantía de que o contido fose lido.</string>
     <string name="systemmsg_cannot_decrypt">Esta mensaxe non se pode descifrar.\n\n• Podería axudar que respondas a mensaxe pedindo ao remitente que a volte a enviar.\n\n• En caso dunha reinstalación Delta Chat ou outro programa de correo en este ou outro dispositivo igual debes enviar unha Mensaxe de Configuración Autocrypt desde alí.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_action_by_me">%1$s por min.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_action_by_user">%1$s por %2$s.</string>
     <string name="systemmsg_unknown_sender_for_chat">Remitente descoñecido para esta convers. Mira en \'info\' para saber máis.</string>
     <string name="systemmsg_subject_for_new_contact">Mensaxe de %1$s</string>
     <string name="systemmsg_failed_sending_to">Fallou o envío para %1$s.</string>
-
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_disabled">Desactivada a caducidade para as mensaxes.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_enabled">As mensaxes desparecerán após %1$s s.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_minute">As mensaxes desparecerán após 1 minuto.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_hour">As mensaxes desparecerán após 1 hora.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_day">As mensaxes desaparecerán após 1 día.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_week">As mensaxes desaparecerán após 1 semana.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_four_weeks">As mensaxes desaparecerán após 4 semanas.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_minutes">As mensaxes desaparecerán após %1$s minutos.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_hours">As mensaxes desaparecerán após %1$s horas.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_days">As mensaxes desaparecerán após %1$s días.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_weeks">As mensaxes desaparecerán após %1$s semanas.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_chat_protection_disabled">Protección do chat desactivada.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_chat_protection_enabled">Protección do chat activada.</string>
-
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
     <string name="group_name_changed_by_you">Cambiaches o nome do grupo de \"%1$s\" a \"%2$s\".</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
@@ -1012,6 +968,5 @@
 
 
     <!-- device messages for updates -->
-    <string name="update_1_30">Máis rápido. Máis estable.\n\nNa versión 1.30 poñemos o foco na velocidade e fiabilidade, arranxando dúcias de problemiñas. Mira o rexistro de cambios se algún que ti vises foi arranxado: https://get.delta.chat/#changelogs 🚀</string>
 
 </resources>

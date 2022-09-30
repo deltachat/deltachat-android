@@ -596,56 +596,12 @@
 
 
     <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_group_name_changed">Gruppenavn ændret fra \"%1$s\" til \"%2$s\".</string>
-    <!-- deprecated -->
-    <string name="systemmsg_group_image_changed">Gruppebillede ændret.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_group_image_deleted">Gruppebillede slettet.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_member_added">Medlem %1$s tilføjet.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_member_removed">Medlem %1$s fjernet.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_group_left">Gruppe forladt.</string>
     <string name="systemmsg_read_receipt_subject">Besked åbnet</string>
     <string name="systemmsg_read_receipt_body">Beskeden \"%1$s\" du har sendt blev vist på modtagerens skærm.\n\nDette er ikke en garanti for at indholdet blev læst.</string>
     <string name="systemmsg_cannot_decrypt">Denne besked kan ikke dekrypteres.\n\n• Det kan måske hjælpe at svare på beskeden og bede afsender sende beskeden igen.\n\n• I tilfælde at Delta Chat eller andet e-mail program på denne enhed eller en anden er blevet gen-installeret bør der sendes en Autocrypt opsætning besked derfra.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_action_by_me">%1$s af mig.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_action_by_user">%1$s af %2$s.</string>
     <string name="systemmsg_unknown_sender_for_chat">Ukent afsender af denne chat. Se \'info\' for flere detaljer.</string>
     <string name="systemmsg_subject_for_new_contact">Besked fra %1$s</string>
     <string name="systemmsg_failed_sending_to">Mislykket forsøg på afsendelse af besked til %1$s.</string>
-
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_disabled">Tidsudløb for beskeder er deaktiveret.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_enabled">Tidsudløb for beskeder sat til %1$s s.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_minute">Tidsudløb for beskeder sat til 1 minut.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_hour">Tidsudløb for beskeder sat til 1 time.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_day">Tidsudløb for beskeder sat til 1 dag.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_week">Tidsudløb for beskeder sat til 1 uge.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_four_weeks">Tidsudløb for beskeder sat til 4 uger.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_minutes">Beskeder sat til at udløbe efter %1$s minutter.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_hours">Beskeder sat til at udløbe efter %1$s timer.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_days">Beskeder sat til at udløbe efter %1$s dage.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_weeks">Beskeder sat til at udløbe efter %1$s uger.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_chat_protection_disabled">Chat-beskyttelse slået fra.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_chat_protection_enabled">Chat-beskyttelse sluttet til.</string>
-
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
     <string name="group_name_changed_by_you">Gruppenavn ændret fra \"%1$s\" til \"%2$s\" af mig.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
@@ -846,4 +802,6 @@
     <string name="perm_enable_bg_already_done">Du har allerede tilladt Delta Chat at modtage beskeder i baggrunden.\n\nHvis beskeder ikke ankommer i baggrunden, undersøg dine systemindstillinger.</string>
 
 
-    </resources>
+    <!-- device messages for updates -->
+
+</resources>

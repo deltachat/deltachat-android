@@ -370,25 +370,9 @@
 
 
     <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_group_name_changed">Gruppenavn endret fra \"%1$s\" til \"%2$s\".</string>
-    <!-- deprecated -->
-    <string name="systemmsg_group_image_changed">Gruppebilde endret.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_group_image_deleted">Gruppebilde slettet.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_member_added">Medlem %1$s lagt til.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_member_removed">Medlem %1$s fjernet.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_group_left">Gruppe oppløst.</string>
     <string name="systemmsg_read_receipt_subject">Meldingskvittering</string>
     <string name="systemmsg_read_receipt_body">Dette er en meldingskvittering for meldingen \"%1$s\".\n\nDenne meldingskvitteringen bekrefter bare at meldingen ble vist på mottakerens enhet. Det finnes ingen garanti for at mottakeren har lest meldingsinnholdet.</string>
     <string name="systemmsg_cannot_decrypt">Denne meldingen kan ikke dekrypteres.\n\n• Det kan hjelpe å svare på denne meldingen og spørre avsenderen om å sende den igjen.\n\n• I fall du har reinstallert Delta Chat eller et annet e-postprogram på denne eller en annen enhet, kan du sende en Autocrypt-oppsettsmelding derfra.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_action_by_me">%1$s av meg.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_action_by_user">%1$s av %2$s.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
     <string name="group_name_changed_by_you">Gruppenavn endret fra \"%1$s\" til \"%2$s\" av meg.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
@@ -458,4 +442,6 @@
     <string name="autocrypt_key_transfer_desktop">Autocrypt-nøkkeloverføring</string>
     <string name="initiate_key_transfer_desktop">The Autocrypt-nøkkeloverføring krever at e-postklienten på den andre enheten er Autocrypt-kompatibel.\n\nDu kan så sende din hemmelige nøkkel til deg selv. Nøkkelen vil bli kryptert av en oppsettskode som vises her og må skrives inn på den andre enheten.</string>
     <string name="export_backup_desktop">Eksporter sikkerhetskopi</string>
-    </resources>
+    <!-- device messages for updates -->
+
+</resources>

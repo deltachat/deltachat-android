@@ -441,25 +441,9 @@
 
 
     <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_group_name_changed">Taldearen izena \"%1$s\" izatetik \"%2$s\" izatera aldatu da.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_group_image_changed">Taldearen irudia aldatuta.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_group_image_deleted">Taldearen irudia ezabatuta.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_member_added">%1$s kidea gehituta.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_member_removed">%1$s kidea kenduta.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_group_left">Taldetik aterata.</string>
     <string name="systemmsg_read_receipt_subject">Irakurragiria</string>
     <string name="systemmsg_read_receipt_body">Hau \"%1$s\" mezuaren irakurragiri bat da.\n\nHonek mezua jasotzailearen gailuan bistaratu dela esan nahi du, ez edukia irakurri dela.</string>
     <string name="systemmsg_cannot_decrypt">Ezin da mezu hau deszifratu.\n\n• Mezuari erantzun diezaiokezu eta berriro bidaltzea eskatu.\n\n• Delta Chat berrinstalatu baduzu edo beste posta programa bat instalatu baduzu gailu honetan edo beste batean, AutoCrypt ezarpen mezua handik hona birbidaltzen saiatu zaitezke.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_action_by_me">Nik: %1$s</string>
-    <!-- deprecated -->
-    <string name="systemmsg_action_by_user">%2$s(e)k: %1$s</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
     <string name="group_name_changed_by_you">Nik: Taldearen izena \"%1$s\" izatetik \"%2$s\" izatera aldatu da</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
@@ -596,4 +580,6 @@ Kideak beste kide batzuek egiatzen dituzte bigarren faktore batekin eta mezuak b
     <string name="perm_enable_bg_already_done">Dagoeneko baimendu diozu Delta Chat aplikazioari bigarren planoan mezuak jasotzea,\n\nOraindik ere mezuak heltzen ez badira, egiaztatu ere zure sistemaren ezarpenak.</string>
 
 
-    </resources>
+    <!-- device messages for updates -->
+
+</resources>

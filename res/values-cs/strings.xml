@@ -577,56 +577,12 @@
 
 
     <!-- system messages -->
-    <!-- deprecated -->
-    <string name="systemmsg_group_name_changed">Názen skupiny změněn z \"%1$s\" na \"%2$s\".</string>
-    <!-- deprecated -->
-    <string name="systemmsg_group_image_changed">Obrázek skupiny změněn.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_group_image_deleted">Obrázek skupiny smazán.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_member_added">Člen %1$s byl přidán.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_member_removed">Člen %1$s byl odebrán.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_group_left">Skupina opuštěna.</string>
     <string name="systemmsg_read_receipt_subject">Zpráva otevřena</string>
     <string name="systemmsg_read_receipt_body">Odeslaná zpráva \"%1$s\" byla příjemci zobrazena na jeho přístroji.\n\nNicméně přečtení obsahu není zaručeno.</string>
     <string name="systemmsg_cannot_decrypt">Zprávu nelze dešifrovat.\n\n• Může pomoct jednoduchá odpověď odesílateli s požadavkem o znovuzaslání zprávy.\n\n• Pokud jde o novou instalaci Delta Chatu či jiného e-mailového programu na tomto nebo jiném zařízení, může být nutné poslat si z nich Nastavení Autocryptu.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_action_by_me">%1$s ode mě.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_action_by_user">%1$s od %2$s.</string>
     <string name="systemmsg_unknown_sender_for_chat">Neznámý odesilatel v tomto hovoru. Více najdeš v Popisu.</string>
     <string name="systemmsg_subject_for_new_contact">Zpráva od %1$s</string>
     <string name="systemmsg_failed_sending_to">Odeslání zprávy pro %1$s selhalo.</string>
-
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_disabled">Časovač samomazacích zpráv je vypnut.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_enabled">Časovač samomazacích zpráv je na %1$s s. </string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_minute">Časovač samomazacích zpráv na 1 minutu.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_hour">Časovač samomazacích zpráv na 1 hodinu.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_day">Časovač samomazacích zpráv na 1 den.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_week">Časovač samomazacích zpráv na 1 týden.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_four_weeks">Časovač samomazacích zpráv na 4 týdny.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_minutes">Samomazací zprávy vyprší po %1$s minutách.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_hours">Samomazací zprávy vyprší po %1$s hodinách.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_days">Samomazací zprávy vyprší po %1$s dnech.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_ephemeral_timer_weeks">Samomazací zprávy vyprší po %1$s týdnech.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_chat_protection_disabled">Ochrana rozhovoru vypnuta.</string>
-    <!-- deprecated -->
-    <string name="systemmsg_chat_protection_enabled">Ochrana rozhovoru zapnuta.</string>
-
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
     <string name="group_name_changed_by_you">Názen skupiny změněn z \"%1$s\" na \"%2$s\" ode mě.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
@@ -822,4 +778,6 @@
     <string name="perm_enable_bg_already_done">Přijímání zpráv na pozadí je Delta Chatu již povoleno.\n\nV případě nepřicházení nových zpráv si prosím zkontroluj své systémové nastavení.</string>
 
 
-    </resources>
+    <!-- device messages for updates -->
+
+</resources>
