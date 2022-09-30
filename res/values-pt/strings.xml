@@ -357,6 +357,9 @@
     <string name="remove_member_by_you">Membro %1$s removido por mim.</string>
     <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
     <string name="remove_member_by_other">Membro %1$s removido por %2$s.</string>
+    <string name="group_image_deleted_by_you">Imagem do grupo apagada por mim.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="group_image_deleted_by_other">Imagem do grupo apagada por %1$s.</string>
     <string name="qrscan_title">Fazer scan do código QR</string>
     <string name="qrscan_hint">Coloque sua câmera sobre o código QR</string>
     <string name="qrscan_ask_join_group">Quer se juntar-se ao grupo \"%1$s\"?</string>

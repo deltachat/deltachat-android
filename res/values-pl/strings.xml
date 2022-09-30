@@ -803,6 +803,9 @@
     <string name="remove_member_by_you">Usunięto członka %1$s przeze mnie.</string>
     <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
     <string name="remove_member_by_other">Usunięto członka %1$s przez %2$s.</string>
+    <string name="group_image_deleted_by_you">Usunięto obraz grupy przeze mnie.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="group_image_deleted_by_other">Usunięto obraz grupy przez %1$s.</string>
     <string name="ephemeral_timer_disabled_by_you">Wyłączono zegar znikających wiadomości przeze mnie.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_disabled_by_other">Wyłączono zegar znikających wiadomości przez %1$s.</string>

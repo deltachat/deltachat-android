@@ -773,6 +773,9 @@
     <string name="remove_member_by_you">Jäsen %1$s poistettu minun toimestani.</string>
     <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
     <string name="remove_member_by_other">Jäsen %1$s poistettu käyttäjän %2$s toimesta.</string>
+    <string name="group_image_deleted_by_you">Ryhmän kuva poistettu minun toimestani.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="group_image_deleted_by_other">Ryhmän kuva poistettu käyttäjän %1$s toimesta.</string>
     <string name="ephemeral_timer_disabled_by_you">Katoavien viestien ajastin poistettiin minun toimestani.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_disabled_by_other">Katoavien viestien ajastin poistettiin käyttäjän %1$s toimesta.</string>

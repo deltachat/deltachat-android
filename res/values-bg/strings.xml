@@ -734,6 +734,9 @@
     <string name="remove_member_by_you">Членът %1$s е премахнат от мен</string>
     <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
     <string name="remove_member_by_other">Членът %1$s е премахнат от %2$s</string>
+    <string name="group_image_deleted_by_you">Изображението на глупата е изтрито от мен</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="group_image_deleted_by_other">Изображението на глупата е изтрито от %1$s</string>
     <string name="ephemeral_timer_disabled_by_you">Таймерът на изчезващите съобщения е деактивиран от мен</string>
     <!-- %1$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_disabled_by_other">Таймерът на изчезващите съобщения е деактивиран от %1$s</string>

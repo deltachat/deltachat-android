@@ -424,6 +424,9 @@
     <string name="remove_member_by_you">%1$s üzv silindi məndən. </string>
     <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
     <string name="remove_member_by_other">%1$s üzv silindi ilə %2$s.</string>
+    <string name="group_image_deleted_by_you">Qrupun şəkili silindi məndən. </string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="group_image_deleted_by_other">Qrupun şəkili silindi ilə %1$s.</string>
     <string name="qrscan_title">Qr kodu skan edin</string>
     <string name="qrscan_hint">QR kodu kamera ilə izləyin</string>
     <string name="qrscan_ask_join_group">\"%1$s\" qrupa qoşulmaq istəyirsinizmi?</string>

@@ -404,6 +404,9 @@
     <string name="remove_member_by_you">Medlem %1$s fjernet av meg.</string>
     <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
     <string name="remove_member_by_other">Medlem %1$s fjernet av %2$s.</string>
+    <string name="group_image_deleted_by_you">Gruppebilde slettet av meg.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="group_image_deleted_by_other">Gruppebilde slettet av %1$s.</string>
     <!-- qr code stuff -->
     <string name="qr_code">QR-kode</string>
     <string name="qrscan_title">Skann QR-kode</string>
