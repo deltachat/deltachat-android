@@ -1014,5 +1014,6 @@
 
 
     <!-- device messages for updates -->
+    <string name="update_1_34_android">What\'s new in 1.34?\n\n🤗 Friendlier contact lists: Ordered by last seen and contacts seen within 10 minutes are marked by a dot 🟢\n\n📑 New pages in chat profiles: \"Audio\" and \"Private Apps\"\n\n🖼️ If someone sends you a \"Private App\" (eg. from https://webxdc.org ), you can add it to the home screen</string>
 
 </resources>

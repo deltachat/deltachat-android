@@ -1029,5 +1029,6 @@
 
 
     <!-- device messages for updates -->
+    <string name="update_1_34_android">¿Qué hay de nuevo en 1.34?\n\n🤗 Lista de contactos más amigable: Ordenada por visto por última vez y los contactos vistos hace menos de 10 minutos son marcados con un punto 🟢\n\n📑 Nuevas pestañas en los perfiles de los chats: \"Audio\" y \"Aplicaciones privadas\"\n\n🖼️ Si alguien te envía una \"Aplicación privada\" (ej. de https://webxdc.org ), puedes añadirla a la pantalla principal del teléfono</string>
 
 </resources>
