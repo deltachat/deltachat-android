@@ -850,6 +850,10 @@
     <string name="qraccount_success_enter_name">Ingreso satisfactorio—tu dirección de email es %1$s\n\nSi lo deseas, puedes ingresar un nombre y una imagen de perfil, que será mostrada a los usuarios que escribas.</string>
     <string name="qraccount_qr_code_cannot_be_used">El código QR escaneado no puede ser usado para configurar una nueva cuenta.</string>
     <string name="qraccount_use_on_new_install">El código QR escaneado esta configurando la nueva cuenta. Puedes escanear el código QR cuando estés preparando una nueva instalación de Delta Chat</string>
+    <!-- the placeholder will be replaced by the e-mail address of the account -->
+    <string name="qrlogin_ask_login">¿Iniciar sesión en \"%1$s\"?</string>
+    <!-- the placeholder will be replaced by the e-mail address of the account -->
+    <string name="qrlogin_ask_login_another">¿Iniciar sesión en \"%1$s\"?\n\nTu cuenta existente no será eliminada. Usa la opción \"Cambiar cuenta\" para cambiar entre tus cuentas.</string>
     <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s te invitó a unirte a este grupo.\n\nEsperando que el dispositivo de %2$s responda…</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
@@ -998,6 +1002,11 @@
     <string name="notifications_avg_minutes">Promedio cada %1$d minutos</string>
     <string name="notifications_avg_hours">Promedio cada %1$d horas</string>
     <string name="last_check_at">Comprobado en %1$s</string>
+    <!-- iOS webxdc selector -->
+    <string name="webxdc_selector_empty_hint">Aplicaciones privadas recibidas o enviadas en cualquier chat aparecerán aquí. \"Archivos\" muestra aplicaciones privadas descargadas. </string>
+    <!-- iOS webxdc shortcut page -->
+    <string name="shortcut_step1_tap_share_btn">Presiona el botón de compartir</string>
+    <string name="shortcut_step2_tap_add_to_home_screen">Selecciona \"Añadir a la pantalla principal\" para añadir la aplicación a tu pantaña principal.</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Al permitir el acceso a la cámara podrás tomar fotos y videos.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Al permitir acceder a tu libreta de direcciones podrás chatear con los contactos de tu dispositivo.</string>
