@@ -1014,5 +1014,6 @@
 
 
     <!-- device messages for updates -->
+    <string name="update_1_34_android">Was ist neu in 1.34?\n\n🤗 Bessere Kontaktlisten: Sortiert nach \"Zuletzt gesehen\" und innerhalb von 10 Minuten gesehene Kontakte werden mit einem Punkt markiert 🟢\n\n📑 Neue Tabs in Chat-Profilen: \"Audio\" und \"Private Apps\"\n\n🖼️ Wenn Ihnen jemand eine \"Private App\" (z.B. von https://webxdc.org ) schickt, können Sie diese zum Startbildschirm hinzufügen</string>
 
 </resources>
