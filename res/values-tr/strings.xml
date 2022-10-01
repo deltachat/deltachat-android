@@ -751,9 +751,9 @@
     <!-- %1$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_disabled_by_other">%1$s tarafından kaybolan iletiler zamanlayıcısı etkisizleştirildi.</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to -->
-    <string name="ephemeral_timer_seconds_by_you">Kaybolan iletiler zamanlayıcısını %1$s sn olarak ayarladınız.</string>
+    <string name="ephemeral_timer_seconds_by_you">Kaybolan iletiler zamanlayıcısını %1$s saniye olarak ayarladınız.</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
-    <string name="ephemeral_timer_seconds_by_other">%2$s tarafından kaybolan iletiler zamanlayıcısı %1$s sn olarak ayarlandı.</string>
+    <string name="ephemeral_timer_seconds_by_other">%2$s tarafından kaybolan iletiler zamanlayıcısı %1$s saniye olarak ayarlandı.</string>
     <string name="ephemeral_timer_1_minute_by_you">Kaybolan iletiler zamanlayıcısını 1 dakika olarak ayarladınız.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_1_minute_by_other">%1$s tarafından kaybolan iletiler zamanlayıcısı 1 dakika olarak ayarlandı.</string>

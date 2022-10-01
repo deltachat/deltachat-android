@@ -171,6 +171,11 @@
     <string name="images_and_videos">Obrazy i wideo</string>
     <string name="file">Plik</string>
     <string name="files">Pliki</string>
+    <!-- "Private App" is used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
+    <string name="webxdc_app">Prywatna aplikacja</string>
+    <!-- plural of "Private App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
+    <string name="webxdc_apps">Prywatne aplikacje</string>
+    <string name="files_and_webxdx_apps">Pliki i prywatne aplikacje</string>
     <string name="unknown">Nieznany</string>
 
     <string name="green">Zielony</string>
@@ -280,6 +285,9 @@
     <string name="ConversationFragment_quoted_message_not_found">Nie znaleziono oryginalnej wiadomości</string>
     <string name="reply_privately">Odpowiedz prywatnie </string>
     <string name="source_code">Kod źródłowy</string>
+    <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
+    <string name="add_to_home_screen">Dodaj do ekranu głównego</string>
+
     <string name="mute_for_one_hour">Wyłącz na 1 godzinę</string>
     <string name="mute_for_two_hours">Wyłącz na 2 godziny</string>
     <string name="mute_for_one_day">Wyłącz na 1 dzień</string>
@@ -472,6 +480,7 @@
     <string name="tab_image_empty_hint">Tutaj  będą wyświetlane zdjęcia udostępnione w tym czacie.</string>
     <string name="tab_video_empty_hint">Tutaj będą wyświetlane filmy udostępnione w tym czacie.</string>
     <string name="tab_audio_empty_hint">Tutaj będą wyświetlane pliki dźwiękowe i wiadomości głosowe udostępnione w tym czacie.</string>
+    <string name="tab_webxdc_empty_hint">Tutaj pojawią się prywatne aplikacje udostępnione na tym czacie.</string>
     <string name="media_preview">Podgląd multimediów</string>
     <string name="send_message">Wyślij wiadomość</string>
     <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
@@ -745,62 +754,65 @@
     <string name="systemmsg_subject_for_new_contact">Wiadomość od %1$s</string>
     <string name="systemmsg_failed_sending_to">Nie udało się wysłać wiadomości do %1$s.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
-    <string name="group_name_changed_by_you">Zmieniono nazwę grupy z \"%1$s\" na \"%2$s\" przeze mnie.</string>
+    <string name="group_name_changed_by_you">Zmieniono nazwę grupy z „%1$s“ na „%2$s“.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
-    <string name="group_name_changed_by_other">Zmieniono nazwę grupy z \"%1$s\" na \"%2$s\" przez %3$s.</string>
-    <string name="group_image_changed_by_you">Zmieniono obraz grupy przeze mnie.</string>
+    <string name="group_name_changed_by_other">Nazwa grupy zmieniona z „%1$s“ na „%2$s“ przez %3$s.</string>
+    <string name="group_image_changed_by_you">Zmieniono obraz grupy.</string>
     <!-- %1$s will be replaced by name and address of the contact who did the action -->
-    <string name="group_image_changed_by_other">Zmieniono obraz grupy przez %1$s.</string>
+    <string name="group_image_changed_by_other">Obraz grupy zmieniony przez %1$s.</string>
     <!-- %1$s will be replaced by name and address of the contact added to the group -->
-    <string name="add_member_by_you">Dodano członka %1$s przeze mnie.</string>
+    <string name="add_member_by_you">Dodano członka %1$s.</string>
     <!-- %1$s will be replaced by name and address of the contact added to the group, %2$s will be replaced by name and address of the contact who did the action -->
-    <string name="add_member_by_other">Dodano członka %1$s przez %2$s.</string>
+    <string name="add_member_by_other">Użytkownik %2$s dodał członka %1$s.</string>
     <!-- %1$s will be replaced by name and address of the contact removed from the group -->
-    <string name="remove_member_by_you">Usunięto członka %1$s przeze mnie.</string>
+    <string name="remove_member_by_you">Usunięto członka %1$s.</string>
     <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
-    <string name="remove_member_by_other">Usunięto członka %1$s przez %2$s.</string>
-    <string name="group_image_deleted_by_you">Usunięto obraz grupy przeze mnie.</string>
+    <string name="remove_member_by_other">Użytkownik %2$s usunął członka %1$s.</string>
+    <string name="group_left_by_you">Opuszczono grupę</string>
     <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="group_image_deleted_by_other">Usunięto obraz grupy przez %1$s.</string>
-    <string name="ephemeral_timer_disabled_by_you">Wyłączono zegar znikających wiadomości przeze mnie.</string>
+    <string name="group_left_by_other">Grupa opuszczona przez %1$s.</string>
+    <string name="group_image_deleted_by_you">Usunięto obraz grupy.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="ephemeral_timer_disabled_by_other">Wyłączono zegar znikających wiadomości przez %1$s.</string>
+    <string name="group_image_deleted_by_other">Użytkownik %1$s usunął obraz grupy.</string>
+    <string name="ephemeral_timer_disabled_by_you">Wyłączono zegar znikających wiadomości.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_disabled_by_other">Zegar znikających wiadomości został wyłączony przez %1$s.</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to -->
-    <string name="ephemeral_timer_seconds_by_you">Ustawiono zegar znikających wiadomości na %1$s s przeze mnie.</string>
+    <string name="ephemeral_timer_seconds_by_you">Ustawiono zegar znikających wiadomości na %1$s s.</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
-    <string name="ephemeral_timer_seconds_by_other">Ustawiono zegar znikających wiadomości na %1$s s przez %2$s.</string>
-    <string name="ephemeral_timer_1_minute_by_you">Ustawiono zegar znikających wiadomości na 1 minutę przeze mnie.</string>
+    <string name="ephemeral_timer_seconds_by_other">Użytkownik %2$s ustawił zegar znikających wiadomości na %1$s s.</string>
+    <string name="ephemeral_timer_1_minute_by_you">Ustawiono zegar znikających wiadomości na 1 minutę.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="ephemeral_timer_1_minute_by_other">Ustawiono zegar znikających wiadomości na 1 minutę przez %1$s.</string>
-    <string name="ephemeral_timer_1_hour_by_you">Ustawiono zegar znikających wiadomości na 1 godzinę przeze mnie.</string>
+    <string name="ephemeral_timer_1_minute_by_other">Użytkownik %1$s ustawił zegar znikających wiadomości na 1 minutę.</string>
+    <string name="ephemeral_timer_1_hour_by_you">Ustawiono zegar znikających wiadomości na 1 godzinę.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="ephemeral_timer_1_hour_by_other">Ustawiono zegar znikających wiadomości na 1 godzinę przez %1$s.</string>
-    <string name="ephemeral_timer_1_day_by_you">Ustawiono zegar znikających wiadomości na 1 dzień przeze mnie.</string>
+    <string name="ephemeral_timer_1_hour_by_other">Użytkownik %1$s ustawił zegar znikających wiadomości na 1 godzinę.</string>
+    <string name="ephemeral_timer_1_day_by_you">Ustawiono zegar znikających wiadomości na 1 dzień.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="ephemeral_timer_1_day_by_other">Ustawiono zegar znikających wiadomości na 1 dzień przez %1$s.</string>
-    <string name="ephemeral_timer_1_week_by_you">Ustawiono zegar znikających wiadomości na 1 tydzień przeze mnie.</string>
+    <string name="ephemeral_timer_1_day_by_other">Użytkownik %1$s ustawił zegar znikających wiadomości na 1 dzień.</string>
+    <string name="ephemeral_timer_1_week_by_you">Ustawiono zegar znikających wiadomości na 1 tydzień.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="ephemeral_timer_1_week_by_other">Ustawiono zegar znikających wiadomości na 1 tydzień przez %1$s.</string>
+    <string name="ephemeral_timer_1_week_by_other">Użytkownik %1$s ustawił zegar znikających wiadomości na 1 tydzień.</string>
     <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to -->
-    <string name="ephemeral_timer_minutes_by_you">Ustawiono zegar znikających wiadomości na czas %1$s minut przeze mnie.</string>
+    <string name="ephemeral_timer_minutes_by_you">Ustawiono zegar znikających wiadomości na %1$s min.</string>
     <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
-    <string name="ephemeral_timer_minutes_by_other">Ustawiono zegar znikających wiadomości na czas %1$s minut przez %2$s.</string>
+    <string name="ephemeral_timer_minutes_by_other">Użytkownik %2$s ustawił zegar znikających wiadomości na %1$s min.</string>
     <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to -->
-    <string name="ephemeral_timer_hours_by_you">Ustawiono zegar znikających wiadomości na czas %1$s godzin przeze mnie.</string>
+    <string name="ephemeral_timer_hours_by_you">Ustawiono zegar znikających wiadomości na %1$s godz.</string>
     <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
-    <string name="ephemeral_timer_hours_by_other">Ustawiono zegar znikających wiadomości na czas %1$s godzin przez %2$s.</string>
+    <string name="ephemeral_timer_hours_by_other">Użytkownik %2$s ustawił zegar znikających wiadomości na %1$s godz.</string>
     <!-- %1$s will be replaced by the number of days (always >1) the timer is set to -->
-    <string name="ephemeral_timer_days_by_you">Ustawiono zegar znikających wiadomości na czas %1$s dni przeze mnie.</string>
+    <string name="ephemeral_timer_days_by_you">Ustawiono zegar znikających wiadomości na %1$s dni.</string>
     <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
-    <string name="ephemeral_timer_days_by_other">Ustawiono zegar znikających wiadomości na czas %1$s dni przez %2$s.</string>
+    <string name="ephemeral_timer_days_by_other"> Użytkownik %2$s ustawił zegar znikających wiadomości na %1$s dni.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to -->
-    <string name="ephemeral_timer_weeks_by_you">Ustawiono zegar znikających wiadomości na czas %1$s tygodni przeze mnie.</string>
+    <string name="ephemeral_timer_weeks_by_you">Ustawiono zegar znikających wiadomości na %1$s tyg.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
-    <string name="ephemeral_timer_weeks_by_other">Ustawiono zegar znikających wiadomości na czas %1$s tygodni przez %2$s.</string>
-    <string name="protection_enabled_by_you">Ochrona czatu włączona przeze mnie.</string>
+    <string name="ephemeral_timer_weeks_by_other"> Użytkownik %2$s ustawił zegar znikających wiadomości na %1$s tyg.</string>
+    <string name="protection_enabled_by_you">Włączono ochronę czatu.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
     <string name="protection_enabled_by_other">Ochrona czatu włączona przez %1$s.</string>
-    <string name="protection_disabled_by_you">Ochrona czatu wyłączona przeze mnie.</string>
+    <string name="protection_disabled_by_you">Wyłączono ochronę czatu.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
     <string name="protection_disabled_by_other">Ochrona czatu wyłączona przez %1$s.</string>
 
@@ -998,6 +1010,9 @@
     <string name="notifications_avg_minutes">Średnio co %1$d min.</string>
     <string name="notifications_avg_hours">Średnio co %1$d godz.</string>
     <string name="last_check_at">Sprawdzono o %1$s</string>
+    <!-- iOS webxdc selector -->
+    <string name="webxdc_selector_empty_hint">Tutaj pojawią się prywatne aplikacje otrzymane lub wysłane w dowolnym czacie. „Pliki” pokazuje właśnie pobrane prywatne aplikacje.</string>
+    <string name="shortcut_step2_tap_add_to_home_screen">Wybierz „Dodaj do ekranu głównego”, aby dodać aplikację do ekranu głównego.</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat używa aparatu do robienia i wysyłania zdjęć i filmów oraz do skanowania kodów QR.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Zezwolenie na dostęp do książki adresowej pozwala czatować z kontaktami z urządzenia.</string>
