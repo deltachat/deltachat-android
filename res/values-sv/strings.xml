@@ -715,6 +715,4 @@
     <string name="perm_enable_bg_already_done">Du har redan gett Delta Chatt tillstånd att ta emot meddelanden i bakgrunden.\n\nKontrollera dina systeminställningar också, om det fortfarande inte kommer några meddelanden i bakgrunden.</string>
 
 
-    <!-- device messages for updates -->
-
-</resources>
+    </resources>

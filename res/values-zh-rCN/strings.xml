@@ -999,5 +999,6 @@
 
 
     <!-- device messages for updates -->
+    <string name="update_1_34_android">1.34 版有哪些变化？\n\n🤗 更友好的联系人列表：按“上次见到”顺序排列，10分钟内见到的联系人用一个圆点标记 🟢\n\n📑 聊天概况的新页面：“音频” 和“私人应用”\n\n🖼️ 如果有人给你发送一个“私人应用”(例如，从 https://webxdc.org)，你可以将它添加到主屏幕</string>
 
 </resources>

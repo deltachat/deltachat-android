@@ -802,6 +802,4 @@
     <string name="perm_enable_bg_already_done">Du har allerede tilladt Delta Chat at modtage beskeder i baggrunden.\n\nHvis beskeder ikke ankommer i baggrunden, undersøg dine systemindstillinger.</string>
 
 
-    <!-- device messages for updates -->
-
-</resources>
+    </resources>

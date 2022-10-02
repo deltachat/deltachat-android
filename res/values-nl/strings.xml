@@ -1014,5 +1014,6 @@
 
 
     <!-- device messages for updates -->
+    <string name="update_1_34_android">Wat is er nieuw en verbeterd in 1.34?\n\n🤗 Handigere contactpersoonslijsten: sorteren op laatst gezien en contactpersonen die de afgelopen 10 minuten actief waren worden voortaan gemarkeerd met een stip 🟢\n\n📑 Nieuwe pagina\'s in profielen: audio en privé-apps\n\n🖼️ Als iemand je een privé-app stuurt (bijv. van https://webxdc.org ), dan kun je deze toevoegen aan het startscherm.</string>
 
 </resources>

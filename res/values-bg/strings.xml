@@ -909,6 +909,4 @@ votes
     <string name="perm_enable_bg_already_done">Вече разрешихте Delta Chat да получава съобщения във фонов режим.\n\nАко съобщенията все още не пристигат във фонов режим, моля проверете Вашите системни настройки.</string>
 
 
-    <!-- device messages for updates -->
-
-</resources>
+    </resources>

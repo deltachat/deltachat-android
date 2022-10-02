@@ -248,6 +248,4 @@
     <string name="remove_desktop">நீக்கு</string>
     <string name="save_desktop">சேமி</string>
     <string name="name_desktop">பெயர்</string>
-    <!-- device messages for updates -->
-
-</resources>
+    </resources>

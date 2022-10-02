@@ -989,6 +989,4 @@
     <string name="perm_enable_bg_already_done">Annoit jo luvan viestien vastaanottamiselle taustalla.\n\nJos et saa viestejä taustalla, tarkista myös järjestelmäasetukset.</string>
 
 
-    <!-- device messages for updates -->
-
-</resources>
+    </resources>

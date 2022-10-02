@@ -707,12 +707,12 @@
     <string name="autocrypt_send_asm_explain_after">Ayarlamanız kendinize gönderildi. Diğer aygıta geçin ve ayarlama iletisini açın. Size bir ayarlama kodu sorulmalı. Aşağıdaki sayıları girin:\n\n%1$s</string>
     <string name="autocrypt_prefer_e2ee">Uçtan Uca Şifrelemeyi Yeğle</string>
     <string name="autocrypt_asm_subject">Autocrypt Ayarlama İletisi</string>
-    <string name="autocrypt_asm_general_body">Bu, uçtan uca ayarlamanızı istemciler arasında aktarmak için kullanılan Autocrypt Ayarlama İletisi\'dir.\n\nŞifreyi çözmek ve ayarlamanızı kullanmak için iletiyi bir Autocrypt uyumlu istemcide açın ve oluşturan aygıtta sunulan ayarlama kodunu girin.</string>
+    <string name="autocrypt_asm_general_body">Bu, uçtan uca ayarlamanızı istemciler arasında aktarmak için kullanılan Autocrypt Ayarlama İletisi\'dir.\n\nŞifreyi çözmek ve ayarlamanızı kullanmak için iletiyi Autocrypt uyumlu bir istemcide açın ve oluşturan aygıtta sunulan ayarlama kodunu girin.</string>
     <string name="autocrypt_asm_click_body">Bu, uçtan uca ayarlamanızı istemciler arasında aktarmak için kullanılan Autocrypt Ayarlama İletisi\'dir.\n\nŞifreyi çözmek ve ayarlamanızı kullanmak için bu iletiye dokunun ya da tıklayın.</string>
     <string name="autocrypt_continue_transfer_title">Autocrypt Ayarlama İletisi</string>
     <string name="autocrypt_continue_transfer_please_enter_code">Lütfen diğer aygıtta görüntülenen ayarlama kodunu girin.</string>
     <string name="autocrypt_continue_transfer_succeeded">Uçtan uca ayarlaması aktarıldı. Bu aygıt artık aynı ayarlamayla diğer aygıt gibi Autocrypt kullanmaya hazır.</string>
-    <string name="autocrypt_continue_transfer_retry">Yeniden dene</string>
+    <string name="autocrypt_continue_transfer_retry">Yeniden Dene</string>
     <string name="autocrypt_bad_setup_code">Yanlış ayarlama kodu. Lütfen yeniden deneyin.\n\nAyarlama kodunu anımsamıyorsanız, diğer aygıttan yeni bir Autocrypt Ayarlama İletisi gönderin.</string>
 
 
@@ -1014,5 +1014,6 @@
 
 
     <!-- device messages for updates -->
+    <string name="update_1_34_android">1.34\'te ne yeni?\n\n🤗 Daha dostça kişi listeleri: Son görülmeye göre düzenlenir ve 10 dakika içinde görülen kişiler bir noktayla işaretlenir 🟢\n\n📑 Sohbet profillerindeki yeni sayfalar: \"Ses\" ve \"Özel Uygulamalar\"\n\n🖼️ Biri size bir \"Özel Uygulama\" (ör. https://webxdc.org) gönderirse, onu ana ekranınıza ekleyebilirsiniz</string>
 
 </resources>

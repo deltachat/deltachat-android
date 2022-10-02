@@ -255,6 +255,4 @@
     <string name="name_desktop">Ime</string>
     <string name="message_detail_sent_desktop">poslano</string>
     <string name="message_detail_received_desktop">primljeno</string>
-    <!-- device messages for updates -->
-
-</resources>
+    </resources>

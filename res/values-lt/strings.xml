@@ -772,6 +772,4 @@
     <string name="perm_enable_bg_already_done">Jūs jau leidote Delta Chat gauti žinutes fone.\n\nJei žinutės vis tiek nepristatomos fone, patikrinkite taip pat savo sistemos nustatymus.</string>
 
 
-    <!-- device messages for updates -->
-
-</resources>
+    </resources>

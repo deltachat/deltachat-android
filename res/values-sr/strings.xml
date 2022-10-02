@@ -351,6 +351,4 @@
     <string name="save_desktop">Сачувај</string>
     <string name="name_desktop">Име</string>
     <string name="export_backup_desktop">Извези резервну копију</string>
-    <!-- device messages for updates -->
-
-</resources>
+    </resources>

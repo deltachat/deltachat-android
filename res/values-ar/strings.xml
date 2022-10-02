@@ -229,6 +229,4 @@
     <string name="remove_desktop">أزِل</string>
     <string name="save_desktop">حفظ</string>
     <string name="name_desktop">الاسم</string>
-    <!-- device messages for updates -->
-
-</resources>
+    </resources>

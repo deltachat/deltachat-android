@@ -382,6 +382,4 @@
     <string name="timestamp_format_m_desktop">MMM D</string>
     <string name="remove_desktop">Forviŝi</string>
     <string name="save_desktop">Konservi</string>
-    <!-- device messages for updates -->
-
-</resources>
+    </resources>

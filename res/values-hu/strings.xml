@@ -311,6 +311,4 @@
     <string name="export_backup_desktop">Biztonsági mentés exportálása</string>
     <string name="menu.view.developer.open.log.folder">Naplófájlok könyvtárának megnyitása</string>
     <string name="menu.view.developer.open.current.log.file">Jelenlegi naplófájl megnyitása</string>
-    <!-- device messages for updates -->
-
-</resources>
+    </resources>

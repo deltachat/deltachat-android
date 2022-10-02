@@ -467,6 +467,4 @@
     <string name="select_group_image_desktop">그룹 이미지 선택</string>
     <string name="autocrypt_incorrect_desktop">잘못된 설정 코드입니다. 다시 시도하십시오.</string>
     <string name="create_chat_error_desktop">대화를 만들 수 없습니다.</string>
-    <!-- device messages for updates -->
-
-</resources>
+    </resources>

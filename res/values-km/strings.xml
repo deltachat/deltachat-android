@@ -886,6 +886,4 @@
     <string name="perm_enable_bg_already_done">អ្នកបានអនុញ្ញាតរួចរាល់ហើយឲ្យសា Delta Chat ដើម្បីទទួលសារនៅផ្ទៃខាងក្រោយ\n\nប្រសិនបើ សារនៅតែមិនមកដល់ផ្ទៃខាងក្រោយ សូមពិនិត្យការការកំណត់ប្រពន្ធ័របស់អ្នកផងដែរ។</string>
 
 
-    <!-- device messages for updates -->
-
-</resources>
+    </resources>
