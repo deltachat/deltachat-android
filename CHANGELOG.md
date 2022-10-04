@@ -1,5 +1,14 @@
 # Delta Chat Android Changelog
 
+## v1.34.1
+2022-10
+
+* more visible "recently seen" indicator
+* fix: hide "disappearing messages" options for mailing lists
+* update translations
+* using core95
+
+
 ## v1.34.0
 2022-10
 
