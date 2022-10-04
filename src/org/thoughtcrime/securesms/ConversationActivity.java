@@ -478,7 +478,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       menu.findItem(R.id.menu_videochat_invite).setVisible(false);
     }
 
-    if (!dcChat.canSend() || dcChat.isBroadcast()) {
+    if (!dcChat.canSend() || dcChat.isBroadcast() || dcChat.isMailingList()) {
       menu.findItem(R.id.menu_ephemeral_messages).setVisible(false);
     }
 
