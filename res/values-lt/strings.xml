@@ -200,6 +200,7 @@
     <string name="menu_copy_link_to_clipboard">Kopijuoti nuorodą</string>
     <string name="menu_copy_text_to_clipboard">Kopijuoti tekstą</string>
     <string name="menu_copy_image_to_clipboard">Kopijuoti paveikslą</string>
+    <string name="menu_copy_email_to_clipboard">Kopijuoti el. paštą</string>
     <string name="paste_from_clipboard">Įdėti iš iškarpinės</string>
     <string name="menu_forward">Persiųsti žinutę</string>
     <string name="menu_reply">Atsakyti į žinutę</string>
