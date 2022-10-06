@@ -248,7 +248,7 @@
     <string name="menu_save_log">Logdatei speichern</string>
     <string name="menu_more_options">Mehr Optionen</string>
     <string name="menu_learn_spelling">Schreibweise lernen</string>
-    <string name="menu_chat_audit_log">Chat-Überwachungsprotokoll</string>
+    <string name="menu_chat_audit_log">Chat-Ereignisprotokoll</string>
     <string name="jump_to_message">Zur Nachricht springen</string>
     <string name="copy_json">JSON kopieren</string>
     <string name="replace_draft">Entwurf ersetzen</string>
@@ -409,7 +409,7 @@
 
     <!-- chat audit log -->
     <string name="chat_audit_log_empty_message">Systemmeldungen dieses Chats werden hier angezeigt.</string>
-    <string name="chat_audit_log_title">Chat-Überwachungsprotokoll für %1$s</string>
+    <string name="chat_audit_log_title">Chat-Ereignisprotokoll für %1$s</string>
     <string name="chat_audit_log_description">Diese Ansicht zeigt nur System- und Infomeldungen. Nützlich, um die letzten Chat-Aktionen zu finden, ohne durch viele normale Nachrichten zu scrollen.</string>
 
     <!-- punycode warning / labeled links -->
