@@ -1034,4 +1034,7 @@
     <string name="perm_enable_bg_already_done">Pozwolono już Delta Chat na odbieranie wiadomości w tle.\n\nJeśli wiadomości nadal nie docierają w tle, sprawdź też ustawienia systemu.</string>
 
 
-    </resources>
+    <!-- device messages for updates -->
+    <string name="update_1_34_android">Co nowego w wersji 1.34?\n\n🤗 Bardziej przyjazne listy kontaktów: uporządkowane według ostatnio widzianych, a kontakty widziane w ciągu 10 minut są oznaczone kropką 🟢\n\n📑 Nowe strony w profilach czatu: „Dźwięk” i „Aplikacje prywatne”\n\n🖼️ Jeśli ktoś wyśle ci „Prywatną aplikację” (np. z https://webxdc.org ), możesz dodać ją do ekranu głównego</string>
+
+</resources>

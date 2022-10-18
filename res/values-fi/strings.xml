@@ -155,6 +155,11 @@
     <string name="images_and_videos">Kuvat ja videot</string>
     <string name="file">Tiedosto</string>
     <string name="files">Tiedostot</string>
+    <!-- "Private App" is used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
+    <string name="webxdc_app">Yksityinen sovellus</string>
+    <!-- plural of "Private App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
+    <string name="webxdc_apps">Yksityiset sovellukset</string>
+    <string name="files_and_webxdx_apps">Tiedostot ja yksityiset sovellukset</string>
     <string name="unknown">Tuntematon</string>
 
     <string name="green">Vihreä</string>
@@ -264,6 +269,9 @@
     <string name="ConversationFragment_quoted_message_not_found">Alkuperäistä viestiä ei löydy</string>
     <string name="reply_privately">Vastaa yksityisesti</string>
     <string name="source_code">Lähdekoodi</string>
+    <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
+    <string name="add_to_home_screen">Lisää aloitusnäytölle</string>
+
     <string name="mute_for_one_hour">Mykistä 1 tunniksi</string>
     <string name="mute_for_two_hours">Mykistä 2 tunniksi</string>
     <string name="mute_for_one_day">Mykistä 1 päiväksi</string>
@@ -442,6 +450,7 @@
     <string name="tab_image_empty_hint">Tässä keskustelussa jaetut kuvat näkyvät tässä.</string>
     <string name="tab_video_empty_hint">Tässä keskustelussa jaetut videot näkyvät tässä.</string>
     <string name="tab_audio_empty_hint">Tässä keskustelussa jaetut äänitiedostot ja -viestit näkyvät tässä.</string>
+    <string name="tab_webxdc_empty_hint">Keskustelussa jaetut yksityiset sovellukset näkyvät tässä.</string>
     <string name="media_preview">Median esikatselu</string>
     <string name="send_message">Lähetä viesti</string>
     <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
@@ -729,9 +738,15 @@
     <string name="remove_member_by_you">Jäsen %1$s poistettu minun toimestani.</string>
     <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
     <string name="remove_member_by_other">Jäsen %1$s poistettu käyttäjän %2$s toimesta.</string>
+    <string name="group_left_by_you">Poistuit ryhmästä.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="group_left_by_other">%1$s poistui ryhmästä.</string>
     <string name="group_image_deleted_by_you">Ryhmän kuva poistettu minun toimestani.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
     <string name="group_image_deleted_by_other">Ryhmän kuva poistettu käyttäjän %1$s toimesta.</string>
+    <string name="location_enabled_by_you">Aloitit sijainnin jakamisen.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="location_enabled_by_other">%1$s aloitti sijainnin jakamisen.</string>
     <string name="ephemeral_timer_disabled_by_you">Katoavien viestien ajastin poistettiin minun toimestani.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_disabled_by_other">Katoavien viestien ajastin poistettiin käyttäjän %1$s toimesta.</string>
@@ -820,6 +835,10 @@
     <string name="qraccount_success_enter_name">Kirjautuminen onnistui - sähköpostiosoitteesa on %1$s\n\nVoit nyt halutessasi antaa nimen ja profiilikuvan, jotka näytetään muille kirjoittaessasi heille.</string>
     <string name="qraccount_qr_code_cannot_be_used">Uutta tiliä ei voida luoda skannatulla QR-koodilla.</string>
     <string name="qraccount_use_on_new_install">Skannattu QR-koodi on käytössä uuden tilin luomiseksi. Voit skannata QR-koodin uuden Delta Chat -asennuksen yhteydessä.</string>
+    <!-- the placeholder will be replaced by the e-mail address of the account -->
+    <string name="qrlogin_ask_login">Haluatko kirjautua osoitteella \"%1$s\"?</string>
+    <!-- the placeholder will be replaced by the e-mail address of the account -->
+    <string name="qrlogin_ask_login_another">Haluatko kirjautua osoitteella \"%1$s\"?\n\nNykyistä tiliäsi ei poisteta. Käytä \"Vaihda tiliä\" -kohtaa vaihtaaksesi tiliesi välillä.</string>
     <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s kutsui sinut tähän ryhmään.\n\nOdotetaan vastausta yhteystiedon %2$s laitteelta...</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
@@ -968,6 +987,11 @@
     <string name="notifications_avg_minutes">Keskimäärin%1$d minuutin välein</string>
     <string name="notifications_avg_hours">Keskimäärin %1$d tunnin välein</string>
     <string name="last_check_at">Tarkistettu %1$s</string>
+    <!-- iOS webxdc selector -->
+    <string name="webxdc_selector_empty_hint">Kaikissa keskusteluissa jaetut yksityiset sovellukset näkyvät tässä. \"Tiedostot\" näyttää ladatut yksityiset sovellukset.</string>
+    <!-- iOS webxdc shortcut page -->
+    <string name="shortcut_step1_tap_share_btn">Napauta jakamispainiketta.</string>
+    <string name="shortcut_step2_tap_add_to_home_screen">Valitse \"Lisää aloitusnäytölle\" lisätäksesi sovelluksen puhelimesi aloitusnäytölle.</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat käyttää kameraa kuvien ja videoiden kuvaamiseen ja lähettämiseen sekä QR-koodien skannaamiseen.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat käyttää yhteystietojasi näyttämään listan sähköpostiosoitteista, joihin voit kirjoittaa. Delta Chatilla ei ole palvelimia, eikä yhteystietojasi lähetetä mihinkään.</string>

@@ -385,7 +385,7 @@
     <string name="retry_send">Nachricht erneut senden</string>
     <!-- reasons for a disabled message composer -->
     <string name="messaging_disabled_not_in_group">Sie können nicht schreiben, da Sie kein Mitglied dieser Gruppe sind. Bitten Sie ein anderes Mitglied, Sie hinzuzufügen.</string>
-    <string name="messaging_disabled_device_chat">Dieser Chat entält lokal generierte Nachrichten. Sie können hier keine Nachrichten schreiben.</string>
+    <string name="messaging_disabled_device_chat">Dieser Chat enthält lokal generierte Nachrichten. Sie können hier keine Nachrichten schreiben.</string>
     <string name="messaging_disabled_mailing_list">Das Senden von Nachrichten in Mailinglisten wird noch nicht unterstützt.</string>
     <string name="cannot_display_unsuported_file_type">Kann diesen Dateityp nicht anzeigen: %s</string>
     <string name="attachment_failed_to_load">Kann Anhang nicht laden</string>
