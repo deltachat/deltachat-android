@@ -171,6 +171,11 @@
     <string name="images_and_videos">Изображения и видео</string>
     <string name="file">Файл</string>
     <string name="files">Файлы</string>
+    <!-- "Private App" is used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
+    <string name="webxdc_app">Личное приложение</string>
+    <!-- plural of "Private App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
+    <string name="webxdc_apps">Личные приложения</string>
+    <string name="files_and_webxdx_apps">Файлы и личные приложения</string>
     <string name="unknown">Неизвестно</string>
 
     <string name="green">Зелёный</string>
@@ -306,7 +311,7 @@
     <string name="videochat">Видеочат</string>
     <string name="videochat_invite_user_to_videochat">Пригласить %1$s в видеочат?</string>
     <string name="videochat_invite_user_hint">Это требует совместимого приложения или совместимого браузера на обоих концах.</string>
-    <string name="videochat_contact_invited_hint">%1$s приглашено в видеочат.</string>
+    <string name="videochat_contact_invited_hint">%1$s приглашает в видеочат.</string>
     <string name="videochat_you_invited_hint">Вы приглашены в видеочат.</string>
     <string name="videochat_tap_to_join">Нажмите, чтобы присоединиться.</string>
     <string name="videochat_tap_to_open">Нажмите, чтобы открыть.</string>
@@ -475,6 +480,7 @@
     <string name="tab_image_empty_hint">Изображения, размещённые в этом чате, будут отображаться здесь.</string>
     <string name="tab_video_empty_hint">Видео, размещённые в этом чате, будут отображаться здесь.</string>
     <string name="tab_audio_empty_hint">Аудиофайлы и голосовые сообщения, размещённые в этом чате, будут отображаться здесь.</string>
+    <string name="tab_webxdc_empty_hint">Личные приложения, отправленные в этот чат, появятся здесь.</string>
     <string name="media_preview">Предпросмотр медиафайлов</string>
     <string name="send_message">Отправить сообщение</string>
     <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
@@ -859,6 +865,10 @@
     <string name="qraccount_success_enter_name">Вход успешно выполнен—ваш адрес электронной почты %1$s\n\nЕсли хотите, можете ввести имя и установить аватар, которые будут отображаться людям, которым вы пишете.</string>
     <string name="qraccount_qr_code_cannot_be_used">Отсканированный QR-код не может быть использован для создания нового аккаунта.</string>
     <string name="qraccount_use_on_new_install">Отсканированный QR-код предназначен для создания нового аккаунта. Вы можете отсканировать QR-код при установке Delta Chat.</string>
+    <!-- the placeholder will be replaced by the e-mail address of the account -->
+    <string name="qrlogin_ask_login">Войти в «%1$s»?</string>
+    <!-- the placeholder will be replaced by the e-mail address of the account -->
+    <string name="qrlogin_ask_login_another">Войти в «%1$s»?\n\nВаш существующий аккаунт не будет удален. Используйте пункт «Сменить аккаунт» чтобы переключаться между аккаунтами.</string>
     <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s пригласил вас в группу.\n\nОжидаем ответа от %2$s…</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
@@ -1007,6 +1017,11 @@
     <string name="notifications_avg_minutes">В среднем каждые %1$d минут</string>
     <string name="notifications_avg_hours">В среднем каждые %1$d часов</string>
     <string name="last_check_at">Проверено в %1$s</string>
+    <!-- iOS webxdc selector -->
+    <string name="webxdc_selector_empty_hint">Личные приложения, полученные или отправленные в любом чате, появятся здесь. «Файлы» показывают недавно загруженные личные приложения.</string>
+    <!-- iOS webxdc shortcut page -->
+    <string name="shortcut_step1_tap_share_btn">Нажмите кнопку «поделиться»</string>
+    <string name="shortcut_step2_tap_add_to_home_screen">Выберите «Добавить на главный экран», чтобы добавить приложение на ваш главный экран.</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat использует вашу камеру для фото и видео съёмки и сканирования QR-кодов.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat использует ваши контакты для просмотра имеющихся у них адресов электронной почты, которым вы можете написать. Delta Chat не имеет сервера, ваши контакты никуда не будут отправлены.</string>
@@ -1029,4 +1044,7 @@
 Вы уже разрешили Delta Chat получать сообщения в фоне.\n\nЕсли сообщения всё ещё не приходят в фоне, пожалуйста, проверьте также системные настройки.</string>
 
 
-    </resources>
+    <!-- device messages for updates -->
+    <string name="update_1_34_android">Что нового в 1.34?\n\n🤗 Улучшенные списки контактов: упорядочены по времени последнего появления, а контакты, которые были в сети последние 10 минут отмечены зеленым 🟢\n\n📑 Новые страницы в профиле чата: \"Аудио\" и \"Личные приложения\"\n\n🖼️ Если кто-то отправит вам «личное приложение» (например с https://webxdc.org ), вы можете добавить его на главный экран</string>
+
+</resources>

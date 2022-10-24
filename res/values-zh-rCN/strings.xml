@@ -633,8 +633,8 @@
     <string name="auto_download_messages">自动下载消息</string>
     <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB -->
     <string name="up_to_x">%1$s 以下</string>
-    <string name="up_to_x_most_worse_quality_images">%1$s 以下，图像质量最差</string>
-    <string name="up_to_x_most_balanced_quality_images">%1$s 以下，图像质量最均衡</string>
+    <string name="up_to_x_most_worse_quality_images">%1$s 以下，最差的图像质量</string>
+    <string name="up_to_x_most_balanced_quality_images">%1$s 以下，均衡的图像质量</string>
     <string name="download_failed">下载失败</string>
     <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string eg. "1 MiB message" -->
     <string name="n_bytes_message">%1$s 消息</string>
@@ -831,7 +831,7 @@
     <string name="contact_verified">%1$s 已验证。</string>
     <string name="contact_not_verified">无法验证 %1$s。</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
-    <string name="contact_setup_changed">已更改 %1$s 的加密设置</string>
+    <string name="contact_setup_changed">%1$s 的加密设置已更改。</string>
     <string name="verified_group_explain">已验证群组（实验性）可提供针对主动攻击的安全性。其中的成员被其他成员用第二个因素进行了验证，并且消息始终是端到端加密的。</string>
     <string name="copy_qr_data_success">已复制二维码链接到剪贴板</string>
     <string name="mailto_dialog_header_select_chat">选择要发送消息的聊天</string>
@@ -843,7 +843,7 @@
     <string name="notify_dismiss">不予理会</string>
     <string name="notify_reply_button">回复</string>
     <string name="notify_new_message">新消息</string>
-    <string name="notify_background_connection_enabled">后台连接已启用</string>
+    <string name="notify_background_connection_enabled">已启用后台连接</string>
     <string name="notify_priority_high">高</string>
     <string name="notify_priority_max">最高</string>
     <string name="notify_name_and_message">名称和消息</string>
@@ -975,8 +975,8 @@
     <!-- iOS webxdc selector -->
     <string name="webxdc_selector_empty_hint">任何聊天中接收或发送的私人文件都会出现在这里。“文件”显示私人应用刚被下载。</string>
     <!-- iOS webxdc shortcut page -->
-    <string name="shortcut_step1_tap_share_btn">单机分享按钮</string>
-    <string name="shortcut_step2_tap_add_to_home_screen">选择“添加到主屏”将应用添加到主屏幕。</string>
+    <string name="shortcut_step1_tap_share_btn">点击分享按钮</string>
+    <string name="shortcut_step2_tap_add_to_home_screen">选择“添加到主屏幕”来将应用添加到主屏幕。</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat 使用相机来拍摄、发送照片和视频以及扫描二维码。</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat 使用您的联系人来显示您可以写信到的电子邮件地址列表。 Delta Chat 没有服务器，您的联系人不会被发送到任何地方。</string>
