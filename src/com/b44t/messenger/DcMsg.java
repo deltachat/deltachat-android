@@ -1,5 +1,7 @@
 package com.b44t.messenger;
 
+import android.text.TextUtils;
+
 import org.json.JSONObject;
 
 import java.io.File;
@@ -200,7 +202,7 @@ public class DcMsg {
     }
 
     public boolean isFailed() {
-        return getState() == DC_STATE_OUT_FAILED;
+        return (getState() == DC_STATE_OUT_FAILED) || (!TextUtils.isEmpty(getError()));
     }
     public boolean isPreparing() {
         return getState() == DC_STATE_OUT_PREPARING;

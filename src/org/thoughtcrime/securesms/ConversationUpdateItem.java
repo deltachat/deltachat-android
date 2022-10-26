@@ -83,8 +83,8 @@ public class ConversationUpdateItem extends BaseConversationItem
     bodyText.setText(messageRecord.getDisplayBody());
     bodyText.setVisibility(VISIBLE);
 
-    if      (!messageRecord.isOutgoing())  deliveryStatusView.setNone();
-    else if (messageRecord.isFailed())     deliveryStatusView.setFailed();
+    if      (messageRecord.isFailed())     deliveryStatusView.setFailed();
+    else if (!messageRecord.isOutgoing())  deliveryStatusView.setNone();
     else if (messageRecord.isPreparing())  deliveryStatusView.setPreparing();
     else if (messageRecord.isPending())    deliveryStatusView.setPending();
     else                                   deliveryStatusView.setNone();
