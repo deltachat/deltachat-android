@@ -37,6 +37,7 @@ import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.preferences.widgets.NotificationPrivacyPreference;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.BitmapUtil;
+import org.thoughtcrime.securesms.util.IntentUtils;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 
@@ -103,7 +104,7 @@ public class NotificationCenter {
     private PendingIntent getOpenChatlistIntent() {
         Intent intent = new Intent(context, ConversationListActivity.class);
         intent.putExtra(ConversationListActivity.CLEAR_NOTIFICATIONS, true);
-        return PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        return PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT | IntentUtils.FLAG_MUTABLE());
     }
 
     private PendingIntent getOpenChatIntent(int chatId) {
@@ -112,7 +113,7 @@ public class NotificationCenter {
         intent.setData((Uri.parse("custom://"+System.currentTimeMillis())));
         return TaskStackBuilder.create(context)
                 .addNextIntentWithParentStack(intent)
-                .getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
+                .getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT | IntentUtils.FLAG_MUTABLE());
     }
 
     private PendingIntent getRemoteReplyIntent(int chatId) {
@@ -121,7 +122,7 @@ public class NotificationCenter {
         intent.setData((Uri.parse("custom://"+System.currentTimeMillis())));
         intent.putExtra(RemoteReplyReceiver.CHAT_ID_EXTRA, chatId);
         intent.setPackage(context.getPackageName());
-        return PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        return PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT | IntentUtils.FLAG_MUTABLE());
     }
 
     private PendingIntent getMarkAsReadIntent(int chatId, boolean markNoticed) {
@@ -130,7 +131,7 @@ public class NotificationCenter {
         intent.setData((Uri.parse("custom://"+System.currentTimeMillis())));
         intent.putExtra(MarkReadReceiver.CHAT_ID_EXTRA, chatId);
         intent.setPackage(context.getPackageName());
-        return PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        return PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT | IntentUtils.FLAG_MUTABLE());
     }
 
 

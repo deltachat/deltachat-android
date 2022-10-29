@@ -21,6 +21,7 @@ import androidx.core.content.ContextCompat;
 import org.thoughtcrime.securesms.DummyActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.notifications.NotificationCenter;
+import org.thoughtcrime.securesms.util.IntentUtils;
 
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -117,7 +118,7 @@ public final class GenericForegroundService extends Service {
                                                            .setTicker(active.contentText)
                                                            .setContentText(active.contentText)
                                                            .setProgress(active.progressMax, active.progress, active.indeterminate)
-                                                           .setContentIntent(PendingIntent.getActivity(this, 0, new Intent(this, DummyActivity.class), 0))
+                                                           .setContentIntent(PendingIntent.getActivity(this, 0, new Intent(this, DummyActivity.class), IntentUtils.FLAG_MUTABLE()))
                                                            .build());
   }
 
