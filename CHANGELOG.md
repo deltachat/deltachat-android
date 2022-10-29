@@ -1,5 +1,18 @@
 # Delta Chat Android Changelog
 
+## v1.34.2
+2022-10
+
+* fix messages not arriving on newer androids by switching to more modern APIs
+* fix "recently seen" indicator for right-to-left languages
+* fix message bubble corner for right-to-left languages
+* fix: suppress welcome messages after account import
+* fix: apply language changes to all accounts
+* update dependencies and set targetSdkVersion to 32
+* update translations and local help
+* update to core98
+
+
 ## v1.34.1
 2022-10
 
