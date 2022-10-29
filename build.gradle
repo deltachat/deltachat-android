@@ -28,11 +28,16 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'com.google.android.material:material:1.2.0'
     implementation 'androidx.legacy:legacy-support-v13:1.0.0'
-    implementation 'androidx.preference:preference:1.2.0'
+    implementation ('androidx.preference:preference:1.2.0') {
+        exclude group: 'androidx.lifecycle', module:'lifecycle-viewmodel'
+        exclude group: 'androidx.lifecycle', module:'lifecycle-viewmodel-ktx'
+    }
     implementation 'androidx.legacy:legacy-preference-v14:1.0.0'
     implementation 'androidx.exifinterface:exifinterface:1.3.5'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     implementation 'androidx.lifecycle:lifecycle-common-java8:2.5.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel:2.5.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
     implementation 'androidx.work:work-runtime:2.7.1'
     implementation 'com.google.android.exoplayer:exoplayer-core:2.9.6' // plays video and audio
     implementation 'com.google.android.exoplayer:exoplayer-ui:2.9.6'
