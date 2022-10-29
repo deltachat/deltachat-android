@@ -4,6 +4,10 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.net.ConnectivityManager;
+import android.net.LinkProperties;
+import android.net.NetworkCapabilities;
+import android.os.Build;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -16,9 +20,9 @@ import androidx.work.PeriodicWorkRequest;
 import androidx.work.WorkManager;
 
 import com.b44t.messenger.DcAccounts;
-import com.b44t.messenger.DcEventEmitter;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
+import com.b44t.messenger.DcEventEmitter;
 
 import org.thoughtcrime.securesms.components.emoji.EmojiProvider;
 import org.thoughtcrime.securesms.connect.AccountManager;
@@ -53,6 +57,11 @@ public class ApplicationContext extends MultiDexApplication {
   public DcEventCenter          eventCenter;
   public NotificationCenter     notificationCenter;
   private JobManager            jobManager;
+
+  private int                   debugOnAvailableCount;
+  private int                   debugOnBlockedStatusChangedCount;
+  private int                   debugOnCapabilitiesChangedCount;
+  private int                   debugOnLinkPropertiesChangedCount;
 
   public static ApplicationContext getInstance(@NonNull Context context) {
     return (ApplicationContext)context.getApplicationContext();
@@ -120,6 +129,33 @@ public class ApplicationContext extends MultiDexApplication {
 
     new ForegroundDetector(ApplicationContext.getInstance(this));
 
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+      ConnectivityManager connectivityManager =
+        (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
+      connectivityManager.registerDefaultNetworkCallback(new ConnectivityManager.NetworkCallback() {
+        @Override
+        public void onAvailable(@NonNull android.net.Network network) {
+          Log.i("DeltaChat", "++++++++++++++++++ NetworkCallback.onAvailable() #" + debugOnAvailableCount++);
+          dcAccounts.maybeNetwork();
+        }
+
+        @Override
+        public void onBlockedStatusChanged(@NonNull android.net.Network network, boolean blocked) {
+          Log.i("DeltaChat", "++++++++++++++++++ NetworkCallback.onBlockedStatusChanged() #" + debugOnBlockedStatusChangedCount++);
+        }
+
+        @Override
+        public void onCapabilitiesChanged(@NonNull android.net.Network network, NetworkCapabilities networkCapabilities) {
+          // usually called after onAvailable(), so a maybeNetwork seems contraproductive
+          Log.i("DeltaChat", "++++++++++++++++++ NetworkCallback.onCapabilitiesChanged() #" + debugOnCapabilitiesChangedCount++);
+        }
+
+        @Override
+        public void onLinkPropertiesChanged(@NonNull android.net.Network network, LinkProperties linkProperties) {
+          Log.i("DeltaChat", "++++++++++++++++++ NetworkCallback.onLinkPropertiesChanged() #" + debugOnLinkPropertiesChangedCount++);
+        }
+      });
+    } // no else: use old method for debugging
     BroadcastReceiver networkStateReceiver = new NetworkStateReceiver();
     registerReceiver(networkStateReceiver, new IntentFilter(android.net.ConnectivityManager.CONNECTIVITY_ACTION));
 
