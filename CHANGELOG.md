@@ -1,5 +1,12 @@
 # Delta Chat Android Changelog
 
+## v1.34.3
+2022-10
+
+* fix Share-to-Delta and calling Delta otherwise for android12
+* using core98
+
+
 ## v1.34.2
 2022-10
 
