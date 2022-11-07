@@ -163,6 +163,11 @@
     <string name="images_and_videos">Images et vidéos</string>
     <string name="file">Fichier</string>
     <string name="files">Fichiers</string>
+    <!-- "Private App" is used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
+    <string name="webxdc_app">Appli privée</string>
+    <!-- plural of "Private App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
+    <string name="webxdc_apps">Applis privées</string>
+    <string name="files_and_webxdx_apps">Fichiers et applis privées</string>
     <string name="unknown">Inconnu</string>
 
     <string name="green">Vert</string>
@@ -272,6 +277,9 @@
     <string name="ConversationFragment_quoted_message_not_found">Le message original n\'a pas été trouvé</string>
     <string name="reply_privately">Répondre en privé</string>
     <string name="source_code">Code source</string>
+    <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
+    <string name="add_to_home_screen">Ajouter à l\'écran d\'accueil</string>
+
     <string name="mute_for_one_hour">Déactiver pour 1 heure</string>
     <string name="mute_for_two_hours">Déactiver pour 2 heures</string>
     <string name="mute_for_one_day">Déactiver pour 1 jour</string>
@@ -457,6 +465,7 @@
     <string name="tab_image_empty_hint">Les images partagées dans cette discussion seront affichées ici.</string>
     <string name="tab_video_empty_hint">Les vidéos partagées dans cette discussion seront affichées ici.</string>
     <string name="tab_audio_empty_hint">Les fichiers audio et messages vocaux partagés dans cette discussion seront affichés ici.</string>
+    <string name="tab_webxdc_empty_hint">Les applis privées partagées dans cette discussion seront affichées ici.</string>
     <string name="media_preview">Prévisualiser le fichier multimédia</string>
     <string name="send_message">Envoyer message</string>
     <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
@@ -744,9 +753,15 @@
     <string name="remove_member_by_you">Membre %1$s retiré par moi.</string>
     <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
     <string name="remove_member_by_other">Membre %1$s retiré sur %2$s.</string>
+    <string name="group_left_by_you">Vous avez quitté le groupe.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="group_left_by_other">%1$s a quitté le groupe.</string>
     <string name="group_image_deleted_by_you">Image de groupe effacée par moi.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
     <string name="group_image_deleted_by_other">Image de groupe effacée sur %1$s.</string>
+    <string name="location_enabled_by_you">Vous avez activé l\'envoi de votre position.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="location_enabled_by_other">%1$sa activé l\'envoi de sa position.</string>
     <string name="ephemeral_timer_disabled_by_you">Temporisation des messages éphémères désactivée par moi.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_disabled_by_other">Temporisation des messages éphémères désactivée sur %1$s.</string>
@@ -835,6 +850,10 @@
     <string name="qraccount_success_enter_name">Connexion réussie – votre adresse de courriel est %1$s\n\nSi vous le souhaitez, vous pouvez maintenant choisir un nom et une image de profil qui seront affichés aux personnes à qui vous écrivez.</string>
     <string name="qraccount_qr_code_cannot_be_used">Le code QR scanné ne peut pas être utilisé pour ouvrir un nouveau compte.</string>
     <string name="qraccount_use_on_new_install">Le code QR scanné permet de configurer un nouveau compte. Vous pouvez scanner le code QR à la configuration d\'une nouvelle installation de Delta Chat.</string>
+    <!-- the placeholder will be replaced by the e-mail address of the account -->
+    <string name="qrlogin_ask_login">Se connecter au compte \"%1$s\" ?</string>
+    <!-- the placeholder will be replaced by the e-mail address of the account -->
+    <string name="qrlogin_ask_login_another">Se connecter au compte \"%1$s\" ?\n\nVotre compte existant ne sera pas effacé. Utilisez l\'élément de menu \"Changer de compte\" pour passer d\'un compte à l\'autre.</string>
     <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s vous a invité à rejoindre ce groupe.\n\nEn attente de la réponse de l’appareil de %2$s…</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
@@ -983,6 +1002,11 @@
     <string name="notifications_avg_minutes">Toutes les %1$d minutes en moyenne</string>
     <string name="notifications_avg_hours">Toutes les %1$d heures en moyenne</string>
     <string name="last_check_at">Dernièrement vu à %1$s</string>
+    <!-- iOS webxdc selector -->
+    <string name="webxdc_selector_empty_hint">Les applis privées envoyées ou reçues dans une des conversations apparaîtront ici. \"Fichiers\" montre seulement les applis privées que vous venez de télécharger.</string>
+    <!-- iOS webxdc shortcut page -->
+    <string name="shortcut_step1_tap_share_btn">Cliquez sur le bouton \"Partager\".</string>
+    <string name="shortcut_step2_tap_add_to_home_screen">Sélectionner \"Ajouter à l\'écran d\'accueil\" pour ajouter l\'appli à votre écran d\'accueil.</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat utilise votre appareil photo pour pendre et envoyer des photos et des vidéos et pour scanner des QR codes.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat utilise vos contacts pour montrer une liste d\'adresses de courriel auxquels vous pouvez écrire. Delta Chat n\'a pas de serveur, vos contacts ne sont envoyés nulle part.</string>
@@ -1004,4 +1028,7 @@
     <string name="perm_enable_bg_already_done">Vous avez déjà autorisé Delta Chat à recevoir des messages en arrière plan.\n\nSi vous ne les recevez toujours pas en arrière plan, vérifiez les paramètres de votre système.</string>
 
 
-    </resources>
+    <!-- device messages for updates -->
+    <string name="update_1_34_android">Nouveautes de la version 1.34 :n\n🤗 Liste de contacts plus ergonomique : les derniers vus sont en premiers, et les contacts vus dans les 10 dernières minutes sont marqués d\'un point 🟢\n\n📑 Nouvelles pages dans les profils des discussions : \"Audio\" and \"Applis privées\"\n\n🖼️ Vous pouvez ajouter à l\'écran d\'accueil les \"Applis privées\" qu\'on vous envoie (par exemple depuis https://webxdc.org ).</string>
+
+</resources>
