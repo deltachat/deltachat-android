@@ -237,9 +237,6 @@ public class DcContext {
      */
     public native boolean      setLocation          (float latitude, float longitude, float accuracy);
 
-    // helper to get/return strings from/to handleEvent()
-    public native static boolean data2IsString(int event);
-
     // working with raw c-data
     private long        contextCPtr;     // CAVE: the name is referenced in the JNI
     private native long createContextCPtr(String osName, String dbfile);
