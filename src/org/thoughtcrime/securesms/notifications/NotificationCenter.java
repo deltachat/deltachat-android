@@ -485,22 +485,30 @@ public class NotificationCenter {
 
             // add notification, we use one notification per chat,
             // esp. older android are not that great at grouping
-            notificationManager.notify(ID_MSG_OFFSET + chatId, builder.build());
+            try {
+              notificationManager.notify(ID_MSG_OFFSET + chatId, builder.build());
+            } catch (Exception e) {
+              Log.e(TAG, "cannot add notification", e);
+            }
 
             // group notifications together in a summary, this is possible since SDK 24 (Android 7)
             // https://developer.android.com/training/notify-user/group.html
             // in theory, this won't be needed due to setGroup(), however, in practise, it is needed up to at least Android 10.
             if (Build.VERSION.SDK_INT >= 24) {
-                NotificationCompat.Builder summary = new NotificationCompat.Builder(context, notificationChannel)
-                        .setGroup(GRP_MSG)
-                        .setGroupSummary(true)
-                        .setSmallIcon(R.drawable.icon_notification)
-                        .setColor(context.getResources().getColor(R.color.delta_primary))
-                        .setCategory(NotificationCompat.CATEGORY_MESSAGE)
-                        .setContentTitle("Delta Chat") // content title would only be used on SDK <24
-                        .setContentText("New messages") // content text would only be used on SDK <24
-                        .setContentIntent(getOpenChatlistIntent());
-                notificationManager.notify(ID_MSG_SUMMARY, summary.build());
+                try {
+                  NotificationCompat.Builder summary = new NotificationCompat.Builder(context, notificationChannel)
+                    .setGroup(GRP_MSG)
+                    .setGroupSummary(true)
+                    .setSmallIcon(R.drawable.icon_notification)
+                    .setColor(context.getResources().getColor(R.color.delta_primary))
+                    .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                    .setContentTitle("Delta Chat") // content title would only be used on SDK <24
+                    .setContentText("New messages") // content text would only be used on SDK <24
+                    .setContentIntent(getOpenChatlistIntent());
+                  notificationManager.notify(ID_MSG_SUMMARY, summary.build());
+                } catch (Exception e) {
+                  Log.e(TAG, "cannot add notification summary", e);
+                }
             }
         });
     }
