@@ -1961,12 +1961,3 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcProvider_getOverviewPage(JNIEnv *env
     return ret;
 }
 
-
-/*******************************************************************************
- * Tools
- ******************************************************************************/
-
-JNIEXPORT jboolean Java_com_b44t_messenger_DcContext_data2IsString(JNIEnv *env, jclass cls, jint event)
-{
-    return DC_EVENT_DATA2_IS_STRING(event);
-}
