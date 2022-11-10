@@ -4,8 +4,10 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">Bone</string>
     <string name="cancel">Nuligi</string>
+    <string name="clear_search">Forviŝi Serĉon</string>
     <string name="yes">Jes</string>
     <string name="no">Ne</string>
+    <string name="select">Elekti</string>
     <string name="on">Ŝaltita</string>
     <string name="off">Malŝaltita</string>
     <string name="def">Defaŭlta</string>
@@ -14,6 +16,10 @@
     <string name="automatic">Aŭtomata</string>
     <string name="strict">Strikta</string>
     <string name="open">Malferma</string>
+    <string name="download">Elŝuti</string>
+    <string name="downloading">Elŝutado...</string>
+    <string name="join">Aliĝi</string>
+    <string name="rejoin">Realiĝi</string>
     <string name="delete">Forigi</string>
     <string name="info">Informoj</string>
     <string name="update">Ĝisdatigi</string>
@@ -22,6 +28,8 @@
     <string name="back">Reen</string>
     <string name="close">Fermi</string>
     <string name="forward">Plusendi</string>
+    <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
+    <string name="resend">Resendi</string>
     <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
     <string name="archive">Arĥivi</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
@@ -31,8 +39,15 @@
     <string name="save">Konservi</string>
     <string name="chat">Babilo</string>
     <string name="media">Aŭdovidaĵoj</string>
+    <string name="profile">Profilo</string>
     <string name="main_menu">Ĉefa menuo</string>
-    <string name="start_chat">Komenci babilon</string>
+    <string name="start_chat">Komenci Babiladon</string>
+    <!-- Placeholder text when something is loading -->
+    <string name="loading">Ŝarĝado...</string>
+    <string name="hide">Kaŝi</string>
+    <string name="activate">Aktivigi</string>
+    <string name="always">Ĉiam</string>
+    <string name="once">Unufoje</string>
     <string name="show_password">Montri pasvorton</string>
     <string name="hide_password">Kaŝi pasvorton</string>
     <string name="not_now">Ne nun</string>
@@ -52,6 +67,7 @@
     <string name="email_address">Retadreso</string>
     <string name="bad_email_address">Malbona retadreso.</string>
     <string name="password">Pasvorto</string>
+    <string name="existing_password">Estanta Pasvorto</string>
     <string name="now">Nun</string>
     <!-- Headline for destructive actions with no undo. Could also be "Caution" or "Warning". -->
     <string name="danger">Danĝero</string>
@@ -90,19 +106,25 @@
     <string name="self">Mi</string>
     <string name="draft">Malneto</string>
     <string name="image">Bildo</string>
+    <!-- Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
+    <string name="reply_noun">Respondi</string>
     <string name="gif">Gif</string>
     <string name="images">Bildoj</string>
     <string name="audio">Sonaĵo</string>
     <string name="voice_message">Voĉmesaĝo</string>
+    <string name="forwarded">Plusendita</string>
     <string name="forwarded_message">Plusendita mesaĝo</string>
     <string name="video">Filmo</string>
     <string name="documents">Dokumentoj</string>
     <string name="contact">Kontakto</string>
     <string name="verified_contact">Kontrolita kontakto</string>
     <string name="camera">Fotilo</string>
+    <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
+    <string name="capture">Kapti</string>
     <string name="location">Loko</string>
     <string name="gallery">Galerio</string>
     <string name="file">Dosiero</string>
+    <string name="files">Dosieroj</string>
     <string name="unknown">Nekonata</string>
 
     <string name="green">Verda</string>
@@ -114,6 +136,7 @@
     <string name="magenta">Malva</string>
     <string name="white">Blanka</string>
 
+    <string name="extra_small">Ege malgranda</string>
     <string name="small">Malgranda</string>
     <string name="normal">Normala</string>
     <string name="large">Granda</string>
@@ -126,7 +149,14 @@
     <string name="menu_new_contact">Nova kontakto</string>
     <string name="menu_new_chat">Nova babilo</string>
     <string name="menu_new_group">Nova grupo</string>
+    <!-- Use the same wording as "Subject" to help people coming from the e-mail context; eg. "Betreff" in German -->
+    <string name="new_group_or_subject">Nova Grupo aŭ Temo</string>
     <string name="menu_new_verified_group">Nova kontrolita grupo.</string>
+    <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
+    <string name="broadcast_list">Elsenda Listo</string>
+    <string name="broadcast_lists">Elsendaj Listoj</string>
+    <string name="new_broadcast_list">Nova Elsenda Listo</string>
+    <string name="add_recipients">Aldoni Ricevantojn</string>
     <string name="menu_send">Sendi</string>
     <string name="menu_toggle_keyboard">Baskuligi emoĝian klavaron</string>
     <string name="menu_edit_group">Redakti grupon</string>
@@ -139,9 +169,13 @@
     <string name="menu_leave_group">Forlasi grupon</string>
     <string name="menu_delete_chat">Forigi babilon</string>
     <string name="menu_delete_messages">Forigi mesaĝojn</string>
+    <string name="delete_contact">Forviŝi Kontakton</string>
     <string name="menu_delete_location">Ĉu forigi tiun ĉi lokon?</string>
     <string name="menu_message_details">Mesaĝ-detaloj</string>
     <string name="menu_copy_to_clipboard">Kopii al tondujo</string>
+    <string name="menu_copy_link_to_clipboard">Kopii Ligilon</string>
+    <string name="menu_copy_text_to_clipboard">Kopii Tekston</string>
+    <string name="menu_copy_image_to_clipboard">Kopii Bildon</string>
     <string name="menu_forward">Plusendi mesaĝon</string>
     <string name="menu_reply">Respondi al mesaĝo</string>
     <string name="menu_mute">Silentigi sciigojn</string>
@@ -149,8 +183,11 @@
     <string name="menu_export_attachment">Eksporti aldonaĵon</string>
     <string name="menu_all_media">Ĉiuj aŭvidaĵoj</string>
     <string name="menu_share">Kunhavigi</string>
+    <!-- Verb "to block sth." usually a mailing list or a contact, not a noun -->
+    <string name="block">Bloki</string>
     <string name="menu_block_contact">Bloki kontakton</string>
     <string name="menu_unblock_contact">Malbloki kontakton</string>
+    <string name="accept">Akcepti</string>
     <string name="menu_play">Ludi</string>
     <string name="menu_pause">Paŭzigi</string>
     <string name="menu_scroll_to_bottom">Rulumi al la malsupro</string>
