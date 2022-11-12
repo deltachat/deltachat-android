@@ -208,7 +208,7 @@ public class ViewUtil {
   }
 
   public static boolean isLtr(@NonNull Context context) {
-    return context.getResources().getConfiguration().getLayoutDirection() == View.LAYOUT_DIRECTION_LTR;
+    return DynamicLanguage.getLayoutDirection(context) == ViewCompat.LAYOUT_DIRECTION_LTR;
   }
 
   public static boolean isRtl(@NonNull View view) {
@@ -216,7 +216,7 @@ public class ViewUtil {
   }
 
   public static boolean isRtl(@NonNull Context context) {
-    return context.getResources().getConfiguration().getLayoutDirection() == View.LAYOUT_DIRECTION_RTL;
+    return DynamicLanguage.getLayoutDirection(context) == ViewCompat.LAYOUT_DIRECTION_RTL;
   }
 
   public static int dpToPx(Context context, int dp) {
