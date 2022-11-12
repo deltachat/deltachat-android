@@ -11,6 +11,7 @@ import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
 import androidx.annotation.RequiresApi;
 import androidx.core.os.ConfigurationCompat;
+import androidx.core.view.ViewCompat;
 
 import android.text.TextUtils;
 import android.util.Log;
@@ -49,10 +50,12 @@ public class DynamicLanguage {
     return currentLocale;
   }
 
-  @RequiresApi(VERSION_CODES.JELLY_BEAN_MR1)
   public static int getLayoutDirection(Context context) {
-    Configuration configuration = context.getResources().getConfiguration();
-    return configuration.getLayoutDirection();
+    if (VERSION.SDK_INT >= VERSION_CODES.JELLY_BEAN_MR1) {
+      Configuration configuration = context.getResources().getConfiguration();
+      return configuration.getLayoutDirection();
+    }
+    return ViewCompat.LAYOUT_DIRECTION_LTR;
   }
 
   public static void setContextLocale(Context context, Locale selectedLocale) {
