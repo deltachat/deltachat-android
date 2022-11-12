@@ -9,6 +9,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import androidx.annotation.NonNull;
+import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -199,11 +200,7 @@ class ConversationItemSwipeCallback extends ItemTouchHelper.SimpleCallback {
   }
 
   private static float getSignFromDirection(@NonNull View view) {
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-      return view.getLayoutDirection() == View.LAYOUT_DIRECTION_RTL ? -1f : 1f;
-    } else {
-      return 1f;
-    }
+    return ViewCompat.getLayoutDirection(view) == ViewCompat.LAYOUT_DIRECTION_RTL ? -1f : 1f;
   }
 
   private static boolean sameSign(float dX, float sign) {

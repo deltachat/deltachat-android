@@ -26,21 +26,21 @@ public class SendButton extends ImageButton
   public SendButton(Context context) {
     super(context);
     this.transportOptions = initializeTransportOptions();
-    ViewUtil.mirrorIfRtl(this, getContext());
+    ViewUtil.mirrorIfRtl(this);
   }
 
   @SuppressWarnings("unused")
   public SendButton(Context context, AttributeSet attrs) {
     super(context, attrs);
     this.transportOptions = initializeTransportOptions();
-    ViewUtil.mirrorIfRtl(this, getContext());
+    ViewUtil.mirrorIfRtl(this);
   }
 
   @SuppressWarnings("unused")
   public SendButton(Context context, AttributeSet attrs, int defStyle) {
     super(context, attrs, defStyle);
     this.transportOptions = initializeTransportOptions();
-    ViewUtil.mirrorIfRtl(this, getContext());
+    ViewUtil.mirrorIfRtl(this);
   }
 
   private TransportOptions initializeTransportOptions() {

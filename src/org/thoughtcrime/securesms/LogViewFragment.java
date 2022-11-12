@@ -45,6 +45,7 @@ import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Scrubber;
+import org.thoughtcrime.securesms.util.ViewUtil;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -155,6 +156,7 @@ public class LogViewFragment extends Fragment {
 
   private class PopulateLogcatAsyncTask extends AsyncTask<Void,Void,String> {
     private WeakReference<LogViewFragment> weakFragment;
+    private boolean isRtl;
 
     public PopulateLogcatAsyncTask(LogViewFragment fragment) {
       this.weakFragment = new WeakReference<>(fragment);
@@ -166,12 +168,13 @@ public class LogViewFragment extends Fragment {
       if (fragment == null) return null;
 
       return "**This log may contain sensitive information. If you want to post it publicly you may examine and edit it beforehand.**\n\n" +
-          buildDescription(fragment) + "\n" + new Scrubber().scrub(grabLogcat());
+          buildDescription(fragment, isRtl) + "\n" + new Scrubber().scrub(grabLogcat());
     }
 
     @Override
     protected void onPreExecute() {
       super.onPreExecute();
+      this.isRtl = ViewUtil.isRtl(logPreview);
       logPreview.setText(R.string.one_moment);
     }
 
@@ -210,7 +213,7 @@ public class LogViewFragment extends Fragment {
     return activityManager.getMemoryClass() + lowMem;
   }
 
-  private static String buildDescription(LogViewFragment fragment) {
+  private static String buildDescription(LogViewFragment fragment, boolean isRtl) {
     Context context = fragment.getActivity();
 
     PowerManager powerManager = (PowerManager)context.getSystemService(Context.POWER_SERVICE);
@@ -253,11 +256,7 @@ public class LogViewFragment extends Fragment {
 
       Locale locale = fragment.dynamicLanguage.getCurrentLocale();
       builder.append("lang=").append(locale.toString()).append("\n");
-      if (VERSION.SDK_INT >= VERSION_CODES.JELLY_BEAN_MR1) {
-        boolean isRtl = DynamicLanguage.getLayoutDirection(context) == View.LAYOUT_DIRECTION_RTL;
-        builder.append("rtl=").append(isRtl).append("\n");
-      }
-
+      builder.append("rtl=").append(isRtl).append("\n");
     } catch (Exception e) {
       builder.append("Unknown\n");
     }
