@@ -1,5 +1,18 @@
 # Delta Chat Android Changelog
 
+## v1.34.5
+2022-11
+
+* allow removal of references contacts from the "New Chat" list
+* show more debug info in message info
+* improve IMAP logging
+* show versionCode in log
+* fix potential busy loop freeze when marking messages as seen
+* fix build issue for F-Droid
+* update translations
+* update to core101
+
+
 ## v1.34.4
 2022-11
 
