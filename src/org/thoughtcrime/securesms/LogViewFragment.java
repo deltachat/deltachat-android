@@ -239,6 +239,9 @@ public class LogViewFragment extends Fragment {
              .append(BuildConfig.FLAVOR)
              .append(BuildConfig.DEBUG? "-debug" : "")
              .append("\n");
+      builder.append("versionCode=")
+             .append(pm.getPackageInfo(context.getPackageName(), 0).versionCode)
+             .append("\n");
       builder.append("installer=")
              .append(pm.getInstallerPackageName(context.getPackageName()))
              .append("\n");
