@@ -87,6 +87,8 @@
     <string name="this_month">This month</string>
     <string name="last_week">Last week</string>
     <string name="last_month">Last month</string>
+    <!-- Placeholder replaced by relative time, resulting in "Last seen 3min ago" -->
+    <string name="last_seen">Last seen %1$s</string>
     <!-- Placeholder replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
     <string name="last_seen_at">Last seen at %1$s</string>
     <string name="last_seen_unknown">Last seen: Unknown</string>
@@ -204,6 +206,7 @@
     <string name="menu_add_attachment">Add Attachment</string>
     <string name="menu_leave_group">Leave Group</string>
     <string name="menu_delete_chat">Delete Chat</string>
+    <string name="menu_clear_chat">Clear Chat</string>
     <string name="ask_delete_named_chat">Are you sure you want to delete \"%1$s\"?</string>
     <string name="menu_delete_messages">Delete Messages</string>
     <string name="delete_contact">Delete Contact</string>
@@ -246,6 +249,7 @@
     <string name="menu_zoom_in">Zoom In</string>
     <string name="menu_zoom_out">Zoom Out</string>
     <string name="menu_save_log">Save Log</string>
+    <string name="menu_save_sticker">Save Sticker</string>
     <string name="menu_more_options">More Options</string>
     <string name="menu_learn_spelling">Learn Spelling</string>
     <string name="menu_chat_audit_log">Chat Audit Log</string>
@@ -396,11 +400,20 @@
     <string name="mailing_list">Mailing List</string>
     <string name="mailing_list_profile_info">Changes to mailing list name and image apply on this device only.</string>
 
+    <!-- broadcast lists -->
+    <string name="create_broadcast_list">Create Broadcast List</string>
+    <string name="menu_edit_broadcast_list">Edit Broadcast List</string>
+    <string name="menu_broadcast_list_name">Broadcast List Name</string>
+    <string name="broadcast_please_enter_broadcast_list_name">Please enter a name for the broadcast list.</string>
+    <string name="broadcast_list_warning">Broadcast Lists are always unencrypted because they use blind copy (BCC)</string>
+
     <!-- webxdc -->
     <!-- "Start..." button for an app -->
     <string name="start_app">Start…</string>
     <!-- this is a warning that is shown when one tries to send something to a chat that is not yet accepted. -->
     <string name="accept_request_first">Please accept the chat request first.</string>
+    <string name="show_webxdc_in_chat">Show Private App in Chat</string>
+    <string name="what_is_webxdc">What is Webxdc?</string>
 
     <!-- map -->
     <string name="filter_map_on_time">Show locations in time frame</string>
@@ -426,7 +439,8 @@
     <string name="search">Search</string>
     <string name="search_explain">Search for chats, contacts, and messages</string>
     <string name="search_no_result_for_x">No results found for \"%s\"</string>
-
+    <string name="search_in_chat">Search in Chat</string>
+    <string name="exit_search">Exit Search</string>
 
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">Group Name</string>
@@ -660,6 +674,9 @@
     <string name="profile_image_delete">Delete Profile Image</string>
     <string name="pref_show_tray_icon">Show Tray Icon</string>
     <string name="pref_edit_profile">Edit Profile</string>
+    <string name="pref_system_integration_menu_title">System integration</string>
+    <string name="pref_donate">Donate</string>
+    
 
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Search Results</string>
@@ -859,12 +876,15 @@
     <string name="notify_dismiss">Dismiss</string>
     <string name="notify_reply_button">Reply</string>
     <string name="notify_new_message">New message</string>
+    <string name="notify_new_messages">New messages</string>
     <string name="notify_background_connection_enabled">Background connection enabled</string>
     <string name="notify_priority_high">High</string>
     <string name="notify_priority_max">Max</string>
     <string name="notify_name_and_message">Name and message</string>
     <string name="notify_name_only">Name only</string>
     <string name="notify_no_name_or_message">No name or message</string>
+    <string name="notify_bundle_new_messages_in_one_chat">%1$d new messages</string>
+    <string name="notify_bundle_new_messages">%1$d messages in %2$d chats</string>
 
 
     <!-- permissions -->
@@ -942,6 +962,8 @@
     <string name="no_spellcheck_suggestions_found">No spelling suggestions found.</string>
     <string name="show_window">Show Window</string>
     <string name="login_socks5_experimental_warning">SOCKS5 support is currently experimental. Please use at your own risk. If you type in an address in the e-mail field, there will be DNS lookup that won\'t get tunneled through SOCKS5.</string>
+    <!-- context: this key is used whenever there is a link to the about deltachat desktop dialog -->
+    <string name="about">About</string>
 
     <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
     <string name="keybindings">Keybindings</string>
