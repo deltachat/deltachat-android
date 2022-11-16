@@ -413,7 +413,7 @@
     <!-- this is a warning that is shown when one tries to send something to a chat that is not yet accepted. -->
     <string name="accept_request_first">Please accept the chat request first.</string>
     <string name="show_webxdc_in_chat">Show Private App in Chat</string>
-    <string name="what_is_webxdc">What is Webxdc?</string>
+    <string name="what_is_webxdc">What are Private Apps?</string>
 
     <!-- map -->
     <string name="filter_map_on_time">Show locations in time frame</string>
