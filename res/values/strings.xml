@@ -883,7 +883,6 @@
     <string name="notify_name_and_message">Name and message</string>
     <string name="notify_name_only">Name only</string>
     <string name="notify_no_name_or_message">No name or message</string>
-    <string name="notify_bundle_new_messages_in_one_chat">%1$d new messages</string>
     <string name="notify_bundle_new_messages">%1$d messages in %2$d chats</string>
 
 
