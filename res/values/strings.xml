@@ -875,7 +875,6 @@
     <string name="notify_dismiss">Dismiss</string>
     <string name="notify_reply_button">Reply</string>
     <string name="notify_new_message">New message</string>
-    <string name="notify_new_messages">New messages</string>
     <string name="notify_background_connection_enabled">Background connection enabled</string>
     <string name="notify_priority_high">High</string>
     <string name="notify_priority_max">Max</string>
