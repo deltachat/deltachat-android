@@ -403,7 +403,6 @@
     <!-- broadcast lists -->
     <string name="create_broadcast_list">Create Broadcast List</string>
     <string name="menu_edit_broadcast_list">Edit Broadcast List</string>
-    <string name="menu_broadcast_list_name">Broadcast List Name</string>
     <string name="broadcast_please_enter_broadcast_list_name">Please enter a name for the broadcast list.</string>
     <string name="broadcast_list_warning">Broadcast Lists are always unencrypted because they use blind copy (BCC)</string>
 
