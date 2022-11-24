@@ -19,6 +19,7 @@ import org.thoughtcrime.securesms.ConversationListActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.AccountManager;
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.util.AccessibilityUtil;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 
@@ -80,6 +81,10 @@ public class TestUtils {
 
   private static void prepare() {
     Prefs.setBooleanPreference(getInstrumentation().getTargetContext(), Prefs.DOZE_ASKED_DIRECTLY, true);
+    if (!AccessibilityUtil.areAnimationsDisabled(getInstrumentation().getTargetContext())) {
+      throw new RuntimeException("To run the tests, disable animations at Developer options' " +
+              "-> 'Window/Transition/Animator animation scale' -> Set all 3 to 'off'");
+    }
   }
 
   /**
