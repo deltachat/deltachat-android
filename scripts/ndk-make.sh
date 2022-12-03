@@ -46,6 +46,13 @@ echo Setting CARGO_TARGET environment variables.
 if test -z "$NDK_HOST_TAG"; then
     KERNEL="$(uname -s | tr '[:upper:]' '[:lower:]')"
     ARCH="$(uname -m)"
+
+    if test "$ARCH" == "arm64" && ! test -f "$ANDROID_NDK_ROOT/toolchains/llvm/prebuilt/$KERNEL-$ARCH/bin/aarch64-linux-android21-clang"; then
+        echo "M1/M2 not supported by $ANDROID_NDK_ROOT; trying to use x86_64 over Rosetta."
+        echo "(Newer NDK may support M1/M2 but may lack support for Android4/ABI16)"
+        ARCH="x86_64"
+    fi
+
     NDK_HOST_TAG="$KERNEL-$ARCH"
 fi
 
