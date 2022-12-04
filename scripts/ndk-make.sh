@@ -48,8 +48,8 @@ if test -z "$NDK_HOST_TAG"; then
     ARCH="$(uname -m)"
 
     if test "$ARCH" == "arm64" && ! test -f "$ANDROID_NDK_ROOT/toolchains/llvm/prebuilt/$KERNEL-$ARCH/bin/aarch64-linux-android21-clang"; then
-        echo "M1/M2 not supported by $ANDROID_NDK_ROOT; trying to use x86_64 over Rosetta."
-        echo "(Newer NDK may support M1/M2 but may lack support for Android4/ABI16)"
+        echo "arm64 host is not supported by $ANDROID_NDK_ROOT; trying to use x86_64, in case the host has a binary translation such as Rosetta or QEMU installed."
+        echo "(Newer NDK may support arm64 host but may lack support for Android4/ABI16)"
         ARCH="x86_64"
     fi
 
