@@ -98,25 +98,25 @@ See https://wiki.archlinux.org/index.php/Podman#Rootless_Podman for more informa
 
 # <a name="install-build-environment"></a>Install Build Environment (without Docker or Podman)
 
-To setup build environment manually, you can read the `Dockerfile`
-and mimic what it does.
+To setup build environment manually:
+- _Either_, in Android Studio, go to "Tools / SDK Manager / SDK Tools", enable "Show Package Details",
+  select "CMake" and the desired NDK, hit "Apply".
+- _Or_ read `Dockerfile` and mimic what it does.
 
-First, you need to setup Android SDK and Android NDK. Configure
-`ANDROID_NDK_ROOT` environment variable to point to the Android NDK
+Currently ndk20b is the minimum required version.
+Newer versions will likely work, however, changes on the ndk-version should be
+done with care. Too new versions do not support abi16 and cannot be used to target Android 4.3 or lower.
+
+Then, in both cases, install Rust using [rustup](https://rustup.rs/)
+and Rust toolchains for cross-compilation by executing `scripts/install-toolchains.sh`.
+
+Then, configure `ANDROID_NDK_ROOT` environment variable to point to the Android NDK
 installation directory e.g. by adding this to your `.bashrc`:
 
 ```bash
 export ANDROID_NDK_ROOT=${HOME}/Android/Sdk/ndk/[version] # (or whereever your NDK is) Note that there is no `/` at the end!
 export PATH=${PATH}:${ANDROID_NDK_ROOT}/toolchains/llvm/prebuilt/linux-x86_64/bin/:${ANDROID_NDK_ROOT}
 ```
-
-Currently ndk20b is the minimum required version.
-Newer versions will likely work, however, are not tested and not used
-in official releases, in general, changes on the ndk-version should be
-done with care.
-
-Then, install Rust using [rustup](https://rustup.rs/). Install Rust
-toolchains for cross-compilation by executing `scripts/install-toolchains.sh`.
 
 After that, call `scripts/ndk-make.sh` in the root directory to build core-rust.
 Afterwards run the project in Android Studio. The project requires API 25.
