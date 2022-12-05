@@ -739,70 +739,70 @@
     <string name="systemmsg_subject_for_new_contact">Message de %1$s</string>
     <string name="systemmsg_failed_sending_to">Échec de l\'envoi du message à %1$s.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
-    <string name="group_name_changed_by_you">Nom de groupe modifié de \"%1$s\" en \"%2$s\" par moi.</string>
+    <string name="group_name_changed_by_you">Nom du groupe modifié de « %1$s »  en « %2$s »  par vous.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
-    <string name="group_name_changed_by_other">Nom de groupe modifié de \"%1$s\" en \"%2$s\" sur %3$s.</string>
-    <string name="group_image_changed_by_you">Image de groupe modifiée par moi.</string>
+    <string name="group_name_changed_by_other">Nom de groupe modifié de « %1$s »  en « %2$s »  par %3$s.</string>
+    <string name="group_image_changed_by_you">Image du groupe modifié par vous.</string>
     <!-- %1$s will be replaced by name and address of the contact who did the action -->
-    <string name="group_image_changed_by_other">Image de groupe modifiée sur %1$s.</string>
+    <string name="group_image_changed_by_other">Image de groupe modifiée par %1$s.</string>
     <!-- %1$s will be replaced by name and address of the contact added to the group -->
-    <string name="add_member_by_you">Membre %1$s ajouté par moi.</string>
+    <string name="add_member_by_you">Membre %1$s ajouté par vous.</string>
     <!-- %1$s will be replaced by name and address of the contact added to the group, %2$s will be replaced by name and address of the contact who did the action -->
-    <string name="add_member_by_other">Membre %1$s ajouté sur %2$s.</string>
+    <string name="add_member_by_other">Membre %1$s ajouté par %2$s.</string>
     <!-- %1$s will be replaced by name and address of the contact removed from the group -->
-    <string name="remove_member_by_you">Membre %1$s retiré par moi.</string>
+    <string name="remove_member_by_you">Membre %1$s retiré par vous.</string>
     <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
-    <string name="remove_member_by_other">Membre %1$s retiré sur %2$s.</string>
+    <string name="remove_member_by_other">Membre %1$s retiré par %2$s.</string>
     <string name="group_left_by_you">Vous avez quitté le groupe.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
     <string name="group_left_by_other">%1$s a quitté le groupe.</string>
-    <string name="group_image_deleted_by_you">Image de groupe effacée par moi.</string>
+    <string name="group_image_deleted_by_you">Image du groupe effacée par vous.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="group_image_deleted_by_other">Image de groupe effacée sur %1$s.</string>
-    <string name="location_enabled_by_you">Vous avez activé l\'envoi de votre position.</string>
+    <string name="group_image_deleted_by_other">Image de groupe effacée par %1$s.</string>
+    <string name="location_enabled_by_you">Vous avez activé l\'envoi de votre localisation.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="location_enabled_by_other">%1$sa activé l\'envoi de sa position.</string>
-    <string name="ephemeral_timer_disabled_by_you">Temporisation des messages éphémères désactivée par moi.</string>
+    <string name="location_enabled_by_other">%1$sa activé l\'envoi de sa localisation.</string>
+    <string name="ephemeral_timer_disabled_by_you">Temporisation des messages éphémères désactivée par vous.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="ephemeral_timer_disabled_by_other">Temporisation des messages éphémères désactivée sur %1$s.</string>
+    <string name="ephemeral_timer_disabled_by_other">Temporisation des messages éphémères désactivée par %1$s.</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to -->
-    <string name="ephemeral_timer_seconds_by_you">Temporisation des messages éphémères réglée à %1$s s par moi.</string>
+    <string name="ephemeral_timer_seconds_by_you">Temporisation des messages éphémères réglée à %1$s secondes par vous.</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
-    <string name="ephemeral_timer_seconds_by_other">Temporisation des messages éphémères réglée à %1$s s sur %2$s.</string>
-    <string name="ephemeral_timer_1_minute_by_you">Temporisation des messages éphémères réglée à 1 minute par moi.</string>
+    <string name="ephemeral_timer_seconds_by_other">Temporisation des messages éphémères réglée à %1$s secondes par %2$s.</string>
+    <string name="ephemeral_timer_1_minute_by_you">Temporisation des messages éphémères réglée à 1 minute par vous.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="ephemeral_timer_1_minute_by_other">Temporisation des messages éphémères réglée à 1 minute sur %1$s.</string>
-    <string name="ephemeral_timer_1_hour_by_you">Temporisation des messages éphémères réglée à 1 heure par moi.</string>
+    <string name="ephemeral_timer_1_minute_by_other">Temporisation des messages éphémères réglée à 1 minute par %1$s.</string>
+    <string name="ephemeral_timer_1_hour_by_you">Temporisation des messages éphémères réglée à 1 heure par vous.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="ephemeral_timer_1_hour_by_other">Temporisation des messages éphémères réglée à 1 heure sur %1$s.</string>
-    <string name="ephemeral_timer_1_day_by_you">Temporisation des messages éphémères réglée à 1 journée par moi.</string>
+    <string name="ephemeral_timer_1_hour_by_other">Temporisation des messages éphémères réglée à 1 heure par %1$s.</string>
+    <string name="ephemeral_timer_1_day_by_you">Temporisation des messages éphémères réglée à 1 journée par vous.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="ephemeral_timer_1_day_by_other">Temporisation des messages éphémères réglée à 1 journée sur %1$s.</string>
-    <string name="ephemeral_timer_1_week_by_you">Temporisation des messages éphémères réglée à 1 semaine par moi.</string>
+    <string name="ephemeral_timer_1_day_by_other">Temporisation des messages éphémères réglée à 1 journée par %1$s.</string>
+    <string name="ephemeral_timer_1_week_by_you">Temporisation des messages éphémères réglée à 1 semaine par vous.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="ephemeral_timer_1_week_by_other">Temporisation des messages éphémères réglée à 1 semaine sur %1$s.</string>
+    <string name="ephemeral_timer_1_week_by_other">Temporisation des messages éphémères réglée à 1 semaine par %1$s.</string>
     <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to -->
-    <string name="ephemeral_timer_minutes_by_you">Régler le temps d\'affichage des messages éphémères à %1$s minute(s) par moi.</string>
+    <string name="ephemeral_timer_minutes_by_you">Régler le temps d\'affichage des messages éphémères à %1$s minute(s) par vous.</string>
     <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
-    <string name="ephemeral_timer_minutes_by_other">Régler le temps d\'affichage des messages éphémères à %1$s minute(s) sur %2$s.</string>
+    <string name="ephemeral_timer_minutes_by_other">Régler le temps d\'affichage des messages éphémères à %1$s minute(s) par %2$s.</string>
     <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to -->
-    <string name="ephemeral_timer_hours_by_you">Régler le temps d\'affichage des messages éphémères à %1$s heure(s) par moi.</string>
+    <string name="ephemeral_timer_hours_by_you">Régler le temps d\'affichage des messages éphémères à %1$s heure(s) par vous.</string>
     <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
-    <string name="ephemeral_timer_hours_by_other">Régler le temps d\'affichage des messages éphémères à %1$s heure(s) sur %2$s.</string>
+    <string name="ephemeral_timer_hours_by_other">Régler le temps d\'affichage des messages éphémères à %1$s heure(s) par %2$s.</string>
     <!-- %1$s will be replaced by the number of days (always >1) the timer is set to -->
-    <string name="ephemeral_timer_days_by_you">Régler le temps d\'affichage des messages éphémères à %1$s jour(s) par moi.</string>
+    <string name="ephemeral_timer_days_by_you">Régler le temps d\'affichage des messages éphémères à %1$s jour(s) par vous.</string>
     <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
-    <string name="ephemeral_timer_days_by_other">Régler le temps d\'affichage des messages éphémères à %1$s jour(s) sur %2$s.</string>
+    <string name="ephemeral_timer_days_by_other">Régler le temps d\'affichage des messages éphémères à %1$s jour(s) par %2$s.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to -->
-    <string name="ephemeral_timer_weeks_by_you">Régler le temps d\'affichage des messages éphémères à %1$s semaine(s) par moi.</string>
+    <string name="ephemeral_timer_weeks_by_you">Régler le temps d\'affichage des messages éphémères à %1$s semaine(s) par vous.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
-    <string name="ephemeral_timer_weeks_by_other">Régler le temps d\'affichage des messages éphémères à %1$s semaine(s) sur %2$s.</string>
-    <string name="protection_enabled_by_you">Protection de la discussion activée par moi.</string>
+    <string name="ephemeral_timer_weeks_by_other">Régler le temps d\'affichage des messages éphémères à %1$s semaine(s) par %2$s.</string>
+    <string name="protection_enabled_by_you">Protection de discussion activée par vous.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="protection_enabled_by_other">Protection de la discussion activée sur %1$s.</string>
-    <string name="protection_disabled_by_you">Protection de la discussion désactivée par moi.</string>
+    <string name="protection_enabled_by_other">Protection de discussion activée par %1$s.</string>
+    <string name="protection_disabled_by_you">Protection de discussion désactivée par vous.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="protection_disabled_by_other">Protection de la discussion désactivée sur %1$s.</string>
+    <string name="protection_disabled_by_other">Protection de discussion désactivée par %1$s.</string>
 
     <string name="devicemsg_self_deleted">Vous avez supprimé la discussion \"Message enregistrés\".\n\nℹ️ Pour de nouveau utiliser la fonctionnalité \"Message enregistrés\", commencez une nouvelle discussion avec vous-même.</string>
     <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
@@ -851,9 +851,9 @@
     <string name="qraccount_qr_code_cannot_be_used">Le code QR scanné ne peut pas être utilisé pour ouvrir un nouveau compte.</string>
     <string name="qraccount_use_on_new_install">Le code QR scanné permet de configurer un nouveau compte. Vous pouvez scanner le code QR à la configuration d\'une nouvelle installation de Delta Chat.</string>
     <!-- the placeholder will be replaced by the e-mail address of the account -->
-    <string name="qrlogin_ask_login">Se connecter au compte \"%1$s\" ?</string>
+    <string name="qrlogin_ask_login">Se connecter au compte « %1$s » ?</string>
     <!-- the placeholder will be replaced by the e-mail address of the account -->
-    <string name="qrlogin_ask_login_another">Se connecter au compte \"%1$s\" ?\n\nVotre compte existant ne sera pas effacé. Utilisez l\'élément de menu \"Changer de compte\" pour passer d\'un compte à l\'autre.</string>
+    <string name="qrlogin_ask_login_another">Se connecter au compte « %1$s » ?\n\nVotre compte existant ne sera pas effacé. Utiliser l\'élément de menu « Changer de compte » pour passer d\'un compte à l\'autre.</string>
     <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s vous a invité à rejoindre ce groupe.\n\nEn attente de la réponse de l’appareil de %2$s…</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
@@ -1003,10 +1003,10 @@
     <string name="notifications_avg_hours">Toutes les %1$d heures en moyenne</string>
     <string name="last_check_at">Dernièrement vu à %1$s</string>
     <!-- iOS webxdc selector -->
-    <string name="webxdc_selector_empty_hint">Les applis privées envoyées ou reçues dans une des conversations apparaîtront ici. \"Fichiers\" montre seulement les applis privées que vous venez de télécharger.</string>
+    <string name="webxdc_selector_empty_hint">Les applis privées envoyées ou reçues dans une des discussions apparaîtront ici. « Fichiers » montre seulement les applis privées que vous venez de télécharger.</string>
     <!-- iOS webxdc shortcut page -->
-    <string name="shortcut_step1_tap_share_btn">Cliquez sur le bouton \"Partager\".</string>
-    <string name="shortcut_step2_tap_add_to_home_screen">Sélectionner \"Ajouter à l\'écran d\'accueil\" pour ajouter l\'appli à votre écran d\'accueil.</string>
+    <string name="shortcut_step1_tap_share_btn">Cliquer sur le bouton « Partager ».</string>
+    <string name="shortcut_step2_tap_add_to_home_screen">Sélectionner « Ajouter à l\'écran d\'accueil » pour ajouter l\'appli à votre écran d\'accueil.</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat utilise votre appareil photo pour pendre et envoyer des photos et des vidéos et pour scanner des QR codes.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat utilise vos contacts pour montrer une liste d\'adresses de courriel auxquels vous pouvez écrire. Delta Chat n\'a pas de serveur, vos contacts ne sont envoyés nulle part.</string>
@@ -1029,6 +1029,6 @@
 
 
     <!-- device messages for updates -->
-    <string name="update_1_34_android">Nouveautes de la version 1.34 :n\n🤗 Liste de contacts plus ergonomique : les derniers vus sont en premiers, et les contacts vus dans les 10 dernières minutes sont marqués d\'un point 🟢\n\n📑 Nouvelles pages dans les profils des discussions : \"Audio\" and \"Applis privées\"\n\n🖼️ Vous pouvez ajouter à l\'écran d\'accueil les \"Applis privées\" qu\'on vous envoie (par exemple depuis https://webxdc.org ).</string>
+    <string name="update_1_34_android">Nouveautes de la version 1.34 :n\n🤗 Des listes de contacts plus ergonomique : les derniers vus sont en premiers, et les contacts vus dans les 10 dernières minutes sont marqués d\'un point 🟢\n\n📑 Nouvelles pages dans les profils des discussions : « Audio » and « Applis privées » \n\n🖼️ Vous pouvez ajouter à l\'écran d\'accueil les « Applis privées » qu\'on vous envoie (par exemple depuis https://webxdc.org ).</string>
 
 </resources>

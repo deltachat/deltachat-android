@@ -774,6 +774,9 @@
     <string name="group_image_deleted_by_you">Usunięto obraz grupy.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
     <string name="group_image_deleted_by_other">Użytkownik %1$s usunął obraz grupy.</string>
+    <string name="location_enabled_by_you">Włączono strumieniowanie lokalizacji.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="location_enabled_by_other">Strumieniowanie lokalizacji włączone przez %1$s.</string>
     <string name="ephemeral_timer_disabled_by_you">Wyłączono zegar znikających wiadomości.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_disabled_by_other">Zegar znikających wiadomości został wyłączony przez %1$s.</string>
@@ -862,6 +865,10 @@
     <string name="qraccount_success_enter_name">Logowanie powiodło się – twój adres e-mail to %1$s\n\nJeśli chcesz, możesz teraz wprowadzić nazwę i zdjęcie profilowe, które będą wyświetlane osobom, do których piszesz.</string>
     <string name="qraccount_qr_code_cannot_be_used">Zeskanowanego kodu QR nie można użyć do założenia nowego konta.</string>
     <string name="qraccount_use_on_new_install">Zeskanowany kod QR służy do zakładania nowego konta. Możesz zeskanować kod QR podczas konfigurowania nowej instalacji Delta Chat.</string>
+    <!-- the placeholder will be replaced by the e-mail address of the account -->
+    <string name="qrlogin_ask_login">Zalogować się do „%1$s”?</string>
+    <!-- the placeholder will be replaced by the e-mail address of the account -->
+    <string name="qrlogin_ask_login_another">Zalogować się do „%1$s”?\n\nTwoje istniejące konto nie zostanie usunięte. Użyj opcji „Przełącz konto”, aby przełączyć się między swoimi kontami.</string>
     <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">Użytkownik %1$s zaprosił cię do dołączenia do tej grupy.\n\nCzekam na odpowiedź urządzenia %2$s…</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
@@ -1012,6 +1019,8 @@
     <string name="last_check_at">Sprawdzono o %1$s</string>
     <!-- iOS webxdc selector -->
     <string name="webxdc_selector_empty_hint">Tutaj pojawią się prywatne aplikacje otrzymane lub wysłane w dowolnym czacie. „Pliki” pokazuje właśnie pobrane prywatne aplikacje.</string>
+    <!-- iOS webxdc shortcut page -->
+    <string name="shortcut_step1_tap_share_btn">Kliknij przycisk udostępniania</string>
     <string name="shortcut_step2_tap_add_to_home_screen">Wybierz „Dodaj do ekranu głównego”, aby dodać aplikację do ekranu głównego.</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat używa aparatu do robienia i wysyłania zdjęć i filmów oraz do skanowania kodów QR.</string>

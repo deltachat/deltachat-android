@@ -752,9 +752,56 @@ https://meet.jit.si/$ROOM
     <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
     <string name="remove_member_by_other">عضویت %1$s توسط %2$s حذف شد. </string>
     <string name="group_left_by_you">شما گروه را ترک کردید.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="group_left_by_other">ترک گروه توسط %1$s.</string>
     <string name="group_image_deleted_by_you">شما تصویر گروه را حذف کردید.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
     <string name="group_image_deleted_by_other">تصویر گروه توسط %1$s حذف شد.</string>
+    <string name="location_enabled_by_you">جریان موقعیت مکانی را فعال کردید.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="location_enabled_by_other">جریان موقعیت مکانی توسط %1$s فعال شد.</string>
+    <string name="ephemeral_timer_disabled_by_you">تایمر ناپدید شدن پیام‌ها را غیرفعال کردید.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_disabled_by_other">تایمر ناپدید شدن پیام‌ها توسط %1$s غیرفعال شد.</string>
+    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to -->
+    <string name="ephemeral_timer_seconds_by_you">تایمر ناپدید شدن پیام‌ها را روی %1$s ثانیه تنظیم کردید</string>
+    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_seconds_by_other">تایمر ناپدید شدن پیام‌ها توسط %2$s روی %1$s ثانیه تنظیم شد.</string>
+    <string name="ephemeral_timer_1_minute_by_you">تایمر ناپدید شدن پیام‌ها را روی 1 دقیقه تنظیم کرده‌اید.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_1_minute_by_other">تایمر ناپدید شدن پیام‌ها توسط %1$s روی 1 دقیقه تنظیم شد.</string>
+    <string name="ephemeral_timer_1_hour_by_you">تایمر ناپدید شدن پیام‌ها را روی 1 ساعت تنظیم کرده‌اید.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_1_hour_by_other">تایمر ناپدید شدن پیام‌ها توسط %1$s روی 1 ساعت تنظیم شد.</string>
+    <string name="ephemeral_timer_1_day_by_you">تایمر ناپدید شدن پیام‌ها را روی 1 روز تنظیم کرده‌اید.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_1_day_by_other">تایمر ناپدید شدن پیام‌ها توسط %1$s روی 1 روز تنظیم شد.</string>
+    <string name="ephemeral_timer_1_week_by_you">تایمر ناپدید شدن پیام‌ها را روی 1 هفته تنظیم کرده‌اید.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_1_week_by_other">تایمر ناپدید شدن پیام‌ها توسط %1$s روی 1 هفته تنظیم شد.</string>
+    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to -->
+    <string name="ephemeral_timer_minutes_by_you">تایمر ناپدید شدن پیام‌ها را روی %1$s دقیقه تنظیم کردید.</string>
+    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_minutes_by_other">تایمر ناپدید شدن پیام‌ها توسط %2$s روی %1$s دقیقه تنظیم شد.</string>
+    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to -->
+    <string name="ephemeral_timer_hours_by_you">تایمر ناپدید شدن پیام‌ها را روی %1$s ساعت تنظیم کردید.</string>
+    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_hours_by_other">تایمر ناپدید شدن پیام‌ها توسط %2$s روی %1$s ساعت تنظیم شد.</string>
+    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to -->
+    <string name="ephemeral_timer_days_by_you">تایمر ناپدید شدن پیام‌ها را روی %1$s روز تنظیم کردید.</string>
+    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_days_by_other">تایمر ناپدید شدن پیام‌ها توسط %2$s روی %1$s روز تنظیم شد.</string>
+    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to -->
+    <string name="ephemeral_timer_weeks_by_you">تایمر ناپدید شدن پیام‌ها را روی %1$s هفته تنظیم کردید.</string>
+    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_weeks_by_other">تایمر ناپدید شدن پیام‌ها توسط %2$s روی %1$s هفته تنظیم شد.</string>
+    <string name="protection_enabled_by_you">محافظ چت را فعال کردید.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="protection_enabled_by_other">محافظ چت توسط %1$s فعال شد.</string>
+    <string name="protection_disabled_by_you">محافظ چت را غیرفعال کردید.</string>
+    <!-- %1$s will be replaced by name and address of the contact -->
+    <string name="protection_disabled_by_other">محافظ چت توسط %1$s غیرفعال شد.</string>
+
     <string name="devicemsg_self_deleted">شما گفتگوی «پیام‌های ذخیره شده» را پاک کردید. 
 ℹ️ برای استفاده مجدد از «پیام‌های ذخیره شده» کافی است یک گفتگوی جدید با خودتان درست کنید. </string>
     <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
@@ -808,6 +855,10 @@ https://meet.jit.si/$ROOM
     <string name="qraccount_success_enter_name">ورود موفق—آدرس ایمیل شما %1$sاست.\n\n اگر دوست دارید می‌توانید اکنون یک اسم وارد کرده و تصویر نمایه‌ای که هنگام نوشتن برای دیگران نشان داده می‌شود را انتخاب نمایید. </string>
     <string name="qraccount_qr_code_cannot_be_used">این کد کیوآر اسکن شده را نمی‌توان برای راه اندازی اکانت جدید استفاده کرد. </string>
     <string name="qraccount_use_on_new_install">کد کیوآر اسکن شده برای راه اندازی یک اکانت جدید است. می‌توانید در حال تنظیم یک دلتاچت تازه نصب شده کیوآر  را اسکن کنید.</string>
+    <!-- the placeholder will be replaced by the e-mail address of the account -->
+    <string name="qrlogin_ask_login">آیا به \"%1$s\" وارد شوید؟</string>
+    <!-- the placeholder will be replaced by the e-mail address of the account -->
+    <string name="qrlogin_ask_login_another">آیا به \"%1$s\" وارد شوید؟\n\nحساب موجود شما حذف نخواهد شد. برای جابه‌جایی میان حساب‌هایتان از \"تغییر حساب\" استفاده کنید.</string>
     <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">کاربر %1$s شما را دعوت کرده است تا عضو این گروه شوید.
 در انتظار دستگاه %2$s برای پاسخگویی...</string>
@@ -981,6 +1032,11 @@ GNU GPL ورژن ۳
     <string name="notifications_avg_minutes">به صورت متوسط هر%1$d دقیقه</string>
     <string name="notifications_avg_hours">به صورت متوسط هر %1$d ساعت</string>
     <string name="last_check_at">بررسی شده در %1$s</string>
+    <!-- iOS webxdc selector -->
+    <string name="webxdc_selector_empty_hint">برنامه های خصوصی دریافت شده یا ارسال شده در هر چت در اینجا ظاهر می شوند. برنامه‌های خصوصی را که تازه دانلود شده‌اند را «پوشه‌ها»  نشان می‌دهد.</string>
+    <!-- iOS webxdc shortcut page -->
+    <string name="shortcut_step1_tap_share_btn">روی دکمه اشتراک کلیک کنید</string>
+    <string name="shortcut_step2_tap_add_to_home_screen">برای افزودن برنامه به صفحه اصلی خود، «افزودن به صفحه اصلی» را انتخاب کنید.</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">دلتاچت برای گرفتن و ارسال عکس و فیلم و برای اسکن کردن کیوآر کد از دوربین شما استفاده می‌کند. </string>
     <string name="InfoPlist_NSContactsUsageDescription">دلتاچت از مخاطبین شما برای نمایش لیست ایمیل‌هایی که می‌توانید برایشان پیام ارسال کنید استفاده می‌کند. دلتاچت سرور ندارد مخاطبین شما به جایی ارسال نمی‌شوند. </string>
@@ -1002,4 +1058,7 @@ GNU GPL ورژن ۳
     <string name="perm_enable_bg_already_done">قبلا اجازه دسترسی به فعالیت در پس زمینه را به دلتاچت داده‌اید. \n\n اگر پیام‌ها هنوز هم در شرایط پس زمینه نمی‌آمد لطفا تنظیمات سیستم را نیز بررسی نمایید. </string>
 
 
-    </resources>
+    <!-- device messages for updates -->
+    <string name="update_1_34_android">چه چیزی در 1.34 جدید است؟\n\n🤗 لیست مخاطبین دوستانه‌تر: مرتب شده بر اساس آخرین بازدید و مخاطبینی که در عرض 10 دقیقه دیده شده‌اند با یک نقطه 🟢 مشخص می شوند\n\n📑 صفحات جدید در مشخصات چت: \"صوت\" و \"برنامه های خصوصی\"\n\n🖼️ اگر شخصی یک \"برنامه خصوصی\" برای شما ارسال کرد (به عنوان مثال از https://webxdc.org)، می توانید آن را به صفحه اصلی اضافه کنید.</string>
+
+</resources>
