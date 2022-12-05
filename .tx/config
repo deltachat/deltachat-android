@@ -1,10 +1,10 @@
 [main]
-host = https://www.transifex.com
-lang_map = id:in, ja_JP:ja, nl_NL:nl, pt_BR:pt-rBR, zh_CN:zh-rCN, zh_TW:zh-rTW
+host     = https://www.transifex.com
+lang_map = id: in, ja_JP: ja, nl_NL: nl, pt_BR: pt-rBR, zh_CN: zh-rCN, zh_TW: zh-rTW
 
-[delta-chat-app.stringsxml]
+[o:delta-chat:p:delta-chat-app:r:stringsxml]
 file_filter = res/values-<lang>/strings.xml
 source_file = res/values/strings.xml
 source_lang = en
-type = ANDROID
+type        = ANDROID
 
