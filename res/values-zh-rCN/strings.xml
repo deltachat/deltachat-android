@@ -52,11 +52,11 @@
     <string name="loading">加载中…</string>
     <string name="hide">隐藏</string>
     <string name="activate">激活</string>
-    <string name="load_remote_content">加载远程图片</string>
+    <string name="load_remote_content">加载远程图像</string>
     <!-- Possible answers to the question are: Never, Always, Once -->
-    <string name="load_remote_content_ask">远程图像可被用来跟踪您。\n\n该设置还允许加载字体和其他内容。即使禁用，您仍可能看到嵌入或缓存的图像。\n\n要加载远程图像吗？</string>
-    <string name="always">始终</string>
-    <string name="once">一次</string>
+    <string name="load_remote_content_ask">远程图像可以被用于追踪您。\n\n该设置可能还会加载字体以及其他内容。禁用状态下，您仍可能会看到嵌入的图像和缓存中的图像。\n\n要加载远程图像吗？</string>
+    <string name="always">总是</string>
+    <string name="once">仅一次</string>
     <string name="show_password">显示密码</string>
     <string name="hide_password">隐藏密码</string>
     <string name="not_now">现在不</string>
@@ -556,7 +556,7 @@
     <string name="pref_vibrate">振动</string>
     <string name="pref_screen_security">屏幕安全</string>
     <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
-    <string name="pref_screen_security_explain">请求系统在近期任务列表和本应用内阻止截屏</string>
+    <string name="pref_screen_security_explain">请求系统在最近任务列表中和本应用内阻止截屏</string>
     <string name="pref_screen_security_please_restart_hint">要应用屏幕安全设置，请重新启动本应用。</string>
     <string name="pref_notifications">通知</string>
     <string name="pref_notifications_show">显示</string>
@@ -578,7 +578,7 @@
     <string name="pref_language">语言</string>
     <string name="pref_incognito_keyboard">无痕键盘</string>
     <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
-    <string name="pref_incognito_keyboard_explain">请求键盘禁用个性化学习</string>
+    <string name="pref_incognito_keyboard_explain">请求输入法禁用个性化学习</string>
     <string name="pref_read_receipts">已读回执</string>
     <string name="pref_read_receipts_explain">禁用已读回执后，您将无法看到其他人的已读回执。</string>
     <string name="pref_manage_keys">管理密钥</string>

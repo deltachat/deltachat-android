@@ -4,6 +4,7 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">확인</string>
     <string name="cancel">취소</string>
+    <string name="clear_search">검색 삭제</string>
     <string name="yes">예</string>
     <string name="no">아니요</string>
     <string name="select">선택</string>
@@ -30,6 +31,8 @@
     <string name="back">뒤</string>
     <string name="close">닫기</string>
     <string name="forward">전달</string>
+    <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
+    <string name="resend">재전송</string>
     <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
     <string name="archive">아카이브</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
@@ -143,6 +146,11 @@
     <string name="images_and_videos">이미지와 동영상</string>
     <string name="file">파일</string>
     <string name="files">파일</string>
+    <!-- "Private App" is used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
+    <string name="webxdc_app">개인 앱</string>
+    <!-- plural of "Private App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
+    <string name="webxdc_apps">개인 앱</string>
+    <string name="files_and_webxdx_apps">파일, 개인 앱</string>
     <string name="unknown">알 수 없음</string>
 
     <string name="green">초록</string>
@@ -171,6 +179,11 @@
     <!-- Use the same wording as "Subject" to help people coming from the e-mail context; eg. "Betreff" in German -->
     <string name="new_group_or_subject">새 그룹이나 주제</string>
     <string name="menu_new_verified_group">새 확인된 그룹</string>
+    <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
+    <string name="broadcast_list">방송 목록</string>
+    <string name="broadcast_lists">방송 목록</string>
+    <string name="new_broadcast_list">새 방송 목록</string>
+    <string name="add_recipients">수신자 추가</string>
     <string name="menu_send">보내기</string>
     <string name="menu_toggle_keyboard">이모티콘 키보드 전환</string>
     <string name="menu_edit_group">그룹 편집</string>
@@ -216,6 +229,7 @@
     <string name="menu_help">자주 묻는 질문</string>
     <string name="privacy_policy">개인 정보 보호 정책</string>
     <string name="menu_select_all">모두 선택</string>
+    <string name="select_more">추가 선택</string>
     <string name="menu_edit_name">이름 편집</string>
     <string name="menu_settings">설정</string>
     <string name="menu_advanced">고급 설정</string>
@@ -225,8 +239,10 @@
     <string name="menu_save_log">로그 저장</string>
     <string name="menu_more_options">더 많은 옵션</string>
     <string name="menu_learn_spelling">맞춤법 배우기</string>
+    <string name="menu_chat_audit_log">채팅 로그 검사</string>
     <string name="jump_to_message">메시지로 이동</string>
     <string name="copy_json">JSON 복사</string>
+    <string name="replace_draft">초안 대체</string>
     <string name="title_share_location">그룹 구성원과 위치 공유하기</string>
     <string name="device_talk">기기 메시지</string>
     <string name="device_talk_subtitle">로컬에서 생성된 메시지</string>
@@ -243,6 +259,9 @@
     <string name="ConversationFragment_quoted_message_not_found">원본 메시지를 찾을 수 없음</string>
     <string name="reply_privately">비공개로 응답</string>
     <string name="source_code">소스 코드</string>
+    <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
+    <string name="add_to_home_screen">홈 스크린에 추가</string>
+
     <string name="mute_for_one_hour">1시간 동안 알림 일시 끄기</string>
     <string name="mute_for_two_hours">2시간 동안 알림 일시 끄기</string>
     <string name="mute_for_one_day">하루 동안 알림 일시 끄기</string>
@@ -264,6 +283,8 @@
     <string name="videochat_you_invited_hint">영상 채팅에 초대되었습니다.</string>
     <string name="videochat_tap_to_join">참여를 위해 탭하기</string>
     <string name="videochat_tap_to_open">열기 위해 탭하기</string>
+    <string name="videochat_instance">비디오 채팅 인스턴스</string>
+    <string name="videochat_instance_placeholder">당신의 비디오 채팅 인스턴스</string>
     <string name="videochat_instance_example">예시: https://meet.jit.si/$ROOM 또는 basicwebrtc:https://your-server</string>
     <string name="videochat_instance_explain_2">비디오 채팅을 사용할 수 있는 경우 각 채팅에서 비디오 채팅을 시작할 수 있습니다. 화상 채팅을 하려면 호환되는 앱 또는 호환 가능한 브라우저가 양쪽 끝에 필요합니다.</string>
     <string name="videochat_invitation">비디오 채팅 초대</string>
@@ -318,10 +339,14 @@
     <string name="chat_share_with_title">공유 대상</string>
     <string name="chat_input_placeholder">메시지</string>
     <string name="chat_archived_label">보관됨</string>
+    <string name="chat_request_label">요청</string>
     <string name="chat_no_messages">메시지가 없습니다…</string>
     <string name="chat_self_talk_subtitle">나에게 보낸 메시지</string>
     <string name="archive_empty_hint">대화를 보관하면 여기에 표시됩니다.</string>
     <string name="saved_messages">저장된 메시지</string>
+    <!-- Should match "Saved" from "Saved messages" -->
+    <string name="saved">저장됨</string>
+    <string name="save_as">~로 저장</string>
     <string name="retry_send">메시지 전송 다시 시도</string>
     <!-- reasons for a disabled message composer -->
     <string name="messaging_disabled_not_in_group">이 그룹에 속해 있지 않기 때문에 쓸 수 없습니다. 가입하려면, 다른 구성원에게 문의하십시오.</string>
@@ -331,22 +356,57 @@
     <string name="attachment_failed_to_load">첨부 파일을 불러오지 못했습니다.</string>
     <string name="mailing_list_profile_info">메일링 목록 이름 및 이미지의 변경 사항은 이 장치에만 적용됩니다.</string>
 
+    <!-- webxdc -->
+    <!-- "Start..." button for an app -->
+    <string name="start_app">시작...</string>
     <!-- this is a warning that is shown when one tries to send something to a chat that is not yet accepted. -->
     <string name="accept_request_first">채팅 요청을 먼저 수락하십시오.</string>
 
+    <string name="show_location_traces">기록 보기</string>
     <!-- chat audit log -->
     <string name="chat_audit_log_empty_message">이 채팅의 시스템 메시지가 여기에 나타납니다.</string>
     <!-- search -->
     <string name="search">검색</string>
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">그룹 이름</string>
+    <string name="group_avatar">그룹 이미지</string>
+    <string name="remove_group_image">그룹 이미지 제거</string>
+    <string name="change_group_image">그룹 이미지 변경</string>
     <string name="group_create_button">그룹 만들기</string>
+    <string name="group_please_enter_group_name">그룹 이름을 입력하시오</string>
     <string name="group_add_members">대화상대 추가</string>
+    <string name="group_self_not_in_group">실행을 위해선 그룹의 멤버가 되어야 합니다.</string>
     <string name="profile_shared_chats">공유 채팅</string>
     <string name="tab_contact">연락처</string>
     <string name="tab_group">그룹</string>
     <string name="tab_gallery">앨범</string>
+    <string name="tab_image_empty_hint">채팅에 공유된 이미지가 여기에 나타납니다.</string>
+    <string name="tab_video_empty_hint">채팅에 공유된 비디오가 여기에 나타납니다.</string>
     <string name="media_preview">미디어 미리보기</string>
+    <string name="send_message">메시지 전송</string>
+    <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
+    <string name="connectivity_not_connected">연결되지 않음</string>
+    <!-- Shown in the title bar if the app is "Connecting"; prefer short strings. The ellipsis is a single character (…), not three (...) -->
+    <string name="connectivity_connecting">연결중...</string>
+    <!-- Shown in the title bar if the app is "Updating" (eg. getting new/old message, sync things); prefer short strings. The ellipsis is a single character (…), not three (...) -->
+    <string name="connectivity_updating">업데이트중...</string>
+    <!-- Shown in the setting if the app is "Connected" -->
+    <string name="connectivity_connected">연결됨</string>
+    <string name="sending">전송중...</string>
+    <string name="last_msg_sent_successfully">마지막 메시지 전송됨.</string>
+    <!-- Subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed. -->
+    <string name="messages">메시지</string>
+    <string name="login_title">로그인</string>
+    <string name="login_header">이메일 계정으로 로그인하시오</string>
+    <string name="login_explain">존재하는 이메일 계정으로 로그인하시오</string>
+    <string name="import_backup_title">백업 불러오기</string>
+    <string name="switch_account">계정 전환</string>
+    <string name="add_account">계정 추가</string>
+    <string name="delete_account">계정 삭제</string>
+    <string name="delete_account_ask">정말 계정을 삭제하시겠습니까?</string>
+    <string name="unconfigured_account">존재하지 않는 계정</string>
+    <string name="unconfigured_account_hint">설정을 위해 계정을 여시오</string>
+    <string name="try_connect_now">연결을 하시오</string>
     <!-- share and forward messages -->
     <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">채팅방 선택</string>
@@ -391,7 +451,18 @@
     <string name="pref_log_header">로그</string>
     <string name="pref_other">기타</string>
     <string name="pref_backup">백업</string>
+    <string name="pref_backup_export_start_button">백업 시작</string>
     <string name="pref_background">채팅방 배경화면</string>
+    <string name="pref_background_btn_default">기본 이미지 사용</string>
+    <string name="pref_background_btn_gallery">갤러리에서 선택됨</string>
+    <string name="pref_watch_sent_folder">보낸 폴더 보기</string>
+    <string name="pref_send_copy_to_self">복사본 내게 보내기</string>
+    <string name="pref_show_emails_no">아뇨, 오직 채팅만</string>
+    <string name="pref_show_emails_all">전부</string>
+    <string name="pref_background_default">기본 배경</string>
+    <string name="pref_background_default_color">기본 색</string>
+    <string name="pref_background_custom_image">커스텀 이미지</string>
+    <string name="pref_background_custom_color">커스텀 색</string>
     <string name="auto_download_messages">메시지 자동 다운로드</string>
     <string name="download_failed">다운로드 실패</string>
     <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string eg. "1 MiB message" -->
@@ -402,6 +473,8 @@
     <string name="pref_show_tray_icon">트레이 아이콘 표시</string>
     <string name="pref_edit_profile">프로필 편집</string>
 
+    <!-- Emoji picker and categories -->
+    <string name="emoji_search_results">결과 검색</string>
     <string name="emoji_not_found">이모티콘을 찾을 수 없습니다.</string>
     <string name="emoji_recent">최근에 사용됨</string>
     <!-- automatically delete message -->
@@ -409,6 +482,7 @@
     <string name="autodel_device_title">기기에서 메시지 삭제</string>
     <string name="autodel_server_title">서버에서 메시지 삭제</string>
     <string name="autodel_confirm">알겠습니다. 모든 메시지를 삭제하세요.</string>
+    <string name="autodel_at_once">한 번에</string>
     <string name="after_30_seconds">30초 후</string>
     <string name="after_1_minute">1분 후</string>
     <string name="after_5_minutes">5분 후</string>
@@ -423,11 +497,20 @@
     <!-- autocrypt -->
     <string name="autocrypt">자동암호화</string>
     <string name="autocrypt_send_asm_title">자동 암호화 설정된 메시지 전송</string>
+    <string name="autocrypt_continue_transfer_retry">재시도</string>
     <string name="systemmsg_unknown_sender_for_chat">이 채팅의 발신자를 알 수 없습니다. 자세한 내용은 \'info\'를 확인하세요.</string>
     <string name="systemmsg_failed_sending_to">%1$s에게 메시지를 보내지 못했습니다.</string>
+    <string name="group_image_changed_by_you">그룹 이미지를 바꿨습니다.</string>
+    <string name="group_left_by_you">그룹을 나갔습니다</string>
+    <!-- qr code stuff -->
+    <string name="qr_code">QR 코드</string>
     <string name="qrscan_title">QR코드를 스캔하세요</string>
     <string name="qrscan_ask_join_group">\"%1$s\" 그룹에 참여하시겠습니까?</string>
+    <string name="qrscan_fingerprint_label">지문</string>
+    <string name="withdraw_qr_code">QR 코드 비활성화</string>
+    <string name="revive_qr_code">QR 코드 활성화</string>
     <string name="qrshow_join_contact_no_connection_toast">인터넷에 연결되어 있지 않아 QR 코드 설정을 수행할 수 없습니다.</string>
+    <string name="copy_qr_data_success">QR url을 클립보드에 복사했습니다</string>
     <string name="notify_reply_button">답장</string>
     <string name="notify_new_message">새 메시지</string>
     <string name="notify_background_connection_enabled">백그라운드 연결 사용</string>
@@ -441,6 +524,7 @@
     <!-- permissions -->
     <string name="perm_required_title">권한 필요</string>
     <string name="perm_continue">확인</string>
+    <string name="ImageEditorHud_add_text">텍스트 추가</string>
     <string name="welcome_desktop">Delta Chat에 오신 것을 환영합니다.</string>
     <string name="global_menu_preferences_language_desktop">언어</string>
     <string name="global_menu_file_desktop">파일</string>
@@ -456,6 +540,7 @@
     <string name="global_menu_view_developer_tools_desktop">개발자 도구</string>
     <string name="global_menu_help_desktop">도움말</string>
     <string name="global_menu_help_learn_desktop">Delta Chat에 대해 더 알아보기</string>
+    <string name="global_menu_file_open_desktop">델타 챗 열기</string>
     <string name="global_menu_minimize_to_tray">최소화하다</string>
     <string name="no_chat_selected_suggestion_desktop">채팅 선택 또는 새로운 채팅 생성</string>
     <string name="write_message_desktop">메시지 작성</string>
@@ -467,4 +552,12 @@
     <string name="select_group_image_desktop">그룹 이미지 선택</string>
     <string name="autocrypt_incorrect_desktop">잘못된 설정 코드입니다. 다시 시도하십시오.</string>
     <string name="create_chat_error_desktop">대화를 만들 수 없습니다.</string>
+    <string name="message_detail_sent_desktop">보냄</string>
+    <string name="share_account_not_configured">존재하지 않는 계정입니다.</string>
+    <string name="cannot_play_audio_file">오디오 파일을 재생할 수 없습니다.</string>
+    <string name="open_settings">설정 열기</string>
+    <!-- iOS connectivity view -->
+    <string name="delayed">지연됨</string>
+    <!-- iOS webxdc shortcut page -->
+    <string name="shortcut_step1_tap_share_btn">공유 버튼 누르기</string>
     </resources>
