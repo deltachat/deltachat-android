@@ -646,7 +646,7 @@
     <string name="pref_managekeys_menu_title">Zarządzaj prywatnymi kluczami</string>
     <string name="pref_managekeys_export_secret_keys">Eksportuj prywatne klucze</string>
     <string name="pref_managekeys_export_explain">Wyeksportować prywatne klucze do „%1$s”?</string>
-    <string name="pref_managekeys_import_secret_keys">Importuj prywatne klucze</string>
+    <string name="pref_managekeys_import_secret_keys">Importuj tajne klucze</string>
     <string name="pref_managekeys_import_explain">Zaimportować prywatne klucze z „%1$s”?\n\n• Istniejące prywatne klucze nie są usuwane\n\n• Ostatni zaimportowany klucz zostanie użyty jako nowy klucz domyślny, chyba że w nazwie pliku znajduje się słowo legacy”.</string>
     <string name="pref_managekeys_secret_keys_exported_to_x">Prywatne klucze zapisano pomyślnie do „%1$s”.</string>
     <string name="pref_managekeys_secret_keys_imported_from_x">Prywatne klucze zaimportowano z „%1$s”.</string>
@@ -655,7 +655,7 @@
     <string name="pref_background_btn_gallery">Wybierz z galerii</string>
     <string name="pref_imap_folder_handling">Obsługa folderów IMAP</string>
     <string name="pref_imap_folder_warn_disable_defaults">Jeśli wyłączysz tę opcję, upewnij się, że twój serwer i inni klienci są odpowiednio skonfigurowani.\n\nW przeciwnym razie wszystko może w ogóle nie działać.</string>
-    <string name="pref_watch_sent_folder">Oglądaj katalog Wysłane</string>
+    <string name="pref_watch_sent_folder">Pokaż katalog Wysłane</string>
     <string name="pref_send_copy_to_self">Wyślij kopię do siebie</string>
     <string name="pref_send_copy_to_self_explain">Wymagane kiedy korzystasz z tego konta na wielu urządzeniach.</string>
     <string name="pref_auto_folder_moves">Automatyczne przenoszenie do folderu DeltaChat</string>
@@ -678,8 +678,8 @@
     <string name="auto_download_messages">Automatyczne pobieranie wiadomości</string>
     <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB -->
     <string name="up_to_x">Do %1$s</string>
-    <string name="up_to_x_most_worse_quality_images">Do %1$s, większość obrazów gorszej jakości.</string>
-    <string name="up_to_x_most_balanced_quality_images">Do %1$s, obrazy o najbardziej zrównoważonej jakości</string>
+    <string name="up_to_x_most_worse_quality_images">Do %1$s, większ. obrazów gorszej jakości</string>
+    <string name="up_to_x_most_balanced_quality_images">Do %1$s, obrazy zrównoważonej jakości</string>
     <string name="download_failed">Pobieranie nie udane</string>
     <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string eg. "1 MiB message" -->
     <string name="n_bytes_message">Wiadomość %1$s</string>
@@ -706,9 +706,9 @@
 
 
     <!-- automatically delete message -->
-    <string name="delete_old_messages">Usuń stare wiadomości</string>
-    <string name="autodel_device_title">Usuwanie wiadomości z urządzenia</string>
-    <string name="autodel_server_title">Usuwanie wiadomości z serwera</string>
+    <string name="delete_old_messages">Usuwanie starych wiadomości</string>
+    <string name="autodel_device_title">Usuń wiadomości z urządzenia</string>
+    <string name="autodel_server_title">Usuń wiadomości z serwera</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">Czy chcesz teraz usunąć %1$d wiadomości i wszystkie nowo pobrane wiadomości w przyszłości „%2$s”?\n\n• Obejmuje to wszystkie multimedia\n\n• Wiadomości zostaną usunięte niezależnie od tego, czy były widoczne, czy nie\n\n• „Zapisane wiadomości” zostaną pominięte podczas lokalnego usuwania</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
@@ -821,7 +821,7 @@
 
     <string name="devicemsg_self_deleted">Usunięto czat „Zapisane wiadomości”.\n\nℹ️ Aby ponownie użyć funkcji „Zapisane wiadomości”, utwórz nowy czat ze sobą.</string>
     <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
-    <string name="devicemsg_storage_exceeding">⚠️ Limit pamięci u twojego dostawcy wkrótce zostanie przekroczony, wykorzystano już %1$s%%.\n\nMożesz nie być w stanie otrzymywać wiadomości, gdy pamięć zostanie wykorzystana w 100%%.\n\n👉 Sprawdzić, czy możesz usunąć stare dane w interfejsie internetowym dostawcy i rozważyć włączenie opcji \"Ustawienia » Czaty i media » Usuń stare wiadomości\". W dowolnym momencie możesz sprawdzić swoje bieżące wykorzystanie pamięci w \"Ustawienia » Łączność\".</string>
+    <string name="devicemsg_storage_exceeding">⚠️ Limit pamięci u twojego dostawcy wkrótce zostanie przekroczony, wykorzystano już %1$s%%.\n\nMożesz nie być w stanie otrzymywać wiadomości, gdy pamięć jest pełna.\n\n👉 Sprawdzić, czy możesz usunąć stare dane w interfejsie internetowym dostawcy i rozważyć włączenie opcji \"Ustawienia » Czaty i media » Usuwanie starych wiadomości\". W dowolnym momencie możesz sprawdzić swoje bieżące wykorzystanie pamięci w \"Ustawienia » Łączność\".</string>
     <!-- %1%s will be replaced by date and time in some human-readable format -->
     <string name="devicemsg_bad_time">⚠️ Data lub godzina urządzenia wydaje się być niedokładna (%1$s).\n\nDostosuj zegar ⏰🔧, aby upewnić się, że wiadomości są prawidłowo odbierane.</string>
     <string name="devicemsg_update_reminder">⚠️ Twoja wersja Delta Chat może być nieaktualna.\n\nMoże to powodować problemy, ponieważ Twoi partnerzy czatu korzystają z nowszych wersji, a Ty nie masz najnowszych funkcji 😳\nSprawdź aktualizacje na stronie https://get.delta.chat lub w sklepie z aplikacjami.</string>
