@@ -34,6 +34,7 @@
       <!-- fi     Finnish -->                <item>Suomi</item>
       <!-- sv     Swedish -->                <item>Svenska</item>
       <!-- tr     Turkish -->                <item>Türkçe</item>
+      <!-- el     Greek -->                  <item>Ελληνικά</item>
       <!-- ru     Russian -->                <item>Pусский</item>
       <!-- sr     Serbian -->                <item>Српски</item>
       <!-- uk     Ukrainian -->              <item>Українська</item>
@@ -79,6 +80,7 @@
       <item>fi</item>
       <item>sv</item>
       <item>tr</item>
+      <item>el</item>
       <item>ru</item>
       <item>sr</item>
       <item>uk</item>
