@@ -1,6 +1,22 @@
 # Delta Chat Android Changelog
 
-## v1.34.7
+## v1.34.8
+2022-12
+
+* If a classical-email-user sends an email to a group and adds new recipients,
+  the new recipients will become group members
+* treat attached PGP keys from classical-email-user as a signal to prefer mutual encryption
+* treat encrypted or signed messages from classical-email-user as a signal to prefer mutual encryption
+* fix migration of old databases
+* fix: send ephemeral timer change messages only of the chat is already known by other members
+* fix: use relative paths to database and avoid problems eg. on migration to other devices or paths
+* fix read/write timeouts for IMAP over SOCKS5
+* fix: do not send "group name changes" if no character was modified
+* add Greek translation, update other translations
+* update to core104
+
+
+## v1.34.7 Testrun
 2022-12
 
 * prevent From:-forgery attacks
@@ -44,7 +60,7 @@
 * using core98
 
 
-## v1.34.2
+## v1.34.2 Testrun
 2022-10
 
 * fix messages not arriving on newer androids by switching to more modern APIs
@@ -66,7 +82,7 @@
 * using core95
 
 
-## v1.34.0
+## v1.34.0 Testrun
 2022-10
 
 * start using "Private Apps" as a more user friendly term for the technical "Webxdc" term
