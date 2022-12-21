@@ -16,7 +16,7 @@
 * update to core104
 
 
-## v1.34.7
+## v1.34.7 Testrun
 2022-12
 
 * prevent From:-forgery attacks
@@ -60,7 +60,7 @@
 * using core98
 
 
-## v1.34.2
+## v1.34.2 Testrun
 2022-10
 
 * fix messages not arriving on newer androids by switching to more modern APIs
@@ -82,7 +82,7 @@
 * using core95
 
 
-## v1.34.0
+## v1.34.0 Testrun
 2022-10
 
 * start using "Private Apps" as a more user friendly term for the technical "Webxdc" term
