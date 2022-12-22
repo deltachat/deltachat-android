@@ -17,4 +17,4 @@ echo "==================== DESKTOP USAGE ===================="
 grep --exclude-dir={.cache,.git,html-dist,node_modules,_locales} -ri $TEXT ../deltachat-desktop/
 
 echo "==================== NODE USAGE ===================="
-grep  --exclude-dir={.git} -ri $TEXT ../deltachat-node/
+grep  --exclude-dir={.git} -ri $TEXT ../deltachat-core-rust/node
