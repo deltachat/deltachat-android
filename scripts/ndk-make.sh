@@ -62,7 +62,7 @@ export CARGO_TARGET_AARCH64_LINUX_ANDROID_LINKER="$TOOLCHAIN/bin/aarch64-linux-a
 export CARGO_TARGET_I686_LINUX_ANDROID_LINKER="$TOOLCHAIN/bin/i686-linux-android16-clang"
 export CARGO_TARGET_X86_64_LINUX_ANDROID_LINKER="$TOOLCHAIN/bin/x86_64-linux-android21-clang"
 
-RUSTUP_TOOLCHAIN=$(cat "$(dirname "$0")/rust-toolchain")
+RUSTUP_TOOLCHAIN=$(cat "$(dirname $(realpath "$0"))/rust-toolchain")
 
 # Check if the argument is a correct architecture:
 if test $1 && echo "armeabi-v7a arm64-v8a x86 x86_64" | grep -vwq $1; then
