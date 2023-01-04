@@ -146,7 +146,7 @@
     </activity-alias>
 
     <activity android:name=".ConversationListArchiveActivity"
-              android:label="@string/chat_archived_chats_title"
+              android:label="@string/chat_archived_label"
               android:launchMode="singleTask"
               android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"
               android:parentActivityName=".ConversationListActivity">
