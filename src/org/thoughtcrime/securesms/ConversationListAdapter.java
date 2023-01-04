@@ -101,14 +101,13 @@ class ConversationListAdapter extends RecyclerView.Adapter {
   @Override
   public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
     if (viewType == MESSAGE_TYPE_SWITCH_ARCHIVE) {
-      ConversationListItemAction action = (ConversationListItemAction) inflater.inflate(R.layout.conversation_list_item_action,
-                                                                                        parent, false);
+      final ConversationListItem item = (ConversationListItem)inflater.inflate(R.layout.conversation_list_item_view, parent, false);
 
-      action.setOnClickListener(v -> {
+      item.setOnClickListener(v -> {
         if (clickListener != null) clickListener.onSwitchToArchive();
       });
 
-      return new ViewHolder(action);
+      return new ViewHolder(item);
     } else if (viewType == MESSAGE_TYPE_INBOX_ZERO) {
       return new ViewHolder((ConversationListItemInboxZero)inflater.inflate(R.layout.conversation_list_item_inbox_zero, parent, false));
     } else {
