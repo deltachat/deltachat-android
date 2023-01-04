@@ -256,32 +256,16 @@ public class ConversationListItem extends RelativeLayout
       archivedBadgeView.setVisibility(View.VISIBLE);
       requestBadgeView.setVisibility(isContactRequest ? View.VISIBLE : View.GONE);
       deliveryStatusIndicator.setNone();
-      unreadIndicator.setVisibility(View.GONE);
     }
     else if (isContactRequest) {
       requestBadgeView.setVisibility(View.VISIBLE);
       archivedBadgeView.setVisibility(View.GONE);
       deliveryStatusIndicator.setNone();
-      unreadIndicator.setVisibility(View.GONE);
     }
     else
     {
       requestBadgeView.setVisibility(View.GONE);
       archivedBadgeView.setVisibility(View.GONE);
-
-      if(unreadCount==0) {
-        unreadIndicator.setVisibility(View.GONE);
-      } else {
-        unreadIndicator.setImageDrawable(TextDrawable.builder()
-                .beginConfig()
-                .width(ViewUtil.dpToPx(getContext(), 24))
-                .height(ViewUtil.dpToPx(getContext(), 24))
-                .textColor(Color.WHITE)
-                .bold()
-                .endConfig()
-                .buildRound(String.valueOf(unreadCount), getResources().getColor(R.color.unread_count)));
-        unreadIndicator.setVisibility(View.VISIBLE);
-      }
 
       if (state == DcMsg.DC_STATE_OUT_FAILED) {
         deliveryStatusIndicator.setFailed();
@@ -302,6 +286,20 @@ public class ConversationListItem extends RelativeLayout
       } else {
         deliveryStatusIndicator.resetTint();
       }
+    }
+
+    if(unreadCount==0 || isContactRequest) {
+      unreadIndicator.setVisibility(View.GONE);
+    } else {
+      unreadIndicator.setImageDrawable(TextDrawable.builder()
+        .beginConfig()
+        .width(ViewUtil.dpToPx(getContext(), 24))
+        .height(ViewUtil.dpToPx(getContext(), 24))
+        .textColor(Color.WHITE)
+        .bold()
+        .endConfig()
+        .buildRound(String.valueOf(unreadCount), getResources().getColor(R.color.unread_count)));
+      unreadIndicator.setVisibility(View.VISIBLE);
     }
   }
 
