@@ -161,7 +161,7 @@ public class ConversationListItem extends RelativeLayout
         thread.isSendingLocations()? R.drawable.ic_location_chatlist : 0, 0
     );
 
-    setStatusIcons(thread.getVisibility(), state, unreadCount, thread.isContactRequest());
+    setStatusIcons(thread.getVisibility(), state, unreadCount, thread.isContactRequest(), thread.isMuted() || chatId == DcChat.DC_CHAT_ID_ARCHIVED_LINK);
     setBatchState(batchMode);
     setBgColor(thread);
 
@@ -250,7 +250,7 @@ public class ConversationListItem extends RelativeLayout
     return msgId;
   }
 
-  private void setStatusIcons(int visibility, int state, int unreadCount, boolean isContactRequest) {
+  private void setStatusIcons(int visibility, int state, int unreadCount, boolean isContactRequest, boolean isMuted) {
     if (visibility==DcChat.DC_CHAT_VISIBILITY_ARCHIVED)
     {
       archivedBadgeView.setVisibility(View.VISIBLE);
@@ -291,6 +291,7 @@ public class ConversationListItem extends RelativeLayout
     if(unreadCount==0 || isContactRequest) {
       unreadIndicator.setVisibility(View.GONE);
     } else {
+      final int color = getResources().getColor(isMuted ? (ThemeUtil.isDarkTheme(getContext()) ? R.color.unread_count_muted_dark : R.color.unread_count_muted) : R.color.unread_count);
       unreadIndicator.setImageDrawable(TextDrawable.builder()
         .beginConfig()
         .width(ViewUtil.dpToPx(getContext(), 24))
@@ -298,7 +299,7 @@ public class ConversationListItem extends RelativeLayout
         .textColor(Color.WHITE)
         .bold()
         .endConfig()
-        .buildRound(String.valueOf(unreadCount), getResources().getColor(R.color.unread_count)));
+        .buildRound(String.valueOf(unreadCount), color));
       unreadIndicator.setVisibility(View.VISIBLE);
     }
   }

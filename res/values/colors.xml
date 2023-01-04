@@ -13,6 +13,8 @@
     <color name="primary_alpha33">#552090ea</color>
 
     <color name="unread_count">#ff3792fc</color>
+    <color name="unread_count_muted">#b6b6bb</color>
+    <color name="unread_count_muted_dark">#3b3b3b</color>
 
     <color name="white">#ffffffff</color>
     <color name="black">#ff000000</color>
