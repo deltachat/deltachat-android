@@ -27,7 +27,15 @@ in Android Studio:
 5. bump version in build.gradle,
    update _both_, versionCode and versionName
 
-6. if `./ndk-make.sh` from step 2. is finished successfully:
+6. Add "4" at the end of versionCode to calculate F-Droid version code number.
+   E.g. for versionCode 456 you get number 4564.
+   This version conversion is due to `VercodeOperation` in
+   <https://gitlab.com/fdroid/fdroiddata/blob/master/metadata/com.b44t.messenger.yml>
+   metadata file, see <https://f-droid.org/docs/Build_Metadata_Reference/#VercodeOperation> for
+   documentation.
+   Add `metadata/en-US/changelogs/4564.txt` file with a changelog for F-Droid.
+
+7. if `./ndk-make.sh` from step 2. is finished successfully:
    a) select "Build / Generate Signed Bundle or APK" and then "APK"
       (not: App Bundle as this would require uploading the signing key)
    b) select flavor `gplayRelease` with V1 signature enabled
