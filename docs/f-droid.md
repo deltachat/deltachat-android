@@ -4,9 +4,15 @@
   is the Delta Chat page on F-Droid.org,
   the F-Droid-app will show similar information.
 
-- <https://gitlab.com/fdroid/fdroiddata/blob/master/metadata/com.b44t.messenger.yml>
-  contains the description and all meta data shown for Delta Chat on F-Droid;
-  you can also check if F-Droid recognizes a new version here (they show up at the end)
+- <https://github.com/deltachat/deltachat-android/tree/master/metadata>
+  contains the description, icon, screenshots and all meta data shown for Delta Chat on F-Droid
+  in the [fastlane format](https://f-droid.org/en/docs/All_About_Descriptions_Graphics_and_Screenshots/#fastlane-structure).
+
+- <https://gitlab.com/fdroid/fdroiddata/blob/master/metadata/com.b44t.messenger.yml> and
+  <https://gitlab.com/fdroid/fdroiddata/-/tree/master/metadata/com.b44t.messenger>
+  contain [additional F-Droid-specific metadata](https://f-droid.org/en/docs/All_About_Descriptions_Graphics_and_Screenshots/#in-the-f-droid-repo)
+  and build instructions that do not fit the fastlane format.
+  F-Droid adds new versions automatically to the end of `.yml` file.
 
 - new versions are recognized by tags in the form `v1.2.3` -
   before adding tags like that, have a look at `docs/release-checklist.md`
@@ -35,7 +41,7 @@ $ git clone https://gitlab.com/fdroid/fdroiddata
 $ git clone https://gitlab.com/fdroid/fdroidserver  
 $ cd fdroiddata  
 
-now, metadata/com.b44t.messenger.txt can be modified.
+now, metadata/com.b44t.messenger.yml can be modified.
 for testing, one can change the repo to a branch
 by adding the line `Update Check Mode:RepoManifest/BRANCH` to the file.
 
@@ -54,12 +60,19 @@ and https://f-droid.org/docs/Building_Applications/ -
 might require `pip install pyasn1 pyasn1_modules pyaml requests`)
 
 
-# Changing the Description on F-Droid
+# Changing the description
 
-- the description can be changed via a PR to the file above
+- Change the files `metadata/en-US/short_description.txt`
+  and `metadata/en-US/full_description.txt`
+  in <https://github.com/deltachat/deltachat-android/> repository.
 
 - make sure there is a "newline" at the end of the description
-  (see https://gitlab.com/fdroid/fdroiddata/merge_requests/3580)
+  (see <https://gitlab.com/fdroid/fdroiddata/merge_requests/3580>)
+
+
+# Changing F-Droid metadata
+
+- the file `com.b44t.messenger.yml` can be changed via a PR to the <https://gitlab.com/fdroid/fdroiddata/> repository
 
 - reformat the metadata using  
   $ ../fdroidserver/fdroid rewritemeta com.b44t.messenger  # called from fdroiddata dir
