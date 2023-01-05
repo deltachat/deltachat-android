@@ -146,7 +146,7 @@ public class DcHelper {
     dcContext.setStockTranslation(35, context.getString(R.string.contact_verified));
     dcContext.setStockTranslation(36, context.getString(R.string.contact_not_verified));
     dcContext.setStockTranslation(37, context.getString(R.string.contact_setup_changed));
-    dcContext.setStockTranslation(40, context.getString(R.string.chat_archived_chats_title));
+    dcContext.setStockTranslation(40, context.getString(R.string.chat_archived_label));
     dcContext.setStockTranslation(42, context.getString(R.string.autocrypt_asm_subject));
     dcContext.setStockTranslation(43, context.getString(R.string.autocrypt_asm_general_body));
     dcContext.setStockTranslation(60, context.getString(R.string.login_error_cannot_login));

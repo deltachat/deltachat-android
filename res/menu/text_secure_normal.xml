@@ -10,9 +10,6 @@
     <item android:title="@string/menu_new_chat"
           android:id="@+id/menu_new_chat" />
 
-    <item android:title="@string/chat_archived_chats_title"
-        android:id="@+id/menu_archived_chats" />
-
     <item android:title="@string/menu_show_global_map"
         android:id="@+id/menu_global_map"
         android:visible="false"

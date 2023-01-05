@@ -33,9 +33,9 @@ public class ConversationListArchiveActivity extends PassphraseRequiredActionBar
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     if (isRelayingMessageContent(this)) {
       getSupportActionBar().setTitle(isSharing(this) ? R.string.chat_share_with_title : R.string.forward_to);
-      getSupportActionBar().setSubtitle(R.string.chat_archived_chats_title);
+      getSupportActionBar().setSubtitle(R.string.chat_archived_label);
     } else {
-      getSupportActionBar().setTitle(R.string.chat_archived_chats_title);
+      getSupportActionBar().setTitle(R.string.chat_archived_label);
     }
 
     Bundle bundle = new Bundle();
