@@ -1,1 +1,0 @@
-scripts/ndk-make.sh

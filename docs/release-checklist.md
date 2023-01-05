@@ -7,7 +7,7 @@ on the command-line:
    depending on how much you trust in rust, you might want to do a
    ./scripts/clean-core.sh before building
 
-2. $ ./ndk-make.sh
+2. $ ./scripts/ndk-make.sh
 
 this will take some time - meanwhile we're doing some housekeeping:
 
@@ -35,7 +35,7 @@ in Android Studio:
    documentation.
    Add `metadata/en-US/changelogs/4564.txt` file with a changelog for F-Droid.
 
-7. if `./ndk-make.sh` from step 2. is finished successfully:
+7. if `./scripts/ndk-make.sh` from step 2. is finished successfully:
    a) select "Build / Generate Signed Bundle or APK" and then "APK"
       (not: App Bundle as this would require uploading the signing key)
    b) select flavor `gplayRelease` with V1 signature enabled

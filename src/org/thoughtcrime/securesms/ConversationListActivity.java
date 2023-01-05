@@ -131,7 +131,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   }
 
   /**
-   * If the build script is invoked with a specific architecture (e.g.`./ndk-make.sh arm64-v8a`), it
+   * If the build script is invoked with a specific architecture (e.g.`ndk-make.sh arm64-v8a`), it
    * will compile the core only for this arch. This method checks if the arch was correct.
    *
    * In order to do this, `ndk-make.sh` writes its argument into the file `ndkArch`.
