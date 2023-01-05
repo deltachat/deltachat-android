@@ -48,6 +48,9 @@
     <string name="start_chat">Start Chat</string>
     <string name="show_full_message">Show Full Message…</string>
     <string name="show_full_message_in_browser">Show Full Message in Browser…</string>
+    <string name="mark_as_read">Mark All as Read</string>
+    <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
+    <string name="mark_as_read_short">Read</string>
     <!-- Placeholder text when something is loading -->
     <string name="loading">Loading…</string>
     <string name="hide">Hide</string>

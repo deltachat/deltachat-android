@@ -2,8 +2,13 @@ package org.thoughtcrime.securesms;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import com.b44t.messenger.DcChat;
+
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 
@@ -58,11 +63,27 @@ public class ConversationListArchiveActivity extends PassphraseRequiredActionBar
   }
 
   @Override
+  public boolean onPrepareOptionsMenu(Menu menu) {
+    MenuInflater inflater = this.getMenuInflater();
+    menu.clear();
+
+    inflater.inflate(R.menu.archived_list, menu);
+    super.onPrepareOptionsMenu(menu);
+    return true;
+  }
+
+  @Override
   public boolean onOptionsItemSelected(MenuItem item) {
     super.onOptionsItemSelected(item);
 
     switch (item.getItemId()) {
-      case android.R.id.home: super.onBackPressed(); return true;
+      case android.R.id.home:
+        super.onBackPressed();
+        return true;
+
+      case R.id.mark_as_read:
+        DcHelper.getContext(this).marknoticedChat(DcChat.DC_CHAT_ID_ARCHIVED_LINK);
+        return true;
     }
 
     return false;
