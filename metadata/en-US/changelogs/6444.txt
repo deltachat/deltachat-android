@@ -1,0 +1,10 @@
+If a classical-email-user sends an email to a group and adds new recipients, the new recipients will become group members.
+Treat attached PGP keys from classical-email-user as a signal to prefer mutual encryption.
+Treat encrypted or signed messages from classical-email-user as a signal to prefer mutual encryption.
+Fix migration of old databases.
+Fix: send ephemeral timer change messages only of the chat is already known by other members.
+Fix: use relative paths to database and avoid problems eg. on migration to other devices or paths.
+Fix read/write timeouts for IMAP over SOCKS5.
+Fix: do not send "group name changes" if no character was modified.
+Add Greek translation, update other translations.
+Update to core104.
