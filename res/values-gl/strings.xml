@@ -738,8 +738,9 @@
     <string name="remove_member_by_you">Eliminaches a %1$s.</string>
     <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
     <string name="remove_member_by_other">%1$s eliminado por %2$s.</string>
+    <!-- "left" in the meaning of "exited" -->
     <string name="group_left_by_you">Saíches do grupo</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- "left" in the meaning of "exited"; %1$s will be replaced by name and address of the contact leaving the group -->
     <string name="group_left_by_other">%1$s deixou o grupo.</string>
     <string name="group_image_deleted_by_you">Eliminaches a imaxe do grupo</string>
     <!-- %1$s will be replaced by name and address of the contact -->

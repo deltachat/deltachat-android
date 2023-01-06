@@ -768,8 +768,9 @@
     <string name="remove_member_by_you">Ви видалили учасника %1$s.</string>
     <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
     <string name="remove_member_by_other">%2$s видалили учасника %1$s.</string>
+    <!-- "left" in the meaning of "exited" -->
     <string name="group_left_by_you">Ви залишили групу.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- "left" in the meaning of "exited"; %1$s will be replaced by name and address of the contact leaving the group -->
     <string name="group_left_by_other">%1$s залишили групу.</string>
     <string name="group_image_deleted_by_you">Ви видалили зображення групи.</string>
     <!-- %1$s will be replaced by name and address of the contact -->

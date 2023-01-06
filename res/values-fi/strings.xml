@@ -738,8 +738,9 @@
     <string name="remove_member_by_you">Jäsen %1$s poistettu minun toimestani.</string>
     <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
     <string name="remove_member_by_other">Jäsen %1$s poistettu käyttäjän %2$s toimesta.</string>
+    <!-- "left" in the meaning of "exited" -->
     <string name="group_left_by_you">Poistuit ryhmästä.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- "left" in the meaning of "exited"; %1$s will be replaced by name and address of the contact leaving the group -->
     <string name="group_left_by_other">%1$s poistui ryhmästä.</string>
     <string name="group_image_deleted_by_you">Ryhmän kuva poistettu minun toimestani.</string>
     <!-- %1$s will be replaced by name and address of the contact -->

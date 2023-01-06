@@ -48,6 +48,10 @@
     <string name="start_chat">Chat starten</string>
     <string name="show_full_message">Ganze Nachricht anzeigen…</string>
     <string name="show_full_message_in_browser">Ganze Nachricht im Browser anzeigen…</string>
+    <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
+    <string name="mark_all_as_read">Alles Gelesen</string>
+    <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
+    <string name="mark_as_read_short">Gelesen</string>
     <!-- Placeholder text when something is loading -->
     <string name="loading">Wird geladen…</string>
     <string name="hide">Verstecken</string>
@@ -738,8 +742,9 @@
     <string name="remove_member_by_you">Sie haben %1$s entfernt.</string>
     <!-- %1$s will be replaced by name and address of the contact removed from the group, %2$s will be replaced by name and address of the contact who did the action -->
     <string name="remove_member_by_other">%1$s entfernt von %2$s.</string>
+    <!-- "left" in the meaning of "exited" -->
     <string name="group_left_by_you">Sie haben die Gruppe verlassen.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
+    <!-- "left" in the meaning of "exited"; %1$s will be replaced by name and address of the contact leaving the group -->
     <string name="group_left_by_other">Gruppe verlassen von %1$s.</string>
     <string name="group_image_deleted_by_you">Sie haben das Gruppenbild gelöscht.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
