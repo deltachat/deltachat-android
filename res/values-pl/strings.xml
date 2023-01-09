@@ -48,6 +48,10 @@
     <string name="start_chat">Rozpocznij czat</string>
     <string name="show_full_message">Pokaż całą wiadomość…</string>
     <string name="show_full_message_in_browser">Pokaż całą wiadomość w przeglądarce…</string>
+    <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
+    <string name="mark_all_as_read">Wszys. przeczyt.</string>
+    <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
+    <string name="mark_as_read_short">Przeczytane</string>
     <!-- Placeholder text when something is loading -->
     <string name="loading">Ładowanie…</string>
     <string name="hide">Ukryj</string>
