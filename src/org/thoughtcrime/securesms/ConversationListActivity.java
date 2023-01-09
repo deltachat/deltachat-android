@@ -103,6 +103,10 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     msg.setText(getString(R.string.update_1_34_android));
     dcContext.addDeviceMsg("update_1_34d_android", msg);
 
+    DcMsg msg2 = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
+    msg2.setText("\uD83D\uDDC4️ Improved archive in 1.34.9: Show unread chats and move things into view; this fixes issues when unarchiving is disabled by muted chats. And is more handy in general :)\n\nFor more bugfixes in this and previous updates, see https://get.delta.chat/#changelogs");
+    dcContext.addDeviceMsg("update_1_34_9h_android", msg2);
+
     // create view
     setContentView(R.layout.conversation_list_activity);
 
