@@ -1,5 +1,24 @@
 # Delta Chat Android Changelog
 
+## v1.34.10
+2023-01
+
+* fix: make archived chats visible that don't get unarchived automatically (muted chats):
+  add an unread counter and move the archive to the top
+* fix: send AVIF, HEIC, TXT, PPT, XLS, XML files as such
+* fix: trigger reconnection when failing to fetch existing messages
+* fix: do not retry fetching existing messages after failure, prevents infinite reconnection loop
+* fix: do not add an error if the message is encrypted but not signed
+* fix: do not strip leading spaces from message lines
+* fix corner cases on sending quoted texts
+* fix STARTTLS connection
+* fix: do not treat invalid email addresses as an exception
+* fix: flush relative database paths introduced in 1.34.8 in time
+* faster updates of chat lists and contact list
+* update translations
+* update to core106
+
+
 ## v1.34.8
 2022-12
 

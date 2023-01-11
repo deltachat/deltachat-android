@@ -99,6 +99,12 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     // update messages - for new messages, do not reuse or modify strings but create new ones.
     // it is not needed to keep all past update messages, however, when deleted, also the strings should be deleted.
     DcContext dcContext = DcHelper.getContext(this);
+    if (dcContext.wasDeviceMsgEverAdded("update_1_34d_android")) {
+      // no need to explain the new archive position on new installations; it should just feel natural and overall more intuitive.
+      DcMsg msg2 = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
+      msg2.setText("\uD83D\uDDC4️ More handy and common \"Archive\" in 1.34.10: \"Unread counters\" and moving things into view fixes issues with chats that stay in archive.\n\nFor other recent bugfixes, see https://get.delta.chat/#changelogs");
+      dcContext.addDeviceMsg("update_1_34_10_android", msg2);
+    }
     DcMsg msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
     msg.setText(getString(R.string.update_1_34_android));
     dcContext.addDeviceMsg("update_1_34d_android", msg);
