@@ -123,7 +123,7 @@
             android:visibility="gone"
             tools:visibility="visible"
             app:constraint_referenced_ids="encrypt_checkbox, inbox, imap_login, imap_server, imap_port, imap_security_label, imap_security, outbox_view_spacer_top,
-            outbox, smtp_login, smtp_password, smtp_server, smtp_port, smtp_security_label, smtp_security, auth_method_label, auth_method, cert_check_label, cert_check, view_log_button" />
+            outbox, smtp_login, smtp_password, smtp_server, smtp_port, smtp_security_label, smtp_security, auth_method_label, auth_method, cert_check_label, cert_check, view_log_button, socks5_label, socks5_switch, socks5_experimental_warning" />
 
         <ImageView
             android:id="@+id/advanced_icon"
@@ -390,6 +390,121 @@
             app:layout_constraintTop_toBottomOf="@id/cert_check_label" />
 
         <TextView
+            android:id="@+id/socks5_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="16dp"
+            android:gravity="center"
+            android:text="@string/login_socks5"
+            app:layout_constraintStart_toStartOf="@id/guideline_root_start"
+            app:layout_constraintTop_toBottomOf="@id/cert_check" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/socks5_switch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="@string/login_socks5_use_socks5"
+            android:theme="@style/SwitchTheme"
+            app:layout_constraintEnd_toEndOf="@id/guideline_root_end"
+            app:layout_constraintStart_toStartOf="@id/guideline_root_start"
+            app:layout_constraintTop_toBottomOf="@id/socks5_label" />
+
+        <TextView
+            android:id="@+id/socks5_experimental_warning"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="1dp"
+            android:paddingBottom="10dp"
+            android:text="@string/login_socks5_experimental_warning"
+            android:textColor="@color/gray50"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/socks5_switch" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/socks5_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            tools:visibility="gone"
+            app:constraint_referenced_ids="socks5_host, socks5_port, socks5_user, socks5_password" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/socks5_host"
+            android:layout_width="0dp"
+            android:layout_height="58dp"
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toEndOf="@id/guideline_root_end"
+            app:layout_constraintStart_toStartOf="@id/guideline_root_start"
+            app:layout_constraintTop_toBottomOf="@id/socks5_experimental_warning">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/socks5_host_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/login_socks5_host"
+                android:inputType="textUri|textNoSuggestions" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/socks5_port"
+            android:layout_width="0dp"
+            android:layout_height="58dp"
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toEndOf="@id/guideline_root_end"
+            app:layout_constraintStart_toStartOf="@id/guideline_root_start"
+            app:layout_constraintTop_toBottomOf="@id/socks5_host">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/socks5_port_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/login_socks5_port"
+                android:inputType="number" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/socks5_user"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@id/guideline_root_end"
+            app:layout_constraintStart_toStartOf="@id/guideline_root_start"
+            app:layout_constraintTop_toBottomOf="@id/socks5_port">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/socks5_user_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textNoSuggestions"
+                android:hint="@string/login_socks5_user" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/socks5_password"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@id/guideline_root_end"
+            app:layout_constraintStart_toStartOf="@id/guideline_root_start"
+            app:layout_constraintTop_toBottomOf="@id/socks5_user"
+            app:passwordToggleEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/socks5_password_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/login_socks5_password"
+                android:inputType="textPassword" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
             android:id="@+id/view_log_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -402,7 +517,7 @@
             android:paddingBottom="32dp"
             app:layout_constraintEnd_toEndOf="@id/guideline_root_end"
             app:layout_constraintStart_toStartOf="@id/guideline_root_start"
-            app:layout_constraintTop_toBottomOf="@id/cert_check" />
+            app:layout_constraintTop_toBottomOf="@id/socks5_password" />
 
         <TextView
             android:id="@+id/sub_header"
