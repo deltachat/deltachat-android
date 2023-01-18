@@ -616,7 +616,7 @@
     <string name="pref_backup_explain">Chats auf externem Speicher speichern</string>
     <string name="pref_backup_export_explain">Ein Backup hilft bei einer Neuinstallation auf diesem oder einem anderen Gerät.\n\nDas Backup enthält alle Nachrichten, Kontakte und Chats sowie die Ende-zu-Ende Autocrypt-Einstellungen. Das Backup bitte an einem sicheren Ort aufbewahren oder es so bald wie möglich löschen.</string>
     <string name="pref_backup_export_start_button">Backup starten</string>
-    <string name="pref_backup_written_to_x">Backup nach %1$s erfolgreich</string>
+    <string name="pref_backup_written_to_x">Backup nach \"%1$s\" erfolgreich.</string>
     <string name="pref_managekeys_menu_title">Schlüssel verwalten</string>
     <string name="pref_managekeys_export_secret_keys">Exportiere geheime Schlüssel</string>
     <string name="pref_managekeys_export_explain">Geheime Schlüssel nach \"%1$s\" exportieren?</string>
