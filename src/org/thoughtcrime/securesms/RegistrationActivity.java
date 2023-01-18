@@ -12,6 +12,11 @@ import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SEND_SECURITY;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SEND_SERVER;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SEND_USER;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SERVER_FLAGS;
+import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SOCKS5_ENABLED;
+import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SOCKS5_HOST;
+import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SOCKS5_PORT;
+import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SOCKS5_USER;
+import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SOCKS5_PASSWORD;
 import static org.thoughtcrime.securesms.connect.DcHelper.getContext;
 import static org.thoughtcrime.securesms.service.IPCAddAccountsService.ACCOUNT_DATA;
 
@@ -40,6 +45,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.constraintlayout.widget.Group;
 
 import com.b44t.messenger.DcContext;
@@ -93,6 +99,9 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
     Spinner authMethod;
     Spinner certCheck;
 
+    private SwitchCompat proxySwitch;
+    private Group proxyGroup;
+
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
@@ -123,6 +132,16 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         smtpSecurity = findViewById(R.id.smtp_security);
         authMethod = findViewById(R.id.auth_method);
         certCheck = findViewById(R.id.cert_check);
+
+        proxyGroup = findViewById(R.id.socks5_group);
+        proxySwitch = findViewById(R.id.socks5_switch);
+        proxySwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            proxyGroup.setVisibility(isChecked? advancedGroup.getVisibility() : View.GONE);
+        });
+        TextInputEditText proxyHostInput = findViewById(R.id.socks5_host_text);
+        TextInputEditText proxyPortInput = findViewById(R.id.socks5_port_text);
+        proxyHostInput.setOnFocusChangeListener((view, focused) -> focusListener(view, focused, VerificationType.SERVER));
+        proxyPortInput.setOnFocusChangeListener((view, focused) -> focusListener(view, focused, VerificationType.PORT));
 
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
@@ -175,6 +194,14 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
             smtpServerInput.setText(DcHelper.get(this, CONFIG_SEND_SERVER));
             smtpPortInput.setText(DcHelper.get(this, CONFIG_SEND_PORT));
             smtpSecurity.setSelection(DcHelper.getInt(this, CONFIG_SEND_SECURITY));
+
+            proxySwitch.setChecked(DcHelper.getInt(this, CONFIG_SOCKS5_ENABLED) == 1);
+            proxyHostInput.setText(DcHelper.get(this, CONFIG_SOCKS5_HOST));
+            proxyPortInput.setText(DcHelper.get(this, CONFIG_SOCKS5_PORT));
+            TextInputEditText proxyUserInput = findViewById(R.id.socks5_user_text);
+            TextInputEditText proxyPasswordInput = findViewById(R.id.socks5_password_text);
+            proxyUserInput.setText(DcHelper.get(this, CONFIG_SOCKS5_USER));
+            proxyPasswordInput.setText(DcHelper.get(this, CONFIG_SOCKS5_PASSWORD));
 
             int serverFlags = DcHelper.getInt(this, CONFIG_SERVER_FLAGS);
             int sel = 0;
@@ -512,10 +539,12 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
     private void onAdvancedSettings() {
         boolean advancedViewVisible = advancedGroup.getVisibility() == View.VISIBLE;
         if (advancedViewVisible) {
+            proxyGroup.setVisibility(View.GONE);
             advancedGroup.setVisibility(View.GONE);
             advancedIcon.setRotation(45);
         } else {
             advancedGroup.setVisibility(View.VISIBLE);
+            if (proxySwitch.isChecked()) proxyGroup.setVisibility(View.VISIBLE);
             advancedIcon.setRotation(0);
         }
     }
@@ -577,15 +606,24 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
     }
 
     private void setupConfig() {
-        setConfig(R.id.email_text, "addr", true);
-        setConfig(R.id.password_text, "mail_pw", false);
-        setConfig(R.id.imap_server_text, "mail_server", true);
-        setConfig(R.id.imap_port_text, "mail_port", true);
-        setConfig(R.id.imap_login_text, "mail_user", false);
-        setConfig(R.id.smtp_server_text, "send_server", true);
-        setConfig(R.id.smtp_port_text, "send_port", true);
-        setConfig(R.id.smtp_login_text, "send_user", false);
-        setConfig(R.id.smtp_password_text, "send_pw", false);
+        setConfig(R.id.email_text, CONFIG_ADDRESS, true);
+        setConfig(R.id.password_text, CONFIG_MAIL_PASSWORD, false);
+        setConfig(R.id.imap_server_text, CONFIG_MAIL_SERVER, true);
+        setConfig(R.id.imap_port_text, CONFIG_MAIL_PORT, true);
+        setConfig(R.id.imap_login_text, CONFIG_MAIL_USER, false);
+        setConfig(R.id.smtp_server_text, CONFIG_SEND_SERVER, true);
+        setConfig(R.id.smtp_port_text, CONFIG_SEND_PORT, true);
+        setConfig(R.id.smtp_login_text, CONFIG_SEND_USER, false);
+        setConfig(R.id.smtp_password_text, CONFIG_SEND_PASSWORD, false);
+        if (proxySwitch.isChecked()) {
+            DcHelper.getContext(this).setConfigInt(CONFIG_SOCKS5_ENABLED, 1);
+            setConfig(R.id.socks5_host_text, CONFIG_SOCKS5_HOST, true);
+            setConfig(R.id.socks5_port_text, CONFIG_SOCKS5_PORT, true);
+            setConfig(R.id.socks5_user_text, CONFIG_SOCKS5_USER, true);
+            setConfig(R.id.socks5_password_text, CONFIG_SOCKS5_PASSWORD, false);
+        } else {
+            DcHelper.getContext(this).setConfigInt(CONFIG_SOCKS5_ENABLED, 0);
+        }
 
         DcHelper.getContext(this).setConfigInt(CONFIG_MAIL_SECURITY, imapSecurity.getSelectedItemPosition());
         DcHelper.getContext(this).setConfigInt(CONFIG_SEND_SECURITY, smtpSecurity.getSelectedItemPosition());
