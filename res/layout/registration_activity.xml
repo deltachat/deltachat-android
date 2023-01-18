@@ -123,7 +123,7 @@
             android:visibility="gone"
             tools:visibility="visible"
             app:constraint_referenced_ids="encrypt_checkbox, inbox, imap_login, imap_server, imap_port, imap_security_label, imap_security, outbox_view_spacer_top,
-            outbox, smtp_login, smtp_password, smtp_server, smtp_port, smtp_security_label, smtp_security, auth_method_label, auth_method, cert_check_label, cert_check, view_log_button, socks5_label, socks5_switch, socks5_experimental_warning" />
+            outbox, smtp_login, smtp_password, smtp_server, smtp_port, smtp_security_label, smtp_security, auth_method_label, auth_method, cert_check_label, cert_check, view_log_button, socks5_switch" />
 
         <ImageView
             android:id="@+id/advanced_icon"
@@ -389,27 +389,25 @@
             app:layout_constraintStart_toStartOf="@id/guideline_root_start"
             app:layout_constraintTop_toBottomOf="@id/cert_check_label" />
 
-        <TextView
-            android:id="@+id/socks5_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingTop="16dp"
-            android:gravity="center"
-            android:text="@string/login_socks5"
-            app:layout_constraintStart_toStartOf="@id/guideline_root_start"
-            app:layout_constraintTop_toBottomOf="@id/cert_check" />
-
         <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/socks5_switch"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:paddingTop="10dp"
+            android:paddingTop="16dp"
             android:paddingBottom="10dp"
             android:text="@string/login_socks5_use_socks5"
             android:theme="@style/SwitchTheme"
             app:layout_constraintEnd_toEndOf="@id/guideline_root_end"
             app:layout_constraintStart_toStartOf="@id/guideline_root_start"
-            app:layout_constraintTop_toBottomOf="@id/socks5_label" />
+            app:layout_constraintTop_toBottomOf="@id/cert_check" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/socks5_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            tools:visibility="gone"
+            app:constraint_referenced_ids="socks5_experimental_warning, socks5_host, socks5_port, socks5_user, socks5_password" />
 
         <TextView
             android:id="@+id/socks5_experimental_warning"
@@ -424,14 +422,6 @@
             android:textColor="@color/gray50"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/socks5_switch" />
-
-        <androidx.constraintlayout.widget.Group
-            android:id="@+id/socks5_group"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            tools:visibility="gone"
-            app:constraint_referenced_ids="socks5_host, socks5_port, socks5_user, socks5_password" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/socks5_host"
