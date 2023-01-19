@@ -173,6 +173,8 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
             passwordLayout.setPasswordVisibilityToggleEnabled(false);
             TextInputLayout smtpPasswordLayout = findViewById(R.id.smtp_password);
             smtpPasswordLayout.setPasswordVisibilityToggleEnabled(false);
+            TextInputLayout proxyPasswordLayout = findViewById(R.id.socks5_password);
+            proxyPasswordLayout.setPasswordVisibilityToggleEnabled(false);
 
             TextInputEditText imapLoginInput = findViewById(R.id.imap_login_text);
 
