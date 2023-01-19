@@ -396,7 +396,6 @@
             android:paddingTop="16dp"
             android:paddingBottom="10dp"
             android:text="@string/login_socks5_use_socks5"
-            android:theme="@style/SwitchTheme"
             app:layout_constraintEnd_toEndOf="@id/guideline_root_end"
             app:layout_constraintStart_toStartOf="@id/guideline_root_start"
             app:layout_constraintTop_toBottomOf="@id/cert_check" />
