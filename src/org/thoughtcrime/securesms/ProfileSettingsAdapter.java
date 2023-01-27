@@ -314,7 +314,6 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
       itemDataContact = dcContact;
       if (!chatIsDeviceTalk) {
         itemData.add(new ItemData(ItemData.TYPE_PRIMARY_SETTING, SETTING_SEND_MESSAGE, context.getString(R.string.send_message)));
-        itemData.add(new ItemData(ItemData.TYPE_PRIMARY_SETTING, SETTING_NEW_GROUP, context.getString(R.string.new_group_or_subject)));
       }
 
       itemDataStatusText = dcContact.getStatus();
