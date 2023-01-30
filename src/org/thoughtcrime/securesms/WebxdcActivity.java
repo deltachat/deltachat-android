@@ -40,6 +40,7 @@ import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 
 public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcEventDelegate  {
@@ -121,6 +122,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     webSettings.setJavaScriptEnabled(true);
     webSettings.setAllowFileAccess(false);
     webSettings.setBlockNetworkLoads(!internetAccess);
+    webView.setNetworkAvailable(internetAccess);
     webSettings.setAllowContentAccess(false);
     webSettings.setGeolocationEnabled(false);
     webSettings.setAllowFileAccessFromFileURLs(false);
@@ -129,7 +131,17 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     webSettings.setDomStorageEnabled(true);
     webView.addJavascriptInterface(new InternalJSApi(), "InternalJSApi");
 
-    webView.loadUrl(this.baseURL + "/index.html");
+
+    InputStream bootstrap_stream = getResources().openRawResource(R.raw.webxdc_wrapper);
+    byte[] bootstrap_bytes = new byte[0];
+    try {
+      bootstrap_bytes = new byte[bootstrap_stream.available()];
+      bootstrap_stream.read(bootstrap_bytes);
+      String bootstrapHtml = new String(bootstrap_bytes);
+      webView.loadDataWithBaseURL(this.baseURL + "/webxdc_bootstrap324567869.html", bootstrapHtml, "text/html", "UTF-8", null);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
 
     Util.runOnAnyBackgroundThread(() -> {
       final DcChat chat = dcContext.getChat(dcAppMsg.getChatId());
@@ -170,10 +182,6 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
 
   @Override
   protected boolean openOnlineUrl(String url) {
-    if (url.startsWith(baseURL +"/")) {
-      // internal page, continue loading in the WebView
-      return false;
-    }
     if (url.startsWith("mailto:")) {
       return super.openOnlineUrl(url);
     }
