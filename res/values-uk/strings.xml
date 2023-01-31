@@ -134,7 +134,7 @@
         <item quantity="many">%d одержувачів</item>
         <item quantity="other">%d одержувачів</item>
     </plurals>
-    <!-- Short form for "N Chats Selected" or "N Messages Selected": in English, "N Selected" -->
+    <!-- Short form for "N Items Selected" -->
     <plurals name="n_selected">
         <item quantity="one">%d обраний</item>
         <item quantity="few">%d обрано</item>
@@ -1013,7 +1013,7 @@
     <string name="disabled_in_dc">Вимкнено в Delta Chat</string>
     <string name="disabled_in_system_settings">Вимкнено в налаштуваннях системи</string>
     <string name="bg_app_refresh_disabled">«Фонове оновлення додатка» вимкнено в налаштуваннях системи</string>
-    <!-- iOS connectivity view -->
+    <!-- iOS connectivity view, Adjective, used eg. as "Notifications: Delayed" -->
     <string name="delayed">Запізнюється</string>
     <string name="notifications_avg_minutes">В середньому %1$d хвилин</string>
     <string name="notifications_avg_hours">В середньому %1$d годин</string>

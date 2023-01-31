@@ -120,7 +120,7 @@
         <item quantity="one">%d marrës</item>
         <item quantity="other">%d marrës</item>
     </plurals>
-    <!-- Short form for "N Chats Selected" or "N Messages Selected": in English, "N Selected" -->
+    <!-- Short form for "N Items Selected" -->
     <plurals name="n_selected">
         <item quantity="one">%d e Përzgjedhur</item>
         <item quantity="other">%d të Përzgjedhur</item>

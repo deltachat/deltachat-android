@@ -134,7 +134,7 @@
         <item quantity="many">%d получателей</item>
         <item quantity="other">%d получателей</item>
     </plurals>
-    <!-- Short form for "N Chats Selected" or "N Messages Selected": in English, "N Selected" -->
+    <!-- Short form for "N Items Selected" -->
     <plurals name="n_selected">
         <item quantity="one">%d выделено</item>
         <item quantity="few">%d выделено</item>
@@ -1013,7 +1013,7 @@
     <string name="disabled_in_dc">Отключено в Delta Chat.</string>
     <string name="disabled_in_system_settings">Отключено в системных настройках</string>
     <string name="bg_app_refresh_disabled">«Обновление фоновых приложений» отключено в системных настройках.</string>
-    <!-- iOS connectivity view -->
+    <!-- iOS connectivity view, Adjective, used eg. as "Notifications: Delayed" -->
     <string name="delayed">Отложено</string>
     <string name="notifications_avg_minutes">В среднем каждые %1$d минут</string>
     <string name="notifications_avg_hours">В среднем каждые %1$d часов</string>

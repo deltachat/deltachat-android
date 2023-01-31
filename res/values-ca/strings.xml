@@ -120,7 +120,7 @@
         <item quantity="one">%d destinatari</item>
         <item quantity="other">%d destinataris</item>
     </plurals>
-    <!-- Short form for "N Chats Selected" or "N Messages Selected": in English, "N Selected" -->
+    <!-- Short form for "N Items Selected" -->
     <plurals name="n_selected">
         <item quantity="one">%d Triat</item>
         <item quantity="other">%d Triats</item>

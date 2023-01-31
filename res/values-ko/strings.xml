@@ -113,7 +113,7 @@
     <plurals name="n_recipients">
         <item quantity="other">%d 수신자</item>
     </plurals>
-    <!-- Short form for "N Chats Selected" or "N Messages Selected": in English, "N Selected" -->
+    <!-- Short form for "N Items Selected" -->
     <plurals name="n_selected">
         <item quantity="other">%d 선택됨</item>
     </plurals>
@@ -933,7 +933,7 @@
     <string name="disabled_in_dc">Delta Chat에서 비활성화됨</string>
     <string name="disabled_in_system_settings">환경설정에서 비활성화됨</string>
     <string name="bg_app_refresh_disabled">시스템 설정에서 \"백그라운드 앱 새로 고침\"이 비활성화됨</string>
-    <!-- iOS connectivity view -->
+    <!-- iOS connectivity view, Adjective, used eg. as "Notifications: Delayed" -->
     <string name="delayed">지연됨</string>
     <string name="notifications_avg_minutes">평균적으로 %1$d분마다</string>
     <string name="notifications_avg_hours">평균적으로 %1$d시간마다</string>

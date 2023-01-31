@@ -131,7 +131,7 @@
         <item quantity="few">%d примаоца</item>
         <item quantity="other">%d примаоца</item>
     </plurals>
-    <!-- Short form for "N Chats Selected" or "N Messages Selected": in English, "N Selected" -->
+    <!-- Short form for "N Items Selected" -->
     <plurals name="n_selected">
         <item quantity="one">%d изабран</item>
         <item quantity="few">%d изабрано</item>
@@ -1002,7 +1002,7 @@
     <string name="disabled_in_dc">Онемогућено у Delta Chat</string>
     <string name="disabled_in_system_settings">Онемогућено у поставкама оперативног система</string>
     <string name="bg_app_refresh_disabled">\"Освежавање апликације у позадини\" је онемогућено у поставкама оперативног система</string>
-    <!-- iOS connectivity view -->
+    <!-- iOS connectivity view, Adjective, used eg. as "Notifications: Delayed" -->
     <string name="delayed">Одложено</string>
     <string name="notifications_avg_minutes">У просеку сваких %1$dминута</string>
     <string name="notifications_avg_hours">У просеку сваких %1$dсати</string>

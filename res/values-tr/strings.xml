@@ -120,7 +120,7 @@
         <item quantity="one">%d alıcı</item>
         <item quantity="other">%d alıcı</item>
     </plurals>
-    <!-- Short form for "N Chats Selected" or "N Messages Selected": in English, "N Selected" -->
+    <!-- Short form for "N Items Selected" -->
     <plurals name="n_selected">
         <item quantity="one">%d Seçildi</item>
         <item quantity="other">%d Seçildi</item>
@@ -983,7 +983,7 @@
     <string name="disabled_in_dc">Delta Chat\'ten etkisizleştirildi</string>
     <string name="disabled_in_system_settings">Sistem ayarlarından etkisizleştirildi</string>
     <string name="bg_app_refresh_disabled">\"Arka Planda Uygulama Yenileme\" sistem ayarlarından etkisizleştirildi</string>
-    <!-- iOS connectivity view -->
+    <!-- iOS connectivity view, Adjective, used eg. as "Notifications: Delayed" -->
     <string name="delayed">Gecikmeli</string>
     <string name="notifications_avg_minutes">Ortalama olarak her %1$d dakikada bir</string>
     <string name="notifications_avg_hours">Ortalama olarak her %1$d saatte bir</string>

@@ -131,7 +131,7 @@
         <item quantity="many">%d destinatarios</item>
         <item quantity="other">%d destinatarios</item>
     </plurals>
-    <!-- Short form for "N Chats Selected" or "N Messages Selected": in English, "N Selected" -->
+    <!-- Short form for "N Items Selected" -->
     <plurals name="n_selected">
         <item quantity="one">%d seleccionado</item>
         <item quantity="many">%d seleccionados</item>
@@ -1002,7 +1002,7 @@
     <string name="disabled_in_dc">Deshabilitado en Delta Chat</string>
     <string name="disabled_in_system_settings">Deshabilitado en la configuración del sistema</string>
     <string name="bg_app_refresh_disabled">\"Actualización de aplicaciones en segundo plano\" desactivada en los ajustes del sistema</string>
-    <!-- iOS connectivity view -->
+    <!-- iOS connectivity view, Adjective, used eg. as "Notifications: Delayed" -->
     <string name="delayed">Demorado</string>
     <string name="notifications_avg_minutes">Promedio cada %1$d minutos</string>
     <string name="notifications_avg_hours">Promedio cada %1$d horas</string>

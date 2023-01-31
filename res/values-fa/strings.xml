@@ -120,7 +120,7 @@
         <item quantity="one">%d گیرنده</item>
         <item quantity="other">%d گیرنده‌ </item>
     </plurals>
-    <!-- Short form for "N Chats Selected" or "N Messages Selected": in English, "N Selected" -->
+    <!-- Short form for "N Items Selected" -->
     <plurals name="n_selected">
         <item quantity="one">تعداد %d انتخاب شده است</item>
         <item quantity="other">تعداد  %dانتخاب شده است</item>
@@ -1028,7 +1028,7 @@ GNU GPL ورژن ۳
     <string name="disabled_in_dc">در دلتاچت غیر فعال شده است. </string>
     <string name="disabled_in_system_settings">در تنظیمات سیستم غیر فعال شده است. </string>
     <string name="bg_app_refresh_disabled">گزینه «Background App Refresh» در تنظیمات سیستم غیر فعال شده است. </string>
-    <!-- iOS connectivity view -->
+    <!-- iOS connectivity view, Adjective, used eg. as "Notifications: Delayed" -->
     <string name="delayed">دارای تاخیر</string>
     <string name="notifications_avg_minutes">به صورت متوسط هر%1$d دقیقه</string>
     <string name="notifications_avg_hours">به صورت متوسط هر %1$d ساعت</string>

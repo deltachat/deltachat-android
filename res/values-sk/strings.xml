@@ -134,7 +134,7 @@
         <item quantity="many">%d príjemcovia</item>
         <item quantity="other">%d príjemcovia</item>
     </plurals>
-    <!-- Short form for "N Chats Selected" or "N Messages Selected": in English, "N Selected" -->
+    <!-- Short form for "N Items Selected" -->
     <plurals name="n_selected">
         <item quantity="one">%d vybraný</item>
         <item quantity="few">%d vybrané</item>
@@ -1008,7 +1008,7 @@
     <string name="disabled_in_dc">Vypnuté v Delta Chat-e</string>
     <string name="disabled_in_system_settings">Vypnuté v nastaveniach systém</string>
     <string name="bg_app_refresh_disabled">\"Obnovenie aplikácie na pozadí\" vypnuté v nastaveniach systém</string>
-    <!-- iOS connectivity view -->
+    <!-- iOS connectivity view, Adjective, used eg. as "Notifications: Delayed" -->
     <string name="delayed">Oneskorené</string>
     <string name="notifications_avg_minutes">V priemere každých %1$d minút</string>
     <string name="notifications_avg_hours">V priemere každých %1$d hodín</string>
