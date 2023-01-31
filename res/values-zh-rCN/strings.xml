@@ -810,7 +810,7 @@
     <string name="revive_verifygroup_explain">其他人可扫描此二维码加入群组“%1$s”。\n\n此设备上的二维码未激活。</string>
     <string name="revive_qr_code">激活二维码</string>
     <string name="qrshow_title">邀请二维码</string>
-    <string name="qrshow_x_joining">%1$s 加入。</string>
+    <string name="qrshow_x_joining">添加 %1$s。</string>
     <string name="qrshow_x_verified">%1$s 已验证。</string>
     <string name="qrshow_x_has_joined_group">%1$s 已加入群组。</string>
     <string name="qrshow_join_group_title">邀请二维码</string>
@@ -830,7 +830,7 @@
     <!-- the placeholder will be replaced by the e-mail address of the account -->
     <string name="qrlogin_ask_login_another">登录“%1$s“吗？\n\n你现有的账户不会被删除。使用“切换账户”来在不同账户间进行切换。</string>
     <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
-    <string name="secure_join_started">%1$s 邀请你加入此群组。\n\n等待 %2$s 设备回复…</string>
+    <string name="secure_join_started">%1$s 邀请你加入此群组。\n\n等待 %2$s 的设备回复…</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s 已回复，等待被加入群组…</string>
     <string name="contact_verified">%1$s 已验证。</string>
