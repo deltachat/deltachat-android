@@ -1,23 +1,29 @@
-
-# this script updates the deltachat-core-rust sub-repository from github.
-# must be executed from the repo root.
-#
-# - make sure, the deltachat-android directory is clean
-# - make sure, deltachat-core-rust is committed successfully before calling this script
-
-# check out submodules as present in the repository
 git submodule update --init --recursive
-
-# update submodule
 cd jni/deltachat-core-rust
-git checkout master
+OLD=`git branch --show-current`
+if [ $# -eq 0 ]; then
+    echo "updates deltachat-core-rust submodule to last commit of a branch."
+    echo "usage: ./scripts/update-core.sh BRANCH_NAME"
+    echo "old branch: $OLD"
+    exit
+fi
+BRANCH=$1
+
+
+git fetch
+git checkout $BRANCH
+TEST=`git branch --show-current`
+if [ "$TEST" != "$BRANCH" ]; then
+    echo "cannot select branch: $BRANCH"
+    exit
+fi
 git pull
 commitmsg=`git log -1 --pretty=%s`
 cd ../..
 
-# commit changes
-git add jni/deltachat-core-rust
-git commit -m "update deltachat-core-rust submodule to '$commitmsg'"
 
-echo "changes are commited to local repo."
-echo "use 'git push' to use them or 'git reset HEAD~1; git submodule update --recursive' to abort on your own risk :)"
+git add jni/deltachat-core-rust
+git commit -m "update deltachat-core-rust to '$commitmsg' of branch '$BRANCH'"
+echo "old branch: $OLD, new branch: $BRANCH"
+echo "changes are committed to local repo."
+echo "use 'git push' to use them or 'git reset HEAD~1; git submodule update --recursive' to abort."
