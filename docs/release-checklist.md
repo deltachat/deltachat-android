@@ -27,15 +27,7 @@ in Android Studio:
 5. bump version in build.gradle,
    update _both_, versionCode and versionName
 
-6. Add "4" at the end of versionCode to calculate F-Droid version code number.
-   E.g. for versionCode 456 you get number 4564.
-   This version conversion is due to `VercodeOperation` in
-   <https://gitlab.com/fdroid/fdroiddata/blob/master/metadata/com.b44t.messenger.yml>
-   metadata file, see <https://f-droid.org/docs/Build_Metadata_Reference/#VercodeOperation> for
-   documentation.
-   Add `metadata/en-US/changelogs/4564.txt` file with a changelog for F-Droid.
-
-7. if `./scripts/ndk-make.sh` from step 2. is finished successfully:
+6. if `./scripts/ndk-make.sh` from step 2. is finished successfully:
    a) select "Build / Generate Signed Bundle or APK" and then "APK"
       (not: App Bundle as this would require uploading the signing key)
    b) select flavor `gplayRelease` with V1 signature enabled
@@ -72,7 +64,16 @@ on https://play.google.com/apps/publish/ :
 
 # Release new F-Droid version
 
-10. make sure, everything is pushed, then:
+10. Add "4" at the end of versionCode to calculate F-Droid version code number.
+    E.g. for versionCode 456 you get number 4564
+    (this version conversion is due to `VercodeOperation` in
+    <https://gitlab.com/fdroid/fdroiddata/blob/master/metadata/com.b44t.messenger.yml>
+    metadata file, see <https://f-droid.org/docs/Build_Metadata_Reference/#VercodeOperation> for
+    documentation)
+    Add `metadata/en-US/changelogs/4564.txt` file with a changelog for F-Droid.
+    The changelog must not be longer than 500 characters.
+
+11. make sure, everything is pushed, then:
     $ git tag v1.2.1; git push --tags
     
 F-Droid picks on the tags starting with "v" and builds the version.
@@ -83,7 +84,7 @@ This may take some days.
 
 on https://developer.amazon.com/dashboard :
 
-11. a) for "Delta Chat", select tab "Add upcoming version"
+12. a) for "Delta Chat", select tab "Add upcoming version"
     b) at "App Information" hit "Edit" abottom and then "Replace APK" atop,
        upload the APK from above, "Save"
     c) on the same tab, add "Release notes" from CHANGELOG.md, "Save"
