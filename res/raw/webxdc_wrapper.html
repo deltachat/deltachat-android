@@ -54,14 +54,17 @@
         };
 
         console.log("WEBRTC-WG: allocating");
-        var retries = 0;
+        loadingProgress.value = 0;
         while (connections.length < 500) {
           try {
             connections.push(new RTCPeerConnection(cert));
+            if (connections.length%50 == 0) {
+              loadingProgress.value++;
+              await new Promise((res) => setTimeout(res));
+            }
           } catch (error) {
-            retries++;
-            loadingProgress.value = retries;
-            await new Promise(r => setTimeout(r, 500));
+            loadingProgress.value++;
+            await new Promise((res) => setTimeout(res, 500));
             console.log("WEBRTC-WG: waiting for gc");
           }
         }
