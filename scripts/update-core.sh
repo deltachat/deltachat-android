@@ -4,7 +4,7 @@ OLD=`git branch --show-current`
 if [ $# -eq 0 ]; then
     echo "updates deltachat-core-rust submodule to last commit of a branch."
     echo "usage: ./scripts/update-core.sh BRANCH_NAME"
-    echo "old branch: $OLD"
+    echo "current branch: $OLD"
     exit
 fi
 BRANCH=$1
