@@ -53,7 +53,22 @@
           ],
         };
 
+        console.log("WEBRTC-WG: allocating");
+        var retries = 0;
+        while (connections.length < 500) {
+          try {
+            connections.push(new RTCPeerConnection(cert));
+          } catch (error) {
+            retries++;
+            loadingProgress.value = retries;
+            await new Promise(r => setTimeout(r, 500));
+            console.log("WEBRTC-WG: waiting for gc");
+          }
+        }
+        console.log("WEBRTC-WG: done");
+
         try {
+          /*
           for (let i = 0; i < 50; i++) {
             connections.push(new RTCPeerConnection(cert));
             connections.push(new RTCPeerConnection(cert));
@@ -68,6 +83,7 @@
             loadingProgress.value = i;
             await new Promise((res) => setTimeout(res));
           }
+          */
           try {
             connections.push(new RTCPeerConnection());
             console.log("Error: was able to create more than 500 connections");
