@@ -85,6 +85,7 @@ import org.thoughtcrime.securesms.components.camera.QuickAttachmentDrawer.Attach
 import org.thoughtcrime.securesms.components.camera.QuickAttachmentDrawer.DrawerState;
 import org.thoughtcrime.securesms.components.emoji.EmojiKeyboardProvider;
 import org.thoughtcrime.securesms.components.emoji.MediaKeyboard;
+import org.thoughtcrime.securesms.connect.AccountManager;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.connect.DirectShareUtil;
@@ -157,6 +158,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 {
   private static final String TAG = ConversationActivity.class.getSimpleName();
 
+  public static final String ACCOUNT_ID_EXTRA        = "account_id";
   public static final String CHAT_ID_EXTRA           = "chat_id";
   public static final String FROM_ARCHIVED_CHATS_EXTRA = "from_archived";
   public static final String TEXT_EXTRA              = "draft_text";
@@ -203,6 +205,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private   QuickAttachmentDrawer  quickAttachmentDrawer;
   private   InputPanel             inputPanel;
 
+  private ApplicationContext context;
   private Recipient  recipient;
   private DcContext  dcContext;
   private DcChat     dcChat                = new DcChat(0);
@@ -226,7 +229,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   @Override
   protected void onCreate(Bundle state, boolean ready) {
-    final Context context = getApplicationContext();
+    this.context = ApplicationContext.getInstance(getApplicationContext());
     this.dcContext = DcHelper.getContext(context);
 
     supportRequestWindowFeature(WindowCompat.FEATURE_ACTION_BAR_OVERLAY);
@@ -327,7 +330,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     titleView.setTitle(glideRequests, dcChat);
 
-    DcHelper.getNotificationCenter(this).updateVisibleChat(chatId);
+    DcHelper.getNotificationCenter(this).updateVisibleChat(dcContext.getAccountId(), chatId);
 
     if (doReinitializeDraft) {
       initializeDraft();
@@ -347,7 +350,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       doReinitializeDraft = true;
     }
 
-    DcHelper.getNotificationCenter(this).updateVisibleChat(0);
+    DcHelper.getNotificationCenter(this).updateVisibleChat(0, 0);
     if (isFinishing()) overridePendingTransition(R.anim.fade_scale_in, R.anim.slide_to_right);
     quickAttachmentDrawer.onPause();
     inputPanel.onPause();
@@ -962,6 +965,12 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void initializeResources() {
+    int accountId = getIntent().getIntExtra(ACCOUNT_ID_EXTRA, dcContext.getAccountId());
+    if (accountId != dcContext.getAccountId()) {
+      AccountManager.getInstance().switchAccount(context, accountId);
+      dcContext = context.dcContext;
+      fragment.dcContext = context.dcContext;
+    }
     chatId = getIntent().getIntExtra(CHAT_ID_EXTRA, -1);
     if(chatId == DcChat.DC_CHAT_NO_CHAT)
       throw new IllegalStateException("can't display a conversation for no chat.");
@@ -1211,7 +1220,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     if (refreshFragment) {
       fragment.reload(recipient, chatId);
-      DcHelper.getNotificationCenter(this).updateVisibleChat(chatId);
+      DcHelper.getNotificationCenter(this).updateVisibleChat(dcContext.getAccountId(), chatId);
     }
 
     fragment.scrollToBottom();

@@ -21,13 +21,13 @@ import android.annotation.SuppressLint;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import androidx.core.app.RemoteInput;
 
 import com.b44t.messenger.DcContext;
 
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.util.Util;
 
 
 /**
@@ -37,6 +37,7 @@ public class RemoteReplyReceiver extends BroadcastReceiver {
 
   public static final String TAG           = RemoteReplyReceiver.class.getSimpleName();
   public static final String REPLY_ACTION  = "org.thoughtcrime.securesms.notifications.WEAR_REPLY";
+  public static final String ACCOUNT_ID_EXTRA = "account_id";
   public static final String CHAT_ID_EXTRA = "chat_id";
   public static final String EXTRA_REMOTE_REPLY = "extra_remote_reply";
 
@@ -45,26 +46,22 @@ public class RemoteReplyReceiver extends BroadcastReceiver {
   public void onReceive(final Context context, Intent intent) {
     if (!REPLY_ACTION.equals(intent.getAction())) return;
     Bundle remoteInput = RemoteInput.getResultsFromIntent(intent);
+    final int accountId = intent.getIntExtra(ACCOUNT_ID_EXTRA, 0);
     final int chatId = intent.getIntExtra(CHAT_ID_EXTRA, 0);
 
-    if (remoteInput == null || chatId == 0) return;
+    if (remoteInput == null || chatId == 0 || accountId == 0) return;
 
     final CharSequence responseText = remoteInput.getCharSequence(EXTRA_REMOTE_REPLY);
 
     if (responseText != null) {
-      new AsyncTask<Void, Void, Void>() {
-        @Override
-        protected Void doInBackground(Void... params) {
-          DcContext dcContext = DcHelper.getContext(context);
-          if (dcContext.getChat(chatId).isContactRequest()) {
-            dcContext.acceptChat(chatId);
-          }
-          dcContext.sendTextMsg(chatId, responseText.toString());
-          DcHelper.getNotificationCenter(context).removeNotifications(chatId);
-          return null;
+      Util.runOnAnyBackgroundThread(() -> {
+        DcContext dcContext = DcHelper.getAccounts(context).getAccount(accountId);
+        if (dcContext.getChat(chatId).isContactRequest()) {
+          dcContext.acceptChat(chatId);
         }
-      }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+        dcContext.sendTextMsg(chatId, responseText.toString());
+        DcHelper.getNotificationCenter(context).removeNotifications(accountId, chatId);
+      });
     }
-
   }
 }

@@ -12,6 +12,7 @@ import org.thoughtcrime.securesms.util.Util;
 public class MarkReadReceiver extends BroadcastReceiver {
   public static final  String MARK_NOTICED_ACTION   = "org.thoughtcrime.securesms.notifications.MARK_NOTICED";
   public static final  String CANCEL_ACTION         = "org.thoughtcrime.securesms.notifications.CANCEL";
+  public static final  String ACCOUNT_ID_EXTRA      = "account_id";
   public static final  String CHAT_ID_EXTRA         = "chat_id";
 
   @Override
@@ -21,15 +22,16 @@ public class MarkReadReceiver extends BroadcastReceiver {
       return;
     }
 
+    final int accountId = intent.getIntExtra(ACCOUNT_ID_EXTRA, 0);
     final int chatId = intent.getIntExtra(CHAT_ID_EXTRA, 0);
-    if (chatId==0) {
+    if (accountId == 0 || chatId == 0) {
       return;
     }
 
     Util.runOnAnyBackgroundThread(() -> {
-      DcHelper.getNotificationCenter(context).removeNotifications(chatId);
+      DcHelper.getNotificationCenter(context).removeNotifications(accountId, chatId);
       if (markNoticed) {
-        DcHelper.getContext(context).marknoticedChat(chatId);
+        DcHelper.getAccounts(context).getAccount(accountId).marknoticedChat(chatId);
       }
     });
   }
