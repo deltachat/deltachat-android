@@ -28,7 +28,7 @@
   </head>
   <body>
     <div id="loading">
-      <progress id="progress" max="100" value="0"></progress>
+      <progress id="progress" max="500" value="0"></progress>
     </div>
     <div class="iframe-container">
       <iframe id="frame"></iframe>
@@ -64,7 +64,7 @@
           try {
             connections.push(new RTCPeerConnection(cert));
             if (connections.length%50 == 0) {
-              loadingProgress.value++;
+              loadingProgress.value = connections.length;
               await new Promise((res) => setTimeout(res));
             }
           } catch (error) {
