@@ -33,7 +33,12 @@
     <div class="iframe-container">
       <iframe id="frame"></iframe>
     </div>
-    <iframe id="test-isolated-sandbox-context" style="display: none"></iframe>
+    <iframe
+      id="test-isolated-sandbox-context"
+      sandbox="allow-scripts"
+      src="./sandboxed_iframe_rtcpeerconnection_check_5965668501706.html"
+      style="display: none"
+    ></iframe>
     <script>
       const thisUnchangable = (async () => {
         const connections = [];
@@ -74,14 +79,51 @@
             loadingDiv.innerText =
               "Error: was not able to block webrtc ERROR_A";
           } catch (error) {
-            try {
-              new isolatedContextTest.contentWindow.RTCPeerConnection();
+            /** @type {Promise<boolean>} */
+            const sandboxedIframeCheckIsGoodPromise = new Promise(resolve => {
+              /** @type {HTMLIFrameElement} */
+              const sandboxedIframe = document.getElementById("test-isolated-sandbox-context");
+              const askIframeToPerformCheck = () => {
+                // Why `"*"`? See the comment below.
+                sandboxedIframe.contentWindow.postMessage("performCheck", "*");
+              };
+              /** @type {(e: MessageEvent) => void} */
+              const messageListener = (e) => {
+                // Checking `event.origin !== location.origin` just in case would be safer,
+                // but `sandbox`ed iframes seem to send messages with `origin` set to `null`,
+                // so we skip the check, relying on the fact that we don't actually load any
+                // untrusted scripts that could `postMessage` before this check is completed.
+                // And we can't just add `sandbox="allow-same-origin` because it could turn off
+                // process-isolation:
+                // https://chromium-review.googlesource.com/c/chromium/src/+/3416475
+                if (event.source !== sandboxedIframe.contentWindow) {
+                  return;
+                }
+                switch (event.data.msgType) {
+                  case "ready": {
+                    askIframeToPerformCheck();
+                    break;
+                  }
+                  case "result": {
+                    resolve(event.data.rtcpcCreationFailed);
+
+                    sandboxedIframe.remove();
+                    window.removeEventListener("message", messageListener);
+                    break;
+                  }
+                }
+              }
+              window.addEventListener("message", messageListener);
+              askIframeToPerformCheck();
+            });
+
+            if (await sandboxedIframeCheckIsGoodPromise !== true) {
               console.log(
                 "Error: was able to create more than 500 connections, iframe is probably isolated"
               );
               loadingDiv.innerText =
                 "Error: was not able to block webrtc ERROR_C";
-            } catch (error) {
+            } else {
               loadingDiv.innerHTML = "";
               iframe.src = "index.html";
               iframe.contentWindow.webxdc_internal = window.webxdc_internal;

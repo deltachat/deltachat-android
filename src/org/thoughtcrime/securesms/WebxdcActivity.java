@@ -201,6 +201,11 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
       if (path.equalsIgnoreCase("/webxdc.js")) {
         InputStream targetStream = getResources().openRawResource(R.raw.webxdc);
         return new WebResourceResponse("text/javascript", "UTF-8", targetStream);
+      } else if (path.equalsIgnoreCase("/sandboxed_iframe_rtcpeerconnection_check_5965668501706.html")) {
+        // It is important to NOT return a malicious file instead of this one.
+        // Consider `iframe.srcdoc` as an alternative.
+        InputStream targetStream = getResources().openRawResource(R.raw.sandboxed_iframe_rtcpeerconnection_check);
+        return new WebResourceResponse("text/html", "UTF-8", targetStream);
       } else {
         byte[] blob = this.dcAppMsg.getWebxdcBlob(path);
         if (blob == null) {
