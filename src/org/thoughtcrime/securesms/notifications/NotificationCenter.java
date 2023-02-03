@@ -51,7 +51,7 @@ import java.util.concurrent.TimeUnit;
 
 public class NotificationCenter {
     private static final String TAG = NotificationCenter.class.getSimpleName();
-    @NonNull private ApplicationContext context;
+    @NonNull private final ApplicationContext context;
     private volatile Pair<Integer, Integer> visibleChat = new Pair<>(0, 0);
     private volatile long lastAudibleNotification = 0;
     private static final long MIN_AUDIBLE_PERIOD_MILLIS = TimeUnit.SECONDS.toMillis(2);
