@@ -122,13 +122,13 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     webSettings.setJavaScriptEnabled(true);
     webSettings.setAllowFileAccess(false);
     webSettings.setBlockNetworkLoads(!internetAccess);
-    webView.setNetworkAvailable(internetAccess);
     webSettings.setAllowContentAccess(false);
     webSettings.setGeolocationEnabled(false);
     webSettings.setAllowFileAccessFromFileURLs(false);
     webSettings.setAllowUniversalAccessFromFileURLs(false);
     webSettings.setDatabaseEnabled(true);
     webSettings.setDomStorageEnabled(true);
+    webView.setNetworkAvailable(internetAccess); // this does not block network but sets `window.navigator.isOnline` in js land
     webView.addJavascriptInterface(new InternalJSApi(), "InternalJSApi");
 
 
