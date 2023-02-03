@@ -76,7 +76,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   private static final String OPENPGP4FPR = "openpgp4fpr";
   private static final String NDK_ARCH_WARNED = "ndk_arch_warned";
   public static final String CLEAR_NOTIFICATIONS = "clear_notifications";
-  public static final String ACCOUNT_ID_EXTRA = "account_id";
+  public static final String ACCOUNT_ID_EXTRA = TAG + ".account_id";
 
   private final DynamicTheme    dynamicTheme    = new DynamicNoActionBarTheme();
   private final DynamicLanguage dynamicLanguage = new DynamicLanguage();

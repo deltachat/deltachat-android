@@ -158,11 +158,11 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 {
   private static final String TAG = ConversationActivity.class.getSimpleName();
 
-  public static final String ACCOUNT_ID_EXTRA        = "account_id";
-  public static final String CHAT_ID_EXTRA           = "chat_id";
-  public static final String FROM_ARCHIVED_CHATS_EXTRA = "from_archived";
-  public static final String TEXT_EXTRA              = "draft_text";
-  public static final String STARTING_POSITION_EXTRA = "starting_position";
+  public static final String ACCOUNT_ID_EXTRA        = TAG + ".account_id";
+  public static final String CHAT_ID_EXTRA           = TAG + ".chat_id";
+  public static final String FROM_ARCHIVED_CHATS_EXTRA = TAG + ".from_archived";
+  public static final String TEXT_EXTRA              = TAG + ".draft_text";
+  public static final String STARTING_POSITION_EXTRA = TAG + ".starting_position";
 
   private static final int PICK_GALLERY        = 1;
   private static final int PICK_DOCUMENT       = 2;
