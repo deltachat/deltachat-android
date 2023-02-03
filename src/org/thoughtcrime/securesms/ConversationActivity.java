@@ -350,7 +350,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       doReinitializeDraft = true;
     }
 
-    DcHelper.getNotificationCenter(this).updateVisibleChat(0, 0);
+    DcHelper.getNotificationCenter(this).clearVisibleChat();
     if (isFinishing()) overridePendingTransition(R.anim.fade_scale_in, R.anim.slide_to_right);
     quickAttachmentDrawer.onPause();
     inputPanel.onPause();

@@ -225,17 +225,19 @@ public class Prefs {
     setStringPreference(context, RINGTONE_PREF, ringtone.toString());
   }
 
-  public static void setChatRingtone(Context context, int chatId, Uri ringtone) {
+  public static void setChatRingtone(Context context, int accountId, int chatId, Uri ringtone) {
+    final String KEY = (accountId != 0 && chatId != 0)? CHAT_RINGTONE+accountId+"."+chatId : CHAT_RINGTONE;
     if(ringtone!=null) {
-      setStringPreference(context, CHAT_RINGTONE+chatId, ringtone.toString());
+      setStringPreference(context, KEY, ringtone.toString());
     }
     else {
-      removePreference(context, CHAT_RINGTONE+chatId);
+      removePreference(context, KEY);
     }
   }
 
-  public static @Nullable Uri getChatRingtone(Context context, int chatId) {
-    String result = getStringPreference(context, CHAT_RINGTONE+chatId, null);
+  public static @Nullable Uri getChatRingtone(Context context, int accountId, int chatId) {
+    final String KEY = (accountId != 0 && chatId != 0)? CHAT_RINGTONE+accountId+"."+chatId : CHAT_RINGTONE;
+    String result = getStringPreference(context, KEY, null);
     return result==null? null : Uri.parse(result);
   }
 
@@ -254,17 +256,19 @@ public class Prefs {
     return getBooleanPreference(context, VIBRATE_PREF, true);
   }
 
-  public static void setChatVibrate(Context context, int chatId, VibrateState vibrateState) {
+  public static void setChatVibrate(Context context, int accountId, int chatId, VibrateState vibrateState) {
+    final String KEY = (accountId != 0 && chatId != 0)? CHAT_VIBRATE+accountId+"."+chatId : CHAT_VIBRATE;
     if(vibrateState!=VibrateState.DEFAULT) {
-      setIntegerPrefrence(context, CHAT_VIBRATE+chatId, vibrateState.getId());
+      setIntegerPrefrence(context, KEY, vibrateState.getId());
     }
     else {
-      removePreference(context, CHAT_VIBRATE+chatId);
+      removePreference(context, KEY);
     }
   }
 
-  public static VibrateState getChatVibrate(Context context, int chatId) {
-    return VibrateState.fromId(getIntegerPreference(context, CHAT_VIBRATE+chatId, VibrateState.DEFAULT.getId()));
+  public static VibrateState getChatVibrate(Context context, int accountId, int chatId) {
+    final String KEY = (accountId != 0 && chatId != 0)? CHAT_VIBRATE+accountId+"."+chatId : CHAT_VIBRATE;
+    return VibrateState.fromId(getIntegerPreference(context, KEY, VibrateState.DEFAULT.getId()));
   }
 
   // led
