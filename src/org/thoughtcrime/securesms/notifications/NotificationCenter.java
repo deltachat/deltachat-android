@@ -55,7 +55,9 @@ public class NotificationCenter {
     private volatile Pair<Integer, Integer> visibleChat = new Pair<>(0, 0);
     private volatile long lastAudibleNotification = 0;
     private static final long MIN_AUDIBLE_PERIOD_MILLIS = TimeUnit.SECONDS.toMillis(2);
-    private final HashMap<Integer, HashMap<Integer, ArrayList<String>>> inboxes = new HashMap<>(); // contains the last lines of each chat
+
+    // Map<accountId, Map<chatId, lines>, contains the last lines of each chat for each account
+    private final HashMap<Integer, HashMap<Integer, ArrayList<String>>> inboxes = new HashMap<>();
 
     public NotificationCenter(Context context) {
         this.context = ApplicationContext.getInstance(context);
