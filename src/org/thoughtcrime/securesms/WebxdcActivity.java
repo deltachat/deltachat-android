@@ -131,17 +131,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     webView.setNetworkAvailable(internetAccess); // this does not block network but sets `window.navigator.isOnline` in js land
     webView.addJavascriptInterface(new InternalJSApi(), "InternalJSApi");
 
-
-    InputStream bootstrap_stream = getResources().openRawResource(R.raw.webxdc_wrapper);
-    byte[] bootstrap_bytes = new byte[0];
-    try {
-      bootstrap_bytes = new byte[bootstrap_stream.available()];
-      bootstrap_stream.read(bootstrap_bytes);
-      String bootstrapHtml = new String(bootstrap_bytes);
-      webView.loadDataWithBaseURL(this.baseURL + "/webxdc_bootstrap324567869.html", bootstrapHtml, "text/html", "UTF-8", null);
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
+    webView.loadUrl(this.baseURL + "/webxdc_bootstrap324567869.html");
 
     Util.runOnAnyBackgroundThread(() -> {
       final DcChat chat = dcContext.getChat(dcAppMsg.getChatId());
@@ -201,9 +191,10 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
       if (path.equalsIgnoreCase("/webxdc.js")) {
         InputStream targetStream = getResources().openRawResource(R.raw.webxdc);
         return new WebResourceResponse("text/javascript", "UTF-8", targetStream);
+      } else if (path.equalsIgnoreCase("/webxdc_bootstrap324567869.html")) {
+        InputStream targetStream = getResources().openRawResource(R.raw.webxdc_wrapper);
+        return new WebResourceResponse("text/html", "UTF-8", targetStream);
       } else if (path.equalsIgnoreCase("/sandboxed_iframe_rtcpeerconnection_check_5965668501706.html")) {
-        // It is important to NOT return a malicious file instead of this one.
-        // Consider `iframe.srcdoc` as an alternative.
         InputStream targetStream = getResources().openRawResource(R.raw.sandboxed_iframe_rtcpeerconnection_check);
         return new WebResourceResponse("text/html", "UTF-8", targetStream);
       } else {
