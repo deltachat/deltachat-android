@@ -608,5 +608,14 @@ public class NotificationCenter {
         this.accountId = accountId;
         this.chatId = chatId;
     }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+
+      ChatData chatData = (ChatData) o;
+      return accountId == chatData.accountId && chatId == chatData.chatId;
+    }
   }
 }
