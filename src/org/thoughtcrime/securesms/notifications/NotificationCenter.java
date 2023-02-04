@@ -114,6 +114,7 @@ public class NotificationCenter {
         Intent intent = new Intent(context, ConversationListActivity.class);
         intent.putExtra(ConversationListActivity.ACCOUNT_ID_EXTRA, accountId);
         intent.putExtra(ConversationListActivity.CLEAR_NOTIFICATIONS, true);
+        intent.setData(Uri.parse("custom://"+accountId));
         return PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT | IntentUtils.FLAG_MUTABLE());
     }
 
@@ -121,7 +122,7 @@ public class NotificationCenter {
         Intent intent = new Intent(context, ConversationActivity.class);
         intent.putExtra(ConversationActivity.ACCOUNT_ID_EXTRA, chatData.accountId);
         intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatData.chatId);
-        intent.setData((Uri.parse("custom://"+System.currentTimeMillis())));
+        intent.setData(Uri.parse("custom://"+chatData.accountId+"."+chatData.chatId));
         return TaskStackBuilder.create(context)
                 .addNextIntentWithParentStack(intent)
                 .getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT | IntentUtils.FLAG_MUTABLE());
