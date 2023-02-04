@@ -131,7 +131,7 @@ public class NotificationCenter {
     private PendingIntent getRemoteReplyIntent(ChatData chatData) {
         Intent intent = new Intent(RemoteReplyReceiver.REPLY_ACTION);
         intent.setClass(context, RemoteReplyReceiver.class);
-        intent.setData((Uri.parse("custom://"+System.currentTimeMillis())));
+        intent.setData(Uri.parse("custom://"+chatData.accountId+"."+chatData.chatId));
         intent.putExtra(RemoteReplyReceiver.ACCOUNT_ID_EXTRA, chatData.accountId);
         intent.putExtra(RemoteReplyReceiver.CHAT_ID_EXTRA, chatData.chatId);
         intent.setPackage(context.getPackageName());
@@ -141,7 +141,7 @@ public class NotificationCenter {
     private PendingIntent getMarkAsReadIntent(ChatData chatData, boolean markNoticed) {
         Intent intent = new Intent(markNoticed? MarkReadReceiver.MARK_NOTICED_ACTION : MarkReadReceiver.CANCEL_ACTION);
         intent.setClass(context, MarkReadReceiver.class);
-        intent.setData((Uri.parse("custom://"+System.currentTimeMillis())));
+        intent.setData(Uri.parse("custom://"+chatData.accountId+"."+chatData.chatId));
         intent.putExtra(MarkReadReceiver.ACCOUNT_ID_EXTRA, chatData.accountId);
         intent.putExtra(MarkReadReceiver.CHAT_ID_EXTRA, chatData.chatId);
         intent.setPackage(context.getPackageName());
