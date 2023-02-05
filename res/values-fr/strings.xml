@@ -49,7 +49,7 @@
     <string name="show_full_message">Montrer le message complet...</string>
     <string name="show_full_message_in_browser">Afficher le message complet dans le navigateur</string>
     <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
-    <string name="mark_all_as_read">Marquez tout comme lu</string>
+    <string name="mark_all_as_read">Marquer tout comme lu</string>
     <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
     <string name="mark_as_read_short">Lu</string>
     <!-- Placeholder text when something is loading -->
