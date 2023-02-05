@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script>
+window.addEventListener("message", e => {
+  // Currently this never happens because we don't load other scripts that could `postMessage`
+  // until all checks have passed, but let's play it safe.
+  if (
+    event.origin !== location.origin
+    || event.source !== parent
+  ) {
+    return;
+  }
+
+  if (event.data === "performCheck") {
+    let rtcpcCreationFailed = false;
+    try {
+      new RTCPeerConnection();
+    } catch (e) {
+      rtcpcCreationFailed = true;
+    }
+
+    parent.postMessage({ msgType: "result", rtcpcCreationFailed }, location.origin);
+  }
+});
+
+parent.postMessage({ msgType: "ready" }, location.origin);
+</script>
+</head>
+<body>
+</body>
+</html>

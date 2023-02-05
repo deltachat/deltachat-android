@@ -40,6 +40,7 @@ import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 
 public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcEventDelegate  {
@@ -127,9 +128,10 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     webSettings.setAllowUniversalAccessFromFileURLs(false);
     webSettings.setDatabaseEnabled(true);
     webSettings.setDomStorageEnabled(true);
+    webView.setNetworkAvailable(internetAccess); // this does not block network but sets `window.navigator.isOnline` in js land
     webView.addJavascriptInterface(new InternalJSApi(), "InternalJSApi");
 
-    webView.loadUrl(this.baseURL + "/index.html");
+    webView.loadUrl(this.baseURL + "/webxdc_bootstrap324567869.html");
 
     Util.runOnAnyBackgroundThread(() -> {
       final DcChat chat = dcContext.getChat(dcAppMsg.getChatId());
@@ -170,10 +172,6 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
 
   @Override
   protected boolean openOnlineUrl(String url) {
-    if (url.startsWith(baseURL +"/")) {
-      // internal page, continue loading in the WebView
-      return false;
-    }
     if (url.startsWith("mailto:")) {
       return super.openOnlineUrl(url);
     }
@@ -193,6 +191,12 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
       if (path.equalsIgnoreCase("/webxdc.js")) {
         InputStream targetStream = getResources().openRawResource(R.raw.webxdc);
         return new WebResourceResponse("text/javascript", "UTF-8", targetStream);
+      } else if (path.equalsIgnoreCase("/webxdc_bootstrap324567869.html")) {
+        InputStream targetStream = getResources().openRawResource(R.raw.webxdc_wrapper);
+        return new WebResourceResponse("text/html", "UTF-8", targetStream);
+      } else if (path.equalsIgnoreCase("/sandboxed_iframe_rtcpeerconnection_check_5965668501706.html")) {
+        InputStream targetStream = getResources().openRawResource(R.raw.sandboxed_iframe_rtcpeerconnection_check);
+        return new WebResourceResponse("text/html", "UTF-8", targetStream);
       } else {
         byte[] blob = this.dcAppMsg.getWebxdcBlob(path);
         if (blob == null) {

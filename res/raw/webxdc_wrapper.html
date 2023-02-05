@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      .iframe-container {
+        overflow: hidden;
+        height: 100vh;
+        width: 100vw;
+        position: relative;
+      }
+      .iframe-container iframe {
+        border: 0;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+      }
+      #progress {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="loading">
+      <progress id="progress" max="500" value="0"></progress>
+    </div>
+    <div class="iframe-container">
+      <iframe id="frame"></iframe>
+    </div>
+    <iframe
+      id="test-isolated-sandbox-context"
+      sandbox="allow-scripts"
+      src="./sandboxed_iframe_rtcpeerconnection_check_5965668501706.html"
+      style="display: none"
+    ></iframe>
+    <script>
+      const thisUnchangable = (async () => {
+        const connections = [];
+        const loadingProgress = document.getElementById("progress");
+        const loadingDiv = document.getElementById("loading");
+        const iframe = document.getElementById("frame");
+        const isolatedContextTest = document.getElementById(
+          "test-isolated-sandbox-context"
+        );
+
+        const cert = {
+          certificates: [
+            await RTCPeerConnection.generateCertificate({
+              name: "ECDSA",
+              namedCurve: "P-256",
+            }),
+          ],
+        };
+
+        console.log("WEBRTC-WG: allocating");
+        loadingProgress.value = 0;
+        while (connections.length < 500) {
+          try {
+            connections.push(new RTCPeerConnection(cert));
+            if (connections.length%50 == 0) {
+              loadingProgress.value = connections.length;
+              await new Promise((res) => setTimeout(res));
+            }
+          } catch (error) {
+            loadingProgress.value++;
+            new Array(1024*1024).fill(0);
+            await new Promise((res) => setTimeout(res, 500));
+            console.log("WEBRTC-WG: waiting for gc");
+          }
+        }
+        console.log("WEBRTC-WG: done");
+
+        try {
+          connections.push(new RTCPeerConnection());
+          console.log("Error: was able to create more than 500 connections");
+          loadingDiv.innerText =
+            "Error: was not able to block webrtc ERROR_A";
+        } catch (error) {
+          /** @type {Promise<boolean>} */
+          const sandboxedIframeCheckIsGoodPromise = new Promise(resolve => {
+            /** @type {HTMLIFrameElement} */
+            const sandboxedIframe = document.getElementById("test-isolated-sandbox-context");
+            const askIframeToPerformCheck = () => {
+              // Why `"*"`? See the comment below.
+              sandboxedIframe.contentWindow.postMessage("performCheck", "*");
+            };
+            /** @type {(e: MessageEvent) => void} */
+            const messageListener = (e) => {
+              // Checking `event.origin !== location.origin` just in case would be safer,
+              // but `sandbox`ed iframes seem to send messages with `origin` set to `null`,
+              // so we skip the check, relying on the fact that we don't actually load any
+              // untrusted scripts that could `postMessage` before this check is completed.
+              // And we can't just add `sandbox="allow-same-origin` because it could turn off
+              // process-isolation:
+              // https://chromium-review.googlesource.com/c/chromium/src/+/3416475
+              if (event.source !== sandboxedIframe.contentWindow) {
+                return;
+              }
+              switch (event.data.msgType) {
+                case "ready": {
+                  askIframeToPerformCheck();
+                  break;
+                }
+                case "result": {
+                  resolve(event.data.rtcpcCreationFailed);
+
+                  sandboxedIframe.remove();
+                  window.removeEventListener("message", messageListener);
+                  break;
+                }
+              }
+            }
+            window.addEventListener("message", messageListener);
+            askIframeToPerformCheck();
+          });
+
+          if (await sandboxedIframeCheckIsGoodPromise !== true) {
+            console.log(
+              "Error: was able to create more than 500 connections, iframe is probably isolated"
+            );
+            loadingDiv.innerText =
+              "Error: was not able to block webrtc ERROR_C";
+          } else {
+            loadingDiv.innerHTML = "";
+            iframe.src = "index.html";
+            iframe.contentWindow.webxdc_internal = window.webxdc_internal;
+            iframe.contentWindow.webxdc = window.webxdc;
+          }
+        }
+
+        return Object.freeze({
+          len: () => {
+            return connections.length;
+          },
+        });
+      })();
+    </script>
+  </body>
+</html>
