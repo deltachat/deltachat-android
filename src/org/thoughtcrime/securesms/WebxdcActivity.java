@@ -43,6 +43,9 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcEventDelegate  {
   private static final String TAG = WebxdcActivity.class.getSimpleName();
   private DcContext dcContext;
@@ -183,6 +186,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
   @Override
   protected WebResourceResponse interceptRequest(String rawUrl) {
     Log.i(TAG, "interceptRequest: " + rawUrl);
+    WebResourceResponse res = null;
     try {
       if (rawUrl == null) {
         throw new Exception("no url specified");
@@ -190,13 +194,13 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
       String path = Uri.parse(rawUrl).getPath();
       if (path.equalsIgnoreCase("/webxdc.js")) {
         InputStream targetStream = getResources().openRawResource(R.raw.webxdc);
-        return new WebResourceResponse("text/javascript", "UTF-8", targetStream);
+        res = new WebResourceResponse("text/javascript", "UTF-8", targetStream);
       } else if (path.equalsIgnoreCase("/webxdc_bootstrap324567869.html")) {
         InputStream targetStream = getResources().openRawResource(R.raw.webxdc_wrapper);
-        return new WebResourceResponse("text/html", "UTF-8", targetStream);
+        res = new WebResourceResponse("text/html", "UTF-8", targetStream);
       } else if (path.equalsIgnoreCase("/sandboxed_iframe_rtcpeerconnection_check_5965668501706.html")) {
         InputStream targetStream = getResources().openRawResource(R.raw.sandboxed_iframe_rtcpeerconnection_check);
-        return new WebResourceResponse("text/html", "UTF-8", targetStream);
+        res = new WebResourceResponse("text/html", "UTF-8", targetStream);
       } else {
         byte[] blob = this.dcAppMsg.getWebxdcBlob(path);
         if (blob == null) {
@@ -215,13 +219,28 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
         }
         String encoding = mimeType.startsWith("text/")? "UTF-8" : null;
         InputStream targetStream = new ByteArrayInputStream(blob);
-        return new WebResourceResponse(mimeType, encoding, targetStream);
+        res = new WebResourceResponse(mimeType, encoding, targetStream);
       }
     } catch (Exception e) {
       e.printStackTrace();
       InputStream targetStream = new ByteArrayInputStream(("Webxdc Request Error: " + e.getMessage()).getBytes());
-      return new WebResourceResponse("text/plain", "UTF-8", targetStream);
+      res = new WebResourceResponse("text/plain", "UTF-8", targetStream);
     }
+
+    if (res != null) {
+      Map<String, String> headers = new HashMap<>();
+      headers.put("Content-Security-Policy",
+          "default-src 'self'; "
+        + "style-src 'self' 'unsafe-inline' blob: ; "
+        + "font-src 'self' data: blob: ; "
+        + "script-src 'self' 'unsafe-inline' 'unsafe-eval' blob: ; "
+        + "connect-src 'self' data: blob: ; "
+        + "img-src 'self' data: blob: ; "
+        + "webrtc 'block' ; "
+      );
+      res.setResponseHeaders(headers);
+    }
+    return res;
   }
 
   @Override
