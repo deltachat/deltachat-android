@@ -1,5 +1,14 @@
 # Delta Chat Android Changelog
 
+## v1.34.12
+2023-02
+
+* disable SMTP pipelining for now
+* fix various bugs and improve logging
+* update translations
+* update to core107.1
+
+
 ## v1.34.11
 2023-01
 
