@@ -19,9 +19,11 @@ import java.lang.ref.WeakReference;
 public class FullMsgActivity extends WebViewActivity
 {
   public static final String MSG_ID_EXTRA = "msg_id";
+  public static final String IS_CONTACT_REQUEST = "is_contact_request";
   private int msgId;
   private DcContext dcContext;
   private boolean loadRemoteContent = false;
+  private boolean isContactRequest;
 
   enum LoadRemoteContent {
     NEVER,
@@ -33,7 +35,8 @@ public class FullMsgActivity extends WebViewActivity
   protected void onCreate(Bundle state, boolean ready) {
     super.onCreate(state, ready);
 
-    loadRemoteContent = Prefs.getAlwaysLoadRemoteContent(this);
+    isContactRequest = getIntent().getBooleanExtra(IS_CONTACT_REQUEST, false);;
+    loadRemoteContent = !isContactRequest && Prefs.getAlwaysLoadRemoteContent(this);
     webView.getSettings().setBlockNetworkLoads(!loadRemoteContent);
 
     // setBuiltInZoomControls() adds pinch-to-zoom as well as two on-screen zoom control buttons.
@@ -119,7 +122,7 @@ public class FullMsgActivity extends WebViewActivity
         String alwaysCheckmark = "";
         String onceCheckmark = "";
         String neverCheckmark = "";
-        if (Prefs.getAlwaysLoadRemoteContent(this)) {
+        if (!isContactRequest && Prefs.getAlwaysLoadRemoteContent(this)) {
           alwaysCheckmark = checkmark;
         } else if (loadRemoteContent) {
           onceCheckmark = checkmark;
@@ -127,8 +130,10 @@ public class FullMsgActivity extends WebViewActivity
           neverCheckmark = checkmark;
         }
 
-        builder.setNeutralButton(alwaysCheckmark + getString(R.string.always), (dialog, which) -> onChangeLoadRemoteContent(LoadRemoteContent.ALWAYS));
-        builder.setNegativeButton(neverCheckmark + getString(R.string.never), (dialog, which) -> onChangeLoadRemoteContent(LoadRemoteContent.NEVER));
+        if (!isContactRequest) {
+          builder.setNeutralButton(alwaysCheckmark + getString(R.string.always), (dialog, which) -> onChangeLoadRemoteContent(LoadRemoteContent.ALWAYS));
+        }
+        builder.setNegativeButton(neverCheckmark + getString(isContactRequest? R.string.no : R.string.never), (dialog, which) -> onChangeLoadRemoteContent(LoadRemoteContent.NEVER));
         builder.setPositiveButton(onceCheckmark + getString(R.string.once), (dialog, which) -> onChangeLoadRemoteContent(LoadRemoteContent.ONCE));
 
         builder.show();
@@ -141,11 +146,15 @@ public class FullMsgActivity extends WebViewActivity
     switch (loadRemoteContent) {
       case NEVER:
         this.loadRemoteContent = false;
-        Prefs.setBooleanPreference(this, Prefs.ALWAYS_LOAD_REMOTE_CONTENT, false);
+        if (!isContactRequest) {
+          Prefs.setBooleanPreference(this, Prefs.ALWAYS_LOAD_REMOTE_CONTENT, false);
+        }
         break;
       case ONCE:
         this.loadRemoteContent = true;
-        Prefs.setBooleanPreference(this, Prefs.ALWAYS_LOAD_REMOTE_CONTENT, false);
+        if (!isContactRequest) {
+          Prefs.setBooleanPreference(this, Prefs.ALWAYS_LOAD_REMOTE_CONTENT, false);
+        }
         break;
       case ALWAYS:
         this.loadRemoteContent = true;
