@@ -30,5 +30,7 @@ echo "and now: here is Delta Chat $VERSION - choose your flavour and mind your b
 echo "- 🍋 https://download.delta.chat/android/beta/deltachat-gplay-release-$VERSION.apk (android, overwrites existing gplay installs, should keep data)"
 echo "- 🍉 https://download.delta.chat/android/beta/deltachat-fat-debug-$VERSION.apk (android, can be installed beside gplay)"
 echo "- 🍏 https://testflight.apple.com/join/uEMc1NxS (ios, update to $VERSION may take a day or so)"
+echo ""
+echo "what to test: PLEASE_FILL_OUT"
 
 
