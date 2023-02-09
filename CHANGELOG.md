@@ -1,5 +1,13 @@
 # Delta Chat Android Changelog
 
+## v1.34.13
+2023-02
+
+* fix sending status updates of private apps
+* show full messages: do not load remote content for requests automatically
+* using to core107.1
+
+
 ## v1.34.12
 2023-02
 
