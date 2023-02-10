@@ -34,16 +34,16 @@ the following steps are done in a PR called `prep-VERSION` (no leading "v"):
 5. bump `versionCode` _and_ `versionName` (no leading "v") in `build.gradle`
 
 6. build APKs:
-   a) generate debug APK at "Build / Build Bundle(s)/APK / Build APK(s)"
+   a) generate debug APK at "Build / Build Bundle(s)/APK / Build APK(s)"  
    b) generate release APK at "Build / Generate Signed Bundle or APK",
       select "APK", add keys, flavor `gplayRelease`
 
 
 ## Push Test Releases
 
-7. a) `./scripts/upload-beta.sh VERSION` uploads both APKs to testrun.org and drafts a message.
-   b) add things critically to be tested to the message (this is not the changelog nor the device message)
-   c) post the message to relevant testing channels, **ping testers**
+7. a) `./scripts/upload-beta.sh VERSION` uploads both APKs to testrun.org and drafts a message.  
+   b) add things critically to be tested to the message (this is not the changelog nor the device message)  
+   c) post the message to relevant testing channels, **ping testers**  
    d) make sure, the `prep-VERSION` PR **gets merged**
 
 On serious deteriorations, **ping devs**, make sure they get fixed, and start over at step 1.
@@ -54,9 +54,9 @@ On serious deteriorations, **ping devs**, make sure they get fixed, and start ov
 Take care the APK used here and in the following steps
 are binary-wise the same as pushed to testers and not overwritten by subsequent builds.
 
-8. a) `./scripts/upload-release.sh VERSION`
+8. a) `./scripts/upload-release.sh VERSION`  
    b) do a PR to bump `VERSION_ANDROID` (without leading `v`) on
-      `https://github.com/deltachat/deltachat-pages/blob/master/_includes/download-boxes.html`
+      `https://github.com/deltachat/deltachat-pages/blob/master/_includes/download-boxes.html`  
    c) make sure, **the PR gets merged**
       andcthe correct APK is finally available on get.delta.chat
 
@@ -68,10 +68,10 @@ only afterwards, push the APK to stores. **consider a blog post.**
 on <https://play.google.com/apps/publish/>:
 
 9. a) open "Delta Chat/Release/Production"
-      then "Create new release" and upload APK from above
+      then "Create new release" and upload APK from above  
    b) fill out "Release details/Release notes" (500 characters max),
-      release name should be default ("123 (1.2.3)")
-   c) click "Save" and then "Review release"
+      release name should be default ("123 (1.2.3)")  
+   c) click "Save" and then "Review release"  
    d) set "Rollout Percentage" to 1% and then 2%, 5%, 10%, 20%, 50%, 100% the next days
 
 
@@ -82,11 +82,11 @@ on <https://play.google.com/apps/publish/>:
     (this version conversion is due to `VercodeOperation` in
     <https://gitlab.com/fdroid/fdroiddata/blob/master/metadata/com.b44t.messenger.yml>
     metadata file, see <https://f-droid.org/docs/Build_Metadata_Reference/#VercodeOperation> for
-    documentation)
+    documentation)  
     Add `metadata/en-US/changelogs/4564.txt` file with a changelog for F-Droid.
     The changelog must not be longer than 500 characters.
 
-11. make sure, everything is pushed, then:
+11. make sure, everything is pushed, then:  
     $ git tag v1.2.1; git push --tags
     
 F-Droid picks on the tags starting with "v" and builds the version.
@@ -97,10 +97,10 @@ This may take some days.
 
 on <https://developer.amazon.com/dashboard>:
 
-12. a) for "Delta Chat", select tab "Add upcoming version"
+12. a) for "Delta Chat", select tab "Add upcoming version"  
     b) at "App Information" hit "Edit" abottom and then "Replace APK" atop,
-       upload the APK from above, "Save"
-    c) on the same tab, add "Release notes" from CHANGELOG.md, "Save"
+       upload the APK from above, "Save"  
+    c) on the same tab, add "Release notes" from CHANGELOG.md, "Save"  
     d) hit "Submit app" at the upper right corner
 
 
