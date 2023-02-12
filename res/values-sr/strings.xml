@@ -133,16 +133,16 @@
     </plurals>
     <!-- Short form for "N Items Selected" -->
     <plurals name="n_selected">
-        <item quantity="one">%d изабран</item>
-        <item quantity="few">%d изабрано</item>
-        <item quantity="other">%d изабрано</item>
+        <item quantity="one">означено: %d</item>
+        <item quantity="few">означено: %d</item>
+        <item quantity="other">означено: %d</item>
     </plurals>
 
     <string name="self">Ја</string>
     <string name="draft">Нацрт</string>
     <string name="image">Слика</string>
     <!-- Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
-    <string name="reply_noun">Одговори</string>
+    <string name="reply_noun">Одговор</string>
     <string name="gif">ГИФ</string>
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">Налепница</string>
@@ -152,17 +152,17 @@
     <string name="forwarded">Прослеђено</string>
     <string name="forwarded_message">Прослеђена порука</string>
     <!-- %1$s will be replaced by the name or the e-mail address of the person who forwards the message -->
-    <string name="forwarded_by">Прослеђено од %1$s</string>
+    <string name="forwarded_by">Проследи %1$s</string>
     <string name="video">Видео</string>
     <string name="documents">Документи</string>
     <string name="contact">Особа</string>
-    <string name="verified_contact">Потврђен контакт</string>
+    <string name="verified_contact">Проверен контакт</string>
     <string name="camera">Камера</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
-    <string name="capture">Снимај</string>
+    <string name="capture">Сними</string>
     <string name="switch_camera">Промени камеру</string>
-    <string name="toggle_fullscreen">Пребаци у режим приказивања преко целог екрана</string>
-    <string name="location">Положај</string>
+    <string name="toggle_fullscreen">Обрће режим пуног екрана</string>
+    <string name="location">Локација</string>
     <string name="gallery">Галерија</string>
     <string name="images_and_videos">Слике и видео записи</string>
     <string name="file">Датотека</string>
@@ -172,18 +172,18 @@
     <!-- plural of "Private App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_apps">Приватне апликације</string>
     <string name="files_and_webxdx_apps">Датотеке и приватне апликације</string>
-    <string name="unknown">Непозната</string>
+    <string name="unknown">Непознато</string>
 
     <string name="green">Зелена</string>
     <string name="red">Црвена</string>
     <string name="blue">Плава</string>
-    <string name="orange">Наранџасте</string>
-    <string name="cyan">Цијан</string>
-    <string name="purple">Љубичаста</string>
-    <string name="magenta">Магента</string>
+    <string name="orange">Наранџаста</string>
+    <string name="cyan">Тиркизна</string>
+    <string name="purple">Пурпурна</string>
+    <string name="magenta">Љубичаста</string>
     <string name="white">Бела</string>
 
-    <string name="zoom">Увеличај</string>
+    <string name="zoom">Увеличање</string>
     <string name="extra_small">Малецка</string>
     <string name="small">Мала</string>
     <string name="normal">Нормална</string>
@@ -208,7 +208,7 @@
     <string name="menu_send">Пошаљи</string>
     <string name="menu_toggle_keyboard">Емоџи тастатура</string>
     <string name="menu_edit_group">Уреди групу</string>
-    <string name="menu_group_name_and_image">Назив групе и слика</string>
+    <string name="menu_group_name_and_image">Назив и слика групе</string>
     <string name="menu_show_map">Прикажи карту</string>
     <string name="menu_show_global_map">Прикажи све положаје</string>
     <string name="menu_archive_chat">Архивирај ћаскање</string>
@@ -258,7 +258,7 @@
     <string name="menu_zoom_in">Увеличати</string>
     <string name="menu_zoom_out">Умањи</string>
     <string name="menu_save_log">Сними дневник</string>
-    <string name="menu_more_options">Више подешавања</string>
+    <string name="menu_more_options">Више опција</string>
     <string name="menu_learn_spelling">Научи правопис</string>
     <string name="menu_chat_audit_log">Дневник ревизије ћаскања</string>
     <string name="jump_to_message">Иди на поруку</string>
@@ -284,13 +284,13 @@
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">Додај на главни екран</string>
 
-    <string name="mute_for_one_hour">Утишај 1 сат</string>
-    <string name="mute_for_two_hours">Утишај 2 сата</string>
-    <string name="mute_for_one_day">Утишај 1 дан</string>
-    <string name="mute_for_seven_days">Утишај 7 дана</string>
-    <string name="mute_forever">Увек утишан</string>
+    <string name="mute_for_one_hour">Утишај на 1 сат</string>
+    <string name="mute_for_two_hours">Утишај на 2 сата</string>
+    <string name="mute_for_one_day">Утишај на 1 дан</string>
+    <string name="mute_for_seven_days">Утишај на 7 дана</string>
+    <string name="mute_forever">Утишај заувек</string>
 
-    <string name="share_location_for_5_minutes">За 5 минута</string>
+    <string name="share_location_for_5_minutes">на 5 минута</string>
     <string name="share_location_for_30_minutes">За 30 минута</string>
     <string name="share_location_for_one_hour">За 1 сат</string>
     <string name="share_location_for_two_hours">За 2 сата</string>
@@ -307,7 +307,7 @@
     <string name="videochat_invite_user_to_videochat">Позови %1$sу видео ћаскање?</string>
     <string name="videochat_invite_user_hint">Ово захтева компатибилну апликацију или прегледач на оба краја.</string>
     <string name="videochat_contact_invited_hint">%1$sје позван у видео ћаскање.</string>
-    <string name="videochat_you_invited_hint">Ви сте послали позив за видео ћаскање</string>
+    <string name="videochat_you_invited_hint">Послали сте позив за видео ћаскање.</string>
     <string name="videochat_tap_to_join">Додирни да се придружиш</string>
     <string name="videochat_tap_to_open">Додирни да отвориш</string>
     <string name="videochat_instance">Инстанца видео ћаскања</string>
