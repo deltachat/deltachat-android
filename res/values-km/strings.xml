@@ -620,6 +620,7 @@
     <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
     <string name="autodel_server_enabled_hint">នេះរួមបញ្ចូលទាំងអុីម៉ែល ប្រពន្ធ័ផ្សព្វផ្សាយ និង \"សារដែលបានរក្សាទុក\" ក្នុងថតទាំងអស់របស់ម៉ាសុីនមេ។ កុំប្រើមុខងារនេះ ប្រសិនបើអ្នកចង់រក្សាទិន្ន័យនៅលើម៉ាសុីនមេ ឬប្រសិនបើអ្នកកំពុងប្រើសេវាកម្មអុីម៉េលផ្សេងពី សា Delta Chat ។</string>
     <string name="autodel_confirm">ខ្ញុំយល់។ លុបសារទាំងអស់នេះ</string>
+    <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">នៅពេលតែមួយ</string>
     <string name="after_30_seconds">បន្ទាប់ពី ៣០វិនាទី</string>
     <string name="after_1_minute">បន្ទាប់ពី ១នាទី</string>

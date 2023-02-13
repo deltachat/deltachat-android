@@ -415,6 +415,7 @@
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">%1$d mezu ezabatu nahi dituzu orain eta \"%2$s\" etorkizunean jasotako mezuak ere?\n\n• Honek multimedia ere barne hartzen du\n\n• Mezuak ikusi ala ez ezabatuko dira\n\n• \"Gordetako mezuak\" ez dira lokalki ezabatuko</string>
     <string name="autodel_confirm">Ulertzen dut, ezabatu mezuk guzti hauek</string>
+    <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">Berehala</string>
     <string name="autodel_after_1_hour">Ordubete eta gero</string>
     <string name="autodel_after_1_day">Egun bat eta gero</string>

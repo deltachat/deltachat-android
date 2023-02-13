@@ -593,6 +593,7 @@
     <string name="autodel_device_title">Ištrinti žinutes iš įrenginio</string>
     <string name="autodel_server_title">Ištrinti žinutes iš serverio</string>
     <string name="autodel_confirm">Aš suprantu, ištrinti visas šias žinutes</string>
+    <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">Iš karto</string>
     <string name="after_30_seconds">Po 30 sekundžių</string>
     <string name="after_1_minute">Po 1 minutės</string>

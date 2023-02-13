@@ -534,6 +534,7 @@ https://delta.chat</string>
     <string name="autodel_device_title">端末からメッセージを削除する</string>
     <string name="autodel_server_title">サーバーからメッセージを削除する</string>
     <string name="autodel_confirm">分かりました。メッセージを削除していいです。</string>
+    <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">すぐに</string>
     <string name="after_30_seconds">30秒</string>
     <string name="after_1_minute">1分</string>

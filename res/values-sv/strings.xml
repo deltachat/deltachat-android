@@ -517,6 +517,7 @@
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">Vill du ta bort %1$d meddelanden nu och alla kommande meddelanden \"%2$s\" i framtiden?\n\n• Detta inkluderar all mediafiler.\n\n• Meddelanden kommer att tas bort oavsett om de har lästs eller inte.\n\n• \"Sparade meddelanden\" undantas från lokal borttagning.</string>
     <string name="autodel_confirm">Jag förstår! Ta bort alla dessa meddelanden.</string>
+    <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">Nu genast</string>
     <string name="after_30_seconds">Efter 30 sekunder</string>
     <string name="after_1_minute">Efter 1 minut</string>

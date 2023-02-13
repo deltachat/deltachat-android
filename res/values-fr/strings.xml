@@ -705,6 +705,7 @@
     <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
     <string name="autodel_server_enabled_hint">Cela inclus les courriels, médias et les « Messages sauvegardés » dans tous les répertoires du serveur. N\'utilisez pas cette fonction si vous voulez garder les données sur le serveur ou si vous utilisez d\'autres clients de messagerie électronique en plus de Delta Chat.</string>
     <string name="autodel_confirm">Je comprends, effacez tous ces messages</string>
+    <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">Immédiatement</string>
     <string name="after_30_seconds">Après 30 secondes</string>
     <string name="after_1_minute">Après 1 minute</string>

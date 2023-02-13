@@ -480,6 +480,7 @@
     <string name="autodel_device_title">سڕینەوەی پەیامەکان لەسەر مۆبایەلەکت</string>
     <string name="autodel_server_title">سڕینەوەی پەیامەکان لەسەر سێرڤەر</string>
     <string name="autodel_confirm">تێگەیشتم، هەموو ئەم پەیامانە بسڕەوە</string>
+    <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">بەیەکجاری</string>
     <string name="after_30_seconds">پاش 30 چرکە</string>
     <string name="after_1_minute">پاش 1 خولەک</string>

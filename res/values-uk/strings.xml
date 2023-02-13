@@ -48,6 +48,10 @@
     <string name="start_chat">Почати розмову</string>
     <string name="show_full_message">Показати повне повідомлення...</string>
     <string name="show_full_message_in_browser">Показати повне повідомлення у браузері...</string>
+    <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
+    <string name="mark_all_as_read">Позначити все як прочитане</string>
+    <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
+    <string name="mark_as_read_short">Прочитане</string>
     <!-- Placeholder text when something is loading -->
     <string name="loading">Завантаження...</string>
     <string name="hide">Приховати</string>
@@ -716,6 +720,7 @@
     <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
     <string name="autodel_server_enabled_hint">Це стосується повідомлень електронної пошти, медіа та \"Збережених повідомлень\" у всіх серверних папках. Не використовуйте цю функцію якщо ви хочете зберегти дані на сервері або якщо ви користуєтесь іншими клієнтами електронної пошти окрім Delta Chat.</string>
     <string name="autodel_confirm">Я все розумію, видалити усі повідомлення</string>
+    <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">Одразу</string>
     <string name="after_30_seconds">Через 30 секунд</string>
     <string name="after_1_minute">Через 1 хвилину</string>

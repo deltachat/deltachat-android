@@ -565,6 +565,7 @@
     <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
     <string name="autodel_server_enabled_hint">Dette inkluderer email, medier og \"Gemte beskeder\" i alle server mapper. Brug ikke denne funktion hvis du vil beholde data på serveren eller hvis du bruger andre emailklienter end Delta Chat.</string>
     <string name="autodel_confirm">Jeg forstår, slet alle disse beskeder</string>
+    <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">Med det samme</string>
     <string name="after_30_seconds">Efter 30 sekunder</string>
     <string name="after_1_minute">Efter 1 minut</string>

@@ -705,6 +705,7 @@
     <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
     <string name="autodel_server_enabled_hint">Ово укључује све имејл поруке, медије и \"Сачуване поруке\" у свим директоријумима на серверу. Немојте користити ову функцију ако користите било које друге имејл клијенте осим Delta Chat-а.</string>
     <string name="autodel_confirm">Разумем и желим да избришем све ове поруке</string>
+    <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">Одмах</string>
     <string name="after_30_seconds">За 30 секунди</string>
     <string name="after_1_minute">За 1 минут</string>

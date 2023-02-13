@@ -686,6 +686,7 @@
     <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
     <string name="autodel_server_enabled_hint">Αυτό περιλαμβάνει e-mail, πολυμέσα και \"Αποθηκευμένα μηνύματα\" σε όλους τους φακέλους διακομιστή. Μην χρησιμοποιείτε αυτήν τη λειτουργία εάν θέλετε να διατηρήσετε δεδομένα στο διακομιστή ή εάν χρησιμοποιείτε άλλα προγράμματα-πελάτες ηλεκτρονικού ταχυδρομείου εκτός από το Delta Chat.</string>
     <string name="autodel_confirm">Καταλαβαίνω, διαγράψτε όλα αυτά τα μηνύματα</string>
+    <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">Με τη μία</string>
     <string name="after_30_seconds">Μετά από 30 δευτερόλεπτα</string>
     <string name="after_1_minute">Μετά από 1 λεπτό</string>

@@ -476,6 +476,7 @@
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">Cheres iscantzellare%1$d messàgios como e totu sos messàgios arribados \"%2$s\" in su tempus benidore?\n\n• Custu at a incluire totu sos documentos multimediales\n\n• Sos messàgios ant a èssere iscantzellados fintzas si no ant a èssere istados lèghidos\n\n• Sos \"Messàgios sarvados\" ant a èssere esclùdidos dae s\'iscantzellamentu locale</string>
     <string name="autodel_confirm">Apo cumpresu, iscantzella totu sos messàgios</string>
+    <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">Una borta</string>
     <string name="after_30_seconds">A pustis de 30 segundos</string>
     <string name="after_1_minute">A pustis de 1 minutu</string>

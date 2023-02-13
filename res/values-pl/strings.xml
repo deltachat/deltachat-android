@@ -720,6 +720,7 @@
     <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
     <string name="autodel_server_enabled_hint">Obejmuje to e-maile, multimedia i „Zapisane wiadomości” we wszystkich folderach na serwerze. Nie używaj tej funkcji, jeśli chcesz zachować dane na serwerze lub jeśli używasz innych klientów poczty e-mail oprócz Delta Chat.</string>
     <string name="autodel_confirm">Rozumiem, usuń te wszystkie wiadomości</string>
+    <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">Od razu</string>
     <string name="after_30_seconds">Po 30 sekundach</string>
     <string name="after_1_minute">Po 1 minucie</string>

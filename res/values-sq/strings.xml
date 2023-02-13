@@ -683,6 +683,7 @@
     <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
     <string name="autodel_server_enabled_hint">Kjo përfshin email-et, media dhe “Mesazhe të ruajtur” në krejt dosjet e shërbyesit. Mos e përdorni këtë funksion, nëse doni të mbani të dhënat te shërbyesi ose nëse po përdorni klientë të tjerët përkrah Delta Chat-it</string>
     <string name="autodel_confirm">E kuptoj, fshiji krejt këto mesazhe</string>
+    <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">Menjëherë</string>
     <string name="after_30_seconds">Pas 30 sekondash</string>
     <string name="after_1_minute">Pas 1 minute</string>

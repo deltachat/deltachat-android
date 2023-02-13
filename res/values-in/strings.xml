@@ -474,6 +474,7 @@
     <string name="autodel_device_title">Hapus pesarn dari perangkat</string>
     <string name="autodel_server_title">Hapus pesan dari server</string>
     <string name="autodel_confirm">Saya mengerti, hapus semua pesan ini</string>
+    <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">Segera</string>
     <string name="after_30_seconds">Setelah 30 detik</string>
     <string name="after_1_minute">Setelah 1 menit</string>
