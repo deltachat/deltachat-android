@@ -7,20 +7,6 @@
 #include "deltachat-core-rust/deltachat-ffi/deltachat.h"
 
 
-#if __ANDROID_API__ < 21
-#include <sys/epoll.h>
-#include <fcntl.h>
-int epoll_create1(int flags) {
-    int fd = epoll_create(1000);
-    if (flags & O_CLOEXEC) { /* EPOLL_CLOEXEC == O_CLOEXEC */
-        int f = fcntl(fd, F_GETFD);
-        fcntl(fd, F_SETFD, f | FD_CLOEXEC);
-    }
-    return fd;
-}
-#endif
-
-
 static dc_msg_t* get_dc_msg(JNIEnv *env, jobject obj);
 
 
