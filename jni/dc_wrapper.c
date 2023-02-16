@@ -751,6 +751,21 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcContext_getWebxdcStatusUpdates(JNIEn
 }
 
 
+JNIEXPORT jint Java_com_b44t_messenger_DcContext_sendReaction(JNIEnv *env, jobject obj, jint msg_id, jstring reaction)
+{
+    CHAR_REF(reaction);
+        int ret = dc_send_reaction(get_dc_context(env, obj), msg_id, reactionPtr);
+    CHAR_UNREF(reaction);
+    return ret;
+}
+
+
+JNIEXPORT jlong Java_com_b44t_messenger_DcContext_getMsgReactionsCPtr(JNIEnv *env, jobject obj, jint msg_id)
+{
+    return (jlong)dc_get_msg_reactions(get_dc_context(env, obj), msg_id);
+}
+
+
 JNIEXPORT jint Java_com_b44t_messenger_DcContext_addDeviceMsg(JNIEnv *env, jobject obj, jstring label, jobject msg)
 {
     CHAR_REF(label);
@@ -1961,3 +1976,43 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcProvider_getOverviewPage(JNIEnv *env
     return ret;
 }
 
+
+/*******************************************************************************
+ * DcReactions
+ ******************************************************************************/
+
+
+static dc_reactions_t* get_dc_reactions(JNIEnv *env, jobject obj)
+{
+    static jfieldID fid = 0;
+    if (fid==0) {
+        jclass cls = (*env)->GetObjectClass(env, obj);
+        fid = (*env)->GetFieldID(env, cls, "reactionsCPtr", "J" /*Signature, J=long*/);
+    }
+    if (fid) {
+        return (dc_reactions_t*)(*env)->GetLongField(env, obj, fid);
+    }
+    return NULL;
+}
+
+
+JNIEXPORT void Java_com_b44t_messenger_DcReactions_unrefReactionsCPtr(JNIEnv *env, jobject obj)
+{
+    dc_reactions_unref(get_dc_reactions(env, obj));
+}
+
+
+JNIEXPORT jintArray Java_com_b44t_messenger_DcReactions_getContacts(JNIEnv *env, jobject obj)
+{
+    dc_array_t* ca = dc_reactions_get_contacts(get_dc_reactions(env, obj));
+    return dc_array2jintArray_n_unref(env, ca);
+}
+
+
+JNIEXPORT jstring Java_com_b44t_messenger_DcReactions_getByContactId(JNIEnv *env, jobject obj, jint contact_id)
+{
+    char* temp = dc_reactions_get_by_contact_id(get_dc_reactions(env, obj), contact_id);
+        jstring ret = JSTRING_NEW(temp);
+    dc_str_unref(temp);
+    return ret;
+}
