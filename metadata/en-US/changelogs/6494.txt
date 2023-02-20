@@ -1,4 +1,5 @@
 * add SOCKS5 options to "Add Account" and "Configure"
 * introduce DNS cache: if DNS stops working on a network, Delta Chat will still be able to connect to IMAP by using previous IP addresses
+* show full messages: do not load remote content for requests automatically
 * fix various bugs and improve logging
 * update translations
