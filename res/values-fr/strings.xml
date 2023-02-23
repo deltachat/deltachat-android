@@ -79,7 +79,7 @@
     <string name="copied_to_clipboard">Copié dans le presse-papier.</string>
     <string name="contacts_headline">Contacts</string>
     <string name="email_address">Adresse de courriel</string>
-    <string name="bad_email_address">Adresse mail incorrecte</string>
+    <string name="bad_email_address">Adresse de courriel incorrecte</string>
     <string name="password">Mot de passe</string>
     <string name="existing_password">Mot de passe existant</string>
     <string name="now">Maintenant</string>
@@ -134,8 +134,8 @@
     <!-- Short form for "N Items Selected" -->
     <plurals name="n_selected">
         <item quantity="one">%d Sélectionné</item>
-        <item quantity="many">%d Sélectionné</item>
-        <item quantity="other">%d Sélectionné</item>
+        <item quantity="many">%d Sélectionnés</item>
+        <item quantity="other">%d Sélectionnés</item>
     </plurals>
 
     <string name="self">Moi</string>
@@ -198,7 +198,7 @@
     <string name="menu_new_chat">Nouvelle discussion</string>
     <string name="menu_new_group">Nouveau groupe</string>
     <!-- Use the same wording as "Subject" to help people coming from the e-mail context; eg. "Betreff" in German -->
-    <string name="new_group_or_subject">Nouveau groupe ou sujet.</string>
+    <string name="new_group_or_subject">Nouveau groupe ou sujet</string>
     <string name="menu_new_verified_group">Nouveau groupe vérifié</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">Liste de diffusion</string>
@@ -215,11 +215,11 @@
     <string name="menu_unarchive_chat">Désarchiver la discussion</string>
     <string name="menu_add_attachment">Ajouter une pièce jointe</string>
     <string name="menu_leave_group">Quitter le groupe</string>
-    <string name="menu_delete_chat">Effacer la discussion</string>
-    <string name="ask_delete_named_chat">Êtes-vous sûr de vouloir effacer « %1$s » ?</string>
-    <string name="menu_delete_messages">Effacer les messages</string>
-    <string name="delete_contact">Effacer le contact</string>
-    <string name="menu_delete_location">Effacer cette position ?</string>
+    <string name="menu_delete_chat">Supprimer la discussion</string>
+    <string name="ask_delete_named_chat">Voulez-vous vraiment supprimer « %1$s » ?</string>
+    <string name="menu_delete_messages">Supprimer les messages</string>
+    <string name="delete_contact">Supprimer le contact</string>
+    <string name="menu_delete_location">Supprimer cette position ?</string>
     <string name="menu_message_details">Détails du message</string>
     <string name="menu_copy_to_clipboard">Copier vers presse-papiers</string>
     <string name="menu_copy_selection_to_clipboard">Copier la sélection</string>
@@ -245,8 +245,8 @@
     <string name="accept">Accepter</string>
     <string name="menu_play">Jouer</string>
     <string name="menu_pause">Pause</string>
-    <string name="menu_scroll_to_bottom">Faites défiler jusqu\'en bas</string>
-    <string name="menu_scroll_to_top">Faites défiler jusqu\'en haut</string>
+    <string name="menu_scroll_to_bottom">Faire défiler jusqu\'en bas</string>
+    <string name="menu_scroll_to_top">Faire défiler jusqu\'en haut</string>
     <string name="menu_help">Aide</string>
     <string name="privacy_policy">Politique de confidentialité</string>
     <string name="menu_select_all">Tout sélectionner</string>
@@ -267,13 +267,13 @@
     <string name="title_share_location">Partager la position avec tous les membres du groupe</string>
     <string name="device_talk">Messages de l\'appareil</string>
     <string name="device_talk_subtitle">Messages générés localement</string>
-    <string name="device_talk_explain">Les messages dans cette discussion sont générés localement pour informer à propos des mises à jour et des problèmes rencontrés lors de l\'utilisation.</string>
-    <string name="device_talk_welcome_message">Bienvenue sur Delta Chat ! - Delta Chat ressemble à d\'autres applications de messagerie populaires, mais n\'implique pas un contrôle centralisé, le traçage ou la revente de vos données, de vos amis, collègues ou famille à de grandes organisations. Techniquement, Delta Chat est une application de messagerie électronique avec une interface de tchate moderne. Un courriel retoiletté si vous voulez 👻\n\nUtilisez Delta Chat avec n\'importe qui parmi des milliards de personnes : utilisez simplement leur adresse électronique. Les destinataires n\'ont pas besoin d\'installer Delta Chat, de visiter des sites web ou de s\'inscrire où que ce soit - cependant, bien sûr, s\'ils le souhaitent, vous pouvez les diriger vers 👉 https://get.delta.chat</string>
+    <string name="device_talk_explain">Les messages dans cette discussion sont générés localement par votre application Delta Chat. Cela vous permet de recevoir des informations concernant les mises à jour et problèmes rencontrés à l\'utilisation.</string>
+    <string name="device_talk_welcome_message">Bienvenue sur Delta Chat ! – Delta Chat ressemble à d\'autres applications de messagerie populaires, mais n\'implique pas un contrôle centralisé, le traçage ou la revente de vos données, de celles de vos amis, vos collègues ou votre famille à de grandes organisations.\n\nD\'un point de vue technique, Delta Chat est une application de courrier électronique avec une interface de discussion instantanée moderne. Un courriel retoiletté si vous voulez 👻\n\nUtilisez Delta Chat avec n\'importe qui parmi des milliards de personnes : vous avez seulement besoin de leur adresse de courriel. Les destinataires n\'ont pas besoin d\'installer Delta Chat, d\'accéder à des sites internet ni de s\'inscrire où que ce soit – mais s\'ils le souhaitent, vous pouvez évidemment les diriger vers 👉 https://get.delta.chat </string>
     <string name="edit_contact">Mettre à jour le contact</string>
     <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
-    <string name="pin_chat">Épingler le tchate </string>
+    <string name="pin_chat">Épingler la discussion</string>
     <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
-    <string name="unpin_chat">Désépingler le tchate </string>
+    <string name="unpin_chat">Désépingler la discussion</string>
     <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
     <string name="pin">Épingler</string>
     <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
@@ -284,11 +284,11 @@
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">Ajouter à l\'écran d\'accueil</string>
 
-    <string name="mute_for_one_hour">Déactiver pour 1 heure</string>
-    <string name="mute_for_two_hours">Déactiver pour 2 heures</string>
-    <string name="mute_for_one_day">Déactiver pour 1 jour</string>
-    <string name="mute_for_seven_days">Déactiver pour 7 jours</string>
-    <string name="mute_forever">Sourdine pour toujours</string>
+    <string name="mute_for_one_hour">Désactiver pour 1 heure</string>
+    <string name="mute_for_two_hours">Désactiver pour 2 heures</string>
+    <string name="mute_for_one_day">Désactiver pour 1 jour</string>
+    <string name="mute_for_seven_days">Désactiver pour 7 jours</string>
+    <string name="mute_forever">Désactiver pour toujours</string>
 
     <string name="share_location_for_5_minutes">pour 5 minutes</string>
     <string name="share_location_for_30_minutes">pour 30 minutes</string>
@@ -307,45 +307,45 @@
     <string name="videochat_invite_user_to_videochat">Inviter %1$s à une discussion vidéo ?</string>
     <string name="videochat_invite_user_hint">Cela requiert une application compatible ou un navigateur compatible des deux côtés.</string>
     <string name="videochat_contact_invited_hint">%1$s est invité à une discussion vidéo.</string>
-    <string name="videochat_you_invited_hint">Vous avez envoyez une invitation de discussion de vidéo.</string>
-    <string name="videochat_tap_to_join">Appuyez pour rejoindre</string>
-    <string name="videochat_tap_to_open">Appuyez pour ouvrir</string>
+    <string name="videochat_you_invited_hint">Vous avez envoyé une invitation pour une discussion vidéo.</string>
+    <string name="videochat_tap_to_join">Appuyer pour rejoindre</string>
+    <string name="videochat_tap_to_open">Appuyer pour ouvrir</string>
     <string name="videochat_instance">Instance de discussion vidéo</string>
     <string name="videochat_instance_placeholder">Votre instance de discussion vidéo</string>
     <string name="videochat_instance_example">Exemples : https://meet.jit.si/$ROOM ou basicwebrtc:https://your-server</string>
-    <string name="videochat_instance_explain_2">Lorsque activé, vous pouvez démarrer une discussion de vidéo dans chacune de vos conversations. Nécessite une application ou un navigateur compatible des deux côtés.</string>
+    <string name="videochat_instance_explain_2">Si vous avez activé les discussions vidéo, vous pouvez démarrer une conversation vidéo dans chacune de vos discussions. Il faut que chaque participant-e ait une application ou un navigateur compatibles pour pouvoir utiliser cette option.</string>
     <string name="videochat_instance_from_qr">Utiliser « %1$s » pour inviter les autres à des discussions de vidéo ?\n\nUne fois configuré, vous pouvez démarrer une discussion vidéo de chaque discussion privée. Ceci va remplacer la précédente configuration pour les discussions vidéos, s\'il y en a une.</string>
-    <string name="videochat_invitation">Invitation de discussion vidéo</string>
+    <string name="videochat_invitation">Invitation à une discussion vidéo</string>
     <string name="videochat_invitation_body">Vous êtes invité à une discussion vidéo, cliquez sur %1$s pour la rejoindre.</string>
 
     <!-- get confirmations -->
     <string name="ask_leave_group">Voulez-vous vraiment quitter ce groupe ?</string>
     <plurals name="ask_delete_chat">
-        <item quantity="one">Effacer %d tchats ?</item>
-        <item quantity="many">Effacer %d discussions ? Elles ne seront plus montrées dans la liste de tchats, mais leurs messages resteront sur le serveur.</item>
-        <item quantity="other">Effacer %d discussions ? Elles ne seront plus montrées dans la liste de tchats, mais leurs messages resteront sur le serveur.</item>
+        <item quantity="one">Supprimer %d discussion ? Elle n\'apparaîtra plus dans la liste des discussions, mais les messages échangés resteront sur le serveur.</item>
+        <item quantity="many">Supprimer %d discussions ? Elles n\'apparaîtront plus dans la liste des discussions, mais les messages qu\'elles contiennent resteront sur le serveur.</item>
+        <item quantity="other">Supprimer %d discussions ? Elles n\'apparaîtront plus dans la liste des discussions, mais les messages qu\'elles contiennent resteront sur le serveur.</item>
     </plurals>
-    <string name="ask_delete_message">Voulez-vous vraiment effacer ce message ?</string>
+    <string name="ask_delete_message">Voulez-vous vraiment supprimer ce message ?</string>
     <plurals name="ask_delete_messages">
-        <item quantity="one">Effacer %d messages ici et sur le serveur ?</item>
-        <item quantity="many">Effacer %dmessages ici et sur le serveur ?</item>
-        <item quantity="other">Effacer %dmessages ici et sur le serveur ?</item>
+        <item quantity="one">Supprimer %d message ici et sur le serveur ?</item>
+        <item quantity="many">Supprimer %dmessages ici et sur le serveur ?</item>
+        <item quantity="other">Supprimer %dmessages ici et sur le serveur ?</item>
     </plurals>
     <plurals name="ask_delete_messages_simple">
-        <item quantity="one">Effacer %d message ?</item>
-        <item quantity="many">Effacer %d messages ?</item>
-        <item quantity="other">Effacer %d messages ?</item>
+        <item quantity="one">Supprimer %d message ?</item>
+        <item quantity="many">Supprimer %d messages ?</item>
+        <item quantity="other">Supprimer %d messages ?</item>
     </plurals>
     <string name="ask_forward">Faire suivre les messages à %1$s ?</string>
     <string name="ask_forward_multiple">Faire suivre les messages à %1$d discussions ?</string>
     <string name="ask_export_attachment">Exporter une pièce jointe ? L\'exportation des pièces jointes permettra à toute autre application sur votre appareil d\'y accéder. Continuer ?</string>
     <string name="ask_block_contact">Bloquer ce contact ? Vous ne recevrez plus ses messages.</string>
     <string name="ask_unblock_contact">Débloquer ce contact ? Vous recevrez à nouveau ses messages.</string>
-    <string name="ask_delete_contacts">Effacer ces contacts?\n\nLes contacts avec des conversations en cours et ceux venant du carnet d\'adresses du système ne peuvent pas être définitivement effacés.</string>
-    <string name="ask_delete_contact">Supprimer le contact %1$s ?\n\nLes contacts dans les discussions en cours et les contacts du carnet d\'adresses du système ne peuvent pas être supprimés définitivement.</string>
-    <string name="cannot_delete_contacts_in_use">Impossible d\'effacer des contacts ayant une discussion active.</string>
+    <string name="ask_delete_contacts">Supprimer les contacts ?\n\nLes contacts avec qui vous avez des discussions en cours et ceux issus du carnet d\'adresses du système ne peuvent pas être supprimés définitivement.</string>
+    <string name="ask_delete_contact">Supprimer le contact %1$s ?\n\nLes contacts avec qui vous avez des discussions en cours et ceux issus du carnet d\'adresses du système ne peuvent pas être supprimés définitivement.</string>
+    <string name="cannot_delete_contacts_in_use">Impossible de supprimer les contacts avec qui vous avez une discussion en cours.</string>
     <string name="ask_start_chat_with">Discuter avec %1$s ?</string>
-    <string name="ask_delete_value">Effacer %s ?</string>
+    <string name="ask_delete_value">Supprimer %s ?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Retirer %1$s du groupe ?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
@@ -355,9 +355,9 @@
 
     <!-- contact list -->
     <string name="contacts_title">Contacts</string>
-    <string name="contacts_enter_name_or_email">Entrez le nom ou l\'email</string>
-    <string name="contacts_type_email_above">Entrez l\'email au dessus</string>
-    <string name="contacts_empty_hint">Pas de contacts.</string>
+    <string name="contacts_enter_name_or_email">Entrer le nom ou l\'adresse de courriel</string>
+    <string name="contacts_type_email_above">Saisir l\'adresse de courriel au-dessus</string>
+    <string name="contacts_empty_hint">Aucun contact.</string>
 
 
     <!-- chatlist and chat view -->
@@ -372,7 +372,7 @@
         <item quantity="other">%d  discussions désarchivées</item>
     </plurals>
     <string name="chat_archived_chats_title">Discussions archivées</string>
-    <string name="chat_please_enter_message">Entrez un message.</string>
+    <string name="chat_please_enter_message">Veuillez saisir un message.</string>
     <string name="chat_camera_unavailable">Caméra indisponible.</string>
     <string name="chat_unable_to_record_audio">Impossible d\'enregistrer le son.</string>
     <plurals name="chat_n_new_messages">
@@ -385,10 +385,10 @@
     <string name="chat_new_broadcast_hint">Dans une liste de diffusion, les autres personnes recevront les messages dans leur discussion directe/privée avec vous.\n\nLes destinataires ne pourront pas se voir entre eux.</string>
     <string name="chat_new_group_hint">Les autres participants ne verront ce groupe qu\'après que vous avez envoyé un premier message.</string>
     <string name="chat_record_slide_to_cancel">Glisser pour annuler</string>
-    <string name="chat_record_explain">Appuyez et maintenez pour enregistrer un message vocal, relâchez pour l’envoyer</string>
-    <string name="chat_no_chats_yet_title">Boîte de réception vide. Appuyez sur \"+\" pour commencer une nouvelle discussion.</string>
-    <string name="chat_no_chats_yet_hint">Vous pouvez discuter avec d\'autres utilisateurs de Delta Chat et avec n\'importe quelle adresse e-mail.</string>
-    <string name="chat_all_archived">Tous les tchats archivés. Appuyez sur \"+\" pour commencer un nouveau chat.</string>
+    <string name="chat_record_explain">Appuyer et maintenir pour enregistrer un message vocal, relâcher pour l’envoyer</string>
+    <string name="chat_no_chats_yet_title">Boîte de réception vide. Appuyer sur \"+\" pour commencer une nouvelle discussion.</string>
+    <string name="chat_no_chats_yet_hint">Vous pouvez discuter avec d\'autres utilisateurs de Delta Chat et avec n\'importe quelle adresse de courriel.</string>
+    <string name="chat_all_archived">Toutes les discussions sont archivées.\nAppuyer sur \"+\" pour commencer une nouvelle discussion.</string>
     <string name="chat_share_with_title">Partager avec</string>
     <string name="chat_input_placeholder">Message</string>
     <string name="chat_archived_label">Archivé</string>
@@ -413,7 +413,7 @@
 
     <!-- mailing lists -->
     <string name="mailing_list">Liste de diffusion</string>
-    <string name="mailing_list_profile_info">Les changements du nom et de l\'avatar de la liste de diffusion s\'applique uniquement sur cet appareil.</string>
+    <string name="mailing_list_profile_info">Les changements du nom et de l\'avatar de la liste de diffusion s\'appliquent uniquement sur cet appareil.</string>
 
     <!-- webxdc -->
     <!-- "Start..." button for an app -->
@@ -427,7 +427,7 @@
     <string name="add_poi">Afficher les points d\'intérêt</string>
 
     <!-- chat audit log -->
-    <string name="chat_audit_log_empty_message">Les messages systèmes de cette discussion devrait apparaître ici</string>
+    <string name="chat_audit_log_empty_message">Les messages systèmes de cette discussion apparaissent ici</string>
     <string name="chat_audit_log_title">Journal d\'audit de la discussion pour %1$s</string>
     <string name="chat_audit_log_description">Cette vue montre seulement les messages système et d\'information. Utile pour trouver les dernières actions dans la discussion sans défiler à travers beaucoup de messages normaux.</string>
 
@@ -550,7 +550,7 @@
     <string name="switch_account">Changer de compte</string>
     <string name="add_account">Ajouter un compte</string>
     <string name="delete_account">Supprimer le compte</string>
-    <string name="delete_account_ask">Êtes-vous sûr de vouloir supprimer les données de votre compte ?</string>
+    <string name="delete_account_ask">Voulez-vous vraiment supprimer les données de votre compte ?</string>
     <string name="delete_account_explain_with_name">Toutes les données de compte de « %s » sur cet appareil seront effacées, y compris votre configuration de chiffrement de bout en bout, vos contacts, discussions, messages et médias. Cette action est irrévocable.</string>
     <string name="unconfigured_account">Compte non configuré</string>
     <string name="unconfigured_account_hint">Ouvrir le compte pour le configurer</string>
@@ -590,7 +590,7 @@
     <string name="pref_vibrate">Vibrer</string>
     <string name="pref_screen_security">Écran de sécurité</string>
     <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
-    <string name="pref_screen_security_explain">Demande de blocage des captures d\'écran dans la liste des captures récentes et à l\'intérieur de l\'application</string>
+    <string name="pref_screen_security_explain">Demander de bloquer les captures d\'écran dans la liste des captures récentes et dans l\'application</string>
     <string name="pref_screen_security_please_restart_hint">Pour appliquer les paramètres de sécurité de l\'écran, veuillez redémarrer l\'application.</string>
     <string name="pref_notifications">Notifications</string>
     <string name="pref_notifications_show">Afficher</string>
@@ -609,10 +609,10 @@
     <string name="pref_dark_theme">Foncé</string>
     <string name="pref_appearance">Apparence</string>
     <string name="pref_theme">Thème</string>
-    <string name="pref_language">Langage</string>
+    <string name="pref_language">Langue</string>
     <string name="pref_incognito_keyboard">Clavier anonyme</string>
     <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
-    <string name="pref_incognito_keyboard_explain">Demande clavier pour désactiver l\'apprentissage personnalisé</string>
+    <string name="pref_incognito_keyboard_explain">Demander que le clavier désactive l\'apprentissage personnalisé</string>
     <string name="pref_read_receipts">Accusés de lecture</string>
     <string name="pref_read_receipts_explain">Si les accusés de lecture sont désactivés, vous ne pourrez pas voir les accusés de lecture des autres.</string>
     <string name="pref_manage_keys">Gérer les clés</string>
@@ -629,14 +629,14 @@
     <string name="pref_other">Autre</string>
     <string name="pref_backup">Sauvegarde</string>
     <string name="pref_backup_explain">Sauvegarder les discussions sur un stockage externe</string>
-    <string name="pref_backup_export_explain">Une sauvegarde vous aide pour une nouvelle installation sur cet appareil ou un autre.\n\nLa sauvegarde contiendra tous les messages, contacts et discussions ainsi que vos réglages  d\'Autocrypt de bout en bout. Garder le fichier de sauvegarde dans un endroit sûr ou supprimez le aussitôt utilisé.</string>
+    <string name="pref_backup_export_explain">Une sauvegarde vous aide à configurer une nouvelle installation sur cet appareil ou sur un autre.\n\nLa sauvegarde contiendra tous vos messages, tous vos contacts et toutes vos discussions, ainsi que vos paramètres de chiffrement de bout en bout Autocrypt. Conservez le fichier de sauvegarde dans un endroit sûr, ou supprimez-le aussitôt utilisé.</string>
     <string name="pref_backup_export_start_button">Démarrer la sauvegarde</string>
     <string name="pref_backup_written_to_x">Sauvegarde effectuée avec succès sur %1$s</string>
     <string name="pref_managekeys_menu_title">Gérer les clés</string>
     <string name="pref_managekeys_export_secret_keys">Exporter les clés secrètes</string>
     <string name="pref_managekeys_export_explain">Exporter les clés secrètes vers \"%1$s\"?</string>
     <string name="pref_managekeys_import_secret_keys">Importer des clés secrètes</string>
-    <string name="pref_managekeys_import_explain">Importer les clés secrètes depuis \"%1$s\"?\n\n• Les clés secrètes existantes ne seront pas détruites\n\n• La dernière clé importée sera utilisée comme nouvelle clé par défaut à moins qu\'il y ait le mot \"legacy\" dans son nom de fichier</string>
+    <string name="pref_managekeys_import_explain">Importer les clés secrètes depuis \"%1$s\" ?\n\n• Les clés secrètes existantes ne seront pas détruites\n\n• La dernière clé importée sera utilisée comme nouvelle clé par défaut à moins qu\'il y ait le mot \"legacy\" dans son nom de fichier.</string>
     <string name="pref_managekeys_secret_keys_exported_to_x">Les clés secrètes ont été écrites avec succès vers \"%1$s\".</string>
     <string name="pref_managekeys_secret_keys_imported_from_x">Les clés secrètes ont été importées depuis \"%1$s\".</string>
     <string name="pref_background">Arrière-plan</string>
@@ -676,7 +676,7 @@
     <string name="download_max_available_until">Télécharger le plus possible jusqu\'à %1$s</string>
     <string name="profile_image_select">Sélectionnez l\'image de profil</string>
     <string name="select_your_new_profile_image">Sélectionnez votre nouvelle image de profil</string>
-    <string name="profile_image_delete">Effacer l\'image de profil</string>
+    <string name="profile_image_delete">Supprimer l\'image de profil</string>
     <string name="pref_show_tray_icon">Afficher l\'icône dans la zone de notifications</string>
     <string name="pref_edit_profile">Édition du profil</string>
 
@@ -695,16 +695,16 @@
 
 
     <!-- automatically delete message -->
-    <string name="delete_old_messages">Effacer les anciens messages</string>
-    <string name="autodel_device_title">Effacer les messages de l\'appareil</string>
-    <string name="autodel_server_title">Effacer les messages sur le serveur</string>
+    <string name="delete_old_messages">Supprimer les anciens messages</string>
+    <string name="autodel_device_title">Supprimer les messages de l\'appareil</string>
+    <string name="autodel_server_title">Supprimer les messages du serveur</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
-    <string name="autodel_device_ask">Voulez-vous effacer %1$d messages maintenant ainsi que tous les prochains messages reçus « %2$s » à l\'avenir ?\n\n• Cela inclus tous les médias\n\n• Les messages seront effacés qu\'ils aient été vus ou non\n\n• Les « Messages sauvegardés » seront préservés de la suppression locale</string>
+    <string name="autodel_device_ask">Voulez-vous supprimer %1$d messages maintenant ainsi que tous les nouveaux futurs messages reçus « %2$s » ?\n\n• Cela inclut tous les fichiers multimédia\n\n• Les messages seront effacés qu\'ils aient été vus ou non\n\n• Les « Messages sauvegardés » seront préservés de la suppression locale</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
-    <string name="autodel_server_ask">Voulez-vous effacer %1$d messages maintenant ainsi que tous les prochains messages reçus « %2$s » à l\'avenir ?\n\n⚠️ Cela inclus les courriels, médias et les « Messages sauvegardés » dans tous les répertoires du serveur\n\n⚠️ N\'utilisez pas cette fonction si vous utilisez d\'autres clients de messagerie électronique en plus de Delta Chat</string>
+    <string name="autodel_server_ask">Voulez-vous supprimer %1$d messages maintenant ainsi que tous les futurs nouveaux messages reçus « %2$s » ?\n\n⚠️ Cela inclut les courriels, les fichiers multimédia et les « Messages sauvegardés » dans tous les répertoires du serveur\n\n⚠️ N\'utilisez pas cette fonction si vous utilisez d\'autres clients de messagerie électronique en plus de Delta Chat</string>
     <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
     <string name="autodel_server_enabled_hint">Cela inclus les courriels, médias et les « Messages sauvegardés » dans tous les répertoires du serveur. N\'utilisez pas cette fonction si vous voulez garder les données sur le serveur ou si vous utilisez d\'autres clients de messagerie électronique en plus de Delta Chat.</string>
-    <string name="autodel_confirm">Je comprends, effacez tous ces messages</string>
+    <string name="autodel_confirm">J\'ai compris, supprimer tous ces messages</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">Immédiatement</string>
     <string name="after_30_seconds">Après 30 secondes</string>
@@ -762,47 +762,47 @@
     <string name="group_left_by_you">Vous avez quitté le groupe.</string>
     <!-- "left" in the meaning of "exited"; %1$s will be replaced by name and address of the contact leaving the group -->
     <string name="group_left_by_other">%1$s a quitté le groupe.</string>
-    <string name="group_image_deleted_by_you">Image du groupe effacée par vous.</string>
+    <string name="group_image_deleted_by_you">Vous avez supprimé l\'image du groupe.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="group_image_deleted_by_other">Image de groupe effacée par %1$s.</string>
+    <string name="group_image_deleted_by_other">Image du groupe supprimée par %1$s.</string>
     <string name="location_enabled_by_you">Vous avez activé l\'envoi de votre localisation.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
     <string name="location_enabled_by_other">%1$sa activé l\'envoi de sa localisation.</string>
-    <string name="ephemeral_timer_disabled_by_you">Temporisation des messages éphémères désactivée par vous.</string>
+    <string name="ephemeral_timer_disabled_by_you">Vous avez désactivé la minuterie des messages éphémères.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="ephemeral_timer_disabled_by_other">Temporisation des messages éphémères désactivée par %1$s.</string>
+    <string name="ephemeral_timer_disabled_by_other">Minuterie des messages éphémères désactivée par %1$s.</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to -->
-    <string name="ephemeral_timer_seconds_by_you">Temporisation des messages éphémères réglée à %1$s secondes par vous.</string>
+    <string name="ephemeral_timer_seconds_by_you">Vous avez réglé le temps d\'affichage des messages éphémères à %1$s seconde(s).</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
-    <string name="ephemeral_timer_seconds_by_other">Temporisation des messages éphémères réglée à %1$s secondes par %2$s.</string>
-    <string name="ephemeral_timer_1_minute_by_you">Temporisation des messages éphémères réglée à 1 minute par vous.</string>
+    <string name="ephemeral_timer_seconds_by_other">Minuterie des messages éphémères réglée à %1$s secondes par %2$s.</string>
+    <string name="ephemeral_timer_1_minute_by_you">Vous avez réglé le temps d\'affichage des messages éphémères à 1 minute.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="ephemeral_timer_1_minute_by_other">Temporisation des messages éphémères réglée à 1 minute par %1$s.</string>
-    <string name="ephemeral_timer_1_hour_by_you">Temporisation des messages éphémères réglée à 1 heure par vous.</string>
+    <string name="ephemeral_timer_1_minute_by_other">Minuterie des messages éphémères réglée à 1 minute par %1$s.</string>
+    <string name="ephemeral_timer_1_hour_by_you">Vous avez réglé le temps d\'affichage des messages éphémères à 1 heure.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="ephemeral_timer_1_hour_by_other">Temporisation des messages éphémères réglée à 1 heure par %1$s.</string>
-    <string name="ephemeral_timer_1_day_by_you">Temporisation des messages éphémères réglée à 1 journée par vous.</string>
+    <string name="ephemeral_timer_1_hour_by_other">Minuterie des messages éphémères réglée à 1 heure par %1$s.</string>
+    <string name="ephemeral_timer_1_day_by_you">Vous avez réglé le temps d\'affichage des messages éphémères à 1 jour.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="ephemeral_timer_1_day_by_other">Temporisation des messages éphémères réglée à 1 journée par %1$s.</string>
-    <string name="ephemeral_timer_1_week_by_you">Temporisation des messages éphémères réglée à 1 semaine par vous.</string>
+    <string name="ephemeral_timer_1_day_by_other">Minuterie des messages éphémères réglée à 1 jour par %1$s.</string>
+    <string name="ephemeral_timer_1_week_by_you">Vous avez réglé le temps d\'affichage des messages éphémères à 1 semaine.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="ephemeral_timer_1_week_by_other">Temporisation des messages éphémères réglée à 1 semaine par %1$s.</string>
+    <string name="ephemeral_timer_1_week_by_other">Minuterie des messages éphémères réglée à 1 semaine par %1$s.</string>
     <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to -->
-    <string name="ephemeral_timer_minutes_by_you">Régler le temps d\'affichage des messages éphémères à %1$s minute(s) par vous.</string>
+    <string name="ephemeral_timer_minutes_by_you">Vous avez réglé le temps d\'affichage des messages éphémères à %1$s minutes.</string>
     <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
-    <string name="ephemeral_timer_minutes_by_other">Régler le temps d\'affichage des messages éphémères à %1$s minute(s) par %2$s.</string>
+    <string name="ephemeral_timer_minutes_by_other">Minuterie des messages éphémères réglée à %1$s minutes par %2$s.</string>
     <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to -->
-    <string name="ephemeral_timer_hours_by_you">Régler le temps d\'affichage des messages éphémères à %1$s heure(s) par vous.</string>
+    <string name="ephemeral_timer_hours_by_you">Vous avez réglé le temps d\'affichage des messages éphémères à %1$s heures.</string>
     <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
-    <string name="ephemeral_timer_hours_by_other">Régler le temps d\'affichage des messages éphémères à %1$s heure(s) par %2$s.</string>
+    <string name="ephemeral_timer_hours_by_other">Minuterie des messages éphémères réglée à %1$s heures par %2$s.</string>
     <!-- %1$s will be replaced by the number of days (always >1) the timer is set to -->
-    <string name="ephemeral_timer_days_by_you">Régler le temps d\'affichage des messages éphémères à %1$s jour(s) par vous.</string>
+    <string name="ephemeral_timer_days_by_you">Vous avez réglé le temps d\'affichage des messages éphémères à %1$s jours.</string>
     <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
-    <string name="ephemeral_timer_days_by_other">Régler le temps d\'affichage des messages éphémères à %1$s jour(s) par %2$s.</string>
+    <string name="ephemeral_timer_days_by_other">Minuterie des messages éphémères réglée à %1$s jours par %2$s.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to -->
-    <string name="ephemeral_timer_weeks_by_you">Régler le temps d\'affichage des messages éphémères à %1$s semaine(s) par vous.</string>
+    <string name="ephemeral_timer_weeks_by_you">Vous avez réglé le temps d\'affichage des messages éphémères à %1$s semaines.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
-    <string name="ephemeral_timer_weeks_by_other">Régler le temps d\'affichage des messages éphémères à %1$s semaine(s) par %2$s.</string>
+    <string name="ephemeral_timer_weeks_by_other">Minuterie des messages éphémères réglée à %1$s semaines par %2$s.</string>
     <string name="protection_enabled_by_you">Protection de discussion activée par vous.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
     <string name="protection_enabled_by_other">Protection de discussion activée par %1$s.</string>
@@ -810,11 +810,11 @@
     <!-- %1$s will be replaced by name and address of the contact -->
     <string name="protection_disabled_by_other">Protection de discussion désactivée par %1$s.</string>
 
-    <string name="devicemsg_self_deleted">Vous avez supprimé la discussion \"Message enregistrés\".\n\nℹ️ Pour de nouveau utiliser la fonctionnalité \"Message enregistrés\", commencez une nouvelle discussion avec vous-même.</string>
+    <string name="devicemsg_self_deleted">Vous avez supprimé la discussion \"Messages sauvegardés\".\n\nℹ️ Pour utiliser la fonctionnalité \"Message enregistrés\" à nouveau, commencez une nouvelle discussion avec vous-même.</string>
     <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
-    <string name="devicemsg_storage_exceeding">⚠️ L\'espace de stockage de votre fournisseur va bientôt être excédé, %1$s sur %% est utilisé.\n\nous ne serez peut-être plus capable de recevoir des messages quand l\'espace de stockage est 100%% utilisé.\n\n👉 Vérifier s\'il vous plaît que vous pouvez supprimer d\'ancienne données depuis l\'interface web de votre fournisseur et considérez d\'activer \"Paramètres / Supprimer les messages anciens\". Vous pouvez jetez un coup d\'oeil à l\'utilisation courante de votre espace de stockage à tout moment depuis \"Paramètres / Connectivité\".</string>
+    <string name="devicemsg_storage_exceeding">⚠️ Bientôt plus d\'espace de stockage chez votre fournisseur, %1$s sur %% utilisés.\n\nVous ne serez peut-être plus en mesure de recevoir des messages quand votre espace de stockage sera plein.\n\n👉 Veuillez vérifier si vous avez d\'anciens éléments à supprimer directement sur l\'interface web de votre fournisseur et envisagez d\'activer \"Paramètres / Supprimer les anciens messages\". Vous pouvez vérifier à tout moment le volume d\'espace de stockage en cours d\'utilisation depuis \"Paramètres / Connectivité\".</string>
     <!-- %1%s will be replaced by date and time in some human-readable format -->
-    <string name="devicemsg_bad_time">⚠️ Le temps ou date sur votre appareil semble être décalé (%1$s).\n\nAjustez votre horloge ⏰🔧 pour s\'assurer que vos messages soient bien reçus.</string>
+    <string name="devicemsg_bad_time">⚠️ L\'heure ou la date de votre appareil semble erronée (%1$s).\n\nRéglez votre horloge ⏰🔧 pour que vos messages soient bien reçus.</string>
     <string name="devicemsg_update_reminder">⚠️ Votre version de Delta Chat semble être obsolète.\n\nCeci pourrait poser des problèmes car vos contacts utilisent des versions plus récentes - et vous loupez les dernières fonctionnalités 😳\nVeuillez s\'il vous plaît faire un tour sur https://get.delta.chat ou votre magasin d\'applications pour une mise à jour.</string>
 
     <!-- Some options as "Manage keys" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc. to be entered in a system dialog. This hint is added to the system dialog, below a title as "Manage keys" or "Backup". -->
@@ -852,14 +852,14 @@
     <string name="qrshow_join_contact_hint">Scanner pour discuter avec %1$s</string>
     <string name="qrshow_join_contact_no_connection_toast">Pas de connexion Internet, ne peut pas effectuer la configuration du QR code.</string>
     <string name="qraccount_ask_create_and_login">Créer une nouvelle adresse de courriel sur « %1$s » et se connecter ici ?</string>
-    <string name="qraccount_ask_create_and_login_another">Créer une nouvelle adresse de courriel sur « %1$s » et se connecter ici ?\n\nVotre compte existant ne sera pas effacé. Utilisez l\'élément de menu « Changer de compte » pour passer d\'un compte à l\'autre.</string>
+    <string name="qraccount_ask_create_and_login_another">Créer une nouvelle adresse de courriel sur « %1$s » et s\'y connecter ?\n\nVotre compte existant ne sera pas supprimé. Utilisez l\'élément de menu « Changer de compte » pour passer d\'un compte à l\'autre.</string>
     <string name="qraccount_success_enter_name">Connexion réussie – votre adresse de courriel est %1$s\n\nSi vous le souhaitez, vous pouvez maintenant choisir un nom et une image de profil qui seront affichés aux personnes à qui vous écrivez.</string>
     <string name="qraccount_qr_code_cannot_be_used">Le code QR scanné ne peut pas être utilisé pour ouvrir un nouveau compte.</string>
     <string name="qraccount_use_on_new_install">Le code QR scanné permet de configurer un nouveau compte. Vous pouvez scanner le code QR à la configuration d\'une nouvelle installation de Delta Chat.</string>
     <!-- the placeholder will be replaced by the e-mail address of the account -->
     <string name="qrlogin_ask_login">Se connecter au compte « %1$s » ?</string>
     <!-- the placeholder will be replaced by the e-mail address of the account -->
-    <string name="qrlogin_ask_login_another">Se connecter au compte « %1$s » ?\n\nVotre compte existant ne sera pas effacé. Utiliser l\'élément de menu « Changer de compte » pour passer d\'un compte à l\'autre.</string>
+    <string name="qrlogin_ask_login_another">Se connecter à « %1$s » ?\n\nVotre compte existant ne sera pas supprimé. Utiliser l\'élément de menu « Changer de compte » pour passer d\'un compte à l\'autre.</string>
     <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s vous a invité à rejoindre ce groupe.\n\nEn attente de la réponse de l’appareil de %2$s…</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
@@ -915,7 +915,7 @@
     <string name="login_known_accounts_title_desktop">Comptes connus</string>
     <string name="global_menu_preferences_language_desktop">Choisissez la langue...</string>
     <string name="global_menu_file_desktop">Fichier</string>
-    <string name="global_menu_file_quit_desktop">Quittez</string>
+    <string name="global_menu_file_quit_desktop">Quitter</string>
     <string name="global_menu_edit_desktop">Modifier</string>
     <string name="global_menu_edit_undo_desktop">Annuler</string>
     <string name="global_menu_edit_redo_desktop">Refaire</string>
@@ -936,7 +936,7 @@
     <string name="no_chat_selected_suggestion_desktop">Sélectionner une discussion ou en créer une nouvelle</string>
     <string name="write_message_desktop">Écrire un message</string>
     <string name="encryption_info_title_desktop">Information de chiffrement</string>
-    <string name="delete_message_desktop">Effacer les messages</string>
+    <string name="delete_message_desktop">Supprimer le message</string>
     <string name="more_info_desktop">En savoir plus</string>
     <string name="timestamp_format_m_desktop">MMM D</string>
     <string name="encryption_info_desktop">Afficher les informations de chiffrement</string>
@@ -952,7 +952,7 @@
     <string name="autocrypt_correct_desktop">Installation d\'Autocrypt transférée avec succès !</string>
     <string name="autocrypt_incorrect_desktop">Code de configuration incorrect. Veuillez réessayer.</string>
     <string name="create_chat_error_desktop">La discussion n’a pas pu être créée.</string>
-    <string name="forget_login_confirmation_desktop">Effacer cette connexion? Tout sera supprimé, y compris vos réglages bout en bout, contacts, discussions, messages et les fichiers multimédia. Cette action ne peut pas être défaite.</string>
+    <string name="forget_login_confirmation_desktop">Supprimer cette connexion ? Tout sera effacé, y compris vos paramètres de chiffrement de bout en bout, vos contacts, discussions, messages et fichiers multimédia. Cette action est irrévocable.</string>
     <string name="account_info_hover_tooltip_desktop2">Adresse: %1$s\nTaille: %2$s\nID du compte: %3$s</string>
     <string name="message_detail_sent_desktop">envoyé</string>
     <string name="message_detail_received_desktop">reçu</string>
