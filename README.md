@@ -22,12 +22,34 @@ subproject _deltachat-core-rust_:
   or later by `git submodule update --init --recursive`. If you do this in your
   home directory, this results in the folder `~/deltachat-android` which is just fine.
 
+# Build Using Nix
+
+The repository contains [Nix](https://nixos.org/) development environment
+described in `flake.nix` file.
+If you don't have Nix installed,
+the easiest way is to use [The Determinate Nix Installer](https://github.com/DeterminateSystems/nix-installer)
+which installs Nix with [Flakes](https://nixos.wiki/wiki/Flakes) feature enabled out of the box
+and can be cleanly uninstalled with `/nix/nix-installer uninstall` once you don't need it anymore.
+
+Once you have Nix with Flakes feature set up,
+run `nix develop` to start development environment shell.
+
+Nix development environment contains Rust with cross-compilation toolchains and Android SDK.
+To [build an APK](https://developer.android.com/studio/build/building-cmdline), run:
+```
+$ scripts/ndk-make.sh
+$ ./gradlew assembleDebug
+```
+
+Resulting APK files can be found in
+`build/outputs/apk/gplay/debug/` and
+`build/outputs/apk/fat/debug/.
+
 # Build Using Dockerfile
 
-If you only want to build an APK, the easiest way is to use
-provided `Dockerfile` with [Docker](https://www.docker.com/) or
-[Podman](https://podman.io/). Podman is a drop-in replacement for Docker
-that does not require root privileges.
+Another way to build APK is to use provided `Dockerfile`
+with [Docker](https://www.docker.com/) or [Podman](https://podman.io/).
+Podman is a drop-in replacement for Docker that does not require root privileges.
 
 If you don't have Docker or Podman setup yet, read [how to setup Podman](#setup-podman)
 below. If you don't want to use Docker or Podman, read [how to manually install the
