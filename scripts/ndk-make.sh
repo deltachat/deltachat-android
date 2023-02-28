@@ -56,6 +56,8 @@ if test -z "$NDK_HOST_TAG"; then
     NDK_HOST_TAG="$KERNEL-$ARCH"
 fi
 
+unset RUSTFLAGS
+
 TOOLCHAIN="$ANDROID_NDK_ROOT/toolchains/llvm/prebuilt/$NDK_HOST_TAG"
 export CARGO_TARGET_ARMV7_LINUX_ANDROIDEABI_LINKER="$TOOLCHAIN/bin/armv7a-linux-androideabi16-clang"
 export CARGO_TARGET_AARCH64_LINUX_ANDROID_LINKER="$TOOLCHAIN/bin/aarch64-linux-android21-clang"
