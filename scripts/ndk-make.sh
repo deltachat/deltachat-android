@@ -65,7 +65,7 @@ export CARGO_TARGET_X86_64_LINUX_ANDROID_LINKER="$TOOLCHAIN/bin/x86_64-linux-and
 RUSTUP_TOOLCHAIN=$(cat "$(dirname "$0")/rust-toolchain")
 
 # Check if the argument is a correct architecture:
-if test $1 && echo "armeabi-v7a arm64-v8a x86 x86_64" | grep -vwq $1; then
+if test $1 && echo "armeabi-v7a arm64-v8a x86 x86_64" | grep -vwq -- $1; then
     echo "Architecture '$1' not known, possible values are armeabi-v7a, arm64-v8a, x86 and x86_64."
     exit
 fi
