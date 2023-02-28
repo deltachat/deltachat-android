@@ -20,6 +20,7 @@ public class DcAccounts {
     }
 
     public DcEventEmitter         getEventEmitter      () { return new DcEventEmitter(getEventEmitterCPtr()); }
+    public DcJsonrpcInstance      getJsonrpcInstance   () { return new DcJsonrpcInstance(getJsonrpcInstanceCPtr()); }
     public native void            startIo              ();
     public native void            stopIo               ();
     public native void            maybeNetwork         ();
@@ -38,6 +39,7 @@ public class DcAccounts {
     private native long  createAccountsCPtr     (String osName, String dir);
     private native void  unrefAccountsCPtr      ();
     private native long  getEventEmitterCPtr    ();
+    private native long  getJsonrpcInstanceCPtr ();
     private native long  getAccountCPtr         (int accountId);
     private native long  getSelectedAccountCPtr ();
 }

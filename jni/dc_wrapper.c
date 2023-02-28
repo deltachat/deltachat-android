@@ -245,6 +245,11 @@ JNIEXPORT jlong Java_com_b44t_messenger_DcAccounts_getEventEmitterCPtr(JNIEnv *e
     return (jlong)dc_accounts_get_event_emitter(get_dc_accounts(env, obj));
 }
 
+JNIEXPORT jlong Java_com_b44t_messenger_DcAccounts_getJsonrpcInstanceCPtr(JNIEnv *env, jobject obj)
+{
+    return (jlong)dc_jsonrpc_init(get_dc_accounts(env, obj));
+}
+
 
 JNIEXPORT void Java_com_b44t_messenger_DcAccounts_startIo(JNIEnv *env, jobject obj)
 {
@@ -2135,5 +2140,43 @@ JNIEXPORT jbyteArray Java_com_b44t_messenger_DcHttpResponse_getBlob(JNIEnv *env,
     uint8_t* ptr = dc_http_response_get_blob(http_response);
         ret = ptr2jbyteArray(env, ptr, ptr_size);
     dc_str_unref((char*)ptr);
+    return ret;
+}
+
+/*******************************************************************************
+ * DcJsonrpcInstance
+ ******************************************************************************/
+
+static dc_jsonrpc_instance_t* get_dc_jsonrpc_instance(JNIEnv *env, jobject obj)
+{
+    static jfieldID fid = 0;
+    if (fid==0) {
+        jclass cls = (*env)->GetObjectClass(env, obj);
+        fid = (*env)->GetFieldID(env, cls, "jsonrpcInstanceCPtr", "J" /*Signature, J=long*/);
+    }
+    if (fid) {
+        return (dc_jsonrpc_instance_t*)(*env)->GetLongField(env, obj, fid);
+    }
+    return NULL;
+}
+
+
+JNIEXPORT void Java_com_b44t_messenger_DcJsonrpcInstance_unrefJsonrpcInstanceCPtr(JNIEnv *env, jobject obj)
+{
+    dc_jsonrpc_unref(get_dc_jsonrpc_instance(env, obj));
+}
+
+JNIEXPORT void Java_com_b44t_messenger_DcJsonrpcInstance_request(JNIEnv *env, jobject obj, jstring request)
+{
+    CHAR_REF(request);
+    dc_jsonrpc_request(get_dc_jsonrpc_instance(env, obj), request);
+    CHAR_UNREF(request);
+}
+
+JNIEXPORT jstring Java_com_b44t_messenger_DcJsonrpcInstance_getNextResponse(JNIEnv *env, jobject obj)
+{
+    char* temp = dc_jsonrpc_next_response(get_dc_jsonrpc_instance(env, obj));
+    jstring ret = JSTRING_NEW(temp);
+    dc_str_unref(temp);
     return ret;
 }
