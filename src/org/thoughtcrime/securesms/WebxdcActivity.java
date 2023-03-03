@@ -44,6 +44,10 @@ import org.thoughtcrime.securesms.util.MediaUtil;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 
+import org.mozilla.geckoview.GeckoRuntime;
+import org.mozilla.geckoview.GeckoSession;
+import org.mozilla.geckoview.GeckoView;
+
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -54,7 +58,10 @@ import java.util.Map;
 public class WebxdcActivity extends PassphraseRequiredActionBarActivity implements DcEventCenter.DcEventDelegate  {
   private static final String TAG = WebxdcActivity.class.getSimpleName();
 
-  protected WebView webView;
+  private static GeckoRuntime sRuntime;
+  private GeckoView geckoView;
+  private GeckoSession geckoSession;
+
   private final DynamicTheme dynamicTheme = new DynamicTheme();
   protected final DynamicLanguage dynamicLanguage = new DynamicLanguage();
 
@@ -111,64 +118,19 @@ public class WebxdcActivity extends PassphraseRequiredActionBarActivity implemen
     setContentView(R.layout.webxdc_activity);
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-    webView = findViewById(R.id.webview);
-    webView.setWebViewClient(new WebViewClient() {
-      // `shouldOverrideUrlLoading()` is called when the user clicks a URL,
-      // returning `true` causes the WebView to abort loading the URL,
-      // returning `false` causes the WebView to continue loading the URL as usual.
-      // the method is not called for POST request nor for on-page-links.
-      //
-      // nb: from API 24, `shouldOverrideUrlLoading(String)` is deprecated and
-      // `shouldOverrideUrlLoading(WebResourceRequest)` shall be used.
-      // the new one has the same functionality, and the old one still exist,
-      // so, to support all systems, for now, using the old one seems to be the simplest way.
-      @Override
-      public boolean shouldOverrideUrlLoading(WebView view, String url) {
-        if (url != null) {
-          String schema = url.split(":")[0].toLowerCase();
-          switch (schema) {
-            case "http":
-            case "https":
-            case "mailto":
-            case "openpgp4fpr":
-              return openOnlineUrl(url);
-          }
-        }
-        // by returning `true`, we also abort loading other URLs in our WebView;
-        // eg. that might be weird or internal protocols.
-        // if we come over really useful things, we should allow that explicitly.
-        return true;
-      }
+    geckoView = findViewById(R.id.webview);
+    geckoSession = new GeckoSession();
 
-      @Override
-      @SuppressWarnings("deprecation")
-      public WebResourceResponse shouldInterceptRequest(WebView view, String url) {
-        WebResourceResponse res = interceptRequest(url);
-        if (res!=null) {
-          return res;
-        }
-        return super.shouldInterceptRequest(view, url);
-      }
+    // Workaround for Bug 1758212
+    geckoSession.setContentDelegate(new GeckoSession.ContentDelegate() {});
 
-      @Override
-      @RequiresApi(21)
-      public WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request) {
-        WebResourceResponse res = interceptRequest(request.getUrl().toString());
-        if (res!=null) {
-          return res;
-        }
-        return super.shouldInterceptRequest(view, request);
-      }
-    });
-
-    // disable "safe browsing" as this has privacy issues,
-    // eg. at least false positives are sent to the "Safe Browsing Lookup API".
-    // as all URLs opened in the WebView are local anyway,
-    // "safe browsing" will never be able to report issues, so it can be disabled.
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-      webView.getSettings().setSafeBrowsingEnabled(false);
+    if (sRuntime == null) {
+      // GeckoRuntime can only be initialized once per process
+      sRuntime = GeckoRuntime.create(this);
     }
 
+    geckoSession.open(sRuntime);
+    geckoView.setSession(geckoSession);
 
     DcEventCenter eventCenter = DcHelper.getEventCenter(WebxdcActivity.this.getApplicationContext());
     eventCenter.addObserver(DcContext.DC_EVENT_WEBXDC_STATUS_UPDATE, this);
@@ -199,20 +161,7 @@ public class WebxdcActivity extends PassphraseRequiredActionBarActivity implemen
     final JSONObject info = this.dcAppMsg.getWebxdcInfo();
     internetAccess = JsonUtils.optBoolean(info, "internet_access");
 
-    WebSettings webSettings = webView.getSettings();
-    webSettings.setJavaScriptEnabled(true);
-    webSettings.setAllowFileAccess(false);
-    webSettings.setBlockNetworkLoads(!internetAccess);
-    webSettings.setAllowContentAccess(false);
-    webSettings.setGeolocationEnabled(false);
-    webSettings.setAllowFileAccessFromFileURLs(false);
-    webSettings.setAllowUniversalAccessFromFileURLs(false);
-    webSettings.setDatabaseEnabled(true);
-    webSettings.setDomStorageEnabled(true);
-    webView.setNetworkAvailable(internetAccess); // this does not block network but sets `window.navigator.isOnline` in js land
-    webView.addJavascriptInterface(new InternalJSApi(), "InternalJSApi");
-
-    webView.loadUrl(this.baseURL + "/webxdc_bootstrap324567869.html");
+    geckoSession.loadUri(this.baseURL + "/index.html");
 
     Util.runOnAnyBackgroundThread(() -> {
       final DcChat chat = dcContext.getChat(dcAppMsg.getChatId());
@@ -225,7 +174,7 @@ public class WebxdcActivity extends PassphraseRequiredActionBarActivity implemen
   @Override
   protected void onPause() {
     super.onPause();
-    webView.onPause();
+    // webView.onPause(); TODO: is there sth similar in geckoview
   }
 
   @Override
@@ -233,12 +182,12 @@ public class WebxdcActivity extends PassphraseRequiredActionBarActivity implemen
     super.onResume();
     dynamicTheme.onResume(this);
     dynamicLanguage.onResume(this);
-    webView.onResume();
+    // webView.onResume(); TODO: is there sth similar in geckoview
   }
 
   @Override
   protected void onDestroy() {
-    webView.destroy();
+    // webView.destroy(); TODO: is there sth similar in geckoview
     DcHelper.getEventCenter(this.getApplicationContext()).removeObservers(this);
     super.onDestroy();
   }
@@ -342,7 +291,7 @@ public class WebxdcActivity extends PassphraseRequiredActionBarActivity implemen
     int eventId = event.getId();
     if ((eventId == DcContext.DC_EVENT_WEBXDC_STATUS_UPDATE && event.getData1Int() == dcAppMsg.getId())) {
       Log.i(TAG, "handleEvent");
-      webView.loadUrl("javascript:document.getElementById('frame').contentWindow.__webxdcUpdate();");
+      geckoSession.loadUri("javascript:window.__webxdcUpdate();");
     } else if ((eventId == DcContext.DC_EVENT_MSGS_CHANGED && event.getData2Int() == dcAppMsg.getId())) {
       Util.runOnAnyBackgroundThread(() -> {
         final JSONObject info = dcAppMsg.getWebxdcInfo();
