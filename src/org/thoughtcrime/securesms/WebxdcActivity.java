@@ -15,12 +15,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.webkit.JavascriptInterface;
 import android.webkit.MimeTypeMap;
+import android.webkit.WebResourceRequest;
 import android.webkit.WebResourceResponse;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.core.app.TaskStackBuilder;
 import androidx.core.content.pm.ShortcutInfoCompat;
 import androidx.core.content.pm.ShortcutManagerCompat;
@@ -34,6 +37,8 @@ import com.b44t.messenger.DcMsg;
 import org.json.JSONObject;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.util.DynamicLanguage;
+import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.JsonUtils;
 import org.thoughtcrime.securesms.util.MediaUtil;
 import org.thoughtcrime.securesms.util.Prefs;
@@ -46,8 +51,13 @@ import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
-public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcEventDelegate  {
+public class WebxdcActivity extends PassphraseRequiredActionBarActivity implements DcEventCenter.DcEventDelegate  {
   private static final String TAG = WebxdcActivity.class.getSimpleName();
+
+  protected WebView webView;
+  private final DynamicTheme dynamicTheme = new DynamicTheme();
+  protected final DynamicLanguage dynamicLanguage = new DynamicLanguage();
+
   private DcContext dcContext;
   private DcMsg dcAppMsg;
   private String baseURL;
@@ -90,8 +100,76 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
   }
 
   @Override
+  protected void onPreCreate() {
+    dynamicTheme.onCreate(this);
+    dynamicLanguage.onCreate(this);
+  }
+
+  @Override
   protected void onCreate(Bundle state, boolean ready) {
-    super.onCreate(state, ready);
+
+    setContentView(R.layout.webxdc_activity);
+    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+    webView = findViewById(R.id.webview);
+    webView.setWebViewClient(new WebViewClient() {
+      // `shouldOverrideUrlLoading()` is called when the user clicks a URL,
+      // returning `true` causes the WebView to abort loading the URL,
+      // returning `false` causes the WebView to continue loading the URL as usual.
+      // the method is not called for POST request nor for on-page-links.
+      //
+      // nb: from API 24, `shouldOverrideUrlLoading(String)` is deprecated and
+      // `shouldOverrideUrlLoading(WebResourceRequest)` shall be used.
+      // the new one has the same functionality, and the old one still exist,
+      // so, to support all systems, for now, using the old one seems to be the simplest way.
+      @Override
+      public boolean shouldOverrideUrlLoading(WebView view, String url) {
+        if (url != null) {
+          String schema = url.split(":")[0].toLowerCase();
+          switch (schema) {
+            case "http":
+            case "https":
+            case "mailto":
+            case "openpgp4fpr":
+              return openOnlineUrl(url);
+          }
+        }
+        // by returning `true`, we also abort loading other URLs in our WebView;
+        // eg. that might be weird or internal protocols.
+        // if we come over really useful things, we should allow that explicitly.
+        return true;
+      }
+
+      @Override
+      @SuppressWarnings("deprecation")
+      public WebResourceResponse shouldInterceptRequest(WebView view, String url) {
+        WebResourceResponse res = interceptRequest(url);
+        if (res!=null) {
+          return res;
+        }
+        return super.shouldInterceptRequest(view, url);
+      }
+
+      @Override
+      @RequiresApi(21)
+      public WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request) {
+        WebResourceResponse res = interceptRequest(request.getUrl().toString());
+        if (res!=null) {
+          return res;
+        }
+        return super.shouldInterceptRequest(view, request);
+      }
+    });
+
+    // disable "safe browsing" as this has privacy issues,
+    // eg. at least false positives are sent to the "Safe Browsing Lookup API".
+    // as all URLs opened in the WebView are local anyway,
+    // "safe browsing" will never be able to report issues, so it can be disabled.
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+      webView.getSettings().setSafeBrowsingEnabled(false);
+    }
+
+
     DcEventCenter eventCenter = DcHelper.getEventCenter(WebxdcActivity.this.getApplicationContext());
     eventCenter.addObserver(DcContext.DC_EVENT_WEBXDC_STATUS_UPDATE, this);
     
@@ -145,14 +223,28 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
   }
 
   @Override
+  protected void onPause() {
+    super.onPause();
+    webView.onPause();
+  }
+
+  @Override
+  public void onResume() {
+    super.onResume();
+    dynamicTheme.onResume(this);
+    dynamicLanguage.onResume(this);
+    webView.onResume();
+  }
+
+  @Override
   protected void onDestroy() {
+    webView.destroy();
     DcHelper.getEventCenter(this.getApplicationContext()).removeObservers(this);
     super.onDestroy();
   }
 
   @Override
   public boolean onPrepareOptionsMenu(Menu menu) {
-    // do not call super.onPrepareOptionsMenu() as the default "Search" menu is not needed
     menu.clear();
     this.getMenuInflater().inflate(R.menu.webxdc, menu);
     menu.findItem(R.id.source_code).setVisible(!sourceCodeUrl.isEmpty());
@@ -163,27 +255,29 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
   public boolean onOptionsItemSelected(MenuItem item) {
     super.onOptionsItemSelected(item);
     switch (item.getItemId()) {
+      case android.R.id.home:
+        finish();
+        return true;
       case R.id.menu_add_to_home_screen:
         addToHomeScreen(this, dcAppMsg.getId());
         return true;
       case R.id.source_code:
-        openUrlInBrowser(this, sourceCodeUrl);
+        WebViewActivity.openUrlInBrowser(this, sourceCodeUrl);
         return true;
     }
     return false;
   }
 
-  @Override
   protected boolean openOnlineUrl(String url) {
     if (url.startsWith("mailto:")) {
-      return super.openOnlineUrl(url);
+      WebViewActivity.openUrlInBrowser(this, url);
+      return true;
     }
 
     Toast.makeText(this, "Please embed needed resources.", Toast.LENGTH_LONG).show();
     return true; // returning `true` causes the WebView to abort loading
   }
 
-  @Override
   protected WebResourceResponse interceptRequest(String rawUrl) {
     Log.i(TAG, "interceptRequest: " + rawUrl);
     WebResourceResponse res = null;
