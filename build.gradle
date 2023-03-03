@@ -97,7 +97,7 @@ android {
 
     defaultConfig {
         versionCode 651
-        versionName "1.36.2"
+        versionName "1.36.2-geckoview"
 
         applicationId "com.b44t.messenger"
         multiDexEnabled true
