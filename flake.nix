@@ -26,7 +26,10 @@
         devShells.default = pkgs.mkShell {
           ANDROID_SDK_ROOT = "${android-sdk}/share/android-sdk";
           ANDROID_NDK_ROOT =
-            "${android-sdk}/share/android-sdk/ndk/23.2.8568313/";
+            "${android-sdk}/share/android-sdk/ndk/23.2.8568313";
+	  shellHook = ''
+            export PATH="$ANDROID_NDK_ROOT/toolchains/llvm/prebuilt/linux-x86_64/bin/:$PATH"
+	  '';
           buildInputs = [
             android-sdk
             (pkgs.buildPackages.rust-bin.stable."1.64.0".minimal.override {
