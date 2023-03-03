@@ -18,6 +18,9 @@ repositories {
         url "https://www.jitpack.io"
         name 'JitPack Github wrapper'
     }
+    maven {
+        url "https://maven.mozilla.org/maven2/"
+    }
     jcenter()
 }
 
@@ -68,6 +71,8 @@ dependencies {
     implementation ('org.maplibre.gl:android-sdk:9.5.2') {
         exclude group: 'com.google.android.gms'
     }
+
+    implementation "org.mozilla.geckoview:geckoview-nightly:112.0.20230303095645"
 
     testImplementation 'junit:junit:4.13.1'
     testImplementation 'org.assertj:assertj-core:1.7.1'
