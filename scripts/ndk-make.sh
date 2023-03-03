@@ -6,6 +6,11 @@
 #     scripts/ndk-make.sh arm64-v8a
 #
 # Possible values are armeabi-v7a, arm64-v8a, x86 and x86_64.
+#
+# To build the core in debug mode, run with "--debug" argument in the beginning:
+#
+#     scripts/ndk-make.sh --debug arm64-v8a
+#
 # You should be able to find out your architecture by running:
 #
 #     adb shell uname -m
@@ -66,6 +71,23 @@ export CARGO_TARGET_X86_64_LINUX_ANDROID_LINKER="$TOOLCHAIN/bin/x86_64-linux-and
 
 export RUSTUP_TOOLCHAIN=$(cat "$(dirname "$0")/rust-toolchain")
 
+if test "$1" = "--debug"; then
+  echo Quick debug build that will produce a slower app. DO NOT UPLOAD THE APK ANYWHERE.
+
+  RELEASE="debug"
+  RELEASEFLAG=""
+
+  shift
+else
+  echo Full build
+
+  # According to 1.45.0 changelog in https://github.com/rust-lang/rust/blob/master/RELEASES.md,
+  # "The recommended way to control LTO is with Cargo profiles, either in Cargo.toml or .cargo/config, or by setting CARGO_PROFILE_<name>_LTO in the environment."
+  export CARGO_PROFILE_RELEASE_LTO=on
+  RELEASE="release"
+  RELEASEFLAG="--release"
+fi
+
 # Check if the argument is a correct architecture:
 if test $1 && echo "armeabi-v7a arm64-v8a x86 x86_64" | grep -vwq -- $1; then
     echo "Architecture '$1' not known, possible values are armeabi-v7a, arm64-v8a, x86 and x86_64."
@@ -87,21 +109,6 @@ cd deltachat-core-rust
 
 # fix build on MacOS Catalina
 unset CPATH
-
-if test -z $1; then
-  echo Full build
-
-  # According to 1.45.0 changelog in https://github.com/rust-lang/rust/blob/master/RELEASES.md,
-  # "The recommended way to control LTO is with Cargo profiles, either in Cargo.toml or .cargo/config, or by setting CARGO_PROFILE_<name>_LTO in the environment."
-  export CARGO_PROFILE_RELEASE_LTO=on
-  RELEASE="release"
-  RELEASEFLAG="--release"
-else
-  echo Fast, partial, slow debug build. DO NOT UPLOAD THE APK ANYWHERE.
-
-  RELEASE="debug"
-  RELEASEFLAG=
-fi
 
 # Work around the bug in the build of Rust standard library.
 # It is built against r22b NDK toolchains and still requires -lgcc instead of -lunwind used in newer r23 NDK.
