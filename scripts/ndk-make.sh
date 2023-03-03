@@ -114,7 +114,6 @@ fi
 
 if test -z $1 || test $1 = armeabi-v7a; then
     echo "-- cross compiling to armv7-linux-androideabi (arm) --"
-    export CFLAGS=-D__ANDROID_API__=16
     TARGET_CC="$TOOLCHAIN/bin/armv7a-linux-androideabi16-clang" \
     TARGET_AR="$TOOLCHAIN/bin/llvm-ar" \
     cargo rustc $RELEASEFLAG --target armv7-linux-androideabi -p deltachat_ffi -- -L "$TMPLIB"
@@ -123,7 +122,6 @@ fi
 
 if test -z $1 || test $1 = arm64-v8a; then
     echo "-- cross compiling to aarch64-linux-android (arm64) --"
-    export CFLAGS=-D__ANDROID_API__=21
     TARGET_CC="$TOOLCHAIN/bin/aarch64-linux-android21-clang" \
     TARGET_AR="$TOOLCHAIN/bin/llvm-ar" \
     cargo rustc $RELEASEFLAG --target aarch64-linux-android -p deltachat_ffi -- -L "$TMPLIB"
@@ -132,7 +130,6 @@ fi
 
 if test -z $1 || test $1 = x86; then
     echo "-- cross compiling to i686-linux-android (x86) --"
-    export CFLAGS=-D__ANDROID_API__=16
     TARGET_CC="$TOOLCHAIN/bin/i686-linux-android16-clang" \
     TARGET_AR="$TOOLCHAIN/bin/llvm-ar" \
     cargo rustc $RELEASEFLAG --target i686-linux-android -p deltachat_ffi -- -L "$TMPLIB"
@@ -141,7 +138,6 @@ fi
 
 if test -z $1 || test $1 = x86_64; then
     echo "-- cross compiling to x86_64-linux-android (x86_64) --"
-    export CFLAGS=-D__ANDROID_API__=21
     TARGET_CC="$TOOLCHAIN/bin/x86_64-linux-android21-clang" \
     TARGET_AR="$TOOLCHAIN/bin/llvm-ar" \
     cargo rustc $RELEASEFLAG --target x86_64-linux-android -p deltachat_ffi -- -L "$TMPLIB"
