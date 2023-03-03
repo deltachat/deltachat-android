@@ -187,6 +187,9 @@ public class ApplicationContext extends MultiDexApplication {
     // MAYBE TODO: i think the ApplicationContext is also created
     // when the app is stated by FetchWorker timeouts.
     // in this case, the normal threads shall not be started.
+
+    /* TODO: make the WorkManager initialisation compatible with Geckoview.
+    (if the following lines are not commented-out, GeckoView crahes with sth. as "WorkManager is not initialized properly.")
     Constraints constraints = new Constraints.Builder()
             .setRequiredNetworkType(NetworkType.CONNECTED)
             .build();
@@ -202,6 +205,7 @@ public class ApplicationContext extends MultiDexApplication {
             "FetchWorker",
             ExistingPeriodicWorkPolicy.KEEP,
             fetchWorkRequest);
+     */
     AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
   }
 
