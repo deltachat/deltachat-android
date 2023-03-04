@@ -28,7 +28,7 @@
           ANDROID_NDK_ROOT =
             "${android-sdk}/share/android-sdk/ndk/23.2.8568313";
 	  shellHook = ''
-            export PATH="$ANDROID_NDK_ROOT/toolchains/llvm/prebuilt/linux-x86_64/bin/:$PATH"
+            export PATH="$ANDROID_SDK_ROOT/build-tools/30.0.3/:$ANDROID_NDK_ROOT/toolchains/llvm/prebuilt/linux-x86_64/bin/:$PATH"
 	  '';
           buildInputs = [
             android-sdk
