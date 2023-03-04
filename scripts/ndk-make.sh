@@ -116,6 +116,7 @@ if test -z $1 || test $1 = armeabi-v7a; then
     echo "-- cross compiling to armv7-linux-androideabi (arm) --"
     TARGET_CC="$TOOLCHAIN/bin/armv7a-linux-androideabi16-clang" \
     TARGET_AR="$TOOLCHAIN/bin/llvm-ar" \
+    TARGET_RANLIB="$TOOLCHAIN/bin/llvm-ranlib" \
     cargo rustc $RELEASEFLAG --target armv7-linux-androideabi -p deltachat_ffi -- -L "$TMPLIB"
     cp target/armv7-linux-androideabi/$RELEASE/libdeltachat.a $jnidir/armeabi-v7a
 fi
@@ -124,6 +125,7 @@ if test -z $1 || test $1 = arm64-v8a; then
     echo "-- cross compiling to aarch64-linux-android (arm64) --"
     TARGET_CC="$TOOLCHAIN/bin/aarch64-linux-android21-clang" \
     TARGET_AR="$TOOLCHAIN/bin/llvm-ar" \
+    TARGET_RANLIB="$TOOLCHAIN/bin/llvm-ranlib" \
     cargo rustc $RELEASEFLAG --target aarch64-linux-android -p deltachat_ffi -- -L "$TMPLIB"
     cp target/aarch64-linux-android/$RELEASE/libdeltachat.a $jnidir/arm64-v8a
 fi
@@ -132,6 +134,7 @@ if test -z $1 || test $1 = x86; then
     echo "-- cross compiling to i686-linux-android (x86) --"
     TARGET_CC="$TOOLCHAIN/bin/i686-linux-android16-clang" \
     TARGET_AR="$TOOLCHAIN/bin/llvm-ar" \
+    TARGET_RANLIB="$TOOLCHAIN/bin/llvm-ranlib" \
     cargo rustc $RELEASEFLAG --target i686-linux-android -p deltachat_ffi -- -L "$TMPLIB"
     cp target/i686-linux-android/$RELEASE/libdeltachat.a $jnidir/x86
 fi
@@ -140,6 +143,7 @@ if test -z $1 || test $1 = x86_64; then
     echo "-- cross compiling to x86_64-linux-android (x86_64) --"
     TARGET_CC="$TOOLCHAIN/bin/x86_64-linux-android21-clang" \
     TARGET_AR="$TOOLCHAIN/bin/llvm-ar" \
+    TARGET_RANLIB="$TOOLCHAIN/bin/llvm-ranlib" \
     cargo rustc $RELEASEFLAG --target x86_64-linux-android -p deltachat_ffi -- -L "$TMPLIB"
     cp target/x86_64-linux-android/$RELEASE/libdeltachat.a $jnidir/x86_64
 fi
