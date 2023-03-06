@@ -50,7 +50,7 @@ $ cp ../fdroidserver/examples/config.py .  # adapt file as needed
 
 checkout repo as f-droid would do:  
 $ ../fdroidserver/fdroid checkupdates -v com.b44t.messenger  
-(for testing with uncommited changes, add --allow-dirty)
+(for testing with uncommitted changes, add --allow-dirty)
 
 build repo as f-droid would do:  
 $ ../froidserver/fdroid build -v com.b44t.messenger:<versionCode>

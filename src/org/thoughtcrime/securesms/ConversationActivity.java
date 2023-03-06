@@ -612,7 +612,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       if (isSharing(this)) {
         // we're allowing only 1 try to share, going back to the conversation list will
         // close the conversation list in activtyForResult() as well, so that the user
-        // comes back to the extenal app's share menu
+        // comes back to the external app's share menu
         setResult(RESULT_OK);
       }
       finish();

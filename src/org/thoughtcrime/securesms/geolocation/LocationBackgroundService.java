@@ -69,7 +69,7 @@ public class LocationBackgroundService extends Service {
         try {
             locationManager.removeUpdates(locationListener);
         } catch (Exception ex) {
-            Log.i(TAG, "fail to remove location listners, ignore", ex);
+            Log.i(TAG, "fail to remove location listeners, ignore", ex);
         }
     }
 

@@ -23,7 +23,7 @@ import java.util.List;
 import static java.util.Collections.emptyList;
 
 /**
- * Renders multiple lines of {@link #text} in ths specified {@link #color}.
+ * Renders multiple lines of {@link #text} in the specified {@link #color}.
  * <p>
  * Scales down the text size of long lines to fit inside the {@link Bounds} width.
  */
