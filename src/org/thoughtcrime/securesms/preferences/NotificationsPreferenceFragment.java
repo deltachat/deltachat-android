@@ -112,7 +112,7 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
     super.onResume();
     ((ApplicationPreferencesActivity) getActivity()).getSupportActionBar().setTitle(R.string.pref_notifications);
 
-    // upate ignoreBattery in onResume() to reflects changes done in the system settings
+    // update ignoreBattery in onResume() to reflects changes done in the system settings
     ignoreBattery.setChecked(isIgnoringBatteryOptimizations());
   }
 

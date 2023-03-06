@@ -287,7 +287,7 @@
 * fix: send locations in the background regardless of other sending activity
 * fix rare crashes when stopping IMAP and SMTP
 * fix correct message escaping consisting of a dot in SMTP protocol
-* fix: don't jump to parent message if parent messagse is not a webxdc
+* fix: don't jump to parent message if parent message is not a webxdc
 * fix webxdc background mode so that music stops playing
 * webxdc: improve display of webxdc items in the gallery's "docs" tab
 * webxdc: show icon in quotes
@@ -439,7 +439,7 @@
 * contact requests are notified as usual now
 * force strict certificate checks when a strict certificate was seen on first login
 * do not forward group names on forwarding messages
-* "Broadcast Lists", as kown from other messengers, added as an experimental feature
+* "Broadcast Lists", as known from other messengers, added as an experimental feature
   (you can enable it at "Settings / Advanced")
 * improve accessibility: add some button descriptions
 * remove "view profile" from the chat menu; just tap the chat name to open the profile
@@ -667,7 +667,7 @@
 * fix maybe stuck notifications
 * fix: close keyboard when a quotes is opened in another chat
 * fix: do not cut the document icon in quotes
-* fix: make the the quote dissmiss button better clickable again
+* fix: make the the quote dismiss button better clickable again
 * update translations
 
 
@@ -688,7 +688,7 @@
 * disappearing messages: select for any chat the lifetime of the messages
 * chat opens at the position of the first unseen message
 * add known contacts from the IMAP-server to the local addressbook on configure
-* direct forwarding to "saved messags" - save one tap and stay in context :)
+* direct forwarding to "saved messages" - save one tap and stay in context :)
 * long tap in contact-list allows opening "profile" directly
 * allow forwarding to multiple archived chats
 * enable encryption in groups if preferred by the majority of recipients
@@ -768,7 +768,7 @@
 
 * show a device message when the password was changed on the server
 * videochats introduced as experimental feature
-* show experimental disappearing-messags state in chat's title bar
+* show experimental disappearing-messages state in chat's title bar
 * improve sending large messages
 * improve receiving messages
 * improve error handling when there is no network
@@ -837,9 +837,9 @@
 ## v1.8.0
 2020-05-11
 
-* by default, the permantent notification is no longer shown;
+* by default, the permanent notification is no longer shown;
   the background fetch realibility depends on the system and the
-  permantent notification can be enabled at "Settings / Notifications" as needed
+  permanent notification can be enabled at "Settings / Notifications" as needed
 * fix a bug that stops receiving messages under some circumstances
 * more bug fixes
 * update translations
@@ -864,8 +864,8 @@
 * new experimental feature that allows switching the account in use
 * improve interaction with traditional mail clients
 * improved onboarding when the provider returns a link
-* to improve background fetch, show a permantent notification by default
-* the permantent notification can be disabled at "Settins / Notifications"
+* to improve background fetch, show a permanent notification by default
+* the permanent notification can be disabled at "Settings / Notifications"
 * bug fixes
 * add Indonesian and Persian translations, update other translations
 
@@ -1088,7 +1088,7 @@ Racer1, Simon Laux, solokot, Waldemar Stoczkowski, Xosé M. Lamas, Zkdc
 * use the rust-language for the mail-parsing and -generating part,
   introducing a vastly improved reliability
 * fix moving messages
-* fix flakyness when receiving messages
+* fix flakiness when receiving messages
   and in the secure-join process
 * more bug fixes
 
@@ -1182,7 +1182,7 @@ Heimen Stoffels, Lin Miaoski, Ozancan Karataş, Zkdc
 * Optional plipp-plop sounds in chats
 * Better document- and music-files view
 * Add new-messages marker
-* Keep chat-scroll-postion on incoming messages
+* Keep chat-scroll-position on incoming messages
 * Clean up settings dialog
 * More general "outgoing media quality" option (replaces image-quality option)
 * Improve quality of voice messages
@@ -1190,12 +1190,12 @@ Heimen Stoffels, Lin Miaoski, Ozancan Karataş, Zkdc
 * Add an experimental option to delete e-mails from server
 * Improve compatibility with older phones
 * Show a warning if the app is too old and won't be updated automatically
-  (done just by date comparision, no data is sent anywhere)
+  (done just by date comparison, no data is sent anywhere)
 * New option to save the log to a file
 * Make input text field a bit larger
 * Add Traditional Chinese and Simplified Chinese translations
 * Update Albanian, Azerbaijani, Basque, Brazilian Portuguese, Catalan, Danish,
-  Dutch, French, German, Italien, Japanese, Lithuanian, Polish, Portuguese,
+  Dutch, French, German, Italian, Japanese, Lithuanian, Polish, Portuguese,
   Russian, Spanish, Swedish, Turkish and Ukrainian translations
 * Bugfixes
 
@@ -1324,11 +1324,11 @@ Iskatel Istiny, Lech Rowerski, violoncelloCH and others.
 * Options for watching several IMAP-folders
 * Option to move messages to the DeltaChat-folder
 * Improved multi-device behavior
-* Improved Accessiblity eg. for screen readers
+* Improved Accessibility eg. for screen readers
 * Dark theme
 * Support right-to-left languages
 * Relative time display
-* Chatlist and contat list support a long click for several operations
+* Chatlist and contact list support a long click for several operations
 * Archive chats by swiping a chat right out of the chatlist
 * Show date always atop of the chat
 * Fix redraw problems with hidden system status or navigation bar
@@ -1372,7 +1372,7 @@ Karissa McKelvey, Lars-Magnus Skog, Ole Carlsen
 2018-07-10
 
 * Give advices for Google users
-* Speed up by making database-locks unneccessary
+* Speed up by making database-locks unnecessary
 * Fix drafts appearing twice
 * Update Albanian, Basque, Catalan, Danish, Dutch, English,
   Italian, Polish, Russian, and Turkish translations

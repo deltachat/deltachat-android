@@ -399,7 +399,7 @@ public class AttachmentManager {
     return result;
   }
 
-  // should be called when the attachement manager comes into view again.
+  // should be called when the attachment manager comes into view again.
   // if the attachment manager contains a webxdc, its summary is updated.
   public void onResume() {
     if (slide.isPresent()) {

@@ -136,7 +136,7 @@ Then, configure `ANDROID_NDK_ROOT` environment variable to point to the Android 
 installation directory e.g. by adding this to your `.bashrc`:
 
 ```bash
-export ANDROID_NDK_ROOT=${HOME}/Android/Sdk/ndk/[version] # (or whereever your NDK is) Note that there is no `/` at the end!
+export ANDROID_NDK_ROOT=${HOME}/Android/Sdk/ndk/[version] # (or wherever your NDK is) Note that there is no `/` at the end!
 export PATH=${PATH}:${ANDROID_NDK_ROOT}/toolchains/llvm/prebuilt/linux-x86_64/bin/:${ANDROID_NDK_ROOT}
 ```
 
@@ -196,7 +196,7 @@ environment.
 
 - Disable animations on your device, otherwise the test may fail:
   at "Developer options"
-  set all of "Window animation scale", "Transition animation scale" and "Animatior duration scale" to 0x
+  set all of "Window animation scale", "Transition animation scale" and "Animator duration scale" to 0x
 
 - In Android Studio: "File" / "Sync project with gradle files"
 

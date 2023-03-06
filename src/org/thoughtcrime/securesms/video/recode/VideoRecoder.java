@@ -837,7 +837,7 @@ public class VideoRecoder {
         vei.resultHeight *= scale;
       }
 
-      // we know the most important things now, prepare the message to get a resposive ui
+      // we know the most important things now, prepare the message to get a responsive ui
       if (vei.originalRotationValue == 90 || vei.originalRotationValue == 270) {
         msg.setDimension(vei.resultHeight, vei.resultWidth);
       } else {
@@ -846,7 +846,7 @@ public class VideoRecoder {
       msg.setDuration((int) resultDurationMs);
       DcHelper.getContext(context).prepareMsg(chatId, msg);
 
-      // calulate bytes
+      // calculate bytes
       vei.estimatedBytes = VideoRecoder.calculateEstimatedSize((float) resultDurationMs / vei.originalDurationMs,
           vei.resultVideoBitrate, vei.originalDurationMs, vei.originalAudioBytes);
 

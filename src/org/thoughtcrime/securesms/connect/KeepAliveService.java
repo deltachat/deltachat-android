@@ -54,7 +54,7 @@ public class KeepAliveService extends Service {
         // set self as foreground
         try {
             stopForeground(true);
-            startForeground(NotificationCenter.ID_PERMANTENT, createNotification());
+            startForeground(NotificationCenter.ID_PERMANENT, createNotification());
         }
         catch (Exception e) {
             e.printStackTrace();
