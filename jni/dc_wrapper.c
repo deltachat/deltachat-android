@@ -7,6 +7,57 @@
 #include "deltachat-core-rust/deltachat-ffi/deltachat.h"
 
 
+#if __ANDROID_API__ == 16
+unsigned long getauxval(unsigned long type) {
+    return 0;
+}
+
+#include <sys/socket.h>
+#include <unistd.h>
+
+int sendmmsg(int sockfd, struct mmsghdr *msgvec, unsigned int vlen,
+             int flags)
+{
+    if (flags != 0) {
+        // Not supported by the fallback.
+        return -1;
+    }
+
+    if (vlen == 0) {
+        return 0;
+    }
+
+    ssize_t n = sendmsg(sockfd, &msgvec->msg_hdr, flags);
+    if (n == -1) {
+        return -1;
+    }
+
+    (*msgvec).msg_len = n;
+    return 1;
+}
+
+int recvmmsg(int sockfd, struct mmsghdr *msgvec, unsigned int vlen,
+             int flags, struct timespec *timeout)
+{
+    if (flags != -1) {
+        // Not supported by the fallback.
+        return -1;
+    }
+
+    if (vlen == 0) {
+        return 0;
+    }
+
+    int n = recvmsg(sockfd, &msgvec->msg_hdr, flags);
+    if (n == -1) {
+        return -1;
+    }
+    (*msgvec).msg_len = n;
+    return 1;
+}
+#endif
+
+
 static dc_msg_t* get_dc_msg(JNIEnv *env, jobject obj);
 
 
