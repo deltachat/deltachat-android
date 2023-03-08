@@ -958,6 +958,21 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcContext_imexHasBackup(JNIEnv *env, j
 }
 
 
+JNIEXPORT jlong Java_com_b44t_messenger_DcContext_newBackupProviderCPtr(JNIEnv *env, jobject obj)
+{
+    return (jlong)dc_backup_provider_new(get_dc_context(env, obj));
+}
+
+
+JNIEXPORT jboolean Java_com_b44t_messenger_DcContext_receiveBackup(JNIEnv *env, jobject obj, jstring qr)
+{
+    CHAR_REF(qr);
+        jboolean ret = dc_receive_backup(get_dc_context(env, obj), qrPtr);
+    CHAR_UNREF(qr);
+    return ret;
+}
+
+
 JNIEXPORT jint Java_com_b44t_messenger_DcContext_addAddressBook(JNIEnv *env, jobject obj, jstring adrbook)
 {
     CHAR_REF(adrbook);
@@ -1953,6 +1968,55 @@ JNIEXPORT jint Java_com_b44t_messenger_DcLot_getId(JNIEnv *env, jobject obj)
 JNIEXPORT void Java_com_b44t_messenger_DcLot_unrefLotCPtr(JNIEnv *env, jobject obj)
 {
     dc_lot_unref(get_dc_lot(env, obj));
+}
+
+
+/*******************************************************************************
+ * DcBackupProvider
+ ******************************************************************************/
+
+
+static dc_backup_provider_t* get_dc_backup_provider(JNIEnv *env, jobject obj)
+{
+    static jfieldID fid = 0;
+    if (fid==0) {
+        jclass cls = (*env)->GetObjectClass(env, obj);
+        fid = (*env)->GetFieldID(env, cls, "backupProviderCPtr", "J" /*Signature, J=long*/);
+    }
+    if (fid) {
+        return (dc_backup_provider_t*)(*env)->GetLongField(env, obj, fid);
+    }
+    return NULL;
+}
+
+
+JNIEXPORT void Java_com_b44t_messenger_DcBackupProvider_unrefBackupProviderCPtr(JNIEnv *env, jobject obj)
+{
+    dc_backup_provider_unref(get_dc_backup_provider(env, obj));
+}
+
+
+JNIEXPORT jstring Java_com_b44t_messenger_DcBackupProvider_getQr(JNIEnv *env, jobject obj)
+{
+    char* temp = dc_backup_provider_get_qr(get_dc_backup_provider(env, obj));
+        jstring ret = JSTRING_NEW(temp);
+    dc_str_unref(temp);
+    return ret;
+}
+
+
+JNIEXPORT jstring Java_com_b44t_messenger_DcBackupProvider_getQrSvg(JNIEnv *env, jobject obj)
+{
+    char* temp = dc_backup_provider_get_qr_svg(get_dc_backup_provider(env, obj));
+        jstring ret = JSTRING_NEW(temp);
+    dc_str_unref(temp);
+    return ret;
+}
+
+
+JNIEXPORT void Java_com_b44t_messenger_DcBackupProvider_waitForReceiver(JNIEnv *env, jobject obj)
+{
+    dc_backup_provider_wait(get_dc_backup_provider(env, obj));
 }
 
 

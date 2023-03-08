@@ -49,6 +49,7 @@ public class DcContext {
     public final static int DC_QR_FPR_MISMATCH      = 220;
     public final static int DC_QR_FPR_WITHOUT_ADDR  = 230;
     public final static int DC_QR_ACCOUNT           = 250;
+    public final static int DC_QR_BACKUP            = 251;
     public final static int DC_QR_WEBRTC            = 260;
     public final static int DC_QR_ADDR              = 320;
     public final static int DC_QR_TEXT              = 330;
@@ -148,6 +149,8 @@ public class DcContext {
     public native boolean      continueKeyTransfer  (int msg_id, String setup_code);
     public native void         imex                 (int what, String dir);
     public native String       imexHasBackup        (String dir);
+    public DcBackupProvider    newBackupProvider    () { return new DcBackupProvider(newBackupProviderCPtr()); }
+    public native boolean      receiveBackup        (String qr);
     public native boolean      mayBeValidAddr       (String addr);
     public native int          lookupContactIdByAddr(String addr);
     public native int[]        getContacts          (int flags, String query);
@@ -251,4 +254,5 @@ public class DcContext {
     private native long getLocationsCPtr (int chat_id, int contact_id, long timestamp_start, long timestamp_end);
     private native long checkQrCPtr      (String qr);
     private native long getProviderFromEmailWithDnsCPtr  (String addr);
+    private native long newBackupProviderCPtr();
 }
