@@ -392,7 +392,7 @@
     <string name="chat_share_with_title">Partager avec</string>
     <string name="chat_input_placeholder">Message</string>
     <string name="chat_archived_label">Archivé</string>
-    <string name="chat_request_label">Requête</string>
+    <string name="chat_request_label">Invitation</string>
     <string name="chat_no_messages">Aucun message.</string>
     <string name="chat_self_talk_subtitle">Messages envoyés à moi-même</string>
     <string name="archive_empty_hint">Les discussions archivées apparaîtront ici.</string>
@@ -464,7 +464,7 @@
     <string name="tab_docs">Documents</string>
     <string name="tab_links">Liens</string>
     <string name="tab_map">Carte</string>
-    <string name="tab_gallery_empty_hint">Les images et vidéos partagées dans ce tchat seront affichées ici.</string>
+    <string name="tab_gallery_empty_hint">Les images et vidéos partagées dans cette discussion seront affichées ici.</string>
     <string name="tab_docs_empty_hint">Les documents, musiques et autres fichiers partagés dans ce chat seront affichés ici.</string>
     <string name="tab_image_empty_hint">Les images partagées dans cette discussion seront affichées ici.</string>
     <string name="tab_video_empty_hint">Les vidéos partagées dans cette discussion seront affichées ici.</string>
@@ -650,9 +650,9 @@
     <string name="pref_auto_folder_moves">Déplacer automatiquement vers le dossier DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">Les discussions sont déplacées pour éviter d\'encombrer le dossier Boîte de réception</string>
     <string name="pref_only_fetch_mvbox_title">Ne consulter que le dossier DeltaChat</string>
-    <string name="pref_only_fetch_mvbox_explain">Ignorer les autres répertoires. Cela requiert que votre serveur déplace tous les messages de tchate dans le répertoire DeltaChat.</string>
+    <string name="pref_only_fetch_mvbox_explain">Ignorer les autres répertoires. Cela requiert que votre serveur déplace tous les messages de discussion instantanée dans le dossier DeltaChat.</string>
     <string name="pref_show_emails">Voir les courriels classiques</string>
-    <string name="pref_show_emails_no">Non, seulement les tchats</string>
+    <string name="pref_show_emails_no">Non, seulement les discussions</string>
     <string name="pref_show_emails_accepted_contacts">Pour les contacts acceptés</string>
     <string name="pref_show_emails_all">Tout</string>
     <string name="pref_experimental_features">Fonctionnalités expérimentales</string>

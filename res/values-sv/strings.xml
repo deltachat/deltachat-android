@@ -178,7 +178,7 @@
     <string name="delete_contact">Ta bort kontakt</string>
     <string name="menu_delete_location">Ta bort denna plats?</string>
     <string name="menu_message_details">Meddelandedetaljer</string>
-    <string name="menu_copy_to_clipboard">Kopierad till urklipp</string>
+    <string name="menu_copy_to_clipboard">Kopiera till urklipp</string>
     <string name="menu_copy_selection_to_clipboard">Kopiera urval</string>
     <string name="menu_copy_link_to_clipboard">Kopiera länk</string>
     <string name="menu_copy_text_to_clipboard">Kopiera text</string>
