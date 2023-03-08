@@ -33,7 +33,6 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
                                     implements StickyHeaderAdapter<ProfileSettingsAdapter.HeaderViewHolder>
 {
   public static final int SETTING_SEND_MESSAGE = 120;
-  public static final int SETTING_NEW_GROUP    = 130;
 
   private final @NonNull Context              context;
   private final @NonNull Locale               locale;

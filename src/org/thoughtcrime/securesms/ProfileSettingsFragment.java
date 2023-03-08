@@ -146,10 +146,6 @@ public class ProfileSettingsFragment extends Fragment
       case ProfileSettingsAdapter.SETTING_SEND_MESSAGE:
         onSendMessage();
         break;
-
-      case ProfileSettingsAdapter.SETTING_NEW_GROUP:
-        onNewGroupWith();
-        break;
     }
   }
 
@@ -246,15 +242,6 @@ public class ProfileSettingsFragment extends Fragment
       getActivity().startActivity(intent);
       getActivity().finish();
     }
-  }
-
-  private void onNewGroupWith() {
-    ArrayList<Integer> preselectedContactIds = new ArrayList<>();
-    preselectedContactIds.add(contactId);
-
-    Intent intent = new Intent(getActivity(), GroupCreateActivity.class);
-    intent.putExtra(GroupCreateActivity.SUGGESTED_CONTACT_IDS, preselectedContactIds);
-    getActivity().startActivity(intent);
   }
 
   private class ActionModeCallback implements ActionMode.Callback {
