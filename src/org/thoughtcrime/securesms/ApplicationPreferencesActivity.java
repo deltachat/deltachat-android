@@ -51,6 +51,7 @@ import org.thoughtcrime.securesms.preferences.widgets.ProfilePreference;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.Prefs;
+import org.thoughtcrime.securesms.qr.BackupProviderActivity;
 
 /**
  * The Activity for application preference display and management.
@@ -261,7 +262,7 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
           fragment = new ChatsPreferenceFragment();
           break;
         case PREFERENCE_CATEGORY_ADD_ANOTHER_DEVICE:
-          // TODO
+          startActivity(new Intent(getActivity(), BackupProviderActivity.class));
           break;
         case PREFERENCE_CATEGORY_ADVANCED:
           fragment = new AdvancedPreferenceFragment();
