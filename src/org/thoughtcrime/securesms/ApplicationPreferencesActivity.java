@@ -69,6 +69,7 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
   private static final String PREFERENCE_CATEGORY_NOTIFICATIONS  = "preference_category_notifications";
   private static final String PREFERENCE_CATEGORY_APPEARANCE     = "preference_category_appearance";
   private static final String PREFERENCE_CATEGORY_CHATS          = "preference_category_chats";
+  private static final String PREFERENCE_CATEGORY_ADD_ANOTHER_DEVICE = "preference_category_add_another_device";
   private static final String PREFERENCE_CATEGORY_ADVANCED       = "preference_category_advanced";
   private static final String PREFERENCE_CATEGORY_CONNECTIVITY   = "preference_category_connectivity";
   private static final String PREFERENCE_CATEGORY_HELP           = "preference_category_help";
@@ -149,6 +150,8 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
         .setOnPreferenceClickListener(new CategoryClickListener(PREFERENCE_CATEGORY_APPEARANCE));
       this.findPreference(PREFERENCE_CATEGORY_CHATS)
         .setOnPreferenceClickListener(new CategoryClickListener(PREFERENCE_CATEGORY_CHATS));
+      this.findPreference(PREFERENCE_CATEGORY_ADD_ANOTHER_DEVICE)
+        .setOnPreferenceClickListener(new CategoryClickListener(PREFERENCE_CATEGORY_ADD_ANOTHER_DEVICE));
       this.findPreference(PREFERENCE_CATEGORY_ADVANCED)
         .setOnPreferenceClickListener(new CategoryClickListener(PREFERENCE_CATEGORY_ADVANCED));
 
@@ -256,6 +259,9 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
           break;
         case PREFERENCE_CATEGORY_CHATS:
           fragment = new ChatsPreferenceFragment();
+          break;
+        case PREFERENCE_CATEGORY_ADD_ANOTHER_DEVICE:
+          // TODO
           break;
         case PREFERENCE_CATEGORY_ADVANCED:
           fragment = new AdvancedPreferenceFragment();
