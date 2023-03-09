@@ -29,6 +29,7 @@ LOCAL_CFLAGS 	+= -DANDROID_NDK -DDISABLE_IMPORTGL -fno-strict-aliasing -DAVOID_T
 
 LOCAL_SRC_FILES := \
 utils/org_thoughtcrime_securesms_util_FileUtils.cpp \
+utils/android-ifaddrs/ifaddrs.c \
 dc_wrapper.c
 
 include $(BUILD_SHARED_LIBRARY)
