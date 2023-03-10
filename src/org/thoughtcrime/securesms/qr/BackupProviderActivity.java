@@ -15,7 +15,7 @@ public class BackupProviderActivity extends AppCompatActivity {
     private final DynamicTheme dynamicTheme = new DynamicTheme();
     private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
 
-    QrShowFragment fragment; // TODO: create BackupProviderFragment
+    BackupProviderFragment fragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +24,7 @@ public class BackupProviderActivity extends AppCompatActivity {
         dynamicLanguage.onCreate(this);
 
         setContentView(R.layout.backup_provider_activity);
-        fragment = (QrShowFragment)getSupportFragmentManager().findFragmentById(R.id.qrScannerFragment);
+        fragment = (BackupProviderFragment)getSupportFragmentManager().findFragmentById(R.id.backup_provider_fragment);
 
         ActionBar supportActionBar = getSupportActionBar();
         supportActionBar.setDisplayHomeAsUpEnabled(true);

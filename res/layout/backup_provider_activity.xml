@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-    android:name="org.thoughtcrime.securesms.qr.QrShowFragment"
+    android:name="org.thoughtcrime.securesms.qr.BackupProviderFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-	android:id="@+id/qrScannerFragment">
+	android:id="@+id/backup_provider_fragment">
 
 
 </fragment>
