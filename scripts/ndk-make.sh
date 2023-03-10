@@ -110,21 +110,12 @@ cd deltachat-core-rust
 # fix build on MacOS Catalina
 unset CPATH
 
-# Work around the bug in the build of Rust standard library.
-# It is built against r22b NDK toolchains and still requires -lgcc instead of -lunwind used in newer r23 NDK.
-# See discussion at <https://github.com/rust-lang/rust/pull/85806>
-TMPLIB="$(mktemp -d)"
-if test -z "$(find "$ANDROID_NDK_ROOT" -name libgcc.a -print -quit)"; then
-    # NDK is does not contain libgcc.a, add a linker script to fake it.
-    echo 'INPUT(-lunwind)' >"$TMPLIB/libgcc.a"
-fi
-
 if test -z $1 || test $1 = armeabi-v7a; then
     echo "-- cross compiling to armv7-linux-androideabi (arm) --"
     TARGET_CC="$TOOLCHAIN/bin/armv7a-linux-androideabi16-clang" \
     TARGET_AR="$TOOLCHAIN/bin/llvm-ar" \
     TARGET_RANLIB="$TOOLCHAIN/bin/llvm-ranlib" \
-    cargo rustc $RELEASEFLAG --target armv7-linux-androideabi -p deltachat_ffi -- -L "$TMPLIB"
+    cargo build $RELEASEFLAG --target armv7-linux-androideabi -p deltachat_ffi
     cp target/armv7-linux-androideabi/$RELEASE/libdeltachat.a $jnidir/armeabi-v7a
 fi
 
@@ -133,7 +124,7 @@ if test -z $1 || test $1 = arm64-v8a; then
     TARGET_CC="$TOOLCHAIN/bin/aarch64-linux-android21-clang" \
     TARGET_AR="$TOOLCHAIN/bin/llvm-ar" \
     TARGET_RANLIB="$TOOLCHAIN/bin/llvm-ranlib" \
-    cargo rustc $RELEASEFLAG --target aarch64-linux-android -p deltachat_ffi -- -L "$TMPLIB"
+    cargo build $RELEASEFLAG --target aarch64-linux-android -p deltachat_ffi
     cp target/aarch64-linux-android/$RELEASE/libdeltachat.a $jnidir/arm64-v8a
 fi
 
@@ -142,7 +133,7 @@ if test -z $1 || test $1 = x86; then
     TARGET_CC="$TOOLCHAIN/bin/i686-linux-android16-clang" \
     TARGET_AR="$TOOLCHAIN/bin/llvm-ar" \
     TARGET_RANLIB="$TOOLCHAIN/bin/llvm-ranlib" \
-    cargo rustc $RELEASEFLAG --target i686-linux-android -p deltachat_ffi -- -L "$TMPLIB"
+    cargo build $RELEASEFLAG --target i686-linux-android -p deltachat_ffi
     cp target/i686-linux-android/$RELEASE/libdeltachat.a $jnidir/x86
 fi
 
@@ -151,7 +142,7 @@ if test -z $1 || test $1 = x86_64; then
     TARGET_CC="$TOOLCHAIN/bin/x86_64-linux-android21-clang" \
     TARGET_AR="$TOOLCHAIN/bin/llvm-ar" \
     TARGET_RANLIB="$TOOLCHAIN/bin/llvm-ranlib" \
-    cargo rustc $RELEASEFLAG --target x86_64-linux-android -p deltachat_ffi -- -L "$TMPLIB"
+    cargo build $RELEASEFLAG --target x86_64-linux-android -p deltachat_ffi
     cp target/x86_64-linux-android/$RELEASE/libdeltachat.a $jnidir/x86_64
 fi
 
