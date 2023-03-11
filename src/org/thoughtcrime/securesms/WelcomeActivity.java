@@ -298,15 +298,16 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
 
         DcHelper.getEventCenter(this).captureNextError();
 
-        if (!dcContext.setConfigFromQr(qrCode)) {
-            progressError(dcContext.getLastError());
-            return;
+        if (dcContext.checkQr(qrCode).getState() == DcContext.DC_QR_BACKUP) {
+            progressError("TODO!!");
+        } else {
+            if (!dcContext.setConfigFromQr(qrCode)) {
+              progressError(dcContext.getLastError());
+              return;
+            }
+            DcHelper.getAccounts(this).stopIo();
+            dcContext.configure();
         }
-
-        // calling configure() results in
-        // receiving multiple DC_EVENT_CONFIGURE_PROGRESS events
-        DcHelper.getAccounts(this).stopIo();
-        dcContext.configure();
     }
 
     private void progressError(String data2) {
@@ -421,6 +422,16 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
                     new AlertDialog.Builder(this)
                             .setMessage(getString(R.string.qraccount_ask_create_and_login, domain))
                             .setPositiveButton(R.string.ok, (dialog, which) -> startQrAccountCreation(qrRaw))
+                            .setNegativeButton(R.string.cancel, null)
+                            .setCancelable(false)
+                            .show();
+                    break;
+
+                case DcContext.DC_QR_BACKUP:
+                    new AlertDialog.Builder(this)
+                            .setTitle(R.string.multidevice_title)
+                            .setMessage(getString(R.string.multidevice_receiver_scanning_ask) + "\n\n" + getString(R.string.multidevice_same_network_hint))
+                            .setPositiveButton(R.string.perm_continue, (dialog, which) -> startQrAccountCreation(qrRaw))
                             .setNegativeButton(R.string.cancel, null)
                             .setCancelable(false)
                             .show();

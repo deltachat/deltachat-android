@@ -28,7 +28,7 @@ public class BackupProviderActivity extends AppCompatActivity {
 
         ActionBar supportActionBar = getSupportActionBar();
         supportActionBar.setDisplayHomeAsUpEnabled(true);
-        supportActionBar.setTitle(R.string.add_another_device);
+        supportActionBar.setTitle(R.string.multidevice_title);
     }
 
     @Override

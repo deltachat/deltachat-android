@@ -467,7 +467,9 @@
 
 
     <!-- Multi Device -->
-    <string name="add_another_device">Add Another Device</string>
+    <string name="multidevice_title">Add Another Device</string>
+    <string name="multidevice_receiver_scanning_ask">Copy the account from the other device to this device? Both devices will work independently afterwards.</string>
+    <string name="multidevice_same_network_hint">During copying, both devices must be on the same wifi or network.</string>
 
     <!-- Connectivity -->
     <!-- Headline for the "Inbox" eg. in the "Connectivity" view -->

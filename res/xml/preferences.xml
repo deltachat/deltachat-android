@@ -20,8 +20,8 @@
                 android:icon="@drawable/ic_brightness_6_24dp"
                 android:layout="@layout/preference_item" />
 
-    <Preference android:key="preference_category_add_another_device"
-                android:title="@string/add_another_device"
+    <Preference android:key="preference_category_multidevice"
+                android:title="@string/multidevice_title"
                 android:icon="@drawable/ic_baseline_devices_24"
                 android:layout="@layout/preference_item"/>
 
