@@ -332,9 +332,6 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
       case R.id.menu_settings:
         startActivity(new Intent(this, ApplicationPreferencesActivity.class));
         return true;
-      case R.id.menu_help:
-        startActivity(new Intent(this, LocalHelpActivity.class));
-        return true;
       case R.id.menu_qr:
         new IntentIntegrator(this).setCaptureActivity(QrActivity.class).initiateScan();
         return true;
