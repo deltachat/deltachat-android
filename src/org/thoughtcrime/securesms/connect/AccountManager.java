@@ -30,10 +30,7 @@ public class AccountManager {
 
     private void resetDcContext(Context context) {
         ApplicationContext appContext = (ApplicationContext)context.getApplicationContext();
-        DcHelper.getNotificationCenter(context).removeAllNotifiations();
         appContext.dcContext = appContext.dcAccounts.getSelectedAccount();
-        appContext.notificationCenter = new NotificationCenter(context);
-        appContext.eventCenter = new DcEventCenter(context);
         DcHelper.setStockTranslations(context);
         DirectShareUtil.resetAllShortcuts(appContext);
     }

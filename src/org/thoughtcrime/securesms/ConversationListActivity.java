@@ -76,6 +76,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   private static final String OPENPGP4FPR = "openpgp4fpr";
   private static final String NDK_ARCH_WARNED = "ndk_arch_warned";
   public static final String CLEAR_NOTIFICATIONS = "clear_notifications";
+  public static final String ACCOUNT_ID_EXTRA = TAG + ".account_id";
 
   private final DynamicTheme    dynamicTheme    = new DynamicNoActionBarTheme();
   private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
@@ -201,6 +202,15 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   }
 
   private void refresh() {
+    DcContext dcContext = DcHelper.getContext(this);
+    int accountId = getIntent().getIntExtra(ACCOUNT_ID_EXTRA, dcContext.getAccountId());
+    if (getIntent().getBooleanExtra(CLEAR_NOTIFICATIONS, false)) {
+      DcHelper.getNotificationCenter(this).removeAllNotifiations(accountId);
+    }
+    if (accountId != dcContext.getAccountId()) {
+      AccountManager.getInstance().switchAccountAndStartActivity(this, accountId, null);
+    }
+
     refreshAvatar();
     refreshTitle();
     handleOpenpgp4fpr();
@@ -210,10 +220,6 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 
     if (isDirectSharing(this)) {
       openConversation(getDirectSharingChatId(this), -1);
-    }
-
-    if (getIntent().getBooleanExtra(CLEAR_NOTIFICATIONS, false)) {
-      DcHelper.getNotificationCenter(this).removeAllNotifiations();
     }
   }
 

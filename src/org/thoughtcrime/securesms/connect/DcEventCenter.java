@@ -137,11 +137,22 @@ public class DcEventCenter {
 
   public long handleEvent(@NonNull DcEvent event) {
     int accountId = event.getAccountId();
+    int id = event.getId();
+
+    switch (id) {
+      case DcContext.DC_EVENT_INCOMING_MSG:
+        DcHelper.getNotificationCenter(context).addNotification(accountId, event.getData1Int(), event.getData2Int());
+        break;
+
+      case DcContext.DC_EVENT_MSGS_NOTICED:
+        DcHelper.getNotificationCenter(context).removeNotifications(accountId, event.getData1Int());
+        break;
+    }
+
     if (accountId != context.dcContext.getAccountId()) {
       return 0;
     }
 
-    int id = event.getId();
     switch (id) {
       case DcContext.DC_EVENT_INFO:
         Log.i("DeltaChat", event.getData2Str());
@@ -160,12 +171,10 @@ public class DcEventCenter {
         break;
 
       case DcContext.DC_EVENT_INCOMING_MSG:
-        DcHelper.getNotificationCenter(context).addNotification(event.getData1Int(), event.getData2Int());
         sendToObservers(event);
         break;
 
       case DcContext.DC_EVENT_MSGS_NOTICED:
-        DcHelper.getNotificationCenter(context).removeNotifications(event.getData1Int());
         sendToObservers(event);
         break;
 

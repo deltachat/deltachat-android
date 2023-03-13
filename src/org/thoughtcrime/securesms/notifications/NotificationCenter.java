@@ -28,10 +28,10 @@ import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMsg;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
+import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.ConversationListActivity;
 import org.thoughtcrime.securesms.R;
-import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.contacts.avatars.ContactPhoto;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.preferences.widgets.NotificationPrivacyPreference;
@@ -50,20 +50,23 @@ import java.util.concurrent.TimeUnit;
 
 public class NotificationCenter {
     private static final String TAG = NotificationCenter.class.getSimpleName();
-    @NonNull private DcContext dcContext;
-    @NonNull private Context context;
-    private volatile int visibleChatId = 0;
+    @NonNull private final ApplicationContext context;
+    private volatile ChatData visibleChat = null;
     private volatile long lastAudibleNotification = 0;
     private static final long MIN_AUDIBLE_PERIOD_MILLIS = TimeUnit.SECONDS.toMillis(2);
-    private final HashMap<Integer, ArrayList<String>> inboxes = new HashMap<>(); // contains the last lines of each chat
+
+    // Map<accountId, Map<chatId, lines>, contains the last lines of each chat for each account
+    private final HashMap<Integer, HashMap<Integer, ArrayList<String>>> inboxes = new HashMap<>();
 
     public NotificationCenter(Context context) {
-        this.context = context.getApplicationContext();
-        this.dcContext = DcHelper.getContext(context);
+        this.context = ApplicationContext.getInstance(context);
     }
 
-    private @Nullable Uri effectiveSound(int chatId) { // chatId=0: return app-global setting
-        @Nullable Uri chatRingtone = Prefs.getChatRingtone(context, chatId);
+    private @Nullable Uri effectiveSound(ChatData chatData) { // chatData=null: return app-global setting
+        if (chatData == null) {
+            chatData = new ChatData(0, 0);
+        }
+        @Nullable Uri chatRingtone = Prefs.getChatRingtone(context, chatData.accountId, chatData.chatId);
         if (chatRingtone!=null) {
             return chatRingtone;
         } else {
@@ -75,8 +78,11 @@ public class NotificationCenter {
         return null;
     }
 
-    private boolean effectiveVibrate(int chatId) { // chatId=0: return app-global setting
-        Prefs.VibrateState vibrate = Prefs.getChatVibrate(context, chatId);
+    private boolean effectiveVibrate(ChatData chatData) { // chatData=null: return app-global setting
+        if (chatData == null) {
+            chatData = new ChatData(0, 0);
+        }
+        Prefs.VibrateState vibrate = Prefs.getChatVibrate(context, chatData.accountId, chatData.chatId);
         if (vibrate == Prefs.VibrateState.ENABLED) {
             return true;
         } else if (vibrate == Prefs.VibrateState.DISABLED) {
@@ -85,9 +91,12 @@ public class NotificationCenter {
         return Prefs.isNotificationVibrateEnabled(context);
     }
 
-    private boolean requiresIndependentChannel(int chatId) {
-        return Prefs.getChatRingtone(context, chatId) != null 
-                || Prefs.getChatVibrate(context, chatId) != Prefs.VibrateState.DEFAULT;
+    private boolean requiresIndependentChannel(ChatData chatData) {
+        if (chatData == null) {
+            chatData = new ChatData(0, 0);
+        }
+        return Prefs.getChatRingtone(context, chatData.accountId, chatData.chatId) != null
+                || Prefs.getChatVibrate(context, chatData.accountId, chatData.chatId) != Prefs.VibrateState.DEFAULT;
     }
 
     private int getLedArgb(String ledColor) {
@@ -101,35 +110,40 @@ public class NotificationCenter {
         return argb;
     }
 
-    private PendingIntent getOpenChatlistIntent() {
+    private PendingIntent getOpenChatlistIntent(int accountId) {
         Intent intent = new Intent(context, ConversationListActivity.class);
+        intent.putExtra(ConversationListActivity.ACCOUNT_ID_EXTRA, accountId);
         intent.putExtra(ConversationListActivity.CLEAR_NOTIFICATIONS, true);
+        intent.setData(Uri.parse("custom://"+accountId));
         return PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT | IntentUtils.FLAG_MUTABLE());
     }
 
-    private PendingIntent getOpenChatIntent(int chatId) {
+    private PendingIntent getOpenChatIntent(ChatData chatData) {
         Intent intent = new Intent(context, ConversationActivity.class);
-        intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
-        intent.setData((Uri.parse("custom://"+System.currentTimeMillis())));
+        intent.putExtra(ConversationActivity.ACCOUNT_ID_EXTRA, chatData.accountId);
+        intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatData.chatId);
+        intent.setData(Uri.parse("custom://"+chatData.accountId+"."+chatData.chatId));
         return TaskStackBuilder.create(context)
                 .addNextIntentWithParentStack(intent)
                 .getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT | IntentUtils.FLAG_MUTABLE());
     }
 
-    private PendingIntent getRemoteReplyIntent(int chatId) {
+    private PendingIntent getRemoteReplyIntent(ChatData chatData) {
         Intent intent = new Intent(RemoteReplyReceiver.REPLY_ACTION);
         intent.setClass(context, RemoteReplyReceiver.class);
-        intent.setData((Uri.parse("custom://"+System.currentTimeMillis())));
-        intent.putExtra(RemoteReplyReceiver.CHAT_ID_EXTRA, chatId);
+        intent.setData(Uri.parse("custom://"+chatData.accountId+"."+chatData.chatId));
+        intent.putExtra(RemoteReplyReceiver.ACCOUNT_ID_EXTRA, chatData.accountId);
+        intent.putExtra(RemoteReplyReceiver.CHAT_ID_EXTRA, chatData.chatId);
         intent.setPackage(context.getPackageName());
         return PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT | IntentUtils.FLAG_MUTABLE());
     }
 
-    private PendingIntent getMarkAsReadIntent(int chatId, boolean markNoticed) {
+    private PendingIntent getMarkAsReadIntent(ChatData chatData, boolean markNoticed) {
         Intent intent = new Intent(markNoticed? MarkReadReceiver.MARK_NOTICED_ACTION : MarkReadReceiver.CANCEL_ACTION);
         intent.setClass(context, MarkReadReceiver.class);
-        intent.setData((Uri.parse("custom://"+System.currentTimeMillis())));
-        intent.putExtra(MarkReadReceiver.CHAT_ID_EXTRA, chatId);
+        intent.setData(Uri.parse("custom://"+chatData.accountId+"."+chatData.chatId));
+        intent.putExtra(MarkReadReceiver.ACCOUNT_ID_EXTRA, chatData.accountId);
+        intent.putExtra(MarkReadReceiver.CHAT_ID_EXTRA, chatData.chatId);
         intent.setPackage(context.getPackageName());
         return PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT | IntentUtils.FLAG_MUTABLE());
     }
@@ -182,23 +196,19 @@ public class NotificationCenter {
         return Build.VERSION.SDK_INT >= 26;
     }
 
-    // full name is "ch_msgV_HASH" or "ch_msgV_HASH.CHATID"
-    private String computeChannelId(String ledColor, boolean vibrate, @Nullable Uri ringtone, int chatId) {
+    // full name is "ch_msgV_HASH" or "ch_msgV_HASH.ACCOUNTID.CHATID"
+    private String computeChannelId(String ledColor, boolean vibrate, @Nullable Uri ringtone, ChatData chatData) {
         String channelId = CH_MSG_PREFIX;
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-256");
             md.update(ledColor.getBytes());
             md.update(vibrate ? (byte) 1 : (byte) 0);
             md.update((ringtone != null ? ringtone.toString() : "").getBytes());
-            if (chatId!=0) {
-                // for multi-account, force different channelIds for maybe the same chatIds in multiple accounts
-                md.update(dcContext.getConfig("addr").getBytes());
-            }
             String hash = String.format("%X", new BigInteger(1, md.digest())).substring(0, 16);
 
             channelId = CH_MSG_PREFIX + CH_MSG_VERSION + "_" + hash;
-            if (chatId!=0) {
-                channelId += String.format(".%d", chatId);
+            if (chatData != null) {
+                channelId += String.format(".%d.%d", chatData.accountId, chatData.chatId);
             }
 
         } catch(Exception e) {
@@ -207,15 +217,21 @@ public class NotificationCenter {
         return channelId;
     }
 
-    // return chatId from "ch_msgV_HASH.CHATID" or 0
-    private int parseNotificationChannelChatId(String channelId) {
+    // return ChatData(ACCOUNTID, CHATID) from "ch_msgV_HASH.ACCOUNTID.CHATID" or null
+    private ChatData parseNotificationChannelChat(String channelId) {
         try {
             int point = channelId.lastIndexOf(".");
             if (point>0) {
-                return Integer.parseInt(channelId.substring(point + 1));
+                int chatId = Integer.parseInt(channelId.substring(point + 1));
+                channelId = channelId.substring(0, point);
+                point = channelId.lastIndexOf(".");
+                if (point>0) {
+                    int accountId = Integer.parseInt(channelId.substring(point + 1));
+                    return new ChatData(accountId, chatId);
+                }
             }
         } catch(Exception e) { }
-        return 0;
+        return null;
     }
 
     private String getNotificationChannelGroup(NotificationManagerCompat notificationManager) {
@@ -226,20 +242,19 @@ public class NotificationCenter {
         return CH_GRP_MSG;
     }
 
-    private String getNotificationChannel(NotificationManagerCompat notificationManager, DcChat dcChat) {
-        int chatId = dcChat.getId();
+    private String getNotificationChannel(NotificationManagerCompat notificationManager, ChatData chatData, DcChat dcChat) {
         String channelId = CH_MSG_PREFIX;
 
         if (notificationChannelsSupported()) {
             try {
                 // get all values we'll use as settings for the NotificationChannel
                 String        ledColor       = Prefs.getNotificationLedColor(context);
-                boolean       defaultVibrate = effectiveVibrate(chatId);
-                @Nullable Uri ringtone       = effectiveSound(chatId);
-                boolean       isIndependent  = requiresIndependentChannel(chatId);
+                boolean       defaultVibrate = effectiveVibrate(chatData);
+                @Nullable Uri ringtone       = effectiveSound(chatData);
+                boolean       isIndependent  = requiresIndependentChannel(chatData);
 
                 // get channel id from these settings
-                channelId = computeChannelId(ledColor, defaultVibrate, ringtone, isIndependent? chatId : 0);
+                channelId = computeChannelId(ledColor, defaultVibrate, ringtone, isIndependent? chatData : null);
 
                 // user-visible name of the channel -
                 // we just use the name of the chat or "Default"
@@ -263,8 +278,8 @@ public class NotificationCenter {
                             channels.get(i).setName(name);
                         } else {
                             // ... another message channel, delete if it is not in use.
-                            int currChatId = parseNotificationChannelChatId(currChannelId);
-                            if (!currChannelId.equals(computeChannelId(ledColor, effectiveVibrate(currChatId), effectiveSound(currChatId), currChatId))) {
+                            ChatData currChat = parseNotificationChannelChat(currChannelId);
+                            if (!currChannelId.equals(computeChannelId(ledColor, effectiveVibrate(currChat), effectiveSound(currChat), currChat))) {
                                 notificationManager.deleteNotificationChannel(currChannelId);
                             }
                         }
@@ -311,16 +326,18 @@ public class NotificationCenter {
     // add notifications & co.
     // --------------------------------------------------------------------------------------------
 
-    public void addNotification(int chatId, int msgId) {
+    public void addNotification(int accountId, int chatId, int msgId) {
         Util.runOnAnyBackgroundThread(() -> {
 
+            DcContext dcContext = context.dcAccounts.getAccount(accountId);
             DcChat dcChat = dcContext.getChat(chatId);
+            ChatData chatData = new ChatData(accountId, chatId);
 
             if (!Prefs.isNotificationsEnabled(context) || dcChat.isMuted()) {
                 return;
             }
 
-            if (chatId == visibleChatId) {
+            if (Util.equals(visibleChat, chatData)) {
                 if (Prefs.isInChatNotifications(context)) {
                     InChatSounds.getInstance(context).playIncomingSound();
                 }
@@ -349,7 +366,7 @@ public class NotificationCenter {
             // even without a name or message displayed,
             // it makes sense to use separate notification channels and to open the respective chat directly -
             // the user may eg. have chosen a different sound
-            String notificationChannel = getNotificationChannel(notificationManager, dcChat);
+            String notificationChannel = getNotificationChannel(notificationManager, chatData, dcChat);
             NotificationCompat.Builder builder = new NotificationCompat.Builder(context, notificationChannel)
                     .setSmallIcon(R.drawable.icon_notification)
                     .setColor(context.getResources().getColor(R.color.delta_primary))
@@ -357,15 +374,17 @@ public class NotificationCenter {
                     .setCategory(NotificationCompat.CATEGORY_MESSAGE)
                     .setOnlyAlertOnce(!signal)
                     .setContentText(line)
-                    .setDeleteIntent(getMarkAsReadIntent(chatId, false))
-                    .setContentIntent(getOpenChatIntent(chatId));
+                    .setDeleteIntent(getMarkAsReadIntent(chatData, false))
+                    .setContentIntent(getOpenChatIntent(chatData));
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                builder.setGroup(GRP_MSG);
+                builder.setGroup(GRP_MSG + "." + accountId);
             }
 
+            String accountAddr = dcContext.getConfig("addr");
             if (privacy.isDisplayContact()) {
                 builder.setContentTitle(dcChat.getName());
+                builder.setSubText(accountAddr);
             }
 
             // if privacy allows, for better accessibility,
@@ -379,11 +398,11 @@ public class NotificationCenter {
             // set sound, vibrate, led for systems that do not have notification channels
             if (!notificationChannelsSupported()) {
                 if (signal) {
-                    Uri sound = effectiveSound(chatId);
+                    Uri sound = effectiveSound(chatData);
                     if (sound != null && !TextUtils.isEmpty(sound.toString())) {
                         builder.setSound(sound);
                     }
-                    boolean vibrate = effectiveVibrate(chatId);
+                    boolean vibrate = effectiveVibrate(chatData);
                     if (vibrate) {
                         builder.setDefaults(Notification.DEFAULT_VIBRATE);
                     }
@@ -427,8 +446,8 @@ public class NotificationCenter {
             if (privacy.isDisplayContact() && privacy.isDisplayMessage()
              && !Prefs.isScreenLockEnabled(context)) {
                 try {
-                    PendingIntent inNotificationReplyIntent = getRemoteReplyIntent(chatId);
-                    PendingIntent markReadIntent = getMarkAsReadIntent(chatId, true);
+                    PendingIntent inNotificationReplyIntent = getRemoteReplyIntent(chatData);
+                    PendingIntent markReadIntent = getMarkAsReadIntent(chatData, true);
 
                     NotificationCompat.Action markAsReadAction = new NotificationCompat.Action(R.drawable.check,
                             context.getString(R.string.notify_dismiss),
@@ -460,10 +479,15 @@ public class NotificationCenter {
                 try {
                     NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
                     synchronized (inboxes) {
-                        ArrayList<String> lines = inboxes.get(chatId);
+                        HashMap<Integer, ArrayList<String>> accountInbox = inboxes.get(accountId);
+                        if (accountInbox == null) {
+                            accountInbox = new HashMap<>();
+                            inboxes.put(accountId, accountInbox);
+                        }
+                        ArrayList<String> lines = accountInbox.get(chatId);
                         if (lines == null) {
                             lines = new ArrayList<>();
-                            inboxes.put(chatId, lines);
+                            accountInbox.put(chatId, lines);
                         }
                         lines.add(line);
 
@@ -486,7 +510,7 @@ public class NotificationCenter {
             // add notification, we use one notification per chat,
             // esp. older android are not that great at grouping
             try {
-              notificationManager.notify(ID_MSG_OFFSET + chatId, builder.build());
+              notificationManager.notify(String.valueOf(accountId), ID_MSG_OFFSET + chatId, builder.build());
             } catch (Exception e) {
               Log.e(TAG, "cannot add notification", e);
             }
@@ -497,15 +521,18 @@ public class NotificationCenter {
             if (Build.VERSION.SDK_INT >= 24) {
                 try {
                   NotificationCompat.Builder summary = new NotificationCompat.Builder(context, notificationChannel)
-                    .setGroup(GRP_MSG)
+                    .setGroup(GRP_MSG + "." + accountId)
                     .setGroupSummary(true)
                     .setSmallIcon(R.drawable.icon_notification)
                     .setColor(context.getResources().getColor(R.color.delta_primary))
                     .setCategory(NotificationCompat.CATEGORY_MESSAGE)
                     .setContentTitle("Delta Chat") // content title would only be used on SDK <24
                     .setContentText("New messages") // content text would only be used on SDK <24
-                    .setContentIntent(getOpenChatlistIntent());
-                  notificationManager.notify(ID_MSG_SUMMARY, summary.build());
+                    .setContentIntent(getOpenChatlistIntent(accountId));
+                  if (privacy.isDisplayContact()) {
+                    summary.setSubText(accountAddr);
+                  }
+                  notificationManager.notify(String.valueOf(accountId), ID_MSG_SUMMARY, summary.build());
                 } catch (Exception e) {
                   Log.e(TAG, "cannot add notification summary", e);
                 }
@@ -513,41 +540,59 @@ public class NotificationCenter {
         });
     }
 
-    public void removeNotifications(int chatId) {
+    public void removeNotifications(int accountId, int chatId) {
         boolean removeSummary;
         synchronized (inboxes) {
-            inboxes.remove(chatId);
-            removeSummary = inboxes.isEmpty();
+            HashMap<Integer, ArrayList<String>> accountInbox = inboxes.get(accountId);
+            if (accountInbox == null) {
+                accountInbox = new HashMap<>();
+            }
+            accountInbox.remove(chatId);
+            removeSummary = accountInbox.isEmpty();
         }
 
         // cancel notification independently of inboxes array,
         // due to restarts, the app may have notification even when inboxes is empty.
         try {
             NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
-            notificationManager.cancel(ID_MSG_OFFSET + chatId);
+            String tag = String.valueOf(accountId);
+            notificationManager.cancel(tag, ID_MSG_OFFSET + chatId);
             if (removeSummary) {
-                notificationManager.cancel(ID_MSG_SUMMARY);
+                notificationManager.cancel(tag, ID_MSG_SUMMARY);
             }
         } catch (Exception e) { Log.w(TAG, e); }
     }
 
-    public void removeAllNotifiations() {
-        synchronized (inboxes) {
-            inboxes.clear();
-        }
+    public void removeAllNotifiations(int accountId) {
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
-        notificationManager.cancelAll();
+        String tag = String.valueOf(accountId);
+        synchronized (inboxes) {
+            HashMap<Integer, ArrayList<String>> accountInbox = inboxes.get(accountId);
+            notificationManager.cancel(tag, ID_MSG_SUMMARY);
+            if (accountInbox != null) {
+                for (Integer chatId : accountInbox.keySet()) {
+                    notificationManager.cancel(tag, chatId);
+                }
+                accountInbox.clear();
+            }
+        }
     }
 
-    public void updateVisibleChat(int chatId) {
+    public void updateVisibleChat(int accountId, int chatId) {
         Util.runOnAnyBackgroundThread(() -> {
 
-            visibleChatId = chatId;
-            if (chatId!=0) {
-                removeNotifications(chatId);
+            if (accountId != 0 && chatId != 0) {
+                visibleChat = new ChatData(accountId, chatId);
+                removeNotifications(accountId, chatId);
+            } else {
+                visibleChat = null;
             }
 
         });
+    }
+
+    public void clearVisibleChat() {
+        visibleChat = null;
     }
 
     public void maybePlaySendSound(DcChat dcChat) {
@@ -555,4 +600,23 @@ public class NotificationCenter {
             InChatSounds.getInstance(context).playSendSound();
         }
     }
+
+  private class ChatData {
+    public int accountId;
+    public int chatId;
+
+    public ChatData(int accountId, int chatId) {
+        this.accountId = accountId;
+        this.chatId = chatId;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+
+      ChatData chatData = (ChatData) o;
+      return accountId == chatData.accountId && chatId == chatData.chatId;
+    }
+  }
 }

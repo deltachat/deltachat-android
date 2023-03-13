@@ -455,7 +455,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void onSoundSettings() {
-    Uri current = Prefs.getChatRingtone(this, chatId);
+    Uri current = Prefs.getChatRingtone(this, dcContext.getAccountId(), chatId);
     Uri defaultUri = Prefs.getNotificationRingtone(this);
 
     if      (current == null)              current = Settings.System.DEFAULT_NOTIFICATION_URI;
@@ -472,14 +472,14 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void onVibrateSettings() {
-    int checkedItem = Prefs.getChatVibrate(this, chatId).getId();
+    int checkedItem = Prefs.getChatVibrate(this, dcContext.getAccountId(), chatId).getId();
     int[] selectedChoice = new int[]{checkedItem};
     new AlertDialog.Builder(this)
             .setTitle(R.string.pref_vibrate)
             .setSingleChoiceItems(R.array.recipient_vibrate_entries, checkedItem,
                     (dialog, which) -> selectedChoice[0] = which)
             .setPositiveButton(R.string.ok,
-                    (dialog, which) -> Prefs.setChatVibrate(this, chatId, Prefs.VibrateState.fromId(selectedChoice[0])))
+                    (dialog, which) -> Prefs.setChatVibrate(this, dcContext.getAccountId(), chatId, Prefs.VibrateState.fromId(selectedChoice[0])))
             .setNegativeButton(R.string.cancel, null)
             .show();
   }
@@ -588,7 +588,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
       if (defaultValue.equals(value)) value = null;
       else if (value == null)         value = Uri.EMPTY;
 
-      Prefs.setChatRingtone(this, chatId, value);
+      Prefs.setChatRingtone(this, dcContext.getAccountId(), chatId, value);
     }
   }
 

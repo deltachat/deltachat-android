@@ -350,8 +350,9 @@ public class ConversationListFragment extends Fragment
 
           @Override
           protected Void doInBackground(Void... params) {
+            int accountId = dcContext.getAccountId();
             for (long chatId : selectedConversations) {
-              DcHelper.getNotificationCenter(getContext()).removeNotifications((int) chatId);
+              DcHelper.getNotificationCenter(getContext()).removeNotifications(accountId, (int) chatId);
               dcContext.deleteChat((int) chatId);
               DirectShareUtil.clearShortcut(getContext(), (int) chatId);
             }
