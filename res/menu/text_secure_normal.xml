@@ -15,6 +15,9 @@
         android:visible="false"
         />
 
+    <item android:title="@string/menu_all_media"
+        android:id="@+id/menu_all_media" />
+
     <item android:title="@string/menu_settings"
           android:id="@+id/menu_settings" />
 

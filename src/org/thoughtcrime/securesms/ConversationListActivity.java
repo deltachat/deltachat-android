@@ -347,6 +347,9 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
       case android.R.id.home:
         onBackPressed();
         return true;
+      case R.id.menu_all_media:
+        startActivity(new Intent(this, ProfileActivity.class));
+        return true;
     }
 
     return false;
