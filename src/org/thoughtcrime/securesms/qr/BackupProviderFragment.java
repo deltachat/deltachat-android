@@ -50,7 +50,9 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
         DcHelper.getEventCenter(getActivity()).addObserver(DcContext.DC_EVENT_IMEX_PROGRESS, this);
 
         new Thread(() -> {
+            Log.i(TAG, "##### newBackupProvider()");
             dcBackupProvider = dcContext.newBackupProvider();
+            Log.i(TAG, "##### newBackupProvider() returned");
             if (dcBackupProvider != null) {
                 Util.runOnMain(() -> {
                     statusLine.setVisibility(View.GONE);
@@ -62,7 +64,9 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
                         e.printStackTrace();
                     }
                     new Thread(() -> {
+                        Log.i(TAG, "##### waitForReceiver() with qr: "+dcBackupProvider.getQr());
                         dcBackupProvider.waitForReceiver();
+                        Log.i(TAG, "##### done waiting");
                     }).start();
                 });
             }
