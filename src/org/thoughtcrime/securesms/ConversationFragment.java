@@ -357,6 +357,10 @@ public class ConversationFragment extends MessageSelectorFragment
         return !dcMsg.isInfo() && dcMsg.getType() != DcMsg.DC_MSG_VIDEOCHAT_INVITATION;
     }
 
+    public void handleClearChat() {
+        handleDeleteMessages((int) chatId, getListAdapter().getMessageIds());
+    }
+
     private ConversationAdapter getListAdapter() {
         return (ConversationAdapter) list.getAdapter();
     }

@@ -331,6 +331,10 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
     return Collections.unmodifiableSet(new HashSet<>(batchSelected));
   }
 
+  public int[] getMessageIds() {
+    return dcMsgList;
+  }
+
   public void pulseHighlightItem(int position) {
     if (position>=0 && position < getItemCount()) {
       positionToPulseHighlight = position;
