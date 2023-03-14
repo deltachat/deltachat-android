@@ -299,11 +299,16 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
         DcHelper.getEventCenter(this).captureNextError();
 
         if (dcContext.checkQr(qrCode).getState() == DcContext.DC_QR_BACKUP) {
-            progressError("TODO!!");
+            DcHelper.getAccounts(this).stopIo();
+            new Thread(() -> {
+                Log.i(TAG, "##### receiveBackup() with qr: "+qrCode);
+                boolean res = dcContext.receiveBackup(qrCode);
+                Log.i(TAG, "##### receiveBackup() done with result: "+res);
+            }).start();
         } else {
             if (!dcContext.setConfigFromQr(qrCode)) {
-              progressError(dcContext.getLastError());
-              return;
+                progressError(dcContext.getLastError());
+                return;
             }
             DcHelper.getAccounts(this).stopIo();
             dcContext.configure();
