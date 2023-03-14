@@ -48,6 +48,10 @@
     <string name="start_chat">Nisni fjalosje</string>
     <string name="show_full_message">Shfaq mesazhin e plotë…</string>
     <string name="show_full_message_in_browser">Shfaq mesazh të plotë në shfletues…</string>
+    <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
+    <string name="mark_all_as_read">Krejt të Lexuar</string>
+    <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
+    <string name="mark_as_read_short">I lexuar</string>
     <!-- Placeholder text when something is loading -->
     <string name="loading">Po ngarkohet…</string>
     <string name="hide">Fshihe</string>
@@ -202,6 +206,8 @@
     <string name="menu_add_attachment">Shtoni bashkëngjitje</string>
     <string name="menu_leave_group">Braktiseni grupin</string>
     <string name="menu_delete_chat">Fshije fjalosjen</string>
+    <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
+    <string name="clear_chat">Spastroje Fjalosjen</string>
     <string name="ask_delete_named_chat">Jeni i sigurt se doni të fshihet \"%1$s\"?</string>
     <string name="menu_delete_messages">Fshiji mesazhet</string>
     <string name="delete_contact">Fshije kontaktin</string>
@@ -449,6 +455,7 @@
     <string name="tab_video_empty_hint">Videot e dhëna në këtë fjalosje do të shfaqen këtu.</string>
     <string name="tab_audio_empty_hint">Kartelat Audio dhe Mesazhet Zanore të dhëna në këtë fjalosje do të shfaqen këtu.</string>
     <string name="tab_webxdc_empty_hint">Këtu do të shfaqen aplikacione private të përbashkët në këtë fjalosje </string>
+    <string name="tab_all_media_empty_hint">Këtu do të duke media e dhënë në çfarëdo fjalosjeje.</string>
     <string name="media_preview">Paraparje media</string>
     <string name="send_message">Dërgo mesazh</string>
     <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->

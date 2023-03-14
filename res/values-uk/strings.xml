@@ -224,6 +224,8 @@
     <string name="menu_add_attachment">Додати вкладення</string>
     <string name="menu_leave_group">Залишити групу</string>
     <string name="menu_delete_chat">Видалити чат</string>
+    <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
+    <string name="clear_chat">Очистити чат</string>
     <string name="ask_delete_named_chat">Ви впевнені, що хочете видалити \"%1$s\"?</string>
     <string name="menu_delete_messages">Видалити повідомлення</string>
     <string name="delete_contact">Видалити контакт</string>
@@ -485,6 +487,7 @@
     <string name="tab_video_empty_hint">Відео, якими поділилися у цьому чаті, будуть відображатися тут.</string>
     <string name="tab_audio_empty_hint">Аудіозаписи та голосові повідомлення, якими поділилися у цьому чаті, будуть відображатися тут.</string>
     <string name="tab_webxdc_empty_hint">Приватні застосунки, якими поділилися у цьому чаті, будуть відображатися тут.</string>
+    <string name="tab_all_media_empty_hint">Тут відображатимуться медіафайли, якими ви ділилися в будь-якому чаті.</string>
     <string name="media_preview">Попередній перегляд медіа</string>
     <string name="send_message">Надіслати повідомлення</string>
     <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->

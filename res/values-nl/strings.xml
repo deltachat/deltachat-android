@@ -457,6 +457,7 @@
     <string name="tab_video_empty_hint">De in dit gesprek gedeelde video\'s verschijnen hier.</string>
     <string name="tab_audio_empty_hint">De in dit gesprek gedeelde audiobestanden en spraakberichten verschijnen hier.</string>
     <string name="tab_webxdc_empty_hint">Privé-apps in dit gesprek worden hier getoond.</string>
+    <string name="tab_all_media_empty_hint">De in gesprekken gedeelde media verschijnen hier.</string>
     <string name="media_preview">Mediavoorbeeld</string>
     <string name="send_message">Bericht versturen</string>
     <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
