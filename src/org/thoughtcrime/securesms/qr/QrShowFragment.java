@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,8 +25,10 @@ import com.caverock.androidsvg.SVG;
 import com.caverock.androidsvg.SVGParseException;
 
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.components.ScaleStableImageView;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.FileProviderUtil;
 import org.thoughtcrime.securesms.util.Util;
 
@@ -71,6 +74,15 @@ public class QrShowFragment extends Fragment implements DcEventCenter.DcEventDel
         dcEventCenter.addObserver(DcContext.DC_EVENT_SECUREJOIN_INVITER_PROGRESS, this);
 
         numJoiners = 0;
+
+        ScaleStableImageView backgroundView = view.findViewById(R.id.background);
+        Drawable drawable;
+        if(DynamicTheme.isDarkTheme(getActivity())) {
+            drawable = getActivity().getResources().getDrawable(R.drawable.background_hd_dark);
+        } else {
+            drawable = getActivity().getResources().getDrawable(R.drawable.background_hd);
+        }
+        backgroundView.setImageDrawable(drawable);
 
         SVGImageView imageView = view.findViewById(R.id.qrImage);
         try {
