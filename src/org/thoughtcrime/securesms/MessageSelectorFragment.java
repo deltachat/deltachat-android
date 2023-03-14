@@ -55,19 +55,21 @@ public abstract class MessageSelectorFragment
   }
 
   protected void handleDeleteMessages(int chatId, final Set<DcMsg> messageRecords) {
-    int messagesCount = messageRecords.size();
+    handleDeleteMessages(chatId, DcMsg.msgSetToIds(messageRecords));
+  }
+
+  protected void handleDeleteMessages(int chatId, final int[] messageIds) {
     DcChat dcChat = DcHelper.getContext(getActivity()).getChat(chatId);
 
     String text = getActivity().getResources().getQuantityString(
       dcChat.isDeviceTalk()? R.plurals.ask_delete_messages_simple : R.plurals.ask_delete_messages,
-      messagesCount, messagesCount);
+      messageIds.length, messageIds.length);
 
     new AlertDialog.Builder(getActivity())
             .setMessage(text)
             .setCancelable(true)
             .setPositiveButton(R.string.delete, (dialog, which) -> {
-                int[] ids = DcMsg.msgSetToIds(messageRecords);
-                dcContext.deleteMsgs(ids);
+                dcContext.deleteMsgs(messageIds);
                 if (actionMode != null) actionMode.finish();
             })
             .setNegativeButton(android.R.string.cancel, null)

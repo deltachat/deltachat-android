@@ -496,6 +496,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       menu.findItem(R.id.menu_archive_chat).setTitle(R.string.menu_unarchive_chat);
     }
 
+    inflater.inflate(R.menu.conversation_clear, menu);
     inflater.inflate(R.menu.conversation_delete, menu);
 
     try {
@@ -546,6 +547,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       case R.id.menu_add_attachment:        handleAddAttachment();             return true;
       case R.id.menu_leave:                 handleLeaveGroup();                return true;
       case R.id.menu_archive_chat:          handleArchiveChat();               return true;
+      case R.id.menu_clear_chat:            fragment.handleClearChat();        return true;
       case R.id.menu_delete_chat:           handleDeleteChat();                return true;
       case R.id.menu_mute_notifications:    handleMuteNotifications();         return true;
       case R.id.menu_show_map:              handleShowMap();                   return true;
