@@ -124,7 +124,9 @@ public class ProfileDocumentsFragment
     ((ProfileDocumentsAdapter) recyclerView.getAdapter()).notifyAllSectionsDataSetChanged();
 
     noMedia.setVisibility(recyclerView.getAdapter().getItemCount() > 0 ? View.GONE : View.VISIBLE);
-    if (showAudio) {
+    if (chatId == 0) {
+      noMedia.setText(R.string.tab_all_media_empty_hint);
+    } else if (showAudio) {
       noMedia.setText(R.string.tab_audio_empty_hint);
     } else if (showWebxdc) {
       noMedia.setText(R.string.tab_webxdc_empty_hint);

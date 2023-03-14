@@ -120,6 +120,9 @@ public class ProfileGalleryFragment
     ((ProfileGalleryAdapter) recyclerView.getAdapter()).notifyAllSectionsDataSetChanged();
 
     noMedia.setVisibility(recyclerView.getAdapter().getItemCount() > 0 ? View.GONE : View.VISIBLE);
+    if (chatId == 0) {
+      noMedia.setText(R.string.tab_all_media_empty_hint);
+    }
     getActivity().invalidateOptionsMenu();
   }
 
