@@ -159,11 +159,11 @@
     <string name="images_and_videos">Images and Videos</string>
     <string name="file">File</string>
     <string name="files">Files</string>
-    <!-- "Private App" is used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
-    <string name="webxdc_app">Private App</string>
-    <!-- plural of "Private App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
-    <string name="webxdc_apps">Private Apps</string>
-    <string name="files_and_webxdx_apps">Files and Private Apps</string>
+    <!-- "App" is used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
+    <string name="webxdc_app">App</string>
+    <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
+    <string name="webxdc_apps">Apps</string>
+    <string name="files_and_webxdx_apps">Files and Apps</string>
     <string name="unknown">Unknown</string>
 
     <string name="green">Green</string>
@@ -456,7 +456,7 @@
     <string name="tab_image_empty_hint">Images shared in this chat will appear here.</string>
     <string name="tab_video_empty_hint">Videos shared in this chat will appear here.</string>
     <string name="tab_audio_empty_hint">Audio files and voice messages shared in this chat will appear here.</string>
-    <string name="tab_webxdc_empty_hint">Private apps shared in this chat will appear here.</string>
+    <string name="tab_webxdc_empty_hint">Apps shared in this chat will appear here.</string>
     <string name="tab_all_media_empty_hint">Media shared in any chat will appear here.</string>
     <string name="media_preview">Media Preview</string>
     <string name="send_message">Send Message</string>
@@ -997,7 +997,7 @@
     <string name="notifications_avg_hours">On average every %1$d hours</string>
     <string name="last_check_at">Checked at %1$s</string>
     <!-- iOS webxdc selector -->
-    <string name="webxdc_selector_empty_hint">Private apps received or sent in any chat will appear here. \"Files\" shows private apps just downloaded.</string>
+    <string name="webxdc_selector_empty_hint">Apps received or sent in any chat will appear here. \"Files\" shows apps just downloaded.</string>
     <!-- iOS webxdc shortcut page -->
     <string name="shortcut_step1_tap_share_btn">Click the share button</string>
     <string name="shortcut_step2_tap_add_to_home_screen">Select \"Add to Home Screen\" to add the app to your home screen.</string>
