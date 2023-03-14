@@ -457,6 +457,7 @@
     <string name="tab_video_empty_hint">In diesem Chat geteilte Videos werden hier angezeigt.</string>
     <string name="tab_audio_empty_hint">In diesem Chat geteilte Audiodateien und Sprachnachrichten werden hier angezeigt.</string>
     <string name="tab_webxdc_empty_hint">In diesem Chat geteilte Private Apps werden hier angezeigt.</string>
+    <string name="tab_all_media_empty_hint">Medien aus allen Chats werden hier angezeigt.</string>
     <string name="media_preview">Medien-Vorschau</string>
     <string name="send_message">Nachricht senden</string>
     <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->

@@ -200,6 +200,8 @@
     <string name="menu_add_attachment">添加附件</string>
     <string name="menu_leave_group">离开群组</string>
     <string name="menu_delete_chat">删除聊天</string>
+    <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
+    <string name="clear_chat">清理聊天记录</string>
     <string name="ask_delete_named_chat">您确定要删除“%1$s”吗？</string>
     <string name="menu_delete_messages">删除消息</string>
     <string name="delete_contact">删除联系人</string>

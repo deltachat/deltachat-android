@@ -48,6 +48,10 @@
     <string name="start_chat">Gesprek beginnen</string>
     <string name="show_full_message">Volledig bericht tonen…</string>
     <string name="show_full_message_in_browser">Volledig bericht in browser tonen…</string>
+    <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
+    <string name="mark_all_as_read">Alles markeren als gelezen</string>
+    <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
+    <string name="mark_as_read_short">Gelezen</string>
     <!-- Placeholder text when something is loading -->
     <string name="loading">Bezig met laden…</string>
     <string name="hide">Verbergen</string>
@@ -204,6 +208,8 @@
     <string name="menu_add_attachment">Bijlage toevoegen</string>
     <string name="menu_leave_group">Groep verlaten</string>
     <string name="menu_delete_chat">Gesprek verwijderen</string>
+    <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
+    <string name="clear_chat">Ale berichten wissen</string>
     <string name="ask_delete_named_chat">Weet je zeker dat je ‘%1$s’ wilt verwijderen?</string>
     <string name="menu_delete_messages">Berichten verwijderen</string>
     <string name="delete_contact">Contactpersoon verwijderen</string>
