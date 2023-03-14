@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	android:orientation="vertical">
+	android:layout_height="match_parent">
+
+    <org.thoughtcrime.securesms.components.ScaleStableImageView
+        android:id="@+id/background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="ContentDescription"
+        android:scaleType="centerCrop" />
 
 	<com.caverock.androidsvg.SVGImageView
 		android:id="@+id/qrImage"
 		android:layout_width="match_parent"
-		android:layout_height="0dp"
-		android:layout_weight="1"
+		android:layout_height="match_parent"
+		android:layout_gravity="center"
 		android:contentDescription="@string/qrscan_title" />
 
-</LinearLayout>
+</RelativeLayout>
