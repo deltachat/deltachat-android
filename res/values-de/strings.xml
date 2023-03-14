@@ -208,6 +208,8 @@
     <string name="menu_add_attachment">Dateien anhängen</string>
     <string name="menu_leave_group">Gruppe verlassen</string>
     <string name="menu_delete_chat">Chat löschen</string>
+    <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
+    <string name="clear_chat">Chat leeren</string>
     <string name="ask_delete_named_chat">Sind Sie sicher, dass Sie \"%1$s\" löschen möchten?</string>
     <string name="menu_delete_messages">Nachrichten löschen</string>
     <string name="delete_contact">Kontakt löschen</string>
