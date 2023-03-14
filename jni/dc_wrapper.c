@@ -39,7 +39,7 @@ int sendmmsg(int sockfd, struct mmsghdr *msgvec, unsigned int vlen,
 int recvmmsg(int sockfd, struct mmsghdr *msgvec, unsigned int vlen,
              int flags, struct timespec *timeout)
 {
-    if (flags != -1) {
+    if (flags != 0) {
         // Not supported by the fallback.
         return -1;
     }
