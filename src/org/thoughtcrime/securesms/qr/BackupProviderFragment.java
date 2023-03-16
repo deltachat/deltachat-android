@@ -9,6 +9,7 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import com.b44t.messenger.DcBackupProvider;
@@ -24,6 +25,8 @@ import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.util.Util;
 
+import java.util.Locale;
+
 public class BackupProviderFragment extends Fragment implements DcEventCenter.DcEventDelegate {
 
     private final static String TAG = BackupProviderFragment.class.getSimpleName();
@@ -32,6 +35,8 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
     private DcBackupProvider dcBackupProvider;
 
     private TextView         statusLine;
+    private boolean          transferStarted;
+    private SVGImageView     qrImageView;
 
     @Override
     public void onCreate(Bundle bundle) {
@@ -43,6 +48,8 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.backup_provider_fragment, container, false);
         statusLine = view.findViewById(R.id.status_line);
+        qrImageView = view.findViewById(R.id.qrImage);
+
         statusLine.setText(R.string.one_moment);
 
         dcContext = DcHelper.getContext(getActivity());
@@ -56,10 +63,9 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
             if (dcBackupProvider != null) {
                 Util.runOnMain(() -> {
                     statusLine.setVisibility(View.GONE);
-                    SVGImageView imageView = view.findViewById(R.id.qrImage);
                     try {
                         SVG svg = SVG.getFromString(QrShowFragment.fixSVG(dcBackupProvider.getQrSvg()));
-                        imageView.setSVG(svg);
+                        qrImageView.setSVG(svg);
                     } catch (SVGParseException e) {
                         e.printStackTrace();
                     }
@@ -87,8 +93,26 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
     @Override
     public void handleEvent(@NonNull DcEvent event) {
         if (event.getId() == DcContext.DC_EVENT_IMEX_PROGRESS) {
-            Log.i(TAG,"DC_EVENT_IMEX_PROGRESS, " + event.getData1Int());
-            // TODO: update status line once core sends events during prepare and wait
+            int permille = event.getData1Int();
+            Log.i(TAG,"DC_EVENT_IMEX_PROGRESS, " + permille);
+            if (permille == 0) {
+              new AlertDialog.Builder(getActivity())
+                .setMessage(dcContext.getLastError())
+                .setPositiveButton(android.R.string.ok, null)
+                .setCancelable(false)
+                .show();
+            } else if(permille <= 500) {
+                statusLine.setText(String.format(Locale.getDefault(), "Prepare... %d%%", permille/5));
+            } else if (permille < 1000) {
+                statusLine.setText(String.format(Locale.getDefault(), "Transfer... %d%%", (permille-500)/5));
+                if (!transferStarted) {
+                    qrImageView.setVisibility(View.GONE);
+                    statusLine.setVisibility(View.VISIBLE);
+                    transferStarted = true;
+                }
+            } else if (permille == 1000) {
+                statusLine.setText("Done.");
+            }
         }
     }
 }
