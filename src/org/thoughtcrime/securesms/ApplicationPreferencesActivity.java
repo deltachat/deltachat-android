@@ -46,12 +46,14 @@ import org.thoughtcrime.securesms.preferences.AdvancedPreferenceFragment;
 import org.thoughtcrime.securesms.preferences.AppearancePreferenceFragment;
 import org.thoughtcrime.securesms.preferences.ChatsPreferenceFragment;
 import org.thoughtcrime.securesms.preferences.CorrectedPreferenceFragment;
+import org.thoughtcrime.securesms.preferences.ListSummaryPreferenceFragment;
 import org.thoughtcrime.securesms.preferences.NotificationsPreferenceFragment;
 import org.thoughtcrime.securesms.preferences.widgets.ProfilePreference;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.qr.BackupProviderActivity;
+import org.thoughtcrime.securesms.util.ScreenLockUtil;
 
 /**
  * The Activity for application preference display and management.
@@ -107,6 +109,10 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
   protected void onActivityResult(int requestCode, int resultCode, Intent data)
   {
     super.onActivityResult(requestCode, resultCode, data);
+    if (resultCode == RESULT_OK && requestCode == ScreenLockUtil.REQUEST_CODE_CONFIRM_CREDENTIALS) {
+      startActivity(new Intent(this, BackupProviderActivity.class));
+      return;
+    }
     Fragment fragment = getSupportFragmentManager().findFragmentById(android.R.id.content);
     fragment.onActivityResult(requestCode, resultCode, data);
   }
@@ -262,7 +268,9 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
           fragment = new ChatsPreferenceFragment();
           break;
         case PREFERENCE_CATEGORY_MULTIDEVICE:
-          startActivity(new Intent(getActivity(), BackupProviderActivity.class));
+          if (!ScreenLockUtil.applyScreenLock(getActivity(), getString(R.string.multidevice_title), ScreenLockUtil.REQUEST_CODE_CONFIRM_CREDENTIALS)) {
+            startActivity(new Intent(getActivity(), BackupProviderActivity.class));
+          }
           break;
         case PREFERENCE_CATEGORY_ADVANCED:
           fragment = new AdvancedPreferenceFragment();
