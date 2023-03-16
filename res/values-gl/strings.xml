@@ -48,6 +48,10 @@
     <string name="start_chat">Inciar chat</string>
     <string name="show_full_message">Mostrar mensaxe completa…</string>
     <string name="show_full_message_in_browser">Mostrar mensaxe completa no navegador…</string>
+    <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
+    <string name="mark_all_as_read">Marcar Todo como lido</string>
+    <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
+    <string name="mark_as_read_short">Ler</string>
     <!-- Placeholder text when something is loading -->
     <string name="loading">Cargando…</string>
     <string name="hide">Ocultar</string>
@@ -204,6 +208,8 @@
     <string name="menu_add_attachment">Engadir anexo</string>
     <string name="menu_leave_group">Deixar grupo</string>
     <string name="menu_delete_chat">Eliminar conversa</string>
+    <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
+    <string name="clear_chat">Limpar Chat</string>
     <string name="ask_delete_named_chat">Tes a certeza de querer eliminar \"%1$s\"?</string>
     <string name="menu_delete_messages">Eliminar mensaxes</string>
     <string name="delete_contact">Eliminar contacto</string>
@@ -451,6 +457,7 @@
     <string name="tab_video_empty_hint">Os vídeos compartidos neste chat serán visibles aquí.</string>
     <string name="tab_audio_empty_hint">Os ficheiros de Audio e de Mensaxes de Voz compartidos neste chat serán mostrados aquí.</string>
     <string name="tab_webxdc_empty_hint">As apps privadas compartidas neste chat aparecerán aquí.</string>
+    <string name="tab_all_media_empty_hint">O multimedia compartido en calquera chat aparecerá aquí.</string>
     <string name="media_preview">Vista previa dos medios</string>
     <string name="send_message">Enviar mensaxe</string>
     <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
@@ -754,6 +761,9 @@
     <string name="ephemeral_timer_disabled_by_other">Temporizador da eliminación de mensaxes descativado por %1$s.</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to -->
     <string name="ephemeral_timer_seconds_by_you">Estableceches que as mensaxes desaparezan en  %1$s s</string>
+    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
+    <string name="ephemeral_timer_seconds_by_other">O temporizador de desaparición de mensaxes establecido en %1$s segundos por %2$s.</string>
+    <string name="ephemeral_timer_1_minute_by_you">Puxeches en 1 minuto o temporizador de desaparición de mensaxes.</string>
     <string name="devicemsg_self_deleted">Eliminaches o chat \"Mensaxes gardadas\".\n\nℹ️ Para usar \"Mensaxes gardadas\" de novo, crea un novo chat contigo mesmo.</string>
     <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
     <string name="devicemsg_storage_exceeding">⚠️ A almacenaxe do teu provedor vaise esgotar, xa utilizaches %1$s %%.\n\nPode que non recibas mensaxes cando a almacenaxe chegue a 100%% utilizado.\n\n👉 Mira se podes eliminar datos antigos na interface web do teu provedor e pensa se debes activar \"Axustes / Eliminar Mensaxes Antigas\". Podes ver a almacenaxe actual utilizada en \"Axustes / Conectividade\".</string>

@@ -178,8 +178,8 @@
     <!-- "App" is used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_app">Личное приложение</string>
     <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
-    <string name="webxdc_apps">Личные приложения</string>
-    <string name="files_and_webxdx_apps">Файлы и личные приложения</string>
+    <string name="webxdc_apps">Приложения</string>
+    <string name="files_and_webxdx_apps">Файлы и приложения</string>
     <string name="unknown">Неизвестно</string>
 
     <string name="green">Зелёный</string>
@@ -224,6 +224,8 @@
     <string name="menu_add_attachment">Прикрепить вложение</string>
     <string name="menu_leave_group">Покинуть группу</string>
     <string name="menu_delete_chat">Удалить чат</string>
+    <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
+    <string name="clear_chat">Очистить чат</string>
     <string name="ask_delete_named_chat">Вы уверены, что хотите удалить \"%1$s\"?</string>
     <string name="menu_delete_messages">Удалить сообщения</string>
     <string name="delete_contact">Удалить контакт</string>
@@ -484,7 +486,8 @@
     <string name="tab_image_empty_hint">Изображения, размещённые в этом чате, будут отображаться здесь.</string>
     <string name="tab_video_empty_hint">Видео, размещённые в этом чате, будут отображаться здесь.</string>
     <string name="tab_audio_empty_hint">Аудиофайлы и голосовые сообщения, размещённые в этом чате, будут отображаться здесь.</string>
-    <string name="tab_webxdc_empty_hint">Личные приложения, отправленные в этот чат, появятся здесь.</string>
+    <string name="tab_webxdc_empty_hint">Приложения, отправленные в этот чат, появятся здесь.</string>
+    <string name="tab_all_media_empty_hint">Медиафайлы, отправленные в этот чат, появятся здесь.</string>
     <string name="media_preview">Предпросмотр медиафайлов</string>
     <string name="send_message">Отправить сообщение</string>
     <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
@@ -1024,7 +1027,7 @@
     <string name="notifications_avg_hours">В среднем каждые %1$d часов</string>
     <string name="last_check_at">Проверено в %1$s</string>
     <!-- iOS webxdc selector -->
-    <string name="webxdc_selector_empty_hint">Личные приложения, полученные или отправленные в любом чате, появятся здесь. «Файлы» показывают недавно загруженные личные приложения.</string>
+    <string name="webxdc_selector_empty_hint">Приложения, полученные или отправленные в любом чате, появятся здесь. «Файлы» показывают недавно загруженные личные приложения.</string>
     <!-- iOS webxdc shortcut page -->
     <string name="shortcut_step1_tap_share_btn">Нажмите кнопку «поделиться»</string>
     <string name="shortcut_step2_tap_add_to_home_screen">Выберите «Добавить на главный экран», чтобы добавить приложение на ваш главный экран.</string>
