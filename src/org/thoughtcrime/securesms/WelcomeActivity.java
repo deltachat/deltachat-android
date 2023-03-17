@@ -362,6 +362,13 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
 
         if (eventId== DcContext.DC_EVENT_IMEX_PROGRESS ) {
             long progress = event.getData1Int();
+            if (progressDialog == null || notificationController == null) {
+                // IMEX runs in BackupTransferActivity
+                if (progress == 1000) {
+                    finish();  // transfer done - remove ourself from the activity stack (finishAffinity is available in API 16, we're targeting API 14)
+                }
+                return;
+            }
             if (progress==0/*error/aborted*/) {
                 if (!imexUserAborted) {
                   progressError(dcContext.getLastError());

@@ -2,6 +2,7 @@ package org.thoughtcrime.securesms.qr;
 
 import static org.thoughtcrime.securesms.PassphraseRequiredActionBarActivity.LOCALE_EXTRA;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -13,6 +14,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import org.thoughtcrime.securesms.BaseActionBarActivity;
+import org.thoughtcrime.securesms.ConversationListActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.service.GenericForegroundService;
@@ -139,7 +141,9 @@ public class BackupTransferActivity extends BaseActionBarActivity {
     }
 
     private void doFinish() {
-        // TODO: for receiver, launch chatlist and remove welcome
+        if (transferMode == TransferMode.RECEIVER_SCAN_QR && transferState == TransferState.TRANSFER_SUCCESS) {
+            startActivity(new Intent(getApplicationContext(), ConversationListActivity.class));
+        }
         finish();
     }
 
