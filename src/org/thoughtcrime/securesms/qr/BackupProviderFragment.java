@@ -110,7 +110,7 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
                 percentMax = 100;
                 statusLineText = String.format(Locale.getDefault(), "Prepare... %d%%", percent);
             } else if(permille == 500) {
-                statusLineText = String.format(Locale.getDefault(), "Waiting for connection...");
+                statusLineText = String.format(Locale.getDefault(), "Waiting for receiver...");
             } else if (permille < 1000) {
                 percent = (permille-500)/5;
                 percentMax = 100;
