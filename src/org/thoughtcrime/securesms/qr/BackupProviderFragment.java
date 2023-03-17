@@ -40,7 +40,7 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON); // keeping the screen on also avoids falling back from IDLE to POLL
+        getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     }
 
     @Override
