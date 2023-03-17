@@ -1,13 +1,19 @@
 package org.thoughtcrime.securesms.qr;
 
+import static org.thoughtcrime.securesms.PassphraseRequiredActionBarActivity.LOCALE_EXTRA;
+
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import androidx.annotation.IdRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.Fragment;
 
-import org.thoughtcrime.securesms.PassphraseRequiredActionBarActivity;
+import org.thoughtcrime.securesms.BaseActionBarActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.service.GenericForegroundService;
@@ -15,7 +21,9 @@ import org.thoughtcrime.securesms.service.NotificationController;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 
-public class BackupTransferActivity extends PassphraseRequiredActionBarActivity {
+import java.util.Locale;
+
+public class BackupTransferActivity extends BaseActionBarActivity {
 
     public enum TransferMode {
         INVALID(0),
@@ -44,19 +52,14 @@ public class BackupTransferActivity extends PassphraseRequiredActionBarActivity 
     NotificationController notificationController;
 
     @Override
-    protected void onPreCreate() {
+    protected void onCreate(Bundle icicle) {
+        super.onCreate(icicle);
         dynamicTheme.onCreate(this);
         dynamicLanguage.onCreate(this);
-    }
-
-    @Override
-    protected void onCreate(Bundle icicle, boolean ready) {
-        super.onCreate(icicle, ready);
 
         transferMode = TransferMode.fromInt(getIntent().getIntExtra(TRANSFER_MODE, TransferMode.INVALID.getInt()));
-        if (transferMode != TransferMode.INVALID) {
-            Toast.makeText(this, "bad transfer mode", Toast.LENGTH_LONG).show();
-            finish();
+        if (transferMode == TransferMode.INVALID) {
+          throw new RuntimeException("bad transfer mode");
         }
 
         DcHelper.getAccounts(this).stopIo();
@@ -130,4 +133,19 @@ public class BackupTransferActivity extends PassphraseRequiredActionBarActivity 
                 break;
         }
     }
+
+  protected <T extends Fragment> T initFragment(@IdRes int target,
+                                                @NonNull T fragment,
+                                                @Nullable Locale locale,
+                                                @Nullable Bundle extras)
+  {
+      Bundle args = new Bundle();
+      args.putSerializable(LOCALE_EXTRA, locale);
+      if (extras != null) {
+          args.putAll(extras);
+      }
+      fragment.setArguments(args);
+      getSupportFragmentManager().beginTransaction().replace(target, fragment).commitAllowingStateLoss();
+      return fragment;
+  }
 }

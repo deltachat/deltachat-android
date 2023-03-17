@@ -32,6 +32,7 @@ import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.AttachmentManager;
 import org.thoughtcrime.securesms.permissions.Permissions;
+import org.thoughtcrime.securesms.qr.BackupTransferActivity;
 import org.thoughtcrime.securesms.qr.QrCodeHandler;
 import org.thoughtcrime.securesms.qr.RegistrationQrActivity;
 import org.thoughtcrime.securesms.service.GenericForegroundService;
@@ -125,6 +126,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
         super.onStart();
         String qrAccount = getIntent().getStringExtra(QR_ACCOUNT_EXTRA);
         if (qrAccount!=null) {
+            getIntent().removeExtra(QR_ACCOUNT_EXTRA);
             manualConfigure = false;
             startQrAccountCreation(qrAccount);
         }
@@ -287,6 +289,13 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
             progressDialog = null;
         }
 
+        if (dcContext.checkQr(qrCode).getState() == DcContext.DC_QR_BACKUP) {
+            Intent intent = new Intent(this, BackupTransferActivity.class);
+            intent.putExtra(BackupTransferActivity.TRANSFER_MODE, BackupTransferActivity.TransferMode.RECEIVER_SCAN_QR.getInt());
+            startActivity(intent);
+            return;
+        }
+
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage(getResources().getString(R.string.one_moment));
         progressDialog.setCanceledOnTouchOutside(false);
@@ -298,22 +307,12 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
 
         DcHelper.getEventCenter(this).captureNextError();
 
-        if (dcContext.checkQr(qrCode).getState() == DcContext.DC_QR_BACKUP) {
-            notificationController = GenericForegroundService.startForegroundTask(this, getString(R.string.multidevice_title));
-            DcHelper.getAccounts(this).stopIo();
-            new Thread(() -> {
-                Log.i(TAG, "##### receiveBackup() with qr: "+qrCode);
-                boolean res = dcContext.receiveBackup(qrCode);
-                Log.i(TAG, "##### receiveBackup() done with result: "+res);
-            }).start();
-        } else {
-            if (!dcContext.setConfigFromQr(qrCode)) {
-                progressError(dcContext.getLastError());
-                return;
-            }
-            DcHelper.getAccounts(this).stopIo();
-            dcContext.configure();
+        if (!dcContext.setConfigFromQr(qrCode)) {
+            progressError(dcContext.getLastError());
+            return;
         }
+        DcHelper.getAccounts(this).stopIo();
+        dcContext.configure();
     }
 
     private void progressError(String data2) {
