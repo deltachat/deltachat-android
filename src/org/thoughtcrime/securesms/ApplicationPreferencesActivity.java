@@ -46,7 +46,6 @@ import org.thoughtcrime.securesms.preferences.AdvancedPreferenceFragment;
 import org.thoughtcrime.securesms.preferences.AppearancePreferenceFragment;
 import org.thoughtcrime.securesms.preferences.ChatsPreferenceFragment;
 import org.thoughtcrime.securesms.preferences.CorrectedPreferenceFragment;
-import org.thoughtcrime.securesms.preferences.ListSummaryPreferenceFragment;
 import org.thoughtcrime.securesms.preferences.NotificationsPreferenceFragment;
 import org.thoughtcrime.securesms.preferences.widgets.ProfilePreference;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
@@ -110,7 +109,7 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
   {
     super.onActivityResult(requestCode, resultCode, data);
     if (resultCode == RESULT_OK && requestCode == ScreenLockUtil.REQUEST_CODE_CONFIRM_CREDENTIALS) {
-      startActivity(new Intent(this, BackupProviderActivity.class));
+      showBackupProvider();
       return;
     }
     Fragment fragment = getSupportFragmentManager().findFragmentById(android.R.id.content);
@@ -139,6 +138,12 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
     } else if (key.equals(Prefs.LANGUAGE_PREF)) {
       recreate();
     }
+  }
+
+  public void showBackupProvider() {
+    Intent intent = new Intent(this, BackupProviderActivity.class);
+    intent.putExtra(BackupProviderActivity.TRANSFER_MODE, BackupProviderActivity.TransferMode.SENDER_SHOW_QR.getInt());
+    startActivity(intent);
   }
 
   public static class ApplicationPreferenceFragment extends CorrectedPreferenceFragment implements DcEventCenter.DcEventDelegate {
@@ -269,7 +274,7 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
           break;
         case PREFERENCE_CATEGORY_MULTIDEVICE:
           if (!ScreenLockUtil.applyScreenLock(getActivity(), getString(R.string.multidevice_title), ScreenLockUtil.REQUEST_CODE_CONFIRM_CREDENTIALS)) {
-            startActivity(new Intent(getActivity(), BackupProviderActivity.class));
+            ((ApplicationPreferencesActivity)getActivity()).showBackupProvider();
           }
           break;
         case PREFERENCE_CATEGORY_ADVANCED:

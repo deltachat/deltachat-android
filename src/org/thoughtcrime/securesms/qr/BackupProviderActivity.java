@@ -15,10 +15,25 @@ import org.thoughtcrime.securesms.util.DynamicTheme;
 
 public class BackupProviderActivity extends AppCompatActivity {
 
-    public enum TransferState {
-        TRANSFER_UNKNOWN, TRANSFER_ERROR, TRANSFER_SUCCESS;
+    public enum TransferMode {
+        INVALID(0),
+        SENDER_SHOW_QR(1),
+        RECEIVER_SCAN_QR(2);
+        private final int i;
+        TransferMode(int i) { this.i = i; }
+        public int getInt() { return i; }
+        public static TransferMode fromInt(int i) { return values()[i]; }
     };
 
+    public enum TransferState {
+        TRANSFER_UNKNOWN,
+        TRANSFER_ERROR,
+        TRANSFER_SUCCESS;
+    };
+
+    public static final String TRANSFER_MODE = "transfer_mode";
+
+    private TransferMode transferMode = TransferMode.RECEIVER_SCAN_QR;
     private TransferState transferState = TransferState.TRANSFER_UNKNOWN;
 
     private final DynamicTheme dynamicTheme = new DynamicTheme();
@@ -31,6 +46,12 @@ public class BackupProviderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         dynamicTheme.onCreate(this);
         dynamicLanguage.onCreate(this);
+
+        transferMode = TransferMode.fromInt(getIntent().getIntExtra(TRANSFER_MODE, TransferMode.INVALID.getInt()));
+        if (transferMode == TransferMode.INVALID) {
+          throw new RuntimeException("invalid transfer mode");
+        }
+
         notificationController = GenericForegroundService.startForegroundTask(this, getString(R.string.multidevice_title));
 
         setContentView(R.layout.backup_provider_activity);
