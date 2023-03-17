@@ -35,7 +35,6 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
     private DcBackupProvider dcBackupProvider;
 
     private TextView         statusLine;
-    private boolean          transferStarted;
     private SVGImageView     qrImageView;
 
     @Override
@@ -100,6 +99,7 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
 
             Log.i(TAG,"DC_EVENT_IMEX_PROGRESS, " + permille);
             if (permille == 0) {
+              ((BackupProviderActivity)getActivity()).setTransferState(BackupProviderActivity.TransferState.TRANSFER_ERROR);
                 new AlertDialog.Builder(getActivity())
                   .setMessage(dcContext.getLastError())
                   .setPositiveButton(android.R.string.ok, null)
@@ -115,13 +115,13 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
                 percent = (permille-500)/5;
                 percentMax = 100;
                 statusLineText = String.format(Locale.getDefault(), "Transfer... %d%%", percent);
-                if (!transferStarted) {
+                if (qrImageView.getVisibility() != View.GONE) {
                     qrImageView.setVisibility(View.GONE);
                     statusLine.setVisibility(View.VISIBLE);
-                    transferStarted = true;
                 }
             } else if (permille == 1000) {
                 statusLineText = "Done.";
+                ((BackupProviderActivity)getActivity()).setTransferState(BackupProviderActivity.TransferState.TRANSFER_SUCCESS);
             }
 
             statusLine.setText(statusLineText);
