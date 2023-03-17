@@ -94,25 +94,38 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
     public void handleEvent(@NonNull DcEvent event) {
         if (event.getId() == DcContext.DC_EVENT_IMEX_PROGRESS) {
             int permille = event.getData1Int();
+            int percent = 0;
+            int percentMax = 0;
+            String statusLineText = "";
+
             Log.i(TAG,"DC_EVENT_IMEX_PROGRESS, " + permille);
             if (permille == 0) {
-              new AlertDialog.Builder(getActivity())
-                .setMessage(dcContext.getLastError())
-                .setPositiveButton(android.R.string.ok, null)
-                .setCancelable(false)
-                .show();
-            } else if(permille <= 500) {
-                statusLine.setText(String.format(Locale.getDefault(), "Prepare... %d%%", permille/5));
+                new AlertDialog.Builder(getActivity())
+                  .setMessage(dcContext.getLastError())
+                  .setPositiveButton(android.R.string.ok, null)
+                  .setCancelable(false)
+                  .show();
+            } else if(permille < 500) {
+                percent = permille/5;
+                percentMax = 100;
+                statusLineText = String.format(Locale.getDefault(), "Prepare... %d%%", percent);
+            } else if(permille == 500) {
+                statusLineText = String.format(Locale.getDefault(), "Waiting for connection...");
             } else if (permille < 1000) {
-                statusLine.setText(String.format(Locale.getDefault(), "Transfer... %d%%", (permille-500)/5));
+                percent = (permille-500)/5;
+                percentMax = 100;
+                statusLineText = String.format(Locale.getDefault(), "Transfer... %d%%", percent);
                 if (!transferStarted) {
                     qrImageView.setVisibility(View.GONE);
                     statusLine.setVisibility(View.VISIBLE);
                     transferStarted = true;
                 }
             } else if (permille == 1000) {
-                statusLine.setText("Done.");
+                statusLineText = "Done.";
             }
+
+            statusLine.setText(statusLineText);
+            ((BackupProviderActivity)getActivity()).notificationController.setProgress(percentMax, percent, statusLineText);
         }
     }
 }

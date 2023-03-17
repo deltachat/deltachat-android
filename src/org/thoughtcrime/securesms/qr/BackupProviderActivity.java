@@ -7,6 +7,8 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.service.GenericForegroundService;
+import org.thoughtcrime.securesms.service.NotificationController;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 
@@ -15,20 +17,28 @@ public class BackupProviderActivity extends AppCompatActivity {
     private final DynamicTheme dynamicTheme = new DynamicTheme();
     private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
 
-    BackupProviderFragment fragment;
+    NotificationController notificationController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         dynamicTheme.onCreate(this);
         dynamicLanguage.onCreate(this);
+        notificationController = GenericForegroundService.startForegroundTask(this, getString(R.string.multidevice_title));
 
         setContentView(R.layout.backup_provider_activity);
-        fragment = (BackupProviderFragment)getSupportFragmentManager().findFragmentById(R.id.backup_provider_fragment);
 
         ActionBar supportActionBar = getSupportActionBar();
         supportActionBar.setDisplayHomeAsUpEnabled(true);
         supportActionBar.setTitle(R.string.multidevice_title);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (isFinishing()) {
+            notificationController.close();
+        }
     }
 
     @Override
