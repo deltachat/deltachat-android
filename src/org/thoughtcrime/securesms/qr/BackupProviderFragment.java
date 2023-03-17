@@ -97,17 +97,19 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
 
             Log.i(TAG,"DC_EVENT_IMEX_PROGRESS, " + permille);
             if (permille == 0) {
-              ((BackupTransferActivity)getActivity()).setTransferState(BackupTransferActivity.TransferState.TRANSFER_ERROR);
+                ((BackupTransferActivity)getActivity()).setTransferState(BackupTransferActivity.TransferState.TRANSFER_ERROR);
                 new AlertDialog.Builder(getActivity())
                   .setMessage(dcContext.getLastError())
                   .setPositiveButton(android.R.string.ok, null)
                   .setCancelable(false)
                   .show();
-            } else if(permille < 400) {
-                percent = permille * 100 / 400;
-                percentMax = 100;
-                statusLineText = String.format(Locale.getDefault(), "Prepare... %d%%", percent);
-            } else if(permille == 400) {
+            } else if(permille <= 100) {
+                statusLineText = String.format(Locale.getDefault(), "Exporting database...");
+            } else if(permille <= 300) {
+              statusLineText = String.format(Locale.getDefault(), "Creating collection...");
+            } else if(permille <= 350) {
+              statusLineText = String.format(Locale.getDefault(), "Collection created.");
+            } else if(permille <= 400) {
                 statusLineText = String.format(Locale.getDefault(), "Waiting for receiver...");
             } else if(permille <= 450) {
               statusLineText = String.format(Locale.getDefault(), "Receiver connected...");
