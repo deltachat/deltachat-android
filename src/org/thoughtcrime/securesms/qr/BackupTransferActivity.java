@@ -13,7 +13,7 @@ import org.thoughtcrime.securesms.service.NotificationController;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 
-public class BackupProviderActivity extends AppCompatActivity {
+public class BackupTransferActivity extends AppCompatActivity {
 
     public enum TransferMode {
         INVALID(0),

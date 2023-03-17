@@ -294,7 +294,7 @@
               android:theme="@style/TextSecure.LightTheme"
               android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
 
-    <activity android:name=".qr.BackupProviderActivity"
+    <activity android:name=".qr.BackupTransferActivity"
               android:theme="@style/TextSecure.LightTheme"
               android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
 

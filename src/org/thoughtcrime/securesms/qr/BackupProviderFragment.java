@@ -99,7 +99,7 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
 
             Log.i(TAG,"DC_EVENT_IMEX_PROGRESS, " + permille);
             if (permille == 0) {
-              ((BackupProviderActivity)getActivity()).setTransferState(BackupProviderActivity.TransferState.TRANSFER_ERROR);
+              ((BackupTransferActivity)getActivity()).setTransferState(BackupTransferActivity.TransferState.TRANSFER_ERROR);
                 new AlertDialog.Builder(getActivity())
                   .setMessage(dcContext.getLastError())
                   .setPositiveButton(android.R.string.ok, null)
@@ -121,11 +121,11 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
                 }
             } else if (permille == 1000) {
                 statusLineText = "Done.";
-                ((BackupProviderActivity)getActivity()).setTransferState(BackupProviderActivity.TransferState.TRANSFER_SUCCESS);
+                ((BackupTransferActivity)getActivity()).setTransferState(BackupTransferActivity.TransferState.TRANSFER_SUCCESS);
             }
 
             statusLine.setText(statusLineText);
-            ((BackupProviderActivity)getActivity()).notificationController.setProgress(percentMax, percent, statusLineText);
+            ((BackupTransferActivity)getActivity()).notificationController.setProgress(percentMax, percent, statusLineText);
         }
     }
 }

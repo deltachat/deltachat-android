@@ -51,7 +51,7 @@ import org.thoughtcrime.securesms.preferences.widgets.ProfilePreference;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.Prefs;
-import org.thoughtcrime.securesms.qr.BackupProviderActivity;
+import org.thoughtcrime.securesms.qr.BackupTransferActivity;
 import org.thoughtcrime.securesms.util.ScreenLockUtil;
 
 /**
@@ -141,8 +141,8 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
   }
 
   public void showBackupProvider() {
-    Intent intent = new Intent(this, BackupProviderActivity.class);
-    intent.putExtra(BackupProviderActivity.TRANSFER_MODE, BackupProviderActivity.TransferMode.SENDER_SHOW_QR.getInt());
+    Intent intent = new Intent(this, BackupTransferActivity.class);
+    intent.putExtra(BackupTransferActivity.TRANSFER_MODE, BackupTransferActivity.TransferMode.SENDER_SHOW_QR.getInt());
     startActivity(intent);
   }
 
