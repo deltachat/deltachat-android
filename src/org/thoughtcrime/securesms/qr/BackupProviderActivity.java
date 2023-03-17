@@ -89,7 +89,6 @@ public class BackupProviderActivity extends AppCompatActivity {
                     .setMessage("Abort transfer?")
                     .setPositiveButton(android.R.string.ok, (dialogInterface, i) -> finish())
                     .setNegativeButton(R.string.cancel, null)
-                    .setCancelable(false)
                     .show();
                 break;
         }
