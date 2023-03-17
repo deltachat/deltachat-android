@@ -292,6 +292,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
         if (dcContext.checkQr(qrCode).getState() == DcContext.DC_QR_BACKUP) {
             Intent intent = new Intent(this, BackupTransferActivity.class);
             intent.putExtra(BackupTransferActivity.TRANSFER_MODE, BackupTransferActivity.TransferMode.RECEIVER_SCAN_QR.getInt());
+            intent.putExtra(BackupTransferActivity.QR_CODE, qrCode);
             startActivity(intent);
             return;
         }

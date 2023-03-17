@@ -4,7 +4,6 @@ import static org.thoughtcrime.securesms.PassphraseRequiredActionBarActivity.LOC
 
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
@@ -42,6 +41,7 @@ public class BackupTransferActivity extends BaseActionBarActivity {
     };
 
     public static final String TRANSFER_MODE = "transfer_mode";
+    public static final String QR_CODE = "qr_code";
 
     private TransferMode transferMode = TransferMode.RECEIVER_SCAN_QR;
     private TransferState transferState = TransferState.TRANSFER_UNKNOWN;
@@ -71,6 +71,10 @@ public class BackupTransferActivity extends BaseActionBarActivity {
         switch(transferMode) {
             case SENDER_SHOW_QR:
                 initFragment(android.R.id.content, new BackupProviderFragment(), dynamicLanguage.getCurrentLocale(), icicle);
+                break;
+
+          case RECEIVER_SCAN_QR:
+                initFragment(android.R.id.content, new BackupReceiverFragment(), dynamicLanguage.getCurrentLocale(), icicle);
                 break;
         }
 
@@ -121,31 +125,36 @@ public class BackupTransferActivity extends BaseActionBarActivity {
         switch (transferState) {
           case TRANSFER_ERROR:
           case TRANSFER_SUCCESS:
-              finish();
+              doFinish();
               break;
 
           default:
               new AlertDialog.Builder(this)
                     .setMessage("Abort transfer?")
-                    .setPositiveButton(android.R.string.ok, (dialogInterface, i) -> finish())
+                    .setPositiveButton(android.R.string.ok, (dialogInterface, i) -> doFinish())
                     .setNegativeButton(R.string.cancel, null)
                     .show();
                 break;
         }
     }
 
-  protected <T extends Fragment> T initFragment(@IdRes int target,
-                                                @NonNull T fragment,
-                                                @Nullable Locale locale,
-                                                @Nullable Bundle extras)
-  {
-      Bundle args = new Bundle();
-      args.putSerializable(LOCALE_EXTRA, locale);
-      if (extras != null) {
-          args.putAll(extras);
-      }
-      fragment.setArguments(args);
-      getSupportFragmentManager().beginTransaction().replace(target, fragment).commitAllowingStateLoss();
-      return fragment;
-  }
+    private void doFinish() {
+        // TODO: for receiver, launch chatlist and remove welcome
+        finish();
+    }
+
+    protected <T extends Fragment> T initFragment(@IdRes int target,
+                                                  @NonNull T fragment,
+                                                  @Nullable Locale locale,
+                                                  @Nullable Bundle extras)
+    {
+        Bundle args = new Bundle();
+        args.putSerializable(LOCALE_EXTRA, locale);
+        if (extras != null) {
+            args.putAll(extras);
+        }
+        fragment.setArguments(args);
+        getSupportFragmentManager().beginTransaction().replace(target, fragment).commitAllowingStateLoss();
+        return fragment;
+    }
 }
