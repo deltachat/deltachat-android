@@ -299,6 +299,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
         DcHelper.getEventCenter(this).captureNextError();
 
         if (dcContext.checkQr(qrCode).getState() == DcContext.DC_QR_BACKUP) {
+            notificationController = GenericForegroundService.startForegroundTask(this, getString(R.string.multidevice_title));
             DcHelper.getAccounts(this).stopIo();
             new Thread(() -> {
                 Log.i(TAG, "##### receiveBackup() with qr: "+qrCode);
