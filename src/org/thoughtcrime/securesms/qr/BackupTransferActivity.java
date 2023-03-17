@@ -9,6 +9,7 @@ import androidx.appcompat.app.AlertDialog;
 
 import org.thoughtcrime.securesms.PassphraseRequiredActionBarActivity;
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.service.GenericForegroundService;
 import org.thoughtcrime.securesms.service.NotificationController;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
@@ -58,6 +59,8 @@ public class BackupTransferActivity extends PassphraseRequiredActionBarActivity 
             finish();
         }
 
+        DcHelper.getAccounts(this).stopIo();
+
         notificationController = GenericForegroundService.startForegroundTask(this, getString(R.string.multidevice_title));
 
         setContentView(R.layout.backup_provider_activity);
@@ -78,6 +81,7 @@ public class BackupTransferActivity extends PassphraseRequiredActionBarActivity 
         super.onPause();
         if (isFinishing()) {
             notificationController.close();
+            DcHelper.getAccounts(this).startIo();
         }
     }
 

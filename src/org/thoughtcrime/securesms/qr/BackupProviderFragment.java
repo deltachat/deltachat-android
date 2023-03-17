@@ -52,7 +52,6 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
         statusLine.setText(R.string.one_moment);
 
         dcContext = DcHelper.getContext(getActivity());
-        dcContext.stopIo();
         DcHelper.getEventCenter(getActivity()).addObserver(DcContext.DC_EVENT_IMEX_PROGRESS, this);
 
         new Thread(() -> {
@@ -83,7 +82,6 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
     @Override
     public void onDestroyView() {
         dcContext.stopOngoingProcess();
-        dcContext.startIo();
         dcBackupProvider.unref();
         super.onDestroyView();
         DcHelper.getEventCenter(getActivity()).removeObservers(this);
