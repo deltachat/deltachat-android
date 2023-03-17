@@ -89,8 +89,9 @@ public class BackupReceiverFragment extends Fragment implements DcEventCenter.Dc
                 percentMax = 100;
                 statusLineText = String.format(Locale.getDefault(), "Transfer... %d%%", percent);
             } else if (permille == 1000) {
-                statusLineText = "Done.";
                 ((BackupTransferActivity)getActivity()).setTransferState(BackupTransferActivity.TransferState.TRANSFER_SUCCESS);
+                ((BackupTransferActivity)getActivity()).doFinish();
+                return;
             }
 
             statusLine.setText(statusLineText);

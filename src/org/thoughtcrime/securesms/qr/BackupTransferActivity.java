@@ -140,7 +140,7 @@ public class BackupTransferActivity extends BaseActionBarActivity {
         }
     }
 
-    private void doFinish() {
+    public void doFinish() {
         if (transferMode == TransferMode.RECEIVER_SCAN_QR && transferState == TransferState.TRANSFER_SUCCESS) {
             startActivity(new Intent(getApplicationContext(), ConversationListActivity.class));
         }
