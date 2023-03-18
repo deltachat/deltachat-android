@@ -168,10 +168,10 @@
     <string name="file">File</string>
     <string name="files">Files</string>
     <!-- "App" is used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
-    <string name="webxdc_app">App Privata</string>
+    <string name="webxdc_app">App</string>
     <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
-    <string name="webxdc_apps">App Private</string>
-    <string name="files_and_webxdx_apps">Files e App Private</string>
+    <string name="webxdc_apps">Apps</string>
+    <string name="files_and_webxdx_apps">Files e App</string>
     <string name="unknown">Sconosciuto</string>
 
     <string name="green">Verde</string>
@@ -217,7 +217,7 @@
     <string name="menu_leave_group">Abbandona Gruppo</string>
     <string name="menu_delete_chat">Elimina Chat</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
-    <string name="clear_chat">Pulisci Chat</string>
+    <string name="clear_chat">Cancella Messaggi</string>
     <string name="ask_delete_named_chat">Sei sicuro di voler eliminare \"%1$s\"?</string>
     <string name="menu_delete_messages">Elimina Messaggi</string>
     <string name="delete_contact">Elimina Contatto</string>
