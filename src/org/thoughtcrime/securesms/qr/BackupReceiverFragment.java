@@ -45,7 +45,7 @@ public class BackupReceiverFragment extends Fragment implements DcEventCenter.Dc
         View view = inflater.inflate(R.layout.backup_provider_fragment, container, false);
         statusLine = view.findViewById(R.id.status_line);
 
-        statusLine.setText(R.string.one_moment);
+        statusLine.setText("Connecting...");
 
         dcContext = DcHelper.getContext(getActivity());
         DcHelper.getEventCenter(getActivity()).addObserver(DcContext.DC_EVENT_IMEX_PROGRESS, this);
