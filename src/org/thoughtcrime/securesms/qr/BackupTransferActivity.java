@@ -4,6 +4,7 @@ import static org.thoughtcrime.securesms.PassphraseRequiredActionBarActivity.LOC
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 
 import androidx.annotation.IdRes;
@@ -15,6 +16,7 @@ import androidx.fragment.app.Fragment;
 
 import org.thoughtcrime.securesms.BaseActionBarActivity;
 import org.thoughtcrime.securesms.ConversationListActivity;
+import org.thoughtcrime.securesms.LogViewActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.service.GenericForegroundService;
@@ -102,6 +104,12 @@ public class BackupTransferActivity extends BaseActionBarActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.backup_transfer_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
     public void onBackPressed() {
         finishOrAskToFinish();
     }
@@ -113,6 +121,9 @@ public class BackupTransferActivity extends BaseActionBarActivity {
         switch (item.getItemId()) {
             case android.R.id.home:
                 finishOrAskToFinish();
+                return true;
+            case R.id.view_log_button:
+                startActivity(new Intent(this, LogViewActivity.class));
                 return true;
         }
 
