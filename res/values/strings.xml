@@ -627,7 +627,8 @@
     <string name="pref_managekeys_import_explain">Import secret keys from \"%1$s\"?\n\n• Existing secret keys will not be deleted\n\n• The last imported key will be used as the new default key unless it has the word \"legacy\" in its filename.</string>
     <string name="pref_managekeys_secret_keys_exported_to_x">Secret keys written successfully to \"%1$s\".</string>
     <string name="pref_managekeys_secret_keys_imported_from_x">Secret keys imported from \"%1$s\".</string>
-    <string name="pref_background">Background</string>
+    <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
+    <string name="pref_background">Wallpaper</string>
     <string name="pref_background_btn_default">Use Default Image</string>
     <string name="pref_background_btn_gallery">Select From Gallery</string>
     <string name="pref_imap_folder_handling">IMAP Folder Handling</string>
@@ -647,7 +648,7 @@
     <string name="pref_on_demand_location_streaming">On-demand Location Streaming</string>
     <string name="pref_developer_mode">Developer Mode</string>
     <string name="pref_developer_mode_explain">Activates debugging options and can make the app less stable. For developers only.</string>
-    <string name="pref_background_default">Default background</string>
+    <string name="pref_background_default">Default image</string>
     <string name="pref_background_default_color">Default color</string>
     <string name="pref_background_custom_image">Custom image</string>
     <string name="pref_background_custom_color">Custom color</string>
@@ -971,7 +972,7 @@
     <string name="a11y_delivery_status_read">Delivery status: Read</string>
     <string name="a11y_delivery_status_invalid">Invalid delivery status</string>
     <string name="a11y_message_context_menu_btn_label">Message actions</string>
-    <string name="a11y_background_preview_label">Background preview</string>
+    <string name="a11y_background_preview_label">Wallpaper preview</string>
     <string name="a11y_disappearing_messages_activated">Disappearing messages activated</string>
 
     <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
