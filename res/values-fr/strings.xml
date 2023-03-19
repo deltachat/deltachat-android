@@ -642,6 +642,7 @@
     <string name="pref_managekeys_import_explain">Importer les clés secrètes depuis \"%1$s\" ?\n\n• Les clés secrètes existantes ne seront pas détruites\n\n• La dernière clé importée sera utilisée comme nouvelle clé par défaut à moins qu\'il y ait le mot \"legacy\" dans son nom de fichier.</string>
     <string name="pref_managekeys_secret_keys_exported_to_x">Les clés secrètes ont été écrites avec succès vers \"%1$s\".</string>
     <string name="pref_managekeys_secret_keys_imported_from_x">Les clés secrètes ont été importées depuis \"%1$s\".</string>
+    <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Arrière-plan</string>
     <string name="pref_background_btn_default">Utilisez l\'image par défaut</string>
     <string name="pref_background_btn_gallery">Sélectionner depuis la galerie</string>

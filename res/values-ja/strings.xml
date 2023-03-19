@@ -491,6 +491,7 @@ https://delta.chat</string>
     <string name="pref_managekeys_import_secret_keys">秘密鍵のインポート</string>
     <string name="pref_managekeys_secret_keys_exported_to_x">暗号鍵は%1$sに正常に書き込まれました。</string>
     <string name="pref_managekeys_secret_keys_imported_from_x">暗号鍵は%1$sからインポートされました。</string>
+    <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">背景</string>
     <string name="pref_background_btn_default">デフォルトの画像を使う</string>
     <string name="pref_background_btn_gallery">ギャラリーから選ぶ</string>

@@ -463,6 +463,7 @@
     <string name="pref_managekeys_import_explain">從 %1$s 匯入金鑰?\n\n• 現存的金鑰不會被刪除\n\n• 最後一筆匯入的金鑰將被設為預設的加密金鑰，除非它的檔名內包含 legacy 字樣</string>
     <string name="pref_managekeys_secret_keys_exported_to_x">成功匯出金鑰至 %1$s。</string>
     <string name="pref_managekeys_secret_keys_imported_from_x">成功自 %1$s 匯入金鑰。</string>
+    <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">背景</string>
     <string name="pref_background_btn_default">使用預設圖案</string>
     <string name="pref_background_btn_gallery">從相簿中挑選</string>

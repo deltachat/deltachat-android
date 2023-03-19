@@ -552,6 +552,7 @@
     <string name="pref_managekeys_import_explain">Importo les claus secretes de \"%1$s\"?\n\n• Les claus secretes existents no s\'esborraran\n\n• L\'última clau importada s\'usarà com la nova clau per defecte a menys que tingui la paraula \"legacy\" en el nom de l\'arxiu</string>
     <string name="pref_managekeys_secret_keys_exported_to_x">Les claus secretes s\'han copiat correctament a \"%1$s\".</string>
     <string name="pref_managekeys_secret_keys_imported_from_x">Claus secretes importades de \"%1$s\".</string>
+    <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Fons</string>
     <string name="pref_background_btn_default">Usa la imatge per defecte</string>
     <string name="pref_background_btn_gallery">Tria de la galeria</string>

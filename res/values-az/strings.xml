@@ -356,6 +356,7 @@
     <string name="pref_managekeys_import_secret_keys">Gizli açar idxalı</string>
     <string name="pref_managekeys_secret_keys_exported_to_x">Ehtiyat nüsxə %1$s- ə uğurla yazılmışdır</string>
     <string name="pref_managekeys_secret_keys_imported_from_x"> \"%1$s\" - dən gizli açar idxalı?</string>
+    <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Fon</string>
     <string name="pref_background_btn_default">Hal hazırdaki şəkili istifadə edin</string>
     <string name="pref_background_btn_gallery">Fotoalbomdan götürün</string>

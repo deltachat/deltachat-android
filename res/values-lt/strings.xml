@@ -553,6 +553,7 @@
     <string name="pref_managekeys_import_explain">Importuoti slaptus raktus iš \"%1$s\"?\n\n• Esami raktai nebus ištrinti\n\n• Paskutinis importuotas raktas bus naudojamas kaip naujas numatytasis raktas, nebent jo failo pavadinime bus žodis \"legacy\"</string>
     <string name="pref_managekeys_secret_keys_exported_to_x">Slapti raktai sėkmingai įrašyti į \"%1$s\".</string>
     <string name="pref_managekeys_secret_keys_imported_from_x">Slapti raktai importuoti iš \"%1$s\".</string>
+    <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Fonas</string>
     <string name="pref_background_btn_default">Naudoti numatytąjį paveikslą</string>
     <string name="pref_background_btn_gallery">Pasirinkti iš galerijos</string>

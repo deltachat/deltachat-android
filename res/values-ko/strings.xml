@@ -596,6 +596,7 @@
     <string name="pref_managekeys_import_explain">\"%1$s\"에서 암호 키를 가져오시겠습니까?\n\n• 기존 개인 키는 삭제되지 않습니다\n\n• 마지막으로 가져온 키는 파일 이름에 \"레거시\"라는 단어가 없는 한 새 기본 키로 사용됩니다.</string>
     <string name="pref_managekeys_secret_keys_exported_to_x">암호 키가 \"%1$s\"에 기록되었습니다.</string>
     <string name="pref_managekeys_secret_keys_imported_from_x">암호 키를 \"%1$s\"에서 가져왔습니다.</string>
+    <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">채팅방 배경화면</string>
     <string name="pref_background_btn_default">기본 이미지 사용</string>
     <string name="pref_background_btn_gallery">갤러리에서 선택됨</string>

@@ -560,6 +560,7 @@
     <string name="pref_managekeys_import_explain">នាំចូលកូនសោរសម្ងាត់ពី \"%1$s\"?\n\n• កូនសោរសម្ងាត់ដែលមានស្រាប់នឹងមិនបានលុបទេ\n\n•កូនសោរដែលនាំចូលចុងក្រោយនឹងបានប្រើប្រាស់ដូចជា លំនាំថ្មីលើកលែងតែវាមានពាក្យ \"legacy\" ក្នុងឈ្មោះឯកសាររបស់វា។</string>
     <string name="pref_managekeys_secret_keys_exported_to_x">បានសរសេរកូនសោរសម្ងាត់ ដោយជោគជ័យទៅ \"%1$s\"</string>
     <string name="pref_managekeys_secret_keys_imported_from_x">បាននាំចូលកូនសោរសម្ងាត់ពី \"%1$s\"</string>
+    <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">ផ្ទៃខាងក្រោយ</string>
     <string name="pref_background_btn_default">ប្រើប្រាស់រូបភាពលំនាំដើម</string>
     <string name="pref_background_btn_gallery">ជ្រើសរើសពីវិចិត្រសាល</string>

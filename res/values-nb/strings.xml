@@ -350,6 +350,7 @@
     <string name="pref_managekeys_export_secret_keys">Eksporter private nøkler</string>
     <string name="pref_managekeys_import_secret_keys">Importer private nøkler</string>
     <string name="pref_managekeys_import_explain">Importer private nøkler fra %1$s?\n\n• Eksisterende private nøkler blir ikke slettet\n\n• Den sist importerte nøkkelen vil bli brukt som ny forvalgt nøkkel</string>
+    <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Sludrebakgrunn</string>
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>

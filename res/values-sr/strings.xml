@@ -639,6 +639,7 @@
     <string name="pref_managekeys_import_explain">Да увезем тајне кључеве из „%1$s“?\n\n• Постојећи тајни кључеви неће бити обрисани\n\n• Последњи увезени кључ ће бити коришћен као нови подразумевани кључ ако у имену фајла не буде имао реч „legacy“.</string>
     <string name="pref_managekeys_secret_keys_exported_to_x">Записивање тајних кључева је успешно до „%1$s“.</string>
     <string name="pref_managekeys_secret_keys_imported_from_x">Тајни кључеви су увезени из „%1$s“.</string>
+    <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Позадина</string>
     <string name="pref_background_btn_default">Користи дату слику</string>
     <string name="pref_background_btn_gallery">Изабери из галерије</string>

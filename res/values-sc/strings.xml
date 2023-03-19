@@ -443,6 +443,7 @@
     <string name="pref_managekeys_import_explain">Cheres importare sas craes segretas dae \"%1$s\"?\n\n• Sas craes de como no ant a èssere iscantzelladas\n\n• S\'ùrtima crae importada at a èssere impreada comente crae predefinida francu chi tèngiat sa paràula \"legacy\" in su nùmene de su documentu suo.</string>
     <string name="pref_managekeys_secret_keys_exported_to_x">Craes segretas sarvadas in \"%1$s\" chene problemas.</string>
     <string name="pref_managekeys_secret_keys_imported_from_x">Craes segredas importadas dae \"%1$s\".</string>
+    <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Isfundu</string>
     <string name="pref_background_btn_default">Imprea s\'immàgine predefinida</string>
     <string name="pref_background_btn_gallery">Ischerta dae sa galleria</string>

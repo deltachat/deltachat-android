@@ -579,6 +579,7 @@
     <string name="pref_managekeys_import_explain">Да бъдат ли импортирани тайните ключове от \"%1$s\"?\n\n• Съществуващите тайни ключове няма да бъдат изтрити\n\n• Последният импортиран ключ ще стане новият подразбиращ се ключ, освен в случай че съдържа думата \"legacy\" в името на файла си.</string>
     <string name="pref_managekeys_secret_keys_exported_to_x">Тайните ключове са записани успешно в \"%1$s\".</string>
     <string name="pref_managekeys_secret_keys_imported_from_x">Тайните ключове са импортирани от \"%1$s\".</string>
+    <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Фон</string>
     <string name="pref_background_btn_default">Да се използва подразбиращото се изображение</string>
     <string name="pref_background_btn_gallery">Избор от галерията</string>

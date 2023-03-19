@@ -612,6 +612,7 @@
     <string name="pref_managekeys_import_explain">从“%1$s”导入密钥？\n\n• 现有密钥不会被删除。\n\n• 除非最后导入的密钥文件名中带有单词\"legacy\"，否则它将会被用作新的默认密钥。</string>
     <string name="pref_managekeys_secret_keys_exported_to_x">密钥已成功写入至\"%1$s\"。</string>
     <string name="pref_managekeys_secret_keys_imported_from_x">密钥已从\"%1$s\"导入。</string>
+    <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">背景</string>
     <string name="pref_background_btn_default">使用默认图像</string>
     <string name="pref_background_btn_gallery">从图库中选择</string>

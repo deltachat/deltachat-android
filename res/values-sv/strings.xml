@@ -490,6 +490,7 @@
     <string name="pref_managekeys_import_explain">Importera säkerhetsnycklar från \"%1$s\"?\n\n• Befintliga säkerhetsnycklar kommer inte att tas bort\n\n• Den senast importerade nyckeln kommer att användas som ny standardnyckel, om den inte har ordet \"legacy\" i sitt filnamn.</string>
     <string name="pref_managekeys_secret_keys_exported_to_x">Säkerhetsnycklar korrekt skrivna till \"%1$s\".</string>
     <string name="pref_managekeys_secret_keys_imported_from_x">Säkerhetsnycklar importerade från \"%1$s\".</string>
+    <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Bakgrund</string>
     <string name="pref_background_btn_default">Använd standardbild</string>
     <string name="pref_background_btn_gallery">Välj från galleriet</string>
