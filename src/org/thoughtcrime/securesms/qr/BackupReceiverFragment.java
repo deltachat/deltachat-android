@@ -73,11 +73,7 @@ public class BackupReceiverFragment extends Fragment implements DcEventCenter.Dc
             Log.i(TAG,"DC_EVENT_IMEX_PROGRESS, " + permille);
             if (permille == 0) {
                 ((BackupTransferActivity)getActivity()).setTransferState(BackupTransferActivity.TransferState.TRANSFER_ERROR);
-                new AlertDialog.Builder(getActivity())
-                    .setMessage(dcContext.getLastError())
-                    .setPositiveButton(android.R.string.ok, null)
-                    .setCancelable(false)
-                    .show();
+                ((BackupTransferActivity)getActivity()).showLastErrorAlert("Receiving Error");
             } else if (permille < 1000) {
                 percent = permille/10;
                 percentMax = 100;

@@ -95,12 +95,14 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
             int permille = event.getData1Int();
             int percent = 0;
             int percentMax = 0;
+            boolean hideQrCode = false;
             String statusLineText = "";
 
             Log.i(TAG,"DC_EVENT_IMEX_PROGRESS, " + permille);
             if (permille == 0) {
                 ((BackupTransferActivity)getActivity()).setTransferState(BackupTransferActivity.TransferState.TRANSFER_ERROR);
-                ((BackupTransferActivity)getActivity()).showLastErrorAlert("Error");
+                ((BackupTransferActivity)getActivity()).showLastErrorAlert("Sending Error");
+                hideQrCode = true;
             } else if(permille <= 100) {
                 statusLineText = "Exporting database...";
             } else if(permille <= 300) {
@@ -111,21 +113,24 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
                 statusLineText = "Waiting for receiver...";
             } else if(permille <= 450) {
                 statusLineText = "Receiver connected...";
+                hideQrCode = true;
             } else if (permille < 1000) {
                 percent = (permille-450)/5;
                 percentMax = 100;
                 statusLineText = String.format(Locale.getDefault(), "Transfer... %d%%", percent);
-                if (qrImageView.getVisibility() != View.GONE) {
-                    qrImageView.setVisibility(View.GONE);
-                    statusLine.setVisibility(View.VISIBLE);
-                }
+                hideQrCode = true;
             } else if (permille == 1000) {
                 statusLineText = "Done.";
                 ((BackupTransferActivity)getActivity()).setTransferState(BackupTransferActivity.TransferState.TRANSFER_SUCCESS);
+                hideQrCode = true;
             }
 
             statusLine.setText(statusLineText);
             ((BackupTransferActivity)getActivity()).notificationController.setProgress(percentMax, percent, statusLineText);
+            if (hideQrCode && qrImageView.getVisibility() != View.GONE) {
+                qrImageView.setVisibility(View.GONE);
+                statusLine.setVisibility(View.VISIBLE);
+            }
         }
     }
 }
