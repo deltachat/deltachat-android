@@ -9,7 +9,6 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import com.b44t.messenger.DcBackupProvider;
@@ -103,15 +102,15 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
                 ((BackupTransferActivity)getActivity()).setTransferState(BackupTransferActivity.TransferState.TRANSFER_ERROR);
                 ((BackupTransferActivity)getActivity()).showLastErrorAlert("Error");
             } else if(permille <= 100) {
-                statusLineText = String.format(Locale.getDefault(), "Exporting database...");
+                statusLineText = "Exporting database...";
             } else if(permille <= 300) {
-              statusLineText = String.format(Locale.getDefault(), "Creating collection...");
+                statusLineText = "Creating collection...";
             } else if(permille <= 350) {
-              statusLineText = String.format(Locale.getDefault(), "Collection created.");
+                statusLineText = "Collection created.";
             } else if(permille <= 400) {
-                statusLineText = String.format(Locale.getDefault(), "Waiting for receiver...");
+                statusLineText = "Waiting for receiver...";
             } else if(permille <= 450) {
-              statusLineText = String.format(Locale.getDefault(), "Receiver connected...");
+                statusLineText = "Receiver connected...";
             } else if (permille < 1000) {
                 percent = (permille-450)/5;
                 percentMax = 100;
