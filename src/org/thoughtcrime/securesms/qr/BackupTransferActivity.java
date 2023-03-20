@@ -158,6 +158,25 @@ public class BackupTransferActivity extends BaseActionBarActivity {
         finish();
     }
 
+    public void showLastErrorAlert(@NonNull String errorContext) {
+        String lastError = DcHelper.getContext(this).getLastError();
+        if (lastError.isEmpty()) {
+          lastError = "<last error not set>";
+        }
+
+        String error = errorContext;
+        if (!error.isEmpty()) {
+            error += ": ";
+        }
+        error += lastError;
+
+        new AlertDialog.Builder(this)
+          .setMessage(error)
+          .setPositiveButton(android.R.string.ok, null)
+          .setCancelable(false)
+          .show();
+    }
+
     protected <T extends Fragment> T initFragment(@IdRes int target,
                                                   @NonNull T fragment,
                                                   @Nullable Locale locale,

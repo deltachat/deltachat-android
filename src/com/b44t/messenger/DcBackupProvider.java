@@ -6,6 +6,10 @@ public class DcBackupProvider {
         this.backupProviderCPtr = backupProviderCPtr;
     }
 
+    public boolean isOk() {
+      return backupProviderCPtr != 0;
+    }
+
     @Override protected void finalize() throws Throwable {
         super.finalize();
         unref();

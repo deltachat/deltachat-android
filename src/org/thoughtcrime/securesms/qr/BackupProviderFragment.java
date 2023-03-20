@@ -58,22 +58,25 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
             Log.i(TAG, "##### newBackupProvider()");
             dcBackupProvider = dcContext.newBackupProvider();
             Log.i(TAG, "##### newBackupProvider() returned");
-            if (dcBackupProvider != null) {
-                Util.runOnMain(() -> {
-                    statusLine.setVisibility(View.GONE);
-                    try {
-                        SVG svg = SVG.getFromString(QrShowFragment.fixSVG(dcBackupProvider.getQrSvg()));
-                        qrImageView.setSVG(svg);
-                    } catch (SVGParseException e) {
-                        e.printStackTrace();
-                    }
-                    new Thread(() -> {
-                        Log.i(TAG, "##### waitForReceiver() with qr: "+dcBackupProvider.getQr());
-                        dcBackupProvider.waitForReceiver();
-                        Log.i(TAG, "##### done waiting");
-                    }).start();
-                });
-            }
+            Util.runOnMain(() -> {
+                statusLine.setVisibility(View.GONE);
+                if (!dcBackupProvider.isOk()) {
+                    ((BackupTransferActivity)getActivity()).setTransferState(BackupTransferActivity.TransferState.TRANSFER_ERROR);
+                    ((BackupTransferActivity)getActivity()).showLastErrorAlert("Cannot create backup provider; try over in a minute");
+                    return;
+                }
+                try {
+                    SVG svg = SVG.getFromString(QrShowFragment.fixSVG(dcBackupProvider.getQrSvg()));
+                    qrImageView.setSVG(svg);
+                } catch (SVGParseException e) {
+                    e.printStackTrace();
+                }
+                new Thread(() -> {
+                    Log.i(TAG, "##### waitForReceiver() with qr: "+dcBackupProvider.getQr());
+                    dcBackupProvider.waitForReceiver();
+                    Log.i(TAG, "##### done waiting");
+                }).start();
+            });
         }).start();
 
         return view;
@@ -98,11 +101,7 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
             Log.i(TAG,"DC_EVENT_IMEX_PROGRESS, " + permille);
             if (permille == 0) {
                 ((BackupTransferActivity)getActivity()).setTransferState(BackupTransferActivity.TransferState.TRANSFER_ERROR);
-                new AlertDialog.Builder(getActivity())
-                  .setMessage(dcContext.getLastError())
-                  .setPositiveButton(android.R.string.ok, null)
-                  .setCancelable(false)
-                  .show();
+                ((BackupTransferActivity)getActivity()).showLastErrorAlert("Error");
             } else if(permille <= 100) {
                 statusLineText = String.format(Locale.getDefault(), "Exporting database...");
             } else if(permille <= 300) {
