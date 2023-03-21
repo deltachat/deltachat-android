@@ -3,10 +3,13 @@ package org.thoughtcrime.securesms.qr;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -47,6 +50,7 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
         View view = inflater.inflate(R.layout.backup_provider_fragment, container, false);
         statusLine = view.findViewById(R.id.status_line);
         qrImageView = view.findViewById(R.id.qrImage);
+        setHasOptionsMenu(true);
 
         statusLine.setText(R.string.one_moment);
 
@@ -87,6 +91,28 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
         dcBackupProvider.unref();
         super.onDestroyView();
         DcHelper.getEventCenter(getActivity()).removeObservers(this);
+    }
+
+    @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+        menu.findItem(R.id.copy).setVisible(qrImageView.getVisibility() == View.VISIBLE);
+        super.onPrepareOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+      super.onOptionsItemSelected(item);
+
+      switch (item.getItemId()) {
+        case R.id.copy:
+          if (dcBackupProvider != null) {
+              Util.writeTextToClipboard(getActivity(), dcBackupProvider.getQr());
+              Toast.makeText(getActivity(), getString(R.string.done), Toast.LENGTH_SHORT).show();
+          }
+          return true;
+      }
+
+      return false;
     }
 
     @Override

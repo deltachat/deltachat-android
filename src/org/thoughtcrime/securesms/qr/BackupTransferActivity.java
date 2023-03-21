@@ -105,9 +105,10 @@ public class BackupTransferActivity extends BaseActionBarActivity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        menu.clear();
         getMenuInflater().inflate(R.menu.backup_transfer_menu, menu);
-        return super.onCreateOptionsMenu(menu);
+        return super.onPrepareOptionsMenu(menu);
     }
 
     @Override
