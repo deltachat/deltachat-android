@@ -47,7 +47,7 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.backup_provider_fragment, container, false);
+        View view = inflater.inflate(R.layout.backup_transfer_fragment, container, false);
         statusLine = view.findViewById(R.id.status_line);
         qrImageView = view.findViewById(R.id.qrImage);
         setHasOptionsMenu(true);
