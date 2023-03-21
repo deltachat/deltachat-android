@@ -2,6 +2,10 @@
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <item android:title="@string/troubleshooting"
+          android:id="@+id/troubleshooting"
+          app:showAsAction="never"/>
+
     <item android:title="@string/menu_copy_to_clipboard"
           android:id="@+id/copy"
           android:visible="false"
