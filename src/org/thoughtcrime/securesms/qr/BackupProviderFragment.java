@@ -65,7 +65,7 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
                 statusLine.setVisibility(View.GONE);
                 if (!dcBackupProvider.isOk()) {
                     ((BackupTransferActivity)getActivity()).setTransferState(BackupTransferActivity.TransferState.TRANSFER_ERROR);
-                    ((BackupTransferActivity)getActivity()).showLastErrorAlert("Cannot create backup provider; try over in a minute");
+                    ((BackupTransferActivity)getActivity()).showLastErrorAlert("Cannot create backup provider");
                     return;
                 }
                 try {
