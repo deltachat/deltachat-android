@@ -54,6 +54,7 @@ public class BackupTransferActivity extends BaseActionBarActivity {
     private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
 
     NotificationController notificationController;
+    public boolean warnAboutCopiedQrCodeOnAbort = false;
 
     @Override
     protected void onCreate(Bundle icicle) {
@@ -144,12 +145,16 @@ public class BackupTransferActivity extends BaseActionBarActivity {
               break;
 
           default:
+              String msg = "Abort transfer?";
+              if (warnAboutCopiedQrCodeOnAbort) {
+                  msg += "\n\n" + "This will invalidate the QR code copied to clipboard.";
+              }
               new AlertDialog.Builder(this)
-                    .setMessage("Abort transfer?")
+                    .setMessage(msg)
                     .setPositiveButton(android.R.string.ok, (dialogInterface, i) -> doFinish())
                     .setNegativeButton(R.string.cancel, null)
                     .show();
-                break;
+              break;
         }
     }
 

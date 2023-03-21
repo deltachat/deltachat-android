@@ -108,6 +108,7 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
           if (dcBackupProvider != null) {
               Util.writeTextToClipboard(getActivity(), dcBackupProvider.getQr());
               Toast.makeText(getActivity(), getString(R.string.done), Toast.LENGTH_SHORT).show();
+              ((BackupTransferActivity)getActivity()).warnAboutCopiedQrCodeOnAbort = true;
           }
           return true;
       }
