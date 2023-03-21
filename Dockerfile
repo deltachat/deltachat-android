@@ -33,6 +33,7 @@ ENV PATH ${PATH}:${ANDROID_SDK_ROOT}/cmdline-tools/bin
 
 # Install NDK manually. Other SDK parts are installed automatically by gradle.
 #
+# If you change the NDK version here, also change it in `flake.nix`.
 # NDK version r23c LTS aka 23.2.8568313
 RUN sdkmanager --sdk_root=${ANDROID_SDK_ROOT} 'ndk;23.2.8568313'
 
