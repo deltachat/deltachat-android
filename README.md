@@ -122,12 +122,8 @@ See https://wiki.archlinux.org/index.php/Podman#Rootless_Podman for more informa
 
 To setup build environment manually:
 - _Either_, in Android Studio, go to "Tools / SDK Manager / SDK Tools", enable "Show Package Details",
-  select "CMake" and the desired NDK, hit "Apply".
-- _Or_ read `Dockerfile` and mimic what it does.
-
-Currently ndk20b is the minimum required version.
-Newer versions will likely work, however, changes on the ndk-version should be
-done with care. Too new versions do not support abi16 and cannot be used to target Android 4.3 or lower.
+  select "CMake" and the desired NDK (install the same NDK version as the [Dockerfile](https://github.com/deltachat/deltachat-android/blob/master/Dockerfile)), hit "Apply".
+- _Or_ read [Dockerfile](https://github.com/deltachat/deltachat-android/blob/master/Dockerfile) and mimic what it does.
 
 Then, in both cases, install Rust using [rustup](https://rustup.rs/)
 and Rust toolchains for cross-compilation by executing `scripts/install-toolchains.sh`.
