@@ -39,7 +39,7 @@ public class BackupReceiverFragment extends Fragment implements DcEventCenter.Dc
         View view = inflater.inflate(R.layout.backup_provider_fragment, container, false);
         statusLine = view.findViewById(R.id.status_line);
 
-        statusLine.setText("Connecting...");
+        statusLine.setText(R.string.multidevice_connecting);
 
         dcContext = DcHelper.getContext(getActivity());
         DcHelper.getEventCenter(getActivity()).addObserver(DcContext.DC_EVENT_IMEX_PROGRESS, this);
@@ -75,13 +75,13 @@ public class BackupReceiverFragment extends Fragment implements DcEventCenter.Dc
                 ((BackupTransferActivity)getActivity()).setTransferState(BackupTransferActivity.TransferState.TRANSFER_ERROR);
                 ((BackupTransferActivity)getActivity()).showLastErrorAlert("Receiving Error");
             } else if (permille <= 50) {
-              statusLineText = "Receiving collection..."; // "Connected"
+              statusLineText = getString(R.string.multidevice_receiving_collection); // "Connected"
             } else if (permille <= 100) {
-              statusLineText = "Collection received.";
+              statusLineText = getString(R.string.multidevice_collection_received);
             } else if (permille <= 950 ) {
                 percent = ((permille-100)*100)/850;
                 percentMax = 100;
-                statusLineText = String.format(Locale.getDefault(), "Transfer... %d%%", percent);
+                statusLineText = getString(R.string.multidevice_transferring) + String.format(Locale.getDefault(), " %d%%", percent);
             } else if (permille < 1000) {
               statusLineText = "Finishing..."; // range not used, should not happen
             } else if (permille == 1000) {

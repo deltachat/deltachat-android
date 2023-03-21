@@ -468,8 +468,22 @@
 
     <!-- Multi Device -->
     <string name="multidevice_title">Add Another Device</string>
+    <string name="multidevice_same_network_hint">Make sure both devices are on the same Wi-Fi or network</string>
+    <string name="multidevice_install_dc_on_other_device">Install and start Delta Chat 1.36 or newer on your other device (https://get.delta.chat)</string>
+    <string name="multidevice_tap_scan_on_other_device">During setup, tap “Scan QR Code” and scan the code shown here</string>
     <string name="multidevice_receiver_scanning_ask">Copy the account from the other device to this device? Both devices will work independently afterwards.</string>
-    <string name="multidevice_same_network_hint">During copying, both devices must be on the same wifi or network.</string>
+    <string name="multidevice_exporting_database">Exporting database…</string>
+    <string name="multidevice_creating_collection">Creating collection…</string>
+    <string name="multidevice_collection_created">Collection created.</string>
+    <string name="multidevice_waiting_for_receiver">Waiting for receiver…</string>
+    <string name="multidevice_connecting">Connecting…</string>
+    <string name="multidevice_receiving_collection">Receiving collection…</string>
+    <string name="multidevice_collection_received">Collection received.</string>
+    <string name="multidevice_receiver_connected">Receiver connected…</string>
+    <string name="multidevice_transferring">Transferring…</string>
+    <string name="multidevice_abort">Abort transfer?</string>
+    <string name="multidevice_abort_will_invalidate_copied_qr">This will invalidate the QR code copied to clipboard.</string>
+    <string name="troubleshooting">Troubleshooting</string>
 
     <!-- Connectivity -->
     <!-- Headline for the "Inbox" eg. in the "Connectivity" view -->

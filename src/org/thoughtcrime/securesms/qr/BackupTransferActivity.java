@@ -145,9 +145,9 @@ public class BackupTransferActivity extends BaseActionBarActivity {
               break;
 
           default:
-              String msg = "Abort transfer?";
+              String msg = getString(R.string.multidevice_abort);
               if (warnAboutCopiedQrCodeOnAbort) {
-                  msg += "\n\n" + "This will invalidate the QR code copied to clipboard.";
+                  msg += "\n\n" + getString(R.string.multidevice_abort_will_invalidate_copied_qr);
               }
               new AlertDialog.Builder(this)
                     .setMessage(msg)

@@ -131,23 +131,23 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
                 ((BackupTransferActivity)getActivity()).showLastErrorAlert("Sending Error");
                 hideQrCode = true;
             } else if(permille <= 100) {
-                statusLineText = "Exporting database...";
+                statusLineText = getString(R.string.multidevice_exporting_database);
             } else if(permille <= 300) {
-                statusLineText = "Creating collection...";
+                statusLineText = getString(R.string.multidevice_creating_collection);
             } else if(permille <= 350) {
-                statusLineText = "Collection created.";
+                statusLineText = getString(R.string.multidevice_collection_created);
             } else if(permille <= 400) {
-                statusLineText = "Waiting for receiver...";
+                statusLineText = getString(R.string.multidevice_waiting_for_receiver);
             } else if(permille <= 450) {
-                statusLineText = "Receiver connected...";
+                statusLineText = getString(R.string.multidevice_receiver_connected);
                 hideQrCode = true;
             } else if (permille < 1000) {
                 percent = (permille-450)/5;
                 percentMax = 100;
-                statusLineText = String.format(Locale.getDefault(), "Transfer... %d%%", percent);
+                statusLineText = getString(R.string.multidevice_transferring) + String.format(Locale.getDefault(), " %d%%", percent);
                 hideQrCode = true;
             } else if (permille == 1000) {
-                statusLineText = "Done.";
+                statusLineText = getString(R.string.done);
                 ((BackupTransferActivity)getActivity()).setTransferState(BackupTransferActivity.TransferState.TRANSFER_SUCCESS);
                 hideQrCode = true;
             }
