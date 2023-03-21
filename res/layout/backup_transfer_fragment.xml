@@ -16,11 +16,37 @@
 		android:textSize="22sp"
 		tools:text="One moment..."/>
 
+	<TextView
+		android:id="@+id/top_text"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="16dp"
+		android:layout_marginRight="16dp"
+		android:layout_marginTop="32dp"
+		android:gravity="start"
+		android:textColor="?attr/emoji_text_color"
+		android:visibility="gone"
+		android:textSize="17sp"
+		tools:text="Make sure both devices are in the same wifi, install delta"/>
+
 	<com.caverock.androidsvg.SVGImageView
 		android:id="@+id/qrImage"
 		android:layout_width="match_parent"
 		android:layout_height="0dp"
 		android:layout_weight="1"
 		android:contentDescription="@string/qrscan_title" />
+
+	<TextView
+		android:id="@+id/bottom_text"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="16dp"
+		android:layout_marginRight="16dp"
+		android:layout_marginBottom="32dp"
+		android:gravity="start"
+		android:textColor="?attr/emoji_text_color"
+		android:visibility="gone"
+		android:textSize="17sp"
+		tools:text="on the other device, tap scan and scan the code from there"/>
 
 </LinearLayout>
