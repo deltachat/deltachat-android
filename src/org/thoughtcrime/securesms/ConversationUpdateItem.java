@@ -88,8 +88,8 @@ public class ConversationUpdateItem extends BaseConversationItem
   }
 
   private void setGenericInfoRecord(DcMsg messageRecord) {
-    DcMsg parentMsg = messageRecord.getParent();
-    if (parentMsg != null && parentMsg.getType() == DcMsg.DC_MSG_WEBXDC) {
+    if (messageRecord.getInfoType() == DcMsg.DC_INFO_WEBXDC_INFO_MESSAGE) {
+      DcMsg parentMsg = messageRecord.getParent();
       JSONObject info = parentMsg.getWebxdcInfo();
       byte[] blob = parentMsg.getWebxdcBlob(JsonUtils.optString(info, "icon"));
       if (blob != null) {

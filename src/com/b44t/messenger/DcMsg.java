@@ -21,6 +21,20 @@ public class DcMsg {
     public final static int DC_MSG_VIDEOCHAT_INVITATION = 70;
     public final static int DC_MSG_WEBXDC = 80;
 
+    public final static int DC_INFO_UNKNOWN                   = 0;
+    public final static int DC_INFO_GROUP_NAME_CHANGED        = 2;
+    public final static int DC_INFO_GROUP_IMAGE_CHANGED       = 3;
+    public final static int DC_INFO_MEMBER_ADDED_TO_GROUP     = 4;
+    public final static int DC_INFO_MEMBER_REMOVED_FROM_GROUP = 5;
+    public final static int DC_INFO_AUTOCRYPT_SETUP_MESSAGE   = 6;
+    public final static int DC_INFO_SECURE_JOIN_MESSAGE       = 7;
+    public final static int DC_INFO_LOCATIONSTREAMING_ENABLED = 8;
+    public final static int DC_INFO_LOCATION_ONLY             = 9;
+    public final static int DC_INFO_EPHEMERAL_TIMER_CHANGED   = 10;
+    public final static int DC_INFO_PROTECTION_ENABLED        = 11;
+    public final static int DC_INFO_PROTECTION_DISABLED       = 12;
+    public final static int DC_INFO_WEBXDC_INFO_MESSAGE       = 32;
+
     public final static int DC_STATE_UNDEFINED =  0;
     public final static int DC_STATE_IN_FRESH = 10;
     public final static int DC_STATE_IN_NOTICED = 13;
@@ -104,6 +118,7 @@ public class DcMsg {
     public native boolean hasDeviatingTimestamp();
     public native boolean hasLocation        ();
     public native int     getType            ();
+    public native int     getInfoType        ();
     public native int     getState           ();
     public native int     getDownloadState   ();
     public native int     getChatId          ();
