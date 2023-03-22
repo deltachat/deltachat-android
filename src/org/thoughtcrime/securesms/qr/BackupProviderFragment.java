@@ -1,8 +1,5 @@
 package org.thoughtcrime.securesms.qr;
 
-import android.content.Context;
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -88,28 +85,7 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
             });
         }).start();
 
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-            new Thread(() -> {
-                try {
-                    // depending on the android version, getting the SSID requires none, all or one of
-                    // ACCESS_COARSE_LOCATION, ACCESS_FINE_LOCATION, ACCESS_WIFI_STATE, ACCESS_NETWORK_STATE and maybe even more.
-                    final WifiManager wifiManager = (WifiManager)getActivity().getApplicationContext().getSystemService(Context.WIFI_SERVICE);
-                    if (wifiManager.isWifiEnabled()) {
-                        final WifiInfo info = wifiManager.getConnectionInfo();
-                        final String ssid = info.getSSID();
-                        Log.i(TAG, "wifi ssid: "+ssid);
-                        if (!ssid.equals("<unknown ssid>")) { // "<unknown ssid>" is returned on insufficient rights
-                            Util.runOnMain(() -> {
-                                String txt = getString(R.string.multidevice_same_network_hint) + " (" + ssid + ")";
-                                ((TextView) getView().findViewById(R.id.same_network_hint)).setText(txt);
-                            });
-                        }
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }).start();
-        }
+        ((BackupTransferActivity)getActivity()).amendSSID(view.findViewById(R.id.same_network_hint));
 
         return view;
     }

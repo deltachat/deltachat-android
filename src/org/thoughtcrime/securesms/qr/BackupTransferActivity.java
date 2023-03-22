@@ -2,10 +2,15 @@ package org.thoughtcrime.securesms.qr;
 
 import static org.thoughtcrime.securesms.PassphraseRequiredActionBarActivity.LOCALE_EXTRA;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
@@ -24,10 +29,13 @@ import org.thoughtcrime.securesms.service.GenericForegroundService;
 import org.thoughtcrime.securesms.service.NotificationController;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
+import org.thoughtcrime.securesms.util.Util;
 
 import java.util.Locale;
 
 public class BackupTransferActivity extends BaseActionBarActivity {
+
+    private final static String TAG = BackupTransferActivity.class.getSimpleName();
 
     public enum TransferMode {
         INVALID(0),
@@ -187,6 +195,30 @@ public class BackupTransferActivity extends BaseActionBarActivity {
           .setPositiveButton(android.R.string.ok, null)
           .setCancelable(false)
           .show();
+    }
+
+    public void amendSSID(final TextView textView) {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            new Thread(() -> {
+                try {
+                    // depending on the android version, getting the SSID requires none, all or one of
+                    // ACCESS_COARSE_LOCATION, ACCESS_FINE_LOCATION, ACCESS_WIFI_STATE, ACCESS_NETWORK_STATE and maybe even more.
+                    final WifiManager wifiManager = (WifiManager)getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+                    if (wifiManager.isWifiEnabled()) {
+                        final WifiInfo info = wifiManager.getConnectionInfo();
+                        final String ssid = info.getSSID();
+                        Log.i(TAG, "wifi ssid: "+ssid);
+                        if (!ssid.equals("<unknown ssid>")) { // "<unknown ssid>" may be returned on insufficient rights
+                            Util.runOnMain(() -> {
+                                textView.setText(textView.getText() + " (" + ssid + ")");
+                            });
+                        }
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }).start();
+        }
     }
 
     protected <T extends Fragment> T initFragment(@IdRes int target,
