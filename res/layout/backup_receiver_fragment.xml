@@ -24,7 +24,7 @@
 		android:layout_weight="1"
 		android:gravity="bottom"
 		android:text="@string/multidevice_same_network_hint"
-		android:textColor="?attr/emoji_text_color"
+		android:textColor="@color/gray50"
 		android:textSize="16sp"/>
 
 </LinearLayout>
