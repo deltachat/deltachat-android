@@ -238,6 +238,7 @@ public class DcHelper {
     dcContext.setStockTranslation(121, context.getString(R.string.connectivity_not_connected));
     dcContext.setStockTranslation(122, context.getString(R.string.aeap_addr_changed));
     dcContext.setStockTranslation(123, context.getString(R.string.aeap_explanation));
+    dcContext.setStockTranslation(162, context.getString(R.string.multidevice_qr_subtitle));
   }
 
   public static File getImexDir() {
