@@ -22,19 +22,37 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <!--Links should be clickable, see https://github.com/deltachat/deltachat-android/issues/1546-->
-        <org.thoughtcrime.securesms.components.emoji.EmojiTextView
-            android:id="@+id/conversation_update_body"
-            style="@style/Delta.Text.UpdateHeader"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:autoLink="web"
-            android:gravity="center"
-            android:textColor="?attr/conversation_item_update_text_color"
-            android:textColorLink="?attr/conversation_item_update_text_color"
             android:paddingTop="3dp"
             android:paddingBottom="3dp"
-            tools:text="Gwen Stacy added to group" />
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/app_icon"
+                android:layout_width="18sp"
+                android:layout_height="18sp"
+                android:layout_marginEnd="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_gravity="center_vertical"
+                android:scaleType="centerCrop"
+                android:visibility="gone" />
+
+            <!--Links should be clickable, see https://github.com/deltachat/deltachat-android/issues/1546-->
+            <org.thoughtcrime.securesms.components.emoji.EmojiTextView
+                android:id="@+id/conversation_update_body"
+                style="@style/Delta.Text.UpdateHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:autoLink="web"
+                android:gravity="center"
+                android:textColor="?attr/conversation_item_update_text_color"
+                android:textColorLink="?attr/conversation_item_update_text_color"
+                tools:text="Gwen Stacy added to group" />
+
+        </LinearLayout>
 
         <ImageView android:id="@+id/delivery_indicator"
             android:layout_width="wrap_content"

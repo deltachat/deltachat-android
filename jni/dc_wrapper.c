@@ -1505,6 +1505,12 @@ JNIEXPORT jint Java_com_b44t_messenger_DcMsg_getType(JNIEnv *env, jobject obj)
 }
 
 
+JNIEXPORT jint Java_com_b44t_messenger_DcMsg_getInfoType(JNIEnv *env, jobject obj)
+{
+    return dc_msg_get_info_type(get_dc_msg(env, obj));
+}
+
+
 JNIEXPORT jint Java_com_b44t_messenger_DcMsg_getState(JNIEnv *env, jobject obj)
 {
     return dc_msg_get_state(get_dc_msg(env, obj));
