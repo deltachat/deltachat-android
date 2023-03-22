@@ -12,7 +12,8 @@
 		android:layout_marginTop="40sp"
 		android:gravity="center_horizontal"
 		android:textAlignment="center"
-		android:textSize="22sp"
+		android:textColor="?attr/emoji_text_color"
+		android:textSize="20sp"
 		tools:text="One moment..."/>
 
 </LinearLayout>
