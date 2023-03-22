@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,6 +38,7 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
     private DcBackupProvider dcBackupProvider;
 
     private TextView         statusLine;
+    private ProgressBar      progressBar;
     private View             topText;
     private SVGImageView     qrImageView;
 
@@ -50,11 +52,13 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.backup_provider_fragment, container, false);
         statusLine = view.findViewById(R.id.status_line);
+        progressBar = view.findViewById(R.id.progress_bar);
         topText = view.findViewById(R.id.top_text);
         qrImageView = view.findViewById(R.id.qrImage);
         setHasOptionsMenu(true);
 
         statusLine.setText(R.string.one_moment);
+        progressBar.setIndeterminate(true);
 
         dcContext = DcHelper.getContext(getActivity());
         DcHelper.getEventCenter(getActivity()).addObserver(DcContext.DC_EVENT_IMEX_PROGRESS, this);
@@ -64,6 +68,7 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
             dcBackupProvider = dcContext.newBackupProvider();
             Log.i(TAG, "##### newBackupProvider() returned");
             Util.runOnMain(() -> {
+                progressBar.setVisibility(View.GONE);
                 if (!dcBackupProvider.isOk()) {
                     getTransferActivity().setTransferState(BackupTransferActivity.TransferState.TRANSFER_ERROR);
                     getTransferActivity().showLastErrorAlert("Cannot create backup provider");
@@ -152,17 +157,27 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
                 statusLineText = getString(R.string.multidevice_transferring) + String.format(Locale.getDefault(), " %d%%", percent);
                 hideQrCode = true;
             } else if (permille == 1000) {
-                statusLineText = getString(R.string.done);
+                statusLineText = getString(R.string.done) + " \uD83D\uDE00";
                 getTransferActivity().setTransferState(BackupTransferActivity.TransferState.TRANSFER_SUCCESS);
+                progressBar.setVisibility(View.GONE);
                 hideQrCode = true;
             }
 
             statusLine.setText(statusLineText);
             getTransferActivity().notificationController.setProgress(percentMax, percent, statusLineText);
+            if (percentMax == 0) {
+                progressBar.setIndeterminate(true);
+            } else {
+                progressBar.setIndeterminate(false);
+                progressBar.setMax(percentMax);
+                progressBar.setProgress(percent);
+            }
+
             if (hideQrCode && qrImageView.getVisibility() != View.GONE) {
                 qrImageView.setVisibility(View.GONE);
                 topText.setVisibility(View.GONE);
                 statusLine.setVisibility(View.VISIBLE);
+                progressBar.setVisibility(permille == 1000 ? View.GONE : View.VISIBLE);
             }
         }
     }
