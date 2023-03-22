@@ -27,6 +27,7 @@ public class BackupReceiverFragment extends Fragment implements DcEventCenter.Dc
 
     private DcContext        dcContext;
     private TextView         statusLine;
+    private TextView         sameNetworkHint;
 
     @Override
     public void onCreate(Bundle bundle) {
@@ -38,6 +39,7 @@ public class BackupReceiverFragment extends Fragment implements DcEventCenter.Dc
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.backup_receiver_fragment, container, false);
         statusLine = view.findViewById(R.id.status_line);
+        sameNetworkHint = view.findViewById(R.id.same_network_hint);
 
         statusLine.setText(R.string.multidevice_connecting);
 
@@ -51,6 +53,8 @@ public class BackupReceiverFragment extends Fragment implements DcEventCenter.Dc
             boolean res = dcContext.receiveBackup(qrCode);
             Log.i(TAG, "##### receiveBackup() done with result: "+res);
         }).start();
+
+        ((BackupTransferActivity)getActivity()).amendSSID(sameNetworkHint);
 
         return view;
     }
@@ -68,6 +72,7 @@ public class BackupReceiverFragment extends Fragment implements DcEventCenter.Dc
             int permille = event.getData1Int();
             int percent = 0;
             int percentMax = 0;
+            boolean hideSameNetworkHint = false;
             String statusLineText = "";
 
             Log.i(TAG,"DC_EVENT_IMEX_PROGRESS, " + permille);
@@ -75,13 +80,16 @@ public class BackupReceiverFragment extends Fragment implements DcEventCenter.Dc
                 ((BackupTransferActivity)getActivity()).setTransferState(BackupTransferActivity.TransferState.TRANSFER_ERROR);
                 ((BackupTransferActivity)getActivity()).showLastErrorAlert("Receiving Error");
             } else if (permille <= 50) {
-              statusLineText = getString(R.string.multidevice_receiving_collection); // "Connected"
+                statusLineText = getString(R.string.multidevice_receiving_collection); // "Connected"
+                hideSameNetworkHint = true;
             } else if (permille <= 100) {
-              statusLineText = getString(R.string.multidevice_collection_received);
+                statusLineText = getString(R.string.multidevice_collection_received);
+                hideSameNetworkHint = true;
             } else if (permille <= 950 ) {
                 percent = ((permille-100)*100)/850;
                 percentMax = 100;
                 statusLineText = getString(R.string.multidevice_transferring) + String.format(Locale.getDefault(), " %d%%", percent);
+                hideSameNetworkHint = true;
             } else if (permille < 1000) {
               statusLineText = "Finishing..."; // range not used, should not happen
             } else if (permille == 1000) {
@@ -92,6 +100,9 @@ public class BackupReceiverFragment extends Fragment implements DcEventCenter.Dc
 
             statusLine.setText(statusLineText);
             ((BackupTransferActivity)getActivity()).notificationController.setProgress(percentMax, percent, statusLineText);
+            if (hideSameNetworkHint && sameNetworkHint.getVisibility() != View.GONE) {
+                sameNetworkHint.setVisibility(View.GONE);
+            }
         }
     }
 }

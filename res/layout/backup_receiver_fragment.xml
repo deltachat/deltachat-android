@@ -16,4 +16,15 @@
 		android:textSize="20sp"
 		tools:text="One moment..."/>
 
+	<TextView
+		android:id="@+id/same_network_hint"
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:layout_margin="16dp"
+		android:layout_weight="1"
+		android:gravity="bottom"
+		android:text="@string/multidevice_same_network_hint"
+		android:textColor="?attr/emoji_text_color"
+		android:textSize="16sp"/>
+
 </LinearLayout>
