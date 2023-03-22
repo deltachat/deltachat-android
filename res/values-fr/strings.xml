@@ -663,7 +663,7 @@
     <string name="pref_on_demand_location_streaming">Envoi de la géolocalisation à la demande</string>
     <string name="pref_developer_mode">Mode développeur</string>
     <string name="pref_developer_mode_explain">Active les options de débogage et peut rendre l\'application moins stable. Seulement pour les développeurs.</string>
-    <string name="pref_background_default">Arrière-plan par défaut</string>
+    <string name="pref_background_default">Image par défaut</string>
     <string name="pref_background_default_color">Couleur par défaut</string>
     <string name="pref_background_custom_image">Image personnalisée</string>
     <string name="pref_background_custom_color">Couleur personnalisée</string>
@@ -1006,7 +1006,7 @@
     <!-- iOS notification settings -->
     <string name="disabled_in_dc">Désactivé dans Delta Chat</string>
     <string name="disabled_in_system_settings">Désactivé dans les paramètres système</string>
-    <string name="bg_app_refresh_disabled">\"La recharge des applications en arrière-plan\" est désactivé dans les paramètres du système.</string>
+    <string name="bg_app_refresh_disabled">Le \"rafraîchissement des applications en arrière-plan\" est désactivé dans les paramètres du système.</string>
     <!-- iOS connectivity view, Adjective, used eg. as "Notifications: Delayed" -->
     <string name="delayed">Retardé</string>
     <string name="notifications_avg_minutes">Toutes les %1$d minutes en moyenne</string>
