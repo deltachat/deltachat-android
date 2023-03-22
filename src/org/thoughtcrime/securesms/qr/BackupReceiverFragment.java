@@ -36,7 +36,7 @@ public class BackupReceiverFragment extends Fragment implements DcEventCenter.Dc
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.backup_transfer_fragment, container, false);
+        View view = inflater.inflate(R.layout.backup_receiver_fragment, container, false);
         statusLine = view.findViewById(R.id.status_line);
 
         statusLine.setText(R.string.multidevice_connecting);

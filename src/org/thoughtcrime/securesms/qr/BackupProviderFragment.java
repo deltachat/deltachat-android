@@ -37,8 +37,7 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
     private DcBackupProvider dcBackupProvider;
 
     private TextView         statusLine;
-    private TextView         topText;
-    private TextView         bottomText;
+    private View             topText;
     private SVGImageView     qrImageView;
 
     @Override
@@ -49,10 +48,9 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.backup_transfer_fragment, container, false);
+        View view = inflater.inflate(R.layout.backup_provider_fragment, container, false);
         statusLine = view.findViewById(R.id.status_line);
         topText = view.findViewById(R.id.top_text);
-        bottomText = view.findViewById(R.id.bottom_text);
         qrImageView = view.findViewById(R.id.qrImage);
         setHasOptionsMenu(true);
 
@@ -72,11 +70,7 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
                     return;
                 }
                 statusLine.setVisibility(View.GONE);
-                topText.setText("➊ " + getString(R.string.multidevice_same_network_hint) + "\n\n"
-                            +   "➋ " + getString(R.string.multidevice_install_dc_on_other_device));
-                bottomText.setText("➌ " + getString(R.string.multidevice_tap_scan_on_other_device));
                 topText.setVisibility(View.VISIBLE);
-                bottomText.setVisibility(View.VISIBLE);
                 try {
                     SVG svg = SVG.getFromString(QrShowFragment.fixSVG(dcBackupProvider.getQrSvg()));
                     qrImageView.setSVG(svg);
@@ -166,7 +160,6 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
             if (hideQrCode && qrImageView.getVisibility() != View.GONE) {
                 qrImageView.setVisibility(View.GONE);
                 topText.setVisibility(View.GONE);
-                bottomText.setVisibility(View.GONE);
                 statusLine.setVisibility(View.VISIBLE);
             }
         }
