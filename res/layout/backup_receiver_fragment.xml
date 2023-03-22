@@ -16,6 +16,14 @@
 		android:textSize="20sp"
 		tools:text="One moment..."/>
 
+	<ProgressBar
+		android:id="@+id/progress_bar"
+		style="?android:attr/progressBarStyleHorizontal"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_margin="16dp"
+		/>
+
 	<TextView
 		android:id="@+id/same_network_hint"
 		android:layout_width="match_parent"

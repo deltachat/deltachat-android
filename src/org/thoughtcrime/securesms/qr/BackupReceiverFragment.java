@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -27,6 +28,7 @@ public class BackupReceiverFragment extends Fragment implements DcEventCenter.Dc
 
     private DcContext        dcContext;
     private TextView         statusLine;
+    private ProgressBar      progressBar;
     private TextView         sameNetworkHint;
 
     @Override
@@ -39,9 +41,11 @@ public class BackupReceiverFragment extends Fragment implements DcEventCenter.Dc
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.backup_receiver_fragment, container, false);
         statusLine = view.findViewById(R.id.status_line);
+        progressBar = view.findViewById(R.id.progress_bar);
         sameNetworkHint = view.findViewById(R.id.same_network_hint);
 
         statusLine.setText(R.string.multidevice_connecting);
+        progressBar.setIndeterminate(true);
 
         dcContext = DcHelper.getContext(getActivity());
         DcHelper.getEventCenter(getActivity()).addObserver(DcContext.DC_EVENT_IMEX_PROGRESS, this);
@@ -100,6 +104,14 @@ public class BackupReceiverFragment extends Fragment implements DcEventCenter.Dc
 
             statusLine.setText(statusLineText);
             getTransferActivity().notificationController.setProgress(percentMax, percent, statusLineText);
+            if (percentMax == 0) {
+                progressBar.setIndeterminate(true);
+            } else {
+                progressBar.setIndeterminate(false);
+                progressBar.setMax(percentMax);
+                progressBar.setProgress(percent);
+            }
+
             if (hideSameNetworkHint && sameNetworkHint.getVisibility() != View.GONE) {
                 sameNetworkHint.setVisibility(View.GONE);
             }
