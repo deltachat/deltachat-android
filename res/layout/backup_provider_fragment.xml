@@ -26,7 +26,6 @@
 		<LinearLayout
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-
 			android:orientation="horizontal">
 			<TextView
 				android:layout_width="wrap_content"
@@ -38,6 +37,7 @@
 				android:textColor="?attr/emoji_text_color"
 				android:textSize="16sp"/> <!-- idk - using sightly larger text size moves the next text down -->
 			<TextView
+				android:id="@+id/same_network_hint"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:gravity="center_vertical"
