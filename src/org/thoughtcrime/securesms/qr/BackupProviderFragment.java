@@ -65,8 +65,8 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
             Log.i(TAG, "##### newBackupProvider() returned");
             Util.runOnMain(() -> {
                 if (!dcBackupProvider.isOk()) {
-                    ((BackupTransferActivity)getActivity()).setTransferState(BackupTransferActivity.TransferState.TRANSFER_ERROR);
-                    ((BackupTransferActivity)getActivity()).showLastErrorAlert("Cannot create backup provider");
+                    getTransferActivity().setTransferState(BackupTransferActivity.TransferState.TRANSFER_ERROR);
+                    getTransferActivity().showLastErrorAlert("Cannot create backup provider");
                     return;
                 }
                 statusLine.setVisibility(View.GONE);
@@ -85,7 +85,7 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
             });
         }).start();
 
-        ((BackupTransferActivity)getActivity()).amendSSID(view.findViewById(R.id.same_network_hint));
+        getTransferActivity().appendSSID(view.findViewById(R.id.same_network_hint));
 
         return view;
     }
@@ -113,7 +113,7 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
           if (dcBackupProvider != null) {
               Util.writeTextToClipboard(getActivity(), dcBackupProvider.getQr());
               Toast.makeText(getActivity(), getString(R.string.done), Toast.LENGTH_SHORT).show();
-              ((BackupTransferActivity)getActivity()).warnAboutCopiedQrCodeOnAbort = true;
+              getTransferActivity().warnAboutCopiedQrCodeOnAbort = true;
           }
           return true;
       }
@@ -132,8 +132,8 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
 
             Log.i(TAG,"DC_EVENT_IMEX_PROGRESS, " + permille);
             if (permille == 0) {
-                ((BackupTransferActivity)getActivity()).setTransferState(BackupTransferActivity.TransferState.TRANSFER_ERROR);
-                ((BackupTransferActivity)getActivity()).showLastErrorAlert("Sending Error");
+                getTransferActivity().setTransferState(BackupTransferActivity.TransferState.TRANSFER_ERROR);
+                getTransferActivity().showLastErrorAlert("Sending Error");
                 hideQrCode = true;
             } else if(permille <= 100) {
                 statusLineText = getString(R.string.multidevice_exporting_database);
@@ -153,17 +153,21 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
                 hideQrCode = true;
             } else if (permille == 1000) {
                 statusLineText = getString(R.string.done);
-                ((BackupTransferActivity)getActivity()).setTransferState(BackupTransferActivity.TransferState.TRANSFER_SUCCESS);
+                getTransferActivity().setTransferState(BackupTransferActivity.TransferState.TRANSFER_SUCCESS);
                 hideQrCode = true;
             }
 
             statusLine.setText(statusLineText);
-            ((BackupTransferActivity)getActivity()).notificationController.setProgress(percentMax, percent, statusLineText);
+            getTransferActivity().notificationController.setProgress(percentMax, percent, statusLineText);
             if (hideQrCode && qrImageView.getVisibility() != View.GONE) {
                 qrImageView.setVisibility(View.GONE);
                 topText.setVisibility(View.GONE);
                 statusLine.setVisibility(View.VISIBLE);
             }
         }
+    }
+
+    private BackupTransferActivity getTransferActivity() {
+        return (BackupTransferActivity) getActivity();
     }
 }

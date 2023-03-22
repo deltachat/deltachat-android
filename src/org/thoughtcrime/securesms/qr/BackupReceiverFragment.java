@@ -54,7 +54,7 @@ public class BackupReceiverFragment extends Fragment implements DcEventCenter.Dc
             Log.i(TAG, "##### receiveBackup() done with result: "+res);
         }).start();
 
-        ((BackupTransferActivity)getActivity()).amendSSID(sameNetworkHint);
+        getTransferActivity().appendSSID(sameNetworkHint);
 
         return view;
     }
@@ -77,8 +77,8 @@ public class BackupReceiverFragment extends Fragment implements DcEventCenter.Dc
 
             Log.i(TAG,"DC_EVENT_IMEX_PROGRESS, " + permille);
             if (permille == 0) {
-                ((BackupTransferActivity)getActivity()).setTransferState(BackupTransferActivity.TransferState.TRANSFER_ERROR);
-                ((BackupTransferActivity)getActivity()).showLastErrorAlert("Receiving Error");
+                getTransferActivity().setTransferState(BackupTransferActivity.TransferState.TRANSFER_ERROR);
+                getTransferActivity().showLastErrorAlert("Receiving Error");
             } else if (permille <= 50) {
                 statusLineText = getString(R.string.multidevice_receiving_collection); // "Connected"
                 hideSameNetworkHint = true;
@@ -93,16 +93,20 @@ public class BackupReceiverFragment extends Fragment implements DcEventCenter.Dc
             } else if (permille < 1000) {
               statusLineText = "Finishing..."; // range not used, should not happen
             } else if (permille == 1000) {
-                ((BackupTransferActivity)getActivity()).setTransferState(BackupTransferActivity.TransferState.TRANSFER_SUCCESS);
-                ((BackupTransferActivity)getActivity()).doFinish();
+                getTransferActivity().setTransferState(BackupTransferActivity.TransferState.TRANSFER_SUCCESS);
+                getTransferActivity().doFinish();
                 return;
             }
 
             statusLine.setText(statusLineText);
-            ((BackupTransferActivity)getActivity()).notificationController.setProgress(percentMax, percent, statusLineText);
+            getTransferActivity().notificationController.setProgress(percentMax, percent, statusLineText);
             if (hideSameNetworkHint && sameNetworkHint.getVisibility() != View.GONE) {
                 sameNetworkHint.setVisibility(View.GONE);
             }
         }
+    }
+
+    private BackupTransferActivity getTransferActivity() {
+        return (BackupTransferActivity) getActivity();
     }
 }

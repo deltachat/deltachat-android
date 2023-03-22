@@ -197,7 +197,7 @@ public class BackupTransferActivity extends BaseActionBarActivity {
           .show();
     }
 
-    public void amendSSID(final TextView textView) {
+    public void appendSSID(final TextView textView) {
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
             new Thread(() -> {
                 try {
