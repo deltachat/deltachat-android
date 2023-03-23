@@ -490,7 +490,7 @@
     <string name="multidevice_receiver_connected">Receiver connected…</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="multidevice_transferring">Transferring…</string>
-    <string name="multidevice_abort">Abort transfer?</string>
+    <string name="multidevice_abort">Abort setting up second device?</string>
     <string name="multidevice_abort_will_invalidate_copied_qr">This will invalidate the QR code copied to clipboard.</string>
     <string name="troubleshooting">Troubleshooting</string>
 
