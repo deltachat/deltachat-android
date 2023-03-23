@@ -141,11 +141,11 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
                 getTransferActivity().showLastErrorAlert("Sending Error");
                 hideQrCode = true;
             } else if(permille <= 100) {
-                statusLineText = getString(R.string.multidevice_exporting_database);
+                statusLineText = getString(R.string.multidevice_exporting_account);
             } else if(permille <= 300) {
-                statusLineText = getString(R.string.multidevice_creating_collection);
+                statusLineText = getString(R.string.multidevice_preparing_account);
             } else if(permille <= 350) {
-                statusLineText = getString(R.string.multidevice_collection_created);
+                statusLineText = getString(R.string.multidevice_account_prepared);
             } else if(permille <= 400) {
                 statusLineText = getString(R.string.multidevice_waiting_for_receiver);
             } else if(permille <= 450) {

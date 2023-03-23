@@ -476,14 +476,19 @@
     <string name="multidevice_qr_subtitle">Scan to set up second device for %1$s</string>
     <string name="multidevice_reveiver_title">Add as Second Device</string>
     <string name="multidevice_receiver_scanning_ask">Copy the account from the other device to this device? Both devices will work independently afterwards.</string>
-    <string name="multidevice_exporting_database">Exporting database…</string>
-    <string name="multidevice_creating_collection">Creating collection…</string>
-    <string name="multidevice_collection_created">Collection created.</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="multidevice_exporting_account">Exporting account…</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="multidevice_preparing_account">Preparing account…</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="multidevice_account_prepared">Account prepared.</string>
+    <!-- Shown beside progress bar, stay short -->
     <string name="multidevice_waiting_for_receiver">Waiting for receiver…</string>
+    <!-- Shown beside progress bar, stay short -->
     <string name="multidevice_connecting">Connecting…</string>
-    <string name="multidevice_receiving_collection">Receiving collection…</string>
-    <string name="multidevice_collection_received">Collection received.</string>
+    <!-- Shown beside progress bar, stay short -->
     <string name="multidevice_receiver_connected">Receiver connected…</string>
+    <!-- Shown beside progress bar, stay short -->
     <string name="multidevice_transferring">Transferring…</string>
     <string name="multidevice_abort">Abort transfer?</string>
     <string name="multidevice_abort_will_invalidate_copied_qr">This will invalidate the QR code copied to clipboard.</string>

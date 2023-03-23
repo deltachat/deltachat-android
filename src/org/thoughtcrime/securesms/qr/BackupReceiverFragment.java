@@ -84,10 +84,10 @@ public class BackupReceiverFragment extends Fragment implements DcEventCenter.Dc
                 getTransferActivity().setTransferState(BackupTransferActivity.TransferState.TRANSFER_ERROR);
                 getTransferActivity().showLastErrorAlert("Receiving Error");
             } else if (permille <= 50) {
-                statusLineText = getString(R.string.multidevice_receiving_collection); // "Connected"
+                statusLineText = getString(R.string.multidevice_preparing_account); // "Connected"
                 hideSameNetworkHint = true;
             } else if (permille <= 100) {
-                statusLineText = getString(R.string.multidevice_collection_received);
+                statusLineText = getString(R.string.multidevice_account_prepared);
                 hideSameNetworkHint = true;
             } else if (permille <= 950 ) {
                 percent = ((permille-100)*100)/850;
