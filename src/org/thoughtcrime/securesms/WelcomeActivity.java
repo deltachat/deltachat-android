@@ -442,7 +442,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
 
                 case DcContext.DC_QR_BACKUP:
                     new AlertDialog.Builder(this)
-                            .setTitle(R.string.multidevice_title)
+                            .setTitle(R.string.multidevice_reveiver_title)
                             .setMessage(getString(R.string.multidevice_receiver_scanning_ask) + "\n\n" + getString(R.string.multidevice_same_network_hint))
                             .setPositiveButton(R.string.perm_continue, (dialog, which) -> startQrAccountCreation(qrRaw))
                             .setNegativeButton(R.string.cancel, null)

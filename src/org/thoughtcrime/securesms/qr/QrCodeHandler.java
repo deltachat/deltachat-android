@@ -77,7 +77,7 @@ public class QrCodeHandler {
                 break;
 
             case DcContext.DC_QR_BACKUP:
-                builder.setTitle(R.string.multidevice_title);
+                builder.setTitle(R.string.multidevice_reveiver_title);
                 builder.setMessage(activity.getString(R.string.multidevice_receiver_scanning_ask) + "\n\n" + activity.getString(R.string.multidevice_same_network_hint));
                 builder.setPositiveButton(R.string.perm_continue, (dialog, which) -> {
                   AccountManager.getInstance().addAccountFromQr(activity, rawString);
