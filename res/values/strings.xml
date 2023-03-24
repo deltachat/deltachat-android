@@ -476,20 +476,20 @@
     <string name="multidevice_qr_subtitle">Scan to set up second device for %1$s</string>
     <string name="multidevice_reveiver_title">Add as Second Device</string>
     <string name="multidevice_receiver_scanning_ask">Copy the account from the other device to this device? Both devices will work independently afterwards.</string>
-    <!-- Shown beside progress bar, stay short -->
-    <string name="multidevice_exporting_account">Exporting account…</string>
-    <!-- Shown beside progress bar, stay short -->
-    <string name="multidevice_preparing_account">Preparing account…</string>
-    <!-- Shown beside progress bar, stay short -->
-    <string name="multidevice_account_prepared">Account prepared.</string>
-    <!-- Shown beside progress bar, stay short -->
-    <string name="multidevice_waiting_for_receiver">Waiting for receiver…</string>
-    <!-- Shown beside progress bar, stay short -->
-    <string name="multidevice_receiver_connected">Receiver connected…</string>
-    <!-- Shown beside progress bar, stay short -->
-    <string name="multidevice_transferring">Transferring…</string>
     <string name="multidevice_abort">Abort setting up second device?</string>
     <string name="multidevice_abort_will_invalidate_copied_qr">This will invalidate the QR code copied to clipboard.</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="exporting_account">Exporting account…</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="preparing_account">Preparing account…</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="account_prepared">Account prepared.</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="waiting_for_receiver">Waiting for receiver…</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="receiver_connected">Receiver connected…</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="transferring">Transferring…</string>
     <string name="troubleshooting">Troubleshooting</string>
 
     <!-- Connectivity -->

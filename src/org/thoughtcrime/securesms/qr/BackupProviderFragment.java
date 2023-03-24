@@ -141,20 +141,20 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
                 getTransferActivity().showLastErrorAlert("Sending Error");
                 hideQrCode = true;
             } else if(permille <= 100) {
-                statusLineText = getString(R.string.multidevice_exporting_account);
+                statusLineText = getString(R.string.exporting_account);
             } else if(permille <= 300) {
-                statusLineText = getString(R.string.multidevice_preparing_account);
+                statusLineText = getString(R.string.preparing_account);
             } else if(permille <= 350) {
-                statusLineText = getString(R.string.multidevice_account_prepared);
+                statusLineText = getString(R.string.account_prepared);
             } else if(permille <= 400) {
-                statusLineText = getString(R.string.multidevice_waiting_for_receiver);
+                statusLineText = getString(R.string.waiting_for_receiver);
             } else if(permille <= 450) {
-                statusLineText = getString(R.string.multidevice_receiver_connected);
+                statusLineText = getString(R.string.receiver_connected);
                 hideQrCode = true;
             } else if (permille < 1000) {
                 percent = (permille-450)/5;
                 percentMax = 100;
-                statusLineText = getString(R.string.multidevice_transferring) + String.format(Locale.getDefault(), " %d%%", percent);
+                statusLineText = getString(R.string.transferring) + String.format(Locale.getDefault(), " %d%%", percent);
                 hideQrCode = true;
             } else if (permille == 1000) {
                 statusLineText = getString(R.string.done) + " \uD83D\uDE00";
