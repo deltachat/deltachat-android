@@ -22,6 +22,7 @@ import org.thoughtcrime.securesms.ConversationListActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.ShareActivity;
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.util.Util;
 
 import java.io.File;
 
@@ -29,7 +30,9 @@ import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.Espresso.pressBack;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.matcher.ViewMatchers.hasDescendant;
 import static androidx.test.espresso.matcher.ViewMatchers.isClickable;
+import static androidx.test.espresso.matcher.ViewMatchers.withChild;
 import static androidx.test.espresso.matcher.ViewMatchers.withHint;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
@@ -46,6 +49,7 @@ public class SharingTest {
   @SuppressWarnings("unused")
   private final static String TAG = SharingTest.class.getSimpleName();
   private static int createdGroupId;
+  private static int createdSingleChatId;
 
   @Rule
   public ActivityScenarioRule<ConversationListActivity> activityRule = TestUtils.getOfflineActivityRule(false);
@@ -53,6 +57,14 @@ public class SharingTest {
   @Before
   public void createGroup() {
     activityRule.getScenario().onActivity(a -> createdGroupId = DcHelper.getContext(a).createGroupChat(false, "group"));
+  }
+
+  @Before
+  public void createSingleChat() {
+    activityRule.getScenario().onActivity(a -> {
+      int contactId = DcHelper.getContext(a).createContact("", "abc@example.org");
+      createdSingleChatId = DcHelper.getContext(a).createChatByContactId(contactId);
+    });
   }
 
   @Test
@@ -71,7 +83,7 @@ public class SharingTest {
   /**
    * Test direct sharing from a screenshot.
    * Also, this is the regression test for https://github.com/deltachat/deltachat-android/issues/2040
-   * where network changes during sharing lead to
+   * where network changes during sharing lead to a bug
    */
   @Test
   public void testShareFromScreenshot() {
@@ -112,7 +124,86 @@ public class SharingTest {
     onView(withId(R.id.fab)).check(matches(isClickable()));
   }
 
-  // TODO test other things from https://github.com/deltachat/interface/blob/master/user-testing/mailto-links.md
+  /**
+   * Tests https://github.com/deltachat/interface/blob/master/user-testing/mailto-links.md#mailto-links:
+   *
+   * <ul dir="auto">
+   * <li><a href="mailto:abc@example.org">Just an email address</a> - should open a chat with <code>abc@example.org</code> (and maybe ask whether a chat should be created if it does not exist already)</li>
+   * <li><a href="mailto:abc@example.org?subject=testing%20mailto%20uris">email address with subject</a> - should open a chat with <code>abc@example.org</code> and fill <code>testing mailto uris</code>; as we created the chat in the previous step, it should not ask <code>Chat with …</code> but directly open the chat</li>
+   * <li><a href="mailto:abc@example.org?body=this%20is%20a%20test">email address with body</a> - should open a chat with <code>abc@example.org</code>, draft <code>this is a test</code></li>
+   * <li><a href="mailto:abc@example.org?subject=testing%20mailto%20uris&amp;body=this%20is%20a%20test">email address with subject and body</a> - should open a chat with <code>abc@example.org</code>, draft <code>testing mailto uris</code> &lt;newline&gt; <code>this is a test</code></li>
+   * <li><a href="mailto:%20info@example.org">HTML encoding</a> - should open a chat with <code>info@example.org</code></li>
+   * <li><a href="mailto:simplebot@example.org?body=!web%20https%3A%2F%2Fduckduckgo.com%2Flite%3Fq%3Dduck%2520it">more HTML encoding</a> - should open a chat with <code>simplebot@example.org</code>, draft <code>!web https://duckduckgo.com/lite?q=duck%20it</code></li>
+   * <li><a href="mailto:?subject=bla&amp;body=blub">no email, just subject&amp;body</a> - this should let you choose a chat and create a draft <code>bla</code> &lt;newline&gt; <code>blub</code> there</li>
+   * </ul>
+   */
+  @Test
+  public void testShareFromLink() {
+    openLink("mailto:abc@example.org");
+    onView(withId(R.id.subtitle)).check(matches(withText("abc@example.org")));
+
+    openLink("mailto:abc@example.org?subject=testing%20mailto%20uris");
+    onView(withId(R.id.subtitle)).check(matches(withText("abc@example.org")));
+    onView(withHint(R.string.chat_input_placeholder)).check(matches(withText("testing mailto uris")));
+
+    openLink("mailto:abc@example.org?body=this%20is%20a%20test");
+    onView(withId(R.id.subtitle)).check(matches(withText("abc@example.org")));
+    onView(withHint(R.string.chat_input_placeholder)).check(matches(withText("this is a test")));
+
+    openLink("mailto:abc@example.org?subject=testing%20mailto%20uris&body=this%20is%20a%20test");
+    onView(withId(R.id.subtitle)).check(matches(withText("abc@example.org")));
+    onView(withHint(R.string.chat_input_placeholder)).check(matches(withText("testing mailto uris\nthis is a test")));
+
+    openLink("mailto:%20abc@example.org");
+    onView(withId(R.id.subtitle)).check(matches(withText("abc@example.org")));
+
+    openLink("mailto:abc@example.org?body=!web%20https%3A%2F%2Fduckduckgo.com%2Flite%3Fq%3Dduck%2520it");
+    onView(withId(R.id.subtitle)).check(matches(withText("abc@example.org")));
+    onView(withHint(R.string.chat_input_placeholder)).check(matches(withText("!web https://duckduckgo.com/lite?q=duck%20it")));
+
+    openLink("mailto:?subject=bla&body=blub");
+    onView(withId(R.id.list)).perform(RecyclerViewActions.actionOnItem(hasDescendant(withText("abc@example.org")), click()));
+    onView(withId(R.id.subtitle)).check(matches(withText("abc@example.org")));
+    onView(withHint(R.string.chat_input_placeholder)).check(matches(withText("bla\nblub")));
+  }
+
+  private void openLink(String link) {
+    Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
+    i.setPackage(getInstrumentation().getTargetContext().getPackageName());
+    activityRule.getScenario().onActivity(a -> a.startActivity(i));
+  }
+
+  /**
+   * <ul dir="auto">
+   * <li>Open Saved Messages chat (could be any other chat too)</li>
+   * <li>Go to another app and share some text to DC</li>
+   * <li>In DC select Saved Messages. Edit the shared text if you like. <em>Don't</em> hit the Send button.</li>
+   * <li>Leave DC</li>
+   * <li>Open DC again from the "Recent apps"</li>
+   * <li>Check that your draft is still there</li>
+   * </ul>
+   */
+  @Test
+  public void testOpenAgainFromRecents() {
+    // Open a chat
+    onView(withId(R.id.list)).perform(RecyclerViewActions.actionOnItem(hasDescendant(withText("abc@example.org")), click()));
+
+    // Share some text to DC
+    Intent i = new Intent(Intent.ACTION_SEND);
+    i.putExtra(Intent.EXTRA_TEXT, "Veeery important draft");
+    i.setComponent(new ComponentName(getInstrumentation().getTargetContext().getApplicationContext(), ShareActivity.class));
+    activityRule.getScenario().onActivity(a -> a.startActivity(i));
+
+    // In DC, select the same chat you opened before
+    onView(withId(R.id.list)).perform(RecyclerViewActions.actionOnItem(hasDescendant(withText("abc@example.org")), click()));
+
+    // Leave DC and go back to the previous activity (that is still open in the background)
+    pressBack();
+
+    // Check that the draft is still there
+    Util.sleep(2000);
+    onView(withHint(R.string.chat_input_placeholder)).check(matches(withText("Veeery important draft")));
+  }
 
   @After
   public void cleanup() {
