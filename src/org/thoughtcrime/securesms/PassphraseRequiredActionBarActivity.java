@@ -49,24 +49,6 @@ public abstract class PassphraseRequiredActionBarActivity extends BaseActionBarA
   protected void onPreCreate() {}
   protected void onCreate(Bundle savedInstanceState, boolean ready) {}
 
-  @Override
-  protected void onResume() {
-    Log.i(TAG, "onResume()");
-    super.onResume();
-  }
-
-  @Override
-  protected void onPause() {
-    Log.i(TAG, "onPause()");
-    super.onPause();
-  }
-
-  @Override
-  protected void onDestroy() {
-    Log.i(TAG, "onDestroy()");
-    super.onDestroy();
-  }
-
   protected <T extends Fragment> T initFragment(@IdRes int target,
                                                 @NonNull T fragment)
   {
