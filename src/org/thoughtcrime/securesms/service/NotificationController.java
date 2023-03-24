@@ -58,8 +58,12 @@ public final class NotificationController {
   }
 
   public void close() {
-    GenericForegroundService.stopForegroundTask(context, id);
-    context.unbindService(serviceConnection);
+    try {
+      GenericForegroundService.stopForegroundTask(context, id);
+      context.unbindService(serviceConnection);
+    } catch(Exception e) {
+      e.printStackTrace();
+    }
   }
 
   public void setIndeterminateProgress() {

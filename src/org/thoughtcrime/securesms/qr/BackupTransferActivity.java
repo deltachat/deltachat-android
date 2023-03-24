@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 
+import org.thoughtcrime.securesms.ApplicationPreferencesActivity;
 import org.thoughtcrime.securesms.BaseActionBarActivity;
 import org.thoughtcrime.securesms.ConversationListActivity;
 import org.thoughtcrime.securesms.LogViewActivity;
@@ -56,6 +57,7 @@ public class BackupTransferActivity extends BaseActionBarActivity {
     private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
 
     NotificationController notificationController;
+    private boolean notificationControllerClosed = false;
     public boolean warnAboutCopiedQrCodeOnAbort = false;
 
     @Override
@@ -93,12 +95,12 @@ public class BackupTransferActivity extends BaseActionBarActivity {
     }
 
     @Override
-    protected void onPause() {
-        super.onPause();
-        if (isFinishing()) {
+    protected void onDestroy() {
+        super.onDestroy();
+        if (!notificationControllerClosed) {
             notificationController.close();
-            DcHelper.getAccounts(this).startIo();
         }
+        DcHelper.getAccounts(this).startIo();
     }
 
     @Override
@@ -166,8 +168,25 @@ public class BackupTransferActivity extends BaseActionBarActivity {
     }
 
     public void doFinish() {
+        // the permanent notification will prevent other activities to be started and kill BackupTransferActivity;
+        // close it before starting other activities
+        notificationController.close();
+        notificationControllerClosed = true;
+
         if (transferMode == TransferMode.RECEIVER_SCAN_QR && transferState == TransferState.TRANSFER_SUCCESS) {
             startActivity(new Intent(getApplicationContext(), ConversationListActivity.class));
+        } else if (transferMode == TransferMode.SENDER_SHOW_QR) {
+            // restart the activities that were removed when BackupTransferActivity was started at (**2)
+            // (we removed the activity backstack as otherwise a tap on the Delta Chat icon on the home screen would
+            // call onNewIntent() which cannot be aborted and will kill BackupTransferActivity.
+            // if all activities are removed, onCreate() will be called and that can be aborted, so that
+            // a tap in the home icon just opens BackupTransferActivity.
+            // (the user can leave Delta Chat during backup transfer :)
+            // a proper fix would maybe to not rely onNewIntent() at all - but that would require more refactorings
+            // and needs lots if testing in complicated areas (share ...))
+            startActivity(new Intent(getApplicationContext(), ConversationListActivity.class));
+            startActivity(new Intent(this, ApplicationPreferencesActivity.class));
+            overridePendingTransition(0, 0);
         }
         finish();
     }
