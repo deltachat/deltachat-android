@@ -485,8 +485,6 @@
     <!-- Shown beside progress bar, stay short -->
     <string name="multidevice_waiting_for_receiver">Waiting for receiver…</string>
     <!-- Shown beside progress bar, stay short -->
-    <string name="multidevice_connecting">Connecting…</string>
-    <!-- Shown beside progress bar, stay short -->
     <string name="multidevice_receiver_connected">Receiver connected…</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="multidevice_transferring">Transferring…</string>

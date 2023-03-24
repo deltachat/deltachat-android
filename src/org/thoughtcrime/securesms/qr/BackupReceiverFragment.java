@@ -43,7 +43,7 @@ public class BackupReceiverFragment extends Fragment implements DcEventCenter.Dc
         progressBar = view.findViewById(R.id.progress_bar);
         sameNetworkHint = view.findViewById(R.id.same_network_hint);
 
-        statusLine.setText(R.string.multidevice_connecting);
+        statusLine.setText(R.string.connectivity_connecting);
         progressBar.setIndeterminate(true);
 
         dcContext = DcHelper.getContext(getActivity());
