@@ -128,7 +128,7 @@ public class BackupTransferActivity extends BaseActionBarActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         super.onOptionsItemSelected(item);
 
         switch (item.getItemId()) {
