@@ -9,17 +9,22 @@ import android.view.MenuItem;
 import android.view.ViewConfiguration;
 import android.view.WindowManager;
 
+import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import org.thoughtcrime.securesms.util.Prefs;
 
 import java.lang.reflect.Field;
+import java.util.Locale;
 
 
 public abstract class BaseActionBarActivity extends AppCompatActivity {
 
   private static final String TAG = BaseActionBarActivity.class.getSimpleName();
+  public static final String LOCALE_EXTRA = "locale_extra";
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -89,5 +94,37 @@ public abstract class BaseActionBarActivity extends AppCompatActivity {
         item.setVisible(!visible); // if search is shown, other items are hidden - and the other way round
       }
     }
+  }
+
+  protected <T extends Fragment> T initFragment(@IdRes int target,
+                                                @NonNull T fragment)
+  {
+    return initFragment(target, fragment, null);
+  }
+
+  protected <T extends Fragment> T initFragment(@IdRes int target,
+                                                @NonNull T fragment,
+                                                @Nullable Locale locale)
+  {
+    return initFragment(target, fragment, locale, null);
+  }
+
+  protected <T extends Fragment> T initFragment(@IdRes int target,
+                                                @NonNull T fragment,
+                                                @Nullable Locale locale,
+                                                @Nullable Bundle extras)
+  {
+    Bundle args = new Bundle();
+    args.putSerializable(LOCALE_EXTRA, locale);
+
+    if (extras != null) {
+      args.putAll(extras);
+    }
+
+    fragment.setArguments(args);
+    getSupportFragmentManager().beginTransaction()
+      .replace(target, fragment)
+      .commitAllowingStateLoss();
+    return fragment;
   }
 }

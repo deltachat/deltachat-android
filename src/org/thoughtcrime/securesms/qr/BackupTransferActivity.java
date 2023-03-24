@@ -1,7 +1,5 @@
 package org.thoughtcrime.securesms.qr;
 
-import static org.thoughtcrime.securesms.PassphraseRequiredActionBarActivity.LOCALE_EXTRA;
-
 import android.content.Context;
 import android.content.Intent;
 import android.net.wifi.WifiInfo;
@@ -12,12 +10,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
-import androidx.fragment.app.Fragment;
 
 import org.thoughtcrime.securesms.BaseActionBarActivity;
 import org.thoughtcrime.securesms.ConversationListActivity;
@@ -30,8 +25,6 @@ import org.thoughtcrime.securesms.service.NotificationController;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.Util;
-
-import java.util.Locale;
 
 public class BackupTransferActivity extends BaseActionBarActivity {
 
@@ -220,20 +213,5 @@ public class BackupTransferActivity extends BaseActionBarActivity {
                 }
             }).start();
         }
-    }
-
-    protected <T extends Fragment> T initFragment(@IdRes int target,
-                                                  @NonNull T fragment,
-                                                  @Nullable Locale locale,
-                                                  @Nullable Bundle extras)
-    {
-        Bundle args = new Bundle();
-        args.putSerializable(LOCALE_EXTRA, locale);
-        if (extras != null) {
-            args.putAll(extras);
-        }
-        fragment.setArguments(args);
-        getSupportFragmentManager().beginTransaction().replace(target, fragment).commitAllowingStateLoss();
-        return fragment;
     }
 }
