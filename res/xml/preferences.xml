@@ -20,6 +20,11 @@
                 android:icon="@drawable/ic_brightness_6_24dp"
                 android:layout="@layout/preference_item" />
 
+    <Preference android:key="preference_category_multidevice"
+                android:title="@string/multidevice_title"
+                android:icon="@drawable/ic_baseline_devices_24"
+                android:layout="@layout/preference_item"/>
+
     <Preference android:key="preference_category_connectivity"
                 android:title="@string/connectivity"
                 android:icon="@drawable/ic_swap_vert_24dp"

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:orientation="vertical">
+
+	<TextView
+		android:id="@+id/status_line"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="40sp"
+		android:gravity="center_horizontal"
+		android:textAlignment="center"
+		android:textColor="?attr/emoji_text_color"
+		android:textSize="20sp"
+		tools:text="One moment..."/>
+
+	<ProgressBar
+		android:id="@+id/progress_bar"
+		style="?android:attr/progressBarStyleHorizontal"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_margin="16dp"
+		/>
+
+	<TextView
+		android:id="@+id/same_network_hint"
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:layout_margin="16dp"
+		android:layout_weight="1"
+		android:gravity="bottom"
+		android:text="@string/multidevice_same_network_hint"
+		android:textColor="@color/gray50"
+		android:textSize="16sp"/>
+
+</LinearLayout>

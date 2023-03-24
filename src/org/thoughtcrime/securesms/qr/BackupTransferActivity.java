@@ -1,0 +1,239 @@
+package org.thoughtcrime.securesms.qr;
+
+import static org.thoughtcrime.securesms.PassphraseRequiredActionBarActivity.LOCALE_EXTRA;
+
+import android.content.Context;
+import android.content.Intent;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.TextView;
+
+import androidx.annotation.IdRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.Fragment;
+
+import org.thoughtcrime.securesms.BaseActionBarActivity;
+import org.thoughtcrime.securesms.ConversationListActivity;
+import org.thoughtcrime.securesms.LogViewActivity;
+import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.WebViewActivity;
+import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.service.GenericForegroundService;
+import org.thoughtcrime.securesms.service.NotificationController;
+import org.thoughtcrime.securesms.util.DynamicLanguage;
+import org.thoughtcrime.securesms.util.DynamicTheme;
+import org.thoughtcrime.securesms.util.Util;
+
+import java.util.Locale;
+
+public class BackupTransferActivity extends BaseActionBarActivity {
+
+    private final static String TAG = BackupTransferActivity.class.getSimpleName();
+
+    public enum TransferMode {
+        INVALID(0),
+        SENDER_SHOW_QR(1),
+        RECEIVER_SCAN_QR(2);
+        private final int i;
+        TransferMode(int i) { this.i = i; }
+        public int getInt() { return i; }
+        public static TransferMode fromInt(int i) { return values()[i]; }
+    };
+
+    public enum TransferState {
+        TRANSFER_UNKNOWN,
+        TRANSFER_ERROR,
+        TRANSFER_SUCCESS;
+    };
+
+    public static final String TRANSFER_MODE = "transfer_mode";
+    public static final String QR_CODE = "qr_code";
+
+    private TransferMode transferMode = TransferMode.RECEIVER_SCAN_QR;
+    private TransferState transferState = TransferState.TRANSFER_UNKNOWN;
+
+    private final DynamicTheme dynamicTheme = new DynamicTheme();
+    private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
+
+    NotificationController notificationController;
+    public boolean warnAboutCopiedQrCodeOnAbort = false;
+
+    @Override
+    protected void onCreate(Bundle icicle) {
+        super.onCreate(icicle);
+        dynamicTheme.onCreate(this);
+        dynamicLanguage.onCreate(this);
+
+        transferMode = TransferMode.fromInt(getIntent().getIntExtra(TRANSFER_MODE, TransferMode.INVALID.getInt()));
+        if (transferMode == TransferMode.INVALID) {
+          throw new RuntimeException("bad transfer mode");
+        }
+
+        DcHelper.getAccounts(this).stopIo();
+
+        String title = getString(transferMode == TransferMode.RECEIVER_SCAN_QR ? R.string.multidevice_reveiver_title : R.string.multidevice_title);
+        notificationController = GenericForegroundService.startForegroundTask(this, title);
+
+        setContentView(R.layout.backup_provider_activity);
+
+        switch(transferMode) {
+            case SENDER_SHOW_QR:
+                initFragment(android.R.id.content, new BackupProviderFragment(), dynamicLanguage.getCurrentLocale(), icicle);
+                break;
+
+          case RECEIVER_SCAN_QR:
+                initFragment(android.R.id.content, new BackupReceiverFragment(), dynamicLanguage.getCurrentLocale(), icicle);
+                break;
+        }
+
+        ActionBar supportActionBar = getSupportActionBar();
+        supportActionBar.setDisplayHomeAsUpEnabled(true);
+        supportActionBar.setHomeAsUpIndicator(R.drawable.ic_close_white_24dp);
+        supportActionBar.setTitle(title);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (isFinishing()) {
+            notificationController.close();
+            DcHelper.getAccounts(this).startIo();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        dynamicTheme.onResume(this);
+        dynamicLanguage.onResume(this);
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        menu.clear();
+        getMenuInflater().inflate(R.menu.backup_transfer_menu, menu);
+        return super.onPrepareOptionsMenu(menu);
+    }
+
+    @Override
+    public void onBackPressed() {
+        finishOrAskToFinish();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        super.onOptionsItemSelected(item);
+
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finishOrAskToFinish();
+                return true;
+            case R.id.troubleshooting:
+                // once help is evolved, it may be a more visible button, may be localized, may be offline
+                WebViewActivity.openUrlInBrowser(this, "https://delta.chat/en/help#multiclient");
+                return true;
+            case R.id.view_log_button:
+                startActivity(new Intent(this, LogViewActivity.class));
+                return true;
+        }
+
+        return false;
+    }
+
+    public void setTransferState(TransferState transferState) {
+        this.transferState = transferState;
+    }
+
+    private void finishOrAskToFinish() {
+        switch (transferState) {
+          case TRANSFER_ERROR:
+          case TRANSFER_SUCCESS:
+              doFinish();
+              break;
+
+          default:
+              String msg = getString(R.string.multidevice_abort);
+              if (warnAboutCopiedQrCodeOnAbort) {
+                  msg += "\n\n" + getString(R.string.multidevice_abort_will_invalidate_copied_qr);
+              }
+              new AlertDialog.Builder(this)
+                    .setMessage(msg)
+                    .setPositiveButton(android.R.string.ok, (dialogInterface, i) -> doFinish())
+                    .setNegativeButton(R.string.cancel, null)
+                    .show();
+              break;
+        }
+    }
+
+    public void doFinish() {
+        if (transferMode == TransferMode.RECEIVER_SCAN_QR && transferState == TransferState.TRANSFER_SUCCESS) {
+            startActivity(new Intent(getApplicationContext(), ConversationListActivity.class));
+        }
+        finish();
+    }
+
+    public void showLastErrorAlert(@NonNull String errorContext) {
+        String lastError = DcHelper.getContext(this).getLastError();
+        if (lastError.isEmpty()) {
+          lastError = "<last error not set>";
+        }
+
+        String error = errorContext;
+        if (!error.isEmpty()) {
+            error += ": ";
+        }
+        error += lastError;
+
+        new AlertDialog.Builder(this)
+          .setMessage(error)
+          .setPositiveButton(android.R.string.ok, null)
+          .setCancelable(false)
+          .show();
+    }
+
+    public void appendSSID(final TextView textView) {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            new Thread(() -> {
+                try {
+                    // depending on the android version, getting the SSID requires none, all or one of
+                    // ACCESS_COARSE_LOCATION, ACCESS_FINE_LOCATION, ACCESS_WIFI_STATE, ACCESS_NETWORK_STATE and maybe even more.
+                    final WifiManager wifiManager = (WifiManager)getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+                    if (wifiManager.isWifiEnabled()) {
+                        final WifiInfo info = wifiManager.getConnectionInfo();
+                        final String ssid = info.getSSID();
+                        Log.i(TAG, "wifi ssid: "+ssid);
+                        if (!ssid.equals("<unknown ssid>")) { // "<unknown ssid>" may be returned on insufficient rights
+                            Util.runOnMain(() -> {
+                                textView.setText(textView.getText() + " (" + ssid + ")");
+                            });
+                        }
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }).start();
+        }
+    }
+
+    protected <T extends Fragment> T initFragment(@IdRes int target,
+                                                  @NonNull T fragment,
+                                                  @Nullable Locale locale,
+                                                  @Nullable Bundle extras)
+    {
+        Bundle args = new Bundle();
+        args.putSerializable(LOCALE_EXTRA, locale);
+        if (extras != null) {
+            args.putAll(extras);
+        }
+        fragment.setArguments(args);
+        getSupportFragmentManager().beginTransaction().replace(target, fragment).commitAllowingStateLoss();
+        return fragment;
+    }
+}

@@ -465,6 +465,33 @@
     <!-- the explanation is shown (1) as a modal dialog with the buttons "Cancel" and "Continue" as well as (2) as a device message -->
     <string name="aeap_explanation">You changed your email address from %1$s to %2$s.\n\nIf you now send a message to a verified group, contacts there will automatically replace the old with your new address.\n\nIt\'s highly advised to set up your old email provider to forward all emails to your new email address. Otherwise you might miss messages of contacts who did not get your new address yet.</string>
 
+
+    <!-- Multi Device -->
+    <!-- "Second Device" can also be translated as "Another Device", if that is catchier in the destination language. However, make sure to use the term consistently. -->
+    <string name="multidevice_title">Add Second Device</string>
+    <string name="multidevice_same_network_hint">Make sure both devices are on the same Wi-Fi or network</string>
+    <string name="multidevice_install_dc_on_other_device">Install Delta Chat 1.36 or newer on your other device (https://get.delta.chat)</string>
+    <string name="multidevice_tap_scan_on_other_device">Start Delta Chat, tap “Scan QR Code” and scan the code shown here</string>
+    <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and/or address eg. "Scan to set up second device for Alice (alice@example.org)" -->
+    <string name="multidevice_qr_subtitle">Scan to set up second device for %1$s</string>
+    <string name="multidevice_reveiver_title">Add as Second Device</string>
+    <string name="multidevice_receiver_scanning_ask">Copy the account from the other device to this device?</string>
+    <string name="multidevice_abort">Abort setting up second device?</string>
+    <string name="multidevice_abort_will_invalidate_copied_qr">This will invalidate the QR code copied to clipboard.</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="exporting_account">Exporting account…</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="preparing_account">Preparing account…</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="account_prepared">Account prepared.</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="waiting_for_receiver">Waiting for receiver…</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="receiver_connected">Receiver connected…</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="transferring">Transferring…</string>
+    <string name="troubleshooting">Troubleshooting</string>
+
     <!-- Connectivity -->
     <!-- Headline for the "Inbox" eg. in the "Connectivity" view -->
     <string name="incoming_messages">Incoming Messages</string>

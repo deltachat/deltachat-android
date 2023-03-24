@@ -51,6 +51,8 @@ import org.thoughtcrime.securesms.preferences.widgets.ProfilePreference;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.Prefs;
+import org.thoughtcrime.securesms.qr.BackupTransferActivity;
+import org.thoughtcrime.securesms.util.ScreenLockUtil;
 
 /**
  * The Activity for application preference display and management.
@@ -69,6 +71,7 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
   private static final String PREFERENCE_CATEGORY_NOTIFICATIONS  = "preference_category_notifications";
   private static final String PREFERENCE_CATEGORY_APPEARANCE     = "preference_category_appearance";
   private static final String PREFERENCE_CATEGORY_CHATS          = "preference_category_chats";
+  private static final String PREFERENCE_CATEGORY_MULTIDEVICE    = "preference_category_multidevice";
   private static final String PREFERENCE_CATEGORY_ADVANCED       = "preference_category_advanced";
   private static final String PREFERENCE_CATEGORY_CONNECTIVITY   = "preference_category_connectivity";
   private static final String PREFERENCE_CATEGORY_HELP           = "preference_category_help";
@@ -105,6 +108,10 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
   protected void onActivityResult(int requestCode, int resultCode, Intent data)
   {
     super.onActivityResult(requestCode, resultCode, data);
+    if (resultCode == RESULT_OK && requestCode == ScreenLockUtil.REQUEST_CODE_CONFIRM_CREDENTIALS) {
+      showBackupProvider();
+      return;
+    }
     Fragment fragment = getSupportFragmentManager().findFragmentById(android.R.id.content);
     fragment.onActivityResult(requestCode, resultCode, data);
   }
@@ -133,6 +140,12 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
     }
   }
 
+  public void showBackupProvider() {
+    Intent intent = new Intent(this, BackupTransferActivity.class);
+    intent.putExtra(BackupTransferActivity.TRANSFER_MODE, BackupTransferActivity.TransferMode.SENDER_SHOW_QR.getInt());
+    startActivity(intent);
+  }
+
   public static class ApplicationPreferenceFragment extends CorrectedPreferenceFragment implements DcEventCenter.DcEventDelegate {
 
     @Override
@@ -149,6 +162,8 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
         .setOnPreferenceClickListener(new CategoryClickListener(PREFERENCE_CATEGORY_APPEARANCE));
       this.findPreference(PREFERENCE_CATEGORY_CHATS)
         .setOnPreferenceClickListener(new CategoryClickListener(PREFERENCE_CATEGORY_CHATS));
+      this.findPreference(PREFERENCE_CATEGORY_MULTIDEVICE)
+        .setOnPreferenceClickListener(new CategoryClickListener(PREFERENCE_CATEGORY_MULTIDEVICE));
       this.findPreference(PREFERENCE_CATEGORY_ADVANCED)
         .setOnPreferenceClickListener(new CategoryClickListener(PREFERENCE_CATEGORY_ADVANCED));
 
@@ -256,6 +271,11 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
           break;
         case PREFERENCE_CATEGORY_CHATS:
           fragment = new ChatsPreferenceFragment();
+          break;
+        case PREFERENCE_CATEGORY_MULTIDEVICE:
+          if (!ScreenLockUtil.applyScreenLock(getActivity(), getString(R.string.multidevice_title), ScreenLockUtil.REQUEST_CODE_CONFIRM_CREDENTIALS)) {
+            ((ApplicationPreferencesActivity)getActivity()).showBackupProvider();
+          }
           break;
         case PREFERENCE_CATEGORY_ADVANCED:
           fragment = new AdvancedPreferenceFragment();

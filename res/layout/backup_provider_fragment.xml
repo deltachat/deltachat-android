@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:orientation="vertical">
+
+	<org.thoughtcrime.securesms.components.emoji.EmojiTextView
+		android:id="@+id/status_line"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="40sp"
+		android:gravity="center_horizontal"
+		android:textAlignment="center"
+		android:textColor="?attr/emoji_text_color"
+		android:textSize="20sp"
+		tools:text="One moment..."/>
+
+	<ProgressBar
+		android:id="@+id/progress_bar"
+		style="?android:attr/progressBarStyleHorizontal"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_margin="16dp"
+		/>
+
+	<LinearLayout
+		android:id="@+id/top_text"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_margin="16dp"
+		android:orientation="vertical"
+		android:visibility="gone"
+		tools:visibility="visible">
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal">
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginEnd="8dp"
+				android:layout_marginRight="8dp"
+				android:gravity="center_vertical"
+				android:text="➊"
+				android:textColor="?attr/emoji_text_color"
+				android:textSize="16sp"/> <!-- idk - using sightly larger text size moves the next text down -->
+			<TextView
+				android:id="@+id/same_network_hint"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:gravity="center_vertical"
+				android:text="@string/multidevice_same_network_hint"
+				android:textColor="?attr/emoji_text_color"
+				android:textSize="16sp"/>
+		</LinearLayout>
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal">
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginEnd="8dp"
+				android:layout_marginRight="8dp"
+				android:gravity="center_vertical"
+				android:text="➋"
+				android:textColor="?attr/emoji_text_color"
+				android:textSize="16sp"/>
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/multidevice_install_dc_on_other_device"
+				android:textColor="?attr/emoji_text_color"
+				android:textSize="16sp"/>
+		</LinearLayout>
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal">
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginEnd="8dp"
+				android:layout_marginRight="8dp"
+				android:gravity="center_vertical"
+				android:text="➌"
+				android:textColor="?attr/emoji_text_color"
+				android:textSize="16sp"/>
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/multidevice_tap_scan_on_other_device"
+				android:textColor="?attr/emoji_text_color"
+				android:textSize="16sp"/>
+		</LinearLayout>
+
+	</LinearLayout>
+
+	<com.caverock.androidsvg.SVGImageView
+		android:id="@+id/qrImage"
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:layout_weight="1"
+		android:layout_marginBottom="16dp"
+		android:contentDescription="@string/qrscan_title" />
+
+</LinearLayout>

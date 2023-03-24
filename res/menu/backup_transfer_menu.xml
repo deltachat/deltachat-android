@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:title="@string/troubleshooting"
+          android:id="@+id/troubleshooting"
+          app:showAsAction="never"/>
+
+    <item android:title="@string/menu_copy_to_clipboard"
+          android:id="@+id/copy"
+          android:visible="false"
+          app:showAsAction="never"/>
+
+    <item android:title="@string/pref_view_log"
+          android:id="@+id/view_log_button"
+          app:showAsAction="never"/>
+
+</menu>
