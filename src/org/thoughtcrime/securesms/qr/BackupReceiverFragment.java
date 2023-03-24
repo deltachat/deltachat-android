@@ -94,7 +94,7 @@ public class BackupReceiverFragment extends Fragment implements DcEventCenter.Dc
                 statusLineText = getString(R.string.multidevice_transferring) + String.format(Locale.getDefault(), " %d%%", percent);
                 hideSameNetworkHint = true;
             } else if (permille < 1000) {
-              statusLineText = "Finishing..."; // range not used, should not happen
+                statusLineText = "Finishing..."; // range not used, should not happen
             } else if (permille == 1000) {
                 getTransferActivity().setTransferState(BackupTransferActivity.TransferState.TRANSFER_SUCCESS);
                 getTransferActivity().doFinish();
