@@ -110,7 +110,7 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
       super.onOptionsItemSelected(item);
 
       switch (item.getItemId()) {
