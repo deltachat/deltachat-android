@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.MenuItem;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 
@@ -48,6 +49,11 @@ public class RegistrationQrActivity extends BaseActionBarActivity {
 
         barcodeScannerView = findViewById(R.id.zxing_barcode_scanner);
         barcodeScannerView.setStatusText(getString(R.string.qrscan_hint) + "\n ");
+
+        View sameNetworkHint = findViewById(R.id.same_network_hint);
+        if (sameNetworkHint != null) {
+            BackupTransferActivity.appendSSID(this, findViewById(R.id.same_network_hint));
+        }
 
         if (savedInstanceState != null) {
             init(barcodeScannerView, getIntent(), savedInstanceState);

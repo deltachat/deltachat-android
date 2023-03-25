@@ -90,7 +90,7 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
             });
         }).start();
 
-        getTransferActivity().appendSSID(view.findViewById(R.id.same_network_hint));
+        BackupTransferActivity.appendSSID(getActivity(), view.findViewById(R.id.same_network_hint));
 
         return view;
     }

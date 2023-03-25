@@ -1,5 +1,6 @@
 package org.thoughtcrime.securesms.qr;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.wifi.WifiInfo;
@@ -14,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 
+import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.ApplicationPreferencesActivity;
 import org.thoughtcrime.securesms.BaseActionBarActivity;
 import org.thoughtcrime.securesms.ConversationListActivity;
@@ -211,13 +213,13 @@ public class BackupTransferActivity extends BaseActionBarActivity {
           .show();
     }
 
-    public void appendSSID(final TextView textView) {
+    public static void appendSSID(Activity activity, final TextView textView) {
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
             new Thread(() -> {
                 try {
                     // depending on the android version, getting the SSID requires none, all or one of
                     // ACCESS_COARSE_LOCATION, ACCESS_FINE_LOCATION, ACCESS_WIFI_STATE, ACCESS_NETWORK_STATE and maybe even more.
-                    final WifiManager wifiManager = (WifiManager)getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+                    final WifiManager wifiManager = (WifiManager)activity.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
                     if (wifiManager.isWifiEnabled()) {
                         final WifiInfo info = wifiManager.getConnectionInfo();
                         final String ssid = info.getSSID();
