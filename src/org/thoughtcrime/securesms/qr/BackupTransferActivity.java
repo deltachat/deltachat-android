@@ -73,7 +73,7 @@ public class BackupTransferActivity extends BaseActionBarActivity {
 
         DcHelper.getAccounts(this).stopIo();
 
-        String title = getString(transferMode == TransferMode.RECEIVER_SCAN_QR ? R.string.multidevice_reveiver_title : R.string.multidevice_title);
+        String title = getString(transferMode == TransferMode.RECEIVER_SCAN_QR ? R.string.multidevice_receiver_title : R.string.multidevice_title);
         notificationController = GenericForegroundService.startForegroundTask(this, title);
 
         setContentView(R.layout.backup_provider_activity);
