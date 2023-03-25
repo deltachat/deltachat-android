@@ -16,12 +16,13 @@ import org.thoughtcrime.securesms.BaseActionBarActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
-import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 
 public class RegistrationQrActivity extends BaseActionBarActivity {
 
-    private final DynamicTheme dynamicTheme = new DynamicNoActionBarTheme();
+    public static final String ADD_AS_SECOND_DEVICE_EXTRA = "add_as_second_device";
+
+    private final DynamicTheme dynamicTheme = new DynamicTheme();
     private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
 
     private CaptureManager capture;
@@ -34,7 +35,15 @@ public class RegistrationQrActivity extends BaseActionBarActivity {
         dynamicTheme.onCreate(this);
         dynamicLanguage.onCreate(this);
 
-        setContentView(R.layout.activity_registration_qr);
+        boolean addAsAnotherDevice = getIntent().getBooleanExtra(ADD_AS_SECOND_DEVICE_EXTRA, false);
+        if (addAsAnotherDevice) {
+            setContentView(R.layout.activity_registration_qr);
+            getSupportActionBar().setTitle(R.string.multidevice_receiver_title);
+        } else {
+            setContentView(R.layout.activity_registration_qr);
+            getSupportActionBar().setTitle(R.string.scan_invitation_code);
+        }
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         barcodeScannerView = findViewById(R.id.zxing_barcode_scanner);
         barcodeScannerView.setStatusText(getString(R.string.qrscan_hint) + "\n ");
