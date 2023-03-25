@@ -471,7 +471,7 @@
     <string name="multidevice_title">Add Second Device</string>
     <string name="multidevice_same_network_hint">Make sure both devices are on the same Wi-Fi or network</string>
     <string name="multidevice_install_dc_on_other_device">Install Delta Chat 1.36 or newer on your other device (https://get.delta.chat)</string>
-    <string name="multidevice_tap_scan_on_other_device">Start Delta Chat, tap “Scan QR Code” and scan the code shown here</string>
+    <string name="multidevice_tap_scan_on_other_device">Start Delta Chat, tap “Add as Second Device” and scan the code shown here</string>
     <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and/or address eg. "Scan to set up second device for Alice (alice@example.org)" -->
     <string name="multidevice_qr_subtitle">Scan to set up second device for %1$s</string>
     <string name="multidevice_receiver_title">Add as Second Device</string>
