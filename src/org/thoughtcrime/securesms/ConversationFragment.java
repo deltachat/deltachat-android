@@ -393,13 +393,16 @@ public class ConversationFragment extends MessageSelectorFragment
     }
 
     void setLastSeen(long lastSeen) {
-        getListAdapter().setLastSeen(lastSeen);
-        if (lastSeenDecoration != null) {
-            list.removeItemDecoration(lastSeenDecoration);
-        }
-        if (lastSeen > 0) {
-            lastSeenDecoration = new ConversationAdapter.LastSeenHeader(getListAdapter());
-            list.addItemDecoration(lastSeenDecoration);
+        ConversationAdapter adapter = getListAdapter();
+        if (adapter != null) {
+            adapter.setLastSeen(lastSeen);
+            if (lastSeenDecoration != null) {
+                list.removeItemDecoration(lastSeenDecoration);
+            }
+            if (lastSeen > 0) {
+                lastSeenDecoration = new ConversationAdapter.LastSeenHeader(adapter);
+                list.addItemDecoration(lastSeenDecoration);
+            }
         }
     }
 
