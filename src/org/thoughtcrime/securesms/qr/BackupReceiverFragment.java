@@ -57,7 +57,7 @@ public class BackupReceiverFragment extends Fragment implements DcEventCenter.Dc
             Log.i(TAG, "##### receiveBackup() done with result: "+res);
         }).start();
 
-        getTransferActivity().appendSSID(sameNetworkHint);
+        BackupTransferActivity.appendSSID(getActivity(), sameNetworkHint);
 
         return view;
     }
