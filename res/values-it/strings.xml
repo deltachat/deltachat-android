@@ -481,6 +481,34 @@
     <string name="aeap_explanation">Hai cambiato il tuo indirizzo email da %1$s a %2$s.\n\nSe ora invii un messaggio a un gruppo verificato, i contatti sostituiranno automaticamente il vecchio indirizzo con il tuo nuovo.\n\nSi consiglia vivamente di impostare il tuo vecchio provider email per inoltrare tutte le email al tuo nuovo indirizzo email. Altrimenti potresti perdere i messaggi di contatti che non hanno ancora ricevuto il tuo nuovo indirizzo.</string>
 
 
+    <!-- Multi Device -->
+    <!-- "Second Device" can also be translated as "Another Device", if that is catchier in the destination language. However, make sure to use the term consistently. -->
+    <string name="multidevice_title">Aggiungi Secondo Dispositivo</string>
+    <string name="multidevice_same_network_hint">Assicurati che entrambi i dispositivi siano sulla stessa rete o Wi-Fi.</string>
+    <string name="multidevice_install_dc_on_other_device">Installa Delta Chat sull\'altro dispositivo (https://get.delta.chat)</string>
+    <string name="multidevice_tap_scan_on_other_device">Avvia Delta Chat, tocca \"Aggiungi come secondo dispositivo\" e scansiona il codice qui mostrato</string>
+    <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and/or address eg. "Scan to set up second device for Alice (alice@example.org)" -->
+    <string name="multidevice_qr_subtitle">Scansiona per impostare un secondo dispositivo per %1$s</string>
+    <string name="multidevice_receiver_title">Aggiungi come Secondo Dispositivo</string>
+    <string name="multidevice_open_settings_on_other_device">Sul primo dispositivo, andare su \"Impostazioni/Aggiungi un secondo dispositivo\" e scansionare il codice visualizzato</string>
+    <string name="multidevice_receiver_scanning_ask">Copiare l\'account dall\'altro dispositivo su questo dispositivo?</string>
+    <string name="multidevice_abort">Interrompere l\'impostazione del secondo dispositivo?</string>
+    <string name="multidevice_abort_will_invalidate_copied_qr">Questo invaliderà il codice QR copiato negli appunti.</string>
+    <string name="multidevice_experimental_hint">(sperimentale, è richiesta la versione 1.36)</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="exporting_account">Esportazione dell\' account…</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="preparing_account">Preparazione account…</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="account_prepared">Account preparato.</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="waiting_for_receiver">In attesa del ricevente...</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="receiver_connected">Ricevente connesso…</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="transferring">Trasferimento…</string>
+    <string name="troubleshooting">Risoluzione dei problemi</string>
+
     <!-- Connectivity -->
     <!-- Headline for the "Inbox" eg. in the "Connectivity" view -->
     <string name="incoming_messages">Messaggi in arrivo</string>

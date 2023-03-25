@@ -496,6 +496,34 @@
     <string name="aeap_explanation">Вы изменили свой адрес электронной почты с %1$s на %2$s.\n\nЕсли теперь вы отправите сообщение в проверенную группу, контакты там автоматически заменят старый адрес на ваш новый.\n\nНастоятельно рекомендуется настроить вашего старого поставщика услуг электронной почты на пересылку всех писем на ваш новый адрес электронной почты. В противном случае вы можете пропустить сообщения контактов, которые еще не получили ваш новый адрес.</string>
 
 
+    <!-- Multi Device -->
+    <!-- "Second Device" can also be translated as "Another Device", if that is catchier in the destination language. However, make sure to use the term consistently. -->
+    <string name="multidevice_title">Добавить второе устройство</string>
+    <string name="multidevice_same_network_hint">Подключите оба устройства к одной и той же сети Wi-Fi</string>
+    <string name="multidevice_install_dc_on_other_device">Установите Delta Chat на другое устройство (https://get.delta.chat)</string>
+    <string name="multidevice_tap_scan_on_other_device">Запустите Delta Chat, нажмите \"Добавить второе устройство\" и отсканируйте показанный здесь код</string>
+    <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and/or address eg. "Scan to set up second device for Alice (alice@example.org)" -->
+    <string name="multidevice_qr_subtitle">Отсканируйте, чтобы настроить второе устройство для %1$s</string>
+    <string name="multidevice_receiver_title">Добавить как второе устройство</string>
+    <string name="multidevice_open_settings_on_other_device">На первом устройстве перейдите в \"Настройки / Добавить второе устройство\" и отсканируйте показанный код</string>
+    <string name="multidevice_receiver_scanning_ask">Скопировать аккаунт с другого устройства на это устройство?</string>
+    <string name="multidevice_abort">Прервать установку второго устройства?</string>
+    <string name="multidevice_abort_will_invalidate_copied_qr">Это сделает недействительным QR-код, скопированный в буфер обмена.</string>
+    <string name="multidevice_experimental_hint">(экспериментально, требуется версия 1.36)</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="exporting_account">Экспортируем аккаунт...</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="preparing_account">Готовим аккаунт...</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="account_prepared">Аккаунт готов.</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="waiting_for_receiver">Ожидаем получателя...</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="receiver_connected">Получатель подключен...</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="transferring">Передача...</string>
+    <string name="troubleshooting">Устранение неполадок</string>
+
     <!-- Connectivity -->
     <!-- Headline for the "Inbox" eg. in the "Connectivity" view -->
     <string name="incoming_messages">Входящие сообщения</string>

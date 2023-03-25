@@ -2,7 +2,7 @@
 <resources>
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
-    <string name="ok">OK</string>
+    <string name="ok">Гаразд</string>
     <string name="cancel">Скасувати</string>
     <string name="clear_search">Очистити пошук</string>
     <string name="yes">Так</string>
@@ -495,6 +495,34 @@
     <!-- the explanation is shown (1) as a modal dialog with the buttons "Cancel" and "Continue" as well as (2) as a device message -->
     <string name="aeap_explanation">Ви змінили вашу електронну адресу з %1$s на %2$s.\n\nЯкщо зараз ви відправите повідомлення у підтверджену групу, контакти в ній автоматично замінять вашу стару адресу на нову.\n\nНастійно рекомендується налаштувати старий аккаунт електронної пошти на пересилання всіх електронних листів на вашу нову електронну адресу. Інакше ви можете пропустити повідомлення контактів, які ще не отримали вашу нову адресу.</string>
 
+
+    <!-- Multi Device -->
+    <!-- "Second Device" can also be translated as "Another Device", if that is catchier in the destination language. However, make sure to use the term consistently. -->
+    <string name="multidevice_title">Додати другий пристрій</string>
+    <string name="multidevice_same_network_hint">Переконайтеся, що обидва пристрої підключено до однієї мережі Wi-Fi</string>
+    <string name="multidevice_install_dc_on_other_device">Установіть Delta Chat на ваш інший пристрій (https://get.delta.chat)</string>
+    <string name="multidevice_tap_scan_on_other_device">Запустіть Delta Chat, натисніть «Додати як другий пристрій» і відскануйте показаний тут код</string>
+    <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and/or address eg. "Scan to set up second device for Alice (alice@example.org)" -->
+    <string name="multidevice_qr_subtitle">Скануйте, щоб налаштувати другий пристрій %1$s</string>
+    <string name="multidevice_receiver_title">Додати як другий пристрій</string>
+    <string name="multidevice_open_settings_on_other_device">На першому пристрої перейдіть до «Налаштування / Додати другий пристрій» і відскануйте показаний там код</string>
+    <string name="multidevice_receiver_scanning_ask">Скопіювати обліковий запис з іншого пристрою на цей?</string>
+    <string name="multidevice_abort">Скасувати налаштування другого пристрою?</string>
+    <string name="multidevice_abort_will_invalidate_copied_qr">Це зробить недійсним QR-код, скопійований у буфер обміну.</string>
+    <string name="multidevice_experimental_hint">(експериментальний, потрібна версія 1.36)</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="exporting_account">Експорт облікового запису…</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="preparing_account">Підготовка облікового запису…</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="account_prepared">Обліковий запис підготовлено.</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="waiting_for_receiver">Очікування одержувача…</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="receiver_connected">Одержувача підключено…</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="transferring">Передача…</string>
+    <string name="troubleshooting">Вирішення проблем</string>
 
     <!-- Connectivity -->
     <!-- Headline for the "Inbox" eg. in the "Connectivity" view -->

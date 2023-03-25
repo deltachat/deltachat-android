@@ -466,6 +466,34 @@
     <string name="aeap_explanation">Je hebt je e-mailadres veranderd van %1$s naar %2$s.\n\nAls je een bericht stuurt aan een goedgekeurde groep, dan zien contactpersonen in de groep je nieuwe adres.\n\nWel raden we aan om bij je oude provider in te stellen dat je e-mails wilt doorsturen naar je nieuwe adres, anders missen sommige contactpersonen mogelijk je berichten.</string>
 
 
+    <!-- Multi Device -->
+    <!-- "Second Device" can also be translated as "Another Device", if that is catchier in the destination language. However, make sure to use the term consistently. -->
+    <string name="multidevice_title">Secundair apparaat toevoegen</string>
+    <string name="multidevice_same_network_hint">Zorg er voor dat beide apparaten verbonden zijn met hezelfde (wifi)netwerk</string>
+    <string name="multidevice_install_dc_on_other_device">Installeer Delta Chat op je andere apparaat (https://get.delta.chat)</string>
+    <string name="multidevice_tap_scan_on_other_device">Start Delta Chat, druk op ‘Toevoegen als secundair apparaat’ en scan de hier getoonde code</string>
+    <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and/or address eg. "Scan to set up second device for Alice (alice@example.org)" -->
+    <string name="multidevice_qr_subtitle">Scan om een secundair apparaat voor %1$s in te stellen</string>
+    <string name="multidevice_receiver_title">Toevoegen als secundair apparaat</string>
+    <string name="multidevice_open_settings_on_other_device">Ga op het eerste apparaat naar ‘Instellingen → Secundair apparaat toevoegen’ en scan de hier getoonde code</string>
+    <string name="multidevice_receiver_scanning_ask">Wil je je account van het andere apparaat naar dit apparaat kopiëren?</string>
+    <string name="multidevice_abort">Wil je het instellen afbreken?</string>
+    <string name="multidevice_abort_will_invalidate_copied_qr">Hierdoor wordt de gekopieerde QR-code onbruikbaar gemaakt.</string>
+    <string name="multidevice_experimental_hint">(experimenteel - versie 1.36 vereist)</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="exporting_account">Bezig met exporteren…</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="preparing_account">Bezig met voorbereiden…</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="account_prepared">Het account is voorbereid.</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="waiting_for_receiver">Bezig met wachten op ontvanger…</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="receiver_connected">De ontvanger is verbonden…</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="transferring">Bezig met overdragen…</string>
+    <string name="troubleshooting">Probleemoplossing</string>
+
     <!-- Connectivity -->
     <!-- Headline for the "Inbox" eg. in the "Connectivity" view -->
     <string name="incoming_messages">Inkomende berichten</string>
