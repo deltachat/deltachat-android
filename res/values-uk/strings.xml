@@ -495,6 +495,7 @@
     <!-- the explanation is shown (1) as a modal dialog with the buttons "Cancel" and "Continue" as well as (2) as a device message -->
     <string name="aeap_explanation">Ви змінили вашу електронну адресу з %1$s на %2$s.\n\nЯкщо зараз ви відправите повідомлення у підтверджену групу, контакти в ній автоматично замінять вашу стару адресу на нову.\n\nНастійно рекомендується налаштувати старий аккаунт електронної пошти на пересилання всіх електронних листів на вашу нову електронну адресу. Інакше ви можете пропустити повідомлення контактів, які ще не отримали вашу нову адресу.</string>
 
+
     <!-- Connectivity -->
     <!-- Headline for the "Inbox" eg. in the "Connectivity" view -->
     <string name="incoming_messages">Вхідні повідомлення</string>

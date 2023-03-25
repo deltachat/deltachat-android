@@ -465,6 +465,35 @@
     <!-- the explanation is shown (1) as a modal dialog with the buttons "Cancel" and "Continue" as well as (2) as a device message -->
     <string name="aeap_explanation">Sie haben Ihre E-Mail-Adresse von %1$s auf %2$s geändert.\n\nWenn Sie jetzt eine Nachricht an eine verifizierte Gruppe senden, wird dort automatisch die alte durch die neue Adresse ersetzt.\n\nEs wird dringend empfohlen, Ihren alten E-Mail-Anbieter so einzurichten, dass er alle E-Mails an Ihre neue E-Mail-Adresse weiterleitet. Andernfalls könnten Sie Nachrichten von Kontakten verpassen, die Ihre neue E-Mail-Adresse noch nicht erhalten haben.</string>
 
+
+    <!-- Multi Device -->
+    <!-- "Second Device" can also be translated as "Another Device", if that is catchier in the destination language. However, make sure to use the term consistently. -->
+    <string name="multidevice_title">Zweitgerät hinzufügen</string>
+    <string name="multidevice_same_network_hint">Beide Geräte müssen im selben Wi-Fi oder Netzwerk sein.</string>
+    <string name="multidevice_install_dc_on_other_device">Delta Chat auf dem anderen Gerät installieren (https://get.delta.chat)</string>
+    <string name="multidevice_tap_scan_on_other_device">Delta Chat starten, \"Als Zweitgerät hinzufügen\" wählen und den QR-Code scannen</string>
+    <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and/or address eg. "Scan to set up second device for Alice (alice@example.org)" -->
+    <string name="multidevice_qr_subtitle">Scannen, um ein zweites Gerät für %1$s hinzuzufügen</string>
+    <string name="multidevice_receiver_title">Als Zweitgerät hinzufügen</string>
+    <string name="multidevice_open_settings_on_other_device">Auf dem ersten Gerät, gehe zu \"Einstellungen / Zweitgerät hinzufügen\" und scanne den dort angezeigten Code</string>
+    <string name="multidevice_receiver_scanning_ask">Das Konto vom anderen Gerät auf dieses Gerät kopieren?</string>
+    <string name="multidevice_abort">Einrichtung des Zweitgeräts beenden?</string>
+    <string name="multidevice_abort_will_invalidate_copied_qr">Dadurch wird der auf die Zwischenablage kopierte QR-Code ungültig.</string>
+    <string name="multidevice_experimental_hint">(experimentell, Version 1.36 erforderlich)</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="exporting_account">Konto exportieren…</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="preparing_account">Konto vorbereiten…</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="account_prepared">Konto vorbereitet.</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="waiting_for_receiver">Warte auf Empfänger…</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="receiver_connected">Empfänger verbunden…</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="transferring">Transfer…</string>
+    <string name="troubleshooting">Fehlersuche</string>
+
     <!-- Connectivity -->
     <!-- Headline for the "Inbox" eg. in the "Connectivity" view -->
     <string name="incoming_messages">Eingehende Nachrichten</string>
