@@ -78,7 +78,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
         View backupButton = findViewById(R.id.backup_button);
 
         loginButton.setOnClickListener((view) -> startRegistrationActivity());
-        addAsSecondDeviceButton.setOnClickListener((view) -> startAddAsAnotherDeviceActivity());
+        addAsSecondDeviceButton.setOnClickListener((view) -> startAddAsSecondDeviceActivity());
         scanQrButton.setOnClickListener((view) -> startRegistrationQrActivity());
         backupButton.setOnClickListener((view) -> startImportBackup());
 
@@ -156,9 +156,11 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
         new IntentIntegrator(this).setCaptureActivity(RegistrationQrActivity.class).initiateScan();
     }
 
-    private void startAddAsAnotherDeviceActivity() {
+    private void startAddAsSecondDeviceActivity() {
         manualConfigure = false;
-        new IntentIntegrator(this).setCaptureActivity(RegistrationQrActivity.class).initiateScan();
+        new IntentIntegrator(this).setCaptureActivity(RegistrationQrActivity.class)
+          .addExtra(RegistrationQrActivity.ADD_AS_SECOND_DEVICE_EXTRA, true)
+          .initiateScan();
     }
 
     @SuppressLint("InlinedApi")
