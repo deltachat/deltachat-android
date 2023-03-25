@@ -15,8 +15,8 @@
     <ImageView
         android:id="@+id/welcome_icon"
         android:layout_width="wrap_content"
-        android:layout_height="128dp"
-        android:layout_weight="16"
+        android:layout_height="100dp"
+        android:layout_weight="14"
         android:gravity="bottom"
         android:src="@drawable/intro1"
         android:paddingLeft="32dp"
@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:padding="8dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="20dp"
         android:text="@string/welcome_chat_over_email"
         android:textSize="22sp"
         android:textStyle="bold"/>
@@ -53,13 +53,13 @@
 
         <Button
             style="@style/ButtonSecondary"
-            android:id="@+id/backup_button"
+            android:id="@+id/add_as_second_device_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="24dp"
             android:paddingRight="24dp"
             android:layout_marginBottom="16dp"
-            android:text="@string/import_backup_title"/>
+            android:text="@string/multidevice_receiver_title"/>
 
         <Button
             style="@style/ButtonSecondary"
@@ -68,14 +68,24 @@
             android:layout_height="wrap_content"
             android:paddingLeft="24dp"
             android:paddingRight="24dp"
-            android:text="@string/qrscan_title"/>
+            android:text="@string/scan_invitation_code"/>
 
     </LinearLayout>
 
     <androidx.legacy.widget.Space
-        android:layout_weight="5"
+        android:layout_weight="3"
         android:layout_width="match_parent"
         android:layout_height="0dp"/>
+
+    <TextView
+        android:id="@+id/backup_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="22dp"
+        android:gravity="center"
+        android:text="@string/import_backup_title"
+        android:textColor="?attr/secondary_button_fg"
+        android:textSize="15sp"/>
 
 </LinearLayout>
 

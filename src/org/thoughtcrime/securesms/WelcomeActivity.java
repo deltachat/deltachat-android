@@ -73,10 +73,12 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
         setContentView(R.layout.welcome_activity);
 
         Button loginButton = findViewById(R.id.login_button);
+        View addAsSecondDeviceButton = findViewById(R.id.add_as_second_device_button);
         View scanQrButton = findViewById(R.id.scan_qr_button);
         View backupButton = findViewById(R.id.backup_button);
 
         loginButton.setOnClickListener((view) -> startRegistrationActivity());
+        addAsSecondDeviceButton.setOnClickListener((view) -> startAddAsAnotherDeviceActivity());
         scanQrButton.setOnClickListener((view) -> startRegistrationQrActivity());
         backupButton.setOnClickListener((view) -> startImportBackup());
 
@@ -147,13 +149,16 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
         manualConfigure = true;
         Intent intent = new Intent(this, RegistrationActivity.class);
         startActivity(intent);
-        // no finish() here, the back key should take the user back from RegistrationActivity to WelcomeActivity
     }
 
     private void startRegistrationQrActivity() {
         manualConfigure = false;
         new IntentIntegrator(this).setCaptureActivity(RegistrationQrActivity.class).initiateScan();
-        // no finish() here, the back key should take the user back from RegistrationQrActivity to WelcomeActivity
+    }
+
+    private void startAddAsAnotherDeviceActivity() {
+        manualConfigure = false;
+        new IntentIntegrator(this).setCaptureActivity(RegistrationQrActivity.class).initiateScan();
     }
 
     @SuppressLint("InlinedApi")
