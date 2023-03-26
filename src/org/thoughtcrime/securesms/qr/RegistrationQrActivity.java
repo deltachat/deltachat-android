@@ -40,7 +40,6 @@ public class RegistrationQrActivity extends BaseActionBarActivity {
         if (addAsAnotherDevice) {
             setContentView(R.layout.activity_registration_2nd_device_qr);
             getSupportActionBar().setTitle(R.string.multidevice_receiver_title);
-            getSupportActionBar().setSubtitle(R.string.multidevice_experimental_hint);
         } else {
             setContentView(R.layout.activity_registration_qr);
             getSupportActionBar().setTitle(R.string.scan_invitation_code);
