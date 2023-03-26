@@ -57,7 +57,7 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
         qrImageView = view.findViewById(R.id.qrImage);
         setHasOptionsMenu(true);
 
-        statusLine.setText(R.string.one_moment);
+        statusLine.setText(R.string.preparing_account);
         progressBar.setIndeterminate(true);
 
         dcContext = DcHelper.getContext(getActivity());
@@ -140,12 +140,8 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
                 getTransferActivity().setTransferState(BackupTransferActivity.TransferState.TRANSFER_ERROR);
                 getTransferActivity().showLastErrorAlert("Sending Error");
                 hideQrCode = true;
-            } else if(permille <= 100) {
-                statusLineText = getString(R.string.exporting_account);
-            } else if(permille <= 300) {
-                statusLineText = getString(R.string.preparing_account);
             } else if(permille <= 350) {
-                statusLineText = getString(R.string.account_prepared);
+                statusLineText = getString(R.string.preparing_account);
             } else if(permille <= 400) {
                 statusLineText = getString(R.string.waiting_for_receiver);
             } else if(permille <= 450) {
