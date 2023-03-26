@@ -94,7 +94,6 @@ public class BackupTransferActivity extends BaseActionBarActivity {
         supportActionBar.setDisplayHomeAsUpEnabled(true);
         supportActionBar.setHomeAsUpIndicator(R.drawable.ic_close_white_24dp);
         supportActionBar.setTitle(title);
-        supportActionBar.setSubtitle(R.string.multidevice_experimental_hint);
     }
 
     @Override

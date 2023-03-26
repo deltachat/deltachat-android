@@ -108,4 +108,17 @@
 		android:layout_marginBottom="16dp"
 		android:contentDescription="@string/qrscan_title" />
 
+	<TextView
+		android:id="@+id/bottom_text"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="@string/multidevice_experimental_hint"
+		android:textColor="?attr/emoji_text_color"
+		android:layout_marginLeft="16dp"
+		android:layout_marginRight="16dp"
+		android:layout_marginBottom="16dp"
+		android:textSize="16sp"
+		android:visibility="gone"
+		tools:visibility="visible"/>
+
 </LinearLayout>
