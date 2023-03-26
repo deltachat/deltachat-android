@@ -152,7 +152,7 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
             } else if (permille < 1000) {
                 percent = (permille-450)/5;
                 percentMax = 100;
-                statusLineText = getString(R.string.transferring) + String.format(Locale.getDefault(), " %d%%", percent);
+                statusLineText = getString(R.string.transferring);
                 hideQrCode = true;
             } else if (permille == 1000) {
                 statusLineText = getString(R.string.done) + " \uD83D\uDE00";
