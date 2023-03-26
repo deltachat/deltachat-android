@@ -143,6 +143,8 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
             } else if(permille <= 350) {
                 statusLineText = getString(R.string.preparing_account);
             } else if(permille <= 400) {
+                statusLine.setVisibility(View.GONE);
+                progressBar.setVisibility(View.GONE);
                 statusLineText = getString(R.string.waiting_for_receiver);
             } else if(permille <= 450) {
                 statusLineText = getString(R.string.receiver_connected);
