@@ -300,7 +300,7 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
   private class ManageKeysListener implements Preference.OnPreferenceClickListener {
     @Override
     public boolean onPreferenceClick(Preference preference) {
-      boolean result = ScreenLockUtil.applyScreenLock(getActivity(), getString(R.string.pref_manage_keys), REQUEST_CODE_CONFIRM_CREDENTIALS_KEYS);
+      boolean result = ScreenLockUtil.applyScreenLock(getActivity(), getString(R.string.pref_manage_keys), getString(R.string.enter_system_secret_to_continue), REQUEST_CODE_CONFIRM_CREDENTIALS_KEYS);
       if (!result) {
         exportKeys();
       }

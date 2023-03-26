@@ -257,7 +257,7 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
   private class BackupListener implements Preference.OnPreferenceClickListener {
     @Override
     public boolean onPreferenceClick(Preference preference) {
-      boolean result = ScreenLockUtil.applyScreenLock(getActivity(), getString(R.string.pref_backup), REQUEST_CODE_CONFIRM_CREDENTIALS_BACKUP);
+      boolean result = ScreenLockUtil.applyScreenLock(getActivity(), getString(R.string.pref_backup), getString(R.string.enter_system_secret_to_continue), REQUEST_CODE_CONFIRM_CREDENTIALS_BACKUP);
       if (!result) {
         performBackup();
       }

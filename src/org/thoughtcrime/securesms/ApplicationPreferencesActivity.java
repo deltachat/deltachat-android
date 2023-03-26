@@ -29,6 +29,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.fragment.app.Fragment;
@@ -275,8 +276,17 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
           fragment = new ChatsPreferenceFragment();
           break;
         case PREFERENCE_CATEGORY_MULTIDEVICE:
-          if (!ScreenLockUtil.applyScreenLock(getActivity(), getString(R.string.multidevice_title), ScreenLockUtil.REQUEST_CODE_CONFIRM_CREDENTIALS)) {
-            ((ApplicationPreferencesActivity)getActivity()).showBackupProvider();
+          if (!ScreenLockUtil.applyScreenLock(getActivity(), getString(R.string.multidevice_title),
+              getString(R.string.multidevice_this_creates_a_qr_code) + "\n\n" + getString(R.string.enter_system_secret_to_continue),
+              ScreenLockUtil.REQUEST_CODE_CONFIRM_CREDENTIALS)) {
+            new AlertDialog.Builder(getActivity())
+              .setTitle(R.string.multidevice_title)
+              .setMessage(R.string.multidevice_this_creates_a_qr_code)
+              .setPositiveButton(R.string.perm_continue,
+                (dialog, which) -> ((ApplicationPreferencesActivity)getActivity()).showBackupProvider())
+              .setNegativeButton(R.string.cancel, null)
+              .show();
+            ;
           }
           break;
         case PREFERENCE_CATEGORY_ADVANCED:
