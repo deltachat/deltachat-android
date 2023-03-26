@@ -37,8 +37,8 @@ public class RemoteReplyReceiver extends BroadcastReceiver {
 
   public static final String TAG           = RemoteReplyReceiver.class.getSimpleName();
   public static final String REPLY_ACTION  = "org.thoughtcrime.securesms.notifications.WEAR_REPLY";
-  public static final String ACCOUNT_ID_EXTRA = TAG + ".account_id";
-  public static final String CHAT_ID_EXTRA = TAG + ".chat_id";
+  public static final String ACCOUNT_ID_EXTRA = "account_id";
+  public static final String CHAT_ID_EXTRA = "chat_id";
   public static final String EXTRA_REMOTE_REPLY = "extra_remote_reply";
 
   @SuppressLint("StaticFieldLeak")

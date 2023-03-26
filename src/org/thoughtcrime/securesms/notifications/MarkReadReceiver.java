@@ -10,11 +10,10 @@ import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.util.Util;
 
 public class MarkReadReceiver extends BroadcastReceiver {
-  private static final String TAG = MarkReadReceiver.class.getSimpleName();
   public static final  String MARK_NOTICED_ACTION   = "org.thoughtcrime.securesms.notifications.MARK_NOTICED";
   public static final  String CANCEL_ACTION         = "org.thoughtcrime.securesms.notifications.CANCEL";
-  public static final  String ACCOUNT_ID_EXTRA      = TAG + ".account_id";
-  public static final  String CHAT_ID_EXTRA         = TAG + ".chat_id";
+  public static final  String ACCOUNT_ID_EXTRA      = "account_id";
+  public static final  String CHAT_ID_EXTRA         = "chat_id";
 
   @Override
   public void onReceive(final Context context, Intent intent) {
