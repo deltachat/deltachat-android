@@ -255,6 +255,7 @@ public final class GenericForegroundService extends Service {
              progressMax == entry.progressMax &&
              indeterminate == entry.indeterminate &&
              title.equals(entry.title) &&
+             contentText.equals(entry.contentText) &&
              channelId.equals(entry.channelId);
     }
 
