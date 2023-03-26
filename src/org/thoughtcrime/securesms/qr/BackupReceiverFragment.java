@@ -82,11 +82,8 @@ public class BackupReceiverFragment extends Fragment implements DcEventCenter.Dc
             if (permille == 0) {
                 getTransferActivity().setTransferState(BackupTransferActivity.TransferState.TRANSFER_ERROR);
                 getTransferActivity().showLastErrorAlert("Receiving Error");
-            } else if (permille <= 50) {
-                statusLineText = getString(R.string.preparing_account); // "Connected"
-                hideSameNetworkHint = true;
             } else if (permille <= 100) {
-                statusLineText = getString(R.string.account_prepared);
+                statusLineText = getString(R.string.preparing_account);
                 hideSameNetworkHint = true;
             } else if (permille <= 950 ) {
                 percent = ((permille-100)*100)/850;
