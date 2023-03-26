@@ -28,8 +28,6 @@ import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.util.Util;
 
-import java.util.Locale;
-
 public class BackupProviderFragment extends Fragment implements DcEventCenter.DcEventDelegate {
 
     private final static String TAG = BackupProviderFragment.class.getSimpleName();
@@ -70,10 +68,14 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
             dcBackupProvider = dcContext.newBackupProvider();
             Log.i(TAG, "##### newBackupProvider() returned");
             Util.runOnMain(() -> {
+                BackupTransferActivity activity = getTransferActivity();
+                if (activity == null || activity.isFinishing()) {
+                    return;
+                }
                 progressBar.setVisibility(View.GONE);
                 if (!dcBackupProvider.isOk()) {
-                    getTransferActivity().setTransferState(BackupTransferActivity.TransferState.TRANSFER_ERROR);
-                    getTransferActivity().showLastErrorAlert("Cannot create backup provider");
+                    activity.setTransferState(BackupTransferActivity.TransferState.TRANSFER_ERROR);
+                    activity.showLastErrorAlert("Cannot create backup provider");
                     return;
                 }
                 statusLine.setVisibility(View.GONE);
@@ -101,7 +103,9 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
     @Override
     public void onDestroyView() {
         dcContext.stopOngoingProcess();
-        dcBackupProvider.unref();
+        if (dcBackupProvider != null) {
+            dcBackupProvider.unref();
+        }
         super.onDestroyView();
         DcHelper.getEventCenter(getActivity()).removeObservers(this);
     }

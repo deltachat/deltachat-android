@@ -16,7 +16,7 @@ public class DcBackupProvider {
     }
 
     public void unref() {
-        if (backupProviderCPtr == 0) {
+        if (backupProviderCPtr != 0) {
             unrefBackupProviderCPtr();
             backupProviderCPtr = 0;
         }
