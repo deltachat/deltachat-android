@@ -90,15 +90,20 @@ public class ConversationUpdateItem extends BaseConversationItem
   private void setGenericInfoRecord(DcMsg messageRecord) {
     if (messageRecord.getInfoType() == DcMsg.DC_INFO_WEBXDC_INFO_MESSAGE) {
       DcMsg parentMsg = messageRecord.getParent();
-      JSONObject info = parentMsg.getWebxdcInfo();
-      byte[] blob = parentMsg.getWebxdcBlob(JsonUtils.optString(info, "icon"));
-      if (blob != null) {
-        ByteArrayInputStream is = new ByteArrayInputStream(blob);
-        Drawable drawable = Drawable.createFromStream(is, "icon");
-        appIcon.setImageDrawable(drawable);
-        appIcon.setVisibility(VISIBLE);
-      } else {
-        appIcon.setVisibility(GONE);
+
+      // It is possible that we only received an update without the webxdc itself.
+      // In this case parentMsg is null and we display update message without the icon.
+      if (parentMsg != null) {
+        JSONObject info = parentMsg.getWebxdcInfo();
+        byte[] blob = parentMsg.getWebxdcBlob(JsonUtils.optString(info, "icon"));
+        if (blob != null) {
+          ByteArrayInputStream is = new ByteArrayInputStream(blob);
+          Drawable drawable = Drawable.createFromStream(is, "icon");
+          appIcon.setImageDrawable(drawable);
+          appIcon.setVisibility(VISIBLE);
+        } else {
+          appIcon.setVisibility(GONE);
+        }
       }
     } else {
       appIcon.setVisibility(GONE);
