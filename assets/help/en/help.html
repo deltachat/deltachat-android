@@ -7,6 +7,7 @@
       <li><a href="#which-messages-do-appear-in-delta-chat">Which messages do appear in Delta Chat?</a></li>
       <li><a href="#what-if-i-expect-a-message-from-someone-i-didnt-write-to-in-the-past">What if I expect a message from someone I didn’t write to in the past?</a></li>
       <li><a href="#does-delta-chat-support-images-videos-and-other-attachments">Does Delta Chat support images, videos and other attachments?</a></li>
+      <li><a href="#multiple-accounts">How can I add or switch between multiple accounts?</a></li>
       <li><a href="#who-sees-my-profile-picture">Who sees my profile picture?</a></li>
       <li><a href="#does-delta-chat-support-html-e-mails">Does Delta Chat support HTML e-mails?</a></li>
       <li><a href="#why-do-i-have-to-enter-my-e-mail-password-into-delta-chat-is-this-secure">Why do I have to enter my E-Mail password into Delta Chat? Is this secure?</a></li>
@@ -33,6 +34,7 @@
       <li><a href="#if-end-to-end-encryption-is-not-available-is-the-connection-not-encrypted-at-all">If end-to-end-encryption is not available, is the connection not encrypted at all?</a></li>
       <li><a href="#how-can-i-verify-cryptographic-status-with-a-sender">How can I verify cryptographic status with a sender?</a></li>
       <li><a href="#how-can-i-check-the-encryption-of-messages">How can I check the encryption of messages?</a></li>
+      <li><a href="#how-can-i-ensure-message-encryption-and-deletion">How can I ensure message encryption and deletion?</a></li>
       <li><a href="#which-standards-are-used-for-end-to-end-encryption">Which standards are used for end-to-end-encryption?</a></li>
       <li><a href="#what-is-the-difference-between-verified-groups-and-11-chats-with-verified-contacts">What is the difference between verified groups and 1:1 chats with verified contacts?</a></li>
       <li><a href="#does-delta-chat-support-perfect-forward-secrecy">Does Delta Chat support Perfect Forward Secrecy?</a></li>
@@ -72,9 +74,11 @@
   <li><a href="#miscellaneous">Miscellaneous</a>
     <ul>
       <li><a href="#does-delta-chat-work-with-my-e-mail-provider">Does Delta Chat work with <em>my</em> e-mail-provider?</a></li>
+      <li><a href="#i-want-to-manage-my-own-e-mail-server-for-delta-chat-what-do-you-recommend">I want to manage my own e-mail server for Delta Chat. What do you recommend?</a></li>
       <li><a href="#if-delta-chat-uses-e-mail-is-it-really-an-instant-messenger">If Delta Chat uses E-Mail, is it really an <em>Instant</em> Messenger?</a></li>
       <li><a href="#is-delta-chat-compatible-with-protonmail--tutanota--criptext">Is Delta Chat compatible with Protonmail / Tutanota / Criptext?</a></li>
       <li><a href="#im-interested-in-the-technical-details-can-you-tell-me-more">I’m interested in the technical details. Can you tell me more?</a></li>
+      <li><a href="#was-delta-chat-independently-audited-for-security-vulnerabilities">Was Delta Chat independently audited for security vulnerabilities?</a></li>
       <li><a href="#how-are-delta-chat-developments-funded">How are Delta Chat developments funded?</a></li>
     </ul>
   </li>
@@ -122,13 +126,10 @@ the same e-mail servers</li>
   <li>You do not distribute your address book to anyone.</li>
   <li><em>Fast</em> by the use of Push-IMAP.</li>
   <li><em>Largest userbase</em> - recipients <em>not</em> using Delta Chat can be reached as well.</li>
-  <li><em>Compatible</em> - not only to itself.</li>
-  <li><em>Elegant</em> and <em>simple</em> user interface.</li>
-  <li><em>Distributed</em> system.</li>
   <li><em>No Spam</em> - only messages of known users are shown by default.</li>
-  <li><em>Reliable</em> - safe for professional use.</li>
-  <li><em>Trustworthy</em> - can even be used for business messages.</li>
+  <li><em>End-to-end-encryption</em> via Autocrypt.</li>
   <li><em>Copyleft</em> and <em>Standards</em> based libre software.</li>
+  <li><em>Flexible identity</em> with built-in support for <a href="#multiple-accounts">multiple accounts</a></li>
 </ul>
     
       <h3 id="which-messages-do-appear-in-delta-chat">
@@ -139,23 +140,18 @@ the same e-mail servers</li>
         
       </h3>
 
-<p>By default, Delta Chat shows:</p>
+<p>By default, Delta Chat shows all e-mails.</p>
 
-<ul>
-  <li>Messages sent by other Delta Chat users</li>
-  <li>Replies to your Delta Chat messages, even if they are “normal e-mails”.</li>
-</ul>
-
-<p>Other e-mails don’t appear in your app by default. At “Settings -&gt; Chats &amp;
+<p>At “Settings -&gt; Chats &amp;
 Media -&gt; Show Classic E-Mails”, you can change this. You have these options:</p>
 
 <ul>
   <li>“No, chats only”: Only messages sent by other Delta Chat users and replies to
 your Delta Chat messages are shown. This makes most sense if you use the same
-e-mail account for normal e-mails as well. This is the default setting.</li>
+e-mail account for normal e-mails as well.</li>
   <li>“All”: Delta Chat shows all e-mails that are sent to your email address. This
 makes sense if you want to use Delta Chat for all your e-mails, so no message
-gets lost.</li>
+gets lost. This is the default setting.</li>
   <li>“For accepted contacts”: Delta Chat shows all e-mails from contacts with whom
 you already have a chat, but new chats only pop up for Delta Chat messages.
 This helps to decide on a case-by-case basis whether you want to have a
@@ -192,6 +188,22 @@ receive messages from this person, consider <em>blocking</em> them.</li>
 <ul>
   <li>Yes. Beside the plain text, all e-mail attachments are displayed as separate messages. Outgoing messages get attachments as needed automatically.</li>
 </ul>
+    
+      <h3 id="multiple-accounts">
+        
+        
+          How can I add or switch between multiple accounts? <a href="#multiple-accounts" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>You can easily work with additional accounts on Delta Chat mobile and desktop clients by clicking either:</p>
+<ul>
+  <li>on the menu button and then ‘Switch Account’ (Android and desktop)</li>
+  <li>or the profile icon and then ‘Add Account’ (iOS)</li>
+</ul>
+
+<p>You may also wish to learn <a href="#can-i-use-delta-chat-on-multiple-devices-at-the-same-time">how to add accounts to multiple devices</a>.</p>
     
       <h3 id="who-sees-my-profile-picture">
         
@@ -328,7 +340,7 @@ This is what Delta Chat does with these permissions:</p>
   </li>
   <li>
     <p><strong>Archive chats</strong> if you do not want to see them in your chat list any longer.
-At the very bottom of the chat list, in the menu or via search, you can still access the archived chats.</p>
+Archived chats remain accessible above the chat list or via search.</p>
   </li>
   <li>
     <p>When an archived chat gets a new message, unless muted, it will <strong>pop out of the archive</strong> and back into your chat list.
@@ -608,6 +620,34 @@ the connection is safe.</p>
     <p>If there is <strong>no padlock</strong>, the message is usually transported unencrypted e.g. because you or the sender have turned off end-to-end-encryption, or the sender uses an app without support for end-to-end-encryption.</p>
   </li>
 </ul>
+    
+      <h3 id="how-can-i-ensure-message-encryption-and-deletion">
+        
+        
+          How can I ensure message encryption and deletion? <a href="#how-can-i-ensure-message-encryption-and-deletion" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>The best way to ensure every message is encrypted,
+and metadata deleted as quickly as possible
+is creating a verified group and turning on
+self-destructing messages.</p>
+
+<p>Verified groups are always encrypted and protected against <a href="https://en.wikipedia.org/wiki/Man-in-the-middle_attack">MITM
+attacks</a>.</p>
+
+<p>Metadata can’t be encrypted, as the server needs to know where to deliver your
+messages. But turning on “self-destructing messages” deletes the messages on
+the server after they were delivered.</p>
+
+<p>If you need the messages on your device, but not on the server, you can also
+agree in the group to turn on <a href="#what-happens-if-i-turn-on-delete-old-messages-from-server">“delete messages from server
+automatically”</a>.</p>
+
+<p>If you want to protect a 1:1 conversation like this, you should create a
+verified group with only 2 people. If the other person loses their device but
+not their account, you can still communicate in the 1:1 chat. (<a href="#what-is-the-difference-between-verified-groups-and-11-chats-with-verified-contacts">Read more</a>)</p>
     
       <h3 id="which-standards-are-used-for-end-to-end-encryption">
         
@@ -1151,6 +1191,21 @@ However, some providers need special options to work properly,
 see <a href="https://providers.delta.chat">Provider Overview</a></li>
 </ul>
     
+      <h3 id="i-want-to-manage-my-own-e-mail-server-for-delta-chat-what-do-you-recommend">
+        
+        
+          I want to manage my own e-mail server for Delta Chat. What do you recommend? <a href="#i-want-to-manage-my-own-e-mail-server-for-delta-chat-what-do-you-recommend" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>Most mail servers will work well. But what we personally recommend is a
+combination of mailcow and mailadm, as described <a href="2023-01-26-upcoming-mail-server-workshops">in this
+blogpost</a>.</li>
+  <li>You can find an <a href="serverguide">installation guide on our website</a>.</li>
+</ul>
+    
       <h3 id="if-delta-chat-uses-e-mail-is-it-really-an-instant-messenger">
         
         
@@ -1204,6 +1259,53 @@ uses.</li>
 
 <ul>
   <li>See <a href="https://github.com/deltachat/deltachat-core-rust/blob/master/standards.md#standards-used-in-delta-chat">Standards used in Delta Chat</a>.</li>
+</ul>
+    
+      <h3 id="was-delta-chat-independently-audited-for-security-vulnerabilities">
+        
+        
+          Was Delta Chat independently audited for security vulnerabilities? <a href="#was-delta-chat-independently-audited-for-security-vulnerabilities" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>The Delta Chat project underwent three independent security audits in the last
+years:</p>
+
+<ul>
+  <li>
+    <p>In 2019, <a href="https://includesecurity.com">Include Security</a> analyzed Delta
+Chat’s <a href="https://github.com/rpgp/rpgp">PGP</a> and
+<a href="https://github.com/RustCrypto/RSA">RSA</a> libraries.
+It found no critical issues,
+but two high-severity issues that we subsequently fixed.
+It also revealed one medium-severity and some less severe issues,
+but there was no way to exploit these vulnerabilities in the Delta Chat implementation.
+Some of them we nevertheless fixed since the audit was concluded.
+You can read the <a href="../assets/blog/2019-first-security-review.pdf">full report here</a>.</p>
+  </li>
+  <li>
+    <p>In 2020, <a href="https://includesecurity.com">Include Security</a> analyzed Delta
+Chat’s Rust <a href="https://github.com/deltachat/deltachat-core-rust/">core</a>,
+<a href="https://github.com/async-email/async-imap">IMAP</a>,
+<a href="https://github.com/async-email/async-smtp">SMTP</a>, and
+<a href="https://github.com/async-email/async-native-tls">TLS</a> libraries.
+It did not find any critical or high-severity issues.
+The report raised a few medium-severity weaknesses -
+they are no threat to Delta Chat users on their own
+because they depend on the environment in which Delta Chat is used.
+For usability and compatibility reasons,
+we can not mitigate all of them
+and decided to provide security recommendations to threatened users.
+You can read the <a href="../assets/blog/2020-second-security-review.pdf">full report here</a>.</p>
+  </li>
+  <li>
+    <p>Beginning 2023, <a href="https://cure53.de">Cure53</a> analyzed both the transport encryption of
+Delta Chat’s network connections and a reproducible mail server setup as
+<a href="serverguide">recommended on this site</a>.
+You can read more about the audit <a href="2023-03-23-third-independent-security-audit">on our blog</a>
+or read the <a href="../assets/blog/MER-01-report.pdf">full report here</a>.</p>
+  </li>
 </ul>
     
       <h3 id="how-are-delta-chat-developments-funded">
@@ -1274,7 +1376,6 @@ even close.</p>
 Freiburg (Germany), and is distributed to more than a dozen contributors world-wide.</p>
 
 <p>Funding for second half of 2022 and especially for 2023 is an ongoing issue of concern. Apart from applying for more public funding we want to become more independent from government-related funding sources. Please see <a href="https://delta.chat/en/contribute">Delta Chat Contribution channels</a> for both monetary and development related support possibilities.</p>
-
 
 
 
