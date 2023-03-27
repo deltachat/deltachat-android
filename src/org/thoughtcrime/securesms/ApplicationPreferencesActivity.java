@@ -47,6 +47,7 @@ import org.thoughtcrime.securesms.preferences.AdvancedPreferenceFragment;
 import org.thoughtcrime.securesms.preferences.AppearancePreferenceFragment;
 import org.thoughtcrime.securesms.preferences.ChatsPreferenceFragment;
 import org.thoughtcrime.securesms.preferences.CorrectedPreferenceFragment;
+import org.thoughtcrime.securesms.preferences.MultidevicePreferenceFragment;
 import org.thoughtcrime.securesms.preferences.NotificationsPreferenceFragment;
 import org.thoughtcrime.securesms.preferences.widgets.ProfilePreference;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
@@ -276,6 +277,8 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
           fragment = new ChatsPreferenceFragment();
           break;
         case PREFERENCE_CATEGORY_MULTIDEVICE:
+          fragment = new MultidevicePreferenceFragment();
+          /*
           if (!ScreenLockUtil.applyScreenLock(getActivity(), getString(R.string.multidevice_title),
               getString(R.string.multidevice_this_creates_a_qr_code) + "\n\n" + getString(R.string.enter_system_secret_to_continue),
               ScreenLockUtil.REQUEST_CODE_CONFIRM_CREDENTIALS)) {
@@ -288,6 +291,7 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
               .show();
             ;
           }
+          */
           break;
         case PREFERENCE_CATEGORY_ADVANCED:
           fragment = new AdvancedPreferenceFragment();

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+<!--
+
+    rough layout:
+
+    [image, maybe sth from undraw.co]
+
+    [headline: Use Delta Chat on All Your Devices]
+
+    [text: multidevice_this_creates_a_qr_code]
+
+    [button: continue]
+
+    [link: help, links to https://delta.chat/en/help#multiclient for now]
+
+-->
+
+</PreferenceScreen>
