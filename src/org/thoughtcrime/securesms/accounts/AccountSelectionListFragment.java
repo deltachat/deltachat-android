@@ -90,6 +90,7 @@ public class AccountSelectionListFragment extends DialogFragment
               .setMessage(R.string.forget_login_confirmation_desktop)
               .setNegativeButton(R.string.cancel, (dialog, which) -> AccountManager.getInstance().showSwitchAccountMenu(activity))
               .setPositiveButton(R.string.ok, (dialog2, which2) -> {
+                DcHelper.getNotificationCenter(activity).removeAllNotifiations(accountId);
                 accounts.removeAccount(accountId);
                 AccountManager.getInstance().showSwitchAccountMenu(activity);
               })
