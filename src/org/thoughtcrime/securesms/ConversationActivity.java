@@ -137,6 +137,7 @@ import static org.thoughtcrime.securesms.util.RelayUtil.getSharedText;
 import static org.thoughtcrime.securesms.util.RelayUtil.isForwarding;
 import static org.thoughtcrime.securesms.util.RelayUtil.isRelayingMessageContent;
 import static org.thoughtcrime.securesms.util.RelayUtil.isSharing;
+import static org.thoughtcrime.securesms.util.RelayUtil.resetRelayingMessageContent;
 
 /**
  * Activity for displaying a message thread, as well as
@@ -334,7 +335,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     if (doReinitializeDraft) {
       initializeDraft();
-      doReinitializeDraft = false;
     }
 
     attachmentManager.onResume();
@@ -345,10 +345,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     super.onPause();
 
     processComposeControls(ACTION_SAVE_DRAFT);
-    if (getCallingActivity() != null) {
-      // `getCallingActivity() != null` finds out whether the activity was started using `startActivityForResult()`.
-      doReinitializeDraft = true;
-    }
+    doReinitializeDraft = true;
 
     DcHelper.getNotificationCenter(this).clearVisibleChat();
     if (isFinishing()) overridePendingTransition(R.anim.fade_scale_in, R.anim.slide_to_right);
@@ -391,6 +388,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     {
       return;
     }
+    doReinitializeDraft = false;
 
     switch (reqCode) {
     case PICK_GALLERY:
@@ -438,7 +436,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       break;
     case ScribbleActivity.SCRIBBLE_REQUEST_CODE:
       setMedia(data.getData(), MediaType.IMAGE);
-      doReinitializeDraft = false;
       break;
     case SMS_DEFAULT:
       initializeSecurity(isSecureText, isDefaultSms);
@@ -764,11 +761,14 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
    * @return
    */
   private ListenableFuture<Boolean> initializeDraft() {
+    ListenableFuture<Boolean> res;
     if (isMailToIntent()) {
-      return initializeDraftFromIntent();
+      res = initializeDraftFromIntent();
     } else {
-      return initializeDraftFromDatabase();
+      res = initializeDraftFromDatabase();
     }
+    doReinitializeDraft = false;
+    return res;
   }
 
   boolean isMailToIntent() {
