@@ -819,7 +819,7 @@
     <string name="devicemsg_bad_time">⚠️ Fecha y hora de tu dispositivo parecen ser inexactas (%1$s).\n\nAjusta tu reloj ⏰🔧 para asegurarte que los mensajes sean recibidos correctamente.</string>
     <string name="devicemsg_update_reminder">⚠️ Tu versión de Delta Chat puede estar desactualizada.\n\nEso puede crear problemas porque tus contactos usan nuevas versiones - y tú te estás perdiendo las últimas novedades 😳\nChequea https://get.delta.chat o tu tienda de aplicaciones para actualizaciones.</string>
 
-    <!-- Some options as "Manage keys" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc. to be entered in a system dialog. This hint is added to the system dialog, below a title as "Manage keys" or "Backup". -->
+    <!-- Some options as "Add Second Device" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc. to be entered in a system dialog. This hint is added to the system dialog, below a title as "Add Second Device" or "Backup". -->
     <string name="enter_system_secret_to_continue">Ingrese su secreto del sistema para continuar.</string>
 
     <!-- qr code stuff -->

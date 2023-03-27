@@ -485,6 +485,7 @@
     <!-- "Second Device" can also be translated as "Another Device", if that is catchier in the destination language. However, make sure to use the term consistently. -->
     <string name="multidevice_title">Aggiungi Secondo Dispositivo</string>
     <string name="multidevice_same_network_hint">Assicurati che entrambi i dispositivi siano sulla stessa rete o Wi-Fi.</string>
+    <string name="multidevice_this_creates_a_qr_code">In questo modo si crea un codice QR che il secondo dispositivo può scansionare per copiare l\'account.</string>
     <string name="multidevice_install_dc_on_other_device">Installa Delta Chat sull\'altro dispositivo (https://get.delta.chat)</string>
     <string name="multidevice_tap_scan_on_other_device">Avvia Delta Chat, tocca \"Aggiungi come secondo dispositivo\" e scansiona il codice qui mostrato</string>
     <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and/or address eg. "Scan to set up second device for Alice (alice@example.org)" -->
@@ -846,7 +847,7 @@
     <string name="devicemsg_bad_time">⚠️ La data o l\'ora del tuo dispositivo sembrano imprecise (%1$s).\n\nRegola l\'orologio ⏰🔧 per assicurarti che i tuoi messaggi vengano ricevuti correttamente.</string>
     <string name="devicemsg_update_reminder">⚠️ La tua versione di Delta Chat potrebbe essere obsoleta.\n\nCiò potrebbe causare problemi perché i tuoi partner di chat utilizzano versioni più recenti - e ti mancano le funzionalità più recenti 😳\nControlla https://get.delta.chat o il tuo app store per gli aggiornamenti. </string>
 
-    <!-- Some options as "Manage keys" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc. to be entered in a system dialog. This hint is added to the system dialog, below a title as "Manage keys" or "Backup". -->
+    <!-- Some options as "Add Second Device" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc. to be entered in a system dialog. This hint is added to the system dialog, below a title as "Add Second Device" or "Backup". -->
     <string name="enter_system_secret_to_continue">Per favore inserisci il tuo codice segreto definito dal sistema per continuare.</string>
 
     <!-- qr code stuff -->

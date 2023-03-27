@@ -822,7 +822,7 @@
     <string name="devicemsg_bad_time">⚠️ L\'heure ou la date de votre appareil semble erronée (%1$s).\n\nRéglez votre horloge ⏰🔧 pour que vos messages soient bien reçus.</string>
     <string name="devicemsg_update_reminder">⚠️ Votre version de Delta Chat semble être obsolète.\n\nCeci pourrait poser des problèmes car vos contacts utilisent des versions plus récentes - et vous loupez les dernières fonctionnalités 😳\nVeuillez s\'il vous plaît faire un tour sur https://get.delta.chat ou votre magasin d\'applications pour une mise à jour.</string>
 
-    <!-- Some options as "Manage keys" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc. to be entered in a system dialog. This hint is added to the system dialog, below a title as "Manage keys" or "Backup". -->
+    <!-- Some options as "Add Second Device" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc. to be entered in a system dialog. This hint is added to the system dialog, below a title as "Add Second Device" or "Backup". -->
     <string name="enter_system_secret_to_continue">Pour continuer, veuillez s\'il vous plaît entrer votre code secret système.</string>
 
     <!-- qr code stuff -->
