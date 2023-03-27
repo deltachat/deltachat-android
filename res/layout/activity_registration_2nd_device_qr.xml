@@ -91,6 +91,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/multidevice_experimental_hint"
+        android:gravity="center"
         android:textColor="?attr/emoji_text_color"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
