@@ -496,11 +496,7 @@
     <string name="multidevice_abort_will_invalidate_copied_qr">Questo invaliderà il codice QR copiato negli appunti.</string>
     <string name="multidevice_experimental_hint">(sperimentale, è richiesta la versione 1.36)</string>
     <!-- Shown beside progress bar, stay short -->
-    <string name="exporting_account">Esportazione dell\' account…</string>
-    <!-- Shown beside progress bar, stay short -->
     <string name="preparing_account">Preparazione account…</string>
-    <!-- Shown beside progress bar, stay short -->
-    <string name="account_prepared">Account preparato.</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="waiting_for_receiver">In attesa del ricevente...</string>
     <!-- Shown beside progress bar, stay short -->

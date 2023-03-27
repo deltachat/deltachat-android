@@ -481,11 +481,7 @@
     <string name="multidevice_abort_will_invalidate_copied_qr">Hierdoor wordt de gekopieerde QR-code onbruikbaar gemaakt.</string>
     <string name="multidevice_experimental_hint">(experimenteel - versie 1.36 vereist)</string>
     <!-- Shown beside progress bar, stay short -->
-    <string name="exporting_account">Bezig met exporteren…</string>
-    <!-- Shown beside progress bar, stay short -->
     <string name="preparing_account">Bezig met voorbereiden…</string>
-    <!-- Shown beside progress bar, stay short -->
-    <string name="account_prepared">Het account is voorbereid.</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="waiting_for_receiver">Bezig met wachten op ontvanger…</string>
     <!-- Shown beside progress bar, stay short -->
