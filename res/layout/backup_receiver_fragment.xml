@@ -30,9 +30,9 @@
 		android:layout_height="0dp"
 		android:layout_margin="16dp"
 		android:layout_weight="1"
-		android:gravity="bottom"
+		android:gravity="bottom|center"
 		android:text="@string/multidevice_same_network_hint"
-		android:textColor="@color/gray50"
+		android:textColor="?attr/emoji_text_color"
 		android:textSize="16sp"/>
 
 </LinearLayout>
