@@ -470,6 +470,7 @@
     <!-- "Second Device" can also be translated as "Another Device", if that is catchier in the destination language. However, make sure to use the term consistently. -->
     <string name="multidevice_title">Secundair apparaat toevoegen</string>
     <string name="multidevice_same_network_hint">Zorg er voor dat beide apparaten verbonden zijn met hezelfde (wifi)netwerk</string>
+    <string name="multidevice_this_creates_a_qr_code">Hiermee wordt een QR-code samengesteld die door het tweede apparaat kan worden gescand om het account te kopiëren.</string>
     <string name="multidevice_install_dc_on_other_device">Installeer Delta Chat op je andere apparaat (https://get.delta.chat)</string>
     <string name="multidevice_tap_scan_on_other_device">Start Delta Chat, druk op ‘Toevoegen als secundair apparaat’ en scan de hier getoonde code</string>
     <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and/or address eg. "Scan to set up second device for Alice (alice@example.org)" -->
