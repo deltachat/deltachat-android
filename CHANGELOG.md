@@ -83,7 +83,7 @@
 ## v1.34.5
 2022-11
 
-* allow removal of references contacts from the "New Chat" list
+* allow removal of referenced contacts from the "New Chat" list
 * show more debug info in message info
 * improve IMAP logging
 * show versionCode in log
@@ -773,7 +773,7 @@
 * improve receiving messages
 * improve error handling when there is no network
 * use correct aspect ratio of background images
-* fix sending umcompressed images
+* fix sending uncompressed images
 * fix emojis for android 4
 * more bug fixes
 
@@ -838,7 +838,7 @@
 2020-05-11
 
 * by default, the permanent notification is no longer shown;
-  the background fetch realibility depends on the system and the
+  the background fetch reliability depends on the system and the
   permanent notification can be enabled at "Settings / Notifications" as needed
 * fix a bug that stops receiving messages under some circumstances
 * more bug fixes
@@ -901,7 +901,7 @@
 * lower minimal requirements, Delta Chat now also runs on Android 4.1 Jelly Bean
 * fix updating names from incoming mails
 * fix encryption to Ed25519 keys that will be used in one of the next releases
-* several bug fixes, eg. on sending and receivind messages, see
+* several bug fixes, eg. on sending and receiving messages, see
   https://github.com/deltachat/deltachat-core-rust/blob/master/CHANGELOG.md#1250
   for details on that
 * add Croatian and Esperanto translations, update other translations and help
@@ -1573,7 +1573,7 @@ Osoitz, sebek, Thomas Oster
 * Notify the user in the chatlist about contact requests
   of known users or of other Delta Chat clients
 * Show messages only for explicitly wanted chats
-* Show more detailed reasons about failed end-to-end-encryptions
+* Show more detailed reasons about failed end-to-end-encryption
 * Explicit option to leave a group
 * Do not show the padlock if end-to-end-encryption is disabled by the user
 * Import images from a backup when using a different device with different paths
