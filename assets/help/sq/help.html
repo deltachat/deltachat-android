@@ -7,6 +7,7 @@
       <li><a href="#cilat-mesazhe-shfaqen-në-delta-chat">Cilat mesazhe shfaqen në Delta Chat?</a></li>
       <li><a href="#po-nëse-pres-një-mesazh-prej-dikujt-të-cilit-si-kam-shkruar-në-të-kaluarën">Po nëse pres një mesazh prej dikujt të cilit s’i kam shkruar në të kaluarën?</a></li>
       <li><a href="#a-mbulon-delta-chat-i-figura-video-dhe-bashkëngjitje-të-tjera">A mbulon Delta Chat-i figura, video dhe bashkëngjitje të tjera?</a></li>
+      <li><a href="#multiple-accounts">How can I add or switch between multiple accounts?</a></li>
       <li><a href="#kush-e-sheh-profilin-tim">Kush e sheh profilin tim?</a></li>
       <li><a href="#a-mbulon-delta-chat-i-email-e-html">A mbulon Delta Chat-i email-e HTML?</a></li>
       <li><a href="#pse-më-duhet-të-jap-fjalëkalimin-e-email-it-tim-në-delta-chat-a-është-e-sigurt-kjo">Pse më duhet të jap fjalëkalimin e email-it tim në Delta Chat? A është e sigurt kjo?</a></li>
@@ -33,6 +34,7 @@
       <li><a href="#nëse-ska-fshehtëzim-skaj-më-skaj-a-lihet-lidhja-pa-u-fshehtëzuar-fare">Nëse s’ka fshehtëzim skaj-më-skaj, a lihet lidhja pa u fshehtëzuar fare?</a></li>
       <li><a href="#si-mund-ta-verifikoj-gjendjen-kriptografike-me-një-dërguesin">Si mund ta verifikoj gjendjen kriptografike me një dërguesin?</a></li>
       <li><a href="#si-mund-ta-kontrolloj-fshehtëzimin-e-mesazheve">Si mund ta kontrolloj fshehtëzimin e mesazheve?</a></li>
+      <li><a href="#how-can-i-ensure-message-encryption-and-deletion">How can I ensure message encryption and deletion?</a></li>
       <li><a href="#cilët-standarde-përdoren-për-fshehtëzim-skaj-më-skaj">Cilët standarde përdoren për fshehtëzim skaj-më-skaj?</a></li>
       <li><a href="#cili-është-dallimi-mes-grupesh-të-verifikuar-dhe-fjalosjesh-11-me-kontakte-të-verifikuar">Cili është dallimi mes grupesh të verifikuar dhe fjalosjesh 1:1 me kontakte të verifikuar?</a></li>
       <li><a href="#a-përdor-delta-chat-i-fshehtësi-të-përsosur-përcjelljeje">A përdor Delta Chat-i Fshehtësi të Përsosur Përcjelljeje?</a></li>
@@ -72,9 +74,11 @@
   <li><a href="#të-ndryshme">Të ndryshme</a>
     <ul>
       <li><a href="#a-funksionon-delta-chat-me-shërbimin-tim-email">A funksionon Delta Chat me shërbimin <em>tim</em> email?</a></li>
+      <li><a href="#i-want-to-manage-my-own-e-mail-server-for-delta-chat-what-do-you-recommend">I want to manage my own e-mail server for Delta Chat. What do you recommend?</a></li>
       <li><a href="#sa-kohë-që-delta-chat-i-përdor-email-a-është-vërtet-një-shkëmbyes-mesazhesh-të-atypëratyshme">Sa kohë që Delta Chat-i përdor email, a është vërtet një Shkëmbyes Mesazhesh të <em>Atypëratyshme</em>?</a></li>
       <li><a href="#a-është-i-përputhshëm-delta-chat-i-me-protonmail-in--tutanota-n--criptext-in">A është i përputhshëm Delta Chat-i me Protonmail-in / Tutanota-n / Criptext-in?</a></li>
       <li><a href="#më-interesojnë-hollësitë-teknike-mund-të-më-tregoni-diçka-më-tepër">Më interesojnë hollësitë teknike. Mund të më tregoni diçka më tepër?</a></li>
+      <li><a href="#was-delta-chat-independently-audited-for-security-vulnerabilities">Was Delta Chat independently audited for security vulnerabilities?</a></li>
       <li><a href="#si-financohet-zhvillimi-i-delta-chat-it">Si financohet zhvillimi i Delta Chat-it?</a></li>
     </ul>
   </li>
@@ -116,19 +120,16 @@ e nevojshme të instalojë të njëjtin aplikacion me ju, si me programe të tje
       </h3>
 
 <ul>
-  <li><em>I pavarur</em> nga ndonjë shoqëri apo shërbim. Zot i të dhënave tuaja jeni <em>ju</em>.</li>
-  <li>Të dhënat tuaja nuk ruhen në një shërbyes qendror, veç në qoftë se krejt
-përdoruesit përdorin të njëjtët shërbyes email-i</li>
-  <li>S’i shpalosni kujt librin tuaj të adresave.</li>
-  <li><em>I shpejtë</em> përmes përdorimit të Push-IMAP.</li>
-  <li><em>Baza më e gjerë e përdoruesve</em> - mund të mbërrihet edhe te marrë që <em>nuk</em> përdorin Delta Chat-in.</li>
-  <li><em>I përputhshëm</em> - jo vetëm me veten.</li>
-  <li>Ndërfaqe përdoruesi <em>elegante</em> dhe <em>e thjeshtë</em>.</li>
-  <li>Sistem i <em>shpërndarë</em>.</li>
-  <li><em>Pa Spam</em> - vetëm mesazhe nga përdorues të njohur, të cilat shfaqen si parazgjedhje.</li>
-  <li><em>I qndrueshëm</em> - i sigurt për përdorim profesional.</li>
-  <li><em>I besueshëm</em> - mundet madje të përdoret për mesazhe biznesi.</li>
-  <li>Software libre i bazuar në <em>Copyleft</em> dhe <em>Standarde</em>.</li>
+  <li><em>Independent</em> of any company or services. <em>You</em> own your data.</li>
+  <li>Your data is not saved on a central server unless all users are using
+the same e-mail servers</li>
+  <li>You do not distribute your address book to anyone.</li>
+  <li><em>Fast</em> by the use of Push-IMAP.</li>
+  <li><em>Largest userbase</em> - recipients <em>not</em> using Delta Chat can be reached as well.</li>
+  <li><em>No Spam</em> - only messages of known users are shown by default.</li>
+  <li><em>End-to-end-encryption</em> via Autocrypt.</li>
+  <li><em>Copyleft</em> and <em>Standards</em> based libre software.</li>
+  <li><em>Flexible identity</em> with built-in support for <a href="#multiple-accounts">multiple accounts</a></li>
 </ul>
     
       <h3 id="cilat-mesazhe-shfaqen-në-delta-chat">
@@ -139,29 +140,22 @@ përdoruesit përdorin të njëjtët shërbyes email-i</li>
         
       </h3>
 
-<p>Si parazgjedhje, Delta Chat-i shfaq:</p>
+<p>By default, Delta Chat shows all e-mails.</p>
+
+<p>At “Settings -&gt; Chats &amp;
+Media -&gt; Show Classic E-Mails”, you can change this. You have these options:</p>
 
 <ul>
-  <li>Mesazhe dërguar nga përdorues të tjerë të Delta Chat-it</li>
-  <li>Përgjigje te mesazhet tuaj Delta Chat, edhe nëse janë “email-e normalë”.</li>
-</ul>
-
-<p>Email-e të tjerë nuk shfaqen në aplikacion, si parazgjedhje. Këtë mund
-ta ndryshoni te “Rregullime -&gt; Fjalosje &amp; Media -&gt; Shfaq Email-e Klasikë.
-Keni këto mundësi:</p>
-
-<ul>
-  <li>“Jo, vetëm fjalosje”: Shfaqen vetëm mesazhe dërguar nga përdorues të tjerë të
-Delta Chat-it dhe përgjigje për to në mesazhet tuaj Delta Chat. Kjo ka kuptim
-nëse përdorni të njëjtën llogari email edhe për email të zakonshëm.   Ky është
-rregullimi parazgjedhje.</li>
-  <li>“Krejt”: Delta Chat-i i shfaq krejt email-et që janë dërguar te adresa juaj. Kjo
-ka kuptim nëse e përdorni Delta Chat-in për krejt email-et tuaj, që kështu të mos
-humbin mesazhe.</li>
-  <li>“Për kontakte të pranuar”: Delta Chat-i shfaq krejt email-et prej kontaktesh me
-të cilët keni tashmë një fjalosje, por fjalosje të reja shfaqen vetëm për mesazhe
-Delta Chat. Kjo ndihmon të vendoset sipas rastit nëse doni të keni një bisedë në
-Delta Chat apo në një aplikacion të zakonshëm email-esh.</li>
+  <li>“No, chats only”: Only messages sent by other Delta Chat users and replies to
+your Delta Chat messages are shown. This makes most sense if you use the same
+e-mail account for normal e-mails as well.</li>
+  <li>“All”: Delta Chat shows all e-mails that are sent to your email address. This
+makes sense if you want to use Delta Chat for all your e-mails, so no message
+gets lost. This is the default setting.</li>
+  <li>“For accepted contacts”: Delta Chat shows all e-mails from contacts with whom
+you already have a chat, but new chats only pop up for Delta Chat messages.
+This helps to decide on a case-by-case basis whether you want to have a
+conversation in Delta Chat or in a “normal” e-mail app.</li>
 </ul>
     
       <h3 id="po-nëse-pres-një-mesazh-prej-dikujt-të-cilit-si-kam-shkruar-në-të-kaluarën">
@@ -192,8 +186,29 @@ s’doni të merrni mesazhe prej këtij personi, shihni mundësinë e <em>blloki
       </h3>
 
 <ul>
-  <li>Po. Veç tekstit të thjeshtë, krejt bashkëngjitjet email shfaqen si mesazhe më vete. Mesazhet ikëse do të pranojnë vetvetiu bashkëngjitje sipas nevojës.</li>
+  <li>
+    <p>Po. Veç tekstit të thjeshtë, krejt bashkëngjitjet email shfaqen si mesazhe më vete. Mesazhet ikëse do të pranojnë vetvetiu bashkëngjitje sipas nevojës.</p>
+  </li>
+  <li>
+    <p>For performance, images are optimized and sent at a smaller size by default, but you can send it as a “file” to preserve the original.</p>
+  </li>
 </ul>
+    
+      <h3 id="multiple-accounts">
+        
+        
+          How can I add or switch between multiple accounts? <a href="#multiple-accounts" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>You can easily work with additional accounts on Delta Chat mobile and desktop clients by clicking either:</p>
+<ul>
+  <li>on the menu button and then ‘Switch Account’ (Android and desktop)</li>
+  <li>or the profile icon and then ‘Add Account’ (iOS)</li>
+</ul>
+
+<p>You may also wish to learn <a href="#can-i-use-delta-chat-on-multiple-devices-at-the-same-time">how to add accounts to multiple devices</a>.</p>
     
       <h3 id="kush-e-sheh-profilin-tim">
         
@@ -330,8 +345,8 @@ Ja se ç’bën Delta Chat-i me këto leje:</p>
     <p><strong>Heshtoni fjalosje</strong>, nëse s’doni të merrni njoftime mbi to. Fjalosjet e heshtuara qëndrojnë në vend dhe mundeni edhe të fiksoni një fjalosje të heshtuar.</p>
   </li>
   <li>
-    <p><strong>Arkivoni fjalosje</strong>, nëse s’doni t’i shihni më te lista e fjalosjeve tuaja.
-Në fund të listës së fjalosjeve, te menuja, ose përmes kërkimit, mundeni prapëseprapë të përdorni fjalosje të arkivuara.</p>
+    <p><strong>Archive chats</strong> if you do not want to see them in your chat list any longer.
+Archived chats remain accessible above the chat list or via search.</p>
   </li>
   <li>
     <p>Kur te një fjalosje e arkivuar vjen një mesazh i ri, do të <strong>hapet jashtë arkivit</strong> dhe kalojë te lista juaj e fjalosjeve, veç në mos qoftë e heshtuar.
@@ -614,6 +629,34 @@ Nëse po ata shfaqen te pajisja e partnerit tuaj në bisedë, lidhja
     <p>Nëse <strong>s’ka dry</strong>, mesazhi zakonisht transportohet i pafshehtëzuar, p.sh., ngaqë ju ose dërguesi keni çaktivizuar fshehtëzimin skaj-më-skaj, ose dërguesi përdor një aplikacion që nuk mbulon fshehtëzimin skaj-më-skaj.</p>
   </li>
 </ul>
+    
+      <h3 id="how-can-i-ensure-message-encryption-and-deletion">
+        
+        
+          How can I ensure message encryption and deletion? <a href="#how-can-i-ensure-message-encryption-and-deletion" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>The best way to ensure every message is encrypted,
+and metadata deleted as quickly as possible
+is creating a verified group and turning on
+self-destructing messages.</p>
+
+<p>Verified groups are always encrypted and protected against <a href="https://en.wikipedia.org/wiki/Man-in-the-middle_attack">MITM
+attacks</a>.</p>
+
+<p>Metadata can’t be encrypted, as the server needs to know where to deliver your
+messages. But turning on “self-destructing messages” deletes the messages on
+the server after they were delivered.</p>
+
+<p>If you need the messages on your device, but not on the server, you can also
+agree in the group to turn on <a href="#what-happens-if-i-turn-on-delete-old-messages-from-server">“delete messages from server
+automatically”</a>.</p>
+
+<p>If you want to protect a 1:1 conversation like this, you should create a
+verified group with only 2 people. If the other person loses their device but
+not their account, you can still communicate in the 1:1 chat. (<a href="#what-is-the-difference-between-verified-groups-and-11-chats-with-verified-contacts">Read more</a>)</p>
     
       <h3 id="cilët-standarde-përdoren-për-fshehtëzim-skaj-më-skaj">
         
@@ -1165,6 +1208,21 @@ Sidoqoftë, disa furnizues shërbimesh kanë nevojë për mundësi speciale, që
 të funksionojnë si duhet, shihni <a href="https://providers.delta.chat">Provider Overview</a></li>
 </ul>
     
+      <h3 id="i-want-to-manage-my-own-e-mail-server-for-delta-chat-what-do-you-recommend">
+        
+        
+          I want to manage my own e-mail server for Delta Chat. What do you recommend? <a href="#i-want-to-manage-my-own-e-mail-server-for-delta-chat-what-do-you-recommend" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>Most mail servers will work well. But what we personally recommend is a
+combination of mailcow and mailadm, as described <a href="2023-01-26-upcoming-mail-server-workshops">in this
+blogpost</a>.</li>
+  <li>You can find an <a href="serverguide">installation guide on our website</a>.</li>
+</ul>
+    
       <h3 id="sa-kohë-që-delta-chat-i-përdor-email-a-është-vërtet-një-shkëmbyes-mesazhesh-të-atypëratyshme">
         
         
@@ -1220,6 +1278,53 @@ email-i me çfarëdo <a href="https://autocrypt.org/dev-status.html">aplikacioni
 
 <ul>
   <li>Shihni <a href="https://github.com/deltachat/deltachat-core-rust/blob/master/standards.md#standards-used-in-delta-chat">Standarde të përdorur në Delta Chat</a>.</li>
+</ul>
+    
+      <h3 id="was-delta-chat-independently-audited-for-security-vulnerabilities">
+        
+        
+          Was Delta Chat independently audited for security vulnerabilities? <a href="#was-delta-chat-independently-audited-for-security-vulnerabilities" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>The Delta Chat project underwent three independent security audits in the last
+years:</p>
+
+<ul>
+  <li>
+    <p>In 2019, <a href="https://includesecurity.com">Include Security</a> analyzed Delta
+Chat’s <a href="https://github.com/rpgp/rpgp">PGP</a> and
+<a href="https://github.com/RustCrypto/RSA">RSA</a> libraries.
+It found no critical issues,
+but two high-severity issues that we subsequently fixed.
+It also revealed one medium-severity and some less severe issues,
+but there was no way to exploit these vulnerabilities in the Delta Chat implementation.
+Some of them we nevertheless fixed since the audit was concluded.
+You can read the <a href="../assets/blog/2019-first-security-review.pdf">full report here</a>.</p>
+  </li>
+  <li>
+    <p>In 2020, <a href="https://includesecurity.com">Include Security</a> analyzed Delta
+Chat’s Rust <a href="https://github.com/deltachat/deltachat-core-rust/">core</a>,
+<a href="https://github.com/async-email/async-imap">IMAP</a>,
+<a href="https://github.com/async-email/async-smtp">SMTP</a>, and
+<a href="https://github.com/async-email/async-native-tls">TLS</a> libraries.
+It did not find any critical or high-severity issues.
+The report raised a few medium-severity weaknesses -
+they are no threat to Delta Chat users on their own
+because they depend on the environment in which Delta Chat is used.
+For usability and compatibility reasons,
+we can not mitigate all of them
+and decided to provide security recommendations to threatened users.
+You can read the <a href="../assets/blog/2020-second-security-review.pdf">full report here</a>.</p>
+  </li>
+  <li>
+    <p>Beginning 2023, <a href="https://cure53.de">Cure53</a> analyzed both the transport encryption of
+Delta Chat’s network connections and a reproducible mail server setup as
+<a href="serverguide">recommended on this site</a>.
+You can read more about the audit <a href="2023-03-23-third-independent-security-audit">on our blog</a>
+or read the <a href="../assets/blog/MER-01-report.pdf">full report here</a>.</p>
+  </li>
 </ul>
     
       <h3 id="si-financohet-zhvillimi-i-delta-chat-it">
