@@ -46,7 +46,7 @@
     <string name="profile">Perfil</string>
     <string name="main_menu">Menú principal</string>
     <string name="start_chat">Comenzar chat</string>
-    <string name="show_full_message">Mostrar mensaje completo...</string>
+    <string name="show_full_message">Mostrar mensaje completo…</string>
     <string name="show_full_message_in_browser">Mostrar mensaje completo en el navegador…</string>
     <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
     <string name="mark_all_as_read">Marcar todo leído</string>
@@ -65,7 +65,7 @@
     <string name="hide_password">Ocultar contraseña</string>
     <string name="not_now">Ahora no</string>
     <string name="never">Nunca</string>
-    <string name="one_moment">Un momento...</string>
+    <string name="one_moment">Un momento…</string>
     <string name="done">Hecho</string>
     <string name="undo">Deshacer</string>
     <string name="offline">Fuera de línea</string>
@@ -216,6 +216,8 @@
     <string name="menu_add_attachment">Añadir adjunto</string>
     <string name="menu_leave_group">Abandonar grupo</string>
     <string name="menu_delete_chat">Eliminar chat</string>
+    <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
+    <string name="clear_chat">Vaciar chat</string>
     <string name="ask_delete_named_chat">¿Estás seguro de que deseas eliminar \"%1$s\"?</string>
     <string name="menu_delete_messages">Eliminar mensajes</string>
     <string name="delete_contact">Eliminar contacto</string>
@@ -470,6 +472,7 @@
     <string name="tab_video_empty_hint">Vídeos compartidos en este chat se mostrarán aquí.</string>
     <string name="tab_audio_empty_hint">Los archivos de audio y los mensajes de voz compartidos en este chat se mostrarán aquí.</string>
     <string name="tab_webxdc_empty_hint">Aplicaciones privadas compartidas en este chat se mostrarán aquí</string>
+    <string name="tab_all_media_empty_hint">La multimedia compartida en cualquier chat aparecerá aquí</string>
     <string name="media_preview">Vista previa de multimedia</string>
     <string name="send_message">Enviar mensaje</string>
     <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
@@ -477,6 +480,31 @@
     <!-- the explanation is shown (1) as a modal dialog with the buttons "Cancel" and "Continue" as well as (2) as a device message -->
     <string name="aeap_explanation">Has cambiado tu dirección de correo electrónico de %1$s a %2$s.\n\nSi ahora envías un mensaje a un grupo verificado, los contactos de éste sustituirán automáticamente la antigua por tu nueva dirección.\n\nEs muy recomendable que configures tu antiguo proveedor de correo electrónico para que reenvíe todos los mensajes a tu nueva dirección. De lo contrario, podrías perderte los mensajes de los contactos que aún no han recibido tu nueva dirección.</string>
 
+
+    <!-- Multi Device -->
+    <!-- "Second Device" can also be translated as "Another Device", if that is catchier in the destination language. However, make sure to use the term consistently. -->
+    <string name="multidevice_title">Añadir otro dispositivo</string>
+    <string name="multidevice_same_network_hint">Asegúrate de que ambos dispositivos estén conectados en la misma red o Wi-Fi</string>
+    <string name="multidevice_this_creates_a_qr_code">Esto crea un código QR que el otro dispositivo puede escanear para copiar la cuenta.</string>
+    <string name="multidevice_install_dc_on_other_device">Instala Delta Chat en tu otro dispositivo (https://get.delta.chat)</string>
+    <string name="multidevice_tap_scan_on_other_device">Inicia Delta Chat, toca \"Añadir desde otro dispositivo\" y escanea el código mostrado aquí</string>
+    <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and/or address eg. "Scan to set up second device for Alice (alice@example.org)" -->
+    <string name="multidevice_qr_subtitle">Escanea para configurar otro dispositivo para %1$s</string>
+    <string name="multidevice_receiver_title">Añadir desde otro dispositivo</string>
+    <string name="multidevice_open_settings_on_other_device">En el primer dispositivo, ve a \"Ajustes / Añadir otro dispositivo\" y escanea el código mostrado allí</string>
+    <string name="multidevice_receiver_scanning_ask">¿Copiar la cuenta del otro dispositivo a este dispositivo?</string>
+    <string name="multidevice_abort">¿Cancelar la configuración del nuevo dispositivo?</string>
+    <string name="multidevice_abort_will_invalidate_copied_qr">Esto invalidará el código QR copiado al portapapeles </string>
+    <string name="multidevice_experimental_hint">(experimental, requiere versión 1.36)</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="preparing_account">Preparando cuenta…</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="waiting_for_receiver">Esperando por receptor…</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="receiver_connected">Receptor conectado…</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="transferring">Transfiriendo…</string>
+    <string name="troubleshooting">Solución de problemas</string>
 
     <!-- Connectivity -->
     <!-- Headline for the "Inbox" eg. in the "Connectivity" view -->
@@ -494,7 +522,7 @@
     <string name="connectivity_updating">Actualizando…</string>
     <!-- Shown in the setting if the app is "Connected" -->
     <string name="connectivity_connected">Conectado</string>
-    <string name="sending">Enviando...</string>
+    <string name="sending">Enviando…</string>
     <string name="last_msg_sent_successfully">El último mensaje fue enviado satisfactoriamente.</string>
     <string name="not_supported_by_provider">No soportado por tu proveedor.</string>
     <!-- Subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed. -->
@@ -562,7 +590,7 @@
 
     <!-- share and forward messages -->
     <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
-    <string name="forward_to">Reenviar a ...</string>
+    <string name="forward_to">Reenviar a…</string>
     <string name="share_multiple_attachments">¿Enviar %1$d archivos al chat seleccionado?\n\nLos archivos son enviados sin modificar en su tamaño original, ej. las imágenes y los videos no son codificados nuevamente.</string>
     <string name="share_multiple_attachments_multiple_chats">¿Enviar %1$d archivo(s) a %2$d chats?\n\nLos archivos son enviados sin modificar en su tamaño original, ej. imágenes y videos no son codificados nuevamente.</string>
     <string name="share_text_multiple_chats">¿Enviar este texto  a %1$d chats?\n\n\"%2$s\"</string>

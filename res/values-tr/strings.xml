@@ -470,6 +470,7 @@
     <!-- "Second Device" can also be translated as "Another Device", if that is catchier in the destination language. However, make sure to use the term consistently. -->
     <string name="multidevice_title">İkinci Aygıt Ekle</string>
     <string name="multidevice_same_network_hint">İki aygıtın da aynı Wi-Fi\'da ya da ağda olduğundan emin olun</string>
+    <string name="multidevice_this_creates_a_qr_code">Bu, ikinci aygıtın hesabı kopyalamak için tarayabileceği bir QR kodu oluşturur.</string>
     <string name="multidevice_install_dc_on_other_device">Delta Chat\'i diğer aygıtınıza kurun (https://get.delta.chat)</string>
     <string name="multidevice_tap_scan_on_other_device">Delta Chat\'i başlatın, “İkinci Aygıt Olarak Ekle”ye dokunun ve burada gösterilen kodu tarayın</string>
     <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and/or address eg. "Scan to set up second device for Alice (alice@example.org)" -->
@@ -832,7 +833,7 @@
     <string name="devicemsg_update_reminder">⚠️ Delta Chat sürümünüz eski olabilir.\n\nBu, sorunlara neden olabilir; çünkü sohbet ortaklarınız daha yeni sürümleri kullanıyor - ve en yeni özellikleri kaybediyorsunuz 😳\nGüncelleştirmeler için lütfen https://get.delta.chat ya da uygulama mağazanızı denetleyin.</string>
 
     <!-- Some options as "Add Second Device" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc. to be entered in a system dialog. This hint is added to the system dialog, below a title as "Add Second Device" or "Backup". -->
-    <string name="enter_system_secret_to_continue">Sürdürmek için lütfen sistem tanımlı sırrınızı girin.</string>
+    <string name="enter_system_secret_to_continue">Sürdürmek için kilidi açın</string>
 
     <!-- qr code stuff -->
     <string name="qr_code">QR Kodu</string>
