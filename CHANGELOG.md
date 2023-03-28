@@ -13,13 +13,13 @@
 * make better use of dark/light mode in "Show full message"
 * show icon beside info messages of apps
 * resilience against outages by caching DNS results for SMTP connections
+  (IMAP connections are already cached since 1.34.11)
 * prefer TLS over STARTTLS during autoconfiguration, set minimum TLS version to 1.2
 * use SOCKS5 configuration also for HTTP requests
 * make invite QR codes even prettier
-* improve storage my free unused areas sooner
-* improve speed by using read/write instead of per-command timeouts for SMTP
 * improve speed by reorganizing the database connection pool
 * improve speed by decrypting messages in parallel
+* improve reliability by using read/write instead of per-command timeouts for SMTP
 * improve reliability by closing databases sooner
 * improve compatibility with encrypted messages from non-deltachat clients
 * fix: Skip "Show full message" if the additional text is only a footer already shown in the profile
