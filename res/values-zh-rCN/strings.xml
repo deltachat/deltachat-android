@@ -454,16 +454,16 @@
     <!-- Multi Device -->
     <!-- "Second Device" can also be translated as "Another Device", if that is catchier in the destination language. However, make sure to use the term consistently. -->
     <string name="multidevice_title">添加第二台设备</string>
-    <string name="multidevice_same_network_hint">确保两台设备连接的是相同的 WI-Fi 或网络</string>
-    <string name="multidevice_this_creates_a_qr_code">这会创建一个第二台设备可以扫描以复制该账户的二维码。</string>
+    <string name="multidevice_same_network_hint">让两台设备连接相同的 Wi-Fi 或网络</string>
+    <string name="multidevice_this_creates_a_qr_code">这会创建供第二台设备扫描、用于复制此账户的二维码。</string>
     <string name="multidevice_install_dc_on_other_device">在你的其他设备上安装 Delta Chat (https://get.delta.chat)</string>
-    <string name="multidevice_tap_scan_on_other_device">启动 Delta Chat 应用，轻按“添加为第二台设备”并扫描显示在那里的二维码</string>
+    <string name="multidevice_tap_scan_on_other_device">启动 Delta Chat 应用，点击“添加为第二台设备”并扫描显示的二维码</string>
     <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and/or address eg. "Scan to set up second device for Alice (alice@example.org)" -->
     <string name="multidevice_qr_subtitle">扫描此处为 %1$s 设置第二台设备</string>
     <string name="multidevice_receiver_title">添加为第二台设备</string>
-    <string name="multidevice_open_settings_on_other_device">在第一台设备上，转到“设置/添加第二台设备”并扫描显示在那里的二维码</string>
-    <string name="multidevice_receiver_scanning_ask">将账户从其他设备复制到这台设备吗？</string>
-    <string name="multidevice_abort">中断设置第二台设备吗？</string>
+    <string name="multidevice_open_settings_on_other_device">在第一台设备上，转到“设置/添加第二台设备”并扫描显示的二维码</string>
+    <string name="multidevice_receiver_scanning_ask">将账户从其他设备复制到此设备吗？</string>
+    <string name="multidevice_abort">中止第二台设备的设置吗？</string>
     <string name="multidevice_abort_will_invalidate_copied_qr">这会让复制到剪贴板的二维码失效。</string>
     <string name="multidevice_experimental_hint">（实验性，需要 1.36 版本）</string>
     <!-- Shown beside progress bar, stay short -->
@@ -471,9 +471,9 @@
     <!-- Shown beside progress bar, stay short -->
     <string name="waiting_for_receiver">等待接收者…</string>
     <!-- Shown beside progress bar, stay short -->
-    <string name="receiver_connected">已连接接收者…</string>
+    <string name="receiver_connected">接收者已连接…</string>
     <!-- Shown beside progress bar, stay short -->
-    <string name="transferring">转移中…</string>
+    <string name="transferring">传输中…</string>
     <string name="troubleshooting">故障排除</string>
 
     <!-- Connectivity -->
@@ -818,7 +818,7 @@
     <string name="devicemsg_update_reminder">⚠️您的 Delta Chat 版本可能过时了。\n\n这可能会在您的聊天伙伴使用更新的版本时造成问题。并且您缺失了最新功能😳\n请浏览 https://get.delta.chat 或应用商店来获取更新。</string>
 
     <!-- Some options as "Add Second Device" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc. to be entered in a system dialog. This hint is added to the system dialog, below a title as "Add Second Device" or "Backup". -->
-    <string name="enter_system_secret_to_continue">请输入您的系统密码以继续。</string>
+    <string name="enter_system_secret_to_continue">解锁以继续</string>
 
     <!-- qr code stuff -->
     <string name="qr_code">二维码</string>
@@ -1036,5 +1036,9 @@
 
     <!-- device messages for updates -->
     <string name="update_1_34_android">1.34 版有哪些变化？\n\n🤗 更友好的联系人列表：按“上次见到”顺序排列，10分钟内见到的联系人用一个圆点标记 🟢\n\n📑 聊天概况的新页面：“音频” 和“私人应用”\n\n🖼️ 如果有人给你发送一个“私人应用”(例如，从 https://webxdc.org)，你可以将它添加到主屏幕</string>
+    <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
+    <string name="update_1_36_android">1.36 版本主要改动\n\n💻📱轻松地在你的所有设备上使用 Delta Chat - 遵照 \"设置/添加第二台设备\"处的提示，只需三步即可完成（实验性功能）\n\n🖼🔍为找不到图片和记不起聊天而苦恼吗？主菜单中的“所有媒体”帮你解决这个问题！\n\n其他重要改动包括所有账户的通知，清除聊天。详见 %1$s</string>
+    <!-- placeholder will be replaced by the URL https://delta.chat/en/2023-03-27-third-independent-security-audit -->
+    <string name="update_1_36_audit">虽然我们对安全谈得不多，但别担心，我们非常重视它：打开 %1$s 了解最近的好消息👌</string>
 
 </resources>

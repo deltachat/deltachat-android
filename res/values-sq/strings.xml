@@ -1046,5 +1046,4 @@
 
     <!-- device messages for updates -->
     <string name="update_1_34_android">Ç’ka të re në 1.34?\n\n🤗 Lista më miqësore kontaktesh: Renditur sipas parë së fundi dhe kontakteve të parë brenda 10 minutash u vihet një shenjë 🟢\n\n📑 Faqe të reja në profile fjalosjesh: “Audio” dhe “Aplikacione Private”\n\n🖼️ Nëse dikush ju dërgon një “Aplikacion Privat” (p.sh., që nga https://webxdc.org ), mund ta shtoni te skena e kreut</string>
-
-</resources>
+    </resources>

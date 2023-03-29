@@ -500,6 +500,7 @@
     <!-- "Second Device" can also be translated as "Another Device", if that is catchier in the destination language. However, make sure to use the term consistently. -->
     <string name="multidevice_title">Dodaj kolejne urządzenie</string>
     <string name="multidevice_same_network_hint">Upewnij się, że oba urządzenia są połączone z tym samym Wi-Fi lub siecią</string>
+    <string name="multidevice_this_creates_a_qr_code">Spowoduje to utworzenie kodu QR, który kolejne urządzenie może zeskanować w celu skopiowania konta.</string>
     <string name="multidevice_install_dc_on_other_device">Zainstaluj Delta Chat na swoim kolejnym urządzeniu (https://get.delta.chat)</string>
     <string name="multidevice_tap_scan_on_other_device">Uruchom Delta Chat, dotknij „Dodaj jako kolejne urządzenie” i zeskanuj pokazany tutaj kod</string>
     <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and/or address eg. "Scan to set up second device for Alice (alice@example.org)" -->
@@ -1080,5 +1081,9 @@
 
     <!-- device messages for updates -->
     <string name="update_1_34_android">Co nowego w wersji 1.34?\n\n🤗 Bardziej przyjazne listy kontaktów: uporządkowane według ostatnio widzianych, a kontakty widziane w ciągu 10 minut są oznaczone kropką 🟢\n\n📑 Nowe strony w profilach czatu: „Dźwięk” i „Aplikacje prywatne”\n\n🖼️ Jeśli ktoś wyśle ci „Prywatną aplikację” (np. z https://webxdc.org ), możesz dodać ją do ekranu głównego</string>
+    <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
+    <string name="update_1_36_android">Najciekawsze w wersji 1.36\n\n💻📱 Korzystaj z Delta Chat na wszystkich swoich urządzeniach w prosty sposób - wystarczy wykonać trzy proste kroki w \"Ustawienia » Dodaj kolejne urządzenie\" (eksperymentalna)\n\n🖼🔍 Czy kiedykolwiek szukałeś obrazu i nie mogłeś zapamiętać czatu? \"Wszystkie multimedia\" z menu głównego są twoje!\n\nCo jeszcze? Powiadomienia dla wszystkich kont, czyszczenie czatu i wiele więcej znajdziesz na stronie www %1$s</string>
+    <!-- placeholder will be replaced by the URL https://delta.chat/en/2023-03-27-third-independent-security-audit -->
+    <string name="update_1_36_audit">Nie rozmawiamy tutaj zbyt wiele o bezpieczeństwie, ale zapewniamy, że nam zależy: najnowsze dobre wieści znajdują się na stronie %1$s👌</string>
 
 </resources>

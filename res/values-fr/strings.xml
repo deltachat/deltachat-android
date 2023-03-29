@@ -254,7 +254,7 @@
     <string name="menu_select_all">Tout sélectionner</string>
     <string name="select_more">Sélectionner plus</string>
     <string name="menu_edit_name">Modifier le nom</string>
-    <string name="menu_settings">Configuration</string>
+    <string name="menu_settings">Paramètres</string>
     <string name="menu_advanced">Avancé</string>
     <string name="menu_view_profile">Voir le profil</string>
     <string name="menu_zoom_in">Zoom avant</string>
@@ -316,7 +316,7 @@
     <string name="videochat_instance_placeholder">Votre instance de discussion vidéo</string>
     <string name="videochat_instance_example">Exemples : https://meet.jit.si/$ROOM ou basicwebrtc:https://your-server</string>
     <string name="videochat_instance_explain_2">Si vous avez activé les discussions vidéo, vous pouvez démarrer une conversation vidéo dans chacune de vos discussions. Il faut que chaque participant-e ait une application ou un navigateur compatibles pour pouvoir utiliser cette option.</string>
-    <string name="videochat_instance_from_qr">Utiliser « %1$s » pour inviter les autres à des discussions de vidéo ?\n\nUne fois configuré, vous pouvez démarrer une discussion vidéo de chaque discussion privée. Ceci va remplacer la précédente configuration pour les discussions vidéos, s\'il y en a une.</string>
+    <string name="videochat_instance_from_qr">Utiliser « %1$s » pour inviter d\'autres personnes à des discussions vidéo ?\n\nUne fois configuré, vous pouvez discuter en vidéo dans chaque discussion privée. Remplace vos préférences de configurations précédentes pour les discussions vidéos.</string>
     <string name="videochat_invitation">Invitation à une discussion vidéo</string>
     <string name="videochat_invitation_body">Vous êtes invité à une discussion vidéo, cliquez sur %1$s pour la rejoindre.</string>
 
@@ -480,6 +480,31 @@
     <!-- the explanation is shown (1) as a modal dialog with the buttons "Cancel" and "Continue" as well as (2) as a device message -->
     <string name="aeap_explanation">Vous avez changé votre adresse e-mail de %1$s à %2$s.\n\nSi vous envoyez maintenant un message à un groupe vérifié, les contacts de ce groupe remplaceront automatiquement l\'ancienne adresse par la nouvelle.\n\nIl est fortement conseillé de configurer votre ancien fournisseur d\'e-mail pour qu\'il transfère tous les e-mails à votre nouvelle adresse. Sinon, vous risquez de manquer des messages de contacts qui n\'ont pas encore reçu votre nouvelle adresse.</string>
 
+
+    <!-- Multi Device -->
+    <!-- "Second Device" can also be translated as "Another Device", if that is catchier in the destination language. However, make sure to use the term consistently. -->
+    <string name="multidevice_title">Ajouter un deuxième appareil</string>
+    <string name="multidevice_same_network_hint">Vérifiez que les deux appareils sont bien connectés au même Wi-Fi ou réseau.</string>
+    <string name="multidevice_this_creates_a_qr_code">Crée un code QR que vous pouvez scanner avec le deuxième appareil pour copier le compte.</string>
+    <string name="multidevice_install_dc_on_other_device">Installer Delta Chat sur votre autre appareil (https://get.delta.chat)</string>
+    <string name="multidevice_tap_scan_on_other_device">Lancez Delta Chat, appuyez sur \"Ajouter comme deuxième appareil\" et scannez le code affiché ici.</string>
+    <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and/or address eg. "Scan to set up second device for Alice (alice@example.org)" -->
+    <string name="multidevice_qr_subtitle">Scanner pour configurer un deuxième appareil pour %1$s</string>
+    <string name="multidevice_receiver_title">Ajouter comme deuxième appareil</string>
+    <string name="multidevice_open_settings_on_other_device">Sur le premier appareil, allez dans \"Paramètres / Ajouter un deuxième appareil\" et scannez le code qui s\'affiche</string>
+    <string name="multidevice_receiver_scanning_ask">Copier le compte de l\'autre appareil sur celui-ci ?</string>
+    <string name="multidevice_abort">Abandonner la configuration du deuxième appareil ?</string>
+    <string name="multidevice_abort_will_invalidate_copied_qr">Révoque le code QR copié dans le presse-papiers.</string>
+    <string name="multidevice_experimental_hint">(expérimental, version 1.36 requise)</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="preparing_account">Préparation du compte...</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="waiting_for_receiver">En attente de l\'appareil...</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="receiver_connected">Appareil connecté...</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="transferring">Transfert...</string>
+    <string name="troubleshooting">Dépannage</string>
 
     <!-- Connectivity -->
     <!-- Headline for the "Inbox" eg. in the "Connectivity" view -->
@@ -823,7 +848,7 @@
     <string name="devicemsg_update_reminder">⚠️ Votre version de Delta Chat semble être obsolète.\n\nCeci pourrait poser des problèmes car vos contacts utilisent des versions plus récentes - et vous loupez les dernières fonctionnalités 😳\nVeuillez s\'il vous plaît faire un tour sur https://get.delta.chat ou votre magasin d\'applications pour une mise à jour.</string>
 
     <!-- Some options as "Add Second Device" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc. to be entered in a system dialog. This hint is added to the system dialog, below a title as "Add Second Device" or "Backup". -->
-    <string name="enter_system_secret_to_continue">Pour continuer, veuillez s\'il vous plaît entrer votre code secret système.</string>
+    <string name="enter_system_secret_to_continue">Déverrouillez votre appareil pour continuer</string>
 
     <!-- qr code stuff -->
     <string name="qr_code">Code QR</string>
@@ -896,7 +921,7 @@
     <string name="perm_required_title">Autorisation requise</string>
     <string name="perm_continue">Continuez</string>
     <string name="perm_explain_access_to_camera_denied">Pour prendre des photos ou filmer des vidéos, aller au menu Paramètres de l\'application, sélectionnez \"Autorisations\" et autorisez \"Appareil photo\".</string>
-    <string name="perm_explain_access_to_mic_denied">Pour envoyer des messages audio,  aller dans les réglages de l\'application, sélectionner \"Autorisations\" et autoriser \"Microphone\".</string>
+    <string name="perm_explain_access_to_mic_denied">Pour envoyer des messages audio, aller dans les paramètres de l\'application, sélectionner \"Autorisations\" et autoriser \"Microphone\".</string>
     <string name="perm_explain_access_to_storage_denied">Pour recevoir ou envoyer des fichiers, aller dans les Paramètres de l\'application, sélectionner \"Autorisations\" et autoriser \"Stockage\".</string>
     <string name="perm_explain_access_to_location_denied">Pour attacher une position, aller au menu paramètres de l\'application, sélectionnez \"Autorisations\" et activez \"Position\".</string>
 
@@ -1041,5 +1066,9 @@
 
     <!-- device messages for updates -->
     <string name="update_1_34_android">Nouveautes de la version 1.34 :n\n🤗 Des listes de contacts plus ergonomique : les derniers vus sont en premiers, et les contacts vus dans les 10 dernières minutes sont marqués d\'un point 🟢\n\n📑 Nouvelles pages dans les profils des discussions : « Audio » and « Applis privées » \n\n🖼️ Vous pouvez ajouter à l\'écran d\'accueil les « Applis privées » qu\'on vous envoie (par exemple depuis https://webxdc.org ).</string>
+    <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
+    <string name="update_1_36_android">1.36 Nouveautés\n\n💻📱 Utilisez Delta Chat sur tous vos appareils, en trois étapes simples. Rendez-vous dans \"Paramètres / Ajouter un deuxième appareil\" (expérimental) !\n\n🖼🔍 Il vous est déjà arrivé de chercher une image sans pouvoir retrouver la bonne discussion ? L\'option \"Tous les médias\" du menu principal est faite pour vous !\n\nQuoi d\'autre ? Des notifications pour tous vos comptes, la possibilité de vider entièrement les discussions, et plus encore %1$s</string>
+    <!-- placeholder will be replaced by the URL https://delta.chat/en/2023-03-27-third-independent-security-audit -->
+    <string name="update_1_36_audit">Nous n\'avons pas beaucoup parlé de sécurité, mais pas d\'inquiétude, nous nous en occupons toujours ! Lisez les dernières bonnes nouvelles sur %1$s👌</string>
 
 </resources>
