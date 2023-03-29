@@ -1,0 +1,8 @@
+* new, easy way to add a second device to your account: select "Add as a Second Device" after installation and scan a QR code from the first device
+* view "All Media" of all chats
+* new "Clear Chat" option
+* show notifications for all accounts
+* make better use of dark/light mode in "Show full message"
+* show icon beside info messages of apps
+* resilience against outages by caching DNS results for SMTP and IMAP connections
+* speed and reliability improvements, fixes
