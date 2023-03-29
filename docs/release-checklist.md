@@ -58,7 +58,7 @@ are binary-wise the same as pushed to testers and not overwritten by subsequent 
    b) do a PR to bump `VERSION_ANDROID` (without leading `v`) on
       `https://github.com/deltachat/deltachat-pages/blob/master/_includes/download-boxes.html`  
    c) make sure, **the PR gets merged**
-      andcthe correct APK is finally available on get.delta.chat
+      and the correct APK is finally available on get.delta.chat
 
 only afterwards, push the APK to stores. **consider a blog post.**
 
@@ -69,10 +69,10 @@ on <https://play.google.com/apps/publish/>:
 
 9. a) open "Delta Chat/Release/Production"
       then "Create new release" and upload APK from above  
-   b) fill out "Release details/Release notes" (500 characters max),
+   b) fill out "Release details/Release notes" (500 characters, summary can be reused for F-Droid),
       release name should be default ("123 (1.2.3)")  
-   c) click "Save" and then "Review release"  
-   d) set "Rollout Percentage" to 1% and then 2%, 5%, 10%, 20%, 50%, 100% the next days
+   c) click "Next", set "Rollout Percentage" to 1% (later 2%, 5%, 10%, 20%, 50%, 100%),
+      click "Start rollout to Production"
 
 
 ## Release on F-Droid
