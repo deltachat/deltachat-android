@@ -1,5 +1,37 @@
 # Delta Chat Android Changelog
 
+## v1.36.0
+2023-03
+
+* new, easy method of adding a second device to your account:
+  select "Add as a Second Device" after installation and scan a QR code from the old device
+* view "All Media" of all chats by the corresponding option in the chat list's menu
+* add "Clear Chat" option to remove all messages from a chat
+* show non-deltachat emails by default for new installations
+  (you can change this at "Settings / Chats and Media)
+* show notifications for all accounts
+* make better use of dark/light mode in "Show full message"
+* show icon beside info messages of apps
+* resilience against outages by caching DNS results for SMTP connections
+  (IMAP connections are already cached since 1.34.11)
+* prefer TLS over STARTTLS during autoconfiguration, set minimum TLS version to 1.2
+* use SOCKS5 configuration also for HTTP requests
+* make invite QR codes even prettier
+* improve speed by reorganizing the database connection pool
+* improve speed by decrypting messages in parallel
+* improve reliability by using read/write instead of per-command timeouts for SMTP
+* improve reliability by closing databases sooner
+* improve compatibility with encrypted messages from non-deltachat clients
+* fix: Skip "Show full message" if the additional text is only a footer already shown in the profile
+* fix verifications when using for multiple devices
+* fix backup imports for backups seemingly work at first
+* fix a problem with gmail where (auto-)deleted messages would get archived instead of deleted
+* fix deletion of more than 32000 messages at the same time
+* update provider database
+* update translations and local help
+* update to core112.1
+
+
 ## v1.34.13
 2023-02
 
