@@ -34,7 +34,7 @@
       <li><a href="#wird-ohne-ende-zu-ende-verschlüsselung-gar-nicht-verschlüsselt">Wird ohne Ende-zu-Ende-Verschlüsselung gar nicht verschlüsselt?</a></li>
       <li><a href="#wie-kann-ich-den-kryptografischen-zustand-mit-einem-kontakt-überprüfen">Wie kann ich den kryptografischen Zustand mit einem Kontakt überprüfen?</a></li>
       <li><a href="#wie-kann-ich-die-verschlüsselung-der-nachrichten-überprüfen">Wie kann ich die Verschlüsselung der Nachrichten überprüfen?</a></li>
-      <li><a href="#how-can-i-ensure-message-encryption-and-deletion">How can I ensure message encryption and deletion?</a></li>
+      <li><a href="#wie-kann-ich-verschlüsselung-und-löschen-von-nachrichten-sicherstellen">Wie kann ich Verschlüsselung und Löschen von Nachrichten sicherstellen?</a></li>
       <li><a href="#welches-verfahren-wird-für-die-ende-zu-ende-verschlüsselung-verwendet">Welches Verfahren wird für die Ende-zu-Ende-Verschlüsselung verwendet?</a></li>
       <li><a href="#was-ist-der-unterschied-zwischen-verifizierten-gruppen-und-11-chats-mit-verifizierten-kontakten">Was ist der Unterschied zwischen verifizierten Gruppen und 1:1 Chats mit verifizierten Kontakten?</a></li>
       <li><a href="#unterstützt-delta-chat-perfect-forward-secrecy">Unterstützt Delta Chat Perfect Forward Secrecy?</a></li>
@@ -47,6 +47,8 @@
   <li><a href="#multiclient">Mehrere Geräte verwenden</a>
     <ul>
       <li><a href="#kann-ich-delta-chat-auf-mehreren-geräten-zur-selben-zeit-verwenden">Kann ich Delta Chat auf mehreren Geräten zur selben Zeit verwenden?</a></li>
+      <li><a href="#fehlersuche">Fehlersuche</a></li>
+      <li><a href="#manueller-transfer">Manueller Transfer</a></li>
       <li><a href="#gibt-es-pläne-für-eine-delta-chat-web-anwendung">Gibt es Pläne für eine Delta Chat Web-Anwendung?</a></li>
       <li><a href="#was-macht-die-option-kopie-an-mich-selbst-senden">Was macht die Option “Kopie an mich selbst senden”?</a></li>
       <li><a href="#warum-gibt-es-die-funktion-gesendet-ordner-beobachten">Warum gibt es die Funktion “Gesendet-Ordner beobachten”?</a></li>
@@ -74,11 +76,11 @@
   <li><a href="#verschiedenes">Verschiedenes</a>
     <ul>
       <li><a href="#funktioniert-delta-chat-mit-meinem-e-mail-anbieter">Funktioniert Delta Chat mit <em>meinem</em> E-Mail-Anbieter?</a></li>
-      <li><a href="#i-want-to-manage-my-own-e-mail-server-for-delta-chat-what-do-you-recommend">I want to manage my own e-mail server for Delta Chat. What do you recommend?</a></li>
+      <li><a href="#ich-möchte-meinen-eigenen-e-mail-server-für-delta-chat-verwalten-gibt-es-empfehlungen">Ich möchte meinen eigenen E-Mail-Server für Delta Chat verwalten. Gibt es Empfehlungen?</a></li>
       <li><a href="#delta-chat-verwendet-e-mail---ist-es-dann-wirklich-ein-instant-messenger">Delta Chat verwendet E-Mail - ist es dann wirklich ein <em>Instant</em> Messenger?</a></li>
       <li><a href="#ist-delta-chat-kompatibel-mit-protonmail--tutanota--criptext">Ist Delta Chat kompatibel mit Protonmail / Tutanota / Criptext?</a></li>
       <li><a href="#ich-bin-an-technischen-details-interessiert-gibt-es-hierzu-weitere-infos">Ich bin an technischen Details interessiert. Gibt es hierzu weitere Infos?</a></li>
-      <li><a href="#was-delta-chat-independently-audited-for-security-vulnerabilities">Was Delta Chat independently audited for security vulnerabilities?</a></li>
+      <li><a href="#wurde-delta-chat-unabhängig-auf-sicherheitslücken-geprüft">Wurde Delta Chat unabhängig auf Sicherheitslücken geprüft?</a></li>
       <li><a href="#wie-wird-delta-chat-finanziert">Wie wird Delta Chat finanziert?</a></li>
     </ul>
   </li>
@@ -560,10 +562,10 @@ wird (falls er noch nicht existiert) ein Chat-Kanal eingerichtet und die Schlüs
   </li>
 </ul>
     
-      <h3 id="how-can-i-ensure-message-encryption-and-deletion">
+      <h3 id="wie-kann-ich-verschlüsselung-und-löschen-von-nachrichten-sicherstellen">
         
         
-          How can I ensure message encryption and deletion? <a href="#how-can-i-ensure-message-encryption-and-deletion" class="anchor"></a>
+          Wie kann ich Verschlüsselung und Löschen von Nachrichten sicherstellen? <a href="#wie-kann-ich-verschlüsselung-und-löschen-von-nachrichten-sicherstellen" class="anchor"></a>
         
         
       </h3>
@@ -744,7 +746,73 @@ Für andere Programme können Sie online eine Lösung finden.</p>
         
       </h3>
 
-<p>Möchten Sie einen Account auf verschiedenen Geräten nutzen, müssen Sie in Delta Chat auf dem “alten” Gerät ein Backup erstellen und dieses auf dem neuen Gerät importieren:</p>
+<p>Yes. Delta Chat 1.36 comes with a new, experimental function for using the same account on different devices:</p>
+
+<ul>
+  <li>
+    <p>On the first device, go to <strong>Settings → Add Second Device</strong>, unlock the screen if needed
+and wait a moment until a QR code is shown</p>
+  </li>
+  <li>
+    <p>On the second device, <a href="https://get.delta.chat">install Delta Chat</a></p>
+  </li>
+  <li>
+    <p>On the second device, start Delta Chat, select <strong>Add as Second Device</strong>, and scan the QR code from the old device</p>
+  </li>
+  <li>
+    <p>Transfer should start after a few seconds and during transfer both devices will show the <strong>progress</strong>.
+Wait until it is finished on both devices.</p>
+  </li>
+</ul>
+
+<p>In contrast to many other messengers, after successful transfer,
+both <strong>devices are completely independent.</strong>
+One device is not needed for the other to work.</p>
+    
+      <h3 id="fehlersuche">
+        
+        
+          Fehlersuche <a href="#fehlersuche" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>
+    <p>Double-check both devices are in the <strong>same Wi-Fi or network</strong></p>
+  </li>
+  <li>
+    <p>Your system might have a “personal firewall”,
+which is known to cause problems (especially on Windows).
+<strong>Disable the personal firewall</strong> for Delta Chat on both ends and try again</p>
+  </li>
+  <li>
+    <p>Ensure there is <strong>enough storage</strong> on the destination device</p>
+  </li>
+  <li>
+    <p>If transfer started, make sure, the devices <strong>stay active</strong> and do not fall asleep.
+Do not exit Delta Chat.
+(we try hard to make the app work in background, but <a href="https://dontkillmyapp.com">systems tend to kill apps</a>, unfortunately)</p>
+  </li>
+  <li>
+    <p>Delta Chat is <strong>already logged in</strong> on the destination device?
+You can use multiple accounts per device, just <a href="#multiple-accounts">add another account</a></p>
+  </li>
+  <li>
+    <p>If you still have problems or if you <strong>cannot scan a QR code</strong>
+try the <strong>manual transfer</strong> described below</p>
+  </li>
+</ul>
+    
+      <h3 id="manueller-transfer">
+        
+        
+          Manueller Transfer <a href="#manueller-transfer" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>This method is only recommended if “Add Second Device” as described above does not work.</p>
 
 <ul>
   <li>Auf dem alten Gerät gehen Sie zu “Einstellungen -&gt; Chats und Medien -&gt; Chats auf externem Speicher speichern”. Geben Sie Ihre PIN, Ihr Muster oder Ihr Passwort zum Entsperren des Bildschirms ein. Anschließend können Sie auf “Backup starten” klicken. Dadurch wird die Backup-Datei auf Ihrem Gerät gespeichert. Jetzt müssen Sie sie irgendwie auf das andere Gerät übertragen.</li>
@@ -1008,10 +1076,10 @@ Siehe <a href="https://countermitm.readthedocs.io/en/latest/new.html">countermit
 Allerdings benötigen einige Anbieter besondere Einstellungen, um ordnungsgemäß zu funktionieren; eine von NutzerInnen erstellte Sammlung zu einigen Optionen findet sich unter <a href="https://providers.delta.chat">Provider Overview</a>.</li>
 </ul>
     
-      <h3 id="i-want-to-manage-my-own-e-mail-server-for-delta-chat-what-do-you-recommend">
+      <h3 id="ich-möchte-meinen-eigenen-e-mail-server-für-delta-chat-verwalten-gibt-es-empfehlungen">
         
         
-          I want to manage my own e-mail server for Delta Chat. What do you recommend? <a href="#i-want-to-manage-my-own-e-mail-server-for-delta-chat-what-do-you-recommend" class="anchor"></a>
+          Ich möchte meinen eigenen E-Mail-Server für Delta Chat verwalten. Gibt es Empfehlungen? <a href="#ich-möchte-meinen-eigenen-e-mail-server-für-delta-chat-verwalten-gibt-es-empfehlungen" class="anchor"></a>
         
         
       </h3>
@@ -1064,10 +1132,10 @@ blogpost</a>.</li>
   <li>Siehe hierzu <a href="https://github.com/deltachat/deltachat-core-rust/blob/master/standards.md#standards-used-in-delta-chat">in Delta Chat genutzte Standards</a>.</li>
 </ul>
     
-      <h3 id="was-delta-chat-independently-audited-for-security-vulnerabilities">
+      <h3 id="wurde-delta-chat-unabhängig-auf-sicherheitslücken-geprüft">
         
         
-          Was Delta Chat independently audited for security vulnerabilities? <a href="#was-delta-chat-independently-audited-for-security-vulnerabilities" class="anchor"></a>
+          Wurde Delta Chat unabhängig auf Sicherheitslücken geprüft? <a href="#wurde-delta-chat-unabhängig-auf-sicherheitslücken-geprüft" class="anchor"></a>
         
         
       </h3>

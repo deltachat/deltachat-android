@@ -50,6 +50,8 @@
   <li><a href="#multiclient">Мульти-клієнт</a></li>
   <li><a href="#чи-можна-використовувати-delta-chat-на-декількох-пристроях-одночасно">Чи можна використовувати Delta Chat на декількох пристроях одночасно?</a>
     <ul>
+      <li><a href="#troubleshooting">Troubleshooting</a></li>
+      <li><a href="#manual-transfer">Manual Transfer</a></li>
       <li><a href="#чи-планується-впровадження-веб-клієнта-delta-chat">Чи планується впровадження веб-клієнта Delta Chat?</a></li>
       <li><a href="#для-чого-потрібне-налаштування-відправити-копію-собі">Для чого потрібне налаштування “Відправити копію собі”?</a></li>
       <li><a href="#чому-я-можу-обрати-стеження-за--папкою-надіслані">Чому я можу обрати стеження за  папкою “Надіслані”?</a></li>
@@ -727,7 +729,73 @@ not their account, you can still communicate in the 1:1 chat. (<a href="#what-is
         
       </h2>
 
-<p>Якщо ви хочете використовувати <strong>один і той же обліковий запис</strong> на різних пристроях, вам слід експортувати резервну копію із старого пристрою та імпортувати її на новий пристрій:</p>
+<p>Yes. Delta Chat 1.36 comes with a new, experimental function for using the same account on different devices:</p>
+
+<ul>
+  <li>
+    <p>On the first device, go to <strong>Settings → Add Second Device</strong>, unlock the screen if needed
+and wait a moment until a QR code is shown</p>
+  </li>
+  <li>
+    <p>On the second device, <a href="https://get.delta.chat">install Delta Chat</a></p>
+  </li>
+  <li>
+    <p>On the second device, start Delta Chat, select <strong>Add as Second Device</strong>, and scan the QR code from the old device</p>
+  </li>
+  <li>
+    <p>Transfer should start after a few seconds and during transfer both devices will show the <strong>progress</strong>.
+Wait until it is finished on both devices.</p>
+  </li>
+</ul>
+
+<p>In contrast to many other messengers, after successful transfer,
+both <strong>devices are completely independent.</strong>
+One device is not needed for the other to work.</p>
+    
+      <h3 id="troubleshooting">
+        
+        
+          Troubleshooting <a href="#troubleshooting" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>
+    <p>Double-check both devices are in the <strong>same Wi-Fi or network</strong></p>
+  </li>
+  <li>
+    <p>Your system might have a “personal firewall”,
+which is known to cause problems (especially on Windows).
+<strong>Disable the personal firewall</strong> for Delta Chat on both ends and try again</p>
+  </li>
+  <li>
+    <p>Ensure there is <strong>enough storage</strong> on the destination device</p>
+  </li>
+  <li>
+    <p>If transfer started, make sure, the devices <strong>stay active</strong> and do not fall asleep.
+Do not exit Delta Chat.
+(we try hard to make the app work in background, but <a href="https://dontkillmyapp.com">systems tend to kill apps</a>, unfortunately)</p>
+  </li>
+  <li>
+    <p>Delta Chat is <strong>already logged in</strong> on the destination device?
+You can use multiple accounts per device, just <a href="#multiple-accounts">add another account</a></p>
+  </li>
+  <li>
+    <p>If you still have problems or if you <strong>cannot scan a QR code</strong>
+try the <strong>manual transfer</strong> described below</p>
+  </li>
+</ul>
+    
+      <h3 id="manual-transfer">
+        
+        
+          Manual Transfer <a href="#manual-transfer" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>This method is only recommended if “Add Second Device” as described above does not work.</p>
 
 <ul>
   <li>На старому пристрої перейдіть у «Налаштування -&gt; Чати та медіа -&gt; Експорт резервної копії». Введіть ваш PIN-код, ключ або пароль розблокування екрана. Потім ви можете натиснути “Почати Резервне копіювання”. Це збереже файл резервної копії на вашому пристрої. Тепер вам потрібно перенести на інший пристрій якимось чином.</li>

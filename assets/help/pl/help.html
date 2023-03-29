@@ -7,7 +7,7 @@
       <li><a href="#jakie-wiadomości-pojawiają-się-w-delta-chat">Jakie wiadomości pojawiają się w Delta Chat?</a></li>
       <li><a href="#co-zrobić-jeśli-oczekuję-wiadomości-od-osoby-do-której-nie-pisałem-w-przeszłości">Co zrobić, jeśli oczekuję wiadomości od osoby, do której nie pisałem w przeszłości?</a></li>
       <li><a href="#czy-delta-chat-obsługuje-obrazy-filmy-i-inne-załączniki">Czy Delta Chat obsługuje obrazy, filmy i inne załączniki?</a></li>
-      <li><a href="#multiple-accounts">How can I add or switch between multiple accounts?</a></li>
+      <li><a href="#multiple-accounts">Jak mogę dodawać lub przełączać się między wieloma kontami?</a></li>
       <li><a href="#kto-widzi-moje-zdjęcie-profilowe">Kto widzi moje zdjęcie profilowe?</a></li>
       <li><a href="#czy-delta-chat-obsługuje-wiadomości-e-mail-w-formacie-html">Czy Delta Chat obsługuje wiadomości e-mail w formacie HTML?</a></li>
       <li><a href="#dlaczego-muszę-wpisać-moje-hasło-e-mail-do-delta-chat-czy-to-jest-bezpieczne">Dlaczego muszę wpisać moje hasło e-mail do Delta Chat? Czy to jest bezpieczne?</a></li>
@@ -34,7 +34,7 @@
       <li><a href="#jeśli-nie-jest-dostępne-szyfrowanie-typu-end-to-end-czy-połączenie-w-ogóle-nie-jest-szyfrowane">Jeśli nie jest dostępne szyfrowanie typu „end-to-end”, czy połączenie w ogóle nie jest szyfrowane?</a></li>
       <li><a href="#jak-mogę-zweryfikować-status-kryptograficzny-z-nadawcą">Jak mogę zweryfikować status kryptograficzny z nadawcą?</a></li>
       <li><a href="#jak-mogę-sprawdzić-szyfrowanie-wiadomości">Jak mogę sprawdzić szyfrowanie wiadomości?</a></li>
-      <li><a href="#how-can-i-ensure-message-encryption-and-deletion">How can I ensure message encryption and deletion?</a></li>
+      <li><a href="#jak-mogę-zapewnić-szyfrowanie-i-usuwanie-wiadomości">Jak mogę zapewnić szyfrowanie i usuwanie wiadomości?</a></li>
       <li><a href="#jakie-standardy-są-stosowane-do-szyfrowania-end-to-end">Jakie standardy są stosowane do szyfrowania end-to-end?</a></li>
       <li><a href="#jaka-jest-różnica-między-zweryfikowanymi-grupami-a-czatami-11-ze-zweryfikowanymi-kontaktami">Jaka jest różnica między zweryfikowanymi grupami a czatami 1:1 ze zweryfikowanymi kontaktami?</a></li>
       <li><a href="#czy-delta-chat-obsługuje-perfect-forward-secrecy">Czy Delta Chat obsługuje Perfect Forward Secrecy?</a></li>
@@ -47,6 +47,8 @@
   <li><a href="#multiclient">Multi-klient</a>
     <ul>
       <li><a href="#czy-mogę-korzystać-z-delta-chat-na-wielu-urządzeniach-w-tym-samym-czasie">Czy mogę korzystać z Delta Chat na wielu urządzeniach w tym samym czasie?</a></li>
+      <li><a href="#troubleshooting">Troubleshooting</a></li>
+      <li><a href="#manual-transfer">Manual Transfer</a></li>
       <li><a href="#czy-są-jakieś-plany-wprowadzenia-klienta-web-delta-chat">Czy są jakieś plany wprowadzenia klienta Web Delta Chat?</a></li>
       <li><a href="#do-czego-służy-ustawienie-wyślij-kopię-do-siebie">Do czego służy ustawienie „Wyślij kopię do siebie”?</a></li>
       <li><a href="#po-co-mam-wybrać-opcję-oglądania-folderu-wysłane">Po co mam wybrać opcję oglądania folderu „Wysłane”?</a></li>
@@ -77,11 +79,11 @@
   <li><a href="#różne">Różne</a>
     <ul>
       <li><a href="#czy-delta-chat-działa-z-moim-dostawcą-poczty-e-mail">Czy Delta Chat działa z <em>moim</em> dostawcą poczty e-mail?</a></li>
-      <li><a href="#i-want-to-manage-my-own-e-mail-server-for-delta-chat-what-do-you-recommend">I want to manage my own e-mail server for Delta Chat. What do you recommend?</a></li>
+      <li><a href="#chcę-zarządzać-własnym-serwerem-e-mail-dla-delta-chat-co-polecacie">Chcę zarządzać własnym serwerem e-mail dla Delta Chat. Co polecacie?</a></li>
       <li><a href="#jeśli-delta-chat-korzysta-z-poczty-e-mail-czy-naprawdę-jest-to-komunikator-internetowy">Jeśli Delta Chat korzysta z poczty e-mail, czy naprawdę jest to komunikator internetowy?</a></li>
       <li><a href="#czy-delta-chat-jest-kompatybilny-z-protonmail--tutanota--criptext">Czy Delta Chat jest kompatybilny z Protonmail / Tutanota / Criptext?</a></li>
       <li><a href="#interesują-mnie-szczegóły-techniczne-możesz-powiedzieć-mi-coś-więcej">Interesują mnie szczegóły techniczne. Możesz powiedzieć mi coś więcej?</a></li>
-      <li><a href="#was-delta-chat-independently-audited-for-security-vulnerabilities">Was Delta Chat independently audited for security vulnerabilities?</a></li>
+      <li><a href="#czy-delta-chat-był-niezależnie-kontrolowany-pod-kątem-luk-w-zabezpieczeniach">Czy Delta Chat był niezależnie kontrolowany pod kątem luk w zabezpieczeniach?</a></li>
       <li><a href="#w-jaki-sposób-finansowany-jest-rozwój-delta-chat">W jaki sposób finansowany jest rozwój Delta Chat?</a></li>
     </ul>
   </li>
@@ -123,16 +125,15 @@ instalować tej samej aplikacji co Twoja, tak jak w przypadku innych komunikator
       </h3>
 
 <ul>
-  <li><em>Independent</em> of any company or services. <em>You</em> own your data.</li>
-  <li>Your data is not saved on a central server unless all users are using
-the same e-mail servers</li>
-  <li>You do not distribute your address book to anyone.</li>
-  <li><em>Fast</em> by the use of Push-IMAP.</li>
-  <li><em>Largest userbase</em> - recipients <em>not</em> using Delta Chat can be reached as well.</li>
-  <li><em>No Spam</em> - only messages of known users are shown by default.</li>
-  <li><em>End-to-end-encryption</em> via Autocrypt.</li>
-  <li><em>Copyleft</em> and <em>Standards</em> based libre software.</li>
-  <li><em>Flexible identity</em> with built-in support for <a href="#multiple-accounts">multiple accounts</a></li>
+  <li><em>Niezależny</em> od jakiejkolwiek firmy lub usług. <em>Jesteś</em> właścicielem swoich danych.</li>
+  <li>Twoje dane nie są zapisywane na centralnym serwerze, chyba że wszyscy użytkownicy korzystają z tych samych serwerów pocztowych</li>
+  <li>Nie udostępniasz nikomu swojej książki adresowej</li>
+  <li><em>Szybki</em> dzięki użyciu Push-IMAP</li>
+  <li><em>Największa baza użytkowników</em> – możesz dotrzeć również do odbiorców <em>niekorzystających</em> z Delta Chat.</li>
+  <li><em>Brak spamu</em> – domyślnie wyświetlane są, tylko wiadomości znanych użytkowników</li>
+  <li><em>Szyfrowanie end-to-end</em> za pomocą Autocrypt</li>
+  <li>Wolne oprogramowanie oparte na <em>Systemie licencjonowania praw autorskich</em> i <em>Standardach</em></li>
+  <li><em>Elastyczna tożsamość</em> ze wbudowaną obsługą <a href="#multiple-accounts">wielu kont</a></li>
 </ul>
     
       <h3 id="jakie-wiadomości-pojawiają-się-w-delta-chat">
@@ -143,22 +144,14 @@ the same e-mail servers</li>
         
       </h3>
 
-<p>By default, Delta Chat shows all e-mails.</p>
+<p>Domyślnie Delta Chat pokazuje wszystkie e-maile.</p>
 
-<p>At “Settings -&gt; Chats &amp;
-Media -&gt; Show Classic E-Mails”, you can change this. You have these options:</p>
+<p>Możesz to zmienić w „Ustawienia » Czaty i media » Pokaż klasyczne e-maile”. Masz następujące opcje:</p>
 
 <ul>
-  <li>“No, chats only”: Only messages sent by other Delta Chat users and replies to
-your Delta Chat messages are shown. This makes most sense if you use the same
-e-mail account for normal e-mails as well.</li>
-  <li>“All”: Delta Chat shows all e-mails that are sent to your email address. This
-makes sense if you want to use Delta Chat for all your e-mails, so no message
-gets lost. This is the default setting.</li>
-  <li>“For accepted contacts”: Delta Chat shows all e-mails from contacts with whom
-you already have a chat, but new chats only pop up for Delta Chat messages.
-This helps to decide on a case-by-case basis whether you want to have a
-conversation in Delta Chat or in a “normal” e-mail app.</li>
+  <li>„Nie, tylko czaty”: Wyświetlane są tylko wiadomości wysłane przez innych użytkowników Delta Chat i odpowiedzi na Twoje wiadomości Delta Chat. Ma to największy sens, jeśli używasz tego samego konta e-mail również do wysyłania zwykłych wiadomości e-mail. To jest ustawienie domyślne.</li>
+  <li>„Wszystkie”: Delta Chat pokazuje wszystkie e-maile, które są wysyłane na Twój adres e-mail. Ma to sens, jeśli chcesz używać Delta Chat do wszystkich swoich e-maili, więc żadna wiadomość nie zostanie utracona. To jest ustawienie domyślne.</li>
+  <li>„Dla zaakceptowanych kontaktów”: Delta Chat pokazuje wszystkie e-maile od kontaktów, z którymi już prowadzisz czat, ale nowe czaty pojawiają się tylko dla wiadomości Delta Chat. Pomaga to zdecydować indywidualnie dla każdego przypadku, czy chcesz prowadzić rozmowę w Delta Chat, czy w „normalnej” aplikacji e-mail.</li>
 </ul>
     
       <h3 id="co-zrobić-jeśli-oczekuję-wiadomości-od-osoby-do-której-nie-pisałem-w-przeszłości">
@@ -188,25 +181,25 @@ conversation in Delta Chat or in a “normal” e-mail app.</li>
     <p>Tak. Oprócz zwykłego tekstu wszystkie załączniki wiadomości e-mail są wyświetlane jako oddzielne wiadomości. Wiadomości wychodzące automatycznie otrzymują załączniki w razie potrzeby.</p>
   </li>
   <li>
-    <p>For performance, images are optimized and sent at a smaller size by default, but you can send it as a “file” to preserve the original.</p>
+    <p>Ze względu na wydajność obrazy są domyślnie optymalizowane i wysyłane w mniejszym rozmiarze, ale można je wysłać jako „plik”, aby zachować oryginał.</p>
   </li>
 </ul>
     
       <h3 id="multiple-accounts">
         
         
-          How can I add or switch between multiple accounts? <a href="#multiple-accounts" class="anchor"></a>
+          Jak mogę dodawać lub przełączać się między wieloma kontami? <a href="#multiple-accounts" class="anchor"></a>
         
         
       </h3>
 
-<p>You can easily work with additional accounts on Delta Chat mobile and desktop clients by clicking either:</p>
+<p>Możesz łatwo pracować z dodatkowymi kontami na klientach mobilnych i stacjonarnych Delta Chat, klikając:</p>
 <ul>
-  <li>on the menu button and then ‘Switch Account’ (Android and desktop)</li>
-  <li>or the profile icon and then ‘Add Account’ (iOS)</li>
+  <li>na przycisku menu, a następnie „Przełącz konto” (Android i komputer stacjonarny)</li>
+  <li>lub ikonę profilu, a następnie „Dodaj konto” (iOS)</li>
 </ul>
 
-<p>You may also wish to learn <a href="#can-i-use-delta-chat-on-multiple-devices-at-the-same-time">how to add accounts to multiple devices</a>.</p>
+<p>Możesz także dowiedzieć się, <a href="#czy-mogę-korzystać-z-delta-chat-na-wielu-urządzeniach-w-tym-samym-czasie">jak dodawać konta do wielu urządzeń</a>.</p>
     
       <h3 id="kto-widzi-moje-zdjęcie-profilowe">
         
@@ -312,8 +305,7 @@ Oto, co robi Delta Chat z tymi uprawnieniami:</p>
     <p><strong>Wycisz czaty</strong>, jeśli nie chcesz otrzymywać z nich powiadomień. Wyciszone czaty pozostają na swoim miejscu i możesz też przypiąć wyciszony czat.</p>
   </li>
   <li>
-    <p><strong>Archive chats</strong> if you do not want to see them in your chat list any longer.
-Archived chats remain accessible above the chat list or via search.</p>
+    <p><strong>Archiwizuj czaty</strong>, jeśli nie chcesz ich już widzieć na liście czatów. Zarchiwizowane czaty pozostają dostępne nad listą czatów lub poprzez wyszukiwanie.</p>
   </li>
   <li>
     <p>Gdy zarchiwizowany czat otrzyma nową wiadomość, o ile nie zostanie wyciszony, <strong>wyskoczy z archiwum</strong> i wróci na twoją listę czatów.
@@ -556,33 +548,23 @@ Jeśli te same odciski palców pojawią się na urządzeniu partnera czatu, poł
   </li>
 </ul>
     
-      <h3 id="how-can-i-ensure-message-encryption-and-deletion">
+      <h3 id="jak-mogę-zapewnić-szyfrowanie-i-usuwanie-wiadomości">
         
         
-          How can I ensure message encryption and deletion? <a href="#how-can-i-ensure-message-encryption-and-deletion" class="anchor"></a>
+          Jak mogę zapewnić szyfrowanie i usuwanie wiadomości? <a href="#jak-mogę-zapewnić-szyfrowanie-i-usuwanie-wiadomości" class="anchor"></a>
         
         
       </h3>
 
-<p>The best way to ensure every message is encrypted,
-and metadata deleted as quickly as possible
-is creating a verified group and turning on
-self-destructing messages.</p>
+<p>Najlepszym sposobem na zapewnienie szyfrowania każdej wiadomości i jak najszybszego usunięcia metadanych jest utworzenie zweryfikowanej grupy i włączenie autodestrukcji wiadomości.</p>
 
-<p>Verified groups are always encrypted and protected against <a href="https://en.wikipedia.org/wiki/Man-in-the-middle_attack">MITM
-attacks</a>.</p>
+<p>Zweryfikowane grupy są zawsze szyfrowane i chronione przed <a href="https://pl.wikipedia.org/wiki/Atak_man_in_the_middle">atakami MITM</a>.</p>
 
-<p>Metadata can’t be encrypted, as the server needs to know where to deliver your
-messages. But turning on “self-destructing messages” deletes the messages on
-the server after they were delivered.</p>
+<p>Metadanych nie można zaszyfrować, ponieważ serwer musi wiedzieć, gdzie dostarczyć wiadomości. Ale włączenie „autodestrukcji wiadomości” usuwa wiadomości z serwera po ich dostarczeniu.</p>
 
-<p>If you need the messages on your device, but not on the server, you can also
-agree in the group to turn on <a href="#what-happens-if-i-turn-on-delete-old-messages-from-server">“delete messages from server
-automatically”</a>.</p>
+<p>Jeśli potrzebujesz wiadomości na swoim urządzeniu, ale nie na serwerze, możesz również uzgodnić w grupie włączenie  <a href="#co-się-stanie-jeśli-włączę-opcję-usuń-wiadomości-z-serwera">„automatycznego usuwania wiadomości z serwera”</a>.</p>
 
-<p>If you want to protect a 1:1 conversation like this, you should create a
-verified group with only 2 people. If the other person loses their device but
-not their account, you can still communicate in the 1:1 chat. (<a href="#what-is-the-difference-between-verified-groups-and-11-chats-with-verified-contacts">Read more</a>)</p>
+<p>Jeśli chcesz chronić taką rozmowę 1:1, powinieneś utworzyć zweryfikowaną grupę składającą się tylko z 2 osób. Jeśli druga osoba straci swoje urządzenie, ale nie konto, nadal możesz komunikować się na czacie 1:1. (<a href="#jaka-jest-różnica-między-zweryfikowanymi-grupami-a-czatami-11-ze-zweryfikowanymi-kontaktami">Czytaj więcej</a>)</p>
     
       <h3 id="jakie-standardy-są-stosowane-do-szyfrowania-end-to-end">
         
@@ -722,7 +704,73 @@ W przypadku innych programów można znaleźć rozwiązanie online.</p>
         
       </h3>
 
-<p>Jeśli chcesz używać tego samego konta na różnych urządzeniach, wyeksportuj kopię zapasową ze starego urządzenia i zaimportuj ją na nowe urządzenie:</p>
+<p>Yes. Delta Chat 1.36 comes with a new, experimental function for using the same account on different devices:</p>
+
+<ul>
+  <li>
+    <p>On the first device, go to <strong>Settings → Add Second Device</strong>, unlock the screen if needed
+and wait a moment until a QR code is shown</p>
+  </li>
+  <li>
+    <p>On the second device, <a href="https://get.delta.chat">install Delta Chat</a></p>
+  </li>
+  <li>
+    <p>On the second device, start Delta Chat, select <strong>Add as Second Device</strong>, and scan the QR code from the old device</p>
+  </li>
+  <li>
+    <p>Transfer should start after a few seconds and during transfer both devices will show the <strong>progress</strong>.
+Wait until it is finished on both devices.</p>
+  </li>
+</ul>
+
+<p>In contrast to many other messengers, after successful transfer,
+both <strong>devices are completely independent.</strong>
+One device is not needed for the other to work.</p>
+    
+      <h3 id="troubleshooting">
+        
+        
+          Troubleshooting <a href="#troubleshooting" class="anchor"></a>
+        
+        
+      </h3>
+
+<ul>
+  <li>
+    <p>Double-check both devices are in the <strong>same Wi-Fi or network</strong></p>
+  </li>
+  <li>
+    <p>Your system might have a “personal firewall”,
+which is known to cause problems (especially on Windows).
+<strong>Disable the personal firewall</strong> for Delta Chat on both ends and try again</p>
+  </li>
+  <li>
+    <p>Ensure there is <strong>enough storage</strong> on the destination device</p>
+  </li>
+  <li>
+    <p>If transfer started, make sure, the devices <strong>stay active</strong> and do not fall asleep.
+Do not exit Delta Chat.
+(we try hard to make the app work in background, but <a href="https://dontkillmyapp.com">systems tend to kill apps</a>, unfortunately)</p>
+  </li>
+  <li>
+    <p>Delta Chat is <strong>already logged in</strong> on the destination device?
+You can use multiple accounts per device, just <a href="#multiple-accounts">add another account</a></p>
+  </li>
+  <li>
+    <p>If you still have problems or if you <strong>cannot scan a QR code</strong>
+try the <strong>manual transfer</strong> described below</p>
+  </li>
+</ul>
+    
+      <h3 id="manual-transfer">
+        
+        
+          Manual Transfer <a href="#manual-transfer" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>This method is only recommended if “Add Second Device” as described above does not work.</p>
 
 <ul>
   <li>Na starym urządzeniu przejdź do „Ustawienia » Czaty i media » Eksport kopii zapasowej”. Wprowadź swój PIN odblokowania ekranu, wzór lub hasło. Następnie możesz nacisnąć „Utwórz kopię”. Spowoduje to zapisanie pliku kopii zapasowej na urządzeniu. Teraz musisz jakoś przenieść go na inne urządzenie.</li>
@@ -986,19 +1034,17 @@ Zobacz <a href="https://countermitm.readthedocs.io/en/latest/new.html">countermi
 Jednak niektórzy dostawcy potrzebują specjalnych opcji, aby działać poprawnie, zobacz <a href="https://providers.delta.chat">Przegląd dostawców</a></li>
 </ul>
     
-      <h3 id="i-want-to-manage-my-own-e-mail-server-for-delta-chat-what-do-you-recommend">
+      <h3 id="chcę-zarządzać-własnym-serwerem-e-mail-dla-delta-chat-co-polecacie">
         
         
-          I want to manage my own e-mail server for Delta Chat. What do you recommend? <a href="#i-want-to-manage-my-own-e-mail-server-for-delta-chat-what-do-you-recommend" class="anchor"></a>
+          Chcę zarządzać własnym serwerem e-mail dla Delta Chat. Co polecacie? <a href="#chcę-zarządzać-własnym-serwerem-e-mail-dla-delta-chat-co-polecacie" class="anchor"></a>
         
         
       </h3>
 
 <ul>
-  <li>Most mail servers will work well. But what we personally recommend is a
-combination of mailcow and mailadm, as described <a href="2023-01-26-upcoming-mail-server-workshops">in this
-blogpost</a>.</li>
-  <li>You can find an <a href="serverguide">installation guide on our website</a>.</li>
+  <li>Większość serwerów pocztowych będzie działać dobrze. Ale to, co osobiście polecamy, to połączenie mailcow i mailadm, jak opisano <a href="2023-01-26-upcoming-mail-server-workshops">w tym poście na blogu</a>.</li>
+  <li>Instrukcję instalacji można znaleźć <a href="serverguide">na naszej stronie internetowej</a>.</li>
 </ul>
     
       <h3 id="jeśli-delta-chat-korzysta-z-poczty-e-mail-czy-naprawdę-jest-to-komunikator-internetowy">
@@ -1043,50 +1089,24 @@ blogpost</a>.</li>
   <li>Zobacz <a href="https://github.com/deltachat/deltachat-core-rust/blob/master/standards.md#standards-used-in-delta-chat">Standardy używane w Delta Chat</a>.</li>
 </ul>
     
-      <h3 id="was-delta-chat-independently-audited-for-security-vulnerabilities">
+      <h3 id="czy-delta-chat-był-niezależnie-kontrolowany-pod-kątem-luk-w-zabezpieczeniach">
         
         
-          Was Delta Chat independently audited for security vulnerabilities? <a href="#was-delta-chat-independently-audited-for-security-vulnerabilities" class="anchor"></a>
+          Czy Delta Chat był niezależnie kontrolowany pod kątem luk w zabezpieczeniach? <a href="#czy-delta-chat-był-niezależnie-kontrolowany-pod-kątem-luk-w-zabezpieczeniach" class="anchor"></a>
         
         
       </h3>
 
-<p>The Delta Chat project underwent three independent security audits in the last
-years:</p>
+<p>Projekt Delta Chat przeszedł w ostatnich latach trzy niezależne audyty bezpieczeństwa:</p>
+
+<p>-W 2019 r. firma <a href="https://includesecurity.com">Include Security</a> przeanalizowała biblioteki <a href="https://github.com/rpgp/rpgp">PGP</a> i <a href="https://github.com/RustCrypto/RSA">RSA</a> Delta Chat. Nie znaleziono żadnych krytycznych problemów, ale dwa poważne problemy, które później naprawiliśmy. Ujawniła również jeden problem o średniej wadze i kilka mniej poważnych, ale nie było możliwości wykorzystania tych luk w implementacji Delta Chat. Niektóre z nich jednak naprawiliśmy od czasu zakończenia kontroli. Pełny raport można przeczytać <a href="../assets/blog/2019-first-security-review.pdf">tutaj</a>.</p>
 
 <ul>
   <li>
-    <p>In 2019, <a href="https://includesecurity.com">Include Security</a> analyzed Delta
-Chat’s <a href="https://github.com/rpgp/rpgp">PGP</a> and
-<a href="https://github.com/RustCrypto/RSA">RSA</a> libraries.
-It found no critical issues,
-but two high-severity issues that we subsequently fixed.
-It also revealed one medium-severity and some less severe issues,
-but there was no way to exploit these vulnerabilities in the Delta Chat implementation.
-Some of them we nevertheless fixed since the audit was concluded.
-You can read the <a href="../assets/blog/2019-first-security-review.pdf">full report here</a>.</p>
+    <p>W 2020 r. firma <a href="https://includesecurity.com">Include Security</a> przeanalizowała biblioteki Rust <a href="https://github.com/deltachat/deltachat-core-rust/">core</a>, <a href="https://github.com/async-email/async-imap">IMAP</a>, <a href="https://github.com/async-email/async-smtp">SMTP</a> i <a href="https://github.com/async-email/async-native-tls">TLS</a> Delta Chat. Nie znalazła żadnych problemów krytycznych ani poważnych. W raporcie zwrócono uwagę na kilka słabych punktów o średniej wadze – same w sobie nie stanowią zagrożenia dla użytkowników Delta Chat, ponieważ zależą od środowiska, w którym używany jest Delta Chat. Ze względu na użyteczność i kompatybilność nie możemy złagodzić wszystkich z nich i zdecydowaliśmy się przedstawić zalecenia dotyczące bezpieczeństwa zagrożonym użytkownikom. Pełny raport można przeczytać <a href="../assets/blog/2020-second-security-review.pdf">tutaj</a>.</p>
   </li>
   <li>
-    <p>In 2020, <a href="https://includesecurity.com">Include Security</a> analyzed Delta
-Chat’s Rust <a href="https://github.com/deltachat/deltachat-core-rust/">core</a>,
-<a href="https://github.com/async-email/async-imap">IMAP</a>,
-<a href="https://github.com/async-email/async-smtp">SMTP</a>, and
-<a href="https://github.com/async-email/async-native-tls">TLS</a> libraries.
-It did not find any critical or high-severity issues.
-The report raised a few medium-severity weaknesses -
-they are no threat to Delta Chat users on their own
-because they depend on the environment in which Delta Chat is used.
-For usability and compatibility reasons,
-we can not mitigate all of them
-and decided to provide security recommendations to threatened users.
-You can read the <a href="../assets/blog/2020-second-security-review.pdf">full report here</a>.</p>
-  </li>
-  <li>
-    <p>Beginning 2023, <a href="https://cure53.de">Cure53</a> analyzed both the transport encryption of
-Delta Chat’s network connections and a reproducible mail server setup as
-<a href="serverguide">recommended on this site</a>.
-You can read more about the audit <a href="2023-03-23-third-independent-security-audit">on our blog</a>
-or read the <a href="../assets/blog/MER-01-report.pdf">full report here</a>.</p>
+    <p>Początkiem 2023 r. firma <a href="https://cure53.de">Cure53</a> przeanalizował zarówno szyfrowanie transportu połączeń sieciowych Delta Chat, jak i powtarzalną konfigurację serwera pocztowego zgodnie z <a href="serverguide">zaleceniami na tej stronie</a>. Możesz przeczytać więcej o audycie <a href="2023-03-23-third-independent-security-audit">na naszym blogu</a> lub przeczytać pełny raport <a href="../assets/blog/MER-01-report.pdf">tutaj</a>.</p>
   </li>
 </ul>
     
