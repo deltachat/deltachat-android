@@ -15,7 +15,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 
-import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.ApplicationPreferencesActivity;
 import org.thoughtcrime.securesms.BaseActionBarActivity;
 import org.thoughtcrime.securesms.ConversationListActivity;
@@ -148,6 +147,29 @@ public class BackupTransferActivity extends BaseActionBarActivity {
         this.transferState = transferState;
     }
 
+    public void setTransferError(@NonNull String errorContext) {
+        if (this.transferState != TransferState.TRANSFER_ERROR) {
+            this.transferState = TransferState.TRANSFER_ERROR;
+
+            String lastError = DcHelper.getContext(this).getLastError();
+            if (lastError.isEmpty()) {
+                lastError = "<last error not set>";
+            }
+
+            String error = errorContext;
+            if (!error.isEmpty()) {
+                error += ": ";
+            }
+            error += lastError;
+
+            new AlertDialog.Builder(this)
+                .setMessage(error)
+                .setPositiveButton(android.R.string.ok, null)
+                .setCancelable(false)
+                .show();
+        }
+    }
+
     private void finishOrAskToFinish() {
         switch (transferState) {
           case TRANSFER_ERROR:
@@ -191,25 +213,6 @@ public class BackupTransferActivity extends BaseActionBarActivity {
             overridePendingTransition(0, 0);
         }
         finish();
-    }
-
-    public void showLastErrorAlert(@NonNull String errorContext) {
-        String lastError = DcHelper.getContext(this).getLastError();
-        if (lastError.isEmpty()) {
-          lastError = "<last error not set>";
-        }
-
-        String error = errorContext;
-        if (!error.isEmpty()) {
-            error += ": ";
-        }
-        error += lastError;
-
-        new AlertDialog.Builder(this)
-          .setMessage(error)
-          .setPositiveButton(android.R.string.ok, null)
-          .setCancelable(false)
-          .show();
     }
 
     public static void appendSSID(Activity activity, final TextView textView) {
