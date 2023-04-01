@@ -1037,8 +1037,8 @@
     <!-- device messages for updates -->
     <string name="update_1_34_android">1.34 版有哪些变化？\n\n🤗 更友好的联系人列表：按“上次见到”顺序排列，10分钟内见到的联系人用一个圆点标记 🟢\n\n📑 聊天概况的新页面：“音频” 和“私人应用”\n\n🖼️ 如果有人给你发送一个“私人应用”(例如，从 https://webxdc.org)，你可以将它添加到主屏幕</string>
     <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
-    <string name="update_1_36_android">1.36 版本主要改动\n\n💻📱轻松地在你的所有设备上使用 Delta Chat - 遵照 \"设置/添加第二台设备\"处的提示，只需三步即可完成（实验性功能）\n\n🖼🔍为找不到图片和记不起聊天而苦恼吗？主菜单中的“所有媒体”帮你解决这个问题！\n\n其他重要改动包括所有账户的通知，清除聊天。详见 %1$s</string>
+    <string name="update_1_36_android">1.36 版本主要改动\n\n💻📱轻松地在所有设备上使用 Delta Chat - 按照“设置/添加第二台设备”处的提示，只需三步即可完成（实验性功能）\n\n🖼🔍为寻找聊天图片时记不起对应聊天而苦恼吗？主菜单中的“所有媒体”帮你解决这个问题！\n\n其他重要改动包括为所有账户显示通知、清空聊天记录等，详见 %1$s</string>
     <!-- placeholder will be replaced by the URL https://delta.chat/en/2023-03-27-third-independent-security-audit -->
-    <string name="update_1_36_audit">虽然我们对安全谈得不多，但别担心，我们非常重视它：打开 %1$s 了解最近的好消息👌</string>
+    <string name="update_1_36_audit">虽然我们在这里对安全谈得不多，但别担心，我们非常重视它：查看 %1$s 来了解最近的好消息👌</string>
 
 </resources>
