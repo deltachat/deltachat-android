@@ -41,14 +41,13 @@
       <li><a href="#in-che-modo-delta-chat-protegge-i-miei-metadati">In che modo Delta Chat protegge i miei metadati?</a></li>
       <li><a href="#posso-riutilizzare-la-mia-chiave-privata-esistente">Posso riutilizzare la mia chiave privata esistente?</a></li>
       <li><a href="#non-riesco-a-importare-la-mia-chiave-pgp-esistente-in-delta-chat">Non riesco a importare la mia chiave PGP esistente in Delta Chat.</a></li>
-      <li><a href="#perché-non-usi-pep-pretty-easy-privacy">Perché non usi pEp (pretty easy privacy)?</a></li>
     </ul>
   </li>
   <li><a href="#multiclient">Multi-client</a>
     <ul>
       <li><a href="#posso-utilizzare-delta-chat-su-più-dispositivi-contemporaneamente">Posso utilizzare Delta Chat su più dispositivi contemporaneamente?</a></li>
-      <li><a href="#troubleshooting">Troubleshooting</a></li>
-      <li><a href="#manual-transfer">Manual Transfer</a></li>
+      <li><a href="#risoluzione-dei-problemi">Risoluzione dei problemi</a></li>
+      <li><a href="#trasferimento-manuale">Trasferimento manuale</a></li>
       <li><a href="#sono-previsti-piani-per-lintroduzione-di-un-client-web-delta-chat">Sono previsti piani per l’introduzione di un client Web Delta Chat?</a></li>
       <li><a href="#a-cosa-serve-limpostazione-invia-copia-a-se-stessi">A cosa serve l’impostazione “Invia copia a se stessi”?</a></li>
       <li><a href="#perché-posso-scegliere-di-guardare-la-cartella-inviata">Perché posso scegliere di guardare la cartella “Inviata”?</a></li>
@@ -785,20 +784,6 @@ password su un valore vuoto nella finestra Gestione chiavi. Con GnuPG puoi impos
 di comando</a>.
 Per altri programmi, dovresti essere in grado di trovare una soluzione online.</p>
     
-      <h3 id="perché-non-usi-pep-pretty-easy-privacy">
-        
-        
-          Perché non usi pEp (pretty easy privacy)? <a href="#perché-non-usi-pep-pretty-easy-privacy" class="anchor"></a>
-        
-        
-      </h3>
-
-<ul>
-  <li>Delta Chat utilizza lo standard di crittografia e2e di Autocrypt. Per
-una discussione su Autocrypt e pEp, vedi <a href="https://autocrypt.org/faq.html#how-does-autocrypt-differ-from-pep">Autocrypt
-FAQ</a>.</li>
-</ul>
-    
       <h2 id="multiclient">
         
         
@@ -815,73 +800,73 @@ FAQ</a>.</li>
         
       </h3>
 
-<p>Yes. Delta Chat 1.36 comes with a new, experimental function for using the same account on different devices:</p>
+<p>Sì. Delta Chat 1.36 è dotato di una nuova funzione sperimentale che consente di utilizzare lo stesso account su diversi dispositivi:</p>
 
 <ul>
   <li>
-    <p>On the first device, go to <strong>Settings → Add Second Device</strong>, unlock the screen if needed
-and wait a moment until a QR code is shown</p>
+    <p>Sul primo dispositivo, andare su <strong>Impostazioni → Aggiungi Secondo Dispositivo</strong>, sbloccare lo schermo se necessario
+e attendere un attimo fino a quando non viene visualizzato un codice QR</p>
   </li>
   <li>
-    <p>On the second device, <a href="https://get.delta.chat">install Delta Chat</a></p>
+    <p>Sul secondo dispositivo, <a href="https://get.delta.chat">installare Delta Chat</a></p>
   </li>
   <li>
-    <p>On the second device, start Delta Chat, select <strong>Add as Second Device</strong>, and scan the QR code from the old device</p>
+    <p>Sul secondo dispositivo, avviare Delta Chat, selezionare <strong>Aggiungi Come Secondo Dispositivo</strong> e scansionare il codice QR del vecchio dispositivo.</p>
   </li>
   <li>
-    <p>Transfer should start after a few seconds and during transfer both devices will show the <strong>progress</strong>.
-Wait until it is finished on both devices.</p>
+    <p>Il trasferimento dovrebbe iniziare dopo pochi secondi e durante il trasferimento entrambi i dispositivi mostreranno il <strong>progresso</strong>.
+ Attendere il termine del trasferimento su entrambi i dispositivi.</p>
   </li>
 </ul>
 
-<p>In contrast to many other messengers, after successful transfer,
-both <strong>devices are completely independent.</strong>
-One device is not needed for the other to work.</p>
+<p>A differenza di molti altri messengers, dopo un trasferimento riuscito,
+entrambi i <strong>dispositivi sono completamente indipendenti.</strong>
+Un dispositivo non è necessario perché l’altro funzioni.</p>
     
-      <h3 id="troubleshooting">
+      <h3 id="risoluzione-dei-problemi">
         
         
-          Troubleshooting <a href="#troubleshooting" class="anchor"></a>
+          Risoluzione dei problemi <a href="#risoluzione-dei-problemi" class="anchor"></a>
         
         
       </h3>
 
 <ul>
   <li>
-    <p>Double-check both devices are in the <strong>same Wi-Fi or network</strong></p>
+    <p>Verificare che entrambi i dispositivi siano nella <strong>stessa rete o Wi-Fi</strong>.</p>
   </li>
   <li>
-    <p>Your system might have a “personal firewall”,
-which is known to cause problems (especially on Windows).
-<strong>Disable the personal firewall</strong> for Delta Chat on both ends and try again</p>
+    <p>Il sistema potrebbe avere un “personal firewall”,
+che è noto per causare problemi (soprattutto su Windows).
+<strong>Disattivare il firewall personale</strong> per Delta Chat su entrambe le estremità e riprovare.</p>
   </li>
   <li>
-    <p>Ensure there is <strong>enough storage</strong> on the destination device</p>
+    <p>Assicurarsi che sul dispositivo di destinazione ci sia <strong>disponibilità di memoria sufficiente</strong>.</p>
   </li>
   <li>
-    <p>If transfer started, make sure, the devices <strong>stay active</strong> and do not fall asleep.
-Do not exit Delta Chat.
-(we try hard to make the app work in background, but <a href="https://dontkillmyapp.com">systems tend to kill apps</a>, unfortunately)</p>
+    <p>Se il trasferimento è iniziato, assicurarsi che i dispositivi <strong>rimangano attivi</strong> e non si addormentino.
+Non uscire da Delta Chat.
+(cerchiamo di far funzionare l’applicazione in background, ma <a href="https://dontkillmyapp.com">i sistemi tendono a uccidere le applicazioni</a>, purtroppo).</p>
   </li>
   <li>
-    <p>Delta Chat is <strong>already logged in</strong> on the destination device?
-You can use multiple accounts per device, just <a href="#multiple-accounts">add another account</a></p>
+    <p>Delta Chat è <strong>già connesso</strong> sul dispositivo di destinazione?
+È possibile utilizzare più account per dispositivo, basta <a href="#accounts-multipli">aggiungere un altro account</a></p>
   </li>
   <li>
-    <p>If you still have problems or if you <strong>cannot scan a QR code</strong>
-try the <strong>manual transfer</strong> described below</p>
+    <p>Se si riscontrano ancora problemi o se <strong>non si riesce a scansionare un codice QR</strong>
+provate il <strong>trasferimento manuale</strong> descritto di seguito</p>
   </li>
 </ul>
     
-      <h3 id="manual-transfer">
+      <h3 id="trasferimento-manuale">
         
         
-          Manual Transfer <a href="#manual-transfer" class="anchor"></a>
+          Trasferimento manuale <a href="#trasferimento-manuale" class="anchor"></a>
         
         
       </h3>
 
-<p>This method is only recommended if “Add Second Device” as described above does not work.</p>
+<p>Questo metodo è consigliato solo se “Aggiungi Secondo Dispositivo” come descritto sopra non funziona.</p>
 
 <ul>
   <li>Sul vecchio dispositivo, andare su “Impostazioni -&gt; Chat e Media -&gt; Backup Chats su Memoria Esterna”. Immettere il PIN, il tracciato o la password di
