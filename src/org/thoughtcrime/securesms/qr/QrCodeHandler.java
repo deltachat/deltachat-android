@@ -84,7 +84,11 @@ public class QrCodeHandler {
                 });
                 builder.setNegativeButton(R.string.cancel, null);
                 builder.setCancelable(false);
-                break;
+
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
+                BackupTransferActivity.appendSSID(activity, alertDialog.findViewById(android.R.id.message));
+                return;
 
             case DcContext.DC_QR_LOGIN:
                 String email = qrParsed.getText1();

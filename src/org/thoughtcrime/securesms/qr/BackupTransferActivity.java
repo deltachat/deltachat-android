@@ -213,7 +213,7 @@ public class BackupTransferActivity extends BaseActionBarActivity {
     }
 
     public static void appendSSID(Activity activity, final TextView textView) {
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+        if (textView != null && android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
             new Thread(() -> {
                 try {
                     // depending on the android version, getting the SSID requires none, all or one of
