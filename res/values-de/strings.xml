@@ -481,6 +481,7 @@
     <string name="multidevice_abort">Einrichtung des Zweitgeräts beenden?</string>
     <string name="multidevice_abort_will_invalidate_copied_qr">Dadurch wird der auf die Zwischenablage kopierte QR-Code ungültig.</string>
     <string name="multidevice_experimental_hint">(experimentell, Version 1.36 erforderlich)</string>
+    <string name="multidevice_transfer_done_devicemsg">ℹ️ Konto wurde auf Ihr Zweitgerät übertragen.</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="preparing_account">Konto vorbereiten…</string>
     <!-- Shown beside progress bar, stay short -->
