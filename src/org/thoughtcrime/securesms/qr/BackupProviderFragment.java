@@ -40,6 +40,7 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
     private View             topText;
     private SVGImageView     qrImageView;
     private View             bottomText;
+    private boolean          isFinishing;
 
     @Override
     public void onCreate(Bundle bundle) {
@@ -74,8 +75,7 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
                 }
                 progressBar.setVisibility(View.GONE);
                 if (!dcBackupProvider.isOk()) {
-                    activity.setTransferState(BackupTransferActivity.TransferState.TRANSFER_ERROR);
-                    activity.showLastErrorAlert("Cannot create backup provider");
+                    activity.setTransferError("Cannot create backup provider");
                     return;
                 }
                 statusLine.setVisibility(View.GONE);
@@ -102,12 +102,13 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
 
     @Override
     public void onDestroyView() {
+        isFinishing = true;
+        DcHelper.getEventCenter(getActivity()).removeObservers(this);
         dcContext.stopOngoingProcess();
         if (dcBackupProvider != null) {
             dcBackupProvider.unref();
         }
         super.onDestroyView();
-        DcHelper.getEventCenter(getActivity()).removeObservers(this);
     }
 
     @Override
@@ -136,6 +137,10 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
     @Override
     public void handleEvent(@NonNull DcEvent event) {
         if (event.getId() == DcContext.DC_EVENT_IMEX_PROGRESS) {
+            if (isFinishing) {
+                return;
+            }
+
             int permille = event.getData1Int();
             int percent = 0;
             int percentMax = 0;
@@ -144,8 +149,7 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
 
             Log.i(TAG,"DC_EVENT_IMEX_PROGRESS, " + permille);
             if (permille == 0) {
-                getTransferActivity().setTransferState(BackupTransferActivity.TransferState.TRANSFER_ERROR);
-                getTransferActivity().showLastErrorAlert("Sending Error");
+                getTransferActivity().setTransferError("Sending Error");
                 hideQrCode = true;
             } else if(permille <= 350) {
                 statusLineText = getString(R.string.preparing_account);
