@@ -41,6 +41,8 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
     private SVGImageView     qrImageView;
     private View             bottomText;
     private boolean          isFinishing;
+    private  Thread          prepareThread;
+    private  Thread          waitThread;
 
     @Override
     public void onCreate(Bundle bundle) {
@@ -64,13 +66,13 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
         dcContext = DcHelper.getContext(getActivity());
         DcHelper.getEventCenter(getActivity()).addObserver(DcContext.DC_EVENT_IMEX_PROGRESS, this);
 
-        new Thread(() -> {
+        prepareThread = new Thread(() -> {
             Log.i(TAG, "##### newBackupProvider()");
             dcBackupProvider = dcContext.newBackupProvider();
             Log.i(TAG, "##### newBackupProvider() returned");
             Util.runOnMain(() -> {
                 BackupTransferActivity activity = getTransferActivity();
-                if (activity == null || activity.isFinishing()) {
+                if (activity == null || activity.isFinishing() || isFinishing) {
                     return;
                 }
                 progressBar.setVisibility(View.GONE);
@@ -87,13 +89,15 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
                     e.printStackTrace();
                 }
                 bottomText.setVisibility(View.VISIBLE);
-                new Thread(() -> {
+                waitThread = new Thread(() -> {
                     Log.i(TAG, "##### waitForReceiver() with qr: "+dcBackupProvider.getQr());
                     dcBackupProvider.waitForReceiver();
                     Log.i(TAG, "##### done waiting");
-                }).start();
+                });
+                waitThread.start();
             });
-        }).start();
+        });
+        prepareThread.start();
 
         BackupTransferActivity.appendSSID(getActivity(), view.findViewById(R.id.same_network_hint));
 
@@ -105,6 +109,18 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
         isFinishing = true;
         DcHelper.getEventCenter(getActivity()).removeObservers(this);
         dcContext.stopOngoingProcess();
+        try {
+            prepareThread.join();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        if (waitThread!=null) {
+            try {
+                waitThread.join();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
         if (dcBackupProvider != null) {
             dcBackupProvider.unref();
         }
