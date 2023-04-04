@@ -51,7 +51,7 @@
     <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
     <string name="mark_all_as_read">Marcar tudo como lido</string>
     <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
-    <string name="mark_as_read_short">Lido</string>
+    <string name="mark_as_read_short">Lida</string>
     <!-- Placeholder text when something is loading -->
     <string name="loading">Carregando...</string>
     <string name="hide">Esconder</string>
@@ -217,7 +217,7 @@
     <string name="menu_leave_group">Sair do grupo</string>
     <string name="menu_delete_chat">Apagar conversa</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
-    <string name="clear_chat">Esvaziar bate-papo</string>
+    <string name="clear_chat">Limpar bate-papo</string>
     <string name="ask_delete_named_chat">Você tem certeza que quer apagar \"%1$s\"?</string>
     <string name="menu_delete_messages">Apagar mensagens</string>
     <string name="delete_contact">Apagar contato</string>
@@ -471,8 +471,8 @@
     <string name="tab_image_empty_hint">As imagens compartilhadas neste chat serão exibidas aqui.</string>
     <string name="tab_video_empty_hint">Os vídeos compartilhados neste chat serão exibidos aqui.</string>
     <string name="tab_audio_empty_hint">Os arquivos de áudio e mensagens de voz compartilhados neste chat serão exibidos aqui.</string>
-    <string name="tab_webxdc_empty_hint">Apps compartilhados neste chat serão exibidos aqui.</string>
-    <string name="tab_all_media_empty_hint">Mídia compartilhada em qualquer bate-papo aparecerá aqui.</string>
+    <string name="tab_webxdc_empty_hint">Apps compartilhadas neste chat serão exibidas aqui.</string>
+    <string name="tab_all_media_empty_hint">Mídias compartilhadas em qualquer bate-papo aparecerão aqui.</string>
     <string name="media_preview">Pré-visualização.</string>
     <string name="send_message">Enviar mensagem</string>
     <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
@@ -483,23 +483,23 @@
 
     <!-- Multi Device -->
     <!-- "Second Device" can also be translated as "Another Device", if that is catchier in the destination language. However, make sure to use the term consistently. -->
-    <string name="multidevice_title">Adicionar segundo dispositivo</string>
-    <string name="multidevice_same_network_hint">Certifique-se de que ambos os dispositivos estejam no mesmo Wi-Fi ou na mesma rede</string>
-    <string name="multidevice_this_creates_a_qr_code">Isso cria um código QR que o segundo dispositivo pode digitalizar para copiar a conta.</string>
+    <string name="multidevice_title">Adicionar Outro Dispositivo</string>
+    <string name="multidevice_same_network_hint">Certifique-se de que ambos os dispositivos estejam na mesma Wi-Fi ou na mesma rede</string>
+    <string name="multidevice_this_creates_a_qr_code">Isso cria um código QR que outro dispositivo pode digitalizar para copiar a conta.</string>
     <string name="multidevice_install_dc_on_other_device">Instalar o Delta Chat em seu outro dispositivo (https://get.delta.chat)</string>
-    <string name="multidevice_tap_scan_on_other_device">Inicie o Delta Chat, toque em \"Adicionar como segundo dispositivo\" e leia o código mostrado aqui</string>
+    <string name="multidevice_tap_scan_on_other_device">Inicie o Delta Chat, clique em \"Adicionar como outro dispositivo\" e escaneie o código mostrado aqui</string>
     <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and/or address eg. "Scan to set up second device for Alice (alice@example.org)" -->
-    <string name="multidevice_qr_subtitle">Scan para configurar um segundo dispositivo para %1$s</string>
-    <string name="multidevice_receiver_title">Adicionar como segundo dispositivo</string>
-    <string name="multidevice_open_settings_on_other_device">No primeiro dispositivo, vá para \"Configurações / Adicionar segundo dispositivo\" e leia o código mostrado lá</string>
-    <string name="multidevice_receiver_scanning_ask">Copiar a conta do outro dispositivo para este dispositivo?</string>
-    <string name="multidevice_abort">Cancelr a instalação de um segundo dispositivo?</string>
-    <string name="multidevice_abort_will_invalidate_copied_qr">Isto invalidará o código QR copiado para a prancheta.</string>
+    <string name="multidevice_qr_subtitle">Escaneie para configurar outro dispositivo para %1$s</string>
+    <string name="multidevice_receiver_title">Adicionar como Outro Dispositivo</string>
+    <string name="multidevice_open_settings_on_other_device">No primeiro dispositivo, vá para \"Configurações / Adicionar outro dispositivo\" e escaneie o código mostrado lá</string>
+    <string name="multidevice_receiver_scanning_ask">Copiar a conta de outro dispositivo para este dispositivo?</string>
+    <string name="multidevice_abort">Cancelr a instalação de um outro dispositivo?</string>
+    <string name="multidevice_abort_will_invalidate_copied_qr">Isto invalidará o código QR copiado para a área de transferência.</string>
     <string name="multidevice_experimental_hint">(experimental, versão 1.36 necessária)</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="preparing_account">Preparando a conta...</string>
     <!-- Shown beside progress bar, stay short -->
-    <string name="waiting_for_receiver">À espera do receptor...</string>
+    <string name="waiting_for_receiver">Esperando pelo receptor...</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="receiver_connected">Receptor conectado...</string>
     <!-- Shown beside progress bar, stay short -->
@@ -689,7 +689,7 @@
     <string name="pref_on_demand_location_streaming">Streaming de localização sob demanda</string>
     <string name="pref_developer_mode">Modo de Desenvolvedor</string>
     <string name="pref_developer_mode_explain">Ativa as opções de depuração e pode tornar o aplicativo menos estável. Apenas para desenvolvedores.</string>
-    <string name="pref_background_default">Fundo padrão</string>
+    <string name="pref_background_default">Imagem padrão</string>
     <string name="pref_background_default_color">Cor padrão</string>
     <string name="pref_background_custom_image">Imagem personalizada</string>
     <string name="pref_background_custom_color">Cor personalizada</string>
@@ -848,7 +848,7 @@
     <string name="devicemsg_update_reminder">⚠️ Sua versão do Delta Chat pode estar desatualizada.\n\nIsso pode causar problemas porque seus parceiros de bate-papo usam versões mais recentes - e você está perdendo os recursos mais recentes 😳\nEntre em https://get.delta.chat ou seu verifique com seu provedor de aplicativos por atualizações.</string>
 
     <!-- Some options as "Add Second Device" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc. to be entered in a system dialog. This hint is added to the system dialog, below a title as "Add Second Device" or "Backup". -->
-    <string name="enter_system_secret_to_continue">Por favor, insira o segredo de sistema para continuar. </string>
+    <string name="enter_system_secret_to_continue">Desbloquear para continuar. </string>
 
     <!-- qr code stuff -->
     <string name="qr_code">Código QR</string>
@@ -1013,7 +1013,7 @@
     <string name="a11y_delivery_status_read">Status de entrega: Lido</string>
     <string name="a11y_delivery_status_invalid">Status de entrega inválido</string>
     <string name="a11y_message_context_menu_btn_label">Ações de mensagem</string>
-    <string name="a11y_background_preview_label">Pré-visualização do fundo</string>
+    <string name="a11y_background_preview_label">Pré-visualização do papel de parede</string>
     <string name="a11y_disappearing_messages_activated">Mensagens que desaparecem ativadas</string>
 
     <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
@@ -1039,7 +1039,7 @@
     <string name="notifications_avg_hours">Em média, a cada %1$d horas</string>
     <string name="last_check_at">Verificado em %1$s</string>
     <!-- iOS webxdc selector -->
-    <string name="webxdc_selector_empty_hint">Os aplicativos privados recebidos ou enviados em qualquer bate-papo aparecerão aqui. \"Arquivos\" mostra os aplicativos privados que acabaaram de baixar.</string>
+    <string name="webxdc_selector_empty_hint">Apps recebidas ou enviadas em qualquer bate-papo aparecerão aqui. \"Arquivos\" mostra as apps que acabaram de serem baixadas.</string>
     <!-- iOS webxdc shortcut page -->
     <string name="shortcut_step1_tap_share_btn">Clique no botão Compartilhar</string>
     <string name="shortcut_step2_tap_add_to_home_screen">Selecione \"Adicionar à tela inicial\" para adicionar o aplicativo à sua tela inicial.</string>
@@ -1067,8 +1067,8 @@
     <!-- device messages for updates -->
     <string name="update_1_34_android">O que há de novo em 1.34?\n\n 🤗 Listas de contatos mais intuitivas: Ordenado pela última vez visto e contatos vistos em 10 minutos são marcados por um ponto 🟢\n\n📑 Novas páginas em perfis de chat: \"Audio\" e \"Aplicativos Privados\"\n\n🖼 Se alguém lhe enviar um \"Applicativo privado\" (por exemplo, de https://webxdc.org ), você pode adicionar-lo à tela inicial</string>
     <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
-    <string name="update_1_36_android">1.36 Destaques\n\n💻📱 Use o Delta Chat em todos os seus dispositivos facilmente - basta seguir três passos simples em \"Configurações / Adicionar segundo dispositivo\" (experimental)\n\n🖼🔍 Já procurou por uma imagem e não conseguiu se lembrar do bate-papo? \"Todas as mídias\" do menu principal é o seu!\n\nO que mais? Notificações para todas as contas, esvaziar bate-papo, e mais em %1$s</string>
+    <string name="update_1_36_android">Destaques da 1.36\n\n💻📱 Use o Delta Chat em todos os seus dispositivos facilmente - basta seguir três passos simples em \"Configurações / Adicionar segundo dispositivo\" (experimental)\n\n🖼🔍 Já procurou por uma imagem e não conseguiu se lembrar do bate-papo? \"Todas as mídias\" do menu principal é o seu!\n\nO que mais? Notificações para todas as contas, esvaziar bate-papo, e mais em %1$s</string>
     <!-- placeholder will be replaced by the URL https://delta.chat/en/2023-03-27-third-independent-security-audit -->
-    <string name="update_1_36_audit">Aqui não falamos muito sobre segurança, mas fique tranquilo, isso nos importa: Olha em %1$s para boas notícias recentes 👌</string>
+    <string name="update_1_36_audit">Aqui não falamos muito sobre segurança, mas fique tranquilo, isso nos importa: Olhe em %1$s para boas notícias recentes 👌</string>
 
 </resources>
