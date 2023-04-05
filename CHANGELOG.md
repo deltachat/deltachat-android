@@ -1,10 +1,23 @@
 # Delta Chat Android Changelog
 
+## v1.36.2
+2023-04
+
+* add a device message after setting up a second device
+* speed up "Add as Second Device" connection time significantly on the getter side
+* if possible, show Wi-Fi-name directly after scanning an "Add Second Device" QR code
+* fix immediate restarts of "Add Second Device"
+* fix: do not show just trashed media in "All Media" view
+* fix: update database if needed after "Add Second Device"
+* update translations and local help
+* update to core112.6
+
+
 ## v1.36.0
 2023-03
 
 * new, easy method of adding a second device to your account:
-  select "Add as a Second Device" after installation and scan a QR code from the old device
+  select "Add as Second Device" after installation and scan a QR code from the old device
 * view "All Media" of all chats by the corresponding option in the chat list's menu
 * add "Clear Chat" option to remove all messages from a chat
 * show non-deltachat emails by default for new installations

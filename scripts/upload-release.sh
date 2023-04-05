@@ -35,3 +35,9 @@ rm $SYMBOLS_ZIP
 zip -r $SYMBOLS_ZIP obj
 ls -l $SYMBOLS_ZIP
 rsync --progress $SYMBOLS_ZIP jekyll@download.delta.chat:/var/www/html/download/android/symbols/
+
+echo "upload done."
+echo ""
+echo "and now: here is Delta Chat $VERSION:"
+echo "- 🍋 https://download.delta.chat/android/deltachat-gplay-release-$VERSION.apk (android, overwrites existing gplay installs, keeps data)"
+echo ""
