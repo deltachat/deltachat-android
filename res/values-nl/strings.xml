@@ -481,6 +481,7 @@
     <string name="multidevice_abort">Wil je het instellen afbreken?</string>
     <string name="multidevice_abort_will_invalidate_copied_qr">Hierdoor wordt de gekopieerde QR-code onbruikbaar gemaakt.</string>
     <string name="multidevice_experimental_hint">(experimenteel - versie 1.36 vereist)</string>
+    <string name="multidevice_transfer_done_devicemsg">ℹ️ Het account is overgezet naar je tweede apparaat.</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="preparing_account">Bezig met voorbereiden…</string>
     <!-- Shown beside progress bar, stay short -->

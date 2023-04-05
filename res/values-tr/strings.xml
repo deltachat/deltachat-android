@@ -481,6 +481,7 @@
     <string name="multidevice_abort">İkinci aygıtı ayarlamaktan vazgeçilsin mi?</string>
     <string name="multidevice_abort_will_invalidate_copied_qr">Bu, panoya kopyalanan QR kodunu geçersizleştirecek.</string>
     <string name="multidevice_experimental_hint">(deneysel, sürüm 1.36 gerekli)</string>
+    <string name="multidevice_transfer_done_devicemsg">ℹ️ Hesap, ikinci aygıtınıza aktarıldı.</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="preparing_account">Hesap hazırlanıyor…</string>
     <!-- Shown beside progress bar, stay short -->

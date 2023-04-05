@@ -466,6 +466,7 @@
     <string name="multidevice_abort">中止第二台设备的设置吗？</string>
     <string name="multidevice_abort_will_invalidate_copied_qr">这会让复制到剪贴板的二维码失效。</string>
     <string name="multidevice_experimental_hint">（实验性，需要 1.36 版本）</string>
+    <string name="multidevice_transfer_done_devicemsg">ℹ️ 账户已转移到你的第二台设备。</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="preparing_account">准备账户中…</string>
     <!-- Shown beside progress bar, stay short -->

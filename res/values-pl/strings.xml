@@ -511,6 +511,7 @@
     <string name="multidevice_abort">Przerwać konfigurowanie kolejnego urządzenia?</string>
     <string name="multidevice_abort_will_invalidate_copied_qr">Spowoduje to unieważnienie kodu QR skopiowanego do schowka.</string>
     <string name="multidevice_experimental_hint">(eksperymentalna, wymagana wersja 1.36)</string>
+    <string name="multidevice_transfer_done_devicemsg">ℹ️ Konto przeniesione na twoje kolejne urządzenie.</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="preparing_account">Przygotowywanie konta…</string>
     <!-- Shown beside progress bar, stay short -->
