@@ -109,11 +109,15 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
         isFinishing = true;
         DcHelper.getEventCenter(getActivity()).removeObservers(this);
         dcContext.stopOngoingProcess();
+
         try {
             prepareThread.join();
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        // prepareThread has failed to create waitThread, as we already did wait for prepareThread right above.
+        // Order of waiting is important here.
         if (waitThread!=null) {
             try {
                 waitThread.join();
@@ -121,6 +125,7 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
                 e.printStackTrace();
             }
         }
+
         if (dcBackupProvider != null) {
             dcBackupProvider.unref();
         }
