@@ -1,0 +1,9 @@
+* add a device message after setting up a second device using "Settings / Add Second Device"
+* speed up "Add as Second Device" connection time significantly on the getter side
+* if possible, show Wi-Fi-name directly after scanning an "Add Second Device" QR code
+* fix immediate restarts of "Add Second Device"
+* fix: do not show just trashed media in "All Media" view
+* fix: update database if needed after "Add Second Device"
+* update translations and local help
+* update to core112.6
+
