@@ -99,7 +99,7 @@ on <https://developer.amazon.com/dashboard>:
 
 12. a) for "Delta Chat", select tab "Add upcoming version"  
     b) at "App Information" hit "Edit" abottom and then "Replace APK" atop,
-       upload the APK from above, "Save"  
+       upload the APK from above
     c) on the same tab, add "Release notes" from CHANGELOG.md, "Save"  
     d) hit "Submit app" at the upper right corner
 
