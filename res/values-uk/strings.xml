@@ -511,6 +511,7 @@
     <string name="multidevice_abort">Скасувати налаштування другого пристрою?</string>
     <string name="multidevice_abort_will_invalidate_copied_qr">Це зробить недійсним QR-код, скопійований у буфер обміну.</string>
     <string name="multidevice_experimental_hint">(експериментальний, потрібна версія 1.36)</string>
+    <string name="multidevice_transfer_done_devicemsg">ℹ️ Обліковий запис перенесено на ваш другий пристрій.</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="preparing_account">Підготовка облікового запису…</string>
     <!-- Shown beside progress bar, stay short -->

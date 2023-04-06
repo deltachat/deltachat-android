@@ -496,6 +496,7 @@
     <string name="multidevice_abort">Abandonner la configuration du deuxième appareil ?</string>
     <string name="multidevice_abort_will_invalidate_copied_qr">Révoque le code QR copié dans le presse-papiers.</string>
     <string name="multidevice_experimental_hint">(expérimental, version 1.36 requise)</string>
+    <string name="multidevice_transfer_done_devicemsg">ℹ️ Compte transféré sur votre deuxième appareil.</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="preparing_account">Préparation du compte...</string>
     <!-- Shown beside progress bar, stay short -->
@@ -750,7 +751,7 @@
 
     <!-- autocrypt -->
     <string name="autocrypt">Autocrypt</string>
-    <string name="autocrypt_explain">Autocrypt est une nouvelle spécification ouverte pour le chiffrement automatique de bout en bout des courriels.\n\nVotre configuration de bout en bout est créée automatiquement si nécessaire et vous pouvez la transférer entre les périphériques avec les messages de configuration Autocrypt.</string>
+    <string name="autocrypt_explain">Autocrypt est une nouvelle spécification ouverte pour le chiffrement automatique de bout en bout des courriels.\n\nVotre configuration de bout en bout est créée automatiquement si nécessaire et vous pouvez la transférer entre vos appareils grâce aux messages de configuration Autocrypt.</string>
     <string name="autocrypt_send_asm_title">Envoyer le message de configuration Autocrypt</string>
     <string name="autocrypt_send_asm_explain_before">Un \"Message de configuration d\'Autocrypt\" partages en toute sécurité vos paramètres de bout-en-bout avec les autres applications conformes à Autocrypt.\n\nLa configuration sera chiffrée par un code d\'installation affiché ici et doit être saisi sur l\'autre appareil.</string>
     <string name="autocrypt_send_asm_button">Envoyer le message de configuration Autocrypt</string>
@@ -758,7 +759,7 @@
     <string name="autocrypt_prefer_e2ee">Préférez le chiffrement de bout en bout</string>
     <string name="autocrypt_asm_subject">Message de configuration Autocrypt</string>
     <string name="autocrypt_asm_general_body">Ceci est le message de configuration Autocrypt utilisé pour transférer votre configuration de bout en bout entre clients. Pour déchiffrer et utiliser votre configuration, ouvrez le message dans un client compatible Autocrypt et entrez le code de configuration présenté sur le périphérique de génération.</string>
-    <string name="autocrypt_asm_click_body">Ceci est le message de configuration Autocrypt utilisé pour transférer votre configuration de bout en bout entre clients. Pour décrypter et utiliser votre configuration, tapez ou cliquez sur ce message.</string>
+    <string name="autocrypt_asm_click_body">Ceci est le message de configuration Autocrypt utilisé pour transférer votre configuration de bout-en-bout entre clients. Pour déchiffrer et utiliser votre configuration, tapez ou cliquez sur ce message.</string>
     <string name="autocrypt_continue_transfer_title">Message de configuration Autocrypt</string>
     <string name="autocrypt_continue_transfer_please_enter_code">Veuillez entrer le code de configuration affiché sur l\'autre appareil.</string>
     <string name="autocrypt_continue_transfer_succeeded">Configuration de bout en bout transférée. Cet appareil est maintenant prêt à utiliser Autocrypt avec la même configuration que l\'autre appareil.</string>
@@ -979,7 +980,7 @@
     <string name="imex_progress_title_desktop">Avancement de la sauvegarde</string>
     <string name="export_backup_desktop">Exporter la sauvegarde</string>
     <string name="show_key_transfer_message_desktop">Votre clé vous a été envoyée. Passez à l\'autre appareil et ouvrez le message de configuration. Vous devriez être invité à entrer un code de configuration. Tapez les chiffres suivants:</string>
-    <string name="autocrypt_correct_desktop">Installation d\'Autocrypt transférée avec succès !</string>
+    <string name="autocrypt_correct_desktop">Configuration Autocrypt transférée.</string>
     <string name="autocrypt_incorrect_desktop">Code de configuration incorrect. Veuillez réessayer.</string>
     <string name="create_chat_error_desktop">La discussion n’a pas pu être créée.</string>
     <string name="forget_login_confirmation_desktop">Supprimer cette connexion ? Tout sera effacé, y compris vos paramètres de chiffrement de bout en bout, vos contacts, discussions, messages et fichiers multimédia. Cette action est irrévocable.</string>
