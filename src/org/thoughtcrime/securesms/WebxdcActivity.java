@@ -23,6 +23,7 @@ import android.webkit.WebViewClient;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.core.app.TaskStackBuilder;
 import androidx.core.content.pm.ShortcutInfoCompat;
@@ -35,6 +36,7 @@ import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcMsg;
 
 import org.json.JSONObject;
+import org.json.JSONException;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
@@ -44,9 +46,11 @@ import org.thoughtcrime.securesms.util.MediaUtil;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 
+import org.mozilla.geckoview.GeckoResult;
 import org.mozilla.geckoview.GeckoRuntime;
 import org.mozilla.geckoview.GeckoSession;
 import org.mozilla.geckoview.GeckoView;
+import org.mozilla.geckoview.WebExtension;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -57,6 +61,8 @@ import java.util.Map;
 
 public class WebxdcActivity extends PassphraseRequiredActionBarActivity implements DcEventCenter.DcEventDelegate  {
   private static final String TAG = WebxdcActivity.class.getSimpleName();
+  private static final String EXTENSION_LOCATION = "resource://android/assets/geckoview/webxdc/";
+  private static final String EXTENSION_ID = "webxdc@delta.chat";
 
   private static GeckoRuntime sRuntime;
   private GeckoView geckoView;
@@ -121,6 +127,29 @@ public class WebxdcActivity extends PassphraseRequiredActionBarActivity implemen
     geckoView = findViewById(R.id.webview);
     geckoSession = new GeckoSession();
 
+    WebExtension.MessageDelegate messageDelegate =
+      new WebExtension.MessageDelegate() {
+        @Nullable
+        @Override
+        public GeckoResult<Object> onMessage(
+          final @NonNull String nativeApp,
+          final @NonNull Object message,
+          final @NonNull WebExtension.MessageSender sender) {
+          if (message instanceof JSONObject) {
+            JSONObject json = (JSONObject) message;
+            try {
+              if (json.has("type") && "WPAManifest".equals(json.getString("type"))) {
+                JSONObject manifest = json.getJSONObject("manifest");
+                Log.d("MessageDelegate", "Found WPA manifest: " + manifest);
+              }
+            } catch (JSONException ex) {
+              Log.e("MessageDelegate", "Invalid manifest", ex);
+            }
+          }
+          return null;
+        }
+      };
+
     // Workaround for Bug 1758212
     geckoSession.setContentDelegate(new GeckoSession.ContentDelegate() {});
 
@@ -128,6 +157,19 @@ public class WebxdcActivity extends PassphraseRequiredActionBarActivity implemen
       // GeckoRuntime can only be initialized once per process
       sRuntime = GeckoRuntime.create(this);
     }
+
+    Log.i(TAG, "Registering browser extension");
+    sRuntime
+      .getWebExtensionController()
+      .ensureBuiltIn(EXTENSION_LOCATION, EXTENSION_ID)
+      .accept(
+          extension -> {
+              Log.i(TAG, "Successfully registered browser extension");
+              geckoSession
+                  .getWebExtensionController()
+                  .setMessageDelegate(extension, messageDelegate, "browser");
+          },
+          e -> Log.e(TAG, "Error registering extension", e));
 
     geckoSession.open(sRuntime);
     geckoView.setSession(geckoSession);

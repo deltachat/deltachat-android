@@ -1,0 +1,22 @@
+{
+  "name": "webxdc-extension",
+  "description": "Intercepts requests to XDC resources",
+  "manifest_version": 2,
+  "version": "1",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "webxdc@delta.chat"
+    }
+  },
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "permissions": [
+    "geckoViewAddons",
+    "nativeMessaging",
+    "webRequest",
+    "webRequestBlocking",
+    "<all_urls>"
+  ],
+  "web_accessible_resources": ["webxdc.js", "webxdc.html"]
+}
