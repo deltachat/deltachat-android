@@ -60,7 +60,9 @@
     <!-- Possible answers to the question are: Never, Always, Once -->
     <string name="load_remote_content_ask">Remote images can track you.\n\nThis setting also may load fonts and other content. If disabled, embedded or cached images may appear.\n\nLoad remote images?</string>
     <string name="always">Always</string>
+    <string name="always_load_remote_images">Always Load Remote Images</string>
     <string name="once">Once</string>
+    <string name="show_warning">Show Warning</string>
     <string name="show_password">Show Password</string>
     <string name="hide_password">Hide Password</string>
     <string name="not_now">Not now</string>
