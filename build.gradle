@@ -4,7 +4,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.2.2'
+        classpath 'com.android.tools.build:gradle:7.4.2'
     }
 }
 
@@ -91,6 +91,7 @@ dependencies {
 
 
 android {
+    namespace "org.thoughtcrime.securesms"
     flavorDimensions "none"
     compileSdkVersion 32
     useLibrary 'org.apache.http.legacy'
@@ -141,24 +142,21 @@ android {
     }
 
     signingConfigs {
-        signingConfigs {
-            debug {
-                // add `DC_DEBUG_STORE_FILE=/path/to/debug.keystore` to `~/.gradle/gradle.properties`
-                if(project.hasProperty("DC_DEBUG_STORE_FILE" )) {
-                    storeFile file(DC_DEBUG_STORE_FILE )
-                }
-            }
-            release {
-                // can be defined at `~/.gradle/gradle.properties` or at "Build/Generate signed APK"
-                if(project.hasProperty("DC_RELEASE_STORE_FILE")) {
-                    storeFile file(DC_RELEASE_STORE_FILE)
-                    storePassword DC_RELEASE_STORE_PASSWORD
-                    keyAlias DC_RELEASE_KEY_ALIAS
-                    keyPassword DC_RELEASE_KEY_PASSWORD
-                }
+        debug {
+            // add `DC_DEBUG_STORE_FILE=/path/to/debug.keystore` to `~/.gradle/gradle.properties`
+            if(project.hasProperty("DC_DEBUG_STORE_FILE" )) {
+                storeFile file(DC_DEBUG_STORE_FILE )
             }
         }
-        release
+        release {
+            // can be defined at `~/.gradle/gradle.properties` or at "Build/Generate signed APK"
+            if(project.hasProperty("DC_RELEASE_STORE_FILE")) {
+                storeFile file(DC_RELEASE_STORE_FILE)
+                storePassword DC_RELEASE_STORE_PASSWORD
+                keyAlias DC_RELEASE_KEY_ALIAS
+                keyPassword DC_RELEASE_KEY_PASSWORD
+            }
+        }
     }
 
     buildTypes {
