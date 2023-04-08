@@ -60,7 +60,9 @@
     <!-- Possible answers to the question are: Never, Always, Once -->
     <string name="load_remote_content_ask">远程图像可以被用于追踪您。\n\n该设置可能还会加载字体以及其他内容。禁用状态下，您仍可能会看到嵌入的图像和缓存中的图像。\n\n要加载远程图像吗？</string>
     <string name="always">总是</string>
+    <string name="always_load_remote_images">始终加载远程图像</string>
     <string name="once">仅一次</string>
+    <string name="show_warning">显示警告</string>
     <string name="show_password">显示密码</string>
     <string name="hide_password">隐藏密码</string>
     <string name="not_now">现在不</string>

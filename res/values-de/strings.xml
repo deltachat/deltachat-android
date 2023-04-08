@@ -60,7 +60,9 @@
     <!-- Possible answers to the question are: Never, Always, Once -->
     <string name="load_remote_content_ask">Das Nachladen von Bildern kann dazu verwendet werden, Sie zu tracken.\n\nDie Option erlaubt auch das Laden von Schriftarten und anderen Inhalten; wenn sie deaktiviert ist, werden eingebettete oder zwischengespeicherte Bilder dennoch angezeigt.\n\nBilder nachladen?</string>
     <string name="always">Immer</string>
+    <string name="always_load_remote_images">Bilder immer nachladen</string>
     <string name="once">Einmal</string>
+    <string name="show_warning">Warnung anzeigen</string>
     <string name="show_password">Passwort anzeigen</string>
     <string name="hide_password">Passwort verstecken</string>
     <string name="not_now">Nicht jetzt</string>

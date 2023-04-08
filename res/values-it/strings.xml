@@ -60,7 +60,9 @@
     <!-- Possible answers to the question are: Never, Always, Once -->
     <string name="load_remote_content_ask">Le immagini remote possono essere utilizzate per tracciarti.\n\nL\'impostazione consente anche di caricare caratteri e altri contenuti. Anche se è disabilitato, potresti comunque vedere immagini incorporate o memorizzate nella cache.\n\nCaricare immagini remote?</string>
     <string name="always">Sempre</string>
+    <string name="always_load_remote_images">Carica Sempre Immagini Remote</string>
     <string name="once">Una Volta</string>
+    <string name="show_warning">Mostra Avviso</string>
     <string name="show_password">Mostra Password</string>
     <string name="hide_password">Nascondi Password</string>
     <string name="not_now">Non ora</string>

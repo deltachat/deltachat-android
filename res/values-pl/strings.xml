@@ -60,7 +60,9 @@
     <!-- Possible answers to the question are: Never, Always, Once -->
     <string name="load_remote_content_ask">Obrazy zdalne mogą służyć do śledzenia użytkownika.\n\nTo ustawienie umożliwia również ładowanie czcionek i innych treści. Nawet jeśli jest wyłączone, nadal możesz widzieć obrazy osadzone lub zapisane w pamięci podręcznej.\n\nZaładować zdalne obrazy?</string>
     <string name="always">Zawsze</string>
+    <string name="always_load_remote_images">Zawsze wczytuj zdalne obrazy</string>
     <string name="once">Jeden raz</string>
+    <string name="show_warning">Pokaż ostrzeżenie</string>
     <string name="show_password">Pokaż hasło</string>
     <string name="hide_password">Ukryj hasło</string>
     <string name="not_now">Nie teraz</string>

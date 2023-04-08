@@ -60,7 +60,9 @@
     <!-- Possible answers to the question are: Never, Always, Once -->
     <string name="load_remote_content_ask">Uzak görseller sizi izleyebilir.\n\nBu ayar, yazı tiplerini ve diğer içeriği de yükler. Etkisizleştirilirse, katıştırılan ya da önbelleklenen görselleri görebilirsiniz.\n\nUzak görseller yüklensin mi?</string>
     <string name="always">Her zaman</string>
+    <string name="always_load_remote_images">Her Zaman Uzak Görselleri Yükle</string>
     <string name="once">Bir kez</string>
+    <string name="show_warning">Uyarı Göster</string>
     <string name="show_password">Parolayı Göster</string>
     <string name="hide_password">Parolayı Gizle</string>
     <string name="not_now">Şimdi değil</string>

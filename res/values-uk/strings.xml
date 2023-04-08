@@ -60,7 +60,9 @@
     <!-- Possible answers to the question are: Never, Always, Once -->
     <string name="load_remote_content_ask">Віддалені зображення можна використовувати для слідкування за вами.\n\nЦе налаштування також дозволяє завантажувати шрифти та інший вміст. Якщо воно вимкнене, ви можете побачити вбудовані або кешовані зображення.\n\nЗавантажувати віддалені зображення?</string>
     <string name="always">Завжди</string>
+    <string name="always_load_remote_images">Завжди завантажувати віддалені зображення</string>
     <string name="once">Один раз</string>
+    <string name="show_warning">Показати попередження</string>
     <string name="show_password">Показати пароль</string>
     <string name="hide_password">Приховати пароль</string>
     <string name="not_now">Не зараз</string>
