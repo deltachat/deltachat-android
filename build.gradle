@@ -98,6 +98,14 @@ dependencies {
 android {
     flavorDimensions "none"
     compileSdkVersion 32
+
+    // Set NDK version to strip native libraries.
+    // Even though we compile our libraries outside Gradle with `scripts/ndk-make.sh`,
+    // without ndkVersion `./gradlew clean` followed by `./gradlew assembleDebug --warning-mode=all` emits the following warning:
+    //   > Task :stripFatDebugDebugSymbols
+    //   Unable to strip the following libraries, packaging them as they are: libanimation-decoder-gif.so, libmapbox-gl.so, libnative-utils.so.
+    // See <https://issuetracker.google.com/issues/237187538> for details.
+    ndkVersion "23.2.8568313"
     useLibrary 'org.apache.http.legacy'
 
     defaultConfig {
