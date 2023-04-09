@@ -24,7 +24,7 @@
       <li><a href="#ich-möchte-keine-nachrichten-einer-gruppe-mehr-empfangen">Ich möchte keine Nachrichten einer Gruppe mehr empfangen.</a></li>
       <li><a href="#was-bedeuten-die-häkchen-neben-den-ausgehenden-nachrichten">Was bedeuten die Häkchen neben den ausgehenden Nachrichten?</a></li>
       <li><a href="#was-passiert-wenn-ich-alte-nachrichten-vom-server-löschen-aktiviere">Was passiert, wenn ich “Alte Nachrichten vom Server löschen” aktiviere?</a></li>
-      <li><a href="#was-passiert-wenn-ich-alte-nachrichten-vom-gerät-löschen-aktiviere">Was passiert, wenn ich “Alte Nachrichten vom Gerät löschen” aktiviere?</a></li>
+      <li><a href="#delold">Was passiert, wenn ich “Alte Nachrichten vom Gerät löschen” aktiviere?</a></li>
     </ul>
   </li>
   <li><a href="#verschlüsselung">Verschlüsselung</a>
@@ -36,7 +36,7 @@
       <li><a href="#wie-kann-ich-die-verschlüsselung-der-nachrichten-überprüfen">Wie kann ich die Verschlüsselung der Nachrichten überprüfen?</a></li>
       <li><a href="#wie-kann-ich-verschlüsselung-und-löschen-von-nachrichten-sicherstellen">Wie kann ich Verschlüsselung und Löschen von Nachrichten sicherstellen?</a></li>
       <li><a href="#welches-verfahren-wird-für-die-ende-zu-ende-verschlüsselung-verwendet">Welches Verfahren wird für die Ende-zu-Ende-Verschlüsselung verwendet?</a></li>
-      <li><a href="#was-ist-der-unterschied-zwischen-verifizierten-gruppen-und-11-chats-mit-verifizierten-kontakten">Was ist der Unterschied zwischen verifizierten Gruppen und 1:1 Chats mit verifizierten Kontakten?</a></li>
+      <li><a href="#verdiff">Was ist der Unterschied zwischen verifizierten Gruppen und 1:1 Chats mit verifizierten Kontakten?</a></li>
       <li><a href="#unterstützt-delta-chat-perfect-forward-secrecy">Unterstützt Delta Chat Perfect Forward Secrecy?</a></li>
       <li><a href="#wie-schützt-delta-chat-meine-metadaten">Wie schützt Delta Chat meine Metadaten?</a></li>
       <li><a href="#kann-ich-meinen-existierenden-privaten-schlüssel-weiter-verwenden">Kann ich meinen existierenden privaten Schlüssel weiter verwenden?</a></li>
@@ -54,7 +54,7 @@
       <li><a href="#warum-kann-ich-deltachat-ordner-beobachten-ausschalten">Warum kann ich “DeltaChat-Ordner beobachten” ausschalten?</a></li>
     </ul>
   </li>
-  <li><a href="#private-apps--webxdc">Private Apps / webxdc</a>
+  <li><a href="#webxdc">Private Apps / webxdc</a>
     <ul>
       <li><a href="#wie-privat-sind-private-apps">Wie privat sind Private Apps?</a></li>
       <li><a href="#wo-bekomme-ich-private-apps">Wo bekomme ich Private Apps?</a></li>
@@ -194,7 +194,7 @@ zu anderen Instant-Messengern muss der/die EmpfängerIn nicht Delta Chat install
   <li>or the profile icon and then ‘Add Account’ (iOS)</li>
 </ul>
 
-<p>You may also wish to learn <a href="#can-i-use-delta-chat-on-multiple-devices-at-the-same-time">how to add accounts to multiple devices</a>.</p>
+<p>Vielleicht möchten Sie auch erfahren, wie Sie <a href="#multiclient">E-Mail-Konten zu mehreren Geräten hinzufügen können</a>.</p>
     
       <h3 id="wer-sieht-mein-profilbild">
         
@@ -340,7 +340,7 @@ Archived chats remain accessible above the chat list or via search.</p>
       <li>entweder weil der Kontakt Ihnen direkt eine Nachricht gesendet hat,</li>
       <li>weil der Kontakt etwas an eine Gruppe geschrieben hat, in der sie beide Mitglied sind,</li>
       <li>weil der Kontakt Ihnen eine Lesebestätigung für eine von Ihnen geschriebene Nachricht gesendet hat</li>
-      <li>oder weil der Kontakt Daten mithilfe einer <a href="#private-apps--webxdc">Privaten App</a> an Ihre Delta Chat-App gesendet hat.</li>
+      <li>oder weil der Kontakt Daten mithilfe einer <a href="#webxdc">Privaten App</a> an Ihre Delta Chat-App gesendet hat.</li>
     </ul>
   </li>
   <li>Dies ist also kein Echtzeit-Online-Status - und wenn jemand nicht sofort antwortet, obwohl er online zu sein scheint, machen Sie sich keine Sorgen und geben Sie ihm etwas Raum. ;-)</li>
@@ -442,10 +442,10 @@ Wenn Sie der Gruppe später erneut beitreten möchten, bitten Sie ein anderes Gr
   <li>Beachten Sie, dass Sie, wenn Sie Delta Chat auf mehr als einem Gerät verwenden, die Nachrichten auf dem Server belassen sollten, bis das andere Gerät sie ebenfalls herunterladen kann. In diesem Fall sollten Sie das automatische Löschen auf “nach 1 Tag” oder ähnlich einstellen, je nachdem, wie oft Sie das andere Gerät einschalten.</li>
 </ul>
     
-      <h3 id="was-passiert-wenn-ich-alte-nachrichten-vom-gerät-löschen-aktiviere">
+      <h3 id="delold">
         
         
-          Was passiert, wenn ich “Alte Nachrichten vom Gerät löschen” aktiviere? <a href="#was-passiert-wenn-ich-alte-nachrichten-vom-gerät-löschen-aktiviere" class="anchor"></a>
+          Was passiert, wenn ich “Alte Nachrichten vom Gerät löschen” aktiviere? <a href="#delold" class="anchor"></a>
         
         
       </h3>
@@ -581,12 +581,12 @@ messages. But turning on “self-destructing messages” deletes the messages on
 the server after they were delivered.</p>
 
 <p>If you need the messages on your device, but not on the server, you can also
-agree in the group to turn on <a href="#what-happens-if-i-turn-on-delete-old-messages-from-server">“delete messages from server
+agree in the group to turn on <a href="#delold">“delete messages from server
 automatically”</a>.</p>
 
 <p>If you want to protect a 1:1 conversation like this, you should create a
 verified group with only 2 people. If the other person loses their device but
-not their account, you can still communicate in the 1:1 chat. (<a href="#what-is-the-difference-between-verified-groups-and-11-chats-with-verified-contacts">Read more</a>)</p>
+not their account, you can still communicate in the 1:1 chat. (<a href="#verdiff">Read more</a>)</p>
     
       <h3 id="welches-verfahren-wird-für-die-ende-zu-ende-verschlüsselung-verwendet">
         
@@ -606,10 +606,10 @@ Autocrypt verwendet eine begrenzte Teilmenge des OpenPGP-Standards.</p>
   </li>
 </ul>
     
-      <h3 id="was-ist-der-unterschied-zwischen-verifizierten-gruppen-und-11-chats-mit-verifizierten-kontakten">
+      <h3 id="verdiff">
         
         
-          Was ist der Unterschied zwischen verifizierten Gruppen und 1:1 Chats mit verifizierten Kontakten? <a href="#was-ist-der-unterschied-zwischen-verifizierten-gruppen-und-11-chats-mit-verifizierten-kontakten" class="anchor"></a>
+          Was ist der Unterschied zwischen verifizierten Gruppen und 1:1 Chats mit verifizierten Kontakten? <a href="#verdiff" class="anchor"></a>
         
         
       </h3>
@@ -860,10 +860,10 @@ try the <strong>manual transfer</strong> described below</p>
 
 <p>Einige BenutzerInnen verwenden Delta Chat als reguläres E-Mail-Programm und möchten lieber den Posteingang anstatt des DeltaChat-Ordners verwenden. Wenn Sie “DeltaChat-Ordner beobachten” ausschalten, sollten Sie auch “Autom. Verschieben in den DeltaChat-Ordner” ausschalten. Andernfalls funktioniert die Verwendung auf mehreren Geräten möglicherweise nicht richtig.</p>
     
-      <h2 id="private-apps--webxdc">
+      <h2 id="webxdc">
         
         
-          Private Apps / webxdc <a href="#private-apps--webxdc" class="anchor"></a>
+          Private Apps / webxdc <a href="#webxdc" class="anchor"></a>
         
         
       </h2>

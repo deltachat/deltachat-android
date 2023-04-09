@@ -24,7 +24,7 @@
       <li><a href="#no-quiero-recibir-más-los-mensajes-de-un-grupo">No quiero recibir más los mensajes de un grupo.</a></li>
       <li><a href="#qué-significan-las-marcas-que-se-muestran-junto-a-los-mensajes-salientes">¿Qué significan las marcas que se muestran junto a los mensajes salientes?</a></li>
       <li><a href="#what-happens-if-i-turn-on-delete-old-messages-from-server">What happens if I turn on “Delete old messages from server”?</a></li>
-      <li><a href="#what-happens-if-i-turn-on-delete-old-messages-from-device">What happens if I turn on “Delete old messages from device”?</a></li>
+      <li><a href="#delold">What happens if I turn on “Delete old messages from device”?</a></li>
     </ul>
   </li>
   <li><a href="#encryption">Encryption</a>
@@ -36,7 +36,7 @@
       <li><a href="#cómo-puedo-verificar-el-cifrado-de-mensajes">¿Cómo puedo verificar el cifrado de mensajes?</a></li>
       <li><a href="#how-can-i-ensure-message-encryption-and-deletion">How can I ensure message encryption and deletion?</a></li>
       <li><a href="#qué-estándares-se-utilizan-para-el-cifrado-de-extremo-a-extremo">¿Qué estándares se utilizan para el cifrado de extremo a extremo?</a></li>
-      <li><a href="#cuál-es-la-diferencia-entre-grupos-verificados-y-chats-11-con-contactos-verificados">¿Cuál es la diferencia entre grupos verificados y chats 1:1 con contactos verificados?</a></li>
+      <li><a href="#verdiff">¿Cuál es la diferencia entre grupos verificados y chats 1:1 con contactos verificados?</a></li>
       <li><a href="#delta-chat-admite-perfect-forward-secrecy">¿Delta Chat admite Perfect Forward Secrecy?</a></li>
       <li><a href="#cómo-protege-delta-chat-mis-metadatos">¿Cómo protege Delta Chat mis metadatos?</a></li>
       <li><a href="#puedo-reutilizar-mi-llave-privada-existente">¿Puedo reutilizar mi llave privada existente?</a></li>
@@ -54,7 +54,7 @@
       <li><a href="#por-qué-puedo-elegir-no-monitorear-la-carpeta-deltachat">¿Por qué puedo elegir no monitorear la carpeta DeltaChat?</a></li>
     </ul>
   </li>
-  <li><a href="#private-apps--webxdc">Private Apps / webxdc</a>
+  <li><a href="#webxdc">Private Apps / webxdc</a>
     <ul>
       <li><a href="#how-private-are-private-apps">How private are private apps?</a></li>
       <li><a href="#where-can-i-get-private-apps">Where can I get private apps?</a></li>
@@ -209,7 +209,7 @@ receive messages from this person, consider <em>blocking</em> them.</li>
   <li>or the profile icon and then ‘Add Account’ (iOS)</li>
 </ul>
 
-<p>You may also wish to learn <a href="#can-i-use-delta-chat-on-multiple-devices-at-the-same-time">how to add accounts to multiple devices</a>.</p>
+<p>You may also wish to learn <a href="#multiclient">how to add accounts to multiple devices</a>.</p>
     
       <h3 id="quién-ve-mi-foto-de-perfil">
         
@@ -371,7 +371,7 @@ of a contact. It means they were “recently seen”.</li>
       <li>because they wrote something to a group you are both a member of,</li>
       <li>because they sent you a read receipt for a message you wrote,</li>
       <li>or because they sent data to your Delta Chat app by using a
-<a href="#private-apps--webxdc">private app</a>.</li>
+<a href="#webxdc">private app</a>.</li>
     </ul>
   </li>
   <li>So this is not a real time online status - and if someone doesn’t answer
@@ -488,10 +488,10 @@ this case, you should set auto-delete to “after a day” or something similar,
 depending on how often you turn on the other device.</li>
 </ul>
     
-      <h3 id="what-happens-if-i-turn-on-delete-old-messages-from-device">
+      <h3 id="delold">
         
         
-          What happens if I turn on “Delete old messages from device”? <a href="#what-happens-if-i-turn-on-delete-old-messages-from-device" class="anchor"></a>
+          What happens if I turn on “Delete old messages from device”? <a href="#delold" class="anchor"></a>
         
         
       </h3>
@@ -640,12 +640,12 @@ messages. But turning on “self-destructing messages” deletes the messages on
 the server after they were delivered.</p>
 
 <p>If you need the messages on your device, but not on the server, you can also
-agree in the group to turn on <a href="#what-happens-if-i-turn-on-delete-old-messages-from-server">“delete messages from server
+agree in the group to turn on <a href="#delold">“delete messages from server
 automatically”</a>.</p>
 
 <p>If you want to protect a 1:1 conversation like this, you should create a
 verified group with only 2 people. If the other person loses their device but
-not their account, you can still communicate in the 1:1 chat. (<a href="#what-is-the-difference-between-verified-groups-and-11-chats-with-verified-contacts">Read more</a>)</p>
+not their account, you can still communicate in the 1:1 chat. (<a href="#verdiff">Read more</a>)</p>
     
       <h3 id="qué-estándares-se-utilizan-para-el-cifrado-de-extremo-a-extremo">
         
@@ -667,10 +667,10 @@ base protection of Autocrypt Level 1, while maintaining its ease of use.</p>
   </li>
 </ul>
     
-      <h3 id="cuál-es-la-diferencia-entre-grupos-verificados-y-chats-11-con-contactos-verificados">
+      <h3 id="verdiff">
         
         
-          ¿Cuál es la diferencia entre grupos verificados y chats 1:1 con contactos verificados? <a href="#cuál-es-la-diferencia-entre-grupos-verificados-y-chats-11-con-contactos-verificados" class="anchor"></a>
+          ¿Cuál es la diferencia entre grupos verificados y chats 1:1 con contactos verificados? <a href="#verdiff" class="anchor"></a>
         
         
       </h3>
@@ -962,10 +962,10 @@ cliente Delta Chat Desktop disponible en todas las plataformas.</p>
 <p>Algunas personas usan Delta Chat como un cliente de correo electrónico normal y desean mantener los correos en la bandeja de entrada, en lugar de la carpeta DeltaChat. Si deshabilita “Monitorear carpeta DeltaChat”, también debe deshabilitar “mover automáticamente a la carpeta DeltaChat”.
 De lo contrario, eliminar mensajes o configuraciones de dispositivos múltiples podría no funcionar correctamente.</p>
     
-      <h2 id="private-apps--webxdc">
+      <h2 id="webxdc">
         
         
-          Private Apps / webxdc <a href="#private-apps--webxdc" class="anchor"></a>
+          Private Apps / webxdc <a href="#webxdc" class="anchor"></a>
         
         
       </h2>

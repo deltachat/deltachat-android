@@ -24,7 +24,7 @@
       <li><a href="#non-desidero-più-ricevere-i-messaggi-di-un-gruppo">Non desidero più ricevere i messaggi di un gruppo.</a></li>
       <li><a href="#cosa-significano-i-segni-di-spunta-visualizzati-accanto-ai-messaggi-in-uscita">Cosa significano i segni di spunta visualizzati accanto ai messaggi in uscita?</a></li>
       <li><a href="#cosa-succede-se-attivo-elimina-messaggi-dal-server">Cosa succede se attivo “Elimina Messaggi dal Server”?</a></li>
-      <li><a href="#cosa-succede-se-attivo-elimina-messaggi-dal-dispositivo">Cosa succede se attivo “Elimina Messaggi dal Dispositivo”?</a></li>
+      <li><a href="#delold">Cosa succede se attivo “Elimina Messaggi dal Dispositivo”?</a></li>
     </ul>
   </li>
   <li><a href="#crittografia">Crittografia</a>
@@ -36,7 +36,7 @@
       <li><a href="#come-posso-controllare-la-crittografia-dei-messaggi">Come posso controllare la crittografia dei messaggi?</a></li>
       <li><a href="#come-posso-garantire-la-crittografia-e-leliminazione-dei-messaggi">Come posso garantire la crittografia e l’eliminazione dei messaggi?</a></li>
       <li><a href="#quali-standard-vengono-utilizzati-per-la-crittografia-end-to-end">Quali standard vengono utilizzati per la crittografia end-to-end?</a></li>
-      <li><a href="#qual-è-la-differenza-tra-i-gruppi-verificati-e-le-chat-11-con-contatti-verificati">Qual è la differenza tra i gruppi verificati e le chat 1:1 con contatti verificati?</a></li>
+      <li><a href="#verdiff">Qual è la differenza tra i gruppi verificati e le chat 1:1 con contatti verificati?</a></li>
       <li><a href="#delta-chat-supporta-perfect-forward-secrecy">Delta Chat supporta Perfect Forward Secrecy?</a></li>
       <li><a href="#in-che-modo-delta-chat-protegge-i-miei-metadati">In che modo Delta Chat protegge i miei metadati?</a></li>
       <li><a href="#posso-riutilizzare-la-mia-chiave-privata-esistente">Posso riutilizzare la mia chiave privata esistente?</a></li>
@@ -54,7 +54,7 @@
       <li><a href="#perché-posso-scegliere-di-non-guardare-la-cartella-deltachat">Perché posso scegliere di non guardare la cartella DeltaChat?</a></li>
     </ul>
   </li>
-  <li><a href="#apps-private--webxdc">Apps private / webxdc</a>
+  <li><a href="#webxdc">Apps private / webxdc</a>
     <ul>
       <li><a href="#quanto-sono-private-le-apps-private">Quanto sono private le apps private?</a></li>
       <li><a href="#dove-posso-trovare-apps-private">Dove posso trovare apps private?</a></li>
@@ -130,7 +130,7 @@ gli stessi server di posta elettronica</li>
   <li><em>No Spam</em> - per impostazione predefinita vengono visualizzati solo i messaggi degli utenti conosciuti.</li>
   <li><em>Crittografia end-to-end</em> tramite Autocrypt.</li>
   <li>Software libero basato su <em>Copyleft</em> e <em>Standards</em>.</li>
-  <li><em>Identità flessibile</em> con supporto integrato per <a href="#account-multipli">più account</a></li>
+  <li><em>Identità flessibile</em> con supporto integrato per <a href="#multiple-accounts">più account</a></li>
 </ul>
     
       <h3 id="quali-messaggi-vengono-mostrati-in-delta-chat">
@@ -209,7 +209,7 @@ messaggi da questa persona, prendete in considerazione la possibilità di <em>bl
   <li>o l’icona del profilo e poi ‘Aggiungi account’ (iOS)</li>
 </ul>
 
-<p>Potresti anche voler imparare <a href="#posso-usare-delta-chat-su-multi-dispositivi-allo-stesso-tempo">come aggiungere account a più dispositivi</a>.</p>
+<p>Potresti anche voler imparare <a href="#multiclient">come aggiungere account a più dispositivi</a>.</p>
     
       <h3 id="chi-vede-la-mia-immagine-del-profilo">
         
@@ -353,7 +353,7 @@ di un contatto. Ciò significa che è stato “visto di recente”.</li>
   <li>perché hanno scritto qualcosa a un gruppo di cui siete entrambi membri,</li>
   <li>perché vi hanno inviato una ricevuta di lettura per un messaggio che avete scritto,</li>
   <li>o perché hanno inviato dati alla vostra applicazione Delta Chat utilizzando un’applicazione
-<a href="#applicazioni-private-webxdc">app privata</a>.</li>
+<a href="#webxdc">app privata</a>.</li>
   <li>Quindi non si tratta di uno stato online in tempo reale - e se qualcuno non risponde
 subito anche se sembra essere online, non preoccupatevi e lasciategli un po’
 di spazio ;-)</li>
@@ -468,10 +468,10 @@ si dovrebbe impostare la cancellazione automatica su “Dopo 1 giorno” o qualc
 a seconda della frequenza con cui si accende l’altro dispositivo.</li>
 </ul>
     
-      <h3 id="cosa-succede-se-attivo-elimina-messaggi-dal-dispositivo">
+      <h3 id="delold">
         
         
-          Cosa succede se attivo “Elimina Messaggi dal Dispositivo”? <a href="#cosa-succede-se-attivo-elimina-messaggi-dal-dispositivo" class="anchor"></a>
+          Cosa succede se attivo “Elimina Messaggi dal Dispositivo”? <a href="#delold" class="anchor"></a>
         
         
       </h3>
@@ -624,12 +624,12 @@ messaggi. Ma l’attivazione dei “messaggi a scomparsa” elimina i messaggi s
 server dopo che sono stati consegnati.</p>
 
 <p>Se hai bisogno dei messaggi sul tuo dispositivo, ma non sul server, puoi farlo anche tu
-accetta nel gruppo di attivare <a href="#cosa-succede-se-si-gira-su-cancella-i-vecchi-messaggi-dal-server">“cancella i messaggi dal server
+accetta nel gruppo di attivare <a href="#delold">“cancella i messaggi dal server
 automaticamente”</a>.</p>
 
 <p>Se vuoi proteggere una conversazione 1:1 come questa, dovresti creare un
 gruppo verificato con solo 2 persone. Se l’altra persona perde il proprio dispositivo ma
-non il suo account, puoi comunque comunicare nella chat 1:1. (<a href="#Qual-è-la-differenza-tra-gruppi-verificati-e-11-chat-con-contatti-verificati">Per saperne di più</a>)</p>
+non il suo account, puoi comunque comunicare nella chat 1:1. (<a href="#verdiff">Per saperne di più</a>)</p>
     
       <h3 id="quali-standard-vengono-utilizzati-per-la-crittografia-end-to-end">
         
@@ -651,10 +651,10 @@ opportunistica base di Autocrypt Livello 1, pur mantenendo la sua facilità d’
   </li>
 </ul>
     
-      <h3 id="qual-è-la-differenza-tra-i-gruppi-verificati-e-le-chat-11-con-contatti-verificati">
+      <h3 id="verdiff">
         
         
-          Qual è la differenza tra i gruppi verificati e le chat 1:1 con contatti verificati? <a href="#qual-è-la-differenza-tra-i-gruppi-verificati-e-le-chat-11-con-contatti-verificati" class="anchor"></a>
+          Qual è la differenza tra i gruppi verificati e le chat 1:1 con contatti verificati? <a href="#verdiff" class="anchor"></a>
         
         
       </h3>
@@ -850,7 +850,7 @@ Non uscire da Delta Chat.
   </li>
   <li>
     <p>Delta Chat è <strong>già connesso</strong> sul dispositivo di destinazione?
-È possibile utilizzare più account per dispositivo, basta <a href="#accounts-multipli">aggiungere un altro account</a></p>
+È possibile utilizzare più account per dispositivo, basta <a href="#multiple-accounts">aggiungere un altro account</a></p>
   </li>
   <li>
     <p>Se si riscontrano ancora problemi o se <strong>non si riesce a scansionare un codice QR</strong>
@@ -951,10 +951,10 @@ per la loro posta, invece della cartella DeltaChat. Se disabiliti “Controlla
 cartella DeltaChat”, dovresti anche disabilitare “sposta messaggi chat in DeltaChat”.
 In caso contrario, l’eliminazione dei messaggi o configurazioni multi-dispositivo potrebbero non funzionare correttamente.</p>
     
-      <h2 id="apps-private--webxdc">
+      <h2 id="webxdc">
         
         
-          Apps private / webxdc <a href="#apps-private--webxdc" class="anchor"></a>
+          Apps private / webxdc <a href="#webxdc" class="anchor"></a>
         
         
       </h2>

@@ -24,7 +24,7 @@
       <li><a href="#je-ne-souhaite-plus-recevoir-les-message-dun-groupe">Je ne souhaite plus recevoir les message d’un groupe.</a></li>
       <li><a href="#que-signifient-les-coches-affichées-à-côté-des-messages-sortants-">Que signifient les coches affichées à côté des messages sortants ?</a></li>
       <li><a href="#que-se-passe-t-il-si-jactive-loption-supprimer-les-anciens-messages-sur-le-serveur-">Que se passe-t-il si j’active l’option “Supprimer les anciens messages sur le serveur” ?</a></li>
-      <li><a href="#que-se-passe-t-il-si-jactive-loption-supprimer-les-anciens-messages-de-lappareil-">Que se passe-t-il si j’active l’option “Supprimer les anciens messages de l’appareil” ?</a></li>
+      <li><a href="#delold">Que se passe-t-il si j’active l’option “Supprimer les anciens messages de l’appareil” ?</a></li>
     </ul>
   </li>
   <li><a href="#chiffrement">Chiffrement</a>
@@ -36,7 +36,7 @@
       <li><a href="#comment-puis-je-vérifier-le-chiffrement-des-messages-">Comment puis-je vérifier le chiffrement des messages ?</a></li>
       <li><a href="#how-can-i-ensure-message-encryption-and-deletion">How can I ensure message encryption and deletion?</a></li>
       <li><a href="#quels-standards-sont-utilisés-pour-le-chiffrement-de-bout-en-bout-">Quels standards sont utilisés pour le chiffrement de bout en bout ?</a></li>
-      <li><a href="#quelle-est-la-différence-entre-des-groupes-vérifiés-et-des-discussions-à-deux-avec-des-contacts-vérifiés-">Quelle est la différence entre des groupes vérifiés et des discussions à deux avec des contacts vérifiés ?</a></li>
+      <li><a href="#verdiff">Quelle est la différence entre des groupes vérifiés et des discussions à deux avec des contacts vérifiés ?</a></li>
       <li><a href="#delta-chat-prend-il-en-charge-la-confidentialité-persistante-parfaite-perfect-forward-secrecy-">Delta Chat prend-il en charge la confidentialité persistante parfaite (Perfect Forward Secrecy) ?</a></li>
       <li><a href="#comment-delta-chat-protège-t-il-mes-métadonnées">Comment Delta Chat protège-t-il mes métadonnées?</a></li>
       <li><a href="#puis-je-ré-utiliser-ma-clé-privée-existante-">Puis-je ré-utiliser ma clé privée existante ?</a></li>
@@ -54,7 +54,7 @@
       <li><a href="#pourquoi-puis-je-choisir-de-ne-pas-regarder-le-dossier-delta-chat">Pourquoi puis-je choisir de ne pas regarder le dossier Delta Chat?</a></li>
     </ul>
   </li>
-  <li><a href="#applications-privées--webxdc">Applications privées / webxdc</a>
+  <li><a href="#webxdc">Applications privées / webxdc</a>
     <ul>
       <li><a href="#how-private-are-private-apps">How private are private apps?</a></li>
       <li><a href="#where-can-i-get-private-apps">Where can I get private apps?</a></li>
@@ -204,7 +204,7 @@ recevoir de messages de cette personne, nous vous conseillons de la <em>bloquer<
   <li>or the profile icon and then ‘Add Account’ (iOS)</li>
 </ul>
 
-<p>You may also wish to learn <a href="#can-i-use-delta-chat-on-multiple-devices-at-the-same-time">how to add accounts to multiple devices</a>.</p>
+<p>You may also wish to learn <a href="#multiclient">how to add accounts to multiple devices</a>.</p>
     
       <h3 id="qui-peut-voir-ma-photo-de-profil-">
         
@@ -356,7 +356,7 @@ d’un contact. Cela signifie qu’il a été “vu récemment”.</li>
       <li>soit parce qu’il a écrit dans un groupe dont vous êtres tous les deux membres ;</li>
       <li>soit parce qu’il a envoyé l’accusé de lecture d’un message que vous lui avez écrit ;</li>
       <li>ou bien parce qu’il a envoyé des données à votre appli Delta Chat via une
-<a href="#private-apps--webxdc">appli privée</a>.</li>
+<a href="#webxdc">appli privée</a>.</li>
     </ul>
   </li>
   <li>Le “point vert” n’est donc pas un statut en temps réel. Aussi, si quelqu’un ne vous répond pas
@@ -465,10 +465,10 @@ qu’un humain a lu ou compris le message ;)</li>
   <li>Attention : si vous utilisez Delta Chat sur plusieurs appareils, laissez les messages sur le serveur jusqu’à ce que l’(es) autre(s) appareil(s) ai(en)t pu les télécharger aussi. Dans ce cas, nous vous conseillons de paramétrer la suppression automatique sur “Après 1 jour” ou plus, en fonction de la fréquence à laquelle vous vous servez de ces autres appareils.</li>
 </ul>
     
-      <h3 id="que-se-passe-t-il-si-jactive-loption-supprimer-les-anciens-messages-de-lappareil-">
+      <h3 id="delold">
         
         
-          Que se passe-t-il si j’active l’option “Supprimer les anciens messages de l’appareil” ? <a href="#que-se-passe-t-il-si-jactive-loption-supprimer-les-anciens-messages-de-lappareil-" class="anchor"></a>
+          Que se passe-t-il si j’active l’option “Supprimer les anciens messages de l’appareil” ? <a href="#delold" class="anchor"></a>
         
         
       </h3>
@@ -597,12 +597,12 @@ messages. But turning on “self-destructing messages” deletes the messages on
 the server after they were delivered.</p>
 
 <p>If you need the messages on your device, but not on the server, you can also
-agree in the group to turn on <a href="#what-happens-if-i-turn-on-delete-old-messages-from-server">“delete messages from server
+agree in the group to turn on <a href="#delold">“delete messages from server
 automatically”</a>.</p>
 
 <p>If you want to protect a 1:1 conversation like this, you should create a
 verified group with only 2 people. If the other person loses their device but
-not their account, you can still communicate in the 1:1 chat. (<a href="#what-is-the-difference-between-verified-groups-and-11-chats-with-verified-contacts">Read more</a>)</p>
+not their account, you can still communicate in the 1:1 chat. (<a href="#verdiff">Read more</a>)</p>
     
       <h3 id="quels-standards-sont-utilisés-pour-le-chiffrement-de-bout-en-bout-">
         
@@ -622,10 +622,10 @@ Autocrypt utilise un sous-ensemble restreint de la fonctionnalité OpenPGP.</p>
   </li>
 </ul>
     
-      <h3 id="quelle-est-la-différence-entre-des-groupes-vérifiés-et-des-discussions-à-deux-avec-des-contacts-vérifiés-">
+      <h3 id="verdiff">
         
         
-          Quelle est la différence entre des groupes vérifiés et des discussions à deux avec des contacts vérifiés ? <a href="#quelle-est-la-différence-entre-des-groupes-vérifiés-et-des-discussions-à-deux-avec-des-contacts-vérifiés-" class="anchor"></a>
+          Quelle est la différence entre des groupes vérifiés et des discussions à deux avec des contacts vérifiés ? <a href="#verdiff" class="anchor"></a>
         
         
       </h3>
@@ -870,10 +870,10 @@ Ensuite, transférez-le sur l’autre appareil de la manière que vous préfére
 <p>Certaines personnes utilisent Delta Chat comme un client de messagerie normal, et veulent utiliser la Boîte de réception pour leurs mails au lieu d’utiliser le dossier DeltaChat. Si vous désactivez “Surveiller le dossier DeltaChat”, vous devriez aussi désactiver “déplacer les messages de discussions dans DeltaChat”.
 Sinon, la suppression de messages dans une configuration multi-appareils pourrait ne pas marcher correctement.</p>
     
-      <h2 id="applications-privées--webxdc">
+      <h2 id="webxdc">
         
         
-          Applications privées / webxdc <a href="#applications-privées--webxdc" class="anchor"></a>
+          Applications privées / webxdc <a href="#webxdc" class="anchor"></a>
         
         
       </h2>
