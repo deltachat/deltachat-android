@@ -1073,14 +1073,14 @@ Jednak niektórzy dostawcy potrzebują specjalnych opcji, aby działać poprawni
 
 <p>Projekt Delta Chat przeszedł w ostatnich latach trzy niezależne audyty bezpieczeństwa:</p>
 
-<p>-W 2019 r. firma <a href="https://includesecurity.com">Include Security</a> przeanalizowała biblioteki <a href="https://github.com/rpgp/rpgp">PGP</a> i <a href="https://github.com/RustCrypto/RSA">RSA</a> Delta Chat. Nie znaleziono żadnych krytycznych problemów, ale dwa poważne problemy, które później naprawiliśmy. Ujawniła również jeden problem o średniej wadze i kilka mniej poważnych, ale nie było możliwości wykorzystania tych luk w implementacji Delta Chat. Niektóre z nich jednak naprawiliśmy od czasu zakończenia kontroli. Pełny raport można przeczytać <a href="../assets/blog/2019-first-security-review.pdf">tutaj</a>.</p>
+<p>-W 2019 r. firma <a href="https://includesecurity.com">Include Security</a> przeanalizowała biblioteki <a href="https://github.com/rpgp/rpgp">PGP</a> i <a href="https://github.com/RustCrypto/RSA">RSA</a> Delta Chat. Nie znaleziono żadnych krytycznych problemów, ale dwa poważne problemy, które później naprawiliśmy. Ujawniła również jeden problem o średniej wadze i kilka mniej poważnych, ale nie było możliwości wykorzystania tych luk w implementacji Delta Chat. Niektóre z nich jednak naprawiliśmy od czasu zakończenia kontroli. Pełny raport można przeczytać <a href="https://delta.chat/assets/blog/2019-first-security-review.pdf">tutaj</a>.</p>
 
 <ul>
   <li>
-    <p>W 2020 r. firma <a href="https://includesecurity.com">Include Security</a> przeanalizowała biblioteki Rust <a href="https://github.com/deltachat/deltachat-core-rust/">core</a>, <a href="https://github.com/async-email/async-imap">IMAP</a>, <a href="https://github.com/async-email/async-smtp">SMTP</a> i <a href="https://github.com/async-email/async-native-tls">TLS</a> Delta Chat. Nie znalazła żadnych problemów krytycznych ani poważnych. W raporcie zwrócono uwagę na kilka słabych punktów o średniej wadze – same w sobie nie stanowią zagrożenia dla użytkowników Delta Chat, ponieważ zależą od środowiska, w którym używany jest Delta Chat. Ze względu na użyteczność i kompatybilność nie możemy złagodzić wszystkich z nich i zdecydowaliśmy się przedstawić zalecenia dotyczące bezpieczeństwa zagrożonym użytkownikom. Pełny raport można przeczytać <a href="../assets/blog/2020-second-security-review.pdf">tutaj</a>.</p>
+    <p>W 2020 r. firma <a href="https://includesecurity.com">Include Security</a> przeanalizowała biblioteki Rust <a href="https://github.com/deltachat/deltachat-core-rust/">core</a>, <a href="https://github.com/async-email/async-imap">IMAP</a>, <a href="https://github.com/async-email/async-smtp">SMTP</a> i <a href="https://github.com/async-email/async-native-tls">TLS</a> Delta Chat. Nie znalazła żadnych problemów krytycznych ani poważnych. W raporcie zwrócono uwagę na kilka słabych punktów o średniej wadze – same w sobie nie stanowią zagrożenia dla użytkowników Delta Chat, ponieważ zależą od środowiska, w którym używany jest Delta Chat. Ze względu na użyteczność i kompatybilność nie możemy złagodzić wszystkich z nich i zdecydowaliśmy się przedstawić zalecenia dotyczące bezpieczeństwa zagrożonym użytkownikom. Pełny raport można przeczytać <a href="https://delta.chat/assets/blog/2020-second-security-review.pdf">tutaj</a>.</p>
   </li>
   <li>
-    <p>Początkiem 2023 r. firma <a href="https://cure53.de">Cure53</a> przeanalizował zarówno szyfrowanie transportu połączeń sieciowych Delta Chat, jak i powtarzalną konfigurację serwera pocztowego zgodnie z <a href="https://delta.chat/pl/serverguide">zaleceniami na tej stronie</a>. Możesz przeczytać więcej o audycie <a href="https://delta.chat/en/2023-03-27-third-independent-security-audit">na naszym blogu</a> lub przeczytać pełny raport <a href="../assets/blog/MER-01-report.pdf">tutaj</a>.</p>
+    <p>Początkiem 2023 r. firma <a href="https://cure53.de">Cure53</a> przeanalizował zarówno szyfrowanie transportu połączeń sieciowych Delta Chat, jak i powtarzalną konfigurację serwera pocztowego zgodnie z <a href="https://delta.chat/pl/serverguide">zaleceniami na tej stronie</a>. Możesz przeczytać więcej o audycie <a href="https://delta.chat/en/2023-03-27-third-independent-security-audit">na naszym blogu</a> lub przeczytać pełny raport <a href="https://delta.chat/assets/blog/MER-01-report.pdf">tutaj</a>.</p>
   </li>
 </ul>
     
@@ -1112,26 +1112,14 @@ Druga dotacja w 2019/2020 (~300 000 4) pomogła nam wydać wersje Delta/iOS, prz
     <p>W 2021 r. otrzymaliśmy kolejne dofinansowanie z UE na dwie propozycje dotyczące Internetu nowej generacji, a mianowicie na <a href="https://dapsi.ngi.eu/hall-of-fame/eppd/">EPPD – katalog przenośności dostawcy poczty e-mail</a> ( ~97 tys. EUR) i <a href="https://nlnet.nl/project/EmailPorting/">AEAP – przenoszenie adresu e-mail</a> (~90 tys. EUR), co zaowocowało lepszą obsługą wielu kont, ulepszonymi kontaktami i ustawieniami grup za pomocą kodów QR oraz wieloma ulepszeniami sieciowymi na wszystkich platformach.</p>
   </li>
   <li>
-    <p>From End 2021 till March 2023 we received <em>Internet Freedom</em> funding (500K USD) from the
-U.S. Bureau of Democracy, Human Rights and Labor (DRL). 
-This funding supported our long-running goals to make Delta Chat more usable 
-and compatible with a wide range of e-mail servers world-wide, and more resilient and secure
-in places often affected by internet censorship and shutdowns.</p>
+    <p>Od końca 2021 do marca 2023 otrzymaliśmy dofinansowanie <em>Wolność Internetu</em> (~500 tys. $) z amerykańskiego Biura Demokracji, Praw Człowieka i Pracy (DRL).
+Fundusze te wspierają nasze długofalowe cele, aby uczynić Delta Chat bardziej użytecznym i kompatybilnym z szeroką gamą serwerów e-mail na całym świecie, a także bardziej odpornym i bezpiecznym w miejscach często dotkniętych cenzurą i wyłączeniami Internetu.</p>
   </li>
   <li>
-    <p>Beginning 2023 we got accepted in the Next Generation Internet (NGI)
-Entrust program for our “Private Decentralized Apps” proposals. 
-Exact amount is to be determined (around 100K EUR). 
-This funding supports further developments of <a href="https://webxdc.org">webxdc “apps shared in a chat”</a>.</p>
+    <p>Od 2023 roku zostaliśmy zaakceptowani w programie Next Generation Internet (NGI) Entrust dla naszych propozycji „Prywatnych zdecentralizowanych aplikacji”. Dokładna kwota do ustalenia (około 100 tys. EUR). Finansowanie to wspiera dalszy rozwój <a href="https://webxdc.org">„aplikacji udostępnianych na czacie” webxdc</a>.</p>
   </li>
   <li>
-    <p>Sometimes we receive one-time donations from private individuals. 
-For example, in 2021 a generous individual bank-wired us 4K EUR 
-with the subject “keep up the good developments!”. 💜 
-We use such money to fund development gatherings or to care for ad-hoc expenses 
-that can not easily be predicted for, or reimbursed from, public funding grants. 
-Receiving more donations also helps us to become more independent and long-term viable
-as a contributor community.</p>
+    <p>Czasami otrzymujemy jednorazowe darowizny od osób prywatnych. Na przykład w 2021 roku pewna hojna osoba przekazała nam 4K EUR w formie przelewu bankowego tytułem “kontynuujcie dobry rozwój!”. 💜 Takie pieniądze przeznaczamy na finansowanie spotkań rozwojowych lub na doraźne wydatki, których nie da się łatwo przewidzieć lub zrefundować z publicznych dotacji. Otrzymywanie większej ilości darowizn pomaga nam również stać się bardziej niezależnymi i długoterminowo rentownymi jako społeczność współpracowników.</p>
   </li>
 </ul>
 
@@ -1143,8 +1131,7 @@ as a contributor community.</p>
 
 <p>Wspomniane powyżej finansowanie pieniężne jest w większości organizowane przez merlinux GmbH we Freiburgu (Niemcy) i jest dystrybuowane do kilkunastu podmiotów na całym świecie.</p>
 
-<p>Please see <a href="https://delta.chat/en/contribute">Delta Chat Contribution channels</a> 
-for both monetary and and other contribution possibilities.</p>
+<p>Zapoznaj się z <a href="https://delta.chat/en/contribute">kanałami wpłat dla Delta Chat</a>, aby uzyskać informacje o możliwościach wpłat zarówno pieniężnych, jak i innych.</p>
 
 
 
