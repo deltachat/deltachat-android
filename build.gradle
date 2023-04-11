@@ -65,9 +65,7 @@ dependencies {
     }
     implementation 'com.annimon:stream:1.1.8' // brings future java streams api to SDK Version < 24
     implementation 'com.codewaves.stickyheadergrid:stickyheadergrid:0.9.4' // glues the current time segment text in the gallery to the top.
-    implementation ('org.maplibre.gl:android-sdk:9.5.2') {
-        exclude group: 'com.google.android.gms'
-    }
+    implementation 'org.maplibre.gl:android-sdk:10.0.2'
 
     testImplementation 'junit:junit:4.13.1'
     testImplementation 'org.assertj:assertj-core:1.7.1'
