@@ -60,7 +60,9 @@
     <!-- Possible answers to the question are: Never, Always, Once -->
     <string name="load_remote_content_ask">Imagens remotas podem ser usadas para te rastrear.\n\nO ajuste também permite o carregamento de fontes e outros conteúdos. Mesmo que desabilitado, você ainda poderá ver imagens em cache ou embarcadas.\n\nCarregar imagens remotas?</string>
     <string name="always">Sempre</string>
+    <string name="always_load_remote_images">Sempre Carregar Imagens Remotas</string>
     <string name="once">Uma vez</string>
+    <string name="show_warning">Mostrar Aviso</string>
     <string name="show_password">Mostrar senha</string>
     <string name="hide_password">Ocultar senha</string>
     <string name="not_now">Mais tarde</string>
@@ -496,6 +498,7 @@
     <string name="multidevice_abort">Cancelr a instalação de um outro dispositivo?</string>
     <string name="multidevice_abort_will_invalidate_copied_qr">Isto invalidará o código QR copiado para a área de transferência.</string>
     <string name="multidevice_experimental_hint">(experimental, versão 1.36 necessária)</string>
+    <string name="multidevice_transfer_done_devicemsg">ℹ️ Conta transferida para seu outro dispositivo.</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="preparing_account">Preparando a conta...</string>
     <!-- Shown beside progress bar, stay short -->

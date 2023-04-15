@@ -60,7 +60,9 @@
     <!-- Possible answers to the question are: Never, Always, Once -->
     <string name="load_remote_content_ask">Figurat e largëta mund të përdoren për t’ju ndjekur.\n\nRregullimi lejon gjithashtu të ngarkohen shkronja dhe lëndë tjetër. Edhe nëse është e çaktivizuar, prapë mund të shihni figura të trupëzuara ose të ruajtura në fshehtinë.\n\nTë ngarkohen figura të largëta?</string>
     <string name="always">Përherë</string>
+    <string name="always_load_remote_images">Ngarko Përherë Figura të Largëta</string>
     <string name="once">Vetëm njëherë</string>
+    <string name="show_warning">Shfaq Sinjalizim</string>
     <string name="show_password">Shfaqe fjalëkalimin</string>
     <string name="hide_password">Fshihe fjalëkalimin</string>
     <string name="not_now">Jo tani</string>
