@@ -1,5 +1,16 @@
 # Delta Chat Android Changelog
 
+## v1.36.3
+2023-04
+
+* start with light/dark theme depending on system theme
+* fix verification icons for one-to-one chats
+* fix fetch errors due to erroneous EOF detection in long IMAP responses
+* more bug fixes
+* update translations and local help
+* update to core112.7
+
+
 ## v1.36.2
 2023-04
 
