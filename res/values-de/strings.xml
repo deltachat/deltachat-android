@@ -1053,7 +1053,6 @@
 
 
     <!-- device messages for updates -->
-    <string name="update_1_34_android">Was ist neu in 1.34?\n\n🤗 Bessere Kontaktlisten: Sortiert nach \"Zuletzt gesehen\" und innerhalb von 10 Minuten gesehene Kontakte werden mit einem Punkt markiert 🟢\n\n📑 Neue Tabs in Chat-Profilen: \"Audio\" und \"Private Apps\"\n\n🖼️ Wenn Ihnen jemand eine \"Private App\" (z.B. von https://webxdc.org ) schickt, können Sie diese zum Startbildschirm hinzufügen</string>
     <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
     <string name="update_1_36_android">1.36 Highlights\n\n💻📱 Verwenden Sie Delta Chat auf all Ihren Geräten: Folgen Sie einfach den drei Schritten unter \"Einstellungen / Zweitgerät hinzufügen\" (experimentell)\n\n🖼🔍 Haben Sie jemals nach einem Bild gesucht und konnten sich nicht an den Chat erinnern? Dann ist \"Alle Medien\" aus dem Hauptmenü wie für Sie gemacht\n\nWas noch? Benachrichtigungen für alle Accounts, Chat leeren und mehr, %1$s</string>
     <!-- placeholder will be replaced by the URL https://delta.chat/en/2023-03-27-third-independent-security-audit -->

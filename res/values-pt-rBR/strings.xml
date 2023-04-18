@@ -1068,7 +1068,6 @@
 
 
     <!-- device messages for updates -->
-    <string name="update_1_34_android">O que há de novo em 1.34?\n\n 🤗 Listas de contatos mais intuitivas: Ordenado pela última vez visto e contatos vistos em 10 minutos são marcados por um ponto 🟢\n\n📑 Novas páginas em perfis de chat: \"Audio\" e \"Aplicativos Privados\"\n\n🖼 Se alguém lhe enviar um \"Applicativo privado\" (por exemplo, de https://webxdc.org ), você pode adicionar-lo à tela inicial</string>
     <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
     <string name="update_1_36_android">Destaques da 1.36\n\n💻📱 Use o Delta Chat em todos os seus dispositivos facilmente - basta seguir três passos simples em \"Configurações / Adicionar segundo dispositivo\" (experimental)\n\n🖼🔍 Já procurou por uma imagem e não conseguiu se lembrar do bate-papo? \"Todas as mídias\" do menu principal é o seu!\n\nO que mais? Notificações para todas as contas, esvaziar bate-papo, e mais em %1$s</string>
     <!-- placeholder will be replaced by the URL https://delta.chat/en/2023-03-27-third-independent-security-audit -->
