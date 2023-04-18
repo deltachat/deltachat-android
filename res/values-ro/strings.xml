@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- common strings without special context -->
+    <string name="app_name">Delta Chat</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Anulați</string>
+    <string name="clear_search">Stergere Căutare</string>
+    <string name="yes">Da</string>
+    <string name="no">Nu</string>
+    <string name="select">Selectați</string>
+    <string name="on">Deschis</string>
+    <string name="off">Închideți</string>
+    <string name="def">Implicit</string>
+    <string name="default_value">Implicit (%1$s)</string>
+    <string name="default_value_as_above">Implicit (la fel ca mai sus)</string>
+    <string name="custom">Personalizat</string>
+    <string name="none">Nici unul</string>
+    <string name="automatic">Automat</string>
+    <string name="strict">Strict</string>
+    <string name="open">Deschideți</string>
+    <string name="download">Descărcați</string>
+    <string name="downloading">Descărcarea…</string>
+    <string name="open_attachment">Deschideți Atașamentul</string>
+    <string name="join">Alăturați-vă</string>
+    <string name="rejoin">Reînscrieți-vă la</string>
+    <string name="delete">Ștergeți</string>
+    <string name="info">Informații</string>
+    <string name="update">Actualizare</string>
+    <string name="emoji">Emoticon</string>
+    <string name="attachment">Atașament</string>
+    <string name="back">Înapoi</string>
+    <string name="close">Închideți</string>
+    <string name="forward">Redirecţionare</string>
+    <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
+    <string name="resend">Retrimite</string>
+    <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
+    <string name="archive">Arhivare</string>
+    <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
+    <string name="unarchive">Dezarhivare</string>
+    <string name="mute">Silențios</string>
+    <string name="ephemeral_messages">Mesaje dispărute</string>
+    <string name="ephemeral_messages_hint">Se aplică tuturor membrilor acestui chat dacă folosesc Delta Chat; aceștia pot în continuare să copieze, să salveze și să redirecționeze mesajele sau să utilizeze alți clienți de e-mail.</string>
+    <string name="save">Salvați</string>
+    <string name="chat">Chat</string>
+    <string name="media">Media</string>
+    <string name="profile">Profil</string>
+    <string name="main_menu">Meniul Principal</string>
+    <string name="start_chat">Începeți chat-ul</string>
+    <string name="show_full_message">Afișați mesajul complet...</string>
+    <string name="show_full_message_in_browser">Afișați mesajul complet în browser...</string>
+    <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
+    <string name="mark_all_as_read">Marcați toate ca fiind citite</string>
+    <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
+    <string name="mark_as_read_short">Citiți</string>
+    <!-- Placeholder text when something is loading -->
+    <string name="loading">Încărcare…</string>
+    <string name="hide">Ascundeți</string>
+    <string name="activate">Activați</string>
+    <string name="load_remote_content">Încărcați imagini la distanță</string>
+    <!-- Possible answers to the question are: Never, Always, Once -->
+    <string name="load_remote_content_ask">Imaginile de la distanță vă pot urmări.\n\nAceastă setare poate, de asemenea, să încarce fonturi și alt conținut. Dacă este dezactivată, pot apărea imagini încorporate sau în cache.\n\nÎncărcare imagini la distanță?</string>
+    <string name="always">Întotdeauna</string>
+    <string name="always_load_remote_images">Încărcați întotdeauna imagini la distanță</string>
+    <string name="once">Odată ce</string>
+    <string name="show_warning">Afișați avertismentul</string>
+    <string name="show_password">Afișați parola</string>
+    <string name="hide_password">Ascundeți parola</string>
+    <string name="not_now">Nu acum</string>
+    <string name="never">Niciodata</string>
+    <string name="one_moment">Un moment...</string>
+    <string name="done">Realizat</string>
+    <string name="undo">Anulați</string>
+    <string name="offline">Nu este conectat</string>
+    <!-- For the next view or as "continue". Should be as short as possible. -->
+    <string name="next">Următorul</string>
+    <string name="error">Eroare</string>
+    <string name="error_x">Eroare: %1$s</string>
+    <string name="no_app_to_handle_data">Nu pot găsi un app care să se ocupe de acest tip de date.</string>
+    <string name="no_browser_installed">Nu este instalat niciun browser.</string>
+    <string name="file_not_found">Nu a putut fi găsit %1$s.</string>
+    <string name="copied_to_clipboard">Copiat în clipboard.</string>
+    <string name="contacts_headline">Contacte</string>
+    <string name="email_address">Adresă de e-mail</string>
+    <string name="bad_email_address">Adresă de e-mail greșită.</string>
+    <string name="password">Parolă</string>
+    <string name="existing_password">Parolă existentă</string>
+    <string name="now">Acum</string>
+    <!-- Headline for destructive actions with no undo. Could also be "Caution" or "Warning". -->
+    <string name="danger">Pericol</string>
+    <string name="today">Azi</string>
+    <string name="yesterday">Ieri</string>
+    <string name="this_week">Săptămâna aceasta</string>
+    <string name="this_month">Luna aceasta</string>
+    <string name="last_week">Săptămâna trecută</string>
+    <string name="last_month">Luna trecută</string>
+    <!-- Placeholder replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
+    <string name="last_seen_at">Ultima dată văzut la %1$s</string>
+    <string name="last_seen_unknown">Ultima dată a fost văzut: Necunoscut</string>
+    <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
+    <plurals name="n_minutes">
+        <item quantity="one">%d minut</item>
+        <item quantity="few">%d minute</item>
+        <item quantity="other">%d de minute</item>
+    </plurals>
+    <!-- Shown beside messages that are "N hours old". Prefer short strings, or well-known abbreviations. -->
+    <plurals name="n_hours">
+        <item quantity="one">%d oră</item>
+        <item quantity="few">%d ore</item>
+        <item quantity="other">%d de ore</item>
+    </plurals>
+    <plurals name="n_chats">
+        <item quantity="one">%d chat</item>
+        <item quantity="few">%d chat-uri</item>
+        <item quantity="other">%d de chat-uri</item>
+    </plurals>
+    <plurals name="n_contacts">
+        <item quantity="one">%d contact</item>
+        <item quantity="few">%d contacte</item>
+        <item quantity="other">%d de contacte</item>
+    </plurals>
+    <plurals name="n_messages">
+        <item quantity="one">%d mesaj</item>
+        <item quantity="few">%d mesaje</item>
+        <item quantity="other">%d de mesaje</item>
+    </plurals>
+    <plurals name="n_members">
+        <item quantity="one">%d membru</item>
+        <item quantity="few">%d membrii</item>
+        <item quantity="other">%d de membrii</item>
+    </plurals>
+    <plurals name="n_recipients">
+        <item quantity="one">%d recipient</item>
+        <item quantity="few">%d recipiente</item>
+        <item quantity="other">%d de recipiente</item>
+    </plurals>
+    <!-- Short form for "N Items Selected" -->
+    <plurals name="n_selected">
+        <item quantity="one">%d Selectată</item>
+        <item quantity="few">%d Selectate</item>
+        <item quantity="other">%d De Selecții</item>
+    </plurals>
+
+    <string name="self">Eu</string>
+    <string name="draft">Schiță</string>
+    <string name="image">Imagine</string>
+    <!-- Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
+    <string name="reply_noun">Răspundeți</string>
+    <string name="gif">GIF</string>
+    <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
+    <string name="sticker">Abțibild</string>
+    <string name="images">Imagini</string>
+    <string name="audio">Audio</string>
+    <string name="voice_message">Mesaj vocal</string>
+    <string name="forwarded">Redirecționat</string>
+    <string name="forwarded_message">Mesaj redirecționat</string>
+    <!-- %1$s will be replaced by the name or the e-mail address of the person who forwards the message -->
+    <string name="forwarded_by">Redirecționat de %1$s</string>
+    <string name="video">Video</string>
+    <string name="documents">Documente</string>
+    <string name="contact">Contact</string>
+    <string name="verified_contact">Contact verificat</string>
+    <string name="camera">Cameră</string>
+    <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
+    <string name="capture">Captură</string>
+    <string name="switch_camera">Comutați camera</string>
+    <string name="toggle_fullscreen">Comutarea modului ecran complet</string>
+    <string name="location">Locație</string>
+    <string name="gallery">Galerie</string>
+    <string name="images_and_videos">Imagini și videoclipuri</string>
+    <string name="file">Fișier</string>
+    <string name="files">Fișiere</string>
+    <!-- "App" is used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
+    <string name="webxdc_app">App</string>
+    <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
+    <string name="webxdc_apps">App-uri</string>
+    <string name="files_and_webxdx_apps">Fișiere și App-uri</string>
+    <string name="unknown">Necunoscut</string>
+
+    <string name="green">Verde</string>
+    <string name="red">Roșu</string>
+    <string name="blue">Albastru</string>
+    <string name="orange">Portocaliu</string>
+    <string name="cyan">Cian</string>
+    <string name="purple">Purpuriu</string>
+    <string name="magenta">Magenta</string>
+    <string name="white">Alb</string>
+
+    <string name="zoom">Zoom</string>
+    <string name="extra_small">Foarte mic</string>
+    <string name="small">Mic</string>
+    <string name="normal">Normal</string>
+    <string name="large">Mare</string>
+    <string name="extra_large">Foarte mare</string>
+
+    <string name="fast">Rapid</string>
+    <string name="slow">Lent</string>
+
+    <!-- menu labels (or icon, buttons...) -->
+    <string name="menu_new_contact">Contact Nou</string>
+    <string name="menu_new_chat">Chat Nou</string>
+    <string name="menu_new_group">Grup Nou</string>
+    <!-- Use the same wording as "Subject" to help people coming from the e-mail context; eg. "Betreff" in German -->
+    <string name="new_group_or_subject">Subiect sau Grup Nou</string>
+    <string name="menu_new_verified_group">Noul Grup Verificat</string>
+    <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
+    <string name="broadcast_list">Listă de difuzare</string>
+    <string name="broadcast_lists">Liste de difuzare</string>
+    <string name="new_broadcast_list">Noua Listă de Difuzare</string>
+    <string name="add_recipients">Adăugați Destinatari</string>
+    <string name="menu_send">Trimiteți</string>
+    <string name="menu_toggle_keyboard">Comutați Tastatura Emoji</string>
+    <string name="menu_edit_group">Editați grupul</string>
+    <string name="menu_group_name_and_image">Numele și imaginea grupului</string>
+    <string name="menu_show_map">Afișați harta</string>
+    <string name="menu_show_global_map">Afișați toate locațiile</string>
+    <string name="menu_archive_chat">Arhivă Chat</string>
+    <string name="menu_unarchive_chat">Chat Dezarhivat</string>
+    <string name="menu_add_attachment">Adăugați Atașament</string>
+    <string name="menu_leave_group">Părăsiți Grupul</string>
+    <string name="menu_delete_chat">Ștergeți Chat-ul</string>
+    <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
+    <string name="clear_chat">Curăță Chat-ul</string>
+    <string name="ask_delete_named_chat">Sunteți sigur că vreți să ștergeți \"%1$s\"?</string>
+    <string name="menu_delete_messages">Ștergeți mesajele</string>
+    <string name="delete_contact">Ștergeți Contactul</string>
+    <string name="menu_delete_location">Ștergeți această locație?</string>
+    <string name="menu_message_details">Detalii Mesaj</string>
+    <string name="menu_copy_to_clipboard">Copiați în clipboard</string>
+    <string name="menu_copy_selection_to_clipboard">Selecție de copiere</string>
+    <string name="menu_copy_link_to_clipboard">Copiați link-ul</string>
+    <string name="menu_copy_text_to_clipboard">Copiați textul</string>
+    <string name="menu_copy_image_to_clipboard">Copiați imaginea</string>
+    <string name="menu_copy_email_to_clipboard">Copiați E-mailul</string>
+    <string name="paste_from_clipboard">Copiere din clipboard</string>
+    <string name="menu_forward">Redirecționați Mesajul</string>
+    <string name="menu_reply">Răspundeți la Mesaj</string>
+    <string name="menu_mute">Dezactivarea Notificărilor</string>
+    <string name="menu_unmute">Dezactivați</string>
+    <string name="menu_export_attachment">Exportați atașamentul</string>
+    <string name="menu_export_attachments">Exportați Atașamentele</string>
+    <string name="menu_all_media">Toate Mediile</string>
+    <!-- Command to jump to the original message corresponding to a gallery image or document -->
+    <string name="show_in_chat">Afișați în Chat</string>
+    <string name="menu_share">Împărtășiți</string>
+    <!-- Verb "to block sth." usually a mailing list or a contact, not a noun -->
+    <string name="block">Bloc</string>
+    <string name="menu_block_contact">Blocare Contact</string>
+    <string name="menu_unblock_contact">Deblocare Contact</string>
+    <string name="accept">Acceptați</string>
+    <string name="menu_play">Joacă</string>
+    <string name="menu_pause">Pauză</string>
+    <string name="menu_scroll_to_bottom">Derulați până jos</string>
+    <string name="menu_scroll_to_top">Derulați până Sus</string>
+    <string name="menu_help">Ajutor</string>
+    <string name="privacy_policy">Politica de confidențialitate</string>
+    <string name="menu_select_all">Selectați toate</string>
+    <string name="select_more">Selectați mai mult</string>
+    <string name="menu_edit_name">Editați Numele</string>
+    <string name="menu_settings">Setări</string>
+    <string name="menu_advanced">Avansată</string>
+    <string name="menu_view_profile">Vizualizați profilul</string>
+    <string name="menu_zoom_in">Zoom Interior</string>
+    <string name="menu_zoom_out">Zoom Exterior</string>
+    <string name="menu_save_log">Salvați Jurnalul</string>
+    <string name="menu_more_options">Mai multe opțiuni</string>
+    <string name="menu_learn_spelling">Învățați Ortografia</string>
+    <string name="menu_chat_audit_log">Jurnal de Audit pentru Chat</string>
+    <string name="jump_to_message">Sari la Mesaj</string>
+    <string name="copy_json"> Copiați JSON</string>
+    <string name="replace_draft">Înlocuiți proiectul</string>
+    <string name="title_share_location">Partajați locația cu toți membrii grupului</string>
+    <string name="device_talk">Mesajele Dispozitivului</string>
+    <string name="device_talk_subtitle">Mesaje generate la nivel local</string>
+    <string name="device_talk_explain">Mesajele din acest chat sunt generate pe dispozitivul dumneavoastră pentru a vă informa cu privire la actualizările app-ului și la problemele apărute în timpul utilizării.</string>
+    <string name="device_talk_welcome_message">Bine ați venit la Delta Chat! - Delta Chat arată și se simte ca și alte app-uri populare de mesagerie, dar nu implică control centralizat, urmărire sau vânzarea dumneavoastră, a prietenilor, colegilor sau a familiei către organizații mari.\n\nTehnic, Delta Chat este o aplicație de e-mail cu o interfață de chat modernă. E-mail într-o rochie nouă, dacă vreți 👻\n\nUtilizați Delta Chat cu oricine din miliardele de oameni: folosiți doar adresa lor de e-mail. Destinatarii nu trebuie să instaleze Delta Chat, să viziteze site-uri web sau să se înregistreze nicăieri - totuși, desigur, dacă doresc, le puteți indica 👉 https://get.delta.chat.
+
+Translated with DeepL</string>
+    <string name="edit_contact">Editați Contactul</string>
+    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
+    <string name="pin_chat">Fixați Chat</string>
+    <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
+    <string name="unpin_chat">Desprindeți Chat-ul</string>
+    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
+    <string name="pin">Fixați</string>
+    <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
+    <string name="unpin">Desprindeți</string>
+    <string name="ConversationFragment_quoted_message_not_found">Mesajul original nu a fost găsit</string>
+    <string name="reply_privately">Răspundeți în Privat</string>
+    <string name="source_code">Codul Sursă</string>
+    <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
+    <string name="add_to_home_screen">Adăugați la ecranul principal</string>
+
+    <string name="mute_for_one_hour">Silențios timp de 1 oră</string>
+    <string name="mute_for_two_hours">Silențios timp de 2 ore</string>
+    <string name="mute_for_one_day">Silențios pentru 1 zi</string>
+    <string name="mute_for_seven_days">Silențios timp de 7 zile</string>
+    <string name="mute_forever">Silențios pentru totdeauna</string>
+
+    <string name="share_location_for_5_minutes">Timp de 5 minute</string>
+    <string name="share_location_for_30_minutes">Timp de 30 de minute</string>
+    <string name="share_location_for_one_hour">Timp de 1 oră</string>
+    <string name="share_location_for_two_hours">Timp de 2 ore</string>
+    <string name="share_location_for_six_hours">Timp de 6 ore</string>
+
+    <plurals name="ask_send_following_n_files_to">
+        <item quantity="one">Trimiteți următorul fișier la %s?</item>
+        <item quantity="few">Trimiteți următoarele %d fișiere la %s?</item>
+        <item quantity="other">Trimiteți următoarele %d de fișiere la %s?</item>
+    </plurals>
+    <string name="file_saved_to">Fișier salvat la \"%1$s\".</string>
+
+    <string name="videochat">Chat video</string>
+    <string name="videochat_invite_user_to_videochat">Invitați %1$s la un chat video?</string>
+    <string name="videochat_invite_user_hint">Acest lucru necesită o aplicație sau un browser compatibil la ambele capete.</string>
+    <string name="videochat_contact_invited_hint">%1$s invitat la o discuție video.</string>
+    <string name="videochat_you_invited_hint">Ați trimis o invitație de videochat.</string>
+    <string name="videochat_tap_to_join">Atingeți pentru a vă alătura</string>
+    <string name="videochat_tap_to_open">Atingeți pentru a deschide</string>
+    <string name="videochat_instance">Instanță de Videochat</string>
+    <string name="videochat_instance_placeholder">Instanța Dumneavoastră de Videochat</string>
+    <string name="videochat_instance_example">Exemple: https://meet.jit.si/$ROOM ori basicwebrtc:https://your-server</string>
+    <string name="videochat_instance_explain_2">Dacă este activată, puteți începe un chat video din fiecare chat. Necesită un app compatibil sau un browser la ambele capete.</string>
+    <string name="videochat_instance_from_qr">Folosiți \"%1$s\" pentru a invita alte persoane la chat-uri video?\n\nOnce setat, puteți începe un chat video din fiecare chat. Acest lucru înlocuiește orice setare anterioară pentru chat-urile video.</string>
+    <string name="videochat_invitation">Invitație la chat video</string>
+    <string name="videochat_invitation_body">Sunteți invitat la un chat video, faceți clic %1$s pentru a vă alătura.</string>
+
+    <!-- get confirmations -->
+    <string name="ask_leave_group">Ești sigur că vrei să părăsești acest grup?</string>
+    <plurals name="ask_delete_chat">
+        <item quantity="one">Ștergeți %d chat-ul? Acestea nu vor mai fi afișate în lista de chat; mesajele lor vor rămâne pe server.</item>
+        <item quantity="few">Ștergeți %d chat-uri? Acestea nu vor mai fi afișate în lista de chat; mesajele lor vor rămâne pe server.</item>
+        <item quantity="other">Ștergeți %d de chat-urilAcestea nu vor mai fi afișate în lista de chat; mesajele lor vor rămâne pe server.</item>
+    </plurals>
+    <string name="ask_delete_message">Sunteți sigur că doriți să ștergeți acest mesaj?</string>
+    <plurals name="ask_delete_messages">
+        <item quantity="one">Ștergeți %d mesajul aici și pe server?</item>
+        <item quantity="few">Ștergeți %d mesajele de aici și de pe server?</item>
+        <item quantity="other">Ștergeți %d de mesaje de aici și de pe server?</item>
+    </plurals>
+    <plurals name="ask_delete_messages_simple">
+        <item quantity="one">Ștergeți %d mesaj?</item>
+        <item quantity="few">Ștergeți %d mesaje?</item>
+        <item quantity="other">Ștergeți %d de mesaje?</item>
+    </plurals>
+    <string name="ask_forward">Transmiteți mesajele către %1$s?</string>
+    <string name="ask_forward_multiple">Transmiteți mesajele către %1$d chat-uri?</string>
+    <string name="ask_export_attachment">Exportul atașamentelor va permite altor aplicații de pe dispozitivul dumneavoastră să le acceseze them.\n\nContinue?</string>
+    <string name="ask_block_contact">Să blochez acest contact? Nu veți mai primi mesaje de la această persoană.</string>
+    <string name="ask_unblock_contact">Deblocați acest contact? Astfel, veți putea primi mesaje de la această persoană.</string>
+    <string name="ask_delete_contacts">Ștergerea contacts?\n\nContacts cu discuții în curs sau din agenda de adrese a sistemului nu pot fi șterse definitiv.</string>
+    <string name="ask_delete_contact">Ștergerea contactului %1$s?\n\nContacts cu discuții în curs sau din agenda de adrese a sistemului nu pot fi șterse definitiv.</string>
+    <string name="cannot_delete_contacts_in_use">Nu se pot șterge contactele cu discuții în curs.</string>
+    <string name="ask_start_chat_with">Chat cu %1$s?</string>
+    <string name="ask_delete_value">Ștergeți %s?</string>
+    <!-- %1$s is replaced by a comma-separated list of names -->
+    <string name="ask_remove_members">Scoateți  %1$s din grup?</string>
+    <!-- %1$s is replaced by a comma-separated list of names -->
+    <string name="ask_remove_from_broadcast">Eliminați %1$s din lista de difuzare?</string>
+    <string name="open_url_confirmation">Doriți să deschideți acest link?</string>
+
+
+    <!-- contact list -->
+    <string name="contacts_title">Contacte</string>
+    <string name="contacts_enter_name_or_email">Introduceți numele sau adresa de e-mail</string>
+    <string name="contacts_type_email_above">Introduceți adresa de e-mail de mai sus</string>
+    </resources>

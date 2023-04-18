@@ -28,6 +28,7 @@
       <!-- pl     Polish -->                 <item>Polski</item>
       <!-- pt     Portuguese -->             <item>Português</item>
       <!-- pt_BR  Portuguese (Brazil) -->    <item>Português do Brasil</item>
+      <!-- ro     Romanian -->               <item>Română</item>
       <!-- sc     Sardinian -->              <item>Sardu</item>
       <!-- sq     Albanian -->               <item>Shqip</item>
       <!-- sk     Slovak -->                 <item>Slovenčina</item>
@@ -74,6 +75,7 @@
       <item>pl</item>
       <item>pt</item>
       <item>pt_BR</item>
+      <item>ro</item>
       <item>sc</item>
       <item>sq</item>
       <item>sk</item>
