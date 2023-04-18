@@ -1,6 +1,6 @@
 # Delta Chat Android Changelog
 
-## v1.36.3
+## v1.36.4
 2023-04
 
 * start with light/dark theme depending on system theme
