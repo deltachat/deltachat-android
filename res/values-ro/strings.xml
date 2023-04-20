@@ -272,9 +272,7 @@
     <string name="device_talk">Mesajele Dispozitivului</string>
     <string name="device_talk_subtitle">Mesaje generate la nivel local</string>
     <string name="device_talk_explain">Mesajele din acest chat sunt generate pe dispozitivul dumneavoastră pentru a vă informa cu privire la actualizările app-ului și la problemele apărute în timpul utilizării.</string>
-    <string name="device_talk_welcome_message">Bine ați venit la Delta Chat! - Delta Chat arată și se simte ca și alte app-uri populare de mesagerie, dar nu implică control centralizat, urmărire sau vânzarea dumneavoastră, a prietenilor, colegilor sau a familiei către organizații mari.\n\nTehnic, Delta Chat este o aplicație de e-mail cu o interfață de chat modernă. E-mail într-o rochie nouă, dacă vreți 👻\n\nUtilizați Delta Chat cu oricine din miliardele de oameni: folosiți doar adresa lor de e-mail. Destinatarii nu trebuie să instaleze Delta Chat, să viziteze site-uri web sau să se înregistreze nicăieri - totuși, desigur, dacă doresc, le puteți indica 👉 https://get.delta.chat.
-
-Translated with DeepL</string>
+    <string name="device_talk_welcome_message">Bine ați venit la Delta Chat! - Delta Chat arată și se simte ca și alte app-uri populare de mesagerie, dar nu implică control centralizat, urmărire sau vânzarea dumneavoastră, a prietenilor, colegilor sau a familiei către organizații mari.\n\nTehnic, Delta Chat este o aplicație de e-mail cu o interfață de chat modernă. E-mail într-o rochie nouă, dacă vreți 👻\n\nUtilizați Delta Chat cu oricine din miliardele de oameni: folosiți doar adresa lor de e-mail. Destinatarii nu trebuie să instaleze Delta Chat, să viziteze site-uri web sau să se înregistreze nicăieri - totuși, desigur, dacă doresc, le puteți indica 👉 https://get.delta.chat.</string>
     <string name="edit_contact">Editați Contactul</string>
     <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
     <string name="pin_chat">Fixați Chat</string>
@@ -363,4 +361,18 @@ Translated with DeepL</string>
     <string name="contacts_title">Contacte</string>
     <string name="contacts_enter_name_or_email">Introduceți numele sau adresa de e-mail</string>
     <string name="contacts_type_email_above">Introduceți adresa de e-mail de mai sus</string>
+    <string name="contacts_empty_hint">Fără contacte.</string>
+
+
+    <!-- chatlist and chat view -->
+    <plurals name="chat_archived">
+        <item quantity="one">%d chat arhivat</item>
+        <item quantity="few">%d  chat-uri arhivate</item>
+        <item quantity="other">%d de chat-uri arhivate</item>
+    </plurals>
+    <plurals name="chat_unarchived">
+        <item quantity="one">%d chat nearhivat</item>
+        <item quantity="few">%d chat-uri nearhivate</item>
+        <item quantity="other">%d de chat-uri nearhivate</item>
+    </plurals>
     </resources>
