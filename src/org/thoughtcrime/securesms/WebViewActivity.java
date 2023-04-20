@@ -21,9 +21,13 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.widget.SearchView;
 import androidx.webkit.WebSettingsCompat;
 import androidx.webkit.WebViewFeature;
+import androidx.webkit.ProxyController;
+import androidx.webkit.ProxyConfig;
 
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
+
+import java.util.concurrent.Executor;
 
 public class WebViewActivity extends PassphraseRequiredActionBarActivity
                                implements SearchView.OnQueryTextListener,
@@ -39,6 +43,29 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
   protected void onPreCreate() {
     dynamicTheme.onCreate(this);
     dynamicLanguage.onCreate(this);
+
+    if (WebViewFeature.isFeatureSupported(WebViewFeature.PROXY_OVERRIDE)) {
+      // Set proxy to non-routable address.
+      ProxyConfig proxyConfig = new ProxyConfig.Builder()
+          .removeImplicitRules()
+          .addProxyRule("0.0.0.0")
+          .build();
+      Executor executor = new Executor() {
+        @Override
+        public void execute(Runnable command) {
+          command.run();
+        }
+      };
+      Runnable listener = new Runnable() {
+        @Override
+        public void run() {
+          Log.i(TAG, "Successfully set WebView proxy.");
+        }
+      };
+      ProxyController.getInstance().setProxyOverride(proxyConfig, executor, listener);
+    } else {
+      Log.w(TAG, "Cannot set WebView proxy.");
+    }
   }
 
   @Override
