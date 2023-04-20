@@ -3,17 +3,20 @@ package org.thoughtcrime.securesms;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.webkit.WebResourceResponse;
 import android.webkit.WebSettings;
 
 import androidx.appcompat.app.AlertDialog;
 
 import com.b44t.messenger.DcContext;
+import com.b44t.messenger.DcHttpResponse;
 
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 
+import java.io.ByteArrayInputStream;
 import java.lang.ref.WeakReference;
 
 public class FullMsgActivity extends WebViewActivity
@@ -163,5 +166,34 @@ public class FullMsgActivity extends WebViewActivity
     }
     webView.getSettings().setBlockNetworkLoads(!this.loadRemoteContent);
     webView.reload();
+  }
+
+  @Override
+  protected WebResourceResponse interceptRequest(String url) {
+    WebResourceResponse res = null;
+    try {
+      if (url == null) {
+        throw new Exception("no url specified");
+      }
+
+      DcHttpResponse httpResponse = dcContext.getHttpResponse(url);
+      if (httpResponse == null) {
+        throw new Exception(dcContext.getLastError());
+      }
+
+      String mimeType = httpResponse.getMimetype();
+      if (mimeType == null) {
+        mimeType = "application/octet-stream";
+      }
+      String encoding = httpResponse.getEncoding();
+      if (encoding == null) {
+        encoding = "UTF-8";
+      }
+      res = new WebResourceResponse(mimeType, encoding, new ByteArrayInputStream(httpResponse.getBlob()));
+    } catch (Exception e) {
+      e.printStackTrace();
+      res = new WebResourceResponse("text/plain", "UTF-8", new ByteArrayInputStream(("Error: " + e.getMessage()).getBytes()));
+    }
+    return res;
   }
 }
