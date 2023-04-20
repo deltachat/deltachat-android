@@ -175,21 +175,15 @@ public class FullMsgActivity extends WebViewActivity
       if (url == null) {
         throw new Exception("no url specified");
       }
-
       DcHttpResponse httpResponse = dcContext.getHttpResponse(url);
       if (httpResponse == null) {
         throw new Exception(dcContext.getLastError());
       }
-
       String mimeType = httpResponse.getMimetype();
       if (mimeType == null) {
         mimeType = "application/octet-stream";
       }
-      String encoding = httpResponse.getEncoding();
-      if (encoding == null) {
-        encoding = "UTF-8";
-      }
-      res = new WebResourceResponse(mimeType, encoding, new ByteArrayInputStream(httpResponse.getBlob()));
+      res = new WebResourceResponse(mimeType, httpResponse.getEncoding(), new ByteArrayInputStream(httpResponse.getBlob()));
     } catch (Exception e) {
       e.printStackTrace();
       res = new WebResourceResponse("text/plain", "UTF-8", new ByteArrayInputStream(("Error: " + e.getMessage()).getBytes()));
