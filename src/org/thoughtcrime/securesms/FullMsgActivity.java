@@ -172,6 +172,9 @@ public class FullMsgActivity extends WebViewActivity
   protected WebResourceResponse interceptRequest(String url) {
     WebResourceResponse res = null;
     try {
+      if (!loadRemoteContent) {
+        throw new Exception("loading remote content disabled");
+      }
       if (url == null) {
         throw new Exception("no url specified");
       }
