@@ -1,0 +1,4 @@
+* use SOCKS5 configuration also for loading remote images in HTML mails
+* bug fixes
+* update translations and local help
+* update to core112.8
