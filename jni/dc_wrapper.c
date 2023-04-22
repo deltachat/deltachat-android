@@ -2169,8 +2169,7 @@ JNIEXPORT void Java_com_b44t_messenger_DcJsonrpcInstance_unrefJsonrpcInstanceCPt
 JNIEXPORT void Java_com_b44t_messenger_DcJsonrpcInstance_request(JNIEnv *env, jobject obj, jstring request)
 {
     CHAR_REF(request);
-    dc_jsonrpc_request(get_dc_jsonrpc_instance(env, obj), "{\"jsonrpc\":\"2.0\",\"method\":\"sleep\",\"params\":[5.0],\"id\":1}");
-    //dc_jsonrpc_request(get_dc_jsonrpc_instance(env, obj), request);
+    dc_jsonrpc_request(get_dc_jsonrpc_instance(env, obj), requestPtr);
     CHAR_UNREF(request);
 }
 
