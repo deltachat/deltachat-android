@@ -130,6 +130,7 @@ public class ApplicationContext extends MultiDexApplication {
     new Thread(() -> {
       int requestId = 0;
       while (true) {
+        if (false) {
         try {
           requestId++;
           StringWriter stringWriter = new StringWriter ();
@@ -148,6 +149,7 @@ public class ApplicationContext extends MultiDexApplication {
           dcJsonrpcInstance.request(request);
         } catch (Exception e) {
           e.printStackTrace();
+        }
         }
 
         String response = dcJsonrpcInstance.getNextResponse();
