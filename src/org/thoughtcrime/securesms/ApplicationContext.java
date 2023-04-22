@@ -9,6 +9,7 @@ import android.net.LinkProperties;
 import android.net.NetworkCapabilities;
 import android.os.Build;
 import android.util.Log;
+import android.util.JsonWriter;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatDelegate;
@@ -46,6 +47,7 @@ import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.SignalProtocolLoggerProvider;
 
 import java.io.File;
+import java.io.CharArrayWriter;
 import java.util.concurrent.TimeUnit;
 //import com.squareup.leakcanary.LeakCanary;
 
@@ -127,6 +129,25 @@ public class ApplicationContext extends MultiDexApplication {
 
     new Thread(() -> {
       while (true) {
+        try {
+          CharArrayWriter charWriter = new CharArrayWriter ();
+          JsonWriter writer = new JsonWriter(charWriter);
+          writer.beginObject();
+          writer.name("jsonrpc").value("2.0");
+          writer.name("method").value("sleep");
+          writer.name("params");
+          writer.beginArray();
+          writer.value(5.0);
+          writer.endArray();
+          writer.name("id").value(1);
+          writer.endObject();
+          String request = charWriter.toString();
+          Log.i(TAG, "Sending request: " + request);
+          dcJsonrpcInstance.request(request);
+        } catch (Exception e) {
+          e.printStackTrace();
+        }
+
         String response = dcJsonrpcInstance.getNextResponse();
         Log.i(TAG, "Got JSON-RPC response: " + response);
       }
