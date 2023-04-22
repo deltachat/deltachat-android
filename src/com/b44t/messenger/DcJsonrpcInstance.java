@@ -17,6 +17,5 @@ public class DcJsonrpcInstance {
 
     // working with raw c-data
     private long        jsonrpcInstanceCPtr;    // CAVE: the name is referenced in the JNI
-    private native long getNextEventCPtr     ();
     private native void unrefJsonrpcInstanceCPtr();
 }
