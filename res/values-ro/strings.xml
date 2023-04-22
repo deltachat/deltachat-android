@@ -375,4 +375,167 @@
         <item quantity="few">%d chat-uri nearhivate</item>
         <item quantity="other">%d de chat-uri nearhivate</item>
     </plurals>
+    <string name="chat_archived_chats_title">Chat-uri Arhivate</string>
+    <string name="chat_please_enter_message">Vă rugăm să introduceți un mesaj.</string>
+    <string name="chat_camera_unavailable">Cameră indisponibilă.</string>
+    <string name="chat_unable_to_record_audio">Nu se poate înregistra audio.</string>
+    <plurals name="chat_n_new_messages">
+        <item quantity="one">%d nou mesaj</item>
+        <item quantity="few">%d mesaje noi</item>
+        <item quantity="other">%d de mesaje noi</item>
+    </plurals>
+    <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
+    <string name="chat_new_one_to_one_hint">Trimiteți un mesaj către %1$s; ei îl pot primi chiar și fără Delta Chat.</string>
+    <string name="chat_new_broadcast_hint">Într-o listă de difuzare, alte persoane vor primi mesaje în discuțiile lor private cu dumneavoastră.\n\nDestinatarii nu se vor cunoaște între ei.</string>
+    <string name="chat_new_group_hint">Ceilalți vor vedea acest grup numai după ce ați trimis un prim mesaj.</string>
+    <string name="chat_record_slide_to_cancel">Glisați pentru a anula</string>
+    <string name="chat_record_explain">Atingeți continuu pentru a înregistra un mesaj vocal, apoi eliberați-l pentru a-l trimite</string>
+    <string name="chat_no_chats_yet_title">Goliți inbox.\nPress \"+\" pentru a începe un nou chat.</string>
+    <string name="chat_no_chats_yet_hint">Puteți discuta cu alți utilizatori Delta Chat și cu orice adresă de e-mail.</string>
+    <string name="chat_all_archived">Toate chat-urile sunt archived.\nPress \"+\" pentru a începe un nou chat.</string>
+    <string name="chat_share_with_title">Împărtășiți cu</string>
+    <string name="chat_input_placeholder">Mesaj</string>
+    <string name="chat_archived_label">Arhivat</string>
+    <string name="chat_request_label">Cerere</string>
+    <string name="chat_no_messages">Nu există mesaje.</string>
+    <string name="chat_self_talk_subtitle">Mesaje către sine</string>
+    <string name="archive_empty_hint">Chat-urile arhivate vor apărea aici.</string>
+    <string name="saved_messages">Mesaje salvate</string>
+    <string name="saved_messages_explain">• Redirecționați mesajele aici pentru acces ușor\n\n• Luați notițe sau notițe vocale\n\n\n• Atașați fișiere media pentru a le salva</string>
+    <!-- Should match "Saved" from "Saved messages" -->
+    <string name="saved">Salvat</string>
+    <string name="save_as">Salvați ca</string>
+    <string name="retry_send">Reîncercarea de a trimite mesajul</string>
+    <!-- reasons for a disabled message composer -->
+    <string name="messaging_disabled_not_in_group">Trebuie să fiți în acest grup pentru a posta un mesaj. Pentru a vă alătura, întrebați un alt membru.</string>
+    <string name="messaging_disabled_device_chat">Acest chat conține mesaje generate local; scrierea este dezactivată.</string>
+    <string name="messaging_disabled_mailing_list">Trimiterea de mesaje în listele de discuții nu este încă acceptată.</string>
+    <string name="cannot_display_unsuported_file_type">Nu se poate afișa acest tip de fișier: %s</string>
+    <string name="attachment_failed_to_load">Nu s-a reușit încărcarea atașamentului</string>
+    <!-- For recording Voice messages: Description for the "Lock" button allowing to lift the thumb from the record button while recording continues -->
+    <string name="lock_recording">Blocarea înregistrării</string>
+
+    <!-- mailing lists -->
+    <string name="mailing_list">Lista de corespondență</string>
+    <string name="mailing_list_profile_info">Modificările aduse numelui și imaginii listei de corespondență se aplică numai pe acest dispozitiv.</string>
+
+    <!-- webxdc -->
+    <!-- "Start..." button for an app -->
+    <string name="start_app">Start…</string>
+    <!-- this is a warning that is shown when one tries to send something to a chat that is not yet accepted. -->
+    <string name="accept_request_first">Vă rugăm să acceptați mai întâi cererea de chat.</string>
+
+    <!-- map -->
+    <string name="filter_map_on_time">Afișați locațiile în intervalul de timp</string>
+    <string name="show_location_traces">Afișați urme</string>
+    <string name="add_poi">Trimiteți punctul de interes</string>
+
+    <!-- chat audit log -->
+    <string name="chat_audit_log_empty_message">Mesajele de sistem pentru acest chat apar aici</string>
+    <string name="chat_audit_log_title">Jurnal de audit de chat pentru %1$s</string>
+    <string name="chat_audit_log_description">Afișează numai mesajele de sistem și cele informative; este util pentru a găsi ultimele acțiuni de chat fără a derula prin multe mesaje. </string>
+
+    <!-- punycode warning / labeled links -->
+    <!-- placeholder is domain/hostname that should be trusted -->
+    <string name="open_external_url_trust_domain">Nu cereți din nou %1$s</string>
+    <string name="puny_code_warning_header">Link suspect detectat</string>
+    <!-- placeholder contains the hostname converted to ascii -->
+    <string name="puny_code_warning_question">Ești sigur că vrei să vizitezi  %1$s?</string>
+    <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
+    <string name="puny_code_warning_description">Acest link poate denatura caracterele cu caractere asemănătoare din diferite alfabete. Urmând linkul etichetat %1$s va duce la %2$s ceea ce este normal pentru caracterele non-latine. Dacă nu v-ați așteptat la astfel de caractere, acest link ar putea fi dăunător.</string>
+
+
+    <!-- search -->
+    <string name="search">Căutați</string>
+    <string name="search_explain">Căutați chat-uri, contacte și mesaje</string>
+    <string name="search_no_result_for_x">Nu s-au găsit rezultate pentru \"%s\"</string>
+
+
+    <!-- create/edit groups, contact/group profile -->
+    <string name="group_name">Numele Grup</string>
+    <string name="group_avatar">Imagine de Grup</string>
+    <string name="remove_group_image">Eliminați Imaginea Grupului</string>
+    <string name="change_group_image">Schimbarea Imaginii Grupului</string>
+    <string name="group_create_button">Creați un Grup</string>
+    <string name="group_please_enter_group_name">Vă rugăm să introduceți un nume pentru grup.</string>
+    <string name="group_add_members">Adăugați Membri</string>
+    <string name="group_self_not_in_group">Trebuie să fiți membru al grupului pentru a efectua această acțiune.</string>
+    <string name="profile_encryption">Criptare</string>
+    <string name="profile_shared_chats">Chat-uri Partajate</string>
+    <string name="tab_contact">Contact</string>
+    <string name="tab_group">Grup</string>
+    <string name="tab_gallery">Galerie</string>
+    <string name="tab_docs">Documente</string>
+    <string name="tab_links">Link-uri</string>
+    <string name="tab_map">Hartă</string>
+    <string name="tab_gallery_empty_hint">Imaginile și videoclipurile partajate în acest chat vor apărea aici.</string>
+    <string name="tab_docs_empty_hint">Documentele și alte fișiere partajate în acest chat vor apărea aici.</string>
+    <string name="tab_image_empty_hint">Imaginile partajate în acest chat vor apărea aici.</string>
+    <string name="tab_video_empty_hint">Videoclipurile partajate în acest chat vor apărea aici.</string>
+    <string name="tab_audio_empty_hint">Fișierele audio și mesajele vocale partajate în acest chat vor apărea aici.</string>
+    <string name="tab_webxdc_empty_hint">App-urile partajate în acest chat vor apărea aici.</string>
+    <string name="tab_all_media_empty_hint">Materialele media partajate în orice chat vor apărea aici.</string>
+    <string name="media_preview">Previzualizare Media</string>
+    <string name="send_message">Trimiteți Mesaj</string>
+    <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
+    <string name="aeap_addr_changed">%1$s și-au schimbat adresa de la %2$s la %3$s</string>
+    <!-- the explanation is shown (1) as a modal dialog with the buttons "Cancel" and "Continue" as well as (2) as a device message -->
+    <string name="aeap_explanation">V-ați schimbat adresa de e-mail de la %1$s la %2$s.\n\nDacă trimiteți acum un mesaj către un grup verificat, contactele de acolo vor înlocui automat vechea adresă cu noua dumneavoastră adresă.\n\nSe recomandă să vă configurați vechiul furnizor de e-mail pentru a redirecționa toate e-mailurile către noua dumneavoastră adresă de e-mail. În caz contrar, s-ar putea să pierdeți mesaje ale contactelor care nu au primit încă noua dumneavoastră adresă.</string>
+
+
+    <!-- Multi Device -->
+    <!-- "Second Device" can also be translated as "Another Device", if that is catchier in the destination language. However, make sure to use the term consistently. -->
+    <string name="multidevice_title">Adăugați un al doilea dispozitiv</string>
+    <string name="multidevice_same_network_hint">Asigurați-vă că ambele dispozitive se află în aceeași rețea Wi-Fi sau în aceeași rețea</string>
+    <string name="multidevice_this_creates_a_qr_code">Astfel se creează un cod QR pe care cel de-al doilea dispozitiv îl poate scana pentru a copia contul.</string>
+    <string name="multidevice_install_dc_on_other_device">Instalați Delta Chat pe celălalt dispozitiv (https://get.delta.chat)</string>
+    <string name="multidevice_tap_scan_on_other_device">Porniți Delta Chat, atingeți \" Adăugați ca al doilea dispozitiv\" și scanați codul afișat aici</string>
+    <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and/or address eg. "Scan to set up second device for Alice (alice@example.org)" -->
+    <string name="multidevice_qr_subtitle">Scanare pentru a configura un al doilea dispozitiv pentru %1$s</string>
+    <string name="multidevice_receiver_title">Adăugați ca Dispozitiv Secundar</string>
+    <string name="multidevice_open_settings_on_other_device">Pe primul dispozitiv, mergeți la \" Setări / Adaugă Dispozitivul Secundar \" și scanați codul afișat acolo.</string>
+    <string name="multidevice_receiver_scanning_ask">Copiați contul de pe celălalt dispozitiv pe acest dispozitiv?</string>
+    <string name="multidevice_abort">Abandonați configurarea celui de-al doilea dispozitiv?</string>
+    <string name="multidevice_abort_will_invalidate_copied_qr">Acest lucru va invalida codul QR copiat în clipboard.</string>
+    <string name="multidevice_experimental_hint">(experimental, este necesară versiunea 1.36)</string>
+    <string name="multidevice_transfer_done_devicemsg">ℹ️ Contul a fost transferat pe dispozitivul secundar.</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="preparing_account">Pregătirea contului...</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="waiting_for_receiver">În așteptare pentru receptor...</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="receiver_connected">Receptorul conectat...</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="transferring">Transferul...</string>
+    <string name="troubleshooting">Depanare</string>
+
+    <!-- Connectivity -->
+    <!-- Headline for the "Inbox" eg. in the "Connectivity" view -->
+    <string name="incoming_messages">Mesaje primite</string>
+    <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
+    <string name="outgoing_messages">Mesaje de ieșire</string>
+    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by the domain of the configured email-address. -->
+    <string name="storage_on_domain">Depozitarea pe %1$s</string>
+    <string name="connectivity">Conectivitate</string>
+    <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
+    <string name="connectivity_not_connected">Nu este conectat</string>
+    <!-- Shown in the title bar if the app is "Connecting"; prefer short strings. The ellipsis is a single character (…), not three (...) -->
+    <string name="connectivity_connecting">Conectare...</string>
+    <!-- Shown in the title bar if the app is "Updating" (eg. getting new/old message, sync things); prefer short strings. The ellipsis is a single character (…), not three (...) -->
+    <string name="connectivity_updating">Actualizare...</string>
+    <!-- Shown in the setting if the app is "Connected" -->
+    <string name="connectivity_connected">Conectat</string>
+    <string name="sending">Trimitere…</string>
+    <string name="last_msg_sent_successfully">Ultimul mesaj a fost trimis cu succes.</string>
+    <string name="not_supported_by_provider">Nu este suportat de furnizorul dumneavoastră.</string>
+    <!-- Subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed. -->
+    <string name="messages">Mesaje</string>
+    <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
+    <string name="part_of_total_used">%1$s de %2$s folosit</string>
+
+
+    <!-- welcome and login -->
+    <string name="welcome_chat_over_email">Chat prin e-mail.</string>
+    <string name="scan_invitation_code">Scanați Codul Invitației</string>
+    <string name="welcome_intro1_message">Mesagerul cu cea mai largă audiență din lume. Liber și independent.</string>
     </resources>
