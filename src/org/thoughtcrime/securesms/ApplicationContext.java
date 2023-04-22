@@ -23,6 +23,7 @@ import com.b44t.messenger.DcAccounts;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcEventEmitter;
+import com.b44t.messenger.DcJsonrpcInstance;
 
 import org.thoughtcrime.securesms.components.emoji.EmojiProvider;
 import org.thoughtcrime.securesms.connect.AccountManager;
@@ -52,6 +53,7 @@ public class ApplicationContext extends MultiDexApplication {
   private static final String TAG = ApplicationContext.class.getSimpleName();
 
   public DcAccounts             dcAccounts;
+  public DcJsonrpcInstance      dcJsonrpcInstance;
   public DcContext              dcContext;
   public DcLocationManager      dcLocationManager;
   public DcEventCenter          eventCenter;
@@ -88,6 +90,7 @@ public class ApplicationContext extends MultiDexApplication {
     System.loadLibrary("native-utils");
 
     dcAccounts = new DcAccounts("Android "+BuildConfig.VERSION_NAME, new File(getFilesDir(), "accounts").getAbsolutePath());
+    dcJsonrpcInstance = dcAccounts.getJsonrpcInstance();
     AccountManager.getInstance().migrateToDcAccounts(this);
     int[] allAccounts = dcAccounts.getAll();
     for (int accountId : allAccounts) {
