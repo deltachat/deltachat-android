@@ -23,6 +23,7 @@ import com.b44t.messenger.DcAccounts;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcEventEmitter;
+import com.b44t.messenger.DcJsonrpcInstance;
 
 import org.thoughtcrime.securesms.components.emoji.EmojiProvider;
 import org.thoughtcrime.securesms.connect.AccountManager;
@@ -111,13 +112,14 @@ public class ApplicationContext extends MultiDexApplication {
     notificationCenter = new NotificationCenter(this);
     eventCenter = new DcEventCenter(this);
     new Thread(() -> {
-      DcEventEmitter emitter = dcAccounts.getEventEmitter();
+      DcJsonrpcInstance emitter = dcAccounts.getJsonrpcInstance();
       while (true) {
-        DcEvent event = emitter.getNextEvent();
-        if (event==null) {
+        String response = emitter.getNextResponse();
+        if (response==null) {
           break;
         }
-        eventCenter.handleEvent(event);
+        // TODO convert notification to event
+        //eventCenter.handleEvent(event);
       }
       Log.i("DeltaChat", "shutting down event handler");
     }, "eventThread").start();
