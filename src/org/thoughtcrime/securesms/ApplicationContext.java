@@ -128,8 +128,10 @@ public class ApplicationContext extends MultiDexApplication {
     }, "eventThread").start();
 
     new Thread(() -> {
+      int requestId = 0;
       while (true) {
         try {
+          requestId++;
           CharArrayWriter charWriter = new CharArrayWriter ();
           JsonWriter writer = new JsonWriter(charWriter);
           writer.beginObject();
@@ -139,7 +141,7 @@ public class ApplicationContext extends MultiDexApplication {
           writer.beginArray();
           writer.value(5.0);
           writer.endArray();
-          writer.name("id").value(1);
+          writer.name("id").value(requestId);
           writer.endObject();
           String request = charWriter.toString();
           Log.i(TAG, "Sending request: " + request);
