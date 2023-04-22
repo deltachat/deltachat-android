@@ -125,6 +125,13 @@ public class ApplicationContext extends MultiDexApplication {
       Log.i("DeltaChat", "shutting down event handler");
     }, "eventThread").start();
 
+    new Thread(() -> {
+      while (true) {
+        String response = dcJsonrpcInstance.getNextResponse();
+        Log.i(TAG, "Got JSON-RPC response: " + response);
+      }
+    }, "jsonrpcThread").start();
+
     // set translations before starting I/O to avoid sending untranslated MDNs (issue #2288)
     DcHelper.setStockTranslations(this);
 
