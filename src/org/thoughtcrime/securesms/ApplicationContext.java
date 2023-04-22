@@ -47,7 +47,7 @@ import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.SignalProtocolLoggerProvider;
 
 import java.io.File;
-import java.io.CharArrayWriter;
+import java.io.StringWriter;
 import java.util.concurrent.TimeUnit;
 //import com.squareup.leakcanary.LeakCanary;
 
@@ -132,8 +132,8 @@ public class ApplicationContext extends MultiDexApplication {
       while (true) {
         try {
           requestId++;
-          CharArrayWriter charWriter = new CharArrayWriter ();
-          JsonWriter writer = new JsonWriter(charWriter);
+          StringWriter stringWriter = new StringWriter ();
+          JsonWriter writer = new JsonWriter(stringWriter);
           writer.beginObject();
           writer.name("jsonrpc").value("2.0");
           writer.name("method").value("sleep");
@@ -143,7 +143,7 @@ public class ApplicationContext extends MultiDexApplication {
           writer.endArray();
           writer.name("id").value(requestId);
           writer.endObject();
-          String request = charWriter.toString();
+          String request = stringWriter.toString();
           Log.i(TAG, "Sending request: " + request);
           dcJsonrpcInstance.request(request);
         } catch (Exception e) {
