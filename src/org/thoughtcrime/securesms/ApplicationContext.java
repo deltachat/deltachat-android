@@ -9,7 +9,6 @@ import android.net.LinkProperties;
 import android.net.NetworkCapabilities;
 import android.os.Build;
 import android.util.Log;
-import android.util.JsonWriter;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatDelegate;
@@ -24,7 +23,6 @@ import com.b44t.messenger.DcAccounts;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcEventEmitter;
-import com.b44t.messenger.DcJsonrpcInstance;
 
 import org.thoughtcrime.securesms.components.emoji.EmojiProvider;
 import org.thoughtcrime.securesms.connect.AccountManager;
@@ -34,6 +32,7 @@ import org.thoughtcrime.securesms.connect.FetchWorker;
 import org.thoughtcrime.securesms.connect.ForegroundDetector;
 import org.thoughtcrime.securesms.connect.KeepAliveService;
 import org.thoughtcrime.securesms.connect.NetworkStateReceiver;
+import org.thoughtcrime.securesms.connect.DcRpc;
 import org.thoughtcrime.securesms.crypto.DatabaseSecret;
 import org.thoughtcrime.securesms.crypto.DatabaseSecretProvider;
 import org.thoughtcrime.securesms.crypto.PRNGFixes;
@@ -44,18 +43,21 @@ import org.thoughtcrime.securesms.notifications.NotificationCenter;
 import org.thoughtcrime.securesms.util.AndroidSignalProtocolLogger;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
+import org.thoughtcrime.securesms.util.JsonUtils;
 import org.thoughtcrime.securesms.util.SignalProtocolLoggerProvider;
+import org.thoughtcrime.securesms.util.concurrent.ListenableFuture;
 
 import java.io.File;
-import java.io.StringWriter;
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.ExecutionException;
 //import com.squareup.leakcanary.LeakCanary;
 
 public class ApplicationContext extends MultiDexApplication {
   private static final String TAG = ApplicationContext.class.getSimpleName();
 
   public DcAccounts             dcAccounts;
-  public DcJsonrpcInstance      dcJsonrpcInstance;
+  public DcRpc                  dcRpc;
   public DcContext              dcContext;
   public DcLocationManager      dcLocationManager;
   public DcEventCenter          eventCenter;
@@ -92,7 +94,7 @@ public class ApplicationContext extends MultiDexApplication {
     System.loadLibrary("native-utils");
 
     dcAccounts = new DcAccounts("Android "+BuildConfig.VERSION_NAME, new File(getFilesDir(), "accounts").getAbsolutePath());
-    dcJsonrpcInstance = dcAccounts.getJsonrpcInstance();
+    dcRpc = new DcRpc(dcAccounts.getJsonrpcInstance());
     AccountManager.getInstance().migrateToDcAccounts(this);
     int[] allAccounts = dcAccounts.getAll();
     for (int accountId : allAccounts) {
@@ -127,48 +129,23 @@ public class ApplicationContext extends MultiDexApplication {
       Log.i("DeltaChat", "shutting down event handler");
     }, "eventThread").start();
 
-    new Thread(() -> {
-      int requestId = 0;
-      while (true) {
-        try {
-          requestId++;
-          StringWriter stringWriter = new StringWriter ();
-          JsonWriter writer = new JsonWriter(stringWriter);
-          writer.beginObject();
-          writer.name("jsonrpc").value("2.0");
-          writer.name("method").value("sleep");
-          writer.name("params");
-          writer.beginArray();
-          writer.value(5.0);
-          writer.endArray();
-          writer.name("id").value(requestId);
-          writer.endObject();
-          String request = stringWriter.toString();
-          Log.i(TAG, "Sending request: " + request);
-          dcJsonrpcInstance.request(request);
-        } catch (Exception e) {
-          e.printStackTrace();
-        }
+    dcRpc.start();
+    // TODO: example usage, remove
+    ListenableFuture.Listener<Object> listener = new ListenableFuture.Listener<Object>() {
+            @Override
+            public void onSuccess(Object result) {
+                try {
+                    Log.i(TAG, "Got JSON-RPC response: " + JsonUtils.toJson(result));
+                } catch (IOException e) {
+                }
+            }
 
-        String response = JSONObject(dcJsonrpcInstance.getNextResponse());
-
-        int response_id = response.getInt("id");
-        if (response_id == null) {
-          Log.i(TAG, "Got JSON-RPC notification: " + response.toString());
-          continue;
-        }
-
-        Object error = response.get("error");
-        Object result = response.get("result");
-        if (error != null) {
-          Log.i(TAG, "Got JSON-RPC error: " + error.toString());
-        } else if (result != null) {
-          Log.i(TAG, "Got JSON-RPC response: " + response.toString());
-        } else {
-          Log.e(TAG, "Got JSON-RPC response witout result or error: " + response.toString());
-        }
-      }
-    }, "jsonrpcThread").start();
+            @Override
+            public void onFailure(ExecutionException e) {
+                Log.e(TAG, "Got JSON-RPC error: " + e.getCause().toString());
+            }
+    };
+    dcRpc.call("sleep", 5.0).addListener(listener);
 
     // set translations before starting I/O to avoid sending untranslated MDNs (issue #2288)
     DcHelper.setStockTranslations(this);
