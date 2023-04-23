@@ -25,6 +25,7 @@ import com.b44t.messenger.DcMsg;
 import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.BuildConfig;
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.connect.DcRpc;
 import org.thoughtcrime.securesms.database.model.ThreadRecord;
 import org.thoughtcrime.securesms.notifications.NotificationCenter;
 import org.thoughtcrime.securesms.recipients.Recipient;
@@ -73,6 +74,10 @@ public class DcHelper {
 
     public static DcContext getContext(@NonNull Context context) {
         return ApplicationContext.getInstance(context).dcContext;
+    }
+
+    public static DcRpc getRpc(@NonNull Context context) {
+        return ApplicationContext.getInstance(context).dcRpc;
     }
 
     public static DcAccounts getAccounts(@NonNull Context context) {

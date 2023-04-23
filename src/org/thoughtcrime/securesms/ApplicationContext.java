@@ -133,7 +133,7 @@ public class ApplicationContext extends MultiDexApplication {
         Object result = dcRpc.call("get_system_info").get();
         Log.i(TAG, "Got JSON-RPC response: " + (result!=null? result.toString() : "null"));
     } catch (Exception e) {
-        Log.e(TAG, "Got JSON-RPC error: ", e);
+        Log.e(TAG, "Got JSON-RPC error", e);
     }
 
     // set translations before starting I/O to avoid sending untranslated MDNs (issue #2288)
