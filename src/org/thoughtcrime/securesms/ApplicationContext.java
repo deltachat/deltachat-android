@@ -130,7 +130,6 @@ public class ApplicationContext extends MultiDexApplication {
     new Thread(() -> {
       int requestId = 0;
       while (true) {
-        if (false) {
         try {
           requestId++;
           StringWriter stringWriter = new StringWriter ();
@@ -150,10 +149,24 @@ public class ApplicationContext extends MultiDexApplication {
         } catch (Exception e) {
           e.printStackTrace();
         }
+
+        String response = JSONObject(dcJsonrpcInstance.getNextResponse());
+
+        int response_id = response.getInt("id");
+        if (response_id == null) {
+          Log.i(TAG, "Got JSON-RPC notification: " + response.toString());
+          continue;
         }
 
-        String response = dcJsonrpcInstance.getNextResponse();
-        Log.i(TAG, "Got JSON-RPC response: " + response);
+        Object error = response.get("error");
+        Object result = response.get("result");
+        if (error != null) {
+          Log.i(TAG, "Got JSON-RPC error: " + error.toString());
+        } else if (result != null) {
+          Log.i(TAG, "Got JSON-RPC response: " + response.toString());
+        } else {
+          Log.e(TAG, "Got JSON-RPC response witout result or error: " + response.toString());
+        }
       }
     }, "jsonrpcThread").start();
 
