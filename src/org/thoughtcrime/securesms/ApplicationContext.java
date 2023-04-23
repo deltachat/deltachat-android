@@ -48,7 +48,6 @@ import org.thoughtcrime.securesms.util.SignalProtocolLoggerProvider;
 import org.thoughtcrime.securesms.util.concurrent.ListenableFuture;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.ExecutionException;
 //import com.squareup.leakcanary.LeakCanary;
@@ -134,10 +133,7 @@ public class ApplicationContext extends MultiDexApplication {
     ListenableFuture.Listener<Object> listener = new ListenableFuture.Listener<Object>() {
             @Override
             public void onSuccess(Object result) {
-                try {
-                    Log.i(TAG, "Got JSON-RPC response: " + JsonUtils.toJson(result));
-                } catch (IOException e) {
-                }
+                Log.i(TAG, "Got JSON-RPC response: " + (result!=null? result.toString() : "null"));
             }
 
             @Override
