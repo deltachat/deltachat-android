@@ -45,11 +45,9 @@ import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.JsonUtils;
 import org.thoughtcrime.securesms.util.SignalProtocolLoggerProvider;
-import org.thoughtcrime.securesms.util.concurrent.ListenableFuture;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.ExecutionException;
 //import com.squareup.leakcanary.LeakCanary;
 
 public class ApplicationContext extends MultiDexApplication {
@@ -129,19 +127,14 @@ public class ApplicationContext extends MultiDexApplication {
     }, "eventThread").start();
 
     dcRpc.start();
-    // TODO: example usage, remove
-    ListenableFuture.Listener<Object> listener = new ListenableFuture.Listener<Object>() {
-            @Override
-            public void onSuccess(Object result) {
-                Log.i(TAG, "Got JSON-RPC response: " + (result!=null? result.toString() : "null"));
-            }
 
-            @Override
-            public void onFailure(ExecutionException e) {
-                Log.e(TAG, "Got JSON-RPC error: " + e.getCause().toString());
-            }
-    };
-    dcRpc.call("sleep", 5.0).addListener(listener);
+    // TODO: example usage, remove
+    try {
+        Object result = dcRpc.call("get_system_info").get();
+        Log.i(TAG, "Got JSON-RPC response: " + (result!=null? result.toString() : "null"));
+    } catch (Exception e) {
+        Log.e(TAG, "Got JSON-RPC error: ", e);
+    }
 
     // set translations before starting I/O to avoid sending untranslated MDNs (issue #2288)
     DcHelper.setStockTranslations(this);
