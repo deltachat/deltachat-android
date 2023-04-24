@@ -196,6 +196,9 @@ public class QrCodeHandler {
             int chatId = dcContext.createChatByContactId(qrParsed.getId());
             Intent intent = new Intent(activity, ConversationActivity.class);
             intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
+            if (qrParsed.getText1Meaning() == DcLot.DC_TEXT1_DRAFT) {
+                intent.putExtra(ConversationActivity.TEXT_EXTRA, qrParsed.getText1());
+            }
             activity.startActivity(intent);
         });
         builder.setNegativeButton(android.R.string.cancel, null);
