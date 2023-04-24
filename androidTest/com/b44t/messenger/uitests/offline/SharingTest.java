@@ -9,7 +9,9 @@ import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
 
+import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
+import com.b44t.messenger.DcMsg;
 import com.b44t.messenger.TestUtils;
 
 import org.junit.After;
@@ -29,10 +31,10 @@ import java.io.File;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.Espresso.pressBack;
 import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.action.ViewActions.longClick;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.hasDescendant;
 import static androidx.test.espresso.matcher.ViewMatchers.isClickable;
-import static androidx.test.espresso.matcher.ViewMatchers.withChild;
 import static androidx.test.espresso.matcher.ViewMatchers.withHint;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
@@ -88,14 +90,7 @@ public class SharingTest {
   @Test
   public void testShareFromScreenshot() {
     DcContext dcContext = DcHelper.getContext(getInstrumentation().getTargetContext());
-    String[] files = new File(dcContext.getBlobdir()).list();
-    String pngImage = null;
-    assert files != null;
-    for (String file : files) {
-      if (file.endsWith(".png")) {
-        pngImage = file;
-      }
-    }
+    String pngImage = getPngImage();
     Uri uri = Uri.parse("content://" + BuildConfig.APPLICATION_ID + ".attachments/" + Uri.encode(pngImage));
     DcHelper.sharedFiles.put("/" + pngImage, 1);
 
@@ -122,6 +117,23 @@ public class SharingTest {
     pressBack();
 
     onView(withId(R.id.fab)).check(matches(isClickable()));
+  }
+
+  /**
+   * Get the URI of a PNG image we find in the blobdir.
+   * It doesn't matter which one, this is just meant so that we can test sending an image.
+   */
+  private String getPngImage() {
+    DcContext dcContext = DcHelper.getContext(getInstrumentation().getTargetContext());
+    String[] files = new File(dcContext.getBlobdir()).list();
+    assert files != null;
+    for (String file : files) {
+      if (file.endsWith(".png")) {
+        return file;
+      }
+    }
+
+    throw new RuntimeException("No image files found");
   }
 
   /**
@@ -203,6 +215,41 @@ public class SharingTest {
     // Check that the draft is still there
     Util.sleep(2000);
     onView(withHint(R.string.chat_input_placeholder)).check(matches(withText("Veeery important draft")));
+  }
+
+  // - Share an image to another chat from within DC
+  // - Open the image
+  // - Click back
+  // - Check that the image is still there
+  @Test
+  public void testShareToOtherChat() {
+    DcContext dcContext = DcHelper.getContext(getInstrumentation().getTargetContext());
+
+    String image = getPngImage();
+
+    DcMsg msg = new DcMsg(dcContext, DcMsg.DC_MSG_IMAGE);
+    msg.setFile(dcContext.getBlobdir() + "/" + image, "image/png");
+    int chatId = dcContext.createChatByContactId(DcContact.DC_CONTACT_ID_SELF);
+    dcContext.sendMsg(chatId, msg);
+
+    onView(withId(R.id.list)).perform(RecyclerViewActions.actionOnItem(hasDescendant(withText("Saved Messages")), click()));
+    onView(withId(android.R.id.list)).perform(RecyclerViewActions.actionOnItemAtPosition(0, longClick()));
+
+    DcHelper.INSTRUMENTATION_TESTING = true;
+    onView(withId(R.id.menu_context_share)).perform(click());
+
+    onView(withId(R.id.list)).perform(RecyclerViewActions.actionOnItem(hasDescendant(withText("abc@example.org")), click()));
+    onView(withId(R.id.removable_media_view)).perform(click());
+    pressBack();
+
+    onView(withId(R.id.removable_media_view)).perform(click());
+    pressBack();
+
+    TestUtils.pressSend();
+
+    onView(withId(android.R.id.list)).perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
+    pressBack();
+    pressBack();
   }
 
   @After
