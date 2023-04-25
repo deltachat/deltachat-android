@@ -27,11 +27,11 @@ import androidx.fragment.app.Fragment;
 public class ConversationListRelayingActivity extends ConversationListActivity {
   public static void start(Fragment fragment, Intent intent) {
     intent.setComponent(new ComponentName(fragment.getContext(), ConversationListRelayingActivity.class));
-    fragment.startActivityForResult(intent, REQUEST_RELAY);
+    fragment.startActivity(intent);
   }
 
   public static void start(Activity activity, Intent intent) {
     intent.setComponent(new ComponentName(activity, ConversationListRelayingActivity.class));
-    activity.startActivityForResult(intent, REQUEST_RELAY);
+    activity.startActivity(intent);
   }
 }

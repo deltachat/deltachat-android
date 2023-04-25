@@ -269,8 +269,6 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity implement
       RelayUtil.setSharedUris(composeIntent, resolvedExtras);
       ConversationListRelayingActivity.start(this, composeIntent);
     }
-    // We use startActivityForResult() here so that the conversations list is correctly updated. (hide "Device messages", ...)a
-    // With startActivity() the list was not always updated before and after sharing and incorrectly showed or did not show the device talk.
     finish();
   }
 

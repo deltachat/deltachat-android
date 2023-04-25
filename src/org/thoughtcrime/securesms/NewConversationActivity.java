@@ -182,11 +182,9 @@ public class NewConversationActivity extends ContactSelectionActivity {
     intent.putExtra(CHAT_ID_EXTRA, chatId);
     if (isRelayingMessageContent(this)) {
       acquireRelayMessageContent(this, intent);
-      startActivityForResult(intent, REQUEST_RELAY);
-    } else {
-      startActivity(intent);
-      finish();
     }
+    startActivity(intent);
+    finish();
   }
 
   @Override

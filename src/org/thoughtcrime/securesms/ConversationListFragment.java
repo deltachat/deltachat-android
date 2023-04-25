@@ -232,7 +232,7 @@ public class ConversationListFragment extends Fragment
         });
       } else {
         acquireRelayMessageContent(getActivity(), intent);
-        fab.setOnClickListener(v -> getActivity().startActivityForResult(intent, REQUEST_RELAY));
+        fab.setOnClickListener(v -> getActivity().startActivity(intent));
       }
     } else {
       fab.setOnClickListener(v -> startActivity(intent));

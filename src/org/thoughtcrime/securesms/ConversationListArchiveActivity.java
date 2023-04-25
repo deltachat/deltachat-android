@@ -102,10 +102,8 @@ public class ConversationListArchiveActivity extends PassphraseRequiredActionBar
     intent.putExtra(FROM_ARCHIVED_CHATS_EXTRA, true);
     if (isRelayingMessageContent(this)) {
       acquireRelayMessageContent(this, intent);
-      startActivityForResult(intent, REQUEST_RELAY);
-    } else {
-      startActivity(intent);
     }
+    startActivity(intent);
 
     overridePendingTransition(R.anim.slide_from_right, R.anim.fade_scale_out);
   }

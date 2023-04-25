@@ -395,10 +395,8 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
       intent.putExtra(STARTING_POSITION_EXTRA, startingPosition);
       if (isRelayingMessageContent(this)) {
         acquireRelayMessageContent(this, intent);
-        startActivityForResult(intent, REQUEST_RELAY);
-      } else {
-        startActivity(intent);
       }
+      startActivity(intent);
 
       overridePendingTransition(R.anim.slide_from_right, R.anim.fade_scale_out);
     }
@@ -409,10 +407,8 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     Intent intent = new Intent(this, ConversationListArchiveActivity.class);
     if (isRelayingMessageContent(this)) {
       acquireRelayMessageContent(this, intent);
-      startActivityForResult(intent, REQUEST_RELAY);
-    } else {
-      startActivity(intent);
     }
+    startActivity(intent);
     overridePendingTransition(R.anim.slide_from_right, R.anim.fade_scale_out);
   }
 
@@ -429,10 +425,8 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     Intent intent = new Intent(this, NewConversationActivity.class);
     if (isRelayingMessageContent(this)) {
       acquireRelayMessageContent(this, intent);
-      startActivityForResult(intent, REQUEST_RELAY);
-    } else {
-      startActivity(intent);
     }
+    startActivity(intent);
   }
 
   @Override

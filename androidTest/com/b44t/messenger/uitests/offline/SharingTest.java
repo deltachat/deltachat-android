@@ -197,11 +197,15 @@ public class SharingTest {
     // In DC, select the same chat you opened before
     onView(withId(R.id.list)).perform(RecyclerViewActions.actionOnItem(hasDescendant(withText("abc@example.org")), click()));
 
-    // Leave DC and go back to the previous activity (that is still open in the background)
+    // Leave DC and go back to the previous activity
     pressBack();
 
+    // Here, we can't exactly replicate the "steps to reproduce". Previously, the other activity
+    // stayed open in the background, but since it doesn't anymore, we need to open it again:
+    onView(withId(R.id.list)).perform(RecyclerViewActions.actionOnItem(hasDescendant(withText("abc@example.org")), click()));
+
     // Check that the draft is still there
-    Util.sleep(2000);
+    // Util.sleep(2000);  // Uncomment for debugging
     onView(withHint(R.string.chat_input_placeholder)).check(matches(withText("Veeery important draft")));
   }
 
