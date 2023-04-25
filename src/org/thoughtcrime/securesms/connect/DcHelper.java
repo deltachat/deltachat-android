@@ -37,7 +37,6 @@ import java.util.HashMap;
 public class DcHelper {
 
   private static final String TAG = DcHelper.class.getSimpleName();
-  public static boolean INSTRUMENTATION_TESTING = false;
 
     public static final String CONFIG_ADDRESS = "addr";
     public static final String CONFIG_CONFIGURED_ADDRESS = "configured_addr";
@@ -299,14 +298,7 @@ public class DcHelper {
         intent.putExtra(Intent.EXTRA_STREAM, uri);
         intent.putExtra(Intent.EXTRA_TEXT, msg.getText());
         intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-        if (INSTRUMENTATION_TESTING) {
-          // When we're running an instrumentation test, we can't use an activity chooser.
-          // Instead, just open the share intent with DC itself.
-          intent.setPackage(activity.getPackageName());
-          activity.startActivity(intent);
-        } else {
-          activity.startActivity(Intent.createChooser(intent, activity.getString(R.string.chat_share_with_title)));
-        }
+        activity.startActivity(Intent.createChooser(intent, activity.getString(R.string.chat_share_with_title)));
       }
     } catch (RuntimeException e) {
       Toast.makeText(activity, String.format("%s (%s)", activity.getString(R.string.no_app_to_handle_data), mimeType), Toast.LENGTH_LONG).show();
