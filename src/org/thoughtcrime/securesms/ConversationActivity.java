@@ -263,11 +263,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       eventCenter.addObserver(DcContext.DC_EVENT_MSG_DELIVERED, this);
     }
 
-    if (isForwarding(this)) {
-      handleForwarding();
-    } else if (isSharing(this)) {
-      handleSharing();
-    }
+    handleRelaying();
   }
 
   @Override
@@ -293,15 +289,21 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       }
     });
 
+    handleRelaying();
+
+    if (fragment != null) {
+      fragment.onNewIntent();
+    }
+  }
+
+  private void handleRelaying() {
     if (isForwarding(this)) {
       handleForwarding();
     } else if (isSharing(this)) {
       handleSharing();
     }
 
-    if (fragment != null) {
-      fragment.onNewIntent();
-    }
+    ConversationListRelayingActivity.finishActivity();
   }
 
   @Override

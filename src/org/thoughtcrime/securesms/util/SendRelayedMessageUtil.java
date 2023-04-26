@@ -8,6 +8,7 @@ import android.util.Log;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMsg;
 
+import org.thoughtcrime.securesms.ConversationListRelayingActivity;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.PartAuthority;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
@@ -33,7 +34,7 @@ public class SendRelayedMessageUtil {
   }
 
   public static void immediatelyRelay(Activity activity, final Long[] chatIds) {
-    activity.setResult(RESULT_OK);
+    ConversationListRelayingActivity.finishActivity();
     if (isForwarding(activity)) {
       int[] forwardedMessageIDs = getForwardedMessageIDs(activity);
       resetRelayingMessageContent(activity);

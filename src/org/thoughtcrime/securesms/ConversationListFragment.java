@@ -74,7 +74,6 @@ import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import static org.thoughtcrime.securesms.util.RelayUtil.REQUEST_RELAY;
 import static org.thoughtcrime.securesms.util.RelayUtil.acquireRelayMessageContent;
 import static org.thoughtcrime.securesms.util.RelayUtil.getSharedText;
 import static org.thoughtcrime.securesms.util.RelayUtil.getSharedUris;
@@ -597,13 +596,13 @@ public class ConversationListFragment extends Fragment
   public void handleEvent(@NonNull DcEvent event) {
     if (event.getId() == DcContext.DC_EVENT_CONNECTIVITY_CHANGED) {
       Activity activity = getActivity();
-      if (activity != null) {
+      if (activity instanceof ConversationListActivity) {
         ((ConversationListActivity) activity).refreshTitle();
       }
 
     } else if (event.getId() == DcContext.DC_EVENT_SELFAVATAR_CHANGED) {
       Activity activity = getActivity();
-      if (activity != null) {
+      if (activity instanceof ConversationListActivity) {
         ((ConversationListActivity) activity).refreshAvatar();
       }
 

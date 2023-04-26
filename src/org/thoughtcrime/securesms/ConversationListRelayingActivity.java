@@ -1,12 +1,13 @@
 package org.thoughtcrime.securesms;
 
-import static org.thoughtcrime.securesms.util.RelayUtil.REQUEST_RELAY;
-
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
+import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+
+import java.lang.ref.WeakReference;
 
 /**
  * "Relaying" means "Forwarding or Sharing".
@@ -25,6 +26,21 @@ import androidx.fragment.app.Fragment;
  */
 
 public class ConversationListRelayingActivity extends ConversationListActivity {
+  static WeakReference<ConversationListRelayingActivity> INSTANCE = null;
+
+  @Override
+  protected void onCreate(Bundle icicle, boolean ready) {
+    super.onCreate(icicle, ready);
+    INSTANCE = new WeakReference<>(this);
+  }
+
+  @Override
+  protected void onDestroy() {
+    super.onDestroy();
+    INSTANCE = null;
+  }
+
+  // =================== Static Methods ===================
   public static void start(Fragment fragment, Intent intent) {
     intent.setComponent(new ComponentName(fragment.getContext(), ConversationListRelayingActivity.class));
     fragment.startActivity(intent);
@@ -33,5 +49,11 @@ public class ConversationListRelayingActivity extends ConversationListActivity {
   public static void start(Activity activity, Intent intent) {
     intent.setComponent(new ComponentName(activity, ConversationListRelayingActivity.class));
     activity.startActivity(intent);
+  }
+
+  public static void finishActivity() {
+    if (INSTANCE != null && INSTANCE.get() != null) {
+      INSTANCE.get().finish();
+    }
   }
 }
