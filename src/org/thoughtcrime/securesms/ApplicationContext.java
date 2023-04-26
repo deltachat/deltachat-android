@@ -23,6 +23,7 @@ import com.b44t.messenger.DcAccounts;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcEventEmitter;
+import com.b44t.messenger.rpc.Rpc;
 
 import org.thoughtcrime.securesms.components.emoji.EmojiProvider;
 import org.thoughtcrime.securesms.connect.AccountManager;
@@ -32,7 +33,6 @@ import org.thoughtcrime.securesms.connect.FetchWorker;
 import org.thoughtcrime.securesms.connect.ForegroundDetector;
 import org.thoughtcrime.securesms.connect.KeepAliveService;
 import org.thoughtcrime.securesms.connect.NetworkStateReceiver;
-import org.thoughtcrime.securesms.connect.DcRpc;
 import org.thoughtcrime.securesms.crypto.DatabaseSecret;
 import org.thoughtcrime.securesms.crypto.DatabaseSecretProvider;
 import org.thoughtcrime.securesms.crypto.PRNGFixes;
@@ -43,7 +43,6 @@ import org.thoughtcrime.securesms.notifications.NotificationCenter;
 import org.thoughtcrime.securesms.util.AndroidSignalProtocolLogger;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
-import org.thoughtcrime.securesms.util.JsonUtils;
 import org.thoughtcrime.securesms.util.SignalProtocolLoggerProvider;
 
 import java.io.File;
@@ -54,7 +53,7 @@ public class ApplicationContext extends MultiDexApplication {
   private static final String TAG = ApplicationContext.class.getSimpleName();
 
   public DcAccounts             dcAccounts;
-  public DcRpc                  dcRpc;
+  public Rpc                    rpc;
   public DcContext              dcContext;
   public DcLocationManager      dcLocationManager;
   public DcEventCenter          eventCenter;
@@ -91,7 +90,7 @@ public class ApplicationContext extends MultiDexApplication {
     System.loadLibrary("native-utils");
 
     dcAccounts = new DcAccounts("Android "+BuildConfig.VERSION_NAME, new File(getFilesDir(), "accounts").getAbsolutePath());
-    dcRpc = new DcRpc(dcAccounts.getJsonrpcInstance());
+    rpc = new Rpc(dcAccounts.getJsonrpcInstance());
     AccountManager.getInstance().migrateToDcAccounts(this);
     int[] allAccounts = dcAccounts.getAll();
     for (int accountId : allAccounts) {
@@ -126,15 +125,7 @@ public class ApplicationContext extends MultiDexApplication {
       Log.i("DeltaChat", "shutting down event handler");
     }, "eventThread").start();
 
-    dcRpc.start();
-
-    // TODO: example usage, remove
-    try {
-        Object result = dcRpc.call("get_system_info").get();
-        Log.i(TAG, "Got JSON-RPC response: " + (result!=null? result.toString() : "null"));
-    } catch (Exception e) {
-        Log.e(TAG, "Got JSON-RPC error", e);
-    }
+    rpc.start();
 
     // set translations before starting I/O to avoid sending untranslated MDNs (issue #2288)
     DcHelper.setStockTranslations(this);
