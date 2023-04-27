@@ -27,7 +27,7 @@ public class Rpc {
         String jsonResponse = dcJsonrpcInstance.getNextResponse();
         Response response = gson.fromJson(jsonResponse, Response.class);
 
-        if (response.id == 0) { // Got JSON-RPC notification, ignore
+        if (response.id == 0) { // Got JSON-RPC notification/event, ignore
             return;
         }
 
