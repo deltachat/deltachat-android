@@ -37,11 +37,11 @@ public class Rpc {
         }
 
         if (response.error != null) {
-            future.setException(new RpcError(response.error.toString()));
+            future.setException(new RpcException(response.error.toString()));
         } else if (response.result != null) {
             future.set(response.result);
         } else {
-            future.setException(new RpcError("Got JSON-RPC response witout result or error: " + jsonResponse));
+            future.setException(new RpcException("Got JSON-RPC response witout result or error: " + jsonResponse));
         }
     }
 
@@ -69,29 +69,29 @@ public class Rpc {
         return future;
     }
 
-    public JsonElement getResult(String method, Object... params) throws RpcError {
+    public JsonElement getResult(String method, Object... params) throws RpcException {
         try {
             return call(method, params).get();
         } catch (ExecutionException e) {
-            throw (RpcError)e.getCause();
+            throw (RpcException)e.getCause();
         } catch (InterruptedException e) {
-            throw new RpcError(e.getMessage());
+            throw new RpcException(e.getMessage());
         }
     }
 
-    public int addAccount() throws RpcError {
+    public int addAccount() throws RpcException {
         return gson.fromJson(getResult("add_account"), int.class);
     }
 
-    public void startIO() throws RpcError {
+    public void startIO() throws RpcException {
         getResult("start_io_for_all_accounts");
     }
 
-    public void stopIO() throws RpcError {
+    public void stopIO() throws RpcException {
         getResult("stop_io_for_all_accounts");
     }
 
-    public Map<String, String> getSystemInfo() throws RpcError {
+    public Map<String, String> getSystemInfo() throws RpcException {
         TypeToken<Map<String, String>> mapType = new TypeToken<Map<String, String>>(){};
         return gson.fromJson(getResult("get_system_info"), mapType);
     }
