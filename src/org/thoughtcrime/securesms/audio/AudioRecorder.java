@@ -9,12 +9,13 @@ import androidx.annotation.NonNull;
 import android.util.Log;
 import android.util.Pair;
 
+import com.b44t.messenger.util.concurrent.ListenableFuture;
+import com.b44t.messenger.util.concurrent.SettableFuture;
+
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 import org.thoughtcrime.securesms.util.MediaUtil;
 import org.thoughtcrime.securesms.util.ThreadUtil;
 import org.thoughtcrime.securesms.util.Util;
-import org.thoughtcrime.securesms.util.concurrent.ListenableFuture;
-import org.thoughtcrime.securesms.util.concurrent.SettableFuture;
 
 import java.io.IOException;
 import java.util.concurrent.ExecutorService;

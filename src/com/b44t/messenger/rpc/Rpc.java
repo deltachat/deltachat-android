@@ -1,6 +1,7 @@
 package com.b44t.messenger.rpc;
 
 import com.b44t.messenger.DcJsonrpcInstance;
+import com.b44t.messenger.util.concurrent.SettableFuture;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
@@ -9,12 +10,11 @@ import com.google.gson.reflect.TypeToken;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutionException;
 
 public class Rpc {
-    private final Map<Integer, CompletableFuture<JsonElement>> requestFutures = new ConcurrentHashMap<>();
+    private final Map<Integer, SettableFuture<JsonElement>> requestFutures = new ConcurrentHashMap<>();
     private final DcJsonrpcInstance dcJsonrpcInstance;
     private int requestId = 0;
     private final Gson gson = new GsonBuilder().serializeNulls().create();
@@ -31,17 +31,17 @@ public class Rpc {
             return;
         }
 
-        CompletableFuture<JsonElement> future = requestFutures.remove(response.id);
+        SettableFuture<JsonElement> future = requestFutures.remove(response.id);
         if (future == null) { // Got a response with unknown ID, ignore
             return;
         }
 
         if (response.error != null) {
-            future.completeExceptionally(new RpcError(response.error.toString()));
+            future.setException(new RpcError(response.error.toString()));
         } else if (response.result != null) {
-            future.complete(response.result);
+            future.set(response.result);
         } else {
-            future.completeExceptionally(new RpcError("Got JSON-RPC response witout result or error: " + jsonResponse));
+            future.setException(new RpcError("Got JSON-RPC response witout result or error: " + jsonResponse));
         }
     }
 
@@ -57,13 +57,13 @@ public class Rpc {
         }, "jsonrpcThread").start();
     }
 
-    public CompletableFuture<JsonElement> call(String method, Object... params) {
+    public SettableFuture<JsonElement> call(String method, Object... params) {
         int id;
         synchronized (this) {
             id = ++requestId;
         }
         String jsonRequest = gson.toJson(new Request(method, params, id));
-        CompletableFuture<JsonElement> future = new CompletableFuture<>();
+        SettableFuture<JsonElement> future = new SettableFuture<>();
         requestFutures.put(id, future);
         dcJsonrpcInstance.request(jsonRequest);
         return future;
