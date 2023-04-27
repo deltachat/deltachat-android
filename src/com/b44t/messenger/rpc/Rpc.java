@@ -32,6 +32,10 @@ public class Rpc {
         }
 
         CompletableFuture<JsonElement> future = requestFutures.remove(response.id);
+        if (future == null) { // Got a response with unknown ID, ignore
+            return;
+        }
+
         if (response.error != null) {
             future.completeExceptionally(new RpcError(response.error.toString()));
         } else if (response.result != null) {
