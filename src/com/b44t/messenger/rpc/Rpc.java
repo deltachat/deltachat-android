@@ -14,10 +14,10 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutionException;
 
 public class Rpc {
-    private Map<Integer, CompletableFuture<JsonElement>> requestFutures = new ConcurrentHashMap<>();
-    private DcJsonrpcInstance dcJsonrpcInstance;
+    private final Map<Integer, CompletableFuture<JsonElement>> requestFutures = new ConcurrentHashMap<>();
+    private final DcJsonrpcInstance dcJsonrpcInstance;
     private int requestId = 0;
-    private Gson gson = new GsonBuilder().serializeNulls().create();
+    private final Gson gson = new GsonBuilder().serializeNulls().create();
 
     public Rpc(DcJsonrpcInstance dcJsonrpcInstance) {
         this.dcJsonrpcInstance = dcJsonrpcInstance;
@@ -43,13 +43,13 @@ public class Rpc {
 
     public void start() {
         new Thread(() -> {
-                while (true) {
-                    try {
-                        processResponse();
-                    } catch (JsonSyntaxException e) {
-                        e.printStackTrace();
-                    }
+            while (true) {
+                try {
+                    processResponse();
+                } catch (JsonSyntaxException e) {
+                    e.printStackTrace();
                 }
+            }
         }, "jsonrpcThread").start();
     }
 
@@ -93,7 +93,7 @@ public class Rpc {
     }
 
 
-    private class Request {
+    private static class Request {
         public String jsonrpc = "2.0";
         public String method;
         public Object[] params;
@@ -106,7 +106,7 @@ public class Rpc {
         }
     }
 
-    private class Response {
+    private static class Response {
         public int id = 0;
         public JsonElement result;
         public JsonElement error;
