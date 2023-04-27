@@ -281,6 +281,9 @@ public class ConversationFragment extends MessageSelectorFragment
             ConversationAdapter adapter = new ConversationAdapter(getActivity(), this.recipient.getChat(), GlideApp.with(this), locale, selectionClickListener, this.recipient);
             list.setAdapter(adapter);
 
+            if (dateDecoration != null) {
+                list.removeItemDecoration(dateDecoration);
+            }
             dateDecoration = new StickyHeaderDecoration(adapter, false, false);
             list.addItemDecoration(dateDecoration);
 
@@ -295,11 +298,11 @@ public class ConversationFragment extends MessageSelectorFragment
             reloadList();
             updateLocationButton();
 
+            if (lastSeenDecoration != null) {
+                list.removeItemDecoration(lastSeenDecoration);
+            }
             if (freshMsgs > 0) {
                 getListAdapter().setLastSeenPosition(freshMsgs - 1);
-                if (lastSeenDecoration != null) {
-                    list.removeItemDecoration(lastSeenDecoration);
-                }
                 lastSeenDecoration = new ConversationAdapter.LastSeenHeader(getListAdapter());
                 list.addItemDecoration(lastSeenDecoration);
             }
