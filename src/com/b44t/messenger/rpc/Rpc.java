@@ -108,7 +108,6 @@ public class Rpc {
 
     private class Response {
         public int id = 0;
-        public int id2 = 0;
         public JsonElement result;
         public JsonElement error;
 
