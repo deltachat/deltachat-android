@@ -9,7 +9,8 @@ import android.webkit.WebSettings;
 import androidx.appcompat.app.AlertDialog;
 
 import com.b44t.messenger.DcContext;
-import com.b44t.messenger.DcHttpResponse;
+import com.b44t.messenger.rpc.HttpResponse;
+import com.b44t.messenger.rpc.Rpc;
 
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.util.DynamicTheme;
@@ -25,6 +26,7 @@ public class FullMsgActivity extends WebViewActivity
   public static final String IS_CONTACT_REQUEST = "is_contact_request";
   private int msgId;
   private DcContext dcContext;
+  private Rpc rpc;
   private boolean loadRemoteContent = false;
   private boolean isContactRequest;
 
@@ -60,6 +62,7 @@ public class FullMsgActivity extends WebViewActivity
     webView.getSettings().setAllowFileAccess(false);
 
     dcContext = DcHelper.getContext(this);
+    rpc = DcHelper.getRpc(this);
     msgId = getIntent().getIntExtra(MSG_ID_EXTRA, 0);
     String title = dcContext.getMsg(msgId).getSubject();
     if (title.isEmpty()) title = getString(R.string.chat_input_placeholder);
@@ -178,10 +181,7 @@ public class FullMsgActivity extends WebViewActivity
       if (url == null) {
         throw new Exception("no url specified");
       }
-      DcHttpResponse httpResponse = dcContext.getHttpResponse(url);
-      if (httpResponse == null) {
-        throw new Exception(dcContext.getLastError());
-      }
+      HttpResponse httpResponse = rpc.getHttpResponse(dcContext.getAccountId(), url);
       String mimeType = httpResponse.getMimetype();
       if (mimeType == null) {
         mimeType = "application/octet-stream";

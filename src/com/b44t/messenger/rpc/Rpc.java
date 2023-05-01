@@ -96,6 +96,10 @@ public class Rpc {
         return gson.fromJson(getResult("get_system_info"), mapType);
     }
 
+    public HttpResponse getHttpResponse(int accountId, String url) throws RpcException {
+        return gson.fromJson(getResult("get_http_response", accountId, url), HttpResponse.class);
+    }
+
 
     private static class Request {
         public String jsonrpc = "2.0";
