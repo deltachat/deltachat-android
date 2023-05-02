@@ -14,7 +14,6 @@ import org.thoughtcrime.securesms.util.DynamicTheme;
 
 import static org.thoughtcrime.securesms.ConversationActivity.CHAT_ID_EXTRA;
 import static org.thoughtcrime.securesms.ConversationActivity.FROM_ARCHIVED_CHATS_EXTRA;
-import static org.thoughtcrime.securesms.util.RelayUtil.REQUEST_RELAY;
 import static org.thoughtcrime.securesms.util.RelayUtil.acquireRelayMessageContent;
 import static org.thoughtcrime.securesms.util.RelayUtil.isRelayingMessageContent;
 import static org.thoughtcrime.securesms.util.RelayUtil.isSharing;
@@ -84,7 +83,7 @@ public class ConversationListArchiveActivity extends PassphraseRequiredActionBar
 
     switch (item.getItemId()) {
       case android.R.id.home:
-        super.onBackPressed();
+        onBackPressed();
         return true;
 
       case R.id.mark_as_read:
@@ -96,16 +95,33 @@ public class ConversationListArchiveActivity extends PassphraseRequiredActionBar
   }
 
   @Override
+  public void onBackPressed() {
+    if (isRelayingMessageContent(this)) {
+      // Go back to the ConversationListRelayingActivity
+      super.onBackPressed();
+    } else {
+      // Load the ConversationListActivity in case it's not existent for some reason
+      Intent intent = new Intent(this, ConversationListActivity.class);
+      intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+      startActivity(intent);
+      finish();
+    }
+  }
+
+  @Override
   public void onCreateConversation(int chatId) {
     Intent intent = new Intent(this, ConversationActivity.class);
     intent.putExtra(CHAT_ID_EXTRA, chatId);
     intent.putExtra(FROM_ARCHIVED_CHATS_EXTRA, true);
     if (isRelayingMessageContent(this)) {
       acquireRelayMessageContent(this, intent);
-      startActivityForResult(intent, REQUEST_RELAY);
-    } else {
-      startActivity(intent);
+
+      // Just finish instead of updating the title and so on. This is not user-visible
+      // because the ConversationActivity will restart the ConversationListArchiveActivity
+      // after the user left.
+      finish();
     }
+    startActivity(intent);
 
     overridePendingTransition(R.anim.slide_from_right, R.anim.fade_scale_out);
   }
@@ -113,14 +129,5 @@ public class ConversationListArchiveActivity extends PassphraseRequiredActionBar
   @Override
   public void onSwitchToArchive() {
     throw new AssertionError();
-  }
-
-  @Override
-  protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-    super.onActivityResult(requestCode, resultCode, data);
-    if (requestCode == REQUEST_RELAY && resultCode == RESULT_OK) {
-      setResult(RESULT_OK);
-      finish();
-    }
   }
 }

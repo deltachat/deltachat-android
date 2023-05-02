@@ -40,7 +40,6 @@ import java.util.Map;
 
 import static org.thoughtcrime.securesms.ConversationActivity.CHAT_ID_EXTRA;
 import static org.thoughtcrime.securesms.ConversationActivity.TEXT_EXTRA;
-import static org.thoughtcrime.securesms.util.RelayUtil.REQUEST_RELAY;
 import static org.thoughtcrime.securesms.util.RelayUtil.acquireRelayMessageContent;
 import static org.thoughtcrime.securesms.util.RelayUtil.isRelayingMessageContent;
 
@@ -182,11 +181,9 @@ public class NewConversationActivity extends ContactSelectionActivity {
     intent.putExtra(CHAT_ID_EXTRA, chatId);
     if (isRelayingMessageContent(this)) {
       acquireRelayMessageContent(this, intent);
-      startActivityForResult(intent, REQUEST_RELAY);
-    } else {
-      startActivity(intent);
-      finish();
     }
+    startActivity(intent);
+    finish();
   }
 
   @Override
@@ -209,15 +206,6 @@ public class NewConversationActivity extends ContactSelectionActivity {
     */
     super.onPrepareOptionsMenu(menu);
     return true;
-  }
-
-  @Override
-  protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-    super.onActivityResult(requestCode, resultCode, data);
-    if (requestCode == REQUEST_RELAY && resultCode == RESULT_OK) {
-      setResult(RESULT_OK);
-      finish();
-    }
   }
 
 }

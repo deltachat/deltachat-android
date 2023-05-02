@@ -162,8 +162,17 @@
 
     <activity android:name=".ConversationActivity"
               android:windowSoftInputMode="stateUnchanged"
+              android:launchMode="singleTask"
+              android:relinquishTaskIdentity="true"
               android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"
               android:parentActivityName=".ConversationListActivity">
+        <!--
+        Without relinquishTaskIdentity="true", we would have the following bug:
+        - Directly open a chat via shortcut (by long-pressing on the DeltaChat icon in the launcher)
+        - Press back twice
+        - Reopen DeltaChat from recent apps
+        - Expected: ConversationList shown. Actual: The chat from the beginning is shown again.
+        -->
         <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.thoughtcrime.securesms.ConversationListActivity" />

@@ -10,6 +10,7 @@ import androidx.test.filters.LargeTest;
 import com.b44t.messenger.TestUtils;
 
 import org.junit.After;
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,7 +26,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.withHint;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
-
+@Ignore("This is not a test, but a benchmark. Remove the @Ignore to run it.")
 @RunWith(AndroidJUnit4.class)
 @LargeTest
 public class EnterChatsBenchmark {

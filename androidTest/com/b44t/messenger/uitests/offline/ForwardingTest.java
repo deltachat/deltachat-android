@@ -89,9 +89,6 @@ public class ForwardingTest {
     onView(withId(R.id.title)).check(matches(withText("group")));
 
     pressBack();
-    onView(withId(R.id.title)).check(matches(withText(R.string.saved_messages)));
-
-    pressBack();
     onView(withId(R.id.toolbar_title)).check(matches(withText(R.string.connectivity_not_connected)));
   }
 }
