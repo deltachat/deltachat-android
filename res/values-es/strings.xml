@@ -60,7 +60,9 @@
     <!-- Possible answers to the question are: Never, Always, Once -->
     <string name="load_remote_content_ask">Las imágenes remotas pueden ser usadas para seguirte.\n\nLa opción también permite cargar fuentes y otros contenidos. Inclusive si están deshabilitadas, quizás puedas ver imágenes embebidas o en caché.\n\n¿Cargar imágenes remotas?</string>
     <string name="always">Siempre</string>
+    <string name="always_load_remote_images">Cargar imágenes remotas siempre</string>
     <string name="once">Una vez</string>
+    <string name="show_warning">Mostrar advertencia</string>
     <string name="show_password">Mostrar contraseña</string>
     <string name="hide_password">Ocultar contraseña</string>
     <string name="not_now">Ahora no</string>
@@ -496,6 +498,7 @@
     <string name="multidevice_abort">¿Cancelar la configuración del nuevo dispositivo?</string>
     <string name="multidevice_abort_will_invalidate_copied_qr">Esto invalidará el código QR copiado al portapapeles </string>
     <string name="multidevice_experimental_hint">(experimental, requiere versión 1.36)</string>
+    <string name="multidevice_transfer_done_devicemsg">ℹ️ Cuenta transferida a tu otro dispositivo.</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="preparing_account">Preparando cuenta…</string>
     <!-- Shown beside progress bar, stay short -->

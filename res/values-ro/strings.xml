@@ -538,4 +538,116 @@
     <string name="welcome_chat_over_email">Chat prin e-mail.</string>
     <string name="scan_invitation_code">Scanați Codul Invitației</string>
     <string name="welcome_intro1_message">Mesagerul cu cea mai largă audiență din lume. Liber și independent.</string>
+    <string name="login_title">Autentificare</string>
+    <string name="login_header">Autentificați-vă în contul dumneavoastră de e-mail</string>
+    <string name="login_explain">Conectați-vă cu un cont de e-mail existent</string>
+    <string name="login_subheader">În cazul furnizorilor de e-mail cunoscuți, setările suplimentare sunt configurate automat. Uneori, IMAP trebuie să fie activat în setările web. Consultați furnizorul dumneavoastră de e-mail sau prietenii pentru ajutor.</string>
+    <string name="login_no_servers_hint">Nu există servere Delta Chat, datele tale rămân pe dispozitivul tău.</string>
+    <string name="login_inbox">Inbox</string>
+    <string name="login_imap_login">Nume de autentificare IMAP</string>
+    <string name="login_imap_server">Serverul IMAP</string>
+    <string name="login_imap_port">Portul IMAP</string>
+    <string name="login_imap_security">Securitate IMAP </string>
+    <string name="login_outbox">Outbox</string>
+    <string name="login_smtp_login">Nume de autentificare SMTP</string>
+    <string name="login_smtp_password">Parolă SMTP</string>
+    <string name="login_smtp_server">Serverul SMTP </string>
+    <string name="login_smtp_port">Portul SMTP </string>
+    <string name="login_smtp_security">Securitate SMTP</string>
+    <string name="login_auth_method">Metoda de autorizare</string>
+    <!-- the word "SOCKS5" here and in the following strings should not be translated in most cases -->
+    <string name="login_socks5">SOCKS5</string>
+    <string name="login_socks5_use_socks5">Utilizați SOCKS5</string>
+    <string name="login_socks5_host">Gazdă SOCKS5</string>
+    <string name="login_socks5_port">Portul SOCKS5</string>
+    <string name="login_socks5_user">Utilizator SOCKS5</string>
+    <string name="login_socks5_password">Parolă SOCKS5</string>
+    <!-- Translators: %1$s will be replaced by an e-mail address -->
+    <string name="login_oauth2_checking_addr">Verificarea %1$s</string>
+    <string name="login_info_oauth2_title">Continuați cu configurația simplificată?</string>
+    <string name="login_info_oauth2_text">Adresa de e-mail introdusă suportă o configurare simplificată (OAuth 2.0).\n\nÎn pasul următor, vă rugăm să permiteți ca Delta Chat să acționeze ca aplicație de chat prin e-mail.\n\nNu există servere Delta Chat, datele voastre rămân pe dispozitivul dumneavoastră.</string>
+    <string name="login_certificate_checks">Verificări de certificate</string>
+    <string name="login_error_mail">Vă rugăm să introduceți o adresă de e-mail validă</string>
+    <string name="login_error_server">Vă rugăm să introduceți un server / o adresă IP validă</string>
+    <string name="login_error_port">Vă rugăm să introduceți un port valid (1-65535)</string>
+    <string name="login_error_required_fields">Vă rugăm să introduceți o adresă de e-mail validă și o parolă</string>
+    <string name="import_backup_title">Restaurarea din copia de rezervă</string>
+    <string name="import_backup_ask">Backup găsit la \"%1$s\".\n\nDoriți să importați și să utilizați toate datele și setările din acesta?</string>
+    <string name="import_backup_no_backup_found">Nu s-au găsit copii de rezervă.\n\nCopiază copia de rezervă pe \"%1$s\" și încercați din nou. Alternativ, apăsați \"Start messaging\" pentru a continua procesul normal de configurare.</string>
+    <!-- Translators: %1$s will be replaced by the e-mail address -->
+    <string name="login_error_cannot_login">Nu se poate autentifica ca \"%1$s\". Vă rugăm să verificați dacă adresa de e-mail și parola sunt corecte.</string>
+    <!-- TLS certificate checks -->
+    <string name="accept_invalid_certificates">Acceptarea certificatelor nevalabile</string>
+    <string name="used_settings">Setări utilizate:</string>
+    <string name="switch_account">Schimbați contul</string>
+    <string name="add_account">Adăugați un cont</string>
+    <string name="delete_account">Ștergeți Contul</string>
+    <string name="delete_account_ask">Sunteți sigur că doriți să ștergeți datele contului dumneavoastră?</string>
+    <string name="delete_account_explain_with_name">Toate datele de cont ale \"%s\" de pe acest dispozitiv vor fi șterse, inclusiv configurația de criptare end-to-end, contactele, chat-urile, mesajele și mediile. Această acțiune nu poate fi anulată.</string>
+    <string name="unconfigured_account">Cont neconfigurat</string>
+    <string name="unconfigured_account_hint">Deschideți contul pentru a-l configura.</string>
+    <string name="try_connect_now">Încercați să vă conectați acum</string>
+    <string name="sync_all">Sincronizare Toate</string>
+    <!-- Translations: %1$s will be replaced by a more detailed error message -->
+    <string name="configuration_failed_with_error">Configurarea a eșuat. Eroare: %1$s</string>
+
+    <!-- share and forward messages -->
+    <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
+    <string name="forward_to">Înainte spre...</string>
+    <string name="share_multiple_attachments">Trimiteți %1$d la chat-ul selectat?\n\nArhivele sunt trimise nemodificate în dimensiunea lor originală (de exemplu, imaginile și clipurile video nu sunt recodificate).</string>
+    <string name="share_multiple_attachments_multiple_chats">Trimiteți %1$d fișier(e) la %2$d chat?\n\nFilele sunt trimise nemodificate în dimensiunea lor originală (de exemplu, imaginile și videoclipurile nu sunt recodificate).</string>
+    <string name="share_text_multiple_chats">Trimiteți acest text la %1$d chats?\n\n\"%2$s\"</string>
+    <string name="share_abort">Partajarea a fost întreruptă din cauza permisiunilor lipsă.</string>
+
+
+    <!-- preferences -->
+    <string name="pref_using_custom">Folosind o comandă personalizată: %s</string>
+    <string name="pref_using_default">Utilizarea implicită: %s</string>
+    <string name="pref_profile_info_headline">Informații despre profilul dumneavoastră</string>
+    <string name="pref_profile_photo">Imagine de profil</string>
+    <string name="pref_blocked_contacts">Contacte blocate</string>
+    <string name="blocked_empty_hint">Contactele blocate vor apărea aici.</string>
+    <string name="pref_password_and_account_settings">Parolă și cont</string>
+    <string name="pref_who_can_see_profile_explain">Imaginea de profil, numele și semnătura dumneavoastră vor fi trimise împreună cu mesajele dumneavoastră atunci când comunicați cu alți utilizatori.</string>
+    <string name="pref_your_name">Numele dumneavoastră</string>
+    <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
+    <string name="pref_default_status_label">Semnătură Text</string>
+    <!-- Translators: The URL should not be localized as it is unclear which language the receiver prefers; the language will be automatically detected on the server -->
+    <string name="pref_default_status_text">Trimis cu Delta Chat Messenger: https://delta.chat</string>
+    <string name="pref_enter_sends">Tasta Enter trimite</string>
+    <string name="pref_enter_sends_explain">Apăsarea tastei Enter va trimite mesaje text</string>
+    <string name="pref_outgoing_media_quality">Calitatea Mediilor de Ieșire</string>
+    <string name="pref_outgoing_balanced">Echilibrată</string>
+    <string name="pref_outgoing_worse">Calitate mai proastă, dimensiuni mici</string>
+    <string name="pref_vibrate">Vibrație</string>
+    <string name="pref_screen_security">Ecran Securitate</string>
+    <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
+    <string name="pref_screen_security_explain">Solicitarea de a bloca capturile de ecran în lista de amintiri și în interiorul aplicației</string>
+    <string name="pref_screen_security_please_restart_hint">Pentru a aplica setările de securitate a ecranului, vă rugăm să reporniți app-ul.</string>
+    <string name="pref_notifications">Notificări</string>
+    <string name="pref_notifications_show">Afișați</string>
+    <string name="pref_notifications_priority">Prioritate</string>
+    <string name="pref_notifications_explain">Activați notificările de sistem pentru mesajele noi</string>
+    <string name="pref_show_notification_content">Afișați conținutul mesajului în notificare</string>
+    <string name="pref_show_notification_content_explain">Afișează expeditorul și primele cuvinte ale mesajului în notificări</string>
+    <string name="pref_led_color">Culoare LED</string>
+    <string name="pref_sound">Sunet</string>
+    <string name="pref_silent">Silențios</string>
+    <string name="pref_privacy">Confidențialitate</string>
+    <string name="pref_chats_and_media">Discuții și mass-media</string>
+    <string name="pref_system_default">Sistem implicit</string>
+    <!-- Translators: as in "opposite of dark" -->
+    <string name="pref_light_theme">Lumină</string>
+    <string name="pref_dark_theme">Întuneric</string>
+    <string name="pref_appearance">Aspect</string>
+    <string name="pref_theme">Temă</string>
+    <string name="pref_language">Limbă</string>
+    <string name="pref_incognito_keyboard">Tastatura Incognito</string>
+    <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
+    <string name="pref_incognito_keyboard_explain">Solicitați tastatura pentru a dezactiva învățarea personalizată</string>
+    <string name="pref_read_receipts">Citiți Chitanțele</string>
+    <string name="pref_read_receipts_explain">Dacă sunt dezactivate chitanțele de citire, nu veți putea vedea chitanțele de citire de la alte persoane.</string>
+    <string name="pref_manage_keys">Gestionați Cheile</string>
+    <string name="pref_use_system_emoji">Utilizați emoji de sistem</string>
+    <string name="pref_use_system_emoji_explain">Dezactivați suportul emoji încorporat în Delta Chat</string>
     </resources>
