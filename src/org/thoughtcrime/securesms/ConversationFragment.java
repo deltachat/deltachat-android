@@ -469,8 +469,8 @@ public class ConversationFragment extends MessageSelectorFragment
 
             Intent intent = new Intent(getActivity(), ConversationActivity.class);
             intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, privateChatId);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             getActivity().startActivity(intent);
-            getActivity().finish();
         } else {
             Log.e(TAG, "Activity was null");
         }
@@ -841,10 +841,10 @@ public class ConversationFragment extends MessageSelectorFragment
                 intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, foreignChatId);
                 int start = DcMsg.getMessagePosition(quoted, dcContext);
                 intent.putExtra(ConversationActivity.STARTING_POSITION_EXTRA, start);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 ((ConversationActivity) getActivity()).hideSoftKeyboard();
                 if (getActivity() != null) {
                     getActivity().startActivity(intent);
-                    getActivity().finish();
                 } else {
                     Log.e(TAG, "Activity was null");
                 }
