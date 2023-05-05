@@ -283,7 +283,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
         try (InputStream inputStream = getContentResolver().openInputStream(uri)) {
             File file = File.createTempFile(TMP_BACKUP_FILE, ".tmp", getCacheDir());
             try (OutputStream outputStream = new FileOutputStream(file)) {
-                StreamUtil.copy(inputStream, outputStream);
+                StreamUtil.copy(inputStream, new FileOutputStream(file));
             }
             return file;
         }
