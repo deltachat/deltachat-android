@@ -39,8 +39,9 @@ import android.view.animation.Animation;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 
-import org.thoughtcrime.securesms.util.concurrent.ListenableFuture;
-import org.thoughtcrime.securesms.util.concurrent.SettableFuture;
+import com.b44t.messenger.util.concurrent.ListenableFuture;
+import com.b44t.messenger.util.concurrent.SettableFuture;
+
 import org.thoughtcrime.securesms.util.views.Stub;
 
 public class ViewUtil {

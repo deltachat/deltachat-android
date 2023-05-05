@@ -21,6 +21,7 @@ import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcLot;
 import com.b44t.messenger.DcMsg;
+import com.b44t.messenger.rpc.Rpc;
 
 import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.BuildConfig;
@@ -73,6 +74,10 @@ public class DcHelper {
 
     public static DcContext getContext(@NonNull Context context) {
         return ApplicationContext.getInstance(context).dcContext;
+    }
+
+    public static Rpc getRpc(@NonNull Context context) {
+        return ApplicationContext.getInstance(context).rpc;
     }
 
     public static DcAccounts getAccounts(@NonNull Context context) {

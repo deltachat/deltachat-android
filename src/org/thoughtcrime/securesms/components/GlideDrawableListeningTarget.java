@@ -5,9 +5,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import android.widget.ImageView;
 
+import com.b44t.messenger.util.concurrent.SettableFuture;
 import com.bumptech.glide.request.target.DrawableImageViewTarget;
-
-import org.thoughtcrime.securesms.util.concurrent.SettableFuture;
 
 public class GlideDrawableListeningTarget extends DrawableImageViewTarget {
 

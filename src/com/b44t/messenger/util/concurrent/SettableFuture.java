@@ -1,4 +1,4 @@
-package org.thoughtcrime.securesms.util.concurrent;
+package com.b44t.messenger.util.concurrent;
 
 import java.util.LinkedList;
 import java.util.List;
