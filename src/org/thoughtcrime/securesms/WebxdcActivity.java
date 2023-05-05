@@ -1,5 +1,7 @@
 package org.thoughtcrime.securesms;
 
+import static com.b44t.messenger.DcContext.DC_GCL_FOR_FORWARDING;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -344,13 +346,14 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
         byte[] data = Base64.decode(jsonObject.getString("__blobBase64"), Base64.NO_WRAP | Base64.NO_PADDING);
         String[] fileName = jsonObject.getString("fileName").split("\\.");
 
+        // consider sending the special webxdc-function with a core function
         File file = File.createTempFile(fileName[0], "."+fileName[1], getCacheDir());
         StreamUtil.copy(new ByteArrayInputStream(data), new FileOutputStream(file));
 
         DcMsg msg = new DcMsg(dcContext, DcMsg.DC_MSG_FILE);
         msg.setText(jsonObject.getString("text"));
         msg.setFile(file.getAbsolutePath(), null);
-        dcContext.sendMsg(dcAppMsg.getChatId(), msg); // TODO: use saved-messages chat instead, probably do a core function
+        dcContext.sendMsg(dcContext.getChatlist(DC_GCL_FOR_FORWARDING, null, 0).getChatId(0), msg); // TODO: use saved-messages chat instead, probably do a core function
       } catch (Exception e) {
         e.printStackTrace();
       }
