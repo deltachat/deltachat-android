@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Base64;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -330,6 +331,23 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
         return false;
       }
       return true;
+    }
+
+    @JavascriptInterface
+    public boolean sendMessage(String payload) {
+      Log.i(TAG, "sendMessage");
+      try {
+        JSONObject jsonObject = new JSONObject(payload);
+        byte[] data = Base64.decode(jsonObject.getString("__blobBase64"), Base64.NO_WRAP | Base64.NO_PADDING);
+        //String filename = jsonObject.getString("fileName");
+
+        DcMsg msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
+        msg.setText(jsonObject.getString("text"));
+        dcContext.sendMsg(dcAppMsg.getChatId(), msg); // TODO: use saved-messages chat instead, probably do a core function
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+      return false;
     }
 
     @JavascriptInterface

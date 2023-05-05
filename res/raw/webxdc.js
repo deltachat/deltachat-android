@@ -39,5 +39,10 @@ window.webxdc = (() => {
     sendUpdate: (payload, descr) => {
       InternalJSApi.sendStatusUpdate(JSON.stringify(payload), descr);
     },
+
+    sendMessage: (payload) => {
+      payload.__blobBase64 = btoa(payload.blob) // JSON.stringify() does not handle Blob objects
+      InternalJSApi.sendMessage(JSON.stringify(payload));
+    },
   };
 })();
