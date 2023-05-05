@@ -60,7 +60,9 @@
     <!-- Possible answers to the question are: Never, Always, Once -->
     <string name="load_remote_content_ask">Les images distantes peuvent être utilisées pour vous pister. Ce paramètre autorise également le chargement de police d\'écriture ou d\'autres contenus. S\'il est désactivé, vous pouvez tout de même voir les images ancrées ou en cache. Souhaitez-vous charger les images distantes ?</string>
     <string name="always">Toujours</string>
+    <string name="always_load_remote_images">Toujours charger les images distantes</string>
     <string name="once">Une fois</string>
+    <string name="show_warning">Montrer l\'avertissement</string>
     <string name="show_password">Afficher le mot de passe</string>
     <string name="hide_password">Masquer le mot de passe</string>
     <string name="not_now">Pas maintenant</string>
