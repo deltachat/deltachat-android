@@ -30,6 +30,7 @@ import androidx.core.content.pm.ShortcutManagerCompat;
 import androidx.core.graphics.drawable.IconCompat;
 
 import com.b44t.messenger.DcChat;
+import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcMsg;
@@ -353,7 +354,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
         DcMsg msg = new DcMsg(dcContext, DcMsg.DC_MSG_FILE);
         msg.setText(jsonObject.getString("text"));
         msg.setFile(file.getAbsolutePath(), null);
-        dcContext.sendMsg(dcContext.getChatlist(DC_GCL_FOR_FORWARDING, null, 0).getChatId(0), msg); // TODO: use saved-messages chat instead, probably do a core function
+        dcContext.sendMsg(dcContext.createChatByContactId(DcContact.DC_CONTACT_ID_SELF), msg);
       } catch (Exception e) {
         e.printStackTrace();
       }
