@@ -71,7 +71,10 @@ public abstract class BaseConversationItem extends LinearLayout
   }
 
   protected boolean shouldInterceptClicks(DcMsg messageRecord) {
-    return batchSelected.isEmpty() && (messageRecord.isFailed());
+    return batchSelected.isEmpty()
+            && (messageRecord.isFailed()
+                || messageRecord.getInfoType() == DcMsg.DC_INFO_PROTECTION_DISABLED
+                || messageRecord.getInfoType() == DcMsg.DC_INFO_PROTECTION_ENABLED);
   }
 
   protected class PassthroughClickListener implements View.OnLongClickListener, View.OnClickListener {
@@ -112,6 +115,10 @@ public abstract class BaseConversationItem extends LinearLayout
                 .setPositiveButton(R.string.ok, null)
                 .create();
         d.show();
+      } else if (messageRecord.getInfoType() == DcMsg.DC_INFO_PROTECTION_DISABLED) {
+        DcHelper.showVerificationBrokenDialog(context);
+      } else if (messageRecord.getInfoType() == DcMsg.DC_INFO_PROTECTION_ENABLED) {
+        DcHelper.openVerificationHelp(context);
       }
     }
   }

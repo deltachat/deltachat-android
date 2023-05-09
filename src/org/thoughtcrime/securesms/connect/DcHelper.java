@@ -14,6 +14,7 @@ import android.webkit.MimeTypeMap;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.content.FileProvider;
 
 import com.b44t.messenger.DcAccounts;
@@ -25,11 +26,13 @@ import com.b44t.messenger.rpc.Rpc;
 
 import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.BuildConfig;
+import org.thoughtcrime.securesms.LocalHelpActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.ShareActivity;
 import org.thoughtcrime.securesms.database.model.ThreadRecord;
 import org.thoughtcrime.securesms.notifications.NotificationCenter;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
+import org.thoughtcrime.securesms.qr.QrActivity;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.MediaUtil;
 
@@ -434,5 +437,20 @@ public class DcHelper {
       } else {
           return context.getString(R.string.connectivity_not_connected);
       }
+  }
+
+  public static void showVerificationBrokenDialog(Context context) {
+
+    new AlertDialog.Builder(context)
+            .setMessage("Sometime in the past, you verified the security of your end-to-end encryption via a QR code scan. Therefore, the chat was secure even against an attacker who controls your e-mail server and manipulates messages to break the encryption.\n\n" +
+                    "Now, Bob probably reinstalled Delta Chat or sent a message from another device, so the encryption is not verified anymore. If you want, you can scan their QR code to restore the verification.\n")
+            .setPositiveButton("Learn more", (d, w) -> openVerificationHelp(context))
+            .setNegativeButton("Scan QR Code", (d, w) -> context.startActivity(new Intent(context, QrActivity.class)))
+            .setCancelable(true)
+            .show();
+  }
+
+  public static void openVerificationHelp(Context context) {
+    context.startActivity(new Intent(context, LocalHelpActivity.class));
   }
 }

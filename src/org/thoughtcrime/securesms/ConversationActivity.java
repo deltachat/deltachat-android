@@ -1632,7 +1632,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   public void initializeContactRequest() {
-    if (!dcChat.isContactRequest()) {
+    if (!dcChat.isHalfBlocked()) {
       messageRequestBottomView.setVisibility(View.GONE);
       return;
     }
@@ -1643,21 +1643,33 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       messageRequestBottomView.setVisibility(View.GONE);
       composePanel.setVisibility(View.VISIBLE);
     });
-    messageRequestBottomView.setBlockOnClickListener(v -> {
-      // avoid showing compose panel on receiving DC_EVENT_CONTACTS_CHANGED for the chat that is no longer a request after blocking
-      DcHelper.getEventCenter(this).removeObserver(DcContext.DC_EVENT_CONTACTS_CHANGED, this);
 
-      dcContext.blockChat(chatId);
-      Bundle extras = new Bundle();
-      extras.putInt(ConversationListFragment.RELOAD_LIST, 1);
-      handleReturnToConversationList(extras);
-    });
 
-    if (dcChat.getType() == DcChat.DC_CHAT_TYPE_GROUP) {
+    if (dcChat.isProtectionBroken()) {
+      messageRequestBottomView.setBlockText(R.string.more_info_desktop);
+      messageRequestBottomView.setBlockOnClickListener(v -> DcHelper.showVerificationBrokenDialog(this));
+
+      // TODO translation
+      messageRequestBottomView.setQuestion("Messages may not be end-to-end encrypted anymore.");
+
+    } else if (dcChat.getType() == DcChat.DC_CHAT_TYPE_GROUP) {
       // We don't support blocking groups yet, so offer to delete it instead
       messageRequestBottomView.setBlockText(R.string.delete);
       messageRequestBottomView.setBlockOnClickListener(v -> handleDeleteChat());
+      messageRequestBottomView.setQuestion(null);
+
+    } else {
+      messageRequestBottomView.setBlockText(R.string.block);
+      messageRequestBottomView.setBlockOnClickListener(v -> {
+        // avoid showing compose panel on receiving DC_EVENT_CONTACTS_CHANGED for the chat that is no longer a request after blocking
+        DcHelper.getEventCenter(this).removeObserver(DcContext.DC_EVENT_CONTACTS_CHANGED, this);
+
+        dcContext.blockChat(chatId);
+        Bundle extras = new Bundle();
+        extras.putInt(ConversationListFragment.RELOAD_LIST, 1);
+        handleReturnToConversationList(extras);
+      });
+      messageRequestBottomView.setQuestion(null);
     }
-    messageRequestBottomView.setQuestion(null);
   }
 }
