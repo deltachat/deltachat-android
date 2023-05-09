@@ -1,5 +1,7 @@
 package com.b44t.messenger.rpc;
 
+import static com.b44t.messenger.rpc.Reaction.ReactionDeserializer;
+
 import com.b44t.messenger.DcJsonrpcInstance;
 import com.b44t.messenger.util.concurrent.SettableFuture;
 import com.google.gson.Gson;
@@ -8,7 +10,6 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutionException;
@@ -17,10 +18,14 @@ public class Rpc {
     private final Map<Integer, SettableFuture<JsonElement>> requestFutures = new ConcurrentHashMap<>();
     private final DcJsonrpcInstance dcJsonrpcInstance;
     private int requestId = 0;
-    private final Gson gson = new GsonBuilder().serializeNulls().create();
+    private final Gson gson;
 
     public Rpc(DcJsonrpcInstance dcJsonrpcInstance) {
         this.dcJsonrpcInstance = dcJsonrpcInstance;
+
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        gsonBuilder.registerTypeAdapter(Reaction.class, new ReactionDeserializer());
+        this.gson = gsonBuilder.serializeNulls().create();
     }
 
     private void processResponse() throws JsonSyntaxException {
@@ -98,6 +103,10 @@ public class Rpc {
 
     public HttpResponse getHttpResponse(int accountId, String url) throws RpcException {
         return gson.fromJson(getResult("get_http_response", accountId, url), HttpResponse.class);
+    }
+
+    public Reactions getMsgReactions(int accountId, int msgId) throws RpcException {
+        return gson.fromJson(getResult("get_msg_reactions", accountId, msgId), Reactions.class);
     }
 
 
