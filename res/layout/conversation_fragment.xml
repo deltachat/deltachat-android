@@ -59,12 +59,15 @@
         android:layout_marginRight="10dp"
         android:layout_marginBottom="20dp"
         android:layout_gravity="bottom|end"
-        android:padding="5dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="6dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
         android:background="?attr/floating_mini_bg"
         android:tint="@color/gray50"
         android:elevation="1dp"
         android:alpha="0.9"
         android:contentDescription="@string/menu_scroll_to_bottom"
-        android:src="@drawable/ic_scroll_down"/>
+        android:src="@drawable/ic_search_down"/>
 
 </FrameLayout>
