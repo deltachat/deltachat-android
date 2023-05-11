@@ -676,13 +676,13 @@ public class ConversationItem extends BaseConversationItem
   private void setReactions(@NonNull DcMsg current) {
     try {
       Reactions reactions = rpc.getMsgReactions(dcContext.getAccountId(), current.getId());
-      if (reactions.getReactions() == null) {
+      if (reactions == null) {
         reactionsView.clear();
       } else {
         reactionsView.setReactions(reactions.getReactions());
       }
     } catch (RpcException e) {
-        reactionsView.clear();
+      reactionsView.clear();
     }
   }
 
