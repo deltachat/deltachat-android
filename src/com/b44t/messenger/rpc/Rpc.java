@@ -1,7 +1,5 @@
 package com.b44t.messenger.rpc;
 
-import static com.b44t.messenger.rpc.Reaction.ReactionDeserializer;
-
 import com.b44t.messenger.DcJsonrpcInstance;
 import com.b44t.messenger.util.concurrent.SettableFuture;
 import com.google.gson.Gson;
@@ -18,14 +16,10 @@ public class Rpc {
     private final Map<Integer, SettableFuture<JsonElement>> requestFutures = new ConcurrentHashMap<>();
     private final DcJsonrpcInstance dcJsonrpcInstance;
     private int requestId = 0;
-    private final Gson gson;
+    private final Gson gson = new GsonBuilder().serializeNulls().create();
 
     public Rpc(DcJsonrpcInstance dcJsonrpcInstance) {
         this.dcJsonrpcInstance = dcJsonrpcInstance;
-
-        GsonBuilder gsonBuilder = new GsonBuilder();
-        gsonBuilder.registerTypeAdapter(Reaction.class, new ReactionDeserializer());
-        this.gson = gsonBuilder.serializeNulls().create();
     }
 
     private void processResponse() throws JsonSyntaxException {
@@ -46,7 +40,7 @@ public class Rpc {
         } else if (response.result != null) {
             future.set(response.result);
         } else {
-            future.setException(new RpcException("Got JSON-RPC response witout result or error: " + jsonResponse));
+            future.setException(new RpcException("Got JSON-RPC response without result or error: " + jsonResponse));
         }
     }
 
@@ -111,7 +105,7 @@ public class Rpc {
 
 
     private static class Request {
-        public String jsonrpc = "2.0";
+        private final String jsonrpc = "2.0";
         public String method;
         public Object[] params;
         public int id;
@@ -124,7 +118,7 @@ public class Rpc {
     }
 
     private static class Response {
-        public int id = 0;
+        public int id;
         public JsonElement result;
         public JsonElement error;
 

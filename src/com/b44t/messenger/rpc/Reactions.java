@@ -1,23 +1,26 @@
 package com.b44t.messenger.rpc;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Reactions {
     // Map from a contact to it's reaction to message.
-    private HashMap<Integer, String[]> reactionsByContact;
+    private final HashMap<Integer, String[]> reactionsByContact;
     // Unique reactions, sorted in descending order.
-    private Reaction[] reactions;
+    private final ArrayList<Reaction> reactions;
 
-    public Reactions(HashMap<Integer, String[]> reactionsByContact, Reaction[] reactions) {
+    public Reactions(HashMap<Integer, String[]> reactionsByContact, ArrayList<Reaction> reactions) {
         this.reactionsByContact = reactionsByContact;
         this.reactions = reactions;
     }
 
-    public HashMap<Integer, String[]> getReactionsByContact() {
+    public Map<Integer, String[]> getReactionsByContact() {
         return reactionsByContact;
     }
 
-    public Reaction[] getReactions() {
+    public List<Reaction> getReactions() {
         return reactions;
     }
 }

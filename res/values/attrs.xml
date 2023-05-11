@@ -240,14 +240,20 @@
         <attr name="timeFrame" format="integer"/>
     </declare-styleable>
 
+    <attr name="message_type" format="enum">
+      <enum name="preview" value="0" />
+      <enum name="outgoing" value="1" />
+      <enum name="incoming" value="2" />
+    </attr>
+
     <declare-styleable name="QuoteView">
-        <attr name="message_type" format="enum">
-            <enum name="preview" value="0" />
-            <enum name="outgoing" value="1" />
-            <enum name="incoming" value="2" />
-        </attr>
+        <attr name="message_type" />
         <attr name="quote_colorPrimary" format="color" />
         <attr name="quote_colorSecondary" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="ReactionsConversationView">
+        <attr name="message_type" />
     </declare-styleable>
 
     <declare-styleable name="ConversationAdaptiveActionsToolbar">

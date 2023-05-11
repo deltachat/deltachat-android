@@ -39,6 +39,8 @@ import androidx.annotation.Nullable;
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcMsg;
+import com.b44t.messenger.rpc.Reactions;
+import com.b44t.messenger.rpc.RpcException;
 
 import org.thoughtcrime.securesms.audio.AudioSlidePlayer;
 import org.thoughtcrime.securesms.components.AudioView;
@@ -59,6 +61,7 @@ import org.thoughtcrime.securesms.mms.Slide;
 import org.thoughtcrime.securesms.mms.SlideClickListener;
 import org.thoughtcrime.securesms.mms.SlideDeck;
 import org.thoughtcrime.securesms.mms.StickerSlide;
+import org.thoughtcrime.securesms.reactions.ReactionsConversationView;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.LongClickMovementMethod;
 import org.thoughtcrime.securesms.util.MediaUtil;
@@ -97,6 +100,7 @@ public class ConversationItem extends BaseConversationItem
   @Nullable private QuoteView      quoteView;
   private   ConversationItemFooter footer;
   private   ConversationItemFooter stickerFooter;
+  private ReactionsConversationView reactionsView;
   private   TextView               groupSender;
   private   View                   groupSenderHolder;
   private   AvatarImageView        contactPhoto;
@@ -134,6 +138,7 @@ public class ConversationItem extends BaseConversationItem
     this.bodyText                =            findViewById(R.id.conversation_item_body);
     this.footer                  =            findViewById(R.id.conversation_item_footer);
     this.stickerFooter           =            findViewById(R.id.conversation_item_sticker_footer);
+    this.reactionsView           =            findViewById(R.id.reactions_view);
     this.groupSender             =            findViewById(R.id.group_message_sender);
     this.contactPhoto            =            findViewById(R.id.contact_photo);
     this.contactPhotoHolder      =            findViewById(R.id.contact_photo_container);
@@ -185,6 +190,7 @@ public class ConversationItem extends BaseConversationItem
     setGroupMessageStatus();
     setAuthor(messageRecord, showSender);
     setMessageSpacing(context);
+    setReactions(messageRecord);
     setFooter(messageRecord, locale);
     setQuote(messageRecord);
   }
@@ -665,6 +671,19 @@ public class ConversationItem extends BaseConversationItem
     ConversationItemFooter activeFooter = getActiveFooter(current);
     activeFooter.setVisibility(VISIBLE);
     activeFooter.setMessageRecord(current, locale);
+  }
+
+  private void setReactions(@NonNull DcMsg current) {
+    try {
+      Reactions reactions = rpc.getMsgReactions(dcContext.getAccountId(), current.getId());
+      if (reactions.getReactions() == null) {
+        reactionsView.clear();
+      } else {
+        reactionsView.setReactions(reactions.getReactions());
+      }
+    } catch (RpcException e) {
+        reactionsView.clear();
+    }
   }
 
   private ConversationItemFooter getActiveFooter(@NonNull DcMsg messageRecord) {
