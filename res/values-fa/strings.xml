@@ -48,6 +48,10 @@
     <string name="start_chat">شروع گفتگو</string>
     <string name="show_full_message">نمایش پیام کامل...</string>
     <string name="show_full_message_in_browser">نمایش پیام کامل در مرورگر</string>
+    <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
+    <string name="mark_all_as_read">همه را خوانده شده بزن</string>
+    <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
+    <string name="mark_as_read_short">خوانده شد</string>
     <!-- Placeholder text when something is loading -->
     <string name="loading">در حال بارگیری...</string>
     <string name="hide">مخفی کردن</string>
@@ -56,7 +60,9 @@
     <!-- Possible answers to the question are: Never, Always, Once -->
     <string name="load_remote_content_ask">تصاویر مربوط به نشانی‌های اینترنتی دیگر می‌توانند برای ردیابی شما استفاده شوند. \n\n این تنظیمات همچنین برای بارگیری فونت‌ها و دیگر محتواها استفاده می‌شوند. اگر غیرفعال باشد ممکن است همچنان تصاویر درون پیام و تصاویر بارگیری شده را ببینید. \n\n آيا تصاویر خارجی بارگیری شوند؟</string>
     <string name="always">همیشه</string>
+    <string name="always_load_remote_images">همیشه تصاویر ریموت را بارگیری کن</string>
     <string name="once">همین یک بار</string>
+    <string name="show_warning">نمایش هشدار</string>
     <string name="show_password">نمایش رمزعبور</string>
     <string name="hide_password">مخفی کردن رمز عبور</string>
     <string name="not_now">اکنون نه</string>
@@ -204,6 +210,8 @@
     <string name="menu_add_attachment">افزودن ضمیمه</string>
     <string name="menu_leave_group">ترک گروه</string>
     <string name="menu_delete_chat">حذف کل گفتگو</string>
+    <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
+    <string name="clear_chat">پاک کردن چت</string>
     <string name="ask_delete_named_chat">اطمینان دارید می‌خواهید \"%1$s\" را پاک کنید؟</string>
     <string name="menu_delete_messages">حذف پیام‌ها</string>
     <string name="delete_contact">پاک کردن مخاطب</string>
@@ -456,6 +464,7 @@ https://meet.jit.si/$ROOM
     <string name="tab_video_empty_hint">فیلم‌هایی که در این گفتگو اشتراک گذاری شده باشند در اینجا نمایش داده می‌شوند. </string>
     <string name="tab_audio_empty_hint">فایل‌ها و پیام‌های صوتی که در این گفتگو اشتراک گذاری شده‌‌اند در اینجا نمایش داده می‌شوند.</string>
     <string name="tab_webxdc_empty_hint">نرم‌افزارهای خصوصی، که در این گفتگو به اشتراک گذاشته شده‌اند در اینجا نمایش داده می‌شوند. </string>
+    <string name="tab_all_media_empty_hint">رسانه به اشتراک گذاشته شده هر چت در اینجا ظاهر می‌شود.</string>
     <string name="media_preview">نمایش رسانه</string>
     <string name="send_message">ارسال پیام</string>
     <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
@@ -465,6 +474,32 @@ https://meet.jit.si/$ROOM
 اگر به گروه‌های تایید شده یا مخاطبین خود پیامی ارسال کنید؛ به صورت خودکار نشانی جدید را جایگزین نشانی پیشین می‌کنند. 
 به شدت توصیه می‌شود که نشانی رایانامه پیشین خود را به نحوی تنظیم کنید که همه رایانامه‌ها را به نشانی جدید شما هدایت کند؛ در غیر این صورت ممکن است پیام‌های مخاطبینی که از تغییر نشانی شما مطلع نشده‌اند را از دست بدهید. </string>
 
+
+    <!-- Multi Device -->
+    <!-- "Second Device" can also be translated as "Another Device", if that is catchier in the destination language. However, make sure to use the term consistently. -->
+    <string name="multidevice_title">افزودن دستگاه دوم</string>
+    <string name="multidevice_same_network_hint">مطمئن شوید هر دو دستگاه در یک وای‌فای یا شبکه هستند</string>
+    <string name="multidevice_this_creates_a_qr_code">این یک کد QR ایجاد می‌کند که دستگاه دوم می‌تواند برای کپی حساب اسکن کند.</string>
+    <string name="multidevice_install_dc_on_other_device">دلتا چت را روی دستگاه دیگر خود نصب کنید (https://get.delta.chat)</string>
+    <string name="multidevice_tap_scan_on_other_device">دلتا چت را اجرا کنید، روی \"افزودن به عنوان دستگاه دوم\" بزنید و کد نشان داده شده در اینجا را اسکن کنید</string>
+    <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and/or address eg. "Scan to set up second device for Alice (alice@example.org)" -->
+    <string name="multidevice_qr_subtitle">برای راه اندازی دستگاه دوم برای %1$s اسکن کنید</string>
+    <string name="multidevice_receiver_title">افزودن به عنوان دستگاه دوم</string>
+    <string name="multidevice_open_settings_on_other_device">در دستگاه اول، به \"تنظیمات / افزودن دستگاه دوم\" بروید و کد نشان داده شده در آنجا را اسکن کنید</string>
+    <string name="multidevice_receiver_scanning_ask">حساب از دستگاه دیگر به این دستگاه کپی شود؟</string>
+    <string name="multidevice_abort">راه اندازی دستگاه دوم لغو شود؟</string>
+    <string name="multidevice_abort_will_invalidate_copied_qr">این کار کد QR کپی شده در کلیپ بورد را باطل می کند.</string>
+    <string name="multidevice_experimental_hint">(تجربی، نسخه 1.36 مورد نیاز است)</string>
+    <string name="multidevice_transfer_done_devicemsg">ℹ️ حساب به دستگاه دوم شما منتقل شد.</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="preparing_account">در حال آماده سازی حساب…</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="waiting_for_receiver">در انتظار گیرنده…</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="receiver_connected">گیرنده متصل شد…</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="transferring">در حال انتقال…</string>
+    <string name="troubleshooting">عیب یابی</string>
 
     <!-- Connectivity -->
     <!-- Headline for the "Inbox" eg. in the "Connectivity" view -->
@@ -1062,4 +1097,10 @@ GNU GPL ورژن ۳
     <string name="perm_enable_bg_already_done">قبلا اجازه دسترسی به فعالیت در پس زمینه را به دلتاچت داده‌اید. \n\n اگر پیام‌ها هنوز هم در شرایط پس زمینه نمی‌آمد لطفا تنظیمات سیستم را نیز بررسی نمایید. </string>
 
 
-    </resources>
+    <!-- device messages for updates -->
+    <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
+    <string name="update_1_36_android">نکات برجسته 1.36/n/n💻📱 از دلتا چت در همه دستگاه‌های خود به راحتی استفاده کنید - فقط سه مرحله ساده را در \"تنظیمات / افزودن دستگاه دوم\" (تجربی) دنبال کنید/n/n🖼🔍 آیا تا به حال به دنبال یک تصویر هستید و نمی توانید چت را به یاد بیاورید؟ \"همه رسانه\" از منوی اصلی متعلق به شماست!/n/nچه چیز دیگری؟ اعلان ها برای همه حساب ها، پاک کردن چت، و موارد دیگر در %1$s</string>
+    <!-- placeholder will be replaced by the URL https://delta.chat/en/2023-03-27-third-independent-security-audit -->
+    <string name="update_1_36_audit">ما در اینجا زیاد در مورد امنیت صحبت نمی کنیم، اما مطمئن باشید، ما اهمیت می دهیم: برای اخبار خوب اخیر به %1$s مراجعه کنید 👌</string>
+
+</resources>
