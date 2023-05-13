@@ -203,8 +203,7 @@
     <string name="menu_toggle_keyboard">Toggle Emoji Keyboard</string>
     <string name="menu_edit_group">Edit Group</string>
     <string name="menu_group_name_and_image">Group Name and Image</string>
-    <string name="menu_show_map">Show Map</string>
-    <string name="menu_show_global_map">Show all Locations</string>
+    <string name="menu_show_global_map">All Locations</string>
     <string name="menu_archive_chat">Archive Chat</string>
     <string name="menu_unarchive_chat">Unarchive Chat</string>
     <string name="menu_add_attachment">Add Attachment</string>

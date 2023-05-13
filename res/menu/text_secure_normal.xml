@@ -10,13 +10,13 @@
     <item android:title="@string/menu_new_chat"
           android:id="@+id/menu_new_chat" />
 
+    <item android:title="@string/menu_all_media"
+        android:id="@+id/menu_all_media" />
+
     <item android:title="@string/menu_show_global_map"
         android:id="@+id/menu_global_map"
         android:visible="false"
         />
-
-    <item android:title="@string/menu_all_media"
-        android:id="@+id/menu_all_media" />
 
     <item android:title="@string/menu_settings"
           android:id="@+id/menu_settings" />
