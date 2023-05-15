@@ -1647,7 +1647,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     if (dcChat.isProtectionBroken()) {
       messageRequestBottomView.setBlockText(R.string.more_info_desktop);
-      messageRequestBottomView.setBlockOnClickListener(v -> DcHelper.showVerificationBrokenDialog(this));
+      messageRequestBottomView.setBlockOnClickListener(v -> DcHelper.showVerificationBrokenDialog(this, recipient.getName()));
 
       // TODO translation
       messageRequestBottomView.setQuestion("Messages may not be end-to-end encrypted anymore.");

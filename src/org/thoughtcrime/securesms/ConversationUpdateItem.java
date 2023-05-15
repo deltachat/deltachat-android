@@ -9,7 +9,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatImageView;
 import android.util.AttributeSet;
-import android.widget.TextView;
 
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcMsg;
@@ -65,7 +64,7 @@ public class ConversationUpdateItem extends BaseConversationItem
                    @NonNull Recipient               conversationRecipient,
                             boolean                 pulseUpdate)
   {
-    bind(messageRecord, dcChat, batchSelected, pulseUpdate);
+    bind(messageRecord, dcChat, batchSelected, pulseUpdate, conversationRecipient);
     setGenericInfoRecord(messageRecord);
   }
 

@@ -439,11 +439,10 @@ public class DcHelper {
       }
   }
 
-  public static void showVerificationBrokenDialog(Context context) {
+  public static void showVerificationBrokenDialog(Context context, String name) {
 
     new AlertDialog.Builder(context)
-            .setMessage("Sometime in the past, you verified the security of your end-to-end encryption via a QR code scan. Therefore, the chat was secure even against an attacker who controls your e-mail server and manipulates messages to break the encryption.\n\n" +
-                    "Now, Bob probably reinstalled Delta Chat or sent a message from another device, so the encryption is not verified anymore. If you want, you can scan their QR code to restore the verification.\n")
+            .setMessage(context.getString(R.string.protection_degraded_explanation, name))
             .setPositiveButton("Learn more", (d, w) -> openVerificationHelp(context))
             .setNegativeButton("Scan QR Code", (d, w) -> context.startActivity(new Intent(context, QrActivity.class)))
             .setCancelable(true)
