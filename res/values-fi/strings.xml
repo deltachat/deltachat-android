@@ -197,7 +197,6 @@
     <string name="menu_toggle_keyboard">Näytä emoji-näppäimistö</string>
     <string name="menu_edit_group">Muokkaa ryhmää</string>
     <string name="menu_group_name_and_image">Ryhmän nimi ja kuva</string>
-    <string name="menu_show_map">Näytä kartta</string>
     <string name="menu_show_global_map">Näytä kaikki sijainnit</string>
     <string name="menu_archive_chat">Arkistoi keskustelu</string>
     <string name="menu_unarchive_chat">Siirrä keskustelu pois arkistosta</string>

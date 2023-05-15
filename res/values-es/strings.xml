@@ -211,7 +211,6 @@
     <string name="menu_toggle_keyboard">Alternar teclado emoji</string>
     <string name="menu_edit_group">Editar grupo</string>
     <string name="menu_group_name_and_image">Nombre e imagen de grupo</string>
-    <string name="menu_show_map">Mostrar mapa</string>
     <string name="menu_show_global_map">Mostrar todas las ubicaciones</string>
     <string name="menu_archive_chat">Archivar chat</string>
     <string name="menu_unarchive_chat">Des-archivar chat</string>

@@ -211,7 +211,6 @@
     <string name="menu_toggle_keyboard">Basculer le clavier emoji</string>
     <string name="menu_edit_group">Modifier le groupe</string>
     <string name="menu_group_name_and_image">Nom du groupe et photo</string>
-    <string name="menu_show_map">Montrer la carte</string>
     <string name="menu_show_global_map">Afficher toutes les positions</string>
     <string name="menu_archive_chat">Archiver la discussion</string>
     <string name="menu_unarchive_chat">Désarchiver la discussion</string>

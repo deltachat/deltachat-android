@@ -162,7 +162,6 @@
     <string name="menu_toggle_keyboard">Skift emoji tastatur</string>
     <string name="menu_edit_group">Rediger gruppe</string>
     <string name="menu_group_name_and_image">Gruppenavn og billede</string>
-    <string name="menu_show_map">Vis kort</string>
     <string name="menu_show_global_map">Vis alle placeringer</string>
     <string name="menu_archive_chat">Arkiver samtale</string>
     <string name="menu_unarchive_chat">Fjern samtale fra arkiv</string>

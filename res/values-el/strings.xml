@@ -197,7 +197,6 @@
     <string name="menu_toggle_keyboard">Εναλλαγή πληκτρολογίου emoji</string>
     <string name="menu_edit_group">Επεξεργασία ομάδας</string>
     <string name="menu_group_name_and_image">Όνομα Ομάδας και Εικόνα</string>
-    <string name="menu_show_map">Εμφάνιση Xάρτη</string>
     <string name="menu_show_global_map">Εμφάνιση όλων των Τοποθεσιών</string>
     <string name="menu_archive_chat">Αρχείο Συνομιλίας</string>
     <string name="menu_unarchive_chat">Κατάργηση Αρχειοθέτησης Συνομιλίας</string>

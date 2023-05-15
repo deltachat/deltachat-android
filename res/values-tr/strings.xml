@@ -203,7 +203,6 @@
     <string name="menu_toggle_keyboard">Emoji Klavyesine Geç</string>
     <string name="menu_edit_group">Grubu Düzenle</string>
     <string name="menu_group_name_and_image">Grup Adı ve Görseli</string>
-    <string name="menu_show_map">Haritayı Göster</string>
     <string name="menu_show_global_map">Tüm Konumları Göster</string>
     <string name="menu_archive_chat">Sohbeti Arşivle</string>
     <string name="menu_unarchive_chat">Sohbeti Arşivleme</string>

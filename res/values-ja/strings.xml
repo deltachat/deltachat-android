@@ -161,7 +161,6 @@
     <string name="menu_toggle_keyboard">絵文字キーボードを呼び出す</string>
     <string name="menu_edit_group">グループを編集</string>
     <string name="menu_group_name_and_image">グループ名と画像</string>
-    <string name="menu_show_map">地図を見る</string>
     <string name="menu_show_global_map">全ての位置情報を表示する</string>
     <string name="menu_archive_chat">チャットを保管</string>
     <string name="menu_unarchive_chat">チャットを取り出す</string>

@@ -189,7 +189,6 @@
     <string name="menu_toggle_keyboard">이모티콘 키보드 전환</string>
     <string name="menu_edit_group">그룹 편집</string>
     <string name="menu_group_name_and_image">그룹 이름과 이미지</string>
-    <string name="menu_show_map">지도 보이기</string>
     <string name="menu_show_global_map">모든 위치 보기</string>
     <string name="menu_archive_chat">채팅 보관</string>
     <string name="menu_unarchive_chat">보관되지 않은 채팅</string>

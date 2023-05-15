@@ -211,7 +211,6 @@
     <string name="menu_toggle_keyboard">Alterna la Tastiera Emoji</string>
     <string name="menu_edit_group">Modifica Gruppo</string>
     <string name="menu_group_name_and_image">Nome e Immagine Gruppo</string>
-    <string name="menu_show_map">Mostra Mappa</string>
     <string name="menu_show_global_map">Mostra tutte le Posizioni</string>
     <string name="menu_archive_chat">Archivia Chat</string>
     <string name="menu_unarchive_chat">Ripristina Chat</string>

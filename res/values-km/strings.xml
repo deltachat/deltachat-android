@@ -172,7 +172,6 @@
     <string name="menu_toggle_keyboard">ក្តារចុចបើក/បិទរូបសញ្ញាអារម្មណ៍</string>
     <string name="menu_edit_group">កែក្រុម</string>
     <string name="menu_group_name_and_image">ក្រុមឈ្មោះ និងរូបភាព</string>
-    <string name="menu_show_map">បង្ហាញផែនទី</string>
     <string name="menu_show_global_map">បង្ហាញទីតាំងទាំងអស់</string>
     <string name="menu_archive_chat">លាក់សារសន្ទនា</string>
     <string name="menu_unarchive_chat">បង្ហាញសារសន្ទនា</string>

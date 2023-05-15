@@ -114,7 +114,6 @@
     <string name="menu_toggle_keyboard">Emoji billentyűzet kapcsoló</string>
     <string name="menu_edit_group">Csoport szerkesztése</string>
     <string name="menu_group_name_and_image">Csoportnév és -kép</string>
-    <string name="menu_show_map">Térkép megjelenítése</string>
     <string name="menu_show_global_map">Minden hely megjelenítése</string>
     <string name="menu_archive_chat">Beszélgetés archiválása</string>
     <string name="menu_unarchive_chat">Archiválás visszavonása</string>

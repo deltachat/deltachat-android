@@ -213,7 +213,6 @@
     <string name="menu_toggle_keyboard">Prepnúť klávesnicu emodži</string>
     <string name="menu_edit_group">Upraviť skupinu</string>
     <string name="menu_group_name_and_image">Názov a obrázok skupiny</string>
-    <string name="menu_show_map">Zobraziť mapu</string>
     <string name="menu_show_global_map">Zobraziť všetky polohy</string>
     <string name="menu_archive_chat">Archivovať konverzáciu</string>
     <string name="menu_unarchive_chat">Zrušiť archiváciu konverzácie</string>

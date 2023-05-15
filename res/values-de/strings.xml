@@ -156,7 +156,8 @@
     <string name="capture">Aufnehmen</string>
     <string name="switch_camera">Kamera wechseln</string>
     <string name="toggle_fullscreen">Vollbildmodus umschalten</string>
-    <string name="location">Ort</string>
+    <string name="location">Standort</string>
+    <string name="locations">Standorte</string>
     <string name="gallery">Galerie</string>
     <string name="images_and_videos">Bilder und Videos</string>
     <string name="file">Datei</string>
@@ -203,8 +204,7 @@
     <string name="menu_toggle_keyboard">Emojis einblenden</string>
     <string name="menu_edit_group">Gruppe bearbeiten</string>
     <string name="menu_group_name_and_image">Gruppenname und -bild</string>
-    <string name="menu_show_map">Karte anzeigen</string>
-    <string name="menu_show_global_map">Alle Standorte anzeigen</string>
+    <string name="menu_show_global_map">Alle Standorte</string>
     <string name="menu_archive_chat">Chat archivieren</string>
     <string name="menu_unarchive_chat">Archivieren rückgängig</string>
     <string name="menu_add_attachment">Dateien anhängen</string>

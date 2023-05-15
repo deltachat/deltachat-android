@@ -132,7 +132,6 @@
     <string name="menu_toggle_keyboard">Txandakatu emoji teklatua</string>
     <string name="menu_edit_group">Editatu taldea</string>
     <string name="menu_group_name_and_image">Taldearen izena eta irudia</string>
-    <string name="menu_show_map">Erakutsi mapa</string>
     <string name="menu_show_global_map">Erakutsi kokaleku guztiak</string>
     <string name="menu_archive_chat">Artxibatu txata</string>
     <string name="menu_unarchive_chat">Berreskuratu txata artxibotik</string>

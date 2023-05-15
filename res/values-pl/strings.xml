@@ -219,7 +219,6 @@
     <string name="menu_toggle_keyboard">Przełącz klawiaturę emoji</string>
     <string name="menu_edit_group">Edytuj grupę</string>
     <string name="menu_group_name_and_image">Nazwa grupy i obraz</string>
-    <string name="menu_show_map">Pokaż mapę</string>
     <string name="menu_show_global_map">Pokaż wszystkie lokalizacje</string>
     <string name="menu_archive_chat">Archiwizuj czat</string>
     <string name="menu_unarchive_chat">Przywróć czat z archiwum</string>

@@ -192,7 +192,6 @@
     <string name="menu_toggle_keyboard">Canvia al teclat d\'emoticones</string>
     <string name="menu_edit_group">Modifica el grup</string>
     <string name="menu_group_name_and_image">Nom i imatge del grup</string>
-    <string name="menu_show_map">Mostra el mapa</string>
     <string name="menu_show_global_map">Mostra totes les ubicacions</string>
     <string name="menu_archive_chat">Arxiva el xat</string>
     <string name="menu_unarchive_chat">Desarxiva el xat</string>

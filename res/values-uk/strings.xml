@@ -219,7 +219,6 @@
     <string name="menu_toggle_keyboard">Увімкнути емодзі-клавіатуру</string>
     <string name="menu_edit_group">Редагувати групу</string>
     <string name="menu_group_name_and_image">Назва та зображення групи</string>
-    <string name="menu_show_map">Показати карту</string>
     <string name="menu_show_global_map">Показати всі місця</string>
     <string name="menu_archive_chat">Архівувати чат</string>
     <string name="menu_unarchive_chat">Розархівувати чат</string>

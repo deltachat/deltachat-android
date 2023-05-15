@@ -203,7 +203,6 @@
     <string name="menu_toggle_keyboard">Emoji-toetsenbord tonen/verbergen</string>
     <string name="menu_edit_group">Groep aanpassen</string>
     <string name="menu_group_name_and_image">Groepsnaam en -afbeelding</string>
-    <string name="menu_show_map">Kaart tonen</string>
     <string name="menu_show_global_map">Alle locaties tonen</string>
     <string name="menu_archive_chat">Gesprek archiveren</string>
     <string name="menu_unarchive_chat">Gesprek de-archiveren</string>

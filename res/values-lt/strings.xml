@@ -188,7 +188,6 @@
     <string name="menu_toggle_keyboard">Perjungti šypsniukų klaviatūrą</string>
     <string name="menu_edit_group">Taisyti grupę</string>
     <string name="menu_group_name_and_image">Grupės pavadinimas ir paveikslas</string>
-    <string name="menu_show_map">Rodyti žemėlapį</string>
     <string name="menu_show_global_map">Rodyti visas vietas</string>
     <string name="menu_archive_chat">Archyvuoti pokalbį</string>
     <string name="menu_unarchive_chat">Išarchyvuoti pokalbį</string>

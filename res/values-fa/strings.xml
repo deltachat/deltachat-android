@@ -203,7 +203,6 @@
     <string name="menu_toggle_keyboard">تعییر صفحه کلید شکلک‌ها</string>
     <string name="menu_edit_group">ویرایش گروه</string>
     <string name="menu_group_name_and_image">نام و تصویر گروه</string>
-    <string name="menu_show_map">نمایش نقشه</string>
     <string name="menu_show_global_map">نمایش همه موقعیت‌های مکانی</string>
     <string name="menu_archive_chat">بایگانی گفتگو</string>
     <string name="menu_unarchive_chat">خروج چت از بایگانی</string>

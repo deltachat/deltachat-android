@@ -138,7 +138,6 @@
     <string name="menu_toggle_keyboard">Slå på/av emoji-tastatur</string>
     <string name="menu_edit_group">Rediger gruppe</string>
     <string name="menu_group_name_and_image">Gruppenavn og bilde</string>
-    <string name="menu_show_map">Vis kart</string>
     <string name="menu_show_global_map">Vis alle posisjoner</string>
     <string name="menu_archive_chat">Arkiver chat</string>
     <string name="menu_unarchive_chat">Fjern chat fra arkiv</string>

@@ -195,7 +195,6 @@
     <string name="menu_toggle_keyboard">切换 emoji 键盘</string>
     <string name="menu_edit_group">编辑群组</string>
     <string name="menu_group_name_and_image">群组名称和图像</string>
-    <string name="menu_show_map">显示地图</string>
     <string name="menu_show_global_map">显示所有位置</string>
     <string name="menu_archive_chat">归档聊天</string>
     <string name="menu_unarchive_chat">解档聊天</string>
