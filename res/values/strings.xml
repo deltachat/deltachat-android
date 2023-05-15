@@ -157,6 +157,7 @@
     <string name="switch_camera">Switch Camera</string>
     <string name="toggle_fullscreen">Toggle Full Screen Mode</string>
     <string name="location">Location</string>
+    <string name="locations">Locations</string>
     <string name="gallery">Gallery</string>
     <string name="images_and_videos">Images and Videos</string>
     <string name="file">File</string>
