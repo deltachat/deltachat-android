@@ -35,7 +35,7 @@
         android:title="@string/videochat" />
 
     <item android:id="@+id/menu_show_map"
-        android:title="@string/menu_show_map"
+        android:title="@string/tab_map"
         android:icon="@drawable/ic_map_white_24dp"
         app:showAsAction="ifRoom" />
 
