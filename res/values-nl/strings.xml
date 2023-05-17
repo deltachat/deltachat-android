@@ -157,6 +157,7 @@
     <string name="switch_camera">Andere camera</string>
     <string name="toggle_fullscreen">Beeldvullende modus aan/uit</string>
     <string name="location">Locatie</string>
+    <string name="locations">Locaties</string>
     <string name="gallery">Galerij</string>
     <string name="images_and_videos">Foto\'s en video\'s</string>
     <string name="file">Bestand</string>

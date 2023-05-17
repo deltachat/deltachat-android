@@ -157,6 +157,7 @@
     <string name="switch_camera">Kamerayı Değiştir</string>
     <string name="toggle_fullscreen">Tam Ekran Moduna Geç</string>
     <string name="location">Konum</string>
+    <string name="locations">Konumlar</string>
     <string name="gallery">Galeri</string>
     <string name="images_and_videos">Görseller ve Videolar</string>
     <string name="file">Dosya</string>
@@ -203,7 +204,7 @@
     <string name="menu_toggle_keyboard">Emoji Klavyesine Geç</string>
     <string name="menu_edit_group">Grubu Düzenle</string>
     <string name="menu_group_name_and_image">Grup Adı ve Görseli</string>
-    <string name="menu_show_global_map">Tüm Konumları Göster</string>
+    <string name="menu_show_global_map">Tüm Konumlar</string>
     <string name="menu_archive_chat">Sohbeti Arşivle</string>
     <string name="menu_unarchive_chat">Sohbeti Arşivleme</string>
     <string name="menu_add_attachment">İlişik Ekle</string>

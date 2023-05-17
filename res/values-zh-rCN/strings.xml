@@ -149,6 +149,7 @@
     <string name="switch_camera">切换摄像头</string>
     <string name="toggle_fullscreen">切换全屏模式</string>
     <string name="location">位置</string>
+    <string name="locations">位置</string>
     <string name="gallery">图库</string>
     <string name="images_and_videos">图像和视频</string>
     <string name="file">文件</string>
