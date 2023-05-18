@@ -29,6 +29,7 @@
     <string name="emoji">Emoji</string>
     <string name="attachment">Attachment</string>
     <string name="back">Back</string>
+    <string name="verified">Verified</string>
     <string name="close">Close</string>
     <string name="forward">Forward</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
@@ -95,6 +96,8 @@
     <string name="last_month">Last month</string>
     <!-- Placeholder replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
     <string name="last_seen_at">Last seen at %1$s</string>
+    <!-- The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages)-->
+    <string name="last_seen_relative">Last seen %1$s</string>
     <string name="last_seen_unknown">Last seen: Unknown</string>
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
@@ -884,6 +887,8 @@
     <string name="secure_join_replies">%1$s replied, waiting for being added to the group…</string>
     <string name="contact_verified">%1$s verified.</string>
     <string name="contact_not_verified">Cannot verify %1$s.</string>
+    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that verified the contact shown. -->
+    <string name="verified_by">Verified by %1$s</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Changed setup for %1$s.</string>
     <string name="verified_group_explain">Verified groups (experimental) provide safety against active attacks. Members are verified with a second factor by other members and messages are always end-to-end-encrypted.</string>
