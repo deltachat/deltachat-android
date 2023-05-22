@@ -85,7 +85,7 @@
     <string name="this_month">本月</string>
     <string name="last_week">上週</string>
     <string name="last_month">上個月</string>
-    <!-- Placeholder replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
+    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
     <string name="last_seen_at">最後上線時間：%1$s</string>
     <string name="last_seen_unknown">最後上線時間：未知</string>
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->

@@ -93,7 +93,7 @@
     <string name="this_month">Luna aceasta</string>
     <string name="last_week">Săptămâna trecută</string>
     <string name="last_month">Luna trecută</string>
-    <!-- Placeholder replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
+    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
     <string name="last_seen_at">Ultima dată văzut la %1$s</string>
     <string name="last_seen_unknown">Ultima dată a fost văzut: Necunoscut</string>
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->

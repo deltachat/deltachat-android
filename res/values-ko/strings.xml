@@ -87,7 +87,7 @@
     <string name="this_month">이번달</string>
     <string name="last_week">저번 주</string>
     <string name="last_month">저번 달</string>
-    <!-- Placeholder replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
+    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
     <string name="last_seen_at">%1$s에 마지막 접속 </string>
     <string name="last_seen_unknown">마지막 접속: 알 수 없음</string>
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->

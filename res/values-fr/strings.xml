@@ -94,7 +94,7 @@
     <string name="this_month">Ce mois-ci</string>
     <string name="last_week">La semaine dernière</string>
     <string name="last_month">Le mois dernier</string>
-    <!-- Placeholder replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
+    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
     <string name="last_seen_at">Vu·e pour la dernière fois à %1$s</string>
     <string name="last_seen_unknown">Vu·e pour la dernière fois : inconnu</string>
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->

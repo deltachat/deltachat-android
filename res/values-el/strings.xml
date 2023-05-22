@@ -87,7 +87,7 @@
     <string name="this_month">Αυτόν το μήνα</string>
     <string name="last_week">Προηγούμενη εβδομάδα</string>
     <string name="last_month">Προηγούμενος μήνας</string>
-    <!-- Placeholder replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
+    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
     <string name="last_seen_at">Τελευταία προβολή στις %1$s</string>
     <string name="last_seen_unknown">Τελευταία προβολή: Άγνωστο</string>
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
