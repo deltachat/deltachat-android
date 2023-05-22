@@ -29,6 +29,7 @@
     <string name="emoji">Эмодзи</string>
     <string name="attachment">Вложение</string>
     <string name="back">Назад</string>
+    <string name="verified">Верифицирован</string>
     <string name="close">Закрыть</string>
     <string name="forward">Переслать</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
@@ -95,6 +96,8 @@
     <string name="last_month">Прошлый месяц</string>
     <!-- Placeholder replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
     <string name="last_seen_at">Последний раз был(а) в %1$s</string>
+    <!-- The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages)-->
+    <string name="last_seen_relative">Был %1$s</string>
     <string name="last_seen_unknown">Последний раз был(а): Неизвестно</string>
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
@@ -173,6 +176,7 @@
     <string name="switch_camera">Переключить камеру</string>
     <string name="toggle_fullscreen">Включить полноэкранный режим</string>
     <string name="location">Местоположение</string>
+    <string name="locations">Местоположения</string>
     <string name="gallery">Галерея</string>
     <string name="images_and_videos">Изображения и видео</string>
     <string name="file">Файл</string>
@@ -913,6 +917,8 @@
     <string name="secure_join_replies">%1$s ответил, ожидаем добавления в группу…</string>
     <string name="contact_verified">%1$s подтвержден.</string>
     <string name="contact_not_verified">Невозможно подтвердить %1$s</string>
+    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that verified the contact shown. -->
+    <string name="verified_by">Верифицирован %1$s</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Изменены параметры для %1$s</string>
     <string name="verified_group_explain">Проверенные группы (экспериментальная функция) защищены от активных атак. Участники проверяются с помощью второго фактора другими участниками и сообщения всегда передаются посредством cквозного шифрования.</string>

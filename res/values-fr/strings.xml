@@ -29,6 +29,7 @@
     <string name="emoji">Émoji</string>
     <string name="attachment">Pièce jointe</string>
     <string name="back">Retour</string>
+    <string name="verified">Vérifié</string>
     <string name="close">Fermer</string>
     <string name="forward">Faire suivre</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
@@ -165,6 +166,7 @@
     <string name="switch_camera">Changer de caméra</string>
     <string name="toggle_fullscreen">Activer le plein écran</string>
     <string name="location">Position</string>
+    <string name="locations">Positions</string>
     <string name="gallery">Galerie</string>
     <string name="images_and_videos">Images et vidéos</string>
     <string name="file">Fichier</string>
@@ -211,7 +213,7 @@
     <string name="menu_toggle_keyboard">Basculer le clavier emoji</string>
     <string name="menu_edit_group">Modifier le groupe</string>
     <string name="menu_group_name_and_image">Nom du groupe et photo</string>
-    <string name="menu_show_global_map">Afficher toutes les positions</string>
+    <string name="menu_show_global_map">Toutes les positions</string>
     <string name="menu_archive_chat">Archiver la discussion</string>
     <string name="menu_unarchive_chat">Désarchiver la discussion</string>
     <string name="menu_add_attachment">Ajouter une pièce jointe</string>
@@ -797,9 +799,9 @@
     <string name="group_image_deleted_by_you">Vous avez supprimé l\'image du groupe.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
     <string name="group_image_deleted_by_other">Image du groupe supprimée par %1$s.</string>
-    <string name="location_enabled_by_you">Vous avez activé l\'envoi de votre localisation.</string>
+    <string name="location_enabled_by_you">Vous avez activé l\'envoi de votre position.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="location_enabled_by_other">%1$sa activé l\'envoi de sa localisation.</string>
+    <string name="location_enabled_by_other">%1$sa activé l\'envoi de sa position.</string>
     <string name="ephemeral_timer_disabled_by_you">Vous avez désactivé la minuterie des messages éphémères.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_disabled_by_other">Minuterie des messages éphémères désactivée par %1$s.</string>
@@ -898,6 +900,8 @@
     <string name="secure_join_replies">%1$s a répondu, en attente d’être ajouté au groupe…</string>
     <string name="contact_verified">%1$s vérifié.</string>
     <string name="contact_not_verified">Ne peut pas vérifier %1$s</string>
+    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that verified the contact shown. -->
+    <string name="verified_by">Vérifié par %1$s</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Configuration modifiée pour %1$s</string>
     <string name="verified_group_explain">Les groupes vérifiés (fonction expérimentale) offrent une sécurité contre les attaques actives. Les membres sont vérifiés avec un second facteur par d\'autres membres et les messages sont toujours chiffrés de bout en bout.</string>
@@ -925,7 +929,7 @@
     <string name="perm_explain_access_to_camera_denied">Pour prendre des photos ou filmer des vidéos, aller au menu Paramètres de l\'application, sélectionnez \"Autorisations\" et autorisez \"Appareil photo\".</string>
     <string name="perm_explain_access_to_mic_denied">Pour envoyer des messages audio, aller dans les paramètres de l\'application, sélectionner \"Autorisations\" et autoriser \"Microphone\".</string>
     <string name="perm_explain_access_to_storage_denied">Pour recevoir ou envoyer des fichiers, aller dans les Paramètres de l\'application, sélectionner \"Autorisations\" et autoriser \"Stockage\".</string>
-    <string name="perm_explain_access_to_location_denied">Pour attacher une position, aller au menu paramètres de l\'application, sélectionnez \"Autorisations\" et activez \"Position\".</string>
+    <string name="perm_explain_access_to_location_denied">Pour joindre une position, aller au menu paramètres de l\'application, sélectionnez \"Autorisations\" et activez \"Position\".</string>
 
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Dessinez n\'importe où pour flouter</string>
@@ -1019,7 +1023,7 @@
     <string name="a11y_disappearing_messages_activated">Messages éphémères activés</string>
 
     <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
-    <string name="stop_sharing_location">Arrêter de partager la localisation</string>
+    <string name="stop_sharing_location">Arrêter de partager la position</string>
     <string name="a11y_voice_message_hint_ios">Après l\'enregistrement, poussez deux fois pour envoyer. Pour le supprimer, balayez l\'écran avec deux doigts.</string>
     <string name="a11y_connectivity_hint">Double-cliquez pour afficher les détails de la connectivité.</string>
     <string name="login_error_no_internet_connection">Pas de connexion Internet, connexion échouée.</string>
@@ -1048,8 +1052,8 @@
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat utilise votre appareil photo pour pendre et envoyer des photos et des vidéos et pour scanner des QR codes.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat utilise vos contacts pour montrer une liste d\'adresses de courriel auxquels vous pouvez écrire. Delta Chat n\'a pas de serveur, vos contacts ne sont envoyés nulle part.</string>
-    <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">Delta Chat a besoin de la permission pour partager votre location pendant que vous avez activé le partage de localisation.</string>
-    <string name="InfoPlist_NSLocationWhenInUseUsageDescription">Delta Chat a besoin de la permission de partager votre location pendent que vous avez activé le partage de localisation.</string>
+    <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">Delta Chat a besoin de votre autorisation pour partager votre position pour la durée d\'activation du partage de position.</string>
+    <string name="InfoPlist_NSLocationWhenInUseUsageDescription">Delta Chat a besoin de votre autorisation pour partager votre position pour la durée d\'activation du partage de position.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat utilise votre micro pour enregistrer et envoyer des messages vocaux et des vidéos avec bande son.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat vous laisse choisir quelles photos envoyer de votre photothèque. </string>
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat veut enregistrer les images dans votre bibliothèque photo.</string>
