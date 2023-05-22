@@ -10,8 +10,8 @@
 
     <ImageView
         android:id="@+id/footer_secure_indicator"
-        android:layout_width="12dp"
-        android:layout_height="11dp"
+        android:layout_width="12sp"
+        android:layout_height="11sp"
         android:src="@drawable/msg_encr_out"
         android:visibility="gone"
         android:layout_gravity="center_vertical|end"
@@ -30,8 +30,8 @@
 
     <ImageView
         android:id="@+id/footer_location_indicator"
-        android:layout_width="12dp"
-        android:layout_height="11dp"
+        android:layout_width="12sp"
+        android:layout_height="11sp"
         android:src="@drawable/ic_location_msg"
         android:visibility="gone"
         android:layout_gravity="center_vertical|end"
