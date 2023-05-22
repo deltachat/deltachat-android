@@ -1070,6 +1070,6 @@
     <string name="update_1_38_android">1.38 is out:\n\n📎 Removed upper size limit of attachments\n\n🗜️ PNG images (screenshots!) are now compressed as well\n\n⌨️ For Devs: Better apps for chats with sendToChat() and importFiles() (What is Webxdc? → https://webxdc.org)\n\n… and more at %1$s</string>
     <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
     <string name="update_1_38_ios">1.38 is out:\n\n🖼🔍 Ever searching for an image and could not remember the chat? Then the \"All Media\" button is yours!\n\n🧹 \"Clear Chat\" from the profiles\n\n📎 Removed upper size limit of attachments\n\n🗜️ PNG images (screenshots!) are now compressed as well\n\n… and more at %1$s</string>
-    <string name="protection_degraded_explanation">Sometime in the past, you verified the security of your end-to-end encryption via a QR code scan. Therefore, the chat was secure even against an attacker who controls your e-mail server and manipulates messages to break the encryption.\n\nNow, %1$s probably reinstalled Delta Chat or sent a message from another device, so the encryption is not verified anymore. If you want, you can scan their QR code to restore the verification.</string>
+    <string name="protection_degraded_explanation">Can\'t guarantee end-to-end encryption anymore, likely because %1$s reinstalled Delta Chat or sent a message from another device.\n\nIf security is a priority for you, meet them in person and scan their QR code again.</string>
 
 </resources>
