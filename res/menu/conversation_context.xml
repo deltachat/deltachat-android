@@ -25,7 +25,7 @@
         android:visible="false"
         app:showAsAction="never" />
 
-    <item android:title="@string/menu_copy_to_clipboard"
+    <item android:title="@string/menu_copy_text_to_clipboard"
         android:id="@+id/menu_context_copy"
         android:icon="?menu_copy_icon"
         app:showAsAction="always" />
