@@ -26,8 +26,10 @@ import com.b44t.messenger.rpc.Rpc;
 import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.BuildConfig;
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.ShareActivity;
 import org.thoughtcrime.securesms.database.model.ThreadRecord;
 import org.thoughtcrime.securesms.notifications.NotificationCenter;
+import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.MediaUtil;
 
@@ -309,6 +311,23 @@ public class DcHelper {
       Toast.makeText(activity, String.format("%s (%s)", activity.getString(R.string.no_app_to_handle_data), mimeType), Toast.LENGTH_LONG).show();
       Log.i(TAG, "opening of external activity failed.", e);
     }
+  }
+
+  public static void share(Context activity, byte[] data, String mimeType, String fileName, String text) {
+      Intent intent = new Intent(activity, ShareActivity.class);
+      intent.setAction(Intent.ACTION_SEND);
+
+      if (data != null) {
+          Uri uri = PersistentBlobProvider.getInstance().create(activity, data, mimeType, fileName);
+          intent.setType(mimeType);
+          intent.putExtra(Intent.EXTRA_STREAM, uri);
+      }
+
+      if (text != null) {
+          intent.putExtra(Intent.EXTRA_TEXT, text);
+      }
+
+      activity.startActivity(intent);
   }
 
   private static void startActivity(Activity activity, Intent intent) {

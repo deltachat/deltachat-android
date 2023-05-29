@@ -39,5 +39,28 @@ window.webxdc = (() => {
     sendUpdate: (payload, descr) => {
       InternalJSApi.sendStatusUpdate(JSON.stringify(payload), descr);
     },
+
+    sendToChat: (content) => {
+        var data = {};
+
+        if (content.text) {
+            data.text = content.text;
+        }
+
+        if (content.file) {
+            var file = content.file;
+            var reader = new FileReader();
+            reader.onload = function(readerEvt) {
+                var binaryString = readerEvt.target.result;
+                data.blob = btoa(binaryString);
+                data.name = file.name;
+                data.type = file.type;
+                InternalJSApi.sendToChat(JSON.stringify(data));
+            };
+            reader.readAsBinaryString(file);
+        } else {
+            InternalJSApi.sendToChat(JSON.stringify(data));
+        }
+    },
   };
 })();

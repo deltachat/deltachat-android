@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Base64;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -336,6 +337,39 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     public String getStatusUpdates(int lastKnownSerial) {
       Log.i(TAG, "getStatusUpdates");
       return WebxdcActivity.this.dcContext.getWebxdcStatusUpdates(WebxdcActivity.this.dcAppMsg.getId(), lastKnownSerial    );
+    }
+
+    @JavascriptInterface
+    public boolean sendToChat(String content) {
+      Log.i(TAG, "sendToChat");
+      try {
+        JSONObject jsonObject = new JSONObject(content);
+
+        String text = null;
+        byte[] data = null;
+        String mimeType = null;
+        String fileName = null;
+        if (jsonObject.has("blob")) {
+            String blob = jsonObject.getString("blob");
+            data = Base64.decode(blob, Base64.NO_WRAP | Base64.NO_PADDING);
+            fileName = jsonObject.getString("name");
+            mimeType = jsonObject.getString("type");
+        }
+
+        if (jsonObject.has("text")) {
+            text = jsonObject.getString("text");
+        }
+
+        if (data == null && TextUtils.isEmpty(text)) { // invalid empty draft
+            return false;
+        }
+
+        DcHelper.share(WebxdcActivity.this, data, mimeType, fileName, text);
+        return true;
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+      return false;
     }
   }
 }
