@@ -340,36 +340,28 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     }
 
     @JavascriptInterface
-    public boolean sendToChat(String content) {
+    public String sendToChat(String message) {
       Log.i(TAG, "sendToChat");
       try {
-        JSONObject jsonObject = new JSONObject(content);
+        JSONObject jsonObject = new JSONObject(message);
 
         String text = null;
         byte[] data = null;
-        String mimeType = null;
-        String fileName = null;
-        if (jsonObject.has("blob")) {
-            String blob = jsonObject.getString("blob");
-            data = Base64.decode(blob, Base64.NO_WRAP | Base64.NO_PADDING);
-            fileName = jsonObject.getString("name");
-            mimeType = jsonObject.getString("type");
+        String name = null;
+        if (jsonObject.has("base64")) {
+            data = Base64.decode(jsonObject.getString("base64"), Base64.NO_WRAP | Base64.NO_PADDING);
+            name = jsonObject.getString("name");
         }
-
         if (jsonObject.has("text")) {
             text = jsonObject.getString("text");
         }
 
-        if (data == null && TextUtils.isEmpty(text)) { // invalid empty draft
-            return false;
-        }
-
-        DcHelper.share(WebxdcActivity.this, data, mimeType, fileName, text);
-        return true;
+        DcHelper.share(WebxdcActivity.this, data, "application/octet-stream", name, text);
+        return null;
       } catch (Exception e) {
         e.printStackTrace();
+        return e.toString();
       }
-      return false;
     }
   }
 }

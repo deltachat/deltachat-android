@@ -40,26 +40,23 @@ window.webxdc = (() => {
       InternalJSApi.sendStatusUpdate(JSON.stringify(payload), descr);
     },
 
-    sendToChat: (content) => {
-        var data = {};
-
-        if (content.text) {
-            data.text = content.text;
+    sendToChat: async (message) => {
+        const data = {};
+        if (message.text) {
+            data.text = message.text;
+        }
+        if (message.file) {
+            data.base64 = message.file.base64;
+            data.name = message.file.name;
         }
 
-        if (content.file) {
-            var file = content.file;
-            var reader = new FileReader();
-            reader.onload = function(readerEvt) {
-                var binaryString = readerEvt.target.result;
-                data.blob = btoa(binaryString);
-                data.name = file.name;
-                data.type = file.type;
-                InternalJSApi.sendToChat(JSON.stringify(data));
-            };
-            reader.readAsBinaryString(file);
-        } else {
-            InternalJSApi.sendToChat(JSON.stringify(data));
+        if (!data.text && !data.name) {
+            return Promise.reject("Invalid empty message, at least one of text or file should be provided");
+        }
+
+        const errorMsg = InternalJSApi.sendToChat(JSON.stringify(data));
+        if (errorMsg) {
+            return Promise.reject(errorMsg);
         }
     },
   };
