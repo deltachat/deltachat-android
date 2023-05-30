@@ -356,6 +356,10 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
             text = jsonObject.getString("text");
         }
 
+        if (TextUtils.isEmpty(text) && TextUtils.isEmpty(name)) {
+            return "provided file is invalid, you need to set both name and base64 content";
+        }
+
         DcHelper.share(WebxdcActivity.this, data, "application/octet-stream", name, text);
         return null;
       } catch (Exception e) {
