@@ -339,13 +339,11 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
         try {
           if (data.getDataString() != null) {
             dataUris = new Uri[]{Uri.parse(data.getDataString())};
-          } else {
-            if (data.getClipData() != null) {
-              final int numSelectedFiles = data.getClipData().getItemCount();
-              dataUris = new Uri[numSelectedFiles];
-              for (int i = 0; i < numSelectedFiles; i++) {
-                dataUris[i] = data.getClipData().getItemAt(i).getUri();
-              }
+          } else if (data.getClipData() != null) {
+            final int numSelectedFiles = data.getClipData().getItemCount();
+            dataUris = new Uri[numSelectedFiles];
+            for (int i = 0; i < numSelectedFiles; i++) {
+              dataUris[i] = data.getClipData().getItemAt(i).getUri();
             }
           }
         } catch (Exception e) {
