@@ -139,7 +139,7 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
         intent.addCategory(Intent.CATEGORY_OPENABLE);
         intent.setType("*/*");
         intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, fileChooserParams.getMode() == FileChooserParams.MODE_OPEN_MULTIPLE);
-        startActivityForResult(Intent.createChooser(intent, getString(R.string.select)), REQUEST_CODE_FILE_PICKER);
+        WebViewActivity.this.startActivityForResult(Intent.createChooser(intent, getString(R.string.select)), REQUEST_CODE_FILE_PICKER);
         return true;
       }
     });
