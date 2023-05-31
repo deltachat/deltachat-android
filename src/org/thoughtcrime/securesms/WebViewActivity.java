@@ -38,7 +38,7 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
 {
   private static final String TAG = WebViewActivity.class.getSimpleName();
   protected static final int REQUEST_CODE_FILE_PICKER = 51426;
-  protected ValueCallback<Uri[]> mFileUploadCallbackSecond;
+  protected ValueCallback<Uri[]> filePathCallback;
 
   protected WebView webView;
   private final DynamicTheme dynamicTheme = new DynamicTheme();
@@ -131,10 +131,10 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
       @Override
       @RequiresApi(21)
       public boolean onShowFileChooser(WebView webView, ValueCallback<Uri[]> filePathCallback, WebChromeClient.FileChooserParams fileChooserParams) {
-        if (mFileUploadCallbackSecond != null) {
-          mFileUploadCallbackSecond.onReceiveValue(null);
+        if (WebViewActivity.this.filePathCallback != null) {
+          WebViewActivity.this.filePathCallback.onReceiveValue(null);
         }
-        mFileUploadCallbackSecond = filePathCallback;
+        WebViewActivity.this.filePathCallback = filePathCallback;
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         intent.addCategory(Intent.CATEGORY_OPENABLE);
         intent.setType("*/*");
@@ -333,7 +333,7 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
 
   @Override
   public void onActivityResult(int reqCode, int resultCode, final Intent data) {
-    if (reqCode == REQUEST_CODE_FILE_PICKER && mFileUploadCallbackSecond != null) {
+    if (reqCode == REQUEST_CODE_FILE_PICKER && filePathCallback != null) {
       Uri[] dataUris = null;
       if (resultCode == Activity.RESULT_OK && data != null) {
         try {
@@ -350,8 +350,8 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
           e.printStackTrace();
         }
       }
-      mFileUploadCallbackSecond.onReceiveValue(dataUris);
-      mFileUploadCallbackSecond = null;
+      filePathCallback.onReceiveValue(dataUris);
+      filePathCallback = null;
     }
     super.onActivityResult(reqCode, resultCode, data);
   }
