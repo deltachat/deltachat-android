@@ -15,6 +15,7 @@ repositories {
 
 dependencies {
     implementation 'androidx.sharetarget:sharetarget:1.2.0'
+    implementation 'com.github.delight-im:Android-AdvancedWebView:v3.2.1'
     implementation 'androidx.webkit:webkit:1.5.0'
     implementation 'androidx.multidex:multidex:2.0.1'
     implementation 'androidx.appcompat:appcompat:1.5.1'

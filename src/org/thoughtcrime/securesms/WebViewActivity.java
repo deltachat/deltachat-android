@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebResourceResponse;
 import android.webkit.WebView;
+import im.delight.android.webview.AdvancedWebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -35,7 +36,7 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
 {
   private static final String TAG = WebViewActivity.class.getSimpleName();
 
-  protected WebView webView;
+  protected AdvancedWebView webView;
   private final DynamicTheme dynamicTheme = new DynamicTheme();
   protected final DynamicLanguage dynamicLanguage = new DynamicLanguage();
 
@@ -142,8 +143,8 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
 
   @Override
   protected void onPause() {
-    super.onPause();
     webView.onPause();
+    super.onPause();
   }
 
   @Override
@@ -156,8 +157,8 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
 
   @Override
   protected void onDestroy() {
-    super.onDestroy();
     webView.destroy();
+    super.onDestroy();
   }
 
   @Override
@@ -313,5 +314,6 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
   @Override
   public void onActivityResult(int reqCode, int resultCode, final Intent data) {
     super.onActivityResult(reqCode, resultCode, data);
+    webView.onActivityResult(reqCode, resultCode, data);
   }
 }
