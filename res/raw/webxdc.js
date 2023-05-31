@@ -49,7 +49,7 @@ window.webxdc = (() => {
             data.text = message.text;
         }
         if (message.file) {
-            let isString = value => typeof value === 'string' || value instanceof String;
+            let isString = (value) => typeof value === 'string' || value instanceof String;
             if (!message.file.name || !isString(message.file.base64)) {
                 return Promise.reject("provided file is invalid, you need to set both name and base64 content");
             }
