@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Base64;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -336,6 +337,35 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     public String getStatusUpdates(int lastKnownSerial) {
       Log.i(TAG, "getStatusUpdates");
       return WebxdcActivity.this.dcContext.getWebxdcStatusUpdates(WebxdcActivity.this.dcAppMsg.getId(), lastKnownSerial    );
+    }
+
+    @JavascriptInterface
+    public String sendToChat(String message) {
+      Log.i(TAG, "sendToChat");
+      try {
+        JSONObject jsonObject = new JSONObject(message);
+
+        String text = null;
+        byte[] data = null;
+        String name = null;
+        if (jsonObject.has("base64")) {
+            data = Base64.decode(jsonObject.getString("base64"), Base64.NO_WRAP | Base64.NO_PADDING);
+            name = jsonObject.getString("name");
+        }
+        if (jsonObject.has("text")) {
+            text = jsonObject.getString("text");
+        }
+
+        if (TextUtils.isEmpty(text) && TextUtils.isEmpty(name)) {
+            return "provided file is invalid, you need to set both name and base64 content";
+        }
+
+        DcHelper.share(WebxdcActivity.this, data, "application/octet-stream", name, text);
+        return null;
+      } catch (Exception e) {
+        e.printStackTrace();
+        return e.toString();
+      }
     }
   }
 }

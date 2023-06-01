@@ -39,5 +39,28 @@ window.webxdc = (() => {
     sendUpdate: (payload, descr) => {
       InternalJSApi.sendStatusUpdate(JSON.stringify(payload), descr);
     },
+
+    sendToChat: async (message) => {
+        const data = {};
+        if (!message.text && !message.file) {
+            return Promise.reject("Invalid empty message, at least one of text or file should be provided");
+        }
+        if (message.text) {
+            data.text = message.text;
+        }
+        if (message.file) {
+            if (!message.file.name || typeof message.file.base64 !== 'string') {
+                return Promise.reject("provided file is invalid, you need to set both name and base64 content");
+            }
+            data.base64 = message.file.base64;
+            data.name = message.file.name;
+        }
+
+
+        const errorMsg = InternalJSApi.sendToChat(JSON.stringify(data));
+        if (errorMsg) {
+            return Promise.reject(errorMsg);
+        }
+    },
   };
 })();
