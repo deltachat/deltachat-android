@@ -43,9 +43,7 @@ window.webxdc = (() => {
     sendToChat: async (message) => {
       const data = {};
       if (!message.file && !message.text) {
-        return Promise.reject(
-          "Error from sendToChat: Invalid empty message, at least one of text or file should be provided"
-        );
+        return Promise.reject("sendToChat() error: file or text missing");
       }
       /** @type {(file: Blob) => Promise<string>} */
       const blob_to_base64 = (file) => {
@@ -70,16 +68,14 @@ window.webxdc = (() => {
       if (message.file) {
         let base64content;
         if (!message.file.name) {
-          return Promise.reject("file name is missing");
+          return Promise.reject("sendToChat() error: file name missing");
         }
         if (
           Object.keys(message.file).filter((key) =>
             ["blob", "base64", "plainText"].includes(key)
           ).length > 1
         ) {
-          return Promise.reject(
-            "you can only set one of `blob`, `base64` or `plainText`, not multiple ones"
-          );
+          return Promise.reject("sendToChat() error: only one of blob, base64 or plainText allowed");
         }
 
         // @ts-ignore - needed because typescript imagines that blob would not exist
@@ -97,9 +93,7 @@ window.webxdc = (() => {
             new Blob([message.file.plainText])
           );
         } else {
-          return Promise.reject(
-            "data is not set or wrong format, set one of `blob`, `base64` or `plainText`, see webxdc documentation for sendToChat"
-          );
+          return Promise.reject("sendToChat() error: none of blob, base64 or plainText set correctly");
         }
         data.base64 = base64content;
         data.name = message.file.name;
