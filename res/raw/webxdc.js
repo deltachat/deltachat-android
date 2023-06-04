@@ -104,5 +104,27 @@ window.webxdc = (() => {
         return Promise.reject(errorMsg);
       }
     },
+
+    importFiles: (filters) => {
+        var element = document.createElement("input");
+        element.type = "file";
+        element.accept = [...filters.extensions||[], ...filters.mimeTypes||[]].join(
+            ","
+        );
+        element.multiple = filters.multiple || false;
+        const promise = new Promise((resolve, _reject) => {
+            element.onchange = (_ev) => {
+                console.log("element.files", element.files);
+                const files = [...element.files];
+                document.body.removeChild(element);
+                resolve(files);
+            };
+        });
+        element.style.display = "none"
+        document.body.appendChild(element);
+        element.click();
+        console.log(element);
+        return promise;
+    },
   };
 })();
