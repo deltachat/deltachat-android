@@ -1,5 +1,22 @@
 # Delta Chat Android Changelog
 
+## v1.37.0 Testrun
+2023-06
+
+* remove upper size limit of attachments
+* save local storage: compress HTML emails in the database
+* save traffic and storage: recode large PNG and other supported image formats
+  (large JPEG were always recoded; images send as "File" are still not recorded or changed otherwise)
+* also strip metadata from images before sending
+  in case they're already small enough and do not require recoding
+* strip unicode sequences that are useless but may trick the user (RTLO attacks)
+* fix: exiting messages are no longer downloaded after configuration
+* fix: don't allow blocked contacts to create groups
+* fix: do not send messages when sending was cancelled while being offline
+* fix various bugs and improve logging
+* update to core116.0
+
+
 ## v1.36.5
 2023-04
 
