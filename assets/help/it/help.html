@@ -14,6 +14,7 @@
       <li><a href="#di-quali-autorizzazioni-ha-bisogno-delta-chat">Di quali autorizzazioni ha bisogno Delta Chat?</a></li>
       <li><a href="#cosa-significa-fissare-silenziare-archiviare">Cosa significa Fissare, Silenziare, Archiviare?</a></li>
       <li><a href="#cosa-significa-il-punto-verde">Cosa significa il punto verde?</a></li>
+      <li><a href="#come-posso-eliminare-il-mio-account">Come posso eliminare il mio account?</a></li>
     </ul>
   </li>
   <li><a href="#gruppi">Gruppi</a>
@@ -362,6 +363,23 @@ disattivato le ricevute di lettura, non vedranno il pallino verde finché
 non gli invierete un messaggio o non scriverete a un gruppo in cui si trovano anche loro.</li>
 </ul>
     
+      <h3 id="come-posso-eliminare-il-mio-account">
+        
+        
+          Come posso eliminare il mio account? <a href="#come-posso-eliminare-il-mio-account" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Poiché utilizzi un account e-mail per Delta Chat,
+il modo in cui puoi eliminare il tuo account dipende dal tuo provider e-mail.
+Non abbiamo alcun controllo sul tuo account e-mail,
+quindi purtroppo non possiamo aiutarti in questo.</p>
+
+<p>If you want to keep the account,
+but uninstall Delta Chat,
+it is recommended to leave any group chat before uninstalling Delta Chat.</p>
+    
       <h2 id="gruppi">
         
         
@@ -456,16 +474,23 @@ che un essere umano abbia letto o compreso il messaggio ;)</li>
       </h3>
 
 <ul>
-  <li>Per impostazione predefinita, Delta Chat memorizza tutti i messaggi in locale sul dispositivo. Se
+  <li>
+    <p>Per impostazione predefinita, Delta Chat memorizza tutti i messaggi in locale sul dispositivo. Se
 ad esempio, si vuole risparmiare spazio di archiviazione presso il proprio provider di posta elettronica, è possibile scegliere di
-eliminare automaticamente i vecchi messaggi. I messaggi rimangono comunque sul dispositivo finché non li si cancella anche lì.</li>
-  <li>Per attivarla, andare su “Elimina Messaggi dal Server” nelle impostazioni di “Chat e Media”.
-È possibile impostare un intervallo di tempo compreso tra “Subito” e “Dopo 1 anno”.
-in questo modo, <em>tutti</em> i messaggi di posta elettronica saranno eliminati dal server dopo tale periodo.</li>
-  <li>Si noti che se si utilizza Delta Chat su più di un dispositivo, è consigliabile lasciare i messaggi sul server,
+eliminare automaticamente i vecchi messaggi. I messaggi rimangono comunque sul dispositivo finché non li si cancella anche lì.</p>
+  </li>
+  <li>
+    <p>To turn it on, go to <strong>Delete Old Messages → Delete Messages from Server</strong>
+in the “Chats and Media” settings.
+You can set a timeframe between “At once” and “After 1 year”.
+All e-mails received by Delta Chat will be deleted from the server after this timeframe.</p>
+  </li>
+  <li>
+    <p>Si noti che se si utilizza Delta Chat su più di un dispositivo, è consigliabile lasciare i messaggi sul server,
 finché anche l’altro dispositivo non potrà scaricarli. In questo caso,
 si dovrebbe impostare la cancellazione automatica su “Dopo 1 giorno” o qualcosa di simile,
-a seconda della frequenza con cui si accende l’altro dispositivo.</li>
+a seconda della frequenza con cui si accende l’altro dispositivo.</p>
+  </li>
 </ul>
     
       <h3 id="delold">
@@ -1292,8 +1317,7 @@ problema per molte app legittime. Per ulteriori informazioni, vedi
         
       </h3>
 
-<p>Il progetto Delta Chat è stato sottoposto a tre audit di sicurezza indipendenti negli ultimi
-anni:</p>
+<p>The Delta Chat project underwent four independent security audits in the last years:</p>
 
 <ul>
   <li>
@@ -1328,6 +1352,13 @@ Connessioni di rete di Delta Chat e una configurazione del server di posta ripro
 <a href="https://delta.chat/it/serverguide">consigliato su questo sito</a>.
 Puoi leggere ulteriori informazioni sull’audit <a href="https://delta.chat/en/2023-03-27-third-independent-security-audit">sul nostro blog</a>
 o leggere il <a href="https://delta.chat/assets/blog/MER-01-report.pdf">rapporto completo qui</a>.</p>
+  </li>
+  <li>
+    <p>Beginning 2023, we fixed security and privacy issues with the “web
+apps shared in a chat” feature, related to failures of sandboxing
+especially with Chromium. We subsequently got an independent security
+audit from Cure53 and all issues found were fixed in the 1.36 app series released in April 2023. 
+See <a href="https://delta.chat/en/2023-05-22-webxdc-security">here for the full background story on E2E security in the web</a>.</p>
   </li>
 </ul>
     

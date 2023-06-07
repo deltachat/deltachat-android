@@ -14,6 +14,7 @@
       <li><a href="#welche-app-berechtigungen-benötigt-delta-chat">Welche App-Berechtigungen benötigt Delta Chat?</a></li>
       <li><a href="#was-bedeutet-anheften-stummschalten-archivieren">Was bedeutet Anheften, Stummschalten, Archivieren?</a></li>
       <li><a href="#was-bedeutet-der-grüne-punkt">Was bedeutet der grüne Punkt?</a></li>
+      <li><a href="#wie-kann-ich-mein-konto-löschen">Wie kann ich mein Konto löschen?</a></li>
     </ul>
   </li>
   <li><a href="#gruppen">Gruppen</a>
@@ -346,6 +347,18 @@ zu anderen Instant-Messengern muss der/die EmpfängerIn nicht Delta Chat install
   <li>Andererseits werden andere nicht immer “sehen, dass Sie online sind”. Wenn Sie Lesebestätigungen deaktiviert haben, sehen sie den grünen Punkt erst, wenn Sie ihnen eine Nachricht senden oder einer Gruppe schreiben, in der sie sich ebenfalls befinden.</li>
 </ul>
     
+      <h3 id="wie-kann-ich-mein-konto-löschen">
+        
+        
+          Wie kann ich mein Konto löschen? <a href="#wie-kann-ich-mein-konto-löschen" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Da Sie ein E-Mail-Konto für Delta Chat verwenden, hängt von Ihrem E-Mail-Anbieter ab, wie Sie Ihr Konto löschen können. Wir haben keine Kontrolle über Ihr E-Mail-Konto, daher können wir Ihnen dabei leider nicht helfen.</p>
+
+<p>Wenn Sie das Konto behalten, aber Delta Chat deinstallieren möchten, ist es ratsam, aktive Gruppen zu verlassen, bevor Sie Delta Chat deinstallieren.</p>
+    
       <h2 id="gruppen">
         
         
@@ -436,9 +449,18 @@ Wenn Sie der Gruppe später erneut beitreten möchten, bitten Sie ein anderes Gr
       </h3>
 
 <ul>
-  <li>Standardmäßig speichert Delta Chat alle Nachrichten lokal auf Ihrem Gerät. Wenn Sie z. B. Speicherplatz bei Ihrem E-Mail-Anbieter sparen möchten, können Sie alte Nachrichten automatisch löschen lassen. Sie verbleiben weiterhin auf Ihrem Gerät, bis Sie sie auch dort löschen.</li>
-  <li>Um es zu aktivieren, gehen Sie in den “Chats und Medien”-Einstellungen zu “Alte Nachrichten vom Server löschen”. Sie können einen Zeitraum zwischen “sofort” und “nach 1 Jahr” festlegen; auf diese Weise werden <em>alle</em> E-Mails nach diesem Zeitraum vom Server gelöscht.</li>
-  <li>Beachten Sie, dass Sie, wenn Sie Delta Chat auf mehr als einem Gerät verwenden, die Nachrichten auf dem Server belassen sollten, bis das andere Gerät sie ebenfalls herunterladen kann. In diesem Fall sollten Sie das automatische Löschen auf “nach 1 Tag” oder ähnlich einstellen, je nachdem, wie oft Sie das andere Gerät einschalten.</li>
+  <li>
+    <p>Standardmäßig speichert Delta Chat alle Nachrichten lokal auf Ihrem Gerät. Wenn Sie z. B. Speicherplatz bei Ihrem E-Mail-Anbieter sparen möchten, können Sie Delta Chat so konfigurieren, dass alte Nachrichten automatisch vom Server gelöscht werden. Sie verbleiben weiterhin auf Ihrem Gerät, bis Sie sie auch dort löschen.</p>
+  </li>
+  <li>
+    <p>Um dies zu aktivieren, können Sie unter  <strong>Alte Nachrichten löschen → Nachrichten vom Server löschen</strong>
+in the “Chats und Medien”-Einstellungen
+einen Zeitraum zwischen “Sofort” und “Nach 1 Jahr” festlegen.
+Alle von Delta Chat empfangenen Nachrichten werden nach diesem Zeitraum vom Server gelöscht.</p>
+  </li>
+  <li>
+    <p>Wenn Sie Delta Chat auf mehr als einem Gerät verwenden, beachten Sie, die Nachrichten auf dem Server zu belassen, bis die anderen Geräte sie ebenfalls heruntergeladen haben.</p>
+  </li>
 </ul>
     
       <h3 id="delold">
@@ -1103,7 +1125,7 @@ Allerdings benötigen einige Anbieter besondere Einstellungen, um ordnungsgemä�
         
       </h3>
 
-<p>Das Delta-Chat-Projekt wurde in den letzten Jahren drei unabhängigen Sicherheitsprüfungen unterzogen:</p>
+<p>Das Delta-Chat-Projekt wurde in den letzten Jahren vier unabhängigen Sicherheitsprüfungen unterzogen:</p>
 
 <ul>
   <li>
@@ -1116,6 +1138,9 @@ Es wurden keine kritischen oder hochgradig gefährlichen Probleme gefunden. Der 
   </li>
   <li>
     <p>Anfang 2023 analysierte <a href="https://cure53.de">Cure53</a> sowohl die Transportverschlüsselung von Delta Chats Netzwerkverbindungen als auch das reproduzierbare Mailserver-Setup wie <a href="https://delta.chat/de/serverguide">auf dieser Seite empfohlen</a>. Sie können mehr über das Audit <a href="https://delta.chat/en/2023-03-27-third-independent-security-audit">in unserem Blog</a> lesen oder Sie lesen den <a href="https://delta.chat/assets/blog/MER-01-report.pdf">vollständigen Bericht hier</a>.</p>
+  </li>
+  <li>
+    <p>Anfang 2023 haben wir Sicherheits- und Datenschutzprobleme mit den “In Chats geteilten Apps”-Feature behoben, die mit Fehlern beim Sandboxing, insbesondere mit Chromium zusammenhängen. Wir haben daraufhin eine unabhängige Sicherheitsprüfung von Cure53 durchführen lassen, und alle gefundenen Probleme wurden mit den im April 2023 veröffentlichten 1.36 Releases behoben. Siehe <a href="https://delta.chat/en/2023-05-22-webxdc-security">hier für die vollständige Hintergrundgeschichte</a>.</p>
   </li>
 </ul>
     

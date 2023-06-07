@@ -14,6 +14,7 @@
       <li><a href="#jakich-uprawnień-potrzebuje-delta-chat">Jakich uprawnień potrzebuje Delta Chat?</a></li>
       <li><a href="#co-oznacza-przypinanie-wyciszanie-i-archiwizowanie">Co oznacza przypinanie, wyciszanie i archiwizowanie?</a></li>
       <li><a href="#co-oznacza-zielona-kropka">Co oznacza zielona kropka?</a></li>
+      <li><a href="#how-can-i-delete-my-account">How can I delete my account?</a></li>
     </ul>
   </li>
   <li><a href="#grupy">Grupy</a>
@@ -331,6 +332,23 @@ aby wyciszyć czat, użyj menu czatu (Android/Desktop) lub profilu czatu (iOS).<
   <li>Z drugiej strony inni nie zawsze „zobaczą, że jesteś online”. Jeśli wyłączyłeś potwierdzenia odczytu, nie zobaczą oni zielonej kropki, dopóki nie wyślesz do nich wiadomości lub nie napiszesz do grupy, w której również się znajdują.</li>
 </ul>
     
+      <h3 id="how-can-i-delete-my-account">
+        
+        
+          How can I delete my account? <a href="#how-can-i-delete-my-account" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>As you use an e-mail account for Delta Chat,
+how you can delete your account depends on your e-mail provider.
+We don’t have any control over your e-mail account,
+so unfortunately we can’t help you with that.</p>
+
+<p>If you want to keep the account,
+but uninstall Delta Chat,
+it is recommended to leave any group chat before uninstalling Delta Chat.</p>
+    
       <h2 id="grupy">
         
         
@@ -422,9 +440,15 @@ nadal będziesz mógł pisać, ale nie będziesz już powiadamiany o żadnych no
       </h3>
 
 <ul>
-  <li>Domyślnie Delta Chat przechowuje wszystkie wiadomości lokalnie na Twoim urządzeniu. Jeśli np. chcesz zaoszczędzić miejsce u swojego dostawcy poczty, możesz wybrać automatyczne usuwanie starych wiadomości. Pozostają one nadal na Twoim urządzeniu, dopóki nie usuniesz ich również tam.</li>
-  <li>Aby ją włączyć, przejdź do „Usuń wiadomości z serwera” w ustawieniach w sekcji „Czaty i media”. Możesz ustawić przedział czasowy pomiędzy „po 1 godzinie” a „po 1 roku”; w ten sposób <em>wszystkie</em> e-maile zostaną usunięte z serwera po upływie tego czasu.</li>
-  <li>Zauważ, że jeśli używasz Delta Chat na więcej niż jednym urządzeniu, powinieneś pozostawić wiadomości na serwerze, do czasu, aż inne urządzenie będzie mogło je pobrać. W tym przypadku należy ustawić automatyczne usuwanie na „po 1 dniu” lub coś podobnego, w zależności od tego, jak często włączasz drugie urządzenie.</li>
+  <li>
+    <p>Domyślnie Delta Chat przechowuje wszystkie wiadomości lokalnie na Twoim urządzeniu. Jeśli np. chcesz zaoszczędzić miejsce u swojego dostawcy poczty, możesz wybrać automatyczne usuwanie starych wiadomości. Pozostają one nadal na Twoim urządzeniu, dopóki nie usuniesz ich również tam.</p>
+  </li>
+  <li>
+    <p>Aby ją włączyć, w ustawieniach „Czaty i media” przejdź do  <strong>Usuwanie starych wiadomości → Usuń wiadomości z serwera</strong>. Możesz ustawić przedział czasowy pomiędzy „Od razu” a „Po 1 roku”.  Wszystkie e-maile otrzymane przez Delta Chat zostaną usunięte z serwera po tym czasie.</p>
+  </li>
+  <li>
+    <p>Zauważ, że jeśli używasz Delta Chat na więcej niż jednym urządzeniu, powinieneś pozostawić wiadomości na serwerze, do czasu, aż inne urządzenie/urządzenia będzie mogło je pobrać.</p>
+  </li>
 </ul>
     
       <h3 id="delold">
@@ -552,11 +576,11 @@ Jeśli te same odciski palców pojawią się na urządzeniu partnera czatu, poł
         
       </h3>
 
-<p>Najlepszym sposobem na zapewnienie szyfrowania każdej wiadomości i jak najszybszego usunięcia metadanych jest utworzenie zweryfikowanej grupy i włączenie autodestrukcji wiadomości.</p>
+<p>Najlepszym sposobem na zapewnienie szyfrowania każdej wiadomości i jak najszybszego usunięcia metadanych jest utworzenie zweryfikowanej grupy i włączenie znikających wiadomości.</p>
 
 <p>Zweryfikowane grupy są zawsze szyfrowane i chronione przed <a href="https://pl.wikipedia.org/wiki/Atak_man_in_the_middle">atakami MITM</a>.</p>
 
-<p>Metadanych nie można zaszyfrować, ponieważ serwer musi wiedzieć, gdzie dostarczyć wiadomości. Ale włączenie „autodestrukcji wiadomości” usuwa wiadomości z serwera po ich dostarczeniu.</p>
+<p>Metadanych nie można zaszyfrować, ponieważ serwer musi wiedzieć, gdzie dostarczyć wiadomości. Ale włączenie „znikających wiadomości” usuwa wiadomości z serwera po ich dostarczeniu.</p>
 
 <p>Jeśli potrzebujesz wiadomości na swoim urządzeniu, ale nie na serwerze, możesz również uzgodnić w grupie włączenie  <a href="#delold">„automatycznego usuwania wiadomości z serwera”</a>.</p>
 
@@ -1071,7 +1095,7 @@ Jednak niektórzy dostawcy potrzebują specjalnych opcji, aby działać poprawni
         
       </h3>
 
-<p>Projekt Delta Chat przeszedł w ostatnich latach trzy niezależne audyty bezpieczeństwa:</p>
+<p>Projekt Delta Chat przeszedł w ostatnich latach cztery niezależne audyty bezpieczeństwa:</p>
 
 <p>-W 2019 r. firma <a href="https://includesecurity.com">Include Security</a> przeanalizowała biblioteki <a href="https://github.com/rpgp/rpgp">PGP</a> i <a href="https://github.com/RustCrypto/RSA">RSA</a> Delta Chat. Nie znaleziono żadnych krytycznych problemów, ale dwa poważne problemy, które później naprawiliśmy. Ujawniła również jeden problem o średniej wadze i kilka mniej poważnych, ale nie było możliwości wykorzystania tych luk w implementacji Delta Chat. Niektóre z nich jednak naprawiliśmy od czasu zakończenia kontroli. Pełny raport można przeczytać <a href="https://delta.chat/assets/blog/2019-first-security-review.pdf">tutaj</a>.</p>
 
@@ -1080,9 +1104,11 @@ Jednak niektórzy dostawcy potrzebują specjalnych opcji, aby działać poprawni
     <p>W 2020 r. firma <a href="https://includesecurity.com">Include Security</a> przeanalizowała biblioteki Rust <a href="https://github.com/deltachat/deltachat-core-rust/">core</a>, <a href="https://github.com/async-email/async-imap">IMAP</a>, <a href="https://github.com/async-email/async-smtp">SMTP</a> i <a href="https://github.com/async-email/async-native-tls">TLS</a> Delta Chat. Nie znalazła żadnych problemów krytycznych ani poważnych. W raporcie zwrócono uwagę na kilka słabych punktów o średniej wadze – same w sobie nie stanowią zagrożenia dla użytkowników Delta Chat, ponieważ zależą od środowiska, w którym używany jest Delta Chat. Ze względu na użyteczność i kompatybilność nie możemy złagodzić wszystkich z nich i zdecydowaliśmy się przedstawić zalecenia dotyczące bezpieczeństwa zagrożonym użytkownikom. Pełny raport można przeczytać <a href="https://delta.chat/assets/blog/2020-second-security-review.pdf">tutaj</a>.</p>
   </li>
   <li>
-    <p>Początkiem 2023 r. firma <a href="https://cure53.de">Cure53</a> przeanalizował zarówno szyfrowanie transportu połączeń sieciowych Delta Chat, jak i powtarzalną konfigurację serwera pocztowego zgodnie z <a href="https://delta.chat/pl/serverguide">zaleceniami na tej stronie</a>. Możesz przeczytać więcej o audycie <a href="https://delta.chat/en/2023-03-27-third-independent-security-audit">na naszym blogu</a> lub przeczytać pełny raport <a href="https://delta.chat/assets/blog/MER-01-report.pdf">tutaj</a>.</p>
+    <p>Początkiem 2023 r. firma <a href="https://cure53.de">Cure53</a> przeanalizowała zarówno szyfrowanie transportu połączeń sieciowych Delta Chat, jak i powtarzalną konfigurację serwera pocztowego zgodnie z <a href="https://delta.chat/pl/serverguide">zaleceniami na tej stronie</a>. Możesz przeczytać więcej o audycie <a href="https://delta.chat/en/2023-03-27-third-independent-security-audit">na naszym blogu</a> lub przeczytać pełny raport <a href="https://delta.chat/assets/blog/MER-01-report.pdf">tutaj</a>.</p>
   </li>
 </ul>
+
+<p>Początkiem 2023 r. naprawiliśmy problemy z bezpieczeństwem i prywatnością w funkcji „aplikacje internetowe udostępniane na czacie”, związane z awariami piaskownicy, zwłaszcza w przypadku Chromium. Następnie otrzymaliśmy niezależny audyt bezpieczeństwa od Cure53 i wszystkie wykryte problemy zostały naprawione w serii aplikacji 1.36 wydanej w kwietniu 2023 r. Tutaj znajdziesz <a href="https://delta.chat/en/2023-05-22-webxdc-security">pełne informacje na temat bezpieczeństwa E2E w sieci</a>.</p>
     
       <h3 id="w-jaki-sposób-finansowany-jest-rozwój-delta-chat">
         

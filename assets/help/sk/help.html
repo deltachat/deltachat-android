@@ -14,6 +14,7 @@
       <li><a href="#aké-povolenia-potrebuje-delta-chat">Aké povolenia potrebuje Delta Chat?</a></li>
       <li><a href="#what-means-pinning-muting-archiving">What means Pinning, Muting, Archiving?</a></li>
       <li><a href="#what-does-the-green-dot-mean">What does the green dot mean?</a></li>
+      <li><a href="#how-can-i-delete-my-account">How can I delete my account?</a></li>
     </ul>
   </li>
   <li><a href="#skupiny">Skupiny</a>
@@ -384,6 +385,23 @@ have turned off read receipts, they will not see the green dot until you
 message them or write to a group they’re in as well.</li>
 </ul>
     
+      <h3 id="how-can-i-delete-my-account">
+        
+        
+          How can I delete my account? <a href="#how-can-i-delete-my-account" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>As you use an e-mail account for Delta Chat,
+how you can delete your account depends on your e-mail provider.
+We don’t have any control over your e-mail account,
+so unfortunately we can’t help you with that.</p>
+
+<p>If you want to keep the account,
+but uninstall Delta Chat,
+it is recommended to leave any group chat before uninstalling Delta Chat.</p>
+    
       <h2 id="skupiny">
         
         
@@ -478,17 +496,24 @@ takže aj keď vidíte len jedno zaškrtnutie, správa môže byť prečítaná.
       </h3>
 
 <ul>
-  <li>By default, Delta Chat stores all messages locally on your device. If you
-e.g. want to save storage space at your mail provider, you can choose to
-delete old messages automatically. They still remain on your device until you
-delete them there, too.</li>
-  <li>To turn it on, go to “delete old messages from server” in the “Chats &amp; Media”
-settings. You can set a timeframe between “at once” and “after a year”; this
-way, <em>all</em> e-mails will be deleted from the server after that timeframe.</li>
-  <li>Note that if you use Delta Chat on more than one device, you should leave the
-messages on the server, until the other device could download them, too. In
-this case, you should set auto-delete to “after a day” or something similar,
-depending on how often you turn on the other device.</li>
+  <li>
+    <p>By default, Delta Chat stores all messages locally on your device.
+If you  e.g. want to save storage space at your mail provider,
+you can configure  Delta Chat
+to delete old already-received messages on the server automatically.
+They still remain on your device until you delete them there, too.</p>
+  </li>
+  <li>
+    <p>To turn it on, go to <strong>Delete Old Messages → Delete Messages from Server</strong>
+in the “Chats and Media” settings.
+You can set a timeframe between “At once” and “After 1 year”.
+All e-mails received by Delta Chat will be deleted from the server after this timeframe.</p>
+  </li>
+  <li>
+    <p>Note that if you use Delta Chat on more than one device,
+you need to leave the message on the server with a sufficient timeframe
+so that the other device(s) can download them, too.</p>
+  </li>
 </ul>
     
       <h3 id="delold">
@@ -636,13 +661,13 @@ spojenie je bezpečné.</p>
 <p>The best way to ensure every message is encrypted,
 and metadata deleted as quickly as possible
 is creating a verified group and turning on
-self-destructing messages.</p>
+disappearing messages.</p>
 
 <p>Verified groups are always encrypted and protected against <a href="https://en.wikipedia.org/wiki/Man-in-the-middle_attack">MITM
 attacks</a>.</p>
 
 <p>Metadata can’t be encrypted, as the server needs to know where to deliver your
-messages. But turning on “self-destructing messages” deletes the messages on
+messages. But turning on “disappearing messages” deletes the messages on
 the server after they were delivered.</p>
 
 <p>If you need the messages on your device, but not on the server, you can also
@@ -1321,8 +1346,7 @@ uses.</li>
         
       </h3>
 
-<p>The Delta Chat project underwent three independent security audits in the last
-years:</p>
+<p>The Delta Chat project underwent four independent security audits in the last years:</p>
 
 <ul>
   <li>
@@ -1357,6 +1381,13 @@ Delta Chat’s network connections and a reproducible mail server setup as
 <a href="https://delta.chat/sk/serverguide">recommended on this site</a>.
 You can read more about the audit <a href="https://delta.chat/en/2023-03-27-third-independent-security-audit">on our blog</a>
 or read the <a href="https://delta.chat/assets/blog/MER-01-report.pdf">full report here</a>.</p>
+  </li>
+  <li>
+    <p>Beginning 2023, we fixed security and privacy issues with the “web
+apps shared in a chat” feature, related to failures of sandboxing
+especially with Chromium. We subsequently got an independent security
+audit from Cure53 and all issues found were fixed in the 1.36 app series released in April 2023. 
+See <a href="https://delta.chat/en/2023-05-22-webxdc-security">here for the full background story on E2E security in the web</a>.</p>
   </li>
 </ul>
     
