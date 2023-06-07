@@ -5,9 +5,9 @@
 
 1. update core:
    ```
-   ./scripts/update-core.sh        # shows used branch
-   ./scripts/update-core.sh BRANCH # update to latest commit of branch
-   ./scripts/clean-core.sh         # helps on weird issues, do also "Build / Clean"
+   ./scripts/update-core.sh               # shows used branch
+   ./scripts/update-core.sh BRANCH_OR_TAG # update to tag or latest commit of branch
+   ./scripts/clean-core.sh                # helps on weird issues, do also "Build / Clean"
    ./scripts/ndk-make.sh
    ```
 
