@@ -1,3 +1,5 @@
+set -e # stop on all errors
+
 git submodule update --init --recursive
 cd jni/deltachat-core-rust
 OLD=`git branch --show-current`
@@ -10,7 +12,7 @@ fi
 NEW=$1
 
 git fetch
-git checkout $NEW || exit 1
+git checkout $NEW
 TEST=`git branch --show-current`
 if [ "$TEST" == "$NEW" ]; then
     git pull
