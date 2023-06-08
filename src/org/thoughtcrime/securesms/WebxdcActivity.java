@@ -103,6 +103,9 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
       @Override
       @RequiresApi(21)
       public boolean onShowFileChooser(WebView webView, ValueCallback<Uri[]> filePathCallback, WebChromeClient.FileChooserParams fileChooserParams) {
+        if (WebxdcActivity.this.filePathCallback != null) {
+          WebxdcActivity.this.filePathCallback.onReceiveValue(null);
+        }
         WebxdcActivity.this.filePathCallback = filePathCallback;
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         intent.addCategory(Intent.CATEGORY_OPENABLE);
