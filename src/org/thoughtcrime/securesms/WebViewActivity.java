@@ -309,9 +309,4 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
   protected WebResourceResponse interceptRequest(String url) {
     return null;
   }
-
-  @Override
-  public void onActivityResult(int reqCode, int resultCode, final Intent data) {
-    super.onActivityResult(reqCode, resultCode, data);
-  }
 }
