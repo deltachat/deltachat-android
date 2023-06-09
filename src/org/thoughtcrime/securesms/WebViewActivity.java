@@ -1,6 +1,5 @@
 package org.thoughtcrime.securesms;
 
-import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
@@ -11,8 +10,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.webkit.ValueCallback;
-import android.webkit.WebChromeClient;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebResourceResponse;
 import android.webkit.WebView;
@@ -37,8 +34,6 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
                                           WebView.FindListener
 {
   private static final String TAG = WebViewActivity.class.getSimpleName();
-  protected static final int REQUEST_CODE_FILE_PICKER = 51426;
-  protected ValueCallback<Uri[]> filePathCallback;
 
   protected WebView webView;
   private final DynamicTheme dynamicTheme = new DynamicTheme();
@@ -125,22 +120,6 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
           return res;
         }
         return super.shouldInterceptRequest(view, request);
-      }
-    });
-    webView.setWebChromeClient(new WebChromeClient() {
-      @Override
-      @RequiresApi(21)
-      public boolean onShowFileChooser(WebView webView, ValueCallback<Uri[]> filePathCallback, WebChromeClient.FileChooserParams fileChooserParams) {
-        if (WebViewActivity.this.filePathCallback != null) {
-          WebViewActivity.this.filePathCallback.onReceiveValue(null);
-        }
-        WebViewActivity.this.filePathCallback = filePathCallback;
-        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-        intent.addCategory(Intent.CATEGORY_OPENABLE);
-        intent.setType("*/*");
-        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, fileChooserParams.getMode() == FileChooserParams.MODE_OPEN_MULTIPLE);
-        WebViewActivity.this.startActivityForResult(Intent.createChooser(intent, getString(R.string.select)), REQUEST_CODE_FILE_PICKER);
-        return true;
       }
     });
     webView.setFindListener(this);
@@ -329,30 +308,5 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
 
   protected WebResourceResponse interceptRequest(String url) {
     return null;
-  }
-
-  @Override
-  public void onActivityResult(int reqCode, int resultCode, final Intent data) {
-    if (reqCode == REQUEST_CODE_FILE_PICKER && filePathCallback != null) {
-      Uri[] dataUris = null;
-      if (resultCode == Activity.RESULT_OK && data != null) {
-        try {
-          if (data.getDataString() != null) {
-            dataUris = new Uri[]{Uri.parse(data.getDataString())};
-          } else if (data.getClipData() != null) {
-            final int numSelectedFiles = data.getClipData().getItemCount();
-            dataUris = new Uri[numSelectedFiles];
-            for (int i = 0; i < numSelectedFiles; i++) {
-              dataUris[i] = data.getClipData().getItemAt(i).getUri();
-            }
-          }
-        } catch (Exception e) {
-          e.printStackTrace();
-        }
-      }
-      filePathCallback.onReceiveValue(dataUris);
-      filePathCallback = null;
-    }
-    super.onActivityResult(reqCode, resultCode, data);
   }
 }
