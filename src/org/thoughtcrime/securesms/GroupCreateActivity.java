@@ -41,6 +41,7 @@ import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.profiles.AvatarHelper;
 import org.thoughtcrime.securesms.qr.QrShowActivity;
 import org.thoughtcrime.securesms.recipients.Recipient;
+import org.thoughtcrime.securesms.scribbles.ScribbleActivity;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.SelectedRecipientsAdapter;
@@ -465,15 +466,20 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
         break;
 
       case Crop.REQUEST_PICK:
-        new Crop(data.getData()).output(outputFile).asSquare().start(this);
+        Crop.of(data.getData(), outputFile).asSquare().start(this);
         break;
+
+      case ScribbleActivity.SCRIBBLE_REQUEST_CODE:
+        setAvatarView(data.getData());
+        break;
+
       case Crop.REQUEST_CROP:
-        setAvatarView(data);
+        setAvatarView(Crop.getOutput(data));
+        break;
     }
   }
 
-  private void setAvatarView(Intent data) {
-    final Uri output = Crop.getOutput(data);
+  private void setAvatarView(Uri output) {
     GlideApp.with(this)
             .asBitmap()
             .load(output)
@@ -611,11 +617,10 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void onFileSelected(Uri inputFile) {
-    Uri outputFile = Uri.fromFile(new File(getCacheDir(), "cropped"));
     if (inputFile == null) {
       inputFile = attachmentManager.getImageCaptureUri();
     }
 
-    new Crop(inputFile).output(outputFile).asSquare().start(this);
+    AvatarHelper.cropAvatar(this, inputFile);
   }
 }
