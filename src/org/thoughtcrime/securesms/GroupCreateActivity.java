@@ -465,10 +465,6 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
         }
         break;
 
-      case Crop.REQUEST_PICK:
-        Crop.of(data.getData(), outputFile).asSquare().start(this);
-        break;
-
       case ScribbleActivity.SCRIBBLE_REQUEST_CODE:
         setAvatarView(data.getData());
         break;
