@@ -249,6 +249,7 @@
     <string name="menu_help">Hilfe</string>
     <string name="privacy_policy">Datenschutzerklärung</string>
     <string name="menu_select_all">Alles auswählen</string>
+    <string name="select_chat">Chat auswählen</string>
     <string name="select_more">Mehr auswählen</string>
     <string name="menu_edit_name">Name bearbeiten</string>
     <string name="menu_settings">Einstellungen</string>
