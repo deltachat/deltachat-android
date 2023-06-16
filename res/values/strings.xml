@@ -249,6 +249,7 @@
     <string name="menu_help">Help</string>
     <string name="privacy_policy">Privacy Policy</string>
     <string name="menu_select_all">Select All</string>
+    <string name="select_chat">Select Chat</string>
     <string name="select_more">Select more</string>
     <string name="menu_edit_name">Edit Name</string>
     <string name="menu_settings">Settings</string>
