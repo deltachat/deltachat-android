@@ -1,5 +1,18 @@
 # Delta Chat Android Changelog
 
+## v1.38.0
+2023-06
+
+* improve group membership consistency
+* fix verification issues because of email addresses compared case-sensitive sometimes
+* fix empty lines in HTML view
+* fix empty links in HTML view
+* fix displaying of smaller images that were shown just white sometimes
+* fix android4 HTML view; bug introduced in v1.37.0
+* update translations
+* update to core117.0
+
+
 ## v1.37.0 Testrun
 2023-06
 
