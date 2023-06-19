@@ -101,12 +101,12 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     // it is not needed to keep all past update messages, however, when deleted, also the strings should be deleted.
     DcContext dcContext = DcHelper.getContext(this);
     DcMsg msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
-    msg.setText("1.37 is out:\n\n"
+    msg.setText("1.38 is out:\n\n"
       + "📎 Removed upper size limit of attachments\n\n"
       + "🗜️ PNG images (screenshots!) are now compressed as well\n\n"
       + "⌨️ For Devs: Better apps for chats with sendToChat() and importFiles() (What is Webxdc? -> https://webxdc.org)\n\n"
       + "... and more at https://get.delta.chat/#changelogs");
-    dcContext.addDeviceMsg("update_1_37d_android", msg);
+    dcContext.addDeviceMsg("update_1_38a_android", msg);
 
     // create view
     setContentView(R.layout.conversation_list_activity);
