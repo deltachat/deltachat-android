@@ -241,6 +241,7 @@
     <string name="menu_help">帮助</string>
     <string name="privacy_policy">隐私政策</string>
     <string name="menu_select_all">全选</string>
+    <string name="select_chat">选择聊天</string>
     <string name="select_more">选择更多</string>
     <string name="menu_edit_name">编辑名称</string>
     <string name="menu_settings">设置</string>
