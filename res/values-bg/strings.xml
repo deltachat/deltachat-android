@@ -29,6 +29,7 @@
     <string name="emoji">Emoji</string>
     <string name="attachment">Прикачен файл</string>
     <string name="back">Назад</string>
+    <string name="verified">Проверен</string>
     <string name="close">Затваряне</string>
     <string name="forward">Напред</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
@@ -60,7 +61,9 @@
     <!-- Possible answers to the question are: Never, Always, Once -->
     <string name="load_remote_content_ask">Отдалечените изображения могат да Ви следят.\n\nСъщо така тази настройка позволява да се зареждат шрифтове и друго съдържание. Ако е забранена, може да се появяват вградени или кеширани изображения.\n\nДа се зареждат ли ли отдалечени изображения?</string>
     <string name="always">Винаги</string>
+    <string name="always_load_remote_images">Винаги да се зареждат отдалечените изображения</string>
     <string name="once">Веднъж</string>
+    <string name="show_warning">Показване на предупреждение</string>
     <string name="show_password">Показване на паролата</string>
     <string name="hide_password">Скриване на паролата</string>
     <string name="not_now">Не сега</string>
@@ -93,6 +96,8 @@
     <string name="last_month">Миналия месец</string>
     <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
     <string name="last_seen_at">Последно видян на %1$s</string>
+    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages)-->
+    <string name="last_seen_relative">Последно видян %1$s</string>
     <string name="last_seen_unknown">Последно видян: Не е известно</string>
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
@@ -155,6 +160,7 @@
     <string name="switch_camera">Превключване на камерата</string>
     <string name="toggle_fullscreen">Включване/изключване на пълноекранния режим</string>
     <string name="location">Местоположение</string>
+    <string name="locations">Местоположения</string>
     <string name="gallery">Галерия</string>
     <string name="images_and_videos">Изображения и видеоклипове</string>
     <string name="file">Файл</string>
@@ -243,6 +249,7 @@
     <string name="menu_help">Помощ</string>
     <string name="privacy_policy">Политика за поверителност</string>
     <string name="menu_select_all">Избор на всичко</string>
+    <string name="select_chat">Изберете чат</string>
     <string name="select_more">Избор на още</string>
     <string name="menu_edit_name">Редактиране на името</string>
     <string name="menu_settings">Настройки</string>
@@ -480,6 +487,7 @@
     <string name="multidevice_abort">Да бъде ли прекъснато добавянето на второ устройство?</string>
     <string name="multidevice_abort_will_invalidate_copied_qr">QR кодът, копиран в клипборда, ще стане невалиден.</string>
     <string name="multidevice_experimental_hint">(експериментална възможност, изисква се версия 1.36)</string>
+    <string name="multidevice_transfer_done_devicemsg">ℹ️ Акаунтът е прехвърлен на второто Ви устройство.</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="preparing_account">Акаунтът се подготвя...</string>
     <!-- Shown beside progress bar, stay short -->
@@ -880,6 +888,8 @@
     <string name="secure_join_replies">%1$s отговори, изчаква се да бъдете добавени към групата…</string>
     <string name="contact_verified">%1$s е проверен.</string>
     <string name="contact_not_verified">Не може да бъде проверен %1$s.</string>
+    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that verified the contact shown. -->
+    <string name="verified_by">Проверен от%1$s</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Настройката за %1$s е сменена.</string>
     <string name="verified_group_explain">Проверените групи (експериментална възможност) предоставят защита срещу активни атаки. Членовете се проверяват посредством втори фактор от други членове и съобщенията винаги се криптират \"от край до край\".</string>
@@ -1053,4 +1063,9 @@
     <string name="update_1_36_android">Акценти в 1.36\n\n💻📱 Използвайте лесно Delta Chat на всички свои устройства - просто следвайте три прости стъпки в \"Настройки / Добавяне на допълнително устройство\" (експериментална възможност)\n\n🖼🔍 Някога да сте търсили изображение, без да можете да си спомните чата? \"Всички медийни файлове\" от главното меню е за Вас!\n\nКакво друго? Уведомления във всички акаунти, изчистване на чата, както и още възможности, които може да видите на %1$s</string>
     <!-- placeholder will be replaced by the URL https://delta.chat/en/2023-03-27-third-independent-security-audit -->
     <string name="update_1_36_audit">Не говорим твърде много за защита тук, но можете да бъдете спокойни, грижа ни е за това: Вижте скорошните добри новини на %1$s 👌</string>
-    </resources>
+    <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
+    <string name="update_1_38_android">Излезе версия 1.38:\n\n📎 Премахната е горната граница на размера на прикачените файлове\n\n🗜️ Изображенията в PNG формат (екранни снимки!) вече също се компресират\n\n⌨️ За разработчици: По-добри приложения за чатове с помощта на sendToChat() и importFiles() (Какво е Webxdc? → https://webxdc.org)\n\n… и още на %1$s</string>
+    <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
+    <string name="update_1_38_ios">Излезе версия 1.38:\n\n🖼🔍 Случвало ли ви се е да търсите изображение и да не можете да си спомните чата? Тогава бутонът \"Всички медии\" е Ваш!\n\n🧹 \"Изчистване на чата\" от профилите\n\n📎 Премахната горна граница на размера на прикачените файлове\n\n🗜️ Изображенията в PNG формат (екранни снимки!) вече също се компресират\n\n… и още на %1$s</string>
+
+</resources>

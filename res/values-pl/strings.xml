@@ -1093,4 +1093,6 @@
     <string name="update_1_36_android">Najciekawsze w wersji 1.36\n\n💻📱 Korzystaj z Delta Chat na wszystkich swoich urządzeniach w prosty sposób - wystarczy wykonać trzy proste kroki w \"Ustawienia » Dodaj kolejne urządzenie\" (eksperymentalna)\n\n🖼🔍 Czy kiedykolwiek szukałeś obrazu i nie mogłeś zapamiętać czatu? \"Wszystkie multimedia\" z menu głównego są twoje!\n\nCo jeszcze? Powiadomienia dla wszystkich kont, czyszczenie czatu i wiele więcej znajdziesz na stronie www %1$s</string>
     <!-- placeholder will be replaced by the URL https://delta.chat/en/2023-03-27-third-independent-security-audit -->
     <string name="update_1_36_audit">Nie rozmawiamy tutaj zbyt wiele o bezpieczeństwie, ale zapewniamy, że nam zależy: najnowsze dobre wieści znajdują się na stronie %1$s👌</string>
+    <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
+    <string name="update_1_38_android">1.38 wydane:\n\n📎 Usunięto górny limit rozmiaru załączników\n\n🗜️ Obrazy PNG (zrzuty ekranu!) są teraz również kompresowane\n\n⌨️ Dla deweloperów: Lepsze aplikacje do czatów z sendToChat() i importFiles() (Co to jest Webxdc? → https://webxdc.org)\n\n… i więcej na %1$s</string>
     </resources>
