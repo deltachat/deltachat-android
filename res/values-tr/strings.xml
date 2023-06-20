@@ -1063,5 +1063,4 @@
     <string name="update_1_36_android">1.36\'nın Öne Çıkanları\n\n💻📱 Delta Chat\'i aygıtlarınızın tümünde kolayca kullanın - yalnızca \"Ayarlar / İkinci Aygıt Ayarla\"daki üç kolay adımı takip edin (deneysel)\n\n🖼🔍 Hiç bir görsel ararken bir sohbeti anımsayamadığınız oldu mu? Ana menüdeki \"Tüm Ortamlar\" sizin!\n\nBaşka ne var? Tüm hesaplar için bildirimler, sohbet temizleme ve daha fazlası %1$s adresinde</string>
     <!-- placeholder will be replaced by the URL https://delta.chat/en/2023-03-27-third-independent-security-audit -->
     <string name="update_1_36_audit">Burada güvenlikten çok söz etmiyoruz ama emin olun önemsiyoruz: En son iyi haberler için %1$s adresine bakın 👌</string>
-
-</resources>
+    </resources>

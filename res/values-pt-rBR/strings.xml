@@ -1071,5 +1071,4 @@
     <string name="update_1_36_android">Destaques da 1.36\n\n💻📱 Use o Delta Chat em todos os seus dispositivos facilmente - basta seguir três passos simples em \"Configurações / Adicionar segundo dispositivo\" (experimental)\n\n🖼🔍 Já procurou por uma imagem e não conseguiu se lembrar do bate-papo? \"Todas as mídias\" do menu principal é o seu!\n\nO que mais? Notificações para todas as contas, esvaziar bate-papo, e mais em %1$s</string>
     <!-- placeholder will be replaced by the URL https://delta.chat/en/2023-03-27-third-independent-security-audit -->
     <string name="update_1_36_audit">Aqui não falamos muito sobre segurança, mas fique tranquilo, isso nos importa: Olhe em %1$s para boas notícias recentes 👌</string>
-
-</resources>
+    </resources>

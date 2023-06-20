@@ -1063,5 +1063,4 @@
     <string name="update_1_36_android">1.36 - Kenmerken\n\n💻📱 Gebruik Delta Chat eenvoudig op ál je apparaten aan de hand van drie stappen via ‘Instellingen → Tweede apparaat toevoegen’ (experimenteel)\n\n🖼🔍 Heb je wel eens een afbeelding proberen te vinden, maar wist je niet meer in welk gesprek deze stond? ‘Alle media’ in het hoofdmenu is je nieuwe beste vriend!\n\nWat nog meer? Meldingen van alle accounts, gesprekken wissen en meer op %1$s</string>
     <!-- placeholder will be replaced by the URL https://delta.chat/en/2023-03-27-third-independent-security-audit -->
     <string name="update_1_36_audit">We delen nooit zoveel omtrent beveiliging, maar geen zorgen: op %1$s is goed nieuws te lezen! 👌</string>
-
-</resources>
+    </resources>

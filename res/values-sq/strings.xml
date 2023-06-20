@@ -1057,5 +1057,4 @@
     <string name="update_1_36_android">Gjëra në pah për 1.36\n\n💻📱 Përdoreni kollaj Delta Chat-in në krejt pajisjet tuaja - thjesht ndiqni tre hapa të thjeshtë te “Rregullime / Shtoni Pajisje të Dytë” (eksperimentale)\n\n🖼🔍 Ju ka qëlluar të kërkoni për një figurë dhe s’mbanit mend bisedën? “Krejt Mediat” prej menusë kryesorë është e juaja!\n\nPo tjetër? Njoftime për krejt llogaritë, spastrim fjalosjesh, etj, në %1$s</string>
     <!-- placeholder will be replaced by the URL https://delta.chat/en/2023-03-27-third-independent-security-audit -->
     <string name="update_1_36_audit">Këtu s’bisedojmë shumë mbi sigurinë, por jini të sigurt, kujdesemi për të: Shihni %1$s për lajme të reja të mbara 👌</string>
-
-</resources>
+    </resources>
