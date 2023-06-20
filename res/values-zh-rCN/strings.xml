@@ -1048,4 +1048,9 @@
     <string name="update_1_36_android">1.36 版本主要改动\n\n💻📱轻松地在所有设备上使用 Delta Chat - 按照“设置/添加第二台设备”处的提示，只需三步即可完成（实验性功能）\n\n🖼🔍为寻找聊天图片时记不起对应聊天而苦恼吗？主菜单中的“所有媒体”帮你解决这个问题！\n\n其他重要改动包括为所有账户显示通知、清空聊天记录等，详见 %1$s</string>
     <!-- placeholder will be replaced by the URL https://delta.chat/en/2023-03-27-third-independent-security-audit -->
     <string name="update_1_36_audit">虽然我们在这里对安全谈得不多，但别担心，我们非常重视它：查看 %1$s 来了解最近的好消息👌</string>
-    </resources>
+    <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
+    <string name="update_1_38_android">1.38 版发布啦：\n\n📎 删除了附件大小上限 \n\n🗜️ PNG 图片(截屏文件!) 现在同样被压缩\n\n⌨️ 对于开发者: 更好的聊天应用，sendToChat() 和 importFiles() (什么是 Webxdc? → https://webxdc.org)\n\n… 更多内容请访问 %1$s</string>
+    <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
+    <string name="update_1_38_ios">1.38版发布啦：\n\n🖼🔍 尝试搜索某张图片却记不得到底在哪个聊天会话中吗? 别急，试试“所有媒体”按钮吧。\n\n🧹从个人资料部分“清除聊天”\n\n📎 删除了附件大小上限\n\n🗜️ PNG 图片(截屏文件！) 现在同样被压缩\n\n… 更多内容请访问 %1$s</string>
+
+</resources>

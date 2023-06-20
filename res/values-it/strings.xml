@@ -1078,4 +1078,9 @@
     <string name="update_1_36_android">1.36 In evidenza\n\n💻📱 Utilizza facilmente Delta Chat su tutti i tuoi dispositivi: basta seguire tre semplici passaggi in \"Impostazioni / Aggiungi Secondo Dispositivo\" (sperimentale)\n\n🖼🔍 Hai sempre cercato un\'immagine e non ricordavi la chat ? \"Tutti i Media\" dal menu principale sono tuoi!\n\nCos\'altro? Notifiche per tutti gli account, cancella messaggi e altro su %1$s</string>
     <!-- placeholder will be replaced by the URL https://delta.chat/en/2023-03-27-third-independent-security-audit -->
     <string name="update_1_36_audit">Qui non parliamo molto di sicurezza, ma state certi che ci teniamo: Vedere %1$s per le recenti buone notizie 👌</string>
-    </resources>
+    <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
+    <string name="update_1_38_android">La 1.38 è uscita:\n\n📎 Rimosso il limite massimo di dimensione degli allegati\n\n🗜️ immagini PNG (screenshot!) ora sono anche compresse\n\n⌨️ Per gli sviluppatori: Migliori applicazioni per le chat con sendToChat() e importFiles() (Cos\'è Webxdc? → https://webxdc.org)\n\n... e altro ancora su %1$s</string>
+    <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
+    <string name="update_1_38_ios">La 1.38 è uscita:\n\n🖼🔍 Mai cercato un\'immagine e non ricordavi la chat? Allora il pulsante \"Tutti i media\" è vostro!\n\n🧹 \"Cancella Messaggi\" dai profili\n\n📎 Rimosso il limite massimo di dimensione degli allegati\n\n🗜️ immagini PNG (screenshot!) ora sono anche compresse\n\n... e altro ancora su %1$s</string>
+
+</resources>

@@ -257,6 +257,7 @@
     <string name="menu_help">Ayuda</string>
     <string name="privacy_policy">Política de privacidad</string>
     <string name="menu_select_all">Seleccionar todo</string>
+    <string name="select_chat">Seleccionar chat</string>
     <string name="select_more">Seleccionar más</string>
     <string name="menu_edit_name">Editar nombre</string>
     <string name="menu_settings">Ajustes</string>
@@ -1077,4 +1078,9 @@
     <string name="update_1_36_android">1.36 Cambios principales\n\n💻📱 Utiliza Delta Chat en todos tus dispositivos fácilmente - sólo tienes que seguir tres sencillos pasos en \"Ajustes / Añadir otro dispositivo\" (experimental)\n\n🖼🔍 ¿Alguna vez has buscado una imagen sin recordar en cual chat? \"Toda la multimedia\" del menú principal es lo que necesitas!\n\n¿Qué más? Notificaciones para todas las cuentas, vaciar chat, y mucho más en %1$s</string>
     <!-- placeholder will be replaced by the URL https://delta.chat/en/2023-03-27-third-independent-security-audit -->
     <string name="update_1_36_audit">No hablamos mucho de seguridad aquí, pero puedes confiar que nos importa: Consulte %1$s para buenas noticias recientes 👌</string>
-    </resources>
+    <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
+    <string name="update_1_38_android">1.38 ya está disponible:\n\n📎 Se eliminó el límite de tamaño máximo de los archivos adjuntos\n\n🗜️ Las imágenes PNG (¡capturas de pantalla!) ahora también son comprimidas\n\n⌨️ Para desarrolladores: mejores aplicaciones para chats con sendToChat() e importFiles( ) (¿Qué es Webxdc? → https://webxdc.org)\n\n... y más en %1$s</string>
+    <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
+    <string name="update_1_38_ios">1.38 está disponible:\n\n🖼🔍 ¿Alguna vez buscaste una imagen y no recordabas el chat? ¡Entonces el botón \"Toda la multimedia\" es tuyo!\n\n🧹 \"Vaciar chat\" de los perfiles\n\n📎 Se eliminó el límite de tamaño máximo de los archivos adjuntos\n\n🗜️ Las imágenes PNG (¡capturas de pantalla!) ahora también se comprimen\n\n... y más en %1$s</string>
+
+</resources>
