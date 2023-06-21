@@ -400,7 +400,6 @@
     <string name="start_app">Εκκίνηση…</string>
     <!-- this is a warning that is shown when one tries to send something to a chat that is not yet accepted. -->
     <string name="accept_request_first">Αποδεχτείτε πρώτα το αίτημα συνομιλίας.</string>
-
     <!-- map -->
     <string name="filter_map_on_time">Εμφάνιση τοποθεσιών σε χρονικό πλαίσιο</string>
     <string name="show_location_traces">Εμφάνιση ιχνών</string>

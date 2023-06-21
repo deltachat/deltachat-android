@@ -414,7 +414,7 @@
     <!-- this is a warning that is shown when one tries to send something to a chat that is not yet accepted. -->
     <string name="accept_request_first">Please accept the chat request first.</string>
     <!-- placeholder will be replaced by a file name -->
-    <string name="send_file_to">Send \"%1%s\" to…</string>
+    <string name="send_file_to">Send \"%1$s\" to…</string>
     <string name="send_message_to">Send Message to…</string>
 
     <!-- map -->

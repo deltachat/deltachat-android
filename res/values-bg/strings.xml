@@ -413,7 +413,6 @@
     <string name="start_app">Старт…</string>
     <!-- this is a warning that is shown when one tries to send something to a chat that is not yet accepted. -->
     <string name="accept_request_first">Моля, първо приемете заявката за чат.</string>
-
     <!-- map -->
     <string name="filter_map_on_time">Показване на местоположенията във времева рамка</string>
     <string name="show_location_traces">Показване на съобщенията за проследяване</string>

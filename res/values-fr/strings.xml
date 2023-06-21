@@ -257,6 +257,7 @@
     <string name="menu_help">Aide</string>
     <string name="privacy_policy">Politique de confidentialité</string>
     <string name="menu_select_all">Tout sélectionner</string>
+    <string name="select_chat">Sélectionnez une discussion</string>
     <string name="select_more">Sélectionner plus</string>
     <string name="menu_edit_name">Modifier le nom</string>
     <string name="menu_settings">Paramètres</string>
@@ -427,7 +428,6 @@
     <string name="start_app">Démarrer...</string>
     <!-- this is a warning that is shown when one tries to send something to a chat that is not yet accepted. -->
     <string name="accept_request_first">Veuillez d\'abord accepter l\'invitation.</string>
-
     <!-- map -->
     <string name="filter_map_on_time">Afficher les positions dans le temps</string>
     <string name="show_location_traces">Afficher les traces</string>
@@ -851,7 +851,7 @@
     <string name="devicemsg_storage_exceeding">⚠️ Bientôt plus d\'espace de stockage chez votre fournisseur, %1$s%% utilisés.\n\nVous ne serez peut-être plus en mesure de recevoir des messages quand votre espace de stockage sera plein.\n\n👉 Veuillez vérifier si vous avez d\'anciens éléments à supprimer directement sur l\'interface web de votre fournisseur et envisagez d\'activer \"Paramètres / Supprimer les anciens messages\". Vous pouvez vérifier à tout moment le volume d\'espace de stockage en cours d\'utilisation depuis \"Paramètres / Connectivité\".</string>
     <!-- %1%s will be replaced by date and time in some human-readable format -->
     <string name="devicemsg_bad_time">⚠️ L\'heure ou la date de votre appareil semble erronée (%1$s).\n\nRéglez votre horloge ⏰🔧 pour que vos messages soient bien reçus.</string>
-    <string name="devicemsg_update_reminder">⚠️ Votre version de Delta Chat semble être obsolète.\n\nCeci pourrait poser des problèmes car vos contacts utilisent des versions plus récentes - et vous loupez les dernières fonctionnalités 😳\nVeuillez s\'il vous plaît faire un tour sur https://get.delta.chat ou votre magasin d\'applications pour une mise à jour.</string>
+    <string name="devicemsg_update_reminder">⚠️ Votre version de Delta Chat semble obsolète.\n\nCela risque de créer des dysfonctionnements parce que vos contacts utilisent des versions plus récentes - en plus, vous ratez les nouvelles fonctionnalités 😳\n Rendez-vous sur https://get.delta.chat ou sur votre magasin d\'applications pour effectuer la mise à jour !</string>
 
     <!-- Some options as "Add Second Device" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc. to be entered in a system dialog. This hint is added to the system dialog, below a title as "Add Second Device" or "Backup". -->
     <string name="enter_system_secret_to_continue">Déverrouillez votre appareil pour continuer</string>
@@ -1077,4 +1077,9 @@
     <string name="update_1_36_android">1.36 Nouveautés\n\n💻📱 Utilisez Delta Chat sur tous vos appareils, en trois étapes simples. Rendez-vous dans \"Paramètres / Ajouter un deuxième appareil\" (expérimental) !\n\n🖼🔍 Il vous est déjà arrivé de chercher une image sans pouvoir retrouver la bonne discussion ? L\'option \"Tous les médias\" du menu principal est faite pour vous !\n\nQuoi d\'autre ? Des notifications pour tous vos comptes, la possibilité de vider entièrement les discussions, et plus encore %1$s</string>
     <!-- placeholder will be replaced by the URL https://delta.chat/en/2023-03-27-third-independent-security-audit -->
     <string name="update_1_36_audit">Nous n\'avons pas beaucoup parlé de sécurité, mais pas d\'inquiétude, nous nous en occupons toujours ! Lisez les dernières bonnes nouvelles sur %1$s👌</string>
-    </resources>
+    <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
+    <string name="update_1_38_android">La version 1.38 est disponible !\n\n📎 La limitation de taille maximale des pièces jointes est supprimée\n\n🗜️ Maintenant, les images PNG (captures d\'écran !) aussi sont compressées.\n\n⌨️ Côté développement : de meilleures applications pour les discussions avec sendToChat() et importFiles() (Qu\'est-ce que Webxdc ? → https://webxdc.org)\n\n… Plus de détails sur les nouveautés : %1$s</string>
+    <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
+    <string name="update_1_38_ios">La version 1.38 est disponible !\n\n🖼🔍 S\'il vous est déjà arrivé de chercher une image sans vous souvenir de la discussion où elle se trouve, alors le bouton \"Tous les fichiers multimédia\" est fait pour vous !\n\n🧹 Dans les options de profil, un nouveau bouton : \"Vider la discussion\".\n\n📎 La limitation de taille maximale des pièces jointes est supprimée\n\n🗜️ Maintenant, les images PNG (captures d\'écran !) aussi sont compressées\n\n… et plus de nouveautés sur %1$s</string>
+
+</resources>

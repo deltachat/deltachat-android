@@ -430,7 +430,6 @@
     <string name="start_app">Spustiť...</string>
     <!-- this is a warning that is shown when one tries to send something to a chat that is not yet accepted. -->
     <string name="accept_request_first">Prosím, najprv prijmite požiadavku na konverzáciu.</string>
-
     <!-- map -->
     <string name="filter_map_on_time">Zobraziť polohy v časovom rámci</string>
     <string name="show_location_traces">Zobraziť stopy</string>

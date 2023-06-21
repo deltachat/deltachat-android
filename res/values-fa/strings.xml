@@ -413,7 +413,6 @@ https://meet.jit.si/$ROOM
     <string name="start_app">شروع...</string>
     <!-- this is a warning that is shown when one tries to send something to a chat that is not yet accepted. -->
     <string name="accept_request_first">لطفا اول درخواست گفتگو را قبول کنید.</string>
-
     <!-- map -->
     <string name="filter_map_on_time">نمایش موقعیت‌های مکانی در چارچوب زمان</string>
     <string name="show_location_traces">نمایش ردپاها</string>

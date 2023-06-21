@@ -406,7 +406,6 @@
     <string name="start_app">Comezar...</string>
     <!-- this is a warning that is shown when one tries to send something to a chat that is not yet accepted. -->
     <string name="accept_request_first">Primeiro acepta a solicitude de conversa.</string>
-
     <!-- map -->
     <string name="filter_map_on_time">Mostrar localizacións no marco temporal</string>
     <string name="show_location_traces">Mostrar trazas</string>

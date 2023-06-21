@@ -419,7 +419,6 @@
     <string name="start_app">Покретање...</string>
     <!-- this is a warning that is shown when one tries to send something to a chat that is not yet accepted. -->
     <string name="accept_request_first">Прво прихватите захтев за ћаскање.</string>
-
     <!-- map -->
     <string name="filter_map_on_time">Прикажи положаје у временском периоду?</string>
     <string name="show_location_traces">Прикажи трагове</string>
