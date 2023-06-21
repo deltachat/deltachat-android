@@ -1,5 +1,12 @@
 # Delta Chat Android Changelog
 
+## v1.38.1
+2023-06
+
+* update translations
+* using core117.0
+
+
 ## v1.38.0
 2023-06
 
