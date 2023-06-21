@@ -1,5 +1,12 @@
 # Delta Chat Android Changelog
 
+## v1.38.2
+2023-06
+
+* fix version code issue with google play
+* using core117.0
+
+
 ## v1.38.1
 2023-06
 
