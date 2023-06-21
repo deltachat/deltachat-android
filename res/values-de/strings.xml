@@ -1060,7 +1060,7 @@
 
     <!-- device messages for updates -->
     <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
-    <string name="update_1_36_android">1.36 Highlights\n\n💻📱 Verwenden Sie Delta Chat auf all Ihren Geräten: Folgen Sie einfach den drei Schritten unter \"Einstellungen / Zweitgerät hinzufügen\" (experimentell)\n\n🖼🔍 Haben Sie jemals nach einem Bild gesucht und konnten sich nicht an den Chat erinnern? Dann ist \"Alle Medien\" aus dem Hauptmenü wie für Sie gemacht\n\nWas noch? Benachrichtigungen für alle Accounts, Chat leeren und mehr, %1$s</string>
+    <string name="update_1_36_android">1.36 Highlights\n\n💻📱 Verwenden Sie Delta Chat auf all Ihren Geräten: Folgen Sie einfach den drei Schritten unter \"Einstellungen / Zweitgerät hinzufügen\" (experimentell)\n\n🖼🔍 Haben Sie jemals nach einem Bild gesucht und konnten sich nicht an den Chat erinnern? Dann ist \"Alle Medien\" aus dem Hauptmenü wie für Sie gemacht!\n\nWas noch? Benachrichtigungen für alle Konten, Chat leeren und mehr, %1$s</string>
     <!-- placeholder will be replaced by the URL https://delta.chat/en/2023-03-27-third-independent-security-audit -->
     <string name="update_1_36_audit">Wir reden hier nicht viel über Sicherheit, aber seien Sie versichert, dass sie uns am Herzen liegt: Siehe %1$s für aktuelle, gute Nachrichten 👌</string>
     <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->

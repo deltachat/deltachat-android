@@ -1095,4 +1095,7 @@
     <string name="update_1_36_audit">Nie rozmawiamy tutaj zbyt wiele o bezpieczeństwie, ale zapewniamy, że nam zależy: najnowsze dobre wieści znajdują się na stronie %1$s👌</string>
     <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
     <string name="update_1_38_android">1.38 wydane:\n\n📎 Usunięto górny limit rozmiaru załączników\n\n🗜️ Obrazy PNG (zrzuty ekranu!) są teraz również kompresowane\n\n⌨️ Dla deweloperów: Lepsze aplikacje do czatów z sendToChat() i importFiles() (Co to jest Webxdc? → https://webxdc.org)\n\n… i więcej na %1$s</string>
-    </resources>
+    <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
+    <string name="update_1_38_ios">1.38 wydane:\n\n🖼🔍 Czy kiedykolwiek szukałeś obrazu i nie pamiętałeś czatu? W takim razie przycisk „Wszystkie multimedia” jest Twój!\n\n🧹 „Wyczyść czat” z profili\n\n📎 Usunięto górny limit rozmiaru załączników\n\n🗜️ Obrazy PNG (zrzuty ekranu!) są teraz również kompresowane\n\n… i więcej na %1$s</string>
+
+</resources>
