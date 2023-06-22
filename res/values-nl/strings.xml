@@ -413,6 +413,10 @@
     <string name="start_app">Starten…</string>
     <!-- this is a warning that is shown when one tries to send something to a chat that is not yet accepted. -->
     <string name="accept_request_first">Accepteer eerst het gespreksverzoek.</string>
+    <!-- placeholder will be replaced by a file name -->
+    <string name="send_file_to">“%1$s” versturen naar…</string>
+    <string name="send_message_to">Bericht versturen naar…</string>
+
     <!-- map -->
     <string name="filter_map_on_time">Locaties tonen in tijdsbeeld</string>
     <string name="show_location_traces">Sporen tonen</string>

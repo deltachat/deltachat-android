@@ -413,6 +413,10 @@
     <string name="start_app">Başlat…</string>
     <!-- this is a warning that is shown when one tries to send something to a chat that is not yet accepted. -->
     <string name="accept_request_first">Lütfen önce sohbet isteğini kabul edin.</string>
+    <!-- placeholder will be replaced by a file name -->
+    <string name="send_file_to">\"%1$s\" dosyasını gönder…</string>
+    <string name="send_message_to">İletiyi gönder…</string>
+
     <!-- map -->
     <string name="filter_map_on_time">Konumları zaman çerçevesinde göster</string>
     <string name="show_location_traces">İzleri göster</string>
@@ -526,18 +530,18 @@
     <string name="welcome_chat_over_email">E-Posta Üzerinden Sohbet.</string>
     <string name="scan_invitation_code">Davet Kodunu Tara</string>
     <string name="welcome_intro1_message">Dünyanın en geniş kitleli ulağı. Özgür ve bağımsız.</string>
-    <string name="login_title">Oturum Aç</string>
-    <string name="login_header">E-Posta Hesabınızda Oturum Açın</string>
-    <string name="login_explain">Varolan bir e-posta hesabıyla oturum açın</string>
+    <string name="login_title">Giriş Yap</string>
+    <string name="login_header">E-Posta Hesabınıza Giriş Yapın</string>
+    <string name="login_explain">Varolan bir e-posta hesabıyla giriş yapın</string>
     <string name="login_subheader">Bilinen e-posta sağlayıcıları için ek ayarlar otomatik olarak ayarlanır. Bazen IMAP\'in web ayarlarından etkinleştirilmesi gerekir. Yardım için e-posta sağlayıcınıza ya da arkadaşlarınıza danışın.</string>
     <string name="login_no_servers_hint">Delta Chat sunucuları yoktur; verileriniz aygıtınızda kalır.</string>
     <string name="login_inbox">Gelen Kutusu</string>
-    <string name="login_imap_login">IMAP Oturum Açma Adı</string>
+    <string name="login_imap_login">IMAP Giriş Adı</string>
     <string name="login_imap_server">IMAP Sunucusu</string>
     <string name="login_imap_port">IMAP Bağlantı Noktası</string>
     <string name="login_imap_security">IMAP Güvenliği</string>
     <string name="login_outbox">Giden Kutusu</string>
-    <string name="login_smtp_login">SMTP Oturum Açma Adı</string>
+    <string name="login_smtp_login">SMTP Giriş Adı</string>
     <string name="login_smtp_password">SMTP Parolası</string>
     <string name="login_smtp_server">SMTP Sunucusu</string>
     <string name="login_smtp_port">SMTP Bağlantı Noktası</string>
@@ -563,7 +567,7 @@
     <string name="import_backup_ask">\"%1$s\" üzerinde yedek bulundu.\n\nİçe aktarmak ve ondan gelen tüm verileri ve ayarları kullanmak istiyor musunuz?</string>
     <string name="import_backup_no_backup_found">Yedek bulunamadı.\n\nYedeği \"%1$s\" üzerine kopyalayın ve yeniden deneyin. Ek olarak, normal ayarlama işlemiyle sürdürmek için \"İletileşmeyi başlat\"a basın.</string>
     <!-- Translators: %1$s will be replaced by the e-mail address -->
-    <string name="login_error_cannot_login">\"%1$s\" olarak oturum açılamıyor. Lütfen e-posta adresinin ve parolanın doğru olup olmadığını denetleyin.</string>
+    <string name="login_error_cannot_login">\"%1$s\" olarak giriş yapılamıyor. Lütfen e-posta adresinin ve parolanın doğru olup olmadığını denetleyin.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Geçersiz sertifikaları kabul et</string>
     <string name="used_settings">Kullanılan ayarlar:</string>
@@ -872,15 +876,15 @@
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
     <string name="qrshow_join_contact_hint">%1$s ile sohbet etmek için bunu tarayın</string>
     <string name="qrshow_join_contact_no_connection_toast">Internet bağlantısı yok; QR kodu ayarlaması gerçekleştirilemiyor.</string>
-    <string name="qraccount_ask_create_and_login">\"%1$s\" üzerinde yeni e-posta adresi oluşturulsun ve orada oturum açılsın mı?</string>
-    <string name="qraccount_ask_create_and_login_another">\"%1$s\" üzerinde yeni e-posta adresi oluşturulsun ve orada oturum açılsın mı?\n\nVarolan hesabınız silinmeyecek. Hesaplarınız arasında geçiş yapmak için \"Hesabı Değiştir\" öğesini kullanın.</string>
-    <string name="qraccount_success_enter_name">Oturum açma başarılı—e-posta adresiniz %1$s\n\nİsterseniz şimdi yazdığınız insanlara görüntülenecek bir ad ve bir profil görseli girebilirsiniz.</string>
+    <string name="qraccount_ask_create_and_login">\"%1$s\" üzerinde yeni e-posta adresi oluşturulsun ve orada giriş yapılsın mı?</string>
+    <string name="qraccount_ask_create_and_login_another">\"%1$s\" üzerinde yeni e-posta adresi oluşturulsun ve orada giriş yapılsın mı?\n\nVarolan hesabınız silinmeyecek. Hesaplarınız arasında geçiş yapmak için \"Hesabı Değiştir\" öğesini kullanın.</string>
+    <string name="qraccount_success_enter_name">Giriş başarılı—e-posta adresiniz %1$s\n\nİsterseniz şimdi yazdığınız insanlara görüntülenecek bir ad ve bir profil görseli girebilirsiniz.</string>
     <string name="qraccount_qr_code_cannot_be_used">Taranan QR kodu, yeni bir hesap ayarlamak için kullanılamıyor.</string>
     <string name="qraccount_use_on_new_install">Taranan QR kodu, yeni bir hesap ayarlamak içindir. QR kodunu yeni bir Delta Chat kurulumu ayarlanırken tarayabilirsiniz.</string>
     <!-- the placeholder will be replaced by the e-mail address of the account -->
-    <string name="qrlogin_ask_login">\"%1$s\" üzerinde oturum açılsın mı?</string>
+    <string name="qrlogin_ask_login">\"%1$s\" adresine giriş yapılsın mı?</string>
     <!-- the placeholder will be replaced by the e-mail address of the account -->
-    <string name="qrlogin_ask_login_another">\"%1$s\" üzerinde oturum açılsın mı?\n\nVarolan hesabınız silinmeyecek. Hesaplarınız arasında geçiş yapmak için \"Hesabı Değiştir\" öğesini kullanın.</string>
+    <string name="qrlogin_ask_login_another">\"%1$s\" adresine giriş yapılsın mı?\n\nVarolan hesabınız silinmeyecek. Hesaplarınız arasında geçiş yapmak için \"Hesabı Değiştir\" öğesini kullanın.</string>
     <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s sizi bu gruba katılmaya davet etti.\n\n%2$s kişisinin aygıtının yanıt vermesi bekleniyor…</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
@@ -975,7 +979,7 @@
     <string name="autocrypt_correct_desktop">Autocrypt ayarlaması aktarıldı.</string>
     <string name="autocrypt_incorrect_desktop">Yanlış ayarlama kodu. Lütfen yeniden deneyin.</string>
     <string name="create_chat_error_desktop">Sohbet oluşturulamadı.</string>
-    <string name="forget_login_confirmation_desktop">Bu oturum silinsin mi? Uçtan uca ayarlamanızı, kişilerinizi, sohbetlerinizi, iletilerinizi ve ortamlarınızı kapsayarak her şey silinecek. Bu eylem geri alınamaz.</string>
+    <string name="forget_login_confirmation_desktop">Bu giriş silinsin mi? Uçtan uca ayarlamanızı, kişilerinizi, sohbetlerinizi, iletilerinizi ve ortamlarınızı kapsayarak her şey silinecek. Bu eylem geri alınamaz.</string>
     <string name="account_info_hover_tooltip_desktop2">E-Posta: %1$s\nBoyut: %2$s\nHesap Kimliği: %3$s</string>
     <string name="message_detail_sent_desktop">gönderilme</string>
     <string name="message_detail_received_desktop">alınma</string>
@@ -1013,7 +1017,7 @@
     <string name="stop_sharing_location">Konum paylaşımını durdur</string>
     <string name="a11y_voice_message_hint_ios">Kaydettikten sonra göndermek için çift dokunun. Kaydı atmak için iki parmakla sarın.</string>
     <string name="a11y_connectivity_hint">Bağlanabilirlik ayrıntılarını görüntülemek için çift dokunun.</string>
-    <string name="login_error_no_internet_connection">Internet bağlantısı yok; oturum açma başarısız.</string>
+    <string name="login_error_no_internet_connection">Internet bağlantısı yok; giriş başarısız.</string>
     <string name="share_account_not_configured">Hesap yapılandırılmadı.</string>
     <string name="cannot_play_audio_file">Ses dosyası oynatılamıyor.</string>
     <!-- iOS camera permission alert -->
@@ -1063,5 +1067,8 @@
     <!-- placeholder will be replaced by the URL https://delta.chat/en/2023-03-27-third-independent-security-audit -->
     <string name="update_1_36_audit">Burada güvenlikten çok söz etmiyoruz ama emin olun önemsiyoruz: En son iyi haberler için %1$s adresine bakın 👌</string>
     <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
-    <string name="update_1_38_android">1.38 çıktı:\n\n📎 Kaldırılan daha yüksek boyutlu ilişik sınırlaması\n\n🗜️ PNG görselleri (ekran görüntüleri!) de artık sıkıştırılıyor\n\n⌨️ Geliştiriciler için: Sohbetler için sendToChat() ve importFiles() ile uygulamalar (Webxdc nedir? → https://webxdc.org) daha iyi\n\n… ve daha fazlası için %1$s</string>
-    </resources>
+    <string name="update_1_38_android">1.38 çıktı:\n\n📎 İlişiklerin daha yüksek boyut sınırlaması kaldırıldı\n\n🗜️ PNG görselleri (ekran görüntüleri!) de artık sıkıştırılıyor\n\n⌨️ Geliştiriciler için: Sohbetler için sendToChat() ve importFiles() ile uygulamalar (Webxdc nedir? → https://webxdc.org) daha iyi\n\n… ve daha fazlası için %1$s</string>
+    <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
+    <string name="update_1_38_ios">1.38 çıktı:\n\n🖼🔍 Hiç bir görseli ararken sohbeti anımsayamadığınız oldu mu? Öyleyse \"Tüm Ortamlar\" düğmesi sizin!\n\n🧹 Profillerden \"Sohbeti Temizle\"\n\n📎 İlişiklerin daha yüksek boyut sınırlaması kaldırıldı\n\n🗜️ PNG görselleri (ekran görüntüleri!) de artık sıkıştırılıyor\n\n… ve daha fazlası için 1%1$s</string>
+
+</resources>
