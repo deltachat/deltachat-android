@@ -34,6 +34,7 @@ import org.thoughtcrime.securesms.notifications.NotificationCenter;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 import org.thoughtcrime.securesms.qr.QrActivity;
 import org.thoughtcrime.securesms.recipients.Recipient;
+import org.thoughtcrime.securesms.util.IntentUtils;
 import org.thoughtcrime.securesms.util.MediaUtil;
 
 import java.io.File;
@@ -250,6 +251,8 @@ public class DcHelper {
     dcContext.setStockTranslation(123, context.getString(R.string.aeap_explanation));
     dcContext.setStockTranslation(162, context.getString(R.string.multidevice_qr_subtitle));
     dcContext.setStockTranslation(163, context.getString(R.string.multidevice_transfer_done_devicemsg));
+    dcContext.setStockTranslation(170, context.getString(R.string.chat_protection_enabled) + " " + R.string.tap_learn_more);
+    dcContext.setStockTranslation(171, context.getString(R.string.chat_protection_broken) + " " + R.string.tap_learn_more);
   }
 
   public static File getImexDir() {
@@ -440,16 +443,17 @@ public class DcHelper {
   }
 
   public static void showVerificationBrokenDialog(Context context, String name) {
-
     new AlertDialog.Builder(context)
-            .setMessage(context.getString(R.string.protection_degraded_explanation, name))
-            .setPositiveButton("Learn more", (d, w) -> openVerificationHelp(context))
+            .setMessage(context.getString(R.string.chat_protection_broken_explanation, name))
+            .setPositiveButton("Learn more", (d, w) -> IntentUtils.showBrowserIntent(context, "https://staging.delta.chat/684/en/help#verificationbroken"))
             .setNegativeButton("Scan QR Code", (d, w) -> context.startActivity(new Intent(context, QrActivity.class)))
             .setCancelable(true)
             .show();
   }
 
-  public static void openVerificationHelp(Context context) {
-    context.startActivity(new Intent(context, LocalHelpActivity.class));
+  public static void showProtectionEnabledDialog(Context context) {
+    IntentUtils.showBrowserIntent(context, "https://staging.delta.chat/684/en/help#whatdoesverifiedmean");
+    // One day, it would be nice to point the user to the local help:
+    //context.startActivity(new Intent(context, LocalHelpActivity.class));
   }
 }

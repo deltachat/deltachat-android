@@ -122,7 +122,7 @@ public abstract class BaseConversationItem extends LinearLayout
       } else if (messageRecord.getInfoType() == DcMsg.DC_INFO_PROTECTION_DISABLED) {
         DcHelper.showVerificationBrokenDialog(context, conversationRecipient.getName());
       } else if (messageRecord.getInfoType() == DcMsg.DC_INFO_PROTECTION_ENABLED) {
-        DcHelper.openVerificationHelp(context);
+        DcHelper.showProtectionEnabledDialog(context);
       }
     }
   }

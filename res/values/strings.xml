@@ -828,12 +828,10 @@
     <string name="ephemeral_timer_weeks_by_you">You set disappearing messages timer to %1$s weeks.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_weeks_by_other">Disappearing messages timer set to %1$s weeks by %2$s.</string>
-    <string name="protection_enabled_by_you">You enabled chat protection.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="protection_enabled_by_other">Chat protection enabled by %1$s.</string>
-    <string name="protection_disabled_by_you">You disabled chat protection.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="protection_disabled_by_other">Chat protection disabled by %1$s.</string>
+    <string name="chat_protection_enabled">Messages are guaranteed to be end-to-end encrypted from now on.</string>
+    <string name="chat_protection_broken">Messages may not be end-to-end encrypted anymore.</string>
+    <string name="chat_protection_broken_explanation">Can\'t guarantee end-to-end encryption anymore, likely because %1$s reinstalled Delta Chat or sent a message from another device.\n\nIf security is a priority for you, meet them in person and scan their QR code again.</string>
+    <string name="tap_learn_more">Tap to learn more.</string>
 
     <string name="devicemsg_self_deleted">You deleted the \"Saved messages\" chat.\n\nℹ️ To use the \"Saved messages\" feature again, create a new chat with yourself.</string>
     <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
@@ -1070,6 +1068,4 @@
     <string name="update_1_38_android">1.38 is out:\n\n📎 Removed upper size limit of attachments\n\n🗜️ PNG images (screenshots!) are now compressed as well\n\n⌨️ For Devs: Better apps for chats with sendToChat() and importFiles() (What is Webxdc? → https://webxdc.org)\n\n… and more at %1$s</string>
     <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
     <string name="update_1_38_ios">1.38 is out:\n\n🖼🔍 Ever searching for an image and could not remember the chat? Then the \"All Media\" button is yours!\n\n🧹 \"Clear Chat\" from the profiles\n\n📎 Removed upper size limit of attachments\n\n🗜️ PNG images (screenshots!) are now compressed as well\n\n… and more at %1$s</string>
-    <string name="protection_degraded_explanation">Can\'t guarantee end-to-end encryption anymore, likely because %1$s reinstalled Delta Chat or sent a message from another device.\n\nIf security is a priority for you, meet them in person and scan their QR code again.</string>
-
 </resources>

@@ -1649,8 +1649,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       messageRequestBottomView.setBlockText(R.string.more_info_desktop);
       messageRequestBottomView.setBlockOnClickListener(v -> DcHelper.showVerificationBrokenDialog(this, recipient.getName()));
 
-      // TODO translation
-      messageRequestBottomView.setQuestion("Messages may not be end-to-end encrypted anymore.");
+      messageRequestBottomView.setQuestion(getString(R.string.protection_broken));
 
     } else if (dcChat.getType() == DcChat.DC_CHAT_TYPE_GROUP) {
       // We don't support blocking groups yet, so offer to delete it instead
