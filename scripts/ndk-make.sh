@@ -39,6 +39,8 @@
 set -e
 echo "starting time: `date`"
 
+export CFLAGS="-fno-unwind-tables -fno-exceptions -fno-asynchronous-unwind-tables -fomit-frame-pointer"
+
 : "${ANDROID_NDK_ROOT:=$ANDROID_NDK_HOME}"
 : "${ANDROID_NDK_ROOT:=$ANDROID_NDK}"
 if test -z "$ANDROID_NDK_ROOT"; then
