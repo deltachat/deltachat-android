@@ -32,7 +32,7 @@
 	  '';
           buildInputs = [
             android-sdk
-            (pkgs.buildPackages.rust-bin.stable."1.68.2".minimal.override {
+            (pkgs.buildPackages.rust-bin.stable."1.70.0".minimal.override {
               targets = [
                 "armv7-linux-androideabi"
                 "aarch64-linux-android"
