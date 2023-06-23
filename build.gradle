@@ -31,8 +31,8 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel:2.5.1'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
     implementation 'androidx.work:work-runtime:2.7.1'
-    implementation 'com.google.android.exoplayer:exoplayer-core:2.9.6' // plays video and audio
-    implementation 'com.google.android.exoplayer:exoplayer-ui:2.9.6'
+    implementation 'com.google.android.exoplayer:exoplayer-core:2.18.7' // plays video and audio
+    implementation 'com.google.android.exoplayer:exoplayer-ui:2.18.7'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'com.journeyapps:zxing-android-embedded:3.4.0' // QR Code scanner
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.11.1' // used as JSON library
