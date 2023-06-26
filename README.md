@@ -3,6 +3,7 @@
 This is the Android client for [Delta Chat](https://delta.chat/).
 It is available on [F-Droid](https://f-droid.org/app/com.b44t.messenger) and
 the [Google Play Store](https://play.google.com/store/apps/details?id=chat.delta).
+The APK can also be downloaded from [get.delta.chat](https://get.delta.chat).
 
 For the core library and other common info, please refer to the
 [Delta Chat Core Library](https://github.com/deltachat/deltachat-core-rust).
