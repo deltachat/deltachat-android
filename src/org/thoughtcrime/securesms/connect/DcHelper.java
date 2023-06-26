@@ -237,10 +237,6 @@ public class DcHelper {
     dcContext.setStockTranslation(155, context.getString(R.string.ephemeral_timer_days_by_other));
     dcContext.setStockTranslation(156, context.getString(R.string.ephemeral_timer_weeks_by_you));
     dcContext.setStockTranslation(157, context.getString(R.string.ephemeral_timer_weeks_by_other));
-    dcContext.setStockTranslation(158, context.getString(R.string.protection_enabled_by_you));
-    dcContext.setStockTranslation(159, context.getString(R.string.protection_enabled_by_other));
-    dcContext.setStockTranslation(160, context.getString(R.string.protection_disabled_by_you));
-    dcContext.setStockTranslation(161, context.getString(R.string.protection_disabled_by_other));
 
     // HACK: svg does not handle entities correctly and shows `&quot;` as the text `quot;`.
     // until that is fixed, we fix the most obvious errors (core uses encode_minimal, so this does not affect so many characters)
