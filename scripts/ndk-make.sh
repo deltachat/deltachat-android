@@ -39,7 +39,7 @@
 set -e
 echo "starting time: `date`"
 
-export CFLAGS="-fno-unwind-tables -fno-exceptions -fno-asynchronous-unwind-tables -fomit-frame-pointer"
+export CFLAGS="-fno-unwind-tables -fno-exceptions -fno-asynchronous-unwind-tables -fomit-frame-pointer -fvisibility=hidden"
 
 : "${ANDROID_NDK_ROOT:=$ANDROID_NDK_HOME}"
 : "${ANDROID_NDK_ROOT:=$ANDROID_NDK}"
