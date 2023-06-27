@@ -31,6 +31,9 @@ import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -79,12 +82,14 @@ public final class ImageEditorFragment extends Fragment implements ImageEditorHu
   private Uri             imageUri;
   private ImageEditorHud  imageEditorHud;
   private ImageEditorView imageEditorView;
+  private boolean         cropAvatar;
 
-  public static ImageEditorFragment newInstance(@NonNull Uri imageUri) {
+  public static ImageEditorFragment newInstance(@NonNull Uri imageUri, boolean cropAvatar) {
     Bundle args = new Bundle();
     args.putParcelable(KEY_IMAGE_URI, imageUri);
 
     ImageEditorFragment fragment = new ImageEditorFragment();
+    fragment.cropAvatar = cropAvatar;
     fragment.setArguments(args);
     fragment.setUri(imageUri);
     return fragment;
@@ -133,7 +138,7 @@ public final class ImageEditorFragment extends Fragment implements ImageEditorHu
     }
 
     if (editorModel == null) {
-      editorModel = new EditorModel();
+      editorModel = cropAvatar? EditorModel.createForCircleEditing() : new EditorModel();
       EditorElement image = new EditorElement(new UriGlideRenderer(imageUri, true, imageMaxWidth, imageMaxHeight));
       image.getFlags().setSelectable(false).persist();
       editorModel.addElement(image);
@@ -142,6 +147,9 @@ public final class ImageEditorFragment extends Fragment implements ImageEditorHu
     imageEditorView.setModel(editorModel);
 
     refreshUniqueColors();
+    if (cropAvatar) {
+      imageEditorHud.setMode(ImageEditorHud.Mode.CROP);
+    }
   }
 
   @Override
@@ -257,7 +265,23 @@ public final class ImageEditorFragment extends Fragment implements ImageEditorHu
       baos   = null;
       bitmap = null;
 
-      Uri    uri    = provider.create(activity, data, MediaUtil.IMAGE_JPEG, null);
+      Uri uri = null;
+      if (cropAvatar) {
+        File file = new File(activity.getCacheDir(), "cropped");
+        try {
+          FileOutputStream stream = new FileOutputStream(file);
+          stream.write(data);
+          stream.flush();
+          stream.close();
+          uri = Uri.fromFile(file);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return;
+        }
+      } else {
+        uri = provider.create(activity, data, MediaUtil.IMAGE_JPEG, null);
+      }
+
       Intent intent = new Intent();
       intent.setData(uri);
       activity.setResult(RESULT_OK, intent);

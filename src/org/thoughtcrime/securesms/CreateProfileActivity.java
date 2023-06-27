@@ -41,6 +41,7 @@ import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.profiles.AvatarHelper;
 import org.thoughtcrime.securesms.profiles.ProfileMediaConstraints;
+import org.thoughtcrime.securesms.scribbles.ScribbleActivity;
 import org.thoughtcrime.securesms.util.BitmapDecodingException;
 import org.thoughtcrime.securesms.util.BitmapUtil;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
@@ -164,24 +165,27 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Emoj
   public void onActivityResult(int requestCode, int resultCode, Intent data) {
     super.onActivityResult(requestCode, resultCode, data);
 
+    if (resultCode != Activity.RESULT_OK) {
+        return;
+    }
+
     switch (requestCode) {
       case REQUEST_CODE_AVATAR:
-        if (resultCode == Activity.RESULT_OK) {
-          Uri inputFile  = (data != null ? data.getData() : null);
-          onFileSelected(inputFile);
-        }
+        Uri inputFile  = (data != null ? data.getData() : null);
+        onFileSelected(inputFile);
+        break;
+
+      case ScribbleActivity.SCRIBBLE_REQUEST_CODE:
+        setAvatarView(data.getData());
         break;
 
       case Crop.REQUEST_CROP:
-        if (resultCode == Activity.RESULT_OK) {
-          setAvatarView(data);
-        }
+        setAvatarView(Crop.getOutput(data));
         break;
     }
   }
 
-  private void setAvatarView(Intent data) {
-    final Uri output = Crop.getOutput(data);
+  private void setAvatarView(Uri output) {
     final ProfileMediaConstraints constraints = new ProfileMediaConstraints();
     GlideApp.with(this)
             .asBitmap()
@@ -207,12 +211,11 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Emoj
   }
 
   private void onFileSelected(Uri inputFile) {
-    Uri outputFile = Uri.fromFile(new File(getCacheDir(), "cropped"));
     if (inputFile == null) {
       inputFile = attachmentManager.getImageCaptureUri();
     }
 
-    new Crop(inputFile).output(outputFile).asSquare().start(this);
+    AvatarHelper.cropAvatar(this, inputFile);
   }
 
   private void initializeResources() {

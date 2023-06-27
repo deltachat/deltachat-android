@@ -1,15 +1,21 @@
 package org.thoughtcrime.securesms.profiles;
 
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.Build;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.b44t.messenger.DcContext;
+import com.soundcloud.android.crop.Crop;
 
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.scribbles.ScribbleActivity;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -55,4 +61,17 @@ public class AvatarHelper {
             avatar.delete(); // ..., now we can delete it.
         }
     }
+
+    public static void cropAvatar(Activity context, Uri imageUri) {
+        if (Build.VERSION.SDK_INT >= 19) { // Image editor requires Android 4.4 KitKat or newer.
+            Intent intent = new Intent(context, ScribbleActivity.class);
+            intent.setData(imageUri);
+            intent.putExtra(ScribbleActivity.CROP_AVATAR, true);
+            context.startActivityForResult(intent, ScribbleActivity.SCRIBBLE_REQUEST_CODE);
+        } else {
+            Uri outputFile = Uri.fromFile(new File(context.getCacheDir(), "cropped"));
+            Crop.of(imageUri, outputFile).asSquare().start(context);
+        }
+    }
+
 }
