@@ -247,8 +247,8 @@ public class DcHelper {
     dcContext.setStockTranslation(123, context.getString(R.string.aeap_explanation));
     dcContext.setStockTranslation(162, context.getString(R.string.multidevice_qr_subtitle));
     dcContext.setStockTranslation(163, context.getString(R.string.multidevice_transfer_done_devicemsg));
-    dcContext.setStockTranslation(170, context.getString(R.string.chat_protection_enabled) + " " + R.string.tap_learn_more);
-    dcContext.setStockTranslation(171, context.getString(R.string.chat_protection_broken) + " " + R.string.tap_learn_more);
+    dcContext.setStockTranslation(170, context.getString(R.string.chat_protection_enabled) + " " + context.getString(R.string.tap_learn_more));
+    dcContext.setStockTranslation(171, context.getString(R.string.chat_protection_broken) + " " + context.getString(R.string.tap_learn_more));
   }
 
   public static File getImexDir() {
