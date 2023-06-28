@@ -1121,7 +1121,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
           // for WEBXDC, drafts are just sent out as is.
           // for preparations and other cases, cleanup draft soon.
-          if (msg.getType() != DcMsg.DC_MSG_WEBXDC) {
+          if (msg == null || msg.getType() != DcMsg.DC_MSG_WEBXDC) {
             dcContext.setDraft(dcChat.getId(), null);
           }
 
