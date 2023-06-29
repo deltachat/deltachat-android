@@ -107,7 +107,6 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
       }
 
       @Override
-      @SuppressWarnings("deprecation")
       public WebResourceResponse shouldInterceptRequest(WebView view, String url) {
         WebResourceResponse res = interceptRequest(url);
         if (res!=null) {
