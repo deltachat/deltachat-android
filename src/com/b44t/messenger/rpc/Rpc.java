@@ -93,7 +93,7 @@ public class Rpc {
 
     public Map<String, String> getSystemInfo() throws RpcException {
         TypeToken<Map<String, String>> mapType = new TypeToken<Map<String, String>>(){};
-        return gson.fromJson(getResult("get_system_info"), mapType);
+        return gson.fromJson(getResult("get_system_info"), mapType.getType());
     }
 
     public HttpResponse getHttpResponse(int accountId, String url) throws RpcException {
