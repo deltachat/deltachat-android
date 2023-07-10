@@ -831,7 +831,7 @@
     <string name="chat_protection_broken">%1$s sent a message from another device.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">Messages are guaranteed to be end-to-end encrypted from now on. Tap to learn more.</string>
     <string name="chat_protection_broken_tap_to_learn_more">%1$s sent a message from another device. Tap to learn more.</string>
-    <string name="chat_protection_broken_explanation">End-to-end-encryption, cannot be guaranteed anymore, likely because %1$s reinstalled Delta Chat or sent a message from another device.\n\nIf security is a priority for you, meet them in person and scan their QR code again.</string>
+    <string name="chat_protection_broken_explanation">End-to-end-encryption, cannot be guaranteed anymore, likely because %1$s reinstalled Delta Chat or sent a message from another device.\n\nYou may meet them in person and scan their QR Code again to reestablish guaranteed end-to-end encryption.</string>
 
     <string name="devicemsg_self_deleted">You deleted the \"Saved messages\" chat.\n\nℹ️ To use the \"Saved messages\" feature again, create a new chat with yourself.</string>
     <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
