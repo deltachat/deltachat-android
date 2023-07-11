@@ -30,10 +30,12 @@ the easiest way is to use [The Determinate Nix Installer](https://github.com/Det
 which installs Nix with [Flakes](https://nixos.wiki/wiki/Flakes) feature enabled out of the box
 and can be cleanly uninstalled with `/nix/nix-installer uninstall` once you don't need it anymore.
 
-Once you have Nix with Flakes feature set up,
-run `nix develop` to start development environment shell.
-
+Once you have Nix with Flakes feature set up start the development environment shell:
+```
+nix develop
+```
 Nix development environment contains Rust with cross-compilation toolchains and Android SDK.
+
 To [build an APK](https://developer.android.com/studio/build/building-cmdline), run:
 ```
 $ scripts/ndk-make.sh
