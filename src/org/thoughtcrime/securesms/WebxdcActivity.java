@@ -372,7 +372,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
       if (!WebxdcActivity.this.dcContext.sendWebxdcStatusUpdate(WebxdcActivity.this.dcAppMsg.getId(), payload, descr)) {
         DcChat dcChat =  WebxdcActivity.this.dcContext.getChat(WebxdcActivity.this.dcAppMsg.getChatId());
         Toast.makeText(WebxdcActivity.this,
-                      dcChat.isHalfBlocked() ?
+                      dcChat.isContactRequest() ?
                           WebxdcActivity.this.getString(R.string.accept_request_first) :
                           WebxdcActivity.this.dcContext.getLastError(),
                       Toast.LENGTH_LONG).show();
