@@ -942,8 +942,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private void setComposePanelVisibility() {
     if (dcChat.canSend()) {
       composePanel.setVisibility(View.VISIBLE);
+      attachmentManager.setHidden(false);
     } else {
       composePanel.setVisibility(View.GONE);
+      attachmentManager.setHidden(true);
       hideSoftKeyboard();
     }
   }
