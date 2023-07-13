@@ -32,6 +32,7 @@
 	  '';
           buildInputs = [
             android-sdk
+            pkgs.openjdk17
             (pkgs.buildPackages.rust-bin.stable."1.70.0".minimal.override {
               targets = [
                 "armv7-linux-androideabi"
