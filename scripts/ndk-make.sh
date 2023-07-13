@@ -15,6 +15,8 @@
 #
 #     adb shell uname -m
 #
+# Use an app like: https://f-droid.org/packages/com.kgurgul.cpuinfo/
+#
 # Or you just guess your phone's architecture to be arm64-v8a and if you
 # guessed wrongly, a warning message will pop up inside the app, telling
 # you what the correct one is.
