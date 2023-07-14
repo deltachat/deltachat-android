@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<org.thoughtcrime.securesms.ConversationUpdateItem
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<org.thoughtcrime.securesms.ConversationUpdateItem xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/conversation_item_background"
     android:focusable="true"
     android:gravity="center"
@@ -12,6 +12,15 @@
     android:paddingBottom="7dp"
     android:paddingLeft="28dp"
     android:paddingRight="28dp">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/verified_icon"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_gravity="center_vertical"
+        tools:src="@drawable/ic_verified"
+        android:padding="7dp"
+        android:visibility="gone" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -59,7 +68,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|end"
             android:layout_marginBottom="6dp"
-            android:tint="?attr/conversation_item_update_text_color"
+            app:tint="?attr/conversation_item_update_text_color"
             android:visibility="gone" />
 
     </LinearLayout>

@@ -65,7 +65,6 @@ import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 import org.thoughtcrime.securesms.scribbles.ScribbleActivity;
 import org.thoughtcrime.securesms.util.MediaUtil;
-import org.thoughtcrime.securesms.util.StorageUtil;
 import org.thoughtcrime.securesms.util.ThemeUtil;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.guava.Optional;
@@ -99,6 +98,8 @@ public class AttachmentManager {
   private @NonNull  Optional<Slide> slide   = Optional.absent();
   private @Nullable Uri             imageCaptureUri;
   private @Nullable Uri             videoCaptureUri;
+  private boolean                   attachmentPresent;
+  private boolean                   hidden;
 
   public AttachmentManager(@NonNull Activity activity, @NonNull AttachmentListener listener) {
     this.context            = activity;
@@ -136,7 +137,7 @@ public class AttachmentManager {
           @Override
           public void onSuccess(Boolean result) {
             thumbnail.clear(glideRequests);
-            attachmentViewStub.get().setVisibility(View.GONE);
+            setAttachmentPresent(false);
             attachmentListener.onAttachmentChanged();
           }
 
@@ -146,7 +147,7 @@ public class AttachmentManager {
         });
       } else {
         thumbnail.clear(glideRequests);
-        attachmentViewStub.get().setVisibility(View.GONE);
+        setAttachmentPresent(false);
         attachmentListener.onAttachmentChanged();
       }
 
@@ -245,7 +246,7 @@ public class AttachmentManager {
       @Override
       protected void onPreExecute() {
         thumbnail.clear(glideRequests);
-        attachmentViewStub.get().setVisibility(View.VISIBLE);
+        setAttachmentPresent(true);
       }
 
       @Override
@@ -270,19 +271,19 @@ public class AttachmentManager {
 
       @Override
       protected void onPostExecute(@Nullable final Slide slide) {
-         if (slide == null) {
-          attachmentViewStub.get().setVisibility(View.GONE);
+        if (slide == null) {
+          setAttachmentPresent(false);
           result.set(false);
         } else if (slide.getFileSize()>1*1024*1024*1024) {
           // this is only a rough check, videos and images may be recoded
           // and the core checks more carefully later.
-          attachmentViewStub.get().setVisibility(View.GONE);
+          setAttachmentPresent(false);
           Log.w(TAG, "File too large.");
           Toast.makeText(slide.context, "File too large.", Toast.LENGTH_LONG).show();
           result.set(false);
         } else {
           setSlide(slide);
-          attachmentViewStub.get().setVisibility(View.VISIBLE);
+          setAttachmentPresent(true);
 
           if (slide.hasAudio()) {
             class SetDurationListener implements AudioSlidePlayer.Listener {
@@ -412,7 +413,7 @@ public class AttachmentManager {
   }
 
   public boolean isAttachmentPresent() {
-    return attachmentViewStub.resolved() && attachmentViewStub.get().getVisibility() == View.VISIBLE;
+    return attachmentPresent;
   }
 
   public @NonNull SlideDeck buildSlideDeck() {
@@ -666,17 +667,26 @@ public class AttachmentManager {
     }
   }
 
-  public int getVisibility() {
-    try {
-      return attachmentViewStub.get().getVisibility();
-    } catch(Exception e) {
-      return View.GONE;
-    }
+  public void setHidden(boolean hidden) {
+    this.hidden = hidden;
+    updateVisibility();
   }
 
-  public void setVisibility(int vis) {
-    try {
-      attachmentViewStub.get().setVisibility(vis);
-    } catch(Exception e) {}
+  private void setAttachmentPresent(boolean isPresent) {
+    this.attachmentPresent = isPresent;
+    updateVisibility();
+  }
+
+  private void updateVisibility() {
+    int vis;
+    if (attachmentPresent && !hidden) {
+      vis = View.VISIBLE;
+    } else {
+      vis = View.GONE;
+    }
+    if (vis == View.GONE && !attachmentViewStub.resolved()) {
+      return;
+    }
+    attachmentViewStub.get().setVisibility(vis);
   }
 }
