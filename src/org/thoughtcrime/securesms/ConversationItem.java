@@ -108,7 +108,6 @@ public class ConversationItem extends BaseConversationItem
   private   ViewGroup              container;
   private   Button                 msgActionButton;
 
-  private @NonNull  Recipient                       conversationRecipient;
   private @NonNull  Stub<ConversationItemThumbnail> mediaThumbnailStub;
   private @NonNull  Stub<AudioView>                 audioViewStub;
   private @NonNull  Stub<DocumentView>              documentViewStub;
@@ -170,10 +169,9 @@ public class ConversationItem extends BaseConversationItem
                    @NonNull Recipient               recipients,
                    boolean                          pulseHighlight)
   {
-    bind(messageRecord, dcChat, batchSelected, pulseHighlight);
+    bind(messageRecord, dcChat, batchSelected, pulseHighlight, recipients);
     this.locale                 = locale;
     this.glideRequests          = glideRequests;
-    this.conversationRecipient  = recipients;
     this.showSender             = dcChat.isMultiUser() || messageRecord.getOverrideSenderName() != null;
 
     if (showSender && !messageRecord.isOutgoing()) {

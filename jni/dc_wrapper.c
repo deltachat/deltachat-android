@@ -1367,6 +1367,11 @@ JNIEXPORT jboolean Java_com_b44t_messenger_DcChat_isProtected(JNIEnv *env, jobje
     return dc_chat_is_protected(get_dc_chat(env, obj))!=0;
 }
 
+JNIEXPORT jboolean Java_com_b44t_messenger_DcChat_isProtectionBroken(JNIEnv *env, jobject obj)
+{
+    return dc_chat_is_protection_broken(get_dc_chat(env, obj))!=0;
+}
+
 
 JNIEXPORT jboolean Java_com_b44t_messenger_DcChat_isSendingLocations(JNIEnv *env, jobject obj)
 {
