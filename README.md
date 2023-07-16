@@ -20,6 +20,12 @@ subproject _deltachat-core-rust_:
   `$ git clone --recursive https://github.com/deltachat/deltachat-android`
   or later by `git submodule update --init --recursive`. If you do this in your
   home directory, this results in the folder `~/deltachat-android` which is just fine.
+- A specific commit of _deltachat-android_ points to a specific commit of
+  _deltachat-core-rust_ . For non-release commits of _deltachat-android_ the
+  submodule directory may be out of date / break the build. If you are on the
+  master branch of _deltachat-android_ you can update the submodules in your
+  working copy to their respective latest master commits by running:
+  `git submodule foreach git fetch ; git submodule foreach git checkout master; git submodule foreach git merge origin/master`
 
 # Build Using Nix
 
