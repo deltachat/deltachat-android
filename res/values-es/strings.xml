@@ -428,6 +428,10 @@
     <string name="start_app">Iniciar…</string>
     <!-- this is a warning that is shown when one tries to send something to a chat that is not yet accepted. -->
     <string name="accept_request_first">Primero acepte la solicitud de chat.</string>
+    <!-- placeholder will be replaced by a file name -->
+    <string name="send_file_to">Enviar \"%1$s\" a…</string>
+    <string name="send_message_to">Enviar mensaje a…</string>
+
     <!-- map -->
     <string name="filter_map_on_time">Mostrar ubicaciones en el marco de tiempo</string>
     <string name="show_location_traces">Mostrar trazas</string>
