@@ -443,6 +443,10 @@
     <string name="start_app">Старт...</string>
     <!-- this is a warning that is shown when one tries to send something to a chat that is not yet accepted. -->
     <string name="accept_request_first">Будь ласка, спочатку прийміть запит на чат.</string>
+    <!-- placeholder will be replaced by a file name -->
+    <string name="send_file_to">Надіслати \"%1$s\" до…</string>
+    <string name="send_message_to">Надіслати повідомлення до...</string>
+
     <!-- map -->
     <string name="filter_map_on_time">Показати місця у часовому проміжку</string>
     <string name="show_location_traces">Показати треки</string>

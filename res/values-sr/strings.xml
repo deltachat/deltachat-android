@@ -29,6 +29,7 @@
     <string name="emoji">Емоџи</string>
     <string name="attachment">Прилог</string>
     <string name="back">Назад</string>
+    <string name="verified">Проверено</string>
     <string name="close">Затвори</string>
     <string name="forward">Проследи</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
@@ -60,6 +61,7 @@
     <!-- Possible answers to the question are: Never, Always, Once -->
     <string name="load_remote_content_ask">Слике са сервера могу да вас прате\n\nОво подешавање такође може да учита додатне фонтове и други садржај. Ако је онемогућено, могу се појавити уграђене или ускладиштене слике.\n\nДа ли желите да учитате слике са сервера?</string>
     <string name="always">Увек</string>
+    <string name="always_load_remote_images">Увек учитај слике са сервера</string>
     <string name="once">Само једном</string>
     <string name="show_password">Прикажи лозинку</string>
     <string name="hide_password">Сакри лозинку</string>
@@ -93,6 +95,8 @@
     <string name="last_month">Прошлог месеца</string>
     <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
     <string name="last_seen_at">Последњи пут виђен %1$s</string>
+    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages)-->
+    <string name="last_seen_relative">Последњи пут виђен %1$s</string>
     <string name="last_seen_unknown">Последњи пут виђен: Непознато</string>
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
@@ -163,6 +167,7 @@
     <string name="switch_camera">Промени камеру</string>
     <string name="toggle_fullscreen">Обрће режим пуног екрана</string>
     <string name="location">Локација</string>
+    <string name="locations">Локације</string>
     <string name="gallery">Галерија</string>
     <string name="images_and_videos">Слике и видео записи</string>
     <string name="file">Фајл</string>
@@ -215,6 +220,8 @@
     <string name="menu_add_attachment">Додај прилог</string>
     <string name="menu_leave_group">Напусти групу</string>
     <string name="menu_delete_chat">Обриши ћаскање</string>
+    <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
+    <string name="clear_chat">Обриши ћаскање</string>
     <string name="ask_delete_named_chat">Јесте ли сигурни да желите да избришете „%1$s“?</string>
     <string name="menu_delete_messages">Избришите поруке</string>
     <string name="delete_contact">Избриши контакт</string>
@@ -249,6 +256,7 @@
     <string name="menu_help">Помоћ</string>
     <string name="privacy_policy">Политика приватности</string>
     <string name="menu_select_all">Изабери све</string>
+    <string name="select_chat">Изабери ћаскање</string>
     <string name="select_more">Изабери још</string>
     <string name="menu_edit_name">Уреди назив</string>
     <string name="menu_settings">Поставке</string>
@@ -866,6 +874,8 @@
     <string name="secure_join_replies">%1$s је одговорио и чека да буде додат у групу...</string>
     <string name="contact_verified">%1$s потврђен.</string>
     <string name="contact_not_verified">Немогуће је проверити %1$s.</string>
+    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that verified the contact shown. -->
+    <string name="verified_by">Проверено од %1$s</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Подешавања су се променила за %1$s.</string>
     <string name="verified_group_explain">Верификоване групе (ово је експериментална могућност) пружају сигурност од активних напада. Чланови се верификују са другим фактором од стране других чланова и поруке су увек с-краја-на-крај шифроване.</string>

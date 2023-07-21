@@ -357,7 +357,7 @@
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Rimuovere %1$s dal gruppo?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
-    <string name="ask_remove_from_broadcast">Rimuovere %1$s dalla lista trasmissione?</string>
+    <string name="ask_remove_from_broadcast">Rimuovere %1$s dalla lista di trasmissione?</string>
     <string name="open_url_confirmation">Vuoi aprire questo link?</string>
 
 
@@ -485,7 +485,7 @@
     <string name="media_preview">Anteprima dei Media</string>
     <string name="send_message">Invia Messaggio</string>
     <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
-    <string name="aeap_addr_changed">%1$s hanno cambiato il loro indirizzo da %2$s a %3$s</string>
+    <string name="aeap_addr_changed">%1$s ha cambiato l\'indirizzo da %2$s a %3$s</string>
     <!-- the explanation is shown (1) as a modal dialog with the buttons "Cancel" and "Continue" as well as (2) as a device message -->
     <string name="aeap_explanation">Hai cambiato il tuo indirizzo email da %1$s a %2$s.\n\nSe ora invii un messaggio a un gruppo verificato, i contatti sostituiranno automaticamente il vecchio indirizzo con il tuo nuovo.\n\nSi consiglia vivamente di impostare il tuo vecchio provider email per inoltrare tutte le email al tuo nuovo indirizzo email. Altrimenti potresti perdere i messaggi di contatti che non hanno ancora ricevuto il tuo nuovo indirizzo.</string>
 
