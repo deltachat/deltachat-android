@@ -260,6 +260,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
         + "script-src 'self' 'unsafe-inline' 'unsafe-eval' blob: ; "
         + "connect-src 'self' data: blob: ; "
         + "img-src 'self' data: blob: ; "
+        + "media-src 'self' data: blob: ;"
         + "webrtc 'block' ; "
       );
       headers.put("X-DNS-Prefetch-Control", "off");
