@@ -50,7 +50,7 @@
     <string name="show_full_message">Mostrar mensaje completo…</string>
     <string name="show_full_message_in_browser">Mostrar mensaje completo en el navegador…</string>
     <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
-    <string name="mark_all_as_read">Marcar todo leído</string>
+    <string name="mark_all_as_read">Marcar todo como leído</string>
     <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
     <string name="mark_as_read_short">Leído</string>
     <!-- Placeholder text when something is loading -->
@@ -61,7 +61,7 @@
     <!-- Possible answers to the question are: Never, Always, Once -->
     <string name="load_remote_content_ask">Las imágenes remotas pueden ser usadas para seguirte.\n\nLa opción también permite cargar fuentes y otros contenidos. Inclusive si están deshabilitadas, quizás puedas ver imágenes embebidas o en caché.\n\n¿Cargar imágenes remotas?</string>
     <string name="always">Siempre</string>
-    <string name="always_load_remote_images">Cargar imágenes remotas siempre</string>
+    <string name="always_load_remote_images">Cargar siempre imágenes remotas</string>
     <string name="once">Una vez</string>
     <string name="show_warning">Mostrar advertencia</string>
     <string name="show_password">Mostrar contraseña</string>

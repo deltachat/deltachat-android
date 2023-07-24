@@ -476,9 +476,7 @@ https://meet.jit.si/$ROOM
     <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
     <string name="aeap_addr_changed">مخاطب %1$s نشانی خود را از %2$s به %3$s تغییر داده است.  </string>
     <!-- the explanation is shown (1) as a modal dialog with the buttons "Cancel" and "Continue" as well as (2) as a device message -->
-    <string name="aeap_explanation">شما نشانی رایانامه خود را از %1$s به %2$s تغییر داده‌اید. 
-اگر به گروه‌های تأیید شده یا مخاطبین خود پیامی ارسال کنید؛ به صورت خودکار نشانی جدید را جایگزین نشانی پیشین می‌کنند.
-به شدت توصیه می‌شود که نشانی رایانامه پیشین خود را به نحوی تنظیم کنید که همه رایانامه‌ها را به نشانی جدید شما هدایت کند؛ در غیر این صورت ممکن است پیام‌های مخاطبینی که از تغییر نشانی شما مطلع نشده‌اند را از دست بدهید. </string>
+    <string name="aeap_explanation">شما نشانی رایانامهٔ خود را از %1$s به %2$s تغییر دادید.\n\nاگر به یک گروه تأیید شده پیام بفرستید، مخاطبان آن به صورت خودکار نشانی جدید را جایگزین نشانی پیشین می‌کنند.\n\nبه شدت توصیه می‌شود که نشانی رایانامهٔ پیشین خود را به نحوی تنظیم کنید که تمام رایانامه‌ها را به نشانی جدید شما هدایت کند؛ در غیر این صورت ممکن است پیام‌های مخاطبانی که از تغییر نشانی شما مطلع نشده‌اند را از دست بدهید. </string>
 
 
     <!-- Multi Device -->
@@ -662,7 +660,7 @@ https://meet.jit.si/$ROOM
     <string name="pref_other">دیگر</string>
     <string name="pref_backup">نسخه پشتیبان</string>
     <string name="pref_backup_explain">تهیهٔ پشتیبان از گپ‌ها در ذخیره‌گاه خارجی</string>
-    <string name="pref_backup_export_explain">تهیهٔ پشتیبان به شما  کمک می‌کند روی این دستگاه یا دستگاه دیگر نرم‌افزار را دوباره نصب کنید.\n\nپشتیبان حاوی تمام پیام‌ها، مخاطبین، گپ‌ها و برپاسازی Autocrypt سرتاسر شما خواهد بود. پروندهٔ پشتیبانی را در یک جای امن نگه دارید و در اسرع وقت آن را پاک کنید.</string>
+    <string name="pref_backup_export_explain">تهیهٔ پشتیبان به شما  کمک می‌کند روی این دستگاه یا دستگاه دیگر نرم‌افزار را دوباره نصب کنید.\n\nپشتیبان حاوی تمام پیام‌ها، مخاطبین، گپ‌ها و برپاسازی اتوکریپت سرتاسر شما خواهد بود. پروندهٔ پشتیبانی را در یک جای امن نگه دارید و در اسرع وقت آن را پاک کنید.</string>
     <string name="pref_backup_export_start_button">شروع تهیه نسخه پشتیبان</string>
     <string name="pref_backup_written_to_x">نسخه پشتیبان با موفقیت در\"%1$s\" ذخیره شد.</string>
     <string name="pref_managekeys_menu_title">مدیریت کلیدها</string>
@@ -735,9 +733,9 @@ https://meet.jit.si/$ROOM
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">آیا می‌خواهید %1$d پیام جدید و دریافت شده را در زمان%2$s در آینده پاک کنید؟\n\n• این شامل همه رسانه‌ها هم می‌شود\n\n•  پیام‌ها جدای از اینکه دیده شده باشند یا نه پاک می‌شوند. \"پیام های ذخیره شده\" شامل این پاک کردن محلی نمی‌شوند. </string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
-    <string name="autodel_server_ask">آیا می‌خواهید اکنون %1$dپیام و همه\"%2$s\"   پیام‌ جدید دریافت شده در آینده را پاک کنید؟/n/n⚠️ این شامل رایانامه‌ها، رسانه و \"پیام‌های ذخیره شده\" در همه پوشه‌های سرور می‌شود /n/n⚠️ اگر می‌خواهید داده‌ها در سرور باقی بمانده از این قابلیت استفاده نکنید/n/n⚠️ اگر بجز دلتاچت از دیگر نرم‌افزارهای رایانامه هم استفاده می‌کنید این قابلیت را به کار نگیرید.</string>
+    <string name="autodel_server_ask">آیا می‌خواهید %1$dپیام را اکنون و تمام پیام‌های آیندهٔ «%2$s»  را پاک کنید؟/n/n⚠️ این شامل رایانامه‌ها، رسانه و «پیام‌های ذخیره شده» در همه پوشه‌های کارساز می‌شود/n/n⚠️ اگر می‌خواهید داده‌ها در کارساز باقی بمانند از این قابلیت استفاده نکنید/n/n⚠️ اگر به‌جز دلتاچت از دیگر نرم‌افزارهای رایانامه هم استفاده می‌کنید این قابلیت را به کار نگیرید.</string>
     <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
-    <string name="autodel_server_enabled_hint">این شامل رایانامه‌ها، رسانه و \"پیام‌های ذخیره شده\" در همه پوشه‌های سرور می‌شود. اگر می‌خواهید داده‌ها را در سرور نگه دارید از این قابلیت استفاده نکنید. اگر از دیگر نرم‌افزارهای رایانامه به جز دلتاچت استفاده می‌کنید از این قابلیت استفاده نکنید.</string>
+    <string name="autodel_server_enabled_hint">این شامل رایانامه‌ها، رسانه و «پیام‌های ذخیره شده» در تمام پوشه‌های کارساز می‌شود. اگر می‌خواهید داده‌ها را در کارساز نگه دارید از این قابلیت استفاده نکنید. اگر از دیگر نرم‌افزارهای رایانامه به‌جز دلتاچت استفاده می‌کنید از این قابلیت استفاده نکنید.</string>
     <string name="autodel_confirm">متوجه هستم، همه پیام‌ها حذف شوند</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">یک بار</string>
@@ -753,27 +751,27 @@ https://meet.jit.si/$ROOM
     <string name="autodel_after_1_year">بعد از ۱ سال</string>
 
     <!-- autocrypt -->
-    <string name="autocrypt">خودرمز</string>
-    <string name="autocrypt_explain">خودرمز  یک ویژگی جدید و باز برای رمزگذاری گیرنده به گیرنده خودکار رایانامه است.\n\n تنظیمات رمزگذاری گیرنده به گیرنده در موقع لازم به صورت خودکار ایجاد می‌شود و می‌توانید آن را  با پیام تنظیم خودرمز بین دستگاه‌ها  انتقال دهید. </string>
-    <string name="autocrypt_send_asm_title">ارسال پیام تنظیمات خودرمز</string>
-    <string name="autocrypt_send_asm_explain_before">پیام تنظیم خودرمز تنظیمات رمزگذاری گیرنده به گیرنده شما را به شکلی امن با دیگر پذیرنده‌ها به اشتراک می‌گذارد.\n\n تنظیمات با یک کد نصب که در اینجا نمایش داده می‌شود رمزگذاری می‌شوند و باید در دستگاه دیگر تایپ شود. </string>
-    <string name="autocrypt_send_asm_button">ارسال پیام تنظیمات خودرمز</string>
+    <string name="autocrypt">اتوکریپت</string>
+    <string name="autocrypt_explain">اتوکریپت  یک ویژگی جدید و باز برای رمزگذاری سرتاسر خودکار رایانامه است.\n\n تنظیمات رمزگذاری سرتاسر در هنگام نیاز به صورت خودکار ایجاد می‌شود و می‌توانید آن را  با پیام‌های تنظیم اتوکریپت بین دستگاه‌ها انتقال دهید. </string>
+    <string name="autocrypt_send_asm_title">ارسال پیام برپاسازی اتوکریپت</string>
+    <string name="autocrypt_send_asm_explain_before">پیام برپاسازی اتوکریپت تنظیمات رمزگذاری سرتاسر شما را به شکلی امن با دیگر برنامه‌ها به اشتراک می‌گذارد.\n\n تنظیمات با یک کد برپاسازی که در اینجا نمایش داده می‌شود رمزگذاری می‌شوند و باید در دستگاه دیگر تایپ شود. </string>
+    <string name="autocrypt_send_asm_button">ارسال پیام برپاسازی اتوکریپت</string>
     <string name="autocrypt_send_asm_explain_after">تنظیمات شما برای خودتان ارسال شد. پیام تنظیمات را در دستگاه دیگر باز کنید. یک کد نصب از شما خواسته می‌شود. این ارقام را وارد کنید:\n\n %1$s </string>
     <string name="autocrypt_prefer_e2ee">ترجیح رمزگذاری گیرنده به گیرنده</string>
-    <string name="autocrypt_asm_subject">پیام تنظیمات خودرمز</string>
-    <string name="autocrypt_asm_general_body">این پیام تنظیمات خودرمز است و تنظیمات مربوط به رمزگذاری گیرنده به گیرنده شما را بین دستگاه‌ها جابجا می‌کند.\n\n برای رمزگشایی و استفاده از آن، پیام را در یک سیستم که با خودرمز همخوانی دارد باز کنید و کد نصب که در دستگاه تولید کننده پیام، به شما داده می شود را وارد نمایید. </string>
-    <string name="autocrypt_asm_click_body">این پیام تنظیم خودرمز است که تنظیمات مربوط به رمزگذاری گیرنده به گیرنده شما را بین دستگاه‌ها جابجا می‌کند.\n\n برای رمزگشایی و استفاده، روی این پیام بزنید یا کلیک کنید. </string>
-    <string name="autocrypt_continue_transfer_title">پیام تنظیم خودرمز</string>
+    <string name="autocrypt_asm_subject">پیام برپاسازی اتوکریپت</string>
+    <string name="autocrypt_asm_general_body">این پیام برپاسازی اتوکریپت است و تنظیمات مربوط به رمزگذاری سرتاسر شما را بین دستگاه‌ها جابه‌جا می‌کند.\n\n برای رمزگشایی و استفاده از آن، پیام را در یک سامانه که با اتوکریپت همخوانی دارد باز کنید و کد برپاسازی که در دستگاه تولیدکنندهٔ پیام، به شما داده می‌شود را وارد نمایید. </string>
+    <string name="autocrypt_asm_click_body">این پیام برپاسازی اتوکریپت است که تنظیمات مربوط به رمزگذاری سرتاسر شما را بین دستگاه‌ها جابه‌جا می‌کند.\n\n برای رمزگشایی و استفاده، روی این پیام بزنید یا کلیک کنید. </string>
+    <string name="autocrypt_continue_transfer_title">پیام برپاسازی اتوکریپت</string>
     <string name="autocrypt_continue_transfer_please_enter_code">لطفا کد نصب نمایش داده شده در دستگاه دیگر را وارد کنید. </string>
-    <string name="autocrypt_continue_transfer_succeeded">تنظیمات رمزگذاری گیرنده به گیرنده انتقال یافت. این دستگاه اکنون برای استفاده از خودرمز به همان نحوی که در دستگاه دیگر وجود داشت قابل استفاده است. </string>
+    <string name="autocrypt_continue_transfer_succeeded">برپاسازی رمزگذاری سرتاسر انتقال یافت. این دستگاه اکنون برای استفاده از اتوکریپت به همان نحوی که در دستگاه دیگر وجود داشت قابل استفاده است.</string>
     <string name="autocrypt_continue_transfer_retry">تلاش مجدد</string>
-    <string name="autocrypt_bad_setup_code">کد نصب نادرست. لطفا دوباره تلاش کنید. \n\n اگر کد نصب را فراموش کرده‌اید یک پیام جدید تنظیمات خودرمز را از دستگاه دیگر ارسال کنید. </string>
+    <string name="autocrypt_bad_setup_code">کد برپاسازی نادرست. لطفاً دوباره تلاش کنید. \n\n اگر کد برپاسازی را فراموش کرده‌اید یک پیام برپاسازی اتوکریپت جدید را از دستگاه دیگر ارسال کنید. </string>
 
 
     <!-- system messages -->
     <string name="systemmsg_read_receipt_subject">پیام باز شد</string>
     <string name="systemmsg_read_receipt_body">پیام\"%1$s\" که ارسال کرده بودید در ثفحه گیرنده نمایش داده شد\n\n. تضمینی وجود ندارد که محتوای پیام را خوانده باشد. </string>
-    <string name="systemmsg_cannot_decrypt">این پیام را نمی‌توان رمزگشایی کرد.\n\n• ممکن است بهتر باشد که به همین پیام پاسخ داده و از ارسال کننده بخواهید دوباره آن را بفرستد. \n\n• اگر دوباره دلتاچت را نصب کرده‌اید یا از یک رایانامه دیگر هم روی این دستگاه یا دستگاه دیگر استفاده می‌کنید ممکن است لازم باشد یک پیام تنظیمات خودرمز از آن دستگاه ارسال کنید. </string>
+    <string name="systemmsg_cannot_decrypt">این پیام را نمی‌توان رمزگشایی کرد.\n\n• ممکن است بهتر باشد که به همین پیام پاسخ داده و از ارسال کننده بخواهید دوباره آن را بفرستد. \n\n• اگر دوباره دلتاچت را نصب کرده‌اید یا از یک رایانامه دیگر هم روی این دستگاه یا دستگاه دیگر استفاده می‌کنید ممکن است لازم باشد یک پیام برپاسازی اتوکریپت از آن دستگاه ارسال کنید. </string>
     <string name="systemmsg_unknown_sender_for_chat">فرستنده در این گفت و گو ناشناس است. برای جزئیات بیشتر به \"اطلاعات\" مراجعه کنید.</string>
     <string name="systemmsg_subject_for_new_contact">پیام از%1$s</string>
     <string name="systemmsg_failed_sending_to">ارسال ناموفق پیام به %1$s.</string>
@@ -945,11 +943,7 @@ https://meet.jit.si/$ROOM
  گزینه 
 \"Microphone\"
  را فعال نمایید. </string>
-    <string name="perm_explain_access_to_storage_denied">برای دریافت یا ارسال پرونده به تنظیمات نرم‌افزار برویرد و از
- \"Permissions\"
- گزینه
- \"Storage\" 
-را فعال نمایید. </string>
+    <string name="perm_explain_access_to_storage_denied">برای دریافت یا ارسال پرونده به تنظیمات برنامه بروید، «اجازه‌ها» را برگزینید و «ذخیره‌گاه» را به کار بیندازید.</string>
     <string name="perm_explain_access_to_location_denied">برای افزودن موقعیت مکانی به تنظیمات نرم‌افزار رفته و از 
 \"Permissions\" 
 گزینه
@@ -1008,16 +1002,16 @@ GNU GPL ورژن ۳
     <string name="remove_desktop">حذف</string>
     <string name="save_desktop">ذخیره</string>
     <string name="name_desktop">نام</string>
-    <string name="autocrypt_key_transfer_desktop">انتقال کلید خودرمز</string>
-    <string name="initiate_key_transfer_desktop">یک پیام تنظیمات خودرمز،  تنظیمات مربوط به رمزگذاری گیرنده به گیرنده را برای دیگر نرم افزارهایی که با خودرمز همخوانی دارند به اشتراک می‌گذارد. تنظیمات با یک کد نصب رمزگذاری خواهند شد که در اینجا نمایش داده می‌شود که باید آن  را در دستگاه دیگر وارد کنید. </string>
+    <string name="autocrypt_key_transfer_desktop">انتقال کلید اتوکریپت</string>
+    <string name="initiate_key_transfer_desktop">یک پیام برپاسازی اتوکریپت، برپاسازی رمزگذاری سرتاسرتان را به‌امنی با دیگر برنامه‌های سازگار با اتوکریپت هم‌رسانی می‌کند. برپاسازی با یک کد برپاسازی رمزگذاری خواهند شد که در اینجا نمایش داده می‌شود که باید آن  را در دستگاه دیگر وارد کنید. </string>
     <string name="select_group_image_desktop">انتخاب تصویر گروه</string>
     <string name="imex_progress_title_desktop">فرایند تهیه نسخه پشتیبان</string>
     <string name="export_backup_desktop">صادر کردن نسخه پشتیبان</string>
     <string name="show_key_transfer_message_desktop">کلید برایتان ارسال شد. به دستگاه دیگر رفته و پیام نصب را باز کنید. از شما یک کد نصب خواسته می‌شود. این ارقام را آن‌جا وارد کنید:</string>
-    <string name="autocrypt_correct_desktop">تنظیمات خودرمز انتقال یافت.</string>
+    <string name="autocrypt_correct_desktop">برپاسازی اتوکریپت انتقال یافت.</string>
     <string name="autocrypt_incorrect_desktop">کد نصب نادرست. لطفا دوباره امتحان کنید. </string>
     <string name="create_chat_error_desktop">امکان ایجاد گپ وجود ندارد. </string>
-    <string name="forget_login_confirmation_desktop">پاک کردن این ورود؟ همه چیز پاک می شود که شامل رمزگذاری گیرنده به گیرنده، مخاطبین، گپ‌ها، پیام‌ها و رسانه می‌شود. این عملیات قابل بازگردانی نیست.</string>
+    <string name="forget_login_confirmation_desktop">پاک کردن این ورود؟ همه‌چیز پاک می‌شود که شامل رمزگذاری سرتاسر، مخاطبین، گپ‌ها، پیام‌ها و رسانه می‌شود. این عملیات قابل بازگردانی نیست.</string>
     <string name="account_info_hover_tooltip_desktop2">رایانامه: %1$s
 فضا: %2$s
 شناسه حساب:‌%3$s</string>
@@ -1065,7 +1059,7 @@ GNU GPL ورژن ۳
     <string name="open_settings">تنظیمات را باز کنید</string>
     <!-- iOS device contact alert -->
     <string name="import_device_contacts">وارد کردن مخاطبین</string>
-    <string name="import_device_contacts_hint">برای شروع گپ با مخاطبین دستگاه خود، تنظیمات را باز کرده و دسترسی به مخاطبین را روشن کنید. </string>
+    <string name="import_device_contacts_hint">برای شروع گپ با مخاطبین دستگاه خود، تنظیمات را باز کرده و «مخاطبین» را به کار بیندازید.</string>
     <!-- iOS notification settings -->
     <string name="disabled_in_dc">در دلتاچت غیر فعال شده است. </string>
     <string name="disabled_in_system_settings">در تنظیمات سیستم غیر فعال شده است. </string>
@@ -1082,8 +1076,8 @@ GNU GPL ورژن ۳
     <string name="shortcut_step2_tap_add_to_home_screen">برای افزودن برنامه به صفحه اصلی خود، «افزودن به صفحه اصلی» را انتخاب کنید.</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">دلتاچت برای گرفتن و ارسال عکس و فیلم و برای اسکن کردن کیوآر کد از دوربین شما استفاده می‌کند. </string>
-    <string name="InfoPlist_NSContactsUsageDescription">دلتاچت از مخاطبین شما برای نمایش لیست رایانامه‌هایی که می‌توانید برایشان پیام ارسال کنید استفاده می‌کند. دلتاچت سرور ندارد مخاطبین شما به جایی ارسال نمی‌شوند. </string>
-    <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">دلتاچت برای اشتراک موقعیت مکانی شما در زمانی که اشتراک موقعیت مکانی را فعال کرده باشید به مجوز نیاز دارد. </string>
+    <string name="InfoPlist_NSContactsUsageDescription">دلتاچت از مخاطبین شما برای نمایش فهرست رایانامه‌هایی که می‌توانید برایشان پیام ارسال کنید استفاده می‌کند. دلتاچت کارساز ندارد، مخاطبین شما به جایی ارسال نمی‌شوند. </string>
+    <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">دلتاچت برای  هم‌رسانی مکان شما در زمانی که آن به کار انداخته‌اید، به مجوز نیاز دارد. </string>
     <string name="InfoPlist_NSLocationWhenInUseUsageDescription">دلتاچت برای اشتراک موقعیت مکانی شما در زمانی که اشتراک موقعیت مکانی را فعال کرده‌ باشید به مجوز نیاز دارد. </string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">دلتاچت از میکروفون برای ذخیره و ارسال پیام صوتی یا فیلم دارای صدا استفاده می‌کند.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">دلتاچت به شما اجازه می دهد تصویر موردنظر برای ارسال را انتخاب کنید.</string>
