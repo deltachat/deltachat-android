@@ -1628,9 +1628,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     if (dcChat.isProtectionBroken()) {
       messageRequestBottomView.setBlockText(R.string.more_info_desktop);
-      messageRequestBottomView.setBlockOnClickListener(v -> DcHelper.showVerificationBrokenDialog(this, recipient.getName()));
+      String name = dcContext.getContact(recipient.getDcContact().getId()).getDisplayName();
+      messageRequestBottomView.setBlockOnClickListener(v -> DcHelper.showVerificationBrokenDialog(this, name));
 
-      messageRequestBottomView.setQuestion(getString(R.string.chat_protection_broken, recipient.getName()));
+      messageRequestBottomView.setQuestion(getString(R.string.chat_protection_broken, name));
       messageRequestBottomView.setAcceptText(R.string.ok);
 
     } else if (dcChat.getType() == DcChat.DC_CHAT_TYPE_GROUP) {
