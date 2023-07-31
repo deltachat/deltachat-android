@@ -223,14 +223,12 @@ static dc_accounts_t* get_dc_accounts(JNIEnv *env, jobject obj)
 }
 
 
-JNIEXPORT jlong Java_com_b44t_messenger_DcAccounts_createAccountsCPtr(JNIEnv *env, jobject obj, jstring osname, jstring dir)
+JNIEXPORT jlong Java_com_b44t_messenger_DcAccounts_createAccountsCPtr(JNIEnv *env, jobject obj, jstring dir)
 {
-    CHAR_REF(osname);
     CHAR_REF(dir);
         int writable = 1;
         jlong accountsCPtr = (jlong)dc_accounts_new(dirPtr, writable);
     CHAR_UNREF(dir);
-    CHAR_UNREF(osname);
     return accountsCPtr;
 }
 
