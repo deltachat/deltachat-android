@@ -227,7 +227,8 @@ JNIEXPORT jlong Java_com_b44t_messenger_DcAccounts_createAccountsCPtr(JNIEnv *en
 {
     CHAR_REF(osname);
     CHAR_REF(dir);
-        jlong accountsCPtr = (jlong)dc_accounts_new(osnamePtr, dirPtr);
+        int writable = 1;
+        jlong accountsCPtr = (jlong)dc_accounts_new(dirPtr, writable);
     CHAR_UNREF(dir);
     CHAR_UNREF(osname);
     return accountsCPtr;
