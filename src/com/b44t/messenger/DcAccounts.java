@@ -2,8 +2,8 @@ package com.b44t.messenger;
 
 public class DcAccounts {
 
-    public DcAccounts(String osName, String dir) {
-        accountsCPtr = createAccountsCPtr(osName, dir);
+    public DcAccounts(String dir) {
+        accountsCPtr = createAccountsCPtr(dir);
     }
 
     @Override
@@ -36,7 +36,7 @@ public class DcAccounts {
 
     // working with raw c-data
     private long         accountsCPtr;          // CAVE: the name is referenced in the JNI
-    private native long  createAccountsCPtr     (String osName, String dir);
+    private native long  createAccountsCPtr     (String dir);
     private native void  unrefAccountsCPtr      ();
     private native long  getEventEmitterCPtr    ();
     private native long  getJsonrpcInstanceCPtr ();
