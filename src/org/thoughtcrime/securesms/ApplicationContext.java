@@ -91,7 +91,7 @@ public class ApplicationContext extends MultiDexApplication {
 
     System.loadLibrary("native-utils");
 
-    dcAccounts = new DcAccounts("Android "+BuildConfig.VERSION_NAME, new File(getFilesDir(), "accounts").getAbsolutePath());
+    dcAccounts = new DcAccounts(new File(getFilesDir(), "accounts").getAbsolutePath());
     rpc = new Rpc(dcAccounts.getJsonrpcInstance());
     AccountManager.getInstance().migrateToDcAccounts(this);
     int[] allAccounts = dcAccounts.getAll();
