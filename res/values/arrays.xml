@@ -22,6 +22,7 @@
       <!-- hr     Croatian -->               <item>Hrvatski</item>
       <!-- it     Italian -->                <item>Italiano</item>
       <!-- lt     Lithuanian -->             <item>Lietuvių kalba</item>
+      <!-- bqi    Bakhtiari -->              <item>Luri Bakhtiar</item>
       <!-- hu     Hungarian -->              <item>Magyar nyelv</item>
       <!-- nl     Dutch -->                  <item>Nederlands</item>
       <!-- nb     Norwegian Bokmål -->       <item>Norsk Bokmål</item>
@@ -40,7 +41,7 @@
       <!-- sr     Serbian -->                <item>Српски</item>
       <!-- uk     Ukrainian -->              <item>Українська</item>
       <!-- bg     Bulgarian -->              <item>Български</item>
-      <!-- ar     Arabic -->                 <item>عربى</item>
+      <!-- ar     Arabic -->                 <item>العربیة</item>
       <!-- fa     Persian/Farsi -->          <item>فارسی</item>
       <!-- ckb    Central Kurdish/Sorani --> <item>کوردی</item>
       <!-- ja     Japanese -->               <item>日本語</item>

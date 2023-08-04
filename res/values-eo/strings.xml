@@ -18,6 +18,7 @@
     <string name="open">Malferma</string>
     <string name="download">Elŝuti</string>
     <string name="downloading">Elŝutado...</string>
+    <string name="open_attachment">Malfermu aldonaĵon</string>
     <string name="join">Aliĝi</string>
     <string name="rejoin">Realiĝi</string>
     <string name="delete">Forigi</string>
@@ -26,6 +27,7 @@
     <string name="emoji">Emoji</string>
     <string name="attachment">Aldonaĵo</string>
     <string name="back">Reen</string>
+    <string name="verified">Konfirmita</string>
     <string name="close">Fermi</string>
     <string name="forward">Plusendi</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
@@ -36,20 +38,30 @@
     <string name="unarchive">Malarĥivi</string>
     <string name="mute">Muta sciigoj</string>
     <string name="ephemeral_messages">Memviŝontaj mesaĝoj</string>
+    <string name="ephemeral_messages_hint">Aplikebla al ĉiuj anoj de tiu ĉi babilejo kiuj uzas Delta Chat; ili ankoraŭ povas kopii, konservi kaj plusendi mesaĝojn, kaj uzi aliajn retpoŝtajn klientojn.</string>
     <string name="save">Konservi</string>
     <string name="chat">Babilo</string>
     <string name="media">Aŭdovidaĵoj</string>
     <string name="profile">Profilo</string>
     <string name="main_menu">Ĉefa menuo</string>
     <string name="start_chat">Komenci Babiladon</string>
+    <string name="show_full_message">Afiŝu la tutan mesaĝon...</string>
+    <string name="show_full_message_in_browser">Afiŝu la tutan mesaĝon en la retumilo...</string>
+    <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
+    <string name="mark_all_as_read">Marki ĉiujn legitaj</string>
     <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
     <string name="mark_as_read_short">Legi</string>
     <!-- Placeholder text when something is loading -->
     <string name="loading">Ŝarĝado...</string>
     <string name="hide">Kaŝi</string>
     <string name="activate">Aktivigi</string>
+    <string name="load_remote_content">Ŝargu forajn bildojn </string>
+    <!-- Possible answers to the question are: Never, Always, Once -->
+    <string name="load_remote_content_ask">La foraj bildoj povas spuri vin.\n\nTiu ĉi agordo povas ankaŭ ŝargi tiparojn kaj aliajn enhavojn. Malŝaltite, enkorpigitaj aŭ kaŝmemorigitaj bildoj povas aperi.\n\nŜargu forajn bildojn? </string>
     <string name="always">Ĉiam</string>
+    <string name="always_load_remote_images">Ĉiam ŝargu forajn bildojn</string>
     <string name="once">Unufoje</string>
+    <string name="show_warning">Afiŝu averton</string>
     <string name="show_password">Montri pasvorton</string>
     <string name="hide_password">Kaŝi pasvorton</string>
     <string name="not_now">Ne nun</string>
@@ -57,6 +69,7 @@
     <string name="one_moment">Unu momenton…</string>
     <string name="done">Farita</string>
     <string name="undo">Malfari</string>
+    <string name="offline">Nekonektite</string>
     <!-- For the next view or as "continue". Should be as short as possible. -->
     <string name="next">Sekva</string>
     <string name="error">Eraro</string>
@@ -79,6 +92,11 @@
     <string name="this_month">Ĉi-monate</string>
     <string name="last_week">Pasint-semajne</string>
     <string name="last_month">Pasint-monate</string>
+    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
+    <string name="last_seen_at">Laste vidita je%1$s</string>
+    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages)-->
+    <string name="last_seen_relative">Laste vidita %1$s</string>
+    <string name="last_seen_unknown">Laste vidita: nedisponebla informo</string>
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="one">%d min</item>
@@ -105,17 +123,31 @@
         <item quantity="one">%d ano</item>
         <item quantity="other">%d anoj </item>
     </plurals>
+    <plurals name="n_recipients">
+        <item quantity="one">%dricevonto</item>
+        <item quantity="other">%dricevontoj</item>
+    </plurals>
+    <!-- Short form for "N Items Selected" -->
+    <plurals name="n_selected">
+        <item quantity="one">%delektitaj</item>
+        <item quantity="other">%delektita</item>
+    </plurals>
+
     <string name="self">Mi</string>
     <string name="draft">Malneto</string>
     <string name="image">Bildo</string>
     <!-- Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
     <string name="reply_noun">Respondi</string>
     <string name="gif">Gif</string>
+    <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
+    <string name="sticker">Glumarko</string>
     <string name="images">Bildoj</string>
     <string name="audio">Sonaĵo</string>
     <string name="voice_message">Voĉmesaĝo</string>
     <string name="forwarded">Plusendita</string>
     <string name="forwarded_message">Plusendita mesaĝo</string>
+    <!-- %1$s will be replaced by the name or the e-mail address of the person who forwards the message -->
+    <string name="forwarded_by">Plusendita de %1$s</string>
     <string name="video">Filmo</string>
     <string name="documents">Dokumentoj</string>
     <string name="contact">Kontakto</string>
@@ -123,8 +155,12 @@
     <string name="camera">Fotilo</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Kapti</string>
+    <string name="switch_camera">Elektu alian kameraon</string>
+    <string name="toggle_fullscreen">Baskulu el/al la plena ekrano</string>
     <string name="location">Loko</string>
+    <string name="locations">Lokoj</string>
     <string name="gallery">Galerio</string>
+    <string name="images_and_videos">Bildoj kaj videoj</string>
     <string name="file">Dosiero</string>
     <string name="files">Dosieroj</string>
     <!-- "App" is used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
@@ -143,6 +179,7 @@
     <string name="magenta">Malva</string>
     <string name="white">Blanka</string>
 
+    <string name="zoom">Grandeco</string>
     <string name="extra_small">Ege malgranda</string>
     <string name="small">Malgranda</string>
     <string name="normal">Normala</string>
@@ -174,20 +211,29 @@
     <string name="menu_add_attachment">Aldoni kunsendaĵon</string>
     <string name="menu_leave_group">Forlasi grupon</string>
     <string name="menu_delete_chat">Forigi babilon</string>
+    <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
+    <string name="clear_chat">Viŝi la babilejon</string>
+    <string name="ask_delete_named_chat">Ĉu vi certas, ke vi deziras forigi \"%1$s\"?</string>
     <string name="menu_delete_messages">Forigi mesaĝojn</string>
     <string name="delete_contact">Forviŝi Kontakton</string>
     <string name="menu_delete_location">Ĉu forigi tiun ĉi lokon?</string>
     <string name="menu_message_details">Mesaĝ-detaloj</string>
     <string name="menu_copy_to_clipboard">Kopii al tondujo</string>
+    <string name="menu_copy_selection_to_clipboard">Kopii tion, kion vi elstarigis</string>
     <string name="menu_copy_link_to_clipboard">Kopii Ligilon</string>
     <string name="menu_copy_text_to_clipboard">Kopii Tekston</string>
     <string name="menu_copy_image_to_clipboard">Kopii Bildon</string>
+    <string name="menu_copy_email_to_clipboard">Kopii retpoŝtaĵon</string>
+    <string name="paste_from_clipboard">Alglui el la tondujo</string>
     <string name="menu_forward">Plusendi mesaĝon</string>
     <string name="menu_reply">Respondi al mesaĝo</string>
     <string name="menu_mute">Silentigi sciigojn</string>
     <string name="menu_unmute">Malsilentigi</string>
     <string name="menu_export_attachment">Eksporti aldonaĵon</string>
+    <string name="menu_export_attachments">Eksporti aldonaĵojn</string>
     <string name="menu_all_media">Ĉiuj aŭvidaĵoj</string>
+    <!-- Command to jump to the original message corresponding to a gallery image or document -->
+    <string name="show_in_chat">Afiŝu en la babilejo</string>
     <string name="menu_share">Kunhavigi</string>
     <!-- Verb "to block sth." usually a mailing list or a contact, not a noun -->
     <string name="block">Bloki</string>
@@ -199,7 +245,9 @@
     <string name="menu_scroll_to_bottom">Rulumi al la malsupro</string>
     <string name="menu_scroll_to_top">Rulumi al la supro</string>
     <string name="menu_help">Helpo</string>
+    <string name="privacy_policy">Politiko pri privateco</string>
     <string name="menu_select_all">Elekti ĉion</string>
+    <string name="select_chat">Elektu babilejon</string>
     <string name="select_more">Elekti pli</string>
     <string name="menu_edit_name">Redakti nomon</string>
     <string name="menu_settings">Agordoj</string>
@@ -208,6 +256,10 @@
     <string name="menu_zoom_in">Zomi</string>
     <string name="menu_zoom_out">Malzomi</string>
     <string name="menu_save_log">Konservi protokolon</string>
+    <string name="menu_more_options">Pli da ebloj</string>
+    <string name="menu_learn_spelling">Lernu la ortografion</string>
+    <string name="jump_to_message">Iru al mesaĝo</string>
+    <string name="copy_json">Kopiu JSON</string>
     <string name="title_share_location">Konigi lokon al ĉiuj grupanoj</string>
     <string name="device_talk">Aparataj mesaĝoj</string>
     <string name="device_talk_subtitle">Loke generitaj mesaĝoj</string>

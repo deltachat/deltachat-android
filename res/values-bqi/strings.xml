@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- common strings without special context -->
+    <string name="app_name">Dêltā Čat</string>
+    <string name="ok">xā</string>
+    <string name="cancel">raď</string>
+    <string name="clear_search">roftênê pitiniďên</string>
+    <string name="yes">harêy</string>
+    <string name="no">na</string>
+    <string name="select">pêsand</string>
+    <string name="on">rušên</string>
+    <string name="off">kur</string>
+    <string name="def">pîš farz</string>
+    <string name="default_value">pîš farz (%1$s)</string>
+    <string name="default_value_as_above">pîš farz (jurê ro\')</string>
+    <string name="custom">sêfârêši</string>
+    <string name="none">hičkoyêki</string>
+    <string name="automatic">xotkār</string>
+    <string name="strict">saxtger</string>
+    <string name="open">gušiďên</string>
+    <string name="download">dānlod</string>
+    <string name="downloading">honêy dānlod êbu...</string>
+    <string name="open_attachment">gušiďên zamima</string>
+    <string name="join">avoďên</string>
+    <string name="rejoin">zênu avoďên</string>
+    <string name="delete">pāk kerdên</string>
+    <string name="info">zêbār</string>
+    <string name="update">vê ru kerdên</string>
+    <string name="emoji">êmuji</string>
+    <string name="attachment">zamima</string>
+    <string name="back">vorgaštên</string>
+    <string name="verified">taiď biďa</string>
+    <string name="close">bastên</string>
+    <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
+    <string name="resend">zênu bêfêšn</string>
+    <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
+    <string name="archive">bāyêguvi</string>
+    <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
+    <string name="unarchive">bêdar zêyďên zê bāyêguvi</string>
+    <string name="mute">bî dong</string>
+    <string name="save">zaft</string>
+    <string name="chat">goftoloft</string>
+    <string name="media">vārasgar</string>
+    <string name="profile">porofāyl</string>
+    <string name="main_menu">balgê asli</string>
+    <string name="start_chat">nāhāďên pā goftoloft</string>
+    <string name="show_full_message">nêšow dāďên payomê kāmêl</string>
+    <string name="show_full_message_in_browser">nêšow dāďên payomê kāmêl mênê morurgar</string>
+    <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
+    <string name="mark_all_as_read">poy nê xonde biďe bêza</string>
+    <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
+    <string name="mark_as_read_short">xonde vâbiďa</string>
+    <!-- Placeholder text when something is loading -->
+    <string name="loading">honêy bār êvane...</string>
+    <string name="hide">bîďār kerdên</string>
+    <string name="activate">faāl kerdên</string>
+    <string name="load_remote_content">bār vani šîvātā zê dar</string>
+    <string name="always">hamiša</string>
+    <string name="once">him ya kêrat</string>
+    <string name="show_warning">nêšow dāďên hošdār</string>
+    <string name="show_password">nêšow dāďên razm</string>
+    <string name="hide_password">bîďār kerdên razm</string>
+    <string name="not_now">sako na</string>
+    <string name="never">hič</string>
+    <string name="one_moment">yadamow...</string>
+    <string name="done">anjom vâbi</string>
+    <string name="offline">āflāyn</string>
+    <!-- For the next view or as "continue". Should be as short as possible. -->
+    <string name="next">niyâyi</string>
+    <string name="error">xatā</string>
+    <string name="error_x">xatā: %1$s</string>
+    <string name="file_not_found">%1$s najost</string>
+    <string name="copied_to_clipboard">mênê virga lefgiri vâbi.</string>
+    <string name="contacts_headline">homdangal</string>
+    <string name="email_address">nêšuvi imêyl</string>
+    <string name="password">razm</string>
+    <string name="existing_password">razmê mowjud</string>
+    <string name="now">sako</string>
+    <!-- Headline for destructive actions with no undo. Could also be "Caution" or "Warning". -->
+    <string name="danger">bêpā</string>
+    <string name="today">amru</string>
+    <string name="yesterday">duš</string>
+    <string name="this_week">i hafta</string>
+    <string name="this_month">i mā</string>
+    <string name="last_week">haftê zitari</string>
+    <string name="last_month">mā zitari</string>
+    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
+    <string name="last_seen_at">ritorê dindâyi mênê %1$s</string>
+    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages)-->
+    <string name="last_seen_relative">ritorê dindâyi %1$s</string>
+    <string name="last_seen_unknown">ritorê dindâyi: diyār nî</string>
+    <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
+    <plurals name="n_minutes">
+        <item quantity="one">%d dîqa</item>
+        <item quantity="other">%d dîqa</item>
+    </plurals>
+    <!-- Shown beside messages that are "N hours old". Prefer short strings, or well-known abbreviations. -->
+    <plurals name="n_hours">
+        <item quantity="one">%d sāat</item>
+        <item quantity="other">%d sāat</item>
+    </plurals>
+    <plurals name="n_chats">
+        <item quantity="one">%d čat</item>
+        <item quantity="other">%d čat</item>
+    </plurals>
+    <plurals name="n_contacts">
+        <item quantity="one">%d homdang</item>
+        <item quantity="other">%d homdang</item>
+    </plurals>
+    <plurals name="n_messages">
+        <item quantity="one">%d payom</item>
+        <item quantity="other">%d payom</item>
+    </plurals>
+    <plurals name="n_members">
+        <item quantity="one">%d mėntor</item>
+        <item quantity="other">%d mėntor</item>
+    </plurals>
+    <!-- Short form for "N Items Selected" -->
+    <plurals name="n_selected">
+        <item quantity="one">%d tā pêsand vâbi</item>
+        <item quantity="other">%d tā pêsand vâbi</item>
+    </plurals>
+
+    <string name="self">mo</string>
+    <string name="draft">pîš hîl</string>
+    <string name="image">šîvāt</string>
+    <!-- Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
+    <string name="reply_noun">vêlom</string>
+    <string name="gif">gif</string>
+    <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
+    <string name="sticker">êstikêr</string>
+    <string name="images">šîvātā</string>
+    <string name="audio">dong</string>
+    <string name="voice_message">payomê dong</string>
+    <string name="video">film</string>
+    <string name="documents">sanadā</string>
+    <string name="contact">homdang</string>
+    <string name="verified_contact">homdang taiď biďa.</string>
+    <string name="camera">šîvātgėr</string>
+    <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
+    <string name="capture">gêrîďên</string>
+    <string name="switch_camera">ālêštê šîvātgêr</string>
+    <string name="toggle_fullscreen">ālêštê vaziyat poy balga</string>
+    <string name="location">jāga</string>
+    <string name="locations">jāgayal</string>
+    <string name="gallery">šîvātmāl</string>
+    <string name="images_and_videos">šîvātā vo filmā</string>
+    <string name="file">fāyl</string>
+    <string name="files">fāylā</string>
+    <!-- "App" is used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
+    <string name="webxdc_app">barnoma</string>
+    <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
+    <string name="webxdc_apps">barnomêyal</string>
+    <string name="files_and_webxdx_apps">fāylā vo barnomêyal</string>
+    <string name="unknown">nāšênās</string>
+
+    <string name="green">sawz</string>
+    <string name="red">so\'r</string>
+    <string name="blue">kêvu</string>
+    <string name="purple">bênawš</string>
+    <string name="white">êsbîď</string>
+
+    <string name="zoom">gap kerdên</string>
+    <string name="extra_small">qalêvê kučir</string>
+    <string name="small">kučir</string>
+    <string name="normal">âdi</string>
+    <string name="large">gap</string>
+    <string name="extra_large">qalêvê gap</string>
+
+    <string name="fast">zêl</string>
+    <string name="slow">hovār</string>
+
+    <!-- menu labels (or icon, buttons...) -->
+    <string name="menu_new_contact">homdangê nu</string>
+    <string name="menu_new_chat">goftoloftê nu</string>
+    <string name="menu_new_group">jarga nu</string>
+    <!-- Use the same wording as "Subject" to help people coming from the e-mail context; eg. "Betreff" in German -->
+    <string name="new_group_or_subject">jarga yā onvānê nu</string>
+    <string name="menu_new_verified_group">jarga taiď biďê nu</string>
+    <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
+    <string name="broadcast_list">nomga Broadcast</string>
+    <string name="broadcast_lists">nomgayal Broadcast</string>
+    <string name="new_broadcast_list">nomga Broadcast nu</string>
+    <string name="menu_send">fêšnāďên</string>
+    <string name="menu_edit_group">ālêštê jarga</string>
+    <string name="menu_group_name_and_image">nom vo šîvātê jarga</string>
+    <string name="menu_archive_chat">bāyêguvi kerdên goftoloft</string>
+    <string name="menu_unarchive_chat">bêdar zêyďên goftoloft zê bāyêguvi</string>
+    <string name="menu_add_attachment">êzāf kerdên zamima</string>
+    <string name="menu_leave_group">ra\'ďên zê jarga</string>
+    <string name="menu_delete_chat">pāk kerdên poy goftoloft</string>
+    <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
+    <string name="clear_chat">roftênê virgārê goftoloft</string>
+    <string name="menu_delete_messages">pāk kerdên payomā</string>
+    <string name="delete_contact">pāk kerdên homdang</string>
+    <string name="menu_delete_location">i jāga pāk bu?</string>
+    <string name="menu_copy_to_clipboard">lefgiri mênê virga</string>
+    <string name="menu_copy_link_to_clipboard">lefgiri ling</string>
+    <string name="menu_copy_text_to_clipboard">lefgiri hîl</string>
+    <string name="menu_copy_image_to_clipboard">lefgiri šîvāt</string>
+    <string name="menu_copy_email_to_clipboard">lefgiri imêyl</string>
+    <string name="paste_from_clipboard">jā vandên zê virga</string>
+    <string name="menu_reply">vêlom bê payom</string>
+    <string name="menu_mute">bî dong kerdên vārasuviyā</string>
+    <string name="menu_unmute">vā dong kerdên</string>
+    <string name="menu_all_media">poy vārasgarā</string>
+    <!-- Command to jump to the original message corresponding to a gallery image or document -->
+    <string name="show_in_chat">nêšow dāďên mênê goftoloft</string>
+    <string name="menu_share">yakrasuvi</string>
+    <string name="accept">qêvul</string>
+    <string name="menu_play">pêšk</string>
+    <string name="menu_pause">vāstāďên</string>
+    <string name="menu_scroll_to_bottom">ra\'ďên bê lam</string>
+    <string name="menu_scroll_to_top">ra\'ďên bê ro\'</string>
+    <string name="menu_help">hayâri</string>
+    <string name="menu_select_all">pêsandê poy</string>
+    <string name="select_chat">pêsandê goftoloft</string>
+    <string name="select_more">pêsandê bištar</string>
+    <string name="menu_edit_name">ālêštê nom</string>
+    <string name="menu_settings">sāmovā</string>
+    <string name="menu_advanced">pîš ra\'ďa</string>
+    <string name="menu_view_profile">niyaštên porofāyl</string>
+    <string name="menu_zoom_in">gap kerdên</string>
+    <string name="menu_zoom_out">kučir kerdên</string>
+    <string name="menu_save_log">zaft kerdên gozārêš</string>
+    <string name="menu_more_options">guzinêyalê bištar</string>
+    <string name="jump_to_message">ra\'ďên bê payom</string>
+    <string name="device_talk">payomā dasgā</string>
+    <string name="device_talk_subtitle">payomā mêni</string>
+    <string name="edit_contact">ālêštê homdang</string>
+    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
+    <string name="pin_chat">disniďên goftoloft</string>
+    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
+    <string name="pin">disniďên</string>
+    <string name="source_code">kodê bončak</string>
+    <string name="mute_for_one_hour">bî dong kerdên si 1 sāat</string>
+    <string name="mute_for_two_hours">bî dong kerdên si 2 sāat</string>
+    <string name="mute_for_one_day">bî dong kerdên si 1 ru</string>
+    <string name="mute_for_seven_days">bî dong kerdên si 7 ru</string>
+    <string name="mute_forever">bî dong kerdên si hamiša</string>
+
+    <string name="share_location_for_5_minutes">si 5 dîqa</string>
+    <string name="share_location_for_30_minutes">si 30 dîqa</string>
+    <string name="share_location_for_one_hour">si 1 sāat</string>
+    <string name="share_location_for_two_hours">si 2 sāat</string>
+    <string name="share_location_for_six_hours">si 6 sāat</string>
+
+    <string name="file_saved_to">fāyl mênê \"%1$s\" zaft vâbi.</string>
+
+    <string name="videochat">goftoloftê vidiyoyi</string>
+    <string name="videochat_invitation">mokêš bê goftoloft vidiyoyi</string>
+    <plurals name="ask_delete_messages_simple">
+        <item quantity="one">êxuy %d payom pāk bu?</item>
+        <item quantity="other">êxuy %d payom pāk bu?</item>
+    </plurals>
+    <string name="ask_start_chat_with">goftoloft vā %1$s?</string>
+    <string name="ask_delete_value">pāk kerdên %s?</string>
+    <!-- %1$s is replaced by a comma-separated list of names -->
+    <string name="ask_remove_members">pāk kerdên %1$s zê jarga?</string>
+    <!-- %1$s is replaced by a comma-separated list of names -->
+    <string name="ask_remove_from_broadcast">%1$s zê nomga Broadcast pāk bu?</string>
+    <string name="open_url_confirmation">êxuy i lingê nê buguši?</string>
+
+
+    <!-- contact list -->
+    <string name="contacts_title">homdangal</string>
+    <string name="contacts_empty_hint">bî homdang.</string>
+
+
+    <string name="chat_please_enter_message">ya payom bêza</string>
+    <plurals name="chat_n_new_messages">
+        <item quantity="one">%d payomê nu</item>
+        <item quantity="other">%d payomê nu</item>
+    </plurals>
+    <string name="chat_record_slide_to_cancel">si raď kerdên bêkašês</string>
+    <string name="chat_share_with_title">yakrasuvi vā</string>
+    <string name="chat_input_placeholder">payom</string>
+    <string name="chat_request_label">darxāst</string>
+    <string name="chat_no_messages">payomi nî.</string>
+    <string name="chat_self_talk_subtitle">payomāyî ke si xom fêšnāme.</string>
+    <string name="saved_messages">payomā zaft biďa</string>
+    <!-- Should match "Saved" from "Saved messages" -->
+    <string name="saved">zaft vâbi</string>
+    <string name="save_as">zaft vê onvān</string>
+    <string name="retry_send">zênu si fêšnāďênê payom taqalā ko</string>
+    <!-- mailing lists -->
+    <string name="mailing_list">nomga posti</string>
+    <!-- placeholder will be replaced by a file name -->
+    <string name="send_file_to">fêšnāďên \"%1$s\" vê...</string>
+    <string name="send_message_to">fêšnāďên payom vê...</string>
+
+    <string name="show_location_traces">nêšow dāďên jā pā</string>
+    <!-- search -->
+    <string name="search">pitiniďên</string>
+    <!-- create/edit groups, contact/group profile -->
+    <string name="group_name">nomê jarga</string>
+    <string name="group_avatar">šîvātê jarga</string>
+    <string name="remove_group_image">pāk kerdên šîvātê jarga</string>
+    <string name="change_group_image">ālêštê šîvātê jarga</string>
+    <string name="group_create_button">vorkêlê jarga</string>
+    <string name="group_add_members">avordênê mêntor</string>
+    <string name="tab_contact">homdang</string>
+    <string name="tab_group">jarga</string>
+    <string name="tab_gallery">šîvātmāl</string>
+    <string name="tab_docs">sanadā</string>
+    <string name="tab_links">lingā</string>
+    <string name="tab_map">naqša</string>
+    <string name="media_preview">nêšow dāďên vārasgar</string>
+    <string name="send_message">fêšnāďên payom</string>
+    <!-- Headline in the "Connectivity" view. Placeholder will be replaced by the domain of the configured email-address. -->
+    <string name="storage_on_domain">zaft kerdên mênê %1$s</string>
+    <!-- Shown in the title bar if the app is "Connecting"; prefer short strings. The ellipsis is a single character (…), not three (...) -->
+    <string name="connectivity_connecting">honêy menpiz êbu...</string>
+    <!-- Shown in the title bar if the app is "Updating" (eg. getting new/old message, sync things); prefer short strings. The ellipsis is a single character (…), not three (...) -->
+    <string name="connectivity_updating">honêy vê ru êbu...</string>
+    <!-- Shown in the setting if the app is "Connected" -->
+    <string name="connectivity_connected">menpiz vâbi</string>
+    <string name="sending">honêy fêšnāďe êbu...</string>
+    <!-- Subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed. -->
+    <string name="messages">payomā</string>
+    <string name="sync_all">vê ru kerdên poy</string>
+    <string name="pref_your_name">nomê to</string>
+    <string name="pref_notifications_show">nêšow dāďên</string>
+    <string name="pref_language">zow</string>
+    <string name="pref_chats">goftoloftā</string>
+    <string name="pref_message_text_size">hêndā hîlê payom</string>
+    <string name="pref_log_header">gozārêš</string>
+    <string name="pref_background_btn_gallery">pêsand zê šîvātmāl</string>
+    <string name="pref_show_emails_all">poy</string>
+    <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB -->
+    <string name="up_to_x">tā saqfe %1$s</string>
+    <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string eg. "1 MiB message" -->
+    <string name="n_bytes_message">payom %1$s</string>
+    <string name="profile_image_select">pêsandê šîvātê porofāyl</string>
+    <string name="profile_image_delete">pāk kerdên šîvātê porofāyl</string>
+    <string name="pref_edit_profile">ālêštê porofāyl</string>
+
+    <!-- Emoji picker and categories -->
+    <string name="emoji_search_results">natijêyalê pitiniďên</string>
+    <string name="emoji_symbols">nemāďā</string>
+    <string name="emoji_flags">bêyraqā</string>
+
+
+    <!-- automatically delete message -->
+    <string name="delete_old_messages">pāk kerdên payomā qaďimi</string>
+    <string name="autodel_device_title">pāk kerdên payomā zê dasgā</string>
+    <string name="autodel_server_title">pāk kerdên payomā zê sêrvêr</string>
+    <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
+    <string name="autodel_at_once">ya kêrat</string>
+    <string name="after_30_seconds">ba\'ďê 30 sâniya</string>
+    <string name="after_1_minute">ba\'ďê 1 dîqa</string>
+    <string name="after_5_minutes">ba\'ďê 5 dîqa</string>
+    <string name="after_30_minutes">ba\'ďê 30 dîqa</string>
+    <string name="autodel_after_1_hour">ba\'ďê 1 sāat</string>
+    <string name="autodel_after_1_day">ba\'ďê 1 ru</string>
+    <string name="autodel_after_1_week">ba\'ďê 1 hafta</string>
+    <string name="autodel_after_4_weeks">ba\'ďê 4 hafta</string>
+    <string name="after_5_weeks">ba\'ďê 5 hafta</string>
+    <string name="autodel_after_1_year">ba\'ďê 1 sāl</string>
+
+    <!-- "left" in the meaning of "exited"; %1$s will be replaced by name and address of the contact leaving the group -->
+    <string name="group_left_by_other">%1$s zê jarga ra\'ď.</string>
+    <string name="qrshow_x_joining">%1$s mêntor vâbi.</string>
+    <string name="qrshow_x_verified">%1$s taiď vâbi.</string>
+    <string name="contact_verified">%1$s taiď vâbi.</string>
+    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that verified the contact shown. -->
+    <string name="verified_by">taiď vâbiďa vê das %1$s</string>
+    <string name="notify_reply_button">vėlom</string>
+    <string name="notify_new_message">payomė nu</string>
+    <string name="notify_name_and_message">nom vo payom</string>
+    <string name="notify_name_only">têynā nom</string>
+    <string name="notify_no_name_or_message">nom yā payomi nî</string>
+
+
+    <string name="global_menu_preferences_language_desktop">zow</string>
+    <string name="global_menu_file_desktop">fāyl</string>
+    <string name="global_menu_file_quit_desktop">vê dar zêyďên</string>
+    <string name="global_menu_edit_desktop">ālêšt</string>
+    <string name="global_menu_edit_cut_desktop">jā goro kerdên</string>
+    <string name="global_menu_edit_copy_desktop">lefgiri</string>
+    <string name="global_menu_edit_paste_desktop">jā vandên</string>
+    <string name="global_menu_file_open_desktop">gušiďênê dêltā čat</string>
+    <string name="delete_message_desktop">pāk kerdên payom</string>
+    <string name="remove_desktop">pāk kerdên</string>
+    <string name="save_desktop">zaft</string>
+    <string name="name_desktop">nom</string>
+    <string name="select_group_image_desktop">pêsandê šîvātê jarga</string>
+    <string name="message_detail_sent_desktop">fêšnāďe vâbi</string>
+    <string name="message_detail_received_desktop">gêrîďe vâbi</string>
+    <string name="show_window">nêšow dāďênê nimdari</string>
+    <string name="open_settings">gušiďênê sāmovā</string>
+    </resources>
