@@ -1,5 +1,30 @@
 # Delta Chat Android Changelog
 
+## v1.40.0
+2023-08
+
+* use image editor for avatar selection when possible
+* allow media from blob: and data: in webxdc
+* optimized native library size
+* improve loading screen in dark mode
+* improve IMAP logs
+* update "verified icon"
+* fix webxdc issues with dark mode
+* fix crash in android 4.2 or older when opening a HTML message in full message view
+* fix: avoid IMAP move loops when DeltaChat folder is aliased
+* fix: accept webxdc updates in mailing lists
+* fix: delete webxdc status updates together with webxdc instance
+* fix: prevent corruption of large unencrypted webxdc updates
+* fix "Member added by me" message appearing sometimes within wrong context
+* fix core panic after sending 29 offline messages
+* fix: make avatar in qr-codes work on more platforms
+* fix: preserve indentation when converting plaintext to HTML
+* fix: remove superfluous spaces at start of lines when converting HTML to plaintext
+* fix: always rewrite and translate member added/removed messages
+* add Luri Bakhtiari translation, update other translations and local help
+* update to core119
+
+
 ## v1.38.2
 2023-06
 
