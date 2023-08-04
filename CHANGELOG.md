@@ -3,7 +3,14 @@
 ## v1.40.0
 2023-08
 
+* use image editor for avatar selection when possible
+* allow media from blob: and data: in webxdc
+* optimized native library size
+* improve loading screen in dark mode
 * improve IMAP logs
+* update "verified icon"
+* fix webxdc issues with dark mode
+* fix crash in android 4.2 or older when opening a HTML message in full message view
 * fix: avoid IMAP move loops when DeltaChat folder is aliased
 * fix: accept webxdc updates in mailing lists
 * fix: delete webxdc status updates together with webxdc instance
