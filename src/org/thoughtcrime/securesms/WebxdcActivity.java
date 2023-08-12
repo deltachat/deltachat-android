@@ -238,6 +238,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
         if (mimeType == null) {
           switch (ext) {
             case "js": mimeType = "text/javascript"; break;
+            case "wasm": mimeType = "application/wasm"; break;
             default:   mimeType = "application/octet-stream"; Log.i(TAG, "unknown mime type for " + rawUrl); break;
           }
         }
