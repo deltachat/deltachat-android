@@ -97,11 +97,12 @@ This may take some days.
 
 on <https://developer.amazon.com/dashboard>:
 
-12. a) for "Delta Chat", select tab "Add upcoming version"  
-    b) at "App Information" hit "Edit" abottom and then "Replace APK" atop,
-       upload the APK from above
-    c) on the same tab, add "Release notes" from CHANGELOG.md, "Save"  
-    d) hit "Submit app" at the upper right corner
+12. a) for "Delta Chat", select "Add upcoming version" on the left
+    b) at "Step 1 / Existing file(s)" hit "Replace", upload the APK from above
+    c) on the "Step 1" page, add "Release notes" from CHANGELOG.md, hit "Next"
+    d) on "Step 2" page: "Does your app collect or transfer user data to third parties?" -> No, then "Next"
+    e) on "Step 3" page: "Next"
+    f) on "Step 4" page: "Submit app"
 
 
 ## Releases on Apklis, Passkoocheh
