@@ -209,6 +209,25 @@ public class SharingTest {
     onView(withHint(R.string.chat_input_placeholder)).check(matches(withText("Veeery important draft")));
   }
 
+  /**
+   * Regression test:
+   *
+   * If you save your contacts's emails in the contacts app of the phone, there are buttons to call
+   * them and also to write an email to them.
+   *
+   * If you click the email button, Delta Chat opened but instead of opening a chat with that contact,
+   * the chat list was show and "share with" was displayed at the top
+   */
+  @Test
+  public void testOpenChatFromContacts() {
+    Intent i = new Intent(Intent.ACTION_SENDTO);
+    i.setData(Uri.parse("mailto:bob%40example.org"));
+    i.setPackage(getInstrumentation().getTargetContext().getPackageName());
+    activityRule.getScenario().onActivity(a -> a.startActivity(i));
+
+    onView(withId(R.id.subtitle)).check(matches(withText("bob@example.org")));
+  }
+
   @After
   public void cleanup() {
     TestUtils.cleanup();
