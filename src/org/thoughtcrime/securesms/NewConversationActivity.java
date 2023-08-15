@@ -17,7 +17,6 @@
 package org.thoughtcrime.securesms;
 
 import android.content.Intent;
-import android.net.MailTo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -32,11 +31,7 @@ import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 
 import org.thoughtcrime.securesms.connect.DcHelper;
-
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.util.HashMap;
-import java.util.Map;
+import org.thoughtcrime.securesms.util.MailtoUtil;
 
 import static org.thoughtcrime.securesms.ConversationActivity.CHAT_ID_EXTRA;
 import static org.thoughtcrime.securesms.ConversationActivity.TEXT_EXTRA;
@@ -53,11 +48,6 @@ public class NewConversationActivity extends ContactSelectionActivity {
 
   @SuppressWarnings("unused")
   private static final String TAG = NewConversationActivity.class.getSimpleName();
-  public  static final String MAILTO = "mailto";
-  private static final String SUBJECT = "subject";
-  private static final String BODY = "body";
-  private static final String QUERY_SEPARATOR = "&";
-  private static final String KEY_VALUE_SEPARATOR = "=";
 
   @Override
   public void onCreate(Bundle bundle, boolean ready) {
@@ -75,19 +65,14 @@ public class NewConversationActivity extends ContactSelectionActivity {
         Uri uri = intent.getData();
         if(uri != null) {
           String scheme = uri.getScheme();
-          if(scheme != null && scheme.equals(MAILTO) ) {
-            String textToShare = getTextToShare(uri);
-            MailTo mailto = MailTo.parse(uri.toString());
-            String recipientsList = mailto.getTo();
-            if(recipientsList != null && !recipientsList.trim().isEmpty()) {
-              String[] recipientsArray = recipientsList.trim().split(",");
-              if (recipientsArray.length >= 1) {
-                String recipient = recipientsArray[0];
-                if (textToShare != null && !textToShare.isEmpty()) {
-                  getIntent().putExtra(TEXT_EXTRA, textToShare);
-                }
-                onContactSelected(DcContact.DC_CONTACT_ID_NEW_CONTACT, recipient);
+          if(MailtoUtil.isMailto(uri)) {
+            String textToShare = MailtoUtil.getText(uri);
+            String[] recipientsArray = MailtoUtil.getRecipients(uri);
+            if (recipientsArray.length >= 1) {
+              if (!textToShare.isEmpty()) {
+                getIntent().putExtra(TEXT_EXTRA, textToShare);
               }
+              onContactSelected(DcContact.DC_CONTACT_ID_NEW_CONTACT, recipientsArray[0]);
             } else {
               Intent shareIntent = new Intent(this, ShareActivity.class);
               shareIntent.putExtra(Intent.EXTRA_TEXT, textToShare);
@@ -101,37 +86,6 @@ public class NewConversationActivity extends ContactSelectionActivity {
         Log.e(TAG, "start activity from external 'mailto:' link failed", e);
       }
     }
-  }
-
-  private String getTextToShare(Uri uri) {
-    Map<String, String> mailtoQueryMap = getMailtoQueryMap(uri);
-    String textToShare = mailtoQueryMap.get(SUBJECT);
-    String body = mailtoQueryMap.get(BODY);
-    if (body != null && !body.isEmpty()) {
-      if (textToShare != null && !textToShare.isEmpty()) {
-        textToShare += "\n" + body;
-      } else {
-        textToShare = body;
-      }
-    }
-    return textToShare;
-  }
-
-  private Map<String, String> getMailtoQueryMap(Uri uri) {
-    Map<String, String> mailtoQueryMap = new HashMap<>();
-    String query =  uri.getEncodedQuery();
-    if (query != null && !query.isEmpty()) {
-      String[] queryArray = query.split(QUERY_SEPARATOR);
-      for(String queryEntry : queryArray) {
-        String[] queryEntryArray = queryEntry.split(KEY_VALUE_SEPARATOR);
-        try {
-          mailtoQueryMap.put(queryEntryArray[0], URLDecoder.decode(queryEntryArray[1], "UTF-8"));
-        } catch (UnsupportedEncodingException e) {
-          e.printStackTrace();
-        }
-      }
-    }
-    return mailtoQueryMap;
   }
 
   @Override
