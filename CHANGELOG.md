@@ -1,5 +1,12 @@
 # Delta Chat Android Changelog
 
+## v1.40.1
+2023-08
+
+* fix: correct core-submodule picked up by f-droid
+* update to core119.1
+
+
 ## v1.40.0
 2023-08
 
