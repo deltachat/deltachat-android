@@ -41,6 +41,7 @@ import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
 import org.thoughtcrime.securesms.util.DynamicTheme;
+import org.thoughtcrime.securesms.util.MailtoUtil;
 import org.thoughtcrime.securesms.util.MediaUtil;
 import org.thoughtcrime.securesms.util.RelayUtil;
 
@@ -123,6 +124,18 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity implement
         streamExtras.add(uri);
     } else if (getIntent().getParcelableArrayListExtra(Intent.EXTRA_STREAM) != null) {
       streamExtras = getIntent().getParcelableArrayListExtra(Intent.EXTRA_STREAM);
+    } else {
+        Uri uri = getIntent().getData();
+        if (MailtoUtil.isMailto(uri)) {
+            String[] extraEmail = getIntent().getStringArrayExtra(Intent.EXTRA_EMAIL);
+            if (extraEmail == null || extraEmail.length == 0) {
+                getIntent().putExtra(Intent.EXTRA_EMAIL, MailtoUtil.getRecipients(uri));
+            }
+            String text = getIntent().getStringExtra(Intent.EXTRA_TEXT);
+            if (text == null || text.isEmpty()) {
+                getIntent().putExtra(Intent.EXTRA_TEXT, MailtoUtil.getText(uri));
+            }
+        }
     }
 
     if (needsFilePermission(streamExtras)) {
