@@ -1,0 +1,5 @@
+* use image editor for avatar selection when possible
+* improve loading screen in dark mode
+* update "verified icon"
+* add Luri Bakhtiari translation, update other translations
+* lots of bug fixes
