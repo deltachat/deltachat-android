@@ -29,6 +29,7 @@
     <string name="emoji">Emoji</string>
     <string name="attachment">Anexo</string>
     <string name="back">Voltar</string>
+    <string name="verified">Verificado</string>
     <string name="close">Fechar</string>
     <string name="forward">Encaminhar</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
@@ -95,6 +96,8 @@
     <string name="last_month">Mês passado</string>
     <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
     <string name="last_seen_at">Visto pela última vez às %1$s</string>
+    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages)-->
+    <string name="last_seen_relative">Visto por último %1$s</string>
     <string name="last_seen_unknown">Visto pela última vez: desconhecido</string>
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
@@ -165,6 +168,7 @@
     <string name="switch_camera">Trocar câmera</string>
     <string name="toggle_fullscreen">Ativar modo tela cheia</string>
     <string name="location">Localização</string>
+    <string name="locations">Localizações</string>
     <string name="gallery">Galeria</string>
     <string name="images_and_videos">Imagens e vídeos</string>
     <string name="file">Arquivo</string>
@@ -211,7 +215,7 @@
     <string name="menu_toggle_keyboard">Ativar teclado de emojis</string>
     <string name="menu_edit_group">Modificar grupo</string>
     <string name="menu_group_name_and_image">Nome e Imagem do grupo</string>
-    <string name="menu_show_global_map">Exibir todas as localizações</string>
+    <string name="menu_show_global_map">Todas as localizações</string>
     <string name="menu_archive_chat">Arquivar conversa</string>
     <string name="menu_unarchive_chat">Desarquivar conversa</string>
     <string name="menu_add_attachment">Inserir anexo</string>
@@ -253,6 +257,7 @@
     <string name="menu_help">Ajuda</string>
     <string name="privacy_policy">Política de privacidade</string>
     <string name="menu_select_all">Selecionar tudo</string>
+    <string name="select_chat">Selecionar Chat</string>
     <string name="select_more">Selecionar mais</string>
     <string name="menu_edit_name">Modificar nome</string>
     <string name="menu_settings">Configurações</string>
@@ -423,6 +428,10 @@
     <string name="start_app">Iniciar...</string>
     <!-- this is a warning that is shown when one tries to send something to a chat that is not yet accepted. -->
     <string name="accept_request_first">Por favor, aceite o pedido de bate-papo primeiro.</string>
+    <!-- placeholder will be replaced by a file name -->
+    <string name="send_file_to">Enviar \"%1$s\" para…</string>
+    <string name="send_message_to">Enviar Mensagem para…</string>
+
     <!-- map -->
     <string name="filter_map_on_time">Exibir localização no tempo.</string>
     <string name="show_location_traces">Exibir pegadas</string>
@@ -897,6 +906,8 @@
     <string name="secure_join_replies">%1$srespondeu, esperando para ser adicionado ao grupo...</string>
     <string name="contact_verified">%1$s verificado.</string>
     <string name="contact_not_verified">Impossível verificar %1$s</string>
+    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that verified the contact shown. -->
+    <string name="verified_by">Verificado por %1$s</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">A configuração Autocrypt mudou para %1$s</string>
     <string name="verified_group_explain">Grupos verificados (experimental) fornecem segurança contra ataques ativos. Os membros são verificados com um segundo fator por outros membros e as mensagens são sempre criptografadas de ponta a ponta.</string>
@@ -1070,4 +1081,9 @@
     <string name="update_1_36_android">Destaques da 1.36\n\n💻📱 Use o Delta Chat em todos os seus dispositivos facilmente - basta seguir três passos simples em \"Configurações / Adicionar segundo dispositivo\" (experimental)\n\n🖼🔍 Já procurou por uma imagem e não conseguiu se lembrar do bate-papo? \"Todas as mídias\" do menu principal é o seu!\n\nO que mais? Notificações para todas as contas, esvaziar bate-papo, e mais em %1$s</string>
     <!-- placeholder will be replaced by the URL https://delta.chat/en/2023-03-27-third-independent-security-audit -->
     <string name="update_1_36_audit">Aqui não falamos muito sobre segurança, mas fique tranquilo, isso nos importa: Olhe em %1$s para boas notícias recentes 👌</string>
-    </resources>
+    <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
+    <string name="update_1_38_android">1.38 foi lançado:\n\n📎 Limite superior de tamanho de anexos removido\n\n🗜️ Imagens PNG (capturas de tela!) agora também são compactadas\n\n⌨️ Para desenvolvedores: aplicativos melhores para bate-papos com sendToChat() e importFiles( ) (O que é Webxdc? → https://webxdc.org)\n\n… e mais em %1$s</string>
+    <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
+    <string name="update_1_38_ios">1.38 foi lançado:\n\n🖼🔍 Já procurou por uma imagem e não conseguiu se lembrar do chat? Então o botão \"Todas as mídias\" é seu!\n\n🧹 \"Limpar bate-papo\" dos perfis\n\n📎 Limite superior de tamanho de anexos removido\n\n🗜️ Imagens PNG (capturas de tela!) agora também são compactadas\n\n… e mais em %1$s</string>
+
+</resources>
