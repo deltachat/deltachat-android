@@ -285,8 +285,9 @@
     <string name="retry_send">zênu si fêšnāďênê payom taqalā ko</string>
     <!-- mailing lists -->
     <string name="mailing_list">nomga posti</string>
-    <!-- placeholder will be replaced by a file name -->
+    <!-- title shown above a list of chats where one should be selected (eg. when sharing files from a webxdc). the placeholder will be replaced by a file name -->
     <string name="send_file_to">fêšnāďên \"%1$s\" vê...</string>
+    <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">fêšnāďên payom vê...</string>
 
     <string name="show_location_traces">nêšow dāďên jā pā</string>
