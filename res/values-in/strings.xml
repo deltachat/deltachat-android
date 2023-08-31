@@ -18,6 +18,8 @@
     <string name="automatic">Otomatis</string>
     <string name="strict">Ketat</string>
     <string name="open">Buka</string>
+    <string name="download">Unduh</string>
+    <string name="downloading">Sedang Mengunduh</string>
     <string name="open_attachment">Buka lampiran</string>
     <string name="join">Gabung</string>
     <string name="rejoin">Gabung kembali</string>
@@ -27,8 +29,11 @@
     <string name="emoji">Emoji</string>
     <string name="attachment">Lampiran</string>
     <string name="back">Kembali</string>
+    <string name="verified">Diverifikasi</string>
     <string name="close">Tutup</string>
     <string name="forward">Teruskan</string>
+    <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
+    <string name="resend">Kirim ulang</string>
     <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
     <string name="archive">Arsip</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
@@ -44,9 +49,15 @@
     <string name="start_chat">Mulai obrolan</string>
     <string name="show_full_message">Tampilkan semua pesan...</string>
     <string name="show_full_message_in_browser">Tampilkan semua pesan di browser...</string>
+    <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
+    <string name="mark_all_as_read">Tandai Semua sebagai Telah Dibaca</string>
+    <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
+    <string name="mark_as_read_short">Baca</string>
     <!-- Placeholder text when something is loading -->
     <string name="loading">Memuat...</string>
     <string name="hide">Sembunyikan</string>
+    <string name="activate">Aktifkan</string>
+    <string name="load_remote_content">Memuat Gambar Jarak Jauh</string>
     <string name="always">Selalu</string>
     <string name="once">Sekali</string>
     <string name="show_password">Tunjukkan kata kunci</string>
