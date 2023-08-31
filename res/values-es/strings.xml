@@ -428,8 +428,9 @@
     <string name="start_app">Iniciar…</string>
     <!-- this is a warning that is shown when one tries to send something to a chat that is not yet accepted. -->
     <string name="accept_request_first">Primero acepte la solicitud de chat.</string>
-    <!-- placeholder will be replaced by a file name -->
+    <!-- title shown above a list of chats where one should be selected (eg. when sharing files from a webxdc). the placeholder will be replaced by a file name -->
     <string name="send_file_to">Enviar \"%1$s\" a…</string>
+    <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">Enviar mensaje a…</string>
 
     <!-- map -->
