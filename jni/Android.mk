@@ -23,7 +23,10 @@ LOCAL_C_INCLUDES := $(JNI_DIR)/utils/
 LOCAL_LDLIBS := -llog
 LOCAL_STATIC_LIBRARIES :=  deltachat-core
 
-LOCAL_CFLAGS 	:= -Wno-pointer-to-int-cast -Wno-int-to-pointer-cast -DNULL=0 -DSOCKLEN_T=socklen_t -DLOCALE_NOT_USED -D_LARGEFILE_SOURCE=1 -D_FILE_OFFSET_BITS=64
+# -Werror flag is important to catch incompatibilities between the JNI bindings and the core.
+# Otherwise passing a variable of different type such as char * instead of int
+# causes only a -Wint-conversion warning.
+LOCAL_CFLAGS 	:= -Werror -Wno-pointer-to-int-cast -Wno-int-to-pointer-cast -DNULL=0 -DSOCKLEN_T=socklen_t -DLOCALE_NOT_USED -D_LARGEFILE_SOURCE=1 -D_FILE_OFFSET_BITS=64
 LOCAL_CFLAGS 	+= -Drestrict='' -D__EMX__ -DFIXED_POINT -DUSE_ALLOCA -DHAVE_LRINT -DHAVE_LRINTF -fno-math-errno
 LOCAL_CFLAGS 	+= -DANDROID_NDK -DDISABLE_IMPORTGL -fno-strict-aliasing -DAVOID_TABLES -DANDROID_TILE_BASED_DECODE -DANDROID_ARMV6_IDCT -ffast-math -D__STDC_CONSTANT_MACROS
 
