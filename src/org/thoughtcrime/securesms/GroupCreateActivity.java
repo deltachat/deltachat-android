@@ -232,10 +232,6 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     initializeAvatarView();
 
     if (broadcast) {
-      ViewUtil.findById(this, R.id.group_image_holder).setVisibility(isEdit()? View.VISIBLE : View.GONE);
-      avatar.setVisibility(View.GONE);
-      groupName.setVisibility(isEdit()? View.VISIBLE : View.GONE);
-      groupName.setHint(R.string.name_desktop);
       groupHints.setText(R.string.chat_new_broadcast_hint);
       groupHints.setVisibility(isEdit()? View.GONE : View.VISIBLE);
       ViewUtil.findById(this, R.id.verify_button).setVisibility(View.INVISIBLE);
@@ -329,11 +325,12 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void groupCreateInDb() {
+    String groupName = getGroupName();
+    if (showGroupNameEmptyToast(groupName)) return;
     if (broadcast) {
       groupChatId = dcContext.createBroadcastList();
+      dcContext.setChatName(groupChatId, groupName);
     } else {
-      String groupName = getGroupName();
-      if (showGroupNameEmptyToast(groupName)) return;
       groupChatId = dcContext.createGroupChat(verified, groupName);
     }
 
