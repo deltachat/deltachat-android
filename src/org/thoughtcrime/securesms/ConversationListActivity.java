@@ -308,7 +308,11 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   }
 
   private void initializeTitleListener() {
-    title.setOnClickListener(v -> startActivity(new Intent(this, ConnectivityActivity.class)));
+    title.setOnClickListener(v -> {
+      if (!isRelayingMessageContent(this)) {
+        startActivity(new Intent(this, ConnectivityActivity.class));
+      }
+    });
   }
 
   @Override
