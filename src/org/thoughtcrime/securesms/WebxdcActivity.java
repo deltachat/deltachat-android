@@ -3,6 +3,7 @@ package org.thoughtcrime.securesms;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -14,6 +15,7 @@ import android.util.Base64;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.webkit.JavascriptInterface;
 import android.webkit.MimeTypeMap;
 import android.webkit.ValueCallback;
@@ -195,6 +197,26 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
         return true;
     }
     return false;
+  }
+
+  @Override
+  public void onConfigurationChanged(Configuration newConfig) {
+    Log.i(TAG, "onConfigurationChanged(" + newConfig.orientation + ")");
+    super.onConfigurationChanged(newConfig);
+    if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+        setFullscreen(true);
+    } else {
+        setFullscreen(false);
+    }
+  }
+
+  private void setFullscreen(boolean enable) {
+    getWindow().getDecorView().setSystemUiVisibility(enable? View.SYSTEM_UI_FLAG_FULLSCREEN : 0);
+    if (enable) {
+      getSupportActionBar().hide();
+    } else {
+      getSupportActionBar().show();
+    }
   }
 
   @Override
