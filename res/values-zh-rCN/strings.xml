@@ -31,6 +31,7 @@
     <string name="back">返回</string>
     <string name="verified">已验证</string>
     <string name="close">关闭</string>
+    <string name="close_window">关闭窗口</string>
     <string name="forward">转发</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">重新发送</string>

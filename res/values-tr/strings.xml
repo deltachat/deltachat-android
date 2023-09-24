@@ -31,6 +31,7 @@
     <string name="back">Geri</string>
     <string name="verified">Doğrulandı</string>
     <string name="close">Kapat</string>
+    <string name="close_window">Pencereyi Kapat</string>
     <string name="forward">İlet</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">Yeniden Gönder</string>
@@ -311,7 +312,7 @@
     <string name="videochat_tap_to_open">Açmak için Dokunun</string>
     <string name="videochat_instance">Video Sohbeti Örneği</string>
     <string name="videochat_instance_placeholder">Video Sohbeti Örneğiniz</string>
-    <string name="videochat_instance_example">Örnekler: https://meet.jit.si/$ROOM ya da basicwebrtc:https://your-server</string>
+    <string name="videochat_instance_example">Örnek: https://your-server.org/$ROOM</string>
     <string name="videochat_instance_explain_2">Etkinleştirilirse, her sohbetten video sohbeti başlatabilirsiniz. Her iki uçta da uyumlu bir uygulama ya da bir tarayıcı gerektirir.</string>
     <string name="videochat_instance_from_qr">\"%1$s\" diğerlerini video sohbetlerine çağırmak için kullanılsın mı?\n\nBir kez ayarlandığında, her sohbetten video sohbeti başlatabilirsiniz. Bu, video sohbetleri için herhangi bir önceki ayarın yerini alır.</string>
     <string name="videochat_invitation">Video sohbeti çağrısı</string>
@@ -615,7 +616,7 @@
     <string name="pref_vibrate">Titret</string>
     <string name="pref_screen_security">Ekran Güvenliği</string>
     <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
-    <string name="pref_screen_security_explain">Yeni listesinde ve uygulamanın içinde ekran görüntülerinin engellenmesini iste</string>
+    <string name="pref_screen_security_explain">En yeniler listesinde ve uygulamanın içinde ekran görüntülerinin engellenmesini iste</string>
     <string name="pref_screen_security_please_restart_hint">Ekran güvenliği ayarını uygulamak için lütfen uygulamayı yeniden başlatın.</string>
     <string name="pref_notifications">Bildirimler</string>
     <string name="pref_notifications_show">Göster</string>

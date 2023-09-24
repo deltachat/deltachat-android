@@ -31,6 +31,7 @@
     <string name="back">Indietro</string>
     <string name="verified">Verificato</string>
     <string name="close">Chiudi</string>
+    <string name="close_window">Chiudi finestra</string>
     <string name="forward">Inoltra</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">Reinvia</string>

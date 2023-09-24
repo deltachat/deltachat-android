@@ -31,6 +31,7 @@
     <string name="back">Wróć</string>
     <string name="verified">Zweryfikowano</string>
     <string name="close">Zamknij</string>
+    <string name="close_window">Zamknij okno</string>
     <string name="forward">Przekaż</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">Wyślij ponownie</string>
