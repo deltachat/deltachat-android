@@ -31,6 +31,7 @@
     <string name="back">Назад</string>
     <string name="verified">Верифицирован</string>
     <string name="close">Закрыть</string>
+    <string name="close_window">Закрыть окно</string>
     <string name="forward">Переслать</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">Переотправить</string>
@@ -265,6 +266,7 @@
     <string name="menu_help">Помощь</string>
     <string name="privacy_policy">Политика конфиденциальности</string>
     <string name="menu_select_all">Выбрать всё</string>
+    <string name="select_chat">Выбрать чат</string>
     <string name="select_more">Выбрать больше</string>
     <string name="menu_edit_name">Изменить имя</string>
     <string name="menu_settings">Настройки</string>
@@ -442,6 +444,11 @@
     <string name="start_app">Запустить...</string>
     <!-- this is a warning that is shown when one tries to send something to a chat that is not yet accepted. -->
     <string name="accept_request_first">Пожалуйста, сначала примите запрос</string>
+    <!-- title shown above a list of chats where one should be selected (eg. when sharing files from a webxdc). the placeholder will be replaced by a file name -->
+    <string name="send_file_to">Отправить \"%1$s\" …</string>
+    <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
+    <string name="send_message_to">Отправить сообщение...</string>
+
     <!-- map -->
     <string name="filter_map_on_time">Показать местоположения с интервалом времени</string>
     <string name="show_location_traces">Показывать маршруты</string>

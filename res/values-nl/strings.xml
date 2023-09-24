@@ -31,6 +31,7 @@
     <string name="back">Terug</string>
     <string name="verified">Goedgekeurd</string>
     <string name="close">Sluiten</string>
+    <string name="close_window">Venster sluiten</string>
     <string name="forward">Doorsturen</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">Opnieuw versturen</string>
