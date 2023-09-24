@@ -258,4 +258,6 @@
         <attr name="compact" format="boolean" />
     </declare-styleable>
 
+    <!-- in portrait mode there is enough height, no need to enter fullscreen  -->
+    <bool name="webxdcFullscreen">false</bool>
 </resources>

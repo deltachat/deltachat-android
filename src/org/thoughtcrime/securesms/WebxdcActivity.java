@@ -101,6 +101,10 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
   protected void onCreate(Bundle state, boolean ready) {
     super.onCreate(state, ready);
 
+    // enter fullscreen mode if necessary,
+    // this is needed here because if the app is opened while already in landscape mode, onConfigurationChanged() is not triggered
+    setScreenMode();
+
     webView.setWebChromeClient(new WebChromeClient() {
       @Override
       @RequiresApi(21)
@@ -203,14 +207,14 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
   public void onConfigurationChanged(Configuration newConfig) {
     Log.i(TAG, "onConfigurationChanged(" + newConfig.orientation + ")");
     super.onConfigurationChanged(newConfig);
-    if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-        setFullscreen(true);
-    } else {
-        setFullscreen(false);
-    }
+    // orientation might have changed, enter/exit fullscreen mode if needed
+    setScreenMode();
   }
 
-  private void setFullscreen(boolean enable) {
+  private void setScreenMode() {
+    // enter/exit fullscreen mode depending on orientation (landscape/portrait),
+    // on tablets there is enought height so fullscreen mode is never enabled there
+    boolean enable = getResources().getBoolean(R.bool.webxdcFullscreen);
     getWindow().getDecorView().setSystemUiVisibility(enable? View.SYSTEM_UI_FLAG_FULLSCREEN : 0);
     if (enable) {
       getSupportActionBar().hide();

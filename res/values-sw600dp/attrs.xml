@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <!-- if the device is big enough (ex. a tablet), there is no need to enter fullscreen  -->
+  <bool name="webxdcFullscreen">false</bool>
+</resources>
