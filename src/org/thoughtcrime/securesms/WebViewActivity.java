@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.SearchView;
 import androidx.webkit.WebSettingsCompat;
 import androidx.webkit.WebViewFeature;
@@ -71,7 +72,10 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
   @Override
   protected void onCreate(Bundle state, boolean ready) {
     setContentView(R.layout.web_view_activity);
-    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    ActionBar actionBar = getSupportActionBar();
+    if (actionBar != null) {
+      actionBar.setDisplayHomeAsUpEnabled(true);
+    }
 
     webView = findViewById(R.id.webview);
     webView.setWebViewClient(new WebViewClient() {
@@ -103,7 +107,6 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
       }
 
       @Override
-      @SuppressWarnings("deprecation")
       public WebResourceResponse shouldInterceptRequest(WebView view, String url) {
         WebResourceResponse res = interceptRequest(url);
         if (res!=null) {
