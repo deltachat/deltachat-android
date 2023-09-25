@@ -12,12 +12,14 @@
                       android:gravity="center_vertical"
                       android:orientation="vertical">
 
-            <androidx.appcompat.widget.AppCompatImageView
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/webxdc_icon"
+                android:padding="0.1dp"
                 android:layout_marginTop="2dp"
                 android:layout_width="128dp"
                 android:layout_height="128dp"
-                android:scaleType="centerCrop"/>
+                android:scaleType="centerCrop"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize10Percent" />
 
             <TextView android:id="@+id/webxdc_app_name"
                       android:layout_width="match_parent"
