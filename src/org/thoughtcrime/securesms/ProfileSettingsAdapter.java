@@ -32,6 +32,7 @@ import java.util.Set;
 public class ProfileSettingsAdapter extends RecyclerView.Adapter
                                     implements StickyHeaderAdapter<ProfileSettingsAdapter.HeaderViewHolder>
 {
+  public static final int SETTING_VERIFIED     = 119;
   public static final int SETTING_SEND_MESSAGE = 120;
 
   private final @NonNull Context              context;
@@ -312,6 +313,13 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
 
       itemDataContact = dcContact;
       if (!chatIsDeviceTalk) {
+        if (dcContact.isVerified()) {
+          String verifiedInfo = context.getString(R.string.verified);
+          if (!dcContact.getVerifierAddr().isEmpty()) {
+            verifiedInfo = context.getString(R.string.verified_by, dcContact.getVerifierAddr());
+          }
+          itemData.add(new ItemData(ItemData.TYPE_PRIMARY_SETTING, SETTING_VERIFIED, verifiedInfo));
+        }
         itemData.add(new ItemData(ItemData.TYPE_PRIMARY_SETTING, SETTING_SEND_MESSAGE, context.getString(R.string.send_message)));
       }
 
