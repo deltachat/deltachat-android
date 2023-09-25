@@ -62,21 +62,23 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
     int chatlistIndex;
     int settingsId;
     String label;
+    int iconLeft;
 
-    ItemData(int type, int settingsId, String label) {
-      this(type, 0, 0, settingsId, label);
+    ItemData(int type, int settingsId, String label, int iconLeft) {
+      this(type, 0, 0, settingsId, label, iconLeft);
     }
 
     ItemData(int type, int contactId, int chatlistIndex) {
-      this(type, contactId, chatlistIndex, 0, null);
+      this(type, contactId, chatlistIndex, 0, null, 0);
     }
 
-    ItemData(int type, int contactId, int chatlistIndex, int settingsId, @Nullable String label) {
+    ItemData(int type, int contactId, int chatlistIndex, int settingsId, @Nullable String label, int iconLeft) {
       this.type          = type;
       this.contactId     = contactId;
       this.chatlistIndex = chatlistIndex;
       this.settingsId    = settingsId;
       this.label         = label;
+      this.iconLeft      = iconLeft;
     }
   };
 
@@ -192,7 +194,7 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
       int settingsId = itemData.get(i).settingsId;
       ProfileSettingsItem profileSettingsItem = (ProfileSettingsItem) holder.itemView;
       profileSettingsItem.setOnClickListener(view -> clickListener.onSettingsClicked(settingsId));
-      profileSettingsItem.set(itemData.get(i).label);
+      profileSettingsItem.set(itemData.get(i).label, itemData.get(i).iconLeft);
     }
   }
 
@@ -318,14 +320,14 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
           if (!dcContact.getVerifierAddr().isEmpty()) {
             verifiedInfo = context.getString(R.string.verified_by, dcContact.getVerifierAddr());
           }
-          itemData.add(new ItemData(ItemData.TYPE_PRIMARY_SETTING, SETTING_VERIFIED, verifiedInfo));
+          itemData.add(new ItemData(ItemData.TYPE_PRIMARY_SETTING, SETTING_VERIFIED, verifiedInfo, R.drawable.ic_verified));
         }
-        itemData.add(new ItemData(ItemData.TYPE_PRIMARY_SETTING, SETTING_SEND_MESSAGE, context.getString(R.string.send_message)));
+        itemData.add(new ItemData(ItemData.TYPE_PRIMARY_SETTING, SETTING_SEND_MESSAGE, context.getString(R.string.send_message), 0));
       }
 
       itemDataStatusText = dcContact.getStatus();
       if (!itemDataStatusText.isEmpty()) {
-        itemData.add(new ItemData(ItemData.TYPE_STATUS, 0, itemDataStatusText));
+        itemData.add(new ItemData(ItemData.TYPE_STATUS, 0, itemDataStatusText, 0));
       }
 
       itemDataSharedChats = sharedChats;
