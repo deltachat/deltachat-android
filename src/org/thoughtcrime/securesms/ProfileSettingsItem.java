@@ -23,7 +23,8 @@ public class ProfileSettingsItem extends LinearLayout {
     labelView = findViewById(R.id.label);
   }
 
-  public void set(String label) {
+  public void set(String label, int iconLeft) {
     labelView.setText(label==null? "" : label);
+    labelView.setCompoundDrawablesWithIntrinsicBounds(iconLeft, 0,0,0);
   }
 }
