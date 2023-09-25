@@ -32,7 +32,8 @@ import java.util.Set;
 public class ProfileSettingsAdapter extends RecyclerView.Adapter
                                     implements StickyHeaderAdapter<ProfileSettingsAdapter.HeaderViewHolder>
 {
-  public static final int SETTING_VERIFIED     = 119;
+  public static final int SETTING_VERIFIED     = 118;
+  public static final int SETTING_LAST_SEEN    = 119;
   public static final int SETTING_SEND_MESSAGE = 120;
 
   private final @NonNull Context              context;
@@ -240,13 +241,7 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
         txt = context.getString(R.string.profile_shared_chats);
         break;
       case ItemData.TYPE_PRIMARY_SETTING:
-        long lastSeen = (itemDataContact!=null? itemDataContact.getLastSeen() : 0);
-        if (lastSeen == 0) {
-          txt = context.getString(R.string.last_seen_unknown);
-        }
-        else {
-          txt = context.getString(R.string.last_seen_at, DateUtils.getExtendedTimeSpanString(context, locale, lastSeen));
-        }
+        txt = context.getString(R.string.info);
         break;
       case ItemData.TYPE_STATUS:
         txt = context.getString(R.string.pref_default_status_label);
@@ -324,6 +319,18 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
           }
           itemData.add(new ItemData(ItemData.TYPE_PRIMARY_SETTING, SETTING_VERIFIED, verifiedInfo, 0, R.drawable.ic_verified));
         }
+
+        long lastSeenTimestamp = (itemDataContact!=null? itemDataContact.getLastSeen() : 0);
+        String lastSeenTxt;
+        if (lastSeenTimestamp == 0) {
+          lastSeenTxt = context.getString(R.string.last_seen_unknown);
+        }
+        else {
+          lastSeenTxt = context.getString(R.string.last_seen_at, DateUtils.getExtendedTimeSpanString(context, locale, lastSeenTimestamp));
+        }
+        itemData.add(new ItemData(ItemData.TYPE_PRIMARY_SETTING, SETTING_LAST_SEEN, lastSeenTxt, 0, 0));
+
+
         itemData.add(new ItemData(ItemData.TYPE_PRIMARY_SETTING, SETTING_SEND_MESSAGE, context.getString(R.string.send_message), R.color.delta_accent, 0));
       }
 
