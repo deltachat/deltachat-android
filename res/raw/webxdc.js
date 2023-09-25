@@ -1,3 +1,8 @@
+// fullscreen mode is not supported so we disable the API
+document.fullscreenEnabled = false;
+document.exitFullscreen = undefined;
+document.requestFullscreen = undefined;
+
 window.webxdc = (() => {
   let setUpdateListenerPromise = null
   var update_listener = () => {};
