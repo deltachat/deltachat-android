@@ -124,6 +124,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
 
     DcEventCenter eventCenter = DcHelper.getEventCenter(WebxdcActivity.this.getApplicationContext());
     eventCenter.addObserver(DcContext.DC_EVENT_WEBXDC_STATUS_UPDATE, this);
+    eventCenter.addObserver(DcContext.DC_EVENT_MSGS_CHANGED, this);
     
     Bundle b = getIntent().getExtras();
     int appMessageId = b.getInt("appMessageId");
@@ -303,6 +304,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
       Log.i(TAG, "handleEvent");
       webView.loadUrl("javascript:document.getElementById('frame').contentWindow.__webxdcUpdate();");
     } else if ((eventId == DcContext.DC_EVENT_MSGS_CHANGED && event.getData2Int() == dcAppMsg.getId())) {
+      this.dcAppMsg = this.dcContext.getMsg(event.getData2Int()); // msg changed, reload data from db
       Util.runOnAnyBackgroundThread(() -> {
         final JSONObject info = dcAppMsg.getWebxdcInfo();
         final DcChat chat = dcContext.getChat(dcAppMsg.getChatId());
