@@ -802,7 +802,7 @@ public class ConversationFragment extends MessageSelectorFragment
             else if(DozeReminder.isDozeReminderMsg(getContext(), messageRecord)) {
                 DozeReminder.dozeReminderTapped(getContext());
             }
-            else if(messageRecord.isInfo() && messageRecord.getParent() != null && messageRecord.getParent().getType() == DcMsg.DC_MSG_WEBXDC) {
+            else if(messageRecord.getInfoType() == DcMsg.DC_INFO_WEBXDC_INFO_MESSAGE) {
                 scrollMaybeSmoothToMsgId(messageRecord.getParent().getId());
             }
             else {
