@@ -21,6 +21,7 @@ import static org.thoughtcrime.securesms.ConversationActivity.STARTING_POSITION_
 import static org.thoughtcrime.securesms.map.MapDataManager.ALL_CHATS_GLOBAL_MAP;
 import static org.thoughtcrime.securesms.util.RelayUtil.acquireRelayMessageContent;
 import static org.thoughtcrime.securesms.util.RelayUtil.getDirectSharingChatId;
+import static org.thoughtcrime.securesms.util.RelayUtil.getSharedTitle;
 import static org.thoughtcrime.securesms.util.RelayUtil.isDirectSharing;
 import static org.thoughtcrime.securesms.util.RelayUtil.isForwarding;
 import static org.thoughtcrime.securesms.util.RelayUtil.isRelayingMessageContent;
@@ -215,7 +216,16 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 
   public void refreshTitle() {
     if (isRelayingMessageContent(this)) {
-      title.setText(isForwarding(this) ? R.string.forward_to : R.string.chat_share_with_title);
+      if (isForwarding(this)) {
+        title.setText(R.string.forward_to);
+      } else {
+        String titleStr = getSharedTitle(this);
+        if (titleStr != null) { // sharing from sendToChat
+          title.setText(titleStr);
+        } else { // normal sharing
+          title.setText(R.string.chat_share_with_title);
+        }
+      }
       getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     } else {
       title.setText(DcHelper.getConnectivitySummary(this, R.string.app_name));

@@ -18,6 +18,7 @@
 package org.thoughtcrime.securesms;
 
 import static org.thoughtcrime.securesms.util.RelayUtil.setSharedText;
+import static org.thoughtcrime.securesms.util.RelayUtil.setSharedTitle;
 
 import android.Manifest;
 import android.content.Intent;
@@ -57,6 +58,7 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity implement
   private static final String TAG = ShareActivity.class.getSimpleName();
 
   public static final String EXTRA_CHAT_ID = "chat_id";
+  public static final String EXTRA_TITLE = "extra_title";
 
   private final DynamicTheme    dynamicTheme    = new DynamicNoActionBarTheme();
   private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
@@ -274,6 +276,12 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity implement
 
   private Intent getBaseShareIntent(final @NonNull Class<?> target) {
     final Intent intent = new Intent(this, target);
+
+    String title = getIntent().getStringExtra(EXTRA_TITLE);
+    if (title != null) {
+        setSharedTitle(intent, title);
+    }
+
     String text = getIntent().getStringExtra(Intent.EXTRA_TEXT);
     if (text==null) {
       CharSequence cs = getIntent().getCharSequenceExtra(Intent.EXTRA_TEXT);

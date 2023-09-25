@@ -14,6 +14,7 @@ public class RelayUtil {
     private static final String FORWARDED_MESSAGE_IDS   = "forwarded_message_ids";
     private static final String SHARED_URIS             = "shared_uris";
     private static final String IS_SHARING              = "is_sharing";
+    private static final String SHARING_TITLE           = "sharing_title";
     private static final String DIRECT_SHARING_CHAT_ID = "direct_sharing_chat_id";
 
     public static boolean isRelayingMessageContent(Activity activity) {
@@ -79,6 +80,14 @@ public class RelayUtil {
         }
     }
 
+    public static String getSharedTitle(Activity activity) {
+        try {
+            return activity.getIntent().getStringExtra(SHARING_TITLE);
+        } catch (NullPointerException npe) {
+            return null;
+        }
+    }
+
 
     public static void resetRelayingMessageContent(Activity activity) {
         try {
@@ -121,6 +130,10 @@ public class RelayUtil {
     public static void setSharedText(Intent composeIntent, String text) {
         composeIntent.putExtra(TEXT_EXTRA, text);
         composeIntent.putExtra(IS_SHARING, true);
+    }
+
+    public static void setSharedTitle(Intent composeIntent, String text) {
+        composeIntent.putExtra(SHARING_TITLE, text);
     }
 
     public static void setDirectSharing(Intent composeIntent, int chatId) {

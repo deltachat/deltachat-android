@@ -436,7 +436,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
             return "provided file is invalid, you need to set both name and base64 content";
         }
 
-        DcHelper.share(WebxdcActivity.this, data, "application/octet-stream", name, text);
+        DcHelper.sendToChat(WebxdcActivity.this, data, "application/octet-stream", name, text);
         return null;
       } catch (Exception e) {
         e.printStackTrace();
