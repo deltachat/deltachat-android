@@ -216,7 +216,6 @@ public class DcContext {
     public DcArray             getLocations         (int chat_id, int contact_id, long timestamp_start, long timestamp_end) { return new DcArray(getLocationsCPtr(chat_id, contact_id, timestamp_start, timestamp_end)); }
     public native void         deleteAllLocations   ();
     public DcProvider          getProviderFromEmailWithDns (String email) { long cptr = getProviderFromEmailWithDnsCPtr(email); return cptr!=0 ? new DcProvider(cptr) : null; }
-    public DcHttpResponse      getHttpResponse      (String url) { long cptr = getHttpResponseCPtr(url); return cptr!=0 ? new DcHttpResponse(cptr) : null; }
 
     public String getNameNAddr() {
       String displayname = getConfig("displayname");
@@ -256,5 +255,4 @@ public class DcContext {
     private native long checkQrCPtr      (String qr);
     private native long getProviderFromEmailWithDnsCPtr  (String addr);
     private native long newBackupProviderCPtr();
-    private native long getHttpResponseCPtr(String url);
 }

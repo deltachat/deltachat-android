@@ -1026,15 +1026,6 @@ JNIEXPORT jlong Java_com_b44t_messenger_DcContext_getProviderFromEmailWithDnsCPt
 }
 
 
-JNIEXPORT jlong Java_com_b44t_messenger_DcContext_getHttpResponseCPtr(JNIEnv *env, jobject obj, jstring url)
-{
-    CHAR_REF(url);
-        jlong ret = (jlong)dc_get_http_response(get_dc_context(env, obj), urlPtr);
-    CHAR_UNREF(url);
-    return ret;
-}
-
-
 /*******************************************************************************
  * DcEventEmitter
  ******************************************************************************/
@@ -2082,66 +2073,6 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcProvider_getOverviewPage(JNIEnv *env
     return ret;
 }
 
-
-/*******************************************************************************
- * DcHttpResponse
- ******************************************************************************/
-
-
-static dc_http_response_t* get_dc_http_response(JNIEnv *env, jobject obj)
-{
-    static jfieldID fid = 0;
-    if (fid==0) {
-        jclass cls = (*env)->GetObjectClass(env, obj);
-        fid = (*env)->GetFieldID(env, cls, "httpResponseCPtr", "J" /*Signature, J=long*/);
-    }
-    if (fid) {
-        return (dc_http_response_t*)(*env)->GetLongField(env, obj, fid);
-    }
-    return NULL;
-}
-
-
-JNIEXPORT void Java_com_b44t_messenger_DcHttpResponse_unrefHttpResponseCPtr(JNIEnv *env, jobject obj)
-{
-    dc_http_response_unref(get_dc_http_response(env, obj));
-}
-
-
-JNIEXPORT jstring Java_com_b44t_messenger_DcHttpResponse_getMimetype(JNIEnv *env, jobject obj)
-{
-    char* temp = dc_http_response_get_mimetype(get_dc_http_response(env, obj));
-        jstring ret = NULL;
-        if (temp) {
-            ret = JSTRING_NEW(temp);
-        }
-    dc_str_unref(temp);
-    return ret;
-}
-
-
-JNIEXPORT jstring Java_com_b44t_messenger_DcHttpResponse_getEncoding(JNIEnv *env, jobject obj)
-{
-    char* temp = dc_http_response_get_encoding(get_dc_http_response(env, obj));
-        jstring ret = NULL;
-        if (temp) {
-            ret = JSTRING_NEW(temp);
-        }
-    dc_str_unref(temp);
-    return ret;
-}
-
-
-JNIEXPORT jbyteArray Java_com_b44t_messenger_DcHttpResponse_getBlob(JNIEnv *env, jobject obj)
-{
-    jbyteArray ret = NULL;
-    dc_http_response_t* http_response = get_dc_http_response(env, obj);
-    size_t ptr_size = dc_http_response_get_size(http_response);
-    uint8_t* ptr = dc_http_response_get_blob(http_response);
-        ret = ptr2jbyteArray(env, ptr, ptr_size);
-    dc_str_unref((char*)ptr);
-    return ret;
-}
 
 /*******************************************************************************
  * DcJsonrpcInstance
