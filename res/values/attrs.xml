@@ -258,6 +258,7 @@
         <attr name="compact" format="boolean" />
     </declare-styleable>
 
-    <!-- in portrait mode there is enough height, no need to enter fullscreen  -->
-    <bool name="webxdcFullscreen">false</bool>
+    <bool name="isLandscape">false</bool>
+    <!-- if the device is big enough (ex. a tablet) -->
+    <bool name="isBigScreen">false</bool>
 </resources>

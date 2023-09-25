@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <!-- in small devices (e.i. not tablets) in landscape height is low, better enter fullscreen  -->
-  <bool name="webxdcFullscreen">true</bool>
+  <bool name="isLandscape">true</bool>
 </resources>

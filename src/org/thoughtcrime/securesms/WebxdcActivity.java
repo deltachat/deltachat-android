@@ -214,7 +214,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
   private void setScreenMode() {
     // enter/exit fullscreen mode depending on orientation (landscape/portrait),
     // on tablets there is enought height so fullscreen mode is never enabled there
-    boolean enable = getResources().getBoolean(R.bool.webxdcFullscreen);
+    boolean enable = getResources().getBoolean(R.bool.isLandscape) && !getResources().getBoolean(R.bool.isBigScreen);
     getWindow().getDecorView().setSystemUiVisibility(enable? View.SYSTEM_UI_FLAG_FULLSCREEN : 0);
     if (enable) {
       getSupportActionBar().hide();
