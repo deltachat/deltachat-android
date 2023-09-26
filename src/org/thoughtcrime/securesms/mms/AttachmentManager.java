@@ -293,7 +293,7 @@ public class AttachmentManager {
               public void onStop() {}
 
               @Override
-              public void onProgress(double progress, long millis) {}
+              public void onProgress(AudioSlide slide, double progress, long millis) {}
 
               @Override
               public void onReceivedDuration(int millis) {
