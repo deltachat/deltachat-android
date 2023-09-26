@@ -28,6 +28,7 @@ import static org.thoughtcrime.securesms.util.RelayUtil.isRelayingMessageContent
 import static org.thoughtcrime.securesms.util.RelayUtil.resetRelayingMessageContent;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -255,6 +256,14 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     dynamicLanguage.onResume(this);
 
     DirectShareUtil.triggerRefreshDirectShare(this);
+  }
+
+  @Override
+  public void onConfigurationChanged(Configuration newConfig) {
+    Log.i(TAG, "onConfigurationChanged(orientation=" + newConfig.orientation + ")");
+    super.onConfigurationChanged(newConfig);
+    // on orientation changes locale is reset in the context/activity so set locale as onCreate()
+    dynamicLanguage.onCreate(this);
   }
 
   @Override
