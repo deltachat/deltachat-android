@@ -32,9 +32,9 @@ import java.util.Set;
 public class ProfileSettingsAdapter extends RecyclerView.Adapter
                                     implements StickyHeaderAdapter<ProfileSettingsAdapter.HeaderViewHolder>
 {
-  public static final int SETTING_VERIFIED     = 118;
-  public static final int SETTING_LAST_SEEN    = 119;
-  public static final int SETTING_SEND_MESSAGE = 120;
+  public static final int INFO_VERIFIED = 118;
+  public static final int INFO_LAST_SEEN = 119;
+  public static final int INFO_SEND_MESSAGE_BUTTON = 120;
 
   private final @NonNull Context              context;
   private final @NonNull Locale               locale;
@@ -317,7 +317,7 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
           if (!dcContact.getVerifierAddr().isEmpty()) {
             verifiedInfo = context.getString(R.string.verified_by, dcContact.getVerifierAddr());
           }
-          itemData.add(new ItemData(ItemData.CATEGORY_INFO, SETTING_VERIFIED, verifiedInfo, 0, R.drawable.ic_verified));
+          itemData.add(new ItemData(ItemData.CATEGORY_INFO, INFO_VERIFIED, verifiedInfo, 0, R.drawable.ic_verified));
         }
 
         long lastSeenTimestamp = (itemDataContact!=null? itemDataContact.getLastSeen() : 0);
@@ -328,10 +328,10 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
         else {
           lastSeenTxt = context.getString(R.string.last_seen_at, DateUtils.getExtendedTimeSpanString(context, locale, lastSeenTimestamp));
         }
-        itemData.add(new ItemData(ItemData.CATEGORY_INFO, SETTING_LAST_SEEN, lastSeenTxt, 0, 0));
+        itemData.add(new ItemData(ItemData.CATEGORY_INFO, INFO_LAST_SEEN, lastSeenTxt, 0, 0));
 
 
-        itemData.add(new ItemData(ItemData.CATEGORY_INFO, SETTING_SEND_MESSAGE, context.getString(R.string.send_message), R.color.delta_accent, 0));
+        itemData.add(new ItemData(ItemData.CATEGORY_INFO, INFO_SEND_MESSAGE_BUTTON, context.getString(R.string.send_message), R.color.delta_accent, 0));
       }
 
       itemDataStatusText = dcContact.getStatus();
