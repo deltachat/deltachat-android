@@ -45,15 +45,13 @@ window.webxdc = (() => {
       if (!message.file && !message.text) {
         return Promise.reject("sendToChat() error: file or text missing");
       }
-      /** @type {(file: Blob) => Promise<string>} */
+
       const blobToBase64 = (file) => {
         const dataStart = ";base64,";
         return new Promise((resolve, reject) => {
           const reader = new FileReader();
           reader.readAsDataURL(file);
           reader.onload = () => {
-            /** @type {string} */
-            //@ts-ignore
             let data = reader.result;
             resolve(data.slice(data.indexOf(dataStart) + dataStart.length));
           };
@@ -64,7 +62,6 @@ window.webxdc = (() => {
         data.text = message.text;
       }
 
-      /** @type {{file_name: string, file_message: string} | null} */
       if (message.file) {
         let base64content;
         if (!message.file.name) {
@@ -78,20 +75,12 @@ window.webxdc = (() => {
           return Promise.reject("sendToChat() error: only one of blob, base64 or plainText allowed");
         }
 
-        // @ts-ignore - needed because typescript imagines that blob would not exist
         if (message.file.blob instanceof Blob) {
-          // @ts-ignore - needed because typescript imagines that blob would not exist
           base64content = await blobToBase64(message.file.blob);
-          // @ts-ignore - needed because typescript imagines that base64 would not exist
         } else if (typeof message.file.base64 === "string") {
-          // @ts-ignore - needed because typescript imagines that base64 would not exist
           base64content = message.file.base64;
-          // @ts-ignore - needed because typescript imagines that plainText would not exist
         } else if (typeof message.file.plainText === "string") {
-          base64content = await blobToBase64(
-            // @ts-ignore - needed because typescript imagines that plainText would not exist
-            new Blob([message.file.plainText])
-          );
+          base64content = await blobToBase64(new Blob([message.file.plainText]));
         } else {
           return Promise.reject("sendToChat() error: none of blob, base64 or plainText set correctly");
         }
