@@ -54,10 +54,10 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
   private final GlideRequests                 glideRequests;
 
   static class ItemData {
-    static final int TYPE_PRIMARY_SETTING = 1;
-    static final int TYPE_STATUS = 2;
-    static final int TYPE_MEMBER = 3;
-    static final int TYPE_SHARED_CHAT = 4;
+    static final int CATEGORY_INFO = 1;
+    static final int CATEGORY_SIGNATURE = 2;
+    static final int CATEGORY_MEMBERS = 3;
+    static final int CATEGORY_SHARED_CHATS = 4;
     int type;
     int contactId;
     int chatlistIndex;
@@ -121,17 +121,17 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
 
   @Override
   public ProfileSettingsAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-    if (viewType == ItemData.TYPE_MEMBER) {
+    if (viewType == ItemData.CATEGORY_MEMBERS) {
       final ContactSelectionListItem item = (ContactSelectionListItem)layoutInflater.inflate(R.layout.contact_selection_list_item, parent, false);
       item.setNoHeaderPadding();
       return new ViewHolder(item);
     }
-    else if (viewType == ItemData.TYPE_SHARED_CHAT) {
+    else if (viewType == ItemData.CATEGORY_SHARED_CHATS) {
       final ConversationListItem item = (ConversationListItem)layoutInflater.inflate(R.layout.conversation_list_item_view, parent, false);
       item.hideItemDivider();
       return new ViewHolder(item);
     }
-    else if (viewType == ItemData.TYPE_STATUS) {
+    else if (viewType == ItemData.CATEGORY_SIGNATURE) {
       final ProfileStatusItem item = (ProfileStatusItem)layoutInflater.inflate(R.layout.profile_status_item, parent, false);
       return new ViewHolder(item);
     }
@@ -228,7 +228,7 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
   public void onBindHeaderViewHolder(HeaderViewHolder viewHolder, int position) {
     String txt = "";
     switch(getItemViewType(position)) {
-      case ItemData.TYPE_MEMBER:
+      case ItemData.CATEGORY_MEMBERS:
         if (isMailingList) {
           txt = context.getString(R.string.contacts_headline);
         } else if (isBroadcast) {
@@ -237,13 +237,13 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
           txt = context.getResources().getQuantityString(R.plurals.n_members, (int) itemDataMemberCount, (int) itemDataMemberCount);
         }
         break;
-      case ItemData.TYPE_SHARED_CHAT:
+      case ItemData.CATEGORY_SHARED_CHATS:
         txt = context.getString(R.string.profile_shared_chats);
         break;
-      case ItemData.TYPE_PRIMARY_SETTING:
+      case ItemData.CATEGORY_INFO:
         txt = context.getString(R.string.info);
         break;
-      case ItemData.TYPE_STATUS:
+      case ItemData.CATEGORY_SIGNATURE:
         txt = context.getString(R.string.pref_default_status_label);
         break;
       default:
@@ -297,14 +297,14 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
       if (dcChat.isMailingList()) {
         isMailingList = true;
       } else if (dcChat.canSend()) {
-        itemData.add(new ItemData(ItemData.TYPE_MEMBER, DcContact.DC_CONTACT_ID_ADD_MEMBER, 0));
+        itemData.add(new ItemData(ItemData.CATEGORY_MEMBERS, DcContact.DC_CONTACT_ID_ADD_MEMBER, 0));
         if (!isBroadcast) {
-          itemData.add(new ItemData(ItemData.TYPE_MEMBER, DcContact.DC_CONTACT_ID_QR_INVITE, 0));
+          itemData.add(new ItemData(ItemData.CATEGORY_MEMBERS, DcContact.DC_CONTACT_ID_QR_INVITE, 0));
         }
       }
 
       for (int value : memberList) {
-        itemData.add(new ItemData(ItemData.TYPE_MEMBER, value, 0));
+        itemData.add(new ItemData(ItemData.CATEGORY_MEMBERS, value, 0));
       }
     }
     else if (sharedChats!=null && dcContact!=null) {
@@ -317,7 +317,7 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
           if (!dcContact.getVerifierAddr().isEmpty()) {
             verifiedInfo = context.getString(R.string.verified_by, dcContact.getVerifierAddr());
           }
-          itemData.add(new ItemData(ItemData.TYPE_PRIMARY_SETTING, SETTING_VERIFIED, verifiedInfo, 0, R.drawable.ic_verified));
+          itemData.add(new ItemData(ItemData.CATEGORY_INFO, SETTING_VERIFIED, verifiedInfo, 0, R.drawable.ic_verified));
         }
 
         long lastSeenTimestamp = (itemDataContact!=null? itemDataContact.getLastSeen() : 0);
@@ -328,22 +328,22 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
         else {
           lastSeenTxt = context.getString(R.string.last_seen_at, DateUtils.getExtendedTimeSpanString(context, locale, lastSeenTimestamp));
         }
-        itemData.add(new ItemData(ItemData.TYPE_PRIMARY_SETTING, SETTING_LAST_SEEN, lastSeenTxt, 0, 0));
+        itemData.add(new ItemData(ItemData.CATEGORY_INFO, SETTING_LAST_SEEN, lastSeenTxt, 0, 0));
 
 
-        itemData.add(new ItemData(ItemData.TYPE_PRIMARY_SETTING, SETTING_SEND_MESSAGE, context.getString(R.string.send_message), R.color.delta_accent, 0));
+        itemData.add(new ItemData(ItemData.CATEGORY_INFO, SETTING_SEND_MESSAGE, context.getString(R.string.send_message), R.color.delta_accent, 0));
       }
 
       itemDataStatusText = dcContact.getStatus();
       if (!itemDataStatusText.isEmpty()) {
-        itemData.add(new ItemData(ItemData.TYPE_STATUS, 0, itemDataStatusText, 0, 0));
+        itemData.add(new ItemData(ItemData.CATEGORY_SIGNATURE, 0, itemDataStatusText, 0, 0));
       }
 
       itemDataSharedChats = sharedChats;
       if (!chatIsDeviceTalk) {
         int sharedChatsCnt = sharedChats.getCnt();
         for (int i = 0; i < sharedChatsCnt; i++) {
-          itemData.add(new ItemData(ItemData.TYPE_SHARED_CHAT, 0, i));
+          itemData.add(new ItemData(ItemData.CATEGORY_SHARED_CHATS, 0, i));
         }
       }
     }
