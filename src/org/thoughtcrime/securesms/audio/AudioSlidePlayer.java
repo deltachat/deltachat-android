@@ -203,17 +203,6 @@ public class AudioSlidePlayer {
             .createMediaSource(uri);
   }
 
-  public void keepScreenOn(boolean keepOn) {
-    Activity activity = getActivity(context);
-    if (activity != null) {
-      if (keepOn) {
-        activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-      } else {
-        activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-      }
-    }
-  }
-
   public synchronized void stop() {
     Log.i(TAG, "Stop called!");
 
@@ -301,6 +290,17 @@ public class AudioSlidePlayer {
       @Override
       public void onReceivedDuration(int millis) {}
     };
+  }
+
+  public void keepScreenOn(boolean keepOn) {
+    Activity activity = getActivity(context);
+    if (activity != null) {
+      if (keepOn) {
+        activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+      } else {
+        activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+      }
+    }
   }
 
   private Activity getActivity(Context context) {
