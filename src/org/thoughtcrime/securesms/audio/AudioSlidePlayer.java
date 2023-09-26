@@ -132,7 +132,6 @@ public class AudioSlidePlayer {
       @Override
       public void onPlayerStateChanged(boolean playWhenReady, int playbackState) {
         Log.d(TAG, "onPlayerStateChanged(" + playWhenReady + ", " + playbackState + ")");
-        Activity activity;
         switch (playbackState) {
           case Player.STATE_READY:
 
@@ -293,7 +292,7 @@ public class AudioSlidePlayer {
   }
 
   public void keepScreenOn(boolean keepOn) {
-    Activity activity = getActivity(context);
+    Activity activity = (context instanceof Activity)? (Activity) context : null;
     if (activity != null) {
       if (keepOn) {
         activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
@@ -301,13 +300,6 @@ public class AudioSlidePlayer {
         activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
       }
     }
-  }
-
-  private Activity getActivity(Context context) {
-    if (context == null) return null;
-    if (context instanceof Activity) return (Activity) context;
-    if (context instanceof ContextWrapper) return getActivity(((ContextWrapper)context).getBaseContext());
-    return null;
   }
 
   private synchronized static void setPlaying(@NonNull AudioSlidePlayer player) {
