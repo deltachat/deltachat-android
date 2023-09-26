@@ -143,10 +143,10 @@ public class ProfileSettingsFragment extends Fragment
   @Override
   public void onSettingsClicked(int settingsId) {
     switch(settingsId) {
-      case ProfileSettingsAdapter.SETTING_SEND_MESSAGE:
+      case ProfileSettingsAdapter.INFO_SEND_MESSAGE_BUTTON:
         onSendMessage();
         break;
-      case ProfileSettingsAdapter.SETTING_VERIFIED:
+      case ProfileSettingsAdapter.INFO_VERIFIED:
         onVerifiedByClicked();
         break;
     }
