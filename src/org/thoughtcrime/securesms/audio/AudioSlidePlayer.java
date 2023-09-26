@@ -1,12 +1,15 @@
 package org.thoughtcrime.securesms.audio;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.util.Pair;
+import android.view.WindowManager;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -129,6 +132,7 @@ public class AudioSlidePlayer {
       @Override
       public void onPlayerStateChanged(boolean playWhenReady, int playbackState) {
         Log.d(TAG, "onPlayerStateChanged(" + playWhenReady + ", " + playbackState + ")");
+        Activity activity;
         switch (playbackState) {
           case Player.STATE_READY:
 
@@ -151,6 +155,11 @@ public class AudioSlidePlayer {
               setPlaying(AudioSlidePlayer.this);
             }
 
+            activity = getActivity(context);
+            if (activity != null) {
+                activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+            }
+
             notifyOnStart();
             progressEventHandler.sendEmptyMessage(0);
             break;
@@ -161,6 +170,11 @@ public class AudioSlidePlayer {
               getListener().onReceivedDuration(Long.valueOf(mediaPlayer.getDuration()).intValue());
               mediaPlayer.release();
               mediaPlayer = null;
+            }
+
+            activity = getActivity(context);
+            if (activity != null) {
+              activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
             }
 
             notifyOnStop();
@@ -283,6 +297,13 @@ public class AudioSlidePlayer {
       @Override
       public void onReceivedDuration(int millis) {}
     };
+  }
+
+  private Activity getActivity(Context context) {
+    if (context == null) return null;
+    if (context instanceof Activity) return (Activity) context;
+    if (context instanceof ContextWrapper) return getActivity(((ContextWrapper)context).getBaseContext());
+    return null;
   }
 
   private synchronized static void setPlaying(@NonNull AudioSlidePlayer player) {
