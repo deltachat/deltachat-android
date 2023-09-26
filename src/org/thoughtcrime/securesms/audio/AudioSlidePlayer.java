@@ -270,7 +270,7 @@ public class AudioSlidePlayer {
     Util.runOnMain(new Runnable() {
       @Override
       public void run() {
-        getListener().onProgress(progress, millis);
+        getListener().onProgress(slide, progress, millis);
       }
     });
   }
@@ -285,7 +285,7 @@ public class AudioSlidePlayer {
       @Override
       public void onStop() {}
       @Override
-      public void onProgress(double progress, long millis) {}
+      public void onProgress(AudioSlide slide, double progress, long millis) {}
       @Override
       public void onReceivedDuration(int millis) {}
     };
@@ -319,7 +319,7 @@ public class AudioSlidePlayer {
   public interface Listener {
     void onStart();
     void onStop();
-    void onProgress(double progress, long millis);
+    void onProgress(AudioSlide slide, double progress, long millis);
     void onReceivedDuration(int millis);
   }
 
