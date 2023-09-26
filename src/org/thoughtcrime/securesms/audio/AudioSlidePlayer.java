@@ -292,12 +292,11 @@ public class AudioSlidePlayer {
   }
 
   public void keepScreenOn(boolean keepOn) {
-    Activity activity = (context instanceof Activity)? (Activity) context : null;
-    if (activity != null) {
+    if (context instanceof Activity) {
       if (keepOn) {
-        activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        ((Activity) context).getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
       } else {
-        activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        ((Activity) context).getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
       }
     }
   }
