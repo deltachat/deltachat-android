@@ -35,7 +35,7 @@ public class ProfileSettingsItem extends LinearLayout {
     if (labelColor != 0) {
       labelView.setTextColor(ContextCompat.getColor(getContext(), labelColor));
     } else {
-      labelView.setTextColor(ResUtil.getColor(getContext(), R.attr.emoji_text_color)); //
+      labelView.setTextColor(ResUtil.getColor(getContext(), R.attr.emoji_text_color));
     }
   }
 }
