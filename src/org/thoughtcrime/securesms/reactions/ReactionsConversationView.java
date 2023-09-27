@@ -43,7 +43,7 @@ public class ReactionsConversationView extends LinearLayout {
   private void init(@Nullable AttributeSet attrs) {
     if (attrs != null) {
       TypedArray typedArray = getContext().getTheme().obtainStyledAttributes(attrs, R.styleable.ReactionsConversationView, 0, 0);
-      isIncoming = typedArray.getInt(R.styleable.ReactionsConversationView_message_type, 0) == 2;
+      isIncoming = typedArray.getInt(R.styleable.ReactionsConversationView_reaction_type, 0) == 2;
     }
   }
 

@@ -100,7 +100,7 @@ public class Rpc {
     }
 
     public Reactions getMsgReactions(int accountId, int msgId) throws RpcException {
-        return gson.fromJson(getResult("get_msg_reactions", accountId, msgId), Reactions.class);
+        return gson.fromJson(getResult("get_message_reactions", accountId, msgId), Reactions.class);
     }
 
 
