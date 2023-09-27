@@ -8,7 +8,6 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutionException;
@@ -41,7 +40,7 @@ public class Rpc {
         } else if (response.result != null) {
             future.set(response.result);
         } else {
-            future.setException(new RpcException("Got JSON-RPC response witout result or error: " + jsonResponse));
+            future.setException(new RpcException("Got JSON-RPC response without result or error: " + jsonResponse));
         }
     }
 
@@ -100,9 +99,13 @@ public class Rpc {
         return gson.fromJson(getResult("get_http_response", accountId, url), HttpResponse.class);
     }
 
+    public Reactions getMsgReactions(int accountId, int msgId) throws RpcException {
+        return gson.fromJson(getResult("get_message_reactions", accountId, msgId), Reactions.class);
+    }
+
 
     private static class Request {
-        public String jsonrpc = "2.0";
+        private final String jsonrpc = "2.0";
         public String method;
         public Object[] params;
         public int id;
@@ -115,7 +118,7 @@ public class Rpc {
     }
 
     private static class Response {
-        public int id = 0;
+        public int id;
         public JsonElement result;
         public JsonElement error;
 

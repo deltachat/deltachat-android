@@ -13,6 +13,7 @@ import androidx.appcompat.app.AlertDialog;
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMsg;
+import com.b44t.messenger.rpc.Rpc;
 
 import org.thoughtcrime.securesms.connect.DcHelper;
 
@@ -30,6 +31,7 @@ public abstract class BaseConversationItem extends LinearLayout
 
   protected final Context              context;
   protected final DcContext            dcContext;
+  protected final Rpc rpc;
 
   protected @NonNull  Set<DcMsg> batchSelected = new HashSet<>();
 
@@ -39,6 +41,7 @@ public abstract class BaseConversationItem extends LinearLayout
     super(context, attrs);
     this.context = context;
     this.dcContext = DcHelper.getContext(context);
+    this.rpc = DcHelper.getRpc(context);
   }
 
   protected void bind(@NonNull DcMsg            messageRecord,
@@ -92,7 +95,7 @@ public abstract class BaseConversationItem extends LinearLayout
   }
 
   protected class ClickListener implements View.OnClickListener {
-    private OnClickListener parent;
+    private final OnClickListener parent;
 
     ClickListener(@Nullable OnClickListener parent) {
       this.parent = parent;

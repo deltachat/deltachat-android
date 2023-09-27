@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<resources>
+    <color name="reaction_pill_background">@color/black</color>
+    <color name="reaction_pill_border">#80414347</color>
+    <color name="reaction_pill_text_color">@color/core_dark_05</color>
+    <color name="reaction_pill_background_selected">#ff282828</color>
+    <color name="reaction_pill_border_selected">@color/reaction_pill_border</color>
+    <color name="reaction_pill_text_color_selected">@color/reaction_pill_text_color</color>
+</resources>

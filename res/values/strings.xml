@@ -722,6 +722,8 @@
     <string name="emoji_symbols">Symbols</string>
     <string name="emoji_flags">Flags</string>
 
+    <!-- Reactions -->
+    <string name="ReactionsConversationView_plus">+%1$d</string>
 
     <!-- automatically delete message -->
     <string name="delete_old_messages">Delete Old Messages</string>

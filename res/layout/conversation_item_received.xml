@@ -220,5 +220,15 @@
 
         </LinearLayout>
 
+        <org.thoughtcrime.securesms.reactions.ReactionsConversationView
+            android:id="@+id/reactions_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/body_bubble"
+            android:layout_alignStart="@id/body_bubble"
+            android:layout_marginTop="-4dp"
+            android:orientation="horizontal"
+            app:message_type="incoming" />
+
     </RelativeLayout>
 </org.thoughtcrime.securesms.ConversationItem>

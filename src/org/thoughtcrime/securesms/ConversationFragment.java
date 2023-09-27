@@ -119,6 +119,7 @@ public class ConversationFragment extends MessageSelectorFragment
         DcEventCenter eventCenter = DcHelper.getEventCenter(getContext());
         eventCenter.addObserver(DcContext.DC_EVENT_INCOMING_MSG, this);
         eventCenter.addObserver(DcContext.DC_EVENT_MSGS_CHANGED, this);
+        eventCenter.addObserver(DcContext.DC_EVENT_REACTIONS_CHANGED, this);
         eventCenter.addObserver(DcContext.DC_EVENT_MSG_DELIVERED, this);
         eventCenter.addObserver(DcContext.DC_EVENT_MSG_FAILED, this);
         eventCenter.addObserver(DcContext.DC_EVENT_MSG_READ, this);
@@ -972,6 +973,7 @@ public class ConversationFragment extends MessageSelectorFragment
                 }
                 break;
 
+            case DcContext.DC_EVENT_REACTIONS_CHANGED:
             case DcContext.DC_EVENT_INCOMING_MSG:
             case DcContext.DC_EVENT_MSG_DELIVERED:
             case DcContext.DC_EVENT_MSG_FAILED:

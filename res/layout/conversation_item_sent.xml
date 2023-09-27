@@ -197,6 +197,16 @@
 
         </LinearLayout>
 
+        <org.thoughtcrime.securesms.reactions.ReactionsConversationView
+            android:id="@+id/reactions_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/body_bubble"
+            android:layout_alignEnd="@id/body_bubble"
+            android:layout_marginTop="-4dp"
+            android:orientation="horizontal"
+            app:message_type="outgoing" />
+
         <!-- the following view is only left because it is used as a reference for positioning above.
          removing would require some re-layouting, it's just not done yet.-->
         <View

@@ -250,6 +250,13 @@
         <attr name="quote_colorSecondary" format="color" />
     </declare-styleable>
 
+    <declare-styleable name="ReactionsConversationView">
+        <attr name="reaction_type" format="enum">
+            <enum name="outgoing" value="1" />
+            <enum name="incoming" value="2" />
+        </attr>
+    </declare-styleable>
+
     <declare-styleable name="ConversationAdaptiveActionsToolbar">
         <attr name="aat_max_shown" format="integer" />
     </declare-styleable>
