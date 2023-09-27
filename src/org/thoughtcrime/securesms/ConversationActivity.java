@@ -874,13 +874,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     composeText.setOnClickListener(composeKeyPressedListener);
     composeText.setOnFocusChangeListener(composeKeyPressedListener);
 
-    if (QuickAttachmentDrawer.isDeviceSupported(this)) {
-      quickAttachmentDrawer.setListener(this);
-      quickCameraToggle.setOnClickListener(new QuickCameraToggleListener());
-    } else {
-      quickCameraToggle.setVisibility(View.GONE);
-      quickCameraToggle.setEnabled(false);
-    }
+    quickAttachmentDrawer.setListener(this);
+    quickCameraToggle.setOnClickListener(new QuickCameraToggleListener());
 
     initializeBackground();
   }
@@ -1390,18 +1385,23 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private class QuickCameraToggleListener implements OnClickListener {
     @Override
     public void onClick(View v) {
-      if (!quickAttachmentDrawer.isShowing()) {
-        Permissions.with(ConversationActivity.this)
-                   .request(Manifest.permission.CAMERA)
-                   .ifNecessary()
-                   .withPermanentDenialDialog(getString(R.string.perm_explain_access_to_camera_denied))
-                   .onAllGranted(() -> {
-                     composeText.clearFocus();
-                     container.show(composeText, quickAttachmentDrawer);
-                   })
-                   .execute();
+      if (Prefs.isBuiltInCameraPreferred(ConversationActivity.this)
+       && QuickAttachmentDrawer.isDeviceSupported(ConversationActivity.this)) {
+        if (!quickAttachmentDrawer.isShowing()) {
+          Permissions.with(ConversationActivity.this)
+            .request(Manifest.permission.CAMERA)
+            .ifNecessary()
+            .withPermanentDenialDialog(getString(R.string.perm_explain_access_to_camera_denied))
+            .onAllGranted(() -> {
+              composeText.clearFocus();
+              container.show(composeText, quickAttachmentDrawer);
+            })
+            .execute();
+        } else {
+          container.hideAttachedInput(false);
+        }
       } else {
-        container.hideAttachedInput(false);
+        attachmentManager.capturePhoto(ConversationActivity.this, TAKE_PHOTO);
       }
     }
   }
