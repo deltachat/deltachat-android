@@ -11,6 +11,7 @@ public class DcContext {
     public final static int DC_EVENT_ERROR                       = 400;
     public final static int DC_EVENT_ERROR_SELF_NOT_IN_GROUP     = 410;
     public final static int DC_EVENT_MSGS_CHANGED                = 2000;
+    public final static int DC_EVENT_REACTIONS_CHANGED           = 2001;
     public final static int DC_EVENT_INCOMING_MSG                = 2005;
     public final static int DC_EVENT_MSGS_NOTICED                = 2008;
     public final static int DC_EVENT_MSG_DELIVERED               = 2010;
