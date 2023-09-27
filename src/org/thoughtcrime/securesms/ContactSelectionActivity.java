@@ -19,9 +19,7 @@ package org.thoughtcrime.securesms;
 import android.os.Bundle;
 
 import org.thoughtcrime.securesms.components.ContactFilterToolbar;
-import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
-import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
 /**
@@ -35,17 +33,14 @@ public abstract class ContactSelectionActivity extends PassphraseRequiredActionB
 {
   private static final String TAG = ContactSelectionActivity.class.getSimpleName();
 
-  private final DynamicTheme    dynamicTheme    = new DynamicNoActionBarTheme();
-  private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
-
   protected ContactSelectionListFragment contactsFragment;
 
   private ContactFilterToolbar toolbar;
 
   @Override
   protected void onPreCreate() {
-    dynamicTheme.onCreate(this);
-    dynamicLanguage.onCreate(this);
+    dynamicTheme = new DynamicNoActionBarTheme();
+    super.onPreCreate();
   }
 
   @Override
@@ -55,13 +50,6 @@ public abstract class ContactSelectionActivity extends PassphraseRequiredActionB
     initializeToolbar();
     initializeResources();
     initializeSearch();
-  }
-
-  @Override
-  public void onResume() {
-    super.onResume();
-    dynamicTheme.onResume(this);
-    dynamicLanguage.onResume(this);
   }
 
   protected ContactFilterToolbar getToolbar() {

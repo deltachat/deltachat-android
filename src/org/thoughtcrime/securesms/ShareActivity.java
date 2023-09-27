@@ -39,9 +39,7 @@ import com.b44t.messenger.DcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.PartAuthority;
 import org.thoughtcrime.securesms.permissions.Permissions;
-import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
-import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.MediaUtil;
 import org.thoughtcrime.securesms.util.RelayUtil;
 
@@ -60,17 +58,14 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity implement
   public static final String EXTRA_CHAT_ID = "chat_id";
   public static final String EXTRA_TITLE = "extra_title";
 
-  private final DynamicTheme    dynamicTheme    = new DynamicNoActionBarTheme();
-  private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
-
   private ArrayList<Uri>               resolvedExtras;
   private DcContext                    dcContext;
   private boolean                      isResolvingUrisOnMainThread;
 
   @Override
   protected void onPreCreate() {
-    dynamicTheme.onCreate(this);
-    dynamicLanguage.onCreate(this);
+    dynamicTheme = new DynamicNoActionBarTheme();
+    super.onPreCreate();
   }
 
   @Override
@@ -89,14 +84,6 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity implement
     super.onNewIntent(intent);
     setIntent(intent);
     initializeMedia();
-  }
-
-  @Override
-  public void onResume() {
-    Log.w(TAG, "onResume()");
-    super.onResume();
-    dynamicTheme.onResume(this);
-    dynamicLanguage.onResume(this);
   }
 
   @Override

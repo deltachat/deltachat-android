@@ -25,8 +25,6 @@ import org.thoughtcrime.securesms.ApplicationPreferencesActivity;
 import org.thoughtcrime.securesms.PassphraseRequiredActionBarActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.mms.GlideApp;
-import org.thoughtcrime.securesms.util.DynamicLanguage;
-import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.ServiceUtil;
 import org.thoughtcrime.securesms.util.Prefs;
 
@@ -36,9 +34,6 @@ import java.util.concurrent.ExecutionException;
 
 public class ChatBackgroundActivity extends PassphraseRequiredActionBarActivity {
 
-    private final DynamicTheme dynamicTheme = new DynamicTheme();
-    private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
-
     Button galleryButton;
     Button defaultButton;
     MenuItem acceptMenuItem;
@@ -47,12 +42,6 @@ public class ChatBackgroundActivity extends PassphraseRequiredActionBarActivity 
     String tempDestinationPath;
     Uri imageUri;
     Boolean imageUpdate = false;
-
-    @Override
-    protected void onPreCreate() {
-        dynamicTheme.onCreate(this);
-        dynamicLanguage.onCreate(this);
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState, boolean ready) {
@@ -79,13 +68,6 @@ public class ChatBackgroundActivity extends PassphraseRequiredActionBarActivity 
             actionBar.setHomeAsUpIndicator(R.drawable.ic_close_white_24dp);
         }
 
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        dynamicTheme.onResume(this);
-        dynamicLanguage.onResume(this);
     }
 
     @Override

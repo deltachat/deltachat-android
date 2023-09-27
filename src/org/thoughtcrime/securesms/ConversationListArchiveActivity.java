@@ -9,8 +9,6 @@ import android.view.MenuItem;
 import com.b44t.messenger.DcChat;
 
 import org.thoughtcrime.securesms.connect.DcHelper;
-import org.thoughtcrime.securesms.util.DynamicLanguage;
-import org.thoughtcrime.securesms.util.DynamicTheme;
 
 import static org.thoughtcrime.securesms.ConversationActivity.CHAT_ID_EXTRA;
 import static org.thoughtcrime.securesms.ConversationActivity.FROM_ARCHIVED_CHATS_EXTRA;
@@ -22,15 +20,6 @@ public class ConversationListArchiveActivity extends PassphraseRequiredActionBar
     implements ConversationListFragment.ConversationSelectedListener
 {
   private ConversationListFragment conversationListFragment;
-
-  private final DynamicTheme    dynamicTheme    = new DynamicTheme();
-  private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
-
-  @Override
-  protected void onPreCreate() {
-    dynamicTheme.onCreate(this);
-    dynamicLanguage.onCreate(this);
-  }
 
   @Override
   protected void onCreate(Bundle icicle, boolean ready) {
@@ -58,13 +47,6 @@ public class ConversationListArchiveActivity extends PassphraseRequiredActionBar
   protected void onPause() {
     super.onPause();
     if (isFinishing()) overridePendingTransition(R.anim.fade_scale_in, R.anim.slide_to_right);
-  }
-
-  @Override
-  public void onResume() {
-    super.onResume();
-    dynamicTheme.onResume(this);
-    dynamicLanguage.onResume(this);
   }
 
   @Override

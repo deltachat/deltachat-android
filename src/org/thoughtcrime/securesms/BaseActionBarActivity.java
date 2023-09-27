@@ -1,5 +1,6 @@
 package org.thoughtcrime.securesms;
 
+import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,6 +16,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import org.thoughtcrime.securesms.util.DynamicLanguage;
+import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.Prefs;
 
 import java.lang.reflect.Field;
@@ -25,9 +28,17 @@ public abstract class BaseActionBarActivity extends AppCompatActivity {
 
   private static final String TAG = BaseActionBarActivity.class.getSimpleName();
   public static final String LOCALE_EXTRA = "locale_extra";
+  protected final DynamicLanguage dynamicLanguage = new DynamicLanguage();
+  protected DynamicTheme dynamicTheme = new DynamicTheme();
+
+  protected void onPreCreate() {
+    dynamicTheme.onCreate(this);
+    dynamicLanguage.onCreate(this);
+  }
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
+    onPreCreate();
     if (BaseActivity.isMenuWorkaroundRequired()) {
       forceOverflowMenu();
     }
@@ -38,6 +49,15 @@ public abstract class BaseActionBarActivity extends AppCompatActivity {
   protected void onResume() {
     super.onResume();
     initializeScreenshotSecurity();
+    dynamicTheme.onResume(this);
+    dynamicLanguage.onResume(this);
+  }
+
+  @Override
+  public void onConfigurationChanged(Configuration newConfig) {
+    super.onConfigurationChanged(newConfig);
+    // on orientation changes locale is reset in the context/activity so set locale as onCreate()
+    dynamicLanguage.onCreate(this);
   }
 
   @Override

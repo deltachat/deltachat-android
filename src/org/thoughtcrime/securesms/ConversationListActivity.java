@@ -62,7 +62,6 @@ import org.thoughtcrime.securesms.qr.QrActivity;
 import org.thoughtcrime.securesms.qr.QrCodeHandler;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.search.SearchFragment;
-import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.Prefs;
@@ -79,9 +78,6 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   public static final String CLEAR_NOTIFICATIONS = "clear_notifications";
   public static final String ACCOUNT_ID_EXTRA = "account_id";
 
-  private final DynamicTheme    dynamicTheme    = new DynamicNoActionBarTheme();
-  private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
-
   private ConversationListFragment conversationListFragment;
   public TextView                  title;
   private AvatarImageView          selfAvatar;
@@ -92,8 +88,8 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 
   @Override
   protected void onPreCreate() {
-    dynamicTheme.onCreate(this);
-    dynamicLanguage.onCreate(this);
+    dynamicTheme = new DynamicNoActionBarTheme();
+    super.onPreCreate();
   }
 
   @Override
@@ -251,9 +247,6 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   @Override
   public void onResume() {
     super.onResume();
-    dynamicTheme.onResume(this);
-    dynamicLanguage.onResume(this);
-
     DirectShareUtil.triggerRefreshDirectShare(this);
   }
 

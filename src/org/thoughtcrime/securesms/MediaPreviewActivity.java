@@ -16,6 +16,7 @@
  */
 package org.thoughtcrime.securesms;
 
+import android.app.Activity;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
@@ -62,7 +63,7 @@ import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.recipients.RecipientModifiedListener;
 import org.thoughtcrime.securesms.util.DateUtils;
-import org.thoughtcrime.securesms.util.DynamicLanguage;
+import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.SaveAttachmentTask;
 import org.thoughtcrime.securesms.util.SaveAttachmentTask.Attachment;
 import org.thoughtcrime.securesms.util.StorageUtil;
@@ -93,8 +94,6 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
   /** USE ONLY IF YOU HAVE NO MESSAGE ID! */
   public static final String SIZE_EXTRA = "size";
 
-  private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
-
   @Nullable
   private DcMsg     messageRecord;
   private DcContext dcContext;
@@ -107,12 +106,20 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
 
   private int editAvatarChatId = 0;
 
+  @Override
+  protected void onPreCreate() {
+    dynamicTheme = new DynamicTheme() {
+            public void onCreate(Activity activity) {
+                activity.setTheme(R.style.TextSecure_DarkTheme); // force dark theme
+            }
+            public void onResume(Activity activity) {}
+    };
+    super.onPreCreate();
+  }
+
   @SuppressWarnings("ConstantConditions")
   @Override
   protected void onCreate(Bundle bundle, boolean ready) {
-    this.setTheme(R.style.TextSecure_DarkTheme);
-    dynamicLanguage.onCreate(this);
-
     setFullscreenIfPossible();
     getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                          WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -173,8 +180,6 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
   @Override
   public void onResume() {
     super.onResume();
-
-    dynamicLanguage.onResume(this);
     initializeMedia();
   }
 

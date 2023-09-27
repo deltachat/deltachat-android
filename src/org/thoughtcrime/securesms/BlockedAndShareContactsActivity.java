@@ -26,8 +26,6 @@ import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.contacts.ContactSelectionListAdapter;
 import org.thoughtcrime.securesms.contacts.ContactSelectionListItem;
 import org.thoughtcrime.securesms.mms.GlideApp;
-import org.thoughtcrime.securesms.util.DynamicLanguage;
-import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
 import java.util.Objects;
@@ -38,28 +36,12 @@ public class BlockedAndShareContactsActivity extends PassphraseRequiredActionBar
   public static final String SHARE_CONTACT_NAME_EXTRA = "share_contact_name";
   public static final String SHARE_CONTACT_MAIL_EXTRA = "share_contact_mail";
 
-  private final DynamicTheme    dynamicTheme    = new DynamicTheme();
-  private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
-
-  @Override
-  public void onPreCreate() {
-    dynamicTheme.onCreate(this);
-    dynamicLanguage.onCreate(this);
-  }
-
   @Override
   public void onCreate(Bundle bundle, boolean ready) {
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     boolean showOnlyBlocked = getIntent().getBooleanExtra(SHOW_ONLY_BLOCKED_EXTRA, false);
     getSupportActionBar().setTitle(showOnlyBlocked ? R.string.pref_blocked_contacts : R.string.contacts_headline);
     initFragment(android.R.id.content, new BlockedAndShareContactsFragment(), null, getIntent().getExtras());
-  }
-
-  @Override
-  public void onResume() {
-    super.onResume();
-    dynamicTheme.onResume(this);
-    dynamicLanguage.onResume(this);
   }
 
   @Override

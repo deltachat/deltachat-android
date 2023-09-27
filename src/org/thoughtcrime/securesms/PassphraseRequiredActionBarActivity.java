@@ -13,7 +13,6 @@ public abstract class PassphraseRequiredActionBarActivity extends BaseActionBarA
   @Override
   protected final void onCreate(Bundle savedInstanceState) {
     Log.w(TAG, "onCreate(" + savedInstanceState + ")");
-    onPreCreate();
 
     if (GenericForegroundService.isForegroundTaskStarted()) {
       // this does not prevent intent set by onNewIntent(),
@@ -27,16 +26,16 @@ public abstract class PassphraseRequiredActionBarActivity extends BaseActionBarA
     if (!DcHelper.isConfigured(getApplicationContext())) {
       Intent intent = new Intent(this, WelcomeActivity.class);
       startActivity(intent);
+      super.onCreate(savedInstanceState);
       finish();
+    } else {
+      super.onCreate(savedInstanceState);
     }
-
-    super.onCreate(savedInstanceState);
 
     if (!isFinishing()) {
       onCreate(savedInstanceState, true);
     }
   }
 
-  protected void onPreCreate() {}
   protected void onCreate(Bundle savedInstanceState, boolean ready) {}
 }
