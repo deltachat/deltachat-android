@@ -26,10 +26,11 @@ public abstract class PassphraseRequiredActionBarActivity extends BaseActionBarA
     if (!DcHelper.isConfigured(getApplicationContext())) {
       Intent intent = new Intent(this, WelcomeActivity.class);
       startActivity(intent);
+      super.onCreate(savedInstanceState);
       finish();
+    } else {
+      super.onCreate(savedInstanceState);
     }
-
-    super.onCreate(savedInstanceState);
 
     if (!isFinishing()) {
       onCreate(savedInstanceState, true);
