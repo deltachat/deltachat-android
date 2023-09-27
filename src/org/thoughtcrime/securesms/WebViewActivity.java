@@ -25,7 +25,6 @@ import androidx.webkit.WebViewFeature;
 import androidx.webkit.ProxyController;
 import androidx.webkit.ProxyConfig;
 
-import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 
 import java.util.concurrent.Executor;
@@ -37,13 +36,10 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
   private static final String TAG = WebViewActivity.class.getSimpleName();
 
   protected WebView webView;
-  private final DynamicTheme dynamicTheme = new DynamicTheme();
-  protected final DynamicLanguage dynamicLanguage = new DynamicLanguage();
 
   @Override
   protected void onPreCreate() {
-    dynamicTheme.onCreate(this);
-    dynamicLanguage.onCreate(this);
+    super.onPreCreate();
 
     if (WebViewFeature.isFeatureSupported(WebViewFeature.PROXY_OVERRIDE)) {
       // Set proxy to non-routable address.
@@ -152,8 +148,6 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
   @Override
   public void onResume() {
     super.onResume();
-    dynamicTheme.onResume(this);
-    dynamicLanguage.onResume(this);
     webView.onResume();
   }
 

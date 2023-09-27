@@ -106,7 +106,6 @@ import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.scribbles.ScribbleActivity;
-import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.MediaUtil;
 import org.thoughtcrime.securesms.util.Prefs;
@@ -201,16 +200,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private boolean    isDefaultSms             = true;
   private boolean    isSecurityInitialized    = false;
   private boolean successfulForwardingAttempt = false;
-
-
-  private final DynamicTheme       dynamicTheme    = new DynamicTheme();
-  private final DynamicLanguage    dynamicLanguage = new DynamicLanguage();
-
-  @Override
-  protected void onPreCreate() {
-    dynamicTheme.onCreate(this);
-    dynamicLanguage.onCreate(this);
-  }
 
   @Override
   protected void onCreate(Bundle state, boolean ready) {
@@ -314,8 +303,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   @Override
   protected void onResume() {
     super.onResume();
-    dynamicTheme.onResume(this);
-    dynamicLanguage.onResume(this);
     quickAttachmentDrawer.onResume();
 
     initializeEnabledCheck();

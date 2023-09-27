@@ -32,7 +32,7 @@ public class DynamicLanguage {
   }
 
   public void onResume(Activity activity) {
-    if (!currentLocale.equals(getSelectedLocale(activity))) {
+    if (!getSelectedLocale(activity).equals(currentLocale)) {
       Intent intent = activity.getIntent();
       activity.finish();
       OverridePendingTransition.invoke(activity);

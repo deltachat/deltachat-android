@@ -32,9 +32,7 @@ import com.google.android.material.tabs.TabLayout;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideApp;
-import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
-import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
@@ -64,9 +62,6 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
 
   private static final int REQUEST_CODE_PICK_RINGTONE = 1;
 
-  private final DynamicTheme    dynamicTheme    = new DynamicNoActionBarTheme();
-  private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
-
   private DcContext            dcContext;
   private int                  chatId;
   private boolean              chatIsMultiUser;
@@ -84,8 +79,8 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
 
   @Override
   protected void onPreCreate() {
-    dynamicTheme.onCreate(this);
-    dynamicLanguage.onCreate(this);
+    dynamicTheme = new DynamicNoActionBarTheme();
+    super.onPreCreate();
     dcContext = DcHelper.getContext(this);
   }
 
@@ -186,13 +181,6 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
 
     super.onPrepareOptionsMenu(menu);
     return true;
-  }
-
-  @Override
-  public void onResume() {
-    super.onResume();
-    dynamicTheme.onResume(this);
-    dynamicLanguage.onResume(this);
   }
 
   boolean backPressed = false;

@@ -12,24 +12,17 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import org.thoughtcrime.securesms.permissions.Permissions;
-import org.thoughtcrime.securesms.util.DynamicLanguage;
-import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.Util;
 
 public class LogViewActivity extends BaseActionBarActivity {
 
   private static final String TAG = LogViewActivity.class.getSimpleName();
 
-  private final DynamicTheme    dynamicTheme    = new DynamicTheme();
-  private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
-
   LogViewFragment logViewFragment;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    dynamicTheme.onCreate(this);
-    dynamicLanguage.onCreate(this);
 
     setContentView(R.layout.log_view_activity);
     logViewFragment = new LogViewFragment(dynamicLanguage);
@@ -38,13 +31,6 @@ public class LogViewActivity extends BaseActionBarActivity {
     transaction.commit();
 
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-  }
-
-  @Override
-  protected void onResume() {
-    super.onResume();
-    dynamicTheme.onResume(this);
-    dynamicLanguage.onResume(this);
   }
 
   @Override

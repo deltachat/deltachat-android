@@ -16,15 +16,10 @@ import com.journeyapps.barcodescanner.CompoundBarcodeView;
 import org.thoughtcrime.securesms.BaseActionBarActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.permissions.Permissions;
-import org.thoughtcrime.securesms.util.DynamicLanguage;
-import org.thoughtcrime.securesms.util.DynamicTheme;
 
 public class RegistrationQrActivity extends BaseActionBarActivity {
 
     public static final String ADD_AS_SECOND_DEVICE_EXTRA = "add_as_second_device";
-
-    private final DynamicTheme dynamicTheme = new DynamicTheme();
-    private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
 
     private CaptureManager capture;
 
@@ -33,8 +28,6 @@ public class RegistrationQrActivity extends BaseActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        dynamicTheme.onCreate(this);
-        dynamicLanguage.onCreate(this);
 
         boolean addAsAnotherDevice = getIntent().getBooleanExtra(ADD_AS_SECOND_DEVICE_EXTRA, false);
         if (addAsAnotherDevice) {
@@ -103,8 +96,6 @@ public class RegistrationQrActivity extends BaseActionBarActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        dynamicTheme.onResume(this);
-        dynamicLanguage.onResume(this);
         if (capture != null) {
             capture.onResume();
         }

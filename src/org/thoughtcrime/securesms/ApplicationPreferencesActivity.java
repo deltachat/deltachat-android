@@ -49,7 +49,6 @@ import org.thoughtcrime.securesms.preferences.ChatsPreferenceFragment;
 import org.thoughtcrime.securesms.preferences.CorrectedPreferenceFragment;
 import org.thoughtcrime.securesms.preferences.NotificationsPreferenceFragment;
 import org.thoughtcrime.securesms.preferences.widgets.ProfilePreference;
-import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.qr.BackupTransferActivity;
@@ -79,15 +78,6 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
 
   public static final int REQUEST_CODE_SET_BACKGROUND            = 11;
 
-  private final DynamicTheme    dynamicTheme    = new DynamicTheme();
-  private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
-
-  @Override
-  protected void onPreCreate() {
-    dynamicTheme.onCreate(this);
-    dynamicLanguage.onCreate(this);
-  }
-
   @Override
   protected void onCreate(Bundle icicle, boolean ready) {
     //noinspection ConstantConditions
@@ -96,13 +86,6 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
     if (icicle == null) {
       initFragment(android.R.id.content, new ApplicationPreferenceFragment());
     }
-  }
-
-  @Override
-  public void onResume() {
-    super.onResume();
-    dynamicTheme.onResume(this);
-    dynamicLanguage.onResume(this);
   }
 
   @Override

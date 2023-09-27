@@ -32,9 +32,7 @@ import org.thoughtcrime.securesms.BaseActionBarActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.mms.AttachmentManager;
 import org.thoughtcrime.securesms.permissions.Permissions;
-import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
-import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
@@ -42,9 +40,6 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 
 public class QrActivity extends BaseActionBarActivity {
-
-    private final DynamicTheme dynamicTheme = new DynamicNoActionBarTheme();
-    private final DynamicLanguage dynamicLanguage = new DynamicLanguage();
 
     private final static String TAG = QrActivity.class.getSimpleName();
     private final static int REQUEST_CODE_IMAGE = 46243;
@@ -56,10 +51,14 @@ public class QrActivity extends BaseActionBarActivity {
     private QrShowFragment qrShowFragment;
 
     @Override
+    protected void onPreCreate() {
+        dynamicTheme = new DynamicNoActionBarTheme();
+        super.onPreCreate();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        dynamicTheme.onCreate(this);
-        dynamicLanguage.onCreate(this);
 
         setContentView(R.layout.activity_qr);
         tabLayout = ViewUtil.findById(this, R.id.tab_layout);
@@ -117,14 +116,6 @@ public class QrActivity extends BaseActionBarActivity {
         getMenuInflater().inflate(R.menu.qr_scan, menu);
       }
       return super.onPrepareOptionsMenu(menu);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-        dynamicTheme.onResume(this);
-        dynamicLanguage.onResume(this);
     }
 
     @Override
