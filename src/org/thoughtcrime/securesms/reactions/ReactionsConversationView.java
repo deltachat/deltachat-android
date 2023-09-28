@@ -109,7 +109,7 @@ public class ReactionsConversationView extends LinearLayout {
     } else {
       emojiView.setVisibility(GONE);
       spacer.setVisibility(GONE);
-      countView.setText(context.getString(R.string.ReactionsConversationView_plus, reaction.getCount()));
+      countView.setText("+" + reaction.getCount());
     }
 
     if (reaction.isFromSelf()) {
