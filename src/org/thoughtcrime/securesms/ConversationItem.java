@@ -680,6 +680,10 @@ public class ConversationItem extends BaseConversationItem
         reactionsView.clear();
       } else {
         reactionsView.setReactions(reactions.getReactions());
+        reactionsView.setOnClickListener(v -> {
+          if (eventListener == null) return;
+          eventListener.onReactionClicked(current);
+        });
       }
     } catch (RpcException e) {
       reactionsView.clear();

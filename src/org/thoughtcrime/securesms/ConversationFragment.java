@@ -867,6 +867,11 @@ public class ConversationFragment extends MessageSelectorFragment
       public void onDownloadClicked(DcMsg messageRecord) {
         dcContext.downloadFullMsg(messageRecord.getId());
       }
+
+      @Override
+      public void onReactionClicked(DcMsg messageRecord) {
+          // TODO: open activity/dialog
+      }
     }
 
     @Override

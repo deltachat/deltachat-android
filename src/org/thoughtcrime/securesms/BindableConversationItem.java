@@ -30,5 +30,6 @@ public interface BindableConversationItem extends Unbindable {
     void onQuoteClicked(DcMsg messageRecord);
     void onShowFullClicked(DcMsg messageRecord);
     void onDownloadClicked(DcMsg messageRecord);
+    void onReactionClicked(DcMsg messageRecord);
   }
 }
