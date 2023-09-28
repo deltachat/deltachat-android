@@ -714,7 +714,6 @@
     <string name="emoji_symbols">Символи</string>
     <string name="emoji_flags">Знамена</string>
 
-
     <!-- automatically delete message -->
     <string name="delete_old_messages">Изтриване на старите съобщения</string>
     <string name="autodel_device_title">Изтриване на съобщенията от устройството</string>

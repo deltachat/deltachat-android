@@ -720,7 +720,6 @@
     <string name="emoji_symbols">Semboller</string>
     <string name="emoji_flags">Bayraklar</string>
 
-
     <!-- automatically delete message -->
     <string name="delete_old_messages">Eski İletileri Sil</string>
     <string name="autodel_device_title">İletileri Aygıttan Sil</string>

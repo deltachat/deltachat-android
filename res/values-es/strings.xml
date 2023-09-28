@@ -734,7 +734,6 @@
     <string name="emoji_symbols">Símbolos</string>
     <string name="emoji_flags">Banderas</string>
 
-
     <!-- automatically delete message -->
     <string name="delete_old_messages">Borrar mensajes antiguos</string>
     <string name="autodel_device_title">Borrar mensajes del dispositivo</string>

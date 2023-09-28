@@ -31,6 +31,7 @@
     <string name="back">Назад</string>
     <string name="verified">Підтверджено</string>
     <string name="close">Закрити</string>
+    <string name="close_window">Закрити вікно</string>
     <string name="forward">Переслати</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">Відправити знову</string>
@@ -748,7 +749,6 @@
     <string name="emoji_objects">Об\'єкти</string>
     <string name="emoji_symbols">Символи</string>
     <string name="emoji_flags">Прапори</string>
-
 
     <!-- automatically delete message -->
     <string name="delete_old_messages">Видалити старі повідомлення</string>

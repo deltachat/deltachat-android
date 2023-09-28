@@ -534,7 +534,6 @@
     <string name="emoji_symbols">Symboly</string>
     <string name="emoji_flags">Vlajky</string>
 
-
     <!-- automatically delete message -->
     <string name="delete_old_messages">Vymaž staré zprávy</string>
     <string name="autodel_device_title">Vymaž zprávy z přístroje</string>

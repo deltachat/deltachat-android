@@ -553,7 +553,6 @@
     <string name="emoji_symbols">Symboler</string>
     <string name="emoji_flags">Flag</string>
 
-
     <!-- automatically delete message -->
     <string name="delete_old_messages">Slet gamle beskeder</string>
     <string name="autodel_device_title">Slet beskeder fra enhed</string>

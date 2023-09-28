@@ -674,7 +674,6 @@
     <string name="emoji_symbols">Symbolit</string>
     <string name="emoji_flags">Liput</string>
 
-
     <!-- automatically delete message -->
     <string name="delete_old_messages">Poista vanhat viestit</string>
     <string name="autodel_device_title">Poista viestit laitteelta</string>

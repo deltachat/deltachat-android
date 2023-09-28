@@ -750,7 +750,6 @@
     <string name="emoji_symbols">Символы</string>
     <string name="emoji_flags">Флаги</string>
 
-
     <!-- automatically delete message -->
     <string name="delete_old_messages">Удалить старые сообщения</string>
     <string name="autodel_device_title">Удалять сообщения с устройства</string>
