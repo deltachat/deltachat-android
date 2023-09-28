@@ -1909,15 +1909,6 @@ JNIEXPORT jboolean Java_com_b44t_messenger_DcContact_isVerified(JNIEnv *env, job
 }
 
 
-JNIEXPORT jstring Java_com_b44t_messenger_DcContact_getVerifierAddr(JNIEnv *env, jobject obj)
-{
-    char* temp = dc_contact_get_verifier_addr(get_dc_contact(env, obj));
-        jstring ret = JSTRING_NEW(temp);
-    dc_str_unref(temp);
-    return ret;
-}
-
-
 JNIEXPORT jint Java_com_b44t_messenger_DcContact_getVerifierId(JNIEnv *env, jobject obj)
 {
     return dc_contact_get_verifier_id(get_dc_contact(env, obj));
