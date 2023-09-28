@@ -58,7 +58,6 @@ public class DcContact {
     public native boolean wasSeenRecently();
     public native boolean isBlocked      ();
     public native boolean isVerified     ();
-    public native String  getVerifierAddr();
     public native int     getVerifierId  ();
 
     // working with raw c-data
