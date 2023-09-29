@@ -674,7 +674,6 @@
     <string name="emoji_symbols">Σύμβολα</string>
     <string name="emoji_flags">Σημαίες</string>
 
-
     <!-- automatically delete message -->
     <string name="delete_old_messages">Διαγραφή Παλιών Μηνυμάτων</string>
     <string name="autodel_device_title">Διαγραφή Μηνυμάτων από Συσκευή</string>

@@ -474,7 +474,6 @@
     <string name="emoji_symbols">هێماکان</string>
     <string name="emoji_flags">ئاڵاکان</string>
 
-
     <!-- automatically delete message -->
     <string name="delete_old_messages">سڕینەوەی پەیامە کۆنەکان</string>
     <string name="autodel_device_title">سڕینەوەی پەیامەکان لەسەر مۆبایەلەکت</string>

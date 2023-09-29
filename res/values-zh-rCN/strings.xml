@@ -705,7 +705,6 @@
     <string name="emoji_symbols">符号</string>
     <string name="emoji_flags">旗帜</string>
 
-
     <!-- automatically delete message -->
     <string name="delete_old_messages">删除旧消息</string>
     <string name="autodel_device_title">从设备删除消息</string>

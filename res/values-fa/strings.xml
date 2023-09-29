@@ -726,7 +726,6 @@ https://meet.jit.si/$ROOM
     <string name="emoji_symbols">نمادها</string>
     <string name="emoji_flags">پرچم‌ها</string>
 
-
     <!-- automatically delete message -->
     <string name="delete_old_messages">پاک کردن پیام‌های قدیمی</string>
     <string name="autodel_device_title">پاک کردن پیام‌ها از دستگاه</string>

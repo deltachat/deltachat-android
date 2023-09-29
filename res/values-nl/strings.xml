@@ -720,7 +720,6 @@
     <string name="emoji_symbols">Symbolen</string>
     <string name="emoji_flags">Vlaggen</string>
 
-
     <!-- automatically delete message -->
     <string name="delete_old_messages">Oude berichten verwijderen</string>
     <string name="autodel_device_title">Berichten verwijderen van apparaat</string>

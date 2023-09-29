@@ -644,6 +644,8 @@
     <string name="pref_manage_keys">Schlüssel verwalten</string>
     <string name="pref_use_system_emoji">System-Emoji benutzen</string>
     <string name="pref_use_system_emoji_explain">Eingebaute Emoji-Unterstützung von Delta Chat deaktivieren</string>
+    <string name="pref_use_inapp_camera">In-App Kamera verwenden</string>
+    <string name="pref_use_inapp_camera_explain">Die In-App-Kamera hat in der Regel weniger Funktionen als die Systemkamera</string>
     <string name="pref_app_access">App-Zugriff</string>
     <string name="pref_chats">Chats</string>
     <string name="pref_in_chat_sounds">In-Chat-Klänge</string>
@@ -719,7 +721,6 @@
     <string name="emoji_objects">Objekte</string>
     <string name="emoji_symbols">Symbole</string>
     <string name="emoji_flags">Flaggen</string>
-
 
     <!-- automatically delete message -->
     <string name="delete_old_messages">Alte Nachrichten löschen</string>
@@ -895,6 +896,7 @@
     <string name="contact_not_verified">Kann %1$s nicht verifizieren</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that verified the contact shown. -->
     <string name="verified_by">Verifiziert von %1$s</string>
+    <string name="verified_by_you">Verifiziert von Ihnen</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Geändertes Setup für %1$s</string>
     <string name="verified_group_explain">Verifizierte Gruppen (experimentell) bieten Schutz gegen aktive Angriffe mittels Zwei-Faktor-Authentifizierung aller Mitglieder und immer aktiver Ende-zu-Ende-Verschlüsselung.</string>

@@ -701,7 +701,6 @@
     <string name="emoji_symbols">Симболи</string>
     <string name="emoji_flags">Заставе</string>
 
-
     <!-- automatically delete message -->
     <string name="delete_old_messages">Избриши старе поруке</string>
     <string name="autodel_device_title">Избриши поруке са уређаја</string>

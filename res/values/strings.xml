@@ -644,8 +644,8 @@
     <string name="pref_manage_keys">Manage Keys</string>
     <string name="pref_use_system_emoji">Use System Emoji</string>
     <string name="pref_use_system_emoji_explain">Turn off Delta Chat\'s built-in emoji support</string>
-    <string name="pref_use_builtin_camera">Use Built-In Camera</string>
-    <string name="pref_use_builtin_camera_explain">Built-in camera usually has less features</string>
+    <string name="pref_use_inapp_camera">Use In-App Camera</string>
+    <string name="pref_use_inapp_camera_explain">In-app camera usually has less features than the system camera</string>
     <string name="pref_app_access">App Access</string>
     <string name="pref_chats">Chats</string>
     <string name="pref_in_chat_sounds">In-Chat Sounds</string>
@@ -723,7 +723,6 @@
     <string name="emoji_flags">Flags</string>
 
     <!-- Reactions -->
-    <string name="ReactionsConversationView_plus">+%1$d</string>
     <string name="reactions_details_title">Reactions</string>
 
     <!-- automatically delete message -->
@@ -900,6 +899,7 @@
     <string name="contact_not_verified">Cannot verify %1$s.</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that verified the contact shown. -->
     <string name="verified_by">Verified by %1$s</string>
+    <string name="verified_by_you">Verified by you</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Changed setup for %1$s.</string>
     <string name="verified_group_explain">Verified groups (experimental) provide safety against active attacks. Members are verified with a second factor by other members and messages are always end-to-end-encrypted.</string>

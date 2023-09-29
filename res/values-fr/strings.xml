@@ -735,7 +735,6 @@
     <string name="emoji_symbols">Symboles</string>
     <string name="emoji_flags">Drapeaux</string>
 
-
     <!-- automatically delete message -->
     <string name="delete_old_messages">Supprimer les anciens messages</string>
     <string name="autodel_device_title">Supprimer les messages de l\'appareil</string>
