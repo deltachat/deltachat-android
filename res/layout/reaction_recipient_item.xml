@@ -11,8 +11,8 @@
         android:background="?attr/conversation_list_item_background"
         android:paddingLeft="16dp"
         android:paddingStart="16dp"
-        android:paddingRight="10dp"
-        android:paddingEnd="10dp">
+        android:paddingRight="16dp"
+        android:paddingEnd="16dp">
 
   <org.thoughtcrime.securesms.components.AvatarImageView
       android:id="@+id/contact_photo_image"
