@@ -30,4 +30,11 @@
         <item name="android:textColor">?conversation_item_outgoing_text_secondary_color</item>
         <item name="android:shadowRadius">0</item>
     </style>
+
+    <style name="AddReaction" parent="Base.TextAppearance.AppCompat.Body1">
+        <item name="android:paddingLeft">8sp</item>
+        <item name="android:paddingRight">8sp</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
 </resources>
