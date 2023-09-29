@@ -681,8 +681,9 @@ public class ConversationItem extends BaseConversationItem
       } else {
         reactionsView.setReactions(reactions.getReactions());
         reactionsView.setOnClickListener(v -> {
-          if (eventListener == null) return;
-          eventListener.onReactionClicked(current);
+          if (eventListener != null) {
+            eventListener.onReactionClicked(current);
+          }
         });
       }
     } catch (RpcException e) {
