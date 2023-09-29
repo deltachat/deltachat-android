@@ -77,7 +77,8 @@
         android:layout_height="wrap_content"
         android:paddingStart="7dp"
         android:paddingEnd="7dp"
-        android:gravity="center">
+        android:gravity="center"
+        android:background="@drawable/reaction_pill_background">
 
         <org.thoughtcrime.securesms.components.emoji.EmojiTextView
             android:text="👍"
