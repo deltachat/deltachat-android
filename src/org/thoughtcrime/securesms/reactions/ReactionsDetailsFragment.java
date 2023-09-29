@@ -60,7 +60,7 @@ public class ReactionsDetailsFragment extends DialogFragment implements DcEventC
 
     AlertDialog.Builder builder = new AlertDialog.Builder(requireActivity())
             .setTitle(R.string.reactions)
-            .setNegativeButton(R.string.cancel, null);
+            .setNegativeButton(R.string.ok, null);
     return builder.setView(view).create();
   }
 
