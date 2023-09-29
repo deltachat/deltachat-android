@@ -21,7 +21,7 @@ public class ReactionRecipientsAdapter extends RecyclerView.Adapter
   private final static String TAG = ReactionRecipientsAdapter.class.getSimpleName();
 
   private @NonNull ArrayList<Pair<Integer, String>> contactsReactions = new ArrayList<>();
-  private final LayoutInflater                li;
+  private final LayoutInflater                layoutInflater;
   private final ItemClickListener             clickListener;
   private final GlideRequests                 glideRequests;
 
@@ -79,7 +79,7 @@ public class ReactionRecipientsAdapter extends RecyclerView.Adapter
   @NonNull
   @Override
   public ReactionRecipientsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-    return new ReactionViewHolder(li.inflate(R.layout.reaction_recipient_item, parent, false), clickListener);
+    return new ReactionViewHolder(layoutInflater.inflate(R.layout.reaction_recipient_item, parent, false), clickListener);
   }
 
   @Override
