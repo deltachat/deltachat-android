@@ -723,7 +723,7 @@
     <string name="emoji_flags">Flags</string>
 
     <!-- Reactions -->
-    <string name="reactions_details_title">Reactions</string>
+    <string name="reactions">Reactions</string>
 
     <!-- automatically delete message -->
     <string name="delete_old_messages">Delete Old Messages</string>
