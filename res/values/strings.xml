@@ -724,6 +724,7 @@
 
     <!-- Reactions -->
     <string name="ReactionsConversationView_plus">+%1$d</string>
+    <string name="reactions_details_title">Reactions</string>
 
     <!-- automatically delete message -->
     <string name="delete_old_messages">Delete Old Messages</string>
