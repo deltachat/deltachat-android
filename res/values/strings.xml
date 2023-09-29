@@ -664,7 +664,10 @@
     <string name="pref_managekeys_export_secret_keys">Export Secret Keys</string>
     <string name="pref_managekeys_export_explain">Export secret keys to \"%1$s\"?</string>
     <string name="pref_managekeys_import_secret_keys">Import Secret Keys</string>
+    <!-- pref_managekeys_import_explain is deprecated, use pref_managekeys_import_explain_path and pref_managekeys_import_explain_tips -->
     <string name="pref_managekeys_import_explain">Import secret keys from \"%1$s\"?\n\n• Existing secret keys will not be deleted\n\n• The last imported key will be used as the new default key unless it has the word \"legacy\" in its filename.</string>
+    <string name="pref_managekeys_import_explain_path">Import secret keys from \"%1$s\"?</string>
+    <string name="pref_managekeys_import_explain_tips">• Existing secret keys will not be deleted\n\n• The last imported key will be used as the new default key unless it has the word \"legacy\" in its filename.</string>
     <string name="pref_managekeys_secret_keys_exported_to_x">Secret keys written successfully to \"%1$s\".</string>
     <string name="pref_managekeys_secret_keys_imported_from_x">Secret keys imported from \"%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
