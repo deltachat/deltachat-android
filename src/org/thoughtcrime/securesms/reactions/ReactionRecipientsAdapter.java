@@ -71,7 +71,7 @@ public class ReactionRecipientsAdapter extends RecyclerView.Adapter
                                    @Nullable ItemClickListener clickListener)
   {
     super();
-    this.li            = LayoutInflater.from(context);
+    this.layoutInflater = LayoutInflater.from(context);
     this.glideRequests = glideRequests;
     this.clickListener = clickListener;
   }
