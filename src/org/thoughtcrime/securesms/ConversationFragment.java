@@ -47,7 +47,6 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.ActionMode;
-import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.OnScrollListener;
@@ -873,7 +872,7 @@ public class ConversationFragment extends MessageSelectorFragment
       @Override
       public void onReactionClicked(DcMsg messageRecord) {
         ReactionsDetailsFragment dialog = new ReactionsDetailsFragment(messageRecord.getId());
-        dialog.show(((FragmentActivity) getActivity()).getSupportFragmentManager(), null);
+        dialog.show(getActivity().getSupportFragmentManager(), null);
       }
     }
 
