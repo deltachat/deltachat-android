@@ -64,6 +64,7 @@ import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.recipients.Recipient;
+import org.thoughtcrime.securesms.reactions.ReactionsDetailsFragment;
 import org.thoughtcrime.securesms.util.AccessibilityUtil;
 import org.thoughtcrime.securesms.util.Debouncer;
 import org.thoughtcrime.securesms.util.StickyHeaderDecoration;
@@ -866,6 +867,12 @@ public class ConversationFragment extends MessageSelectorFragment
       @Override
       public void onDownloadClicked(DcMsg messageRecord) {
         dcContext.downloadFullMsg(messageRecord.getId());
+      }
+
+      @Override
+      public void onReactionClicked(DcMsg messageRecord) {
+        ReactionsDetailsFragment dialog = new ReactionsDetailsFragment(messageRecord.getId());
+        dialog.show(getActivity().getSupportFragmentManager(), null);
       }
     }
 
