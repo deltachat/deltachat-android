@@ -99,6 +99,7 @@ public class ConversationListFragment extends Fragment
   private boolean                     archive;
   private Timer                       reloadTimer;
   private boolean                     chatlistJustLoaded;
+  private boolean                     reloadTimerInstantly;
 
   @Override
   public void onCreate(Bundle icicle) {
@@ -173,6 +174,7 @@ public class ConversationListFragment extends Fragment
         && !chatlistJustLoaded) {
       Log.i(TAG, "🤠 resuming chatlist: loading chatlist");
       loadChatlist();
+      reloadTimerInstantly = false;
     }
     chatlistJustLoaded = false;
 
@@ -186,14 +188,17 @@ public class ConversationListFragment extends Fragment
           list.getAdapter().notifyDataSetChanged();
         });
       }
-    }, 60 * 1000, 60 * 1000);
+    }, reloadTimerInstantly? 0 : 60 * 1000, 60 * 1000);
   }
 
   @Override
   public void onPause() {
     super.onPause();
+
     Log.i(TAG, "🤠 pausing chatlist: cancel update timer");
     reloadTimer.cancel();
+    reloadTimerInstantly = true;
+
     fab.stopPulse();
   }
 
