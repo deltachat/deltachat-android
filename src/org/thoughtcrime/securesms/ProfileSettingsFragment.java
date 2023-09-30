@@ -54,7 +54,7 @@ public class ProfileSettingsFragment extends Fragment
   private StickyHeaderDecoration listDecoration;
   private ProfileSettingsAdapter adapter;
   private ActionMode             actionMode;
-  private ActionModeCallback     actionModeCallback = new ActionModeCallback();
+  private final ActionModeCallback actionModeCallback = new ActionModeCallback();
 
 
   private Locale               locale;

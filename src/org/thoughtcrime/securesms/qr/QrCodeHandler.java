@@ -21,8 +21,8 @@ import org.thoughtcrime.securesms.util.Util;
 
 public class QrCodeHandler {
 
-    private Activity activity;
-    private DcContext dcContext;
+    private final Activity activity;
+    private final DcContext dcContext;
 
     public QrCodeHandler(Activity activity) {
         this.activity = activity;

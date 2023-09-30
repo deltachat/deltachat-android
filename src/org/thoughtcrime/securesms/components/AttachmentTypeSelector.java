@@ -61,7 +61,7 @@ public class AttachmentTypeSelector extends PopupWindow {
 
   private @Nullable View                      currentAnchor;
   private @Nullable AttachmentClickedListener listener;
-  private int chatId;
+  private final int chatId;
 
   public AttachmentTypeSelector(@NonNull Context context, @NonNull LoaderManager loaderManager, @Nullable AttachmentClickedListener listener, int chatId) {
     super(context);

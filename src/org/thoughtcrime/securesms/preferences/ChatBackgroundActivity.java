@@ -25,6 +25,7 @@ import org.thoughtcrime.securesms.PassphraseRequiredActionBarActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.mms.AttachmentManager;
 import org.thoughtcrime.securesms.mms.GlideApp;
+import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.ServiceUtil;
 import org.thoughtcrime.securesms.util.Prefs;
 
@@ -151,7 +152,7 @@ public class ChatBackgroundActivity extends PassphraseRequiredActionBarActivity 
     }
 
     private void setDefaultLayoutBackgroundImage() {
-        if(dynamicTheme.isDarkTheme(this)) {
+        if(DynamicTheme.isDarkTheme(this)) {
             Drawable image = getResources().getDrawable(R.drawable.background_hd_dark);
             preview.setImageDrawable(image);
         }

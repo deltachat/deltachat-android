@@ -15,7 +15,7 @@ class DecryptableStreamLocalUriFetcher extends StreamLocalUriFetcher {
 
   private static final String TAG = DecryptableStreamLocalUriFetcher.class.getSimpleName();
 
-  private Context context;
+  private final Context context;
 
   DecryptableStreamLocalUriFetcher(Context context, Uri uri) {
     super(context.getContentResolver(), uri);

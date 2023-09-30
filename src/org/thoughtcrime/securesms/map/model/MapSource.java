@@ -33,9 +33,9 @@ public class MapSource {
     private final String lineFeatureCollection;
     private final String displayName;
 
-    private int color;
-    private int colorArgb;
-    private int contactId;
+    private final int color;
+    private final int colorArgb;
+    private final int contactId;
 
     public MapSource(DcContact contact) {
         int contactId = contact.getId();

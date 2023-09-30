@@ -69,7 +69,7 @@ public class RepeatableImageKey extends ImageButton {
   }
 
   private class RepeaterTouchListener implements OnTouchListener {
-    private Repeater repeater;
+    private final Repeater repeater;
 
     public RepeaterTouchListener() {
       this.repeater = new Repeater();

@@ -207,7 +207,7 @@ public class QrActivity extends BaseActionBarActivity {
 
     private class ProfilePagerAdapter extends FragmentStatePagerAdapter {
 
-        private QrActivity activity;
+        private final QrActivity activity;
 
         ProfilePagerAdapter(QrActivity activity, FragmentManager fragmentManager) {
             super(fragmentManager, FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);

@@ -55,7 +55,7 @@ public class DecryptableStreamUriLoader implements ModelLoader<DecryptableUri, I
   }
 
   public static class DecryptableUri implements Key {
-    public @NonNull Uri          uri;
+    public final @NonNull Uri uri;
 
     public DecryptableUri(@NonNull Uri uri) {
       this.uri = uri;

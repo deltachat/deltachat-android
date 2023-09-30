@@ -43,7 +43,7 @@ public class VideoRecoder {
   private final static int PROCESSOR_TYPE_MTK = 3;
   private final static int PROCESSOR_TYPE_SEC = 4;
   private final static int PROCESSOR_TYPE_TI = 5;
-  private boolean cancelCurrentVideoConversion = false;
+  private final boolean cancelCurrentVideoConversion = false;
   private final Object videoConvertSync = new Object();
 
   private void checkConversionCanceled() throws Exception {

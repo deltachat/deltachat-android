@@ -15,7 +15,7 @@ public class QuoteModel {
   private final DcContact author;
   private final String           text;
   private final List<Attachment> attachments;
-  private DcMsg quotedMsg;
+  private final DcMsg quotedMsg;
 
   public QuoteModel(DcContact author, String text, boolean missing, @Nullable List<Attachment> attachments, DcMsg quotedMsg) {
     this.author      = author;

@@ -23,7 +23,7 @@ import java.util.Set;
 public abstract class BaseConversationItem extends LinearLayout
     implements BindableConversationItem
 {
-  static long PULSE_HIGHLIGHT_MILLIS = 500;
+  static final long PULSE_HIGHLIGHT_MILLIS = 500;
 
   protected DcMsg         messageRecord;
   protected DcChat        dcChat;

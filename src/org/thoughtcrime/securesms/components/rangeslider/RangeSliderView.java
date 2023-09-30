@@ -21,23 +21,23 @@ public class RangeSliderView extends View {
 
     private static final String TAG = RangeSliderView.class.getName();
 
-    protected int trackTintColor;
-    protected int trackHighlightTintColor;
-    protected float trackHeight;
-    protected float thumbInnerRadius;
-    protected float thumbOutlineSize;
-    protected float displayTextFontSize;
-    protected float displayTextBasicOffsetY;
-    protected int sliderPaddingLeft;
-    protected int sliderPaddingRight;
+    protected final int trackTintColor;
+    protected final int trackHighlightTintColor;
+    protected final float trackHeight;
+    protected final float thumbInnerRadius;
+    protected final float thumbOutlineSize;
+    protected final float displayTextFontSize;
+    protected final float displayTextBasicOffsetY;
+    protected final int sliderPaddingLeft;
+    protected final int sliderPaddingRight;
 
-    private ThumbLayer minValueThumb;
-    private TextLayer minValueDisplayLabel;
+    private final ThumbLayer minValueThumb;
+    private final TextLayer minValueDisplayLabel;
 
-    private ThumbLayer maxValueThumb;
-    private TextLayer maxValueDisplayLabel;
+    private final ThumbLayer maxValueThumb;
+    private final TextLayer maxValueDisplayLabel;
 
-    private TrackLayer track;
+    private final TrackLayer track;
 
     private ArrayList<Integer> values;
 
@@ -56,7 +56,7 @@ public class RangeSliderView extends View {
     private boolean isThumbViewLocked;
 
     private OnValueChangedListener onValueChangedListener;
-    GestureDetector longPressDetector;
+    final GestureDetector longPressDetector;
 
 
     public interface OnValueChangedListener {

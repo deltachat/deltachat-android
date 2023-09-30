@@ -19,8 +19,8 @@ import org.thoughtcrime.securesms.util.ServiceUtil;
 
 class ConversationItemSwipeCallback extends ItemTouchHelper.SimpleCallback {
 
-  private static float SWIPE_SUCCESS_DX           = ConversationSwipeAnimationHelper.TRIGGER_DX;
-  private static long  SWIPE_SUCCESS_VIBE_TIME_MS = 10;
+  private static final float SWIPE_SUCCESS_DX           = ConversationSwipeAnimationHelper.TRIGGER_DX;
+  private static final long  SWIPE_SUCCESS_VIBE_TIME_MS = 10;
 
   private boolean swipeBack;
   private boolean shouldTriggerSwipeFeedback;

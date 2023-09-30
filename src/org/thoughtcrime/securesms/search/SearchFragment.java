@@ -1,6 +1,7 @@
 package org.thoughtcrime.securesms.search;
 
 
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -67,7 +68,7 @@ public class SearchFragment extends Fragment implements SearchListAdapter.EventL
 
     this.locale = (Locale) getArguments().getSerializable(EXTRA_LOCALE);
 
-    viewModel = ViewModelProviders.of(this, new SearchViewModel.Factory(getContext())).get(SearchViewModel.class);
+    viewModel = ViewModelProviders.of(this, (ViewModelProvider.Factory) new SearchViewModel.Factory(getContext())).get(SearchViewModel.class);
     DcEventCenter eventCenter = DcHelper.getEventCenter(getContext());
     eventCenter.addObserver(DcContext.DC_EVENT_CHAT_MODIFIED, this);
     eventCenter.addObserver(DcContext.DC_EVENT_CONTACTS_CHANGED, this);

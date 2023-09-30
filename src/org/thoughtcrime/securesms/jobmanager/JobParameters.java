@@ -81,12 +81,12 @@ public class JobParameters implements Serializable {
   }
 
   public static class Builder {
-    private List<Requirement> requirements    = new LinkedList<>();
-    private int               retryCount      = 100;
-    private long              retryDuration   = 0;
-    private String            groupId         = null;
-    private boolean           wakeLock        = false;
-    private long              wakeLockTimeout = 0;
+    private final List<Requirement> requirements    = new LinkedList<>();
+    private final int               retryCount      = 100;
+    private final long              retryDuration   = 0;
+    private String                  groupId         = null;
+    private final boolean           wakeLock        = false;
+    private final long              wakeLockTimeout = 0;
 
     /**
      * Specify a groupId the job should belong to.  Jobs with the same groupId are guaranteed to be

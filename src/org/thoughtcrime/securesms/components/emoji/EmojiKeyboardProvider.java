@@ -111,10 +111,10 @@ public class EmojiKeyboardProvider implements MediaKeyboardProvider,
   }
 
   private static class EmojiPagerAdapter extends PagerAdapter {
-    private Context                   context;
-    private List<EmojiPageModel>      pages;
-    private EmojiEventListener emojiSelectionListener;
-    private VariationSelectorListener variationSelectorListener;
+    private final Context                   context;
+    private final List<EmojiPageModel>      pages;
+    private final EmojiEventListener emojiSelectionListener;
+    private final VariationSelectorListener variationSelectorListener;
 
     public EmojiPagerAdapter(@NonNull Context context,
                              @NonNull List<EmojiPageModel> pages,

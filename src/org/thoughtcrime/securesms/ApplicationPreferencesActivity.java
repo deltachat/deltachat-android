@@ -235,7 +235,7 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
     }
 
     private class CategoryClickListener implements Preference.OnPreferenceClickListener {
-      private String category;
+      private final String category;
 
       CategoryClickListener(String category) {
         this.category = category;

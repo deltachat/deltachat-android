@@ -152,8 +152,8 @@ public class EmojiProvider {
   class EmojiDrawable extends Drawable {
     private final EmojiDrawInfo info;
     private       Bitmap        bmp;
-    private       float         intrinsicWidth;
-    private       float         intrinsicHeight;
+    private final float         intrinsicWidth;
+    private final float         intrinsicHeight;
 
     @Override
     public int getIntrinsicWidth() {

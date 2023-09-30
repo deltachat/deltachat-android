@@ -32,7 +32,7 @@ public class CustomDefaultPreference extends DialogPreference {
   private final String customPreference;
   private final String customToggle;
 
-  private CustomPreferenceValidator validator;
+  private final CustomPreferenceValidator validator;
   private String                    defaultValue;
 
   public CustomDefaultPreference(Context context, AttributeSet attrs) {

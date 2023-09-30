@@ -138,7 +138,7 @@ public class StickerSelectFragment extends Fragment implements LoaderManager.Loa
     class StickerViewHolder extends RecyclerView.ViewHolder {
 
       private String fileName;
-      private ImageView image;
+      private final ImageView image;
 
       StickerViewHolder(View itemView) {
         super(itemView);

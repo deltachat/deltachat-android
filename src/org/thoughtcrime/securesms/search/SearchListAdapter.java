@@ -39,8 +39,8 @@ class SearchListAdapter extends    RecyclerView.Adapter<SearchListAdapter.Search
   @NonNull
   private SearchResult searchResult = SearchResult.EMPTY;
 
-  Context              context;
-  DcContext            dcContext;
+  final Context              context;
+  final DcContext            dcContext;
 
   SearchListAdapter(Context                context,
                     @NonNull GlideRequests glideRequests,
@@ -234,7 +234,7 @@ class SearchListAdapter extends    RecyclerView.Adapter<SearchListAdapter.Search
 
   public static class HeaderViewHolder extends RecyclerView.ViewHolder {
 
-    private TextView titleView;
+    private final TextView titleView;
 
     public HeaderViewHolder(View itemView) {
       super(itemView);

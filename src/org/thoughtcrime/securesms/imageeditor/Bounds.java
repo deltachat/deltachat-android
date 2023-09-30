@@ -33,7 +33,7 @@ public final class Bounds {
     return new RectF(LEFT, TOP, RIGHT, BOTTOM);
   }
 
-  public static RectF FULL_BOUNDS = newFullBounds();
+  public static final RectF FULL_BOUNDS = newFullBounds();
 
   public static boolean contains(float x, float y) {
     return x >= FULL_BOUNDS.left && x <= FULL_BOUNDS.right &&

@@ -5,7 +5,7 @@ import android.graphics.Paint;
 
 class TextLayer {
 
-    private Paint paint;
+    private final Paint paint;
 
     TextLayer(float fontSize, int color) {
         paint = new Paint();

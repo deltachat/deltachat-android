@@ -10,7 +10,7 @@ import androidx.work.WorkerParameters;
 import org.thoughtcrime.securesms.util.Util;
 
 public class FetchWorker extends Worker {
-    private @NonNull Context context;
+    private final @NonNull Context context;
 
     public FetchWorker(
             @NonNull Context context,

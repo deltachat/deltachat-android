@@ -13,7 +13,7 @@ public class ForegroundDetector implements Application.ActivityLifecycleCallback
 
     private int refs = 0;
     private static ForegroundDetector Instance = null;
-    private ApplicationContext application;
+    private final ApplicationContext application;
 
     public static ForegroundDetector getInstance() {
         return Instance;

@@ -17,12 +17,12 @@ public class EmojiPageView extends FrameLayout implements VariationSelectorListe
   private static final String TAG = EmojiPageView.class.getSimpleName();
 
   private EmojiPageModel                   model;
-  private EmojiPageViewGridAdapter         adapter;
-  private RecyclerView                     recyclerView;
-  private GridLayoutManager                layoutManager;
-  private RecyclerView.OnItemTouchListener scrollDisabler;
-  private VariationSelectorListener        variationSelectorListener;
-  private EmojiVariationSelectorPopup      popup;
+  private final EmojiPageViewGridAdapter         adapter;
+  private final RecyclerView                     recyclerView;
+  private final GridLayoutManager                layoutManager;
+  private final RecyclerView.OnItemTouchListener scrollDisabler;
+  private final VariationSelectorListener        variationSelectorListener;
+  private final EmojiVariationSelectorPopup      popup;
 
   public EmojiPageView(@NonNull Context context,
                        @NonNull EmojiEventListener emojiSelectionListener,

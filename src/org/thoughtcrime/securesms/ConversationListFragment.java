@@ -95,7 +95,7 @@ public class ConversationListFragment extends Fragment
   private TextView                    emptySearch;
   private PulsingFloatingActionButton fab;
   private Locale                      locale;
-  private String                      queryFilter  = "";
+  private final String                queryFilter  = "";
   private boolean                     archive;
   private Timer                       reloadTimer;
   private boolean                     chatlistJustLoaded;

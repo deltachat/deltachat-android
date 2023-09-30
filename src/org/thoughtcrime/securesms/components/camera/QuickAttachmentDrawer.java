@@ -53,7 +53,7 @@ public class QuickAttachmentDrawer extends ViewGroup implements InputView, Camer
   private ObjectAnimator            animator;
 
   private DrawerState drawerState      = DrawerState.COLLAPSED;
-  private Rect        drawChildrenRect = new Rect();
+  private final Rect        drawChildrenRect = new Rect();
   private boolean     paused           = false;
 
   public QuickAttachmentDrawer(Context context) {

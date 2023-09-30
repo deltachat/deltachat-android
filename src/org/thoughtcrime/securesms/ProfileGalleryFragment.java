@@ -45,7 +45,7 @@ public class ProfileGalleryFragment
   protected TextView noMedia;
   protected RecyclerView recyclerView;
   private StickyHeaderGridLayoutManager gridManager;
-  private ActionModeCallback actionModeCallback = new ActionModeCallback();
+  private final ActionModeCallback actionModeCallback = new ActionModeCallback();
 
   private int                  chatId;
   private Locale               locale;

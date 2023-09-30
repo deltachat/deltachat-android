@@ -19,9 +19,9 @@ import org.thoughtcrime.securesms.connect.DcHelper;
  */
 
 public class AddPoiView extends LinearLayoutCompat {
-    private ImageButton sendView;
-    private EditText messageView;
-    private ProgressBar progressBar;
+    private final ImageButton sendView;
+    private final EditText messageView;
+    private final ProgressBar progressBar;
     private LatLng latLng;
     private SendingTask.OnMessageSentListener listener;
     private int chatId;

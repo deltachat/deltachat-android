@@ -258,7 +258,7 @@ public class DcHelper {
     return Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
   }
 
-  public static HashMap<String, Integer> sharedFiles = new HashMap<>();
+  public static final HashMap<String, Integer> sharedFiles = new HashMap<>();
 
   public static void openForViewOrShare(Context activity, int msg_id, String cmd) {
     DcContext dcContext = getContext(activity);

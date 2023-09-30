@@ -51,12 +51,13 @@ import java.security.SecureRandom;
 import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Objects;
 import java.util.concurrent.CountDownLatch;
 
 public class Util {
   private static final String TAG = Util.class.getSimpleName();
 
-  public static Handler handler = new Handler(Looper.getMainLooper());
+  public static final Handler handler = new Handler(Looper.getMainLooper());
 
   public static String join(Collection<String> list, String delimiter) {
     StringBuilder result = new StringBuilder();
@@ -244,7 +245,7 @@ public class Util {
   }
 
   public static boolean equals(@Nullable Object a, @Nullable Object b) {
-    return a == b || (a != null && a.equals(b));
+    return Objects.equals(a, b);
   }
 
   public static int hashCode(@Nullable Object... objects) {

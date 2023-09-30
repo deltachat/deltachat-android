@@ -42,8 +42,8 @@ public class ThumbnailView extends FrameLayout {
   private static final int    MIN_HEIGHT = 2;
   private static final int    MAX_HEIGHT = 3;
 
-  private ImageView       image;
-  private View            playOverlay;
+  private final ImageView       image;
+  private final View            playOverlay;
   private OnClickListener parentClickListener;
 
   private final int[] dimens        = new int[2];

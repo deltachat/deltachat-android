@@ -41,12 +41,12 @@ public class DataCollector {
 
 
     private final DcContext dcContext;
-    private ConcurrentHashMap<Integer, MapSource> contactMapSources;
-    private ConcurrentHashMap<String, LinkedList<Feature>> featureCollections;
-    private ConcurrentHashMap<Integer, Feature> lastPositions;
-    private Set<String> emojiCodePoints;
-    private LatLngBounds.Builder boundingBuilder;
-    private EmojiProvider emojiProvider;
+    private final ConcurrentHashMap<Integer, MapSource> contactMapSources;
+    private final ConcurrentHashMap<String, LinkedList<Feature>> featureCollections;
+    private final ConcurrentHashMap<Integer, Feature> lastPositions;
+    private final Set<String> emojiCodePoints;
+    private final LatLngBounds.Builder boundingBuilder;
+    private final EmojiProvider emojiProvider;
 
     public DataCollector(DcContext dcContext,
                          ConcurrentHashMap<Integer, MapSource> contactMapSources,

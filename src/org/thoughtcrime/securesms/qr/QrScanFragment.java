@@ -95,7 +95,7 @@ public class QrScanFragment extends Fragment {
     }
 
     public class MyCaptureManager extends CaptureManager {
-        private Activity myActivity;
+        private final Activity myActivity;
 
         public MyCaptureManager(Activity activity, DecoratedBarcodeView barcodeView) {
             super(activity, barcodeView);

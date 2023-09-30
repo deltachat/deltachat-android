@@ -51,7 +51,7 @@ public class MP4Builder {
     private long dataOffset = 0;
     private long writedSinceLastMdat = 0;
     private boolean writeNewMdat = true;
-    private HashMap<Track, long[]> track2SampleSizes = new HashMap<>();
+    private final HashMap<Track, long[]> track2SampleSizes = new HashMap<>();
     private ByteBuffer sizeBuffer = null;
 
     public MP4Builder createMovie(Mp4Movie mp4Movie) throws Exception {
