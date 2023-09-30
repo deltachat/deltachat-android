@@ -12,6 +12,7 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -33,18 +34,25 @@ import org.thoughtcrime.securesms.LogViewActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.mms.AttachmentManager;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.ScreenLockUtil;
+import org.thoughtcrime.securesms.util.StorageUtil;
+import org.thoughtcrime.securesms.util.StreamUtil;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 
 public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
                                         implements DcEventCenter.DcEventDelegate
 {
   private static final String TAG = AdvancedPreferenceFragment.class.getSimpleName();
-
-
-
+  public static final int PICK_SELF_KEYS = 29923;
 
   CheckBoxPreference preferE2eeCheckbox;
   CheckBoxPreference sentboxWatchCheckbox;
@@ -181,9 +189,34 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
   @Override
   public void onActivityResult(int requestCode, int resultCode, Intent data) {
     super.onActivityResult(requestCode, resultCode, data);
-      if (resultCode == RESULT_OK && requestCode == REQUEST_CODE_CONFIRM_CREDENTIALS_KEYS) {
-          exportKeys();
+    if (resultCode != RESULT_OK) return;
+    if (requestCode == REQUEST_CODE_CONFIRM_CREDENTIALS_KEYS) {
+        exportKeys();
+    } else if (requestCode == PICK_SELF_KEYS) {
+        Uri uri = (data != null ? data.getData() : null);
+        if (uri == null) {
+            Log.e(TAG, " Can't import null URI");
+            return;
+        }
+      try {
+        String name = AttachmentManager.getFileName(getContext(), uri);
+        if (name == null || name.isEmpty()) name = "FILE";
+        File file = copyToCacheDir(uri);
+        showImportKeysDialog(file.getAbsolutePath(), name);
+      } catch (IOException e) {
+        e.printStackTrace();
       }
+    }
+  }
+
+  protected File copyToCacheDir(Uri uri) throws IOException {
+    try (InputStream inputStream = requireActivity().getContentResolver().openInputStream(uri)) {
+      File file = File.createTempFile("tmp-keys-file", ".tmp", requireActivity().getCacheDir());
+      try (OutputStream outputStream = new FileOutputStream(file)) {
+        StreamUtil.copy(inputStream, outputStream);
+      }
+      return file;
+    }
   }
 
   public static @NonNull String getVersion(@Nullable Context context) {
@@ -297,6 +330,15 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
   /***********************************************************************************************
    * Key Import/Export
    **********************************************************************************************/
+  protected void showImportKeysDialog(String imexPath, String pathAsDisplayedToUser) {
+    new AlertDialog.Builder(getActivity())
+      .setTitle(R.string.pref_managekeys_import_secret_keys)
+      .setMessage(getActivity().getString(R.string.pref_managekeys_import_explain, pathAsDisplayedToUser))
+      .setNegativeButton(android.R.string.cancel, null)
+      .setPositiveButton(android.R.string.ok, (dialogInterface2, i2) -> startImex(DcContext.DC_IMEX_IMPORT_SELF_KEYS, imexPath, pathAsDisplayedToUser))
+      .show();
+  }
+
   private class ManageKeysListener implements Preference.OnPreferenceClickListener {
     @Override
     public boolean onPreferenceClick(Preference preference) {
@@ -330,12 +372,12 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
                           .show();
                     }
                     else {
-                      new AlertDialog.Builder(getActivity())
-                          .setTitle(R.string.pref_managekeys_import_secret_keys)
-                          .setMessage(getActivity().getString(R.string.pref_managekeys_import_explain, DcHelper.getImexDir().getAbsolutePath()))
-                          .setNegativeButton(android.R.string.cancel, null)
-                          .setPositiveButton(android.R.string.ok, (dialogInterface2, i2) -> startImex(DcContext.DC_IMEX_IMPORT_SELF_KEYS))
-                          .show();
+                      if (Build.VERSION.SDK_INT >= 30) {
+                        AttachmentManager.selectMediaType(getActivity(), "application/pgp-keys", new String[]{"text/plain"}, PICK_SELF_KEYS, StorageUtil.getDownloadUri());
+                      } else {
+                        String path = DcHelper.getImexDir().getAbsolutePath();
+                        showImportKeysDialog(path, path);
+                      }
                     }
                   }
               )

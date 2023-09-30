@@ -65,7 +65,6 @@ import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 import org.thoughtcrime.securesms.scribbles.ScribbleActivity;
 import org.thoughtcrime.securesms.util.MediaUtil;
-import org.thoughtcrime.securesms.util.StorageUtil;
 import org.thoughtcrime.securesms.util.ThemeUtil;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.guava.Optional;
@@ -419,6 +418,24 @@ public class AttachmentManager {
     SlideDeck deck = new SlideDeck();
     if (slide.isPresent()) deck.addSlide(slide.get());
     return deck;
+  }
+
+  public static @Nullable String getFileName(Context context, Uri uri) {
+    String result = null;
+    if (uri.getScheme().equals("content")) {
+      Cursor cursor = context.getContentResolver().query(uri, new String[]{OpenableColumns.DISPLAY_NAME}, null, null, null);
+      try {
+        if (cursor != null && cursor.moveToFirst()) {
+          result = cursor.getString(cursor.getColumnIndexOrThrow(OpenableColumns.DISPLAY_NAME));
+        }
+      } finally {
+        if (cursor != null) cursor.close();
+      }
+    }
+    if (result == null) {
+      result = uri.getLastPathSegment();
+    }
+    return result;
   }
 
   public static void selectDocument(Activity activity, int requestCode) {
