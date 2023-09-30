@@ -37,6 +37,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMsg;
@@ -554,6 +555,12 @@ public class AttachmentManager {
               captureIntent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
               captureIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
               activity.startActivityForResult(captureIntent, requestCode);
+            } else {
+              new AlertDialog.Builder(activity)
+                .setCancelable(false)
+                .setMessage("Video recording not available")
+                .setPositiveButton(android.R.string.ok, null)
+                .show();
             }
           } catch (Exception e) {
             Log.w(TAG, e);
