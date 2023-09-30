@@ -12,10 +12,12 @@
     android:paddingEnd="7dp"
     android:gravity="center">
 
-  <org.thoughtcrime.securesms.components.emoji.EmojiImageView
+  <org.thoughtcrime.securesms.components.emoji.EmojiTextView
       android:id="@+id/reactions_pill_emoji"
-      android:layout_width="17dp"
-      android:layout_height="17dp" />
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:maxLines="1"
+      android:textSize="16dp" />
 
   <Space
       android:id="@+id/reactions_pill_spacer"
