@@ -12,6 +12,8 @@ import android.os.Build;
 import android.util.Log;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
+
 import com.b44t.messenger.DcMsg;
 import com.coremedia.iso.IsoFile;
 import com.coremedia.iso.boxes.Box;
@@ -771,10 +773,13 @@ public class VideoRecoder {
     return size;
   }
 
-  private static void logNtoast(Context context, String str)
+  private static void alert(Context context, String str)
   {
-    Log.w(TAG, str);
-    Util.runOnMain(()->Toast.makeText(context, str, Toast.LENGTH_LONG).show());
+    Util.runOnMain(() -> new AlertDialog.Builder(context)
+      .setMessage(str)
+      .setCancelable(false)
+      .setPositiveButton(android.R.string.ok, null)
+      .show());
   }
 
   // prepareVideo() assumes the msg object is set up properly to being sent;
@@ -789,7 +794,7 @@ public class VideoRecoder {
       // try to get information from video file
       VideoEditedInfo vei = getVideoEditInfoFromFile(inPath);
       if (vei == null) {
-        logNtoast(context, String.format("recoding for %s failed: cannot get info", inPath));
+        alert(context, String.format("Recoding failed for %s: cannot get info", inPath));
         return false;
       }
       vei.rotationValue = vei.originalRotationValue;
@@ -806,7 +811,7 @@ public class VideoRecoder {
       msg.setDuration((int)vei.originalDurationMs);
 
       if (!canRecode()) {
-        logNtoast(context, String.format("recoding for %s failed: this system cannot recode videos", inPath));
+        alert(context, String.format("Recoding failed for %s: this system cannot recode videos", inPath));
         return false;
       }
 
@@ -861,7 +866,7 @@ public class VideoRecoder {
           vei.resultVideoBitrate, vei.originalDurationMs, vei.originalAudioBytes);
 
       if (vei.estimatedBytes > MAX_BYTES+MAX_BYTES/4) {
-        logNtoast(context, String.format("recoding for %s failed: resulting file probably too large", inPath));
+        alert(context, String.format("Recoding failed for %s: resulting file probably too large", inPath));
         return false;
       }
 
@@ -869,12 +874,12 @@ public class VideoRecoder {
       String tempPath = DcHelper.getBlobdirFile(DcHelper.getContext(context), inPath);
       VideoRecoder videoRecoder = new VideoRecoder();
       if (!videoRecoder.convertVideo(vei, tempPath)) {
-        logNtoast(context, String.format("recoding for %s failed: cannot convert to temporary file %s", inPath, tempPath));
+        alert(context, String.format("Recoding failed for %s: cannot convert to temporary file %s", inPath, tempPath));
         return false;
       }
 
       if (!Util.moveFile(tempPath, inPath)) {
-        logNtoast(context, String.format("recoding for %s failed: cannot move temporary file %s", inPath, tempPath));
+        alert(context, String.format("Recoding failed for %s: cannot move temporary file %s", inPath, tempPath));
         return false;
       }
 
