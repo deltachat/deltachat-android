@@ -38,7 +38,6 @@ import org.thoughtcrime.securesms.qr.RegistrationQrActivity;
 import org.thoughtcrime.securesms.service.GenericForegroundService;
 import org.thoughtcrime.securesms.service.NotificationController;
 import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
-import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.StorageUtil;
 import org.thoughtcrime.securesms.util.StreamUtil;
 import org.thoughtcrime.securesms.util.Util;
@@ -66,9 +65,13 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
     private NotificationController notificationController;
 
     @Override
+    protected void onPreCreate() {
+      dynamicTheme = new DynamicNoActionBarTheme();
+      super.onPreCreate();
+    }
+
+    @Override
     public void onCreate(Bundle bundle) {
-        DynamicTheme dynamicTheme = new DynamicNoActionBarTheme();
-        dynamicTheme.onCreate(this);
         super.onCreate(bundle);
         setContentView(R.layout.welcome_activity);
 
