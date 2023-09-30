@@ -429,7 +429,6 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
   @Override
   public void onActivityResult(int reqCode, int resultCode, final Intent data) {
     super.onActivityResult(reqCode, resultCode, data);
-    Uri outputFile = Uri.fromFile(new File(getCacheDir(), "cropped"));
 
     if (resultCode != Activity.RESULT_OK)
       return;
