@@ -420,7 +420,6 @@ public class AttachmentManager {
     return deck;
   }
 
-
   public static @Nullable String getFileName(Context context, Uri uri) {
     String result = null;
     if (uri.getScheme().equals("content")) {
