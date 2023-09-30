@@ -34,9 +34,9 @@ public class DataCollectionTask extends AsyncTask<Void, Void, Set<String>> {
 
     private final int chatId;
     private final int[] contactIds;
-    private ConcurrentHashMap<Integer, MapSource> contactMapSources;
-    private ConcurrentHashMap<String, LinkedList<Feature>> featureCollections;
-    private ConcurrentHashMap<Integer, Feature> lastPositions;
+    private final ConcurrentHashMap<Integer, MapSource> contactMapSources;
+    private final ConcurrentHashMap<String, LinkedList<Feature>> featureCollections;
+    private final ConcurrentHashMap<Integer, Feature> lastPositions;
     private final LatLngBounds.Builder boundingBuilder;
     private final DcContext dcContext;
     private final DataCollectionCallback callback;

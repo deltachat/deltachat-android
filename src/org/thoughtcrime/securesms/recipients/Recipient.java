@@ -55,15 +55,15 @@ public class Recipient {
 
   private final @NonNull Address address;
 
-  private @Nullable String  customLabel;
+  private final @Nullable String  customLabel;
 
   private @Nullable Uri                  systemContactPhoto;
-  private           Uri                  contactUri;
+  private final Uri                  contactUri;
 
-  private @Nullable String         profileName;
+  private final @Nullable String         profileName;
   private @Nullable String         profileAvatar;
 
-  private @Nullable DcChat dcChat;
+  private final @Nullable DcChat dcChat;
   private @Nullable DcContact dcContact;
 
   public static @NonNull Recipient fromChat(@NonNull Context context, int dcMsgId) {

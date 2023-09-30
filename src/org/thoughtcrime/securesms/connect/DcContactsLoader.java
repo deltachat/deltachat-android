@@ -65,8 +65,8 @@ public class DcContactsLoader extends AsyncLoader<DcContactsLoader.Ret> {
     }
 
     public class Ret {
-        public int[]  ids;
-        public String query;
+        public final int[]  ids;
+        public final String query;
 
         Ret(int[] ids, String query) {
             this.ids   = ids;

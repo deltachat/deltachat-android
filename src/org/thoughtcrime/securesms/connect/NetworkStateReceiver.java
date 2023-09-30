@@ -8,8 +8,6 @@ import android.net.NetworkInfo;
 import android.os.Build;
 import android.util.Log;
 
-import com.b44t.messenger.DcContext;
-
 public class NetworkStateReceiver extends BroadcastReceiver {
 
     private int debugConnectedCount;

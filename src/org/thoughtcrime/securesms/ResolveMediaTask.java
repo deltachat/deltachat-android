@@ -6,7 +6,6 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Process;
 import android.provider.OpenableColumns;
-import androidx.annotation.Nullable;
 import android.util.Log;
 
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
@@ -29,10 +28,10 @@ public class ResolveMediaTask extends AsyncTask<Uri, Void, Uri> {
             void onMediaResolved(Uri uri);
         }
 
-        private WeakReference<Activity> contextRef;
-        private WeakReference<OnMediaResolvedListener> listenerWeakReference;
+        private final WeakReference<Activity> contextRef;
+        private final WeakReference<OnMediaResolvedListener> listenerWeakReference;
 
-        private static HashSet<ResolveMediaTask> instances = new HashSet<>();
+        private static final HashSet<ResolveMediaTask> instances = new HashSet<>();
 
         ResolveMediaTask(Activity activityContext, ResolveMediaTask.OnMediaResolvedListener listener) {
             this.contextRef = new WeakReference<>(activityContext);

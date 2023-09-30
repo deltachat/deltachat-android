@@ -296,11 +296,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   @Override
-  protected void onStart() {
-    super.onStart();
-  }
-
-  @Override
   protected void onResume() {
     super.onResume();
     quickAttachmentDrawer.onResume();
@@ -326,11 +321,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     quickAttachmentDrawer.onPause();
     inputPanel.onPause();
     AudioSlidePlayer.stopAll();
-  }
-
-  @Override
-  protected void onStop() {
-    super.onStop();
   }
 
   @Override

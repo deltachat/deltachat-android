@@ -94,7 +94,7 @@ public class AttachmentManager {
   private WebxdcView                 webxdcView;
   //private SignalMapView              mapView;
 
-  private @NonNull  List<Uri>       garbage = new LinkedList<>();
+  private final @NonNull  List<Uri>       garbage = new LinkedList<>();
   private @NonNull  Optional<Slide> slide   = Optional.absent();
   private @Nullable Uri             imageCaptureUri;
   private @Nullable Uri             videoCaptureUri;

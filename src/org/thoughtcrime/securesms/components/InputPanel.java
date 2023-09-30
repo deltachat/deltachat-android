@@ -22,7 +22,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.view.ViewCompat;
 
 import com.b44t.messenger.DcMsg;
 import com.b44t.messenger.util.concurrent.ListenableFuture;

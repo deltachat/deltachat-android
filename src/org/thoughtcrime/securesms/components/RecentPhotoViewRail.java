@@ -132,7 +132,7 @@ public class RecentPhotoViewRail extends FrameLayout implements LoaderManager.Lo
 
     static class RecentPhotoViewHolder extends RecyclerView.ViewHolder {
 
-      ImageView imageView;
+      final ImageView imageView;
 
       RecentPhotoViewHolder(View itemView) {
         super(itemView);

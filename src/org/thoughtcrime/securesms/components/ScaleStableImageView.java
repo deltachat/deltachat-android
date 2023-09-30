@@ -38,7 +38,7 @@ public class ScaleStableImageView
 
     private Drawable defaultDrawable;
     private Drawable currentDrawable;
-    private Map<String, Drawable> storedSizes = new HashMap<>();
+    private final Map<String, Drawable> storedSizes = new HashMap<>();
 
     public ScaleStableImageView(Context context) {
         this(context, null);

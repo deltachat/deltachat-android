@@ -602,8 +602,8 @@ public class NotificationCenter {
     }
 
   private class ChatData {
-    public int accountId;
-    public int chatId;
+    public final int accountId;
+    public final int chatId;
 
     public ChatData(int accountId, int chatId) {
         this.accountId = accountId;

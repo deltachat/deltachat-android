@@ -27,20 +27,20 @@ import java.util.Map;
 @TargetApi(16)
 public class Track {
     private long trackId = 0;
-    private ArrayList<Sample> samples = new ArrayList<>();
+    private final ArrayList<Sample> samples = new ArrayList<>();
     private long duration = 0;
     private String handler;
     private AbstractMediaHeaderBox headerBox = null;
     private SampleDescriptionBox sampleDescriptionBox = null;
     private LinkedList<Integer> syncSamples = null;
     private int timeScale;
-    private Date creationTime = new Date();
+    private final Date creationTime = new Date();
     private int height;
     private int width;
     private float volume = 0;
-    private ArrayList<Long> sampleDurations = new ArrayList<>();
+    private final ArrayList<Long> sampleDurations = new ArrayList<>();
     private boolean isAudio = false;
-    private static Map<Integer, Integer> samplingFrequencyIndexMap = new HashMap<>();
+    private static final Map<Integer, Integer> samplingFrequencyIndexMap = new HashMap<>();
     private long lastPresentationTimeUs = 0;
     private boolean first = true;
 

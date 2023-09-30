@@ -4,11 +4,11 @@ import android.util.Base64;
 
 public class HttpResponse {
     // base64-encoded response body.
-    private String blob;
+    private final String blob;
     // MIME type, e.g. "text/plain" or "text/html".
-    private String mimetype;
+    private final String mimetype;
     // Encoding, e.g. "utf-8".
-    private String encoding;
+    private final String encoding;
 
     public HttpResponse(String blob, String mimetype, String encoding) {
         this.blob = blob;

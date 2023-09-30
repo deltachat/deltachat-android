@@ -8,8 +8,6 @@ import android.location.Location;
 import android.os.IBinder;
 import android.util.Log;
 
-import com.b44t.messenger.DcChatlist;
-
 import org.thoughtcrime.securesms.connect.DcHelper;
 
 import java.util.LinkedList;
@@ -26,10 +24,10 @@ public class DcLocationManager implements Observer {
 
     private static final String TAG = DcLocationManager.class.getSimpleName();
     private LocationBackgroundService.LocationBackgroundServiceBinder serviceBinder;
-    private Context context;
+    private final Context context;
     private DcLocation dcLocation = DcLocation.getInstance();
-    private LinkedList<Integer> pendingShareLastLocation = new LinkedList<>();
-    private ServiceConnection serviceConnection = new ServiceConnection() {
+    private final LinkedList<Integer> pendingShareLastLocation = new LinkedList<>();
+    private final ServiceConnection serviceConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
             Log.d(TAG, "background service connected");

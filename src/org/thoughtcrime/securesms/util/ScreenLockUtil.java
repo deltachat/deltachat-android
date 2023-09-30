@@ -5,8 +5,6 @@ import android.app.KeyguardManager;
 import android.content.Context;
 import android.content.Intent;
 
-import org.thoughtcrime.securesms.R;
-
 public class ScreenLockUtil {
 
     public static final int REQUEST_CODE_CONFIRM_CREDENTIALS = 1001;

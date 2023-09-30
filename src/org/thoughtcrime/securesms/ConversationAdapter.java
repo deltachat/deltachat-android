@@ -22,7 +22,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -94,7 +93,7 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
   private final @NonNull  Context           context;
   private final @NonNull  Calendar          calendar;
 
-  private DcContext            dcContext;
+  private final DcContext      dcContext;
   private @NonNull DcChat      dcChat;
   private @NonNull int[]       dcMsgList = new int[0];
   private int                  positionToPulseHighlight = -1;
@@ -188,7 +187,7 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
   }
 
   static class HeaderViewHolder extends RecyclerView.ViewHolder {
-    TextView textView;
+    final TextView textView;
 
     HeaderViewHolder(View itemView) {
       super(itemView);

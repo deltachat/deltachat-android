@@ -71,7 +71,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
   private int                  contactId;
   private boolean              fromChat;
 
-  private ArrayList<Integer> tabs = new ArrayList<>();
+  private final ArrayList<Integer> tabs = new ArrayList<>();
   private Toolbar            toolbar;
   private ConversationTitleView titleView;
   private TabLayout          tabLayout;

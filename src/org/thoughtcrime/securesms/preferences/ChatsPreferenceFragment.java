@@ -202,7 +202,7 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
   }
 
   private class AutodelChangeListener implements Preference.OnPreferenceChangeListener {
-    private String coreKey;
+    private final String coreKey;
 
     AutodelChangeListener(String coreKey) {
       this.coreKey = coreKey;

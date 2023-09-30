@@ -6,13 +6,13 @@ import android.graphics.Paint;
 
 class ThumbLayer {
 
-    private float radius;
-    private float outlineSize;
+    private final float radius;
+    private final float outlineSize;
 
-    private int highlightColor;
+    private final int highlightColor;
 
-    private Paint outlinePaint;
-    private Paint fillPaint;
+    private final Paint outlinePaint;
+    private final Paint fillPaint;
 
     boolean isHighlight = false;
 

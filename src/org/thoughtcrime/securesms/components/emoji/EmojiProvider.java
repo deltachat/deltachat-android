@@ -3,7 +3,6 @@ package org.thoughtcrime.securesms.components.emoji;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.ColorFilter;
 import android.graphics.Paint;
@@ -153,8 +152,8 @@ public class EmojiProvider {
   class EmojiDrawable extends Drawable {
     private final EmojiDrawInfo info;
     private       Bitmap        bmp;
-    private       float         intrinsicWidth;
-    private       float         intrinsicHeight;
+    private final float         intrinsicWidth;
+    private final float         intrinsicHeight;
 
     @Override
     public int getIntrinsicWidth() {

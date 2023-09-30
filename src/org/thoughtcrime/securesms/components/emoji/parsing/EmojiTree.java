@@ -95,7 +95,7 @@ public class EmojiTree {
 
   private static class EmojiTreeNode {
 
-    private Map<Character, EmojiTreeNode> children = new HashMap<>();
+    private final Map<Character, EmojiTreeNode> children = new HashMap<>();
     private EmojiDrawInfo emoji;
 
     public void setEmoji(EmojiDrawInfo emoji) {

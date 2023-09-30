@@ -64,7 +64,7 @@ public class CameraView extends ViewGroup {
 
   private @NonNull  State                    state = State.PAUSED;
   private @Nullable Size                     previewSize;
-  private @NonNull  List<CameraViewListener> listeners = Collections.synchronizedList(new LinkedList<CameraViewListener>());
+  private final @NonNull  List<CameraViewListener> listeners = Collections.synchronizedList(new LinkedList<CameraViewListener>());
   private           int                      outputOrientation  = -1;
 
   public CameraView(Context context) {

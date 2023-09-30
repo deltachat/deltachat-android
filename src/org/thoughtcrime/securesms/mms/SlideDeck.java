@@ -19,8 +19,6 @@ package org.thoughtcrime.securesms.mms;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.b44t.messenger.DcMsg;
-
 import org.thoughtcrime.securesms.attachments.Attachment;
 
 import java.util.LinkedList;

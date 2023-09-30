@@ -40,7 +40,7 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
   private final @NonNull Locale               locale;
   private final @NonNull DcContext            dcContext;
 
-  private @NonNull ArrayList<ItemData>        itemData = new ArrayList<>();
+  private final @NonNull ArrayList<ItemData>  itemData = new ArrayList<>();
   private int                                 itemDataMemberCount;
   private DcChatlist                          itemDataSharedChats;
   private DcContact                           itemDataContact;
@@ -58,13 +58,13 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
     static final int CATEGORY_SIGNATURE = 2;
     static final int CATEGORY_MEMBERS = 3;
     static final int CATEGORY_SHARED_CHATS = 4;
-    int type;
-    int contactId;
-    int chatlistIndex;
-    int settingsId;
-    String label;
-    int labelColor;
-    int iconLeft;
+    final int type;
+    final int contactId;
+    final int chatlistIndex;
+    final int settingsId;
+    final String label;
+    final int labelColor;
+    final int iconLeft;
 
     ItemData(int type, int settingsId, String label, int labelColor, int iconLeft) {
       this(type, 0, 0, settingsId, label, labelColor, iconLeft);
@@ -112,7 +112,7 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
   }
 
   static class HeaderViewHolder extends RecyclerView.ViewHolder {
-    TextView textView;
+    final TextView textView;
     HeaderViewHolder(View itemView) {
       super(itemView);
       textView = itemView.findViewById(R.id.label);

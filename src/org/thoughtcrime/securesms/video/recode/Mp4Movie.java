@@ -12,7 +12,7 @@ import java.util.ArrayList;
 @TargetApi(16)
 public class Mp4Movie {
     private Matrix matrix = Matrix.ROTATE_0;
-    private ArrayList<Track> tracks = new ArrayList<>();
+    private final ArrayList<Track> tracks = new ArrayList<>();
     private File cacheFile;
     private int width;
     private int height;

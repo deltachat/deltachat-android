@@ -106,9 +106,9 @@ public class Rpc {
 
     private static class Request {
         private final String jsonrpc = "2.0";
-        public String method;
-        public Object[] params;
-        public int id;
+        public final String method;
+        public final Object[] params;
+        public final int id;
 
         public Request(String method, Object[] params, int id) {
             this.method = method;
@@ -118,9 +118,9 @@ public class Rpc {
     }
 
     private static class Response {
-        public int id;
-        public JsonElement result;
-        public JsonElement error;
+        public final int id;
+        public final JsonElement result;
+        public final JsonElement error;
 
         public Response(int id, JsonElement result, JsonElement error) {
             this.id = id;

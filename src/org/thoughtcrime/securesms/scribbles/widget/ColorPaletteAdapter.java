@@ -55,7 +55,7 @@ public class ColorPaletteAdapter extends RecyclerView.Adapter<ColorPaletteAdapte
 
   static class ColorViewHolder extends RecyclerView.ViewHolder {
 
-    ImageView foreground;
+    final ImageView foreground;
 
     ColorViewHolder(View itemView) {
       super(itemView);

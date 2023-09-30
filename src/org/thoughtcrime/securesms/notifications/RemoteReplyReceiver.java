@@ -17,6 +17,8 @@
 
 package org.thoughtcrime.securesms.notifications;
 
+import static com.b44t.messenger.DcChat.DC_CHAT_NO_CHAT;
+
 import android.annotation.SuppressLint;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -47,9 +49,9 @@ public class RemoteReplyReceiver extends BroadcastReceiver {
     if (!REPLY_ACTION.equals(intent.getAction())) return;
     Bundle remoteInput = RemoteInput.getResultsFromIntent(intent);
     final int accountId = intent.getIntExtra(ACCOUNT_ID_EXTRA, 0);
-    final int chatId = intent.getIntExtra(CHAT_ID_EXTRA, 0);
+    final int chatId = intent.getIntExtra(CHAT_ID_EXTRA, DC_CHAT_NO_CHAT);
 
-    if (remoteInput == null || chatId == 0 || accountId == 0) return;
+    if (remoteInput == null || chatId == DC_CHAT_NO_CHAT || accountId == 0) return;
 
     final CharSequence responseText = remoteInput.getCharSequence(EXTRA_REMOTE_REPLY);
 

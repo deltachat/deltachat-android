@@ -19,10 +19,10 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 public class ContactFilterToolbar extends Toolbar {
   private   OnFilterChangedListener listener;
 
-  private EditText        searchText;
-  private AnimatingToggle toggle;
-  private ImageView       clearToggle;
-  private LinearLayout    toggleContainer;
+  private final EditText        searchText;
+  private final AnimatingToggle toggle;
+  private final ImageView       clearToggle;
+  private final LinearLayout    toggleContainer;
   private boolean         useClearButton;
 
   public ContactFilterToolbar(Context context) {

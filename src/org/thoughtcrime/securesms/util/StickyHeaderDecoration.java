@@ -4,7 +4,6 @@ import android.content.res.Configuration;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 
-import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.ViewHolder;
@@ -28,7 +27,7 @@ public class StickyHeaderDecoration extends RecyclerView.ItemDecoration {
   private final Map<Long, ViewHolder> headerCache;
   private final StickyHeaderAdapter   adapter;
   private final boolean               renderInline;
-  private       boolean               sticky;
+  private final boolean               sticky;
   private       int                   screenOrientation;
 
   /**

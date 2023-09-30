@@ -35,8 +35,8 @@ class ProfileGalleryAdapter extends StickyHeaderGridAdapter {
   private  BucketedThreadMedia media;
 
   private static class ViewHolder extends StickyHeaderGridAdapter.ItemViewHolder {
-    ThumbnailView imageView;
-    View          selectedIndicator;
+    final ThumbnailView imageView;
+    final View          selectedIndicator;
 
     ViewHolder(View v) {
       super(v);
@@ -46,7 +46,7 @@ class ProfileGalleryAdapter extends StickyHeaderGridAdapter {
   }
 
   private static class HeaderHolder extends StickyHeaderGridAdapter.HeaderViewHolder {
-    TextView textView;
+    final TextView textView;
 
     HeaderHolder(View itemView) {
       super(itemView);

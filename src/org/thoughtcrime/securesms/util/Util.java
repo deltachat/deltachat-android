@@ -20,7 +20,6 @@ import android.annotation.TargetApi;
 import android.app.ActivityManager;
 import android.content.ClipData;
 import android.content.ClipDescription;
-import android.content.ClipboardManager;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -52,12 +51,13 @@ import java.security.SecureRandom;
 import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Objects;
 import java.util.concurrent.CountDownLatch;
 
 public class Util {
   private static final String TAG = Util.class.getSimpleName();
 
-  public static Handler handler = new Handler(Looper.getMainLooper());
+  public static final Handler handler = new Handler(Looper.getMainLooper());
 
   public static String join(Collection<String> list, String delimiter) {
     StringBuilder result = new StringBuilder();
@@ -245,7 +245,7 @@ public class Util {
   }
 
   public static boolean equals(@Nullable Object a, @Nullable Object b) {
-    return a == b || (a != null && a.equals(b));
+    return Objects.equals(a, b);
   }
 
   public static int hashCode(@Nullable Object... objects) {
@@ -269,18 +269,6 @@ public class Util {
   }
 
   public static void writeTextToClipboard(@NonNull Context context, @NonNull String text) {
-    int sdk = android.os.Build.VERSION.SDK_INT;
-    if (sdk < android.os.Build.VERSION_CODES.HONEYCOMB) {
-      @SuppressWarnings("deprecation") android.text.ClipboardManager clipboard =
-              (android.text.ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
-      clipboard.setText(text);
-    } else {
-      copyToClipboardSdk11(context, text);
-    }
-  }
-
-  @TargetApi(android.os.Build.VERSION_CODES.HONEYCOMB)
-  private static void copyToClipboardSdk11(Context context, String text) {
     android.content.ClipboardManager clipboard =
             (android.content.ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
     ClipData clip = ClipData.newPlainText(context.getString(R.string.app_name), text);

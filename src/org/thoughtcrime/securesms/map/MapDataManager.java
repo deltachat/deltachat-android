@@ -117,22 +117,22 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate,
     private static final long DEFAULT_LAST_POSITION_DELTA = 1000 * 60 * 60 * 24; // 1d
 
     private static final String TAG = MapDataManager.class.getSimpleName();
-    private Style mapboxStyle;
-    private ConcurrentHashMap<Integer, MapSource> contactMapSources = new ConcurrentHashMap<>();
-    private ConcurrentHashMap<String, LinkedList<Feature>> featureCollections = new ConcurrentHashMap<>();
-    private ConcurrentHashMap<Integer, Feature> lastPositions = new ConcurrentHashMap<>();
-    private Set<String> emojiCodePoints = Collections.newSetFromMap(new ConcurrentHashMap<>());
-    private FilterProvider filterProvider = new FilterProvider();
+    private final Style mapboxStyle;
+    private final ConcurrentHashMap<Integer, MapSource> contactMapSources = new ConcurrentHashMap<>();
+    private final ConcurrentHashMap<String, LinkedList<Feature>> featureCollections = new ConcurrentHashMap<>();
+    private final ConcurrentHashMap<Integer, Feature> lastPositions = new ConcurrentHashMap<>();
+    private final Set<String> emojiCodePoints = Collections.newSetFromMap(new ConcurrentHashMap<>());
+    private final FilterProvider filterProvider = new FilterProvider();
     private Feature selectedFeature;
-    private int chatId;
-    private LatLngBounds.Builder boundingBuilder;
-    private Context context;
-    private DcContext dcContext;
-    private MapDataState callback;
+    private final int chatId;
+    private final LatLngBounds.Builder boundingBuilder;
+    private final Context context;
+    private final DcContext dcContext;
+    private final MapDataState callback;
     private boolean isInitial = true;
     private boolean showTraces = false;
-    private LocationComponent locationComponent;
-    private EmojiProvider emojiProvider;
+    private final LocationComponent locationComponent;
+    private final EmojiProvider emojiProvider;
 
     public interface MapDataState {
         void onDataInitialized(LatLngBounds bounds);

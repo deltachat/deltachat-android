@@ -6,13 +6,13 @@ import android.graphics.RectF;
 
 class TrackLayer {
 
-    private float height;
-    private float radius;
+    private final float height;
+    private final float radius;
     private int paddingLeft = 0;
     private int paddingRight = 0;
 
-    private Paint centerPaint;
-    private Paint backgoundPaint;
+    private final Paint centerPaint;
+    private final Paint backgoundPaint;
 
     TrackLayer(int paddingLeft, int paddingRight, float height, int color, int highlightColor) {
         this.height = height;

@@ -19,7 +19,7 @@ final class AnimationMatrix {
   private final static Interpolator interpolator      = new DecelerateInterpolator();
   private final static Interpolator pulseInterpolator = inverse(new CycleInterpolator(0.5f));
 
-  static AnimationMatrix NULL = new AnimationMatrix();
+  static final AnimationMatrix NULL = new AnimationMatrix();
 
   static {
     new Matrix().getValues(iValues);

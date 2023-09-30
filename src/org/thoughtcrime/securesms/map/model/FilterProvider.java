@@ -29,7 +29,7 @@ public class FilterProvider {
         MESSAGES
     }
 
-    private HashMap<FilterType, Expression> expressions = new HashMap();
+    private final HashMap<FilterType, Expression> expressions = new HashMap();
 
 
     public void setRangeFilter(long startTimestamp, long endTimestamp) {

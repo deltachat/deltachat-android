@@ -1,5 +1,7 @@
 package org.thoughtcrime.securesms;
 
+import static com.b44t.messenger.DcChat.DC_CHAT_NO_CHAT;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -45,7 +47,7 @@ public class ProfileDocumentsFragment
   protected TextView noMedia;
   protected RecyclerView recyclerView;
   private StickyHeaderGridLayoutManager gridManager;
-  private ActionModeCallback actionModeCallback = new ActionModeCallback();
+  private final ActionModeCallback actionModeCallback = new ActionModeCallback();
   private boolean showAudio;
   private boolean showWebxdc;
 
@@ -124,7 +126,7 @@ public class ProfileDocumentsFragment
     ((ProfileDocumentsAdapter) recyclerView.getAdapter()).notifyAllSectionsDataSetChanged();
 
     noMedia.setVisibility(recyclerView.getAdapter().getItemCount() > 0 ? View.GONE : View.VISIBLE);
-    if (chatId == 0) {
+    if (chatId == DC_CHAT_NO_CHAT) {
       noMedia.setText(R.string.tab_all_media_empty_hint);
     } else if (showAudio) {
       noMedia.setText(R.string.tab_audio_empty_hint);

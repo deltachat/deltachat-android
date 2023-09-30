@@ -14,7 +14,7 @@ import org.thoughtcrime.securesms.permissions.Permissions;
 
 public class RecentPhotosLoader extends CursorLoader {
 
-  public static Uri BASE_URL = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
+  public static final Uri BASE_URL = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
 
   private static final String[] PROJECTION = new String[] {
       MediaStore.Images.ImageColumns._ID,

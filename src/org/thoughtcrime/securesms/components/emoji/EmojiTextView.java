@@ -41,7 +41,7 @@ public class EmojiTextView extends AppCompatTextView {
   private float        originalFontSize;
   private boolean      useSystemEmoji;
   private boolean      sizeChangeInProgress;
-  private int          maxLength;
+  private final int    maxLength;
   private CharSequence overflowText;
   private CharSequence previousOverflowText;
 

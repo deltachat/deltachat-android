@@ -23,7 +23,6 @@ import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.guava.Optional;
 
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -32,11 +31,11 @@ import java.util.Set;
 import static com.b44t.messenger.DcContact.DC_CONTACT_ID_SELF;
 
 public class SelectedRecipientsAdapter extends BaseAdapter {
-  @NonNull  private Context                    context;
-  @Nullable private OnRecipientDeletedListener onRecipientDeletedListener;
-  @NonNull  private List<RecipientWrapper>     recipients;
-  @NonNull  private final DcContext            dcContext;
-  @NonNull  private final GlideRequests        glideRequests;
+  @NonNull  private final Context                context;
+  @Nullable private OnRecipientDeletedListener   onRecipientDeletedListener;
+  @NonNull  private final List<RecipientWrapper> recipients;
+  @NonNull  private final DcContext              dcContext;
+  @NonNull  private final GlideRequests          glideRequests;
 
   public SelectedRecipientsAdapter(@NonNull Context context,
                                    @NonNull  GlideRequests glideRequests,

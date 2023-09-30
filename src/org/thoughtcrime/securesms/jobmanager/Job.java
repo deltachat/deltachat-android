@@ -21,7 +21,6 @@ import android.os.PowerManager;
 import org.thoughtcrime.securesms.jobmanager.requirements.Requirement;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * An abstract class representing a unit of work that can be scheduled with

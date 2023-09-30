@@ -6,11 +6,9 @@ import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
 import android.util.AttributeSet;
 import android.view.HapticFeedbackConstants;
-import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
-import android.widget.EditText;
 import android.widget.ImageButton;
 
 public class RepeatableImageKey extends ImageButton {
@@ -71,7 +69,7 @@ public class RepeatableImageKey extends ImageButton {
   }
 
   private class RepeaterTouchListener implements OnTouchListener {
-    private Repeater repeater;
+    private final Repeater repeater;
 
     public RepeaterTouchListener() {
       this.repeater = new Repeater();

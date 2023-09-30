@@ -43,7 +43,7 @@ public class ForwardingTest {
   }
 
   @Rule
-  public ActivityScenarioRule<ConversationListActivity> activityRule = TestUtils.getOfflineActivityRule(false);
+  public final ActivityScenarioRule<ConversationListActivity> activityRule = TestUtils.getOfflineActivityRule(false);
 
   @Before
   public void createChats() {

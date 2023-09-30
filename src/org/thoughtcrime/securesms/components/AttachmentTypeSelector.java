@@ -27,7 +27,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 
-import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.permissions.Permissions;
@@ -62,7 +61,7 @@ public class AttachmentTypeSelector extends PopupWindow {
 
   private @Nullable View                      currentAnchor;
   private @Nullable AttachmentClickedListener listener;
-  private int chatId;
+  private final int chatId;
 
   public AttachmentTypeSelector(@NonNull Context context, @NonNull LoaderManager loaderManager, @Nullable AttachmentClickedListener listener, int chatId) {
     super(context);

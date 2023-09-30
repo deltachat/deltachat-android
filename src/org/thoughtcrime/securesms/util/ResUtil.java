@@ -22,9 +22,7 @@ import android.content.res.Resources.Theme;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 
-import androidx.annotation.ArrayRes;
 import androidx.annotation.AttrRes;
-import androidx.annotation.DrawableRes;
 import androidx.core.content.ContextCompat;
 import android.util.TypedValue;
 

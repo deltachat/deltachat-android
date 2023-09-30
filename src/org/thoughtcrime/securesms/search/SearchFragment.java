@@ -1,6 +1,7 @@
 package org.thoughtcrime.securesms.search;
 
 
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -11,7 +12,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,7 +32,6 @@ import org.thoughtcrime.securesms.search.model.SearchResult;
 import org.thoughtcrime.securesms.util.StickyHeaderDecoration;
 
 import java.util.Locale;
-import java.util.concurrent.Executors;
 
 import static org.thoughtcrime.securesms.util.RelayUtil.isRelayingMessageContent;
 
@@ -69,7 +68,7 @@ public class SearchFragment extends Fragment implements SearchListAdapter.EventL
 
     this.locale = (Locale) getArguments().getSerializable(EXTRA_LOCALE);
 
-    viewModel = ViewModelProviders.of(this, new SearchViewModel.Factory(getContext())).get(SearchViewModel.class);
+    viewModel = ViewModelProviders.of(this, (ViewModelProvider.Factory) new SearchViewModel.Factory(getContext())).get(SearchViewModel.class);
     DcEventCenter eventCenter = DcHelper.getEventCenter(getContext());
     eventCenter.addObserver(DcContext.DC_EVENT_CHAT_MODIFIED, this);
     eventCenter.addObserver(DcContext.DC_EVENT_CONTACTS_CHANGED, this);

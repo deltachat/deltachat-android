@@ -2,6 +2,8 @@
 
 package org.thoughtcrime.securesms.notifications;
 
+import static com.b44t.messenger.DcChat.DC_CHAT_NO_CHAT;
+
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -23,8 +25,8 @@ public class MarkReadReceiver extends BroadcastReceiver {
     }
 
     final int accountId = intent.getIntExtra(ACCOUNT_ID_EXTRA, 0);
-    final int chatId = intent.getIntExtra(CHAT_ID_EXTRA, 0);
-    if (accountId == 0 || chatId == 0) {
+    final int chatId = intent.getIntExtra(CHAT_ID_EXTRA, DC_CHAT_NO_CHAT);
+    if (accountId == 0 || chatId == DC_CHAT_NO_CHAT) {
       return;
     }
 

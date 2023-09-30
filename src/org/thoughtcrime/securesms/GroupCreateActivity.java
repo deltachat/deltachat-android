@@ -166,8 +166,8 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
 
   private static class AddMembersTask extends AsyncTask<Recipient,Void,List<AddMembersTask.Result>> {
     static class Result {
-      Optional<Recipient> recipient;
-      String              reason;
+      final Optional<Recipient> recipient;
+      final String              reason;
 
       public Result(@Nullable Recipient recipient, @Nullable String reason) {
         this.recipient = Optional.fromNullable(recipient);
@@ -175,7 +175,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
       }
     }
 
-    private GroupCreateActivity activity;
+    private final GroupCreateActivity activity;
 
     public AddMembersTask(@NonNull GroupCreateActivity activity) {
       this.activity      = activity;
@@ -429,7 +429,6 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
   @Override
   public void onActivityResult(int reqCode, int resultCode, final Intent data) {
     super.onActivityResult(reqCode, resultCode, data);
-    Uri outputFile = Uri.fromFile(new File(getCacheDir(), "cropped"));
 
     if (resultCode != Activity.RESULT_OK)
       return;
@@ -518,7 +517,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
 
   private static class FillExistingGroupInfoAsyncTask extends ProgressDialogAsyncTask<Integer,Void,Recipient> {
 
-    GroupCreateActivity activity;
+    final GroupCreateActivity activity;
 
     FillExistingGroupInfoAsyncTask(GroupCreateActivity activity) {
       super(activity,

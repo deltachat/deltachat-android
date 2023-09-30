@@ -18,8 +18,6 @@ package org.thoughtcrime.securesms.mms;
 
 import android.content.Context;
 import android.net.Uri;
-import androidx.annotation.DrawableRes;
-import androidx.annotation.NonNull;
 
 import com.b44t.messenger.DcMsg;
 

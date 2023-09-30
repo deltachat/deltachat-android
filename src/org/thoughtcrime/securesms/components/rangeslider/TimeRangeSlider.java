@@ -18,12 +18,12 @@ import java.util.Locale;
 public class TimeRangeSlider extends RangeSliderView implements RangeSliderView.OnValueChangedListener {
     private static final int DEFAULT_TIMEFRAME_2D = 60 * 60 * 24 * 2; // 2d
     private static final float DEFAULT_DELTA = 1000 * 60 * 30; // 30 min
-    int timeFrame; // timeframe in seconds
+    final int timeFrame; // timeframe in seconds
 
-    Locale locale;
+    final Locale locale;
     OnTimestampChangedListener listener;
-    private TextLayer minRangeDisplayLabel;
-    private TextLayer maxRangeDisplayLabel;
+    private final TextLayer minRangeDisplayLabel;
+    private final TextLayer maxRangeDisplayLabel;
 
     float displayLabelOffsetBelow;
 

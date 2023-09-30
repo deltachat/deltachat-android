@@ -61,7 +61,7 @@ public class LogViewFragment extends Fragment {
   private static final String TAG = LogViewFragment.class.getSimpleName();
 
   private EditText logPreview;
-  private @NonNull DynamicLanguage dynamicLanguage;
+  private final @NonNull DynamicLanguage dynamicLanguage;
 
   public LogViewFragment(DynamicLanguage dynamicLanguage) {
     this.dynamicLanguage = dynamicLanguage;
@@ -154,7 +154,7 @@ public class LogViewFragment extends Fragment {
   }
 
   private class PopulateLogcatAsyncTask extends AsyncTask<Void,Void,String> {
-    private WeakReference<LogViewFragment> weakFragment;
+    private final WeakReference<LogViewFragment> weakFragment;
 
     public PopulateLogcatAsyncTask(LogViewFragment fragment) {
       this.weakFragment = new WeakReference<>(fragment);

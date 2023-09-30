@@ -53,7 +53,7 @@ class ProfileDocumentsAdapter extends StickyHeaderGridAdapter {
   }
 
   private static class HeaderHolder extends StickyHeaderGridAdapter.HeaderViewHolder {
-    TextView textView;
+    final TextView textView;
 
     HeaderHolder(View itemView) {
       super(itemView);

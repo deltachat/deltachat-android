@@ -3,7 +3,6 @@ package org.thoughtcrime.securesms.connect;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Application;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -14,7 +13,7 @@ public class ForegroundDetector implements Application.ActivityLifecycleCallback
 
     private int refs = 0;
     private static ForegroundDetector Instance = null;
-    private ApplicationContext application;
+    private final ApplicationContext application;
 
     public static ForegroundDetector getInstance() {
         return Instance;
