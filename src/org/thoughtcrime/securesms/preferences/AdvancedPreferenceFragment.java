@@ -202,7 +202,7 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
         String name = AttachmentManager.getFileName(getContext(), uri);
         if (name == null || name.isEmpty()) name = "FILE";
         File file = copyToCacheDir(uri);
-        startImex(DcContext.DC_IMEX_IMPORT_SELF_KEYS, file.getAbsolutePath(), name);
+        showImportKeysDialog(file.getAbsolutePath(), name);
       } catch (IOException e) {
         e.printStackTrace();
       }
@@ -330,12 +330,13 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
   /***********************************************************************************************
    * Key Import/Export
    **********************************************************************************************/
-  protected void importSelfKeys() {
-    if (Build.VERSION.SDK_INT >= 30) {
-      AttachmentManager.selectMediaType(getActivity(), "application/pgp-keys", new String[]{"text/plain"}, PICK_SELF_KEYS, StorageUtil.getDownloadUri());
-    } else {
-      startImex(DcContext.DC_IMEX_IMPORT_SELF_KEYS);
-    }
+  protected void showImportKeysDialog(String imexPath, String pathAsDisplayedToUser) {
+    new AlertDialog.Builder(getActivity())
+      .setTitle(R.string.pref_managekeys_import_secret_keys)
+      .setMessage(getActivity().getString(R.string.pref_managekeys_import_explain, pathAsDisplayedToUser))
+      .setNegativeButton(android.R.string.cancel, null)
+      .setPositiveButton(android.R.string.ok, (dialogInterface2, i2) -> startImex(DcContext.DC_IMEX_IMPORT_SELF_KEYS, imexPath, pathAsDisplayedToUser))
+      .show();
   }
 
   private class ManageKeysListener implements Preference.OnPreferenceClickListener {
@@ -371,16 +372,12 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
                           .show();
                     }
                     else {
-                      String explain = getActivity().getString(R.string.pref_managekeys_import_explain_tips);
-                      if (Build.VERSION.SDK_INT < 30) { // in older Android we always import from Download folder
-                        explain = getActivity().getString(R.string.pref_managekeys_import_explain_path, DcHelper.getImexDir().getAbsolutePath()) + "\n\n" + explain;
+                      if (Build.VERSION.SDK_INT >= 30) {
+                        AttachmentManager.selectMediaType(getActivity(), "application/pgp-keys", new String[]{"text/plain"}, PICK_SELF_KEYS, StorageUtil.getDownloadUri());
+                      } else {
+                        String path = DcHelper.getImexDir().getAbsolutePath();
+                        showImportKeysDialog(path, path);
                       }
-                      new AlertDialog.Builder(getActivity())
-                          .setTitle(R.string.pref_managekeys_import_secret_keys)
-                          .setMessage(explain)
-                          .setNegativeButton(android.R.string.cancel, null)
-                          .setPositiveButton(android.R.string.ok, (dialogInterface2, i2) -> importSelfKeys())
-                          .show();
                     }
                   }
               )
