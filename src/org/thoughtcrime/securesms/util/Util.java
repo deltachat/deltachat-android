@@ -345,4 +345,15 @@ public class Util {
   public static int rgbToArgbColor(int rgb) {
     return Color.argb(0xFF, Color.red(rgb), Color.green(rgb), Color.blue(rgb));
   }
+
+  private static long lastClickTime = 0;
+  public static boolean isClickedRecently() {
+    long now = System.currentTimeMillis();
+    if (now - lastClickTime < 500) {
+      Log.i(TAG, "tap discarded");
+      return true;
+    }
+    lastClickTime = now;
+    return false;
+  }
 }
