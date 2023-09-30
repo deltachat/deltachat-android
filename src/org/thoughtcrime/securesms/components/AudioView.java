@@ -6,6 +6,7 @@ import android.content.res.ColorStateList;
 import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.graphics.drawable.AnimatedVectorDrawable;
+import android.media.AudioManager;
 import android.os.Build;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -223,6 +224,16 @@ public class AudioView extends FrameLayout implements AudioSlidePlayer.Listener 
         Log.w(TAG, "playbutton onClick");
         if (audioSlidePlayer != null) {
           togglePlayToPause();
+          AudioManager am = (AudioManager)getContext().getSystemService(Context.AUDIO_SERVICE);
+          AudioManager.OnAudioFocusChangeListener focusChangeListener = new AudioManager.OnAudioFocusChangeListener() {
+              @Override
+              public void onAudioFocusChange(int focusChange) {
+                  if (focusChange == AudioManager.AUDIOFOCUS_LOSS) {
+                      pauseButton.performClick();
+                  }
+              }
+          };
+          am.requestAudioFocus(focusChangeListener, AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN);
           audioSlidePlayer.play(getProgress());
         }
       } catch (IOException e) {
