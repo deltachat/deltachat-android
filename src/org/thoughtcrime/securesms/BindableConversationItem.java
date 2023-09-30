@@ -9,7 +9,6 @@ import com.b44t.messenger.DcMsg;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.recipients.Recipient;
 
-import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 

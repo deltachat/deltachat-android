@@ -8,8 +8,6 @@ import android.location.Location;
 import android.os.IBinder;
 import android.util.Log;
 
-import com.b44t.messenger.DcChatlist;
-
 import org.thoughtcrime.securesms.connect.DcHelper;
 
 import java.util.LinkedList;

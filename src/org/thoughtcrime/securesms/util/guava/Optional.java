@@ -19,7 +19,6 @@ package org.thoughtcrime.securesms.util.guava;
 import static org.thoughtcrime.securesms.util.guava.Preconditions.checkNotNull;
 
 import java.io.Serializable;
-import java.util.Iterator;
 import java.util.Set;
 
 

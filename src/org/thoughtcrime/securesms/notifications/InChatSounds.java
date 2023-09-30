@@ -6,7 +6,6 @@ import android.media.SoundPool;
 import android.util.Log;
 
 import org.thoughtcrime.securesms.R;
-import org.thoughtcrime.securesms.util.Prefs;
 
 public class InChatSounds {
     private static final String TAG = InChatSounds.class.getSimpleName();

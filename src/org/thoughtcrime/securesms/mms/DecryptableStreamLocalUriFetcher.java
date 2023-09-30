@@ -2,16 +2,11 @@ package org.thoughtcrime.securesms.mms;
 
 import android.content.ContentResolver;
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.util.Log;
 
 import com.bumptech.glide.load.data.StreamLocalUriFetcher;
 
-import org.thoughtcrime.securesms.util.MediaUtil;
-
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;

@@ -18,7 +18,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 
-import static android.app.Activity.RESULT_OK;
 import static org.thoughtcrime.securesms.util.RelayUtil.getForwardedMessageIDs;
 import static org.thoughtcrime.securesms.util.RelayUtil.getSharedText;
 import static org.thoughtcrime.securesms.util.RelayUtil.getSharedUris;

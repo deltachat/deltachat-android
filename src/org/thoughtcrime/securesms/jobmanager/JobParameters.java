@@ -21,7 +21,6 @@ import org.thoughtcrime.securesms.jobmanager.requirements.Requirement;
 import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 /**
  * The set of parameters that describe a {@link org.thoughtcrime.securesms.jobmanager.Job}.

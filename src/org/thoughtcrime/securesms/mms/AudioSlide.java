@@ -18,13 +18,11 @@ package org.thoughtcrime.securesms.mms;
 
 import android.content.Context;
 import android.net.Uri;
-import androidx.annotation.DrawableRes;
-import androidx.annotation.NonNull;
+
 import androidx.annotation.Nullable;
 
 import com.b44t.messenger.DcMsg;
 
-import org.thoughtcrime.securesms.attachments.Attachment;
 import org.thoughtcrime.securesms.attachments.DcAttachment;
 import org.thoughtcrime.securesms.attachments.UriAttachment;
 import org.thoughtcrime.securesms.database.AttachmentDatabase;

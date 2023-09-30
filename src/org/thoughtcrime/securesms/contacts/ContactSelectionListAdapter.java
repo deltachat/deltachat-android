@@ -17,7 +17,6 @@
 package org.thoughtcrime.securesms.contacts;
 
 import android.content.Context;
-import android.text.TextUtils;
 import android.util.SparseIntArray;
 import android.view.LayoutInflater;
 import android.view.View;

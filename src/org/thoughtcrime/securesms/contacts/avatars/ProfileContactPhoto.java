@@ -4,7 +4,6 @@ import android.content.Context;
 
 import com.b44t.messenger.DcContact;
 
-import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.Address;
 
 public class ProfileContactPhoto extends LocalFileContactPhoto {

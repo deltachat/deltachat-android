@@ -6,7 +6,6 @@ import androidx.annotation.Nullable;
 
 import com.b44t.messenger.DcMsg;
 
-import org.thoughtcrime.securesms.attachments.Attachment;
 import org.thoughtcrime.securesms.util.MediaUtil;
 
 public class GifSlide extends ImageSlide {

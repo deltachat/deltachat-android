@@ -1,12 +1,7 @@
 package org.thoughtcrime.securesms.util;
 
 import android.app.Activity;
-import android.app.AlarmManager;
-import android.app.NotificationManager;
 import android.content.Context;
-import android.media.AudioManager;
-import android.net.ConnectivityManager;
-import android.os.PowerManager;
 import android.os.Vibrator;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;

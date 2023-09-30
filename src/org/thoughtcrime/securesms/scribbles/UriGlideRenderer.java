@@ -1,6 +1,5 @@
 package org.thoughtcrime.securesms.scribbles;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;

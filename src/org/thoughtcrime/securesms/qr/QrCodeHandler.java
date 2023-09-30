@@ -1,13 +1,11 @@
 package org.thoughtcrime.securesms.qr;
 
 import android.app.Activity;
-import android.content.DialogInterface;
 import android.content.Intent;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.StringRes;
 import androidx.appcompat.app.AlertDialog;
-import android.text.Html;
+
 import android.widget.Toast;
 
 import com.b44t.messenger.DcContext;

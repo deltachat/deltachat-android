@@ -6,7 +6,6 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Process;
 import android.provider.OpenableColumns;
-import androidx.annotation.Nullable;
 import android.util.Log;
 
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;

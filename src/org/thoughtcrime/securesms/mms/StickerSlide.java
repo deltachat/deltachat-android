@@ -7,7 +7,6 @@ import androidx.annotation.NonNull;
 
 import com.b44t.messenger.DcMsg;
 
-import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.attachments.DcAttachment;
 
 
