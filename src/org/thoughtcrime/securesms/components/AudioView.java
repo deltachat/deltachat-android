@@ -79,6 +79,7 @@ public class AudioView extends FrameLayout implements AudioSlidePlayer.Listener 
   {
     controlToggle.displayQuick(playButton);
     seekBar.setEnabled(true);
+    seekBar.setProgress(0);
     audioSlidePlayer = AudioSlidePlayer.createFor(getContext(), audio, this);
     timestamp.setText(DateUtils.getFormatedDuration(duration));
 
@@ -154,7 +155,7 @@ public class AudioView extends FrameLayout implements AudioSlidePlayer.Listener 
 
   @Override
   public void onProgress(AudioSlide slide, double progress, long millis) {
-    if (audioSlidePlayer.getAudioSlide().getDcMsgId() != slide.getDcMsgId()) {
+    if (!audioSlidePlayer.getAudioSlide().equals(slide)) {
       return;
     }
     int seekProgress = (int) Math.floor(progress * this.seekBar.getMax());
