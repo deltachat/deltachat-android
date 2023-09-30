@@ -46,6 +46,13 @@ public class AudioSlide extends Slide {
   }
 
   @Override
+  public boolean equals(Object other) {
+      if (other == null)                  return false;
+      if (!(other instanceof AudioSlide)) return false;
+      return this.getDcMsgId() == ((AudioSlide)other).getDcMsgId();
+  }
+
+  @Override
   @Nullable
   public Uri getThumbnailUri() {
     return null;
