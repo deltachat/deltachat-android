@@ -241,6 +241,7 @@ public class VideoRecoder {
     File inputFile = new File(videoEditedInfo.originalPath);
     if (!inputFile.canRead()) {
       //didWriteData(messageObject, cacheFile, true, true);
+      Log.w(TAG, "Could not read video file to be recoded");
       return false;
     }
 
@@ -537,7 +538,7 @@ public class VideoRecoder {
                           outputSurface.awaitNewImage();
                         } catch (Exception e) {
                           errorWait = true;
-
+                          Log.w(TAG, "error while waiting for recording output surface", e);
                         }
                         if (!errorWait) {
                           if (Build.VERSION.SDK_INT >= 18) {
@@ -545,6 +546,7 @@ public class VideoRecoder {
                             inputSurface.setPresentationTime(info.presentationTimeUs * 1000);
                             inputSurface.swapBuffers();
                           } else {
+                            Log.w(TAG, "Cannot proceed with the current SDK version");
                             return false; // TODO: this should be caught much earlier
                             /*
                             int inputBufIndex = encoder.dequeueInputBuffer(TIMEOUT_USEC);
@@ -582,7 +584,7 @@ public class VideoRecoder {
                 videoStartTime = videoTime;
               }
             } catch (Exception e) {
-
+              Log.w(TAG,"Recoding video failed unexpectedly", e);
               error = true;
             }
 
@@ -615,8 +617,8 @@ public class VideoRecoder {
           readAndWriteTrack(extractor, mediaMuxer, info, videoStartTime, endTime, cacheFile, true);
         }
       } catch (Exception e) {
+        Log.w(TAG,"Recoding video failed unexpectedly/2", e);
         error = true;
-
       } finally {
         if (extractor != null) {
           extractor.release();
@@ -625,13 +627,14 @@ public class VideoRecoder {
           try {
             mediaMuxer.finishMovie(false);
           } catch (Exception e) {
-
+            Log.w(TAG,"Flushing video failed unexpectedly", e);
           }
         }
         //Log.i("DeltaChat", "time = " + (System.currentTimeMillis() - time));
       }
     } else {
       //didWriteData(messageObject, cacheFile, true, true);
+      Log.w(TAG,"Video width or height are 0, refusing recode.");
       return false;
     }
     //didWriteData(messageObject, cacheFile, true, error);
@@ -662,12 +665,14 @@ public class VideoRecoder {
   {
     boolean canRecode = true;
     if (Build.VERSION.SDK_INT < 16 /*= Jelly Bean 4.1 (before that codecInfo.getName() was not there) */) {
+      Log.w(TAG, "Cannot recode: API < 16");
       canRecode = false;
     }
     else if (Build.VERSION.SDK_INT < 18 /*= Jelly Bean 4.3*/) {
       try {
         MediaCodecInfo codecInfo = VideoRecoder.selectCodec(VideoRecoder.MIME_TYPE);
         if (codecInfo == null) {
+          Log.w(TAG, "Cannot recode: cannot select codec");
           canRecode = false;
         } else {
           String name = codecInfo.getName();
@@ -678,14 +683,17 @@ public class VideoRecoder {
               name.equals("OMX.MARVELL.VIDEO.H264ENCODER") ||
               name.equals("OMX.k3.video.encoder.avc") ||
               name.equals("OMX.TI.DUCATI1.VIDEO.H264E")) {
+            Log.w(TAG, "Cannot recode: no supported codec found");
             canRecode = false;
           } else {
             if (VideoRecoder.selectColorFormat(codecInfo, VideoRecoder.MIME_TYPE) == 0) {
+              Log.w(TAG, "Cannot recode: cannot select color format");
               canRecode = false;
             }
           }
         }
       } catch (Exception e) {
+        Log.w(TAG, "Cannot recode: Determinating recoding capabilities failed unexpectedly", e);
         canRecode = false;
       }
     }
@@ -723,7 +731,7 @@ public class VideoRecoder {
           trackBitrate = (int) (sampleSizes * 8 / originalVideoSeconds);
           vei.originalDurationMs = originalVideoSeconds * 1000;
         } catch (Exception e) {
-
+          Log.w(TAG, "Get video info: Calculating sample sizes failed unexpectedly", e);
         }
         TrackHeaderBox headerBox = trackBox.getTrackHeaderBox();
         if (headerBox.getWidth() != 0 && headerBox.getHeight() != 0) {
@@ -734,6 +742,7 @@ public class VideoRecoder {
         }
       }
       if (trackHeaderBox == null) {
+        Log.w(TAG, "Get video info: No trackHeaderBox");
         return null;
       }
 
@@ -749,6 +758,7 @@ public class VideoRecoder {
       vei.originalHeight = (int) trackHeaderBox.getHeight();
 
     } catch (Exception e) {
+      Log.w(TAG, "Get video info: Reading message info failed unexpectedly", e);
       return null;
     }
 
