@@ -371,10 +371,10 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
                           .show();
                     }
                     else {
-                        String explain = getActivity().getString(R.string.pref_managekeys_import_explain_tips);
-                        if (Build.VERSION.SDK_INT < 30) { // in older Android we always import from Download folder
-                          explain = getActivity().getString(R.string.pref_managekeys_import_explain_path, DcHelper.getImexDir().getAbsolutePath()) + "\n\n" + explain;
-                        }
+                      String explain = getActivity().getString(R.string.pref_managekeys_import_explain_tips);
+                      if (Build.VERSION.SDK_INT < 30) { // in older Android we always import from Download folder
+                        explain = getActivity().getString(R.string.pref_managekeys_import_explain_path, DcHelper.getImexDir().getAbsolutePath()) + "\n\n" + explain;
+                      }
                       new AlertDialog.Builder(getActivity())
                           .setTitle(R.string.pref_managekeys_import_secret_keys)
                           .setMessage(explain)

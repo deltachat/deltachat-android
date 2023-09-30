@@ -98,19 +98,19 @@ public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceF
     pref.setSummary(pref.getEntry());
   }
 
-  protected ProgressDialog progressDialog = null;
-  protected int            progressWhat = 0;
-  protected String         pathName = ""; // path/filename displayed to user on finish
-  protected boolean        imexUserAborted = false;
   protected void startImex(int what)
   {
     String path = DcHelper.getImexDir().getAbsolutePath();
     startImex(what, path, path);
   }
 
-  protected void startImex(int what, String imexPath, String pathName)
+  protected ProgressDialog progressDialog = null;
+  protected int            progressWhat = 0;
+  protected String         pathAsDisplayedToUser = "";
+  protected boolean        imexUserAborted = false;
+  protected void startImex(int what, String imexPath, String pathAsDisplayedToUser)
   {
-    this.pathName = pathName;
+    this.pathAsDisplayedToUser = pathAsDisplayedToUser;
     imexUserAborted = false;
     notificationController = GenericForegroundService.startForegroundTask(getContext(), getString(R.string.export_backup_desktop));
     if( progressDialog!=null ) {
@@ -169,13 +169,13 @@ public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceF
         notificationController = null;
         String msg = "";
         if (progressWhat==DcContext.DC_IMEX_EXPORT_BACKUP) {
-          msg = context.getString(R.string.pref_backup_written_to_x, pathName);
+          msg = context.getString(R.string.pref_backup_written_to_x, pathAsDisplayedToUser);
         }
         else if (progressWhat==DcContext.DC_IMEX_EXPORT_SELF_KEYS) {
-          msg = context.getString(R.string.pref_managekeys_secret_keys_exported_to_x, pathName);
+          msg = context.getString(R.string.pref_managekeys_secret_keys_exported_to_x, pathAsDisplayedToUser);
         }
         else if (progressWhat==DcContext.DC_IMEX_IMPORT_SELF_KEYS) {
-          msg = context.getString(R.string.pref_managekeys_secret_keys_imported_from_x, pathName);
+          msg = context.getString(R.string.pref_managekeys_secret_keys_imported_from_x, pathAsDisplayedToUser);
         }
         new AlertDialog.Builder(context)
                 .setMessage(msg)
