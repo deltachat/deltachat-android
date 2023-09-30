@@ -775,9 +775,10 @@ public class VideoRecoder {
 
   private static void alert(Context context, String str)
   {
+    Log.e(TAG, str);
     Util.runOnMain(() -> new AlertDialog.Builder(context)
-      .setMessage(str)
       .setCancelable(false)
+      .setMessage(str)
       .setPositiveButton(android.R.string.ok, null)
       .show());
   }
@@ -790,6 +791,7 @@ public class VideoRecoder {
 
     try {
       String inPath = msg.getFile();
+      Log.i(TAG, "Preparing video: " + inPath);
 
       // try to get information from video file
       VideoEditedInfo vei = getVideoEditInfoFromFile(inPath);
@@ -866,7 +868,7 @@ public class VideoRecoder {
           vei.resultVideoBitrate, vei.originalDurationMs, vei.originalAudioBytes);
 
       if (vei.estimatedBytes > MAX_BYTES+MAX_BYTES/4) {
-        alert(context, String.format("Recoding failed for %s: resulting file probably too large", inPath));
+        alert(context, "Video cannot be compressed to a reasonable size. Try a shorter video or a lower quality.");
         return false;
       }
 
