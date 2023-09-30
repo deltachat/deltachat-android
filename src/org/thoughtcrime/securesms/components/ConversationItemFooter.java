@@ -58,11 +58,6 @@ public class ConversationItemFooter extends LinearLayout {
     }
   }
 
-  @Override
-  protected void onDetachedFromWindow() {
-    super.onDetachedFromWindow();
-  }
-
   public void setMessageRecord(@NonNull DcMsg messageRecord, @NonNull Locale locale) {
     presentDate(messageRecord, locale);
     secureIndicatorView.setVisibility(messageRecord.isSecure() ? View.VISIBLE : View.GONE);

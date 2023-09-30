@@ -108,11 +108,6 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
     dismissView.setOnClickListener(view -> setVisibility(GONE));
   }
 
-  @Override
-  protected void onDetachedFromWindow() {
-    super.onDetachedFromWindow();
-  }
-
   public void setQuote(GlideRequests glideRequests,
                        DcMsg msg,
                        @Nullable Recipient author,
