@@ -40,7 +40,7 @@ public class FullMsgActivity extends WebViewActivity
   protected void onCreate(Bundle state, boolean ready) {
     super.onCreate(state, ready);
 
-    isContactRequest = getIntent().getBooleanExtra(IS_CONTACT_REQUEST, false);;
+    isContactRequest = getIntent().getBooleanExtra(IS_CONTACT_REQUEST, false);
     loadRemoteContent = !isContactRequest && Prefs.getAlwaysLoadRemoteContent(this);
     webView.getSettings().setBlockNetworkLoads(!loadRemoteContent);
 
