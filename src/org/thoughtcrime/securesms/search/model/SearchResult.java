@@ -10,7 +10,7 @@ import com.b44t.messenger.DcChatlist;
  */
 public class SearchResult {
 
-  public static final SearchResult EMPTY = new SearchResult("", new int[]{}, new DcChatlist(0), new int[]{});
+  public static final SearchResult EMPTY = new SearchResult("", new int[]{}, new DcChatlist(0, 0), new int[]{});
 
   private final String     query;
   private final int[]      contacts;
