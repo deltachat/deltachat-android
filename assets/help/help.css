@@ -1,3 +1,7 @@
+html {
+  color-scheme: dark light;
+}
+
 a {
   text-decoration: none;
 }
