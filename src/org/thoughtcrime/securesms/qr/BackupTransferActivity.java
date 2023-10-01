@@ -206,7 +206,7 @@ public class BackupTransferActivity extends BaseActionBarActivity {
             new Thread(() -> {
                 try {
                     // depending on the android version, getting the SSID requires none, all or one of
-                    // ACCESS_COARSE_LOCATION, ACCESS_FINE_LOCATION, ACCESS_WIFI_STATE, ACCESS_NETWORK_STATE and maybe even more.
+                    // ACCESS_COARSE_LOCATION, ACCESS_FINE_LOCATION, NEARBY_WIFI_DEVICES, ACCESS_WIFI_STATE, ACCESS_NETWORK_STATE and maybe even more.
                     final WifiManager wifiManager = (WifiManager)activity.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
                     if (wifiManager.isWifiEnabled()) {
                         final WifiInfo info = wifiManager.getConnectionInfo();
