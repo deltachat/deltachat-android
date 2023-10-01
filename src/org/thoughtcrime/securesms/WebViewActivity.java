@@ -133,9 +133,10 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
   }
 
   protected void setForceDark() {
-    if (WebViewFeature.isFeatureSupported(WebViewFeature.FORCE_DARK)) {
+    if (Build.VERSION.SDK_INT <= 32 && WebViewFeature.isFeatureSupported(WebViewFeature.FORCE_DARK)) {
+      // needed for older API (tested on android7) that do not set `color-scheme` without the following hint
       WebSettingsCompat.setForceDark(webView.getSettings(),
-                                     DynamicTheme.isDarkTheme(this) ? WebSettingsCompat.FORCE_DARK_ON : WebSettingsCompat.FORCE_DARK_OFF);
+        DynamicTheme.isDarkTheme(this) ? WebSettingsCompat.FORCE_DARK_ON : WebSettingsCompat.FORCE_DARK_OFF);
     }
   }
 

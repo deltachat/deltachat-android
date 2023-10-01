@@ -35,7 +35,8 @@ public class ConnectivityActivity extends WebViewActivity implements DcEventCent
   }
 
   private void refresh() {
-    String connectivityHtml = DcHelper.getContext(this).getConnectivityHtml();
+    final String connectivityHtml = DcHelper.getContext(this).getConnectivityHtml()
+                                      .replace("</style>", " html { color-scheme: dark light; }</style>");
     webView.loadDataWithBaseURL(null, connectivityHtml, "text/html", "utf-8", null);
   }
 
