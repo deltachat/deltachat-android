@@ -92,7 +92,7 @@ class ConversationListAdapter extends RecyclerView.Adapter {
     this.context        = new WeakReference<>(context);
     this.glideRequests  = glideRequests;
     this.dcContext      = DcHelper.getContext(context);
-    this.dcChatlist     = new DcChatlist(0);
+    this.dcChatlist     = new DcChatlist(0, 0);
     this.locale         = locale;
     this.inflater       = LayoutInflater.from(context);
     this.clickListener  = clickListener;
@@ -195,7 +195,7 @@ class ConversationListAdapter extends RecyclerView.Adapter {
   }
 
   void changeData(@Nullable DcChatlist chatlist) {
-    dcChatlist = chatlist == null ? new DcChatlist(0) : chatlist;
+    dcChatlist = chatlist == null ? new DcChatlist(0, 0) : chatlist;
     notifyDataSetChanged();
   }
 }

@@ -194,7 +194,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private ApplicationContext context;
   private Recipient  recipient;
   private DcContext  dcContext;
-  private DcChat     dcChat                = new DcChat(0);
+  private DcChat     dcChat                = new DcChat(0, 0);
   private int        chatId;
   private final boolean isSecureText          = true;
   private boolean    isDefaultSms             = true;

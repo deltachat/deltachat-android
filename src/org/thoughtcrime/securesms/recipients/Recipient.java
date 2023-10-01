@@ -287,7 +287,7 @@ public class Recipient {
 
   public DcChat getChat()
   {
-    return dcChat!=null? dcChat : new DcChat(0);
+    return dcChat!=null? dcChat : new DcChat(0, 0);
   }
 
   @Override

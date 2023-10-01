@@ -158,8 +158,8 @@ public class DcContext {
     public native String       getContactEncrInfo   (int contact_id);
     public native boolean      deleteContact        (int id);
     public native int          addAddressBook       (String adrbook);
-    public DcChatlist          getChatlist          (int listflags, String query, int queryId) { return new DcChatlist(getChatlistCPtr(listflags, query, queryId)); }
-    public DcChat              getChat              (int chat_id) { return new DcChat(getChatCPtr(chat_id)); }
+    public DcChatlist          getChatlist          (int listflags, String query, int queryId) { return new DcChatlist(getAccountId(), getChatlistCPtr(listflags, query, queryId)); }
+    public DcChat              getChat              (int chat_id) { return new DcChat(getAccountId(), getChatCPtr(chat_id)); }
     public native String       getChatEncrInfo      (int chat_id);
     public native void         markseenMsgs         (int msg_ids[]);
     public native void         marknoticedChat      (int chat_id);

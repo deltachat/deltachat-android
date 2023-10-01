@@ -17,7 +17,10 @@ public class DcChat {
     public final static int DC_CHAT_VISIBILITY_ARCHIVED = 1;
     public final static int DC_CHAT_VISIBILITY_PINNED   = 2;
 
-    public DcChat(long chatCPtr) {
+    private int accountId;
+
+    public DcChat(int accountId, long chatCPtr) {
+        this.accountId = accountId;
         this.chatCPtr = chatCPtr;
     }
 
@@ -27,6 +30,7 @@ public class DcChat {
         chatCPtr = 0;
     }
 
+    public int            getAccountId      () { return accountId; }
     public native int     getId             ();
     public native int     getType           ();
     public native int     getVisibility     ();

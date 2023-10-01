@@ -2,7 +2,10 @@ package com.b44t.messenger;
 
 public class DcChatlist {
 
-    public DcChatlist(long chatlistCPtr) {
+    private int accountId;
+
+    public DcChatlist(int accountId, long chatlistCPtr) {
+        this.accountId = accountId;
         this.chatlistCPtr = chatlistCPtr;
     }
 
@@ -12,9 +15,10 @@ public class DcChatlist {
         chatlistCPtr = 0;
     }
 
+    public int              getAccountId() { return accountId; }
     public native int       getCnt    ();
     public native int       getChatId (int index);
-    public DcChat           getChat   (int index) { return new DcChat(getChatCPtr(index)); }
+    public DcChat           getChat   (int index) { return new DcChat(accountId, getChatCPtr(index)); }
     public native int       getMsgId  (int index);
     public DcMsg            getMsg    (int index) { return new DcMsg(getMsgCPtr(index)); }
     public DcLot            getSummary(int index, DcChat chat) { return new DcLot(getSummaryCPtr(index, chat==null? 0 : chat.getChatCPtr())); }
