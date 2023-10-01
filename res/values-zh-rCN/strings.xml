@@ -629,6 +629,8 @@
     <string name="pref_manage_keys">管理密钥</string>
     <string name="pref_use_system_emoji">使用系统 emoji</string>
     <string name="pref_use_system_emoji_explain">关闭 Delta Chat 内置 emoji 支持</string>
+    <string name="pref_use_inapp_camera">使用应用内相机</string>
+    <string name="pref_use_inapp_camera_explain">应用内相机功能通常比系统相机少</string>
     <string name="pref_app_access">应用程序访问</string>
     <string name="pref_chats">聊天</string>
     <string name="pref_in_chat_sounds">聊天音</string>
@@ -879,6 +881,7 @@
     <string name="contact_not_verified">无法验证 %1$s。</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that verified the contact shown. -->
     <string name="verified_by">验证人 %1$s</string>
+    <string name="verified_by_you">由您验证</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">%1$s 的加密设置已更改。</string>
     <string name="verified_group_explain">已验证群组（实验性）可提供针对主动攻击的安全性。其中的成员被其他成员用第二个因素进行了验证，并且消息始终是端到端加密的。</string>
