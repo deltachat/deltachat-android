@@ -31,6 +31,7 @@ import org.thoughtcrime.securesms.database.model.ThreadRecord;
 import org.thoughtcrime.securesms.notifications.NotificationCenter;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 import org.thoughtcrime.securesms.recipients.Recipient;
+import org.thoughtcrime.securesms.util.FileUtils;
 import org.thoughtcrime.securesms.util.MediaUtil;
 
 import java.io.File;
@@ -356,6 +357,8 @@ public class DcHelper {
   }
 
   public static String getBlobdirFile(DcContext dcContext, String filename, String ext) {
+    filename = FileUtils.sanitizeFilename(filename);
+    ext = FileUtils.sanitizeFilename(ext);
     String outPath = null;
     for (int i = 0; i < 1000; i++) {
       String test = dcContext.getBlobdir() + "/" + filename + (i == 0 ? "" : i < 100 ? "-" + i : "-" + (new Date().getTime() + i)) + ext;
