@@ -121,7 +121,7 @@ public class Recipient {
       int chatId = dcChat.getId();
       this.address = Address.fromChat(chatId);
       if (!dcChat.isMultiUser()) {
-        DcContext dcContext = DcHelper.getContext(context);
+        DcContext dcContext = DcHelper.getAccounts(context).getAccount(dcChat.getAccountId());
         int[] contacts = dcContext.getChatContacts(chatId);
         if( contacts.length>=1 ) {
           this.dcContact = dcContext.getContact(contacts[0]);
@@ -171,7 +171,7 @@ public class Recipient {
   public @NonNull List<Recipient> loadParticipants(Context context) {
     List<Recipient> participants = new ArrayList<>();
     if (dcChat!=null) {
-      DcContext dcContext = DcHelper.getContext(context);
+      DcContext dcContext = DcHelper.getAccounts(context).getAccount(dcChat.getAccountId());
       int[] contactIds = dcContext.getChatContacts(dcChat.getId());
       for (int contactId : contactIds) {
         participants.add(new Recipient(context, dcContext.getContact(contactId)));
