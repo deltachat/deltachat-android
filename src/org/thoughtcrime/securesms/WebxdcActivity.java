@@ -62,13 +62,15 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
   private boolean internetAccess = false;
 
   public static void openWebxdcActivity(Context context, DcMsg instance) {
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-      if (Prefs.isDeveloperModeEnabled(context)) {
-        WebView.setWebContentsDebuggingEnabled(true);
+    if (!Util.isClickedRecently()) {
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        if (Prefs.isDeveloperModeEnabled(context)) {
+          WebView.setWebContentsDebuggingEnabled(true);
+        }
+        context.startActivity(getWebxdcIntent(context, instance.getId()));
+      } else {
+        Toast.makeText(context, "At least Android 5.0 (Lollipop) required for Webxdc.", Toast.LENGTH_LONG).show();
       }
-      context.startActivity(getWebxdcIntent(context, instance.getId()));
-    } else {
-      Toast.makeText(context, "At least Android 5.0 (Lollipop) required for Webxdc.", Toast.LENGTH_LONG).show();
     }
   }
 
