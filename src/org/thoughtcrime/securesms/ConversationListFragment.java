@@ -203,7 +203,6 @@ public class ConversationListFragment extends Fragment
   }
 
   public void onNewIntent() {
-    loadChatlistAsync();
     initializeFabClickListener(actionMode != null);
   }
 
