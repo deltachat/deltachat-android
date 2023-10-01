@@ -102,10 +102,6 @@ public class DcContext {
     @Override
     protected void finalize() throws Throwable {
         super.finalize();
-        unref();
-    }
-
-    public void unref() {
         if (contextCPtr != 0) {
             unrefContextCPtr();
             contextCPtr = 0;
