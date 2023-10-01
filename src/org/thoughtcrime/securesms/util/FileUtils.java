@@ -26,7 +26,7 @@ public class FileUtils {
   }
 
   private static boolean isValidFilenameChar(char c) {
-    if ((0x00 <= c && c <= 0x1f)) {
+    if (c <= 0x1f) {
       return false;
     }
     switch (c) {
@@ -38,7 +38,6 @@ public class FileUtils {
       case '>':
       case '?':
       case '\\':
-      case '\0':
       case '|':
       case 0x7F:
         return false;
