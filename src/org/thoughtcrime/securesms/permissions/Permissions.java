@@ -1,6 +1,7 @@
 package org.thoughtcrime.securesms.permissions;
 
 
+import android.Manifest;
 import android.app.Activity;
 import androidx.appcompat.app.AlertDialog;
 import android.content.Context;
@@ -33,6 +34,14 @@ import java.util.List;
 import java.util.Map;
 
 public class Permissions {
+
+  public static String audioPermissions() {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+      return Manifest.permission.READ_MEDIA_AUDIO;
+    } else {
+      return Manifest.permission.READ_EXTERNAL_STORAGE;
+    }
+  }
 
   private static final Map<Integer, PermissionsRequest> OUTSTANDING = new LRUCache<>(2);
 
