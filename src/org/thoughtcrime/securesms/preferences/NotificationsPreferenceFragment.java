@@ -21,6 +21,7 @@ import android.text.TextUtils;
 import org.thoughtcrime.securesms.ApplicationPreferencesActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.KeepAliveService;
+import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.util.Prefs;
 
 import static android.app.Activity.RESULT_OK;
@@ -198,8 +199,10 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
   }
 
   public static CharSequence getSummary(Context context) {
-    boolean notificationsEnabled = Prefs.isNotificationsEnabled(context);
-    String ret = context.getString(notificationsEnabled ? R.string.on : R.string.off);
-    return ret;
+    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU || Permissions.hasAll(context, Manifest.permission.POST_NOTIFICATIONS)) {
+      return context.getString(Prefs.isNotificationsEnabled(context) ? R.string.on : R.string.off);
+    } else {
+      return context.getString(R.string.disabled_in_system_settings);
+    }
   }
 }
