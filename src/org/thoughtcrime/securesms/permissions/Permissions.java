@@ -43,14 +43,6 @@ public class Permissions {
     }
   }
 
-  public static String audioPermissions() {
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-      return Manifest.permission.READ_MEDIA_AUDIO;
-    } else {
-      return Manifest.permission.READ_EXTERNAL_STORAGE;
-    }
-  }
-
   private static final Map<Integer, PermissionsRequest> OUTSTANDING = new LRUCache<>(2);
 
   public static PermissionsBuilder with(@NonNull Activity activity) {
@@ -151,6 +143,18 @@ public class Permissions {
     }
 
     public void execute() {
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+        // READ_EXTERNAL_STORAGE and WRITE_EXTERNAL_STORAGE does not exist on modern androids
+        // as file access is done by pickers
+        String[] r = requestedPermissions;
+        Arrays.sort(r);
+        if ( (r.length == 1 && (r[0].equals(Manifest.permission.READ_EXTERNAL_STORAGE) || r[0].equals(Manifest.permission.WRITE_EXTERNAL_STORAGE)))
+          || (r.length == 2 &&  r[0].equals(Manifest.permission.READ_EXTERNAL_STORAGE) && r[1].equals(Manifest.permission.WRITE_EXTERNAL_STORAGE)) ) {
+          allGrantedListener.run();
+          return;
+        }
+      }
+
       PermissionsRequest request = new PermissionsRequest(allGrantedListener, anyDeniedListener, anyPermanentlyDeniedListener, anyResultListener,
                                                           someGrantedListener, someDeniedListener, somePermanentlyDeniedListener);
 
