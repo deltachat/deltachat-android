@@ -31,6 +31,7 @@
     <string name="back">Atrás</string>
     <string name="verified">Verificado</string>
     <string name="close">Cerrar</string>
+    <string name="close_window">Cerrar ventana</string>
     <string name="forward">Reenviar</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">Volver a enviar</string>
@@ -174,10 +175,10 @@
     <string name="file">Archivo</string>
     <string name="files">Archivos</string>
     <!-- "App" is used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
-    <string name="webxdc_app">Aplicación privada</string>
+    <string name="webxdc_app">Aplicación</string>
     <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
-    <string name="webxdc_apps">Aplicaciones privadas</string>
-    <string name="files_and_webxdx_apps">Archivos y aplicaciones privadas</string>
+    <string name="webxdc_apps">Aplicaciones</string>
+    <string name="files_and_webxdx_apps">Archivos y aplicaciones</string>
     <string name="unknown">Desconocido</string>
 
     <string name="green">Verde</string>
@@ -215,7 +216,7 @@
     <string name="menu_toggle_keyboard">Alternar teclado emoji</string>
     <string name="menu_edit_group">Editar grupo</string>
     <string name="menu_group_name_and_image">Nombre e imagen de grupo</string>
-    <string name="menu_show_global_map">Mostrar todas las ubicaciones</string>
+    <string name="menu_show_global_map">Todas las ubicaciones</string>
     <string name="menu_archive_chat">Archivar chat</string>
     <string name="menu_unarchive_chat">Des-archivar chat</string>
     <string name="menu_add_attachment">Añadir adjunto</string>
@@ -320,7 +321,7 @@
     <string name="videochat_tap_to_open">Toca para abrir</string>
     <string name="videochat_instance">Instancia de videollamada</string>
     <string name="videochat_instance_placeholder">Tu instancia de videollamada</string>
-    <string name="videochat_instance_example">Ejemplos: https://meet.jit.si/$ROOM o basicwebrtc:https://your-server</string>
+    <string name="videochat_instance_example">Ejemplo: https://tu-servidor.org/$ROOM</string>
     <string name="videochat_instance_explain_2">Si el videochat está activado, puedes iniciar un videochat desde cada chat. Los chats de vídeo necesitan una aplicación o un navegador compatible en los dos lados.</string>
     <string name="videochat_instance_from_qr">¿Usa \"%1$s\" para invitar a otros a la videollamada?\n\nUna vez configurado, puedes iniciar una videollamada desde el chat individual. Esto reemplaza la configuración previa de videollamadas. Si la hubiera.</string>
     <string name="videochat_invitation">Invitación a videollamada</string>
@@ -658,6 +659,8 @@
     <string name="pref_manage_keys">Administrar claves</string>
     <string name="pref_use_system_emoji">Usar emoji del sistema</string>
     <string name="pref_use_system_emoji_explain">Deshabilitar el soporte de emoji integrado de Delta Chat</string>
+    <string name="pref_use_inapp_camera">Usar cámara interna</string>
+    <string name="pref_use_inapp_camera_explain">La cámara interna suele tener menos funcionalidades que la cámara del sistema</string>
     <string name="pref_app_access">Acceso a la aplicación</string>
     <string name="pref_chats">Chats</string>
     <string name="pref_in_chat_sounds">Sonidos en el chat</string>
@@ -858,7 +861,7 @@
     <string name="devicemsg_update_reminder">⚠️ Tu versión de Delta Chat puede estar desactualizada.\n\nEso puede crear problemas porque tus contactos usan nuevas versiones - y tú te estás perdiendo las últimas novedades 😳\nChequea https://get.delta.chat o tu tienda de aplicaciones para actualizaciones.</string>
 
     <!-- Some options as "Add Second Device" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc. to be entered in a system dialog. This hint is added to the system dialog, below a title as "Add Second Device" or "Backup". -->
-    <string name="enter_system_secret_to_continue">Ingrese su secreto del sistema para continuar.</string>
+    <string name="enter_system_secret_to_continue">Desbloquear para continuar</string>
 
     <!-- qr code stuff -->
     <string name="qr_code">Código QR</string>
@@ -908,6 +911,7 @@
     <string name="contact_not_verified">No se pudo verificar %1$s.</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that verified the contact shown. -->
     <string name="verified_by">Verificado por %1$s</string>
+    <string name="verified_by_you">Verificado por ti</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Configuración cambiada para %1$s.</string>
     <string name="verified_group_explain">Los grupos verificados (experimentales) brindan seguridad contra ataques activos. Los miembros son verificados con un segundo factor por otros miembros y los mensajes siempre están encriptados de extremo a extremo.</string>
