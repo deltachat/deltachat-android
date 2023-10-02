@@ -280,6 +280,15 @@ public class ConversationListFragment extends Fragment
               .onAllGranted(() -> {
                 DozeReminder.maybeAskDirectly(getActivity());
               })
+              .onAnyDenied(() -> {
+                new AlertDialog.Builder(activity)
+                  .setTitle(R.string.notifications_disabled)
+                  .setMessage(R.string.perm_explain_access_to_notifications_denied)
+                  .setCancelable(false)
+                  .setPositiveButton(R.string.perm_continue, (dialog, which) -> activity.startActivity(Permissions.getApplicationSettingsIntent(activity)))
+                  .setNegativeButton(android.R.string.cancel, null)
+                  .show();
+              })
               .execute();
           }
         } else {

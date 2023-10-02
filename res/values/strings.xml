@@ -919,6 +919,7 @@
     <string name="notify_name_and_message">Name and message</string>
     <string name="notify_name_only">Name only</string>
     <string name="notify_no_name_or_message">No name or message</string>
+    <string name="notifications_disabled">Notifications disabled</string>
 
 
     <!-- permissions -->
@@ -928,6 +929,7 @@
     <string name="perm_explain_access_to_mic_denied">To send audio messages, go to the app settings, select \"Permissions\", and enable \"Microphone\".</string>
     <string name="perm_explain_access_to_storage_denied">To receive or send files, go to the app settings, select \"Permissions\", and enable \"Storage\".</string>
     <string name="perm_explain_access_to_location_denied">To attach a location, go to the app settings, select \"Permissions\", and enable \"Location\".</string>
+    <string name="perm_explain_access_to_notifications_denied">To receive notifications, go to \"System Settings / Apps / Delta Chat\" and enable \"Notifications\".</string>
 
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Draw anywhere to blur</string>
