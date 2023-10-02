@@ -86,7 +86,7 @@ dependencies {
 android {
     namespace "org.thoughtcrime.securesms"
     flavorDimensions "none"
-    compileSdkVersion 32
+    compileSdkVersion 33
 
     // Set NDK version to strip native libraries.
     // Even though we compile our libraries outside Gradle with `scripts/ndk-make.sh`,
@@ -105,7 +105,7 @@ android {
         multiDexEnabled true
 
         minSdkVersion 16
-        targetSdkVersion 32
+        targetSdkVersion 33
 
         vectorDrawables.useSupportLibrary = true
 

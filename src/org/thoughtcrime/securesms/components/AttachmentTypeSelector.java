@@ -116,7 +116,7 @@ public class AttachmentTypeSelector extends PopupWindow {
   }
 
   public void show(@NonNull Activity activity, final @NonNull View anchor) {
-    if (Permissions.hasAll(activity, Manifest.permission.READ_EXTERNAL_STORAGE)) {
+    if (Permissions.hasAll(activity, Permissions.galleryPermissions())) {
       recentRail.setVisibility(View.VISIBLE);
       loaderManager.restartLoader(1, null, recentRail);
     } else {

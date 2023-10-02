@@ -1,6 +1,7 @@
 package org.thoughtcrime.securesms.permissions;
 
 
+import android.Manifest;
 import android.app.Activity;
 import androidx.appcompat.app.AlertDialog;
 import android.content.Context;
@@ -33,6 +34,18 @@ import java.util.List;
 import java.util.Map;
 
 public class Permissions {
+
+  public static String[] galleryPermissions() {
+    // on modern androids, the gallery picker works without permissions,
+    // however, the "camera roll" still requires permissions.
+    // to get that dialog at a UX-wise good moment, we still always ask for permission when opening gallery.
+    // just-always-asking this also avoids the mess with handling various paths for various apis.
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+      return new String[]{Manifest.permission.READ_MEDIA_IMAGES, Manifest.permission.READ_MEDIA_VIDEO};
+    } else {
+      return new String[]{Manifest.permission.READ_EXTERNAL_STORAGE};
+    }
+  }
 
   private static final Map<Integer, PermissionsRequest> OUTSTANDING = new LRUCache<>(2);
 
@@ -134,6 +147,18 @@ public class Permissions {
     }
 
     public void execute() {
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+        // READ_EXTERNAL_STORAGE and WRITE_EXTERNAL_STORAGE does not exist on modern androids
+        // as file access is done by pickers
+        String[] r = requestedPermissions;
+        Arrays.sort(r);
+        if ( (r.length == 1 && (r[0].equals(Manifest.permission.READ_EXTERNAL_STORAGE) || r[0].equals(Manifest.permission.WRITE_EXTERNAL_STORAGE)))
+          || (r.length == 2 &&  r[0].equals(Manifest.permission.READ_EXTERNAL_STORAGE) && r[1].equals(Manifest.permission.WRITE_EXTERNAL_STORAGE)) ) {
+          allGrantedListener.run();
+          return;
+        }
+      }
+
       PermissionsRequest request = new PermissionsRequest(allGrantedListener, anyDeniedListener, anyPermanentlyDeniedListener, anyResultListener,
                                                           someGrantedListener, someDeniedListener, somePermanentlyDeniedListener);
 
@@ -247,7 +272,7 @@ public class Permissions {
     resultListener.onResult(permissions, grantResults, shouldShowRationaleDialog);
   }
 
-  private static Intent getApplicationSettingsIntent(@NonNull Context context) {
+  public static Intent getApplicationSettingsIntent(@NonNull Context context) {
     Intent intent = new Intent();
     intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
     Uri uri = Uri.fromParts("package", context.getPackageName(), null);
