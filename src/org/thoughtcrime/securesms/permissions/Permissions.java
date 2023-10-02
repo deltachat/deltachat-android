@@ -36,6 +36,10 @@ import java.util.Map;
 public class Permissions {
 
   public static String[] galleryPermissions() {
+    // on modern androids, the gallery picker works without permissions,
+    // however, the "camera roll" still requires permissions.
+    // to get that dialog at a UX-wise good moment, we still always ask for permission when opening gallery.
+    // just-always-asking this also avoids the mess with handling various paths for various apis.
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
       return new String[]{Manifest.permission.READ_MEDIA_IMAGES, Manifest.permission.READ_MEDIA_VIDEO};
     } else {
