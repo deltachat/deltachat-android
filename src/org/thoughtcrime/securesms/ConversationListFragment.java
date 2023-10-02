@@ -51,6 +51,7 @@ import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcChatlist;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
+import com.b44t.messenger.DcMsg;
 import com.google.android.material.snackbar.Snackbar;
 
 import org.thoughtcrime.securesms.ConversationListAdapter.ItemClickListener;
@@ -281,13 +282,11 @@ public class ConversationListFragment extends Fragment
                 DozeReminder.maybeAskDirectly(getActivity());
               })
               .onAnyDenied(() -> {
-                new AlertDialog.Builder(activity)
-                  .setTitle(R.string.notifications_disabled)
-                  .setMessage(R.string.perm_explain_access_to_notifications_denied)
-                  .setCancelable(false)
-                  .setPositiveButton(R.string.perm_continue, (dialog, which) -> activity.startActivity(Permissions.getApplicationSettingsIntent(activity)))
-                  .setNegativeButton(android.R.string.cancel, null)
-                  .show();
+                final DcContext dcContext = DcHelper.getContext(activity);
+                DcMsg msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
+                msg.setText("\uD83D\uDC49 "+activity.getString(R.string.notifications_disabled)+" \uD83D\uDC48\n\n"
+                  +activity.getString(R.string.perm_explain_access_to_notifications_denied));
+                dcContext.addDeviceMsg("android.notifications-disabled", msg);
               })
               .execute();
           }
