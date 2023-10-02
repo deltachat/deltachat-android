@@ -16,6 +16,7 @@
  */
 package org.thoughtcrime.securesms;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
@@ -60,6 +61,8 @@ import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.connect.DirectShareUtil;
 import org.thoughtcrime.securesms.mms.GlideApp;
+import org.thoughtcrime.securesms.permissions.Permissions;
+import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.RelayUtil;
 import org.thoughtcrime.securesms.util.SendRelayedMessageUtil;
 import org.thoughtcrime.securesms.util.Util;
@@ -267,7 +270,21 @@ public class ConversationListFragment extends Fragment
 
       @Override
       protected void onPostExecute(Void result) {
-        DozeReminder.maybeAskDirectly(getActivity());
+        Activity activity = ConversationListFragment.this.getActivity();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+          if (!Prefs.getBooleanPreference(activity, Prefs.ASKED_FOR_NOTIFICATION_PERMISSION, false)) {
+            Prefs.setBooleanPreference(activity, Prefs.ASKED_FOR_NOTIFICATION_PERMISSION, true);
+            Permissions.with(activity)
+              .request(Manifest.permission.POST_NOTIFICATIONS)
+              .ifNecessary()
+              .onAllGranted(() -> {
+                DozeReminder.maybeAskDirectly(getActivity());
+              })
+              .execute();
+          }
+        } else {
+          DozeReminder.maybeAskDirectly(getActivity());
+        }
       }
     }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, getActivity());
   }
