@@ -4,4 +4,4 @@
     android:id="@+id/image_view"
     android:layout_width="@dimen/media_bubble_sticker_dimens"
     android:layout_height="@dimen/media_bubble_sticker_dimens"
-    android:contentDescription="@string/image" />
+    android:contentDescription="@string/sticker" />

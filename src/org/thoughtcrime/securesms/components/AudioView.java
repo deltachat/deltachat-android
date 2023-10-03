@@ -96,6 +96,30 @@ public class AudioView extends FrameLayout implements AudioSlidePlayer.Listener 
     }
   }
 
+  @Override
+  public boolean performClick() {
+    if (this.playButton.getVisibility() == View.VISIBLE) {
+        playButton.performClick();
+    } else {
+        pauseButton.performClick();
+    }
+    return super.performClick();
+  }
+
+  public String getDescription() {
+    String desc;
+    if (this.title.getVisibility() == View.VISIBLE) {
+      desc = getContext().getString(R.string.audio);
+    } else {
+      desc = getContext().getString(R.string.voice_message);
+    }
+    desc += "\n" + this.timestamp.getText();
+    if (title.getVisibility() == View.VISIBLE) {
+        desc += "\n" + this.title.getText();
+    }
+    return desc;
+  }
+
   public void setDuration(int duration) {
     if (getProgress()==0)
       this.timestamp.setText(DateUtils.getFormatedDuration(duration));

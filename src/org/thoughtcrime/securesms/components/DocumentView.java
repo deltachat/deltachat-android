@@ -59,6 +59,13 @@ public class DocumentView extends FrameLayout {
     this.setOnClickListener(new OpenClickedListener(documentSlide));
   }
 
+  public String getDescription() {
+    String desc = getContext().getString(R.string.file);
+    desc += "\n" + fileName.getText();
+    desc += "\n" + fileSize.getText();
+    return desc;
+  }
+
   @Override
   public void setFocusable(boolean focusable) {
     super.setFocusable(focusable);
