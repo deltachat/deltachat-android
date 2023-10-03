@@ -31,6 +31,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.fragment.app.Fragment;
@@ -248,7 +249,8 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
 
         switch (category) {
         case PREFERENCE_CATEGORY_NOTIFICATIONS:
-          if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU || Permissions.hasAll(getActivity(), Manifest.permission.POST_NOTIFICATIONS)) {
+          NotificationManagerCompat notificationManager = NotificationManagerCompat.from(getActivity());
+          if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU || notificationManager.areNotificationsEnabled()) {
             fragment = new NotificationsPreferenceFragment();
           } else {
             new AlertDialog.Builder(getActivity())

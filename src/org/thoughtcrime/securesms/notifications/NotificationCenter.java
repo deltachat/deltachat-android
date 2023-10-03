@@ -337,14 +337,17 @@ public class NotificationCenter {
                 return;
             }
 
+            NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU && !notificationManager.areNotificationsEnabled()) {
+                return;
+            }
+
             if (Util.equals(visibleChat, chatData)) {
                 if (Prefs.isInChatNotifications(context)) {
                     InChatSounds.getInstance(context).playIncomingSound();
                 }
                 return;
             }
-
-            NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
 
             // get notification text as a single line
             NotificationPrivacyPreference privacy = Prefs.getNotificationPrivacy(context);

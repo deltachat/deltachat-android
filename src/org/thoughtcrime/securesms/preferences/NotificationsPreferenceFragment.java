@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.os.PowerManager;
 import android.provider.Settings;
 import androidx.annotation.Nullable;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
 import androidx.preference.CheckBoxPreference;
 import androidx.preference.ListPreference;
@@ -199,7 +200,8 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
   }
 
   public static CharSequence getSummary(Context context) {
-    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU || Permissions.hasAll(context, Manifest.permission.POST_NOTIFICATIONS)) {
+    NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
+    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU || notificationManager.areNotificationsEnabled()) {
       return context.getString(Prefs.isNotificationsEnabled(context) ? R.string.on : R.string.off);
     } else {
       return context.getString(R.string.disabled_in_system_settings);
