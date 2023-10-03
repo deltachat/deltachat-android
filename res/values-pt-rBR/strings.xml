@@ -927,8 +927,6 @@
     <string name="notify_name_and_message">Nome e mensagem</string>
     <string name="notify_name_only">Somente o nome</string>
     <string name="notify_no_name_or_message">Sem nome ou mensagem</string>
-
-
     <!-- permissions -->
     <string name="perm_required_title">Permissão necessária</string>
     <string name="perm_continue">Continuar</string>
@@ -936,7 +934,6 @@
     <string name="perm_explain_access_to_mic_denied">O Delta Chat precisa acessar seu microfone para que você possa enviar mensagens de voz, mas o acesso foi negado. Por favor, habilite o microfone nas configurações de permissões do aplicativo.</string>
     <string name="perm_explain_access_to_storage_denied">Para receber o enviar arquivos, vai nas configurações do aplicativo, escolhe \"Permissões\", e ativar \"Armazenamento\".</string>
     <string name="perm_explain_access_to_location_denied">O Delta Chat precisa acessar sua localização para que você possa enviá-la, mas o acesso foi negado. Por favor, habilite o seu acesso nas configurações de permissões do aplicativo.</string>
-
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Desenhe em qualquer lugar para desfocar</string>
     <string name="ImageEditorHud_add_text">Adicionar texto</string>

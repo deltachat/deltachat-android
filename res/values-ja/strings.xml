@@ -652,8 +652,6 @@ https://delta.chat</string>
     <string name="notify_name_and_message">名前とメッセージ</string>
     <string name="notify_name_only">名前のみ</string>
     <string name="notify_no_name_or_message">名前もメッセージも非表示</string>
-
-
     <!-- permissions -->
     <string name="perm_required_title">アクセス許可が必要です</string>
     <string name="perm_continue">続行</string>

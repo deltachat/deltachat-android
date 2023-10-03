@@ -706,8 +706,6 @@
     <string name="notify_name_and_message">Navn og besked</string>
     <string name="notify_name_only">Kun navn</string>
     <string name="notify_no_name_or_message">Ingen navn eller besked</string>
-
-
     <!-- permissions -->
     <string name="perm_required_title">Tilladelse påkrævet</string>
     <string name="perm_continue">Fortsæt</string>
@@ -715,7 +713,6 @@
     <string name="perm_explain_access_to_mic_denied">Delta Chat kræver mikrofon tilladelse for at sende lydbeskeder, men den er blevet nægtet permanent. Fortsæt til program indstillinger, vælg \"Tilladelser\" og aktiver \"Mikrofon\".</string>
     <string name="perm_explain_access_to_storage_denied">Delta Chat kræver lagring tilladelse for at vedhæfte eller eksportere billeder, video eller lyd, men det er blevet afvist permanent. Fortsæt til program indstillings-menuen, vælg \"Tilladelser\" og aktiver \"Lagring\".</string>
     <string name="perm_explain_access_to_location_denied">Delta Chat kræver placering tilladelse for at kunne vedhæfte placering, men det er blevet afvist permanent. Fortsæt til program indstillings-menuen, vælg \"Tilladelser\" og aktiver \"Placering\".</string>
-
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Tegn hvor som helst for at sløre</string>
     <string name="ImageEditorHud_rotate">Roter</string>

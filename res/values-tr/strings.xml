@@ -916,8 +916,6 @@
     <string name="notify_name_and_message">Ad ve ileti</string>
     <string name="notify_name_only">Yalnızca ad</string>
     <string name="notify_no_name_or_message">Ad ya da ileti yok</string>
-
-
     <!-- permissions -->
     <string name="perm_required_title">İzin gerekli</string>
     <string name="perm_continue">Sürdür</string>
@@ -925,7 +923,6 @@
     <string name="perm_explain_access_to_mic_denied">Sesli iletiler göndermek için uygulama ayarlarına gidin, \"İzinler\"i seçin ve \"Mikrofon\"u etkinleştirin.</string>
     <string name="perm_explain_access_to_storage_denied">Dosyalar almak ya da göndermek için uygulama ayarlarına gidin, \"İzinler\"i seçin ve \"Depolama\"yı etkinleştirin.</string>
     <string name="perm_explain_access_to_location_denied">Bir konum iliştirmek için uygulama ayarlarına gidin, \"İzinler\"i seçin ve \"Konum\"u etkinleştirin.</string>
-
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Bulanıklaştırmak için herhangi bir yere çizin</string>
     <string name="ImageEditorHud_add_text">Metin Ekle</string>

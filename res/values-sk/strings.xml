@@ -889,8 +889,6 @@
     <string name="notify_name_and_message">Meno a správa</string>
     <string name="notify_name_only">Iba meno</string>
     <string name="notify_no_name_or_message">Žiadne meno ani správa</string>
-
-
     <!-- permissions -->
     <string name="perm_required_title">Vyžaduje sa povolenie</string>
     <string name="perm_continue">ďalej</string>
@@ -898,7 +896,6 @@
     <string name="perm_explain_access_to_mic_denied">Ak chcete odosielať zvukové správy, prejdite do nastavení aplikácie, vyberte možnosť „Povolenia“ a povoľte možnosť „Mikrofón“.</string>
     <string name="perm_explain_access_to_storage_denied">Ak chcete prijímať alebo odosielať súbory, prejdite do nastavení aplikácie, vyberte možnosť „Povolenia“ a povoľte možnosť „Úložisko“.</string>
     <string name="perm_explain_access_to_location_denied">Ak chcete pripojiť miesto, prejdite do nastavení aplikácie, vyberte možnosť Povolenia a povoľte možnosť Poloha.</string>
-
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Ak chcete rozmazať, nakreslite kamkoľvek</string>
     <string name="ImageEditorHud_add_text">Pridať text</string>

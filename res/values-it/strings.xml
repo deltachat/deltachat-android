@@ -931,8 +931,6 @@
     <string name="notify_name_and_message">Nome e messaggio</string>
     <string name="notify_name_only">Solo nome</string>
     <string name="notify_no_name_or_message">Nessun nome nè messaggio</string>
-
-
     <!-- permissions -->
     <string name="perm_required_title">Autorizzazione richiesta</string>
     <string name="perm_continue">Continua</string>
@@ -940,7 +938,6 @@
     <string name="perm_explain_access_to_mic_denied">Delta Chat richiede l\'autorizzazione inviare messaggi audio, ma è stata bloccata permanentemente. Vai nelle impostazioni delle App, seleziona \"Autorizzazioni\" e abilita \"Microfono\".</string>
     <string name="perm_explain_access_to_storage_denied">Per ricevere o inviare files, vai alle impostazioni dell\'app, seleziona \"Autorizzazioni\" e abilita \"Archiviazione\".</string>
     <string name="perm_explain_access_to_location_denied">Delta Chat richiede l\'autorizzazione per allegare la posizione, ma è stata bloccata permanentemente. Vai nelle impostazioni delle App, seleziona \"Autorizzazioni\" e abilita \"Posizione\".</string>
-
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Disegna ovunque per sfocare</string>
     <string name="ImageEditorHud_add_text">Aggiungi Testo</string>

@@ -901,8 +901,6 @@
     <string name="notify_name_and_message">名称和消息</string>
     <string name="notify_name_only">仅名称</string>
     <string name="notify_no_name_or_message">不显示名称或消息</string>
-
-
     <!-- permissions -->
     <string name="perm_required_title">需要权限</string>
     <string name="perm_continue">继续</string>
@@ -910,7 +908,6 @@
     <string name="perm_explain_access_to_mic_denied">要发送音频消息，请转至应用设置，选择“权限”，然后启用“麦克风”。</string>
     <string name="perm_explain_access_to_storage_denied">要发送或接收文件，请转至应用设置，选择“权限”，然后启用“存储”。</string>
     <string name="perm_explain_access_to_location_denied">要附加位置，请转至应用设置，选择“权限”，然后启用“位置”。</string>
-
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">对任意地方涂抹以进行模糊</string>
     <string name="ImageEditorHud_add_text">添加文字</string>

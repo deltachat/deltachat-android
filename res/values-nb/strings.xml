@@ -417,8 +417,6 @@
     <string name="notify_name_and_message">Navn og melding</string>
     <string name="notify_name_only">Bare navn</string>
     <string name="notify_no_name_or_message">Ingen navn eller melding</string>
-
-
     <!-- permissions -->
     <string name="perm_required_title">Tillatelse kreves</string>
     <string name="perm_continue">Fortsett</string>

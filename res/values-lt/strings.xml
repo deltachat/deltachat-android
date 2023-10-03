@@ -693,8 +693,6 @@
     <string name="notify_name_and_message">Vardą ir žinutę</string>
     <string name="notify_name_only">Tik vardą</string>
     <string name="notify_no_name_or_message">Jokio vardo ar žinutės</string>
-
-
     <!-- permissions -->
     <string name="perm_required_title">Reikalingas leidimas</string>
     <string name="perm_continue">Tęsti</string>

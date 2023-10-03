@@ -928,8 +928,6 @@
     <string name="notify_name_and_message">Nom et message</string>
     <string name="notify_name_only">Nom seulement</string>
     <string name="notify_no_name_or_message">Pas de nom ou de message</string>
-
-
     <!-- permissions -->
     <string name="perm_required_title">Autorisation requise</string>
     <string name="perm_continue">Continuez</string>
@@ -937,7 +935,6 @@
     <string name="perm_explain_access_to_mic_denied">Pour envoyer des messages audio, aller dans les paramètres de l\'application, sélectionner \"Autorisations\" et autoriser \"Microphone\".</string>
     <string name="perm_explain_access_to_storage_denied">Pour recevoir ou envoyer des fichiers, aller dans les Paramètres de l\'application, sélectionner \"Autorisations\" et autoriser \"Stockage\".</string>
     <string name="perm_explain_access_to_location_denied">Pour joindre une position, aller au menu paramètres de l\'application, sélectionnez \"Autorisations\" et activez \"Position\".</string>
-
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Dessinez n\'importe où pour flouter</string>
     <string name="ImageEditorHud_add_text">Ajouter du texte</string>

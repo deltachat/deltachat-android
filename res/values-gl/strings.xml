@@ -834,8 +834,6 @@
     <string name="notify_name_and_message">Nome e mensaxe</string>
     <string name="notify_name_only">Só nome</string>
     <string name="notify_no_name_or_message">Sen nome ou mensaxe</string>
-
-
     <!-- permissions -->
     <string name="perm_required_title">Permiso requerido</string>
     <string name="perm_continue">Continuar</string>
@@ -843,7 +841,6 @@
     <string name="perm_explain_access_to_mic_denied">Para enviar mensaxes de voz, vaite aos axustes da app, escolle \"Permisos\" e activa \"Micrófono\".</string>
     <string name="perm_explain_access_to_storage_denied">Para recibir ou enviar ficheiros, vaite aos axustes da app, escolle \"Permisos\" e activa \"Almacenaxe\".</string>
     <string name="perm_explain_access_to_location_denied">Para engadir a localización, vaite aos axustes da app, escolle \"Permisos\" e activa \"Localización\".</string>
-
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Debuxa para esborranchar</string>
     <string name="ImageEditorHud_add_text">Engadir texto</string>

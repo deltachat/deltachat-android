@@ -907,8 +907,6 @@
     <string name="notify_name_and_message">Име и съобщение</string>
     <string name="notify_name_only">Само име</string>
     <string name="notify_no_name_or_message">Без име или съобщение</string>
-
-
     <!-- permissions -->
     <string name="perm_required_title">Изисква се позволение</string>
     <string name="perm_continue">Продължаване</string>
@@ -916,7 +914,6 @@
     <string name="perm_explain_access_to_mic_denied">За да изпращате аудиосъобщения, отидете в настройките на приложението, изберете \"Позволения\" и разрешете \"Микрофон\".</string>
     <string name="perm_explain_access_to_storage_denied">За да получавате или изпращате файлове, отидете в настройките на приложението, изберете \"Позволения\" и разрешете \"Съхранение\".</string>
     <string name="perm_explain_access_to_location_denied">За да прикрепите информация за местоположението, отидете в настройките на приложението, изберете \"Позволения\" и разрешете \"Местоположение\".</string>
-
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Рисувайте на произволно място, за да замъглите</string>
     <string name="ImageEditorHud_add_text">Добавяне на текст</string>

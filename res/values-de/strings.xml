@@ -722,6 +722,9 @@
     <string name="emoji_symbols">Symbole</string>
     <string name="emoji_flags">Flaggen</string>
 
+    <!-- Reactions -->
+    <string name="reactions">Reaktionen</string>
+
     <!-- automatically delete message -->
     <string name="delete_old_messages">Alte Nachrichten löschen</string>
     <string name="autodel_device_title">Nachrichten vom Gerät löschen</string>
@@ -916,6 +919,7 @@
     <string name="notify_name_and_message">Name und Nachricht</string>
     <string name="notify_name_only">Nur der Name</string>
     <string name="notify_no_name_or_message">Kein Name oder Nachricht</string>
+    <string name="notifications_disabled">Benachrichtigungen deaktiviert</string>
 
 
     <!-- permissions -->
@@ -925,6 +929,7 @@
     <string name="perm_explain_access_to_mic_denied">Um Audio-Nachrichten zu senden, bitte in den System-Einstellungen DeltaChat den Zugriff auf das Mikrophon erlauben.</string>
     <string name="perm_explain_access_to_storage_denied">Um Dateien zu empfangen oder zu versenden, bitte in den System-Einstellungen Delta Chat den Zugriff auf den Speicher erlauben.</string>
     <string name="perm_explain_access_to_location_denied">Um einen Standort anzuhängen, bitte in den Systemeinstellungen DeltaChat den Zugriff auf \"Standort\" erlauben.</string>
+    <string name="perm_explain_access_to_notifications_denied">Um Benachrichtigungen zu erhalten, öffnen Sie \"Systemeinstellungen / Apps / Delta Chat\" und aktivieren Sie \"Benachrichtigungen\".</string>
 
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Zeichne zum Verwischen in beliebige Bereiche</string>

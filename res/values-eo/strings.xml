@@ -464,8 +464,6 @@
     <string name="notify_name_and_message">Nomon kaj mesaĝon</string>
     <string name="notify_name_only">Nur nomon</string>
     <string name="notify_no_name_or_message">Nek nomon aŭ mesaĝon</string>
-
-
     <!-- permissions -->
     <string name="perm_required_title">Permeso bezonata</string>
     <string name="perm_continue">Daŭrigi</string>

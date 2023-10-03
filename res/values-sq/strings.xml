@@ -913,8 +913,6 @@
     <string name="notify_name_and_message">Emër dhe mesazh</string>
     <string name="notify_name_only">Vetëm emër</string>
     <string name="notify_no_name_or_message">Pa emër apo mesazh</string>
-
-
     <!-- permissions -->
     <string name="perm_required_title">Lypset leje</string>
     <string name="perm_continue">Vazhdo</string>
@@ -922,7 +920,6 @@
     <string name="perm_explain_access_to_mic_denied">Delta Chat lyp leje mbi Mikrofonin që të mund të dërgojë mesazhe audio, por kjo i është mohuar. Ju lutemi, vazhdoni te menuja e rregullimeve të aplikacionit, përzgjidhni \"Leje\", dhe aktivizojini për \"Mikrofonin\".</string>
     <string name="perm_explain_access_to_storage_denied">Delta Chat lyp leje mbi Depozitimin që të mund të bashkëngjisë apo eksportojë foto, video ose audio, por kjo i është mohuar. Ju lutemi, vazhdoni te menuja e rregullimeve të aplikacionit, përzgjidhni \"Leje\", dhe aktivizojini për \"Depozitimin\".</string>
     <string name="perm_explain_access_to_location_denied">Delta Chat lyp leje mbi Vendndodhjen që të mund të bashkëngjisë një vendndodhje, por kjo i është mohuar. Ju lutemi, vazhdoni te menuja e rregullimeve të aplikacionit, përzgjidhni \"Leje\", dhe aktivizojini për \"Vendndodhjen\".</string>
-
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Që të turbullohet, vizatoni kudo qoftë</string>
     <string name="ImageEditorHud_add_text">Shtoni tekst</string>

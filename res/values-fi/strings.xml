@@ -865,8 +865,6 @@
     <string name="notify_name_and_message">Nimi ja viesti</string>
     <string name="notify_name_only">Pelkkä nimi</string>
     <string name="notify_no_name_or_message">Ei nimeä eikä viestiä</string>
-
-
     <!-- permissions -->
     <string name="perm_required_title">Pääsylupa vaaditaan</string>
     <string name="perm_continue">Jatka</string>
@@ -874,7 +872,6 @@
     <string name="perm_explain_access_to_mic_denied">Lähettääksesi ääniviestin mene sovelluksen asetuksiin, valitse \"Käyttöluvat\" ja kytke päälle \"Mikrofoni\".</string>
     <string name="perm_explain_access_to_storage_denied">Lähettääksesi tai vastaanottaaksesi tiedostoja mene sovelluksen asetuksiin, valitse \"Käyttöluvat\" ja kytke päälle \"Tallennustila\".</string>
     <string name="perm_explain_access_to_location_denied">Jakaaksesi sijaintisi mene sovelluksen asetuksiin, valitse \"Käyttöluvat\" ja kytke päälle \"Sijainti\".</string>
-
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Piirrää sumentaaksesi</string>
     <string name="ImageEditorHud_add_text">Lisää teksti</string>

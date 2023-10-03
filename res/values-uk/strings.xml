@@ -943,8 +943,6 @@
     <string name="notify_name_and_message">Ім\'я та повідомлення</string>
     <string name="notify_name_only">Тільки ім\'я</string>
     <string name="notify_no_name_or_message">Без імені або повідомлення</string>
-
-
     <!-- permissions -->
     <string name="perm_required_title">Потрібен дозвіл</string>
     <string name="perm_continue">Продовжити</string>
@@ -952,7 +950,6 @@
     <string name="perm_explain_access_to_mic_denied">Для надсилання голосових повідомлень додатку потрібен дозвіл на використання мікрофону, але зараз його не надано. Для надання дозволу перейдіть у системне меню налаштувань, у розділі «Додатки» знайдіть Delta Chat і дозвольте доступ до мікрофону.</string>
     <string name="perm_explain_access_to_storage_denied">Для збереження або передавання фотографій перейдіть до налаштувань додатку, оберіть \"Дозволи\" та включіть \"Сховище\"</string>
     <string name="perm_explain_access_to_location_denied">Щоб передати місцезнаходження, додатку потрібен доступ до геоданих пристрою, але зараз його не надано. Для надання доступу перейдіть у системне меню налаштувань, у розділі «Додатки» знайдіть Delta Chat, виберіть пункт «Права доступу» і дозвольте доступ до місцезнаходження пристрою.</string>
-
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Малюйте де завгодно для розмиття</string>
     <string name="ImageEditorHud_add_text">Додати текст</string>

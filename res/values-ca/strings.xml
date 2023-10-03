@@ -633,8 +633,6 @@
     <string name="notify_name_and_message">Nom i missatge</string>
     <string name="notify_name_only">Només nom</string>
     <string name="notify_no_name_or_message">Ni nom ni missatge</string>
-
-
     <!-- permissions -->
     <string name="perm_required_title">Es requereix permís</string>
     <string name="perm_continue">Continua</string>
@@ -642,7 +640,6 @@
     <string name="perm_explain_access_to_mic_denied">Delta Chat demana accés al micròfon per poder enviar missatges d\'àudio, però li ha estat denegat. Sisplau, vés al menú de configuració de l\'app, busca-hi els \"Permisos\" i habilita\'n el \"Micròfon\".</string>
     <string name="perm_explain_access_to_storage_denied">Delta Chat necessita accedir a l’emmagatzematge per adjuntar o exportar fotos, vídeos o àudio, però se li ha denegat permanentment. Aneu al menú de configuració de l\'aplicació, seleccioneu \"Permisos\" i activeu \"Emmagatzematge\".</string>
     <string name="perm_explain_access_to_location_denied">Delta Chat necessita accedir a la ubicació per poder-la adjuntar, però li ha estat denegada de forma permanent. Vés a les preferències del menú de l\'aplicació, tria \"Permisos i activa-hi la \"Ubicació\".</string>
-
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Missatge encriptat</string>
 

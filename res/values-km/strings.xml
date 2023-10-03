@@ -780,8 +780,6 @@
     <string name="notify_name_and_message">ឈ្មោះ និងសារ</string>
     <string name="notify_name_only">តែឈ្មោះ</string>
     <string name="notify_no_name_or_message">មិនឈ្មោះ ឬសារ</string>
-
-
     <!-- permissions -->
     <string name="perm_required_title">ត្រូវបានការអនុញ្ញាត</string>
     <string name="perm_continue">បន្ត</string>
@@ -789,7 +787,6 @@
     <string name="perm_explain_access_to_mic_denied">ដើម្បីផ្ញើ សារសំឡេង ចូលទៅកាន់ការកំណត់កម្មវិធី ជ្រើសរើស \"ការអនុញ្ញាត\" និងបើកដំណើរការ \"មីក្រូហ្វូន\"។</string>
     <string name="perm_explain_access_to_storage_denied">ដើម្បីទទួល រឺផ្ញើឯកសារ ចូលទៅកាន់ការកំណត់កម្មវិធី ជ្រើសរើស \"ការអនុញ្ញាត\" និងបើកដំណើរការ \"ការផ្ទុក\"។</string>
     <string name="perm_explain_access_to_location_denied">ដើម្បីភ្ជាប់ទីតាំង ចូលទៅកាន់ការកំណត់កម្មវិធី ជ្រើសរើស\"ការកំណត់\" និងបើកដំណើរការ \"ទីតាំង\"។</string>
-
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">គូកន្លែងណាដើម្បីឲ្យព្រិលៗ</string>
     <string name="ImageEditorHud_add_text">បន្ថែមអក្សរ</string>

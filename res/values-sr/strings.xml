@@ -894,8 +894,6 @@
     <string name="notify_name_and_message">Име и поруку</string>
     <string name="notify_name_only">Само име</string>
     <string name="notify_no_name_or_message">Ни име ни поруку</string>
-
-
     <!-- permissions -->
     <string name="perm_required_title">Дозвола је потребна</string>
     <string name="perm_continue">Настави</string>
@@ -903,7 +901,6 @@
     <string name="perm_explain_access_to_mic_denied">Да бисте послали звучне записе, идите на подешавања апликације, изаберите „Дозволе“ и омогућите „Микрофон“.</string>
     <string name="perm_explain_access_to_storage_denied">Да бисте примали или слали датотеке, идите на подешавања апликације, изаберите „Дозволе“ и омогућите „Складиштење“.</string>
     <string name="perm_explain_access_to_location_denied">Да приложите положај, идите у подешавања апликације и изаберите „Дозволе“ и омогућите „Положај/Локацију“.</string>
-
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Цртајте било где да би сте замутили</string>
     <string name="ImageEditorHud_add_text">Додај текст</string>

@@ -916,8 +916,6 @@
     <string name="notify_name_and_message">Naam en bericht</string>
     <string name="notify_name_only">Alleen naam</string>
     <string name="notify_no_name_or_message">Geen naam of bericht</string>
-
-
     <!-- permissions -->
     <string name="perm_required_title">Machtiging vereist</string>
     <string name="perm_continue">Doorgaan</string>
@@ -925,7 +923,6 @@
     <string name="perm_explain_access_to_mic_denied">Delta Chat wil spraakberichten versturen. Ga naar de app-instellingen, kies ‘Rechten’ en schakel ‘Microfoon’ in.</string>
     <string name="perm_explain_access_to_storage_denied">Delta Chat wil bestanden kunnen ontvangen en versturen. Ga naar de app-instellingen, kies ‘Rechten’ en schakel ‘Opslag’ in.</string>
     <string name="perm_explain_access_to_location_denied">Delta Chat wil je locatie kunnen delen. Ga naar de app-instellingen, kies ‘Rechten’ en schakel ‘Locatie’ in.</string>
-
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Teken met je vinger om vervaging toe te passen</string>
     <string name="ImageEditorHud_add_text">Tekst toevoegen</string>

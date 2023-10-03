@@ -826,8 +826,6 @@
     <string name="notify_name_and_message">이름과 메시지</string>
     <string name="notify_name_only">이름만</string>
     <string name="notify_no_name_or_message">이름이나 메시지 표시하지 않음</string>
-
-
     <!-- permissions -->
     <string name="perm_required_title">권한 필요</string>
     <string name="perm_continue">계속</string>
@@ -835,7 +833,6 @@
     <string name="perm_explain_access_to_mic_denied">오디오 메시지를 보내려면 앱 설정으로 이동하여 \"권한\"을 선택하고 \"마이크\"를 활성화하십시오.</string>
     <string name="perm_explain_access_to_storage_denied">파일을 수신하거나 보내려면 앱 설정으로 이동하여 \"사용 권한\"을 선택하고 \"스토리지\"를 활성화하십시오.</string>
     <string name="perm_explain_access_to_location_denied">위치를 첨부하려면 앱 설정으로 이동하여 \"권한\"을 선택하고 \"위치\"를 활성화하십시오.</string>
-
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">흐릿하게 보이게 하려면 아무 데나 그리시오</string>
     <string name="ImageEditorHud_add_text">텍스트 추가</string>

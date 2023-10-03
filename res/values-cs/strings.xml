@@ -685,8 +685,6 @@
     <string name="notify_name_and_message">Jméno a zpráva</string>
     <string name="notify_name_only">Pouze jméno</string>
     <string name="notify_no_name_or_message">Ani jméno ani zpráva</string>
-
-
     <!-- permissions -->
     <string name="perm_required_title">Vyžaduj povolení</string>
     <string name="perm_continue">Pokračuj</string>
@@ -694,7 +692,6 @@
     <string name="perm_explain_access_to_mic_denied">K posílání zvukových zpráv jdi do nastavení aplikace, pokračuj do Povolení, a tam povol Mikrofon.</string>
     <string name="perm_explain_access_to_storage_denied">Pro příjem a posílání souborů jdi do nastavení aplikace, pokračuj do Povolení, a tam povol Ukládání.</string>
     <string name="perm_explain_access_to_location_denied">K posílání polohy jdi do nastavení aplikace, pokračuj do Povolení, a tam povol Polohu.</string>
-
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Kreslením rozmazávej</string>
     <!-- dc_str_* resources -->

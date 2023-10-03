@@ -207,8 +207,6 @@
     <string name="notify_name_and_message">الاسم والرسالة</string>
     <string name="notify_name_only">الاسم فقط</string>
     <string name="notify_no_name_or_message">لا إسم ولا رسالة</string>
-
-
     <!-- permissions -->
     <string name="perm_required_title">منح إحدى الأذونات مطلو</string>
     <string name="perm_continue">استمر</string>

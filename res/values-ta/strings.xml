@@ -230,8 +230,6 @@
     <string name="notify_name_and_message">பெயரும் செய்தியும்</string>
     <string name="notify_name_only">பெயர் மட்டும்</string>
     <string name="notify_no_name_or_message">பெயர் அல்லது செய்தி இல்லை</string>
-
-
     <!-- permissions -->
     <string name="perm_required_title">அனுமதி தேவை</string>
     <string name="perm_continue">தொடர்</string>

@@ -943,8 +943,6 @@
     <string name="notify_name_and_message">Nazwa i wiadomość</string>
     <string name="notify_name_only">Tylko nazwa</string>
     <string name="notify_no_name_or_message">Brak nazwy lub wiadomości</string>
-
-
     <!-- permissions -->
     <string name="perm_required_title">Wymagane zezwolenie</string>
     <string name="perm_continue">Kontynuuj</string>
@@ -952,7 +950,6 @@
     <string name="perm_explain_access_to_mic_denied">Delta Chat wymaga zezwolenia użycia mikrofonu, aby wysyłać wiadomości audio, ale zostało ono trwale odrzucone. Przejdź do ustawień aplikacji, wybierz „Uprawnienia” i włącz „Mikrofon”.</string>
     <string name="perm_explain_access_to_storage_denied">Delta Chat wymaga uprawnienia do przechowywania, aby dołączyć lub wyeksportować zdjęcia, filmy lub dźwięk, ale zostało ono trwale odrzucone. Przejdź do menu ustawień aplikacji, wybierz „Uprawnienia” i włącz „Pamięć”.</string>
     <string name="perm_explain_access_to_location_denied">Delta Chat wymaga zezwolenia na lokalizację, aby dołączyć lokalizację, ale zostało ono trwale odrzucone. Przejdź do menu ustawień aplikacji, wybierz „Uprawnienia” i włącz „Lokalizacja”.</string>
-
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Rysuj gdziekolwiek, aby rozmyć</string>
     <string name="ImageEditorHud_add_text">Dodaj tekst</string>

@@ -628,8 +628,6 @@
     <string name="notify_name_and_message">Namn och meddelande</string>
     <string name="notify_name_only">Endast namn</string>
     <string name="notify_no_name_or_message">Inget namn eller meddelande</string>
-
-
     <!-- permissions -->
     <string name="perm_required_title">Behörighet krävs</string>
     <string name="perm_continue">Fortsätt</string>
@@ -637,7 +635,6 @@
     <string name="perm_explain_access_to_mic_denied">Gå till programinställningarna och aktivera \"Mikrofon\" under \"Behörighet\", för att skicka röstmeddelanden.</string>
     <string name="perm_explain_access_to_storage_denied">Gå till programinställningarna och aktivera \"Lagring\" under \"Behörighet\", för att ta emot eller skicka filer.</string>
     <string name="perm_explain_access_to_location_denied">Gå till programinställningarna och aktivera \"Plats\" under \"Behörighet\", för att bifoga en plats.</string>
-
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Rita var som helst för att smeta ut</string>
     <!-- dc_str_* resources -->

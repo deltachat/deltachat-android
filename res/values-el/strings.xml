@@ -865,8 +865,6 @@
     <string name="notify_name_and_message">Όνομα και μήνυμα</string>
     <string name="notify_name_only">Μόνο όνομα</string>
     <string name="notify_no_name_or_message">Χωρίς όνομα ή μήνυμα</string>
-
-
     <!-- permissions -->
     <string name="perm_required_title">Χρειάζονται δικαιώματα πρόσβασης</string>
     <string name="perm_continue">Συνέχεια</string>
@@ -874,7 +872,6 @@
     <string name="perm_explain_access_to_mic_denied">Για να στείλετε μηνύματα ήχου, μεταβείτε στις ρυθμίσεις της εφαρμογής, επιλέξτε \"Άδειες\" και ενεργοποιήστε το \"Μικρόφωνο\".</string>
     <string name="perm_explain_access_to_storage_denied">Για να λάβετε ή να στείλετε αρχεία, μεταβείτε στις ρυθμίσεις της εφαρμογής, επιλέξτε \"Άδειες\" και ενεργοποιήστε την \"Αποθήκευση\".</string>
     <string name="perm_explain_access_to_location_denied">Για να επισυνάψετε μια τοποθεσία, μεταβείτε στις ρυθμίσεις της εφαρμογής, επιλέξτε \"Άδειες\" και ενεργοποιήστε την \"Τοποθεσία\".</string>
-
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Ζωγράφισε οπουδήποτε για να θολώσεις</string>
     <string name="ImageEditorHud_add_text">Σύνταξη κειμένου</string>

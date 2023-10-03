@@ -627,8 +627,6 @@
     <string name="notify_name_and_message">Nama dan pesan</string>
     <string name="notify_name_only">Hanya nama</string>
     <string name="notify_no_name_or_message">Tidak ada nama atau pesan</string>
-
-
     <!-- permissions -->
     <string name="perm_required_title">Perlu izin</string>
     <string name="perm_continue">Lanjutkan</string>
@@ -636,7 +634,6 @@
     <string name="perm_explain_access_to_mic_denied">Untuk mengirim pesan audio, lihat pengaturan aplikasi, pilih \"Perizinan\", dan aktifkan \"Mikrofon\".</string>
     <string name="perm_explain_access_to_storage_denied">Untuk menerima atau mengirim berkas, pergi ke pengaturan aplikasi, pilih \"Perizinan\", dan fungsikan \"Penyimpanan\".</string>
     <string name="perm_explain_access_to_location_denied">Untuk melampirkan lokasi, lihat pengaturan aplikasi, pilih \"Perizinan\", dan aktifkan \"Lokasi\".</string>
-
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Gambar di mana saja untuk diburamkan</string>
     <!-- dc_str_* resources -->

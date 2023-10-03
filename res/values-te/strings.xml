@@ -197,8 +197,6 @@
     <string name="notify_name_and_message">పేరు మరియు సందేశం</string>
     <string name="notify_name_only">పేరు మాత్రమే</string>
     <string name="notify_no_name_or_message">పేరు లేదా సందేశం</string>
-
-
     <!-- permissions -->
     <string name="perm_required_title">అనుమతి అవసరం</string>
     <string name="perm_continue">కొనసాగించు</string>

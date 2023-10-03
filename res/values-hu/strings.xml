@@ -283,8 +283,6 @@
     <string name="notify_name_and_message">Név és üzenet</string>
     <string name="notify_name_only">Csak név</string>
     <string name="notify_no_name_or_message">Se név, se üzenet</string>
-
-
     <!-- permissions -->
     <string name="perm_required_title">Engedély szükséges</string>
     <string name="perm_continue">Folytatás</string>
