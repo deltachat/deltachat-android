@@ -122,7 +122,7 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
       DynamicTheme.setDefaultDayNightMode(this);
       recreate();
     } else if (key.equals(Prefs.LANGUAGE_PREF)) {
-      dynamicLanguage.onResume(this);
+      finish();
     }
   }
 
