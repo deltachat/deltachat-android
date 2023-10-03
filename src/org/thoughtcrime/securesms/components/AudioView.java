@@ -6,6 +6,8 @@ import android.content.res.ColorStateList;
 import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.graphics.drawable.AnimatedVectorDrawable;
+import android.media.AudioAttributes;
+import android.media.AudioFocusRequest;
 import android.media.AudioManager;
 import android.os.Build;
 import androidx.annotation.NonNull;
@@ -39,6 +41,7 @@ public class AudioView extends FrameLayout implements AudioSlidePlayer.Listener 
   private final @NonNull TextView        title;
 
   private @Nullable AudioSlidePlayer   audioSlidePlayer;
+  AudioManager.OnAudioFocusChangeListener audioFocusChangeListener;
   private int backwardsCounter;
 
   public AudioView(Context context) {
@@ -227,17 +230,32 @@ public class AudioView extends FrameLayout implements AudioSlidePlayer.Listener 
       try {
         Log.w(TAG, "playbutton onClick");
         if (audioSlidePlayer != null) {
+          if (Build.VERSION.SDK_INT >= 26) {
+            if (audioFocusChangeListener == null) {
+              audioFocusChangeListener = focusChange -> {
+                if (focusChange == AudioManager.AUDIOFOCUS_LOSS) {
+                  pauseButton.performClick();
+                }
+              };
+            }
+
+            AudioAttributes playbackAttributes = new AudioAttributes.Builder()
+              .setUsage(AudioAttributes.USAGE_VOICE_COMMUNICATION)
+              .setContentType(AudioAttributes.CONTENT_TYPE_SPEECH)
+              .build();
+
+            AudioFocusRequest focusRequest = new AudioFocusRequest.Builder(AudioManager.AUDIOFOCUS_GAIN)
+              .setAudioAttributes(playbackAttributes)
+              .setAcceptsDelayedFocusGain(false)
+              .setWillPauseWhenDucked(false)
+              .setOnAudioFocusChangeListener(audioFocusChangeListener)
+              .build();
+
+            AudioManager audioManager = (AudioManager) getContext().getSystemService(Context.AUDIO_SERVICE);
+            audioManager.requestAudioFocus(focusRequest);
+          }
+
           togglePlayToPause();
-          AudioManager am = (AudioManager)getContext().getSystemService(Context.AUDIO_SERVICE);
-          AudioManager.OnAudioFocusChangeListener focusChangeListener = new AudioManager.OnAudioFocusChangeListener() {
-              @Override
-              public void onAudioFocusChange(int focusChange) {
-                  if (focusChange == AudioManager.AUDIOFOCUS_LOSS) {
-                      pauseButton.performClick();
-                  }
-              }
-          };
-          am.requestAudioFocus(focusChangeListener, AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN);
           audioSlidePlayer.play(getProgress());
         }
       } catch (IOException e) {
