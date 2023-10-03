@@ -194,7 +194,9 @@ public class ConversationItem extends BaseConversationItem
     setReactions(messageRecord);
     setFooter(messageRecord, locale);
     setQuote(messageRecord);
-    if (Util.isTouchExplorationEnabled(context)) setContentDescription();
+    if (Util.isTouchExplorationEnabled(context)) {
+      setContentDescription();
+    }
   }
 
 
