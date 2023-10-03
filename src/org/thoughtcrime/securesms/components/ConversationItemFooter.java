@@ -100,4 +100,13 @@ public class ConversationItemFooter extends LinearLayout {
       deliveryStatusView.setTint(textColor); // Reset the color to the standard color (because the footer is re-used in a RecyclerView)
     }
   }
+
+  public String getDescription() {
+      String desc = dateView.getText().toString();
+      String deliveryDesc = deliveryStatusView.getDescription();
+      if (!"".equals(deliveryDesc)) {
+          desc += "\n" + deliveryDesc;
+      }
+      return desc;
+  }
 }

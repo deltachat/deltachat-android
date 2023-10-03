@@ -3,6 +3,7 @@ package org.thoughtcrime.securesms;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.accessibility.AccessibilityManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -77,6 +78,8 @@ public abstract class BaseConversationItem extends LinearLayout
     return batchSelected.isEmpty() && (messageRecord.isFailed());
   }
 
+  protected void onAccessibilityClick() {}
+
   protected class PassthroughClickListener implements View.OnLongClickListener, View.OnClickListener {
 
     @Override
@@ -103,6 +106,9 @@ public abstract class BaseConversationItem extends LinearLayout
 
     public void onClick(View v) {
       if (!shouldInterceptClicks(messageRecord) && parent != null) {
+        if (batchSelected.isEmpty() && ((AccessibilityManager) context.getSystemService(Context.ACCESSIBILITY_SERVICE)).isTouchExplorationEnabled()) {
+          BaseConversationItem.this.onAccessibilityClick();
+        }
         parent.onClick(v);
       } else if (messageRecord.isFailed()) {
         View view = View.inflate(context, R.layout.message_details_view, null);

@@ -22,6 +22,7 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.Rect;
+import android.os.Build;
 import android.text.SpannableString;
 import android.text.TextUtils;
 import android.util.AttributeSet;
@@ -193,6 +194,7 @@ public class ConversationItem extends BaseConversationItem
     setReactions(messageRecord);
     setFooter(messageRecord, locale);
     setQuote(messageRecord);
+    setContentDescription(messageRecord);
   }
 
 
@@ -303,6 +305,36 @@ public class ConversationItem extends BaseConversationItem
       webxdcViewStub.get().setFocusable(!shouldInterceptClicks(messageRecord) && batchSelected.isEmpty());
       webxdcViewStub.get().setClickable(batchSelected.isEmpty());
     }
+  }
+
+  private void setContentDescription(DcMsg messageRecord) {
+    String desc = "";
+    if (groupSenderHolder.getVisibility() == View.VISIBLE) {
+      desc = groupSender.getText() + "\n";
+    }
+    if (audioViewStub.resolved() && audioViewStub.get().getVisibility() == View.VISIBLE) {
+      desc += audioViewStub.get().getDescription() + "\n";
+    } else if (documentViewStub.resolved() && documentViewStub.get().getVisibility() == View.VISIBLE) {
+      desc += documentViewStub.get().getDescription() + "\n";
+    } else if (webxdcViewStub.resolved() && webxdcViewStub.get().getVisibility() == View.VISIBLE) {
+      desc += webxdcViewStub.get().getDescription() + "\n";
+    } else if (mediaThumbnailStub.resolved() && mediaThumbnailStub.get().getVisibility() == View.VISIBLE) {
+      desc += mediaThumbnailStub.get().getDescription() + "\n";
+    } else if (stickerStub.resolved() && stickerStub.get().getVisibility() == View.VISIBLE) {
+      desc += context.getString(R.string.sticker) + "\n";
+    }
+
+    if (bodyText.getVisibility() == View.VISIBLE) {
+      desc += bodyText.getText() + "\n";
+    }
+
+    if (footer.getVisibility() == View.VISIBLE) {
+      desc += footer.getDescription() + "\n";
+    } else if (stickerFooter.getVisibility() == View.VISIBLE) {
+      desc += stickerFooter.getDescription() + "\n";
+    }
+
+    this.setContentDescription(desc);
   }
 
   private boolean hasAudio(DcMsg messageRecord) {
@@ -447,6 +479,9 @@ public class ConversationItem extends BaseConversationItem
 
       audioViewStub.get().setAudio(new AudioSlide(context, messageRecord), duration);
       audioViewStub.get().setOnLongClickListener(passthroughClickListener);
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+        audioViewStub.get().setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS);
+      }
 
       ViewUtil.updateLayoutParams(bodyText, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
       ViewUtil.updateLayoutParams(groupSenderHolder, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -463,6 +498,9 @@ public class ConversationItem extends BaseConversationItem
       documentViewStub.get().setDocument(new DocumentSlide(context, messageRecord));
       documentViewStub.get().setDocumentClickListener(new ThumbnailClickListener());
       documentViewStub.get().setOnLongClickListener(passthroughClickListener);
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+        documentViewStub.get().setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS);
+      }
 
       ViewUtil.updateLayoutParams(bodyText, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
       ViewUtil.updateLayoutParams(groupSenderHolder, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -478,6 +516,9 @@ public class ConversationItem extends BaseConversationItem
       webxdcViewStub.get().setWebxdc(messageRecord, context.getString(R.string.webxdc_app));
       webxdcViewStub.get().setWebxdcClickListener(new ThumbnailClickListener());
       webxdcViewStub.get().setOnLongClickListener(passthroughClickListener);
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+        webxdcViewStub.get().setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS);
+      }
 
       ViewUtil.updateLayoutParams(bodyText, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
       ViewUtil.updateLayoutParams(groupSenderHolder, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -512,6 +553,9 @@ public class ConversationItem extends BaseConversationItem
       mediaThumbnailStub.get().setOnLongClickListener(passthroughClickListener);
       mediaThumbnailStub.get().setOnClickListener(passthroughClickListener);
       mediaThumbnailStub.get().showShade(TextUtils.isEmpty(messageRecord.getText()));
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+        mediaThumbnailStub.get().setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS);
+      }
 
       setThumbnailOutlineCorners(messageRecord, showSender);
 
@@ -531,9 +575,11 @@ public class ConversationItem extends BaseConversationItem
 
       stickerStub.get().setSlide(glideRequests, new StickerSlide(context, messageRecord));
       stickerStub.get().setThumbnailClickListener(new StickerClickListener());
-
       stickerStub.get().setOnLongClickListener(passthroughClickListener);
       stickerStub.get().setOnClickListener(passthroughClickListener);
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+        stickerStub.get().setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS);
+      }
 
       ViewUtil.updateLayoutParams(bodyText, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
       ViewUtil.updateLayoutParams(groupSenderHolder, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -790,6 +836,14 @@ public class ConversationItem extends BaseConversationItem
     availableWidth -= ViewUtil.getLeftMargin(forView) + ViewUtil.getRightMargin(forView);
 
     return availableWidth;
+  }
+
+  @Override
+  public void onAccessibilityClick() {
+    if (mediaThumbnailStub.resolved())    mediaThumbnailStub.get().performClick();
+    else if (audioViewStub.resolved())    audioViewStub.get().performClick();
+    else if (documentViewStub.resolved()) documentViewStub.get().performClick();
+    else if (webxdcViewStub.resolved())   webxdcViewStub.get().performClick();
   }
 
   /// Event handlers

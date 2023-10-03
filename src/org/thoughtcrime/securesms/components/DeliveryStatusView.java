@@ -123,4 +123,11 @@ public class DeliveryStatusView {
   public void resetTint() {
     deliveryIndicator.setColorFilter(null);
   }
+
+  public String getDescription() {
+    if (deliveryIndicator.getVisibility() == View.VISIBLE) {
+      return deliveryIndicator.getContentDescription().toString();
+    }
+    return "";
+  }
 }

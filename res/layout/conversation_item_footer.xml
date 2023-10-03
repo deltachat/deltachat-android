@@ -15,7 +15,7 @@
         android:src="@drawable/msg_encr_out"
         android:visibility="gone"
         android:layout_gravity="center_vertical|end"
-        android:contentDescription="@string/chat_input_placeholder"
+        android:importantForAccessibility="no"
         tools:visibility="visible"/>
 
     <TextView

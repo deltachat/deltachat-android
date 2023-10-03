@@ -82,6 +82,14 @@ public class ThumbnailView extends FrameLayout {
 
   }
 
+  public String getDescription() {
+    if (slide != null && slide.hasPlayOverlay()) {
+      return getContext().getString(R.string.video);
+    } else {
+      return getContext().getString(R.string.image);
+    }
+  }
+
   @Override
   protected void onMeasure(int originalWidthMeasureSpec, int originalHeightMeasureSpec) {
     fillTargetDimensions(measureDimens, dimens, bounds);

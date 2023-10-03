@@ -142,6 +142,7 @@
                 android:paddingTop="@dimen/message_bubble_top_padding"
                 android:textColor="?conversation_item_outgoing_text_primary_color"
                 android:textColorLink="?conversation_item_outgoing_text_primary_color"
+                android:importantForAccessibility="no"
                 app:scaleEmojis="true"
                 tools:text="Mango pickle lorem ipsum"/>
 

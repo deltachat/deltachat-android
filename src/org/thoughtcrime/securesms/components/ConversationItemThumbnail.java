@@ -86,6 +86,10 @@ public class ConversationItemThumbnail extends FrameLayout {
     setTouchDelegate(thumbnail.getTouchDelegate());
   }
 
+  public String getDescription() {
+    return thumbnail.getDescription() + "\n" + footer.getDescription();
+  }
+
   @Override
   protected void onMeasure(int originalWidthMeasureSpec, int originalHeightMeasureSpec) {
     int width = MeasureSpec.getSize(originalWidthMeasureSpec);
@@ -183,6 +187,11 @@ public class ConversationItemThumbnail extends FrameLayout {
 
   public void setThumbnailClickListener(SlideClickListener listener) {
     thumbnail.setThumbnailClickListener(listener);
+  }
+
+  @Override
+  public boolean performClick() {
+    return thumbnail.performClick();
   }
 
   @UiThread
