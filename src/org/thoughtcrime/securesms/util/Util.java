@@ -33,6 +33,7 @@ import android.text.SpannableString;
 import android.text.TextUtils;
 import android.text.style.StyleSpan;
 import android.util.Log;
+import android.view.accessibility.AccessibilityManager;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -343,5 +344,13 @@ public class Util {
     }
     lastClickTime = now;
     return false;
+  }
+
+  public static boolean isTouchExplorationEnabled(Context context) {
+    try {
+      return ((AccessibilityManager) context.getSystemService(Context.ACCESSIBILITY_SERVICE)).isTouchExplorationEnabled();
+    } catch (Exception e) {
+      return false;
+    }
   }
 }

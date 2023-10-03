@@ -3,7 +3,6 @@ package org.thoughtcrime.securesms;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.accessibility.AccessibilityManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -17,6 +16,7 @@ import com.b44t.messenger.DcMsg;
 import com.b44t.messenger.rpc.Rpc;
 
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.util.Util;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -106,7 +106,7 @@ public abstract class BaseConversationItem extends LinearLayout
 
     public void onClick(View v) {
       if (!shouldInterceptClicks(messageRecord) && parent != null) {
-        if (batchSelected.isEmpty() && ((AccessibilityManager) context.getSystemService(Context.ACCESSIBILITY_SERVICE)).isTouchExplorationEnabled()) {
+        if (batchSelected.isEmpty() && Util.isTouchExplorationEnabled(context)) {
           BaseConversationItem.this.onAccessibilityClick();
         }
         parent.onClick(v);

@@ -194,7 +194,7 @@ public class ConversationItem extends BaseConversationItem
     setReactions(messageRecord);
     setFooter(messageRecord, locale);
     setQuote(messageRecord);
-    setContentDescription(messageRecord);
+    if (Util.isTouchExplorationEnabled(context)) setContentDescription();
   }
 
 
@@ -307,7 +307,7 @@ public class ConversationItem extends BaseConversationItem
     }
   }
 
-  private void setContentDescription(DcMsg messageRecord) {
+  private void setContentDescription() {
     String desc = "";
     if (groupSenderHolder.getVisibility() == View.VISIBLE) {
       desc = groupSender.getText() + "\n";
