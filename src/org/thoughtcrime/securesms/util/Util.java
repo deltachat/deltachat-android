@@ -38,6 +38,7 @@ import android.view.accessibility.AccessibilityManager;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.components.ComposeText;
 
@@ -346,9 +347,14 @@ public class Util {
     return false;
   }
 
+  private static AccessibilityManager accessibilityManager;
   public static boolean isTouchExplorationEnabled(Context context) {
     try {
-      return ((AccessibilityManager) context.getSystemService(Context.ACCESSIBILITY_SERVICE)).isTouchExplorationEnabled();
+      if (accessibilityManager == null) {
+        Context applicationContext = context.getApplicationContext();
+        accessibilityManager = ((AccessibilityManager) applicationContext.getSystemService(Context.ACCESSIBILITY_SERVICE));
+      }
+      return accessibilityManager.isTouchExplorationEnabled();
     } catch (Exception e) {
       return false;
     }
