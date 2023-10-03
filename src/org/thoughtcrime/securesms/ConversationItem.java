@@ -312,6 +312,7 @@ public class ConversationItem extends BaseConversationItem
     if (groupSenderHolder.getVisibility() == View.VISIBLE) {
       desc = groupSender.getText() + "\n";
     }
+
     if (audioViewStub.resolved() && audioViewStub.get().getVisibility() == View.VISIBLE) {
       desc += audioViewStub.get().getDescription() + "\n";
     } else if (documentViewStub.resolved() && documentViewStub.get().getVisibility() == View.VISIBLE) {
