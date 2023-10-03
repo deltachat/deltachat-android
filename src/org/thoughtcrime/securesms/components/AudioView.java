@@ -41,7 +41,7 @@ public class AudioView extends FrameLayout implements AudioSlidePlayer.Listener 
   private final @NonNull TextView        title;
 
   private @Nullable AudioSlidePlayer   audioSlidePlayer;
-  AudioManager.OnAudioFocusChangeListener audioFocusChangeListener;
+  private AudioManager.OnAudioFocusChangeListener audioFocusChangeListener;
   private int backwardsCounter;
 
   public AudioView(Context context) {
