@@ -100,7 +100,6 @@ public class ConversationItem extends BaseConversationItem
   protected View                   replyView;
   @Nullable private QuoteView      quoteView;
   private   ConversationItemFooter footer;
-  private   ConversationItemFooter stickerFooter;
   private ReactionsConversationView reactionsView;
   private   TextView               groupSender;
   private   View                   groupSenderHolder;
@@ -138,7 +137,6 @@ public class ConversationItem extends BaseConversationItem
 
     this.bodyText                =            findViewById(R.id.conversation_item_body);
     this.footer                  =            findViewById(R.id.conversation_item_footer);
-    this.stickerFooter           =            findViewById(R.id.conversation_item_sticker_footer);
     this.reactionsView           =            findViewById(R.id.reactions_view);
     this.groupSender             =            findViewById(R.id.group_message_sender);
     this.contactPhoto            =            findViewById(R.id.contact_photo);
@@ -324,7 +322,7 @@ public class ConversationItem extends BaseConversationItem
     } else if (mediaThumbnailStub.resolved() && mediaThumbnailStub.get().getVisibility() == View.VISIBLE) {
       desc += mediaThumbnailStub.get().getDescription() + "\n";
     } else if (stickerStub.resolved() && stickerStub.get().getVisibility() == View.VISIBLE) {
-      desc += context.getString(R.string.sticker) + "\n";
+      desc += stickerStub.get().getDescription() + "\n";
     }
 
     if (bodyText.getVisibility() == View.VISIBLE) {
@@ -332,9 +330,7 @@ public class ConversationItem extends BaseConversationItem
     }
 
     if (footer.getVisibility() == View.VISIBLE) {
-      desc += footer.getDescription() + "\n";
-    } else if (stickerFooter.getVisibility() == View.VISIBLE) {
-      desc += stickerFooter.getDescription() + "\n";
+      desc += footer.getDescription();
     }
 
     this.setContentDescription(desc);
@@ -714,7 +710,6 @@ public class ConversationItem extends BaseConversationItem
     ViewUtil.updateLayoutParams(footer, LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 
     footer.setVisibility(GONE);
-    stickerFooter.setVisibility(GONE);
     if (mediaThumbnailStub.resolved()) mediaThumbnailStub.get().getFooter().setVisibility(GONE);
 
     ConversationItemFooter activeFooter = getActiveFooter(current);
@@ -744,7 +739,7 @@ public class ConversationItem extends BaseConversationItem
 
   private ConversationItemFooter getActiveFooter(@NonNull DcMsg messageRecord) {
     if (hasSticker(messageRecord)) {
-      return stickerFooter;
+      return stickerStub.get().getFooter();
     } else if (hasOnlyThumbnail(messageRecord) && TextUtils.isEmpty(messageRecord.getText())) {
       return mediaThumbnailStub.get().getFooter();
     } else {

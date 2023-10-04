@@ -18,6 +18,7 @@ public class BorderlessImageView extends FrameLayout {
 
   private ThumbnailView image;
   private View          missingShade;
+  private ConversationItemFooter footer;
 
   public BorderlessImageView(@NonNull Context context) {
     super(context);
@@ -34,6 +35,7 @@ public class BorderlessImageView extends FrameLayout {
 
     this.image        = findViewById(R.id.sticker_thumbnail);
     this.missingShade = findViewById(R.id.sticker_missing_shade);
+    this.footer       = findViewById(R.id.sticker_footer);
   }
 
   @Override
@@ -63,6 +65,14 @@ public class BorderlessImageView extends FrameLayout {
     }
 
     missingShade.setVisibility(showControls ? View.VISIBLE : View.GONE);
+  }
+
+  public String getDescription() {
+    return getContext().getString(R.string.sticker) + "\n" + footer.getDescription();
+  }
+
+  public ConversationItemFooter getFooter() {
+    return footer;
   }
 
   public void setThumbnailClickListener(@NonNull SlideClickListener listener) {
