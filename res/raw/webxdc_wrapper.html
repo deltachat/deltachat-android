@@ -15,6 +15,7 @@
         position: relative;
       }
       .iframe-container iframe {
+        display: none;
         border: 0;
         height: 100%;
         left: 0;
@@ -129,6 +130,7 @@
               "Error: was not able to block webrtc ERROR_C";
           } else {
             loadingDiv.innerHTML = "";
+            iframe.style.display = 'block';
             iframe.src = "index.html";
           }
         }
