@@ -38,6 +38,7 @@ import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcMsg;
 
 import org.json.JSONObject;
+import org.thoughtcrime.securesms.connect.AccountManager;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.util.JsonUtils;
@@ -130,11 +131,11 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     Bundle b = getIntent().getExtras();
     int appMessageId = b.getInt("appMessageId");
 
+    int accountId = b.getInt("accountId");
     this.dcContext = DcHelper.getContext(getApplicationContext());
-    if (dcContext.getAccountId() != b.getInt("accountId")) {
-      Toast.makeText(this, "Switch to belonging account first.", Toast.LENGTH_LONG).show();
-      finish();
-      return;
+    if (accountId != dcContext.getAccountId()) {
+      AccountManager.getInstance().switchAccount(getApplicationContext(), accountId);
+      this.dcContext = DcHelper.getContext(getApplicationContext());
     }
 
     this.dcAppMsg = this.dcContext.getMsg(appMessageId);
