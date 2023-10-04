@@ -120,9 +120,10 @@ public class MapActivity extends BaseActivity implements Observer,
             inputAwareContainer.addOnKeyboardHiddenListener(this);
             inputAwareContainer.addOnKeyboardShownListener(this);
 
-            final LatLng lastMapCenter = Prefs.getMapCenter(this.getApplicationContext(), chatId);
+            final int accountId = DcHelper.getContext(this.getApplicationContext()).getAccountId();
+            final LatLng lastMapCenter = Prefs.getMapCenter(this.getApplicationContext(), accountId, chatId);
             if (lastMapCenter != null) {
-                double lastZoom = Prefs.getMapZoom(this.getApplicationContext(), chatId);
+                double lastZoom = Prefs.getMapZoom(this.getApplicationContext(), accountId, chatId);
                 mapboxMap.setCameraPosition(new CameraPosition.Builder()
                         .target(lastMapCenter)
                         .zoom(lastZoom)
@@ -215,8 +216,8 @@ public class MapActivity extends BaseActivity implements Observer,
     protected void onDestroy() {
         super.onDestroy();
         if (mapDataManager != null) {
-            Prefs.setMapCenter(this.getApplicationContext(), mapDataManager.getChatId(), mapboxMap.getCameraPosition().target);
-            Prefs.setMapZoom(this.getApplicationContext(), mapDataManager.getChatId(), mapboxMap.getCameraPosition().zoom);
+            Prefs.setMapCenter(this.getApplicationContext(), mapDataManager.getAccountId(), mapDataManager.getChatId(), mapboxMap.getCameraPosition().target);
+            Prefs.setMapZoom(this.getApplicationContext(), mapDataManager.getAccountId(), mapDataManager.getChatId(), mapboxMap.getCameraPosition().zoom);
             mapDataManager.onDestroy();
         }
         if (markerViewManager != null) {

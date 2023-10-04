@@ -343,6 +343,10 @@ public class MapDataManager implements DcEventCenter.DcEventDelegate,
         return chatId;
     }
 
+    public int getAccountId() {
+    return dcContext.getAccountId();
+  }
+
     private void showLineLayer(MapSource source) {
         LineLayer lineLayer = (LineLayer) mapboxStyle.getLayer(source.getLineLayer());
         if (lineLayer != null) {
