@@ -142,8 +142,9 @@ public class ProfileGalleryFragment
     }
   }
 
-  private void updateActionModeTitle() {
+  private void updateActionModeBar() {
     actionMode.setTitle(String.valueOf(getListAdapter().getSelectedMediaCount()));
+    setCorrectMenuVisibility(actionMode.getMenu());
   }
 
   private void handleMediaMultiSelectClick(@NonNull DcMsg mediaRecord) {
@@ -154,8 +155,7 @@ public class ProfileGalleryFragment
       actionMode.finish();
       actionMode = null;
     } else {
-      updateActionModeTitle();
-      setCorrectMenuVisibility(actionMode.getMenu());
+      updateActionModeBar();
     }
   }
 
@@ -264,7 +264,7 @@ public class ProfileGalleryFragment
           return true;
         case R.id.menu_select_all:
           getListAdapter().selectAll();
-          updateActionModeTitle();
+          updateActionModeBar();
           return true;
       }
       return false;
