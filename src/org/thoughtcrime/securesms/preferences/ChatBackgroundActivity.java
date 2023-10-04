@@ -56,10 +56,19 @@ public class ChatBackgroundActivity extends PassphraseRequiredActionBarActivity 
         preview = findViewById(R.id.preview);
         accountId = DcHelper.getContext(getApplicationContext()).getAccountId();
 
+        // try to be backwards compatible so users don't lose already set background
+        String backgroundImagePath = Prefs.getBackgroundImagePathLegacy(this);
+        if (!backgroundImagePath.isEmpty()) {
+            for (int accId : DcHelper.getAccounts(getApplicationContext()).getAll()) {
+                Prefs.setBackgroundImagePath(this, accId, backgroundImagePath);
+            }
+            Prefs.setBackgroundImagePathLegacy(this, "");
+        }
+
         defaultButton.setOnClickListener(new DefaultClickListener());
         galleryButton.setOnClickListener(new GalleryClickListener());
 
-        String backgroundImagePath = Prefs.getBackgroundImagePath(this, accountId);
+        backgroundImagePath = Prefs.getBackgroundImagePath(this, accountId);
         if(backgroundImagePath.isEmpty()){
             setDefaultLayoutBackgroundImage();
         }else {
@@ -97,7 +106,7 @@ public class ChatBackgroundActivity extends PassphraseRequiredActionBarActivity 
                     Thread thread = new Thread() {
                         @Override
                         public void run() {
-                            String destination = context.getFilesDir().getAbsolutePath() + "/background";
+                            String destination = context.getFilesDir().getAbsolutePath() + "/background."+ accountId;
                             Prefs.setBackgroundImagePath(context, accountId, destination);
                             scaleAndSaveImage(context, destination);
                         }

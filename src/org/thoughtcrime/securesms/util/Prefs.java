@@ -306,6 +306,14 @@ public class Prefs {
 
   // misc.
 
+  public static String getBackgroundImagePathLegacy(Context context) {
+    return getStringPreference(context, BACKGROUND_PREF, "");
+  }
+
+  public static void setBackgroundImagePathLegacy(Context context, String path) {
+    setStringPreference(context, BACKGROUND_PREF, path);
+  }
+
   public static String getBackgroundImagePath(Context context, int accountId) {
     return getStringPreference(context, BACKGROUND_PREF+accountId, "");
   }
