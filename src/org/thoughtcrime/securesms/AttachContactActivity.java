@@ -18,7 +18,7 @@ public class AttachContactActivity extends ContactSelectionActivity {
     DcContext dcContext = DcHelper.getContext(this);
     int contactId = dcContext.lookupContactIdByAddr(addr);
     if (contactId != 0) {
-      name = dcContext.getContact(contactId).getName();
+      name = dcContext.getContact(contactId).getDisplayName();
     }
     Intent intent = new Intent();
     intent.putExtra(SHARE_CONTACT_NAME_EXTRA, name);
