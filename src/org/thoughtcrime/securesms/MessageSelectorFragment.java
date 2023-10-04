@@ -7,6 +7,7 @@ import android.os.AsyncTask;
 import android.view.Menu;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.view.ActionMode;
@@ -114,5 +115,19 @@ public abstract class MessageSelectorFragment
 
   protected void handleShare(final DcMsg dcMsg) {
     DcHelper.openForViewOrShare(getContext(), dcMsg.getId(), Intent.ACTION_SEND);
+  }
+
+  protected void handleResendMessage(final Set<DcMsg> dcMsgsSet) {
+    int[] ids = DcMsg.msgSetToIds(dcMsgsSet);
+    if (dcContext.resendMsgs(ids)) {
+      actionMode.finish();
+      Toast.makeText(getContext(), R.string.sending, Toast.LENGTH_SHORT).show();
+    } else {
+      new AlertDialog.Builder(getContext())
+        .setMessage(dcContext.getLastError())
+        .setCancelable(false)
+        .setPositiveButton(android.R.string.ok, null)
+        .show();
+    }
   }
 }
