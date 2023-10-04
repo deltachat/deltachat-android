@@ -128,7 +128,7 @@ public class ApplicationContext extends MultiDexApplication {
 
     rpc.start();
 
-    // [Migration 04/10/23] Chat Background: migrate old custom background
+    // migrating chat backgrounds, added  04/10/23, can be removed after some versions
     String backgroundImagePath = Prefs.getStringPreference(this, "pref_chat_background", "");
     if (!backgroundImagePath.isEmpty()) {
       for (int accId : dcAccounts.getAll()) {
@@ -136,6 +136,7 @@ public class ApplicationContext extends MultiDexApplication {
       }
       Prefs.setStringPreference(this, "pref_chat_background", "");
     }
+    // /migrating chat backgrounds
 
     // set translations before starting I/O to avoid sending untranslated MDNs (issue #2288)
     DcHelper.setStockTranslations(this);
