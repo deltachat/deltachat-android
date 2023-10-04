@@ -4,11 +4,18 @@ import android.os.Bundle;
 
 import org.thoughtcrime.securesms.PassphraseRequiredActionBarActivity;
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
 
 public class ScribbleActivity extends PassphraseRequiredActionBarActivity {
   public static final int SCRIBBLE_REQUEST_CODE       = 31424;
   public static final String CROP_AVATAR              = "crop_avatar";
   ImageEditorFragment imageEditorFragment;
+
+  @Override
+  protected void onPreCreate() {
+    dynamicTheme = new DynamicNoActionBarTheme();
+    super.onPreCreate();
+  }
 
   @Override
   protected void onCreate(Bundle savedInstanceState, boolean ready) {
