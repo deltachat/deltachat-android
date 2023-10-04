@@ -446,8 +446,7 @@ public class NotificationCenter {
 
             // add buttons that allow some actions without opening Delta Chat.
             // if privacy options are enabled, the buttons are not added.
-            if (privacy.isDisplayContact() && privacy.isDisplayMessage()
-             && !Prefs.isScreenLockEnabled(context)) {
+            if (privacy.isDisplayContact() && privacy.isDisplayMessage()) {
                 try {
                     PendingIntent inNotificationReplyIntent = getRemoteReplyIntent(chatData);
                     PendingIntent markReadIntent = getMarkAsReadIntent(chatData, true);

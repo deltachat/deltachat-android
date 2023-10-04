@@ -62,8 +62,6 @@ public class Prefs {
   private static final String PROFILE_AVATAR_ID_PREF           = "pref_profile_avatar_id";
   public  static final String INCOGNITO_KEYBORAD_PREF          = "pref_incognito_keyboard";
 
-  public static final String SCREEN_LOCK         = "pref_android_screen_lock";
-
   private static final String PREF_CONTACT_PHOTO_IDENTIFIERS = "pref_contact_photo_identifiers";
 
   private static final String MAP_CENTER_LATITUDE = "pref_map_center_latitude";
@@ -79,14 +77,6 @@ public class Prefs {
     VibrateState(int id) { this.id = id; }
     public int getId() { return id; }
     public static VibrateState fromId(int id) { return values()[id]; }
-  }
-
-  public static boolean isScreenLockEnabled(@NonNull Context context) {
-    return getBooleanPreference(context, SCREEN_LOCK, false);
-  }
-
-  public static void setScreenLockEnabled(@NonNull Context context, boolean value) {
-    setBooleanPreference(context, SCREEN_LOCK, value);
   }
 
   public static void setDatabaseEncryptedSecret(@NonNull Context context, @NonNull String secret, int accountId) {
