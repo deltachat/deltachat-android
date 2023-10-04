@@ -186,7 +186,6 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
     @Override
     public boolean onPreferenceClick(Preference preference) {
       Intent intent = new Intent(getActivity(), BlockedAndShareContactsActivity.class);
-      intent.putExtra(BlockedAndShareContactsActivity.SHOW_ONLY_BLOCKED_EXTRA, true);
       startActivity(intent);
       return true;
     }

@@ -949,7 +949,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void startContactChooserActivity() {
-    Intent intent = new Intent(ConversationActivity.this, BlockedAndShareContactsActivity.class);
+    Intent intent = new Intent(ConversationActivity.this, AttachContactActivity.class);
     startActivityForResult(intent, PICK_CONTACT);
   }
 
@@ -966,8 +966,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void addAttachmentContactInfo(Intent data) {
-    String name = data.getStringExtra(BlockedAndShareContactsActivity.SHARE_CONTACT_NAME_EXTRA);
-    String mail = data.getStringExtra(BlockedAndShareContactsActivity.SHARE_CONTACT_MAIL_EXTRA);
+    String name = data.getStringExtra(AttachContactActivity.SHARE_CONTACT_NAME_EXTRA);
+    String mail = data.getStringExtra(AttachContactActivity.SHARE_CONTACT_MAIL_EXTRA);
     composeText.append(name + "\n" + mail);
   }
 
