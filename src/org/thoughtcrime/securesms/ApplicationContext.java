@@ -43,6 +43,7 @@ import org.thoughtcrime.securesms.notifications.NotificationCenter;
 import org.thoughtcrime.securesms.util.AndroidSignalProtocolLogger;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.DynamicTheme;
+import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.SignalProtocolLoggerProvider;
 
 import java.io.File;
@@ -126,6 +127,15 @@ public class ApplicationContext extends MultiDexApplication {
     }, "eventThread").start();
 
     rpc.start();
+
+    // [Migration 04/10/23] Chat Background: migrate old custom background
+    String backgroundImagePath = Prefs.getStringPreference(this, "pref_chat_background", "");
+    if (!backgroundImagePath.isEmpty()) {
+      for (int accId : dcAccounts.getAll()) {
+        Prefs.setBackgroundImagePath(this, accId, backgroundImagePath);
+      }
+      Prefs.setStringPreference(this, "pref_chat_background", "");
+    }
 
     // set translations before starting I/O to avoid sending untranslated MDNs (issue #2288)
     DcHelper.setStockTranslations(this);
