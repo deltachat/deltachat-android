@@ -83,6 +83,7 @@ public class ContactSelectionListFragment extends    Fragment
   public static final String MULTI_SELECT          = "multi_select";
   public static final String SELECT_VERIFIED_EXTRA = "select_verified";
   public static final String FROM_SHARE_ACTIVITY_EXTRA = "from_share_activity";
+  public static final String ALLOW_CREATION = "allow_creation";
   public static final String PRESELECTED_CONTACTS = "preselected_contacts";
 
   private DcContext dcContext;
@@ -287,7 +288,8 @@ public class ContactSelectionListFragment extends    Fragment
     if(isSelectVerfied()) {
       listflags = DcContext.DC_GCL_VERIFIED_ONLY;
     }
-    return new DcContactsLoader(getActivity(), listflags, cursorFilter, addCreateGroupLinks, false);
+    boolean allowCreation = getActivity().getIntent().getBooleanExtra(ALLOW_CREATION, true);
+    return new DcContactsLoader(getActivity(), listflags, cursorFilter, addCreateGroupLinks, false, allowCreation);
   }
 
   @Override
