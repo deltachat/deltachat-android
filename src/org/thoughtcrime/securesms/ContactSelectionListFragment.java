@@ -283,7 +283,7 @@ public class ContactSelectionListFragment extends    Fragment
 
   @Override
   public Loader<DcContactsLoader.Ret> onCreateLoader(int id, Bundle args) {
-    boolean addCreateGroupLinks = isFromShareActivity() || isRelayingMessageContent(getActivity()) ? false : !isMulti();
+    boolean addCreateGroupLinks = !isFromShareActivity() && !isRelayingMessageContent(getActivity()) && !isMulti();
     int listflags = DcContext.DC_GCL_ADD_SELF;
     if(isSelectVerfied()) {
       listflags = DcContext.DC_GCL_VERIFIED_ONLY;
