@@ -950,6 +950,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   private void startContactChooserActivity() {
     Intent intent = new Intent(ConversationActivity.this, AttachContactActivity.class);
+    intent.putExtra(ContactSelectionListFragment.FROM_SHARE_ACTIVITY_EXTRA, true);
     startActivityForResult(intent, PICK_CONTACT);
   }
 
