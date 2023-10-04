@@ -31,4 +31,8 @@
     <item android:id="@+id/menu_resend"
         android:title="@string/resend"
         app:showAsAction="never" />
+
+    <item android:id="@+id/menu_select_all"
+        android:title="@string/menu_select_all"
+        app:showAsAction="never" />
 </menu>
