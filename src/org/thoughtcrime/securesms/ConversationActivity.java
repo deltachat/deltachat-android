@@ -858,7 +858,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void initializeBackground() {
-    String backgroundImagePath = Prefs.getBackgroundImagePath(this);
+    String backgroundImagePath = Prefs.getBackgroundImagePath(this, dcContext.getAccountId());
     Drawable background;
     if(!backgroundImagePath.isEmpty()) {
       background = Drawable.createFromPath(backgroundImagePath);
@@ -892,6 +892,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       AccountManager.getInstance().switchAccount(context, accountId);
       dcContext = context.dcContext;
       fragment.dcContext = context.dcContext;
+      initializeBackground();
     }
     chatId = getIntent().getIntExtra(CHAT_ID_EXTRA, -1);
     if(chatId == DcChat.DC_CHAT_NO_CHAT)
