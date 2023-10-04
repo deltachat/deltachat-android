@@ -2,15 +2,14 @@ package org.thoughtcrime.securesms;
 
 import android.content.Intent;
 
-import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 
 import org.thoughtcrime.securesms.connect.DcHelper;
 
 public class AttachContactActivity extends ContactSelectionActivity {
 
-  public static final String SHARE_CONTACT_NAME_EXTRA = "share_contact_name";
-  public static final String SHARE_CONTACT_MAIL_EXTRA = "share_contact_mail";
+  public static final String NAME_EXTRA = "name_extra";
+  public static final String ADDR_EXTRA = "addr_extra";
 
   @Override
   public void onContactSelected(int specialId, String addr) {
@@ -21,8 +20,8 @@ public class AttachContactActivity extends ContactSelectionActivity {
       name = dcContext.getContact(contactId).getDisplayName();
     }
     Intent intent = new Intent();
-    intent.putExtra(SHARE_CONTACT_NAME_EXTRA, name);
-    intent.putExtra(SHARE_CONTACT_MAIL_EXTRA, addr);
+    intent.putExtra(NAME_EXTRA, name);
+    intent.putExtra(ADDR_EXTRA, addr);
     setResult(RESULT_OK, intent);
     finish();
   }
