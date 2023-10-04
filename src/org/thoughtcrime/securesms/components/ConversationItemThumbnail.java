@@ -7,6 +7,7 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.RectF;
 import android.util.AttributeSet;
+import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
@@ -87,7 +88,11 @@ public class ConversationItemThumbnail extends FrameLayout {
   }
 
   public String getDescription() {
-    return thumbnail.getDescription() + "\n" + footer.getDescription();
+    String desc = thumbnail.getDescription();
+    if (footer.getVisibility() == View.VISIBLE) {
+      desc += "\n" + footer.getDescription();
+    }
+    return desc;
   }
 
   @Override
