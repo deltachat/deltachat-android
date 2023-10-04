@@ -197,6 +197,15 @@ public class ProfileGalleryFragment
     menu.findItem(R.id.details).setVisible(singleSelection);
     menu.findItem(R.id.show_in_chat).setVisible(singleSelection);
     menu.findItem(R.id.share).setVisible(singleSelection);
+
+    boolean canResend = true;
+    for (DcMsg messageRecord : messageRecords) {
+      if (!messageRecord.isOutgoing()) {
+        canResend = false;
+        break;
+      }
+    }
+    menu.findItem(R.id.menu_resend).setVisible(canResend);
   }
 
   private ProfileGalleryAdapter getListAdapter() {
@@ -245,6 +254,9 @@ public class ProfileGalleryFragment
           return true;
         case R.id.save:
           handleSaveAttachment(getListAdapter().getSelectedMedia());
+          return true;
+        case R.id.menu_resend:
+          handleResendMessage(getListAdapter().getSelectedMedia());
           return true;
       }
       return false;
