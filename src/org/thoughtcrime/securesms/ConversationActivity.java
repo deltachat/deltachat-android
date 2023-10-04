@@ -966,8 +966,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void addAttachmentContactInfo(Intent data) {
-    String name = data.getStringExtra(AttachContactActivity.SHARE_CONTACT_NAME_EXTRA);
-    String mail = data.getStringExtra(AttachContactActivity.SHARE_CONTACT_MAIL_EXTRA);
+    String name = data.getStringExtra(AttachContactActivity.NAME_EXTRA);
+    String mail = data.getStringExtra(AttachContactActivity.ADDR_EXTRA);
     composeText.append(name + "\n" + mail);
   }
 
