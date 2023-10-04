@@ -23,4 +23,17 @@
         app:minHeight="@dimen/media_bubble_min_height"
         app:maxHeight="@dimen/media_bubble_max_height" />
 
+    <org.thoughtcrime.securesms.components.ConversationItemFooter
+        android:id="@+id/sticker_footer"
+        android:background="@drawable/conversation_item_update_background"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:gravity="bottom|end"
+        android:paddingTop="@dimen/transparent_footer_padding"
+        android:paddingBottom="@dimen/transparent_footer_padding"
+        android:paddingLeft="@dimen/transparent_footer_padding"
+        android:paddingRight="@dimen/transparent_footer_padding"
+        app:footer_text_color="@color/core_white"/>
+
 </merge>
