@@ -306,12 +306,12 @@ public class Prefs {
 
   // misc.
 
-  public static String getBackgroundImagePath(Context context) {
-    return getStringPreference(context, BACKGROUND_PREF, "");
+  public static String getBackgroundImagePath(Context context, int accountId) {
+    return getStringPreference(context, BACKGROUND_PREF+accountId, "");
   }
 
-  public static void setBackgroundImagePath(Context context, String path) {
-    setStringPreference(context, BACKGROUND_PREF, path);
+  public static void setBackgroundImagePath(Context context, int accountId, String path) {
+    setStringPreference(context, BACKGROUND_PREF+accountId, path);
   }
 
   public static boolean isSystemEmojiPreferred(Context context) {

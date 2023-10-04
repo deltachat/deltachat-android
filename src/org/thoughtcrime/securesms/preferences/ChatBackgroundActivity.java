@@ -23,6 +23,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import org.thoughtcrime.securesms.ApplicationPreferencesActivity;
 import org.thoughtcrime.securesms.PassphraseRequiredActionBarActivity;
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.AttachmentManager;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.util.DynamicTheme;
@@ -44,6 +45,8 @@ public class ChatBackgroundActivity extends PassphraseRequiredActionBarActivity 
     Uri imageUri;
     Boolean imageUpdate = false;
 
+    private int accountId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState, boolean ready) {
         setContentView(R.layout.activity_select_chat_background);
@@ -51,11 +54,12 @@ public class ChatBackgroundActivity extends PassphraseRequiredActionBarActivity 
         defaultButton = findViewById(R.id.set_default_button);
         galleryButton = findViewById(R.id.from_gallery_button);
         preview = findViewById(R.id.preview);
+        accountId = DcHelper.getContext(getApplicationContext()).getAccountId();
 
         defaultButton.setOnClickListener(new DefaultClickListener());
         galleryButton.setOnClickListener(new GalleryClickListener());
 
-        String backgroundImagePath = Prefs.getBackgroundImagePath(this);
+        String backgroundImagePath = Prefs.getBackgroundImagePath(this, accountId);
         if(backgroundImagePath.isEmpty()){
             setDefaultLayoutBackgroundImage();
         }else {
@@ -94,13 +98,13 @@ public class ChatBackgroundActivity extends PassphraseRequiredActionBarActivity 
                         @Override
                         public void run() {
                             String destination = context.getFilesDir().getAbsolutePath() + "/background";
-                            Prefs.setBackgroundImagePath(context, destination);
+                            Prefs.setBackgroundImagePath(context, accountId, destination);
                             scaleAndSaveImage(context, destination);
                         }
                     };
                     thread.start();
                 } else {
-                    Prefs.setBackgroundImagePath(context, "");
+                    Prefs.setBackgroundImagePath(context, accountId, "");
                 }
             }
             finish();
@@ -133,15 +137,15 @@ public class ChatBackgroundActivity extends PassphraseRequiredActionBarActivity 
             scaledBitmap.compress(Bitmap.CompressFormat.JPEG, 85, outStream);
         } catch (InterruptedException e) {
             e.printStackTrace();
-            Prefs.setBackgroundImagePath(context, "");
+            Prefs.setBackgroundImagePath(context, accountId, "");
             showBackgroundSaveError();
         } catch (ExecutionException e) {
             e.printStackTrace();
-            Prefs.setBackgroundImagePath(context, "");
+            Prefs.setBackgroundImagePath(context, accountId, "");
             showBackgroundSaveError();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-            Prefs.setBackgroundImagePath(context, "");
+            Prefs.setBackgroundImagePath(context, accountId, "");
             showBackgroundSaveError();
         }
     }

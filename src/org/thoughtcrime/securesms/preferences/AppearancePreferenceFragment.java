@@ -46,7 +46,7 @@ public class AppearancePreferenceFragment extends ListSummaryPreferenceFragment 
   public void onResume() {
     super.onResume();
     ((ApplicationPreferencesActivity) getActivity()).getSupportActionBar().setTitle(R.string.pref_appearance);
-    String imagePath = Prefs.getBackgroundImagePath(getContext());
+    String imagePath = Prefs.getBackgroundImagePath(getContext(), dcContext.getAccountId());
     String backgroundString;
     if(imagePath.isEmpty()){
       backgroundString = this.getString(R.string.def);
@@ -75,7 +75,7 @@ public class AppearancePreferenceFragment extends ListSummaryPreferenceFragment 
     int themeIndex = Arrays.asList(themeEntryValues).indexOf(Prefs.getTheme(context));
     if (themeIndex == -1) themeIndex = 0;
 
-    String imagePath = Prefs.getBackgroundImagePath(context);
+    String imagePath = Prefs.getBackgroundImagePath(context, DcHelper.getContext(context).getAccountId());
     String backgroundString;
     if(imagePath.isEmpty()){
       backgroundString = context.getString(R.string.def);
