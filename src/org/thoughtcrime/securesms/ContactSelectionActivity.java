@@ -17,6 +17,7 @@
 package org.thoughtcrime.securesms;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 
 import org.thoughtcrime.securesms.components.ContactFilterToolbar;
 import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
@@ -74,6 +75,17 @@ public abstract class ContactSelectionActivity extends PassphraseRequiredActionB
 
   private void initializeSearch() {
     toolbar.setOnFilterChangedListener(filter -> contactsFragment.setQueryFilter(filter));
+  }
+
+  @Override
+  public boolean onOptionsItemSelected(MenuItem item) {
+    super.onOptionsItemSelected(item);
+
+    switch (item.getItemId()) {
+      case android.R.id.home:   super.onBackPressed(); return true;
+    }
+
+    return false;
   }
 
   @Override

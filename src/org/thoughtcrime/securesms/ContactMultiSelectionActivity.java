@@ -65,9 +65,6 @@ public class ContactMultiSelectionActivity extends ContactSelectionActivity {
         saveSelection();
         finish();
         return true;
-      case android.R.id.home:
-        finish();
-        return true;
     }
 
     return false;
