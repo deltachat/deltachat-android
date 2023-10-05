@@ -105,7 +105,7 @@ public class ConversationFragment extends MessageSelectorFragment
     private StickyHeaderDecoration      dateDecoration;
     private View                        scrollToBottomButton;
     private View                        floatingLocationButton;
-    private View                        addReactionsView;
+    private View                        addReactionView;
     private TextView                    noMessageTextView;
     private Timer                       reloadTimer;
 
@@ -144,7 +144,7 @@ public class ConversationFragment extends MessageSelectorFragment
         list                   = ViewUtil.findById(view, android.R.id.list);
         scrollToBottomButton   = ViewUtil.findById(view, R.id.scroll_to_bottom_button);
         floatingLocationButton = ViewUtil.findById(view, R.id.floating_location_button);
-        addReactionsView       = ViewUtil.findById(view, R.id.add_reactions_view);
+        addReactionView        = ViewUtil.findById(view, R.id.add_reaction_view);
         noMessageTextView      = ViewUtil.findById(view, R.id.no_messages_text_view);
 
         scrollToBottomButton.setOnClickListener(v -> scrollToBottom());
