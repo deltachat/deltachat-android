@@ -272,6 +272,7 @@ public class ProfileSettingsFragment extends Fragment
       menu.findItem(R.id.save).setVisible(false);
       menu.findItem(R.id.share).setVisible(false);
       menu.findItem(R.id.menu_resend).setVisible(false);
+      menu.findItem(R.id.menu_select_all).setVisible(false);
       mode.setTitle("1");
 
       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {

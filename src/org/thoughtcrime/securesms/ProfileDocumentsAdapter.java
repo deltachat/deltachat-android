@@ -160,6 +160,12 @@ class ProfileDocumentsAdapter extends StickyHeaderGridAdapter {
     notifyDataSetChanged();
   }
 
+  public void selectAll() {
+    selected.clear();
+    selected.addAll(media.getAll());
+    notifyDataSetChanged();
+  }
+
   public int getSelectedMediaCount() {
     return selected.size();
   }

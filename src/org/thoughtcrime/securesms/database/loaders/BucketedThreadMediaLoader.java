@@ -118,6 +118,17 @@ public class BucketedThreadMediaLoader extends AsyncTaskLoader<BucketedThreadMed
       OLDER.add(imageMessage);
     }
 
+    public LinkedList<DcMsg> getAll() {
+      LinkedList<DcMsg> messages = new LinkedList<>();
+      for (TimeBucket section : TIME_SECTIONS) {
+        messages.addAll(section.records);
+      }
+      for (List<DcMsg> records : OLDER.months.values()) {
+        messages.addAll(records);
+      }
+      return messages;
+    }
+
     public int getSectionCount() {
       return (int)Stream.of(TIME_SECTIONS)
                         .filter(timeBucket -> !timeBucket.isEmpty())
