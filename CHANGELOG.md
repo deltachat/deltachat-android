@@ -3,7 +3,40 @@
 ## v1.41.0 Testrun
 2023-10
 
+* keep screen on while playing voice messages
+* pause background music when starting voice messages
+* use the system camera as default; the old built-in camera can be enabled at "Settings / Advanced"
+* add "Verified by" information to contact profiles
+* screen reader: read out message types
+* screen reader: allow tapping anywhere in the  message to start voice or audio playback
+* set different wallpapers for different accounts
+* add "Select All" to gallery and to file lists
+* resend attachments from profile (long tap, then "Resend" in the menu)
+* allow to import a key file instead of a folder containing keys
+* search in "Attach Contact" dialog
+* improve landscape mode for webxdc apps
+* adapt webxdc loading screen to dark mode
+* add file name to dialog shown if a webxdc app wants to share information
+* add app icon to webxdc info messages and improve webxdc app icon layout
+* improve layout of input bar when system emojis are used
+* ask for permissions before adding notifications on Android 13 (needed by the required update to API 33)
+* switch account if needed when opening webxdc app on the system's home screen
+* improve video error messages and logging
+* fix sometimes wrong avatar shown in notifications when using multiple accounts
+* fix: save map preferences per account to avoid resetting location and zoom
+* fix: play audio and voice messages: do not show progress in unrelated messages
+* fix: update relative times directly after entering chatlist, do not wait for a minute
+* fix issues when after selecting a non-system-language, system-language strings still show up
+* fix: only jump to message if info message is from webxdc
+* fix: update webxdc document name in titles immediately
+* fix: do not open Connectivity when tapping forward/share titles
+* fix starting conversation with contact from the phone contacts app
+* fix WASM support for some webxdc apps
+* fix off-by-one mismatch in manual language selection
+* fix: sanitize invalid filename we get from some camera apps
+* fix: display sticker footer properly
 
+* fix: webxdc apps starting twice sometimes
 * fix sending images and other files in location steaming mode
 * fix connectivity view layout if eg. storage shows values larger than 100%
 * fix scanning account-QR-codes on older phones that miss the Let's Encrypt system certificate
@@ -20,6 +53,8 @@
 * fix: delete messages from SMTP queue only on user demand
 * fix: improve wrapping of email messages on the wire
 * fix memory leak in IMAP
+* update translations and local help
+* update to core 1.124.1
 
 
 ## v1.40.1
