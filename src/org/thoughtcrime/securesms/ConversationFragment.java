@@ -243,6 +243,7 @@ public class ConversationFragment extends MessageSelectorFragment
 
     public void onNewIntent() {
         if (actionMode != null) {
+            hideAddReactionView();
             actionMode.finish();
         }
 
@@ -318,6 +319,7 @@ public class ConversationFragment extends MessageSelectorFragment
         Set<DcMsg>         messageRecords = getListAdapter().getSelectedItems();
 
         if (actionMode != null && messageRecords.size() == 0) {
+            hideAddReactionView();
             actionMode.finish();
             return;
         }
@@ -591,6 +593,14 @@ public class ConversationFragment extends MessageSelectorFragment
       }
     }
 
+    private void showAddReactionView() {
+        addReactionView.setVisibility(View.VISIBLE);
+    }
+
+    private void hideAddReactionView() {
+        addReactionView.setVisibility(View.GONE);
+    }
+
     public interface ConversationFragmentListener {
         void handleReplyMessage(DcMsg messageRecord);
     }
@@ -772,6 +782,7 @@ public class ConversationFragment extends MessageSelectorFragment
             if (actionMode != null) {
                 ((ConversationAdapter) list.getAdapter()).toggleSelection(messageRecord);
                 list.getAdapter().notifyDataSetChanged();
+                hideAddReactionView();
 
                 if (getListAdapter().getSelectedItems().size() == 0) {
                     actionMode.finish();
@@ -813,6 +824,7 @@ public class ConversationFragment extends MessageSelectorFragment
                 list.getAdapter().notifyDataSetChanged();
 
                 actionMode = ((AppCompatActivity)getActivity()).startSupportActionMode(actionModeCallback);
+                showAddReactionView();
             }
         }
 
@@ -916,6 +928,7 @@ public class ConversationFragment extends MessageSelectorFragment
 
         @Override
         public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+            hideAddReactionView();
             switch(item.getItemId()) {
                 case R.id.menu_context_copy:
                     handleCopyMessage(getListAdapter().getSelectedItems());
