@@ -97,10 +97,10 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   protected void onCreate(Bundle icicle, boolean ready) {
     // update messages - for new messages, do not reuse or modify strings but create new ones.
     // it is not needed to keep all past update messages, however, when deleted, also the strings should be deleted.
-    DcContext dcContext = DcHelper.getContext(this);
-    DcMsg msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
-    msg.setText(getString(R.string.update_1_38_android, "https://get.delta.chat/#changelogs"));
-    dcContext.addDeviceMsg("update_1_38c_android", msg);
+    //DcContext dcContext = DcHelper.getContext(this);
+    //DcMsg msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
+    //msg.setText(getString(R.string.update_1_38_android, "https://get.delta.chat/#changelogs"));
+    //dcContext.addDeviceMsg("update_1_38c_android", msg);
 
     // create view
     setContentView(R.layout.conversation_list_activity);
