@@ -21,7 +21,7 @@ import androidx.preference.Preference;
 import com.b44t.messenger.DcContext;
 
 import org.thoughtcrime.securesms.ApplicationPreferencesActivity;
-import org.thoughtcrime.securesms.BlockedAndShareContactsActivity;
+import org.thoughtcrime.securesms.BlockedContactsActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.permissions.Permissions;
@@ -185,7 +185,7 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
   private class BlockedContactsClickListener implements Preference.OnPreferenceClickListener {
     @Override
     public boolean onPreferenceClick(Preference preference) {
-      Intent intent = new Intent(getActivity(), BlockedAndShareContactsActivity.class);
+      Intent intent = new Intent(getActivity(), BlockedContactsActivity.class);
       startActivity(intent);
       return true;
     }

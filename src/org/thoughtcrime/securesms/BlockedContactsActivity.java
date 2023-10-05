@@ -26,7 +26,7 @@ import org.thoughtcrime.securesms.contacts.ContactSelectionListItem;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
-public class BlockedAndShareContactsActivity extends PassphraseRequiredActionBarActivity {
+public class BlockedContactsActivity extends PassphraseRequiredActionBarActivity {
 
   @Override
   public void onCreate(Bundle bundle, boolean ready) {
@@ -136,9 +136,7 @@ public class BlockedAndShareContactsActivity extends PassphraseRequiredActionBar
     }
 
     @Override
-    public void onItemLongClick(ContactSelectionListItem view) {
-      // Not needed
-    }
+    public void onItemLongClick(ContactSelectionListItem view) {}
   }
 
 }
