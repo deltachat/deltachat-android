@@ -35,7 +35,6 @@
 * fix off-by-one mismatch in manual language selection
 * fix: sanitize invalid filename we get from some camera apps
 * fix: display sticker footer properly
-
 * fix: webxdc apps starting twice sometimes
 * fix sending images and other files in location steaming mode
 * fix connectivity view layout if eg. storage shows values larger than 100%
