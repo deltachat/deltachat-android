@@ -98,8 +98,8 @@ android {
     useLibrary 'org.apache.http.legacy'
 
     defaultConfig {
-        versionCode 660
-        versionName "1.40.1"
+        versionCode 661
+        versionName "1.41.0"
 
         applicationId "com.b44t.messenger"
         multiDexEnabled true
