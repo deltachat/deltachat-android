@@ -593,7 +593,7 @@ public class ConversationFragment extends MessageSelectorFragment
       }
     }
 
-    private void showAddReactionView() {
+    private void showAddReactionView(DcMsg msgToReactTo, View parentView) {
         addReactionView.setVisibility(View.VISIBLE);
     }
 
@@ -818,13 +818,13 @@ public class ConversationFragment extends MessageSelectorFragment
         }
 
         @Override
-        public void onItemLongClick(DcMsg messageRecord) {
+        public void onItemLongClick(DcMsg messageRecord, View view) {
             if (actionMode == null) {
                 ((ConversationAdapter) list.getAdapter()).toggleSelection(messageRecord);
                 list.getAdapter().notifyDataSetChanged();
 
                 actionMode = ((AppCompatActivity)getActivity()).startSupportActionMode(actionModeCallback);
-                showAddReactionView();
+                showAddReactionView(messageRecord, view);
             }
         }
 

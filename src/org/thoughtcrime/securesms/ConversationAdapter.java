@@ -207,7 +207,7 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
 
   interface ItemClickListener extends BindableConversationItem.EventListener {
     void onItemClick(DcMsg item);
-    void onItemLongClick(DcMsg item);
+    void onItemLongClick(DcMsg item, View view);
   }
 
   public ConversationAdapter(@NonNull Context context,
@@ -263,7 +263,7 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
     });
     itemView.setOnLongClickListener(view -> {
       if (clickListener != null) {
-        clickListener.onItemLongClick(itemView.getMessageRecord());
+        clickListener.onItemLongClick(itemView.getMessageRecord(), view);
       }
       return true;
     });
