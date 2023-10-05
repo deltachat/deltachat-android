@@ -737,6 +737,9 @@
     <string name="emoji_symbols">Símbolos</string>
     <string name="emoji_flags">Banderas</string>
 
+    <!-- Reactions -->
+    <string name="reactions">Reacciones</string>
+
     <!-- automatically delete message -->
     <string name="delete_old_messages">Borrar mensajes antiguos</string>
     <string name="autodel_device_title">Borrar mensajes del dispositivo</string>
@@ -931,6 +934,9 @@
     <string name="notify_name_and_message">Nombre y mensaje</string>
     <string name="notify_name_only">Solo nombre</string>
     <string name="notify_no_name_or_message">Sin nombre ni mensaje</string>
+    <string name="notifications_disabled">Notificaciones deshabilitadas</string>
+
+
     <!-- permissions -->
     <string name="perm_required_title">Permiso requerido</string>
     <string name="perm_continue">Continuar</string>
@@ -938,6 +944,8 @@
     <string name="perm_explain_access_to_mic_denied">Para enviar mensajes de audio, vaya al menú de configuración de aplicaciones, seleccione \"Permisos\" y habilite \"Micrófono\".</string>
     <string name="perm_explain_access_to_storage_denied">Para adjuntar o exportar fotos, videos o audio, vaya al menú de configuración de aplicaciones, seleccione \"Permisos\" y habilite \"Almacenamiento\".</string>
     <string name="perm_explain_access_to_location_denied">Para adjuntar una ubicación, vaya al menú de configuración de aplicaciones, seleccione \"Permisos\" y habilite \"Ubicación\".</string>
+    <string name="perm_explain_access_to_notifications_denied">Para recibir notificaciones, vaya a \"Ajustes del sistema / Applicaciones / Delta Chat\" y active \"Notificaciones\".</string>
+
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Dibuja para difuminar</string>
     <string name="ImageEditorHud_add_text">Añadir texto</string>

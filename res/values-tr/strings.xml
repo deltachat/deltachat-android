@@ -41,7 +41,7 @@
     <string name="unarchive">Arşivleme</string>
     <string name="mute">Sessize Al</string>
     <string name="ephemeral_messages">Kaybolan İletiler</string>
-    <string name="ephemeral_messages_hint">Onlar Delta Chat\'i kullanıyorsa, bu sohbetin tüm üyelerine uygulanır; onlar hâlâ iletileri kopyalayabilir, kaydedebilir ve iletebilir ya da diğer e-posta istemcilerini kullanabilir.</string>
+    <string name="ephemeral_messages_hint">Bu sohbetin tüm üyelerine onlar Delta Chat\'i kullanıyorsa uygulanır; onlar hâlâ iletileri kopyalayabilir, kaydedebilir ve iletebilir ya da diğer e-posta istemcilerini kullanabilir.</string>
     <string name="save">Kaydet</string>
     <string name="chat">Sohbet</string>
     <string name="media">Ortam</string>
@@ -722,6 +722,9 @@
     <string name="emoji_symbols">Semboller</string>
     <string name="emoji_flags">Bayraklar</string>
 
+    <!-- Reactions -->
+    <string name="reactions">Tepkiler</string>
+
     <!-- automatically delete message -->
     <string name="delete_old_messages">Eski İletileri Sil</string>
     <string name="autodel_device_title">İletileri Aygıttan Sil</string>
@@ -916,6 +919,9 @@
     <string name="notify_name_and_message">Ad ve ileti</string>
     <string name="notify_name_only">Yalnızca ad</string>
     <string name="notify_no_name_or_message">Ad ya da ileti yok</string>
+    <string name="notifications_disabled">Bildirimler etkisizleştirildi</string>
+
+
     <!-- permissions -->
     <string name="perm_required_title">İzin gerekli</string>
     <string name="perm_continue">Sürdür</string>
@@ -923,6 +929,8 @@
     <string name="perm_explain_access_to_mic_denied">Sesli iletiler göndermek için uygulama ayarlarına gidin, \"İzinler\"i seçin ve \"Mikrofon\"u etkinleştirin.</string>
     <string name="perm_explain_access_to_storage_denied">Dosyalar almak ya da göndermek için uygulama ayarlarına gidin, \"İzinler\"i seçin ve \"Depolama\"yı etkinleştirin.</string>
     <string name="perm_explain_access_to_location_denied">Bir konum iliştirmek için uygulama ayarlarına gidin, \"İzinler\"i seçin ve \"Konum\"u etkinleştirin.</string>
+    <string name="perm_explain_access_to_notifications_denied">Bildirimler almak için \"Sistem Ayarları / Uygulamalar / Delta Chat\"e gidin ve \"Bildirimler\"i etkinleştirin.</string>
+
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Bulanıklaştırmak için herhangi bir yere çizin</string>
     <string name="ImageEditorHud_add_text">Metin Ekle</string>
