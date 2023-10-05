@@ -1,5 +1,27 @@
 # Delta Chat Android Changelog
 
+## v1.41.0 Testrun
+2023-10
+
+
+* fix sending images and other files in location steaming mode
+* fix connectivity view layout if eg. storage shows values larger than 100%
+* fix scanning account-QR-codes on older phones that miss the Let's Encrypt system certificate
+* fix: make Thunderbird show encrypted subjects
+* fix: do not forward document name when forwarding only a webxdc app
+* fix: do not create new groups if someone replies to a group message with status "failed"
+* fix: do not block new group chats if 1:1 chat is blocked
+* fix "Show full message" showing a black screen for some messages received from Microsoft Exchange
+* fix: skip read-only mailing lists from forwarding/share chat lists
+* fix: do not allow dots at the end of email addresses
+* fix: do not send images pasted from the keyboard unconditionally as stickers
+* fix: forbid membership changes from possible non-members, allow from possible members
+* fix: improve group consistency across members
+* fix: delete messages from SMTP queue only on user demand
+* fix: improve wrapping of email messages on the wire
+* fix memory leak in IMAP
+
+
 ## v1.40.1
 2023-08
 
