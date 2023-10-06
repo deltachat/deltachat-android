@@ -8,7 +8,6 @@ import android.widget.LinearLayout;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.rpc.Rpc;
 
-import org.thoughtcrime.securesms.ContactSelectionActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.components.emoji.EmojiTextView;
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -19,6 +18,7 @@ public class AddReactionView extends LinearLayout {
     private DcContext dcContext;
     private Rpc rpc;
     private int msgIdToReactTo;
+    private AddReactionListener listener;
 
     public AddReactionView(Context context) {
         super(context);
@@ -47,9 +47,10 @@ public class AddReactionView extends LinearLayout {
       }
     }
 
-    public void show(int msgIdToReactTo, View parentView) {
+    public void show(int msgIdToReactTo, View parentView, AddReactionListener listener) {
         init(); // init delayed as needed
         this.msgIdToReactTo = msgIdToReactTo;
+        this.listener = listener;
         setVisibility(View.VISIBLE);
     }
 
@@ -61,8 +62,15 @@ public class AddReactionView extends LinearLayout {
         try {
             final String reaction = defaultReactions[i].getText().toString();
             rpc.sendReaction(dcContext.getAccountId(), msgIdToReactTo, reaction);
+            if (listener != null) {
+                listener.onShallHide();
+            }
         } catch(Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public interface AddReactionListener {
+        void onShallHide();
     }
 }

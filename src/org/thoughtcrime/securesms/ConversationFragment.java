@@ -817,7 +817,12 @@ public class ConversationFragment extends MessageSelectorFragment
                 list.getAdapter().notifyDataSetChanged();
 
                 actionMode = ((AppCompatActivity)getActivity()).startSupportActionMode(actionModeCallback);
-                addReactionView.show(messageRecord.getId(), view);
+                addReactionView.show(messageRecord.getId(), view, () -> {
+                    if (actionMode != null) {
+                        actionMode.finish();
+                        addReactionView.hide();
+                    }
+                });
             }
         }
 
