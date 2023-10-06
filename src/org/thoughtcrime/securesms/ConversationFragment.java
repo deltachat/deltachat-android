@@ -63,6 +63,7 @@ import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.mms.GlideApp;
+import org.thoughtcrime.securesms.reactions.AddReactionView;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.reactions.ReactionsDetailsFragment;
 import org.thoughtcrime.securesms.util.AccessibilityUtil;
@@ -105,7 +106,7 @@ public class ConversationFragment extends MessageSelectorFragment
     private StickyHeaderDecoration      dateDecoration;
     private View                        scrollToBottomButton;
     private View                        floatingLocationButton;
-    private View                        addReactionView;
+    private AddReactionView             addReactionView;
     private TextView                    noMessageTextView;
     private Timer                       reloadTimer;
 
@@ -243,7 +244,7 @@ public class ConversationFragment extends MessageSelectorFragment
 
     public void onNewIntent() {
         if (actionMode != null) {
-            hideAddReactionView();
+            addReactionView.hide();
             actionMode.finish();
         }
 
@@ -319,7 +320,7 @@ public class ConversationFragment extends MessageSelectorFragment
         Set<DcMsg>         messageRecords = getListAdapter().getSelectedItems();
 
         if (actionMode != null && messageRecords.size() == 0) {
-            hideAddReactionView();
+            addReactionView.hide();
             actionMode.finish();
             return;
         }
@@ -593,14 +594,6 @@ public class ConversationFragment extends MessageSelectorFragment
       }
     }
 
-    private void showAddReactionView(DcMsg msgToReactTo, View parentView) {
-        addReactionView.setVisibility(View.VISIBLE);
-    }
-
-    private void hideAddReactionView() {
-        addReactionView.setVisibility(View.GONE);
-    }
-
     public interface ConversationFragmentListener {
         void handleReplyMessage(DcMsg messageRecord);
     }
@@ -782,7 +775,7 @@ public class ConversationFragment extends MessageSelectorFragment
             if (actionMode != null) {
                 ((ConversationAdapter) list.getAdapter()).toggleSelection(messageRecord);
                 list.getAdapter().notifyDataSetChanged();
-                hideAddReactionView();
+                addReactionView.hide();
 
                 if (getListAdapter().getSelectedItems().size() == 0) {
                     actionMode.finish();
@@ -824,7 +817,7 @@ public class ConversationFragment extends MessageSelectorFragment
                 list.getAdapter().notifyDataSetChanged();
 
                 actionMode = ((AppCompatActivity)getActivity()).startSupportActionMode(actionModeCallback);
-                showAddReactionView(messageRecord, view);
+                addReactionView.show(messageRecord, view);
             }
         }
 
@@ -928,7 +921,7 @@ public class ConversationFragment extends MessageSelectorFragment
 
         @Override
         public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
-            hideAddReactionView();
+            addReactionView.hide();
             switch(item.getItemId()) {
                 case R.id.menu_context_copy:
                     handleCopyMessage(getListAdapter().getSelectedItems());
