@@ -244,7 +244,6 @@ public class ConversationFragment extends MessageSelectorFragment
 
     public void onNewIntent() {
         if (actionMode != null) {
-            addReactionView.hide();
             actionMode.finish();
         }
 
@@ -325,7 +324,6 @@ public class ConversationFragment extends MessageSelectorFragment
         Set<DcMsg>         messageRecords = getListAdapter().getSelectedItems();
 
         if (actionMode != null && messageRecords.size() == 0) {
-            addReactionView.hide();
             actionMode.finish();
             return;
         }
@@ -780,11 +778,11 @@ public class ConversationFragment extends MessageSelectorFragment
             if (actionMode != null) {
                 ((ConversationAdapter) list.getAdapter()).toggleSelection(messageRecord);
                 list.getAdapter().notifyDataSetChanged();
-                addReactionView.hide();
 
                 if (getListAdapter().getSelectedItems().size() == 0) {
                     actionMode.finish();
                 } else {
+                    addReactionView.hide();
                     Menu menu = actionMode.getMenu();
                     setCorrectMenuVisibility(menu);
                     ConversationAdaptiveActionsToolbar.adjustMenuActions(menu, 10, requireActivity().getWindow().getDecorView().getMeasuredWidth());
@@ -825,7 +823,6 @@ public class ConversationFragment extends MessageSelectorFragment
                 addReactionView.show(messageRecord, view, () -> {
                     if (actionMode != null) {
                         actionMode.finish();
-                        addReactionView.hide();
                     }
                 });
             }
