@@ -10,8 +10,6 @@ import android.media.AudioAttributes;
 import android.media.AudioFocusRequest;
 import android.media.AudioManager;
 import android.os.Build;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -20,6 +18,9 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.audio.AudioSlidePlayer;
@@ -39,6 +40,7 @@ public class AudioView extends FrameLayout implements AudioSlidePlayer.Listener 
   private final @NonNull SeekBar         seekBar;
   private final @NonNull TextView        timestamp;
   private final @NonNull TextView        title;
+  private final @NonNull View            mask;
 
   private @Nullable AudioSlidePlayer   audioSlidePlayer;
   private AudioManager.OnAudioFocusChangeListener audioFocusChangeListener;
@@ -62,6 +64,7 @@ public class AudioView extends FrameLayout implements AudioSlidePlayer.Listener 
     this.seekBar          = (SeekBar) findViewById(R.id.seek);
     this.timestamp        = (TextView) findViewById(R.id.timestamp);
     this.title            = (TextView) findViewById(R.id.title);
+    this.mask             = findViewById(R.id.interception_mask);
 
     this.timestamp.setText("00:00");
 
@@ -97,13 +100,25 @@ public class AudioView extends FrameLayout implements AudioSlidePlayer.Listener 
   }
 
   @Override
-  public boolean performClick() {
+  public void setOnClickListener(OnClickListener listener) {
+    super.setOnClickListener(listener);
+    this.mask.setOnClickListener(listener);
+  }
+
+  @Override
+  public void setOnLongClickListener(OnLongClickListener listener) {
+    super.setOnLongClickListener(listener);
+    this.mask.setOnLongClickListener(listener);
+    this.playButton.setOnLongClickListener(listener);
+    this.pauseButton.setOnLongClickListener(listener);
+  }
+
+  public void toggleState() {
     if (this.playButton.getVisibility() == View.VISIBLE) {
         playButton.performClick();
     } else {
         pauseButton.performClick();
     }
-    return super.performClick();
   }
 
   public String getDescription() {
@@ -155,30 +170,8 @@ public class AudioView extends FrameLayout implements AudioSlidePlayer.Listener 
     }
   }
 
-  @Override
-  public void setFocusable(boolean focusable) {
-    super.setFocusable(focusable);
-    this.playButton.setFocusable(focusable);
-    this.pauseButton.setFocusable(focusable);
-    this.seekBar.setFocusable(focusable);
-    this.seekBar.setFocusableInTouchMode(focusable);
-  }
-
-  @Override
-  public void setClickable(boolean clickable) {
-    super.setClickable(clickable);
-    this.playButton.setClickable(clickable);
-    this.pauseButton.setClickable(clickable);
-    this.seekBar.setClickable(clickable);
-    this.seekBar.setOnTouchListener(clickable ? null : new TouchIgnoringListener());
-  }
-
-  @Override
-  public void setEnabled(boolean enabled) {
-    super.setEnabled(enabled);
-    this.playButton.setEnabled(enabled);
-    this.pauseButton.setEnabled(enabled);
-    this.seekBar.setEnabled(enabled);
+  public void disablePlayer(boolean disable) {
+    this.mask.setVisibility(disable? View.VISIBLE : View.GONE);
   }
 
   @Override
