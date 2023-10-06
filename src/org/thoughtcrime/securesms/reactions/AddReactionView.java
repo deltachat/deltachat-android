@@ -5,6 +5,8 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import androidx.core.content.ContextCompat;
+
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.rpc.Reactions;
@@ -59,7 +61,9 @@ public class AddReactionView extends LinearLayout {
         final String existingReaction = getSelfReaction();
         for (EmojiTextView defaultReactionView : defaultReactionViews) {
             if (defaultReactionView.getText().toString().equals(existingReaction)) {
-                // TODO: hilite
+                defaultReactionView.setBackground(ContextCompat.getDrawable(context, R.drawable.reaction_pill_background_selected));
+            } else {
+                defaultReactionView.setBackground(null);
             }
         }
 
@@ -88,7 +92,11 @@ public class AddReactionView extends LinearLayout {
     private void reactionClicked(int i) {
         try {
             final String reaction = defaultReactionViews[i].getText().toString();
-            rpc.sendReaction(dcContext.getAccountId(), msgIdToReactTo, reaction);
+            if (reaction.equals(getSelfReaction())) {
+                rpc.sendReaction(dcContext.getAccountId(), msgIdToReactTo, "");
+            } else {
+                rpc.sendReaction(dcContext.getAccountId(), msgIdToReactTo, reaction);
+            }
             if (listener != null) {
                 listener.onShallHide();
             }
