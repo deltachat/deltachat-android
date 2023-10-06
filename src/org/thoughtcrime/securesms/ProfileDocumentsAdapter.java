@@ -106,9 +106,7 @@ class ProfileDocumentsAdapter extends StickyHeaderGridAdapter {
       viewHolder.audioView.setAudio((AudioSlide)slide, dcMsg.getDuration());
       viewHolder.audioView.setOnClickListener(view -> itemClickListener.onMediaClicked(dcMsg));
       viewHolder.audioView.setOnLongClickListener(view -> { itemClickListener.onMediaLongClicked(dcMsg); return true; });
-      viewHolder.audioView.setFocusable(selected.isEmpty());
-      viewHolder.audioView.setClickable(selected.isEmpty());
-      viewHolder.audioView.setLongClickable(selected.isEmpty());
+      viewHolder.audioView.disablePlayer(!selected.isEmpty());
       viewHolder.itemView.setOnClickListener(view -> itemClickListener.onMediaClicked(dcMsg));
     }
     else if (slide != null && slide.isWebxdcDocument()) {

@@ -96,4 +96,15 @@
 
     </LinearLayout>
 
+    <!-- transparent overlay to easily block clicks in audio player's components in multi-select mode -->
+    <LinearLayout
+        android:id="@+id/interception_mask"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="horizontal"
+        android:visibility="gone" />
+
 </merge>

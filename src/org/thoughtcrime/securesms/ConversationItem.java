@@ -291,9 +291,7 @@ public class ConversationItem extends BaseConversationItem
     }
 
     if (audioViewStub.resolved()) {
-      audioViewStub.get().setFocusable(!shouldInterceptClicks(messageRecord) && batchSelected.isEmpty());
-      audioViewStub.get().setClickable(batchSelected.isEmpty());
-      audioViewStub.get().setEnabled(batchSelected.isEmpty());
+      audioViewStub.get().disablePlayer(!batchSelected.isEmpty());
     }
 
     if (documentViewStub.resolved()) {
@@ -477,6 +475,7 @@ public class ConversationItem extends BaseConversationItem
       }
 
       audioViewStub.get().setAudio(new AudioSlide(context, messageRecord), duration);
+      audioViewStub.get().setOnClickListener(passthroughClickListener);
       audioViewStub.get().setOnLongClickListener(passthroughClickListener);
       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
         audioViewStub.get().setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS);
@@ -839,7 +838,7 @@ public class ConversationItem extends BaseConversationItem
   @Override
   public void onAccessibilityClick() {
     if (mediaThumbnailStub.resolved())    mediaThumbnailStub.get().performClick();
-    else if (audioViewStub.resolved())    audioViewStub.get().performClick();
+    else if (audioViewStub.resolved())    audioViewStub.get().togglePlay();
     else if (documentViewStub.resolved()) documentViewStub.get().performClick();
     else if (webxdcViewStub.resolved())   webxdcViewStub.get().performClick();
   }
