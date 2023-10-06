@@ -96,6 +96,7 @@
 
     </LinearLayout>
 
+    <!-- transparent overlay to easily block clicks in audio player's components in multi-select mode -->
     <LinearLayout
         android:id="@+id/interception_mask"
         android:layout_width="match_parent"
