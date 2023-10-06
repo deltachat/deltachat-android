@@ -9,6 +9,7 @@ import androidx.core.content.ContextCompat;
 
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
+import com.b44t.messenger.DcMsg;
 import com.b44t.messenger.rpc.Reactions;
 import com.b44t.messenger.rpc.Rpc;
 
@@ -24,7 +25,7 @@ public class AddReactionView extends LinearLayout {
     private Context context;
     private DcContext dcContext;
     private Rpc rpc;
-    private int msgIdToReactTo;
+    private DcMsg msgToReactTo;
     private AddReactionListener listener;
 
     public AddReactionView(Context context) {
@@ -54,9 +55,9 @@ public class AddReactionView extends LinearLayout {
       }
     }
 
-    public void show(int msgIdToReactTo, View parentView, AddReactionListener listener) {
+    public void show(DcMsg msgReactTo, View parentView, AddReactionListener listener) {
         init(); // init delayed as needed
-        this.msgIdToReactTo = msgIdToReactTo;
+        this.msgToReactTo = msgReactTo;
         this.listener = listener;
 
         final String existingReaction = getSelfReaction();
@@ -68,10 +69,16 @@ public class AddReactionView extends LinearLayout {
             }
         }
 
-        int x = (int)parentView.getX() + parentView.getWidth()/2 - this.getWidth()/2;
+        final int offset = (int)(this.getHeight() * 0.666);
+        int x = (int)parentView.getX();
+        if (msgToReactTo.isOutgoing()) {
+            x += parentView.getWidth() - offset - this.getWidth();
+        } else {
+            x += offset;
+        }
         ViewUtil.setLeftMargin(this, x);
 
-        int y = Math.max((int)parentView.getY() - (int)(getHeight()*0.666), getHeight()/4);
+        int y = Math.max((int)parentView.getY() - offset, offset/2);
         ViewUtil.setTopMargin(this, y);
 
         setVisibility(View.VISIBLE);
@@ -84,7 +91,7 @@ public class AddReactionView extends LinearLayout {
     private String getSelfReaction() {
         String result = null;
         try {
-            final Reactions reactions = rpc.getMsgReactions(dcContext.getAccountId(), msgIdToReactTo);
+            final Reactions reactions = rpc.getMsgReactions(dcContext.getAccountId(), msgToReactTo.getId());
             final Map<Integer, String[]> reactionsByContact = reactions.getReactionsByContact();
             final String [] selfReactions = reactionsByContact.get(DcContact.DC_CONTACT_ID_SELF);
             if (selfReactions != null && selfReactions.length > 0) {
@@ -100,9 +107,9 @@ public class AddReactionView extends LinearLayout {
         try {
             final String reaction = defaultReactionViews[i].getText().toString();
             if (reaction.equals(getSelfReaction())) {
-                rpc.sendReaction(dcContext.getAccountId(), msgIdToReactTo, "");
+                rpc.sendReaction(dcContext.getAccountId(), msgToReactTo.getId(), "");
             } else {
-                rpc.sendReaction(dcContext.getAccountId(), msgIdToReactTo, reaction);
+                rpc.sendReaction(dcContext.getAccountId(), msgToReactTo.getId(), reaction);
             }
             if (listener != null) {
                 listener.onShallHide();
