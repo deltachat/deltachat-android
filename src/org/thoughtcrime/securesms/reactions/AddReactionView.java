@@ -15,6 +15,7 @@ import com.b44t.messenger.rpc.Rpc;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.components.emoji.EmojiTextView;
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.util.ViewUtil;
 
 import java.util.Map;
 
@@ -66,6 +67,9 @@ public class AddReactionView extends LinearLayout {
                 defaultReactionView.setBackground(null);
             }
         }
+
+        int y = Math.max((int)ViewUtil.getY(parentView), 0);
+        ViewUtil.setTopMargin(this, y);
 
         setVisibility(View.VISIBLE);
     }
