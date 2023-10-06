@@ -639,6 +639,8 @@ public class ConversationFragment extends MessageSelectorFragment
 //            lastPositionId        = positionId;
 
             markseenDebouncer.publish(() -> manageMessageSeenState());
+
+            ConversationFragment.this.addReactionView.move(dy);
         }
 
         @Override

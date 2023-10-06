@@ -95,6 +95,12 @@ public class AddReactionView extends LinearLayout {
         setVisibility(View.GONE);
     }
 
+    public void move(int dy) {
+        if (msgToReactTo != null && getVisibility() == View.VISIBLE) {
+            ViewUtil.setTopMargin(this, (int) this.getY() - dy);
+        }
+    }
+
     private String getSelfReaction() {
         String result = null;
         try {
