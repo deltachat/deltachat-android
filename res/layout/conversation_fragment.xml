@@ -78,6 +78,8 @@
         android:layout_height="wrap_content"
         android:paddingStart="7dp"
         android:paddingEnd="7dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
         android:gravity="center"
         android:background="@drawable/reaction_pill_background">
 
