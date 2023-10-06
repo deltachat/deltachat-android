@@ -82,26 +82,31 @@
         android:background="@drawable/reaction_pill_background">
 
         <org.thoughtcrime.securesms.components.emoji.EmojiTextView
+            android:id="@+id/reaction_0"
             android:text="👍"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/AddReaction"/>
         <org.thoughtcrime.securesms.components.emoji.EmojiTextView
+            android:id="@+id/reaction_1"
             android:text="👎"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/AddReaction"/>
         <org.thoughtcrime.securesms.components.emoji.EmojiTextView
+            android:id="@+id/reaction_2"
             android:text="❤️"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/AddReaction"/>
         <org.thoughtcrime.securesms.components.emoji.EmojiTextView
+            android:id="@+id/reaction_3"
             android:text="😂"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/AddReaction"/>
         <org.thoughtcrime.securesms.components.emoji.EmojiTextView
+            android:id="@+id/reaction_4"
             android:text="🙁"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
