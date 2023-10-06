@@ -838,7 +838,7 @@ public class ConversationItem extends BaseConversationItem
   @Override
   public void onAccessibilityClick() {
     if (mediaThumbnailStub.resolved())    mediaThumbnailStub.get().performClick();
-    else if (audioViewStub.resolved())    audioViewStub.get().toggleState();
+    else if (audioViewStub.resolved())    audioViewStub.get().togglePlay();
     else if (documentViewStub.resolved()) documentViewStub.get().performClick();
     else if (webxdcViewStub.resolved())   webxdcViewStub.get().performClick();
   }

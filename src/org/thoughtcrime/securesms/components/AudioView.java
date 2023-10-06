@@ -113,7 +113,7 @@ public class AudioView extends FrameLayout implements AudioSlidePlayer.Listener 
     this.pauseButton.setOnLongClickListener(listener);
   }
 
-  public void toggleState() {
+  public void togglePlay() {
     if (this.playButton.getVisibility() == View.VISIBLE) {
         playButton.performClick();
     } else {
