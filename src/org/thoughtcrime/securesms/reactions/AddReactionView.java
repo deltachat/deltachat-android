@@ -55,9 +55,14 @@ public class AddReactionView extends LinearLayout {
       }
     }
 
-    public void show(DcMsg msgReactTo, View parentView, AddReactionListener listener) {
+    public void show(DcMsg msgToReactTo, View parentView, AddReactionListener listener) {
         init(); // init delayed as needed
-        this.msgToReactTo = msgReactTo;
+
+        if (!dcContext.getChat(msgToReactTo.getChatId()).canSend()) {
+            return;
+        }
+
+        this.msgToReactTo = msgToReactTo;
         this.listener = listener;
 
         final String existingReaction = getSelfReaction();
