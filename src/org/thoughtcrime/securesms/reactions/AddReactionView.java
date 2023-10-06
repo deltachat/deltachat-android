@@ -68,7 +68,7 @@ public class AddReactionView extends LinearLayout {
             }
         }
 
-        int y = Math.max((int)ViewUtil.getY(parentView), 0);
+        int y = Math.max((int)parentView.getY() - getHeight()/2, 0);
         ViewUtil.setTopMargin(this, y);
 
         setVisibility(View.VISIBLE);
