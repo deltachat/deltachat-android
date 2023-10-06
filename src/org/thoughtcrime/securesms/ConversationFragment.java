@@ -927,6 +927,7 @@ public class ConversationFragment extends MessageSelectorFragment
             }
 
             actionMode = null;
+            addReactionView.hide();
         }
 
         @Override
