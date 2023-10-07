@@ -20,9 +20,6 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 
 public class ContactSelectionListItem extends LinearLayout implements RecipientModifiedListener {
 
-  @SuppressWarnings("unused")
-  private static final String TAG = ContactSelectionListItem.class.getSimpleName();
-
   private AvatarView      avatar;
   private View            numberContainer;
   private TextView        numberView;

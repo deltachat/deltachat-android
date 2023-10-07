@@ -25,9 +25,6 @@ import java.util.Map;
 
 public class BucketedThreadMediaLoader extends AsyncTaskLoader<BucketedThreadMediaLoader.BucketedThreadMedia> {
 
-  @SuppressWarnings("unused")
-  private static final String TAG = BucketedThreadMediaLoader.class.getSimpleName();
-
   private final int chatId;
   private final int msgType1;
   private final int msgType2;

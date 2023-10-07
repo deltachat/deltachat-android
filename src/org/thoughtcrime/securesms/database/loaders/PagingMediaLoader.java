@@ -15,7 +15,6 @@ import org.thoughtcrime.securesms.util.AsyncLoader;
 
 public class PagingMediaLoader extends AsyncLoader<DcMediaGalleryElement> {
 
-  @SuppressWarnings("unused")
   private static final String TAG = PagingMediaLoader.class.getSimpleName();
 
   private final DcMsg     msg;
@@ -45,7 +44,6 @@ public class PagingMediaLoader extends AsyncLoader<DcMediaGalleryElement> {
       DcMsg unfound = context.getMsg(msg.getId());
       Log.e(TAG, "did not find message in list: " + unfound.getId() + " / " + unfound.getFile() + " / " + unfound.getText());
     }
-    DcMediaGalleryElement retVal = new DcMediaGalleryElement(mediaMessages, currentIndex, context, leftIsRecent);
-    return retVal;
+    return new DcMediaGalleryElement(mediaMessages, currentIndex, context, leftIsRecent);
   }
 }

@@ -33,9 +33,6 @@ import java.util.List;
  */
 public class ContactMultiSelectionActivity extends ContactSelectionActivity {
 
-  @SuppressWarnings("unused")
-  private final static String TAG = ContactMultiSelectionActivity.class.getSimpleName();
-
   @Override
   protected void onCreate(Bundle icicle, boolean ready) {
     getIntent().putExtra(ContactSelectionListFragment.MULTI_SELECT, true);

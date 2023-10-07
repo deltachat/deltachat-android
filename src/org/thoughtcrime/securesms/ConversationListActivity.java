@@ -72,7 +72,6 @@ import org.thoughtcrime.securesms.util.SendRelayedMessageUtil;
 public class ConversationListActivity extends PassphraseRequiredActionBarActivity
     implements ConversationListFragment.ConversationSelectedListener
 {
-  @SuppressWarnings("unused")
   private static final String TAG = ConversationListActivity.class.getSimpleName();
   private static final String OPENPGP4FPR = "openpgp4fpr";
   private static final String NDK_ARCH_WARNED = "ndk_arch_warned";

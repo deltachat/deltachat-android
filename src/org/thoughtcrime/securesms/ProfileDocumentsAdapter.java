@@ -27,9 +27,6 @@ import java.util.Set;
 
 class ProfileDocumentsAdapter extends StickyHeaderGridAdapter {
 
-  @SuppressWarnings("unused")
-  private static final String TAG = ProfileDocumentsAdapter.class.getSimpleName();
-
   private final Context             context;
   private final Locale              locale;
   private final ItemClickListener   itemClickListener;

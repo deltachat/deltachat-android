@@ -24,9 +24,6 @@ import static com.b44t.messenger.DcContact.DC_CONTACT_ID_ADD_ACCOUNT;
 
 public class AccountSelectionListFragment extends DialogFragment
 {
-  @SuppressWarnings("unused")
-  private static final String TAG = AccountSelectionListFragment.class.getSimpleName();
-
   private RecyclerView recyclerView;
 
   @Override

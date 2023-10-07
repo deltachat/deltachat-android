@@ -77,7 +77,6 @@ public class ContactSelectionListFragment extends    Fragment
                                           implements LoaderManager.LoaderCallbacks<DcContactsLoader.Ret>,
                                                      DcEventCenter.DcEventDelegate
 {
-  @SuppressWarnings("unused")
   private static final String TAG = ContactSelectionListFragment.class.getSimpleName();
 
   public static final String MULTI_SELECT          = "multi_select";

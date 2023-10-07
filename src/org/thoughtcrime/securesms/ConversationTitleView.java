@@ -23,9 +23,6 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 
 public class ConversationTitleView extends RelativeLayout {
 
-  @SuppressWarnings("unused")
-  private static final String TAG = ConversationTitleView.class.getSimpleName();
-
   private View            content;
   private ImageView       back;
   private AvatarView      avatar;

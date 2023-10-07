@@ -23,9 +23,6 @@ import java.util.Set;
 
 class ProfileGalleryAdapter extends StickyHeaderGridAdapter {
 
-  @SuppressWarnings("unused")
-  private static final String TAG = ProfileGalleryAdapter.class.getSimpleName();
-
   private final Context             context;
   private final GlideRequests       glideRequests;
   private final Locale              locale;

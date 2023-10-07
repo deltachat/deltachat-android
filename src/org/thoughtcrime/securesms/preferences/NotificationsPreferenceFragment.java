@@ -29,8 +29,6 @@ import static android.app.Activity.RESULT_OK;
 
 public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragment {
 
-  @SuppressWarnings("unused")
-  private static final String TAG = NotificationsPreferenceFragment.class.getSimpleName();
   private static final int REQUEST_CODE_NOTIFICATION_SELECTED = 1;
 
   private CheckBoxPreference ignoreBattery;

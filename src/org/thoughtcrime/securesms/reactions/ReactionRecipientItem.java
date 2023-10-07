@@ -19,9 +19,6 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 
 public class ReactionRecipientItem extends LinearLayout {
 
-  @SuppressWarnings("unused")
-  private static final String TAG = ReactionRecipientItem.class.getSimpleName();
-
   private AvatarImageView contactPhotoImage;
   private View            addrContainer;
   private TextView        addrView;
