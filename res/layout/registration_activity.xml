@@ -151,7 +151,7 @@
             app:layout_constraintStart_toEndOf="@id/advanced_icon"
             app:layout_constraintTop_toBottomOf="@id/no_servers_hint" />
 
-        <com.google.android.material.checkbox.MaterialCheckBox
+        <CheckBox
             android:id="@+id/encrypt_checkbox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
