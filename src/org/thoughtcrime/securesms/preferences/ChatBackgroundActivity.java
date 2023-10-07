@@ -124,7 +124,7 @@ public class ChatBackgroundActivity extends PassphraseRequiredActionBarActivity 
             Point size = new Point();
             display.getSize(size);
             // resize so that the larger side fits the screen accurately
-            int largerSide = (size.x > size.y ? size.x : size.y);
+            int largerSide = Math.max(size.x, size.y);
             Bitmap scaledBitmap = GlideApp.with(context)
                     .asBitmap()
                     .load(imageUri)

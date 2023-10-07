@@ -20,8 +20,6 @@ import org.thoughtcrime.securesms.util.ThemeUtil;
 
 public class AvatarImageView extends AppCompatImageView {
 
-  private static final String TAG = AvatarImageView.class.getSimpleName();
-
   private OnClickListener listener = null;
 
   public AvatarImageView(Context context) {

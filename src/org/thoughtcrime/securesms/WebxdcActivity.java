@@ -27,6 +27,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.ActionBar;
 import androidx.core.app.TaskStackBuilder;
 import androidx.core.content.pm.ShortcutInfoCompat;
 import androidx.core.content.pm.ShortcutManagerCompat;
@@ -216,13 +217,16 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
 
   private void setScreenMode() {
     // enter/exit fullscreen mode depending on orientation (landscape/portrait),
-    // on tablets there is enought height so fullscreen mode is never enabled there
+    // on tablets there is enough height so fullscreen mode is never enabled there
     boolean enable = getResources().getBoolean(R.bool.isLandscape) && !getResources().getBoolean(R.bool.isBigScreen);
     getWindow().getDecorView().setSystemUiVisibility(enable? View.SYSTEM_UI_FLAG_FULLSCREEN : 0);
-    if (enable) {
-      getSupportActionBar().hide();
-    } else {
-      getSupportActionBar().show();
+    ActionBar actionBar = getSupportActionBar();
+    if (actionBar != null) {
+      if (enable) {
+        actionBar.hide();
+      } else {
+        actionBar.show();
+      }
     }
   }
 
@@ -281,19 +285,19 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
       res = new WebResourceResponse("text/plain", "UTF-8", targetStream);
     }
 
-    if (res != null) {
-      Map<String, String> headers = new HashMap<>();
-      headers.put("Content-Security-Policy",
-          "default-src 'self'; "
-        + "style-src 'self' 'unsafe-inline' blob: ; "
-        + "font-src 'self' data: blob: ; "
-        + "script-src 'self' 'unsafe-inline' 'unsafe-eval' blob: ; "
-        + "connect-src 'self' data: blob: ; "
-        + "img-src 'self' data: blob: ; "
-        + "media-src 'self' data: blob: ;"
-        + "webrtc 'block' ; "
-      );
-      headers.put("X-DNS-Prefetch-Control", "off");
+    Map<String, String> headers = new HashMap<>();
+    headers.put("Content-Security-Policy",
+        "default-src 'self'; "
+      + "style-src 'self' 'unsafe-inline' blob: ; "
+      + "font-src 'self' data: blob: ; "
+      + "script-src 'self' 'unsafe-inline' 'unsafe-eval' blob: ; "
+      + "connect-src 'self' data: blob: ; "
+      + "img-src 'self' data: blob: ; "
+      + "media-src 'self' data: blob: ;"
+      + "webrtc 'block' ; "
+    );
+    headers.put("X-DNS-Prefetch-Control", "off");
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
       res.setResponseHeaders(headers);
     }
     return res;
