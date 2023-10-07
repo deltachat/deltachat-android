@@ -45,9 +45,6 @@ public class AttachmentTypeSelector extends PopupWindow {
 
   private static final int ANIMATION_DURATION = 300;
 
-  @SuppressWarnings("unused")
-  private static final String TAG = AttachmentTypeSelector.class.getSimpleName();
-
   private final @NonNull LoaderManager       loaderManager;
   private final @NonNull RecentPhotoViewRail recentRail;
   private final @NonNull ImageView           imageButton;

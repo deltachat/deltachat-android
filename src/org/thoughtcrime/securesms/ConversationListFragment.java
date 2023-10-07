@@ -90,7 +90,6 @@ public class ConversationListFragment extends Fragment
   public static final String ARCHIVE = "archive";
   public static final String RELOAD_LIST = "reload_list";
 
-  @SuppressWarnings("unused")
   private static final String TAG = ConversationListFragment.class.getSimpleName();
 
   private ActionMode                  actionMode;

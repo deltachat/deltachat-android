@@ -22,21 +22,18 @@ public class SendButton extends ImageButton
 
   private Optional<TransportOptionsPopup> transportOptionsPopup = Optional.absent();
 
-  @SuppressWarnings("unused")
   public SendButton(Context context) {
     super(context);
     this.transportOptions = initializeTransportOptions();
     ViewUtil.mirrorIfRtl(this, getContext());
   }
 
-  @SuppressWarnings("unused")
   public SendButton(Context context, AttributeSet attrs) {
     super(context, attrs);
     this.transportOptions = initializeTransportOptions();
     ViewUtil.mirrorIfRtl(this, getContext());
   }
 
-  @SuppressWarnings("unused")
   public SendButton(Context context, AttributeSet attrs, int defStyle) {
     super(context, attrs, defStyle);
     this.transportOptions = initializeTransportOptions();

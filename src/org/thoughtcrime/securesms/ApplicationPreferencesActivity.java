@@ -66,9 +66,6 @@ import org.thoughtcrime.securesms.util.ScreenLockUtil;
 public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarActivity
     implements SharedPreferences.OnSharedPreferenceChangeListener
 {
-  @SuppressWarnings("unused")
-  private static final String TAG = ApplicationPreferencesActivity.class.getSimpleName();
-
   private static final String PREFERENCE_CATEGORY_PROFILE        = "preference_category_profile";
   private static final String PREFERENCE_CATEGORY_NOTIFICATIONS  = "preference_category_notifications";
   private static final String PREFERENCE_CATEGORY_APPEARANCE     = "preference_category_appearance";

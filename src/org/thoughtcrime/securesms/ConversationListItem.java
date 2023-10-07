@@ -61,9 +61,6 @@ import java.util.Set;
 public class ConversationListItem extends RelativeLayout
                                   implements BindableConversationListItem, Unbindable
 {
-  @SuppressWarnings("unused")
-  private final static String TAG = ConversationListItem.class.getSimpleName();
-
   private final static Typeface  BOLD_TYPEFACE  = Typeface.create("sans-serif-medium", Typeface.NORMAL);
   private final static Typeface  LIGHT_TYPEFACE = Typeface.create("sans-serif", Typeface.NORMAL);
 

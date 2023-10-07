@@ -44,9 +44,6 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
                              implements DcEventCenter.DcEventDelegate
 {
 
-  @SuppressWarnings("unused")
-  private final static String TAG = ProfileActivity.class.getSimpleName();
-
   public static final String CHAT_ID_EXTRA    = "chat_id";
   public static final String CONTACT_ID_EXTRA = "contact_id";
   public static final String FORCE_TAB_EXTRA  = "force_tab";

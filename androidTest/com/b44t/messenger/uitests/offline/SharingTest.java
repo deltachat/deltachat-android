@@ -44,8 +44,6 @@ public class SharingTest {
   // PLEASE BACKUP YOUR ACCOUNT BEFORE RUNNING THIS!
   // ==============================================================================================
 
-  @SuppressWarnings("unused")
-  private final static String TAG = SharingTest.class.getSimpleName();
   private static int createdGroupId;
   private static int createdSingleChatId;
 

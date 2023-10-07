@@ -310,7 +310,6 @@ public class QuickAttachmentDrawer extends ViewGroup implements InputView, Camer
     }
   }
 
-  @SuppressWarnings("unused")
   public void setSlideOffset(int slideOffset) {
     this.slideOffset = slideOffset;
     requestLayout();

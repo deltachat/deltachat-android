@@ -50,7 +50,6 @@ import static org.thoughtcrime.securesms.util.RelayUtil.isRelayingMessageContent
  */
 public class NewConversationActivity extends ContactSelectionActivity {
 
-  @SuppressWarnings("unused")
   private static final String TAG = NewConversationActivity.class.getSimpleName();
   public  static final String MAILTO = "mailto";
   private static final String SUBJECT = "subject";

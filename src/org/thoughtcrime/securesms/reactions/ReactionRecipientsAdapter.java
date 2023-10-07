@@ -17,9 +17,6 @@ import java.util.ArrayList;
 
 public class ReactionRecipientsAdapter extends RecyclerView.Adapter
 {
-  @SuppressWarnings("unused")
-  private final static String TAG = ReactionRecipientsAdapter.class.getSimpleName();
-
   private @NonNull ArrayList<Pair<Integer, String>> contactsReactions = new ArrayList<>();
   private final LayoutInflater                layoutInflater;
   private final ItemClickListener             clickListener;

@@ -24,9 +24,6 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 
 public class AccountSelectionListItem extends LinearLayout {
 
-  @SuppressWarnings("unused")
-  private static final String TAG = AccountSelectionListItem.class.getSimpleName();
-
   private AvatarImageView contactPhotoImage;
   private View            addrContainer;
   private TextView        addrView;

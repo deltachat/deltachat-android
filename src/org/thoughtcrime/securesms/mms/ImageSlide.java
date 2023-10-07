@@ -30,9 +30,6 @@ import org.thoughtcrime.securesms.util.MediaUtil;
 
 public class ImageSlide extends Slide {
 
-  @SuppressWarnings("unused")
-  private static final String TAG = ImageSlide.class.getSimpleName();
-
   public ImageSlide(@NonNull Context context, @NonNull DcMsg dcMsg) {
     super(context, new DcAttachment(dcMsg));
     dcMsgId = dcMsg.getId();

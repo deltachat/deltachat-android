@@ -20,9 +20,6 @@ import org.thoughtcrime.securesms.mms.GlideRequests;
 
 public class AccountSelectionListAdapter extends RecyclerView.Adapter
 {
-  @SuppressWarnings("unused")
-  private final static String TAG = AccountSelectionListAdapter.class.getSimpleName();
-
   private final @NonNull Context              context;
   private final @NonNull DcAccounts           accounts;
   private @NonNull int[]                      accountList = new int[0];

@@ -151,9 +151,6 @@ public final class KeyStoreHelper {
 
   public static class SealedData {
 
-    @SuppressWarnings("unused")
-    private static final String TAG = KeyStoreHelper.class.getSimpleName();
-
     @JsonProperty
     @JsonSerialize(using = ByteArraySerializer.class)
     @JsonDeserialize(using = ByteArrayDeserializer.class)
@@ -170,7 +167,7 @@ public final class KeyStoreHelper {
     }
 
     @SuppressWarnings("unused")
-    public SealedData() {}
+    public SealedData() { /* needed by JsonUtils.fromJson() */ }
 
     public String serialize() {
       try {

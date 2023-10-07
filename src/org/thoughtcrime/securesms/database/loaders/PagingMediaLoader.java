@@ -15,7 +15,6 @@ import org.thoughtcrime.securesms.util.AsyncLoader;
 
 public class PagingMediaLoader extends AsyncLoader<DcMediaGalleryElement> {
 
-  @SuppressWarnings("unused")
   private static final String TAG = PagingMediaLoader.class.getSimpleName();
 
   private final DcMsg     msg;
