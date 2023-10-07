@@ -285,19 +285,19 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
       res = new WebResourceResponse("text/plain", "UTF-8", targetStream);
     }
 
-    Map<String, String> headers = new HashMap<>();
-    headers.put("Content-Security-Policy",
-        "default-src 'self'; "
-      + "style-src 'self' 'unsafe-inline' blob: ; "
-      + "font-src 'self' data: blob: ; "
-      + "script-src 'self' 'unsafe-inline' 'unsafe-eval' blob: ; "
-      + "connect-src 'self' data: blob: ; "
-      + "img-src 'self' data: blob: ; "
-      + "media-src 'self' data: blob: ;"
-      + "webrtc 'block' ; "
-    );
-    headers.put("X-DNS-Prefetch-Control", "off");
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+      Map<String, String> headers = new HashMap<>();
+      headers.put("Content-Security-Policy",
+          "default-src 'self'; "
+        + "style-src 'self' 'unsafe-inline' blob: ; "
+        + "font-src 'self' data: blob: ; "
+        + "script-src 'self' 'unsafe-inline' 'unsafe-eval' blob: ; "
+        + "connect-src 'self' data: blob: ; "
+        + "img-src 'self' data: blob: ; "
+        + "media-src 'self' data: blob: ;"
+        + "webrtc 'block' ; "
+      );
+      headers.put("X-DNS-Prefetch-Control", "off");
       res.setResponseHeaders(headers);
     }
     return res;
