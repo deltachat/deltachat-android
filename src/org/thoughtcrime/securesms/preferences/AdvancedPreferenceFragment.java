@@ -353,6 +353,7 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
   private void exportKeys() {
     Permissions.with(getActivity())
         .request(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)
+        .alwaysGrantOnSdk33()
         .ifNecessary()
         .withPermanentDenialDialog(getString(R.string.perm_explain_access_to_storage_denied))
         .onAllGranted(() -> {
