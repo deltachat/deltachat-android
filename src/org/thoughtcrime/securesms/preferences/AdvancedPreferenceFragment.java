@@ -191,7 +191,7 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
     super.onActivityResult(requestCode, resultCode, data);
     if (resultCode != RESULT_OK) return;
     if (requestCode == REQUEST_CODE_CONFIRM_CREDENTIALS_KEYS) {
-        exportKeys();
+        manageKeys();
     } else if (requestCode == PICK_SELF_KEYS) {
         Uri uri = (data != null ? data.getData() : null);
         if (uri == null) {
@@ -344,13 +344,13 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
     public boolean onPreferenceClick(Preference preference) {
       boolean result = ScreenLockUtil.applyScreenLock(getActivity(), getString(R.string.pref_manage_keys), getString(R.string.enter_system_secret_to_continue), REQUEST_CODE_CONFIRM_CREDENTIALS_KEYS);
       if (!result) {
-        exportKeys();
+        manageKeys();
       }
       return true;
     }
   }
 
-  private void exportKeys() {
+  private void manageKeys() {
     Permissions.with(getActivity())
         .request(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)
         .alwaysGrantOnSdk33()
