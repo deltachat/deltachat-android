@@ -170,6 +170,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
     private void startImportBackup() {
         Permissions.with(this)
                 .request(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)
+                .alwaysGrantOnSdk33()
                 .ifNecessary()
                 .withPermanentDenialDialog(getString(R.string.perm_explain_access_to_storage_denied))
                 .onAllGranted(() -> {

@@ -305,6 +305,7 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
 
         Permissions.with(this)
                    .request(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                   .alwaysGrantOnSdk33()
                    .ifNecessary()
                    .withPermanentDenialDialog(getString(R.string.perm_explain_access_to_storage_denied))
                    .onAllGranted(() -> {

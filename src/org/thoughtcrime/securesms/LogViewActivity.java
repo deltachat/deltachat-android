@@ -56,6 +56,7 @@ public class LogViewActivity extends BaseActionBarActivity {
       case R.id.save_log:
         Permissions.with(this)
             .request(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+            .alwaysGrantOnSdk33()
             .ifNecessary()
             .onAllGranted(() -> {
               boolean success = logViewFragment.saveLogFile();
