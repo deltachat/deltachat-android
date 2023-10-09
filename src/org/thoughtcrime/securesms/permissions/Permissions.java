@@ -102,6 +102,13 @@ public class Permissions {
       return this;
     }
 
+    public PermissionsBuilder alwaysGrantOnSdk30() {
+      if (Build.VERSION.SDK_INT >= 30) {
+        alwaysGranted = true;
+      }
+      return this;
+    }
+
     public PermissionsBuilder alwaysGrantOnSdk33() {
       if (Build.VERSION.SDK_INT >= 33) {
         alwaysGranted = true;
