@@ -16,6 +16,7 @@ import com.b44t.messenger.rpc.Rpc;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.components.emoji.EmojiTextView;
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
 import java.util.Map;
@@ -57,6 +58,10 @@ public class AddReactionView extends LinearLayout {
 
     public void show(DcMsg msgToReactTo, View parentView, AddReactionListener listener) {
         init(); // init delayed as needed
+
+        if (!Prefs.getBooleanPreference(context, "pref_send_reactions", false)) {
+            return;
+        }
 
         if ( msgToReactTo.isInfo()
           || msgToReactTo.getType() == DcMsg.DC_MSG_VIDEOCHAT_INVITATION
