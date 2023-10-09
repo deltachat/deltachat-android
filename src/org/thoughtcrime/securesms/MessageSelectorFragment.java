@@ -86,7 +86,7 @@ public abstract class MessageSelectorFragment
 
       Permissions.with(getActivity())
               .request(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-              .alwaysGrantOnSdk33()
+              .alwaysGrantOnSdk30()
               .ifNecessary()
               .withPermanentDenialDialog(getString(R.string.perm_explain_access_to_storage_denied))
               .onAllGranted(() -> performSave(messageRecords))
