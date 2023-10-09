@@ -266,8 +266,8 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
 
   private void performBackup() {
     Permissions.with(getActivity())
-            .request(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)
-            .alwaysGrantOnSdk33()
+            .request(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+            .alwaysGrantOnSdk30()
             .ifNecessary()
             .withPermanentDenialDialog(getString(R.string.perm_explain_access_to_storage_denied))
             .onAllGranted(() -> {
