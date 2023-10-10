@@ -151,9 +151,10 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
       if ((Boolean)newValue) {
         new AlertDialog.Builder(getActivity())
           .setTitle("Thanks for trying out \"Reactions\"!")
-          .setMessage("• You can send now add a reaction to a messages by long tapping the message\n\n"
-            + "• If you want to quit the experimental feature, disable it again at \"Settings / Advanced\"\n\n"
-            + "• Received or already sent reactions are displayed independently of this switch")
+          .setMessage("• By long tapping a message, you can now add a reaction\n\n"
+            + "• Do not rely on reactions being seen by all recipients currently: On some platforms they're still in development, also rolling out updates take time\n\n"
+            + "• If you want to quit the experimental feature, disable it again at \"Settings / Advanced\";"
+            + "  received or already sent reactions are displayed independently of this switch")
           .setCancelable(false)
           .setPositiveButton(R.string.ok, null)
           .show();
