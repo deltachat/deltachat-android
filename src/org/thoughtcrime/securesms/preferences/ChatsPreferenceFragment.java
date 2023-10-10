@@ -265,6 +265,13 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
   }
 
   private void performBackup() {
+    View gl = View.inflate(getActivity(), R.layout.dialog_with_checkbox, null);
+    CheckBox confirmCheckbox = gl.findViewById(R.id.dialog_checkbox);
+    TextView msg = gl.findViewById(R.id.dialog_message);
+
+    msg.setText(getString(R.string.pref_backup_export_explain));
+    confirmCheckbox.setText(R.string.pref_backup_export_all);
+
     Permissions.with(getActivity())
             .request(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE) // READ_EXTERNAL_STORAGE required to read folder contents and to generate backup names
             .alwaysGrantOnSdk30()
@@ -273,9 +280,15 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
             .onAllGranted(() -> {
               new AlertDialog.Builder(getActivity())
                       .setTitle(R.string.pref_backup)
-                      .setMessage(R.string.pref_backup_export_explain)
+                      .setView(gl)
                       .setNegativeButton(android.R.string.cancel, null)
-                      .setPositiveButton(R.string.pref_backup_export_start_button, (dialogInterface, i) -> startImex(DcContext.DC_IMEX_EXPORT_BACKUP))
+                      .setPositiveButton(R.string.pref_backup_export_start_button, (dialogInterface, i) -> {
+                          if (confirmCheckbox.isChecked()) {
+                            // TODO: backup all accounts
+                          } else {
+                            startImex(DcContext.DC_IMEX_EXPORT_BACKUP);
+                          }
+                      })
                       .show();
             })
             .execute();
