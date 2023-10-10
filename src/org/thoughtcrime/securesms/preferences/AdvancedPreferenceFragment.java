@@ -373,7 +373,7 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
                     }
                     else {
                       if (Build.VERSION.SDK_INT >= 30) {
-                        AttachmentManager.selectMediaType(getActivity(), "application/pgp-keys", new String[]{"text/plain"}, PICK_SELF_KEYS, StorageUtil.getDownloadUri());
+                        AttachmentManager.selectMediaType(getActivity(), "*/*", null, PICK_SELF_KEYS, StorageUtil.getDownloadUri());
                       } else {
                         String path = DcHelper.getImexDir().getAbsolutePath();
                         showImportKeysDialog(path, path);
