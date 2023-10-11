@@ -198,7 +198,7 @@
         <item name="actionBarStyle">@style/TextSecure.DarkActionBar</item>
         <item name="actionBarTabBarStyle">@style/TextSecure.DarkActionBar.TabBar</item>
         <item name="actionBarPopupTheme">@style/ThemeOverlay.AppCompat.Dark</item>
-        <item name="actionModeBackground">@color/gray50</item>
+        <item name="actionModeBackground">@color/gray78</item>
         <item name="android:textColor">@color/text_color_dark_theme</item>
         <item name="android:textColorSecondary">@color/text_color_secondary_dark_theme</item>
 

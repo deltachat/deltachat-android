@@ -6,4 +6,6 @@
     <color name="reaction_pill_background_selected">#ff282828</color>
     <color name="reaction_pill_border_selected">@color/reaction_pill_border</color>
     <color name="reaction_pill_text_color_selected">@color/reaction_pill_text_color</color>
+
+    <color name="action_mode_status_bar">@color/gray95</color>
 </resources>
