@@ -254,6 +254,8 @@ public class ConversationListFragment extends Fragment
 
   @SuppressLint({"StaticFieldLeak", "NewApi"})
   private void updateReminders() {
+    // by the time onPostExecute() is asynchronously run, getActivity() might return null, so get the activity here:
+    Activity activity = getActivity();
     new AsyncTask<Context, Void, Void>() {
       @Override
       protected Void doInBackground(Context... params) {
@@ -270,7 +272,6 @@ public class ConversationListFragment extends Fragment
 
       @Override
       protected void onPostExecute(Void result) {
-        Activity activity = ConversationListFragment.this.getActivity();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
           if (!Prefs.getBooleanPreference(activity, Prefs.ASKED_FOR_NOTIFICATION_PERMISSION, false)) {
             Prefs.setBooleanPreference(activity, Prefs.ASKED_FOR_NOTIFICATION_PERMISSION, true);
@@ -278,7 +279,7 @@ public class ConversationListFragment extends Fragment
               .request(Manifest.permission.POST_NOTIFICATIONS)
               .ifNecessary()
               .onAllGranted(() -> {
-                DozeReminder.maybeAskDirectly(getActivity());
+                DozeReminder.maybeAskDirectly(activity);
               })
               .onAnyDenied(() -> {
                 final DcContext dcContext = DcHelper.getContext(activity);
@@ -290,10 +291,10 @@ public class ConversationListFragment extends Fragment
               .execute();
           }
         } else {
-          DozeReminder.maybeAskDirectly(getActivity());
+          DozeReminder.maybeAskDirectly(activity);
         }
       }
-    }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, getActivity());
+    }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, activity);
   }
 
   private void handlePinAllSelected() {
