@@ -40,7 +40,7 @@ class SearchListAdapter extends    RecyclerView.Adapter<SearchListAdapter.Search
   private SearchResult searchResult = SearchResult.EMPTY;
 
   final Context              context;
-  final DcContext            dcContext;
+  final DcContext            dcContext; // reset on account switching is not needed because SearchFragment and SearchListAdapter are recreated in every search start
 
   SearchListAdapter(Context                context,
                     @NonNull GlideRequests glideRequests,
