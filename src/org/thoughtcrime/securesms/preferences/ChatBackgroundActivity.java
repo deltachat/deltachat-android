@@ -38,7 +38,6 @@ public class ChatBackgroundActivity extends PassphraseRequiredActionBarActivity 
 
     Button galleryButton;
     Button defaultButton;
-    MenuItem acceptMenuItem;
     ImageView preview;
 
     String tempDestinationPath;
@@ -80,7 +79,6 @@ public class ChatBackgroundActivity extends PassphraseRequiredActionBarActivity 
         MenuInflater inflater = this.getMenuInflater();
         menu.clear();
         inflater.inflate(R.menu.chat_background, menu);
-        acceptMenuItem = menu.findItem(R.id.apply_background);
         super.onPrepareOptionsMenu(menu);
         return true;
     }
@@ -173,7 +171,6 @@ public class ChatBackgroundActivity extends PassphraseRequiredActionBarActivity 
         if (data != null && context != null && resultCode == RESULT_OK && requestCode == ApplicationPreferencesActivity.REQUEST_CODE_SET_BACKGROUND) {
             imageUri = data.getData();
             if (imageUri != null) {
-                acceptMenuItem.setEnabled(true);
                 Thread thread = new Thread(){
                     @Override
                     public void run() {
