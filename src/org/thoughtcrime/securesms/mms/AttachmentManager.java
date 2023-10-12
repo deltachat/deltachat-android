@@ -444,6 +444,10 @@ public class AttachmentManager {
   }
 
   public static void selectGallery(Activity activity, int requestCode) {
+    // to enable camera roll,
+    // we're asking for "gallery permissions" also on newer systems that do not strictly require that.
+    // (asking directly after tapping "attachment" would be not-so-good as the user may want to attach sth. else
+    // and asking for permissions is better done on-point)
     Permissions.with(activity)
                .request(Permissions.galleryPermissions())
                .ifNecessary()
