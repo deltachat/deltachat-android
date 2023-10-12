@@ -195,11 +195,15 @@ class ConversationListAdapter extends RecyclerView.Adapter {
   }
 
   void changeData(@Nullable DcChatlist chatlist) {
+    Context context = this.context.get();
+    if (context == null) {
+      return;
+    }
     if (chatlist == null) {
       dcChatlist =  new DcChatlist(0, 0);
     } else {
       dcChatlist = chatlist;
-      dcContext = DcHelper.getContext(context.get());
+      dcContext = DcHelper.getContext(context);
     }
     notifyDataSetChanged();
   }
