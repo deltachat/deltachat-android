@@ -468,7 +468,7 @@ public class AttachmentManager {
   public static void selectAudio(Activity activity, int requestCode) {
     Permissions.with(activity)
                .request(Manifest.permission.READ_EXTERNAL_STORAGE)
-               .alwaysGrantOnSdk33()
+               .alwaysGrantOnSdk30()
                .ifNecessary()
                .withPermanentDenialDialog(activity.getString(R.string.perm_explain_access_to_storage_denied))
                .onAllGranted(() -> selectMediaType(activity, "audio/*", null, requestCode))
