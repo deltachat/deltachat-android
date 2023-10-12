@@ -52,7 +52,7 @@ class ConversationListAdapter extends RecyclerView.Adapter {
   private static final int MESSAGE_TYPE_INBOX_ZERO     = 3;
 
   private final WeakReference<Context>         context;
-  private final @NonNull  DcContext            dcContext;
+  private @NonNull        DcContext            dcContext;
   private @NonNull        DcChatlist           dcChatlist;
   private final @NonNull  GlideRequests        glideRequests;
   private final @NonNull  Locale               locale;
@@ -195,7 +195,16 @@ class ConversationListAdapter extends RecyclerView.Adapter {
   }
 
   void changeData(@Nullable DcChatlist chatlist) {
-    dcChatlist = chatlist == null ? new DcChatlist(0, 0) : chatlist;
+    Context context = this.context.get();
+    if (context == null) {
+      return;
+    }
+    if (chatlist == null) {
+      dcChatlist =  new DcChatlist(0, 0);
+    } else {
+      dcChatlist = chatlist;
+      dcContext = DcHelper.getContext(context);
+    }
     notifyDataSetChanged();
   }
 }
