@@ -199,7 +199,7 @@ class ConversationListAdapter extends RecyclerView.Adapter {
       dcChatlist =  new DcChatlist(0, 0);
     } else {
       dcChatlist = chatlist;
-      dcContext = DcHelper.getAccounts(context).getAccount(chatlist.getAccountId());
+      dcContext = DcHelper.getAccounts(context.get()).getAccount(chatlist.getAccountId());
     }
     notifyDataSetChanged();
   }
