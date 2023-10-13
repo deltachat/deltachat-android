@@ -97,10 +97,10 @@ public class ConversationItem extends BaseConversationItem
   private GlideRequests glideRequests;
 
   protected ViewGroup              bodyBubble;
+  protected ReactionsConversationView reactionsView;
   protected View                   replyView;
   @Nullable private QuoteView      quoteView;
   private   ConversationItemFooter footer;
-  private ReactionsConversationView reactionsView;
   private   TextView               groupSender;
   private   View                   groupSenderHolder;
   private   AvatarImageView        contactPhoto;
