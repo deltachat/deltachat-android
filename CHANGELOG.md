@@ -3,11 +3,19 @@
 ## v1.41.1 Testrun
 2023-10
 
+* tweak action bar color in dark mode
+* fix asking for permissions on Android 11; these bugs were introduced by 1.41.0
+* fix chatlist showing sometimes chats from other accounts after clicking notifications
+* fix crash when clicking a notification sometimes
+* fix crash when selecting a background image sometimes
+* fix long-taps on audio message's controls in multi-select mode
+* fix dark mode's color of "encrypt" checkbox in welcome screen
 * fix sorting error with downloaded manually messages
 * fix group creation when the initial group message is downloaded manually
 * fix connectivity status view for servers not supporting IMAP IDLE
 * fix: don't try to send more read receipts if there's a temporary SMTP error
 * fix "Verified by" information showing an error instead of the verifier sometimes
+* update translations
 * update to core 1.125.0
 
 
