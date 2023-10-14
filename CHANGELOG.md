@@ -1,5 +1,16 @@
 # Delta Chat Android Changelog
 
+## v1.41.1 Testrun
+2023-10
+
+* fix sorting error with downloaded manually messages
+* fix group creation when the initial group message is downloaded manually
+* fix connectivity status view for servers not supporting IMAP IDLE
+* fix: don't try to send more read receipts if there's a temporary SMTP error
+* fix "Verified by" information showing an error instead of the verifier sometimes
+* update to core 1.125.0
+
+
 ## v1.41.0 Testrun
 2023-10
 
