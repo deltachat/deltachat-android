@@ -674,6 +674,8 @@
     <string name="pref_manage_keys">Управління ключами</string>
     <string name="pref_use_system_emoji">Використовувати системні емодзі</string>
     <string name="pref_use_system_emoji_explain">Вимкнути вбудовану підтримку емодзі</string>
+    <string name="pref_use_inapp_camera">Використовувати вбудовану в додаток камеру</string>
+    <string name="pref_use_inapp_camera_explain">Вбудована в додаток камера зазвичай має менше функцій ніж системна.</string>
     <string name="pref_app_access">Доступ додатку</string>
     <string name="pref_chats">Чати</string>
     <string name="pref_in_chat_sounds">Звуки у чаті</string>
@@ -749,6 +751,9 @@
     <string name="emoji_objects">Об\'єкти</string>
     <string name="emoji_symbols">Символи</string>
     <string name="emoji_flags">Прапори</string>
+
+    <!-- Reactions -->
+    <string name="reactions">Реакції</string>
 
     <!-- automatically delete message -->
     <string name="delete_old_messages">Видалити старі повідомлення</string>
@@ -924,6 +929,7 @@
     <string name="contact_not_verified">Неможливо підтвердити %1$s</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that verified the contact shown. -->
     <string name="verified_by">Підтверджено %1$s</string>
+    <string name="verified_by_you">Підтверджено вами</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Змінені параметри для %1$s</string>
     <string name="verified_group_explain">Перевірені групи (експеримент) надають захист від активних атак. Члени таких груп перевірені через другий фактор іншими членами групи, а повідомлення завжди наскрізно зашифровані.</string>
@@ -943,6 +949,9 @@
     <string name="notify_name_and_message">Ім\'я та повідомлення</string>
     <string name="notify_name_only">Тільки ім\'я</string>
     <string name="notify_no_name_or_message">Без імені або повідомлення</string>
+    <string name="notifications_disabled">Сповіщення вимкнено</string>
+
+
     <!-- permissions -->
     <string name="perm_required_title">Потрібен дозвіл</string>
     <string name="perm_continue">Продовжити</string>
@@ -950,6 +959,8 @@
     <string name="perm_explain_access_to_mic_denied">Для надсилання голосових повідомлень додатку потрібен дозвіл на використання мікрофону, але зараз його не надано. Для надання дозволу перейдіть у системне меню налаштувань, у розділі «Додатки» знайдіть Delta Chat і дозвольте доступ до мікрофону.</string>
     <string name="perm_explain_access_to_storage_denied">Для збереження або передавання фотографій перейдіть до налаштувань додатку, оберіть \"Дозволи\" та включіть \"Сховище\"</string>
     <string name="perm_explain_access_to_location_denied">Щоб передати місцезнаходження, додатку потрібен доступ до геоданих пристрою, але зараз його не надано. Для надання доступу перейдіть у системне меню налаштувань, у розділі «Додатки» знайдіть Delta Chat, виберіть пункт «Права доступу» і дозвольте доступ до місцезнаходження пристрою.</string>
+    <string name="perm_explain_access_to_notifications_denied">Щоб отримувати сповіщення зайдіть у \"Налаштування системи / Застосунки / Delta Chat\" і увімкніть \"Сповіщення\"</string>
+
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Малюйте де завгодно для розмиття</string>
     <string name="ImageEditorHud_add_text">Додати текст</string>
