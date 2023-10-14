@@ -674,6 +674,8 @@
     <string name="pref_manage_keys">Zarządzaj prywatnymi kluczami</string>
     <string name="pref_use_system_emoji">Użyj emoji systemowych</string>
     <string name="pref_use_system_emoji_explain">Wyłącza wbudowaną obsługę emoji Delta Chat</string>
+    <string name="pref_use_inapp_camera">Użyj aparatu w aplikacji</string>
+    <string name="pref_use_inapp_camera_explain">Aparat w aplikacji ma zwykle mniej funkcji niż aparat systemowy</string>
     <string name="pref_app_access">Dostęp do aplikacji</string>
     <string name="pref_chats">Czaty</string>
     <string name="pref_in_chat_sounds">Dźwięki w czacie</string>
@@ -749,6 +751,9 @@
     <string name="emoji_objects">Obiekty</string>
     <string name="emoji_symbols">Symbole</string>
     <string name="emoji_flags">Flagi</string>
+
+    <!-- Reactions -->
+    <string name="reactions">Reakcje</string>
 
     <!-- automatically delete message -->
     <string name="delete_old_messages">Usuwanie starych wiadomości</string>
@@ -924,6 +929,7 @@
     <string name="contact_not_verified">Nie można zweryfikować %1$s</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that verified the contact shown. -->
     <string name="verified_by">Zweryfikowano przez %1$s</string>
+    <string name="verified_by_you">Zweryfikowane przez ciebie</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Zmieniono konfigurację dla %1$s</string>
     <string name="verified_group_explain">Zweryfikowane grupy (eksperymentalne) zapewniają bezpieczeństwo przed aktywnymi atakami. Członkowie są weryfikowani za pomocą drugiego czynnika przez innych członków, a wiadomości są zawsze szyfrowane metodą end-to-end. </string>
@@ -943,6 +949,9 @@
     <string name="notify_name_and_message">Nazwa i wiadomość</string>
     <string name="notify_name_only">Tylko nazwa</string>
     <string name="notify_no_name_or_message">Brak nazwy lub wiadomości</string>
+    <string name="notifications_disabled">Powiadomienia wyłączone</string>
+
+
     <!-- permissions -->
     <string name="perm_required_title">Wymagane zezwolenie</string>
     <string name="perm_continue">Kontynuuj</string>
@@ -950,6 +959,8 @@
     <string name="perm_explain_access_to_mic_denied">Delta Chat wymaga zezwolenia użycia mikrofonu, aby wysyłać wiadomości audio, ale zostało ono trwale odrzucone. Przejdź do ustawień aplikacji, wybierz „Uprawnienia” i włącz „Mikrofon”.</string>
     <string name="perm_explain_access_to_storage_denied">Delta Chat wymaga uprawnienia do przechowywania, aby dołączyć lub wyeksportować zdjęcia, filmy lub dźwięk, ale zostało ono trwale odrzucone. Przejdź do menu ustawień aplikacji, wybierz „Uprawnienia” i włącz „Pamięć”.</string>
     <string name="perm_explain_access_to_location_denied">Delta Chat wymaga zezwolenia na lokalizację, aby dołączyć lokalizację, ale zostało ono trwale odrzucone. Przejdź do menu ustawień aplikacji, wybierz „Uprawnienia” i włącz „Lokalizacja”.</string>
+    <string name="perm_explain_access_to_notifications_denied">Aby odbierać powiadomienia, przejdź do „Ustawienia » Aplikacje » Delta Chat” i włącz „Powiadomienia”.</string>
+
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Rysuj gdziekolwiek, aby rozmyć</string>
     <string name="ImageEditorHud_add_text">Dodaj tekst</string>
