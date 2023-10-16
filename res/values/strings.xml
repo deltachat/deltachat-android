@@ -376,7 +376,7 @@
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
     <string name="chat_new_one_to_one_hint">Send a message to %1$s; they can even receive it without Delta Chat.</string>
-    <string name="chat_new_broadcast_hint">In a broadcast list, the recipients will receive messages in a read-only chat.\n\nThey will not be see the other recipients.</string>
+    <string name="chat_new_broadcast_hint">In a broadcast list, recipients will receive messages in a read-only chat with you.</string>
     <string name="chat_new_group_hint">Others will only see this group after you sent a first message.</string>
     <string name="chat_record_slide_to_cancel">Slide to cancel</string>
     <string name="chat_record_explain">Tap and hold to record a voice message, release to send</string>
