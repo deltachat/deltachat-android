@@ -25,6 +25,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -375,7 +376,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         return oauth2started;
     }
 
-    private static class PrecheckOauth2AsyncTask extends ProgressDialogAsyncTask<Void, Void, Void> {
+    private static class PrecheckOauth2AsyncTask extends AsyncTask<Void, Void, Void> {
         private final WeakReference<RegistrationActivity> activityWeakReference;
         private final String email;
         private final SettableFuture<Boolean> oauth2started;
@@ -383,14 +384,11 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         private @NonNull String oauth2url = "";
 
         public PrecheckOauth2AsyncTask(RegistrationActivity activity, String email, SettableFuture<Boolean> oauth2started) {
-            super(activity, null, activity.getString(R.string.login_oauth2_checking_addr, email));
+            super();
             this.activityWeakReference = new WeakReference<>(activity);
             this.email = email;
             this.oauth2started = oauth2started;
             this.dcContext = DcHelper.getContext(activity);
-            setCancelable(dialog -> {
-                oauth2started.set(false);
-            });
         }
         @Override
         protected Void doInBackground(Void... voids) {
@@ -428,7 +426,14 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
     }
 
     private void updateProviderInfo() {
-        provider = getContext(this).getProviderFromEmailWithDns(emailInput.getText().toString());
+        Util.runOnBackground(() -> {
+            DcProvider newProvider = getContext(this).getProviderFromEmailWithDns(emailInput.getText().toString());
+            Util.runOnMain(()->updateProviderInfo(newProvider));
+        });
+    }
+
+    private void updateProviderInfo(DcProvider newProvider) {
+        provider = newProvider;
         if (provider!=null) {
             Resources res = getResources();
             providerHint.setText(provider.getBeforeLoginHint());
@@ -458,12 +463,16 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
 
     private void maybeCleanProviderInfo() {
         if (provider!=null && providerLayout.getVisibility()==View.VISIBLE) {
-            DcProvider newProvider = getContext(this).getProviderFromEmailWithDns(emailInput.getText().toString());
-            if (newProvider == null
-             || !newProvider.getOverviewPage().equals(provider.getOverviewPage())) {
-                provider = null;
-                providerLayout.setVisibility(View.GONE);
-            }
+            Util.runOnBackground(() -> {
+                DcProvider newProvider = getContext(this).getProviderFromEmailWithDns(emailInput.getText().toString());
+                Util.runOnMain(() -> {
+                    if (newProvider == null
+                     || !newProvider.getOverviewPage().equals(provider.getOverviewPage())) {
+                        provider = null;
+                        providerLayout.setVisibility(View.GONE);
+                    }
+                });
+            });
         }
     }
 
