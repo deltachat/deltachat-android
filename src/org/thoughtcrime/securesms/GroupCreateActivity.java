@@ -232,6 +232,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     initializeAvatarView();
 
     if (broadcast) {
+      avatar.setVisibility(View.GONE);
       groupHints.setText(R.string.chat_new_broadcast_hint);
       groupHints.setVisibility(isEdit()? View.GONE : View.VISIBLE);
       ViewUtil.findById(this, R.id.verify_button).setVisibility(View.INVISIBLE);
