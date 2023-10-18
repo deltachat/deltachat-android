@@ -272,12 +272,12 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
               AlertDialog.Builder builder = new AlertDialog.Builder(getActivity())
                       .setTitle(R.string.pref_backup)
                       .setMessage(R.string.pref_backup_export_explain)
-                      .setNegativeButton(android.R.string.cancel, null)
+                      .setNeutralButton(android.R.string.cancel, null)
                       .setPositiveButton(getActivity().getString(R.string.pref_backup_export_x, addr), (dialogInterface, i) -> startImex(DcContext.DC_IMEX_EXPORT_BACKUP));
               int[] allAccounts = DcHelper.getAccounts(getActivity()).getAll();
               if (allAccounts.length > 1) {
                 String exportAllString = getActivity().getString(R.string.pref_backup_export_all, allAccounts.length);
-                builder.setNeutralButton(exportAllString, (dialogInterface, i) -> {
+                builder.setNegativeButton(exportAllString, (dialogInterface, i) -> {
                     // TODO: backup all accounts
                 });
               }
