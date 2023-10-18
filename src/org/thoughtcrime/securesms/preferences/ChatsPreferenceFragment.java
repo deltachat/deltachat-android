@@ -29,9 +29,6 @@ import org.thoughtcrime.securesms.util.ScreenLockUtil;
 import org.thoughtcrime.securesms.util.Util;
 
 public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
-  private static final String TAG = ChatsPreferenceFragment.class.getSimpleName();
-
-
   private ListPreference showEmails;
   private ListPreference mediaQuality;
   private ListPreference autoDownload;
@@ -265,31 +262,26 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
   }
 
   private void performBackup() {
-    View gl = View.inflate(getActivity(), R.layout.dialog_with_checkbox, null);
-    CheckBox confirmCheckbox = gl.findViewById(R.id.dialog_checkbox);
-    TextView msg = gl.findViewById(R.id.dialog_message);
-
-    msg.setText(getString(R.string.pref_backup_export_explain));
-    confirmCheckbox.setText(R.string.pref_backup_export_all);
-
     Permissions.with(getActivity())
             .request(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE) // READ_EXTERNAL_STORAGE required to read folder contents and to generate backup names
             .alwaysGrantOnSdk30()
             .ifNecessary()
             .withPermanentDenialDialog(getString(R.string.perm_explain_access_to_storage_denied))
             .onAllGranted(() -> {
-              new AlertDialog.Builder(getActivity())
+              final String addr = DcHelper.get(getActivity(), DcHelper.CONFIG_CONFIGURED_ADDRESS);
+              AlertDialog.Builder builder = new AlertDialog.Builder(getActivity())
                       .setTitle(R.string.pref_backup)
-                      .setView(gl)
+                      .setMessage(R.string.pref_backup_export_explain)
                       .setNegativeButton(android.R.string.cancel, null)
-                      .setPositiveButton(R.string.pref_backup_export_start_button, (dialogInterface, i) -> {
-                          if (confirmCheckbox.isChecked()) {
-                            // TODO: backup all accounts
-                          } else {
-                            startImex(DcContext.DC_IMEX_EXPORT_BACKUP);
-                          }
-                      })
-                      .show();
+                      .setPositiveButton(getActivity().getString(R.string.pref_backup_export_x, addr), (dialogInterface, i) -> startImex(DcContext.DC_IMEX_EXPORT_BACKUP));
+              int[] allAccounts = DcHelper.getAccounts(getActivity()).getAll();
+              if (allAccounts.length > 1) {
+                String exportAllString = getActivity().getString(R.string.pref_backup_export_all, allAccounts.length);
+                builder.setNeutralButton(exportAllString, (dialogInterface, i) -> {
+                    // TODO: backup all accounts
+                });
+              }
+              builder.show();
             })
             .execute();
   }
