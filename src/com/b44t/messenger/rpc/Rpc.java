@@ -103,6 +103,9 @@ public class Rpc {
         return gson.fromJson(getResult("get_message_reactions", accountId, msgId), Reactions.class);
     }
 
+    public int sendReaction(int accountId, int msgId, String... reaction) throws RpcException {
+        return getResult("send_reaction", accountId, msgId, reaction).getAsInt();
+    }
 
     private static class Request {
         private final String jsonrpc = "2.0";

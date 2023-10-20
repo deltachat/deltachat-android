@@ -146,6 +146,22 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
       return true;
     });
 
+    Preference sendReactions = this.findPreference("pref_send_reactions");
+    sendReactions.setOnPreferenceChangeListener((preference, newValue) -> {
+      if ((Boolean)newValue) {
+        new AlertDialog.Builder(getActivity())
+          .setTitle("Thanks for trying out \"Reactions\"!")
+          .setMessage("• By long tapping a message, you can now add a reaction\n\n"
+            + "• Do not rely on reactions being seen by all recipients currently: On some platforms they're still in development, also rolling out updates take time\n\n"
+            + "• If you want to quit the experimental feature, disable it again at \"Settings / Advanced\";"
+            + "  received or already sent reactions are displayed independently of this switch")
+          .setCancelable(false)
+          .setPositiveButton(R.string.ok, null)
+          .show();
+      }
+      return true;
+    });
+
     Preference locationStreamingEnabled = this.findPreference("pref_location_streaming_enabled");
     locationStreamingEnabled.setOnPreferenceChangeListener((preference, newValue) -> {
       if ((Boolean)newValue) {

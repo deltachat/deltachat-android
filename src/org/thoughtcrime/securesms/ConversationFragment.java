@@ -63,6 +63,7 @@ import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.mms.GlideApp;
+import org.thoughtcrime.securesms.reactions.AddReactionView;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.reactions.ReactionsDetailsFragment;
 import org.thoughtcrime.securesms.util.AccessibilityUtil;
@@ -105,6 +106,7 @@ public class ConversationFragment extends MessageSelectorFragment
     private StickyHeaderDecoration      dateDecoration;
     private View                        scrollToBottomButton;
     private View                        floatingLocationButton;
+    private AddReactionView             addReactionView;
     private TextView                    noMessageTextView;
     private Timer                       reloadTimer;
 
@@ -143,6 +145,7 @@ public class ConversationFragment extends MessageSelectorFragment
         list                   = ViewUtil.findById(view, android.R.id.list);
         scrollToBottomButton   = ViewUtil.findById(view, R.id.scroll_to_bottom_button);
         floatingLocationButton = ViewUtil.findById(view, R.id.floating_location_button);
+        addReactionView        = ViewUtil.findById(view, R.id.add_reaction_view);
         noMessageTextView      = ViewUtil.findById(view, R.id.no_messages_text_view);
 
         scrollToBottomButton.setOnClickListener(v -> scrollToBottom());
@@ -631,6 +634,8 @@ public class ConversationFragment extends MessageSelectorFragment
 //            lastPositionId        = positionId;
 
             markseenDebouncer.publish(() -> manageMessageSeenState());
+
+            ConversationFragment.this.addReactionView.move(dy);
         }
 
         @Override
@@ -774,6 +779,7 @@ public class ConversationFragment extends MessageSelectorFragment
                 if (getListAdapter().getSelectedItems().size() == 0) {
                     actionMode.finish();
                 } else {
+                    addReactionView.hide();
                     Menu menu = actionMode.getMenu();
                     setCorrectMenuVisibility(menu);
                     ConversationAdaptiveActionsToolbar.adjustMenuActions(menu, 10, requireActivity().getWindow().getDecorView().getMeasuredWidth());
@@ -805,12 +811,17 @@ public class ConversationFragment extends MessageSelectorFragment
         }
 
         @Override
-        public void onItemLongClick(DcMsg messageRecord) {
+        public void onItemLongClick(DcMsg messageRecord, View view) {
             if (actionMode == null) {
                 ((ConversationAdapter) list.getAdapter()).toggleSelection(messageRecord);
                 list.getAdapter().notifyDataSetChanged();
 
                 actionMode = ((AppCompatActivity)getActivity()).startSupportActionMode(actionModeCallback);
+                addReactionView.show(messageRecord, view, () -> {
+                    if (actionMode != null) {
+                        actionMode.finish();
+                    }
+                });
             }
         }
 
@@ -910,10 +921,12 @@ public class ConversationFragment extends MessageSelectorFragment
             }
 
             actionMode = null;
+            addReactionView.hide();
         }
 
         @Override
         public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+            addReactionView.hide();
             switch(item.getItemId()) {
                 case R.id.menu_context_copy:
                     handleCopyMessage(getListAdapter().getSelectedItems());
