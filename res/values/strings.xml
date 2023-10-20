@@ -899,7 +899,7 @@
     <string name="contact_not_verified">Cannot verify %1$s.</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that verified the contact shown. -->
     <string name="verified_by">Verified by %1$s</string>
-    <string name="verified_by_you">Verified by you</string>
+    <string name="verified_by_you">Verified by me</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Changed setup for %1$s.</string>
     <string name="verified_group_explain">Verified groups (experimental) provide safety against active attacks. Members are verified with a second factor by other members and messages are always end-to-end-encrypted.</string>
