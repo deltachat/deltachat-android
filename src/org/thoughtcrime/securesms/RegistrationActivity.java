@@ -428,7 +428,34 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
     private void updateProviderInfo() {
         Util.runOnBackground(() -> {
             DcProvider newProvider = getContext(this).getProviderFromEmailWithDns(emailInput.getText().toString());
-            Util.runOnMain(()->updateProviderInfo(newProvider));
+            Util.runOnMain(() -> {
+              provider = newProvider;
+              if (provider!=null) {
+                Resources res = getResources();
+                providerHint.setText(provider.getBeforeLoginHint());
+                switch (provider.getStatus()) {
+                  case DcProvider.DC_PROVIDER_STATUS_PREPARATION:
+                    providerHint.setTextColor(res.getColor(R.color.provider_prep_fg));
+                    providerLink.setTextColor(res.getColor(R.color.provider_prep_fg));
+                    providerLayout.setBackgroundColor(res.getColor(R.color.provider_prep_bg));
+                    providerLayout.setVisibility(View.VISIBLE);
+                    break;
+
+                  case DcProvider.DC_PROVIDER_STATUS_BROKEN:
+                    providerHint.setTextColor(res.getColor(R.color.provider_broken_fg));
+                    providerLink.setTextColor(res.getColor(R.color.provider_broken_fg));
+                    providerLayout.setBackgroundColor(getResources().getColor(R.color.provider_broken_bg));
+                    providerLayout.setVisibility(View.VISIBLE);
+                    break;
+
+                  default:
+                    providerLayout.setVisibility(View.GONE);
+                    break;
+                }
+              } else {
+                providerLayout.setVisibility(View.GONE);
+              }
+            });
         });
     }
 
