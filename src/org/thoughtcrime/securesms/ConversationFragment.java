@@ -254,11 +254,6 @@ public class ConversationFragment extends MessageSelectorFragment
             reloadList();
             updateLocationButton();
         }
-
-        // hack (alternatives welcome): we position the AddReactionView offscreen to "-666dp"
-        // to get the real width/height before it is shown;
-        // after first layout we can hide it so that eg. screen readers are not confused
-        addReactionView.hide();
     }
 
     public void moveToLastSeen() {

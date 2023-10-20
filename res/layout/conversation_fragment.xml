@@ -72,9 +72,8 @@
 
     <org.thoughtcrime.securesms.reactions.AddReactionView
         android:id="@+id/add_reaction_view"
-        android:visibility="visible"
+        android:visibility="invisible"
         android:orientation="horizontal"
-        android:layout_marginTop="-666dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingStart="7dp"
