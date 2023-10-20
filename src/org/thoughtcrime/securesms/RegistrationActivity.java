@@ -463,16 +463,8 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
 
     private void maybeCleanProviderInfo() {
         if (provider!=null && providerLayout.getVisibility()==View.VISIBLE) {
-            Util.runOnBackground(() -> {
-                DcProvider newProvider = getContext(this).getProviderFromEmailWithDns(emailInput.getText().toString());
-                Util.runOnMain(() -> {
-                    if (newProvider == null
-                     || !newProvider.getOverviewPage().equals(provider.getOverviewPage())) {
-                        provider = null;
-                        providerLayout.setVisibility(View.GONE);
-                    }
-                });
-            });
+            provider = null;
+            providerLayout.setVisibility(View.GONE);
         }
     }
 
