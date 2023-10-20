@@ -899,7 +899,7 @@
     <string name="contact_not_verified">Kann %1$s nicht verifizieren</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that verified the contact shown. -->
     <string name="verified_by">Verifiziert von %1$s</string>
-    <string name="verified_by_you">Verifiziert von Ihnen</string>
+    <string name="verified_by_you">Durch mich verifiziert</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Geändertes Setup für %1$s</string>
     <string name="verified_group_explain">Verifizierte Gruppen (experimentell) bieten Schutz gegen aktive Angriffe mittels Zwei-Faktor-Authentifizierung aller Mitglieder und immer aktiver Ende-zu-Ende-Verschlüsselung.</string>

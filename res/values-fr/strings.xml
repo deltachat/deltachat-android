@@ -321,7 +321,7 @@
     <string name="videochat_tap_to_open">Appuyer pour ouvrir</string>
     <string name="videochat_instance">Instance de discussion vidéo</string>
     <string name="videochat_instance_placeholder">Votre instance de discussion vidéo</string>
-    <string name="videochat_instance_example">Exemples : https://meet.jit.si/$ROOM ou basicwebrtc:https://your-server</string>
+    <string name="videochat_instance_example">Par exemple : https://your-server.org/$ROOM</string>
     <string name="videochat_instance_explain_2">Si vous avez activé les discussions vidéo, vous pouvez démarrer une conversation vidéo dans chacune de vos discussions. Il faut que chaque participant-e ait une application ou un navigateur compatibles pour pouvoir utiliser cette option.</string>
     <string name="videochat_instance_from_qr">Utiliser « %1$s » pour inviter d\'autres personnes à des discussions vidéo ?\n\nUne fois configuré, vous pouvez discuter en vidéo dans chaque discussion privée. Remplace vos préférences de configurations précédentes pour les discussions vidéos.</string>
     <string name="videochat_invitation">Invitation à une discussion vidéo</string>
@@ -659,6 +659,8 @@
     <string name="pref_manage_keys">Gérer les clés</string>
     <string name="pref_use_system_emoji">Utiliser les émojis système</string>
     <string name="pref_use_system_emoji_explain">Désactiver la prise en charge des émojis intégrés de Delta Chat</string>
+    <string name="pref_use_inapp_camera">Utiliser l\'appareil photo de l\'appli</string>
+    <string name="pref_use_inapp_camera_explain">L\'appareil photo de l\'appli possède généralement moins de fonctionnalités que celui du système</string>
     <string name="pref_app_access">Accès à l\'application</string>
     <string name="pref_chats">Discussions</string>
     <string name="pref_in_chat_sounds">Sons de messages entrants</string>
@@ -734,6 +736,9 @@
     <string name="emoji_objects">Objets</string>
     <string name="emoji_symbols">Symboles</string>
     <string name="emoji_flags">Drapeaux</string>
+
+    <!-- Reactions -->
+    <string name="reactions">Réactions</string>
 
     <!-- automatically delete message -->
     <string name="delete_old_messages">Supprimer les anciens messages</string>
@@ -844,10 +849,10 @@
     <string name="ephemeral_timer_weeks_by_you">Vous avez réglé le temps d\'affichage des messages éphémères à %1$s semaines.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_weeks_by_other">Minuterie des messages éphémères réglée à %1$s semaines par %2$s.</string>
-    <string name="protection_enabled_by_you">Protection de discussion activée par vous.</string>
+    <string name="protection_enabled_by_you">Vous avez activé la protection de discussion.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
     <string name="protection_enabled_by_other">Protection de discussion activée par %1$s.</string>
-    <string name="protection_disabled_by_you">Protection de discussion désactivée par vous.</string>
+    <string name="protection_disabled_by_you">Vous avez désactivé la protection de discussion.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
     <string name="protection_disabled_by_other">Protection de discussion désactivée par %1$s.</string>
 
@@ -909,6 +914,7 @@
     <string name="contact_not_verified">Ne peut pas vérifier %1$s</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that verified the contact shown. -->
     <string name="verified_by">Vérifié par %1$s</string>
+    <string name="verified_by_you">Vérifié par vous</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Configuration modifiée pour %1$s</string>
     <string name="verified_group_explain">Les groupes vérifiés (fonction expérimentale) offrent une sécurité contre les attaques actives. Les membres sont vérifiés avec un second facteur par d\'autres membres et les messages sont toujours chiffrés de bout en bout.</string>
@@ -928,6 +934,9 @@
     <string name="notify_name_and_message">Nom et message</string>
     <string name="notify_name_only">Nom seulement</string>
     <string name="notify_no_name_or_message">Pas de nom ou de message</string>
+    <string name="notifications_disabled">Notifications désactivées</string>
+
+
     <!-- permissions -->
     <string name="perm_required_title">Autorisation requise</string>
     <string name="perm_continue">Continuez</string>
@@ -935,6 +944,8 @@
     <string name="perm_explain_access_to_mic_denied">Pour envoyer des messages audio, aller dans les paramètres de l\'application, sélectionner \"Autorisations\" et autoriser \"Microphone\".</string>
     <string name="perm_explain_access_to_storage_denied">Pour recevoir ou envoyer des fichiers, aller dans les Paramètres de l\'application, sélectionner \"Autorisations\" et autoriser \"Stockage\".</string>
     <string name="perm_explain_access_to_location_denied">Pour joindre une position, aller au menu paramètres de l\'application, sélectionnez \"Autorisations\" et activez \"Position\".</string>
+    <string name="perm_explain_access_to_notifications_denied">Pour recevoir les notifications, accédez à \"Paramètres système / Applications / Delta Chat\" et activez les \"Notifications\".</string>
+
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Dessinez n\'importe où pour flouter</string>
     <string name="ImageEditorHud_add_text">Ajouter du texte</string>
@@ -1054,7 +1065,7 @@
     <string name="shortcut_step1_tap_share_btn">Cliquer sur le bouton « Partager ».</string>
     <string name="shortcut_step2_tap_add_to_home_screen">Sélectionner « Ajouter à l\'écran d\'accueil » pour ajouter l\'appli à votre écran d\'accueil.</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
-    <string name="InfoPlist_NSCameraUsageDescription">Delta Chat utilise votre appareil photo pour pendre et envoyer des photos et des vidéos et pour scanner des QR codes.</string>
+    <string name="InfoPlist_NSCameraUsageDescription">Delta Chat utilise votre appareil photo pour prendre des photos et des vidéos et les envoyer, ainsi que pour scanner des QR codes.</string>
     <string name="InfoPlist_NSContactsUsageDescription">Delta Chat utilise vos contacts pour montrer une liste d\'adresses de courriel auxquels vous pouvez écrire. Delta Chat n\'a pas de serveur, vos contacts ne sont envoyés nulle part.</string>
     <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">Delta Chat a besoin de votre autorisation pour partager votre position pour la durée d\'activation du partage de position.</string>
     <string name="InfoPlist_NSLocationWhenInUseUsageDescription">Delta Chat a besoin de votre autorisation pour partager votre position pour la durée d\'activation du partage de position.</string>
