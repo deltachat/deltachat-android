@@ -19,7 +19,7 @@
             cmdline-tools-latest
             ndk-bundle
             platform-tools
-            platforms-android-32
+            platforms-android-33
             ndk-23-2-8568313
           ]);
       in {
