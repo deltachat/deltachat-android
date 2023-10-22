@@ -265,7 +265,6 @@
         <attr name="compact" format="boolean" />
     </declare-styleable>
 
-    <bool name="isLandscape">false</bool>
     <!-- if the device is big enough (ex. a tablet) -->
     <bool name="isBigScreen">false</bool>
 </resources>
