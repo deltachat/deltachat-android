@@ -25,6 +25,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -375,7 +376,7 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         return oauth2started;
     }
 
-    private static class PrecheckOauth2AsyncTask extends ProgressDialogAsyncTask<Void, Void, Void> {
+    private static class PrecheckOauth2AsyncTask extends AsyncTask<Void, Void, Void> {
         private final WeakReference<RegistrationActivity> activityWeakReference;
         private final String email;
         private final SettableFuture<Boolean> oauth2started;
@@ -383,14 +384,11 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         private @NonNull String oauth2url = "";
 
         public PrecheckOauth2AsyncTask(RegistrationActivity activity, String email, SettableFuture<Boolean> oauth2started) {
-            super(activity, null, activity.getString(R.string.login_oauth2_checking_addr, email));
+            super();
             this.activityWeakReference = new WeakReference<>(activity);
             this.email = email;
             this.oauth2started = oauth2started;
             this.dcContext = DcHelper.getContext(activity);
-            setCancelable(dialog -> {
-                oauth2started.set(false);
-            });
         }
         @Override
         protected Void doInBackground(Void... voids) {
@@ -428,42 +426,42 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
     }
 
     private void updateProviderInfo() {
-        provider = getContext(this).getProviderFromEmailWithDns(emailInput.getText().toString());
-        if (provider!=null) {
-            Resources res = getResources();
-            providerHint.setText(provider.getBeforeLoginHint());
-            switch (provider.getStatus()) {
-                case DcProvider.DC_PROVIDER_STATUS_PREPARATION:
+        Util.runOnBackground(() -> {
+            provider = getContext(this).getProviderFromEmailWithDns(emailInput.getText().toString());
+            Util.runOnMain(() -> {
+              if (provider!=null) {
+                Resources res = getResources();
+                providerHint.setText(provider.getBeforeLoginHint());
+                switch (provider.getStatus()) {
+                  case DcProvider.DC_PROVIDER_STATUS_PREPARATION:
                     providerHint.setTextColor(res.getColor(R.color.provider_prep_fg));
                     providerLink.setTextColor(res.getColor(R.color.provider_prep_fg));
                     providerLayout.setBackgroundColor(res.getColor(R.color.provider_prep_bg));
                     providerLayout.setVisibility(View.VISIBLE);
                     break;
 
-                case DcProvider.DC_PROVIDER_STATUS_BROKEN:
+                  case DcProvider.DC_PROVIDER_STATUS_BROKEN:
                     providerHint.setTextColor(res.getColor(R.color.provider_broken_fg));
                     providerLink.setTextColor(res.getColor(R.color.provider_broken_fg));
                     providerLayout.setBackgroundColor(getResources().getColor(R.color.provider_broken_bg));
                     providerLayout.setVisibility(View.VISIBLE);
                     break;
 
-                default:
+                  default:
                     providerLayout.setVisibility(View.GONE);
                     break;
-            }
-        } else {
-            providerLayout.setVisibility(View.GONE);
-        }
+                }
+              } else {
+                providerLayout.setVisibility(View.GONE);
+              }
+            });
+        });
     }
 
     private void maybeCleanProviderInfo() {
         if (provider!=null && providerLayout.getVisibility()==View.VISIBLE) {
-            DcProvider newProvider = getContext(this).getProviderFromEmailWithDns(emailInput.getText().toString());
-            if (newProvider == null
-             || !newProvider.getOverviewPage().equals(provider.getOverviewPage())) {
-                provider = null;
-                providerLayout.setVisibility(View.GONE);
-            }
+            provider = null;
+            providerLayout.setVisibility(View.GONE);
         }
     }
 
