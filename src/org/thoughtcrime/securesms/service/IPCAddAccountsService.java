@@ -24,6 +24,7 @@ import org.thoughtcrime.securesms.connect.DcHelper;
 import java.lang.ref.WeakReference;
 
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_ADDRESS;
+import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_CONFIGURED_ADDRESS;
 
 import com.b44t.messenger.DcAccounts;
 import com.b44t.messenger.DcContext;
@@ -58,7 +59,7 @@ public class IPCAddAccountsService extends Service {
         int[] accountIds = accounts.getAll();
         for (int accountId : accountIds) {
           DcContext dcContext = accounts.getAccount(accountId);
-          String accountAddress = dcContext.getConfig(CONFIG_ADDRESS);
+          String accountAddress = dcContext.getConfig(CONFIG_CONFIGURED_ADDRESS);
           if (accountAddress.equals(newAddress)) {
             Log.d(TAG, newAddress + " already exists. Switching account.");
             AccountManager.getInstance().switchAccount(context, accountId);
