@@ -58,7 +58,7 @@ public class QrShowActivity extends AppCompatActivity {
             // verify-contact
             String selfName = DcHelper.get(this, DcHelper.CONFIG_DISPLAY_NAME); // we cannot use MrContact.getDisplayName() as this would result in "Me" instead of
             if (selfName.isEmpty()) {
-                selfName = DcHelper.get(this, DcHelper.CONFIG_ADDRESS, "unknown");
+                selfName = DcHelper.get(this, DcHelper.CONFIG_CONFIGURED_ADDRESS, "unknown");
             }
             supportActionBar.setTitle(selfName);
             supportActionBar.setSubtitle(R.string.qrshow_join_contact_title);
