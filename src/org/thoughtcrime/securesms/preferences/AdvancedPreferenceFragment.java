@@ -176,6 +176,22 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
       return true;
     });
 
+    Preference strictVerifiedOneononeChats = this.findPreference("pref_strict_verified_oneonone_chats");
+    strictVerifiedOneononeChats.setOnPreferenceChangeListener((preference, newValue) -> {
+      final boolean enabled = (Boolean) newValue;
+      if (enabled) {
+        new AlertDialog.Builder(getActivity())
+                .setTitle("Thanks for trying out \"Strict Verified 1:1 Chats\"!")
+                .setMessage("• If you have a verified 1:1 chat with someone and they send a message from a new device, you will now get a more visible warning that has to be explicitly confirmed.\n\n"
+                        + "• If you want to quit the experimental feature, you can disable it at \"Settings / Advanced\"")
+                .setCancelable(false)
+                .setPositiveButton(R.string.ok, null)
+                .show();
+      }
+      dcContext.setConfigInt(DcHelper.CONFIG_VERIFIED_ONE_ON_ONE_CHATS, enabled? 1 : 0);
+      return true;
+    });
+
     Preference developerModeEnabled = this.findPreference("pref_developer_mode_enabled");
     developerModeEnabled.setOnPreferenceChangeListener((preference, newValue) -> {
       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
