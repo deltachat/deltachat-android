@@ -116,12 +116,16 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     conversationListFragment = initFragment(R.id.fragment_container, new ConversationListFragment(), dynamicLanguage.getCurrentLocale(), bundle);
 
     initializeSearchListener();
-    initializeTitleListener();
 
     TooltipCompat.setTooltipText(searchAction, getText(R.string.search_explain));
 
     TooltipCompat.setTooltipText(selfAvatar, getText(R.string.switch_account));
     selfAvatar.setOnClickListener(v -> AccountManager.getInstance().showSwitchAccountMenu(this));
+    title.setOnClickListener(v -> {
+      if (!isRelayingMessageContent(this)) {
+        AccountManager.getInstance().showSwitchAccountMenu(this);
+      }
+    });
 
     refresh();
 
@@ -306,14 +310,6 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
                                      .commit();
           searchFragment = null;
         }
-      }
-    });
-  }
-
-  private void initializeTitleListener() {
-    title.setOnClickListener(v -> {
-      if (!isRelayingMessageContent(this)) {
-        startActivity(new Intent(this, ConnectivityActivity.class));
       }
     });
   }
