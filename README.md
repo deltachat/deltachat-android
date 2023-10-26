@@ -99,7 +99,7 @@ deltachat@6012dcb974fe:/home/app$ ./gradlew assembleDebug
   so, Gradle-inside-the-container looks for the Sdk at `/home/username/Android/Sdk`, where it can't find it.
   You could:
   - either: remove the file or just the line starting with `sdk.dir`
-  - or: run `./gradlew assembleDebug` from outside the container (however, there may be incompability issues if different versions are installed inside and outside the container)
+  - or: run `./gradlew assembleDebug` from outside the container (however, there may be incompatibility issues if different versions are installed inside and outside the container)
 
 - Running the image fails with `ERRO[0000] The storage 'driver' option must be set in /etc/containers/storage.conf, guarantee proper operation.`:
 
