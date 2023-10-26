@@ -2,7 +2,8 @@
 
 This is the Android client for [Delta Chat](https://delta.chat/).
 It is available on [F-Droid](https://f-droid.org/app/com.b44t.messenger) and
-the [Google Play Store](https://play.google.com/store/apps/details?id=chat.delta).
+the [Google Play Store]
+(https://play.google.com/store/apps/details?id=chat.delta).
 The APK can also be downloaded from [get.delta.chat](https://get.delta.chat).
 
 For the core library and other common info, please refer to the
@@ -99,7 +100,7 @@ deltachat@6012dcb974fe:/home/app$ ./gradlew assembleDebug
   so, Gradle-inside-the-container looks for the Sdk at `/home/username/Android/Sdk`, where it can't find it.
   You could:
   - either: remove the file or just the line starting with `sdk.dir`
-  - or: run `./gradlew assembleDebug` from outside the container (however, there may be incompability issues if different versions are installed inside and outside the container)
+  - or: run `./gradlew assembleDebug` from outside the container (however, there may be incompatibilityissues if different versions are installed inside and outside the container)
 
 - Running the image fails with `ERRO[0000] The storage 'driver' option must be set in /etc/containers/storage.conf, guarantee proper operation.`:
 
