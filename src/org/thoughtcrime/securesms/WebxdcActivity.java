@@ -387,6 +387,15 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     super.onActivityResult(reqCode, resultCode, data);
   }
 
+  @Override
+  public void onBackPressed() {
+    if (webView.canGoBack()) {
+      webView.goBack();
+    } else {
+      super.onBackPressed();
+    }
+  }
+
   class InternalJSApi {
     @JavascriptInterface
     public String selfAddr() {
