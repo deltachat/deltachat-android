@@ -1,5 +1,6 @@
 package org.thoughtcrime.securesms;
 
+import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_VERIFIED_ONE_ON_ONE_CHATS;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -138,6 +139,10 @@ public class ApplicationContext extends MultiDexApplication {
       Prefs.setStringPreference(this, "pref_chat_background", "");
     }
     // /migrating chat backgrounds
+
+    for (int accountId : allAccounts) {
+      dcAccounts.getAccount(accountId).setConfig(CONFIG_VERIFIED_ONE_ON_ONE_CHATS, "1");
+    }
 
     // set translations before starting I/O to avoid sending untranslated MDNs (issue #2288)
     DcHelper.setStockTranslations(this);
