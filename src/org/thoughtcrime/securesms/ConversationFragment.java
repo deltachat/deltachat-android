@@ -856,7 +856,7 @@ public class ConversationFragment extends MessageSelectorFragment
       public void onShowFullClicked(DcMsg messageRecord) {
         Intent intent = new Intent(getActivity(), FullMsgActivity.class);
         intent.putExtra(FullMsgActivity.MSG_ID_EXTRA, messageRecord.getId());
-        intent.putExtra(FullMsgActivity.IS_CONTACT_REQUEST, getListAdapter().getChat().isContactRequest());
+        intent.putExtra(FullMsgActivity.BLOCK_LOADING_REMOTE, getListAdapter().getChat().isHalfBlocked());
         startActivity(intent);
         getActivity().overridePendingTransition(R.anim.slide_from_right, R.anim.fade_scale_out);
       }

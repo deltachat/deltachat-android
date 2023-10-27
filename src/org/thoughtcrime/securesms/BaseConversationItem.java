@@ -17,6 +17,7 @@ import com.b44t.messenger.rpc.Rpc;
 
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.util.Util;
+import org.thoughtcrime.securesms.recipients.Recipient;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -33,6 +34,7 @@ public abstract class BaseConversationItem extends LinearLayout
   protected final Context              context;
   protected final DcContext            dcContext;
   protected final Rpc rpc;
+  protected Recipient                  conversationRecipient;
 
   protected @NonNull  Set<DcMsg> batchSelected = new HashSet<>();
 
@@ -48,11 +50,13 @@ public abstract class BaseConversationItem extends LinearLayout
   protected void bind(@NonNull DcMsg            messageRecord,
                       @NonNull DcChat           dcChat,
                       @NonNull Set<DcMsg>       batchSelected,
-                      boolean                   pulseHighlight)
+                      boolean                   pulseHighlight,
+                      @NonNull Recipient        conversationRecipient)
   {
     this.messageRecord  = messageRecord;
     this.dcChat         = dcChat;
     this.batchSelected  = batchSelected;
+    this.conversationRecipient  = conversationRecipient;
     setInteractionState(messageRecord, pulseHighlight);
   }
 
@@ -75,7 +79,10 @@ public abstract class BaseConversationItem extends LinearLayout
   }
 
   protected boolean shouldInterceptClicks(DcMsg messageRecord) {
-    return batchSelected.isEmpty() && (messageRecord.isFailed());
+    return batchSelected.isEmpty()
+            && (messageRecord.isFailed()
+                || messageRecord.getInfoType() == DcMsg.DC_INFO_PROTECTION_DISABLED
+                || messageRecord.getInfoType() == DcMsg.DC_INFO_PROTECTION_ENABLED);
   }
 
   protected void onAccessibilityClick() {}
@@ -121,6 +128,10 @@ public abstract class BaseConversationItem extends LinearLayout
                 .setPositiveButton(R.string.ok, null)
                 .create();
         d.show();
+      } else if (messageRecord.getInfoType() == DcMsg.DC_INFO_PROTECTION_DISABLED) {
+        DcHelper.showVerificationBrokenDialog(context, conversationRecipient.getName());
+      } else if (messageRecord.getInfoType() == DcMsg.DC_INFO_PROTECTION_ENABLED) {
+        DcHelper.showProtectionEnabledDialog(context);
       }
     }
   }

@@ -14,6 +14,7 @@ import android.webkit.MimeTypeMap;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.content.FileProvider;
 
 import com.b44t.messenger.DcAccounts;
@@ -30,8 +31,10 @@ import org.thoughtcrime.securesms.ShareActivity;
 import org.thoughtcrime.securesms.database.model.ThreadRecord;
 import org.thoughtcrime.securesms.notifications.NotificationCenter;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
+import org.thoughtcrime.securesms.qr.QrActivity;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.FileUtils;
+import org.thoughtcrime.securesms.util.IntentUtils;
 import org.thoughtcrime.securesms.util.MediaUtil;
 
 import java.io.File;
@@ -74,6 +77,7 @@ public class DcHelper {
     public static final String CONFIG_SOCKS5_PORT = "socks5_port";
     public static final String CONFIG_SOCKS5_USER = "socks5_user";
     public static final String CONFIG_SOCKS5_PASSWORD = "socks5_password";
+    public static final String CONFIG_VERIFIED_ONE_ON_ONE_CHATS = "verified_one_on_one_chats";
 
     public static DcContext getContext(@NonNull Context context) {
         return ApplicationContext.getInstance(context).dcContext;
@@ -244,6 +248,11 @@ public class DcHelper {
     dcContext.setStockTranslation(123, context.getString(R.string.aeap_explanation));
     dcContext.setStockTranslation(162, context.getString(R.string.multidevice_qr_subtitle));
     dcContext.setStockTranslation(163, context.getString(R.string.multidevice_transfer_done_devicemsg));
+
+    // The next two strings should only be set if the UI actually shows more info when the user clicks on the
+    // DC_INFO_PROTECTION_{EN|DIS}ABLED info message
+    dcContext.setStockTranslation(170, context.getString(R.string.chat_protection_enabled_tap_to_learn_more));
+    dcContext.setStockTranslation(171, context.getString(R.string.chat_protection_broken_tap_to_learn_more));
   }
 
   public static File getImexDir() {
@@ -437,5 +446,27 @@ public class DcHelper {
       } else {
           return context.getString(R.string.connectivity_not_connected);
       }
+  }
+
+  public static void showVerificationBrokenDialog(Context context, String name) {
+    new AlertDialog.Builder(context)
+            .setMessage(context.getString(R.string.chat_protection_broken_explanation, name))
+            .setNeutralButton(R.string.learn_more, (d, w) -> IntentUtils.showBrowserIntent(context, "https://staging.delta.chat/684/en/help#verificationbroken"))
+            .setNegativeButton(R.string.qrscan_title, (d, w) -> context.startActivity(new Intent(context, QrActivity.class)))
+            .setPositiveButton(R.string.ok, null)
+            .setCancelable(true)
+            .show();
+  }
+
+  public static void showProtectionEnabledDialog(Context context) {
+    new AlertDialog.Builder(context)
+            .setMessage(context.getString(R.string.chat_protection_enabled_explanation))
+            .setNeutralButton(R.string.learn_more, (d, w) -> IntentUtils.showBrowserIntent(context, "https://staging.delta.chat/733/en/help#verifiedchats"))
+            .setNegativeButton(R.string.qrscan_title, (d, w) -> context.startActivity(new Intent(context, QrActivity.class)))
+            .setPositiveButton(R.string.ok, null)
+            .setCancelable(true)
+            .show();
+    // One day, it would be nice to point the user to the local help:
+    //context.startActivity(new Intent(context, LocalHelpActivity.class));
   }
 }

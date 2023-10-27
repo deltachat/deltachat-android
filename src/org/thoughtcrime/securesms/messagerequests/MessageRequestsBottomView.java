@@ -43,6 +43,10 @@ public class MessageRequestsBottomView extends ConstraintLayout {
     accept.setOnClickListener(acceptOnClickListener);
   }
 
+  public void setAcceptText(int text) {
+    accept.setText(text);
+  }
+
   public void setBlockOnClickListener(OnClickListener deleteOnClickListener) {
     block.setOnClickListener(deleteOnClickListener);
   }

@@ -10,7 +10,7 @@
 		android:layout_height="wrap_content"
 		android:layout_marginBottom="11dp"
 		android:paddingTop="11dp"
-		android:textSize="14sp"
+		style="@style/Signal.Text.Body"
 		tools:text="Chat with Alice In Wondeful Wonderland (alice@wonderland.org)?"
 		app:layout_constraintBottom_toTopOf="@id/message_request_block"
 		app:layout_constraintEnd_toEndOf="parent"
