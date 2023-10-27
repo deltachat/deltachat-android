@@ -374,7 +374,6 @@
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
     <string name="chat_new_one_to_one_hint">Dërgoni një mesazh. S’ka problem nëse %1$s nuk përdor Delta Chat.</string>
-    <string name="chat_new_broadcast_hint">Në një listë transmetimesh, të tjerët do të marrin mesazhe në fjalosjet e tyre private me ju.\n\nMarrësit s’do të dinë njëri-tjetrin.</string>
     <string name="chat_new_group_hint">Hartoni mesazhin e parë, duke u lejuar të tjerëve të përgjigjen brenda këtij grupi.\n\n• S\’ka problem nëse Delta Chat-in s\’e përdorin  të tërë anëtarë.\n\n• Dërgimi i mesazhit të parë mund të zgjasë ca.</string>
     <string name="chat_record_slide_to_cancel">Rrëshqiteni që të anulohet</string>
     <string name="chat_record_explain">Prekeni dhe mbajeni të prekur që të incizoni një mesazh zanor; lëshojeni, që të dërgohet</string>
@@ -831,13 +830,6 @@
     <string name="ephemeral_timer_weeks_by_you">E vutë kohëmatësin e zhdukjes së mesazheve në %1$s javë.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_weeks_by_other">Kohëmatësi i zhdukjes së mesazheve u vu në %1$s javë nga %2$s.</string>
-    <string name="protection_enabled_by_you">Aktivizuat mbrojtje fjalosjeje.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="protection_enabled_by_other">Mbrojtje fjalosjeje aktivizuar nga %1$s.</string>
-    <string name="protection_disabled_by_you">Çaktivizuat mbrojtje fjalosjeje.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="protection_disabled_by_other">Mbrojtje fjalosjeje çaktivizuar nga %1$s.</string>
-
     <string name="devicemsg_self_deleted">Fshitë fjalosjen “Mesazhe të ruajtur”.\n\nℹ️ Që të përdorni sërish veçorinë “Mesazhe të ruajtur”, krijoni një fjalosje të re me veten tuaj.</string>
     <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
     <string name="devicemsg_storage_exceeding">⚠️ Po mbaron depozita e shërbimit tuaj, përdoren tashmë %1$s%%.\n\nKur depozita është 100%% e përdorur, mund të mos jeni në gjendje të merrni mesazhe.\n\n👉 Ju lutemi, shihni se mos mund të fshini të dhëna të vjetra që nga ndërfaqja web e furnizuesit të shërbimit dhe shihni mundësinë të aktivizoni “Rregullime / Fshi Mesazhe të Vjetër”. Se sa depozitë është aktualisht e përdorur mund ta kontrolloni kurdo, që nga \"Rregullime / Lidhje\".</string>
@@ -1067,12 +1059,7 @@
 
     <!-- device messages for updates -->
     <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
-    <string name="update_1_36_android">Gjëra në pah për 1.36\n\n💻📱 Përdoreni kollaj Delta Chat-in në krejt pajisjet tuaja - thjesht ndiqni tre hapa të thjeshtë te “Rregullime / Shtoni Pajisje të Dytë” (eksperimentale)\n\n🖼🔍 Ju ka qëlluar të kërkoni për një figurë dhe s’mbanit mend bisedën? “Krejt Mediat” prej menusë kryesorë është e juaja!\n\nPo tjetër? Njoftime për krejt llogaritë, spastrim fjalosjesh, etj, në %1$s</string>
-    <!-- placeholder will be replaced by the URL https://delta.chat/en/2023-03-27-third-independent-security-audit -->
-    <string name="update_1_36_audit">Këtu s’bisedojmë shumë mbi sigurinë, por jini të sigurt, kujdesemi për të: Shihni %1$s për lajme të reja të mbara 👌</string>
-    <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
     <string name="update_1_38_android">U hodh në qarkullim 1.38:\n\n📎 U hoq kufiri i sipërm për madhësi bashkëngjitjesh\n\n🗜️ Tanimë ngjishen edhe figurat PNG (foto ekrani!)\n\n⌨️ Për Zhvillues: Aplikacione më të mirë për fjalosje me sendToChat() dhe importFiles() (Çfarë është Webxdc? → https://webxdc.org)\n\n… dhe më tepër te %1$s</string>
     <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
     <string name="update_1_38_ios">U hodh në qarkullim 1.38:\n\n🖼🔍 Ju ka qëlluar të kërkoni për një figurë dhe të mos ju kujtohet fjalosja? Po qe kështu, butoni “Krejt Mediat” është për ju!\n\n🧹 “Spastro Fjalosje” prej profilesh\n\n📎 U hoq kufiri i sipërm për madhësi figurash\n\n🗜️ Tanimë ngjishen edhe figurat PNG (foto ekrani!)\n\n… dhe më tepër te %1$s</string>
-
 </resources>

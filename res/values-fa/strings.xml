@@ -379,7 +379,6 @@ https://meet.jit.si/$ROOM
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
     <string name="chat_new_one_to_one_hint">ارسال پیام. مشکلی نیست اگر %1$s از دلتاچت استفاده نمی‌کند.</string>
-    <string name="chat_new_broadcast_hint">در فهرست پخش، دیگران پیام‌ها را در گپ‌های خصوصی با شما دریافت می‌کنند.\n\nگیرنده‌ها از یکدیگر خبر نخواهند داشت. </string>
     <string name="chat_new_group_hint">نوشتن اولین پیام به دیگران امکان می‌دهد در این گروه پاسخ دهند. \n\n• مشکلی نیست اگر همه اعضا از دلتاچت استفاده نکنند\n\n• دریافت اولین پیام ممکن است به زمان بیشتری نیاز داشته باشد. </string>
     <string name="chat_record_slide_to_cancel">برای لغو بکشید.</string>
     <string name="chat_record_explain">برای ضبط پیام صوتی فشار داده و نگهدارید، برای ارسال رها کنید. </string>
@@ -835,13 +834,6 @@ https://meet.jit.si/$ROOM
     <string name="ephemeral_timer_weeks_by_you">زمان‌سنج ناپدید شدن پیام‌ها را روی %1$s هفته تنظیم کردید.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_weeks_by_other">زمان‌سنج ناپدید شدن پیام‌ها توسط %2$s روی %1$s هفته تنظیم شد.</string>
-    <string name="protection_enabled_by_you">محافظ چت را فعال کردید.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="protection_enabled_by_other">محافظ چت توسط %1$s فعال شد.</string>
-    <string name="protection_disabled_by_you">محافظ چت را غیرفعال کردید.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="protection_disabled_by_other">محافظ چت توسط %1$s غیرفعال شد.</string>
-
     <string name="devicemsg_self_deleted">شما گپ «پیام‌های ذخیره شده» را پاک کردید.\n\nℹ️ برای استفادهٔ دوباره از «پیام‌های ذخیره شده» کافی است یک گپ جدید با خودتان درست کنید. </string>
     <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
     <string name="devicemsg_storage_exceeding">هشدار⚠️، میزان فضای در دسترس ارایه‌دهنده شما در حال تمام شدن است. %1$s از %% استفاده شده است. 
@@ -1094,10 +1086,6 @@ GNU GPL ورژن ۳
 
     <!-- device messages for updates -->
     <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
-    <string name="update_1_36_android">نکات برجسته ۱.۳۶/n/n💻📱 از دلتاچت در همه دستگاه‌های خود به راحتی استفاده کنید - فقط سه مرحله ساده را در \"تنظیمات / افزودن دستگاه دوم\" (تجربی) دنبال کنید/n/n🖼🔍 آیا تا به حال به دنبال 1 تصویر هستید و نمی توانید چت را به یاد بیاورید؟ \"همه رسانه\" از منوی اصلی متعلق به شماست!/n/nچه چیز دیگری؟ اعلان ها برای همه حساب‌ها، پاک کردن چت، و موارد دیگر در %1$s</string>
-    <!-- placeholder will be replaced by the URL https://delta.chat/en/2023-03-27-third-independent-security-audit -->
-    <string name="update_1_36_audit">ما در اینجا زیاد در مورد امنیت صحبت نمی کنیم، اما مطمئن باشید، ما اهمیت می دهیم: برای اخبار خوب اخیر به %1$s مراجعه کنید 👌</string>
-    <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
     <string name="update_1_38_android">نسخه ۱.۳۸ بیرون اومده:\n\n
 📎 حد بیشینه پیوست‌ها حذف شده\n\n
 🗜️ تصویر‌های پی‌ان‌جی(نماگرفت‌ها!) الآن بخوبی فشرده می‌شوند\n\n
@@ -1113,5 +1101,4 @@ GNU GPL ورژن ۳
 تصاویر پی‌ان‌جی (نماگرفت‌ها!) هم‌اکنون به‌خوبی فشرده می‌شوند
 \n\n…
 و بیشتر در %1$s</string>
-
 </resources>

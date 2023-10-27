@@ -351,7 +351,6 @@
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
     <string name="chat_new_one_to_one_hint">Envieu un missatge. No hi fa pas res si %1$s no fa servir Delta Chat.</string>
-    <string name="chat_new_broadcast_hint">En una llista de difusió, els altres reben els missatges en els seus xats privats amb vostè.\n\nEls destinataris no podran veure\'s entre ells.</string>
     <string name="chat_new_group_hint">Escriviu el primer missatge i així els altres podran respondre a tot el grup.\n\n• No patiu si hi ha membres que no fan servir Delta Chat.\n\n• El lliurament del primer missatge pot trigar una estona.</string>
     <string name="chat_record_slide_to_cancel">Llisca per cancel·lar</string>
     <string name="chat_record_explain">Mantingues premut per gravar un missatge de veu i deixa anar per enviar-lo</string>

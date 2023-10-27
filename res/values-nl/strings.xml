@@ -376,7 +376,6 @@
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
     <string name="chat_new_one_to_one_hint">Verstuur een bericht. %1$s hoeft voor dit gesprek geen gebruik te maken van Delta Chat.</string>
-    <string name="chat_new_broadcast_hint">Als je een verzendlijst maakt, dan onhvangen anderen bericht van jou in hun privégesprekken.\n\nDe ontvangers kunnen elkaar echter niet zien.</string>
     <string name="chat_new_group_hint">Stel het eerste bericht op, zodat anderen binnen deze groep kunnen reageren.</string>
     <string name="chat_record_slide_to_cancel">Veeg opzij om te annuleren</string>
     <string name="chat_record_explain">Houdt ingedrukt om een spraakbericht op te nemen; laat los om te versturen</string>
@@ -831,13 +830,6 @@
     <string name="ephemeral_timer_weeks_by_you">Je hebt de tijdklok van verdwijnende berichten ingesteld op %1$s weken.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_weeks_by_other">De tijdklok van verdwijnende berichten is door %2$s ingesteld op %1$s weken.</string>
-    <string name="protection_enabled_by_you">Je hebt gespreksbeveiliging ingeschakeld.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="protection_enabled_by_other">Gespreksbeveiliging is ingeschakeld door %1$s.</string>
-    <string name="protection_disabled_by_you">Je hebt gespreksbeveiliging uitgeschakeld.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="protection_disabled_by_other">Gespreksbeveiliging is uitgeschakeld door %1$s.</string>
-
     <string name="devicemsg_self_deleted">Je hebt het gesprek ‘Opgeslagen berichten’ verwijderd.\n\nℹ️ Als je weer gebruik wilt maken van deze functie, begin dan een nieuw gesprek met jezelf.</string>
     <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
     <string name="devicemsg_storage_exceeding">⚠️ De opslagruimte die je provider je biedt is bijna overschreden - momenteel heb je %1$s%% ervan in gebruik.\n\nAls je alle ruimte verbruikt hebt, kun je mogelijk geen berichten meer ontvangen.\n\n👉 Kijk of je oude gegevens kunt verwijderen in de webclient van je provider. Overweeg ook ‘Instellingen --> Oude berichten verwijderen’ in te schakelen. Je kunt je huidige gebruik te allen tijde bekijken in ‘Instellingen --> Verbindingen’.</string>
@@ -1064,12 +1056,7 @@
 
     <!-- device messages for updates -->
     <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
-    <string name="update_1_36_android">1.36 - Kenmerken\n\n💻📱 Gebruik Delta Chat eenvoudig op ál je apparaten aan de hand van drie stappen via ‘Instellingen → Tweede apparaat toevoegen’ (experimenteel)\n\n🖼🔍 Heb je wel eens een afbeelding proberen te vinden, maar wist je niet meer in welk gesprek deze stond? ‘Alle media’ in het hoofdmenu is je nieuwe beste vriend!\n\nWat nog meer? Meldingen van alle accounts, gesprekken wissen en meer op %1$s</string>
-    <!-- placeholder will be replaced by the URL https://delta.chat/en/2023-03-27-third-independent-security-audit -->
-    <string name="update_1_36_audit">We delen nooit zoveel omtrent beveiliging, maar geen zorgen: op %1$s is goed nieuws te lezen! 👌</string>
-    <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
     <string name="update_1_38_android">1.38 is uitgebracht:\n\n📎 Het maximale bijlagelimiet is opgeheven\n\n🗜️ Png-afbeeldingen (schermfoto\'s!) worden voortaan ook verkleind\n\n⌨️ Voor ontwikkelaars: verbeterde apps in chats met behulp van sendToChat() en importFiles() (Wat is Webxdc? → https://webxdc.org)\n\n… en meer op %1$s</string>
     <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
     <string name="update_1_38_ios">1.38 is uitgebracht:\n\n🖼🔍 Op zoek naar een afbeelding, maar vergeten in welk gesprek die stond? Zoek niet langer: je hebt nu de knop ‘Alle media’ tot je beschikking!\n\n🧹 ‘Gesprek wissen’ kan voortaan vanuit profielen\n\n📎 Het maximale bijlagelimiet is opgeheven\n\n🗜️ Png-afbeeldingen (schermfoto\'s!) worden voortaan ook verkleind\n\n… en meer op %1$s</string>
-
 </resources>

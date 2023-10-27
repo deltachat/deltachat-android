@@ -346,7 +346,6 @@
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
     <string name="chat_new_one_to_one_hint">%1$s에게 메시지를 보냅니다. Delta Chat 없이도 메시지를 받을 수 있습니다.</string>
-    <string name="chat_new_broadcast_hint">방송 목록에서 다른 사용자는 사용자와의 개인 대화에서 메시지를 수신합니다.\n\n수신자가 서로를 인식하지 못합니다.</string>
     <string name="chat_new_group_hint">당신이 첫 번째 메시지를 보낸 후에만 다른 사용자들이 이 그룹을 볼 것입니다.</string>
     <string name="chat_record_slide_to_cancel">밀어서 취소</string>
     <string name="chat_record_explain">꾹 눌러 음성 메시지를 녹음하고, 떼서 보내시오</string>
@@ -745,13 +744,6 @@
     <string name="ephemeral_timer_weeks_by_you">사라지는 메시지 타이머를 %1$s주로 설정함.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_weeks_by_other">%2$s가 사라지는 메시지 타이머를 %1$s주로 설정함.</string>
-    <string name="protection_enabled_by_you">채팅 보호를 활성화했습니다.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="protection_enabled_by_other">%1$s에 의해 대화 보호가 활성화되었습니다.</string>
-    <string name="protection_disabled_by_you">채팅 보호를 비활성화했습니다.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="protection_disabled_by_other">%1$s에 의해 대화 보호가 비활성화되었습니다.</string>
-
     <string name="devicemsg_self_deleted">저장된 메시지 대화를 삭제했습니다.\n\nℹ️\"저장된 메시지\" 기능을 다시 사용하려면 자신과의 대화를 새로 만드십시오.</string>
     <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
     <string name="devicemsg_storage_exceeding">⚠️ 공급자의 저장공간이 곧 고갈될 예정입니다. %1$s%%가 이미 사용 중입니다.\n\n저장공간이 가득 찬 경우 메시지를 수신하지 못할 수 있습니다.\n\n👉 공급자의 웹 인터페이스에서 이전 데이터를 삭제할 수 있는지 확인하고 \"설정 / 이전 메시지 삭제\"를 활성화하는 것을 고려하십시오. \"설정/연결\"에서 언제든지 현재 저장공간 사용량을 확인할 수 있습니다.</string>

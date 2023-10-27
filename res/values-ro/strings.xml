@@ -385,7 +385,6 @@
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
     <string name="chat_new_one_to_one_hint">Trimiteți un mesaj către %1$s; ei îl pot primi chiar și fără Delta Chat.</string>
-    <string name="chat_new_broadcast_hint">Într-o listă de difuzare, alte persoane vor primi mesaje în discuțiile lor private cu dumneavoastră.\n\nDestinatarii nu se vor cunoaște între ei.</string>
     <string name="chat_new_group_hint">Ceilalți vor vedea acest grup numai după ce ați trimis un prim mesaj.</string>
     <string name="chat_record_slide_to_cancel">Glisați pentru a anula</string>
     <string name="chat_record_explain">Atingeți continuu pentru a înregistra un mesaj vocal, apoi eliberați-l pentru a-l trimite</string>

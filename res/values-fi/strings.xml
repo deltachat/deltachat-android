@@ -362,7 +362,6 @@
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
     <string name="chat_new_one_to_one_hint">Lähetä viesti. Ei haittaa, vaikka %1$s ei käyttäisi Delta Chatia.</string>
-    <string name="chat_new_broadcast_hint">Kuulutuslistalla olevat saavat viestisi yksityisviesteinä sinulta.\n\nVastaanottajat eivät tiedä toisistaan.</string>
     <string name="chat_new_group_hint">Muut näkevät ryhmän vasta, kun lähetät ensimmäisen viestin.</string>
     <string name="chat_record_slide_to_cancel">Pyyhkäise peruuttaaksesi</string>
     <string name="chat_record_explain">Pidä painettuna nauhoittaaksesi ääniviestin, irrota lähettääksesi</string>
@@ -783,13 +782,6 @@
     <string name="ephemeral_timer_weeks_by_you">Katoavien viestien ajastin asetettu %1$s viikkoon minun toimestani.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_weeks_by_other">Katoavien viestien ajastin asetettu %1$s viikkoon käyttäjän %2$s toimesta.</string>
-    <string name="protection_enabled_by_you">Keskustelusuojaus käytössä minun toimestani.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="protection_enabled_by_other">Keskustelusuojaus käytössä käyttäjän %1$s toimesta.</string>
-    <string name="protection_disabled_by_you">Keskustelusuojaus poistettu minun toimestani.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="protection_disabled_by_other">Keskustelusuojaus poistettu käyttäjän %1$s toimesta.</string>
-
     <string name="devicemsg_self_deleted">Poistit \"Tallennetut viestit\" -keskustelun.\n\nℹ️ Käyttääksesi \"Tallennetut viestit\" -ominaisuutta jälleen, aloita uusi keskustelu itsesi kanssa.</string>
     <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
     <string name="devicemsg_storage_exceeding">⚠️ Palveluntarjoajasi tallennuskiintiö ylitetään pian, käytössä on jo %1$s / %%.\n\nEt välttämättä enää voi vastaanottaa viestejäsi, kun 100 %% on käytössä.\n\n👉 Kokeile poistaa viestejä palveluntarjoajasi internetkäyttöliittymästä. Kannattaa myös ehkä kytkeä päälle \"Asetukset / Poista vanhat viestit\". Voit tarkistaa tämän hetkisen tallennustilan käytön \"Asetukset / Yhteys\".</string>

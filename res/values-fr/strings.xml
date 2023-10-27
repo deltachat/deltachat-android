@@ -391,7 +391,6 @@
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
     <string name="chat_new_one_to_one_hint">Envoyez un message. Il n\'y a pas de problème si %1$s n\'utilise pas Delta Chat.</string>
-    <string name="chat_new_broadcast_hint">Dans une liste de diffusion, les autres personnes recevront les messages dans leur discussion directe/privée avec vous.\n\nLes destinataires ne pourront pas se voir entre eux.</string>
     <string name="chat_new_group_hint">Les autres participants ne verront ce groupe qu\'après que vous avez envoyé un premier message.</string>
     <string name="chat_record_slide_to_cancel">Glisser pour annuler</string>
     <string name="chat_record_explain">Appuyer et maintenir pour enregistrer un message vocal, relâcher pour l’envoyer</string>
@@ -849,13 +848,6 @@
     <string name="ephemeral_timer_weeks_by_you">Vous avez réglé le temps d\'affichage des messages éphémères à %1$s semaines.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_weeks_by_other">Minuterie des messages éphémères réglée à %1$s semaines par %2$s.</string>
-    <string name="protection_enabled_by_you">Vous avez activé la protection de discussion.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="protection_enabled_by_other">Protection de discussion activée par %1$s.</string>
-    <string name="protection_disabled_by_you">Vous avez désactivé la protection de discussion.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="protection_disabled_by_other">Protection de discussion désactivée par %1$s.</string>
-
     <string name="devicemsg_self_deleted">Vous avez supprimé la discussion \"Messages sauvegardés\".\n\nℹ️ Pour utiliser la fonctionnalité \"Message enregistrés\" à nouveau, commencez une nouvelle discussion avec vous-même.</string>
     <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
     <string name="devicemsg_storage_exceeding">⚠️ Bientôt plus d\'espace de stockage chez votre fournisseur, %1$s%% utilisés.\n\nVous ne serez peut-être plus en mesure de recevoir des messages quand votre espace de stockage sera plein.\n\n👉 Veuillez vérifier si vous avez d\'anciens éléments à supprimer directement sur l\'interface web de votre fournisseur et envisagez d\'activer \"Paramètres / Supprimer les anciens messages\". Vous pouvez vérifier à tout moment le volume d\'espace de stockage en cours d\'utilisation depuis \"Paramètres / Connectivité\".</string>
@@ -1087,12 +1079,7 @@
 
     <!-- device messages for updates -->
     <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
-    <string name="update_1_36_android">1.36 Nouveautés\n\n💻📱 Utilisez Delta Chat sur tous vos appareils, en trois étapes simples. Rendez-vous dans \"Paramètres / Ajouter un deuxième appareil\" (expérimental) !\n\n🖼🔍 Il vous est déjà arrivé de chercher une image sans pouvoir retrouver la bonne discussion ? L\'option \"Tous les médias\" du menu principal est faite pour vous !\n\nQuoi d\'autre ? Des notifications pour tous vos comptes, la possibilité de vider entièrement les discussions, et plus encore %1$s</string>
-    <!-- placeholder will be replaced by the URL https://delta.chat/en/2023-03-27-third-independent-security-audit -->
-    <string name="update_1_36_audit">Nous n\'avons pas beaucoup parlé de sécurité, mais pas d\'inquiétude, nous nous en occupons toujours ! Lisez les dernières bonnes nouvelles sur %1$s👌</string>
-    <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
     <string name="update_1_38_android">La version 1.38 est disponible !\n\n📎 La limitation de taille maximale des pièces jointes est supprimée\n\n🗜️ Maintenant, les images PNG (captures d\'écran !) aussi sont compressées.\n\n⌨️ Côté développement : de meilleures applications pour les discussions avec sendToChat() et importFiles() (Qu\'est-ce que Webxdc ? → https://webxdc.org)\n\n… Plus de détails sur les nouveautés : %1$s</string>
     <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
     <string name="update_1_38_ios">La version 1.38 est disponible !\n\n🖼🔍 S\'il vous est déjà arrivé de chercher une image sans vous souvenir de la discussion où elle se trouve, alors le bouton \"Tous les fichiers multimédia\" est fait pour vous !\n\n🧹 Dans les options de profil, un nouveau bouton : \"Vider la discussion\".\n\n📎 La limitation de taille maximale des pièces jointes est supprimée\n\n🗜️ Maintenant, les images PNG (captures d\'écran !) aussi sont compressées\n\n… et plus de nouveautés sur %1$s</string>
-
 </resources>

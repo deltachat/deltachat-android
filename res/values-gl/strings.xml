@@ -368,7 +368,6 @@
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
     <string name="chat_new_one_to_one_hint">Envía unha mensaxe. Funciona incluso se %1$s non usa Delta Chat.</string>
-    <string name="chat_new_broadcast_hint">Nas listas de difusión, as correspondentes recibirán mensaxes en chats privados contigo.\n\nAs correspondentes non saberán unhas das outras.</string>
     <string name="chat_new_group_hint">Escribe a primeira mensaxe, permita a outras responder a este grupo.\n\n• Da igual se outros membros non utilizan Delta Chat.\n\n• A entrega da primeira mensaxe podería demorarse un pouco.</string>
     <string name="chat_record_slide_to_cancel">Desliza para cancelar</string>
     <string name="chat_record_explain">Toca e mantén para gravar mensaxe de voz, solta para enviar</string>

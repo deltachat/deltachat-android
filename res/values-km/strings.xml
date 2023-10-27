@@ -321,7 +321,6 @@
     <plurals name="chat_n_new_messages">
         <item quantity="other">មានសារថ្មី %d</item>
     </plurals>
-    <string name="chat_new_broadcast_hint">នៅក្នងបញ្ជីចាក់ផ្សាយ អ្នកផ្សេងទៀតនឹងទទួលសារ ក្នុងការជជែកជាឯកជនរបស់ពួកគេ ជាមួយអ្នក។\n\nអ្នកទទួល នឹងមិនស្គាល់គ្នាទេ។</string>
     <string name="chat_new_group_hint">បង្កើតសារដំបូងនឹងអនុញ្ញាតិឲ្យអ្នកផ្សេងទៀតឆ្លើយតបនៅក្នុងក្រុមនេះ។\n\n• មិនអីទេ ប្រសិនបើមិនមែនសមាជិកទាំងអស់ប្រើប្រាស់សា Delta Chat ។\n\n• ការទទួលបានសារដំបូងអាចចំណាយពេលមួយស្របក់។</string>
     <string name="chat_record_slide_to_cancel">អូសដើម្បីផ្អាកសិន</string>
     <string name="chat_record_explain">ប៉ៈ និងសង្កត់ដើម្បីថតសារសម្លេង លែងដើម្បីផ្ញើ។</string>
@@ -710,13 +709,6 @@
     <string name="ephemeral_timer_weeks_by_you">កម្មវិធីសារដែលនឹងបាត់បន្ទាប់ពីមួយរយៈបាន កំណត់ទៅ %1$s ថ្ងៃ។ ដោយខ្ញុំ</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_weeks_by_other">កម្មវិធីសារដែលនឹងបាត់បន្ទាប់ពីមួយរយៈបាន កំណត់ទៅ %1$s ថ្ងៃ។ ដោយ %2$s</string>
-    <string name="protection_enabled_by_you">ការការពារសន្ទនាត្រូវបានបើក ដោយខ្ញុំ</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="protection_enabled_by_other">ការការពារសន្ទនាត្រូវបានបើក ដោយ %1$s</string>
-    <string name="protection_disabled_by_you">ការការពារសន្ទនាត្រូវបានបិទ ដោយខ្ញុំ</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="protection_disabled_by_other">ការការពារសន្ទនាត្រូវបានបិទ ដោយ %1$s</string>
-
     <string name="devicemsg_self_deleted">អ្នកបានលុប \"សារដែលបានរក្សាទុក\" សន្ទនា។\n\nℹ️ ដើម្បីប្រើមុខងារ \"សារដែលបានរក្សាទុក\" ជាថ្មីម្តងទៀត សូមបង្កើតសន្ទនាថ្មីជាមួយខ្លួនអ្នក។</string>
     <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
     <string name="devicemsg_storage_exceeding">⚠️️ឃ្លាំងផ្ទុករបស់កម្មវិធីផ្តល់សេវាឲ្យអ្នក ជិតអស់ហើយត្រូវបានប្រើ %1$s%% រួចហើយ។\n\n អ្នកប្រហែលជាមិនអាចទទួលបានសារទេនៅពេលប្រើទំហំផ្ទុក ១០០%% ។\n\n👉 សូមពិនិត្យមើលថាតើ អ្នកអាចលុបទិន្នន័យចាស់នៅក្នុងចំណុចប្រទាក់គេហទំព័ររបស់កម្មវិធីផ្តល់សេវាកម្មហើយពិចារណាបើក \"ការកំណត់ / លុបសារចាស់ \"។ អ្នកអាចពិនិត្យមើលការប្រើប្រាស់ទំហំផ្ទុកបច្ចុប្បន្នរបស់អ្នកបានគ្រប់ពេលនៅ \"ការកំណត់ / ការតភ្ជាប់និងសេវាកម្ម\" ។</string>

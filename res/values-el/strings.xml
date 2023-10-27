@@ -362,7 +362,6 @@
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
     <string name="chat_new_one_to_one_hint">Στείλτε ένα μήνυμα σε %1$s, και μπορούν να το λάβουν ακόμη και χωρίς Delta Chat.</string>
-    <string name="chat_new_broadcast_hint">Σε μια λίστα εκπομπών, άλλοι θα λαμβάνουν μηνύματα στις ιδιωτικές συνομιλίες τους μαζί σας.\n\nΟι παραλήπτες δεν θα γνωρίζουν ο ένας τον άλλον.</string>
     <string name="chat_new_group_hint">Οι άλλοι θα δουν αυτήν την ομάδα μόνο αφού στείλετε ένα πρώτο μήνυμα.</string>
     <string name="chat_record_slide_to_cancel">Σύρε για ακύρωση</string>
     <string name="chat_record_explain">Πάτα και κράτα πατημένο για να ηχογραφήσεις ένα φωνητικό μήνυμα, άφησε το κουμπί για αποστολή</string>
@@ -783,13 +782,6 @@
     <string name="ephemeral_timer_weeks_by_you">Όρισες το χρόνο εξαφάνισης των μηνυμάτων σε %1$s εβδομάδες.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_weeks_by_other">Ο/Η %2$s όρισε το χρόνο εξαφάνισης των μηνυμάτων σε %1$s εβδομάδες.</string>
-    <string name="protection_enabled_by_you">Ενεργοποιήσατε την προστασία συνομιλίας.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="protection_enabled_by_other">Η προστασία συνομιλίας ενεργοποιήθηκε από %1$s.</string>
-    <string name="protection_disabled_by_you">Απενεργοποιήσατε την προστασία συνομιλίας.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="protection_disabled_by_other">Η προστασία συνομιλίας απενεργοποιήθηκε από %1$s.</string>
-
     <string name="devicemsg_self_deleted">Διαγράψατε τη συνομιλία \"Αποθηκευμένα μηνύματα\".\n\nℹ️ Για να χρησιμοποιήσετε ξανά τη λειτουργία \"Αποθηκευμένα μηνύματα\", δημιουργήστε μια νέα συνομιλία με τον εαυτό σας.</string>
     <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
     <string name="devicemsg_storage_exceeding">⚠️ Ο αποθηκευτικός χώρος του παρόχου σας πρόκειται να εξαντληθεί: %1$s %% χρησιμοποιούνται ήδη.\n\nΕνδέχεται να μην μπορείτε να λαμβάνετε μηνύματα εάν ο χώρος αποθήκευσης είναι πλήρης.\n\n👉 Ελέγξτε εάν μπορείτε να διαγράψετε παλιά δεδομένα στη διεπαφή ιστού του παρόχου και εξετάστε το ενδεχόμενο ενεργοποίηση \"Ρυθμίσεις / Διαγραφή παλαιών μηνυμάτων\". Μπορείτε να ελέγξετε την τρέχουσα χρήση αποθηκευτικού χώρου ανά πάσα στιγμή στις \"Ρυθμίσεις / Συνδεσιμότητα\".</string>
