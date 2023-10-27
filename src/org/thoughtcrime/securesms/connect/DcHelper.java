@@ -459,7 +459,13 @@ public class DcHelper {
   }
 
   public static void showProtectionEnabledDialog(Context context) {
-    IntentUtils.showBrowserIntent(context, "https://staging.delta.chat/733/en/help#verifiedchats");
+    new AlertDialog.Builder(context)
+            .setMessage(context.getString(R.string.chat_protection_enabled_explanation))
+            .setNeutralButton(R.string.learn_more, (d, w) -> IntentUtils.showBrowserIntent(context, "https://staging.delta.chat/733/en/help#verifiedchats"))
+            .setNegativeButton(R.string.qrscan_title, (d, w) -> context.startActivity(new Intent(context, QrActivity.class)))
+            .setPositiveButton(R.string.ok, null)
+            .setCancelable(true)
+            .show();
     // One day, it would be nice to point the user to the local help:
     //context.startActivity(new Intent(context, LocalHelpActivity.class));
   }

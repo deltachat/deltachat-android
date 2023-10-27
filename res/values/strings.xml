@@ -838,6 +838,7 @@
     <!-- this may be shown instead of the chat's input field, with buttons "More Info" and "OK" -->
     <string name="chat_protection_broken">%1$s sent a message from another device.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">Messages are guaranteed to be end-to-end encrypted from now on. Tap to learn more.</string>
+    <string name="chat_protection_enabled_explanation">It is now guaranteed that all messages in this chat are end-to-end encrypted.\n\nEnd-to-end encryption keeps your personal messages between you and your chat partners. Not even your email server can read them.</string>
     <string name="chat_protection_broken_tap_to_learn_more">%1$s sent a message from another device. Tap to learn more.</string>
     <string name="chat_protection_broken_explanation">End-to-end encryption cannot be guaranteed anymore, likely because %1$s reinstalled Delta Chat or sent a message from another device.\n\nYou may meet them in person and scan their QR Code again to reestablish guaranteed end-to-end encryption.</string>
     <string name="learn_more">Learn More</string>
