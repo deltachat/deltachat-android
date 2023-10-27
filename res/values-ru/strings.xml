@@ -674,6 +674,8 @@
     <string name="pref_manage_keys">Управление ключами</string>
     <string name="pref_use_system_emoji">Использовать системные эмодзи</string>
     <string name="pref_use_system_emoji_explain">Отключить поддержку встроенных эмодзи Delta Chat</string>
+    <string name="pref_use_inapp_camera">Использовать камеру в приложении</string>
+    <string name="pref_use_inapp_camera_explain">Камера в приложении обычно имеет меньше функций, чем системная</string>
     <string name="pref_app_access">Доступ приложения</string>
     <string name="pref_chats">Чаты</string>
     <string name="pref_in_chat_sounds">Звуки в чате</string>
@@ -749,6 +751,9 @@
     <string name="emoji_objects">Объекты</string>
     <string name="emoji_symbols">Символы</string>
     <string name="emoji_flags">Флаги</string>
+
+    <!-- Reactions -->
+    <string name="reactions">Реакции</string>
 
     <!-- automatically delete message -->
     <string name="delete_old_messages">Удалить старые сообщения</string>
@@ -924,6 +929,7 @@
     <string name="contact_not_verified">Невозможно подтвердить %1$s</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that verified the contact shown. -->
     <string name="verified_by">Верифицирован %1$s</string>
+    <string name="verified_by_you">Проверено вами</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Изменены параметры для %1$s</string>
     <string name="verified_group_explain">Проверенные группы (экспериментальная функция) защищены от активных атак. Участники проверяются с помощью второго фактора другими участниками и сообщения всегда передаются посредством cквозного шифрования.</string>
@@ -943,6 +949,9 @@
     <string name="notify_name_and_message">Имя и сообщение</string>
     <string name="notify_name_only">Только имя</string>
     <string name="notify_no_name_or_message">Без имени или сообщения</string>
+    <string name="notifications_disabled">Уведомления отключены</string>
+
+
     <!-- permissions -->
     <string name="perm_required_title">Требуется разрешение</string>
     <string name="perm_continue">Продолжить</string>
@@ -950,6 +959,8 @@
     <string name="perm_explain_access_to_mic_denied">Для отправки аудио сообщений приложению Delta Chat нужно разрешение использовать микрофон, но сейчас микрофон заблокирован. Перейдите в меню настроек приложения, выберите \"Разрешения приложений\" и включите \"Микрофон\".</string>
     <string name="perm_explain_access_to_storage_denied">Для вложения или экспорта фотографий, видео или аудио файлов в Delta Chat требуется доступ к памяти устройства, однако в этом разрешении было отказано навсегда. Перейдите в меню настроек приложения, выберите \"Разрешения приложений\" и включите \"Память\".</string>
     <string name="perm_explain_access_to_location_denied">Чтобы передать местоположение приложению Delta Chat нужно разрешить доступ к нему, но сейчас он заблокирован. Перейдите в меню настроек приложения, выберите \"Разрешения приложений\" и включите \"Местоположение\".</string>
+    <string name="perm_explain_access_to_notifications_denied">Чтобы получать уведомления, перейдите в «Системные настройки» > «Приложения» > «Delta Chat» и включите «Уведомления».</string>
+
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Рисуйте, чтобы размывать</string>
     <string name="ImageEditorHud_add_text">Добавить текст</string>
