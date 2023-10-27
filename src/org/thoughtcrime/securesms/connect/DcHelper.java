@@ -459,7 +459,7 @@ public class DcHelper {
   }
 
   public static void showProtectionEnabledDialog(Context context) {
-    IntentUtils.showBrowserIntent(context, "https://staging.delta.chat/684/en/help#whatdoesverifiedmean");
+    IntentUtils.showBrowserIntent(context, "https://staging.delta.chat/733/en/help#verifiedchats");
     // One day, it would be nice to point the user to the local help:
     //context.startActivity(new Intent(context, LocalHelpActivity.class));
   }
