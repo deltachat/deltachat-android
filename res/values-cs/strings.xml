@@ -636,13 +636,6 @@
     <string name="ephemeral_timer_weeks_by_you">Samomazací zprávy vyprší po %1$s týdnech ode mě.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_weeks_by_other">Samomazací zprávy vyprší po %1$s týdnech od %2$s.</string>
-    <string name="protection_enabled_by_you">Ochrana rozhovoru zapnuta ode mě.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="protection_enabled_by_other">Ochrana rozhovoru zapnuta od %1$s.</string>
-    <string name="protection_disabled_by_you">Ochrana rozhovoru vypnuta ode mě.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="protection_disabled_by_other">Ochrana rozhovoru vypnuta od %1$s.</string>
-
     <!-- qr code stuff -->
     <string name="qr_code">QR kód</string>
     <string name="load_qr_code_as_image">Nahraj QR kód z obrázku</string>

@@ -392,7 +392,6 @@
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
     <string name="chat_new_one_to_one_hint">Pošlite správu. Je v poriadku ak%1$s nepoužíva Delta Chat.</string>
-    <string name="chat_new_broadcast_hint">V zozname rozosielania, ostatní budú dostávať správy do ich súkromných konverzácií s vami.\n\nPríjemcovia o sebe navzájom nebudú vedieť</string>
     <string name="chat_new_group_hint">Vytvorte prvú správu a umožnite ostatným odpovedať v rámci tejto skupiny.\n\n• Je v poriadku, ak nie všetci členovia používajú Delta Chat.\n\n• Doručenie prvej správy môže chvíľu trvať.</string>
     <string name="chat_record_slide_to_cancel">Posunutím akciu zrušíte</string>
     <string name="chat_record_explain">Klepnutím a podržaním nahráte hlasovú správu, uvoľnením ju odošlete</string>
@@ -809,13 +808,6 @@
     <string name="ephemeral_timer_weeks_by_you">Časovač zmiznutia správ nastavený na %1$s týždne mnou.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_weeks_by_other">Časovač zmiznutia správ nastavený na %1$s týždne od %2$s.</string>
-    <string name="protection_enabled_by_you">Ochrana konverzácií je zapnutá mnou.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="protection_enabled_by_other">Ochrana konverzácií je zapnutá od %1$s.</string>
-    <string name="protection_disabled_by_you">Ochrana konverzácií je vypnutá mnou.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="protection_disabled_by_other">Ochrana konverzácií je vypnutá od %1$s.</string>
-
     <string name="devicemsg_self_deleted">Odstránili ste konverzáciu \"Uložené správy\".\n\nℹ️ Aby ste využili funkciu \"Uložené správy\" znova, vytvorte novú konverzáciu so sebou.</string>
     <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
     <string name="devicemsg_storage_exceeding">⚠️ Úložisko vašeho poskytovateľa čoskoro prekročí limit, už%1$s%%  sú využité.\n\n Je možné, že nebudete môcť prijímať správy, ak bude úložisko 100 %% využité.\n\n👉 Prosím skontrolujte, či môžete vo webovom rozhraní poskytovateľa vymazať staré údaje, a zvážte aktiváciu „Nastavenia / Odstrániť Staré Správy“. Aktuálne využitie úložiska si môžete kedykoľvek skontrolovať v časti „Nastavenia / Pripojenie“. </string>

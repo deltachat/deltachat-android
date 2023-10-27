@@ -391,7 +391,6 @@
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
     <string name="chat_new_one_to_one_hint">Invia un messaggio. Va bene se %1$s non utilizza Delta Chat.</string>
-    <string name="chat_new_broadcast_hint">In una lista trasmissione, gli altri riceveranno i messaggi nelle loro chat private con te.\n\nI destinatari non saranno a conoscenza l\'uno dell\'altro.</string>
     <string name="chat_new_group_hint">Invia il primo messaggio per permettere agli altri di rispondere nel gruppo\n\n• Non è necessario che tutti i membri usino Delta Chat.\n\n• L\'invio del primo messaggio può richiedere qualche istante.</string>
     <string name="chat_record_slide_to_cancel">Scorri per annullare</string>
     <string name="chat_record_explain">Tocca e mantieni per registrare un messaggio vocale, rilascia per inviare </string>
@@ -849,13 +848,6 @@
     <string name="ephemeral_timer_weeks_by_you">Hai impostato il timer dei messaggi a scomparsa su %1$s settimane.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_weeks_by_other">Timer messaggi a scomparsa impostato su %1$s settimane da %2$s.</string>
-    <string name="protection_enabled_by_you">Hai abilitato la protezione chat.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="protection_enabled_by_other">Protezione chat abilitata da %1$s.</string>
-    <string name="protection_disabled_by_you">Hai disabilitato la protezione chat.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="protection_disabled_by_other">Protezione chat disabilitata da %1$s.</string>
-
     <string name="devicemsg_self_deleted">Hai eliminato la chat \"Messaggi salvati\".\n\nℹ️ Per utilizzare nuovamente la funzione \"Messaggi salvati\", crea una nuova chat con te stesso.</string>
     <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
     <string name="devicemsg_storage_exceeding">⚠️ Lo spazio di archiviazione del tuo fornitore sta per essere superato, già %1$s%% vengono utilizzati.\n\nPotrebbe non essere possibile ricevere messaggi quando lo spazio di archiviazione è 100%% utilizzato.\n\n👉 Si prega di verificare se è possibile eliminare i vecchi dati nell\'interfaccia web del fornitore e considerare di abilitare \"Impostazioni / Elimina Vecchi Messaggi\". Puoi controllare l\'utilizzo corrente dello spazio di archiviazione in qualsiasi momento in \"Impostazioni / Connettività\".</string>
@@ -1087,12 +1079,7 @@
 
     <!-- device messages for updates -->
     <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
-    <string name="update_1_36_android">1.36 In evidenza\n\n💻📱 Utilizza facilmente Delta Chat su tutti i tuoi dispositivi: basta seguire tre semplici passaggi in \"Impostazioni / Aggiungi Secondo Dispositivo\" (sperimentale)\n\n🖼🔍 Hai sempre cercato un\'immagine e non ricordavi la chat ? \"Tutti i Media\" dal menu principale sono tuoi!\n\nCos\'altro? Notifiche per tutti gli account, cancella messaggi e altro su %1$s</string>
-    <!-- placeholder will be replaced by the URL https://delta.chat/en/2023-03-27-third-independent-security-audit -->
-    <string name="update_1_36_audit">Qui non parliamo molto di sicurezza, ma state certi che ci teniamo: Vedere %1$s per le recenti buone notizie 👌</string>
-    <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
     <string name="update_1_38_android">La 1.38 è uscita:\n\n📎 Rimosso il limite massimo di dimensione degli allegati\n\n🗜️ immagini PNG (screenshot!) ora sono anche compresse\n\n⌨️ Per gli sviluppatori: Migliori applicazioni per le chat con sendToChat() e importFiles() (Cos\'è Webxdc? → https://webxdc.org)\n\n... e altro ancora su %1$s</string>
     <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
     <string name="update_1_38_ios">La 1.38 è uscita:\n\n🖼🔍 Mai cercato un\'immagine e non ricordavi la chat? Allora il pulsante \"Tutti i media\" è vostro!\n\n🧹 \"Cancella Messaggi\" dai profili\n\n📎 Rimosso il limite massimo di dimensione degli allegati\n\n🗜️ immagini PNG (screenshot!) ora sono anche compresse\n\n... e altro ancora su %1$s</string>
-
 </resources>

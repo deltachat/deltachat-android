@@ -655,13 +655,6 @@
     <string name="ephemeral_timer_weeks_by_you">Beskeder sat til at udløbe efter %1$s uger af mig.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_weeks_by_other">Beskeder sat til at udløbe efter %1$s uger af %2$s.</string>
-    <string name="protection_enabled_by_you">Chat-beskyttelse sluttet til af mig.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="protection_enabled_by_other">Chat-beskyttelse sluttet til af %1$s.</string>
-    <string name="protection_disabled_by_you">Chat-beskyttelse slået fra af mig.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="protection_disabled_by_other">Chat-beskyttelse slået fra af %1$s.</string>
-
     <!-- qr code stuff -->
     <string name="qr_code">QR kode</string>
     <string name="load_qr_code_as_image">Indlæs QR-kode som billede</string>

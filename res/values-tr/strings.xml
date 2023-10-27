@@ -376,7 +376,6 @@
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
     <string name="chat_new_one_to_one_hint">%1$s kişisine bir ileti gönderin; Delta Chat olmadan bile onu alabilir.</string>
-    <string name="chat_new_broadcast_hint">Bir yayın listesinde, diğerleri sizinle olan özel sohbetlerinde ileti alacak.\n\nAlıcılar birbirinin farkında olmayacak.</string>
     <string name="chat_new_group_hint">Diğerleri, yalnızca siz bir ilk ileti gönderdikten sonra bu öbeği görecek.</string>
     <string name="chat_record_slide_to_cancel">İptal etmek için kaydırın</string>
     <string name="chat_record_explain">Bir sesli ileti kaydetmek için dokunun ve basılı tutun, göndermek için bırakın</string>
@@ -834,13 +833,6 @@
     <string name="ephemeral_timer_weeks_by_you">Kaybolan iletiler zamanlayıcısını %1$s hafta olarak ayarladınız.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_weeks_by_other">%2$s tarafından kaybolan iletiler zamanlayıcısı %1$s hafta olarak ayarlandı.</string>
-    <string name="protection_enabled_by_you">Sohbet korumasını etkinleştirdiniz.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="protection_enabled_by_other">%1$s tarafından sohbet koruması etkinleştirildi.</string>
-    <string name="protection_disabled_by_you">Sohbet korumasını etkisizleştirdiniz.</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="protection_disabled_by_other">%1$s tarafından sohbet koruması etkisizleştirildi.</string>
-
     <string name="devicemsg_self_deleted">\"Kaydedilen iletiler\" sohbetini sildiniz.\n\nℹ️ \"Kaydedilen iletiler\" özelliğini yeniden kullanmak için kendinizle yeni bir sohbet oluşturun.</string>
     <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
     <string name="devicemsg_storage_exceeding">⚠️ Sağlayıcınızın depolama alanı tükenmek üzere: %1$s%% zaten kullanılıyor.\n\nDepolama alanı dolarsa iletileri alamayabilirsiniz.\n\n👉 Lütfen sağlayıcınızın web arabiriminden eski verileri silip silemeyeceğinizi denetleyin ve \"Ayarlar / Eski İletileri Sil\"i etkinleştirmeyi düşünün. Şu anki depolama alanı kullanımınızı herhangi bir zamanda \"Ayarlar / Bağlanabilirlik\"ten denetleyebilirsiniz.</string>
@@ -1072,12 +1064,7 @@
 
     <!-- device messages for updates -->
     <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
-    <string name="update_1_36_android">1.36\'nın Öne Çıkanları\n\n💻📱 Delta Chat\'i aygıtlarınızın tümünde kolayca kullanın - yalnızca \"Ayarlar / İkinci Aygıt Ayarla\"daki üç kolay adımı takip edin (deneysel)\n\n🖼🔍 Hiç bir görsel ararken bir sohbeti anımsayamadığınız oldu mu? Ana menüdeki \"Tüm Ortamlar\" sizin!\n\nBaşka ne var? Tüm hesaplar için bildirimler, sohbet temizleme ve daha fazlası %1$s adresinde</string>
-    <!-- placeholder will be replaced by the URL https://delta.chat/en/2023-03-27-third-independent-security-audit -->
-    <string name="update_1_36_audit">Burada güvenlikten çok söz etmiyoruz ama emin olun önemsiyoruz: En son iyi haberler için %1$s adresine bakın 👌</string>
-    <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
     <string name="update_1_38_android">1.38 çıktı:\n\n📎 İlişiklerin daha yüksek boyut sınırlaması kaldırıldı\n\n🗜️ PNG görselleri (ekran görüntüleri!) de artık sıkıştırılıyor\n\n⌨️ Geliştiriciler için: Sohbetler için sendToChat() ve importFiles() ile uygulamalar (Webxdc nedir? → https://webxdc.org) daha iyi\n\n… ve daha fazlası için %1$s</string>
     <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
     <string name="update_1_38_ios">1.38 çıktı:\n\n🖼🔍 Hiç bir görseli ararken sohbeti anımsayamadığınız oldu mu? Öyleyse \"Tüm Ortamlar\" düğmesi sizin!\n\n🧹 Profillerden \"Sohbeti Temizle\"\n\n📎 İlişiklerin daha yüksek boyut sınırlaması kaldırıldı\n\n🗜️ PNG görselleri (ekran görüntüleri!) de artık sıkıştırılıyor\n\n… ve daha fazlası için %1$s</string>
-
 </resources>

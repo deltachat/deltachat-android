@@ -613,13 +613,6 @@ https://delta.chat</string>
     <string name="ephemeral_timer_weeks_by_you">自分から消えるメッセージを%1$s週間にしました。</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_weeks_by_other">%2$sから消えるメッセージを%1$s週間にしました。</string>
-    <string name="protection_enabled_by_you">自分から保護が有効です。</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="protection_enabled_by_other">%1$sから保護が有効です。</string>
-    <string name="protection_disabled_by_you">自分から保護が無効です。</string>
-    <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="protection_disabled_by_other">%1$sから保護が無効です。</string>
-
     <!-- qr code stuff -->
     <string name="qr_code">QRコード</string>
     <string name="load_qr_code_as_image">QRコードを画像として読み込む</string>
