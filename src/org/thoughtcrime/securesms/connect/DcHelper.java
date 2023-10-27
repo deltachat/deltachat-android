@@ -451,7 +451,7 @@ public class DcHelper {
   public static void showVerificationBrokenDialog(Context context, String name) {
     new AlertDialog.Builder(context)
             .setMessage(context.getString(R.string.chat_protection_broken_explanation, name))
-            .setNeutralButton(R.string.learn_more, (d, w) -> IntentUtils.showBrowserIntent(context, "https://staging.delta.chat/684/en/help#verificationbroken"))
+            .setNeutralButton(R.string.learn_more, (d, w) -> IntentUtils.showBrowserIntent(context, "https://staging.delta.chat/733/en/help#verificationbroken"))
             .setNegativeButton(R.string.qrscan_title, (d, w) -> context.startActivity(new Intent(context, QrActivity.class)))
             .setPositiveButton(R.string.ok, null)
             .setCancelable(true)
@@ -462,7 +462,6 @@ public class DcHelper {
     new AlertDialog.Builder(context)
             .setMessage(context.getString(R.string.chat_protection_enabled_explanation))
             .setNeutralButton(R.string.learn_more, (d, w) -> IntentUtils.showBrowserIntent(context, "https://staging.delta.chat/733/en/help#verifiedchats"))
-            .setNegativeButton(R.string.qrscan_title, (d, w) -> context.startActivity(new Intent(context, QrActivity.class)))
             .setPositiveButton(R.string.ok, null)
             .setCancelable(true)
             .show();
