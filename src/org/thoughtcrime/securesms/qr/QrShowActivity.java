@@ -92,6 +92,9 @@ public class QrShowActivity extends AppCompatActivity {
             case R.id.copy:
                 fragment.copyQrData();
                 break;
+            case R.id.withdraw:
+                fragment.withdrawQr();
+                break;
         }
 
         return false;

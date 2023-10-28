@@ -139,6 +139,9 @@ public class QrActivity extends BaseActionBarActivity {
             case R.id.copy:
                 qrShowFragment.copyQrData();
                 break;
+            case R.id.withdraw:
+                qrShowFragment.withdrawQr();
+                break;
             case R.id.load_from_image:
                 AttachmentManager.selectImage(this, REQUEST_CODE_IMAGE);
                 break;

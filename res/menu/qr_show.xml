@@ -11,4 +11,8 @@
           android:id="@+id/copy"
           app:showAsAction="never"/>
 
+    <item android:title="@string/withdraw_qr_code"
+          android:id="@+id/withdraw"
+          app:showAsAction="never"/>
+
 </menu>
