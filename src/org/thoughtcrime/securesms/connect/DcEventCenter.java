@@ -147,6 +147,10 @@ public class DcEventCenter {
       case DcContext.DC_EVENT_MSGS_NOTICED:
         DcHelper.getNotificationCenter(context).removeNotifications(accountId, event.getData1Int());
         break;
+
+      case DcContext.DC_EVENT_IMEX_PROGRESS:
+        sendToObservers(event);
+        return 0;
     }
 
     if (accountId != context.dcContext.getAccountId()) {

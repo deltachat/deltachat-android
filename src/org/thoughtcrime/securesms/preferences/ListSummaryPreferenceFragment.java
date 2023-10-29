@@ -98,18 +98,38 @@ public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceF
     pref.setSummary(pref.getEntry());
   }
 
-  protected void startImex(int what)
+  protected int [] imexAccounts;
+  protected int accountsDone;
+
+  protected void startImexAll(int what) {
+    imexAccounts = DcHelper.getAccounts(getActivity()).getAll();
+    accountsDone = 0;
+    String path = DcHelper.getImexDir().getAbsolutePath();
+    for (int i = 0; i < imexAccounts.length; i++) {
+      startImexInner(imexAccounts[i], what, path, path);
+    }
+  }
+
+  protected void startImexOne(int what)
   {
     String path = DcHelper.getImexDir().getAbsolutePath();
-    startImex(what, path, path);
+    startImexOne(what, path, path);
+  }
+
+  protected void startImexOne(int what, String imexPath, String pathAsDisplayedToUser) {
+    imexAccounts = new int[]{ dcContext.getAccountId() };
+    accountsDone = 0;
+    startImexInner(imexAccounts[0], what, imexPath, pathAsDisplayedToUser);
   }
 
   protected ProgressDialog progressDialog = null;
   protected int            progressWhat = 0;
   protected String         pathAsDisplayedToUser = "";
   protected boolean        imexUserAborted = false;
-  protected void startImex(int what, String imexPath, String pathAsDisplayedToUser)
+  protected void startImexInner(int accountId, int what, String imexPath, String pathAsDisplayedToUser)
   {
+    DcContext dcContext = DcHelper.getAccounts(getActivity()).getAccount(accountId);
+
     this.pathAsDisplayedToUser = pathAsDisplayedToUser;
     imexUserAborted = false;
     notificationController = GenericForegroundService.startForegroundTask(getContext(), getString(R.string.export_backup_desktop));
@@ -131,7 +151,6 @@ public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceF
     progressDialog.show();
 
     DcHelper.getAccounts(getActivity()).stopIo();
-    DcHelper.getEventCenter(getActivity()).captureNextError();
     dcContext.imex(progressWhat, imexPath);
   }
 
@@ -140,8 +159,8 @@ public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceF
     if (event.getId()== DcContext.DC_EVENT_IMEX_PROGRESS) {
       long progress = event.getData1Int();
       Context context = getActivity();
+      DcContext dcContext = DcHelper.getAccounts(context).getAccount(event.getAccountId());
       if (progress==0/*error/aborted*/) {
-        DcHelper.getEventCenter(context).endCaptureNextError();
         DcHelper.getAccounts(context).startIo();
         progressDialog.dismiss();
         progressDialog = null;
@@ -155,32 +174,34 @@ public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceF
         notificationController = null;
       }
       else if (progress<1000/*progress in permille*/) {
-        int percent = (int)progress / 10;
-        String formattedPercent = String.format(" %d%%", percent);
-        progressDialog.setMessage(getResources().getString(R.string.one_moment) + formattedPercent);
-        notificationController.setProgress(1000, progress, formattedPercent);
+        if (dcContext.getAccountId() == imexAccounts[0]) { // show progress of the first account is good enough
+          int percent = (int) progress / 10;
+          String formattedPercent = String.format(" %d%%", percent);
+          progressDialog.setMessage(getResources().getString(R.string.one_moment) + formattedPercent);
+          notificationController.setProgress(1000, progress, formattedPercent);
+        }
       }
       else if (progress==1000/*done*/) {
-        DcHelper.getEventCenter(context).endCaptureNextError();
-        DcHelper.getAccounts(context).startIo();
-        progressDialog.dismiss();
-        progressDialog = null;
-        notificationController.close();
-        notificationController = null;
-        String msg = "";
-        if (progressWhat==DcContext.DC_IMEX_EXPORT_BACKUP) {
-          msg = context.getString(R.string.pref_backup_written_to_x, pathAsDisplayedToUser);
+        accountsDone++;
+        if (accountsDone == imexAccounts.length) {
+          DcHelper.getAccounts(context).startIo();
+          progressDialog.dismiss();
+          progressDialog = null;
+          notificationController.close();
+          notificationController = null;
+          String msg = "";
+          if (progressWhat == DcContext.DC_IMEX_EXPORT_BACKUP) {
+            msg = context.getString(R.string.pref_backup_written_to_x, pathAsDisplayedToUser);
+          } else if (progressWhat == DcContext.DC_IMEX_EXPORT_SELF_KEYS) {
+            msg = context.getString(R.string.pref_managekeys_secret_keys_exported_to_x, pathAsDisplayedToUser);
+          } else if (progressWhat == DcContext.DC_IMEX_IMPORT_SELF_KEYS) {
+            msg = context.getString(R.string.pref_managekeys_secret_keys_imported_from_x, pathAsDisplayedToUser);
+          }
+          new AlertDialog.Builder(context)
+            .setMessage(msg)
+            .setPositiveButton(android.R.string.ok, null)
+            .show();
         }
-        else if (progressWhat==DcContext.DC_IMEX_EXPORT_SELF_KEYS) {
-          msg = context.getString(R.string.pref_managekeys_secret_keys_exported_to_x, pathAsDisplayedToUser);
-        }
-        else if (progressWhat==DcContext.DC_IMEX_IMPORT_SELF_KEYS) {
-          msg = context.getString(R.string.pref_managekeys_secret_keys_imported_from_x, pathAsDisplayedToUser);
-        }
-        new AlertDialog.Builder(context)
-                .setMessage(msg)
-                .setPositiveButton(android.R.string.ok, null)
-                .show();
       }
     }
   }
