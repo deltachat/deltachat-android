@@ -110,7 +110,7 @@ public class QrShowFragment extends Fragment implements DcEventCenter.DcEventDel
             Bitmap bitmap = Bitmap.createBitmap(WIDTH, HEIGHT, Bitmap.Config.ARGB_8888);
             Canvas canvas = new Canvas(bitmap);
             canvas.drawRGB(255, 255, 255);  // Clear background to white
-            SVG svg = SVG.getFromString(dcContext.getSecurejoinQrSvg(chatId));
+            SVG svg = SVG.getFromString(fixSVG(dcContext.getSecurejoinQrSvg(chatId)));
             svg.renderToCanvas(canvas);
             bitmap.compress(Bitmap.CompressFormat.PNG, 90, stream);
             stream.flush();
