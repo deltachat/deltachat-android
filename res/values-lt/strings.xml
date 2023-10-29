@@ -53,6 +53,7 @@
     <string name="load_remote_content_ask">Nuotoliniai paveikslai gali būti naudojami, kad būtumėte sekami.\n\nŠis nustatymas taip pat leidžia šriftų įkėlimą ir kitą turinį. Netgi, jeigu jis yra išjungtas, gali būti, kad vis tiek matysite įterptus paveikslus ar paveikslus iš podėlio.\n\nĮkelti nuotolinius paveikslus?</string>
     <string name="always">Visada</string>
     <string name="once">Vieną kartą</string>
+    <string name="show_warning">Rodyti įspėjimą</string>
     <string name="show_password">Rodyti slaptažodį</string>
     <string name="hide_password">Slėpti slaptažodį</string>
     <string name="not_now">Ne dabar</string>
@@ -407,6 +408,8 @@
     <string name="send_message">Siųsti žinutę</string>
     <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
     <string name="aeap_addr_changed">%1$s pasikeitė adresą iš %2$s į %3$s</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="preparing_account">Ruošiama paskyra…</string>
     <!-- Connectivity -->
     <!-- Headline for the "Inbox" eg. in the "Connectivity" view -->
     <string name="incoming_messages">Gaunamosios žinutės</string>
@@ -597,6 +600,9 @@
     <string name="emoji_symbols">Simboliai</string>
     <string name="emoji_flags">Vėliavos</string>
 
+    <!-- Reactions -->
+    <string name="reactions">Reakcijos</string>
+
     <!-- automatically delete message -->
     <string name="delete_old_messages">Ištrinti senas žinutes</string>
     <string name="autodel_device_title">Ištrinti žinutes iš įrenginio</string>
@@ -648,8 +654,13 @@
     <string name="ephemeral_timer_disabled_by_you">Jūs išjungėte išnykstančių žinučių laikmatį.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_disabled_by_other">%1$s išjungė išnykstančių žinučių laikmatį.</string>
+    <string name="learn_more">Sužinoti daugiau</string>
+
     <!-- %1%s will be replaced by date and time in some human-readable format -->
     <string name="devicemsg_bad_time">⚠️ Atrodo, kad jūsų įrenginyje yra nustatyta netiksli data ar laikas (%1$s).\n\nSuderinkite savo laikrodį ⏰🔧 kad užtikrintumėte, jog žinutės bus gaunamos teisingai.</string>
+    <!-- Some options as "Add Second Device" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc. to be entered in a system dialog. This hint is added to the system dialog, below a title as "Add Second Device" or "Backup". -->
+    <string name="enter_system_secret_to_continue">Atrakinkite, norėdami tęsti</string>
+
     <!-- qr code stuff -->
     <string name="qr_code">QR kodas</string>
     <string name="load_qr_code_as_image">Įkelti QR kodą kaip paveikslą</string>
@@ -693,6 +704,9 @@
     <string name="notify_name_and_message">Vardą ir žinutę</string>
     <string name="notify_name_only">Tik vardą</string>
     <string name="notify_no_name_or_message">Jokio vardo ar žinutės</string>
+    <string name="notifications_disabled">Pranešimai išjungti</string>
+
+
     <!-- permissions -->
     <string name="perm_required_title">Reikalingas leidimas</string>
     <string name="perm_continue">Tęsti</string>
