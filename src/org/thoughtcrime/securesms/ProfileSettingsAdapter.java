@@ -319,7 +319,7 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
           if (verifierId == DcContact.DC_CONTACT_ID_SELF) {
             verifiedInfo = context.getString(R.string.verified_by_you);
           } else if (verifierId != 0) {
-            verifiedInfo = context.getString(R.string.verified_by, dcContext.getContact(verifierId).getAddr());
+            verifiedInfo = context.getString(R.string.verified_by, dcContext.getContact(verifierId).getNameNAddr());
           } else {
             verifiedInfo = context.getString(R.string.verified);
           }
