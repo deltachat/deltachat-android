@@ -126,6 +126,10 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
     return number;
   }
 
+  public DcContact getDcContact() {
+    return recipient.getDcContact();
+  }
+
   public int getContactId() {
     if (recipient.getAddress().isDcContact()) {
       return recipient.getAddress().getDcContactId();
