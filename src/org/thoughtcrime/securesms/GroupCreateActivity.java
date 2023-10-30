@@ -39,7 +39,6 @@ import org.thoughtcrime.securesms.database.Address;
 import org.thoughtcrime.securesms.mms.AttachmentManager;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.profiles.AvatarHelper;
-import org.thoughtcrime.securesms.qr.QrShowActivity;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.scribbles.ScribbleActivity;
 import org.thoughtcrime.securesms.util.SelectedRecipientsAdapter;
@@ -228,14 +227,12 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     lv.setAdapter(adapter);
 
     findViewById(R.id.add_member_button).setOnClickListener(new AddRecipientButtonListener());
-    ViewUtil.findById(this, R.id.verify_button).setOnClickListener(new ShowQrButtonListener());
     initializeAvatarView();
 
     if (broadcast) {
       avatar.setVisibility(View.GONE);
       groupHints.setText(R.string.chat_new_broadcast_hint);
       groupHints.setVisibility(isEdit()? View.GONE : View.VISIBLE);
-      ViewUtil.findById(this, R.id.verify_button).setVisibility(View.INVISIBLE);
       ((TextView)ViewUtil.findById(this, R.id.add_member_button)).setText(R.string.add_recipients);
     } else if (!verified) {
       groupHints.setVisibility(View.GONE);
@@ -244,7 +241,6 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     if(isEdit()) {
       lv.setVisibility(View.GONE);
       findViewById(R.id.add_member_button).setVisibility(View.GONE);
-      findViewById( R.id.verify_button).setVisibility(View.GONE);
     }
   }
 
@@ -489,27 +485,6 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
       }
       intent.putExtra(ContactSelectionListFragment.PRESELECTED_CONTACTS, preselectedContacts);
       startActivityForResult(intent, PICK_CONTACT);
-    }
-  }
-
-  private class ShowQrButtonListener implements View.OnClickListener {
-
-    @Override
-    public void onClick(View view) {
-        if(groupChatId==0) {
-          groupCreateInDb();
-        }
-        else {
-          groupUpdateInDb();
-        }
-
-        if(groupChatId==0) {
-          return;
-        }
-        Intent qrIntent = new Intent(GroupCreateActivity.this, QrShowActivity.class);
-        qrIntent.putExtra(QrShowActivity.CHAT_ID, groupChatId);
-        startActivity(qrIntent);
-        initializeExistingGroup(); // To reread the recipients from the newly created group.
     }
   }
 
