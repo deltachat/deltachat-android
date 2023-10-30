@@ -57,6 +57,8 @@ import org.thoughtcrime.securesms.contacts.ContactSelectionListAdapter;
 import org.thoughtcrime.securesms.contacts.ContactSelectionListItem;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.permissions.Permissions;
+import org.thoughtcrime.securesms.qr.QrActivity;
+import org.thoughtcrime.securesms.util.IntentUtils;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
@@ -282,9 +284,6 @@ public class ContactSelectionListFragment extends    Fragment
     boolean addCreateGroupLinks = allowCreation && !isRelayingMessageContent(getActivity()) && !isMulti();
 
     int listflags = DcContext.DC_GCL_ADD_SELF;
-    if(isSelectVerfied()) {
-      listflags = DcContext.DC_GCL_VERIFIED_ONLY;
-    }
     return new DcContactsLoader(getActivity(), listflags, cursorFilter, addCreateGroupLinks, addCreateContactLink, false);
   }
 
@@ -354,6 +353,17 @@ public class ContactSelectionListFragment extends    Fragment
             Toast.makeText(getActivity(), R.string.bad_email_address, Toast.LENGTH_LONG).show();
             return;
           }
+        }
+
+        if (isSelectVerfied() && !contact.getDcContact().isVerified()) {
+          new AlertDialog.Builder(getActivity())
+            .setMessage(R.string.verified_contact_required_explain)
+            .setNeutralButton(R.string.learn_more, (d, w) -> IntentUtils.showBrowserIntent(getActivity(), "https://delta.chat/en/help#verifiedchats"))
+            .setNegativeButton(R.string.qrscan_title, (d, w) -> getActivity().startActivity(new Intent(getActivity(), QrActivity.class)))
+            .setPositiveButton(R.string.ok, null)
+            .setCancelable(true)
+            .show();
+            return;
         }
 
         selectedContacts.add(addr);
