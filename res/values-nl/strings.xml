@@ -376,6 +376,7 @@
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
     <string name="chat_new_one_to_one_hint">Verstuur een bericht. %1$s hoeft voor dit gesprek geen gebruik te maken van Delta Chat.</string>
+    <string name="chat_new_broadcast_hint">Op een verzendlijst hebben ontvangers niet de mogelijkheid om te reageren op je berichten.</string>
     <string name="chat_new_group_hint">Stel het eerste bericht op, zodat anderen binnen deze groep kunnen reageren.</string>
     <string name="chat_record_slide_to_cancel">Veeg opzij om te annuleren</string>
     <string name="chat_record_explain">Houdt ingedrukt om een spraakbericht op te nemen; laat los om te versturen</string>
@@ -721,6 +722,9 @@
     <string name="emoji_symbols">Symbolen</string>
     <string name="emoji_flags">Vlaggen</string>
 
+    <!-- Reactions -->
+    <string name="reactions">Reacties</string>
+
     <!-- automatically delete message -->
     <string name="delete_old_messages">Oude berichten verwijderen</string>
     <string name="autodel_device_title">Berichten verwijderen van apparaat</string>
@@ -830,6 +834,14 @@
     <string name="ephemeral_timer_weeks_by_you">Je hebt de tijdklok van verdwijnende berichten ingesteld op %1$s weken.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_weeks_by_other">De tijdklok van verdwijnende berichten is door %2$s ingesteld op %1$s weken.</string>
+    <!-- this may be shown instead of the chat's input field, with buttons "More Info" and "OK" -->
+    <string name="chat_protection_broken">%1$s heeft een bericht verstuurd vanaf een ander apparaat.</string>
+    <string name="chat_protection_enabled_tap_to_learn_more">Berichten zijn vanaf nu gegarandeerd van eind-tot-eindversleuteling. Druk hier voor meer informatie.</string>
+    <string name="chat_protection_enabled_explanation">Alle berichten in dit gesprek zijn vanaf nu gegarandeerd van eind-tot-eind versleuteld.\n\nMet eind-tot-eindversleuteling blijven berichten tussen jou en je gesprekspartners geheim - zelfs je e-mailprovider kan ze niet uitlezen.</string>
+    <string name="chat_protection_broken_tap_to_learn_more">%1$s heeft een bericht verstuurd vanaf een ander apparaat. Druk hier voor meer informatie.</string>
+    <string name="chat_protection_broken_explanation">Eind-tot-eindversleuteling kan niet meer worden gegarandeerd, omdat %1$s Delta Chat opnieuw heeft geïnstalleerd of een bericht vanaf een ander apparaat heeft verstuurd.\n\nMaak een afspraak met hem/haar en scan de QR-code opnieuw om eind-tot-eindversleuteling weer in te schakelen.</string>
+    <string name="learn_more">Meer informatie</string>
+
     <string name="devicemsg_self_deleted">Je hebt het gesprek ‘Opgeslagen berichten’ verwijderd.\n\nℹ️ Als je weer gebruik wilt maken van deze functie, begin dan een nieuw gesprek met jezelf.</string>
     <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
     <string name="devicemsg_storage_exceeding">⚠️ De opslagruimte die je provider je biedt is bijna overschreden - momenteel heb je %1$s%% ervan in gebruik.\n\nAls je alle ruimte verbruikt hebt, kun je mogelijk geen berichten meer ontvangen.\n\n👉 Kijk of je oude gegevens kunt verwijderen in de webclient van je provider. Overweeg ook ‘Instellingen --> Oude berichten verwijderen’ in te schakelen. Je kunt je huidige gebruik te allen tijde bekijken in ‘Instellingen --> Verbindingen’.</string>
@@ -891,6 +903,7 @@
     <string name="verified_by_you">Goedgekeurd door mij</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Gewijzigde instellingen voor %1$s</string>
+    <string name="verified_group_explain">Goedgekeurde groepen maken gebruik van eind-tot-eindversleuteling. Alleen contactpersonen met een groen vinkje kunnen worden toegevoegd.</string>
     <string name="copy_qr_data_success">De QR-url is gekopieerd naar het klembord</string>
     <string name="mailto_dialog_header_select_chat">Kies in welk gesprek je dit bericht wilt delen</string>
     <!-- first placeholder is the name of the chat -->
@@ -907,6 +920,9 @@
     <string name="notify_name_and_message">Naam en bericht</string>
     <string name="notify_name_only">Alleen naam</string>
     <string name="notify_no_name_or_message">Geen naam of bericht</string>
+    <string name="notifications_disabled">Meldingen zijn uitgeschakeld</string>
+
+
     <!-- permissions -->
     <string name="perm_required_title">Machtiging vereist</string>
     <string name="perm_continue">Doorgaan</string>
@@ -914,6 +930,8 @@
     <string name="perm_explain_access_to_mic_denied">Delta Chat wil spraakberichten versturen. Ga naar de app-instellingen, kies ‘Rechten’ en schakel ‘Microfoon’ in.</string>
     <string name="perm_explain_access_to_storage_denied">Delta Chat wil bestanden kunnen ontvangen en versturen. Ga naar de app-instellingen, kies ‘Rechten’ en schakel ‘Opslag’ in.</string>
     <string name="perm_explain_access_to_location_denied">Delta Chat wil je locatie kunnen delen. Ga naar de app-instellingen, kies ‘Rechten’ en schakel ‘Locatie’ in.</string>
+    <string name="perm_explain_access_to_notifications_denied">Open Systeeminstellingen → Apps → Delta Chat en schakel meldingen in.</string>
+
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Teken met je vinger om vervaging toe te passen</string>
     <string name="ImageEditorHud_add_text">Tekst toevoegen</string>

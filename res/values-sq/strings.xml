@@ -900,6 +900,7 @@
     <string name="verified_by_you">Verifikuar nga ju</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">U ndryshua rregullimi për %1$s</string>
+    <string name="verified_group_explain">Grupet e verifikuara garantojnë fshehtëzim skaj-më-skaj. Në to mund të shtohen vetëm kontakte me një shenjë të gjelbër verifikimi.</string>
     <string name="copy_qr_data_success">URL-ja QR u kopjua në të papastër</string>
     <string name="mailto_dialog_header_select_chat">Përzgjidhni fjalosje ku të dërgohet mesazhi</string>
     <!-- first placeholder is the name of the chat -->
