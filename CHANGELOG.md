@@ -1,5 +1,27 @@
 # Delta Chat Android Changelog
 
+## v1.41.2 Testrun
+2023-10
+
+* guarantee end-to-end-encryption in one-to-one chats, if possible
+* if end-to-end-encryption cannot be guaranteed eg. due to key changes,
+  the chat requires a confirmation of the user
+* backup filenames include the account name now
+* "Broadcast Lists" (experimental) create their own chats on the receiver site
+* fix unresponsiveness when opening "Connectivity View" when offline
+* fix configure error with "Winmail Pro Mail Server"
+* fix: set maximal memory usage for the internal database
+* fix: allow setting a draft if verification is broken
+* fix joining verified group via QR if contact is not already verified
+* fix: sort old incoming messages below all outgoing ones
+* fix: do not mark non-verified group chats as verified when using securejoin
+* fix: show only chats where we can send to on forwarding or sharing
+* fix: improve removing accounts in case the filesystem is busy
+* fix: don't show a contact as verified if their key changed since the verification
+* update translations
+* update to core 1.127.2
+
+
 ## v1.41.1 Testrun
 2023-10
 
