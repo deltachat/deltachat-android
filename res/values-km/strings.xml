@@ -759,7 +759,6 @@
     <string name="contact_not_verified">មិនអាចផ្ទៀងផ្ទាត់ %1$s</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">បានដូរការរៀបចំសម្រាប់ %1$s</string>
-    <string name="verified_group_explain">\"ក្រុមបានផ្ទៀងផ្ទាត់\" (ពិសោធន៍) បានផ្តល់សុវត្ថិភាពប្រឆាំងនឹងសកម្មភាពវាយប្រហារ។ សមាជិកត្រូវបានផ្ទៀងផ្ទាត់ជាមុខងារទីពីរ ដោយសមាជិកដទៃទៀត និងសារតែងតែបានអ៊ិនគ្រីប ពីឧបករណ៍ដល់ឧបករណ៍។</string>
     <string name="copy_qr_data_success">បានចម្លង QR-url ទៅក្តារខ្ទាស់</string>
     <string name="mailto_dialog_header_select_chat">ជ្រើសរើសការជជែក ដើម្បីផ្ញើសារទៅកាន់</string>
     <string name="mailto_link_could_not_be_decoded">សំបុត្រទៅតំណភ្ជាប់ មិនអាចឌិកូដទេ: %1$s</string>

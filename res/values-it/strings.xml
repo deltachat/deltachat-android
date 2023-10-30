@@ -918,7 +918,7 @@
     <string name="verified_by_you">Verificato da te</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Impostazioni modificate per %1$s</string>
-    <string name="verified_group_explain">I gruppi verificati (sperimentali) garantiscono sicurezza dagli attacchi. I membri vengono verificati con un secondo fattore dagli altri membri e i messaggi sono sempre cifrati end-to-end. </string>
+    <string name="verified_group_explain">I gruppi verificati garantiscono la crittografia end-to-end. È possibile aggiungervi solo i contatti con un segno di spunta di verifica verde.</string>
     <string name="copy_qr_data_success">URL QR copiato negli appunti</string>
     <string name="mailto_dialog_header_select_chat">Seleziona la chat a cui inviare il messaggio</string>
     <!-- first placeholder is the name of the chat -->

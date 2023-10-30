@@ -689,7 +689,6 @@
     <string name="contact_not_verified">Kan ikke bekræfte %1$s</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Ændret opsætning for %1$s</string>
-    <string name="verified_group_explain">Bekræftede grupper (eksperimentel) giver sikkerhed mod aktive angreb. Medlemmer bliver bekræftet med en anden faktor af andre medlemmer og beskederne bliver altid end-to-end krypteret.</string>
     <string name="copy_qr_data_success">Kopieret QR url til udklipsholder</string>
     <string name="notify_reply_button">Svar</string>
     <string name="notify_new_message">Ny besked</string>

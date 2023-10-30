@@ -924,7 +924,6 @@
     <string name="verified_by_you">Проверено вами</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Изменены параметры для %1$s</string>
-    <string name="verified_group_explain">Проверенные группы (экспериментальная функция) защищены от активных атак. Участники проверяются с помощью второго фактора другими участниками и сообщения всегда передаются посредством cквозного шифрования.</string>
     <string name="copy_qr_data_success">Ссылка из QR-кода скопирована в буфер обмена</string>
     <string name="mailto_dialog_header_select_chat">Выберите чат для отправки сообщение</string>
     <!-- first placeholder is the name of the chat -->

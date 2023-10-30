@@ -492,8 +492,6 @@
     <string name="contact_not_verified">Ezin da %1$s egiaztatu</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Aldatu %1$s(r)en ezarpena</string>
-    <string name="verified_group_explain">Egiaztatutako taldeek (esperimentala) eraso aktiboekiko babesa eskaintzen dute.
-Kideak beste kide batzuek egiatzen dituzte bigarren faktore batekin eta mezuak beti zifratzen dira muturretik muturrera.</string>
     <string name="notify_reply_button">Erantzun</string>
     <string name="notify_new_message">Mezu berria</string>
     <string name="notify_background_connection_enabled">Bigarren planoko konexioa gaituta</string>

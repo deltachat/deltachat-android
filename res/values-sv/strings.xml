@@ -619,7 +619,6 @@
     <string name="contact_not_verified">Kan inte verifiera %1$s.</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Ändrade inställningarna för %1$s.</string>
-    <string name="verified_group_explain">Verifierade grupper (experimentellt) tillhandahåller skydd mot aktiva attacker. Medlemmar verifieras med en andra faktor, av andra medlemmar, och meddelanden är alltid slutpunkt-till-slutpunkt-krypterade.</string>
     <string name="notify_reply_button">Svara</string>
     <string name="notify_new_message">Nytt meddelande</string>
     <string name="notify_background_connection_enabled">Bakgrundsanslutning aktiverad</string>
