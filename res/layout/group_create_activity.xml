@@ -60,10 +60,10 @@
             android:layout_gravity="fill_vertical"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:paddingStart="15dp"
-            android:paddingLeft="15dp"
-            android:paddingEnd="15dp"
-            android:paddingRight="15dp"
+            android:paddingStart="30dp"
+            android:paddingLeft="30dp"
+            android:paddingEnd="30dp"
+            android:paddingRight="30dp"
             android:layout_marginBottom="15dp"
             android:text="@string/group_add_members"/>
 
