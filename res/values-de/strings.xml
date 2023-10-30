@@ -904,6 +904,7 @@
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Geändertes Setup für %1$s</string>
     <string name="verified_group_explain">Verifizierte Gruppen garantieren Ende-zu-Ende-Verschlüsselung. Nur Kontakte mit einem grünen Häkchen können zu ihnen hinzugefügt werden.</string>
+    <string name="verified_contact_required_explain">Um eine Ende-zu-Ende-Verschlüsselung zu gewährleisten, können nur Kontakte mit einem grünen Häkchen zu dieser Gruppe hinzufügen.\n\nSie können unverifizierte Kontakte persönlich treffen und ihren QR-Code scannen, um sie zu verifizieren.</string>
     <string name="copy_qr_data_success">QR-Code auf die Zwischenablage kopiert</string>
     <string name="mailto_dialog_header_select_chat">Wählen Sie den Chat, an den die Nachricht gesendet werden soll</string>
     <!-- first placeholder is the name of the chat -->
