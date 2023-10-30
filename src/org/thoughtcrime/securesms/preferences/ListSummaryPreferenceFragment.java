@@ -23,6 +23,8 @@ import org.thoughtcrime.securesms.util.ScreenLockUtil;
 import org.thoughtcrime.securesms.util.views.ProgressDialog;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceFragment implements DcEventCenter.DcEventDelegate {
   protected static final int REQUEST_CODE_CONFIRM_CREDENTIALS_BACKUP = ScreenLockUtil.REQUEST_CODE_CONFIRM_CREDENTIALS + 1;
@@ -98,11 +100,13 @@ public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceF
     pref.setSummary(pref.getEntry());
   }
 
-  protected int [] imexAccounts;
+  private Map<Integer, Integer> imexProgress;
+  protected int[] imexAccounts;
   protected int accountsDone;
 
   protected void startImexAll(int what) {
     imexAccounts = DcHelper.getAccounts(getActivity()).getAll();
+    imexProgress = new HashMap<>();
     accountsDone = 0;
     String path = DcHelper.getImexDir().getAbsolutePath();
     for (int i = 0; i < imexAccounts.length; i++) {
@@ -118,6 +122,7 @@ public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceF
 
   protected void startImexOne(int what, String imexPath, String pathAsDisplayedToUser) {
     imexAccounts = new int[]{ dcContext.getAccountId() };
+    imexProgress = new HashMap<>();
     accountsDone = 0;
     startImexInner(imexAccounts[0], what, imexPath, pathAsDisplayedToUser);
   }
@@ -154,17 +159,25 @@ public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceF
     dcContext.imex(progressWhat, imexPath);
   }
 
+  private int getTotalProgress() {
+    int progress = 0;
+    for (Integer accProgress : imexProgress.values()) {
+      progress += accProgress;
+    }
+    return progress;
+  }
+
   @Override
   public void handleEvent(@NonNull DcEvent event) {
     if (event.getId()== DcContext.DC_EVENT_IMEX_PROGRESS) {
       long progress = event.getData1Int();
       Context context = getActivity();
-      DcContext dcContext = DcHelper.getAccounts(context).getAccount(event.getAccountId());
       if (progress==0/*error/aborted*/) {
         DcHelper.getAccounts(context).startIo();
         progressDialog.dismiss();
         progressDialog = null;
         if (!imexUserAborted) {
+          DcContext dcContext = DcHelper.getAccounts(context).getAccount(event.getAccountId());
           new AlertDialog.Builder(context)
                   .setMessage(dcContext.getLastError())
                   .setPositiveButton(android.R.string.ok, null)
@@ -174,12 +187,12 @@ public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceF
         notificationController = null;
       }
       else if (progress<1000/*progress in permille*/) {
-        if (dcContext.getAccountId() == imexAccounts[0]) { // show progress of the first account is good enough
-          int percent = (int) progress / 10;
-          String formattedPercent = String.format(" %d%%", percent);
-          progressDialog.setMessage(getResources().getString(R.string.one_moment) + formattedPercent);
-          notificationController.setProgress(1000, progress, formattedPercent);
-        }
+        imexProgress.put(event.getAccountId(), (int) progress);
+        int totalProgress = getTotalProgress();
+        int percent = totalProgress / (10 * imexAccounts.length);
+        String formattedPercent = String.format(" %d%%", percent);
+        progressDialog.setMessage(getResources().getString(R.string.one_moment) + formattedPercent);
+        notificationController.setProgress(1000L * imexAccounts.length, totalProgress, formattedPercent);
       }
       else if (progress==1000/*done*/) {
         accountsDone++;
