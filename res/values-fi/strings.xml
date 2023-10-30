@@ -840,7 +840,6 @@
     <string name="contact_not_verified">Ei voida varmistaa %1$s.</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Asetukset muutettu kohteessa %1$s.</string>
-    <string name="verified_group_explain">(Kokeelliset) varmistetut ryhmät suojaavat aktiivisilta hyökkäyksiltä. Jokainen käyttäjä varmistetaan erikseen ja viestit ovat aina päästä-päähän-salattuja.</string>
     <string name="copy_qr_data_success">QR-osoite kopioitu leikepöydälle</string>
     <string name="mailto_dialog_header_select_chat">Valitse keskustelu viestien lähettämiseen</string>
     <!-- first placeholder is the name of the chat -->

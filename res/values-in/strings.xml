@@ -617,7 +617,6 @@
     <string name="contact_not_verified">Tidak bisa memverifikasi %1$s.</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Ubah pengaturan untuk %1$s.</string>
-    <string name="verified_group_explain">Kelompok yang sudah diverifikasi (eksperimental) menjaga keamanan dari serangan aktif. Anggota diverifikasi dengan faktor kedua oleh anggota lain dan selalu dengan pesan yang terinkripsi ujung ke ujung.</string>
     <string name="copy_qr_data_success">Salin QR url ke papan klip</string>
     <string name="notify_reply_button">Balasan</string>
     <string name="notify_new_message">Pesan baru</string>

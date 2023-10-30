@@ -869,7 +869,6 @@
     <string name="verified_by">Проверено од %1$s</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Подешавања су се променила за %1$s.</string>
-    <string name="verified_group_explain">Верификоване групе (ово је експериментална могућност) пружају сигурност од активних напада. Чланови се верификују са другим фактором од стране других чланова и поруке су увек с-краја-на-крај шифроване.</string>
     <string name="copy_qr_data_success">Бар-кôд везе је копиран у клипборд</string>
     <string name="mailto_dialog_header_select_chat">Изабери ћаскање у које желите да пошаљете поруку</string>
     <!-- first placeholder is the name of the chat -->

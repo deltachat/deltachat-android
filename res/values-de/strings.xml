@@ -903,7 +903,7 @@
     <string name="verified_by_you">Durch mich verifiziert</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Geändertes Setup für %1$s</string>
-    <string name="verified_group_explain">Verifizierte Gruppen (experimentell) bieten Schutz gegen aktive Angriffe mittels Zwei-Faktor-Authentifizierung aller Mitglieder und immer aktiver Ende-zu-Ende-Verschlüsselung.</string>
+    <string name="verified_group_explain">Verifizierte Gruppen garantieren Ende-zu-Ende-Verschlüsselung. Nur Kontakte mit einem grünen Häkchen können zu ihnen hinzugefügt werden.</string>
     <string name="copy_qr_data_success">QR-Code auf die Zwischenablage kopiert</string>
     <string name="mailto_dialog_header_select_chat">Wählen Sie den Chat, an den die Nachricht gesendet werden soll</string>
     <!-- first placeholder is the name of the chat -->
