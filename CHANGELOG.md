@@ -6,8 +6,16 @@
 * guarantee end-to-end-encryption in one-to-one chats, if possible
 * if end-to-end-encryption cannot be guaranteed eg. due to key changes,
   the chat requires a confirmation of the user
+* "verified groups" are no longer experimental
 * backup filenames include the account name now
 * "Broadcast Lists" (experimental) create their own chats on the receiver site
+* tapping the title bar always opens account switcher; from there you can open connectivity
+* add "Deactivate QR code" option when showing QR codes
+  (in addition to deactivate and reactivate QR codes by scanning them)
+* show name and e-mail address of verifiers
+* fix stale app on configuration screen if DNS is not available
+* fix: keep showing old email address if configuring a new one fails
+* fix starting chats from the system's phone app (by improving mailto: handling)
 * fix unresponsiveness when opening "Connectivity View" when offline
 * fix configure error with "Winmail Pro Mail Server"
 * fix: set maximal memory usage for the internal database
