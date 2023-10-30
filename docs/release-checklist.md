@@ -20,7 +20,7 @@
 the following steps are done in a PR called `prep-VERSION` (no leading "v"):
 
 3. update `CHANGELOG.md`
-   from <https://github.com/deltachat/deltachat-core-rust/blob/master/CHANGELOG.md>
+   from <https://github.com/deltachat/deltachat-core-rust/blob/main/CHANGELOG.md>
    and <https://github.com/deltachat/deltachat-android/pulls?q=is%3Apr+is%3Aclosed+sort%3Aupdated-desc>.
    avoid technical terms, library versions etc. the changelog is for the end user.
    do not forget to update/mention used core version and release month.
