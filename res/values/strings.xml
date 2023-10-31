@@ -209,6 +209,7 @@
     <string name="add_recipients">Add Recipients</string>
     <string name="create_broadcast_list">Create Broadcast List</string>
     <string name="edit_broadcast_list">Edit Broadcast List</string>
+    <string name="broadcast_list_name">Broadcast List Name</string>
     <string name="please_enter_broadcast_list_name">Please enter a name for the broadcast list.</string>
     <string name="menu_send">Send</string>
     <string name="menu_toggle_keyboard">Toggle Emoji Keyboard</string>
