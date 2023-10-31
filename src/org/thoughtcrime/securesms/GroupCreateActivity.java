@@ -299,7 +299,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
         if (groupChatId!=0) {
           updateGroup(groupName);
         } else {
-          if (allMembersVerified()) {
+          if (!broadcast && allMembersVerified()) {
             new AlertDialog.Builder(this)
               .setMessage(R.string.create_verified_group_ask)
               .setNeutralButton(R.string.learn_more, (d, w) -> IntentUtils.showBrowserIntent(this, "https://delta.chat/en/help#verifiedchats"))
