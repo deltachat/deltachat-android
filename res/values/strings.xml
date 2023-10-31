@@ -294,6 +294,7 @@
     <string name="source_code">Source Code</string>
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">Add to Home Screen</string>
+    <string name="donate">Donate</string>
 
     <string name="mute_for_one_hour">Mute for 1 hour</string>
     <string name="mute_for_two_hours">Mute for 2 hours</string>
@@ -725,7 +726,8 @@
     <string name="profile_image_delete">Delete Profile Image</string>
     <string name="pref_show_tray_icon">Show Tray Icon</string>
     <string name="pref_edit_profile">Edit Profile</string>
-    <string name="system_integration">Edit Profile</string>
+    <string name="disable_imap_idle">Disable IMAP IDLE</string>
+    <string name="disable_imap_idle_explain">Do not use IMAP IDLE extension even if the server supports it. Enabling this option will delay message retrieval, enable it only for testing.</string>
 
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Search Results</string>
