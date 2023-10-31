@@ -300,7 +300,6 @@
     <string name="source_code">Исходный код</string>
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">Добавить на главный экран</string>
-
     <string name="mute_for_one_hour">1 час</string>
     <string name="mute_for_two_hours">На 2 часа</string>
     <string name="mute_for_one_day">На 1 день</string>
@@ -737,7 +736,6 @@
     <string name="profile_image_delete">Удалить фото профиля</string>
     <string name="pref_show_tray_icon">Показать значок в трее</string>
     <string name="pref_edit_profile">Редактировать профиль</string>
-
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Результаты поиска</string>
     <string name="emoji_not_found">Эмодзи не найдено</string>
@@ -941,8 +939,6 @@
     <string name="notify_name_only">Только имя</string>
     <string name="notify_no_name_or_message">Без имени или сообщения</string>
     <string name="notifications_disabled">Уведомления отключены</string>
-
-
     <!-- permissions -->
     <string name="perm_required_title">Требуется разрешение</string>
     <string name="perm_continue">Продолжить</string>

@@ -276,7 +276,6 @@
     <string name="source_code">Código Fonte</string>
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">Engadir á pantalla de Inicio</string>
-
     <string name="mute_for_one_hour">Acalar durante 1 h.</string>
     <string name="mute_for_two_hours">Acalar durante 2 h.</string>
     <string name="mute_for_one_day">Acalar durante 1 día</string>
@@ -666,7 +665,6 @@
     <string name="profile_image_delete">Elimina a imaxe de perfil</string>
     <string name="pref_show_tray_icon">Mostrar icona na bandexa</string>
     <string name="pref_edit_profile">Editar perfil</string>
-
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Resultados da busca</string>
     <string name="emoji_not_found">Non se atopan emojis</string>

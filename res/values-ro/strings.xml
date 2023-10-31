@@ -286,7 +286,6 @@
     <string name="source_code">Codul Sursă</string>
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">Adăugați la ecranul principal</string>
-
     <string name="mute_for_one_hour">Silențios timp de 1 oră</string>
     <string name="mute_for_two_hours">Silențios timp de 2 ore</string>
     <string name="mute_for_one_day">Silențios pentru 1 zi</string>

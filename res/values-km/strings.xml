@@ -593,7 +593,6 @@
     <string name="profile_image_delete">លុបរូបភាពទិន្នន័យផ្ទាល់ខ្លួន</string>
     <string name="pref_show_tray_icon">បង្ហាញរូបតំណាងថាស</string>
     <string name="pref_edit_profile">កែសម្រួល ទិន្នន័យផ្ទាល់ខ្លួន</string>
-
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">លទ្ធផលស្វែងរក</string>
     <string name="emoji_not_found">រកមិនឃើញរូបសញ្ញាអារម្មណ៍</string>

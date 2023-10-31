@@ -284,7 +284,6 @@
     <string name="source_code">کد منبع</string>
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">افزودن به صفحه خانه</string>
-
     <string name="mute_for_one_hour">ساکت کردن به مدت۱ ساعت</string>
     <string name="mute_for_two_hours">ساکت کردن به مدت ۲ ساعت</string>
     <string name="mute_for_one_day">ساکت کردن به مدت ۱ روز</string>
@@ -711,7 +710,6 @@ https://meet.jit.si/$ROOM
     <string name="profile_image_delete">حذف تصویر نمایه</string>
     <string name="pref_show_tray_icon">نمایش نمادک در زیر صفحه</string>
     <string name="pref_edit_profile">ویرایش نمایه</string>
-
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">نتایج جستجو</string>
     <string name="emoji_not_found">شکلکی پیدا نشد</string>

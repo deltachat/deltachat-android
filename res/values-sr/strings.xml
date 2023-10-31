@@ -290,7 +290,6 @@
     <string name="source_code">Изворни код</string>
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">Додај на главни екран</string>
-
     <string name="mute_for_one_hour">Утишај на 1 сат</string>
     <string name="mute_for_two_hours">Утишај на 2 сата</string>
     <string name="mute_for_one_day">Утишај на 1 дан</string>
@@ -686,7 +685,6 @@
     <string name="profile_image_delete">Избриши слику профила</string>
     <string name="pref_show_tray_icon">Прикажи иконицу на системској касети</string>
     <string name="pref_edit_profile">Уреди профил</string>
-
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Резултати претраге</string>
     <string name="emoji_not_found">Није пронађен ниједан емоџи</string>

@@ -284,7 +284,6 @@
     <string name="source_code">Broncode</string>
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">Toevoegen aan startscherm</string>
-
     <string name="mute_for_one_hour">1 uur lang uitschakelen</string>
     <string name="mute_for_two_hours">2 uur lang uitschakelen</string>
     <string name="mute_for_one_day">1 dag lang uitschakelen</string>
@@ -708,7 +707,6 @@
     <string name="profile_image_delete">Profielfoto verwijderen</string>
     <string name="pref_show_tray_icon">Systeemvakpictogram tonen</string>
     <string name="pref_edit_profile">Profiel bewerken</string>
-
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Zoekresultaten</string>
     <string name="emoji_not_found">Geen emoji gevonden</string>
@@ -904,6 +902,7 @@
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Gewijzigde instellingen voor %1$s</string>
     <string name="verified_group_explain">Goedgekeurde groepen maken gebruik van eind-tot-eindversleuteling. Alleen contactpersonen met een groen vinkje kunnen worden toegevoegd.</string>
+    <string name="verified_contact_required_explain">Om de eind-tot-eindversleuteling te garanderen, kun je alleen contactpersonen met een groen vinkje toevoegen aan deze groep.\n\nVan niet-goedgekeurde contactpersonen kun je de QR-code scannen om ze goed te keuren.</string>
     <string name="copy_qr_data_success">De QR-url is gekopieerd naar het klembord</string>
     <string name="mailto_dialog_header_select_chat">Kies in welk gesprek je dit bericht wilt delen</string>
     <!-- first placeholder is the name of the chat -->
@@ -921,8 +920,6 @@
     <string name="notify_name_only">Alleen naam</string>
     <string name="notify_no_name_or_message">Geen naam of bericht</string>
     <string name="notifications_disabled">Meldingen zijn uitgeschakeld</string>
-
-
     <!-- permissions -->
     <string name="perm_required_title">Machtiging vereist</string>
     <string name="perm_continue">Doorgaan</string>

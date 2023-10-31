@@ -292,7 +292,6 @@
     <string name="source_code">Code source</string>
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">Ajouter à l\'écran d\'accueil</string>
-
     <string name="mute_for_one_hour">Désactiver pour 1 heure</string>
     <string name="mute_for_two_hours">Désactiver pour 2 heures</string>
     <string name="mute_for_one_day">Désactiver pour 1 jour</string>
@@ -722,7 +721,6 @@
     <string name="profile_image_delete">Supprimer l\'image de profil</string>
     <string name="pref_show_tray_icon">Afficher l\'icône dans la zone de notifications</string>
     <string name="pref_edit_profile">Édition du profil</string>
-
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Résultats de la recherche</string>
     <string name="emoji_not_found">Pas d\'emoji trouvé</string>
@@ -926,8 +924,6 @@
     <string name="notify_name_only">Nom seulement</string>
     <string name="notify_no_name_or_message">Pas de nom ou de message</string>
     <string name="notifications_disabled">Notifications désactivées</string>
-
-
     <!-- permissions -->
     <string name="perm_required_title">Autorisation requise</string>
     <string name="perm_continue">Continuez</string>

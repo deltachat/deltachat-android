@@ -514,7 +514,6 @@ https://delta.chat</string>
     <string name="profile_image_delete">アイコン画像を削除する</string>
     <string name="pref_show_tray_icon">トレイアイコンの表示</string>
     <string name="pref_edit_profile">プロフィール編集</string>
-
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">検索結果</string>
     <string name="emoji_not_found">絵文字がみつかりません</string>

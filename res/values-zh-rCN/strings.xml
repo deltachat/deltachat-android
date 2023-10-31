@@ -276,7 +276,6 @@
     <string name="source_code">源代码</string>
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">添加到主屏幕</string>
-
     <string name="mute_for_one_hour">静音 1 小时</string>
     <string name="mute_for_two_hours">静音 2 小时</string>
     <string name="mute_for_one_day">静音 1 天</string>
@@ -693,7 +692,6 @@
     <string name="profile_image_delete">删除个人资料图片</string>
     <string name="pref_show_tray_icon">显示托盘图标</string>
     <string name="pref_edit_profile">编辑个人资料</string>
-
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">搜索结果</string>
     <string name="emoji_not_found">未找到 emoji</string>
@@ -889,6 +887,7 @@
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">%1$s 的加密设置已更改。</string>
     <string name="verified_group_explain">已验证的群组确保端到端加密。只有带绿色验证钩形符号的联系人才能被加群</string>
+    <string name="verified_contact_required_explain">要确保端到端加密，你只能将带有略色验证标识的联系人到此群中。\n\n你可以亲自和未验证联系人线下碰面并扫描联系人二维码来验证。</string>
     <string name="copy_qr_data_success">已复制二维码链接到剪贴板</string>
     <string name="mailto_dialog_header_select_chat">选择要发送消息的聊天</string>
     <!-- first placeholder is the name of the chat -->
@@ -906,8 +905,6 @@
     <string name="notify_name_only">仅名称</string>
     <string name="notify_no_name_or_message">不显示名称或消息</string>
     <string name="notifications_disabled">已禁用通知</string>
-
-
     <!-- permissions -->
     <string name="perm_required_title">需要权限</string>
     <string name="perm_continue">继续</string>
