@@ -89,10 +89,8 @@ public class NewConversationActivity extends ContactSelectionActivity {
   @Override
   public void onContactSelected(int specialId, String addr) {
     final DcContext dcContext = DcHelper.getContext(this);
-    if(specialId == DcContact.DC_CONTACT_ID_NEW_GROUP || specialId == DcContact.DC_CONTACT_ID_NEW_VERIFIED_GROUP) {
-      Intent intent = new Intent(this, GroupCreateActivity.class);
-      intent.putExtra(GroupCreateActivity.GROUP_CREATE_VERIFIED_EXTRA, specialId == DcContact.DC_CONTACT_ID_NEW_VERIFIED_GROUP);
-      startActivity(intent);
+    if(specialId == DcContact.DC_CONTACT_ID_NEW_GROUP) {
+      startActivity(new Intent(this, GroupCreateActivity.class));
     } else if(specialId == DcContact.DC_CONTACT_ID_NEW_BROADCAST_LIST) {
       Intent intent = new Intent(this, GroupCreateActivity.class);
       intent.putExtra(GroupCreateActivity.CREATE_BROADCAST, true);

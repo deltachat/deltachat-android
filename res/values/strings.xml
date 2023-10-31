@@ -905,6 +905,7 @@
     <string name="contact_setup_changed">Changed setup for %1$s.</string>
     <string name="verified_group_explain">Verified groups guarantee end-to-end encryption. Only contacts with a green verification checkmark can be added to them.</string>
     <string name="verified_contact_required_explain">To guarantee end-to-end-encryption, you can only add contacts with a green verification mark to this group.\n\nYou may meet unverified contacts in person and scan their QR Code to verify them.</string>
+    <string name="create_verified_group_ask">All members have a green verification checkmark.\n\nDo you want to create a group that guarantees end-to-end-encryption?</string>
     <string name="copy_qr_data_success">Copied QR url to clipboard</string>
     <string name="mailto_dialog_header_select_chat">Select chat to send the message to</string>
     <!-- first placeholder is the name of the chat -->

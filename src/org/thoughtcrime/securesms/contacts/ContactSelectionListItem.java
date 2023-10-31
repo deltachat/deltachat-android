@@ -2,6 +2,8 @@ package org.thoughtcrime.securesms.contacts;
 
 import android.content.Context;
 import androidx.annotation.NonNull;
+
+import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.CheckBox;
@@ -60,10 +62,11 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
     this.name          = name;
     this.number        = number;
 
-    if (specialId==DcContact.DC_CONTACT_ID_NEW_CONTACT || specialId==DcContact.DC_CONTACT_ID_NEW_GROUP || specialId==DcContact.DC_CONTACT_ID_NEW_VERIFIED_GROUP
+    if (specialId==DcContact.DC_CONTACT_ID_NEW_CONTACT || specialId==DcContact.DC_CONTACT_ID_NEW_GROUP
      || specialId==DcContact.DC_CONTACT_ID_NEW_BROADCAST_LIST
      || specialId==DcContact.DC_CONTACT_ID_ADD_MEMBER || specialId==DcContact.DC_CONTACT_ID_QR_INVITE) {
       this.recipient = null;
+      this.nameView.setTypeface(null, Typeface.BOLD);
     }
     else {
       this.recipient = new Recipient(getContext(), contact);
@@ -71,6 +74,7 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
       if (this.recipient.getName() != null) {
         name = this.recipient.getName();
       }
+      this.nameView.setTypeface(null, Typeface.NORMAL);
     }
     this.avatar.setAvatar(glideRequests, recipient, false);
     this.avatar.setSeenRecently(contact!=null? contact.wasSeenRecently() : false);
