@@ -33,6 +33,7 @@
     <string name="close">Close</string>
     <string name="close_window">Close Window</string>
     <string name="forward">Forward</string>
+    <string name="later">later</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">Resend</string>
     <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
@@ -144,7 +145,7 @@
     <string name="gif">GIF</string>
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">Sticker</string>
-    <string name="save_to_sticker_collection">Save to Sticker Collection</string>
+    <string name="add_to_sticker_collection">Add to Sticker Collection</string>
     <string name="add_stickers_instructions">To add stickers, tap "Open Sticker Folder", create a subfolder for your sticker pack, and drag image and sticker files there</string>
     <string name="open_sticker_folder">Open Sticker Folder</string>
     <string name="images">Images</string>
