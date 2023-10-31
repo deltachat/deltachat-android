@@ -33,6 +33,8 @@
     <string name="close">Close</string>
     <string name="close_window">Close Window</string>
     <string name="forward">Forward</string>
+    <string name="create">Create</string>
+    <string name="later">Later</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">Resend</string>
     <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
@@ -144,6 +146,9 @@
     <string name="gif">GIF</string>
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">Sticker</string>
+    <string name="add_to_sticker_collection">Add to Sticker Collection</string>
+    <string name="add_stickers_instructions">To add stickers, tap "Open Sticker Folder", create a subfolder for your sticker pack, and drag image and sticker files there</string>
+    <string name="open_sticker_folder">Open Sticker Folder</string>
     <string name="images">Images</string>
     <string name="audio">Audio</string>
     <string name="voice_message">Voice Message</string>
@@ -204,6 +209,9 @@
     <string name="broadcast_lists">Broadcast Lists</string>
     <string name="new_broadcast_list">New Broadcast List</string>
     <string name="add_recipients">Add Recipients</string>
+    <string name="edit_broadcast_list">Edit Broadcast List</string>
+    <string name="broadcast_list_name">Broadcast List Name</string>
+    <string name="please_enter_broadcast_list_name">Please enter a name for the broadcast list.</string>
     <string name="menu_send">Send</string>
     <string name="menu_toggle_keyboard">Toggle Emoji Keyboard</string>
     <string name="menu_edit_group">Edit Group</string>
@@ -228,6 +236,7 @@
     <string name="menu_copy_image_to_clipboard">Copy Image</string>
     <string name="menu_copy_email_to_clipboard">Copy E-Mail</string>
     <string name="paste_from_clipboard">Paste from Clipboard</string>
+    <string name="ask_copy_unopenable_link_to_clipboard">The link "%1$d" can not be opened in the web browser. Do you want to copy the link to the clipboard instead?</string>
     <string name="menu_forward">Forward Message</string>
     <string name="menu_reply">Reply to Message</string>
     <string name="menu_mute">Mute Notifications</string>
@@ -237,6 +246,7 @@
     <string name="menu_all_media">All Media</string>
     <!-- Command to jump to the original message corresponding to a gallery image or document -->
     <string name="show_in_chat">Show in Chat</string>
+    <string name="show_app_in_chat">Show App in Chat</string>
     <string name="menu_share">Share</string>
     <!-- Verb "to block sth." usually a mailing list or a contact, not a noun -->
     <string name="block">Block</string>
@@ -248,6 +258,7 @@
     <string name="menu_scroll_to_bottom">Scroll to the Bottom</string>
     <string name="menu_scroll_to_top">Scroll to the Top</string>
     <string name="menu_help">Help</string>
+    <string name="what_is_webxdc">What is Webxdc?</string>
     <string name="privacy_policy">Privacy Policy</string>
     <string name="menu_select_all">Select All</string>
     <string name="select_chat">Select Chat</string>
@@ -284,6 +295,7 @@
     <string name="source_code">Source Code</string>
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">Add to Home Screen</string>
+    <string name="donate">Donate</string>
 
     <string name="mute_for_one_hour">Mute for 1 hour</string>
     <string name="mute_for_two_hours">Mute for 2 hours</string>
@@ -441,6 +453,8 @@
 
     <!-- search -->
     <string name="search">Search</string>
+    <string name="search_in_chat">Search in Chat</string>
+    <string name="search_files">Search Files</string>
     <string name="search_explain">Search for chats, contacts, and messages</string>
     <string name="search_no_result_for_x">No results found for \"%s\"</string>
 
@@ -456,6 +470,7 @@
     <string name="group_self_not_in_group">You must be a member of the group to perform this action.</string>
     <string name="profile_encryption">Encryption</string>
     <string name="profile_shared_chats">Shared Chats</string>
+    <string name="related_chats">Related Chats</string>
     <string name="tab_contact">Contact</string>
     <string name="tab_group">Group</string>
     <string name="tab_gallery">Gallery</string>
@@ -470,6 +485,10 @@
     <string name="tab_webxdc_empty_hint">Apps shared in this chat will appear here.</string>
     <string name="tab_all_media_empty_hint">Media shared in any chat will appear here.</string>
     <string name="media_preview">Media Preview</string>
+    <!-- option to show images in the gallery with the correct width/height aspect (instead of square); other gallery apps may be a source of inspiration for translation :) -->
+    <string name="aspect_ratio_grid">Aspect Ratio Grid</string>
+    <!-- option to show images in the gallery as square (instead of using correct width/height) -->
+    <string name="square_grid">Square Grid</string>
     <string name="send_message">Send Message</string>
     <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
     <string name="aeap_addr_changed">%1$s changed their address from %2$s to %3$s</string>
@@ -708,6 +727,8 @@
     <string name="profile_image_delete">Delete Profile Image</string>
     <string name="pref_show_tray_icon">Show Tray Icon</string>
     <string name="pref_edit_profile">Edit Profile</string>
+    <string name="disable_imap_idle">Disable IMAP IDLE</string>
+    <string name="disable_imap_idle_explain">Do not use IMAP IDLE extension even if the server supports it. Enabling this option will delay message retrieval, enable it only for testing.</string>
 
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Search Results</string>
@@ -923,6 +944,8 @@
     <string name="notify_name_only">Name only</string>
     <string name="notify_no_name_or_message">No name or message</string>
     <string name="notifications_disabled">Notifications disabled</string>
+    <string name="new_messages">New messages</string>
+    <string name="n_messages_in_m_chats">%1$d messages in %2$d chats</string>
 
 
     <!-- permissions -->
