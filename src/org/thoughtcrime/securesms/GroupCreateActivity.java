@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.loader.app.LoaderManager;
 
 import com.b44t.messenger.DcChat;
@@ -41,6 +42,7 @@ import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.profiles.AvatarHelper;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.scribbles.ScribbleActivity;
+import org.thoughtcrime.securesms.util.IntentUtils;
 import org.thoughtcrime.securesms.util.SelectedRecipientsAdapter;
 import org.thoughtcrime.securesms.util.SelectedRecipientsAdapter.OnRecipientDeletedListener;
 import org.thoughtcrime.securesms.util.ThemeUtil;
@@ -291,22 +293,28 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
         finish();
         return true;
       case R.id.menu_create_group:
+        String groupName = getGroupName();
+        if (showGroupNameEmptyToast(groupName)) return true;
+
         if (groupChatId!=0) {
-          groupUpdateInDb();
-        }
-        else {
-          groupCreateInDb();
-        }
-        attachmentManager.cleanup();
-
-        if (groupChatId==0) // Group still hasn't been created e.g. due to empty name
-          return true;
-
-        if(isEdit()) {
-          groupUpdateDone();
-        }
-        else {
-          groupCreateDone();
+          updateGroup(groupName);
+        } else {
+          if (allMembersVerified()) {
+            new AlertDialog.Builder(this)
+              .setMessage(R.string.create_verified_group_ask)
+              .setNeutralButton(R.string.learn_more, (d, w) -> IntentUtils.showBrowserIntent(this, "https://delta.chat/en/help#verifiedchats"))
+              .setPositiveButton(R.string.yes, (d, w) -> {
+                  verified = true;
+                  createGroup(groupName);
+              })
+              .setNegativeButton(R.string.no, (d, w) -> {
+                  createGroup(groupName);
+              })
+              .setCancelable(true)
+              .show();
+            return true;
+          }
+          createGroup(groupName);
         }
 
         return true;
@@ -315,15 +323,23 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     return false;
   }
 
+  private boolean allMembersVerified() {
+    for (Recipient recipient : getAdapter().getRecipients()) {
+      DcContact contact = recipient.getDcContact();
+      if (contact != null && !contact.isVerified()) {
+        return false;
+      }
+    }
+    return true;
+  }
+
   @Override
   public void onRecipientDeleted(Recipient recipient) {
     getAdapter().remove(recipient);
     updateViewState();
   }
 
-  private void groupCreateInDb() {
-    String groupName = getGroupName();
-    if (showGroupNameEmptyToast(groupName)) return;
+  private void createGroup(String groupName) {
     if (broadcast) {
       groupChatId = dcContext.createBroadcastList();
       dcContext.setChatName(groupChatId, groupName);
@@ -342,9 +358,8 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     if (avatarBmp!=null) {
       AvatarHelper.setGroupAvatar(this, groupChatId, avatarBmp);
     }
-  }
 
-  private void groupCreateDone() {
+    attachmentManager.cleanup();
     Intent intent = new Intent(this, ConversationActivity.class);
     intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, groupChatId);
     startActivity(intent);
@@ -359,21 +374,16 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     return false;
   }
 
-  private void groupUpdateInDb() {
+  private void updateGroup(String groupName) {
     if (groupChatId == 0) {
-      return;
-    }
-    String groupName = getGroupName();
-    if (showGroupNameEmptyToast(groupName)) {
       return;
     }
     dcContext.setChatName(groupChatId, groupName);
     updateGroupParticipants();
 
     if (avatarChanged) AvatarHelper.setGroupAvatar(this, groupChatId, avatarBmp);
-  }
 
-  private void groupUpdateDone() {
+    attachmentManager.cleanup();
     Intent intent = new Intent();
     intent.putExtra(GroupCreateActivity.EDIT_GROUP_CHAT_ID, groupChatId);
     setResult(RESULT_OK, intent);
