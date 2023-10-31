@@ -586,7 +586,6 @@
     <string name="profile_image_delete">Ištrinti profilio paveikslą</string>
     <string name="pref_show_tray_icon">Rodyti dėklo piktogramą</string>
     <string name="pref_edit_profile">Taisyti profilį</string>
-
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Paieškos rezultatai</string>
     <string name="emoji_not_found">Nerasta jokių šypsniukų</string>
@@ -705,8 +704,6 @@
     <string name="notify_name_only">Tik vardą</string>
     <string name="notify_no_name_or_message">Jokio vardo ar žinutės</string>
     <string name="notifications_disabled">Pranešimai išjungti</string>
-
-
     <!-- permissions -->
     <string name="perm_required_title">Reikalingas leidimas</string>
     <string name="perm_continue">Tęsti</string>

@@ -262,7 +262,6 @@
     <string name="source_code">소스 코드</string>
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">홈 스크린에 추가</string>
-
     <string name="mute_for_one_hour">1시간 동안 알림 끄기</string>
     <string name="mute_for_two_hours">2시간 동안 알림 끄기</string>
     <string name="mute_for_one_day">1일 동안 알림 끄기</string>
@@ -631,7 +630,6 @@
     <string name="profile_image_delete">프로필 이미지 삭제</string>
     <string name="pref_show_tray_icon">트레이 아이콘 표시</string>
     <string name="pref_edit_profile">프로필 편집</string>
-
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">결과 검색</string>
     <string name="emoji_not_found">이모티콘을 찾을 수 없습니다.</string>

@@ -300,7 +300,6 @@
     <string name="source_code">Вихідний код</string>
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">Додати на домашній екран</string>
-
     <string name="mute_for_one_hour">Відключити сповіщення на 1 годину</string>
     <string name="mute_for_two_hours">Відключити сповіщення на 2 години</string>
     <string name="mute_for_one_day">Відключити сповіщення на 1 день</string>
@@ -406,6 +405,7 @@
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
     <string name="chat_new_one_to_one_hint">Відправити повідомлення. Це нічого, якщо %1$s не використовує Delta Chat.</string>
+    <string name="chat_new_broadcast_hint">У списку трансляцій одержувачі будуть отримувати повідомлення у чаті з вами в режимі тільки-для-читання.</string>
     <string name="chat_new_group_hint">Інші побачать цю групу лише після того, як ви надішлете перше повідомлення.</string>
     <string name="chat_record_slide_to_cancel">Рухайте для скасування</string>
     <string name="chat_record_explain">Натисніть і утримуйте для запису голосового повідомлення, відпустіть для відправки</string>
@@ -737,7 +737,6 @@
     <string name="profile_image_delete">Видалити зображення профілю</string>
     <string name="pref_show_tray_icon">Показати іконку в треї</string>
     <string name="pref_edit_profile">Редагувати профіль</string>
-
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Результати пошуку</string>
     <string name="emoji_not_found">Емодзі не знайдено</string>
@@ -941,8 +940,6 @@
     <string name="notify_name_only">Тільки ім\'я</string>
     <string name="notify_no_name_or_message">Без імені або повідомлення</string>
     <string name="notifications_disabled">Сповіщення вимкнено</string>
-
-
     <!-- permissions -->
     <string name="perm_required_title">Потрібен дозвіл</string>
     <string name="perm_continue">Продовжити</string>

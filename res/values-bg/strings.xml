@@ -283,7 +283,6 @@
     <string name="source_code">Изходен код</string>
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">Добавяне към началния екран</string>
-
     <string name="mute_for_one_hour">Спиране на звука за 1 час</string>
     <string name="mute_for_two_hours">Спиране на звука за 2 часа</string>
     <string name="mute_for_one_day">Спиране на звука за 1 ден</string>
@@ -699,7 +698,6 @@
     <string name="profile_image_delete">Изтриване на изображението на профила</string>
     <string name="pref_show_tray_icon">Показване на иконата в System Tray</string>
     <string name="pref_edit_profile">Редактиране на профил</string>
-
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Резултати от търсенето</string>
     <string name="emoji_not_found">Не е открито Emoji</string>

@@ -284,7 +284,6 @@
     <string name="source_code">Kaynak Kodu</string>
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">Ana Ekrana Ekle</string>
-
     <string name="mute_for_one_hour">1 saatliğine sessize al</string>
     <string name="mute_for_two_hours">2 saatliğine sessize al</string>
     <string name="mute_for_one_day">1 günlüğüne sessize al</string>
@@ -708,7 +707,6 @@
     <string name="profile_image_delete">Profil Görselini Sil</string>
     <string name="pref_show_tray_icon">Tepsi Simgesi Göster</string>
     <string name="pref_edit_profile">Profili Düzenle</string>
-
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Arama Sonuçları</string>
     <string name="emoji_not_found">Emoji bulunamadı</string>
@@ -839,7 +837,7 @@
     <string name="chat_protection_enabled_tap_to_learn_more">Bundan böyle iletiler uçtan uca şifreleme güvencelidir. Daha fazlasını öğrenmek için dokunun.</string>
     <string name="chat_protection_enabled_explanation">Artık bu sohbetteki tüm iletiler uçtan uca şifreleme güvencelidir.\n\nUçtan uca şifreleme, iletilerinizi sizin ve sohbet ortaklarınızın arasında özel tutar. E-posta sağlayıcınız bile onları okuyamaz.</string>
     <string name="chat_protection_broken_tap_to_learn_more">%1$s başka bir aygıttan bir ileti gönderdi. Daha fazlasını öğrenmek için dokunun.</string>
-    <string name="chat_protection_broken_explanation">Uçtan uca şifreleme artık güvenceli değil; çünkü büyük olasılıkla %1$s Delta Chat\'i yeniden yükledi ya da başka bir aygıttan ileti gönderdi.\n\nOnlarla kişisel olarak tanışabilir ve güvenceli uçtan uca şifrelemeyi yeniden kurmak için onların QR kodunu yeniden tarayabilirsiniz.</string>
+    <string name="chat_protection_broken_explanation">Uçtan uca şifreleme artık güvenceli olamıyor; çünkü büyük olasılıkla %1$s Delta Chat\'i yeniden yükledi ya da başka bir aygıttan ileti gönderdi.\n\nOnlarla kişisel olarak tanışabilir ve güvenceli uçtan uca şifrelemeyi yeniden kurmak için onların QR kodunu yeniden tarayabilirsiniz.</string>
     <string name="learn_more">Daha Fazlasını Öğrenin</string>
 
     <string name="devicemsg_self_deleted">\"Kaydedilen iletiler\" sohbetini sildiniz.\n\nℹ️ \"Kaydedilen iletiler\" özelliğini yeniden kullanmak için kendinizle yeni bir sohbet oluşturun.</string>
@@ -904,6 +902,7 @@
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">%1$s için ayarlama değiştirildi.</string>
     <string name="verified_group_explain">Doğrulanan gruplar uçtan uca şifrelemeyi güvenceler. Onlara yalnızca yeşil bir doğrulama onay kutusu olan kişiler eklenebilir.</string>
+    <string name="verified_contact_required_explain">Uçtan uca şifrelemeyi güvencelemek için bu öbeğe yalnızca yeşil bir doğrulama imi olan kişileri ekleyebilirsiniz.\n\nDoğrulanmayan kişilerle kişisel olarak tanışabilir ve onları doğrulamak için onların QR kodunu tarayabilirsiniz.</string>
     <string name="copy_qr_data_success">QR URL\'si panoya kopyalandı</string>
     <string name="mailto_dialog_header_select_chat">İletiyi göndermek için sohbet seçin</string>
     <!-- first placeholder is the name of the chat -->
@@ -921,8 +920,6 @@
     <string name="notify_name_only">Yalnızca ad</string>
     <string name="notify_no_name_or_message">Ad ya da ileti yok</string>
     <string name="notifications_disabled">Bildirimler etkisizleştirildi</string>
-
-
     <!-- permissions -->
     <string name="perm_required_title">İzin gerekli</string>
     <string name="perm_continue">Sürdür</string>

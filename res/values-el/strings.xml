@@ -270,7 +270,6 @@
     <string name="source_code">Πηγαίος Κώδικας</string>
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">Προσθήκη στην κεντρική οθόνη</string>
-
     <string name="mute_for_one_hour">Σίγαση για 1 ώρα</string>
     <string name="mute_for_two_hours">Σίγαση για 2 ώρες</string>
     <string name="mute_for_one_day">Σίγαση για 1 ημέρα</string>
@@ -659,7 +658,6 @@
     <string name="profile_image_delete">Διαγραφή Εικόνας Προφίλ</string>
     <string name="pref_show_tray_icon">Εμφάνιση Εικονιδίου Δίσκου</string>
     <string name="pref_edit_profile">Επεξεργασία Προφίλ</string>
-
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Αποτελέσματα Αναζήτησης</string>
     <string name="emoji_not_found">Δεν βρέθηκε emoji</string>
