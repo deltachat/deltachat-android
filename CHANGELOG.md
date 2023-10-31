@@ -1,5 +1,16 @@
 # Delta Chat Android Changelog
 
+## v1.41.3 Testrun
+2023-10
+
+* allow to export all backups together
+* "New Group" offers to create verified groups if all members are verified
+* verified groups: show all contacts when adding members and explain how to verify unverified ones
+* "QR Invite Code" is available after group creation in the group's profile
+* update translations
+* using core 1.127.2
+
+
 ## v1.41.2 Testrun
 2023-10
 
