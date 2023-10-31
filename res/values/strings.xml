@@ -33,7 +33,8 @@
     <string name="close">Close</string>
     <string name="close_window">Close Window</string>
     <string name="forward">Forward</string>
-    <string name="later">later</string>
+    <string name="create">Create</string>
+    <string name="later">Later</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">Resend</string>
     <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
@@ -208,7 +209,6 @@
     <string name="broadcast_lists">Broadcast Lists</string>
     <string name="new_broadcast_list">New Broadcast List</string>
     <string name="add_recipients">Add Recipients</string>
-    <string name="create_broadcast_list">Create Broadcast List</string>
     <string name="edit_broadcast_list">Edit Broadcast List</string>
     <string name="broadcast_list_name">Broadcast List Name</string>
     <string name="please_enter_broadcast_list_name">Please enter a name for the broadcast list.</string>
