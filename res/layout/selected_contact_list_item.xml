@@ -28,6 +28,7 @@
                   android:layout_marginStart="16dp"
                   android:paddingRight="16dp"
                   android:paddingEnd="16dp"
+                  android:layout_centerVertical="true"
                   android:orientation="vertical">
 
         <org.thoughtcrime.securesms.components.emoji.EmojiTextView

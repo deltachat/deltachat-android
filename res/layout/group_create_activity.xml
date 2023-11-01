@@ -43,33 +43,11 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
         android:textSize="18sp"
         android:text="@string/verified_group_explain" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <Button
-            style="@style/ButtonPrimary"
-            android:id="@+id/add_member_button"
-            android:layout_gravity="fill_vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:paddingStart="30dp"
-            android:paddingLeft="30dp"
-            android:paddingEnd="30dp"
-            android:paddingRight="30dp"
-            android:layout_marginBottom="15dp"
-            android:text="@string/group_add_members"/>
-
-    </LinearLayout>
-
     <ListView android:id="@+id/selected_contacts_list"
+        android:layout_marginTop="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
