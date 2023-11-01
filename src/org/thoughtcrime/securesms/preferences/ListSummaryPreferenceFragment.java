@@ -43,7 +43,8 @@ public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceF
   public void onDestroy() {
     DcHelper.getEventCenter(getContext()).removeObservers(this);
 
-    if (notificationController != null) {
+    NotificationController notifController = notificationController;
+    if (notifController != null) {
       // cancel backup when settings-activity is destroyed.
       //
       // where possible, we avoid the settings-activity from being destroyed,
@@ -59,8 +60,9 @@ public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceF
       // btw, import does not have this issue (no singleTask in play there)
       // and also for export, switching to other apps and tapping the notification will work.
       // so, the current state is not that bad :)
-      notificationController.close();
-      dcContext.stopOngoingProcess();
+      notifController.close();
+      notificationController = null;
+      stopOngoingProcess();
       Toast.makeText(getActivity(), R.string.export_aborted, Toast.LENGTH_LONG).show();
     }
 
@@ -130,13 +132,11 @@ public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceF
   protected ProgressDialog progressDialog = null;
   protected int            progressWhat = 0;
   protected String         pathAsDisplayedToUser = "";
-  protected boolean        imexUserAborted = false;
   protected void startImexInner(int accountId, int what, String imexPath, String pathAsDisplayedToUser)
   {
     DcContext dcContext = DcHelper.getAccounts(getActivity()).getAccount(accountId);
 
     this.pathAsDisplayedToUser = pathAsDisplayedToUser;
-    imexUserAborted = false;
     notificationController = GenericForegroundService.startForegroundTask(getContext(), getString(R.string.export_backup_desktop));
     if( progressDialog!=null ) {
       progressDialog.dismiss();
@@ -148,15 +148,19 @@ public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceF
     progressDialog.setCanceledOnTouchOutside(false);
     progressDialog.setCancelable(false);
     progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, getActivity().getString(android.R.string.cancel), (dialog, which) -> {
-      imexUserAborted = true;
-      dcContext.stopOngoingProcess();
       notificationController.close();
       notificationController = null;
+      stopOngoingProcess();
     });
     progressDialog.show();
 
-    DcHelper.getAccounts(getActivity()).stopIo();
     dcContext.imex(progressWhat, imexPath);
+  }
+
+  private void stopOngoingProcess() {
+    for (int accId : imexAccounts) {
+      DcHelper.getAccounts(requireActivity()).getAccount(accId).stopOngoingProcess();
+    }
   }
 
   private int getTotalProgress() {
@@ -170,21 +174,22 @@ public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceF
   @Override
   public void handleEvent(@NonNull DcEvent event) {
     if (event.getId()== DcContext.DC_EVENT_IMEX_PROGRESS) {
+      NotificationController notifController = notificationController;
+      if (notifController == null) return;
+
       long progress = event.getData1Int();
       Context context = getActivity();
       if (progress==0/*error/aborted*/) {
-        DcHelper.getAccounts(context).startIo();
+        notifController.close();
+        notificationController = null;
+        stopOngoingProcess();
         progressDialog.dismiss();
         progressDialog = null;
-        if (!imexUserAborted) {
-          DcContext dcContext = DcHelper.getAccounts(context).getAccount(event.getAccountId());
-          new AlertDialog.Builder(context)
-                  .setMessage(dcContext.getLastError())
-                  .setPositiveButton(android.R.string.ok, null)
-                  .show();
-        }
-        notificationController.close();
-        notificationController = null;
+        DcContext dcContext = DcHelper.getAccounts(context).getAccount(event.getAccountId());
+        new AlertDialog.Builder(context)
+          .setMessage(dcContext.getLastError())
+          .setPositiveButton(android.R.string.ok, null)
+          .show();
       }
       else if (progress<1000/*progress in permille*/) {
         imexProgress.put(event.getAccountId(), (int) progress);
@@ -192,16 +197,15 @@ public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceF
         int percent = totalProgress / (10 * imexAccounts.length);
         String formattedPercent = String.format(" %d%%", percent);
         progressDialog.setMessage(getResources().getString(R.string.one_moment) + formattedPercent);
-        notificationController.setProgress(1000L * imexAccounts.length, totalProgress, formattedPercent);
+        notifController.setProgress(1000L * imexAccounts.length, totalProgress, formattedPercent);
       }
       else if (progress==1000/*done*/) {
         accountsDone++;
         if (accountsDone == imexAccounts.length) {
-          DcHelper.getAccounts(context).startIo();
+          notifController.close();
+          notificationController = null;
           progressDialog.dismiss();
           progressDialog = null;
-          notificationController.close();
-          notificationController = null;
           String msg = "";
           if (progressWhat == DcContext.DC_IMEX_EXPORT_BACKUP) {
             msg = context.getString(R.string.pref_backup_written_to_x, pathAsDisplayedToUser);
