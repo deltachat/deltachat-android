@@ -216,6 +216,8 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     if (!broadcast) {
       DcContact self = dcContext.getContact(DC_CONTACT_ID_SELF);
       initList.add(new Recipient(this, self));
+    } else {
+      groupName.setHint(R.string.broadcast_list_name);
     }
     ArrayList<Integer> suggestedContactIds = getIntent().getIntegerArrayListExtra(SUGGESTED_CONTACT_IDS);
     if (suggestedContactIds != null && !suggestedContactIds.isEmpty()) {

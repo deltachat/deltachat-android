@@ -32,7 +32,7 @@
             android:lines="1"
             android:maxLength="255"
             android:inputType="textAutoCorrect"
-            android:hint="@string/name_desktop" />
+            android:hint="@string/group_name" />
     </LinearLayout>
 
     <TextView
