@@ -110,6 +110,7 @@ public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceF
     imexAccounts = DcHelper.getAccounts(getActivity()).getAll();
     imexProgress = new HashMap<>();
     accountsDone = 0;
+    showProgressDialog();
     String path = DcHelper.getImexDir().getAbsolutePath();
     for (int i = 0; i < imexAccounts.length; i++) {
       startImexInner(imexAccounts[i], what, path, path);
@@ -126,6 +127,7 @@ public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceF
     imexAccounts = new int[]{ dcContext.getAccountId() };
     imexProgress = new HashMap<>();
     accountsDone = 0;
+    showProgressDialog();
     startImexInner(imexAccounts[0], what, imexPath, pathAsDisplayedToUser);
   }
 
@@ -135,14 +137,23 @@ public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceF
   protected void startImexInner(int accountId, int what, String imexPath, String pathAsDisplayedToUser)
   {
     DcContext dcContext = DcHelper.getAccounts(getActivity()).getAccount(accountId);
-
     this.pathAsDisplayedToUser = pathAsDisplayedToUser;
+    progressWhat = what;
+    dcContext.imex(progressWhat, imexPath);
+  }
+
+  private void stopOngoingProcess() {
+    for (int accId : imexAccounts) {
+      DcHelper.getAccounts(requireActivity()).getAccount(accId).stopOngoingProcess();
+    }
+  }
+
+  private void showProgressDialog() {
     notificationController = GenericForegroundService.startForegroundTask(getContext(), getString(R.string.export_backup_desktop));
     if( progressDialog!=null ) {
       progressDialog.dismiss();
       progressDialog = null;
     }
-    progressWhat = what;
     progressDialog = new ProgressDialog(getActivity());
     progressDialog.setMessage(getActivity().getString(R.string.one_moment));
     progressDialog.setCanceledOnTouchOutside(false);
@@ -153,14 +164,6 @@ public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceF
       stopOngoingProcess();
     });
     progressDialog.show();
-
-    dcContext.imex(progressWhat, imexPath);
-  }
-
-  private void stopOngoingProcess() {
-    for (int accId : imexAccounts) {
-      DcHelper.getAccounts(requireActivity()).getAccount(accId).stopOngoingProcess();
-    }
   }
 
   private int getTotalProgress() {
