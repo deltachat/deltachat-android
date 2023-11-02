@@ -17,7 +17,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.loader.app.LoaderManager;
 
 import com.b44t.messenger.DcChat;
@@ -35,7 +34,6 @@ import org.thoughtcrime.securesms.mms.AttachmentManager;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.profiles.AvatarHelper;
 import org.thoughtcrime.securesms.scribbles.ScribbleActivity;
-import org.thoughtcrime.securesms.util.IntentUtils;
 import org.thoughtcrime.securesms.util.SelectedContactsAdapter;
 import org.thoughtcrime.securesms.util.SelectedContactsAdapter.ItemClickListener;
 import org.thoughtcrime.securesms.util.ThemeUtil;
@@ -50,7 +48,6 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
 {
 
   public static final String EDIT_GROUP_CHAT_ID = "edit_group_chat_id";
-  public static final String GROUP_CREATE_VERIFIED_EXTRA  = "group_create_verified";
   public static final String CREATE_BROADCAST  = "group_create_broadcast";
   public static final String CLONE_CHAT_EXTRA = "clone_chat";
 
@@ -76,8 +73,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
   protected void onCreate(Bundle state, boolean ready) {
     dcContext = DcHelper.getContext(this);
     setContentView(R.layout.group_create_activity);
-    //noinspection ConstantConditions
-    verified = getIntent().getBooleanExtra(GROUP_CREATE_VERIFIED_EXTRA, false);
+    verified = false;
     broadcast = getIntent().getBooleanExtra(CREATE_BROADCAST, false);
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close_white_24dp);
@@ -125,8 +121,6 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     }
     else if(broadcast) {
       title = getString(R.string.new_broadcast_list);
-    } else if(verified) {
-      title = getString(R.string.menu_new_verified_group);
     }
     else {
       title = getString(R.string.menu_new_group);
@@ -138,7 +132,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     lv                  = ViewUtil.findById(this, R.id.selected_contacts_list);
     avatar              = ViewUtil.findById(this, R.id.avatar);
     groupName           = ViewUtil.findById(this, R.id.group_name);
-    TextView groupHints = ViewUtil.findById(this, R.id.group_hints);
+    TextView chatHints  = ViewUtil.findById(this, R.id.chat_hints);
 
     initializeAvatarView();
 
@@ -166,10 +160,9 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     if (broadcast) {
       avatar.setVisibility(View.GONE);
       groupName.setHint(R.string.broadcast_list_name);
-      groupHints.setText(R.string.chat_new_broadcast_hint);
-      groupHints.setVisibility(isEdit()? View.GONE : View.VISIBLE);
-    } else if (!verified) {
-      groupHints.setVisibility(View.GONE);
+      chatHints.setVisibility(isEdit()? View.GONE : View.VISIBLE);
+    } else {
+      chatHints.setVisibility(View.GONE);
     }
 
     if(isEdit()) {
