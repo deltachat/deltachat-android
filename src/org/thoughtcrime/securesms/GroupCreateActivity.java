@@ -203,21 +203,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
         if (groupChatId!=0) {
           updateGroup(groupName);
         } else {
-          if (!broadcast && allMembersVerified()) {
-            new AlertDialog.Builder(this)
-              .setMessage(R.string.create_verified_group_ask)
-              .setNeutralButton(R.string.learn_more, (d, w) -> IntentUtils.showBrowserIntent(this, "https://delta.chat/en/help#verifiedchats"))
-              .setPositiveButton(R.string.yes, (d, w) -> {
-                  verified = true;
-                  createGroup(groupName);
-              })
-              .setNegativeButton(R.string.no, (d, w) -> {
-                  createGroup(groupName);
-              })
-              .setCancelable(true)
-              .show();
-            return true;
-          }
+          verified = !broadcast && allMembersVerified();
           createGroup(groupName);
         }
 
