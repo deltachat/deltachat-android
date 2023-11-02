@@ -201,7 +201,7 @@
     <string name="menu_new_contact">New Contact</string>
     <string name="menu_new_chat">New Chat</string>
     <string name="menu_new_group">New Group</string>
-    <string name="menu_clone">Clone</string>
+    <string name="menu_clone">Clone Chat</string>
     <!-- Use the same wording as "Subject" to help people coming from the e-mail context; eg. "Betreff" in German -->
     <string name="new_group_or_subject">New Group or Subject</string>
     <string name="menu_new_verified_group">New Verified Group</string>
