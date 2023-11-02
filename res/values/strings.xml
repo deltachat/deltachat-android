@@ -29,7 +29,7 @@
     <string name="emoji">Emoji</string>
     <string name="attachment">Attachment</string>
     <string name="back">Back</string>
-    <string name="verified">Verified</string>
+    <string name="verified">Introduced</string>
     <string name="close">Close</string>
     <string name="close_window">Close Window</string>
     <string name="forward">Forward</string>
@@ -159,7 +159,6 @@
     <string name="video">Video</string>
     <string name="documents">Documents</string>
     <string name="contact">Contact</string>
-    <string name="verified_contact">Verified Contact</string>
     <string name="camera">Camera</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Capture</string>
@@ -204,7 +203,6 @@
     <string name="clone_chat">Clone Chat</string>
     <!-- Use the same wording as "Subject" to help people coming from the e-mail context; eg. "Betreff" in German -->
     <string name="new_group_or_subject">New Group or Subject</string>
-    <string name="menu_new_verified_group">New Verified Group</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">Broadcast List</string>
     <string name="broadcast_lists">Broadcast Lists</string>
@@ -900,7 +898,7 @@
     <string name="revive_qr_code">Activate QR Code</string>
     <string name="qrshow_title">QR Invite Code</string>
     <string name="qrshow_x_joining">%1$s joins.</string>
-    <string name="qrshow_x_verified">%1$s verified.</string>
+    <string name="qrshow_x_verified">%1$s introduced.</string>
     <string name="qrshow_x_has_joined_group">%1$s joined the group.</string>
     <string name="qrshow_join_group_title">QR Invite Code</string>
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
@@ -922,16 +920,14 @@
     <string name="secure_join_started">%1$s invited you to join this group.\n\nWaiting for the device of %2$s to reply…</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s replied, waiting for being added to the group…</string>
-    <string name="contact_verified">%1$s verified.</string>
-    <string name="contact_not_verified">Cannot verify %1$s.</string>
-    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that verified the contact shown. -->
-    <string name="verified_by">Verified by %1$s</string>
-    <string name="verified_by_you">Verified by me</string>
+    <string name="contact_verified">%1$s introduced.</string>
+    <string name="contact_not_verified">Cannot introduce %1$s.</string>
+    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
+    <string name="verified_by">Introduced by %1$s</string>
+    <string name="verified_by_you">Introduced by me</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Changed setup for %1$s.</string>
-    <string name="verified_group_explain">Verified groups guarantee end-to-end encryption. Only contacts with a green verification checkmark can be added to them.</string>
-    <string name="verified_contact_required_explain">To guarantee end-to-end-encryption, you can only add contacts with a green verification mark to this group.\n\nYou may meet unverified contacts in person and scan their QR Code to verify them.</string>
-    <string name="create_verified_group_ask">All members have a green verification checkmark.\n\nDo you want to create a group that guarantees end-to-end-encryption?</string>
+    <string name="verified_contact_required_explain">To guarantee end-to-end-encryption, you can only add contacts with a green checkmark to this group.\n\nYou may meet contacts in person and scan their QR Code to introduce them.</string>
     <string name="copy_qr_data_success">Copied QR url to clipboard</string>
     <string name="mailto_dialog_header_select_chat">Select chat to send the message to</string>
     <!-- first placeholder is the name of the chat -->
