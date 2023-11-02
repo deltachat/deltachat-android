@@ -33,6 +33,8 @@
     <string name="close">关闭</string>
     <string name="close_window">关闭窗口</string>
     <string name="forward">转发</string>
+    <string name="create">创建</string>
+    <string name="later">稍后</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">重新发送</string>
     <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
@@ -136,6 +138,9 @@
     <string name="gif">Gif</string>
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">贴纸</string>
+    <string name="add_to_sticker_collection">添加到表情集</string>
+    <string name="add_stickers_instructions">要添加表情包，轻按“打开表情包文件夹”为你的表情包新建一个子文件夹，并把图片和表情符号拖动至此</string>
+    <string name="open_sticker_folder">打开表情包文件夹</string>
     <string name="images">图像</string>
     <string name="audio">音频</string>
     <string name="voice_message">语音消息</string>
@@ -196,6 +201,9 @@
     <string name="broadcast_lists">广播列表</string>
     <string name="new_broadcast_list">新建广播列表</string>
     <string name="add_recipients">添加接收者</string>
+    <string name="edit_broadcast_list">编辑广播列表</string>
+    <string name="broadcast_list_name">广播列表名称</string>
+    <string name="please_enter_broadcast_list_name">请属于广播列表的名称</string>
     <string name="menu_send">发送</string>
     <string name="menu_toggle_keyboard">切换 emoji 键盘</string>
     <string name="menu_edit_group">编辑群组</string>
@@ -220,6 +228,7 @@
     <string name="menu_copy_image_to_clipboard">复制图像</string>
     <string name="menu_copy_email_to_clipboard">复制电子邮件</string>
     <string name="paste_from_clipboard">从剪贴板粘贴</string>
+    <string name="ask_copy_unopenable_link_to_clipboard">无法在浏览器中打开链接 “%1$d”。你要将链接复制到剪贴板吗？</string>
     <string name="menu_forward">转发消息</string>
     <string name="menu_reply">回复消息</string>
     <string name="menu_mute">通知静音</string>
@@ -229,6 +238,7 @@
     <string name="menu_all_media">所有媒体</string>
     <!-- Command to jump to the original message corresponding to a gallery image or document -->
     <string name="show_in_chat">在聊天中显示</string>
+    <string name="show_app_in_chat">在聊天中显示应用</string>
     <string name="menu_share">分享</string>
     <!-- Verb "to block sth." usually a mailing list or a contact, not a noun -->
     <string name="block">屏蔽</string>
@@ -240,6 +250,7 @@
     <string name="menu_scroll_to_bottom">滚动至底部</string>
     <string name="menu_scroll_to_top">滚动至顶部</string>
     <string name="menu_help">帮助</string>
+    <string name="what_is_webxdc">Webxdc 是什么？</string>
     <string name="privacy_policy">隐私政策</string>
     <string name="menu_select_all">全选</string>
     <string name="select_chat">选择聊天</string>
@@ -276,6 +287,8 @@
     <string name="source_code">源代码</string>
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">添加到主屏幕</string>
+    <string name="donate">捐赠</string>
+
     <string name="mute_for_one_hour">静音 1 小时</string>
     <string name="mute_for_two_hours">静音 2 小时</string>
     <string name="mute_for_one_day">静音 1 天</string>
@@ -425,6 +438,8 @@
 
     <!-- search -->
     <string name="search">搜索</string>
+    <string name="search_in_chat">搜索聊天</string>
+    <string name="search_files">搜索文件</string>
     <string name="search_explain">搜索聊天、联系人和消息</string>
     <string name="search_no_result_for_x">没有找到有关\"%s\"的结果</string>
 
@@ -440,6 +455,7 @@
     <string name="group_self_not_in_group">为了执行此操作，您必须是群组成员。</string>
     <string name="profile_encryption">加密</string>
     <string name="profile_shared_chats">共有聊天</string>
+    <string name="related_chats">相关聊天</string>
     <string name="tab_contact">联系人</string>
     <string name="tab_group">群组</string>
     <string name="tab_gallery">图库</string>
@@ -454,6 +470,10 @@
     <string name="tab_webxdc_empty_hint">在此聊天中分享的私人应用会出现在这里</string>
     <string name="tab_all_media_empty_hint">任何聊天中分享的媒体文件都将出现在这里</string>
     <string name="media_preview">媒体预览</string>
+    <!-- option to show images in the gallery with the correct width/height aspect (instead of square); other gallery apps may be a source of inspiration for translation :) -->
+    <string name="aspect_ratio_grid">宽高比网格</string>
+    <!-- option to show images in the gallery as square (instead of using correct width/height) -->
+    <string name="square_grid">方形网格</string>
     <string name="send_message">发送消息</string>
     <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
     <string name="aeap_addr_changed">%1$s 将邮箱从 %2$s 更改为 %3$s</string>
@@ -642,6 +662,10 @@
     <string name="pref_backup">备份</string>
     <string name="pref_backup_explain">将聊天备份至外部存储</string>
     <string name="pref_backup_export_explain">备份可帮助您在此设备或另一台设备上设置全新安装的本应用。\n\n备份将包含所有消息、联系人、聊天以及端到端的 Autocrypt 设置。请将备份文件保存在安全的地方，或尽快将其删除。</string>
+    <!-- the placeholder will be replaced by the name of the account's email address -->
+    <string name="pref_backup_export_x">导出 %1$s</string>
+    <!-- the placeholder will be replaced by the number of accounts to export; the number is always larger than 1 -->
+    <string name="pref_backup_export_all">导出全部 %1$d 个账户</string>
     <string name="pref_backup_export_start_button">开始备份</string>
     <string name="pref_backup_written_to_x">备份已成功写入到“%1$s”。</string>
     <string name="pref_managekeys_menu_title">管理密钥</string>
@@ -692,6 +716,9 @@
     <string name="profile_image_delete">删除个人资料图片</string>
     <string name="pref_show_tray_icon">显示托盘图标</string>
     <string name="pref_edit_profile">编辑个人资料</string>
+    <string name="disable_imap_idle">禁用 IMAP IDLE</string>
+    <string name="disable_imap_idle_explain">即便服务器支持，也不要使用 IMAP IDLE 扩展。启用后会造成消息获取延迟，请仅出于测试目的启用该功能。</string>
+
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">搜索结果</string>
     <string name="emoji_not_found">未找到 emoji</string>
@@ -888,6 +915,7 @@
     <string name="contact_setup_changed">%1$s 的加密设置已更改。</string>
     <string name="verified_group_explain">已验证的群组确保端到端加密。只有带绿色验证钩形符号的联系人才能被加群</string>
     <string name="verified_contact_required_explain">要确保端到端加密，你只能将带有略色验证标识的联系人到此群中。\n\n你可以亲自和未验证联系人线下碰面并扫描联系人二维码来验证。</string>
+    <string name="create_verified_group_ask">所有成员均有绿色验证钩形符号。\n\n你要创建一个确保端到端加密的群吗？</string>
     <string name="copy_qr_data_success">已复制二维码链接到剪贴板</string>
     <string name="mailto_dialog_header_select_chat">选择要发送消息的聊天</string>
     <!-- first placeholder is the name of the chat -->
@@ -905,6 +933,10 @@
     <string name="notify_name_only">仅名称</string>
     <string name="notify_no_name_or_message">不显示名称或消息</string>
     <string name="notifications_disabled">已禁用通知</string>
+    <string name="new_messages">新消息</string>
+    <string name="n_messages_in_m_chats">%1$d 条消息，位于 %2$d 个聊天内</string>
+
+
     <!-- permissions -->
     <string name="perm_required_title">需要权限</string>
     <string name="perm_continue">继续</string>
