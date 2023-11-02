@@ -28,7 +28,9 @@
     <string name="attachment">Priedas</string>
     <string name="back">Atgal</string>
     <string name="close">Užverti</string>
+    <string name="close_window">Užverti langą</string>
     <string name="forward">Persiųsti</string>
+    <string name="later">Vėliau</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">Siųsti iš naujo</string>
     <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
@@ -195,6 +197,8 @@
     <string name="menu_add_attachment">Pridėti priedą</string>
     <string name="menu_leave_group">Išeiti iš grupės</string>
     <string name="menu_delete_chat">Ištrinti pokalbį</string>
+    <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
+    <string name="clear_chat">Išvalyti pokalbį</string>
     <string name="ask_delete_named_chat">Ar tikrai norite ištrinti „%1$s“?</string>
     <string name="menu_delete_messages">Ištrinti žinutes</string>
     <string name="delete_contact">Ištrinti adresatą</string>
@@ -408,6 +412,11 @@
     <string name="send_message">Siųsti žinutę</string>
     <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
     <string name="aeap_addr_changed">%1$s pasikeitė adresą iš %2$s į %3$s</string>
+    <!-- Multi Device -->
+    <!-- "Second Device" can also be translated as "Another Device", if that is catchier in the destination language. However, make sure to use the term consistently. -->
+    <string name="multidevice_title">Pridėti antrąjį įrenginį</string>
+    <string name="multidevice_receiver_title">Pridėti kaip antrąjį įrenginį</string>
+    <string name="multidevice_open_settings_on_other_device">Pirmajame įrenginyje pereikite į „Nustatymai / Pridėti antrąjį įrenginį“ ir nuskenuokite ten rodomą kodą</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="preparing_account">Ruošiama paskyra…</string>
     <!-- Connectivity -->
@@ -429,7 +438,8 @@
     <!-- Subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Žinutės</string>
     <!-- welcome and login -->
-    <string name="welcome_chat_over_email">Pokalbis per el. paštą.</string>
+    <string name="welcome_chat_over_email">Pokalbiai el. paštu.</string>
+    <string name="scan_invitation_code">Skenuoti pakvietimo kodą</string>
     <string name="welcome_intro1_message">Pokalbių programa su plačiausia auditorija pasaulyje. Nemokama ir nepriklausoma.</string>
     <string name="login_title">Prisijungti</string>
     <string name="login_header">Prisijungti prie savo serverio</string>
@@ -704,6 +714,7 @@
     <string name="notify_name_only">Tik vardą</string>
     <string name="notify_no_name_or_message">Jokio vardo ar žinutės</string>
     <string name="notifications_disabled">Pranešimai išjungti</string>
+    <string name="new_messages">Naujos žinutės</string>
     <!-- permissions -->
     <string name="perm_required_title">Reikalingas leidimas</string>
     <string name="perm_continue">Tęsti</string>
@@ -736,7 +747,7 @@
     <string name="global_menu_view_developer_tools_desktop">Plėtotojo įrankiai</string>
     <string name="global_menu_help_desktop">Žinynas</string>
     <string name="global_menu_help_learn_desktop">Sužinokite daugiau apie Delta Chat</string>
-    <string name="global_menu_help_contribute_desktop">Talkinti Github svetainėje</string>
+    <string name="global_menu_help_contribute_desktop">Talkinti „Github“ svetainėje</string>
     <string name="global_menu_help_report_desktop">Pranešti apie klaidą</string>
     <string name="global_menu_help_about_desktop">Apie Delta Chat</string>
     <string name="global_menu_file_open_desktop">Atverti Delta Chat</string>

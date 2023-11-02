@@ -33,6 +33,8 @@
     <string name="close">Chiudi</string>
     <string name="close_window">Chiudi finestra</string>
     <string name="forward">Inoltra</string>
+    <string name="create">Crea</string>
+    <string name="later">Dopo</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">Reinvia</string>
     <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
@@ -152,6 +154,9 @@
     <string name="gif">Gif</string>
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">Sticker</string>
+    <string name="add_to_sticker_collection">Aggiungi alla Raccolta Adesivi</string>
+    <string name="add_stickers_instructions">Per aggiungere adesivi, tocca \"Apri Cartella Adesivi\", crea una sottocartella per il tuo pacchetto di adesivi e trascina lì i file di immagini e adesivi</string>
+    <string name="open_sticker_folder">Apri Cartella Adesivi</string>
     <string name="images">Immagini</string>
     <string name="audio">Audio</string>
     <string name="voice_message">Messaggio Vocale</string>
@@ -212,6 +217,9 @@
     <string name="broadcast_lists">Liste Trasmissioni</string>
     <string name="new_broadcast_list">Nuova Lista Trasmissione</string>
     <string name="add_recipients">Aggiungi Destinatari</string>
+    <string name="edit_broadcast_list">Modifica Lista Trasmissione</string>
+    <string name="broadcast_list_name">Nome Lista Trasmissione</string>
+    <string name="please_enter_broadcast_list_name">Per piacere inserisci un nome per la lista trasmissione.</string>
     <string name="menu_send">Inviato</string>
     <string name="menu_toggle_keyboard">Alterna la Tastiera Emoji</string>
     <string name="menu_edit_group">Modifica Gruppo</string>
@@ -236,6 +244,7 @@
     <string name="menu_copy_image_to_clipboard">Copia l\'Immagine</string>
     <string name="menu_copy_email_to_clipboard">Copia E-Mail</string>
     <string name="paste_from_clipboard">Incolla dagli Appunti</string>
+    <string name="ask_copy_unopenable_link_to_clipboard">Il link \"%1$d\" non può essere aperto nel browser web. Vuoi invece copiare il collegamento negli appunti?</string>
     <string name="menu_forward">Inoltra Messaggio</string>
     <string name="menu_reply">Rispondi al Messaggio</string>
     <string name="menu_mute">Silenzia Notifiche</string>
@@ -245,6 +254,7 @@
     <string name="menu_all_media">Tutti i Media</string>
     <!-- Command to jump to the original message corresponding to a gallery image or document -->
     <string name="show_in_chat">Mostra in Chat</string>
+    <string name="show_app_in_chat">Mostra App in Chat</string>
     <string name="menu_share">Condividi</string>
     <!-- Verb "to block sth." usually a mailing list or a contact, not a noun -->
     <string name="block">Blocca</string>
@@ -256,6 +266,7 @@
     <string name="menu_scroll_to_bottom">Scorri alla Fine</string>
     <string name="menu_scroll_to_top">Scorri in Cima</string>
     <string name="menu_help">Aiuto</string>
+    <string name="what_is_webxdc">Cos\'è Webxdc?</string>
     <string name="privacy_policy">Privacy Policy</string>
     <string name="menu_select_all">Seleziona Tutto</string>
     <string name="select_chat">Seleziona Chat</string>
@@ -292,6 +303,8 @@
     <string name="source_code">Codice Sorgente</string>
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">Aggiungi alla Schermata Home</string>
+    <string name="donate">Donate</string>
+
     <string name="mute_for_one_hour">Silenzia per 1 ora</string>
     <string name="mute_for_two_hours">Silenzia per 2 ore</string>
     <string name="mute_for_one_day">Silenzia per 1 giorno</string>
@@ -455,6 +468,8 @@
 
     <!-- search -->
     <string name="search">Cerca</string>
+    <string name="search_in_chat">Cerca in Chat</string>
+    <string name="search_files">Cerca Files</string>
     <string name="search_explain">Cerca in chat, contatti e messaggi</string>
     <string name="search_no_result_for_x">Nessun risultato per \"%s\"</string>
 
@@ -470,6 +485,7 @@
     <string name="group_self_not_in_group">Devi essere membro del gruppo per fare questa operazione.</string>
     <string name="profile_encryption">Crittografia</string>
     <string name="profile_shared_chats">Chat Condivise</string>
+    <string name="related_chats">Chat Correlate</string>
     <string name="tab_contact">Contatto</string>
     <string name="tab_group">Gruppo</string>
     <string name="tab_gallery">Galleria</string>
@@ -484,6 +500,10 @@
     <string name="tab_webxdc_empty_hint">Le app private condivise in questa chat verranno visualizzate qui.</string>
     <string name="tab_all_media_empty_hint">I media condivisi in qualsiasi chat appariranno qui.</string>
     <string name="media_preview">Anteprima dei Media</string>
+    <!-- option to show images in the gallery with the correct width/height aspect (instead of square); other gallery apps may be a source of inspiration for translation :) -->
+    <string name="aspect_ratio_grid">Aspetto Griglia Proporzioni</string>
+    <!-- option to show images in the gallery as square (instead of using correct width/height) -->
+    <string name="square_grid">Griglia Quadrata</string>
     <string name="send_message">Invia Messaggio</string>
     <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
     <string name="aeap_addr_changed">%1$s ha cambiato l\'indirizzo da %2$s a %3$s</string>
@@ -672,6 +692,10 @@
     <string name="pref_backup">Backup</string>
     <string name="pref_backup_explain">Backup Chats su Memoria Esterna</string>
     <string name="pref_backup_export_explain">Un backup ti aiuta a impostare una nuova installazione su questo o un altro dispositivo.\n\nIl backup conterrà tutti i messaggi, i contatti, le chat e le impostazioni Autocrypt. Tienilo al sicuro o eliminalo il prima possibile. </string>
+    <!-- the placeholder will be replaced by the name of the account's email address -->
+    <string name="pref_backup_export_x">Esporta %1$s</string>
+    <!-- the placeholder will be replaced by the number of accounts to export; the number is always larger than 1 -->
+    <string name="pref_backup_export_all">Esporta tutti i %1$d accounts</string>
     <string name="pref_backup_export_start_button">Avvia Backup</string>
     <string name="pref_backup_written_to_x">Backup scritto con successo in %1$s</string>
     <string name="pref_managekeys_menu_title">Gestisci Chiavi</string>
@@ -722,6 +746,9 @@
     <string name="profile_image_delete">Elimina Immagine Profilo</string>
     <string name="pref_show_tray_icon">Mostra l\'Icona nel Vassoio</string>
     <string name="pref_edit_profile">Modifica Profilo</string>
+    <string name="disable_imap_idle">Disabilita IMAP IDLE</string>
+    <string name="disable_imap_idle_explain">Non utilizzare l\'estensione IMAP IDLE anche se il server la supporta. L\'abilitazione di questa opzione ritarderà il recupero del messaggio, abilitarla solo a scopo di test.</string>
+
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Risultati Ricerca</string>
     <string name="emoji_not_found">Nessuna emoji trovata</string>
@@ -917,6 +944,8 @@
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Impostazioni modificate per %1$s</string>
     <string name="verified_group_explain">I gruppi verificati garantiscono la crittografia end-to-end. È possibile aggiungervi solo i contatti con un segno di spunta di verifica verde.</string>
+    <string name="verified_contact_required_explain">Per garantire la crittografia end-to-end, puoi aggiungere a questo gruppo solo contatti con un segno di verifica verde.\n\nPotresti incontrare di persona contatti non verificati e scansionare il loro Codice QR per verificarli.</string>
+    <string name="create_verified_group_ask">Tutti i membri hanno un segno di spunta verde di verifica.\n\nVuoi creare un gruppo che garantisca la crittografia end-to-end?</string>
     <string name="copy_qr_data_success">URL QR copiato negli appunti</string>
     <string name="mailto_dialog_header_select_chat">Seleziona la chat a cui inviare il messaggio</string>
     <!-- first placeholder is the name of the chat -->
@@ -934,6 +963,10 @@
     <string name="notify_name_only">Solo nome</string>
     <string name="notify_no_name_or_message">Nessun nome nè messaggio</string>
     <string name="notifications_disabled">Notifiche disabilitate</string>
+    <string name="new_messages">Nuovi messaggi</string>
+    <string name="n_messages_in_m_chats">%1$d messaggi in %2$d chats</string>
+
+
     <!-- permissions -->
     <string name="perm_required_title">Autorizzazione richiesta</string>
     <string name="perm_continue">Continua</string>
