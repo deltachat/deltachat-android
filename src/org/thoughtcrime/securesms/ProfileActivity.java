@@ -130,6 +130,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
       boolean canReceive = true;
 
       if (chatId != 0) {
+        menu.findItem(R.id.menu_clone).setVisible(chatIsMultiUser && !chatIsMailingList);
         if (chatIsDeviceTalk) {
           menu.findItem(R.id.edit_name).setVisible(false);
           menu.findItem(R.id.show_encr_info).setVisible(false);
@@ -424,6 +425,9 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
       case R.id.block_contact:
         onBlockContact();
         break;
+      case R.id.menu_clone:
+        onClone();
+        break;
     }
 
     return false;
@@ -566,6 +570,18 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
             dcContext.blockContact(contactId, 1);
           }).show();
     }
+  }
+
+  private void onClone() {
+    int[] contactIds = dcContext.getChatContacts(chatId);
+    ArrayList<Integer> preselectedContactIds = new ArrayList<>(contactIds.length);
+    for (int id : contactIds) {
+      preselectedContactIds.add(id);
+    }
+
+    Intent intent = new Intent(this, GroupCreateActivity.class);
+    intent.putExtra(GroupCreateActivity.SUGGESTED_CONTACT_IDS, preselectedContactIds);
+    startActivity(intent);
   }
 
   @Override
