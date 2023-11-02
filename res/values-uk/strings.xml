@@ -33,6 +33,8 @@
     <string name="close">Закрити</string>
     <string name="close_window">Закрити вікно</string>
     <string name="forward">Переслати</string>
+    <string name="create">Створити</string>
+    <string name="later">Пізніше</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">Відправити знову</string>
     <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
@@ -160,6 +162,9 @@
     <string name="gif">GIF</string>
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">Стікер</string>
+    <string name="add_to_sticker_collection">Додати до колекції стікерів</string>
+    <string name="add_stickers_instructions">Аби додати стікери, торкніться \"Відкрити директорію наклейок\", створіть субдерикторію для вашого стікерпаку та перетягніть туди зображення і файли стікерів</string>
+    <string name="open_sticker_folder">Відкрити директорію наклейок</string>
     <string name="images">Зображення</string>
     <string name="audio">Аудіо</string>
     <string name="voice_message">Голосове повідомлення</string>
@@ -220,6 +225,9 @@
     <string name="broadcast_lists">Списки трансляцій</string>
     <string name="new_broadcast_list">Новий Список трансляцій</string>
     <string name="add_recipients">Додати одержувачів</string>
+    <string name="edit_broadcast_list">Редагувати список трансляцій</string>
+    <string name="broadcast_list_name">Назва списку трансляцій</string>
+    <string name="please_enter_broadcast_list_name">Будь-ласка введіть назву для списку трансляцій.</string>
     <string name="menu_send">Відправити</string>
     <string name="menu_toggle_keyboard">Увімкнути емодзі-клавіатуру</string>
     <string name="menu_edit_group">Редагувати групу</string>
