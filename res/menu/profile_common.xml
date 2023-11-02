@@ -30,7 +30,7 @@
         android:id="@+id/block_contact"
         app:showAsAction="never"/>
 
-    <item android:title="@string/menu_clone"
+    <item android:title="@string/clone_chat"
         android:id="@+id/menu_clone"
         app:showAsAction="never"/>
 
