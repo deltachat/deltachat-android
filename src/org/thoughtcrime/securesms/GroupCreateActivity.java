@@ -52,7 +52,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
   public static final String EDIT_GROUP_CHAT_ID = "edit_group_chat_id";
   public static final String GROUP_CREATE_VERIFIED_EXTRA  = "group_create_verified";
   public static final String CREATE_BROADCAST  = "group_create_broadcast";
-  public static final String SUGGESTED_CONTACT_IDS = "suggested_contact_ids";
+  public static final String CLONE_CHAT_EXTRA = "clone_chat";
 
   private static final int PICK_CONTACT = 1;
   public static final  int AVATAR_SIZE  = 210;
@@ -95,6 +95,11 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
       broadcast = dcChat.isBroadcast();
     }
 
+    int chatId = getIntent().getIntExtra(CLONE_CHAT_EXTRA, 0);
+    if (chatId != 0) {
+      broadcast = dcContext.getChat(chatId).isBroadcast();
+    }
+
     initializeResources();
   }
 
@@ -135,13 +140,28 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     groupName           = ViewUtil.findById(this, R.id.group_name);
     TextView groupHints = ViewUtil.findById(this, R.id.group_hints);
 
+    initializeAvatarView();
+
     SelectedContactsAdapter adapter = new SelectedContactsAdapter(this, GlideApp.with(this), broadcast);
     adapter.setItemClickListener(this);
     lv.setAdapter(adapter);
 
-    ArrayList<Integer> suggestedContactIds = getIntent().getIntegerArrayListExtra(SUGGESTED_CONTACT_IDS);
-    adapter.changeData(suggestedContactIds);
-    initializeAvatarView();
+    int chatId = getIntent().getIntExtra(CLONE_CHAT_EXTRA, 0);
+    if (chatId != 0) {
+      DcChat dcChat = dcContext.getChat(chatId);
+      groupName.setText(dcChat.getName());
+      File file = new File(dcChat.getProfileImage());
+      if (file.exists()) {
+        setAvatarView(Uri.fromFile(file));
+      }
+
+      int[] contactIds = dcContext.getChatContacts(chatId);
+      ArrayList<Integer> preselectedContactIds = new ArrayList<>(contactIds.length);
+      for (int id : contactIds) {
+        preselectedContactIds.add(id);
+      }
+      adapter.changeData(preselectedContactIds);
+    }
 
     if (broadcast) {
       avatar.setVisibility(View.GONE);

@@ -573,14 +573,8 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void onClone() {
-    int[] contactIds = dcContext.getChatContacts(chatId);
-    ArrayList<Integer> preselectedContactIds = new ArrayList<>(contactIds.length);
-    for (int id : contactIds) {
-      preselectedContactIds.add(id);
-    }
-
     Intent intent = new Intent(this, GroupCreateActivity.class);
-    intent.putExtra(GroupCreateActivity.SUGGESTED_CONTACT_IDS, preselectedContactIds);
+    intent.putExtra(GroupCreateActivity.CLONE_CHAT_EXTRA, chatId);
     startActivity(intent);
   }
 
