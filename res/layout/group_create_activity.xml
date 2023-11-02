@@ -36,7 +36,7 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/group_hints"
+        android:id="@+id/chat_hints"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="start"
@@ -44,7 +44,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginTop="16dp"
         android:textSize="18sp"
-        android:text="@string/verified_group_explain" />
+        android:text="@string/chat_new_broadcast_hint" />
 
     <ListView android:id="@+id/selected_contacts_list"
         android:layout_marginTop="16dp"
