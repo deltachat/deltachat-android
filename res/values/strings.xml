@@ -773,7 +773,7 @@
     <string name="autocrypt_send_asm_title">Send Autocrypt Setup Message</string>
     <string name="autocrypt_send_asm_explain_before">An Autocrypt Setup Message securely shares your end-to-end setup with other Autocrypt-compliant apps.\n\nThe setup will be encrypted by a setup code displayed here and must be typed on the other device.</string>
     <string name="autocrypt_send_asm_button">Send Autocrypt Setup Message</string>
-    <string name="autocrypt_send_asm_explain_after">Your setup has been sent to yourself. Switch to the other device and open the setup message. You should be asked for a setup code. Enter the following digits:\n\n%1$s</string>
+    <string name="autocrypt_send_asm_explain_after">Your setup has been sent to yourself. Switch to the other device and open the setup message. You should be asked for a setup code. Enter the following digits:</string>
     <string name="autocrypt_prefer_e2ee">Prefer End-To-End Encryption</string>
     <string name="autocrypt_asm_subject">Autocrypt Setup Message</string>
     <string name="autocrypt_asm_general_body">This is the Autocrypt Setup Message used to transfer your end-to-end setup between clients.\n\nTo decrypt and use your setup, open the message in an Autocrypt-compliant client and enter the setup code presented on the generating device.</string>

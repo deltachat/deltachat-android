@@ -323,7 +323,7 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
                 }
                 new AlertDialog.Builder(getActivity())
                   .setTitle(getActivity().getString(R.string.autocrypt_send_asm_title))
-                  .setMessage(getActivity().getString(R.string.autocrypt_send_asm_explain_after, scFormatted))
+                  .setMessage(getActivity().getString(R.string.autocrypt_send_asm_explain_after) + "\n\n" + scFormatted)
                   .setPositiveButton(android.R.string.ok, null)
                   .setCancelable(false) // prevent the dialog from being dismissed accidentally (when the dialog is closed, the setup code is gone forever and the user has to create a new setup message)
                   .show();
