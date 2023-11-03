@@ -155,6 +155,8 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
         preselectedContactIds.add(id);
       }
       adapter.changeData(preselectedContactIds);
+    } else {
+      adapter.changeData(null);
     }
 
     if (broadcast) {
@@ -166,6 +168,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     }
 
     if(isEdit()) {
+      groupName.setText(dcContext.getChat(groupChatId).getName());
       lv.setVisibility(View.GONE);
     }
   }
