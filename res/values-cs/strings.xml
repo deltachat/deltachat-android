@@ -130,7 +130,6 @@
     <string name="video">Video</string>
     <string name="documents">Dokumenty</string>
     <string name="contact">Kontakt</string>
-    <string name="verified_contact">Ověřený kontakt</string>
     <string name="camera">Kamera</string>
     <string name="location">Poloha</string>
     <string name="gallery">Galerie</string>
@@ -162,7 +161,6 @@
     <string name="menu_new_contact">Nový kontakt</string>
     <string name="menu_new_chat">Nový hovor</string>
     <string name="menu_new_group">Nová skupina</string>
-    <string name="menu_new_verified_group">Nová ověřená skupina</string>
     <string name="menu_send">Poslat</string>
     <string name="menu_toggle_keyboard">Přepni na smajlíky</string>
     <string name="menu_edit_group">Uprav skupinu</string>

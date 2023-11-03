@@ -129,7 +129,6 @@
     <string name="video">影片</string>
     <string name="documents">文件</string>
     <string name="contact">聯絡人</string>
-    <string name="verified_contact">驗證過的聯絡人</string>
     <string name="camera">相機</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">拍攝</string>
@@ -167,7 +166,6 @@
     <string name="menu_new_group">新增群組</string>
     <!-- Use the same wording as "Subject" to help people coming from the e-mail context; eg. "Betreff" in German -->
     <string name="new_group_or_subject">新增群組或主題</string>
-    <string name="menu_new_verified_group">新增已驗證群組</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">廣播列表</string>
     <string name="broadcast_lists">廣播列表</string>

@@ -29,6 +29,7 @@
     <string name="emoji">Émoji</string>
     <string name="attachment">Pièce jointe</string>
     <string name="back">Retour</string>
+    <!-- this string is deprecated; the new wording is "introduced by ..." -->
     <string name="verified">Vérifié</string>
     <string name="close">Fermer</string>
     <string name="close_window">Fermer la fenêtre</string>
@@ -162,7 +163,6 @@
     <string name="video">Vidéo</string>
     <string name="documents">Documents</string>
     <string name="contact">Contact</string>
-    <string name="verified_contact">Contact vérifié</string>
     <string name="camera">Caméra</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Enregistrer</string>
@@ -206,7 +206,6 @@
     <string name="menu_new_group">Nouveau groupe</string>
     <!-- Use the same wording as "Subject" to help people coming from the e-mail context; eg. "Betreff" in German -->
     <string name="new_group_or_subject">Nouveau groupe ou sujet</string>
-    <string name="menu_new_verified_group">Nouveau groupe vérifié</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">Liste de diffusion</string>
     <string name="broadcast_lists">Listes de diffusion</string>
@@ -902,7 +901,7 @@
     <string name="secure_join_replies">%1$s a répondu, en attente d’être ajouté au groupe…</string>
     <string name="contact_verified">%1$s vérifié.</string>
     <string name="contact_not_verified">Ne peut pas vérifier %1$s</string>
-    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that verified the contact shown. -->
+    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">Vérifié par %1$s</string>
     <string name="verified_by_you">Vérifié par vous</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->

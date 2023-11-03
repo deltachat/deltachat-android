@@ -144,7 +144,6 @@
     <string name="video">Video</string>
     <string name="documents">Asiakirjat</string>
     <string name="contact">Yhteyshenkilö</string>
-    <string name="verified_contact">Varmistettu yhteyshenkilö</string>
     <string name="camera">Kamera</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Kuvaa</string>
@@ -187,7 +186,6 @@
     <string name="menu_new_group">Uusi ryhmä</string>
     <!-- Use the same wording as "Subject" to help people coming from the e-mail context; eg. "Betreff" in German -->
     <string name="new_group_or_subject">Uusi ryhmä tai aihe</string>
-    <string name="menu_new_verified_group">Uusi varmistettu ryhmä</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">Kuulutuslista</string>
     <string name="broadcast_lists">Kuulutuslistat</string>

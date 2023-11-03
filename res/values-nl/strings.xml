@@ -29,6 +29,7 @@
     <string name="emoji">Emoji</string>
     <string name="attachment">Bijlage</string>
     <string name="back">Terug</string>
+    <!-- this string is deprecated; the new wording is "introduced by ..." -->
     <string name="verified">Goedgekeurd</string>
     <string name="close">Sluiten</string>
     <string name="close_window">Venster sluiten</string>
@@ -159,7 +160,6 @@
     <string name="video">Video</string>
     <string name="documents">Documenten</string>
     <string name="contact">Contactpersoon</string>
-    <string name="verified_contact">Goedgekeurd contactpersoon</string>
     <string name="camera">Camera</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Vastleggen</string>
@@ -201,9 +201,9 @@
     <string name="menu_new_contact">Nieuw contactpersoon</string>
     <string name="menu_new_chat">Nieuw gesprek</string>
     <string name="menu_new_group">Nieuwe groep</string>
+    <string name="clone_chat">Gesprek klonen</string>
     <!-- Use the same wording as "Subject" to help people coming from the e-mail context; eg. "Betreff" in German -->
     <string name="new_group_or_subject">Nieuwe groep of onderwerp</string>
-    <string name="menu_new_verified_group">Nieuwe goedgekeurde groep</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">Verzendlijst</string>
     <string name="broadcast_lists">Verzendlijsten</string>
@@ -923,14 +923,12 @@
     <string name="secure_join_replies">%1$s heefn geantwoord en wacht op toelating tot de groep…</string>
     <string name="contact_verified">%1$s is goedgekeurd.</string>
     <string name="contact_not_verified">Kan %1$s niet goedkeuren</string>
-    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that verified the contact shown. -->
+    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">Goedgekeurd door %1$s</string>
     <string name="verified_by_you">Goedgekeurd door mij</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Gewijzigde instellingen voor %1$s</string>
-    <string name="verified_group_explain">Goedgekeurde groepen maken gebruik van eind-tot-eindversleuteling. Alleen contactpersonen met een groen vinkje kunnen worden toegevoegd.</string>
     <string name="verified_contact_required_explain">Om de eind-tot-eindversleuteling te garanderen, kun je alleen contactpersonen met een groen vinkje toevoegen aan deze groep.\n\nVan niet-goedgekeurde contactpersonen kun je de QR-code scannen om ze goed te keuren.</string>
-    <string name="create_verified_group_ask">Alle leden hebben een goedkeuringsvinkje.\n\nWilt je een groep met gegarandeerde eind-tot-eindversleuteling samenstellen?</string>
     <string name="copy_qr_data_success">De QR-url is gekopieerd naar het klembord</string>
     <string name="mailto_dialog_header_select_chat">Kies in welk gesprek je dit bericht wilt delen</string>
     <!-- first placeholder is the name of the chat -->

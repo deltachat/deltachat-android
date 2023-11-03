@@ -29,6 +29,7 @@
     <string name="emoji">Emoji</string>
     <string name="attachment">Allegato</string>
     <string name="back">Indietro</string>
+    <!-- this string is deprecated; the new wording is "introduced by ..." -->
     <string name="verified">Verificato</string>
     <string name="close">Chiudi</string>
     <string name="close_window">Chiudi finestra</string>
@@ -167,7 +168,6 @@
     <string name="video">Video</string>
     <string name="documents">Documenti</string>
     <string name="contact">Contatto</string>
-    <string name="verified_contact">Contatto Verificato</string>
     <string name="camera">Camera</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Cattura</string>
@@ -211,7 +211,6 @@
     <string name="menu_new_group">Nuovo Gruppo</string>
     <!-- Use the same wording as "Subject" to help people coming from the e-mail context; eg. "Betreff" in German -->
     <string name="new_group_or_subject">Nuovo Gruppo od Oggetto</string>
-    <string name="menu_new_verified_group">Nuovo Gruppo Verificato</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">Lista Trasmissione</string>
     <string name="broadcast_lists">Liste Trasmissioni</string>
@@ -938,14 +937,12 @@
     <string name="secure_join_replies">%1$s ha risposto, in attesa di essere aggiunto al gruppo…</string>
     <string name="contact_verified">%1$s verificato.</string>
     <string name="contact_not_verified">Impossibile verificare %1$s</string>
-    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that verified the contact shown. -->
+    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">Verificato da %1$s</string>
     <string name="verified_by_you">Verificato da te</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Impostazioni modificate per %1$s</string>
-    <string name="verified_group_explain">I gruppi verificati garantiscono la crittografia end-to-end. È possibile aggiungervi solo i contatti con un segno di spunta di verifica verde.</string>
     <string name="verified_contact_required_explain">Per garantire la crittografia end-to-end, puoi aggiungere a questo gruppo solo contatti con un segno di verifica verde.\n\nPotresti incontrare di persona contatti non verificati e scansionare il loro Codice QR per verificarli.</string>
-    <string name="create_verified_group_ask">Tutti i membri hanno un segno di spunta verde di verifica.\n\nVuoi creare un gruppo che garantisca la crittografia end-to-end?</string>
     <string name="copy_qr_data_success">URL QR copiato negli appunti</string>
     <string name="mailto_dialog_header_select_chat">Seleziona la chat a cui inviare il messaggio</string>
     <!-- first placeholder is the name of the chat -->

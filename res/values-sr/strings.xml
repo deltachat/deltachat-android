@@ -29,6 +29,7 @@
     <string name="emoji">Емоџи</string>
     <string name="attachment">Прилог</string>
     <string name="back">Назад</string>
+    <!-- this string is deprecated; the new wording is "introduced by ..." -->
     <string name="verified">Проверено</string>
     <string name="close">Затвори</string>
     <string name="forward">Проследи</string>
@@ -160,7 +161,6 @@
     <string name="video">Видео</string>
     <string name="documents">Документи</string>
     <string name="contact">Особа</string>
-    <string name="verified_contact">Проверен контакт</string>
     <string name="camera">Камера</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Сними</string>
@@ -204,7 +204,6 @@
     <string name="menu_new_group">Нова група</string>
     <!-- Use the same wording as "Subject" to help people coming from the e-mail context; eg. "Betreff" in German -->
     <string name="new_group_or_subject">Нова група или тема</string>
-    <string name="menu_new_verified_group">Нова потврђена група</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">Листа за емитовање</string>
     <string name="broadcast_lists">Листе за емитовање</string>
@@ -863,7 +862,7 @@
     <string name="secure_join_replies">%1$s је одговорио и чека да буде додат у групу...</string>
     <string name="contact_verified">%1$s потврђен.</string>
     <string name="contact_not_verified">Немогуће је проверити %1$s.</string>
-    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that verified the contact shown. -->
+    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">Проверено од %1$s</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Подешавања су се променила за %1$s.</string>

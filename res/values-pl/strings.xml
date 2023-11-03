@@ -29,6 +29,7 @@
     <string name="emoji">Emoji</string>
     <string name="attachment">Załącznik</string>
     <string name="back">Wróć</string>
+    <!-- this string is deprecated; the new wording is "introduced by ..." -->
     <string name="verified">Zweryfikowano</string>
     <string name="close">Zamknij</string>
     <string name="close_window">Zamknij okno</string>
@@ -170,7 +171,6 @@
     <string name="video">Wideo</string>
     <string name="documents">Dokumenty</string>
     <string name="contact">Kontakt</string>
-    <string name="verified_contact">Zweryfikowany kontakt</string>
     <string name="camera">Kamera</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Zrób to</string>
@@ -214,7 +214,6 @@
     <string name="menu_new_group">Nowa grupa</string>
     <!-- Use the same wording as "Subject" to help people coming from the e-mail context; eg. "Betreff" in German -->
     <string name="new_group_or_subject">Nowa grupa lub temat</string>
-    <string name="menu_new_verified_group">Nowa zweryfikowana grupa</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">Lista rozgłoszeniowa</string>
     <string name="broadcast_lists">Lista rozgłoszeniowa</string>
@@ -917,7 +916,7 @@
     <string name="secure_join_replies">Użytkownik %1$s odpowiedział, czekając na dodanie do grupy…</string>
     <string name="contact_verified">Kontakt %1$s zweryfikowany.</string>
     <string name="contact_not_verified">Nie można zweryfikować %1$s</string>
-    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that verified the contact shown. -->
+    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">Zweryfikowano przez %1$s</string>
     <string name="verified_by_you">Zweryfikowane przez ciebie</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->

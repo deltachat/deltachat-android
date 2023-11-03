@@ -144,7 +144,6 @@
     <string name="video">Vídeo</string>
     <string name="documents">Documents</string>
     <string name="contact">Contacte</string>
-    <string name="verified_contact">Contacte verificat</string>
     <string name="camera">Càmera</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Captura</string>
@@ -182,7 +181,6 @@
     <string name="menu_new_group">Grup nou</string>
     <!-- Use the same wording as "Subject" to help people coming from the e-mail context; eg. "Betreff" in German -->
     <string name="new_group_or_subject">Grup o Tema nou</string>
-    <string name="menu_new_verified_group">Nou grup verificat</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">Llista de difusió</string>
     <string name="broadcast_lists">Llistes de difusió</string>

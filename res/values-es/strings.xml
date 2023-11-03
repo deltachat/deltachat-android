@@ -29,6 +29,7 @@
     <string name="emoji">Emoji</string>
     <string name="attachment">Adjunto</string>
     <string name="back">Atrás</string>
+    <!-- this string is deprecated; the new wording is "introduced by ..." -->
     <string name="verified">Verificado</string>
     <string name="close">Cerrar</string>
     <string name="close_window">Cerrar ventana</string>
@@ -162,7 +163,6 @@
     <string name="video">Video</string>
     <string name="documents">Documentos</string>
     <string name="contact">Contacto</string>
-    <string name="verified_contact">Contacto verificado</string>
     <string name="camera">Cámara</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Capturar</string>
@@ -206,7 +206,6 @@
     <string name="menu_new_group">Nuevo grupo</string>
     <!-- Use the same wording as "Subject" to help people coming from the e-mail context; eg. "Betreff" in German -->
     <string name="new_group_or_subject">Nuevo grupo o asunto</string>
-    <string name="menu_new_verified_group">Nuevo grupo verificado</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">Lista de difusión</string>
     <string name="broadcast_lists">Listas de difusión</string>
@@ -911,7 +910,7 @@
     <string name="secure_join_replies">%1$s respondió, esperando ser agregado al grupo…</string>
     <string name="contact_verified">%1$s verificado.</string>
     <string name="contact_not_verified">No se pudo verificar %1$s.</string>
-    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that verified the contact shown. -->
+    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">Verificado por %1$s</string>
     <string name="verified_by_you">Verificado por ti</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->

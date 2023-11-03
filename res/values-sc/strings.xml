@@ -109,7 +109,6 @@
     <string name="video">Vìdeu</string>
     <string name="documents">Documentos editàbiles</string>
     <string name="contact">Cuntatu</string>
-    <string name="verified_contact">Cuntatu verificadu</string>
     <string name="camera">Fotocàmera</string>
     <string name="location">Positzione</string>
     <string name="gallery">Galleria</string>
@@ -141,7 +140,6 @@
     <string name="menu_new_contact">Cuntatu nou</string>
     <string name="menu_new_chat">Tzarrada noa</string>
     <string name="menu_new_group">Grupu nou</string>
-    <string name="menu_new_verified_group">Grupu verificadu nou</string>
     <string name="menu_send">Imbiadu</string>
     <string name="menu_toggle_keyboard">Alterna sa tastiera emoji</string>
     <string name="menu_edit_group">Modìfica su grupu</string>

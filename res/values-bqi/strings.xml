@@ -29,6 +29,7 @@
     <string name="emoji">êmuji</string>
     <string name="attachment">zamima</string>
     <string name="back">vorgaštên</string>
+    <!-- this string is deprecated; the new wording is "introduced by ..." -->
     <string name="verified">taiď biďa</string>
     <string name="close">bastên</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
@@ -135,7 +136,6 @@
     <string name="video">film</string>
     <string name="documents">sanadā</string>
     <string name="contact">homdang</string>
-    <string name="verified_contact">homdang taiď biďa.</string>
     <string name="camera">šîvātgėr</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">gêrîďên</string>
@@ -176,7 +176,6 @@
     <string name="menu_new_group">jarga nu</string>
     <!-- Use the same wording as "Subject" to help people coming from the e-mail context; eg. "Betreff" in German -->
     <string name="new_group_or_subject">jarga yā onvānê nu</string>
-    <string name="menu_new_verified_group">jarga taiď biďê nu</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">nomga Broadcast</string>
     <string name="broadcast_lists">nomgayal Broadcast</string>
@@ -362,7 +361,7 @@
     <string name="qrshow_x_joining">%1$s mêntor vâbi.</string>
     <string name="qrshow_x_verified">%1$s taiď vâbi.</string>
     <string name="contact_verified">%1$s taiď vâbi.</string>
-    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that verified the contact shown. -->
+    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">taiď vâbiďa vê das %1$s</string>
     <string name="notify_reply_button">vėlom</string>
     <string name="notify_new_message">payomė nu</string>

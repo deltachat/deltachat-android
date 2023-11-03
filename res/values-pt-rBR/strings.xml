@@ -29,6 +29,7 @@
     <string name="emoji">Emoji</string>
     <string name="attachment">Anexo</string>
     <string name="back">Voltar</string>
+    <!-- this string is deprecated; the new wording is "introduced by ..." -->
     <string name="verified">Verificado</string>
     <string name="close">Fechar</string>
     <string name="forward">Encaminhar</string>
@@ -161,7 +162,6 @@
     <string name="video">Vídeo</string>
     <string name="documents">Documentos</string>
     <string name="contact">Contato</string>
-    <string name="verified_contact">Contato verificado</string>
     <string name="camera">Câmera</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Capturar</string>
@@ -205,7 +205,6 @@
     <string name="menu_new_group">Novo grupo</string>
     <!-- Use the same wording as "Subject" to help people coming from the e-mail context; eg. "Betreff" in German -->
     <string name="new_group_or_subject">Novo Grupo ou Assunto</string>
-    <string name="menu_new_verified_group">Novo grupo verificado</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">Lista de Transmissão</string>
     <string name="broadcast_lists">Listas de Transmissão</string>
@@ -896,7 +895,7 @@
     <string name="secure_join_replies">%1$srespondeu, esperando para ser adicionado ao grupo...</string>
     <string name="contact_verified">%1$s verificado.</string>
     <string name="contact_not_verified">Impossível verificar %1$s</string>
-    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that verified the contact shown. -->
+    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">Verificado por %1$s</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">A configuração Autocrypt mudou para %1$s</string>

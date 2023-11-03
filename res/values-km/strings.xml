@@ -126,7 +126,6 @@
     <string name="video">វីដេអូ</string>
     <string name="documents">ឯកសារ</string>
     <string name="contact">ទំនាក់ទំនង</string>
-    <string name="verified_contact">ទំនាក់ទំនងដែលបានផ្ទៀងផ្ទាត់</string>
     <string name="camera">កាមេរ៉ា</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">ចាប់យក</string>
@@ -162,7 +161,6 @@
     <string name="menu_new_contact">ទំនាក់ទំនងថ្មី</string>
     <string name="menu_new_chat">សន្ទនាថ្មី</string>
     <string name="menu_new_group">ក្រុមថ្មី</string>
-    <string name="menu_new_verified_group">ក្រុមដែលបានកំណត់ថ្មី</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">បញ្ជីចាក់ផ្សាយ</string>
     <string name="broadcast_lists">បញ្ជីចាក់ផ្សាយ</string>

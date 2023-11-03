@@ -146,7 +146,6 @@
     <string name="video">Vaizdo įrašai</string>
     <string name="documents">Dokumentai</string>
     <string name="contact">Adresatas</string>
-    <string name="verified_contact">Patvirtintas adresatas</string>
     <string name="camera">Kamera</string>
     <string name="switch_camera">Perjungti kamerą</string>
     <string name="toggle_fullscreen">Perjungti viso ekrano veikseną</string>
@@ -185,7 +184,6 @@
     <string name="menu_new_contact">Naujas adresatas</string>
     <string name="menu_new_chat">Naujas pokalbis</string>
     <string name="menu_new_group">Nauja grupė</string>
-    <string name="menu_new_verified_group">Nauja patvirtinta grupė</string>
     <string name="add_recipients">Pridėti gavėjus</string>
     <string name="menu_send">Siųsti</string>
     <string name="menu_toggle_keyboard">Perjungti šypsniukų klaviatūrą</string>
