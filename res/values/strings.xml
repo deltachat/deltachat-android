@@ -29,7 +29,8 @@
     <string name="emoji">Emoji</string>
     <string name="attachment">Attachment</string>
     <string name="back">Back</string>
-    <string name="verified">Introduced</string>
+    <!-- this string is deprecated; the new wording is "introduced by ..." -->
+    <string name="verified">Verified</string>
     <string name="close">Close</string>
     <string name="close_window">Close Window</string>
     <string name="forward">Forward</string>
