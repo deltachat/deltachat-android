@@ -47,7 +47,6 @@
     <string name="main_menu">Päävalikko</string>
     <string name="start_chat">Aloita keskustelu</string>
     <string name="show_full_message">Näytä koko viesti...</string>
-    <string name="show_full_message_in_browser">Näytä koko viesti selaimessa...</string>
     <!-- Placeholder text when something is loading -->
     <string name="loading">Ladataan...</string>
     <string name="hide">Piilota</string>
@@ -158,7 +157,6 @@
     <string name="webxdc_app">Yksityinen sovellus</string>
     <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_apps">Yksityiset sovellukset</string>
-    <string name="files_and_webxdx_apps">Tiedostot ja yksityiset sovellukset</string>
     <string name="unknown">Tuntematon</string>
 
     <string name="green">Vihreä</string>
@@ -184,8 +182,6 @@
     <string name="menu_new_contact">Uusi yhteystieto</string>
     <string name="menu_new_chat">Uusi keskustelu</string>
     <string name="menu_new_group">Uusi ryhmä</string>
-    <!-- Use the same wording as "Subject" to help people coming from the e-mail context; eg. "Betreff" in German -->
-    <string name="new_group_or_subject">Uusi ryhmä tai aihe</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">Kuulutuslista</string>
     <string name="broadcast_lists">Kuulutuslistat</string>
@@ -481,7 +477,6 @@
     <!-- welcome and login -->
     <string name="welcome_chat_over_email">Chattaa sähköpostilla.</string>
     <string name="scan_invitation_code">Skannaa kutsukoodi</string>
-    <string name="welcome_intro1_message">Viestisovellus, jolla on maailman laajin yleisö. Ilmainen ja riippumaton.</string>
     <string name="login_title">Kirjaudu sisään</string>
     <string name="login_header">Kirjaudu palvelimellesi</string>
     <string name="login_explain">Kirjaudu olemassa olevalla sähköpostitilillä</string>
@@ -506,8 +501,6 @@
     <string name="login_socks5_port">SOCKS5-portti</string>
     <string name="login_socks5_user">SOCKS5-käyttäjä</string>
     <string name="login_socks5_password">SOCKS5-salasana</string>
-    <!-- Translators: %1$s will be replaced by an e-mail address -->
-    <string name="login_oauth2_checking_addr">Tarkistetaan %1$s</string>
     <string name="login_info_oauth2_title">Jatka yksinkertaisella asennuksella?</string>
     <string name="login_info_oauth2_text">Annettu sähköpostiosoite tukee yksinkertaista asennusta (OAuth 2.0).\n\nSeuraavaksi sinun täytyy sallia Delta Chatin toiminta Chat over E-mail -sovelluksena.\n\nDelta Chatilla ei ole palvelimia, tietosi pysyvät laitteellasi.</string>
     <string name="login_certificate_checks">Varmennetarkastukset</string>

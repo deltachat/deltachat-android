@@ -49,7 +49,6 @@
     <string name="main_menu">Главни мени</string>
     <string name="start_chat">Започните ћаскање</string>
     <string name="show_full_message">Прикажи поруку у њеној целости...</string>
-    <string name="show_full_message_in_browser">Прикажи поруку у њеној целости у прегледачу...</string>
     <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
     <string name="mark_all_as_read">Означи све као прочитано</string>
     <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
@@ -176,7 +175,6 @@
     <string name="webxdc_app">Приватна апликација</string>
     <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_apps">Приватне апликације</string>
-    <string name="files_and_webxdx_apps">Фајлови и приватне апликације</string>
     <string name="unknown">Непознато</string>
 
     <string name="green">Зелена</string>
@@ -202,8 +200,6 @@
     <string name="menu_new_contact">Нови контакт</string>
     <string name="menu_new_chat">Ново ћаскање</string>
     <string name="menu_new_group">Нова група</string>
-    <!-- Use the same wording as "Subject" to help people coming from the e-mail context; eg. "Betreff" in German -->
-    <string name="new_group_or_subject">Нова група или тема</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">Листа за емитовање</string>
     <string name="broadcast_lists">Листе за емитовање</string>
@@ -509,7 +505,6 @@
     <!-- welcome and login -->
     <string name="welcome_chat_over_email">Ћаскање преко е-поште.</string>
     <string name="scan_invitation_code">Скенирај код позива за приступ.</string>
-    <string name="welcome_intro1_message">Гласник са највећом аудијенцијом у свету. Бесплатан и независтан.</string>
     <string name="login_title">Пријави се</string>
     <string name="login_header">Пријавите се у ваш налог е-поште</string>
     <string name="login_explain">Пријавите се преко постојећег налога е-поште</string>
@@ -534,8 +529,6 @@
     <string name="login_socks5_port">SOCKS5 порт</string>
     <string name="login_socks5_user">SOCKS5 корисник</string>
     <string name="login_socks5_password">SOCKS5 лозинка</string>
-    <!-- Translators: %1$s will be replaced by an e-mail address -->
-    <string name="login_oauth2_checking_addr">Проверам %1$s</string>
     <string name="login_info_oauth2_title">Наставите са поједностављеним поставкама?</string>
     <string name="login_info_oauth2_text">Унета е-адреса подржава поједностављено подешавање (OAuth 2.0).\n\nУ следећем кораку, дозволите Delta Chat-у да  да дејствује као ваша апликација за ћаскање преко е-поште.\n\nDelta Chat нема сервере и ваши подаци остају на вашем уређају.</string>
     <string name="login_certificate_checks">Провери сертификате</string>

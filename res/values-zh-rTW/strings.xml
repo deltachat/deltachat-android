@@ -45,7 +45,6 @@
     <string name="main_menu">主選單</string>
     <string name="start_chat">開始對話</string>
     <string name="show_full_message">顯示完整訊息⋯</string>
-    <string name="show_full_message_in_browser">在瀏覽器中顯示完整訊息⋯</string>
     <!-- Placeholder text when something is loading -->
     <string name="loading">載入中⋯</string>
     <string name="hide">隱藏</string>
@@ -164,8 +163,6 @@
     <string name="menu_new_contact">新增聯絡人</string>
     <string name="menu_new_chat">新增對話</string>
     <string name="menu_new_group">新增群組</string>
-    <!-- Use the same wording as "Subject" to help people coming from the e-mail context; eg. "Betreff" in German -->
-    <string name="new_group_or_subject">新增群組或主題</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">廣播列表</string>
     <string name="broadcast_lists">廣播列表</string>
@@ -362,7 +359,6 @@
     <string name="tab_gallery_empty_hint">本對話中共享的圖片和視訊會顯示在這裡。</string>
     <string name="tab_docs_empty_hint">本對話中共享的文件、音樂和其它檔案會顯示在這裡。</string>
     <string name="media_preview">媒體預覽</string>
-    <string name="welcome_intro1_message">免費、獨立的通訊軟體，我們有全世界最廣的受眾。</string>
     <string name="login_title">登入</string>
     <string name="login_header">登入你的伺服器</string>
     <string name="login_subheader">我們能自動處理大多數常見的郵件伺服器設定。有時候你需要在 web 界面上手動打開 IMAP 服務，請詢問郵件服務商或請朋友幫忙。</string>

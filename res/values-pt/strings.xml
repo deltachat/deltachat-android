@@ -204,7 +204,6 @@
     <string name="group_self_not_in_group">Você deve ser um membro do grupo para executar essa ação.</string>
     <string name="profile_encryption">Encriptação</string>
     <string name="media_preview">Visualização de mídia</string>
-    <string name="welcome_intro1_message">O mensageiro com o público mais amplo do mundo. Livre e independente.</string>
     <string name="login_title">Login</string>
     <string name="login_header">Login no seu servidor</string>
     <string name="login_subheader">Para os provedores de e-mail conhecidos as configurações adicionais são configuradas automaticamente. Por vezes, o IMAP precisa estar activado no frontend da web. Consulte seu provedor de e-mail ou amigos para obter ajuda.</string>

@@ -47,7 +47,6 @@
     <string name="main_menu">Menú principal</string>
     <string name="start_chat">Inicia un xat</string>
     <string name="show_full_message">Mostra el missatge sencer...</string>
-    <string name="show_full_message_in_browser">Mostra el missatge sencer al navegador...</string>
     <!-- Placeholder text when something is loading -->
     <string name="loading">Carregant...</string>
     <string name="hide">Amaga</string>
@@ -179,8 +178,6 @@
     <string name="menu_new_contact">Contacte nou</string>
     <string name="menu_new_chat">Nova conversa</string>
     <string name="menu_new_group">Grup nou</string>
-    <!-- Use the same wording as "Subject" to help people coming from the e-mail context; eg. "Betreff" in German -->
-    <string name="new_group_or_subject">Grup o Tema nou</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">Llista de difusió</string>
     <string name="broadcast_lists">Llistes de difusió</string>
@@ -450,7 +447,6 @@
     <!-- welcome and login -->
     <string name="welcome_chat_over_email">Xateja via Email</string>
     <string name="scan_invitation_code">Escaneja el Codi d\'Invitació</string>
-    <string name="welcome_intro1_message">El programa de missatgeria amb més usuaris del món. Gratuït i independent.</string>
     <string name="login_title">Identifiqueu-vos</string>
     <string name="login_header">Identifiqueu-vos al vostre servidor</string>
     <string name="login_subheader">Als proveïdors de mail coneguts els paràmetres es configuren automàticament. De vegades l\'IMAP s\'ha d\'activar a la interfície web. Consulta el teu proveïdor de correu electrònic o a un amic perquè t\'ajudi. </string>

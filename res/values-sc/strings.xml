@@ -318,7 +318,6 @@
     <string name="tab_docs_empty_hint">Sos documentos editàbiles, cussos musicales e totu sas àteras castas de documentos cumpartzidos in custa tzarrada ant a èssere ammustrados inoghe.</string>
     <string name="media_preview">Anteprima de su documentu multimediale</string>
     <string name="send_message">Imbia messàgiu</string>
-    <string name="welcome_intro1_message">S\'aplicatzione de messagìstica cun prus impreadores in su mundu. Lìbera e indipendente.</string>
     <string name="login_title">Intra</string>
     <string name="login_header">Intra in su servidore tuo</string>
     <string name="login_explain">Intra cun un\'indiritzu de posta eletrònica chi esistat</string>
@@ -336,8 +335,6 @@
     <string name="login_smtp_port">Ghenna SMTP</string>
     <string name="login_smtp_security">Seguresa SMTP</string>
     <string name="login_auth_method">Manera de autenticatzione</string>
-    <!-- Translators: %1$s will be replaced by an e-mail address -->
-    <string name="login_oauth2_checking_addr">Verifichende %1$s</string>
     <string name="login_info_oauth2_title">Cheres sighire cun s\'impostatzione semplificada?</string>
     <string name="login_info_oauth2_text">S\'indiritzu de posta eletrònica insertadu suportat un\'impostztione semplificada (OAuth 2.0).\n\n In su passu chi sighet, pro praghere, permite a Delta Chat de operare che a aplicatzione de tzarrada pro mèdiu de posta eletrònica.\n\nNon bi sunt serbidores de Delta Chat, abarrat totu in su dispositivu tuo.</string>
     <string name="login_certificate_checks">Verìficas de su tzertificadu</string>

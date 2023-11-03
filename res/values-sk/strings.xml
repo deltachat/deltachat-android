@@ -47,7 +47,6 @@
     <string name="main_menu">Hlavné menu</string>
     <string name="start_chat">Začať konverzáciu</string>
     <string name="show_full_message">Zobraziť celú správu ...</string>
-    <string name="show_full_message_in_browser">Zobraziť celú správu v internetovom prehliadači...</string>
     <!-- Placeholder text when something is loading -->
     <string name="loading">Načítam…</string>
     <string name="hide">Skryť</string>
@@ -174,7 +173,6 @@
     <string name="webxdc_app">Súkromná aplikácia</string>
     <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_apps">Súkromné aplikácie</string>
-    <string name="files_and_webxdx_apps">Súbory a súkromné aplikácie</string>
     <string name="unknown">Neznáme</string>
 
     <string name="green">Zelená</string>
@@ -200,8 +198,6 @@
     <string name="menu_new_contact">Nový kontakt</string>
     <string name="menu_new_chat">Nová konverzácia</string>
     <string name="menu_new_group">Nová skupina</string>
-    <!-- Use the same wording as "Subject" to help people coming from the e-mail context; eg. "Betreff" in German -->
-    <string name="new_group_or_subject">Nová Skupina alebo Predmet </string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">Zoznam Rozosielania</string>
     <string name="broadcast_lists">Zoznamy Rozosielania</string>
@@ -507,7 +503,6 @@
     <!-- welcome and login -->
     <string name="welcome_chat_over_email">Chatovanie cez e-mail.</string>
     <string name="scan_invitation_code">Skenovať kód pozvánky</string>
-    <string name="welcome_intro1_message">Posol s najširším publikom na svete. Slobodný a nezávislý.</string>
     <string name="login_title">Prihlásiť sa</string>
     <string name="login_header">Prihláste sa na server</string>
     <string name="login_explain">Prihláste sa pomocou existujúceho e-mailového účtu</string>
@@ -532,8 +527,6 @@
     <string name="login_socks5_port">SOCKS5 Port</string>
     <string name="login_socks5_user">SOCKS5 Používateľ</string>
     <string name="login_socks5_password">SOCKS5 Heslo</string>
-    <!-- Translators: %1$s will be replaced by an e-mail address -->
-    <string name="login_oauth2_checking_addr">Prebieha kontrola %1$s</string>
     <string name="login_info_oauth2_title">Pokračovať v zjednodušenom nastavovaní?</string>
     <string name="login_info_oauth2_text">Zadaná e-mailová adresa podporuje zjednodušené nastavenie (OAuth 2.0).\n\nV ďalšom kroku povoľte aplikácii Delta Chat, aby fungovala ako vaša aplikácia Chat cez e-mail.\n\nNie sú k dispozícii servery Delta Chat, vaše dáta zostanú vo vašom zariadení .</string>
     <string name="login_certificate_checks">Osvedčovacie kontroly</string>

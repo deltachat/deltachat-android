@@ -45,7 +45,6 @@
     <string name="main_menu">បញ្ជីដើម</string>
     <string name="start_chat">ចាប់ផ្តើមសន្ទនា</string>
     <string name="show_full_message">បង្ហាញសារទាំងស្រុង…</string>
-    <string name="show_full_message_in_browser">បង្ហាញសារពេញលេញ នៅក្នុងកម្មវិធីរុករក…</string>
     <!-- Placeholder text when something is loading -->
     <string name="loading">កំពុងផ្ទុក…</string>
     <string name="hide">លាក់</string>
@@ -422,7 +421,6 @@
     <string name="part_of_total_used">បានប្រើ %1$s នៃ %2$s</string>
 
 
-    <string name="welcome_intro1_message">អ្នកនាំសារជាមួយនឹងវិសាលភាពទស្សនិកក្នុងពិភពលោក។ ដោយឥតគិតថ្លៃ និងឯករាជ្យ។</string>
     <string name="login_title">កត់ចូល</string>
     <string name="login_header">កត់ចូលទៅម៉ាសុីនមេរបស់អ្នក</string>
     <string name="login_explain">កត់ចូលជាមួយគណនីយដែលមានស្រាប់</string>
@@ -447,8 +445,6 @@
     <string name="login_socks5_port">ច្រក SOCKS5</string>
     <string name="login_socks5_user">អ្នកប្រើប្រាស់ SOCKS5</string>
     <string name="login_socks5_password">ពាក្យសម្ងាត់ SOCKS5</string>
-    <!-- Translators: %1$s will be replaced by an e-mail address -->
-    <string name="login_oauth2_checking_addr">ត្រួតពិនិត្យ %1$s</string>
     <string name="login_info_oauth2_title">បន្តជាមួយការដំឡើងសាមញ្ញ?</string>
     <string name="login_info_oauth2_text">អស័យដ្ឋានអុីម៉េលដែលបានបញ្ចូល គាំទ្រការដំឡើងសាមញ្ញ (OAuth 2.0)\n\nនៅជំហានបន្ទាប់ សូមអនុញ្ញាតឲ្យសាហារីសង្ឃ ដើរតួជាការសន្ទនារបស់អ្នកនៅលើកម្មវិធីអុីម៉េល។\n\nមិនមាន ម៉ាសុីនមេ សាហារីសង្ឃទេ។ ទិន្ន័យរបស់អ្នកស្ថិតនៅលើឧបករណ៍របស់អ្នក។</string>
     <string name="login_certificate_checks">ការត្រួតពិនិត្យលិខិតបញ្ជាក់</string>

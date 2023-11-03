@@ -382,7 +382,6 @@
     <string name="part_of_total_used">%1$s af %2$s brugt</string>
 
 
-    <string name="welcome_intro1_message">Budbringeren med verdens bredeste publikum. Fri og uafhængig.</string>
     <string name="login_title">Login</string>
     <string name="login_header">Login til server</string>
     <string name="login_explain">Login med en eksisterende e-mailkonto</string>
@@ -407,8 +406,6 @@
     <string name="login_socks5_port">SOCKS5 Port</string>
     <string name="login_socks5_user">SOCKS5 Brugernavn</string>
     <string name="login_socks5_password">SOCKS5 adgangskode</string>
-    <!-- Translators: %1$s will be replaced by an e-mail address -->
-    <string name="login_oauth2_checking_addr">Checker %1$s</string>
     <string name="login_info_oauth2_title">Fortsæt med forenklet opsætning?</string>
     <string name="login_info_oauth2_text">Indtastet e-mail adresse understøtter simple opsætning (OAuth2).\n\nTillad i næste trin at Delta Chat agerer som samtale med e-mail program.\n\nDer er ingen Delta Chat servere, data forbliver på enhed.</string>
     <string name="login_certificate_checks">Certifikationstjek</string>

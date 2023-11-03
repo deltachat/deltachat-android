@@ -371,7 +371,6 @@
     <string name="tab_docs_empty_hint">Documenty, hudba a další soubory sdílené v tomto hovoru budou zobrazeny zde.</string>
     <string name="media_preview">Náhled multimedia</string>
     <string name="send_message">Pošli zprávu</string>
-    <string name="welcome_intro1_message">Messenger s nejširší základnou na světě. Svobodný a nezávislý.</string>
     <string name="login_title">Přihlaš se</string>
     <string name="login_header">Přihlaš se na váš server</string>
     <string name="login_explain">Přihlásit se se stávajícím účtem pro e-mail.</string>
@@ -389,8 +388,6 @@
     <string name="login_smtp_port">SMTP port</string>
     <string name="login_smtp_security">SMTP zabezpečení</string>
     <string name="login_auth_method">Metoda autorizace</string>
-    <!-- Translators: %1$s will be replaced by an e-mail address -->
-    <string name="login_oauth2_checking_addr">Prohlížím %1$s</string>
     <string name="login_info_oauth2_title">Zkus zjednodušené nastavení?</string>
     <string name="login_info_oauth2_text">Zadaný e-mail podporuje zjednodušené nastavení (OAuth 2.0).\n\nV příštím kroku dej prosím Delta Chatu povolení chovat se jako chat přes e-mail. \n\nŽádné servery Delta Chat nemá, tvá data zůstávají na tvém přístroji.</string>
     <string name="login_certificate_checks">Kontroly certifikátu</string>
