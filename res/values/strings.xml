@@ -921,7 +921,7 @@
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s replied, waiting for being added to the group…</string>
     <string name="contact_verified">%1$s introduced.</string>
-    <string name="contact_not_verified">Cannot introduce %1$s.</string>
+    <string name="contact_not_verified">Cannot establish guaranteed end-to-end encryption with %1$s.</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">Introduced by %1$s</string>
     <string name="verified_by_you">Introduced by me</string>
