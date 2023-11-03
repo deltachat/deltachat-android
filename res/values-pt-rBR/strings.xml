@@ -49,7 +49,6 @@
     <string name="main_menu">Menu principal</string>
     <string name="start_chat">Começar conversa</string>
     <string name="show_full_message">Mostrar mensagem completa...</string>
-    <string name="show_full_message_in_browser">Mostrar mensagem completa no navegador...</string>
     <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
     <string name="mark_all_as_read">Marcar tudo como lido</string>
     <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
@@ -177,7 +176,6 @@
     <string name="webxdc_app">App</string>
     <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_apps">Apps</string>
-    <string name="files_and_webxdx_apps">Arquivos e Apps</string>
     <string name="unknown">Desconhecido</string>
 
     <string name="green">Verde</string>
@@ -203,8 +201,6 @@
     <string name="menu_new_contact">Novo contato</string>
     <string name="menu_new_chat">Nova conversa</string>
     <string name="menu_new_group">Novo grupo</string>
-    <!-- Use the same wording as "Subject" to help people coming from the e-mail context; eg. "Betreff" in German -->
-    <string name="new_group_or_subject">Novo Grupo ou Assunto</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">Lista de Transmissão</string>
     <string name="broadcast_lists">Listas de Transmissão</string>
@@ -542,7 +538,6 @@
     <!-- welcome and login -->
     <string name="welcome_chat_over_email">Bate-papo por E-mail</string>
     <string name="scan_invitation_code">Escanear Código De Convite</string>
-    <string name="welcome_intro1_message">O aplicativo com a maior base de usuários do mundo. Livre e independente.</string>
     <string name="login_title">Acessar</string>
     <string name="login_header">Acesse seu servidor</string>
     <string name="login_explain">Acesse com uma conta de email existente</string>
@@ -567,8 +562,6 @@
     <string name="login_socks5_port">Porta SOCKS5</string>
     <string name="login_socks5_user">Usuário SOCKS5</string>
     <string name="login_socks5_password">Senha SOCKS5</string>
-    <!-- Translators: %1$s will be replaced by an e-mail address -->
-    <string name="login_oauth2_checking_addr">Verificando %1$s</string>
     <string name="login_info_oauth2_title">Prosseguir pela configuração simplificada?</string>
     <string name="login_info_oauth2_text">Seu servidor de e-mail aceita o método de configuração simplificada (OAuth 2.0).\n\n No próximo passo, por favor, permita que o Delta Chat seja seu aplicativo de e-mail.\n\nNão há servidor do Delta Chat. Seus dados ficam no seu aparelho.</string>
     <string name="login_certificate_checks">Verificações de certificado</string>

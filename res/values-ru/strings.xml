@@ -50,7 +50,6 @@
     <string name="main_menu">Главное меню</string>
     <string name="start_chat">Начать чат</string>
     <string name="show_full_message">Показать сообщение полностью…</string>
-    <string name="show_full_message_in_browser">Показать сообщение полностью в браузере…</string>
     <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
     <string name="mark_all_as_read">Отметить всё как прочитанное</string>
     <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
@@ -186,7 +185,6 @@
     <string name="webxdc_app">Личное приложение</string>
     <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_apps">Приложения</string>
-    <string name="files_and_webxdx_apps">Файлы и приложения</string>
     <string name="unknown">Неизвестно</string>
 
     <string name="green">Зелёный</string>
@@ -212,8 +210,6 @@
     <string name="menu_new_contact">Новый контакт</string>
     <string name="menu_new_chat">Новый чат</string>
     <string name="menu_new_group">Новая группа</string>
-    <!-- Use the same wording as "Subject" to help people coming from the e-mail context; eg. "Betreff" in German -->
-    <string name="new_group_or_subject">Новая группа или тема</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">Список рассылки</string>
     <string name="broadcast_lists">Списки рассылки</string>
@@ -558,7 +554,6 @@
     <!-- welcome and login -->
     <string name="welcome_chat_over_email">Чат через электронную почту.</string>
     <string name="scan_invitation_code">Сканировать код приглашения</string>
-    <string name="welcome_intro1_message">Мессенджер с самой широкой аудиторией в мире. Бесплатный и независимый.</string>
     <string name="login_title">Логин</string>
     <string name="login_header">Войти в ваш имэйл-аккаунт</string>
     <string name="login_explain">Войти с существующим аккаунтом эл.почты</string>
@@ -583,8 +578,6 @@
     <string name="login_socks5_port">Порт SOCKS5</string>
     <string name="login_socks5_user">Пользователь SOCKS5</string>
     <string name="login_socks5_password">Пароль SOCKS5</string>
-    <!-- Translators: %1$s will be replaced by an e-mail address -->
-    <string name="login_oauth2_checking_addr">Проверяем %1$s</string>
     <string name="login_info_oauth2_title">Продолжить упрощенную настройку?</string>
     <string name="login_info_oauth2_text">Введённый адрес электронной почты поддерживает упрощённую настройку (OAuth 2.0).\n\nНа следующем шаге разрешите, пожалуйста, Delta Chat выступать в качестве Вашего приложения для чата с помощью электронной почты.\n\nУ Delta Chat нет серверов, Ваши данные остаются на Вашем устройстве.</string>
     <string name="login_certificate_checks">Проверки сертификатов</string>

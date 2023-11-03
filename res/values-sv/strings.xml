@@ -43,7 +43,6 @@
     <string name="main_menu">Huvudmeny</string>
     <string name="start_chat">Starta chatt</string>
     <string name="show_full_message">Visa hela meddelandet...</string>
-    <string name="show_full_message_in_browser">Visa hela meddelandet i webbläsaren...</string>
     <!-- Placeholder text when something is loading -->
     <string name="loading">Laddar...</string>
     <string name="hide">Dölj</string>
@@ -372,7 +371,6 @@
     <string name="tab_docs_empty_hint">Dokument, musik och andra filer som delas i denna chatt kommer att visas här.</string>
     <string name="media_preview">Förhandsvisning av media</string>
     <string name="send_message">Skicka meddelande</string>
-    <string name="welcome_intro1_message">Chattappen med den bredaste publiken i världen. Fri och oberoende.</string>
     <string name="login_title">Logga in</string>
     <string name="login_header">Logga in på din server</string>
     <string name="login_explain">Logga in med ett befintligt e-postkonto</string>
@@ -390,8 +388,6 @@
     <string name="login_smtp_port">SMTP port</string>
     <string name="login_smtp_security">SMTP säkerhet</string>
     <string name="login_auth_method">Auktoriseringsmetod</string>
-    <!-- Translators: %1$s will be replaced by an e-mail address -->
-    <string name="login_oauth2_checking_addr">Kontrollerar %1$s</string>
     <string name="login_info_oauth2_title">Fortsätta med förenklad installation?</string>
     <string name="login_info_oauth2_text">Den angivna e-postadressen stödjer förenklad inställning (OAuth 2.0).\n\nLåt Delta Chat agera som ditt chatt-över-epost-program, i nästa steg.\n\nDet finns ingen Delta Chat-server, din data stannar på din enhet.</string>
     <string name="login_certificate_checks">Certifikatkontroller</string>

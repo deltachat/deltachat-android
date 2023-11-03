@@ -52,7 +52,6 @@
     <string name="main_menu">Hauptmenü</string>
     <string name="start_chat">Chat starten</string>
     <string name="show_full_message">Ganze Nachricht anzeigen…</string>
-    <string name="show_full_message_in_browser">Ganze Nachricht im Browser anzeigen…</string>
     <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
     <string name="mark_all_as_read">Alles Gelesen</string>
     <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
@@ -175,7 +174,6 @@
     <string name="webxdc_app">App</string>
     <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_apps">Apps</string>
-    <string name="files_and_webxdx_apps">Dateien und Apps</string>
     <string name="unknown">Unbekannt</string>
 
     <string name="green">Grün</string>
@@ -202,8 +200,6 @@
     <string name="menu_new_chat">Neuer Chat</string>
     <string name="menu_new_group">Neue Gruppe</string>
     <string name="clone_chat">Chat klonen</string>
-    <!-- Use the same wording as "Subject" to help people coming from the e-mail context; eg. "Betreff" in German -->
-    <string name="new_group_or_subject">Neue Gruppe oder Betreff</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">Broadcast-Liste</string>
     <string name="broadcast_lists">Broadcast-Listen</string>
@@ -550,7 +546,6 @@
     <!-- welcome and login -->
     <string name="welcome_chat_over_email">Chatten über E-Mail.</string>
     <string name="scan_invitation_code">Einladungscode scannen</string>
-    <string name="welcome_intro1_message">Der Messenger mit der größten Reichweite der Welt. Frei und unabhängig.</string>
     <string name="login_title">Login</string>
     <string name="login_header">Bei Ihrem E-Mail-Konto anmelden</string>
     <string name="login_explain">Mit existierendem E-Mail-Konto einloggen</string>
@@ -575,8 +570,6 @@
     <string name="login_socks5_port">SOCKS5-Port</string>
     <string name="login_socks5_user">SOCKS5-Anmeldename</string>
     <string name="login_socks5_password">SOCKS5-Passwort</string>
-    <!-- Translators: %1$s will be replaced by an e-mail address -->
-    <string name="login_oauth2_checking_addr">Teste %1$s</string>
     <string name="login_info_oauth2_title">Weiter mit vereinfachter Einrichtung?</string>
     <string name="login_info_oauth2_text">Die eingegebene E-Mail-Adresse unterstützt eine vereinfachte Einrichtung (OAuth 2.0).\n\nBitte erlauben Sie Delta Chat im nächsten Schritt, als Chat-über-E-Mail-App zu arbeiten.\n\nEs gibt keine Delta Chat Server! Ihre Daten bleiben auf Ihrem Gerät!</string>
     <string name="login_certificate_checks">Zertifikatsüberprüfung</string>
