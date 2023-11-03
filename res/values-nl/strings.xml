@@ -773,7 +773,7 @@
     <string name="autocrypt_send_asm_title">Autocrypt-instelbericht versturen</string>
     <string name="autocrypt_send_asm_explain_before">Een ‘Autocrypt-instelbericht’ deelt je eind-tot-eindinstellingen veilig met andere Autocrypt-compatibele apps.\n\nDe instellingen zijn versleuteld middels een code die hier wordt getoond en moet worden overgetypt op het andere apparaat.</string>
     <string name="autocrypt_send_asm_button">Autocrypt-instelbericht versturen</string>
-    <string name="autocrypt_send_asm_explain_after">Je instellingen zijn aan jezelf verstuurd. Schakel over naar het andere apparaat en open het instelbericht. Je zou nu moeten worden gevraagd om een code. Typ de volgende getallen in het invoerveld:\n\n%1$s</string>
+    <string name="autocrypt_send_asm_explain_after">Je instellingen zijn aan jezelf verstuurd. Schakel over naar het andere apparaat en open het instelbericht. Je zou nu moeten worden gevraagd om een code. Typ de volgende getallen in het invoerveld:</string>
     <string name="autocrypt_prefer_e2ee">Voorkeur voor eind-tot-eindversleuteling</string>
     <string name="autocrypt_asm_subject">Autocrypt-instelbericht</string>
     <string name="autocrypt_asm_general_body">Dit is het Autocrypt-instelbericht dat wordt gebruikt om je instellingen over te zetten.\n\nOm te ontsleutelen en te gebruiken, open je het bericht in een met Autocrypt compatibele app en voer je de code in die wordt getoond op het apparaat dat de code heeft gegenereerd.</string>
@@ -1000,13 +1000,17 @@
     <string name="remove_desktop">Verwijderen</string>
     <string name="save_desktop">Opslaan</string>
     <string name="name_desktop">Naam</string>
+    <!-- deprecated, use autocrypt_send_asm_title / autocrypt_continue_transfer_title -->
     <string name="autocrypt_key_transfer_desktop">Autocrypt-sleuteloverdracht</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_before -->
     <string name="initiate_key_transfer_desktop">Een ‘Autocrypt-instelbericht’ deelt je eind-tot-eindinstellingen veilig met andere Autocrypt-compatibele apps. De instellingen zijn versleuteld middels een code die hier wordt getoond en moet worden overgetypt op het andere apparaat.</string>
     <string name="select_group_image_desktop">Kies een groepsafbeelding</string>
     <string name="imex_progress_title_desktop">Back-upvoortgang</string>
     <string name="export_backup_desktop">Back-up exporteren</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_after instead -->
     <string name="show_key_transfer_message_desktop">D sleutel is aan jezelf verstuurd. Ga naar het andere apparaat en open het instelbericht. Je zou nu moeten worden gevraagd om een code. Typ de volgende getallen in het invoerveld:</string>
     <string name="autocrypt_correct_desktop">Autocrypt-instellingen overgedragen!</string>
+    <!-- deprecated, use autocrypt_bad_setup_code instead -->
     <string name="autocrypt_incorrect_desktop">Onjuiste instelcode; probeer het opnieuw.</string>
     <string name="create_chat_error_desktop">Kan geen gesprek beginnen.</string>
     <string name="forget_login_confirmation_desktop">Wil je dit account verwijderen? Alles wordt verwijderd: je eind-tot-eindinstellingen, contactpersonen, gesprekken, berichten en media. Deze actie kan niet ongedaan worden gemaakt.</string>

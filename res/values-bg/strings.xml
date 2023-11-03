@@ -733,7 +733,7 @@
     <string name="autocrypt_send_asm_title">Изпращане на съобщение за настройка на Autocrypt</string>
     <string name="autocrypt_send_asm_explain_before">Съобщението за настройка на Autocrypt споделя по сигурен начин Вашата настройка за криптиране \"от край до край\" с други съвместими с Autorcypt приложения.\n\nНастройката се криптира с код, който се показва тук и трябва да бъде въведен на другото устройство.</string>
     <string name="autocrypt_send_asm_button">Изпращане на съобщението за настройка на Autocrypt</string>
-    <string name="autocrypt_send_asm_explain_after">Изпратихте Вашата настройка до себе си. Отворете съобщението за настройка в другото устройство. Би трябвало да Ви бъде поискан код за настройка. Въведете следните цифри:\n\n%1$s</string>
+    <string name="autocrypt_send_asm_explain_after">Изпратихте Вашата настройка до себе си. Отворете съобщението за настройка в другото устройство. Би трябвало да Ви бъде поискан код за настройка. Въведете следните цифри:</string>
     <string name="autocrypt_prefer_e2ee">Да се предпочита криптиране \"от край до край\"</string>
     <string name="autocrypt_asm_subject">Съобщение за настройка на Autocrypt</string>
     <string name="autocrypt_asm_general_body">Това е съобщението за настройка на Autocrypt, чрез което се прехвърля Вашата настройка за криптиране \"от край до край\" между различни клиенти.\n\nЗа да декриптирате и използвате Вашата настройка, отворете съобщението в клиент, съвместим с Autocrypt, и въведете кода за настройка, представен на генериращото устройство.</string>
@@ -943,13 +943,17 @@
     <string name="remove_desktop">Премахване</string>
     <string name="save_desktop">Запис</string>
     <string name="name_desktop">Име</string>
+    <!-- deprecated, use autocrypt_send_asm_title / autocrypt_continue_transfer_title -->
     <string name="autocrypt_key_transfer_desktop">Прехвърляне на ключ на Autocrypt</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_before -->
     <string name="initiate_key_transfer_desktop">Съобщението за настройка на Autocrypt споделя по сигурен начин Вашата настройка за криптиране \"от край до край\" с други приложения, съвместими с Autocrypt. Настройката ще бъде криптирана с код, показан тук, който трябва да бъде въведен на другото устройство.</string>
     <string name="select_group_image_desktop">Изберете изображение за групата</string>
     <string name="imex_progress_title_desktop">Прогрес в създаването на резервно копие</string>
     <string name="export_backup_desktop">Експорт на резервно копие</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_after instead -->
     <string name="show_key_transfer_message_desktop">Изпратихте Вашия ключ до себе си. Преминете на другото устройство и отворете съобщението за настройка. Би трябвало да Ви бъде поискан код за настройка. Въведете следните цифри:</string>
     <string name="autocrypt_correct_desktop">Найстроката на Autocrypt е прехвърлена.</string>
+    <!-- deprecated, use autocrypt_bad_setup_code instead -->
     <string name="autocrypt_incorrect_desktop">Неправилен код за настройка. Моля, опитайте отново.</string>
     <string name="create_chat_error_desktop">Неуспешно създаване на чат.</string>
     <string name="forget_login_confirmation_desktop">Да бъде ли изтрита тази регистрация? Всичко ще бъде изтрито, включително Вашата настройка за криптиране \"от край до край\", контакти, чатове, съобщения и медийни файлове. Това действие не може да бъде отменено.</string>

@@ -475,7 +475,7 @@
     <string name="autocrypt_send_asm_title">傳送AutoCrypt設定訊息</string>
     <string name="autocrypt_send_asm_explain_before">「AutoCrypt設定訊息」可以安全地和你使用的其它支援AutoCrypt的 app 共享端到端加密設定。\n\n本訊息含一組設定碼，請在其它支援的設備中輸入這組設定碼。</string>
     <string name="autocrypt_send_asm_button">傳送AutoCrypt設定訊息</string>
-    <string name="autocrypt_send_asm_explain_after">你的設定已經傳送給你自己了。請到其它支援自動加密設定的裝置，開啟設定訊息，並輸入以下的設定碼:\n\n%1$s\n\n輸入完之後，你的其它裝置就可以使用AutoCrypt了。</string>
+    <string name="autocrypt_send_asm_explain_after">你的設定已經傳送給你自己了。請到其它支援自動加密設定的裝置，開啟設定訊息，並輸入以下的設定碼\n\n輸入完之後，你的其它裝置就可以使用AutoCrypt了。</string>
     <string name="autocrypt_prefer_e2ee">偏好端到端加密</string>
     <string name="autocrypt_asm_subject">Autocrypt Setup Message</string>
     <string name="autocrypt_asm_general_body">本信件包含AutoCrypt設定訊息。\n\n請使用其它裝置上支援AutoCrypt設定的應用程式開啟本訊息，並輸入設定碼，以便匯入自動加密設定。</string>

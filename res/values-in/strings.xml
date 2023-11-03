@@ -543,7 +543,7 @@
     <string name="autocrypt_send_asm_title">Kirim Pengaturan Pesan Autocrypt</string>
     <string name="autocrypt_send_asm_explain_before">Pengaturan Pesan Autocrypt membagi pengaturan ujung ke ujung Anda secara aman dengan aplikasi Autocrypt-compliant lain.\n\nPengaturan ini akan dienkripsi oleh kode pengaturan yang ditampilkan disini dan harus diketik di perangkat lainnya.</string>
     <string name="autocrypt_send_asm_button">Kirim Pengaturan Pesan Autocrypt</string>
-    <string name="autocrypt_send_asm_explain_after">Pengaturan Anda sudah dikirim ke Anda sendiri. Lihat pesan pengaturan di perangkat yang lain. Seharusnya Anda akan diminta kode pengaturan. Masukkan angka berikut:\n\n%1$s</string>
+    <string name="autocrypt_send_asm_explain_after">Pengaturan Anda sudah dikirim ke Anda sendiri. Lihat pesan pengaturan di perangkat yang lain. Seharusnya Anda akan diminta kode pengaturan. Masukkan angka berikut:</string>
     <string name="autocrypt_prefer_e2ee">Lebih baik enkripsi ujung ke ujung</string>
     <string name="autocrypt_asm_subject">Pengaturan Pesan Autocrypt</string>
     <string name="autocrypt_asm_general_body">Inilah Autocrypt Setup Message yang digunakan utuk mentransfer pengaturan ujung ke ujung Anda antar pelanggan.\n\nUntuk membuka enkirpsi dan menggunakan pengaturan Anda, bukan pesan di Autocrypt-compliant pelanggan dan masukkan kode pengaturan yang ditampikan untuk perangkat terkait.</string>
@@ -662,11 +662,15 @@
     <string name="remove_desktop">Menghapus</string>
     <string name="save_desktop">Menyimpan</string>
     <string name="name_desktop">Nama</string>
+    <!-- deprecated, use autocrypt_send_asm_title / autocrypt_continue_transfer_title -->
     <string name="autocrypt_key_transfer_desktop">Transfer kunci Autocrypt</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_before -->
     <string name="initiate_key_transfer_desktop">Pengaturan Pesan Autocrypt secara aman membagikan pengaturan ujung ke ujung Anda dengan aplikasi lain yang sesuai dengan Autocrypt. Pengaturan akan dienkripsi dengan kode pengaturan yang ditampilkan di sini dan harus diketik di perangkat lain.</string>
     <string name="select_group_image_desktop">Pilih gambar grup</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_after instead -->
     <string name="show_key_transfer_message_desktop">Kunci Anda sudah dikirim ke Anda sendiri. Lihat pesan pengaturan di perangkat yang lain. Seharusnya Anda akan diminta kode pengaturan. Masukkan angka berikut:</string>
     <string name="autocrypt_correct_desktop">Pengaturan Autocrypt ditransfer.</string>
+    <!-- deprecated, use autocrypt_bad_setup_code instead -->
     <string name="autocrypt_incorrect_desktop">Kode pengaturan salah. Coba lagi.</string>
     <string name="create_chat_error_desktop">Tidak dapat membuat obrolan.</string>
     <string name="forget_login_confirmation_desktop">Hapus login ini? Semuanya akan dihapus, termasuk pengaturan ujung ke ujung, kontak, obrolan, pesan dan media. Kalau diklik tidak bisa balik lagi.</string>

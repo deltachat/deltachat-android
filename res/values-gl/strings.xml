@@ -699,7 +699,7 @@
     <string name="autocrypt_send_asm_title">Enviar Mensaxe de Configuración Autocrypt</string>
     <string name="autocrypt_send_asm_explain_before">Unha Mensaxe de Configuración Autocrypt comparte de xeito seguro o teu cifrado extremo-a-extremo con outras apps compatibles con Autocrypt.\n\nO axuste realízase cifrado e protexido cun código que se debe escribir no outro dispositivo.</string>
     <string name="autocrypt_send_asm_button">Enviar Mensaxe de Configuración Autocrypt</string>
-    <string name="autocrypt_send_asm_explain_after">Os axustes envíanse a ti mesma. Vaite ao outro dispositivo e abre a mensaxe de configuración. Debería solicitarche un código. Introduce os seguintes díxitos:\n\n %1$s</string>
+    <string name="autocrypt_send_asm_explain_after">Os axustes envíanse a ti mesma. Vaite ao outro dispositivo e abre a mensaxe de configuración. Debería solicitarche un código. Introduce os seguintes díxitos:</string>
     <string name="autocrypt_prefer_e2ee">Preferir cifrado extremo-a-extremo</string>
     <string name="autocrypt_asm_subject">Mensaxe de Configuración Autocrypt</string>
     <string name="autocrypt_asm_general_body">Esta é a Mensaxe de Configuración Autocrypt utilizado para transferir os teus axustes de cifrado de extremo-a-extremo entre clientes.\n\nPara descifrar e utilizar os axustes abre a mensaxe nun cliente compatible con Autocrypt e introduce o código mostrado no dispositivo de orixe.</string>
@@ -876,13 +876,17 @@
     <string name="remove_desktop">Eliminar</string>
     <string name="save_desktop">Gardar</string>
     <string name="name_desktop">Nome</string>
+    <!-- deprecated, use autocrypt_send_asm_title / autocrypt_continue_transfer_title -->
     <string name="autocrypt_key_transfer_desktop">Transferir chave Autocrypt</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_before -->
     <string name="initiate_key_transfer_desktop">Unha Mensaxe de Configuración Autocrypt comparte de xeito seguro o teu cifrado extremo-a-extremo con outras apps compatibles con Autocrypt. O axuste cífrase cun código seguro que se mostra aquí e debes escribir no outro dispositivo.</string>
     <string name="select_group_image_desktop">Escoller imaxe do grupo</string>
     <string name="imex_progress_title_desktop">Progreso do respaldo</string>
     <string name="export_backup_desktop">Exportar respaldo</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_after instead -->
     <string name="show_key_transfer_message_desktop">Enviaches a chave a ti mesma. Vaite ao outro dispositivo e abre a mensaxe de Configuración. Pedirache o código de configuración. Introduce os seguintes díxitos:</string>
     <string name="autocrypt_correct_desktop">Axuste Autocrypt transferido.</string>
+    <!-- deprecated, use autocrypt_bad_setup_code instead -->
     <string name="autocrypt_incorrect_desktop">Código incorrecto. Inténtao outra vez.</string>
     <string name="create_chat_error_desktop">Non se puido crear a conversa.</string>
     <string name="forget_login_confirmation_desktop">Eliminar esta conexión? Borrarase todo, incluíndo os axustes de cifrado, contactos, conversas, mensaxes e ficheiros de medios. Esta acción non ten volta atrás.</string>

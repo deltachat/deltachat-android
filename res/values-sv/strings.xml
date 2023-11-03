@@ -527,7 +527,7 @@
     <string name="autocrypt_send_asm_title">Skicka Autocrypt inställningsmeddelande</string>
     <string name="autocrypt_send_asm_explain_before">Ett meddelande för att ställa in Autocrypt, delar den informationen med andra Autocrypt-anpassade program på ett säkert sätt. Informationen krypteras med en kod som visas här och som måste matas in på den mottagande enheten.</string>
     <string name="autocrypt_send_asm_button">Skicka Autocrypt inställningsmeddelande</string>
-    <string name="autocrypt_send_asm_explain_after">Dina inställningar har skickats till dig själv. Byt till den andra enheten och öppna inställningsmeddelandet. Du kommer att tillfrågas om en inställningskod. Ange följande siffror:\n\n%1$s</string>
+    <string name="autocrypt_send_asm_explain_after">Dina inställningar har skickats till dig själv. Byt till den andra enheten och öppna inställningsmeddelandet. Du kommer att tillfrågas om en inställningskod. Ange följande siffror:</string>
     <string name="autocrypt_prefer_e2ee">Föredra slutpunkt-till-slutpunkt-kryptering</string>
     <string name="autocrypt_asm_subject">Inställningsmeddelande för Autocrypt</string>
     <string name="autocrypt_asm_general_body">Detta är inställningsmeddelandet för Autocrypt som används för att skicka nycklar mellan klienter.\n\nFör att kunna avkryptera och använda din nyckel, öppnar du meddelandet i en Autocrypt-kompatibel klient och skriver in inställningskoden som visats på den genererande enheten.</string>
@@ -663,13 +663,17 @@
     <string name="remove_desktop">Ta bort</string>
     <string name="save_desktop">Save</string>
     <string name="name_desktop">Namn</string>
+    <!-- deprecated, use autocrypt_send_asm_title / autocrypt_continue_transfer_title -->
     <string name="autocrypt_key_transfer_desktop">Autocrypt nyckelöverföring</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_before -->
     <string name="initiate_key_transfer_desktop">Ett Autocrypt inställningsmeddelande delar din slutpunkt-till-slutpunkt-inställning med andra Autocrypt-anpassade program på ett säkert sätt. Informationen krypteras med en kod som visas här och som måste matas in på den andra enheten.</string>
     <string name="select_group_image_desktop">Välj en gruppbild</string>
     <string name="imex_progress_title_desktop">Säkerhetskopieringsförlopp</string>
     <string name="export_backup_desktop">Exportera säkerhetskopia</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_after instead -->
     <string name="show_key_transfer_message_desktop">Din nyckel har skickats till dig själv. Byt till den andra enheten och öppna inställningsmeddelandet. . Du kommer att tillfrågas om en inställningskod. Ange följande siffror:</string>
     <string name="autocrypt_correct_desktop">Autocrypt-inställning överförd.</string>
+    <!-- deprecated, use autocrypt_bad_setup_code instead -->
     <string name="autocrypt_incorrect_desktop">Felaktig inställningskod. Försök igen.</string>
     <string name="create_chat_error_desktop">Kunde inte skapa chatt.</string>
     <string name="forget_login_confirmation_desktop">Ta bort den här inloggningen? Allt kommer att raderas, inklusive din slutpunkt-till-slutpunkt-inställning, dina kontakter, media och meddelanden. Denna åtgärd kan inte ångras.</string>

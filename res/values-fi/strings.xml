@@ -692,7 +692,7 @@
     <string name="autocrypt_send_asm_title">Lähetä Autocrypt-asetusviesti</string>
     <string name="autocrypt_send_asm_explain_before">Autocrypt-asetusviesti jakaa turvallisesti päästä-päähän-salauksen asetukset toisten Autocrypt-yhteensopivien sovellusten kanssa.\n\nAsetuksen salataan tässä näytettävällä asetuskoodilla, joka on syötettävä toiseen laitteeseen.</string>
     <string name="autocrypt_send_asm_button">Lähetä Autocrypt-asetusviesti</string>
-    <string name="autocrypt_send_asm_explain_after">Asetusviesti on lähetetty sinulle itsellesi. Avaa viesti toisella laitteella. Sinulta pyydetään asennuskoodia. Anna seuraavat numerot:\n\n%1$s</string>
+    <string name="autocrypt_send_asm_explain_after">Asetusviesti on lähetetty sinulle itsellesi. Avaa viesti toisella laitteella. Sinulta pyydetään asennuskoodia. Anna seuraavat numerot:</string>
     <string name="autocrypt_prefer_e2ee">Suosi päästä-päähän-salausta</string>
     <string name="autocrypt_asm_subject">Autocrypt-asetusviesti</string>
     <string name="autocrypt_asm_general_body">Tätä Autocrypt-asetusviestiä käytetään päästä-päähän-salauksen asetusten kopioimiseksi toiselle laitteelle.\n\nSalauksen purkamiseksi ja asetusten käyttöön ottamiseksi, avaa viesti toisella Autocrypt-yhteensopivalla sovelluksella ja anna asennuskoodi laitteelta, jolla koodi luotiin.</string>
@@ -900,13 +900,17 @@
     <string name="remove_desktop">Poista</string>
     <string name="save_desktop">Tallenna</string>
     <string name="name_desktop">Nimi</string>
+    <!-- deprecated, use autocrypt_send_asm_title / autocrypt_continue_transfer_title -->
     <string name="autocrypt_key_transfer_desktop">Autocrypt-avainten siirto</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_before -->
     <string name="initiate_key_transfer_desktop">Autocrypt-asetusviesti jakaa turvallisesti päästä-päähän-salauksen asetukset toisten Autocrypt-yhteensopivien sovellusten kanssa. Asetukset salataan tässä näytettävällä asetuskoodilla, joka on syötettävä toiseen laitteeseen.</string>
     <string name="select_group_image_desktop">Valitse ryhmän kuva</string>
     <string name="imex_progress_title_desktop">Varmuuskopioinnin tila</string>
     <string name="export_backup_desktop">Vie varmuuskopio</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_after instead -->
     <string name="show_key_transfer_message_desktop">Asetusviesti on lähetetty sinulle itsellesi. Avaa viesti toisella laitteella. Sinulta pyydetään asennuskoodia. Anna seuraavat numerot:</string>
     <string name="autocrypt_correct_desktop">Autocrypt-asetukset siirretty.</string>
+    <!-- deprecated, use autocrypt_bad_setup_code instead -->
     <string name="autocrypt_incorrect_desktop">Virheellinen asennuskoodi. Yritä uudelleen.</string>
     <string name="create_chat_error_desktop">Keskustelua ei voitu luoda.</string>
     <string name="forget_login_confirmation_desktop">Poista tämä kirjautuminen? Kaikki tiedot poistetaan, mukaan lukien päästä-päähän-salauksen asetukset, yhteystiedot, keskustelut, viestit ja media. Tämä toiminto on peruuttamaton.</string>

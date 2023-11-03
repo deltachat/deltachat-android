@@ -679,7 +679,9 @@ https://delta.chat</string>
     <string name="remove_desktop">削除</string>
     <string name="save_desktop">保存</string>
     <string name="name_desktop">名前</string>
+    <!-- deprecated, use autocrypt_send_asm_title / autocrypt_continue_transfer_title -->
     <string name="autocrypt_key_transfer_desktop">自動暗号化設定の転送</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_before -->
     <string name="initiate_key_transfer_desktop">｢自動暗号化設定用メッセージ｣は安全に一対一暗号化設定を対応するアプリケーションとの間に設定します｡　受信側は設定時に表示されるパスコードを入力する必要が有ります｡</string>
     <string name="select_group_image_desktop">グループ画像を選択する</string>
     <string name="imex_progress_title_desktop">バックアップの進行状況</string>

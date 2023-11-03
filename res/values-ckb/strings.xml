@@ -575,6 +575,7 @@
     <string name="remove_desktop">سڕینەوە</string>
     <string name="save_desktop">پاشەکەوت کردن</string>
     <string name="name_desktop">ناو</string>
+    <!-- deprecated, use autocrypt_send_asm_title / autocrypt_continue_transfer_title -->
     <string name="autocrypt_key_transfer_desktop">گواستنەوەی کلیلی ئۆتۆکریپت</string>
     <string name="select_group_image_desktop">هەڵبژاردنی وێنەی کۆڕ</string>
     <string name="imex_progress_title_desktop">پرۆسەی یەدەک هەڵگرتن</string>

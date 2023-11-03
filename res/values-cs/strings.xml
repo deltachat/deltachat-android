@@ -559,7 +559,7 @@
     <string name="autocrypt_send_asm_title">Pošli Nastavení Autocryptu</string>
     <string name="autocrypt_send_asm_explain_before">Pomocí Nastavení Autocryptu lze bezpečně sdílet nastavení šifrování této aplikace s jinou, která také používá Autocrypt.\n\nNastavení je zašifrované zobrazeným kódem, který musí být vložen i na druhém zařízení.</string>
     <string name="autocrypt_send_asm_button">Pošli Nastavení Autocryptu</string>
-    <string name="autocrypt_send_asm_explain_after">Nastavení se ti odeslalo. Vem si druhé zařízení a otevři v něm zprávu nastavení. Měl by jsi být dotázán na kód. Pak vlož následující čísla:\n\n%1$s</string>
+    <string name="autocrypt_send_asm_explain_after">Nastavení se ti odeslalo. Vem si druhé zařízení a otevři v něm zprávu nastavení. Měl by jsi být dotázán na kód. Pak vlož následující čísla:</string>
     <string name="autocrypt_prefer_e2ee">Upřednostňuj end-to-end šifrování</string>
     <string name="autocrypt_asm_subject">Nastavení Autocryptu</string>
     <string name="autocrypt_asm_general_body">Toto je Nastavení Autocryptu, kterým lze přenést nastavení šifrování mezi klienty.\n\nK dešifrování a použití nastavení musíte zprávu otevřít v druhém klientu s Autocryptem a tam zadat kód zobrazený na prvním přístroji.</string>
@@ -717,13 +717,17 @@
     <string name="remove_desktop">Odstranit</string>
     <string name="save_desktop">Uložit</string>
     <string name="name_desktop">Jméno</string>
+    <!-- deprecated, use autocrypt_send_asm_title / autocrypt_continue_transfer_title -->
     <string name="autocrypt_key_transfer_desktop">Přenos klíče Autocryptu</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_before -->
     <string name="initiate_key_transfer_desktop">Nastavení Autocryptu zabezpečeně sdílí nastavení tvého šifrování s ostatními programy používající Autocrypt. Nastavení bude zašifrováno zobrazeným kódem, který musíš zadat i na tom druhém zařízení.</string>
     <string name="select_group_image_desktop">Vyber obrázek skupiny</string>
     <string name="imex_progress_title_desktop">Stav zálohování</string>
     <string name="export_backup_desktop">Ulož zálohu</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_after instead -->
     <string name="show_key_transfer_message_desktop">Poslal jsi si svůj klíč. Přejdi k druhému zařízení a otevři zprávu s nastavením. Měla by se ti objevit výzva k zadání kódu. Pak opiš následující číslo:</string>
     <string name="autocrypt_correct_desktop">Nastavení Autocryptu přeneseno.</string>
+    <!-- deprecated, use autocrypt_bad_setup_code instead -->
     <string name="autocrypt_incorrect_desktop">Nesprávný kód. Zkus to znovu, prosím.</string>
     <string name="create_chat_error_desktop">Hovor nelze vytvořit.</string>
     <string name="forget_login_confirmation_desktop">Smazat toto přihlášení? Vše bude smazáno, včetně nastavení tvého end-to-end šifrování, kontaktů, hovorů, zpráv a multimedií. Tuto akci nelze vrátit zpět.</string>

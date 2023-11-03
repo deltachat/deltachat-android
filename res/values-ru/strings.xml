@@ -774,7 +774,7 @@
     <string name="autocrypt_send_asm_title">Сообщение с параметрами Autocrypt</string>
     <string name="autocrypt_send_asm_explain_before">\"Сообщение с параметрами Autocrypt\" служит для безопасной передачи параметров шифрования между собственными приложениями для работы с электронной почтой, поддерживающими протокол Autocrypt.\n\nЭти параметры шифруются с использованием специального кода, который показан здесь и должен быть введён в настраиваемом приложении.  </string>
     <string name="autocrypt_send_asm_button">Отправить сообщение с параметрами Autocrypt</string>
-    <string name="autocrypt_send_asm_explain_after">Параметры шифрования были вам отправлены. Откройте сообщение с параметрами в настраиваемой программе, после чего программа запросит код подтверждения. Введите следующий код:\n\n%1$s\n\nПосле завершения настройки, программа сможет использовать Autocrypt.</string>
+    <string name="autocrypt_send_asm_explain_after">Параметры шифрования были вам отправлены. Откройте сообщение с параметрами в настраиваемой программе, после чего программа запросит код подтверждения. Введите следующий код.\n\nПосле завершения настройки, программа сможет использовать Autocrypt.</string>
     <string name="autocrypt_prefer_e2ee">Предпочитать сквозное шифрование</string>
     <string name="autocrypt_asm_subject">Сообщение с параметрами Autocrypt</string>
     <string name="autocrypt_asm_general_body">Это сообщение с параметрами Autocrypt служит для передачи параметров сквозного шифрования между устройствами.\n\nДля расшифровывания параметров откройте это сообщение в приложении, поддерживающем Autocrypt и введите код подтверждения, показанный на исходном устройстве.</string>
@@ -988,13 +988,17 @@
     <string name="remove_desktop">Удалить</string>
     <string name="save_desktop">Сохранить</string>
     <string name="name_desktop">Имя</string>
+    <!-- deprecated, use autocrypt_send_asm_title / autocrypt_continue_transfer_title -->
     <string name="autocrypt_key_transfer_desktop">Передача ключей Autocrypt</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_before -->
     <string name="initiate_key_transfer_desktop">Сообщение с параметрами Autocrypt служит для безопасной передачи параметров шифрования между собственными приложениями для работы с электронной почтой, поддерживающими протокол Autocrypt.\n\nЭти параметры шифруются с использованием специального кода, который показан здесь и должен быть введён в настраиваемом приложении.  </string>
     <string name="select_group_image_desktop">Выбрать изображение группы</string>
     <string name="imex_progress_title_desktop">Состояние резевного копирования</string>
     <string name="export_backup_desktop">Экспорт резервной копии</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_after instead -->
     <string name="show_key_transfer_message_desktop">Ваш ключ был отправлен самому себе. Переключитесь на другое устройство и откройте настройки сообщения. Вам будет предложено ввести код установки. Введите следующие цифры в командной строке. Как только вы закончите, ваше другое устройство будет готово к использованию Autocrypt.</string>
     <string name="autocrypt_correct_desktop">Настройки Autocrypt успешно переданы!</string>
+    <!-- deprecated, use autocrypt_bad_setup_code instead -->
     <string name="autocrypt_incorrect_desktop">Проверочный код указан неверно. Попробуйте ввести его повторно.</string>
     <string name="create_chat_error_desktop">Не удалось создать чат.</string>
     <string name="forget_login_confirmation_desktop">Удалить эту учётную запись? Все данные будут удалены, включая настройки сквозного шифрования, контакты, чаты, сообщения и медиа файлы. Это действие нельзя будет отменить.</string>

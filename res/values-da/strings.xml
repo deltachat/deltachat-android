@@ -578,7 +578,7 @@
     <string name="autocrypt_send_asm_title">Send Autocrypt opsætning besked</string>
     <string name="autocrypt_send_asm_explain_before">En \"Autocrypt opsætning besked\" deler sikkert end-to-end opsætning med andre Autocrypt kompatible programmer.\n\nOpsætning er krypteret med en kode som er vist her og skal indtastes på den anden enhed.</string>
     <string name="autocrypt_send_asm_button">Send autocrypt-opsætningsbesked</string>
-    <string name="autocrypt_send_asm_explain_after">Opsætning er sendt til dig selv. Skift til den anden enhed og åben opsætning beskeden. Der skulle blive spurgt til opsætning kode. Indtast følgende cifre i prompt:\n\n%1$s\n\nNår færdig vil den anden enhed være klar til at bruge Autocrypt.</string>
+    <string name="autocrypt_send_asm_explain_after">Opsætning er sendt til dig selv. Skift til den anden enhed og åben opsætning beskeden. Der skulle blive spurgt til opsætning kode. Indtast følgende cifre i prompt.\n\nNår færdig vil den anden enhed være klar til at bruge Autocrypt.</string>
     <string name="autocrypt_prefer_e2ee">Foretræk end-to-end kryptering</string>
     <string name="autocrypt_asm_subject">Autocrypt opsætningsbesked</string>
     <string name="autocrypt_asm_general_body">Dette er Autocrypt opsætning besked brugt til at overføre ende-til-ende opsætning mellem klienter.\n\nFor at af kryptere og bruge opsætning åben beskeden i en Autocrypt kompatibel klient og indtast opsæt koden vist på den genererende enhed.</string>
@@ -741,13 +741,17 @@
     <string name="remove_desktop">Fjern</string>
     <string name="save_desktop">Gem</string>
     <string name="name_desktop">Navn</string>
+    <!-- deprecated, use autocrypt_send_asm_title / autocrypt_continue_transfer_title -->
     <string name="autocrypt_key_transfer_desktop">Autocrypt nøgleoverførsel</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_before -->
     <string name="initiate_key_transfer_desktop">En Autocrypt opsætning beskeddeler sikkert ende-til-ende opsætning med andre Autocrypt kompatible programmer. Opsætninger er krypteret med en opsætning kode som er vist her og skal indtastes på de andre enheder.</string>
     <string name="select_group_image_desktop">Vælg gruppebillede</string>
     <string name="imex_progress_title_desktop">Sikkerhedskopiering fremgang</string>
     <string name="export_backup_desktop">Eksporter sikkerhedskopi</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_after instead -->
     <string name="show_key_transfer_message_desktop">Nøgle er sendt til dig selv. Skift til den anden enhed og åben opsætning beskeden. Der bliver promptet for en opsætning kode.. Indtast følgende cifre i prompten. Når det er afsluttet vil den anden enhed være klar til at bruge Autocrypt.</string>
     <string name="autocrypt_correct_desktop">Autocrypt opsætning overført!</string>
+    <!-- deprecated, use autocrypt_bad_setup_code instead -->
     <string name="autocrypt_incorrect_desktop">Forkert opsætningskode. Prøv igen.</string>
     <string name="create_chat_error_desktop">Kunne ikke oprette samtale</string>
     <string name="forget_login_confirmation_desktop">Slet login? Alt vil blive slettet, din end-to-end opsætning, kontakter, samtaler, meddelelser og medier. Denne handling er endelig og kan ikke fortrydes.</string>

@@ -376,6 +376,7 @@
     <string name="autocrypt_send_asm_title">Autocrypt mesaj ayarı göndər</string>
     <string name="autocrypt_send_asm_explain_before">Autocrypt Setup Message digər Autocrypt-uyğun proqramlarla təhlükəsiz şəkildə bölüşür. \n\nSizin buradakı quraşdırma koduyla şifrələnir və digər qurğuda yazılmalıdır.</string>
     <string name="autocrypt_send_asm_button">Autocrypt Setup Message-ı göndər</string>
+    <string name="autocrypt_send_asm_explain_after">Sizin açarınız sizə göndərildi. Başqa bir cihaza keçin və mesajın ayarını açın. Siz quraşdırma kodu daxil etməlisiniz. Orada aşağıdakı rəqəmləri daxil edin. Bitirən zaman, başqa bir cihazda Autocrypt istifadə üçün hazır olacaq.</string>
     <string name="autocrypt_prefer_e2ee">Ucdan-uca şifrələmə üstünlük təşkil edir</string>
     <string name="autocrypt_asm_subject">Autocrypt mesaj ayarı</string>
     <string name="autocrypt_asm_general_body">Bu, müvəqqəti quraşdırma üçün müştərilər arasında köçürmək üçün istifadə edilən Autocrypt Setup Mesajıdır. \n\nSenfikanızı çözmək və istifadə etmək üçün autocrypt uyğun müştəri içərisində mesajı açın və yaradan cihazda göstərilən quraşdırma kodunu daxil edin.</string>
@@ -476,13 +477,15 @@
     <string name="remove_desktop">Sil</string>
     <string name="save_desktop">Saxla</string>
     <string name="name_desktop">Ad</string>
+    <!-- deprecated, use autocrypt_send_asm_title / autocrypt_continue_transfer_title -->
     <string name="autocrypt_key_transfer_desktop">Avtoşifrələmə açarın ötürülməsi</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_before -->
     <string name="initiate_key_transfer_desktop">Autocrypt konfiqurasiya mesajı təhlükəsiz olaraq \"sondan sona\" parametrinizi Autocrypt ilə uyğun olan digər tətbiqlərlə bölüşür. Quraşdırma burada göstərilir və başqa bir cihazda yığılmış olmalıdır. Bir quraşdırma kodu ilə şifrələ olunacaq.</string>
     <string name="select_group_image_desktop">Qrup şəklini seç</string>
     <string name="imex_progress_title_desktop">Ehtiyat nüsxəsinin yaradılması</string>
     <string name="export_backup_desktop">Ehtiyat nüsxəsinin ixracı</string>
-    <string name="show_key_transfer_message_desktop">Sizin açarınız sizə göndərildi. Başqa bir cihaza keçin və mesajın ayarını açın. Siz quraşdırma kodu daxil etməlisiniz. Orada aşağıdakı rəqəmləri daxil edin. Bitirən zaman, başqa bir cihazda Autocrypt istifadə üçün hazır olacaq.</string>
     <string name="autocrypt_correct_desktop">Autocrypt ayarı müvəffəqiyyətlə köçürüldü!</string>
+    <!-- deprecated, use autocrypt_bad_setup_code instead -->
     <string name="autocrypt_incorrect_desktop">Yanlış kod. Yenidən cəhd edin. </string>
     <string name="create_chat_error_desktop">Yeni çat yaratmaq alınmadı</string>
     <string name="forget_login_confirmation_desktop">Bu giriş silmək istəyirsiniz? Hər şey, sizin \"sondan sona\" quraşdırma, kontaktlar, söhbətlər, mesajlar və daşıyıcıları daxil olmaqla silinəcəkdir. Bu hərəkət son və ləğv edilə bilməz.</string>

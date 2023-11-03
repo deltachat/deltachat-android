@@ -629,7 +629,7 @@
     <string name="autocrypt_send_asm_title">Siųsti Autocrypt sąrankos žinutę</string>
     <string name="autocrypt_send_asm_explain_before">\"Autocrypt sąrankos žinutė\" saugiai bendrina jūsų ištisinę sąranką su kitomis su Autocrypt suderinamomis programomis.\n\nSąranka bus užšifruota sąrankos kodu, kuris yra rodomas čia ir privalės būti įvestas kitame įrenginyje.</string>
     <string name="autocrypt_send_asm_button">Siųsti Autocrypt sąrankos žinutę</string>
-    <string name="autocrypt_send_asm_explain_after">Jūsų sąranka buvo išsiųsta jums. Persijukite į kitą įrenginį ir atverkite sąrankos žinutę. Jūsų turėtų būti paprašyta sąrankos kodo. Į užklausą įrašykite šiuos skaitmenis:\n\n%1$s\n\nJums užbaigus, kitas įrenginys bus paruoštas naudoti Autocrypt.</string>
+    <string name="autocrypt_send_asm_explain_after">Jūsų sąranka buvo išsiųsta jums. Persijukite į kitą įrenginį ir atverkite sąrankos žinutę. Jūsų turėtų būti paprašyta sąrankos kodo. Į užklausą įrašykite šiuos skaitmenis.\n\nJums užbaigus, kitas įrenginys bus paruoštas naudoti Autocrypt.</string>
     <string name="autocrypt_prefer_e2ee">Teikti pirmenybę ištisiniam šifravimui</string>
     <string name="autocrypt_asm_subject">Autocrypt sąrankos žinutė</string>
     <string name="autocrypt_asm_general_body">Tai yra Autocrypt sąrankos žinutė, kuri yra naudojama perduoti jūsų ištisinę sąranką tarp klientų.\n\nNorėdami iššifruoti ir naudoti savo sąranką, atverkite žinutę su Autocrypt suderinamame kliente ir įveskite generuojančiame įrenginyje rodomą sąrankos kodą.</string>
@@ -755,13 +755,17 @@
     <string name="remove_desktop">Šalinti</string>
     <string name="save_desktop">Išsaugoti</string>
     <string name="name_desktop">Vardas</string>
+    <!-- deprecated, use autocrypt_send_asm_title / autocrypt_continue_transfer_title -->
     <string name="autocrypt_key_transfer_desktop">Autocrypt rakto perdavimas</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_before -->
     <string name="initiate_key_transfer_desktop">Autocrypt sąrankos žinutė saugiai bendrina jūsų ištisinę sąranką su kitomis su Autocrypt suderinamomis programomis. Sąranka bus užšifruota sąrankos kodu, kuris yra rodomas čia ir privalės būti įvestas kitame įrenginyje.</string>
     <string name="select_group_image_desktop">Pasirinkti grupės paveikslą</string>
     <string name="imex_progress_title_desktop">Atsarginės kopijos eiga</string>
     <string name="export_backup_desktop">Eksportuoti atsarginę kopiją</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_after instead -->
     <string name="show_key_transfer_message_desktop">Jūsų raktas išsiųstas jums patiems. Persijunkite į kitą įrenginį ir atverkite sąrankos žinutę. Jūsų turėtų būti prašoma įvesti sąrankos kodą. Įveskite šiuos skaitmenis:</string>
     <string name="autocrypt_correct_desktop">Autocrypt sąranka sėkmingai perduota!</string>
+    <!-- deprecated, use autocrypt_bad_setup_code instead -->
     <string name="autocrypt_incorrect_desktop">Neteisingas sąrankos kodas. Bandykite dar kartą.</string>
     <string name="create_chat_error_desktop">Nepavyko sukurti pokalbio.</string>
     <string name="forget_login_confirmation_desktop">Ištrinti šį prisijungimą? Viskas bus ištrinta, įskaitant jūsų ištisinę sąranką, adresatus, pokalbius, žinutes ir mediją. Šis veiksmas yra galutinis ir negalės būti panaikintas.</string>
