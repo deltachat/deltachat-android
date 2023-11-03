@@ -238,14 +238,12 @@ public class ProfileSettingsFragment extends Fragment
 
   private void onVerifiedByClicked() {
     DcContact dcContact = dcContext.getContact(contactId);
-    if (dcContact.isVerified()) {
-      int verifierId = dcContact.getVerifierId();
-      if (verifierId != 0 && verifierId != DcContact.DC_CONTACT_ID_SELF && verifierId != contactId) {
-        Intent intent = new Intent(getContext(), ProfileActivity.class);
-        intent.putExtra(ProfileActivity.CONTACT_ID_EXTRA, verifierId);
-        startActivity(intent);
-      }
-     }
+    int verifierId = dcContact.getVerifierId();
+    if (verifierId != 0 && verifierId != DcContact.DC_CONTACT_ID_SELF) {
+      Intent intent = new Intent(getContext(), ProfileActivity.class);
+      intent.putExtra(ProfileActivity.CONTACT_ID_EXTRA, verifierId);
+      startActivity(intent);
+    }
   }
 
   private void onSendMessage() {

@@ -312,16 +312,13 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
 
       itemDataContact = dcContact;
       if (!chatIsDeviceTalk) {
-        if (dcContact.isVerified()) {
-          int verifierId = dcContact.getVerifierId();
-
+        int verifierId = dcContact.getVerifierId();
+        if (verifierId != 0) {
           String verifiedInfo;
           if (verifierId == DcContact.DC_CONTACT_ID_SELF) {
             verifiedInfo = context.getString(R.string.verified_by_you);
-          } else if (verifierId != 0) {
-            verifiedInfo = context.getString(R.string.verified_by, dcContext.getContact(verifierId).getNameNAddr());
           } else {
-            verifiedInfo = context.getString(R.string.verified);
+            verifiedInfo = context.getString(R.string.verified_by, dcContext.getContact(verifierId).getNameNAddr());
           }
           itemData.add(new ItemData(ItemData.CATEGORY_INFO, INFO_VERIFIED, verifiedInfo, 0, R.drawable.ic_verified));
         }
