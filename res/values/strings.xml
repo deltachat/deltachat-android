@@ -1104,4 +1104,6 @@
     <string name="update_1_38_android">1.38 is out:\n\n📎 Removed upper size limit of attachments\n\n🗜️ PNG images (screenshots!) are now compressed as well\n\n⌨️ For Devs: Better apps for chats with sendToChat() and importFiles() (What is Webxdc? → https://webxdc.org)\n\n… and more at %1$s</string>
     <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
     <string name="update_1_38_ios">1.38 is out:\n\n🖼🔍 Ever searching for an image and could not remember the chat? Then the \"All Media\" button is yours!\n\n🧹 \"Clear Chat\" from the profiles\n\n📎 Removed upper size limit of attachments\n\n🗜️ PNG images (screenshots!) are now compressed as well\n\n… and more at %1$s</string>
+    <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
+    <string name="update_1_42_android">What\'s new:\n\n💌 one-to-one chats guarantee end-to-end encryption for introduced contacts now\n\n😌 for everyone\'s simplicity, we mark these contacts and chats with green checkmarks\n\n👨‍👩‍👦‍👦 groups are also created automatically with guarantee end-to-end encryption if possible\n\nwatch out for tons of more improvements or read them at %1$s</string>
 </resources>
