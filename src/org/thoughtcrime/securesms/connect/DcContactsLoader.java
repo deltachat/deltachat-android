@@ -39,30 +39,17 @@ public class DcContactsLoader extends AsyncLoader<DcContactsLoader.Ret> {
         }
 
         int[] contact_ids = dcContext.getContacts(listflags, query);
-        if(query!=null) {
-            // show the "new contact" link also for partly typed e-mail addresses, so that the user knows he can continue
-            if (addCreateContactLink && dcContext.lookupContactIdByAddr(query)==0 && (listflags&DcContext.DC_GCL_VERIFIED_ONLY)==0) {
-                contact_ids = Util.appendInt(contact_ids, DcContact.DC_CONTACT_ID_NEW_CONTACT);
-            }
-            return new DcContactsLoader.Ret(contact_ids, query);
+        int[] additional_items = new int[0];
+        if (addCreateContactLink) additional_items = Util.appendInt(additional_items, DcContact.DC_CONTACT_ID_NEW_CONTACT);
+        if (query == null && addCreateGroupLinks) {
+            additional_items = Util.appendInt(additional_items, DcContact.DC_CONTACT_ID_NEW_GROUP);
+            final boolean broadcastsEnabled = Prefs.isNewBroadcastListAvailable(getContext());
+            if (broadcastsEnabled) additional_items = Util.appendInt(additional_items, DcContact.DC_CONTACT_ID_NEW_BROADCAST_LIST);
         }
-        else if(addCreateGroupLinks) {
-            // add "new group" and "new verified group" links
-            final boolean broadcasts_enabled = Prefs.isNewBroadcastListAvailable(getContext());
-            final int additional_items = 1 + (broadcasts_enabled? 1 : 0); // if someone knows an easier way to prepend sth. to int[] please pr :)
-            int all_ids[] = new int[contact_ids.length+additional_items];
-            all_ids[0] = DcContact.DC_CONTACT_ID_NEW_GROUP;
-            if (broadcasts_enabled) {
-              all_ids[1] = DcContact.DC_CONTACT_ID_NEW_BROADCAST_LIST;
-            }
-            for(int i=0; i<contact_ids.length; i++) {
-                all_ids[i+additional_items] = contact_ids[i];
-            }
-            return new DcContactsLoader.Ret(all_ids, query);
-        }
-        else {
-            return new DcContactsLoader.Ret(contact_ids, query);
-        }
+        int all_ids[] = new int[contact_ids.length + additional_items.length];
+        System.arraycopy(additional_items, 0, all_ids, 0, additional_items.length);
+        System.arraycopy(contact_ids, 0, all_ids, additional_items.length, contact_ids.length);
+        return new DcContactsLoader.Ret(all_ids, query);
     }
 
     public class Ret {

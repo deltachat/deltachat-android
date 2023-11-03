@@ -185,6 +185,9 @@
     <activity android:name=".GroupCreateActivity"
           android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
 
+    <activity android:name=".contacts.NewContactActivity"
+          android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
+
     <activity android:name=".NewConversationActivity"
               android:theme="@style/TextSecure.LightNoActionBar"
               android:windowSoftInputMode="stateHidden"

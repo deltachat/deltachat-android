@@ -55,6 +55,7 @@ import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.contacts.ContactAccessor;
 import org.thoughtcrime.securesms.contacts.ContactSelectionListAdapter;
 import org.thoughtcrime.securesms.contacts.ContactSelectionListItem;
+import org.thoughtcrime.securesms.contacts.NewContactActivity;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.qr.QrActivity;
@@ -346,13 +347,13 @@ public class ContactSelectionListFragment extends    Fragment
       String addr      = contact.getNumber();
       if (!isMulti() || !selectedContacts.contains(addr))
       {
-        if (isMulti()
-         && specialId== DcContact.DC_CONTACT_ID_NEW_CONTACT
-         && dcContext.lookupContactIdByAddr(addr)==0) {
-          if (dcContext.createContact(null, addr)==0) {
-            Toast.makeText(getActivity(), R.string.bad_email_address, Toast.LENGTH_LONG).show();
-            return;
+        if (specialId == DcContact.DC_CONTACT_ID_NEW_CONTACT) {
+          Intent intent = new Intent(getContext(), NewContactActivity.class);
+          if (dcContext.mayBeValidAddr(cursorFilter)) {
+            intent.putExtra(NewContactActivity.ADDR_EXTRA, cursorFilter);
           }
+          getContext().startActivity(intent);
+          return;
         }
 
         if (isSelectVerfied() && !contact.getDcContact().isVerified()) {
