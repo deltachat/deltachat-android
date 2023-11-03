@@ -745,7 +745,7 @@ https://meet.jit.si/$ROOM
     <string name="autocrypt_send_asm_title">ارسال پیام برپاسازی اتوکریپت</string>
     <string name="autocrypt_send_asm_explain_before">پیام برپاسازی اتوکریپت تنظیمات رمزگذاری سرتاسر شما را به شکلی امن با دیگر برنامه‌ها به اشتراک می‌گذارد.\n\n تنظیمات با یک کد برپاسازی که در اینجا نمایش داده می‌شود رمزگذاری می‌شوند و باید در دستگاه دیگر تایپ شود. </string>
     <string name="autocrypt_send_asm_button">ارسال پیام برپاسازی اتوکریپت</string>
-    <string name="autocrypt_send_asm_explain_after">تنظیمات شما برای خودتان ارسال شد. پیام تنظیمات را در دستگاه دیگر باز کنید. یک کد نصب از شما خواسته می‌شود. این ارقام را وارد کنید:\n\n %1$s </string>
+    <string name="autocrypt_send_asm_explain_after">تنظیمات شما برای خودتان ارسال شد. پیام تنظیمات را در دستگاه دیگر باز کنید. یک کد نصب از شما خواسته می‌شود. این ارقام را وارد کنید</string>
     <string name="autocrypt_prefer_e2ee">ترجیح رمزگذاری گیرنده به گیرنده</string>
     <string name="autocrypt_asm_subject">پیام برپاسازی اتوکریپت</string>
     <string name="autocrypt_asm_general_body">این پیام برپاسازی اتوکریپت است و تنظیمات مربوط به رمزگذاری سرتاسر شما را بین دستگاه‌ها جابه‌جا می‌کند.\n\n برای رمزگشایی و استفاده از آن، پیام را در یک سامانه که با اتوکریپت همخوانی دارد باز کنید و کد برپاسازی که در دستگاه تولیدکنندهٔ پیام، به شما داده می‌شود را وارد نمایید. </string>
@@ -980,13 +980,17 @@ GNU GPL ورژن ۳
     <string name="remove_desktop">حذف</string>
     <string name="save_desktop">ذخیره</string>
     <string name="name_desktop">نام</string>
+    <!-- deprecated, use autocrypt_send_asm_title / autocrypt_continue_transfer_title -->
     <string name="autocrypt_key_transfer_desktop">انتقال کلید اتوکریپت</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_before -->
     <string name="initiate_key_transfer_desktop">یک پیام برپاسازی اتوکریپت، برپاسازی رمزگذاری سرتاسرتان را به‌امنی با دیگر برنامه‌های سازگار با اتوکریپت هم‌رسانی می‌کند. برپاسازی با یک کد برپاسازی رمزگذاری خواهند شد که در اینجا نمایش داده می‌شود که باید آن  را در دستگاه دیگر وارد کنید. </string>
     <string name="select_group_image_desktop">انتخاب تصویر گروه</string>
     <string name="imex_progress_title_desktop">فرایند تهیه نسخه پشتیبان</string>
     <string name="export_backup_desktop">صادر کردن نسخه پشتیبان</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_after instead -->
     <string name="show_key_transfer_message_desktop">کلید برایتان ارسال شد. به دستگاه دیگر رفته و پیام نصب را باز کنید. از شما یک کد نصب خواسته می‌شود. این ارقام را آن‌جا وارد کنید:</string>
     <string name="autocrypt_correct_desktop">برپاسازی اتوکریپت انتقال یافت.</string>
+    <!-- deprecated, use autocrypt_bad_setup_code instead -->
     <string name="autocrypt_incorrect_desktop">کد نصب نادرست. لطفا دوباره امتحان کنید. </string>
     <string name="create_chat_error_desktop">امکان ایجاد گپ وجود ندارد. </string>
     <string name="forget_login_confirmation_desktop">پاک کردن این ورود؟ همه‌چیز پاک می‌شود که شامل رمزگذاری سرتاسر، مخاطبین، گپ‌ها، پیام‌ها و رسانه می‌شود. این عملیات قابل بازگردانی نیست.</string>

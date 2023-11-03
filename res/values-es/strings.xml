@@ -760,7 +760,7 @@
     <string name="autocrypt_send_asm_title">Enviar Mensaje de Configuración de Autocrypt</string>
     <string name="autocrypt_send_asm_explain_before">Un \"Mensaje de Configuración de Autocrypt\" comparte de forma segura su configuración de extremo a extremo con otras aplicaciones compatibles con Autocrypt.\n\nLa configuración se cifrará mediante un código de configuración que se muestra aquí y debe escribirse en el otro dispositivo.</string>
     <string name="autocrypt_send_asm_button">Enviar Mensaje de Configuración de Autocrypt</string>
-    <string name="autocrypt_send_asm_explain_after">Se le ha enviado su configuración. Cambie al otro dispositivo y abra el mensaje de configuración. Se le debe solicitar un código de configuración. Escriba los siguientes dígitos:\n\n%1$s\n\nUna vez que haya terminado, su otro dispositivo estará listo para usar Autocrypt.</string>
+    <string name="autocrypt_send_asm_explain_after">Se le ha enviado su configuración. Cambie al otro dispositivo y abra el mensaje de configuración. Se le debe solicitar un código de configuración. Escriba los siguientes dígitos:.\n\nUna vez que haya terminado, su otro dispositivo estará listo para usar Autocrypt.</string>
     <string name="autocrypt_prefer_e2ee">Preferir el cifrado de extremo a extremo</string>
     <string name="autocrypt_asm_subject">Mensaje de Configuración de Autocrypt</string>
     <string name="autocrypt_asm_general_body">Este es el Mensaje de Configuración de Autocrypt utilizado para transferir su configuración de extremo a extremo entre clientes.\n\nPara descifrar y usar su configuración, abra el mensaje en un cliente compatible con Autocrypt e ingrese el código de configuración presentado en el dispositivo que lo generó.</string>
@@ -982,13 +982,17 @@
     <string name="remove_desktop">Eliminar</string>
     <string name="save_desktop">Guardar</string>
     <string name="name_desktop">Nombre</string>
+    <!-- deprecated, use autocrypt_send_asm_title / autocrypt_continue_transfer_title -->
     <string name="autocrypt_key_transfer_desktop">Transferencia de clave Autocrypt</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_before -->
     <string name="initiate_key_transfer_desktop">Un Mensaje de Configuración Autocrypt comparte de forma segura su configuración de extremo a extremo con otras aplicaciones compatibles con Autocrypt. La configuración se cifrará mediante un código de configuración que se muestra aquí y debe escribirse en el otro dispositivo.</string>
     <string name="select_group_image_desktop">Seleccionar imagen de grupo</string>
     <string name="imex_progress_title_desktop">Progreso de copia de respaldo</string>
     <string name="export_backup_desktop">Exportar copia de respaldo</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_after instead -->
     <string name="show_key_transfer_message_desktop">Tu llave ha sido enviada a ti mismo. Cámbiate al otro dispositivo y abre el mensaje de configuración. Se te debe pedir un código de configuración. Escribe los siguientes dígitos:</string>
     <string name="autocrypt_correct_desktop">Configuración de Autocrypt transferida exitosamente!</string>
+    <!-- deprecated, use autocrypt_bad_setup_code instead -->
     <string name="autocrypt_incorrect_desktop">Código de configuración incorrecto. Por favor, inténtalo de nuevo.</string>
     <string name="create_chat_error_desktop">No se pudo crear el chat.</string>
     <string name="forget_login_confirmation_desktop">¿Borrar esta sesión? Todo se eliminará, incluida la configuración de extremo a extremo, contactos, chats, mensajes y multimedia. Esta acción es definitiva y no puede ser revertida.</string>

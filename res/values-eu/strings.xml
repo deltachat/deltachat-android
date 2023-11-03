@@ -426,7 +426,7 @@
     <string name="autocrypt_send_asm_title">Bidali Autocrypt ezarpen mezua</string>
     <string name="autocrypt_send_asm_explain_before">\"Autocrypt ezarpen mezua\" batek modu seguruan partekatzen du zure muturretik muturrerako ezarpena Autocryptekin bateragarriak diren beste aplikazioekin. Ezarpena hemen bistaratutako ezarpen kodearekin zifratuko  da, eta beste gailuan kode hau sartu beharko da.</string>
     <string name="autocrypt_send_asm_button">Bidali Autocrypt ezarpen mezua</string>
-    <string name="autocrypt_send_asm_explain_after">Zure ezarpena zuri bidali zaizu. Aldatu beste gailura eta ireki ezarpen mezua. Ezarpen kode bat eskatuko zaizu, Idatzi honako zenbaki hauek han:\n\n%1$s\n\nBehin bukatuta, zure beste gailua Autocrypt erabiltzeko prest egongo da.</string>
+    <string name="autocrypt_send_asm_explain_after">Zure ezarpena zuri bidali zaizu. Aldatu beste gailura eta ireki ezarpen mezua. Ezarpen kode bat eskatuko zaizu, Idatzi honako zenbaki hauek han.\n\nBehin bukatuta, zure beste gailua Autocrypt erabiltzeko prest egongo da.</string>
     <string name="autocrypt_prefer_e2ee">Hobetsi muturretik muturrerako zifratzea</string>
     <string name="autocrypt_asm_subject">Autocrypt ezarpen mezua</string>
     <string name="autocrypt_asm_general_body">Hau Autocrypt ezarpen mezua da, zure muturretik muturrerako ezarpena bezeroen artean pasatzeko erabilia.\n\n Zure ezarpena deszifratu eta erabiltzeko, ireki mezua Autocrypt onartzen duen bezero batean eta sartu gailu sortzailean agertutako ezarpen kodea.</string>
@@ -537,13 +537,17 @@
     <string name="remove_desktop">Kendu</string>
     <string name="save_desktop">Gorde</string>
     <string name="name_desktop">Izena</string>
+    <!-- deprecated, use autocrypt_send_asm_title / autocrypt_continue_transfer_title -->
     <string name="autocrypt_key_transfer_desktop">Autocrypt gakoaren transferentzia</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_before -->
     <string name="initiate_key_transfer_desktop">Autocrypt ezarpen mezu batek modu seguruan partekatzen du zure muturretik muturrerako ezarpena Autocryptekin bateragarriak diren beste aplikazioekin. Ezarpena hemen bistaratutako ezarpen kodearekin zifratuko  da, eta beste gailuan kode hau sartu beharko da.</string>
     <string name="select_group_image_desktop">Hautatu taldearen irudia</string>
     <string name="imex_progress_title_desktop">Babes-kopia abian</string>
     <string name="export_backup_desktop">Esportatu babes-kopia</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_after instead -->
     <string name="show_key_transfer_message_desktop">Zure gakoa  bidali zaizu. Joan beste gailura eta ireki ezarpen mezua. Ezarpen kode bat eskatuko zaizu. Idatzi honako zenbaki hauek han. Behin eginda, zure beste gailua Autocrypt erabiltzeko prest egongo da.</string>
     <string name="autocrypt_correct_desktop">Ongi igorri da Autocrypt ezarpena!</string>
+    <!-- deprecated, use autocrypt_bad_setup_code instead -->
     <string name="autocrypt_incorrect_desktop">Ezarpen kode okerra. Saiatu berriro.</string>
     <string name="create_chat_error_desktop">Ezin izan da txata sortu.</string>
     <string name="forget_login_confirmation_desktop">Ezabatu erabiltzaile-izen hau? Dena ezabatuko da, muturretik muturrerako ezarpena, txatak, mezuak eta multimedia barne. Ekintza hau behin betikoa da eta ezin da desegin.</string>

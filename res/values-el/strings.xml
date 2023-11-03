@@ -692,7 +692,7 @@
     <string name="autocrypt_send_asm_title">Αποστολή μηνύματος ρύθμισης αυτόματης κρυπτογράφησης</string>
     <string name="autocrypt_send_asm_explain_before">Ένα μήνυμα ρύθμισης αυτόματης κρυπτογράφησης κοινοποιεί με ασφάλεια τη ρύθμισή σας από άκρο σε άκρο με άλλες εφαρμογές συμβατές με την Αυτόματη κρυπτογράφηση.\n\nΗ ρύθμιση θα κρυπτογραφηθεί από έναν κωδικό ρύθμισης που εμφανίζεται εδώ και θα πρέπει να πληκτρολογηθεί στην άλλη συσκευή.</string>
     <string name="autocrypt_send_asm_button">Αποστολή μηνύματος ρύθμισης αυτόματης κρυπτογράφησης</string>
-    <string name="autocrypt_send_asm_explain_after">Η ρύθμισή σας έχει σταλεί στον εαυτό σας. Μεταβείτε στην άλλη συσκευή και ανοίξτε το μήνυμα ρύθμισης. Θα πρέπει να σας ζητηθεί κωδικός ρύθμισης. Εισαγάγετε τα ακόλουθα ψηφία:\n\n%1$s</string>
+    <string name="autocrypt_send_asm_explain_after">Η ρύθμισή σας έχει σταλεί στον εαυτό σας. Μεταβείτε στην άλλη συσκευή και ανοίξτε το μήνυμα ρύθμισης. Θα πρέπει να σας ζητηθεί κωδικός ρύθμισης. Εισαγάγετε τα ακόλουθα ψηφία:</string>
     <string name="autocrypt_prefer_e2ee">Προτιμήστε την κρυπτογράφηση από άκρο σε άκρο</string>
     <string name="autocrypt_asm_subject">Μήνυμα ρύθμισης αυτόματης κρυπτογράφησης</string>
     <string name="autocrypt_asm_general_body">Αυτό είναι το μήνυμα ρύθμισης αυτόματης κρυπτογράφησης που χρησιμοποιείται για τη μεταφορά της ρύθμισής σας από άκρο σε άκρο μεταξύ πελατών.\n\nΓια να αποκρυπτογραφήσετε και να χρησιμοποιήσετε τη ρύθμισή σας, ανοίξτε το μήνυμα σε ένα πρόγραμμα-πελάτη συμβατό με Αυτόματη κρυπτογράφηση και εισαγάγετε τον κωδικό ρύθμισης που παρουσιάζεται στη συσκευή δημιουργίας.</string>
@@ -900,13 +900,17 @@
     <string name="remove_desktop">Αφαίρεση</string>
     <string name="save_desktop">Αποθήκευση</string>
     <string name="name_desktop">Όνομα</string>
+    <!-- deprecated, use autocrypt_send_asm_title / autocrypt_continue_transfer_title -->
     <string name="autocrypt_key_transfer_desktop">Αυτόματη κρυπτογράφηση μεταφοράς κλειδιού</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_before -->
     <string name="initiate_key_transfer_desktop">Ένα μήνυμα ρύθμισης αυτόματης κρυπτογράφησης μοιράζεται με ασφάλεια τις ρυθμίσεις σας από άκρο σε άκρο με άλλες εφαρμογές συμβατές με την αυτόματη κρυπτογράφηση. Η εγκατάσταση θα κρυπτογραφηθεί από έναν κωδικό ρύθμισης που εμφανίζεται εδώ και πρέπει να πληκτρολογηθεί στην άλλη συσκευή.</string>
     <string name="select_group_image_desktop">Επιλέξτε Εικόνας Ομάδας</string>
     <string name="imex_progress_title_desktop">Δημιουργία Αντιγράφων Ασφαλείας</string>
     <string name="export_backup_desktop">Εξαγωγή Αντιγράφων Ασφαλείας</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_after instead -->
     <string name="show_key_transfer_message_desktop">Το κλειδί σας έχει σταλεί στον εαυτό σας. Μεταβείτε στην άλλη συσκευή και ανοίξτε το μήνυμα ρύθμισης. Θα πρέπει να σας ζητηθεί κωδικός ρύθμισης. Εισαγάγετε τα ακόλουθα ψηφία:</string>
     <string name="autocrypt_correct_desktop">Η ρύθμιση αυτόματης κρυπτογράφησης μεταφέρθηκε.</string>
+    <!-- deprecated, use autocrypt_bad_setup_code instead -->
     <string name="autocrypt_incorrect_desktop">Λανθασμένος κωδικός ρύθμισης. Παρακαλώ προσπαθησε ξανά.</string>
     <string name="create_chat_error_desktop">Αδυναμία δημιουργίας συνομιλίας.</string>
     <string name="forget_login_confirmation_desktop">Διαγραφή αυτής της σύνδεσης; Τα πάντα θα διαγραφούν, συμπεριλαμβανομένων των ρυθμίσεων από άκρο σε άκρο, επαφών, συνομιλιών, μηνυμάτων και πολυμέσων. Αυτή η πράξη δε μπορεί να αναιρεθεί.</string>

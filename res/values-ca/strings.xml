@@ -562,7 +562,7 @@
     <string name="autocrypt_send_asm_title">Envia el missatge de configuració Autocrypt</string>
     <string name="autocrypt_send_asm_explain_before">Un \"missatge de configuració Autocrypt\" comparteix de forma segura la vostra configuració d\'extrem a extrem amb altres aplicacions compatibles amb Autocrypt.\n\nLa configuració es xifrarà amb un codi de configuració que es mostrarà aquí i que haureu d\'escriure a l’altre dispositiu.</string>
     <string name="autocrypt_send_asm_button">Envia el missatge de configuració Autocrypt</string>
-    <string name="autocrypt_send_asm_explain_after">Se us ha enviat la vostra configuració. Canvieu a l\'altre dispositiu i obriu el missatge de configuració. Se us demanarà un codi de configuració. Introduïu els dígits següents a l\'indicador:\n\n%1$s\n\nUn cop fet, l\'altre dispositiu estarà llest per utilitzar Autocrypt.</string>
+    <string name="autocrypt_send_asm_explain_after">Se us ha enviat la vostra configuració. Canvieu a l\'altre dispositiu i obriu el missatge de configuració. Se us demanarà un codi de configuració. Introduïu els dígits següents a l\'indicador.\n\nUn cop fet, l\'altre dispositiu estarà llest per utilitzar Autocrypt.</string>
     <string name="autocrypt_prefer_e2ee">Prefereix l\'encriptació d\'extrem a extrem</string>
     <string name="autocrypt_asm_subject">Missatge de configuració Autocrypt</string>
     <string name="autocrypt_asm_general_body">Aquest és el missatge de configuració Autocrypt que s’utilitza per transferir la vostra configuració d\'extrem a extrem entre dispositius.\n\nPer desxifrar i utilitzar aquesta configuració, obriu el missatge en un dispositiu compatible amb Autocript i introduïu el codi de configuració que apareix al dispositiu primari.</string>
@@ -663,13 +663,17 @@
     <string name="remove_desktop">Elimina</string>
     <string name="save_desktop">Desa</string>
     <string name="name_desktop">Nom</string>
+    <!-- deprecated, use autocrypt_send_asm_title / autocrypt_continue_transfer_title -->
     <string name="autocrypt_key_transfer_desktop">Transfereix la clau d\'Autocrypt</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_before -->
     <string name="initiate_key_transfer_desktop">Un missatge de configuració Autocrypt comparteix de manera segura la vostra configuració d\'extrem a extrem amb altres aplicacions compatibles. La configuració es xifrarà mitjançant un codi de configuració que es mostrarà aquí i que s\'ha d’escriure a l’altre dispositiu.</string>
     <string name="select_group_image_desktop">Tria una imatge de grup</string>
     <string name="imex_progress_title_desktop">Progrés de còpia de seguretat</string>
     <string name="export_backup_desktop">Exporta la còpia de seguretat</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_after instead -->
     <string name="show_key_transfer_message_desktop">La vostra clau us ha estat enviada. Canvieu a l\'altre dispositiu i obriu-hi el missatge de configuració. Se us demanarà un codi de configuració. Introduïu els següents dígits a l\'indicador. Un cop hagueu acabat, l’altre dispositiu estarà llest per utilitzar Autocrypt.</string>
     <string name="autocrypt_correct_desktop">S\'ha transferit correctament la configuració Autocrypt!</string>
+    <!-- deprecated, use autocrypt_bad_setup_code instead -->
     <string name="autocrypt_incorrect_desktop">Codi de configuració incorrecte. Siusplau torneu-ho a provar.</string>
     <string name="create_chat_error_desktop">No s\'ha pogut crear el xat.</string>
     <string name="forget_login_confirmation_desktop">Voleu suprimir aquesta sessió? S\'eliminarà tot, incloent-hi la configuració, els contactes, els xats, els missatges i els arxius multimèdia. Aquesta acció és definitiva i no es pot desfer.</string>

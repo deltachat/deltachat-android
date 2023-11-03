@@ -720,7 +720,7 @@
     <string name="autocrypt_send_asm_title">Пошаљите поруку поставки за аутошифровање</string>
     <string name="autocrypt_send_asm_explain_before">Порука о подешавању аутоматског шифровања безбедно дели ваше комплетно подешавање са другим апликацијама које су компатибилне са аутоматским шифровањем.\n\nПодешавање ће бити шифровано кодом за подешавање приказаним овде и мора се унети на другом уређају.</string>
     <string name="autocrypt_send_asm_button">Пошаљите поруку поставки за аутошифровање</string>
-    <string name="autocrypt_send_asm_explain_after">Ваше подешавање вам је послато. Пређите на други уређај и отворите поруку за подешавање. На другом уређају од се вас очекује да унесете код за подешавање. Унесите следеће цифре:\n\n%1$s</string>
+    <string name="autocrypt_send_asm_explain_after">Ваше подешавање вам је послато. Пређите на други уређај и отворите поруку за подешавање. На другом уређају од се вас очекује да унесете код за подешавање. Унесите следеће цифре:</string>
     <string name="autocrypt_prefer_e2ee">Преферирај с-краја-на-крај шифровање</string>
     <string name="autocrypt_asm_subject">Порука поставки за аутошфровање</string>
     <string name="autocrypt_asm_general_body">Ово је порука подешавања аутоматског шифровања која се користи за пренос вашег с-краја-на-крај подешавања између клијената.\n\nДа бисте дешифровали и користили своје подешавање, отворите поруку на клијенту који је компатибилан са аутоматским шифровањем и унесите кôд за подешавање приказан на уређају који га је генерисао.</string>
@@ -930,13 +930,17 @@
     <string name="remove_desktop">Уклони</string>
     <string name="save_desktop">Сачувај</string>
     <string name="name_desktop">Име</string>
+    <!-- deprecated, use autocrypt_send_asm_title / autocrypt_continue_transfer_title -->
     <string name="autocrypt_key_transfer_desktop">Пошаљи кључ за аутошифровање</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_before -->
     <string name="initiate_key_transfer_desktop">Порука о подешавању аутоматског шифровања безбедно дели ваше комплетно подешавање са другим апликацијама компатибилним са аутоматским шифровањем. Подешавање ће бити шифровано кôдом за подешавање приказаним овде и мора се унети на другом уређају.</string>
     <string name="select_group_image_desktop">Изабери слику групе</string>
     <string name="imex_progress_title_desktop">Напредак израде резервне копије</string>
     <string name="export_backup_desktop">Извези резервну копију</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_after instead -->
     <string name="show_key_transfer_message_desktop">Ваш кључ за шифровање сте послали самом себи. Пређите на други уређај и отворите поруку за подешавање. Када будете били питани за код за подешавање унесите следеће бројеве:</string>
     <string name="autocrypt_correct_desktop">Поставке за аутошифровање су послате.</string>
+    <!-- deprecated, use autocrypt_bad_setup_code instead -->
     <string name="autocrypt_incorrect_desktop">Ваша подешавања су неисправна. Пробајте поново.</string>
     <string name="create_chat_error_desktop">Није могуће креирати ћаскање.</string>
     <string name="forget_login_confirmation_desktop">Да ли желите да избришете овај налог? Све ће бити избрисано, укључујући и ваше подешавање с-краја-на-крај шифровања, контакти, ћаскања, поруке и медији. Ова радња се не може опозвати.</string>

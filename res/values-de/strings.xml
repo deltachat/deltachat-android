@@ -773,7 +773,7 @@
     <string name="autocrypt_send_asm_title">Autocrypt-Setup-Nachricht senden</string>
     <string name="autocrypt_send_asm_explain_before">Eine \"Autocrypt-Setup-Nachricht\" überträgt das Ende-zu-Ende-Setup sicher auf ein anderes Autocrypt-kompatibles Gerät.\n\nDas Setup wird mit einem Setup-Code geschützt; dieser wird hier angezeigt und muss auf dem anderen Gerät eingetippt werden.</string>
     <string name="autocrypt_send_asm_button">Autocrypt-Setup-Nachricht senden</string>
-    <string name="autocrypt_send_asm_explain_after">Das Setup wurde an Sie geschickt. Nun zum anderen Gerät wechseln und die Setup-Nachricht öffnen. Den Anweisungen folgen und den Setup-Code eingeben:\n\n%1$s\n\nDanach ist Autocrypt auf dem anderen Gerät eingerichtet.</string>
+    <string name="autocrypt_send_asm_explain_after">Das Setup wurde an Sie geschickt. Nun zum anderen Gerät wechseln und die Setup-Nachricht öffnen. Den Anweisungen folgen und den folgenden Setup-Code eingeben:</string>
     <string name="autocrypt_prefer_e2ee">Ende-zu-Ende-Verschlüsselung bevorzugen</string>
     <string name="autocrypt_asm_subject">Autocrypt-Setup-Nachricht</string>
     <string name="autocrypt_asm_general_body">Dies ist die Autocrypt-Setup-Nachricht, um das Ende-zu-Ende-Setup von einem Gerät auf das andere zu übertragen.\n\nUm das Setup zu entschlüsseln und zu verwenden, öffnen Sie diese Nachricht in einer Autocrypt-kompatiblen App und geben Sie den Setup-Code ein, der auf dem anderen Gerät angezeigt wurde.</string>
@@ -1000,13 +1000,17 @@
     <string name="remove_desktop">Entfernen</string>
     <string name="save_desktop">Speichern</string>
     <string name="name_desktop">Name</string>
+    <!-- deprecated, use autocrypt_send_asm_title / autocrypt_continue_transfer_title -->
     <string name="autocrypt_key_transfer_desktop">Autocrypt-Schlüsselübertragung</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_before -->
     <string name="initiate_key_transfer_desktop">Eine \"Autocrypt-Setup-Nachricht\" überträgt das Ende-zu-Ende-Setup sicher auf ein anderes Autocrypt-kompatibles Gerät. Das Setup wird mit einem Setup-Code geschützt; dieser wird hier angezeigt und muss auf dem anderen Gerät eingetippt werden.</string>
     <string name="select_group_image_desktop">Gruppenbild auswählen</string>
     <string name="imex_progress_title_desktop">Backup-Prozess</string>
     <string name="export_backup_desktop">Backup exportieren</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_after instead -->
     <string name="show_key_transfer_message_desktop">Der Schlüssel wurde an Sie versandt. Nun zum anderen Gerät wechseln und die Setup-Nachricht öffnen. Nach Aufforderung, den Setup-Code einzugeben, die folgenden Zahlen eingeben. Danach ist Autocrypt auf dem anderen Gerät eingerichtet.</string>
     <string name="autocrypt_correct_desktop">Erfolgreich übertragenes Autocrypt-Setup!</string>
+    <!-- deprecated, use autocrypt_bad_setup_code instead -->
     <string name="autocrypt_incorrect_desktop">Falscher Setup-Code. Bitte versuche es erneut.</string>
     <string name="create_chat_error_desktop">Konnte Chat nicht erstellen.</string>
     <string name="forget_login_confirmation_desktop">Dieses Login löschen? Alles wird gelöscht, einschließlich des Ende-zu-Ende-Setups, der Kontakte, Chats, Nachrichten und Medien. Diese Aktion ist endgültig und kann nicht rückgängig gemacht werden.</string>

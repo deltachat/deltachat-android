@@ -758,7 +758,7 @@
     <string name="autocrypt_send_asm_title">发送 Autocrypt 设置消息</string>
     <string name="autocrypt_send_asm_explain_before">Autocrypt 设置消息安全地共享您的端到端设置至其他兼容 Autocrypt 的应用程序。\n\n该设置将通过在此显示的、必须在另一台设备上输入的设置码进行加密。</string>
     <string name="autocrypt_send_asm_button">发送 Autocrypt 设置消息</string>
-    <string name="autocrypt_send_asm_explain_after">您的设置已发送给您自己。切换到另一台设备并打开该设置消息。 您将被要求输入设置码。 输入以下数字：\n\n%1$s</string>
+    <string name="autocrypt_send_asm_explain_after">您的设置已发送给您自己。切换到另一台设备并打开该设置消息。 您将被要求输入设置码。 输入以下数字：</string>
     <string name="autocrypt_prefer_e2ee">优先使用端到端加密</string>
     <string name="autocrypt_asm_subject">Autocrypt 设置消息</string>
     <string name="autocrypt_asm_general_body">这是用于在客户端之间传输端到端设置的 Autocrypt 设置消息。\n\n要解密并使用您的设置，请在兼容 Autocrypt 的客户端中打开本消息，然后输入生成设备上显示的设置码。</string>
@@ -985,13 +985,17 @@
     <string name="remove_desktop">移除</string>
     <string name="save_desktop">保存</string>
     <string name="name_desktop">名称</string>
+    <!-- deprecated, use autocrypt_send_asm_title / autocrypt_continue_transfer_title -->
     <string name="autocrypt_key_transfer_desktop">Autocrypt 密钥传输</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_before -->
     <string name="initiate_key_transfer_desktop">Autocrypt 设置消息安全地共享您的端到端设置至其他兼容 Autocrypt 的应用程序。该设置将通过在此显示的、必须在另一台设备上输入的设置码进行加密。</string>
     <string name="select_group_image_desktop">选择群组图像</string>
     <string name="imex_progress_title_desktop">备份进度</string>
     <string name="export_backup_desktop">导出备份</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_after instead -->
     <string name="show_key_transfer_message_desktop">您的密钥已发送给您自己。切换到另一台设备并打开该设置消息。 您将被要求输入设置码。 输入以下数字：</string>
     <string name="autocrypt_correct_desktop">Autocrypt 设置已传输 。</string>
+    <!-- deprecated, use autocrypt_bad_setup_code instead -->
     <string name="autocrypt_incorrect_desktop">不正确的设置码。请重试。</string>
     <string name="create_chat_error_desktop">无法创建聊天。</string>
     <string name="forget_login_confirmation_desktop">删除此登录？ 一切都将被删除，包括您的端到端设置、联系人、聊天、消息及媒体。 此操作无法撤消。</string>

@@ -745,7 +745,7 @@
     <string name="autocrypt_send_asm_title">Autocrypt Ayarlama İletisi Gönder</string>
     <string name="autocrypt_send_asm_explain_before">Bir Autocrypt Ayarlama İletisi, uçtan uca ayarlamanızı diğer Autocrypt uyumlu uygulamalarla güvenli olarak paylaşır.\n\nAyarlama, burada görüntülenen ve diğer aygıtta yazılması gereken bir ayarlama kodu tarafından şifrelenecek.</string>
     <string name="autocrypt_send_asm_button">Autocrypt Ayarlama İletisi Gönder</string>
-    <string name="autocrypt_send_asm_explain_after">Ayarlamanız kendinize gönderildi. Diğer aygıta geçin ve ayarlama iletisini açın. Size bir ayarlama kodu sorulmalı. Aşağıdaki sayıları girin:\n\n%1$s</string>
+    <string name="autocrypt_send_asm_explain_after">Ayarlamanız kendinize gönderildi. Diğer aygıta geçin ve ayarlama iletisini açın. Size bir ayarlama kodu sorulmalı. Aşağıdaki sayıları girin:</string>
     <string name="autocrypt_prefer_e2ee">Uçtan Uca Şifrelemeyi Yeğle</string>
     <string name="autocrypt_asm_subject">Autocrypt Ayarlama İletisi</string>
     <string name="autocrypt_asm_general_body">Bu, uçtan uca ayarlamanızı istemciler arasında aktarmak için kullanılan Autocrypt Ayarlama İletisi\'dir.\n\nŞifreyi çözmek ve ayarlamanızı kullanmak için iletiyi Autocrypt uyumlu bir istemcide açın ve oluşturan aygıtta sunulan ayarlama kodunu girin.</string>
@@ -968,13 +968,17 @@
     <string name="remove_desktop">Kaldır</string>
     <string name="save_desktop">Kaydet</string>
     <string name="name_desktop">Ad</string>
+    <!-- deprecated, use autocrypt_send_asm_title / autocrypt_continue_transfer_title -->
     <string name="autocrypt_key_transfer_desktop">Autocrypt anahtar aktarımı</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_before -->
     <string name="initiate_key_transfer_desktop">Bir Autocrypt Ayarlama İletisi, uçtan uca ayarlamanızı diğer Autocrypt uyumlu uygulamalarla güvenli olarak paylaşır. Ayarlama, burada görüntülenen ve diğer aygıtta yazılması gereken bir ayarlama kodu tarafından şifrelenecek.</string>
     <string name="select_group_image_desktop">Öbek Görseli Seç</string>
     <string name="imex_progress_title_desktop">Yedekleme İlerlemesi</string>
     <string name="export_backup_desktop">Yedeği Dışa Aktar</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_after instead -->
     <string name="show_key_transfer_message_desktop">Anahtarınız kendinize gönderildi. Diğer aygıta geçin ve ayarlama iletisini açın. Size bir ayarlama kodu sorulmalı. Aşağıdaki sayıları girin:</string>
     <string name="autocrypt_correct_desktop">Autocrypt ayarlaması aktarıldı.</string>
+    <!-- deprecated, use autocrypt_bad_setup_code instead -->
     <string name="autocrypt_incorrect_desktop">Yanlış ayarlama kodu. Lütfen yeniden deneyin.</string>
     <string name="create_chat_error_desktop">Sohbet oluşturulamadı.</string>
     <string name="forget_login_confirmation_desktop">Bu giriş silinsin mi? Uçtan uca ayarlamanızı, kişilerinizi, sohbetlerinizi, iletilerinizi ve ortamlarınızı kapsayarak her şey silinecek. Bu eylem geri alınamaz.</string>

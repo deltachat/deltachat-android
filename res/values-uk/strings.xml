@@ -783,7 +783,7 @@
     <string name="autocrypt_send_asm_title">Надіслати повідомлення з параметрами Autocrypt</string>
     <string name="autocrypt_send_asm_explain_before">«Повідомлення з параметрами Autocrypt» слугує для безпечної передачі параметрів наскрізного шифрування між власними додатками для роботи з електронною поштою, що підтримують протокол Autocrypt.\n\nЦі параметри шифруються з використанням спеціального інсталяційного коду, що показаний тут і повинен бути введений у налаштовуємому додатку.</string>
     <string name="autocrypt_send_asm_button">Надіслати повідомлення з параметрами Autocrypt</string>
-    <string name="autocrypt_send_asm_explain_after">Параметри шифрування були Вам надіслані. Відкрийте інсталяційне повідомлення у налаштовуємій програмі, після чого вона запросить інсталяційний код. Введіть наступний код:\n\n%1$s\n\nПісля завершення налаштування програма зможе використовувати Autocrypt.</string>
+    <string name="autocrypt_send_asm_explain_after">Параметри шифрування були Вам надіслані. Відкрийте інсталяційне повідомлення у налаштовуємій програмі, після чого вона запросить інсталяційний код. Введіть наступний код.\n\nПісля завершення налаштування програма зможе використовувати Autocrypt.</string>
     <string name="autocrypt_prefer_e2ee">Віддавати перевагу наскрізному шифруванню</string>
     <string name="autocrypt_asm_subject">Повідомлення з параметрами Autocrypt</string>
     <string name="autocrypt_asm_general_body">Це повідомлення з параметрами Autocrypt, що слугує для передачі параметрів наскрізного шифрування між пристроями.\n\nДля розшифрування параметрів відкрийте це повідомлення у додатку, що підтримує Autocrypt і введіть інсталяційний код, показаний на початковому пристрої.</string>
@@ -997,13 +997,17 @@
     <string name="remove_desktop">Видалити</string>
     <string name="save_desktop">Зберегти</string>
     <string name="name_desktop">Ім\'я</string>
+    <!-- deprecated, use autocrypt_send_asm_title / autocrypt_continue_transfer_title -->
     <string name="autocrypt_key_transfer_desktop">Передавання ключів Autocrypt</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_before -->
     <string name="initiate_key_transfer_desktop">Повідомлення з параметрами Autocrypt слугує для безпечного передавання параметрів наскрізного шифрування між власними додатками для роботи з електронною поштою, що підтримують протокол Autocrypt. Ці параметри шифруються з використанням спеціального інсталяційного коду, що показаний тут і повинен бути введений у налаштовуємому додатку.</string>
     <string name="select_group_image_desktop">Вибрати зображення групи</string>
     <string name="imex_progress_title_desktop">Прогрес резервного копіювання</string>
     <string name="export_backup_desktop">Експорт резервної копії</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_after instead -->
     <string name="show_key_transfer_message_desktop">Ваш ключ було надіслано до вас. Перейдіть на інший пристрій та відкрийте установче повідомлення. Вас мають спитати установчий код. Введіть наступні цифри:</string>
     <string name="autocrypt_correct_desktop">Налаштування Autocrypt успішно передані!</string>
+    <!-- deprecated, use autocrypt_bad_setup_code instead -->
     <string name="autocrypt_incorrect_desktop">Невірний інсталяційний код. Спробуйте ввести його повторно.</string>
     <string name="create_chat_error_desktop">Не вдалося створити чат.</string>
     <string name="forget_login_confirmation_desktop">Видалити цей обліковий запис? При цьому будуть видалені всі дані, включно з параметрами наскрізного шифрування, списками контактів, чатами, повідомленнями та медіафайлами. Цю дію не можна буде скасувати.</string>

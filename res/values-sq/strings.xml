@@ -770,7 +770,7 @@
     <string name="autocrypt_send_asm_title">Dërgo Mesazh Rregullimi Autocrypt-i</string>
     <string name="autocrypt_send_asm_explain_before">Një \"Mesazh Rregullimi Autocrypt-i\" ua jep, në mënyrë të parrezikuar, rregullimin tuaj skaj-më-skaj pajisjeve të tjera që përdorin Autocrypt-in.\n\nRregullimi do të fshehtëzohet përmes një kodi rregullimi i cili shfaqet këtu dhe duhet dhënë te pajisja tjetër.</string>
     <string name="autocrypt_send_asm_button">Dërgo Mesazh Rregullimi Autocrypt-i</string>
-    <string name="autocrypt_send_asm_explain_after">Rregullimi juaj u dërgua te ju. Kaloni te pajisja tjetër dhe hapni mesazhin e rregullimit. Do t\’ju kërkohet një kod rregullimi. Shtypni atje shifrat vijuese:\n\n%1$s\n\nPasi të keni mbaruar, pajisja juaj tjetër do të jetë gati të përdorë Autocrypt-in.</string>
+    <string name="autocrypt_send_asm_explain_after">Rregullimi juaj u dërgua te ju. Kaloni te pajisja tjetër dhe hapni mesazhin e rregullimit. Do t\’ju kërkohet një kod rregullimi. Shtypni atje shifrat vijuese.\n\nPasi të keni mbaruar, pajisja juaj tjetër do të jetë gati të përdorë Autocrypt-in.</string>
     <string name="autocrypt_prefer_e2ee">Parapëlqe fshehtëzim skaj-më-skaj</string>
     <string name="autocrypt_asm_subject">Mesazh Rregullimi Autocrypt-i</string>
     <string name="autocrypt_asm_general_body">Ky është Mesazhi i Rregullimit të Autocrypt-it i përdorur për të shpërngulur rregullimin tuaj skaj-më-skaj në klientë të tjerë.\n\nQë ta shfshehtëzoni rregullimin tuaj, hapeni mesazhin te një klient që mund të përdorë Autocrypt-in dhe jepni kodin e rregullimit të treguar te pajisja që e prodhoi.</string>
@@ -997,13 +997,17 @@
     <string name="remove_desktop">Hiqe</string>
     <string name="save_desktop">Ruaje</string>
     <string name="name_desktop">Emër</string>
+    <!-- deprecated, use autocrypt_send_asm_title / autocrypt_continue_transfer_title -->
     <string name="autocrypt_key_transfer_desktop">Shpërngulje kyçi Autocrypt</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_before -->
     <string name="initiate_key_transfer_desktop">Një Mesazh Rregullimi Autocrypt-i ndan në mënyrë të sigurt formësimin tuaj skaj-më-skaj me aplikacione të tjera të përputhshme me Autocrypt-in. Formësimi do të fshehtëzohet përmes një kodi rregullimi, i cili shfaqet këtu dhe duhet dhënë në pajisjen tjetër.</string>
     <string name="select_group_image_desktop">Përzgjidhni figurë grupi</string>
     <string name="imex_progress_title_desktop">Ecuri kopjeruajtjeje</string>
     <string name="export_backup_desktop">Eksportoni kopjeruajtje</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_after instead -->
     <string name="show_key_transfer_message_desktop">Kyçi juaj ju është dërguar. Kaloni te pajisja tjetër dhe hapni mesazhin e rregullimit. Do të duhej t\’ju kërkonte një kod rregullimi. Shtypi shifrat vijuese. Pasi të keni mbaruar, pajisja juaj tjetër do të jetë gati të përdorë Autocrypt-in.</string>
     <string name="autocrypt_correct_desktop">Rregullimi Autocrypt u shpërngul me sukses!</string>
+    <!-- deprecated, use autocrypt_bad_setup_code instead -->
     <string name="autocrypt_incorrect_desktop">Kod i pasaktë rregullim. Ju lutemi, riprovoni.</string>
     <string name="create_chat_error_desktop">S\’u krijua dot fjalosje.</string>
     <string name="forget_login_confirmation_desktop">Të fshihet kjo hyrje? Do të fshihet gjithçka, përfshi rregullimin tuaj për skaj-më-skaj, kontaktet, fjalosjet, mesazhet dhe mediat. Ky veprim është përfundimtar dhe s\’mund të prapësohet.</string>
