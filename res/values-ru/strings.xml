@@ -29,6 +29,7 @@
     <string name="emoji">Эмодзи</string>
     <string name="attachment">Вложение</string>
     <string name="back">Назад</string>
+    <!-- this string is deprecated; the new wording is "introduced by ..." -->
     <string name="verified">Верифицирован</string>
     <string name="close">Закрыть</string>
     <string name="close_window">Закрыть окно</string>
@@ -170,7 +171,6 @@
     <string name="video">Видео</string>
     <string name="documents">Документы</string>
     <string name="contact">Контакт</string>
-    <string name="verified_contact">Проверенный контакт</string>
     <string name="camera">Камера</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Захват</string>
@@ -214,7 +214,6 @@
     <string name="menu_new_group">Новая группа</string>
     <!-- Use the same wording as "Subject" to help people coming from the e-mail context; eg. "Betreff" in German -->
     <string name="new_group_or_subject">Новая группа или тема</string>
-    <string name="menu_new_verified_group">Новая проверенная группа</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">Список рассылки</string>
     <string name="broadcast_lists">Списки рассылки</string>
@@ -917,7 +916,7 @@
     <string name="secure_join_replies">%1$s ответил, ожидаем добавления в группу…</string>
     <string name="contact_verified">%1$s подтвержден.</string>
     <string name="contact_not_verified">Невозможно подтвердить %1$s</string>
-    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that verified the contact shown. -->
+    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">Верифицирован %1$s</string>
     <string name="verified_by_you">Проверено вами</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->

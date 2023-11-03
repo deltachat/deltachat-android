@@ -125,7 +125,6 @@
     <string name="video">Video</string>
     <string name="documents">Dokument</string>
     <string name="contact">Kontakt</string>
-    <string name="verified_contact">Verifierad kontakt</string>
     <string name="camera">Kamera</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Fånga</string>
@@ -161,7 +160,6 @@
     <string name="menu_new_contact">Ny kontakt</string>
     <string name="menu_new_chat">Ny chatt</string>
     <string name="menu_new_group">Ny grupp</string>
-    <string name="menu_new_verified_group">Ny verifierad grupp</string>
     <string name="menu_send">Skicka</string>
     <string name="menu_toggle_keyboard">Byt emoji-tangentbord</string>
     <string name="menu_edit_group">Redigera grupp</string>

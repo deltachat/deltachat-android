@@ -29,6 +29,7 @@
     <string name="emoji">Emoji</string>
     <string name="attachment">İlişik</string>
     <string name="back">Geri</string>
+    <!-- this string is deprecated; the new wording is "introduced by ..." -->
     <string name="verified">Doğrulandı</string>
     <string name="close">Kapat</string>
     <string name="close_window">Pencereyi Kapat</string>
@@ -154,7 +155,6 @@
     <string name="video">Video</string>
     <string name="documents">Belgeler</string>
     <string name="contact">Kişi</string>
-    <string name="verified_contact">Doğrulanan Kişi</string>
     <string name="camera">Kamera</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Yakala</string>
@@ -198,7 +198,6 @@
     <string name="menu_new_group">Yeni Öbek</string>
     <!-- Use the same wording as "Subject" to help people coming from the e-mail context; eg. "Betreff" in German -->
     <string name="new_group_or_subject">Yeni Öbek ya da Konu</string>
-    <string name="menu_new_verified_group">Yeni Doğrulanan Öbek</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">Yayın Listesi</string>
     <string name="broadcast_lists">Yayın Listeleri</string>
@@ -896,12 +895,11 @@
     <string name="secure_join_replies">%1$s yanıtladı; öbeğe eklenmesi bekleniyor…</string>
     <string name="contact_verified">%1$s doğrulandı.</string>
     <string name="contact_not_verified">%1$s doğrulanamıyor.</string>
-    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that verified the contact shown. -->
+    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">%1$s tarafından doğrulandı</string>
     <string name="verified_by_you">Benim tarafımdan doğrulandı</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">%1$s için ayarlama değiştirildi.</string>
-    <string name="verified_group_explain">Doğrulanan gruplar uçtan uca şifrelemeyi güvenceler. Onlara yalnızca yeşil bir doğrulama onay kutusu olan kişiler eklenebilir.</string>
     <string name="verified_contact_required_explain">Uçtan uca şifrelemeyi güvencelemek için bu öbeğe yalnızca yeşil bir doğrulama imi olan kişileri ekleyebilirsiniz.\n\nDoğrulanmayan kişilerle kişisel olarak tanışabilir ve onları doğrulamak için onların QR kodunu tarayabilirsiniz.</string>
     <string name="copy_qr_data_success">QR URL\'si panoya kopyalandı</string>
     <string name="mailto_dialog_header_select_chat">İletiyi göndermek için sohbet seçin</string>

@@ -160,7 +160,6 @@
     <string name="video">Video</string>
     <string name="documents">Dokumenty</string>
     <string name="contact">Kontakt</string>
-    <string name="verified_contact">Overený kontakt</string>
     <string name="camera">Fotoaparát</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Zachytiť</string>
@@ -203,7 +202,6 @@
     <string name="menu_new_group">Nová skupina</string>
     <!-- Use the same wording as "Subject" to help people coming from the e-mail context; eg. "Betreff" in German -->
     <string name="new_group_or_subject">Nová Skupina alebo Predmet </string>
-    <string name="menu_new_verified_group">Nová overená skupina</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">Zoznam Rozosielania</string>
     <string name="broadcast_lists">Zoznamy Rozosielania</string>

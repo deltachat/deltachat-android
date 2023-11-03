@@ -113,7 +113,6 @@
     <string name="video">ڤیدیۆ</string>
     <string name="documents">بەڵگەکان</string>
     <string name="contact">بەردەنگ</string>
-    <string name="verified_contact">بەردەنگی پشتڕاست کراو</string>
     <string name="camera">کامێرا</string>
     <string name="location">شوێن</string>
     <string name="gallery">پیشانگا</string>
@@ -145,7 +144,6 @@
     <string name="menu_new_contact">بەردەنگی نوێ</string>
     <string name="menu_new_chat">وتووێژی نوێ</string>
     <string name="menu_new_group">کۆڕی نوێ</string>
-    <string name="menu_new_verified_group">کۆڕی پشتڕاستکراوەی نوێ</string>
     <string name="menu_send">بینێرە</string>
     <string name="menu_edit_group">دەستکاری کۆڕ</string>
     <string name="menu_group_name_and_image">ناو و وێنەی کۆڕ</string>

@@ -29,6 +29,7 @@
     <string name="emoji">شکلک</string>
     <string name="attachment">پیوست</string>
     <string name="back">بازگشت</string>
+    <!-- this string is deprecated; the new wording is "introduced by ..." -->
     <string name="verified">احراز هویت شده</string>
     <string name="close">بستن</string>
     <string name="forward">هدایت</string>
@@ -153,7 +154,6 @@
     <string name="video">فیلم</string>
     <string name="documents">اسناد</string>
     <string name="contact">مخاطب</string>
-    <string name="verified_contact">مخاطب تأیید شده</string>
     <string name="camera">دوربین</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">گرفتن</string>
@@ -197,7 +197,6 @@
     <string name="menu_new_group">گروه جدید</string>
     <!-- Use the same wording as "Subject" to help people coming from the e-mail context; eg. "Betreff" in German -->
     <string name="new_group_or_subject">گروه یا عنوان جدید</string>
-    <string name="menu_new_verified_group">گروه تأیید شدهٔ جدید</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">لیست Broadcast</string>
     <string name="broadcast_lists">لیست‌های Broadcast</string>
@@ -895,7 +894,7 @@ https://meet.jit.si/$ROOM
     <string name="secure_join_replies">کاربر %1$s پاسخ داد، در انتظار اضافه شدن به گروه...</string>
     <string name="contact_verified">%1$s تأیید شد.</string>
     <string name="contact_not_verified">نتوانست %1$s را تأیید کند. </string>
-    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that verified the contact shown. -->
+    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">احراز هویت شده توسط %1$s</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">تنظیمات برای %1$s تغییر کرد. </string>

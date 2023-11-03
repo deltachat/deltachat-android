@@ -99,7 +99,6 @@
     <string name="video">Bideoa</string>
     <string name="documents">Dokumentuak</string>
     <string name="contact">Kontaktua</string>
-    <string name="verified_contact">Egiaztatutako kontaktua</string>
     <string name="camera">Kamera</string>
     <string name="location">Kokalekua</string>
     <string name="gallery">Galeria</string>
@@ -127,7 +126,6 @@
     <string name="menu_new_contact">Kontaktu berria</string>
     <string name="menu_new_chat">Txat berria</string>
     <string name="menu_new_group">Talde berria</string>
-    <string name="menu_new_verified_group">Egiaztatutako talde berria</string>
     <string name="menu_send">Bidali</string>
     <string name="menu_toggle_keyboard">Txandakatu emoji teklatua</string>
     <string name="menu_edit_group">Editatu taldea</string>

@@ -29,6 +29,7 @@
     <string name="emoji">Емодзі</string>
     <string name="attachment">Вкладення</string>
     <string name="back">Назад</string>
+    <!-- this string is deprecated; the new wording is "introduced by ..." -->
     <string name="verified">Підтверджено</string>
     <string name="close">Закрити</string>
     <string name="close_window">Закрити вікно</string>
@@ -175,7 +176,6 @@
     <string name="video">Відео</string>
     <string name="documents">Документи</string>
     <string name="contact">Контакт</string>
-    <string name="verified_contact">Перевірений контакт</string>
     <string name="camera">Камера</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Захопити</string>
@@ -219,7 +219,6 @@
     <string name="menu_new_group">Нова група</string>
     <!-- Use the same wording as "Subject" to help people coming from the e-mail context; eg. "Betreff" in German -->
     <string name="new_group_or_subject">Нова група або тема</string>
-    <string name="menu_new_verified_group">Нова перевірена група</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">Список трансляцій</string>
     <string name="broadcast_lists">Списки трансляцій</string>
@@ -926,7 +925,7 @@
     <string name="secure_join_replies">%1$s відповіли, очікуємо на додавання до групи…</string>
     <string name="contact_verified">%1$s підтверджений(-а)</string>
     <string name="contact_not_verified">Неможливо підтвердити %1$s</string>
-    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that verified the contact shown. -->
+    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">Підтверджено %1$s</string>
     <string name="verified_by_you">Підтверджено вами</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->

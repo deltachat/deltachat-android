@@ -29,6 +29,7 @@
     <string name="emoji">Emoji</string>
     <string name="attachment">Прикачен файл</string>
     <string name="back">Назад</string>
+    <!-- this string is deprecated; the new wording is "introduced by ..." -->
     <string name="verified">Проверен</string>
     <string name="close">Затваряне</string>
     <string name="forward">Напред</string>
@@ -153,7 +154,6 @@
     <string name="video">Видео</string>
     <string name="documents">Документи</string>
     <string name="contact">Контакт</string>
-    <string name="verified_contact">Проверен контакт</string>
     <string name="camera">Камера</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Заснемане</string>
@@ -197,7 +197,6 @@
     <string name="menu_new_group">Нова група</string>
     <!-- Use the same wording as "Subject" to help people coming from the e-mail context; eg. "Betreff" in German -->
     <string name="new_group_or_subject">Нова група или тема</string>
-    <string name="menu_new_verified_group">Нова проверена група</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">Списък за разпространение</string>
     <string name="broadcast_lists">Списъци за разпространение</string>
@@ -876,7 +875,7 @@
     <string name="secure_join_replies">%1$s отговори, изчаква се да бъдете добавени към групата…</string>
     <string name="contact_verified">%1$s е проверен.</string>
     <string name="contact_not_verified">Не може да бъде проверен %1$s.</string>
-    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that verified the contact shown. -->
+    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">Проверен от%1$s</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Настройката за %1$s е сменена.</string>

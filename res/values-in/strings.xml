@@ -29,6 +29,7 @@
     <string name="emoji">Emoji</string>
     <string name="attachment">Lampiran</string>
     <string name="back">Kembali</string>
+    <!-- this string is deprecated; the new wording is "introduced by ..." -->
     <string name="verified">Diverifikasi</string>
     <string name="close">Tutup</string>
     <string name="close_window">Tutup Jendela</string>
@@ -143,7 +144,6 @@
     <string name="video">Video</string>
     <string name="documents">Dokumen</string>
     <string name="contact">Kontak</string>
-    <string name="verified_contact">Kontak terverifikasi</string>
     <string name="camera">Kamera</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Tangkap</string>
@@ -187,7 +187,6 @@
     <string name="menu_new_group">Grup baru</string>
     <!-- Use the same wording as "Subject" to help people coming from the e-mail context; eg. "Betreff" in German -->
     <string name="new_group_or_subject">Kelompok atau Subjek Baru</string>
-    <string name="menu_new_verified_group">Grup baru terverifikasi</string>
     <string name="add_recipients">Tambahkan Penerima</string>
     <string name="menu_send">Terkirim</string>
     <string name="menu_toggle_keyboard">Tekan tombol emoji keyboard</string>

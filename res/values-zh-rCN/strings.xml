@@ -29,6 +29,7 @@
     <string name="emoji">Emoji</string>
     <string name="attachment">附件</string>
     <string name="back">返回</string>
+    <!-- this string is deprecated; the new wording is "introduced by ..." -->
     <string name="verified">已验证</string>
     <string name="close">关闭</string>
     <string name="close_window">关闭窗口</string>
@@ -151,7 +152,6 @@
     <string name="video">视频</string>
     <string name="documents">文档</string>
     <string name="contact">联系人</string>
-    <string name="verified_contact">已验证的联系人</string>
     <string name="camera">相机</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">捕获</string>
@@ -193,9 +193,9 @@
     <string name="menu_new_contact">新建联系人</string>
     <string name="menu_new_chat">新建聊天</string>
     <string name="menu_new_group">新建群组</string>
+    <string name="clone_chat">克隆聊天</string>
     <!-- Use the same wording as "Subject" to help people coming from the e-mail context; eg. "Betreff" in German -->
     <string name="new_group_or_subject">新建群组或邮件主题</string>
-    <string name="menu_new_verified_group">新建已验证群组</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">广播列表</string>
     <string name="broadcast_lists">广播列表</string>
@@ -908,14 +908,12 @@
     <string name="secure_join_replies">%1$s 已回复，等待被加入群组…</string>
     <string name="contact_verified">%1$s 已验证。</string>
     <string name="contact_not_verified">无法验证 %1$s。</string>
-    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that verified the contact shown. -->
+    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">验证人 %1$s</string>
     <string name="verified_by_you">由您验证</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">%1$s 的加密设置已更改。</string>
-    <string name="verified_group_explain">已验证的群组确保端到端加密。只有带绿色验证钩形符号的联系人才能被加群</string>
     <string name="verified_contact_required_explain">要确保端到端加密，你只能将带有略色验证标识的联系人到此群中。\n\n你可以亲自和未验证联系人线下碰面并扫描联系人二维码来验证。</string>
-    <string name="create_verified_group_ask">所有成员均有绿色验证钩形符号。\n\n你要创建一个确保端到端加密的群吗？</string>
     <string name="copy_qr_data_success">已复制二维码链接到剪贴板</string>
     <string name="mailto_dialog_header_select_chat">选择要发送消息的聊天</string>
     <!-- first placeholder is the name of the chat -->

@@ -29,6 +29,7 @@
     <string name="emoji">Emoji</string>
     <string name="attachment">Bashkëngjitje</string>
     <string name="back">Mbrapsht</string>
+    <!-- this string is deprecated; the new wording is "introduced by ..." -->
     <string name="verified">Verifikuar</string>
     <string name="close">Mbylle</string>
     <string name="close_window">Mbylle Dritaren</string>
@@ -159,7 +160,6 @@
     <string name="video">Video</string>
     <string name="documents">Dokumente</string>
     <string name="contact">Kontakt</string>
-    <string name="verified_contact">Kontakt i verifikuar</string>
     <string name="camera">Kamerë</string>
     <string name="switch_camera">Ndërro kamera</string>
     <string name="toggle_fullscreen">Kalo në / Dil nga mënyra sa krejt ekrani</string>
@@ -199,9 +199,9 @@
     <string name="menu_new_contact">Kontakt i ri</string>
     <string name="menu_new_chat">Fjalosje e re</string>
     <string name="menu_new_group">Grup i ri</string>
+    <string name="clone_chat">Klononi Fjalosjen</string>
     <!-- Use the same wording as "Subject" to help people coming from the e-mail context; eg. "Betreff" in German -->
     <string name="new_group_or_subject">Grup ose Subjekt i Ri</string>
-    <string name="menu_new_verified_group">Grup i ri i verifikuar</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">Listë Transmetimi</string>
     <string name="broadcast_lists">Lista Transmetimi</string>
@@ -920,14 +920,12 @@
     <string name="secure_join_replies">%1$s u përgjigj, po pritet që të shtohet te grupi…</string>
     <string name="contact_verified">%1$s u verifikua.</string>
     <string name="contact_not_verified">S\’verifikohet dot %1$s</string>
-    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that verified the contact shown. -->
+    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">Verifikuar nga %1$s</string>
     <string name="verified_by_you">Verifikuar nga ju</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">U ndryshua rregullimi për %1$s</string>
-    <string name="verified_group_explain">Grupet e verifikuara garantojnë fshehtëzim skaj-më-skaj. Në to mund të shtohen vetëm kontakte me një shenjë të gjelbër verifikimi.</string>
     <string name="verified_contact_required_explain">Që të garantohte fshehtëzim skaj-më-skaj, mund të shtoni në këtë grup vetëm kontakte me shenjën e gjelbër të verifikimit.\n\nMund të takoheni drejtpërsëdrejti me kontakte të paverifikuar dhe të skanoni kodin e tyre QR për t’i verifikuar ata.</string>
-    <string name="create_verified_group_ask">Krejt anëtarët kanë një shenjë të gjelbër verifikimi.\n\nDoni të krijohet një grup që garanton fshehtëzim skaj-më-skaj?</string>
     <string name="copy_qr_data_success">URL-ja QR u kopjua në të papastër</string>
     <string name="mailto_dialog_header_select_chat">Përzgjidhni fjalosje ku të dërgohet mesazhi</string>
     <!-- first placeholder is the name of the chat -->

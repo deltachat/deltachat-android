@@ -29,6 +29,7 @@
     <string name="emoji">Emoji</string>
     <string name="attachment">Anhang</string>
     <string name="back">Zurück</string>
+    <!-- this string is deprecated; the new wording is "introduced by ..." -->
     <string name="verified">Verifiziert</string>
     <string name="close">Schließen</string>
     <string name="close_window">Fenster schließen</string>
@@ -159,7 +160,6 @@
     <string name="video">Video</string>
     <string name="documents">Dokumente</string>
     <string name="contact">Kontakt</string>
-    <string name="verified_contact">Verifizierter Kontakt</string>
     <string name="camera">Kamera</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Aufnehmen</string>
@@ -204,7 +204,6 @@
     <string name="clone_chat">Chat klonen</string>
     <!-- Use the same wording as "Subject" to help people coming from the e-mail context; eg. "Betreff" in German -->
     <string name="new_group_or_subject">Neue Gruppe oder Betreff</string>
-    <string name="menu_new_verified_group">Neue verifizierte Gruppe</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">Broadcast-Liste</string>
     <string name="broadcast_lists">Broadcast-Listen</string>
@@ -900,7 +899,7 @@
     <string name="revive_qr_code">QR-Code aktivieren</string>
     <string name="qrshow_title">QR-Einladungscode</string>
     <string name="qrshow_x_joining">%1$s beigetreten.</string>
-    <string name="qrshow_x_verified">%1$s verifiziert.</string>
+    <string name="qrshow_x_verified">%1$s eingeführt.</string>
     <string name="qrshow_x_has_joined_group">%1$s ist der Gruppe beigetreten.</string>
     <string name="qrshow_join_group_title">QR-Einladungscode</string>
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
@@ -922,16 +921,14 @@
     <string name="secure_join_started">%1$s hat dich zu dieser Gruppe eingeladen.\n\nWarte auf die Antwort des Gerätes von %2$s...</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s antwortet. Warte, zur Gruppe hinzugefügt zu werden...</string>
-    <string name="contact_verified">%1$s verifiziert.</string>
-    <string name="contact_not_verified">Kann %1$s nicht verifizieren</string>
-    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that verified the contact shown. -->
-    <string name="verified_by">Verifiziert von %1$s</string>
-    <string name="verified_by_you">Durch mich verifiziert</string>
+    <string name="contact_verified">%1$s eingeführt.</string>
+    <string name="contact_not_verified">Kann keine garantierte Ende-zu-Ende-Verschlüsselung mit %1$s herstellen.</string>
+    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
+    <string name="verified_by">Eingeführt von %1$s</string>
+    <string name="verified_by_you">Durch mich eingeführt</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Geändertes Setup für %1$s</string>
-    <string name="verified_group_explain">Verifizierte Gruppen garantieren Ende-zu-Ende-Verschlüsselung. Nur Kontakte mit einem grünen Verifizierungs-Häkchen können zu ihnen hinzugefügt werden.</string>
-    <string name="verified_contact_required_explain">Um Ende-zu-Ende-Verschlüsselung zu gewährleisten, können nur Kontakte mit grünem Verifizierungs-Häkchen zu dieser Gruppe hinzugefügt werden.\n\nSie können unverifizierte Kontakte persönlich treffen und ihren QR-Code scannen, um sie zu verifizieren.</string>
-    <string name="create_verified_group_ask">Alle Mitglieder haben eine grünes Verifizierungs-Häkchen.\n\nEine Gruppe mit garantierter  Ende-zu-Ende-Verschlüsselung erstellen?</string>
+    <string name="verified_contact_required_explain">Um Ende-zu-Ende-Verschlüsselung zu gewährleisten, können nur Kontakte mit grünem Häkchen zu dieser Gruppe hinzugefügt werden.\n\nSie könne Kontakte persönlich treffen und ihren QR-Code scannen, um sie einzuführen.</string>
     <string name="copy_qr_data_success">QR-Code auf die Zwischenablage kopiert</string>
     <string name="mailto_dialog_header_select_chat">Wählen Sie den Chat, an den die Nachricht gesendet werden soll</string>
     <!-- first placeholder is the name of the chat -->

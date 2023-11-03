@@ -136,7 +136,6 @@
     <string name="video">동영상</string>
     <string name="documents">문서</string>
     <string name="contact">연락처</string>
-    <string name="verified_contact">확인된 연락처</string>
     <string name="camera">카메라</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">캡쳐</string>
@@ -179,7 +178,6 @@
     <string name="menu_new_group">새 그룹</string>
     <!-- Use the same wording as "Subject" to help people coming from the e-mail context; eg. "Betreff" in German -->
     <string name="new_group_or_subject">새 그룹이나 주제</string>
-    <string name="menu_new_verified_group">새 확인된 그룹</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">방송 목록</string>
     <string name="broadcast_lists">방송 목록</string>

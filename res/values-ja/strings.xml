@@ -120,7 +120,6 @@
     <string name="video">動画</string>
     <string name="documents">文章</string>
     <string name="contact">連絡先</string>
-    <string name="verified_contact">確認済みの連絡先</string>
     <string name="camera">カメラ</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">撮影</string>
@@ -156,7 +155,6 @@
     <string name="menu_new_contact">新規連絡先</string>
     <string name="menu_new_chat">新規チャット</string>
     <string name="menu_new_group">新規グループ</string>
-    <string name="menu_new_verified_group">新しい検証済みグループ</string>
     <string name="menu_send">送信</string>
     <string name="menu_toggle_keyboard">絵文字キーボードを呼び出す</string>
     <string name="menu_edit_group">グループを編集</string>

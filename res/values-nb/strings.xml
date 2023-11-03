@@ -103,7 +103,6 @@
     <string name="video">Video</string>
     <string name="documents">Dokumenter</string>
     <string name="contact">Kontakt</string>
-    <string name="verified_contact">Bekreftet kontakt</string>
     <string name="camera">Kamera</string>
     <string name="location">Posisjon</string>
     <string name="gallery">Galleri</string>
@@ -133,7 +132,6 @@
     <string name="menu_new_contact">Ny kontakt</string>
     <string name="menu_new_chat">Ny chat</string>
     <string name="menu_new_group">Ny gruppe</string>
-    <string name="menu_new_verified_group">Ny bekreftet gruppe</string>
     <string name="menu_send">Send</string>
     <string name="menu_toggle_keyboard">Slå på/av emoji-tastatur</string>
     <string name="menu_edit_group">Rediger gruppe</string>

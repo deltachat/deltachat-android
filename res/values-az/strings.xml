@@ -92,7 +92,6 @@
     <string name="video">Video</string>
     <string name="documents">Sənədlər</string>
     <string name="contact">Kontakt</string>
-    <string name="verified_contact">Yoxlanılmış kontakt</string>
     <string name="camera">Kamera</string>
     <string name="location">Yer</string>
     <string name="gallery">Qalereya</string>
@@ -120,7 +119,6 @@
     <string name="menu_new_contact">Yeni kontakt</string>
     <string name="menu_new_chat">Yeni çat</string>
     <string name="menu_new_group">Yeni qrup</string>
-    <string name="menu_new_verified_group">Yeni yoxlanılmış qrup</string>
     <string name="menu_send">Göndər</string>
     <string name="menu_toggle_keyboard">Emoji klaviatura keçidi</string>
     <string name="menu_edit_group">Qrupu dəyiş</string>

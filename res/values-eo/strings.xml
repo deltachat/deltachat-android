@@ -27,6 +27,7 @@
     <string name="emoji">Emoji</string>
     <string name="attachment">Aldonaĵo</string>
     <string name="back">Reen</string>
+    <!-- this string is deprecated; the new wording is "introduced by ..." -->
     <string name="verified">Konfirmita</string>
     <string name="close">Fermi</string>
     <string name="forward">Plusendi</string>
@@ -151,7 +152,6 @@
     <string name="video">Filmo</string>
     <string name="documents">Dokumentoj</string>
     <string name="contact">Kontakto</string>
-    <string name="verified_contact">Kontrolita kontakto</string>
     <string name="camera">Fotilo</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Kapti</string>
@@ -195,7 +195,6 @@
     <string name="menu_new_group">Nova grupo</string>
     <!-- Use the same wording as "Subject" to help people coming from the e-mail context; eg. "Betreff" in German -->
     <string name="new_group_or_subject">Nova Grupo aŭ Temo</string>
-    <string name="menu_new_verified_group">Nova kontrolita grupo.</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">Elsenda Listo</string>
     <string name="broadcast_lists">Elsendaj Listoj</string>

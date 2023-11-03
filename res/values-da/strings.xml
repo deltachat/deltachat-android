@@ -124,7 +124,6 @@
     <string name="video">Video</string>
     <string name="documents">Dokumenter</string>
     <string name="contact">Kontakt</string>
-    <string name="verified_contact">Bekræftet kontakt</string>
     <string name="camera">Kamera</string>
     <string name="switch_camera">Skift kamera</string>
     <string name="location">Placering</string>
@@ -157,7 +156,6 @@
     <string name="menu_new_contact">Ny kontakt</string>
     <string name="menu_new_chat">Ny samtale</string>
     <string name="menu_new_group">Ny gruppe</string>
-    <string name="menu_new_verified_group">Ny bekræftet gruppe</string>
     <string name="menu_send">Send</string>
     <string name="menu_toggle_keyboard">Skift emoji tastatur</string>
     <string name="menu_edit_group">Rediger gruppe</string>
