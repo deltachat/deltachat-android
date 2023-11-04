@@ -724,6 +724,7 @@
 
     <string name="about_licensed_under_desktop">Ši programinė įranga yra licencijuota pagal GNU GPL versiją 3, o pirminis kodas yra prieinamas „GitHub“ internetinėje svetainėje.</string>
     <string name="welcome_desktop">Sveiki atvykę į Delta Chat</string>
+    <!-- deprecated, use switch_account -->
     <string name="login_known_accounts_title_desktop">Žinomos paskyros</string>
     <string name="global_menu_preferences_language_desktop">Pasirinkti kalbą...</string>
     <string name="global_menu_file_desktop">Failas</string>
@@ -751,6 +752,7 @@
     <string name="delete_message_desktop">Ištrinti žinutę</string>
     <string name="more_info_desktop">Daugiau informacijos</string>
     <string name="timestamp_format_m_desktop">MMM D</string>
+    <!-- deprecated, use encryption_info_title_desktop or profile_encryption -->
     <string name="encryption_info_desktop">Rodyti šifravimo informaciją</string>
     <string name="remove_desktop">Šalinti</string>
     <string name="save_desktop">Išsaugoti</string>
@@ -760,6 +762,7 @@
     <!-- deprecated, use autocrypt_send_asm_explain_before -->
     <string name="initiate_key_transfer_desktop">Autocrypt sąrankos žinutė saugiai bendrina jūsų ištisinę sąranką su kitomis su Autocrypt suderinamomis programomis. Sąranka bus užšifruota sąrankos kodu, kuris yra rodomas čia ir privalės būti įvestas kitame įrenginyje.</string>
     <string name="select_group_image_desktop">Pasirinkti grupės paveikslą</string>
+    <!-- deprecated, use export_backup_desktop instead -->
     <string name="imex_progress_title_desktop">Atsarginės kopijos eiga</string>
     <string name="export_backup_desktop">Eksportuoti atsarginę kopiją</string>
     <!-- deprecated, use autocrypt_send_asm_explain_after instead -->
@@ -767,6 +770,7 @@
     <string name="autocrypt_correct_desktop">Autocrypt sąranka sėkmingai perduota!</string>
     <!-- deprecated, use autocrypt_bad_setup_code instead -->
     <string name="autocrypt_incorrect_desktop">Neteisingas sąrankos kodas. Bandykite dar kartą.</string>
+    <!-- deprecated, rare errors should be english only for easier searchability -->
     <string name="create_chat_error_desktop">Nepavyko sukurti pokalbio.</string>
     <string name="forget_login_confirmation_desktop">Ištrinti šį prisijungimą? Viskas bus ištrinta, įskaitant jūsų ištisinę sąranką, adresatus, pokalbius, žinutes ir mediją. Šis veiksmas yra galutinis ir negalės būti panaikintas.</string>
     <string name="account_info_hover_tooltip_desktop2">El. paštas: %1$s\nDydis: %2$s\nPaskyros Id: %3$s</string>

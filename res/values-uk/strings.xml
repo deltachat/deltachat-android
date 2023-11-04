@@ -215,6 +215,7 @@
     <string name="menu_new_contact">Новий контакт</string>
     <string name="menu_new_chat">Новий чат</string>
     <string name="menu_new_group">Нова група</string>
+    <string name="clone_chat">Клонувати чат</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">Список трансляцій</string>
     <string name="broadcast_lists">Списки трансляцій</string>
@@ -247,6 +248,7 @@
     <string name="menu_copy_image_to_clipboard">Копіювати зображення</string>
     <string name="menu_copy_email_to_clipboard">Копіювати електронну пошту</string>
     <string name="paste_from_clipboard">Вставити із буферу обміну</string>
+    <string name="ask_copy_unopenable_link_to_clipboard">Посилання «%1$d» не можна відкрити у веб-браузері. Скопіювати посилання в буфер обміну?</string>
     <string name="menu_forward">Переслати повідомлення</string>
     <string name="menu_reply">Відповісти на повідомлення</string>
     <string name="menu_mute">Вимкнути сповіщення</string>
@@ -256,6 +258,7 @@
     <string name="menu_all_media">Всі матеріали</string>
     <!-- Command to jump to the original message corresponding to a gallery image or document -->
     <string name="show_in_chat">Показати в чаті</string>
+    <string name="show_app_in_chat">Показати Застосунок у чаті</string>
     <string name="menu_share">Поділитися</string>
     <!-- Verb "to block sth." usually a mailing list or a contact, not a noun -->
     <string name="block">Заблокувати</string>
@@ -267,6 +270,7 @@
     <string name="menu_scroll_to_bottom">Перейти в кінець</string>
     <string name="menu_scroll_to_top">Прокрутити на початок</string>
     <string name="menu_help">Допомога</string>
+    <string name="what_is_webxdc">Що таке Webxdc?</string>
     <string name="privacy_policy">Політика конфіденційності</string>
     <string name="menu_select_all">Вибрати все</string>
     <string name="select_chat">Оберіть чат</string>
@@ -303,6 +307,8 @@
     <string name="source_code">Вихідний код</string>
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">Додати на домашній екран</string>
+    <string name="donate">Пожертвувати</string>
+
     <string name="mute_for_one_hour">Відключити сповіщення на 1 годину</string>
     <string name="mute_for_two_hours">Відключити сповіщення на 2 години</string>
     <string name="mute_for_one_day">Відключити сповіщення на 1 день</string>
@@ -473,6 +479,8 @@
 
     <!-- search -->
     <string name="search">Пошук</string>
+    <string name="search_in_chat">Шукати в чаті</string>
+    <string name="search_files">Шукати файли</string>
     <string name="search_explain">Пошук чатів, контактів і повідомлень</string>
     <string name="search_no_result_for_x">Запит «%s» не дав результатів</string>
 
@@ -488,6 +496,7 @@
     <string name="group_self_not_in_group">Щоб виконати цю дію, Ви повинні бути учасником групи.</string>
     <string name="profile_encryption">Шифрування</string>
     <string name="profile_shared_chats">Розшарені чати</string>
+    <string name="related_chats">Пов\'язані чати</string>
     <string name="tab_contact">Контакт</string>
     <string name="tab_group">Група</string>
     <string name="tab_gallery">Галерея</string>
@@ -502,6 +511,10 @@
     <string name="tab_webxdc_empty_hint">Застосунки, якими поділилися у цьому чаті, будуть відображатися тут.</string>
     <string name="tab_all_media_empty_hint">Тут відображатимуться медіафайли, якими ви ділилися в будь-якому чаті.</string>
     <string name="media_preview">Попередній перегляд медіа</string>
+    <!-- option to show images in the gallery with the correct width/height aspect (instead of square); other gallery apps may be a source of inspiration for translation :) -->
+    <string name="aspect_ratio_grid">Сітка співвідношення сторін</string>
+    <!-- option to show images in the gallery as square (instead of using correct width/height) -->
+    <string name="square_grid">Квадратна сітка</string>
     <string name="send_message">Надіслати повідомлення</string>
     <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
     <string name="aeap_addr_changed">%1$s змінили їх адресу з %2$s на %3$s</string>
@@ -687,6 +700,10 @@
     <string name="pref_backup">Резервне копіювання</string>
     <string name="pref_backup_explain">Зберегти чати на зовнішній носій</string>
     <string name="pref_backup_export_explain">Резервне копіювання дозволяє відновлювати попередні налаштування програми під час нової установки на цьому або іншому пристрої.\n\nРезервная копія містить всі повідомлення, контакти і чати, а також параметри наскрізного Autocrypt. Після того як резервна копія буде створена,  якомога швидше перенесіть її у надійне місце.</string>
+    <!-- the placeholder will be replaced by the name of the account's email address -->
+    <string name="pref_backup_export_x">Експортувати %1$s</string>
+    <!-- the placeholder will be replaced by the number of accounts to export; the number is always larger than 1 -->
+    <string name="pref_backup_export_all">Експортувати усі %1$d облікові записи</string>
     <string name="pref_backup_export_start_button">Почати резервне копіювання</string>
     <string name="pref_backup_written_to_x">Резервна копія успішно записана на %1$s</string>
     <string name="pref_managekeys_menu_title">Управління ключами</string>
@@ -737,6 +754,9 @@
     <string name="profile_image_delete">Видалити зображення профілю</string>
     <string name="pref_show_tray_icon">Показати іконку в треї</string>
     <string name="pref_edit_profile">Редагувати профіль</string>
+    <string name="disable_imap_idle">Вимкнути IMAP IDLE</string>
+    <string name="disable_imap_idle_explain">Не використовувати розширення IMAP IDLE навіть якщо сервер підтримує його. Увімкнення цієї опції затримає отримання повідомлень, вмикайте її лише для тестування.</string>
+
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Результати пошуку</string>
     <string name="emoji_not_found">Емодзі не знайдено</string>
@@ -862,6 +882,14 @@
     <string name="ephemeral_timer_weeks_by_you">Ви встановили таймер зникнення повідомлень на %1$s тижнів.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_weeks_by_other">%2$s встановили таймер повідомлень, що зникають на %1$s тижнів.</string>
+    <!-- this may be shown instead of the chat's input field, with buttons "More Info" and "OK" -->
+    <string name="chat_protection_broken">%1$s відправили повідомлення з іншого пристрою.</string>
+    <string name="chat_protection_enabled_tap_to_learn_more">Відтепер повідомлення гарантовано будуть мати наскрізне шифрування. Торкніться, щоб дізнатися більше.</string>
+    <string name="chat_protection_enabled_explanation">Тепер гарантовано, що всі повідомлення в цьому чаті мають наскрізне шифрування.\n\nНаскрізне шифрування зберігає конфіденційність повідомлень між вами та вашими партнерами по чату. Навіть ваш постачальник послуг електронної пошти не може їх прочитати.</string>
+    <string name="chat_protection_broken_tap_to_learn_more">%1$s відправили повідомлення з іншого пристрою. Торкніться, щоб дізнатися більше.</string>
+    <string name="chat_protection_broken_explanation">Наскрізне шифрування більше не гарантується, ймовірно, через те, що %1$s перевстановили Delta Chat або надіслали повідомлення з іншого пристрою.\n\nВи можете зустрітися з ними особисто та знову відсканувати їхній QR-код, щоб відновити гарантоване наскрізне шифрування.</string>
+    <string name="learn_more">Дізнатися більше</string>
+
     <string name="devicemsg_self_deleted">Ви видалили чат \"Збережені повідомлення\".\n\nℹ️ Аби використовувати функцію \"Збережені повідомлення\" знову, створіть новий чат самі із собою.</string>
     <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
     <string name="devicemsg_storage_exceeding">⚠️ Сховище вашого провайдера електронної пошти майже заповнено, вже використовується %1$s%%.\n\nМожливо, ви не зможете отримати повідомлення, коли сховище буде заповнене.\n\n👉 Перевірте, чи можна видалити старі дані у веб -інтерфейсі провайдера та включіть \"Налаштування / Видалити старі повідомлення\". Ви можете будь-коли перевірити своє поточне використання сховища в \"Налаштування / Підключення\". </string>
@@ -923,6 +951,7 @@
     <string name="verified_by_you">Підтверджено вами</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Змінені параметри для %1$s</string>
+    <string name="verified_contact_required_explain">Щоб гарантувати наскрізне шифрування, ви можете додавати до цієї групи лише контакти із зеленою галочкою.\n\nВи можете зустрітися з контактами особисто та відсканувати їхній QR-код, щоб представити їх.</string>
     <string name="copy_qr_data_success">URL з QR-коду скопійовано в буфер</string>
     <string name="mailto_dialog_header_select_chat">Виберіть чат, якому потрібно надіслати повідомлення</string>
     <!-- first placeholder is the name of the chat -->
@@ -940,6 +969,10 @@
     <string name="notify_name_only">Тільки ім\'я</string>
     <string name="notify_no_name_or_message">Без імені або повідомлення</string>
     <string name="notifications_disabled">Сповіщення вимкнено</string>
+    <string name="new_messages">Нові повідомлення</string>
+    <string name="n_messages_in_m_chats">%1$d повідомлень з %2$d чатів</string>
+
+
     <!-- permissions -->
     <string name="perm_required_title">Потрібен дозвіл</string>
     <string name="perm_continue">Продовжити</string>
@@ -966,6 +999,7 @@
     <string name="about_offical_app_desktop">Це офіційний додаток Delta Chat для ПК.</string>
     <string name="about_licensed_under_desktop">Це програмне забезпечення ліцензується за GNU GPL версії 3, а початковий код доступний на GitHub.</string>
     <string name="welcome_desktop">Вітаємо у Delta Chat</string>
+    <!-- deprecated, use switch_account -->
     <string name="login_known_accounts_title_desktop">Відомі облікові записи</string>
     <string name="global_menu_preferences_language_desktop">Вибір мови</string>
     <string name="global_menu_file_desktop">Файл</string>
@@ -993,6 +1027,7 @@
     <string name="delete_message_desktop">Видалити повідомлення</string>
     <string name="more_info_desktop">Більше інформації</string>
     <string name="timestamp_format_m_desktop">d MMMM</string>
+    <!-- deprecated, use encryption_info_title_desktop or profile_encryption -->
     <string name="encryption_info_desktop">Показати інформацію про шифрування</string>
     <string name="remove_desktop">Видалити</string>
     <string name="save_desktop">Зберегти</string>
@@ -1002,6 +1037,7 @@
     <!-- deprecated, use autocrypt_send_asm_explain_before -->
     <string name="initiate_key_transfer_desktop">Повідомлення з параметрами Autocrypt слугує для безпечного передавання параметрів наскрізного шифрування між власними додатками для роботи з електронною поштою, що підтримують протокол Autocrypt. Ці параметри шифруються з використанням спеціального інсталяційного коду, що показаний тут і повинен бути введений у налаштовуємому додатку.</string>
     <string name="select_group_image_desktop">Вибрати зображення групи</string>
+    <!-- deprecated, use export_backup_desktop instead -->
     <string name="imex_progress_title_desktop">Прогрес резервного копіювання</string>
     <string name="export_backup_desktop">Експорт резервної копії</string>
     <!-- deprecated, use autocrypt_send_asm_explain_after instead -->
@@ -1009,6 +1045,7 @@
     <string name="autocrypt_correct_desktop">Налаштування Autocrypt успішно передані!</string>
     <!-- deprecated, use autocrypt_bad_setup_code instead -->
     <string name="autocrypt_incorrect_desktop">Невірний інсталяційний код. Спробуйте ввести його повторно.</string>
+    <!-- deprecated, rare errors should be english only for easier searchability -->
     <string name="create_chat_error_desktop">Не вдалося створити чат.</string>
     <string name="forget_login_confirmation_desktop">Видалити цей обліковий запис? При цьому будуть видалені всі дані, включно з параметрами наскрізного шифрування, списками контактів, чатами, повідомленнями та медіафайлами. Цю дію не можна буде скасувати.</string>
     <string name="account_info_hover_tooltip_desktop2">E-Mail: %1$s\nРозмір: %2$s\nІдентиф. аккаунту: %3$s</string>

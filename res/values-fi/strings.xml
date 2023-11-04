@@ -869,6 +869,7 @@
     <string name="about_offical_app_desktop">Tämä on virallinen Delta Chat -työpöytäsovellus.</string>
     <string name="about_licensed_under_desktop">Tämä ohjelmisto on GNU GPL v3 -lisensoitu, ja lähdekoodi on saatavilla GitHubissa.</string>
     <string name="welcome_desktop">Tervetuloa Delta Chatiin</string>
+    <!-- deprecated, use switch_account -->
     <string name="login_known_accounts_title_desktop">Tunnetut tilit</string>
     <string name="global_menu_preferences_language_desktop">Kieli</string>
     <string name="global_menu_file_desktop">Tiedosto</string>
@@ -896,6 +897,7 @@
     <string name="delete_message_desktop">Poista viesti</string>
     <string name="more_info_desktop">Lisätietoja</string>
     <string name="timestamp_format_m_desktop">MMM D</string>
+    <!-- deprecated, use encryption_info_title_desktop or profile_encryption -->
     <string name="encryption_info_desktop">Näytä salaustiedot</string>
     <string name="remove_desktop">Poista</string>
     <string name="save_desktop">Tallenna</string>
@@ -905,6 +907,7 @@
     <!-- deprecated, use autocrypt_send_asm_explain_before -->
     <string name="initiate_key_transfer_desktop">Autocrypt-asetusviesti jakaa turvallisesti päästä-päähän-salauksen asetukset toisten Autocrypt-yhteensopivien sovellusten kanssa. Asetukset salataan tässä näytettävällä asetuskoodilla, joka on syötettävä toiseen laitteeseen.</string>
     <string name="select_group_image_desktop">Valitse ryhmän kuva</string>
+    <!-- deprecated, use export_backup_desktop instead -->
     <string name="imex_progress_title_desktop">Varmuuskopioinnin tila</string>
     <string name="export_backup_desktop">Vie varmuuskopio</string>
     <!-- deprecated, use autocrypt_send_asm_explain_after instead -->
@@ -912,6 +915,7 @@
     <string name="autocrypt_correct_desktop">Autocrypt-asetukset siirretty.</string>
     <!-- deprecated, use autocrypt_bad_setup_code instead -->
     <string name="autocrypt_incorrect_desktop">Virheellinen asennuskoodi. Yritä uudelleen.</string>
+    <!-- deprecated, rare errors should be english only for easier searchability -->
     <string name="create_chat_error_desktop">Keskustelua ei voitu luoda.</string>
     <string name="forget_login_confirmation_desktop">Poista tämä kirjautuminen? Kaikki tiedot poistetaan, mukaan lukien päästä-päähän-salauksen asetukset, yhteystiedot, keskustelut, viestit ja media. Tämä toiminto on peruuttamaton.</string>
     <string name="account_info_hover_tooltip_desktop2">Sähköposti: %1$s\nKoko: %2$s\nTilin tunniste: %3$s</string>

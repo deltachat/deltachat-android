@@ -636,6 +636,7 @@
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Missatge encriptat</string>
 
+    <!-- deprecated, use switch_account -->
     <string name="login_known_accounts_title_desktop">Comptes coneguts</string>
     <string name="global_menu_preferences_language_desktop">Trieu l\'idioma...</string>
     <string name="global_menu_file_desktop">Arxiva</string>
@@ -659,6 +660,7 @@
     <string name="delete_message_desktop">Esborra missatge</string>
     <string name="more_info_desktop">Més informació</string>
     <string name="timestamp_format_m_desktop">MMM D</string>
+    <!-- deprecated, use encryption_info_title_desktop or profile_encryption -->
     <string name="encryption_info_desktop">Mostra la informació de xifratge</string>
     <string name="remove_desktop">Elimina</string>
     <string name="save_desktop">Desa</string>
@@ -668,6 +670,7 @@
     <!-- deprecated, use autocrypt_send_asm_explain_before -->
     <string name="initiate_key_transfer_desktop">Un missatge de configuració Autocrypt comparteix de manera segura la vostra configuració d\'extrem a extrem amb altres aplicacions compatibles. La configuració es xifrarà mitjançant un codi de configuració que es mostrarà aquí i que s\'ha d’escriure a l’altre dispositiu.</string>
     <string name="select_group_image_desktop">Tria una imatge de grup</string>
+    <!-- deprecated, use export_backup_desktop instead -->
     <string name="imex_progress_title_desktop">Progrés de còpia de seguretat</string>
     <string name="export_backup_desktop">Exporta la còpia de seguretat</string>
     <!-- deprecated, use autocrypt_send_asm_explain_after instead -->
@@ -675,6 +678,7 @@
     <string name="autocrypt_correct_desktop">S\'ha transferit correctament la configuració Autocrypt!</string>
     <!-- deprecated, use autocrypt_bad_setup_code instead -->
     <string name="autocrypt_incorrect_desktop">Codi de configuració incorrecte. Siusplau torneu-ho a provar.</string>
+    <!-- deprecated, rare errors should be english only for easier searchability -->
     <string name="create_chat_error_desktop">No s\'ha pogut crear el xat.</string>
     <string name="forget_login_confirmation_desktop">Voleu suprimir aquesta sessió? S\'eliminarà tot, incloent-hi la configuració, els contactes, els xats, els missatges i els arxius multimèdia. Aquesta acció és definitiva i no es pot desfer.</string>
     <string name="message_detail_sent_desktop">enviat</string>

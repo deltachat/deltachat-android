@@ -932,6 +932,7 @@
     <string name="about_offical_app_desktop">Este é o aplicativo oficial Delta Chat Desktop.</string>
     <string name="about_licensed_under_desktop">Este software é licenciado sob a GNU GPL versão 3 e o código-fonte está disponível no GitHub.</string>
     <string name="welcome_desktop">Boas-vindas ao Delta Chat.</string>
+    <!-- deprecated, use switch_account -->
     <string name="login_known_accounts_title_desktop">Contas conhecidas</string>
     <string name="global_menu_preferences_language_desktop">Escolher língua...</string>
     <string name="global_menu_file_desktop">Arquivo</string>
@@ -959,6 +960,7 @@
     <string name="delete_message_desktop">Apagar mensagem</string>
     <string name="more_info_desktop">Mais informação</string>
     <string name="timestamp_format_m_desktop">MMM D</string>
+    <!-- deprecated, use encryption_info_title_desktop or profile_encryption -->
     <string name="encryption_info_desktop">Exibir informações de criptografia</string>
     <string name="remove_desktop">Remover</string>
     <string name="save_desktop">Salvar</string>
@@ -968,6 +970,7 @@
     <!-- deprecated, use autocrypt_send_asm_explain_before -->
     <string name="initiate_key_transfer_desktop">Uma \"mensagem de configuração do Autocrypt\" compartilha com segurança a sua configuração de ponta a ponta com outros aplicativos compatíveis. A configuração será criptografada por um código de configuração que será exibido aqui e deverá ser digitado no outro dispositivo.</string>
     <string name="select_group_image_desktop">Selecionar avatar de grupo</string>
+    <!-- deprecated, use export_backup_desktop instead -->
     <string name="imex_progress_title_desktop">Progresso do becape</string>
     <string name="export_backup_desktop">Exportar becape</string>
     <!-- deprecated, use autocrypt_send_asm_explain_after instead -->
@@ -975,6 +978,7 @@
     <string name="autocrypt_correct_desktop">Configuração Autocrypt completada!</string>
     <!-- deprecated, use autocrypt_bad_setup_code instead -->
     <string name="autocrypt_incorrect_desktop">Código errado. Tente de novo.</string>
+    <!-- deprecated, rare errors should be english only for easier searchability -->
     <string name="create_chat_error_desktop">Impossível iniciar conversa.</string>
     <string name="forget_login_confirmation_desktop">Apagar este login? Tudo será apagado, incluindo sua configuração de criptografia, contatos, conversas, mensagens e mídia. Esta ação é final e irreversível.</string>
     <string name="account_info_hover_tooltip_desktop2">E-Mail: %1$s\nTamanho: %2$s\nConta Id: %3$s</string>
