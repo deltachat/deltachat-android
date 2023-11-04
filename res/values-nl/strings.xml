@@ -915,10 +915,10 @@
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s heefn geantwoord en wacht op toelating tot de groep…</string>
     <string name="contact_verified">%1$s is goedgekeurd.</string>
-    <string name="contact_not_verified">Kan %1$s niet goedkeuren</string>
+    <string name="contact_not_verified">Er kan geen eind-tot-eindversleuteling met %1$s worden gegarandeerd.</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
-    <string name="verified_by">Goedgekeurd door %1$s</string>
-    <string name="verified_by_you">Goedgekeurd door mij</string>
+    <string name="verified_by">Geïntroduceerd door %1$s</string>
+    <string name="verified_by_you">Geïntroduceerd door mij</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Gewijzigde instellingen voor %1$s</string>
     <string name="verified_contact_required_explain">Om de eind-tot-eindversleuteling te garanderen, kun je alleen contactpersonen met een groen vinkje toevoegen aan deze groep.\n\nVan niet-goedgekeurde contactpersonen kun je de QR-code scannen om ze goed te keuren.</string>

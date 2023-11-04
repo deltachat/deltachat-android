@@ -207,6 +207,7 @@
     <string name="menu_new_contact">Nuovo Contatto</string>
     <string name="menu_new_chat">Nuova Chat</string>
     <string name="menu_new_group">Nuovo Gruppo</string>
+    <string name="clone_chat">Clona Chat</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">Lista Trasmissione</string>
     <string name="broadcast_lists">Liste Trasmissioni</string>

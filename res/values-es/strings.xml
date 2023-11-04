@@ -34,6 +34,8 @@
     <string name="close">Cerrar</string>
     <string name="close_window">Cerrar ventana</string>
     <string name="forward">Reenviar</string>
+    <string name="create">Crear</string>
+    <string name="later">Luego</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">Volver a enviar</string>
     <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
@@ -152,6 +154,8 @@
     <string name="gif">Gif</string>
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">Sticker</string>
+    <string name="add_to_sticker_collection">Añadir a la colección de stickers</string>
+    <string name="open_sticker_folder">Abrir la carpeta de stickers</string>
     <string name="images">Imágenes</string>
     <string name="audio">Audio</string>
     <string name="voice_message">Mensaje de voz</string>
@@ -202,11 +206,15 @@
     <string name="menu_new_contact">Nuevo contacto</string>
     <string name="menu_new_chat">Nuevo chat</string>
     <string name="menu_new_group">Nuevo grupo</string>
+    <string name="clone_chat">Clonar chat</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
-    <string name="broadcast_list">Lista de difusión</string>
-    <string name="broadcast_lists">Listas de difusión</string>
-    <string name="new_broadcast_list">Nueva lista de difusión</string>
+    <string name="broadcast_list">Difusión</string>
+    <string name="broadcast_lists">Difusiones</string>
+    <string name="new_broadcast_list">Nueva difusión</string>
     <string name="add_recipients">Agregar destinatarios</string>
+    <string name="edit_broadcast_list">Editar difusión</string>
+    <string name="broadcast_list_name">Nombre de difusión</string>
+    <string name="please_enter_broadcast_list_name">Por favor, introduce un nombre para la difusión.</string>
     <string name="menu_send">Enviar</string>
     <string name="menu_toggle_keyboard">Alternar teclado emoji</string>
     <string name="menu_edit_group">Editar grupo</string>
@@ -240,6 +248,7 @@
     <string name="menu_all_media">Toda la multimedia</string>
     <!-- Command to jump to the original message corresponding to a gallery image or document -->
     <string name="show_in_chat">Mostrar en el chat</string>
+    <string name="show_app_in_chat">Mostrar en el chat</string>
     <string name="menu_share">Compartir</string>
     <!-- Verb "to block sth." usually a mailing list or a contact, not a noun -->
     <string name="block">Bloquear</string>
@@ -251,6 +260,7 @@
     <string name="menu_scroll_to_bottom">Desplazarse al final</string>
     <string name="menu_scroll_to_top">Desplazarse al inicio</string>
     <string name="menu_help">Ayuda</string>
+    <string name="what_is_webxdc">`¿Qué es Webxdc?</string>
     <string name="privacy_policy">Política de privacidad</string>
     <string name="menu_select_all">Seleccionar todo</string>
     <string name="select_chat">Seleccionar chat</string>
@@ -287,6 +297,8 @@
     <string name="source_code">Código fuente</string>
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">Añadir a la pantalla principal</string>
+    <string name="donate">Donar</string>
+
     <string name="mute_for_one_hour">Silenciar por 1 hora</string>
     <string name="mute_for_two_hours">Silenciar por 2 horas</string>
     <string name="mute_for_one_day">Silenciar por 1 día</string>
@@ -385,7 +397,7 @@
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
     <string name="chat_new_one_to_one_hint">Envíe un mensaje. Está bien si %1$s no usa Delta Chat.</string>
-    <string name="chat_new_broadcast_hint">En una lista de difusión, los destinatarios recibirán mensajes en un chat de solo lectura contigo.</string>
+    <string name="chat_new_broadcast_hint">En una difusión, los destinatarios recibirán mensajes en un chat de solo lectura contigo.</string>
     <string name="chat_new_group_hint">Los demás sólo verán este grupo después de que hayas enviado un primer mensaje.</string>
     <string name="chat_record_slide_to_cancel">Deslice para cancelar</string>
     <string name="chat_record_explain">Mantenga pulsado para grabar un mensaje de voz, suelte para enviar</string>
@@ -450,6 +462,8 @@
 
     <!-- search -->
     <string name="search">Buscar</string>
+    <string name="search_in_chat">Buscar en el chat</string>
+    <string name="search_files">Buscar archivos</string>
     <string name="search_explain">Buscar chats, contactos, y mensajes</string>
     <string name="search_no_result_for_x">No se encontraron resultados para \"%s\"</string>
 
@@ -465,6 +479,7 @@
     <string name="group_self_not_in_group">Debes ser un miembro del grupo para realizar esta acción.</string>
     <string name="profile_encryption">Cifrado</string>
     <string name="profile_shared_chats">Chats compartidos</string>
+    <string name="related_chats">Chats similares</string>
     <string name="tab_contact">Contacto</string>
     <string name="tab_group">Grupo</string>
     <string name="tab_gallery">Galería</string>
@@ -664,6 +679,10 @@
     <string name="pref_backup">Copia de respaldo</string>
     <string name="pref_backup_explain">Hacer copias de respaldo de chats en almacenamiento externo</string>
     <string name="pref_backup_export_explain">Una copia de respaldo lo ayuda a configurar una nueva instalación en este u otro dispositivo.\n\nLa copia de respaldo contendrá todos los mensajes, contactos y chats, y su configuración Autocrypt de extremo a extremo. Guarde el archivo de respaldo en un lugar seguro o elimínelo lo antes posible.</string>
+    <!-- the placeholder will be replaced by the name of the account's email address -->
+    <string name="pref_backup_export_x">Exportar %1$s</string>
+    <!-- the placeholder will be replaced by the number of accounts to export; the number is always larger than 1 -->
+    <string name="pref_backup_export_all">Exportar todo (%1$d cuentas)</string>
     <string name="pref_backup_export_start_button">Iniciar copia de respaldo</string>
     <string name="pref_backup_written_to_x">Copia de respaldo escrita correctamente en %1$s</string>
     <string name="pref_managekeys_menu_title">Administrar claves</string>
@@ -714,6 +733,7 @@
     <string name="profile_image_delete">Borrar imagen de perfil</string>
     <string name="pref_show_tray_icon">Mostrar icono de bandeja</string>
     <string name="pref_edit_profile">Editar perfil</string>
+    <string name="disable_imap_idle">Deshabilitar IMAP IDLE</string>
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Resultados de la búsqueda</string>
     <string name="emoji_not_found">No se encontraron emojis</string>
@@ -908,6 +928,7 @@
     <string name="verified_by_you">Verificado por ti</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Configuración cambiada para %1$s.</string>
+    <string name="verified_contact_required_explain">Para garantizar el cifrado de extremo a extremo, solo puedes añadir contactos con una marca de verificación verde</string>
     <string name="copy_qr_data_success">URL del código QR copiado al portapapeles</string>
     <string name="mailto_dialog_header_select_chat">Seleccione el chat para enviar el mensaje</string>
     <!-- first placeholder is the name of the chat -->
@@ -925,6 +946,10 @@
     <string name="notify_name_only">Solo nombre</string>
     <string name="notify_no_name_or_message">Sin nombre ni mensaje</string>
     <string name="notifications_disabled">Notificaciones deshabilitadas</string>
+    <string name="new_messages">Nuevos mensajes</string>
+    <string name="n_messages_in_m_chats">%1$d mensajes en %2$d chats</string>
+
+
     <!-- permissions -->
     <string name="perm_required_title">Permiso requerido</string>
     <string name="perm_continue">Continuar</string>
