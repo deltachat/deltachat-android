@@ -999,6 +999,7 @@
     <string name="about_offical_app_desktop">Це офіційний додаток Delta Chat для ПК.</string>
     <string name="about_licensed_under_desktop">Це програмне забезпечення ліцензується за GNU GPL версії 3, а початковий код доступний на GitHub.</string>
     <string name="welcome_desktop">Вітаємо у Delta Chat</string>
+    <!-- deprecated, use switch_account -->
     <string name="login_known_accounts_title_desktop">Відомі облікові записи</string>
     <string name="global_menu_preferences_language_desktop">Вибір мови</string>
     <string name="global_menu_file_desktop">Файл</string>
@@ -1026,6 +1027,7 @@
     <string name="delete_message_desktop">Видалити повідомлення</string>
     <string name="more_info_desktop">Більше інформації</string>
     <string name="timestamp_format_m_desktop">d MMMM</string>
+    <!-- deprecated, use encryption_info_title_desktop or profile_encryption -->
     <string name="encryption_info_desktop">Показати інформацію про шифрування</string>
     <string name="remove_desktop">Видалити</string>
     <string name="save_desktop">Зберегти</string>
@@ -1035,6 +1037,7 @@
     <!-- deprecated, use autocrypt_send_asm_explain_before -->
     <string name="initiate_key_transfer_desktop">Повідомлення з параметрами Autocrypt слугує для безпечного передавання параметрів наскрізного шифрування між власними додатками для роботи з електронною поштою, що підтримують протокол Autocrypt. Ці параметри шифруються з використанням спеціального інсталяційного коду, що показаний тут і повинен бути введений у налаштовуємому додатку.</string>
     <string name="select_group_image_desktop">Вибрати зображення групи</string>
+    <!-- deprecated, use export_backup_desktop instead -->
     <string name="imex_progress_title_desktop">Прогрес резервного копіювання</string>
     <string name="export_backup_desktop">Експорт резервної копії</string>
     <!-- deprecated, use autocrypt_send_asm_explain_after instead -->
@@ -1042,6 +1045,7 @@
     <string name="autocrypt_correct_desktop">Налаштування Autocrypt успішно передані!</string>
     <!-- deprecated, use autocrypt_bad_setup_code instead -->
     <string name="autocrypt_incorrect_desktop">Невірний інсталяційний код. Спробуйте ввести його повторно.</string>
+    <!-- deprecated, rare errors should be english only for easier searchability -->
     <string name="create_chat_error_desktop">Не вдалося створити чат.</string>
     <string name="forget_login_confirmation_desktop">Видалити цей обліковий запис? При цьому будуть видалені всі дані, включно з параметрами наскрізного шифрування, списками контактів, чатами, повідомленнями та медіафайлами. Цю дію не можна буде скасувати.</string>
     <string name="account_info_hover_tooltip_desktop2">E-Mail: %1$s\nРозмір: %2$s\nІдентиф. аккаунту: %3$s</string>

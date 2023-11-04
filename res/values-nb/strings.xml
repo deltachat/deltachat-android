@@ -431,6 +431,7 @@
     <string name="encryption_info_title_desktop">Krypteringsinfo</string>
     <string name="delete_message_desktop">Slett melding</string>
     <string name="more_info_desktop">Mer informasjon</string>
+    <!-- deprecated, use encryption_info_title_desktop or profile_encryption -->
     <string name="encryption_info_desktop">Krypteringsinfo</string>
     <string name="remove_desktop">Fjerne</string>
     <string name="save_desktop">Lagre</string>

@@ -869,6 +869,7 @@
     <string name="about_offical_app_desktop">Αυτή είναι η επίσημη εφαρμογή Delta Chat Desktop.</string>
     <string name="about_licensed_under_desktop">Αυτό το λογισμικό έχει άδεια χρήσης σύμφωνα με την GNU GPL έκδοση 3 και ο πηγαίος κώδικας είναι διαθέσιμος στο GitHub.</string>
     <string name="welcome_desktop">Καλώς ήρθατε στο Delta Chat</string>
+    <!-- deprecated, use switch_account -->
     <string name="login_known_accounts_title_desktop">Γνωστοί Λογαριασμοί</string>
     <string name="global_menu_preferences_language_desktop">Γλώσσα</string>
     <string name="global_menu_file_desktop">Αρχείο</string>
@@ -896,6 +897,7 @@
     <string name="delete_message_desktop">Διαγραφή μηνύματος</string>
     <string name="more_info_desktop">Περισσότερες πληροφορίες</string>
     <string name="timestamp_format_m_desktop">MMM D</string>
+    <!-- deprecated, use encryption_info_title_desktop or profile_encryption -->
     <string name="encryption_info_desktop">Εμφάνιση Πληροφοριών Κρυπτογράφησης</string>
     <string name="remove_desktop">Αφαίρεση</string>
     <string name="save_desktop">Αποθήκευση</string>
@@ -905,6 +907,7 @@
     <!-- deprecated, use autocrypt_send_asm_explain_before -->
     <string name="initiate_key_transfer_desktop">Ένα μήνυμα ρύθμισης αυτόματης κρυπτογράφησης μοιράζεται με ασφάλεια τις ρυθμίσεις σας από άκρο σε άκρο με άλλες εφαρμογές συμβατές με την αυτόματη κρυπτογράφηση. Η εγκατάσταση θα κρυπτογραφηθεί από έναν κωδικό ρύθμισης που εμφανίζεται εδώ και πρέπει να πληκτρολογηθεί στην άλλη συσκευή.</string>
     <string name="select_group_image_desktop">Επιλέξτε Εικόνας Ομάδας</string>
+    <!-- deprecated, use export_backup_desktop instead -->
     <string name="imex_progress_title_desktop">Δημιουργία Αντιγράφων Ασφαλείας</string>
     <string name="export_backup_desktop">Εξαγωγή Αντιγράφων Ασφαλείας</string>
     <!-- deprecated, use autocrypt_send_asm_explain_after instead -->
@@ -912,6 +915,7 @@
     <string name="autocrypt_correct_desktop">Η ρύθμιση αυτόματης κρυπτογράφησης μεταφέρθηκε.</string>
     <!-- deprecated, use autocrypt_bad_setup_code instead -->
     <string name="autocrypt_incorrect_desktop">Λανθασμένος κωδικός ρύθμισης. Παρακαλώ προσπαθησε ξανά.</string>
+    <!-- deprecated, rare errors should be english only for easier searchability -->
     <string name="create_chat_error_desktop">Αδυναμία δημιουργίας συνομιλίας.</string>
     <string name="forget_login_confirmation_desktop">Διαγραφή αυτής της σύνδεσης; Τα πάντα θα διαγραφούν, συμπεριλαμβανομένων των ρυθμίσεων από άκρο σε άκρο, επαφών, συνομιλιών, μηνυμάτων και πολυμέσων. Αυτή η πράξη δε μπορεί να αναιρεθεί.</string>
     <string name="account_info_hover_tooltip_desktop2">E-Mail: %1$s\nΜέγεθος: %2$s\n Αναγνωριστικό Λογαριασμού: %3$s</string>

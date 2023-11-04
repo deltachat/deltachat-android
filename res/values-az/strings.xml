@@ -450,6 +450,7 @@
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Şifrələnmiş mesaj</string>
 
+    <!-- deprecated, use switch_account -->
     <string name="login_known_accounts_title_desktop">Bilinən hesablar</string>
     <string name="global_menu_preferences_language_desktop">Dil səç</string>
     <string name="global_menu_file_desktop">Fayl</string>
@@ -473,6 +474,7 @@
     <string name="delete_message_desktop">Mesajı sil</string>
     <string name="more_info_desktop">Daha çox məlumat</string>
     <string name="timestamp_format_m_desktop">MMM D</string>
+    <!-- deprecated, use encryption_info_title_desktop or profile_encryption -->
     <string name="encryption_info_desktop">Şifrələmə məlumatını göstər</string>
     <string name="remove_desktop">Sil</string>
     <string name="save_desktop">Saxla</string>
@@ -482,11 +484,13 @@
     <!-- deprecated, use autocrypt_send_asm_explain_before -->
     <string name="initiate_key_transfer_desktop">Autocrypt konfiqurasiya mesajı təhlükəsiz olaraq \"sondan sona\" parametrinizi Autocrypt ilə uyğun olan digər tətbiqlərlə bölüşür. Quraşdırma burada göstərilir və başqa bir cihazda yığılmış olmalıdır. Bir quraşdırma kodu ilə şifrələ olunacaq.</string>
     <string name="select_group_image_desktop">Qrup şəklini seç</string>
+    <!-- deprecated, use export_backup_desktop instead -->
     <string name="imex_progress_title_desktop">Ehtiyat nüsxəsinin yaradılması</string>
     <string name="export_backup_desktop">Ehtiyat nüsxəsinin ixracı</string>
     <string name="autocrypt_correct_desktop">Autocrypt ayarı müvəffəqiyyətlə köçürüldü!</string>
     <!-- deprecated, use autocrypt_bad_setup_code instead -->
     <string name="autocrypt_incorrect_desktop">Yanlış kod. Yenidən cəhd edin. </string>
+    <!-- deprecated, rare errors should be english only for easier searchability -->
     <string name="create_chat_error_desktop">Yeni çat yaratmaq alınmadı</string>
     <string name="forget_login_confirmation_desktop">Bu giriş silmək istəyirsiniz? Hər şey, sizin \"sondan sona\" quraşdırma, kontaktlar, söhbətlər, mesajlar və daşıyıcıları daxil olmaqla silinəcəkdir. Bu hərəkət son və ləğv edilə bilməz.</string>
     <string name="message_detail_sent_desktop">Göndər</string>
