@@ -29,6 +29,7 @@
     <string name="emoji">Emoji</string>
     <string name="attachment">Bashkëngjitje</string>
     <string name="back">Mbrapsht</string>
+    <!-- this string is deprecated; the new wording is "introduced by ..." -->
     <string name="verified">Verifikuar</string>
     <string name="close">Mbylle</string>
     <string name="close_window">Mbylle Dritaren</string>
@@ -51,7 +52,6 @@
     <string name="main_menu">Menuja kryesore</string>
     <string name="start_chat">Nisni fjalosje</string>
     <string name="show_full_message">Shfaq mesazhin e plotë…</string>
-    <string name="show_full_message_in_browser">Shfaq mesazh të plotë në shfletues…</string>
     <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
     <string name="mark_all_as_read">Krejt të Lexuar</string>
     <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
@@ -159,7 +159,6 @@
     <string name="video">Video</string>
     <string name="documents">Dokumente</string>
     <string name="contact">Kontakt</string>
-    <string name="verified_contact">Kontakt i verifikuar</string>
     <string name="camera">Kamerë</string>
     <string name="switch_camera">Ndërro kamera</string>
     <string name="toggle_fullscreen">Kalo në / Dil nga mënyra sa krejt ekrani</string>
@@ -173,7 +172,6 @@
     <string name="webxdc_app">Aplikacion Privat</string>
     <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_apps">Aplikacione Private</string>
-    <string name="files_and_webxdx_apps">Kartela dhe Aplikacione Private</string>
     <string name="unknown">E panjohur</string>
 
     <string name="green">E gjelbër</string>
@@ -199,9 +197,7 @@
     <string name="menu_new_contact">Kontakt i ri</string>
     <string name="menu_new_chat">Fjalosje e re</string>
     <string name="menu_new_group">Grup i ri</string>
-    <!-- Use the same wording as "Subject" to help people coming from the e-mail context; eg. "Betreff" in German -->
-    <string name="new_group_or_subject">Grup ose Subjekt i Ri</string>
-    <string name="menu_new_verified_group">Grup i ri i verifikuar</string>
+    <string name="clone_chat">Klononi Fjalosjen</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">Listë Transmetimi</string>
     <string name="broadcast_lists">Lista Transmetimi</string>
@@ -548,7 +544,6 @@
     <!-- welcome and login -->
     <string name="welcome_chat_over_email">Fjalosje përmes Email-i</string>
     <string name="scan_invitation_code">Skanoni Kod Ftese</string>
-    <string name="welcome_intro1_message">Shkëmbyesi i mesazheve me publikun më të gjerë në botë. I lirë dhe i pavarur.</string>
     <string name="login_title">Hyrje</string>
     <string name="login_header">Hyrje te shërbyesi juaj</string>
     <string name="login_explain">Hyrje me një llogari email ekzistuese.</string>
@@ -573,8 +568,6 @@
     <string name="login_socks5_port">Portë SOCKS5</string>
     <string name="login_socks5_user">Përdorues SOCKS5</string>
     <string name="login_socks5_password">Fjalëkalim SOCKS5</string>
-    <!-- Translators: %1$s will be replaced by an e-mail address -->
-    <string name="login_oauth2_checking_addr">Po kontrollohet %1$s</string>
     <string name="login_info_oauth2_title">Të vazhdohet me rregullimin e thjeshtuar?</string>
     <string name="login_info_oauth2_text">Adresa email e dhënë mbulon një ujdisje të thjeshtuar (OAuth2).\n\nNë hapin pasues, ju lutemi, lejojeni Delta Chat-in të veprojë si aplikacioni juaj për Fjalosje Përmes Email-i.\n\nS\’ka shërbyes Delta Chat, të dhënat tuaja rrinë në pajisjen tuaj!</string>
     <string name="login_certificate_checks">Kontrolle dëshmish</string>
@@ -777,7 +770,7 @@
     <string name="autocrypt_send_asm_title">Dërgo Mesazh Rregullimi Autocrypt-i</string>
     <string name="autocrypt_send_asm_explain_before">Një \"Mesazh Rregullimi Autocrypt-i\" ua jep, në mënyrë të parrezikuar, rregullimin tuaj skaj-më-skaj pajisjeve të tjera që përdorin Autocrypt-in.\n\nRregullimi do të fshehtëzohet përmes një kodi rregullimi i cili shfaqet këtu dhe duhet dhënë te pajisja tjetër.</string>
     <string name="autocrypt_send_asm_button">Dërgo Mesazh Rregullimi Autocrypt-i</string>
-    <string name="autocrypt_send_asm_explain_after">Rregullimi juaj u dërgua te ju. Kaloni te pajisja tjetër dhe hapni mesazhin e rregullimit. Do t\’ju kërkohet një kod rregullimi. Shtypni atje shifrat vijuese:\n\n%1$s\n\nPasi të keni mbaruar, pajisja juaj tjetër do të jetë gati të përdorë Autocrypt-in.</string>
+    <string name="autocrypt_send_asm_explain_after">Rregullimi juaj u dërgua te ju. Kaloni te pajisja tjetër dhe hapni mesazhin e rregullimit. Do t\’ju kërkohet një kod rregullimi. Shtypni atje shifrat vijuese.\n\nPasi të keni mbaruar, pajisja juaj tjetër do të jetë gati të përdorë Autocrypt-in.</string>
     <string name="autocrypt_prefer_e2ee">Parapëlqe fshehtëzim skaj-më-skaj</string>
     <string name="autocrypt_asm_subject">Mesazh Rregullimi Autocrypt-i</string>
     <string name="autocrypt_asm_general_body">Ky është Mesazhi i Rregullimit të Autocrypt-it i përdorur për të shpërngulur rregullimin tuaj skaj-më-skaj në klientë të tjerë.\n\nQë ta shfshehtëzoni rregullimin tuaj, hapeni mesazhin te një klient që mund të përdorë Autocrypt-in dhe jepni kodin e rregullimit të treguar te pajisja që e prodhoi.</string>
@@ -920,14 +913,12 @@
     <string name="secure_join_replies">%1$s u përgjigj, po pritet që të shtohet te grupi…</string>
     <string name="contact_verified">%1$s u verifikua.</string>
     <string name="contact_not_verified">S\’verifikohet dot %1$s</string>
-    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that verified the contact shown. -->
+    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">Verifikuar nga %1$s</string>
     <string name="verified_by_you">Verifikuar nga ju</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">U ndryshua rregullimi për %1$s</string>
-    <string name="verified_group_explain">Grupet e verifikuara garantojnë fshehtëzim skaj-më-skaj. Në to mund të shtohen vetëm kontakte me një shenjë të gjelbër verifikimi.</string>
     <string name="verified_contact_required_explain">Që të garantohte fshehtëzim skaj-më-skaj, mund të shtoni në këtë grup vetëm kontakte me shenjën e gjelbër të verifikimit.\n\nMund të takoheni drejtpërsëdrejti me kontakte të paverifikuar dhe të skanoni kodin e tyre QR për t’i verifikuar ata.</string>
-    <string name="create_verified_group_ask">Krejt anëtarët kanë një shenjë të gjelbër verifikimi.\n\nDoni të krijohet një grup që garanton fshehtëzim skaj-më-skaj?</string>
     <string name="copy_qr_data_success">URL-ja QR u kopjua në të papastër</string>
     <string name="mailto_dialog_header_select_chat">Përzgjidhni fjalosje ku të dërgohet mesazhi</string>
     <!-- first placeholder is the name of the chat -->
@@ -975,6 +966,7 @@
     <string name="about_offical_app_desktop">Ky është aplikacioni zyrtar Delta Chat Desktop.</string>
     <string name="about_licensed_under_desktop">Ky program licencohet sipar GNU GPL version 3 dhe kodi burim mund të kihet që prej GitHub-i.</string>
     <string name="welcome_desktop">Mirë se vini në Delta Chat</string>
+    <!-- deprecated, use switch_account -->
     <string name="login_known_accounts_title_desktop">Llogari të njohura</string>
     <string name="global_menu_preferences_language_desktop">Zgjidhni Gjuhë…</string>
     <string name="global_menu_file_desktop">Kartelë</string>
@@ -1002,18 +994,25 @@
     <string name="delete_message_desktop">Fshije mesazhin</string>
     <string name="more_info_desktop">Më tepër të dhëna</string>
     <string name="timestamp_format_m_desktop">MMM D</string>
+    <!-- deprecated, use encryption_info_title_desktop or profile_encryption -->
     <string name="encryption_info_desktop">Shfaq të dhëna fshehtëzimi</string>
     <string name="remove_desktop">Hiqe</string>
     <string name="save_desktop">Ruaje</string>
     <string name="name_desktop">Emër</string>
+    <!-- deprecated, use autocrypt_send_asm_title / autocrypt_continue_transfer_title -->
     <string name="autocrypt_key_transfer_desktop">Shpërngulje kyçi Autocrypt</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_before -->
     <string name="initiate_key_transfer_desktop">Një Mesazh Rregullimi Autocrypt-i ndan në mënyrë të sigurt formësimin tuaj skaj-më-skaj me aplikacione të tjera të përputhshme me Autocrypt-in. Formësimi do të fshehtëzohet përmes një kodi rregullimi, i cili shfaqet këtu dhe duhet dhënë në pajisjen tjetër.</string>
     <string name="select_group_image_desktop">Përzgjidhni figurë grupi</string>
+    <!-- deprecated, use export_backup_desktop instead -->
     <string name="imex_progress_title_desktop">Ecuri kopjeruajtjeje</string>
     <string name="export_backup_desktop">Eksportoni kopjeruajtje</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_after instead -->
     <string name="show_key_transfer_message_desktop">Kyçi juaj ju është dërguar. Kaloni te pajisja tjetër dhe hapni mesazhin e rregullimit. Do të duhej t\’ju kërkonte një kod rregullimi. Shtypi shifrat vijuese. Pasi të keni mbaruar, pajisja juaj tjetër do të jetë gati të përdorë Autocrypt-in.</string>
     <string name="autocrypt_correct_desktop">Rregullimi Autocrypt u shpërngul me sukses!</string>
+    <!-- deprecated, use autocrypt_bad_setup_code instead -->
     <string name="autocrypt_incorrect_desktop">Kod i pasaktë rregullim. Ju lutemi, riprovoni.</string>
+    <!-- deprecated, rare errors should be english only for easier searchability -->
     <string name="create_chat_error_desktop">S\’u krijua dot fjalosje.</string>
     <string name="forget_login_confirmation_desktop">Të fshihet kjo hyrje? Do të fshihet gjithçka, përfshi rregullimin tuaj për skaj-më-skaj, kontaktet, fjalosjet, mesazhet dhe mediat. Ky veprim është përfundimtar dhe s\’mund të prapësohet.</string>
     <string name="account_info_hover_tooltip_desktop2">Email: %1$s\nMadhësi: %2$s\nID  Llogarie: %3$s</string>

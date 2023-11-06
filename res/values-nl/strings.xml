@@ -29,6 +29,7 @@
     <string name="emoji">Emoji</string>
     <string name="attachment">Bijlage</string>
     <string name="back">Terug</string>
+    <!-- this string is deprecated; the new wording is "introduced by ..." -->
     <string name="verified">Goedgekeurd</string>
     <string name="close">Sluiten</string>
     <string name="close_window">Venster sluiten</string>
@@ -51,7 +52,6 @@
     <string name="main_menu">Hoofdmenu</string>
     <string name="start_chat">Gesprek beginnen</string>
     <string name="show_full_message">Volledig bericht tonen…</string>
-    <string name="show_full_message_in_browser">Volledig bericht in browser tonen…</string>
     <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
     <string name="mark_all_as_read">Alles markeren als gelezen</string>
     <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
@@ -159,7 +159,6 @@
     <string name="video">Video</string>
     <string name="documents">Documenten</string>
     <string name="contact">Contactpersoon</string>
-    <string name="verified_contact">Goedgekeurd contactpersoon</string>
     <string name="camera">Camera</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Vastleggen</string>
@@ -175,7 +174,6 @@
     <string name="webxdc_app">Privé-app</string>
     <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_apps">Privé-apps</string>
-    <string name="files_and_webxdx_apps">Bestanden en privé-apps</string>
     <string name="unknown">Onbekend</string>
 
     <string name="green">Groen</string>
@@ -201,9 +199,7 @@
     <string name="menu_new_contact">Nieuw contactpersoon</string>
     <string name="menu_new_chat">Nieuw gesprek</string>
     <string name="menu_new_group">Nieuwe groep</string>
-    <!-- Use the same wording as "Subject" to help people coming from the e-mail context; eg. "Betreff" in German -->
-    <string name="new_group_or_subject">Nieuwe groep of onderwerp</string>
-    <string name="menu_new_verified_group">Nieuwe goedgekeurde groep</string>
+    <string name="clone_chat">Gesprek klonen</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">Verzendlijst</string>
     <string name="broadcast_lists">Verzendlijsten</string>
@@ -550,7 +546,6 @@
     <!-- welcome and login -->
     <string name="welcome_chat_over_email">Chatten via e-mail.</string>
     <string name="scan_invitation_code">Uitnodigingscode scannen</string>
-    <string name="welcome_intro1_message">Dé berichtenapp met het breedste publiek ter wereld. Gratis en onafhankelijk.</string>
     <string name="login_title">Inloggen</string>
     <string name="login_header">Inloggen op je server</string>
     <string name="login_explain">Log in met een bestaand e-mailaccount.</string>
@@ -575,8 +570,6 @@
     <string name="login_socks5_port">SOCKS5-poort</string>
     <string name="login_socks5_user">SOCKS5-gebruiker</string>
     <string name="login_socks5_password">SOCKS5-wachtwoord</string>
-    <!-- Translators: %1$s will be replaced by an e-mail address -->
-    <string name="login_oauth2_checking_addr">Bezig met controleren van %1$s</string>
     <string name="login_info_oauth2_title">Wil je doorgaan met vereenvoudigd instellen?</string>
     <string name="login_info_oauth2_text">Het ingevoerde e-mailadres ondersteunt vereenvoudigd instellen (OAuth2).\n\nTijdens de volgende stap moet je Delta Chat toestaan te fungeren als je e-mailapp.\n\nDelta Chat heeft geen eigen servers; jóuw gegevens blijven op jóuw apparaat!</string>
     <string name="login_certificate_checks">Certificaatcontrole</string>
@@ -780,7 +773,7 @@
     <string name="autocrypt_send_asm_title">Autocrypt-instelbericht versturen</string>
     <string name="autocrypt_send_asm_explain_before">Een ‘Autocrypt-instelbericht’ deelt je eind-tot-eindinstellingen veilig met andere Autocrypt-compatibele apps.\n\nDe instellingen zijn versleuteld middels een code die hier wordt getoond en moet worden overgetypt op het andere apparaat.</string>
     <string name="autocrypt_send_asm_button">Autocrypt-instelbericht versturen</string>
-    <string name="autocrypt_send_asm_explain_after">Je instellingen zijn aan jezelf verstuurd. Schakel over naar het andere apparaat en open het instelbericht. Je zou nu moeten worden gevraagd om een code. Typ de volgende getallen in het invoerveld:\n\n%1$s</string>
+    <string name="autocrypt_send_asm_explain_after">Je instellingen zijn aan jezelf verstuurd. Schakel over naar het andere apparaat en open het instelbericht. Je zou nu moeten worden gevraagd om een code. Typ de volgende getallen in het invoerveld:</string>
     <string name="autocrypt_prefer_e2ee">Voorkeur voor eind-tot-eindversleuteling</string>
     <string name="autocrypt_asm_subject">Autocrypt-instelbericht</string>
     <string name="autocrypt_asm_general_body">Dit is het Autocrypt-instelbericht dat wordt gebruikt om je instellingen over te zetten.\n\nOm te ontsleutelen en te gebruiken, open je het bericht in een met Autocrypt compatibele app en voer je de code in die wordt getoond op het apparaat dat de code heeft gegenereerd.</string>
@@ -922,15 +915,13 @@
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s heefn geantwoord en wacht op toelating tot de groep…</string>
     <string name="contact_verified">%1$s is goedgekeurd.</string>
-    <string name="contact_not_verified">Kan %1$s niet goedkeuren</string>
-    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that verified the contact shown. -->
-    <string name="verified_by">Goedgekeurd door %1$s</string>
-    <string name="verified_by_you">Goedgekeurd door mij</string>
+    <string name="contact_not_verified">Er kan geen eind-tot-eindversleuteling met %1$s worden gegarandeerd.</string>
+    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
+    <string name="verified_by">Geïntroduceerd door %1$s</string>
+    <string name="verified_by_you">Geïntroduceerd door mij</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Gewijzigde instellingen voor %1$s</string>
-    <string name="verified_group_explain">Goedgekeurde groepen maken gebruik van eind-tot-eindversleuteling. Alleen contactpersonen met een groen vinkje kunnen worden toegevoegd.</string>
     <string name="verified_contact_required_explain">Om de eind-tot-eindversleuteling te garanderen, kun je alleen contactpersonen met een groen vinkje toevoegen aan deze groep.\n\nVan niet-goedgekeurde contactpersonen kun je de QR-code scannen om ze goed te keuren.</string>
-    <string name="create_verified_group_ask">Alle leden hebben een goedkeuringsvinkje.\n\nWilt je een groep met gegarandeerde eind-tot-eindversleuteling samenstellen?</string>
     <string name="copy_qr_data_success">De QR-url is gekopieerd naar het klembord</string>
     <string name="mailto_dialog_header_select_chat">Kies in welk gesprek je dit bericht wilt delen</string>
     <!-- first placeholder is the name of the chat -->
@@ -978,6 +969,7 @@
     <string name="about_offical_app_desktop">Dit is de officiële Delta Chat-computerapp.</string>
     <string name="about_licensed_under_desktop">Deze software is vrijgegeven onder de GNU GPL versie 3 en de broncode is beschikbaar op GitHub.</string>
     <string name="welcome_desktop">Welkom bij Delta Chat</string>
+    <!-- deprecated, use switch_account -->
     <string name="login_known_accounts_title_desktop">Bekende accounts</string>
     <string name="global_menu_preferences_language_desktop">Taal</string>
     <string name="global_menu_file_desktop">Bestand</string>
@@ -1005,18 +997,25 @@
     <string name="delete_message_desktop">Bericht verwijderen</string>
     <string name="more_info_desktop">Meer informatie</string>
     <string name="timestamp_format_m_desktop">MMM D</string>
+    <!-- deprecated, use encryption_info_title_desktop or profile_encryption -->
     <string name="encryption_info_desktop">Versleutelingsinformatie tonen</string>
     <string name="remove_desktop">Verwijderen</string>
     <string name="save_desktop">Opslaan</string>
     <string name="name_desktop">Naam</string>
+    <!-- deprecated, use autocrypt_send_asm_title / autocrypt_continue_transfer_title -->
     <string name="autocrypt_key_transfer_desktop">Autocrypt-sleuteloverdracht</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_before -->
     <string name="initiate_key_transfer_desktop">Een ‘Autocrypt-instelbericht’ deelt je eind-tot-eindinstellingen veilig met andere Autocrypt-compatibele apps. De instellingen zijn versleuteld middels een code die hier wordt getoond en moet worden overgetypt op het andere apparaat.</string>
     <string name="select_group_image_desktop">Kies een groepsafbeelding</string>
+    <!-- deprecated, use export_backup_desktop instead -->
     <string name="imex_progress_title_desktop">Back-upvoortgang</string>
     <string name="export_backup_desktop">Back-up exporteren</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_after instead -->
     <string name="show_key_transfer_message_desktop">D sleutel is aan jezelf verstuurd. Ga naar het andere apparaat en open het instelbericht. Je zou nu moeten worden gevraagd om een code. Typ de volgende getallen in het invoerveld:</string>
     <string name="autocrypt_correct_desktop">Autocrypt-instellingen overgedragen!</string>
+    <!-- deprecated, use autocrypt_bad_setup_code instead -->
     <string name="autocrypt_incorrect_desktop">Onjuiste instelcode; probeer het opnieuw.</string>
+    <!-- deprecated, rare errors should be english only for easier searchability -->
     <string name="create_chat_error_desktop">Kan geen gesprek beginnen.</string>
     <string name="forget_login_confirmation_desktop">Wil je dit account verwijderen? Alles wordt verwijderd: je eind-tot-eindinstellingen, contactpersonen, gesprekken, berichten en media. Deze actie kan niet ongedaan worden gemaakt.</string>
     <string name="account_info_hover_tooltip_desktop2">E-mail: %1$s\nGrootte: %2$s\nAccount-id: %3$s</string>

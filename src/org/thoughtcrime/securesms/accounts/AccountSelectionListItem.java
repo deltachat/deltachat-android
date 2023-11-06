@@ -75,8 +75,8 @@ public class AccountSelectionListItem extends LinearLayout {
       nameView.setTypeface(null, Typeface.BOLD);
       checkbox.setVisibility(View.VISIBLE);
     } else {
-      addrView.setTypeface(null, 0);
-      nameView.setTypeface(null, 0);
+      addrView.setTypeface(null, Typeface.NORMAL);
+      nameView.setTypeface(null, accountId == DcContact.DC_CONTACT_ID_ADD_ACCOUNT? Typeface.BOLD : Typeface.NORMAL);
       checkbox.setVisibility(View.GONE);
     }
 

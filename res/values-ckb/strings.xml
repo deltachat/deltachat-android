@@ -113,7 +113,6 @@
     <string name="video">ڤیدیۆ</string>
     <string name="documents">بەڵگەکان</string>
     <string name="contact">بەردەنگ</string>
-    <string name="verified_contact">بەردەنگی پشتڕاست کراو</string>
     <string name="camera">کامێرا</string>
     <string name="location">شوێن</string>
     <string name="gallery">پیشانگا</string>
@@ -145,7 +144,6 @@
     <string name="menu_new_contact">بەردەنگی نوێ</string>
     <string name="menu_new_chat">وتووێژی نوێ</string>
     <string name="menu_new_group">کۆڕی نوێ</string>
-    <string name="menu_new_verified_group">کۆڕی پشتڕاستکراوەی نوێ</string>
     <string name="menu_send">بینێرە</string>
     <string name="menu_edit_group">دەستکاری کۆڕ</string>
     <string name="menu_group_name_and_image">ناو و وێنەی کۆڕ</string>
@@ -357,8 +355,6 @@
     <string name="login_smtp_port">پۆرتی SMTP</string>
     <string name="login_smtp_security">ئاسایشی SMTP</string>
     <string name="login_auth_method">شێوازی پشتڕاشتکردنەوە</string>
-    <!-- Translators: %1$s will be replaced by an e-mail address -->
-    <string name="login_oauth2_checking_addr">پشکنینی %1$s</string>
     <string name="login_info_oauth2_title">بە ڕێکخستنە ئاسانکراوەکەوە بەردەوام دەبیت؟</string>
     <string name="login_error_mail">تکایە ئیمەیلێکی ڕاست بنووسە</string>
     <string name="login_error_server">تکایە سێرڤەرێکی / شوێنەواری ئای پی ڕەوا بنووسە.</string>
@@ -496,7 +492,6 @@
     <string name="autocrypt">ئۆتۆکریپت</string>
     <string name="autocrypt_explain">ئۆتۆکریپت شێوازێکی نوێ و خۆڕاییە بۆ شفرەکردنی خۆکاری ئیمەیل بە چەشنی ئەمسەر-ئەوسەر.\n\n ڕێکخستنی ئەمسەر-ئەوسەرەکە، بە چەشنی پێویست، خۆکارانە درووست دەبێت و تۆ دەتوانیت لەنێوان ئامێرەکاندا، کە پەیامی ڕێکخستنی ئۆتۆکریپتیان هەیە، بیانگوازیتەوە.</string>
     <string name="autocrypt_send_asm_title">هەناردنی پەیامی ڕێکخستنی ئۆتۆکریپت</string>
-    <string name="autocrypt_send_asm_button">هەناردنی پەیامی ڕێکخستنی ئۆتۆکریپت</string>
     <string name="autocrypt_prefer_e2ee">هەڵبژاردنی شفرەکردنی ئەمسەر-ئەوسەر</string>
     <string name="autocrypt_asm_subject">پەیامی ڕێکخستنی ئۆتۆکریپت</string>
     <string name="autocrypt_continue_transfer_title">پەیامی ڕێکخستنی ئۆتۆکریپت</string>
@@ -555,6 +550,7 @@
     <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
     <string name="about_offical_app_desktop">ئەمە نەرمامێری فەرمی دێڵتا چاتە بۆ کۆمپووتەری ڕوومێز.</string>
     <string name="welcome_desktop">بەخێر بێن بۆ دێڵتا چات</string>
+    <!-- deprecated, use switch_account -->
     <string name="login_known_accounts_title_desktop">هەژمارە ناسراوەکان</string>
     <string name="global_menu_preferences_language_desktop">زمان</string>
     <string name="global_menu_file_desktop">پەڕگە</string>
@@ -575,14 +571,18 @@
     <string name="encryption_info_title_desktop">زانیاری شفرەکردن</string>
     <string name="delete_message_desktop">سڕینەوەی پەیام</string>
     <string name="more_info_desktop">زانیاری زۆرتر</string>
+    <!-- deprecated, use encryption_info_title_desktop or profile_encryption -->
     <string name="encryption_info_desktop">پیشاندانی زانیاری شفرەکردن</string>
     <string name="remove_desktop">سڕینەوە</string>
     <string name="save_desktop">پاشەکەوت کردن</string>
     <string name="name_desktop">ناو</string>
+    <!-- deprecated, use autocrypt_send_asm_title / autocrypt_continue_transfer_title -->
     <string name="autocrypt_key_transfer_desktop">گواستنەوەی کلیلی ئۆتۆکریپت</string>
     <string name="select_group_image_desktop">هەڵبژاردنی وێنەی کۆڕ</string>
+    <!-- deprecated, use export_backup_desktop instead -->
     <string name="imex_progress_title_desktop">پرۆسەی یەدەک هەڵگرتن</string>
     <string name="export_backup_desktop">هەناردەکردنی یەدەک</string>
+    <!-- deprecated, rare errors should be english only for easier searchability -->
     <string name="create_chat_error_desktop">وتووێژەکە ڕێک نەخرا.</string>
     <string name="message_detail_sent_desktop">هەنێردراو</string>
     <string name="message_detail_received_desktop">وەرگیراو</string>

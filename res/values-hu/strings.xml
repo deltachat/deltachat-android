@@ -109,7 +109,6 @@
     <string name="menu_new_contact">Új partner</string>
     <string name="menu_new_chat">Új beszélgetés</string>
     <string name="menu_new_group">Új csoport</string>
-    <string name="menu_new_verified_group">Új ellenőrzött csoport</string>
     <string name="menu_send">Küldés</string>
     <string name="menu_toggle_keyboard">Emoji billentyűzet kapcsoló</string>
     <string name="menu_edit_group">Csoport szerkesztése</string>

@@ -47,7 +47,6 @@
     <string name="main_menu">Hlavné menu</string>
     <string name="start_chat">Začať konverzáciu</string>
     <string name="show_full_message">Zobraziť celú správu ...</string>
-    <string name="show_full_message_in_browser">Zobraziť celú správu v internetovom prehliadači...</string>
     <!-- Placeholder text when something is loading -->
     <string name="loading">Načítam…</string>
     <string name="hide">Skryť</string>
@@ -160,7 +159,6 @@
     <string name="video">Video</string>
     <string name="documents">Dokumenty</string>
     <string name="contact">Kontakt</string>
-    <string name="verified_contact">Overený kontakt</string>
     <string name="camera">Fotoaparát</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Zachytiť</string>
@@ -175,7 +173,6 @@
     <string name="webxdc_app">Súkromná aplikácia</string>
     <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_apps">Súkromné aplikácie</string>
-    <string name="files_and_webxdx_apps">Súbory a súkromné aplikácie</string>
     <string name="unknown">Neznáme</string>
 
     <string name="green">Zelená</string>
@@ -201,9 +198,6 @@
     <string name="menu_new_contact">Nový kontakt</string>
     <string name="menu_new_chat">Nová konverzácia</string>
     <string name="menu_new_group">Nová skupina</string>
-    <!-- Use the same wording as "Subject" to help people coming from the e-mail context; eg. "Betreff" in German -->
-    <string name="new_group_or_subject">Nová Skupina alebo Predmet </string>
-    <string name="menu_new_verified_group">Nová overená skupina</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">Zoznam Rozosielania</string>
     <string name="broadcast_lists">Zoznamy Rozosielania</string>
@@ -509,7 +503,6 @@
     <!-- welcome and login -->
     <string name="welcome_chat_over_email">Chatovanie cez e-mail.</string>
     <string name="scan_invitation_code">Skenovať kód pozvánky</string>
-    <string name="welcome_intro1_message">Posol s najširším publikom na svete. Slobodný a nezávislý.</string>
     <string name="login_title">Prihlásiť sa</string>
     <string name="login_header">Prihláste sa na server</string>
     <string name="login_explain">Prihláste sa pomocou existujúceho e-mailového účtu</string>
@@ -534,8 +527,6 @@
     <string name="login_socks5_port">SOCKS5 Port</string>
     <string name="login_socks5_user">SOCKS5 Používateľ</string>
     <string name="login_socks5_password">SOCKS5 Heslo</string>
-    <!-- Translators: %1$s will be replaced by an e-mail address -->
-    <string name="login_oauth2_checking_addr">Prebieha kontrola %1$s</string>
     <string name="login_info_oauth2_title">Pokračovať v zjednodušenom nastavovaní?</string>
     <string name="login_info_oauth2_text">Zadaná e-mailová adresa podporuje zjednodušené nastavenie (OAuth 2.0).\n\nV ďalšom kroku povoľte aplikácii Delta Chat, aby fungovala ako vaša aplikácia Chat cez e-mail.\n\nNie sú k dispozícii servery Delta Chat, vaše dáta zostanú vo vašom zariadení .</string>
     <string name="login_certificate_checks">Osvedčovacie kontroly</string>
@@ -727,7 +718,7 @@
     <string name="autocrypt_send_asm_title">Pošlite správu s nastavením autokryptovania</string>
     <string name="autocrypt_send_asm_explain_before">Správa o nastavení automatického šifrovania bezpečne zdieľa vaše komplexné nastavenie s ostatnými aplikáciami kompatibilnými s automatickým šifrovaním.\n\nNastavenie bude šifrované tu zobrazeným nastavovacím kódom a musí byť zadané na druhom zariadení.</string>
     <string name="autocrypt_send_asm_button">Pošlite správu s nastavením autokryptovania</string>
-    <string name="autocrypt_send_asm_explain_after">Vaše nastavenie bolo odoslané vám. Prepnite na druhé zariadenie a otvorte správu o nastavení. Mali by ste byť požiadaní o nastavovací kód. Zadajte nasledujúce číslice:\n\n%1$s</string>
+    <string name="autocrypt_send_asm_explain_after">Vaše nastavenie bolo odoslané vám. Prepnite na druhé zariadenie a otvorte správu o nastavení. Mali by ste byť požiadaní o nastavovací kód. Zadajte nasledujúce číslice:</string>
     <string name="autocrypt_prefer_e2ee">Preferovať šifrovanie typu end-to-end</string>
     <string name="autocrypt_asm_subject">Správa o nastavení automatického šifrovania</string>
     <string name="autocrypt_asm_general_body">Toto je správa o nastavení automatického šifrovania, ktorá sa používa na prenos komplexného nastavenia medzi klientmi.\n\nAk chcete dešifrovať a použiť svoje nastavenie, otvorte správu v klientovi kompatibilnom s automatickým šifrovaním a zadajte inštalačný kód uvedený na generujúcom zariadení.</string>
@@ -902,6 +893,7 @@
     <string name="about_offical_app_desktop">Toto je oficiálna aplikácia Delta Chat Desktop.</string>
     <string name="about_licensed_under_desktop">Tento softvér je licencovaný pod GNU GPL verzie 3 a zdrojový kód je k dispozícii na GitHub-e.</string>
     <string name="welcome_desktop">Víta vás Delta Chat</string>
+    <!-- deprecated, use switch_account -->
     <string name="login_known_accounts_title_desktop">Známe účty</string>
     <string name="global_menu_preferences_language_desktop">Jazyk</string>
     <string name="global_menu_file_desktop">Súbor</string>
@@ -929,18 +921,25 @@
     <string name="delete_message_desktop">Odstrániť správu</string>
     <string name="more_info_desktop">Viac informácií</string>
     <string name="timestamp_format_m_desktop">MMM D</string>
+    <!-- deprecated, use encryption_info_title_desktop or profile_encryption -->
     <string name="encryption_info_desktop">Zobraziť informácie o šifrovaní</string>
     <string name="remove_desktop">Odstrániť</string>
     <string name="save_desktop">Uložiť</string>
     <string name="name_desktop">Názov</string>
+    <!-- deprecated, use autocrypt_send_asm_title / autocrypt_continue_transfer_title -->
     <string name="autocrypt_key_transfer_desktop">Autocryptujte prenos kľúčov</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_before -->
     <string name="initiate_key_transfer_desktop">Správa o nastavení automatického šifrovania bezpečne zdieľa vaše komplexné nastavenie s inými aplikáciami kompatibilnými s automatickým šifrovaním. Nastavenie bude šifrované tu zobrazeným nastavovacím kódom a musí byť zadané na druhom zariadení.</string>
     <string name="select_group_image_desktop">Vyberte obrázok skupiny</string>
+    <!-- deprecated, use export_backup_desktop instead -->
     <string name="imex_progress_title_desktop">Priebeh zálohovania</string>
     <string name="export_backup_desktop">Exportovať zálohu</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_after instead -->
     <string name="show_key_transfer_message_desktop">Váš kľúč vám bol odoslaný. Prepnite na druhé zariadenie a otvorte správu o nastavení. Mala by vám prísť požiadavka na kód. Zadajte nasledujúce číslice:</string>
     <string name="autocrypt_correct_desktop">Nastavenie automatického šifrovania bolo prenesené.</string>
+    <!-- deprecated, use autocrypt_bad_setup_code instead -->
     <string name="autocrypt_incorrect_desktop">Nesprávny kód nastavenia. Prosím skúste znova.</string>
+    <!-- deprecated, rare errors should be english only for easier searchability -->
     <string name="create_chat_error_desktop">Nepodarilo sa vytvoriť konverzáciu.</string>
     <string name="forget_login_confirmation_desktop">Odstrániť tieto prihlasovacie údaje? Odstráni sa všetko vrátane vášho kompletného nastavenia, kontaktov, konverzácií, správ a médií. Túto akciu nie je možné vrátiť späť.</string>
     <string name="account_info_hover_tooltip_desktop2">E-Mail: %1$s\nVeľkosť: %2$s\n ID Účtu: %3$s</string>

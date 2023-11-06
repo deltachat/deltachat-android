@@ -29,6 +29,7 @@
     <string name="emoji">Эмодзи</string>
     <string name="attachment">Вложение</string>
     <string name="back">Назад</string>
+    <!-- this string is deprecated; the new wording is "introduced by ..." -->
     <string name="verified">Верифицирован</string>
     <string name="close">Закрыть</string>
     <string name="close_window">Закрыть окно</string>
@@ -49,7 +50,6 @@
     <string name="main_menu">Главное меню</string>
     <string name="start_chat">Начать чат</string>
     <string name="show_full_message">Показать сообщение полностью…</string>
-    <string name="show_full_message_in_browser">Показать сообщение полностью в браузере…</string>
     <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
     <string name="mark_all_as_read">Отметить всё как прочитанное</string>
     <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
@@ -170,7 +170,6 @@
     <string name="video">Видео</string>
     <string name="documents">Документы</string>
     <string name="contact">Контакт</string>
-    <string name="verified_contact">Проверенный контакт</string>
     <string name="camera">Камера</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Захват</string>
@@ -186,7 +185,6 @@
     <string name="webxdc_app">Личное приложение</string>
     <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_apps">Приложения</string>
-    <string name="files_and_webxdx_apps">Файлы и приложения</string>
     <string name="unknown">Неизвестно</string>
 
     <string name="green">Зелёный</string>
@@ -212,9 +210,6 @@
     <string name="menu_new_contact">Новый контакт</string>
     <string name="menu_new_chat">Новый чат</string>
     <string name="menu_new_group">Новая группа</string>
-    <!-- Use the same wording as "Subject" to help people coming from the e-mail context; eg. "Betreff" in German -->
-    <string name="new_group_or_subject">Новая группа или тема</string>
-    <string name="menu_new_verified_group">Новая проверенная группа</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">Список рассылки</string>
     <string name="broadcast_lists">Списки рассылки</string>
@@ -559,7 +554,6 @@
     <!-- welcome and login -->
     <string name="welcome_chat_over_email">Чат через электронную почту.</string>
     <string name="scan_invitation_code">Сканировать код приглашения</string>
-    <string name="welcome_intro1_message">Мессенджер с самой широкой аудиторией в мире. Бесплатный и независимый.</string>
     <string name="login_title">Логин</string>
     <string name="login_header">Войти в ваш имэйл-аккаунт</string>
     <string name="login_explain">Войти с существующим аккаунтом эл.почты</string>
@@ -584,8 +578,6 @@
     <string name="login_socks5_port">Порт SOCKS5</string>
     <string name="login_socks5_user">Пользователь SOCKS5</string>
     <string name="login_socks5_password">Пароль SOCKS5</string>
-    <!-- Translators: %1$s will be replaced by an e-mail address -->
-    <string name="login_oauth2_checking_addr">Проверяем %1$s</string>
     <string name="login_info_oauth2_title">Продолжить упрощенную настройку?</string>
     <string name="login_info_oauth2_text">Введённый адрес электронной почты поддерживает упрощённую настройку (OAuth 2.0).\n\nНа следующем шаге разрешите, пожалуйста, Delta Chat выступать в качестве Вашего приложения для чата с помощью электронной почты.\n\nУ Delta Chat нет серверов, Ваши данные остаются на Вашем устройстве.</string>
     <string name="login_certificate_checks">Проверки сертификатов</string>
@@ -782,7 +774,7 @@
     <string name="autocrypt_send_asm_title">Сообщение с параметрами Autocrypt</string>
     <string name="autocrypt_send_asm_explain_before">\"Сообщение с параметрами Autocrypt\" служит для безопасной передачи параметров шифрования между собственными приложениями для работы с электронной почтой, поддерживающими протокол Autocrypt.\n\nЭти параметры шифруются с использованием специального кода, который показан здесь и должен быть введён в настраиваемом приложении.  </string>
     <string name="autocrypt_send_asm_button">Отправить сообщение с параметрами Autocrypt</string>
-    <string name="autocrypt_send_asm_explain_after">Параметры шифрования были вам отправлены. Откройте сообщение с параметрами в настраиваемой программе, после чего программа запросит код подтверждения. Введите следующий код:\n\n%1$s\n\nПосле завершения настройки, программа сможет использовать Autocrypt.</string>
+    <string name="autocrypt_send_asm_explain_after">Параметры шифрования были вам отправлены. Откройте сообщение с параметрами в настраиваемой программе, после чего программа запросит код подтверждения. Введите следующий код.\n\nПосле завершения настройки, программа сможет использовать Autocrypt.</string>
     <string name="autocrypt_prefer_e2ee">Предпочитать сквозное шифрование</string>
     <string name="autocrypt_asm_subject">Сообщение с параметрами Autocrypt</string>
     <string name="autocrypt_asm_general_body">Это сообщение с параметрами Autocrypt служит для передачи параметров сквозного шифрования между устройствами.\n\nДля расшифровывания параметров откройте это сообщение в приложении, поддерживающем Autocrypt и введите код подтверждения, показанный на исходном устройстве.</string>
@@ -917,7 +909,7 @@
     <string name="secure_join_replies">%1$s ответил, ожидаем добавления в группу…</string>
     <string name="contact_verified">%1$s подтвержден.</string>
     <string name="contact_not_verified">Невозможно подтвердить %1$s</string>
-    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that verified the contact shown. -->
+    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">Верифицирован %1$s</string>
     <string name="verified_by_you">Проверено вами</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
@@ -965,6 +957,7 @@
     <string name="about_offical_app_desktop">Это официальное приложение Delta Chat для ПК.</string>
     <string name="about_licensed_under_desktop">Это программное обеспечение под лицензией GNU GPL 3 версии, исходный код доступен на GitHub.</string>
     <string name="welcome_desktop">Добро пожаловать в Delta Chat</string>
+    <!-- deprecated, use switch_account -->
     <string name="login_known_accounts_title_desktop">Известные аккаунты</string>
     <string name="global_menu_preferences_language_desktop">Выбор языка</string>
     <string name="global_menu_file_desktop">Файл</string>
@@ -992,18 +985,25 @@
     <string name="delete_message_desktop">Удалить сообщение</string>
     <string name="more_info_desktop">Больше информации</string>
     <string name="timestamp_format_m_desktop">МММ Д</string>
+    <!-- deprecated, use encryption_info_title_desktop or profile_encryption -->
     <string name="encryption_info_desktop">Показать информацию о шифровании</string>
     <string name="remove_desktop">Удалить</string>
     <string name="save_desktop">Сохранить</string>
     <string name="name_desktop">Имя</string>
+    <!-- deprecated, use autocrypt_send_asm_title / autocrypt_continue_transfer_title -->
     <string name="autocrypt_key_transfer_desktop">Передача ключей Autocrypt</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_before -->
     <string name="initiate_key_transfer_desktop">Сообщение с параметрами Autocrypt служит для безопасной передачи параметров шифрования между собственными приложениями для работы с электронной почтой, поддерживающими протокол Autocrypt.\n\nЭти параметры шифруются с использованием специального кода, который показан здесь и должен быть введён в настраиваемом приложении.  </string>
     <string name="select_group_image_desktop">Выбрать изображение группы</string>
+    <!-- deprecated, use export_backup_desktop instead -->
     <string name="imex_progress_title_desktop">Состояние резевного копирования</string>
     <string name="export_backup_desktop">Экспорт резервной копии</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_after instead -->
     <string name="show_key_transfer_message_desktop">Ваш ключ был отправлен самому себе. Переключитесь на другое устройство и откройте настройки сообщения. Вам будет предложено ввести код установки. Введите следующие цифры в командной строке. Как только вы закончите, ваше другое устройство будет готово к использованию Autocrypt.</string>
     <string name="autocrypt_correct_desktop">Настройки Autocrypt успешно переданы!</string>
+    <!-- deprecated, use autocrypt_bad_setup_code instead -->
     <string name="autocrypt_incorrect_desktop">Проверочный код указан неверно. Попробуйте ввести его повторно.</string>
+    <!-- deprecated, rare errors should be english only for easier searchability -->
     <string name="create_chat_error_desktop">Не удалось создать чат.</string>
     <string name="forget_login_confirmation_desktop">Удалить эту учётную запись? Все данные будут удалены, включая настройки сквозного шифрования, контакты, чаты, сообщения и медиа файлы. Это действие нельзя будет отменить.</string>
     <string name="account_info_hover_tooltip_desktop2">Эл.почта: %1$s\nРазмер: %2$s\nПуть: %3$s</string>

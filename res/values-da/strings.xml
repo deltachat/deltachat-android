@@ -124,7 +124,6 @@
     <string name="video">Video</string>
     <string name="documents">Dokumenter</string>
     <string name="contact">Kontakt</string>
-    <string name="verified_contact">Bekræftet kontakt</string>
     <string name="camera">Kamera</string>
     <string name="switch_camera">Skift kamera</string>
     <string name="location">Placering</string>
@@ -157,7 +156,6 @@
     <string name="menu_new_contact">Ny kontakt</string>
     <string name="menu_new_chat">Ny samtale</string>
     <string name="menu_new_group">Ny gruppe</string>
-    <string name="menu_new_verified_group">Ny bekræftet gruppe</string>
     <string name="menu_send">Send</string>
     <string name="menu_toggle_keyboard">Skift emoji tastatur</string>
     <string name="menu_edit_group">Rediger gruppe</string>
@@ -384,7 +382,6 @@
     <string name="part_of_total_used">%1$s af %2$s brugt</string>
 
 
-    <string name="welcome_intro1_message">Budbringeren med verdens bredeste publikum. Fri og uafhængig.</string>
     <string name="login_title">Login</string>
     <string name="login_header">Login til server</string>
     <string name="login_explain">Login med en eksisterende e-mailkonto</string>
@@ -409,8 +406,6 @@
     <string name="login_socks5_port">SOCKS5 Port</string>
     <string name="login_socks5_user">SOCKS5 Brugernavn</string>
     <string name="login_socks5_password">SOCKS5 adgangskode</string>
-    <!-- Translators: %1$s will be replaced by an e-mail address -->
-    <string name="login_oauth2_checking_addr">Checker %1$s</string>
     <string name="login_info_oauth2_title">Fortsæt med forenklet opsætning?</string>
     <string name="login_info_oauth2_text">Indtastet e-mail adresse understøtter simple opsætning (OAuth2).\n\nTillad i næste trin at Delta Chat agerer som samtale med e-mail program.\n\nDer er ingen Delta Chat servere, data forbliver på enhed.</string>
     <string name="login_certificate_checks">Certifikationstjek</string>
@@ -583,7 +578,7 @@
     <string name="autocrypt_send_asm_title">Send Autocrypt opsætning besked</string>
     <string name="autocrypt_send_asm_explain_before">En \"Autocrypt opsætning besked\" deler sikkert end-to-end opsætning med andre Autocrypt kompatible programmer.\n\nOpsætning er krypteret med en kode som er vist her og skal indtastes på den anden enhed.</string>
     <string name="autocrypt_send_asm_button">Send autocrypt-opsætningsbesked</string>
-    <string name="autocrypt_send_asm_explain_after">Opsætning er sendt til dig selv. Skift til den anden enhed og åben opsætning beskeden. Der skulle blive spurgt til opsætning kode. Indtast følgende cifre i prompt:\n\n%1$s\n\nNår færdig vil den anden enhed være klar til at bruge Autocrypt.</string>
+    <string name="autocrypt_send_asm_explain_after">Opsætning er sendt til dig selv. Skift til den anden enhed og åben opsætning beskeden. Der skulle blive spurgt til opsætning kode. Indtast følgende cifre i prompt.\n\nNår færdig vil den anden enhed være klar til at bruge Autocrypt.</string>
     <string name="autocrypt_prefer_e2ee">Foretræk end-to-end kryptering</string>
     <string name="autocrypt_asm_subject">Autocrypt opsætningsbesked</string>
     <string name="autocrypt_asm_general_body">Dette er Autocrypt opsætning besked brugt til at overføre ende-til-ende opsætning mellem klienter.\n\nFor at af kryptere og bruge opsætning åben beskeden i en Autocrypt kompatibel klient og indtast opsæt koden vist på den genererende enhed.</string>
@@ -716,6 +711,7 @@
     <string name="about_offical_app_desktop">Dette er den officielle Delta Chat Desktop app.</string>
     <string name="about_licensed_under_desktop">Denne software er licenseret under GNU GPL version 3 og kildekoden er tilgængelig på GitHub</string>
     <string name="welcome_desktop">Velkommen til Delta Chat</string>
+    <!-- deprecated, use switch_account -->
     <string name="login_known_accounts_title_desktop">Kendte konti</string>
     <string name="global_menu_preferences_language_desktop">Vælge sprog...</string>
     <string name="global_menu_file_desktop">Fil</string>
@@ -742,18 +738,25 @@
     <string name="delete_message_desktop">Slet besked</string>
     <string name="more_info_desktop">Mere information</string>
     <string name="timestamp_format_m_desktop">MMM D</string>
+    <!-- deprecated, use encryption_info_title_desktop or profile_encryption -->
     <string name="encryption_info_desktop">Vis krypteringsinformation</string>
     <string name="remove_desktop">Fjern</string>
     <string name="save_desktop">Gem</string>
     <string name="name_desktop">Navn</string>
+    <!-- deprecated, use autocrypt_send_asm_title / autocrypt_continue_transfer_title -->
     <string name="autocrypt_key_transfer_desktop">Autocrypt nøgleoverførsel</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_before -->
     <string name="initiate_key_transfer_desktop">En Autocrypt opsætning beskeddeler sikkert ende-til-ende opsætning med andre Autocrypt kompatible programmer. Opsætninger er krypteret med en opsætning kode som er vist her og skal indtastes på de andre enheder.</string>
     <string name="select_group_image_desktop">Vælg gruppebillede</string>
+    <!-- deprecated, use export_backup_desktop instead -->
     <string name="imex_progress_title_desktop">Sikkerhedskopiering fremgang</string>
     <string name="export_backup_desktop">Eksporter sikkerhedskopi</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_after instead -->
     <string name="show_key_transfer_message_desktop">Nøgle er sendt til dig selv. Skift til den anden enhed og åben opsætning beskeden. Der bliver promptet for en opsætning kode.. Indtast følgende cifre i prompten. Når det er afsluttet vil den anden enhed være klar til at bruge Autocrypt.</string>
     <string name="autocrypt_correct_desktop">Autocrypt opsætning overført!</string>
+    <!-- deprecated, use autocrypt_bad_setup_code instead -->
     <string name="autocrypt_incorrect_desktop">Forkert opsætningskode. Prøv igen.</string>
+    <!-- deprecated, rare errors should be english only for easier searchability -->
     <string name="create_chat_error_desktop">Kunne ikke oprette samtale</string>
     <string name="forget_login_confirmation_desktop">Slet login? Alt vil blive slettet, din end-to-end opsætning, kontakter, samtaler, meddelelser og medier. Denne handling er endelig og kan ikke fortrydes.</string>
     <string name="message_detail_sent_desktop">sendt</string>

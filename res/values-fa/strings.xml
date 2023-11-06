@@ -29,6 +29,7 @@
     <string name="emoji">شکلک</string>
     <string name="attachment">پیوست</string>
     <string name="back">بازگشت</string>
+    <!-- this string is deprecated; the new wording is "introduced by ..." -->
     <string name="verified">احراز هویت شده</string>
     <string name="close">بستن</string>
     <string name="forward">هدایت</string>
@@ -48,7 +49,6 @@
     <string name="main_menu">فهرست اصلی</string>
     <string name="start_chat">شروع گپ</string>
     <string name="show_full_message">نمایش پیام کامل...</string>
-    <string name="show_full_message_in_browser">نمایش پیام کامل در مرورگر</string>
     <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
     <string name="mark_all_as_read">همه را خوانده شده بزن</string>
     <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
@@ -153,7 +153,6 @@
     <string name="video">فیلم</string>
     <string name="documents">اسناد</string>
     <string name="contact">مخاطب</string>
-    <string name="verified_contact">مخاطب تأیید شده</string>
     <string name="camera">دوربین</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">گرفتن</string>
@@ -169,7 +168,6 @@
     <string name="webxdc_app">برنامه</string>
     <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_apps">برنامه‌ها</string>
-    <string name="files_and_webxdx_apps">پرونده‌ها و برنامه‌ها</string>
     <string name="unknown">ناشناس</string>
 
     <string name="green">سبز</string>
@@ -195,9 +193,6 @@
     <string name="menu_new_contact">مخاطب جدید</string>
     <string name="menu_new_chat">گپ جدید</string>
     <string name="menu_new_group">گروه جدید</string>
-    <!-- Use the same wording as "Subject" to help people coming from the e-mail context; eg. "Betreff" in German -->
-    <string name="new_group_or_subject">گروه یا عنوان جدید</string>
-    <string name="menu_new_verified_group">گروه تأیید شدهٔ جدید</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">لیست Broadcast</string>
     <string name="broadcast_lists">لیست‌های Broadcast</string>
@@ -532,7 +527,6 @@ https://meet.jit.si/$ROOM
     <!-- welcome and login -->
     <string name="welcome_chat_over_email">روی رایانامه گپ بزنید.</string>
     <string name="scan_invitation_code">اسکن کردن کد دعوت</string>
-    <string name="welcome_intro1_message">پیام‌رسانی با وسیع‌ترین طیف مخاطبین در جهان. آزاد و مستقل. </string>
     <string name="login_title">ورود</string>
     <string name="login_header">به سرور خود وارد شوید</string>
     <string name="login_explain">ورود با یک رایانامه موجود</string>
@@ -557,8 +551,6 @@ https://meet.jit.si/$ROOM
     <string name="login_socks5_port">SOCKS5 Port</string>
     <string name="login_socks5_user">SOCKS5 User</string>
     <string name="login_socks5_password">SOCKS5 Password</string>
-    <!-- Translators: %1$s will be replaced by an e-mail address -->
-    <string name="login_oauth2_checking_addr">بررسی %1$s</string>
     <string name="login_info_oauth2_title">با تنظیمات ساده‌ شده ادامه می‌دهید؟</string>
     <string name="login_info_oauth2_text">نشانی رایانامه وارد شده از تنظیمات ساده پشتیبانی می‌کند
 (OAuth 2.0).\n\nIn
@@ -753,7 +745,7 @@ https://meet.jit.si/$ROOM
     <string name="autocrypt_send_asm_title">ارسال پیام برپاسازی اتوکریپت</string>
     <string name="autocrypt_send_asm_explain_before">پیام برپاسازی اتوکریپت تنظیمات رمزگذاری سرتاسر شما را به شکلی امن با دیگر برنامه‌ها به اشتراک می‌گذارد.\n\n تنظیمات با یک کد برپاسازی که در اینجا نمایش داده می‌شود رمزگذاری می‌شوند و باید در دستگاه دیگر تایپ شود. </string>
     <string name="autocrypt_send_asm_button">ارسال پیام برپاسازی اتوکریپت</string>
-    <string name="autocrypt_send_asm_explain_after">تنظیمات شما برای خودتان ارسال شد. پیام تنظیمات را در دستگاه دیگر باز کنید. یک کد نصب از شما خواسته می‌شود. این ارقام را وارد کنید:\n\n %1$s </string>
+    <string name="autocrypt_send_asm_explain_after">تنظیمات شما برای خودتان ارسال شد. پیام تنظیمات را در دستگاه دیگر باز کنید. یک کد نصب از شما خواسته می‌شود. این ارقام را وارد کنید</string>
     <string name="autocrypt_prefer_e2ee">ترجیح رمزگذاری گیرنده به گیرنده</string>
     <string name="autocrypt_asm_subject">پیام برپاسازی اتوکریپت</string>
     <string name="autocrypt_asm_general_body">این پیام برپاسازی اتوکریپت است و تنظیمات مربوط به رمزگذاری سرتاسر شما را بین دستگاه‌ها جابه‌جا می‌کند.\n\n برای رمزگشایی و استفاده از آن، پیام را در یک سامانه که با اتوکریپت همخوانی دارد باز کنید و کد برپاسازی که در دستگاه تولیدکنندهٔ پیام، به شما داده می‌شود را وارد نمایید. </string>
@@ -895,7 +887,7 @@ https://meet.jit.si/$ROOM
     <string name="secure_join_replies">کاربر %1$s پاسخ داد، در انتظار اضافه شدن به گروه...</string>
     <string name="contact_verified">%1$s تأیید شد.</string>
     <string name="contact_not_verified">نتوانست %1$s را تأیید کند. </string>
-    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that verified the contact shown. -->
+    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">احراز هویت شده توسط %1$s</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">تنظیمات برای %1$s تغییر کرد. </string>
@@ -957,6 +949,7 @@ GNU GPL ورژن ۳
  GitHub
  در دسترس است.</string>
     <string name="welcome_desktop">به دلتاچت خوش‌آمدید</string>
+    <!-- deprecated, use switch_account -->
     <string name="login_known_accounts_title_desktop">اکانت‌های شناخته شده</string>
     <string name="global_menu_preferences_language_desktop">زبان</string>
     <string name="global_menu_file_desktop">پرونده</string>
@@ -984,18 +977,25 @@ GNU GPL ورژن ۳
     <string name="delete_message_desktop">حذف پیام</string>
     <string name="more_info_desktop">جزئیات بیشتر </string>
     <string name="timestamp_format_m_desktop">MMM D</string>
+    <!-- deprecated, use encryption_info_title_desktop or profile_encryption -->
     <string name="encryption_info_desktop">نمایش مشخصات رمزگذاری</string>
     <string name="remove_desktop">حذف</string>
     <string name="save_desktop">ذخیره</string>
     <string name="name_desktop">نام</string>
+    <!-- deprecated, use autocrypt_send_asm_title / autocrypt_continue_transfer_title -->
     <string name="autocrypt_key_transfer_desktop">انتقال کلید اتوکریپت</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_before -->
     <string name="initiate_key_transfer_desktop">یک پیام برپاسازی اتوکریپت، برپاسازی رمزگذاری سرتاسرتان را به‌امنی با دیگر برنامه‌های سازگار با اتوکریپت هم‌رسانی می‌کند. برپاسازی با یک کد برپاسازی رمزگذاری خواهند شد که در اینجا نمایش داده می‌شود که باید آن  را در دستگاه دیگر وارد کنید. </string>
     <string name="select_group_image_desktop">انتخاب تصویر گروه</string>
+    <!-- deprecated, use export_backup_desktop instead -->
     <string name="imex_progress_title_desktop">فرایند تهیه نسخه پشتیبان</string>
     <string name="export_backup_desktop">صادر کردن نسخه پشتیبان</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_after instead -->
     <string name="show_key_transfer_message_desktop">کلید برایتان ارسال شد. به دستگاه دیگر رفته و پیام نصب را باز کنید. از شما یک کد نصب خواسته می‌شود. این ارقام را آن‌جا وارد کنید:</string>
     <string name="autocrypt_correct_desktop">برپاسازی اتوکریپت انتقال یافت.</string>
+    <!-- deprecated, use autocrypt_bad_setup_code instead -->
     <string name="autocrypt_incorrect_desktop">کد نصب نادرست. لطفا دوباره امتحان کنید. </string>
+    <!-- deprecated, rare errors should be english only for easier searchability -->
     <string name="create_chat_error_desktop">امکان ایجاد گپ وجود ندارد. </string>
     <string name="forget_login_confirmation_desktop">پاک کردن این ورود؟ همه‌چیز پاک می‌شود که شامل رمزگذاری سرتاسر، مخاطبین، گپ‌ها، پیام‌ها و رسانه می‌شود. این عملیات قابل بازگردانی نیست.</string>
     <string name="account_info_hover_tooltip_desktop2">رایانامه: %1$s

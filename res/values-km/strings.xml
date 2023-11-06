@@ -45,7 +45,6 @@
     <string name="main_menu">បញ្ជីដើម</string>
     <string name="start_chat">ចាប់ផ្តើមសន្ទនា</string>
     <string name="show_full_message">បង្ហាញសារទាំងស្រុង…</string>
-    <string name="show_full_message_in_browser">បង្ហាញសារពេញលេញ នៅក្នុងកម្មវិធីរុករក…</string>
     <!-- Placeholder text when something is loading -->
     <string name="loading">កំពុងផ្ទុក…</string>
     <string name="hide">លាក់</string>
@@ -126,7 +125,6 @@
     <string name="video">វីដេអូ</string>
     <string name="documents">ឯកសារ</string>
     <string name="contact">ទំនាក់ទំនង</string>
-    <string name="verified_contact">ទំនាក់ទំនងដែលបានផ្ទៀងផ្ទាត់</string>
     <string name="camera">កាមេរ៉ា</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">ចាប់យក</string>
@@ -162,7 +160,6 @@
     <string name="menu_new_contact">ទំនាក់ទំនងថ្មី</string>
     <string name="menu_new_chat">សន្ទនាថ្មី</string>
     <string name="menu_new_group">ក្រុមថ្មី</string>
-    <string name="menu_new_verified_group">ក្រុមដែលបានកំណត់ថ្មី</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">បញ្ជីចាក់ផ្សាយ</string>
     <string name="broadcast_lists">បញ្ជីចាក់ផ្សាយ</string>
@@ -424,7 +421,6 @@
     <string name="part_of_total_used">បានប្រើ %1$s នៃ %2$s</string>
 
 
-    <string name="welcome_intro1_message">អ្នកនាំសារជាមួយនឹងវិសាលភាពទស្សនិកក្នុងពិភពលោក។ ដោយឥតគិតថ្លៃ និងឯករាជ្យ។</string>
     <string name="login_title">កត់ចូល</string>
     <string name="login_header">កត់ចូលទៅម៉ាសុីនមេរបស់អ្នក</string>
     <string name="login_explain">កត់ចូលជាមួយគណនីយដែលមានស្រាប់</string>
@@ -449,8 +445,6 @@
     <string name="login_socks5_port">ច្រក SOCKS5</string>
     <string name="login_socks5_user">អ្នកប្រើប្រាស់ SOCKS5</string>
     <string name="login_socks5_password">ពាក្យសម្ងាត់ SOCKS5</string>
-    <!-- Translators: %1$s will be replaced by an e-mail address -->
-    <string name="login_oauth2_checking_addr">ត្រួតពិនិត្យ %1$s</string>
     <string name="login_info_oauth2_title">បន្តជាមួយការដំឡើងសាមញ្ញ?</string>
     <string name="login_info_oauth2_text">អស័យដ្ឋានអុីម៉េលដែលបានបញ្ចូល គាំទ្រការដំឡើងសាមញ្ញ (OAuth 2.0)\n\nនៅជំហានបន្ទាប់ សូមអនុញ្ញាតឲ្យសាហារីសង្ឃ ដើរតួជាការសន្ទនារបស់អ្នកនៅលើកម្មវិធីអុីម៉េល។\n\nមិនមាន ម៉ាសុីនមេ សាហារីសង្ឃទេ។ ទិន្ន័យរបស់អ្នកស្ថិតនៅលើឧបករណ៍របស់អ្នក។</string>
     <string name="login_certificate_checks">ការត្រួតពិនិត្យលិខិតបញ្ជាក់</string>
@@ -636,7 +630,7 @@
     <string name="autocrypt_send_asm_title">ផ្ញើសារអ៊ិនគ្រីបស្វ័យប្រវត្តិសម្រាប់ការរៀបចំ</string>
     <string name="autocrypt_send_asm_explain_before">សារអ៊ិនគ្រីបស្វ័យប្រវត្តិសម្រាប់ការរៀបចំចែកចាយចាត់របសឧបករណ៍ដល់ឧបករណ៍ជាមួយកម្មវិធីដែលមានអ៊ិនគ្រីបស្វ័យប្រវត្តិផ្សេងទៀត។\n\n ការចាត់នឹងបានអ៊ិនគ្រីប (ការធ្វើឲ្យការផ្ញើសារជាសារដាយសញ្ញាសម្ងាត់) នៅទីនេះ នឹងត្រូវតែបានវាយបញ្ចូលនៅលើឧបករណ៍ផ្សេង។</string>
     <string name="autocrypt_send_asm_button">ផ្ញើសារអ៊ិនគ្រីបស្វ័យប្រវត្តិសម្រាប់ការរៀបចំ</string>
-    <string name="autocrypt_send_asm_explain_after">ការរៀបចំរបស់អ្នកត្រូវបានផ្ញើទៅខ្លួនឯងហើយ។ ប្តូរឆ្លាស់ឧបករណ៍ផ្សេង និងបើកសារការរៀបចំ។ អ្នកនឹងទទួលសំណួរពីកូដរៀបចំ។ បញ្ចូលលេខដូចខាងក្រោម:\n\n%1$s</string>
+    <string name="autocrypt_send_asm_explain_after">ការរៀបចំរបស់អ្នកត្រូវបានផ្ញើទៅខ្លួនឯងហើយ។ ប្តូរឆ្លាស់ឧបករណ៍ផ្សេង និងបើកសារការរៀបចំ។ អ្នកនឹងទទួលសំណួរពីកូដរៀបចំ។ បញ្ចូលលេខដូចខាងក្រោម:</string>
     <string name="autocrypt_prefer_e2ee">ចូលចិត្តការអ៊ិនគ្រីបច្រើនជាង</string>
     <string name="autocrypt_asm_subject">ផ្ញើសារអ៊ិនគ្រីបស្វ័យប្រវត្តិសម្រាប់ការរៀបចំ</string>
     <string name="autocrypt_asm_general_body">នេះជាសាររៀបចំចាក់អ៊ិនគ្រីបស្វ័យប្រវត្តិសម្រាប់ចែកចាយចាត់ការរៀបចំចាក់ឧបករណ៍ដល់ឧបករណ៍ជាមួយឧបករណ៍ផ្សេងទៀត។\n\nដើម្បីឌិគ្រីប (ការទទួលសារដែលបានធ្វើជាសារសញ្ញាសម្ងាត់ដល់អាចអានបានវិញ) និងប្រើប្រាសការរៀបចំចាក់របសអ្នក បើកសារនៅក្នុងកម្មវិធីដែលស្គាល់អ៊ិនគ្រីបស្វ័យប្រវត្តិ និងកូដការរៀបចំដែលបានអំណោយពីឧបករណ៍បានបង្កើតវា។</string>
@@ -794,6 +788,7 @@
     <string name="about_offical_app_desktop">នេះគឺជាសា Delta Chat ផ្លូវការ នៅលើកម្មវិធីកុំព្យូទ័រលើតុ</string>
     <string name="about_licensed_under_desktop">សូហ្វវែ Delta Chat នេះគឺបានអាជ្ញាប័ណ្ណនៅក្រោម GNU GPL ជំនាន់ ៣ និងប្រភពកូដ គឺអាចរកបាននៅលើ GitHub</string>
     <string name="welcome_desktop">ស្វាគមន៍មកកាន់សា Delta Chat</string>
+    <!-- deprecated, use switch_account -->
     <string name="login_known_accounts_title_desktop">គណនីដែលបានស្គាល់</string>
     <string name="global_menu_preferences_language_desktop">ភាសា</string>
     <string name="global_menu_file_desktop">ឯកសារ</string>
@@ -821,18 +816,25 @@
     <string name="delete_message_desktop">លុបសារ</string>
     <string name="more_info_desktop">ពត៌មានបន្ថែម</string>
     <string name="timestamp_format_m_desktop">ខែ ថ្ងៃ</string>
+    <!-- deprecated, use encryption_info_title_desktop or profile_encryption -->
     <string name="encryption_info_desktop">បង្ហាញពត៌មានដែលការធ្វើឲ្យសារជាសម្ងាត់</string>
     <string name="remove_desktop">យកចេញ</string>
     <string name="save_desktop">រក្សាទុក</string>
     <string name="name_desktop">ឈ្មោះ</string>
+    <!-- deprecated, use autocrypt_send_asm_title / autocrypt_continue_transfer_title -->
     <string name="autocrypt_key_transfer_desktop">ការផ្ទេរសោរអ៊ិនគ្រីបស្វ័យប្រវត្តិ</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_before -->
     <string name="initiate_key_transfer_desktop">សាររៀបចំអ៊ិនគ្រីបស្វ័យប្រវត្តិដោយសុវត្ថិភាព ចែករំលែកការរៀបចំឧបករណ៍ដល់ឧបករណ៍ ដល់ឧបករណ៍ជាមួយកម្មវិធី ដែលមានអ៊ិនគ្រីបស្វ័យប្រវត្តិផ្សេងទៀត។ ការចាត់នឹងបានអ៊ិនគ្រីប (ការធ្វើឲ្យការផ្ញើសារជាសារដាយសញ្ញាសម្ងាត់) នៅទីនេះ នឹងត្រូវតែបានវាយបញ្ចូលនៅលើឧបករណ៍ផ្សេង។</string>
     <string name="select_group_image_desktop">ជ្រើសរើសរូបភាពរបស់ក្រុម</string>
+    <!-- deprecated, use export_backup_desktop instead -->
     <string name="imex_progress_title_desktop">វឌ្ឍនភាពការបម្រុងទុក</string>
     <string name="export_backup_desktop">នាំចេញការបម្រុងទុក</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_after instead -->
     <string name="show_key_transfer_message_desktop">កូនសោររបស់អ្នកបានផ្ញើទៅខ្លួនអ្នក។ ប្តូរឆ្លាស់ទៅឧបករណ៍ផ្សេងទៀត និងបើកការរៀបចំសារ។ អ្នកនឹងទទួលសំណួរពីកូដរៀបចំ។ បញ្ចូលតូលេខដូចខាងក្រោម:</string>
     <string name="autocrypt_correct_desktop">ការរៀវចំចាក់អ៊ិនគ្រីបស្វ័យប្រវត្តិបានផ្ទេរហើយ។</string>
+    <!-- deprecated, use autocrypt_bad_setup_code instead -->
     <string name="autocrypt_incorrect_desktop">ការរៀបចំកូដមិនត្រឹមត្រូវទេ។ សូមព្យាយាមម្តងទៀត។</string>
+    <!-- deprecated, rare errors should be english only for easier searchability -->
     <string name="create_chat_error_desktop">មិនអាចបានបង្កើតការសន្ទនា</string>
     <string name="forget_login_confirmation_desktop">លុបការកត់ចូលនេះ? គ្រប់យ៉ាងនឹងត្រូវបានលុប រួមបញ្ចូលទាំងការរៀបចំ ទៅបញ្ចប់ការអុិនគ្រឹបឧបករណ៍ដល់ឧបករណ៍ ទំនាក់ទំនង សន្ទនា សារ និងប្រពន្ធ័ផ្សព្វផ្សាយ។ សកម្មភាពនេះមិនអាចធ្វើឡើងវិញបានទេ។</string>
     <string name="message_detail_sent_desktop">បានផ្ញើ</string>

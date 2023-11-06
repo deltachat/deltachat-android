@@ -47,7 +47,6 @@
     <string name="main_menu">Päävalikko</string>
     <string name="start_chat">Aloita keskustelu</string>
     <string name="show_full_message">Näytä koko viesti...</string>
-    <string name="show_full_message_in_browser">Näytä koko viesti selaimessa...</string>
     <!-- Placeholder text when something is loading -->
     <string name="loading">Ladataan...</string>
     <string name="hide">Piilota</string>
@@ -144,7 +143,6 @@
     <string name="video">Video</string>
     <string name="documents">Asiakirjat</string>
     <string name="contact">Yhteyshenkilö</string>
-    <string name="verified_contact">Varmistettu yhteyshenkilö</string>
     <string name="camera">Kamera</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Kuvaa</string>
@@ -159,7 +157,6 @@
     <string name="webxdc_app">Yksityinen sovellus</string>
     <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_apps">Yksityiset sovellukset</string>
-    <string name="files_and_webxdx_apps">Tiedostot ja yksityiset sovellukset</string>
     <string name="unknown">Tuntematon</string>
 
     <string name="green">Vihreä</string>
@@ -185,9 +182,6 @@
     <string name="menu_new_contact">Uusi yhteystieto</string>
     <string name="menu_new_chat">Uusi keskustelu</string>
     <string name="menu_new_group">Uusi ryhmä</string>
-    <!-- Use the same wording as "Subject" to help people coming from the e-mail context; eg. "Betreff" in German -->
-    <string name="new_group_or_subject">Uusi ryhmä tai aihe</string>
-    <string name="menu_new_verified_group">Uusi varmistettu ryhmä</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">Kuulutuslista</string>
     <string name="broadcast_lists">Kuulutuslistat</string>
@@ -483,7 +477,6 @@
     <!-- welcome and login -->
     <string name="welcome_chat_over_email">Chattaa sähköpostilla.</string>
     <string name="scan_invitation_code">Skannaa kutsukoodi</string>
-    <string name="welcome_intro1_message">Viestisovellus, jolla on maailman laajin yleisö. Ilmainen ja riippumaton.</string>
     <string name="login_title">Kirjaudu sisään</string>
     <string name="login_header">Kirjaudu palvelimellesi</string>
     <string name="login_explain">Kirjaudu olemassa olevalla sähköpostitilillä</string>
@@ -508,8 +501,6 @@
     <string name="login_socks5_port">SOCKS5-portti</string>
     <string name="login_socks5_user">SOCKS5-käyttäjä</string>
     <string name="login_socks5_password">SOCKS5-salasana</string>
-    <!-- Translators: %1$s will be replaced by an e-mail address -->
-    <string name="login_oauth2_checking_addr">Tarkistetaan %1$s</string>
     <string name="login_info_oauth2_title">Jatka yksinkertaisella asennuksella?</string>
     <string name="login_info_oauth2_text">Annettu sähköpostiosoite tukee yksinkertaista asennusta (OAuth 2.0).\n\nSeuraavaksi sinun täytyy sallia Delta Chatin toiminta Chat over E-mail -sovelluksena.\n\nDelta Chatilla ei ole palvelimia, tietosi pysyvät laitteellasi.</string>
     <string name="login_certificate_checks">Varmennetarkastukset</string>
@@ -701,7 +692,7 @@
     <string name="autocrypt_send_asm_title">Lähetä Autocrypt-asetusviesti</string>
     <string name="autocrypt_send_asm_explain_before">Autocrypt-asetusviesti jakaa turvallisesti päästä-päähän-salauksen asetukset toisten Autocrypt-yhteensopivien sovellusten kanssa.\n\nAsetuksen salataan tässä näytettävällä asetuskoodilla, joka on syötettävä toiseen laitteeseen.</string>
     <string name="autocrypt_send_asm_button">Lähetä Autocrypt-asetusviesti</string>
-    <string name="autocrypt_send_asm_explain_after">Asetusviesti on lähetetty sinulle itsellesi. Avaa viesti toisella laitteella. Sinulta pyydetään asennuskoodia. Anna seuraavat numerot:\n\n%1$s</string>
+    <string name="autocrypt_send_asm_explain_after">Asetusviesti on lähetetty sinulle itsellesi. Avaa viesti toisella laitteella. Sinulta pyydetään asennuskoodia. Anna seuraavat numerot:</string>
     <string name="autocrypt_prefer_e2ee">Suosi päästä-päähän-salausta</string>
     <string name="autocrypt_asm_subject">Autocrypt-asetusviesti</string>
     <string name="autocrypt_asm_general_body">Tätä Autocrypt-asetusviestiä käytetään päästä-päähän-salauksen asetusten kopioimiseksi toiselle laitteelle.\n\nSalauksen purkamiseksi ja asetusten käyttöön ottamiseksi, avaa viesti toisella Autocrypt-yhteensopivalla sovelluksella ja anna asennuskoodi laitteelta, jolla koodi luotiin.</string>
@@ -878,6 +869,7 @@
     <string name="about_offical_app_desktop">Tämä on virallinen Delta Chat -työpöytäsovellus.</string>
     <string name="about_licensed_under_desktop">Tämä ohjelmisto on GNU GPL v3 -lisensoitu, ja lähdekoodi on saatavilla GitHubissa.</string>
     <string name="welcome_desktop">Tervetuloa Delta Chatiin</string>
+    <!-- deprecated, use switch_account -->
     <string name="login_known_accounts_title_desktop">Tunnetut tilit</string>
     <string name="global_menu_preferences_language_desktop">Kieli</string>
     <string name="global_menu_file_desktop">Tiedosto</string>
@@ -905,18 +897,25 @@
     <string name="delete_message_desktop">Poista viesti</string>
     <string name="more_info_desktop">Lisätietoja</string>
     <string name="timestamp_format_m_desktop">MMM D</string>
+    <!-- deprecated, use encryption_info_title_desktop or profile_encryption -->
     <string name="encryption_info_desktop">Näytä salaustiedot</string>
     <string name="remove_desktop">Poista</string>
     <string name="save_desktop">Tallenna</string>
     <string name="name_desktop">Nimi</string>
+    <!-- deprecated, use autocrypt_send_asm_title / autocrypt_continue_transfer_title -->
     <string name="autocrypt_key_transfer_desktop">Autocrypt-avainten siirto</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_before -->
     <string name="initiate_key_transfer_desktop">Autocrypt-asetusviesti jakaa turvallisesti päästä-päähän-salauksen asetukset toisten Autocrypt-yhteensopivien sovellusten kanssa. Asetukset salataan tässä näytettävällä asetuskoodilla, joka on syötettävä toiseen laitteeseen.</string>
     <string name="select_group_image_desktop">Valitse ryhmän kuva</string>
+    <!-- deprecated, use export_backup_desktop instead -->
     <string name="imex_progress_title_desktop">Varmuuskopioinnin tila</string>
     <string name="export_backup_desktop">Vie varmuuskopio</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_after instead -->
     <string name="show_key_transfer_message_desktop">Asetusviesti on lähetetty sinulle itsellesi. Avaa viesti toisella laitteella. Sinulta pyydetään asennuskoodia. Anna seuraavat numerot:</string>
     <string name="autocrypt_correct_desktop">Autocrypt-asetukset siirretty.</string>
+    <!-- deprecated, use autocrypt_bad_setup_code instead -->
     <string name="autocrypt_incorrect_desktop">Virheellinen asennuskoodi. Yritä uudelleen.</string>
+    <!-- deprecated, rare errors should be english only for easier searchability -->
     <string name="create_chat_error_desktop">Keskustelua ei voitu luoda.</string>
     <string name="forget_login_confirmation_desktop">Poista tämä kirjautuminen? Kaikki tiedot poistetaan, mukaan lukien päästä-päähän-salauksen asetukset, yhteystiedot, keskustelut, viestit ja media. Tämä toiminto on peruuttamaton.</string>
     <string name="account_info_hover_tooltip_desktop2">Sähköposti: %1$s\nKoko: %2$s\nTilin tunniste: %3$s</string>

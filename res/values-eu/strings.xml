@@ -99,7 +99,6 @@
     <string name="video">Bideoa</string>
     <string name="documents">Dokumentuak</string>
     <string name="contact">Kontaktua</string>
-    <string name="verified_contact">Egiaztatutako kontaktua</string>
     <string name="camera">Kamera</string>
     <string name="location">Kokalekua</string>
     <string name="gallery">Galeria</string>
@@ -127,7 +126,6 @@
     <string name="menu_new_contact">Kontaktu berria</string>
     <string name="menu_new_chat">Txat berria</string>
     <string name="menu_new_group">Talde berria</string>
-    <string name="menu_new_verified_group">Egiaztatutako talde berria</string>
     <string name="menu_send">Bidali</string>
     <string name="menu_toggle_keyboard">Txandakatu emoji teklatua</string>
     <string name="menu_edit_group">Editatu taldea</string>
@@ -280,7 +278,6 @@
     <string name="tab_docs_empty_hint">Txat honetan partekatutako dokumentuak, musika, eta bestelako fitxategiak agertuko dira hemen</string>
     <string name="media_preview">Multimediaren aurrebista</string>
     <string name="send_message">Bidali mezua</string>
-    <string name="welcome_intro1_message">Munduan erabiltzaile gehien dituen mezularitza aplikazioa. Librea eta independentea.</string>
     <string name="login_title">Hasi saioa</string>
     <string name="login_header">Hasi saioa zure zerbitzarian</string>
     <string name="login_explain">Badagoen e-mail kontu batekin saioa hasten</string>
@@ -429,7 +426,7 @@
     <string name="autocrypt_send_asm_title">Bidali Autocrypt ezarpen mezua</string>
     <string name="autocrypt_send_asm_explain_before">\"Autocrypt ezarpen mezua\" batek modu seguruan partekatzen du zure muturretik muturrerako ezarpena Autocryptekin bateragarriak diren beste aplikazioekin. Ezarpena hemen bistaratutako ezarpen kodearekin zifratuko  da, eta beste gailuan kode hau sartu beharko da.</string>
     <string name="autocrypt_send_asm_button">Bidali Autocrypt ezarpen mezua</string>
-    <string name="autocrypt_send_asm_explain_after">Zure ezarpena zuri bidali zaizu. Aldatu beste gailura eta ireki ezarpen mezua. Ezarpen kode bat eskatuko zaizu, Idatzi honako zenbaki hauek han:\n\n%1$s\n\nBehin bukatuta, zure beste gailua Autocrypt erabiltzeko prest egongo da.</string>
+    <string name="autocrypt_send_asm_explain_after">Zure ezarpena zuri bidali zaizu. Aldatu beste gailura eta ireki ezarpen mezua. Ezarpen kode bat eskatuko zaizu, Idatzi honako zenbaki hauek han.\n\nBehin bukatuta, zure beste gailua Autocrypt erabiltzeko prest egongo da.</string>
     <string name="autocrypt_prefer_e2ee">Hobetsi muturretik muturrerako zifratzea</string>
     <string name="autocrypt_asm_subject">Autocrypt ezarpen mezua</string>
     <string name="autocrypt_asm_general_body">Hau Autocrypt ezarpen mezua da, zure muturretik muturrerako ezarpena bezeroen artean pasatzeko erabilia.\n\n Zure ezarpena deszifratu eta erabiltzeko, ireki mezua Autocrypt onartzen duen bezero batean eta sartu gailu sortzailean agertutako ezarpen kodea.</string>
@@ -511,6 +508,7 @@
     <string name="encrypted_message">Zifratutako mezua</string>
 
     <string name="welcome_desktop">Ongi etorri Delta Chat-era</string>
+    <!-- deprecated, use switch_account -->
     <string name="login_known_accounts_title_desktop">Kontu ezagunak</string>
     <string name="global_menu_preferences_language_desktop">Hautatu hizkuntza...</string>
     <string name="global_menu_file_desktop">Fitxategia</string>
@@ -536,18 +534,25 @@
     <string name="delete_message_desktop">Ezabatu mezua</string>
     <string name="more_info_desktop">Informazio gehiago</string>
     <string name="timestamp_format_m_desktop">MMM D</string>
+    <!-- deprecated, use encryption_info_title_desktop or profile_encryption -->
     <string name="encryption_info_desktop">Erakutsi zifratzeari buruzko informazioa</string>
     <string name="remove_desktop">Kendu</string>
     <string name="save_desktop">Gorde</string>
     <string name="name_desktop">Izena</string>
+    <!-- deprecated, use autocrypt_send_asm_title / autocrypt_continue_transfer_title -->
     <string name="autocrypt_key_transfer_desktop">Autocrypt gakoaren transferentzia</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_before -->
     <string name="initiate_key_transfer_desktop">Autocrypt ezarpen mezu batek modu seguruan partekatzen du zure muturretik muturrerako ezarpena Autocryptekin bateragarriak diren beste aplikazioekin. Ezarpena hemen bistaratutako ezarpen kodearekin zifratuko  da, eta beste gailuan kode hau sartu beharko da.</string>
     <string name="select_group_image_desktop">Hautatu taldearen irudia</string>
+    <!-- deprecated, use export_backup_desktop instead -->
     <string name="imex_progress_title_desktop">Babes-kopia abian</string>
     <string name="export_backup_desktop">Esportatu babes-kopia</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_after instead -->
     <string name="show_key_transfer_message_desktop">Zure gakoa  bidali zaizu. Joan beste gailura eta ireki ezarpen mezua. Ezarpen kode bat eskatuko zaizu. Idatzi honako zenbaki hauek han. Behin eginda, zure beste gailua Autocrypt erabiltzeko prest egongo da.</string>
     <string name="autocrypt_correct_desktop">Ongi igorri da Autocrypt ezarpena!</string>
+    <!-- deprecated, use autocrypt_bad_setup_code instead -->
     <string name="autocrypt_incorrect_desktop">Ezarpen kode okerra. Saiatu berriro.</string>
+    <!-- deprecated, rare errors should be english only for easier searchability -->
     <string name="create_chat_error_desktop">Ezin izan da txata sortu.</string>
     <string name="forget_login_confirmation_desktop">Ezabatu erabiltzaile-izen hau? Dena ezabatuko da, muturretik muturrerako ezarpena, txatak, mezuak eta multimedia barne. Ekintza hau behin betikoa da eta ezin da desegin.</string>
     <string name="message_detail_sent_desktop">bidalita</string>

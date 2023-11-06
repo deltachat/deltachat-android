@@ -101,7 +101,6 @@
     <string name="menu_new_contact">Novo contacto</string>
     <string name="menu_new_chat">Nova chat</string>
     <string name="menu_new_group">Novo grupo</string>
-    <string name="menu_new_verified_group">Novo grupo verificado</string>
     <string name="menu_send">Enviar</string>
     <string name="menu_toggle_keyboard">Alternar teclado emoji</string>
     <string name="menu_edit_group">Editar grupo</string>
@@ -205,7 +204,6 @@
     <string name="group_self_not_in_group">Você deve ser um membro do grupo para executar essa ação.</string>
     <string name="profile_encryption">Encriptação</string>
     <string name="media_preview">Visualização de mídia</string>
-    <string name="welcome_intro1_message">O mensageiro com o público mais amplo do mundo. Livre e independente.</string>
     <string name="login_title">Login</string>
     <string name="login_header">Login no seu servidor</string>
     <string name="login_subheader">Para os provedores de e-mail conhecidos as configurações adicionais são configuradas automaticamente. Por vezes, o IMAP precisa estar activado no frontend da web. Consulte seu provedor de e-mail ou amigos para obter ajuda.</string>
@@ -311,7 +309,7 @@
     <string name="autocrypt_send_asm_title">Enviar mensagem com a definição da encriptação automática</string>
     <string name="autocrypt_send_asm_explain_before">A \"Mensagem de Configuração Autocrypt\" compartilha com segurança a sua configuração de ponta a ponta com outros aplicativos compatíveis com Autocrypt. \n\nA configuração será encriptada por um código de configuração que é exibido aqui e deve ser digitado no outro dispositivo.</string>
     <string name="autocrypt_send_asm_button">Enviar mensagem com a definição da encriptação automática</string>
-    <string name="autocrypt_send_asm_explain_after">A sua configuração foi-lhe enviada. Entre no outro dispositivo e abra a mensagem de configuração. Deve ser solicitado a fornecer um código de configuração. Digite os seguintes dígitos no prompt: \n\n%1$s\n\n Assim que estiver concluido, o outro dispositivo estará pronto para usar o Autocrypt.</string>
+    <string name="autocrypt_send_asm_explain_after">A sua configuração foi-lhe enviada. Entre no outro dispositivo e abra a mensagem de configuração. Deve ser solicitado a fornecer um código de configuração. Digite os seguintes dígitos no prompt.\n\n Assim que estiver concluido, o outro dispositivo estará pronto para usar o Autocrypt.</string>
     <string name="autocrypt_prefer_e2ee">Preferir encriptação ponta a ponta</string>
     <string name="autocrypt_asm_subject">Mensagem de configuração do Autocrypt</string>
     <string name="autocrypt_asm_general_body">Esta é a Mensagem de Configuração de Autocrypt usada para transferir sua configuração de ponta a ponta entre clientes (dispositivos). \n\nPara descriptar e usar, abra a mensagem em um cliente compatível com Autocrypt e insira o código de configuração apresentado no dispositivo de geração.</string>
@@ -385,6 +383,7 @@
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Mensagem encriptada</string>
 
+    <!-- deprecated, use switch_account -->
     <string name="login_known_accounts_title_desktop">Contas Conhecidas</string>
     <string name="global_menu_preferences_language_desktop">Escolha o seu idioma...</string>
     <string name="global_menu_file_desktop">Arquivo</string>
@@ -408,17 +407,23 @@
     <string name="delete_message_desktop">Apagar mensagem</string>
     <string name="more_info_desktop">Informação adicional</string>
     <string name="timestamp_format_m_desktop">MMM D</string>
+    <!-- deprecated, use encryption_info_title_desktop or profile_encryption -->
     <string name="encryption_info_desktop">Mostrar a informação de encriptação</string>
     <string name="remove_desktop">Apagar</string>
     <string name="save_desktop">Guardar</string>
     <string name="name_desktop">Nome</string>
+    <!-- deprecated, use autocrypt_send_asm_title / autocrypt_continue_transfer_title -->
     <string name="autocrypt_key_transfer_desktop">Transferência da chave de Autocrypt</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_before -->
     <string name="initiate_key_transfer_desktop">Uma Mensagem de Configuração Autocrypt compartilha de forma segura sua configuração de ponta a ponta com outros aplicativos compatíveis com Autocrypt. A configuração será encriptada por um código de configuração que é exibido aqui e deve ser digitado no outro dispositivo.</string>
     <string name="select_group_image_desktop">Seleccionar a imagem para o grupo</string>
+    <!-- deprecated, use export_backup_desktop instead -->
     <string name="imex_progress_title_desktop">Progressão do backup</string>
     <string name="export_backup_desktop">Exportar o backup</string>
     <string name="autocrypt_correct_desktop">Configuração autocrypt transferida com sucesso!</string>
+    <!-- deprecated, use autocrypt_bad_setup_code instead -->
     <string name="autocrypt_incorrect_desktop">Código de configuração incorreto. Por favor, tente novamente.</string>
+    <!-- deprecated, rare errors should be english only for easier searchability -->
     <string name="create_chat_error_desktop">Não foi possível criar o Chat</string>
     <string name="forget_login_confirmation_desktop">Apagar este login? Tudo será apagado, incluindo sua configuração de ponta a ponta, contatos, chats, mensagens e mídia. Esta ação é final e não pode ser revertida.</string>
     <string name="message_detail_sent_desktop">enviado</string>

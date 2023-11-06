@@ -47,7 +47,6 @@
     <string name="main_menu">Κύριο Μενού</string>
     <string name="start_chat">Ξεκινήστε Συνομιλία</string>
     <string name="show_full_message">Εμφάνιση Πλήρους Μηνύματος</string>
-    <string name="show_full_message_in_browser">Εμφάνιση Πλήρους Μηνύματος στο Πρόγραμμα Περιήγησης</string>
     <!-- Placeholder text when something is loading -->
     <string name="loading">Φόρτωση…</string>
     <string name="hide">Απόκρυψη</string>
@@ -144,7 +143,6 @@
     <string name="video">Βίντεο</string>
     <string name="documents">Αρχεία</string>
     <string name="contact">Επαφή</string>
-    <string name="verified_contact">Επαληθευμένη Επαφή</string>
     <string name="camera">Κάμερα</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Λήψη</string>
@@ -159,7 +157,6 @@
     <string name="webxdc_app">Ιδιωτική Εφαρμογή</string>
     <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_apps">Ιδιωτικές Εφαρμογές</string>
-    <string name="files_and_webxdx_apps">Αρχεία και Ιδιωτικές Εφαρμογές</string>
     <string name="unknown">Άγνωστο</string>
 
     <string name="green">Πράσινο</string>
@@ -185,9 +182,6 @@
     <string name="menu_new_contact">Νέα Επαφή</string>
     <string name="menu_new_chat">Νέα Συνομιλία</string>
     <string name="menu_new_group">Νέα ομάδα</string>
-    <!-- Use the same wording as "Subject" to help people coming from the e-mail context; eg. "Betreff" in German -->
-    <string name="new_group_or_subject">Νέα Ομάδα ή Θέμα</string>
-    <string name="menu_new_verified_group">Νέα Επαληθευμένη Ομάδα</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">Λίστα Μέσων</string>
     <string name="broadcast_lists">Λίστες Μέσων</string>
@@ -483,7 +477,6 @@
     <!-- welcome and login -->
     <string name="welcome_chat_over_email">Συνομιλία μέσω E-Mail.</string>
     <string name="scan_invitation_code">Σάρωση Κωδικού Πρόσκλησης</string>
-    <string name="welcome_intro1_message">Ο αγγελιοφόρος με το ευρύτερο κοινό στον κόσμο. Ελεύθερος και ανεξάρτητος.</string>
     <string name="login_title">Σύνδεση</string>
     <string name="login_header">Συνδεθείτε στον λογαριασμό σας E-Mail</string>
     <string name="login_explain">Συνδεθείτε με έναν υπάρχοντα λογαριασμό e-mail</string>
@@ -508,8 +501,6 @@
     <string name="login_socks5_port">Θύρα SOCKS5</string>
     <string name="login_socks5_user">Χρήστης SOCKS5</string>
     <string name="login_socks5_password">Κωδικός SOCKS5</string>
-    <!-- Translators: %1$s will be replaced by an e-mail address -->
-    <string name="login_oauth2_checking_addr">Έλεγχος %1$s</string>
     <string name="login_info_oauth2_title">Συνέχεια με την απλοποιημένη ρύθμιση;</string>
     <string name="login_info_oauth2_text">Η εισαγόμενη διεύθυνση e-mail υποστηρίζει μια απλοποιημένη ρύθμιση (OAuth 2.0).\n\nΣτο επόμενο βήμα, επιτρέψτε στο Delta Chat να λειτουργεί ως η εφαρμογή Chat μέσω ηλεκτρονικού ταχυδρομείου.\n\nΔεν υπάρχουν διακομιστές Delta Chat, τα δεδομένα σας παραμένει στη συσκευή σας.</string>
     <string name="login_certificate_checks">Έλεγχοι Πιστοποιητικών</string>
@@ -701,7 +692,7 @@
     <string name="autocrypt_send_asm_title">Αποστολή μηνύματος ρύθμισης αυτόματης κρυπτογράφησης</string>
     <string name="autocrypt_send_asm_explain_before">Ένα μήνυμα ρύθμισης αυτόματης κρυπτογράφησης κοινοποιεί με ασφάλεια τη ρύθμισή σας από άκρο σε άκρο με άλλες εφαρμογές συμβατές με την Αυτόματη κρυπτογράφηση.\n\nΗ ρύθμιση θα κρυπτογραφηθεί από έναν κωδικό ρύθμισης που εμφανίζεται εδώ και θα πρέπει να πληκτρολογηθεί στην άλλη συσκευή.</string>
     <string name="autocrypt_send_asm_button">Αποστολή μηνύματος ρύθμισης αυτόματης κρυπτογράφησης</string>
-    <string name="autocrypt_send_asm_explain_after">Η ρύθμισή σας έχει σταλεί στον εαυτό σας. Μεταβείτε στην άλλη συσκευή και ανοίξτε το μήνυμα ρύθμισης. Θα πρέπει να σας ζητηθεί κωδικός ρύθμισης. Εισαγάγετε τα ακόλουθα ψηφία:\n\n%1$s</string>
+    <string name="autocrypt_send_asm_explain_after">Η ρύθμισή σας έχει σταλεί στον εαυτό σας. Μεταβείτε στην άλλη συσκευή και ανοίξτε το μήνυμα ρύθμισης. Θα πρέπει να σας ζητηθεί κωδικός ρύθμισης. Εισαγάγετε τα ακόλουθα ψηφία:</string>
     <string name="autocrypt_prefer_e2ee">Προτιμήστε την κρυπτογράφηση από άκρο σε άκρο</string>
     <string name="autocrypt_asm_subject">Μήνυμα ρύθμισης αυτόματης κρυπτογράφησης</string>
     <string name="autocrypt_asm_general_body">Αυτό είναι το μήνυμα ρύθμισης αυτόματης κρυπτογράφησης που χρησιμοποιείται για τη μεταφορά της ρύθμισής σας από άκρο σε άκρο μεταξύ πελατών.\n\nΓια να αποκρυπτογραφήσετε και να χρησιμοποιήσετε τη ρύθμισή σας, ανοίξτε το μήνυμα σε ένα πρόγραμμα-πελάτη συμβατό με Αυτόματη κρυπτογράφηση και εισαγάγετε τον κωδικό ρύθμισης που παρουσιάζεται στη συσκευή δημιουργίας.</string>
@@ -878,6 +869,7 @@
     <string name="about_offical_app_desktop">Αυτή είναι η επίσημη εφαρμογή Delta Chat Desktop.</string>
     <string name="about_licensed_under_desktop">Αυτό το λογισμικό έχει άδεια χρήσης σύμφωνα με την GNU GPL έκδοση 3 και ο πηγαίος κώδικας είναι διαθέσιμος στο GitHub.</string>
     <string name="welcome_desktop">Καλώς ήρθατε στο Delta Chat</string>
+    <!-- deprecated, use switch_account -->
     <string name="login_known_accounts_title_desktop">Γνωστοί Λογαριασμοί</string>
     <string name="global_menu_preferences_language_desktop">Γλώσσα</string>
     <string name="global_menu_file_desktop">Αρχείο</string>
@@ -905,18 +897,25 @@
     <string name="delete_message_desktop">Διαγραφή μηνύματος</string>
     <string name="more_info_desktop">Περισσότερες πληροφορίες</string>
     <string name="timestamp_format_m_desktop">MMM D</string>
+    <!-- deprecated, use encryption_info_title_desktop or profile_encryption -->
     <string name="encryption_info_desktop">Εμφάνιση Πληροφοριών Κρυπτογράφησης</string>
     <string name="remove_desktop">Αφαίρεση</string>
     <string name="save_desktop">Αποθήκευση</string>
     <string name="name_desktop">Όνομα</string>
+    <!-- deprecated, use autocrypt_send_asm_title / autocrypt_continue_transfer_title -->
     <string name="autocrypt_key_transfer_desktop">Αυτόματη κρυπτογράφηση μεταφοράς κλειδιού</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_before -->
     <string name="initiate_key_transfer_desktop">Ένα μήνυμα ρύθμισης αυτόματης κρυπτογράφησης μοιράζεται με ασφάλεια τις ρυθμίσεις σας από άκρο σε άκρο με άλλες εφαρμογές συμβατές με την αυτόματη κρυπτογράφηση. Η εγκατάσταση θα κρυπτογραφηθεί από έναν κωδικό ρύθμισης που εμφανίζεται εδώ και πρέπει να πληκτρολογηθεί στην άλλη συσκευή.</string>
     <string name="select_group_image_desktop">Επιλέξτε Εικόνας Ομάδας</string>
+    <!-- deprecated, use export_backup_desktop instead -->
     <string name="imex_progress_title_desktop">Δημιουργία Αντιγράφων Ασφαλείας</string>
     <string name="export_backup_desktop">Εξαγωγή Αντιγράφων Ασφαλείας</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_after instead -->
     <string name="show_key_transfer_message_desktop">Το κλειδί σας έχει σταλεί στον εαυτό σας. Μεταβείτε στην άλλη συσκευή και ανοίξτε το μήνυμα ρύθμισης. Θα πρέπει να σας ζητηθεί κωδικός ρύθμισης. Εισαγάγετε τα ακόλουθα ψηφία:</string>
     <string name="autocrypt_correct_desktop">Η ρύθμιση αυτόματης κρυπτογράφησης μεταφέρθηκε.</string>
+    <!-- deprecated, use autocrypt_bad_setup_code instead -->
     <string name="autocrypt_incorrect_desktop">Λανθασμένος κωδικός ρύθμισης. Παρακαλώ προσπαθησε ξανά.</string>
+    <!-- deprecated, rare errors should be english only for easier searchability -->
     <string name="create_chat_error_desktop">Αδυναμία δημιουργίας συνομιλίας.</string>
     <string name="forget_login_confirmation_desktop">Διαγραφή αυτής της σύνδεσης; Τα πάντα θα διαγραφούν, συμπεριλαμβανομένων των ρυθμίσεων από άκρο σε άκρο, επαφών, συνομιλιών, μηνυμάτων και πολυμέσων. Αυτή η πράξη δε μπορεί να αναιρεθεί.</string>
     <string name="account_info_hover_tooltip_desktop2">E-Mail: %1$s\nΜέγεθος: %2$s\n Αναγνωριστικό Λογαριασμού: %3$s</string>

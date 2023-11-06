@@ -109,7 +109,6 @@
     <string name="video">Vìdeu</string>
     <string name="documents">Documentos editàbiles</string>
     <string name="contact">Cuntatu</string>
-    <string name="verified_contact">Cuntatu verificadu</string>
     <string name="camera">Fotocàmera</string>
     <string name="location">Positzione</string>
     <string name="gallery">Galleria</string>
@@ -141,7 +140,6 @@
     <string name="menu_new_contact">Cuntatu nou</string>
     <string name="menu_new_chat">Tzarrada noa</string>
     <string name="menu_new_group">Grupu nou</string>
-    <string name="menu_new_verified_group">Grupu verificadu nou</string>
     <string name="menu_send">Imbiadu</string>
     <string name="menu_toggle_keyboard">Alterna sa tastiera emoji</string>
     <string name="menu_edit_group">Modìfica su grupu</string>
@@ -320,7 +318,6 @@
     <string name="tab_docs_empty_hint">Sos documentos editàbiles, cussos musicales e totu sas àteras castas de documentos cumpartzidos in custa tzarrada ant a èssere ammustrados inoghe.</string>
     <string name="media_preview">Anteprima de su documentu multimediale</string>
     <string name="send_message">Imbia messàgiu</string>
-    <string name="welcome_intro1_message">S\'aplicatzione de messagìstica cun prus impreadores in su mundu. Lìbera e indipendente.</string>
     <string name="login_title">Intra</string>
     <string name="login_header">Intra in su servidore tuo</string>
     <string name="login_explain">Intra cun un\'indiritzu de posta eletrònica chi esistat</string>
@@ -338,8 +335,6 @@
     <string name="login_smtp_port">Ghenna SMTP</string>
     <string name="login_smtp_security">Seguresa SMTP</string>
     <string name="login_auth_method">Manera de autenticatzione</string>
-    <!-- Translators: %1$s will be replaced by an e-mail address -->
-    <string name="login_oauth2_checking_addr">Verifichende %1$s</string>
     <string name="login_info_oauth2_title">Cheres sighire cun s\'impostatzione semplificada?</string>
     <string name="login_info_oauth2_text">S\'indiritzu de posta eletrònica insertadu suportat un\'impostztione semplificada (OAuth 2.0).\n\n In su passu chi sighet, pro praghere, permite a Delta Chat de operare che a aplicatzione de tzarrada pro mèdiu de posta eletrònica.\n\nNon bi sunt serbidores de Delta Chat, abarrat totu in su dispositivu tuo.</string>
     <string name="login_certificate_checks">Verìficas de su tzertificadu</string>
@@ -492,12 +487,13 @@
     <string name="autocrypt_send_asm_title">Imbia unu messàgiu de impostatzione de Autocrypt</string>
     <string name="autocrypt_send_asm_explain_before">Unu \'Messàgiu de configuratzione Autocrypt\' cumpartzit sa configuratzione a nodu terminale (end-to-end) cun àteras aplicatziones cumpatìbiles cun Autocrypt.\n\nSa configuratzione ant a èssere tzifradas cun unu còdighe ammustradu inoghe chi depet èssere insertadu in s\'àteru dispositivu. </string>
     <string name="autocrypt_send_asm_button">Imbia unu messàgiu de impostatzione de Autocrypt</string>
-    <string name="autocrypt_send_asm_explain_after">Ti ses imbiadu sa configuratzione tua. Cola a s\'àteru dispositivu e aberi su messàgiu de configuratzione. Ti diat dèpere èssere pedidu unu còdighe de configuratzione. Inserta custas tzifras:\n\n%1$s</string>
+    <string name="autocrypt_send_asm_explain_after">Ti ses imbiadu sa configuratzione tua. Cola a s\'àteru dispositivu e aberi su messàgiu de configuratzione. Ti diat dèpere èssere pedidu unu còdighe de configuratzione. Inserta custas tzifras:</string>
     <string name="autocrypt_prefer_e2ee">Preferi sa tzifradura a nodu terminale (end-to-end)</string>
     <string name="autocrypt_asm_subject">Messàgiu de configuratzione de Autocrypt</string>
     <string name="write_message_desktop">Iscrie unu messàgiu</string>
     <string name="encryption_info_title_desktop">Informatziones de tzifradura</string>
     <string name="more_info_desktop">Àteras informatziones</string>
+    <!-- deprecated, use encryption_info_title_desktop or profile_encryption -->
     <string name="encryption_info_desktop">Ammustra sas informatziones de tzifradura</string>
     <string name="a11y_encryption_padlock">Luchete de tzifradura</string>
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->

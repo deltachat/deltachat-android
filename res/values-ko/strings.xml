@@ -47,7 +47,6 @@
     <string name="main_menu">메인 메뉴</string>
     <string name="start_chat">채팅 시작</string>
     <string name="show_full_message">전체 메시지 보기...</string>
-    <string name="show_full_message_in_browser">브라우저에서 전체 메시지 보기...</string>
     <!-- Placeholder text when something is loading -->
     <string name="loading">로딩 중...</string>
     <string name="hide">숨기기</string>
@@ -136,7 +135,6 @@
     <string name="video">동영상</string>
     <string name="documents">문서</string>
     <string name="contact">연락처</string>
-    <string name="verified_contact">확인된 연락처</string>
     <string name="camera">카메라</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">캡쳐</string>
@@ -151,7 +149,6 @@
     <string name="webxdc_app">개인 앱</string>
     <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_apps">개인 앱</string>
-    <string name="files_and_webxdx_apps">파일, 개인 앱</string>
     <string name="unknown">알 수 없음</string>
 
     <string name="green">초록</string>
@@ -177,9 +174,6 @@
     <string name="menu_new_contact">대화상대 추가</string>
     <string name="menu_new_chat">채팅 시작</string>
     <string name="menu_new_group">새 그룹</string>
-    <!-- Use the same wording as "Subject" to help people coming from the e-mail context; eg. "Betreff" in German -->
-    <string name="new_group_or_subject">새 그룹이나 주제</string>
-    <string name="menu_new_verified_group">새 확인된 그룹</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">방송 목록</string>
     <string name="broadcast_lists">방송 목록</string>
@@ -462,7 +456,6 @@
     <!-- welcome and login -->
     <string name="welcome_chat_over_email">이메일로 채팅.</string>
     <string name="scan_invitation_code">초대 코드 스캔</string>
-    <string name="welcome_intro1_message">세계에서 가장 많은 시청자를 가진 메신저. 자유롭고 독립적입니다.</string>
     <string name="login_title">로그인</string>
     <string name="login_header">이메일 계정으로 로그인하시오</string>
     <string name="login_explain">존재하는 이메일 계정으로 로그인하시오</string>
@@ -487,8 +480,6 @@
     <string name="login_socks5_port">SOCKS5 포트</string>
     <string name="login_socks5_user">SOCKS5 사용자</string>
     <string name="login_socks5_password">SOCKS5 비밀번호</string>
-    <!-- Translators: %1$s will be replaced by an e-mail address -->
-    <string name="login_oauth2_checking_addr">%1$s 확인중</string>
     <string name="login_info_oauth2_title">간소화된 설치를 계속하시겠습니까?</string>
     <string name="login_info_oauth2_text">입력한 이메일 주소는 단순화된 설정(OAuth 2.0)을 지원합니다.\n\n다음 단계에서는 Delta Chat 이 이메일을 통한 채팅 앱 역할을 하도록 허용하십시오.\n\nDelta 채팅 서버가 없으며 데이터가 장치에 남아 있습니다.</string>
     <string name="login_certificate_checks">인증서 확인</string>
@@ -667,7 +658,7 @@
     <string name="autocrypt_send_asm_title">자동 암호화 설정된 메시지 전송</string>
     <string name="autocrypt_send_asm_explain_before">자동 암호화 설치 메시지는 사용자의 설정을 다른 자동 암호화 호환 앱과 안전하게 공유합니다.\n\n설치는 여기에 표시된 설치 코드에 의해 암호화되며 다른 장치에 입력해야 합니다.</string>
     <string name="autocrypt_send_asm_button">자동 암호화 설정된 메시지 전송</string>
-    <string name="autocrypt_send_asm_explain_after">설정이 사용자 자신에게 전송되었습니다. 다른 장치로 전환하고 설정 메시지를 엽니다. 설정 코드를 입력하라는 메시지가 표시됩니다. 다음 숫자를 입력합니다.\n\n%1$s</string>
+    <string name="autocrypt_send_asm_explain_after">설정이 사용자 자신에게 전송되었습니다. 다른 장치로 전환하고 설정 메시지를 엽니다. 설정 코드를 입력하라는 메시지가 표시됩니다. 다음 숫자를 입력합니다.</string>
     <string name="autocrypt_asm_subject">자동 암호화 설정 메시지</string>
     <string name="autocrypt_asm_general_body">클라이언트 간에 종단 간 설정을 전송하는 데 사용되는 자동 암호화 설정 메시지입니다.\n\n설치를 해독하고 사용하려면 자동 암호화 호환 클라이언트에서 메시지를 열고 생성 장치에 표시된 설치 코드를 입력하십시오.</string>
     <string name="autocrypt_asm_click_body">클라이언트 간에 종단 간 설정을 전송하는 데 사용되는 자동 암호화 설정 메시지입니다.\n\n설치를 해독하고 사용하려면 이 메시지를 누르거나 클릭하십시오.</string>
@@ -840,6 +831,7 @@
     <string name="about_offical_app_desktop">이것은 Delta Chat 데스크톱 공식 앱입니다.</string>
     <string name="about_licensed_under_desktop">이 소프트웨어는 GNU GPL 버전 3에 따라 라이센스가 부여되며 소스 코드는 GitHub에서 사용할 수 있습니다.</string>
     <string name="welcome_desktop">Delta Chat에 오신 것을 환영합니다.</string>
+    <!-- deprecated, use switch_account -->
     <string name="login_known_accounts_title_desktop">확인된 계정</string>
     <string name="global_menu_preferences_language_desktop">언어</string>
     <string name="global_menu_file_desktop">파일</string>
@@ -865,18 +857,25 @@
     <string name="write_message_desktop">메시지 작성</string>
     <string name="delete_message_desktop">메시지 삭제</string>
     <string name="more_info_desktop">더 많은 정보</string>
+    <!-- deprecated, use encryption_info_title_desktop or profile_encryption -->
     <string name="encryption_info_desktop">암호화 정보 표시</string>
     <string name="remove_desktop">삭제</string>
     <string name="save_desktop">저장</string>
     <string name="name_desktop">이름</string>
+    <!-- deprecated, use autocrypt_send_asm_title / autocrypt_continue_transfer_title -->
     <string name="autocrypt_key_transfer_desktop">자동 암호화 키 전송</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_before -->
     <string name="initiate_key_transfer_desktop">자동 암호화 설치 메시지는 사용자의 설정을 다른 자동 암호화 호환 앱과 안전하게 공유합니다. 설정은 여기에 표시된 설정 코드로 암호화되며 다른 장치에 입력해야 합니다.</string>
     <string name="select_group_image_desktop">그룹 이미지 선택</string>
+    <!-- deprecated, use export_backup_desktop instead -->
     <string name="imex_progress_title_desktop">백업 진행률</string>
     <string name="export_backup_desktop">백업 내보내기</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_after instead -->
     <string name="show_key_transfer_message_desktop">키가 사용자 자신에게 전송되었습니다. 다른 장치로 전환하고 설정 메시지를 엽니다. 설정 코드를 입력하라는 메시지가 표시됩니다. 다음 숫자를 입력합니다.</string>
     <string name="autocrypt_correct_desktop">자동 암호화 설정이 전송되었습니다.</string>
+    <!-- deprecated, use autocrypt_bad_setup_code instead -->
     <string name="autocrypt_incorrect_desktop">잘못된 설정 코드입니다. 다시 시도하십시오.</string>
+    <!-- deprecated, rare errors should be english only for easier searchability -->
     <string name="create_chat_error_desktop">대화를 만들 수 없습니다.</string>
     <string name="forget_login_confirmation_desktop">이 로그인을 삭제하시겠습니까? 모든 설정, 연락처, 채팅, 메시지 및 미디어를 포함한 모든 것이 삭제됩니다. 이 작업은 취소할 수 없습니다.</string>
     <string name="account_info_hover_tooltip_desktop2">이메일: %1$s\n크기: %2$s\n계정 ID:%3$s</string>

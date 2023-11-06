@@ -29,6 +29,7 @@
     <string name="emoji">Emoji</string>
     <string name="attachment">Załącznik</string>
     <string name="back">Wróć</string>
+    <!-- this string is deprecated; the new wording is "introduced by ..." -->
     <string name="verified">Zweryfikowano</string>
     <string name="close">Zamknij</string>
     <string name="close_window">Zamknij okno</string>
@@ -49,7 +50,6 @@
     <string name="main_menu">Menu główne</string>
     <string name="start_chat">Rozpocznij czat</string>
     <string name="show_full_message">Pokaż całą wiadomość…</string>
-    <string name="show_full_message_in_browser">Pokaż całą wiadomość w przeglądarce…</string>
     <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
     <string name="mark_all_as_read">Wszys. przeczyt.</string>
     <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
@@ -170,7 +170,6 @@
     <string name="video">Wideo</string>
     <string name="documents">Dokumenty</string>
     <string name="contact">Kontakt</string>
-    <string name="verified_contact">Zweryfikowany kontakt</string>
     <string name="camera">Kamera</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Zrób to</string>
@@ -186,7 +185,6 @@
     <string name="webxdc_app">Prywatna aplikacja</string>
     <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_apps">Prywatne aplikacje</string>
-    <string name="files_and_webxdx_apps">Pliki i prywatne aplikacje</string>
     <string name="unknown">Nieznany</string>
 
     <string name="green">Zielony</string>
@@ -212,9 +210,6 @@
     <string name="menu_new_contact">Nowy kontakt</string>
     <string name="menu_new_chat">Nowy czat</string>
     <string name="menu_new_group">Nowa grupa</string>
-    <!-- Use the same wording as "Subject" to help people coming from the e-mail context; eg. "Betreff" in German -->
-    <string name="new_group_or_subject">Nowa grupa lub temat</string>
-    <string name="menu_new_verified_group">Nowa zweryfikowana grupa</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">Lista rozgłoszeniowa</string>
     <string name="broadcast_lists">Lista rozgłoszeniowa</string>
@@ -559,7 +554,6 @@
     <!-- welcome and login -->
     <string name="welcome_chat_over_email">Rozmawiaj przez e-mail.</string>
     <string name="scan_invitation_code">Zeskanuj kod zaproszenia</string>
-    <string name="welcome_intro1_message">Komunikator o największym zasięgu na świecie. Darmowy i bezpieczny.</string>
     <string name="login_title">Zaloguj się</string>
     <string name="login_header">Zaloguj się na swoje konto e-mail</string>
     <string name="login_explain">Zaloguj się przy użyciu istniejącego konta e-mail</string>
@@ -584,8 +578,6 @@
     <string name="login_socks5_port">Port SOCKS5</string>
     <string name="login_socks5_user">Użytkownik SOCKS5</string>
     <string name="login_socks5_password">Hasło SOCKS5</string>
-    <!-- Translators: %1$s will be replaced by an e-mail address -->
-    <string name="login_oauth2_checking_addr">Sprawdzanie %1$s</string>
     <string name="login_info_oauth2_title">Kontynuuj w uproszczonej konfiguracji?</string>
     <string name="login_info_oauth2_text">Wprowadzony adres e-mail obsługuje uproszczoną konfigurację (OAuth2.0).\n\nW następnym kroku pozwól, aby Delta Chat działał jako czat z aplikacją e-mail.\n\nNie ma serwerów Delta Chat, Twoje dane pozostają na Twoim urządzeniu!</string>
     <string name="login_certificate_checks">Sprawdzanie certyfikatów</string>
@@ -782,7 +774,7 @@
     <string name="autocrypt_send_asm_title">Wyślij wiadomość konfiguracyjną Autocrypt</string>
     <string name="autocrypt_send_asm_explain_before">Wiadomość konfiguracyjna automatycznego szyfrowania” bezpiecznie udostępnia twoją konfigurację end-to-end innym aplikacjom zgodnym z Autocrypt. Klucz zostanie zaszyfrowany za pomocą wyświetlonego tutaj kodu konfiguracyjnego, który należy wpisać na drugim urządzeniu.</string>
     <string name="autocrypt_send_asm_button">Wyślij wiadomość konfiguracyjną Autocrypt</string>
-    <string name="autocrypt_send_asm_explain_after">Klucz został wysłany do ciebie. Przejdź do innego urządzenia i otwórz wiadomość konfiguracyjną. Zostanie wyświetlona prośba o podanie kodu konfiguracyjnego. Wpisz następujące cyfry w podpowiedzi:\n\n%1$s\n\nGdy skończysz, drugie urządzenie będzie gotowe do użycia funkcji automatycznego szyfrowania.</string>
+    <string name="autocrypt_send_asm_explain_after">Klucz został wysłany do ciebie. Przejdź do innego urządzenia i otwórz wiadomość konfiguracyjną. Zostanie wyświetlona prośba o podanie kodu konfiguracyjnego. Wpisz następujące cyfry w podpowiedzi.\n\nGdy skończysz, drugie urządzenie będzie gotowe do użycia funkcji automatycznego szyfrowania.</string>
     <string name="autocrypt_prefer_e2ee">Preferuj pełne szyfrowanie</string>
     <string name="autocrypt_asm_subject">Wiadomość konfiguracyjna automatycznego szyfrowania</string>
     <string name="autocrypt_asm_general_body">Jest to wiadomość konfiguracyjna automatycznego szyfrowania służąca do przesyłania klucza między klientami.\n\nAby odszyfrować i użyć klucza, otwórz wiadomość w kliencie zgodnym z automatycznym szyfrowaniem i wprowadź kod konfiguracyjny przedstawiony na urządzeniu generującym.</string>
@@ -861,6 +853,8 @@
     <string name="ephemeral_timer_weeks_by_you">Ustawiono zegar znikających wiadomości na %1$s tyg.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_weeks_by_other"> Użytkownik %2$s ustawił zegar znikających wiadomości na %1$s tyg.</string>
+    <string name="learn_more">Czytaj więcej</string>
+
     <string name="devicemsg_self_deleted">Usunięto czat „Zapisane wiadomości”.\n\nℹ️ Aby ponownie użyć funkcji „Zapisane wiadomości”, utwórz nowy czat ze sobą.</string>
     <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
     <string name="devicemsg_storage_exceeding">⚠️ Limit pamięci u twojego dostawcy wkrótce zostanie przekroczony, wykorzystano już %1$s%%.\n\nMożesz nie być w stanie otrzymywać wiadomości, gdy pamięć jest pełna.\n\n👉 Sprawdzić, czy możesz usunąć stare dane w interfejsie internetowym dostawcy i rozważyć włączenie opcji \"Ustawienia » Czaty i media » Usuwanie starych wiadomości\". W dowolnym momencie możesz sprawdzić swoje bieżące wykorzystanie pamięci w \"Ustawienia » Łączność\".</string>
@@ -917,7 +911,7 @@
     <string name="secure_join_replies">Użytkownik %1$s odpowiedział, czekając na dodanie do grupy…</string>
     <string name="contact_verified">Kontakt %1$s zweryfikowany.</string>
     <string name="contact_not_verified">Nie można zweryfikować %1$s</string>
-    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that verified the contact shown. -->
+    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">Zweryfikowano przez %1$s</string>
     <string name="verified_by_you">Zweryfikowane przez ciebie</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
@@ -939,6 +933,10 @@
     <string name="notify_name_only">Tylko nazwa</string>
     <string name="notify_no_name_or_message">Brak nazwy lub wiadomości</string>
     <string name="notifications_disabled">Powiadomienia wyłączone</string>
+    <string name="new_messages">Nowe wiadomości</string>
+    <string name="n_messages_in_m_chats">%1$d wiadomości w %2$d czatach</string>
+
+
     <!-- permissions -->
     <string name="perm_required_title">Wymagane zezwolenie</string>
     <string name="perm_continue">Kontynuuj</string>
@@ -965,6 +963,7 @@
     <string name="about_offical_app_desktop">To jest oficjalna aplikacja Delta Chat Desktop.</string>
     <string name="about_licensed_under_desktop">To oprogramowanie jest objęte licencją GNU GPL w wersji 3, a kod źródłowy jest dostępny na GitHub.</string>
     <string name="welcome_desktop">Witaj w Delta Chat</string>
+    <!-- deprecated, use switch_account -->
     <string name="login_known_accounts_title_desktop">Znane konta</string>
     <string name="global_menu_preferences_language_desktop">Wybierz język</string>
     <string name="global_menu_file_desktop">Plik</string>
@@ -992,18 +991,25 @@
     <string name="delete_message_desktop">Usuń wiadomość</string>
     <string name="more_info_desktop">Więcej informacji</string>
     <string name="timestamp_format_m_desktop">D MMM</string>
+    <!-- deprecated, use encryption_info_title_desktop or profile_encryption -->
     <string name="encryption_info_desktop">Pokaż informacje o szyfrowaniu</string>
     <string name="remove_desktop">Usuń</string>
     <string name="save_desktop">Zapisz</string>
     <string name="name_desktop">Nazwa</string>
+    <!-- deprecated, use autocrypt_send_asm_title / autocrypt_continue_transfer_title -->
     <string name="autocrypt_key_transfer_desktop">Transfer klucza Autocrypt</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_before -->
     <string name="initiate_key_transfer_desktop">Wiadomość konfiguracyjna automatycznego szyfrowania bezpiecznie udostępnia twoją konfigurację end-to-end innym aplikacjom zgodnym z Autocrypt. Klucz zostanie zaszyfrowany za pomocą wyświetlonego tutaj kodu konfiguracyjnego, który należy wpisać na drugim urządzeniu.</string>
     <string name="select_group_image_desktop">Wybierz obraz grupy</string>
+    <!-- deprecated, use export_backup_desktop instead -->
     <string name="imex_progress_title_desktop">Postęp tworzenia kopii zapasowej </string>
     <string name="export_backup_desktop">Eksport kopii zapasowej</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_after instead -->
     <string name="show_key_transfer_message_desktop">Twój klucz został wysłany do ciebie. Przełącz się na inne urządzenie i otwórz komunikat konfiguracji. Powinieneś zostać poproszony o kod instalacyjny. Wpisz następujące cyfry w wierszu polecenia. Po zakończeniu Twoje drugie urządzenie będzie gotowe do użycia funkcji Autocrypt.</string>
     <string name="autocrypt_correct_desktop">Pomyślnie przetransferowano konfigurację Autocrypt!</string>
+    <!-- deprecated, use autocrypt_bad_setup_code instead -->
     <string name="autocrypt_incorrect_desktop">Nieprawidłowy kod konfiguracji. Spróbuj ponownie.</string>
+    <!-- deprecated, rare errors should be english only for easier searchability -->
     <string name="create_chat_error_desktop">Nie można utworzyć czatu.</string>
     <string name="forget_login_confirmation_desktop">Usunąć ten login? Wszystko zostanie usunięte, w tym kompletna konfiguracja, kontakty, czaty, wiadomości i multimedia. Ta akcja jest ostateczna i nie można jej odwrócić.</string>
     <string name="account_info_hover_tooltip_desktop2">E-mail: %1$s\nRozmiar: %2$s\nID konta: %3$s</string>

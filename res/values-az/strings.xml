@@ -92,7 +92,6 @@
     <string name="video">Video</string>
     <string name="documents">Sənədlər</string>
     <string name="contact">Kontakt</string>
-    <string name="verified_contact">Yoxlanılmış kontakt</string>
     <string name="camera">Kamera</string>
     <string name="location">Yer</string>
     <string name="gallery">Qalereya</string>
@@ -120,7 +119,6 @@
     <string name="menu_new_contact">Yeni kontakt</string>
     <string name="menu_new_chat">Yeni çat</string>
     <string name="menu_new_group">Yeni qrup</string>
-    <string name="menu_new_verified_group">Yeni yoxlanılmış qrup</string>
     <string name="menu_send">Göndər</string>
     <string name="menu_toggle_keyboard">Emoji klaviatura keçidi</string>
     <string name="menu_edit_group">Qrupu dəyiş</string>
@@ -256,7 +254,6 @@
     <string name="tab_gallery_empty_hint">Bu çatda paylaşılan şəkillər və videolar burada nümayiş olunacaq.</string>
     <string name="tab_docs_empty_hint">Bu söhbətdə paylaşılan sənədlər, musiqi və digər fayllar burada göstəriləcək.</string>
     <string name="media_preview">Fayllara baxmaq</string>
-    <string name="welcome_intro1_message">Dünyanın ən böyük auditoriyasına sahib olan mesenjeri. Azad və müstəqil.</string>
     <string name="login_title">Daxil ol</string>
     <string name="login_header">Serverinə daxil ol</string>
     <string name="login_explain">Mövcud e-mail hesabı ilə daxil olun</string>
@@ -379,6 +376,7 @@
     <string name="autocrypt_send_asm_title">Autocrypt mesaj ayarı göndər</string>
     <string name="autocrypt_send_asm_explain_before">Autocrypt Setup Message digər Autocrypt-uyğun proqramlarla təhlükəsiz şəkildə bölüşür. \n\nSizin buradakı quraşdırma koduyla şifrələnir və digər qurğuda yazılmalıdır.</string>
     <string name="autocrypt_send_asm_button">Autocrypt Setup Message-ı göndər</string>
+    <string name="autocrypt_send_asm_explain_after">Sizin açarınız sizə göndərildi. Başqa bir cihaza keçin və mesajın ayarını açın. Siz quraşdırma kodu daxil etməlisiniz. Orada aşağıdakı rəqəmləri daxil edin. Bitirən zaman, başqa bir cihazda Autocrypt istifadə üçün hazır olacaq.</string>
     <string name="autocrypt_prefer_e2ee">Ucdan-uca şifrələmə üstünlük təşkil edir</string>
     <string name="autocrypt_asm_subject">Autocrypt mesaj ayarı</string>
     <string name="autocrypt_asm_general_body">Bu, müvəqqəti quraşdırma üçün müştərilər arasında köçürmək üçün istifadə edilən Autocrypt Setup Mesajıdır. \n\nSenfikanızı çözmək və istifadə etmək üçün autocrypt uyğun müştəri içərisində mesajı açın və yaradan cihazda göstərilən quraşdırma kodunu daxil edin.</string>
@@ -452,6 +450,7 @@
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Şifrələnmiş mesaj</string>
 
+    <!-- deprecated, use switch_account -->
     <string name="login_known_accounts_title_desktop">Bilinən hesablar</string>
     <string name="global_menu_preferences_language_desktop">Dil səç</string>
     <string name="global_menu_file_desktop">Fayl</string>
@@ -475,18 +474,23 @@
     <string name="delete_message_desktop">Mesajı sil</string>
     <string name="more_info_desktop">Daha çox məlumat</string>
     <string name="timestamp_format_m_desktop">MMM D</string>
+    <!-- deprecated, use encryption_info_title_desktop or profile_encryption -->
     <string name="encryption_info_desktop">Şifrələmə məlumatını göstər</string>
     <string name="remove_desktop">Sil</string>
     <string name="save_desktop">Saxla</string>
     <string name="name_desktop">Ad</string>
+    <!-- deprecated, use autocrypt_send_asm_title / autocrypt_continue_transfer_title -->
     <string name="autocrypt_key_transfer_desktop">Avtoşifrələmə açarın ötürülməsi</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_before -->
     <string name="initiate_key_transfer_desktop">Autocrypt konfiqurasiya mesajı təhlükəsiz olaraq \"sondan sona\" parametrinizi Autocrypt ilə uyğun olan digər tətbiqlərlə bölüşür. Quraşdırma burada göstərilir və başqa bir cihazda yığılmış olmalıdır. Bir quraşdırma kodu ilə şifrələ olunacaq.</string>
     <string name="select_group_image_desktop">Qrup şəklini seç</string>
+    <!-- deprecated, use export_backup_desktop instead -->
     <string name="imex_progress_title_desktop">Ehtiyat nüsxəsinin yaradılması</string>
     <string name="export_backup_desktop">Ehtiyat nüsxəsinin ixracı</string>
-    <string name="show_key_transfer_message_desktop">Sizin açarınız sizə göndərildi. Başqa bir cihaza keçin və mesajın ayarını açın. Siz quraşdırma kodu daxil etməlisiniz. Orada aşağıdakı rəqəmləri daxil edin. Bitirən zaman, başqa bir cihazda Autocrypt istifadə üçün hazır olacaq.</string>
     <string name="autocrypt_correct_desktop">Autocrypt ayarı müvəffəqiyyətlə köçürüldü!</string>
+    <!-- deprecated, use autocrypt_bad_setup_code instead -->
     <string name="autocrypt_incorrect_desktop">Yanlış kod. Yenidən cəhd edin. </string>
+    <!-- deprecated, rare errors should be english only for easier searchability -->
     <string name="create_chat_error_desktop">Yeni çat yaratmaq alınmadı</string>
     <string name="forget_login_confirmation_desktop">Bu giriş silmək istəyirsiniz? Hər şey, sizin \"sondan sona\" quraşdırma, kontaktlar, söhbətlər, mesajlar və daşıyıcıları daxil olmaqla silinəcəkdir. Bu hərəkət son və ləğv edilə bilməz.</string>
     <string name="message_detail_sent_desktop">Göndər</string>

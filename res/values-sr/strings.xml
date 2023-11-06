@@ -29,6 +29,7 @@
     <string name="emoji">Емоџи</string>
     <string name="attachment">Прилог</string>
     <string name="back">Назад</string>
+    <!-- this string is deprecated; the new wording is "introduced by ..." -->
     <string name="verified">Проверено</string>
     <string name="close">Затвори</string>
     <string name="forward">Проследи</string>
@@ -48,7 +49,6 @@
     <string name="main_menu">Главни мени</string>
     <string name="start_chat">Започните ћаскање</string>
     <string name="show_full_message">Прикажи поруку у њеној целости...</string>
-    <string name="show_full_message_in_browser">Прикажи поруку у њеној целости у прегледачу...</string>
     <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
     <string name="mark_all_as_read">Означи све као прочитано</string>
     <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
@@ -160,7 +160,6 @@
     <string name="video">Видео</string>
     <string name="documents">Документи</string>
     <string name="contact">Особа</string>
-    <string name="verified_contact">Проверен контакт</string>
     <string name="camera">Камера</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Сними</string>
@@ -176,7 +175,6 @@
     <string name="webxdc_app">Приватна апликација</string>
     <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_apps">Приватне апликације</string>
-    <string name="files_and_webxdx_apps">Фајлови и приватне апликације</string>
     <string name="unknown">Непознато</string>
 
     <string name="green">Зелена</string>
@@ -202,9 +200,6 @@
     <string name="menu_new_contact">Нови контакт</string>
     <string name="menu_new_chat">Ново ћаскање</string>
     <string name="menu_new_group">Нова група</string>
-    <!-- Use the same wording as "Subject" to help people coming from the e-mail context; eg. "Betreff" in German -->
-    <string name="new_group_or_subject">Нова група или тема</string>
-    <string name="menu_new_verified_group">Нова потврђена група</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">Листа за емитовање</string>
     <string name="broadcast_lists">Листе за емитовање</string>
@@ -510,7 +505,6 @@
     <!-- welcome and login -->
     <string name="welcome_chat_over_email">Ћаскање преко е-поште.</string>
     <string name="scan_invitation_code">Скенирај код позива за приступ.</string>
-    <string name="welcome_intro1_message">Гласник са највећом аудијенцијом у свету. Бесплатан и независтан.</string>
     <string name="login_title">Пријави се</string>
     <string name="login_header">Пријавите се у ваш налог е-поште</string>
     <string name="login_explain">Пријавите се преко постојећег налога е-поште</string>
@@ -535,8 +529,6 @@
     <string name="login_socks5_port">SOCKS5 порт</string>
     <string name="login_socks5_user">SOCKS5 корисник</string>
     <string name="login_socks5_password">SOCKS5 лозинка</string>
-    <!-- Translators: %1$s will be replaced by an e-mail address -->
-    <string name="login_oauth2_checking_addr">Проверам %1$s</string>
     <string name="login_info_oauth2_title">Наставите са поједностављеним поставкама?</string>
     <string name="login_info_oauth2_text">Унета е-адреса подржава поједностављено подешавање (OAuth 2.0).\n\nУ следећем кораку, дозволите Delta Chat-у да  да дејствује као ваша апликација за ћаскање преко е-поште.\n\nDelta Chat нема сервере и ваши подаци остају на вашем уређају.</string>
     <string name="login_certificate_checks">Провери сертификате</string>
@@ -728,7 +720,7 @@
     <string name="autocrypt_send_asm_title">Пошаљите поруку поставки за аутошифровање</string>
     <string name="autocrypt_send_asm_explain_before">Порука о подешавању аутоматског шифровања безбедно дели ваше комплетно подешавање са другим апликацијама које су компатибилне са аутоматским шифровањем.\n\nПодешавање ће бити шифровано кодом за подешавање приказаним овде и мора се унети на другом уређају.</string>
     <string name="autocrypt_send_asm_button">Пошаљите поруку поставки за аутошифровање</string>
-    <string name="autocrypt_send_asm_explain_after">Ваше подешавање вам је послато. Пређите на други уређај и отворите поруку за подешавање. На другом уређају од се вас очекује да унесете код за подешавање. Унесите следеће цифре:\n\n%1$s</string>
+    <string name="autocrypt_send_asm_explain_after">Ваше подешавање вам је послато. Пређите на други уређај и отворите поруку за подешавање. На другом уређају од се вас очекује да унесете код за подешавање. Унесите следеће цифре:</string>
     <string name="autocrypt_prefer_e2ee">Преферирај с-краја-на-крај шифровање</string>
     <string name="autocrypt_asm_subject">Порука поставки за аутошфровање</string>
     <string name="autocrypt_asm_general_body">Ово је порука подешавања аутоматског шифровања која се користи за пренос вашег с-краја-на-крај подешавања између клијената.\n\nДа бисте дешифровали и користили своје подешавање, отворите поруку на клијенту који је компатибилан са аутоматским шифровањем и унесите кôд за подешавање приказан на уређају који га је генерисао.</string>
@@ -863,7 +855,7 @@
     <string name="secure_join_replies">%1$s је одговорио и чека да буде додат у групу...</string>
     <string name="contact_verified">%1$s потврђен.</string>
     <string name="contact_not_verified">Немогуће је проверити %1$s.</string>
-    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that verified the contact shown. -->
+    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">Проверено од %1$s</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Подешавања су се променила за %1$s.</string>
@@ -907,6 +899,7 @@
     <string name="about_offical_app_desktop">Ово је званична Delta Chat апликација за рачунар.</string>
     <string name="about_licensed_under_desktop">Овај програм је лиценциран под ГНУ ГПЛ верзија 3 лиценцом и изворни код је доступан на Гитхабу.</string>
     <string name="welcome_desktop">Добродошли у Delta Chat.</string>
+    <!-- deprecated, use switch_account -->
     <string name="login_known_accounts_title_desktop">Познати налози</string>
     <string name="global_menu_preferences_language_desktop">Језик</string>
     <string name="global_menu_file_desktop">Фајл</string>
@@ -934,18 +927,25 @@
     <string name="delete_message_desktop">Избриши поруку</string>
     <string name="more_info_desktop">Више података</string>
     <string name="timestamp_format_m_desktop">MMM D</string>
+    <!-- deprecated, use encryption_info_title_desktop or profile_encryption -->
     <string name="encryption_info_desktop">Прикажи податке о шифровању</string>
     <string name="remove_desktop">Уклони</string>
     <string name="save_desktop">Сачувај</string>
     <string name="name_desktop">Име</string>
+    <!-- deprecated, use autocrypt_send_asm_title / autocrypt_continue_transfer_title -->
     <string name="autocrypt_key_transfer_desktop">Пошаљи кључ за аутошифровање</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_before -->
     <string name="initiate_key_transfer_desktop">Порука о подешавању аутоматског шифровања безбедно дели ваше комплетно подешавање са другим апликацијама компатибилним са аутоматским шифровањем. Подешавање ће бити шифровано кôдом за подешавање приказаним овде и мора се унети на другом уређају.</string>
     <string name="select_group_image_desktop">Изабери слику групе</string>
+    <!-- deprecated, use export_backup_desktop instead -->
     <string name="imex_progress_title_desktop">Напредак израде резервне копије</string>
     <string name="export_backup_desktop">Извези резервну копију</string>
+    <!-- deprecated, use autocrypt_send_asm_explain_after instead -->
     <string name="show_key_transfer_message_desktop">Ваш кључ за шифровање сте послали самом себи. Пређите на други уређај и отворите поруку за подешавање. Када будете били питани за код за подешавање унесите следеће бројеве:</string>
     <string name="autocrypt_correct_desktop">Поставке за аутошифровање су послате.</string>
+    <!-- deprecated, use autocrypt_bad_setup_code instead -->
     <string name="autocrypt_incorrect_desktop">Ваша подешавања су неисправна. Пробајте поново.</string>
+    <!-- deprecated, rare errors should be english only for easier searchability -->
     <string name="create_chat_error_desktop">Није могуће креирати ћаскање.</string>
     <string name="forget_login_confirmation_desktop">Да ли желите да избришете овај налог? Све ће бити избрисано, укључујући и ваше подешавање с-краја-на-крај шифровања, контакти, ћаскања, поруке и медији. Ова радња се не може опозвати.</string>
     <string name="account_info_hover_tooltip_desktop2">Е-пошта: %1$s\nВеличина: %2$s\nИдентификатор налога: %3$s</string>
