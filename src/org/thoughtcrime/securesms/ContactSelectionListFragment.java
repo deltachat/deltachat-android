@@ -358,7 +358,7 @@ public class ContactSelectionListFragment extends    Fragment
         if (isSelectVerfied() && !contact.getDcContact().isVerified()) {
           new AlertDialog.Builder(getActivity())
             .setMessage(R.string.verified_contact_required_explain)
-            .setNeutralButton(R.string.learn_more, (d, w) -> IntentUtils.showBrowserIntent(getActivity(), "https://delta.chat/en/help#verifiedchats"))
+            .setNeutralButton(R.string.learn_more, (d, w) -> IntentUtils.showBrowserIntent(getActivity(), "https://staging.delta.chat/746/en/help#howtoe2ee"))
             .setNegativeButton(R.string.qrscan_title, (d, w) -> getActivity().startActivity(new Intent(getActivity(), QrActivity.class)))
             .setPositiveButton(R.string.ok, null)
             .setCancelable(true)
