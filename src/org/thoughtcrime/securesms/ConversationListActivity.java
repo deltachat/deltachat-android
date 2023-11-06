@@ -68,6 +68,10 @@ import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.SendRelayedMessageUtil;
+import org.thoughtcrime.securesms.util.Util;
+
+import java.io.FileOutputStream;
+import java.io.InputStream;
 
 public class ConversationListActivity extends PassphraseRequiredActionBarActivity
     implements ConversationListFragment.ConversationSelectedListener
@@ -96,10 +100,23 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   protected void onCreate(Bundle icicle, boolean ready) {
     // update messages - for new messages, do not reuse or modify strings but create new ones.
     // it is not needed to keep all past update messages, however, when deleted, also the strings should be deleted.
-    //DcContext dcContext = DcHelper.getContext(this);
-    //DcMsg msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
-    //msg.setText(getString(R.string.update_1_38_android, "https://get.delta.chat/#changelogs"));
-    //dcContext.addDeviceMsg("update_1_38c_android", msg);
+    try {
+      DcContext dcContext = DcHelper.getContext(this);
+      final String deviceMsgId = "update_1_42ai_android";
+      if (!dcContext.wasDeviceMsgEverAdded(deviceMsgId)) {
+        DcMsg msg = new DcMsg(dcContext, DcMsg.DC_MSG_IMAGE);
+
+        InputStream inputStream = getResources().getAssets().open("device-messages/green-checkmark.jpg");
+        String outputFile = DcHelper.getBlobdirFile(dcContext, "green-checkmark", ".jpg");
+        Util.copy(inputStream, new FileOutputStream(outputFile));
+        msg.setFile(outputFile, "image/jpeg");
+
+        msg.setText(getString(R.string.update_1_42_common) + "\n\n" + getString(R.string.update_1_42_android, "https://get.delta.chat/#changelogs"));
+        dcContext.addDeviceMsg(deviceMsgId, msg);
+      }
+    } catch(Exception e) {
+      e.printStackTrace();
+    }
 
     // create view
     setContentView(R.layout.conversation_list_activity);
