@@ -4,9 +4,15 @@
 2023-11
 
 * sync Accept/Blocked, Archived, Pinned and Mute across devices
-* more graceful ratelimit for .testrun.org subdomains
 * add "group created instructions" as info message to new chats
+* clone group in the group's profile menu
 * add hardcoded fallback DNS cache
+* improve group creation and make it more obvious that a group is created
+* auto-detect if a group with guaranteed end-to-end encryption can be created
+* more graceful ratelimit for .testrun.org subdomains
+* fix accidentally hidden title bar on android14
+* fix: more reliable group consistency by always automatically downloading messages up to 160k
+* fix: properly abort backup process if there is some failure
 * fix: make sure, a QR scan succeeds if there is some leftover from a previously broken scan
 * fix: allow other guaranteed e2ee group recipients to be unverified, only check the sender verification
 * fix: switch to "Mutual" encryption preference on a receipt of encrypted+signed message
