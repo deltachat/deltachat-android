@@ -45,7 +45,8 @@ public class NewContactActivity extends PassphraseRequiredActionBarActivity
 
     addrInput.setText(getIntent().getStringExtra(ADDR_EXTRA));
     addrInput.setOnFocusChangeListener((view, focused) -> {
-        if(!focused && !dcContext.mayBeValidAddr(addrInput.getText().toString())) {
+        String addr = addrInput.getText() == null? "" : addrInput.getText().toString();
+        if(!focused && !dcContext.mayBeValidAddr(addr)) {
           addrInput.setError(getString(R.string.login_error_mail));
         }
     });
@@ -68,8 +69,10 @@ public class NewContactActivity extends PassphraseRequiredActionBarActivity
         finish();
         return true;
       case R.id.menu_create_contact:
-        String addr = addrInput.getText().toString();
-        int contactId = dcContext.mayBeValidAddr(addr)? dcContext.createContact(nameInput.getText().toString(), addr): 0;
+        String addr = addrInput.getText() == null? "" : addrInput.getText().toString();
+        String name = nameInput.getText() == null? "" : nameInput.getText().toString();
+        if (name.isEmpty()) name = null;
+        int contactId = dcContext.mayBeValidAddr(addr)? dcContext.createContact(name, addr): 0;
         if (contactId == 0) {
           Toast.makeText(this, getString(R.string.login_error_mail), Toast.LENGTH_LONG).show();
           return true;
