@@ -22,7 +22,7 @@
 * fix: partial messages do not change group state
 * fix: don't implicitly delete members locally, add absent ones instead
 * update translations
-* update to core 1.129.0
+* update to core 1.129.1
 
 
 ## v1.41.3 Testrun
