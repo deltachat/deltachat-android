@@ -21,6 +21,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
 import androidx.annotation.IdRes;
@@ -28,6 +29,7 @@ import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -279,5 +281,19 @@ public class ViewUtil {
 
   public static int dpToPx(int dp) {
     return Math.round(dp * Resources.getSystem().getDisplayMetrics().density);
+  }
+
+  public static int getStatusBarHeight(@NonNull View view) {
+    final WindowInsetsCompat rootWindowInsets = ViewCompat.getRootWindowInsets(view);
+    if (Build.VERSION.SDK_INT > 29 && rootWindowInsets != null) {
+      return rootWindowInsets.getInsets(WindowInsetsCompat.Type.statusBars()).top;
+    } else {
+      int result     = 0;
+      int resourceId = view.getResources().getIdentifier("status_bar_height", "dimen", "android");
+      if (resourceId > 0) {
+        result = view.getResources().getDimensionPixelSize(resourceId);
+      }
+      return result;
+    }
   }
 }
