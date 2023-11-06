@@ -1106,9 +1106,4 @@
     <string name="perm_enable_bg_already_done">Ya has permitido que Delta Chat reciba mensajes en segundo plano.\n\nSi los mensajes aún no llegan en segundo plano, compruebe también la configuración de su sistema.</string>
 
 
-    <!-- device messages for updates -->
-    <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
-    <string name="update_1_38_android">1.38 ya está disponible:\n\n📎 Se eliminó el límite de tamaño máximo de los archivos adjuntos\n\n🗜️ Las imágenes PNG (¡capturas de pantalla!) ahora también son comprimidas\n\n⌨️ Para desarrolladores: mejores aplicaciones para chats con sendToChat() e importFiles( ) (¿Qué es Webxdc? → https://webxdc.org)\n\n... y más en %1$s</string>
-    <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
-    <string name="update_1_38_ios">1.38 está disponible:\n\n🖼🔍 ¿Alguna vez buscaste una imagen y no recordabas el chat? ¡Entonces el botón \"Toda la multimedia\" es tuyo!\n\n🧹 \"Vaciar chat\" de los perfiles\n\n📎 Se eliminó el límite de tamaño máximo de los archivos adjuntos\n\n🗜️ Las imágenes PNG (¡capturas de pantalla!) ahora también se comprimen\n\n... y más en %1$s</string>
-</resources>
+    </resources>

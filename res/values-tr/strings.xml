@@ -1099,9 +1099,4 @@
     <string name="perm_enable_bg_already_done">Delta Chat\'in arka planda iletileri almasına zaten izin verdiniz.\n\nİletiler arka planda hâlâ gelmiyorsa, lütfen sistem ayarlarınızı da denetleyin.</string>
 
 
-    <!-- device messages for updates -->
-    <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
-    <string name="update_1_38_android">1.38 çıktı:\n\n📎 İlişiklerin daha yüksek boyut sınırlaması kaldırıldı\n\n🗜️ PNG görselleri (ekran görüntüleri!) de artık sıkıştırılıyor\n\n⌨️ Geliştiriciler için: Sohbetler için sendToChat() ve importFiles() ile uygulamalar (Webxdc nedir? → https://webxdc.org) daha iyi\n\n… ve daha fazlası için %1$s</string>
-    <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
-    <string name="update_1_38_ios">1.38 çıktı:\n\n🖼🔍 Hiç bir görseli ararken sohbeti anımsayamadığınız oldu mu? Öyleyse \"Tüm Ortamlar\" düğmesi sizin!\n\n🧹 Profillerden \"Sohbeti Temizle\"\n\n📎 İlişiklerin daha yüksek boyut sınırlaması kaldırıldı\n\n🗜️ PNG görselleri (ekran görüntüleri!) de artık sıkıştırılıyor\n\n… ve daha fazlası için %1$s</string>
-</resources>
+    </resources>

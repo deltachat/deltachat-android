@@ -1072,9 +1072,4 @@
     <string name="perm_enable_bg_already_done">Vous avez déjà autorisé Delta Chat à recevoir des messages en arrière plan.\n\nSi vous ne les recevez toujours pas en arrière plan, vérifiez les paramètres de votre système.</string>
 
 
-    <!-- device messages for updates -->
-    <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
-    <string name="update_1_38_android">La version 1.38 est disponible !\n\n📎 La limitation de taille maximale des pièces jointes est supprimée\n\n🗜️ Maintenant, les images PNG (captures d\'écran !) aussi sont compressées.\n\n⌨️ Côté développement : de meilleures applications pour les discussions avec sendToChat() et importFiles() (Qu\'est-ce que Webxdc ? → https://webxdc.org)\n\n… Plus de détails sur les nouveautés : %1$s</string>
-    <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
-    <string name="update_1_38_ios">La version 1.38 est disponible !\n\n🖼🔍 S\'il vous est déjà arrivé de chercher une image sans vous souvenir de la discussion où elle se trouve, alors le bouton \"Tous les fichiers multimédia\" est fait pour vous !\n\n🧹 Dans les options de profil, un nouveau bouton : \"Vider la discussion\".\n\n📎 La limitation de taille maximale des pièces jointes est supprimée\n\n🗜️ Maintenant, les images PNG (captures d\'écran !) aussi sont compressées\n\n… et plus de nouveautés sur %1$s</string>
-</resources>
+    </resources>

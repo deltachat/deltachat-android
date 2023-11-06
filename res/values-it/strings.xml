@@ -1114,9 +1114,4 @@
     <string name="perm_enable_bg_already_done">Hai già autorizzato Delta Chat a ricevere messaggi in background.\n\nSe i messaggi non arrivano in background controlla le impostazioni di sistema.</string>
 
 
-    <!-- device messages for updates -->
-    <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
-    <string name="update_1_38_android">La 1.38 è uscita:\n\n📎 Rimosso il limite massimo di dimensione degli allegati\n\n🗜️ immagini PNG (screenshot!) ora sono anche compresse\n\n⌨️ Per gli sviluppatori: Migliori applicazioni per le chat con sendToChat() e importFiles() (Cos\'è Webxdc? → https://webxdc.org)\n\n... e altro ancora su %1$s</string>
-    <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
-    <string name="update_1_38_ios">La 1.38 è uscita:\n\n🖼🔍 Mai cercato un\'immagine e non ricordavi la chat? Allora il pulsante \"Tutti i media\" è vostro!\n\n🧹 \"Cancella Messaggi\" dai profili\n\n📎 Rimosso il limite massimo di dimensione degli allegati\n\n🗜️ immagini PNG (screenshot!) ora sono anche compresse\n\n... e altro ancora su %1$s</string>
-</resources>
+    </resources>
