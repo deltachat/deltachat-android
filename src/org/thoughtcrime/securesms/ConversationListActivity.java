@@ -102,7 +102,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     // it is not needed to keep all past update messages, however, when deleted, also the strings should be deleted.
     try {
       DcContext dcContext = DcHelper.getContext(this);
-      final String deviceMsgId = "update_1_42ae_android";
+      final String deviceMsgId = "update_1_42ai_android";
       if (!dcContext.wasDeviceMsgEverAdded(deviceMsgId)) {
         DcMsg msg = new DcMsg(dcContext, DcMsg.DC_MSG_IMAGE);
 
@@ -111,7 +111,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
         Util.copy(inputStream, new FileOutputStream(outputFile));
         msg.setFile(outputFile, "image/jpeg");
 
-        msg.setText(getString(R.string.update_1_42_guaranteed_e2ee) + "\n\n" + getString(R.string.update_1_42_android, "https://get.delta.chat/#changelogs"));
+        msg.setText(getString(R.string.update_1_42_common) + "\n\n" + getString(R.string.update_1_42_android, "https://get.delta.chat/#changelogs"));
         dcContext.addDeviceMsg(deviceMsgId, msg);
       }
     } catch(Exception e) {
