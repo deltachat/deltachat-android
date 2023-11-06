@@ -253,6 +253,8 @@ public class DcHelper {
     // DC_INFO_PROTECTION_{EN|DIS}ABLED info message
     dcContext.setStockTranslation(170, context.getString(R.string.chat_protection_enabled_tap_to_learn_more));
     dcContext.setStockTranslation(171, context.getString(R.string.chat_protection_broken_tap_to_learn_more));
+
+    dcContext.setStockTranslation(172, context.getString(R.string.chat_new_group_hint));
   }
 
   public static File getImexDir() {
