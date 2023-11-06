@@ -19,6 +19,7 @@ package org.thoughtcrime.securesms;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.Color;
@@ -86,6 +87,7 @@ public class ContactSelectionListFragment extends    Fragment
   public static final String SELECT_VERIFIED_EXTRA = "select_verified";
   public static final String ALLOW_CREATION = "allow_creation";
   public static final String PRESELECTED_CONTACTS = "preselected_contacts";
+  public static final int CONTACT_ADDR_RESULT_CODE = 61123;
 
   private DcContext dcContext;
 
@@ -345,14 +347,17 @@ public class ContactSelectionListFragment extends    Fragment
       }
       int    specialId = contact.getSpecialId();
       String addr      = contact.getNumber();
-      if (!isMulti() || !selectedContacts.contains(addr))
-      {
+      if (!isMulti() || !selectedContacts.contains(addr)) {
         if (specialId == DcContact.DC_CONTACT_ID_NEW_CONTACT) {
           Intent intent = new Intent(getContext(), NewContactActivity.class);
           if (dcContext.mayBeValidAddr(cursorFilter)) {
             intent.putExtra(NewContactActivity.ADDR_EXTRA, cursorFilter);
           }
-          getContext().startActivity(intent);
+          if (isMulti()) {
+            startActivityForResult(intent, CONTACT_ADDR_RESULT_CODE);
+          } else {
+            requireContext().startActivity(intent);
+          }
           return;
         }
 
@@ -372,14 +377,7 @@ public class ContactSelectionListFragment extends    Fragment
         if (onContactSelectedListener != null) {
           onContactSelectedListener.onContactSelected(specialId, addr);
         }
-
-        if(isMulti() && specialId==DcContact.DC_CONTACT_ID_NEW_CONTACT) {
-          // do not check the "add contact" entry but add a new contact and check this. a reload makes this visible.
-          getLoaderManager().restartLoader(0, null, ContactSelectionListFragment.this);
-        }
-      }
-      else
-      {
+      } else {
         selectedContacts.remove(addr);
         contact.setChecked(false);
         if (onContactSelectedListener != null) {
@@ -416,6 +414,15 @@ public class ContactSelectionListFragment extends    Fragment
   @Override
   public void handleEvent(@NonNull DcEvent event) {
     if (event.getId()==DcContext.DC_EVENT_CONTACTS_CHANGED) {
+      getLoaderManager().restartLoader(0, null, ContactSelectionListFragment.this);
+    }
+  }
+
+  @Override
+  public void onActivityResult(int reqCode, int resultCode, final Intent data) {
+    super.onActivityResult(reqCode, resultCode, data);
+    if (resultCode == Activity.RESULT_OK && reqCode == CONTACT_ADDR_RESULT_CODE) {
+      selectedContacts.add(data.getStringExtra(NewContactActivity.ADDR_EXTRA));
       getLoaderManager().restartLoader(0, null, ContactSelectionListFragment.this);
     }
   }

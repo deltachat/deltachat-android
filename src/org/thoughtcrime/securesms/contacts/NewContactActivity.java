@@ -1,5 +1,6 @@
 package org.thoughtcrime.securesms.contacts;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -12,6 +13,7 @@ import androidx.appcompat.app.ActionBar;
 import com.b44t.messenger.DcContext;
 import com.google.android.material.textfield.TextInputEditText;
 
+import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.PassphraseRequiredActionBarActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -67,15 +69,24 @@ public class NewContactActivity extends PassphraseRequiredActionBarActivity
         return true;
       case R.id.menu_create_contact:
         String addr = addrInput.getText().toString();
-        if(!dcContext.mayBeValidAddr(addr)) {
+        int contactId = dcContext.mayBeValidAddr(addr)? dcContext.createContact(nameInput.getText().toString(), addr): 0;
+        if (contactId == 0) {
           Toast.makeText(this, getString(R.string.login_error_mail), Toast.LENGTH_LONG).show();
           return true;
         }
-        dcContext.createContact(nameInput.getText().toString(), addr);
+        if (getCallingActivity() != null) { // called for result
+          Intent intent = new Intent();
+          intent.putExtra(ADDR_EXTRA, addr);
+          setResult(RESULT_OK, intent);
+        } else {
+          int chatId = dcContext.createChatByContactId(contactId);
+          Intent intent = new Intent(this, ConversationActivity.class);
+          intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
+          startActivity(intent);
+        }
         finish();
         return true;
     }
-
     return false;
   }
 }
