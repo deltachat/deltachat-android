@@ -1081,21 +1081,4 @@ GNU GPL ورژن ۳
     <string name="perm_enable_bg_already_done">قبلا اجازه دسترسی به فعالیت در پس زمینه را به دلتاچت داده‌اید. \n\n اگر پیام‌ها هنوز هم در شرایط پس زمینه نمی‌آمد لطفا تنظیمات سیستم را نیز بررسی نمایید. </string>
 
 
-    <!-- device messages for updates -->
-    <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
-    <string name="update_1_38_android">نسخه ۱.۳۸ بیرون اومده:\n\n
-📎 حد بیشینه پیوست‌ها حذف شده\n\n
-🗜️ تصویر‌های پی‌ان‌جی(نماگرفت‌ها!) الآن بخوبی فشرده می‌شوند\n\n
-⌨️ برای توسعه‌دهندگان: برنامه‌های بهتر برای چت‌ها با توابع sendToChats و importFiles(وب‌ایکس‌دی‌ای چیست؟→ https://webxdc.org)\n\n…
-و بیش‌تر در %1$s </string>
-    <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
-    <string name="update_1_38_ios">نگارش ۱٫۳۸ بیرون است:
-\n\n
-🖼🔍 برای یک تصویر جست‌وجو می‌کردید و گپ مربوط به آن را به یاد نمی‌آوردید؟ پس دکمهٔ «تمام رسانه‌ها» دقیقاً به کارتان می آید!\n\n
-🧹 «پاک‌کردن گپ» از نمایه‌ها\n\n
-📎 حذف حد بیشینهٔ اندازه پیوست‌ها
-\n\n🗜️
-تصاویر پی‌ان‌جی (نماگرفت‌ها!) هم‌اکنون به‌خوبی فشرده می‌شوند
-\n\n…
-و بیشتر در %1$s</string>
-</resources>
+    </resources>

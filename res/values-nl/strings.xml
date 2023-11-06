@@ -1099,9 +1099,4 @@
     <string name="perm_enable_bg_already_done">Je hebt al toestemming gegeven voor het ophalen van berichten op de achtergrond.\n\nAls het nog steeds niet werkt, controleer dan de systeeminstellingen.</string>
 
 
-    <!-- device messages for updates -->
-    <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
-    <string name="update_1_38_android">1.38 is uitgebracht:\n\n📎 Het maximale bijlagelimiet is opgeheven\n\n🗜️ Png-afbeeldingen (schermfoto\'s!) worden voortaan ook verkleind\n\n⌨️ Voor ontwikkelaars: verbeterde apps in chats met behulp van sendToChat() en importFiles() (Wat is Webxdc? → https://webxdc.org)\n\n… en meer op %1$s</string>
-    <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
-    <string name="update_1_38_ios">1.38 is uitgebracht:\n\n🖼🔍 Op zoek naar een afbeelding, maar vergeten in welk gesprek die stond? Zoek niet langer: je hebt nu de knop ‘Alle media’ tot je beschikking!\n\n🧹 ‘Gesprek wissen’ kan voortaan vanuit profielen\n\n📎 Het maximale bijlagelimiet is opgeheven\n\n🗜️ Png-afbeeldingen (schermfoto\'s!) worden voortaan ook verkleind\n\n… en meer op %1$s</string>
-</resources>
+    </resources>

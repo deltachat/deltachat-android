@@ -1100,8 +1100,7 @@
 
 
     <!-- device messages for updates -->
+    <string name="update_1_42_common">Was ist neu:\n\n💌 Ein-Zu-Eins-Chats garantieren jetzt eine Ende-zu-Ende-Verschlüsselung für eingeführte Kontakte\n\n😌 Der Einfachheit halber markieren wir diese Kontakte und Chats mit grünen Häkchen\n\n👥 Gruppen werden, wenn möglich, automatisch mit garantierter Ende-zu-Ende-Verschlüsselung erstellt\n\n🔄 Über alle Ihre Geräte synchronisiert wird nun Annehmen/Blockiert und Archiviert/Angeheftet/Stumm</string>
     <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
-    <string name="update_1_38_android">1.38 ist da:\n\n📎 Größenbeschränkung für Anhänge entfernt\n\n🗜️ PNG-Bilder (Screenshots!) werden jetzt auch komprimiert\n\n⌨️ Für Entwickler: Bessere \"Apps für Chats\" mit sendToChat() und importFiles() (Was ist Webxdc? → https://webxdc.org)\n\n... und mehr auf %1$s</string>
-    <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
-    <string name="update_1_38_ios">1.38 ist da:\n\n🖼🔍 Haben Sie jemals nach einem Bild gesucht und konnten sich nicht an den Chat erinnern? Dann ist \"Alle Medien\" (Chatliste unten links) wie für Sie gemacht\n\n🧹 \"Chat leeren\"-Funktion im Profil\n\n📎 Größenbeschränkung für Anhänge entfernt\n\n🗜️ PNG-Bilder (Screenshots!) werden jetzt auch komprimiert\n\n… und mehr auf %1$s</string>
+    <string name="update_1_42_android">Weiteren Verbesserungen gibt es in den Bereichen Kamera, Sprachnachrichten, Backup über alle Konten, Screenreader, Konto-Hintergrundbilder, Galerie alles-auswählen, Webxdc-Querformat ... und mehr unter %1$s</string>
 </resources>

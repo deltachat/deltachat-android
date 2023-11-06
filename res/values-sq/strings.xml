@@ -1094,9 +1094,4 @@
     <string name="perm_enable_bg_already_done">E keni lejuar tashmë Delta Chat-in të marrë mesazhe në prapaskenë.\n\nNëse mesazhet prapë nuk mbërrijnë në prapaskenë, ju lutemi, kontrolloni edhe rregullimet e sistemit tuaj.</string>
 
 
-    <!-- device messages for updates -->
-    <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
-    <string name="update_1_38_android">U hodh në qarkullim 1.38:\n\n📎 U hoq kufiri i sipërm për madhësi bashkëngjitjesh\n\n🗜️ Tanimë ngjishen edhe figurat PNG (foto ekrani!)\n\n⌨️ Për Zhvillues: Aplikacione më të mirë për fjalosje me sendToChat() dhe importFiles() (Çfarë është Webxdc? → https://webxdc.org)\n\n… dhe më tepër te %1$s</string>
-    <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
-    <string name="update_1_38_ios">U hodh në qarkullim 1.38:\n\n🖼🔍 Ju ka qëlluar të kërkoni për një figurë dhe të mos ju kujtohet fjalosja? Po qe kështu, butoni “Krejt Mediat” është për ju!\n\n🧹 “Spastro Fjalosje” prej profilesh\n\n📎 U hoq kufiri i sipërm për madhësi figurash\n\n🗜️ Tanimë ngjishen edhe figurat PNG (foto ekrani!)\n\n… dhe më tepër te %1$s</string>
-</resources>
+    </resources>
