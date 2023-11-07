@@ -14,9 +14,11 @@ import com.b44t.messenger.DcContact;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.components.AvatarView;
+import org.thoughtcrime.securesms.contacts.avatars.ResourceContactPhoto;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.recipients.RecipientModifiedListener;
+import org.thoughtcrime.securesms.util.ThemeUtil;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
@@ -76,7 +78,11 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
       }
       this.nameView.setTypeface(null, Typeface.NORMAL);
     }
-    this.avatar.setAvatar(glideRequests, recipient, false);
+    if (specialId == DcContact.DC_CONTACT_ID_QR_INVITE) {
+      this.avatar.setImageDrawable(new ResourceContactPhoto(R.drawable.ic_ab_qr).asDrawable(getContext(), ThemeUtil.getDummyContactColor(getContext())));
+    } else {
+      this.avatar.setAvatar(glideRequests, recipient, false);
+    }
     this.avatar.setSeenRecently(contact!=null? contact.wasSeenRecently() : false);
 
     setText(name, number, label, contact);
