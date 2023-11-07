@@ -97,11 +97,6 @@ public class NewConversationActivity extends ContactSelectionActivity {
       startActivity(intent);
     }
     else {
-      if(!dcContext.mayBeValidAddr(addr)) {
-        Toast.makeText(this, R.string.bad_email_address, Toast.LENGTH_LONG).show();
-        return;
-      }
-
       int contactId = dcContext.lookupContactIdByAddr(addr);
       if (contactId!=0 && dcContext.getChatIdByContactId(contactId)!=0) {
         openConversation(dcContext.createChatByContactId(contactId));
