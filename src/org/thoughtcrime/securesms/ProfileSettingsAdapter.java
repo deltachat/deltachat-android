@@ -318,7 +318,7 @@ public class ProfileSettingsAdapter extends RecyclerView.Adapter
           if (verifierId == DcContact.DC_CONTACT_ID_SELF) {
             verifiedInfo = context.getString(R.string.verified_by_you);
           } else {
-            verifiedInfo = context.getString(R.string.verified_by, dcContext.getContact(verifierId).getNameNAddr());
+            verifiedInfo = context.getString(R.string.verified_by, dcContext.getContact(verifierId).getDisplayName());
           }
           itemData.add(new ItemData(ItemData.CATEGORY_INFO, INFO_VERIFIED, verifiedInfo, 0, R.drawable.ic_verified));
         }
