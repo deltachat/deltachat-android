@@ -1913,6 +1913,12 @@ JNIEXPORT jboolean Java_com_b44t_messenger_DcContact_isVerified(JNIEnv *env, job
 }
 
 
+JNIEXPORT jboolean Java_com_b44t_messenger_DcContact_profileIsVerified(JNIEnv *env, jobject obj)
+{
+    return dc_contact_profile_is_verified(get_dc_contact(env, obj))==2;
+}
+
+
 JNIEXPORT jint Java_com_b44t_messenger_DcContact_getVerifierId(JNIEnv *env, jobject obj)
 {
     return dc_contact_get_verifier_id(get_dc_contact(env, obj));
