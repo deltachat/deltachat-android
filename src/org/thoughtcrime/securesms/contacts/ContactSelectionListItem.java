@@ -79,7 +79,7 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
       this.nameView.setTypeface(null, Typeface.NORMAL);
     }
     if (specialId == DcContact.DC_CONTACT_ID_QR_INVITE) {
-      this.avatar.setImageDrawable(new ResourceContactPhoto(R.drawable.ic_ab_qr).asDrawable(getContext(), ThemeUtil.getDummyContactColor(getContext())));
+      this.avatar.setImageDrawable(new ResourceContactPhoto(R.drawable.baseline_qr_code_24).asDrawable(getContext(), ThemeUtil.getDummyContactColor(getContext())));
     } else {
       this.avatar.setAvatar(glideRequests, recipient, false);
     }
