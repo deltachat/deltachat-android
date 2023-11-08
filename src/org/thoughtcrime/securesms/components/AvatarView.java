@@ -1,6 +1,7 @@
 package org.thoughtcrime.securesms.components;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
@@ -42,6 +43,10 @@ public class AvatarView extends ConstraintLayout {
 
   public void setAvatar(@NonNull GlideRequests requestManager, @Nullable Recipient recipient, boolean quickContactEnabled) {
     avatarImage.setAvatar(requestManager, recipient, quickContactEnabled);
+  }
+
+  public void setImageDrawable(@Nullable Drawable drawable) {
+    avatarImage.setImageDrawable(drawable);
   }
 
   public void setAvatarClickListener(OnClickListener listener) {
