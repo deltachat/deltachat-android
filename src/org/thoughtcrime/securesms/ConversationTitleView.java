@@ -130,10 +130,13 @@ public class ConversationTitleView extends RelativeLayout {
     avatar.setAvatar(glideRequests, new Recipient(getContext(), contact), false);
     avatar.setSeenRecently(contact.wasSeenRecently());
 
-    title.setText(contact.getDisplayName());
+    int imgRight = 0;
+    if (contact.isVerified()) {
+      imgRight = R.drawable.ic_verified;
+    }
 
-    // the profile titles show if corresponding chats are verified, _not_ that a contact is verified which is shown by verifier id
-    title.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+    title.setText(contact.getDisplayName());
+    title.setCompoundDrawablesWithIntrinsicBounds(0, 0, imgRight, 0);
     subtitle.setText(contact.getAddr());
     subtitle.setVisibility(View.VISIBLE);
   }
