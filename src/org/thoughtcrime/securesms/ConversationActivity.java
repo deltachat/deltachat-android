@@ -308,6 +308,11 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     DcHelper.getNotificationCenter(this).updateVisibleChat(dcContext.getAccountId(), chatId);
 
     attachmentManager.onResume();
+
+    ActionBar supportActionBar = getSupportActionBar();
+    if (supportActionBar != null && !supportActionBar.isShowing()) {
+        supportActionBar.show();
+    }
   }
 
   @Override
@@ -321,6 +326,11 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     quickAttachmentDrawer.onPause();
     inputPanel.onPause();
     AudioSlidePlayer.stopAll();
+
+    ActionBar supportActionBar = getSupportActionBar();
+    if (supportActionBar != null && container.isKeyboardOpen()) {
+      supportActionBar.hide();
+    }
   }
 
   @Override
