@@ -788,7 +788,7 @@
     <!-- system messages -->
     <string name="systemmsg_read_receipt_subject">Message opened</string>
     <string name="systemmsg_read_receipt_body">The \"%1$s\" message you sent was displayed on the screen of the recipient.\n\nThis is no guarantee the content was read.</string>
-    <string name="systemmsg_cannot_decrypt">This message cannot be decrypted.\n\n• It might already help to simply reply to this message and ask the sender to send the message again.\n\n• If you just re-installed Delta Chat then it is best if you re-setup Delta Chat now and choose "Add as second device".</string>
+    <string name="systemmsg_cannot_decrypt">This message cannot be decrypted.\n\n• It might already help to simply reply to this message and ask the sender to send the message again.\n\n• If you just re-installed Delta Chat then it is best if you re-setup Delta Chat now and choose "Add as second device" or import a backup.</string>
     <string name="systemmsg_unknown_sender_for_chat">Unknown sender for this chat. See \'info\' for more details.</string>
     <string name="systemmsg_subject_for_new_contact">Message from %1$s</string>
     <string name="systemmsg_failed_sending_to">Failed to send message to %1$s.</string>
