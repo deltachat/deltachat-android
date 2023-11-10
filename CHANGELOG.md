@@ -3,6 +3,8 @@
 ## v1.41.6 Testrun
 2023-11
 
+* simplify adding new contacts: "New Chat / Add Contact" button is now always present
+* add a QR icon beside the "Show QR invite code" option
 * add info messages about implicitly added members
 * improve handling of various partly broken encryption states by adding a secondary verified key
 * fix: mark 1:1 chat as protected when joining a group
@@ -10,6 +12,7 @@
 * fix: remove Reporting-UA from read receipt
 * fix: do not apply group changes to special chats; avoid adding members to trashed chats
 * fix: protect better against duplicate UIDs reported by IMAP servers
+* fix more cases for the accidentally hidden title bar on android14
 * update provider database
 * update translations
 * update to core 1.130.0
