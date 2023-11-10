@@ -310,6 +310,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     attachmentManager.onResume();
 
+    // action bar might be hidden by workaround in onStop()
     ActionBar supportActionBar = getSupportActionBar();
     if (supportActionBar != null && !supportActionBar.isShowing()) {
         supportActionBar.show();
@@ -333,6 +334,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   public void onStop() {
     super.onStop();
 
+    // hack/workaround to fix https://github.com/deltachat/deltachat-android/issues/2798
+    // the real cause of the problem is still unknown but hidding the action bar here fixes it
     ActionBar supportActionBar = getSupportActionBar();
     if (supportActionBar != null && container.isKeyboardOpen()) {
       PowerManager pm = (PowerManager)getSystemService(Context.POWER_SERVICE);
