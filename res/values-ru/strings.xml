@@ -34,6 +34,8 @@
     <string name="close">Закрыть</string>
     <string name="close_window">Закрыть окно</string>
     <string name="forward">Переслать</string>
+    <string name="create">Создать</string>
+    <string name="later">Позже</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">Переотправить</string>
     <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
@@ -160,6 +162,8 @@
     <string name="gif">GIF</string>
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">Стикер</string>
+    <string name="add_to_sticker_collection">Добавить в коллекцию стикеров</string>
+    <string name="open_sticker_folder">Открыть папку со стикерами</string>
     <string name="images">Изображения</string>
     <string name="audio">Аудио</string>
     <string name="voice_message">Голосовое сообщение</string>
@@ -210,11 +214,15 @@
     <string name="menu_new_contact">Новый контакт</string>
     <string name="menu_new_chat">Новый чат</string>
     <string name="menu_new_group">Новая группа</string>
+    <string name="clone_chat">Клонировать чат</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">Список рассылки</string>
     <string name="broadcast_lists">Списки рассылки</string>
     <string name="new_broadcast_list">Новый список рассылки</string>
     <string name="add_recipients">Добавить получателей</string>
+    <string name="edit_broadcast_list">Редактировать список рассылки</string>
+    <string name="broadcast_list_name">Название списка рассылки</string>
+    <string name="please_enter_broadcast_list_name">Введите название списка рассылки.</string>
     <string name="menu_send">Отправить</string>
     <string name="menu_toggle_keyboard">Включить эмодзи клавиатуру</string>
     <string name="menu_edit_group">Редактировать группу</string>
@@ -248,6 +256,7 @@
     <string name="menu_all_media">Все медиафайлы</string>
     <!-- Command to jump to the original message corresponding to a gallery image or document -->
     <string name="show_in_chat">Показать в чате</string>
+    <string name="show_app_in_chat">Показать приложение в чате</string>
     <string name="menu_share">Поделиться</string>
     <!-- Verb "to block sth." usually a mailing list or a contact, not a noun -->
     <string name="block">Заблокировать</string>
@@ -259,6 +268,7 @@
     <string name="menu_scroll_to_bottom">Прокрутить вниз</string>
     <string name="menu_scroll_to_top">Прокрутить вверх</string>
     <string name="menu_help">Помощь</string>
+    <string name="what_is_webxdc">Что такое Webxdc?</string>
     <string name="privacy_policy">Политика конфиденциальности</string>
     <string name="menu_select_all">Выбрать всё</string>
     <string name="select_chat">Выбрать чат</string>
@@ -295,6 +305,8 @@
     <string name="source_code">Исходный код</string>
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">Добавить на главный экран</string>
+    <string name="donate">Пожертвовать</string>
+
     <string name="mute_for_one_hour">1 час</string>
     <string name="mute_for_two_hours">На 2 часа</string>
     <string name="mute_for_one_day">На 1 день</string>
@@ -400,6 +412,7 @@
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
     <string name="chat_new_one_to_one_hint">Отправьте сообщение. Всё нормально, даже если %1$s не использует Delta Chat.</string>
+    <string name="chat_new_broadcast_hint">В списке рассылки получатели будут получать сообщения в чате с вами, доступном только для чтения.</string>
     <string name="chat_new_group_hint">Другие пользователи смогут видеть эту группу только после того, как вы отправите первое сообщение.</string>
     <string name="chat_record_slide_to_cancel">Сдвиньте для отмены</string>
     <string name="chat_record_explain">Нажмите и удерживайте для записи голосового сообщения, отпустите для отправки</string>
@@ -464,6 +477,8 @@
 
     <!-- search -->
     <string name="search">Поиск</string>
+    <string name="search_in_chat">Искать в чате</string>
+    <string name="search_files">Искать файлы</string>
     <string name="search_explain">Поиск чатов, контактов и сообщений</string>
     <string name="search_no_result_for_x">Ничего не найдено по запросу «%s» </string>
 
@@ -479,6 +494,7 @@
     <string name="group_self_not_in_group">Необходимо быть участником группы для данного действия.</string>
     <string name="profile_encryption">Шифрование</string>
     <string name="profile_shared_chats">Общие чаты</string>
+    <string name="related_chats">Похожие чаты</string>
     <string name="tab_contact">Контакты</string>
     <string name="tab_group">Группа</string>
     <string name="tab_gallery">Галерея</string>
@@ -493,6 +509,10 @@
     <string name="tab_webxdc_empty_hint">Приложения, отправленные в этот чат, появятся здесь.</string>
     <string name="tab_all_media_empty_hint">Медиафайлы, отправленные в этот чат, появятся здесь.</string>
     <string name="media_preview">Предпросмотр медиафайлов</string>
+    <!-- option to show images in the gallery with the correct width/height aspect (instead of square); other gallery apps may be a source of inspiration for translation :) -->
+    <string name="aspect_ratio_grid">Пропорциональная сетка</string>
+    <!-- option to show images in the gallery as square (instead of using correct width/height) -->
+    <string name="square_grid">Квадратная сетка</string>
     <string name="send_message">Отправить сообщение</string>
     <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
     <string name="aeap_addr_changed">%1$s изменила свой адрес с %2$s на %3$s</string>
@@ -678,6 +698,10 @@
     <string name="pref_backup">Резервное копирование</string>
     <string name="pref_backup_explain">Сохранить чаты на внешний носитель</string>
     <string name="pref_backup_export_explain">Резервное копирование позволяет восстанавливать предыдущие настройки приложения во время новой установки на этом или другом устройстве.\n\nРезервная копия содержит все сообщения, контакты и чаты, а также параметры сквозного шифрования Autocrypt.  После того, как резервная копия будет создана, как можно скорее перенесите её в надёжное место.</string>
+    <!-- the placeholder will be replaced by the name of the account's email address -->
+    <string name="pref_backup_export_x">Экспортировать %1$s</string>
+    <!-- the placeholder will be replaced by the number of accounts to export; the number is always larger than 1 -->
+    <string name="pref_backup_export_all">Экспортировать все %1$d аккаунтов</string>
     <string name="pref_backup_export_start_button">Начать резервное копирование</string>
     <string name="pref_backup_written_to_x">Резервная копия успешно записана на %1$s</string>
     <string name="pref_managekeys_menu_title">Управление ключами</string>
@@ -728,6 +752,9 @@
     <string name="profile_image_delete">Удалить фото профиля</string>
     <string name="pref_show_tray_icon">Показать значок в трее</string>
     <string name="pref_edit_profile">Редактировать профиль</string>
+    <string name="disable_imap_idle">Отключить IMAP IDLE</string>
+    <string name="disable_imap_idle_explain">Не использовать расширение IMAP IDLE даже если сервер поддерживает его. Включение этой опции замедлит получение сообщений, включайте только для отладки.</string>
+
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Результаты поиска</string>
     <string name="emoji_not_found">Эмодзи не найдено</string>
@@ -853,6 +880,12 @@
     <string name="ephemeral_timer_weeks_by_you">Вы установили таймер исчезающих сообщений на %1$s недель.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_weeks_by_other">%2$s установил таймер исчезающих сообщений на %1$s недель.</string>
+    <!-- this may be shown instead of the chat's input field, with buttons "More Info" and "OK" -->
+    <string name="chat_protection_broken">%1$s отправил(а) сообщение с другого устройства.</string>
+    <string name="chat_protection_enabled_tap_to_learn_more">Теперь сообщения гарантированно шифруются сквозным шифрованием. Нажмите, чтобы узнать подробности.</string>
+    <string name="chat_protection_broken_tap_to_learn_more">%1$s отправил(а) сообщение с другого устройства. Нажмите, чтобы узнать больше.</string>
+    <string name="learn_more">Подробнее</string>
+
     <string name="devicemsg_self_deleted">Вы удалили чат \"Сохраненные сообщения\".\n\nℹ️ Чтобы снова использовать функцию \"Сохраненные сообщения\", создайте новый чат с самим собой.</string>
     <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
     <string name="devicemsg_storage_exceeding">⚠️ Хранилище вашего провайдера скоро будет превышено, уже использовано %1$s%%.\n\nВозможно, вы не сможете получать сообщения, когда хранилище будет переполнено.\n\n👉 Пожалуйста, проверьте, можете ли вы удалить старые данные в веб-интерфейсе провайдера и подумайте о том, чтобы включить \"Настройки / Удалить старые сообщения\". Вы можете проверить текущее использование хранилища в любое время в \"Настройки / Соединение\".</string>
@@ -931,6 +964,10 @@
     <string name="notify_name_only">Только имя</string>
     <string name="notify_no_name_or_message">Без имени или сообщения</string>
     <string name="notifications_disabled">Уведомления отключены</string>
+    <string name="new_messages">Новые сообщения</string>
+    <string name="n_messages_in_m_chats">%1$d сообщений в %2$d чатах</string>
+
+
     <!-- permissions -->
     <string name="perm_required_title">Требуется разрешение</string>
     <string name="perm_continue">Продолжить</string>

@@ -1094,4 +1094,8 @@
     <string name="perm_enable_bg_already_done">E keni lejuar tashmë Delta Chat-in të marrë mesazhe në prapaskenë.\n\nNëse mesazhet prapë nuk mbërrijnë në prapaskenë, ju lutemi, kontrolloni edhe rregullimet e sistemit tuaj.</string>
 
 
-    </resources>
+    <!-- device messages for updates -->
+    <string name="update_1_42_common">Ç’ka të re:\n\n💌 tanimë, fjalosjet tek-për-tek garantojnë fshehtëzim skaj-më-skaj për kontakte të prezantuar\n\n😌 për thjeshtësi për këdo, u vëmë shenjë këtyre kontakteve dhe fjalosjeve me shenja të gjelbra\n\n👥 grupet krijohen automatikisht me fshehtëzim skaj-më-skaj të garantuar, nëse është e mundur\n\n🔄 Pranoje/Bllokuar, Arkivuar, Fiksuar, Heshtoje njëkohësohen në krejt pajisjet tuaja</string>
+    <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
+    <string name="update_1_42_android">Shihni për më tepër përmirësime në kamera, mesazhe zanorë, kopjeruajtje tërësore, lexues ekrani, sfonde sipas llogarish, përzgjedhje figurash të krejt galerisë, peizazh webxdc … ose lexoni për to në %1$s</string>
+</resources>

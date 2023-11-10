@@ -1114,4 +1114,8 @@
     <string name="perm_enable_bg_already_done">Hai già autorizzato Delta Chat a ricevere messaggi in background.\n\nSe i messaggi non arrivano in background controlla le impostazioni di sistema.</string>
 
 
-    </resources>
+    <!-- device messages for updates -->
+    <string name="update_1_42_common">Novità:\n\n💌 le chat individuali garantiscono ora la crittografia end-to-end per i contatti introdotti\n\n😌 per la semplicità di tutti, contrassegniamo questi contatti e chat con segni di spunta verdi\n\n👥 i gruppi sono creati automaticamente con crittografia end-to-end garantita, se possibile\n\n🔄 Accettato/Bloccato, Archiviato, Appuntato, Disattivato è sincronizzato su tutti i tuoi dispositivi</string>
+    <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
+    <string name="update_1_42_android">Tieni d\'occhio gli ulteriori miglioramenti nella fotocamera, nei messaggi vocali, nel backup di tutto, nella lettura dello schermo, negli sfondi per account, nella selezione di tutte le gallerie, nel panorama webxdc... oppure leggili su %1$s</string>
+</resources>
