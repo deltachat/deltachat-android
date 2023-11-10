@@ -335,12 +335,14 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     super.onStop();
 
     // hack/workaround to fix https://github.com/deltachat/deltachat-android/issues/2798
-    // the real cause of the problem is still unknown but hidding the action bar here fixes it
-    ActionBar supportActionBar = getSupportActionBar();
-    if (supportActionBar != null && container.isKeyboardOpen()) {
-      PowerManager pm = (PowerManager)getSystemService(Context.POWER_SERVICE);
-      if (!pm.isScreenOn()) {
-        supportActionBar.hide();
+    // the real cause of the problem is still unknown but hiding the action bar here fixes it
+    if ( Build.VERSION.SDK_INT >= 34) {
+      ActionBar supportActionBar = getSupportActionBar();
+      if (supportActionBar != null && container.isKeyboardOpen()) {
+        PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
+        if (!pm.isInteractive()) {
+          supportActionBar.hide();
+        }
       }
     }
   }
