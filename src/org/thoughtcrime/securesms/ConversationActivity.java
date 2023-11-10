@@ -30,6 +30,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.PowerManager;
 import android.os.Vibrator;
 import android.provider.Browser;
 import android.text.Editable;
@@ -326,10 +327,18 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     quickAttachmentDrawer.onPause();
     inputPanel.onPause();
     AudioSlidePlayer.stopAll();
+  }
+
+  @Override
+  public void onStop() {
+    super.onStop();
 
     ActionBar supportActionBar = getSupportActionBar();
     if (supportActionBar != null && container.isKeyboardOpen()) {
-      supportActionBar.hide();
+      PowerManager pm = (PowerManager)getSystemService(Context.POWER_SERVICE);
+      if (!pm.isScreenOn()) {
+        supportActionBar.hide();
+      }
     }
   }
 
