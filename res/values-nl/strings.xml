@@ -1099,4 +1099,8 @@
     <string name="perm_enable_bg_already_done">Je hebt al toestemming gegeven voor het ophalen van berichten op de achtergrond.\n\nAls het nog steeds niet werkt, controleer dan de systeeminstellingen.</string>
 
 
-    </resources>
+    <!-- device messages for updates -->
+    <string name="update_1_42_common">Wijzigingslog:\n\n💌 een-op-eengesprekken hebben voortaan gegarandeerd eind-tot-eindversleuteling bij gebruik van goedgekeurde contactpersonen\n\n😌 omwille van eenvoud worden zulke contactpersonen en gesprekken voorzien van groene vinkjes\n\n👥 groepen worden automatisch voorzien van gegarandeerde eind-tot-eindversleuteling (indien mogelijk)\n\n🔄 goedgekeurd, geblokkeerd, gearchiveerd, vastgemaakt en genegeerd wordt voortaan naar alle apparaten gesynchroniseerd</string>
+    <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
+    <string name="update_1_42_android">Binnenkort beschikbaar: verbeteringen aan de camera, spraakberichten, reservekopieën, schermlezer, achtergronden per account, galerijselectie, webxdc in horizontale modus… of lees alles op %1$s</string>
+</resources>

@@ -155,6 +155,7 @@
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">Sticker</string>
     <string name="add_to_sticker_collection">Añadir a la colección de stickers</string>
+    <string name="add_stickers_instructions">Para añadir stickers, toca en \"Abrir carpeta de stickers\", crea una subcarpeta para tu colección de stickers y copia imágenes y stickers allí</string>
     <string name="open_sticker_folder">Abrir la carpeta de stickers</string>
     <string name="images">Imágenes</string>
     <string name="audio">Audio</string>
@@ -239,6 +240,7 @@
     <string name="menu_copy_image_to_clipboard">Copiar imagen</string>
     <string name="menu_copy_email_to_clipboard">Copiar correo electrónico</string>
     <string name="paste_from_clipboard">Pegar del portapapeles</string>
+    <string name="ask_copy_unopenable_link_to_clipboard">El enlace \"%1$d\" no se puede abrir en el navegador. ¿Desea copiar el enlace al portapapeles?</string>
     <string name="menu_forward">Reenviar mensaje</string>
     <string name="menu_reply">Responder al mensaje</string>
     <string name="menu_mute">Silenciar notificaciones</string>
@@ -1106,4 +1108,8 @@
     <string name="perm_enable_bg_already_done">Ya has permitido que Delta Chat reciba mensajes en segundo plano.\n\nSi los mensajes aún no llegan en segundo plano, compruebe también la configuración de su sistema.</string>
 
 
-    </resources>
+    <!-- device messages for updates -->
+    <string name="update_1_42_common">Novedades:\n\n💌 Los chats privados garantizan el cifrado de extremo a extremo para los contactos introducidos via QR\n\n😌 Para la simplicidad de todos, marcamos estos contactos y chats con marcas de verificación verdes\n\n👥 Los grupos se crean automáticamente con cifrado de extremo a extremo garantizado si es posible\n\n🔄 Aceptar/bloquear, archivar, fijar y silenciar se sincronizan en todos tus dispositivos</string>
+    <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
+    <string name="update_1_42_android">Esté atento a más mejoras en la cámara, mensajes de voz, copia de respaldo, lector de pantalla, fondos de pantalla por cuenta, seleccionar todo en la galería, webxdc en modo horizontal… o léalos en %1$s</string>
+</resources>
