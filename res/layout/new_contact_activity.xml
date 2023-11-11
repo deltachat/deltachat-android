@@ -112,7 +112,7 @@
         </LinearLayout>
 
         <Button
-            style="@style/ButtonPrimary"
+            style="@style/ButtonSecondary"
             android:id="@+id/qrscan_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
