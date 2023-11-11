@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -12,11 +13,15 @@ import androidx.appcompat.app.ActionBar;
 
 import com.b44t.messenger.DcContext;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 
 import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.PassphraseRequiredActionBarActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.qr.QrActivity;
+import org.thoughtcrime.securesms.qr.QrCodeHandler;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
 public class NewContactActivity extends PassphraseRequiredActionBarActivity
@@ -42,7 +47,9 @@ public class NewContactActivity extends PassphraseRequiredActionBarActivity
 
     nameInput = ViewUtil.findById(this, R.id.name_text);
     addrInput = ViewUtil.findById(this, R.id.email_text);
+    Button qrscanBtn = ViewUtil.findById(this, R.id.qrscan_btn);
 
+    qrscanBtn.setOnClickListener((view) -> new IntentIntegrator(this).setCaptureActivity(QrActivity.class).initiateScan());
     addrInput.setText(getIntent().getStringExtra(ADDR_EXTRA));
     addrInput.setOnFocusChangeListener((view, focused) -> {
         String addr = addrInput.getText() == null? "" : addrInput.getText().toString();
@@ -91,5 +98,15 @@ public class NewContactActivity extends PassphraseRequiredActionBarActivity
         return true;
     }
     return false;
+  }
+
+  @Override
+  protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+    if (requestCode == IntentIntegrator.REQUEST_CODE) {
+      IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+      QrCodeHandler qrCodeHandler = new QrCodeHandler(this);
+      qrCodeHandler.onScanPerformed(scanResult);
+    }
   }
 }
