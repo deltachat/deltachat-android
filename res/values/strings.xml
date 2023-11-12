@@ -4,7 +4,7 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
-   <!-- the word "or" to separate blocks in the user interface that are mutually exclusive --->
+   <!-- the word "or" to separate blocks in the user interface that are mutually exclusive -->
     <string name="or_separator">or</string>
     <string name="clear_search">Clear Search</string>
     <string name="yes">Yes</string>
