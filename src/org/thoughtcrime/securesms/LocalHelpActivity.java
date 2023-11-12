@@ -10,13 +10,16 @@ import java.util.Locale;
 
 public class LocalHelpActivity extends WebViewActivity
 {
+  public static final String SECTION_EXTRA = "section_extra";
+
   @Override
   protected void onCreate(Bundle state, boolean ready) {
     super.onCreate(state, ready);
     setForceDark();
     getSupportActionBar().setTitle(getString(R.string.menu_help));
 
-    String helpPath = "help/LANG/help.html";
+    String section = getIntent().getStringExtra(SECTION_EXTRA);
+    String helpPath = "help/LANG/help.html" + (section!=null? section : "");
     String helpLang = "en";
     try {
       Locale locale = dynamicLanguage.getCurrentLocale();
