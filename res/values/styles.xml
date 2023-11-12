@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <style name="AppCompatAlertDialogStyleLight" parent="Theme.AppCompat.Light.Dialog.Alert">
     </style>
 
@@ -16,7 +16,6 @@
     <style name="TextSecure.DarkActionBar"
            parent="@style/Widget.AppCompat.ActionBar">
         <item name="background">@color/gray95</item>
-        <item name="android:popupTheme">@style/ThemeOverlay.AppCompat.Dark</item>
         <item name="elevation">4dp</item>
         <item name="popupTheme">@style/ThemeOverlay.AppCompat.Dark</item>
         <item name="titleTextStyle">@style/TextSecure.TitleTextStyle</item>
@@ -84,6 +83,7 @@
     </style>
 
     <style name="ButtonPrimary">
+        <item name="drawableTint">@color/white</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:paddingLeft">8dp</item>
         <item name="android:paddingRight">8dp</item>
@@ -91,6 +91,7 @@
     </style>
 
     <style name="ButtonSecondary">
+        <item name="drawableTint">?attr/secondary_button_fg</item>
         <item name="android:textColor">?attr/secondary_button_fg</item>
         <item name="android:paddingLeft">8dp</item>
         <item name="android:paddingRight">8dp</item>
