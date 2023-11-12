@@ -98,7 +98,8 @@
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="@id/guideline_root_end"
             app:layout_constraintStart_toStartOf="@id/guideline_root_start"
-            app:layout_constraintTop_toBottomOf="@id/or_divider">
+            app:layout_constraintTop_toBottomOf="@id/or_divider"
+            app:startIconDrawable="@drawable/ic_person_white_24dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/name_text"
@@ -116,7 +117,8 @@
             app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="@id/guideline_root_end"
             app:layout_constraintStart_toStartOf="@id/guideline_root_start"
-            app:layout_constraintTop_toBottomOf="@id/name">
+            app:layout_constraintTop_toBottomOf="@id/name"
+            app:startIconDrawable="@drawable/ic_alternate_email_24">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/email_text"
