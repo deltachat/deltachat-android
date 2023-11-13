@@ -4,7 +4,7 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">확인</string>
     <string name="cancel">취소</string>
-    <string name="clear_search">검색 지우기</string>
+   <string name="clear_search">검색 지우기</string>
     <string name="yes">예</string>
     <string name="no">아니오</string>
     <string name="select">선택</string>
@@ -671,7 +671,6 @@
     <!-- system messages -->
     <string name="systemmsg_read_receipt_subject">메시지 열림</string>
     <string name="systemmsg_read_receipt_body">보낸 \"%1$s\" 메시지가 수신자의 화면에 표시되었습니다.\n\n이것은 내용이 읽혔다는 것을 보장하지 않습니다.</string>
-    <string name="systemmsg_cannot_decrypt">이 메시지의 암호를 해독할 수 없습니다.\n\n• 이 메시지에 회신하고 보낸 사람에게 메시지를 다시 보내도록 요청하는 것이 도움이 될 수 있습니다.\n\n• 이 장치나 다른 장치에 델타 채팅 또는 다른 전자 메일 프로그램을 다시 설치한 경우 자동 암호화 설치 메시지를 보낼 수 있습니다.</string>
     <string name="systemmsg_unknown_sender_for_chat">이 채팅의 발신자를 알 수 없습니다. 자세한 내용은 \'info\'를 확인하세요.</string>
     <string name="systemmsg_subject_for_new_contact">%1$s가 보낸 메시지</string>
     <string name="systemmsg_failed_sending_to">%1$s에게 메시지를 보내지 못했습니다.</string>

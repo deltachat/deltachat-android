@@ -4,7 +4,7 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">了承</string>
     <string name="cancel">取消</string>
-    <string name="clear_search">検索履歴を消す</string>
+   <string name="clear_search">検索履歴を消す</string>
     <string name="yes">はい</string>
     <string name="no">いいえ</string>
     <string name="select">選択</string>

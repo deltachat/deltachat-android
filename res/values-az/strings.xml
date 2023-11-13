@@ -4,7 +4,7 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
     <string name="cancel">Imtina</string>
-    <string name="yes">Bəli</string>
+   <string name="yes">Bəli</string>
     <string name="no">Xeyir</string>
     <string name="on">Açıq</string>
     <string name="off">Bağlı</string>
@@ -390,7 +390,6 @@
 
     <!-- system messages -->
     <string name="systemmsg_read_receipt_subject">Qəbul olunanları oxuyun</string>
-    <string name="systemmsg_cannot_decrypt">Bu mesaj şifresi çözülə bilməz. \n\n • Bu mesaja yalnız cavab vermək və göndərənin mesajı yenidən göndərməsini xahiş edə bilər. \n\n • Bu barədə Delta Chat və ya başqa bir e-poçt proqramını yenidən quraşdırdığınız halda oradan Autocrypt Kurulum Mesajı göndərmək istədiyiniz başqa bir qurğudan istifadə edə bilərsiniz.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
     <string name="group_name_changed_by_you">Qrupun adı \"%1$s\" - dən \"%2$s\" - yə deyişildi məndən. </string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->

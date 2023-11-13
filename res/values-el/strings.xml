@@ -4,7 +4,7 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">Εντάξει</string>
     <string name="cancel">Ακύρωση</string>
-    <string name="clear_search">Αναζήτηση</string>
+   <string name="clear_search">Αναζήτηση</string>
     <string name="yes">Ναι</string>
     <string name="no">Όχι</string>
     <string name="select">Επιλογή</string>
@@ -707,7 +707,6 @@
     <!-- system messages -->
     <string name="systemmsg_read_receipt_subject">Το μήνυμα ανοίχτηκε</string>
     <string name="systemmsg_read_receipt_body">Το μήνυμα \"%1$s\" που στείλατε εμφανίστηκε στην οθόνη του παραλήπτη.\n\nΑυτό δεν αποτελεί εγγύηση για την ανάγνωση του περιεχομένου.</string>
-    <string name="systemmsg_cannot_decrypt">Αυτό το μήνυμα δεν μπορεί να αποκρυπτογραφηθεί.\n\n• Μπορεί ήδη να σας βοηθήσει να απαντήσετε απλώς σε αυτό το μήνυμα και να ζητήσετε από τον αποστολέα να στείλει ξανά το μήνυμα.\n\n• Σε περίπτωση που εγκαταστήσατε ξανά το Delta Chat ή άλλο πρόγραμμα e-mail σε αυτήν ή σε άλλη συσκευή μπορεί να θέλετε να στείλετε ένα μήνυμα ρύθμισης αυτόματης κρυπτογράφησης από εκεί.</string>
     <string name="systemmsg_unknown_sender_for_chat">Άγνωστος αποστολέας για αυτήν τη συνομιλία. Δείτε \"πληροφορίες\" για περισσότερες λεπτομέρειες.</string>
     <string name="systemmsg_subject_for_new_contact">Μήνυμα από τον/την %1$s</string>
     <string name="systemmsg_failed_sending_to">Αποτυχία αποστολής μηνύματος σε %1$s.</string>

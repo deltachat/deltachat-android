@@ -4,7 +4,7 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
     <string name="cancel">Avbryt</string>
-    <string name="clear_search">Rensa sök</string>
+   <string name="clear_search">Rensa sök</string>
     <string name="yes">Ja</string>
     <string name="no">Nej</string>
     <string name="select">Välj</string>
@@ -542,7 +542,6 @@
     <!-- system messages -->
     <string name="systemmsg_read_receipt_subject">Meddelande öppnat</string>
     <string name="systemmsg_read_receipt_body">\"%1$s\" meddelandet du skickade visades på mottagarens skärm.\n\nDet är ingen garanti för att innehållet har lästs.</string>
-    <string name="systemmsg_cannot_decrypt">Meddelandet kan inte avkrypteras.\n\n• Det kanske kan hjälpa, att svara på detta meddelande och be avsändaren skicka det igen.\n\n• Ifall du har ominstallerat Delta Chat eller något annat e-postprogram på denna eller någon annan enhet, kanske du behöver skicka ett nytt Autocryp inställningsmeddelande därifrån.</string>
     <string name="systemmsg_unknown_sender_for_chat">Okänd avsändare för denna chatt. Se info för fler detaljer.</string>
     <string name="systemmsg_subject_for_new_contact">Meddelande från %1$s</string>
     <string name="systemmsg_failed_sending_to">Kunde inte skicka meddelande till %1$s.</string>
