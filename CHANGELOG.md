@@ -1,5 +1,16 @@
 # Delta Chat Android Changelog
 
+## v1.41.7 Testrun
+2023-11
+
+* synchronize "Broadcast Lists" (experimental) across devices
+* add "Scan QR Code" button to "New Chat / New Contact" dialog
+* fix: do not skip actual message parts when group change messages are inserted
+* fix broken chat names (encode names in the List-ID to avoid SMTPUTF8 errors)
+* update translations
+* update to core 1.131.1
+
+
 ## v1.41.6 Testrun
 2023-11
 
