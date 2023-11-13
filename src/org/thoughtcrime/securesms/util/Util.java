@@ -38,11 +38,9 @@ import android.view.accessibility.AccessibilityManager;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.components.ComposeText;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -60,20 +58,6 @@ public class Util {
   private static final String TAG = Util.class.getSimpleName();
 
   public static final Handler handler = new Handler(Looper.getMainLooper());
-
-  public static String join(Collection<String> list, String delimiter) {
-    StringBuilder result = new StringBuilder();
-    int i = 0;
-
-    for (String item : list) {
-      result.append(item);
-
-      if (++i < list.size())
-        result.append(delimiter);
-    }
-
-    return result.toString();
-  }
 
   public static boolean isEmpty(ComposeText value) {
     return value == null || value.getText() == null || TextUtils.isEmpty(value.getTextTrimmed());
@@ -113,20 +97,6 @@ public class Util {
     } catch (IOException e) {
       Log.w(TAG, e);
     }
-  }
-
-  public static byte[] readFully(InputStream in) throws IOException {
-    ByteArrayOutputStream bout = new ByteArrayOutputStream();
-    byte[] buffer              = new byte[4096];
-    int read;
-
-    while ((read = in.read(buffer)) != -1) {
-      bout.write(buffer, 0, read);
-    }
-
-    in.close();
-
-    return bout.toByteArray();
   }
 
   public static long copy(InputStream in, OutputStream out) throws IOException {
