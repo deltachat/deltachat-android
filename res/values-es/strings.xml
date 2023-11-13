@@ -736,6 +736,8 @@
     <string name="pref_show_tray_icon">Mostrar icono de bandeja</string>
     <string name="pref_edit_profile">Editar perfil</string>
     <string name="disable_imap_idle">Deshabilitar IMAP IDLE</string>
+    <string name="disable_imap_idle_explain">No utilizar la extensión IMAP IDLE aunque el servidor la admita. Habilitar esta opción retrasará el recibo de mensajes, actívala solo para pruebas.</string>
+
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Resultados de la búsqueda</string>
     <string name="emoji_not_found">No se encontraron emojis</string>

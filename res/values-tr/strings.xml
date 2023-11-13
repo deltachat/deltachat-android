@@ -857,7 +857,7 @@
     <string name="chat_protection_enabled_tap_to_learn_more">Bundan böyle iletiler uçtan uca şifreleme güvencelidir. Daha fazlasını öğrenmek için dokunun.</string>
     <string name="chat_protection_enabled_explanation">Artık bu sohbetteki tüm iletiler uçtan uca şifreleme güvencelidir.\n\nUçtan uca şifreleme, iletilerinizi sizin ve sohbet ortaklarınızın arasında özel tutar. E-posta sağlayıcınız bile onları okuyamaz.</string>
     <string name="chat_protection_broken_tap_to_learn_more">%1$s başka bir aygıttan bir ileti gönderdi. Daha fazlasını öğrenmek için dokunun.</string>
-    <string name="chat_protection_broken_explanation">Uçtan uca şifreleme artık güvenceli olamıyor; çünkü büyük olasılıkla %1$s Delta Chat\'i yeniden yükledi ya da başka bir aygıttan ileti gönderdi.\n\nOnlarla kişisel olarak tanışabilir ve güvenceli uçtan uca şifrelemeyi yeniden kurmak için onların QR kodunu yeniden tarayabilirsiniz.</string>
+    <string name="chat_protection_broken_explanation">Uçtan uca şifreleme artık güvencelenemiyor; çünkü büyük olasılıkla %1$s Delta Chat\'i yeniden yükledi ya da başka bir aygıttan ileti gönderdi.\n\nOnlarla kişisel olarak tanışabilir ve güvenceli uçtan uca şifrelemeyi yeniden kurmak için onların QR kodunu yeniden tarayabilirsiniz.</string>
     <string name="learn_more">Daha Fazlasını Öğrenin</string>
 
     <string name="devicemsg_self_deleted">\"Kaydedilen iletiler\" sohbetini sildiniz.\n\nℹ️ \"Kaydedilen iletiler\" özelliğini yeniden kullanmak için kendinizle yeni bir sohbet oluşturun.</string>
@@ -915,7 +915,7 @@
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s yanıtladı; öbeğe eklenmesi bekleniyor…</string>
     <string name="contact_verified">%1$s tanıtıldı.</string>
-    <string name="contact_not_verified">%1$s ile güvenceli uçtan uca şifreleme kurulamıyor.</string>
+    <string name="contact_not_verified">%1$s ile güvencelenen uçtan uca şifreleme kurulamıyor.</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">%1$s tarafından tanıtıldı</string>
     <string name="verified_by_you">Benim tarafımdan tanıtıldı</string>
@@ -1099,4 +1099,8 @@
     <string name="perm_enable_bg_already_done">Delta Chat\'in arka planda iletileri almasına zaten izin verdiniz.\n\nİletiler arka planda hâlâ gelmiyorsa, lütfen sistem ayarlarınızı da denetleyin.</string>
 
 
-    </resources>
+    <!-- device messages for updates -->
+    <string name="update_1_42_common">Ne yeni:\n\n💌 bire bir sohbetler artık tanıtılan kişiler için uçtan uca şifrelemeyi güvenceler\n\n😌 Herkesin basitliği için bu kişileri ve sohbetleri yeşil onay işaretleriyle işaretliyoruz\n\n👥 olanaklıysa, öbekler güvencelenen uçtan uca şifrelemeyle otomatik olarak oluşturulur\n\n🔄 Kabul edilen/Engellenen, Arşivlenen, Sabitlenen, Sessize Al aygıtlarınız arasında eşzamanlanır</string>
+    <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
+    <string name="update_1_42_android">Kamera, sesli iletiler, tümünü yedekleme, ekran okuyucusu, hesap başına duvar kâğıtları, galeride tümünü seç, webxdc manzarasındaki daha fazla iyileştirmeye dikkat edin … ya da onları %1$s adresinde okuyun</string>
+</resources>
