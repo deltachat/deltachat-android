@@ -973,8 +973,6 @@
     <string name="about_offical_app_desktop">This is the official Delta Chat Desktop app.</string>
     <string name="about_licensed_under_desktop">This software is licensed under GNU GPL version 3 and the source code is available on GitHub.</string>
     <string name="welcome_desktop">Welcome to Delta Chat</string>
-    <!-- deprecated, use switch_account -->
-    <string name="login_known_accounts_title_desktop">Known Accounts</string>
     <string name="global_menu_preferences_language_desktop">Language</string>
     <string name="global_menu_file_desktop">File</string>
     <string name="global_menu_file_quit_desktop">Quit</string>
@@ -1001,26 +999,12 @@
     <string name="delete_message_desktop">Delete Message</string>
     <string name="more_info_desktop">More Info</string>
     <string name="timestamp_format_m_desktop">MMM D</string>
-    <!-- deprecated, use encryption_info_title_desktop or profile_encryption -->
-    <string name="encryption_info_desktop">Show Encryption Info</string>
     <string name="remove_desktop">Remove</string>
     <string name="save_desktop">Save</string>
     <string name="name_desktop">Name</string>
-    <!-- deprecated, use autocrypt_send_asm_title / autocrypt_continue_transfer_title -->
-    <string name="autocrypt_key_transfer_desktop">Autocrypt key transfer</string>
-    <!-- deprecated, use autocrypt_send_asm_explain_before -->
-    <string name="initiate_key_transfer_desktop">An Autocrypt Setup Message securely shares your end-to-end setup with other Autocrypt-compliant apps. The setup will be encrypted by a setup code displayed here and must be typed on the other device.</string>
     <string name="select_group_image_desktop">Select Group Image</string>
-    <!-- deprecated, use export_backup_desktop instead -->
-    <string name="imex_progress_title_desktop">Backup Progress</string>
     <string name="export_backup_desktop">Export Backup</string>
-    <!-- deprecated, use autocrypt_send_asm_explain_after instead -->
-    <string name="show_key_transfer_message_desktop">Your key has been sent to yourself. Switch to the other device and open the setup message. You should be asked for a setup code. Enter the following digits:</string>
     <string name="autocrypt_correct_desktop">Autocrypt setup transferred.</string>
-    <!-- deprecated, use autocrypt_bad_setup_code instead -->
-    <string name="autocrypt_incorrect_desktop">Incorrect setup code. Please try again.</string>
-    <!-- deprecated, rare errors should be english only for easier searchability -->
-    <string name="create_chat_error_desktop">Could not create chat.</string>
     <string name="forget_login_confirmation_desktop">Delete this login? Everything will be deleted, including your end-to-end setup, contacts, chats, messages and media. This action cannot be undone.</string>
     <string name="account_info_hover_tooltip_desktop2">E-Mail: %1$s\nSize: %2$s\nAccount Id: %3$s</string>
     <string name="message_detail_sent_desktop">sent</string>
