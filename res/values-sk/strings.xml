@@ -4,7 +4,7 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
     <string name="cancel">Zrušiť</string>
-    <string name="clear_search">Zrušiť hľadanie</string>
+   <string name="clear_search">Zrušiť hľadanie</string>
     <string name="yes">Áno</string>
     <string name="no">Nie</string>
     <string name="select">Vybrať</string>
@@ -733,7 +733,6 @@
     <!-- system messages -->
     <string name="systemmsg_read_receipt_subject">Správa otvorená</string>
     <string name="systemmsg_read_receipt_body">%1$s Správa, ktorú ste poslali, sa zobrazila na obrazovke príjemcu.\n\nZaručujeme, že obsah nebol prečítaný.</string>
-    <string name="systemmsg_cannot_decrypt">Túto správu nie je možné dešifrovať.\n\n• Už by mohlo pomôcť jednoducho odpovedať na túto správu a požiadať odosielateľa, aby správu odoslal znova.\n\n• V prípade, že ste na ňu znova nainštalovali program Delta Chat alebo iný e-mailový program alebo iné zariadenie, z ktorého budete pravdepodobne chcieť odoslať správu o nastavení automatického šifrovania.</string>
     <string name="systemmsg_unknown_sender_for_chat">Neznámy odosielateľ pre túto konverzáciu. Ďalšie informácie nájdete v časti „Informácie“.</string>
     <string name="systemmsg_subject_for_new_contact">Správa od %1$s</string>
     <string name="systemmsg_failed_sending_to">Správu sa nepodarilo odoslať %1$s .</string>

@@ -4,7 +4,7 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">យល់ព្រម</string>
     <string name="cancel">ចោល</string>
-    <string name="clear_search">លុបការស្វែងរក</string>
+   <string name="clear_search">លុបការស្វែងរក</string>
     <string name="yes">បាទ/ចាស</string>
     <string name="no">ទេ</string>
     <string name="select">សំរាំង</string>
@@ -645,7 +645,6 @@
     <!-- system messages -->
     <string name="systemmsg_read_receipt_subject">សារត្រូវបានបើក</string>
     <string name="systemmsg_read_receipt_body">\"%1$s\" សារដែលអ្នកបានផ្ញើត្រូវបានបង្ហាញនៅលើ អេក្រង់របស់អ្នកទទួល\n\nនេះមិនមែនជាការធានាថា មាតិកាត្រួវបានអានទេ។</string>
-    <string name="systemmsg_cannot_decrypt">សារនេះមិនអាចត្រូវបានឌិគ្រីប\n\n• វាអាចជួយឆ្លើយតបជំនួសសារនេះ និងសួរអ្នកផ្ញើដើម្បីផ្ញើសារម្តងទៀត\n\n• ក្នុងករណីអ្នកបានតម្លើងសា Delta Chat ម្តងទៀត ឬកម្មវិធីអុីម៉េលមួយទៀត លើឧបករណ៍នេះ ឬឧបករណ៍មួយផ្សេងទៀត អ្នកប្រហែលជាចង់ផ្ញើ សារការតម្លើងអ៊ិនគ្រីបស្វ័យប្រវត្តិ  (ផ្ញើនិងទទួលដោយសម្ងាត់) ពីទីនោះ។</string>
     <string name="systemmsg_unknown_sender_for_chat">មិនស្គាល់អ្នកផ្ញើការសន្ទនានេះ។ មើល \'ពត៌មាន\' សម្រាប់ពត៌មានលំអិត</string>
     <string name="systemmsg_subject_for_new_contact">សារពី %1$s</string>
     <string name="systemmsg_failed_sending_to">បានបរាបានក្នុងការផ្ញើសារទៅ %1$s</string>

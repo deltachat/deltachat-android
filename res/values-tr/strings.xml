@@ -4,7 +4,7 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">Tamam</string>
     <string name="cancel">İptal</string>
-    <string name="clear_search">Aramayı Temizle</string>
+   <string name="clear_search">Aramayı Temizle</string>
     <string name="yes">Evet</string>
     <string name="no">Hayır</string>
     <string name="select">Seç</string>
@@ -788,7 +788,6 @@
     <!-- system messages -->
     <string name="systemmsg_read_receipt_subject">İleti açıldı</string>
     <string name="systemmsg_read_receipt_body">Gönderdiğiniz \"%1$s\" iletisi alıcının ekranında görüntülendi.\n\nBu, içeriğin okunduğunun güvencesi değildir.</string>
-    <string name="systemmsg_cannot_decrypt">Bu iletinin şifresi çözülemiyor.\n\n• Bu iletiye basitçe yanıt vermek ve gönderene iletiyi yeniden gönderip gönderemeyeceğini sormak zaten yardımcı olabilir.\n\n• Delta Chat\'i ya da başka bir e-posta programını bu ya da başka bir aygıta yeniden kurduysanız, oradan bir Autocrypt Ayarlama İletisi göndermek isteyebilirsiniz.</string>
     <string name="systemmsg_unknown_sender_for_chat">Bu sohbet için bilinmeyen gönderen. Daha fazla ayrıntı için \'bilgi\'ye bakın.</string>
     <string name="systemmsg_subject_for_new_contact">%1$s kişisinden gelen ileti</string>
     <string name="systemmsg_failed_sending_to">%1$s kişisine ileti gönderme başarısız.</string>

@@ -4,7 +4,7 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">У реду</string>
     <string name="cancel">Откажи</string>
-    <string name="clear_search">Избриши претрагу</string>
+   <string name="clear_search">Избриши претрагу</string>
     <string name="yes">Да</string>
     <string name="no">Не</string>
     <string name="select">Изабери</string>
@@ -735,7 +735,6 @@
     <!-- system messages -->
     <string name="systemmsg_read_receipt_subject">Порука је отворена</string>
     <string name="systemmsg_read_receipt_body">Порука „%1$s“ коју сте послали била је приказана на екрану примаоца.\n\nОво није гаранција да је садржај прочитан.</string>
-    <string name="systemmsg_cannot_decrypt">Ова порука се не може дешифровати.\n\n• Оно што може да помогне је да једноставно одговорите на ову поруку и замолите пошиљаоца да поново пошаље поруку.\n\n• У случају да сте поново инсталирали Delta Chat или неки други програм за е-пошту на овом или другом уређају најбоље је да одатле пошаљете поруку за подешавање аутоматског шифровања.</string>
     <string name="systemmsg_unknown_sender_for_chat">Непознати пошиљалац за ово ћаскање. Погледајте „информације“ за више детаља.</string>
     <string name="systemmsg_subject_for_new_contact">Поруке од %1$s</string>
     <string name="systemmsg_failed_sending_to">Слање поруке %1$s је било неуспешно.</string>

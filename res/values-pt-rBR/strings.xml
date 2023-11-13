@@ -4,7 +4,7 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancelar</string>
-    <string name="clear_search">Limpar busca</string>
+   <string name="clear_search">Limpar busca</string>
     <string name="yes">Sim</string>
     <string name="no">Não</string>
     <string name="select">Selecionar</string>
@@ -768,7 +768,6 @@
     <!-- system messages -->
     <string name="systemmsg_read_receipt_subject">Confirmação de leitura</string>
     <string name="systemmsg_read_receipt_body">Confirmação de recebimento da mensagem \"%1$s\".\n\nEsta confirmação somente assegura que a mensagem foi exibida no aparelho do destinatário, mas não há garantia de que ele tenha lido o seu conteúdo.</string>
-    <string name="systemmsg_cannot_decrypt">Impossível descriptografar esta mensagem.\n\n• Pode resolver pedir que ela seja reenviada.\n\n• Caso você tenha reinstalado o Delta Chat ou outro programa de e-mail, neste ou noutro dispositivo, será necessário enviar uma \"mensagem de configuração do Autocrypt\".</string>
     <string name="systemmsg_unknown_sender_for_chat">Remetente desconhecido para esta conversa. Veja \'informações\' para mais detalhes.</string>
     <string name="systemmsg_subject_for_new_contact">Mensagem de %1$s</string>
     <string name="systemmsg_failed_sending_to">Falha ao enviar mensagem para %1$s.</string>

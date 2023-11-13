@@ -4,7 +4,7 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
     <string name="cancel">Annuller</string>
-    <string name="clear_search">Ryd søgning</string>
+   <string name="clear_search">Ryd søgning</string>
     <string name="yes">Ja</string>
     <string name="no">Nej</string>
     <string name="select">Vælg</string>
@@ -593,7 +593,6 @@
     <!-- system messages -->
     <string name="systemmsg_read_receipt_subject">Besked åbnet</string>
     <string name="systemmsg_read_receipt_body">Beskeden \"%1$s\" du har sendt blev vist på modtagerens skærm.\n\nDette er ikke en garanti for at indholdet blev læst.</string>
-    <string name="systemmsg_cannot_decrypt">Denne besked kan ikke dekrypteres.\n\n• Det kan måske hjælpe at svare på beskeden og bede afsender sende beskeden igen.\n\n• I tilfælde at Delta Chat eller andet e-mail program på denne enhed eller en anden er blevet gen-installeret bør der sendes en Autocrypt opsætning besked derfra.</string>
     <string name="systemmsg_unknown_sender_for_chat">Ukent afsender af denne chat. Se \'info\' for flere detaljer.</string>
     <string name="systemmsg_subject_for_new_contact">Besked fra %1$s</string>
     <string name="systemmsg_failed_sending_to">Mislykket forsøg på afsendelse af besked til %1$s.</string>

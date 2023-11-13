@@ -4,7 +4,7 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel·la</string>
-    <string name="clear_search">Neteja la cerca</string>
+   <string name="clear_search">Neteja la cerca</string>
     <string name="yes">Si</string>
     <string name="no">No</string>
     <string name="select">Trieu</string>
@@ -577,7 +577,6 @@
     <!-- system messages -->
     <string name="systemmsg_read_receipt_subject">Confirmació de lectura</string>
     <string name="systemmsg_read_receipt_body">Confirmació de lectura del missatge \"%1$s\".\n\nVol dir que el missatge s\'ha mostrat al dispositiu del receptor, no necessàriament que s\'hagi llegit.</string>
-    <string name="systemmsg_cannot_decrypt">Aquest missatge no es pot desxifrar.\n\n• Proveu de respondre\'l i demanar-li al remitent que us el torni a enviar.\n\n• Si heu reinstal·lat Delta Chat o un altre gestor de correu en aquest dispositiu o en algun altre, proveu d\'enviar un missatge de configuració Autocrypt des d\'allà.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
     <string name="group_name_changed_by_you">Nom del grup \"%1$s\" canviat a \"%2$s\" per mi.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->

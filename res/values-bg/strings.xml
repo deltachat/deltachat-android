@@ -4,7 +4,7 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
     <string name="cancel">Отказ</string>
-    <string name="clear_search">Изчистване на търсенето</string>
+   <string name="clear_search">Изчистване на търсенето</string>
     <string name="yes">Да</string>
     <string name="no">Не</string>
     <string name="select">Избор</string>
@@ -748,7 +748,6 @@
     <!-- system messages -->
     <string name="systemmsg_read_receipt_subject">Съобщението е отворено</string>
     <string name="systemmsg_read_receipt_body">Съобщението \"%1$s\", което изпратихте, беше показано на екрана на получателя.\n\nТова не е гаранция, че съдържанието му е прочетено.</string>
-    <string name="systemmsg_cannot_decrypt">Това съобщение не може да бъде декриптирано.\n\n• Може би ще помогне просто да отговорите на това съобщение и да поискате от подателя да го изпрати отново.\n\n• В случай, че сте преинсталирали Delta Chat или друга програма за електронна поща на това или друго устройство, бихте могли да изпратите съобщение за настройка на Autocrypt от там.</string>
     <string name="systemmsg_unknown_sender_for_chat">Неизвестен подател за този чат. Вижте \"информация\" за повече подробности.</string>
     <string name="systemmsg_subject_for_new_contact">Съобщение от %1$s</string>
     <string name="systemmsg_failed_sending_to">Неуспешно изпращане на съобщение до %1$s.</string>

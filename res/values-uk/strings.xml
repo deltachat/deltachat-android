@@ -4,7 +4,7 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">Гаразд</string>
     <string name="cancel">Скасувати</string>
-    <string name="clear_search">Очистити пошук</string>
+   <string name="clear_search">Очистити пошук</string>
     <string name="yes">Так</string>
     <string name="no">Ні</string>
     <string name="select">Обрати</string>
@@ -818,7 +818,6 @@
     <!-- system messages -->
     <string name="systemmsg_read_receipt_subject">Сповіщення про прочитання.</string>
     <string name="systemmsg_read_receipt_body">Це підтвердження того, що повідомлення «%1$s» було відкрито на пристрої одержувача. Дане підтвердження не означає, що повідомлення було прочитано.</string>
-    <string name="systemmsg_cannot_decrypt">Це повідомлення не може бути розшифроване.\n\n• Можливо, має сенс просто відповісти на нього і попросити відправника повторно відправити повідомлення.\n\n• У випадку, якщо Ви переустановили Delta Chat або іншу поштову програму на цьому або іншому пристрої, Ви, можливо, захочете відправити повідомлення з параметрами Autocrypt звідти.</string>
     <string name="systemmsg_unknown_sender_for_chat">Невідомий відправник для цього чату. Дивіться \"Інформацію\" для деталей.</string>
     <string name="systemmsg_subject_for_new_contact">Повідомлення від %1$s</string>
     <string name="systemmsg_failed_sending_to">Неможлива надіслати повідомлення до %1$s.</string>

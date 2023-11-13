@@ -4,7 +4,7 @@
     <string name="app_name">دلتاچت</string>
     <string name="ok">تأیید</string>
     <string name="cancel">لغو</string>
-    <string name="clear_search">پاک کردن جست‌وجو</string>
+   <string name="clear_search">پاک کردن جست‌وجو</string>
     <string name="yes">بله</string>
     <string name="no">خیر</string>
     <string name="select">انتخاب</string>
@@ -760,7 +760,6 @@ https://meet.jit.si/$ROOM
     <!-- system messages -->
     <string name="systemmsg_read_receipt_subject">پیام باز شد</string>
     <string name="systemmsg_read_receipt_body">پیام\"%1$s\" که ارسال کرده بودید در ثفحه گیرنده نمایش داده شد\n\n. تضمینی وجود ندارد که محتوای پیام را خوانده باشد. </string>
-    <string name="systemmsg_cannot_decrypt">این پیام را نمی‌توان رمزگشایی کرد.\n\n• ممکن است بهتر باشد که به همین پیام پاسخ داده و از ارسال کننده بخواهید دوباره آن را بفرستد. \n\n• اگر دوباره دلتاچت را نصب کرده‌اید یا از یک رایانامه دیگر هم روی این دستگاه یا دستگاه دیگر استفاده می‌کنید ممکن است لازم باشد یک پیام برپاسازی اتوکریپت از آن دستگاه ارسال کنید. </string>
     <string name="systemmsg_unknown_sender_for_chat">فرستنده در این گفت و گو ناشناس است. برای جزئیات بیشتر به \"اطلاعات\" مراجعه کنید.</string>
     <string name="systemmsg_subject_for_new_contact">پیام از%1$s</string>
     <string name="systemmsg_failed_sending_to">ارسال ناموفق پیام به %1$s.</string>

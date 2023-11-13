@@ -4,7 +4,7 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">确定</string>
     <string name="cancel">取消</string>
-    <string name="clear_search">清除搜索</string>
+   <string name="clear_search">清除搜索</string>
     <string name="yes">是</string>
     <string name="no">否</string>
     <string name="select">选择</string>
@@ -773,7 +773,6 @@
     <!-- system messages -->
     <string name="systemmsg_read_receipt_subject">消息已被打开</string>
     <string name="systemmsg_read_receipt_body">您发送的“%1$s”消息已在接收者的屏幕上显示过。\n\n这并不保证内容已被阅读。</string>
-    <string name="systemmsg_cannot_decrypt">此消息无法解密。\n\n• 回复此消息并要求发送者重发该消息可能会有所帮助。\n\n• 如果您在此设备或其他设备上重新安装了 Delta Chat 或其他电子邮件程序，则可能需要从别处发送 Autocrypt 设置消息。</string>
     <string name="systemmsg_unknown_sender_for_chat">此聊天发送者未知。查看“信息”来获取更多详情。</string>
     <string name="systemmsg_subject_for_new_contact">来自 %1$s 的消息</string>
     <string name="systemmsg_failed_sending_to">发送消息给 %1$s 失败。</string>

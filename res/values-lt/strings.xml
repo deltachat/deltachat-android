@@ -4,7 +4,7 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">Gerai</string>
     <string name="cancel">Atsisakyti</string>
-    <string name="clear_search">Išvalyti paiešką</string>
+   <string name="clear_search">Išvalyti paiešką</string>
     <string name="yes">Taip</string>
     <string name="no">Ne</string>
     <string name="on">Įjungta</string>
@@ -644,7 +644,6 @@
     <!-- system messages -->
     <string name="systemmsg_read_receipt_subject">Pranešimas apie skaitymą</string>
     <string name="systemmsg_read_receipt_body">Tai yra pranešimas apie žinutės \"%1$s\" skaitymą.\n\nTai reiškia, kad žinutė buvo atvaizduota gavėjo įrenginyje, tačiau neužtikrina, kad jos turinys buvo perskaitytas.</string>
-    <string name="systemmsg_cannot_decrypt">Nepavyksta iššifruoti šios žinutės.\n\n• Galima, tiesiog, atsakyti į šią žinutę ir paprašyti siuntėjo dar kartą išsiųsti šią žinutę.\n\n• Tuo atveju, jeigu iš naujo įdiegėte Delta Chat ar kitą el. pašto programą šiame ar kitame įrenginyje, jūs galite pageidauti išsiųsti Autocrypt sąrankos žinutę iš to įrenginio.</string>
     <string name="systemmsg_subject_for_new_contact">Žinutė nuo %1$s</string>
     <!-- "left" in the meaning of "exited" -->
     <string name="group_left_by_you">Jūs išėjote iš grupės.</string>

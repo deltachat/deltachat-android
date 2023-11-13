@@ -4,7 +4,7 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
     <string name="cancel">Anuloje</string>
-    <string name="clear_search">Spastroje kërkimin</string>
+   <string name="clear_search">Spastroje kërkimin</string>
     <string name="yes">Po</string>
     <string name="no">Jo</string>
     <string name="select">Përzgjidhni</string>
@@ -785,7 +785,6 @@
     <!-- system messages -->
     <string name="systemmsg_read_receipt_subject">Dëftesë leximi</string>
     <string name="systemmsg_read_receipt_body">Kjo është dëftesë leximi për mesazhin \"%1$s\".\n\nDo të thotë që mesazhi u shfaq te pajisja e marrësit, jo domosdo që lënda u lexua.</string>
-    <string name="systemmsg_cannot_decrypt">Ky mesazh s\’mund të shfshehtëzohet.\n\n• Mundet që të ndihmojë dërgimi thjesht i një përgjigjeje këtij mesazhi dhe t\’i kërkohet dërguesit ta ridërgojë mesazhin.\n\n• Në rast se ri-instaluat Delta Chat-in apo një tjetër program email-esh në këtë apo në një tjetër pajisje, mund të donit të dërgonit një Mesazh Rregullimi Autocrypt-i që prej andej.</string>
     <string name="systemmsg_unknown_sender_for_chat">Dërgues i panjohur për këtë fjalosje. Për më tepër hollësi, shihni \'info\'.</string>
     <string name="systemmsg_subject_for_new_contact">Mesazh nga %1$s</string>
     <string name="systemmsg_failed_sending_to">S’u arrit të dërgohej mesazh te %1$s.</string>

@@ -4,7 +4,7 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancelar</string>
-    <string name="clear_search">Eliminar busca</string>
+   <string name="clear_search">Eliminar busca</string>
     <string name="yes">Si</string>
     <string name="no">Non</string>
     <string name="select">Seleccionar</string>
@@ -714,7 +714,6 @@
     <!-- system messages -->
     <string name="systemmsg_read_receipt_subject">Mensaxe aberta</string>
     <string name="systemmsg_read_receipt_body">A mensaxe \"%1$s\" que enviaches mostrouse na pantalla do correspondente.\n\nNon hai garantía de que o contido fose lido.</string>
-    <string name="systemmsg_cannot_decrypt">Esta mensaxe non se pode descifrar.\n\n• Podería axudar que respondas a mensaxe pedindo ao remitente que a volte a enviar.\n\n• En caso dunha reinstalación Delta Chat ou outro programa de correo en este ou outro dispositivo igual debes enviar unha Mensaxe de Configuración Autocrypt desde alí.</string>
     <string name="systemmsg_unknown_sender_for_chat">Remitente descoñecido para esta convers. Mira en \'info\' para saber máis.</string>
     <string name="systemmsg_subject_for_new_contact">Mensaxe de %1$s</string>
     <string name="systemmsg_failed_sending_to">Fallou o envío para %1$s.</string>

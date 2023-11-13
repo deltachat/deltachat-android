@@ -4,7 +4,7 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
     <string name="cancel">Batalkan</string>
-    <string name="clear_search">Hapus pencarian</string>
+   <string name="clear_search">Hapus pencarian</string>
     <string name="yes">Ya</string>
     <string name="no">Tidak</string>
     <string name="select">Pilih</string>
@@ -558,7 +558,6 @@
     <!-- system messages -->
     <string name="systemmsg_read_receipt_subject">Pesan dibuka</string>
     <string name="systemmsg_read_receipt_body">Pesan \"%1$s\" yang Anda kirimkan tampak di layar penerima.\n\nIni bukan jaminan kalau isinya dibaca.</string>
-    <string name="systemmsg_cannot_decrypt">Pesan ini tidak bisa dienkripsi.\n\n• Ada baiknya menjawab pesan ini dan meminta pengirimnya untuk kirim ulang.\n\n• Dalam kasus Anda menginstal ulang Delta Chat atau program surel lain di perangkat ini atau perangkat lain, sebaiknya Anda mengirim Pengaturan Pesan Autocrypt dari sana.</string>
     <string name="systemmsg_unknown_sender_for_chat">Pengirim tidak dikenal untuk obrolan ini. Lihat \'info\' untuk lebih jelasnya.</string>
     <string name="systemmsg_subject_for_new_contact">Pesan dari %1$s</string>
     <string name="systemmsg_failed_sending_to">Gagal mengirim pesan ke %1$s.</string>
