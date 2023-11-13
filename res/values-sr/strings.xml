@@ -898,8 +898,6 @@
     <string name="about_offical_app_desktop">Ово је званична Delta Chat апликација за рачунар.</string>
     <string name="about_licensed_under_desktop">Овај програм је лиценциран под ГНУ ГПЛ верзија 3 лиценцом и изворни код је доступан на Гитхабу.</string>
     <string name="welcome_desktop">Добродошли у Delta Chat.</string>
-    <!-- deprecated, use switch_account -->
-    <string name="login_known_accounts_title_desktop">Познати налози</string>
     <string name="global_menu_preferences_language_desktop">Језик</string>
     <string name="global_menu_file_desktop">Фајл</string>
     <string name="global_menu_file_quit_desktop">Излаз</string>
@@ -926,26 +924,12 @@
     <string name="delete_message_desktop">Избриши поруку</string>
     <string name="more_info_desktop">Више података</string>
     <string name="timestamp_format_m_desktop">MMM D</string>
-    <!-- deprecated, use encryption_info_title_desktop or profile_encryption -->
-    <string name="encryption_info_desktop">Прикажи податке о шифровању</string>
     <string name="remove_desktop">Уклони</string>
     <string name="save_desktop">Сачувај</string>
     <string name="name_desktop">Име</string>
-    <!-- deprecated, use autocrypt_send_asm_title / autocrypt_continue_transfer_title -->
-    <string name="autocrypt_key_transfer_desktop">Пошаљи кључ за аутошифровање</string>
-    <!-- deprecated, use autocrypt_send_asm_explain_before -->
-    <string name="initiate_key_transfer_desktop">Порука о подешавању аутоматског шифровања безбедно дели ваше комплетно подешавање са другим апликацијама компатибилним са аутоматским шифровањем. Подешавање ће бити шифровано кôдом за подешавање приказаним овде и мора се унети на другом уређају.</string>
     <string name="select_group_image_desktop">Изабери слику групе</string>
-    <!-- deprecated, use export_backup_desktop instead -->
-    <string name="imex_progress_title_desktop">Напредак израде резервне копије</string>
     <string name="export_backup_desktop">Извези резервну копију</string>
-    <!-- deprecated, use autocrypt_send_asm_explain_after instead -->
-    <string name="show_key_transfer_message_desktop">Ваш кључ за шифровање сте послали самом себи. Пређите на други уређај и отворите поруку за подешавање. Када будете били питани за код за подешавање унесите следеће бројеве:</string>
     <string name="autocrypt_correct_desktop">Поставке за аутошифровање су послате.</string>
-    <!-- deprecated, use autocrypt_bad_setup_code instead -->
-    <string name="autocrypt_incorrect_desktop">Ваша подешавања су неисправна. Пробајте поново.</string>
-    <!-- deprecated, rare errors should be english only for easier searchability -->
-    <string name="create_chat_error_desktop">Није могуће креирати ћаскање.</string>
     <string name="forget_login_confirmation_desktop">Да ли желите да избришете овај налог? Све ће бити избрисано, укључујући и ваше подешавање с-краја-на-крај шифровања, контакти, ћаскања, поруке и медији. Ова радња се не може опозвати.</string>
     <string name="account_info_hover_tooltip_desktop2">Е-пошта: %1$s\nВеличина: %2$s\nИдентификатор налога: %3$s</string>
     <string name="message_detail_sent_desktop">послато</string>

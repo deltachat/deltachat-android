@@ -382,8 +382,6 @@
     <!-- dc_str_* resources -->
     <string name="encrypted_message">Mensagem encriptada</string>
 
-    <!-- deprecated, use switch_account -->
-    <string name="login_known_accounts_title_desktop">Contas Conhecidas</string>
     <string name="global_menu_preferences_language_desktop">Escolha o seu idioma...</string>
     <string name="global_menu_file_desktop">Arquivo</string>
     <string name="global_menu_file_quit_desktop">Sair</string>
@@ -406,24 +404,12 @@
     <string name="delete_message_desktop">Apagar mensagem</string>
     <string name="more_info_desktop">Informação adicional</string>
     <string name="timestamp_format_m_desktop">MMM D</string>
-    <!-- deprecated, use encryption_info_title_desktop or profile_encryption -->
-    <string name="encryption_info_desktop">Mostrar a informação de encriptação</string>
     <string name="remove_desktop">Apagar</string>
     <string name="save_desktop">Guardar</string>
     <string name="name_desktop">Nome</string>
-    <!-- deprecated, use autocrypt_send_asm_title / autocrypt_continue_transfer_title -->
-    <string name="autocrypt_key_transfer_desktop">Transferência da chave de Autocrypt</string>
-    <!-- deprecated, use autocrypt_send_asm_explain_before -->
-    <string name="initiate_key_transfer_desktop">Uma Mensagem de Configuração Autocrypt compartilha de forma segura sua configuração de ponta a ponta com outros aplicativos compatíveis com Autocrypt. A configuração será encriptada por um código de configuração que é exibido aqui e deve ser digitado no outro dispositivo.</string>
     <string name="select_group_image_desktop">Seleccionar a imagem para o grupo</string>
-    <!-- deprecated, use export_backup_desktop instead -->
-    <string name="imex_progress_title_desktop">Progressão do backup</string>
     <string name="export_backup_desktop">Exportar o backup</string>
     <string name="autocrypt_correct_desktop">Configuração autocrypt transferida com sucesso!</string>
-    <!-- deprecated, use autocrypt_bad_setup_code instead -->
-    <string name="autocrypt_incorrect_desktop">Código de configuração incorreto. Por favor, tente novamente.</string>
-    <!-- deprecated, rare errors should be english only for easier searchability -->
-    <string name="create_chat_error_desktop">Não foi possível criar o Chat</string>
     <string name="forget_login_confirmation_desktop">Apagar este login? Tudo será apagado, incluindo sua configuração de ponta a ponta, contatos, chats, mensagens e mídia. Esta ação é final e não pode ser revertida.</string>
     <string name="message_detail_sent_desktop">enviado</string>
     <string name="message_detail_received_desktop">recebido</string>

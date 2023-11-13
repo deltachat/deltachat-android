@@ -687,8 +687,6 @@
     <string name="about_offical_app_desktop">Toto je původní aplikace Delta Chat Desktop.</string>
     <string name="about_licensed_under_desktop">Tento software je pod licencí GNU GPL verze 3 a zdrojový kód je k mání na GitHubu.</string>
     <string name="welcome_desktop">Vítej v Delta Chatu</string>
-    <!-- deprecated, use switch_account -->
-    <string name="login_known_accounts_title_desktop">Známé účty</string>
     <string name="global_menu_preferences_language_desktop">Jazyk</string>
     <string name="global_menu_file_desktop">Soubor</string>
     <string name="global_menu_file_quit_desktop">Ukončit</string>
@@ -713,26 +711,12 @@
     <string name="delete_message_desktop">Vymaž zprávu</string>
     <string name="more_info_desktop">Více podrobností</string>
     <string name="timestamp_format_m_desktop">MMM D</string>
-    <!-- deprecated, use encryption_info_title_desktop or profile_encryption -->
-    <string name="encryption_info_desktop">Zobraz popis šifrování</string>
     <string name="remove_desktop">Odstranit</string>
     <string name="save_desktop">Uložit</string>
     <string name="name_desktop">Jméno</string>
-    <!-- deprecated, use autocrypt_send_asm_title / autocrypt_continue_transfer_title -->
-    <string name="autocrypt_key_transfer_desktop">Přenos klíče Autocryptu</string>
-    <!-- deprecated, use autocrypt_send_asm_explain_before -->
-    <string name="initiate_key_transfer_desktop">Nastavení Autocryptu zabezpečeně sdílí nastavení tvého šifrování s ostatními programy používající Autocrypt. Nastavení bude zašifrováno zobrazeným kódem, který musíš zadat i na tom druhém zařízení.</string>
     <string name="select_group_image_desktop">Vyber obrázek skupiny</string>
-    <!-- deprecated, use export_backup_desktop instead -->
-    <string name="imex_progress_title_desktop">Stav zálohování</string>
     <string name="export_backup_desktop">Ulož zálohu</string>
-    <!-- deprecated, use autocrypt_send_asm_explain_after instead -->
-    <string name="show_key_transfer_message_desktop">Poslal jsi si svůj klíč. Přejdi k druhému zařízení a otevři zprávu s nastavením. Měla by se ti objevit výzva k zadání kódu. Pak opiš následující číslo:</string>
     <string name="autocrypt_correct_desktop">Nastavení Autocryptu přeneseno.</string>
-    <!-- deprecated, use autocrypt_bad_setup_code instead -->
-    <string name="autocrypt_incorrect_desktop">Nesprávný kód. Zkus to znovu, prosím.</string>
-    <!-- deprecated, rare errors should be english only for easier searchability -->
-    <string name="create_chat_error_desktop">Hovor nelze vytvořit.</string>
     <string name="forget_login_confirmation_desktop">Smazat toto přihlášení? Vše bude smazáno, včetně nastavení tvého end-to-end šifrování, kontaktů, hovorů, zpráv a multimedií. Tuto akci nelze vrátit zpět.</string>
     <string name="message_detail_sent_desktop">odesláno</string>
     <string name="message_detail_received_desktop">přijato</string>

@@ -844,8 +844,6 @@
     <string name="about_offical_app_desktop">Esta é a app oficial de Escritorio para Delta Chat</string>
     <string name="about_licensed_under_desktop">Este software está baixo licenza GNU GPL versión 3 e o código fonte está dispoñible en GitHub.</string>
     <string name="welcome_desktop">Benvida a Delta Chat</string>
-    <!-- deprecated, use switch_account -->
-    <string name="login_known_accounts_title_desktop">Contas coñecidas</string>
     <string name="global_menu_preferences_language_desktop">Idioma</string>
     <string name="global_menu_file_desktop">Ficheiro</string>
     <string name="global_menu_file_quit_desktop">Saír</string>
@@ -872,26 +870,12 @@
     <string name="delete_message_desktop">Eliminar mensaxe</string>
     <string name="more_info_desktop">Máis info</string>
     <string name="timestamp_format_m_desktop">MMM D</string>
-    <!-- deprecated, use encryption_info_title_desktop or profile_encryption -->
-    <string name="encryption_info_desktop">Mostrar info de cifrado</string>
     <string name="remove_desktop">Eliminar</string>
     <string name="save_desktop">Gardar</string>
     <string name="name_desktop">Nome</string>
-    <!-- deprecated, use autocrypt_send_asm_title / autocrypt_continue_transfer_title -->
-    <string name="autocrypt_key_transfer_desktop">Transferir chave Autocrypt</string>
-    <!-- deprecated, use autocrypt_send_asm_explain_before -->
-    <string name="initiate_key_transfer_desktop">Unha Mensaxe de Configuración Autocrypt comparte de xeito seguro o teu cifrado extremo-a-extremo con outras apps compatibles con Autocrypt. O axuste cífrase cun código seguro que se mostra aquí e debes escribir no outro dispositivo.</string>
     <string name="select_group_image_desktop">Escoller imaxe do grupo</string>
-    <!-- deprecated, use export_backup_desktop instead -->
-    <string name="imex_progress_title_desktop">Progreso do respaldo</string>
     <string name="export_backup_desktop">Exportar respaldo</string>
-    <!-- deprecated, use autocrypt_send_asm_explain_after instead -->
-    <string name="show_key_transfer_message_desktop">Enviaches a chave a ti mesma. Vaite ao outro dispositivo e abre a mensaxe de Configuración. Pedirache o código de configuración. Introduce os seguintes díxitos:</string>
     <string name="autocrypt_correct_desktop">Axuste Autocrypt transferido.</string>
-    <!-- deprecated, use autocrypt_bad_setup_code instead -->
-    <string name="autocrypt_incorrect_desktop">Código incorrecto. Inténtao outra vez.</string>
-    <!-- deprecated, rare errors should be english only for easier searchability -->
-    <string name="create_chat_error_desktop">Non se puido crear a conversa.</string>
     <string name="forget_login_confirmation_desktop">Eliminar esta conexión? Borrarase todo, incluíndo os axustes de cifrado, contactos, conversas, mensaxes e ficheiros de medios. Esta acción non ten volta atrás.</string>
     <string name="account_info_hover_tooltip_desktop2">Email: %1$s \nTamaño: %2$s \nId. da conta: %3$s</string>
     <string name="message_detail_sent_desktop">enviado</string>

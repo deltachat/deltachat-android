@@ -651,8 +651,6 @@ https://delta.chat</string>
     <string name="encrypted_message">暗号化されたメッセージ</string>
 
     <string name="welcome_desktop">Delta Chatにようこそ</string>
-    <!-- deprecated, use switch_account -->
-    <string name="login_known_accounts_title_desktop">知り合い</string>
     <string name="global_menu_preferences_language_desktop">言語を選択して下さい</string>
     <string name="global_menu_file_desktop">ファイル</string>
     <string name="global_menu_file_quit_desktop">終了</string>
@@ -676,22 +674,12 @@ https://delta.chat</string>
     <string name="delete_message_desktop">メッセージを削除する</string>
     <string name="more_info_desktop">もっと詳しく</string>
     <string name="timestamp_format_m_desktop">MMM D</string>
-    <!-- deprecated, use encryption_info_title_desktop or profile_encryption -->
-    <string name="encryption_info_desktop">暗号化情報の表示</string>
     <string name="remove_desktop">削除</string>
     <string name="save_desktop">保存</string>
     <string name="name_desktop">名前</string>
-    <!-- deprecated, use autocrypt_send_asm_title / autocrypt_continue_transfer_title -->
-    <string name="autocrypt_key_transfer_desktop">自動暗号化設定の転送</string>
-    <!-- deprecated, use autocrypt_send_asm_explain_before -->
-    <string name="initiate_key_transfer_desktop">｢自動暗号化設定用メッセージ｣は安全に一対一暗号化設定を対応するアプリケーションとの間に設定します｡　受信側は設定時に表示されるパスコードを入力する必要が有ります｡</string>
     <string name="select_group_image_desktop">グループ画像を選択する</string>
-    <!-- deprecated, use export_backup_desktop instead -->
-    <string name="imex_progress_title_desktop">バックアップの進行状況</string>
     <string name="export_backup_desktop">バックアップをエクスポート</string>
     <string name="autocrypt_correct_desktop">自動暗号化設定が転送されました</string>
-    <!-- deprecated, rare errors should be english only for easier searchability -->
-    <string name="create_chat_error_desktop">チャットを作成できませんでした。</string>
     <string name="message_detail_sent_desktop">送信済み</string>
     <string name="message_detail_received_desktop">届きました</string>
     <string name="menu.view.developer.open.log.folder">ログフォルダを開く</string>

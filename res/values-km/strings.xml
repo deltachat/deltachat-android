@@ -787,8 +787,6 @@
     <string name="about_offical_app_desktop">នេះគឺជាសា Delta Chat ផ្លូវការ នៅលើកម្មវិធីកុំព្យូទ័រលើតុ</string>
     <string name="about_licensed_under_desktop">សូហ្វវែ Delta Chat នេះគឺបានអាជ្ញាប័ណ្ណនៅក្រោម GNU GPL ជំនាន់ ៣ និងប្រភពកូដ គឺអាចរកបាននៅលើ GitHub</string>
     <string name="welcome_desktop">ស្វាគមន៍មកកាន់សា Delta Chat</string>
-    <!-- deprecated, use switch_account -->
-    <string name="login_known_accounts_title_desktop">គណនីដែលបានស្គាល់</string>
     <string name="global_menu_preferences_language_desktop">ភាសា</string>
     <string name="global_menu_file_desktop">ឯកសារ</string>
     <string name="global_menu_file_quit_desktop">ឈប់</string>
@@ -815,26 +813,12 @@
     <string name="delete_message_desktop">លុបសារ</string>
     <string name="more_info_desktop">ពត៌មានបន្ថែម</string>
     <string name="timestamp_format_m_desktop">ខែ ថ្ងៃ</string>
-    <!-- deprecated, use encryption_info_title_desktop or profile_encryption -->
-    <string name="encryption_info_desktop">បង្ហាញពត៌មានដែលការធ្វើឲ្យសារជាសម្ងាត់</string>
     <string name="remove_desktop">យកចេញ</string>
     <string name="save_desktop">រក្សាទុក</string>
     <string name="name_desktop">ឈ្មោះ</string>
-    <!-- deprecated, use autocrypt_send_asm_title / autocrypt_continue_transfer_title -->
-    <string name="autocrypt_key_transfer_desktop">ការផ្ទេរសោរអ៊ិនគ្រីបស្វ័យប្រវត្តិ</string>
-    <!-- deprecated, use autocrypt_send_asm_explain_before -->
-    <string name="initiate_key_transfer_desktop">សាររៀបចំអ៊ិនគ្រីបស្វ័យប្រវត្តិដោយសុវត្ថិភាព ចែករំលែកការរៀបចំឧបករណ៍ដល់ឧបករណ៍ ដល់ឧបករណ៍ជាមួយកម្មវិធី ដែលមានអ៊ិនគ្រីបស្វ័យប្រវត្តិផ្សេងទៀត។ ការចាត់នឹងបានអ៊ិនគ្រីប (ការធ្វើឲ្យការផ្ញើសារជាសារដាយសញ្ញាសម្ងាត់) នៅទីនេះ នឹងត្រូវតែបានវាយបញ្ចូលនៅលើឧបករណ៍ផ្សេង។</string>
     <string name="select_group_image_desktop">ជ្រើសរើសរូបភាពរបស់ក្រុម</string>
-    <!-- deprecated, use export_backup_desktop instead -->
-    <string name="imex_progress_title_desktop">វឌ្ឍនភាពការបម្រុងទុក</string>
     <string name="export_backup_desktop">នាំចេញការបម្រុងទុក</string>
-    <!-- deprecated, use autocrypt_send_asm_explain_after instead -->
-    <string name="show_key_transfer_message_desktop">កូនសោររបស់អ្នកបានផ្ញើទៅខ្លួនអ្នក។ ប្តូរឆ្លាស់ទៅឧបករណ៍ផ្សេងទៀត និងបើកការរៀបចំសារ។ អ្នកនឹងទទួលសំណួរពីកូដរៀបចំ។ បញ្ចូលតូលេខដូចខាងក្រោម:</string>
     <string name="autocrypt_correct_desktop">ការរៀវចំចាក់អ៊ិនគ្រីបស្វ័យប្រវត្តិបានផ្ទេរហើយ។</string>
-    <!-- deprecated, use autocrypt_bad_setup_code instead -->
-    <string name="autocrypt_incorrect_desktop">ការរៀបចំកូដមិនត្រឹមត្រូវទេ។ សូមព្យាយាមម្តងទៀត។</string>
-    <!-- deprecated, rare errors should be english only for easier searchability -->
-    <string name="create_chat_error_desktop">មិនអាចបានបង្កើតការសន្ទនា</string>
     <string name="forget_login_confirmation_desktop">លុបការកត់ចូលនេះ? គ្រប់យ៉ាងនឹងត្រូវបានលុប រួមបញ្ចូលទាំងការរៀបចំ ទៅបញ្ចប់ការអុិនគ្រឹបឧបករណ៍ដល់ឧបករណ៍ ទំនាក់ទំនង សន្ទនា សារ និងប្រពន្ធ័ផ្សព្វផ្សាយ។ សកម្មភាពនេះមិនអាចធ្វើឡើងវិញបានទេ។</string>
     <string name="message_detail_sent_desktop">បានផ្ញើ</string>
     <string name="message_detail_received_desktop">បានទទួល</string>

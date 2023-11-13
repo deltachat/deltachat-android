@@ -965,8 +965,6 @@
     <string name="about_offical_app_desktop">Ky është aplikacioni zyrtar Delta Chat Desktop.</string>
     <string name="about_licensed_under_desktop">Ky program licencohet sipar GNU GPL version 3 dhe kodi burim mund të kihet që prej GitHub-i.</string>
     <string name="welcome_desktop">Mirë se vini në Delta Chat</string>
-    <!-- deprecated, use switch_account -->
-    <string name="login_known_accounts_title_desktop">Llogari të njohura</string>
     <string name="global_menu_preferences_language_desktop">Zgjidhni Gjuhë…</string>
     <string name="global_menu_file_desktop">Kartelë</string>
     <string name="global_menu_file_quit_desktop">Dilni</string>
@@ -993,26 +991,12 @@
     <string name="delete_message_desktop">Fshije mesazhin</string>
     <string name="more_info_desktop">Më tepër të dhëna</string>
     <string name="timestamp_format_m_desktop">MMM D</string>
-    <!-- deprecated, use encryption_info_title_desktop or profile_encryption -->
-    <string name="encryption_info_desktop">Shfaq të dhëna fshehtëzimi</string>
     <string name="remove_desktop">Hiqe</string>
     <string name="save_desktop">Ruaje</string>
     <string name="name_desktop">Emër</string>
-    <!-- deprecated, use autocrypt_send_asm_title / autocrypt_continue_transfer_title -->
-    <string name="autocrypt_key_transfer_desktop">Shpërngulje kyçi Autocrypt</string>
-    <!-- deprecated, use autocrypt_send_asm_explain_before -->
-    <string name="initiate_key_transfer_desktop">Një Mesazh Rregullimi Autocrypt-i ndan në mënyrë të sigurt formësimin tuaj skaj-më-skaj me aplikacione të tjera të përputhshme me Autocrypt-in. Formësimi do të fshehtëzohet përmes një kodi rregullimi, i cili shfaqet këtu dhe duhet dhënë në pajisjen tjetër.</string>
     <string name="select_group_image_desktop">Përzgjidhni figurë grupi</string>
-    <!-- deprecated, use export_backup_desktop instead -->
-    <string name="imex_progress_title_desktop">Ecuri kopjeruajtjeje</string>
     <string name="export_backup_desktop">Eksportoni kopjeruajtje</string>
-    <!-- deprecated, use autocrypt_send_asm_explain_after instead -->
-    <string name="show_key_transfer_message_desktop">Kyçi juaj ju është dërguar. Kaloni te pajisja tjetër dhe hapni mesazhin e rregullimit. Do të duhej t\’ju kërkonte një kod rregullimi. Shtypi shifrat vijuese. Pasi të keni mbaruar, pajisja juaj tjetër do të jetë gati të përdorë Autocrypt-in.</string>
     <string name="autocrypt_correct_desktop">Rregullimi Autocrypt u shpërngul me sukses!</string>
-    <!-- deprecated, use autocrypt_bad_setup_code instead -->
-    <string name="autocrypt_incorrect_desktop">Kod i pasaktë rregullim. Ju lutemi, riprovoni.</string>
-    <!-- deprecated, rare errors should be english only for easier searchability -->
-    <string name="create_chat_error_desktop">S\’u krijua dot fjalosje.</string>
     <string name="forget_login_confirmation_desktop">Të fshihet kjo hyrje? Do të fshihet gjithçka, përfshi rregullimin tuaj për skaj-më-skaj, kontaktet, fjalosjet, mesazhet dhe mediat. Ky veprim është përfundimtar dhe s\’mund të prapësohet.</string>
     <string name="account_info_hover_tooltip_desktop2">Email: %1$s\nMadhësi: %2$s\nID  Llogarie: %3$s</string>
     <string name="message_detail_sent_desktop">të dërguar</string>

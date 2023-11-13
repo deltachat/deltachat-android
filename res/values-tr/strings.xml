@@ -968,8 +968,6 @@
     <string name="about_offical_app_desktop">Bu, resmî Delta Chat Masaüstü uygulamasıdır.</string>
     <string name="about_licensed_under_desktop">Bu yazılım, GNU GPL sürüm 3 altında lisanslıdır ve kaynak kodu GitHub\'da kullanılabilir.</string>
     <string name="welcome_desktop">Delta Chat\'e hoş geldiniz</string>
-    <!-- deprecated, use switch_account -->
-    <string name="login_known_accounts_title_desktop">Bilinen Hesaplar</string>
     <string name="global_menu_preferences_language_desktop">Dil</string>
     <string name="global_menu_file_desktop">Dosya</string>
     <string name="global_menu_file_quit_desktop">Çık</string>
@@ -996,26 +994,12 @@
     <string name="delete_message_desktop">İletiyi Sil</string>
     <string name="more_info_desktop">Daha Fazla Bilgi</string>
     <string name="timestamp_format_m_desktop">MMM D</string>
-    <!-- deprecated, use encryption_info_title_desktop or profile_encryption -->
-    <string name="encryption_info_desktop">Şifreleme Bilgisini Göster</string>
     <string name="remove_desktop">Kaldır</string>
     <string name="save_desktop">Kaydet</string>
     <string name="name_desktop">Ad</string>
-    <!-- deprecated, use autocrypt_send_asm_title / autocrypt_continue_transfer_title -->
-    <string name="autocrypt_key_transfer_desktop">Autocrypt anahtar aktarımı</string>
-    <!-- deprecated, use autocrypt_send_asm_explain_before -->
-    <string name="initiate_key_transfer_desktop">Bir Autocrypt Ayarlama İletisi, uçtan uca ayarlamanızı diğer Autocrypt uyumlu uygulamalarla güvenli olarak paylaşır. Ayarlama, burada görüntülenen ve diğer aygıtta yazılması gereken bir ayarlama kodu tarafından şifrelenecek.</string>
     <string name="select_group_image_desktop">Öbek Görseli Seç</string>
-    <!-- deprecated, use export_backup_desktop instead -->
-    <string name="imex_progress_title_desktop">Yedekleme İlerlemesi</string>
     <string name="export_backup_desktop">Yedeği Dışa Aktar</string>
-    <!-- deprecated, use autocrypt_send_asm_explain_after instead -->
-    <string name="show_key_transfer_message_desktop">Anahtarınız kendinize gönderildi. Diğer aygıta geçin ve ayarlama iletisini açın. Size bir ayarlama kodu sorulmalı. Aşağıdaki sayıları girin:</string>
     <string name="autocrypt_correct_desktop">Autocrypt ayarlaması aktarıldı.</string>
-    <!-- deprecated, use autocrypt_bad_setup_code instead -->
-    <string name="autocrypt_incorrect_desktop">Yanlış ayarlama kodu. Lütfen yeniden deneyin.</string>
-    <!-- deprecated, rare errors should be english only for easier searchability -->
-    <string name="create_chat_error_desktop">Sohbet oluşturulamadı.</string>
     <string name="forget_login_confirmation_desktop">Bu giriş silinsin mi? Uçtan uca ayarlamanızı, kişilerinizi, sohbetlerinizi, iletilerinizi ve ortamlarınızı kapsayarak her şey silinecek. Bu eylem geri alınamaz.</string>
     <string name="account_info_hover_tooltip_desktop2">E-Posta: %1$s\nBoyut: %2$s\nHesap Kimliği: %3$s</string>
     <string name="message_detail_sent_desktop">gönderilme</string>

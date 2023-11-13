@@ -911,8 +911,6 @@
     <string name="about_offical_app_desktop">Това е официалното настолно приложение Delta Chat.</string>
     <string name="about_licensed_under_desktop">Този софтуер е лицензиран под GNU GPL версия 3. Изходният код е наличен в GitHub.</string>
     <string name="welcome_desktop">Добре дошли в Delta Chat</string>
-    <!-- deprecated, use switch_account -->
-    <string name="login_known_accounts_title_desktop">Познати акаунти</string>
     <string name="global_menu_preferences_language_desktop">Език</string>
     <string name="global_menu_file_desktop">Файл</string>
     <string name="global_menu_file_quit_desktop">Напускане</string>
@@ -939,26 +937,12 @@
     <string name="delete_message_desktop">Изтриване на съобщение</string>
     <string name="more_info_desktop">Повече информация</string>
     <string name="timestamp_format_m_desktop">MMM D</string>
-    <!-- deprecated, use encryption_info_title_desktop or profile_encryption -->
-    <string name="encryption_info_desktop">Показване на информация за криптирането</string>
     <string name="remove_desktop">Премахване</string>
     <string name="save_desktop">Запис</string>
     <string name="name_desktop">Име</string>
-    <!-- deprecated, use autocrypt_send_asm_title / autocrypt_continue_transfer_title -->
-    <string name="autocrypt_key_transfer_desktop">Прехвърляне на ключ на Autocrypt</string>
-    <!-- deprecated, use autocrypt_send_asm_explain_before -->
-    <string name="initiate_key_transfer_desktop">Съобщението за настройка на Autocrypt споделя по сигурен начин Вашата настройка за криптиране \"от край до край\" с други приложения, съвместими с Autocrypt. Настройката ще бъде криптирана с код, показан тук, който трябва да бъде въведен на другото устройство.</string>
     <string name="select_group_image_desktop">Изберете изображение за групата</string>
-    <!-- deprecated, use export_backup_desktop instead -->
-    <string name="imex_progress_title_desktop">Прогрес в създаването на резервно копие</string>
     <string name="export_backup_desktop">Експорт на резервно копие</string>
-    <!-- deprecated, use autocrypt_send_asm_explain_after instead -->
-    <string name="show_key_transfer_message_desktop">Изпратихте Вашия ключ до себе си. Преминете на другото устройство и отворете съобщението за настройка. Би трябвало да Ви бъде поискан код за настройка. Въведете следните цифри:</string>
     <string name="autocrypt_correct_desktop">Найстроката на Autocrypt е прехвърлена.</string>
-    <!-- deprecated, use autocrypt_bad_setup_code instead -->
-    <string name="autocrypt_incorrect_desktop">Неправилен код за настройка. Моля, опитайте отново.</string>
-    <!-- deprecated, rare errors should be english only for easier searchability -->
-    <string name="create_chat_error_desktop">Неуспешно създаване на чат.</string>
     <string name="forget_login_confirmation_desktop">Да бъде ли изтрита тази регистрация? Всичко ще бъде изтрито, включително Вашата настройка за криптиране \"от край до край\", контакти, чатове, съобщения и медийни файлове. Това действие не може да бъде отменено.</string>
     <string name="account_info_hover_tooltip_desktop2">E-Mail: %1$s\nРазмер: %2$s\n Идентификатор на акаунт: %3$s</string>
     <string name="message_detail_sent_desktop">изпратено</string>
