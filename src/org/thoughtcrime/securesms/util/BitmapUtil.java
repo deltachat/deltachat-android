@@ -269,31 +269,6 @@ public class BitmapUtil {
     return Math.min(maximumTextureSize, MAX_ALLOWED_TEXTURE_SIZE);
   }
 
-  public static class ScaleResult {
-    private final byte[] bitmap;
-    private final int    width;
-    private final int    height;
-
-    public ScaleResult(byte[] bitmap, int width, int height) {
-      this.bitmap = bitmap;
-      this.width  = width;
-      this.height = height;
-    }
-
-
-    public byte[] getBitmap() {
-      return bitmap;
-    }
-
-    public int getWidth() {
-      return width;
-    }
-
-    public int getHeight() {
-      return height;
-    }
-  }
-
   /**
    * Generate a Bitmap from an Android SDK View.
    *
@@ -334,19 +309,4 @@ public class BitmapUtil {
     drawable.draw(canvas);
     return bitmap;
   }
-
-  public static Bitmap scaleDown(Bitmap realImage, float maxImageSize,
-                                 boolean filter) {
-    float ratio = Math.min(
-      (float) maxImageSize / realImage.getWidth(),
-      (float) maxImageSize / realImage.getHeight());
-    int width = Math.round((float) ratio * realImage.getWidth());
-    int height = Math.round((float) ratio * realImage.getHeight());
-
-    Bitmap newBitmap = Bitmap.createScaledBitmap(realImage, width,
-      height, filter);
-    return newBitmap;
-  }
-
-
 }
