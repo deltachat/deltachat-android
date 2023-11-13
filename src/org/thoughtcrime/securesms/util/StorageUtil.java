@@ -10,10 +10,7 @@ import android.provider.MediaStore;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.thoughtcrime.securesms.database.NoExternalStorageException;
 import org.thoughtcrime.securesms.permissions.Permissions;
-
-import java.io.File;
 
 public class StorageUtil {
 
