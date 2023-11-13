@@ -633,8 +633,6 @@
     <string name="about_offical_app_desktop">Ini adalah aplikasi resmi Delta Chat Desktop.</string>
     <string name="about_licensed_under_desktop">Perangkat lunak ini berlisensi di bawah GNU GPL versi 3 dan kode sumber tersedia di GitHub.</string>
     <string name="welcome_desktop">Selamat Datang di Delta Chat</string>
-    <!-- deprecated, use switch_account -->
-    <string name="login_known_accounts_title_desktop">Akun yang dikenal</string>
     <string name="global_menu_preferences_language_desktop">Bahasa</string>
     <string name="global_menu_file_desktop">Berkas</string>
     <string name="global_menu_file_quit_desktop">Keluar</string>
@@ -658,23 +656,11 @@
     <string name="delete_message_desktop">Hapus pesan</string>
     <string name="more_info_desktop">Info lebih lanjut</string>
     <string name="timestamp_format_m_desktop">MMM D</string>
-    <!-- deprecated, use encryption_info_title_desktop or profile_encryption -->
-    <string name="encryption_info_desktop">Tampilkan info enkripsi</string>
     <string name="remove_desktop">Menghapus</string>
     <string name="save_desktop">Menyimpan</string>
     <string name="name_desktop">Nama</string>
-    <!-- deprecated, use autocrypt_send_asm_title / autocrypt_continue_transfer_title -->
-    <string name="autocrypt_key_transfer_desktop">Transfer kunci Autocrypt</string>
-    <!-- deprecated, use autocrypt_send_asm_explain_before -->
-    <string name="initiate_key_transfer_desktop">Pengaturan Pesan Autocrypt secara aman membagikan pengaturan ujung ke ujung Anda dengan aplikasi lain yang sesuai dengan Autocrypt. Pengaturan akan dienkripsi dengan kode pengaturan yang ditampilkan di sini dan harus diketik di perangkat lain.</string>
     <string name="select_group_image_desktop">Pilih gambar grup</string>
-    <!-- deprecated, use autocrypt_send_asm_explain_after instead -->
-    <string name="show_key_transfer_message_desktop">Kunci Anda sudah dikirim ke Anda sendiri. Lihat pesan pengaturan di perangkat yang lain. Seharusnya Anda akan diminta kode pengaturan. Masukkan angka berikut:</string>
     <string name="autocrypt_correct_desktop">Pengaturan Autocrypt ditransfer.</string>
-    <!-- deprecated, use autocrypt_bad_setup_code instead -->
-    <string name="autocrypt_incorrect_desktop">Kode pengaturan salah. Coba lagi.</string>
-    <!-- deprecated, rare errors should be english only for easier searchability -->
-    <string name="create_chat_error_desktop">Tidak dapat membuat obrolan.</string>
     <string name="forget_login_confirmation_desktop">Hapus login ini? Semuanya akan dihapus, termasuk pengaturan ujung ke ujung, kontak, obrolan, pesan dan media. Kalau diklik tidak bisa balik lagi.</string>
     <string name="message_detail_sent_desktop">kirim</string>
     <string name="message_detail_received_desktop">diterima</string>

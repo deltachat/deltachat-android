@@ -550,8 +550,6 @@
     <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
     <string name="about_offical_app_desktop">ئەمە نەرمامێری فەرمی دێڵتا چاتە بۆ کۆمپووتەری ڕوومێز.</string>
     <string name="welcome_desktop">بەخێر بێن بۆ دێڵتا چات</string>
-    <!-- deprecated, use switch_account -->
-    <string name="login_known_accounts_title_desktop">هەژمارە ناسراوەکان</string>
     <string name="global_menu_preferences_language_desktop">زمان</string>
     <string name="global_menu_file_desktop">پەڕگە</string>
     <string name="global_menu_file_quit_desktop">چوونەدەرەوە</string>
@@ -571,19 +569,11 @@
     <string name="encryption_info_title_desktop">زانیاری شفرەکردن</string>
     <string name="delete_message_desktop">سڕینەوەی پەیام</string>
     <string name="more_info_desktop">زانیاری زۆرتر</string>
-    <!-- deprecated, use encryption_info_title_desktop or profile_encryption -->
-    <string name="encryption_info_desktop">پیشاندانی زانیاری شفرەکردن</string>
     <string name="remove_desktop">سڕینەوە</string>
     <string name="save_desktop">پاشەکەوت کردن</string>
     <string name="name_desktop">ناو</string>
-    <!-- deprecated, use autocrypt_send_asm_title / autocrypt_continue_transfer_title -->
-    <string name="autocrypt_key_transfer_desktop">گواستنەوەی کلیلی ئۆتۆکریپت</string>
     <string name="select_group_image_desktop">هەڵبژاردنی وێنەی کۆڕ</string>
-    <!-- deprecated, use export_backup_desktop instead -->
-    <string name="imex_progress_title_desktop">پرۆسەی یەدەک هەڵگرتن</string>
     <string name="export_backup_desktop">هەناردەکردنی یەدەک</string>
-    <!-- deprecated, rare errors should be english only for easier searchability -->
-    <string name="create_chat_error_desktop">وتووێژەکە ڕێک نەخرا.</string>
     <string name="message_detail_sent_desktop">هەنێردراو</string>
     <string name="message_detail_received_desktop">وەرگیراو</string>
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->

@@ -430,14 +430,8 @@
     <string name="encryption_info_title_desktop">Krypteringsinfo</string>
     <string name="delete_message_desktop">Slett melding</string>
     <string name="more_info_desktop">Mer informasjon</string>
-    <!-- deprecated, use encryption_info_title_desktop or profile_encryption -->
-    <string name="encryption_info_desktop">Krypteringsinfo</string>
     <string name="remove_desktop">Fjerne</string>
     <string name="save_desktop">Lagre</string>
     <string name="name_desktop">Navn</string>
-    <!-- deprecated, use autocrypt_send_asm_title / autocrypt_continue_transfer_title -->
-    <string name="autocrypt_key_transfer_desktop">Autocrypt-nøkkeloverføring</string>
-    <!-- deprecated, use autocrypt_send_asm_explain_before -->
-    <string name="initiate_key_transfer_desktop">The Autocrypt-nøkkeloverføring krever at e-postklienten på den andre enheten er Autocrypt-kompatibel.\n\nDu kan så sende din hemmelige nøkkel til deg selv. Nøkkelen vil bli kryptert av en oppsettskode som vises her og må skrives inn på den andre enheten.</string>
     <string name="export_backup_desktop">Eksporter sikkerhetskopi</string>
     </resources>
