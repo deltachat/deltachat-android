@@ -350,8 +350,8 @@
 
     <!-- contact list -->
     <string name="contacts_title">Danh bạ</string>
-    <string name="contacts_enter_name_or_e-mail">Nhập tên hoặc địa chỉ e-mail</string>
-    <string name="contacts_type_e-mail_above">Nhập địa chỉ e-mail ở trên</string>
+    <string name="contacts_enter_name_or_email">Nhập tên hoặc địa chỉ e-mail</string>
+    <string name="contacts_type_email_above">Nhập địa chỉ e-mail ở trên</string>
     <string name="contacts_empty_hint">Không có liên hệ nào.</string>
 
 
