@@ -1,5 +1,18 @@
 # Delta Chat Android Changelog
 
+## v1.41.8 Testrun
+2023-11
+
+* use local help for guaranteed end-to-end encryption "Learn More" links
+* do not post "NAME verified" messages on QR scan success
+* improve system message wording
+* fix: allow to QR scan groups when 1:1 chat with the inviter is a contact request
+* fix: add "Setup Changed" message before the message
+* fix: read receipts created or unblock 1:1 chats sometimes
+* add Vietnamese translation, update other translations and local help
+* update to core 1.131.2
+
+
 ## v1.41.7 Testrun
 2023-11
 
