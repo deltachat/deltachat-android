@@ -4,7 +4,9 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">Oké</string>
     <string name="cancel">Annuleren</string>
-   <string name="clear_search">Zoekopdracht wissen</string>
+   <!-- the word "or" to separate blocks in the user interface that are mutually exclusive -->
+    <string name="or_separator">of</string>
+    <string name="clear_search">Zoekopdracht wissen</string>
     <string name="yes">Ja</string>
     <string name="no">Nee</string>
     <string name="select">Selecteren</string>
@@ -788,6 +790,7 @@
     <!-- system messages -->
     <string name="systemmsg_read_receipt_subject">Leesbevestiging</string>
     <string name="systemmsg_read_receipt_body">Het door jou verstuurde bericht, “%1$s”, heeft het scherm van de ontvanger bereikt.\n\nDit betekent echter niet dat het ook gelezen is.</string>
+    <string name="systemmsg_cannot_decrypt">Dit bericht kan niet worden ontsleuteld.\n\n• Het kan helpen dit bericht te beantwoorden en de afzender te vragen het opnieuw te versturen.\n\n• Als je Delta Chat of een andere e-mailapp opnieuw hebt geïnstalleerd, voeg het dan toe als tweede apparaat of importeer een reservekopie.</string>
     <string name="systemmsg_unknown_sender_for_chat">Dit gesprek bevat een onbekende afzender. Zie ‘Informatie’ voor meer informatie.</string>
     <string name="systemmsg_subject_for_new_contact">Bericht van %1$s</string>
     <string name="systemmsg_failed_sending_to">Het bericht kan niet worden verstuurd aan %1$s.</string>
@@ -798,6 +801,8 @@
     <string name="group_image_changed_by_you">Je hebt de groepsafbeelding gewijzigd.</string>
     <!-- %1$s will be replaced by name and address of the contact who did the action -->
     <string name="group_image_changed_by_other">De groepsafbeelding is gewijzigd door %1$s.</string>
+    <!-- %1$s will be replaced by name and address of the contact added to the group -->
+    <string name="member_x_added">‘%1$s’ is toegevoegd.</string>
     <!-- %1$s will be replaced by name and address of the contact added to the group -->
     <string name="add_member_by_you">Je hebt ‘%1$s’ toegevoegd.</string>
     <!-- %1$s will be replaced by name and address of the contact added to the group, %2$s will be replaced by name and address of the contact who did the action -->
