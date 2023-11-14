@@ -1088,7 +1088,7 @@
 
 
     <!-- device messages for updates -->
-    <string name="update_1_42_common">What\'s new:\n\n💌 one-to-one chats guarantee end-to-end encryption for contacts with a green checkmark now\n\n😌 for everyone\'s simplicity, we also mark these chats with green checkmarks\n\n👥 groups are created automatically with guaranteed end-to-end encryption if possible\n\n🔄 Accept/Blocked, Archived, Pinned, Mute is synced across all your devices</string>
+    <string name="update_1_42_common">What\'s new:\n\n💌 one-to-one chats guarantee end-to-end encryption for contacts with a green checkmark\n\n😌 for everyone\'s simplicity, we also mark these chats with green checkmarks\n\n👥 groups are created automatically with guaranteed end-to-end encryption if possible\n\n🔄 Accept/Blocked, Archived, Pinned, Mute is synced across all your devices</string>
     <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
     <string name="update_1_42_android">Watch out for more improvements in camera, voice messages, backup-all, screen reader, per-account wallpapers, gallery select-all, webxdc landscape … or read them at %1$s</string>
 </resources>
