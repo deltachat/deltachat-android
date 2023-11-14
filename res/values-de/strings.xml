@@ -802,6 +802,8 @@
     <!-- %1$s will be replaced by name and address of the contact who did the action -->
     <string name="group_image_changed_by_other">Gruppenbild geändert von %1$s.</string>
     <!-- %1$s will be replaced by name and address of the contact added to the group -->
+    <string name="member_x_added">%1$s hinzugefügt.</string>
+    <!-- %1$s will be replaced by name and address of the contact added to the group -->
     <string name="add_member_by_you">%1$s hinzugefügt.</string>
     <!-- %1$s will be replaced by name and address of the contact added to the group, %2$s will be replaced by name and address of the contact who did the action -->
     <string name="add_member_by_other">%1$s hinzugefügt von %2$s.</string>
