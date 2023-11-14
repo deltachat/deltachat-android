@@ -35,6 +35,7 @@
       <!-- sk     Slovak -->                 <item>Slovenčina</item>
       <!-- fi     Finnish -->                <item>Suomi</item>
       <!-- sv     Swedish -->                <item>Svenska</item>
+      <!-- vi     Vietnamese -->             <item>Tiếng Việt</item>
       <!-- tr     Turkish -->                <item>Türkçe</item>
       <!-- el     Greek -->                  <item>Ελληνικά</item>
       <!-- ru     Russian -->                <item>Pусский</item>
@@ -83,6 +84,7 @@
       <item>sk</item>
       <item>fi</item>
       <item>sv</item>
+      <item>vi</item>
       <item>tr</item>
       <item>el</item>
       <item>ru</item>
