@@ -31,10 +31,10 @@
   <li><a href="#crittografia-e-sicurezza">Crittografia e Sicurezza</a>
     <ul>
       <li><a href="#quali-standards-vengono-utilizzati-per-la-crittografia-end-to-end">Quali standards vengono utilizzati per la crittografia end-to-end?</a></li>
-      <li><a href="#whene2e">How can i know if messages are end-to-end encrypted?</a></li>
-      <li><a href="#howtoe2ee">How can I get guaranteed end-to-end encryption and green checkmarks?</a></li>
-      <li><a href="#e2eeguarantee">What does the green checkmark and “guaranteed end-to-end encryption” mean?</a></li>
-      <li><a href="#nocryptanymore">A contact “sent a message from another device”, what can i do?</a></li>
+      <li><a href="#whene2e">Come posso sapere se i messaggi sono crittografati end-to-end?</a></li>
+      <li><a href="#howtoe2ee">Come posso ottenere la crittografia end-to-end garantita e i segni di spunta verdi?</a></li>
+      <li><a href="#e2eeguarantee">Cosa significano il segno di spunta verde e la “crittografia end-to-end garantita”?</a></li>
+      <li><a href="#nocryptanymore">Un contatto “ha inviato un messaggio da un altro dispositivo”, cosa posso fare?</a></li>
       <li><a href="#are-attachments-pictures-files-audio-etc-end-to-end-encrypted">Are attachments (pictures, files, audio etc.) end-to-end encrypted?</a></li>
       <li><a href="#openpgp-secure">OpenPGP è sicuro?</a></li>
       <li><a href="#openpgp-alternatives">Did you consider using alternatives to OpenPGP for end-to-end -encryption?</a></li>
@@ -130,16 +130,16 @@ destinatario di installare la tua stessa app, come con altri messenger.</p>
       </h3>
 
 <ul>
-  <li><em>Independent</em> of any company or services. <em>You</em> own your data.</li>
-  <li>Your data is not saved on a central server unless all users are using
-the same e-mail servers</li>
-  <li>You do not distribute your address book to anyone.</li>
-  <li><em>Fast</em> by the use of Push-IMAP.</li>
-  <li><em>Largest userbase</em> - recipients <em>not</em> using Delta Chat can be reached as well.</li>
-  <li><em>No Spam</em> - only messages of known users are shown by default.</li>
-  <li><em>End-to-end encryption</em> via Autocrypt.</li>
-  <li><em>Copyleft</em> and <em>Standards</em> based libre software.</li>
-  <li><em>Flexible identity</em> with built-in support for <a href="#multiple-accounts">multiple accounts</a></li>
+  <li><em>Indipendente</em> da qualsiasi azienda o servizio. <em>Tu</em> possiedi i tuoi dati.</li>
+  <li>I tuoi dati non vengono salvati su un server centrale a meno che non vengano utilizzati da tutti gli utenti
+gli stessi server e-mail</li>
+  <li>Non distribuisce la tua rubrica a nessuno.</li>
+  <li><em>Veloce</em> grazie all’uso di Push-IMAP.</li>
+  <li><em>Base utenti più numerosa</em>: è possibile raggiungere anche i destinatari che <em>non</em> utilizzano Delta Chat.</li>
+  <li><em>No Spam</em>: per impostazione predefinita vengono visualizzati solo i messaggi di utenti conosciuti.</li>
+  <li><em>Crittografia end-to-end</em> tramite Autocrypt.</li>
+  <li>Software libero basato su <em>Copyleft</em> e <em>Standards</em>.</li>
+  <li><em>Identità flessibile</em> con supporto integrato per <a href="#multiple-accounts">più account</a></li>
 </ul>
     
       <h3 id="quali-messaggi-vengono-mostrati-in-delta-chat">
@@ -255,8 +255,8 @@ dispositivo.</p>
         
       </h3>
 
-<p>Yes, incoming HTML messages come with a “Show full message” button. 
-Outgoing messages always use plain text.</p>
+<p>Sì, i messaggi HTML in arrivo sono dotati di un pulsante “Mostra messaggio completo”.
+I messaggi in uscita utilizzano sempre testo normale.</p>
     
       <h3 id="perché-devo-inserire-la-mia-password-e-mail-in-delta-chat-è-sicuro">
         
@@ -531,193 +531,188 @@ più vecchi di quel periodo.</li>
         
       </h3>
 
-<p><a href="https://autocrypt.org">Autocrypt</a> is used for automatically
-establishing end-to-end encryption with contacts and group chats.
-Autocrypt uses a limited and <a href="#openpgp-secure">secure subset of the OpenPGP standard</a>.
-End-to-End encrypted messages are marked with a padlock 
+<p><a href="https://autocrypt.org">Autocrypt</a> viene utilizzato automaticamente per stabilire la crittografia end-to-end con contatti e chat di gruppo. Autocrypt utilizza un <a href="#openpgp-secure">sottoinsieme limitato e sicuro dello standard OpenPGP</a>. I messaggi crittografati end-to-end sono contrassegnati da un lucchetto 
 <img style="vertical-align:middle; width:1.2em; margin:1px" src="../lock-icon.png" alt="padlock" />.</p>
 
-<p><a href="https://countermitm.readthedocs.io/en/latest/new.html">Secure-Join protocols</a>
-are used for establishing chats with guaranteed end-to-end encryption 
-which protects against network attacks and compromised servers.
-Chats marked with a green checkmark 
+<p><a href="https://countermitm.readthedocs.io/en/latest/new.html">Protocolli Secure-Join</a>
+vengono utilizzati per stabilire chat con crittografia end-to-end garantita
+che protegge dagli attacchi di rete e dai server compromessi.
+Chat contrassegnata da un segno di spunta verde
 <img style="vertical-align:middle; width:1.5em; margin:1px" src="../green-checkmark.png" alt="green checkmark" />
-guarantee end-to-end encrypted messages.</p>
+garantisce messaggi crittografati end-to-end.</p>
     
       <h3 id="whene2e">
         
         
-          How can i know if messages are end-to-end encrypted? <a href="#whene2e" class="anchor"></a>
+          Come posso sapere se i messaggi sono crittografati end-to-end? <a href="#whene2e" class="anchor"></a>
         
         
       </h3>
 
-<p>All end-to-end encrypted messages carry a padlock:</p>
+<p>Tutti i messaggi crittografati end-to-end portano un lucchetto:</p>
 
 <p><img style="width:160px; margin:1px" src="../lock-screenshot.png" alt="padlock in bubble" /></p>
 
-<p>End-to-end encryption is guaranteed if there is a green checkmark next to the chat title:</p>
+<p>La crittografia end-to-end è garantita se è presente un segno di spunta verde accanto al titolo della chat:</p>
 
 <p><img style="width:211px; margin:1px" src="../green-checkmark-screenshot.png" alt="green checkmark in title" /></p>
     
       <h3 id="howtoe2ee">
         
         
-          How can I get guaranteed end-to-end encryption and green checkmarks? <a href="#howtoe2ee" class="anchor"></a>
+          Come posso ottenere la crittografia end-to-end garantita e i segni di spunta verdi? <a href="#howtoe2ee" class="anchor"></a>
         
         
       </h3>
 
-<p>Meet your chat partner outside Delta Chat, preferably in person
-but a second channel like a video chat
-or a different messenger is fine as well.
-Perform the following QR show/scan procedure with your chat partner.
-One of you is the “Inviter”, the other is the “Joiner”.</p>
+<p>Incontra il tuo partner di chat fuori Delta Chat, preferibilmente di persona
+ma un secondo canale come una chat video
+oppure va bene anche un altro messenger.
+Esegui la seguente procedura di presentazione/scansione QR con il tuo partner di chat.
+Uno di voi è l’“Invitante”, l’altro è l’“Invitato”.</p>
 
-<p><strong>Inviter side</strong>:</p>
+<p><strong>Lato invito</strong>:</p>
 
 <ul>
   <li>
-    <p>Group invitation: 
-Tap the chat group title to see its member list, and select “QR Invite code”. 
-Share the QR image with the other side either in person or through a second channel.</p>
+    <p>Invito di gruppo:
+Tocca il titolo del gruppo di chat per visualizzare l’elenco dei membri e seleziona “Codice QR di invito”.
+Condividi l’immagine QR con l’altra parte di persona o tramite un secondo canale.</p>
   </li>
   <li>
-    <p>Direct 1:1 chat invitation: 
-Tap the QR Code icon <img style="vertical-align:middle; width:1.8em; margin:1px" src="../qr-icon.png" />
-on the Delta Chat app main screen – 
-on Desktop the QR Icon is in the left-side sandwich menu.
-Share the QR image with the other side either in person or through a second channel.</p>
+    <p>Invito diretto alla chat 1:1:
+Tocca l’icona del Codice QR <img style="vertical-align:middle; width:1.8em; margin:1px" src="../qr-icon.png" />
+nella schermata principale dell’app Delta Chat – 
+sul desktop l’icona QR si trova nel menu a sandwich sul lato sinistro.
+Condividi l’immagine QR con l’altra parte di persona o tramite un secondo canale.</p>
   </li>
 </ul>
 
-<p><strong>Joiner side</strong>:</p>
+<p><strong>Lato invitato</strong>:</p>
 
 <ul>
   <li>
-    <p>Tap the QR Code icon <img style="vertical-align:middle; width:1.8em; margin:1px" src="../qr-icon.png" />
-on the Delta Chat app main screen – 
-on Desktop the QR Icon is in the left-side sandwich menu.</p>
+    <p>Tocca l’icona del Codice QR <img style="vertical-align:middle; width:1.8em; margin:1px" src="../qr-icon.png" /> 
+ nella schermata principale dell’app Delta Chat –
+ sul desktop l’icona QR si trova nel menu a sandwich sul lato sinistro.</p>
   </li>
   <li>
-    <p>Choose “SCAN QR CODE” and scan the QR Code 
-that you see from your chat partner in a second channel.</p>
+    <p>Scegli “SCANSIONE CODICE QR” e scansiona il Codice QR
+che vedi dal tuo partner di chat in un secondo canale.</p>
   </li>
   <li>
-    <p>Tap “OK”</p>
+    <p>Tocca “OK”.</p>
   </li>
 </ul>
 
-<p><strong>Both Inviter and Joiner</strong>:</p>
+<p><strong>Sia Invitante che Invitato</strong>:</p>
 
-<p>Wait while <a href="https://countermitm.readthedocs.io/en/latest/new.html#setup-contact-protocol">Secure-Join network messages are exchanged</a> between both devices.</p>
+<p>Attendere mentre <a href="https://countermitm.readthedocs.io/en/latest/new.html#setup-contact-protocol">i messaggi di rete Secure-Join vengono scambiati</a> tra entrambi i dispositivi.</p>
 
 <ul>
   <li>
-    <p>If both devices are online,
-both sides will eventually see a (group or direct) chat with a green checkmark
+    <p>Se entrambi i dispositivi sono online,
+entrambe le parti vedranno eventualmente una chat (di gruppo o diretta) con un segno di spunta verde
 <img style="vertical-align:middle; width:1.5em; margin:1px" src="../green-checkmark.png" alt="green checkmark" />
-next to the title.</p>
+accanto al titolo.</p>
   </li>
   <li>
-    <p>If one of the devices is offline, the green checkmarks will only
-appear later when the device is internet-connected again
-and the Secure-Join network protocol completed.</p>
+    <p>Se uno dei dispositivi è offline, verranno visualizzati solo i segni di spunta verdi
+verranno visualizzati in seguito quando il dispositivo sarà nuovamente connesso a Internet
+e il protocollo di rete Secure-Join è stato completato.</p>
   </li>
 </ul>
 
-<p>Congratulations! 
-You now will automatically use guaranteed end-to-end encryption
-with this contact and both of you can add each other to green-checkmarked groups
+<p>Congratulazioni!
+Ora utilizzerai automaticamente la crittografia end-to-end garantita
+con questo contatto potete aggiungervi a vicenda nei gruppi contrassegnati da un segno di spunta verde
 <img style="vertical-align:middle; width:1.5em; margin:1px" src="../green-checkmark.png" alt="green checkmark" />,
-thereby automatically spreading guaranteed end-to-end encryption among its members.</p>
+diffondendo così automaticamente la crittografia end-to-end garantita tra i suoi membri.</p>
     
       <h3 id="e2eeguarantee">
         
         
-          What does the green checkmark and “guaranteed end-to-end encryption” mean? <a href="#e2eeguarantee" class="anchor"></a>
+          Cosa significano il segno di spunta verde e la “crittografia end-to-end garantita”? <a href="#e2eeguarantee" class="anchor"></a>
         
         
       </h3>
 
-<p>Chat titles with green checkmarks
+<p>Titoli di chat con segni di spunta verde
 <img style="vertical-align:middle; width:1.5em; margin:1px" src="../green-checkmark.png" alt="green checkmark" />
-mean that all messages in the chat will be end-to-end encrypted
-and can not be read or altered by compromised e-mail servers or Internet providers. 
-Joining green-checkmarked group chats
-safely spreads everybody’s encryption information (and green checkmarks)
-in a manner that guarantees end-to-end encryption in the group and among members.</p>
+significa che tutti i messaggi nella chat saranno crittografati end-to-end
+e non possono essere letti o modificati da server di e-mail o provider Internet compromessi.
+Partecipare alle chat di gruppo contrassegnate da un segno di spunta verde diffonde in modo sicuro le informazioni di crittografia di tutti (e i segni di spunta verdi)
+in modo da garantire la crittografia end-to-end nel gruppo e tra i membri.</p>
 
-<p>Contact profiles with green checkmarks 
+<p>Profili di contatto con segni di spunta verdi
 <img style="vertical-align:middle; width:1.5em; margin:1px" src="../green-checkmark.png" alt="green checkmark" />
-mean that messaging a contact is currently guaranteed to be end-to-end encrypted.
-Every green-checkmarked contact either did a direct <a href="#howtoe2ee">QR-scan</a> with you
-or was introduced by a another green-checkmarked contact.
-Introductions happen automatically when adding members to groups. 
-Whoever adds a contact to a green-checkmarked group becomes an introducer 
-to those members who didn’t yet know about the added contact.
-In a contact profile you can tap on the “Introduced by …” text repeatedly
-until you get to the one with whom you directly did a <a href="#howtoe2ee">QR-scan</a>.</p>
+significa che attualmente è garantita la crittografia end-to-end dei messaggi a un contatto.
+Ogni contatto contrassegnato dal segno di spunta verde ha effettuato una <a href="#howtoe2ee">scansione QR</a> diretta con te
+o è stato presentato da un altro contatto contrassegnato da un segno di spunta verde.
+Le presentazioni avvengono automaticamente quando si aggiungono membri ai gruppi.
+Chi aggiunge un contatto a un gruppo contrassegnato da un segno di spunta verde diventa un introduttore
+a quei membri che non erano ancora a conoscenza del contatto aggiunto. In un profilo di contatto è possibile toccare ripetutamente il testo “Presentato da…”.
+fino ad arrivare a quello con cui hai effettuato direttamente una <a href="#howtoe2ee">QR-scan</a>.</p>
 
-<p>Note that in a contact profile you may see and tap introducers 
-but there is no green checkmark in the profile title. 
-This usually means that the contact <a href="#nocryptanymore">“sent a message from another device”</a>.</p>
+<p>Tieni presente che nel profilo di un contatto potresti vedere e toccare gli introduttori
+ma non c’è il segno di spunta verde nel titolo del profilo.
+Questo di solito significa che il contatto <a href="#nocryptanymore">“ha inviato un messaggio da un altro dispositivo”</a>.</p>
 
-<p>For more in-depth discussion of “guaranteed end-to-end encryption”
-please see <a href="https://countermitm.readthedocs.io/en/latest/new.html">Secure-Join protocols</a>
-and specifically read about “Verified Groups”, the technical term
-of what is called here “green-checkmarked” or “guaranteed end-to-end encrypted” chats.</p>
+<p>Per una discussione più approfondita sulla “crittografia end-to-end garantita”
+consultare <a href="https://countermitm.readthedocs.io/en/latest/new.html">Protocolli Secure-Join</a>
+e leggi nello specifico i “Gruppi Verificati”, il termine tecnico
+di quelle che qui vengono chiamate chat “con segno di spunta verde” o “crittografate end-to-end garantite”.</p>
     
       <h3 id="nocryptanymore">
         
         
-          A contact “sent a message from another device”, what can i do? <a href="#nocryptanymore" class="anchor"></a>
+          Un contatto “ha inviato un messaggio da un altro dispositivo”, cosa posso fare? <a href="#nocryptanymore" class="anchor"></a>
         
         
       </h3>
 
-<p>Your chat with a contact lost guaranteed end-to-end encryption. 
-The green checkmark was removed for this chat and contact when you see this warning. 
-<strong>If you find the sudden drop of guaranteed end-to-end encryption 
-surprising for this contact then don’t accept the warning!</strong>
-Instead check with your contact through a second channel 
-like a video call, other messenger or a phone call,
-to find out what happened.</p>
+<p>La tua chat con un contatto che ha perso la crittografia end-to-end garantita.
+Il segno di spunta verde è stato rimosso per questa chat e per questo contatto quando vedi questo avviso.
+<strong>Se riscontri l’improvvisa rimozione della crittografia end-to-end garantita
+inaspettatamente per questo contatto allora non accettare l’avviso!</strong>
+Verifica invece con il tuo contatto attraverso un secondo canale
+come una videochiamata, un altro messenger o una telefonata,
+per scoprire cosa è successo.</p>
 
-<p>If your contact actually caused the drop of guaranteed end-to-end encryption
-please see the next paragraphs for common reasons and their mitigations. 
-Regardless, all other green-checkmarked chats remain guaranteed end-to-end encrypted
-even if the contact is a member there.</p>
+<p>Se il tuo contatto ha effettivamente causato la rimozione della crittografia end-to-end garantita
+consultare i paragrafi successivi per i motivi comuni e le relative attenuazioni.
+Indipendentemente da ciò, tutte le altre chat contrassegnate da un segno di spunta verde rimangono garantite con crittografia end-to-end
+anche se il contatto è un membro.</p>
 
-<p><strong>Your contact is using Delta Chat on a second device (phone or laptop)</strong></p>
+<p><strong>Il tuo contatto sta utilizzando Delta Chat su un secondo dispositivo (telefono o laptop)</strong></p>
 
-<p>If they have another device with a Delta Chat app running,
-they should remove the account from the new device
-and add it <a href="#multiclient">as a second device as described here</a>.
-As soon as they message you afterwards, the warning will be gone
-and guaranteed encryption is established with both devices of your contact.</p>
+<p>Se hanno un altro dispositivo con l’app Delta Chat in esecuzione,
+dovrebbero rimuovere l’account dal nuovo dispositivo
+e aggiungerlo <a href="#multiclient">come secondo dispositivo come descritto qui</a>.
+Non appena ti invieranno un messaggio, l’avviso scomparirà
+e la crittografia garantita viene stabilita con entrambi i dispositivi del tuo contatto.</p>
 
-<p><strong>Your contact reinstalled Delta Chat using their old account login</strong></p>
+<p><strong>Il tuo contatto ha reinstallato Delta Chat utilizzando il vecchio login dell’account</strong></p>
 
-<p>If they have <a href="#backup">a backup file</a>, 
-they should remove the account from the new device 
-and rather import the backup file to re-create their account. 
-As soon as they message you afterwards, the warning will be gone
-and guaranteed encryption is re-established for this contact.</p>
+<p>Se hanno <a href="#backup">un file di backup</a>,
+dovrebbero rimuovere l’account dal nuovo dispositivo
+e piuttosto importare il file di backup per ricreare il proprio account.
+Non appena ti invieranno un messaggio, l’avviso scomparirà
+e la crittografia garantita viene ristabilita per questo contatto.</p>
 
-<p>If they don’t have a backup file, it’s best to perform a <a href="#howtoe2ee">QR scan</a> 
-with your chat partner to re-establish guaranteed end-to-end encryption.</p>
+<p>Se non hanno un file di backup, è meglio eseguire una <a href="#howtoe2ee">scansione QR</a>
+con il tuo partner di chat per ristabilire la crittografia end-to-end garantita.</p>
 
-<p><strong>Your contact sent a mail through a webmail interface or another e-mail app
-and will get back to using Delta Chat soon again.</strong></p>
+<p><strong>Il tuo contatto ha inviato un’e-mail tramite un’interfaccia webmail o un’altra app di posta elettronica
+e presto tornerà a utilizzare Delta Chat.</strong></p>
 
-<p>If you are sure that the contact sometimes uses webmail,
-or another mail app lacking end-to-end encryption,
-then you may accept the warning.
-As soon as your contact uses Delta Chat again, 
-guaranteed end-to-end encryption will be automatically re-established.</p>
+<p>Se sei sicuro che il contatto a volte utilizza la webmail,
+o un’altra app di posta priva di crittografia end-to-end,
+allora puoi accettare l’avvertimento.
+Non appena il tuo contatto utilizzerà nuovamente Delta Chat,
+la crittografia end-to-end garantita verrà ristabilita automaticamente.</p>
 
-<p><strong>Your contact stopped using Delta Chat entirely</strong></p>
+<p><strong>Il tuo contatto ha smesso completamente di utilizzare Delta Chat</strong></p>
 
 <p>Sometimes remaining in contact is more important than end-to-end encryption.
 <a href="#tls">“Transport Layer Encryption” (TLS)</a> may still meaningfully protect
