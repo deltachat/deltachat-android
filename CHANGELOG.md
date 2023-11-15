@@ -1,5 +1,12 @@
 # Delta Chat Android Changelog
 
+## v1.42.0
+2023-11
+
+* fix download button shown when download could be decrypted
+* using core 1.131.3
+
+
 ## v1.41.9 Testrun
 2023-11
 
