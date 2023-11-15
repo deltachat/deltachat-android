@@ -390,7 +390,7 @@ public class ConversationItem extends BaseConversationItem
     }
 
     int downloadState = messageRecord.getDownloadState();
-    if (downloadState != DcMsg.DC_DOWNLOAD_DONE && downloadState != DC_DOWNLOAD_UNDECIPHERABLE) {
+    if (downloadState != DcMsg.DC_DOWNLOAD_DONE && downloadState != DcMsg.DC_DOWNLOAD_UNDECIPHERABLE) {
       msgActionButton.setVisibility(View.VISIBLE);
       if (downloadState==DcMsg.DC_DOWNLOAD_IN_PROGRESS) {
         msgActionButton.setEnabled(false);
