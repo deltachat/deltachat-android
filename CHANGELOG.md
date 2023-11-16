@@ -1,5 +1,13 @@
 # Delta Chat Android Changelog
 
+## v1.42.1
+2023-11
+
+* fix "Member added" message not being a system message sometimes
+* update translations and local help
+* update to core 1.131.4
+
+
 ## v1.42.0
 2023-11
 
