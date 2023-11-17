@@ -99,7 +99,7 @@ public class NewConversationActivity extends ContactSelectionActivity {
     else {
       int contactId = dcContext.lookupContactIdByAddr(addr);
       if (contactId!=0 && dcContext.getChatIdByContactId(contactId)!=0) {
-        openConversation(dcContext.createChatByContactId(contactId));
+        openConversation(dcContext.getChatIdByContactId(contactId));
       } else {
         String nameNAddr = contactId == 0 ? addr : dcContext.getContact(contactId).getNameNAddr();
         new AlertDialog.Builder(this)
