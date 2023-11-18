@@ -150,7 +150,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     // (WebView may use a global cache shared across objects).
     // (a random-id would also work, but would need maintenance and does not add benefits as we regard the file-part interceptRequest() only,
     // also a random-id is not that useful for debugging)
-    this.baseURL = "https://acc" + dcContext.getAccountId() + "-msg" + appMessageId + ".localhost";
+    this.baseURL = "http://acc" + dcContext.getAccountId() + "-msg" + appMessageId + ".localhost";
 
     final JSONObject info = this.dcAppMsg.getWebxdcInfo();
     internetAccess = JsonUtils.optBoolean(info, "internet_access");
