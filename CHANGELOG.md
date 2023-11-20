@@ -1,5 +1,19 @@
 # Delta Chat Android Changelog
 
+## v1.42.2
+2023-11
+
+* fix contact creation using outdated names sometimes
+* fix: do not replace the message with an error in square brackets
+  when the sender is not a member of the protected group
+* fix: compare addresses on QR code scans and at similar places case-insensitively
+* fix: normalize addresses to lower case to catch unrecoverable typos and other rare errors
+* fix: fetch contact addresses in a single query
+* fix: sync chat name to other devices
+* update translations and local help
+* update to core 1.131.5
+
+
 ## v1.42.1
 2023-11
 
