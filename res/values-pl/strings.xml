@@ -4,7 +4,9 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
     <string name="cancel">Anuluj</string>
-   <string name="clear_search">Wyczyść wyszukiwanie</string>
+   <!-- the word "or" to separate blocks in the user interface that are mutually exclusive -->
+    <string name="or_separator">lub</string>
+    <string name="clear_search">Wyczyść wyszukiwanie</string>
     <string name="yes">Tak</string>
     <string name="no">Nie</string>
     <string name="select">Zaznacz</string>
@@ -34,6 +36,8 @@
     <string name="close">Zamknij</string>
     <string name="close_window">Zamknij okno</string>
     <string name="forward">Przekaż</string>
+    <string name="create">Utwórz</string>
+    <string name="later">Później</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">Wyślij ponownie</string>
     <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
@@ -160,6 +164,9 @@
     <string name="gif">Gif</string>
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">Naklejka</string>
+    <string name="add_to_sticker_collection">Dodaj do kolekcji naklejek</string>
+    <string name="add_stickers_instructions">Aby dodać naklejki, dotknij „Otwórz folder naklejek”, utwórz podfolder dla swojego pakietu naklejek i przeciągnij do niego pliki obrazów i naklejek</string>
+    <string name="open_sticker_folder">Otwórz folder naklejek</string>
     <string name="images">Obrazy</string>
     <string name="audio">Audio</string>
     <string name="voice_message">Wiadomość głosowa</string>
@@ -210,11 +217,15 @@
     <string name="menu_new_contact">Nowy kontakt</string>
     <string name="menu_new_chat">Nowy czat</string>
     <string name="menu_new_group">Nowa grupa</string>
+    <string name="clone_chat">Klonuj czat</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">Lista rozgłoszeniowa</string>
     <string name="broadcast_lists">Lista rozgłoszeniowa</string>
     <string name="new_broadcast_list">Nowa lista rozgłoszeniowa</string>
     <string name="add_recipients">Dodaj odbiorców</string>
+    <string name="edit_broadcast_list">Edytuj listę rozgłoszeniową</string>
+    <string name="broadcast_list_name">Nazwa listy rozgłoszeniowej</string>
+    <string name="please_enter_broadcast_list_name">Wpisz nazwę listy rozgłoszeniowej</string>
     <string name="menu_send">Wyślij</string>
     <string name="menu_toggle_keyboard">Przełącz klawiaturę emoji</string>
     <string name="menu_edit_group">Edytuj grupę</string>
@@ -239,6 +250,7 @@
     <string name="menu_copy_image_to_clipboard">Kopiuj obraz</string>
     <string name="menu_copy_email_to_clipboard">Kopiuj e-mail</string>
     <string name="paste_from_clipboard">Wklej ze schowka</string>
+    <string name="ask_copy_unopenable_link_to_clipboard">Linku „%1$d” nie można otworzyć w przeglądarce internetowej. Czy zamiast tego chcesz skopiować link do schowka?</string>
     <string name="menu_forward">Przekaż wiadomość</string>
     <string name="menu_reply">Odpowiedz na wiadomość</string>
     <string name="menu_mute">Wyłącz powiadomienia</string>
@@ -248,6 +260,7 @@
     <string name="menu_all_media">Wszystkie multimedia</string>
     <!-- Command to jump to the original message corresponding to a gallery image or document -->
     <string name="show_in_chat">Pokaż w czacie</string>
+    <string name="show_app_in_chat">Pokaż aplikację w czacie</string>
     <string name="menu_share">Udostępnij</string>
     <!-- Verb "to block sth." usually a mailing list or a contact, not a noun -->
     <string name="block">Zablokuj</string>
@@ -259,6 +272,7 @@
     <string name="menu_scroll_to_bottom">Przewiń na dołu</string>
     <string name="menu_scroll_to_top">Przewiń na górę</string>
     <string name="menu_help">Pomoc</string>
+    <string name="what_is_webxdc">Co to jest Webxdc?</string>
     <string name="privacy_policy">Polityka prywatności</string>
     <string name="menu_select_all">Zaznacz wszystko</string>
     <string name="select_chat">Zaznacz czat</string>
@@ -295,6 +309,8 @@
     <string name="source_code">Kod źródłowy</string>
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">Dodaj do ekranu głównego</string>
+    <string name="donate">Wspomóż</string>
+
     <string name="mute_for_one_hour">Wyłącz na 1 godzinę</string>
     <string name="mute_for_two_hours">Wyłącz na 2 godziny</string>
     <string name="mute_for_one_day">Wyłącz na 1 dzień</string>
@@ -400,6 +416,7 @@
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
     <string name="chat_new_one_to_one_hint">Wyślij wiadomość. Nie szkodzi, jeśli %1$s nie korzysta z Delta Chat.</string>
+    <string name="chat_new_broadcast_hint">Na liście rozgłoszeniowej odbiorcy będą otrzymywać wiadomości w czacie tylko do odczytu.</string>
     <string name="chat_new_group_hint">Napisz pierwszą wiadomość, by inni mogli odpowiedzieć w tej grupie.\n\n• Nie ma problemu, jeśli nie wszyscy członkowie korzystają z Delta Chat.\n\n• Dostarczenie pierwszej wiadomości może chwilę potrwać.</string>
     <string name="chat_record_slide_to_cancel">PRZESUŃ, BY ANULOWAĆ</string>
     <string name="chat_record_explain">Dotknij i przytrzymaj, aby nagrać wiadomość głosową, zwolnij, aby wysłać</string>
@@ -464,6 +481,8 @@
 
     <!-- search -->
     <string name="search">Szukaj</string>
+    <string name="search_in_chat">Wyszukaj w czacie</string>
+    <string name="search_files">Szukaj plików</string>
     <string name="search_explain">Wyszukaj czaty, kontakty i wiadomości</string>
     <string name="search_no_result_for_x">Nie znaleziono wyników dla „%s</string>
 
@@ -479,6 +498,7 @@
     <string name="group_self_not_in_group">Musisz być członkiem grupy, aby wykonać tę czynność.</string>
     <string name="profile_encryption">Szyfrowanie</string>
     <string name="profile_shared_chats">Wspólne czaty</string>
+    <string name="related_chats">Powiązane czaty</string>
     <string name="tab_contact">Kontakt</string>
     <string name="tab_group">Grupa</string>
     <string name="tab_gallery">Galeria</string>
@@ -493,6 +513,10 @@
     <string name="tab_webxdc_empty_hint">Tutaj pojawią się prywatne aplikacje udostępnione na tym czacie.</string>
     <string name="tab_all_media_empty_hint">Tutaj pojawią się multimedia udostępnione w dowolnym czacie.</string>
     <string name="media_preview">Podgląd multimediów</string>
+    <!-- option to show images in the gallery with the correct width/height aspect (instead of square); other gallery apps may be a source of inspiration for translation :) -->
+    <string name="aspect_ratio_grid">Siatka proporcjonalna</string>
+    <!-- option to show images in the gallery as square (instead of using correct width/height) -->
+    <string name="square_grid">Siatka kwadratowa</string>
     <string name="send_message">Wyślij wiadomość</string>
     <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
     <string name="aeap_addr_changed">%1$s zmieniła swój adres z %2$s na %3$s</string>
@@ -620,7 +644,7 @@
     <string name="pref_profile_info_headline">Twój profil</string>
     <string name="pref_profile_photo">Zdjęcie profilowe</string>
     <string name="pref_blocked_contacts">Zablokowane kontakty</string>
-    <string name="blocked_empty_hint">Jeśli zablokujesz kontakty, zostaną one pokazane tutaj.</string>
+    <string name="blocked_empty_hint">Zablokowane kontakty, zostaną pokazane tutaj.</string>
     <string name="pref_password_and_account_settings">Hasło i konto</string>
     <string name="pref_who_can_see_profile_explain">Twoje zdjęcie profilowe i nazwa będą wyświetlane wraz z wiadomościami podczas komunikacji z innymi użytkownikami. Już wysłanych informacji nie można skasować ani usunąć.</string>
     <string name="pref_your_name">Twoja nazwa</string>
@@ -677,7 +701,11 @@
     <string name="pref_other">Inne</string>
     <string name="pref_backup">Kopia zapasowa</string>
     <string name="pref_backup_explain">Wykonaj kopię zapasową czatów na pamięci zewnętrznej</string>
-    <string name="pref_backup_export_explain">Kopia zapasowa pomaga skonfigurować nową instalację na tym lub na innym urządzeniu.\n\nKopia zapasowa będzie zawierała wszystkie wiadomości, kontakty i czaty oraz pełną konfigurację  funkcji automatycznego szyfrowania. Przechowuj plik kopii zapasowej w bezpiecznym miejscu lub usuń go jak najszybciej.</string>
+    <string name="pref_backup_export_explain">Kopia zapasowa pomaga skonfigurować nową instalację na tym lub na innym urządzeniu.\n\nKopia zapasowa będzie zawierała wszystkie wiadomości, kontakty i czaty oraz pełną konfigurację  funkcji automatycznego szyfrowania typu end-to-end. Przechowuj plik kopii zapasowej w bezpiecznym miejscu lub usuń go jak najszybciej.</string>
+    <!-- the placeholder will be replaced by the name of the account's email address -->
+    <string name="pref_backup_export_x">Eksportuj %1$s</string>
+    <!-- the placeholder will be replaced by the number of accounts to export; the number is always larger than 1 -->
+    <string name="pref_backup_export_all">Eksportuj wszystkie %1$d konta</string>
     <string name="pref_backup_export_start_button">Utwórz kopię</string>
     <string name="pref_backup_written_to_x">Kopia zapasowa została pomyślnie zapisana do %1$s</string>
     <string name="pref_managekeys_menu_title">Zarządzaj prywatnymi kluczami</string>
@@ -728,6 +756,9 @@
     <string name="profile_image_delete">Usuń zdjęcie profilowe</string>
     <string name="pref_show_tray_icon">Pokaż ikonę w obszarze powiadomień</string>
     <string name="pref_edit_profile">Edytuj profil</string>
+    <string name="disable_imap_idle">Wyłącz IMAP IDLE</string>
+    <string name="disable_imap_idle_explain">Nie używaj rozszerzenia IMAP IDLE, nawet jeśli serwer je obsługuje. Włączenie tej opcji opóźni pobieranie wiadomości, włącz ją tylko na testy.</string>
+
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Wyniki wyszukiwania</string>
     <string name="emoji_not_found">Nie znaleziono emoji</string>
@@ -775,13 +806,13 @@
     <string name="autocrypt_send_asm_explain_before">Wiadomość konfiguracyjna automatycznego szyfrowania” bezpiecznie udostępnia twoją konfigurację end-to-end innym aplikacjom zgodnym z Autocrypt. Klucz zostanie zaszyfrowany za pomocą wyświetlonego tutaj kodu konfiguracyjnego, który należy wpisać na drugim urządzeniu.</string>
     <string name="autocrypt_send_asm_button">Wyślij wiadomość konfiguracyjną Autocrypt</string>
     <string name="autocrypt_send_asm_explain_after">Klucz został wysłany do ciebie. Przejdź do innego urządzenia i otwórz wiadomość konfiguracyjną. Zostanie wyświetlona prośba o podanie kodu konfiguracyjnego. Wpisz następujące cyfry w podpowiedzi.\n\nGdy skończysz, drugie urządzenie będzie gotowe do użycia funkcji automatycznego szyfrowania.</string>
-    <string name="autocrypt_prefer_e2ee">Preferuj pełne szyfrowanie</string>
+    <string name="autocrypt_prefer_e2ee">Preferuj szyfrowanie typu end-to-end</string>
     <string name="autocrypt_asm_subject">Wiadomość konfiguracyjna automatycznego szyfrowania</string>
-    <string name="autocrypt_asm_general_body">Jest to wiadomość konfiguracyjna automatycznego szyfrowania służąca do przesyłania klucza między klientami.\n\nAby odszyfrować i użyć klucza, otwórz wiadomość w kliencie zgodnym z automatycznym szyfrowaniem i wprowadź kod konfiguracyjny przedstawiony na urządzeniu generującym.</string>
-    <string name="autocrypt_asm_click_body">Jest to wiadomość konfiguracyjna automatycznego szyfrowania służąca do przesyłania klucza między klientami.\n\nAby odszyfrować i użyć klucza, dotknij lub kliknij tą wiadomość.</string>
+    <string name="autocrypt_asm_general_body">Jest to wiadomość konfiguracyjna automatycznego szyfrowania typu end-to-end służąca do przesyłania klucza między klientami.\n\nAby odszyfrować i użyć klucza, otwórz wiadomość w kliencie zgodnym z automatycznym szyfrowaniem i wprowadź kod konfiguracyjny przedstawiony na urządzeniu generującym.</string>
+    <string name="autocrypt_asm_click_body">Jest to wiadomość konfiguracyjna automatycznego szyfrowania typu end-to-end służąca do przesyłania klucza między klientami.\n\nAby odszyfrować i użyć klucza, dotknij lub kliknij tą wiadomość.</string>
     <string name="autocrypt_continue_transfer_title">Wiadomość konfiguracyjna automatycznego szyfrowania</string>
     <string name="autocrypt_continue_transfer_please_enter_code">Wprowadź kod konfiguracyjny wyświetlany na drugim urządzeniu.</string>
-    <string name="autocrypt_continue_transfer_succeeded">Udany transfer klucza. To urządzenie jest teraz gotowe do użycia automatycznego szyfrowania za pomocą tego samego klucza, co na drugim urządzeniu.</string>
+    <string name="autocrypt_continue_transfer_succeeded">Udany transfer klucza end-to-end. To urządzenie jest teraz gotowe do użycia automatycznego szyfrowania za pomocą tego samego klucza, co na drugim urządzeniu.</string>
     <string name="autocrypt_continue_transfer_retry">Powtórz</string>
     <string name="autocrypt_bad_setup_code">Zły kod konfiguracyjny. Spróbuj ponownie.\n\nJeśli nie pamiętasz kodu konfiguracji, po prostu uruchom ponownie transfer klucza na drugim urządzeniu.</string>
 
@@ -789,6 +820,7 @@
     <!-- system messages -->
     <string name="systemmsg_read_receipt_subject">Potwierdzenie odczytu</string>
     <string name="systemmsg_read_receipt_body">To jest potwierdzenie odczytu dla wiadomości ”%1$s„.\n\nTo potwierdzenie odczytu tylko informuje, że wiadomość została wyświetlona na urządzeniu odbiorcy. Nie ma gwarancji, że odbiorca przeczytał treść wiadomości.</string>
+    <string name="systemmsg_cannot_decrypt">Tej wiadomości nie można odszyfrować.\n\n• Możesz teraz pomóc odpowiadając po prostu na tą wiadomość i poprosić nadawcę o ponowne wysłanie wiadomości.\n\n• Jeśli właśnie ponownie zainstalowałeś Delta Chat, najlepiej będzie, jeśli ponownie skonfigurujesz Delta Chat teraz i wybierzesz „Dodaj jako drugie urządzenie” lub zaimportujesz kopię zapasową.</string>
     <string name="systemmsg_unknown_sender_for_chat">Nieznany nadawca tego czatu. Więcej szczegółów znajdziesz w sekcji „Informacje”.</string>
     <string name="systemmsg_subject_for_new_contact">Wiadomość od %1$s</string>
     <string name="systemmsg_failed_sending_to">Nie udało się wysłać wiadomości do %1$s.</string>
@@ -799,6 +831,8 @@
     <string name="group_image_changed_by_you">Zmieniono obraz grupy.</string>
     <!-- %1$s will be replaced by name and address of the contact who did the action -->
     <string name="group_image_changed_by_other">Obraz grupy zmieniony przez %1$s.</string>
+    <!-- %1$s will be replaced by name and address of the contact added to the group -->
+    <string name="member_x_added">Dodano członka %1$s.</string>
     <!-- %1$s will be replaced by name and address of the contact added to the group -->
     <string name="add_member_by_you">Dodano członka %1$s.</string>
     <!-- %1$s will be replaced by name and address of the contact added to the group, %2$s will be replaced by name and address of the contact who did the action -->
@@ -852,6 +886,12 @@
     <string name="ephemeral_timer_weeks_by_you">Ustawiono zegar znikających wiadomości na %1$s tyg.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_weeks_by_other"> Użytkownik %2$s ustawił zegar znikających wiadomości na %1$s tyg.</string>
+    <!-- this may be shown instead of the chat's input field, with buttons "More Info" and "OK" -->
+    <string name="chat_protection_broken">Użytkownik %1$s wysłał wiadomość z innego urządzenia.</string>
+    <string name="chat_protection_enabled_tap_to_learn_more">Od teraz gwarantujemy, że wiadomości będą szyfrowane metodą end-to-end. Dotknij, aby przeczytać więcej.</string>
+    <string name="chat_protection_enabled_explanation">Teraz gwarantujemy, że wszystkie wiadomości w tym czacie są szyfrowane metodą end-to-end.\n\nSzyfrowanie end-to-end zapewnia prywatność wiadomości między tobą a twoimi partnerami czatów. Nawet dostawca twojej poczty e-mail nie może ich odczytać.</string>
+    <string name="chat_protection_broken_tap_to_learn_more">Użytkownik %1$s wysłał wiadomość z innego urządzenia. Dotknij, aby przeczytać więcej.</string>
+    <string name="chat_protection_broken_explanation">Nie można już zagwarantować szyfrowania end-to-end, prawdopodobnie z powodu ponownej instalacji Delta Chat przez %1$s lub wysłania wiadomości z innego urządzenia.\n\nMożesz spotkać się z tą osobą osobiście i ponownie zeskanować jej kod QR, aby przywrócić gwarantowane szyfrowanie end-to-end.</string>
     <string name="learn_more">Czytaj więcej</string>
 
     <string name="devicemsg_self_deleted">Usunięto czat „Zapisane wiadomości”.\n\nℹ️ Aby ponownie użyć funkcji „Zapisane wiadomości”, utwórz nowy czat ze sobą.</string>
@@ -909,12 +949,13 @@
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">Użytkownik %1$s odpowiedział, czekając na dodanie do grupy…</string>
     <string name="contact_verified">Kontakt %1$s zweryfikowany.</string>
-    <string name="contact_not_verified">Nie można zweryfikować %1$s</string>
+    <string name="contact_not_verified">Nie można zweryfikować szyfrowania typu end-to-end %1$s</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">Zweryfikowano przez %1$s</string>
     <string name="verified_by_you">Zweryfikowane przez ciebie</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Zmieniono konfigurację dla %1$s</string>
+    <string name="verified_contact_required_explain">Aby zagwarantować szyfrowanie end-to-end, do tej grupy możesz dodawać wyłącznie kontakty oznaczone zielonym znacznikiem wyboru.\n\nMożesz spotkać się z kontaktami osobiście i zeskanować ich kod QR, aby je przedstawić.</string>
     <string name="copy_qr_data_success">Skopiowano adres kodu QR do schowka</string>
     <string name="mailto_dialog_header_select_chat">Wybierz czat, do którego chcesz wysłać wiadomość</string>
     <!-- first placeholder is the name of the chat -->
@@ -994,7 +1035,7 @@
     <string name="select_group_image_desktop">Wybierz obraz grupy</string>
     <string name="export_backup_desktop">Eksport kopii zapasowej</string>
     <string name="autocrypt_correct_desktop">Pomyślnie przetransferowano konfigurację Autocrypt!</string>
-    <string name="forget_login_confirmation_desktop">Usunąć ten login? Wszystko zostanie usunięte, w tym kompletna konfiguracja, kontakty, czaty, wiadomości i multimedia. Ta akcja jest ostateczna i nie można jej odwrócić.</string>
+    <string name="forget_login_confirmation_desktop">Usunąć ten login? Wszystko zostanie usunięte, w tym kompletna konfiguracja end-to-end, kontakty, czaty, wiadomości i multimedia. Ta akcja jest ostateczna i nie można jej odwrócić.</string>
     <string name="account_info_hover_tooltip_desktop2">E-mail: %1$s\nRozmiar: %2$s\nID konta: %3$s</string>
     <string name="message_detail_sent_desktop">wysłane</string>
     <string name="message_detail_received_desktop">odebrane</string>
@@ -1076,4 +1117,8 @@
     <string name="perm_enable_bg_already_done">Pozwolono już Delta Chat na odbieranie wiadomości w tle.\n\nJeśli wiadomości nadal nie docierają w tle, sprawdź też ustawienia systemu.</string>
 
 
-    </resources>
+    <!-- device messages for updates -->
+    <string name="update_1_42_common">Co nowego:\n\n💌 czaty indywidualne gwarantują szyfrowanie end-to-end dla kontaktów oznaczonych zielonym znacznikiem\n\n😌 dla ułatwienia dla wszystkich oznaczamy te czaty również zielonymi znacznikami wyboru\n\n👥 grupy są tworzone automatycznie z gwarantowanym kompleksowym szyfrowaniem, jeśli to możliwe\n\n🔄 Zaakceptowany/Zablokowany, Zarchiwizowany, Przypięty, Wyciszony są synchronizowane na wszystkich twoich urządzeniach</string>
+    <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
+    <string name="update_1_42_android">Zwróć uwagę na więcej ulepszeń w aparacie, wiadomościach głosowych, tworzeniu kopii zapasowych, czytniku ekranu, tapetach dla poszczególnych kont, opcji wybierz wszystkie w galerii, krajobrazie webxdc … lub przeczytaj o nich pod adresem %1$s</string>
+</resources>

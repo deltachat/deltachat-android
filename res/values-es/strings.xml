@@ -584,7 +584,7 @@
     <string name="login_socks5_user">Usuario SOCKS5</string>
     <string name="login_socks5_password">Contraseña SOCKS5</string>
     <string name="login_info_oauth2_title">¿Continuar con la configuración simplificada?</string>
-    <string name="login_info_oauth2_text">La dirección de correo electrónico introducida admite una configuración simplificada (OAuth2).\n\nEn el próximo paso, permita que Delta Chat actúe como su aplicación de chat con correo electrónico.\n\nNo hay servidores de Delta Chat, tus datos permanecen en tu dispositivo!</string>
+    <string name="login_info_oauth2_text">La dirección de correo electrónico introducida admite una configuración simplificada (OAuth 2.0).\n\nEn el próximo paso, permita que Delta Chat actúe como su aplicación de chat por correo electrónico.\n\nNo hay servidores de Delta Chat, tus datos permanecen en tu dispositivo.</string>
     <string name="login_certificate_checks">Comprobaciones de certificados</string>
     <string name="login_error_mail">Por favor, introduzca una dirección de correo válida</string>
     <string name="login_error_server">Por favor, introduzca un servidor / dirección IP válido</string>
