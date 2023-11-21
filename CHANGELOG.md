@@ -1,5 +1,13 @@
 # Delta Chat Android Changelog
 
+## v1.42.3
+2023-11
+
+* fix: avoid infinite loop by failing fast on IMAP FETCH parsing errors
+* update translations
+* update to core 1.131.6
+
+
 ## v1.42.2
 2023-11
 
