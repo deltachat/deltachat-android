@@ -1,0 +1,6 @@
+- One-to-one chats guarantee end-to-end encryption for contacts with a green checkmark now
+- For everyone\'s simplicity, we also mark these chats with green checkmarks
+- Groups are created automatically with guaranteed end-to-end encryption if possible
+- Accept/Blocked, Archived, Pinned, Mute is synced across all your devices
+- More improvements in camera, voice messages, backup-all, screen reader, per-account wallpapers, gallery select-all, webxdc landscape
+- Tons of bug fixes
