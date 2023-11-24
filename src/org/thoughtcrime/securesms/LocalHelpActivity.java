@@ -19,7 +19,7 @@ public class LocalHelpActivity extends WebViewActivity
     getSupportActionBar().setTitle(getString(R.string.menu_help));
 
     String section = getIntent().getStringExtra(SECTION_EXTRA);
-    String helpPath = "help/LANG/help.html" + (section!=null? section : "");
+    String helpPath = "help/LANG/help.html";
     String helpLang = "en";
     try {
       Locale locale = dynamicLanguage.getCurrentLocale();
@@ -39,7 +39,7 @@ public class LocalHelpActivity extends WebViewActivity
       e.printStackTrace();
     }
 
-    webView.loadUrl("file:///android_asset/" + helpPath.replace("LANG", helpLang));
+    webView.loadUrl("file:///android_asset/" + helpPath.replace("LANG", helpLang) + (section!=null? section : ""));
   }
 
   @Override
