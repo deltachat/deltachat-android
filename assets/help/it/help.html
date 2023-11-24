@@ -14,6 +14,7 @@
       <li><a href="#di-quali-autorizzazioni-ha-bisogno-delta-chat">Di quali autorizzazioni ha bisogno Delta Chat?</a></li>
       <li><a href="#cosa-significa-fissare-silenziare-archiviare">Cosa significa Fissare, Silenziare, Archiviare?</a></li>
       <li><a href="#cosa-significa-il-punto-verde">Cosa significa il punto verde?</a></li>
+      <li><a href="#ephemeralmsgs">How do disappearing messages work?</a></li>
       <li><a href="#come-posso-eliminare-il-mio-account">Come posso eliminare il mio account?</a></li>
     </ul>
   </li>
@@ -370,6 +371,41 @@ hai disattivato le conferme di lettura, non vedranno il punto verde finché non 
 invia loro un messaggio o scrivi anche a un gruppo a cui appartengono.</li>
 </ul>
     
+      <h3 id="ephemeralmsgs">
+        
+        
+          How do disappearing messages work? <a href="#ephemeralmsgs" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>You can turn on “disappearing messages”
+in the settings of a chat,
+at the top right of the chat window,
+by selecting a time span
+between 30 seconds and 5 weeks.</p>
+
+<p>Until the setting is turned off again,
+each chat member’s Delta Chat app takes care
+of deleting the messages
+after the selected time span.
+The time span begins
+when the receiver first sees the message in Delta Chat.
+The messages are deleted
+both in each email account on the server,
+and in the app itself.</p>
+
+<p>Note that you can rely on disappearing messages
+only as long as you trust your chat partners;
+malicious chat partners can take photos,
+or otherwise save, copy or forward messages before deletion.</p>
+
+<p>Apart from that,
+if one chat partner uninstalls Delta Chat,
+the messages will not get deleted from their email account.
+They will most likely also not be decryptable anymore
+(as long as they were encrypted in the first place).</p>
+    
       <h3 id="come-posso-eliminare-il-mio-account">
         
         
@@ -534,7 +570,7 @@ più vecchi di quel periodo.</li>
 <p><a href="https://autocrypt.org">Autocrypt</a> viene utilizzato automaticamente per stabilire la crittografia end-to-end con contatti e chat di gruppo. Autocrypt utilizza un <a href="#openpgp-secure">sottoinsieme limitato e sicuro dello standard OpenPGP</a>. I messaggi crittografati end-to-end sono contrassegnati da un lucchetto 
 <img style="vertical-align:middle; width:1.2em; margin:1px" src="../lock-icon.png" alt="padlock" />.</p>
 
-<p><a href="https://countermitm.readthedocs.io/en/latest/new.html">Protocolli Secure-Join</a>
+<p><a href="https://securejoin.delta.chat/en/latest/new.html">Protocolli Secure-Join</a>
 vengono utilizzati per stabilire chat con crittografia end-to-end garantita
 che protegge dagli attacchi di rete e dai server compromessi.
 Chat contrassegnata da un segno di spunta verde
@@ -607,7 +643,7 @@ che vedi dal tuo partner di chat in un secondo canale.</p>
 
 <p><strong>Sia Invitante che Invitato</strong>:</p>
 
-<p>Attendere mentre <a href="https://countermitm.readthedocs.io/en/latest/new.html#setup-contact-protocol">i messaggi di rete Secure-Join vengono scambiati</a> tra entrambi i dispositivi.</p>
+<p>Attendere mentre <a href="https://securejoin.delta.chat/en/latest/new.html#setup-contact-protocol">i messaggi di rete Secure-Join vengono scambiati</a> tra entrambi i dispositivi.</p>
 
 <ul>
   <li>
@@ -652,14 +688,14 @@ o è stato presentato da un altro contatto contrassegnato da un segno di spunta 
 Le presentazioni avvengono automaticamente quando si aggiungono membri ai gruppi.
 Chi aggiunge un contatto a un gruppo contrassegnato da un segno di spunta verde diventa un introduttore
 a quei membri che non erano ancora a conoscenza del contatto aggiunto. In un profilo di contatto è possibile toccare ripetutamente il testo “Presentato da…”.
-fino ad arrivare a quello con cui hai effettuato direttamente una <a href="#howtoe2ee">QR-scan</a>.</p>
+fino ad arrivare a quello con cui hai effettuato direttamente una <a href="#howtoe2ee">scansione QR</a>.</p>
 
 <p>Tieni presente che nel profilo di un contatto potresti vedere e toccare gli introduttori
 ma non c’è il segno di spunta verde nel titolo del profilo.
 Questo di solito significa che il contatto <a href="#nocryptanymore">“ha inviato un messaggio da un altro dispositivo”</a>.</p>
 
 <p>Per una discussione più approfondita sulla “crittografia end-to-end garantita”
-consultare <a href="https://countermitm.readthedocs.io/en/latest/new.html">Protocolli Secure-Join</a>
+consultare <a href="https://securejoin.delta.chat/en/latest/new.html">Protocolli Secure-Join</a>
 e leggi nello specifico i “Gruppi Verificati”, il termine tecnico
 di quelle che qui vengono chiamate chat “con segno di spunta verde” o “crittografate end-to-end garantite”.</p>
     
@@ -964,7 +1000,7 @@ anche se la chat diretta tra voi due ha a
 <p>Il modo migliore per garantire che ogni messaggio sia crittografato end-to-end,
 e i metadati vengono eliminati il ​​più rapidamente possibile
 è <a href="#howtoe2ee">utilizzare chat con crittografia end-to-end garantita</a>
-e l’attivazione dei messaggi a scomparsa.</p>
+e l’attivazione dei <a href="#ephemeralmsgs">messaggi a scomparsa</a>.</p>
 
 <p>Le chat crittografate end-to-end garantiscono la protezione dagli <a href="https://en.wikipedia.org/wiki/Man-in-the-middle_attack">attacchi MITM</a>
 e l’attivazione dei “messaggi che scompaiono” elimina i messaggi
