@@ -1,5 +1,15 @@
 # Delta Chat Android Changelog
 
+## v1.42.4
+2023-11
+
+* fix battery draining due to active IMAP loop on some providers; this was introduced in 1.41
+* fix log in error on some providers as 163.com; this was introduced in 1.41
+* fix "Learn More" buttons that opened the help always in english
+* update local help
+* update to core 1.131.7
+
+
 ## v1.42.3
 2023-11
 
