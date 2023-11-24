@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.widget.TextViewCompat;
 
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
 import java.util.concurrent.TimeUnit;
@@ -69,7 +70,8 @@ public class EphemeralMessagesDialog {
                         default: burnAfter = 0; break;
                     }
                     listener.onTimeSelected(burnAfter);
-                });
+                })
+                .setNeutralButton(R.string.learn_more, (d, w) -> DcHelper.openHelp(context, "#ephemeralmsgs"));
         builder.show();
     }
 
