@@ -71,6 +71,7 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
   private static final String PREFERENCE_CATEGORY_APPEARANCE     = "preference_category_appearance";
   private static final String PREFERENCE_CATEGORY_CHATS          = "preference_category_chats";
   private static final String PREFERENCE_CATEGORY_MULTIDEVICE    = "preference_category_multidevice";
+  private static final String PREFERENCE_CATEGORY_ACCOUNT        = "preference_category_account";
   private static final String PREFERENCE_CATEGORY_ADVANCED       = "preference_category_advanced";
   private static final String PREFERENCE_CATEGORY_CONNECTIVITY   = "preference_category_connectivity";
   private static final String PREFERENCE_CATEGORY_HELP           = "preference_category_help";
@@ -210,6 +211,7 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
       Drawable swap          = DrawableCompat.wrap(ContextCompat.getDrawable(context, R.drawable.ic_swap_vert_white_24dp));
       Drawable appearance    = DrawableCompat.wrap(ContextCompat.getDrawable(context, R.drawable.ic_brightness_6_white_24dp));
       Drawable chats         = DrawableCompat.wrap(ContextCompat.getDrawable(context, R.drawable.ic_forum_white_24dp));
+      Drawable account       = DrawableCompat.wrap(ContextCompat.getDrawable(context, R.drawable.ic_baseline_server_24));
       Drawable advanced      = DrawableCompat.wrap(ContextCompat.getDrawable(context, R.drawable.ic_advanced_white_24dp));
       Drawable help          = DrawableCompat.wrap(ContextCompat.getDrawable(context, R.drawable.ic_help_white_24dp));
 
@@ -222,6 +224,7 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
       DrawableCompat.setTint(swap, color);
       DrawableCompat.setTint(appearance, color);
       DrawableCompat.setTint(chats, color);
+      DrawableCompat.setTint(account, color);
       DrawableCompat.setTint(advanced, color);
       DrawableCompat.setTint(help, color);
 
@@ -229,6 +232,7 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
       this.findPreference(PREFERENCE_CATEGORY_CONNECTIVITY).setIcon(swap);
       this.findPreference(PREFERENCE_CATEGORY_APPEARANCE).setIcon(appearance);
       this.findPreference(PREFERENCE_CATEGORY_CHATS).setIcon(chats);
+      this.findPreference(PREFERENCE_CATEGORY_ACCOUNT).setIcon(account);
       this.findPreference(PREFERENCE_CATEGORY_ADVANCED).setIcon(advanced);
       this.findPreference(PREFERENCE_CATEGORY_HELP).setIcon(help);
     }

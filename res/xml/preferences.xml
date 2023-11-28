@@ -25,9 +25,9 @@
                 android:icon="@drawable/ic_baseline_devices_24"
                 android:layout="@layout/preference_item"/>
 
-    <Preference android:key="preference_category_connectivity"
-                android:title="@string/connectivity"
-                android:icon="@drawable/ic_swap_vert_24dp"
+    <Preference android:key="preference_category_account"
+                android:title="@string/pref_password_and_account_settings"
+                android:icon="@drawable/ic_baseline_server_24"
                 android:layout="@layout/preference_item"/>
 
     <Preference android:key="preference_category_advanced"
@@ -35,9 +35,16 @@
                 android:icon="@drawable/ic_advanced_24dp"
                 android:layout="@layout/preference_item" />
 
+    <PreferenceCategory android:title="@string/info">
+    <Preference android:key="preference_category_connectivity"
+                android:title="@string/connectivity"
+                android:icon="@drawable/ic_swap_vert_24dp"
+                android:layout="@layout/preference_item"/>
+
     <Preference android:key="preference_category_help"
                 android:title="@string/menu_help"
                 android:icon="@drawable/ic_help_24dp"
                 android:layout="@layout/preference_item" />
+    </PreferenceCategory>
 
 </PreferenceScreen>
