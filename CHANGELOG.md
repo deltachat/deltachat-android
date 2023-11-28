@@ -1,5 +1,13 @@
 # Delta Chat Android Changelog
 
+## v1.42.5
+2023-11
+
+* fix more log in errors for providers as 163.com; this was introduced in 1.41
+* update translations and local help
+* update to core 1.131.8
+
+
 ## v1.42.4
 2023-11
 
