@@ -397,7 +397,7 @@ message them or write to a group they’re in as well.</li>
 in the settings of a chat,
 at the top right of the chat window,
 by selecting a time span
-between 30 seconds and 5 weeks.</p>
+between 1 minute and 5 weeks.</p>
 
 <p>Until the setting is turned off again,
 each chat member’s Delta Chat app takes care
@@ -1067,11 +1067,12 @@ which has been <a href="https://delta.chat/assets/blog/2019-first-security-revie
         
       </h3>
 
-<p>The most likely cause is that your key is encrypted and/or uses
-a password. Such keys are not supported by Delta Chat.  You could remove the
-passphrase encryption and the password and try the import again.  If you want
-to keep your passphrase you’ll have to create an e-mail alias for use
-with Delta Chat such that Delta Chat’s key is tied to this e-mail alias.</p>
+<p>The most likely cause is that your key is encrypted and/or uses a password.
+Such keys are not supported by Delta Chat.
+You could remove the passphrase encryption and the password and try the import again.</p>
+
+<p>Another common error is having the wrong file ending.
+Use the ASCII armored format and an <code class="language-plaintext highlighter-rouge">.asc</code> file ending.</p>
 
 <p>Delta Chat supports common OpenPGP private key formats, however, it
 is unlikely that private keys from all sources will be fully supported. This

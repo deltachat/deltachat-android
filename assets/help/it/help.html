@@ -14,7 +14,7 @@
       <li><a href="#di-quali-autorizzazioni-ha-bisogno-delta-chat">Di quali autorizzazioni ha bisogno Delta Chat?</a></li>
       <li><a href="#cosa-significa-fissare-silenziare-archiviare">Cosa significa Fissare, Silenziare, Archiviare?</a></li>
       <li><a href="#cosa-significa-il-punto-verde">Cosa significa il punto verde?</a></li>
-      <li><a href="#ephemeralmsgs">How do disappearing messages work?</a></li>
+      <li><a href="#ephemeralmsgs">Come funzionano i messaggi a scomparsa?</a></li>
       <li><a href="#come-posso-eliminare-il-mio-account">Come posso eliminare il mio account?</a></li>
     </ul>
   </li>
@@ -374,37 +374,37 @@ invia loro un messaggio o scrivi anche a un gruppo a cui appartengono.</li>
       <h3 id="ephemeralmsgs">
         
         
-          How do disappearing messages work? <a href="#ephemeralmsgs" class="anchor"></a>
+          Come funzionano i messaggi a scomparsa? <a href="#ephemeralmsgs" class="anchor"></a>
         
         
       </h3>
 
-<p>You can turn on “disappearing messages”
-in the settings of a chat,
-at the top right of the chat window,
-by selecting a time span
-between 30 seconds and 5 weeks.</p>
+<p>Puoi attivare i “messaggi che scompaiono”
+nelle impostazioni di una chat,
+in alto a destra nella finestra della chat,
+selezionando un intervallo di tempo
+tra 1 minuto e 5 settimane.</p>
 
-<p>Until the setting is turned off again,
-each chat member’s Delta Chat app takes care
-of deleting the messages
-after the selected time span.
-The time span begins
-when the receiver first sees the message in Delta Chat.
-The messages are deleted
-both in each email account on the server,
-and in the app itself.</p>
+<p>Fino a quando l’impostazione non viene nuovamente disattivata,
+l’app Delta Chat di ogni membro della chat si prende cura
+di eliminare i messaggi
+dopo l’intervallo di tempo selezionato.
+Inizia il lasso di tempo
+quando il destinatario vede per la prima volta il messaggio in Delta Chat.
+I messaggi vengono eliminati
+entrambi in ciascun account di posta elettronica sul server,
+e nell’app stessa.</p>
 
-<p>Note that you can rely on disappearing messages
-only as long as you trust your chat partners;
-malicious chat partners can take photos,
-or otherwise save, copy or forward messages before deletion.</p>
+<p>Tieni presente che puoi fare affidamento sui messaggi che scompaiono
+solo finché ti fidi dei tuoi partner di chat;
+i partner di chat dannosi possono scattare foto,
+o altrimenti salvare, copiare o inoltrare messaggi prima della cancellazione.</p>
 
-<p>Apart from that,
-if one chat partner uninstalls Delta Chat,
-the messages will not get deleted from their email account.
-They will most likely also not be decryptable anymore
-(as long as they were encrypted in the first place).</p>
+<p>A parte quello,
+se un partner di chat disinstalla Delta Chat,
+i messaggi non verranno eliminati dal loro account di posta elettronica.
+Molto probabilmente non saranno più decifrabili
+(a patto che siano stati crittografati in primo luogo).</p>
     
       <h3 id="come-posso-eliminare-il-mio-account">
         
@@ -1082,11 +1082,12 @@ Attenzione: assicurarsi che la chiave non sia protetta da password oppure rimuov
         
       </h3>
 
-<p>La causa più probabile è che la tua chiave sia crittografata e/o utilizzi
-una password. Tali chiavi non sono supportate da Delta Chat. Potresti rimuovere la
-crittografia della passphrase e la password e riprovare l’importazione. Se vuoi
-per mantenere la tua passphrase dovrai creare un alias e-mail per l’uso
-con Delta Chat in modo che la chiave di Delta Chat sia collegata a questo alias e-mail.</p>
+<p>Con molta probabilità, il problema sta nel fatto che la tua chiave è cifata e/o usa
+una password. Queste chiavi non sono supportate da Delta Chat. Rimuovi la
+cifratura e la password e prova ad importarla nuovamente.</p>
+
+<p>Un altro errore comune è avere la fine del file sbagliata.
+Utilizza il formato corazzato ASCII e l’estensione del file “.asc”.</p>
 
 <p>Delta Chat supporta i formati di chiave privata OpenPGP comuni, tuttavia,
 è improbabile che le chiavi private di tutte le fonti siano completamente supportate. Questo
