@@ -211,6 +211,7 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
       Drawable swap          = DrawableCompat.wrap(ContextCompat.getDrawable(context, R.drawable.ic_swap_vert_white_24dp));
       Drawable appearance    = DrawableCompat.wrap(ContextCompat.getDrawable(context, R.drawable.ic_brightness_6_white_24dp));
       Drawable chats         = DrawableCompat.wrap(ContextCompat.getDrawable(context, R.drawable.ic_forum_white_24dp));
+      Drawable devices       = DrawableCompat.wrap(ContextCompat.getDrawable(context, R.drawable.ic_baseline_devices_24));
       Drawable account       = DrawableCompat.wrap(ContextCompat.getDrawable(context, R.drawable.ic_baseline_server_24));
       Drawable advanced      = DrawableCompat.wrap(ContextCompat.getDrawable(context, R.drawable.ic_advanced_white_24dp));
       Drawable help          = DrawableCompat.wrap(ContextCompat.getDrawable(context, R.drawable.ic_help_white_24dp));
@@ -224,6 +225,7 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
       DrawableCompat.setTint(swap, color);
       DrawableCompat.setTint(appearance, color);
       DrawableCompat.setTint(chats, color);
+      DrawableCompat.setTint(devices, color);
       DrawableCompat.setTint(account, color);
       DrawableCompat.setTint(advanced, color);
       DrawableCompat.setTint(help, color);
@@ -232,6 +234,7 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
       this.findPreference(PREFERENCE_CATEGORY_CONNECTIVITY).setIcon(swap);
       this.findPreference(PREFERENCE_CATEGORY_APPEARANCE).setIcon(appearance);
       this.findPreference(PREFERENCE_CATEGORY_CHATS).setIcon(chats);
+      this.findPreference(PREFERENCE_CATEGORY_MULTIDEVICE).setIcon(devices);
       this.findPreference(PREFERENCE_CATEGORY_ACCOUNT).setIcon(account);
       this.findPreference(PREFERENCE_CATEGORY_ADVANCED).setIcon(advanced);
       this.findPreference(PREFERENCE_CATEGORY_HELP).setIcon(help);
