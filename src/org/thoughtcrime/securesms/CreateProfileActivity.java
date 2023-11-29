@@ -199,7 +199,6 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Emoj
   }
 
   private void initializeResources() {
-    TextView passwordAccountSettings       = ViewUtil.findById(this, R.id.password_account_settings_button);
     TextView loginSuccessText              = ViewUtil.findById(this, R.id.login_success_text);
     this.avatar       = ViewUtil.findById(this, R.id.avatar);
     this.name         = ViewUtil.findById(this, R.id.name_text);
@@ -207,17 +206,11 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Emoj
     this.container    = ViewUtil.findById(this, R.id.container);
     this.statusView   = ViewUtil.findById(this, R.id.status_text);
 
-    passwordAccountSettings.setOnClickListener(view -> {
-      Intent intent = new Intent(this, RegistrationActivity.class);
-      startActivity(intent);
-    });
-
     if (fromWelcome) {
       String addr = DcHelper.get(this, "addr");
       loginSuccessText.setText(getString(R.string.qraccount_success_enter_name, addr));
       ViewUtil.findById(this, R.id.status_text_layout).setVisibility(View.GONE);
       ViewUtil.findById(this, R.id.information_label).setVisibility(View.GONE);
-      passwordAccountSettings.setVisibility(View.GONE);
     } else {
       loginSuccessText.setVisibility(View.GONE);
     }

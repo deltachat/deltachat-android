@@ -150,6 +150,8 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
         .setOnPreferenceClickListener(new CategoryClickListener(PREFERENCE_CATEGORY_CHATS));
       this.findPreference(PREFERENCE_CATEGORY_MULTIDEVICE)
         .setOnPreferenceClickListener(new CategoryClickListener(PREFERENCE_CATEGORY_MULTIDEVICE));
+      this.findPreference(PREFERENCE_CATEGORY_ACCOUNT)
+        .setOnPreferenceClickListener(new CategoryClickListener(PREFERENCE_CATEGORY_ACCOUNT));
       this.findPreference(PREFERENCE_CATEGORY_ADVANCED)
         .setOnPreferenceClickListener(new CategoryClickListener(PREFERENCE_CATEGORY_ADVANCED));
 
@@ -287,6 +289,9 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
               .show();
             ;
           }
+          break;
+        case PREFERENCE_CATEGORY_ACCOUNT:
+          startActivity(new Intent(getActivity(), RegistrationActivity.class));
           break;
         case PREFERENCE_CATEGORY_ADVANCED:
           fragment = new AdvancedPreferenceFragment();
