@@ -8,6 +8,8 @@ The APK can also be downloaded from [get.delta.chat](https://get.delta.chat).
 For the core library and other common info, please refer to the
 [Delta Chat Core Library](https://github.com/deltachat/deltachat-core-rust).
 
+For general contribution hints, please refer to [CONTRIBUTING.md](./CONTRIBUTING.md).
+
 <img alt="Screenshot Chat List" src="docs/images/2019-01-chatlist.png" width="298" /> <img alt="Screenshot Chat View" src="docs/images/2019-01-chat.png" width="298" />
 
 
