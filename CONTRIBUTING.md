@@ -33,14 +33,14 @@ create a new topic on the [Forum](https://support.delta.chat/c/features/6).
 Some rough ideas, that may be helpful when thinking about how to enhance things:
 
 - Work hard to avoid options and up-front choices.
-  Thinking about concrete user stories may help on that
-- Avoid to speak about keys and other hard to understand things in the primary UI
-- The app shall work offline as well as with bad network
-- Users do not read (much)
-- Consistency matters
+  Thinking about concrete user stories may help on that.
+- Avoid to speak about keys and other hard to understand things in the primary UI.
+- The app shall work offline as well as with bad network.
+- Users do not read (much).
+- Consistency matters.
 - Offer only things that are highly useful to many people in primary UI.
-  If really needed, bury other things eg. in some menus
-- The app should be for the many, not for the few
+  If really needed, bury other things eg. in some menus.
+- The app should be for the many, not for the few.
 
 
 ## Contributing Code
