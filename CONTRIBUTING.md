@@ -102,7 +102,7 @@ consistency with existing code is more important.
 
 The "Delta Chat Core" is a high-level interface to what the UI actually needs,
 data should be served in a form that the UI do not need much additional work.
-If this is not the case, one may consider to add a feature to "Delta Chat Core" or ask for that.
+If this is not the case, consider a feature proposal to "Delta Chat Core".
 
 
 ### Merging Conventions
