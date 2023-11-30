@@ -147,7 +147,7 @@ this would require retranslations and should be considered carefully.
 
 ## Other Ways To Contribute
 
-For other ways to contribute, refer to the [website](https://delta.chat/en/contribute).
+For other ways to contribute, refer to the [website](https://delta.chat/contribute).
 
 If you think, something important is missed in this overview,
 please do a PR to this document :)
