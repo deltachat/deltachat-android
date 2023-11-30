@@ -8,35 +8,38 @@ and aims to give a good starting point to new contributors.
 
 ## Reporting Bugs
 
-If you found a bug, [report it on GitHub](https://github.com/deltachat/deltachat-android/issues).
+If you found a bug, [report it on Github](https://github.com/deltachat/deltachat-android/issues).
 
 Project maintainers may transfer bugs that are not UI specific
 (eg. network, database or encryption related)
 to [Delta Chat Core](https://github.com/deltachat/deltachat-core-rust/issues).
 If you assume beforehand, that the bug you've found belongs to Core,
-you can also report there directly.
+you can report there directly.
 
 Please search both open and closed issues to make sure your bug report is not a duplicate.
+
+For community interactions around Delta Chat
+please read our [Community Standards](https://delta.chat/en/community-standards).
 
 
 ## Proposing Features
 
 If you have a feature request,
-create a new topic on the [Forum](https://support.delta.chat/).
+create a new topic on the [Forum](https://support.delta.chat/c/features/6).
 
 
 ## Rough UX Philosophy
 
 Some rough ideas, that may be helpful when thinking about how to enhance things:
 
-- Work hard to avoid options and up-font choices.
+- Work hard to avoid options and up-front choices.
   Thinking about concrete user stories may help on that
 - Avoid to speak about keys and other hard to understand things in the primary UI
 - The app shall work offline as well as with bad network
 - Users do not read (much)
 - Consistency matters
 - Offer only things that are highly useful to many people in primary UI.
-  If really needed, bury other nerd- of dev-needs in some menus.
+  If really needed, bury other things eg. in some menus
 - The app should be for the many, not for the few
 
 
@@ -44,10 +47,10 @@ Some rough ideas, that may be helpful when thinking about how to enhance things:
 
 The [README](./README.md) explains in detail how to set up the build environment.
 Please follow all steps precisely.
-If you still run into troubles,
+If you run into troubles,
 ask on of the [cummunication channels](https://delta.chat/en/contribute) for help.
 
-If you want to contribute code,
+To contribute code,
 [open a Pull Request](https://github.com/deltachat/deltachat-android/pulls).
 
 If you have write access to the repository,
@@ -59,12 +62,12 @@ Otherwise fork the repository and create a branch in your fork.
 Please add a meaningful description to your PR
 so that reviewers get an idea about what the modifications are supposed to do.
 
-A meaningful PR title is helpful for [updating `CHANGELOG.md` during release](./RELEASE.md)
-(we update CHANGELOG.md manually
+A meaningful PR title is helpful for [updating `CHANGELOG.md` on releases](./RELEASE.md)
+(CHANGELOG.md is updated manually
 to only add things that are at least roughly understandable by the end user)
 
 If the changes affect the user interface,
-screenshots are also very helpful,
+screenshots are very helpful,
 esp. before/after screenshots.
 
 
@@ -82,18 +85,18 @@ to make the diff small and the PR easy to review.
 
 Project language is Java.
 
-By using "Delta Chat Core"
-we already have a strong separation between "UI" and "Model".
+By using [Delta Chat Core](https://github.com/deltachat/deltachat-core-rust)
+there is already a strong separation between "UI" and "Model".
 Further separations and abstraction layers are often not helpful
 and only add more complexity.
 
-Also, we try to avoid premature optimisation
+Try to avoid premature optimisation
 and complexity because it "may be needed in some future".
 Usually, it is not.
 
 Readable code is better than having some Java paradigms fulfilled.
-Classic Java has a strong drive to adding lots of classes, factories, one-liner-functions.
-we try to not follow these patterns and keep things really on point and simple.
+Classic Java has a strong drive to add lots of classes, factories, one-liner-functions.
+Try to not follow these patterns and keep things really on point and simple.
 If this gets in conflict with embracing existing style, however,
 consistency with existing code is more important.
 
@@ -104,7 +107,9 @@ If this is not the case, one may consider to add a feature to "Delta Chat Core" 
 
 ### Merging Conventions
 
-PR are merged usually to the branch `main` from which releases are done.
+PR are merged usually to the branch `main` from which [releases](./RELEASE.md) are done.
+
+As a default, do a `git rebase main` in case feature branches and `main` differ too much.
 
 Once a PR has an approval, unless stated otherwise, it can be merged by the author.
 A PR may be approved but postponed to be merged eg. because of an ongoing release.
@@ -114,7 +119,7 @@ To ensure the correct merge merge strategy, merging left up to the PR author:
 - Usually, PR are squash-merged
   as UI development often results in tiny tweak commits that are not that meaningful on their own.
 - If all commits are meaningful and have a well-written description,
-  they can also be rebased-merged.
+  they can be rebased-merged.
 
 If you do not have write access to the repository,
 you may leave a note in the PR about the desired merge strategy.
@@ -144,5 +149,5 @@ this would require retranslations and should be considered carefully.
 
 For other ways to contribute, refer to the [website](https://delta.chat/en/contribute).
 
-If you think, we missed something important in this overview,
+If you think, something important is missed in this overview,
 please do a PR to this document :)
