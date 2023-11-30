@@ -19,7 +19,7 @@ you can report there directly.
 Please search both open and closed issues to make sure your bug report is not a duplicate.
 
 For community interactions around Delta Chat
-please read our [Community Standards](https://delta.chat/en/community-standards).
+please read our [Community Standards](https://delta.chat/community-standards).
 
 
 ## Proposing Features
@@ -48,7 +48,7 @@ Some rough ideas, that may be helpful when thinking about how to enhance things:
 The [README](./README.md) explains in detail how to set up the build environment.
 Please follow all steps precisely.
 If you run into troubles,
-ask on of the [cummunication channels](https://delta.chat/en/contribute) for help.
+ask on of the [cummunication channels](https://delta.chat/contribute) for help.
 
 To contribute code,
 [open a Pull Request](https://github.com/deltachat/deltachat-android/pulls).
