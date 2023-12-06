@@ -1,0 +1,6 @@
+- sync changes on "Your Profile Name", "Show Class Mails", "Read Receipts" options across devices
+- remove receiver limit on .xdc size
+- fix log in errors for providers as 163.com
+- fix decryption errors when using multiple private keys
+- fix database locked errors on webxdc updates
+- update translations
