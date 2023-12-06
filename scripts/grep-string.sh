@@ -1,8 +1,8 @@
 TEXT=$1
 
 if [ -z "$TEXT" ]; then
-    echo "this script searches for the string key given as the first parameter."
-    echo "search is done in this repo and in ../deltachat-ios and in ../deltachat-desktop."
+    echo "search for a given string key in this repo"
+    echo "and in ../deltachat-ios, ../deltachat-desktop, ../deltachat-core-rust/deltachat-jsonrpc, ../deltatouch"
     echo "usage: ./scripts/grep-string.sh <STRING-KEY>"
     exit
 fi
@@ -16,5 +16,9 @@ grep --exclude=*.strings --exclude-dir={.git,libraries,Pods,deltachat-ios.xcodep
 echo "==================== DESKTOP USAGE ===================="
 grep --exclude-dir={.cache,.git,html-dist,node_modules,_locales} -ri $TEXT ../deltachat-desktop/
 
-echo "==================== NODE USAGE ===================="
-grep  --exclude-dir={.git} -ri $TEXT ../deltachat-core-rust/node
+echo "==================== JSONRPC USAGE ===================="
+grep  --exclude-dir={.git} -ri $TEXT ../deltachat-core-rust/deltachat-jsonrpc
+
+echo "==================== UBUNTU TOUCH USAGE ===================="
+grep  --exclude-dir={.git} -ri $TEXT ../deltatouch/
+
