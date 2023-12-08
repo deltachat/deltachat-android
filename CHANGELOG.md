@@ -1,5 +1,67 @@
 # Delta Chat Android Changelog
 
+## v1.42.3
+2023-11
+
+* fix: avoid infinite loop by failing fast on IMAP FETCH parsing errors
+* update translations
+* update to core 1.131.6
+
+
+## v1.42.2
+2023-11
+
+* fix contact creation using outdated names sometimes
+* fix: do not replace the message with an error in square brackets
+  when the sender is not a member of the protected group
+* fix: compare addresses on QR code scans and at similar places case-insensitively
+* fix: normalize addresses to lower case to catch unrecoverable typos and other rare errors
+* fix: fetch contact addresses in a single query
+* fix: sync chat name to other devices
+* update translations and local help
+* update to core 1.131.5
+
+
+## v1.42.1
+2023-11
+
+* fix "Member added" message not being a system message sometimes
+* update translations and local help
+* update to core 1.131.4
+
+
+## v1.42.0
+2023-11
+
+* fix download button shown when download could be decrypted
+* using core 1.131.3
+
+
+## v1.41.9 Testrun
+2023-11
+
+* fix missing messages because of misinterpreted server responses (ignore EOF on FETCH)
+* fix: re-gossip keys if a group member changed setup
+* fix: skip sync when chat name is set to the current one
+* fix: ignore unknown sync items to provide forward compatibility
+  and to avoid creating empty message bubbles in "Saved Messages"
+* update translations and local help
+* update to core 1.131.3
+
+
+## v1.41.8 Testrun
+2023-11
+
+* use local help for guaranteed end-to-end encryption "Learn More" links
+* do not post "NAME verified" messages on QR scan success
+* improve system message wording
+* fix: allow to QR scan groups when 1:1 chat with the inviter is a contact request
+* fix: add "Setup Changed" message before the message
+* fix: read receipts created or unblock 1:1 chats sometimes
+* add Vietnamese translation, update other translations and local help
+* update to core 1.131.2
+
+
 ## v1.41.7 Testrun
 2023-11
 

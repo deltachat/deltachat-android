@@ -99,7 +99,7 @@ public class NewConversationActivity extends ContactSelectionActivity {
     else {
       int contactId = dcContext.lookupContactIdByAddr(addr);
       if (contactId!=0 && dcContext.getChatIdByContactId(contactId)!=0) {
-        openConversation(dcContext.createChatByContactId(contactId));
+        openConversation(dcContext.getChatIdByContactId(contactId));
       } else {
         String nameNAddr = contactId == 0 ? addr : dcContext.getContact(contactId).getNameNAddr();
         new AlertDialog.Builder(this)
@@ -107,10 +107,13 @@ public class NewConversationActivity extends ContactSelectionActivity {
                 .setCancelable(true)
                 .setNegativeButton(android.R.string.cancel, null)
                 .setPositiveButton(android.R.string.ok, (dialog, which) -> {
-                  int contactId1 = dcContext.createContact(null, addr);
+                  int contactId1 = dcContext.lookupContactIdByAddr(addr);
                   if (contactId1 == 0) {
-                    Toast.makeText(NewConversationActivity.this, R.string.bad_email_address, Toast.LENGTH_LONG).show();
-                    return;
+                    contactId1 = dcContext.createContact(null, addr);
+                    if (contactId1 == 0) {
+                      Toast.makeText(NewConversationActivity.this, R.string.bad_email_address, Toast.LENGTH_LONG).show();
+                      return;
+                    }
                   }
                   openConversation(dcContext.createChatByContactId(contactId1));
                 }).show();

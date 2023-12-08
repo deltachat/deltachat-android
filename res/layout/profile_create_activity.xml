@@ -104,11 +104,4 @@
 
 </org.thoughtcrime.securesms.components.InputAwareLayout>
 
-    <View
-        android:id="@+id/reveal"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/delta_primary"
-        android:visibility="invisible" />
-
 </FrameLayout>

@@ -802,6 +802,8 @@
     <!-- %1$s will be replaced by name and address of the contact who did the action -->
     <string name="group_image_changed_by_other">Gruppenbild geändert von %1$s.</string>
     <!-- %1$s will be replaced by name and address of the contact added to the group -->
+    <string name="member_x_added">%1$s hinzugefügt.</string>
+    <!-- %1$s will be replaced by name and address of the contact added to the group -->
     <string name="add_member_by_you">%1$s hinzugefügt.</string>
     <!-- %1$s will be replaced by name and address of the contact added to the group, %2$s will be replaced by name and address of the contact who did the action -->
     <string name="add_member_by_other">%1$s hinzugefügt von %2$s.</string>
@@ -1086,7 +1088,7 @@
 
 
     <!-- device messages for updates -->
-    <string name="update_1_42_common">Was ist neu:\n\n💌 Eins-Zu-Eins-Chats garantieren jetzt eine Ende-zu-Ende-Verschlüsselung für eingeführte Kontakte\n\n😌 Der Einfachheit halber markieren wir diese Kontakte und Chats mit grünen Häkchen\n\n👥 Gruppen werden, wenn möglich, automatisch mit garantierter Ende-zu-Ende-Verschlüsselung erstellt\n\n🔄 Annehmen, Blockieren, Archivieren, Anhefteten und Stummschalten wird nun über alle Geräte hinweg synchronisiert</string>
+    <string name="update_1_42_common">Was ist neu:\n\n💌 Eins-Zu-Eins-Chats garantieren jetzt eine Ende-zu-Ende-Verschlüsselung für Kontakte mit einem grünen Häkchen\n\n😌 Der Einfachheit halber markieren wir auch die Chats mit grünen Häkchen\n\n👥 Gruppen werden, wenn möglich, automatisch mit garantierter Ende-zu-Ende-Verschlüsselung erstellt\n\n🔄 Annehmen, Blockieren, Archivieren, Anhefteten und Stummschalten wird nun über alle Geräte hinweg synchronisiert</string>
     <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
     <string name="update_1_42_android">Weitere Verbesserungen gibt es in den Bereichen Kamera, Sprachnachrichten, Backup aller Konten, Screenreader, Konto-Hintergrundbilder, Galerie alles auswählen, Webxdc-Querformat ... und mehr unter %1$s</string>
 </resources>

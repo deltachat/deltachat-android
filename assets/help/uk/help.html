@@ -28,18 +28,27 @@
       <li><a href="#delold">Що станеться, якщо я ввімкну «Видаляти старі повідомлення з пристрою»?</a></li>
     </ul>
   </li>
-  <li><a href="#шифрування">Шифрування</a>
+  <li><a href="#encryption-and-security">Encryption and Security</a>
     <ul>
-      <li><a href="#чи-підтримує-delta-chat-наскрізне-шифрування">Чи підтримує Delta Chat наскрізне шифрування?</a></li>
-      <li><a href="#що-потрібно-зробити-щоб-активувати-наскрізне-шифрування">Що потрібно зробити, щоб активувати наскрізне шифрування?</a></li>
-      <li><a href="#якщо-назкрізне-шифрування-недоступне-чи-буде-зєднання-повністю-незашифрованим">Якщо назкрізне шифрування недоступне, чи буде з’єднання повністю незашифрованим?</a></li>
-      <li><a href="#як-я-можу-перевірити-криптографічний-статус-відправника">Як я можу перевірити криптографічний статус відправника?</a></li>
-      <li><a href="#як-перевірити-шифрування-повідомлень">Як перевірити шифрування повідомлень?</a></li>
-      <li><a href="#як-я-можу-забезпечити-шифрування-та-видалення-повідомлень">Як я можу забезпечити шифрування та видалення повідомлень?</a></li>
       <li><a href="#які-стандарти-використовуються-для-наскрізного-шифрування">Які стандарти використовуються для наскрізного шифрування?</a></li>
-      <li><a href="#verdiff">В чому різниця між верифікованими групами та чатами 1:1 з верифікованими контактами?</a></li>
-      <li><a href="#чи-підтримує-delta-chat-perfect-forward-secrecy">Чи підтримує Delta Chat Perfect Forward Secrecy?</a></li>
-      <li><a href="#яким-чином-delta-chat-захищає-мої-метадані">Яким чином Delta Chat захищає мої метадані?</a></li>
+      <li><a href="#whene2e">How can i know if messages are end-to-end encrypted?</a></li>
+      <li><a href="#howtoe2ee">How can I get guaranteed end-to-end encryption and green checkmarks?</a></li>
+      <li><a href="#e2eeguarantee">What does the green checkmark and “guaranteed end-to-end encryption” mean?</a></li>
+      <li><a href="#nocryptanymore">A contact “sent a message from another device”, what can i do?</a></li>
+      <li><a href="#are-attachments-pictures-files-audio-etc-end-to-end-encrypted">Are attachments (pictures, files, audio etc.) end-to-end encrypted?</a></li>
+      <li><a href="#openpgp-secure">Is OpenPGP secure?</a></li>
+      <li><a href="#openpgp-alternatives">Did you consider using alternatives to OpenPGP for end-to-end -encryption?</a></li>
+      <li><a href="#is-delta-chat-vulnerable-to-efail">Is Delta Chat vulnerable to EFAIL?</a></li>
+      <li><a href="#tls">Is a message exposed in cleartext if end-to-end encryption is not available?</a></li>
+      <li><a href="#message-metadata">How does Delta Chat protect metadata in messages?</a></li>
+      <li><a href="#device-seizure">How to protect metadata and contacts when a device is seized?</a></li>
+      <li><a href="#how-can-i-check-encryption-information">How can i check encryption information?</a></li>
+      <li><a href="#how-can-i-check-the-encryption-status-of-messages">How can I check the encryption status of messages?</a></li>
+      <li><a href="#why-do-i-see-unencrypted-messages">Why do I see unencrypted messages?</a></li>
+      <li><a href="#how-can-i-get-an-end-to-end-encrypted-chat-with-a-delta-chat-contact-who-sometimes-uses-webmail-or-another-non-autocrypt-e-mail-app">How can i get an end-to-end encrypted chat with a Delta Chat contact who sometimes uses webmail or another non-Autocrypt e-mail app?</a></li>
+      <li><a href="#how-can-i-ensure-message-end-to-end-encryption-and-deletion">How can I ensure message end-to-end encryption and deletion?</a></li>
+      <li><a href="#pfs">Does Delta Chat support Perfect Forward Secrecy?</a></li>
+      <li><a href="#is-end-to-end-encryption-of-delta-chat-as-safe-as-signal">Is end-to-end encryption of Delta Chat as safe as Signal?</a></li>
       <li><a href="#чи-можна-повторно-використовувати-існуючий-закритий-ключ">Чи можна повторно використовувати існуючий закритий ключ?</a></li>
       <li><a href="#я-не-можу-імпортувати-свій-існуючий-pgp-ключ-у-delta-chat">Я не можу імпортувати свій існуючий PGP ключ у Delta Chat.</a></li>
     </ul>
@@ -48,24 +57,23 @@
     <ul>
       <li><a href="#чи-можна-використовувати-delta-chat-на-декількох-пристроях-одночасно">Чи можна використовувати Delta Chat на декількох пристроях одночасно?</a></li>
       <li><a href="#вирішення-проблем">Вирішення проблем</a></li>
-      <li><a href="#перенесення-вручну">Перенесення вручну</a></li>
+      <li><a href="#backup">Manual Transfer</a></li>
       <li><a href="#чи-планується-впровадження-веб-клієнта-delta-chat">Чи планується впровадження веб-клієнта Delta Chat?</a></li>
       <li><a href="#для-чого-потрібне-налаштування-відправити-копію-собі">Для чого потрібне налаштування “Відправити копію собі”?</a></li>
       <li><a href="#чому-я-можу-обрати-стеження-за--папкою-надіслані">Чому я можу обрати стеження за  папкою “Надіслані”?</a></li>
       <li><a href="#чому-я-можу-відмовитись-від-стеження-за--папкою-deltachat">Чому я можу відмовитись від стеження за  папкою DeltaChat?</a></li>
     </ul>
   </li>
-  <li><a href="#webxdc">Приватні програми / webxdc</a>
+  <li><a href="#webxdc">webxdc apps</a>
     <ul>
-      <li><a href="#наскільки-приватні-приватні-програми">Наскільки приватні приватні програми?</a></li>
-      <li><a href="#де-я-можу-отримати-приватні-програми">Де я можу отримати приватні програми?</a></li>
-      <li><a href="#як-я-можу-створити-власні-приватні-програми">Як я можу створити власні приватні програми?</a></li>
+      <li><a href="#how-private-are-webxdc-apps">How private are webxdc apps?</a></li>
+      <li><a href="#where-can-i-get-webxdc-apps">Where can I get webxdc apps?</a></li>
+      <li><a href="#how-can-i-create-my-own-webxdc-apps">How can I create my own webxdc apps?</a></li>
     </ul>
   </li>
   <li><a href="#експериментальні-функції">Експериментальні функції</a>
     <ul>
       <li><a href="#як-я-можу-робити-аудіовідеодзвінки-з-delta-chat">Як я можу робити аудіо/відеодзвінки з Delta Chat?</a></li>
-      <li><a href="#що-таке-перевірена-група-чому-це-експеримент">Що таке перевірена група? Чому це експеримент?</a></li>
       <li><a href="#що-таке-списки-широкомовлення-та-як-ними-користуватися">Що таке списки широкомовлення та як ними користуватися?</a></li>
       <li><a href="#як-я-можу-поділитися-своїм-місцезнаходженням-зі-своїми-співрозмовниками-в-чаті">Як я можу поділитися своїм місцезнаходженням зі своїми співрозмовниками в чаті?</a></li>
       <li><a href="#що-насправді-захищає-експериментальне-шифрування-бази-даних">Що насправді захищає експериментальне шифрування бази даних?</a></li>
@@ -80,7 +88,7 @@
       <li><a href="#якщо-delta-chat-використовує-електронну-пошту-чи-насправді-він-є-instant-месенджером">Якщо Delta Chat використовує електронну пошту, чи насправді він є <em>Instant</em> месенджером?</a></li>
       <li><a href="#чи-сумісний-delta-chat-із-protonmail--tutanota--criptext">Чи сумісний Delta Chat із Protonmail / Tutanota / Criptext?</a></li>
       <li><a href="#мене-цікавлять-технічні-деталі-можете-розповісти-більше">Мене цікавлять технічні деталі. Можете розповісти більше?</a></li>
-      <li><a href="#чи-проходив-delta-chat-незалежний-аудит-на-наявність-вразливостей-у-безпеці">Чи проходив Delta Chat незалежний аудит на наявність вразливостей у безпеці?</a></li>
+      <li><a href="#security-audits">Чи проходив Delta Chat незалежний аудит на наявність вразливостей у безпеці?</a></li>
       <li><a href="#як-фінансується-розробка-delta-chat">Як фінансується розробка Delta Chat?</a></li>
     </ul>
   </li>
@@ -120,15 +128,16 @@
       </h3>
 
 <ul>
-  <li><em>Незалежний</em> від будь-яких компаній та сервісів. <em>Ви</em> власник ваших даних.</li>
-  <li>Ваші дані не зберігаються на центральному сервері.</li>
-  <li>Ви не передаєте нікому свою адресну книгу.</li>
-  <li><em>Швидкий</em> завдяки використанню Push-IMAP.</li>
-  <li><em>Найбільша користувацька база</em> - адресати, що <em>не</em> використовують Delta Chat може отримати ваше повідомлення.</li>
-  <li><em>Без спаму</em> - лише повідомлення від відомих користувачів відображаються за умовчанням.</li>
-  <li><em>Наскрізне шифрування</em>, що базується на Autocrypt.</li>
-  <li><em>Вільне</em> програмне забезпечення засноване на <em>стандартах</em>.</li>
-  <li><em>Гнучка ідентифікація</em> з вбудованою підтримкою <a href="#multiple-accounts">кількох облікових записів</a></li>
+  <li><em>Independent</em> of any company or services. <em>You</em> own your data.</li>
+  <li>Your data is not saved on a central server unless all users are using
+the same e-mail servers</li>
+  <li>You do not distribute your address book to anyone.</li>
+  <li><em>Fast</em> by the use of Push-IMAP.</li>
+  <li><em>Largest userbase</em> - recipients <em>not</em> using Delta Chat can be reached as well.</li>
+  <li><em>No Spam</em> - only messages of known users are shown by default.</li>
+  <li><em>End-to-end encryption</em> via Autocrypt.</li>
+  <li><em>Copyleft</em> and <em>Standards</em> based libre software.</li>
+  <li><em>Flexible identity</em> with built-in support for <a href="#multiple-accounts">multiple accounts</a></li>
 </ul>
     
       <h3 id="які-повідомлення-відображаються-у-delta-chat">
@@ -227,9 +236,8 @@
         
       </h3>
 
-<ul>
-  <li>Так. Якщо потрібно, вхідні повідомлення отримують кнопку «Показати повне повідомлення». У вихідних електронних листах завжди використовується звичайний текст.</li>
-</ul>
+<p>Yes, incoming HTML messages come with a “Show full message” button. 
+Outgoing messages always use plain text.</p>
     
       <h3 id="чому-я-маю-вводити-пароль-до-моєї-електронної-пошти-у-delta-chat-чи-це-безпечно">
         
@@ -470,122 +478,13 @@
 Таким чином, <em>усі</em> повідомлення будуть видалені з вашого пристрою, як тільки вони будуть старішими за це.</li>
 </ul>
     
-      <h2 id="шифрування">
+      <h2 id="encryption-and-security">
         
         
-          Шифрування <a href="#шифрування" class="anchor"></a>
+          Encryption and Security <a href="#encryption-and-security" class="anchor"></a>
         
         
       </h2>
-    
-      <h3 id="чи-підтримує-delta-chat-наскрізне-шифрування">
-        
-        
-          Чи підтримує Delta Chat наскрізне шифрування? <a href="#чи-підтримує-delta-chat-наскрізне-шифрування" class="anchor"></a>
-        
-        
-      </h3>
-
-<ul>
-  <li>
-    <p>Так. Delta Chat реалізує стандарт Autocrypt Level 1, таким чином наскрізно зашифровані повідомлення сумісні з іншими програмами, що підтримують Autocrypt.</p>
-  </li>
-  <li>
-    <p>Delta Chat також підтримує сильну форму наскрізного шифрування, яка безпечна навіть від активних атак, див. “перевірені групи” нижче.</p>
-  </li>
-</ul>
-    
-      <h3 id="що-потрібно-зробити-щоб-активувати-наскрізне-шифрування">
-        
-        
-          Що потрібно зробити, щоб активувати наскрізне шифрування? <a href="#що-потрібно-зробити-щоб-активувати-наскрізне-шифрування" class="anchor"></a>
-        
-        
-      </h3>
-
-<ul>
-  <li>
-    <p>Нічого.</p>
-  </li>
-  <li>
-    <p>Додатки  Delta Chat (та інші <a href="https://autocrypt.org">Autocrypt</a>-сумісні програми для електронної пошти) діляться ключами необхідними для наскрізного шифрування автоматично, як тільки надіслано перше повідомлення. Після цього, усі наступні повідомлення автоматично наскрізно шифруються. Якщо один із учасників чату використовує додаток несумісний з Autocrypt, наступні повідомлення не шифруються доки Autocrypt-сумісний додаток не стане знову доступним.</p>
-  </li>
-  <li>
-    <p>Якщо ж ви бажаєте уникнути наскрізного шифрування повідомлень за замовчуванням, використайте відповідне налаштування Autocrypt  у “Налаштуваннях” або “Додаткових налаштуваннях”.</p>
-  </li>
-</ul>
-    
-      <h3 id="якщо-назкрізне-шифрування-недоступне-чи-буде-зєднання-повністю-незашифрованим">
-        
-        
-          Якщо назкрізне шифрування недоступне, чи буде з’єднання повністю незашифрованим? <a href="#якщо-назкрізне-шифрування-недоступне-чи-буде-зєднання-повністю-незашифрованим" class="anchor"></a>
-        
-        
-      </h3>
-
-<ul>
-  <li>З більшістю серверів електронної пошти, Delta Chat встановлює <em>транспортне шифрування</em> (<a href="https://en.wikipedia.org/wiki/Transport_Layer_Security">TLS</a>). Це захищає тільки з’єднання між вашим пристроєм та вашим сервером електронної пошти. Тоді як наскрізне шифрування забезпечує безпеку між вашим пристроєм та пристроєм вашого друга.</li>
-</ul>
-    
-      <h3 id="як-я-можу-перевірити-криптографічний-статус-відправника">
-        
-        
-          Як я можу перевірити криптографічний статус відправника? <a href="#як-я-можу-перевірити-криптографічний-статус-відправника" class="anchor"></a>
-        
-        
-      </h3>
-
-<p>Якщо ви знаходитесь безпосередньо поруч із співрозмовником з чату:</p>
-
-<ul>
-  <li>Оберіть <strong>QR-код запрошення</strong> на одному пристрої, потім оберіть <strong>Сканувати QR-код</strong> на іншому та відскануйте код. Якщо обидва пристрої в мережі, вони запровадять канал чату між собою (якщо його не було до цього), ключі шифрування також будуть підтверджені. Обидва побачать системне повідомлення “відправник підтверджений” у їх чаті 1 на 1.</li>
-</ul>
-
-<p>Якщо ви не поруч із співбесідником, ви можете перевірити статус вручну в діалозі “Шифрування” (у профілі користувача на Android/iOS або правий клік на елементі списку чатів на десктопі):</p>
-
-<ul>
-  <li>
-    <p>Для наскрізного шифрування Delta Chat відобразить там два відбитки ключів. Якщо однакові відбитки відображаються на вашому пристрої та на пристрої співбесідника - з’єднання безпечне.</p>
-  </li>
-  <li>
-    <p>При транспортному шифруванні просто відображається його статус.</p>
-  </li>
-</ul>
-    
-      <h3 id="як-перевірити-шифрування-повідомлень">
-        
-        
-          Як перевірити шифрування повідомлень? <a href="#як-перевірити-шифрування-повідомлень" class="anchor"></a>
-        
-        
-      </h3>
-
-<ul>
-  <li>
-    <p>Маленький <strong>замочок</strong>, що відображається поряд з повідомленням, вказує, чи зашифроване повідомлення наскрізним шифруванням для цього відправника.</p>
-  </li>
-  <li>
-    <p>Якщо ж <strong>замочка немає</strong>, повідомлення зазвичай відправлено незашифрованим тому, що ви або відправник вимкнули наскрізне шифрування, або відправник використовує додаток без підтримки наскрізного шифрування.</p>
-  </li>
-</ul>
-    
-      <h3 id="як-я-можу-забезпечити-шифрування-та-видалення-повідомлень">
-        
-        
-          Як я можу забезпечити шифрування та видалення повідомлень? <a href="#як-я-можу-забезпечити-шифрування-та-видалення-повідомлень" class="anchor"></a>
-        
-        
-      </h3>
-
-<p>Найкращий спосіб переконатися, що кожне повідомлення зашифровано, і метадані видалені якомога швидше - створити перевірену групу та увімкнути повідомлення, що самознищуються.</p>
-
-<p>Перевірені групи завжди зашифровані та захищені від <a href="https://en.wikipedia.org/wiki/Man-in-the-middle_attack">MITM атак</a>.</p>
-
-<p>Метадані не можна зашифрувати, оскільки сервер повинен знати, куди доставити ваші повідомлення. Але ввімкнення «самознищення повідомлень» видаляє повідомлення на сервері після їх доставки.</p>
-
-<p>Якщо вам потрібні повідомлення на вашому пристрої, а не на сервері, ви також можете домовитися в групі, щоб увімкнути <a href="#delold">“видалити повідомлення з сервера автоматично”</a>.</p>
-
-<p>Якщо ви хочете захистити таким чином розмову 1:1, вам слід створити перевірену група лише з 2 осіб. Якщо інша особа втратить свій пристрій, але не свій обліковий запис, ви все одно зможете спілкуватися в чаті 1:1. (<a href="#verdiff">Докладніше</a>)</p>
     
       <h3 id="які-стандарти-використовуються-для-наскрізного-шифрування">
         
@@ -595,74 +494,501 @@
         
       </h3>
 
-<ul>
-  <li>
-    <p><a href="https://autocrypt.org">Autocrypt</a> використовується для встановлення наскрізного шифрування з іншими клієнтами Delta Chat та іншими додатками із підтримкою Autocrypt. Autocrypt використовує обмежену підмножину функцій OpenPGP.</p>
-  </li>
-  <li>
-    <p>Delta Chat імплементує <a href="https://countermitm.readthedocs.io/en/latest/new.html">countermitm setup-contact and verified-group protocols</a> аби досягти захисту від активних мережевих атак.  Це виходить за рамки опортуністичного базового захисту Autocrypt Level 1, зберігаючи при цьому простоту його використання.</p>
-  </li>
-</ul>
+<p><a href="https://autocrypt.org">Autocrypt</a> is used for automatically
+establishing end-to-end encryption with contacts and group chats.
+Autocrypt uses a limited and <a href="#openpgp-secure">secure subset of the OpenPGP standard</a>.
+End-to-End encrypted messages are marked with a padlock 
+<img style="vertical-align:middle; width:1.2em; margin:1px" src="../lock-icon.png" alt="padlock" />.</p>
+
+<p><a href="https://countermitm.readthedocs.io/en/latest/new.html">Secure-Join protocols</a>
+are used for establishing chats with guaranteed end-to-end encryption 
+which protects against network attacks and compromised servers.
+Chats marked with a green checkmark 
+<img style="vertical-align:middle; width:1.5em; margin:1px" src="../green-checkmark.png" alt="green checkmark" />
+guarantee end-to-end encrypted messages.</p>
     
-      <h3 id="verdiff">
+      <h3 id="whene2e">
         
         
-          В чому різниця між верифікованими групами та чатами 1:1 з верифікованими контактами? <a href="#verdiff" class="anchor"></a>
+          How can i know if messages are end-to-end encrypted? <a href="#whene2e" class="anchor"></a>
         
         
       </h3>
 
-<ul>
-  <li>
-    <p>чат 1:1 з верифікованим контактом і верифіковані групи - це не одне й те саме, навіть якщо у верифікованій групі лише 2 людини. Одна з відмінностей полягає в тому, що ви можете легко додати більше людей до групи, але є й інші особливості.</p>
-  </li>
-  <li>
-    <p>Верифіковані групи постійно захищені. Будь-яка неполадка (незашифрований текст або помилково підписані повідомлення тощо) буде позначена, і такі повідомлення не відображатимуться в цьому чаті. Ви можете довіряти тому, що всі повідомлення в цьому чаті, з позначенням галочкою як верифікованого, не були прочитані/змінені посередниками.</p>
-  </li>
-  <li>
-    <p>Чати 1:1 є опортуністичними, вони призначені для того, щоб дозволити людям спілкуватися незалежно від того, змінюють вони клієнти електронної пошти, пристрої, налаштування тощо. Ось чому немає галочки верифікації, навіть якщо ви верифікували контакт.</p>
-  </li>
-</ul>
+<p>All end-to-end encrypted messages carry a padlock:</p>
+
+<p><img style="width:160px; margin:1px" src="../lock-screenshot.png" alt="padlock in bubble" /></p>
+
+<p>End-to-end encryption is guaranteed if there is a green checkmark next to the chat title:</p>
+
+<p><img style="width:211px; margin:1px" src="../green-checkmark-screenshot.png" alt="green checkmark in title" /></p>
     
-      <h3 id="чи-підтримує-delta-chat-perfect-forward-secrecy">
+      <h3 id="howtoe2ee">
         
         
-          Чи підтримує Delta Chat Perfect Forward Secrecy? <a href="#чи-підтримує-delta-chat-perfect-forward-secrecy" class="anchor"></a>
+          How can I get guaranteed end-to-end encryption and green checkmarks? <a href="#howtoe2ee" class="anchor"></a>
         
         
       </h3>
 
+<p>Meet your chat partner outside Delta Chat, preferably in person
+but a second channel like a video chat
+or a different messenger is fine as well.
+Perform the following QR show/scan procedure with your chat partner.
+One of you is the “Inviter”, the other is the “Joiner”.</p>
+
+<p><strong>Inviter side</strong>:</p>
+
 <ul>
   <li>
-    <p>Ні, OpenPGP не підтримує Perfect Forward Secrecy. Perfect Forward Secrecy орієнтовна на сесійну роботу, а електронна пошта асинхронна за своєю природою і часто використовується незалежно на декількох пристроях. Це означає, що якщо ваш приватний ключ витік і хтось зберіг ваші повідомлення, він зможе прочитати їх.</p>
+    <p>Group invitation: 
+Tap the chat group title to see its member list, and select “QR Invite code”. 
+Share the QR image with the other side either in person or through a second channel.</p>
   </li>
   <li>
-    <p>Зверніть увагу: якщо хтось вилучить або зламає ваш телефон, що працює, вони зможуть, зазвичай, прочитати всі повідомлення, не має значення присутня Perfect Forward Secrecy чи ні. Маючи доступ до одного пристрою члена групи можна відкрити багато соціальних зв’язків. Використання електронних адрес, які нелегко відстежити до особи, допомагає учасникам групи захиститися від наслідків захоплення пристрою.</p>
-  </li>
-  <li>
-    <p>Ми розробляємо схеми кращого захисту комунікацій від вилучення пристрою.</p>
+    <p>Direct 1:1 chat invitation: 
+Tap the QR Code icon <img style="vertical-align:middle; width:1.8em; margin:1px" src="../qr-icon.png" />
+on the Delta Chat app main screen – 
+on Desktop the QR Icon is in the left-side sandwich menu.
+Share the QR image with the other side either in person or through a second channel.</p>
   </li>
 </ul>
+
+<p><strong>Joiner side</strong>:</p>
+
+<ul>
+  <li>
+    <p>Tap the QR Code icon <img style="vertical-align:middle; width:1.8em; margin:1px" src="../qr-icon.png" />
+on the Delta Chat app main screen – 
+on Desktop the QR Icon is in the left-side sandwich menu.</p>
+  </li>
+  <li>
+    <p>Choose “SCAN QR CODE” and scan the QR Code 
+that you see from your chat partner in a second channel.</p>
+  </li>
+  <li>
+    <p>Tap “OK”</p>
+  </li>
+</ul>
+
+<p><strong>Both Inviter and Joiner</strong>:</p>
+
+<p>Wait while <a href="https://countermitm.readthedocs.io/en/latest/new.html#setup-contact-protocol">Secure-Join network messages are exchanged</a> between both devices.</p>
+
+<ul>
+  <li>
+    <p>If both devices are online,
+both sides will eventually see a (group or direct) chat with a green checkmark
+<img style="vertical-align:middle; width:1.5em; margin:1px" src="../green-checkmark.png" alt="green checkmark" />
+next to the title.</p>
+  </li>
+  <li>
+    <p>If one of the devices is offline, the green checkmarks will only
+appear later when the device is internet-connected again
+and the Secure-Join network protocol completed.</p>
+  </li>
+</ul>
+
+<p>Congratulations! 
+You now will automatically use guaranteed end-to-end encryption
+with this contact and both of you can add each other to green-checkmarked groups
+<img style="vertical-align:middle; width:1.5em; margin:1px" src="../green-checkmark.png" alt="green checkmark" />,
+thereby automatically spreading guaranteed end-to-end encryption among its members.</p>
     
-      <h3 id="яким-чином-delta-chat-захищає-мої-метадані">
+      <h3 id="e2eeguarantee">
         
         
-          Яким чином Delta Chat захищає мої метадані? <a href="#яким-чином-delta-chat-захищає-мої-метадані" class="anchor"></a>
+          What does the green checkmark and “guaranteed end-to-end encryption” mean? <a href="#e2eeguarantee" class="anchor"></a>
         
         
       </h3>
 
+<p>Chat titles with green checkmarks
+<img style="vertical-align:middle; width:1.5em; margin:1px" src="../green-checkmark.png" alt="green checkmark" />
+mean that all messages in the chat will be end-to-end encrypted
+and can not be read or altered by compromised e-mail servers or Internet providers. 
+Joining green-checkmarked group chats
+safely spreads everybody’s encryption information (and green checkmarks)
+in a manner that guarantees end-to-end encryption in the group and among members.</p>
+
+<p>Contact profiles with green checkmarks 
+<img style="vertical-align:middle; width:1.5em; margin:1px" src="../green-checkmark.png" alt="green checkmark" />
+mean that messaging a contact is currently guaranteed to be end-to-end encrypted.
+Every green-checkmarked contact either did a direct <a href="#howtoe2ee">QR-scan</a> with you
+or was introduced by a another green-checkmarked contact.
+Introductions happen automatically when adding members to groups. 
+Whoever adds a contact to a green-checkmarked group becomes an introducer 
+to those members who didn’t yet know about the added contact.
+In a contact profile you can tap on the “Introduced by …” text repeatedly
+until you get to the one with whom you directly did a <a href="#howtoe2ee">QR-scan</a>.</p>
+
+<p>Note that in a contact profile you may see and tap introducers 
+but there is no green checkmark in the profile title. 
+This usually means that the contact <a href="#nocryptanymore">“sent a message from another device”</a>.</p>
+
+<p>For more in-depth discussion of “guaranteed end-to-end encryption”
+please see <a href="https://countermitm.readthedocs.io/en/latest/new.html">Secure-Join protocols</a>
+and specifically read about “Verified Groups”, the technical term
+of what is called here “green-checkmarked” or “guaranteed end-to-end encrypted” chats.</p>
+    
+      <h3 id="nocryptanymore">
+        
+        
+          A contact “sent a message from another device”, what can i do? <a href="#nocryptanymore" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Your chat with a contact lost guaranteed end-to-end encryption. 
+The green checkmark was removed for this chat and contact when you see this warning. 
+<strong>If you find the sudden drop of guaranteed end-to-end encryption 
+surprising for this contact then don’t accept the warning!</strong>
+Instead check with your contact through a second channel 
+like a video call, other messenger or a phone call,
+to find out what happened.</p>
+
+<p>If your contact actually caused the drop of guaranteed end-to-end encryption
+please see the next paragraphs for common reasons and their mitigations. 
+Regardless, all other green-checkmarked chats remain guaranteed end-to-end encrypted
+even if the contact is a member there.</p>
+
+<p><strong>Your contact is using Delta Chat on a second device (phone or laptop)</strong></p>
+
+<p>If they have another device with a Delta Chat app running,
+they should remove the account from the new device
+and add it <a href="#multiclient">as a second device as described here</a>.
+As soon as they message you afterwards, the warning will be gone
+and guaranteed encryption is established with both devices of your contact.</p>
+
+<p><strong>Your contact reinstalled Delta Chat using their old account login</strong></p>
+
+<p>If they have <a href="#backup">a backup file</a>, 
+they should remove the account from the new device 
+and rather import the backup file to re-create their account. 
+As soon as they message you afterwards, the warning will be gone
+and guaranteed encryption is re-established for this contact.</p>
+
+<p>If they don’t have a backup file, it’s best to perform a <a href="#howtoe2ee">QR scan</a> 
+with your chat partner to re-establish guaranteed end-to-end encryption.</p>
+
+<p><strong>Your contact sent a mail through a webmail interface or another e-mail app
+and will get back to using Delta Chat soon again.</strong></p>
+
+<p>If you are sure that the contact sometimes uses webmail,
+or another mail app lacking end-to-end encryption,
+then you may accept the warning.
+As soon as your contact uses Delta Chat again, 
+guaranteed end-to-end encryption will be automatically re-established.</p>
+
+<p><strong>Your contact stopped using Delta Chat entirely</strong></p>
+
+<p>Sometimes remaining in contact is more important than end-to-end encryption.
+<a href="#tls">“Transport Layer Encryption” (TLS)</a> may still meaningfully protect
+the confidentiality of your messages between your device and the e-mail server. 
+But without end-to-end encryption you and your contact are trusting your e-mail server
+to not read or manipulate your messages, and to not hand them to third parties.</p>
+
+<p>In any case, you can not do much else than accept the warning.
+Please also remove the contact from any active green-checkmarked group 
+which you can find in “Shared chats” in the Contact profile. 
+This spares your contact from getting “unreadable” messages.</p>
+
+<p>If the contact removed Delta Chat because of buggy or undesirable behaviour, 
+please consider posting to our <a href="https://support.delta.chat">support forum</a> 
+to help us identify and address common problems. Thanks!</p>
+    
+      <h3 id="are-attachments-pictures-files-audio-etc-end-to-end-encrypted">
+        
+        
+          Are attachments (pictures, files, audio etc.) end-to-end encrypted? <a href="#are-attachments-pictures-files-audio-etc-end-to-end-encrypted" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Yes.</p>
+
+<p>When we talk about an “end-to-end encrypted message”
+we always mean a whole message is encrypted,
+including all the attachments
+and attachment metadata such as filenames.</p>
+    
+      <h3 id="openpgp-secure">
+        
+        
+          Is OpenPGP secure? <a href="#openpgp-secure" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Yes, Delta Chat uses a secure subset of OpenPGP
+and only displays a padlock security indicator on a message
+if the whole message is properly encrypted and signed.
+For example, “Detached signatures” are not treated as secure.</p>
+
+<p>OpenPGP is not insecure by itself.
+Most publically discussed OpenPGP security problems
+actually stem from bad usability or bad implementations of tools or apps (or both).
+It is particularly important to distinguish between OpenPGP, the IETF encryption standard, 
+and GnuPG (GPG), a command line tool implementing OpenPGP. 
+Many public critiques of OpenPGP actually discuss GnuPG which Delta Chat has never used. 
+Delta Chat rather uses the OpenPGP Rust implementation <a href="https://github.com/rpgp/rpgp">rPGP</a>,
+available as <a href="https://crates.io/crates/pgp">an independent “pgp” package</a>,
+and <a href="https://delta.chat/assets/blog/2019-first-security-review.pdf">security-audited in 2019</a>.</p>
+
+<p>We aim, along with other OpenPGP implementors, 
+to further improve security characteristics by implementing the
+<a href="https://datatracker.ietf.org/doc/draft-ietf-openpgp-crypto-refresh/">new IETF OpenPGP Crypto-Refresh</a> 
+which was thankfully adopted in summer 2023.</p>
+    
+      <h3 id="openpgp-alternatives">
+        
+        
+          Did you consider using alternatives to OpenPGP for end-to-end -encryption? <a href="#openpgp-alternatives" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Yes, we are following efforts like <a href="https://en.wikipedia.org/wiki/Messaging_Layer_Security">MLS</a>
+or <a href="https://saltpack.org/">Saltpack</a> 
+but adopting them would mean breaking end-to-end encryption interoperability 
+with all other e-mail apps that typically support OpenPGP encryption. 
+So it would not be a light decision to take 
+and there must be tangible improvements for users.</p>
+
+<p>Delta Chat takes a holistic “usable security” approach 
+and works with a wide range of activist groupings as well as 
+renowned researchers such as <a href="https://teamusec.de">TeamUSEC</a> 
+to improve actual user outcomes against security threats. 
+The wire protocol and standard for establishing end-to-end encryption is
+only one part of “user outcomes”,
+see also our answers to <a href="#device-seizure">device-seizure</a>
+and <a href="#message-metadata">message-metadata</a> questions.</p>
+    
+      <h3 id="is-delta-chat-vulnerable-to-efail">
+        
+        
+          Is Delta Chat vulnerable to EFAIL? <a href="#is-delta-chat-vulnerable-to-efail" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>No, <a href="https://delta.chat/en/2018-05-15-delta-chat-not-vulnerable-to-efail">Delta Chat never was vulnerable to EFAIL</a>
+because its OpenPGP implementation <a href="https://github.com/rpgp/rpgp">rPGP</a> 
+uses Modification Detection Code when encrypting messages
+and returns <a href="https://docs.rs/pgp/latest/pgp/errors/enum.Error.html#variant.MdcError">an error</a>
+if the Modification Detection Code is incorrect.</p>
+
+<p>Delta Chat also never was vulnerable to the “Direct Exfiltration” EFAIL attack
+because it only decrypts <code class="language-plaintext highlighter-rouge">multipart/encrypted</code> messages
+which contain exactly one encrypted and signed part,
+as defined by the Autocrypt Level 1 specification.</p>
+    
+      <h3 id="tls">
+        
+        
+          Is a message exposed in cleartext if end-to-end encryption is not available? <a href="#tls" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Even if your messages are not guaranteed to be end-to-end encrypted, 
+they are still protected from Internet providers like cell or cable companies. 
+However, your and your recipient’s e-mail providers 
+may read, analyze or even modify your messages, 
+including any attachments,
+if they are not end-to-end encrypted.</p>
+
+<p>Delta Chat by default uses strict 
+<a href="https://en.wikipedia.org/wiki/Transport_Layer_Security">TLS encryption</a> 
+which secures connections between your device and your e-mail provider. 
+All of Delta Chat’s TLS-handling has been independently <a href="#security-audits">security audited</a>.
+Moreover, the connection between your and the recipient’s e-mail provider
+will typically be transport-encrypted as well.
+If the involved e-mail servers support <a href="https://datatracker.ietf.org/doc/html/rfc8461">MTA-STS</a>
+then transport encryption will be enforced between e-mail providers 
+in which case Delta Chat communications will never be exposed in cleartext to the Internet
+even if the message was not end-to-end encrypted.</p>
+
+<p>Note that <a href="#howtoe2ee">maintaining guaranteed end-to-end encryption</a> on top of TLS encryption 
+provides pervasive safety between your and the recipient’s devices.
+Not even your e-mail or Internet provider will be able to read or modify your messages.</p>
+    
+      <h3 id="message-metadata">
+        
+        
+          How does Delta Chat protect metadata in messages? <a href="#message-metadata" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Delta Chat protects most message metadata by putting the following information
+into the end-to-end encrypted part of messages:</p>
+
 <ul>
-  <li>
-    <p>Оскільки Delta Chat це децентралізований месенджер, метадані користувачів Delta Chat не зберігаються на жодному центральному сервері. Однак вони зберігаються на поштових серверах відправника та отримувача повідомлення.</p>
-  </li>
-  <li>
-    <p>Кожен поштовий сервер наразі знає про те хто відправив і хто отримав повідомлення через незашифровані заголовки To/Cc, таким чином визначаючи хто є членом групи. Delta Chat сам може уникнути незашифрованих заголовків To/Cc і завжди розміщує їх у зашифрованій частині. Див. <a href="https://github.com/deltachat/deltachat-core-rust/issues/1032">Avoid sending To/CC headers for verified groups</a>. Для опортуністичних чатів головним питанням є те, як це впливає на інші поштові програми, які можуть брати участь у чатах.</p>
-  </li>
-  <li>
-    <p>Багато інших заголовків електронної пошти, зокрема заголовок “Subject”, захищені наскрізним шифруванням, дивіться також майбутній <a href="https://datatracker.ietf.org/doc/draft-autocrypt-lamps-protected-headers/">IETF RFC</a>.</p>
-  </li>
+  <li>Subject line</li>
+  <li>Group avatar and name</li>
+  <li>MDN (read receipt) requests (<code class="language-plaintext highlighter-rouge">Chat-Disposition-Notification-To</code>)</li>
+  <li>Disappearing message timer (<code class="language-plaintext highlighter-rouge">Ephemeral-Timer</code>)</li>
+  <li><code class="language-plaintext highlighter-rouge">Chat-Group-Member-Removed</code>, <code class="language-plaintext highlighter-rouge">Chat-Group-Member-Added</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Secure-Join</code> header containing secure join commands</li>
+  <li>Notification about enabling location streaming</li>
+  <li>WebRTC room URL</li>
 </ul>
+
+<p>E-Mail servers do not get access to this protected metadata 
+but they do see the message date as well as the message size,
+and, more importantly, the sender and receiver addresses. 
+E-mail servers need receiver addresses to route and 
+deliver messages to recipient’s devices.</p>
+    
+      <h3 id="device-seizure">
+        
+        
+          How to protect metadata and contacts when a device is seized? <a href="#device-seizure" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Both for protecting against metadata-collecting e-mail servers 
+as well as against the threat of device seizure
+we recommend to use a Delta Chat optimized <a href="https://delta.chat/serverguide">e-mail server instance</a>
+to create pseudonymous temporary accounts through QR-code scans.
+Note that Delta Chat apps on all platforms support multiple accounts 
+so you can easily use action-specific “1-week” or “1-month” accounts next to your “main” account
+with the knowledge that all temporary account data, along with all metadata, will be deleted.
+Moreover, if a device is seized then contacts using temporary e-mail accounts
+can not be identified easily, as compared to messengers which reveal
+phone numbers in chat groups which in turn are often associated with legal identities.</p>
+    
+      <h3 id="how-can-i-check-encryption-information">
+        
+        
+          How can i check encryption information? <a href="#how-can-i-check-encryption-information" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>You may check the end-to-end encryption status manually in the “Encryption” dialog
+(user profile on Android/iOS or right-click a user’s chat-list item on desktop).
+Delta Chat shows two fingerprints there.
+If the same fingerprints appear on your own and your contact’s device,
+the connection is safe.</p>
+    
+      <h3 id="how-can-i-check-the-encryption-status-of-messages">
+        
+        
+          How can I check the encryption status of messages? <a href="#how-can-i-check-the-encryption-status-of-messages" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>A little <strong>padlock</strong> in a message bubble denotes
+that the message was properly end-to-end encrypted from the given sender.
+If there is <strong>no padlock</strong>, the message was not properly end-to-end encrypted
+most likely because the sender uses an app or webmail interface
+without support for end-to-end–encryption.</p>
+    
+      <h3 id="why-do-i-see-unencrypted-messages">
+        
+        
+          Why do I see unencrypted messages? <a href="#why-do-i-see-unencrypted-messages" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>If a contact uses a non-Autocrypt e-mail app,
+all messages involving this contact (in a group or 1:1 chat)
+will not be end-to-end encrypted, and thus not show a “padlock” with messages.
+Note that even if your contacts use Delta Chat on their account,
+they might also use a non-Autocrypt e-mail app on that account
+which then may cause intermittently unencrypted messages.
+Replying unencrypted to unencrypted messages is mandated by Autocrypt
+to prevent unreadable messages on the side of your contacts
+and their non-Autocrypt e-mail app.</p>
+    
+      <h3 id="how-can-i-get-an-end-to-end-encrypted-chat-with-a-delta-chat-contact-who-sometimes-uses-webmail-or-another-non-autocrypt-e-mail-app">
+        
+        
+          How can i get an end-to-end encrypted chat with a Delta Chat contact who sometimes uses webmail or another non-Autocrypt e-mail app? <a href="#how-can-i-get-an-end-to-end-encrypted-chat-with-a-delta-chat-contact-who-sometimes-uses-webmail-or-another-non-autocrypt-e-mail-app" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>If you need a safely end-to-end encrypted chat with a contact 
+who is using their account both with Delta Chat and non-Autocrypt apps (e.g. webmail),
+it’s best to setup <a href="#howtoe2ee">guaranteed end-to-end encryption with them</a>
+and then create a guaranteed end-to-end encrypted group chat with you two as members. 
+In this group chat all messages will be end-to-end encrypted 
+even if the direct chat between you two has a
+<a href="#nocryptanymore">“… sent a message from another device”</a> warning.</p>
+    
+      <h3 id="how-can-i-ensure-message-end-to-end-encryption-and-deletion">
+        
+        
+          How can I ensure message end-to-end encryption and deletion? <a href="#how-can-i-ensure-message-end-to-end-encryption-and-deletion" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>The best way to ensure every message is end-to-end encrypted,
+and metadata deleted as quickly as possible
+is <a href="#howtoe2ee">using chats with guaranteed end-to-end encryption</a>
+and turning on disappearing messages.</p>
+
+<p>Guranteed end-to-end encrypted chats protect against <a href="https://en.wikipedia.org/wiki/Man-in-the-middle_attack">MITM attacks</a>
+and turning on “disappearing messages” deletes the messages
+on the server after a user-configured time.</p>
+
+<p>If you don’t need a longer-lived copy of your messages on the server, 
+you can also turn on <a href="#delold">“delete messages from server automatically”</a>.</p>
+    
+      <h3 id="pfs">
+        
+        
+          Does Delta Chat support Perfect Forward Secrecy? <a href="#pfs" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>No, Delta Chat doesn’t support Perfect Forward Secrecy (PFS).
+This means that if your Delta Chat private decryption key is leaked,
+and someone has collected your prior in-transit messages,
+they will be able to decrypt and read them using the leaked decryption key.</p>
+
+<p>Note, however, that if anyone obtains to your decryption keys, 
+they will typically also be able to obtain your messages, 
+irrespective if Perfect Forward Secrecy is in place or not. 
+The typical real-world situation for leaked decryption keys is device seizure
+which we discuss in our answer <a href="#device-seizure">on metadata and device seizure</a>.</p>
+
+<p>It is possible that Delta Chat evolves to support Perfect Forward Secrecy,
+because OpenPGP is just a container for encrypted messages 
+but encryption key management (and thus key rotation or key “ratcheting”) 
+could be organized in flexible ways. 
+See <a href="https://gitlab.com/sequoia-pgp/openpgp-dr">Seqouia’s PFS prototype</a>
+for existing experiments in the OpenPGP implementor community.</p>
+    
+      <h3 id="is-end-to-end-encryption-of-delta-chat-as-safe-as-signal">
+        
+        
+          Is end-to-end encryption of Delta Chat as safe as Signal? <a href="#is-end-to-end-encryption-of-delta-chat-as-safe-as-signal" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>It depends on what is important to you. 
+Delta Chat <a href="#pfs">does not support PFS</a> like Signal does
+but it provides <a href="#e2eeguarantee">guaranteed end-to-end encrypted chats</a>
+that are safe against compromised servers or corrupted networks. 
+Signal and most other PFS-supporting messengers do not provide 
+a practical scheme for protecting chat groups from network attacks
+which are arguably more worrysome 
+than a potential attacker who seizes your phone and private encryption setup
+but somehow not your messages, yet has a full record of all 
+past encrypted messages.</p>
+
+<p>In any case, Delta Chat’s end-to-end encryption uses a <a href="#openpgp-secure">secure subset of OpenPGP</a>
+which has been <a href="https://delta.chat/assets/blog/2019-first-security-review.pdf">independently security-audited</a>.</p>
     
       <h3 id="чи-можна-повторно-використовувати-існуючий-закритий-ключ">
         
@@ -672,16 +998,14 @@
         
       </h3>
 
-<ul>
-  <li>
-    <p>Так. Найпростіший спосіб використати існуючий ключ – відправити повідомлення з параметрами Autocrypt з додатку для роботи з електронною поштою. Знайдіть в налаштуваннях свого додатку слова типу <strong>Почати передачу параметрів Autocrypt</strong> і дотримуйтесь подальших вказівок.</p>
-  </li>
-  <li>
-    <p>Крім того, ви можете імпортувати ключ вручну в «Налаштування -&gt; Додаткові налаштування -&gt; Імпорт секретних ключів». Застереження: переконайтеся, що ключ не захищено паролем, або видаліть пароль заздалегідь.</p>
-  </li>
-</ul>
+<p>Yes.
+The best way is to send an Autocrypt Setup Message from the other e-mail client.
+Look for something like <strong>Start Autocrypt Setup Transfer</strong> in the settings of the other client and follow the instructions shown there.</p>
 
-<p>Якщо у вас немає ключа або ви навіть не знаєте, чи він вам знадобиться - не хвилюйтеся: Delta Chat генерує ключі за необхідності, вам не потрібно натискати для цього кнопку.</p>
+<p>Alternatively, you can import the key manually in “Settings -&gt; Advanced settings -&gt; Import secret keys”.
+Caution: Make sure the key is not protected by a password, or remove the password beforehand.</p>
+
+<p>If you don’t have a key or don’t even know you would need one - don’t worry: Delta Chat generates keys as needed, you don’t have to hit a button for it.</p>
     
       <h3 id="я-не-можу-імпортувати-свій-існуючий-pgp-ключ-у-delta-chat">
         
@@ -717,7 +1041,7 @@
 
 <ul>
   <li>
-    <p>Make sure both devices are on the same Wi-Fi or network</p>
+    <p>Упевніться, що обидва пристрої підключені до одного Wi-Fi або мережі</p>
   </li>
   <li>
     <p>На першому пристрої перейдіть до <strong>Налаштування → Додати другий пристрій</strong>, розблокуйте екран, якщо потрібно і трохи зачекайте, поки не з’явиться QR-код</p>
@@ -764,10 +1088,10 @@
   </li>
 </ul>
     
-      <h3 id="перенесення-вручну">
+      <h3 id="backup">
         
         
-          Перенесення вручну <a href="#перенесення-вручну" class="anchor"></a>
+          Manual Transfer <a href="#backup" class="anchor"></a>
         
         
       </h3>
@@ -775,10 +1099,21 @@
 <p>Цей спосіб рекомендований, лише якщо «Додати другий пристрій», як описано вище, не працює.</p>
 
 <ul>
-  <li>На старому пристрої перейдіть у «Налаштування -&gt; Чати та медіа -&gt; Експорт резервної копії». Введіть ваш PIN-код, ключ або пароль розблокування екрана. Потім ви можете натиснути “Почати Резервне копіювання”. Це збереже файл резервної копії на вашому пристрої. Тепер вам потрібно перенести на інший пристрій якимось чином.</li>
-  <li>На новому пристрої, на екрані входу, замість входу в свою електронну пошту виберіть «Імпорт резервної копії». Після імпорту, ваші розмови, ключі шифрування та носій потрібно скопіювати на новий пристрій.</li>
-  <li><strong>Якщо ви використовуєте iOS:</strong> і у вас виникають труднощі, можливо <a href="https://support.delta.chat/t/import-backup-to-ios/1628">цей посібник</a> допоможе вам.</li>
-  <li>Тепер ви синхронізовані та можете використовувати обидва пристрої для надсилання та отримання зашифрованих E2E повідомлень з вашими партнерами по спілкуванню.</li>
+  <li>On the old device, go to “Settings -&gt; Chats and media -&gt; Export Backup”. Enter your
+screen unlock PIN, pattern, or password. Then you can click on “Start
+Backup”. This saves the backup file to your device. Now you have to transfer
+it to the other device somehow.</li>
+  <li>On the new device, on the login screen, instead of logging into your email
+account, choose “Import Backup”. After import, your conversations, encryption
+keys, and media should be copied to the new device.
+    <ul>
+      <li><strong>If you use iOS:</strong> and you encounter difficulties, maybe
+<a href="https://support.delta.chat/t/import-backup-to-ios/1628">this guide</a> will
+help you.</li>
+    </ul>
+  </li>
+  <li>You are now synchronized, and can use both devices for sending and receiving
+end-to-end encrypted messages with your communication partners.</li>
 </ul>
     
       <h3 id="чи-планується-впровадження-веб-клієнта-delta-chat">
@@ -835,59 +1170,69 @@
       <h2 id="webxdc">
         
         
-          Приватні програми / webxdc <a href="#webxdc" class="anchor"></a>
+          webxdc apps <a href="#webxdc" class="anchor"></a>
         
         
       </h2>
 
-<p>У Delta Chat ви можете ділитися «приватними програмами», вкладеннями з файлом з розширенням <code class="language-plaintext highlighter-rouge">.xdc</code>. Вони можуть робити дуже різні речі, і зробити Delta Chat справжнім розширюваним месенджером. Технічний термін <a href="https://webxdc.org">webxdc</a>.</p>
+<p>In Delta Chat, you can share <a href="https://webxdc.org">webxdc apps</a>, attachments with an <code class="language-plaintext highlighter-rouge">.xdc</code> file
+extension. They can do very different things, and make Delta Chat a truly
+extendable messenger.</p>
     
-      <h3 id="наскільки-приватні-приватні-програми">
+      <h3 id="how-private-are-webxdc-apps">
         
         
-          Наскільки приватні приватні програми? <a href="#наскільки-приватні-приватні-програми" class="anchor"></a>
+          How private are webxdc apps? <a href="#how-private-are-webxdc-apps" class="anchor"></a>
         
         
       </h3>
 
 <ul>
-  <li>Приватні програми не можуть надсилати дані в Інтернет або щось завантажувати.</li>
-  <li>Приватна програма може обмінюватися даними лише в чаті Delta Chat зі своєю копією на пристроях ваших партнерів по чату. Крім цього, вона повністю ізольована від Інтернету. 
-– Конфіденційність, яку пропонує приватна програма, – це конфіденційність вашого чату – поки ви довіряєте людям, з якими спілкуєтесь, ви також можете довіряти приватній програмі.</li>
-  <li>Це також означає, що відкриття приватних програм у чатах, учасникам яких ви не довіряєте, може бути ризиком для конфіденційності це як з вкладеннями електронної пошти, коли ви відкриваєте лише вкладення від відправників, яким довіряєте, а не від спамерів.</li>
+  <li>webxdc apps can not send data to the Internet, or download anything.</li>
+  <li>A webxdc app can only exchange data within a Delta Chat chat, with its
+copies on the devices of your chat partners. Other than that, it’s completely
+isolated from the Internet.</li>
+  <li>The privacy a webxdc app offers is the privacy of your chat - as long as you
+trust the people you chat with, you can trust the webxdc app as well.</li>
+  <li>This also means: it can be a privacy risk to open webxdc apps in chats where
+you don’t trust the members - as you know it from e-mail attachments, where 
+you only open attachments from senders you trust, and not from spammers.</li>
 </ul>
     
-      <h3 id="де-я-можу-отримати-приватні-програми">
+      <h3 id="where-can-i-get-webxdc-apps">
         
         
-          Де я можу отримати приватні програми? <a href="#де-я-можу-отримати-приватні-програми" class="anchor"></a>
+          Where can I get webxdc apps? <a href="#where-can-i-get-webxdc-apps" class="anchor"></a>
         
         
       </h3>
 
 <ul>
-  <li>In general, anyone can share private apps with each
+  <li>In general, anyone can share webxdc apps with each
 other without restrictions.</li>
   <li>You can <a href="https://delta.chat/en/2023-08-11-xstore">send ‘hi’ to xstore@testrun.org</a>
 to see an experimental webxdc appstore.
 All of the apps are open source and for free.</li>
-  <li>Many people write their own private apps and post them to <a href="https://support.delta.chat/c/webxdc/20">the Delta Chat
+  <li>Many people write their own webxdc apps and post them to <a href="https://support.delta.chat/c/webxdc/20">the Delta Chat
 forum</a>.</li>
 </ul>
     
-      <h3 id="як-я-можу-створити-власні-приватні-програми">
+      <h3 id="how-can-i-create-my-own-webxdc-apps">
         
         
-          Як я можу створити власні приватні програми? <a href="#як-я-можу-створити-власні-приватні-програми" class="anchor"></a>
+          How can I create my own webxdc apps? <a href="#how-can-i-create-my-own-webxdc-apps" class="anchor"></a>
         
         
       </h3>
 
 <ul>
-  <li>Приватні програми – це просто zip-файли, що містять код html, css і javascript.</li>
-  <li>Ви можете розширити <a href="https://github.com/webxdc/hello">програму Hello World</a> щоб почати.</li>
-  <li>Все інше, що вам потрібно знати, написано в <a href="https://docs.webxdc.org/">документація</a>.</li>
-  <li>Якщо у вас є запитання, ви можете запитати інших із досвідом <a href="https://support.delta.chat/c/webxdc/20">на форумі Delta Chat</a>.</li>
+  <li>webxdc apps are just zip files containing html, css, and javascript code.</li>
+  <li>You can extend the <a href="https://github.com/webxdc/hello">Hello World example app</a>
+to get started.</li>
+  <li>All else you need to know is written in the
+<a href="https://docs.webxdc.org/">documentation</a>.</li>
+  <li>If you have question, you can ask others with experience in the <a href="https://support.delta.chat/c/webxdc/20">Delta Chat
+Forum</a>.</li>
 </ul>
     
       <h2 id="експериментальні-функції">
@@ -898,7 +1243,10 @@ forum</a>.</li>
         
       </h2>
 
-<p>Ми дуже вдячні за відгуки про ці функції - чи хочете ви поділитися вашими ідеями? Приєднуйтесь до <a href="https://support.delta.chat">форуму</a>, щоб зробити внесок. (Ви любите експерименти? Зареєструйтесь через «Зареєструватися -&gt; з Delta Chat»!)</p>
+<p>We are very grateful for feedback on these features - do you want to share
+your ideas? Join the <a href="https://support.delta.chat">Forum</a> to contribute. 
+You may conveniently login via Delta Chat and a QR code scan,
+another rather stable experiment we run on the side (sic!).</p>
     
       <h3 id="як-я-можу-робити-аудіовідеодзвінки-з-delta-chat">
         
@@ -909,28 +1257,18 @@ forum</a>.</li>
       </h3>
 
 <ul>
-  <li>Щоб увімкнути аудіо/відеодзвінки, перейдіть до розділу «експериментальні функції» в розширених налаштуваннях і виберіть «екземпляр відеочату».</li>
-  <li>Коли ви запрошуєте інших до відеочату, він відразу відкривається у вашому браузері/додатку. Інші отримають електронний лист із посиланням на вашу кімнату jitsi/BBB. Таким чином, він також сумісний, якщо ваші партнери по чату не використовують Delta Chat.</li>
-  <li>Зауважте, що на іншій стороні немає мелодії дзвінка, і ваші партнери по чату не будуть перериватися запрошенням у відеочат.</li>
-  <li>Ви можете використовувати будь-який сервіс відеочату, який дозволяє приєднатися за посиланням. Просто додайте посилання в налаштуваннях.</li>
-  <li>Наприклад, щоб використовувати флагманський екземпляр Jitsi Meet, ви можете ввести <code class="language-plaintext highlighter-rouge">https://meet.jit.si/$ROOM</code>. Змінна <code class="language-plaintext highlighter-rouge">$ROOM</code> буде випадковим значенням; Таким чином, ви матимете нову випадкову кімнату jitsi кожного разу, коли ви телефонуєте комусь.</li>
-</ul>
-    
-      <h3 id="що-таке-перевірена-група-чому-це-експеримент">
-        
-        
-          Що таке перевірена група? Чому це експеримент? <a href="#що-таке-перевірена-група-чому-це-експеримент" class="anchor"></a>
-        
-        
-      </h3>
-
-<ul>
-  <li>
-    <p>Перевірена група це чат, що гарантує безпеку від активного нападника. Усі повідомлення у перевіреному чаті зашифровані наскрізним шифруванням, а нових учасників можна додавати лише через сканування QR-коду запрошення. Таким чином, всі учасники з’єднані один з одним через ланцюжок запрошень, що гарантує криптографічну узгодженість від активних мережевих атак або атак провайдерів. Дивіться <a href="https://countermitm.readthedocs.io/en/latest/new.html">countermitm.readthedocs.io</a> для технічних деталей цієї функції.</p>
-  </li>
-  <li>
-    <p>Станом на жовтень 2022 року «перевірені групи» залишаються експериментальною функцією. Вони постійно вдосконалюються, і багато помилок було виправлено з оригінального впровадження в 2018 р. Однак залишаються випадки, особливо з великими групами, де можуть виникнути невідповідності або повідомлення можуть стати нечитабельними.</p>
-  </li>
+  <li>To turn on audio/video calls, go to the “experimental features” section in
+the advanced settings and choose a “Video Chat Instance”.</li>
+  <li>When you invite others to a video chat, it is opened in your browser/app at
+once. The others receive an e-mail with a link to the video chat. 
+This way, it is also compatible if your chat partners don’t use Delta Chat.</li>
+  <li>Note that there is no ring tone on the other side, and your chat partners
+will not get interrupted by a video chat invite.</li>
+  <li>You can use any video chat service which allows joining by link. Just add the
+link in the settings.</li>
+  <li>For example, to use the flagship Jitsi Meet instance, you could enter
+<code class="language-plaintext highlighter-rouge">https://meet.jit.si/$ROOM</code>. The <code class="language-plaintext highlighter-rouge">$ROOM</code> variable will be a random value;
+this way, you will have a new random jitsi room every time you call someone.</li>
 </ul>
     
       <h3 id="що-таке-списки-широкомовлення-та-як-ними-користуватися">
@@ -1009,12 +1347,30 @@ forum</a>.</li>
       </h3>
 
 <ol>
-  <li>Змініть свою адресу на екрані налаштувань «Пароль і обліковий запис» у Delta Chat, введіть свій пароль (і, якщо потрібно, налаштування сервера) для нового облікового запису</li>
-  <li>Якщо можливо, змусьте старого провайдера електронної пошти пересилати всі електронні листи на нову адресу електронної пошти</li>
-  <li>Повідомте своїм контактам, що ви змінили адресу. Якщо ви напишете це в перевірену групу, вони підтвердять це автоматично.</li>
+  <li>
+    <p>Change your address in “Settings - Password and Account” and
+enter the password of your new account (and if necessary, server settings).
+You will get an information notice about the fact that you are moving to a new address. 
+An additional notice will also show up in your “Device messages” chat.</p>
+  </li>
+  <li>
+    <p>If possible, let your old e-mail provider forward all messages to your new address.</p>
+  </li>
+  <li>
+    <p>Tell your contacts that you changed your address. 
+Writing to guaranteed end-to-end encrypted chats and groups,
+will make them notice your move automatically 
+and they will continue chatting with you using your new address.</p>
+  </li>
 </ol>
 
-<p>Щоб дізнатися про деталі цього, <a href="https://delta.chat/en/2022-09-14-aeap">прочитайте нашу публікацію в блозі</a>.</p>
+<p>Note that Delta Chat will not retrieve messages anymore from your old e-mail provider.
+If you didn’t configure your e-mail provider to forward messages (step 2.) 
+only those contacts to whom you sent a message in a guaranteed end-to-end encrypted chat
+will send messages to your new address.</p>
+
+<p>To learn more about this the details behind this, <a href="https://delta.chat/en/2022-09-14-aeap">read our blogpost on
+it</a>.</p>
     
       <h2 id="інше">
         
@@ -1074,15 +1430,16 @@ forum</a>.</li>
       </h3>
 
 <ul>
-  <li>Так і ні.</li>
-  <li>Ні, ви не можете використовувати ваші Protonmail, Tutanota, або Criptext аккаунти з Delta
-Chat; вони не надають можливість отримання повідомлень через IMAP.</li>
-  <li>В будь-якому разі ви можете використовувати Delta Chat, щоб надсилати Повідомлення
-людям, які використовують Protonmail, Tutanota, або Criptext. Однак ці повідомлення не 
-будуть наскрізно зашифровані. Наскрізне шифрування, яке пропонують ці сервіси не є 
-сумісне з <a href="https://autocrypt.org/">Autocrypt</a>, стандартом, який використовує Delta Chat.</li>
-  <li>Delta Chat може насрізно шифрувати через будь-якого постачальника e-mail з будь-яким
-<a href="https://autocrypt.org/dev-status.html">Autocrypt підтримуваним додатком e-mail</a>.</li>
+  <li>Yes and No.</li>
+  <li>No, you can not use your Protonmail, Tutanota, or Criptext account with Delta
+Chat; they do not offer receiving mails via IMAP.</li>
+  <li>In any case you can use Delta Chat to send Messages to people who use
+Protonmail, Tutanota, or Criptext. Those messages will not be end-to-end
+encrypted, though. The end-to-end encryption those providers offer is not
+compatible with <a href="https://autocrypt.org/">Autocrypt</a>, the standard Delta Chat
+uses.</li>
+  <li>Delta Chat can end-to-end-encrypt through any e-mail provider with any
+<a href="https://autocrypt.org/dev-status.html">Autocrypt-enabled e-mail app</a>.</li>
 </ul>
     
       <h3 id="мене-цікавлять-технічні-деталі-можете-розповісти-більше">
@@ -1097,10 +1454,10 @@ Chat; вони не надають можливість отримання по�
   <li>Дивіться <a href="https://github.com/deltachat/deltachat-core-rust/blob/master/standards.md#standards-used-in-delta-chat">Стандарти, що використовуються у Delta Chat</a>.</li>
 </ul>
     
-      <h3 id="чи-проходив-delta-chat-незалежний-аудит-на-наявність-вразливостей-у-безпеці">
+      <h3 id="security-audits">
         
         
-          Чи проходив Delta Chat незалежний аудит на наявність вразливостей у безпеці? <a href="#чи-проходив-delta-chat-незалежний-аудит-на-наявність-вразливостей-у-безпеці" class="anchor"></a>
+          Чи проходив Delta Chat незалежний аудит на наявність вразливостей у безпеці? <a href="#security-audits" class="anchor"></a>
         
         
       </h3>
@@ -1117,9 +1474,14 @@ Chat; вони не надають можливість отримання по�
   <li>
     <p>Починаючи з 2023 року <a href="https://cure53.de">Cure53</a> проаналізував транспортне шифрування мережевих з’єднань Delta Chat і відтворюване налаштування поштового сервера як <a href="https://delta.chat/uk/serverguide">рекомендовано на цьому сайті</a>. Ви можете прочитати більше про аудит <a href="https://delta.chat/en/2023-03-27-third-independent-security-audit">у нашому блозі</a> або прочитайте <a href="https://delta.chat/assets/blog/MER-01-report.pdf">повний звіт тут</a>.</p>
   </li>
+  <li>
+    <p>Beginning 2023, we fixed security and privacy issues with the “web
+apps shared in a chat” feature, related to failures of sandboxing
+especially with Chromium. We subsequently got an independent security
+audit from Cure53 and all issues found were fixed in the 1.36 app series released in April 2023.
+See <a href="https://delta.chat/en/2023-05-22-webxdc-security">here for the full background story on end-to-end security in the web</a>.</p>
+  </li>
 </ul>
-
-<p>– Починаючи з 2023 року, ми вирішували проблеми з безпекою та конфіденційністю “веб-додатків, що поширені в чаті”, пов’язані зі збоями пісочниці, особливо у Chromium. Згодом ми отримали незалежну аудит безпеки від Cure53, і всі виявлені проблеми були виправлені в версії 1.36, випущеній у квітні 2023 року. Перегляньте <a href="https://delta.chat/en/2023-05-22-webxdc-security">тут повну історію безпеки наскрізного шифрування в Інтернеті</a>.</p>
     
       <h3 id="як-фінансується-розробка-delta-chat">
         
@@ -1135,10 +1497,10 @@ Chat; вони не надають можливість отримання по�
 
 <ul>
   <li>
-    <p>Проект ЄС <a href="https://nextleap.eu">NEXTLEAP</a> фінансував дослідження
-та впровадження перевірених груп і налаштування контактних протоколів
-в 2017 і 2018, а також допоміг впрводвадити Наскрізне шифрування
-через <a href="https://autocrypt.org">Autocrypt</a>.</p>
+    <p>The <a href="https://nextleap.eu">NEXTLEAP</a> EU project funded the research
+and implementation of verified groups and setup contact protocols
+in 2017 and 2018 and also helped to integrate end-to-end Encryption
+through <a href="https://autocrypt.org">Autocrypt</a>.</p>
   </li>
   <li>
     <p><a href="https://opentechfund.org">Open Technology Fund</a> надав нам два гранти. 
@@ -1151,8 +1513,8 @@ Chat; вони не надають можливість отримання по�
 і додати нові функції для всіх платформ.</p>
   </li>
   <li>
-    <p><a href="https://nlnet.nl/">Фундація NLnet</a> надала в 2019/2020 46 тис. євро на
-завершення прив’язок Rust/Python і створення екосистеми Чат-Ботів.</p>
+    <p>The <a href="https://nlnet.nl/">NLnet foundation</a> granted in 2019/2020 EUR 46K for
+completing Rust/Python bindings and instigating a Chat-bot eco-system.</p>
   </li>
 </ul>
 

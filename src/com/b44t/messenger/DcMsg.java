@@ -49,6 +49,7 @@ public class DcMsg {
     public final static int DC_DOWNLOAD_DONE = 0;
     public final static int DC_DOWNLOAD_AVAILABLE = 10;
     public final static int DC_DOWNLOAD_FAILURE = 20;
+    public final static int DC_DOWNLOAD_UNDECIPHERABLE = 30;
     public final static int DC_DOWNLOAD_IN_PROGRESS = 1000;
 
     public static final int DC_MSG_NO_ID = 0;

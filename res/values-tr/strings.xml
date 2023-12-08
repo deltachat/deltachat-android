@@ -925,7 +925,7 @@
     <string name="verified_by_you">Benim tarafımdan tanıtıldı</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">%1$s için ayarlama değiştirildi.</string>
-    <string name="verified_contact_required_explain">Uçtan uca şifrelemeyi güvencelemek için bu öbeğe yalnızca yeşil bir doğrulama imi olan kişileri ekleyebilirsiniz.\n\nDoğrulanmayan kişilerle kişisel olarak tanışabilir ve onları tanıtmak için onların QR kodunu tarayabilirsiniz.</string>
+    <string name="verified_contact_required_explain">Uçtan uca şifrelemeyi güvencelemek için bu öbeğe yalnızca yeşil bir onay imi olan kişileri ekleyebilirsiniz.\n\nDoğrulanmayan kişilerle kişisel olarak tanışabilir ve onları tanıtmak için onların QR kodunu tarayabilirsiniz.</string>
     <string name="copy_qr_data_success">QR URL\'si panoya kopyalandı</string>
     <string name="mailto_dialog_header_select_chat">İletiyi göndermek için sohbet seçin</string>
     <!-- first placeholder is the name of the chat -->
@@ -1088,7 +1088,7 @@
 
 
     <!-- device messages for updates -->
-    <string name="update_1_42_common">Ne yeni:\n\n💌 bire bir sohbetler artık tanıtılan kişiler için uçtan uca şifrelemeyi güvenceler\n\n😌 Herkesin basitliği için bu kişileri ve sohbetleri yeşil onay işaretleriyle işaretliyoruz\n\n👥 olanaklıysa, öbekler güvencelenen uçtan uca şifrelemeyle otomatik olarak oluşturulur\n\n🔄 Kabul edilen/Engellenen, Arşivlenen, Sabitlenen, Sessize Al aygıtlarınız arasında eşzamanlanır</string>
+    <string name="update_1_42_common">Ne yeni:\n\n💌 bire bir sohbetler artık yeşil bir onay kutusu bulunan kişiler için uçtan uca şifrelemeyi güvenceler\n\n😌 Herkesin basitliği için bu sohbetleri yeşil onay imleriyle imliyoruz\n\n👥 olanaklıysa, otomatik olarak öbekler güvencelenen uçtan uca şifrelemeyle oluşturulur\n\n🔄 Kabul edilen/Engellenen, Arşivlenen, Sabitlenen, Sessize Alınan aygıtlarınız arasında eşzamanlanır</string>
     <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
     <string name="update_1_42_android">Kamera, sesli iletiler, tümünü yedekleme, ekran okuyucusu, hesap başına duvar kâğıtları, galeride tümünü seç, webxdc manzarasındaki daha fazla iyileştirmeye dikkat edin … ya da onları %1$s adresinde okuyun</string>
 </resources>

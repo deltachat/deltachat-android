@@ -17,6 +17,8 @@
 package org.thoughtcrime.securesms;
 
 
+import static org.thoughtcrime.securesms.util.RelayUtil.isRelayingMessageContent;
+
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -26,16 +28,6 @@ import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.loader.app.LoaderManager;
-import androidx.loader.content.Loader;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.view.ActionMode;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.util.Log;
 import android.util.SparseIntArray;
 import android.view.LayoutInflater;
@@ -45,6 +37,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.ActionMode;
+import androidx.fragment.app.Fragment;
+import androidx.loader.app.LoaderManager;
+import androidx.loader.content.Loader;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
@@ -60,7 +62,6 @@ import org.thoughtcrime.securesms.contacts.NewContactActivity;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.qr.QrActivity;
-import org.thoughtcrime.securesms.util.IntentUtils;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
@@ -68,8 +69,6 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
-
-import static org.thoughtcrime.securesms.util.RelayUtil.isRelayingMessageContent;
 
 /**
  * Fragment for selecting a one or more contacts from a list.
@@ -364,7 +363,7 @@ public class ContactSelectionListFragment extends    Fragment
         if (isSelectVerfied() && !contact.getDcContact().isVerified()) {
           new AlertDialog.Builder(getActivity())
             .setMessage(R.string.verified_contact_required_explain)
-            .setNeutralButton(R.string.learn_more, (d, w) -> IntentUtils.showBrowserIntent(getActivity(), "https://staging.delta.chat/746/en/help#howtoe2ee"))
+            .setNeutralButton(R.string.learn_more, (d, w) -> DcHelper.openHelp(getActivity(), "#howtoe2ee"))
             .setNegativeButton(R.string.qrscan_title, (d, w) -> getActivity().startActivity(new Intent(getActivity(), QrActivity.class)))
             .setPositiveButton(R.string.ok, null)
             .setCancelable(true)
