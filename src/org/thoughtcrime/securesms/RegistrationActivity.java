@@ -14,9 +14,9 @@ import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SEND_USER;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SERVER_FLAGS;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SOCKS5_ENABLED;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SOCKS5_HOST;
-import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SOCKS5_PASSWORD;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SOCKS5_PORT;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SOCKS5_USER;
+import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SOCKS5_PASSWORD;
 import static org.thoughtcrime.securesms.connect.DcHelper.getContext;
 import static org.thoughtcrime.securesms.service.IPCAddAccountsService.ACCOUNT_DATA;
 
@@ -55,6 +55,7 @@ import com.b44t.messenger.DcProvider;
 import com.b44t.messenger.util.concurrent.ListenableFuture;
 import com.b44t.messenger.util.concurrent.SettableFuture;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 import org.thoughtcrime.securesms.connect.AccountManager;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
@@ -63,6 +64,7 @@ import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.IntentUtils;
 import org.thoughtcrime.securesms.util.Util;
+import org.thoughtcrime.securesms.util.task.ProgressDialogAsyncTask;
 import org.thoughtcrime.securesms.util.views.ProgressDialog;
 
 import java.lang.ref.WeakReference;
@@ -168,6 +170,13 @@ public class RegistrationActivity extends BaseActionBarActivity implements DcEve
         viewLogText.setOnClickListener((view) -> showLog());
         boolean isConfigured = DcHelper.isConfigured(getApplicationContext());
         if (isConfigured) {
+            TextInputLayout passwordLayout = findViewById(R.id.password);
+            passwordLayout.setPasswordVisibilityToggleEnabled(false);
+            TextInputLayout smtpPasswordLayout = findViewById(R.id.smtp_password);
+            smtpPasswordLayout.setPasswordVisibilityToggleEnabled(false);
+            TextInputLayout proxyPasswordLayout = findViewById(R.id.socks5_password);
+            proxyPasswordLayout.setPasswordVisibilityToggleEnabled(false);
+
             TextInputEditText imapLoginInput = findViewById(R.id.imap_login_text);
 
             String email = DcHelper.get(this, CONFIG_ADDRESS);
