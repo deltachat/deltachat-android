@@ -219,7 +219,9 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Emoj
 
     passwordAccountSettings.setOnClickListener(view -> {
       boolean result = ScreenLockUtil.applyScreenLock(this, getString(R.string.pref_password_and_account_settings), getString(R.string.enter_system_secret_to_continue), ScreenLockUtil.REQUEST_CODE_CONFIRM_CREDENTIALS);
-      if (!result) { openRegistrationActivity(); }
+      if (!result) {
+        openRegistrationActivity();
+      }
     });
 
     if (fromWelcome) {
