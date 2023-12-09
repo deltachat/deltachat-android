@@ -43,6 +43,7 @@ import org.thoughtcrime.securesms.profiles.AvatarHelper;
 import org.thoughtcrime.securesms.profiles.ProfileMediaConstraints;
 import org.thoughtcrime.securesms.scribbles.ScribbleActivity;
 import org.thoughtcrime.securesms.util.Prefs;
+import org.thoughtcrime.securesms.util.ScreenLockUtil;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
 import java.io.File;
@@ -162,7 +163,16 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Emoj
       case Crop.REQUEST_CROP:
         setAvatarView(Crop.getOutput(data));
         break;
+
+      case ScreenLockUtil.REQUEST_CODE_CONFIRM_CREDENTIALS:
+        openRegistrationActivity();
+        break;
     }
+  }
+
+  private void openRegistrationActivity() {
+    Intent intent = new Intent(this, RegistrationActivity.class);
+    startActivity(intent);
   }
 
   private void setAvatarView(Uri output) {
@@ -208,8 +218,10 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Emoj
     this.statusView   = ViewUtil.findById(this, R.id.status_text);
 
     passwordAccountSettings.setOnClickListener(view -> {
-      Intent intent = new Intent(this, RegistrationActivity.class);
-      startActivity(intent);
+      boolean result = ScreenLockUtil.applyScreenLock(this, getString(R.string.pref_password_and_account_settings), getString(R.string.enter_system_secret_to_continue), ScreenLockUtil.REQUEST_CODE_CONFIRM_CREDENTIALS);
+      if (!result) {
+        openRegistrationActivity();
+      }
     });
 
     if (fromWelcome) {
