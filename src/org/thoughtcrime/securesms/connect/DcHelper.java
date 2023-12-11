@@ -154,7 +154,6 @@ public class DcHelper {
     dcContext.setStockTranslation(10, context.getString(R.string.video));
     dcContext.setStockTranslation(11, context.getString(R.string.audio));
     dcContext.setStockTranslation(12, context.getString(R.string.file));
-    dcContext.setStockTranslation(13, context.getString(R.string.pref_default_status_text));
     dcContext.setStockTranslation(23, context.getString(R.string.gif));
     dcContext.setStockTranslation(24, context.getString(R.string.encrypted_message));
     dcContext.setStockTranslation(29, context.getString(R.string.systemmsg_cannot_decrypt));
