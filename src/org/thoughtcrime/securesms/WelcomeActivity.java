@@ -12,6 +12,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.text.util.Linkify;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -19,6 +20,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 
 import com.b44t.messenger.DcContext;
@@ -37,7 +39,6 @@ import org.thoughtcrime.securesms.qr.QrCodeHandler;
 import org.thoughtcrime.securesms.qr.RegistrationQrActivity;
 import org.thoughtcrime.securesms.service.GenericForegroundService;
 import org.thoughtcrime.securesms.service.NotificationController;
-import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
 import org.thoughtcrime.securesms.util.StorageUtil;
 import org.thoughtcrime.securesms.util.StreamUtil;
 import org.thoughtcrime.securesms.util.Util;
@@ -65,12 +66,6 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
     private NotificationController notificationController;
 
     @Override
-    protected void onPreCreate() {
-      dynamicTheme = new DynamicNoActionBarTheme();
-      super.onPreCreate();
-    }
-
-    @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         setContentView(R.layout.welcome_activity);
@@ -86,6 +81,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
         backupButton.setOnClickListener((view) -> startImportBackup());
 
         registerForEvents();
+        initializeActionBar();
 
         if (!DcHelper.hasAnyConfiguredContext(this)) {
           Intent intent = new Intent();
@@ -98,6 +94,14 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
         }
 
         handleIntent();
+    }
+
+    protected void initializeActionBar() {
+        ActionBar supportActionBar = getSupportActionBar();
+        if (supportActionBar == null) throw new AssertionError();
+
+        boolean canGoBack = AccountManager.getInstance().canRollbackAccountCreation(this);
+        supportActionBar.setDisplayHomeAsUpEnabled(canGoBack);
     }
 
     private void registerForEvents() {
@@ -117,6 +121,19 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
                 qrCodeHandler.handleQrData(uri.toString());
             }
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        super.onOptionsItemSelected(item);
+
+        switch (item.getItemId()) {
+        case android.R.id.home:
+            onBackPressed();
+            return true;
+        }
+
+        return false;
     }
 
     @Override
