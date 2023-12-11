@@ -4,7 +4,9 @@
     <string name="app_name">دلتاچت</string>
     <string name="ok">تأیید</string>
     <string name="cancel">لغو</string>
-   <string name="clear_search">پاک کردن جست‌وجو</string>
+   <!-- the word "or" to separate blocks in the user interface that are mutually exclusive -->
+    <string name="or_separator">یا</string>
+    <string name="clear_search">پاک کردن جست‌وجو</string>
     <string name="yes">بله</string>
     <string name="no">خیر</string>
     <string name="select">انتخاب</string>
@@ -32,7 +34,10 @@
     <!-- this string is deprecated; the new wording is "introduced by ..." -->
     <string name="verified">احراز هویت شده</string>
     <string name="close">بستن</string>
+    <string name="close_window">بستن پنجره</string>
     <string name="forward">هدایت</string>
+    <string name="create">ایجاد</string>
+    <string name="later">بعدا</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">ارسال مجدد</string>
     <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
@@ -143,6 +148,7 @@
     <string name="gif">Gif</string>
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">استیکر</string>
+    <string name="add_to_sticker_collection">افزودن به مجموعه استیکر</string>
     <string name="images">تصاویر</string>
     <string name="audio">صدا</string>
     <string name="voice_message">پیام صوتی</string>
@@ -231,6 +237,7 @@
     <string name="menu_all_media">همه رسانه‌ها</string>
     <!-- Command to jump to the original message corresponding to a gallery image or document -->
     <string name="show_in_chat">نمایش در گپ</string>
+    <string name="show_app_in_chat">نمایش برنامه در گفتگو</string>
     <string name="menu_share">اشتراک</string>
     <!-- Verb "to block sth." usually a mailing list or a contact, not a noun -->
     <string name="block">مسدود کردن</string>
@@ -279,6 +286,8 @@
     <string name="source_code">کد منبع</string>
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">افزودن به صفحه خانه</string>
+    <string name="donate">حمایت مالی</string>
+
     <string name="mute_for_one_hour">ساکت کردن به مدت۱ ساعت</string>
     <string name="mute_for_two_hours">ساکت کردن به مدت ۲ ساعت</string>
     <string name="mute_for_one_day">ساکت کردن به مدت ۱ روز</string>
@@ -437,6 +446,8 @@ https://meet.jit.si/$ROOM
 
     <!-- search -->
     <string name="search">جستجو</string>
+    <string name="search_in_chat">جستجو در گفتگو</string>
+    <string name="search_files">جستجوی پرونده‌ها</string>
     <string name="search_explain">جست‌وجو برای گپ‌ها، مخاطبان و پیام‌ها</string>
     <string name="search_no_result_for_x">نتیجه‌ای برای \"%s\" پیدا نشد</string>
 
@@ -452,6 +463,7 @@ https://meet.jit.si/$ROOM
     <string name="group_self_not_in_group">برای این کار باید عضو گروه باشید.</string>
     <string name="profile_encryption">رمزگذاری</string>
     <string name="profile_shared_chats">گپ‌های هم‌رسانده</string>
+    <string name="related_chats">گفتگوهای مرتبط</string>
     <string name="tab_contact">مخاطب</string>
     <string name="tab_group">گروه</string>
     <string name="tab_gallery">گالری</string>
@@ -715,6 +727,9 @@ https://meet.jit.si/$ROOM
     <string name="emoji_symbols">نمادها</string>
     <string name="emoji_flags">پرچم‌ها</string>
 
+    <!-- Reactions -->
+    <string name="reactions">واکنش‌ها</string>
+
     <!-- automatically delete message -->
     <string name="delete_old_messages">پاک کردن پیام‌های قدیمی</string>
     <string name="autodel_device_title">پاک کردن پیام‌ها از دستگاه</string>
@@ -823,6 +838,8 @@ https://meet.jit.si/$ROOM
     <string name="ephemeral_timer_weeks_by_you">زمان‌سنج ناپدید شدن پیام‌ها را روی %1$s هفته تنظیم کردید.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_weeks_by_other">زمان‌سنج ناپدید شدن پیام‌ها توسط %2$s روی %1$s هفته تنظیم شد.</string>
+    <string name="learn_more">بیشتر بدانید</string>
+
     <string name="devicemsg_self_deleted">شما گپ «پیام‌های ذخیره شده» را پاک کردید.\n\nℹ️ برای استفادهٔ دوباره از «پیام‌های ذخیره شده» کافی است یک گپ جدید با خودتان درست کنید. </string>
     <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
     <string name="devicemsg_storage_exceeding">هشدار⚠️، میزان فضای در دسترس ارایه‌دهنده شما در حال تمام شدن است. %1$s از %% استفاده شده است. 
@@ -906,6 +923,11 @@ https://meet.jit.si/$ROOM
     <string name="notify_name_and_message">نام و پیام</string>
     <string name="notify_name_only">فقط نام</string>
     <string name="notify_no_name_or_message">بدون نام یا پیام</string>
+    <string name="notifications_disabled">آگاه‌سازی‌ها غیرفعال شد</string>
+    <string name="new_messages">پیام‌های جدید</string>
+    <string name="n_messages_in_m_chats">%1$d پیام در %2$d گفتگو</string>
+
+
     <!-- permissions -->
     <string name="perm_required_title">مجوز لازم است</string>
     <string name="perm_continue">ادامه</string>

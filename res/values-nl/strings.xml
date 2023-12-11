@@ -83,7 +83,7 @@
     <string name="error_x">Fout: %1$s</string>
     <string name="no_app_to_handle_data">Er is geen app die deze inhoud kan openen.</string>
     <string name="no_browser_installed">Er is geen webbrowser geïnstalleerd.</string>
-    <string name="file_not_found">%1$s niet worden gevonden.</string>
+    <string name="file_not_found">‘%1$s’ kan niet worden gevonden.</string>
     <string name="copied_to_clipboard">Gekopieerd naar het klembord.</string>
     <string name="contacts_headline">Contactpersonen</string>
     <string name="email_address">E-mailadres</string>
@@ -213,7 +213,7 @@
     <string name="menu_send">Versturen</string>
     <string name="menu_toggle_keyboard">Emojitoetsenbord tonen/verbergen</string>
     <string name="menu_edit_group">Groep aanpassen</string>
-    <string name="menu_group_name_and_image">Groepsnaam en -afbeelding</string>
+    <string name="menu_group_name_and_image">Groepsnaam en -foto</string>
     <string name="menu_show_global_map">Alle locaties tonen</string>
     <string name="menu_archive_chat">Gesprek archiveren</string>
     <string name="menu_unarchive_chat">Gesprek de-archiveren</string>
@@ -390,7 +390,7 @@
     <string name="chat_new_group_hint">Stel het eerste bericht op zodat anderen binnen deze groep kunnen reageren.</string>
     <string name="chat_record_slide_to_cancel">Veeg opzij om te annuleren</string>
     <string name="chat_record_explain">Houdt ingedrukt om een spraakbericht op te nemen; laat los om te versturen</string>
-    <string name="chat_no_chats_yet_title">Je Postvak IN is leeg.\nDruk op ‘+’ om een gesprek te beginnen.</string>
+    <string name="chat_no_chats_yet_title">Je postvak is leeg.\nDruk op ‘+’ om een gesprek te beginnen.</string>
     <string name="chat_no_chats_yet_hint">Je kunt een gesprek voeren met andere Delta Chat-gebruikers en via alle soorten e-mailadressen.</string>
     <string name="chat_all_archived">Alle gesprekken zijn gearchiveerd.\nDruk op ‘+’ om een gesprek te beginnen.</string>
     <string name="chat_share_with_title">Delen met</string>
@@ -459,9 +459,9 @@
 
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">Groepsnaam</string>
-    <string name="group_avatar">Groepsafbeelding</string>
-    <string name="remove_group_image">Groepsafbeelding verwijderen</string>
-    <string name="change_group_image">Groepsafbeelding wijzigen</string>
+    <string name="group_avatar">Groepsfoto</string>
+    <string name="remove_group_image">Groepsfoto verwijderen</string>
+    <string name="change_group_image">Groepsfoto wijzigen</string>
     <string name="group_create_button">Groep aanmaken</string>
     <string name="group_please_enter_group_name">Geef de groep een naam.</string>
     <string name="group_add_members">Deelnemers toevoegen</string>
@@ -553,12 +553,12 @@
     <string name="login_explain">Log in met een bestaand e-mailaccount.</string>
     <string name="login_subheader">Bij bekende e-mailproviders gaat het instellen vrijwel geheel automatisch. Soms moet je imap inschakelen in de webversie van je e-mailclient. Vraag je e-mailprovider of vrienden om hulp.</string>
     <string name="login_no_servers_hint">Er is geen Delta Chat-server; jóuw gegevens blijven op jóuw apparaat.</string>
-    <string name="login_inbox">Postvak IN</string>
+    <string name="login_inbox">Postvak in</string>
     <string name="login_imap_login">IMAP-inlognaam</string>
     <string name="login_imap_server">IMAP-server</string>
     <string name="login_imap_port">IMAP-poort</string>
     <string name="login_imap_security">IMAP-beveiliging</string>
-    <string name="login_outbox">Postvak UIT</string>
+    <string name="login_outbox">Postvak uit</string>
     <string name="login_smtp_login">SMTP-inlognaam</string>
     <string name="login_smtp_password">SMTP-wachtwoord</string>
     <string name="login_smtp_server">SMTP-server</string>
@@ -579,11 +579,11 @@
     <string name="login_error_server">Voer een geldig(e) IP-adres/server in</string>
     <string name="login_error_port">Voer een geldig poortnummer in (1-65535)</string>
     <string name="login_error_required_fields">Voer een geldig e-mailadres en wachtwoord in</string>
-    <string name="import_backup_title">Back-up importeren</string>
-    <string name="import_backup_ask">Back-up aangetroffen in \"%1$s\".\n\nWil je de instellingen en gegevens daaruit importeren?</string>
-    <string name="import_backup_no_backup_found">Geen back-ups aangetroffen.\n\nKopieer de back-up naar \"%1$s\" en probeer het opnieuw of druk op \"Aan de slag\" om het normale instelproces te doorlopen.</string>
+    <string name="import_backup_title">Reservekopie importeren</string>
+    <string name="import_backup_ask">Er is een reservekopie aangetroffen in ‘%1$s’.\n\nWil je de instellingen en gegevens daaruit importeren?</string>
+    <string name="import_backup_no_backup_found">Er zijn geen reservekopieën aangetroffen.\n\nKopieer de reservekopie naar ‘%1$s’ en probeer het opnieuw of druk op ‘Aan de slag’ om het instelproces te doorlopen.</string>
     <!-- Translators: %1$s will be replaced by the e-mail address -->
-    <string name="login_error_cannot_login">Kan niet inloggen als \"%1$s\". Controleer het e-mailadres en wachtwoord.</string>
+    <string name="login_error_cannot_login">Het inloggen als ‘%1$s’ is mislukt. Controleer je e-mailadres en wachtwoord.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Ongeldige certificaten accepteren</string>
     <string name="used_settings">Gebruikte instellingen:</string>
@@ -604,7 +604,7 @@
     <string name="forward_to">Doorsturen naar…</string>
     <string name="share_multiple_attachments">Wil je %1$d bestanden delen in het gekozen gesprek?\n\nDe bestanden worden ongewijzigd verstuurd in oorspronkelijke grootte.</string>
     <string name="share_multiple_attachments_multiple_chats">Wil je %1$d bestand(en) delen in %2$d gesprekken?\n\nDe bestanden worden ongewijzigd verstuurd in oorspronkelijke grootte.</string>
-    <string name="share_text_multiple_chats">Wil je deze tekst versturen naar %1$d gesprekken?\n\n\"%2$s\"</string>
+    <string name="share_text_multiple_chats">Wil je deze tekst versturen naar %1$d gesprekken?\n\n“%2$s”</string>
     <string name="share_abort">Het delen is afgebroken wegens ontbrekende rechten.</string>
 
 
@@ -669,15 +669,15 @@
     <string name="pref_save_log_failed">Kan logboek niet opslaan</string>
     <string name="pref_log_header">Logboek</string>
     <string name="pref_other">Overig</string>
-    <string name="pref_backup">Back-up</string>
-    <string name="pref_backup_explain">Gesprekken back-uppen naar externe opslag</string>
-    <string name="pref_backup_export_explain">Een back-up helpt je om een nieuwe installatie in te stellen op dit of een ander apparaat.\n\nDe back-up bevat alle berichten, contactpersonen, gesprekken en je eind-tot-eindinstellingen. Bewaar het back-upbestand op een veilige plaats of verwijder het zo snel mogelijk.</string>
+    <string name="pref_backup">Reservekopie</string>
+    <string name="pref_backup_explain">Gesprekken bewaren op externe opslag</string>
+    <string name="pref_backup_export_explain">Met een reservekopie kun je een nieuwe installatie instellen op dit of een ander apparaat.\n\nEen reservekopie bevat alle berichten, contactpersonen, gesprekken en je eind-tot-eindversleuteling. Bewaar het reservekopiebestand op een veilige plaats of verwijder het zo snel mogelijk.</string>
     <!-- the placeholder will be replaced by the name of the account's email address -->
     <string name="pref_backup_export_x">‘%1$s’ exporteren</string>
     <!-- the placeholder will be replaced by the number of accounts to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">%1$d accounts exporteren</string>
-    <string name="pref_backup_export_start_button">Nu back-uppen</string>
-    <string name="pref_backup_written_to_x">De back-up is opgeslagen in ‘%1$s’.</string>
+    <string name="pref_backup_export_start_button">Reservekopie maken</string>
+    <string name="pref_backup_written_to_x">De reservekopie is opgeslagen in ‘%1$s’.</string>
     <string name="pref_managekeys_menu_title">Sleutels beheren</string>
     <string name="pref_managekeys_export_secret_keys">Geheime sleutels exporteren</string>
     <string name="pref_managekeys_export_explain">Geheime sleutels exporteren naar ‘%1$s’?</string>
@@ -695,7 +695,7 @@
     <string name="pref_send_copy_to_self">Kopie versturen naar mijzelf</string>
     <string name="pref_send_copy_to_self_explain">Vereist bij gebruik van dit account op meerdere apparaten.</string>
     <string name="pref_auto_folder_moves">Automatisch verplaatsen naar DeltaChat-map</string>
-    <string name="pref_auto_folder_moves_explain">Gesprekken worden verplaatst om je Postvak IN netjes te houden</string>
+    <string name="pref_auto_folder_moves_explain">Gesprekken worden verplaatst om je postvak netjes te houden</string>
     <string name="pref_only_fetch_mvbox_title">Alleen DeltaChat-map controleren</string>
     <string name="pref_only_fetch_mvbox_explain">Negeer andere mappen. Hiervoor is vereist dat je server gesprekken kan verplaatsen naar de DeltaChat-map.</string>
     <string name="pref_show_emails">Klassieke e-mails tonen</string>
@@ -798,9 +798,9 @@
     <string name="group_name_changed_by_you">Je hebt de groepsnaam gewijzigd. Oude naam: “%1$s” - Nieuwe naam: “%2$s”</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
     <string name="group_name_changed_by_other">De groepsnaam is gewijzigd door %3$s. Oude naam: “%1$s” - Nieuwe naam: “%2$s”</string>
-    <string name="group_image_changed_by_you">Je hebt de groepsafbeelding gewijzigd.</string>
+    <string name="group_image_changed_by_you">Je hebt de groepsfoto gewijzigd.</string>
     <!-- %1$s will be replaced by name and address of the contact who did the action -->
-    <string name="group_image_changed_by_other">De groepsafbeelding is gewijzigd door %1$s.</string>
+    <string name="group_image_changed_by_other">De groepsfoto is gewijzigd door %1$s.</string>
     <!-- %1$s will be replaced by name and address of the contact added to the group -->
     <string name="member_x_added">‘%1$s’ is toegevoegd.</string>
     <!-- %1$s will be replaced by name and address of the contact added to the group -->
@@ -815,9 +815,9 @@
     <string name="group_left_by_you">Je hebt de groep verlaten.</string>
     <!-- "left" in the meaning of "exited"; %1$s will be replaced by name and address of the contact leaving the group -->
     <string name="group_left_by_other">De groep is verlaten door %1$s.</string>
-    <string name="group_image_deleted_by_you">Je hebt de groepsafbeelding verwijderd.</string>
+    <string name="group_image_deleted_by_you">Je hebt de groepsfoto verwijderd.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
-    <string name="group_image_deleted_by_other">De groepsafbeelding is verwijderd door %1$s.</string>
+    <string name="group_image_deleted_by_other">De groepfoto is verwijderd door %1$s.</string>
     <string name="location_enabled_by_you">Je hebt locatiedeling ingeschakeld.</string>
     <!-- %1$s will be replaced by name and address of the contact -->
     <string name="location_enabled_by_other">Locatiedeling is ingeschakeld door %1$s.</string>
@@ -858,15 +858,15 @@
     <string name="ephemeral_timer_weeks_by_other">De tijdklok van verdwijnende berichten is door %2$s ingesteld op %1$s weken.</string>
     <!-- this may be shown instead of the chat's input field, with buttons "More Info" and "OK" -->
     <string name="chat_protection_broken">%1$s heeft een bericht verstuurd vanaf een ander apparaat.</string>
-    <string name="chat_protection_enabled_tap_to_learn_more">Berichten zijn vanaf nu gegarandeerd van eind-tot-eindversleuteling. Druk hier voor meer informatie.</string>
-    <string name="chat_protection_enabled_explanation">Alle berichten in dit gesprek zijn vanaf nu gegarandeerd van eind-tot-eind versleuteld.\n\nMet eind-tot-eindversleuteling blijven berichten tussen jou en je gesprekspartners geheim - zelfs je e-mailprovider kan ze niet uitlezen.</string>
+    <string name="chat_protection_enabled_tap_to_learn_more">Berichten zijn vanaf nu gegarandeerd van eind-tot-eindversleuteling voorzien. Druk hier voor meer informatie.</string>
+    <string name="chat_protection_enabled_explanation">Alle berichten in dit gesprek zijn vanaf nu gegarandeerd van eind-tot-eindversleuteling voorzien.\n\nMet behulp van deze versleuteling blijven berichten tussen jou en je gesprekspartners geheim - zelfs je e-mailprovider kan ze niet uitlezen.</string>
     <string name="chat_protection_broken_tap_to_learn_more">%1$s heeft een bericht verstuurd vanaf een ander apparaat. Druk hier voor meer informatie.</string>
     <string name="chat_protection_broken_explanation">Eind-tot-eindversleuteling kan niet meer worden gegarandeerd, omdat %1$s Delta Chat opnieuw heeft geïnstalleerd of een bericht vanaf een ander apparaat heeft verstuurd.\n\nMaak een afspraak met hem/haar en scan de QR-code opnieuw om eind-tot-eindversleuteling weer in te schakelen.</string>
     <string name="learn_more">Meer informatie</string>
 
     <string name="devicemsg_self_deleted">Je hebt het gesprek ‘Bewaarde berichten’ verwijderd.\n\nℹ️ Als je weer gebruik wilt maken van deze functie, begin dan een nieuw gesprek met jezelf.</string>
     <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
-    <string name="devicemsg_storage_exceeding">⚠️ De opslagruimte die je provider je biedt is bijna overschreden - momenteel heb je %1$s%% ervan in gebruik.\n\nAls je alle ruimte verbruikt hebt, kun je mogelijk geen berichten meer ontvangen.\n\n👉 Kijk of je oude gegevens kunt verwijderen in de webclient van je provider. Overweeg ook ‘Instellingen --> Oude berichten verwijderen’ in te schakelen. Je kunt je huidige gebruik te allen tijde bekijken in ‘Instellingen --> Verbindingen’.</string>
+    <string name="devicemsg_storage_exceeding">⚠️ De opslagruimte die je provider biedt is bijna overschreden. Momenteel heb je %1$s%% ervan in gebruik.\n\nAls je geen ruimte meer hebt, kun je mogelijk geen berichten meer ontvangen.\n\n👉 Kijk of je oude gegevens kunt verwijderen in de webclient van je provider. Overweeg ook ‘Instellingen → Oude berichten verwijderen’ in te schakelen. Je kunt je huidige gebruik te allen tijde bekijken via ‘Instellingen → Verbindingen’.</string>
     <!-- %1%s will be replaced by date and time in some human-readable format -->
     <string name="devicemsg_bad_time">⚠️ De datum en tijd van je apparaat lijken niet te kloppen (%1$s).\n\nVerzet je klok ⏰🔧 om er zeker van te zijn dat je berichten kunt ontvangen.</string>
     <string name="devicemsg_update_reminder">⚠️ Je versie van Delta Chat is mogelijk verouderd.\n\nDit kan problemen veroorzaken aangezien je gesprekspartners nieuwe versies gebruiken. Bovendien mis je hierdoor enkele nieuwe functies. 😳\nGa naar https://get.delta.chat of de appwinkel van je apparaat om te controleren op updates.</string>
@@ -878,9 +878,9 @@
     <string name="qr_code">QR-code</string>
     <string name="load_qr_code_as_image">QR-code als afbeelding laden</string>
     <string name="qrscan_title">QR-code scannen</string>
-    <string name="qrscan_hint">Plaatst je camera boven de QR-code</string>
+    <string name="qrscan_hint">Houd je camera boven de QR-code</string>
     <string name="qrscan_failed">De QR-code kan niet worden ontcijferd</string>
-    <string name="qrscan_ask_join_group">Wil je deelnemen aan de groep \"%1$s\"?</string>
+    <string name="qrscan_ask_join_group">Wil je deelnemen aan de groep ‘%1$s’?</string>
     <string name="qrscan_fingerprint_mismatch">De gescande vingerafdruk komt niet overeen met de vorige voor %1$s</string>
     <string name="qrscan_no_addr_found">Deze QR-code bevat een vingerafdruk, maar geen e-mailadres.\n\nVoor out-of-bandgoedkeuring, moet je eerst een beveiligde verbinding opzetten met de ontvanger.</string>
     <string name="qrscan_contains_text">Gescande QR-codetekst:\n\n %1$s</string>
@@ -907,7 +907,7 @@
     <string name="qrshow_join_contact_no_connection_toast">Geen internetverbinding; kan QR-codes niet instellen.</string>
     <string name="qraccount_ask_create_and_login">Wil je een nieuw e-mailadres aanmaken op ‘%1$s’ en daarmee inloggen?</string>
     <string name="qraccount_ask_create_and_login_another">Wil je een nieuw e-mailadres aanmaken op ‘%1$s’ en daarmee inloggen?\n\nJe reeds aanwezige account wordt niet verwijderd. Druk op de knop ‘Ander account kiezen’ om tussen accounts te schakelen.</string>
-    <string name="qraccount_success_enter_name">Het inloggen is gelukt - je e-mailadres is ‘%1$s’.\n\nAls je wilt, kun je een naam en profielafbeelding opgeven die worden getoond aan de mensen waarmee je communiceert.</string>
+    <string name="qraccount_success_enter_name">Het inloggen is gelukt - je e-mailadres is ‘%1$s’.\n\nAls je wilt kun je nu een naam en profielfoto instellen. Je naam en foto worden getoond aan de mensen waarmee je communiceert.</string>
     <string name="qraccount_qr_code_cannot_be_used">De gescande QR-code kan niet worden gebruikt om een nieuw account in te stellen.</string>
     <string name="qraccount_use_on_new_install">De gescande QR-code is voor het instellen van een nieuw account. Je kunt deze direct scannen na het (opnieuw) installeren van Delta Chat.</string>
     <!-- the placeholder will be replaced by the e-mail address of the account -->
@@ -915,9 +915,9 @@
     <!-- the placeholder will be replaced by the e-mail address of the account -->
     <string name="qrlogin_ask_login_another">Wil je inloggen als ‘%1$s’?\n\nJe reeds aanwezige account wordt niet verwijderd. Druk op de knop ‘Ander account kiezen’ om tussen accounts te schakelen.</string>
     <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
-    <string name="secure_join_started">%1$s heeft je uitgenodigd voor deze groep.\n\nEr wordt gewacht op antwoord van het apparaat %2$s…</string>
+    <string name="secure_join_started">%1$s heeft je uitgenodigd voor deze groep.\n\nEr wordt gewacht op antwoord van het apparaat van %2$s…</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
-    <string name="secure_join_replies">%1$s heefn geantwoord en wacht op toelating tot de groep…</string>
+    <string name="secure_join_replies">%1$s heeft geantwoord en wacht op toelating tot de groep…</string>
     <string name="contact_verified">%1$s is goedgekeurd.</string>
     <string name="contact_not_verified">Er kan geen eind-tot-eindversleuteling met %1$s worden gegarandeerd.</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
@@ -948,7 +948,7 @@
 
 
     <!-- permissions -->
-    <string name="perm_required_title">Machtiging vereist</string>
+    <string name="perm_required_title">Recht vereist</string>
     <string name="perm_continue">Doorgaan</string>
     <string name="perm_explain_access_to_camera_denied">Delta Chat wil foto\'s en video\'s kunnen maken. Ga naar de app-instellingen, kies ‘Rechten’ en schakel ‘Camera’ in.</string>
     <string name="perm_explain_access_to_mic_denied">Delta Chat wil spraakberichten versturen. Ga naar de app-instellingen, kies ‘Rechten’ en schakel ‘Microfoon’ in.</string>
@@ -982,7 +982,7 @@
     <string name="global_menu_edit_cut_desktop">Knippen</string>
     <string name="global_menu_edit_copy_desktop">Kopiëren</string>
     <string name="global_menu_edit_paste_desktop">Plakken</string>
-    <string name="global_menu_view_desktop">Bekijken</string>
+    <string name="global_menu_view_desktop">Beeld</string>
     <string name="global_menu_view_floatontop_desktop">Altijd bovenaan</string>
     <string name="global_menu_view_developer_desktop">Ontwikkelaar</string>
     <string name="global_menu_view_developer_tools_desktop">Ontwikkelaarshulpmiddelen</string>
@@ -1003,7 +1003,7 @@
     <string name="save_desktop">Opslaan</string>
     <string name="name_desktop">Naam</string>
     <string name="select_group_image_desktop">Kies een groepsafbeelding</string>
-    <string name="export_backup_desktop">Back-up exporteren</string>
+    <string name="export_backup_desktop">Reservekopie exporteren</string>
     <string name="autocrypt_correct_desktop">Autocrypt-instellingen overgedragen!</string>
     <string name="forget_login_confirmation_desktop">Wil je dit account verwijderen? Alles wordt verwijderd: je eind-tot-eindinstellingen, contactpersonen, gesprekken, berichten en media. Deze actie kan niet ongedaan worden gemaakt.</string>
     <string name="account_info_hover_tooltip_desktop2">E-mail: %1$s\nGrootte: %2$s\nAccount-id: %3$s</string>
@@ -1051,9 +1051,9 @@
     <string name="open_settings">Open instellingen</string>
     <!-- iOS device contact alert -->
     <string name="import_device_contacts">Importeer lokale contactpersonen</string>
-    <string name="import_device_contacts_hint">Voor het voeren van gesprekken met lokale contactpersonen is contactpersoontoegang vereist. Open de systeeminstellingen en verleen deze toegang.</string>
+    <string name="import_device_contacts_hint">Voor het voeren van gesprekken met contactpersonen is toegang vereist. Open de systeeminstellingen en verleen deze toegang.</string>
     <!-- iOS notification settings -->
-    <string name="disabled_in_dc">Uitgenschakeld in Delta Chat</string>
+    <string name="disabled_in_dc">Uitgeschakeld in Delta Chat</string>
     <string name="disabled_in_system_settings">Uitgeschakeld in systeeminstellingen</string>
     <string name="bg_app_refresh_disabled">App op de achtergrond vernieuwen is uitgeschakeld in de systeeminstellingen</string>
     <!-- iOS connectivity view, Adjective, used eg. as "Notifications: Delayed" -->
@@ -1079,7 +1079,7 @@
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="pref_background_notifications">Achtergrondmeldingen</string>
     <string name="pref_background_notifications_explain">Zet een achtergrondverbinding op naar je server en negeert alle accu-optimalisaties.</string>
-    <string name="pref_background_notifications_rationale">Om een achtergrondverbinding naar je server op te zetten, dien je in de volgende stap alle accu-optimalisaties te negeren.\n\nDelta Chat gebruikt weinig systeembronnen en verhoogt nauwelijks je accuverbruik.</string>
+    <string name="pref_background_notifications_rationale">Om een achtergrondverbinding naar je server op te zetten, dien je in de volgende stap alle accu-optimalisaties te negeren.\n\nDelta Chat gebruikt weinig systeembronnen en verhoogt je accuverbruik nauwelijks.</string>
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="pref_reliable_service">Betrouwbare achtergrondverbinding</string>
     <string name="pref_reliable_service_explain">Vereist een permanente melding</string>
