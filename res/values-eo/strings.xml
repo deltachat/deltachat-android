@@ -395,8 +395,6 @@
     <string name="pref_blocked_contacts">Blokitaj kontaktoj</string>
     <string name="pref_password_and_account_settings">Pasvorto kaj konto</string>
     <string name="pref_your_name">Via nomo</string>
-    <!-- Translators: The URL should not be localized as it is unclear which language the receiver prefers; the language will be automatically detected on the server -->
-    <string name="pref_default_status_text">Sendita per mia Delta Chat mesaĝilo: https://delta.chat</string>
     <string name="pref_enter_sends">La Eniga klavo kaŭzas sendon</string>
     <string name="pref_enter_sends_explain">Premado de la Eniga klavo sendos mesaĝojn</string>
     <string name="pref_vibrate">Vibrado</string>

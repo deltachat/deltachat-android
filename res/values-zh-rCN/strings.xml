@@ -605,8 +605,6 @@
     <string name="pref_your_name">您的名称</string>
     <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
     <string name="pref_default_status_label">签名档</string>
-    <!-- Translators: The URL should not be localized as it is unclear which language the receiver prefers; the language will be automatically detected on the server -->
-    <string name="pref_default_status_text">由我的 Delta Chat Messenger 发送： https://delta.chat</string>
     <string name="pref_enter_sends">回车键发送</string>
     <string name="pref_enter_sends_explain">按回车键发送文本消息</string>
     <string name="pref_outgoing_media_quality">发出媒体质量</string>

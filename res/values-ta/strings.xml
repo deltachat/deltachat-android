@@ -183,8 +183,6 @@
     <string name="pref_blocked_contacts">தடுக்கபட்ட தொடர்புகள்</string>
     <string name="pref_password_and_account_settings">கணக்கு அமைப்புகள்</string>
     <string name="pref_your_name">எனது பெயர்</string>
-    <!-- Translators: The URL should not be localized as it is unclear which language the receiver prefers; the language will be automatically detected on the server -->
-    <string name="pref_default_status_text">என்னுடைய Delta Chat செயலியில் இருந்து அனுப்பி உள்ளேன் : https://delta.chat</string>
     <string name="pref_enter_sends">\"enter\" மூலம் அனுப்பவும்</string>
     <string name="pref_vibrate">அதிர்வு உண்டாக்கு</string>
     <string name="pref_screen_security">திரை பாதுகாப்பு</string>

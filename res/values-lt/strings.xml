@@ -500,8 +500,6 @@
     <string name="pref_your_name">Jūsų vardas</string>
     <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
     <string name="pref_default_status_label">Parašo tekstas</string>
-    <!-- Translators: The URL should not be localized as it is unclear which language the receiver prefers; the language will be automatically detected on the server -->
-    <string name="pref_default_status_text">Išsiųsta iš mano Delta Chat pokalbių programos: https://delta.chat</string>
     <string name="pref_enter_sends">Įvedimo (Enter) klavišas išsiunčia</string>
     <string name="pref_enter_sends_explain">Paspaudus įvedimo (Enter) klavišą, bus išsiunčiamos tekstinės žinutės</string>
     <string name="pref_outgoing_media_quality">Išsiunčiamos medijos kokybė</string>

@@ -633,8 +633,6 @@
     <string name="pref_your_name">Votre nom</string>
     <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
     <string name="pref_default_status_label">Signature</string>
-    <!-- Translators: The URL should not be localized as it is unclear which language the receiver prefers; the language will be automatically detected on the server -->
-    <string name="pref_default_status_text">Envoyé depuis Delta Chat: https://delta.chat</string>
     <string name="pref_enter_sends">Entrer les envois de clés</string>
     <string name="pref_enter_sends_explain">Appuyez sur la touche Entrée pour envoyer des messages texte</string>
     <string name="pref_outgoing_media_quality">Qualité du média en sortie</string>

@@ -526,8 +526,6 @@
     <string name="pref_your_name">내 이름</string>
     <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
     <string name="pref_default_status_label">서명 텍스트</string>
-    <!-- Translators: The URL should not be localized as it is unclear which language the receiver prefers; the language will be automatically detected on the server -->
-    <string name="pref_default_status_text">내 델타 채팅 메신저와 함께 전송됨: https://delta.chat</string>
     <string name="pref_enter_sends">엔터키로 메시지 전송</string>
     <string name="pref_enter_sends_explain">Enter 키를 누르면 문자 메시지가 전송됩니다.</string>
     <string name="pref_outgoing_media_quality">발신 미디어 품질</string>

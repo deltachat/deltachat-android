@@ -440,8 +440,6 @@
     <string name="pref_your_name">Nama Anda</string>
     <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
     <string name="pref_default_status_label">Signature text</string>
-    <!-- Translators: The URL should not be localized as it is unclear which language the receiver prefers; the language will be automatically detected on the server -->
-    <string name="pref_default_status_text">Kirim dengan Percakapan Delta Chat: https://delta.chat</string>
     <string name="pref_enter_sends">Tombol Enter mengirim</string>
     <string name="pref_enter_sends_explain">Menekan tombol Enter akan mengirimkan teks pesan</string>
     <string name="pref_outgoing_media_quality">Kualitas media yang dikirim</string>

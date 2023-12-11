@@ -222,8 +222,6 @@
     <string name="pref_profile_photo">Profilkép</string>
     <string name="pref_blocked_contacts">Letiltott partnerek</string>
     <string name="pref_your_name">Neved</string>
-    <!-- Translators: The URL should not be localized as it is unclear which language the receiver prefers; the language will be automatically detected on the server -->
-    <string name="pref_default_status_text">A Delta Chat Messengeremmel küldtem: https://delta.chat</string>
     <string name="pref_enter_sends">Küldés \"enterrel\"</string>
     <string name="pref_vibrate">Rezgés</string>
     <string name="pref_screen_security">Képernyőbiztonság</string>

@@ -549,8 +549,6 @@
     <string name="pref_your_name">Το όνομά σου</string>
     <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
     <string name="pref_default_status_label">Υπογραφή</string>
-    <!-- Translators: The URL should not be localized as it is unclear which language the receiver prefers; the language will be automatically detected on the server -->
-    <string name="pref_default_status_text">Στάλθηκε με το Delta Chat Messenger μου: https://delta.chat</string>
     <string name="pref_enter_sends">Το Enter στέλνει</string>
     <string name="pref_enter_sends_explain">Τα μηνύματα θα στέλνονται με το πάτημα του Enter</string>
     <string name="pref_outgoing_media_quality">Ποιότητα Εξερχόμενων Μέσων</string>

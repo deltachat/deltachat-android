@@ -493,8 +493,6 @@
     <string name="pref_your_name">ឈ្មោះរបស់អ្នក</string>
     <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
     <string name="pref_default_status_label">ហត្ថលេខាជាអក្សរ</string>
-    <!-- Translators: The URL should not be localized as it is unclear which language the receiver prefers; the language will be automatically detected on the server -->
-    <string name="pref_default_status_text">បានផ្ញើជាមួយ សាហារីរសង្ឃ ( https://delta.chat )។ សូមទាញយកកម្មវិធីសាហារីរសង្ឃ​ទីនេះ៖ https://forum.sangham.net/index.php?action=tpmod;dl=item757</string>
     <string name="pref_enter_sends">គ្រាប់​ចុច​ បញ្ចូលធ្វើឱ្យផ្ញើសារ</string>
     <string name="pref_enter_sends_explain">ចុច គ្រាប់​ចុច​ បញ្ចូល (Enter key) នឹងផ្ញើអត្ថបទសារ។</string>
     <string name="pref_outgoing_media_quality">គុណភាពប្រពន្ធ័សម្លេងផ្សាយចេញ</string>

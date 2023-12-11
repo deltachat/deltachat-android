@@ -618,8 +618,6 @@
     <string name="pref_your_name">Emri juaj</string>
     <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
     <string name="pref_default_status_label">Tekst nënshkrimi</string>
-    <!-- Translators: The URL should not be localized as it is unclear which language the receiver prefers; the language will be automatically detected on the server -->
-    <string name="pref_default_status_text">Dërguar me Delta Chat Messenger: https://delta.chat</string>
     <string name="pref_enter_sends">Tasti Enter dërgon</string>
     <string name="pref_enter_sends_explain">Shtypja e tastit Enter do të dërgojë mesazhe tekst</string>
     <string name="pref_outgoing_media_quality">Cilësi mediash në dalje</string>

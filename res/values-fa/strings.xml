@@ -613,9 +613,6 @@ https://meet.jit.si/$ROOM
     <string name="pref_your_name">اسم شما</string>
     <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
     <string name="pref_default_status_label">متن امضا</string>
-    <!-- Translators: The URL should not be localized as it is unclear which language the receiver prefers; the language will be automatically detected on the server -->
-    <string name="pref_default_status_text">ارسال شده با پیام‌رسان دلتاچت:
- https://delta.chat</string>
     <string name="pref_enter_sends">ورود کلیدهای ارسال</string>
     <string name="pref_enter_sends_explain">فشاردادن کلید اینتر پیام‌ها را ارسال می‌کند</string>
     <string name="pref_outgoing_media_quality">کیفیت رسانه خروجی</string>

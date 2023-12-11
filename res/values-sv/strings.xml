@@ -427,8 +427,6 @@
     <string name="pref_your_name">Ditt namn</string>
     <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
     <string name="pref_default_status_label">Signaturtext</string>
-    <!-- Translators: The URL should not be localized as it is unclear which language the receiver prefers; the language will be automatically detected on the server -->
-    <string name="pref_default_status_text">Skickat från Delta Chat: https://delta.chat</string>
     <string name="pref_enter_sends">Returtangenten skickar</string>
     <string name="pref_enter_sends_explain">Tryck på returtangenten för att skicka textmeddelanden</string>
     <string name="pref_outgoing_media_quality">Utgående ljudkvalitet</string>
