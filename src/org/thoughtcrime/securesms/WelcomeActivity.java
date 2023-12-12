@@ -102,6 +102,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
 
         boolean canGoBack = AccountManager.getInstance().canRollbackAccountCreation(this);
         supportActionBar.setDisplayHomeAsUpEnabled(canGoBack);
+        getSupportActionBar().setTitle(canGoBack? R.string.add_account : R.string.welcome_desktop);
     }
 
     private void registerForEvents() {
