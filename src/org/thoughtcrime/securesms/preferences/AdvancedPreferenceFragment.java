@@ -7,6 +7,7 @@ import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_E2EE_ENABLED;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_MVBOX_MOVE;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_ONLY_FETCH_MVBOX;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SENTBOX_WATCH;
+import static org.thoughtcrime.securesms.connect.DcHelper.getRpc;
 
 import android.Manifest;
 import android.content.Context;
@@ -28,8 +29,10 @@ import androidx.preference.CheckBoxPreference;
 import androidx.preference.Preference;
 
 import com.b44t.messenger.DcContext;
+import com.b44t.messenger.rpc.RpcException;
 
 import org.thoughtcrime.securesms.ApplicationPreferencesActivity;
+import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.LogViewActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
@@ -183,6 +186,22 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
       }
       return true;
     });
+
+    Preference selfReporting = this.findPreference("pref_self_reporting");
+    selfReporting.setOnPreferenceClickListener(((preference) -> {
+      try {
+        int chatId = getRpc(getActivity()).draftSelfReport(dcContext.getAccountId());
+
+        Intent intent = new Intent(getActivity(), ConversationActivity.class);
+        intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        getActivity().startActivity(intent);
+      } catch (RpcException e) {
+        e.printStackTrace();
+      }
+
+      return true;
+    }));
   }
 
   @Override

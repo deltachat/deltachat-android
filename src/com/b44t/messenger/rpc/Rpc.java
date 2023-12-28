@@ -107,6 +107,10 @@ public class Rpc {
         return getResult("send_reaction", accountId, msgId, reaction).getAsInt();
     }
 
+    public int draftSelfReport(int accountId) throws RpcException {
+        return getResult("draft_self_report", accountId).getAsInt();
+    }
+
     private static class Request {
         private final String jsonrpc = "2.0";
         public final String method;
