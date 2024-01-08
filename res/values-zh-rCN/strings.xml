@@ -370,7 +370,7 @@
         <item quantity="other">%d 条新消息</item>
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
-    <string name="chat_new_one_to_one_hint">发一条消息给 %1$s。即使对方不使用 Delta Chat 也没问题。</string>
+    <string name="chat_new_one_to_one_hint">发一条消息给 %1$s。</string>
     <string name="chat_new_broadcast_hint">在广播列表中，收件人会在和你进行的只读聊天中收到消息</string>
     <string name="chat_new_group_hint">在您发出第一条消息后，其他人才会看到此群组。</string>
     <string name="chat_record_slide_to_cancel">滑动来取消</string>

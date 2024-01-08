@@ -385,7 +385,7 @@
         <item quantity="other">%d neue Nachrichten</item>
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
-    <string name="chat_new_one_to_one_hint">Senden Sie eine Nachricht. Es ist in Ordnung, wenn %1$s kein Delta Chat hat.</string>
+    <string name="chat_new_one_to_one_hint">Senden Sie eine Nachricht an %1$s.</string>
     <string name="chat_new_broadcast_hint">In Broadcast-Listen erhalten die Empfänger die Nachrichten in einem Nur-Lesen-Chat.</string>
     <string name="chat_new_group_hint">Andere sehen diese Gruppe erst, nachdem Sie eine erste Nachricht gesendet haben.</string>
     <string name="chat_record_slide_to_cancel">Schieben, um abzubrechen</string>

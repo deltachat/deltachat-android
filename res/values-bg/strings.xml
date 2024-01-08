@@ -368,7 +368,7 @@
         <item quantity="other">%d нови съобщения</item>
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
-    <string name="chat_new_one_to_one_hint">Изпращане на съобщение до %1$s; получателят ще може да го получи дори без Delta Chat</string>
+    <string name="chat_new_one_to_one_hint">Изпращане на съобщение до %1$s.</string>
     <string name="chat_new_group_hint">Другите ще виждат тази група едва след като изпратите първо съобщение.</string>
     <string name="chat_record_slide_to_cancel">Приплъзнете, за да откажете</string>
     <string name="chat_record_explain">Докоснете и задръжте, за да запишете гласово съобщение, отпуснете, за да го изпратите</string>

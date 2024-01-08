@@ -383,7 +383,7 @@
         <item quantity="other">%d novas mensagens</item>
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
-    <string name="chat_new_one_to_one_hint">Envie uma mensagem. Tudo bem se %1$s não usar o Chat Delta.  </string>
+    <string name="chat_new_one_to_one_hint">Envie uma mensagem. Tudo bem se %1$s não usar o Chat Delta.</string>
     <string name="chat_new_group_hint">Compor a primeira mensagem habilitará os participantes a ingressar no grupo.\n\n• Não tem problema se nem todos usarem o Delta Chat.\n\n• O envio da primeira mensagem pode demorar.</string>
     <string name="chat_record_slide_to_cancel">Deslize para cancelar</string>
     <string name="chat_record_explain">Toque e segure para gravar uma mensagem de voz e, depois, solte para enviar</string>

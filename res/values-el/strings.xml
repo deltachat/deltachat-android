@@ -354,7 +354,7 @@
         <item quantity="other">%d νέα μηνύματα</item>
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
-    <string name="chat_new_one_to_one_hint">Στείλτε ένα μήνυμα σε %1$s, και μπορούν να το λάβουν ακόμη και χωρίς Delta Chat.</string>
+    <string name="chat_new_one_to_one_hint">Στείλτε ένα μήνυμα σε %1$s.</string>
     <string name="chat_new_group_hint">Οι άλλοι θα δουν αυτήν την ομάδα μόνο αφού στείλετε ένα πρώτο μήνυμα.</string>
     <string name="chat_record_slide_to_cancel">Σύρε για ακύρωση</string>
     <string name="chat_record_explain">Πάτα και κράτα πατημένο για να ηχογραφήσεις ένα φωνητικό μήνυμα, άφησε το κουμπί για αποστολή</string>

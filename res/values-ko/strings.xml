@@ -338,7 +338,7 @@
         <item quantity="other">새 메시지 %d건</item>
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
-    <string name="chat_new_one_to_one_hint">%1$s에게 메시지를 보냅니다. Delta Chat 없이도 메시지를 받을 수 있습니다.</string>
+    <string name="chat_new_one_to_one_hint">%1$s에게 메시지를 보냅니다.</string>
     <string name="chat_new_group_hint">당신이 첫 번째 메시지를 보낸 후에만 다른 사용자들이 이 그룹을 볼 것입니다.</string>
     <string name="chat_record_slide_to_cancel">밀어서 취소</string>
     <string name="chat_record_explain">꾹 눌러 음성 메시지를 녹음하고, 떼서 보내시오</string>

@@ -370,7 +370,7 @@
         <item quantity="other">%d tin nhắn mới</item>
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
-    <string name="chat_new_one_to_one_hint">Gửi tin nhắn tới %1$s; họ thậm chí có thể nhận được nó mà không cần Delta Chat.</string>
+    <string name="chat_new_one_to_one_hint">Gửi tin nhắn tới %1$s.</string>
     <string name="chat_new_broadcast_hint">Trong danh sách phát sóng, người nhận sẽ nhận được tin nhắn trong cuộc trò chuyện chỉ đọc với bạn.</string>
     <string name="chat_new_group_hint">Những người khác sẽ chỉ nhìn thấy nhóm này sau khi bạn gửi tin nhắn đầu tiên.</string>
     <string name="chat_record_slide_to_cancel">Trượt để hủy</string>
