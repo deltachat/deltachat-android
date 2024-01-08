@@ -121,8 +121,7 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Emoj
     if (container.isInputOpen()) {
       container.hideCurrentInput(name);
     } else if (fromWelcome) {
-      startActivity(new Intent(getApplicationContext(), ConversationListActivity.class));
-      finish();
+      updateProfile();
     } else {
       super.onBackPressed();
     }
