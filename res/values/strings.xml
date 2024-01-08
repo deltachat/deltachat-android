@@ -906,6 +906,8 @@
     <string name="qraccount_ask_create_and_login">Create new e-mail address on \"%1$s\" and log in there?</string>
     <string name="qraccount_ask_create_and_login_another">Create new e-mail address on \"%1$s\" and log in there?\n\nYour existing account will not be deleted. Use the \"Switch Account\" item to switch between your accounts.</string>
     <string name="qraccount_success_enter_name">Login successful—your e-mail address is %1$s\n\nIf you like, you can now enter a name and an profile image that will be displayed to people you write to.</string>
+    <string name="set_name_and_avatar_explain">Set a name for your new account that your contacts will recognize. You can also set a profile image.</string>
+    <string name="please_enter_name">Please enter a name.</string>
     <string name="qraccount_qr_code_cannot_be_used">The scanned QR code cannot be used to set up a new account.</string>
     <string name="qraccount_use_on_new_install">The scanned QR code is for setting up a new account. You can scan the QR code when setting up a new Delta Chat installation.</string>
     <!-- the placeholder will be replaced by the e-mail address of the account -->
