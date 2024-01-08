@@ -109,7 +109,7 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Emoj
         onBackPressed();
         return true;
       case R.id.menu_create_profile:
-        handleUpload();
+        updateProfile();
         break;
     }
 
@@ -293,7 +293,7 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Emoj
     statusView.setText(status);
   }
 
-  private void handleUpload() {
+  private void updateProfile() {
     if (TextUtils.isEmpty(this.name.getText())) {
       Toast.makeText(this, R.string.please_enter_name, Toast.LENGTH_LONG).show();
       return;
