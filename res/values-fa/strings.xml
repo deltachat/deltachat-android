@@ -886,6 +886,7 @@ https://meet.jit.si/$ROOM
     <string name="qraccount_ask_create_and_login">ایجاد رایانامهٔ جدید روی «%1$s» و ورود به آنجا؟</string>
     <string name="qraccount_ask_create_and_login_another">نشانی جدید رایانامه روی «%1$s» ایجاد شده  و به آن وارد شود؟
  حساب فعلی شما پاک نمی‌شود. از بخش «تغییر حساب کاربری» برای جابجایی بین حساب‌ها استفاده کنید</string>
+    <!-- deprecated, use set_name_and_avatar_explain instead -->
     <string name="qraccount_success_enter_name">ورود موفق—نشانی رایانامهٔ شما %1$sاست.\n\n اگر دوست دارید می‌توانید اکنون یک نام وارد کرده و تصویر نمایه‌ای که هنگام نوشتن برای دیگران نشان داده می‌شود را انتخاب نمایید. </string>
     <string name="qraccount_qr_code_cannot_be_used">این کد کیوآر اسکن شده را نمی‌توان برای راه اندازی اکانت جدید استفاده کرد. </string>
     <string name="qraccount_use_on_new_install">کد کیوآر اسکن شده برای راه اندازی یک اکانت جدید است. می‌توانید در حال تنظیم یک دلتاچت تازه نصب شده کیوآر  را اسکن کنید.</string>

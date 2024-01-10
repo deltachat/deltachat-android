@@ -811,6 +811,7 @@
     <string name="qrshow_join_contact_no_connection_toast">Ei internetyhteyttä, QR-koodin luominen ei onnistu.</string>
     <string name="qraccount_ask_create_and_login">Luo uusi sähköpostiosoite palvelimella \"%1$s\" ja kirjaudu sisään?</string>
     <string name="qraccount_ask_create_and_login_another">Luo uusi sähköpostiosoite palvelimella \"%1$s\" ja kirjaudu sisään?\n\nNykyistä tiliäsi ei poisteta. Käytä valintaa \"Vaihda tiliä\" vaihtaaksesi tilien välillä.</string>
+    <!-- deprecated, use set_name_and_avatar_explain instead -->
     <string name="qraccount_success_enter_name">Kirjautuminen onnistui - sähköpostiosoitteesa on %1$s\n\nVoit nyt halutessasi antaa nimen ja profiilikuvan, jotka näytetään muille kirjoittaessasi heille.</string>
     <string name="qraccount_qr_code_cannot_be_used">Uutta tiliä ei voida luoda skannatulla QR-koodilla.</string>
     <string name="qraccount_use_on_new_install">Skannattu QR-koodi on käytössä uuden tilin luomiseksi. Voit skannata QR-koodin uuden Delta Chat -asennuksen yhteydessä.</string>

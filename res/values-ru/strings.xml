@@ -935,6 +935,7 @@
     <string name="qrshow_join_contact_no_connection_toast">Нет соединения к интернету, невозможно начать процесс настройки по QR-коду.</string>
     <string name="qraccount_ask_create_and_login">Создать новый адрес электронной почты на \"%1$s\" и войти?</string>
     <string name="qraccount_ask_create_and_login_another">Создать новый адрес почты на \"%1$s\" и войти?\n\nВаш существующий аккаунт не будет удалён. Используйте пункт меню «Сменить аккаунт», чтобы переключаться между аккаунтами.</string>
+    <!-- deprecated, use set_name_and_avatar_explain instead -->
     <string name="qraccount_success_enter_name">Вход успешно выполнен—ваш адрес электронной почты %1$s\n\nЕсли хотите, можете ввести имя и установить аватар, которые будут отображаться людям, которым вы пишете.</string>
     <string name="qraccount_qr_code_cannot_be_used">Отсканированный QR-код не может быть использован для создания нового аккаунта.</string>
     <string name="qraccount_use_on_new_install">Отсканированный QR-код предназначен для создания нового аккаунта. Вы можете отсканировать QR-код при установке Delta Chat.</string>

@@ -905,6 +905,7 @@
     <string name="qrshow_join_contact_no_connection_toast">Geen internetverbinding; kan QR-codes niet instellen.</string>
     <string name="qraccount_ask_create_and_login">Wil je een nieuw e-mailadres aanmaken op ‘%1$s’ en daarmee inloggen?</string>
     <string name="qraccount_ask_create_and_login_another">Wil je een nieuw e-mailadres aanmaken op ‘%1$s’ en daarmee inloggen?\n\nJe reeds aanwezige account wordt niet verwijderd. Druk op de knop ‘Ander account kiezen’ om tussen accounts te schakelen.</string>
+    <!-- deprecated, use set_name_and_avatar_explain instead -->
     <string name="qraccount_success_enter_name">Het inloggen is gelukt - je e-mailadres is ‘%1$s’.\n\nAls je wilt kun je nu een naam en profielfoto instellen. Je naam en foto worden getoond aan de mensen waarmee je communiceert.</string>
     <string name="qraccount_qr_code_cannot_be_used">De gescande QR-code kan niet worden gebruikt om een nieuw account in te stellen.</string>
     <string name="qraccount_use_on_new_install">De gescande QR-code is voor het instellen van een nieuw account. Je kunt deze direct scannen na het (opnieuw) installeren van Delta Chat.</string>

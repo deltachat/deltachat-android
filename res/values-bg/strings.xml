@@ -852,6 +852,7 @@
     <string name="qrshow_join_contact_no_connection_toast">Няма връзка към Интернет, не може да бъде извършена настройка чрез QR код.</string>
     <string name="qraccount_ask_create_and_login">Да бъде ли създаден нов адрес за електронна поща на \"%1$s\" и да бъде ли осъществено влизане там?</string>
     <string name="qraccount_ask_create_and_login_another">Да бъде ли създаден нов адрес за електронна поща в \"%1$s\" и да бъде ли осъществено влизане там?\n\nВашият съществуващ акаунт няма да бъде изтрит. Използвайте опцията \"Превключване към друг акаунт\", за да превключвате между Вашите акаунти.</string>
+    <!-- deprecated, use set_name_and_avatar_explain instead -->
     <string name="qraccount_success_enter_name">Влизането е успешно — Вашият адрес за електронна поща е %1$s\n\nАко желаете, може да въведете име и изображение за Вашия профил. Те ще бъдат показвани на хората, на които пишете.</string>
     <string name="qraccount_qr_code_cannot_be_used">Не може да бъде създаден нов акаунт със сканирания QR код.</string>
     <string name="qraccount_use_on_new_install">Сканираният QR код е за установяване на нов акаунт. Можете да сканирате QR кода, когато създавате нова инсталация на Delta Chat.</string>

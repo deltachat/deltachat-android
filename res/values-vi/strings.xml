@@ -890,6 +890,7 @@
     <string name="qrshow_join_contact_no_connection_toast">Không có kết nối internet, không thể thực hiện thiết lập mã QR.</string>
     <string name="qraccount_ask_create_and_login">Tạo địa chỉ email mới trên \"%1$s\" và đăng nhập vào đó?</string>
     <string name="qraccount_ask_create_and_login_another">Tạo địa chỉ email mới trên \"%1$s\" và đăng nhập vào đó?\n\nTài khoản hiện tại của bạn sẽ không bị xóa. Sử dụng mục \"Chuyển tài khoản\" để chuyển đổi giữa các tài khoản của bạn.</string>
+    <!-- deprecated, use set_name_and_avatar_explain instead -->
     <string name="qraccount_success_enter_name">Đăng nhập thành công—địa chỉ email của bạn là %1$s\n\nNếu muốn, bây giờ bạn có thể nhập tên và ảnh hồ sơ sẽ được hiển thị cho những người mà bạn viết thư cho.</string>
     <string name="qraccount_qr_code_cannot_be_used">Mã QR được quét không thể được sử dụng để thiết lập tài khoản mới.</string>
     <string name="qraccount_use_on_new_install">Mã QR được quét là để thiết lập một tài khoản mới. Bạn có thể quét mã QR khi thiết lập cài đặt Delta Chat mới.</string>

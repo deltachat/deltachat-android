@@ -773,6 +773,7 @@
     <string name="qrshow_join_contact_no_connection_toast">인터넷에 연결되어 있지 않아 QR 코드 설정을 수행할 수 없습니다.</string>
     <string name="qraccount_ask_create_and_login">\"%1$s\"에서 새 이메일 주소를 만들고 로그인하시겠습니까?</string>
     <string name="qraccount_ask_create_and_login_another">\"%1$s\"에서 새 이메일 주소를 만들고 로그인하시겠습니까?\n\n기존 계정은 삭제되지 않습니다. 계정 전환 항목을 사용하여 계정 간을 전환합니다.</string>
+    <!-- deprecated, use set_name_and_avatar_explain instead -->
     <string name="qraccount_success_enter_name">로그인 성공—이메일 주소는 %1$s입니다 \n\n원하는 경우, 이제 다름 사람에게 표시할 이름과 프로필 이미지를 입력할 수 있습니다.</string>
     <string name="qraccount_qr_code_cannot_be_used">스캔한 QR 코드를 사용하여 새 계정을 설정할 수 없습니다.</string>
     <string name="qraccount_use_on_new_install">스캔한 QR 코드는 새 계정을 설정하기 위한 것입니다. 새 델타 채팅 설치를 설정할 때 QR 코드를 스캔할 수 있습니다.</string>

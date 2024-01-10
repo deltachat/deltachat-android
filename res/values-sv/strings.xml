@@ -603,6 +603,7 @@
     <string name="qrshow_join_contact_no_connection_toast">Ingen internetanslutning, kan inte utföra QR-kod-inställning.</string>
     <string name="qraccount_ask_create_and_login">Skapa ny e-postadress på \"%1$s\" och logga in där?</string>
     <string name="qraccount_ask_create_and_login_another">Vill du skapa en ny e-postadress på \"%1$s\" och logga in där?\n\nDitt befintliga konto kommer inte att tas bort. Använd \"Byt konto\" för att växla mellan dina konton.</string>
+    <!-- deprecated, use set_name_and_avatar_explain instead -->
     <string name="qraccount_success_enter_name">Inloggning slutförd. - Din e-postadress är %1$s\n\nOm du vill, kan du nu ange ett namn och en bild som visas för folk du skriver till.</string>
     <string name="qraccount_qr_code_cannot_be_used">Den skannade QR-koden kan inte användas för att konfigurera ett nytt konto.</string>
     <string name="qraccount_use_on_new_install">Den skannade QR-koden är till för att konfigurera ett nytt konto. Du kan skanna QR-koden när du konfigurerar en ny Delta Chat-installation.</string>

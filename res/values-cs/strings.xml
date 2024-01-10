@@ -653,6 +653,7 @@
     <string name="qrshow_join_contact_no_connection_toast">Nejsi připojen k Internetu. Nastavení QR kódem nelze provést. </string>
     <string name="qraccount_ask_create_and_login">Vytvořit nový e-mail na \"%1$s\" a připojit se k němu?</string>
     <string name="qraccount_ask_create_and_login_another">Vytvořit nový e-mail na \"%1$s\" a připojit se k němu?\n\nTvůj původní ůčet nebude smazán. Použij \"Přepni účet\" k přepnutí na jiný účet.</string>
+    <!-- deprecated, use set_name_and_avatar_explain instead -->
     <string name="qraccount_success_enter_name">Úspěšné přihlášení - tvůj e-mail je %1$s\n\nNyní můžeš zadat jméno a profilový obrázek. Ty se budou zobrazovat lidem, kterým budeš posílat zprávy.</string>
     <string name="qraccount_qr_code_cannot_be_used">Sejmutý QR kód neumožňuje nastavení nového účtu.</string>
     <string name="qraccount_use_on_new_install">Sejmutý QR kód je k nastavení nového účtu. Tento QR kód můžeš použít když budeš provádět novou instalaci Delta Chatu.</string>

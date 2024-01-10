@@ -599,6 +599,7 @@
     <string name="qrshow_join_contact_no_connection_toast">Tidak ada koneksi internet, tidak bisa menjalankan kode pengaturan QR.</string>
     <string name="qraccount_ask_create_and_login">Buat alamat email baru di \"%1$s\" dan login di sana?</string>
     <string name="qraccount_ask_create_and_login_another">Buat alamat email baru di\"%1$s\" dan masuk ke sana?\n\nAkun yang sudah ada tidak akan di hapus. Gunakankan item \"Ganti akun\" untuk mengganti akun anda</string>
+    <!-- deprecated, use set_name_and_avatar_explain instead -->
     <string name="qraccount_success_enter_name">Login berhasil—alamat surel Anda %1$s\n\nKalau mau, masukkan satu nama dan gambar avatar yang dapat dilihat oleh orang yang ngobrol dengan Anda.</string>
     <string name="qraccount_qr_code_cannot_be_used">Kode QR yang dipindai tidak dapat digunakan untuk mengatur akun baru.</string>
     <string name="qraccount_use_on_new_install">Kode QR yang dipindai adalah untuk mengatur akun baru. Anda dapat memindai kode QR saat mengatur instalasi Delta Chat baru.</string>

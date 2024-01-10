@@ -791,6 +791,7 @@
     <string name="qrshow_join_contact_no_connection_toast">Sen conexión a internet, non se pode facer o axuste por código QR</string>
     <string name="qraccount_ask_create_and_login">Crear un novo enderezo de correo en \"%1$s\" e acceder ali?</string>
     <string name="qraccount_ask_create_and_login_another">Crear un novo enderezo de email en \"%1$s\" e acceder?\n\nNon se eliminará a conta actual. Usa \"Cambiar de conta\" para cambiar entre as túas contas.</string>
+    <!-- deprecated, use set_name_and_avatar_explain instead -->
     <string name="qraccount_success_enter_name">Conexión correcta—o teu enderezo é %1$s\n\nSe queres, agora podes escribir un nome e unha imaxe de avatar que será mostrado ás persoas coas que te comunicas.</string>
     <string name="qraccount_qr_code_cannot_be_used">O código QR escaneado non se pode utilizar para crear unha nova conta.</string>
     <string name="qraccount_use_on_new_install">O código QR escaneado é para crear unha nova conta. Podes escanear o código QR cando configures unha nova instalación de Delta Chat.</string>

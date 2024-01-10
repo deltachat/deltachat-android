@@ -839,6 +839,7 @@
     <string name="qrshow_join_contact_no_connection_toast">Нисте повезани на интернет, није могуће подесити бар-кôд.</string>
     <string name="qraccount_ask_create_and_login">Направите нову е-адресу на „%1$s“ и приступите јој тамо?</string>
     <string name="qraccount_ask_create_and_login_another">Направите нову е-адресу на „%1$s“ и приступите јој тамо?\n\nВаш постојећи налог неће бити избрисан. Користите „Промени налог“ да пређете са једног налога на други.</string>
+    <!-- deprecated, use set_name_and_avatar_explain instead -->
     <string name="qraccount_success_enter_name">Пријава је успела—ваша е-адреса је %1$s\n\nАко желите, сада можете да унесете име и слику профила који ће бити приказани људима којима пишете.</string>
     <string name="qraccount_qr_code_cannot_be_used">Очитани бар-кôд не може бити коришћен да подеси нови налог.</string>
     <string name="qraccount_use_on_new_install">Очитани бар-кôд је за подешавање новог налога. Можете очитати овај бар-кôд за подешавања после инсталације Delta Chat апликације.</string>

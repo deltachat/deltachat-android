@@ -742,6 +742,7 @@
     <string name="qrshow_join_contact_no_connection_toast">គ្មានសេវាអុិនធ័រណេត មិនអាចអនុវត្ត ការរៀបចំកូដ QR</string>
     <string name="qraccount_ask_create_and_login">បង្កើតអស័យដ្ឋានអុីម៉េលថ្មីនៅលើ \"%1$s\" និងកត់ចូលនៅទីនោះ?</string>
     <string name="qraccount_ask_create_and_login_another">បង្កើតអស័យដ្ឋានអុីម៉េលថ្មីនៅលើ \"%1$s\" និងកត់ចូលនៅទីនោះ?\n\nគណនីរបស់អ្នកដែលមានស្រាប់ នឹងមិនត្រូវបានលុបចោលទេ។ ប្រើប្រាស់ ការ \"ឆ្លាស់ប្តូរគណនី\" ដើម្បីធាតុប្តូររវាងគណនីរបស់អ្នក។</string>
+    <!-- deprecated, use set_name_and_avatar_explain instead -->
     <string name="qraccount_success_enter_name">កត់ចូលដោយជោគជ័យ — អស័យដ្ឋានអុីម៉េលរបស់អ្នកគឺ %1$s \n\nប្រសិនបើអ្នកចូលចិត្ត ឥលូវនេះអ្នកអាច បញ្ចូលឈ្មោះ និងរូបភាពទិន្ន័យផ្ទាល់ ដែលនឹងបានបង្ហាញទៅកាន់មនុស្សដែលអ្នកសរសេរទៅ។</string>
     <string name="qraccount_qr_code_cannot_be_used">កូដ QR ដែលបានស្គេន មិនអាចត្រូវបានប្រើប្រាស់ដើម្បីរៀបចំគណនីថ្មីមួយទេ។</string>
     <string name="qraccount_use_on_new_install">កូដ QR ដែលបានស្គេន គឺសម្រាប់ការកំណត់ឡើងនូវគណនីថ្មីមួយ។ អ្នកអាចស្គេនកូដ QR នៅពេលការកំណត់តម្លើងនូវ សា Delta Chat ។</string>

@@ -385,7 +385,7 @@
         <item quantity="other">%d yeni ileti</item>
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
-    <string name="chat_new_one_to_one_hint">%1$s kişisine bir ileti gönderin; Delta Chat olmadan bile onu alabilir.</string>
+    <string name="chat_new_one_to_one_hint">%1$s kişisine bir ileti gönderin.</string>
     <string name="chat_new_broadcast_hint">Bir yayın listesinde, alıcılar sizinle salt okunur bir sohbette iletiler alacak.</string>
     <string name="chat_new_group_hint">Diğerleri, yalnızca siz bir ilk ileti gönderdikten sonra bu öbeği görecek.</string>
     <string name="chat_record_slide_to_cancel">İptal etmek için kaydırın</string>
@@ -905,6 +905,7 @@
     <string name="qrshow_join_contact_no_connection_toast">Internet bağlantısı yok; QR kodu ayarlaması gerçekleştirilemiyor.</string>
     <string name="qraccount_ask_create_and_login">\"%1$s\" üzerinde yeni e-posta adresi oluşturulsun ve orada giriş yapılsın mı?</string>
     <string name="qraccount_ask_create_and_login_another">\"%1$s\" üzerinde yeni e-posta adresi oluşturulsun ve orada giriş yapılsın mı?\n\nVarolan hesabınız silinmeyecek. Hesaplarınız arasında geçiş yapmak için \"Hesabı Değiştir\" öğesini kullanın.</string>
+    <!-- deprecated, use set_name_and_avatar_explain instead -->
     <string name="qraccount_success_enter_name">Giriş başarılı—e-posta adresiniz %1$s\n\nİsterseniz şimdi yazdığınız insanlara görüntülenecek bir ad ve bir profil görseli girebilirsiniz.</string>
     <string name="qraccount_qr_code_cannot_be_used">Taranan QR kodu, yeni bir hesap ayarlamak için kullanılamıyor.</string>
     <string name="qraccount_use_on_new_install">Taranan QR kodu, yeni bir hesap ayarlamak içindir. QR kodunu yeni bir Delta Chat kurulumu ayarlanırken tarayabilirsiniz.</string>

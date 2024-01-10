@@ -935,6 +935,7 @@
     <string name="qrshow_join_contact_no_connection_toast">Відсутнє інтернет з\'єднання, не можу налаштувати QR-код.</string>
     <string name="qraccount_ask_create_and_login">Створити нову електронну адресу на \"%1$s\" та увійти у неї?</string>
     <string name="qraccount_ask_create_and_login_another">Створити нову електронну адресу на \"%1$s\" та увійти у неї?\n\nВаш поточний обліковий запис не буде видалено. Використовуйте \"Перемкнути обліковий запис\".</string>
+    <!-- deprecated, use set_name_and_avatar_explain instead -->
     <string name="qraccount_success_enter_name">Вхід успішний — ваша ел. адреса %1$s\n\nЯкщо ви бажаєте, ви можете ввести ім\'я та аватар.</string>
     <string name="qraccount_qr_code_cannot_be_used">Зісканований QR-код не може бути використаний для створення нового облікового запису.</string>
     <string name="qraccount_use_on_new_install">Зісканований QR-код для створення нового облікового запису. Ви можете зісканувати QR-код коли налаштовуєте нову інсталяцію.</string>

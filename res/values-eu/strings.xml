@@ -479,6 +479,7 @@
     <string name="qrshow_join_contact_hint">Eskaneatu hau %1$s erabiltzailearen kontaktua ezartzeko</string>
     <string name="qrshow_join_contact_no_connection_toast">Ez dago Internet konexiorik, ezin da QR kode bidezko ezarpena aplikatu</string>
     <string name="qraccount_ask_create_and_login">Sortu kontu berria \"%1$s\" zerbitzarian eta saioa han hasi?</string>
+    <!-- deprecated, use set_name_and_avatar_explain instead -->
     <string name="qraccount_success_enter_name">Saioa ongi hasi duzu, zure e-mail helbidea %1$s da\n\n Nahiez gero, izen eta abatar bat jarri ditzakezu, zure harremanek ikusiko dituztenak</string>
     <string name="qraccount_qr_code_cannot_be_used">Eskaneatutako QR kodea ezin da kontu berri bat ezartzeko erabili.</string>
     <string name="qraccount_use_on_new_install">Eskaneatutako QR kodea kontu berri bat ezartzeko da. QR kodea Delta Chat instalazio berri batean eskaneatu dezakezu.</string>

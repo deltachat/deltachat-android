@@ -811,6 +811,7 @@
     <string name="qrshow_join_contact_no_connection_toast">Δεν υπάρχει σύνδεση στο διαδίκτυο, δεν είναι δυνατή η ρύθμιση κωδικού QR.</string>
     <string name="qraccount_ask_create_and_login">Δημιουργήστε νέα διεύθυνση e-mail στο \"%1$s\" και συνδεθείτε εκεί;</string>
     <string name="qraccount_ask_create_and_login_another">Δημιουργήστε νέα διεύθυνση e-mail στο \"%1$s\" και συνδεθείτε εκεί;\n\nΟ υπάρχων λογαριασμός σας δεν θα διαγραφεί. Χρησιμοποιήστε τη λειτουργία \"Εναλλαγή λογαριασμού\" για εναλλαγή μεταξύ των λογαριασμών σας.</string>
+    <!-- deprecated, use set_name_and_avatar_explain instead -->
     <string name="qraccount_success_enter_name">Επιτυχής σύνδεση—η διεύθυνση e-mail σας είναι %1$s\n\nΑν θέλετε, μπορείτε τώρα να εισαγάγετε ένα όνομα και μια εικόνα προφίλ που θα εμφανίζονται στα άτομα στα οποία γράφετε.</string>
     <string name="qraccount_qr_code_cannot_be_used">Ο σαρωμένος κωδικός QR δεν μπορεί να χρησιμοποιηθεί για τη δημιουργία νέου λογαριασμού.</string>
     <string name="qraccount_use_on_new_install">Ο σαρωμένος κωδικός QR προορίζεται για τη δημιουργία νέου λογαριασμού. Μπορείτε να σαρώσετε τον κωδικό QR όταν ρυθμίζετε μια νέα εγκατάσταση Delta Chat.</string>
