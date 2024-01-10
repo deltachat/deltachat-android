@@ -16,14 +16,16 @@ public class DcContactsLoader extends AsyncLoader<DcContactsLoader.Ret> {
 
     private final int     listflags;
     private final String  query;
+    private final boolean addScanQRLink;
     private final boolean addCreateGroupLinks;
     private final boolean addCreateContactLink;
     private final boolean blockedContacts;
 
-    public DcContactsLoader(Context context, int listflags, String query, boolean addCreateGroupLinks, boolean addCreateContactLink, boolean blockedContacts) {
+    public DcContactsLoader(Context context, int listflags, String query, boolean addCreateGroupLinks, boolean addCreateContactLink, boolean addScanQRLink, boolean blockedContacts) {
         super(context);
         this.listflags           = listflags;
         this.query               = (query==null||query.isEmpty())? null : query;
+        this.addScanQRLink       = addScanQRLink;
         this.addCreateGroupLinks = addCreateGroupLinks;
         this.addCreateContactLink= addCreateContactLink;
         this.blockedContacts     = blockedContacts;
@@ -40,11 +42,18 @@ public class DcContactsLoader extends AsyncLoader<DcContactsLoader.Ret> {
 
         int[] contact_ids = dcContext.getContacts(listflags, query);
         int[] additional_items = new int[0];
-        if (addCreateContactLink) additional_items = Util.appendInt(additional_items, DcContact.DC_CONTACT_ID_NEW_CONTACT);
+        if (query == null && addScanQRLink)
+        {
+          additional_items = Util.appendInt(additional_items, DcContact.DC_CONTACT_ID_QR_INVITE);
+        }
         if (query == null && addCreateGroupLinks) {
             additional_items = Util.appendInt(additional_items, DcContact.DC_CONTACT_ID_NEW_GROUP);
             final boolean broadcastsEnabled = Prefs.isNewBroadcastListAvailable(getContext());
             if (broadcastsEnabled) additional_items = Util.appendInt(additional_items, DcContact.DC_CONTACT_ID_NEW_BROADCAST_LIST);
+        }
+        if (addCreateContactLink)
+        {
+            additional_items = Util.appendInt(additional_items, DcContact.DC_CONTACT_ID_NEW_CONTACT);
         }
         int all_ids[] = new int[contact_ids.length + additional_items.length];
         System.arraycopy(additional_items, 0, all_ids, 0, additional_items.length);

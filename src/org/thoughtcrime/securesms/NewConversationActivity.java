@@ -28,8 +28,10 @@ import androidx.appcompat.app.AlertDialog;
 
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
+import com.google.zxing.integration.android.IntentIntegrator;
 
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.qr.QrActivity;
 import org.thoughtcrime.securesms.util.MailtoUtil;
 
 import static org.thoughtcrime.securesms.ConversationActivity.CHAT_ID_EXTRA;
@@ -95,6 +97,8 @@ public class NewConversationActivity extends ContactSelectionActivity {
       Intent intent = new Intent(this, GroupCreateActivity.class);
       intent.putExtra(GroupCreateActivity.CREATE_BROADCAST, true);
       startActivity(intent);
+    } else if (specialId == DcContact.DC_CONTACT_ID_QR_INVITE) {
+      new IntentIntegrator(this).setCaptureActivity(QrActivity.class).initiateScan();
     }
     else {
       int contactId = dcContext.lookupContactIdByAddr(addr);
