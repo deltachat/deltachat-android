@@ -86,7 +86,7 @@ public class BlockedContactsActivity extends PassphraseRequiredActionBarActivity
 
     @Override
     public Loader<DcContactsLoader.Ret> onCreateLoader(int id, Bundle args) {
-      return new DcContactsLoader(getActivity(), -1, null, false, false, true);
+      return new DcContactsLoader(getActivity(), -1, null, false, false, false, true);
     }
 
     @Override

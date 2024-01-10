@@ -281,12 +281,13 @@ public class ContactSelectionListFragment extends    Fragment
 
   @Override
   public Loader<DcContactsLoader.Ret> onCreateLoader(int id, Bundle args) {
-    boolean allowCreation = getActivity().getIntent().getBooleanExtra(ALLOW_CREATION, true);
-    boolean addCreateContactLink = allowCreation && !isSelectVerfied();
-    boolean addCreateGroupLinks = allowCreation && !isRelayingMessageContent(getActivity()) && !isMulti();
+    final boolean allowCreation = getActivity().getIntent().getBooleanExtra(ALLOW_CREATION, true);
+    final boolean addCreateContactLink = allowCreation && !isSelectVerfied();
+    final boolean addCreateGroupLinks = allowCreation && !isRelayingMessageContent(getActivity()) && !isMulti();
+    final boolean addScanQRLink = allowCreation && !isMulti();
 
-    int listflags = DcContext.DC_GCL_ADD_SELF;
-    return new DcContactsLoader(getActivity(), listflags, cursorFilter, addCreateGroupLinks, addCreateContactLink, false);
+    final int listflags = DcContext.DC_GCL_ADD_SELF;
+    return new DcContactsLoader(getActivity(), listflags, cursorFilter, addCreateGroupLinks, addCreateContactLink, addScanQRLink, false);
   }
 
   @Override
