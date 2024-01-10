@@ -103,7 +103,7 @@ public class ConversationTitleView extends RelativeLayout {
       }
       else {
         DcContact dcContact = dcContext.getContact(chatContacts[0]);
-        if (profileView) {
+        if (profileView || !dcChat.isProtected()) {
           subtitleStr = dcContact.getAddr();
         }
         isOnline = dcContact.wasSeenRecently();
