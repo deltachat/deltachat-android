@@ -21,7 +21,7 @@
                 android:contentDescription="@string/email_address"
                 android:fontFamily="sans-serif"
                 android:gravity="center_vertical"
-                android:hint="@string/contacts_enter_name_or_email"
+                android:hint="@string/search"
                 android:ellipsize="end"
                 android:inputType="textPersonName"
                 android:textSize="18sp" />
