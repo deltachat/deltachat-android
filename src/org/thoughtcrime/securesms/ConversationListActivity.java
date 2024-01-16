@@ -78,6 +78,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 {
   private static final String TAG = ConversationListActivity.class.getSimpleName();
   private static final String OPENPGP4FPR = "openpgp4fpr";
+  private static final String INVITE_PAGE = "i.delta.chat";
   private static final String NDK_ARCH_WARNED = "ndk_arch_warned";
   public static final String CLEAR_NOTIFICATIONS = "clear_notifications";
   public static final String ACCOUNT_ID_EXTRA = "account_id";
@@ -366,11 +367,18 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     if (getIntent() != null &&
             Intent.ACTION_VIEW.equals(getIntent().getAction())) {
       Uri uri = getIntent().getData();
-      if (uri != null && uri.getScheme().equalsIgnoreCase(OPENPGP4FPR)) {
-        String uriString = uri.toString();
-        uriString = uriString.replaceFirst(OPENPGP4FPR, OPENPGP4FPR.toUpperCase());
+      if (uri == null) {
+        return;
+      }
+
+      if (uri.getScheme().equalsIgnoreCase(OPENPGP4FPR)) {
+        String uriString = uri.toString().replaceFirst(OPENPGP4FPR, OPENPGP4FPR.toUpperCase());
         QrCodeHandler qrCodeHandler = new QrCodeHandler(this);
         qrCodeHandler.handleQrData(uriString);
+      } else if (INVITE_PAGE.equals(uri.getHost()) && uri.getEncodedFragment() != null) {
+        String data = OPENPGP4FPR.toUpperCase() + ":" + uri.getEncodedFragment().replaceFirst("&", "#");
+        QrCodeHandler qrCodeHandler = new QrCodeHandler(this);
+        qrCodeHandler.handleQrData(data);
       }
     }
   }
