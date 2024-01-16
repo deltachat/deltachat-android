@@ -13,7 +13,6 @@
     <uses-feature android:name="android.hardware.touchscreen" android:required="false"/>
 
     <!-- dangerous permissions - we need to as the user with a PermissionsRequest -->
-    <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
     <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="32" />
