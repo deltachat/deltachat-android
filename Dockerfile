@@ -1,4 +1,4 @@
-FROM docker.io/ubuntu:18.04
+FROM docker.io/debian:12.4
 
 # Install Android Studio requirements
 # See https://developer.android.com/studio/install#linux
@@ -7,7 +7,7 @@ RUN apt-get update -y \
 wget \
 curl \
 unzip \
-openjdk-11-jre \
+openjdk-17-jre \
 file \
 build-essential \
 && rm -rf /var/lib/apt/lists/*
