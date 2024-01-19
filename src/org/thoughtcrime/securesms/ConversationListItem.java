@@ -154,8 +154,8 @@ public class ConversationListItem extends RelativeLayout
     }
 
     dateView.setCompoundDrawablesWithIntrinsicBounds(
-        thread.getVisibility()==DcChat.DC_CHAT_VISIBILITY_PINNED? R.drawable.ic_pinned_chatlist : 0, 0,
-        thread.isSendingLocations()? R.drawable.ic_location_chatlist : 0, 0
+      thread.isSendingLocations()? R.drawable.ic_location_chatlist : 0, 0,
+      thread.getVisibility()==DcChat.DC_CHAT_VISIBILITY_PINNED? R.drawable.ic_pinned_chatlist : 0, 0
     );
 
     setStatusIcons(thread.getVisibility(), state, unreadCount, thread.isContactRequest(), thread.isMuted() || chatId == DcChat.DC_CHAT_ID_ARCHIVED_LINK);
