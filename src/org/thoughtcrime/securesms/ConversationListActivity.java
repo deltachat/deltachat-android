@@ -82,6 +82,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   private static final String NDK_ARCH_WARNED = "ndk_arch_warned";
   public static final String CLEAR_NOTIFICATIONS = "clear_notifications";
   public static final String ACCOUNT_ID_EXTRA = "account_id";
+  public static final String FROM_WELCOME   = "from_welcome";
 
   private ConversationListFragment conversationListFragment;
   public TextView                  title;
@@ -105,14 +106,17 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
       DcContext dcContext = DcHelper.getContext(this);
       final String deviceMsgId = "update_1_42ai_android";
       if (!dcContext.wasDeviceMsgEverAdded(deviceMsgId)) {
-        DcMsg msg = new DcMsg(dcContext, DcMsg.DC_MSG_IMAGE);
+        DcMsg msg = null;
+        if (!getIntent().getBooleanExtra(FROM_WELCOME, false)) {
+          msg = new DcMsg(dcContext, DcMsg.DC_MSG_IMAGE);
 
-        InputStream inputStream = getResources().getAssets().open("device-messages/green-checkmark.jpg");
-        String outputFile = DcHelper.getBlobdirFile(dcContext, "green-checkmark", ".jpg");
-        Util.copy(inputStream, new FileOutputStream(outputFile));
-        msg.setFile(outputFile, "image/jpeg");
+          InputStream inputStream = getResources().getAssets().open("device-messages/green-checkmark.jpg");
+          String outputFile = DcHelper.getBlobdirFile(dcContext, "green-checkmark", ".jpg");
+          Util.copy(inputStream, new FileOutputStream(outputFile));
+          msg.setFile(outputFile, "image/jpeg");
 
-        msg.setText(getString(R.string.update_1_42_common) + "\n\n" + getString(R.string.update_1_42_android, "https://get.delta.chat/#changelogs"));
+          msg.setText(getString(R.string.update_1_42_common) + "\n\n" + getString(R.string.update_1_42_android, "https://get.delta.chat/#changelogs"));
+        }
         dcContext.addDeviceMsg(deviceMsgId, msg);
       }
     } catch(Exception e) {
