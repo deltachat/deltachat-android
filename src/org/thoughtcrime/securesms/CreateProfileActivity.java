@@ -326,7 +326,9 @@ public class CreateProfileActivity extends BaseActionBarActivity implements Emoj
         if (result) {
           attachmentManager.cleanup();
           if (fromWelcome) {
-            startActivity(new Intent(getApplicationContext(), ConversationListActivity.class));
+            Intent intent = new Intent(getApplicationContext(), ConversationListActivity.class);
+            intent.putExtra(ConversationListActivity.FROM_WELCOME, true);
+            startActivity(intent);
           }
           finish();
         } else        {

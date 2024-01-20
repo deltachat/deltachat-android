@@ -364,7 +364,9 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
             intent.putExtra(CreateProfileActivity.FROM_WELCOME, true);
             startActivity(intent);
         } else {
-            startActivity(new Intent(getApplicationContext(), ConversationListActivity.class));
+            Intent intent = new Intent(getApplicationContext(), ConversationListActivity.class);
+            intent.putExtra(ConversationListActivity.FROM_WELCOME, true);
+            startActivity(intent);
         }
         finish();
     }
