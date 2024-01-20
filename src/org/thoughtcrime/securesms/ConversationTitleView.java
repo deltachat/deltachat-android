@@ -19,7 +19,11 @@ import org.thoughtcrime.securesms.components.AvatarView;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.recipients.Recipient;
+import org.thoughtcrime.securesms.util.DateUtils;
+import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.ViewUtil;
+
+import java.util.Locale;
 
 public class ConversationTitleView extends RelativeLayout {
 
@@ -105,6 +109,12 @@ public class ConversationTitleView extends RelativeLayout {
         DcContact dcContact = dcContext.getContact(chatContacts[0]);
         if (profileView || !dcChat.isProtected()) {
           subtitleStr = dcContact.getAddr();
+        } else {
+          long timestamp = dcContact.getLastSeen();
+          if (timestamp != 0) {
+            Locale locale = DynamicLanguage.getSelectedLocale(context);
+            subtitleStr = context.getString(R.string.last_seen_at, DateUtils.getExtendedTimeSpanString(context, locale, timestamp));
+          }
         }
         isOnline = dcContact.wasSeenRecently();
       }
