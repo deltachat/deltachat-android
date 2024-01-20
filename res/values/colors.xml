@@ -79,7 +79,7 @@
     <color name="reaction_pill_background">#ffffff</color>
     <color name="reaction_pill_border">#88dddddd</color>
     <color name="reaction_pill_text_color">#545863</color>
-    <color name="reaction_pill_background_selected">@color/gray5</color>
+    <color name="reaction_pill_background_selected">@color/light_green</color>
     <color name="reaction_pill_border_selected">@color/reaction_pill_border</color>
     <color name="reaction_pill_text_color_selected">@color/reaction_pill_text_color</color>
 </resources>
