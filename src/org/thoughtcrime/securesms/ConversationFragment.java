@@ -271,6 +271,10 @@ public class ConversationFragment extends MessageSelectorFragment
         }
     }
 
+    public void hideAddReactionView() {
+        addReactionView.hide();
+    }
+
     private void initializeResources() {
         this.chatId            = this.getActivity().getIntent().getIntExtra(ConversationActivity.CHAT_ID_EXTRA, -1);
         this.recipient         = Recipient.from(getActivity(), Address.fromChat((int)this.chatId));
