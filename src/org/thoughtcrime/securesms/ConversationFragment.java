@@ -783,7 +783,7 @@ public class ConversationFragment extends MessageSelectorFragment
                 if (getListAdapter().getSelectedItems().size() == 0) {
                     actionMode.finish();
                 } else {
-                    addReactionView.hide();
+                    hideAddReactionView();
                     Menu menu = actionMode.getMenu();
                     setCorrectMenuVisibility(menu);
                     ConversationAdaptiveActionsToolbar.adjustMenuActions(menu, 10, requireActivity().getWindow().getDecorView().getMeasuredWidth());
@@ -925,12 +925,12 @@ public class ConversationFragment extends MessageSelectorFragment
             }
 
             actionMode = null;
-            addReactionView.hide();
+            hideAddReactionView();
         }
 
         @Override
         public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
-            addReactionView.hide();
+            hideAddReactionView();
             switch(item.getItemId()) {
                 case R.id.menu_context_copy:
                     handleCopyMessage(getListAdapter().getSelectedItems());
