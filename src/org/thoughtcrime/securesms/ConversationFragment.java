@@ -271,6 +271,10 @@ public class ConversationFragment extends MessageSelectorFragment
         }
     }
 
+    public void hideAddReactionView() {
+        addReactionView.hide();
+    }
+
     private void initializeResources() {
         this.chatId            = this.getActivity().getIntent().getIntExtra(ConversationActivity.CHAT_ID_EXTRA, -1);
         this.recipient         = Recipient.from(getActivity(), Address.fromChat((int)this.chatId));
@@ -779,7 +783,7 @@ public class ConversationFragment extends MessageSelectorFragment
                 if (getListAdapter().getSelectedItems().size() == 0) {
                     actionMode.finish();
                 } else {
-                    addReactionView.hide();
+                    hideAddReactionView();
                     Menu menu = actionMode.getMenu();
                     setCorrectMenuVisibility(menu);
                     ConversationAdaptiveActionsToolbar.adjustMenuActions(menu, 10, requireActivity().getWindow().getDecorView().getMeasuredWidth());
@@ -921,12 +925,12 @@ public class ConversationFragment extends MessageSelectorFragment
             }
 
             actionMode = null;
-            addReactionView.hide();
+            hideAddReactionView();
         }
 
         @Override
         public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
-            addReactionView.hide();
+            hideAddReactionView();
             switch(item.getItemId()) {
                 case R.id.menu_context_copy:
                     handleCopyMessage(getListAdapter().getSelectedItems());
