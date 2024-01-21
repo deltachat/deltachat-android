@@ -147,9 +147,8 @@ public class LogViewFragment extends Fragment {
         log.append(separator);
       }
       return log.toString();
-    } catch (IOException ioe) {
-      Log.w(TAG, "IOException when trying to read logcat.", ioe);
-      return null;
+    } catch (Exception e) {
+      return "Error grabbing log: " + e;
     }
   }
 
