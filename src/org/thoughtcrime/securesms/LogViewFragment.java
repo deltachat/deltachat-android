@@ -29,7 +29,6 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.PowerManager;
 import android.text.TextUtils;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,7 +43,6 @@ import com.b44t.messenger.DcContext;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.Prefs;
-import org.thoughtcrime.securesms.util.Scrubber;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -75,12 +73,11 @@ public class LogViewFragment extends Fragment {
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
                            Bundle savedInstanceState) {
-    // Inflate the layout for this fragment
     return inflater.inflate(R.layout.fragment_view_log, container, false);
   }
 
   @Override
-  public void onViewCreated(View view, Bundle savedInstanceState) {
+  public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
 
     logPreview   = (EditText) getView().findViewById(R.id.log_preview);
@@ -165,7 +162,7 @@ public class LogViewFragment extends Fragment {
       if (fragment == null) return null;
 
       return "**This log may contain sensitive information. If you want to post it publicly you may examine and edit it beforehand.**\n\n" +
-          buildDescription(fragment) + "\n" + new Scrubber().scrub(grabLogcat());
+          buildDescription(fragment) + "\n" + grabLogcat();
     }
 
     @Override
