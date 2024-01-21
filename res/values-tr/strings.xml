@@ -907,6 +907,8 @@
     <string name="qraccount_ask_create_and_login_another">\"%1$s\" üzerinde yeni e-posta adresi oluşturulsun ve orada giriş yapılsın mı?\n\nVarolan hesabınız silinmeyecek. Hesaplarınız arasında geçiş yapmak için \"Hesabı Değiştir\" öğesini kullanın.</string>
     <!-- deprecated, use set_name_and_avatar_explain instead -->
     <string name="qraccount_success_enter_name">Giriş başarılı—e-posta adresiniz %1$s\n\nİsterseniz şimdi yazdığınız insanlara görüntülenecek bir ad ve bir profil görseli girebilirsiniz.</string>
+    <string name="set_name_and_avatar_explain">Kişilerinizin tanıyacağı bir ad ayarlayın. Bir profil görseli de ayarlayabilirsiniz.</string>
+    <string name="please_enter_name">Lütfen bir ad girin.</string>
     <string name="qraccount_qr_code_cannot_be_used">Taranan QR kodu, yeni bir hesap ayarlamak için kullanılamıyor.</string>
     <string name="qraccount_use_on_new_install">Taranan QR kodu, yeni bir hesap ayarlamak içindir. QR kodunu yeni bir Delta Chat kurulumu ayarlanırken tarayabilirsiniz.</string>
     <!-- the placeholder will be replaced by the e-mail address of the account -->

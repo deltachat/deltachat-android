@@ -415,7 +415,7 @@
         <item quantity="other">%d nowych wiadomości</item>
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
-    <string name="chat_new_one_to_one_hint">Wyślij wiadomość. Nie szkodzi, jeśli %1$s nie korzysta z Delta Chat.</string>
+    <string name="chat_new_one_to_one_hint">Wyślij wiadomość do %1$s.</string>
     <string name="chat_new_broadcast_hint">Na liście rozgłoszeniowej odbiorcy będą otrzymywać wiadomości w czacie tylko do odczytu.</string>
     <string name="chat_new_group_hint">Napisz pierwszą wiadomość, by inni mogli odpowiedzieć w tej grupie.\n\n• Nie ma problemu, jeśli nie wszyscy członkowie korzystają z Delta Chat.\n\n• Dostarczenie pierwszej wiadomości może chwilę potrwać.</string>
     <string name="chat_record_slide_to_cancel">PRZESUŃ, BY ANULOWAĆ</string>
@@ -937,6 +937,8 @@
     <string name="qraccount_ask_create_and_login_another">Utworzyć nowy adres e-mail „%1$s” i się zalogować?\n\nTwoje istniejące konto nie zostanie usunięte. Użyj opcji „Przełącz konto”, aby przełączać się między kontami.</string>
     <!-- deprecated, use set_name_and_avatar_explain instead -->
     <string name="qraccount_success_enter_name">Logowanie powiodło się – twój adres e-mail to %1$s\n\nJeśli chcesz, możesz teraz wprowadzić nazwę i zdjęcie profilowe, które będą wyświetlane osobom, do których piszesz.</string>
+    <string name="set_name_and_avatar_explain">Ustaw nazwę, którą rozpoznają twoje kontakty. Możesz także ustawić zdjęcie profilowe.</string>
+    <string name="please_enter_name">Wpisz nazwę.</string>
     <string name="qraccount_qr_code_cannot_be_used">Zeskanowanego kodu QR nie można użyć do założenia nowego konta.</string>
     <string name="qraccount_use_on_new_install">Zeskanowany kod QR służy do zakładania nowego konta. Możesz zeskanować kod QR podczas konfigurowania nowej instalacji Delta Chat.</string>
     <!-- the placeholder will be replaced by the e-mail address of the account -->

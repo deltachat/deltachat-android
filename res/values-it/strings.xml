@@ -218,7 +218,7 @@
     <string name="edit_broadcast_list">Modifica Lista Trasmissione</string>
     <string name="broadcast_list_name">Nome Lista Trasmissione</string>
     <string name="please_enter_broadcast_list_name">Per piacere inserisci un nome per la lista trasmissione.</string>
-    <string name="menu_send">Inviato</string>
+    <string name="menu_send">Invia</string>
     <string name="menu_toggle_keyboard">Alterna la Tastiera Emoji</string>
     <string name="menu_edit_group">Modifica Gruppo</string>
     <string name="menu_group_name_and_image">Nome e Immagine Gruppo</string>
@@ -922,6 +922,8 @@
     <string name="qraccount_ask_create_and_login_another">Crea un nuovo indirizzo e-mail su \"%1$s\" e accedi qui?\n\nIl tuo account esistente non verrà eliminato. Utilizza la voce \"Cambia account\" per passare da un account all\'altro.</string>
     <!-- deprecated, use set_name_and_avatar_explain instead -->
     <string name="qraccount_success_enter_name">Accesso completato—il tuo indirizzo email è %1$s\n\nSe vuoi, puoi inserire un nome e un\'immagine profilo che verranno mostrati a chi ti scrive.</string>
+    <string name="set_name_and_avatar_explain">Imposta un nome che i tuoi contatti riconosceranno. Puoi anche impostare un\'immagine del profilo.</string>
+    <string name="please_enter_name">Inserisci un nome.</string>
     <string name="qraccount_qr_code_cannot_be_used">Il codice QR scansionato non può essere utilizzato per creare un nuovo account.</string>
     <string name="qraccount_use_on_new_install">Il codice QR scansionato serve a creare un nuovo account. Puoi scansionare il codice quando configuri una nuova installazione di Delta Chat.</string>
     <!-- the placeholder will be replaced by the e-mail address of the account -->

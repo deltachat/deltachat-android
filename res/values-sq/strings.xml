@@ -904,6 +904,8 @@
     <string name="qraccount_ask_create_and_login_another">Të krijohet adresë e re email në \"%1$s\" dhe të bëhet hyrja atje?\n\nLlogaria juaj ekzistuese s’do të fshihet. Që të kaloni nga një llogari në tjetrën, përdorni zërin \"Ndërroni llogari\".</string>
     <!-- deprecated, use set_name_and_avatar_explain instead -->
     <string name="qraccount_success_enter_name">Hyrje e suksesshme—adresa juaj email është %1$s\n\nNëse doni, tani mund të jepni një emër dhe një figurë avatari që do t’u shfaqet personave që ju shkruajnë.</string>
+    <string name="set_name_and_avatar_explain">Caktoni një emër, që kontaktet tuaj do ta njohin. Mundeni edhe të caktoni një emër profili.</string>
+    <string name="please_enter_name">Ju lutemi, jepni një emër.</string>
     <string name="qraccount_qr_code_cannot_be_used">Kodi QR i skanuar s’mund të përdoret për të ujdisur një llogari të re.</string>
     <string name="qraccount_use_on_new_install">Kodi QR i skanuar është për ujdisje të një llogarie të re. Kodin QR mund ta skanoni kur ujdisni një instalim të ri të Delta Chat-it.</string>
     <!-- the placeholder will be replaced by the e-mail address of the account -->

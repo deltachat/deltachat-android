@@ -999,7 +999,7 @@
     <string name="encryption_info_title_desktop">Verschlüsselungsinformationen</string>
     <string name="delete_message_desktop">Nachricht löschen</string>
     <string name="more_info_desktop">Mehr Informationen</string>
-    <string name="timestamp_format_m_desktop">MMM D</string>
+    <string name="timestamp_format_m_desktop">D MMM</string>
     <string name="remove_desktop">Entfernen</string>
     <string name="save_desktop">Speichern</string>
     <string name="name_desktop">Name</string>
@@ -1089,7 +1089,7 @@
 
 
     <!-- device messages for updates -->
-    <string name="update_1_42_common">Was ist neu:\n\n💌 Eins-Zu-Eins-Chats garantieren jetzt eine Ende-zu-Ende-Verschlüsselung für Kontakte mit einem grünen Häkchen\n\n😌 Der Einfachheit halber markieren wir auch die Chats mit grünen Häkchen\n\n👥 Gruppen werden, wenn möglich, automatisch mit garantierter Ende-zu-Ende-Verschlüsselung erstellt\n\n🔄 Annehmen, Blockieren, Archivieren, Anhefteten und Stummschalten wird nun über alle Geräte hinweg synchronisiert</string>
+    <string name="update_1_42_common">Was ist neu:\n\n💌 Eins-Zu-Eins-Chats garantieren jetzt eine Ende-zu-Ende-Verschlüsselung für Kontakte mit einem grünen Häkchen\n\n😌 Der Einfachheit halber markieren wir auch die Chats mit grünen Häkchen\n\n👥 Gruppen werden, wenn möglich, automatisch mit garantierter Ende-zu-Ende-Verschlüsselung erstellt\n\n🔄 Annehmen, Blockieren, Archivieren, Anheften und Stummschalten wird nun über alle Geräte hinweg synchronisiert</string>
     <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
     <string name="update_1_42_android">Weitere Verbesserungen gibt es in den Bereichen Kamera, Sprachnachrichten, Backup aller Konten, Screenreader, Konto-Hintergrundbilder, Galerie alles auswählen, Webxdc-Querformat ... und mehr unter %1$s</string>
 </resources>

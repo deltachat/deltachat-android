@@ -892,6 +892,8 @@
     <string name="qraccount_ask_create_and_login_another">在“%1$s”创建新的电子邮件地址并登录？\n\n已存在的账户不会被删除。使用“切换账户”来在账户之间切换。</string>
     <!-- deprecated, use set_name_and_avatar_explain instead -->
     <string name="qraccount_success_enter_name">登录成功——电子邮件地址是 %1$s\n\n如果您愿意，您现在可以去设置一个名称和个人资料图片。它们将显示给您发消息到的人。</string>
+    <string name="set_name_and_avatar_explain">设置一个你的联系人认得出的名字。你还可以设置头像图片</string>
+    <string name="please_enter_name">请输入名字</string>
     <string name="qraccount_qr_code_cannot_be_used">无法使用扫描到的二维码建立新账户。</string>
     <string name="qraccount_use_on_new_install">扫描到的二维码是用于设置新帐户的。设置新的 Delta Chat 安装时，您可以扫描此二维码。</string>
     <!-- the placeholder will be replaced by the e-mail address of the account -->

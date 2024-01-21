@@ -415,7 +415,7 @@
         <item quantity="other">%d нових повідомлень</item>
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
-    <string name="chat_new_one_to_one_hint">Відправити повідомлення. Це нічого, якщо %1$s не використовує Delta Chat.</string>
+    <string name="chat_new_one_to_one_hint">Надіслати повідомлення до %1$s.</string>
     <string name="chat_new_broadcast_hint">У списку трансляцій одержувачі будуть отримувати повідомлення у чаті з вами в режимі тільки-для-читання.</string>
     <string name="chat_new_group_hint">Інші побачать цю групу лише після того, як ви надішлете перше повідомлення.</string>
     <string name="chat_record_slide_to_cancel">Рухайте для скасування</string>
@@ -655,7 +655,7 @@
     <string name="pref_outgoing_media_quality">Якість вихідних медіа файлів</string>
     <string name="pref_outgoing_balanced">Збалансовано</string>
     <string name="pref_outgoing_worse">Гірша якість, менший розмір</string>
-    <string name="pref_vibrate">Вібрує</string>
+    <string name="pref_vibrate">Вібрація</string>
     <string name="pref_screen_security">Безпека екрану</string>
     <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_screen_security_explain">Запит на блокування скріншотів у списку останніх і всередині програми</string>
@@ -924,7 +924,7 @@
     <string name="revive_qr_code">Активувати QR-код</string>
     <string name="qrshow_title">QR-код запрошення</string>
     <string name="qrshow_x_joining">%1$s приєднався(-лася).</string>
-    <string name="qrshow_x_verified">%1$s перевірений(-а).</string>
+    <string name="qrshow_x_verified">%1$s перевірено.</string>
     <string name="qrshow_x_has_joined_group">%1$s приєднався(-лася) до групи.</string>
     <string name="qrshow_join_group_title">QR-код запрошення</string>
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
@@ -937,6 +937,8 @@
     <string name="qraccount_ask_create_and_login_another">Створити нову електронну адресу на \"%1$s\" та увійти у неї?\n\nВаш поточний обліковий запис не буде видалено. Використовуйте \"Перемкнути обліковий запис\".</string>
     <!-- deprecated, use set_name_and_avatar_explain instead -->
     <string name="qraccount_success_enter_name">Вхід успішний — ваша ел. адреса %1$s\n\nЯкщо ви бажаєте, ви можете ввести ім\'я та аватар.</string>
+    <string name="set_name_and_avatar_explain">Встановіть ім’я, яке розпізнають ваші контакти. Ви також можете встановити зображення профілю.</string>
+    <string name="please_enter_name">Будь ласка, введіть ім\'я.</string>
     <string name="qraccount_qr_code_cannot_be_used">Зісканований QR-код не може бути використаний для створення нового облікового запису.</string>
     <string name="qraccount_use_on_new_install">Зісканований QR-код для створення нового облікового запису. Ви можете зісканувати QR-код коли налаштовуєте нову інсталяцію.</string>
     <!-- the placeholder will be replaced by the e-mail address of the account -->
@@ -947,7 +949,7 @@
     <string name="secure_join_started">%1$s запросили вас приєднатися до цієї групи.\n\nОчікуємо на відповідь від пристрою %2$s…</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s відповіли, очікуємо на додавання до групи…</string>
-    <string name="contact_verified">%1$s підтверджений(-а)</string>
+    <string name="contact_verified">%1$s підтверджено.</string>
     <string name="contact_not_verified">Неможливо підтвердити %1$s</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">Підтверджено %1$s</string>
