@@ -742,6 +742,8 @@
 
     <!-- Reactions -->
     <string name="reactions">Reactions</string>
+    <!-- Verb, the action of adding a "Reaction" to a message. Used eg. in context menus, similar to "Reply" or "Forward" -->
+    <string name="react">React</string>
 
     <!-- automatically delete message -->
     <string name="delete_old_messages">Delete Old Messages</string>
