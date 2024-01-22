@@ -168,7 +168,7 @@ public class DcHelper {
     dcContext.setStockTranslation(60, context.getString(R.string.login_error_cannot_login));
     dcContext.setStockTranslation(66, context.getString(R.string.location));
     dcContext.setStockTranslation(67, context.getString(R.string.sticker));
-    dcContext.setStockTranslation(68, context.getString(R.string.device_talk));
+    dcContext.setStockTranslation(68, context.getString(R.string.info));
     dcContext.setStockTranslation(69, context.getString(R.string.saved_messages));
     dcContext.setStockTranslation(70, context.getString(R.string.device_talk_explain));
     dcContext.setStockTranslation(71, context.getString(R.string.device_talk_welcome_message2));
