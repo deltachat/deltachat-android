@@ -171,7 +171,7 @@ public class DcHelper {
     dcContext.setStockTranslation(68, context.getString(R.string.device_talk));
     dcContext.setStockTranslation(69, context.getString(R.string.saved_messages));
     dcContext.setStockTranslation(70, context.getString(R.string.device_talk_explain));
-    dcContext.setStockTranslation(71, context.getString(R.string.device_talk_welcome_message));
+    dcContext.setStockTranslation(71, context.getString(R.string.device_talk_welcome_message2));
     dcContext.setStockTranslation(72, context.getString(R.string.systemmsg_unknown_sender_for_chat));
     dcContext.setStockTranslation(73, context.getString(R.string.systemmsg_subject_for_new_contact));
     dcContext.setStockTranslation(74, context.getString(R.string.systemmsg_failed_sending_to));
