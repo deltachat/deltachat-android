@@ -255,6 +255,7 @@ public class DcHelper {
 
     dcContext.setStockTranslation(172, context.getString(R.string.chat_new_group_hint));
     dcContext.setStockTranslation(173, context.getString(R.string.member_x_added));
+    dcContext.setStockTranslation(174, context.getString(R.string.invalid_unencrypted_tap_to_learn_more));
   }
 
   public static File getImexDir() {
