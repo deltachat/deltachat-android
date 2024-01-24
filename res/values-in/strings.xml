@@ -247,6 +247,7 @@
     <string name="device_talk">Pesan perangkat</string>
     <string name="device_talk_subtitle">Pesan-pesan buatan lokal</string>
     <string name="device_talk_explain">Pesan dalam obrolan ini dihasilkan dalam aplikasi Delta Chat anda secara lokal. Para penciptanya memakai obrolan ini untuk memberi tahu aplikasi mutakhir dan masalah-masalah selama digunakan.</string>
+    <!-- deprecated, use device_talk_welcome_message2 instead -->
     <string name="device_talk_welcome_message">Selamat datang di Delta Chat! – Delta Chat tampak dan terasa seperti aplikasi percakapan populer lainnya, tapi tidak menggunakan kontrol yang tersentralisasi, melacak atau menjual anda, teman, kolega atau keluarga ke organisasi-organisasi besar.\n\nSecara teknis, Delta Chat merupakan sebuah aplikasi surel dengan tampilan obrolan modern. Katakanlah surel dengan tampilan baru 👻\n\nGunakan Delta Chat dengan siapa pun dari milyaran orang di luar sana: cukup gunakan alamat surel mereka. Penerima tak harus mengunduh Delta Chat, kunjungi laman atau daftar di mana pun - karena tentu saja, jika mereka menyukai anda, ajaklah mereka ke 👉 https://get.delta.chat</string>
     <string name="edit_contact">Edit kontak</string>
     <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->

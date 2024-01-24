@@ -241,6 +241,7 @@
     <string name="device_talk">기기 메시지</string>
     <string name="device_talk_subtitle">로컬에서 생성된 메시지</string>
     <string name="device_talk_explain">이 채팅의 메시지는 델타 채팅 앱에서 로컬로 생성됩니다. 제작자는 이것을 앱 업데이트와 사용 중 발생하는 문제에 대해 알리기 위해 사용한다.</string>
+    <!-- deprecated, use device_talk_welcome_message2 instead -->
     <string name="device_talk_welcome_message">Delta Chat에 오신 것을 환영합니다! – Delta Chat은 다른 인기 있는 메신저 앱처럼 보여지지만, 여러분, 친구, 동료 또는 가족을 중앙 집중식으로 관리하거나 대규모 조직에 판매하지는 않습니다.\n\n기술적으로, Delta Chat은 현대적인 채팅 인터페이스를 갖춘 이메일 애플리케이션입니다. 👻\n\n 수십 억 명 중 누구와도 델타 채팅을 사용하려면 새 드레스로 이메일을 보내십시오: 이메일 주소를 사용하십시오. 수신자는 Delta Chat을 설치하거나 웹 사이트를 방문하거나 아무 곳에서나 등록할 필요가 없습니다. 하지만 원하는 경우 👉 https://get.delta.chat 을 선택할 수 있습니다.</string>
     <string name="edit_contact">연락처 수정</string>
     <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->

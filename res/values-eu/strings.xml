@@ -166,6 +166,7 @@
     <string name="device_talk">Gailuaren mezuak</string>
     <string name="device_talk_subtitle">Lokalki sortutako mezuak</string>
     <string name="device_talk_explain">Txat honetako mezuak zure Delta Chat aplikazioak sortu ditu lokalki. Egileek aplikazioaren eguneraketei buruz eta erabileran arazoei buruz informatzeko erabiltzen dute.</string>
+    <!-- deprecated, use device_talk_welcome_message2 instead -->
     <string name="device_talk_welcome_message">Ongi etorri Delta Chat-era! Delta Chat beste bat bateko mezularitza aplikazioen itxura du, baina ez du kontrol zentralizaturik, ez dizu jarraitzen edo saltzen, ez zu ez zure lagunak, lankideak edo familia elkarte handi bati.\n\nTeknikoki, Delta Chat e-mail aplikazio bat da interfaze berri batekin. E-maila jantzi berri batekin esan genezake 👻\n\nErabili Delta Chat milaka miloika pertsonekin,  erabili bere e-mail helbidea eta kitto. Hartzaileek ez dute zertan Delta Chat instalatu behar, ez webguneak bisitatu edo izena eman inon. Hala ere, jakina, instalatu nahi badute hona bideratu ditzakezu 👉 https://get.delta.chat</string>
     <string name="edit_contact">Editatu kontaktua</string>
     <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->

@@ -276,6 +276,7 @@
     <string name="device_talk">Mesazhe Pajisjeje</string>
     <string name="device_talk_subtitle">Mesazhe të prodhuar lokalisht</string>
     <string name="device_talk_explain">Mesazhet në këtë fjalosje prodhohen lokalisht nga aplikacioni juaj Delta Chat. Krijuesit e tij e përdorin për t’ju bërë të ditur përditësime dhe probleme gjatë përdorimit.</string>
+    <!-- deprecated, use device_talk_welcome_message2 instead -->
     <string name="device_talk_welcome_message">Mirë se vini te Delta Chat! – Delta Chat duket si aplikacione të tjerë popullorë për shkëmbim mesazhesh, por nuk përmban kontroll të centralizuar, s’ju gjurmon apo shet te ente të mëdha ju, shokët tuaj, kolegët apo familjen tuaj.\n\nTeknikisht, Delta Chat është një aplikacion email me një ndërfaqe moderne. Email me rroba të reja, nëse doni kështu 👻\n\nPërdoreni Delta Chat-in me cilindo prej miliarda vetash: thjesht përdorni adresat e tyre email. Marrësit s’ka nevojë të instalojnë Delta Chat-in, të vizitojnë sajte apo të regjistrohen diku - por sigurisht, nëse duan, mund t’i drejtoni te 👉 https://get.delta.chat</string>
     <string name="edit_contact">Përpunoni kontaktin</string>
     <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
@@ -739,7 +740,6 @@
 
     <!-- Reactions -->
     <string name="reactions">Reagime</string>
-
     <!-- automatically delete message -->
     <string name="delete_old_messages">Fshiji mesazhet e vjetër</string>
     <string name="autodel_device_title">Fshini mesazhe prej pajisjes</string>

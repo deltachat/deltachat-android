@@ -209,6 +209,7 @@
     <string name="device_talk">デバイスのメッセージ</string>
     <string name="device_talk_subtitle">ローカルで生成されたメッセージ</string>
     <string name="device_talk_explain">このチャットのメッセージはアプリで生成されます。アプリ開発者はアップデートや問題点をお知らせするために使用しています。</string>
+    <!-- deprecated, use device_talk_welcome_message2 instead -->
     <string name="device_talk_welcome_message">Delta Chatへようこそ。Delta Chatは人気のメッセンジャーアプリに似ていますが、中央集権・トラッキング・個人情報の販売が実施されていません。具体的端正なチャットインターフェースを実装したメールアプリです。
 メールアドレスがあれば誰とでもDelta Chatを使えます。受信者がDelta Chatをインストールしなくてもメッセージが届きますが、お気軽に https://get.delta.chat を教えてください。</string>
     <string name="edit_contact">連絡先を編集</string>

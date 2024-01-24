@@ -270,6 +270,7 @@
     <string name="device_talk">Tin nhắn thiết bị</string>
     <string name="device_talk_subtitle">Tin nhắn được tạo cục bộ</string>
     <string name="device_talk_explain">Tin nhắn trong cuộc trò chuyện này được tạo trên thiết bị của bạn để thông báo về các bản cập nhật ứng dụng và sự cố trong quá trình sử dụng.</string>
+    <!-- deprecated, use device_talk_welcome_message2 instead -->
     <string name="device_talk_welcome_message">Chào mừng bạn đến với Delta Chat! – Delta Chat có giao diện giống như các ứng dụng nhắn tin phổ biến khác nhưng không liên quan đến việc kiểm soát tập trung, theo dõi hoặc bán bạn, bạn bè, đồng nghiệp hoặc gia đình cho các tổ chức lớn.\n\nVề mặt kỹ thuật, Delta Chat là một ứng dụng e-mail hiện đại giao diện trò chuyện. Gửi email trong bộ váy mới nếu bạn muốn 👻\n\nSử dụng Delta Chat với bất kỳ ai trong số hàng tỷ người: chỉ cần sử dụng địa chỉ e-mail của họ. Người nhận không cần cài đặt Delta Chat, truy cập trang web hoặc đăng ký ở bất kỳ đâu - tuy nhiên, tất nhiên, nếu họ thích, bạn có thể chỉ họ tới 👉 https://get.delta.chat</string>
     <string name="edit_contact">Chỉnh sửa liên hệ</string>
     <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
@@ -727,7 +728,6 @@
 
     <!-- Reactions -->
     <string name="reactions">Phản ứng</string>
-
     <!-- automatically delete message -->
     <string name="delete_old_messages">Xóa tin nhắn cũ</string>
     <string name="autodel_device_title">Xóa tin nhắn khỏi thiết bị</string>

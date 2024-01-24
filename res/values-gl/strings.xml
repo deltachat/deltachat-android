@@ -255,6 +255,7 @@
     <string name="device_talk">Mensaxes do dispositivo</string>
     <string name="device_talk_subtitle">Mensaxes xeradas localmente</string>
     <string name="device_talk_explain">As mensaxes de esta conversa xéranse localmente na túa app Delta Chat. Os creadores utilízanas para informar acerca de actualizacións e problemas durante a utilización.</string>
+    <!-- deprecated, use device_talk_welcome_message2 instead -->
     <string name="device_talk_welcome_message">Benvida a Delta Chat! – Delta Chat ten o aspecto de outras apps de mensaxería, pero non implica que teña un control centralizado, rastrexo ou que te venda a ti, aos teus amigos, colegas ou familia as megacorporacións.\n\nTécnicamente, Delta Chat é unha aplicación de correo electrónico cunha interface moderna de mensaxería. O correo travestido, se así o prefires 👻\n\nUtiliza Delta Chat con millóns de persoas: simplemente utiliza o seu enderezo de correo electrónico. Os correspondentes non precisan instalar Delta Chat, visitar sitios web ou rexistrarse en ningún lugar - claro que, por suposto, se queren, podes convidalos a  👉 https://get.delta.chat</string>
     <string name="edit_contact">Editar contacto</string>
     <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->

@@ -249,6 +249,7 @@
     <string name="device_talk">Laitteen viestit</string>
     <string name="device_talk_subtitle">Paikallisesti luodut viestit</string>
     <string name="device_talk_explain">Viestit tässä keskustelussa luodaan paikallisesti Delta Chat -sovelluksessa. Kehittäjät ilmoittavat niiden avulla sovelluksen päivityksistä ja mahdollisista ongelmista.</string>
+    <!-- deprecated, use device_talk_welcome_message2 instead -->
     <string name="device_talk_welcome_message">Tervetuloa Delta Chatiin! – Delta Chat näyttää ja tuntuu samalta kuin suositut pikaviestintäsovellukset, kuitenkin ilman keskitettyä kontrollia, seurantaa tai käyttäjien tietojen myymistä isoille yrityksille.\n\nTeknisesti Delta Chat on sähköpostisovellus nykyaikaisella pikaviestikäyttöliittymällä. Sähköposti uusissa vaatteissa, jos niin voi sanoa 👻\n\nDelta Chat toimii miljardien ihmisten kanssa: lähetä vain viesti heidän sähköpostiosoitteeseensa. Viestien vastaanottajien ei tarvitse asentaa Delta Chatia, käydä nettisivustoilla tai liittyä mihinkään - paitsi jos he haluavat. Silloin voit ohjata heidät osoitteeseen 👉 https://get.delta.chat</string>
     <string name="edit_contact">Muokkaa yhteystietoa</string>
     <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->

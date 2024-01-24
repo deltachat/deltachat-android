@@ -212,6 +212,7 @@
     <string name="device_talk">Zprávy přístroje</string>
     <string name="device_talk_subtitle">Samovytvořené zprávy</string>
     <string name="device_talk_explain">Zprávy v tomto hovoru jsou vytvořeny aplikací Delta Chat. Její tvůrci tak informují o aktualizacích a potížích při používání.</string>
+    <!-- deprecated, use device_talk_welcome_message2 instead -->
     <string name="device_talk_welcome_message">Vítej v Delta Chatu! – Delta Chat se chová jako všeobecně známé chatovací aplikace, ale bez centralizované kontroly, sledování. Neprodává zážitky tvých přátel, kolegů, rodiny ani tvé vlastní velkým organizacím.\n\nTechnicky je Delta Chat e-mailový program, ale s uživatelským rozhraním chatu. Převlečený e-mail, chceš-li. Delta Chat používej s kýmkoli z miliard lidí; prostě použij jejich e-mailovou adresu. Příjemce si nemusí Delta Chat instalovat, ani se přihlašovat přes nové webové stránky. Můžeš je však, budou-li chtít, odkázat na 👉 https://get.delta.chat</string>
     <string name="edit_contact">Uprav kontakt</string>
     <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->

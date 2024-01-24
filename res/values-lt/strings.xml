@@ -602,7 +602,6 @@
 
     <!-- Reactions -->
     <string name="reactions">Reakcijos</string>
-
     <!-- automatically delete message -->
     <string name="delete_old_messages">Ištrinti senas žinutes</string>
     <string name="autodel_device_title">Ištrinti žinutes iš įrenginio</string>

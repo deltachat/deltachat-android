@@ -245,6 +245,7 @@
     <string name="device_talk">Missatges del dispositiu</string>
     <string name="device_talk_subtitle">Missatges generats localment</string>
     <string name="device_talk_explain">Els missatges d\'aquest xat són generats localment per la vostra app de Delta Chat. Els seus creadors els usen per informar-vos d\'actualitzacions de l\'app i problemes durant el seu ús.</string>
+    <!-- deprecated, use device_talk_welcome_message2 instead -->
     <string name="device_talk_welcome_message">Benvingut a Delta Chat! – Delta Chat te la pinta d\'altres apps de missatgeria, però no comporta un control centralitzat, ni un seguiment o una venda teva ni dels teus amics, col·legues o família a una corporació.\n\nTecnicament, Delta Chat és una aplicació de  correu electrònic amb una interfície de xat moderna. Per dir-ho així, correu electrònic en un vestit nou 👻\n\nUseu Delta Chat amb qualsevol dels milers de milions de persones: només us cal la seva adreça de correu electrònic. Als destinataris no els cal instal·lar-se Delta Chat, visitar webs o donar-se d\'alta enlloc - tot i que, només faltaria, si volen, els podeu adreçar a 👉 https://get.delta.chat</string>
     <string name="edit_contact">Edita el contacte</string>
     <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->

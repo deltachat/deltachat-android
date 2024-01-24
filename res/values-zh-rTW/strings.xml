@@ -230,6 +230,7 @@
     <string name="device_talk">裝置訊息</string>
     <string name="device_talk_subtitle">本機產生的訊息</string>
     <string name="device_talk_explain">這個聊天室內的訊息是由 Delta Chat 軟體在本地產生的。開發者會在這裡發送軟體更新和使用幫助。</string>
+    <!-- deprecated, use device_talk_welcome_message2 instead -->
     <string name="device_talk_welcome_message">歡迎使用 Delta Chat！Delta Chat 看起來就如同大部分的聊天軟體一樣，但並沒有集中式的控制，且不會追蹤或販賣你、或與你有關人士的資料給大公司。\n\n嚴格來說，Delta Chat 是一款擁有聊天界面的電子郵件軟體；簡單來說就是幫電子郵件穿上新衣啦👻\n\n使用 Delta Chat 來跟全世界的人溝通，全程只需要他們的電郵地址。對方不需要安裝 Delta Chat、造訪網頁或額外註冊帳號 - 但如果他們想要的話，你也可以透過這個連結來分享給他們 👉 https://get.delta.chat</string>
     <string name="edit_contact">編輯聯絡人</string>
     <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->

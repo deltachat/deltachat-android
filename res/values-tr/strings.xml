@@ -278,6 +278,7 @@
     <string name="device_talk">Aygıt İletileri</string>
     <string name="device_talk_subtitle">Yerel olarak oluşturulan iletiler</string>
     <string name="device_talk_explain">Bu sohbetteki iletiler, uygulama güncelleştirmeleri ve kullanım sırasındaki sorunlar hakkında bilgilendirmek için aygıtınızda oluşturulur.</string>
+    <!-- deprecated, use device_talk_welcome_message2 instead -->
     <string name="device_talk_welcome_message">Delta Chat\'e hoş geldiniz! – Delta Chat, diğer yaygın ulak uygulamaları gibi görünür ve hissettirir; ama merkezi denetim, izleme içermez ya da sizi, arkadaşlarınızı, iş arkadaşlarınızı ya da ailenizi büyük kuruluşlara satmaz.\n\nTeknik olarak Delta Chat, çağdaş bir sohbet arabirimli bir e-posta uygulamasıdır. 👻 olacaksanız, e-posta yeni bir elbisedir\n\nMilyarlarca insanın herhangi biriyle Delta Chat kullanın: Yalnızca onların e-posta adresini kullanın. Alıcıların Delta Chat\'i kurması, web sitelerini ziyaret etmesi ya da herhangi bir yere kaydolması gerekmez - ancak elbette isterlerse onlara 👉 https://get.delta.chat adresini işaret edebilirsiniz</string>
     <string name="edit_contact">Kişiyi Düzenle</string>
     <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
@@ -742,6 +743,8 @@
 
     <!-- Reactions -->
     <string name="reactions">Tepkiler</string>
+    <!-- Verb, the action of adding a "Reaction" to a message. Used eg. in context menus, similar to "Reply" or "Forward" -->
+    <string name="react">Tepki Ver</string>
 
     <!-- automatically delete message -->
     <string name="delete_old_messages">Eski İletileri Sil</string>

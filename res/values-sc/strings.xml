@@ -181,6 +181,7 @@
     <string name="device_talk">Messàgios de su dispositivu</string>
     <string name="device_talk_subtitle">Messàgios ingendrados localmente</string>
     <string name="device_talk_explain">Sos messàgios in custa tzarrada benint ingendrados localmente dae s\'aplicatzone Delta Chat tua. Sos isvilupadores los impreant pro informare a pitzu de sos agiornamentos de s\'aplicatzione e de problemas durante s\'impreu.</string>
+    <!-- deprecated, use device_talk_welcome_message2 instead -->
     <string name="device_talk_welcome_message">Bene bènnidu in Delta Chat! – Delta Chat paret simigiante a àteras aplicatziones populares pro imbiare messàgios, ma non tenet controllos tzentralizados, arrastamentu o bèndida de sos datos tuos, de sos collegas tuos o de sos familiares tuos a organizatziones mannas.\n\nTecnicamente, Delta Chat est un\'aplicatzione de posta eletrònica cun un\'interfache de tzarrada moderna. Sa posta eletrònica in una bestimenta noa, diamus pòdere nàrrere 👻\n\nImprea Delta Chat cun chie si siat: depes impreare petzi s\'indiritzu de posta eletrònica issoro. Sos destinatàrios non tenent bisòngiu de installare Delta Chat, de bisitare sitos web o de si registrare in noddue - ma craru chi, si sunt interessados, li podes nàrrere de andare a s\'indiritzu 👉 https://get.delta.chat</string>
     <string name="edit_contact">Modìfica su cuntatu</string>
     <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->

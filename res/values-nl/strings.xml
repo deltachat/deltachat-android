@@ -278,6 +278,7 @@
     <string name="device_talk">Berichten op apparaat</string>
     <string name="device_talk_subtitle">Lokaal gegenereerde berichten</string>
     <string name="device_talk_explain">Berichten in dit gesprek worden geplaatst door de app zelf. Zo blijf je op de hoogte van app-updates en gebruiksproblemen.</string>
+    <!-- deprecated, use device_talk_welcome_message2 instead -->
     <string name="device_talk_welcome_message">Welkom bij Delta Chat! Delta Chat lijkt heel erg op andere chatapps, maar is toch écht anders! Zo is er geen centraal beheer, wordt je niet gevolgd en worden jouw gegevens of die van je vrienden/familie niet verkocht aan bedrijven.\n\nTechnisch gesproken is het een e-mailapp in een modern jasje (of moderne jurk 👻).\n\nGebruik Delta Chat om te communiceren met iedereen die een e-mailadres heeft. Ontvangers hoeven het niet te installeren, naar een website te gaan of ergens te registreren. Maar als ze dat willen, kun je ze natuurlijk altíjd doorverwijzen naar 👉 https://get.delta.chat</string>
     <string name="edit_contact">Contactpersoon bewerken</string>
     <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
@@ -742,6 +743,8 @@
 
     <!-- Reactions -->
     <string name="reactions">Reacties</string>
+    <!-- Verb, the action of adding a "Reaction" to a message. Used eg. in context menus, similar to "Reply" or "Forward" -->
+    <string name="react">Reageren</string>
 
     <!-- automatically delete message -->
     <string name="delete_old_messages">Oude berichten verwijderen</string>

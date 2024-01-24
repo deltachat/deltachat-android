@@ -270,6 +270,7 @@
     <string name="device_talk">设备消息</string>
     <string name="device_talk_subtitle">本地生成的消息</string>
     <string name="device_talk_explain">此聊天中的消息是由 Delta Chat 应用本地生成的。 它的制作者使用它来通知应用更新和使用过程中出现的问题。</string>
+    <!-- deprecated, use device_talk_welcome_message2 instead -->
     <string name="device_talk_welcome_message">欢迎使用 Delta Chat！ – Delta Chat 看起来、用起来就跟其他流行的通讯应用一样，但是却不涉及中心化的控制、跟踪以及将您、朋友、同事或家庭出卖给大型组织。\n\n从技术上来说，Delta Chat 是具有现代聊天界面的电子邮件应用程序。若您愿意，电子邮件将装扮一新👻\n\n与数十亿人中的任何人一起使用 Delta Chat：只需使用他们的电子邮件地址即可。收件人不需要安装 Delta Chat、访问网站或是在什么地方注册 - 当然，如果他们愿意，您可以指给他们👉 https://get.delta.chat</string>
     <string name="edit_contact">编辑联系人</string>
     <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
@@ -727,6 +728,8 @@
 
     <!-- Reactions -->
     <string name="reactions">回应</string>
+    <!-- Verb, the action of adding a "Reaction" to a message. Used eg. in context menus, similar to "Reply" or "Forward" -->
+    <string name="react">回应</string>
 
     <!-- automatically delete message -->
     <string name="delete_old_messages">删除旧消息</string>

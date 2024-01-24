@@ -284,6 +284,7 @@
     <string name="device_talk">Messages de l\'appareil</string>
     <string name="device_talk_subtitle">Messages générés localement</string>
     <string name="device_talk_explain">Les messages dans cette discussion sont générés localement par votre application Delta Chat. Cela vous permet de recevoir des informations concernant les mises à jour et problèmes rencontrés à l\'utilisation.</string>
+    <!-- deprecated, use device_talk_welcome_message2 instead -->
     <string name="device_talk_welcome_message">Bienvenue sur Delta Chat ! – Delta Chat ressemble à d\'autres applications de messagerie populaires, mais n\'implique pas un contrôle centralisé, le traçage ou la revente de vos données, de celles de vos amis, vos collègues ou votre famille à de grandes organisations.\n\nD\'un point de vue technique, Delta Chat est une application de courrier électronique avec une interface de discussion instantanée moderne. Un courriel retoiletté si vous voulez 👻\n\nUtilisez Delta Chat avec n\'importe qui parmi des milliards de personnes : vous avez seulement besoin de leur adresse de courriel. Les destinataires n\'ont pas besoin d\'installer Delta Chat, d\'accéder à des sites internet ni de s\'inscrire où que ce soit – mais s\'ils le souhaitent, vous pouvez évidemment les diriger vers 👉 https://get.delta.chat </string>
     <string name="edit_contact">Mettre à jour le contact</string>
     <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
@@ -755,7 +756,6 @@
 
     <!-- Reactions -->
     <string name="reactions">Réactions</string>
-
     <!-- automatically delete message -->
     <string name="delete_old_messages">Supprimer les anciens messages</string>
     <string name="autodel_device_title">Supprimer les messages de l\'appareil</string>

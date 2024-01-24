@@ -294,6 +294,7 @@
     <string name="device_talk">Komunikaty urządzenia</string>
     <string name="device_talk_subtitle">Wiadomości generowane lokalnie</string>
     <string name="device_talk_explain">Wiadomości w tym czacie są generowane lokalnie przez twoją aplikację Delta Chat. Twórcy używają go do informowania o aktualizacjach aplikacji i problemach podczas użytkowania.</string>
+    <!-- deprecated, use device_talk_welcome_message2 instead -->
     <string name="device_talk_welcome_message">Witamy w Delta Chat! - Delta Chat wygląda i działa podobnie jak inne popularne komunikatory, ale nie miesza się w scentralizowaną kontrolę, śledzenie ani sprzedaż ciebie, przyjaciół, kolegów lub rodziny dużym organizacjom.\n\nTechnicznie Delta Chat jest aplikacją e-mail z nowoczesnym interfejsem czatu. Jeśli chcesz, wyślij e-mail w nowej sukience 👻.\n\nKorzystaj z Delta Chat z każdym spośród miliardów ludzi: po prostu użyj ich adresu e-mail. Odbiorcy nie muszą instalować Delta Chat, odwiedzać stron internetowych ani rejestrować się gdziekolwiek - oczywiście, jeśli im się spodoba, możesz ich skierować na 👉 https://get.delta.chat.</string>
     <string name="edit_contact">Edytuj kontakt</string>
     <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
@@ -772,6 +773,8 @@
 
     <!-- Reactions -->
     <string name="reactions">Reakcje</string>
+    <!-- Verb, the action of adding a "Reaction" to a message. Used eg. in context menus, similar to "Reply" or "Forward" -->
+    <string name="react">Zareaguj</string>
 
     <!-- automatically delete message -->
     <string name="delete_old_messages">Usuwanie starych wiadomości</string>
