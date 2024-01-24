@@ -82,7 +82,8 @@ public abstract class BaseConversationItem extends LinearLayout
     return batchSelected.isEmpty()
             && (messageRecord.isFailed()
                 || messageRecord.getInfoType() == DcMsg.DC_INFO_PROTECTION_DISABLED
-                || messageRecord.getInfoType() == DcMsg.DC_INFO_PROTECTION_ENABLED);
+                || messageRecord.getInfoType() == DcMsg.DC_INFO_PROTECTION_ENABLED
+                || messageRecord.getInfoType() == DcMsg.DC_INFO_INVALID_UNENCRYPTED_MAIL);
   }
 
   protected void onAccessibilityClick() {}
@@ -132,6 +133,8 @@ public abstract class BaseConversationItem extends LinearLayout
         DcHelper.showVerificationBrokenDialog(context, conversationRecipient.getName());
       } else if (messageRecord.getInfoType() == DcMsg.DC_INFO_PROTECTION_ENABLED) {
         DcHelper.showProtectionEnabledDialog(context);
+      } else if (messageRecord.getInfoType() == DcMsg.DC_INFO_INVALID_UNENCRYPTED_MAIL) {
+        DcHelper.showInvalidUnencryptedDialog(context);
       }
     }
   }

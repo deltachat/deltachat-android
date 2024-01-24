@@ -470,6 +470,16 @@ public class DcHelper {
       .show();
   }
 
+  public static void showInvalidUnencryptedDialog(Context context) {
+    new AlertDialog.Builder(context)
+      .setMessage(context.getString(R.string.invalid_unencrypted_explanation))
+      .setNeutralButton(R.string.learn_more, (d, w) -> openHelp(context, "#howtoe2ee"))
+      .setNegativeButton(R.string.qrscan_title, (d, w) -> context.startActivity(new Intent(context, QrActivity.class)))
+      .setPositiveButton(R.string.ok, null)
+      .setCancelable(true)
+      .show();
+  }
+
   public static void openHelp(Context context, String section) {
     Intent intent = new Intent(context, LocalHelpActivity.class);
     if (section != null) { intent.putExtra(LocalHelpActivity.SECTION_EXTRA, section); }

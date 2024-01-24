@@ -33,6 +33,7 @@ public class DcMsg {
     public final static int DC_INFO_EPHEMERAL_TIMER_CHANGED   = 10;
     public final static int DC_INFO_PROTECTION_ENABLED        = 11;
     public final static int DC_INFO_PROTECTION_DISABLED       = 12;
+    public final static int DC_INFO_INVALID_UNENCRYPTED_MAIL  = 13;
     public final static int DC_INFO_WEBXDC_INFO_MESSAGE       = 32;
 
     public final static int DC_STATE_UNDEFINED =  0;
