@@ -53,6 +53,9 @@ public class ConversationUpdateItem extends BaseConversationItem
     bodyText.setOnLongClickListener(passthroughClickListener);
     bodyText.setOnClickListener(passthroughClickListener);
 
+    // info messages do not contain links but domains (eg. invalid_unencrypted_tap_to_learn_more),
+    // however, they should not be linkified to not disturb eg. "Tap to learn more".
+    bodyText.setAutoLinkMask(0);
   }
 
   @Override
