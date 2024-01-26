@@ -863,6 +863,8 @@
     <string name="chat_protection_enabled_explanation">Artık bu sohbetteki tüm iletiler uçtan uca şifreleme güvencelidir.\n\nUçtan uca şifreleme, iletilerinizi sizin ve sohbet ortaklarınızın arasında özel tutar. E-posta sağlayıcınız bile onları okuyamaz.</string>
     <string name="chat_protection_broken_tap_to_learn_more">%1$s başka bir aygıttan bir ileti gönderdi. Daha fazlasını öğrenmek için dokunun.</string>
     <string name="chat_protection_broken_explanation">Uçtan uca şifreleme artık güvencelenemiyor; çünkü büyük olasılıkla %1$s Delta Chat\'i yeniden yükledi ya da başka bir aygıttan ileti gönderdi.\n\nOnlarla kişisel olarak tanışabilir ve güvenceli uçtan uca şifrelemeyi yeniden kurmak için onların QR kodunu yeniden tarayabilirsiniz.</string>
+    <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s, bu sohbet için henüz ayarlanmayan uçtan uca şifrelemeyi gerektirir. Daha fazlasını öğrenmek için dokunun.</string>
+    <string name="invalid_unencrypted_explanation">Uçtan uca şifrelemeyi kurmak için kişilerle kişisel olarak tanışabilir ve onları tanıtmak için onların QR kodunu tarayabilirsiniz.</string>
     <string name="learn_more">Daha Fazlasını Öğrenin</string>
 
     <string name="devicemsg_self_deleted">\"Kaydedilen iletiler\" sohbetini sildiniz.\n\nℹ️ \"Kaydedilen iletiler\" özelliğini yeniden kullanmak için kendinizle yeni bir sohbet oluşturun.</string>

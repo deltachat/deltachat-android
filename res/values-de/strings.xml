@@ -864,6 +864,8 @@
     <string name="chat_protection_enabled_explanation">Es ist nun garantiert, dass alle Nachrichten in diesem Chat Ende-zu-Ende verschlüsselt sind.\n\nDurch die Ende-zu-Ende-Verschlüsselung bleiben die Nachrichten zwischen Ihnen und Ihren Chat-Partnern privat. Nicht einmal Ihr E-Mail-Anbieter kann sie lesen.</string>
     <string name="chat_protection_broken_tap_to_learn_more">%1$s hat eine Nachricht von einem anderen Gerät gesendet. Tippen, um mehr zu erfahren.</string>
     <string name="chat_protection_broken_explanation">Die Ende-zu-Ende-Verschlüsselung kann nicht mehr garantiert werden, wahrscheinlich weil %1$s Delta Chat neu installiert oder eine Nachricht von einem anderen Gerät gesendet hat.\n\n Sie können ihn persönlich treffen und seinen QR-Code erneut scannen, um die garantierte Ende-zu-Ende-Verschlüsselung wiederherzustellen.</string>
+    <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s verlangt eine Ende-zu-Ende-Verschlüsselung, die für diesen Chat noch nicht hergestellt wurde. Tippen, um mehr zu erfahren.</string>
+    <string name="invalid_unencrypted_explanation">Um eine Ende-zu-Ende-Verschlüsselung herzustellen, können Sie Kontakte persönlich treffen und ihren QR-Code scannen.</string>
     <string name="learn_more">Mehr erfahren</string>
 
     <string name="devicemsg_self_deleted">Sie haben den Chat \"Gespeicherte Nachrichten\" gelöscht.\n\nℹ️ Um die Funktion \"Gespeicherte Nachrichten\" erneut zu verwenden, erstellen Sie einfach einen Chat mit sich selbst.</string>

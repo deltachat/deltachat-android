@@ -288,6 +288,7 @@
     <string name="device_talk_explain">I messaggi in questa chat vengono generati localmente da Delta Chat. Gli sviluppatori li usano per informarti sugli aggiornamenti o sui problemi di utilizzo.</string>
     <!-- deprecated, use device_talk_welcome_message2 instead -->
     <string name="device_talk_welcome_message">Benvenuto in Delta Chat! - Delta Chat ha l\'aspetto e lo stile di altre popolari applicazioni di messaggistica, ma non costringe a un controllo centralizzato, al tracciamento o alla vendita dei dati personali tuoi, dei tuoi amici, colleghi o familiari a grandi organizzazioni.\n\nTecnicamente, Delta Chat è un\'applicazione di posta elettronica con un\'interfaccia moderna. L\'e-mail in una nuova veste 👻\n\nUtilizza Delta Chat con chiunque: basta conoscere il loro indirizzo e-mail. I destinatari non hanno bisogno di installare Delta Chat, visitare siti web o iscriversi da nessuna parte - ma, naturalmente se lo desiderano, puoi suggerirgli 👉 https://get.delta.chat</string>
+    <string name="device_talk_welcome_message2">Mettiti in contatto!\n\n🙌 Tocca \"Codice QR\" sulla schermata principale di entrambi i dispositivi. Scegli \"Scansiona codice QR\" su un dispositivo e puntalo verso l\'altro\n\n🌍 Se non siete nella stessa stanza, esegui la scansione tramite videochiamata o condividi un collegamento di invito da \"Scansiona codice QR\"\n\nQuindi: goditi la ​​tua esperienza di messaggistica sulla più grande rete decentralizzata mai esistita: l\'E-mail. E a differenza di altre app popolari, senza controllo centrale né monitoraggio o vendita dati tuoi, dei tuoi amici, colleghi o familiari a grandi organizzazioni.</string>
     <string name="edit_contact">Modifica Contatto</string>
     <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
     <string name="pin_chat">Fissa Chat</string>
@@ -878,6 +879,8 @@
     <string name="chat_protection_enabled_explanation">Ora è garantito che tutti i messaggi in questa chat siano crittografati end-to-end.\n\nLa crittografia end-to-end mantiene i messaggi privati ​​tra te e i tuoi partner di chat. Nemmeno il tuo provider e-mail può leggerli.</string>
     <string name="chat_protection_broken_tap_to_learn_more">%1$s ha inviato un messaggio da un altro dispositivo. Tocca per saperne di più.</string>
     <string name="chat_protection_broken_explanation">La crittografia end-to-end non può più essere garantita, probabilmente perché %1$s ha reinstallato Delta Chat o inviato un messaggio da un altro dispositivo.\n\nPuoi incontrarlo di persona e scansionare nuovamente il suo Codice QR per ristabilire la crittografia end-to-end garantita.</string>
+    <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s richiede la crittografia end-to-end che non è ancora configurata per questa chat. Tocca per saperne di più.</string>
+    <string name="invalid_unencrypted_explanation">Per stabilire la crittografia end-to-end, potresti incontrare i contatti di persona e scansionare il loro codice QR per presentarli.</string>
     <string name="learn_more">Per Saperne di Più</string>
 
     <string name="devicemsg_self_deleted">Hai eliminato la chat \"Messaggi salvati\".\n\nℹ️ Per utilizzare nuovamente la funzione \"Messaggi salvati\", crea una nuova chat con te stesso.</string>
