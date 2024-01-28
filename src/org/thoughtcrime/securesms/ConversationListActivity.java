@@ -28,6 +28,7 @@ import static org.thoughtcrime.securesms.util.RelayUtil.isRelayingMessageContent
 import static org.thoughtcrime.securesms.util.RelayUtil.resetRelayingMessageContent;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -46,6 +47,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
 import androidx.appcompat.widget.TooltipCompat;
 
+import com.amulyakhare.textdrawable.TextDrawable;
+import com.b44t.messenger.DcAccounts;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMsg;
@@ -69,6 +72,7 @@ import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.SendRelayedMessageUtil;
 import org.thoughtcrime.securesms.util.Util;
+import org.thoughtcrime.securesms.util.ViewUtil;
 
 import java.io.FileOutputStream;
 import java.io.InputStream;
@@ -87,10 +91,12 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   private ConversationListFragment conversationListFragment;
   public TextView                  title;
   private AvatarImageView          selfAvatar;
+  private ImageView                unreadIndicator;
   private SearchFragment           searchFragment;
   private SearchToolbar            searchToolbar;
   private ImageView                searchAction;
   private ViewGroup                fragmentContainer;
+  private ViewGroup                selfAvatarContainer;
 
   @Override
   protected void onPreCreate() {
@@ -129,6 +135,8 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     Toolbar toolbar = findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
     selfAvatar               = findViewById(R.id.self_avatar);
+    selfAvatarContainer      = findViewById(R.id.self_avatar_container);
+    unreadIndicator          = findViewById(R.id.unread_indicator);
     title                    = findViewById(R.id.toolbar_title);
     searchToolbar            = findViewById(R.id.search_toolbar);
     searchAction             = findViewById(R.id.search_action);
@@ -229,6 +237,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     }
 
     refreshAvatar();
+    refreshUnreadIndicator();
     refreshTitle();
     handleOpenpgp4fpr();
     if (isDirectSharing(this)) {
@@ -257,9 +266,9 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 
   public void refreshAvatar() {
     if (isRelayingMessageContent(this)) {
-      selfAvatar.setVisibility(View.GONE);
+      selfAvatarContainer.setVisibility(View.GONE);
     } else {
-      selfAvatar.setVisibility(View.VISIBLE);
+      selfAvatarContainer.setVisibility(View.VISIBLE);
       DcContext dcContext = DcHelper.getContext(this);
       DcContact self = dcContext.getContact(DcContact.DC_CONTACT_ID_SELF);
       String name = dcContext.getConfig("displayname");
@@ -267,6 +276,31 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
         name = self.getAddr();
       }
       selfAvatar.setAvatar(GlideApp.with(this), new Recipient(this, self, name), false);
+    }
+  }
+
+  public void refreshUnreadIndicator() {
+    int unreadCount = 0;
+    DcAccounts dcAccounts = DcHelper.getAccounts(this);
+    int skipId = dcAccounts.getSelectedAccount().getAccountId();
+    for (int accountId : dcAccounts.getAll()) {
+      if (accountId != skipId) {
+        unreadCount += dcAccounts.getAccount(accountId).getFreshMsgs().length;
+      }
+    }
+
+    if(unreadCount == 0) {
+      unreadIndicator.setVisibility(View.GONE);
+    } else {
+      unreadIndicator.setImageDrawable(TextDrawable.builder()
+              .beginConfig()
+              .width(ViewUtil.dpToPx(this, 24))
+              .height(ViewUtil.dpToPx(this, 24))
+              .textColor(Color.WHITE)
+              .bold()
+              .endConfig()
+              .buildRound(String.valueOf(unreadCount), getResources().getColor(R.color.unread_count)));
+      unreadIndicator.setVisibility(View.VISIBLE);
     }
   }
 
@@ -390,7 +424,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   private void handleResetRelaying() {
     resetRelayingMessageContent(this);
     refreshTitle();
-    selfAvatar.setVisibility(View.VISIBLE);
+    selfAvatarContainer.setVisibility(View.VISIBLE);
     conversationListFragment.onNewIntent();
     invalidateOptionsMenu();
   }

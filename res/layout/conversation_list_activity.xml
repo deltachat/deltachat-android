@@ -24,19 +24,36 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+          <RelativeLayout
+              android:id="@+id/self_avatar_container"
+              android:orientation="vertical"
+              android:layout_width="wrap_content"
+              android:layout_height="match_parent">
             <org.thoughtcrime.securesms.components.AvatarImageView
                 android:id="@+id/self_avatar"
                 android:foreground="@drawable/contact_photo_background"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
-                android:layout_gravity="center_vertical"
                 android:layout_marginRight="10dp"
                 android:layout_marginEnd="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
                 android:cropToPadding="true"
                 android:clickable="true"
                 app:inverted="true"
                 tools:src="@drawable/ic_contact_picture"
                 android:contentDescription="@string/pref_profile_info_headline" />
+            <ImageView android:id="@+id/unread_indicator"
+                       android:layout_width="20dp"
+                       android:layout_height="20dp"
+                       android:layout_marginLeft="20dp"
+                       android:layout_marginStart="20dp"
+                       app:layout_constraintTop_toTopOf="parent"
+                       android:layout_marginBottom="16dp"
+                       android:contentDescription="@null"
+                       android:visibility="gone"
+                       />
+          </RelativeLayout>
 
             <TextView style="@style/TextSecure.TitleTextStyle"
                       android:id="@+id/toolbar_title"

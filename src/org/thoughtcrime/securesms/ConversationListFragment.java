@@ -111,11 +111,11 @@ public class ConversationListFragment extends Fragment
     archive = getArguments().getBoolean(ARCHIVE, false);
 
     DcEventCenter eventCenter = DcHelper.getEventCenter(getActivity());
+    eventCenter.addMultiAccountObserver(DcContext.DC_EVENT_INCOMING_MSG, this);
+    eventCenter.addMultiAccountObserver(DcContext.DC_EVENT_MSGS_NOTICED, this);
     eventCenter.addObserver(DcContext.DC_EVENT_CHAT_MODIFIED, this);
     eventCenter.addObserver(DcContext.DC_EVENT_CONTACTS_CHANGED, this);
-    eventCenter.addObserver(DcContext.DC_EVENT_INCOMING_MSG, this);
     eventCenter.addObserver(DcContext.DC_EVENT_MSGS_CHANGED, this);
-    eventCenter.addObserver(DcContext.DC_EVENT_MSGS_NOTICED, this);
     eventCenter.addObserver(DcContext.DC_EVENT_MSG_DELIVERED, this);
     eventCenter.addObserver(DcContext.DC_EVENT_MSG_FAILED, this);
     eventCenter.addObserver(DcContext.DC_EVENT_MSG_READ, this);
@@ -127,6 +127,7 @@ public class ConversationListFragment extends Fragment
   public void onDestroy() {
     super.onDestroy();
     DcHelper.getEventCenter(getActivity()).removeObservers(this);
+    DcHelper.getEventCenter(getActivity()).removeMultiAccountObserver(this);
   }
 
   @SuppressLint("RestrictedApi")
@@ -630,7 +631,13 @@ public class ConversationListFragment extends Fragment
 
   @Override
   public void handleEvent(@NonNull DcEvent event) {
-    if (event.getId() == DcContext.DC_EVENT_CONNECTIVITY_CHANGED) {
+    if (event.getAccountId() != DcHelper.getContext(getActivity()).getAccountId()) {
+      Activity activity = getActivity();
+      if (activity instanceof ConversationListActivity) {
+        ((ConversationListActivity) activity).refreshUnreadIndicator();
+      }
+
+    } else if (event.getId() == DcContext.DC_EVENT_CONNECTIVITY_CHANGED) {
       Activity activity = getActivity();
       if (activity instanceof ConversationListActivity) {
         ((ConversationListActivity) activity).refreshTitle();
