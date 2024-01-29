@@ -129,7 +129,8 @@ public class QrShowFragment extends Fragment implements DcEventCenter.DcEventDel
     }
 
     public void copyQrData() {
-        Util.writeTextToClipboard(getActivity(), DcHelper.getContext(getActivity()).getSecurejoinQr(chatId));
+        String url = Util.QrDataToInviteURL(DcHelper.getContext(getActivity()).getSecurejoinQr(chatId));
+        Util.writeTextToClipboard(getActivity(), url);
         Toast.makeText(getActivity(), getString(R.string.copied_to_clipboard), Toast.LENGTH_SHORT).show();
     }
 

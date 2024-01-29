@@ -23,6 +23,7 @@ import android.content.ClipDescription;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
@@ -56,11 +57,20 @@ import java.util.concurrent.CountDownLatch;
 
 public class Util {
   private static final String TAG = Util.class.getSimpleName();
+  private static final String INVITE_PAGE = "i.delta.chat";
 
   public static final Handler handler = new Handler(Looper.getMainLooper());
 
   public static boolean isEmpty(ComposeText value) {
     return value == null || value.getText() == null || TextUtils.isEmpty(value.getTextTrimmed());
+  }
+
+  public static boolean isInviteURL(Uri uri) {
+    return INVITE_PAGE.equals(uri.getHost());
+  }
+
+  public static String QrDataToInviteURL(String qrData) {
+    return "https://" + INVITE_PAGE + "/#" + qrData.split(":", 2)[1].replaceFirst("#", "&");
   }
 
   public static CharSequence getBoldedString(String value) {
