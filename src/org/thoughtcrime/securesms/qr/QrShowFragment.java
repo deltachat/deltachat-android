@@ -111,7 +111,7 @@ public class QrShowFragment extends Fragment implements DcEventCenter.DcEventDel
             FileOutputStream stream = new FileOutputStream(file);
             Bitmap bitmap = Bitmap.createBitmap(WIDTH, HEIGHT, Bitmap.Config.ARGB_8888);
             Canvas canvas = new Canvas(bitmap);
-            canvas.drawRGB(255, 255, 255);  // Clear background to white
+            canvas.drawARGB(0,255, 255, 255);  // Clear background to white
             SVG svg = SVG.getFromString(fixSVG(dcContext.getSecurejoinQrSvg(chatId)));
             svg.renderToCanvas(canvas);
             bitmap.compress(Bitmap.CompressFormat.PNG, 90, stream);
@@ -121,6 +121,8 @@ public class QrShowFragment extends Fragment implements DcEventCenter.DcEventDel
             Intent intent = new Intent(Intent.ACTION_SEND);
             intent.setType("image/png");
             intent.putExtra(Intent.EXTRA_STREAM, uri);
+            String inviteURL = Util.QrDataToInviteURL(dcContext.getSecurejoinQr(chatId));
+            intent.putExtra(Intent.EXTRA_TEXT, inviteURL);
             intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             startActivity(Intent.createChooser(intent, getString(R.string.chat_share_with_title)));
         } catch (Exception e) {
@@ -129,8 +131,8 @@ public class QrShowFragment extends Fragment implements DcEventCenter.DcEventDel
     }
 
     public void copyQrData() {
-        String url = Util.QrDataToInviteURL(DcHelper.getContext(getActivity()).getSecurejoinQr(chatId));
-        Util.writeTextToClipboard(getActivity(), url);
+        String inviteURL = Util.QrDataToInviteURL(dcContext.getSecurejoinQr(chatId));
+        Util.writeTextToClipboard(getActivity(), inviteURL);
         Toast.makeText(getActivity(), getString(R.string.copied_to_clipboard), Toast.LENGTH_SHORT).show();
     }
 
