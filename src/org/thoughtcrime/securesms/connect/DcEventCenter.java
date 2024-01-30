@@ -85,7 +85,7 @@ public class DcEventCenter {
         }
     }
 
-    public void sendToMultiAccountObservers(@NonNull DcEvent event) {
+    private void sendToMultiAccountObservers(@NonNull DcEvent event) {
         synchronized (MULTI_LOCK) {
             sendToObservers(event, multiObservers);
         }
