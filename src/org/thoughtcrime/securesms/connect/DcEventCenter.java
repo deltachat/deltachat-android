@@ -17,10 +17,9 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 
 public class DcEventCenter {
-    private @NonNull final Hashtable<Integer, ArrayList<DcEventDelegate>> allObservers = new Hashtable<>();
+    private @NonNull final Hashtable<Integer, ArrayList<DcEventDelegate>> currentObservers = new Hashtable<>();
     private @NonNull final Hashtable<Integer, ArrayList<DcEventDelegate>> multiObservers = new Hashtable<>();
     private final Object LOCK = new Object();
-    private final Object MULTI_LOCK = new Object();
     private final @NonNull ApplicationContext context;
 
     public interface DcEventDelegate {
@@ -35,20 +34,18 @@ public class DcEventCenter {
     }
 
     public void addObserver(int eventId, @NonNull DcEventDelegate observer) {
-        synchronized (LOCK) {
-            ArrayList<DcEventDelegate> idObservers = allObservers.get(eventId);
-            if (idObservers == null) {
-                allObservers.put(eventId, (idObservers = new ArrayList<>()));
-            }
-            idObservers.add(observer);
-        }
+        addObserver(currentObservers, eventId, observer);
     }
 
     public void addMultiAccountObserver(int eventId, @NonNull DcEventDelegate observer) {
-        synchronized (MULTI_LOCK) {
-            ArrayList<DcEventDelegate> idObservers = multiObservers.get(eventId);
+        addObserver(multiObservers, eventId, observer);
+    }
+
+    private void addObserver(Hashtable<Integer, ArrayList<DcEventDelegate>> observers, int eventId, @NonNull DcEventDelegate observer) {
+        synchronized (LOCK) {
+            ArrayList<DcEventDelegate> idObservers = observers.get(eventId);
             if (idObservers == null) {
-                multiObservers.put(eventId, (idObservers = new ArrayList<>()));
+                observers.put(eventId, (idObservers = new ArrayList<>()));
             }
             idObservers.add(observer);
         }
@@ -56,7 +53,7 @@ public class DcEventCenter {
 
     public void removeObserver(int eventId, DcEventDelegate observer) {
         synchronized (LOCK) {
-            ArrayList<DcEventDelegate> idObservers = allObservers.get(eventId);
+            ArrayList<DcEventDelegate> idObservers = currentObservers.get(eventId);
             if (idObservers != null) {
                 idObservers.remove(observer);
             }
@@ -65,17 +62,12 @@ public class DcEventCenter {
 
     public void removeObservers(DcEventDelegate observer) {
         synchronized (LOCK) {
-            for(Integer eventId : allObservers.keySet()) {
-                ArrayList<DcEventDelegate> idObservers = allObservers.get(eventId);
+            for(Integer eventId : currentObservers.keySet()) {
+                ArrayList<DcEventDelegate> idObservers = currentObservers.get(eventId);
                 if (idObservers != null) {
                     idObservers.remove(observer);
                 }
             }
-        }
-    }
-
-    public void removeMultiAccountObserver(DcEventDelegate observer) {
-        synchronized (MULTI_LOCK) {
             for(Integer eventId : multiObservers.keySet()) {
                 ArrayList<DcEventDelegate> idObservers = multiObservers.get(eventId);
                 if (idObservers != null) {
@@ -86,42 +78,40 @@ public class DcEventCenter {
     }
 
     private void sendToMultiAccountObservers(@NonNull DcEvent event) {
-        synchronized (MULTI_LOCK) {
-            sendToObservers(event, multiObservers);
-        }
+        sendToObservers(multiObservers, event);
     }
 
     private void sendToCurrentAccountObservers(@NonNull DcEvent event) {
-        synchronized (LOCK) {
-            sendToObservers(event, allObservers);
-        }
+        sendToObservers(currentObservers, event);
     }
 
-    private void sendToObservers(@NonNull DcEvent event, Hashtable<Integer, ArrayList<DcEventDelegate>> observers) {
-        ArrayList<DcEventDelegate> idObservers = observers.get(event.getId());
-        if (idObservers != null) {
-            for (DcEventDelegate observer : idObservers) {
-                // using try/catch blocks as under some circumstances eg. getContext() may return NULL -
-                // and as this function is used virtually everywhere, also in libs,
-                // it's not feasible to check all single occurrences.
-                if(observer.runOnMain()) {
-                    Util.runOnMain(() -> {
-                        try {
-                            observer.handleEvent(event);
-                        }
-                        catch(Exception e) {
-                            e.printStackTrace();
-                        }
-                    });
-                } else {
-                    Util.runOnBackground(() -> {
-                        try {
-                            observer.handleEvent(event);
-                        }
-                        catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    });
+    private void sendToObservers(Hashtable<Integer, ArrayList<DcEventDelegate>> observers, @NonNull DcEvent event) {
+        synchronized (LOCK) {
+            ArrayList<DcEventDelegate> idObservers = observers.get(event.getId());
+            if (idObservers != null) {
+                for (DcEventDelegate observer : idObservers) {
+                    // using try/catch blocks as under some circumstances eg. getContext() may return NULL -
+                    // and as this function is used virtually everywhere, also in libs,
+                    // it's not feasible to check all single occurrences.
+                    if(observer.runOnMain()) {
+                        Util.runOnMain(() -> {
+                            try {
+                                observer.handleEvent(event);
+                            }
+                            catch(Exception e) {
+                                e.printStackTrace();
+                            }
+                        });
+                    } else {
+                        Util.runOnBackground(() -> {
+                            try {
+                                observer.handleEvent(event);
+                            }
+                            catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        });
+                    }
                 }
             }
         }
@@ -184,7 +174,7 @@ public class DcEventCenter {
         break;
 
       case DcContext.DC_EVENT_IMEX_PROGRESS:
-        sendToObservers(event);
+        sendToCurrentAccountObservers(event);
         return 0;
     }
 
@@ -209,18 +199,9 @@ public class DcEventCenter {
         handleError(id, event.getData2Str());
         break;
 
-      case DcContext.DC_EVENT_INCOMING_MSG:
-        sendToObservers(event);
+      default:
+        sendToCurrentAccountObservers(event);
         break;
-
-      case DcContext.DC_EVENT_MSGS_NOTICED:
-        sendToObservers(event);
-        break;
-
-      default: {
-        sendToObservers(event);
-      }
-      break;
     }
 
     if (id == DcContext.DC_EVENT_CHAT_MODIFIED) {

@@ -127,7 +127,6 @@ public class ConversationListFragment extends Fragment
   public void onDestroy() {
     super.onDestroy();
     DcHelper.getEventCenter(getActivity()).removeObservers(this);
-    DcHelper.getEventCenter(getActivity()).removeMultiAccountObserver(this);
   }
 
   @SuppressLint("RestrictedApi")
