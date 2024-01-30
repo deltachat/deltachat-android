@@ -91,7 +91,7 @@ public class DcEventCenter {
         }
     }
 
-    public void sendToObservers(@NonNull DcEvent event) {
+    private void sendToCurrentAccountObservers(@NonNull DcEvent event) {
         synchronized (LOCK) {
             sendToObservers(event, allObservers);
         }
