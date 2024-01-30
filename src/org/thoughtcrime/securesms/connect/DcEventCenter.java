@@ -17,8 +17,8 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 
 public class DcEventCenter {
-    private @NonNull final Hashtable<Integer, ArrayList<DcEventDelegate>> currentObservers = new Hashtable<>();
-    private @NonNull final Hashtable<Integer, ArrayList<DcEventDelegate>> multiObservers = new Hashtable<>();
+    private @NonNull final Hashtable<Integer, ArrayList<DcEventDelegate>> currentAccountObservers = new Hashtable<>();
+    private @NonNull final Hashtable<Integer, ArrayList<DcEventDelegate>> multiAccountObservers = new Hashtable<>();
     private final Object LOCK = new Object();
     private final @NonNull ApplicationContext context;
 
@@ -34,11 +34,11 @@ public class DcEventCenter {
     }
 
     public void addObserver(int eventId, @NonNull DcEventDelegate observer) {
-        addObserver(currentObservers, eventId, observer);
+        addObserver(currentAccountObservers, eventId, observer);
     }
 
     public void addMultiAccountObserver(int eventId, @NonNull DcEventDelegate observer) {
-        addObserver(multiObservers, eventId, observer);
+        addObserver(multiAccountObservers, eventId, observer);
     }
 
     private void addObserver(Hashtable<Integer, ArrayList<DcEventDelegate>> observers, int eventId, @NonNull DcEventDelegate observer) {
@@ -53,7 +53,11 @@ public class DcEventCenter {
 
     public void removeObserver(int eventId, DcEventDelegate observer) {
         synchronized (LOCK) {
-            ArrayList<DcEventDelegate> idObservers = currentObservers.get(eventId);
+            ArrayList<DcEventDelegate> idObservers = currentAccountObservers.get(eventId);
+            if (idObservers != null) {
+                idObservers.remove(observer);
+            }
+            idObservers = multiAccountObservers.get(eventId);
             if (idObservers != null) {
                 idObservers.remove(observer);
             }
@@ -62,14 +66,14 @@ public class DcEventCenter {
 
     public void removeObservers(DcEventDelegate observer) {
         synchronized (LOCK) {
-            for(Integer eventId : currentObservers.keySet()) {
-                ArrayList<DcEventDelegate> idObservers = currentObservers.get(eventId);
+            for(Integer eventId : currentAccountObservers.keySet()) {
+                ArrayList<DcEventDelegate> idObservers = currentAccountObservers.get(eventId);
                 if (idObservers != null) {
                     idObservers.remove(observer);
                 }
             }
-            for(Integer eventId : multiObservers.keySet()) {
-                ArrayList<DcEventDelegate> idObservers = multiObservers.get(eventId);
+            for(Integer eventId : multiAccountObservers.keySet()) {
+                ArrayList<DcEventDelegate> idObservers = multiAccountObservers.get(eventId);
                 if (idObservers != null) {
                     idObservers.remove(observer);
                 }
@@ -78,11 +82,11 @@ public class DcEventCenter {
     }
 
     private void sendToMultiAccountObservers(@NonNull DcEvent event) {
-        sendToObservers(multiObservers, event);
+        sendToObservers(multiAccountObservers, event);
     }
 
     private void sendToCurrentAccountObservers(@NonNull DcEvent event) {
-        sendToObservers(currentObservers, event);
+        sendToObservers(currentAccountObservers, event);
     }
 
     private void sendToObservers(Hashtable<Integer, ArrayList<DcEventDelegate>> observers, @NonNull DcEvent event) {
