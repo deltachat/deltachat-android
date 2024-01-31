@@ -16,6 +16,7 @@ import com.b44t.messenger.DcContext;
 import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.qr.QrCodeHandler;
 import org.thoughtcrime.securesms.util.Util;
 
 public class LongClickCopySpan extends ClickableSpan {
@@ -72,6 +73,9 @@ public class LongClickCopySpan extends ClickableSpan {
       } catch (Exception e) {
         e.printStackTrace();
       }
+    } else if (Util.isInviteURL(url)) {
+      QrCodeHandler qrCodeHandler = new QrCodeHandler((Activity) widget.getContext());
+      qrCodeHandler.handleQrData(url);
     } else {
       IntentUtils.showBrowserIntent(widget.getContext(), url);
     }

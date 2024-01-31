@@ -69,6 +69,10 @@ public class Util {
     return INVITE_DOMAIN.equals(uri.getHost());
   }
 
+  public static boolean isInviteURL(String url) {
+    return url != null && url.startsWith("https://" + INVITE_DOMAIN + "/#");
+  }
+
   public static String QrDataToInviteURL(String qrData) {
     return "https://" + INVITE_DOMAIN + "/#" + qrData.split(":", 2)[1].replaceFirst("#", "&");
   }
