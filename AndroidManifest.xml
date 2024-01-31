@@ -50,6 +50,8 @@
                  android:largeHeap="true"
                  tools:ignore="GoogleAppIndexingWarning"
                  android:requestLegacyExternalStorage="true"
+                 tools:targetApi="TIRAMISU"
+                 android:hasFragileUserData="true"
         >
 
     <!-- android car support, see https://developer.android.com/training/auto/start/,
