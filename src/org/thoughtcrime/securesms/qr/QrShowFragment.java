@@ -130,6 +130,18 @@ public class QrShowFragment extends Fragment implements DcEventCenter.DcEventDel
         }
     }
 
+    public void shareInviteURL() {
+        try {
+            Intent intent = new Intent(Intent.ACTION_SEND);
+            intent.setType("text/plain");
+            String inviteURL = Util.QrDataToInviteURL(dcContext.getSecurejoinQr(chatId));
+            intent.putExtra(Intent.EXTRA_TEXT, inviteURL);
+            startActivity(Intent.createChooser(intent, getString(R.string.chat_share_with_title)));
+        } catch (Exception e) {
+            Log.e(TAG, "failed to share invite URL", e);
+        }
+    }
+
     public void copyQrData() {
         String inviteURL = Util.QrDataToInviteURL(dcContext.getSecurejoinQr(chatId));
         Util.writeTextToClipboard(getActivity(), inviteURL);

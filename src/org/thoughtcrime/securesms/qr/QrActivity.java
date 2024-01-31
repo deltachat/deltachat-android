@@ -134,7 +134,7 @@ public class QrActivity extends BaseActionBarActivity {
                 finish();
                 return true;
             case R.id.share:
-                qrShowFragment.shareQr();
+                qrShowFragment.shareInviteURL();
                 break;
             case R.id.copy:
                 qrShowFragment.copyQrData();
