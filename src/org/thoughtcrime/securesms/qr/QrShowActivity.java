@@ -87,7 +87,7 @@ public class QrShowActivity extends AppCompatActivity {
                 finish();
                 return true;
             case R.id.share:
-                fragment.shareQr();
+                fragment.shareInviteURL();
                 break;
             case R.id.copy:
                 fragment.copyQrData();
