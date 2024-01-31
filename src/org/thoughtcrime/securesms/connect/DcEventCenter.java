@@ -17,7 +17,8 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 
 public class DcEventCenter {
-    private @NonNull final Hashtable<Integer, ArrayList<DcEventDelegate>> allObservers = new Hashtable<>();
+    private @NonNull final Hashtable<Integer, ArrayList<DcEventDelegate>> currentAccountObservers = new Hashtable<>();
+    private @NonNull final Hashtable<Integer, ArrayList<DcEventDelegate>> multiAccountObservers = new Hashtable<>();
     private final Object LOCK = new Object();
     private final @NonNull ApplicationContext context;
 
@@ -33,10 +34,18 @@ public class DcEventCenter {
     }
 
     public void addObserver(int eventId, @NonNull DcEventDelegate observer) {
+        addObserver(currentAccountObservers, eventId, observer);
+    }
+
+    public void addMultiAccountObserver(int eventId, @NonNull DcEventDelegate observer) {
+        addObserver(multiAccountObservers, eventId, observer);
+    }
+
+    private void addObserver(Hashtable<Integer, ArrayList<DcEventDelegate>> observers, int eventId, @NonNull DcEventDelegate observer) {
         synchronized (LOCK) {
-            ArrayList<DcEventDelegate> idObservers = allObservers.get(eventId);
+            ArrayList<DcEventDelegate> idObservers = observers.get(eventId);
             if (idObservers == null) {
-                allObservers.put(eventId, (idObservers = new ArrayList<>()));
+                observers.put(eventId, (idObservers = new ArrayList<>()));
             }
             idObservers.add(observer);
         }
@@ -44,7 +53,11 @@ public class DcEventCenter {
 
     public void removeObserver(int eventId, DcEventDelegate observer) {
         synchronized (LOCK) {
-            ArrayList<DcEventDelegate> idObservers = allObservers.get(eventId);
+            ArrayList<DcEventDelegate> idObservers = currentAccountObservers.get(eventId);
+            if (idObservers != null) {
+                idObservers.remove(observer);
+            }
+            idObservers = multiAccountObservers.get(eventId);
             if (idObservers != null) {
                 idObservers.remove(observer);
             }
@@ -53,8 +66,14 @@ public class DcEventCenter {
 
     public void removeObservers(DcEventDelegate observer) {
         synchronized (LOCK) {
-            for(Integer eventId : allObservers.keySet()) {
-                ArrayList<DcEventDelegate> idObservers = allObservers.get(eventId);
+            for(Integer eventId : currentAccountObservers.keySet()) {
+                ArrayList<DcEventDelegate> idObservers = currentAccountObservers.get(eventId);
+                if (idObservers != null) {
+                    idObservers.remove(observer);
+                }
+            }
+            for(Integer eventId : multiAccountObservers.keySet()) {
+                ArrayList<DcEventDelegate> idObservers = multiAccountObservers.get(eventId);
                 if (idObservers != null) {
                     idObservers.remove(observer);
                 }
@@ -62,9 +81,17 @@ public class DcEventCenter {
         }
     }
 
-    public void sendToObservers(@NonNull DcEvent event) {
+    private void sendToMultiAccountObservers(@NonNull DcEvent event) {
+        sendToObservers(multiAccountObservers, event);
+    }
+
+    private void sendToCurrentAccountObservers(@NonNull DcEvent event) {
+        sendToObservers(currentAccountObservers, event);
+    }
+
+    private void sendToObservers(Hashtable<Integer, ArrayList<DcEventDelegate>> observers, @NonNull DcEvent event) {
         synchronized (LOCK) {
-            ArrayList<DcEventDelegate> idObservers = allObservers.get(event.getId());
+            ArrayList<DcEventDelegate> idObservers = observers.get(event.getId());
             if (idObservers != null) {
                 for (DcEventDelegate observer : idObservers) {
                     // using try/catch blocks as under some circumstances eg. getContext() may return NULL -
@@ -139,6 +166,8 @@ public class DcEventCenter {
     int accountId = event.getAccountId();
     int id = event.getId();
 
+    sendToMultiAccountObservers(event);
+
     switch (id) {
       case DcContext.DC_EVENT_INCOMING_MSG:
         DcHelper.getNotificationCenter(context).addNotification(accountId, event.getData1Int(), event.getData2Int());
@@ -149,7 +178,7 @@ public class DcEventCenter {
         break;
 
       case DcContext.DC_EVENT_IMEX_PROGRESS:
-        sendToObservers(event);
+        sendToCurrentAccountObservers(event);
         return 0;
     }
 
@@ -174,18 +203,9 @@ public class DcEventCenter {
         handleError(id, event.getData2Str());
         break;
 
-      case DcContext.DC_EVENT_INCOMING_MSG:
-        sendToObservers(event);
+      default:
+        sendToCurrentAccountObservers(event);
         break;
-
-      case DcContext.DC_EVENT_MSGS_NOTICED:
-        sendToObservers(event);
-        break;
-
-      default: {
-        sendToObservers(event);
-      }
-      break;
     }
 
     if (id == DcContext.DC_EVENT_CHAT_MODIFIED) {
