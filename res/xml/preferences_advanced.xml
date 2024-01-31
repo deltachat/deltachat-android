@@ -63,6 +63,12 @@
             android:key="pref_builtin_camera"
             android:title="@string/pref_use_inapp_camera"
             android:summary="@string/pref_use_inapp_camera_explain"/>
+
+        <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="pref_show_system_contacts"
+            android:title="@string/pref_show_system_contacts"
+            android:summary="@string/pref_show_system_contacts_explain"/>
     </PreferenceCategory>
 
 
