@@ -62,6 +62,7 @@ import org.thoughtcrime.securesms.contacts.NewContactActivity;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.qr.QrActivity;
+import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
@@ -116,11 +117,13 @@ public class ContactSelectionListFragment extends    Fragment
   public void onStart() {
     super.onStart();
     this.getLoaderManager().initLoader(0, null, this);
-    Permissions.with(this)
-               .request(Manifest.permission.READ_CONTACTS)
-               .ifNecessary()
-               .onAllGranted(this::handleContactPermissionGranted)
-               .execute();
+    if (Prefs.showSystemContacts(getContext())) {
+      Permissions.with(this)
+        .request(Manifest.permission.READ_CONTACTS)
+        .ifNecessary()
+        .onAllGranted(this::handleContactPermissionGranted)
+        .execute();
+    }
   }
 
   @Override

@@ -660,6 +660,8 @@
     <string name="pref_use_system_emoji_explain">Turn off Delta Chat\'s built-in emoji support</string>
     <string name="pref_use_inapp_camera">Use In-App Camera</string>
     <string name="pref_use_inapp_camera_explain">In-app camera usually has less features than the system camera</string>
+    <string name="pref_show_system_contacts">Read System Address Book</string>
+    <string name="pref_show_system_contacts_explain">Offer to create chats with contacts from the address book. Some providers need end-to-end encryption setup first.</string>
     <string name="pref_app_access">App Access</string>
     <string name="pref_chats">Chats</string>
     <string name="pref_in_chat_sounds">In-Chat Sounds</string>
