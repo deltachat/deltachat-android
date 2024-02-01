@@ -70,7 +70,12 @@ public class Util {
   }
 
   public static boolean isInviteURL(String url) {
-    return isInviteURL(Uri.parse(url));
+    try {
+      return isInviteURL(Uri.parse(url));
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    return false;
   }
 
   public static String QrDataToInviteURL(String qrData) {
