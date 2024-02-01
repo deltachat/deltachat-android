@@ -278,7 +278,7 @@
     <string name="menu_save_log">Salva Log</string>
     <string name="menu_more_options">Più Opzioni</string>
     <string name="menu_learn_spelling">Impara l\'Ortografia</string>
-    <string name="menu_chat_audit_log">Registro di Controllo della Chat</string>
+    <string name="menu_chat_audit_log">Registro di Controllo Chat</string>
     <string name="jump_to_message">Vai al Messaggio</string>
     <string name="copy_json">Copia JSON</string>
     <string name="replace_draft">Sostituisci Bozza</string>
@@ -675,6 +675,8 @@
     <string name="pref_use_system_emoji_explain">Disabilita il supporto delle emoji integrato in Delta Chat</string>
     <string name="pref_use_inapp_camera">Usa Fotocamera App</string>
     <string name="pref_use_inapp_camera_explain">La fotocamera dell\'app di solito ha meno funzionalità della fotocamera di sistema</string>
+    <string name="pref_show_system_contacts">Leggi Rubrica di Sistema</string>
+    <string name="pref_show_system_contacts_explain">Offri la possibilità di creare chats con i contatti della rubrica. Alcuni provider necessitano prima della configurazione della crittografia end-to-end.</string>
     <string name="pref_app_access">Accesso all\'App</string>
     <string name="pref_chats">Chat</string>
     <string name="pref_in_chat_sounds">Suoni In-Chat</string>

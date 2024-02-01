@@ -660,6 +660,8 @@
     <string name="pref_use_system_emoji_explain">Schakel Delta Chat\'s ingebouwde emoji-ondersteuning uit</string>
     <string name="pref_use_inapp_camera">Ingebouwde camera gebruiken</string>
     <string name="pref_use_inapp_camera_explain">Let op: de ingebouwde camera beschikt over minder functies dan de systeemcamera</string>
+    <string name="pref_show_system_contacts">Adresboek uitlezen</string>
+    <string name="pref_show_system_contacts_explain">Bied aan om gesprekken te beginnen met contactpersonen die in het adresboek staan. Let op: voor sommige providers is hiervoor eind-tot-eindversleuteling benodigd.</string>
     <string name="pref_app_access">App-toegang</string>
     <string name="pref_chats">Gesprekken</string>
     <string name="pref_in_chat_sounds">Gespreksgeluiden</string>
