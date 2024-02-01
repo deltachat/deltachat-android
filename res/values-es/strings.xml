@@ -288,6 +288,7 @@
     <string name="device_talk_explain">Los mensajes en este chat son generados localmente por tu aplicación Delta Chat. Los creadores lo usan para informar sobre actualizaciones y problemas durante el uso de la aplicación.</string>
     <!-- deprecated, use device_talk_welcome_message2 instead -->
     <string name="device_talk_welcome_message">¡Bienvenido a Delta Chat! – Delta Chat parece como otras aplicaciones de mensajería populares, pero sin control centralizado, seguimiento ni venta de tus datos, o los de tus amigos, colegas o familiares a grandes organizaciones.\n\nTécnicamente, Delta Chat es una aplicación de correo electrónico con una interfaz de chat moderna. Correo electrónico en un nuevo vestido si quieres 👻\n\nUsa Delta Chat con cualquiera de miles de millones de personas: solo necesitas su dirección de correo electrónico. Los destinatarios no necesitan instalar Delta Chat, visitar sitios web o registrarse en ningún lugar - sin embargo, por supuesto, si lo desean, puedes indicarles 👉 https://get.delta.chat</string>
+    <string name="device_talk_welcome_message2">¡Ponte en contacto!\n\n🙌 Toca \"Código QR\" en la pantalla principal de ambos dispositivos. Elija \"Escanear código QR\" en un dispositivo y apúntelo al otro\n\n🌍 Si no está en la misma habitación, escanee mediante videollamada o comparta un enlace de invitación desde \"Escanear código QR\"\n\nEntonces: disfrute de su experiencia de mensajería a través de la red descentralizada más grande que jamás haya existido: el correo electrónico. Y a diferencia de otras aplicaciones populares, sin control central ni seguimiento ni venta de usted, amigos, colegas o familiares a grandes organizaciones.</string>
     <string name="edit_contact">Editar contacto</string>
     <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
     <string name="pin_chat">Anclar chat</string>
@@ -499,6 +500,10 @@
     <string name="tab_webxdc_empty_hint">Aplicaciones privadas compartidas en este chat se mostrarán aquí</string>
     <string name="tab_all_media_empty_hint">La multimedia compartida en cualquier chat aparecerá aquí</string>
     <string name="media_preview">Vista previa de multimedia</string>
+    <!-- option to show images in the gallery with the correct width/height aspect (instead of square); other gallery apps may be a source of inspiration for translation :) -->
+    <string name="aspect_ratio_grid">Cuadrícula de relación de aspecto</string>
+    <!-- option to show images in the gallery as square (instead of using correct width/height) -->
+    <string name="square_grid">Cuadrícula cuadrada</string>
     <string name="send_message">Enviar mensaje</string>
     <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
     <string name="aeap_addr_changed">%1$s cambió su dirección de %2$s a %3$s</string>
@@ -670,6 +675,8 @@
     <string name="pref_use_system_emoji_explain">Deshabilitar el soporte de emoji integrado de Delta Chat</string>
     <string name="pref_use_inapp_camera">Usar cámara interna</string>
     <string name="pref_use_inapp_camera_explain">La cámara interna suele tener menos funcionalidades que la cámara del sistema</string>
+    <string name="pref_show_system_contacts">Leer la libreta de direcciones del sistema</string>
+    <string name="pref_show_system_contacts_explain">Ofrecer crear chats con contactos de la libreta de direcciones. Algunos proveedores necesitan primero una configuración de cifrado de extremo a extremo.</string>
     <string name="pref_app_access">Acceso a la aplicación</string>
     <string name="pref_chats">Chats</string>
     <string name="pref_in_chat_sounds">Sonidos en el chat</string>
@@ -754,6 +761,9 @@
 
     <!-- Reactions -->
     <string name="reactions">Reacciones</string>
+    <!-- Verb, the action of adding a "Reaction" to a message. Used eg. in context menus, similar to "Reply" or "Forward" -->
+    <string name="react">Reaccionar</string>
+
     <!-- automatically delete message -->
     <string name="delete_old_messages">Borrar mensajes antiguos</string>
     <string name="autodel_device_title">Borrar mensajes del dispositivo</string>
@@ -871,6 +881,8 @@
     <string name="chat_protection_enabled_explanation">Ahora se garantiza que todos los mensajes en este chat están cifrados de extremo a extremo.\n\nEl cifrado de extremo a extremo mantiene los mensajes privados entre tú y tus compañeros de chat. Ni siquiera tu proveedor de correo electrónico puede leerlos.</string>
     <string name="chat_protection_broken_tap_to_learn_more">%1$s envió un mensaje desde otro dispositivo. Toca para obtener más información.</string>
     <string name="chat_protection_broken_explanation">El cifrado de extremo a extremo ya no se puede garantizar, probablemente porque %1$s reinstaló Delta Chat o envió un mensaje desde otro dispositivo.\n\nPueden encontrarse en persona y escanear su código QR nuevamente para restablecer el cifrado de extremo a extremo garantizado.</string>
+    <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s requiere cifrado de extremo a extremo que aún no está configurado para este chat. Toca para obtener más información.</string>
+    <string name="invalid_unencrypted_explanation">Para establecer un cifrado de extremo a extremo, puede reunirse con los contactos en persona y escanear su código QR.</string>
     <string name="learn_more">Aprender más</string>
 
     <string name="devicemsg_self_deleted">Eliminaste los chats de los \"Mensajes guardados\". \n\nℹ️ Para volver a usar los\"Mensajes guardados\", debes crear un chat contigo mismo.</string>

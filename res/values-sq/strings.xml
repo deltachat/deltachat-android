@@ -658,6 +658,8 @@
     <string name="pref_use_system_emoji_explain">Çaktivizo mbulimin e brendshëm Delta Chat për emoji-t</string>
     <string name="pref_use_inapp_camera">Përdor Kamerën e Vetë Aplikacionit</string>
     <string name="pref_use_inapp_camera_explain">Kamera e vetë aplikacionit, zakonisht, ka më pak veçori se kamera e sistemit</string>
+    <string name="pref_show_system_contacts">Të Lexojë Libër Adresash Sistemi</string>
+    <string name="pref_show_system_contacts_explain">Ofro krijimin fjalosjesh me kontakte prej libri adresash. Disa shërbime lypin fshehtëzim skaj-më-skaj së pari.</string>
     <string name="pref_app_access">Hyrje aplikacioni</string>
     <string name="pref_chats">Fjalosje</string>
     <string name="pref_in_chat_sounds">Tinguj brenda fjalosjeje</string>
