@@ -660,6 +660,8 @@
     <string name="pref_use_system_emoji_explain">Eingebaute Emoji-Unterstützung von Delta Chat deaktivieren</string>
     <string name="pref_use_inapp_camera">In-App Kamera verwenden</string>
     <string name="pref_use_inapp_camera_explain">Die In-App-Kamera hat in der Regel weniger Funktionen als die Systemkamera</string>
+    <string name="pref_show_system_contacts">System-Adressbuch lesen</string>
+    <string name="pref_show_system_contacts_explain">Anbieten, Chats mit Kontakten aus dem Adressbuch zu erstellen. Bei einigen E-Mail-Anbieter muss zunächst eine Ende-zu-Ende-Verschlüsselung eingerichtet werden.</string>
     <string name="pref_app_access">App-Zugriff</string>
     <string name="pref_chats">Chats</string>
     <string name="pref_in_chat_sounds">In-Chat-Klänge</string>
