@@ -66,7 +66,11 @@ public class Util {
   }
 
   public static boolean isInviteURL(Uri uri) {
-    return INVITE_DOMAIN.equals(uri.getHost());
+    return INVITE_DOMAIN.equals(uri.getHost()) && uri.getEncodedFragment() != null;
+  }
+
+  public static boolean isInviteURL(String url) {
+    return isInviteURL(Uri.parse(url));
   }
 
   public static String QrDataToInviteURL(String qrData) {
