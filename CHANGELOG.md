@@ -14,7 +14,7 @@
   the avatar in the upper left corner now shows the number of unread messages in other account
 * updated "welcome message" now focuses about how to get in contact
 * add meaningful info message if provider does not allow unencrypted messages
-* long-tapping chatlist items now allow to mutu/unmute chats directly
+* long-tapping chatlist items now allow to mute/unmute chats directly
 * ask for system unlock secret before opening "Password & Account"
 * add 'Learn More' to ephemeral messages dialog
 * mark data as being "fragile", supporting systems now allows the data to be kept, making reinstalls easier
@@ -37,7 +37,7 @@
 * fix: avoid retry sending for servers not returning a response code in time (force BCC-self)
 * fix partially downloaded messages getting stuck in "Downloading..."
 * fix inconsistent QR scan states (track forward and backward verification separately, mark 1:1 chat as verified as early as possible)
-* fix dupliacated messages for some proviers as "QQ Mail"
+* fix duplicated messages for some providers as "QQ Mail"
 * fix: do not remove contents from unencrypted Schleuder mailing lists messages
 * fix: reset message error when scheduling resending
 * fix marking some one-to-one chats as guaranteed
