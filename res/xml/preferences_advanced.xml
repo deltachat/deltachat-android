@@ -94,6 +94,9 @@
             android:title="@string/videochat_instance"
             android:summary="@string/none"/>
 
+        <Preference android:key="pref_self_reporting"
+            android:title="Send statistics to Delta Chat's developers"/>
+
     </PreferenceCategory>
 
 
