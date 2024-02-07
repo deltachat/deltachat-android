@@ -295,7 +295,8 @@
     <string name="device_talk_subtitle">Wiadomości generowane lokalnie</string>
     <string name="device_talk_explain">Wiadomości w tym czacie są generowane lokalnie przez twoją aplikację Delta Chat. Twórcy używają go do informowania o aktualizacjach aplikacji i problemach podczas użytkowania.</string>
     <!-- deprecated, use device_talk_welcome_message2 instead -->
-    <string name="device_talk_welcome_message">Witamy w Delta Chat! - Delta Chat wygląda i działa podobnie jak inne popularne komunikatory, ale nie miesza się w scentralizowaną kontrolę, śledzenie ani sprzedaż ciebie, przyjaciół, kolegów lub rodziny dużym organizacjom.\n\nTechnicznie Delta Chat jest aplikacją e-mail z nowoczesnym interfejsem czatu. Jeśli chcesz, wyślij e-mail w nowej sukience 👻.\n\nKorzystaj z Delta Chat z każdym spośród miliardów ludzi: po prostu użyj ich adresu e-mail. Odbiorcy nie muszą instalować Delta Chat, odwiedzać stron internetowych ani rejestrować się gdziekolwiek - oczywiście, jeśli im się spodoba, możesz ich skierować na 👉 https://get.delta.chat.</string>
+    <string name="device_talk_welcome_message">Witamy w Delta Chat! - Delta Chat wygląda i działa podobnie jak inne popularne komunikatory, ale nie miesza się w scentralizowaną kontrolę, śledzenie ani sprzedaż ciebie, przyjaciół, kolegów lub rodziny dużym organizacjom.\n\nTechnicznie Delta Chat jest aplikacją e-mail z nowoczesnym interfejsem czatu. Jeśli chcesz, wyślij e-mail w nowym otoczeniu 👻.\n\nKorzystaj z Delta Chat z każdym spośród miliardów ludzi: po prostu użyj ich adresu e-mail. Odbiorcy nie muszą instalować Delta Chat, odwiedzać stron internetowych ani rejestrować się gdziekolwiek - oczywiście, jeśli im się spodoba, możesz ich skierować na 👉 https://get.delta.chat.</string>
+    <string name="device_talk_welcome_message2">Skontaktuj się!\n\n🙌 Dotknij „Kod QR” na ekranie głównym obu urządzeń. Wybierz opcję „Zeskanuj kod QR” na jednym urządzeniu i skieruj go na drugie\n\n🌍 Jeśli nie znajdujesz się w tym samym pokoju, zeskanuj kod podczas rozmowy wideo lub udostępnij link z zaproszeniem w sekcji „Zeskanuj kod QR”\n\nNastępnie: korzystaj z komunikatora za pośrednictwem największej zdecentralizowanej sieci, jaka kiedykolwiek istniała: e-mail. W przeciwieństwie do innych popularnych aplikacji bez centralnej kontroli, śledzenia lub sprzedawania Ciebie, znajomych, współpracowników lub rodziny dużym organizacjom.</string>
     <string name="edit_contact">Edytuj kontakt</string>
     <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
     <string name="pin_chat">Przypnij czat</string>
@@ -689,6 +690,8 @@
     <string name="pref_use_system_emoji_explain">Wyłącza wbudowaną obsługę emoji Delta Chat</string>
     <string name="pref_use_inapp_camera">Użyj aparatu w aplikacji</string>
     <string name="pref_use_inapp_camera_explain">Aparat w aplikacji ma zwykle mniej funkcji niż aparat systemowy</string>
+    <string name="pref_show_system_contacts">Odczytaj systemową książkę adresową</string>
+    <string name="pref_show_system_contacts_explain">Zaproponuj tworzenie czatów z kontaktami z książki adresowej. Niektórzy dostawcy wymagają najpierw szyfrowania end-to-end.</string>
     <string name="pref_app_access">Dostęp do aplikacji</string>
     <string name="pref_chats">Czaty</string>
     <string name="pref_in_chat_sounds">Dźwięki w czacie</string>
@@ -893,6 +896,8 @@
     <string name="chat_protection_enabled_explanation">Teraz gwarantujemy, że wszystkie wiadomości w tym czacie są szyfrowane metodą end-to-end.\n\nSzyfrowanie end-to-end zapewnia prywatność wiadomości między tobą a twoimi partnerami czatów. Nawet dostawca twojej poczty e-mail nie może ich odczytać.</string>
     <string name="chat_protection_broken_tap_to_learn_more">Użytkownik %1$s wysłał wiadomość z innego urządzenia. Dotknij, aby przeczytać więcej.</string>
     <string name="chat_protection_broken_explanation">Nie można już zagwarantować szyfrowania end-to-end, prawdopodobnie z powodu ponownej instalacji Delta Chat przez %1$s lub wysłania wiadomości z innego urządzenia.\n\nMożesz spotkać się z tą osobą osobiście i ponownie zeskanować jej kod QR, aby przywrócić gwarantowane szyfrowanie end-to-end.</string>
+    <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s wymaga szyfrowania end-to-end, które nie zostało jeszcze skonfigurowane dla tego czatu. Dotknij, aby dowiedzieć się więcej.</string>
+    <string name="invalid_unencrypted_explanation">Aby ustanowić szyfrowanie end-to-end, możesz spotkać się z kontaktami osobiście i zeskanować ich kod QR, żeby ich wprowadzić.</string>
     <string name="learn_more">Czytaj więcej</string>
 
     <string name="devicemsg_self_deleted">Usunięto czat „Zapisane wiadomości”.\n\nℹ️ Aby ponownie użyć funkcji „Zapisane wiadomości”, utwórz nowy czat ze sobą.</string>

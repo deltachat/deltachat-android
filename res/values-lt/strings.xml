@@ -4,7 +4,9 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">Gerai</string>
     <string name="cancel">Atsisakyti</string>
-   <string name="clear_search">Išvalyti paiešką</string>
+   <!-- the word "or" to separate blocks in the user interface that are mutually exclusive -->
+    <string name="or_separator">arba</string>
+    <string name="clear_search">Išvalyti paiešką</string>
     <string name="yes">Taip</string>
     <string name="no">Ne</string>
     <string name="on">Įjungta</string>
@@ -207,6 +209,7 @@
     <string name="menu_copy_image_to_clipboard">Kopijuoti paveikslą</string>
     <string name="menu_copy_email_to_clipboard">Kopijuoti el. paštą</string>
     <string name="paste_from_clipboard">Įdėti iš iškarpinės</string>
+    <string name="ask_copy_unopenable_link_to_clipboard">Nuoroda „%1$d“ negali būti atverta saityno naršyklėje. Ar norite, vietoj to, nukopijuoti nurodą į iškarpinę?</string>
     <string name="menu_forward">Persiųsti žinutę</string>
     <string name="menu_reply">Atsakyti į žinutę</string>
     <string name="menu_mute">Išjungti pranešimus</string>
@@ -227,6 +230,7 @@
     <string name="menu_scroll_to_bottom">Slinkti į apačią</string>
     <string name="menu_scroll_to_top">Slinkti į viršų</string>
     <string name="menu_help">Žinynas</string>
+    <string name="what_is_webxdc">Kas yra „Webxdc“?</string>
     <string name="privacy_policy">Privatumo politika</string>
     <string name="menu_select_all">Žymėti viską</string>
     <string name="menu_edit_name">Taisyti vardą</string>
@@ -267,7 +271,7 @@
     <string name="share_location_for_two_hours">2 valandoms</string>
     <string name="share_location_for_six_hours">6 valandoms</string>
 
-    <string name="file_saved_to">Failas įrašytas į \"%1$s\".</string>
+    <string name="file_saved_to">Failas įrašytas į „%1$s“.</string>
 
     <string name="videochat">Vaizdo pokalbis</string>
     <string name="videochat_invite_user_to_videochat">Pakviesti %1$s į vaizdo pokalbį?</string>
@@ -278,6 +282,7 @@
     <string name="videochat_tap_to_open">Bakstelėkite norėdami atverti</string>
     <string name="videochat_instance">Vaizdo pokalbio egzempliorius</string>
     <string name="videochat_instance_placeholder">Jūsų vaizdo pokalbio egzempliorius</string>
+    <string name="videochat_instance_example">Pavyzdys: https://jūsų-serveris.org/$KAMBARYS</string>
     <string name="videochat_invitation">Pakvietimas į vaizdo pokalbį</string>
     <string name="videochat_invitation_body">Jūs esate kviečiami į vaizdo pokalbį. Spustelėkite %1$s jei norite prisijungti.</string>
 

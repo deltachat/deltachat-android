@@ -645,6 +645,8 @@
     <string name="pref_use_system_emoji_explain">关闭 Delta Chat 内置 emoji 支持</string>
     <string name="pref_use_inapp_camera">使用应用内相机</string>
     <string name="pref_use_inapp_camera_explain">应用内相机功能通常比系统相机少</string>
+    <string name="pref_show_system_contacts">读取系统通讯录</string>
+    <string name="pref_show_system_contacts_explain">从通讯录建立和联系人的聊天。一些邮件服务商需要先行设置才能进行端到端加密的聊天。</string>
     <string name="pref_app_access">应用程序访问</string>
     <string name="pref_chats">聊天</string>
     <string name="pref_in_chat_sounds">聊天音</string>

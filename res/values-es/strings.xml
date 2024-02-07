@@ -402,7 +402,7 @@
         <item quantity="other">%d nuevos mensajes</item>
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
-    <string name="chat_new_one_to_one_hint">Envíe un mensaje. Está bien si %1$s no usa Delta Chat.</string>
+    <string name="chat_new_one_to_one_hint">Envíe un mensaje a %1$s.</string>
     <string name="chat_new_broadcast_hint">En una difusión, los destinatarios recibirán mensajes en un chat de solo lectura contigo.</string>
     <string name="chat_new_group_hint">Los demás sólo verán este grupo después de que hayas enviado un primer mensaje.</string>
     <string name="chat_record_slide_to_cancel">Deslice para cancelar</string>
