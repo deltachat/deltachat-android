@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -15,6 +16,7 @@ import com.journeyapps.barcodescanner.CompoundBarcodeView;
 
 import org.thoughtcrime.securesms.BaseActionBarActivity;
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.WebViewActivity;
 import org.thoughtcrime.securesms.permissions.Permissions;
 
 public class RegistrationQrActivity extends BaseActionBarActivity {
@@ -77,6 +79,10 @@ public class RegistrationQrActivity extends BaseActionBarActivity {
             case android.R.id.home:
                 finish();
                 return true;
+            case R.id.troubleshooting:
+                // once help is evolved, it may be a more visible button, may be localized, may be offline
+                WebViewActivity.openUrlInBrowser(this, "https://delta.chat/en/help#multiclient");
+                return true;
         }
 
         return false;
@@ -115,6 +121,15 @@ public class RegistrationQrActivity extends BaseActionBarActivity {
         if (capture != null) {
             capture.onDestroy();
         }
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        menu.clear();
+        getMenuInflater().inflate(R.menu.registration_qr_activity, menu);
+        boolean addAsAnotherDevice = getIntent().getBooleanExtra(ADD_AS_SECOND_DEVICE_EXTRA, false);
+        menu.findItem(R.id.troubleshooting).setVisible(addAsAnotherDevice);
+        return super.onPrepareOptionsMenu(menu);
     }
 
     @Override
