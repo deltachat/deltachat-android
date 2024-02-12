@@ -80,7 +80,6 @@ public class RegistrationQrActivity extends BaseActionBarActivity {
                 finish();
                 return true;
             case R.id.troubleshooting:
-                // once help is evolved, it may be a more visible button, may be localized, may be offline
                 WebViewActivity.openUrlInBrowser(this, "https://delta.chat/en/help#multiclient");
                 return true;
         }
