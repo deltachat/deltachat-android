@@ -7,7 +7,9 @@
 * add "Settings / Advanced / Send statistics to Delta Chat's developers" to draft a message with statistic;
   the message is only sent if the user hits the "Send" button
 * add device message if outgoing messages are undecryptable
-* fix compatibility issue with 1.42 when using add-second-device or backups
+* "Settings / Advanced / Read System Address Book" is remembered per-account
+* add link to troubleshooting for "Add as Second Device" on welcome screen and update troubleshooting
+* fix compatibility issue with 1.42 when using "Add Second Device" or backups
 * fix sometimes mangled links
 * fix sometimes wrongly marked gossiped keys
 * fix: guarantee immediate message deletion if "Delete Messages from Server" is set to "At once"
