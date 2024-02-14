@@ -1,5 +1,22 @@
 # Delta Chat Android Changelog
 
+
+## v1.43.1 Testrun
+2024-02
+
+* add "Settings / Advanced / Send statistics to Delta Chat's developers" to draft a message with statistic;
+  the message is only sent if the user hits the "Send" button
+* add device message if outgoing messages are undecryptable
+* fix compatibility issue with 1.42 when using add-second-device or backups
+* fix sometimes mangled links
+* fix sometimes wrongly marked gossiped keys
+* fix: guarantee immediate message deletion if "Delete Messages from Server" is set to "At once"
+* fix: Never allow a message timestamp to be a lot in the future
+* fix: make IMAP folder handling more resilient
+* update translations and local help
+* update to core 1.135.0
+
+
 ## v1.43.0 Testrun
 2024-02
 
