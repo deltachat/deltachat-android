@@ -77,9 +77,7 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
     sentboxWatchCheckbox = (CheckBoxPreference) this.findPreference("pref_sentbox_watch");
     sentboxWatchCheckbox.setOnPreferenceChangeListener((preference, newValue) -> {
       boolean enabled = (Boolean) newValue;
-      DcHelper.getAccounts(getContext()).stopIo();
       dcContext.setConfigInt(CONFIG_SENTBOX_WATCH, enabled? 1 : 0);
-      DcHelper.getAccounts(getContext()).startIo();
       return true;
     });
 
@@ -93,9 +91,7 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
     mvboxMoveCheckbox = (CheckBoxPreference) this.findPreference("pref_mvbox_move");
     mvboxMoveCheckbox.setOnPreferenceChangeListener((preference, newValue) -> {
       boolean enabled = (Boolean) newValue;
-      DcHelper.getAccounts(getContext()).stopIo();
       dcContext.setConfigInt(CONFIG_MVBOX_MOVE, enabled? 1 : 0);
-      DcHelper.getAccounts(getContext()).startIo();
       return true;
     });
 
@@ -106,18 +102,14 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
         new AlertDialog.Builder(getContext())
                 .setMessage(R.string.pref_imap_folder_warn_disable_defaults)
                 .setPositiveButton(R.string.ok, (dialogInterface, i) -> {
-                  DcHelper.getAccounts(getContext()).stopIo();
                   dcContext.setConfigInt(CONFIG_ONLY_FETCH_MVBOX, 1);
                   ((CheckBoxPreference)preference).setChecked(true);
-                  DcHelper.getAccounts(getContext()).startIo();
                 })
                 .setNegativeButton(R.string.cancel, null)
                 .show();
         return false;
       } else {
-        DcHelper.getAccounts(getContext()).stopIo();
         dcContext.setConfigInt(CONFIG_ONLY_FETCH_MVBOX, 0);
-        DcHelper.getAccounts(getContext()).startIo();
         return true;
       }
     }));
