@@ -180,7 +180,7 @@ public class ConversationItem extends BaseConversationItem
     bind(messageRecord, dcChat, batchSelected, pulseHighlight, recipients);
     this.locale                 = locale;
     this.glideRequests          = glideRequests;
-    this.showSender             = (dcChat.isMultiUser() && !messageRecord.isOutgoing()) || messageRecord.getOverrideSenderName() != null;
+    this.showSender             = ((dcChat.isMultiUser() || dcChat.isSelfTalk()) && !messageRecord.isOutgoing()) || messageRecord.getOverrideSenderName() != null;
 
     if (showSender) {
       this.dcContact = dcContext.getContact(messageRecord.getFromId());
