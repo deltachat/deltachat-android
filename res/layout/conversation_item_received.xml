@@ -213,5 +213,17 @@
             android:orientation="horizontal"
             app:message_type="incoming" />
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/button_show_in_chat"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/body_bubble"
+            android:layout_toRightOf="@id/body_bubble"
+            android:layout_marginLeft="-24dp"
+            android:layout_marginStart="-24dp"
+            android:tint="?icon_tint"
+            app:srcCompat="?menu_forward_icon" />
+
     </RelativeLayout>
 </org.thoughtcrime.securesms.ConversationItem>
