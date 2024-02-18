@@ -44,6 +44,10 @@
         android:id="@+id/menu_context_reply_privately"
         app:showAsAction="never" />
 
+    <item android:title="@string/show_in_chat"
+        android:id="@+id/menu_show_in_chat"
+        app:showAsAction="never" />
+
     <item android:title="@string/resend"
         android:id="@+id/menu_resend"
         app:showAsAction="never" />
