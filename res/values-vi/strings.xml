@@ -394,6 +394,7 @@
     <string name="retry_send">Thử gửi lại tin nhắn</string>
     <!-- reasons for a disabled message composer -->
     <string name="messaging_disabled_not_in_group">Bạn phải ở trong nhóm này để gửi tin nhắn. Để tham gia, hãy hỏi thành viên khác.</string>
+    <!-- deprecated, the line is removed on desktop (was never used on other OS) -->
     <string name="messaging_disabled_device_chat">Cuộc trò chuyện này chứa các tin nhắn được tạo cục bộ; việc viết bị vô hiệu hóa.</string>
     <string name="messaging_disabled_mailing_list">Gửi tin nhắn trong danh sách gửi thư chưa được hỗ trợ</string>
     <string name="cannot_display_unsuported_file_type">Không thể hiển thị loại tệp này: %s</string>

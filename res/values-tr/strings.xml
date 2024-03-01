@@ -410,6 +410,7 @@
     <string name="retry_send">İletiyi göndermeyi yeniden dene</string>
     <!-- reasons for a disabled message composer -->
     <string name="messaging_disabled_not_in_group">Bir ileti göndermek için bu öbekte olmalısınız. Katılmak için başka bir üyeye sorun.</string>
+    <!-- deprecated, the line is removed on desktop (was never used on other OS) -->
     <string name="messaging_disabled_device_chat">Bu sohbet, yerel olarak oluşturulan iletileri içerir; yazma etkisizleştirilir.</string>
     <string name="messaging_disabled_mailing_list">Posta listelerine iletiler gönderme henüz desteklenmiyor</string>
     <string name="cannot_display_unsuported_file_type">Bu dosya türü görüntülenemiyor: %s</string>

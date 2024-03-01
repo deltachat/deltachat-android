@@ -410,6 +410,7 @@
     <string name="retry_send">Retry to send message</string>
     <!-- reasons for a disabled message composer -->
     <string name="messaging_disabled_not_in_group">You must be in this group to post a message. To join, ask another member.</string>
+    <!-- deprecated, the line is removed on desktop (was never used on other OS) -->
     <string name="messaging_disabled_device_chat">This chat contains locally generated messages; writing is disabled.</string>
     <string name="messaging_disabled_mailing_list">Sending messages in mailing lists is not yet supported</string>
     <string name="cannot_display_unsuported_file_type">Cannot display this file type: %s</string>

@@ -361,6 +361,7 @@
     <string name="retry_send">메시지 전송 다시 시도</string>
     <!-- reasons for a disabled message composer -->
     <string name="messaging_disabled_not_in_group">이 그룹에 속해 있지 않기 때문에 쓸 수 없습니다. 가입하려면, 다른 구성원에게 문의하십시오.</string>
+    <!-- deprecated, the line is removed on desktop (was never used on other OS) -->
     <string name="messaging_disabled_device_chat">이 대화는 로컬에서 생성된 메시지를 포함합니다. 따라서 메시지를 쓸 수 없습니다.</string>
     <string name="messaging_disabled_mailing_list">메일링 목록의 메시지 발송은 아직 지원되지 않습니다.</string>
     <string name="cannot_display_unsuported_file_type">파일 형식을 표시할 수 없습니다: %s</string>

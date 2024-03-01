@@ -316,6 +316,7 @@
     <string name="retry_send">メッセージの配信を再試行します</string>
     <!-- reasons for a disabled message composer -->
     <string name="messaging_disabled_not_in_group">このグループに参加していないので書き込めません。参加するには、他のメンバーに知らせてください。</string>
+    <!-- deprecated, the line is removed on desktop (was never used on other OS) -->
     <string name="messaging_disabled_device_chat">このチャットにはローカルで生成されたメッセージがありますので、メッセージを書き込めません。</string>
     <string name="cannot_display_unsuported_file_type">%s形式のファイルは表示できません</string>
     <string name="attachment_failed_to_load">添付ファイルの読み込みに失敗しました</string>

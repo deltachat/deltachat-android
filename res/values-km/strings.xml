@@ -339,6 +339,7 @@
     <string name="retry_send">ព្យាយាមម្តងទៀតដើម្បីផ្ញើសារ</string>
     <!-- reasons for a disabled message composer -->
     <string name="messaging_disabled_not_in_group">អ្នកមិនអាចសរសេរ ពីព្រោះអ្នកមិននៅក្នុងក្រុមនេះ។ ដើម្បីចូលរួម សុំសមាជិកផ្សេងទៀត។</string>
+    <!-- deprecated, the line is removed on desktop (was never used on other OS) -->
     <string name="messaging_disabled_device_chat">ការសន្ទនានេះផ្ទុកសារក្នុងតំបន់។ ដូច្នេះអ្នកមិនអាចសរសេរសារណាមួយបានទេ។</string>
     <string name="messaging_disabled_mailing_list">ការផ្ញើសារ នៅក្នុងបញ្ជីប៉ុស្តិ៍សំបុត្រ មិនទាន់ត្រូវបានគាំទ្រនៅឡើយ។</string>
     <string name="cannot_display_unsuported_file_type">មិនអាចបង្ហាញប្រភេទឯកសារនេះ៖ %s</string>

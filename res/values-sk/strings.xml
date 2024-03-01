@@ -407,6 +407,7 @@
     <string name="retry_send">Skúste správu odoslať znova</string>
     <!-- reasons for a disabled message composer -->
     <string name="messaging_disabled_not_in_group">Nemôžete písať, pretože nie ste v tejto skupine. Ak sa chcete pripojiť, požiadajte iného člena.</string>
+    <!-- deprecated, the line is removed on desktop (was never used on other OS) -->
     <string name="messaging_disabled_device_chat">Táto konverzácia obsahuje miestne generované správy. Preto nemôžete písať žiadne správy.</string>
     <string name="messaging_disabled_mailing_list">Posielanie správ do diskusných skupín (mailing list) zatiaľ nie je podporované.</string>
     <string name="cannot_display_unsuported_file_type">Nie je možné zobraziť tento typ súboru: %s</string>

@@ -439,6 +439,7 @@
     <string name="retry_send">Повторить отправку сообщения</string>
     <!-- reasons for a disabled message composer -->
     <string name="messaging_disabled_not_in_group">Вы не можете писать, потому что вы не в этой группе. Чтобы присоединиться, попросите другого участника.</string>
+    <!-- deprecated, the line is removed on desktop (was never used on other OS) -->
     <string name="messaging_disabled_device_chat">Этот чат содержит локально сгенерированные сообщения. Поэтому вы не можете писать сообщения.</string>
     <string name="messaging_disabled_mailing_list">Отправка сообщений в списках рассылки пока не поддерживается </string>
     <string name="cannot_display_unsuported_file_type">Невозможно отобразить этот тип файла: %s</string>

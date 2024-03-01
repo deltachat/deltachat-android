@@ -156,7 +156,7 @@
         <item quantity="other">%d обрано</item>
     </plurals>
 
-    <string name="self">Мої</string>
+    <string name="self">Я</string>
     <string name="draft">Чернетка</string>
     <string name="image">Зображення</string>
     <!-- Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
@@ -440,6 +440,7 @@
     <string name="retry_send">Спробувати надіслати повідомлення ще раз</string>
     <!-- reasons for a disabled message composer -->
     <string name="messaging_disabled_not_in_group">Ви не можете нічого писати, бо Ви не в цій групі. Запитайте іншого члена групи про приєднання.</string>
+    <!-- deprecated, the line is removed on desktop (was never used on other OS) -->
     <string name="messaging_disabled_device_chat">Цей чат містить повідомлення, створені локально. Тому Ви не можете писати жодних повідомлень</string>
     <string name="messaging_disabled_mailing_list">Надсилання повідомлень у списках розсилки поки не підтримується</string>
     <string name="cannot_display_unsuported_file_type">Неможливо відобразити цей тип файлів: %s</string>

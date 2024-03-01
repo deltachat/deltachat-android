@@ -400,6 +400,7 @@
     <string name="retry_send">Reîncercarea de a trimite mesajul</string>
     <!-- reasons for a disabled message composer -->
     <string name="messaging_disabled_not_in_group">Trebuie să fiți în acest grup pentru a posta un mesaj. Pentru a vă alătura, întrebați un alt membru.</string>
+    <!-- deprecated, the line is removed on desktop (was never used on other OS) -->
     <string name="messaging_disabled_device_chat">Acest chat conține mesaje generate local; scrierea este dezactivată.</string>
     <string name="messaging_disabled_mailing_list">Trimiterea de mesaje în listele de discuții nu este încă acceptată.</string>
     <string name="cannot_display_unsuported_file_type">Nu se poate afișa acest tip de fișier: %s</string>

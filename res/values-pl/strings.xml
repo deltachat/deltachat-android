@@ -440,6 +440,7 @@
     <string name="retry_send">Spróbuj ponownie wysłać wiadomość</string>
     <!-- reasons for a disabled message composer -->
     <string name="messaging_disabled_not_in_group">Nie możesz pisać, ponieważ nie jesteś w tej grupie. Aby dołączyć, poproś innego członka.</string>
+    <!-- deprecated, the line is removed on desktop (was never used on other OS) -->
     <string name="messaging_disabled_device_chat">Ten czat zawiera wiadomości generowane lokalnie dlatego nie możesz pisać żadnych wiadomości.</string>
     <string name="messaging_disabled_mailing_list">Wysyłanie wiadomości w listach mailingowych nie jest jeszcze obsługiwane</string>
     <string name="cannot_display_unsuported_file_type">Nie można wyświetlić tego typu pliku: %s</string>

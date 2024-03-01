@@ -334,6 +334,7 @@
     <string name="retry_send">Skicka om meddelandet</string>
     <!-- reasons for a disabled message composer -->
     <string name="messaging_disabled_not_in_group">Du kan inte skriva eftersom du inte är med i denna grupp. Be en medlem bjuda in dig, för att gå med</string>
+    <!-- deprecated, the line is removed on desktop (was never used on other OS) -->
     <string name="messaging_disabled_device_chat">Den här chatten innehåller meddelanden som har genererats lokalt. Därför kan du inte skriva meddelanden.</string>
     <string name="messaging_disabled_mailing_list">Att skicka meddelande till e-postlistor stöds inte ännu</string>
     <string name="cannot_display_unsuported_file_type">Denna filtyp kan inte visas: %s</string>

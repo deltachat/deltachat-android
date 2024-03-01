@@ -377,6 +377,7 @@
     <string name="retry_send">Ξαναπροσπαθήστε να στείλετε μήνυμα</string>
     <!-- reasons for a disabled message composer -->
     <string name="messaging_disabled_not_in_group">Πρέπει να είστε σε αυτήν την ομάδα για να δημοσιεύσετε ένα μήνυμα. Για να συμμετέχετε, ζητήστε από ένα άλλο μέλος.</string>
+    <!-- deprecated, the line is removed on desktop (was never used on other OS) -->
     <string name="messaging_disabled_device_chat">Αυτή η συνομιλία περιέχει μηνύματα που δημιουργούνται τοπικά. Η γραφή είναι απενεργοποιημένη.</string>
     <string name="messaging_disabled_mailing_list">Η αποστολή μηνυμάτων σε λίστες αλληλογραφίας δεν υποστηρίζεται ακόμη</string>
     <string name="cannot_display_unsuported_file_type">Δεν είναι δυνατή η εμφάνιση αυτού του τύπου αρχείου: %s</string>

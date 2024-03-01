@@ -395,6 +395,7 @@
     <string name="retry_send">尝试重发消息</string>
     <!-- reasons for a disabled message composer -->
     <string name="messaging_disabled_not_in_group">您必须在此群组之中才能发送消息。要加入，请询问其他成员。</string>
+    <!-- deprecated, the line is removed on desktop (was never used on other OS) -->
     <string name="messaging_disabled_device_chat">此聊天用于本地生成的消息。您不能在这里编写消息。</string>
     <string name="messaging_disabled_mailing_list">尚不支持在邮件列表中发送消息</string>
     <string name="cannot_display_unsuported_file_type">无法显示此类文件：%s</string>

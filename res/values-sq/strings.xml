@@ -408,6 +408,7 @@
     <string name="retry_send">Riprovo të dërgosh mesazhin</string>
     <!-- reasons for a disabled message composer -->
     <string name="messaging_disabled_not_in_group">S’mund të shkruani, ngaqë s’jeni në këtë grup. Për t’u bërë pjesë, kërkojani një anëtari tjetër.</string>
+    <!-- deprecated, the line is removed on desktop (was never used on other OS) -->
     <string name="messaging_disabled_device_chat">Kjo fjalosje përmban mesazhe të prodhuar lokalisht. Ndaj s’mund të shkruani ndonjë mesazh.</string>
     <string name="messaging_disabled_mailing_list">Dërgimi i mesazheve në lista postimesh nuk mbulohet ende</string>
     <string name="cannot_display_unsuported_file_type">S’mund të shfaqet ky lloj kartelash: %s</string>

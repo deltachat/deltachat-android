@@ -367,6 +367,7 @@
     <string name="retry_send">Torna a provar d\'enviar el missatge</string>
     <!-- reasons for a disabled message composer -->
     <string name="messaging_disabled_not_in_group">No hi podeu escriure perquè no sou en aquest grup. Per ser-hi, demaneu-ho a un altre membre.</string>
+    <!-- deprecated, the line is removed on desktop (was never used on other OS) -->
     <string name="messaging_disabled_device_chat">Aquest xat només té missatges generats localment. A més no hi podeu escriure cap missatge.</string>
     <string name="messaging_disabled_mailing_list">L\'enviament de missatges a una llista de correu encara no funciona</string>
     <string name="cannot_display_unsuported_file_type">Aquest tipus de fitxer: %s no es pot mostrar</string>

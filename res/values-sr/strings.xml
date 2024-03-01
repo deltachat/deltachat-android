@@ -405,6 +405,7 @@
     <string name="retry_send">Покушај поново да пошаљеш поруку</string>
     <!-- reasons for a disabled message composer -->
     <string name="messaging_disabled_not_in_group">Морате бити у овој групи да би сте послали поруку. Да се придружите групи, питајте неког члана групе за позивницу.</string>
+    <!-- deprecated, the line is removed on desktop (was never used on other OS) -->
     <string name="messaging_disabled_device_chat">Ово ћаскање садржи поруке генерисане на овом уређају; писање није дозвољено.</string>
     <string name="messaging_disabled_mailing_list">Слање порука на списак имејл адреса још увек није подржано</string>
     <string name="cannot_display_unsuported_file_type">Тип фајла %sне може бити приказан</string>

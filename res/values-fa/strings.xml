@@ -404,6 +404,7 @@ https://meet.jit.si/$ROOM
     <string name="retry_send">برای ارسال پیام دوباره تلاش کنید. </string>
     <!-- reasons for a disabled message composer -->
     <string name="messaging_disabled_not_in_group">نمی‌توانید بنویسید چرا که در این گروه نیستید. برای عضو شدن از یکی از اعضا درخواست کنید. </string>
+    <!-- deprecated, the line is removed on desktop (was never used on other OS) -->
     <string name="messaging_disabled_device_chat">این گپ شامل پیام‌های تولید شده به صورت داخلی است. برای همین نمی‌توانید پیامی بنویسید. </string>
     <string name="messaging_disabled_mailing_list">ارسال پیام در فهرست‌های پستی فعلاً پشتیبانی نمی‌شود.</string>
     <string name="cannot_display_unsuported_file_type">امکان نمایش این نوع پرونده وجود ندارد: %s</string>

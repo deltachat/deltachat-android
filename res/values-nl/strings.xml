@@ -410,6 +410,7 @@
     <string name="retry_send">Bericht opnieuw versturen</string>
     <!-- reasons for a disabled message composer -->
     <string name="messaging_disabled_not_in_group">Alleen leden kunnen berichten versturen aan deze groep. Vraag aan een lid om lid te worden.</string>
+    <!-- deprecated, the line is removed on desktop (was never used on other OS) -->
     <string name="messaging_disabled_device_chat">Je kunt geen berichten versturen omdat dit gesprek alleen lokaal gegenereerde berichten bevat.</string>
     <string name="messaging_disabled_mailing_list">Het versturen van berichten naar mailinglijsten wordt nog niet ondersteund</string>
     <string name="cannot_display_unsuported_file_type">Het volgende bestandstype kan niet worden getoond: %s</string>

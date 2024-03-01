@@ -377,6 +377,7 @@
     <string name="retry_send">Yritä uudelleen lähettääksesi viestin</string>
     <!-- reasons for a disabled message composer -->
     <string name="messaging_disabled_not_in_group">Et voi kirjoittaa, koska et ole ryhmän jäsen. Liittyäksesi pyydä, että joku jäsen liittää sinut ryhmään.</string>
+    <!-- deprecated, the line is removed on desktop (was never used on other OS) -->
     <string name="messaging_disabled_device_chat">Tämän keskustelun viestit on luotu paikallisesti. Et voi kirjoittaa viestejä tänne.</string>
     <string name="messaging_disabled_mailing_list">Sähköpostilistoille vastaamista ei vielä tueta</string>
     <string name="cannot_display_unsuported_file_type">Tiedostotyypin näyttäminen epäonnistui: %s</string>

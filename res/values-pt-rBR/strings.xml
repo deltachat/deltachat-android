@@ -406,6 +406,7 @@
     <string name="retry_send">Tentar enviar mensagem novamente</string>
     <!-- reasons for a disabled message composer -->
     <string name="messaging_disabled_not_in_group">Você não pode escrever porque não está neste grupo. Para entrar, peça a outro membro.</string>
+    <!-- deprecated, the line is removed on desktop (was never used on other OS) -->
     <string name="messaging_disabled_device_chat">Esta conversa contém mensagens geradas localmente. Portanto, você não pode escrever nenhuma mensagem.</string>
     <string name="messaging_disabled_mailing_list">O envio de mensagens para lista de e-mails ainda não é suportado </string>
     <string name="cannot_display_unsuported_file_type">Não é possível exibir este tipo de arquivo: %s</string>

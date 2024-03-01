@@ -383,6 +383,7 @@
     <string name="retry_send">Reintentar o envío da mensaxe</string>
     <!-- reasons for a disabled message composer -->
     <string name="messaging_disabled_not_in_group">Non podes escribir porque non estás no grupo. Para unirte, solicítallo a outro membro.</string>
+    <!-- deprecated, the line is removed on desktop (was never used on other OS) -->
     <string name="messaging_disabled_device_chat">A conversa contén mensaxes creados localmente. Polo tanto non podes escribir ningunha mensaxe.</string>
     <string name="messaging_disabled_mailing_list">Aínda non está soportado o envío de emails a listas de correo</string>
     <string name="cannot_display_unsuported_file_type">Non se pode motrar este tipo de ficheiro: %s</string>

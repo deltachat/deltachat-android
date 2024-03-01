@@ -328,6 +328,7 @@
     <string name="retry_send">Forsøg igen at sende besked</string>
     <!-- reasons for a disabled message composer -->
     <string name="messaging_disabled_not_in_group">Du kan ikke skrive, fordi du ikke er medlem af denne gruppe. For at tilslutte dig, spørg et andet medlem.</string>
+    <!-- deprecated, the line is removed on desktop (was never used on other OS) -->
     <string name="messaging_disabled_device_chat">Denne chat indeholder lokalt generede beskeder. Derfor kan du ikke skrive nogen beskeder.</string>
     <string name="cannot_display_unsuported_file_type">Kan ikke vise denne filtype: 1%s</string>
     <string name="attachment_failed_to_load">Visning af vedhæftede fil mislykkedes</string>

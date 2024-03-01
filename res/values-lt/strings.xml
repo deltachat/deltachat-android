@@ -259,6 +259,8 @@
     <string name="ConversationFragment_quoted_message_not_found">Pradinė žinutė nerasta</string>
     <string name="reply_privately">Atsakyti privačiai</string>
     <string name="source_code">Pirminis kodas</string>
+    <string name="donate">Paaukoti</string>
+
     <string name="mute_for_one_hour">Išjungti 1 valandai</string>
     <string name="mute_for_two_hours">Išjungti 2 valandoms</string>
     <string name="mute_for_one_day">Išjungti 1 dienai</string>
@@ -366,6 +368,7 @@
     <string name="save_as">Įrašyti kaip</string>
     <!-- reasons for a disabled message composer -->
     <string name="messaging_disabled_not_in_group">Jūs negalite rašyti, nes nesate šioje grupėje. Norėdami prisijungti, paprašykite kito nario.</string>
+    <!-- deprecated, the line is removed on desktop (was never used on other OS) -->
     <string name="messaging_disabled_device_chat">Šiame pokalbyje yra vietiniu lygmeniu sukurtos žinutės. Štai kodėl negalite rašyti jokių žinučių.</string>
     <string name="cannot_display_unsuported_file_type">Nepavyksta atvaizduoti šio failo tipo: %s</string>
     <string name="attachment_failed_to_load">Nepavyko įkelti priedo</string>
