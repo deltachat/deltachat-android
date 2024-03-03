@@ -954,6 +954,8 @@
     <string name="notify_no_name_or_message">Geen naam of bericht</string>
     <string name="notifications_disabled">Meldingen zijn uitgeschakeld</string>
     <string name="new_messages">Nieuwe berichten</string>
+    <!-- Body text for a generic "New messages" notification. Shown if we do not have more information about a new messages. Note, that the string is also referenced at https://github.com/deltachat/notifiers -->
+    <string name="new_messages_body">Je hebt nieuwe berichten</string>
     <string name="n_messages_in_m_chats">%1$d berichten in %2$d gesprekken</string>
 
 

@@ -619,7 +619,7 @@
 
     <!-- share and forward messages -->
     <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
-    <string name="forward_to">Inotra a…</string>
+    <string name="forward_to">Inoltra a…</string>
     <string name="share_multiple_attachments">Invia %1$d files alla chat selezionata?\n\nI files vengono inviati non modificati nella loro dimensione originale (ad es. immagini e video non vengono ricodificati).</string>
     <string name="share_multiple_attachments_multiple_chats">Invia %1$d file(s) a %2$d chat?\n\nI files vengono inviati non modificati nella loro dimensione originale (ad es. immagini e video non vengono ricodificat)i.</string>
     <string name="share_text_multiple_chats">Invia questo testo alle %1$d chat?\n\n\"%2$s\"</string>
@@ -969,6 +969,8 @@
     <string name="notify_no_name_or_message">Nessun nome nè messaggio</string>
     <string name="notifications_disabled">Notifiche disabilitate</string>
     <string name="new_messages">Nuovi messaggi</string>
+    <!-- Body text for a generic "New messages" notification. Shown if we do not have more information about a new messages. Note, that the string is also referenced at https://github.com/deltachat/notifiers -->
+    <string name="new_messages_body">Hai nuovi messaggi</string>
     <string name="n_messages_in_m_chats">%1$d messaggi in %2$d chats</string>
 
 

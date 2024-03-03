@@ -954,6 +954,8 @@
     <string name="notify_no_name_or_message">Kein Name oder Nachricht</string>
     <string name="notifications_disabled">Benachrichtigungen deaktiviert</string>
     <string name="new_messages">Neue Nachrichten</string>
+    <!-- Body text for a generic "New messages" notification. Shown if we do not have more information about a new messages. Note, that the string is also referenced at https://github.com/deltachat/notifiers -->
+    <string name="new_messages_body">Sie haben neue Nachrichten</string>
     <string name="n_messages_in_m_chats">%1$d Nachrichten in %2$d Chats</string>
 
 

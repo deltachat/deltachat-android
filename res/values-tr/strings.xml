@@ -954,6 +954,8 @@
     <string name="notify_no_name_or_message">Ad ya da ileti yok</string>
     <string name="notifications_disabled">Bildirimler etkisizleştirildi</string>
     <string name="new_messages">Yeni iletiler</string>
+    <!-- Body text for a generic "New messages" notification. Shown if we do not have more information about a new messages. Note, that the string is also referenced at https://github.com/deltachat/notifiers -->
+    <string name="new_messages_body">Yeni iletileriniz var</string>
     <string name="n_messages_in_m_chats">%2$d sohbette %1$d ileti</string>
 
 

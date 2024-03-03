@@ -939,6 +939,8 @@
     <string name="notify_no_name_or_message">不显示名称或消息</string>
     <string name="notifications_disabled">已禁用通知</string>
     <string name="new_messages">新消息</string>
+    <!-- Body text for a generic "New messages" notification. Shown if we do not have more information about a new messages. Note, that the string is also referenced at https://github.com/deltachat/notifiers -->
+    <string name="new_messages_body">你有新消息</string>
     <string name="n_messages_in_m_chats">%1$d 条消息，位于 %2$d 个聊天内</string>
 
 

@@ -984,6 +984,8 @@
     <string name="notify_no_name_or_message">Без імені або повідомлення</string>
     <string name="notifications_disabled">Сповіщення вимкнено</string>
     <string name="new_messages">Нові повідомлення</string>
+    <!-- Body text for a generic "New messages" notification. Shown if we do not have more information about a new messages. Note, that the string is also referenced at https://github.com/deltachat/notifiers -->
+    <string name="new_messages_body">У вас нові повідомлення</string>
     <string name="n_messages_in_m_chats">%1$d повідомлень в %2$d чатах</string>
 
 
