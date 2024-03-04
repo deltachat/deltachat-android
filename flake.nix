@@ -22,6 +22,8 @@
             platforms-android-34
             ndk-23-2-8568313
           ]);
+        rust-version = pkgs.lib.removeSuffix "\n"
+          (builtins.readFile ./scripts/rust-toolchain);
       in {
         devShells.default = pkgs.mkShell {
           ANDROID_SDK_ROOT = "${android-sdk}/share/android-sdk";
@@ -33,7 +35,7 @@
           buildInputs = [
             android-sdk
             pkgs.openjdk17
-            (pkgs.buildPackages.rust-bin.stable."1.72.0".minimal.override {
+            (pkgs.buildPackages.rust-bin.stable."${rust-version}".minimal.override {
               targets = [
                 "armv7-linux-androideabi"
                 "aarch64-linux-android"
