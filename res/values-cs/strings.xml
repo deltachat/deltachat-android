@@ -151,9 +151,12 @@
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">Nálepka</string>
     <string name="add_to_sticker_collection">Přidat do sbírky nálepek </string>
+    <string name="add_stickers_instructions">Chcete-li přidat nálepky, klepněte na „Otevřít složku nálepek“, vytvořte podsložku pro balíček nálepek a přetáhněte tam soubory obrázků a nálepek</string>
+    <string name="open_sticker_folder">Otevřete složku nálepek</string>
     <string name="images">Obrázky</string>
     <string name="audio">Zvukový záznam</string>
     <string name="voice_message">Hlasová zpráva</string>
+    <string name="forwarded">Přeposláno</string>
     <string name="forwarded_message">Přeposlaná zpráva</string>
     <!-- %1$s will be replaced by the name or the e-mail address of the person who forwards the message -->
     <string name="forwarded_by">Přeposlal %1$s</string>
@@ -161,7 +164,12 @@
     <string name="documents">Dokumenty</string>
     <string name="contact">Kontakt</string>
     <string name="camera">Kamera</string>
+    <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
+    <string name="capture">Zachyťte</string>
+    <string name="switch_camera">Přepnout fotoaparát</string>
+    <string name="toggle_fullscreen">Přepni na režim celé obrazovky </string>
     <string name="location">Poloha</string>
+    <string name="locations">Umístění</string>
     <string name="gallery">Galerie</string>
     <string name="images_and_videos">Obrázky a videa</string>
     <string name="file">Soubor</string>
