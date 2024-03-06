@@ -1,5 +1,20 @@
 # Delta Chat Android Changelog
 
+## v1.44.0
+2024-03
+
+* sync self-avatar and self-signature text across devices
+* remove webxdc sending limit
+* recognize "Trash" folder by name in case it is not flagged as such by the server
+* send group avatars inline so that they do not appear as unexpected attachments
+* "Settings / Advanced / Send statistics to Delta Chat's developers"
+  now include number of protected/encrypted/unencrypted chats
+* fix sending sync messages on updating self-name etc.
+* fix sometimes slow reconnects
+* more bug fixes
+* update translations and local help
+* update to core 1.136.2
+
 
 ## v1.43.1 Testrun
 2024-02
