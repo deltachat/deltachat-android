@@ -731,6 +731,8 @@
     <string name="pref_edit_profile">Edit Profile</string>
     <string name="disable_imap_idle">Disable IMAP IDLE</string>
     <string name="disable_imap_idle_explain">Do not use IMAP IDLE extension even if the server supports it. Enabling this option will delay message retrieval, enable it only for testing.</string>
+    <string name="send_stats_to_devs">Send statistics to Delta Chat\'s developers</string>
+
 
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Search Results</string>
@@ -1104,4 +1106,5 @@
     <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
     <string name="update_1_42_android">Watch out for more improvements in camera, voice messages, backup-all, screen reader, per-account wallpapers, gallery select-all, webxdc landscape … or read them at %1$s</string>
     <string name="update_1_44_android">What\'s new:\n\n❤️ Yeah! This was long-awaited: Long tap a message to react\n\n🔗 If you cannot scan QR codes, share them as invite links\n\n🔵 All unread messages of all accounts are counted now\n\n… and TONS of bugfixes … %1$s\n\nHelp improving the app: Use \"Settings / Advanced / Send statistics\" to help devs to optimize better for real-world usage. You can review the data before sending</string>
+    <string name="update_1_44_ios">What\'s new:\n\n❤️ Yeah! This was long-awaited: Long tap a message to react\n\n🫸 PUSH notifications if supported by providers as https://nine.testrun.org\n\n🔗 If you cannot scan QR codes, share them as invite links\n\n… and TONS of bugfixes … %1$s</string>
 </resources>
