@@ -13,7 +13,7 @@ import org.thoughtcrime.securesms.util.FileUtils;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.lang.ref.WeakReference;
 import java.util.HashSet;
@@ -87,7 +87,7 @@ public class ResolveMediaTask extends AsyncTask<Uri, Void, Uri> {
 
                 String mimeType = getMimeType(contextRef.get(), uri);
                 return PersistentBlobProvider.getInstance().create(contextRef.get(), inputStream, mimeType, fileName, fileSize);
-            } catch (NullPointerException | IOException ioe) {
+            } catch (NullPointerException | FileNotFoundException ioe) {
                 Log.w(TAG, ioe);
                 return null;
             }
@@ -119,15 +119,8 @@ public class ResolveMediaTask extends AsyncTask<Uri, Void, Uri> {
             }
         }
 
-        private InputStream openFileUri(Uri uri) throws IOException {
+        private InputStream openFileUri(Uri uri) throws FileNotFoundException {
             FileInputStream fin = new FileInputStream(uri.getPath());
-            int owner = FileUtils.getFileDescriptorOwner(fin.getFD());
-
-
-            if (owner == -1 || owner == Process.myUid()) {
-                fin.close();
-                throw new IOException("File owned by application");
-            }
 
             return fin;
         }
