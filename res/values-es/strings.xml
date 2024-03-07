@@ -746,7 +746,6 @@
     <string name="pref_edit_profile">Editar perfil</string>
     <string name="disable_imap_idle">Deshabilitar IMAP IDLE</string>
     <string name="disable_imap_idle_explain">No utilizar la extensión IMAP IDLE aunque el servidor la admita. Habilitar esta opción retrasará el recibo de mensajes, actívala solo para pruebas.</string>
-
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Resultados de la búsqueda</string>
     <string name="emoji_not_found">No se encontraron emojis</string>
@@ -1116,4 +1115,4 @@
     <string name="update_1_42_common">Novedades:\n\n💌 Los chats privados garantizan el cifrado de extremo a extremo para los contactos introducidos via QR\n\n😌 Para la simplicidad de todos, marcamos estos contactos y chats con marcas de verificación verdes\n\n👥 Los grupos se crean automáticamente con cifrado de extremo a extremo garantizado si es posible\n\n🔄 Aceptar/bloquear, archivar, fijar y silenciar se sincronizan en todos tus dispositivos</string>
     <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
     <string name="update_1_42_android">Esté atento a más mejoras en la cámara, mensajes de voz, copia de respaldo, lector de pantalla, fondos de pantalla por cuenta, seleccionar todo en la galería, webxdc en modo horizontal… o léalos en %1$s</string>
-</resources>
+    </resources>

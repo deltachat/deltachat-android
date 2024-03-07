@@ -761,7 +761,6 @@
     <string name="pref_edit_profile">Edytuj profil</string>
     <string name="disable_imap_idle">Wyłącz IMAP IDLE</string>
     <string name="disable_imap_idle_explain">Nie używaj rozszerzenia IMAP IDLE, nawet jeśli serwer je obsługuje. Włączenie tej opcji opóźni pobieranie wiadomości, włącz ją tylko na testy.</string>
-
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Wyniki wyszukiwania</string>
     <string name="emoji_not_found">Nie znaleziono emoji</string>
@@ -984,6 +983,8 @@
     <string name="notify_no_name_or_message">Brak nazwy lub wiadomości</string>
     <string name="notifications_disabled">Powiadomienia wyłączone</string>
     <string name="new_messages">Nowe wiadomości</string>
+    <!-- Body text for a generic "New messages" notification. Shown if we do not have more information about a new messages. Note, that the string is also referenced at https://github.com/deltachat/notifiers -->
+    <string name="new_messages_body">Masz nowe wiadomości</string>
     <string name="n_messages_in_m_chats">%1$d wiadomości w %2$d czatach</string>
 
 
@@ -1131,4 +1132,4 @@
     <string name="update_1_42_common">Co nowego:\n\n💌 czaty indywidualne gwarantują szyfrowanie end-to-end dla kontaktów oznaczonych zielonym znacznikiem\n\n😌 dla ułatwienia dla wszystkich oznaczamy te czaty również zielonymi znacznikami wyboru\n\n👥 grupy są tworzone automatycznie z gwarantowanym kompleksowym szyfrowaniem, jeśli to możliwe\n\n🔄 Zaakceptowany/Zablokowany, Zarchiwizowany, Przypięty, Wyciszony są synchronizowane na wszystkich twoich urządzeniach</string>
     <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
     <string name="update_1_42_android">Zwróć uwagę na więcej ulepszeń w aparacie, wiadomościach głosowych, tworzeniu kopii zapasowych, czytniku ekranu, tapetach dla poszczególnych kont, opcji wybierz wszystkie w galerii, krajobrazie webxdc … lub przeczytaj o nich pod adresem %1$s</string>
-</resources>
+    </resources>

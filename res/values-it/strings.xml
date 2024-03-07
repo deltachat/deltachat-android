@@ -746,6 +746,8 @@
     <string name="pref_edit_profile">Modifica Profilo</string>
     <string name="disable_imap_idle">Disabilita IMAP IDLE</string>
     <string name="disable_imap_idle_explain">Non utilizzare l\'estensione IMAP IDLE anche se il server la supporta. L\'abilitazione di questa opzione ritarderà il recupero del messaggio, abilitarla solo a scopo di test.</string>
+    <string name="send_stats_to_devs">Invia statistiche agli sviluppatori di Delta Chat</string>
+
 
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Risultati Ricerca</string>
@@ -1118,4 +1120,6 @@
     <string name="update_1_42_common">Novità:\n\n💌 le chat individuali garantiscono ora la crittografia end-to-end per i contatti invitati\n\n😌 per la semplicità di tutti, contrassegniamo questi contatti e chat con segni di spunta verdi\n\n👥 i gruppi sono creati automaticamente con crittografia end-to-end garantita, se possibile\n\n🔄 Accettato/Bloccato, Archiviato, Appuntato, Disattivato viene sincronizzato su tutti i tuoi dispositivi</string>
     <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
     <string name="update_1_42_android">Tieni d\'occhio gli ulteriori miglioramenti nella fotocamera, nei messaggi vocali, nel backup di tutto, nella lettura dello schermo, negli sfondi per account, nella selezione di tutte le gallerie, nel panorama webxdc... oppure leggili su %1$s</string>
+    <string name="update_1_44_android">Novità:\n\n❤️ Sì! Questo era atteso da tempo: tocca a lungo un messaggio per reagire\n\n🔗 Se non riesci a scansionare i codici QR, condividili come link di invito\n\n🔵 I messaggi non letti di tutti gli account vengono ora conteggiati e mostrati nel titolo\n\n … e TONNELLATE di correzioni di bug … %1$s\n\nAiuta a migliorare l\'app: usa \"Impostazioni/Avanzate/Invia statistiche\" per aiutare gli sviluppatori a ottimizzare meglio per l\'utilizzo nel mondo reale. È possibile rivedere i dati prima dell\'invio</string>
+    <string name="update_1_44_ios">Novità:\n\n❤️ Sì! Questo era atteso da tempo: tocca a lungo un messaggio per reagire\n\n🫸 Notifiche PUSH se supportate dai provider come https://nine.testrun.org\n\n🔗 Se non riesci a scansionare i codici QR, condividili come link di invito\n\n... e TONNELLATE di correzioni di bug ... %1$s</string>
 </resources>

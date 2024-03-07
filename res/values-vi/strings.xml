@@ -713,7 +713,6 @@
     <string name="pref_edit_profile">Chỉnh sửa hồ sơ</string>
     <string name="disable_imap_idle">Tắt IMAP IDLE</string>
     <string name="disable_imap_idle_explain">Không sử dụng tiện ích mở rộng IMAP IDLE ngay cả khi máy chủ hỗ trợ nó. Bật tùy chọn này sẽ trì hoãn việc truy xuất tin nhắn, chỉ bật nó để kiểm tra.</string>
-
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Kết quả tìm kiếm</string>
     <string name="emoji_not_found">Không tìm thấy emoji nào</string>
@@ -1076,4 +1075,4 @@
     <string name="update_1_42_common">Có gì mới:\n\n💌 cuộc trò chuyện một-một đảm bảo mã hóa hai đầu cho những người liên hệ được giới thiệu\n\n😌 để mọi người đơn giản, chúng tôi đánh dấu những người liên hệ và cuộc trò chuyện này bằng dấu kiểm màu xanh lá cây\n\n👥 nhóm được tạo tự động với mã hóa hai đầu được đảm bảo nếu có thể\n\n🔄 Chấp nhận/Chặn, Đã lưu trữ, Đã ghim, Tắt tiếng được đồng bộ hóa trên tất cả các thiết bị của bạn</string>
     <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
     <string name="update_1_42_android">Hãy chú ý đến những cải tiến khác về máy ảnh, tin nhắn thoại, sao lưu tất cả, trình đọc màn hình, hình nền cho mỗi tài khoản, chọn tất cả thư viện, phong cảnh webxdc … hoặc đọc chúng tại %1$s</string>
-</resources>
+    </resources>

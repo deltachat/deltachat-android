@@ -731,7 +731,6 @@
     <string name="pref_edit_profile">Profili Düzenle</string>
     <string name="disable_imap_idle">IMAP IDLE\'ı Etkisizleştir</string>
     <string name="disable_imap_idle_explain">Sunucu desteklese bile IMAP IDLE uzantısını kullanmayın. Bu seçeneği etkinleştirmek ileti getirmeyi geciktirecek; yalnızca sınama için etkinleştirin.</string>
-
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Arama Sonuçları</string>
     <string name="emoji_not_found">Emoji bulunamadı</string>
@@ -1103,4 +1102,4 @@
     <string name="update_1_42_common">Ne yeni:\n\n💌 bire bir sohbetler artık yeşil bir onay kutusu bulunan kişiler için uçtan uca şifrelemeyi güvenceler\n\n😌 Herkesin basitliği için bu sohbetleri yeşil onay imleriyle imliyoruz\n\n👥 olanaklıysa, otomatik olarak öbekler güvencelenen uçtan uca şifrelemeyle oluşturulur\n\n🔄 Kabul edilen/Engellenen, Arşivlenen, Sabitlenen, Sessize Alınan aygıtlarınız arasında eşzamanlanır</string>
     <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
     <string name="update_1_42_android">Kamera, sesli iletiler, tümünü yedekleme, ekran okuyucusu, hesap başına duvar kâğıtları, galeride tümünü seç, webxdc manzarasındaki daha fazla iyileştirmeye dikkat edin … ya da onları %1$s adresinde okuyun</string>
-</resources>
+    </resources>

@@ -716,7 +716,6 @@
     <string name="pref_edit_profile">编辑个人资料</string>
     <string name="disable_imap_idle">禁用 IMAP IDLE</string>
     <string name="disable_imap_idle_explain">即便服务器支持，也不要使用 IMAP IDLE 扩展。启用后会造成消息获取延迟，请仅出于测试目的启用该功能。</string>
-
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">搜索结果</string>
     <string name="emoji_not_found">未找到 emoji</string>
@@ -1088,4 +1087,4 @@
     <string name="update_1_42_common">新变化\n\n💌 对引入的联系人，一对一聊天确保端到端加密\n\n😌 为了方便识别，这样的联系人和聊天会带有绿色钩形符号\n\n👥 如果可能，自动创建确保端到端加密的群\n\n🔄 在所有设备间同步接受/拦截、存档、固定、静音</string>
     <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
     <string name="update_1_42_android">留心相机、语音消息、backup-all、屏幕阅读器、不同账户壁纸、图库全选、webxdc landscape 等方面的更多改进… 或访问 %1$s 进行了解</string>
-</resources>
+    </resources>

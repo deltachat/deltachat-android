@@ -731,7 +731,6 @@
     <string name="pref_edit_profile">Profiel bewerken</string>
     <string name="disable_imap_idle">IMAP IDLE uitschakelen</string>
     <string name="disable_imap_idle_explain">Maak geen gebruik van IMAP IDLE, zelfs niet als de server het ondersteunt. Schakel deze optie in om het ophalen van berichten te vertragen. Let op: gebruik deze optie alleen voor testdoeleinden.</string>
-
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Zoekresultaten</string>
     <string name="emoji_not_found">Geen emoji gevonden</string>
@@ -1103,4 +1102,4 @@
     <string name="update_1_42_common">Wijzigingslog:\n\n💌 een-op-eengesprekken hebben voortaan gegarandeerd eind-tot-eindversleuteling bij gebruik van goedgekeurde contactpersonen\n\n😌 omwille van eenvoud worden zulke contactpersonen en gesprekken voorzien van groene vinkjes\n\n👥 groepen worden automatisch voorzien van gegarandeerde eind-tot-eindversleuteling (indien mogelijk)\n\n🔄 goedgekeurd, geblokkeerd, gearchiveerd, vastgemaakt en genegeerd wordt voortaan naar alle apparaten gesynchroniseerd</string>
     <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
     <string name="update_1_42_android">Binnenkort beschikbaar: verbeteringen aan de camera, spraakberichten, reservekopieën, schermlezer, achtergronden per account, galerijselectie, webxdc in horizontale modus… of lees alles op %1$s</string>
-</resources>
+    </resources>

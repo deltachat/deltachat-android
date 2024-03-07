@@ -741,7 +741,6 @@
     <string name="pref_edit_profile">Édition du profil</string>
     <string name="disable_imap_idle">Désactiver IMAP IDLE</string>
     <string name="disable_imap_idle_explain">N\'utilisez pas d\'extension IMAP IDLE, même si elle est prise en charge par votre serveur, car elle provoque des retards dans la récupération des messages. Activez cette option uniquement pour effectuer des tests.</string>
-
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Résultats de la recherche</string>
     <string name="emoji_not_found">Pas d\'emoji trouvé</string>
@@ -1101,4 +1100,4 @@
     <string name="update_1_42_common">Nouveautés :\n\n💌 Désormais, les discussions à deux garantissent le chiffrement de bout en bout avec les contacts connus.\n\n😌 Pour plus de simplicité, ces contacts et discussions sont marqués d\'un badge vert.\n\n👥 Lorsque cela est possible, les groupes créés sont automatiquement chiffrés de bout en bout.\n\n🔄 Vos listes Accepté/Bloqué, Archivé, Épinglé et Sourdine sont synchronisées sur chacun de vos appareils.</string>
     <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
     <string name="update_1_42_android">Encore plus d\'améliorations à suivre ! Appareil photo, messages vocaux, sauvegardes complètes, lecteur d\'écran, arrière-plan différencié pour chaque compte, option \"sélectionner tout\" dans la galerie, panorama de webxdc, etc. Sinon, retrouvez-les toutes sur : %1$s</string>
-</resources>
+    </resources>
