@@ -62,6 +62,11 @@ dependencies {
         exclude group: 'com.google.android.gms'
     }
 
+    // Replacement for ContentResolver
+    // that protects against the Surreptitious Sharing attack.
+    // <https://github.com/cketti/SafeContentResolver>
+    implementation 'de.cketti.safecontentresolver:safe-content-resolver-v14:1.0.0'
+
     testImplementation 'junit:junit:4.13.1'
     testImplementation 'org.assertj:assertj-core:1.7.1'
     testImplementation 'org.mockito:mockito-core:1.9.5'
