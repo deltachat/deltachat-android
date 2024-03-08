@@ -43,7 +43,7 @@ public class ResolveMediaTask extends AsyncTask<Uri, Void, Uri> {
         protected Uri doInBackground(Uri... uris) {
             try {
                 Uri uri = uris[0];
-                if (uris.length != 1 || uri == null) {
+                if (uris.length != 1 || uri == null || hasFileScheme(uri)) {
                     return null;
                 }
 
@@ -51,16 +51,7 @@ public class ResolveMediaTask extends AsyncTask<Uri, Void, Uri> {
                 String fileName = null;
                 Long fileSize = null;
 
-                if (hasFileScheme(uri)) {
-                    inputStream = this.openFileUri(uri);
-                    if (uri.getPath() != null) {
-                        File file = new File(uri.getPath());
-                        fileName = file.getName();
-                        fileSize = file.length();
-                    }
-                } else {
-                    inputStream = contextRef.get().getContentResolver().openInputStream(uri);
-                }
+                inputStream = contextRef.get().getContentResolver().openInputStream(uri);
 
                 if (inputStream == null) {
                     return null;
@@ -118,13 +109,6 @@ public class ResolveMediaTask extends AsyncTask<Uri, Void, Uri> {
                 task.cancel(true);
             }
         }
-
-        private InputStream openFileUri(Uri uri) throws FileNotFoundException {
-            FileInputStream fin = new FileInputStream(uri.getPath());
-
-            return fin;
-        }
-
 
     private boolean hasFileScheme(Uri uri) {
         if (uri == null) {
