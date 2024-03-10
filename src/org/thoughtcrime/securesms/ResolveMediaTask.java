@@ -13,12 +13,15 @@ import org.thoughtcrime.securesms.util.FileUtils;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.lang.ref.WeakReference;
 import java.util.HashSet;
 
 import static org.thoughtcrime.securesms.util.MediaUtil.getMimeType;
+
+import de.cketti.safecontentresolver.SafeContentResolver;
+import de.cketti.safecontentresolver.SafeContentResolverCompat;
 
 public class ResolveMediaTask extends AsyncTask<Uri, Void, Uri> {
 
@@ -51,16 +54,8 @@ public class ResolveMediaTask extends AsyncTask<Uri, Void, Uri> {
                 String fileName = null;
                 Long fileSize = null;
 
-                if (hasFileScheme(uri)) {
-                    inputStream = this.openFileUri(uri);
-                    if (uri.getPath() != null) {
-                        File file = new File(uri.getPath());
-                        fileName = file.getName();
-                        fileSize = file.length();
-                    }
-                } else {
-                    inputStream = contextRef.get().getContentResolver().openInputStream(uri);
-                }
+                SafeContentResolver safeContentResolver = SafeContentResolverCompat.newInstance(contextRef.get());
+                inputStream = safeContentResolver.openInputStream(uri);
 
                 if (inputStream == null) {
                     return null;
@@ -87,7 +82,7 @@ public class ResolveMediaTask extends AsyncTask<Uri, Void, Uri> {
 
                 String mimeType = getMimeType(contextRef.get(), uri);
                 return PersistentBlobProvider.getInstance().create(contextRef.get(), inputStream, mimeType, fileName, fileSize);
-            } catch (NullPointerException | IOException ioe) {
+            } catch (NullPointerException | FileNotFoundException ioe) {
                 Log.w(TAG, ioe);
                 return null;
             }
@@ -118,20 +113,6 @@ public class ResolveMediaTask extends AsyncTask<Uri, Void, Uri> {
                 task.cancel(true);
             }
         }
-
-        private InputStream openFileUri(Uri uri) throws IOException {
-            FileInputStream fin = new FileInputStream(uri.getPath());
-            int owner = FileUtils.getFileDescriptorOwner(fin.getFD());
-
-
-            if (owner == -1 || owner == Process.myUid()) {
-                fin.close();
-                throw new IOException("File owned by application");
-            }
-
-            return fin;
-        }
-
 
     private boolean hasFileScheme(Uri uri) {
         if (uri == null) {

@@ -30,8 +30,6 @@ LOCAL_CFLAGS 	:= -Werror -Wno-pointer-to-int-cast -Wno-int-to-pointer-cast -DNUL
 LOCAL_CFLAGS 	+= -Drestrict='' -D__EMX__ -DFIXED_POINT -DUSE_ALLOCA -DHAVE_LRINT -DHAVE_LRINTF -fno-math-errno
 LOCAL_CFLAGS 	+= -DANDROID_NDK -DDISABLE_IMPORTGL -fno-strict-aliasing -DAVOID_TABLES -DANDROID_TILE_BASED_DECODE -DANDROID_ARMV6_IDCT -ffast-math -D__STDC_CONSTANT_MACROS
 
-LOCAL_SRC_FILES := \
-utils/org_thoughtcrime_securesms_util_FileUtils.cpp \
-dc_wrapper.c
+LOCAL_SRC_FILES := dc_wrapper.c
 
 include $(BUILD_SHARED_LIBRARY)

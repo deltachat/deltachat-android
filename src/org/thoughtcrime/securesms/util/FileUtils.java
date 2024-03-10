@@ -7,8 +7,6 @@ import java.nio.charset.StandardCharsets;
 
 public class FileUtils {
 
-  public static native int getFileDescriptorOwner(FileDescriptor fileDescriptor);
-
   public static String sanitizeFilename(String name) {
     if (TextUtils.isEmpty(name) || ".".equals(name) || "..".equals(name)) {
       return "(invalid)";
