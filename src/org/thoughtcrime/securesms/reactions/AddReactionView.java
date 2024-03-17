@@ -51,8 +51,9 @@ public class AddReactionView extends LinearLayout {
           };
           for (int i = 0; i < defaultReactionViews.length; i++) {
               final int ii = i;
-              defaultReactionViews[i].setOnClickListener(v -> reactionClicked(ii));
+              defaultReactionViews[i].setOnClickListener(v -> defaultReactionClicked(ii));
           }
+          findViewById(R.id.reaction_any).setOnClickListener(v -> anyReactionClicked());
       }
     }
 
@@ -117,7 +118,7 @@ public class AddReactionView extends LinearLayout {
         return result;
     }
 
-    private void reactionClicked(int i) {
+    private void defaultReactionClicked(int i) {
         try {
             final String reaction = defaultReactionViews[i].getText().toString();
             if (reaction.equals(getSelfReaction())) {
@@ -130,6 +131,12 @@ public class AddReactionView extends LinearLayout {
             }
         } catch(Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    private void anyReactionClicked() {
+        if (listener != null) {
+            listener.onShallHide();
         }
     }
 

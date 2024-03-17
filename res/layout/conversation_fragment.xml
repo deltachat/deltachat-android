@@ -113,6 +113,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/AddReaction"/>
+        <org.thoughtcrime.securesms.components.emoji.EmojiTextView
+            android:id="@+id/reaction_any"
+            android:text="•••"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/AddReaction"/>
     </org.thoughtcrime.securesms.reactions.AddReactionView>
 
 </FrameLayout>
