@@ -31,6 +31,7 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel:2.6.2'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2'
     implementation 'androidx.work:work-runtime:2.8.1'
+    implementation 'androidx.emoji2:emoji2-emojipicker:1.4.0'
     implementation 'com.google.android.exoplayer:exoplayer-core:2.9.6' // plays video and audio
     implementation 'com.google.android.exoplayer:exoplayer-ui:2.9.6'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
