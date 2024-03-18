@@ -2,10 +2,14 @@ package org.thoughtcrime.securesms.reactions;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.content.ContextCompat;
+import androidx.emoji2.emojipicker.EmojiPickerView;
 
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
@@ -119,24 +123,44 @@ public class AddReactionView extends LinearLayout {
     }
 
     private void defaultReactionClicked(int i) {
+        final String reaction = defaultReactionViews[i].getText().toString();
+        sendReaction(reaction);
+
+        if (listener != null) {
+            listener.onShallHide();
+        }
+    }
+
+    private void anyReactionClicked() {
+        // TODO: does not show emoji, crashes on select with "OOM allocating Bitmap with dimensions 16777211 x 16777211"
+        View pickerLayout = View.inflate(context, R.layout.reaction_picker, null);
+        EmojiPickerView pickerView = ViewUtil.findById(pickerLayout, R.id.emoji_picker);
+        pickerView.setOnEmojiPickedListener((it) -> {
+            final String reaction = it.getEmoji();
+            sendReaction(reaction);
+        });
+
+        new AlertDialog.Builder(context)
+              .setView(pickerLayout)
+              .setTitle(R.string.react)
+              .setPositiveButton(R.string.cancel, null)
+              .create()
+              .show();
+
+        if (listener != null) {
+            listener.onShallHide();
+        }
+    }
+
+    private void sendReaction(final String reaction) {
         try {
-            final String reaction = defaultReactionViews[i].getText().toString();
             if (reaction.equals(getSelfReaction())) {
                 rpc.sendReaction(dcContext.getAccountId(), msgToReactTo.getId(), "");
             } else {
                 rpc.sendReaction(dcContext.getAccountId(), msgToReactTo.getId(), reaction);
             }
-            if (listener != null) {
-                listener.onShallHide();
-            }
         } catch(Exception e) {
             e.printStackTrace();
-        }
-    }
-
-    private void anyReactionClicked() {
-        if (listener != null) {
-            listener.onShallHide();
         }
     }
 
