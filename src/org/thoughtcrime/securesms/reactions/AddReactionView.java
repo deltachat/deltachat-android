@@ -132,20 +132,22 @@ public class AddReactionView extends LinearLayout {
     }
 
     private void anyReactionClicked() {
-        // TODO: does not show emoji, crashes on select with "OOM allocating Bitmap with dimensions 16777211 x 16777211"
         View pickerLayout = View.inflate(context, R.layout.reaction_picker, null);
+
+        final AlertDialog alertDialog = new AlertDialog.Builder(context)
+              .setView(pickerLayout)
+              .setTitle(R.string.react)
+              .setPositiveButton(R.string.cancel, null)
+              .create();
+
         EmojiPickerView pickerView = ViewUtil.findById(pickerLayout, R.id.emoji_picker);
         pickerView.setOnEmojiPickedListener((it) -> {
             final String reaction = it.getEmoji();
             sendReaction(reaction);
+            alertDialog.dismiss();
         });
 
-        new AlertDialog.Builder(context)
-              .setView(pickerLayout)
-              .setTitle(R.string.react)
-              .setPositiveButton(R.string.cancel, null)
-              .create()
-              .show();
+        alertDialog.show();
 
         if (listener != null) {
             listener.onShallHide();
