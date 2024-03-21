@@ -1,6 +1,7 @@
 package org.thoughtcrime.securesms.reactions;
 
 import android.content.Context;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -57,7 +58,11 @@ public class AddReactionView extends LinearLayout {
               final int ii = i;
               defaultReactionViews[i].setOnClickListener(v -> defaultReactionClicked(ii));
           }
-          findViewById(R.id.reaction_any).setOnClickListener(v -> anyReactionClicked());
+          EmojiTextView reactionAny = findViewById(R.id.reaction_any);
+          reactionAny.setOnClickListener(v -> anyReactionClicked());
+          if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+              reactionAny.setVisibility(View.GONE);
+          }
       }
     }
 
