@@ -100,9 +100,7 @@ public class KeepAliveService extends Service {
         builder.setContentTitle(getString(R.string.app_name));
         builder.setContentText(getString(R.string.notify_background_connection_enabled));
 
-        if( Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN ) {
-            builder.setPriority(NotificationCompat.PRIORITY_MIN);
-        }
+        builder.setPriority(NotificationCompat.PRIORITY_MIN);
         builder.setWhen(0);
         builder.setContentIntent(contentIntent);
         builder.setSmallIcon(R.drawable.notification_permanent);

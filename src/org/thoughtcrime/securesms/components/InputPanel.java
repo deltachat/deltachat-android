@@ -106,11 +106,6 @@ public class InputPanel extends ConstraintLayout
 
     this.recordLockCancel.setOnClickListener(v -> microphoneRecorderView.cancelAction());
 
-    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
-      this.microphoneRecorderView.setVisibility(View.GONE);
-      this.microphoneRecorderView.setClickable(false);
-    }
-
     if (Prefs.isSystemEmojiPreferred(getContext())) {
       mediaKeyboard.setVisibility(View.GONE);
       emojiVisible = false;

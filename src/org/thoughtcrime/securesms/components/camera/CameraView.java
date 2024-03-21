@@ -94,7 +94,6 @@ public class CameraView extends ViewGroup {
     addView(surface);
   }
 
-  @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
   public void onResume() {
     if (state != State.PAUSED) return;
     state = State.RESUMED;
@@ -272,19 +271,16 @@ public class CameraView extends ViewGroup {
       Prefs.setDirectCaptureCameraId(getContext(), cameraId);
     }
   }
-
-  @TargetApi(14)
+  
   private void onCameraReady(final @NonNull Camera camera) {
     final Parameters parameters = camera.getParameters();
 
-    if (VERSION.SDK_INT >= 14) {
-      parameters.setRecordingHint(true);
-      final List<String> focusModes = parameters.getSupportedFocusModes();
-      if (focusModes.contains(Parameters.FOCUS_MODE_CONTINUOUS_PICTURE)) {
-        parameters.setFocusMode(Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);
-      } else if (focusModes.contains(Parameters.FOCUS_MODE_CONTINUOUS_VIDEO)) {
-        parameters.setFocusMode(Parameters.FOCUS_MODE_CONTINUOUS_VIDEO);
-      }
+    parameters.setRecordingHint(true);
+    final List<String> focusModes = parameters.getSupportedFocusModes();
+    if (focusModes.contains(Parameters.FOCUS_MODE_CONTINUOUS_PICTURE)) {
+      parameters.setFocusMode(Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);
+    } else if (focusModes.contains(Parameters.FOCUS_MODE_CONTINUOUS_VIDEO)) {
+      parameters.setFocusMode(Parameters.FOCUS_MODE_CONTINUOUS_VIDEO);
     }
 
     displayOrientation = CameraUtils.getCameraDisplayOrientation(getActivity(), getCameraInfo());

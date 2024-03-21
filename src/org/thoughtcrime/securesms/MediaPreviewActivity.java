@@ -142,11 +142,8 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
     Permissions.onRequestPermissionsResult(this, requestCode, permissions, grantResults);
   }
 
-  @TargetApi(VERSION_CODES.JELLY_BEAN)
   private void setFullscreenIfPossible() {
-    if (VERSION.SDK_INT >= VERSION_CODES.JELLY_BEAN) {
-      getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
-    }
+    getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
   }
 
   @Override

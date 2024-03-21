@@ -80,21 +80,14 @@ public class VideoPlayer extends FrameLayout {
 
     inflate(context, R.layout.video_player, this);
 
-    if (Build.VERSION.SDK_INT >= 16) {
-      this.exoView   = ViewUtil.findById(this, R.id.video_view);
-      this.videoView = null;
-    } else {
-      this.videoView = ViewUtil.findById(this, R.id.video_view);
-      this.exoView   = null;
-      initializeVideoViewControls(videoView);
-    }
+    this.exoView = ViewUtil.findById(this, R.id.video_view);
+    this.videoView = null;
   }
 
   public void setVideoSource(@NonNull VideoSlide videoSource, boolean autoplay)
       throws IOException
   {
-    if (Build.VERSION.SDK_INT >= 16) setExoViewSource(videoSource, autoplay);
-    else                             setVideoViewSource(videoSource, autoplay);
+    setExoViewSource(videoSource, autoplay);
   }
 
   public void pause() {

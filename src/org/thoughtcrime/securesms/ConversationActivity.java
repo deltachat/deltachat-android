@@ -923,13 +923,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     recipient        = new Recipient(this, dcChat);
     glideRequests    = GlideApp.with(this);
 
-
-    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
-      LinearLayout conversationContainer = ViewUtil.findById(this, R.id.conversation_container);
-      conversationContainer.setClipChildren(true);
-      conversationContainer.setClipToPadding(true);
-    }
-
     setComposePanelVisibility();
     initializeContactRequest();
   }
