@@ -17,17 +17,12 @@
 package org.thoughtcrime.securesms.video;
 
 import android.content.Context;
-import android.os.Build;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
-import android.widget.MediaController;
-import android.widget.Toast;
-import android.widget.VideoView;
 
 import com.google.android.exoplayer2.DefaultLoadControl;
 import com.google.android.exoplayer2.ExoPlayerFactory;
@@ -49,7 +44,6 @@ import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.attachments.AttachmentServer;
-import org.thoughtcrime.securesms.mms.PartAuthority;
 import org.thoughtcrime.securesms.mms.VideoSlide;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.video.exo.AttachmentDataSourceFactory;
@@ -60,7 +54,6 @@ public class VideoPlayer extends FrameLayout {
 
   private static final String TAG = VideoPlayer.class.getName();
 
-  @Nullable private final VideoView           videoView;
   @Nullable private final SimpleExoPlayerView exoView;
 
   @Nullable private       SimpleExoPlayer     exoPlayer;
@@ -81,7 +74,6 @@ public class VideoPlayer extends FrameLayout {
     inflate(context, R.layout.video_player, this);
 
     this.exoView = ViewUtil.findById(this, R.id.video_view);
-    this.videoView = null;
   }
 
   public void setVideoSource(@NonNull VideoSlide videoSource, boolean autoplay)
@@ -91,9 +83,7 @@ public class VideoPlayer extends FrameLayout {
   }
 
   public void pause() {
-    if (this.attachmentServer != null && this.videoView != null) {
-      this.videoView.stopPlayback();
-    } else if (this.exoPlayer != null) {
+    if (this.exoPlayer != null) {
       this.exoPlayer.setPlayWhenReady(false);
     }
   }
@@ -133,40 +123,6 @@ public class VideoPlayer extends FrameLayout {
 
     exoPlayer.prepare(mediaSource);
     exoPlayer.setPlayWhenReady(autoplay);
-  }
-
-  private void setVideoViewSource(@NonNull VideoSlide videoSource, boolean autoplay)
-    throws IOException
-  {
-    if (this.attachmentServer != null) {
-      this.attachmentServer.stop();
-    }
-
-    if (videoSource.getUri() != null && PartAuthority.isLocalUri(videoSource.getUri())) {
-      Log.w(TAG, "Starting video attachment server for part provider Uri...");
-      this.attachmentServer = new AttachmentServer(getContext(), videoSource.asAttachment());
-      this.attachmentServer.start();
-
-      //noinspection ConstantConditions
-      this.videoView.setVideoURI(this.attachmentServer.getUri());
-    } else if (videoSource.getUri() != null) {
-      Log.w(TAG, "Playing video directly from non-local Uri...");
-      //noinspection ConstantConditions
-      this.videoView.setVideoURI(videoSource.getUri());
-    } else {
-      Toast.makeText(getContext(), getContext().getString(R.string.error), Toast.LENGTH_LONG).show();
-      return;
-    }
-
-    if (autoplay) this.videoView.start();
-  }
-
-  private void initializeVideoViewControls(@NonNull VideoView videoView) {
-    MediaController mediaController = new MediaController(getContext());
-    mediaController.setAnchorView(videoView);
-    mediaController.setMediaPlayer(videoView);
-
-    videoView.setMediaController(mediaController);
   }
 
   private static class ExoPlayerListener implements Player.EventListener {
