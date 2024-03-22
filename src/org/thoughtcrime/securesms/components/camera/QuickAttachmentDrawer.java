@@ -489,10 +489,6 @@ public class QuickAttachmentDrawer extends ViewGroup implements InputView, Camer
   }
 
   private int computeCameraTopPosition(int slideOffset) {
-    if (VERSION.SDK_INT < VERSION_CODES.ICE_CREAM_SANDWICH) {
-      return getPaddingTop();
-    }
-
     final int   baseCameraTop = (cameraView.getMeasuredHeight() - halfExpandedHeight) / 2;
     final int   baseOffset    = getMeasuredHeight() - slideOffset - baseCameraTop;
     final float slop          = Util.clamp((float)(slideOffset - halfExpandedHeight) / (getMeasuredHeight() - halfExpandedHeight),

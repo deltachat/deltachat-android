@@ -58,13 +58,10 @@ public class RepeatableImageKey extends ImageButton {
   }
 
   private class Repeater implements Runnable {
-    @TargetApi(VERSION_CODES.HONEYCOMB_MR1)
     @Override
     public void run() {
       notifyListener();
-      postDelayed(this, VERSION.SDK_INT >= VERSION_CODES.HONEYCOMB_MR1
-                        ? ViewConfiguration.getKeyRepeatDelay()
-                        : 50);
+      postDelayed(this, ViewConfiguration.getKeyRepeatDelay());
     }
   }
 
@@ -75,14 +72,11 @@ public class RepeatableImageKey extends ImageButton {
       this.repeater = new Repeater();
     }
 
-    @TargetApi(VERSION_CODES.HONEYCOMB_MR1)
     @Override
     public boolean onTouch(View view, MotionEvent motionEvent) {
       switch (motionEvent.getAction()) {
       case MotionEvent.ACTION_DOWN:
-        view.postDelayed(repeater, VERSION.SDK_INT >= VERSION_CODES.HONEYCOMB_MR1
-                                   ? ViewConfiguration.getKeyRepeatTimeout()
-                                   : ViewConfiguration.getLongPressTimeout());
+        view.postDelayed(repeater, ViewConfiguration.getKeyRepeatTimeout());
         performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP);
         return false;
       case MotionEvent.ACTION_CANCEL:

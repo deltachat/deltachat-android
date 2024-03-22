@@ -1,6 +1,5 @@
 package org.thoughtcrime.securesms.components;
 
-import android.Manifest;
 import android.animation.Animator;
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -95,10 +94,6 @@ public class AttachmentTypeSelector extends PopupWindow {
     }
 
     setLocationButtonImage(context);
-
-    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
-      ViewUtil.findById(layout, R.id.location_linear_layout).setVisibility(View.INVISIBLE);
-    }
 
     setContentView(layout);
     setWidth(LinearLayout.LayoutParams.MATCH_PARENT);

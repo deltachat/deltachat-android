@@ -138,7 +138,6 @@ public class ConversationFragment extends MessageSelectorFragment
         }, 60 * 1000, 60 * 1000);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle bundle) {
         final View view = inflater.inflate(R.layout.conversation_fragment, container, false);
