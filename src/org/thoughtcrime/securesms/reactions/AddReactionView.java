@@ -1,11 +1,14 @@
 package org.thoughtcrime.securesms.reactions;
 
 import android.content.Context;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.content.ContextCompat;
+import androidx.emoji2.emojipicker.EmojiPickerView;
 
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
@@ -16,13 +19,14 @@ import com.b44t.messenger.rpc.Rpc;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.components.emoji.EmojiTextView;
 import org.thoughtcrime.securesms.connect.DcHelper;
-import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
 import java.util.Map;
 
 public class AddReactionView extends LinearLayout {
     private EmojiTextView [] defaultReactionViews;
+    private EmojiTextView anyReactionView;
+    private boolean anyReactionClearsReaction;
     private Context context;
     private DcContext dcContext;
     private Rpc rpc;
@@ -51,7 +55,12 @@ public class AddReactionView extends LinearLayout {
           };
           for (int i = 0; i < defaultReactionViews.length; i++) {
               final int ii = i;
-              defaultReactionViews[i].setOnClickListener(v -> reactionClicked(ii));
+              defaultReactionViews[i].setOnClickListener(v -> defaultReactionClicked(ii));
+          }
+          anyReactionView = findViewById(R.id.reaction_any);
+          anyReactionView.setOnClickListener(v -> anyReactionClicked());
+          if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+              anyReactionView.setVisibility(View.GONE); // EmojiPickerView requires SDK 21 or newer
           }
       }
     }
@@ -69,12 +78,24 @@ public class AddReactionView extends LinearLayout {
         this.listener = listener;
 
         final String existingReaction = getSelfReaction();
+        boolean existingHilited = false;
         for (EmojiTextView defaultReactionView : defaultReactionViews) {
             if (defaultReactionView.getText().toString().equals(existingReaction)) {
                 defaultReactionView.setBackground(ContextCompat.getDrawable(context, R.drawable.reaction_pill_background_selected));
+                existingHilited = true;
             } else {
                 defaultReactionView.setBackground(null);
             }
+        }
+
+        if (existingReaction != null && !existingHilited) {
+            anyReactionView.setText(existingReaction);
+            anyReactionView.setBackground(ContextCompat.getDrawable(context, R.drawable.reaction_pill_background_selected));
+            anyReactionClearsReaction = true;
+        } else {
+            anyReactionView.setText("•••");
+            anyReactionView.setBackground(null);
+            anyReactionClearsReaction = false;
         }
 
         final int offset = (int)(this.getHeight() * 0.666);
@@ -117,16 +138,47 @@ public class AddReactionView extends LinearLayout {
         return result;
     }
 
-    private void reactionClicked(int i) {
+    private void defaultReactionClicked(int i) {
+        final String reaction = defaultReactionViews[i].getText().toString();
+        sendReaction(reaction);
+
+        if (listener != null) {
+            listener.onShallHide();
+        }
+    }
+
+    private void anyReactionClicked() {
+        if (anyReactionClearsReaction) {
+            sendReaction(null);
+        } else {
+            View pickerLayout = View.inflate(context, R.layout.reaction_picker, null);
+
+            final AlertDialog alertDialog = new AlertDialog.Builder(context)
+                .setView(pickerLayout)
+                .setTitle(R.string.react)
+                .setPositiveButton(R.string.cancel, null)
+                .create();
+
+            EmojiPickerView pickerView = ViewUtil.findById(pickerLayout, R.id.emoji_picker);
+            pickerView.setOnEmojiPickedListener((it) -> {
+                sendReaction(it.getEmoji());
+                alertDialog.dismiss();
+            });
+
+            alertDialog.show();
+        }
+
+        if (listener != null) {
+            listener.onShallHide();
+        }
+    }
+
+    private void sendReaction(final String reaction) {
         try {
-            final String reaction = defaultReactionViews[i].getText().toString();
-            if (reaction.equals(getSelfReaction())) {
+            if (reaction == null || reaction.equals(getSelfReaction())) {
                 rpc.sendReaction(dcContext.getAccountId(), msgToReactTo.getId(), "");
             } else {
                 rpc.sendReaction(dcContext.getAccountId(), msgToReactTo.getId(), reaction);
-            }
-            if (listener != null) {
-                listener.onShallHide();
             }
         } catch(Exception e) {
             e.printStackTrace();
