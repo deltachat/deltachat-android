@@ -67,8 +67,8 @@
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:defaultValue="true"
             android:key="pref_system_emoji"
-            android:title="@string/pref_use_system_emoji"
-            android:summary="@string/pref_use_system_emoji_explain" />
+            android:title="@string/pref_use_builtin_emoji"
+            android:summary="@string/pref_use_builtin_emoji_explain" />
 
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:defaultValue="false"
