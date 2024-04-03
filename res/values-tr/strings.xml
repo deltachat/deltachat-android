@@ -731,6 +731,9 @@
     <string name="pref_edit_profile">Profili Düzenle</string>
     <string name="disable_imap_idle">IMAP IDLE\'ı Etkisizleştir</string>
     <string name="disable_imap_idle_explain">Sunucu desteklese bile IMAP IDLE uzantısını kullanmayın. Bu seçeneği etkinleştirmek ileti getirmeyi geciktirecek; yalnızca sınama için etkinleştirin.</string>
+    <string name="send_stats_to_devs">Delta Chat\'in geliştiricilerine istatistikleri gönder</string>
+
+
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Arama Sonuçları</string>
     <string name="emoji_not_found">Emoji bulunamadı</string>
@@ -748,7 +751,6 @@
     <string name="reactions">Tepkiler</string>
     <!-- Verb, the action of adding a "Reaction" to a message. Used eg. in context menus, similar to "Reply" or "Forward" -->
     <string name="react">Tepki Ver</string>
-
     <!-- automatically delete message -->
     <string name="delete_old_messages">Eski İletileri Sil</string>
     <string name="autodel_device_title">İletileri Aygıttan Sil</string>
@@ -1102,4 +1104,5 @@
     <string name="update_1_42_common">Ne yeni:\n\n💌 bire bir sohbetler artık yeşil bir onay kutusu bulunan kişiler için uçtan uca şifrelemeyi güvenceler\n\n😌 Herkesin basitliği için bu sohbetleri yeşil onay imleriyle imliyoruz\n\n👥 olanaklıysa, otomatik olarak öbekler güvencelenen uçtan uca şifrelemeyle oluşturulur\n\n🔄 Kabul edilen/Engellenen, Arşivlenen, Sabitlenen, Sessize Alınan aygıtlarınız arasında eşzamanlanır</string>
     <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
     <string name="update_1_42_android">Kamera, sesli iletiler, tümünü yedekleme, ekran okuyucusu, hesap başına duvar kâğıtları, galeride tümünü seç, webxdc manzarasındaki daha fazla iyileştirmeye dikkat edin … ya da onları %1$s adresinde okuyun</string>
+    <string name="update_1_44_android">Ne yeni:\n\n❤️ Evet! Bu uzun zamandır bekleniyordu: Tepki vermek için bir iletiye uzun dokunun\n\n🔗 QR kodlarını tarayamıyorsanız, onları çağırma bağlantısı olarak paylaşın\n\n🔵 Artık tüm hesapların okunmayan iletileri sayılır ve başlıkta gösterilir\n\n… ve TONLARCA hata düzeltmesi … %1$s\n\nUygulamanın iyileştirilmesine yardımcı olun: Gerçek dünya kullanımını daha da iyileştirmek için \"Ayarlar / Gelişmiş / İstatistikleri gönder\"i kullanarak geliştiricilere yardımcı olun. Göndermeden önce verilerinizi inceleyebilirsiniz</string>
     </resources>

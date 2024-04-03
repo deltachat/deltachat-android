@@ -748,7 +748,6 @@
     <string name="reactions">Reagime</string>
     <!-- Verb, the action of adding a "Reaction" to a message. Used eg. in context menus, similar to "Reply" or "Forward" -->
     <string name="react">Reagoni</string>
-
     <!-- automatically delete message -->
     <string name="delete_old_messages">Fshiji mesazhet e vjetër</string>
     <string name="autodel_device_title">Fshini mesazhe prej pajisjes</string>

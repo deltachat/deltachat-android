@@ -761,6 +761,9 @@
     <string name="pref_edit_profile">Edytuj profil</string>
     <string name="disable_imap_idle">Wyłącz IMAP IDLE</string>
     <string name="disable_imap_idle_explain">Nie używaj rozszerzenia IMAP IDLE, nawet jeśli serwer je obsługuje. Włączenie tej opcji opóźni pobieranie wiadomości, włącz ją tylko na testy.</string>
+    <string name="send_stats_to_devs">Wyślij statystyki do programistów Delta Chat</string>
+
+
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Wyniki wyszukiwania</string>
     <string name="emoji_not_found">Nie znaleziono emoji</string>
@@ -778,7 +781,6 @@
     <string name="reactions">Reakcje</string>
     <!-- Verb, the action of adding a "Reaction" to a message. Used eg. in context menus, similar to "Reply" or "Forward" -->
     <string name="react">Zareaguj</string>
-
     <!-- automatically delete message -->
     <string name="delete_old_messages">Usuwanie starych wiadomości</string>
     <string name="autodel_device_title">Usuń wiadomości z urządzenia</string>
@@ -1132,4 +1134,6 @@
     <string name="update_1_42_common">Co nowego:\n\n💌 czaty indywidualne gwarantują szyfrowanie end-to-end dla kontaktów oznaczonych zielonym znacznikiem\n\n😌 dla ułatwienia dla wszystkich oznaczamy te czaty również zielonymi znacznikami wyboru\n\n👥 grupy są tworzone automatycznie z gwarantowanym kompleksowym szyfrowaniem, jeśli to możliwe\n\n🔄 Zaakceptowany/Zablokowany, Zarchiwizowany, Przypięty, Wyciszony są synchronizowane na wszystkich twoich urządzeniach</string>
     <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
     <string name="update_1_42_android">Zwróć uwagę na więcej ulepszeń w aparacie, wiadomościach głosowych, tworzeniu kopii zapasowych, czytniku ekranu, tapetach dla poszczególnych kont, opcji wybierz wszystkie w galerii, krajobrazie webxdc … lub przeczytaj o nich pod adresem %1$s</string>
-    </resources>
+    <string name="update_1_44_android">Co nowego:\n\n❤️ Tak! To było długo oczekiwane: naciśnij i przytrzymaj wiadomość, aby zareagować\n\n🔗 Jeśli nie możesz zeskanować kodów QR, udostępnij go jako linki z zaproszeniem\n\n🔵 Nieprzeczytane wiadomości ze wszystkich kont są teraz zliczane i wyświetlane w tytule\n\n … i MNÓSTWO poprawek błędów… %1$s\n\nPomóż w ulepszaniu aplikacji: użyj opcji „Ustawienia » Zaawansowane » Wyślij statystyki”, aby pomóc programistom w lepszej optymalizacji pod kątem rzeczywistego użytkowania. Możesz sprawdzić dane przed wysłaniem</string>
+    <string name="update_1_44_ios">Co nowego:\n\n❤️ Tak! To było długo oczekiwane: naciśnij i przytrzymaj wiadomości, aby zareagować\n\n🫸 Powiadomienia PUSH, jeśli są obsługiwane przez dostawców, takich jak https://nine.testrun.org\n\n🔗 Jeśli nie możesz zeskanować kodów QR, udostępnij go jako linki z zaproszeniem \n\n… i MNÓSTWO poprawek błędów…%1$s</string>
+</resources>

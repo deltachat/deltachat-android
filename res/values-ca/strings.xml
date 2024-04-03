@@ -4,7 +4,9 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel·la</string>
-   <string name="clear_search">Neteja la cerca</string>
+   <!-- the word "or" to separate blocks in the user interface that are mutually exclusive -->
+    <string name="or_separator">o</string>
+    <string name="clear_search">Neteja la cerca</string>
     <string name="yes">Si</string>
     <string name="no">No</string>
     <string name="select">Trieu</string>
@@ -29,8 +31,13 @@
     <string name="emoji">Emoticona</string>
     <string name="attachment">Adjunt</string>
     <string name="back">Enrere</string>
+    <!-- this string is deprecated; the new wording is "introduced by ..." -->
+    <string name="verified">Verificat</string>
     <string name="close">Tanca</string>
+    <string name="close_window">Tanca la finestra</string>
     <string name="forward">Reenvia</string>
+    <string name="create">Crea</string>
+    <string name="later">Després</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">Torna-ho a enviar</string>
     <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
@@ -47,6 +54,10 @@
     <string name="main_menu">Menú principal</string>
     <string name="start_chat">Inicia un xat</string>
     <string name="show_full_message">Mostra el missatge sencer...</string>
+    <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
+    <string name="mark_all_as_read">Marca-ho tot com a llegit</string>
+    <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
+    <string name="mark_as_read_short">Llegit</string>
     <!-- Placeholder text when something is loading -->
     <string name="loading">Carregant...</string>
     <string name="hide">Amaga</string>
@@ -55,7 +66,9 @@
     <!-- Possible answers to the question are: Never, Always, Once -->
     <string name="load_remote_content_ask">Les imatges remotes es poden usar per rastrejar-te.\n\nEl paràmetre també permet la càrrega de fonts i altres continguts. Fins i tot si és deshabilitat, encara podríeu veure imatges incrustades o en memòria catxè.\n\nCàrrega d\'imatges remotes?</string>
     <string name="always">Sempre</string>
+    <string name="always_load_remote_images">Carrega sempre les imatges remotes</string>
     <string name="once">Una vegada</string>
+    <string name="show_warning">Mostra l\'advertiment</string>
     <string name="show_password">Mostra la contrasenya</string>
     <string name="hide_password">Amaga la contrasenya</string>
     <string name="not_now">Ara no</string>
@@ -88,6 +101,8 @@
     <string name="last_month">El mes passat</string>
     <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
     <string name="last_seen_at">Vist per darrer cop a les %1$s</string>
+    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages)-->
+    <string name="last_seen_relative">Vist per darrer cop %1$s</string>
     <string name="last_seen_unknown">Vist per darrer cop: Ves a saber</string>
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
@@ -133,6 +148,8 @@
     <string name="gif">Gif</string>
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">Adhesiu</string>
+    <string name="add_to_sticker_collection">Afegeix a la Col·lecció d\'adhesius</string>
+    <string name="open_sticker_folder">Obre la carpeta dels adhesius</string>
     <string name="images">Imatges</string>
     <string name="audio">Àudio</string>
     <string name="voice_message">Missatge de veu</string>
@@ -149,10 +166,15 @@
     <string name="switch_camera">Canvia la càmera</string>
     <string name="toggle_fullscreen">Alterna el mode de pantalla completa</string>
     <string name="location">Ubicació</string>
+    <string name="locations">Ubicacions</string>
     <string name="gallery">Galeria</string>
     <string name="images_and_videos">Imatges i vídeos</string>
     <string name="file">Fitxer</string>
     <string name="files">Fitxers</string>
+    <!-- "App" is used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
+    <string name="webxdc_app">App</string>
+    <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
+    <string name="webxdc_apps">Apps</string>
     <string name="unknown">Desconegut</string>
 
     <string name="green">Verd</string>
@@ -178,6 +200,7 @@
     <string name="menu_new_contact">Contacte nou</string>
     <string name="menu_new_chat">Nova conversa</string>
     <string name="menu_new_group">Grup nou</string>
+    <string name="clone_chat">Clona el xat</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">Llista de difusió</string>
     <string name="broadcast_lists">Llistes de difusió</string>
@@ -193,6 +216,8 @@
     <string name="menu_add_attachment">Afegeix un adjunt</string>
     <string name="menu_leave_group">Deixa el grup</string>
     <string name="menu_delete_chat">Esborra el xat</string>
+    <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
+    <string name="clear_chat">Neteja el xat</string>
     <string name="ask_delete_named_chat">Segur que voleu esborrar \"%1$s\"?</string>
     <string name="menu_delete_messages">Esborra els missatges</string>
     <string name="delete_contact">Esborra el contacte</string>
@@ -214,6 +239,7 @@
     <string name="menu_all_media">Tots els multimèdia</string>
     <!-- Command to jump to the original message corresponding to a gallery image or document -->
     <string name="show_in_chat">Mostra al xat</string>
+    <string name="show_app_in_chat">Mostra l\'app al xat</string>
     <string name="menu_share">Comparteix</string>
     <!-- Verb "to block sth." usually a mailing list or a contact, not a noun -->
     <string name="block">Bloqueja</string>
@@ -225,8 +251,10 @@
     <string name="menu_scroll_to_bottom">Vés al final</string>
     <string name="menu_scroll_to_top">Desplaça\'t al cap d\'amunt</string>
     <string name="menu_help">Ajuda</string>
+    <string name="what_is_webxdc">Què és Webxdc?</string>
     <string name="privacy_policy">Política de Privacitat</string>
     <string name="menu_select_all">Selecciona-ho tot</string>
+    <string name="select_chat">Tria el xat</string>
     <string name="select_more">Tria\'n més</string>
     <string name="menu_edit_name">Edita el nom</string>
     <string name="menu_settings">Preferències</string>
@@ -259,6 +287,10 @@
     <string name="ConversationFragment_quoted_message_not_found">No s\'ha trobat el missatge original</string>
     <string name="reply_privately">Respon en privat</string>
     <string name="source_code">Codi Font</string>
+    <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
+    <string name="add_to_home_screen">Afegeix a la finestra d\'inici</string>
+    <string name="donate">Fes un donatiu</string>
+
     <string name="mute_for_one_hour">Silencia 1 hora</string>
     <string name="mute_for_two_hours">Silencia 2 hores</string>
     <string name="mute_for_one_day">Silencia 1 dia</string>
@@ -384,6 +416,11 @@
     <string name="start_app">Comença...</string>
     <!-- this is a warning that is shown when one tries to send something to a chat that is not yet accepted. -->
     <string name="accept_request_first">Si us plau accepteu primer el requeriment del xat.</string>
+    <!-- title shown above a list of chats where one should be selected (eg. when sharing files from a webxdc). the placeholder will be replaced by a file name -->
+    <string name="send_file_to">Envia \"%1$s\" a…</string>
+    <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
+    <string name="send_message_to">Envia el missatge a...</string>
+
     <!-- map -->
     <string name="filter_map_on_time">Mostra les ubicacions al llarg del temps</string>
     <string name="show_location_traces">Mostra el rastre</string>
@@ -400,6 +437,8 @@
     <string name="puny_code_warning_question">Esteu segur de voler visitar %1$s?</string>
     <!-- search -->
     <string name="search">Busca</string>
+    <string name="search_in_chat">Busca al xat</string>
+    <string name="search_files">Busca els fitxers</string>
     <string name="search_explain">Busca als xats, contactes i missatges</string>
     <string name="search_no_result_for_x">No s\'han trobat resultats per \"%s\"</string>
 
@@ -415,14 +454,29 @@
     <string name="group_self_not_in_group">Has de ser membre del grup per poder fer això.</string>
     <string name="profile_encryption">Encriptació</string>
     <string name="profile_shared_chats">Xats compartits</string>
+    <string name="related_chats">Xats relacionats</string>
     <string name="tab_contact">Contacte</string>
     <string name="tab_group">Grup</string>
     <string name="tab_gallery">Galeria</string>
     <string name="tab_docs">Docs</string>
     <string name="tab_links">Enllaços</string>
     <string name="tab_map">Mapa</string>
+    <string name="tab_gallery_empty_hint">Les imatges i els vídeos compartits en aquest xat sortiran aquí.</string>
+    <string name="tab_docs_empty_hint">Els documents i d\'altres fitxers compartits en aquest xat sortiran aquí.</string>
+    <string name="tab_image_empty_hint">Les imatges compartides en aquest xat sortiran aquí.</string>
+    <string name="tab_video_empty_hint">Els vídeos compartits en aquest xat sortiran aquí.</string>
+    <string name="tab_audio_empty_hint">Els fitxers d\'àudio i els missatges de veu compartits en aquest xat sortiran aquí.</string>
+    <string name="tab_webxdc_empty_hint">Les apps compartides en aquest xat sortiran aquí.</string>
+    <string name="tab_all_media_empty_hint">Els fitxers multimèdia compartits en aquest xat sortiran aquí.</string>
     <string name="media_preview">Previsualització multimèdia</string>
     <string name="send_message">Envia el missatge</string>
+    <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
+    <string name="aeap_addr_changed">%1$s ha canviat la seva adreça de %2$s a %3$s</string>
+    <!-- Multi Device -->
+    <!-- "Second Device" can also be translated as "Another Device", if that is catchier in the destination language. However, make sure to use the term consistently. -->
+    <string name="multidevice_title">Afegeix un segon dispositiu</string>
+    <string name="multidevice_same_network_hint">Assegureu-vos que els dos dispositius estan a la mateixa Wi-Fi o xarxa</string>
+    <string name="multidevice_receiver_title">Afegeix com a segon dispositiu</string>
     <!-- Connectivity -->
     <!-- Headline for the "Inbox" eg. in the "Connectivity" view -->
     <string name="incoming_messages">Missatges entrants</string>

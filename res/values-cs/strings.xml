@@ -174,6 +174,10 @@
     <string name="images_and_videos">Obrázky a videa</string>
     <string name="file">Soubor</string>
     <string name="files">Soubory</string>
+    <!-- "App" is used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
+    <string name="webxdc_app">Aplikace</string>
+    <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
+    <string name="webxdc_apps">Aplikace</string>
     <string name="unknown">Neznámá</string>
 
     <string name="green">Zelená</string>
@@ -200,6 +204,14 @@
     <string name="menu_new_chat">Nový chat</string>
     <string name="menu_new_group">Nová skupina</string>
     <string name="clone_chat">Kopíruj chat</string>
+    <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
+    <string name="broadcast_list">Seznam vysílání</string>
+    <string name="broadcast_lists">Seznam vysílání</string>
+    <string name="new_broadcast_list">Nový seznam vysílání </string>
+    <string name="add_recipients">Přidat příjemce </string>
+    <string name="edit_broadcast_list">Upravit seznam vysílání </string>
+    <string name="broadcast_list_name">Název seznamu vysílání </string>
+    <string name="please_enter_broadcast_list_name">Zadejte název seznamu vysílání. </string>
     <string name="menu_send">Poslat</string>
     <string name="menu_toggle_keyboard">Přepni na smajlíky</string>
     <string name="menu_edit_group">Uprav skupinu</string>
@@ -220,25 +232,33 @@
     <string name="menu_copy_to_clipboard">Kopíruj do mezipaměti</string>
     <string name="menu_copy_selection_to_clipboard">Kopíruj výběr</string>
     <string name="menu_copy_link_to_clipboard">Kopíruj odkaz</string>
+    <string name="menu_copy_text_to_clipboard">Zkopírujte text </string>
+    <string name="menu_copy_image_to_clipboard">Zkopírujte obrázek</string>
+    <string name="menu_copy_email_to_clipboard">Zkopírujte E-Mail</string>
     <string name="paste_from_clipboard">Vložit z mezipaměti</string>
+    <string name="ask_copy_unopenable_link_to_clipboard">Odkaz \"%1$d\" nelze otevřít ve webovém prohlížeči. Chcete místo toho zkopírovat odkaz do schránky? </string>
     <string name="menu_forward">Přeposlat zprávu</string>
     <string name="menu_reply">Odpověz na zprávu</string>
     <string name="menu_mute">Umlčet upozornění</string>
     <string name="menu_unmute">Zruš umlčení</string>
     <string name="menu_export_attachment">Ulož přílohu</string>
+    <string name="menu_export_attachments">Exportujte přílohy</string>
     <string name="menu_all_media">Všechna multimedia</string>
     <!-- Command to jump to the original message corresponding to a gallery image or document -->
     <string name="show_in_chat">Ukaž v chatu</string>
+    <string name="show_app_in_chat">Zobrazit aplikaci v chatu</string>
     <string name="menu_share">Sdílet</string>
     <!-- Verb "to block sth." usually a mailing list or a contact, not a noun -->
     <string name="block">Zablokovat</string>
     <string name="menu_block_contact">Zablokuj kontakt</string>
     <string name="menu_unblock_contact">Odblokuj kontakt</string>
+    <string name="accept">Přijmout</string>
     <string name="menu_play">Přehrát</string>
     <string name="menu_pause">Přerušit</string>
     <string name="menu_scroll_to_bottom">Posuň až dolů</string>
     <string name="menu_scroll_to_top">Posuň až nahoru</string>
     <string name="menu_help">Nápověda</string>
+    <string name="what_is_webxdc">Co je Webxdc? </string>
     <string name="privacy_policy">Pravidla pro soukromí</string>
     <string name="menu_select_all">Vyber vše</string>
     <string name="select_chat">Vyber chat</string>
@@ -250,6 +270,12 @@
     <string name="menu_zoom_in">Přiblížit</string>
     <string name="menu_zoom_out">Oddálit</string>
     <string name="menu_save_log">Uložit záznam běhu</string>
+    <string name="menu_more_options">Více možností</string>
+    <string name="menu_learn_spelling">Naučte se pravopis</string>
+    <string name="menu_chat_audit_log">Audit chat protokolu</string>
+    <string name="jump_to_message">Přejít na zprávu</string>
+    <string name="copy_json">Zkopírujte JSON</string>
+    <string name="replace_draft">Nahraďte koncept</string>
     <string name="title_share_location">Sdílet polohu se všemi členy skupiny</string>
     <string name="device_talk">Zprávy přístroje</string>
     <string name="device_talk_subtitle">Samovytvořené zprávy</string>

@@ -316,7 +316,7 @@
     <string name="videochat_tap_to_open">برای باز کردن ضربه بزنید. </string>
     <string name="videochat_instance">جلسه تماس تصویری</string>
     <string name="videochat_instance_placeholder">جلسه تماس تصویری شما</string>
-    <string name="videochat_instance_example">مثال‌ها: 
+    <string name="videochat_instance_example">مثال‌: 
 https://meet.jit.si/$ROOM 
 یا
  basicwebrtc:https://your-server</string>
@@ -901,7 +901,7 @@ https://meet.jit.si/$ROOM
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">کاربر %1$s پاسخ داد، در انتظار اضافه شدن به گروه...</string>
     <string name="contact_verified">%1$s تأیید شد.</string>
-    <string name="contact_not_verified">نتوانست %1$s را تأیید کند. </string>
+    <string name="contact_not_verified">امکان تایید رمزگذاری در مبدا، برای %1$sوجود ندارد.</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">احراز هویت شده توسط %1$s</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
@@ -922,7 +922,7 @@ https://meet.jit.si/$ROOM
     <string name="notify_name_and_message">نام و پیام</string>
     <string name="notify_name_only">فقط نام</string>
     <string name="notify_no_name_or_message">بدون نام یا پیام</string>
-    <string name="notifications_disabled">آگاه‌سازی‌ها غیرفعال شد</string>
+    <string name="notifications_disabled">اعلان‌ها غیرفعال شد</string>
     <string name="new_messages">پیام‌های جدید</string>
     <string name="n_messages_in_m_chats">%1$d پیام در %2$d گفتگو</string>
 

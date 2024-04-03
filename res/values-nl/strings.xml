@@ -731,6 +731,9 @@
     <string name="pref_edit_profile">Profiel bewerken</string>
     <string name="disable_imap_idle">IMAP IDLE uitschakelen</string>
     <string name="disable_imap_idle_explain">Maak geen gebruik van IMAP IDLE, zelfs niet als de server het ondersteunt. Schakel deze optie in om het ophalen van berichten te vertragen. Let op: gebruik deze optie alleen voor testdoeleinden.</string>
+    <string name="send_stats_to_devs">Statistieken delen met Delta Chat-ontwikkelaars</string>
+
+
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Zoekresultaten</string>
     <string name="emoji_not_found">Geen emoji gevonden</string>
@@ -748,7 +751,6 @@
     <string name="reactions">Reacties</string>
     <!-- Verb, the action of adding a "Reaction" to a message. Used eg. in context menus, similar to "Reply" or "Forward" -->
     <string name="react">Reageren</string>
-
     <!-- automatically delete message -->
     <string name="delete_old_messages">Oude berichten verwijderen</string>
     <string name="autodel_device_title">Berichten verwijderen van apparaat</string>
@@ -1102,4 +1104,6 @@
     <string name="update_1_42_common">Wijzigingslog:\n\n💌 een-op-eengesprekken hebben voortaan gegarandeerd eind-tot-eindversleuteling bij gebruik van goedgekeurde contactpersonen\n\n😌 omwille van eenvoud worden zulke contactpersonen en gesprekken voorzien van groene vinkjes\n\n👥 groepen worden automatisch voorzien van gegarandeerde eind-tot-eindversleuteling (indien mogelijk)\n\n🔄 goedgekeurd, geblokkeerd, gearchiveerd, vastgemaakt en genegeerd wordt voortaan naar alle apparaten gesynchroniseerd</string>
     <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
     <string name="update_1_42_android">Binnenkort beschikbaar: verbeteringen aan de camera, spraakberichten, reservekopieën, schermlezer, achtergronden per account, galerijselectie, webxdc in horizontale modus… of lees alles op %1$s</string>
-    </resources>
+    <string name="update_1_44_android">Wijzigingslog:\n\n❤️ Jaaaa! Eindelijk een langverwachte functie toegevoegd: een bericht lang ingedrukt houden om te reageren\n\n🔗 Als je geen QR-codes kunt scannen, dan kun je ze voortaan delen als uitnodigingslinks\n\n🔵 Voortaan wordt het aantal ongelezen berichten van alle accounts in de titel getoond\n\n… en vele, vele bugs opgelost… %1$s\n\nHelp de app te verbeteren: via ‘Instellingen → Geavanceerd → Statistieken versturen’ kun je de ontwikkelaars helpen om inzicht te krijgen in het dagelijks gebruik. Je kunt alle te versturen gegevens vooraf inzien.</string>
+    <string name="update_1_44_ios">Wijzigingslog:\n\n❤️ Jaaaa! Eindelijk een langverwachte functie toegevoegd: een bericht lang ingedrukt houden om te reageren\n\n🫸 PUSHmeldingen, indien ondersteund door diensten als https://nine.testrun.org\n\n🔗 Als je geen QR-codes kunt scannen, dan kun je ze voortaan delen als uitnodigingslinks\n\n🔵 Voortaan wordt het aantal ongelezen berichten van alle accounts in de titel getoond\n\n… en vele, vele bugs opgelost… %1$s</string>
+</resources>

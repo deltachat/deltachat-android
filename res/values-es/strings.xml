@@ -746,6 +746,9 @@
     <string name="pref_edit_profile">Editar perfil</string>
     <string name="disable_imap_idle">Deshabilitar IMAP IDLE</string>
     <string name="disable_imap_idle_explain">No utilizar la extensión IMAP IDLE aunque el servidor la admita. Habilitar esta opción retrasará el recibo de mensajes, actívala solo para pruebas.</string>
+    <string name="send_stats_to_devs">Enviar estadísticas a los desarrolladores  de Delta Chat</string>
+
+
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Resultados de la búsqueda</string>
     <string name="emoji_not_found">No se encontraron emojis</string>
@@ -763,7 +766,6 @@
     <string name="reactions">Reacciones</string>
     <!-- Verb, the action of adding a "Reaction" to a message. Used eg. in context menus, similar to "Reply" or "Forward" -->
     <string name="react">Reaccionar</string>
-
     <!-- automatically delete message -->
     <string name="delete_old_messages">Borrar mensajes antiguos</string>
     <string name="autodel_device_title">Borrar mensajes del dispositivo</string>
@@ -968,6 +970,8 @@
     <string name="notify_no_name_or_message">Sin nombre ni mensaje</string>
     <string name="notifications_disabled">Notificaciones deshabilitadas</string>
     <string name="new_messages">Nuevos mensajes</string>
+    <!-- Body text for a generic "New messages" notification. Shown if we do not have more information about a new messages. Note, that the string is also referenced at https://github.com/deltachat/notifiers -->
+    <string name="new_messages_body">Tienes mensajes nuevos</string>
     <string name="n_messages_in_m_chats">%1$d mensajes en %2$d chats</string>
 
 

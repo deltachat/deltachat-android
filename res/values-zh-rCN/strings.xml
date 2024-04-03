@@ -716,6 +716,9 @@
     <string name="pref_edit_profile">编辑个人资料</string>
     <string name="disable_imap_idle">禁用 IMAP IDLE</string>
     <string name="disable_imap_idle_explain">即便服务器支持，也不要使用 IMAP IDLE 扩展。启用后会造成消息获取延迟，请仅出于测试目的启用该功能。</string>
+    <string name="send_stats_to_devs">发送统计数据给 Delta Chat 开发者</string>
+
+
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">搜索结果</string>
     <string name="emoji_not_found">未找到 emoji</string>
@@ -733,7 +736,6 @@
     <string name="reactions">回应</string>
     <!-- Verb, the action of adding a "Reaction" to a message. Used eg. in context menus, similar to "Reply" or "Forward" -->
     <string name="react">回应</string>
-
     <!-- automatically delete message -->
     <string name="delete_old_messages">删除旧消息</string>
     <string name="autodel_device_title">从设备删除消息</string>
@@ -1087,4 +1089,6 @@
     <string name="update_1_42_common">新变化\n\n💌 对引入的联系人，一对一聊天确保端到端加密\n\n😌 为了方便识别，这样的联系人和聊天会带有绿色钩形符号\n\n👥 如果可能，自动创建确保端到端加密的群\n\n🔄 在所有设备间同步接受/拦截、存档、固定、静音</string>
     <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
     <string name="update_1_42_android">留心相机、语音消息、backup-all、屏幕阅读器、不同账户壁纸、图库全选、webxdc landscape 等方面的更多改进… 或访问 %1$s 进行了解</string>
-    </resources>
+    <string name="update_1_44_android">变化：\n\n❤️ 耶！等待已久的功能来了： 长按消息做出反应\n\n🔗 如果你无法扫描二维码，将它们分享为邀请链接\n\n🔵 计算所有账户的未读消息并显示在标题中\n\n… 以及修复许多 bug … %1$s\n\n帮助改进应用：使用”设置/高级、发送统计数据\" 帮助开发者为实际使用而更好地优化。发送前你可以查看数据</string>
+    <string name="update_1_44_ios">变化：\n\n❤️ 耶！等待已久的功能来了：长按消息做出反应\n\n🫸 支持PUSH 通知，不过需要提供商像 https://nine.testrun.org 一样支持该功能\n\n🔗 如果你无法扫描二维码，将它们分享为邀请链接\n\n… 以及修复许多 bug … %1$s</string>
+</resources>
