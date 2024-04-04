@@ -119,6 +119,7 @@ public class ConversationListFragment extends Fragment
     eventCenter.addObserver(DcContext.DC_EVENT_MSG_DELIVERED, this);
     eventCenter.addObserver(DcContext.DC_EVENT_MSG_FAILED, this);
     eventCenter.addObserver(DcContext.DC_EVENT_MSG_READ, this);
+    eventCenter.addObserver(DcContext.DC_EVENT_REACTIONS_CHANGED, this);
     eventCenter.addObserver(DcContext.DC_EVENT_CONNECTIVITY_CHANGED, this);
     eventCenter.addObserver(DcContext.DC_EVENT_SELFAVATAR_CHANGED, this);
   }
