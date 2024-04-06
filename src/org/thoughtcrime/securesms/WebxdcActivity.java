@@ -37,6 +37,8 @@ import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcMsg;
+import com.b44t.messenger.rpc.HttpResponse;
+import com.b44t.messenger.rpc.Rpc;
 
 import org.json.JSONObject;
 import org.thoughtcrime.securesms.connect.AccountManager;
@@ -62,6 +64,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
   private String baseURL;
   private String sourceCodeUrl = "";
   private boolean internetAccess = false;
+  private Rpc rpc;
 
   public static void openWebxdcActivity(Context context, DcMsg instance) {
     if (!Util.isClickedRecently()) {
@@ -138,6 +141,8 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
       AccountManager.getInstance().switchAccount(getApplicationContext(), accountId);
       this.dcContext = DcHelper.getContext(getApplicationContext());
     }
+    rpc = DcHelper.getRpc(this);
+
 
     this.dcAppMsg = this.dcContext.getMsg(appMessageId);
     if (!this.dcAppMsg.isOk()) {
@@ -168,7 +173,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     webView.setNetworkAvailable(internetAccess); // this does not block network but sets `window.navigator.isOnline` in js land
     webView.addJavascriptInterface(new InternalJSApi(), "InternalJSApi");
 
-    webView.loadUrl(this.baseURL + "/webxdc_bootstrap324567869.html");
+    webView.loadUrl(this.baseURL + (internetAccess? "/index.html" : "/webxdc_bootstrap324567869.html"));
 
     Util.runOnAnyBackgroundThread(() -> {
       final DcChat chat = dcContext.getChat(dcAppMsg.getChatId());
@@ -232,6 +237,10 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
 
   @Override
   protected boolean openOnlineUrl(String url) {
+    if (internetAccess) {
+      // internet access enabled, continue loading in the WebView
+      return false;
+    }
     if (url.startsWith("mailto:")) {
       return super.openOnlineUrl(url);
     }
@@ -262,7 +271,12 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
         byte[] blob = this.dcAppMsg.getWebxdcBlob(path);
         if (blob == null) {
           if (internetAccess) {
-            return null; // do not intercept request
+            HttpResponse httpResponse = rpc.getHttpResponse(dcContext.getAccountId(), rawUrl);
+            String mimeType = httpResponse.getMimetype();
+            if (mimeType == null) {
+              mimeType = "application/octet-stream";
+            }
+            return new WebResourceResponse(mimeType, httpResponse.getEncoding(), new ByteArrayInputStream(httpResponse.getBlob()));
           }
           throw new Exception("\"" + path + "\" not found");
         }
@@ -285,7 +299,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
       res = new WebResourceResponse("text/plain", "UTF-8", targetStream);
     }
 
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && !internetAccess) {
       Map<String, String> headers = new HashMap<>();
       headers.put("Content-Security-Policy",
           "default-src 'self'; "
