@@ -37,8 +37,6 @@ import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcMsg;
-import com.b44t.messenger.rpc.HttpResponse;
-import com.b44t.messenger.rpc.Rpc;
 
 import org.json.JSONObject;
 import org.thoughtcrime.securesms.connect.AccountManager;
@@ -64,7 +62,6 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
   private String baseURL;
   private String sourceCodeUrl = "";
   private boolean internetAccess = false;
-  private Rpc rpc;
 
   public static void openWebxdcActivity(Context context, DcMsg instance) {
     if (!Util.isClickedRecently()) {
@@ -141,8 +138,6 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
       AccountManager.getInstance().switchAccount(getApplicationContext(), accountId);
       this.dcContext = DcHelper.getContext(getApplicationContext());
     }
-    rpc = DcHelper.getRpc(this);
-
 
     this.dcAppMsg = this.dcContext.getMsg(appMessageId);
     if (!this.dcAppMsg.isOk()) {
