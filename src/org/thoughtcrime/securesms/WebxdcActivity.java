@@ -160,6 +160,10 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     final JSONObject info = this.dcAppMsg.getWebxdcInfo();
     internetAccess = JsonUtils.optBoolean(info, "internet_access");
 
+    if (!internetAccess) {
+      setFakeProxy();
+    }
+
     WebSettings webSettings = webView.getSettings();
     webSettings.setJavaScriptEnabled(true);
     webSettings.setAllowFileAccess(false);
@@ -271,12 +275,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
         byte[] blob = this.dcAppMsg.getWebxdcBlob(path);
         if (blob == null) {
           if (internetAccess) {
-            HttpResponse httpResponse = rpc.getHttpResponse(dcContext.getAccountId(), rawUrl);
-            String mimeType = httpResponse.getMimetype();
-            if (mimeType == null) {
-              mimeType = "application/octet-stream";
-            }
-            return new WebResourceResponse(mimeType, httpResponse.getEncoding(), new ByteArrayInputStream(httpResponse.getBlob()));
+            return null; // do not intercept request
           }
           throw new Exception("\"" + path + "\" not found");
         }

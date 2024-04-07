@@ -37,6 +37,12 @@ public class FullMsgActivity extends WebViewActivity
   }
 
   @Override
+  protected void onPreCreate() {
+    super.onPreCreate();
+    setFakeProxy();
+  }
+
+  @Override
   protected void onCreate(Bundle state, boolean ready) {
     super.onCreate(state, ready);
 
