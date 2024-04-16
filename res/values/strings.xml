@@ -892,6 +892,7 @@
     <string name="load_qr_code_as_image">Load QR Code as Image</string>
     <string name="qrscan_title">Scan QR Code</string>
     <string name="qrscan_hint">Hold your camera over the QR code.</string>
+    <string name="qrscan_hint_desktop">Move the QR code to the camera</string>
     <string name="qrscan_failed">QR code could not be decoded</string>
     <string name="qrscan_ask_join_group">Do you want to join the group \"%1$s\"?</string>
     <string name="qrscan_fingerprint_mismatch">The scanned fingerprint does not match the last seen for %1$s.</string>
