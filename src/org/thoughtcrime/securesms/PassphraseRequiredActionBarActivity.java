@@ -14,6 +14,12 @@ public abstract class PassphraseRequiredActionBarActivity extends BaseActionBarA
   protected final void onCreate(Bundle savedInstanceState) {
     Log.w(TAG, "onCreate(" + savedInstanceState + ")");
 
+    if (allowInLockedMode()) {
+      super.onCreate(savedInstanceState);
+      onCreate(savedInstanceState, true);
+      return;
+    }
+
     if (GenericForegroundService.isForegroundTaskStarted()) {
       // this does not prevent intent set by onNewIntent(),
       // however, at least during onboarding,
@@ -38,4 +44,5 @@ public abstract class PassphraseRequiredActionBarActivity extends BaseActionBarA
   }
 
   protected void onCreate(Bundle savedInstanceState, boolean ready) {}
+  protected boolean allowInLockedMode() { return false; }
 }

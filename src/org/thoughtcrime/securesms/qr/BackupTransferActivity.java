@@ -20,7 +20,6 @@ import org.thoughtcrime.securesms.BaseActionBarActivity;
 import org.thoughtcrime.securesms.ConversationListActivity;
 import org.thoughtcrime.securesms.LogViewActivity;
 import org.thoughtcrime.securesms.R;
-import org.thoughtcrime.securesms.WebViewActivity;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.service.GenericForegroundService;
 import org.thoughtcrime.securesms.service.NotificationController;
@@ -118,8 +117,7 @@ public class BackupTransferActivity extends BaseActionBarActivity {
                 finishOrAskToFinish();
                 return true;
             case R.id.troubleshooting:
-                // once help is evolved, it may be a more visible button, may be localized, may be offline
-                WebViewActivity.openUrlInBrowser(this, "https://delta.chat/en/help#multiclient");
+                DcHelper.openHelp(this, "#multiclient");
                 return true;
             case R.id.view_log_button:
                 startActivity(new Intent(this, LogViewActivity.class));
