@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "922391085500",
+    "project_id": "delta-chat-fcm",
+    "storage_bucket": "delta-chat-fcm.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:922391085500:android:938fa7a685ce74ba3e2bb9",
+        "android_client_info": {
+          "package_name": "chat.delta"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBYH8Iznh8btYX7g_udv_bu68VH30zzxho"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
