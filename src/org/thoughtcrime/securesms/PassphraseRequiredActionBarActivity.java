@@ -45,8 +45,12 @@ public abstract class PassphraseRequiredActionBarActivity extends BaseActionBarA
 
   protected void onCreate(Bundle savedInstanceState, boolean ready) {}
 
-  // "Locked Mode" is when the account is not configured (Welcome screen) or when sharing a backup
-  // (Add second device) and the user should not leave that screen otherwise the state would be lost.
-  // Sometimes it is fine to allow to change in these situations, like to see the logs or offline help.
+  // "Locked Mode" is when the account is not configured (Welcome screen)
+  // or when sharing a backup (Add second device).
+  // The app is "locked" to an activity if you will.
+  // In "Locked Mode" the user should not leave that activity otherwise the state would be lost -
+  // so eg. tapping app icon or notifications MUST NOT replace activity stack.
+  // However, sometimes it is fine to allow to pushing activities in these situations, 
+  // like to see the logs or offline help.
   protected boolean allowInLockedMode() { return false; }
 }
