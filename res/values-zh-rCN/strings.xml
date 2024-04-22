@@ -877,6 +877,7 @@
     <string name="load_qr_code_as_image">从图像加载二维码</string>
     <string name="qrscan_title">扫描二维码</string>
     <string name="qrscan_hint">将摄像头对准二维码。</string>
+    <string name="qrscan_hint_desktop">移动二维码到相机</string>
     <string name="qrscan_failed">二维码无法被解码</string>
     <string name="qrscan_ask_join_group">您要加入群组“%1$s”吗？</string>
     <string name="qrscan_fingerprint_mismatch">扫描到的指纹与上次见到的 %1$s 的指纹不匹配。</string>

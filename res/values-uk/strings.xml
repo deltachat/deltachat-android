@@ -922,6 +922,7 @@
     <string name="load_qr_code_as_image">Завантажити зображення QR-коду</string>
     <string name="qrscan_title">Сканувати QR-код</string>
     <string name="qrscan_hint">Наведіть камеру на QR-код</string>
+    <string name="qrscan_hint_desktop">Піднесіть QR-код до камери</string>
     <string name="qrscan_failed">Неможливо декодувати QR-код</string>
     <string name="qrscan_ask_join_group">Приєднатися до групи «%1$s»?</string>
     <string name="qrscan_fingerprint_mismatch">Відсканований відбиток не збігається з останнім відомим відбитком %1$s</string>

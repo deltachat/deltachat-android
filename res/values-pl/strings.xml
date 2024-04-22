@@ -922,6 +922,7 @@
     <string name="load_qr_code_as_image">Załaduj kod QR jako obraz</string>
     <string name="qrscan_title">Skanuj kod QR</string>
     <string name="qrscan_hint">Umieść aparat nad kodem QR</string>
+    <string name="qrscan_hint_desktop">Przysuń kod QR do kamery</string>
     <string name="qrscan_failed">Nie udało się zdekodować kodu QR</string>
     <string name="qrscan_ask_join_group">Czy chcesz dołączyć do grupy „%1$s?</string>
     <string name="qrscan_fingerprint_mismatch">Zeskanowany odcisk palca nie pasuje do odcisku palca ostatnio widzianego u %1$s</string>

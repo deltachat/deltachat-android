@@ -892,6 +892,7 @@
     <string name="load_qr_code_as_image">QR-code als afbeelding laden</string>
     <string name="qrscan_title">QR-code scannen</string>
     <string name="qrscan_hint">Houd je camera boven de QR-code</string>
+    <string name="qrscan_hint_desktop">Houd de QR-code voor de camera</string>
     <string name="qrscan_failed">De QR-code kan niet worden ontcijferd</string>
     <string name="qrscan_ask_join_group">Wil je deelnemen aan de groep ‘%1$s’?</string>
     <string name="qrscan_fingerprint_mismatch">De gescande vingerafdruk komt niet overeen met de vorige voor %1$s</string>
