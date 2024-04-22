@@ -1,19 +1,21 @@
 package org.thoughtcrime.securesms.search;
 
 import android.content.Context;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.b44t.messenger.DcChatlist;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMsg;
 
+import org.thoughtcrime.securesms.BaseConversationListAdapter;
 import org.thoughtcrime.securesms.ConversationListItem;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -22,10 +24,10 @@ import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.search.model.SearchResult;
 import org.thoughtcrime.securesms.util.StickyHeaderDecoration;
 
-import java.util.Collections;
 import java.util.Locale;
+import java.util.Set;
 
-class SearchListAdapter extends    RecyclerView.Adapter<SearchListAdapter.SearchResultViewHolder>
+class SearchListAdapter extends BaseConversationListAdapter<SearchListAdapter.SearchResultViewHolder>
                         implements StickyHeaderDecoration.StickyHeaderAdapter<SearchListAdapter.HeaderViewHolder>
 {
   private static final int TYPE_CHATS         = 1;
@@ -66,7 +68,7 @@ class SearchListAdapter extends    RecyclerView.Adapter<SearchListAdapter.Search
     DcChatlist.Item conversationResult = getConversationResult(position);
 
     if (conversationResult != null) {
-      holder.bind(context, conversationResult, glideRequests, eventListener, locale, searchResult.getQuery());
+      holder.bind(context, conversationResult, glideRequests, eventListener, locale, batchSet, batchMode, searchResult.getQuery());
       return;
     }
 
@@ -146,6 +148,14 @@ class SearchListAdapter extends    RecyclerView.Adapter<SearchListAdapter.Search
     notifyDataSetChanged();
   }
 
+  @Override
+  public void selectAllThreads() {
+    for (int i = 0; i < searchResult.getChats().getCnt(); i++) {
+      batchSet.add((long)searchResult.getChats().getItem(i).chatId);
+    }
+    notifyDataSetChanged();
+  }
+
   @Nullable
   private DcChatlist.Item getConversationResult(int position) {
     if (position < searchResult.getChats().getCnt()) {
@@ -180,6 +190,7 @@ class SearchListAdapter extends    RecyclerView.Adapter<SearchListAdapter.Search
 
   public interface EventListener {
     void onConversationClicked(@NonNull DcChatlist.Item chatlistItem);
+    void onConversationLongClicked(@NonNull DcChatlist.Item chatlistItem);
     void onContactClicked(@NonNull DcContact contact);
     void onMessageClicked(@NonNull DcMsg message);
   }
@@ -198,12 +209,18 @@ class SearchListAdapter extends    RecyclerView.Adapter<SearchListAdapter.Search
               @NonNull  GlideRequests glideRequests,
               @NonNull  EventListener eventListener,
               @NonNull  Locale        locale,
+              @NonNull Set<Long> selectedThreads,
+              boolean   batchMode,
               @Nullable String        query)
     {
       DcContext dcContext = DcHelper.getContext(context);
       ThreadRecord threadRecord = DcHelper.getThreadRecord(context, chatlistItem.summary, dcContext.getChat(chatlistItem.chatId));
-      root.bind(threadRecord, chatlistItem.msgId, chatlistItem.summary, glideRequests, locale, Collections.emptySet(), false, query);
+      root.bind(threadRecord, chatlistItem.msgId, chatlistItem.summary, glideRequests, locale, selectedThreads, batchMode, query);
       root.setOnClickListener(view -> eventListener.onConversationClicked(chatlistItem));
+      root.setOnLongClickListener(view -> {
+        eventListener.onConversationLongClicked(chatlistItem);
+        return true;
+      });
     }
 
     void bind(@NonNull  DcContact     contactResult,

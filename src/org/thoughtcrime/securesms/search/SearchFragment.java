@@ -1,28 +1,33 @@
 package org.thoughtcrime.securesms.search;
 
 
-import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
+import static org.thoughtcrime.securesms.util.RelayUtil.isRelayingMessageContent;
+
 import android.content.res.Configuration;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.appcompat.app.AlertDialog;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcChatlist;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcMsg;
 
+import org.thoughtcrime.securesms.BaseConversationListAdapter;
+import org.thoughtcrime.securesms.BaseConversationListFragment;
 import org.thoughtcrime.securesms.ConversationListActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
@@ -32,13 +37,13 @@ import org.thoughtcrime.securesms.search.model.SearchResult;
 import org.thoughtcrime.securesms.util.StickyHeaderDecoration;
 
 import java.util.Locale;
-
-import static org.thoughtcrime.securesms.util.RelayUtil.isRelayingMessageContent;
+import java.util.Set;
 
 /**
  * A fragment that is displayed to do full-text search of messages, groups, and contacts.
  */
-public class SearchFragment extends Fragment implements SearchListAdapter.EventListener, DcEventCenter.DcEventDelegate {
+public class SearchFragment extends BaseConversationListFragment
+        implements SearchListAdapter.EventListener, DcEventCenter.DcEventDelegate {
 
   public static final String TAG          = "SearchFragment";
   public static final String EXTRA_LOCALE = "locale";
@@ -68,8 +73,8 @@ public class SearchFragment extends Fragment implements SearchListAdapter.EventL
 
     this.locale = (Locale) getArguments().getSerializable(EXTRA_LOCALE);
 
-    viewModel = ViewModelProviders.of(this, (ViewModelProvider.Factory) new SearchViewModel.Factory(getContext())).get(SearchViewModel.class);
-    DcEventCenter eventCenter = DcHelper.getEventCenter(getContext());
+    viewModel = ViewModelProviders.of(this, (ViewModelProvider.Factory) new SearchViewModel.Factory(requireContext())).get(SearchViewModel.class);
+    DcEventCenter eventCenter = DcHelper.getEventCenter(requireContext());
     eventCenter.addObserver(DcContext.DC_EVENT_CHAT_MODIFIED, this);
     eventCenter.addObserver(DcContext.DC_EVENT_CONTACTS_CHANGED, this);
     eventCenter.addObserver(DcContext.DC_EVENT_INCOMING_MSG, this);
@@ -95,10 +100,12 @@ public class SearchFragment extends Fragment implements SearchListAdapter.EventL
   public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
     noResultsView = view.findViewById(R.id.search_no_results);
     listView      = view.findViewById(R.id.search_list);
+    fab           = view.findViewById(R.id.fab);
 
     listAdapter    = new SearchListAdapter(getContext(), GlideApp.with(this), this, locale);
     listDecoration = new StickyHeaderDecoration(listAdapter, false, true);
 
+    fab.setVisibility(View.GONE);
     listView.setAdapter(listAdapter);
     listView.addItemDecoration(listDecoration);
     listView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -107,7 +114,7 @@ public class SearchFragment extends Fragment implements SearchListAdapter.EventL
   @Override
   public void onStart() {
     super.onStart();
-    viewModel.includeMessageQueries(!isRelayingMessageContent(getActivity()));
+    viewModel.setForwardingMode(isRelayingMessageContent(getActivity()));
     viewModel.getSearchResult().observe(this, result -> {
       result = result != null ? result : SearchResult.EMPTY;
 
@@ -129,7 +136,7 @@ public class SearchFragment extends Fragment implements SearchListAdapter.EventL
   }
 
   @Override
-  public void onConfigurationChanged(Configuration newConfig) {
+  public void onConfigurationChanged(@NonNull Configuration newConfig) {
     super.onConfigurationChanged(newConfig);
 
     if (listDecoration != null) {
@@ -139,26 +146,32 @@ public class SearchFragment extends Fragment implements SearchListAdapter.EventL
 
   @Override
   public void onDestroy() {
-    DcHelper.getEventCenter(getContext()).removeObservers(this);
+    DcHelper.getEventCenter(requireContext()).removeObservers(this);
     super.onDestroy();
   }
 
   @Override
   public void onConversationClicked(@NonNull DcChatlist.Item chatlistItem) {
-    ConversationListActivity conversationList = (ConversationListActivity) getActivity();
-    if (conversationList != null) {
-      conversationList.onCreateConversation(chatlistItem.chatId);
-    }
+    onItemClick(chatlistItem.chatId);
+  }
+
+  @Override
+  public void onConversationLongClicked(@NonNull DcChatlist.Item chatlistItem) {
+    onItemLongClick(chatlistItem.chatId);
   }
 
   @Override
   public void onContactClicked(@NonNull DcContact contact) {
+    if (actionMode != null) {
+      return;
+    }
+
     ConversationListActivity conversationList = (ConversationListActivity) getActivity();
     if (conversationList != null) {
-      DcContext dcContext = DcHelper.getContext(getContext());
+      DcContext dcContext = DcHelper.getContext(requireContext());
       int chatId = dcContext.getChatIdByContactId(contact.getId());
       if(chatId==0) {
-        new AlertDialog.Builder(getContext())
+        new AlertDialog.Builder(requireContext())
             .setMessage(getString(R.string.ask_start_chat_with, contact.getNameNAddr()))
             .setCancelable(true)
             .setNegativeButton(android.R.string.cancel, null)
@@ -175,9 +188,13 @@ public class SearchFragment extends Fragment implements SearchListAdapter.EventL
 
   @Override
   public void onMessageClicked(@NonNull DcMsg message) {
+    if (actionMode != null) {
+      return;
+    }
+
     ConversationListActivity conversationList = (ConversationListActivity) getActivity();
     if (conversationList != null) {
-      DcContext dcContext = DcHelper.getContext(getContext());
+      DcContext dcContext = DcHelper.getContext(requireContext());
       int chatId = message.getChatId();
       int startingPosition = DcMsg.getMessagePosition(message, dcContext);
       conversationList.openConversation(chatId, startingPosition);
@@ -197,5 +214,32 @@ public class SearchFragment extends Fragment implements SearchListAdapter.EventL
     if (viewModel != null) {
       viewModel.updateQuery();
     }
+  }
+
+  @Override
+  protected boolean offerToArchive() {
+    DcContext dcContext = DcHelper.getContext(requireActivity());
+    final Set<Long> selectedChats = listAdapter.getBatchSelections();
+    for (long chatId : selectedChats) {
+      DcChat dcChat = dcContext.getChat((int)chatId);
+      if (dcChat.getVisibility() != DcChat.DC_CHAT_VISIBILITY_ARCHIVED) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  @Override
+  protected void setFabVisibility(boolean isActionMode) {
+    if (isActionMode && isRelayingMessageContent(getActivity())) {
+      fab.setVisibility(View.VISIBLE);
+    } else {
+      fab.setVisibility(View.GONE);
+    }
+  }
+
+  @Override
+  protected BaseConversationListAdapter getListAdapter() {
+    return listAdapter;
   }
 }
