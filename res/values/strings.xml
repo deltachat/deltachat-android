@@ -549,6 +549,31 @@
 
 
     <!-- welcome and login -->
+    <!-- Primary button on the welcome screen, allows to create an instant account -->
+    <string name="onboarding_create_instant_account">Let\'s Get Started!</string>
+    <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup", "Manual Login"  -->
+    <string name="onboarding_alternative_logins">I Already Have a Login</string>
+    <!-- Button, allows to log in to existing email accounts, setting ports, passwords and so on -->
+    <string name="manual_account_setup_option">Manual Login</string>
+    <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
+    <string name="instant_onboarding_title">Your Profile</string>
+    <!-- Confirmation button on the instant onboarding screen -->
+    <string name="instant_onboarding_create">Create Profile</string>
+    <!-- Hint about on which instance (server) the account will be created -->
+    <string name="instant_onboarding_default_info">Your profile will be created on the default instance.</string>
+    <!-- Hint about on which instance (server) the account will be created; next line follows the instance domain name -->
+    <string name="instant_onboarding_instance_info">Your profile will be created on the following instance:</string>
+    <!-- Secondary, link-like button to open a page with other possible instances -->
+    <string name="instant_onboarding_show_more_instances">Show other instances</string>
+    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group name -->
+    <string name="instant_onboarding_group_info">Create a profile to join the group \"%1$s\".</string>
+    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by contact name and/or address -->
+    <string name="instant_onboarding_contact_info">Create a profile to chat with %1$s.</string>
+    <!-- Question shown when another user's QR code is scanned from onboarding screen -->
+    <string name="instant_onboarding_confirm_contact">Do you want to create a new profile and start chatting with %1$s?</string>
+    <!-- Question shown when group's QR code is scanned from onboarding screen -->
+    <string name="instant_onboarding_confirm_group">Do you want to create a new profile and join the \"%1$s\" chat group?</string>
+
     <string name="welcome_chat_over_email">Chat over E-Mail.</string>
     <string name="scan_invitation_code">Scan Invitation Code</string>
     <string name="login_title">Log In</string>
