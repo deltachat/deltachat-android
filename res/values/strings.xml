@@ -557,14 +557,14 @@
     <string name="manual_account_setup_option">Manual Login</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Your Profile</string>
+    <!-- The two placeholders mark beginning and end of a tappable link -->
+    <string name="instant_onboarding_agree_default">I agree to the %1$sPrivacy Policy%2$s</string>
+    <!-- The placeholder will be replaced by the tappable name of the instance -->
+    <string name="instant_onboarding_agree_instance">I agree to create a profile on %1$s</string>
     <!-- Confirmation button on the instant onboarding screen -->
-    <string name="instant_onboarding_create">Create Profile</string>
-    <!-- Hint about on which instance (server) the account will be created -->
-    <string name="instant_onboarding_default_info">Your profile will be created on the default instance.</string>
-    <!-- Hint about on which instance (server) the account will be created; next line follows the instance domain name -->
-    <string name="instant_onboarding_instance_info">Your profile will be created on the following instance:</string>
+    <string name="instant_onboarding_create">Create New Profile</string>
     <!-- Secondary, link-like button to open a page with other possible instances -->
-    <string name="instant_onboarding_show_more_instances">Show other instances</string>
+    <string name="instant_onboarding_show_more_instances">Explore Other Options</string>
     <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group name -->
     <string name="instant_onboarding_group_info">Create a profile to join the group \"%1$s\".</string>
     <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by contact name and/or address -->
