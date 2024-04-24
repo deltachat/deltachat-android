@@ -16,7 +16,7 @@ import com.journeyapps.barcodescanner.CompoundBarcodeView;
 
 import org.thoughtcrime.securesms.BaseActionBarActivity;
 import org.thoughtcrime.securesms.R;
-import org.thoughtcrime.securesms.WebViewActivity;
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.permissions.Permissions;
 
 public class RegistrationQrActivity extends BaseActionBarActivity {
@@ -80,7 +80,7 @@ public class RegistrationQrActivity extends BaseActionBarActivity {
                 finish();
                 return true;
             case R.id.troubleshooting:
-                WebViewActivity.openUrlInBrowser(this, "https://delta.chat/en/help#multiclient");
+                DcHelper.openHelp(this, "#multiclient");
                 return true;
         }
 

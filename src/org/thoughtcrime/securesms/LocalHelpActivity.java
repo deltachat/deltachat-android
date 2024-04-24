@@ -13,6 +13,9 @@ public class LocalHelpActivity extends WebViewActivity
   public static final String SECTION_EXTRA = "section_extra";
 
   @Override
+  protected boolean allowInLockedMode() { return true; }
+
+  @Override
   protected void onCreate(Bundle state, boolean ready) {
     super.onCreate(state, ready);
     setForceDark();
