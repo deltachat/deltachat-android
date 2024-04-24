@@ -155,6 +155,10 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     final JSONObject info = this.dcAppMsg.getWebxdcInfo();
     internetAccess = JsonUtils.optBoolean(info, "internet_access");
 
+    if (!internetAccess) {
+      setFakeProxy();
+    }
+
     WebSettings webSettings = webView.getSettings();
     webSettings.setJavaScriptEnabled(true);
     webSettings.setAllowFileAccess(false);
@@ -168,7 +172,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     webView.setNetworkAvailable(internetAccess); // this does not block network but sets `window.navigator.isOnline` in js land
     webView.addJavascriptInterface(new InternalJSApi(), "InternalJSApi");
 
-    webView.loadUrl(this.baseURL + "/webxdc_bootstrap324567869.html");
+    webView.loadUrl(this.baseURL + (internetAccess? "/index.html" : "/webxdc_bootstrap324567869.html"));
 
     Util.runOnAnyBackgroundThread(() -> {
       final DcChat chat = dcContext.getChat(dcAppMsg.getChatId());
@@ -232,6 +236,10 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
 
   @Override
   protected boolean openOnlineUrl(String url) {
+    if (internetAccess) {
+      // internet access enabled, continue loading in the WebView
+      return false;
+    }
     if (url.startsWith("mailto:")) {
       return super.openOnlineUrl(url);
     }
@@ -285,7 +293,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
       res = new WebResourceResponse("text/plain", "UTF-8", targetStream);
     }
 
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && !internetAccess) {
       Map<String, String> headers = new HashMap<>();
       headers.put("Content-Security-Policy",
           "default-src 'self'; "

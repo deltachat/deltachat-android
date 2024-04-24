@@ -37,10 +37,7 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
 
   protected WebView webView;
 
-  @Override
-  protected void onPreCreate() {
-    super.onPreCreate();
-
+  protected void setFakeProxy() {
     if (WebViewFeature.isFeatureSupported(WebViewFeature.PROXY_OVERRIDE)) {
       // Set proxy to non-routable address.
       ProxyConfig proxyConfig = new ProxyConfig.Builder()
