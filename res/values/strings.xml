@@ -560,7 +560,7 @@
     <!-- This is a link to the default Privacy Policy -->
     <string name="instant_onboarding_agree_default">Read the Privacy Policy</string>
     <!-- The placeholder will be replaced by instance name, the whole text will link to the instance page -->
-    <string name="instant_onboarding_agree_instance">Create profile on %1$s</string>
+    <string name="instant_onboarding_agree_instance">About profiles on %1$s</string>
     <!-- Confirmation button on the instant onboarding screen -->
     <string name="instant_onboarding_create">Agree &amp; Create Profile</string>
     <!-- Secondary, link-like button to open a page with other possible instances -->
