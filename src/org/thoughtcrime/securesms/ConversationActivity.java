@@ -16,6 +16,11 @@
  */
 package org.thoughtcrime.securesms;
 
+import static org.thoughtcrime.securesms.TransportOption.Type;
+import static org.thoughtcrime.securesms.util.RelayUtil.getSharedText;
+import static org.thoughtcrime.securesms.util.RelayUtil.isForwarding;
+import static org.thoughtcrime.securesms.util.RelayUtil.isSharing;
+
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.ActivityNotFoundException;
@@ -50,7 +55,6 @@ import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -93,7 +97,6 @@ import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.connect.DirectShareUtil;
 import org.thoughtcrime.securesms.database.AttachmentDatabase;
-import org.thoughtcrime.securesms.map.MapActivity;
 import org.thoughtcrime.securesms.messagerequests.MessageRequestsBottomView;
 import org.thoughtcrime.securesms.mms.AttachmentManager;
 import org.thoughtcrime.securesms.mms.AttachmentManager.MediaType;
@@ -130,11 +133,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
-
-import static org.thoughtcrime.securesms.TransportOption.Type;
-import static org.thoughtcrime.securesms.util.RelayUtil.getSharedText;
-import static org.thoughtcrime.securesms.util.RelayUtil.isForwarding;
-import static org.thoughtcrime.securesms.util.RelayUtil.isSharing;
 
 /**
  * Activity for displaying a message thread, as well as
@@ -532,7 +530,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       case R.id.menu_clear_chat:            fragment.handleClearChat();        return true;
       case R.id.menu_delete_chat:           handleDeleteChat();                return true;
       case R.id.menu_mute_notifications:    handleMuteNotifications();         return true;
-      case R.id.menu_show_map:              handleShowMap();                   return true;
+      case R.id.menu_show_map:              WebxdcActivity.openMaps(this, chatId); return true;
       case R.id.menu_search_up:             handleMenuSearchNext(false);       return true;
       case R.id.menu_search_down:           handleMenuSearchNext(true);        return true;
       case android.R.id.home:               handleReturnToConversationList();  return true;
@@ -582,12 +580,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   private void handleVideochatInvite() {
     new VideochatUtil().invite(this, chatId);
-  }
-
-  private void handleShowMap() {
-    Intent intent = new Intent(this, MapActivity.class);
-    intent.putExtra(MapActivity.CHAT_ID, chatId);
-    startActivity(intent);
   }
 
   private void handleReturnToConversationList() {

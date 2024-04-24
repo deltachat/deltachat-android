@@ -18,7 +18,6 @@ package org.thoughtcrime.securesms;
 
 import static org.thoughtcrime.securesms.ConversationActivity.CHAT_ID_EXTRA;
 import static org.thoughtcrime.securesms.ConversationActivity.STARTING_POSITION_EXTRA;
-import static org.thoughtcrime.securesms.map.MapDataManager.ALL_CHATS_GLOBAL_MAP;
 import static org.thoughtcrime.securesms.util.RelayUtil.acquireRelayMessageContent;
 import static org.thoughtcrime.securesms.util.RelayUtil.getDirectSharingChatId;
 import static org.thoughtcrime.securesms.util.RelayUtil.getSharedTitle;
@@ -60,7 +59,6 @@ import org.thoughtcrime.securesms.components.SearchToolbar;
 import org.thoughtcrime.securesms.connect.AccountManager;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.connect.DirectShareUtil;
-import org.thoughtcrime.securesms.map.MapActivity;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.qr.QrActivity;
@@ -73,9 +71,6 @@ import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.SendRelayedMessageUtil;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
-
-import java.io.FileOutputStream;
-import java.io.InputStream;
 
 public class ConversationListActivity extends PassphraseRequiredActionBarActivity
     implements ConversationListFragment.ConversationSelectedListener
@@ -384,7 +379,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
         new IntentIntegrator(this).setCaptureActivity(QrActivity.class).initiateScan();
         return true;
       case R.id.menu_global_map:
-        handleShowMap();
+        WebxdcActivity.openMaps(this, 0);
         return true;
       case R.id.menu_switch_account:
         AccountManager.getInstance().showSwitchAccountMenu(this);
@@ -422,13 +417,6 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     conversationListFragment.onNewIntent();
     invalidateOptionsMenu();
   }
-
-  private void handleShowMap() {
-      Intent intent = new Intent(this, MapActivity.class);
-      intent.putExtra(MapActivity.CHAT_IDS, ALL_CHATS_GLOBAL_MAP);
-      startActivity(intent);
-  }
-
 
   @Override
   public void onCreateConversation(int chatId) {

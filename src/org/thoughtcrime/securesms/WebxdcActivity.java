@@ -48,6 +48,8 @@ import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 
 import java.io.ByteArrayInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 
 import java.util.HashMap;
@@ -55,33 +57,60 @@ import java.util.Map;
 
 public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcEventDelegate  {
   private static final String TAG = WebxdcActivity.class.getSimpleName();
+  private static final String EXTRA_ACCOUNT_ID = "accountId";
+  private static final String EXTRA_APP_MSG_ID = "appMessageId";
+  private static final String EXTRA_HIDE_ACTION_BAR = "hideActionBar";
   private static final int REQUEST_CODE_FILE_PICKER = 51426;
+
   private ValueCallback<Uri[]> filePathCallback;
   private DcContext dcContext;
   private DcMsg dcAppMsg;
   private String baseURL;
   private String sourceCodeUrl = "";
   private boolean internetAccess = false;
+  private boolean hideActionBar = false;
+
+  public static void openMaps(Context context, int chatId) {
+    DcContext dcContext = DcHelper.getContext(context);
+    int msgId = dcContext.initWebxdcIntegration(chatId);
+    if (msgId == 0) {
+      try {
+        InputStream inputStream = context.getResources().getAssets().open("webxdc/maps.xdc");
+        String outputFile = DcHelper.getBlobdirFile(dcContext, "maps", ".xdc");
+        Util.copy(inputStream, new FileOutputStream(outputFile));
+        dcContext.setWebxdcIntegration(outputFile);
+        msgId = dcContext.initWebxdcIntegration(chatId);
+      } catch (IOException e) {
+        throw new RuntimeException(e);
+      }
+    }
+    openWebxdcActivity(context, msgId, true);
+  }
 
   public static void openWebxdcActivity(Context context, DcMsg instance) {
+    openWebxdcActivity(context, instance.getId(), false);
+  }
+
+  public static void openWebxdcActivity(Context context, int msgId, boolean hideActionBar) {
     if (!Util.isClickedRecently()) {
       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
         if (Prefs.isDeveloperModeEnabled(context)) {
           WebView.setWebContentsDebuggingEnabled(true);
         }
-        context.startActivity(getWebxdcIntent(context, instance.getId()));
+        context.startActivity(getWebxdcIntent(context, msgId, hideActionBar));
       } else {
         Toast.makeText(context, "At least Android 5.0 (Lollipop) required for Webxdc.", Toast.LENGTH_LONG).show();
       }
     }
   }
 
-  private static Intent getWebxdcIntent(Context context, int msgId) {
+  private static Intent getWebxdcIntent(Context context, int msgId, boolean hideActionBar) {
     DcContext dcContext = DcHelper.getContext(context);
     Intent intent = new Intent(context, WebxdcActivity.class);
     intent.setAction(Intent.ACTION_VIEW);
-    intent.putExtra("accountId", dcContext.getAccountId());
-    intent.putExtra("appMessageId", msgId);
+    intent.putExtra(EXTRA_ACCOUNT_ID, dcContext.getAccountId());
+    intent.putExtra(EXTRA_APP_MSG_ID, msgId);
+    intent.putExtra(EXTRA_HIDE_ACTION_BAR, hideActionBar);
     return intent;
   }
 
@@ -92,7 +121,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
       .putExtra(ConversationActivity.CHAT_ID_EXTRA, dcContext.getMsg(msgId).getChatId())
       .setAction(Intent.ACTION_VIEW);
 
-    final Intent webxdcIntent = getWebxdcIntent(context, msgId);
+    final Intent webxdcIntent = getWebxdcIntent(context, msgId, false);
 
     return TaskStackBuilder.create(context)
       .addNextIntentWithParentStack(chatIntent)
@@ -103,6 +132,9 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
   @Override
   protected void onCreate(Bundle state, boolean ready) {
     super.onCreate(state, ready);
+
+    Bundle b = getIntent().getExtras();
+    hideActionBar = b.getBoolean(EXTRA_HIDE_ACTION_BAR, false);
 
     // enter fullscreen mode if necessary,
     // this is needed here because if the app is opened while already in landscape mode, onConfigurationChanged() is not triggered
@@ -129,10 +161,8 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     eventCenter.addObserver(DcContext.DC_EVENT_WEBXDC_STATUS_UPDATE, this);
     eventCenter.addObserver(DcContext.DC_EVENT_MSGS_CHANGED, this);
     
-    Bundle b = getIntent().getExtras();
-    int appMessageId = b.getInt("appMessageId");
-
-    int accountId = b.getInt("accountId");
+    int appMessageId = b.getInt(EXTRA_APP_MSG_ID);
+    int accountId = b.getInt(EXTRA_ACCOUNT_ID);
     this.dcContext = DcHelper.getContext(getApplicationContext());
     if (accountId != dcContext.getAccountId()) {
       AccountManager.getInstance().switchAccount(getApplicationContext(), accountId);
@@ -224,7 +254,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     getWindow().getDecorView().setSystemUiVisibility(enable? View.SYSTEM_UI_FLAG_FULLSCREEN : 0);
     ActionBar actionBar = getSupportActionBar();
     if (actionBar != null) {
-      if (enable) {
+      if (hideActionBar || enable) {
         actionBar.hide();
       } else {
         actionBar.show();
