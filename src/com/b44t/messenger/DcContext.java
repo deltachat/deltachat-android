@@ -202,8 +202,8 @@ public class DcContext {
     public native int          sendVideochatInvitation(int chat_id);
     public native boolean      sendWebxdcStatusUpdate(int msg_id, String payload, String descr);
     public native String       getWebxdcStatusUpdates(int msg_id, int last_known_serial);
-    public native int          initWebxdcIntegration(int chat_id);
     public native void         setWebxdcIntegration (String file);
+    public native int          initWebxdcIntegration(int chat_id);
     public native int          addDeviceMsg         (String label, DcMsg msg);
     public native boolean      wasDeviceMsgEverAdded(String label);
     public DcLot               checkQr              (String qr) { return new DcLot(checkQrCPtr(qr)); }
