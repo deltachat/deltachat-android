@@ -25,7 +25,6 @@ import androidx.webkit.WebViewFeature;
 import androidx.webkit.ProxyController;
 import androidx.webkit.ProxyConfig;
 
-import com.b44t.messenger.util.concurrent.ListenableFuture;
 import com.b44t.messenger.util.concurrent.SettableFuture;
 
 import org.thoughtcrime.securesms.util.DynamicTheme;
@@ -40,41 +39,21 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
 
   protected WebView webView;
 
-  protected ListenableFuture<Boolean> toggleFakeProxy(boolean enable) {
-    final SettableFuture<Boolean> future = new SettableFuture<>();
-
+  protected void toggleFakeProxy(boolean enable) {
     if (WebViewFeature.isFeatureSupported(WebViewFeature.PROXY_OVERRIDE)) {
-      Executor executor = new Executor() {
-        @Override
-        public void execute(Runnable command) {
-          command.run();
-        }
-      };
-
-      Runnable listener = new Runnable() {
-        @Override
-        public void run() {
-          Log.i(TAG, "Successfully " + (enable? "set": "cleared") + " WebView proxy.");
-          future.set(true);
-        }
-      };
-
       if (enable) {
         // Set proxy to non-routable address.
         ProxyConfig proxyConfig = new ProxyConfig.Builder()
           .removeImplicitRules()
           .addProxyRule("0.0.0.0")
           .build();
-        ProxyController.getInstance().setProxyOverride(proxyConfig, executor, listener);
+        ProxyController.getInstance().setProxyOverride(proxyConfig, Runnable::run, () -> Log.i(TAG, "Set WebView proxy."));
       } else {
-        ProxyController.getInstance().clearProxyOverride(executor, listener);
+        ProxyController.getInstance().clearProxyOverride(Runnable::run, () -> Log.i(TAG, "Cleared WebView proxy."));
       }
     } else {
       Log.w(TAG, "Cannot " + (enable? "set": "clear") + " WebView proxy.");
-      future.set(false);
     }
-
-    return future;
   }
 
   @Override
