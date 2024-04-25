@@ -155,9 +155,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     final JSONObject info = this.dcAppMsg.getWebxdcInfo();
     internetAccess = JsonUtils.optBoolean(info, "internet_access");
 
-    if (!internetAccess) {
-      setFakeProxy();
-    }
+    toggleFakeProxy(!internetAccess);
 
     WebSettings webSettings = webView.getSettings();
     webSettings.setJavaScriptEnabled(true);
