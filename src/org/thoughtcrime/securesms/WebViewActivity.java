@@ -62,6 +62,7 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
 
     webView = findViewById(R.id.webview);
     webView.setWebViewClient(new WebViewClient() {
+      // IMPORTANT: this is will likely not be called inside iframes.
       // `shouldOverrideUrlLoading()` is called when the user clicks a URL,
       // returning `true` causes the WebView to abort loading the URL,
       // returning `false` causes the WebView to continue loading the URL as usual.
