@@ -39,7 +39,7 @@ public class FullMsgActivity extends WebViewActivity
   @Override
   protected void onPreCreate() {
     super.onPreCreate();
-    setFakeProxy();
+    toggleFakeProxy(true);
   }
 
   @Override

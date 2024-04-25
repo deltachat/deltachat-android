@@ -25,6 +25,9 @@ import androidx.webkit.WebViewFeature;
 import androidx.webkit.ProxyController;
 import androidx.webkit.ProxyConfig;
 
+import com.b44t.messenger.util.concurrent.ListenableFuture;
+import com.b44t.messenger.util.concurrent.SettableFuture;
+
 import org.thoughtcrime.securesms.util.DynamicTheme;
 
 import java.util.concurrent.Executor;
@@ -37,29 +40,41 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
 
   protected WebView webView;
 
-  protected void setFakeProxy() {
+  protected ListenableFuture<Boolean> toggleFakeProxy(boolean enable) {
+    final SettableFuture<Boolean> future = new SettableFuture<>();
+
     if (WebViewFeature.isFeatureSupported(WebViewFeature.PROXY_OVERRIDE)) {
-      // Set proxy to non-routable address.
-      ProxyConfig proxyConfig = new ProxyConfig.Builder()
-          .removeImplicitRules()
-          .addProxyRule("0.0.0.0")
-          .build();
       Executor executor = new Executor() {
         @Override
         public void execute(Runnable command) {
           command.run();
         }
       };
+
       Runnable listener = new Runnable() {
         @Override
         public void run() {
-          Log.i(TAG, "Successfully set WebView proxy.");
+          Log.i(TAG, "Successfully " + (enable? "set": "cleared") + " WebView proxy.");
+          future.set(true);
         }
       };
-      ProxyController.getInstance().setProxyOverride(proxyConfig, executor, listener);
+
+      if (enable) {
+        // Set proxy to non-routable address.
+        ProxyConfig proxyConfig = new ProxyConfig.Builder()
+          .removeImplicitRules()
+          .addProxyRule("0.0.0.0")
+          .build();
+        ProxyController.getInstance().setProxyOverride(proxyConfig, executor, listener);
+      } else {
+        ProxyController.getInstance().clearProxyOverride(executor, listener);
+      }
     } else {
-      Log.w(TAG, "Cannot set WebView proxy.");
+      Log.w(TAG, "Cannot " + (enable? "set": "clear") + " WebView proxy.");
+      future.set(false);
     }
+
+    return future;
   }
 
   @Override
