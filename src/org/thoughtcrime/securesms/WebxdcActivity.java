@@ -81,7 +81,11 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
         dcContext.setWebxdcIntegration(outputFile);
         msgId = dcContext.initWebxdcIntegration(chatId);
       } catch (IOException e) {
-        throw new RuntimeException(e);
+        e.printStackTrace();
+      }
+      if (maps == 0) {
+         Toast.makeText(context, "Cannot get maps.xdc, see log for details.", Toast.LENGTH_LONG).show();
+         return;
       }
     }
     openWebxdcActivity(context, msgId, true);
