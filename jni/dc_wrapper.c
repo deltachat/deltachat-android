@@ -792,6 +792,20 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcContext_getWebxdcStatusUpdates(JNIEn
 }
 
 
+JNIEXPORT jint Java_com_b44t_messenger_DcContext_initWebxdcIntegration(JNIEnv *env, jobject obj, jint chat_id)
+{
+    return dc_init_webxdc_integration(get_dc_context(env, obj), chat_id);
+}
+
+
+JNIEXPORT void Java_com_b44t_messenger_DcContext_setWebxdcIntegration(JNIEnv *env, jobject obj, jstring file)
+{
+    CHAR_REF(file);
+        dc_set_webxdc_integration(get_dc_context(env, obj), filePtr);
+    CHAR_UNREF(file);
+}
+
+
 JNIEXPORT jint Java_com_b44t_messenger_DcContext_addDeviceMsg(JNIEnv *env, jobject obj, jstring label, jobject msg)
 {
     CHAR_REF(label);
