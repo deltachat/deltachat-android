@@ -25,11 +25,7 @@ import androidx.webkit.WebViewFeature;
 import androidx.webkit.ProxyController;
 import androidx.webkit.ProxyConfig;
 
-import com.b44t.messenger.util.concurrent.SettableFuture;
-
 import org.thoughtcrime.securesms.util.DynamicTheme;
-
-import java.util.concurrent.Executor;
 
 public class WebViewActivity extends PassphraseRequiredActionBarActivity
                                implements SearchView.OnQueryTextListener,
