@@ -83,7 +83,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
       } catch (IOException e) {
         e.printStackTrace();
       }
-      if (maps == 0) {
+      if (msgId == 0) {
          Toast.makeText(context, "Cannot get maps.xdc, see log for details.", Toast.LENGTH_LONG).show();
          return;
       }
