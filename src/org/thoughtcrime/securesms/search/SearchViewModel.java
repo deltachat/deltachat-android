@@ -22,7 +22,7 @@ class SearchViewModel extends ViewModel {
   private final ObservingLiveData    searchResult;
   private String                     lastQuery;
   private final DcContext            dcContext;
-  private boolean                    queryMessages = true;
+  private boolean                    forwarding = false;
   private boolean                    inBgSearch;
   private boolean                    needsAnotherBgSearch;
 
@@ -35,8 +35,8 @@ class SearchViewModel extends ViewModel {
     return searchResult;
   }
 
-  public void includeMessageQueries(boolean include) {
-    queryMessages = include;
+  public void setForwardingMode(boolean forwarding) {
+    this.forwarding = forwarding;
   }
 
 
@@ -79,7 +79,7 @@ class SearchViewModel extends ViewModel {
 
     // #1 search for chats
     long startMs = System.currentTimeMillis();
-    DcChatlist conversations = dcContext.getChatlist(0, query, 0);
+    DcChatlist conversations = dcContext.getChatlist(forwarding? DcContext.DC_GCL_FOR_FORWARDING : 0, query, 0);
     overallCnt += conversations.getCnt();
     Log.i(TAG, "⏰ getChatlist(" + query + "): " + (System.currentTimeMillis() - startMs) + "ms");
 
@@ -96,7 +96,7 @@ class SearchViewModel extends ViewModel {
     Log.i(TAG, "⏰ getContacts(" + query + "): " + (System.currentTimeMillis() - startMs) + "ms");
 
     // #3 search for messages
-    if (!queryMessages) {
+    if (forwarding) {
       Log.i(TAG, "... searchMsgs() disabled by caller");
       callback.onResult(new SearchResult(query, contacts, conversations, new int[0]));
       return;

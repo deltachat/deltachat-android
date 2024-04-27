@@ -35,17 +35,14 @@ import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
 import java.lang.ref.WeakReference;
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.Locale;
-import java.util.Set;
 
 /**
  * A CursorAdapter for building a list of conversation threads.
  *
  * @author Moxie Marlinspike
  */
-class ConversationListAdapter extends RecyclerView.Adapter {
+class ConversationListAdapter extends BaseConversationListAdapter<ConversationListAdapter.ViewHolder> {
 
   private static final int MESSAGE_TYPE_SWITCH_ARCHIVE = 1;
   private static final int MESSAGE_TYPE_THREAD         = 2;
@@ -58,9 +55,6 @@ class ConversationListAdapter extends RecyclerView.Adapter {
   private final @NonNull  Locale               locale;
   private final @NonNull  LayoutInflater       inflater;
   private final @Nullable ItemClickListener    clickListener;
-
-  private final Set<Long> batchSet  = Collections.synchronizedSet(new HashSet<Long>());
-  private       boolean   batchMode = false;
 
   protected static class ViewHolder extends RecyclerView.ViewHolder {
     public <V extends View & BindableConversationListItem> ViewHolder(final @NonNull V itemView)
@@ -99,8 +93,9 @@ class ConversationListAdapter extends RecyclerView.Adapter {
     setHasStableIds(true);
   }
 
+  @NonNull
   @Override
-  public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+  public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
     if (viewType == MESSAGE_TYPE_SWITCH_ARCHIVE) {
       final ConversationListItem item = (ConversationListItem)inflater.inflate(R.layout.conversation_list_item_view, parent, false);
       item.getLayoutParams().height = ViewUtil.dpToPx(54);
@@ -131,16 +126,15 @@ class ConversationListAdapter extends RecyclerView.Adapter {
   }
 
   @Override
-  public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int i) {
+  public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
     Context context = this.context.get();
     if (context == null) {
       return;
     }
 
-    ViewHolder holder = (ViewHolder)viewHolder;
     DcChat chat = dcContext.getChat(dcChatlist.getChatId(i));
     DcLot summary = dcChatlist.getSummary(i, chat);
-    holder.getItem().bind(DcHelper.getThreadRecord(context, summary, chat), dcChatlist.getMsgId(i), summary, glideRequests, locale, batchSet, batchMode);
+    viewHolder.getItem().bind(DcHelper.getThreadRecord(context, summary, chat), dcChatlist.getMsgId(i), summary, glideRequests, locale, batchSet, batchMode);
   }
 
   @Override
@@ -156,36 +150,15 @@ class ConversationListAdapter extends RecyclerView.Adapter {
     }
   }
 
-  void toggleThreadInBatchSet(long threadId) {
-    if (batchSet.contains(threadId)) {
-      batchSet.remove(threadId);
-    } else if (threadId != -1) {
-      batchSet.add(threadId);
-    }
-  }
-
-  Set<Long> getBatchSelections() {
-    return batchSet;
-  }
-
-  void initializeBatchMode(boolean toggle) {
-    this.batchMode = toggle;
-    unselectAllThreads();
-  }
-
-  private void unselectAllThreads() {
-    this.batchSet.clear();
-    this.notifyDataSetChanged();
-  }
-
-  void selectAllThreads() {
+  @Override
+  public void selectAllThreads() {
     for (int i = 0; i < dcChatlist.getCnt(); i++) {
       long threadId = dcChatlist.getChatId(i);
       if (threadId > DcChat.DC_CHAT_ID_LAST_SPECIAL) {
         batchSet.add(threadId);
       }
     }
-    this.notifyDataSetChanged();
+    notifyDataSetChanged();
   }
 
   interface ItemClickListener {
