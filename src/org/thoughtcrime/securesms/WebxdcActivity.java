@@ -275,7 +275,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     if (url.startsWith("mailto:") || url.startsWith("openpgp4fpr:")) {
       return super.openOnlineUrl(url);
     }
-    return false; // continue loading in the WebView
+    return !internetAccess; // returning `false` continues loading in WebView; returning `true` let WebView abort loading
   }
 
   @Override
