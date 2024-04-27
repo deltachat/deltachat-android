@@ -266,7 +266,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     }
   }
 
-  // This is only called when internetAccess == true or for mailto/openpgp4fpr scheme,
+  // This is usually only called when internetAccess == true or for mailto/openpgp4fpr scheme,
   // because when internetAccess == false, the page is loaded inside an iframe,
   // and WebViewClient.shouldOverrideUrlLoading is not called for HTTP(S) links inside the iframe
   @Override
