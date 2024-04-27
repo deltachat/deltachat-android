@@ -266,18 +266,16 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     }
   }
 
+  // This is usually only called when internetAccess == true or for mailto/openpgp4fpr scheme,
+  // because when internetAccess == false, the page is loaded inside an iframe,
+  // and WebViewClient.shouldOverrideUrlLoading is not called for HTTP(S) links inside the iframe
   @Override
   protected boolean openOnlineUrl(String url) {
-    if (internetAccess) {
-      // internet access enabled, continue loading in the WebView
-      return false;
-    }
-    if (url.startsWith("mailto:")) {
+    Log.i(TAG, "openOnlineUrl: " + url);
+    if (url.startsWith("mailto:") || url.startsWith("openpgp4fpr:")) {
       return super.openOnlineUrl(url);
     }
-
-    Toast.makeText(this, "Please embed needed resources.", Toast.LENGTH_LONG).show();
-    return true; // returning `true` causes the WebView to abort loading
+    return !internetAccess; // returning `false` continues loading in WebView; returning `true` let WebView abort loading
   }
 
   @Override
