@@ -396,9 +396,8 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
         .setIntents(getWebxdcIntentWithParentStack(context, msgId))
         .build();
 
-      if (ShortcutManagerCompat.requestPinShortcut(context, shortcutInfoCompat, null)) {
-        Toast.makeText(context, R.string.done, Toast.LENGTH_SHORT).show();
-      } else {
+      Toast.makeText(context, R.string.one_moment, Toast.LENGTH_SHORT).show();
+      if (!ShortcutManagerCompat.requestPinShortcut(context, shortcutInfoCompat, null)) {
         Toast.makeText(context, "ErrAddToHomescreen: requestPinShortcut() failed", Toast.LENGTH_LONG).show();
       }
     } catch(Exception e) {
