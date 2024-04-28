@@ -65,7 +65,6 @@ public class KeyboardAwareLinearLayout extends LinearLayoutCompat {
 
   private boolean keyboardOpen = false;
   private int     rotation     = 0;
-  private boolean isBubble     = false;
   private long    openedAt     = 0;
 
   public KeyboardAwareLinearLayout(Context context) {
@@ -93,10 +92,6 @@ public class KeyboardAwareLinearLayout extends LinearLayoutCompat {
     updateRotation();
     updateKeyboardState();
     super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-  }
-
-  public void setIsBubble(boolean isBubble) {
-    this.isBubble = isBubble;
   }
 
   private void updateRotation() {
@@ -237,40 +232,23 @@ public class KeyboardAwareLinearLayout extends LinearLayoutCompat {
   }
 
   private int getKeyboardLandscapeHeight() {
-    if (isBubble) {
-      return getRootView().getHeight() - minCustomKeyboardTopMarginLandscapeBubble;
-    }
-
     int keyboardHeight = PreferenceManager.getDefaultSharedPreferences(getContext())
                                           .getInt("keyboard_height_landscape", defaultCustomKeyboardSize);
     return Util.clamp(keyboardHeight, minCustomKeyboardSize, getRootView().getHeight() - minCustomKeyboardTopMarginLandscape);
   }
 
   private int getKeyboardPortraitHeight() {
-    if (isBubble) {
-      int height = getRootView().getHeight();
-      return height - (int)(height * 0.45);
-    }
-
     int keyboardHeight = PreferenceManager.getDefaultSharedPreferences(getContext())
                                           .getInt("keyboard_height_portrait", defaultCustomKeyboardSize);
     return Util.clamp(keyboardHeight, minCustomKeyboardSize, getRootView().getHeight() - minCustomKeyboardTopMarginPortrait);
   }
 
   private void setKeyboardPortraitHeight(int height) {
-    if (isBubble) {
-      return;
-    }
-
     PreferenceManager.getDefaultSharedPreferences(getContext())
                      .edit().putInt("keyboard_height_portrait", height).apply();
   }
 
   private void setKeyboardLandscapeHeight(int height) {
-    if (isBubble) {
-      return;
-    }
-
     PreferenceManager.getDefaultSharedPreferences(getContext())
                      .edit().putInt("keyboard_height_landscape", height).apply();
   }
