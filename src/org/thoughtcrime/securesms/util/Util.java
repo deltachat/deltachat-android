@@ -48,10 +48,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.security.SecureRandom;
 import java.text.DecimalFormat;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Objects;
 import java.util.concurrent.CountDownLatch;
 
@@ -166,16 +164,6 @@ public class Util {
     }
 
     return success;
-  }
-
-  public static byte[] getSecretBytes(int size) {
-    byte[] secret = new byte[size];
-    getSecureRandom().nextBytes(secret);
-    return secret;
-  }
-
-  public static SecureRandom getSecureRandom() {
-    return new SecureRandom();
   }
 
   public static boolean isMainThread() {
