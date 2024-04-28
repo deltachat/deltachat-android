@@ -1018,12 +1018,6 @@ JNIEXPORT jboolean Java_com_b44t_messenger_DcContext_setLocation(JNIEnv *env, jo
 }
 
 
-JNIEXPORT jlong Java_com_b44t_messenger_DcContext_getLocationsCPtr(JNIEnv *env, jobject obj, jint chat_id, jint contact_id, jlong timestamp_start, jlong timestamp_end)
-{
-    return (jlong)dc_get_locations(get_dc_context(env, obj), chat_id, contact_id, CTIMESTAMP(timestamp_start), CTIMESTAMP(timestamp_end));
-}
-
-
 JNIEXPORT void Java_com_b44t_messenger_DcContext_deleteAllLocations(JNIEnv *env, jobject obj)
 {
     dc_delete_all_locations(get_dc_context(env, obj));
@@ -1125,91 +1119,6 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcEvent_getData2Str(JNIEnv *env, jobje
 JNIEXPORT jint Java_com_b44t_messenger_DcEvent_getAccountId(JNIEnv *env, jobject obj)
 {
     return (jint)dc_event_get_account_id(get_dc_event(env, obj));
-}
-
-
-/*******************************************************************************
- * DcArray
- ******************************************************************************/
-
-
-static dc_array_t* get_dc_array(JNIEnv *env, jobject obj)
-{
-    static jfieldID fid = 0;
-    if (fid==0) {
-        jclass cls = (*env)->GetObjectClass(env, obj);
-        fid = (*env)->GetFieldID(env, cls, "arrayCPtr", "J" /*Signature, J=long*/);
-    }
-    if (fid) {
-        return (dc_array_t*)(*env)->GetLongField(env, obj, fid);
-    }
-    return NULL;
-}
-
-
-JNIEXPORT void Java_com_b44t_messenger_DcArray_unrefArrayCPtr(JNIEnv *env, jobject obj)
-{
-    dc_array_unref(get_dc_array(env, obj));
-}
-
-
-JNIEXPORT jint Java_com_b44t_messenger_DcArray_getCnt(JNIEnv *env, jobject obj)
-{
-    return dc_array_get_cnt(get_dc_array(env, obj));
-}
-
-
-JNIEXPORT jfloat Java_com_b44t_messenger_DcArray_getLatitude(JNIEnv *env, jobject obj, jint index)
-{
-    return (jfloat)dc_array_get_latitude(get_dc_array(env, obj), index);
-}
-
-
-JNIEXPORT jfloat Java_com_b44t_messenger_DcArray_getLongitude(JNIEnv *env, jobject obj, jint index)
-{
-    return (jfloat)dc_array_get_longitude(get_dc_array(env, obj), index);
-}
-
-
-JNIEXPORT jfloat Java_com_b44t_messenger_DcArray_getAccuracy(JNIEnv *env, jobject obj, jint index)
-{
-    return (jfloat)dc_array_get_accuracy(get_dc_array(env, obj), index);
-}
-
-
-JNIEXPORT jlong Java_com_b44t_messenger_DcArray_getTimestamp(JNIEnv *env, jobject obj, jint index)
-{
-    return JTIMESTAMP(dc_array_get_timestamp(get_dc_array(env, obj), index));
-}
-
-
-JNIEXPORT jint Java_com_b44t_messenger_DcArray_getMsgId(JNIEnv *env, jobject obj, jint index)
-{
-    return dc_array_get_msg_id(get_dc_array(env, obj), index);
-}
-
-
-JNIEXPORT jint Java_com_b44t_messenger_DcArray_getLocationId(JNIEnv *env, jobject obj, jint index)
-{
-    return dc_array_get_id(get_dc_array(env, obj), index);
-}
-
-
-JNIEXPORT jstring Java_com_b44t_messenger_DcArray_getMarker(JNIEnv *env, jobject obj, jint index)
-{
-    char* temp = dc_array_get_marker(get_dc_array(env, obj), index);
-        jstring ret = NULL;
-        if (temp) {
-            ret = JSTRING_NEW(temp);
-        }
-    dc_str_unref(temp);
-    return ret;
-}
-
-
-JNIEXPORT jboolean Java_com_b44t_messenger_DcArray_isIndependent(JNIEnv *env, jobject obj, jint index)
-{
-    return (dc_array_is_independent(get_dc_array(env, obj), index)!=0);
 }
 
 

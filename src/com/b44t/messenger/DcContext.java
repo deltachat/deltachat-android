@@ -212,7 +212,6 @@ public class DcContext {
     public native int          joinSecurejoin       (String qr);
     public native void         sendLocationsToChat  (int chat_id, int seconds);
     public native boolean      isSendingLocationsToChat(int chat_id);
-    public DcArray             getLocations         (int chat_id, int contact_id, long timestamp_start, long timestamp_end) { return new DcArray(getLocationsCPtr(chat_id, contact_id, timestamp_start, timestamp_end)); }
     public native void         deleteAllLocations   ();
     public DcProvider          getProviderFromEmailWithDns (String email) { long cptr = getProviderFromEmailWithDnsCPtr(email); return cptr!=0 ? new DcProvider(cptr) : null; }
 
@@ -250,7 +249,6 @@ public class DcContext {
     private native long getMsgCPtr       (int id);
     private native long getDraftCPtr    (int id);
     private native long getContactCPtr   (int id);
-    private native long getLocationsCPtr (int chat_id, int contact_id, long timestamp_start, long timestamp_end);
     private native long checkQrCPtr      (String qr);
     private native long getProviderFromEmailWithDnsCPtr  (String addr);
     private native long newBackupProviderCPtr();
