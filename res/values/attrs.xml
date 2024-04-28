@@ -223,23 +223,6 @@
         <attr name="conversationThumbnail_maxHeight" format="dimension" />
     </declare-styleable>
 
-    <declare-styleable name="RangeSliderView">
-        <attr name="trackTintColor" format="color|reference"/>
-        <attr name="trackHighlightTintColor" format="color|reference"/>
-        <attr name="trackHeight" format="dimension|reference"/>
-        <attr name="thumbRadius" format="dimension|reference"/>
-        <attr name="thumbOutlineSize" format="dimension|reference"/>
-        <attr name="displayTextFontSize" format="dimension|reference"/>
-        <attr name="minValue" format="integer"/>
-        <attr name="maxValue" format="integer"/>
-        <attr name="paddingLeft" format="dimension|reference"/>
-        <attr name="paddingRight" format="dimension|reference"/>
-    </declare-styleable>
-
-    <declare-styleable name="TimeRangeSlider">
-        <attr name="timeFrame" format="integer"/>
-    </declare-styleable>
-
     <declare-styleable name="QuoteView">
         <attr name="message_type" format="enum">
             <enum name="preview" value="0" />
