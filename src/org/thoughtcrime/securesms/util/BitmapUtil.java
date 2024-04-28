@@ -1,42 +1,25 @@
 package org.thoughtcrime.securesms.util;
 
-import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.ColorFilter;
 import android.graphics.ImageFormat;
-import android.graphics.Paint;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffColorFilter;
 import android.graphics.Rect;
 import android.graphics.YuvImage;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 
-import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.WorkerThread;
 import androidx.exifinterface.media.ExifInterface;
-import androidx.core.content.ContextCompat;
 import android.util.Log;
 import android.util.Pair;
-import android.view.View;
-
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.load.resource.bitmap.DownsampleStrategy;
-
-import org.thoughtcrime.securesms.mms.GlideApp;
-import org.thoughtcrime.securesms.mms.MediaConstraints;
 
 import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import javax.microedition.khronos.egl.EGL10;
@@ -267,46 +250,5 @@ public class BitmapUtil {
     egl.eglTerminate(display);
 
     return Math.min(maximumTextureSize, MAX_ALLOWED_TEXTURE_SIZE);
-  }
-
-  /**
-   * Generate a Bitmap from an Android SDK View.
-   *
-   * @param view the View to be drawn to a Bitmap
-   * @return the generated bitmap
-   */
-  public static Bitmap generate(@NonNull View view) {
-    int measureSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
-    view.measure(measureSpec, measureSpec);
-
-    int measuredWidth = view.getMeasuredWidth();
-    int measuredHeight = view.getMeasuredHeight();
-
-    view.layout(0, 0, measuredWidth, measuredHeight);
-    Bitmap bitmap = Bitmap.createBitmap(measuredWidth, measuredHeight, Bitmap.Config.ARGB_8888);
-    bitmap.eraseColor(Color.TRANSPARENT);
-    Canvas canvas = new Canvas(bitmap);
-    view.draw(canvas);
-    return bitmap;
-  }
-
-  public static Bitmap generateColoredBitmap(Context context, int colorFilter, @DrawableRes int res) {
-    Bitmap icon = getBitmap(context, res);
-    Paint paint = new Paint();
-    ColorFilter filter = new PorterDuffColorFilter(colorFilter, PorterDuff.Mode.SRC_IN);
-    paint.setColorFilter(filter);
-    Canvas canvas = new Canvas(icon);
-    canvas.drawBitmap(icon, 0, 0, paint);
-    return icon;
-  }
-
-  private static Bitmap getBitmap(Context context, @DrawableRes int res) {
-    Drawable drawable = ContextCompat.getDrawable(context, res);
-    Canvas canvas = new Canvas();
-    Bitmap bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
-    canvas.setBitmap(bitmap);
-    drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
-    drawable.draw(canvas);
-    return bitmap;
   }
 }
