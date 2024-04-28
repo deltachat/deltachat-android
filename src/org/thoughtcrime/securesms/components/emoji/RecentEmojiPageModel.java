@@ -102,13 +102,4 @@ public class RecentEmojiPageModel implements EmojiPageModel {
       }
     }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
   }
-
-  private String[] toReversePrimitiveArray(@NonNull LinkedHashSet<String> emojiSet) {
-    String[] emojis = new String[emojiSet.size()];
-    int i = emojiSet.size() - 1;
-    for (String emoji : emojiSet) {
-      emojis[i--] = emoji;
-    }
-    return emojis;
-  }
 }

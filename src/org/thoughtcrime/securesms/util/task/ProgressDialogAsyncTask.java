@@ -31,10 +31,6 @@ public abstract class ProgressDialogAsyncTask<Params, Progress, Result> extends 
     this.onCancelListener = onCancelListener;
   }
 
-  public ProgressDialogAsyncTask(Context context, int title, int message) {
-    this(context, context.getString(title), context.getString(message));
-  }
-
   @Override
   protected void onPreExecute() {
     final Context context = contextReference.get();
