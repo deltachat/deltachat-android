@@ -434,6 +434,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
       return WebxdcActivity.this.dcContext.getConfig("addr");
     }
 
+    /** @noinspection unused*/
     @JavascriptInterface
     public String selfName() {
       String name = WebxdcActivity.this.dcContext.getConfig("displayname");
@@ -443,6 +444,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
       return name;
     }
 
+    /** @noinspection unused*/
     @JavascriptInterface
     public boolean sendStatusUpdate(String payload, String descr) {
       Log.i(TAG, "sendStatusUpdate");
@@ -458,12 +460,14 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
       return true;
     }
 
+    /** @noinspection unused*/
     @JavascriptInterface
     public String getStatusUpdates(int lastKnownSerial) {
       Log.i(TAG, "getStatusUpdates");
       return WebxdcActivity.this.dcContext.getWebxdcStatusUpdates(WebxdcActivity.this.dcAppMsg.getId(), lastKnownSerial    );
     }
 
+    /** @noinspection unused*/
     @JavascriptInterface
     public String sendToChat(String message) {
       Log.i(TAG, "sendToChat");
