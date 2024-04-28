@@ -907,6 +907,7 @@
     <string name="load_qr_code_as_image">Carica il Codice QR come immagine</string>
     <string name="qrscan_title">Scansiona Codice QR</string>
     <string name="qrscan_hint">Posiziona la camera sopra il codice QR</string>
+    <string name="qrscan_hint_desktop">Sposta il codice QR sulla fotocamera</string>
     <string name="qrscan_failed">Impossibile decodificare il codice QR</string>
     <string name="qrscan_ask_join_group">Vuoi entrare nel gruppo \"%1$s\"?</string>
     <string name="qrscan_fingerprint_mismatch">Il codice scansionato non corrisponde all\'ultimo conosciuto per %1$s</string>
