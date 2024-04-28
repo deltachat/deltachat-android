@@ -2,10 +2,7 @@ package org.thoughtcrime.securesms.qr;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -30,11 +27,7 @@ import org.thoughtcrime.securesms.components.ScaleStableImageView;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.util.DynamicTheme;
-import org.thoughtcrime.securesms.util.FileProviderUtil;
 import org.thoughtcrime.securesms.util.Util;
-
-import java.io.File;
-import java.io.FileOutputStream;
 
 public class QrShowFragment extends Fragment implements DcEventCenter.DcEventDelegate {
 
@@ -101,33 +94,6 @@ public class QrShowFragment extends Fragment implements DcEventCenter.DcEventDel
       // see https://github.com/deltachat/deltachat-core-rust/pull/2815#issuecomment-978067378 ,
       // suggestions welcome :)
       return svg.replace("y=\"281.136\"", "y=\"296\"");
-    }
-
-    public void shareQr() {
-        try {
-            File file = new File(getActivity().getExternalCacheDir(), "share-qr.png");
-            file.createNewFile();
-            file.setReadable(true, false);
-            FileOutputStream stream = new FileOutputStream(file);
-            Bitmap bitmap = Bitmap.createBitmap(WIDTH, HEIGHT, Bitmap.Config.ARGB_8888);
-            Canvas canvas = new Canvas(bitmap);
-            canvas.drawARGB(0,255, 255, 255);  // Clear background to white
-            SVG svg = SVG.getFromString(fixSVG(dcContext.getSecurejoinQrSvg(chatId)));
-            svg.renderToCanvas(canvas);
-            bitmap.compress(Bitmap.CompressFormat.PNG, 90, stream);
-            stream.flush();
-            stream.close();
-            Uri uri = FileProviderUtil.getUriFor(getActivity(), file);
-            Intent intent = new Intent(Intent.ACTION_SEND);
-            intent.setType("image/png");
-            intent.putExtra(Intent.EXTRA_STREAM, uri);
-            String inviteURL = Util.QrDataToInviteURL(dcContext.getSecurejoinQr(chatId));
-            intent.putExtra(Intent.EXTRA_TEXT, inviteURL);
-            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            startActivity(Intent.createChooser(intent, getString(R.string.chat_share_with_title)));
-        } catch (Exception e) {
-            Log.e(TAG, "failed to share QR", e);
-        }
     }
 
     public void shareInviteURL() {
