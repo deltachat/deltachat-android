@@ -65,8 +65,9 @@ public class QrCodeHandler {
                 break;
 
             case DcContext.DC_QR_ACCOUNT:
-                String domain = qrParsed.getText1();
-                builder.setMessage(activity.getString(R.string.qraccount_ask_create_and_login_another, domain));
+            case DcContext.DC_QR_LOGIN:
+                final String scope = qrParsed.getText1();
+                builder.setMessage(activity.getString(qrParsed.getState() == DcContext.DC_QR_ACCOUNT ? R.string.qraccount_ask_create_and_login_another : R.string.qrlogin_ask_login_another, scope));
                 builder.setPositiveButton(R.string.ok, (dialog, which) -> {
                     AccountManager.getInstance().addAccountFromQr(activity, rawString);
                 });
@@ -87,16 +88,6 @@ public class QrCodeHandler {
                 alertDialog.show();
                 BackupTransferActivity.appendSSID(activity, alertDialog.findViewById(android.R.id.message));
                 return;
-
-            case DcContext.DC_QR_LOGIN:
-                String email = qrParsed.getText1();
-                builder.setMessage(activity.getString(R.string.qrlogin_ask_login_another, email));
-                builder.setPositiveButton(R.string.ok, (dialog, which) -> {
-                    AccountManager.getInstance().addAccountFromQr(activity, rawString);
-                });
-                builder.setNegativeButton(R.string.cancel, null);
-                builder.setCancelable(false);
-                break;
 
             case DcContext.DC_QR_WEBRTC:
                 builder.setMessage(activity.getString(R.string.videochat_instance_from_qr, qrParsed.getText1()));
