@@ -356,8 +356,6 @@
         android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize">
     </activity>
 
-    <activity android:name=".map.MapActivity" />
-
     <service android:name=".connect.KeepAliveService" android:enabled="true" />
 
     <service android:name=".geolocation.LocationBackgroundService"  />
