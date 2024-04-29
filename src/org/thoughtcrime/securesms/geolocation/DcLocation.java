@@ -4,11 +4,6 @@ import android.location.Location;
 
 import java.util.Observable;
 
-
-/**
- * Created by cyberta on 06.03.19.
- */
-
 public class DcLocation extends Observable {
     private Location lastLocation;
     private static DcLocation instance;

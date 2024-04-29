@@ -1018,12 +1018,6 @@ JNIEXPORT jboolean Java_com_b44t_messenger_DcContext_setLocation(JNIEnv *env, jo
 }
 
 
-JNIEXPORT void Java_com_b44t_messenger_DcContext_deleteAllLocations(JNIEnv *env, jobject obj)
-{
-    dc_delete_all_locations(get_dc_context(env, obj));
-}
-
-
 JNIEXPORT jlong Java_com_b44t_messenger_DcContext_getProviderFromEmailWithDnsCPtr(JNIEnv *env, jobject obj, jstring email)
 {
     CHAR_REF(email);
