@@ -270,8 +270,6 @@
     <string name="device_talk">设备消息</string>
     <string name="device_talk_subtitle">本地生成的消息</string>
     <string name="device_talk_explain">此聊天中的消息是由 Delta Chat 应用本地生成的。 它的制作者使用它来通知应用更新和使用过程中出现的问题。</string>
-    <!-- deprecated, use device_talk_welcome_message2 instead -->
-    <string name="device_talk_welcome_message">欢迎使用 Delta Chat！ – Delta Chat 看起来、用起来就跟其他流行的通讯应用一样，但是却不涉及中心化的控制、跟踪以及将您、朋友、同事或家庭出卖给大型组织。\n\n从技术上来说，Delta Chat 是具有现代聊天界面的电子邮件应用程序。若您愿意，电子邮件将装扮一新👻\n\n与数十亿人中的任何人一起使用 Delta Chat：只需使用他们的电子邮件地址即可。收件人不需要安装 Delta Chat、访问网站或是在什么地方注册 - 当然，如果他们愿意，您可以指给他们👉 https://get.delta.chat</string>
     <string name="device_talk_welcome_message2">取得联系！\n\n🙌 轻按两台设备主屏上的“二维码”。 在其中一台设备上选择“扫描二维码”，并将其对准另一台设备上显示的二维码\n\n🌍 如果双方不在同一个房间内，可以通过视频通话进行扫描，或从“扫描二维码”那里分享一个邀请链接\n\n接下来： 通过有史以来存在的最大去中心化网络：电子邮件来享受收发消息。和其他流行的即时聊天应用相比，DeltaChat 没有中央控制，不跟踪您本人、您的好友、同事或家人，也不售卖你们的数据给大型组织。</string>
     <string name="edit_contact">编辑联系人</string>
     <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
@@ -395,8 +393,6 @@
     <string name="retry_send">尝试重发消息</string>
     <!-- reasons for a disabled message composer -->
     <string name="messaging_disabled_not_in_group">您必须在此群组之中才能发送消息。要加入，请询问其他成员。</string>
-    <!-- deprecated, the line is removed on desktop (was never used on other OS) -->
-    <string name="messaging_disabled_device_chat">此聊天用于本地生成的消息。您不能在这里编写消息。</string>
     <string name="messaging_disabled_mailing_list">尚不支持在邮件列表中发送消息</string>
     <string name="cannot_display_unsuported_file_type">无法显示此类文件：%s</string>
     <string name="attachment_failed_to_load">加载附件失败</string>
@@ -533,7 +529,6 @@
     <string name="part_of_total_used">已使用 %1$s，共 %2$s</string>
 
 
-    <!-- welcome and login -->
     <string name="welcome_chat_over_email">通过电子邮件聊天。</string>
     <string name="scan_invitation_code">扫描邀请码</string>
     <string name="login_title">登录</string>
@@ -906,8 +901,6 @@
     <string name="qrshow_join_contact_no_connection_toast">没有互联网连接，无法进行二维码设置。</string>
     <string name="qraccount_ask_create_and_login">在“%1$s”创建新的电子邮件地址并登录？</string>
     <string name="qraccount_ask_create_and_login_another">在“%1$s”创建新的电子邮件地址并登录？\n\n已存在的账户不会被删除。使用“切换账户”来在账户之间切换。</string>
-    <!-- deprecated, use set_name_and_avatar_explain instead -->
-    <string name="qraccount_success_enter_name">登录成功——电子邮件地址是 %1$s\n\n如果您愿意，您现在可以去设置一个名称和个人资料图片。它们将显示给您发消息到的人。</string>
     <string name="set_name_and_avatar_explain">设置一个你的联系人认得出的名字。你还可以设置头像图片</string>
     <string name="please_enter_name">请输入名字</string>
     <string name="qraccount_qr_code_cannot_be_used">无法使用扫描到的二维码建立新账户。</string>
@@ -1092,9 +1085,6 @@
 
 
     <!-- device messages for updates -->
-    <string name="update_1_42_common">新变化\n\n💌 对引入的联系人，一对一聊天确保端到端加密\n\n😌 为了方便识别，这样的联系人和聊天会带有绿色钩形符号\n\n👥 如果可能，自动创建确保端到端加密的群\n\n🔄 在所有设备间同步接受/拦截、存档、固定、静音</string>
-    <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
-    <string name="update_1_42_android">留心相机、语音消息、backup-all、屏幕阅读器、不同账户壁纸、图库全选、webxdc landscape 等方面的更多改进… 或访问 %1$s 进行了解</string>
     <string name="update_1_44_android">变化：\n\n❤️ 耶！等待已久的功能来了： 长按消息做出反应\n\n🔗 如果你无法扫描二维码，将它们分享为邀请链接\n\n🔵 计算所有账户的未读消息并显示在标题中\n\n… 以及修复许多 bug … %1$s\n\n帮助改进应用：使用”设置/高级、发送统计数据\" 帮助开发者为实际使用而更好地优化。发送前你可以查看数据</string>
     <string name="update_1_44_ios">变化：\n\n❤️ 耶！等待已久的功能来了：长按消息做出反应\n\n🫸 支持PUSH 通知，不过需要提供商像 https://nine.testrun.org 一样支持该功能\n\n🔗 如果你无法扫描二维码，将它们分享为邀请链接\n\n… 以及修复许多 bug … %1$s</string>
 </resources>

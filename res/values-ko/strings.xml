@@ -241,8 +241,6 @@
     <string name="device_talk">기기 메시지</string>
     <string name="device_talk_subtitle">로컬에서 생성된 메시지</string>
     <string name="device_talk_explain">이 채팅의 메시지는 델타 채팅 앱에서 로컬로 생성됩니다. 제작자는 이것을 앱 업데이트와 사용 중 발생하는 문제에 대해 알리기 위해 사용한다.</string>
-    <!-- deprecated, use device_talk_welcome_message2 instead -->
-    <string name="device_talk_welcome_message">Delta Chat에 오신 것을 환영합니다! – Delta Chat은 다른 인기 있는 메신저 앱처럼 보여지지만, 여러분, 친구, 동료 또는 가족을 중앙 집중식으로 관리하거나 대규모 조직에 판매하지는 않습니다.\n\n기술적으로, Delta Chat은 현대적인 채팅 인터페이스를 갖춘 이메일 애플리케이션입니다. 👻\n\n 수십 억 명 중 누구와도 델타 채팅을 사용하려면 새 드레스로 이메일을 보내십시오: 이메일 주소를 사용하십시오. 수신자는 Delta Chat을 설치하거나 웹 사이트를 방문하거나 아무 곳에서나 등록할 필요가 없습니다. 하지만 원하는 경우 👉 https://get.delta.chat 을 선택할 수 있습니다.</string>
     <string name="edit_contact">연락처 수정</string>
     <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
     <string name="pin_chat">채팅 고정</string>
@@ -361,8 +359,6 @@
     <string name="retry_send">메시지 전송 다시 시도</string>
     <!-- reasons for a disabled message composer -->
     <string name="messaging_disabled_not_in_group">이 그룹에 속해 있지 않기 때문에 쓸 수 없습니다. 가입하려면, 다른 구성원에게 문의하십시오.</string>
-    <!-- deprecated, the line is removed on desktop (was never used on other OS) -->
-    <string name="messaging_disabled_device_chat">이 대화는 로컬에서 생성된 메시지를 포함합니다. 따라서 메시지를 쓸 수 없습니다.</string>
     <string name="messaging_disabled_mailing_list">메일링 목록의 메시지 발송은 아직 지원되지 않습니다.</string>
     <string name="cannot_display_unsuported_file_type">파일 형식을 표시할 수 없습니다: %s</string>
     <string name="attachment_failed_to_load">첨부 파일을 불러오지 못했습니다.</string>
@@ -455,7 +451,6 @@
     <string name="part_of_total_used">%2$s중 %1$s 사용됨</string>
 
 
-    <!-- welcome and login -->
     <string name="welcome_chat_over_email">이메일로 채팅.</string>
     <string name="scan_invitation_code">초대 코드 스캔</string>
     <string name="login_title">로그인</string>
@@ -775,8 +770,6 @@
     <string name="qrshow_join_contact_no_connection_toast">인터넷에 연결되어 있지 않아 QR 코드 설정을 수행할 수 없습니다.</string>
     <string name="qraccount_ask_create_and_login">\"%1$s\"에서 새 이메일 주소를 만들고 로그인하시겠습니까?</string>
     <string name="qraccount_ask_create_and_login_another">\"%1$s\"에서 새 이메일 주소를 만들고 로그인하시겠습니까?\n\n기존 계정은 삭제되지 않습니다. 계정 전환 항목을 사용하여 계정 간을 전환합니다.</string>
-    <!-- deprecated, use set_name_and_avatar_explain instead -->
-    <string name="qraccount_success_enter_name">로그인 성공—이메일 주소는 %1$s입니다 \n\n원하는 경우, 이제 다름 사람에게 표시할 이름과 프로필 이미지를 입력할 수 있습니다.</string>
     <string name="qraccount_qr_code_cannot_be_used">스캔한 QR 코드를 사용하여 새 계정을 설정할 수 없습니다.</string>
     <string name="qraccount_use_on_new_install">스캔한 QR 코드는 새 계정을 설정하기 위한 것입니다. 새 델타 채팅 설치를 설정할 때 QR 코드를 스캔할 수 있습니다.</string>
     <!-- the placeholder will be replaced by the e-mail address of the account -->

@@ -265,8 +265,6 @@
     <string name="device_talk">Mesajele Dispozitivului</string>
     <string name="device_talk_subtitle">Mesaje generate la nivel local</string>
     <string name="device_talk_explain">Mesajele din acest chat sunt generate pe dispozitivul dumneavoastră pentru a vă informa cu privire la actualizările app-ului și la problemele apărute în timpul utilizării.</string>
-    <!-- deprecated, use device_talk_welcome_message2 instead -->
-    <string name="device_talk_welcome_message">Bine ați venit la Delta Chat! - Delta Chat arată și se simte ca și alte app-uri populare de mesagerie, dar nu implică control centralizat, urmărire sau vânzarea dumneavoastră, a prietenilor, colegilor sau a familiei către organizații mari.\n\nTehnic, Delta Chat este o aplicație de e-mail cu o interfață de chat modernă. E-mail într-o rochie nouă, dacă vreți 👻\n\nUtilizați Delta Chat cu oricine din miliardele de oameni: folosiți doar adresa lor de e-mail. Destinatarii nu trebuie să instaleze Delta Chat, să viziteze site-uri web sau să se înregistreze nicăieri - totuși, desigur, dacă doresc, le puteți indica 👉 https://get.delta.chat.</string>
     <string name="edit_contact">Editați Contactul</string>
     <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
     <string name="pin_chat">Fixați Chat</string>
@@ -400,8 +398,6 @@
     <string name="retry_send">Reîncercarea de a trimite mesajul</string>
     <!-- reasons for a disabled message composer -->
     <string name="messaging_disabled_not_in_group">Trebuie să fiți în acest grup pentru a posta un mesaj. Pentru a vă alătura, întrebați un alt membru.</string>
-    <!-- deprecated, the line is removed on desktop (was never used on other OS) -->
-    <string name="messaging_disabled_device_chat">Acest chat conține mesaje generate local; scrierea este dezactivată.</string>
     <string name="messaging_disabled_mailing_list">Trimiterea de mesaje în listele de discuții nu este încă acceptată.</string>
     <string name="cannot_display_unsuported_file_type">Nu se poate afișa acest tip de fișier: %s</string>
     <string name="attachment_failed_to_load">Nu s-a reușit încărcarea atașamentului</string>
@@ -526,7 +522,6 @@
     <string name="part_of_total_used">%1$s de %2$s folosit</string>
 
 
-    <!-- welcome and login -->
     <string name="welcome_chat_over_email">Chat prin e-mail.</string>
     <string name="scan_invitation_code">Scanați Codul Invitației</string>
     <string name="login_title">Autentificare</string>

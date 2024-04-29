@@ -249,8 +249,6 @@
     <string name="device_talk">Μηνύματα Συσκευής</string>
     <string name="device_talk_subtitle">Τοπικά Μηνύματα</string>
     <string name="device_talk_explain">Τα μηνύματα σε αυτήν τη συνομιλία δημιουργούνται στη συσκευή σας για την ενημέρωση σχετικά με ενημερώσεις και προβλήματα κατά τη χρήση της εφαρμογής</string>
-    <!-- deprecated, use device_talk_welcome_message2 instead -->
-    <string name="device_talk_welcome_message">Καλώς ήρθατε στο Delta Chat! – Το Delta Chat μοιάζει με άλλες δημοφιλείς εφαρμογές επικοινωνίας, αλλά δεν περιλαμβάνει κεντρικό έλεγχο, παρακολούθηση ή πώληση σε εσάς, φίλους, συναδέλφους ή την οικογένειά σας σε μεγάλους οργανισμούς.\n\nΤεχνικά, το Delta Chat είναι μια εφαρμογή ηλεκτρονικού ταχυδρομείου με σύγχρονη διεπαφή συνομιλίας. E-mail με νέο φόρεμα 👻\n\nΧρησιμοποιήστε το Delta Chat με οποιονδήποτε από τα δισεκατομμύρια άτομα: απλώς χρησιμοποιήστε τη διεύθυνση ηλεκτρονικού ταχυδρομείου τους. Οι παραλήπτες δεν χρειάζεται να εγκαταστήσουν το Delta Chat, να επισκεφτούν ιστότοπους ή να εγγραφούν οπουδήποτε - ωστόσο, φυσικά, αν θέλουν, μπορείτε να τους υποδείξετε στο 👉 https://get.delta.chat</string>
     <string name="edit_contact">Επεξεργασία Επαφής</string>
     <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
     <string name="pin_chat">Καρφίτσωμα Συνομιλίας</string>
@@ -377,8 +375,6 @@
     <string name="retry_send">Ξαναπροσπαθήστε να στείλετε μήνυμα</string>
     <!-- reasons for a disabled message composer -->
     <string name="messaging_disabled_not_in_group">Πρέπει να είστε σε αυτήν την ομάδα για να δημοσιεύσετε ένα μήνυμα. Για να συμμετέχετε, ζητήστε από ένα άλλο μέλος.</string>
-    <!-- deprecated, the line is removed on desktop (was never used on other OS) -->
-    <string name="messaging_disabled_device_chat">Αυτή η συνομιλία περιέχει μηνύματα που δημιουργούνται τοπικά. Η γραφή είναι απενεργοποιημένη.</string>
     <string name="messaging_disabled_mailing_list">Η αποστολή μηνυμάτων σε λίστες αλληλογραφίας δεν υποστηρίζεται ακόμη</string>
     <string name="cannot_display_unsuported_file_type">Δεν είναι δυνατή η εμφάνιση αυτού του τύπου αρχείου: %s</string>
     <string name="attachment_failed_to_load">Αποτυχία φόρτωσης συνημμένου</string>
@@ -476,7 +472,6 @@
     <string name="part_of_total_used">%1$s από %2$s χρησιμοποιείται</string>
 
 
-    <!-- welcome and login -->
     <string name="welcome_chat_over_email">Συνομιλία μέσω E-Mail.</string>
     <string name="scan_invitation_code">Σάρωση Κωδικού Πρόσκλησης</string>
     <string name="login_title">Σύνδεση</string>
@@ -813,8 +808,6 @@
     <string name="qrshow_join_contact_no_connection_toast">Δεν υπάρχει σύνδεση στο διαδίκτυο, δεν είναι δυνατή η ρύθμιση κωδικού QR.</string>
     <string name="qraccount_ask_create_and_login">Δημιουργήστε νέα διεύθυνση e-mail στο \"%1$s\" και συνδεθείτε εκεί;</string>
     <string name="qraccount_ask_create_and_login_another">Δημιουργήστε νέα διεύθυνση e-mail στο \"%1$s\" και συνδεθείτε εκεί;\n\nΟ υπάρχων λογαριασμός σας δεν θα διαγραφεί. Χρησιμοποιήστε τη λειτουργία \"Εναλλαγή λογαριασμού\" για εναλλαγή μεταξύ των λογαριασμών σας.</string>
-    <!-- deprecated, use set_name_and_avatar_explain instead -->
-    <string name="qraccount_success_enter_name">Επιτυχής σύνδεση—η διεύθυνση e-mail σας είναι %1$s\n\nΑν θέλετε, μπορείτε τώρα να εισαγάγετε ένα όνομα και μια εικόνα προφίλ που θα εμφανίζονται στα άτομα στα οποία γράφετε.</string>
     <string name="qraccount_qr_code_cannot_be_used">Ο σαρωμένος κωδικός QR δεν μπορεί να χρησιμοποιηθεί για τη δημιουργία νέου λογαριασμού.</string>
     <string name="qraccount_use_on_new_install">Ο σαρωμένος κωδικός QR προορίζεται για τη δημιουργία νέου λογαριασμού. Μπορείτε να σαρώσετε τον κωδικό QR όταν ρυθμίζετε μια νέα εγκατάσταση Delta Chat.</string>
     <!-- the placeholder will be replaced by the e-mail address of the account -->

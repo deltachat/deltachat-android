@@ -270,8 +270,6 @@
     <string name="device_talk">Tin nhắn thiết bị</string>
     <string name="device_talk_subtitle">Tin nhắn được tạo cục bộ</string>
     <string name="device_talk_explain">Tin nhắn trong cuộc trò chuyện này được tạo trên thiết bị của bạn để thông báo về các bản cập nhật ứng dụng và sự cố trong quá trình sử dụng.</string>
-    <!-- deprecated, use device_talk_welcome_message2 instead -->
-    <string name="device_talk_welcome_message">Chào mừng bạn đến với Delta Chat! – Delta Chat có giao diện giống như các ứng dụng nhắn tin phổ biến khác nhưng không liên quan đến việc kiểm soát tập trung, theo dõi hoặc bán bạn, bạn bè, đồng nghiệp hoặc gia đình cho các tổ chức lớn.\n\nVề mặt kỹ thuật, Delta Chat là một ứng dụng e-mail hiện đại giao diện trò chuyện. Gửi email trong bộ váy mới nếu bạn muốn 👻\n\nSử dụng Delta Chat với bất kỳ ai trong số hàng tỷ người: chỉ cần sử dụng địa chỉ e-mail của họ. Người nhận không cần cài đặt Delta Chat, truy cập trang web hoặc đăng ký ở bất kỳ đâu - tuy nhiên, tất nhiên, nếu họ thích, bạn có thể chỉ họ tới 👉 https://get.delta.chat</string>
     <string name="edit_contact">Chỉnh sửa liên hệ</string>
     <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
     <string name="pin_chat">Ghim trò chuyện</string>
@@ -394,8 +392,6 @@
     <string name="retry_send">Thử gửi lại tin nhắn</string>
     <!-- reasons for a disabled message composer -->
     <string name="messaging_disabled_not_in_group">Bạn phải ở trong nhóm này để gửi tin nhắn. Để tham gia, hãy hỏi thành viên khác.</string>
-    <!-- deprecated, the line is removed on desktop (was never used on other OS) -->
-    <string name="messaging_disabled_device_chat">Cuộc trò chuyện này chứa các tin nhắn được tạo cục bộ; việc viết bị vô hiệu hóa.</string>
     <string name="messaging_disabled_mailing_list">Gửi tin nhắn trong danh sách gửi thư chưa được hỗ trợ</string>
     <string name="cannot_display_unsuported_file_type">Không thể hiển thị loại tệp này: %s</string>
     <string name="attachment_failed_to_load">Không tải được tệp đính kèm</string>
@@ -532,7 +528,6 @@
     <string name="part_of_total_used">%1$s trong tổng số %2$s đã được sử dụng</string>
 
 
-    <!-- welcome and login -->
     <string name="welcome_chat_over_email">Trò chuyện qua E-Mail.</string>
     <string name="scan_invitation_code">Quét mã mời</string>
     <string name="login_title">Đăng nhập</string>
@@ -890,8 +885,6 @@
     <string name="qrshow_join_contact_no_connection_toast">Không có kết nối internet, không thể thực hiện thiết lập mã QR.</string>
     <string name="qraccount_ask_create_and_login">Tạo địa chỉ email mới trên \"%1$s\" và đăng nhập vào đó?</string>
     <string name="qraccount_ask_create_and_login_another">Tạo địa chỉ email mới trên \"%1$s\" và đăng nhập vào đó?\n\nTài khoản hiện tại của bạn sẽ không bị xóa. Sử dụng mục \"Chuyển tài khoản\" để chuyển đổi giữa các tài khoản của bạn.</string>
-    <!-- deprecated, use set_name_and_avatar_explain instead -->
-    <string name="qraccount_success_enter_name">Đăng nhập thành công—địa chỉ email của bạn là %1$s\n\nNếu muốn, bây giờ bạn có thể nhập tên và ảnh hồ sơ sẽ được hiển thị cho những người mà bạn viết thư cho.</string>
     <string name="qraccount_qr_code_cannot_be_used">Mã QR được quét không thể được sử dụng để thiết lập tài khoản mới.</string>
     <string name="qraccount_use_on_new_install">Mã QR được quét là để thiết lập một tài khoản mới. Bạn có thể quét mã QR khi thiết lập cài đặt Delta Chat mới.</string>
     <!-- the placeholder will be replaced by the e-mail address of the account -->
@@ -1071,8 +1064,4 @@
     <string name="perm_enable_bg_already_done">Bạn đã cho phép Delta Chat nhận tin nhắn trong nền.\n\nNếu tin nhắn vẫn không đến trong nền, vui lòng kiểm tra cài đặt hệ thống của bạn.</string>
 
 
-    <!-- device messages for updates -->
-    <string name="update_1_42_common">Có gì mới:\n\n💌 cuộc trò chuyện một-một đảm bảo mã hóa hai đầu cho những người liên hệ được giới thiệu\n\n😌 để mọi người đơn giản, chúng tôi đánh dấu những người liên hệ và cuộc trò chuyện này bằng dấu kiểm màu xanh lá cây\n\n👥 nhóm được tạo tự động với mã hóa hai đầu được đảm bảo nếu có thể\n\n🔄 Chấp nhận/Chặn, Đã lưu trữ, Đã ghim, Tắt tiếng được đồng bộ hóa trên tất cả các thiết bị của bạn</string>
-    <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
-    <string name="update_1_42_android">Hãy chú ý đến những cải tiến khác về máy ảnh, tin nhắn thoại, sao lưu tất cả, trình đọc màn hình, hình nền cho mỗi tài khoản, chọn tất cả thư viện, phong cảnh webxdc … hoặc đọc chúng tại %1$s</string>
     </resources>

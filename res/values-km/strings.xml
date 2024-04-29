@@ -226,8 +226,6 @@
     <string name="device_talk">សារពីឧបករណ៍</string>
     <string name="device_talk_subtitle">សារដែលបានបង្កើតពីសា Delta Chat</string>
     <string name="device_talk_explain">សារក្នុងការសន្ទនានេះ បានបង្កើតទិនេះដោយ សា Delta Chat ។ អ្នកបង្កើតវា ប្រើវាដើម្បីជូនដំណឹងពីការធ្វើបច្ចុប្បន្នភាពកម្មវិធី និងបញ្ហាកំឡុងពេលប្រើ។</string>
-    <!-- deprecated, use device_talk_welcome_message2 instead -->
-    <string name="device_talk_welcome_message">ស្វាគមន៍មកកាន់ សា Delta Chat ! - សា Delta Chat មើលទៅដូចកម្មវិធីសន្ទនាពេញនិយមផ្សេងទៀតដែរ ប៉ុន្តែមិនជាប់ស្មុគស្មាញនឹងការត្រួតត្រាជាកណ្តាល តាមដាន រឺលក់អ្នក មិត្តភក្តិ មិត្តរួមការងារ រឺគ្រួសារ ទៅឲ្យអង្គការធំ។\n\nបច្ចេកទេស សា Delta Chat គឺ កម្មវិធីអុីម៉ែលជាមួយនឹងចំណុចប្រទាក់ការសន្ទនាទាន់សម័យ។ អ្នកនឹងត្រូវការតែអុីម៉េលតែប៉ុណ្ណោះ! 👻\n\nប្រើប្រាស់សាហារីសង្ឃ ជាមួយនរណាម្នាក់ក្នុងចំណោមមនុស្សរាប់ពាន់លានអ្នក: ដោយគ្រាន់តែប្រើអស័យដ្ឋានអុីម៉េលរបស់ពួកគេ។ អ្នកទទួលបានសារដោយមិនតម្រូវបញ្ជូលកម្មវិធី សា Delta Chat ទស្សនាគេហទំព័រ ឬចុះឈ្មោះសិននៅកន្លែងណាក៏បាន - ទោះបីជា ការពិតប្រសិនបើពួកគេចូលចិត្ត អ្នកអាចចង្អុរពួកគេទៅកាន់ 👉 https://get.delta.chat</string>
     <string name="edit_contact">កែសម្រួល ទំនាក់ទំនង</string>
     <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
     <string name="pin_chat">ខ្ទាស់សន្ទនា</string>
@@ -339,8 +337,6 @@
     <string name="retry_send">ព្យាយាមម្តងទៀតដើម្បីផ្ញើសារ</string>
     <!-- reasons for a disabled message composer -->
     <string name="messaging_disabled_not_in_group">អ្នកមិនអាចសរសេរ ពីព្រោះអ្នកមិននៅក្នុងក្រុមនេះ។ ដើម្បីចូលរួម សុំសមាជិកផ្សេងទៀត។</string>
-    <!-- deprecated, the line is removed on desktop (was never used on other OS) -->
-    <string name="messaging_disabled_device_chat">ការសន្ទនានេះផ្ទុកសារក្នុងតំបន់។ ដូច្នេះអ្នកមិនអាចសរសេរសារណាមួយបានទេ។</string>
     <string name="messaging_disabled_mailing_list">ការផ្ញើសារ នៅក្នុងបញ្ជីប៉ុស្តិ៍សំបុត្រ មិនទាន់ត្រូវបានគាំទ្រនៅឡើយ។</string>
     <string name="cannot_display_unsuported_file_type">មិនអាចបង្ហាញប្រភេទឯកសារនេះ៖ %s</string>
     <string name="attachment_failed_to_load">បានបរាជ័យ ក្នុងការផ្ទុកឯកសារភ្ជាប់។</string>
@@ -744,8 +740,6 @@
     <string name="qrshow_join_contact_no_connection_toast">គ្មានសេវាអុិនធ័រណេត មិនអាចអនុវត្ត ការរៀបចំកូដ QR</string>
     <string name="qraccount_ask_create_and_login">បង្កើតអស័យដ្ឋានអុីម៉េលថ្មីនៅលើ \"%1$s\" និងកត់ចូលនៅទីនោះ?</string>
     <string name="qraccount_ask_create_and_login_another">បង្កើតអស័យដ្ឋានអុីម៉េលថ្មីនៅលើ \"%1$s\" និងកត់ចូលនៅទីនោះ?\n\nគណនីរបស់អ្នកដែលមានស្រាប់ នឹងមិនត្រូវបានលុបចោលទេ។ ប្រើប្រាស់ ការ \"ឆ្លាស់ប្តូរគណនី\" ដើម្បីធាតុប្តូររវាងគណនីរបស់អ្នក។</string>
-    <!-- deprecated, use set_name_and_avatar_explain instead -->
-    <string name="qraccount_success_enter_name">កត់ចូលដោយជោគជ័យ — អស័យដ្ឋានអុីម៉េលរបស់អ្នកគឺ %1$s \n\nប្រសិនបើអ្នកចូលចិត្ត ឥលូវនេះអ្នកអាច បញ្ចូលឈ្មោះ និងរូបភាពទិន្ន័យផ្ទាល់ ដែលនឹងបានបង្ហាញទៅកាន់មនុស្សដែលអ្នកសរសេរទៅ។</string>
     <string name="qraccount_qr_code_cannot_be_used">កូដ QR ដែលបានស្គេន មិនអាចត្រូវបានប្រើប្រាស់ដើម្បីរៀបចំគណនីថ្មីមួយទេ។</string>
     <string name="qraccount_use_on_new_install">កូដ QR ដែលបានស្គេន គឺសម្រាប់ការកំណត់ឡើងនូវគណនីថ្មីមួយ។ អ្នកអាចស្គេនកូដ QR នៅពេលការកំណត់តម្លើងនូវ សា Delta Chat ។</string>
     <string name="contact_verified">%1$s បានផ្ទៀងផ្ទាត់</string>

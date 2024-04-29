@@ -284,8 +284,6 @@
     <string name="device_talk">Messages de l\'appareil</string>
     <string name="device_talk_subtitle">Messages générés localement</string>
     <string name="device_talk_explain">Les messages dans cette discussion sont générés localement par votre application Delta Chat. Cela vous permet de recevoir des informations concernant les mises à jour et problèmes rencontrés à l\'utilisation.</string>
-    <!-- deprecated, use device_talk_welcome_message2 instead -->
-    <string name="device_talk_welcome_message">Bienvenue sur Delta Chat ! – Delta Chat ressemble à d\'autres applications de messagerie populaires, mais n\'implique pas un contrôle centralisé, le traçage ou la revente de vos données, de celles de vos amis, vos collègues ou votre famille à de grandes organisations.\n\nD\'un point de vue technique, Delta Chat est une application de courrier électronique avec une interface de discussion instantanée moderne. Un courriel retoiletté si vous voulez 👻\n\nUtilisez Delta Chat avec n\'importe qui parmi des milliards de personnes : vous avez seulement besoin de leur adresse de courriel. Les destinataires n\'ont pas besoin d\'installer Delta Chat, d\'accéder à des sites internet ni de s\'inscrire où que ce soit – mais s\'ils le souhaitent, vous pouvez évidemment les diriger vers 👉 https://get.delta.chat </string>
     <string name="edit_contact">Mettre à jour le contact</string>
     <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
     <string name="pin_chat">Épingler la discussion</string>
@@ -422,8 +420,6 @@
     <string name="retry_send">Réessayer d\'envoyer le message</string>
     <!-- reasons for a disabled message composer -->
     <string name="messaging_disabled_not_in_group">Vous ne pouvez pas écrire car vous ne faites pas partie de ce groupe. Pour le rejoindre, demandez à un membre.</string>
-    <!-- deprecated, the line is removed on desktop (was never used on other OS) -->
-    <string name="messaging_disabled_device_chat">Cette discussion contient des messages générés localement. Par conséquent, l\'écriture est désactivée.</string>
     <string name="messaging_disabled_mailing_list">Envoyer des messages dans des listes de diffusion n\'est pas encore possible</string>
     <string name="cannot_display_unsuported_file_type">Impossible d\'afficher ce type de fichier : %s</string>
     <string name="attachment_failed_to_load">Échec du chargement de la pièce jointe</string>
@@ -560,7 +556,6 @@
     <string name="part_of_total_used">%1$s sur %2$s utilisé</string>
 
 
-    <!-- welcome and login -->
     <string name="welcome_chat_over_email">Messagerie instantanée par courriel.</string>
     <string name="scan_invitation_code">Scanner le code d\'invitation</string>
     <string name="login_title">Connexion</string>
@@ -915,8 +910,6 @@
     <string name="qrshow_join_contact_no_connection_toast">Pas de connexion Internet, ne peut pas effectuer la configuration du QR code.</string>
     <string name="qraccount_ask_create_and_login">Créer une nouvelle adresse de courriel sur « %1$s » et se connecter ici ?</string>
     <string name="qraccount_ask_create_and_login_another">Créer une nouvelle adresse de courriel sur « %1$s » et s\'y connecter ?\n\nVotre compte existant ne sera pas supprimé. Utilisez l\'élément de menu « Changer de compte » pour passer d\'un compte à l\'autre.</string>
-    <!-- deprecated, use set_name_and_avatar_explain instead -->
-    <string name="qraccount_success_enter_name">Connexion réussie – votre adresse de courriel est %1$s\n\nSi vous le souhaitez, vous pouvez maintenant choisir un nom et une image de profil qui seront affichés aux personnes à qui vous écrivez.</string>
     <string name="qraccount_qr_code_cannot_be_used">Le code QR scanné ne peut pas être utilisé pour ouvrir un nouveau compte.</string>
     <string name="qraccount_use_on_new_install">Le code QR scanné permet de configurer un nouveau compte. Vous pouvez scanner le code QR à la configuration d\'une nouvelle installation de Delta Chat.</string>
     <!-- the placeholder will be replaced by the e-mail address of the account -->
@@ -1096,8 +1089,4 @@
     <string name="perm_enable_bg_already_done">Vous avez déjà autorisé Delta Chat à recevoir des messages en arrière plan.\n\nSi vous ne les recevez toujours pas en arrière plan, vérifiez les paramètres de votre système.</string>
 
 
-    <!-- device messages for updates -->
-    <string name="update_1_42_common">Nouveautés :\n\n💌 Désormais, les discussions à deux garantissent le chiffrement de bout en bout avec les contacts connus.\n\n😌 Pour plus de simplicité, ces contacts et discussions sont marqués d\'un badge vert.\n\n👥 Lorsque cela est possible, les groupes créés sont automatiquement chiffrés de bout en bout.\n\n🔄 Vos listes Accepté/Bloqué, Archivé, Épinglé et Sourdine sont synchronisées sur chacun de vos appareils.</string>
-    <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
-    <string name="update_1_42_android">Encore plus d\'améliorations à suivre ! Appareil photo, messages vocaux, sauvegardes complètes, lecteur d\'écran, arrière-plan différencié pour chaque compte, option \"sélectionner tout\" dans la galerie, panorama de webxdc, etc. Sinon, retrouvez-les toutes sur : %1$s</string>
     </resources>

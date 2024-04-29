@@ -271,8 +271,6 @@
     <string name="device_talk">Mensagens desse aparelho</string>
     <string name="device_talk_subtitle">Mensagens geradas localmente</string>
     <string name="device_talk_explain">Mensagens nesta conversa são geradas localmente pelo app Delta Chat. Essas mensagens são para informar sobre atualizações do app e problemas durante seu uso.</string>
-    <!-- deprecated, use device_talk_welcome_message2 instead -->
-    <string name="device_talk_welcome_message">Bem vindo ao Delta Chat! - O Delta Chat se parece com outros aplicativos de mensagens populares, mas não envolve controle centralizado, rastreamento ou venda de você, amigos, colegas ou família para grandes organizações.\n\nTecnicamente, o Delta Chat é um aplicativo de e-mail com uma interface de bate-papo moderna. E-mail de cara nova se você 👻\n\nUtilize o Delta Chat com qualquer pessoa dentre bilhões de pessoas: basta usar o endereço de e-mail. Os destinatários não precisam instalar o Delta Chat, visitar sites ou se inscrever em qualquer lugar - no entanto, é claro, se quiserem, você pode direcioná-los para 👉 https://get.delta.chat</string>
     <string name="edit_contact">Editar contato</string>
     <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
     <string name="pin_chat">Fixar conversa</string>
@@ -406,8 +404,6 @@
     <string name="retry_send">Tentar enviar mensagem novamente</string>
     <!-- reasons for a disabled message composer -->
     <string name="messaging_disabled_not_in_group">Você não pode escrever porque não está neste grupo. Para entrar, peça a outro membro.</string>
-    <!-- deprecated, the line is removed on desktop (was never used on other OS) -->
-    <string name="messaging_disabled_device_chat">Esta conversa contém mensagens geradas localmente. Portanto, você não pode escrever nenhuma mensagem.</string>
     <string name="messaging_disabled_mailing_list">O envio de mensagens para lista de e-mails ainda não é suportado </string>
     <string name="cannot_display_unsuported_file_type">Não é possível exibir este tipo de arquivo: %s</string>
     <string name="attachment_failed_to_load">Falha ao carregar anexo</string>
@@ -537,7 +533,6 @@
     <string name="part_of_total_used">%1$s de %2$s usado</string>
 
 
-    <!-- welcome and login -->
     <string name="welcome_chat_over_email">Bate-papo por E-mail</string>
     <string name="scan_invitation_code">Escanear Código De Convite</string>
     <string name="login_title">Acessar</string>
@@ -874,8 +869,6 @@
     <string name="qrshow_join_contact_no_connection_toast">Sem conexão à rede não é possível realizar configuração por código QR.</string>
     <string name="qraccount_ask_create_and_login">Criar novo endereço de e-mail em \"%1$s\" e entrar nele?</string>
     <string name="qraccount_ask_create_and_login_another">Criar novo endereço de e-mail em \"%1$s\"  e entrar nele?\n\n nSua conta existente não será excluída. Use o item \"Trocar conta\" para alternar entre suas contas.</string>
-    <!-- deprecated, use set_name_and_avatar_explain instead -->
-    <string name="qraccount_success_enter_name">Entrada bem-sucedida - seu endereço de e-mail é %1$s\n\nSe desejar, agora você pode inserir um nome e uma imagem do perfil que será exibida para as pessoas para quem você escrever.</string>
     <string name="qraccount_qr_code_cannot_be_used">O código QR lido não pode ser usado para configurar uma nova conta.</string>
     <string name="qraccount_use_on_new_install">O código QR digitalizado é para configurar uma nova conta. Você pode ler o código QR ao configurar uma nova instalação Delta Chat.</string>
     <!-- the placeholder will be replaced by the e-mail address of the account -->
