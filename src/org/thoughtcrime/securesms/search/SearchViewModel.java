@@ -69,7 +69,7 @@ class SearchViewModel extends ViewModel {
     }
   }
 
-  private void queryAndCallback(@NonNull String query, @NonNull SearchRepository.Callback callback) {
+  private void queryAndCallback(@NonNull String query, @NonNull SearchViewModel.Callback callback) {
     int overallCnt = 0;
 
     if (TextUtils.isEmpty(query)) {
@@ -146,5 +146,9 @@ class SearchViewModel extends ViewModel {
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
       return modelClass.cast(new SearchViewModel(context));
     }
+  }
+
+  public interface Callback {
+    void onResult(@NonNull SearchResult result);
   }
 }
