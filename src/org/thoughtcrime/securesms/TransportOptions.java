@@ -88,16 +88,6 @@ public class TransportOptions {
     }
   }
 
-  private Optional<TransportOption> find(Type type) {
-    for (TransportOption option : enabledTransports) {
-      if (option.isType(type)) {
-        return Optional.of(option);
-      }
-    }
-
-    return Optional.absent();
-  }
-
   private boolean isEnabled(TransportOption transportOption) {
     for (TransportOption option : enabledTransports) {
       if (option.equals(transportOption)) return true;
