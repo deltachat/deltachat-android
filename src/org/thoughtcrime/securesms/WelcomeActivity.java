@@ -451,20 +451,11 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
             String qrRaw = scanResult.getContents();
             DcLot qrParsed = dcContext.checkQr(qrRaw);
             switch (qrParsed.getState()) {
-                case DcContext.DC_QR_LOGIN:
-                    String address = qrParsed.getText1();
-                    new AlertDialog.Builder(this)
-                            .setMessage(getString(R.string.qrlogin_ask_login, address))
-                            .setPositiveButton(R.string.ok, (dialog, which) -> startQrAccountCreation(qrRaw))
-                            .setNegativeButton(R.string.cancel, null)
-                            .setCancelable(false)
-                            .show();
-                    break;
-
                 case DcContext.DC_QR_ACCOUNT:
-                    String domain = qrParsed.getText1();
+                case DcContext.DC_QR_LOGIN:
+                    final String scope = qrParsed.getText1();
                     new AlertDialog.Builder(this)
-                            .setMessage(getString(R.string.qraccount_ask_create_and_login, domain))
+                            .setMessage(getString(qrParsed.getState() == DcContext.DC_QR_ACCOUNT ? R.string.qraccount_ask_create_and_login : R.string.qrlogin_ask_login, scope))
                             .setPositiveButton(R.string.ok, (dialog, which) -> startQrAccountCreation(qrRaw))
                             .setNegativeButton(R.string.cancel, null)
                             .setCancelable(false)
