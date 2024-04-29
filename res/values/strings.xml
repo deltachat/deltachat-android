@@ -278,8 +278,6 @@
     <string name="device_talk">Device Messages</string>
     <string name="device_talk_subtitle">Locally generated messages</string>
     <string name="device_talk_explain">Messages in this chat are generated on your device to inform about app updates and problems during usage.</string>
-    <!-- deprecated, use device_talk_welcome_message2 instead -->
-    <string name="device_talk_welcome_message">Welcome to Delta Chat! – Delta Chat looks and feels like other popular messenger apps, but does not involve centralized control, tracking or selling you, friends, colleagues or family out to large organizations.\n\nTechnically, Delta Chat is an e-mail application with a modern chat interface. E-mail in a new dress if you will 👻\n\nUse Delta Chat with anyone out of billions of people: just use their e-mail address. Recipients don\'t need to install Delta Chat, visit websites or sign up anywhere - however, of course, if they like, you may point them to 👉 https://get.delta.chat</string>
     <string name="device_talk_welcome_message2">Get in contact!\n\n🙌 Tap \"QR code\" on the main screen of both devices. Choose \"Scan QR Code\" on one device, and point it at the other\n\n🌍 If not in the same room, scan via video call or share an invite link from \"Scan QR code\"\n\nThen: Enjoy your messenger experience over the largest decentralized network that ever existed: E-mail. And in contrast to other popular apps, without central control or tracking or selling you, friends, colleagues or family out to large organizations.</string>
     <string name="edit_contact">Edit Contact</string>
     <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
@@ -410,8 +408,6 @@
     <string name="retry_send">Retry to send message</string>
     <!-- reasons for a disabled message composer -->
     <string name="messaging_disabled_not_in_group">You must be in this group to post a message. To join, ask another member.</string>
-    <!-- deprecated, the line is removed on desktop (was never used on other OS) -->
-    <string name="messaging_disabled_device_chat">This chat contains locally generated messages; writing is disabled.</string>
     <string name="messaging_disabled_mailing_list">Sending messages in mailing lists is not yet supported</string>
     <string name="cannot_display_unsuported_file_type">Cannot display this file type: %s</string>
     <string name="attachment_failed_to_load">Failed to load attachment</string>
@@ -946,8 +942,6 @@
     <string name="qrshow_join_contact_no_connection_toast">No internet connection, can\'t perform QR code setup.</string>
     <string name="qraccount_ask_create_and_login">Create new e-mail address on \"%1$s\" and log in there?</string>
     <string name="qraccount_ask_create_and_login_another">Create new e-mail address on \"%1$s\" and log in there?\n\nYour existing account will not be deleted. Use the \"Switch Account\" item to switch between your accounts.</string>
-    <!-- deprecated, use set_name_and_avatar_explain instead -->
-    <string name="qraccount_success_enter_name">Login successful—your e-mail address is %1$s\n\nIf you like, you can now enter a name and an profile image that will be displayed to people you write to.</string>
     <string name="set_name_and_avatar_explain">Set a name that your contacts will recognize. You can also set a profile image.</string>
     <string name="please_enter_name">Please enter a name.</string>
     <string name="qraccount_qr_code_cannot_be_used">The scanned QR code cannot be used to set up a new account.</string>
@@ -1132,9 +1126,6 @@
 
 
     <!-- device messages for updates -->
-    <string name="update_1_42_common">What\'s new:\n\n💌 one-to-one chats guarantee end-to-end encryption for contacts with a green checkmark\n\n😌 for everyone\'s simplicity, we also mark these chats with green checkmarks\n\n👥 groups are created automatically with guaranteed end-to-end encryption if possible\n\n🔄 Accept/Blocked, Archived, Pinned, Mute is synced across all your devices</string>
-    <!-- placeholder will be replaced by the URL https://get.delta.chat/#changelogs -->
-    <string name="update_1_42_android">Watch out for more improvements in camera, voice messages, backup-all, screen reader, per-account wallpapers, gallery select-all, webxdc landscape … or read them at %1$s</string>
     <string name="update_1_44_android">What\'s new:\n\n❤️ Yeah! This was long-awaited: Long tap a message to react\n\n🔗 If you cannot scan QR codes, share them as invite links\n\n🔵 Unread messages of all accounts are counted and shown in title now\n\n… and TONS of bugfixes … %1$s\n\nHelp improving the app: Use \"Settings / Advanced / Send statistics\" to help devs to optimize better for real-world usage. You can review the data before sending</string>
     <string name="update_1_44_ios">What\'s new:\n\n❤️ Yeah! This was long-awaited: Long tap a message to react\n\n🫸 PUSH notifications if supported by providers as https://nine.testrun.org\n\n🔗 If you cannot scan QR codes, share them as invite links\n\n… and TONS of bugfixes … %1$s</string>
 </resources>
