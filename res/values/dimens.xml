@@ -57,11 +57,6 @@
 
     <dimen name="contact_selection_actions_tap_area">10dp</dimen>
 
-    <dimen name="slider_trackHeight">6dp</dimen>
-    <dimen name="slider_thumbRadius">14dp</dimen>
-    <dimen name="slider_thumbOutlineSize">4dp</dimen>
-    <dimen name="slider_displayTextFontSize">12sp</dimen>
-    <dimen name="slider_displayTextBasicOffsetY">8dp</dimen>
 	<dimen name="quote_thumb_size">45dp</dimen>
 
 </resources>
