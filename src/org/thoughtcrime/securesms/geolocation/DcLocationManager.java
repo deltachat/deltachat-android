@@ -16,10 +16,6 @@ import java.util.Observer;
 
 import static android.content.Context.BIND_AUTO_CREATE;
 
-/**
- * Created by cyberta on 06.03.19.
- */
-
 public class DcLocationManager implements Observer {
 
     private static final String TAG = DcLocationManager.class.getSimpleName();
@@ -93,11 +89,6 @@ public class DcLocationManager implements Observer {
             writeDcLocationUpdateMessage();
         }
     }
-
-    public void deleteAllLocations() {
-        DcHelper.getContext(context).deleteAllLocations();
-    }
-
 
     @Override
     public void update(Observable o, Object arg) {

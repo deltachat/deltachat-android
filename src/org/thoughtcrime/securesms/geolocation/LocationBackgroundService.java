@@ -12,10 +12,6 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
 
-/**
- * Created by cyberta on 06.03.19.
- */
-
 public class LocationBackgroundService extends Service {
 
     private static final int TIMEOUT = 1000 * 15;

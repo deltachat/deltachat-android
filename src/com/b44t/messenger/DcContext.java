@@ -212,7 +212,6 @@ public class DcContext {
     public native int          joinSecurejoin       (String qr);
     public native void         sendLocationsToChat  (int chat_id, int seconds);
     public native boolean      isSendingLocationsToChat(int chat_id);
-    public native void         deleteAllLocations   ();
     public DcProvider          getProviderFromEmailWithDns (String email) { long cptr = getProviderFromEmailWithDnsCPtr(email); return cptr!=0 ? new DcProvider(cptr) : null; }
 
     public String getNameNAddr() {
