@@ -56,10 +56,6 @@ public class SendButton extends ImageButton
     return transportOptionsPopup.get();
   }
 
-  public boolean isManualSelection() {
-    return transportOptions.isManualSelection();
-  }
-
   public void addOnTransportChangedListener(OnTransportChangedListener listener) {
     transportOptions.addOnTransportChangedListener(listener);
   }
@@ -70,10 +66,6 @@ public class SendButton extends ImageButton
 
   public void resetAvailableTransports() {
     transportOptions.reset();
-  }
-
-  public void disableTransport(TransportOption.Type type) {
-    transportOptions.disableTransport(type);
   }
 
   public void setDefaultTransport(TransportOption.Type type) {
