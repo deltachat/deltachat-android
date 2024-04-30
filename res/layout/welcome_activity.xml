@@ -16,7 +16,7 @@
         android:id="@+id/welcome_icon"
         android:layout_width="wrap_content"
         android:layout_height="100dp"
-        android:layout_weight="14"
+        android:layout_weight="10"
         android:gravity="bottom"
         android:src="@drawable/intro1"
         android:paddingLeft="32dp"
@@ -43,32 +43,24 @@
 
         <Button
             style="@style/ButtonPrimary"
-            android:id="@+id/login_button"
+            android:id="@+id/signup_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="24dp"
             android:paddingRight="24dp"
             android:layout_marginBottom="16dp"
-            android:text="@string/login_header"/>
+            android:text="@string/onboarding_create_instant_account"/>
 
         <Button
             style="@style/ButtonSecondary"
-            android:id="@+id/add_as_second_device_button"
+            android:id="@+id/signin_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="24dp"
             android:paddingRight="24dp"
             android:layout_marginBottom="16dp"
-            android:text="@string/multidevice_receiver_title"/>
+            android:text="@string/onboarding_alternative_logins"/>
 
-        <Button
-            style="@style/ButtonSecondary"
-            android:id="@+id/scan_qr_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="24dp"
-            android:paddingRight="24dp"
-            android:text="@string/scan_invitation_code"/>
 
     </LinearLayout>
 
@@ -76,16 +68,6 @@
         android:layout_weight="3"
         android:layout_width="match_parent"
         android:layout_height="0dp"/>
-
-    <TextView
-        android:id="@+id/backup_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="22dp"
-        android:gravity="center"
-        android:text="@string/import_backup_title"
-        android:textColor="?attr/secondary_button_fg"
-        android:textSize="15sp"/>
 
 </LinearLayout>
 

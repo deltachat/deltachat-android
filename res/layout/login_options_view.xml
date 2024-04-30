@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+  <LinearLayout
+      android:orientation="vertical"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="16dp"
+      android:layout_marginLeft="16dp"
+      android:layout_marginRight="16dp"
+      android:layout_marginTop="16dp"
+      android:gravity="center_horizontal">
+
+    <Button
+        style="@style/ButtonSecondary"
+        android:id="@+id/add_as_second_device_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/multidevice_receiver_title"/>
+
+    <Button
+        style="@style/ButtonSecondary"
+        android:id="@+id/backup_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/import_backup_title"/>
+
+    <Button
+        style="@style/ButtonSecondary"
+        android:id="@+id/login_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        android:text="@string/manual_account_setup_option"/>
+
+  </LinearLayout>
+
+</ScrollView>

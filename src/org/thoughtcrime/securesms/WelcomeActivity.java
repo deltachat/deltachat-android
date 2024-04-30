@@ -70,15 +70,21 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
         super.onCreate(bundle);
         setContentView(R.layout.welcome_activity);
 
-        Button loginButton = findViewById(R.id.login_button);
-        View addAsSecondDeviceButton = findViewById(R.id.add_as_second_device_button);
-        View scanQrButton = findViewById(R.id.scan_qr_button);
-        View backupButton = findViewById(R.id.backup_button);
+        Button signUpButton = findViewById(R.id.signup_button);
+        Button signInButton = findViewById(R.id.signin_button);
 
-        loginButton.setOnClickListener((view) -> startRegistrationActivity());
-        addAsSecondDeviceButton.setOnClickListener((view) -> startAddAsSecondDeviceActivity());
-        scanQrButton.setOnClickListener((view) -> startRegistrationQrActivity());
-        backupButton.setOnClickListener((view) -> startImportBackup());
+        View view = View.inflate(this, R.layout.login_options_view, null);
+        view.findViewById(R.id.add_as_second_device_button).setOnClickListener((v) -> startAddAsSecondDeviceActivity());
+        view.findViewById(R.id.backup_button).setOnClickListener((v) -> startImportBackup());
+        view.findViewById(R.id.login_button).setOnClickListener((v) -> startRegistrationActivity());
+        AlertDialog signInDialog = new AlertDialog.Builder(this)
+          .setView(view)
+          .setTitle(R.string.onboarding_alternative_logins)
+          .setNegativeButton(R.string.cancel, null)
+          .create();
+
+        signUpButton.setOnClickListener((v) -> startInstantOnboardingActivity());
+        signInButton.setOnClickListener((v) -> signInDialog.show());
 
         registerForEvents();
         initializeActionBar();
@@ -170,6 +176,10 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
         manualConfigure = true;
         Intent intent = new Intent(this, RegistrationActivity.class);
         startActivity(intent);
+    }
+
+    private void startInstantOnboardingActivity() {
+        startActivity(new Intent(this, InstantOnboardingActivity.class));
     }
 
     private void startRegistrationQrActivity() {
