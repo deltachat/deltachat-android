@@ -5,24 +5,11 @@
              xmlns:android="http://schemas.android.com/apk/res/android"
              xmlns:app="http://schemas.android.com/apk/res-auto">
 
-  <org.thoughtcrime.securesms.components.InputAwareLayout
-      android:id="@+id/container"
+  <LinearLayout
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:layout_marginTop="20dp"
       android:orientation="vertical">
-
-    <TextView
-        android:id="@+id/login_success_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="20dp"
-        android:gravity="start"
-        android:text=""
-        android:textSize="16sp"
-        android:textColor="?android:attr/textColorPrimary" />
 
     <LinearLayout android:layout_width="match_parent"
                   android:layout_height="wrap_content"
@@ -76,26 +63,18 @@
         android:textColor="@color/delta_accent"
         android:textSize="16sp"/>
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_height="wrap_content"
+    <Button
+        style="@style/ButtonPrimary"
+        android:id="@+id/signup_button"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="16dp"
-        android:gravity="center_horizontal">
-
-      <Button
-          style="@style/ButtonPrimary"
-          android:id="@+id/signup_button"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:paddingLeft="16dp"
-          android:paddingRight="16dp"
-          android:text="@string/instant_onboarding_create"/>
-
-    </LinearLayout>
+        android:text="@string/instant_onboarding_create"/>
 
     <org.thoughtcrime.securesms.components.emoji.MediaKeyboard
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -104,6 +83,6 @@
         android:layout_height="wrap_content"
         android:visibility="gone" />
 
-  </org.thoughtcrime.securesms.components.InputAwareLayout>
+  </LinearLayout>
 
 </FrameLayout>
