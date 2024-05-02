@@ -19,7 +19,6 @@ import org.thoughtcrime.securesms.util.Util;
 
 public class FcmReceiveService extends FirebaseMessagingService {
   private static final String TAG = FcmReceiveService.class.getSimpleName();
-  private static final String TOKEN_PREFIX = "fcm:";
   private static String prefixedToken;
 
   public static void register(Context context) {
@@ -41,19 +40,23 @@ public class FcmReceiveService extends FirebaseMessagingService {
         return;
       }
 
-      String prefixedToken = TOKEN_PREFIX + rawToken;
-      synchronized (FcmReceiveService.TOKEN_PREFIX) {
+      String prefixedToken = addPrefix(rawToken);
+      synchronized (FcmReceiveService.TAG) {
         FcmReceiveService.prefixedToken = prefixedToken;
       }
 
-      Log.w(TAG, "FCM token for " + BuildConfig.APPLICATION_ID + ": " + prefixedToken);
+      Log.w(TAG, "FCM token: " + prefixedToken);
       ApplicationContext.dcAccounts.setPushDeviceToken(prefixedToken);
     });
   }
 
+  private static String addPrefix(String rawToken) {
+    return "fcm-" + BuildConfig.APPLICATION_ID + ":" + rawToken;
+  }
+
   @Nullable
   public static String getToken() {
-    synchronized (FcmReceiveService.TOKEN_PREFIX) {
+    synchronized (FcmReceiveService.TAG) {
       return FcmReceiveService.prefixedToken;
     }
   }
@@ -65,12 +68,12 @@ public class FcmReceiveService extends FirebaseMessagingService {
 
   @Override
   public void onNewToken(@NonNull String rawToken) {
-    String prefixedToken = TOKEN_PREFIX + rawToken;
-    synchronized (FcmReceiveService.TOKEN_PREFIX) {
+    String prefixedToken = addPrefix(rawToken)  ;
+    synchronized (FcmReceiveService.TAG) {
       FcmReceiveService.prefixedToken = prefixedToken;
     }
 
-    Log.i(TAG, "new FCM token for" + BuildConfig.APPLICATION_ID + ": " + prefixedToken);
+    Log.i(TAG, "new FCM token: " + prefixedToken);
     ApplicationContext.dcAccounts.setPushDeviceToken(prefixedToken);
   }
 }
