@@ -55,7 +55,7 @@ import java.util.concurrent.TimeUnit;
 public class ApplicationContext extends MultiDexApplication {
   private static final String TAG = ApplicationContext.class.getSimpleName();
 
-  public DcAccounts             dcAccounts;
+  public static DcAccounts      dcAccounts;
   public Rpc                    rpc;
   public DcContext              dcContext;
   public DcLocationManager      dcLocationManager;
