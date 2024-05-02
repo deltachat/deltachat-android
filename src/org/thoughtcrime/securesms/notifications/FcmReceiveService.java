@@ -1,6 +1,7 @@
 package org.thoughtcrime.securesms.notifications;
 
 import android.content.Context;
+import android.os.Build;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -22,6 +23,10 @@ public class FcmReceiveService extends FirebaseMessagingService {
   private static String prefixedToken;
 
   public static void register(Context context) {
+    if (Build.VERSION.SDK_INT < 19) {
+      return;
+    }
+
     Util.runOnAnyBackgroundThread(() -> {
       final String rawToken;
 

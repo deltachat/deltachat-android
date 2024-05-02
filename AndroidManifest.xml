@@ -42,6 +42,8 @@
 
     <!-- force compiling emojipicker on sdk<21; we'll add a runtime switch to not use the picker in this case -->
     <uses-sdk tools:overrideLibrary="androidx.emoji2.emojipicker"/>
+    <!-- force compiling FCM on sdk<19; we use a runtime switch instead -->
+    <uses-sdk tools:overrideLibrary="com.google.firebase.messaging"/>
 
     <application android:name=".ApplicationContext"
                  android:icon="@mipmap/ic_launcher"
