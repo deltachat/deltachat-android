@@ -23,6 +23,63 @@
           "other_platform_oauth_client": []
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:922391085500:android:6f54e2c4e49405673e2bb9",
+        "android_client_info": {
+          "package_name": "chat.delta.beta"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBYH8Iznh8btYX7g_udv_bu68VH30zzxho"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:922391085500:android:92b4cf12669cc2083e2bb9",
+        "android_client_info": {
+          "package_name": "com.b44t.messenger"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBYH8Iznh8btYX7g_udv_bu68VH30zzxho"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:922391085500:android:228a205b8aa2bacc3e2bb9",
+        "android_client_info": {
+          "package_name": "com.b44t.messenger.beta"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBYH8Iznh8btYX7g_udv_bu68VH30zzxho"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
     }
   ],
   "configuration_version": "1"
