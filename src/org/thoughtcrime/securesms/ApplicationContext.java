@@ -40,6 +40,7 @@ import org.thoughtcrime.securesms.crypto.DatabaseSecretProvider;
 import org.thoughtcrime.securesms.crypto.PRNGFixes;
 import org.thoughtcrime.securesms.geolocation.DcLocationManager;
 import org.thoughtcrime.securesms.jobmanager.JobManager;
+import org.thoughtcrime.securesms.notifications.FcmReceiveService;
 import org.thoughtcrime.securesms.notifications.InChatSounds;
 import org.thoughtcrime.securesms.notifications.NotificationCenter;
 import org.thoughtcrime.securesms.util.AndroidSignalProtocolLogger;
@@ -225,6 +226,7 @@ public class ApplicationContext extends MultiDexApplication {
             ExistingPeriodicWorkPolicy.KEEP,
             fetchWorkRequest);
     AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
+    FcmReceiveService.register(this);
   }
 
   public JobManager getJobManager() {

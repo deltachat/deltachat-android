@@ -268,6 +268,14 @@ JNIEXPORT void Java_com_b44t_messenger_DcAccounts_maybeNetwork(JNIEnv *env, jobj
 }
 
 
+JNIEXPORT void Java_com_b44t_messenger_DcAccounts_setPushDeviceToken(JNIEnv *env, jobject obj, jstring token)
+{
+    CHAR_REF(token);
+        dc_accounts_set_push_device_token(get_dc_accounts(env, obj), tokenPtr);
+    CHAR_UNREF(token);
+}
+
+
 JNIEXPORT jint Java_com_b44t_messenger_DcAccounts_addAccount(JNIEnv *env, jobject obj)
 {
     return dc_accounts_add_account(get_dc_accounts(env, obj));
