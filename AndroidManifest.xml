@@ -411,6 +411,12 @@
         android:exported="false">
     </provider>
 
+    <provider
+        android:name="com.google.firebase.provider.FirebaseInitProvider"
+        android:authorities="${applicationId}.firebaseinitprovider"
+        tools:node="remove">
+    </provider>
+
     <receiver android:name=".service.BootReceiver"
         android:exported="true">
         <intent-filter>
