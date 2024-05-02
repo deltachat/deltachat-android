@@ -529,6 +529,32 @@
     <string name="part_of_total_used">已使用 %1$s，共 %2$s</string>
 
 
+    <!-- welcome and login -->
+    <!-- Primary button on the welcome screen, allows to create an instant account -->
+    <string name="onboarding_create_instant_account">让我们开始吧！</string>
+    <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup", "Manual Login"  -->
+    <string name="onboarding_alternative_logins">我已经有登录凭据了</string>
+    <!-- Button, allows to log in to existing email accounts, setting ports, passwords and so on -->
+    <string name="manual_account_setup_option">手动登录</string>
+    <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
+    <string name="instant_onboarding_title">个人资料</string>
+    <!-- This is a link to the default Privacy Policy -->
+    <string name="instant_onboarding_agree_default">阅读隐私政策</string>
+    <!-- The placeholder will be replaced by instance name, the whole text will link to the instance page -->
+    <string name="instant_onboarding_agree_instance">关于 %1$s 上的个人资料</string>
+    <!-- Confirmation button on the instant onboarding screen -->
+    <string name="instant_onboarding_create">同意 &amp; 创建个人资料</string>
+    <!-- Secondary, link-like button to open a page with other possible instances -->
+    <string name="instant_onboarding_show_more_instances">探索其他选项</string>
+    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group name -->
+    <string name="instant_onboarding_group_info">创建个人资料加入“%1$s” 群。</string>
+    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by contact name and/or address -->
+    <string name="instant_onboarding_contact_info">创建个人资料和 %1$s 聊天</string>
+    <!-- Question shown when another user's QR code is scanned from onboarding screen -->
+    <string name="instant_onboarding_confirm_contact">你想新建个人资料并开始和 %1$s 聊天吗？</string>
+    <!-- Question shown when group's QR code is scanned from onboarding screen -->
+    <string name="instant_onboarding_confirm_group">你想新建个人资料并加入 \"%1$s\" 聊天群吗？</string>
+
     <string name="welcome_chat_over_email">通过电子邮件聊天。</string>
     <string name="scan_invitation_code">扫描邀请码</string>
     <string name="login_title">登录</string>

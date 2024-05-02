@@ -544,6 +544,32 @@
     <string name="part_of_total_used">%1$s / %2$s kullanıldı</string>
 
 
+    <!-- welcome and login -->
+    <!-- Primary button on the welcome screen, allows to create an instant account -->
+    <string name="onboarding_create_instant_account">Başlayalım!</string>
+    <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup", "Manual Login"  -->
+    <string name="onboarding_alternative_logins">Zaten Bir Girişim Var</string>
+    <!-- Button, allows to log in to existing email accounts, setting ports, passwords and so on -->
+    <string name="manual_account_setup_option">Elle Giriş</string>
+    <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
+    <string name="instant_onboarding_title">Profiliniz</string>
+    <!-- This is a link to the default Privacy Policy -->
+    <string name="instant_onboarding_agree_default">Gizlilik İlkesi\'ni Okuyun</string>
+    <!-- The placeholder will be replaced by instance name, the whole text will link to the instance page -->
+    <string name="instant_onboarding_agree_instance">%1$s üzerindeki profiller hakkında</string>
+    <!-- Confirmation button on the instant onboarding screen -->
+    <string name="instant_onboarding_create">Kabul Et &amp; Profil Oluştur</string>
+    <!-- Secondary, link-like button to open a page with other possible instances -->
+    <string name="instant_onboarding_show_more_instances">Diğer Seçenekleri Keşfet</string>
+    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group name -->
+    <string name="instant_onboarding_group_info">\"%1$s\" öbeğine katılmak için bir profil oluşturun.</string>
+    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by contact name and/or address -->
+    <string name="instant_onboarding_contact_info">%1$s ile sohbet etmek için bir profil oluşturun.</string>
+    <!-- Question shown when another user's QR code is scanned from onboarding screen -->
+    <string name="instant_onboarding_confirm_contact">Yeni bir profil oluşturmak ve %1$s ile sohbet etmeye başlamak istiyor musunuz?</string>
+    <!-- Question shown when group's QR code is scanned from onboarding screen -->
+    <string name="instant_onboarding_confirm_group">Yeni bir profil oluşturmak ve \"%1$s\" sohbet öbeğine katılmak istiyor musunuz?</string>
+
     <string name="welcome_chat_over_email">E-Posta Üzerinden Sohbet.</string>
     <string name="scan_invitation_code">Çağrı Kodunu Tara</string>
     <string name="login_title">Giriş Yap</string>
@@ -746,6 +772,11 @@
     <string name="reactions">Tepkiler</string>
     <!-- Verb, the action of adding a "Reaction" to a message. Used eg. in context menus, similar to "Reply" or "Forward" -->
     <string name="react">Tepki Ver</string>
+    <!-- %1$s will be replaced by an emoji. %2$s will be replaced by message summary (the summary is often long and whole string gets truncated; words after %2$s will often not being visible). Eg. 'You reacted 👍 to "Found my suitcase"'. Use less than 20 characters, otherwise the string will be truncated too soon and too few information are shown. Do not try to translate "reacted to" too strict. Depending on the language, "added 👍 to" or "gave 👍 to" or just "👍 to" may be shorter and/or clearer and work as well. -->
+    <string name="reaction_by_you">\"%2$s\" öğesine %1$s ile tepki verdiniz</string>
+    <!-- %1$s will be replaced a name. %2$s will be replaced by an emoji. %3$s will be replaced by message summary (the summary is often long and whole string gets truncated; words after %3$s will often not being visible). Eg. 'Alice reacted 👍 to "Nice photos"'. Use less than 20 characters, otherwise the string will be truncated too soon and too few information are shown. Do not try to translate "reacted to" too strict. Depending on the language, "added 👍 to" or "gave 👍 to" or just "👍 to" may be shorter and/or clearer work as well. -->
+    <string name="reaction_by_other">%1$s, \"%3$s\" öğesine %2$s ile tepki verdi</string>
+
     <!-- automatically delete message -->
     <string name="delete_old_messages">Eski İletileri Sil</string>
     <string name="autodel_device_title">İletileri Aygıttan Sil</string>
@@ -881,7 +912,8 @@
     <string name="qr_code">QR Kodu</string>
     <string name="load_qr_code_as_image">QR Kodunu Görsel Olarak Yükle</string>
     <string name="qrscan_title">QR Kodu Tara</string>
-    <string name="qrscan_hint">Kameranızı QR kodunun üzerinde tutun.</string>
+    <string name="qrscan_hint">Kameranızı QR kodunun üzerinde tutun</string>
+    <string name="qrscan_hint_desktop">QR kodunu kameraya taşıyın</string>
     <string name="qrscan_failed">QR kodu çözülemedi</string>
     <string name="qrscan_ask_join_group">\"%1$s\" öbeğine katılmak istiyor musunuz?</string>
     <string name="qrscan_fingerprint_mismatch">Taranan parmak izi, %1$s için son görülenle eşleşmiyor.</string>
@@ -1095,4 +1127,5 @@
 
     <!-- device messages for updates -->
     <string name="update_1_44_android">Ne yeni:\n\n❤️ Evet! Bu uzun zamandır bekleniyordu: Tepki vermek için bir iletiye uzun dokunun\n\n🔗 QR kodlarını tarayamıyorsanız, onları çağırma bağlantısı olarak paylaşın\n\n🔵 Artık tüm hesapların okunmayan iletileri sayılır ve başlıkta gösterilir\n\n… ve TONLARCA hata düzeltmesi … %1$s\n\nUygulamanın iyileştirilmesine yardımcı olun: Gerçek dünya kullanımını daha da iyileştirmek için \"Ayarlar / Gelişmiş / İstatistikleri gönder\"i kullanarak geliştiricilere yardımcı olun. Göndermeden önce verilerinizi inceleyebilirsiniz</string>
-    </resources>
+    <string name="update_1_44_ios">Ne yeni:\n\n❤️ Evet! Bu uzun zamandır bekleniyordu: Tepki vermek için bir iletiye uzun dokunun\n\n🫸 https://nine.testrun.org gibi sağlayıcılar tarafından destekleniyorsa ANLIK bildirimler\n\n🔗 QR kodlarını tarayamıyorsanız, onları çağırma bağlantısı olarak paylaşın\n\n… ve TONLARCA hata düzeltmesi … %1$s</string>
+</resources>
