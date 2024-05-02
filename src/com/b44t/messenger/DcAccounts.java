@@ -24,6 +24,7 @@ public class DcAccounts {
     public native void            startIo              ();
     public native void            stopIo               ();
     public native void            maybeNetwork         ();
+    public native void            setPushDeviceToken   (String token);
 
     public native int             addAccount           ();
     public native int             addClosedAccount     ();

@@ -41,6 +41,7 @@ import androidx.fragment.app.Fragment;
 import com.b44t.messenger.DcContext;
 
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.notifications.FcmReceiveService;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.util.Prefs;
 
@@ -257,6 +258,8 @@ public class LogViewFragment extends Fragment {
         builder.append("rtl=").append(isRtl).append("\n");
       }
 
+      final String token = FcmReceiveService.getToken();
+      builder.append("push-token=").append(token == null ? "<empty>" : token).append("\n");
     } catch (Exception e) {
       builder.append("Unknown\n");
     }
