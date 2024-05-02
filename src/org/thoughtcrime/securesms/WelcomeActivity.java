@@ -74,14 +74,23 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
         Button signInButton = findViewById(R.id.signin_button);
 
         View view = View.inflate(this, R.layout.login_options_view, null);
-        view.findViewById(R.id.add_as_second_device_button).setOnClickListener((v) -> startAddAsSecondDeviceActivity());
-        view.findViewById(R.id.backup_button).setOnClickListener((v) -> startImportBackup());
-        view.findViewById(R.id.login_button).setOnClickListener((v) -> startRegistrationActivity());
         AlertDialog signInDialog = new AlertDialog.Builder(this)
           .setView(view)
           .setTitle(R.string.onboarding_alternative_logins)
           .setNegativeButton(R.string.cancel, null)
           .create();
+        view.findViewById(R.id.add_as_second_device_button).setOnClickListener((v) -> {
+          startAddAsSecondDeviceActivity();
+          signInDialog.dismiss();
+        });
+        view.findViewById(R.id.backup_button).setOnClickListener((v) -> {
+          startImportBackup();
+          signInDialog.dismiss();
+        });
+        view.findViewById(R.id.login_button).setOnClickListener((v) -> {
+          startRegistrationActivity();
+          signInDialog.dismiss();
+        });
 
         signUpButton.setOnClickListener((v) -> startInstantOnboardingActivity());
         signInButton.setOnClickListener((v) -> signInDialog.show());
