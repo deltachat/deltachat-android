@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.loader.app.LoaderManager;
 
@@ -28,7 +29,7 @@ import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcLot;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
@@ -46,12 +47,12 @@ import org.thoughtcrime.securesms.profiles.ProfileMediaConstraints;
 import org.thoughtcrime.securesms.qr.RegistrationQrActivity;
 import org.thoughtcrime.securesms.scribbles.ScribbleActivity;
 import org.thoughtcrime.securesms.util.Prefs;
-import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.views.ProgressDialog;
 
 import java.io.File;
 import java.io.IOException;
 import java.security.SecureRandom;
+import java.util.Objects;
 
 public class InstantOnboardingActivity extends BaseActionBarActivity implements DcEventCenter.DcEventDelegate {
 
@@ -81,7 +82,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
 
     setContentView(R.layout.instant_onboarding_activity);
 
-    getSupportActionBar().setTitle(R.string.instant_onboarding_title);
+    Objects.requireNonNull(getSupportActionBar()).setTitle(R.string.instant_onboarding_title);
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
     providerHost = DEF_CHATMAIL_HOST;
@@ -95,10 +96,10 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
   }
 
   @Override
-  public boolean onOptionsItemSelected(MenuItem item) {
+  public boolean onOptionsItemSelected(@NonNull MenuItem item) {
     super.onOptionsItemSelected(item);
     if (item.getItemId() == android.R.id.home) {
-      onBackPressed();
+      getOnBackPressedDispatcher().onBackPressed();
       return true;
     }
     return false;
@@ -148,7 +149,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
   }
 
   @Override
-  public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
+  public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
     super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     Permissions.onRequestPermissionsResult(this, requestCode, permissions, grantResults);
   }
@@ -156,20 +157,23 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
   private void setAvatarView(Uri output) {
     final ProfileMediaConstraints constraints = new ProfileMediaConstraints();
     GlideApp.with(this)
-            .asBitmap()
-            .load(output)
-            .skipMemoryCache(true)
-            .diskCacheStrategy(DiskCacheStrategy.NONE)
-            .centerCrop()
-            .override(constraints.getImageMaxWidth(this), constraints.getImageMaxHeight(this))
-        .into(new SimpleTarget<Bitmap>() {
-              @Override
-              public void onResourceReady(@NonNull Bitmap resource, Transition<? super Bitmap> transition) {
-                avatarChanged = true;
-                imageLoaded = true;
-                avatarBmp = resource;
-              }
-            });
+      .asBitmap()
+      .load(output)
+      .skipMemoryCache(true)
+      .diskCacheStrategy(DiskCacheStrategy.NONE)
+      .centerCrop()
+      .override(constraints.getImageMaxWidth(this), constraints.getImageMaxHeight(this))
+      .into(new CustomTarget<Bitmap>() {
+          @Override
+          public void onResourceReady(@NonNull Bitmap resource, Transition<? super Bitmap> transition) {
+            avatarChanged = true;
+            imageLoaded = true;
+            avatarBmp = resource;
+          }
+
+          @Override
+          public void onLoadCleared(@Nullable Drawable placeholder) {}
+      });
     GlideApp.with(this)
             .load(output)
             .circleCrop()
@@ -278,7 +282,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
         //noinspection ConstantConditions
         Linkify.addLinks((TextView) d.findViewById(android.R.id.message), Linkify.WEB_URLS | Linkify.EMAIL_ADDRESSES);
       } catch(NullPointerException e) {
-        e.printStackTrace();
+        Log.e(TAG, "Linkify failed", e);
       }
     }
   }
