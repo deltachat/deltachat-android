@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <PreferenceCategory android:title="@string/autocrypt">
+    <PreferenceCategory android:title="@string/pref_encryption">
 
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:defaultValue="true"
             android:key="pref_prefer_e2ee"
             android:title="@string/autocrypt_prefer_e2ee"/>
 
-        <Preference android:key="pref_send_autocrypt_setup_message"
-            android:title="@string/autocrypt_send_asm_title"
-            android:summary="@string/autocrypt_explain"/>
 
         <Preference android:key="pref_manage_keys"
             android:title="@string/pref_manage_keys"/>
+
+        <Preference android:key="pref_send_autocrypt_setup_message"
+            android:title="@string/autocrypt_send_asm_title"/>
 
     </PreferenceCategory>
 
