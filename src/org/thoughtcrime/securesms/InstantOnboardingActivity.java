@@ -50,6 +50,7 @@ import java.security.SecureRandom;
 public class InstantOnboardingActivity extends BaseActionBarActivity implements DcEventCenter.DcEventDelegate {
 
   private static final String TAG = InstantOnboardingActivity.class.getSimpleName();
+  private static final String INSTANCES_URL = "https://delta.chat/chatmail";
   private static final String DEF_CHATMAIL_HOST = "https://nine.testrun.org";
   private static final String DEF_CHATMAIL_QR_DATA = "dcaccount:" + DEF_CHATMAIL_HOST + "/new";
   private static final String DEF_PRIVACY_POLICY_URL = DEF_CHATMAIL_HOST + "/privacy.html";
@@ -160,6 +161,9 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
 
     Button signUpBtn = findViewById(R.id.signup_button);
     signUpBtn.setOnClickListener(view -> createProfile());
+
+    TextView otherOptionsBtn = findViewById(R.id.other_options_button);
+    otherOptionsBtn.setOnClickListener(view -> WebViewActivity.openUrlInBrowser(this, INSTANCES_URL));
   }
 
   private void initializeProfileAvatar() {
