@@ -82,7 +82,10 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="@string/pref_password_and_account_settings">
+    <PreferenceCategory android:title="@string/manual_account_setup_option">
+
+        <Preference android:key="password_account_settings_button"
+            android:title="@string/pref_password_and_account_settings"/>
 
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:defaultValue="true"

@@ -37,6 +37,7 @@ import org.thoughtcrime.securesms.ApplicationPreferencesActivity;
 import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.LogViewActivity;
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.RegistrationActivity;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.AttachmentManager;
@@ -197,6 +198,15 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
 
       return true;
     }));
+
+    Preference passwordAndAccount = this.findPreference("password_account_settings_button");
+    passwordAndAccount.setOnPreferenceClickListener(((preference) -> {
+      boolean result = ScreenLockUtil.applyScreenLock(getActivity(), getString(R.string.pref_password_and_account_settings), getString(R.string.enter_system_secret_to_continue), REQUEST_CODE_CONFIRM_CREDENTIALS_ACCOUNT);
+      if (!result) {
+        openRegistrationActivity();
+      }
+      return true;
+    }));
   }
 
   @Override
@@ -241,6 +251,8 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
       } catch (IOException e) {
         e.printStackTrace();
       }
+    } else if (requestCode == REQUEST_CODE_CONFIRM_CREDENTIALS_ACCOUNT) {
+      openRegistrationActivity();
     }
   }
 
@@ -316,6 +328,11 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
       webrtcInstance.setSummary(DcHelper.isWebrtcConfigOk(dcContext)?
               dcContext.getConfig(DcHelper.CONFIG_WEBRTC_INSTANCE) : getString(R.string.none));
     }
+  }
+
+  private void openRegistrationActivity() {
+    Intent intent = new Intent(getActivity(), RegistrationActivity.class);
+    startActivity(intent);
   }
 
   /***********************************************************************************************
