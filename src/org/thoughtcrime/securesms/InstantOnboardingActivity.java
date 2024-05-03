@@ -154,6 +154,12 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
     Permissions.onRequestPermissionsResult(this, requestCode, permissions, grantResults);
   }
 
+  @Override
+  public void onDestroy() {
+    super.onDestroy();
+    DcHelper.getEventCenter(this).removeObservers(this);
+  }
+
   private void setAvatarView(Uri output) {
     final ProfileMediaConstraints constraints = new ProfileMediaConstraints();
     GlideApp.with(this)
