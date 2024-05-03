@@ -82,19 +82,6 @@
         android:text="@string/pref_who_can_see_profile_explain"
         android:textColor="@color/gray50" />
 
-
-    <TextView
-        android:id="@+id/password_account_settings_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="start"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/pref_password_and_account_settings"
-        android:textColor="@color/delta_accent"
-        android:textSize="16sp"/>
-
     <org.thoughtcrime.securesms.components.emoji.MediaKeyboard
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/emoji_drawer"
