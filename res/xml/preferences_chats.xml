@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-                  xmlns:tools="http://schemas.android.com/tools">
-
-    <ListPreference
-        android:key="pref_show_emails"
-        android:title="@string/pref_show_emails"
-        android:dependency="pref_show_emails"
-        android:entries="@array/pref_show_emails_entries"
-        android:entryValues="@array/pref_show_emails_values" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
     <Preference
         android:key="preference_category_blocked"
