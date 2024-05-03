@@ -2,15 +2,17 @@
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <PreferenceCategory>
+    <ListPreference
+        android:key="pref_show_emails"
+        android:title="@string/pref_show_emails"
+        android:entries="@array/pref_show_emails_entries"
+        android:entryValues="@array/pref_show_emails_values" />
 
-        <Preference android:key="pref_view_log"
-            android:title="@string/pref_view_log"/>
+    <Preference android:key="pref_self_reporting"
+        android:title="@string/send_stats_to_devs"/>
 
-        <Preference android:key="pref_self_reporting"
-            android:title="@string/send_stats_to_devs"/>
-
-    </PreferenceCategory>
+    <Preference android:key="pref_view_log"
+        android:title="@string/pref_view_log"/>
 
     <PreferenceCategory android:title="@string/pref_experimental_features">
 

@@ -1,7 +1,6 @@
 package org.thoughtcrime.securesms.preferences;
 
 import static android.app.Activity.RESULT_OK;
-import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SHOW_EMAILS;
 
 import android.Manifest;
 import android.content.Context;
@@ -29,7 +28,6 @@ import org.thoughtcrime.securesms.util.ScreenLockUtil;
 import org.thoughtcrime.securesms.util.Util;
 
 public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
-  private ListPreference showEmails;
   private ListPreference mediaQuality;
   private ListPreference autoDownload;
   private CheckBoxPreference readReceiptsCheckbox;
@@ -57,13 +55,6 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
     });
     nicerAutoDownloadNames();
 
-    showEmails = (ListPreference) this.findPreference("pref_show_emails");
-    showEmails.setOnPreferenceChangeListener((preference, newValue) -> {
-      updateListSummary(preference, newValue);
-      dcContext.setConfigInt(CONFIG_SHOW_EMAILS, Util.objectToInt(newValue));
-      return true;
-    });
-
     readReceiptsCheckbox = (CheckBoxPreference) this.findPreference("pref_read_receipts");
     readReceiptsCheckbox.setOnPreferenceChangeListener(new ReadReceiptToggleListener());
 
@@ -89,11 +80,7 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
     super.onResume();
     ((ApplicationPreferencesActivity)getActivity()).getSupportActionBar().setTitle(R.string.pref_chats_and_media);
 
-    String value = Integer.toString(dcContext.getConfigInt("show_emails"));
-    showEmails.setValue(value);
-    updateListSummary(showEmails, value);
-
-    value = Integer.toString(dcContext.getConfigInt(DcHelper.CONFIG_MEDIA_QUALITY));
+    String value = Integer.toString(dcContext.getConfigInt(DcHelper.CONFIG_MEDIA_QUALITY));
     mediaQuality.setValue(value);
     updateListSummary(mediaQuality, value);
 
@@ -164,15 +151,7 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
     String readReceiptState = dcContext.getConfigInt("mdns_enabled")!=0? onRes : offRes;
     boolean deleteOld = (dcContext.getConfigInt("delete_device_after")!=0 || dcContext.getConfigInt("delete_server_after")!=0);
 
-    String showEmails = "?";
-    switch (dcContext.getConfigInt("show_emails")) {
-      case DcContext.DC_SHOW_EMAILS_OFF: showEmails = offRes; break;
-      case DcContext.DC_SHOW_EMAILS_ACCEPTED_CONTACTS: showEmails = context.getString(R.string.pref_show_emails_accepted_contacts); break;
-      case DcContext.DC_SHOW_EMAILS_ALL: showEmails = context.getString(R.string.pref_show_emails_all); break;
-    }
-
-    String summary = context.getString(R.string.pref_show_emails) + " " + showEmails + ", " +
-      context.getString(R.string.pref_read_receipts) + " " + readReceiptState;
+    String summary = context.getString(R.string.pref_read_receipts) + " " + readReceiptState;
     if (deleteOld) {
       summary += ", " + context.getString(R.string.delete_old_messages) + " " + onRes;
     }

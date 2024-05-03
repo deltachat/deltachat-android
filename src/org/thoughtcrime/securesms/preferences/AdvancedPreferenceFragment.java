@@ -7,6 +7,7 @@ import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_E2EE_ENABLED;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_MVBOX_MOVE;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_ONLY_FETCH_MVBOX;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SENTBOX_WATCH;
+import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SHOW_EMAILS;
 import static org.thoughtcrime.securesms.connect.DcHelper.getRpc;
 
 import android.Manifest;
@@ -26,6 +27,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.preference.CheckBoxPreference;
+import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 
 import com.b44t.messenger.DcContext;
@@ -43,6 +45,7 @@ import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.ScreenLockUtil;
 import org.thoughtcrime.securesms.util.StorageUtil;
 import org.thoughtcrime.securesms.util.StreamUtil;
+import org.thoughtcrime.securesms.util.Util;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -57,6 +60,7 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
   private static final String TAG = AdvancedPreferenceFragment.class.getSimpleName();
   public static final int PICK_SELF_KEYS = 29923;
 
+  private ListPreference showEmails;
   CheckBoxPreference preferE2eeCheckbox;
   CheckBoxPreference sentboxWatchCheckbox;
   CheckBoxPreference bccSelfCheckbox;
@@ -67,6 +71,13 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
   @Override
   public void onCreate(Bundle paramBundle) {
     super.onCreate(paramBundle);
+
+    showEmails = (ListPreference) this.findPreference("pref_show_emails");
+    showEmails.setOnPreferenceChangeListener((preference, newValue) -> {
+      updateListSummary(preference, newValue);
+      dcContext.setConfigInt(CONFIG_SHOW_EMAILS, Util.objectToInt(newValue));
+      return true;
+    });
 
     Preference sendAsm = this.findPreference("pref_send_autocrypt_setup_message");
     sendAsm.setOnPreferenceClickListener(new SendAsmListener());
@@ -197,6 +208,10 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
   public void onResume() {
     super.onResume();
     ((ApplicationPreferencesActivity) getActivity()).getSupportActionBar().setTitle(R.string.menu_advanced);
+
+    String value = Integer.toString(dcContext.getConfigInt("show_emails"));
+    showEmails.setValue(value);
+    updateListSummary(showEmails, value);
 
     preferE2eeCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_E2EE_ENABLED));
     sentboxWatchCheckbox.setChecked(0!=dcContext.getConfigInt(CONFIG_SENTBOX_WATCH));
