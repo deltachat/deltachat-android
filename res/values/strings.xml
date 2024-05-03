@@ -635,7 +635,7 @@
     <!-- preferences -->
     <string name="pref_using_custom">Using custom: %s</string>
     <string name="pref_using_default">Using default: %s</string>
-    <string name="pref_profile_info_headline">Your Profile Info</string>
+    <string name="pref_profile_info_headline">Your Profile</string>
     <string name="pref_profile_photo">Profile Image</string>
     <string name="pref_blocked_contacts">Blocked Contacts</string>
     <string name="blocked_empty_hint">Blocked contacts will appear here.</string>
