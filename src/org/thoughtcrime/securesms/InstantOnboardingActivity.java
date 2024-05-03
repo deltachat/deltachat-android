@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -25,9 +26,12 @@ import androidx.loader.app.LoaderManager;
 
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
+import com.b44t.messenger.DcLot;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 import com.soundcloud.android.crop.Crop;
 
 import org.thoughtcrime.securesms.components.AvatarSelector;
@@ -39,6 +43,7 @@ import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.profiles.AvatarHelper;
 import org.thoughtcrime.securesms.profiles.ProfileMediaConstraints;
+import org.thoughtcrime.securesms.qr.RegistrationQrActivity;
 import org.thoughtcrime.securesms.scribbles.ScribbleActivity;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.ViewUtil;
@@ -52,17 +57,18 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
 
   private static final String TAG = InstantOnboardingActivity.class.getSimpleName();
   private static final String INSTANCES_URL = "https://delta.chat/chatmail";
-  private static final String DEF_CHATMAIL_HOST = "https://nine.testrun.org";
-  private static final String DEF_CHATMAIL_QR_DATA = "dcaccount:" + DEF_CHATMAIL_HOST + "/new";
-  private static final String DEF_PRIVACY_POLICY_URL = DEF_CHATMAIL_HOST + "/privacy.html";
+  private static final String DEF_CHATMAIL_HOST = "nine.testrun.org";
 
   private static final int REQUEST_CODE_AVATAR = 1;
 
   private ImageView avatar;
   private EditText name;
+  private TextView privacyPolicyBtn;
 
   private boolean avatarChanged;
   private boolean imageLoaded;
+  private String providerHost;
+  private String providerQrData;
 
   private AttachmentManager attachmentManager;
   private Bitmap avatarBmp = null;
@@ -78,11 +84,14 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
     getSupportActionBar().setTitle(R.string.instant_onboarding_title);
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+    providerHost = DEF_CHATMAIL_HOST;
+    providerQrData = "dcaccount:https://" + providerHost + "/new";
     attachmentManager = new AttachmentManager(this, () -> {});
     avatarChanged = false;
     registerForEvents();
     initializeResources();
     initializeProfileAvatar();
+    updateProvider();
   }
 
   @Override
@@ -115,6 +124,25 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
 
       case Crop.REQUEST_CROP:
         setAvatarView(Crop.getOutput(data));
+        break;
+
+      case IntentIntegrator.REQUEST_CODE:
+        IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+        if (scanResult == null || scanResult.getFormatName() == null) {
+          return; // aborted
+        }
+        String qrRaw = scanResult.getContents();
+        DcLot qrParsed = dcContext.checkQr(qrRaw);
+        if (qrParsed.getState() == DcContext.DC_QR_ACCOUNT) {
+          providerHost = qrParsed.getText1();
+          providerQrData = qrRaw;
+          updateProvider();
+        } else {
+          new AlertDialog.Builder(this)
+            .setMessage(R.string.qraccount_qr_code_cannot_be_used)
+            .setPositiveButton(R.string.ok, null)
+            .show();
+        }
         break;
     }
   }
@@ -159,18 +187,27 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
   }
 
   private void initializeResources() {
-    this.avatar       = findViewById(R.id.avatar);
-    this.name         = findViewById(R.id.name_text);
+    this.avatar           = findViewById(R.id.avatar);
+    this.name             = findViewById(R.id.name_text);
+    this.privacyPolicyBtn = findViewById(R.id.privacy_policy_button);
 
-
-    TextView privacyPolicyBtn = findViewById(R.id.privacy_policy_button);
-    privacyPolicyBtn.setOnClickListener(view -> WebViewActivity.openUrlInBrowser(this, DEF_PRIVACY_POLICY_URL));
+    privacyPolicyBtn.setOnClickListener(view -> WebViewActivity.openUrlInBrowser(this, "https://" + providerHost + "/privacy.html"));
 
     Button signUpBtn = findViewById(R.id.signup_button);
     signUpBtn.setOnClickListener(view -> createProfile());
 
     TextView otherOptionsBtn = findViewById(R.id.other_options_button);
     otherOptionsBtn.setOnClickListener(view -> WebViewActivity.openUrlInBrowser(this, INSTANCES_URL));
+    TextView scanQrBtn = findViewById(R.id.scan_qr_button);
+    scanQrBtn.setOnClickListener(view -> new IntentIntegrator(this).setCaptureActivity(RegistrationQrActivity.class).initiateScan());
+  }
+
+  private void updateProvider() {
+    if (DEF_CHATMAIL_HOST.equals(providerHost)) {
+      privacyPolicyBtn.setText(R.string.instant_onboarding_agree_default);
+    } else {
+      privacyPolicyBtn.setText(getString(R.string.instant_onboarding_agree_instance, providerHost));
+    }
   }
 
   private void initializeProfileAvatar() {
@@ -279,7 +316,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
 
         if (result) {
           attachmentManager.cleanup();
-          startQrAccountCreation(DEF_CHATMAIL_QR_DATA);
+          startQrAccountCreation(providerQrData);
         } else {
           Toast.makeText(InstantOnboardingActivity.this, R.string.error, Toast.LENGTH_LONG).show();
         }
