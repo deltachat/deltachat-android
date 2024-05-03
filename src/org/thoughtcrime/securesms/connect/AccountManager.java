@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
-import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
 
 import com.b44t.messenger.DcAccounts;
@@ -16,6 +15,7 @@ import com.b44t.messenger.DcContext;
 
 import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.ConversationListActivity;
+import org.thoughtcrime.securesms.InstantOnboardingActivity;
 import org.thoughtcrime.securesms.WelcomeActivity;
 import org.thoughtcrime.securesms.accounts.AccountSelectionListFragment;
 import org.thoughtcrime.securesms.crypto.DatabaseSecret;
@@ -112,10 +112,10 @@ public class AccountManager {
         if (lastAccountId == 0 || !accounts.getAccount(lastAccountId).isOk()) {
             lastAccountId = accounts.getSelectedAccount().getAccountId();
         }
-        switchAccountAndStartActivity(activity, lastAccountId, null);
+        switchAccountAndStartActivity(activity, lastAccountId);
     }
 
-    public void switchAccountAndStartActivity(Activity activity, int destAccountId, @Nullable String qrAccount) {
+    public void switchAccountAndStartActivity(Activity activity, int destAccountId) {
         if (destAccountId==0) {
             beginAccountCreation(activity);
         } else {
@@ -125,9 +125,6 @@ public class AccountManager {
         activity.finishAffinity();
         if (destAccountId==0) {
             Intent intent = new Intent(activity, WelcomeActivity.class);
-            if (qrAccount!=null) {
-                intent.putExtra(WelcomeActivity.QR_ACCOUNT_EXTRA, qrAccount);
-            }
             activity.startActivity(intent);
         } else {
             activity.startActivity(new Intent(activity.getApplicationContext(), ConversationListActivity.class));
@@ -164,6 +161,10 @@ public class AccountManager {
     }
 
     public void addAccountFromQr(Activity activity, String qr) {
-        switchAccountAndStartActivity(activity, 0, qr);
+        beginAccountCreation(activity);
+        activity.finishAffinity();
+        Intent intent = new Intent(activity, InstantOnboardingActivity.class);
+        intent.putExtra(InstantOnboardingActivity.QR_ACCOUNT_EXTRA, qr);
+        activity.startActivity(intent);
     }
 }

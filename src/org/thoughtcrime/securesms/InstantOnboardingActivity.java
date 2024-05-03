@@ -57,19 +57,24 @@ import java.util.Objects;
 public class InstantOnboardingActivity extends BaseActionBarActivity implements DcEventCenter.DcEventDelegate {
 
   private static final String TAG = InstantOnboardingActivity.class.getSimpleName();
+  private static final String DCACCOUNT = "dcaccount";
+  private static final String DCLOGIN = "dclogin";
   private static final String INSTANCES_URL = "https://delta.chat/chatmail";
   private static final String DEF_CHATMAIL_HOST = "nine.testrun.org";
 
+  public static final String QR_ACCOUNT_EXTRA = "qr_account_extra";
   private static final int REQUEST_CODE_AVATAR = 1;
 
   private ImageView avatar;
   private EditText name;
   private TextView privacyPolicyBtn;
+  private Button signUpBtn;
 
   private boolean avatarChanged;
   private boolean imageLoaded;
   private String providerHost;
   private String providerQrData;
+  private boolean isDcLogin;
 
   private AttachmentManager attachmentManager;
   private Bitmap avatarBmp = null;
@@ -85,14 +90,22 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
     Objects.requireNonNull(getSupportActionBar()).setTitle(R.string.instant_onboarding_title);
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+    isDcLogin = false;
     providerHost = DEF_CHATMAIL_HOST;
-    providerQrData = "dcaccount:https://" + providerHost + "/new";
+    providerQrData = DCACCOUNT + ":https://" + providerHost + "/new";
     attachmentManager = new AttachmentManager(this, () -> {});
     avatarChanged = false;
     registerForEvents();
     initializeResources();
     initializeProfileAvatar();
-    updateProvider();
+    handleIntent();
+  }
+
+  @Override
+  protected void onNewIntent(Intent intent) {
+    super.onNewIntent(intent);
+    setIntent(intent);
+    handleIntent();
   }
 
   @Override
@@ -129,14 +142,20 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
 
       case IntentIntegrator.REQUEST_CODE:
         IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-        if (scanResult == null || scanResult.getFormatName() == null) {
-          return; // aborted
+        if (scanResult != null && scanResult.getFormatName() != null) {
+          setProviderFromQr(scanResult.getContents());
         }
-        String qrRaw = scanResult.getContents();
-        DcLot qrParsed = dcContext.checkQr(qrRaw);
-        if (qrParsed.getState() == DcContext.DC_QR_ACCOUNT) {
+        break;
+    }
+  }
+
+  private void setProviderFromQr(String rawQr) {
+        DcLot qrParsed = dcContext.checkQr(rawQr);
+        boolean isDcLogin = qrParsed.getState() == DcContext.DC_QR_LOGIN;
+        if (isDcLogin || qrParsed.getState() == DcContext.DC_QR_ACCOUNT) {
+          this.isDcLogin = isDcLogin;
           providerHost = qrParsed.getText1();
-          providerQrData = qrRaw;
+          providerQrData = rawQr;
           updateProvider();
         } else {
           new AlertDialog.Builder(this)
@@ -144,8 +163,6 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
             .setPositiveButton(R.string.ok, null)
             .show();
         }
-        break;
-    }
   }
 
   @Override
@@ -155,9 +172,30 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
   }
 
   @Override
+  public void onStart() {
+    super.onStart();
+    String accountQr = getIntent().getStringExtra(QR_ACCOUNT_EXTRA);
+    if (accountQr != null) {
+      getIntent().removeExtra(QR_ACCOUNT_EXTRA);
+      setProviderFromQr(accountQr);
+    }
+  }
+
+  @Override
   public void onDestroy() {
     super.onDestroy();
     DcHelper.getEventCenter(this).removeObservers(this);
+  }
+
+  private void handleIntent() {
+    if (getIntent() != null && Intent.ACTION_VIEW.equals(getIntent().getAction())) {
+      Uri uri = getIntent().getData();
+      if (uri == null) return;
+
+      if (uri.getScheme().equalsIgnoreCase(DCACCOUNT) || uri.getScheme().equalsIgnoreCase(DCLOGIN)) {
+        setProviderFromQr(uri.toString());
+      }
+    }
   }
 
   private void setAvatarView(Uri output) {
@@ -200,10 +238,14 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
     this.avatar           = findViewById(R.id.avatar);
     this.name             = findViewById(R.id.name_text);
     this.privacyPolicyBtn = findViewById(R.id.privacy_policy_button);
+    this.signUpBtn        = findViewById(R.id.signup_button);
 
-    privacyPolicyBtn.setOnClickListener(view -> WebViewActivity.openUrlInBrowser(this, "https://" + providerHost + "/privacy.html"));
+    privacyPolicyBtn.setOnClickListener(view -> {
+      if (!isDcLogin) {
+        WebViewActivity.openUrlInBrowser(this, "https://" + providerHost + "/privacy.html");
+      }
+    });
 
-    Button signUpBtn = findViewById(R.id.signup_button);
     signUpBtn.setOnClickListener(view -> createProfile());
 
     TextView otherOptionsBtn = findViewById(R.id.other_options_button);
@@ -213,10 +255,18 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
   }
 
   private void updateProvider() {
-    if (DEF_CHATMAIL_HOST.equals(providerHost)) {
-      privacyPolicyBtn.setText(R.string.instant_onboarding_agree_default);
+    if (isDcLogin) {
+      signUpBtn.setText(R.string.login_title);
+      privacyPolicyBtn.setTextColor(getResources().getColor(R.color.gray50));
+      privacyPolicyBtn.setText(getString(R.string.qrlogin_ask_login, providerHost));
     } else {
-      privacyPolicyBtn.setText(getString(R.string.instant_onboarding_agree_instance, providerHost));
+      signUpBtn.setText(R.string.instant_onboarding_create);
+      privacyPolicyBtn.setTextColor(getResources().getColor(R.color.delta_accent));
+      if (DEF_CHATMAIL_HOST.equals(providerHost)) {
+        privacyPolicyBtn.setText(R.string.instant_onboarding_agree_default);
+      } else {
+        privacyPolicyBtn.setText(getString(R.string.instant_onboarding_agree_instance, providerHost));
+      }
     }
   }
 
