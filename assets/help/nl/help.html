@@ -9,6 +9,7 @@
       <li><a href="#ondersteunt-delta-chat-afbeeldingen-videos-en-ander-soort-bijlagen">Ondersteunt Delta Chat afbeeldingen, video’s en ander soort bijlagen?</a></li>
       <li><a href="#multiple-accounts">Hoe kan ik wisselen van account?</a></li>
       <li><a href="#wie-kan-mijn-profielfoto-zien">Wie kan mijn profielfoto zien?</a></li>
+      <li><a href="#signature">Can I set a Signature Text/Status/Motto with Delta Chat?</a></li>
       <li><a href="#ondersteunt-delta-chat-html-e-mails">Ondersteunt Delta Chat HTML-e-mails?</a></li>
       <li><a href="#waarom-moet-ik-mijn-e-mailwachtwoord-invoeren-in-delta-chat-is-dat-wel-veilig">Waarom moet ik mijn e-mailwachtwoord invoeren in Delta Chat? Is dat wel veilig?</a></li>
       <li><a href="#welke-android-rechten-heeft-delta-chat-nodig">Welke Android-rechten heeft Delta Chat nodig?</a></li>
@@ -52,6 +53,7 @@
       <li><a href="#is-end-to-end-encryption-of-delta-chat-as-safe-as-signal">Is end-to-end encryption of Delta Chat as safe as Signal?</a></li>
       <li><a href="#kan-ik-mijn-bestaande-privésleutel-hergebruiken">Kan ik mijn bestaande privésleutel hergebruiken?</a></li>
       <li><a href="#ik-kan-mijn-bestaande-pgp-sleutel-niet-importeren">Ik kan mijn bestaande PGP-sleutel niet importeren</a></li>
+      <li><a href="#security-audits">Heeft Delta Chat ooit onafhankelijke beveiligingscontroles ondergaan?</a></li>
     </ul>
   </li>
   <li><a href="#multiclient">Multi-client</a>
@@ -87,9 +89,9 @@
       <li><a href="#wordt-mijn-e-mailprovider-ondersteund-door-delta-chat">Wordt <em>mijn</em> e-mailprovider ondersteund door Delta Chat?</a></li>
       <li><a href="#ik-wil-mijn-eigen-e-mailserver-opzetten-hoe-kan-ik-dat-het-beste-doen">Ik wil mijn eigen e-mailserver opzetten. Hoe kan ik dat het beste doen?</a></li>
       <li><a href="#delta-chat-gebruik-e-mail-is-het-dan-wel-een-instant-messenger">Delta Chat gebruik e-mail. Is het dan wel een <em>Instant</em> Messenger?</a></li>
+      <li><a href="#can-i-set-the-e-mail-subject-with-delta-chat">Can I set the E-Mail Subject with Delta Chat?</a></li>
       <li><a href="#is-delta-chat-compatibel-met-protonmailtutanotacriptext">Is Delta Chat compatibel met Protonmail/Tutanota/Criptext?</a></li>
       <li><a href="#ik-wil-graag-meer-weten-over-de-gebruikte-technieken-waar-kan-ik-meer-informatie-vinden">Ik wil graag meer weten over de gebruikte technieken. Waar kan ik meer informatie vinden?</a></li>
-      <li><a href="#security-audits">Heeft Delta Chat ooit onafhankelijke beveiligingscontroles ondergaan?</a></li>
       <li><a href="#hoe-wordt-de-ontwikkeling-van-delta-chat-gefinancierd">Hoe wordt de ontwikkeling van Delta Chat gefinancierd?</a></li>
     </ul>
   </li>
@@ -245,6 +247,22 @@ als je ze een bericht stuurt.</p>
 Je contactpersonen ontvangen hem dan opnieuw, zelfs als ze een nieuw apparaat toevoegen.</p>
   </li>
 </ul>
+    
+      <h3 id="signature">
+        
+        
+          Can I set a Signature Text/Status/Motto with Delta Chat? <a href="#signature" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Yes,
+you can do so under “Settings &gt; Profile &gt; Signature Text”.
+Your contacts who use Delta Chat will see it
+when they view your contact details.
+To everyone else,
+It will appear as an e-mail signature
+below the text of all your messages.</p>
     
       <h3 id="ondersteunt-delta-chat-html-e-mails">
         
@@ -635,8 +653,7 @@ Share the QR image with the other side either in person or through a second chan
   <li>
     <p>Direct 1:1 chat invitation: 
 Tap the QR Code icon <img style="vertical-align:middle; width:1.8em; margin:1px" src="../qr-icon.png" />
-on the Delta Chat app main screen – 
-on Desktop the QR Icon is in the left-side sandwich menu.
+on the Delta Chat app main screen.
 Share the QR image with the other side either in person or through a second channel.</p>
   </li>
 </ul>
@@ -646,8 +663,7 @@ Share the QR image with the other side either in person or through a second chan
 <ul>
   <li>
     <p>Tap the QR Code icon <img style="vertical-align:middle; width:1.8em; margin:1px" src="../qr-icon.png" />
-on the Delta Chat app main screen – 
-on Desktop the QR Icon is in the left-side sandwich menu.</p>
+on the Delta Chat app main screen.</p>
   </li>
   <li>
     <p>Choose “SCAN QR CODE” and scan the QR Code 
@@ -1120,6 +1136,64 @@ leeglaten in het sleutelbeheervenster. Met GnuPG kun je het
 instellen <a href="https://github.com/deltachat/deltachat-android/issues/98#issuecomment-378383429">middels de opdracht-
 regel</a>.
 Voor andere programma’s kun je zélf een oplossing zoeken op internet.</p>
+    
+      <h3 id="security-audits">
+        
+        
+          Heeft Delta Chat ooit onafhankelijke beveiligingscontroles ondergaan? <a href="#security-audits" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Delta Chat onderging al drie onafhankelijke beveiligingscontroles:</p>
+
+<ul>
+  <li>
+    <p>2024 March, we received a deep security analysis from the Applied Cryptography
+research group at ETH Zuerich and addressed all raised issues. 
+See our blog post about <a href="https://delta.chat/en/2024-03-25-crypto-analysis-securejoin">Hardening Guaranteed End-to-End encryption</a> for more detailed information.</p>
+  </li>
+  <li>
+    <p>Sinds begin 2023 hebben we diverse beveiligings- en privacyproblemen met ‘webapps
+gedeeld in een gesprek’. Deze waren allen te wijten aan fouten in de sandboxing,
+vooral die van Chromium. Daarna is er een beveiligings-
+onderzoek van Cure53 geweest en zijn alle problemen opgelost in versie 1.36 van de uit april 2023. 
+Lees <a href="https://delta.chat/en/2023-05-22-webxdc-security">hier het volledige verhaal omtrent E2E-beveiliging op het web</a>.</p>
+  </li>
+  <li>
+    <p>Aan het begin van 2023 heeft <a href="https://cure53.de">Cure53</a> de transportversleuteling van
+Delta Chats netwerkverbindingen getest, evenals de e-mailserveropzet zoals
+<a href="https://delta.chat/nl/serverguide">beschreven op onze site</a>.
+Meer informatie over deze test is te lezen <a href="https://delta.chat/en/2023-03-27-third-independent-security-audit">op ons blog</a>
+of in het <a href="https://delta.chat/assets/blog/MER-01-report.pdf">volledige verslag</a>.</p>
+  </li>
+  <li>
+    <p>In 2020 heeft <a href="https://includesecurity.com">Include Security</a> Delta Chats
+Rust-<a href="https://github.com/deltachat/deltachat-core-rust/">kern</a>,
+<a href="https://github.com/async-email/async-imap">imap-</a>,
+<a href="https://github.com/async-email/async-smtp">smtp-</a> en
+<a href="https://github.com/async-email/async-native-tls">tls-</a>bibliotheken geanalyseerd.
+Er werden geen grote problemen aangetroffen.
+Wél werden er een paar redelijk belangrijke zwakheden aangetroffen,
+maar geen die de meeste Delta Chat-gebruikers direct trof
+omdat ze afhankelijk waren van de gebruikte omgeving.
+Omwille van gebruiks- en compatibiliteitsredenen,
+konden we ze niet allemaal oplossen
+en besloten we om beveiligingsaanbevelingen aan getroffen gebruikers te doen.
+Het <a href="https://delta.chat/assets/blog/2020-second-security-review.pdf">volledige verslag is hier na te lezen</a>.</p>
+  </li>
+  <li>
+    <p>In 2019 heeft <a href="https://includesecurity.com">Include Security</a> Delta Chats
+<a href="https://github.com/rpgp/rpgp">PGP-</a> en
+<a href="https://github.com/RustCrypto/RSA">RSA-</a>bibliotheken geanalyseerd.
+Er werden geen grote problemen aangetroffen,
+maar wel twee belangrijke die nadien werden opgelost.
+Ook werden enkele redelijk belangrijke en minder belangrijke aan het licht gebracht,
+maar die konden in Delta Chats specifieke implementatie niet worden misbruikt.
+Ondanks dat zijn enkele daarvan nadien alsnog opgelost.
+Het <a href="https://delta.chat/assets/blog/2019-first-security-review.pdf">volledige verslag is hier na te lezen</a>.</p>
+  </li>
+</ul>
     
       <h2 id="multiclient">
         
@@ -1595,6 +1669,29 @@ algemeen probleem waar veel apps last van hebben. Ga naar
 <a href="https://dontkillmyapp.com/">dontkillmyapp.com</a> voor meer informatie hieromtrent.</li>
 </ul>
     
+      <h3 id="can-i-set-the-e-mail-subject-with-delta-chat">
+        
+        
+          Can I set the E-Mail Subject with Delta Chat? <a href="#can-i-set-the-e-mail-subject-with-delta-chat" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Delta Chat sets (and <a href="#message-metadata">encrypts</a>!) the classic e-mail subject
+automatically to  the group name or to the sender name.</p>
+
+<p>So if you want to set the subject yourself,
+for example for a formal e-mail to a business contact,
+you can create a group
+with only yourself and the recipient(s).
+Set the Chat Title to the Subject you want,
+and then send your e-mail as the first message.
+If the recipients don’t use Delta Chat,
+it will look like a normal,
+formal e-mail to them.
+You will get bonus professionalism points
+if you set a <a href="#signature">signature text</a>.</p>
+    
       <h3 id="is-delta-chat-compatibel-met-protonmailtutanotacriptext">
         
         
@@ -1626,59 +1723,6 @@ uses.</li>
 
 <ul>
   <li>Bekijk de pagina <a href="https://github.com/deltachat/deltachat-core-rust/blob/master/standards.md#standards-used-in-delta-chat">Door Delta Chat gebruikte standaarden</a>.</li>
-</ul>
-    
-      <h3 id="security-audits">
-        
-        
-          Heeft Delta Chat ooit onafhankelijke beveiligingscontroles ondergaan? <a href="#security-audits" class="anchor"></a>
-        
-        
-      </h3>
-
-<p>Delta Chat onderging al drie onafhankelijke beveiligingscontroles:</p>
-
-<ul>
-  <li>
-    <p>In 2019 heeft <a href="https://includesecurity.com">Include Security</a> Delta Chats
-<a href="https://github.com/rpgp/rpgp">PGP-</a> en
-<a href="https://github.com/RustCrypto/RSA">RSA-</a>bibliotheken geanalyseerd.
-Er werden geen grote problemen aangetroffen,
-maar wel twee belangrijke die nadien werden opgelost.
-Ook werden enkele redelijk belangrijke en minder belangrijke aan het licht gebracht,
-maar die konden in Delta Chats specifieke implementatie niet worden misbruikt.
-Ondanks dat zijn enkele daarvan nadien alsnog opgelost.
-Het <a href="https://delta.chat/assets/blog/2019-first-security-review.pdf">volledige verslag is hier na te lezen</a>.</p>
-  </li>
-  <li>
-    <p>In 2020 heeft <a href="https://includesecurity.com">Include Security</a> Delta Chats
-Rust-<a href="https://github.com/deltachat/deltachat-core-rust/">kern</a>,
-<a href="https://github.com/async-email/async-imap">imap-</a>,
-<a href="https://github.com/async-email/async-smtp">smtp-</a> en
-<a href="https://github.com/async-email/async-native-tls">tls-</a>bibliotheken geanalyseerd.
-Er werden geen grote problemen aangetroffen.
-Wél werden er een paar redelijk belangrijke zwakheden aangetroffen,
-maar geen die de meeste Delta Chat-gebruikers direct trof
-omdat ze afhankelijk waren van de gebruikte omgeving.
-Omwille van gebruiks- en compatibiliteitsredenen,
-konden we ze niet allemaal oplossen
-en besloten we om beveiligingsaanbevelingen aan getroffen gebruikers te doen.
-Het <a href="https://delta.chat/assets/blog/2020-second-security-review.pdf">volledige verslag is hier na te lezen</a>.</p>
-  </li>
-  <li>
-    <p>Aan het begin van 2023 heeft <a href="https://cure53.de">Cure53</a> de transportversleuteling van
-Delta Chats netwerkverbindingen getest, evenals de e-mailserveropzet zoals
-<a href="https://delta.chat/nl/serverguide">beschreven op onze site</a>.
-Meer informatie over deze test is te lezen <a href="https://delta.chat/en/2023-03-27-third-independent-security-audit">op ons blog</a>
-of in het <a href="https://delta.chat/assets/blog/MER-01-report.pdf">volledige verslag</a>.</p>
-  </li>
-  <li>
-    <p>Beginning 2023, we fixed security and privacy issues with the “web
-apps shared in a chat” feature, related to failures of sandboxing
-especially with Chromium. We subsequently got an independent security
-audit from Cure53 and all issues found were fixed in the 1.36 app series released in April 2023.
-See <a href="https://delta.chat/en/2023-05-22-webxdc-security">here for the full background story on end-to-end security in the web</a>.</p>
-  </li>
 </ul>
     
       <h3 id="hoe-wordt-de-ontwikkeling-van-delta-chat-gefinancierd">
