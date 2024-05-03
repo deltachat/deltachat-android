@@ -41,9 +41,9 @@
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">重新发送</string>
     <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
-    <string name="archive">归档</string>
+    <string name="archive">存档</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
-    <string name="unarchive">解档</string>
+    <string name="unarchive">取消存档</string>
     <string name="mute">静音</string>
     <string name="ephemeral_messages">消息定时销毁</string>
     <string name="ephemeral_messages_hint">对本聊天内使用 Delta Chat 的成员有效；不过，这些成员还是能够保存、复制和转发消息，以及使用其他的电子邮件客户端。</string>
@@ -53,7 +53,7 @@
     <string name="profile">概要</string>
     <string name="main_menu">主菜单</string>
     <string name="start_chat">开始聊天</string>
-    <string name="show_full_message">显示完整消息… </string>
+    <string name="show_full_message">显示完整消息…</string>
     <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
     <string name="mark_all_as_read">将所有标记为已读</string>
     <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
@@ -81,7 +81,7 @@
     <string name="next">下一步</string>
     <string name="error">错误</string>
     <string name="error_x">错误：%1$s</string>
-    <string name="no_app_to_handle_data">无法找到用于处理此类数据的应用程序。</string>
+    <string name="no_app_to_handle_data">找不到用于处理此类数据的应用。</string>
     <string name="no_browser_installed">没有安装浏览器。</string>
     <string name="file_not_found">无法找到 %1$s。</string>
     <string name="copied_to_clipboard">已复制到剪贴板。</string>
@@ -100,10 +100,10 @@
     <string name="last_week">上周</string>
     <string name="last_month">上个月</string>
     <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
-    <string name="last_seen_at">最后见到时间：%1$s</string>
+    <string name="last_seen_at">最后上线于：%1$s</string>
     <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages)-->
-    <string name="last_seen_relative">上次在线 %1$s</string>
-    <string name="last_seen_unknown">最后见到时间：未知</string>
+    <string name="last_seen_relative">最后上线 %1$s</string>
+    <string name="last_seen_unknown">最后上线：未知</string>
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="other">%d 分钟</item>
@@ -129,7 +129,7 @@
     </plurals>
     <!-- Short form for "N Items Selected" -->
     <plurals name="n_selected">
-        <item quantity="other">选中了 %d</item>
+        <item quantity="other">%d 已选择</item>
     </plurals>
 
     <string name="self">我</string>
@@ -207,8 +207,8 @@
     <string name="menu_edit_group">编辑群组</string>
     <string name="menu_group_name_and_image">群组名称和图像</string>
     <string name="menu_show_global_map">显示所有位置</string>
-    <string name="menu_archive_chat">归档聊天</string>
-    <string name="menu_unarchive_chat">解档聊天</string>
+    <string name="menu_archive_chat">存档聊天</string>
+    <string name="menu_unarchive_chat">取消存档聊天</string>
     <string name="menu_add_attachment">添加附件</string>
     <string name="menu_leave_group">离开群组</string>
     <string name="menu_delete_chat">删除聊天</string>
@@ -357,12 +357,12 @@
 
     <!-- chatlist and chat view -->
     <plurals name="chat_archived">
-        <item quantity="other">%d 个聊天已归档</item>
+        <item quantity="other">%d 个聊天已存档</item>
     </plurals>
     <plurals name="chat_unarchived">
-        <item quantity="other">%d 个聊天已解档</item>
+        <item quantity="other">%d 个聊天已取消存档</item>
     </plurals>
-    <string name="chat_archived_chats_title">已归档聊天</string>
+    <string name="chat_archived_chats_title">已存档聊天</string>
     <string name="chat_please_enter_message">请输入消息。</string>
     <string name="chat_camera_unavailable">相机不可用。</string>
     <string name="chat_unable_to_record_audio">无法录制音频。</string>
@@ -377,14 +377,14 @@
     <string name="chat_record_explain">按住来录制语音消息，松开来发送</string>
     <string name="chat_no_chats_yet_title">收件箱为空。\n按“+”来开始新聊天。</string>
     <string name="chat_no_chats_yet_hint">您可以与其他 Delta Chat 用户以及任意电子邮件地址聊天。</string>
-    <string name="chat_all_archived">所有聊天已归档。\n按\"+\"来开始新聊天。</string>
+    <string name="chat_all_archived">所有聊天已存档。\n按“+”来开始新聊天。</string>
     <string name="chat_share_with_title">分享给</string>
     <string name="chat_input_placeholder">输入消息…</string>
-    <string name="chat_archived_label">已归档</string>
+    <string name="chat_archived_label">已存档</string>
     <string name="chat_request_label">请求</string>
     <string name="chat_no_messages">没有消息。</string>
     <string name="chat_self_talk_subtitle">发给自己的消息</string>
-    <string name="archive_empty_hint">被归档的聊天将显示于此。</string>
+    <string name="archive_empty_hint">已存档的聊天将显示在此处。</string>
     <string name="saved_messages">保存的消息</string>
     <string name="saved_messages_explain">• 转发消息于此以便于访问\n\n• 做笔记或语音备忘录\n\n• 附加媒体以保存它们</string>
     <!-- Should match "Saved" from "Saved messages" -->
@@ -629,8 +629,8 @@
     <string name="pref_your_name">您的名称</string>
     <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
     <string name="pref_default_status_label">签名档</string>
-    <string name="pref_enter_sends">回车键发送</string>
-    <string name="pref_enter_sends_explain">按回车键发送文本消息</string>
+    <string name="pref_enter_sends">Enter 键发送</string>
+    <string name="pref_enter_sends_explain">按 Enter 键发送文本消息</string>
     <string name="pref_outgoing_media_quality">发出媒体质量</string>
     <string name="pref_outgoing_balanced">平衡</string>
     <string name="pref_outgoing_worse">体积小，但质量更差</string>
@@ -1111,6 +1111,6 @@
 
 
     <!-- device messages for updates -->
-    <string name="update_1_44_android">变化：\n\n❤️ 耶！等待已久的功能来了： 长按消息做出反应\n\n🔗 如果你无法扫描二维码，将它们分享为邀请链接\n\n🔵 计算所有账户的未读消息并显示在标题中\n\n… 以及修复许多 bug … %1$s\n\n帮助改进应用：使用”设置/高级、发送统计数据\" 帮助开发者为实际使用而更好地优化。发送前你可以查看数据</string>
-    <string name="update_1_44_ios">变化：\n\n❤️ 耶！等待已久的功能来了：长按消息做出反应\n\n🫸 支持PUSH 通知，不过需要提供商像 https://nine.testrun.org 一样支持该功能\n\n🔗 如果你无法扫描二维码，将它们分享为邀请链接\n\n… 以及修复许多 bug … %1$s</string>
+    <string name="update_1_44_android">变化：\n\n❤️ 耶！等待已久的功能来了：长按消息做出回应\n\n🔗 如果你无法扫描二维码，将它们分享为邀请链接\n\n🔵 计算所有账户的未读消息并显示在标题中\n\n… 以及修复许多 bug … %1$s\n\n帮助改进应用：使用“设置/高级、发送统计数据”帮助开发者为实际使用而更好地优化。发送前你可以查看数据</string>
+    <string name="update_1_44_ios">变化：\n\n❤️ 耶！等待已久的功能来了：长按消息做出回应\n\n🫸 支持推送通知，不过需要提供商像 https://nine.testrun.org 一样支持该功能\n\n🔗 如果你无法扫描二维码，将它们分享为邀请链接\n\n… 以及修复许多 bug … %1$s</string>
 </resources>

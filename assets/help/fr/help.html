@@ -9,6 +9,7 @@
       <li><a href="#delta-chat-prend-il-en-charge-les-images-vidéos-et-autres-pièces-jointes-">Delta Chat prend-il en charge les images, vidéos et autres pièces jointes ?</a></li>
       <li><a href="#multiple-accounts">Comment naviguer entre plusieurs comptes et comment en ajouter ?</a></li>
       <li><a href="#qui-peut-voir-ma-photo-de-profil-">Qui peut voir ma photo de profil ?</a></li>
+      <li><a href="#signature">Can I set a Signature Text/Status/Motto with Delta Chat?</a></li>
       <li><a href="#est-ce-que-delta-chat-gère-les-courriels-en-html-">Est-ce que Delta Chat gère les courriels en HTML ?</a></li>
       <li><a href="#pourquoi-dois-je-entrer-le-mot-de-passe-de-mon-compte-de-courriel-dans-delta-chat--est-ce-sécurisé-">Pourquoi dois-je entrer le mot de passe de mon compte de courriel dans Delta Chat ? Est-ce sécurisé ?</a></li>
       <li><a href="#de-quelles-autorisations-delta-chat-a-t-il-besoin">De quelles autorisations Delta Chat a-t-il besoin?</a></li>
@@ -52,6 +53,7 @@
       <li><a href="#is-end-to-end-encryption-of-delta-chat-as-safe-as-signal">Is end-to-end encryption of Delta Chat as safe as Signal?</a></li>
       <li><a href="#puis-je-ré-utiliser-ma-clé-privée-existante-">Puis-je ré-utiliser ma clé privée existante ?</a></li>
       <li><a href="#je-narrive-pas-à-importer-ma-clé-pgp-existante-dans-delta-chat">Je n’arrive pas à importer ma clé PGP existante dans Delta Chat.</a></li>
+      <li><a href="#security-audits">Est-ce qu’un audit indépendant des failles de sécurité a été réalisé sur Delta Chat ?</a></li>
     </ul>
   </li>
   <li><a href="#multiclient">Multi-client</a>
@@ -87,9 +89,9 @@
       <li><a href="#est-ce-que-delta-chat-fonctionne-avec-mon-fournisseur-de-courriel-">Est-ce que Delta Chat fonctionne avec <em>mon</em> fournisseur de courriel ?</a></li>
       <li><a href="#je-veux-administrer-mon-propre-serveur-courriel-pour-delta-chat--que-me-conseillez-vous-">Je veux administrer mon propre serveur courriel pour Delta Chat : que me conseillez-vous ?</a></li>
       <li><a href="#si-delta-chat-se-base-sur-le-courrier-électronique-est-ce-vraiment-une-messagerie-instantanée">Si Delta Chat se base sur le courrier électronique, est-ce vraiment une messagerie <em>instantanée</em>?</a></li>
+      <li><a href="#can-i-set-the-e-mail-subject-with-delta-chat">Can I set the E-Mail Subject with Delta Chat?</a></li>
       <li><a href="#delta-chat-est-il-compatible-avec-protonmail--tutanota--criptext-">Delta Chat est-il compatible avec Protonmail / Tutanota / Criptext ?</a></li>
       <li><a href="#les-détails-techniques-mintéressent-pouvez-vous-men-dire-plus-">Les détails techniques m’intéressent. Pouvez-vous m’en dire plus ?</a></li>
-      <li><a href="#security-audits">Est-ce qu’un audit indépendant des failles de sécurité a été réalisé sur Delta Chat ?</a></li>
       <li><a href="#comment-est-financé-le-développement-de-delta-chat-">Comment est financé le développement de Delta Chat ?</a></li>
     </ul>
   </li>
@@ -230,6 +232,22 @@ recevoir de messages de cette personne, nous vous conseillons de la <em>bloquer<
     <p>Votre photo de profil n’est pas envoyée avec chaque message, mais assez régulièrement pour que vos contacts aient une photo à jour même s’ils ajoutent un nouvel appareil.</p>
   </li>
 </ul>
+    
+      <h3 id="signature">
+        
+        
+          Can I set a Signature Text/Status/Motto with Delta Chat? <a href="#signature" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Yes,
+you can do so under “Settings &gt; Profile &gt; Signature Text”.
+Your contacts who use Delta Chat will see it
+when they view your contact details.
+To everyone else,
+It will appear as an e-mail signature
+below the text of all your messages.</p>
     
       <h3 id="est-ce-que-delta-chat-gère-les-courriels-en-html-">
         
@@ -601,8 +619,7 @@ Share the QR image with the other side either in person or through a second chan
   <li>
     <p>Direct 1:1 chat invitation: 
 Tap the QR Code icon <img style="vertical-align:middle; width:1.8em; margin:1px" src="../qr-icon.png" />
-on the Delta Chat app main screen – 
-on Desktop the QR Icon is in the left-side sandwich menu.
+on the Delta Chat app main screen.
 Share the QR image with the other side either in person or through a second channel.</p>
   </li>
 </ul>
@@ -612,8 +629,7 @@ Share the QR image with the other side either in person or through a second chan
 <ul>
   <li>
     <p>Tap the QR Code icon <img style="vertical-align:middle; width:1.8em; margin:1px" src="../qr-icon.png" />
-on the Delta Chat app main screen – 
-on Desktop the QR Icon is in the left-side sandwich menu.</p>
+on the Delta Chat app main screen.</p>
   </li>
   <li>
     <p>Choose “SCAN QR CODE” and scan the QR Code 
@@ -1080,6 +1096,47 @@ Néanmoins, nous essayons de gérer les clés privées d’autant de sources que
 <p>La méthode pour retirer le mot de passe de la clé privée dépend du logiciel que vous utilisez pour gérer vos clés GPG. Avec Enigmail, vous pouvez définir votre mot de passe en laissant le champ vide dans la fenêtre de Gestion des Clés. Avec GnuPG, vous pouvez le définir <a href="https://github.com/deltachat/deltachat-android/issues/98#issuecomment-378383429">avec la ligne de commande</a>.
 Pour les autres programmes, vous devriez pouvoir trouver la solution en ligne.</p>
     
+      <h3 id="security-audits">
+        
+        
+          Est-ce qu’un audit indépendant des failles de sécurité a été réalisé sur Delta Chat ? <a href="#security-audits" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Quatre audits indépendants ont été réalisés sur le projet Delta Chat ces dernières années :</p>
+
+<ul>
+  <li>
+    <p>2024 March, we received a deep security analysis from the Applied Cryptography
+research group at ETH Zuerich and addressed all raised issues. 
+See our blog post about <a href="https://delta.chat/en/2024-03-25-crypto-analysis-securejoin">Hardening Guaranteed End-to-End encryption</a> for more detailed information.</p>
+  </li>
+  <li>
+    <p>Début 2023, nous avons réparé les failles de sécurité et de confidentialité de la fonctionnalité “partage d’appli web dans une discussion” liées à des dysfonctionnements en mode bac à sable, en particulier avec Chromium. Après quoi, nous avons soumis Delta Chat à un nouvel audit de sécurité indépendant par Cure53, puis effectué les réparations de toutes les failles découvertes pour la version 1.36 de nos applications, publiée en avril 2023. 
+Vous trouverez <a href="https://delta.chat/en/2023-05-22-webxdc-security">ici un article de fond complet à propos de la sécurité du chiffrement de bout-en-bout sur internet</a>.</p>
+  </li>
+  <li>
+    <p>Début 2023, <a href="https://cure53.de">Cure53</a> a analysé le chiffrement d’acheminement des connexions réseau de Delta Chat et testé une configuration de serveur de courriel reproductible, telle que <a href="https://delta.chat/fr/serverguide">recommandée sur ce site</a>.
+Vous trouverez plus d’informations sur cet audit <a href="https://delta.chat/en/2023-03-27-third-independent-security-audit">sur notre blog</a> ou dans <a href="https://delta.chat/assets/blog/MER-01-report.pdf">le rapport complet ici</a>.</p>
+  </li>
+  <li>
+    <p>En 2020, <a href="https://includesecurity.com">Include Security</a> a analysé les <a href="https://github.com/deltachat/deltachat-core-rust/">bibliothèques principales</a> Rust de Delta Chat, ainsi que ses bibliothèques <a href="https://github.com/async-email/async-imap">IMAP</a>, <a href="https://github.com/async-email/async-smtp">SMTP</a> et <a href="https://github.com/async-email/async-native-tls">TLS</a>.
+Aucun problème grave ou critique n’a été découvert.
+Le rapport a tout de même révélé quelques vulnérabilités de gravité moyenne, qui ne représentent pas une menace en elles-mêmes pour les utilisateurs et les utilisatrices de Delta Chat, car elles dépendent de l’environnement dans lequel Delta Chat est utilisé.
+Pour des raison de compatibilité et de facilité d’utilisation, nous ne pouvons pas les pallier toutes et avons préféré fournir des préconisations de sécurité aux personnes exposées.
+Le rapport complet <a href="https://delta.chat/assets/blog/2020-second-security-review.pdf">est consultable ici</a>.</p>
+  </li>
+  <li>
+    <p>En 2019, <a href="https://includesecurity.com">Include Security</a> a analysé les bibliothèques <a href="https://github.com/rpgp/rpgp">PGP</a> et
+<a href="https://github.com/RustCrypto/RSA">RSA</a> de Delta Chat.
+Aucune faille critique n’a été trouvée, mais deux failles sévères ont été identifiées et immédiatement réparées par nos soins.
+Une faille de gravité moyenne ainsi que quelques failles de gravité moindre ont également été découvertes, sans qu’il soit toutefois possible de les exploiter dans le fonctionnement de Delta Chat.
+Nous en avons néanmoins réparées certaines depuis le rapport d’audit.
+Le rapport complet <a href="https://delta.chat/assets/blog/2019-first-security-review.pdf">est consultable ici</a>.</p>
+  </li>
+</ul>
+    
       <h2 id="multiclient">
         
         
@@ -1501,6 +1558,29 @@ Cependant, il faut activer des options spéciales pour que cela fonctionne corre
 Pour plus d’informations, voir <a href="https://dontkillmyapp.com/">dontkillmyapp.com</a>.</li>
 </ul>
     
+      <h3 id="can-i-set-the-e-mail-subject-with-delta-chat">
+        
+        
+          Can I set the E-Mail Subject with Delta Chat? <a href="#can-i-set-the-e-mail-subject-with-delta-chat" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Delta Chat sets (and <a href="#message-metadata">encrypts</a>!) the classic e-mail subject
+automatically to  the group name or to the sender name.</p>
+
+<p>So if you want to set the subject yourself,
+for example for a formal e-mail to a business contact,
+you can create a group
+with only yourself and the recipient(s).
+Set the Chat Title to the Subject you want,
+and then send your e-mail as the first message.
+If the recipients don’t use Delta Chat,
+it will look like a normal,
+formal e-mail to them.
+You will get bonus professionalism points
+if you set a <a href="#signature">signature text</a>.</p>
+    
       <h3 id="delta-chat-est-il-compatible-avec-protonmail--tutanota--criptext-">
         
         
@@ -1532,45 +1612,6 @@ uses.</li>
 
 <ul>
   <li>Consultez les <a href="https://github.com/deltachat/deltachat-core-rust/blob/master/standards.md#standards-used-in-delta-chat">standards utilisés dans Delta Chat</a>.</li>
-</ul>
-    
-      <h3 id="security-audits">
-        
-        
-          Est-ce qu’un audit indépendant des failles de sécurité a été réalisé sur Delta Chat ? <a href="#security-audits" class="anchor"></a>
-        
-        
-      </h3>
-
-<p>Quatre audits indépendants ont été réalisés sur le projet Delta Chat ces dernières années :</p>
-
-<ul>
-  <li>
-    <p>En 2019, <a href="https://includesecurity.com">Include Security</a> a analysé les bibliothèques <a href="https://github.com/rpgp/rpgp">PGP</a> et
-<a href="https://github.com/RustCrypto/RSA">RSA</a> de Delta Chat.
-Aucune faille critique n’a été trouvée, mais deux failles sévères ont été identifiées et immédiatement réparées par nos soins.
-Une faille de gravité moyenne ainsi que quelques failles de gravité moindre ont également été découvertes, sans qu’il soit toutefois possible de les exploiter dans le fonctionnement de Delta Chat.
-Nous en avons néanmoins réparées certaines depuis le rapport d’audit.
-Le rapport complet <a href="https://delta.chat/assets/blog/2019-first-security-review.pdf">est consultable ici</a>.</p>
-  </li>
-  <li>
-    <p>En 2020, <a href="https://includesecurity.com">Include Security</a> a analysé les <a href="https://github.com/deltachat/deltachat-core-rust/">bibliothèques principales</a> Rust de Delta Chat, ainsi que ses bibliothèques <a href="https://github.com/async-email/async-imap">IMAP</a>, <a href="https://github.com/async-email/async-smtp">SMTP</a> et <a href="https://github.com/async-email/async-native-tls">TLS</a>.
-Aucun problème grave ou critique n’a été découvert.
-Le rapport a tout de même révélé quelques vulnérabilités de gravité moyenne, qui ne représentent pas une menace en elles-mêmes pour les utilisateurs et les utilisatrices de Delta Chat, car elles dépendent de l’environnement dans lequel Delta Chat est utilisé.
-Pour des raison de compatibilité et de facilité d’utilisation, nous ne pouvons pas les pallier toutes et avons préféré fournir des préconisations de sécurité aux personnes exposées.
-Le rapport complet <a href="https://delta.chat/assets/blog/2020-second-security-review.pdf">est consultable ici</a>.</p>
-  </li>
-  <li>
-    <p>Début 2023, <a href="https://cure53.de">Cure53</a> a analysé le chiffrement d’acheminement des connexions réseau de Delta Chat et testé une configuration de serveur de courriel reproductible, telle que <a href="https://delta.chat/fr/serverguide">recommandée sur ce site</a>.
-Vous trouverez plus d’informations sur cet audit <a href="https://delta.chat/en/2023-03-27-third-independent-security-audit">sur notre blog</a> ou dans <a href="https://delta.chat/assets/blog/MER-01-report.pdf">le rapport complet ici</a>.</p>
-  </li>
-  <li>
-    <p>Beginning 2023, we fixed security and privacy issues with the “web
-apps shared in a chat” feature, related to failures of sandboxing
-especially with Chromium. We subsequently got an independent security
-audit from Cure53 and all issues found were fixed in the 1.36 app series released in April 2023.
-See <a href="https://delta.chat/en/2023-05-22-webxdc-security">here for the full background story on end-to-end security in the web</a>.</p>
-  </li>
 </ul>
     
       <h3 id="comment-est-financé-le-développement-de-delta-chat-">

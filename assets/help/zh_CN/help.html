@@ -9,12 +9,13 @@
       <li><a href="#delta-chat-支持图像视频和其他附件吗">Delta Chat 支持图像、视频和其他附件吗？</a></li>
       <li><a href="#multiple-accounts">如何添加账户或在多个账户之间切换？</a></li>
       <li><a href="#谁会看见我的个人资料图片">谁会看见我的个人资料图片？</a></li>
+      <li><a href="#signature">我可以为 Delta Chat 设置签名文本/状态/格言吗？</a></li>
       <li><a href="#delta-chat-支持-html-电子邮件吗">Delta Chat 支持 HTML 电子邮件吗？</a></li>
       <li><a href="#为什么我必须在-delta-chat-中输入我的电子邮件密码-这样安全吗">为什么我必须在 Delta Chat 中输入我的电子邮件密码？ 这样安全吗？</a></li>
       <li><a href="#delta-chat-需要哪些权限">Delta Chat 需要哪些权限？</a></li>
       <li><a href="#固定静音归档是什么意思">固定、静音、归档是什么意思？</a></li>
       <li><a href="#绿色圆点代表什么">绿色圆点代表什么？</a></li>
-      <li><a href="#ephemeralmsgs">How do disappearing messages work?</a></li>
+      <li><a href="#ephemeralmsgs">消息定时销毁是如何工作的？</a></li>
       <li><a href="#如何删除我的账户">如何删除我的账户？</a></li>
     </ul>
   </li>
@@ -29,10 +30,10 @@
       <li><a href="#delold">打开“从设备删除旧消息”后，会发生什么？</a></li>
     </ul>
   </li>
-  <li><a href="#encryption-and-security">Encryption and Security</a>
+  <li><a href="#加密和安全">加密和安全</a>
     <ul>
-      <li><a href="#which-standards-are-used-for-end-to-end-encryption">Which standards are used for end-to-end encryption?</a></li>
-      <li><a href="#whene2e">How can i know if messages are end-to-end encrypted?</a></li>
+      <li><a href="#端到端加密使用了哪些标准-">端到端加密使用了哪些标准 ？</a></li>
+      <li><a href="#我如何知道信息是否经过端到端加密whene2e">我如何知道信息是否经过端到端加密？{#whene2e}</a></li>
       <li><a href="#howtoe2ee">How can I get guaranteed end-to-end encryption and green checkmarks?</a></li>
       <li><a href="#e2eeguarantee">What does the green checkmark and “guaranteed end-to-end encryption” mean?</a></li>
       <li><a href="#nocryptanymore">A contact “sent a message from another device”, what can i do?</a></li>
@@ -52,6 +53,7 @@
       <li><a href="#is-end-to-end-encryption-of-delta-chat-as-safe-as-signal">Is end-to-end encryption of Delta Chat as safe as Signal?</a></li>
       <li><a href="#我可以重复使用现有的私钥吗">我可以重复使用现有的私钥吗？</a></li>
       <li><a href="#我无法将现有的-pgp-密钥导入-delta-chat">我无法将现有的 PGP 密钥导入 Delta Chat。</a></li>
+      <li><a href="#security-audits">Was Delta Chat independently audited for security vulnerabilities?</a></li>
     </ul>
   </li>
   <li><a href="#multiclient">多客户端</a>
@@ -87,9 +89,9 @@
       <li><a href="#delta-chat-可用于-我的-电子邮件提供商吗">Delta Chat 可用于 <em>我的</em> 电子邮件提供商吗？</a></li>
       <li><a href="#i-want-to-manage-my-own-e-mail-server-for-delta-chat-what-do-you-recommend">I want to manage my own e-mail server for Delta Chat. What do you recommend?</a></li>
       <li><a href="#使用电子邮件的-delta-chat-真的是-即时-通讯工具吗">使用电子邮件的 Delta Chat 真的是 <em>即时</em> 通讯工具吗？</a></li>
+      <li><a href="#can-i-set-the-e-mail-subject-with-delta-chat">Can I set the E-Mail Subject with Delta Chat?</a></li>
       <li><a href="#delta-chat-与-protonmail--tutanota--criptext-兼容吗">Delta Chat 与 Protonmail / Tutanota / Criptext 兼容吗？</a></li>
       <li><a href="#我对技术细节很感兴趣能告诉我更多吗">我对技术细节很感兴趣。能告诉我更多吗？</a></li>
-      <li><a href="#security-audits">Was Delta Chat independently audited for security vulnerabilities?</a></li>
       <li><a href="#delta-chat-的开发是如何被资助的">Delta Chat 的开发是如何被资助的?</a></li>
     </ul>
   </li>
@@ -128,16 +130,15 @@
       </h3>
 
 <ul>
-  <li><em>Independent</em> of any company or services. <em>You</em> own your data.</li>
-  <li>Your data is not saved on a central server unless all users are using
-the same e-mail servers</li>
-  <li>You do not distribute your address book to anyone.</li>
-  <li><em>Fast</em> by the use of Push-IMAP.</li>
-  <li><em>Largest userbase</em> - recipients <em>not</em> using Delta Chat can be reached as well.</li>
-  <li><em>No Spam</em> - only messages of known users are shown by default.</li>
-  <li><em>End-to-end encryption</em> via Autocrypt.</li>
-  <li><em>Copyleft</em> and <em>Standards</em> based libre software.</li>
-  <li><em>Flexible identity</em> with built-in support for <a href="#multiple-accounts">multiple accounts</a></li>
+  <li><em>独立</em> 于任何公司或服务。<em>您</em> 拥有您的数据。</li>
+  <li>您的数据不会保存于中央服务器，除非所有用户都在使用同一个电子邮件服务器。</li>
+  <li>您不会将通讯录分发给任何人。</li>
+  <li><em>快速</em>——使用 Push-IMAP。</li>
+  <li><em>最广泛的用户基础</em>——也可以与 <em>不</em> 使用 Delta Chat 的收件人进行联系。</li>
+  <li><em>没有垃圾信息</em>——默认情况下仅显示已知用户的消息。</li>
+  <li><em>端到端加密</em>——通过 Autocrypt。</li>
+  <li>基于 <em>著佐权</em> 与 <em>标准</em> 的自由软件。</li>
+  <li><em>身份灵活</em>，内置<a href="#multiple-accounts">多账户</a>支持。</li>
 </ul>
     
       <h3 id="哪些消息会在-delta-chat-中出现">
@@ -185,7 +186,7 @@ the same e-mail servers</li>
     <p>是的。除纯文本外，所有电子邮件附件均显示为单独的消息。发出消息会根据需要自动获得附件。</p>
   </li>
   <li>
-    <p>For performance, images are optimized and sent at a smaller size by default, but you can send it as a “file” to preserve the original.</p>
+    <p>为了提高性能，默认情况下会对图像进行优化并以较小的尺寸发送，但您也可以将其作为 “文件 “发送，以保留原始图像。</p>
   </li>
 </ul>
     
@@ -197,13 +198,13 @@ the same e-mail servers</li>
         
       </h3>
 
-<p>You can easily work with additional accounts on Delta Chat mobile and desktop clients by clicking either:</p>
+<p>您可以在Delta Chat 移动和桌面客户端上轻松使用其他账户，只需点击以下任一按钮：</p>
 <ul>
-  <li>on the menu button and then ‘Switch Account’ (Android and desktop)</li>
-  <li>or the profile icon and then ‘Add Account’ (iOS)</li>
+  <li>菜单按钮，然后点击 “切换账户”（安卓和桌面客户端）</li>
+  <li>或个人资料图标，然后点击 “添加账户”（iOS）</li>
 </ul>
 
-<p>You may also wish to learn <a href="#multiclient">how to add accounts to multiple devices</a>.</p>
+<p>您可能还想了解 <a href="#multiclient">如何为多个设备添加账户</a>。</p>
     
       <h3 id="谁会看见我的个人资料图片">
         
@@ -228,6 +229,20 @@ the same e-mail servers</li>
   </li>
 </ul>
     
+      <h3 id="signature">
+        
+        
+          我可以为 Delta Chat 设置签名文本/状态/格言吗？ <a href="#signature" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>是的，
+您可以在“设置 &gt; 个人资料 &gt; 签名文本”下执行此操作。
+使用 Delta Chat 的联系人查看您的联系方式时将会看到它。
+对其他所有人来说，
+它将显示为在您所有消息文本下方的电子邮件签名。</p>
+    
       <h3 id="delta-chat-支持-html-电子邮件吗">
         
         
@@ -236,8 +251,8 @@ the same e-mail servers</li>
         
       </h3>
 
-<p>Yes, incoming HTML messages come with a “Show full message” button. 
-Outgoing messages always use plain text.</p>
+<p>是的，收到的 HTML 邮件会有一个 “显示完整消息 “按钮。 
+发出的邮件始终使用纯文本。</p>
     
       <h3 id="为什么我必须在-delta-chat-中输入我的电子邮件密码-这样安全吗">
         
@@ -323,8 +338,8 @@ Outgoing messages always use plain text.</p>
     <p><strong>静音聊天</strong>，如果您不想再得到关于它们的通知。被静音的聊天会呆在原地，并且您可以固定被静音的聊天。</p>
   </li>
   <li>
-    <p><strong>Archive chats</strong> if you do not want to see them in your chat list any longer.
-Archived chats remain accessible above the chat list or via search.</p>
+    <p>如果您不想再在聊天列表中看到聊天记录，请<strong>归档聊天</strong>。
+已归档的聊天仍可在聊天列表上方或通过搜索访问。</p>
   </li>
   <li>
     <p>当被归档的聊天接收到一条新消息，除非其被静音，它会<strong>从归档中弹出</strong>并返回聊天列表。
@@ -344,38 +359,29 @@ Archived chats remain accessible above the chat list or via search.</p>
       </h3>
 
 <ul>
-  <li>Since Delta Chat 1.34 you can sometimes see a “green dot” next to the avatar
-of a contact. It means they were “recently seen”.</li>
-  <li>In detail: it means, that in the last 10 minutes, Delta Chat has seen them:
+  <li>自 Delta Chat 1.34 版起，您有时可以在联系人头像旁看到一个 “绿点”。
+绿点。这意味着他们 “最近被看到”。</li>
+  <li>具体来说：这意味着在过去 10 分钟内，Delta Chat 看到过他们：
     <ul>
-      <li>either because they messaged you directly,</li>
-      <li>because they wrote something to a group you are both a member of,</li>
-      <li>because they sent you a read receipt for a message you wrote,</li>
-      <li>or because they sent data to your Delta Chat app by using a
-<a href="#webxdc">webxdc app</a>.</li>
+      <li>因为他们直接给你发了消息、</li>
+      <li>因为他们在你们都是成员的群组里写了什么、</li>
+      <li>因为他们向您发送了您所写信息的读取回执、</li>
     </ul>
   </li>
-  <li>So this is not a real time online status - and if someone doesn’t answer
-right away even though they seem to be online, don’t worry and give them some
-space ;-)</li>
-  <li>On the other hand, others will not always “see that you are online”. If you
-have turned off read receipts, they will not see the green dot until you
-message them or write to a group they’re in as well.</li>
+  <li>或者因为他们通过使用 <a href="#webxdc">webxdc 应用程序</a> 向您的 Delta Chat 应用发送数据。</li>
+  <li>因此，这并不是实时在线状态 – 如果有人没有立即回复，即使他们看起来是在线的，也不要担心，给他们一些空间 ;-)</li>
+  <li>另一方面，别人也不会总是 “看到你在线”。如果您关闭了读取收据功能，他们就不会看到绿点，直到您给他们发消息或给他们所在的群组写信。</li>
 </ul>
     
       <h3 id="ephemeralmsgs">
         
         
-          How do disappearing messages work? <a href="#ephemeralmsgs" class="anchor"></a>
+          消息定时销毁是如何工作的？ <a href="#ephemeralmsgs" class="anchor"></a>
         
         
       </h3>
 
-<p>You can turn on “disappearing messages”
-in the settings of a chat,
-at the top right of the chat window,
-by selecting a time span
-between 1 minute and 5 weeks.</p>
+<p>您可以在聊天窗口右上角的聊天设置中通过选择 1 分钟到 5 周之间的时间跨度打开“消息定时销毁”。</p>
 
 <p>Until the setting is turned off again,
 each chat member’s Delta Chat app takes care
@@ -530,18 +536,18 @@ All e-mails received by Delta Chat will be deleted from the server after this ti
   <li>找到“聊天与媒体”设置中的“从设备删除旧消息”，在从“一小时后”到“一年后”的一系列选项中选择一个。这样，设备上 <em>所有</em> 比所选择时间长度老的消息将被删除。</li>
 </ul>
     
-      <h2 id="encryption-and-security">
+      <h2 id="加密和安全">
         
         
-          Encryption and Security <a href="#encryption-and-security" class="anchor"></a>
+          加密和安全 <a href="#加密和安全" class="anchor"></a>
         
         
       </h2>
     
-      <h3 id="which-standards-are-used-for-end-to-end-encryption">
+      <h3 id="端到端加密使用了哪些标准-">
         
         
-          Which standards are used for end-to-end encryption? <a href="#which-standards-are-used-for-end-to-end-encryption" class="anchor"></a>
+          端到端加密使用了哪些标准 ？ <a href="#端到端加密使用了哪些标准-" class="anchor"></a>
         
         
       </h3>
@@ -559,10 +565,10 @@ Chats marked with a green checkmark
 <img style="vertical-align:middle; width:1.5em; margin:1px" src="../green-checkmark.png" alt="green checkmark" />
 guarantee end-to-end encrypted messages.</p>
     
-      <h3 id="whene2e">
+      <h3 id="我如何知道信息是否经过端到端加密whene2e">
         
         
-          How can i know if messages are end-to-end encrypted? <a href="#whene2e" class="anchor"></a>
+          我如何知道信息是否经过端到端加密？{#whene2e} <a href="#我如何知道信息是否经过端到端加密whene2e" class="anchor"></a>
         
         
       </h3>
@@ -600,8 +606,7 @@ Share the QR image with the other side either in person or through a second chan
   <li>
     <p>Direct 1:1 chat invitation: 
 Tap the QR Code icon <img style="vertical-align:middle; width:1.8em; margin:1px" src="../qr-icon.png" />
-on the Delta Chat app main screen – 
-on Desktop the QR Icon is in the left-side sandwich menu.
+on the Delta Chat app main screen.
 Share the QR image with the other side either in person or through a second channel.</p>
   </li>
 </ul>
@@ -611,8 +616,7 @@ Share the QR image with the other side either in person or through a second chan
 <ul>
   <li>
     <p>Tap the QR Code icon <img style="vertical-align:middle; width:1.8em; margin:1px" src="../qr-icon.png" />
-on the Delta Chat app main screen – 
-on Desktop the QR Icon is in the left-side sandwich menu.</p>
+on the Delta Chat app main screen.</p>
   </li>
   <li>
     <p>Choose “SCAN QR CODE” and scan the QR Code 
@@ -1077,6 +1081,65 @@ Use the ASCII armored format and an <code class="language-plaintext highlighter-
 
 <p>移除私钥密码的操作取决于您用于管理 PGP 密钥的软件。对于 Enigmail，您可以在密钥管理窗口中将密码设为空值。 对于 GnuPG，您可以<a href="https://github.com/deltachat/deltachat-android/issues/98#issuecomment-378383429">通过命令行</a>来进行设置。对于其他程序，您应该能在网上找到解决方案。</p>
     
+      <h3 id="security-audits">
+        
+        
+          Was Delta Chat independently audited for security vulnerabilities? <a href="#security-audits" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>The Delta Chat project underwent four independent security audits and one
+independent security analysis, from most recent to older:</p>
+
+<ul>
+  <li>
+    <p>2024 March, we received a deep security analysis from the Applied Cryptography
+research group at ETH Zuerich and addressed all raised issues. 
+See our blog post about <a href="https://delta.chat/en/2024-03-25-crypto-analysis-securejoin">Hardening Guaranteed End-to-End encryption</a> for more detailed information.</p>
+  </li>
+  <li>
+    <p>2023 April, we fixed security and privacy issues with the “web
+apps shared in a chat” feature, related to failures of sandboxing
+especially with Chromium. We subsequently got an independent security
+audit from Cure53 and all issues found were fixed in the 1.36 app series released in April 2023.
+See <a href="https://delta.chat/en/2023-05-22-webxdc-security">here for the full background story on end-to-end security in the web</a>.</p>
+  </li>
+  <li>
+    <p>2023 March, <a href="https://cure53.de">Cure53</a> analyzed both the transport encryption of
+Delta Chat’s network connections and a reproducible mail server setup as
+<a href="https://delta.chat/zh_CN/serverguide">recommended on this site</a>.
+You can read more about the audit <a href="https://delta.chat/en/2023-03-27-third-independent-security-audit">on our blog</a>
+or read the <a href="https://delta.chat/assets/blog/MER-01-report.pdf">full report here</a>.</p>
+  </li>
+  <li>
+    <p>2020, <a href="https://includesecurity.com">Include Security</a> analyzed Delta
+Chat’s Rust <a href="https://github.com/deltachat/deltachat-core-rust/">core</a>,
+<a href="https://github.com/async-email/async-imap">IMAP</a>,
+<a href="https://github.com/async-email/async-smtp">SMTP</a>, and
+<a href="https://github.com/async-email/async-native-tls">TLS</a> libraries.
+It did not find any critical or high-severity issues.
+The report raised a few medium-severity weaknesses -
+they are no threat to Delta Chat users on their own
+because they depend on the environment in which Delta Chat is used.
+For usability and compatibility reasons,
+we can not mitigate all of them
+and decided to provide security recommendations to threatened users.
+You can read the <a href="https://delta.chat/assets/blog/2020-second-security-review.pdf">full report here</a>.</p>
+  </li>
+  <li>
+    <p>2019, <a href="https://includesecurity.com">Include Security</a> analyzed Delta
+Chat’s <a href="https://github.com/rpgp/rpgp">PGP</a> and
+<a href="https://github.com/RustCrypto/RSA">RSA</a> libraries.
+It found no critical issues,
+but two high-severity issues that we subsequently fixed.
+It also revealed one medium-severity and some less severe issues,
+but there was no way to exploit these vulnerabilities in the Delta Chat implementation.
+Some of them we nevertheless fixed since the audit was concluded.
+You can read the <a href="https://delta.chat/assets/blog/2019-first-security-review.pdf">full report here</a>.</p>
+  </li>
+</ul>
+    
       <h2 id="multiclient">
         
         
@@ -1497,6 +1560,29 @@ blogpost</a>.</li>
   <li>另外，对于很多正常应用来说，Android 和 iOS 杀掉后台应用是一个问题。更多信息，请参阅 <a href="https://dontkillmyapp.com/">dontkillmyapp.com</a>。</li>
 </ul>
     
+      <h3 id="can-i-set-the-e-mail-subject-with-delta-chat">
+        
+        
+          Can I set the E-Mail Subject with Delta Chat? <a href="#can-i-set-the-e-mail-subject-with-delta-chat" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Delta Chat sets (and <a href="#message-metadata">encrypts</a>!) the classic e-mail subject
+automatically to  the group name or to the sender name.</p>
+
+<p>So if you want to set the subject yourself,
+for example for a formal e-mail to a business contact,
+you can create a group
+with only yourself and the recipient(s).
+Set the Chat Title to the Subject you want,
+and then send your e-mail as the first message.
+If the recipients don’t use Delta Chat,
+it will look like a normal,
+formal e-mail to them.
+You will get bonus professionalism points
+if you set a <a href="#signature">signature text</a>.</p>
+    
       <h3 id="delta-chat-与-protonmail--tutanota--criptext-兼容吗">
         
         
@@ -1528,59 +1614,6 @@ uses.</li>
 
 <ul>
   <li>请参阅 <a href="https://github.com/deltachat/deltachat-core-rust/blob/master/standards.md#standards-used-in-delta-chat">Delta Chat 中使用的标准</a>。</li>
-</ul>
-    
-      <h3 id="security-audits">
-        
-        
-          Was Delta Chat independently audited for security vulnerabilities? <a href="#security-audits" class="anchor"></a>
-        
-        
-      </h3>
-
-<p>The Delta Chat project underwent four independent security audits in the last years:</p>
-
-<ul>
-  <li>
-    <p>In 2019, <a href="https://includesecurity.com">Include Security</a> analyzed Delta
-Chat’s <a href="https://github.com/rpgp/rpgp">PGP</a> and
-<a href="https://github.com/RustCrypto/RSA">RSA</a> libraries.
-It found no critical issues,
-but two high-severity issues that we subsequently fixed.
-It also revealed one medium-severity and some less severe issues,
-but there was no way to exploit these vulnerabilities in the Delta Chat implementation.
-Some of them we nevertheless fixed since the audit was concluded.
-You can read the <a href="https://delta.chat/assets/blog/2019-first-security-review.pdf">full report here</a>.</p>
-  </li>
-  <li>
-    <p>In 2020, <a href="https://includesecurity.com">Include Security</a> analyzed Delta
-Chat’s Rust <a href="https://github.com/deltachat/deltachat-core-rust/">core</a>,
-<a href="https://github.com/async-email/async-imap">IMAP</a>,
-<a href="https://github.com/async-email/async-smtp">SMTP</a>, and
-<a href="https://github.com/async-email/async-native-tls">TLS</a> libraries.
-It did not find any critical or high-severity issues.
-The report raised a few medium-severity weaknesses -
-they are no threat to Delta Chat users on their own
-because they depend on the environment in which Delta Chat is used.
-For usability and compatibility reasons,
-we can not mitigate all of them
-and decided to provide security recommendations to threatened users.
-You can read the <a href="https://delta.chat/assets/blog/2020-second-security-review.pdf">full report here</a>.</p>
-  </li>
-  <li>
-    <p>Beginning 2023, <a href="https://cure53.de">Cure53</a> analyzed both the transport encryption of
-Delta Chat’s network connections and a reproducible mail server setup as
-<a href="https://delta.chat/zh_CN/serverguide">recommended on this site</a>.
-You can read more about the audit <a href="https://delta.chat/en/2023-03-27-third-independent-security-audit">on our blog</a>
-or read the <a href="https://delta.chat/assets/blog/MER-01-report.pdf">full report here</a>.</p>
-  </li>
-  <li>
-    <p>Beginning 2023, we fixed security and privacy issues with the “web
-apps shared in a chat” feature, related to failures of sandboxing
-especially with Chromium. We subsequently got an independent security
-audit from Cure53 and all issues found were fixed in the 1.36 app series released in April 2023.
-See <a href="https://delta.chat/en/2023-05-22-webxdc-security">here for the full background story on end-to-end security in the web</a>.</p>
-  </li>
 </ul>
     
       <h3 id="delta-chat-的开发是如何被资助的">
