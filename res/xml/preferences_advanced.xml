@@ -1,6 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory>
+
+        <Preference android:key="pref_view_log"
+            android:title="@string/pref_view_log"/>
+
+        <Preference android:key="pref_self_reporting"
+            android:title="@string/send_stats_to_devs"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/pref_experimental_features">
+
+        <Preference android:key="pref_webrtc_instance"
+            android:title="@string/videochat_instance"
+            android:summary="@string/none"/>
+
+        <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="pref_new_broadcast_list"
+            android:title="@string/broadcast_lists"/>
+
+        <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="pref_location_streaming_enabled"
+            android:title="@string/pref_on_demand_location_streaming"/>
+
+        <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="pref_developer_mode_enabled"
+            android:summary="@string/pref_developer_mode_explain"
+            android:title="@string/pref_developer_mode"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/pref_app_access">
+
+        <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="pref_screen_security"
+            android:summary="@string/pref_screen_security_explain"
+            android:title="@string/pref_screen_security" />
+
+        <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="pref_incognito_keyboard"
+            android:summary="@string/pref_incognito_keyboard_explain"
+            android:title="@string/pref_incognito_keyboard" />
+
+        <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="pref_builtin_camera"
+            android:title="@string/pref_use_inapp_camera"
+            android:summary="@string/pref_use_inapp_camera_explain"/>
+
+        <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="pref_show_system_contacts"
+            android:title="@string/pref_show_system_contacts"
+            android:summary="@string/pref_show_system_contacts_explain"/>
+
+    </PreferenceCategory>
+
     <PreferenceCategory android:title="@string/pref_encryption">
 
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
@@ -17,8 +80,7 @@
 
     </PreferenceCategory>
 
-
-    <PreferenceCategory android:title="@string/pref_imap_folder_handling">
+    <PreferenceCategory android:title="@string/pref_password_and_account_settings">
 
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:defaultValue="true"
@@ -44,65 +106,4 @@
 
     </PreferenceCategory>
 
-
-    <PreferenceCategory android:title="@string/pref_app_access">
-        <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
-            android:defaultValue="false"
-            android:key="pref_screen_security"
-            android:summary="@string/pref_screen_security_explain"
-            android:title="@string/pref_screen_security" />
-
-        <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
-            android:defaultValue="false"
-            android:key="pref_incognito_keyboard"
-            android:summary="@string/pref_incognito_keyboard_explain"
-            android:title="@string/pref_incognito_keyboard" />
-
-        <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
-            android:defaultValue="false"
-            android:key="pref_builtin_camera"
-            android:title="@string/pref_use_inapp_camera"
-            android:summary="@string/pref_use_inapp_camera_explain"/>
-
-        <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
-            android:defaultValue="false"
-            android:key="pref_show_system_contacts"
-            android:title="@string/pref_show_system_contacts"
-            android:summary="@string/pref_show_system_contacts_explain"/>
-    </PreferenceCategory>
-
-
-    <PreferenceCategory android:title="@string/pref_experimental_features">
-
-        <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
-            android:defaultValue="false"
-            android:key="pref_new_broadcast_list"
-            android:title="@string/broadcast_lists"/>
-
-        <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
-            android:defaultValue="false"
-            android:key="pref_location_streaming_enabled"
-            android:title="@string/pref_on_demand_location_streaming"/>
-
-        <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
-            android:defaultValue="false"
-            android:key="pref_developer_mode_enabled"
-            android:summary="@string/pref_developer_mode_explain"
-            android:title="@string/pref_developer_mode"/>
-
-        <Preference android:key="pref_webrtc_instance"
-            android:title="@string/videochat_instance"
-            android:summary="@string/none"/>
-
-        <Preference android:key="pref_self_reporting"
-            android:title="@string/send_stats_to_devs"/>
-
-    </PreferenceCategory>
-
-
-    <PreferenceCategory android:title="@string/pref_other">
-
-        <Preference android:key="pref_view_log"
-                    android:title="@string/pref_view_log"/>
-    </PreferenceCategory>
 </PreferenceScreen>
