@@ -82,7 +82,7 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="@string/manual_account_setup_option">
+    <PreferenceCategory android:title="@string/pref_server">
 
         <Preference android:key="password_account_settings_button"
             android:title="@string/pref_password_and_account_settings"/>
