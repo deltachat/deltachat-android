@@ -69,6 +69,9 @@ public class FcmReceiveService extends FirebaseMessagingService {
   @Override
   public void onMessageReceived(@NonNull RemoteMessage remoteMessage) {
     Log.i(TAG, "FCM push notification received");
+    // the app is running (again) now and fetching and notifications should be processed as usual.
+    // to support accounts that do not send PUSH notifications and for simplicity,
+    // we just let the app run as long as possible.
   }
 
   @Override
