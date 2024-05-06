@@ -748,7 +748,9 @@
     <string name="autodel_after_1_year">Sau 1 năm</string>
 
     <!-- autocrypt -->
+    <!-- deprecated, used "Encryption" if a headline is needed -->
     <string name="autocrypt">Autocrypt</string>
+    <!-- deprecated, the button "Send Autocrypt Setup Message" is enough -->
     <string name="autocrypt_explain">Autocrypt là một đặc tả mới và mở để mã hóa e-mail hai đầu tự động.\n\nThiết lập hai đầu của bạn được tạo tự động khi cần và bạn có thể chuyển nó giữa các thiết bị bằng Tin nhắn thiết lập Autocrypt.</string>
     <string name="autocrypt_send_asm_title">Gửi tin nhắn thiết lập Autocrypt</string>
     <string name="autocrypt_send_asm_explain_before">Thông báo thiết lập Autocrypt chia sẻ an toàn thiết lập end-to-end của bạn với các ứng dụng tương thích Autocrypt khác.\n\nThiết lập sẽ được mã hóa bằng mã thiết lập được hiển thị ở đây và phải được nhập trên thiết bị kia.</string>

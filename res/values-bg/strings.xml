@@ -723,7 +723,9 @@
     <string name="autodel_after_1_year">След 1 година</string>
 
     <!-- autocrypt -->
+    <!-- deprecated, used "Encryption" if a headline is needed -->
     <string name="autocrypt">Autocrypt</string>
+    <!-- deprecated, the button "Send Autocrypt Setup Message" is enough -->
     <string name="autocrypt_explain">Autocrypt е нова отворена спецификация за автоматично криптиране на електронна поща \"от край до край\".\n\n Вашата настройка за криптиране \"от край до край\" се създава автоматично, когато това е необходимо; можете да я пренасяте между различни устройства с помощта на съобщения за настройка на Autocrypt</string>
     <string name="autocrypt_send_asm_title">Изпращане на съобщение за настройка на Autocrypt</string>
     <string name="autocrypt_send_asm_explain_before">Съобщението за настройка на Autocrypt споделя по сигурен начин Вашата настройка за криптиране \"от край до край\" с други съвместими с Autorcypt приложения.\n\nНастройката се криптира с код, който се показва тук и трябва да бъде въведен на другото устройство.</string>

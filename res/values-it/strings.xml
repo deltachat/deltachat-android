@@ -563,7 +563,7 @@
     <!-- Primary button on the welcome screen, allows to create an instant account -->
     <string name="onboarding_create_instant_account">Iniziamo!</string>
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup", "Manual Login"  -->
-    <string name="onboarding_alternative_logins">Ho Già un Accesso</string>
+    <string name="onboarding_alternative_logins">Ho Già un Account</string>
     <!-- Button, allows to log in to existing email accounts, setting ports, passwords and so on -->
     <string name="manual_account_setup_option">Accesso Manuale</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
@@ -817,7 +817,9 @@
     <string name="autodel_after_1_year">Dopo 1 anno</string>
 
     <!-- autocrypt -->
+    <!-- deprecated, used "Encryption" if a headline is needed -->
     <string name="autocrypt">Autocrypt</string>
+    <!-- deprecated, the button "Send Autocrypt Setup Message" is enough -->
     <string name="autocrypt_explain">Autocrypt è una nuova specifica aperta per la cifratura end-to-end delle email.\n\nLa tua configurazione end-to-end viene creata automaticamente quando necessario e puoi trasferirla tra dispositivi tramite i Messaggi di configurazione.</string>
     <string name="autocrypt_send_asm_title">Messaggio di Configurazione Autocrypt </string>
     <string name="autocrypt_send_asm_explain_before">Un \'Messaggio di configurazione Autocrypt\' condivide in sicurezza le tue impostazioni end-to-end con altre app compatibili. Le impostazioni sono criptate con un codice mostrato qui che deve essere inserito nell\'altro dispositivo.</string>

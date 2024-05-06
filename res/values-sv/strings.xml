@@ -518,7 +518,9 @@
     <string name="autodel_after_1_year">Efter 1 år</string>
 
     <!-- autocrypt -->
+    <!-- deprecated, used "Encryption" if a headline is needed -->
     <string name="autocrypt">Autocrypt</string>
+    <!-- deprecated, the button "Send Autocrypt Setup Message" is enough -->
     <string name="autocrypt_explain">Autocrypt är en ny och öppen specifikation för automatisk slutpunkt-till-slutpunkt e-postkryptering.\n\nDin slutpunkt-till-slutpunkt-inställning skapas automatiskt vid behov och du kan överföra den mellan olika enheter med Autocrypt inställningsmeddelanden.</string>
     <string name="autocrypt_send_asm_title">Skicka Autocrypt inställningsmeddelande</string>
     <string name="autocrypt_send_asm_explain_before">Ett meddelande för att ställa in Autocrypt, delar den informationen med andra Autocrypt-anpassade program på ett säkert sätt. Informationen krypteras med en kod som visas här och som måste matas in på den mottagande enheten.</string>

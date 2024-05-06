@@ -467,7 +467,9 @@
     <string name="pref_show_emails_accepted_contacts">顯示已接受的聯絡人</string>
     <string name="pref_show_emails_all">所有郵件</string>
     <!-- autocrypt -->
+    <!-- deprecated, used "Encryption" if a headline is needed -->
     <string name="autocrypt">Autocrypt</string>
+    <!-- deprecated, the button "Send Autocrypt Setup Message" is enough -->
     <string name="autocrypt_explain">AutoCrypt是一種新的 email 端到端自動加密的開放規格。\n\n你的端到端設定會按需求自動新增，並且可以轉移到其它可開啟AutoCrypt設定訊息(ASM)的設備。</string>
     <string name="autocrypt_send_asm_title">傳送AutoCrypt設定訊息</string>
     <string name="autocrypt_send_asm_explain_before">「AutoCrypt設定訊息」可以安全地和你使用的其它支援AutoCrypt的 app 共享端到端加密設定。\n\n本訊息含一組設定碼，請在其它支援的設備中輸入這組設定碼。</string>
