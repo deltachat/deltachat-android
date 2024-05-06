@@ -36,6 +36,7 @@ import com.google.zxing.integration.android.IntentResult;
 import com.soundcloud.android.crop.Crop;
 
 import org.thoughtcrime.securesms.components.AvatarSelector;
+import org.thoughtcrime.securesms.connect.AccountManager;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.contacts.avatars.ResourceContactPhoto;
@@ -63,6 +64,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
   private static final String DEFAULT_CHATMAIL_HOST = "nine.testrun.org";
 
   public static final String QR_ACCOUNT_EXTRA = "qr_account_extra";
+  public static final String FROM_WELCOME = "from_welcome";
   private static final int REQUEST_CODE_AVATAR = 1;
 
   private ImageView avatar;
@@ -70,6 +72,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
   private TextView privacyPolicyBtn;
   private Button signUpBtn;
 
+  private boolean fromWelcome;
   private boolean avatarChanged;
   private boolean imageLoaded;
   private String providerHost;
@@ -90,6 +93,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
     Objects.requireNonNull(getSupportActionBar()).setTitle(R.string.instant_onboarding_title);
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+    fromWelcome  = getIntent().getBooleanExtra(FROM_WELCOME, false);
     isDcLogin = false;
     providerHost = DEFAULT_CHATMAIL_HOST;
     providerQrData = DCACCOUNT + ":https://" + providerHost + "/new";
@@ -112,7 +116,16 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
   public boolean onOptionsItemSelected(@NonNull MenuItem item) {
     super.onOptionsItemSelected(item);
     if (item.getItemId() == android.R.id.home) {
-      getOnBackPressedDispatcher().onBackPressed();
+      if (fromWelcome) {
+        getOnBackPressedDispatcher().onBackPressed();
+      } else {
+        AccountManager accountManager = AccountManager.getInstance();
+        if (accountManager.canRollbackAccountCreation(this)) {
+          accountManager.rollbackAccountCreation(this);
+        } else {
+          getOnBackPressedDispatcher().onBackPressed();
+        }
+      }
       return true;
     }
     return false;

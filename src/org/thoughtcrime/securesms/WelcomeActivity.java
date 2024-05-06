@@ -165,7 +165,9 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
     }
 
     private void startInstantOnboardingActivity() {
-        startActivity(new Intent(this, InstantOnboardingActivity.class));
+        Intent intent = new Intent(this, InstantOnboardingActivity.class);
+        intent.putExtra(InstantOnboardingActivity.FROM_WELCOME, true);
+        startActivity(intent);
     }
 
     private void startAddAsSecondDeviceActivity() {
