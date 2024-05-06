@@ -231,6 +231,10 @@ You have 2 ways to do this:
 
 Android metadata and changelogs are translated using [Weblate](https://hosted.weblate.org/projects/deltachat/android-metadata/).
 
+<a href="https://hosted.weblate.org/engage/deltachat/">
+<img src="https://hosted.weblate.org/widget/deltachat/android-metadata/svg-badge.svg" alt="Translation status" />
+</a>
+
 # Credits
 
 The user interface classes are based on the Signal messenger.
