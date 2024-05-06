@@ -50,6 +50,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 public class WelcomeActivity extends BaseActionBarActivity implements DcEventCenter.DcEventDelegate {
+    public static final String BACKUP_QR_EXTRA = "backup_qr_extra";
     public static final int PICK_BACKUP = 20574;
     private final static String TAG = WelcomeActivity.class.getSimpleName();
     public static final String TMP_BACKUP_FILE = "tmp-backup-file";
@@ -136,6 +137,16 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         setIntent(intent);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        String backupQr = getIntent().getStringExtra(BACKUP_QR_EXTRA);
+        if (backupQr != null) {
+            getIntent().removeExtra(BACKUP_QR_EXTRA);
+            startQrAccountCreation(backupQr);
+        }
     }
 
     @Override

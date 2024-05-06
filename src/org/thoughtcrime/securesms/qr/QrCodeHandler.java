@@ -79,7 +79,7 @@ public class QrCodeHandler {
                 builder.setTitle(R.string.multidevice_receiver_title);
                 builder.setMessage(activity.getString(R.string.multidevice_receiver_scanning_ask) + "\n\n" + activity.getString(R.string.multidevice_same_network_hint));
                 builder.setPositiveButton(R.string.perm_continue, (dialog, which) -> {
-                  AccountManager.getInstance().addAccountFromQr(activity, rawString);
+                  AccountManager.getInstance().addAccountFromSecondDevice(activity, rawString);
                 });
                 builder.setNegativeButton(R.string.cancel, null);
                 builder.setCancelable(false);
