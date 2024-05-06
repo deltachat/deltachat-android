@@ -35,7 +35,6 @@ import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.AttachmentManager;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.qr.BackupTransferActivity;
-import org.thoughtcrime.securesms.qr.QrCodeHandler;
 import org.thoughtcrime.securesms.qr.RegistrationQrActivity;
 import org.thoughtcrime.securesms.service.GenericForegroundService;
 import org.thoughtcrime.securesms.service.NotificationController;
@@ -51,9 +50,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 public class WelcomeActivity extends BaseActionBarActivity implements DcEventCenter.DcEventDelegate {
-    public static final String QR_ACCOUNT_EXTRA = "qr_account_extra";
-    private static final String DCACCOUNT = "dcaccount";
-    private static final String DCLOGIN = "dclogin";
     public static final int PICK_BACKUP = 20574;
     private final static String TAG = WelcomeActivity.class.getSimpleName();
     public static final String TMP_BACKUP_FILE = "tmp-backup-file";
@@ -70,15 +66,30 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
         super.onCreate(bundle);
         setContentView(R.layout.welcome_activity);
 
-        Button loginButton = findViewById(R.id.login_button);
-        View addAsSecondDeviceButton = findViewById(R.id.add_as_second_device_button);
-        View scanQrButton = findViewById(R.id.scan_qr_button);
-        View backupButton = findViewById(R.id.backup_button);
+        Button signUpButton = findViewById(R.id.signup_button);
+        Button signInButton = findViewById(R.id.signin_button);
 
-        loginButton.setOnClickListener((view) -> startRegistrationActivity());
-        addAsSecondDeviceButton.setOnClickListener((view) -> startAddAsSecondDeviceActivity());
-        scanQrButton.setOnClickListener((view) -> startRegistrationQrActivity());
-        backupButton.setOnClickListener((view) -> startImportBackup());
+        View view = View.inflate(this, R.layout.login_options_view, null);
+        AlertDialog signInDialog = new AlertDialog.Builder(this)
+          .setView(view)
+          .setTitle(R.string.onboarding_alternative_logins)
+          .setNegativeButton(R.string.cancel, null)
+          .create();
+        view.findViewById(R.id.add_as_second_device_button).setOnClickListener((v) -> {
+          startAddAsSecondDeviceActivity();
+          signInDialog.dismiss();
+        });
+        view.findViewById(R.id.backup_button).setOnClickListener((v) -> {
+          startImportBackup();
+          signInDialog.dismiss();
+        });
+        view.findViewById(R.id.login_button).setOnClickListener((v) -> {
+          startRegistrationActivity();
+          signInDialog.dismiss();
+        });
+
+        signUpButton.setOnClickListener((v) -> startInstantOnboardingActivity());
+        signInButton.setOnClickListener((v) -> signInDialog.show());
 
         registerForEvents();
         initializeActionBar();
@@ -92,8 +103,6 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
           intent.setAction(DC_REQUEST_ACCOUNT_DATA);
           sendBroadcast(intent);
         }
-
-        handleIntent();
     }
 
     protected void initializeActionBar() {
@@ -107,21 +116,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
 
     private void registerForEvents() {
         dcContext = DcHelper.getContext(this);
-        DcEventCenter eventCenter = DcHelper.getEventCenter(this);
-        eventCenter.addObserver(DcContext.DC_EVENT_CONFIGURE_PROGRESS, this);
-        eventCenter.addObserver(DcContext.DC_EVENT_IMEX_PROGRESS, this);
-    }
-
-    private void handleIntent() {
-        if (getIntent() != null && Intent.ACTION_VIEW.equals(getIntent().getAction())) {
-            Uri uri = getIntent().getData();
-            if (uri == null) return;
-
-            if (uri.getScheme().equalsIgnoreCase(DCACCOUNT) || uri.getScheme().equalsIgnoreCase(DCLOGIN)) {
-                QrCodeHandler qrCodeHandler = new QrCodeHandler(this);
-                qrCodeHandler.handleQrData(uri.toString());
-            }
-        }
+        DcHelper.getEventCenter(this).addObserver(DcContext.DC_EVENT_IMEX_PROGRESS, this);
     }
 
     @Override
@@ -141,18 +136,6 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         setIntent(intent);
-        handleIntent();
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        String qrAccount = getIntent().getStringExtra(QR_ACCOUNT_EXTRA);
-        if (qrAccount!=null) {
-            getIntent().removeExtra(QR_ACCOUNT_EXTRA);
-            manualConfigure = false;
-            startQrAccountCreation(qrAccount);
-        }
     }
 
     @Override
@@ -172,9 +155,8 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
         startActivity(intent);
     }
 
-    private void startRegistrationQrActivity() {
-        manualConfigure = false;
-        new IntentIntegrator(this).setCaptureActivity(RegistrationQrActivity.class).initiateScan();
+    private void startInstantOnboardingActivity() {
+        startActivity(new Intent(this, InstantOnboardingActivity.class));
     }
 
     private void startAddAsSecondDeviceActivity() {
@@ -355,19 +337,12 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
         progressDialog.setMessage(getResources().getString(R.string.one_moment)+String.format(" %d%%", percent));
     }
 
-    private void progressSuccess(boolean enterDisplayname) {
+    private void progressSuccess() {
         DcHelper.getEventCenter(this).endCaptureNextError();
         progressDialog.dismiss();
-
-        if (enterDisplayname) {
-            Intent intent = new Intent(getApplicationContext(), CreateProfileActivity.class);
-            intent.putExtra(CreateProfileActivity.FROM_WELCOME, true);
-            startActivity(intent);
-        } else {
-            Intent intent = new Intent(getApplicationContext(), ConversationListActivity.class);
-            intent.putExtra(ConversationListActivity.FROM_WELCOME, true);
-            startActivity(intent);
-        }
+        Intent intent = new Intent(getApplicationContext(), ConversationListActivity.class);
+        intent.putExtra(ConversationListActivity.FROM_WELCOME, true);
+        startActivity(intent);
         finish();
     }
 
@@ -413,29 +388,9 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
             }
             else if (progress==1000/*done*/) {
                 DcHelper.getAccounts(this).startIo();
-                progressSuccess(false);
+                progressSuccess();
                 notificationController.close();
                 cleanupTempBackupFile();
-            }
-        }
-        else if (manualConfigure && eventId==DcContext.DC_EVENT_CONFIGURE_PROGRESS) {
-            long progress = event.getData1Int();
-            if (progress==1000/*done*/) {
-                DcHelper.getAccounts(this).startIo();
-                finish(); // remove ourself from the activity stack (finishAffinity is available in API 16, we're targeting API 14)
-            }
-        }
-        else if (!manualConfigure && eventId==DcContext.DC_EVENT_CONFIGURE_PROGRESS) {
-            long progress = event.getData1Int();
-            if (progress==0/*error/aborted*/) {
-                progressError(event.getData2Str());
-            }
-            else if (progress<1000/*progress in permille*/) {
-                progressUpdate((int)progress);
-            }
-            else if (progress==1000/*done*/) {
-                DcHelper.getAccounts(this).startIo();
-                progressSuccess(true);
             }
         }
     }
@@ -451,17 +406,6 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
             String qrRaw = scanResult.getContents();
             DcLot qrParsed = dcContext.checkQr(qrRaw);
             switch (qrParsed.getState()) {
-                case DcContext.DC_QR_ACCOUNT:
-                case DcContext.DC_QR_LOGIN:
-                    final String scope = qrParsed.getText1();
-                    new AlertDialog.Builder(this)
-                            .setMessage(getString(qrParsed.getState() == DcContext.DC_QR_ACCOUNT ? R.string.qraccount_ask_create_and_login : R.string.qrlogin_ask_login, scope))
-                            .setPositiveButton(R.string.ok, (dialog, which) -> startQrAccountCreation(qrRaw))
-                            .setNegativeButton(R.string.cancel, null)
-                            .setCancelable(false)
-                            .show();
-                    break;
-
                 case DcContext.DC_QR_BACKUP:
                     new AlertDialog.Builder(this)
                             .setTitle(R.string.multidevice_receiver_title)

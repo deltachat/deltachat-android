@@ -227,7 +227,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
       DcHelper.getNotificationCenter(this).removeAllNotifiations(accountId);
     }
     if (accountId != dcContext.getAccountId()) {
-      AccountManager.getInstance().switchAccountAndStartActivity(this, accountId, null);
+      AccountManager.getInstance().switchAccountAndStartActivity(this, accountId);
     }
 
     refreshAvatar();

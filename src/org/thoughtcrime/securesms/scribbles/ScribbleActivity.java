@@ -11,6 +11,10 @@ public class ScribbleActivity extends PassphraseRequiredActionBarActivity {
   public static final String CROP_AVATAR              = "crop_avatar";
   ImageEditorFragment imageEditorFragment;
 
+  protected boolean allowInLockedMode() {
+    return getIntent().getBooleanExtra(CROP_AVATAR, false);
+  }
+
   @Override
   protected void onPreCreate() {
     dynamicTheme = new DynamicNoActionBarTheme();
