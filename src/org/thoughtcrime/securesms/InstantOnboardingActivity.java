@@ -77,8 +77,8 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
   private boolean isDcLogin;
 
   private AttachmentManager attachmentManager;
-  private Bitmap avatarBmp = null;
-  private ProgressDialog progressDialog = null;
+  private Bitmap avatarBmp;
+  private ProgressDialog progressDialog;
   private DcContext dcContext;
 
   @Override
