@@ -20,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -72,7 +73,6 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
   private TextView privacyPolicyBtn;
   private Button signUpBtn;
 
-  private boolean fromWelcome;
   private boolean avatarChanged;
   private boolean imageLoaded;
   private String providerHost;
@@ -93,7 +93,19 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
     Objects.requireNonNull(getSupportActionBar()).setTitle(R.string.instant_onboarding_title);
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-    fromWelcome  = getIntent().getBooleanExtra(FROM_WELCOME, false);
+    boolean fromWelcome  = getIntent().getBooleanExtra(FROM_WELCOME, false);
+    getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(!fromWelcome) {
+      @Override
+      public void handleOnBackPressed() {
+        AccountManager accountManager = AccountManager.getInstance();
+        if (accountManager.canRollbackAccountCreation(InstantOnboardingActivity.this)) {
+          accountManager.rollbackAccountCreation(InstantOnboardingActivity.this);
+        } else {
+          finish();
+        }
+      }
+    });
+
     isDcLogin = false;
     providerHost = DEFAULT_CHATMAIL_HOST;
     providerQrData = DCACCOUNT + ":https://" + providerHost + "/new";
@@ -116,16 +128,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
   public boolean onOptionsItemSelected(@NonNull MenuItem item) {
     super.onOptionsItemSelected(item);
     if (item.getItemId() == android.R.id.home) {
-      if (fromWelcome) {
-        getOnBackPressedDispatcher().onBackPressed();
-      } else {
-        AccountManager accountManager = AccountManager.getInstance();
-        if (accountManager.canRollbackAccountCreation(this)) {
-          accountManager.rollbackAccountCreation(this);
-        } else {
-          getOnBackPressedDispatcher().onBackPressed();
-        }
-      }
+      getOnBackPressedDispatcher().onBackPressed();
       return true;
     }
     return false;
