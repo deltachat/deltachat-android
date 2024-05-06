@@ -121,8 +121,7 @@
           android:gravity="end"
           android:padding="16dp"
           android:text="@string/qrscan_title"
-          android:textColor="@color/delta_accent"
-          android:textSize="16sp"/>
+          android:textColor="@color/gray50"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
   </LinearLayout>
