@@ -150,19 +150,19 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
   }
 
   private void setProviderFromQr(String rawQr) {
-        DcLot qrParsed = dcContext.checkQr(rawQr);
-        boolean isDcLogin = qrParsed.getState() == DcContext.DC_QR_LOGIN;
-        if (isDcLogin || qrParsed.getState() == DcContext.DC_QR_ACCOUNT) {
-          this.isDcLogin = isDcLogin;
-          providerHost = qrParsed.getText1();
-          providerQrData = rawQr;
-          updateProvider();
-        } else {
-          new AlertDialog.Builder(this)
-            .setMessage(R.string.qraccount_qr_code_cannot_be_used)
-            .setPositiveButton(R.string.ok, null)
-            .show();
-        }
+    DcLot qrParsed = dcContext.checkQr(rawQr);
+    boolean isDcLogin = qrParsed.getState() == DcContext.DC_QR_LOGIN;
+    if (isDcLogin || qrParsed.getState() == DcContext.DC_QR_ACCOUNT) {
+      this.isDcLogin = isDcLogin;
+      providerHost = qrParsed.getText1();
+      providerQrData = rawQr;
+      updateProvider();
+    } else {
+      new AlertDialog.Builder(this)
+        .setMessage(R.string.qraccount_qr_code_cannot_be_used)
+        .setPositiveButton(R.string.ok, null)
+        .show();
+    }
   }
 
   @Override
