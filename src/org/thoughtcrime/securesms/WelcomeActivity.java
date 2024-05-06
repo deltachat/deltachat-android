@@ -56,7 +56,6 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
     public static final String TMP_BACKUP_FILE = "tmp-backup-file";
     public static final String DC_REQUEST_ACCOUNT_DATA = "chat.delta.DC_REQUEST_ACCOUNT_DATA";
 
-    private boolean manualConfigure = true; // false: configure by QR account creation
     private ProgressDialog progressDialog = null;
     private boolean imexUserAborted;
     DcContext dcContext;
@@ -161,7 +160,6 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
     }
 
     private void startRegistrationActivity() {
-        manualConfigure = true;
         Intent intent = new Intent(this, RegistrationActivity.class);
         startActivity(intent);
     }
@@ -171,7 +169,6 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
     }
 
     private void startAddAsSecondDeviceActivity() {
-        manualConfigure = false;
         new IntentIntegrator(this).setCaptureActivity(RegistrationQrActivity.class)
           .addExtra(RegistrationQrActivity.ADD_AS_SECOND_DEVICE_EXTRA, true)
           .initiateScan();
