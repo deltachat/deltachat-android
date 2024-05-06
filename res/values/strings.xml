@@ -499,7 +499,8 @@
     <string name="multidevice_same_network_hint">Make sure both devices are on the same Wi-Fi or network</string>
     <string name="multidevice_this_creates_a_qr_code">This creates a QR code that the second device can scan to copy the account.</string>
     <string name="multidevice_install_dc_on_other_device">Install Delta Chat on your other device (https://get.delta.chat)</string>
-    <string name="multidevice_tap_scan_on_other_device">Start Delta Chat, tap “Add as Second Device” and scan the code shown here</string>
+    <!-- "I Already Have a Login / Add as Second Device” should be the same text as defined by the keys onboarding_alternative_logins and multidevice_receiver_title -->
+    <string name="multidevice_tap_scan_on_other_device">Start Delta Chat, tap “I Already Have a Login / Add as Second Device” and scan the code shown here</string>
     <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and/or address eg. "Scan to set up second device for Alice (alice@example.org)" -->
     <string name="multidevice_qr_subtitle">Scan to set up second device for %1$s</string>
     <string name="multidevice_receiver_title">Add as Second Device</string>
