@@ -60,7 +60,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
   private static final String DCACCOUNT = "dcaccount";
   private static final String DCLOGIN = "dclogin";
   private static final String INSTANCES_URL = "https://delta.chat/chatmail";
-  private static final String DEF_CHATMAIL_HOST = "nine.testrun.org";
+  private static final String DEFAULT_CHATMAIL_HOST = "nine.testrun.org";
 
   public static final String QR_ACCOUNT_EXTRA = "qr_account_extra";
   private static final int REQUEST_CODE_AVATAR = 1;
@@ -91,7 +91,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
     isDcLogin = false;
-    providerHost = DEF_CHATMAIL_HOST;
+    providerHost = DEFAULT_CHATMAIL_HOST;
     providerQrData = DCACCOUNT + ":https://" + providerHost + "/new";
     attachmentManager = new AttachmentManager(this, () -> {});
     avatarChanged = false;
@@ -262,7 +262,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
     } else {
       signUpBtn.setText(R.string.instant_onboarding_create);
       privacyPolicyBtn.setTextColor(getResources().getColor(R.color.delta_accent));
-      if (DEF_CHATMAIL_HOST.equals(providerHost)) {
+      if (DEFAULT_CHATMAIL_HOST.equals(providerHost)) {
         privacyPolicyBtn.setText(R.string.instant_onboarding_agree_default);
       } else {
         privacyPolicyBtn.setText(getString(R.string.instant_onboarding_agree_instance, providerHost));
