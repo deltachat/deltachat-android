@@ -96,7 +96,7 @@
           android:text="@string/instant_onboarding_show_more_instances"
           android:textColor="@color/gray50"/>
 
-      <TextView
+      <androidx.legacy.widget.Space
           android:id="@+id/separator"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
@@ -105,10 +105,7 @@
           app:layout_constraintTop_toTopOf="parent"
           app:layout_constraintBottom_toBottomOf="parent"
           android:paddingLeft="16dp"
-          android:paddingRight="16dp"
-          android:text=" "
-          android:textSize="16sp"
-          android:textColor="@color/gray50" />
+          android:paddingRight="16dp" />
 
       <TextView
           android:id="@+id/scan_qr_button"
