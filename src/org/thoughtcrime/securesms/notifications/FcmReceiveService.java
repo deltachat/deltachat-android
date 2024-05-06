@@ -20,10 +20,18 @@ import org.thoughtcrime.securesms.util.Util;
 
 public class FcmReceiveService extends FirebaseMessagingService {
   private static final String TAG = FcmReceiveService.class.getSimpleName();
-  private static String prefixedToken;
+  private static final Object INIT_LOCK = new Object();
+  private static boolean initialized;
+  private static volatile String prefixedToken;
 
   public static void register(Context context) {
     if (Build.VERSION.SDK_INT < 19) {
+      Log.w(TAG, "FCM not available on SDK < 19");
+      return;
+    }
+
+    if (FcmReceiveService.prefixedToken != null) {
+      Log.i(TAG, "FCM already registered");
       return;
     }
 
@@ -31,9 +39,14 @@ public class FcmReceiveService extends FirebaseMessagingService {
       final String rawToken;
 
       try {
-        // manual init: read tokens from `./google-services.json`;
-        // automatic init disabled in AndroidManifest.xml to skip FCM code completely.
-        FirebaseApp.initializeApp(context);
+        synchronized (INIT_LOCK) {
+          if (!initialized) {
+            // manual init: read tokens from `./google-services.json`;
+            // automatic init disabled in AndroidManifest.xml to skip FCM code completely.
+            FirebaseApp.initializeApp(context);
+          }
+          initialized = true;
+        }
         rawToken = Tasks.await(FirebaseMessaging.getInstance().getToken());
       } catch (Exception e) {
         // we're here usually when FCM is not available and initializeApp() or getToken() failed.
@@ -45,11 +58,7 @@ public class FcmReceiveService extends FirebaseMessagingService {
         return;
       }
 
-      String prefixedToken = addPrefix(rawToken);
-      synchronized (FcmReceiveService.TAG) {
-        FcmReceiveService.prefixedToken = prefixedToken;
-      }
-
+      prefixedToken = addPrefix(rawToken);
       Log.w(TAG, "FCM token: " + prefixedToken);
       ApplicationContext.dcAccounts.setPushDeviceToken(prefixedToken);
     });
@@ -61,9 +70,7 @@ public class FcmReceiveService extends FirebaseMessagingService {
 
   @Nullable
   public static String getToken() {
-    synchronized (FcmReceiveService.TAG) {
-      return FcmReceiveService.prefixedToken;
-    }
+    return prefixedToken;
   }
 
   @Override
@@ -76,11 +83,7 @@ public class FcmReceiveService extends FirebaseMessagingService {
 
   @Override
   public void onNewToken(@NonNull String rawToken) {
-    String prefixedToken = addPrefix(rawToken)  ;
-    synchronized (FcmReceiveService.TAG) {
-      FcmReceiveService.prefixedToken = prefixedToken;
-    }
-
+    prefixedToken = addPrefix(rawToken);
     Log.i(TAG, "new FCM token: " + prefixedToken);
     ApplicationContext.dcAccounts.setPushDeviceToken(prefixedToken);
   }
