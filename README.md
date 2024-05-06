@@ -227,6 +227,10 @@ You have 2 ways to do this:
 
 2. Or set them via environment variables.
 
+# Translations
+
+Android metadata and changelogs are translated using [Weblate](https://hosted.weblate.org/projects/deltachat/android-metadata/).
+
 # Credits
 
 The user interface classes are based on the Signal messenger.
