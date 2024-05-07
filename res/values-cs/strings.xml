@@ -454,6 +454,7 @@
     <string name="media_preview">Náhled multimedia</string>
     <string name="send_message">Pošli zprávu</string>
     <string name="multidevice_install_dc_on_other_device">Nainstalujte si Delta Chat do druhého zařízení (https://get.delta.chat)</string>
+    <!-- "I Already Have a Login / Add as Second Device” should be the same text as defined by the keys onboarding_alternative_logins and multidevice_receiver_title -->
     <string name="multidevice_tap_scan_on_other_device">Spusťte Delta Chat, klepněte na „Přidat jako druhé zařízení“ a naskenujte zde zobrazený kód</string>
     <string name="welcome_chat_over_email">Chat přes e-mail.</string>
     <string name="login_title">Přihlaš se</string>
