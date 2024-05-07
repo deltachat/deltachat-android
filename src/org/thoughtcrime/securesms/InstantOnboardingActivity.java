@@ -20,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -36,6 +37,7 @@ import com.google.zxing.integration.android.IntentResult;
 import com.soundcloud.android.crop.Crop;
 
 import org.thoughtcrime.securesms.components.AvatarSelector;
+import org.thoughtcrime.securesms.connect.AccountManager;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.contacts.avatars.ResourceContactPhoto;
@@ -63,6 +65,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
   private static final String DEFAULT_CHATMAIL_HOST = "nine.testrun.org";
 
   public static final String QR_ACCOUNT_EXTRA = "qr_account_extra";
+  public static final String FROM_WELCOME = "from_welcome";
   private static final int REQUEST_CODE_AVATAR = 1;
 
   private ImageView avatar;
@@ -89,6 +92,19 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
 
     Objects.requireNonNull(getSupportActionBar()).setTitle(R.string.instant_onboarding_title);
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+    boolean fromWelcome  = getIntent().getBooleanExtra(FROM_WELCOME, false);
+    getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(!fromWelcome) {
+      @Override
+      public void handleOnBackPressed() {
+        AccountManager accountManager = AccountManager.getInstance();
+        if (accountManager.canRollbackAccountCreation(InstantOnboardingActivity.this)) {
+          accountManager.rollbackAccountCreation(InstantOnboardingActivity.this);
+        } else {
+          finish();
+        }
+      }
+    });
 
     isDcLogin = false;
     providerHost = DEFAULT_CHATMAIL_HOST;

@@ -50,12 +50,12 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 public class WelcomeActivity extends BaseActionBarActivity implements DcEventCenter.DcEventDelegate {
+    public static final String BACKUP_QR_EXTRA = "backup_qr_extra";
     public static final int PICK_BACKUP = 20574;
     private final static String TAG = WelcomeActivity.class.getSimpleName();
     public static final String TMP_BACKUP_FILE = "tmp-backup-file";
     public static final String DC_REQUEST_ACCOUNT_DATA = "chat.delta.DC_REQUEST_ACCOUNT_DATA";
 
-    private boolean manualConfigure = true; // false: configure by QR account creation
     private ProgressDialog progressDialog = null;
     private boolean imexUserAborted;
     DcContext dcContext;
@@ -139,6 +139,16 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
     }
 
     @Override
+    public void onStart() {
+        super.onStart();
+        String backupQr = getIntent().getStringExtra(BACKUP_QR_EXTRA);
+        if (backupQr != null) {
+            getIntent().removeExtra(BACKUP_QR_EXTRA);
+            startBackupTransfer(backupQr);
+        }
+    }
+
+    @Override
     public void onDestroy() {
         super.onDestroy();
         DcHelper.getEventCenter(this).removeObservers(this);
@@ -150,17 +160,17 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
     }
 
     private void startRegistrationActivity() {
-        manualConfigure = true;
         Intent intent = new Intent(this, RegistrationActivity.class);
         startActivity(intent);
     }
 
     private void startInstantOnboardingActivity() {
-        startActivity(new Intent(this, InstantOnboardingActivity.class));
+        Intent intent = new Intent(this, InstantOnboardingActivity.class);
+        intent.putExtra(InstantOnboardingActivity.FROM_WELCOME, true);
+        startActivity(intent);
     }
 
     private void startAddAsSecondDeviceActivity() {
-        manualConfigure = false;
         new IntentIntegrator(this).setCaptureActivity(RegistrationQrActivity.class)
           .addExtra(RegistrationQrActivity.ADD_AS_SECOND_DEVICE_EXTRA, true)
           .initiateScan();
@@ -293,38 +303,17 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
         }
     }
 
-    private void startQrAccountCreation(String qrCode)
+    private void startBackupTransfer(String qrCode)
     {
         if (progressDialog!=null) {
             progressDialog.dismiss();
             progressDialog = null;
         }
 
-        if (dcContext.checkQr(qrCode).getState() == DcContext.DC_QR_BACKUP) {
-            Intent intent = new Intent(this, BackupTransferActivity.class);
-            intent.putExtra(BackupTransferActivity.TRANSFER_MODE, BackupTransferActivity.TransferMode.RECEIVER_SCAN_QR.getInt());
-            intent.putExtra(BackupTransferActivity.QR_CODE, qrCode);
-            startActivity(intent);
-            return;
-        }
-
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage(getResources().getString(R.string.one_moment));
-        progressDialog.setCanceledOnTouchOutside(false);
-        progressDialog.setCancelable(false);
-        progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, getResources().getString(android.R.string.cancel), (dialog, which) -> {
-            dcContext.stopOngoingProcess();
-        });
-        progressDialog.show();
-
-        DcHelper.getEventCenter(this).captureNextError();
-
-        if (!dcContext.setConfigFromQr(qrCode)) {
-            progressError(dcContext.getLastError());
-            return;
-        }
-        DcHelper.getAccounts(this).stopIo();
-        dcContext.configure();
+        Intent intent = new Intent(this, BackupTransferActivity.class);
+        intent.putExtra(BackupTransferActivity.TRANSFER_MODE, BackupTransferActivity.TransferMode.RECEIVER_SCAN_QR.getInt());
+        intent.putExtra(BackupTransferActivity.QR_CODE, qrCode);
+        startActivity(intent);
     }
 
     private void progressError(String data2) {
@@ -410,7 +399,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
                     new AlertDialog.Builder(this)
                             .setTitle(R.string.multidevice_receiver_title)
                             .setMessage(R.string.multidevice_receiver_scanning_ask)
-                            .setPositiveButton(R.string.perm_continue, (dialog, which) -> startQrAccountCreation(qrRaw))
+                            .setPositiveButton(R.string.perm_continue, (dialog, which) -> startBackupTransfer(qrRaw))
                             .setNegativeButton(R.string.cancel, null)
                             .setCancelable(false)
                             .show();

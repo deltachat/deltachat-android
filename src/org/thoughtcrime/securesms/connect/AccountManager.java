@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
 
 import com.b44t.messenger.DcAccounts;
@@ -116,6 +117,10 @@ public class AccountManager {
     }
 
     public void switchAccountAndStartActivity(Activity activity, int destAccountId) {
+        switchAccountAndStartActivity(activity, destAccountId, null);
+    }
+
+    private void switchAccountAndStartActivity(Activity activity, int destAccountId, @Nullable String backupQr) {
         if (destAccountId==0) {
             beginAccountCreation(activity);
         } else {
@@ -125,6 +130,9 @@ public class AccountManager {
         activity.finishAffinity();
         if (destAccountId==0) {
             Intent intent = new Intent(activity, WelcomeActivity.class);
+            if (backupQr != null) {
+                intent.putExtra(WelcomeActivity.BACKUP_QR_EXTRA, backupQr);
+            }
             activity.startActivity(intent);
         } else {
             activity.startActivity(new Intent(activity.getApplicationContext(), ConversationListActivity.class));
@@ -166,5 +174,9 @@ public class AccountManager {
         Intent intent = new Intent(activity, InstantOnboardingActivity.class);
         intent.putExtra(InstantOnboardingActivity.QR_ACCOUNT_EXTRA, qr);
         activity.startActivity(intent);
+    }
+
+    public void addAccountFromSecondDevice(Activity activity, String backupQr) {
+        switchAccountAndStartActivity(activity, 0, backupQr);
     }
 }
