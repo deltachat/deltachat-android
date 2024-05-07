@@ -514,6 +514,7 @@
     <string name="multidevice_same_network_hint">Assicurati che entrambi i dispositivi siano sulla stessa rete o Wi-Fi.</string>
     <string name="multidevice_this_creates_a_qr_code">In questo modo si crea un codice QR che il secondo dispositivo può scansionare per copiare l\'account.</string>
     <string name="multidevice_install_dc_on_other_device">Installa Delta Chat sull\'altro dispositivo (https://get.delta.chat)</string>
+    <!-- "I Already Have a Login / Add as Second Device” should be the same text as defined by the keys onboarding_alternative_logins and multidevice_receiver_title -->
     <string name="multidevice_tap_scan_on_other_device">Avvia Delta Chat, tocca \"Aggiungi come secondo dispositivo\" e scansiona il codice qui mostrato</string>
     <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and/or address eg. "Scan to set up second device for Alice (alice@example.org)" -->
     <string name="multidevice_qr_subtitle">Scansiona per impostare un secondo dispositivo per %1$s</string>
@@ -692,6 +693,8 @@
     <string name="pref_incognito_keyboard_explain">Richiedi alla tastiera di disattivare l\'apprendimento personalizzato</string>
     <string name="pref_read_receipts">Ricevute di Lettura</string>
     <string name="pref_read_receipts_explain">Se le tue ricevute di lettura sono disabilitate non potrai vedere quelle degli altri.</string>
+    <string name="pref_server">Server</string>
+    <string name="pref_encryption">Criptazione</string>
     <string name="pref_manage_keys">Gestisci Chiavi</string>
     <string name="pref_use_system_emoji">Usa Emoji di Sistema</string>
     <string name="pref_use_system_emoji_explain">Disabilita il supporto delle emoji integrato in Delta Chat</string>

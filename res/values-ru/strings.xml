@@ -529,6 +529,7 @@
     <string name="multidevice_same_network_hint">Подключите оба устройства к одной и той же сети Wi-Fi</string>
     <string name="multidevice_this_creates_a_qr_code">Это создает QR-код, который второе устройство может отсканировать для копирования учетной записи.</string>
     <string name="multidevice_install_dc_on_other_device">Установите Delta Chat на другое устройство (https://get.delta.chat)</string>
+    <!-- "I Already Have a Login / Add as Second Device” should be the same text as defined by the keys onboarding_alternative_logins and multidevice_receiver_title -->
     <string name="multidevice_tap_scan_on_other_device">Запустите Delta Chat, нажмите \"Добавить второе устройство\" и отсканируйте показанный здесь код</string>
     <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and/or address eg. "Scan to set up second device for Alice (alice@example.org)" -->
     <string name="multidevice_qr_subtitle">Отсканируйте, чтобы настроить второе устройство для %1$s</string>

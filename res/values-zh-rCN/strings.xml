@@ -484,6 +484,7 @@
     <string name="multidevice_same_network_hint">让两台设备连接相同的 Wi-Fi 或网络</string>
     <string name="multidevice_this_creates_a_qr_code">这会创建供第二台设备扫描、用于复制此账户的二维码。</string>
     <string name="multidevice_install_dc_on_other_device">在你的其他设备上安装 Delta Chat (https://get.delta.chat)</string>
+    <!-- "I Already Have a Login / Add as Second Device” should be the same text as defined by the keys onboarding_alternative_logins and multidevice_receiver_title -->
     <string name="multidevice_tap_scan_on_other_device">启动 Delta Chat 应用，点击“添加为第二台设备”并扫描显示的二维码</string>
     <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and/or address eg. "Scan to set up second device for Alice (alice@example.org)" -->
     <string name="multidevice_qr_subtitle">扫描此处为 %1$s 设置第二台设备</string>
@@ -662,6 +663,8 @@
     <string name="pref_incognito_keyboard_explain">请求输入法禁用个性化学习</string>
     <string name="pref_read_receipts">已读回执</string>
     <string name="pref_read_receipts_explain">禁用已读回执后，您将无法看到其他人的已读回执。</string>
+    <string name="pref_server">服务器</string>
+    <string name="pref_encryption">加密</string>
     <string name="pref_manage_keys">管理密钥</string>
     <string name="pref_use_system_emoji">使用系统 emoji</string>
     <string name="pref_use_system_emoji_explain">关闭 Delta Chat 内置 emoji 支持</string>
