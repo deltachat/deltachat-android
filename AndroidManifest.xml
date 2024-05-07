@@ -408,6 +408,11 @@
         android:authorities="${applicationId}.attachments"
         android:grantUriPermissions="true"
         android:exported="false">
+
+      <meta-data
+          android:name="de.cketti.safecontentresolver.ALLOW_INTERNAL_ACCESS"
+          android:value="true" />
+
     </provider>
 
     <receiver android:name=".service.BootReceiver"
