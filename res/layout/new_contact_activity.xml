@@ -47,9 +47,9 @@
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
             android:text="@string/qrscan_title"
-            android:drawableStart="@drawable/baseline_qr_code_24"
-            android:drawableLeft="@drawable/baseline_qr_code_24"
             android:drawablePadding="5dp"
+            app:drawableStartCompat="@drawable/baseline_qr_code_24"
+            app:drawableLeftCompat="@drawable/baseline_qr_code_24"
             app:layout_constraintTop_toBottomOf="@id/fab_spacer"
             app:layout_constraintEnd_toEndOf="@id/guideline_root_end"
             app:layout_constraintStart_toStartOf="@id/guideline_root_start"/>

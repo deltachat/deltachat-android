@@ -50,8 +50,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="left|start|center_vertical"
-        android:drawableLeft="@drawable/slidearrow"
-        android:drawableStart="@drawable/slidearrow"
         style="@style/Signal.Text.Preview"
         android:singleLine="true"
         android:text="@string/chat_record_slide_to_cancel"
@@ -62,6 +60,8 @@
         android:paddingStart="10dp"
         android:paddingRight="50dp"
         android:paddingEnd="50dp"
+        app:drawableLeftCompat="@drawable/slidearrow"
+        app:drawableStartCompat="@drawable/slidearrow"
         tools:visibility="visible"/>
 
   </FrameLayout>
