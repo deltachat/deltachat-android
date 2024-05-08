@@ -409,6 +409,11 @@
         android:grantUriPermissions="true"
         android:exported="false">
 
+      <!--
+          tell SafeContentResolver to allow incoming share-file Intent pointing to files from
+          this content resolver, it could be the user sharing a file from one chat to another.
+          See: https://github.com/deltachat/deltachat-android/pull/3031
+      -->
       <meta-data
           android:name="de.cketti.safecontentresolver.ALLOW_INTERNAL_ACCESS"
           android:value="true" />
