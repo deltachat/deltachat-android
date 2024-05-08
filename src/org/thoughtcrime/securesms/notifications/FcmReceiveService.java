@@ -84,7 +84,7 @@ public class FcmReceiveService extends FirebaseMessagingService {
   @Override
   public void onDeletedMessages() {
     Log.i(TAG, "FCM push notifications dropped");
-    // nothing special to to as we're running now and notifications should be processed as usual.
+    // nothing special to do as we're running now and notifications should be processed as usual.
   }
 
   @Override
