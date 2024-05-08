@@ -151,6 +151,10 @@ public class InputPanel extends ConstraintLayout
     quoteAnimator.start();
   }
 
+  public void clearQuoteWithoutAnimation() {
+    quoteView.dismiss();
+  }
+
   public void clearQuote() {
     if (quoteAnimator != null) {
       quoteAnimator.cancel();

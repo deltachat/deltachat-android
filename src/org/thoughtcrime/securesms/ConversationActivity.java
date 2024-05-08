@@ -744,7 +744,9 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     }
 
     DcMsg quote = draft.getQuotedMsg();
-    if (quote != null) {
+    if (quote == null) {
+      inputPanel.clearQuoteWithoutAnimation();
+    } else {
       handleReplyMessage(quote);
     }
 
