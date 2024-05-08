@@ -434,6 +434,7 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
                     }
                   }
               )
+              .setNegativeButton(R.string.cancel, null)
               .show();
         })
         .execute();
