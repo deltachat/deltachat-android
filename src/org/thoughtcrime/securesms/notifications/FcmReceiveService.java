@@ -82,6 +82,12 @@ public class FcmReceiveService extends FirebaseMessagingService {
   }
 
   @Override
+  public void onDeletedMessages() {
+    Log.i(TAG, "FCM push notifications dropped");
+    // nothing special to to as we're running now and notifications should be processed as usual.
+  }
+
+  @Override
   public void onNewToken(@NonNull String rawToken) {
     prefixedToken = addPrefix(rawToken);
     Log.i(TAG, "new FCM token: " + prefixedToken);
