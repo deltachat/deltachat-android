@@ -59,7 +59,7 @@ public class FcmReceiveService extends FirebaseMessagingService {
       }
 
       prefixedToken = addPrefix(rawToken);
-      Log.w(TAG, "FCM token: " + prefixedToken);
+      Log.i(TAG, "FCM token: " + prefixedToken);
       ApplicationContext.dcAccounts.setPushDeviceToken(prefixedToken);
     });
   }
