@@ -14,7 +14,6 @@ import android.util.Log;
 
 public class LocationBackgroundService extends Service {
 
-    private static final int TIMEOUT = 1000 * 15;
     private static final int INITIAL_TIMEOUT = 1000 * 60 * 2;
     private static final String TAG = LocationBackgroundService.class.getSimpleName();
     private LocationManager locationManager = null;
@@ -43,6 +42,11 @@ public class LocationBackgroundService extends Service {
         }
 
         locationListener = new ServiceLocationListener();
+        Location lastLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        long locationAge = System.currentTimeMillis() - lastLocation.getTime();
+        if (locationAge <= 600 * 1000) { // not older than 10 minutes
+            DcLocation.getInstance().updateLocation(lastLocation);
+        }
         //requestLocationUpdate(LocationManager.NETWORK_PROVIDER);
         requestLocationUpdate(LocationManager.GPS_PROVIDER);
         initialLocationUpdate();
@@ -103,7 +107,6 @@ public class LocationBackgroundService extends Service {
     }
 
     private class ServiceLocationListener implements LocationListener {
-        private static final int EARTH_RADIUS = 6371;
 
         @Override
         public void onLocationChanged(Location location) {
@@ -111,9 +114,7 @@ public class LocationBackgroundService extends Service {
             if (location == null) {
                 return;
             }
-            if (isBetterLocation(location, DcLocation.getInstance().getLastLocation())) {
-                DcLocation.getInstance().updateLocation(location);
-            }
+            DcLocation.getInstance().updateLocation(location);
         }
 
         @Override
@@ -129,84 +130,6 @@ public class LocationBackgroundService extends Service {
         @Override
         public void onStatusChanged(String provider, int status, Bundle extras) {
             Log.e(TAG, "onStatusChanged: " + provider + " status: " + status);
-        }
-
-
-        /** https://developer.android.com/guide/topics/location/strategies
-         * Determines whether one Location reading is better than the current Location fix
-         * @param location  The new Location that you want to evaluate
-         * @param currentBestLocation  The current Location fix, to which you want to compare the new one
-         */
-        private boolean isBetterLocation(Location location, Location currentBestLocation) {
-            if (currentBestLocation == null) {
-                // A new location is always better than no location
-                return true;
-            }
-
-            // Check whether the new location fix is newer or older
-            long timeDelta = location.getTime() - currentBestLocation.getTime();
-            boolean isSignificantlyOlder = timeDelta < -TIMEOUT;
-
-            if (isSignificantlyOlder) {
-                return false;
-            }
-
-            // Check whether the new location fix is more or less accurate
-            int accuracyDelta = (int) (location.getAccuracy() - currentBestLocation.getAccuracy());
-            Log.d(TAG, "accuracyDelta: " + accuracyDelta);
-            boolean isSignificantlyMoreAccurate = accuracyDelta > 50;
-            boolean isSameProvider = isSameProvider(location.getProvider(), currentBestLocation.getProvider());
-
-            if (isSignificantlyMoreAccurate && isSameProvider) {
-                return true;
-            }
-
-            boolean isMoreAccurate = accuracyDelta > 0;
-            double distance = distance(location, currentBestLocation);
-            return hasLocationChanged(distance) && isMoreAccurate ||
-                    hasLocationSignificantlyChanged(distance);
-
-        }
-
-        private boolean hasLocationSignificantlyChanged(double distance) {
-            return distance > 30D;
-        }
-
-        private boolean hasLocationChanged(double distance) {
-            return distance > 10D;
-        }
-
-        private double distance(Location location, Location currentBestLocation) {
-
-            double startLat = location.getLatitude();
-            double startLong = location.getLongitude();
-            double endLat = currentBestLocation.getLatitude();
-            double endLong = currentBestLocation.getLongitude();
-
-            double dLat  = Math.toRadians(endLat - startLat);
-            double dLong = Math.toRadians(endLong - startLong);
-
-            startLat = Math.toRadians(startLat);
-            endLat   = Math.toRadians(endLat);
-
-            double a = haversin(dLat) + Math.cos(startLat) * Math.cos(endLat) * haversin(dLong);
-            double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-
-            double distance = EARTH_RADIUS * c * 1000;
-            Log.d(TAG, "Distance between location updates: " + distance);
-            return distance;
-        }
-
-        private double haversin(double val) {
-            return Math.pow(Math.sin(val / 2), 2);
-        }
-
-        /** Checks whether two providers are the same */
-        private boolean isSameProvider(String provider1, String provider2) {
-            if (provider1 == null) {
-                return provider2 == null;
-            }
-            return provider1.equals(provider2);
         }
     }
 
