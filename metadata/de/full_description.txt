@@ -1,0 +1,19 @@
+Delta Chat ist eine Messanger App, die mit der existierenden
+E-Mail Infrastruktur kompatibel ist.
+
+Also, mit Delta Chat bekommen sie die Einfachheit von üblichen Meassanger Apps
+aber mit E-Mails. Sie sind auch unabhängig von anderen Frimen oder Services -- denn ihre
+Daten sind nicht mit Delta Chat verbunden, Sie werden nichtmal neue Abhängigkeiten hinfüfügen.
+
+Einige Funktionen:
+
+*Sicher mit automatischer Ende-zu-Ende-Verschlüsselung, unter Unterstützung des neuen <a href="https://autocrypt.org">Autoverschlüsselung</a> Standart
+*Schnell mit dem Push-IMAP System
+*Die Größte Benutzergruppe -- Empfänger, die nicht Delta Chat verwenden können ebenfalls erreicht werden
+*Kompatibel -- nicht nur mit sich selbst
+*Elegantes und Einfaches Nutzer Interface
+*Verteiltes System
+*Kein Spam -- nur die Nachrichten von bekannten Nutzern werden angezeigt
+*Zuverlässig -- Sicher für die Proffesionelle nutzung
+*Vertauenswürdig -- kann sogar für Firmen Nachrichten verwendet werden
+*Alles ist OpenSource zugänglich und auf Standarts basiert
