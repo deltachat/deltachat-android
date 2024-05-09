@@ -5,8 +5,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.hardware.Camera;
-import android.os.Build.VERSION;
-import android.os.Build.VERSION_CODES;
+
 import androidx.annotation.NonNull;
 import androidx.core.view.MotionEventCompat;
 import androidx.core.view.ViewCompat;

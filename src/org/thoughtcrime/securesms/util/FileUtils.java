@@ -2,9 +2,6 @@ package org.thoughtcrime.securesms.util;
 
 import android.text.TextUtils;
 
-import java.io.FileDescriptor;
-import java.nio.charset.StandardCharsets;
-
 public class FileUtils {
 
   public static String sanitizeFilename(String name) {

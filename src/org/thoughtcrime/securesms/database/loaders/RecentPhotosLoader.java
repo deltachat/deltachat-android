@@ -1,7 +1,6 @@
 package org.thoughtcrime.securesms.database.loaders;
 
 
-import android.Manifest;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
