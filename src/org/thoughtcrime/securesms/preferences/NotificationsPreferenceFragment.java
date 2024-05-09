@@ -22,7 +22,6 @@ import android.text.TextUtils;
 import org.thoughtcrime.securesms.ApplicationPreferencesActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.KeepAliveService;
-import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.util.Prefs;
 
 import static android.app.Activity.RESULT_OK;

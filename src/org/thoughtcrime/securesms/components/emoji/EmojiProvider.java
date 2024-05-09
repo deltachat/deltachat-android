@@ -1,6 +1,5 @@
 package org.thoughtcrime.securesms.components.emoji;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -9,8 +8,7 @@ import android.graphics.Paint;
 import android.graphics.PixelFormat;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
-import android.os.Build.VERSION_CODES;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import android.text.Spannable;

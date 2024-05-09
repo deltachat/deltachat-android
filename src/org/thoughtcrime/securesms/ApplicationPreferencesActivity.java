@@ -17,7 +17,6 @@
  */
 package org.thoughtcrime.securesms;
 
-import android.Manifest;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;

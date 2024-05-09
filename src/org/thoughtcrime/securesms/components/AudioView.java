@@ -12,7 +12,6 @@ import android.media.AudioManager;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;

@@ -15,7 +15,6 @@
 
 package org.thoughtcrime.securesms.components.camera;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
