@@ -8,6 +8,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutionException;
@@ -93,6 +94,11 @@ public class Rpc {
     public Map<String, String> getSystemInfo() throws RpcException {
         TypeToken<Map<String, String>> mapType = new TypeToken<Map<String, String>>(){};
         return gson.fromJson(getResult("get_system_info"), mapType.getType());
+    }
+
+    public List<VcardContact> parseVcard(String path) throws RpcException {
+        TypeToken<List<VcardContact>> listType = new TypeToken<List<VcardContact>>(){};
+        return gson.fromJson(getResult("parse_vcard", path), listType.getType());
     }
 
     public HttpResponse getHttpResponse(int accountId, String url) throws RpcException {
