@@ -181,11 +181,7 @@
         
       </h3>
 
-<p>Ви можете легко працювати з додатковими обліковими записами в мобільних і десктопних клієнтах Delta Chat, натиснувши одне з:</p>
-<ul>
-  <li>на кнопці меню, а потім «Змінити обліковий запис» (Android і десктоп)</li>
-  <li>або значок профілю, а потім «Додати обліковий запис» (iOS)</li>
-</ul>
+<p>Натисніть на зображення профілю у верхньому лівому кутку, щоб <strong>переключити акаунти</strong>. Там же ви знайдете <strong>Додати обліковий запис</strong>.</p>
 
 <p>Ви також можете дізнатися <a href="#multiclient">як додати облікові записи на кілька пристроїв</a>.</p>
     
@@ -475,9 +471,7 @@ Autocrypt використовує обмежену і <a href="#openpgp-secure"
   </li>
 </ul>
 
-<p>If the QR code scanning doesn’t work in your situation,
-you can also <strong>Share</strong> (or <strong>Copy to Clipboard</strong>) an equivalent invite link
-to the other person through a second channel.</p>
+<p>Якщо сканування QR-коду не працює у вашій ситуації, ви також можете <strong>Поділитися</strong> (або <strong>Копіювати в буфер обміну</strong>) еквівалентне посилання-запрошення іншій людині через другий канал.</p>
 
 <p><strong>І запрошувач, і приєднувач</strong>:</p>
 
@@ -763,14 +757,11 @@ Look for something like <strong>Start Autocrypt Setup Transfer</strong> in the s
         
       </h3>
 
-<p>The Delta Chat project underwent four independent security audits and one
-independent security analysis, from most recent to older:</p>
+<p>Проект Delta Chat пройшов чотири незалежні аудити безпеки та один незалежний аналіз безпеки, від найновіших до найстаріших:</p>
 
 <ul>
   <li>
-    <p>2024 March, we received a deep security analysis from the Applied Cryptography
-research group at ETH Zuerich and addressed all raised issues. 
-See our blog post about <a href="https://delta.chat/en/2024-03-25-crypto-analysis-securejoin">Hardening Guaranteed End-to-End encryption</a> for more detailed information.</p>
+    <p>2024 березня ми отримали глибокий аналіз безпеки від дослідницької групи Applied Cryptography з прикладної криптографії в ETH Zuerich і вирішили всі порушені питання. Більш детальну інформацію можна знайти в нашому блозі в статті <a href="https://delta.chat/en/2024-03-25-crypto-analysis-securejoin">Hardening Guaranteed End-to-end encryption</a>.</p>
   </li>
   <li>
     <p>Починаючи з 2023 року, ми виправили проблеми з безпекою та конфіденційністю у функції “веб застосунків, що поширені у чаті”, пов’язані зі збоями в роботі пісочниці особливо в Chromium. Згодом ми отримали незалежний аудит безпеки аудит безпеки від Cure53, і всі знайдені проблеми були виправлені в серії додатків 1.36, випущених у квітні 2023 року. Повну історію про наскрізну безпеку в Інтернеті дивіться <a href="https://delta.chat/en/2023-05-22-webxdc-security">тут</a>.</p>
@@ -1050,7 +1041,10 @@ See our blog post about <a href="https://delta.chat/en/2024-03-25-crypto-analysi
 
 <ol>
   <li>
-    <p>Змініть свою адресу в розділі “Налаштування - Пароль та обліковий запис” та введіть пароль вашого нового акаунта (і, за необхідності, налаштування сервера). Ви отримаєте інформаційне повідомлення про те, що ви переїжджаєте на нову адресу. Додаткове повідомлення також з’явиться у вашому чаті “Повідомлення пристрою”.</p>
+    <p>Change your address in “Settings → Advanced → Password and Account” and
+enter the password of your new account (and if necessary, server settings).
+You will get an information notice about the fact that you are moving to a new address. 
+An additional notice will also show up in your “Device messages” chat.</p>
   </li>
   <li>
     <p>Якщо можливо, нехай ваш старий провайдер електронної пошти пересилає всі повідомлення на вашу нову адресу.</p>
@@ -1189,7 +1183,8 @@ See our blog post about <a href="https://delta.chat/en/2024-03-25-crypto-analysi
 
 <p>За замовчуванням Delta Chat відображає всі електронні листи.</p>
 
-<p>У “Налаштування -&gt; Чати та Медіа -&gt; Показати класичні електронні листи”, ви можете змінити це. У вас є такі параметри:</p>
+<p>At “Settings → Advanced → Show Classic E-Mails”,
+you can change this. You have these options:</p>
 
 <ul>
   <li>«Ні, лише чати»: лише повідомлення, надіслані іншими користувачами Delta Chat, і відповіді на них відображаються ваші повідомлення Delta Chat. Це має найбільший сенс, якщо ви використовуєте той самий обліковий запис електронної пошти також для звичайної електронної пошти.</li>
@@ -1231,7 +1226,7 @@ See our blog post about <a href="https://delta.chat/en/2024-03-25-crypto-analysi
 
 <p>Копія надсилається у папку Вхідні, а потім переміщується до папки DeltaChat; вона не поміщається в папку «Відправлені». Delta Chat <em>ніколи</em> не завантажує нічого в папку Надіслане, оскільки це означало б завантаження повідомлень двічі (один раз через SMTP і один раз через IMAP до папки Надіслані).</p>
 
-<p>За замовчуванням параметр копії для себе - “ні”.</p>
+<p>The default setting for “Send Copy to Self” is “on”.</p>
     
       <h3 id="чому-я-можу-обрати-стеження-за--папкою-надіслані">
         

@@ -530,7 +530,7 @@
     <string name="multidevice_this_creates_a_qr_code">Це створить QR-код, який другий пристрій може сканувати, щоб скопіювати обліковий запис.</string>
     <string name="multidevice_install_dc_on_other_device">Установіть Delta Chat на Ваш інший пристрій (https://get.delta.chat)</string>
     <!-- "I Already Have a Login / Add as Second Device” should be the same text as defined by the keys onboarding_alternative_logins and multidevice_receiver_title -->
-    <string name="multidevice_tap_scan_on_other_device">Запустіть Delta Chat, натисніть «Додати як другий пристрій» і відскануйте показаний тут код</string>
+    <string name="multidevice_tap_scan_on_other_device">Запустіть Delta Chat, торкніться \"У мене вже є логін / Додати як другий пристрій\" і відскануйте код, показаний тут</string>
     <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and/or address eg. "Scan to set up second device for Alice (alice@example.org)" -->
     <string name="multidevice_qr_subtitle">Скануйте, щоб налаштувати другий пристрій %1$s</string>
     <string name="multidevice_receiver_title">Додати як другий пристрій</string>
