@@ -75,6 +75,9 @@ public class DcLocationManager implements Observer {
         startLocationEngine();
         Log.d(TAG, String.format("Share location in chat %d for %d seconds", chatId, duration));
         DcHelper.getContext(context).sendLocationsToChat(chatId, duration);
+        if (dcLocation.isValid()) {
+            writeDcLocationUpdateMessage();
+        }
     }
 
     public void shareLastLocation(int chatId) {
