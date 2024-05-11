@@ -36,4 +36,9 @@ public class DocumentSlide extends Slide {
   public boolean isWebxdcDocument() {
     return dcMsgType == DcMsg.DC_MSG_WEBXDC;
   }
+
+  @Override
+  public boolean isVcard() {
+    return dcMsgType == DcMsg.DC_MSG_VCARD;
+  }
 }

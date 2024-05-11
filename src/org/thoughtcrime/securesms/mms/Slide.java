@@ -98,6 +98,10 @@ public abstract class Slide {
     return false;
   }
 
+  public boolean isVcard() {
+    return false;
+  }
+
   public boolean hasLocation() {
     return false;
   }
