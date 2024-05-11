@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -20,11 +21,14 @@ import androidx.annotation.RequiresApi;
 import com.annimon.stream.Stream;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcMsg;
+import com.b44t.messenger.rpc.RpcException;
+import com.b44t.messenger.rpc.VcardContact;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import org.json.JSONObject;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.attachments.Attachment;
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.DecryptableStreamUriLoader.DecryptableUri;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.mms.Slide;
@@ -185,7 +189,7 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
   }
 
   private void setQuoteAttachment(@NonNull GlideRequests glideRequests, @NonNull SlideDeck slideDeck) {
-    List<Slide> thumbnailSlides = Stream.of(slideDeck.getSlides()).filter(s -> s.hasImage() || s.hasVideo() || s.hasSticker() || s.isWebxdcDocument()).limit(1).toList();
+    List<Slide> thumbnailSlides = Stream.of(slideDeck.getSlides()).filter(s -> s.hasImage() || s.hasVideo() || s.hasSticker() || s.isWebxdcDocument() || s.isVcard()).limit(1).toList();
     List<Slide> audioSlides = Stream.of(slideDeck.getSlides()).filter(s -> s.hasAudio()).limit(1).toList();
     List<Slide> documentSlides = Stream.of(attachments.getSlides()).filter(Slide::hasDocument).limit(1).toList();
 
@@ -206,7 +210,20 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
                   .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
                   .into(thumbnailView);
         } catch (Exception e) {
-          e.printStackTrace();
+          Log.e(TAG, "failed to get webxdc icon", e);
+        }
+      } else if (thumbnailSlides.get(0).isVcard()) {
+        try {
+          VcardContact vcardContact = DcHelper.getRpc(getContext()).parseVcard(quotedMsg.getFile()).get(0);
+          if (vcardContact!=null && vcardContact.hasProfileImage()) {
+            glideRequests.load(vcardContact.getProfileImage())
+              .centerCrop()
+              .override(getContext().getResources().getDimensionPixelSize(R.dimen.quote_thumb_size))
+              .diskCacheStrategy(DiskCacheStrategy.NONE)
+              .into(thumbnailView);
+          }
+        } catch (RpcException e) {
+          Log.e(TAG, "failed to parse vCard", e);
         }
       } else {
         Uri thumbnailUri = thumbnailSlides.get(0).getUri();

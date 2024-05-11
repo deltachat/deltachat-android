@@ -64,7 +64,8 @@ public class MediaUtil {
             || dcMsg.getType() == DcMsg.DC_MSG_VOICE) {
       slide = new AudioSlide(context, dcMsg);
     } else if (dcMsg.getType() == DcMsg.DC_MSG_FILE
-            || dcMsg.getType() == DcMsg.DC_MSG_WEBXDC) {
+            || dcMsg.getType() == DcMsg.DC_MSG_WEBXDC
+            || dcMsg.getType() == DcMsg.DC_MSG_VCARD) {
       slide = new DocumentSlide(context, dcMsg);
     }
 
