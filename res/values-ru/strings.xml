@@ -575,6 +575,32 @@
     <string name="part_of_total_used">%1$s из %2$s используется</string>
 
 
+    <!-- welcome and login -->
+    <!-- Primary button on the welcome screen, allows to create an instant account -->
+    <string name="onboarding_create_instant_account">Давайте начнём!</string>
+    <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup", "Manual Login"  -->
+    <string name="onboarding_alternative_logins">У меня уже есть логин</string>
+    <!-- Button, allows to log in to existing email accounts, setting ports, passwords and so on -->
+    <string name="manual_account_setup_option">Войти вручную</string>
+    <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
+    <string name="instant_onboarding_title">Личный профиль</string>
+    <!-- This is a link to the default Privacy Policy -->
+    <string name="instant_onboarding_agree_default">Просмотреть Политику конфиденциальности</string>
+    <!-- The placeholder will be replaced by instance name, the whole text will link to the instance page -->
+    <string name="instant_onboarding_agree_instance">О профилях на %1$s</string>
+    <!-- Confirmation button on the instant onboarding screen -->
+    <string name="instant_onboarding_create">Принять и создать профиль</string>
+    <!-- Secondary, link-like button to open a page with other possible instances -->
+    <string name="instant_onboarding_show_more_instances">Просмотреть другие опции</string>
+    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group name -->
+    <string name="instant_onboarding_group_info">Создайть профиль чтобы присоединиться к группе \"%1$s\".</string>
+    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by contact name and/or address -->
+    <string name="instant_onboarding_contact_info">Создайть профиль чтобы пообщаться с \"%1$s\".</string>
+    <!-- Question shown when another user's QR code is scanned from onboarding screen -->
+    <string name="instant_onboarding_confirm_contact">Хотите создать новый профиль и начать общаться с %1$s?</string>
+    <!-- Question shown when group's QR code is scanned from onboarding screen -->
+    <string name="instant_onboarding_confirm_group">Вы хотите создать новый профиль и присоединиться к чату группы \"%1$s\"?</string>
+
     <string name="welcome_chat_over_email">Чат через электронную почту.</string>
     <string name="scan_invitation_code">Сканировать код приглашения</string>
     <string name="login_title">Логин</string>
@@ -682,6 +708,8 @@
     <string name="pref_incognito_keyboard_explain">Запрос клавиатуре на отключение в обучении персонализированных подсказок</string>
     <string name="pref_read_receipts">Уведомления о прочтении</string>
     <string name="pref_read_receipts_explain">Если уведомления о прочтении отключены, вы не будете видеть подтверждения прочтения сообщений другими пользователями</string>
+    <string name="pref_server">Сервер</string>
+    <string name="pref_encryption">Шифрование</string>
     <string name="pref_manage_keys">Управление ключами</string>
     <string name="pref_use_system_emoji">Использовать системные эмодзи</string>
     <string name="pref_use_system_emoji_explain">Отключить поддержку встроенных эмодзи Delta Chat</string>
@@ -920,6 +948,7 @@
     <string name="load_qr_code_as_image">Загрузить QR-код как изображение</string>
     <string name="qrscan_title">Сканировать QR-код</string>
     <string name="qrscan_hint">Наведите камеру на QR-код</string>
+    <string name="qrscan_hint_desktop">Поднесите QR-код к камере</string>
     <string name="qrscan_failed">QR-код не может быть декодирован</string>
     <string name="qrscan_ask_join_group">Присоединиться к группе «%1$s»?</string>
     <string name="qrscan_fingerprint_mismatch">Отсканированный отпечаток не совпадает с последним известным отпечатком %1$s</string>
