@@ -960,7 +960,7 @@
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s replied, waiting for being added to the group…</string>
     <string name="secure_join_wait">Establishing guaranteed end-to-end encryption, please wait…</string>
-    <string name="secure_join_wait_timeout">Could not yet establish guaranteed end-to-end encryption, but you may already send a message</string>
+    <string name="secure_join_wait_timeout">Could not yet establish guaranteed end-to-end encryption, but you may already send a message.</string>
     <string name="contact_verified">%1$s introduced.</string>
     <string name="contact_not_verified">Cannot establish guaranteed end-to-end encryption with %1$s.</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
