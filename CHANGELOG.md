@@ -3,13 +3,23 @@
 ## v1.45.0 Testrun
 2024-05
 
+* new onboarding: you can create a new profile with one tap on "Let's Get Started!" -
+  or use an existing login or second-device-setup as usual
+* use FCM PUSH notification if supported by providers (as chatmail) and by the operating system
+* send any emoji as reaction
 * show reactions in summaries
 * nicer summaries by using some emojis for attachment types
+* pin/archive/etc chats directly from search result
+* new map for - still experimental - location streaming (enable at "Settings / Advanced")
+* ask for system unlock before accessing "password & account"
+* advanced settings resorted, you'll also find "password & account" and "show classic emails" there
 * improve resilience by adding references to the last three messages
 * one-to-one chats are read-only during reasonable run of securejoin
 * if securejoin is taking longer than expected, a warning is shown and messages can be sent
 * improve resilience by including more entries in DNS fallback cache
 * improve anonymous mailing lists by not adding hostname to Message-ID
+* harden share-to-delta
+* add second device's troubleshooting is always available offline now
 * fix: preserve upper-/lowercase of links from HTML-messages
 * fix: rescan folders on "Watch Sent Folder" changes
 * fix sometimes wrong sender name in "Message Info"
@@ -22,11 +32,13 @@
 * fix: improve connectivity on startup by adding backoff for IMAP connections
 * fix: mark contact request messages as seen on IMAP server
 * fix: convert images to RGB8 before encoding into JPEG to fix sending of large RGBA images
+* fix showing large PNG files
+* fix: do not convert large GIF to JPEG
 * fix receiving Autocrypt Setup Messages from K-9
 * fix: delete expired locations and POIs with deleted chats
 * fix: send locations more reliable
+* fix: use last known location if it is recent enough
 * fix: do not fail to send encrypted quotes to unencrypted chats, replace quote by "..." instead
-* fix: do not convert large GIF to JPEG
 * fix: always use correct "Saved Messages" icon when the chat is recreated
 * fix: add white background to transparent avatars
 * fix crashes when exporting or importing huge accounts
@@ -34,6 +46,8 @@
 * fix problem with sharing the same key by several accounts
 * fix busy looping eg. during key import
 * fix remote group membership changes always overriding local ones
+* fix hint when adding a webxdc shortcut to the home page
+* fix webxdc links for securejoin
 * update translations and local help
 * update to core 1.138.0
 
