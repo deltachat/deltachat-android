@@ -1,5 +1,43 @@
 # Delta Chat Android Changelog
 
+## v1.45.0 Testrun
+2024-05
+
+* show reactions in summaries
+* nicer summaries by using some emojis for attachment types
+* improve resilience by adding references to the last three messages
+* one-to-one chats are read-only during reasonable run of securejoin
+* if securejoin is taking longer than expected, a warning is shown and messages can be sent
+* improve resilience by including more entries in DNS fallback cache
+* improve anonymous mailing lists by not adding hostname to Message-ID
+* fix: preserve upper-/lowercase of links from HTML-messages
+* fix: rescan folders on "Watch Sent Folder" changes
+* fix sometimes wrong sender name in "Message Info"
+* fix: do not send avatar in securejoin messages before contact verification
+* fix: avoid being re-added to groups just left
+* fix: do not auto-delete webxdc apps that have recent updates
+* fix: improve moving messages on gmail
+* fix: improve chat assignments of not downloaded messages
+* fix: do not create ad-hoc groups from partial downloads
+* fix: improve connectivity on startup by adding backoff for IMAP connections
+* fix: mark contact request messages as seen on IMAP server
+* fix: convert images to RGB8 before encoding into JPEG to fix sending of large RGBA images
+* fix receiving Autocrypt Setup Messages from K-9
+* fix: delete expired locations and POIs with deleted chats
+* fix: send locations more reliable
+* fix: do not fail to send encrypted quotes to unencrypted chats, replace quote by "..." instead
+* fix: do not convert large GIF to JPEG
+* fix: always use correct "Saved Messages" icon when the chat is recreated
+* fix: add white background to transparent avatars
+* fix crashes when exporting or importing huge accounts
+* fix: remove leading whitespace from subject
+* fix problem with sharing the same key by several accounts
+* fix busy looping eg. during key import
+* fix remote group membership changes always overriding local ones
+* update translations and local help
+* update to core 1.138.0
+
+
 ## v1.44.0
 2024-03
 
