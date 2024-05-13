@@ -959,6 +959,8 @@
     <string name="secure_join_started">%1$s heeft je uitgenodigd voor deze groep.\n\nEr wordt gewacht op antwoord van het apparaat van %2$s…</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s heeft geantwoord en wacht op toelating tot de groep…</string>
+    <string name="secure_join_wait">Bezig met opzetten van eind-tot-eindversleuteling…</string>
+    <string name="secure_join_wait_timeout">Er kan nog geen eind-tot-eindversleuteling worden gegarandeerd, maar je kunt wel alvast een bericht sturen.</string>
     <string name="contact_verified">%1$s is goedgekeurd.</string>
     <string name="contact_not_verified">Er kan geen eind-tot-eindversleuteling met %1$s worden gegarandeerd.</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->

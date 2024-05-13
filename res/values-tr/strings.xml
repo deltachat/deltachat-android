@@ -959,6 +959,8 @@
     <string name="secure_join_started">%1$s sizi bu öbeğe katılmaya çağırdı.\n\n%2$s kişisinin aygıtının yanıt vermesi bekleniyor…</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s yanıtladı; öbeğe eklenmesi bekleniyor…</string>
+    <string name="secure_join_wait">Güvenceli uçtan uca şifreleme kuruluyor, lütfen bekleyin…</string>
+    <string name="secure_join_wait_timeout">Henüz güvenceli uçtan uca şifreleme kurulamadı; ama zaten bir ileti gönderebilirsiniz.</string>
     <string name="contact_verified">%1$s tanıtıldı.</string>
     <string name="contact_not_verified">%1$s ile güvencelenen uçtan uca şifreleme kurulamıyor.</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
