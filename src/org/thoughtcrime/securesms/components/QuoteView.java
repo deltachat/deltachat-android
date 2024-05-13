@@ -211,19 +211,21 @@ public class QuoteView extends FrameLayout implements RecipientForeverObserver {
                   .into(thumbnailView);
         } catch (Exception e) {
           Log.e(TAG, "failed to get webxdc icon", e);
+          thumbnailView.setVisibility(GONE);
         }
       } else if (thumbnailSlides.get(0).isVcard()) {
         try {
           VcardContact vcardContact = DcHelper.getRpc(getContext()).parseVcard(quotedMsg.getFile()).get(0);
-          if (vcardContact!=null && vcardContact.hasProfileImage()) {
-            glideRequests.load(vcardContact.getProfileImage())
-              .centerCrop()
-              .override(getContext().getResources().getDimensionPixelSize(R.dimen.quote_thumb_size))
-              .diskCacheStrategy(DiskCacheStrategy.NONE)
-              .into(thumbnailView);
-          }
+          Recipient recipient = new Recipient(getContext(), vcardContact);
+          glideRequests.load(recipient.getContactPhoto(getContext()))
+            .error(recipient.getFallbackAvatarDrawable(getContext(), false))
+            .centerCrop()
+            .override(getContext().getResources().getDimensionPixelSize(R.dimen.quote_thumb_size))
+            .diskCacheStrategy(DiskCacheStrategy.NONE)
+            .into(thumbnailView);
         } catch (RpcException e) {
           Log.e(TAG, "failed to parse vCard", e);
+          thumbnailView.setVisibility(GONE);
         }
       } else {
         Uri thumbnailUri = thumbnailSlides.get(0).getUri();

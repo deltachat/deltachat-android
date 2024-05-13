@@ -205,10 +205,14 @@ public class Recipient {
   }
 
   public synchronized @NonNull Drawable getFallbackAvatarDrawable(Context context) {
-    return getFallbackContactPhoto().asDrawable(context, getFallbackAvatarColor());
+    return getFallbackAvatarDrawable(context, true);
   }
 
-  public synchronized @NonNull FallbackContactPhoto getFallbackContactPhoto() {
+  public synchronized @NonNull Drawable getFallbackAvatarDrawable(Context context, boolean roundShape) {
+    return getFallbackContactPhoto().asDrawable(context, getFallbackAvatarColor(), roundShape);
+  }
+
+  public synchronized @NonNull GeneratedContactPhoto getFallbackContactPhoto() {
     String name = getName();
     if (!TextUtils.isEmpty(profileName)) return new GeneratedContactPhoto(profileName);
     else if (!TextUtils.isEmpty(name))   return new GeneratedContactPhoto(name);
