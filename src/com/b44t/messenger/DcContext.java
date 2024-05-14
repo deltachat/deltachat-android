@@ -136,8 +136,6 @@ public class DcContext {
     public native boolean      setConfigFromQr      (String qr);
     public native String       getConfig            (String key);
     public int                 getConfigInt         (String key) { try{return Integer.parseInt(getConfig(key));} catch(Exception e) {} return 0; }
-    @Deprecated public String  getConfig            (String key, String def) { return getConfig(key); }
-    @Deprecated public int     getConfigInt         (String key, int def) { return getConfigInt(key); }
     public native String       getInfo              ();
     public native int          getConnectivity      ();
     public native String       getConnectivityHtml  ();
