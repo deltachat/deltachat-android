@@ -36,12 +36,14 @@ import android.widget.TextView;
 import androidx.annotation.DimenRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcMsg;
 import com.b44t.messenger.rpc.Reactions;
 import com.b44t.messenger.rpc.RpcException;
+import com.b44t.messenger.rpc.VcardContact;
 
 import org.thoughtcrime.securesms.audio.AudioSlidePlayer;
 import org.thoughtcrime.securesms.components.AudioView;
@@ -892,7 +894,26 @@ public class ConversationItem extends BaseConversationItem
       } else if (slide.isWebxdcDocument()) {
         WebxdcActivity.openWebxdcActivity(context, messageRecord);
       } else if (slide.isVcard()) {
-        // TODO
+        try {
+          VcardContact vcardContact = rpc.parseVcard(slide.asAttachment().getRealPath(context)).get(0);
+          new AlertDialog.Builder(context)
+            .setMessage(context.getString(R.string.ask_start_chat_with, vcardContact.getDisplayName()))
+            .setPositiveButton(android.R.string.ok, (dialog, which) -> {
+                // TODO: use new API to import from vcard, and remove the next lines
+                DcContact contact = dcContext.getContact(dcContext.createContact(null, vcardContact.getAddr()));
+                int chatId = dcContext.createChatByContactId(contact.getId());
+                if (chatId != 0) {
+                  Intent intent = new Intent(context, ConversationActivity.class);
+                  intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
+                  context.startActivity(intent);
+                }
+
+            })
+            .setNegativeButton(R.string.cancel, null)
+            .show();
+        } catch (RpcException e) {
+          Log.e(TAG, "failed to parse vCard", e);
+        }
       } else if (MediaPreviewActivity.isTypeSupported(slide) && slide.getUri() != null) {
         Intent intent = new Intent(context, MediaPreviewActivity.class);
         intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
