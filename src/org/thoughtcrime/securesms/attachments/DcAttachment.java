@@ -1,6 +1,8 @@
 package org.thoughtcrime.securesms.attachments;
 
 import java.io.File;
+
+import android.content.Context;
 import android.net.Uri;
 import androidx.annotation.Nullable;
 
@@ -34,5 +36,10 @@ public class DcAttachment extends Attachment {
       return Uri.fromFile(new File(dcMsg.getFile()+"-preview.jpg"));
     }
     return getDataUri();
+  }
+
+  @Override
+  public String getRealPath(Context context) {
+    return dcMsg.getFile();
   }
 }
