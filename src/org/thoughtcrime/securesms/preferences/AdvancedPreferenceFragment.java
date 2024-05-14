@@ -207,6 +207,13 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
       }
       return true;
     }));
+
+    if (dcContext.isChatmail()) {
+      sentboxWatchCheckbox.setVisible(false);
+      bccSelfCheckbox.setVisible(false);
+      mvboxMoveCheckbox.setVisible(false);
+      onlyFetchMvboxCheckbox.setVisible(false);
+    }
   }
 
   @Override

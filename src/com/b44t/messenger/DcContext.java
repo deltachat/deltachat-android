@@ -230,6 +230,10 @@ public class DcContext {
       return ret.trim();
     }
 
+    public boolean isChatmail() {
+      return getConfigInt("is_chatmail") == 1;
+    }
+
     /**
      * @return true if at least one chat has location streaming enabled
      */
