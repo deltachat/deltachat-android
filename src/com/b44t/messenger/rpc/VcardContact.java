@@ -19,9 +19,9 @@ public class VcardContact {
   private final String color;
 
   // Last update timestamp.
-  private final float timestamp;
+  private final int timestamp;
 
-  public VcardContact(String addr, String displayName, String key, String profileImage, String color, float timestamp) {
+  public VcardContact(String addr, String displayName, String key, String profileImage, String color, int timestamp) {
     this.addr = addr;
     this.displayName = displayName;
     this.key = key;
@@ -54,7 +54,7 @@ public class VcardContact {
     return color;
   }
 
-  public float getTimestamp() {
+  public int getTimestamp() {
     return timestamp;
   }
 }
