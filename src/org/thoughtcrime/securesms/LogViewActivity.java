@@ -1,18 +1,26 @@
 package org.thoughtcrime.securesms;
 
 import android.Manifest;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.FragmentTransaction;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.widget.Toast;
 
 import org.thoughtcrime.securesms.permissions.Permissions;
-import org.thoughtcrime.securesms.util.Util;
+import org.thoughtcrime.securesms.util.FileProviderUtil;
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class LogViewActivity extends BaseActionBarActivity {
 
@@ -67,9 +75,8 @@ public class LogViewActivity extends BaseActionBarActivity {
             })
             .execute();
         return true;
-      case R.id.copy_log_to_clipboard:
-        Util.writeTextToClipboard(this, logViewFragment.getLogText());
-        Toast.makeText(getApplicationContext(), R.string.done, Toast.LENGTH_SHORT).show();
+      case R.id.share_log:
+        shareLog();
         return true;
       case R.id.log_zoom_in:
         newSize = logViewFragment.getLogTextSize() + 2.0f;
@@ -88,6 +95,28 @@ public class LogViewActivity extends BaseActionBarActivity {
     }
 
     return false;
+  }
+
+  public void shareLog() {
+    try {
+      String timestamp = new SimpleDateFormat("yyyy-MM-dd-HH-mm").format(new Date());
+      File file = new File(getExternalCacheDir(), "log-" + timestamp + ".txt");
+      file.createNewFile();
+      file.setReadable(true, false);
+      FileWriter logFileWriter = new FileWriter(file, false);
+      BufferedWriter logFileBufferWriter = new BufferedWriter(logFileWriter);
+      logFileBufferWriter.write(logViewFragment.getLogText());
+      logFileBufferWriter.close();
+
+      Uri uri = FileProviderUtil.getUriFor(this, file);
+      Intent intent = new Intent(Intent.ACTION_SEND);
+      intent.setType("text/plain");
+      intent.putExtra(Intent.EXTRA_STREAM, uri);
+      intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+      startActivity(Intent.createChooser(intent, getString(R.string.chat_share_with_title)));
+    } catch (Exception e) {
+      Log.e(TAG, "failed to share log", e);
+    }
   }
 
   @Override
