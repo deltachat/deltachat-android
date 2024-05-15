@@ -26,7 +26,6 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.PowerManager;
 import android.text.TextUtils;
 import android.util.TypedValue;
@@ -105,19 +104,16 @@ public class LogViewFragment extends Fragment {
     logPreview.setSelection(0);
   }
 
-  public boolean saveLogFile() {
-
-    File             outputDir   = null;
+  public File saveLogFile(File outputDir) {
+    File             logFile     = null;
     SimpleDateFormat dateFormat  = new SimpleDateFormat("yyyyMMdd-HHmmss");
     Date             now         = new Date();
     String           logFileName = "deltachat-log-" + dateFormat.format(now) + ".txt";
 
     try {
-      outputDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
       String logText =  logPreview.getText().toString();
       if(!logText.trim().equals("")){
-        File logFile = new File(outputDir + "/" + logFileName);
-
+        logFile = new File(outputDir + "/" + logFileName);
         if(!logFile.exists()) logFile.createNewFile();
 
         FileWriter logFileWriter = new FileWriter(logFile, false);
@@ -127,9 +123,8 @@ public class LogViewFragment extends Fragment {
       }
     } catch (IOException e) {
       e.printStackTrace();
-      return false;
     }
-    return true;
+    return logFile;
   }
 
   private static String grabLogcat() {

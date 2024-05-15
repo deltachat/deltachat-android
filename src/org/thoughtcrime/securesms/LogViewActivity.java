@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -16,11 +17,7 @@ import androidx.fragment.app.FragmentTransaction;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.util.FileProviderUtil;
 
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class LogViewActivity extends BaseActionBarActivity {
 
@@ -67,7 +64,8 @@ public class LogViewActivity extends BaseActionBarActivity {
             .alwaysGrantOnSdk30()
             .ifNecessary()
             .onAllGranted(() -> {
-              boolean success = logViewFragment.saveLogFile();
+              File outputDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+              boolean success = logViewFragment.saveLogFile(outputDir) != null;
               new AlertDialog.Builder(this)
                   .setMessage(success? R.string.pref_saved_log : R.string.pref_save_log_failed)
                   .setPositiveButton(android.R.string.ok, null)
@@ -99,16 +97,8 @@ public class LogViewActivity extends BaseActionBarActivity {
 
   public void shareLog() {
     try {
-      String timestamp = new SimpleDateFormat("yyyy-MM-dd-HH-mm").format(new Date());
-      File file = new File(getExternalCacheDir(), "log-" + timestamp + ".txt");
-      file.createNewFile();
-      file.setReadable(true, false);
-      FileWriter logFileWriter = new FileWriter(file, false);
-      BufferedWriter logFileBufferWriter = new BufferedWriter(logFileWriter);
-      logFileBufferWriter.write(logViewFragment.getLogText());
-      logFileBufferWriter.close();
-
-      Uri uri = FileProviderUtil.getUriFor(this, file);
+      File logFile = logViewFragment.saveLogFile(getExternalCacheDir());
+      Uri uri = FileProviderUtil.getUriFor(this, logFile);
       Intent intent = new Intent(Intent.ACTION_SEND);
       intent.setType("text/plain");
       intent.putExtra(Intent.EXTRA_STREAM, uri);
