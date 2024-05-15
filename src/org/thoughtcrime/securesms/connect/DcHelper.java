@@ -258,6 +258,7 @@ public class DcHelper {
     dcContext.setStockTranslation(174, context.getString(R.string.invalid_unencrypted_tap_to_learn_more));
     dcContext.setStockTranslation(176, context.getString(R.string.reaction_by_you));
     dcContext.setStockTranslation(177, context.getString(R.string.reaction_by_other));
+    dcContext.setStockTranslation(200, context.getString(R.string.contact));
   }
 
   public static File getImexDir() {
