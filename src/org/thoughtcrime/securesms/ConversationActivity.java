@@ -71,6 +71,8 @@ import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcMsg;
+import com.b44t.messenger.rpc.Rpc;
+import com.b44t.messenger.rpc.RpcException;
 import com.b44t.messenger.util.concurrent.ListenableFuture;
 import com.b44t.messenger.util.concurrent.SettableFuture;
 
@@ -187,6 +189,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private ApplicationContext context;
   private Recipient  recipient;
   private DcContext  dcContext;
+  private Rpc rpc;
   private DcChat     dcChat                = new DcChat(0, 0);
   private int        chatId;
   private final boolean isSecureText          = true;
@@ -198,6 +201,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   protected void onCreate(Bundle state, boolean ready) {
     this.context = ApplicationContext.getInstance(getApplicationContext());
     this.dcContext = DcHelper.getContext(context);
+    this.rpc = DcHelper.getRpc(context);
 
     supportRequestWindowFeature(WindowCompat.FEATURE_ACTION_BAR_OVERLAY);
     setContentView(R.layout.conversation_activity);
@@ -972,9 +976,18 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void addAttachmentContactInfo(Intent data) {
-    String name = data.getStringExtra(AttachContactActivity.NAME_EXTRA);
-    String mail = data.getStringExtra(AttachContactActivity.ADDR_EXTRA);
-    composeText.append(name + "\n" + mail);
+    int contactId = data.getIntExtra(AttachContactActivity.CONTACT_ID_EXTRA, 0);
+    if (contactId == 0) {
+      return;
+    }
+
+    try {
+      byte[] vcard = rpc.makeVcard(dcContext.getAccountId(), contactId).getBytes();
+      String mimeType = "application/octet-stream";
+      setMedia(PersistentBlobProvider.getInstance().create(this, vcard, mimeType, "vcard.vcf"), MediaType.DOCUMENT);
+    } catch (RpcException e) {
+      Log.e(TAG, "makeVcard() failed", e);
+    }
   }
 
   private boolean isMultiUser() {

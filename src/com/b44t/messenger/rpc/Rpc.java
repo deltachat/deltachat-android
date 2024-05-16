@@ -101,6 +101,10 @@ public class Rpc {
         return gson.fromJson(getResult("parse_vcard", path), listType.getType());
     }
 
+    public String makeVcard(int accountId, int... contacts) throws RpcException {
+        return gson.fromJson(getResult("make_vcard", accountId, contacts), String.class);
+    }
+
     public HttpResponse getHttpResponse(int accountId, String url) throws RpcException {
         return gson.fromJson(getResult("get_http_response", accountId, url), HttpResponse.class);
     }
