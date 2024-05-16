@@ -974,6 +974,8 @@
     <string name="secure_join_started">%1$s ti ha invitato ad unirti a questo gruppo.\n\nIn attesa che il dispositivo di %2$s risponda…</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s ha risposto, in attesa di essere aggiunto al gruppo…</string>
+    <string name="secure_join_wait">Creazione della crittografia end-to-end garantita, attendere...</string>
+    <string name="secure_join_wait_timeout">Impossibile ancora stabilire la crittografia end-to-end garantita, ma potresti già inviare un messaggio.</string>
     <string name="contact_verified">%1$s verificato.</string>
     <string name="contact_not_verified">Impossibile verificare %1$s</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->

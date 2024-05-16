@@ -104,10 +104,10 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     // it is not needed to keep all past update messages, however, when deleted, also the strings should be deleted.
     try {
       DcContext dcContext = DcHelper.getContext(this);
-      final String deviceMsgId = "update_1_44f_android";
+      final String deviceMsgId = "update_1_45c_android";
       if (!dcContext.wasDeviceMsgEverAdded(deviceMsgId)) {
         DcMsg msg = null;
-        if (!getIntent().getBooleanExtra(FROM_WELCOME, false)) {
+        //if (!getIntent().getBooleanExtra(FROM_WELCOME, false)) { -- UNCOMMENT on RELEASES
           msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
 
           // InputStream inputStream = getResources().getAssets().open("device-messages/green-checkmark.jpg");
@@ -115,8 +115,17 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
           // Util.copy(inputStream, new FileOutputStream(outputFile));
           // msg.setFile(outputFile, "image/jpeg");
 
-          msg.setText(getString(R.string.update_1_44_android, "https://get.delta.chat/#changelogs"));
-        }
+          msg.setText("+++ FROM: MACHINE ROOM +++ SUBJECT: WHAT TO TEST IN 1.45 BETA +++\n\n"
+            + "🔧 Please test starting on new installations "
+            + "and make use of the \"Let's Get Started\" button to create a new accounts "
+            + "(we'll probably switch to the wording \"Profiles\", currently it is a bit mixed, this is known)\n\n"
+            + "🔧 Support for FCM PUSH notifications added: If you have a Google-Phone and if you're using a chatmail account (via \"Let's Get Started\"); "
+            + "please check if you get wakeups; \"Advanced / View Log\" gives hints (look out for \"FCM\")\n\n"
+            + "🔧 We're especially interested in feedback if your device is a Non-Google-Phone - does it crash because of missing FCM?"
+            + "(Log shows push-token=<empty> then)\n\n"
+            + "🔧 Old device users: It is known hat the app currently crashes on android4 - if you also encounter crashes on android5 or if it runs for you on android4 - please report, we really need feedback here as testing for us devs becomes harder and harder over time\n\n"
+            + "For more changes worth testing see https://delta.chat/changelog");
+        //}
         dcContext.addDeviceMsg(deviceMsgId, msg);
       }
     } catch(Exception e) {

@@ -116,7 +116,7 @@ public class ContactSelectionListFragment extends    Fragment
   public void onStart() {
     super.onStart();
     this.getLoaderManager().initLoader(0, null, this);
-    if (dcContext.getConfigInt("ui.android.show_system_contacts") != 0) {
+    if (dcContext.getConfigInt("ui.android.show_system_contacts") != 0 && !dcContext.isChatmail()) {
       Permissions.with(this)
         .request(Manifest.permission.READ_CONTACTS)
         .ifNecessary()
