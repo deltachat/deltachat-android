@@ -944,8 +944,10 @@
     <string name="secure_join_started">%1$s 邀请你加入此群组。\n\n等待 %2$s 的设备回复…</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s 已回复，等待被加入群组…</string>
+    <string name="secure_join_wait">正在建立有保证的端到端加密，请稍候…</string>
+    <string name="secure_join_wait_timeout">无法建立有保证的端到端加密，但您可能已经发送了一条消息。</string>
     <string name="contact_verified">%1$s 已验证。</string>
-    <string name="contact_not_verified">无法验证 %1$s。</string>
+    <string name="contact_not_verified">无法与 %1$s 建立有保证的端到端加密。</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">验证人 %1$s</string>
     <string name="verified_by_you">由您验证</string>
