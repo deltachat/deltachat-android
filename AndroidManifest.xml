@@ -411,6 +411,17 @@
 
         <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_provider_paths" />
 
+        <!--
+            tell SafeContentResolver to allow incoming share-file Intent pointing to files from
+            this content resolver, it could be the user sharing the app's log file to a chat.
+            See:
+            https://github.com/deltachat/deltachat-android/pull/3052
+            https://github.com/deltachat/deltachat-android/pull/3031
+        -->
+        <meta-data
+            android:name="de.cketti.safecontentresolver.ALLOW_INTERNAL_ACCESS"
+            android:value="true" />
+
     </provider>
 
     <provider
