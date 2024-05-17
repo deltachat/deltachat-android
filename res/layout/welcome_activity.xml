@@ -30,7 +30,7 @@
         android:gravity="center"
         android:padding="8dp"
         android:layout_marginBottom="20dp"
-        android:text="@string/welcome_headline2"
+        android:text="@string/welcome_chat_over_email"
         android:textSize="22sp"
         android:textStyle="bold"/>
 
