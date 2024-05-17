@@ -472,7 +472,6 @@
     <string name="part_of_total_used">%1$s / %2$s käytössä</string>
 
 
-    <string name="welcome_chat_over_email">Chattaa sähköpostilla.</string>
     <string name="scan_invitation_code">Skannaa kutsukoodi</string>
     <string name="login_title">Kirjaudu sisään</string>
     <string name="login_header">Kirjaudu palvelimellesi</string>

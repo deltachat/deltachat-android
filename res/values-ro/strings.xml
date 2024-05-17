@@ -523,7 +523,6 @@
     <string name="part_of_total_used">%1$s de %2$s folosit</string>
 
 
-    <string name="welcome_chat_over_email">Chat prin e-mail.</string>
     <string name="scan_invitation_code">Scanați Codul Invitației</string>
     <string name="login_title">Autentificare</string>
     <string name="login_header">Autentificați-vă în contul dumneavoastră de e-mail</string>

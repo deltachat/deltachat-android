@@ -557,7 +557,6 @@
     <string name="part_of_total_used">%1$s sur %2$s utilisé</string>
 
 
-    <string name="welcome_chat_over_email">Messagerie instantanée par courriel.</string>
     <string name="scan_invitation_code">Scanner le code d\'invitation</string>
     <string name="login_title">Connexion</string>
     <string name="login_header">Se connecter au compte courriel</string>

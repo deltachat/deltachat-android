@@ -500,7 +500,6 @@
     <string name="part_of_total_used">%1$sод %2$sискоришћени</string>
 
 
-    <string name="welcome_chat_over_email">Ћаскање преко е-поште.</string>
     <string name="scan_invitation_code">Скенирај код позива за приступ.</string>
     <string name="login_title">Пријави се</string>
     <string name="login_header">Пријавите се у ваш налог е-поште</string>

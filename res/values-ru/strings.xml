@@ -601,7 +601,6 @@
     <!-- Question shown when group's QR code is scanned from onboarding screen -->
     <string name="instant_onboarding_confirm_group">Вы хотите создать новый профиль и присоединиться к чату группы \"%1$s\"?</string>
 
-    <string name="welcome_chat_over_email">Чат через электронную почту.</string>
     <string name="scan_invitation_code">Сканировать код приглашения</string>
     <string name="login_title">Логин</string>
     <string name="login_header">Войти в ваш имэйл-аккаунт</string>

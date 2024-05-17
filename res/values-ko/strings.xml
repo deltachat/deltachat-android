@@ -451,7 +451,6 @@
     <string name="part_of_total_used">%2$s중 %1$s 사용됨</string>
 
 
-    <string name="welcome_chat_over_email">이메일로 채팅.</string>
     <string name="scan_invitation_code">초대 코드 스캔</string>
     <string name="login_title">로그인</string>
     <string name="login_header">이메일 계정으로 로그인하시오</string>

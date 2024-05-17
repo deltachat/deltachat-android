@@ -556,7 +556,6 @@
     <!-- Question shown when group's QR code is scanned from onboarding screen -->
     <string name="instant_onboarding_confirm_group">你想新建个人资料并加入 \"%1$s\" 聊天群吗？</string>
 
-    <string name="welcome_chat_over_email">通过电子邮件聊天。</string>
     <string name="scan_invitation_code">扫描邀请码</string>
     <string name="login_title">登录</string>
     <string name="login_header">登录您的电子邮件账户</string>

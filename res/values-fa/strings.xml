@@ -534,7 +534,6 @@ https://meet.jit.si/$ROOM
     <string name="part_of_total_used">مقدار %1$s از %2$s استفاده شده است. </string>
 
 
-    <string name="welcome_chat_over_email">روی رایانامه گپ بزنید.</string>
     <string name="scan_invitation_code">اسکن کردن کد دعوت</string>
     <string name="login_title">ورود</string>
     <string name="login_header">به سرور خود وارد شوید</string>

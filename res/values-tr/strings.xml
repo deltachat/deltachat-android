@@ -571,7 +571,6 @@
     <!-- Question shown when group's QR code is scanned from onboarding screen -->
     <string name="instant_onboarding_confirm_group">Yeni bir profil oluşturmak ve \"%1$s\" sohbet öbeğine katılmak istiyor musunuz?</string>
 
-    <string name="welcome_chat_over_email">E-Posta Üzerinden Sohbet.</string>
     <string name="scan_invitation_code">Çağrı Kodunu Tara</string>
     <string name="login_title">Giriş Yap</string>
     <string name="login_header">E-Posta Hesabınıza Giriş Yapın</string>

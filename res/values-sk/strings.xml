@@ -498,7 +498,6 @@
     <string name="part_of_total_used">%1$s z %2$svyužitých </string>
 
 
-    <string name="welcome_chat_over_email">Chatovanie cez e-mail.</string>
     <string name="scan_invitation_code">Skenovať kód pozvánky</string>
     <string name="login_title">Prihlásiť sa</string>
     <string name="login_header">Prihláste sa na server</string>
