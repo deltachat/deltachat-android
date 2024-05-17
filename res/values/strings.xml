@@ -644,10 +644,10 @@
     <string name="blocked_empty_hint">Blocked contacts will appear here.</string>
     <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_password_and_account_settings">Password and Account</string>
-    <string name="pref_who_can_see_profile_explain">Your profile image, name and signature will be sent together with your messages when communicating with other users.</string>
+    <string name="pref_who_can_see_profile_explain">Your profile image, name and bio will be sent together with your messages when communicating with other users.</string>
     <string name="pref_your_name">Your Name</string>
     <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
-    <string name="pref_default_status_label">Signature Text</string>
+    <string name="pref_default_status_label">Bio</string>
     <string name="pref_enter_sends">Enter Key Sends</string>
     <string name="pref_enter_sends_explain">Pressing the Enter key will send text messages</string>
     <string name="pref_outgoing_media_quality">Outgoing Media Quality</string>
