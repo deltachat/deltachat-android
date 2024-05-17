@@ -390,7 +390,8 @@
     <string name="chat_new_group_hint">Others will only see this group after you sent a first message.</string>
     <string name="chat_record_slide_to_cancel">Slide to cancel</string>
     <string name="chat_record_explain">Tap and hold to record a voice message, release to send</string>
-    <string name="chat_no_chats_yet_title">Empty inbox.\nPress \"+\" to start a new chat.</string>
+    <string name="chat_no_chats_yet_title">No Chats.\nPress \"+\" to start a new chat.</string>
+    <!-- deprecated -->
     <string name="chat_no_chats_yet_hint">You can chat with other Delta Chat users and with any e-mail address.</string>
     <string name="chat_all_archived">All chats archived.\nPress \"+\" to start a new chat.</string>
     <string name="chat_share_with_title">Share with</string>
