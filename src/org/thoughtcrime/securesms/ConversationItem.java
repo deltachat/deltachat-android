@@ -32,6 +32,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.DimenRes;
 import androidx.annotation.NonNull;
@@ -75,6 +76,7 @@ import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.views.Stub;
 
+import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 
@@ -895,24 +897,32 @@ public class ConversationItem extends BaseConversationItem
         WebxdcActivity.openWebxdcActivity(context, messageRecord);
       } else if (slide.isVcard()) {
         try {
-          VcardContact vcardContact = rpc.parseVcard(slide.asAttachment().getRealPath(context)).get(0);
+          String path = slide.asAttachment().getRealPath(context);
+          VcardContact vcardContact = rpc.parseVcard(path).get(0);
           new AlertDialog.Builder(context)
             .setMessage(context.getString(R.string.ask_start_chat_with, vcardContact.getDisplayName()))
             .setPositiveButton(android.R.string.ok, (dialog, which) -> {
-                // TODO: use new API to import from vcard, and remove the next lines
-                DcContact contact = dcContext.getContact(dcContext.createContact(null, vcardContact.getAddr()));
-                int chatId = dcContext.createChatByContactId(contact.getId());
-                if (chatId != 0) {
-                  Intent intent = new Intent(context, ConversationActivity.class);
-                  intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
-                  context.startActivity(intent);
+                try {
+                  List<Integer> contactIds = rpc.importVcard(dcContext.getAccountId(), path);
+                  if (contactIds.size() > 0) {
+                    int chatId = dcContext.createChatByContactId(contactIds.get(0));
+                    if (chatId != 0) {
+                      Intent intent = new Intent(context, ConversationActivity.class);
+                      intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
+                      context.startActivity(intent);
+                      return;
+                    }
+                  }
+                } catch (RpcException e) {
+                  Log.e(TAG, "failed to import vCard", e);
                 }
-
+                Toast.makeText(context, context.getResources().getString(R.string.error), Toast.LENGTH_SHORT).show();
             })
             .setNegativeButton(R.string.cancel, null)
             .show();
         } catch (RpcException e) {
           Log.e(TAG, "failed to parse vCard", e);
+          Toast.makeText(context, context.getResources().getString(R.string.error), Toast.LENGTH_SHORT).show();
         }
       } else if (MediaPreviewActivity.isTypeSupported(slide) && slide.getUri() != null) {
         Intent intent = new Intent(context, MediaPreviewActivity.class);
