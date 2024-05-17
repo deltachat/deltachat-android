@@ -14,6 +14,7 @@ import android.text.TextUtils;
 import android.text.util.Linkify;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -265,9 +266,27 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
     signUpBtn.setOnClickListener(view -> createProfile());
 
     TextView otherOptionsBtn = findViewById(R.id.other_options_button);
-    otherOptionsBtn.setOnClickListener(view -> WebViewActivity.openUrlInBrowser(this, INSTANCES_URL));
+    otherOptionsBtn.setOnClickListener(view -> showOtherOptionsDialog());
     TextView scanQrBtn = findViewById(R.id.scan_qr_button);
     scanQrBtn.setOnClickListener(view -> new IntentIntegrator(this).setCaptureActivity(RegistrationQrActivity.class).initiateScan());
+  }
+
+  private void showOtherOptionsDialog() {
+    View view = View.inflate(this, R.layout.signup_options_view, null);
+    AlertDialog signUpDialog = new AlertDialog.Builder(this)
+      .setView(view)
+      .setTitle(R.string.pref_profile_info_headline)
+      .setNegativeButton(R.string.cancel, null)
+      .create();
+    view.findViewById(R.id.use_other_server).setOnClickListener((v) -> {
+      WebViewActivity.openUrlInBrowser(this, INSTANCES_URL);
+      signUpDialog.dismiss();
+    });
+    view.findViewById(R.id.login_button).setOnClickListener((v) -> {
+      // startRegistrationActivity();
+      signUpDialog.dismiss();
+    });
+    signUpDialog.show();
   }
 
   private void updateProvider() {

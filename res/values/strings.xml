@@ -563,6 +563,7 @@
     <string name="instant_onboarding_create">Agree &amp; Create Profile</string>
     <!-- Secondary, link-like button to open a page with other possible instances -->
     <string name="instant_onboarding_show_more_instances">Explore Other Options</string>
+    <string name="instant_onboarding_other_server">Browse Other Servers</string>
     <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group name -->
     <string name="instant_onboarding_group_info">Create a profile to join the group \"%1$s\".</string>
     <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by contact name and/or address -->
