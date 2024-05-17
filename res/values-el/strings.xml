@@ -472,7 +472,6 @@
     <string name="part_of_total_used">%1$s από %2$s χρησιμοποιείται</string>
 
 
-    <string name="welcome_chat_over_email">Συνομιλία μέσω E-Mail.</string>
     <string name="scan_invitation_code">Σάρωση Κωδικού Πρόσκλησης</string>
     <string name="login_title">Σύνδεση</string>
     <string name="login_header">Συνδεθείτε στον λογαριασμό σας E-Mail</string>

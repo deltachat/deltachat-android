@@ -571,7 +571,6 @@
     <!-- Question shown when group's QR code is scanned from onboarding screen -->
     <string name="instant_onboarding_confirm_group">Wil je een nieuw profiel aanmaken en deelnemen aan ‘%1$s’?</string>
 
-    <string name="welcome_chat_over_email">Chatten via e-mail.</string>
     <string name="scan_invitation_code">Uitnodigingscode scannen</string>
     <string name="login_title">Inloggen</string>
     <string name="login_header">Inloggen op je server</string>

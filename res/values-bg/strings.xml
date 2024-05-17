@@ -514,7 +514,6 @@
     <string name="part_of_total_used">Използвани са %1$s от %2$s</string>
 
 
-    <string name="welcome_chat_over_email">Чат през email.</string>
     <string name="scan_invitation_code">Сканиране на код за покана</string>
     <string name="login_title">Влизане</string>
     <string name="login_header">Влизане във Вашия акаунт за електронна поща</string>

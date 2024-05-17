@@ -560,7 +560,6 @@
     <string name="part_of_total_used">%1$s de %2$s usado</string>
 
 
-    <string name="welcome_chat_over_email">Charla por correo electrónico.</string>
     <string name="scan_invitation_code">Escanear código de invitación</string>
     <string name="login_title">Iniciar sesión</string>
     <string name="login_header">Inicie sesión en su servidor</string>

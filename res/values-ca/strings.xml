@@ -496,7 +496,6 @@
     <string name="part_of_total_used">%1$s de %2$s usats</string>
 
 
-    <string name="welcome_chat_over_email">Xateja via Email</string>
     <string name="scan_invitation_code">Escaneja el Codi d\'Invitació</string>
     <string name="login_title">Identifiqueu-vos</string>
     <string name="login_header">Identifiqueu-vos al vostre servidor</string>

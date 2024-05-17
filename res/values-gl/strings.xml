@@ -479,7 +479,6 @@
     <string name="part_of_total_used">Utilizado %1$s de %2$s</string>
 
 
-    <string name="welcome_chat_over_email">Chat a través de Email.</string>
     <string name="scan_invitation_code">Escanear código de convite</string>
     <string name="login_title">Acceder</string>
     <string name="login_header">Accede ao teu servidor</string>

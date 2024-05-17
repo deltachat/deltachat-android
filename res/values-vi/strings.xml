@@ -529,7 +529,6 @@
     <string name="part_of_total_used">%1$s trong tổng số %2$s đã được sử dụng</string>
 
 
-    <string name="welcome_chat_over_email">Trò chuyện qua E-Mail.</string>
     <string name="scan_invitation_code">Quét mã mời</string>
     <string name="login_title">Đăng nhập</string>
     <string name="login_header">Đăng nhập vào tài khoản E-Mail của bạn</string>
