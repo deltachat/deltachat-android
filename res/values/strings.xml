@@ -497,7 +497,7 @@
     <!-- "Second Device" can also be translated as "Another Device", if that is catchier in the destination language. However, make sure to use the term consistently. -->
     <string name="multidevice_title">Add Second Device</string>
     <string name="multidevice_same_network_hint">Make sure both devices are on the same Wi-Fi or network</string>
-    <string name="multidevice_this_creates_a_qr_code">This creates a QR code that the second device can scan to copy the account.</string>
+    <string name="multidevice_this_creates_a_qr_code">This creates a QR code that the second device can scan to copy the profile.</string>
     <string name="multidevice_install_dc_on_other_device">Install Delta Chat on your other device (https://get.delta.chat)</string>
     <!-- "I Already Have a Login / Add as Second Device” should be the same text as defined by the keys onboarding_alternative_logins and multidevice_receiver_title -->
     <string name="multidevice_tap_scan_on_other_device">Start Delta Chat, tap “I Already Have a Login / Add as Second Device” and scan the code shown here</string>
@@ -505,13 +505,13 @@
     <string name="multidevice_qr_subtitle">Scan to set up second device for %1$s</string>
     <string name="multidevice_receiver_title">Add as Second Device</string>
     <string name="multidevice_open_settings_on_other_device">On the first device, go to “Settings / Add Second Device“ and scan the code shown there</string>
-    <string name="multidevice_receiver_scanning_ask">Copy the account from the other device to this device?</string>
+    <string name="multidevice_receiver_scanning_ask">Copy the profile from the other device to this device?</string>
     <string name="multidevice_abort">Abort setting up second device?</string>
     <string name="multidevice_abort_will_invalidate_copied_qr">This will invalidate the QR code copied to clipboard.</string>
     <string name="multidevice_experimental_hint">(experimental, version 1.36 required)</string>
-    <string name="multidevice_transfer_done_devicemsg">ℹ️ Account transferred to your second device.</string>
+    <string name="multidevice_transfer_done_devicemsg">ℹ️ Profile transferred to your second device.</string>
     <!-- Shown beside progress bar, stay short -->
-    <string name="preparing_account">Preparing account…</string>
+    <string name="preparing_account">Preparing profile…</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="waiting_for_receiver">Waiting for receiver…</string>
     <!-- Shown beside progress bar, stay short -->
@@ -546,12 +546,12 @@
 
 
     <!-- welcome and login -->
-    <!-- Primary button on the welcome screen, allows to create an instant account -->
-    <string name="onboarding_create_instant_account">Let\'s Get Started!</string>
+    <!-- Primary button on the welcome screen, allows to create an instant profile -->
+    <string name="onboarding_create_instant_account">Create New Profile</string>
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup", "Manual Login"  -->
-    <string name="onboarding_alternative_logins">I Already Have a Login</string>
+    <string name="onboarding_alternative_logins">I Already Have a Profile</string>
     <!-- Button, allows to log in to existing email accounts, setting ports, passwords and so on -->
-    <string name="manual_account_setup_option">Manual Login</string>
+    <string name="manual_account_setup_option">Log In Manually</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Your Profile</string>
     <!-- This is a link to the default Privacy Policy -->
@@ -574,7 +574,9 @@
     <string name="welcome_chat_over_email">Secure Decentralized Chat</string>
     <string name="scan_invitation_code">Scan Invitation Code</string>
     <string name="login_title">Log In</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">Log into your E-Mail Account</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_explain">Log in with an existing e-mail account</string>
     <string name="login_subheader">For known e-mail providers additional settings are set up automatically. Sometimes IMAP needs to be enabled in the web settings. Consult your e-mail provider or friends for help.</string>
     <string name="login_no_servers_hint">Delta Chat does not collect user data, everything stays on your device.</string>
@@ -612,13 +614,13 @@
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Accept invalid certificates</string>
     <string name="used_settings">Used settings:</string>
-    <string name="switch_account">Switch Account</string>
-    <string name="add_account">Add Account</string>
-    <string name="delete_account">Delete Account</string>
-    <string name="delete_account_ask">Are you sure you want to delete your account data?</string>
-    <string name="delete_account_explain_with_name">All account data of \"%s\" on this device will be deleted, including your end-to-end encryption setup, contacts, chats, messages and media. This action cannot be undone.</string>
-    <string name="unconfigured_account">Unconfigured account</string>
-    <string name="unconfigured_account_hint">Open account to configure it.</string>
+    <string name="switch_account">Switch Profile</string>
+    <string name="add_account">Add Profile</string>
+    <string name="delete_account">Delete Profile</string>
+    <string name="delete_account_ask">Are you sure you want to delete your profile data?</string>
+    <string name="delete_account_explain_with_name">All profile data of \"%s\" on this device will be deleted, including your end-to-end encryption setup, contacts, chats, messages and media. This action cannot be undone.</string>
+    <string name="unconfigured_account">Unconfigured profile</string>
+    <string name="unconfigured_account_hint">Open profile to configure it.</string>
     <string name="try_connect_now">Try to connect now</string>
     <string name="sync_all">Sync All</string>
     <!-- Translations: %1$s will be replaced by a more detailed error message -->
@@ -640,6 +642,7 @@
     <string name="pref_profile_photo">Profile Image</string>
     <string name="pref_blocked_contacts">Blocked Contacts</string>
     <string name="blocked_empty_hint">Blocked contacts will appear here.</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_password_and_account_settings">Password and Account</string>
     <string name="pref_who_can_see_profile_explain">Your profile image, name and signature will be sent together with your messages when communicating with other users.</string>
     <string name="pref_your_name">Your Name</string>
@@ -699,10 +702,10 @@
     <string name="pref_backup">Backup</string>
     <string name="pref_backup_explain">Back Up Chats to External Storage</string>
     <string name="pref_backup_export_explain">A backup helps you to set up a new installation on this or on another device.\n\nThe backup will contain all messages, contacts and chats and your end-to-end Autocrypt setup. Keep the backup file in a safe place or delete it as soon as possible.</string>
-    <!-- the placeholder will be replaced by the name of the account's email address -->
+    <!-- the placeholder will be replaced by the name of the profile's email address -->
     <string name="pref_backup_export_x">Export %1$s</string>
-    <!-- the placeholder will be replaced by the number of accounts to export; the number is always larger than 1 -->
-    <string name="pref_backup_export_all">Export all %1$d accounts</string>
+    <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
+    <string name="pref_backup_export_all">Export all %1$d profiles</string>
     <string name="pref_backup_export_start_button">Start Backup</string>
     <string name="pref_backup_written_to_x">Backup written successfully to \"%1$s\".</string>
     <string name="pref_managekeys_menu_title">Manage Keys</string>
@@ -720,6 +723,7 @@
     <string name="pref_imap_folder_warn_disable_defaults">If you change this option, make sure, your server and your other clients are configured accordingly.\n\nOtherwise things may not work at all.</string>
     <string name="pref_watch_sent_folder">Watch Sent Folder</string>
     <string name="pref_send_copy_to_self">Send Copy to Self</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_send_copy_to_self_explain">Required when using this account on multiple devices.</string>
     <string name="pref_auto_folder_moves">Move automatically to DeltaChat Folder</string>
     <string name="pref_auto_folder_moves_explain">Chat conversations are moved to avoid cluttering the Inbox</string>
@@ -945,16 +949,17 @@
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
     <string name="qrshow_join_contact_hint">Scan to chat with %1$s</string>
     <string name="qrshow_join_contact_no_connection_toast">No internet connection, can\'t perform QR code setup.</string>
-    <string name="qraccount_ask_create_and_login">Create new e-mail address on \"%1$s\" and log in there?</string>
-    <string name="qraccount_ask_create_and_login_another">Create new e-mail address on \"%1$s\" and log in there?\n\nYour existing account will not be deleted. Use the \"Switch Account\" item to switch between your accounts.</string>
+    <string name="qraccount_ask_create_and_login">Create new profile on \"%1$s\" and log in there?</string>
+    <string name="qraccount_ask_create_and_login_another">Create new profile on \"%1$s\" and log in there?\n\nYour existing profile will not be deleted. Use the \"Switch Profile\" item to switch between your profiles.</string>
     <string name="set_name_and_avatar_explain">Set a name that your contacts will recognize. You can also set a profile image.</string>
     <string name="please_enter_name">Please enter a name.</string>
-    <string name="qraccount_qr_code_cannot_be_used">The scanned QR code cannot be used to set up a new account.</string>
-    <string name="qraccount_use_on_new_install">The scanned QR code is for setting up a new account. You can scan the QR code when setting up a new Delta Chat installation.</string>
-    <!-- the placeholder will be replaced by the e-mail address of the account -->
+    <string name="qraccount_qr_code_cannot_be_used">The scanned QR code cannot be used to set up a new profile.</string>
+    <!-- deprecated -->
+    <string name="qraccount_use_on_new_install">The scanned QR code is for setting up a new profile. You can scan the QR code when setting up a new Delta Chat installation.</string>
+    <!-- the placeholder will be replaced by the e-mail address of the profile -->
     <string name="qrlogin_ask_login">Log into \"%1$s\"?</string>
-    <!-- the placeholder will be replaced by the e-mail address of the account -->
-    <string name="qrlogin_ask_login_another">Log into \"%1$s\"?\n\nYour existing account will not be deleted. Use the \"Switch Account\" item to switch between your accounts.</string>
+    <!-- the placeholder will be replaced by the e-mail address of the profile -->
+    <string name="qrlogin_ask_login_another">Log into \"%1$s\"?\n\nYour existing profile will not be deleted. Use the \"Switch Profile\" item to switch between your profiles.</string>
     <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s invited you to join this group.\n\nWaiting for the device of %2$s to reply…</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
@@ -1051,6 +1056,7 @@
     <string name="export_backup_desktop">Export Backup</string>
     <string name="autocrypt_correct_desktop">Autocrypt setup transferred.</string>
     <string name="forget_login_confirmation_desktop">Delete this login? Everything will be deleted, including your end-to-end setup, contacts, chats, messages and media. This action cannot be undone.</string>
+    <!-- deprecated -->
     <string name="account_info_hover_tooltip_desktop2">E-Mail: %1$s\nSize: %2$s\nAccount Id: %3$s</string>
     <string name="message_detail_sent_desktop">sent</string>
     <string name="message_detail_received_desktop">received</string>
@@ -1089,7 +1095,7 @@
     <string name="a11y_voice_message_hint_ios">After recording, double-tap to send. To discard the recording, scrub with two fingers.</string>
     <string name="a11y_connectivity_hint">Double tap to view connectivity details.</string>
     <string name="login_error_no_internet_connection">No internet connection, login failed.</string>
-    <string name="share_account_not_configured">Account is not configured.</string>
+    <string name="share_account_not_configured">Profile is not configured.</string>
     <string name="cannot_play_audio_file">The audio file cannot be played.</string>
     <!-- iOS camera permission alert -->
     <string name="perm_ios_explain_access_to_camera_denied">To take photos, capture videos or use the QR-Code scanner, open the system settings and enable \"Camera\".</string>
