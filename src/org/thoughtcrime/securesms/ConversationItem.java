@@ -172,9 +172,9 @@ public class ConversationItem extends BaseConversationItem
     bind(messageRecord, dcChat, batchSelected, pulseHighlight, recipients);
     this.locale                 = locale;
     this.glideRequests          = glideRequests;
-    this.showSender             = dcChat.isMultiUser() || messageRecord.getOverrideSenderName() != null;
+    this.showSender             = (dcChat.isMultiUser() && !messageRecord.isOutgoing()) || messageRecord.getOverrideSenderName() != null;
 
-    if (showSender && !messageRecord.isOutgoing()) {
+    if (showSender) {
       this.dcContact = dcContext.getContact(messageRecord.getFromId());
     }
 
@@ -609,7 +609,7 @@ public class ConversationItem extends BaseConversationItem
       bottomRight = 0;
     }
 
-    if ((!current.isOutgoing() && showSender)
+    if (showSender
      || current.isForwarded()
      || hasQuote(current)) {
       topLeft  = 0;
@@ -631,7 +631,7 @@ public class ConversationItem extends BaseConversationItem
   private void setContactPhoto() {
     if (contactPhoto == null) return;
 
-    if (messageRecord.isOutgoing() || !showSender || dcContact ==null) {
+    if (!showSender || dcContact ==null) {
       contactPhoto.setVisibility(View.GONE);
     } else {
       contactPhoto.setAvatar(glideRequests, new Recipient(context, dcContact), true);
@@ -757,14 +757,14 @@ public class ConversationItem extends BaseConversationItem
     }
 
     if (messageRecord.isForwarded()) {
-      if (showSender && !messageRecord.isOutgoing() && dcContact !=null) {
+      if (showSender && dcContact !=null) {
         this.groupSender.setText(context.getString(R.string.forwarded_by, messageRecord.getSenderName(dcContact, false)));
       } else {
         this.groupSender.setText(context.getString(R.string.forwarded_message));
       }
       this.groupSender.setTextColor(context.getResources().getColor(R.color.unknown_sender));
     }
-    else if (showSender && !messageRecord.isOutgoing() && dcContact !=null) {
+    else if (showSender && dcContact !=null) {
       this.groupSender.setText(messageRecord.getSenderName(dcContact, true));
       this.groupSender.setTextColor(Util.rgbToArgbColor(dcContact.getColor()));
     }
@@ -772,12 +772,12 @@ public class ConversationItem extends BaseConversationItem
 
   private void setAuthor(@NonNull DcMsg current, boolean showSender) {
     int groupSenderHolderVisibility = GONE;
-    if (showSender && !current.isOutgoing()) {
+    if (showSender) {
       if (contactPhotoHolder != null) {
         contactPhotoHolder.setVisibility(VISIBLE);
+        contactPhoto.setVisibility(VISIBLE);
       }
       groupSenderHolderVisibility = VISIBLE;
-      contactPhoto.setVisibility(VISIBLE);
     } else {
       if (contactPhotoHolder != null) {
         contactPhotoHolder.setVisibility(GONE);
