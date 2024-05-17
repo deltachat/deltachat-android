@@ -93,7 +93,7 @@ public class AddReactionView extends LinearLayout {
             anyReactionView.setBackground(ContextCompat.getDrawable(context, R.drawable.reaction_pill_background_selected));
             anyReactionClearsReaction = true;
         } else {
-            anyReactionView.setText("•••");
+            anyReactionView.setText("⋯");
             anyReactionView.setBackground(null);
             anyReactionClearsReaction = false;
         }
