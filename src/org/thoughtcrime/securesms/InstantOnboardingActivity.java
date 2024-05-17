@@ -91,7 +91,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
 
     setContentView(R.layout.instant_onboarding_activity);
 
-    Objects.requireNonNull(getSupportActionBar()).setTitle(R.string.instant_onboarding_title);
+    Objects.requireNonNull(getSupportActionBar()).setTitle(R.string.onboarding_create_instant_account);
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
     boolean fromWelcome  = getIntent().getBooleanExtra(FROM_WELCOME, false);
@@ -275,7 +275,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
     View view = View.inflate(this, R.layout.signup_options_view, null);
     AlertDialog signUpDialog = new AlertDialog.Builder(this)
       .setView(view)
-      .setTitle(R.string.pref_profile_info_headline)
+      .setTitle(R.string.onboarding_create_instant_account)
       .setNegativeButton(R.string.cancel, null)
       .create();
     view.findViewById(R.id.use_other_server).setOnClickListener((v) -> {
