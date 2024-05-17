@@ -267,8 +267,6 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
 
     TextView otherOptionsBtn = findViewById(R.id.other_options_button);
     otherOptionsBtn.setOnClickListener(view -> showOtherOptionsDialog());
-    TextView scanQrBtn = findViewById(R.id.scan_qr_button);
-    scanQrBtn.setOnClickListener(view -> new IntentIntegrator(this).setCaptureActivity(RegistrationQrActivity.class).initiateScan());
   }
 
   private void showOtherOptionsDialog() {
@@ -278,6 +276,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
       .setTitle(R.string.onboarding_create_instant_account)
       .setNegativeButton(R.string.cancel, null)
       .create();
+
     view.findViewById(R.id.use_other_server).setOnClickListener((v) -> {
       WebViewActivity.openUrlInBrowser(this, INSTANCES_URL);
       signUpDialog.dismiss();
@@ -286,6 +285,10 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
       startRegistrationActivity();
       signUpDialog.dismiss();
     });
+    view.findViewById(R.id.scan_qr_button).setOnClickListener((v) ->
+      new IntentIntegrator(this).setCaptureActivity(RegistrationQrActivity.class).initiateScan()
+    );
+
     signUpDialog.show();
   }
 

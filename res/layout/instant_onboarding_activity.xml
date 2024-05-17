@@ -101,24 +101,12 @@
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           app:layout_constraintStart_toEndOf="@+id/other_options_button"
-          app:layout_constraintEnd_toStartOf="@+id/scan_qr_button"
+          app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintTop_toTopOf="parent"
           app:layout_constraintBottom_toBottomOf="parent"
           android:paddingLeft="16dp"
           android:paddingRight="16dp" />
 
-      <TextView
-          android:id="@+id/scan_qr_button"
-          android:layout_width="0dp"
-          android:layout_height="wrap_content"
-          app:layout_constraintStart_toEndOf="@+id/separator"
-          app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintTop_toTopOf="parent"
-          app:layout_constraintBottom_toBottomOf="parent"
-          android:gravity="end"
-          android:padding="16dp"
-          android:text="@string/qrscan_title"
-          android:textColor="@color/gray50"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
   </LinearLayout>
