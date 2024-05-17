@@ -283,10 +283,15 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
       signUpDialog.dismiss();
     });
     view.findViewById(R.id.login_button).setOnClickListener((v) -> {
-      // startRegistrationActivity();
+      startRegistrationActivity();
       signUpDialog.dismiss();
     });
     signUpDialog.show();
+  }
+
+  private void startRegistrationActivity() {
+    Intent intent = new Intent(this, RegistrationActivity.class);
+    startActivity(intent);
   }
 
   private void updateProvider() {
