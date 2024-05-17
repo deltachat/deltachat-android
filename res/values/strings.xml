@@ -571,7 +571,7 @@
     <!-- Question shown when group's QR code is scanned from onboarding screen -->
     <string name="instant_onboarding_confirm_group">Do you want to create a new profile and join the \"%1$s\" chat group?</string>
 
-    <string name="welcome_chat_over_email">Chat over E-Mail.</string>
+    <string name="welcome_chat_over_email">Secure Decentralized Chat</string>
     <string name="scan_invitation_code">Scan Invitation Code</string>
     <string name="login_title">Log In</string>
     <string name="login_header">Log into your E-Mail Account</string>
