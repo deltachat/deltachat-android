@@ -116,6 +116,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
     initializeResources();
     initializeProfileAvatar();
     handleIntent();
+    updateProvider();
   }
 
   @Override
@@ -306,7 +307,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
       signUpBtn.setText(R.string.instant_onboarding_create);
       privacyPolicyBtn.setTextColor(getResources().getColor(R.color.delta_accent));
       if (DEFAULT_CHATMAIL_HOST.equals(providerHost)) {
-        privacyPolicyBtn.setText(R.string.instant_onboarding_agree_default);
+        privacyPolicyBtn.setText(getString(R.string.instant_onboarding_agree_default2, providerHost));
       } else {
         privacyPolicyBtn.setText(getString(R.string.instant_onboarding_agree_instance, providerHost));
       }
