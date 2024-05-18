@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:paddingLeft="24dp"
         android:paddingRight="24dp"
-        android:text="@string/qrscan_title"/>
+        android:text="@string/scan_invitation_code"/>
 
   </LinearLayout>
 

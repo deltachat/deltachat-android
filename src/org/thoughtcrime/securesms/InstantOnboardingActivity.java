@@ -273,7 +273,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
     View view = View.inflate(this, R.layout.signup_options_view, null);
     AlertDialog signUpDialog = new AlertDialog.Builder(this)
       .setView(view)
-      .setTitle(R.string.onboarding_create_instant_account)
+      .setTitle(R.string.instant_onboarding_show_more_instances)
       .setNegativeButton(R.string.cancel, null)
       .create();
 
