@@ -286,9 +286,10 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
       startRegistrationActivity();
       signUpDialog.dismiss();
     });
-    view.findViewById(R.id.scan_qr_button).setOnClickListener((v) ->
-      new IntentIntegrator(this).setCaptureActivity(RegistrationQrActivity.class).initiateScan()
-    );
+    view.findViewById(R.id.scan_qr_button).setOnClickListener((v) -> {
+      new IntentIntegrator(this).setCaptureActivity(RegistrationQrActivity.class).initiateScan();
+      signUpDialog.dismiss();
+    });
 
     signUpDialog.show();
   }
