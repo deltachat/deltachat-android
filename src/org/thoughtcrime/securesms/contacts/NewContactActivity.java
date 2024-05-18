@@ -40,7 +40,7 @@ public class NewContactActivity extends PassphraseRequiredActionBarActivity
 
     ActionBar actionBar = getSupportActionBar();
     if (actionBar != null) {
-      actionBar.setTitle(R.string.menu_new_contact);
+      actionBar.setTitle(R.string.menu_new_classic_contact);
       actionBar.setDisplayHomeAsUpEnabled(true);
       actionBar.setHomeAsUpIndicator(R.drawable.ic_close_white_24dp);
     }

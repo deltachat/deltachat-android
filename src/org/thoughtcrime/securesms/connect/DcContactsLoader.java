@@ -53,7 +53,7 @@ public class DcContactsLoader extends AsyncLoader<DcContactsLoader.Ret> {
         }
         if (addCreateContactLink)
         {
-            additional_items = Util.appendInt(additional_items, DcContact.DC_CONTACT_ID_NEW_CONTACT);
+            additional_items = Util.appendInt(additional_items, DcContact.DC_CONTACT_ID_NEW_CLASSIC_CONTACT);
         }
         int all_ids[] = new int[contact_ids.length + additional_items.length];
         System.arraycopy(additional_items, 0, all_ids, 0, additional_items.length);

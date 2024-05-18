@@ -271,8 +271,8 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter
     String addr = null;
     boolean itemMultiSelect = multiSelect;
 
-    if (id == DcContact.DC_CONTACT_ID_NEW_CONTACT) {
-      name = context.getString(R.string.menu_new_contact);
+    if (id == DcContact.DC_CONTACT_ID_NEW_CLASSIC_CONTACT) {
+      name = context.getString(R.string.menu_new_classic_contact);
       itemMultiSelect = false; // the item creates a new contact in the list that will be selected instead
     } else if (id == DcContact.DC_CONTACT_ID_NEW_GROUP) {
       name = context.getString(R.string.menu_new_group);

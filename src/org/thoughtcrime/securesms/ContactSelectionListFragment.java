@@ -350,7 +350,7 @@ public class ContactSelectionListFragment extends    Fragment
       int    specialId = contact.getSpecialId();
       String addr      = contact.getNumber();
       if (!isMulti() || !selectedContacts.contains(addr)) {
-        if (specialId == DcContact.DC_CONTACT_ID_NEW_CONTACT) {
+        if (specialId == DcContact.DC_CONTACT_ID_NEW_CLASSIC_CONTACT) {
           Intent intent = new Intent(getContext(), NewContactActivity.class);
           if (dcContext.mayBeValidAddr(cursorFilter)) {
             intent.putExtra(NewContactActivity.ADDR_EXTRA, cursorFilter);
