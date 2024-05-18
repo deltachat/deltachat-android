@@ -552,7 +552,7 @@
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
     <string name="onboarding_alternative_logins">I Already Have a Profile</string>
     <!-- Button, allows to log in to existing email accounts, setting ports, passwords and so on -->
-    <string name="manual_account_setup_option">Classic Login</string>
+    <string name="manual_account_setup_option">Classic E-Mail Login</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Your Profile</string>
     <!-- deprecated -->
