@@ -46,7 +46,7 @@ public class DcContactsLoader extends AsyncLoader<DcContactsLoader.Ret> {
         {
           additional_items = Util.appendInt(additional_items, DcContact.DC_CONTACT_ID_QR_INVITE);
         }
-        if (addCreateContactLink)
+        if (addCreateContactLink && !dcContext.isChatmail())
         {
             additional_items = Util.appendInt(additional_items, DcContact.DC_CONTACT_ID_NEW_CLASSIC_CONTACT);
         }
