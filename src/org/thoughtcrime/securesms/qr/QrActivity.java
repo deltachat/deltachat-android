@@ -68,7 +68,7 @@ public class QrActivity extends BaseActionBarActivity {
 
         setSupportActionBar(ViewUtil.findById(this, R.id.toolbar));
         assert getSupportActionBar() != null;
-        getSupportActionBar().setTitle(R.string.qr_code);
+        getSupportActionBar().setTitle(R.string.menu_new_contact);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         int lastSelectedTab = PreferenceManager.getDefaultSharedPreferences(this).getInt("qrTab", TAB_SHOW);

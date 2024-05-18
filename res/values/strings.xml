@@ -923,10 +923,10 @@
 
     <!-- qr code stuff -->
     <string name="qr_code">QR Code</string>
-    <string name="load_qr_code_as_image">Load QR Code as Image</string>
-    <string name="qrscan_title">Scan QR Code</string>
-    <string name="qrscan_hint">Hold your camera over the QR code</string>
-    <string name="qrscan_hint_desktop">Move the QR code to the camera</string>
+    <string name="load_qr_code_as_image">Load Invite Code as Image</string>
+    <string name="qrscan_title">Scan</string>
+    <string name="qrscan_hint">Hold your camera over the invite code</string>
+    <string name="qrscan_hint_desktop">Move the invite code to the camera</string>
     <string name="qrscan_failed">QR code could not be decoded</string>
     <string name="qrscan_ask_join_group">Do you want to join the group \"%1$s\"?</string>
     <string name="qrscan_fingerprint_mismatch">The scanned fingerprint does not match the last seen for %1$s.</string>
@@ -942,11 +942,11 @@
     <!-- "could" in the meaning of "possible at some point in the past, but no longer possible today" -->
     <string name="revive_verifygroup_explain">This QR code could be scanned by others to join the group \"%1$s\".\n\nThe QR code is not active on this device.</string>
     <string name="revive_qr_code">Activate QR Code</string>
-    <string name="qrshow_title">QR Invite Code</string>
+    <string name="qrshow_title">Invite Code</string>
     <string name="qrshow_x_joining">%1$s joins.</string>
     <string name="qrshow_x_verified">%1$s introduced.</string>
     <string name="qrshow_x_has_joined_group">%1$s joined the group.</string>
-    <string name="qrshow_join_group_title">QR Invite Code</string>
+    <string name="qrshow_join_group_title">Invite Code</string>
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
     <string name="qrshow_join_group_hint">Scan to join group \"%1$s\"</string>
     <string name="qrshow_join_contact_title">QR Invite Code</string>
