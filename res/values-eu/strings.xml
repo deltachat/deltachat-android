@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">Ados</string>
@@ -237,6 +237,7 @@
     <string name="chat_record_slide_to_cancel">Irristatu ezeztatzeko</string>
     <string name="chat_record_explain">Sakatu eta mantendu ahots-mezu bat grabatzeko, askatu bidaltzeko.</string>
     <string name="chat_no_chats_yet_title">Sarrera-ontzi hutsa.\nSakatu \"+\" txat berria hasteko.</string>
+    <!-- deprecated -->
     <string name="chat_no_chats_yet_hint">Beste Delta Chat erabiltzaileekin txateatu dezakezu, edo edozein e-mail helbiderekin</string>
     <string name="chat_all_archived">Txat guztiak artxibatuta.\nSakatu \"+\" txat berri bat hasteko.</string>
     <string name="chat_share_with_title">Partekatu honekin</string>
@@ -278,7 +279,9 @@
     <string name="media_preview">Multimediaren aurrebista</string>
     <string name="send_message">Bidali mezua</string>
     <string name="login_title">Hasi saioa</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">Hasi saioa zure zerbitzarian</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_explain">Badagoen e-mail kontu batekin saioa hasten</string>
     <string name="login_subheader">E-mail hornitzaile ezagunentzat ezarpen gehigarriak automatikoki sortzen dira. Batzuetan IMAP gaitu behar da web interfazearen bidez. Kontsultatu zure e-mail hornitzaileari edo eskatu laguntza lagunei.</string>
     <string name="login_no_servers_hint">Ez dago Delta Chat zerbitzaririk, zure datuak zure gailuan mantentzen dira!</string>
@@ -325,6 +328,7 @@
     <string name="pref_profile_info_headline">Zure profileko informazioa</string>
     <string name="pref_profile_photo">Profileko argazkia</string>
     <string name="pref_blocked_contacts">Blokeatutako kontaktuak</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_password_and_account_settings">Pasahitza eta kontua</string>
     <string name="pref_who_can_see_profile_explain">Zure profileko argazkia eta izena zure mezuekin batera erakutsiko dira beste erabiltzaileekin komunikatzen zarenean. Informazioa behin bidalita ezin da ezabatu edo kendu.</string>
     <string name="pref_your_name">Zure izena</string>
@@ -481,6 +485,7 @@
     <string name="qrshow_join_contact_no_connection_toast">Ez dago Internet konexiorik, ezin da QR kode bidezko ezarpena aplikatu</string>
     <string name="qraccount_ask_create_and_login">Sortu kontu berria \"%1$s\" zerbitzarian eta saioa han hasi?</string>
     <string name="qraccount_qr_code_cannot_be_used">Eskaneatutako QR kodea ezin da kontu berri bat ezartzeko erabili.</string>
+    <!-- deprecated -->
     <string name="qraccount_use_on_new_install">Eskaneatutako QR kodea kontu berri bat ezartzeko da. QR kodea Delta Chat instalazio berri batean eskaneatu dezakezu.</string>
     <string name="contact_verified">%1$s egiaztatuta.</string>
     <string name="contact_not_verified">Ezin da %1$s egiaztatu</string>

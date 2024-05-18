@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
@@ -403,6 +403,7 @@
     <string name="chat_record_slide_to_cancel">Glisser pour annuler</string>
     <string name="chat_record_explain">Appuyer et maintenir pour enregistrer un message vocal, relâcher pour l’envoyer</string>
     <string name="chat_no_chats_yet_title">Boîte de réception vide. Appuyer sur \"+\" pour commencer une nouvelle discussion.</string>
+    <!-- deprecated -->
     <string name="chat_no_chats_yet_hint">Vous pouvez discuter avec d\'autres utilisateurs de Delta Chat et avec n\'importe quelle adresse de courriel.</string>
     <string name="chat_all_archived">Toutes les discussions sont archivées.\nAppuyer sur \"+\" pour commencer une nouvelle discussion.</string>
     <string name="chat_share_with_title">Partager avec</string>
@@ -559,7 +560,9 @@
 
     <string name="scan_invitation_code">Scanner le code d\'invitation</string>
     <string name="login_title">Connexion</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">Se connecter au compte courriel</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_explain">Se connecter avec un compte de courriel existant.</string>
     <string name="login_subheader">Pour les fournisseurs de courriel connus, des paramètres supplémentaires sont automatiquement configurés. Parfois, IMAP doit être activé dans l\'interface Web. Consultez votre fournisseur de courriel ou vos amis pour obtenir de l\'aide.</string>
     <string name="login_no_servers_hint">Il n\'y a pas de serveur Delta Chat, vos données restent sur votre appareil !</string>
@@ -625,6 +628,7 @@
     <string name="pref_profile_photo">Photo de profil</string>
     <string name="pref_blocked_contacts">Contacts bloqués</string>
     <string name="blocked_empty_hint">Si vous bloquez des contacts, ils seront affichés ici.</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_password_and_account_settings">Mot de passe et compte</string>
     <string name="pref_who_can_see_profile_explain">Votre image de profil, votre nom et votre signature seront envoyés avec vos messages lorsque vous communiquerez avec d\'autres utilisateurs.</string>
     <string name="pref_your_name">Votre nom</string>
@@ -680,9 +684,9 @@
     <string name="pref_backup">Sauvegarde</string>
     <string name="pref_backup_explain">Sauvegarder les discussions sur un stockage externe</string>
     <string name="pref_backup_export_explain">Une sauvegarde vous aide à configurer une nouvelle installation sur cet appareil ou sur un autre.\n\nLa sauvegarde contiendra tous vos messages, tous vos contacts et toutes vos discussions, ainsi que vos paramètres de chiffrement de bout en bout Autocrypt. Conservez le fichier de sauvegarde dans un endroit sûr, ou supprimez-le aussitôt utilisé.</string>
-    <!-- the placeholder will be replaced by the name of the account's email address -->
+    <!-- the placeholder will be replaced by the name of the profile's email address -->
     <string name="pref_backup_export_x">Exporter %1$s</string>
-    <!-- the placeholder will be replaced by the number of accounts to export; the number is always larger than 1 -->
+    <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Exporter les %1$d comptes</string>
     <string name="pref_backup_export_start_button">Démarrer la sauvegarde</string>
     <string name="pref_backup_written_to_x">Sauvegarde effectuée avec succès sur %1$s</string>
@@ -701,6 +705,7 @@
     <string name="pref_imap_folder_warn_disable_defaults">Si vous désactivez cette option, assurez-vous que votre serveur et vos autres clients sont configurés en conséquence.\n\nSinon des choses pourraient ne pas fonctionner du tout.</string>
     <string name="pref_watch_sent_folder">Regarder le dossier Messages envoyés</string>
     <string name="pref_send_copy_to_self">M\'envoyer une copie</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_send_copy_to_self_explain">Obligatoire pour utiliser ce compte sur plusieurs appareils.</string>
     <string name="pref_auto_folder_moves">Déplacer automatiquement vers le dossier DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">Les discussions sont déplacées pour éviter d\'encombrer le dossier Boîte de réception</string>
@@ -913,10 +918,11 @@
     <string name="qraccount_ask_create_and_login">Créer une nouvelle adresse de courriel sur « %1$s » et se connecter ici ?</string>
     <string name="qraccount_ask_create_and_login_another">Créer une nouvelle adresse de courriel sur « %1$s » et s\'y connecter ?\n\nVotre compte existant ne sera pas supprimé. Utilisez l\'élément de menu « Changer de compte » pour passer d\'un compte à l\'autre.</string>
     <string name="qraccount_qr_code_cannot_be_used">Le code QR scanné ne peut pas être utilisé pour ouvrir un nouveau compte.</string>
+    <!-- deprecated -->
     <string name="qraccount_use_on_new_install">Le code QR scanné permet de configurer un nouveau compte. Vous pouvez scanner le code QR à la configuration d\'une nouvelle installation de Delta Chat.</string>
-    <!-- the placeholder will be replaced by the e-mail address of the account -->
+    <!-- the placeholder will be replaced by the e-mail address of the profile -->
     <string name="qrlogin_ask_login">Se connecter au compte « %1$s » ?</string>
-    <!-- the placeholder will be replaced by the e-mail address of the account -->
+    <!-- the placeholder will be replaced by the e-mail address of the profile -->
     <string name="qrlogin_ask_login_another">Se connecter à « %1$s » ?\n\nVotre compte existant ne sera pas supprimé. Utiliser l\'élément de menu « Changer de compte » pour passer d\'un compte à l\'autre.</string>
     <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s vous a invité à rejoindre ce groupe.\n\nEn attente de la réponse de l’appareil de %2$s…</string>
@@ -1010,12 +1016,13 @@
     <string name="export_backup_desktop">Exporter la sauvegarde</string>
     <string name="autocrypt_correct_desktop">Configuration Autocrypt transférée.</string>
     <string name="forget_login_confirmation_desktop">Supprimer cette connexion ? Tout sera effacé, y compris vos paramètres de chiffrement de bout en bout, vos contacts, discussions, messages et fichiers multimédia. Cette action est irrévocable.</string>
+    <!-- deprecated -->
     <string name="account_info_hover_tooltip_desktop2">Adresse: %1$s\nTaille: %2$s\nID du compte: %3$s</string>
     <string name="message_detail_sent_desktop">envoyé</string>
     <string name="message_detail_received_desktop">reçu</string>
     <string name="menu.view.developer.open.log.folder">Ouvrir le dossier Journal</string>
     <string name="menu.view.developer.open.current.log.file">Ouvrir le fichier Journal courant</string>
-    <string name="explain_desktop_minimized_disabled_tray_pref">L\'icône système ne peut pas être enlevé car Delta Chat a été démarré avec l\'option --minimized.</string>
+    <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">L\'icône système ne peut pas être enlevé car Delta Chat a été démarré avec l\'option --minimized.</string>
     <string name="no_spellcheck_suggestions_found">Aucune propositions de correction trouvées.</string>
     <string name="show_window">Afficher la fenêtre</string>
     <string name="login_socks5_experimental_warning">Le support de SOCK5 est actuellement expérimental. Utilisez le à vos risques et périls. Si vous saisissez une adresse de courriel, une requête DNS sera effectuée sans passer par SOCK5.</string>

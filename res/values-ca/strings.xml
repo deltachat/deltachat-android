@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
@@ -381,6 +381,7 @@
     <string name="chat_record_slide_to_cancel">Llisca per cancel·lar</string>
     <string name="chat_record_explain">Mantingues premut per gravar un missatge de veu i deixa anar per enviar-lo</string>
     <string name="chat_no_chats_yet_title">Safata d\'entrada buida.\nPrem \"+\" per començar un xat nou.</string>
+    <!-- deprecated -->
     <string name="chat_no_chats_yet_hint">Pots xatejar amb altres usuaris de Delta Chat i amb qualsevol adreça de correu electrònic.</string>
     <string name="chat_all_archived">Tots els xats s\'han arxivat.\nPrem \"+\" per començar-ne un de nou.</string>
     <string name="chat_share_with_title">Comparteix amb</string>
@@ -498,6 +499,7 @@
 
     <string name="scan_invitation_code">Escaneja el Codi d\'Invitació</string>
     <string name="login_title">Identifiqueu-vos</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">Identifiqueu-vos al vostre servidor</string>
     <string name="login_subheader">Als proveïdors de mail coneguts els paràmetres es configuren automàticament. De vegades l\'IMAP s\'ha d\'activar a la interfície web. Consulta el teu proveïdor de correu electrònic o a un amic perquè t\'ajudi. </string>
     <string name="login_no_servers_hint">No hi ha servidors de Delta Chat: les teves dades es queden al teu dispositiu!</string>

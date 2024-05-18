@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">了承</string>
@@ -299,6 +299,7 @@
     <string name="chat_record_slide_to_cancel">スライドしてキャンセル</string>
     <string name="chat_record_explain">長押しして録音して、離すと送ります。</string>
     <string name="chat_no_chats_yet_title">受信箱が空です。\n＋でチャットを開始します。</string>
+    <!-- deprecated -->
     <string name="chat_no_chats_yet_hint">あなたはDelta Chat利用者や普通のメールアドレスとチャットを出来ます｡</string>
     <string name="chat_all_archived">すべてのチャットがアーカイブされました。\n＋でチャットを開始します。</string>
     <string name="chat_share_with_title">共有</string>
@@ -361,7 +362,9 @@
     <!-- Shown in the setting if the app is "Connected" -->
     <string name="connectivity_connected">接続済み</string>
     <string name="login_title">ログイン</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">自分のメールサーバーにログインする</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_explain">既存のメールアカウントにログインする</string>
     <string name="login_subheader">主なメールサーバーは自動で設定されます｡一般にIMAPはサーバー側で有効に設定する必要が有ります｡サーバー提供者や詳しい人に確認しましょう｡</string>
     <string name="login_no_servers_hint">Delta Chatには専用サーバーが有りません｡つまりあなたのデータ･個人情報はこの端末内に保存されています｡</string>
@@ -417,6 +420,7 @@
     <string name="pref_profile_photo">アイコン画像</string>
     <string name="pref_blocked_contacts">ブロックされた人</string>
     <string name="blocked_empty_hint">ブロックされた連絡先がここに表示されます。</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_password_and_account_settings">パスワードとアカウント</string>
     <string name="pref_who_can_see_profile_explain">アイコン画像や名前は他のユーザーに連絡するとメッセージとともに表示されます。既に送信された情報を削除することができます。</string>
     <string name="pref_your_name">あなたの名前</string>

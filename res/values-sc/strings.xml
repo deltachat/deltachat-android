@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">AB</string>
@@ -269,6 +269,7 @@
     <string name="chat_record_slide_to_cancel">Iscurre pro annulare</string>
     <string name="chat_record_explain">Incarca e mantene incarcadu pro registrare unu messàgiu vocale, lassa pro imbiare</string>
     <string name="chat_no_chats_yet_title">Cartella de intrada bòida.\nIncarca \"+\" pro abèrrere una tzarrada noa.</string>
+    <!-- deprecated -->
     <string name="chat_no_chats_yet_hint">Podes tzarrare cun àteros impreadores de Delta Chat e cun cale si siat indiritzu de posta eletrònica.</string>
     <string name="chat_all_archived">Tzarradas archiviadas.\nIncarca \"+\" pro abèrrere una tzarrada noa.</string>
     <string name="chat_share_with_title">Cumpartzi cun</string>
@@ -317,7 +318,9 @@
     <string name="media_preview">Anteprima de su documentu multimediale</string>
     <string name="send_message">Imbia messàgiu</string>
     <string name="login_title">Intra</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">Intra in su servidore tuo</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_explain">Intra cun un\'indiritzu de posta eletrònica chi esistat</string>
     <string name="login_subheader">Pro sos frunidores de posta eletrònica connotos sas impostatziones additzionales benint impostadas in automàticu. Cada tantu s\'IMAP cheret abilitadu in sas impostatziones web. Si ti serbit agiudu pedi a su frunidore de posta eletrònica tuo o a sos amigos tuos.</string>
     <string name="login_no_servers_hint">No esistint serbidores de Delta Chat, sos datos tuos abarrant in su dispositivu tuo.</string>
@@ -372,6 +375,7 @@
     <string name="pref_profile_photo">Fotografia de profilu</string>
     <string name="pref_blocked_contacts">Cuntatos blocados</string>
     <string name="blocked_empty_hint">Si as a blocare cuntatos ant a èssere allistados inoghe.</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_password_and_account_settings">Crae de intrada e contu</string>
     <string name="pref_who_can_see_profile_explain">S\'immàgine de profilu tua e su nùmene tuo ant a èssere ammustrados in paris cun sos messàgios tuos cando ses comunichende cun àteros impreadores. Sas informatziones giai imbiadas non podent èssere iscantzelladas o bogadas.</string>
     <string name="pref_your_name">Su nùmene tuo</string>

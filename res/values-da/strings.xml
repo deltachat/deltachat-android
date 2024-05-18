@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
@@ -312,6 +312,7 @@
     <string name="chat_record_slide_to_cancel">Træk for at annullere</string>
     <string name="chat_record_explain">Tryk og hold for at optage talebesked, slip for at sende.</string>
     <string name="chat_no_chats_yet_title">Tom indbakke.\nTryk \"+\" for at starte ny samtale.</string>
+    <!-- deprecated -->
     <string name="chat_no_chats_yet_hint">Du kan have samtaler med andre Delta Chat brugere og med enhver e-mailadresse.</string>
     <string name="chat_all_archived">Alle samtaler er arkiveret.\nTryk \"+\" for at starte ny samtale.</string>
     <string name="chat_share_with_title">Del med</string>
@@ -381,7 +382,9 @@
 
 
     <string name="login_title">Login</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">Login til server</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_explain">Login med en eksisterende e-mailkonto</string>
     <string name="login_subheader">For kendte e-mailudbydere opsættes yderligere indstillinger automatisk. Nogle gange skal IMAP aktiveres i brugerfladen. Kontakt din e-mailudbyder eller venner for at få hjælp.</string>
     <string name="login_no_servers_hint">Der er ingen Delta Chat server, data forbliver på enhed!</string>
@@ -445,6 +448,7 @@
     <string name="pref_profile_photo">Profilbillede</string>
     <string name="pref_blocked_contacts">Blokerede kontakter</string>
     <string name="blocked_empty_hint">Hvis du blokerer kontakter, bliver de vist her.</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_password_and_account_settings">Adgangskode og konto</string>
     <string name="pref_who_can_see_profile_explain">Profilbillede og navn vises sammen med beskeder, når der kommunikeres med andre brugere. Allerede sendt information kan ikke slettes eller fjernes.</string>
     <string name="pref_your_name">Dit navn</string>
@@ -675,6 +679,7 @@
     <string name="qraccount_ask_create_and_login">Opret ny e-mail adresse på \"%1$s\" og log ind der?</string>
     <string name="qraccount_ask_create_and_login_another">Opret ny e-mail adresse på \"%1$s\" og log ind der?\n\nDin eksisterende konto bliver ikke slettet. Brug \"Skift konto\" for at skifte imellem dine konti.</string>
     <string name="qraccount_qr_code_cannot_be_used">Den skannede QR-kode kan ikke bruges til at opsætte en ny konto.</string>
+    <!-- deprecated -->
     <string name="qraccount_use_on_new_install">Den skannede QR-kode er til at opsætte en ny konto. Du kan skanne QR-kode når du opsætter en ny Delta Chat installation.</string>
     <string name="contact_verified">%1$s bekræftet.</string>
     <string name="contact_not_verified">Kan ikke bekræfte %1$s</string>

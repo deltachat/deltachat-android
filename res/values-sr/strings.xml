@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">У реду</string>
@@ -386,6 +386,7 @@
     <string name="chat_record_slide_to_cancel">Превуците за отказивање</string>
     <string name="chat_record_explain">Додирните и држите за снимање гласовне поруке, пустите за слање</string>
     <string name="chat_no_chats_yet_title">Сандуче је празно.\nПритисните „+“ да почнете ново ћаскање.</string>
+    <!-- deprecated -->
     <string name="chat_no_chats_yet_hint">Можете ћаскати са другим Delta Chat корисницима и са онима који имају било коју другу е-адресу.</string>
     <string name="chat_all_archived">Сва ћаскања су архивирана.\nПритисните „+“ да почнете ново ћаскање.</string>
     <string name="chat_share_with_title">Подели са</string>
@@ -502,7 +503,9 @@
 
     <string name="scan_invitation_code">Скенирај код позива за приступ.</string>
     <string name="login_title">Пријави се</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">Пријавите се у ваш налог е-поште</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_explain">Пријавите се преко постојећег налога е-поште</string>
     <string name="login_subheader">За познате пружаоце услуге е-поште, додатне поставке се одређују аутоматски. Каткад, морате омогућити ИМАП у поставкама на веб сучељу ваше е-поште.\n\nПосаветујте се са пружаоцем услуге е-поште или пријатељима ако наиђете на проблеме.</string>
     <string name="login_no_servers_hint">Не постоји сервер Делта ћаскања. Апликација користи само сервер ваше е-поште.</string>
@@ -568,6 +571,7 @@
     <string name="pref_profile_photo">Слика профила</string>
     <string name="pref_blocked_contacts">Блокирани контакти</string>
     <string name="blocked_empty_hint">Блокирани контакти ће се појавити овде.</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_password_and_account_settings">Лозинка и налог</string>
     <string name="pref_who_can_see_profile_explain">Слика вашег профила, име и потпис ће бити послан заједно са вашом поруком када комуницирате са другим корисницима.</string>
     <string name="pref_your_name">Ваше име</string>
@@ -638,6 +642,7 @@
     <string name="pref_imap_folder_warn_disable_defaults">Ако промените ову опцију, морате проверити да су ваш сервер и ваши други клијенти конфигурисани у складу са тим.\n\nУ супротном апликација можда уопште неће функционисати.</string>
     <string name="pref_watch_sent_folder">Посматрај директоријум са пошиљкама</string>
     <string name="pref_send_copy_to_self">Пошаљи копију поруке себи</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_send_copy_to_self_explain">Обавезно када користите овај налог на више уређаја.</string>
     <string name="pref_auto_folder_moves">Аутоматски премести у DeltaChat директоријум</string>
     <string name="pref_auto_folder_moves_explain">Ћаскања се померају да би се избегло затрпавање пријемног сандучета</string>
@@ -838,10 +843,11 @@
     <string name="qraccount_ask_create_and_login">Направите нову е-адресу на „%1$s“ и приступите јој тамо?</string>
     <string name="qraccount_ask_create_and_login_another">Направите нову е-адресу на „%1$s“ и приступите јој тамо?\n\nВаш постојећи налог неће бити избрисан. Користите „Промени налог“ да пређете са једног налога на други.</string>
     <string name="qraccount_qr_code_cannot_be_used">Очитани бар-кôд не може бити коришћен да подеси нови налог.</string>
+    <!-- deprecated -->
     <string name="qraccount_use_on_new_install">Очитани бар-кôд је за подешавање новог налога. Можете очитати овај бар-кôд за подешавања после инсталације Delta Chat апликације.</string>
-    <!-- the placeholder will be replaced by the e-mail address of the account -->
+    <!-- the placeholder will be replaced by the e-mail address of the profile -->
     <string name="qrlogin_ask_login">Пријави се у „%1$s“?</string>
-    <!-- the placeholder will be replaced by the e-mail address of the account -->
+    <!-- the placeholder will be replaced by the e-mail address of the profile -->
     <string name="qrlogin_ask_login_another">Пријави се у „%1$s“? Ваш постојећи налог неће бити избрисан. Користите „Промени налог“ опцију да прелазите са једног на други налог.</string>
     <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$sвас је позвао да се придружите групи.\n\nЧекамо да уређај од %2$sодговори...</string>
@@ -926,12 +932,13 @@
     <string name="export_backup_desktop">Извези резервну копију</string>
     <string name="autocrypt_correct_desktop">Поставке за аутошифровање су послате.</string>
     <string name="forget_login_confirmation_desktop">Да ли желите да избришете овај налог? Све ће бити избрисано, укључујући и ваше подешавање с-краја-на-крај шифровања, контакти, ћаскања, поруке и медији. Ова радња се не може опозвати.</string>
+    <!-- deprecated -->
     <string name="account_info_hover_tooltip_desktop2">Е-пошта: %1$s\nВеличина: %2$s\nИдентификатор налога: %3$s</string>
     <string name="message_detail_sent_desktop">послато</string>
     <string name="message_detail_received_desktop">примљено</string>
     <string name="menu.view.developer.open.log.folder">Отвори директоријум где се налазе дневници</string>
     <string name="menu.view.developer.open.current.log.file">Отвори тренутни дневник</string>
-    <string name="explain_desktop_minimized_disabled_tray_pref">Иконица на системској касети не може да се онемогући јер је Delta Chat покренут са --minimized опцијом.</string>
+    <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Иконица на системској касети не може да се онемогући јер је Delta Chat покренут са --minimized опцијом.</string>
     <string name="no_spellcheck_suggestions_found">Нема предлога за исправке правописа.</string>
     <string name="show_window">Прикажи прозор</string>
     <string name="login_socks5_experimental_warning">SOCKS5 подршка је тренутно у експерименталној фази. Користе је на личну одговорност. Ако унесете е-адресу у поље за е-адресу, следи захтев за ДНС претрагу која неће ићи кроз SOCKS5 тунел.</string>

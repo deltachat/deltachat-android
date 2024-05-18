@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
@@ -216,6 +216,7 @@
     <string name="chat_record_slide_to_cancel">Ləğv etmək üçün sürüşdürün</string>
     <string name="chat_record_explain">Bir səsli mesajı yazmaq üçün toxunun və saxlayın, göndərmək üçün buraxın</string>
     <string name="chat_no_chats_yet_title">Qutu boşdur.\nYeni çata başlamaq üçün \"+\" işarəsinə toxunun. </string>
+    <!-- deprecated -->
     <string name="chat_no_chats_yet_hint">Digər Delta Chat istifadəçiləri ilə və hər hansı bir e-poçt ünvanı ilə söhbət edə bilərsiniz.</string>
     <string name="chat_all_archived">Bütün çatlar saxlanıldı.\nYeni çata başlamaq üçün \"+\" işarəsinə toxunun. </string>
     <string name="chat_share_with_title">Göndər </string>
@@ -255,7 +256,9 @@
     <string name="tab_docs_empty_hint">Bu söhbətdə paylaşılan sənədlər, musiqi və digər fayllar burada göstəriləcək.</string>
     <string name="media_preview">Fayllara baxmaq</string>
     <string name="login_title">Daxil ol</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">Serverinə daxil ol</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_explain">Mövcud e-mail hesabı ilə daxil olun</string>
     <string name="login_subheader">Məlum elektron poçt provayderləri üçün əlavə parametrlər avtomatik olaraq quraşdırılır. Bəzən IMAP-ın web məkanında aktiv olması lazımdır. Yardım üçün e-poçt provayderinizə və ya dostlarınıza müraciət edin.</string>
     <string name="login_no_servers_hint">Delta Chat serverləri yoxdur, məlumatlarınız cihazınızda qalır!</string>

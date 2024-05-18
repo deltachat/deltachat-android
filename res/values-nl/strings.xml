@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">Oké</string>
@@ -391,6 +391,7 @@
     <string name="chat_record_slide_to_cancel">Veeg opzij om te annuleren</string>
     <string name="chat_record_explain">Houdt ingedrukt om een spraakbericht op te nemen; laat los om te versturen</string>
     <string name="chat_no_chats_yet_title">Je postvak is leeg.\nDruk op ‘+’ om een gesprek te beginnen.</string>
+    <!-- deprecated -->
     <string name="chat_no_chats_yet_hint">Je kunt een gesprek voeren met andere Delta Chat-gebruikers en via alle soorten e-mailadressen.</string>
     <string name="chat_all_archived">Alle gesprekken zijn gearchiveerd.\nDruk op ‘+’ om een gesprek te beginnen.</string>
     <string name="chat_share_with_title">Delen met</string>
@@ -546,7 +547,7 @@
 
 
     <!-- welcome and login -->
-    <!-- Primary button on the welcome screen, allows to create an instant account -->
+    <!-- Primary button on the welcome screen, allows to create an instant profile -->
     <string name="onboarding_create_instant_account">Aan de slag!</string>
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup", "Manual Login"  -->
     <string name="onboarding_alternative_logins">Ik heb al een account</string>
@@ -571,9 +572,12 @@
     <!-- Question shown when group's QR code is scanned from onboarding screen -->
     <string name="instant_onboarding_confirm_group">Wil je een nieuw profiel aanmaken en deelnemen aan ‘%1$s’?</string>
 
+    <string name="welcome_chat_over_email">Veilige, gedecentraliseerde gesprekken</string>
     <string name="scan_invitation_code">Uitnodigingscode scannen</string>
     <string name="login_title">Inloggen</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">Inloggen op je server</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_explain">Log in met een bestaand e-mailaccount.</string>
     <string name="login_subheader">Bij bekende e-mailproviders gaat het instellen vrijwel geheel automatisch. Soms moet je imap inschakelen in de webversie van je e-mailclient. Vraag je e-mailprovider of vrienden om hulp.</string>
     <string name="login_no_servers_hint">Er is geen Delta Chat-server; jóuw gegevens blijven op jóuw apparaat.</string>
@@ -639,6 +643,7 @@
     <string name="pref_profile_photo">Profielfoto</string>
     <string name="pref_blocked_contacts">Geblokkeerde contactpersonen</string>
     <string name="blocked_empty_hint">Geblokkeerde contactpersonen worden hier getoond.</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_password_and_account_settings">Wachtwoord en account</string>
     <string name="pref_who_can_see_profile_explain">Je profielfoto, -naam en handtekening worden getoond in gesprekken, naast je berichten.</string>
     <string name="pref_your_name">Je naam</string>
@@ -698,9 +703,9 @@
     <string name="pref_backup">Reservekopie</string>
     <string name="pref_backup_explain">Gesprekken bewaren op externe opslag</string>
     <string name="pref_backup_export_explain">Met een reservekopie kun je een nieuwe installatie instellen op dit of een ander apparaat.\n\nEen reservekopie bevat alle berichten, contactpersonen, gesprekken en je eind-tot-eindversleuteling. Bewaar het reservekopiebestand op een veilige plaats of verwijder het zo snel mogelijk.</string>
-    <!-- the placeholder will be replaced by the name of the account's email address -->
+    <!-- the placeholder will be replaced by the name of the profile's email address -->
     <string name="pref_backup_export_x">‘%1$s’ exporteren</string>
-    <!-- the placeholder will be replaced by the number of accounts to export; the number is always larger than 1 -->
+    <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">%1$d accounts exporteren</string>
     <string name="pref_backup_export_start_button">Reservekopie maken</string>
     <string name="pref_backup_written_to_x">De reservekopie is opgeslagen in ‘%1$s’.</string>
@@ -719,6 +724,7 @@
     <string name="pref_imap_folder_warn_disable_defaults">Als je deze optie uitschakelt, zorg er dan voor dat je server en overige clients goed ingesteld zijn.\n\nAls dat niet zo is, dan werkt het misschien helemaal niet.</string>
     <string name="pref_watch_sent_folder">Map ‘Verzonden’ controleren op nieuwe berichten</string>
     <string name="pref_send_copy_to_self">Kopie versturen naar mijzelf</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_send_copy_to_self_explain">Vereist bij gebruik van dit account op meerdere apparaten.</string>
     <string name="pref_auto_folder_moves">Automatisch verplaatsen naar DeltaChat-map</string>
     <string name="pref_auto_folder_moves_explain">Gesprekken worden verplaatst om je postvak netjes te houden</string>
@@ -949,10 +955,11 @@
     <string name="set_name_and_avatar_explain">Kies een naam die herkenbaar is voor je contactpersonen en, desgewenst, een profielfoto.</string>
     <string name="please_enter_name">Voer een naam in.</string>
     <string name="qraccount_qr_code_cannot_be_used">De gescande QR-code kan niet worden gebruikt om een nieuw account in te stellen.</string>
+    <!-- deprecated -->
     <string name="qraccount_use_on_new_install">De gescande QR-code is voor het instellen van een nieuw account. Je kunt deze direct scannen na het (opnieuw) installeren van Delta Chat.</string>
-    <!-- the placeholder will be replaced by the e-mail address of the account -->
+    <!-- the placeholder will be replaced by the e-mail address of the profile -->
     <string name="qrlogin_ask_login">Inloggen als ‘%1$s’?</string>
-    <!-- the placeholder will be replaced by the e-mail address of the account -->
+    <!-- the placeholder will be replaced by the e-mail address of the profile -->
     <string name="qrlogin_ask_login_another">Wil je inloggen als ‘%1$s’?\n\nJe reeds aanwezige account wordt niet verwijderd. Druk op de knop ‘Ander account kiezen’ om tussen accounts te schakelen.</string>
     <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s heeft je uitgenodigd voor deze groep.\n\nEr wordt gewacht op antwoord van het apparaat van %2$s…</string>
@@ -1050,12 +1057,13 @@
     <string name="export_backup_desktop">Reservekopie exporteren</string>
     <string name="autocrypt_correct_desktop">Autocrypt-instellingen overgedragen!</string>
     <string name="forget_login_confirmation_desktop">Wil je dit account verwijderen? Alles wordt verwijderd: je eind-tot-eindinstellingen, contactpersonen, gesprekken, berichten en media. Deze actie kan niet ongedaan worden gemaakt.</string>
+    <!-- deprecated -->
     <string name="account_info_hover_tooltip_desktop2">E-mail: %1$s\nGrootte: %2$s\nAccount-id: %3$s</string>
     <string name="message_detail_sent_desktop">verstuurd</string>
     <string name="message_detail_received_desktop">ontvangen</string>
     <string name="menu.view.developer.open.log.folder">Map met logbestanden openen</string>
     <string name="menu.view.developer.open.current.log.file">Huidig logbestand openen</string>
-    <string name="explain_desktop_minimized_disabled_tray_pref">Het systeemvakpictogram is uitgeschakeld omdat Delta Chat is gestart met de optie --minimized</string>
+    <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Het systeemvakpictogram is uitgeschakeld omdat Delta Chat is gestart met de optie --minimized</string>
     <string name="no_spellcheck_suggestions_found">Geen suggesties gevonden.</string>
     <string name="show_window">Venster tonen</string>
     <string name="login_socks5_experimental_warning">De SOCKS5-ondersteuning is momenteel nog experimenteel - gebruik hiervan is op eigen risico. Als je een e-mailadres invoert, dan vindt er een dns-opzoeking plaats die niet wordt doorgesluisd via SOCKS5.</string>

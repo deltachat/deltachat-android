@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">確定</string>
@@ -322,6 +322,7 @@
     <string name="chat_record_slide_to_cancel">滑動以取消</string>
     <string name="chat_record_explain">按住不放錄音，放開後傳送</string>
     <string name="chat_no_chats_yet_title">目前沒有對話\n請按 + 開始新的對話</string>
+    <!-- deprecated -->
     <string name="chat_no_chats_yet_hint">你可以和其它 Delta Chat 的使用者對話，也可以和任何 email 信箱對話。</string>
     <string name="chat_all_archived">已封存所有的對話\n請按 + 開始新的對話</string>
     <string name="chat_share_with_title">分享給...</string>
@@ -359,6 +360,7 @@
     <string name="tab_docs_empty_hint">本對話中共享的文件、音樂和其它檔案會顯示在這裡。</string>
     <string name="media_preview">媒體預覽</string>
     <string name="login_title">登入</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">登入你的伺服器</string>
     <string name="login_subheader">我們能自動處理大多數常見的郵件伺服器設定。有時候你需要在 web 界面上手動打開 IMAP 服務，請詢問郵件服務商或請朋友幫忙。</string>
     <string name="login_no_servers_hint">Delta Chat 沒有伺服器，你的資料只會存在你自己的裝置上!</string>

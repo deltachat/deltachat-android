@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
@@ -387,6 +387,7 @@
     <string name="chat_record_slide_to_cancel">Deslize para cancelar</string>
     <string name="chat_record_explain">Toque e segure para gravar uma mensagem de voz e, depois, solte para enviar</string>
     <string name="chat_no_chats_yet_title">Caixa vazia.\nPressione \"+\" para conversar com alguém.</string>
+    <!-- deprecated -->
     <string name="chat_no_chats_yet_hint">Você pode conversar com usuários do Delta Chat e com qualquer e-mail.</string>
     <string name="chat_all_archived">Apenas conversas arquivadas.\nPressione \"+\" para uma nova conversa.</string>
     <string name="chat_share_with_title">Compartilhar com</string>
@@ -536,7 +537,9 @@
 
     <string name="scan_invitation_code">Escanear Código De Convite</string>
     <string name="login_title">Acessar</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">Acesse seu servidor</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_explain">Acesse com uma conta de email existente</string>
     <string name="login_subheader">Para os provedores de e-mail mais conhecidos as configurações adicionais são detectadas automaticamente. Por vezes, o IMAP precisa estar ativado nas configurações do servidor. Consulte seu provedor de e-mail ou amigos para obter ajuda.</string>
     <string name="login_no_servers_hint">O Delta Chat não tem servidores. Seus dados ficam no seu aparelho!</string>
@@ -602,6 +605,7 @@
     <string name="pref_profile_photo">Foto do perfil</string>
     <string name="pref_blocked_contacts">Contatos bloqueados</string>
     <string name="blocked_empty_hint">Se você bloquear contatos, eles serão mostrados aqui.</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_password_and_account_settings">Senha e conta</string>
     <string name="pref_who_can_see_profile_explain">Sua foto de perfil e nome serão exibidos com suas mensagens a outros usuários. Informações já enviadas não podem ser apagas ou removidas.</string>
     <string name="pref_your_name">Seu nome</string>
@@ -672,6 +676,7 @@
     <string name="pref_imap_folder_warn_disable_defaults">Se você mudar esta opção, certifique-se de que seu servidor e demais aplicativos estejam configurados de acordo.\n\nDo contrário, funcionalidades podem não funcionar.</string>
     <string name="pref_watch_sent_folder">Verificar a caixa de saída</string>
     <string name="pref_send_copy_to_self">Enviar cópia para mim</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_send_copy_to_self_explain">Necessário ao utilizar esta conta em múltiplos dispositivos.</string>
     <string name="pref_auto_folder_moves">Mover automaticamente para a pasta DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">Conversas serão movidas para evitar desordem na caixa de entrada</string>
@@ -872,10 +877,11 @@
     <string name="qraccount_ask_create_and_login">Criar novo endereço de e-mail em \"%1$s\" e entrar nele?</string>
     <string name="qraccount_ask_create_and_login_another">Criar novo endereço de e-mail em \"%1$s\"  e entrar nele?\n\n nSua conta existente não será excluída. Use o item \"Trocar conta\" para alternar entre suas contas.</string>
     <string name="qraccount_qr_code_cannot_be_used">O código QR lido não pode ser usado para configurar uma nova conta.</string>
+    <!-- deprecated -->
     <string name="qraccount_use_on_new_install">O código QR digitalizado é para configurar uma nova conta. Você pode ler o código QR ao configurar uma nova instalação Delta Chat.</string>
-    <!-- the placeholder will be replaced by the e-mail address of the account -->
+    <!-- the placeholder will be replaced by the e-mail address of the profile -->
     <string name="qrlogin_ask_login">Conectar-se em \"%1$s\"?</string>
-    <!-- the placeholder will be replaced by the e-mail address of the account -->
+    <!-- the placeholder will be replaced by the e-mail address of the profile -->
     <string name="qrlogin_ask_login_another">Conectar-se em \"%1$s\"?\n\nSua conta existente não será excluída. Use a opção \"Mudar conta\" para alternar entre suas contas.</string>
     <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$ste convidou para entrar neste grupo.\n\nEsperando o dispositivo de %2$s responder...</string>
@@ -960,12 +966,13 @@
     <string name="export_backup_desktop">Exportar becape</string>
     <string name="autocrypt_correct_desktop">Configuração Autocrypt completada!</string>
     <string name="forget_login_confirmation_desktop">Apagar este login? Tudo será apagado, incluindo sua configuração de criptografia, contatos, conversas, mensagens e mídia. Esta ação é final e irreversível.</string>
+    <!-- deprecated -->
     <string name="account_info_hover_tooltip_desktop2">E-Mail: %1$s\nTamanho: %2$s\nConta Id: %3$s</string>
     <string name="message_detail_sent_desktop">enviado</string>
     <string name="message_detail_received_desktop">recebido</string>
     <string name="menu.view.developer.open.log.folder">Abrir pasta de relatórios</string>
     <string name="menu.view.developer.open.current.log.file">Abrir relatório atual</string>
-    <string name="explain_desktop_minimized_disabled_tray_pref">O ícone da bandeja não pode ser desativado porque o Delta Chat foi iniciado com a opção --minimized.</string>
+    <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">O ícone da bandeja não pode ser desativado porque o Delta Chat foi iniciado com a opção --minimized.</string>
     <string name="no_spellcheck_suggestions_found">Nenhuma sugestão de ortografia encontrada.</string>
     <string name="show_window">Mostrar Janela</string>
     <string name="login_socks5_experimental_warning">O suporte a SOCKS5 é atualmente experimental. Por favor, use a seu próprio risco. Se você digitar um endereço no campo de e-mail, haverá uma pesquisa de DNS que não será encapsulada pelo SOCKS5. </string>

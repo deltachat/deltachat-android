@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
@@ -336,6 +336,7 @@
     <string name="chat_record_slide_to_cancel">Geser untuk batalkan</string>
     <string name="chat_record_explain">Ketuk dan tahan untuk merekam pesan suara, lepaskan untuk mengirim</string>
     <string name="chat_no_chats_yet_title">Kosongkan inbox.\nTekan \"+\" untuk memulai obrolan baru.</string>
+    <!-- deprecated -->
     <string name="chat_no_chats_yet_hint">Anda bisa ngobrol dengan pengguna Delta Chat lain maupun dengan siapa pun yang memiliki alamat surel.</string>
     <string name="chat_all_archived">Semua obrolan terarsip.\nTekan \"+\" untuk mulai obrolan baru.</string>
     <string name="chat_share_with_title">Bagi kepada</string>
@@ -383,7 +384,9 @@
     <string name="media_preview">Tampilan media</string>
     <string name="send_message">Kirim pesan</string>
     <string name="login_title">Masuk</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">Masuk ke server Anda</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_explain">Masuk dengan akun surel yang ada</string>
     <string name="login_subheader">Pengaturan surel penyedia tambahan yang sudah diketahui dipasang secara otomatis. Terkadang IMAP perlu daktifkan di pengaturan aplikasi. Hubungi surel penyedia Anda atau minta tolong teman.</string>
     <string name="login_no_servers_hint">Tidak ada server Delta Chat, data Anda tetap di perangkat Anda.</string>
@@ -434,6 +437,7 @@
     <string name="pref_profile_info_headline">Info profil Anda</string>
     <string name="pref_profile_photo">Gambar profil</string>
     <string name="pref_blocked_contacts">Kontak yang diblokir</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_password_and_account_settings">Kata sandi dan akun</string>
     <string name="pref_who_can_see_profile_explain">Foto dan nama profil Anda akan tampak bersama dengan pesan-pesan ketika berkomunikasi dengan pengguna lain. Informasi yang telah dikirimkan tidak dapat dihapus atau dipindah.</string>
     <string name="pref_your_name">Nama Anda</string>
@@ -601,6 +605,7 @@
     <string name="qraccount_ask_create_and_login">Buat alamat email baru di \"%1$s\" dan login di sana?</string>
     <string name="qraccount_ask_create_and_login_another">Buat alamat email baru di\"%1$s\" dan masuk ke sana?\n\nAkun yang sudah ada tidak akan di hapus. Gunakankan item \"Ganti akun\" untuk mengganti akun anda</string>
     <string name="qraccount_qr_code_cannot_be_used">Kode QR yang dipindai tidak dapat digunakan untuk mengatur akun baru.</string>
+    <!-- deprecated -->
     <string name="qraccount_use_on_new_install">Kode QR yang dipindai adalah untuk mengatur akun baru. Anda dapat memindai kode QR saat mengatur instalasi Delta Chat baru.</string>
     <string name="contact_verified">%1$sdiverifikasi.</string>
     <string name="contact_not_verified">Tidak bisa memverifikasi %1$s.</string>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">Εντάξει</string>
@@ -358,6 +358,7 @@
     <string name="chat_record_slide_to_cancel">Σύρε για ακύρωση</string>
     <string name="chat_record_explain">Πάτα και κράτα πατημένο για να ηχογραφήσεις ένα φωνητικό μήνυμα, άφησε το κουμπί για αποστολή</string>
     <string name="chat_no_chats_yet_title">Αδειάστε τα εισερχόμενα.\nΠατήστε \"+\" για να ξεκινήσετε μια νέα συνομιλία.</string>
+    <!-- deprecated -->
     <string name="chat_no_chats_yet_hint">Μπορείτε να συνομιλήσετε με άλλους χρήστες του Delta Chat και με οποιαδήποτε διεύθυνση e-mail.</string>
     <string name="chat_all_archived">Όλες οι συνομιλίες αρχειοθετήθηκαν.\nΠατήστε \"+\" για να ξεκινήσετε μια νέα συνομιλία.</string>
     <string name="chat_share_with_title">Μοιράσου με</string>
@@ -474,7 +475,9 @@
 
     <string name="scan_invitation_code">Σάρωση Κωδικού Πρόσκλησης</string>
     <string name="login_title">Σύνδεση</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">Συνδεθείτε στον λογαριασμό σας E-Mail</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_explain">Συνδεθείτε με έναν υπάρχοντα λογαριασμό e-mail</string>
     <string name="login_subheader">Για γνωστούς παρόχους email ρυθμίζονται αυτόματα πρόσθετες ρυθμίσεις. Μερικές φορές το IMAP πρέπει να είναι ενεργοποιημένο στις ρυθμίσεις Ιστού. Συμβουλευτείτε τον πάροχο e-mail ή τους φίλους σας για βοήθεια.</string>
     <string name="login_no_servers_hint">Δεν υπάρχουν διακομιστές Delta Chat, τα δεδομένα σας παραμένουν στη συσκευή σας.</string>
@@ -540,6 +543,7 @@
     <string name="pref_profile_photo">Εικόνα Προφίλ</string>
     <string name="pref_blocked_contacts">Αποκλεισμένες Επαφές</string>
     <string name="blocked_empty_hint">Οι αποκλεισμένες επαφές θα εμφανίζονται εδώ.</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_password_and_account_settings">Κωδικός και Λογαριασμός</string>
     <string name="pref_who_can_see_profile_explain">Η εικόνα του προφίλ, το όνομα και η υπογραφή σας θα αποστέλλονται μαζί με τα μηνύματά σας κατά την επικοινωνία με άλλους χρήστες.</string>
     <string name="pref_your_name">Το όνομά σου</string>
@@ -610,6 +614,7 @@
     <string name="pref_imap_folder_warn_disable_defaults">Εάν αλλάξετε αυτήν την επιλογή, βεβαιωθείτε ότι ο διακομιστής σας και οι άλλοι πελάτες σας έχουν διαμορφωθεί ανάλογα.\n\nΔιαφορετικά, τα πράγματα ενδέχεται να μην λειτουργούν καθόλου.</string>
     <string name="pref_watch_sent_folder">Παρακολουθήστε τον Απεσταλμένο Φάκελο</string>
     <string name="pref_send_copy_to_self">Αποστολή Αντιγράφου στον Εαυτό</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_send_copy_to_self_explain">Απαιτείται κατά τη χρήση αυτού του λογαριασμού σε πολλές συσκευές.</string>
     <string name="pref_auto_folder_moves">Μετακίνηση αυτόματα στον φάκελο DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">Οι συνομιλίες συνομιλίας μετακινούνται για να αποφευχθεί η ακαταστασία των Εισερχομένων</string>
@@ -810,10 +815,11 @@
     <string name="qraccount_ask_create_and_login">Δημιουργήστε νέα διεύθυνση e-mail στο \"%1$s\" και συνδεθείτε εκεί;</string>
     <string name="qraccount_ask_create_and_login_another">Δημιουργήστε νέα διεύθυνση e-mail στο \"%1$s\" και συνδεθείτε εκεί;\n\nΟ υπάρχων λογαριασμός σας δεν θα διαγραφεί. Χρησιμοποιήστε τη λειτουργία \"Εναλλαγή λογαριασμού\" για εναλλαγή μεταξύ των λογαριασμών σας.</string>
     <string name="qraccount_qr_code_cannot_be_used">Ο σαρωμένος κωδικός QR δεν μπορεί να χρησιμοποιηθεί για τη δημιουργία νέου λογαριασμού.</string>
+    <!-- deprecated -->
     <string name="qraccount_use_on_new_install">Ο σαρωμένος κωδικός QR προορίζεται για τη δημιουργία νέου λογαριασμού. Μπορείτε να σαρώσετε τον κωδικό QR όταν ρυθμίζετε μια νέα εγκατάσταση Delta Chat.</string>
-    <!-- the placeholder will be replaced by the e-mail address of the account -->
+    <!-- the placeholder will be replaced by the e-mail address of the profile -->
     <string name="qrlogin_ask_login">Σύνδεση στο \"%1$s\";</string>
-    <!-- the placeholder will be replaced by the e-mail address of the account -->
+    <!-- the placeholder will be replaced by the e-mail address of the profile -->
     <string name="qrlogin_ask_login_another">Σύνδεση στο \"%1$s\";\n\nΟ υπάρχων λογαριασμός σας δεν θα διαγραφεί. Χρησιμοποιήστε τη λειτουργία \"Εναλλαγή λογαριασμού\" για εναλλαγή μεταξύ των λογαριασμών σας.</string>
     <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s σας προσκάλεσε να συμμετάσχετε σε αυτήν την ομάδα.\n\nΑναμονή για απάντηση από τη συσκευή του %2$s…</string>
@@ -896,12 +902,13 @@
     <string name="export_backup_desktop">Εξαγωγή Αντιγράφων Ασφαλείας</string>
     <string name="autocrypt_correct_desktop">Η ρύθμιση αυτόματης κρυπτογράφησης μεταφέρθηκε.</string>
     <string name="forget_login_confirmation_desktop">Διαγραφή αυτής της σύνδεσης; Τα πάντα θα διαγραφούν, συμπεριλαμβανομένων των ρυθμίσεων από άκρο σε άκρο, επαφών, συνομιλιών, μηνυμάτων και πολυμέσων. Αυτή η πράξη δε μπορεί να αναιρεθεί.</string>
+    <!-- deprecated -->
     <string name="account_info_hover_tooltip_desktop2">E-Mail: %1$s\nΜέγεθος: %2$s\n Αναγνωριστικό Λογαριασμού: %3$s</string>
     <string name="message_detail_sent_desktop">Στάλθηκε</string>
     <string name="message_detail_received_desktop">Παραλήφθηκε</string>
     <string name="menu.view.developer.open.log.folder">Άνοιγμα του φακέλου καταγραφής</string>
     <string name="menu.view.developer.open.current.log.file">Άνοιγμα του τρέχον αρχείου καταγραφής</string>
-    <string name="explain_desktop_minimized_disabled_tray_pref">Το εικονίδιο του δίσκου δεν μπορεί να απενεργοποιηθεί καθώς το Delta Chat ξεκίνησε με την επιλογή --ελαχιστοποιημένη.</string>
+    <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Το εικονίδιο του δίσκου δεν μπορεί να απενεργοποιηθεί καθώς το Delta Chat ξεκίνησε με την επιλογή --ελαχιστοποιημένη.</string>
     <string name="no_spellcheck_suggestions_found">Δεν βρέθηκαν προτάσεις ορθογραφίας.</string>
     <string name="show_window">Εμφάνιση παραθύρου</string>
     <string name="login_socks5_experimental_warning">Η SOCKS5 υποστήριξη είναι αυτή τη στιγμή πειραματική. Παρακαλούμε χρησιμοποιήστε με δική σας ευθύνη. Εάν πληκτρολογήσετε μια διεύθυνση στο πεδίο ηλεκτρονικού ταχυδρομείου, θα υπάρξει αναζήτηση DNS που δεν θα περάσει στο SOCKS5.</string>

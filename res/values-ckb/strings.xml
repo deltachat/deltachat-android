@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">دێڵتا چات</string>
     <string name="ok">باشە</string>
@@ -288,6 +288,7 @@
     <string name="chat_record_slide_to_cancel">بیخشێنە بۆ وازهێنان</string>
     <string name="chat_record_explain">کرتە بکە و دەست لەسەری ڕابگرە بۆ تۆمارکردنی پەیامێکی دەنگی، پاشان دەستبەردە بۆ هەناردنی.</string>
     <string name="chat_no_chats_yet_title">هاتنگە بەتاڵە. \n \"+\" لێبدە بۆ دەستپێکی وتووێژێکی نوێ.</string>
+    <!-- deprecated -->
     <string name="chat_no_chats_yet_hint">دەتوانیت لەگەڵ بەکارهێنەرانی دیکەی دێڵتاچات و هەروەها هەر ناونیشانێکی ئیمەیلدا وتووێژ بکەیت.</string>
     <string name="chat_all_archived">هەموو وتووێژەکان ئەرشیڤ کران. \n بۆ دەستپێکردنی وتووێژێکی نوێ، \"+\" لێبدە.</string>
     <string name="chat_share_with_title">هاوبەش کردن لەگەڵ</string>
@@ -337,7 +338,9 @@
     <string name="media_preview">پێشدیتنی ڕەنگاڵە</string>
     <string name="send_message">پەیام بنێرە</string>
     <string name="login_title">بچۆ ژوورەوە</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">بچۆ ژوورەوە بۆ سێرڤێرەکەی خۆت</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_explain">بچۆ ژوورەوە بە ناونیشانی ئیمەیلێکەوە</string>
     <string name="login_subheader">بۆ دابینکەرە ناسراوەکانی ئیمەیلەکان، ڕێکخستنە زیادییەکان خۆکارانە ڕێکدەخرێن. هەندێجار دەبێت IMAP لەنێو ڕێکخستنەکانی وێبدا چالاک بکرێنەوە. بۆ ڕێنمایی وەرگرتن، لەگەڵ دابینکەری ئیمەیلەکەتان یان هاوڕێکانتان ڕاوێژ بکەن.</string>
     <string name="login_no_servers_hint">دێڵتاچات هیچ سێرڤەرێکی نییە، داتاکانتان لەسەر ئامرێکەتان دەمێنێتەوە.</string>
@@ -382,6 +385,7 @@
     <string name="pref_profile_photo">وێنەی لادیمەن</string>
     <string name="pref_blocked_contacts">هەژمارە ئاستەنگکراوەکان</string>
     <string name="blocked_empty_hint">ئەگەر هەژمارێک ئاستەنگ بکەیت، لێرەدا پیشان دەدرێت.</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_password_and_account_settings">هەژمار و تێپەڕوشە</string>
     <string name="pref_your_name">ناو</string>
     <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->

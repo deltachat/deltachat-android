@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
@@ -389,6 +389,7 @@
     <string name="chat_record_slide_to_cancel">Rrëshqiteni që të anulohet</string>
     <string name="chat_record_explain">Prekeni dhe mbajeni të prekur që të incizoni një mesazh zanor; lëshojeni, që të dërgohet</string>
     <string name="chat_no_chats_yet_title">Kuti mesazhesh e zbrazët.\nShtypni “+” që të nisni një fjalosje të re.</string>
+    <!-- deprecated -->
     <string name="chat_no_chats_yet_hint">Mund të bisedoni me përdorues të tjerë të Delta Chat-it dhe me çfarëdo adrese email.</string>
     <string name="chat_all_archived">Krejt fjalosjet janë të arkivuara.\nShtypni “+” që të nisni një bisedë të re.</string>
     <string name="chat_share_with_title">Ndajeni me </string>
@@ -544,7 +545,7 @@
 
 
     <!-- welcome and login -->
-    <!-- Primary button on the welcome screen, allows to create an instant account -->
+    <!-- Primary button on the welcome screen, allows to create an instant profile -->
     <string name="onboarding_create_instant_account">Le T’ia Fillojmë!</string>
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup", "Manual Login"  -->
     <string name="onboarding_alternative_logins">Kam Krendenciale Tashmë</string>
@@ -571,7 +572,9 @@
 
     <string name="scan_invitation_code">Skanoni Kod Ftese</string>
     <string name="login_title">Hyni</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">Hyni te Llogaria juaj Email</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_explain">Hyni me një llogari email ekzistuese.</string>
     <string name="login_subheader">Për shërbime të njohura email-i, rregullimet shtesë caktohen automatikisht. Ndonjëherë shërbyesi IMAP lyp të aktivizohet te pjesa e dukshme web. Për ndihmë këshillohuni me shërbimin tuaj email ose shokë tuajt.</string>
     <string name="login_no_servers_hint">S\’ka shërbyes Delta Chat, të dhënat tuaja rrinë në pajisjen tuaj!</string>
@@ -637,6 +640,7 @@
     <string name="pref_profile_photo">Foto Profili</string>
     <string name="pref_blocked_contacts">Kontakte të Bllokuar</string>
     <string name="blocked_empty_hint">Nëse bllokoni kontakte, do të shfaqen këtu.</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_password_and_account_settings">Fjalëkalim dhe Llogari</string>
     <string name="pref_who_can_see_profile_explain">Fotoja juaj e profilit, emri dhe nënshkrimi do të dërgohen tok me mesazhet tuaj, kur komunikoni me përdorues të tjerë.</string>
     <string name="pref_your_name">Emri juaj</string>
@@ -695,9 +699,9 @@
     <string name="pref_backup">Kopjeruajtje</string>
     <string name="pref_backup_explain">Kopjeruaji Fjalosjet në Depozitim të Jashtëm</string>
     <string name="pref_backup_export_explain">Një kopjeruajtje ju lejon të rregulloni një instalim të ri në këtë apo në një tjetër pajisje.\n\nKopjeruajtja do të përmbajë krejt mesazhet, kontaktet dhe fjalosjet, si dhe rregullimin tuaj për Autocrypt skaj-më-skaj. Mbajeni kartelën e kopjeruajtjes diku të parrezik, përndryshe fshijeni as më shpejt që të jetë e mundur.</string>
-    <!-- the placeholder will be replaced by the name of the account's email address -->
+    <!-- the placeholder will be replaced by the name of the profile's email address -->
     <string name="pref_backup_export_x">Eksporto %1$s</string>
-    <!-- the placeholder will be replaced by the number of accounts to export; the number is always larger than 1 -->
+    <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Eksporto krejt llogaritë e %1$d</string>
     <string name="pref_backup_export_start_button">Nis Kopjeruajtjen</string>
     <string name="pref_backup_written_to_x">Kopjeruajtje e shkruar me sukses te “%1$s”</string>
@@ -716,6 +720,7 @@
     <string name="pref_imap_folder_warn_disable_defaults">Nëse e ndryshoni këtë mundësi, garantoni që shërbyesi juaj dhe klientët tuaj të tjerët të jenë formësuar për këtë.\n\nPërndryshe gjërat mund të mos punojnë fare.</string>
     <string name="pref_watch_sent_folder">Vëzhgo Dosje Të dërguarish</string>
     <string name="pref_send_copy_to_self">Dërgojini Kopje Vetes</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_send_copy_to_self_explain">E domosdoshme kur kjo llogari përdoret në një numër pajisjesh.</string>
     <string name="pref_auto_folder_moves">Kaloji vetvetiu te Dosja DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">Bisedat zhvendosen, që të shmanget rrëmuja te dosja Të marrë</string>
@@ -945,10 +950,11 @@
     <string name="set_name_and_avatar_explain">Caktoni një emër, që kontaktet tuaj do ta njohin. Mundeni edhe të caktoni një emër profili.</string>
     <string name="please_enter_name">Ju lutemi, jepni një emër.</string>
     <string name="qraccount_qr_code_cannot_be_used">Kodi QR i skanuar s’mund të përdoret për të ujdisur një llogari të re.</string>
+    <!-- deprecated -->
     <string name="qraccount_use_on_new_install">Kodi QR i skanuar është për ujdisje të një llogarie të re. Kodin QR mund ta skanoni kur ujdisni një instalim të ri të Delta Chat-it.</string>
-    <!-- the placeholder will be replaced by the e-mail address of the account -->
+    <!-- the placeholder will be replaced by the e-mail address of the profile -->
     <string name="qrlogin_ask_login">Të hyhet si “%1$s”?</string>
-    <!-- the placeholder will be replaced by the e-mail address of the account -->
+    <!-- the placeholder will be replaced by the e-mail address of the profile -->
     <string name="qrlogin_ask_login_another">Të hyhet si “%1$s”?\n\nLlogaria juaj ekzistuese s’do të fshihet. Që të kaloni nga një llogari e juaja në një tjetër, përdorni zërin “Ndërroni Llogari”.</string>
     <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s ju ftoi të bëheni pjesë e këtij grupi.\n\nPo pritet për pajisjen e %2$s që të përgjigjet…</string>
@@ -1046,12 +1052,13 @@
     <string name="export_backup_desktop">Eksportoni Kopjeruajtje</string>
     <string name="autocrypt_correct_desktop">Ujdisja e Autocrypt-it u shpërngul.</string>
     <string name="forget_login_confirmation_desktop">Të fshihet kjo hyrje? Do të fshihet gjithçka, përfshi rregullimin tuaj për skaj-më-skaj, kontaktet, fjalosjet, mesazhet dhe mediat. Ky veprim s\’mund të zhbëhet.</string>
+    <!-- deprecated -->
     <string name="account_info_hover_tooltip_desktop2">Email: %1$s\nMadhësi: %2$s\nID  Llogarie: %3$s</string>
     <string name="message_detail_sent_desktop">të dërguar</string>
     <string name="message_detail_received_desktop">të marrë</string>
     <string name="menu.view.developer.open.log.folder">Hap Dosje Regjistrash</string>
     <string name="menu.view.developer.open.current.log.file">Hap Kartelën Regjistër të Tanishme</string>
-    <string name="explain_desktop_minimized_disabled_tray_pref">Ikona e panelit s’mund të çaktivizohet, ngaqë Delta Chat qe nisur me mundësinë --minimized.</string>
+    <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Ikona e panelit s’mund të çaktivizohet, ngaqë Delta Chat qe nisur me mundësinë --minimized.</string>
     <string name="no_spellcheck_suggestions_found">S’u gjetën sugjerimi drejtshkrimi.</string>
     <string name="show_window">Shfaq Dritare</string>
     <string name="login_socks5_experimental_warning">Mbulimi për SOCKS5 aktualisht është eksperimental. Ju lutemi, përdoreni duke pasur vetë përgjegjësinë. Nëse shtypni një adresë te fusha e email-it, do të ketë kërkim DNS që nuk do të kalohet përmes SOCKS5.</string>
