@@ -47,9 +47,6 @@ public class NewContactActivity extends PassphraseRequiredActionBarActivity
 
     nameInput = ViewUtil.findById(this, R.id.name_text);
     addrInput = ViewUtil.findById(this, R.id.email_text);
-    Button qrscanBtn = ViewUtil.findById(this, R.id.qrscan_btn);
-
-    qrscanBtn.setOnClickListener((view) -> new IntentIntegrator(this).setCaptureActivity(QrActivity.class).initiateScan());
     addrInput.setText(getIntent().getStringExtra(ADDR_EXTRA));
     addrInput.setOnFocusChangeListener((view, focused) -> {
         String addr = addrInput.getText() == null? "" : addrInput.getText().toString();
