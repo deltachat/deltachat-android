@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">យល់ព្រម</string>
@@ -321,6 +321,7 @@
     <string name="chat_record_slide_to_cancel">អូសដើម្បីផ្អាកសិន</string>
     <string name="chat_record_explain">ប៉ៈ និងសង្កត់ដើម្បីថតសារសម្លេង លែងដើម្បីផ្ញើ។</string>
     <string name="chat_no_chats_yet_title">ប្រអប់ទទួលគឺទទេ។\nចុច \"+\" ដើម្បីចាប់ផ្តើមការការសន្ទនាថ្មី។</string>
+    <!-- deprecated -->
     <string name="chat_no_chats_yet_hint">អ្នកអាចសន្ទនាជាមួយអ្នកប្រើប្រាស់សា Delta Chat ផ្សេងទៀត និងជាមួយអ្នកមានអសយដ្ឋានអុីម៉េលណាមួយ។</string>
     <string name="chat_all_archived">សន្ទនាទាំងអស់បានកំណត់ទុក។\nចុច \"+\" ដើម្បីចាប់ផ្តើមការសន្ទនាថ្មី។</string>
     <string name="chat_share_with_title">ចែករំលែកជាមួយ</string>
@@ -420,7 +421,9 @@
 
 
     <string name="login_title">កត់ចូល</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">កត់ចូលទៅម៉ាសុីនមេរបស់អ្នក</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_explain">កត់ចូលជាមួយគណនីយដែលមានស្រាប់</string>
     <string name="login_subheader">សម្រាប់លក្ខខណ្ឌអុីម៉េលដែលស្គាល់ស្រាប់ នឹងត្រួវបានដំឡើងដោយស្វ័យប្រវត្តិខ្លួនឯង។ ពេលខ្លះ IMAP ត្រូវការបើកដំណើរការនៅក្នុងការកំណត់គេហទំព័រ។ ពិគ្រោះជាមួយអ្នកផ្តល់អុីម៉េលរបស់អ្មក ឬ មិត្តរបស់អ្នកសម្រាប់ជួយ។</string>
     <string name="login_no_servers_hint">គ្មានម៉ាសុីនមេពី សាហារីសង្ឃទេ ទិន្ន័យរបស់អ្នកស្ថិតនៅលើឧបករណ៍របស់អ្នក។</string>
@@ -486,6 +489,7 @@
     <string name="pref_profile_photo">រូបភាពទិន្ន័យផ្ទាល់ខ្លួន</string>
     <string name="pref_blocked_contacts">ទំនាក់ទំនងដែលបានរារាំង</string>
     <string name="blocked_empty_hint">ប្រសិនបើអ្នករារាំងទំនាក់ទំ នងពួកទំនាក់ទំនងនេះនឹងត្រូវបានដាកបង្ហាញនៅទីនេះ។</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_password_and_account_settings">ពាក្យសម្ងាត់ និងគណនី</string>
     <string name="pref_who_can_see_profile_explain">រូបភាពទិន្ន័យផ្ទាល់ខ្លួនរបស់អ្នក និងឈ្មោះនឹងត្រូវបានបង្ហាញនៅក្បែរសាររបស់អ្នក នៅពេល ទនំាក់ទំនងជាមួយអ្នកប្រើប្រាស់ផ្សេងទៀត។ ដំណឹងដែលបានផ្ញើរួចមិនអាចលុបចោល ឬដកចេញបានទេ។</string>
     <string name="pref_your_name">ឈ្មោះរបស់អ្នក</string>
@@ -743,6 +747,7 @@
     <string name="qraccount_ask_create_and_login">បង្កើតអស័យដ្ឋានអុីម៉េលថ្មីនៅលើ \"%1$s\" និងកត់ចូលនៅទីនោះ?</string>
     <string name="qraccount_ask_create_and_login_another">បង្កើតអស័យដ្ឋានអុីម៉េលថ្មីនៅលើ \"%1$s\" និងកត់ចូលនៅទីនោះ?\n\nគណនីរបស់អ្នកដែលមានស្រាប់ នឹងមិនត្រូវបានលុបចោលទេ។ ប្រើប្រាស់ ការ \"ឆ្លាស់ប្តូរគណនី\" ដើម្បីធាតុប្តូររវាងគណនីរបស់អ្នក។</string>
     <string name="qraccount_qr_code_cannot_be_used">កូដ QR ដែលបានស្គេន មិនអាចត្រូវបានប្រើប្រាស់ដើម្បីរៀបចំគណនីថ្មីមួយទេ។</string>
+    <!-- deprecated -->
     <string name="qraccount_use_on_new_install">កូដ QR ដែលបានស្គេន គឺសម្រាប់ការកំណត់ឡើងនូវគណនីថ្មីមួយ។ អ្នកអាចស្គេនកូដ QR នៅពេលការកំណត់តម្លើងនូវ សា Delta Chat ។</string>
     <string name="contact_verified">%1$s បានផ្ទៀងផ្ទាត់</string>
     <string name="contact_not_verified">មិនអាចផ្ទៀងផ្ទាត់ %1$s</string>
@@ -821,7 +826,7 @@
     <string name="message_detail_received_desktop">បានទទួល</string>
     <string name="menu.view.developer.open.log.folder">បើកថតឯកសារកត់</string>
     <string name="menu.view.developer.open.current.log.file">បើកឯកសារកត់បច្ចុប្បន្ន</string>
-    <string name="explain_desktop_minimized_disabled_tray_pref">រូបតំណាងថាស មិនអាចបិទបានទេដោយសារ Delta Chat ត្រូវបានចាប់ផ្តើមជាមួយជម្រើសបង្រួមអប្បបរមា។</string>
+    <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">រូបតំណាងថាស មិនអាចបិទបានទេដោយសារ Delta Chat ត្រូវបានចាប់ផ្តើមជាមួយជម្រើសបង្រួមអប្បបរមា។</string>
     <string name="no_spellcheck_suggestions_found">រកមិនឃើញការណែនាំអក្ខរាវិរុទ្ធទេ។</string>
     <string name="show_window">បង្ហាញក្របខ័ណ្ឌ</string>
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->

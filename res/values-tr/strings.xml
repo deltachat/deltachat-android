@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">Tamam</string>
@@ -390,7 +390,8 @@
     <string name="chat_new_group_hint">Diğerleri, yalnızca siz bir ilk ileti gönderdikten sonra bu öbeği görecek.</string>
     <string name="chat_record_slide_to_cancel">İptal etmek için kaydırın</string>
     <string name="chat_record_explain">Bir sesli ileti kaydetmek için dokunun ve basılı tutun, göndermek için bırakın</string>
-    <string name="chat_no_chats_yet_title">Boş gelen kutusu.\nYeni bir sohbet başlatmak için \"+\" simgesine basın.</string>
+    <string name="chat_no_chats_yet_title">Sohbet yok.\nYeni bir sohbet başlatmak için \"+\" tuşuna basın.</string>
+    <!-- deprecated -->
     <string name="chat_no_chats_yet_hint">Diğer Delta Chat kullanıcılarıyla ve herhangi bir e-posta adresiyle sohbet edebilirsiniz.</string>
     <string name="chat_all_archived">Tüm sohbetler arşivlendi.\nYeni bir sohbet başlatmak için \"+\" simgesine basın.</string>
     <string name="chat_share_with_title">Paylaş</string>
@@ -497,7 +498,7 @@
     <!-- "Second Device" can also be translated as "Another Device", if that is catchier in the destination language. However, make sure to use the term consistently. -->
     <string name="multidevice_title">İkinci Aygıt Ekle</string>
     <string name="multidevice_same_network_hint">Her iki aygıtın da aynı Wi-Fi\'da ya da ağda olduğundan emin olun</string>
-    <string name="multidevice_this_creates_a_qr_code">Bu, ikinci aygıtın hesabı kopyalamak için tarayabileceği bir QR kodu oluşturur.</string>
+    <string name="multidevice_this_creates_a_qr_code">Bu, ikinci aygıtın profili kopyalamak için tarayabileceği bir QR kodu oluşturur.</string>
     <string name="multidevice_install_dc_on_other_device">Delta Chat\'i diğer aygıtınıza kurun (https://get.delta.chat)</string>
     <!-- "I Already Have a Login / Add as Second Device” should be the same text as defined by the keys onboarding_alternative_logins and multidevice_receiver_title -->
     <string name="multidevice_tap_scan_on_other_device">Delta Chat\'i başlatın, “Zaten Bir Girişim Var / İkinci Aygıt Olarak Ekle”ye dokunun ve burada gösterilen kodu tarayın</string>
@@ -505,13 +506,13 @@
     <string name="multidevice_qr_subtitle">%1$s için ikinci aygıtı ayarlamak üzere tarayın</string>
     <string name="multidevice_receiver_title">İkinci Aygıt Olarak Ayarla</string>
     <string name="multidevice_open_settings_on_other_device">Birinci aygıtta “Ayarlar / İkinci Aygıt Ekle”ye gidin ve orada gösterilen kodu tarayın</string>
-    <string name="multidevice_receiver_scanning_ask">Diğer aygıttan gelen hesap bu aygıta kopyalansın mı?</string>
+    <string name="multidevice_receiver_scanning_ask">Diğer aygıttan gelen profil bu aygıta kopyalansın mı?</string>
     <string name="multidevice_abort">İkinci aygıtı ayarlamadan vazgeçilsin mi?</string>
     <string name="multidevice_abort_will_invalidate_copied_qr">Bu, panoya kopyalanan QR kodunu geçersizleştirecek.</string>
     <string name="multidevice_experimental_hint">(deneysel, sürüm 1.36 gerekli)</string>
-    <string name="multidevice_transfer_done_devicemsg">ℹ️ Hesap, ikinci aygıtınıza aktarıldı.</string>
+    <string name="multidevice_transfer_done_devicemsg">ℹ️ Profil, ikinci aygıtınıza aktarıldı.</string>
     <!-- Shown beside progress bar, stay short -->
-    <string name="preparing_account">Hesap hazırlanıyor…</string>
+    <string name="preparing_account">Profil hazırlanıyor…</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="waiting_for_receiver">Alıcı bekleniyor…</string>
     <!-- Shown beside progress bar, stay short -->
@@ -546,12 +547,12 @@
 
 
     <!-- welcome and login -->
-    <!-- Primary button on the welcome screen, allows to create an instant account -->
-    <string name="onboarding_create_instant_account">Başlayalım!</string>
+    <!-- Primary button on the welcome screen, allows to create an instant profile -->
+    <string name="onboarding_create_instant_account">Yeni Profil Oluştur</string>
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup", "Manual Login"  -->
-    <string name="onboarding_alternative_logins">Zaten Bir Girişim Var</string>
+    <string name="onboarding_alternative_logins">Zaten Bir Profilim Var</string>
     <!-- Button, allows to log in to existing email accounts, setting ports, passwords and so on -->
-    <string name="manual_account_setup_option">Elle Giriş</string>
+    <string name="manual_account_setup_option">Elle Giriş Yap</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Profiliniz</string>
     <!-- This is a link to the default Privacy Policy -->
@@ -571,9 +572,12 @@
     <!-- Question shown when group's QR code is scanned from onboarding screen -->
     <string name="instant_onboarding_confirm_group">Yeni bir profil oluşturmak ve \"%1$s\" sohbet öbeğine katılmak istiyor musunuz?</string>
 
+    <string name="welcome_chat_over_email">Güvenli Merkezi Olmayan Sohbet</string>
     <string name="scan_invitation_code">Çağrı Kodunu Tara</string>
     <string name="login_title">Giriş Yap</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">E-Posta Hesabınıza Giriş Yapın</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_explain">Varolan bir e-posta hesabıyla giriş yapın</string>
     <string name="login_subheader">Bilinen e-posta sağlayıcıları için ek ayarlar otomatik olarak ayarlanır. Bazen IMAP\'in web ayarlarından etkinleştirilmesi gerekir. Yardım için e-posta sağlayıcınıza ya da arkadaşlarınıza danışın.</string>
     <string name="login_no_servers_hint">Delta Chat kullanıcı verisi toplamaz; her şey aygıtınızda kalır.</string>
@@ -611,13 +615,13 @@
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Geçersiz sertifikaları kabul et</string>
     <string name="used_settings">Kullanılan ayarlar:</string>
-    <string name="switch_account">Hesabı Değiştir</string>
-    <string name="add_account">Hesap Ekle</string>
-    <string name="delete_account">Hesabı Sil</string>
-    <string name="delete_account_ask">Hesap verilerinizi silmek istediğinizden emin misiniz?</string>
-    <string name="delete_account_explain_with_name">Uçtan uca şifreleme ayarlamanızı, kişilerinizi, sohbetlerinizi, iletilerinizi ve ortamlarınızı kapsayarak \"%s\" hesabının bu aygıttaki verilerinin tümü silinecek. Bu eylem geri alınamaz.</string>
-    <string name="unconfigured_account">Yapılandırılmayan hesap</string>
-    <string name="unconfigured_account_hint">Yapılandırmak için hesabı açın.</string>
+    <string name="switch_account">Profili Değiştir</string>
+    <string name="add_account">Profil Ekle</string>
+    <string name="delete_account">Profili Sil</string>
+    <string name="delete_account_ask">Profil verilerinizi silmek istediğinizden emin misiniz?</string>
+    <string name="delete_account_explain_with_name">Uçtan uca şifreleme ayarlamanızı, kişilerinizi, sohbetlerinizi, iletilerinizi ve ortamlarınızı kapsayarak \"%s\" profilinin bu aygıttaki verilerinin tümü silinecek. Bu eylem geri alınamaz.</string>
+    <string name="unconfigured_account">Yapılandırılmayan profil</string>
+    <string name="unconfigured_account_hint">Yapılandırmak için profili açın.</string>
     <string name="try_connect_now">Şimdi bağlanmayı dene</string>
     <string name="sync_all">Tümünü Eşzamanla</string>
     <!-- Translations: %1$s will be replaced by a more detailed error message -->
@@ -639,11 +643,12 @@
     <string name="pref_profile_photo">Profil Görseli</string>
     <string name="pref_blocked_contacts">Engellenen Kişiler</string>
     <string name="blocked_empty_hint">Engellenen kişiler burada görünecek.</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_password_and_account_settings">Parola ve Hesap</string>
-    <string name="pref_who_can_see_profile_explain">Profil görseliniz, adınız ve imzanız diğer kullanıcılarla iletişim kurulurken iletilerinizle birlikte gönderilecek.</string>
+    <string name="pref_who_can_see_profile_explain">Profil görseliniz, adınız ve biyografiniz diğer kullanıcılarla iletişim kurulurken iletilerinizle birlikte gönderilecek.</string>
     <string name="pref_your_name">Adınız</string>
     <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
-    <string name="pref_default_status_label">İmza Metni</string>
+    <string name="pref_default_status_label">Biyografi</string>
     <string name="pref_enter_sends">Enter Tuşu Göndersin</string>
     <string name="pref_enter_sends_explain">Enter tuşuna basma, metin iletileri gönderecek</string>
     <string name="pref_outgoing_media_quality">Giden Ortam Kalitesi</string>
@@ -698,10 +703,10 @@
     <string name="pref_backup">Yedekleme</string>
     <string name="pref_backup_explain">Sohbetleri Dış Depolamaya Yedekle</string>
     <string name="pref_backup_export_explain">Bir yedek, bu ya da başka bir aygıtta yeni bir kurulum ayarlamanıza yardımcı olur.\n\nYedek; tüm iletileri, kişileri ve sohbetleri ve uçtan uca Autocrypt ayarlamanızı içerecek. Yedek dosyasını güvenli bir yerde tutun ya da olanaklıysa en kısa sürede silin.</string>
-    <!-- the placeholder will be replaced by the name of the account's email address -->
+    <!-- the placeholder will be replaced by the name of the profile's email address -->
     <string name="pref_backup_export_x">%1$s hesabını dışa aktar</string>
-    <!-- the placeholder will be replaced by the number of accounts to export; the number is always larger than 1 -->
-    <string name="pref_backup_export_all">Tüm %1$d hesabı dışa aktar</string>
+    <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
+    <string name="pref_backup_export_all">Tüm %1$d profili dışa aktar</string>
     <string name="pref_backup_export_start_button">Yedeklemeyi Başlat</string>
     <string name="pref_backup_written_to_x">Yedek \"%1$s\" üzerine başarıyla yazıldı.</string>
     <string name="pref_managekeys_menu_title">Anahtarları Yönet</string>
@@ -719,6 +724,7 @@
     <string name="pref_imap_folder_warn_disable_defaults">Bu seçeneği değiştirirseniz, sunucunuzun ve diğer istemcilerinizin uygun olarak yapılandırıldığından emin olun.\n\nDeğilse özellikler hiç çalışmayabilir.</string>
     <string name="pref_watch_sent_folder">Gönderilen Klasörünü İzle</string>
     <string name="pref_send_copy_to_self">Kendime Kopya Gönder</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_send_copy_to_self_explain">Bu hesap çoklu aygıtlarda kullanılırken gereklidir.</string>
     <string name="pref_auto_folder_moves">DeltaChat Klasörüne Otomatik Olarak Taşı</string>
     <string name="pref_auto_folder_moves_explain">Sohbet görüşmeleri, Gelen Kutusu\'ndaki dağınıklığı önlemek için taşınır</string>
@@ -904,7 +910,7 @@
 
     <string name="devicemsg_self_deleted">\"Kaydedilen iletiler\" sohbetini sildiniz.\n\nℹ️ \"Kaydedilen iletiler\" özelliğini yeniden kullanmak için kendinizle yeni bir sohbet oluşturun.</string>
     <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
-    <string name="devicemsg_storage_exceeding">⚠️ Sağlayıcınızın depolama alanı tükenmek üzere: %1$s%% zaten kullanılıyor.\n\nDepolama alanı dolarsa iletileri alamayabilirsiniz.\n\n👉 Lütfen sağlayıcınızın web arabiriminden eski verileri silip silemeyeceğinizi denetleyin ve \"Ayarlar / Eski İletileri Sil\"i etkinleştirmeyi düşünün. Şu anki depolama alanı kullanımınızı herhangi bir zamanda \"Ayarlar / Bağlanabilirlik\"ten denetleyebilirsiniz.</string>
+    <string name="devicemsg_storage_exceeding">⚠️ Sağlayıcınızın depolaması dolmak üzere: %1$s%% zaten kullanımda.\n\nDepolama tam dolduğunda iletileri alamayabilirsiniz.\n\n👉 Lütfen sağlayıcınızın web arabiriminden eski verileri silip silemeyeceğinizi denetleyin ve \"Ayarlar / Sohbetler ve Ortamlar / Eski İletileri Sil\"i etkinleştirmeyi düşünün. Herhangi bir zamanda şu anki depolama kullanımınızı \"Ayarlar / Bağlanabilirlik\"ten denetleyebilirsiniz.</string>
     <!-- %1%s will be replaced by date and time in some human-readable format -->
     <string name="devicemsg_bad_time">⚠️ Aygıtınızdaki tarih ya da saat yanlış görünüyor (%1$s).\n\nİletilerinizin doğru şekilde alınmasını sağlamak için saatinizi ⏰🔧 ayarlayın.</string>
     <string name="devicemsg_update_reminder">⚠️ Delta Chat sürümünüz eski olabilir.\n\nBu, sorunlara neden olabilir; çünkü sohbet ortaklarınız daha yeni sürümleri kullanıyor - ve en yeni özellikleri kaybediyorsunuz 😳\nGüncelleştirmeler için lütfen https://get.delta.chat ya da uygulama mağazanızı denetleyin.</string>
@@ -944,16 +950,17 @@
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
     <string name="qrshow_join_contact_hint">%1$s ile sohbet etmek için bunu tarayın</string>
     <string name="qrshow_join_contact_no_connection_toast">Internet bağlantısı yok; QR kodu ayarlaması gerçekleştirilemiyor.</string>
-    <string name="qraccount_ask_create_and_login">\"%1$s\" üzerinde yeni e-posta adresi oluşturulsun ve orada giriş yapılsın mı?</string>
-    <string name="qraccount_ask_create_and_login_another">\"%1$s\" üzerinde yeni e-posta adresi oluşturulsun ve orada giriş yapılsın mı?\n\nVarolan hesabınız silinmeyecek. Hesaplarınız arasında geçiş yapmak için \"Hesabı Değiştir\" öğesini kullanın.</string>
+    <string name="qraccount_ask_create_and_login">\"%1$s\" üzerinde yeni profil oluşturulsun ve orada giriş yapılsın mı?</string>
+    <string name="qraccount_ask_create_and_login_another">\"%1$s\" üzerinde yeni profil oluşturulsun ve orada giriş yapılsın mı?\n\nVarolan profiliniz silinmeyecek. Profilleriniz arasında geçiş yapmak için \"Profili Değiştir\" öğesini kullanın.</string>
     <string name="set_name_and_avatar_explain">Kişilerinizin tanıyacağı bir ad ayarlayın. Bir profil görseli de ayarlayabilirsiniz.</string>
     <string name="please_enter_name">Lütfen bir ad girin.</string>
-    <string name="qraccount_qr_code_cannot_be_used">Taranan QR kodu, yeni bir hesap ayarlamak için kullanılamıyor.</string>
-    <string name="qraccount_use_on_new_install">Taranan QR kodu, yeni bir hesap ayarlamak içindir. QR kodunu yeni bir Delta Chat kurulumu ayarlanırken tarayabilirsiniz.</string>
-    <!-- the placeholder will be replaced by the e-mail address of the account -->
+    <string name="qraccount_qr_code_cannot_be_used">Taranan QR kodu, yeni bir profil ayarlamak için kullanılamıyor.</string>
+    <!-- deprecated -->
+    <string name="qraccount_use_on_new_install">Taranan QR kodu, yeni bir profil ayarlamak içindir. QR kodunu yeni bir Delta Chat kurulumu ayarlanırken tarayabilirsiniz.</string>
+    <!-- the placeholder will be replaced by the e-mail address of the profile -->
     <string name="qrlogin_ask_login">\"%1$s\" adresine giriş yapılsın mı?</string>
-    <!-- the placeholder will be replaced by the e-mail address of the account -->
-    <string name="qrlogin_ask_login_another">\"%1$s\" adresine giriş yapılsın mı?\n\nVarolan hesabınız silinmeyecek. Hesaplarınız arasında geçiş yapmak için \"Hesabı Değiştir\" öğesini kullanın.</string>
+    <!-- the placeholder will be replaced by the e-mail address of the profile -->
+    <string name="qrlogin_ask_login_another">\"%1$s\" adresine giriş yapılsın mı?\n\nVarolan profiliniz silinmeyecek. Profilleriniz arasında geçiş yapmak için \"Profili Değiştir\" öğesini kullanın.</string>
     <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s sizi bu öbeğe katılmaya çağırdı.\n\n%2$s kişisinin aygıtının yanıt vermesi bekleniyor…</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
@@ -1050,12 +1057,13 @@
     <string name="export_backup_desktop">Yedeği Dışa Aktar</string>
     <string name="autocrypt_correct_desktop">Autocrypt ayarlaması aktarıldı.</string>
     <string name="forget_login_confirmation_desktop">Bu giriş silinsin mi? Uçtan uca ayarlamanızı, kişilerinizi, sohbetlerinizi, iletilerinizi ve ortamlarınızı kapsayarak her şey silinecek. Bu eylem geri alınamaz.</string>
+    <!-- deprecated -->
     <string name="account_info_hover_tooltip_desktop2">E-Posta: %1$s\nBoyut: %2$s\nHesap Kimliği: %3$s</string>
     <string name="message_detail_sent_desktop">gönderilme</string>
     <string name="message_detail_received_desktop">alınma</string>
     <string name="menu.view.developer.open.log.folder">Günlük Klasörünü Aç</string>
     <string name="menu.view.developer.open.current.log.file">Şu Anki Günlük Dosyasını Aç</string>
-    <string name="explain_desktop_minimized_disabled_tray_pref">Delta Chat --minimized seçeneğiyle başlatıldığından tepsi simgesi etkisizleştirilemez.</string>
+    <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Delta Chat --minimized seçeneğiyle başlatıldığından tepsi simgesi etkisizleştirilemez.</string>
     <string name="no_spellcheck_suggestions_found">Yazım önerileri bulunamadı.</string>
     <string name="show_window">Pencereyi Göster</string>
     <string name="login_socks5_experimental_warning">SOCKS5 desteği şu anda deneysel. Lütfen riski size ait olarak kullanın. E-posta alanına bir adres yazarsanız, SOCKS5 üzerinden tünellenmeyen DNS araması olacak.</string>
@@ -1088,7 +1096,7 @@
     <string name="a11y_voice_message_hint_ios">Kaydettikten sonra göndermek için çift dokunun. Kaydı atmak için iki parmakla sarın.</string>
     <string name="a11y_connectivity_hint">Bağlanabilirlik ayrıntılarını görüntülemek için çift dokunun.</string>
     <string name="login_error_no_internet_connection">Internet bağlantısı yok; giriş başarısız.</string>
-    <string name="share_account_not_configured">Hesap yapılandırılmadı.</string>
+    <string name="share_account_not_configured">Profil yapılandırılmadı.</string>
     <string name="cannot_play_audio_file">Ses dosyası oynatılamıyor.</string>
     <!-- iOS camera permission alert -->
     <string name="perm_ios_explain_access_to_camera_denied">Fotoğraflar çekmek, videolar yakalamak ya da QR Kodu tarayıcısını kullanmak için sistem ayarlarını açın ve \"Kamera\"yı etkinleştirin.</string>

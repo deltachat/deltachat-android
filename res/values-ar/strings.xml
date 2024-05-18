@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">موافق</string>
@@ -146,6 +146,7 @@
     <string name="tab_map">الخريطة</string>
     <string name="media_preview">معاينة الصورة</string>
     <string name="login_title">الولوج</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">الإتصال بخادومك</string>
     <string name="login_inbox">صندوق الوارد</string>
     <string name="login_imap_login">مستخدم IMAP</string>
@@ -168,6 +169,7 @@
     <string name="pref_profile_info_headline">معلومات ملفك التعريفي</string>
     <string name="pref_profile_photo">صورة الملف التعريفي</string>
     <string name="pref_blocked_contacts">المراسلون المحبوسون</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_password_and_account_settings">الكلمة السرية والحساب</string>
     <string name="pref_your_name">اسمك</string>
     <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->

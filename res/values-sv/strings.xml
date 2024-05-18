@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
@@ -316,6 +316,7 @@
     <string name="chat_record_slide_to_cancel">Svep för att avbryta</string>
     <string name="chat_record_explain">Tryck och håll ner för att spela in ett röstmeddelande, släpp för att skicka.</string>
     <string name="chat_no_chats_yet_title">Tom inkorg.\nTryck på \"+\" för att starta en ny chatt.</string>
+    <!-- deprecated -->
     <string name="chat_no_chats_yet_hint">Du kan chatta med andra Delta Chat-användare och med vilken e-postadress som helst.</string>
     <string name="chat_all_archived">Alla chattar arkiverade.\nTryck på \"+\" för att starta en ny chatt.</string>
     <string name="chat_share_with_title">Dela med</string>
@@ -370,7 +371,9 @@
     <string name="media_preview">Förhandsvisning av media</string>
     <string name="send_message">Skicka meddelande</string>
     <string name="login_title">Logga in</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">Logga in på din server</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_explain">Logga in med ett befintligt e-postkonto</string>
     <string name="login_subheader">För kända e-postleverantörer installeras ytterligare inställningar automatiskt. Ibland måste IMAP aktiveras i webbinställningarna. Kontakta din e-postleverantör eller vänner för hjälp.</string>
     <string name="login_no_servers_hint">Det finns ingen Delta Chat-server, din data stannar på din enhet.</string>
@@ -420,6 +423,7 @@
     <string name="pref_profile_info_headline">Din profilinformation</string>
     <string name="pref_profile_photo">Profilbild</string>
     <string name="pref_blocked_contacts">Blockerade kontakter</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_password_and_account_settings">Lösenord och konto</string>
     <string name="pref_who_can_see_profile_explain">Din profilbild och ditt namn visas tillsammans med dina meddelanden när du kommunicerar med andra användare. Information som redan skickats kan inte tas bort eller flyttas.</string>
     <string name="pref_your_name">Ditt namn</string>
@@ -604,6 +608,7 @@
     <string name="qraccount_ask_create_and_login">Skapa ny e-postadress på \"%1$s\" och logga in där?</string>
     <string name="qraccount_ask_create_and_login_another">Vill du skapa en ny e-postadress på \"%1$s\" och logga in där?\n\nDitt befintliga konto kommer inte att tas bort. Använd \"Byt konto\" för att växla mellan dina konton.</string>
     <string name="qraccount_qr_code_cannot_be_used">Den skannade QR-koden kan inte användas för att konfigurera ett nytt konto.</string>
+    <!-- deprecated -->
     <string name="qraccount_use_on_new_install">Den skannade QR-koden är till för att konfigurera ett nytt konto. Du kan skanna QR-koden när du konfigurerar en ny Delta Chat-installation.</string>
     <string name="contact_verified">%1$s verifierad.</string>
     <string name="contact_not_verified">Kan inte verifiera %1$s.</string>

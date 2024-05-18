@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
@@ -388,6 +388,7 @@
     <string name="chat_record_slide_to_cancel">Posunutím akciu zrušíte</string>
     <string name="chat_record_explain">Klepnutím a podržaním nahráte hlasovú správu, uvoľnením ju odošlete</string>
     <string name="chat_no_chats_yet_title">Prázdna doručená pošta.\nStlačením tlačidla + začnete novú konverzáciu</string>
+    <!-- deprecated -->
     <string name="chat_no_chats_yet_hint">Môžete konverzovať s ostatnými používateľmi služby Delta Chat a s ľubovoľnou e-mailovou adresou.</string>
     <string name="chat_all_archived">Všetky konverzácie boli archivované.\nStlačením tlačidla „+“ začnete novú konverzáciu</string>
     <string name="chat_share_with_title">Zdieľať s</string>
@@ -500,7 +501,9 @@
 
     <string name="scan_invitation_code">Skenovať kód pozvánky</string>
     <string name="login_title">Prihlásiť sa</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">Prihláste sa na server</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_explain">Prihláste sa pomocou existujúceho e-mailového účtu</string>
     <string name="login_subheader">Pre známych poskytovateľov e-mailov sa automaticky nastavujú ďalšie nastavenia. Niekedy je potrebné v nastaveniach webu povoliť protokol IMAP. Požiadajte o pomoc svojho poskytovateľa e-mailu alebo priateľov</string>
     <string name="login_no_servers_hint">Neexistujú žiadne servery Delta Chat, vaše dáta zostanú vo vašom zariadení.</string>
@@ -566,6 +569,7 @@
     <string name="pref_profile_photo">Profilový obrázok</string>
     <string name="pref_blocked_contacts">Blokované kontakty</string>
     <string name="blocked_empty_hint">Ak zablokujete kontakty, zobrazia sa tu.</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_password_and_account_settings">Heslo a účet</string>
     <string name="pref_who_can_see_profile_explain">Pri komunikácii s ostatnými používateľmi sa vedľa vašich správ zobrazí váš profilový obrázok a meno. Už odoslané informácie nemožno vymazať ani odstrániť.</string>
     <string name="pref_your_name">Vaše meno</string>
@@ -636,6 +640,7 @@
     <string name="pref_imap_folder_warn_disable_defaults">Ak túto možnosť zakážete, uistite sa, že váš server a ostatní klienti sú zodpovedajúcim spôsobom nakonfigurovaní.\n\nV opačnom prípade nemusí fungovať vôbec.</string>
     <string name="pref_watch_sent_folder">Pozrieť priečinok Odoslané</string>
     <string name="pref_send_copy_to_self">Odoslať kópiu sebe</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_send_copy_to_self_explain">Vyžaduje sa, ak používate tento účet na viacerých zariadeniach.</string>
     <string name="pref_auto_folder_moves">Automaticky presúvať do priečinka DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">Konverzácie sa presunú, aby sa predišlo preplneniu doručenej pošty</string>
@@ -836,8 +841,9 @@
     <string name="qraccount_ask_create_and_login">Vytvoriť novú e-mailovú adresu na „%1$s“ a prihlásiť sa tam?</string>
     <string name="qraccount_ask_create_and_login_another">Vytvorte novú e-mailovú adresu na „%1$s“ a prihláste sa tam?\n\nVáš existujúci účet nebude odstránený. Medzi položkami môžete prepínať pomocou položky „Prepnúť účet“.</string>
     <string name="qraccount_qr_code_cannot_be_used">Naskenovaný QR kód nie je možné použiť na založenie nového účtu.</string>
+    <!-- deprecated -->
     <string name="qraccount_use_on_new_install">Naskenovaný QR kód slúži na založenie nového účtu. QR kód môžete naskenovať pri nastavovaní novej inštalácie Delta Chat.</string>
-    <!-- the placeholder will be replaced by the e-mail address of the account -->
+    <!-- the placeholder will be replaced by the e-mail address of the profile -->
     <string name="qrlogin_ask_login">Prihlásiť sa na \"%1$s\"?</string>
     <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s vás pozval, aby ste sa pripojili k tejto skupine.\n\nČaká sa na odpoveď zo zariadenia používateľa %2$s...</string>
@@ -920,12 +926,13 @@
     <string name="export_backup_desktop">Exportovať zálohu</string>
     <string name="autocrypt_correct_desktop">Nastavenie automatického šifrovania bolo prenesené.</string>
     <string name="forget_login_confirmation_desktop">Odstrániť tieto prihlasovacie údaje? Odstráni sa všetko vrátane vášho kompletného nastavenia, kontaktov, konverzácií, správ a médií. Túto akciu nie je možné vrátiť späť.</string>
+    <!-- deprecated -->
     <string name="account_info_hover_tooltip_desktop2">E-Mail: %1$s\nVeľkosť: %2$s\n ID Účtu: %3$s</string>
     <string name="message_detail_sent_desktop">odoslané</string>
     <string name="message_detail_received_desktop">prijaté</string>
     <string name="menu.view.developer.open.log.folder">Otvoriť priečinok denníka</string>
     <string name="menu.view.developer.open.current.log.file">Otvoriť aktuálny súbor protokolu</string>
-    <string name="explain_desktop_minimized_disabled_tray_pref">Ikonu v systémovej lište nie je možné vypnúť, pretože Delta Chat bol spustený s prepínačom --minimized.</string>
+    <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Ikonu v systémovej lište nie je možné vypnúť, pretože Delta Chat bol spustený s prepínačom --minimized.</string>
     <string name="no_spellcheck_suggestions_found">Neboli nájdené žiadne návrhy opravy preklepov.</string>
     <string name="show_window">Zobraziť okno</string>
     <string name="login_socks5_experimental_warning">Podpora SOCKS5 je momentálne experimentálna. Prosím, používajte na vlastné riziko. Ak zadáte adresu do poľa e-mail, vykoná sa vyhľadávanie DNS, ktoré nebude tunelované cez SOCKS5.</string>

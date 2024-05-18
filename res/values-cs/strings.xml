@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">Souhlas</string>
@@ -388,6 +388,7 @@
     <string name="chat_record_slide_to_cancel">Zrušit tahem</string>
     <string name="chat_record_explain">K nahrání hlasové zprávy stiskni a drž mikrofon, uvolni pro odeslání.</string>
     <string name="chat_no_chats_yet_title">Prázdná schránka.\nStiskem \"+\" založ nový chat.</string>
+    <!-- deprecated -->
     <string name="chat_no_chats_yet_hint">Založ chat s jakýmkoli uživatelem Delta Chatu a s jakýmkoli e-mailem.</string>
     <string name="chat_all_archived">Všechny chaty archivovány.\nStiskem \"+\" založ nový chat.</string>
     <string name="chat_share_with_title">Sdílet s</string>
@@ -457,7 +458,9 @@
     <!-- "I Already Have a Login / Add as Second Device” should be the same text as defined by the keys onboarding_alternative_logins and multidevice_receiver_title -->
     <string name="multidevice_tap_scan_on_other_device">Spusťte Delta Chat, klepněte na „Přidat jako druhé zařízení“ a naskenujte zde zobrazený kód</string>
     <string name="login_title">Přihlaš se</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">Přihlaš se na váš server</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_explain">Přihlásit se se stávajícím účtem pro e-mail.</string>
     <string name="login_subheader">Pro standardní poskytovatele jsou nastavení dopněna samočinně. Někdy je potřeba umožnit IMAP ve webovém rozhraní nastavení. Obraťte se na poskytovatele e-mailu nebo přátele.</string>
     <string name="login_no_servers_hint">Delta Chat nemá žádné vlastní servery, tvá data zůstávají na tvém přístroji.</string>
@@ -513,6 +516,7 @@
     <string name="pref_profile_photo">Obrázek profilu</string>
     <string name="pref_blocked_contacts">Blokované kontakty</string>
     <string name="blocked_empty_hint">Zablokované kontakty se zobrazí zde.</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_password_and_account_settings">Heslo a účet</string>
     <string name="pref_who_can_see_profile_explain">Tvůj profilový obrázek a jméno budou zobrazeny vedle zpráv poslaných ostatním uživatelům. Data která jsou již jednou odeslaná nelze smazat ani odstranit. </string>
     <string name="pref_your_name">Tvé jméno</string>
@@ -750,6 +754,7 @@
     <string name="qraccount_ask_create_and_login">Vytvořit nový e-mail na \"%1$s\" a připojit se k němu?</string>
     <string name="qraccount_ask_create_and_login_another">Vytvořit nový e-mail na \"%1$s\" a připojit se k němu?\n\nTvůj původní ůčet nebude smazán. Použij \"Přepni účet\" k přepnutí na jiný účet.</string>
     <string name="qraccount_qr_code_cannot_be_used">Sejmutý QR kód neumožňuje nastavení nového účtu.</string>
+    <!-- deprecated -->
     <string name="qraccount_use_on_new_install">Sejmutý QR kód je k nastavení nového účtu. Tento QR kód můžeš použít když budeš provádět novou instalaci Delta Chatu.</string>
     <string name="contact_verified">%1$s ověřen.</string>
     <string name="contact_not_verified">Nelze ověřit %1$s.</string>
@@ -822,7 +827,7 @@
     <string name="message_detail_received_desktop">přijato</string>
     <string name="menu.view.developer.open.log.folder">Otevři složku se záznamem běhu</string>
     <string name="menu.view.developer.open.current.log.file">Otevři stávající záznam běhu</string>
-    <string name="explain_desktop_minimized_disabled_tray_pref">Ikonu na panelu nelze deaktivovat, protože Delta Chat byl spuštěn s možností --minimized.</string>
+    <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Ikonu na panelu nelze deaktivovat, protože Delta Chat byl spuštěn s možností --minimized.</string>
     <string name="switch_between_chats">Přepínání mezi chaty</string>
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Stav doručení: Chyba</string>

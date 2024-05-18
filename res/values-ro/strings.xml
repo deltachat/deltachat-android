@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
@@ -381,6 +381,7 @@
     <string name="chat_record_slide_to_cancel">Glisați pentru a anula</string>
     <string name="chat_record_explain">Atingeți continuu pentru a înregistra un mesaj vocal, apoi eliberați-l pentru a-l trimite</string>
     <string name="chat_no_chats_yet_title">Goliți inbox.\nPress \"+\" pentru a începe un nou chat.</string>
+    <!-- deprecated -->
     <string name="chat_no_chats_yet_hint">Puteți discuta cu alți utilizatori Delta Chat și cu orice adresă de e-mail.</string>
     <string name="chat_all_archived">Toate chat-urile sunt archived.\nPress \"+\" pentru a începe un nou chat.</string>
     <string name="chat_share_with_title">Împărtășiți cu</string>
@@ -525,7 +526,9 @@
 
     <string name="scan_invitation_code">Scanați Codul Invitației</string>
     <string name="login_title">Autentificare</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">Autentificați-vă în contul dumneavoastră de e-mail</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_explain">Conectați-vă cu un cont de e-mail existent</string>
     <string name="login_subheader">În cazul furnizorilor de e-mail cunoscuți, setările suplimentare sunt configurate automat. Uneori, IMAP trebuie să fie activat în setările web. Consultați furnizorul dumneavoastră de e-mail sau prietenii pentru ajutor.</string>
     <string name="login_no_servers_hint">Nu există servere Delta Chat, datele tale rămân pe dispozitivul tău.</string>
@@ -591,6 +594,7 @@
     <string name="pref_profile_photo">Imagine de profil</string>
     <string name="pref_blocked_contacts">Contacte blocate</string>
     <string name="blocked_empty_hint">Contactele blocate vor apărea aici.</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_password_and_account_settings">Parolă și cont</string>
     <string name="pref_who_can_see_profile_explain">Imaginea de profil, numele și semnătura dumneavoastră vor fi trimise împreună cu mesajele dumneavoastră atunci când comunicați cu alți utilizatori.</string>
     <string name="pref_your_name">Numele dumneavoastră</string>

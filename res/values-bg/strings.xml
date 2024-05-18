@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
@@ -372,6 +372,7 @@
     <string name="chat_record_slide_to_cancel">Приплъзнете, за да откажете</string>
     <string name="chat_record_explain">Докоснете и задръжте, за да запишете гласово съобщение, отпуснете, за да го изпратите</string>
     <string name="chat_no_chats_yet_title">Празна входяща кутия.\nНатиснете \"+\", за да започнете нов чат</string>
+    <!-- deprecated -->
     <string name="chat_no_chats_yet_hint">Можете да чатите с други потребители на Delta Chat и с кой да е адрес за електронна поща</string>
     <string name="chat_all_archived">Всички чатове са архивирани.\nНатиснете \"+\", за да започнете нов чат</string>
     <string name="chat_share_with_title">Споделяне с</string>
@@ -516,7 +517,9 @@
 
     <string name="scan_invitation_code">Сканиране на код за покана</string>
     <string name="login_title">Влизане</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">Влизане във Вашия акаунт за електронна поща</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_explain">Влизане със съществуващ акаунт за електронна поща</string>
     <string name="login_subheader">За известните доставчици на електронна поща допълнителните настройки се попълват автоматично. Понякога е необходимо да се разреши IMAP в уеб настройките. Потърсете помощ от Вашия доставчик на електронна поща или приятели.</string>
     <string name="login_no_servers_hint">Delta Chat няма сървъри, Вашите данни стоят на Вашето устройство.</string>
@@ -582,6 +585,7 @@
     <string name="pref_profile_photo">Изображение на профила</string>
     <string name="pref_blocked_contacts">Блокирани контакти</string>
     <string name="blocked_empty_hint">Блокираните контакти ще се появяват тук.</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_password_and_account_settings">Парола и акаунт</string>
     <string name="pref_who_can_see_profile_explain">Изображението, името и подписът от Вашия профил ще бъдат изпратени заедно с Вашите съобщения, когато общувате с други потребители.</string>
     <string name="pref_your_name">Вашето име</string>
@@ -652,6 +656,7 @@
     <string name="pref_imap_folder_warn_disable_defaults">Ако промение тази опция, се уверете, че Вашият сървър и другите Ви клиенти са конфигурирани по съответен начин.\n\nВ противен случай е възможно нещата въобще да не работят.</string>
     <string name="pref_watch_sent_folder">Да бъде наблюдавана папката \"Изпратени\"</string>
     <string name="pref_send_copy_to_self">Изпращане на копие до себе си</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_send_copy_to_self_explain">Изисква се, когато този акант се използва на повече от едно устройство.</string>
     <string name="pref_auto_folder_moves">Автоматично преместване в папката DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">Разговорите са преместени, за да се избегне претрупване на папката \"Входящи\"</string>
@@ -852,10 +857,11 @@
     <string name="qraccount_ask_create_and_login">Да бъде ли създаден нов адрес за електронна поща на \"%1$s\" и да бъде ли осъществено влизане там?</string>
     <string name="qraccount_ask_create_and_login_another">Да бъде ли създаден нов адрес за електронна поща в \"%1$s\" и да бъде ли осъществено влизане там?\n\nВашият съществуващ акаунт няма да бъде изтрит. Използвайте опцията \"Превключване към друг акаунт\", за да превключвате между Вашите акаунти.</string>
     <string name="qraccount_qr_code_cannot_be_used">Не може да бъде създаден нов акаунт със сканирания QR код.</string>
+    <!-- deprecated -->
     <string name="qraccount_use_on_new_install">Сканираният QR код е за установяване на нов акаунт. Можете да сканирате QR кода, когато създавате нова инсталация на Delta Chat.</string>
-    <!-- the placeholder will be replaced by the e-mail address of the account -->
+    <!-- the placeholder will be replaced by the e-mail address of the profile -->
     <string name="qrlogin_ask_login">Желаете ли да влезете в \"%1$s\"?</string>
-    <!-- the placeholder will be replaced by the e-mail address of the account -->
+    <!-- the placeholder will be replaced by the e-mail address of the profile -->
     <string name="qrlogin_ask_login_another">Желаете ли да влезете в \"%1$s\"?\n\nСъщестуващият Ви акаунт няма да бъде изтрит. Превключвайте между акаунтите си чрез \"Превключване към друг акаунт\".</string>
     <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s Ви покани да се присъедините към тази група.\n\nИзчаква се устройството на %2$s да отговори…</string>
@@ -940,12 +946,13 @@
     <string name="export_backup_desktop">Експорт на резервно копие</string>
     <string name="autocrypt_correct_desktop">Найстроката на Autocrypt е прехвърлена.</string>
     <string name="forget_login_confirmation_desktop">Да бъде ли изтрита тази регистрация? Всичко ще бъде изтрито, включително Вашата настройка за криптиране \"от край до край\", контакти, чатове, съобщения и медийни файлове. Това действие не може да бъде отменено.</string>
+    <!-- deprecated -->
     <string name="account_info_hover_tooltip_desktop2">E-Mail: %1$s\nРазмер: %2$s\n Идентификатор на акаунт: %3$s</string>
     <string name="message_detail_sent_desktop">изпратено</string>
     <string name="message_detail_received_desktop">получено</string>
     <string name="menu.view.developer.open.log.folder">Отваряне на папката \"Дневник\"</string>
     <string name="menu.view.developer.open.current.log.file">Отваряне на текущия файл на дневника</string>
-    <string name="explain_desktop_minimized_disabled_tray_pref">Показването на икона в системната лента не може да бъде забранено, тъй като Delta Chat е стартиран с опцията --minimized.</string>
+    <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Показването на икона в системната лента не може да бъде забранено, тъй като Delta Chat е стартиран с опцията --minimized.</string>
     <string name="no_spellcheck_suggestions_found">Няма открити предложения за правопис.</string>
     <string name="show_window">Показване на прозореца</string>
     <string name="login_socks5_experimental_warning">Понастоящем поддръжката за SOCKS5 е експериментална. Използвайте на собствен риск. Ако въведете адрес в полето \"Електронна поща\", ще бъде осъществено DNS търсене извън SOCKS5 тунела.</string>

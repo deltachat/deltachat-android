@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">Gerai</string>
@@ -357,6 +357,7 @@
     <string name="chat_new_group_hint">Rašykite pirmąją žinutę, taip leisdami kitiems atsakyti šioje grupėje..\n\n• Nieko tokio, jei ne visi dalyviai naudoja Delta Chat.\n\n• Pirmosios žinutės pristatymas gali šiek tiek užtrukti.</string>
     <string name="chat_record_slide_to_cancel">Perbraukite, norėdami atsisakyti</string>
     <string name="chat_record_explain">Bakstelėkite ir laikykite, norėdami įrašyti balso žinutę. Atleiskite, norėdami išsiųsti</string>
+    <!-- deprecated -->
     <string name="chat_no_chats_yet_hint">Galite bendrauti su kitais Delta Chat naudotojais ir bet kuriais el. pašto adresais.</string>
     <string name="chat_all_archived">Visi pokalbiai archyvuoti.\nPaspauskite „+“ norėdami pradėti naują pokalbį.</string>
     <string name="chat_share_with_title">Bendrinti su</string>
@@ -452,7 +453,9 @@
     <string name="messages">Žinutės</string>
     <string name="scan_invitation_code">Skenuoti pakvietimo kodą</string>
     <string name="login_title">Prisijungti</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">Prisijungti prie savo serverio</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_explain">Prisijungti naudojant esamą el. pašto paskyrą</string>
     <string name="login_subheader">Žinomiems el. pašto teikėjams papildomi nustatymai yra nustatomi automatiškai. Kartais, IMAP turi būti įjungtas prisijungus per naršyklę. Išsamesnės pagalbos teiraukitės savo el. pašto teikėjo ar draugų.</string>
     <string name="login_no_servers_hint">Nėra jokių Delta Chat serverių, jūsų duomenys išlieka jūsų įrenginyje!</string>
@@ -510,6 +513,7 @@
     <string name="pref_profile_photo">Profilio nuotrauka</string>
     <string name="pref_blocked_contacts">Užblokuoti adresatai</string>
     <string name="blocked_empty_hint">Jei užblokuosite adresatus, jie bus rodomi čia.</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_password_and_account_settings">Slaptažodis ir paskyra</string>
     <string name="pref_who_can_see_profile_explain">Bendraujant su kitais naudotojais, jūsų profilio paveikslas ir vardas bus rodomi kartu su jūsų žinutėmis. Jau išsiųsta informacija negalės būti ištrinta ar pašalinta.</string>
     <string name="pref_your_name">Jūsų vardas</string>
@@ -562,9 +566,9 @@
     <string name="pref_backup">Atsarginė kopija</string>
     <string name="pref_backup_explain">Padaro atsarginę pokalbių kopiją į išorinę saugyklą</string>
     <string name="pref_backup_export_explain">Atsarginė kopija padeda jums nusistatyti naują diegimą šiame ar kitame įrenginyje.\n\nAtsarginėje kopijoje bus visos žinutės, adresatai ir pokalbiai bei jūsų ištisinė Autocrypt sąranka. Atsarginės kopijos failą laikykite saugioje vietoje arba kaip įmanoma greičiau jį ištrinkite.</string>
-    <!-- the placeholder will be replaced by the name of the account's email address -->
+    <!-- the placeholder will be replaced by the name of the profile's email address -->
     <string name="pref_backup_export_x">Eksportuoti %1$s</string>
-    <!-- the placeholder will be replaced by the number of accounts to export; the number is always larger than 1 -->
+    <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Eksportuoti visas %1$d paskyras</string>
     <string name="pref_backup_export_start_button">Pradėti daryti atsarginę kopiją</string>
     <string name="pref_backup_written_to_x">Atsarginė kopija sėkmingai įrašyta į %1$s</string>
@@ -745,8 +749,9 @@
     <string name="qraccount_ask_create_and_login">Sukurti naują el. pašto adresą ties „%1$s“ ir prisijungti ten?</string>
     <string name="please_enter_name">Įrašykite vardą.</string>
     <string name="qraccount_qr_code_cannot_be_used">Nuskenuotas QR kodas negali būti naudojamas naujos paskyros nustatymui.</string>
+    <!-- deprecated -->
     <string name="qraccount_use_on_new_install">Nuskenuotas QR kodas yra skirtas naujos paskyros nustatymui. Galite nuskenuoti QR kodą tuomet, kai nustatote naują Delta Chat diegimą.</string>
-    <!-- the placeholder will be replaced by the e-mail address of the account -->
+    <!-- the placeholder will be replaced by the e-mail address of the profile -->
     <string name="qrlogin_ask_login">Prisijungti prie „%1$s“?</string>
     <string name="contact_verified">%1$s patvirtintas.</string>
     <string name="contact_not_verified">Nepavyksta patvirtinti %1$s</string>
@@ -819,12 +824,13 @@
     <string name="export_backup_desktop">Eksportuoti atsarginę kopiją</string>
     <string name="autocrypt_correct_desktop">Autocrypt sąranka sėkmingai perduota!</string>
     <string name="forget_login_confirmation_desktop">Ištrinti šį prisijungimą? Viskas bus ištrinta, įskaitant jūsų ištisinę sąranką, adresatus, pokalbius, žinutes ir mediją. Šis veiksmas yra galutinis ir negalės būti panaikintas.</string>
+    <!-- deprecated -->
     <string name="account_info_hover_tooltip_desktop2">El. paštas: %1$s\nDydis: %2$s\nPaskyros Id: %3$s</string>
     <string name="message_detail_sent_desktop">išsiųsta</string>
     <string name="message_detail_received_desktop">gauta</string>
     <string name="menu.view.developer.open.log.folder">Atverti žurnalų aplanką</string>
     <string name="menu.view.developer.open.current.log.file">Atverti dabartinio žurnalo failą</string>
-    <string name="explain_desktop_minimized_disabled_tray_pref">Dėklo piktograma negali būti išjungta, nes Delta Chat buvo paleista naudojant --minimized parinktį.</string>
+    <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Dėklo piktograma negali būti išjungta, nes Delta Chat buvo paleista naudojant --minimized parinktį.</string>
     <string name="no_spellcheck_suggestions_found">Nerasta jokių rašybos pasiūlymų.</string>
     <string name="show_window">Rodyti langą</string>
     <string name="switch_between_chats">Perjungti tarp pokalbių</string>

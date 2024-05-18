@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
@@ -421,6 +421,7 @@
     <string name="chat_record_slide_to_cancel">PRZESUŃ, BY ANULOWAĆ</string>
     <string name="chat_record_explain">Dotknij i przytrzymaj, aby nagrać wiadomość głosową, zwolnij, aby wysłać</string>
     <string name="chat_no_chats_yet_title">Pusta skrzynka odbiorcza.\nNaciśnij \"+\" aby rozpocząć nowy czat.</string>
+    <!-- deprecated -->
     <string name="chat_no_chats_yet_hint">Możesz rozmawiać z innymi użytkownikami Delta Chat i z dowolnym adresem e-mail.</string>
     <string name="chat_all_archived">Wszystkie czaty zarchiwizowane.\nNaciśnij „+” aby rozpocząć nowy czat.</string>
     <string name="chat_share_with_title">Udostępnij</string>
@@ -577,7 +578,9 @@
 
     <string name="scan_invitation_code">Zeskanuj kod zaproszenia</string>
     <string name="login_title">Zaloguj się</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">Zaloguj się na swoje konto e-mail</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_explain">Zaloguj się przy użyciu istniejącego konta e-mail</string>
     <string name="login_subheader">Dla znanych dostawców usług poczty elektronicznej poniższe ustawienia są ustawiane automatycznie. Czasami IMAP musi być włączony w interfejsie WWW. O pomoc należy zwrócić się do usługodawcy e-mail lub znajomych.</string>
     <string name="login_no_servers_hint">Nie ma serwerów Delta Chat, Twoje dane pozostają na Twoim urządzeniu!</string>
@@ -643,6 +646,7 @@
     <string name="pref_profile_photo">Zdjęcie profilowe</string>
     <string name="pref_blocked_contacts">Zablokowane kontakty</string>
     <string name="blocked_empty_hint">Zablokowane kontakty, zostaną pokazane tutaj.</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_password_and_account_settings">Hasło i konto</string>
     <string name="pref_who_can_see_profile_explain">Twoje zdjęcie profilowe i nazwa będą wyświetlane wraz z wiadomościami podczas komunikacji z innymi użytkownikami. Już wysłanych informacji nie można skasować ani usunąć.</string>
     <string name="pref_your_name">Twoja nazwa</string>
@@ -700,9 +704,9 @@
     <string name="pref_backup">Kopia zapasowa</string>
     <string name="pref_backup_explain">Wykonaj kopię zapasową czatów na pamięci zewnętrznej</string>
     <string name="pref_backup_export_explain">Kopia zapasowa pomaga skonfigurować nową instalację na tym lub na innym urządzeniu.\n\nKopia zapasowa będzie zawierała wszystkie wiadomości, kontakty i czaty oraz pełną konfigurację  funkcji automatycznego szyfrowania typu end-to-end. Przechowuj plik kopii zapasowej w bezpiecznym miejscu lub usuń go jak najszybciej.</string>
-    <!-- the placeholder will be replaced by the name of the account's email address -->
+    <!-- the placeholder will be replaced by the name of the profile's email address -->
     <string name="pref_backup_export_x">Eksportuj %1$s</string>
-    <!-- the placeholder will be replaced by the number of accounts to export; the number is always larger than 1 -->
+    <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Eksportuj wszystkie %1$d konta</string>
     <string name="pref_backup_export_start_button">Utwórz kopię</string>
     <string name="pref_backup_written_to_x">Kopia zapasowa została pomyślnie zapisana do %1$s</string>
@@ -721,6 +725,7 @@
     <string name="pref_imap_folder_warn_disable_defaults">Jeśli wyłączysz tę opcję, upewnij się, że twój serwer i inni klienci są odpowiednio skonfigurowani.\n\nW przeciwnym razie wszystko może w ogóle nie działać.</string>
     <string name="pref_watch_sent_folder">Pokaż katalog Wysłane</string>
     <string name="pref_send_copy_to_self">Wyślij kopię do siebie</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_send_copy_to_self_explain">Wymagane kiedy korzystasz z tego konta na wielu urządzeniach.</string>
     <string name="pref_auto_folder_moves">Automatyczne przenoszenie do folderu DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">Rozmowy na czacie są przenoszone, aby nie zaśmiecać folderu Skrzynka odbiorcza</string>
@@ -951,10 +956,11 @@
     <string name="set_name_and_avatar_explain">Ustaw nazwę, którą rozpoznają twoje kontakty. Możesz także ustawić zdjęcie profilowe.</string>
     <string name="please_enter_name">Wpisz nazwę.</string>
     <string name="qraccount_qr_code_cannot_be_used">Zeskanowanego kodu QR nie można użyć do założenia nowego konta.</string>
+    <!-- deprecated -->
     <string name="qraccount_use_on_new_install">Zeskanowany kod QR służy do zakładania nowego konta. Możesz zeskanować kod QR podczas konfigurowania nowej instalacji Delta Chat.</string>
-    <!-- the placeholder will be replaced by the e-mail address of the account -->
+    <!-- the placeholder will be replaced by the e-mail address of the profile -->
     <string name="qrlogin_ask_login">Zalogować się do „%1$s”?</string>
-    <!-- the placeholder will be replaced by the e-mail address of the account -->
+    <!-- the placeholder will be replaced by the e-mail address of the profile -->
     <string name="qrlogin_ask_login_another">Zalogować się do „%1$s”?\n\nTwoje istniejące konto nie zostanie usunięte. Użyj opcji „Przełącz konto”, aby przełączyć się między swoimi kontami.</string>
     <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">Użytkownik %1$s zaprosił cię do dołączenia do tej grupy.\n\nCzekam na odpowiedź urządzenia %2$s…</string>
@@ -1050,12 +1056,13 @@
     <string name="export_backup_desktop">Eksport kopii zapasowej</string>
     <string name="autocrypt_correct_desktop">Pomyślnie przetransferowano konfigurację Autocrypt!</string>
     <string name="forget_login_confirmation_desktop">Usunąć ten login? Wszystko zostanie usunięte, w tym kompletna konfiguracja end-to-end, kontakty, czaty, wiadomości i multimedia. Ta akcja jest ostateczna i nie można jej odwrócić.</string>
+    <!-- deprecated -->
     <string name="account_info_hover_tooltip_desktop2">E-mail: %1$s\nRozmiar: %2$s\nID konta: %3$s</string>
     <string name="message_detail_sent_desktop">wysłane</string>
     <string name="message_detail_received_desktop">odebrane</string>
     <string name="menu.view.developer.open.log.folder">Otwórz folder dziennika</string>
     <string name="menu.view.developer.open.current.log.file">Otwórz bieżący plik dziennika</string>
-    <string name="explain_desktop_minimized_disabled_tray_pref">Ikona w zasobniku nie może być wyłączona, ponieważ Delta Chat został uruchomiony z opcją --minimized.</string>
+    <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Ikona w zasobniku nie może być wyłączona, ponieważ Delta Chat został uruchomiony z opcją --minimized.</string>
     <string name="no_spellcheck_suggestions_found">Nie znaleziono propozycji pisowni.</string>
     <string name="show_window">Pokaż okno</string>
     <string name="login_socks5_experimental_warning">Obsługa SOCKS5 jest obecnie eksperymentalna. Proszę używać na własne ryzyko. Jeśli wpiszesz adres w polu e-mail, nastąpi wyszukiwanie DNS, które nie będzie tunelowane przez SOCKS5.</string>

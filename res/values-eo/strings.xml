@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">Bone</string>
@@ -323,6 +323,7 @@
     </plurals>
     <string name="chat_record_slide_to_cancel">Gliti por nuligi</string>
     <string name="chat_record_explain">Tuŝadi por registri voĉan mesaĝon, maltuŝadi por sendi</string>
+    <!-- deprecated -->
     <string name="chat_no_chats_yet_hint">Vi povas babili kun aliaj uzantoj de Delta Chat kaj kun iu ajn retadreso.</string>
     <string name="chat_all_archived">Ĉiuj babiloj enarĥivigitaj.\nPremu \"+\" por komenci novan babilon.</string>
     <string name="chat_share_with_title">Kunhavigi kun</string>
@@ -359,6 +360,7 @@
     <string name="media_preview">Aŭdvida antaŭrigardo</string>
     <string name="send_message">Sendi mesaĝon</string>
     <string name="login_title">Ensaluti</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">Ensaluti al via servilo</string>
     <string name="login_inbox">Ricevujo</string>
     <string name="login_imap_login">IMAP salutnomo</string>
@@ -392,6 +394,7 @@
 
     <string name="pref_profile_photo">Profilbildo</string>
     <string name="pref_blocked_contacts">Blokitaj kontaktoj</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_password_and_account_settings">Pasvorto kaj konto</string>
     <string name="pref_your_name">Via nomo</string>
     <string name="pref_enter_sends">La Eniga klavo kaŭzas sendon</string>

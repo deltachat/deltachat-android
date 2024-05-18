@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
@@ -364,6 +364,7 @@
     <string name="chat_record_slide_to_cancel">Desliza para cancelar</string>
     <string name="chat_record_explain">Toca e mantén para gravar mensaxe de voz, solta para enviar</string>
     <string name="chat_no_chats_yet_title">Caixa de entrada baldeira.\n Preme \"+\" para iniciar conversa.</string>
+    <!-- deprecated -->
     <string name="chat_no_chats_yet_hint">Podes conversar con outra usuaria Delta Chat e con calquera enderezo de correo.</string>
     <string name="chat_all_archived">Arquiváronse todas as conversas.\nPreme \"+\" para iniciar unha nova.</string>
     <string name="chat_share_with_title">Compartir con</string>
@@ -481,7 +482,9 @@
 
     <string name="scan_invitation_code">Escanear código de convite</string>
     <string name="login_title">Acceder</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">Accede ao teu servidor</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_explain">Accede cunha conta de correo existente</string>
     <string name="login_subheader">Para os provedores de correo máis frecuentes os axustes establécense automaticamente. Porén poderías ter que activar IMAP nos seus axustes. Consulta o teu provedor de correo ou aos amigos se tes dúbidas.</string>
     <string name="login_no_servers_hint">Non hai servidores Delta Chat, os teus datos permanecen no dispositivo.</string>
@@ -547,6 +550,7 @@
     <string name="pref_profile_photo">Imaxe de perfil</string>
     <string name="pref_blocked_contacts">Contactos bloqueados</string>
     <string name="blocked_empty_hint">Móstranse aquí os contactos que bloqueas.</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_password_and_account_settings">Contrasinal e conta</string>
     <string name="pref_who_can_see_profile_explain">A túa foto de perfil e nome móstranse xunto coas túas mensaxes ao comunicarte con outras persoas. A información xa enviada non se pode agochar o borrar.</string>
     <string name="pref_your_name">O teu nome</string>
@@ -617,6 +621,7 @@
     <string name="pref_imap_folder_warn_disable_defaults">Se desactivas esta opción, asegúrate de que o servidor e os teus outros clientes están configurados de xeito acorde.\n\nSe non, algo podería fallar.</string>
     <string name="pref_watch_sent_folder">Vixiar cartafol Enviados</string>
     <string name="pref_send_copy_to_self">Enviar copia a ti mesmo</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_send_copy_to_self_explain">Requerido se utilizas esta conta en varios dispositivos.</string>
     <string name="pref_auto_folder_moves">Mover automáticamente ao cartafol DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">As conversas móvense do cartafol de Entrada para evitar saturalo.</string>
@@ -790,6 +795,7 @@
     <string name="qraccount_ask_create_and_login">Crear un novo enderezo de correo en \"%1$s\" e acceder ali?</string>
     <string name="qraccount_ask_create_and_login_another">Crear un novo enderezo de email en \"%1$s\" e acceder?\n\nNon se eliminará a conta actual. Usa \"Cambiar de conta\" para cambiar entre as túas contas.</string>
     <string name="qraccount_qr_code_cannot_be_used">O código QR escaneado non se pode utilizar para crear unha nova conta.</string>
+    <!-- deprecated -->
     <string name="qraccount_use_on_new_install">O código QR escaneado é para crear unha nova conta. Podes escanear o código QR cando configures unha nova instalación de Delta Chat.</string>
     <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s convidoute a este grupo.\n\nAgardando a que responda o dispositivo de %2$s ...</string>
@@ -872,12 +878,13 @@
     <string name="export_backup_desktop">Exportar respaldo</string>
     <string name="autocrypt_correct_desktop">Axuste Autocrypt transferido.</string>
     <string name="forget_login_confirmation_desktop">Eliminar esta conexión? Borrarase todo, incluíndo os axustes de cifrado, contactos, conversas, mensaxes e ficheiros de medios. Esta acción non ten volta atrás.</string>
+    <!-- deprecated -->
     <string name="account_info_hover_tooltip_desktop2">Email: %1$s \nTamaño: %2$s \nId. da conta: %3$s</string>
     <string name="message_detail_sent_desktop">enviado</string>
     <string name="message_detail_received_desktop">recibido</string>
     <string name="menu.view.developer.open.log.folder">Abrir cartafol do rexistro</string>
     <string name="menu.view.developer.open.current.log.file">Abrir ficheiro actual do rexistro</string>
-    <string name="explain_desktop_minimized_disabled_tray_pref">A icona da bandexa do sistema non se pode desactivar porque Delta Chat iniciouse coa opción --minimized.</string>
+    <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">A icona da bandexa do sistema non se pode desactivar porque Delta Chat iniciouse coa opción --minimized.</string>
     <string name="no_spellcheck_suggestions_found">Non se atopan suxestións de escrita.</string>
     <string name="show_window">Mostrar xanela</string>
     <string name="login_socks5_experimental_warning">O soporte para SOCKS5 aínda é experimental. Úsao baixo a túa responsabilidade. Se escribes un enderezo no campo do email realizará unha busca DNS que non pasará a través de SOCKS5.</string>

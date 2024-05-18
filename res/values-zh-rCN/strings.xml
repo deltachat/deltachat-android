@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">确定</string>
@@ -376,6 +376,7 @@
     <string name="chat_record_slide_to_cancel">滑动来取消</string>
     <string name="chat_record_explain">按住来录制语音消息，松开来发送</string>
     <string name="chat_no_chats_yet_title">收件箱为空。\n按“+”来开始新聊天。</string>
+    <!-- deprecated -->
     <string name="chat_no_chats_yet_hint">您可以与其他 Delta Chat 用户以及任意电子邮件地址聊天。</string>
     <string name="chat_all_archived">所有聊天已存档。\n按“+”来开始新聊天。</string>
     <string name="chat_share_with_title">分享给</string>
@@ -531,7 +532,7 @@
 
 
     <!-- welcome and login -->
-    <!-- Primary button on the welcome screen, allows to create an instant account -->
+    <!-- Primary button on the welcome screen, allows to create an instant profile -->
     <string name="onboarding_create_instant_account">让我们开始吧！</string>
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup", "Manual Login"  -->
     <string name="onboarding_alternative_logins">我已经有登录凭据了</string>
@@ -556,9 +557,12 @@
     <!-- Question shown when group's QR code is scanned from onboarding screen -->
     <string name="instant_onboarding_confirm_group">你想新建个人资料并加入 \"%1$s\" 聊天群吗？</string>
 
+    <string name="welcome_chat_over_email">安全的去中心化聊天</string>
     <string name="scan_invitation_code">扫描邀请码</string>
     <string name="login_title">登录</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">登录您的电子邮件账户</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_explain">使用现有电子邮件帐户登录</string>
     <string name="login_subheader">对于已知的电子邮件提供商，附加设置会被自动设置。有时 IMAP 需要在网页版设置里启用。 请咨询您的电子邮件提供商或朋友来寻求帮助。</string>
     <string name="login_no_servers_hint">不存在 Delta Chat 服务器，您的数据保留于您的设备！</string>
@@ -624,6 +628,7 @@
     <string name="pref_profile_photo">个人资料图片</string>
     <string name="pref_blocked_contacts">已屏蔽的联系人</string>
     <string name="blocked_empty_hint">被您屏蔽的联系人将显示于此。</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_password_and_account_settings">密码和账户</string>
     <string name="pref_who_can_see_profile_explain">在与其他用户交流时，您的个人资料图片和名称将与您的消息一起发送。</string>
     <string name="pref_your_name">您的名称</string>
@@ -683,9 +688,9 @@
     <string name="pref_backup">备份</string>
     <string name="pref_backup_explain">将聊天备份至外部存储</string>
     <string name="pref_backup_export_explain">备份可帮助您在此设备或另一台设备上设置全新安装的本应用。\n\n备份将包含所有消息、联系人、聊天以及端到端的 Autocrypt 设置。请将备份文件保存在安全的地方，或尽快将其删除。</string>
-    <!-- the placeholder will be replaced by the name of the account's email address -->
+    <!-- the placeholder will be replaced by the name of the profile's email address -->
     <string name="pref_backup_export_x">导出 %1$s</string>
-    <!-- the placeholder will be replaced by the number of accounts to export; the number is always larger than 1 -->
+    <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">导出全部 %1$d 个账户</string>
     <string name="pref_backup_export_start_button">开始备份</string>
     <string name="pref_backup_written_to_x">备份已成功写入到“%1$s”。</string>
@@ -704,6 +709,7 @@
     <string name="pref_imap_folder_warn_disable_defaults">若要更改此选项，请您务必调整服务器以及其他客户端的相应设置。\n\n否则软件可能无法正常工作。</string>
     <string name="pref_watch_sent_folder">监视已发送文件夹</string>
     <string name="pref_send_copy_to_self">给自己发送副本</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_send_copy_to_self_explain">在多台设备上使用此账户时，这是必需的。</string>
     <string name="pref_auto_folder_moves">自动移动至 DeltaChat 文件夹</string>
     <string name="pref_auto_folder_moves_explain">移动聊天对话以免弄乱收件箱</string>
@@ -934,10 +940,11 @@
     <string name="set_name_and_avatar_explain">设置一个你的联系人认得出的名字。你还可以设置头像图片</string>
     <string name="please_enter_name">请输入名字</string>
     <string name="qraccount_qr_code_cannot_be_used">无法使用扫描到的二维码建立新账户。</string>
+    <!-- deprecated -->
     <string name="qraccount_use_on_new_install">扫描到的二维码是用于设置新帐户的。设置新的 Delta Chat 安装时，您可以扫描此二维码。</string>
-    <!-- the placeholder will be replaced by the e-mail address of the account -->
+    <!-- the placeholder will be replaced by the e-mail address of the profile -->
     <string name="qrlogin_ask_login">登录 \"%1$s\"吗？</string>
-    <!-- the placeholder will be replaced by the e-mail address of the account -->
+    <!-- the placeholder will be replaced by the e-mail address of the profile -->
     <string name="qrlogin_ask_login_another">登录“%1$s“吗？\n\n你现有的账户不会被删除。使用“切换账户”来在不同账户间进行切换。</string>
     <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s 邀请你加入此群组。\n\n等待 %2$s 的设备回复…</string>
@@ -1035,12 +1042,13 @@
     <string name="export_backup_desktop">导出备份</string>
     <string name="autocrypt_correct_desktop">Autocrypt 设置已传输 。</string>
     <string name="forget_login_confirmation_desktop">删除此登录？ 一切都将被删除，包括您的端到端设置、联系人、聊天、消息及媒体。 此操作无法撤消。</string>
+    <!-- deprecated -->
     <string name="account_info_hover_tooltip_desktop2">电子邮件：%1$s\n大小：%2$s\n账户 Id：%3$s</string>
     <string name="message_detail_sent_desktop">发送于</string>
     <string name="message_detail_received_desktop">接收于</string>
     <string name="menu.view.developer.open.log.folder">打开日志文件夹</string>
     <string name="menu.view.developer.open.current.log.file">打开当前日志文件</string>
-    <string name="explain_desktop_minimized_disabled_tray_pref">在 Delta Chat 带 --minimized 参数启动时，无法禁用托盘图标。</string>
+    <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">在 Delta Chat 带 --minimized 参数启动时，无法禁用托盘图标。</string>
     <string name="no_spellcheck_suggestions_found">未找到拼写建议</string>
     <string name="show_window">显示窗口</string>
     <string name="login_socks5_experimental_warning">SOCKS5 支持目前还处于试验阶段。请自行承担使用风险。如果您在电子邮件字段中输入一个地址，会有不流经 SOCKS5 隧道的 DNS 查找流量。</string>

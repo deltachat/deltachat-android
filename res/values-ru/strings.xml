@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
@@ -421,6 +421,7 @@
     <string name="chat_record_slide_to_cancel">Сдвиньте для отмены</string>
     <string name="chat_record_explain">Нажмите и удерживайте для записи голосового сообщения, отпустите для отправки</string>
     <string name="chat_no_chats_yet_title">Пустой ящик.\nНажмите на \"+\" для начала нового чата.</string>
+    <!-- deprecated -->
     <string name="chat_no_chats_yet_hint">Вы можете общаться с другими пользователями Delta Chat и с любым адресом электронной почты.</string>
     <string name="chat_all_archived">Все чаты заархивированы.\nНажмите на \"+\" для начала нового чата.</string>
     <string name="chat_share_with_title">Поделиться с</string>
@@ -576,7 +577,7 @@
 
 
     <!-- welcome and login -->
-    <!-- Primary button on the welcome screen, allows to create an instant account -->
+    <!-- Primary button on the welcome screen, allows to create an instant profile -->
     <string name="onboarding_create_instant_account">Давайте начнём!</string>
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup", "Manual Login"  -->
     <string name="onboarding_alternative_logins">У меня уже есть логин</string>
@@ -603,7 +604,9 @@
 
     <string name="scan_invitation_code">Сканировать код приглашения</string>
     <string name="login_title">Логин</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">Войти в ваш имэйл-аккаунт</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_explain">Войти с существующим аккаунтом эл.почты</string>
     <string name="login_subheader">Для известных почтовых систем, дополнительные настройки устанавливаются автоматически. Иногда для IMAP требуется разрешение в веб-интерфейсе. Проконсультируйтесь с технической поддержкой вашей почтовой службы или друзьями, для получения помощи.</string>
     <string name="login_no_servers_hint">У Delta Chat нет собственных серверов, ваши данные остаются только на вашем устройстве!</string>
@@ -669,6 +672,7 @@
     <string name="pref_profile_photo">Изображение профиля</string>
     <string name="pref_blocked_contacts">Заблокированные контакты</string>
     <string name="blocked_empty_hint">Если вы заблокируете контакты, они будут показаны здесь.</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_password_and_account_settings">Пароль и аккаунт</string>
     <string name="pref_who_can_see_profile_explain">Изображение профиля, имя и подпись будут отправлены вместе с сообщениями при общении с другими пользователями.</string>
     <string name="pref_your_name">Ваше имя</string>
@@ -728,9 +732,9 @@
     <string name="pref_backup">Резервное копирование</string>
     <string name="pref_backup_explain">Сохранить чаты на внешний носитель</string>
     <string name="pref_backup_export_explain">Резервное копирование позволяет восстанавливать предыдущие настройки приложения во время новой установки на этом или другом устройстве.\n\nРезервная копия содержит все сообщения, контакты и чаты, а также параметры сквозного шифрования Autocrypt.  После того, как резервная копия будет создана, как можно скорее перенесите её в надёжное место.</string>
-    <!-- the placeholder will be replaced by the name of the account's email address -->
+    <!-- the placeholder will be replaced by the name of the profile's email address -->
     <string name="pref_backup_export_x">Экспортировать %1$s</string>
-    <!-- the placeholder will be replaced by the number of accounts to export; the number is always larger than 1 -->
+    <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Экспортировать все %1$d аккаунтов</string>
     <string name="pref_backup_export_start_button">Начать резервное копирование</string>
     <string name="pref_backup_written_to_x">Резервная копия успешно записана на %1$s</string>
@@ -749,6 +753,7 @@
     <string name="pref_imap_folder_warn_disable_defaults">При отключении этого параметра убедитесь, что сервер и ваши другие приложения для работы с электронной почтой настроены таким же образом.\n\nВ противном случае, всё может перестать работать.</string>
     <string name="pref_watch_sent_folder">Следить за папкой Исходящие</string>
     <string name="pref_send_copy_to_self">Отправлять копию себе</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_send_copy_to_self_explain">Требуется при использовании этого аккаунта на нескольких устройствах.</string>
     <string name="pref_auto_folder_moves">Автоматически Перемещать в папку DeltaChat</string>
     <string name="pref_auto_folder_moves_explain">Сообщения чатов переносятся, чтобы избежать путаницы в папке «Входящие»</string>
@@ -979,10 +984,11 @@
     <string name="set_name_and_avatar_explain">Укажите имя, под которым вас будут видеть ваши контакты. Также можно установить изображение профиля.</string>
     <string name="please_enter_name">Введите имя.</string>
     <string name="qraccount_qr_code_cannot_be_used">Отсканированный QR-код не может быть использован для создания нового аккаунта.</string>
+    <!-- deprecated -->
     <string name="qraccount_use_on_new_install">Отсканированный QR-код предназначен для создания нового аккаунта. Вы можете отсканировать QR-код при установке Delta Chat.</string>
-    <!-- the placeholder will be replaced by the e-mail address of the account -->
+    <!-- the placeholder will be replaced by the e-mail address of the profile -->
     <string name="qrlogin_ask_login">Войти в «%1$s»?</string>
-    <!-- the placeholder will be replaced by the e-mail address of the account -->
+    <!-- the placeholder will be replaced by the e-mail address of the profile -->
     <string name="qrlogin_ask_login_another">Войти в «%1$s»?\n\nВаш существующий аккаунт не будет удален. Используйте пункт «Сменить аккаунт» чтобы переключаться между аккаунтами.</string>
     <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s пригласил вас в группу.\n\nОжидаем ответа от %2$s…</string>
@@ -1078,12 +1084,13 @@
     <string name="export_backup_desktop">Экспорт резервной копии</string>
     <string name="autocrypt_correct_desktop">Настройки Autocrypt успешно переданы!</string>
     <string name="forget_login_confirmation_desktop">Удалить эту учётную запись? Все данные будут удалены, включая настройки сквозного шифрования, контакты, чаты, сообщения и медиа файлы. Это действие нельзя будет отменить.</string>
+    <!-- deprecated -->
     <string name="account_info_hover_tooltip_desktop2">Эл.почта: %1$s\nРазмер: %2$s\nПуть: %3$s</string>
     <string name="message_detail_sent_desktop">Отправлено</string>
     <string name="message_detail_received_desktop">получено</string>
     <string name="menu.view.developer.open.log.folder">Открыть папку журналов</string>
     <string name="menu.view.developer.open.current.log.file">Открыть текущий файл журнала</string>
-    <string name="explain_desktop_minimized_disabled_tray_pref">Значок в трее нельзя отключить, так как Delta Chat был запущен с параметром --свернуть</string>
+    <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Значок в трее нельзя отключить, так как Delta Chat был запущен с параметром --свернуть</string>
     <string name="no_spellcheck_suggestions_found">Предложений по правописанию не найдено. </string>
     <string name="show_window">Показать Окно</string>
     <string name="login_socks5_experimental_warning">Поддержка SOCKS5 в настоящее время экспериментальная. Используйте на свой риск. Если вы введете адрес электронной почты, DNS-запросы, которые не туннелируются через SOCKS5, не будут произведены.</string>

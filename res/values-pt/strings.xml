@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
@@ -205,6 +205,7 @@
     <string name="profile_encryption">Encriptação</string>
     <string name="media_preview">Visualização de mídia</string>
     <string name="login_title">Login</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">Login no seu servidor</string>
     <string name="login_subheader">Para os provedores de e-mail conhecidos as configurações adicionais são configuradas automaticamente. Por vezes, o IMAP precisa estar activado no frontend da web. Consulte seu provedor de e-mail ou amigos para obter ajuda.</string>
     <string name="login_inbox">Caixa de entrada</string>

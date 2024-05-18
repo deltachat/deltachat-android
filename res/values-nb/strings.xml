@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
@@ -257,6 +257,7 @@
     <string name="chat_record_slide_to_cancel">Dra for å avbryte</string>
     <string name="chat_record_explain">Trykk og hold for å ta opp en melding, slipp for å sende</string>
     <string name="chat_no_chats_yet_title">Tøm innboksen.\nTrykk \"+\" for å starte en ny chat.</string>
+    <!-- deprecated -->
     <string name="chat_no_chats_yet_hint">Du kan chatte med andre Delta Chat-brukere og med hvilken som helst annen e-postadresse.</string>
     <string name="chat_all_archived">Alle chatter er arkivert\nTrykk \"+\" for å starte en ny chat.</string>
     <string name="chat_share_with_title">Del med</string>
@@ -300,6 +301,7 @@
     <string name="pref_profile_info_headline">Din profilinfo</string>
     <string name="pref_profile_photo">Profilbilde</string>
     <string name="pref_blocked_contacts">Blokkerte kontakter</string>
+    <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_password_and_account_settings">Kontoinnstillinger</string>
     <string name="pref_your_name">Mitt navn</string>
     <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
