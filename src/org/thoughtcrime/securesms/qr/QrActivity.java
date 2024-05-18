@@ -110,11 +110,7 @@ public class QrActivity extends BaseActionBarActivity {
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
       menu.clear();
-      if(tabLayout.getSelectedTabPosition() == TAB_SHOW) {
-        getMenuInflater().inflate(R.menu.qr_show, menu);
-      } else {
-        getMenuInflater().inflate(R.menu.qr_scan, menu);
-      }
+      getMenuInflater().inflate(R.menu.qr_show, menu);
       return super.onPrepareOptionsMenu(menu);
     }
 

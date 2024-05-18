@@ -11,6 +11,14 @@
           android:id="@+id/copy"
           app:showAsAction="never"/>
 
+    <item android:title="@string/paste_from_clipboard"
+          android:id="@+id/paste"
+          app:showAsAction="never"/>
+
+    <item android:title="@string/load_qr_code_as_image"
+          android:id="@+id/load_from_image"
+          app:showAsAction="never"/>
+
     <item android:title="@string/withdraw_qr_code"
           android:id="@+id/withdraw"
           app:showAsAction="never"/>
