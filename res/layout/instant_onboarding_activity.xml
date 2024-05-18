@@ -71,24 +71,17 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="16dp"
         android:text="@string/instant_onboarding_create"/>
 
-    <androidx.legacy.widget.Space
-        android:layout_weight="2"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"/>
-
-    <TextView
+    <Button
+        style="@style/ButtonSecondary"
         android:id="@+id/other_options_button"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="start"
-        android:layout_marginBottom="16dp"
-        android:padding="16dp"
-        android:text="@string/instant_onboarding_show_more_instances"
-        android:textColor="@color/delta_accent"
-        android:textSize="16sp"/>
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:layout_margin="16dp"
+        android:text="@string/instant_onboarding_show_more_instances" />
 
   </LinearLayout>
 

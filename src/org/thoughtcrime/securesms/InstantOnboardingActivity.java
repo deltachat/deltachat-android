@@ -265,7 +265,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
 
     signUpBtn.setOnClickListener(view -> createProfile());
 
-    TextView otherOptionsBtn = findViewById(R.id.other_options_button);
+    Button otherOptionsBtn = findViewById(R.id.other_options_button);
     otherOptionsBtn.setOnClickListener(view -> showOtherOptionsDialog());
   }
 
