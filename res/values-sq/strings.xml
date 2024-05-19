@@ -547,20 +547,16 @@
     <!-- welcome and login -->
     <!-- Primary button on the welcome screen, allows to create an instant profile -->
     <string name="onboarding_create_instant_account">Le T’ia Fillojmë!</string>
-    <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup", "Manual Login"  -->
+    <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
     <string name="onboarding_alternative_logins">Kam Krendenciale Tashmë</string>
-    <!-- Button, allows to log in to existing email accounts, setting ports, passwords and so on -->
-    <string name="manual_account_setup_option">Hyrje Dorazi</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Profili Juaj</string>
-    <!-- This is a link to the default Privacy Policy -->
+    <!-- deprecated -->
     <string name="instant_onboarding_agree_default">Lexoni Rregullat e Privatësisë</string>
     <!-- The placeholder will be replaced by instance name, the whole text will link to the instance page -->
     <string name="instant_onboarding_agree_instance">Rreth profilesh në %1$s</string>
     <!-- Confirmation button on the instant onboarding screen -->
     <string name="instant_onboarding_create">Pranojeni &amp; Krijoni Profil</string>
-    <!-- Secondary, link-like button to open a page with other possible instances -->
-    <string name="instant_onboarding_show_more_instances">Eksploroni Mundësi të Tjera</string>
     <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group name -->
     <string name="instant_onboarding_group_info">Krijoni një profil, që të merrni pjesë te grupi “%1$s”.</string>
     <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by contact name and/or address -->
@@ -570,6 +566,7 @@
     <!-- Question shown when group's QR code is scanned from onboarding screen -->
     <string name="instant_onboarding_confirm_group">Doni të krijohet një profil i ri dhe të hyhet te grupi “%1$s” i fjalosjeve?</string>
 
+    <string name="welcome_chat_over_email">Fjalosje e Decentralizuar, e Parrezik</string>
     <string name="scan_invitation_code">Skanoni Kod Ftese</string>
     <string name="login_title">Hyni</string>
     <!-- for classic email, we use the classical term "Account" -->
