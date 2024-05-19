@@ -1,8 +1,20 @@
 package org.thoughtcrime.securesms.attachments;
 
+import android.content.Context;
 import android.net.Uri;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.mms.PartAuthority;
+import org.thoughtcrime.securesms.util.MediaUtil;
+import org.thoughtcrime.securesms.util.Util;
+
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public abstract class Attachment {
 
@@ -87,5 +99,36 @@ public abstract class Attachment {
 
   public int getHeight() {
     return height;
+  }
+
+  public String getRealPath(Context context) {
+    try {
+      // get file in the blobdir as `<blobdir>/<name>[-<uniqueNumber>].<ext>`
+      String filename = getFileName();
+      String ext = "";
+      if(filename==null) {
+        filename = new SimpleDateFormat("yyyy-MM-dd-HH-mm").format(new Date());
+        ext = "." + MediaUtil.getExtensionFromMimeType(getContentType());
+      }
+      else {
+        int i = filename.lastIndexOf(".");
+        if(i>=0) {
+          ext = filename.substring(i);
+          filename = filename.substring(0, i);
+        }
+      }
+      String path = DcHelper.getBlobdirFile(DcHelper.getContext(context), filename, ext);
+
+      // copy content to this file
+        InputStream inputStream = PartAuthority.getAttachmentStream(context, getDataUri());
+        OutputStream outputStream = new FileOutputStream(path);
+        Util.copy(inputStream, outputStream);
+
+        return path;
+    }
+    catch(Exception e) {
+      e.printStackTrace();
+      return null;
+    }
   }
 }

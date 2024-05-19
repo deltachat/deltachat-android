@@ -20,6 +20,7 @@ public class DcMsg {
     public final static int DC_MSG_FILE = 60;
     public final static int DC_MSG_VIDEOCHAT_INVITATION = 70;
     public final static int DC_MSG_WEBXDC = 80;
+    public final static int DC_MSG_VCARD = 90;
 
     public final static int DC_INFO_UNKNOWN                   = 0;
     public final static int DC_INFO_GROUP_NAME_CHANGED        = 2;

@@ -24,17 +24,21 @@ public class GeneratedContactPhoto implements FallbackContactPhoto {
 
   @Override
   public Drawable asDrawable(Context context, int color) {
+    return asDrawable(context, color, true);
+  }
+
+  public Drawable asDrawable(Context context, int color, boolean roundShape) {
     int targetSize = context.getResources().getDimensionPixelSize(R.dimen.contact_photo_target_size);
 
-    return TextDrawable.builder()
-                       .beginConfig()
-                       .width(targetSize)
-                       .height(targetSize)
-                       .textColor(Color.WHITE)
-                       .bold()
-                       .toUpperCase()
-                       .endConfig()
-                       .buildRound(getCharacter(name), color);
+    TextDrawable.IShapeBuilder builder = TextDrawable.builder()
+      .beginConfig()
+      .width(targetSize)
+      .height(targetSize)
+      .textColor(Color.WHITE)
+      .bold()
+      .toUpperCase()
+      .endConfig();
+    return roundShape? builder.buildRound(getCharacter(name), color) : builder.buildRect(getCharacter(name), color);
   }
 
   private String getCharacter(String name) {

@@ -32,16 +32,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.DimenRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcMsg;
 import com.b44t.messenger.rpc.Reactions;
 import com.b44t.messenger.rpc.RpcException;
+import com.b44t.messenger.rpc.VcardContact;
 
 import org.thoughtcrime.securesms.audio.AudioSlidePlayer;
 import org.thoughtcrime.securesms.components.AudioView;
@@ -51,6 +54,7 @@ import org.thoughtcrime.securesms.components.ConversationItemFooter;
 import org.thoughtcrime.securesms.components.ConversationItemThumbnail;
 import org.thoughtcrime.securesms.components.DocumentView;
 import org.thoughtcrime.securesms.components.QuoteView;
+import org.thoughtcrime.securesms.components.VcardView;
 import org.thoughtcrime.securesms.components.WebxdcView;
 import org.thoughtcrime.securesms.components.emoji.EmojiTextView;
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -62,6 +66,7 @@ import org.thoughtcrime.securesms.mms.Slide;
 import org.thoughtcrime.securesms.mms.SlideClickListener;
 import org.thoughtcrime.securesms.mms.SlideDeck;
 import org.thoughtcrime.securesms.mms.StickerSlide;
+import org.thoughtcrime.securesms.mms.VcardSlide;
 import org.thoughtcrime.securesms.reactions.ReactionsConversationView;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.LongClickMovementMethod;
@@ -71,6 +76,7 @@ import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.views.Stub;
 
+import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 
@@ -113,6 +119,7 @@ public class ConversationItem extends BaseConversationItem
   private @NonNull  Stub<DocumentView>              documentViewStub;
   private @NonNull  Stub<WebxdcView>                webxdcViewStub;
   private           Stub<BorderlessImageView>       stickerStub;
+  private           Stub<VcardView>                 vcardViewStub;
   private @Nullable EventListener                   eventListener;
 
   private int measureCalls;
@@ -146,6 +153,7 @@ public class ConversationItem extends BaseConversationItem
     this.documentViewStub        = new Stub<>(findViewById(R.id.document_view_stub));
     this.webxdcViewStub          = new Stub<>(findViewById(R.id.webxdc_view_stub));
     this.stickerStub             = new Stub<>(findViewById(R.id.sticker_view_stub));
+    this.vcardViewStub           = new Stub<>(findViewById(R.id.vcard_view_stub));
     this.groupSenderHolder       =            findViewById(R.id.group_sender_holder);
     this.quoteView               =            findViewById(R.id.quote_view);
     this.container               =            findViewById(R.id.container);
@@ -301,6 +309,11 @@ public class ConversationItem extends BaseConversationItem
       webxdcViewStub.get().setFocusable(!shouldInterceptClicks(messageRecord) && batchSelected.isEmpty());
       webxdcViewStub.get().setClickable(batchSelected.isEmpty());
     }
+
+    if (vcardViewStub.resolved()) {
+      vcardViewStub.get().setFocusable(!shouldInterceptClicks(messageRecord) && batchSelected.isEmpty());
+      vcardViewStub.get().setClickable(batchSelected.isEmpty());
+    }
   }
 
   private void setContentDescription() {
@@ -315,6 +328,8 @@ public class ConversationItem extends BaseConversationItem
       desc += documentViewStub.get().getDescription() + "\n";
     } else if (webxdcViewStub.resolved() && webxdcViewStub.get().getVisibility() == View.VISIBLE) {
       desc += webxdcViewStub.get().getDescription() + "\n";
+    } else if (vcardViewStub.resolved() && vcardViewStub.get().getVisibility() == View.VISIBLE) {
+      desc += vcardViewStub.get().getDescription() + "\n";
     } else if (mediaThumbnailStub.resolved() && mediaThumbnailStub.get().getVisibility() == View.VISIBLE) {
       desc += mediaThumbnailStub.get().getDescription() + "\n";
     } else if (stickerStub.resolved() && stickerStub.get().getVisibility() == View.VISIBLE) {
@@ -360,6 +375,10 @@ public class ConversationItem extends BaseConversationItem
 
   private boolean hasWebxdc(DcMsg dcMsg) {
     return dcMsg.getType()==DcMsg.DC_MSG_WEBXDC;
+  }
+
+  private boolean hasVcard(DcMsg dcMsg) {
+    return dcMsg.getType()==DcMsg.DC_MSG_VCARD;
   }
 
   private boolean hasDocument(DcMsg dcMsg) {
@@ -463,6 +482,7 @@ public class ConversationItem extends BaseConversationItem
       if (documentViewStub.resolved())   documentViewStub.get().setVisibility(View.GONE);
       if (webxdcViewStub.resolved())     webxdcViewStub.get().setVisibility(View.GONE);
       if (stickerStub.resolved())        stickerStub.get().setVisibility(View.GONE);
+      if (vcardViewStub.resolved())      vcardViewStub.get().setVisibility(View.GONE);
 
       //noinspection ConstantConditions
       int duration = messageRecord.getDuration();
@@ -489,6 +509,7 @@ public class ConversationItem extends BaseConversationItem
       if (audioViewStub.resolved())      audioViewStub.get().setVisibility(View.GONE);
       if (webxdcViewStub.resolved())     webxdcViewStub.get().setVisibility(View.GONE);
       if (stickerStub.resolved())        stickerStub.get().setVisibility(View.GONE);
+      if (vcardViewStub.resolved())      vcardViewStub.get().setVisibility(View.GONE);
 
       //noinspection ConstantConditions
       documentViewStub.get().setDocument(new DocumentSlide(context, messageRecord));
@@ -508,6 +529,7 @@ public class ConversationItem extends BaseConversationItem
       if (audioViewStub.resolved())      audioViewStub.get().setVisibility(View.GONE);
       if (documentViewStub.resolved())   documentViewStub.get().setVisibility(View.GONE);
       if (stickerStub.resolved())        stickerStub.get().setVisibility(View.GONE);
+      if (vcardViewStub.resolved())      vcardViewStub.get().setVisibility(View.GONE);
 
       webxdcViewStub.get().setWebxdc(messageRecord, context.getString(R.string.webxdc_app));
       webxdcViewStub.get().setWebxdcClickListener(new ThumbnailClickListener());
@@ -520,12 +542,33 @@ public class ConversationItem extends BaseConversationItem
       ViewUtil.updateLayoutParams(groupSenderHolder, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
       footer.setVisibility(VISIBLE);
     }
+    else if (hasVcard(messageRecord)) {
+      vcardViewStub.get().setVisibility(View.VISIBLE);
+      if (mediaThumbnailStub.resolved()) mediaThumbnailStub.get().setVisibility(View.GONE);
+      if (audioViewStub.resolved())      audioViewStub.get().setVisibility(View.GONE);
+      if (documentViewStub.resolved())   documentViewStub.get().setVisibility(View.GONE);
+      if (webxdcViewStub.resolved())     webxdcViewStub.get().setVisibility(View.GONE);
+      if (stickerStub.resolved())        stickerStub.get().setVisibility(View.GONE);
+
+      vcardViewStub.get().setVcard(glideRequests, new VcardSlide(context, messageRecord), rpc);
+      vcardViewStub.get().setVcardClickListener(new ThumbnailClickListener());
+      vcardViewStub.get().setOnLongClickListener(passthroughClickListener);
+
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+        vcardViewStub.get().setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS);
+      }
+
+      ViewUtil.updateLayoutParams(bodyText, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+      ViewUtil.updateLayoutParams(groupSenderHolder, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+      footer.setVisibility(VISIBLE);
+    }
     else if (hasThumbnail(messageRecord)) {
       mediaThumbnailStub.get().setVisibility(View.VISIBLE);
       if (audioViewStub.resolved())    audioViewStub.get().setVisibility(View.GONE);
       if (documentViewStub.resolved()) documentViewStub.get().setVisibility(View.GONE);
       if (webxdcViewStub.resolved())   webxdcViewStub.get().setVisibility(View.GONE);
       if (stickerStub.resolved())        stickerStub.get().setVisibility(View.GONE);
+      if (vcardViewStub.resolved())      vcardViewStub.get().setVisibility(View.GONE);
 
       Slide slide = MediaUtil.getSlideForMsg(context, messageRecord);
 
@@ -566,6 +609,7 @@ public class ConversationItem extends BaseConversationItem
       if (documentViewStub.resolved())   documentViewStub.get().setVisibility(View.GONE);
       if (webxdcViewStub.resolved())     webxdcViewStub.get().setVisibility(View.GONE);
       if (mediaThumbnailStub.resolved()) mediaThumbnailStub.get().setVisibility(View.GONE);
+      if (vcardViewStub.resolved())      vcardViewStub.get().setVisibility(View.GONE);
 
       bodyBubble.setBackgroundColor(Color.TRANSPARENT);
 
@@ -587,6 +631,7 @@ public class ConversationItem extends BaseConversationItem
       if (audioViewStub.resolved())      audioViewStub.get().setVisibility(View.GONE);
       if (documentViewStub.resolved())   documentViewStub.get().setVisibility(View.GONE);
       if (webxdcViewStub.resolved())     webxdcViewStub.get().setVisibility(View.GONE);
+      if (vcardViewStub.resolved())      vcardViewStub.get().setVisibility(View.GONE);
 
       ViewUtil.updateLayoutParams(bodyText, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
       ViewUtil.updateLayoutParams(groupSenderHolder, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -839,6 +884,7 @@ public class ConversationItem extends BaseConversationItem
     else if (audioViewStub.resolved())    audioViewStub.get().togglePlay();
     else if (documentViewStub.resolved()) documentViewStub.get().performClick();
     else if (webxdcViewStub.resolved())   webxdcViewStub.get().performClick();
+    else if (vcardViewStub.resolved())    vcardViewStub.get().performClick();
   }
 
   /// Event handlers
@@ -847,8 +893,37 @@ public class ConversationItem extends BaseConversationItem
     public void onClick(final View v, final Slide slide) {
       if (shouldInterceptClicks(messageRecord) || !batchSelected.isEmpty()) {
         performClick();
-      } else if (messageRecord.getType() == DcMsg.DC_MSG_WEBXDC) {
+      } else if (slide.isWebxdcDocument()) {
         WebxdcActivity.openWebxdcActivity(context, messageRecord);
+      } else if (slide.isVcard()) {
+        try {
+          String path = slide.asAttachment().getRealPath(context);
+          VcardContact vcardContact = rpc.parseVcard(path).get(0);
+          new AlertDialog.Builder(context)
+            .setMessage(context.getString(R.string.ask_start_chat_with, vcardContact.getDisplayName()))
+            .setPositiveButton(android.R.string.ok, (dialog, which) -> {
+                try {
+                  List<Integer> contactIds = rpc.importVcard(dcContext.getAccountId(), path);
+                  if (contactIds.size() > 0) {
+                    int chatId = dcContext.createChatByContactId(contactIds.get(0));
+                    if (chatId != 0) {
+                      Intent intent = new Intent(context, ConversationActivity.class);
+                      intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
+                      context.startActivity(intent);
+                      return;
+                    }
+                  }
+                } catch (RpcException e) {
+                  Log.e(TAG, "failed to import vCard", e);
+                }
+                Toast.makeText(context, context.getResources().getString(R.string.error), Toast.LENGTH_SHORT).show();
+            })
+            .setNegativeButton(R.string.cancel, null)
+            .show();
+        } catch (RpcException e) {
+          Log.e(TAG, "failed to parse vCard", e);
+          Toast.makeText(context, context.getResources().getString(R.string.error), Toast.LENGTH_SHORT).show();
+        }
       } else if (MediaPreviewActivity.isTypeSupported(slide) && slide.getUri() != null) {
         Intent intent = new Intent(context, MediaPreviewActivity.class);
         intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);

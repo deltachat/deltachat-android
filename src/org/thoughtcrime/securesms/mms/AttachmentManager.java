@@ -41,12 +41,12 @@ import androidx.appcompat.app.AlertDialog;
 
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMsg;
+import com.b44t.messenger.rpc.RpcException;
 import com.b44t.messenger.util.concurrent.ListenableFuture;
 import com.b44t.messenger.util.concurrent.ListenableFuture.Listener;
 import com.b44t.messenger.util.concurrent.SettableFuture;
 
 import org.thoughtcrime.securesms.ApplicationContext;
-import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.MediaPreviewActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.ShareLocationDialog;
@@ -58,6 +58,7 @@ import org.thoughtcrime.securesms.components.AudioView;
 import org.thoughtcrime.securesms.components.DocumentView;
 import org.thoughtcrime.securesms.components.RemovableEditableMediaView;
 import org.thoughtcrime.securesms.components.ThumbnailView;
+import org.thoughtcrime.securesms.components.VcardView;
 import org.thoughtcrime.securesms.components.WebxdcView;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.AttachmentDatabase;
@@ -93,6 +94,7 @@ public class AttachmentManager {
   private AudioView                  audioView;
   private DocumentView               documentView;
   private WebxdcView                 webxdcView;
+  private VcardView                  vcardView;
   //private SignalMapView              mapView;
 
   private final @NonNull  List<Uri>       garbage = new LinkedList<>();
@@ -116,6 +118,7 @@ public class AttachmentManager {
       this.audioView          = ViewUtil.findById(root, R.id.attachment_audio);
       this.documentView       = ViewUtil.findById(root, R.id.attachment_document);
       this.webxdcView         = ViewUtil.findById(root, R.id.attachment_webxdc);
+      this.vcardView          = ViewUtil.findById(root, R.id.attachment_vcard);
       //this.mapView            = ViewUtil.findById(root, R.id.attachment_location);
       this.removableMediaView = ViewUtil.findById(root, R.id.removable_media_view);
 
@@ -126,6 +129,7 @@ public class AttachmentManager {
       audioView.getBackground().setColorFilter(incomingBubbleColor, PorterDuff.Mode.MULTIPLY);
       documentView.getBackground().setColorFilter(incomingBubbleColor, PorterDuff.Mode.MULTIPLY);
       webxdcView.getBackground().setColorFilter(incomingBubbleColor, PorterDuff.Mode.MULTIPLY);
+      vcardView.getBackground().setColorFilter(incomingBubbleColor, PorterDuff.Mode.MULTIPLY);
     }
 
   }
@@ -308,6 +312,9 @@ public class AttachmentManager {
             audioView.setAudio((AudioSlide) slide, 0);
             removableMediaView.display(audioView, false);
             result.set(true);
+          } else if (slide.isVcard()) {
+              vcardView.setVcard(glideRequests, (VcardSlide)slide, DcHelper.getRpc(context));
+              removableMediaView.display(vcardView, false);
           } else if (slide.hasDocument()) {
             if (slide.isWebxdcDocument()) {
               DcMsg instance = msg != null ? msg : DcHelper.getContext(context).getMsg(slide.dcMsgId);
@@ -685,13 +692,25 @@ public class AttachmentManager {
           DcContext dcContext = DcHelper.getContext(context);
           DcMsg msg = new DcMsg(dcContext, DcMsg.DC_MSG_WEBXDC);
           Attachment attachment = new UriAttachment(uri, null, MediaUtil.WEBXDC, AttachmentDatabase.TRANSFER_PROGRESS_STARTED, 0, 0, 0, fileName, null, false);
-          String path = ConversationActivity.getRealPathFromAttachment(context, attachment);
+          String path = attachment.getRealPath(context);
           msg.setFile(path, MediaUtil.WEBXDC);
           dcContext.setDraft(chatId, msg);
           return new DocumentSlide(context, msg);
-        } else {
-          return new DocumentSlide(context, uri, mimeType, dataSize, fileName);
         }
+
+        if (mimeType.equals(MediaUtil.VCARD) || (fileName != null && (fileName.endsWith(".vcf") || fileName.endsWith(".vcard")))) {
+          VcardSlide slide = new VcardSlide(context, uri, dataSize, fileName);
+          String path = slide.asAttachment().getRealPath(context);
+          try {
+            if (DcHelper.getRpc(context).parseVcard(path).size() == 1) {
+              return slide;
+            }
+          } catch (RpcException e) {
+            e.printStackTrace();
+          }
+        }
+
+        return new DocumentSlide(context, uri, mimeType, dataSize, fileName);
       default:       throw  new AssertionError("unrecognized enum");
       }
     }
