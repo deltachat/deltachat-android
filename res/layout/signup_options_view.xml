@@ -17,23 +17,32 @@
 
     <Button
         style="@style/ButtonSecondary"
-        android:id="@+id/add_as_second_device_button"
+        android:id="@+id/use_other_server"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="24dp"
         android:paddingRight="24dp"
         android:layout_marginBottom="16dp"
-        android:text="@string/multidevice_receiver_title"/>
+        android:text="@string/instant_onboarding_other_server"/>
 
     <Button
         style="@style/ButtonSecondary"
-        android:id="@+id/backup_button"
+        android:id="@+id/login_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="24dp"
         android:paddingRight="24dp"
         android:layout_marginBottom="16dp"
-        android:text="@string/import_backup_title"/>
+        android:text="@string/manual_account_setup_option"/>
+
+    <Button
+        style="@style/ButtonSecondary"
+        android:id="@+id/scan_qr_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        android:text="@string/scan_invitation_code"/>
 
   </LinearLayout>
 

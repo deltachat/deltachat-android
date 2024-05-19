@@ -83,10 +83,6 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
           startImportBackup();
           signInDialog.dismiss();
         });
-        view.findViewById(R.id.login_button).setOnClickListener((v) -> {
-          startRegistrationActivity();
-          signInDialog.dismiss();
-        });
 
         signUpButton.setOnClickListener((v) -> startInstantOnboardingActivity());
         signInButton.setOnClickListener((v) -> signInDialog.show());
@@ -157,11 +153,6 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
         Permissions.onRequestPermissionsResult(this, requestCode, permissions, grantResults);
-    }
-
-    private void startRegistrationActivity() {
-        Intent intent = new Intent(this, RegistrationActivity.class);
-        startActivity(intent);
     }
 
     private void startInstantOnboardingActivity() {

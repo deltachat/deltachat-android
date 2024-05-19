@@ -14,6 +14,7 @@ import android.text.TextUtils;
 import android.text.util.Linkify;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -90,7 +91,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
 
     setContentView(R.layout.instant_onboarding_activity);
 
-    Objects.requireNonNull(getSupportActionBar()).setTitle(R.string.instant_onboarding_title);
+    Objects.requireNonNull(getSupportActionBar()).setTitle(R.string.onboarding_create_instant_account);
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
     boolean fromWelcome  = getIntent().getBooleanExtra(FROM_WELCOME, false);
@@ -115,6 +116,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
     initializeResources();
     initializeProfileAvatar();
     handleIntent();
+    updateProvider();
   }
 
   @Override
@@ -264,10 +266,37 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
 
     signUpBtn.setOnClickListener(view -> createProfile());
 
-    TextView otherOptionsBtn = findViewById(R.id.other_options_button);
-    otherOptionsBtn.setOnClickListener(view -> WebViewActivity.openUrlInBrowser(this, INSTANCES_URL));
-    TextView scanQrBtn = findViewById(R.id.scan_qr_button);
-    scanQrBtn.setOnClickListener(view -> new IntentIntegrator(this).setCaptureActivity(RegistrationQrActivity.class).initiateScan());
+    Button otherOptionsBtn = findViewById(R.id.other_options_button);
+    otherOptionsBtn.setOnClickListener(view -> showOtherOptionsDialog());
+  }
+
+  private void showOtherOptionsDialog() {
+    View view = View.inflate(this, R.layout.signup_options_view, null);
+    AlertDialog signUpDialog = new AlertDialog.Builder(this)
+      .setView(view)
+      .setTitle(R.string.instant_onboarding_show_more_instances)
+      .setNegativeButton(R.string.cancel, null)
+      .create();
+
+    view.findViewById(R.id.use_other_server).setOnClickListener((v) -> {
+      WebViewActivity.openUrlInBrowser(this, INSTANCES_URL);
+      signUpDialog.dismiss();
+    });
+    view.findViewById(R.id.login_button).setOnClickListener((v) -> {
+      startRegistrationActivity();
+      signUpDialog.dismiss();
+    });
+    view.findViewById(R.id.scan_qr_button).setOnClickListener((v) -> {
+      new IntentIntegrator(this).setCaptureActivity(RegistrationQrActivity.class).initiateScan();
+      signUpDialog.dismiss();
+    });
+
+    signUpDialog.show();
+  }
+
+  private void startRegistrationActivity() {
+    Intent intent = new Intent(this, RegistrationActivity.class);
+    startActivity(intent);
   }
 
   private void updateProvider() {
@@ -279,7 +308,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
       signUpBtn.setText(R.string.instant_onboarding_create);
       privacyPolicyBtn.setTextColor(getResources().getColor(R.color.delta_accent));
       if (DEFAULT_CHATMAIL_HOST.equals(providerHost)) {
-        privacyPolicyBtn.setText(R.string.instant_onboarding_agree_default);
+        privacyPolicyBtn.setText(getString(R.string.instant_onboarding_agree_default2, providerHost));
       } else {
         privacyPolicyBtn.setText(getString(R.string.instant_onboarding_agree_instance, providerHost));
       }
