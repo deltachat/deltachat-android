@@ -127,6 +127,14 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
             + "For more changes worth testing see https://delta.chat/changelog");
         //}
         dcContext.addDeviceMsg(deviceMsgId, msg);
+
+        if (Prefs.getStringPreference(this, Prefs.LAST_DEVICE_MSG_ID, "").equals(deviceMsgId)) {
+          int deviceChatId = dcContext.getChatIdByContactId(DcContact.DC_CONTACT_ID_DEVICE);
+          if (deviceChatId != 0) {
+            dcContext.marknoticedChat(deviceChatId);
+          }
+        }
+        Prefs.setStringPreference(this, Prefs.LAST_DEVICE_MSG_ID, deviceMsgId);
       }
     } catch(Exception e) {
       e.printStackTrace();
