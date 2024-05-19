@@ -114,7 +114,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
     avatarChanged = false;
     registerForEvents();
     initializeResources();
-    initializeProfileAvatar();
+    initializeProfile();
     handleIntent();
     updateProvider();
   }
@@ -196,6 +196,24 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
     if (accountQr != null) {
       getIntent().removeExtra(QR_ACCOUNT_EXTRA);
       setProviderFromQr(accountQr);
+    }
+  }
+
+  @Override
+  protected void onPause() {
+    super.onPause();
+
+    final String displayName = name.getText().toString();
+    DcHelper.set(this, DcHelper.CONFIG_DISPLAY_NAME, TextUtils.isEmpty(displayName)? null : displayName);
+
+    if (avatarChanged) {
+      try {
+        AvatarHelper.setSelfAvatar(InstantOnboardingActivity.this, avatarBmp);
+        Prefs.setProfileAvatarId(InstantOnboardingActivity.this, new SecureRandom().nextInt());
+        avatarChanged = false;
+      } catch (IOException e) {
+        Log.e(TAG, "Failed to save avatar", e);
+      }
     }
   }
 
@@ -315,7 +333,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
     }
   }
 
-  private void initializeProfileAvatar() {
+  private void initializeProfile() {
     File avatarFile = AvatarHelper.getSelfAvatarFile(this);
     if (avatarFile.exists() && avatarFile.length() > 0) {
       imageLoaded = true;
@@ -327,6 +345,8 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
     avatar.setOnClickListener(view ->
       new AvatarSelector(this, LoaderManager.getInstance(this), new AvatarSelectedListener(), imageLoaded).show(this, avatar)
     );
+
+    name.setText(DcHelper.get(this, DcHelper.CONFIG_DISPLAY_NAME));
   }
 
   private void registerForEvents() {
