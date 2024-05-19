@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.view.MenuCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
@@ -30,6 +31,7 @@ import com.google.zxing.common.HybridBinarizer;
 
 import org.thoughtcrime.securesms.BaseActionBarActivity;
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.contacts.NewContactActivity;
 import org.thoughtcrime.securesms.mms.AttachmentManager;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
@@ -68,7 +70,7 @@ public class QrActivity extends BaseActionBarActivity {
 
         setSupportActionBar(ViewUtil.findById(this, R.id.toolbar));
         assert getSupportActionBar() != null;
-        getSupportActionBar().setTitle(R.string.qr_code);
+        getSupportActionBar().setTitle(R.string.menu_new_contact);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         int lastSelectedTab = PreferenceManager.getDefaultSharedPreferences(this).getInt("qrTab", TAB_SHOW);
@@ -110,11 +112,7 @@ public class QrActivity extends BaseActionBarActivity {
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
       menu.clear();
-      if(tabLayout.getSelectedTabPosition() == TAB_SHOW) {
-        getMenuInflater().inflate(R.menu.qr_show, menu);
-      } else {
-        getMenuInflater().inflate(R.menu.qr_scan, menu);
-      }
+      getMenuInflater().inflate(R.menu.qr_show, menu);
       return super.onPrepareOptionsMenu(menu);
     }
 
@@ -133,6 +131,9 @@ public class QrActivity extends BaseActionBarActivity {
             case android.R.id.home:
                 finish();
                 return true;
+            case R.id.new_classic_contact:
+                this.startActivity(new Intent(this, NewContactActivity.class));
+                break;
             case R.id.share:
                 qrShowFragment.shareInviteURL();
                 break;

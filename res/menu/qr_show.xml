@@ -7,8 +7,20 @@
           android:icon="@drawable/ic_share_white_24dp"
           app:showAsAction="ifRoom"/>
 
+    <item android:title="@string/menu_new_classic_contact"
+          android:id="@+id/new_classic_contact"
+          app:showAsAction="never"/>
+
     <item android:title="@string/menu_copy_to_clipboard"
           android:id="@+id/copy"
+          app:showAsAction="never"/>
+
+    <item android:title="@string/paste_from_clipboard"
+          android:id="@+id/paste"
+          app:showAsAction="never"/>
+
+    <item android:title="@string/load_qr_code_as_image"
+          android:id="@+id/load_from_image"
           app:showAsAction="never"/>
 
     <item android:title="@string/withdraw_qr_code"

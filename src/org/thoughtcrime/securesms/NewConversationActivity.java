@@ -72,7 +72,7 @@ public class NewConversationActivity extends ContactSelectionActivity {
               if (!textToShare.isEmpty()) {
                 getIntent().putExtra(TEXT_EXTRA, textToShare);
               }
-              onContactSelected(DcContact.DC_CONTACT_ID_NEW_CONTACT, recipientsArray[0]);
+              onContactSelected(DcContact.DC_CONTACT_ID_NEW_CLASSIC_CONTACT, recipientsArray[0]);
             } else {
               Intent shareIntent = new Intent(this, ShareActivity.class);
               shareIntent.putExtra(Intent.EXTRA_TEXT, textToShare);
