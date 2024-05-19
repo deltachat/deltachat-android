@@ -200,6 +200,7 @@
     <!-- menu labels (or icon, buttons...) -->
     <string name="menu_new_contact">New Contact</string>
     <string name="menu_new_classic_contact">Add Contact Manually</string>
+    <string name="new_classic_contact_explain">Manually added contacts can be used to text to classic e-mail and are not guaranteed end-to-end encrypted.</string>
     <string name="menu_new_chat">New Chat</string>
     <string name="menu_new_group">New Group</string>
     <string name="clone_chat">Clone Chat</string>
