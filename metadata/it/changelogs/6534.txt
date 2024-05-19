@@ -1,0 +1,6 @@
+* inizia con un tema chiaro/scuro a seconda del tema del sistema
+* corrette le icone di verifica per le chat individuali
+* corretti gli errori di recupero dovuti al rilevamento EOF errato nelle risposte IMAP lunghe
+* ulteriori correzioni di bug
+* aggiornate le traduzioni e aiuto locale
+* aggiornamento al core112.7

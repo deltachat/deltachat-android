@@ -1,0 +1,5 @@
+* usa l'editor immagini per la selezione dell'avatar quando possibile
+* migliora la schermata di caricamento in modalità oscura
+* aggiornamento "icona verificata"
+* aggiunta la traduzione di Luri Bakhtiari, aggiornate altre traduzioni
+* molte correzioni di bug

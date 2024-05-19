@@ -1,0 +1,19 @@
+Delta Chat è un'app di messaggistica completamente compatibile con 
+l'infrastruttura e-mail esistente.
+
+Quindi, con Delta Chat ottieni la facilità di messaggistica ben nota alla portata di
+e-mail. Inoltre, sei indipendente da altre società o servizi, come i tuoi
+dati non sono correlati a Delta Chat, qui non aggiungerai nemmeno nuove dipendenze.
+
+Alcune caratteristiche in breve:
+
+* Proteggi con la crittografia end-to-end automatica, che supporta il nuovo standard <a href="https://autocrypt.org">Autocrypt</a>
+* Veloce grazie all'uso di Push-IMAP
+* Base utenti più ampia -- è possibile raggiungere anche i destinatari che non utilizzano Delta Chat
+* Compatibile -- non solo con se stesso
+* Interfaccia utente elegante e semplice
+* Sistema distribuito
+* Nessuno Spam -- per impostazione predefinita vengono visualizzati solo i messaggi di utenti conosciuti
+* Affidabile -- sicuro per l'uso professionale
+* Affidabile -- può essere utilizzato anche per messaggi aziendali
+* Completamente OpenSource e basato su Standards

@@ -1,0 +1,6 @@
+- Le chat individuali garantiscono ora la crittografia end-to-end per i contatti con un segno di spunta verde
+- Per la semplicità di tutti, contrassegniamo queste chat anche con segni di spunta verdi
+- I gruppi vengono creati automaticamente con crittografia end-to-end garantita, se possibile
+- Accetta/Bloccato, Archiviato, Appuntato, Disattiva Audio è sincronizzato su tutti i tuoi dispositivi
+- Ulteriori miglioramenti alla fotocamera, ai messaggi vocali, al backup di tutto, alla lettura dello schermo, agli sfondi per account, alla selezione di tutto nella galleria, all'orientamento orizzontale webxdc
+- Tonnellate di correzioni bug

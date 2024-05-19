@@ -1,0 +1,6 @@
+* nuove API webxdc: importFiles() e sendToChat()
+* rimosso il limite di dimensione superiore degli allegati
+* risparmia traffico e spazio di archiviazione: ricodifica PNG di grandi dimensioni e altri formati di immagine supportati (i JPEG di grandi dimensioni venivano sempre ricodificati; le immagini inviate come "File" non vengono ancora registrate o modificate in altro modo)
+* salva spazio di archiviazione locale: comprimi le email HTML nel database
+* migliorata coerenza dell'appartenenza al gruppo
+* molte correzioni di bug
