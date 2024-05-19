@@ -105,7 +105,8 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     try {
       DcContext dcContext = DcHelper.getContext(this);
       final String deviceMsgId = "update_1_45c_android";
-      if (!dcContext.wasDeviceMsgEverAdded(deviceMsgId)) {
+      if (!Prefs.getStringPreference(this, Prefs.LAST_DEVICE_MSG_ID, "").equals(deviceMsgId)
+       && !dcContext.wasDeviceMsgEverAdded(deviceMsgId)) {
         DcMsg msg = null;
         //if (!getIntent().getBooleanExtra(FROM_WELCOME, false)) { -- UNCOMMENT on RELEASES
           msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
@@ -127,6 +128,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
             + "For more changes worth testing see https://delta.chat/changelog");
         //}
         dcContext.addDeviceMsg(deviceMsgId, msg);
+        Prefs.setStringPreference(this, Prefs.LAST_DEVICE_MSG_ID, deviceMsgId);
       }
     } catch(Exception e) {
       e.printStackTrace();
