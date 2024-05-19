@@ -199,6 +199,8 @@
 
     <!-- menu labels (or icon, buttons...) -->
     <string name="menu_new_contact">Neuer Kontakt</string>
+    <string name="menu_new_classic_contact">Kontakt manuell hinzufügen</string>
+    <string name="new_classic_contact_explain">Manuell hinzugefügte Kontakte können verwendet werden, um klassische E-Mail-Adressen anzuschreiben; diese sind nicht garantiert Ende-zu-Ende-verschlüsselt.</string>
     <string name="menu_new_chat">Neuer Chat</string>
     <string name="menu_new_group">Neue Gruppe</string>
     <string name="clone_chat">Chat klonen</string>

@@ -199,6 +199,7 @@
 
     <!-- menu labels (or icon, buttons...) -->
     <string name="menu_new_contact">Yeni Kişi</string>
+    <string name="menu_new_classic_contact">Elle Kişi Ekle</string>
     <string name="menu_new_chat">Yeni Sohbet</string>
     <string name="menu_new_group">Yeni Öbek</string>
     <string name="clone_chat">Sohbeti Çoğalt</string>
@@ -551,14 +552,21 @@
     <string name="onboarding_create_instant_account">Yeni Profil Oluştur</string>
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
     <string name="onboarding_alternative_logins">Zaten Bir Profilim Var</string>
+    <!-- Button, allows to log in to existing email accounts, setting ports, passwords and so on -->
+    <string name="manual_account_setup_option">Klasik E-Posta Girişi</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Profiliniz</string>
     <!-- deprecated -->
     <string name="instant_onboarding_agree_default">Gizlilik İlkesi\'ni Okuyun</string>
+    <!-- The placeholder will be replaced by the default onboarding server -->
+    <string name="instant_onboarding_agree_default2">%1$s için Gizlilik İlkesi</string>
     <!-- The placeholder will be replaced by instance name, the whole text will link to the instance page -->
     <string name="instant_onboarding_agree_instance">%1$s üzerindeki profiller hakkında</string>
     <!-- Confirmation button on the instant onboarding screen -->
     <string name="instant_onboarding_create">Kabul Et &amp; Profil Oluştur</string>
+    <!-- Secondary, link-like button to open a page with other possible instances -->
+    <string name="instant_onboarding_show_more_instances">Diğer Sunucuyu Kullan</string>
+    <string name="instant_onboarding_other_server">Chatmail Sunucularını Listele</string>
     <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group name -->
     <string name="instant_onboarding_group_info">\"%1$s\" öbeğine katılmak için bir profil oluşturun.</string>
     <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by contact name and/or address -->
