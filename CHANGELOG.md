@@ -16,6 +16,7 @@
 * fix: on onboarding, keep entered name and avatar when scanning QR codes or going for other options
 * fix broken "..." ellipsis for small screens
 * fix: do not mark the message with locations as seen
+* fix startup crash on android4
 * update translations and local help
 * update to core 1.139.2+iequidoo/vcard
 
