@@ -64,6 +64,8 @@ public class Prefs {
   public  static final String  ALWAYS_LOAD_REMOTE_CONTENT = "pref_always_load_remote_content";
   public  static final boolean ALWAYS_LOAD_REMOTE_CONTENT_DEFAULT = false;
 
+  public  static final String LAST_DEVICE_MSG_ID               = "pref_last_device_msg_id";
+
   public enum VibrateState {
     DEFAULT(0), ENABLED(1), DISABLED(2);
     private final int id;
