@@ -200,6 +200,7 @@
     <!-- menu labels (or icon, buttons...) -->
     <string name="menu_new_contact">Nieuw contactpersoon</string>
     <string name="menu_new_classic_contact">Contactpersoon handmatig toevoegen</string>
+    <string name="new_classic_contact_explain">Handmatig toegevoegde contactpersonen zijn bedoeld voor traditionele e-mailcommunicatie - eind-tot-endversleuteling is daarom niet gegarandeerd.</string>
     <string name="menu_new_chat">Nieuw gesprek</string>
     <string name="menu_new_group">Nieuwe groep</string>
     <string name="clone_chat">Gesprek klonen</string>
@@ -390,8 +391,8 @@
     <string name="chat_new_broadcast_hint">Op een verzendlijst hebben ontvangers niet de mogelijkheid om te reageren op je berichten.</string>
     <string name="chat_new_group_hint">Stel het eerste bericht op zodat anderen binnen deze groep kunnen reageren.</string>
     <string name="chat_record_slide_to_cancel">Veeg opzij om te annuleren</string>
-    <string name="chat_record_explain">Houdt ingedrukt om een spraakbericht op te nemen; laat los om te versturen</string>
-    <string name="chat_no_chats_yet_title">Je postvak is leeg.\nDruk op ‘+’ om een gesprek te beginnen.</string>
+    <string name="chat_record_explain">Houd ingedrukt om een spraakbericht op te nemen; laat los om te versturen</string>
+    <string name="chat_no_chats_yet_title">Er zijn nog geen gesprekken.\nDruk op ‘+’ om een gesprek te beginnen.</string>
     <!-- deprecated -->
     <string name="chat_no_chats_yet_hint">Je kunt een gesprek voeren met andere Delta Chat-gebruikers en via alle soorten e-mailadressen.</string>
     <string name="chat_all_archived">Alle gesprekken zijn gearchiveerd.\nDruk op ‘+’ om een gesprek te beginnen.</string>
@@ -481,7 +482,7 @@
     <string name="tab_image_empty_hint">De in dit gesprek gedeelde afbeeldingen verschijnen hier.</string>
     <string name="tab_video_empty_hint">De in dit gesprek gedeelde video\'s verschijnen hier.</string>
     <string name="tab_audio_empty_hint">De in dit gesprek gedeelde audiobestanden en spraakberichten verschijnen hier.</string>
-    <string name="tab_webxdc_empty_hint">Privé-apps in dit gesprek worden hier getoond.</string>
+    <string name="tab_webxdc_empty_hint">Privéapps in dit gesprek worden hier getoond.</string>
     <string name="tab_all_media_empty_hint">De in gesprekken gedeelde media verschijnen hier.</string>
     <string name="media_preview">Mediavoorbeeld</string>
     <!-- option to show images in the gallery with the correct width/height aspect (instead of square); other gallery apps may be a source of inspiration for translation :) -->
@@ -498,7 +499,7 @@
     <!-- Multi Device -->
     <!-- "Second Device" can also be translated as "Another Device", if that is catchier in the destination language. However, make sure to use the term consistently. -->
     <string name="multidevice_title">Secundair apparaat toevoegen</string>
-    <string name="multidevice_same_network_hint">Zorg er voor dat beide apparaten verbonden zijn met hezelfde (wifi)netwerk</string>
+    <string name="multidevice_same_network_hint">Zorg ervoor dat beide apparaten verbonden zijn met hetzelfde (wifi)netwerk</string>
     <string name="multidevice_this_creates_a_qr_code">Hiermee wordt een QR-code samengesteld die door het tweede apparaat kan worden gescand om het account te kopiëren.</string>
     <string name="multidevice_install_dc_on_other_device">Installeer Delta Chat op je andere apparaat (https://get.delta.chat)</string>
     <!-- "I Already Have a Login / Add as Second Device” should be the same text as defined by the keys onboarding_alternative_logins and multidevice_receiver_title -->
@@ -539,7 +540,7 @@
     <!-- Shown in the setting if the app is "Connected" -->
     <string name="connectivity_connected">Verbonden</string>
     <string name="sending">Bezig met versturen…</string>
-    <string name="last_msg_sent_successfully">Het laatste bericht is verstuurd.</string>
+    <string name="last_msg_sent_successfully">Het nieuwste bericht is verstuurd.</string>
     <string name="not_supported_by_provider">Wordt niet ondersteund door je provider.</string>
     <!-- Subtitle in quota context of "Connetivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Berichten</string>
@@ -608,7 +609,7 @@
     <string name="login_info_oauth2_text">Het ingevoerde e-mailadres ondersteunt vereenvoudigd instellen (OAuth2).\n\nTijdens de volgende stap moet je Delta Chat toestaan te fungeren als je e-mailapp.\n\nDelta Chat heeft geen eigen servers; jóuw gegevens blijven op jóuw apparaat!</string>
     <string name="login_certificate_checks">Certificaatcontrole</string>
     <string name="login_error_mail">Voer een geldig e-mailadres in</string>
-    <string name="login_error_server">Voer een geldig(e) IP-adres/server in</string>
+    <string name="login_error_server">Voer een geldig(e) ip-adres/server in</string>
     <string name="login_error_port">Voer een geldig poortnummer in (1-65535)</string>
     <string name="login_error_required_fields">Voer een geldig e-mailadres en wachtwoord in</string>
     <string name="import_backup_title">Reservekopie importeren</string>
@@ -649,12 +650,12 @@
     <string name="blocked_empty_hint">Geblokkeerde contactpersonen worden hier getoond.</string>
     <!-- for classic email, we use the classical term "Account" -->
     <string name="pref_password_and_account_settings">Wachtwoord en account</string>
-    <string name="pref_who_can_see_profile_explain">Je profielfoto, -naam en handtekening worden getoond in gesprekken, naast je berichten.</string>
+    <string name="pref_who_can_see_profile_explain">Je profielfoto, -naam en handtekening worden naast je gespreksberichten getoond.</string>
     <string name="pref_your_name">Je naam</string>
     <!-- Translators: Visible only to recipients who DO NOT use Delta Chat, so it's the last line in an E-mail and not a "Status". -->
     <string name="pref_default_status_label">Handtekeningtekst</string>
-    <string name="pref_enter_sends">Versturen met Enter-toets</string>
-    <string name="pref_enter_sends_explain">Druk op de Enter-toets om tekstberichten te versturen</string>
+    <string name="pref_enter_sends">Versturen met enter</string>
+    <string name="pref_enter_sends_explain">Druk op de entertoets om tekstberichten te versturen</string>
     <string name="pref_outgoing_media_quality">Kwaliteit van verstuurde media</string>
     <string name="pref_outgoing_balanced">Normaal</string>
     <string name="pref_outgoing_worse">Lagere kwaliteit, kleinere bestanden</string>
@@ -669,7 +670,7 @@
     <string name="pref_notifications_explain">Systeemmeldingen tonen bij nieuwe berichten</string>
     <string name="pref_show_notification_content">Berichtinhoud tonen op meldingen</string>
     <string name="pref_show_notification_content_explain">Toont de afzender en eerste regel van berichten op meldingen</string>
-    <string name="pref_led_color">LED-kleur</string>
+    <string name="pref_led_color">Ledkleur</string>
     <string name="pref_sound">Geluid</string>
     <string name="pref_silent">Stil</string>
     <string name="pref_privacy">Privacy</string>
@@ -681,21 +682,21 @@
     <string name="pref_appearance">Uiterlijk</string>
     <string name="pref_theme">Thema</string>
     <string name="pref_language">Taal</string>
-    <string name="pref_incognito_keyboard">Incognito-toetsenbord</string>
+    <string name="pref_incognito_keyboard">Privétoetsenbord</string>
     <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_incognito_keyboard_explain">Verzoek het toetsenbord om geen persoonlijke woorden op te nemen</string>
     <string name="pref_read_receipts">Leesbevestigingen</string>
-    <string name="pref_read_receipts_explain">Als je leesbevestigingen uitschakelt, dan zie je geen leesbevestigingen van anderen.</string>
+    <string name="pref_read_receipts_explain">Als je leesbevestigingen uitschakelt, zie je geen leesbevestigingen van anderen.</string>
     <string name="pref_server">Server</string>
     <string name="pref_encryption">Versleuteling</string>
     <string name="pref_manage_keys">Sleutels beheren</string>
     <string name="pref_use_system_emoji">Systeememoji gebruiken</string>
-    <string name="pref_use_system_emoji_explain">Schakel Delta Chat\'s ingebouwde emoji-ondersteuning uit</string>
+    <string name="pref_use_system_emoji_explain">Schakel Delta Chats ingebouwde emojiondersteuning uit</string>
     <string name="pref_use_inapp_camera">Ingebouwde camera gebruiken</string>
     <string name="pref_use_inapp_camera_explain">Let op: de ingebouwde camera beschikt over minder functies dan de systeemcamera</string>
     <string name="pref_show_system_contacts">Adresboek uitlezen</string>
-    <string name="pref_show_system_contacts_explain">Bied aan om gesprekken te beginnen met contactpersonen die in het adresboek staan. Let op: voor sommige providers is hiervoor eind-tot-eindversleuteling benodigd.</string>
-    <string name="pref_app_access">App-toegang</string>
+    <string name="pref_show_system_contacts_explain">Bied aan om gesprekken te beginnen met contactpersonen uit het adresboek. Let op: voor sommige providers is eind-tot-eindversleuteling benodigd.</string>
+    <string name="pref_app_access">Apptoegang</string>
     <string name="pref_chats">Gesprekken</string>
     <string name="pref_in_chat_sounds">Gespreksgeluiden</string>
     <string name="pref_message_text_size">Tekstgrootte van berichten</string>
