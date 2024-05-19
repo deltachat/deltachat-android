@@ -63,6 +63,17 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <TextView
+            android:id="@+id/information_label"
+            app:layout_constraintTop_toBottomOf="@id/email"
+            app:layout_constraintEnd_toEndOf="@id/guideline_root_end"
+            app:layout_constraintStart_toStartOf="@id/guideline_root_start"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="@string/new_classic_contact_explain"
+            android:textColor="@color/gray50" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>
