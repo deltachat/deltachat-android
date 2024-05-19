@@ -126,7 +126,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
             + "🔧 Old device users: It is known hat the app currently crashes on android4 - if you also encounter crashes on android5 or if it runs for you on android4 - please report, we really need feedback here as testing for us devs becomes harder and harder over time\n\n"
             + "For more changes worth testing see https://delta.chat/changelog");
         //}
-        int msgId = dcContext.addDeviceMsg(deviceMsgId, msg);
+        dcContext.addDeviceMsg(deviceMsgId, msg);
 
         if (Prefs.getStringPreference(this, Prefs.LAST_DEVICE_MSG_ID, "").equals(deviceMsgId)) {
           int deviceChatId = dcContext.getChatIdByContactId(DcContact.DC_CONTACT_ID_DEVICE);
