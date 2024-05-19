@@ -1,5 +1,13 @@
 # Delta Chat Android Changelog
 
+## v1.45.1 Testrun
+2024-05
+
+* fix: do not mark the message with locations as seen
+* update translations and local help
+* update to core 1.139.2+iequidoo/vcard
+
+
 ## v1.45.0 Testrun
 2024-05
 
