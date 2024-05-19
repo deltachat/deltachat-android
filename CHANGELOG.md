@@ -3,6 +3,18 @@
 ## v1.45.1 Testrun
 2024-05
 
+* contacts can be attached as "Cards" at "Attach / Contact";
+  when the receiver taps the cards, guaranteed end-to-end encrypted can be established
+* "Profiles" are names as such throughout the app;
+  note that these profiles exist on the device only, there is nothing persisted on the server
+* adding contacts manually at "New Chat / New Contact / Add Contact Manually"
+* classic e-mail login is now available at "Create New Profile / Use Other Server"
+* share log to other chats or apps
+* hide folder options if not supported by the used account
+* allow to view password (after entering system secret)
+* device update message is added as unread only for the first account
+* fix: on onboarding, keep entered name and avatar when scanning QR codes or going for other options
+* fix broken "..." ellipsis for small screens
 * fix: do not mark the message with locations as seen
 * update translations and local help
 * update to core 1.139.2+iequidoo/vcard
