@@ -10,14 +10,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         android:animateLayoutChanges="true">
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline_root_start_shifted"
-            android:layout_width="wrap_content"
-            android:layout_height="16dp"
-            android:orientation="vertical"
-            app:layout_constraintGuide_begin="14dp" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline_root_start"
@@ -33,72 +28,13 @@
             android:orientation="vertical"
             app:layout_constraintGuide_end="16dp" />
 
-        <androidx.legacy.widget.Space
-            android:id="@+id/fab_spacer"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            app:layout_constraintTop_toTopOf="parent"/>
-
-        <Button
-            style="@style/ButtonSecondary"
-            android:id="@+id/qrscan_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:text="@string/qrscan_title"
-            android:drawablePadding="5dp"
-            app:drawableStartCompat="@drawable/baseline_qr_code_24"
-            app:drawableLeftCompat="@drawable/baseline_qr_code_24"
-            app:layout_constraintTop_toBottomOf="@id/fab_spacer"
-            app:layout_constraintEnd_toEndOf="@id/guideline_root_end"
-            app:layout_constraintStart_toStartOf="@id/guideline_root_start"/>
-
-        <LinearLayout
-            android:id="@+id/or_divider"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:paddingTop="30dp"
-            android:paddingBottom="10dp"
-            android:gravity="center"
-            android:orientation="horizontal"
-            app:layout_constraintStart_toStartOf="@id/qrscan_btn"
-            app:layout_constraintEnd_toEndOf="@id/qrscan_btn"
-            app:layout_constraintTop_toBottomOf="@id/qrscan_btn">
-
-          <View
-              android:layout_width="wrap_content"
-              android:layout_height="1dp"
-              android:layout_weight="1"
-              android:background="@drawable/divider_start"/>
-
-          <TextView
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_gravity="center"
-              android:layout_marginLeft="5dp"
-              android:layout_marginRight="5dp"
-              android:layout_weight="0"
-              android:gravity="center"
-              android:text="@string/or_separator"
-              android:textSize="14sp"
-              android:fontFamily="sans-serif"
-              android:textColor="@color/gray50"/>
-
-          <View
-              android:layout_width="wrap_content"
-              android:layout_height="1dp"
-              android:layout_weight="1"
-              android:background="@drawable/divider_end"/>
-        </LinearLayout>
-
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="@id/guideline_root_end"
             app:layout_constraintStart_toStartOf="@id/guideline_root_start"
-            app:layout_constraintTop_toBottomOf="@id/or_divider">
+            app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/name_text"
