@@ -18,8 +18,10 @@ import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMsg;
 
+import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.notifications.FcmReceiveService;
 import org.thoughtcrime.securesms.util.Prefs;
 
 @SuppressLint("BatteryLife")
@@ -104,8 +106,27 @@ public class DozeReminder {
     }
   }
 
+  private static boolean isAllChatmail() {
+    for (int accountId : ApplicationContext.dcAccounts.getAll()) {
+      DcContext context = ApplicationContext.dcAccounts.getAccount(accountId);
+      if (!context.isChatmail()) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  private static boolean isPushAvailableAndSufficient() {
+    return isAllChatmail() && FcmReceiveService.getToken() != null;
+  }
+
   public static void maybeAskDirectly(Context context) {
     try {
+      if (isPushAvailableAndSufficient()) {
+        // do not set DOZE_ASKED_DIRECTLY, this will happen once FCM is disabled or a non-chatmail is added
+        return;
+      }
+
       if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M
           && !Prefs.getBooleanPreference(context, Prefs.DOZE_ASKED_DIRECTLY, false)
           && ContextCompat.checkSelfPermission(context, Manifest.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS) == PackageManager.PERMISSION_GRANTED

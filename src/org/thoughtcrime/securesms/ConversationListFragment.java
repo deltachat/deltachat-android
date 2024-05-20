@@ -221,6 +221,8 @@ public class ConversationListFragment extends BaseConversationListFragment
                 dcContext.addDeviceMsg("android.notifications-disabled", msg);
               })
               .execute();
+          } else {
+            DozeReminder.maybeAskDirectly(activity);
           }
         } else {
           DozeReminder.maybeAskDirectly(activity);
