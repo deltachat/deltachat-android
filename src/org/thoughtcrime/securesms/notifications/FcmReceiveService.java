@@ -7,6 +7,7 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.WorkerThread;
 
 import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.FirebaseApp;
@@ -22,16 +23,19 @@ public class FcmReceiveService extends FirebaseMessagingService {
   private static final String TAG = FcmReceiveService.class.getSimpleName();
   private static final Object INIT_LOCK = new Object();
   private static boolean initialized;
+  private static volatile boolean triedRegistering;
   private static volatile String prefixedToken;
 
   public static void register(Context context) {
     if (Build.VERSION.SDK_INT < 19) {
       Log.w(TAG, "FCM not available on SDK < 19");
+      triedRegistering = true;
       return;
     }
 
     if (FcmReceiveService.prefixedToken != null) {
       Log.i(TAG, "FCM already registered");
+      triedRegistering = true;
       return;
     }
 
@@ -51,17 +55,31 @@ public class FcmReceiveService extends FirebaseMessagingService {
       } catch (Exception e) {
         // we're here usually when FCM is not available and initializeApp() or getToken() failed.
         Log.w(TAG, "cannot get FCM token for " + BuildConfig.APPLICATION_ID + ": " + e);
+        triedRegistering = true;
         return;
       }
       if (TextUtils.isEmpty(rawToken)) {
         Log.w(TAG, "got empty FCM token for " + BuildConfig.APPLICATION_ID);
+        triedRegistering = true;
         return;
       }
 
       prefixedToken = addPrefix(rawToken);
       Log.i(TAG, "FCM token: " + prefixedToken);
       ApplicationContext.dcAccounts.setPushDeviceToken(prefixedToken);
+      triedRegistering = true;
     });
+  }
+
+  // wait a until FCM registration got a token or not.
+  // we're calling register() pretty soon and getToken() pretty late on init,
+  // so usually, this should not block anything.
+  // still, waitForRegisterFinished() needs to be called from a background thread.
+  @WorkerThread
+  public static void waitForRegisterFinished() {
+    while (!triedRegistering) {
+      Util.sleep(100);
+    }
   }
 
   private static String addPrefix(String rawToken) {

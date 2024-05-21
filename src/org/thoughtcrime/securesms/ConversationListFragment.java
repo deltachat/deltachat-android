@@ -45,6 +45,7 @@ import org.thoughtcrime.securesms.components.reminder.DozeReminder;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideApp;
+import org.thoughtcrime.securesms.notifications.FcmReceiveService;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.RelayUtil;
@@ -196,6 +197,7 @@ public class ConversationListFragment extends BaseConversationListFragment
           if (DozeReminder.isEligible(context)) {
             DozeReminder.addDozeReminderDeviceMsg(context);
           }
+          FcmReceiveService.waitForRegisterFinished();
         } catch (Exception e) {
           e.printStackTrace();
         }
@@ -221,6 +223,8 @@ public class ConversationListFragment extends BaseConversationListFragment
                 dcContext.addDeviceMsg("android.notifications-disabled", msg);
               })
               .execute();
+          } else {
+            DozeReminder.maybeAskDirectly(activity);
           }
         } else {
           DozeReminder.maybeAskDirectly(activity);
