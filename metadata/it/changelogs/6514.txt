@@ -1,0 +1,8 @@
+* aggiungi un messaggio sul dispositivo dopo aver configurato un secondo dispositivo utilizzando "Impostazioni/Aggiungi Secondo Dispositivo"
+* velocizza significativamente il tempo di connessione "Aggiungi come Secondo Dispositivo" dal lato intermediario
+* se possibile, mostra il nome Wi-Fi direttamente dopo aver scansionato il codice QR "Aggiungi Secondo Dispositivo".
+* risolto il riavvio immediato di "Aggiungi Secondo Dispositivo"
+* correzione: non vengono visualizzati solo i media cestinati nella vista "Tutti i Media".
+* correzione: aggiornamento del database se necessario dopo "Aggiungi Secondo Dispositivo"
+* aggiornate traduzioni e aiuto locale
+* aggiornamento al core112.6

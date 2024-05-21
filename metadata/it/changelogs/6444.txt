@@ -1,0 +1,10 @@
+Se un utente e-mail classica invia un'e-mail a un gruppo e aggiunge nuovi destinatari, i nuovi destinatari diventeranno membri del gruppo.
+Tratta le chiavi PGP allegate dall'utente di posta elettronica classica come un segnale per preferire la crittografia reciproca.
+Tratta i messaggi crittografati o firmati provenienti dall'utente di posta elettronica classica come un segnale per preferire la crittografia reciproca.
+Corretta la migrazione dei vecchi database.
+Correzione: invia messaggi di modifica temporanei del timer solo nella chat già conosciuta da altri membri.
+Correzione: utilizza percorsi relativi al database ed evita problemi ad es. sulla migrazione verso altri dispositivi o percorsi.
+Correzione: timeout di lettura/scrittura per IMAP su SOCKS5.
+Correzione: non inviare "modifiche al nome del gruppo" se nessun carattere è stato modificato.
+Aggiungi la traduzione greca, aggiornate altre traduzioni.
+Aggiornamento al core104.

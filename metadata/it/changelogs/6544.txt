@@ -1,0 +1,4 @@
+* utilizza la configurazione SOCKS5 anche per caricare immagini remote nelle mail HTML
+* correzioni di bug
+* aggiornate le traduzioni e aiuto locale
+* aggiornamento al core112.8

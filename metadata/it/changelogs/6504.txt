@@ -1,0 +1,8 @@
+* nuovo e semplice modo per aggiungere un secondo dispositivo al tuo account: seleziona "Aggiungi Secondo Dispositivo" dopo l'installazione e scansiona un codice QR dal primo dispositivo
+* visualizza "Tutti i Media" di tutte le chat
+* nuova opzione "Cancella Chat".
+* mostra le notifiche per tutti gli account
+* utilizza meglio la modalità buio/luce in "Mostra messaggio completo"
+* mostra l'icona accanto ai messaggi informativi delle app
+* resilienza contro le interruzioni memorizzando nella cache i risultati DNS per le connessioni SMTP e IMAP
+* Miglioramenti e correzioni velocità e affidabilità

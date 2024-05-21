@@ -1,0 +1,13 @@
+correzione: rendere visibili le chat archiviate che non vengono annullate automaticamente (chat disattivate): aggiunge un contatore non letto e sposta l'archivio in alto
+correzione: invia file AVIF, HEIC, TXT, PPT, XLS, XML come tali
+correzione: attiva la riconnessione quando non si riesce a recuperare i messaggi esistenti
+correzione: non riprova a recuperare i messaggi esistenti dopo un errore, impedisce il ciclo infinito di riconnessione
+correzione: non aggiunge un errore se il messaggio è crittografato ma non firmato
+correzione: non rimuove gli spazi iniziali dalle righe del messaggio
+risolvere i casi limite relativi all'invio di testi citati
+corretta la connessione STARTTLS
+correzione: non trattare gli indirizzi email non validi come un'eccezione
+correzione: svuotamento dei percorsi relativi del database introdotti in 1.34.8 in tempo
+aggiornamenti rapidi degli elenchi di chat e dell'elenco dei contatti
+aggiornare le traduzioni
+aggiornamento al core106
