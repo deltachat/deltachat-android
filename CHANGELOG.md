@@ -1,5 +1,20 @@
 # Delta Chat Android Changelog
 
+## v1.46.0
+2024-05
+
+* do not ask for disabling "battery optimisations" when PUSH notifications are working
+* add an option to disable PUSH notifications
+* use colors for info/warning/error in the log
+* fix: hide not useful menu options in the QR screens
+* fix scanning invite codes from the "New Chat" screen
+* fix: use the last header of multiple ones with the same name; this is the one DKIM was using
+* fix migration of legacy databases
+* fix sending uncompressed images (bug introduced in beta 1.45 beta series)
+* update translations and local help
+* update to core 1.139.5
+
+
 ## v1.45.1 Testrun
 2024-05
 
