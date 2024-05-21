@@ -68,6 +68,9 @@ public class QrShowActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
       getMenuInflater().inflate(R.menu.qr_show, menu);
+      menu.findItem(R.id.new_classic_contact).setVisible(false);
+      menu.findItem(R.id.paste).setVisible(false);
+      menu.findItem(R.id.load_from_image).setVisible(false);
       return super.onCreateOptionsMenu(menu);
     }
 
