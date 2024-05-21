@@ -192,6 +192,7 @@
     <!-- menu labels (or icon, buttons...) -->
     <string name="menu_new_contact">新建联系人</string>
     <string name="menu_new_classic_contact">手动添加联系人</string>
+    <string name="new_classic_contact_explain">手动添加的联系人可用于向传统电子邮件发送文本，并且不能保证端到端加密。</string>
     <string name="menu_new_chat">新建聊天</string>
     <string name="menu_new_group">新建群组</string>
     <string name="clone_chat">克隆聊天</string>
@@ -538,7 +539,7 @@
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
     <string name="onboarding_alternative_logins">我已经有登录凭据了</string>
     <!-- Button, allows to log in to existing email accounts, setting ports, passwords and so on -->
-    <string name="manual_account_setup_option">经典电子邮件登录</string>
+    <string name="manual_account_setup_option">传统电子邮件登录</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">个人资料</string>
     <!-- deprecated -->
