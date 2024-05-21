@@ -29,9 +29,11 @@ import androidx.appcompat.app.AlertDialog;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.qr.QrActivity;
+import org.thoughtcrime.securesms.qr.QrCodeHandler;
 import org.thoughtcrime.securesms.util.MailtoUtil;
 
 import static org.thoughtcrime.securesms.ConversationActivity.CHAT_ID_EXTRA;
@@ -122,6 +124,20 @@ public class NewConversationActivity extends ContactSelectionActivity {
                   openConversation(dcContext.createChatByContactId(contactId1));
                 }).show();
       }
+    }
+  }
+
+  @Override
+  protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+    switch (requestCode) {
+      case IntentIntegrator.REQUEST_CODE:
+        IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+        QrCodeHandler qrCodeHandler = new QrCodeHandler(this);
+        qrCodeHandler.onScanPerformed(scanResult);
+        break;
+      default:
+        break;
     }
   }
 
