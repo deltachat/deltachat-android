@@ -113,6 +113,13 @@ public class QrActivity extends BaseActionBarActivity {
     public boolean onPrepareOptionsMenu(Menu menu) {
       menu.clear();
       getMenuInflater().inflate(R.menu.qr_show, menu);
+      if(tabLayout.getSelectedTabPosition() == TAB_SHOW) {
+        menu.findItem(R.id.withdraw).setVisible(true);
+        menu.findItem(R.id.copy).setVisible(true);
+      } else {
+        menu.findItem(R.id.withdraw).setVisible(false);
+        menu.findItem(R.id.copy).setVisible(false);
+      }
       return super.onPrepareOptionsMenu(menu);
     }
 
