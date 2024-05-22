@@ -136,6 +136,10 @@ public class LogViewFragment extends Fragment {
 
       String line;
       while ((line = bufferedReader.readLine()) != null) {
+        line = line.replaceFirst(" (\\d+) E ", " $1 \uD83D\uDD34 ");
+        line = line.replaceFirst(" (\\d+) W ", " $1 \uD83D\uDFE0 ");
+        line = line.replaceFirst(" (\\d+) I ", " $1 \uD83D\uDD35 ");
+        line = line.replaceFirst(" (\\d+) D ", " $1 \uD83D\uDFE2 ");
         log.append(line);
         log.append(separator);
       }
