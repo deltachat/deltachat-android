@@ -1141,4 +1141,4 @@
     <!-- device messages for updates -->
     <string name="update_1_44_android">Co nowego:\n\n❤️ Tak! To było długo oczekiwane: naciśnij i przytrzymaj wiadomość, aby zareagować\n\n🔗 Jeśli nie możesz zeskanować kodów QR, udostępnij go jako linki z zaproszeniem\n\n🔵 Nieprzeczytane wiadomości ze wszystkich kont są teraz zliczane i wyświetlane w tytule\n\n … i MNÓSTWO poprawek błędów… %1$s\n\nPomóż w ulepszaniu aplikacji: użyj opcji „Ustawienia » Zaawansowane » Wyślij statystyki”, aby pomóc programistom w lepszej optymalizacji pod kątem rzeczywistego użytkowania. Możesz sprawdzić dane przed wysłaniem</string>
     <string name="update_1_44_ios">Co nowego:\n\n❤️ Tak! To było długo oczekiwane: naciśnij i przytrzymaj wiadomości, aby zareagować\n\n🫸 Powiadomienia PUSH, jeśli są obsługiwane przez dostawców, takich jak https://nine.testrun.org\n\n🔗 Jeśli nie możesz zeskanować kodów QR, udostępnij go jako linki z zaproszeniem \n\n… i MNÓSTWO poprawek błędów…%1$s</string>
-</resources>
+    </resources>

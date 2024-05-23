@@ -565,6 +565,7 @@
     <string name="instant_onboarding_create">Pranojeni &amp; Krijoni Profil</string>
     <!-- Secondary, link-like button to open a page with other possible instances -->
     <string name="instant_onboarding_show_more_instances">Përdor Shërbyes Tjetër</string>
+    <string name="instant_onboarding_other_server">Paraqit Shërbyes Chatmail</string>
     <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group name -->
     <string name="instant_onboarding_group_info">Krijoni një profil, që të merrni pjesë te grupi “%1$s”.</string>
     <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by contact name and/or address -->
@@ -1140,4 +1141,5 @@
     <!-- device messages for updates -->
     <string name="update_1_44_android">Ç’ka të re:\n\n❤️ Po! Kjo ka kohë që pritej: Prekni gjatë mbi një mesazh, për të reaguar\n\n🔗 Nëse nuk skanoni dot kode QR, jepini si lidhje ftesë\n\n🔵 Tashmë mesazhet e palexuar të krejt llogarive numërohen dhe numri shfaqet te titulli\n\n… dhe TONELATA ndreqje të metash … %1$s\n\nNdihmoni të përmirësohet aplikacioni: Përdorni “Rregullime / Të thelluara / Dërgo statistika”, për të ndihmuar zhvilluesit ta bëjnë më optimal për përdorim të përditshëm. Para se të dërgohen, të dhënat mund t’i shqyrtoni</string>
     <string name="update_1_44_ios">Ç’ka të re:\n\n❤️ Po! Kjo ka kohë që pritej: Prekni gjatë mbi një mesazh, për të reaguar\n\n🫸 Njoftime PUSH, nëse kjo mbulohet nga furnizuesit e shërbimeve internet, b.f., https://nine.testrun.org\n\n🔗 Nëse nuk skanoni dot kode QR, jepini si lidhje ftesë\n\n… dhe TONELATA ndreqje të metash … %1$s</string>
+    <string name="update_1_46_android">Hapa të Rinj Mirëseardhjeje 🐣 Etj.:\n\n⚡️ Regjistrohuni te shërbyes të siguruar, të shpejtë, chatmail-i (https://delta.chat/chatmail), ose përdorni shërbyes klasikë email-i\n\n👉 Njoftime PUSH për çfarëdo shërbyesi “chatmail”\n\n👤 Lidhuni me shokët tuaj në mënyrë të parrezik, përmes “Bashkëngjitni kontakte”\n\n🥰 Reagoni me çfarëdo emoxhi\n\n📌 Fiksoni fjalosje drejt e nga kërkimi … dhe PLOT të TJERA te %1$s</string>
 </resources>

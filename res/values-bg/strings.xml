@@ -4,7 +4,9 @@
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
     <string name="cancel">Отказ</string>
-   <string name="clear_search">Изчистване на търсенето</string>
+   <!-- the word "or" to separate blocks in the user interface that are mutually exclusive -->
+    <string name="or_separator">или</string>
+    <string name="clear_search">Изчистване на търсенето</string>
     <string name="yes">Да</string>
     <string name="no">Не</string>
     <string name="select">Избор</string>
@@ -32,7 +34,10 @@
     <!-- this string is deprecated; the new wording is "introduced by ..." -->
     <string name="verified">Проверен</string>
     <string name="close">Затваряне</string>
+    <string name="close_window">Затваряне на прозореца</string>
     <string name="forward">Напред</string>
+    <string name="create">Създаване</string>
+    <string name="later">По-късно</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">Изпращане отново</string>
     <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
@@ -143,6 +148,9 @@
     <string name="gif">GIF</string>
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">Стикер</string>
+    <string name="add_to_sticker_collection">Добавяне към колекция от стикери</string>
+    <string name="add_stickers_instructions">За да добавите стикери, натиснете върху \"Отваряне на папка Стикери\", създайте подпапка за Вашия пакет от стикери и дърпайте файлове със стикери и изображения тук</string>
+    <string name="open_sticker_folder">Отваряне на папка Стикери</string>
     <string name="images">Изображения</string>
     <string name="audio">Аудио</string>
     <string name="voice_message">Гласово съобщение</string>
@@ -191,13 +199,19 @@
 
     <!-- menu labels (or icon, buttons...) -->
     <string name="menu_new_contact">Нов контакт</string>
+    <string name="menu_new_classic_contact">Ръчно добавяне на контакт</string>
+    <string name="new_classic_contact_explain">С помощта на ръчно добавените контакти можете да пращате текстови съобщение до получатели, използващи класическа електронна поща. Не е гарантирано, че те ще са криптирани \"от край до край\".</string>
     <string name="menu_new_chat">Нов чат</string>
     <string name="menu_new_group">Нова група</string>
+    <string name="clone_chat">Клониране на чат</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
     <string name="broadcast_list">Списък за разпространение</string>
     <string name="broadcast_lists">Списъци за разпространение</string>
     <string name="new_broadcast_list">Нов списък за разпространение</string>
     <string name="add_recipients">Добавяне на получатели</string>
+    <string name="edit_broadcast_list">Редактиране на списък за разпространение</string>
+    <string name="broadcast_list_name">Име на списък за разпространение</string>
+    <string name="please_enter_broadcast_list_name">Моля, въведете име за списъка за разпространение</string>
     <string name="menu_send">Изпращане</string>
     <string name="menu_toggle_keyboard">Включване/изключване на Emoji клавиатура</string>
     <string name="menu_edit_group">Редактиране на група</string>
@@ -222,6 +236,7 @@
     <string name="menu_copy_image_to_clipboard">Копиране на изображение</string>
     <string name="menu_copy_email_to_clipboard">Копиране на e-mail съобщение</string>
     <string name="paste_from_clipboard">Поставяне от клипборд</string>
+    <string name="ask_copy_unopenable_link_to_clipboard">Връзката \"%1$d\" не може да бъде отворена в уеб браузъра. Желаете ли вместо това да я копирате в клипборда?</string>
     <string name="menu_forward">Препращане на съобщение</string>
     <string name="menu_reply">Отговор на съобщение</string>
     <string name="menu_mute">Изключване на звука на уведомленията</string>
@@ -231,6 +246,7 @@
     <string name="menu_all_media">Всички медиа файлове</string>
     <!-- Command to jump to the original message corresponding to a gallery image or document -->
     <string name="show_in_chat">Показване в чата</string>
+    <string name="show_app_in_chat">Показване на приложение в чата</string>
     <string name="menu_share">Споделяне</string>
     <!-- Verb "to block sth." usually a mailing list or a contact, not a noun -->
     <string name="block">Блокиране</string>
@@ -242,6 +258,7 @@
     <string name="menu_scroll_to_bottom">Превъртане до дъното</string>
     <string name="menu_scroll_to_top">Превъртане до върха</string>
     <string name="menu_help">Помощ</string>
+    <string name="what_is_webxdc">Какво е Webxdc?</string>
     <string name="privacy_policy">Политика за поверителност</string>
     <string name="menu_select_all">Избор на всичко</string>
     <string name="select_chat">Изберете чат</string>
