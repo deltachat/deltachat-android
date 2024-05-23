@@ -10,6 +10,13 @@
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:dependency="pref_key_enable_notifications"
             android:defaultValue="false"
+            android:key="pref_push_optimizations"
+            android:title="@string/pref_push_notifications"
+            android:summary="@string/pref_push_notifications_explain"/>
+
+        <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
+            android:dependency="pref_key_enable_notifications"
+            android:defaultValue="false"
             android:key="pref_ignore_battery_optimizations"
             android:title="@string/pref_background_notifications"
             android:summary="@string/pref_background_notifications_explain"/>
