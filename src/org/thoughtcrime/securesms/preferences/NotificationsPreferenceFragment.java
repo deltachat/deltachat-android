@@ -75,6 +75,8 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
       boolean enabled = (Boolean) newValue; // Prefs.isPushEnabled() still has the old value
       if (enabled) {
         FcmReceiveService.register(getContext());
+      } else {
+        FcmReceiveService.deleteToken();
       }
       return true;
     });
