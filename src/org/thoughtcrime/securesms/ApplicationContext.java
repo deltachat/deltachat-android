@@ -226,7 +226,12 @@ public class ApplicationContext extends MultiDexApplication {
             ExistingPeriodicWorkPolicy.KEEP,
             fetchWorkRequest);
     AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
-    FcmReceiveService.register(this);
+
+    if(Prefs.isPushEnabled(this)) {
+      FcmReceiveService.register(this);
+    } else {
+      Log.i(TAG, "FCM disabled in user settings");
+    }
   }
 
   public JobManager getJobManager() {

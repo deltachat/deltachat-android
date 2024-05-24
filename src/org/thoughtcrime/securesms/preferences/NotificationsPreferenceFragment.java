@@ -22,6 +22,7 @@ import android.text.TextUtils;
 import org.thoughtcrime.securesms.ApplicationPreferencesActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.KeepAliveService;
+import org.thoughtcrime.securesms.notifications.FcmReceiveService;
 import org.thoughtcrime.securesms.util.Prefs;
 
 import static android.app.Activity.RESULT_OK;
@@ -30,7 +31,6 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
 
   private static final int REQUEST_CODE_NOTIFICATION_SELECTED = 1;
 
-  private CheckBoxPreference usePushService;
   private CheckBoxPreference ignoreBattery;
 
   @Override
@@ -69,8 +69,15 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
 
     initializeRingtoneSummary(findPreference(Prefs.RINGTONE_PREF));
 
-    usePushService = this.findPreference("pref_push_enabled");
-    usePushService.setChecked(Prefs.isPushEnabled(getActivity()));
+    CheckBoxPreference usePushService = this.findPreference("pref_push_enabled");
+    usePushService.setChecked(Prefs.isPushEnabled(getContext()));
+    usePushService.setOnPreferenceChangeListener((preference, newValue) -> {
+      boolean enabled = (Boolean) newValue; // Prefs.isPushEnabled() still has the old value
+      if (enabled) {
+        FcmReceiveService.register(getContext());
+      }
+      return true;
+    });
 
     ignoreBattery = this.findPreference("pref_ignore_battery_optimizations");
     ignoreBattery.setVisible(needsIgnoreBatteryOptimizations());
