@@ -8,10 +8,14 @@ public class Message {
   public DownloadState downloadState;
   public Integer duration;
   /* An error text, if there is one. */
+  @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
   public String error;
+  @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
   public String file;
   public Integer fileBytes;
+  @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
   public String fileMime;
+  @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
   public String fileName;
   public Integer fromId;
   public Boolean hasDeviatingTimestamp;
@@ -24,12 +28,17 @@ public class Message {
   public Boolean isForwarded;
   public Boolean isInfo;
   public Boolean isSetupmessage;
+  @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
   public String overrideSenderName;
+  @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
   public Integer parentId;
+  @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
   public MessageQuote quote;
+  @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
   public Reactions reactions;
   public Integer receivedTimestamp;
   public Contact sender;
+  @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
   public String setupCodeBegin;
   public Boolean showPadlock;
   public Integer sortTimestamp;
@@ -39,9 +48,13 @@ public class Message {
   public SystemMessageType systemMessageType;
   public String text;
   public Integer timestamp;
+  @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
   public VcardContact vcardContact;
+  @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
   public Integer videochatType;
+  @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
   public String videochatUrl;
   public Viewtype viewType;
+  @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
   public WebxdcMessageInfo webxdcInfo;
 }

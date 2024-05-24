@@ -1,5 +1,7 @@
 package org.thoughtcrime.securesms.util;
 
+import android.util.Base64;
+
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -19,6 +21,13 @@ public class JsonUtils {
     objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
     objectMapper.enable(SerializationFeature.WRITE_ENUMS_USING_TO_STRING);
     objectMapper.enable(DeserializationFeature.READ_ENUMS_USING_TO_STRING);
+  }
+
+  public static byte[] decodeBase64(String base64) {
+    if (base64 == null) {
+      return null;
+    }
+    return Base64.decode(base64, Base64.NO_WRAP | Base64.NO_PADDING);
   }
 
   public static <T> T fromJson(byte[] serialized, Class<T> clazz) throws IOException {

@@ -3,6 +3,7 @@ package chat.delta.rpc.types;
 
 public class WebxdcMessageInfo {
   /* if the Webxdc represents a document, then this is the name of the document */
+  @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
   public String document;
   /**
    * App icon file name. Defaults to an standard icon if nothing is set in the manifest.
@@ -21,7 +22,9 @@ public class WebxdcMessageInfo {
    */
   public String name;
   /* URL where the source code of the Webxdc and other information can be found; defaults to an empty string. Implementations may offer an menu or a button to open this URL. */
+  @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
   public String sourceCodeUrl;
   /* short string describing the state of the app, sth. as "2 votes", "Highscore: 123", can be changed by the apps */
+  @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
   public String summary;
 }

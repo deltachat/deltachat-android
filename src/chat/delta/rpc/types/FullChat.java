@@ -23,8 +23,10 @@ public class FullChat {
   public Boolean isProtectionBroken;
   public Boolean isSelfTalk;
   public Boolean isUnpromoted;
+  @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
   public String mailingListAddress;
   public String name;
+  @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
   public String profileImage;
   public Boolean selfInGroup;
   public Boolean wasSeenRecently;

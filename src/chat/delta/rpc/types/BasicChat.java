@@ -24,5 +24,6 @@ public class BasicChat {
   public Boolean isSelfTalk;
   public Boolean isUnpromoted;
   public String name;
+  @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
   public String profileImage;
 }

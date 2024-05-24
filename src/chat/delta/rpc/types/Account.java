@@ -12,10 +12,13 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 public abstract class Account {
 
   public static class Configured extends Account {
+    @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
     public String addr;
     public String color;
+    @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
     public String displayName;
     public Integer id;
+    @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
     public String profileImage;
   }
 

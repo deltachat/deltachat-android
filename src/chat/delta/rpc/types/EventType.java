@@ -165,6 +165,7 @@ public abstract class EventType {
  * @param data1 (int) If set, this is the contact_id of an added contact that should be selected.
  */
   public static class ContactsChanged extends EventType {
+    @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
     public Integer contactId;
   }
 
@@ -174,12 +175,14 @@ public abstract class EventType {
  * @param data1 (u32) contact_id of the contact for which the location has changed. If the locations of several contacts have been changed, this parameter is set to `None`.
  */
   public static class LocationChanged extends EventType {
+    @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
     public Integer contactId;
   }
 
 /* Inform about the configuration progress started by configure(). */
   public static class ConfigureProgress extends EventType {
     /* Progress comment or error, something to display to the user. */
+    @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
     public String comment;
     /**
      * Progress.
@@ -275,6 +278,7 @@ public abstract class EventType {
 
 /* Inform that a single chat list item changed and needs to be rerendered. If `chat_id` is set to None, then all currently visible chats need to be rerendered, and all not-visible items need to be cleared from cache if the UI has a cache. */
   public static class ChatlistItemChanged extends EventType {
+    @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
     public Integer chatId;
   }
 

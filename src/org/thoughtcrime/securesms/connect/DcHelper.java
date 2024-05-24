@@ -22,7 +22,6 @@ import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcLot;
 import com.b44t.messenger.DcMsg;
-import com.b44t.messenger.rpc.Rpc;
 
 import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.BuildConfig;
@@ -40,6 +39,8 @@ import org.thoughtcrime.securesms.util.MediaUtil;
 import java.io.File;
 import java.util.Date;
 import java.util.HashMap;
+
+import chat.delta.rpc.Rpc;
 
 public class DcHelper {
 

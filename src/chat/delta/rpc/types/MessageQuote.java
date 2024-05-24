@@ -18,9 +18,11 @@ public abstract class MessageQuote {
   public static class WithMessage extends MessageQuote {
     public String authorDisplayColor;
     public String authorDisplayName;
+    @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
     public String image;
     public Boolean isForwarded;
     public Integer messageId;
+    @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
     public String overrideSenderName;
     public String text;
     public Viewtype viewType;

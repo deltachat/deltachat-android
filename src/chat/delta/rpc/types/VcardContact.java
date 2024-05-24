@@ -9,9 +9,12 @@ public class VcardContact {
   /* The contact's name, or the email address if no name was given. */
   public String displayName;
   /* Public PGP key in Base64. */
+  @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
   public String key;
   /* Profile image in Base64. */
+  @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
   public String profileImage;
   /* Last update timestamp. */
+  @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
   public Integer timestamp;
 }
