@@ -1133,18 +1133,20 @@
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat wants to save images to your photo library.</string>
 
 
-    <string name="pref_push_notifications">Use Push Service</string>
-    <string name="pref_push_notifications_explain">Reliable Push Notifications, available for Chatmail-Servers if supported by the system</string>
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
-    <string name="pref_background_notifications">Disable Battery Optimisations</string>
-    <string name="pref_background_notifications_explain">Required if no Push Service is available</string>
+    <string name="pref_instant_delivery">Instant Delivery</string>
+    <string name="pref_push_notifications">Use Push Service</string>
+    <string name="pref_push_notifications_explain">Reliable Push Notifications for Chatmail-Servers</string>
+    <string name="pref_push_notifications_unavailable">Not available</string>
+    <string name="pref_background_notifications">Use Background Connection</string>
+    <string name="pref_background_notifications_explain">Requires ignored battery optimizations, use if Push Service is unavailable</string>
+    <string name="pref_reliable_service">Visible Background Connection</string>
+    <string name="pref_reliable_service_explain">Helps with unreliable background connections</string>
+
     <string name="pref_background_notifications_rationale">To maintain connection to your e-mail server and receive messages in the background, ignore battery optimizations in the next step.\n\nDelta Chat uses few resources and takes care not to drain your battery.</string>
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
-    <string name="pref_reliable_service">Always Run in Background</string>
-    <string name="pref_reliable_service_explain">Required if no Push Service is available, shows a permanent notification</string>
     <string name="perm_enable_bg_reminder_title">Tap here to receive messages while Delta Chat is in the background.</string>
     <string name="perm_enable_bg_already_done">You already allowed Delta Chat to receive messages in the background.\n\nIf messages still do not arrive in background, please also check your system settings.</string>
-
 
     <!-- device messages for updates -->
     <string name="update_1_44_android">What\'s new:\n\n❤️ Yeah! This was long-awaited: Long tap a message to react\n\n🔗 If you cannot scan QR codes, share them as invite links\n\n🔵 Unread messages of all accounts are counted and shown in title now\n\n… and TONS of bugfixes … %1$s\n\nHelp improving the app: Use \"Settings / Advanced / Send statistics\" to help devs to optimize better for real-world usage. You can review the data before sending</string>
