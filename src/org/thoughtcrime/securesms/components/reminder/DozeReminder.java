@@ -61,6 +61,10 @@ public class DozeReminder {
       e.printStackTrace();
     }
 
+    if (isPushAvailableAndSufficient()) {
+      return false;
+    }
+
     return true; // yip, asking for disabling battery optimisations makes sense
   }
 
@@ -123,7 +127,6 @@ public class DozeReminder {
   public static void maybeAskDirectly(Context context) {
     try {
       if (isPushAvailableAndSufficient()) {
-        // do not set DOZE_ASKED_DIRECTLY, this will happen once FCM is disabled or a non-chatmail is added
         return;
       }
 
