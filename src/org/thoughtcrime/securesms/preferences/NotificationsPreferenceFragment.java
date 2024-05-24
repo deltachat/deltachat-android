@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.os.PowerManager;
 import android.provider.Settings;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
 import androidx.preference.CheckBoxPreference;
@@ -21,11 +22,13 @@ import android.text.TextUtils;
 
 import org.thoughtcrime.securesms.ApplicationPreferencesActivity;
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.connect.KeepAliveService;
 import org.thoughtcrime.securesms.notifications.FcmReceiveService;
 import org.thoughtcrime.securesms.util.Prefs;
 
 import static android.app.Activity.RESULT_OK;
+import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_ONLY_FETCH_MVBOX;
 
 public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragment {
 
@@ -72,11 +75,19 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
     CheckBoxPreference usePushService = this.findPreference("pref_push_enabled");
     usePushService.setChecked(Prefs.isPushEnabled(getContext()));
     usePushService.setOnPreferenceChangeListener((preference, newValue) -> {
-      boolean enabled = (Boolean) newValue; // Prefs.isPushEnabled() still has the old value
-      if (enabled) {
-        FcmReceiveService.register(getContext());
-      } else {
-        FcmReceiveService.deleteToken();
+      final boolean enabled = (Boolean) newValue;
+      if (!enabled) {
+        new AlertDialog.Builder(getContext())
+          .setMessage(R.string.pref_push_ask_disable)
+          .setPositiveButton(R.string.ok, (dialogInterface, i) -> {
+            ((CheckBoxPreference)preference).setChecked(false);
+          })
+          .setNegativeButton(R.string.cancel, null)
+          .setNeutralButton(R.string.learn_more, (dialogInterface, i) -> {
+            DcHelper.openHelp(getActivity(), "#instant-delivery");
+          })
+          .show();
+        return false;
       }
       return true;
     });
@@ -126,6 +137,18 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
 
     // update ignoreBattery in onResume() to reflects changes done in the system settings
     ignoreBattery.setChecked(isIgnoringBatteryOptimizations());
+  }
+
+  @Override
+  public void onPause() {
+    super.onPause();
+
+    // we delay applying token changes to avoid changes and races if the user is just playing around
+    if (Prefs.isPushEnabled(getContext()) && FcmReceiveService.getToken() == null) {
+      FcmReceiveService.register(getContext());
+    } else if(!Prefs.isPushEnabled(getContext()) && FcmReceiveService.getToken() != null) {
+      FcmReceiveService.deleteToken();
+    }
   }
 
   @Override
