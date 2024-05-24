@@ -258,6 +258,7 @@ public class LogViewFragment extends Fragment {
       }
 
       final String token = FcmReceiveService.getToken();
+      builder.append("push-enabled=").append(Prefs.isPushEnabled(context)).append("\n");
       builder.append("push-token=").append(token == null ? "<empty>" : token).append("\n");
     } catch (Exception e) {
       builder.append("Unknown\n");
