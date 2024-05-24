@@ -849,15 +849,9 @@
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">សា Delta Chat ចង់រក្សាទុករូបភាពទៅបណ្ណាល័យរូបថតរបស់អ្មក។</string>
 
 
-    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
-    <string name="pref_background_notifications">ការជូនដំណឹងផ្ទៃខាងក្រោយ</string>
-    <string name="pref_background_notifications_explain">ប្រើតំណភ្ជាប់ផ្ទៃខាងក្រោយទៅម៉ាសុីនមេរបស់អ្មក និងបដិសេធការទាមទារបង្កើនប្រសិទ្ធភាពថ្ម។</string>
     <string name="pref_background_notifications_rationale">ដើម្បីថែរក្សាតំណភ្ជាប់ទៅម៉ាសុីនបម្រើអុីម៉េលរបស់អ្នក និងទទួលសារនៅផ្ទៃខាងក្រោយ។ បដិសេធការបង្កើនប្រសិទ្ធភាពថ្ម នៅក្នុងជំហានបន្ទាប់។\n\nសាហារីសង្ឃ ប្រើធនធានបន្តិចបន្តួច និងយកចិត្តទុកដាក់មិនបង្ហូរថ្មរបស់អ្នក។</string>
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
-    <string name="pref_reliable_service">តំណភ្ជាប់ផ្ទៃខាងក្រោយដែលទុកចិត្តបាន</string>
-    <string name="pref_reliable_service_explain">តម្រូវការជូនដំណឹងជាអចិន្រ្តៃយ៍</string>
     <string name="perm_enable_bg_reminder_title">ប៉ះទីនេះដើម្បីទទួលសារកំឡុងពេល សា Delta Chat គឺស្ថិតនៅក្នុងផ្ទៃខាងក្រោយ។</string>
     <string name="perm_enable_bg_already_done">អ្នកបានអនុញ្ញាតរួចរាល់ហើយឲ្យសា Delta Chat ដើម្បីទទួលសារនៅផ្ទៃខាងក្រោយ\n\nប្រសិនបើ សារនៅតែមិនមកដល់ផ្ទៃខាងក្រោយ សូមពិនិត្យការការកំណត់ប្រពន្ធ័របស់អ្នកផងដែរ។</string>
-
 
     </resources>

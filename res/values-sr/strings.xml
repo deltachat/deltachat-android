@@ -1003,15 +1003,9 @@
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat жели да сними слике у ваш фото албум.</string>
 
 
-    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
-    <string name="pref_background_notifications">Обавештења у позадини</string>
-    <string name="pref_background_notifications_explain">Користи везу у позадини са вашим сервером и захтева да поставке игноришу оптимизације ефикасности батерије.</string>
     <string name="pref_background_notifications_rationale">Да би сте одржавали везу са вашим сервером за е-пошту и да би сте примали поруке у позадини, игноришите оптимизације ефикасности батерије у следећем кораку.\n\nDelta Chat не користи много енергије и води рачуна да вам не испразни батерију.</string>
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
-    <string name="pref_reliable_service">Поуздана веза у позадини</string>
-    <string name="pref_reliable_service_explain">Захтева трајна обавештења</string>
     <string name="perm_enable_bg_reminder_title">Додирните овде да би примали поруке када је Delta Chat у позадини.</string>
     <string name="perm_enable_bg_already_done">Ви сте већ омогућили Delta Chat-у достављање порука у позадини.\n\nАко поруке и даље не стижу у позадини, погледајте поставке у оперативном систему.</string>
-
 
     </resources>
