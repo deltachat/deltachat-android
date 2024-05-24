@@ -15,6 +15,7 @@ import androidx.core.app.NotificationCompat;
 
 import com.b44t.messenger.DcContext;
 
+import org.thoughtcrime.securesms.BuildConfig;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.preferences.widgets.NotificationPrivacyPreference;
 
@@ -172,7 +173,8 @@ public class Prefs {
   }
 
   public static boolean isPushEnabled(Context context) {
-    boolean defaultPush = true;
+    // Do not use PUSH for the the default application ID "com.b44t.messenger" which is used eg. used by F-Droid
+    boolean defaultPush = !BuildConfig.APPLICATION_ID.equals("com.b44t.messenger");
     return getBooleanPreference(context, "pref_push_enabled", defaultPush);
   }
 
