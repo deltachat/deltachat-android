@@ -6,7 +6,7 @@
       <li><a href="#与其他通信软件相比delta-chat-有哪些优势">与其他通信软件相比，Delta Chat 有哪些优势？</a></li>
       <li><a href="#如果希望收到我从未发送过消息的人的消息该怎么办">如果希望收到我从未发送过消息的人的消息，该怎么办?</a></li>
       <li><a href="#delta-chat-支持图像视频和其他附件吗">Delta Chat 支持图像、视频和其他附件吗？</a></li>
-      <li><a href="#multiple-accounts">如何添加账户或在多个账户之间切换？</a></li>
+      <li><a href="#multiple-accounts">What are profiles? How can I switch between them?</a></li>
       <li><a href="#谁会看见我的个人资料图片">谁会看见我的个人资料图片？</a></li>
       <li><a href="#signature">我可以为 Delta Chat 设置签名文本/状态/格言吗？</a></li>
       <li><a href="#固定静音归档是什么意思">固定、静音、归档是什么意思？</a></li>
@@ -23,6 +23,15 @@
       <li><a href="#显示在发出消息旁边的对勾表示什么">显示在发出消息旁边的对勾表示什么？</a></li>
       <li><a href="#打开从服务器删除旧消息后会发生什么">打开“从服务器删除旧消息”后，会发生什么？</a></li>
       <li><a href="#delold">打开“从设备删除旧消息”后，会发生什么？</a></li>
+    </ul>
+  </li>
+  <li><a href="#instant-delivery">Instant message delivery and Push Notifications</a>
+    <ul>
+      <li><a href="#what-are-push-notifications-how-can-i-get-instant-message-delivery">What are Push Notifications? How can I get instant message delivery?</a></li>
+      <li><a href="#are-push-notifications-enabled-on-ios-devices-is-there-an-alternative">Are Push Notifications enabled on iOS devices? Is there an alternative?</a></li>
+      <li><a href="#android-push">Are Push notifications enabled / needed on Android devices?</a></li>
+      <li><a href="#privacy-notifications">How private are Delta Chat Push Notifications?</a></li>
+      <li><a href="#why-does-delta-chat-integrate-with-centralized-proprietary-applegoogle-push-services">Why does Delta Chat integrate with centralized proprietary Apple/Google push services?</a></li>
     </ul>
   </li>
   <li><a href="#加密和安全">加密和安全</a>
@@ -82,7 +91,6 @@
       <li><a href="#delta-chat-可用于-我的-电子邮件提供商吗">Delta Chat 可用于 <em>我的</em> 电子邮件提供商吗？</a></li>
       <li><a href="#i-want-to-manage-my-own-e-mail-server-for-delta-chat-what-do-you-recommend">I want to manage my own e-mail server for Delta Chat. What do you recommend?</a></li>
       <li><a href="#为什么我必须在-delta-chat-中输入我的电子邮件密码-这样安全吗">为什么我必须在 Delta Chat 中输入我的电子邮件密码？ 这样安全吗？</a></li>
-      <li><a href="#使用电子邮件的-delta-chat-真的是-即时-通讯工具吗">使用电子邮件的 Delta Chat 真的是 <em>即时</em> 通讯工具吗？</a></li>
       <li><a href="#哪些消息会在-delta-chat-中出现">哪些消息会在 Delta Chat 中出现？</a></li>
       <li><a href="#delta-chat-支持-html-电子邮件吗">Delta Chat 支持 HTML 电子邮件吗？</a></li>
       <li><a href="#can-i-set-the-e-mail-subject-with-delta-chat">Can I set the E-Mail Subject with Delta Chat?</a></li>
@@ -107,7 +115,14 @@
         
       </h2>
 
-<p>Delta Chat 是一个新的聊天应用，它通过电子邮件发送消息，并在条件允许情况下使用 Autocrypt 对其进行加密。<strong>您不必在任何地方进行注册，在 Delta Chat 中使用您现有的电子邮件帐户即可。</strong></p>
+<p>Delta Chat is a reliable, decentralized and secure messaging app, 
+available for mobile and desktop platforms.</p>
+
+<p>Delta Chat feels like Whatsapp or Telegram but you can also use and regard it as an e-mail app. 
+You can signup anonymously to a variety of <a href="https://delta.chat/chatmail">interoperable chatmail servers</a>
+which are minimal e-mail servers optimized for fast and secure operations. 
+Or you may use classic e-mail servers and an existing e-mail account
+in which case Delta Chat acts as an e-mail app.</p>
 
 <p><img style="float:right; width:50%; max-width:360%; margin:1em;" src="../delta-what-optim.png" /></p>
     
@@ -119,7 +134,15 @@
         
       </h3>
 
-<p>通过 Delta Chat，您可以发消息到每个现有的电子邮件地址——即使收件人没有使用 Delta Chat 应用。不需要像其他通信软件一样，要收件人安装和您一样的应用。</p>
+<p>To securely setup contact with others <a href="#howtoe2ee">scan an invite QR code 
+or share an invite link</a>. 
+This is required when using a (default) chatmail-based chat profile 
+because chatmail servers reject un-encrypted outgoing messages.</p>
+
+<p>If you create a chat profile with a classic e-mail address 
+you may manually create a contact if you know their e-mail address
+and then write a message to them 
+even if the recipient is not using Delta Chat.</p>
     
       <h3 id="与其他通信软件相比delta-chat-有哪些优势">
         
@@ -130,15 +153,25 @@
       </h3>
 
 <ul>
-  <li><em>独立</em> 于任何公司或服务。<em>您</em> 拥有您的数据。</li>
-  <li>您的数据不会保存于中央服务器，除非所有用户都在使用同一个电子邮件服务器。</li>
-  <li>您不会将通讯录分发给任何人。</li>
-  <li><em>快速</em>——使用 Push-IMAP。</li>
-  <li><em>最广泛的用户基础</em>——也可以与 <em>不</em> 使用 Delta Chat 的收件人进行联系。</li>
-  <li><em>没有垃圾信息</em>——默认情况下仅显示已知用户的消息。</li>
-  <li><em>端到端加密</em>——通过 Autocrypt。</li>
-  <li>基于 <em>著佐权</em> 与 <em>标准</em> 的自由软件。</li>
-  <li><em>身份灵活</em>，内置<a href="#multiple-accounts">多账户</a>支持。</li>
+  <li>
+    <p>Anonymous chat profiles with fast, secure and interoperable <a href="https://delta.chat/chatmail">chatmail servers</a>
+which offer instant Push Notifications for iOS and Android devices.</p>
+  </li>
+  <li>
+    <p>Pervasive <a href="#multiple-accounts">multi-profile</a> and multi-device support on all platforms.</p>
+  </li>
+  <li>
+    <p>Interactive <a href="https://webxdc.org/apps">web apps in chats</a> for gaming and collaboration</p>
+  </li>
+  <li>
+    <p><a href="#security-audits">Audited end-to-end encryption</a> 
+safe against network and server attacks.</p>
+  </li>
+  <li>
+    <p>Free and Open Source software, both app and server side. 
+Built on <a href="https://github.com/deltachat/deltachat-core-rust/blob/master/standards.md">E-mail and Web Internet Standards</a>, 
+<a href="https://xkcd.com/927/">to avoid “yet another standard syndrome (xkcd 927)”</a></p>
+  </li>
 </ul>
     
       <h3 id="如果希望收到我从未发送过消息的人的消息该怎么办">
@@ -175,15 +208,25 @@
       <h3 id="multiple-accounts">
         
         
-          如何添加账户或在多个账户之间切换？ <a href="#multiple-accounts" class="anchor"></a>
+          What are profiles? How can I switch between them? <a href="#multiple-accounts" class="anchor"></a>
         
         
       </h3>
 
-<p>Tap the profile image in the upper left corner to <strong>switch accounts</strong>.
-You will also find <strong>Add Account</strong> there.</p>
+<p>A profile is <strong>a name, a picture</strong> and some additional information for encrypting messages.
+A profile lives on your device(s) only
+and uses a chatmail or a classic e-mail server to transport messages.</p>
 
-<p>您可能还想了解 <a href="#multiclient">如何为多个设备添加账户</a>。</p>
+<p>On first installation of Delta Chat a first profile is created.</p>
+
+<p>Later, you can tap your profile image in the upper left corner to <strong>Add Profiles</strong>
+or to <strong>Switch Profiles</strong>.</p>
+
+<p>You may want to use separate profiles for political, family or work related activities,
+or e. g. for a dedicated “spam-profile” with which you register at websites and platforms
+that tend to cause unsolicited messages (“spam”) sooner or later.</p>
+
+<p>You may also wish to learn <a href="#multiclient">how to use the same profile on multiple devices</a>.</p>
     
       <h3 id="谁会看见我的个人资料图片">
         
@@ -420,6 +463,170 @@ All e-mails received by Delta Chat will be deleted from the server after this ti
   <li>若要节省设备上的存储空间，可以开启自动删除旧消息。</li>
   <li>找到“聊天与媒体”设置中的“从设备删除旧消息”，在从“一小时后”到“一年后”的一系列选项中选择一个。这样，设备上 <em>所有</em> 比所选择时间长度老的消息将被删除。</li>
 </ul>
+    
+      <h2 id="instant-delivery">
+        
+        
+          Instant message delivery and Push Notifications <a href="#instant-delivery" class="anchor"></a>
+        
+        
+      </h2>
+    
+      <h3 id="what-are-push-notifications-how-can-i-get-instant-message-delivery">
+        
+        
+          What are Push Notifications? How can I get instant message delivery? <a href="#what-are-push-notifications-how-can-i-get-instant-message-delivery" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Push Notifications are sent by Apple and Google “Push services” to a user’s device
+so that an inactive Delta Chat app can fetch messages in the background
+and show notifications on a user’s phone if needed.</p>
+
+<p>Push Notifications work with all <a href="https://delta.chat/chatmail">chatmail</a> servers on</p>
+
+<ul>
+  <li>
+    <p>iOS devices, by integrating with Apple Push services.</p>
+  </li>
+  <li>
+    <p>Android devices, by integrating with the Google FCM Push service,
+including on devices that use <a href="https://microg.org">microG</a>
+instead of proprietary Google code on the phone.</p>
+  </li>
+</ul>
+
+<p>As of May 2024, classic e-mail servers do not support Push Notifications
+for Delta Chat users.</p>
+    
+      <h3 id="are-push-notifications-enabled-on-ios-devices-is-there-an-alternative">
+        
+        
+          Are Push Notifications enabled on iOS devices? Is there an alternative? <a href="#are-push-notifications-enabled-on-ios-devices-is-there-an-alternative" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Yes, Delta Chat automatically uses Push Notifications for <a href="https://delta.chat/chatmail">chatmail</a> profiles.
+And no, there is no alternative on Apple’s phones to achieve instant message delivery
+because Apple devices do not allow Delta Chat to fetch data in the background.
+Push notifications are automatically activated for iOS users because
+<a href="#privacy-notifications">Delta Chat’s privacy-minimizing Push Notification system</a>
+does not expose data to Apple that it doesn’t already have.</p>
+    
+      <h3 id="android-push">
+        
+        
+          Are Push notifications enabled / needed on Android devices? <a href="#android-push" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>If a “Push Service” is available, Delta Chat enables Push Notifications
+to achieve instant message delivery for all chatmail users.
+If you are using a classic e-mail provider instead of <a href="https://delta.chat/chatmail">chatmail</a> servers,
+Push Notifications are not available.</p>
+
+<p>In the Delta Chat “Notifications” settings for “Instant delivery”
+you can change the following settings effecting all chat profiles:</p>
+
+<ul>
+  <li>
+    <p>Use Push Service: the default when using chatmail profiles and if
+a Push service is available on the phone.
+If you have both chatmail and classic e-mail profiles,
+then Push Notification will only work
+for incoming messages on chatmail profiles.</p>
+  </li>
+  <li>
+    <p>Use Background Connection: If you are not using a Push service,
+you may disable “battery optimizations” for Delta Chat,
+allowing it to fetch messages in the background.
+However, there could be delays from minutes to hours.
+Some Android vendors even restrict apps completely
+(see <a href="https://dontkillmyapp.com">dontkillmyapp.com</a>)
+and Delta Chat might not show  incoming messages
+until you manually open the app again.</p>
+  </li>
+  <li>
+    <p>Force Background Connection: This is the fallback option
+if the previous options are not available or do not achieve “instant delivery”.
+Enabling it causes a permanent notification on your phone
+which may sometimes be “minified” with recent Android phones.</p>
+  </li>
+</ul>
+
+<p>Both “Background Connection” options are energy-efficient and
+safe to try if you experience messages arrive only with long delays.</p>
+    
+      <h3 id="privacy-notifications">
+        
+        
+          How private are Delta Chat Push Notifications? <a href="#privacy-notifications" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Delta Chat Push Notification support avoids leakage of private information.
+It does not leak e-mail, IP address or message content (not even encrypted)
+to any system involved in the delivery of Push Notifications.</p>
+
+<p>Here is how Delta Chat apps perform Push Notification delivery:</p>
+
+<ul>
+  <li>
+    <p>A Delta Chat app obtains a “device token” locally and stores it
+on the <a href="https://delta.chat/chatmail">chatmail</a> server.</p>
+  </li>
+  <li>
+    <p>When a <a href="https://delta.chat/chatmail">chatmail</a> server receives an e-mail for a Delta Chat user
+it forwards the “device token” to the central Delta Chat notification proxy.</p>
+  </li>
+  <li>
+    <p>The central Delta Chat notification proxy forwards
+the “device token” to the respective Push service (Apple, Google, etc.),
+without ever knowing the IP or e-mail address of Delta Chat users.</p>
+  </li>
+  <li>
+    <p>The central Push Service (Apple, Google, etc.)
+wakes up the Delta Chat app on your device
+to check for new messages in the background.
+It does not know about the chatmail or e-mail address of the device it wakes up.
+The central Apple/Google Push services never see an e-mail address (sender or receiver)
+and also never see any message content (also not in encrypted forms).</p>
+  </li>
+</ul>
+
+<p>As of May 2024, chatmail servers know about “device tokens”
+but we plan to encrypt this information to the notification proxy
+such that the chatmail server never learns the device token.</p>
+
+<p>The central Delta Chat notification proxy <a href="https://github.com/deltachat/notifiers">is small and fully implemented in Rust</a>
+and forgets about device-tokens as soon as Apple/Google/etc processed them,
+usually in a matter of milliseconds.</p>
+
+<p>Resulting from this overall privacy design, even the seizure of a chatmail server,
+or the full seizure of the central Delta Chat notification proxy
+would not reveal private information that Push services do not already have.</p>
+    
+      <h3 id="why-does-delta-chat-integrate-with-centralized-proprietary-applegoogle-push-services">
+        
+        
+          Why does Delta Chat integrate with centralized proprietary Apple/Google push services? <a href="#why-does-delta-chat-integrate-with-centralized-proprietary-applegoogle-push-services" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Delta Chat is a free and open source decentralized messenger with free server choice,
+but we want users to reliably experience “instant delivery” of messages,
+like they experience from Whatsapp, Signal or Telegram apps,
+without asking questions up-front that are more suited to expert users or developers.</p>
+
+<p>Note that Delta Chat has a <a href="#privacy-notifications">small and privacy-preserving Push Notification system</a>
+that achieves “instant delivery” of messages for all chatmail servers
+including a potential one <a href="https://delta.chat/chatmail#selfhosted">you might setup yourself without our permission</a>.
+Welcome to the power of the interoperable and massive chatmail and e-mail system :)</p>
     
       <h2 id="加密和安全">
         
@@ -1286,12 +1493,20 @@ this way, you will have a new random jitsi room every time you call someone.</li
       </h3>
 
 <ul>
-  <li>您可以在高级设置的“实验性功能”部分打开位置流。</li>
-  <li>如果您想在聊天中分享位置，找到“附件”然后选择“位置”。现在，在 5 分钟到 6 小时之间，设置一个将您的位置传输给聊天伙伴的时间长度。</li>
-  <li>在您的位置发生变化时，聊天中的其他人可以在地图上看到它。</li>
-  <li>要看到地图和他人的位置，您需要在高级设置中打开该功能。</li>
-  <li>此功能不会与您的聊天伙伴以外的任何人分享您的位置。 <em>但是：</em>为了显示地图，我们需要从 mapbox.com 下载地图图块。所以，当您 <em>查看</em> 地图时， mapbox.com 会收到下载特定区域地图的请求。 如果这对您来说是隐私风险，那么这项功能可能不适合您。我们正在寻找 Mapbox 的去中心化替代品。</li>
-  <li>在桌面端，操作系统通常不能确定您的位置。不过您可以在地图上右键，然后描述一个位置；这个位置会作为一条消息发送到聊天中，同时也会出现在地图上。</li>
+  <li>You can turn on location streaming in the “experimental features” section of
+the advanced settings.</li>
+  <li>Now, if you want to share your location in a chat, go to “attach” and select
+“location”. You can now set a time frame in which your location will be
+streamed to your chat partners, between 5 minutes and 6 hours.</li>
+  <li>When your location changes, the others in the chat can view it on a map in
+the chat.</li>
+  <li>To see the map and view locations of others, you need to turn on the feature
+in the advanced settings.</li>
+  <li>This feature will not share your location with anyone except your chat partners.
+Map tiles are downloaded from <a href="https://openstreetmap.org">OpenStreetMap</a>.</li>
+  <li>On desktop, the OS typically can’t determine your location. Instead you can
+right click on the map and describe a location, which is sent to the chat as
+a message, but also appears on the map.</li>
 </ul>
     
       <h3 id="实验性的数据库加密到底保护了什么">
@@ -1381,43 +1596,43 @@ it</a>.</p>
 <p>根据使用的操作系统，系统可能会要求您向本应用授予权限。下面 Delta Chat 使用各类权限进行的操作：</p>
 
 <ul>
-  <li>相机<em>（可被禁止）</em>
+  <li>Camera <em>(can be disallowed)</em>
     <ul>
-      <li>拍照和录像：用于发送照片</li>
+      <li>take pictures and videos: for sending Photos</li>
     </ul>
   </li>
-  <li>联系人<em>（可被禁止）</em>
+  <li>Contacts <em>(can be disallowed)</em>
     <ul>
-      <li>读取联系人：发现要与之聊天的联系人</li>
+      <li>read your contacts: to discover contacts to chat with</li>
     </ul>
   </li>
-  <li>位置<em>（可被禁止）</em>
+  <li>Location <em>(can be disallowed)</em>
     <ul>
-      <li>访问大概位置（基于网络）：用于位置流功能</li>
-      <li>访问精确位置（基于 GPS 和网络）：用于位置流功能</li>
+      <li>access approximate location (network location sources): for the location streaming feature</li>
+      <li>access precise location (GPS and network location sources): for the location streaming feature</li>
     </ul>
   </li>
-  <li>麦克风<em>（可被禁止）</em>
+  <li>Microphone <em>(can be disallowed)</em>
     <ul>
-      <li>录制音频：用于音频消息</li>
+      <li>record audio: for audio messages</li>
     </ul>
   </li>
-  <li>存储<em>（可被禁止）</em>
+  <li>Storage <em>(can be disallowed)</em>
     <ul>
-      <li>修改或删除 SD 卡的内容：下载消息附件</li>
-      <li>读取 SD 卡的内容：与联系人分享文件</li>
+      <li>modify or delete the contents of your SD card: to download message attachments</li>
+      <li>read the contents of your SD card: to share files with your contacts</li>
     </ul>
   </li>
-  <li>其他权限
+  <li>Other app capabilities
     <ul>
-      <li>更改音频设置：允许您选择通知和音频消息的铃声和音量</li>
-      <li>开机自启动：您不必手动启动 Delta Chat</li>
-      <li>控制振动：用于通知</li>
-      <li>查看网络连接：连接到您的电子邮件提供商</li>
-      <li>阻止手机进入休眠状态：您可以在 Autocrypt 设置消息中更轻松地复制安全代码</li>
-      <li>具有完全的网络访问权限：连接到您的电子邮件提供商</li>
-      <li>查看 Wi-Fi 连接：连接到您的电子邮件提供商</li>
-      <li>要求忽略电池优化：给希望一直接收消息的用户使用</li>
+      <li>change your audio settings: so you can choose ring tones and volume for notifications and audio messages</li>
+      <li>run at startup: so you don’t have to start Delta Chat manually</li>
+      <li>control vibration: for notifications</li>
+      <li>view network connections: to connect to your E-Mail provider</li>
+      <li>prevent phone from sleeping: so you can easier copy the security code during the Autocrypt Setup Message</li>
+      <li>have full network access: to connect to your E-Mail provider</li>
+      <li>view Wi-Fi connections: to connect to your E-Mail provider</li>
+      <li>ask to ignore battery optimisations: for achieving “instant message delivery”</li>
     </ul>
   </li>
 </ul>
@@ -1463,21 +1678,6 @@ blogpost</a>.</li>
 <p>如果您使用具有 OAuth2 支持的电子邮件提供商，例如 gmail.com 或 yandex.ru，则无需在设备上存储密码。在这种情况下，只有访问令牌被使用。</p>
 
 <p>由于 Delta Chat 是开源的，要验证您的凭据是否被安全地处理了，可以检查<a href="https://github.com/deltachat/deltachat-core-rust/blob/master/src/login_param.rs">源代码</a>。我们很高兴能收到使本应用对我们的所有用户更加安全的反馈。</p>
-    
-      <h3 id="使用电子邮件的-delta-chat-真的是-即时-通讯工具吗">
-        
-        
-          使用电子邮件的 Delta Chat 真的是 <em>即时</em> 通讯工具吗？ <a href="#使用电子邮件的-delta-chat-真的是-即时-通讯工具吗" class="anchor"></a>
-        
-        
-      </h3>
-
-<ul>
-  <li>通常情况下，发送和接收消息会花费数秒。收发消息有时会花费更长时间；但是对于其他的通信软件来说，这也是真的。</li>
-  <li>在双方都积极使用本应用时，即时聊天反应迅速；而当应用运行在后台时，有时就会很慢。</li>
-  <li>由于 Android 与 iOS 经常阻止 Delta Chat 在后台运行、偶尔才会唤醒它，接收消息可能要花费数分钟。iOS 上的这种人为延迟通常比 Android 上的更糟糕。</li>
-  <li>另外，对于很多正常应用来说，Android 和 iOS 杀掉后台应用是一个问题。更多信息，请参阅 <a href="https://dontkillmyapp.com/">dontkillmyapp.com</a>。</li>
-</ul>
     
       <h3 id="哪些消息会在-delta-chat-中出现">
         

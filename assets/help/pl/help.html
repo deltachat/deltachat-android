@@ -6,7 +6,7 @@
       <li><a href="#jakie-są-zalety-delta-chat-w-porównaniu-z-innymi-komunikatorami">Jakie są zalety Delta Chat w porównaniu z innymi komunikatorami?</a></li>
       <li><a href="#co-zrobić-jeśli-oczekuję-wiadomości-od-osoby-do-której-nie-pisałem-w-przeszłości">Co zrobić, jeśli oczekuję wiadomości od osoby, do której nie pisałem w przeszłości?</a></li>
       <li><a href="#czy-delta-chat-obsługuje-obrazy-filmy-i-inne-załączniki">Czy Delta Chat obsługuje obrazy, filmy i inne załączniki?</a></li>
-      <li><a href="#multiple-accounts">Jak mogę dodawać lub przełączać się między wieloma kontami?</a></li>
+      <li><a href="#multiple-accounts">What are profiles? How can I switch between them?</a></li>
       <li><a href="#kto-widzi-moje-zdjęcie-profilowe">Kto widzi moje zdjęcie profilowe?</a></li>
       <li><a href="#signature">Czy w Delta Chat mogę ustawić tekst podpisu/status/motto?</a></li>
       <li><a href="#co-oznacza-przypinanie-wyciszanie-i-archiwizowanie">Co oznacza przypinanie, wyciszanie i archiwizowanie?</a></li>
@@ -23,6 +23,15 @@
       <li><a href="#co-oznaczają-znaczniki-wyświetlane-obok-wiadomości-wychodzących">Co oznaczają znaczniki wyświetlane obok wiadomości wychodzących?</a></li>
       <li><a href="#co-się-stanie-jeśli-włączę-opcję-usuń-wiadomości-z-serwera">Co się stanie, jeśli włączę opcję „Usuń wiadomości z serwera”?</a></li>
       <li><a href="#delold">Co się stanie, jeśli włączę opcję „Usuń wiadomości z urządzenia”?</a></li>
+    </ul>
+  </li>
+  <li><a href="#instant-delivery">Instant message delivery and Push Notifications</a>
+    <ul>
+      <li><a href="#what-are-push-notifications-how-can-i-get-instant-message-delivery">What are Push Notifications? How can I get instant message delivery?</a></li>
+      <li><a href="#are-push-notifications-enabled-on-ios-devices-is-there-an-alternative">Are Push Notifications enabled on iOS devices? Is there an alternative?</a></li>
+      <li><a href="#android-push">Are Push notifications enabled / needed on Android devices?</a></li>
+      <li><a href="#privacy-notifications">How private are Delta Chat Push Notifications?</a></li>
+      <li><a href="#why-does-delta-chat-integrate-with-centralized-proprietary-applegoogle-push-services">Why does Delta Chat integrate with centralized proprietary Apple/Google push services?</a></li>
     </ul>
   </li>
   <li><a href="#szyfrowanie-i-bezpieczeństwo">Szyfrowanie i bezpieczeństwo</a>
@@ -82,7 +91,6 @@
       <li><a href="#czy-delta-chat-działa-z-moim-dostawcą-poczty-e-mail">Czy Delta Chat działa z <em>moim</em> dostawcą poczty e-mail?</a></li>
       <li><a href="#chcę-zarządzać-własnym-serwerem-e-mail-dla-delta-chat-co-polecacie">Chcę zarządzać własnym serwerem e-mail dla Delta Chat. Co polecacie?</a></li>
       <li><a href="#dlaczego-muszę-wpisać-moje-hasło-e-mail-do-delta-chat-czy-to-jest-bezpieczne">Dlaczego muszę wpisać moje hasło e-mail do Delta Chat? Czy to jest bezpieczne?</a></li>
-      <li><a href="#jeśli-delta-chat-korzysta-z-poczty-e-mail-czy-naprawdę-jest-to-komunikator-internetowy">Jeśli Delta Chat korzysta z poczty e-mail, czy naprawdę jest to komunikator internetowy?</a></li>
       <li><a href="#jakie-wiadomości-pojawiają-się-w-delta-chat">Jakie wiadomości pojawiają się w Delta Chat?</a></li>
       <li><a href="#czy-delta-chat-obsługuje-wiadomości-e-mail-w-formacie-html">Czy Delta Chat obsługuje wiadomości e-mail w formacie HTML?</a></li>
       <li><a href="#czy-w-delta-chat-mogę-ustawić-temat-wiadomości-e-mail">Czy w Delta Chat mogę ustawić temat wiadomości e-mail?</a></li>
@@ -107,8 +115,14 @@
         
       </h2>
 
-<p>Delta Chat to nowa aplikacja do czatowania, która wysyła wiadomości e-mailem, w miarę możliwości zaszyfrowane przy użyciu Autocrypt.
-<strong>Nie musisz się nigdzie rejestrować, po prostu użyj swojego istniejącego konta e-mail w Delta Chat.</strong></p>
+<p>Delta Chat is a reliable, decentralized and secure messaging app, 
+available for mobile and desktop platforms.</p>
+
+<p>Delta Chat feels like Whatsapp or Telegram but you can also use and regard it as an e-mail app. 
+You can signup anonymously to a variety of <a href="https://delta.chat/chatmail">interoperable chatmail servers</a>
+which are minimal e-mail servers optimized for fast and secure operations. 
+Or you may use classic e-mail servers and an existing e-mail account
+in which case Delta Chat acts as an e-mail app.</p>
 
 <p><img style="float:right; width:50%; max-width:360%; margin:1em;" src="../delta-what-optim.png" /></p>
     
@@ -120,9 +134,15 @@
         
       </h3>
 
-<p>Dzięki Delta Chat możesz pisać na każdy istniejący adres e-mail - nawet
-jeśli odbiorca nie korzysta z aplikacji Delta Chat. Odbiorca nie musi 
-instalować tej samej aplikacji co Twoja, tak jak w przypadku innych komunikatorów.</p>
+<p>To securely setup contact with others <a href="#howtoe2ee">scan an invite QR code 
+or share an invite link</a>. 
+This is required when using a (default) chatmail-based chat profile 
+because chatmail servers reject un-encrypted outgoing messages.</p>
+
+<p>If you create a chat profile with a classic e-mail address 
+you may manually create a contact if you know their e-mail address
+and then write a message to them 
+even if the recipient is not using Delta Chat.</p>
     
       <h3 id="jakie-są-zalety-delta-chat-w-porównaniu-z-innymi-komunikatorami">
         
@@ -133,15 +153,25 @@ instalować tej samej aplikacji co Twoja, tak jak w przypadku innych komunikator
       </h3>
 
 <ul>
-  <li><em>Niezależny</em> od jakiejkolwiek firmy lub usług. <em>Jesteś</em> właścicielem swoich danych.</li>
-  <li>Twoje dane nie są zapisywane na centralnym serwerze, chyba że wszyscy użytkownicy korzystają z tych samych serwerów pocztowych</li>
-  <li>Nie udostępniasz nikomu swojej książki adresowej</li>
-  <li><em>Szybki</em> dzięki użyciu Push-IMAP</li>
-  <li><em>Największa baza użytkowników</em> – możesz dotrzeć również do odbiorców <em>niekorzystających</em> z Delta Chat.</li>
-  <li><em>Brak spamu</em> – domyślnie wyświetlane są, tylko wiadomości znanych użytkowników</li>
-  <li><em>Szyfrowanie end-to-end</em> za pomocą Autocrypt</li>
-  <li>Wolne oprogramowanie oparte na <em>Systemie licencjonowania praw autorskich</em> i <em>Standardach</em></li>
-  <li><em>Elastyczna tożsamość</em> ze wbudowaną obsługą <a href="#multiple-accounts">wielu kont</a></li>
+  <li>
+    <p>Anonymous chat profiles with fast, secure and interoperable <a href="https://delta.chat/chatmail">chatmail servers</a>
+which offer instant Push Notifications for iOS and Android devices.</p>
+  </li>
+  <li>
+    <p>Pervasive <a href="#multiple-accounts">multi-profile</a> and multi-device support on all platforms.</p>
+  </li>
+  <li>
+    <p>Interactive <a href="https://webxdc.org/apps">web apps in chats</a> for gaming and collaboration</p>
+  </li>
+  <li>
+    <p><a href="#security-audits">Audited end-to-end encryption</a> 
+safe against network and server attacks.</p>
+  </li>
+  <li>
+    <p>Free and Open Source software, both app and server side. 
+Built on <a href="https://github.com/deltachat/deltachat-core-rust/blob/master/standards.md">E-mail and Web Internet Standards</a>, 
+<a href="https://xkcd.com/927/">to avoid “yet another standard syndrome (xkcd 927)”</a></p>
+  </li>
 </ul>
     
       <h3 id="co-zrobić-jeśli-oczekuję-wiadomości-od-osoby-do-której-nie-pisałem-w-przeszłości">
@@ -178,15 +208,25 @@ instalować tej samej aplikacji co Twoja, tak jak w przypadku innych komunikator
       <h3 id="multiple-accounts">
         
         
-          Jak mogę dodawać lub przełączać się między wieloma kontami? <a href="#multiple-accounts" class="anchor"></a>
+          What are profiles? How can I switch between them? <a href="#multiple-accounts" class="anchor"></a>
         
         
       </h3>
 
-<p>Tap the profile image in the upper left corner to <strong>switch accounts</strong>.
-You will also find <strong>Add Account</strong> there.</p>
+<p>A profile is <strong>a name, a picture</strong> and some additional information for encrypting messages.
+A profile lives on your device(s) only
+and uses a chatmail or a classic e-mail server to transport messages.</p>
 
-<p>Możesz także dowiedzieć się, <a href="#multiclient">jak dodawać konta do wielu urządzeń</a>.</p>
+<p>On first installation of Delta Chat a first profile is created.</p>
+
+<p>Later, you can tap your profile image in the upper left corner to <strong>Add Profiles</strong>
+or to <strong>Switch Profiles</strong>.</p>
+
+<p>You may want to use separate profiles for political, family or work related activities,
+or e. g. for a dedicated “spam-profile” with which you register at websites and platforms
+that tend to cause unsolicited messages (“spam”) sooner or later.</p>
+
+<p>You may also wish to learn <a href="#multiclient">how to use the same profile on multiple devices</a>.</p>
     
       <h3 id="kto-widzi-moje-zdjęcie-profilowe">
         
@@ -399,6 +439,170 @@ nadal będziesz mógł pisać, ale nie będziesz już powiadamiany o żadnych no
   <li>Jeśli chcesz zaoszczędzić miejsce na urządzeniu, możesz wybrać opcję automatycznego usuwania starych wiadomości.</li>
   <li>Aby ją włączyć, przejdź do „Usuń wiadomości z urządzenia” w ustawieniach w sekcji „Czaty i media”. Możesz ustawić przedział czasowy pomiędzy „po 1 godzinie” a „po 1 roku”; w ten sposób <em>wszystkie</em> wiadomości zostaną usunięte z urządzenia, gdy tylko staną się starsze.</li>
 </ul>
+    
+      <h2 id="instant-delivery">
+        
+        
+          Instant message delivery and Push Notifications <a href="#instant-delivery" class="anchor"></a>
+        
+        
+      </h2>
+    
+      <h3 id="what-are-push-notifications-how-can-i-get-instant-message-delivery">
+        
+        
+          What are Push Notifications? How can I get instant message delivery? <a href="#what-are-push-notifications-how-can-i-get-instant-message-delivery" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Push Notifications are sent by Apple and Google “Push services” to a user’s device
+so that an inactive Delta Chat app can fetch messages in the background
+and show notifications on a user’s phone if needed.</p>
+
+<p>Push Notifications work with all <a href="https://delta.chat/chatmail">chatmail</a> servers on</p>
+
+<ul>
+  <li>
+    <p>iOS devices, by integrating with Apple Push services.</p>
+  </li>
+  <li>
+    <p>Android devices, by integrating with the Google FCM Push service,
+including on devices that use <a href="https://microg.org">microG</a>
+instead of proprietary Google code on the phone.</p>
+  </li>
+</ul>
+
+<p>As of May 2024, classic e-mail servers do not support Push Notifications
+for Delta Chat users.</p>
+    
+      <h3 id="are-push-notifications-enabled-on-ios-devices-is-there-an-alternative">
+        
+        
+          Are Push Notifications enabled on iOS devices? Is there an alternative? <a href="#are-push-notifications-enabled-on-ios-devices-is-there-an-alternative" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Yes, Delta Chat automatically uses Push Notifications for <a href="https://delta.chat/chatmail">chatmail</a> profiles.
+And no, there is no alternative on Apple’s phones to achieve instant message delivery
+because Apple devices do not allow Delta Chat to fetch data in the background.
+Push notifications are automatically activated for iOS users because
+<a href="#privacy-notifications">Delta Chat’s privacy-minimizing Push Notification system</a>
+does not expose data to Apple that it doesn’t already have.</p>
+    
+      <h3 id="android-push">
+        
+        
+          Are Push notifications enabled / needed on Android devices? <a href="#android-push" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>If a “Push Service” is available, Delta Chat enables Push Notifications
+to achieve instant message delivery for all chatmail users.
+If you are using a classic e-mail provider instead of <a href="https://delta.chat/chatmail">chatmail</a> servers,
+Push Notifications are not available.</p>
+
+<p>In the Delta Chat “Notifications” settings for “Instant delivery”
+you can change the following settings effecting all chat profiles:</p>
+
+<ul>
+  <li>
+    <p>Use Push Service: the default when using chatmail profiles and if
+a Push service is available on the phone.
+If you have both chatmail and classic e-mail profiles,
+then Push Notification will only work
+for incoming messages on chatmail profiles.</p>
+  </li>
+  <li>
+    <p>Use Background Connection: If you are not using a Push service,
+you may disable “battery optimizations” for Delta Chat,
+allowing it to fetch messages in the background.
+However, there could be delays from minutes to hours.
+Some Android vendors even restrict apps completely
+(see <a href="https://dontkillmyapp.com">dontkillmyapp.com</a>)
+and Delta Chat might not show  incoming messages
+until you manually open the app again.</p>
+  </li>
+  <li>
+    <p>Force Background Connection: This is the fallback option
+if the previous options are not available or do not achieve “instant delivery”.
+Enabling it causes a permanent notification on your phone
+which may sometimes be “minified” with recent Android phones.</p>
+  </li>
+</ul>
+
+<p>Both “Background Connection” options are energy-efficient and
+safe to try if you experience messages arrive only with long delays.</p>
+    
+      <h3 id="privacy-notifications">
+        
+        
+          How private are Delta Chat Push Notifications? <a href="#privacy-notifications" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Delta Chat Push Notification support avoids leakage of private information.
+It does not leak e-mail, IP address or message content (not even encrypted)
+to any system involved in the delivery of Push Notifications.</p>
+
+<p>Here is how Delta Chat apps perform Push Notification delivery:</p>
+
+<ul>
+  <li>
+    <p>A Delta Chat app obtains a “device token” locally and stores it
+on the <a href="https://delta.chat/chatmail">chatmail</a> server.</p>
+  </li>
+  <li>
+    <p>When a <a href="https://delta.chat/chatmail">chatmail</a> server receives an e-mail for a Delta Chat user
+it forwards the “device token” to the central Delta Chat notification proxy.</p>
+  </li>
+  <li>
+    <p>The central Delta Chat notification proxy forwards
+the “device token” to the respective Push service (Apple, Google, etc.),
+without ever knowing the IP or e-mail address of Delta Chat users.</p>
+  </li>
+  <li>
+    <p>The central Push Service (Apple, Google, etc.)
+wakes up the Delta Chat app on your device
+to check for new messages in the background.
+It does not know about the chatmail or e-mail address of the device it wakes up.
+The central Apple/Google Push services never see an e-mail address (sender or receiver)
+and also never see any message content (also not in encrypted forms).</p>
+  </li>
+</ul>
+
+<p>As of May 2024, chatmail servers know about “device tokens”
+but we plan to encrypt this information to the notification proxy
+such that the chatmail server never learns the device token.</p>
+
+<p>The central Delta Chat notification proxy <a href="https://github.com/deltachat/notifiers">is small and fully implemented in Rust</a>
+and forgets about device-tokens as soon as Apple/Google/etc processed them,
+usually in a matter of milliseconds.</p>
+
+<p>Resulting from this overall privacy design, even the seizure of a chatmail server,
+or the full seizure of the central Delta Chat notification proxy
+would not reveal private information that Push services do not already have.</p>
+    
+      <h3 id="why-does-delta-chat-integrate-with-centralized-proprietary-applegoogle-push-services">
+        
+        
+          Why does Delta Chat integrate with centralized proprietary Apple/Google push services? <a href="#why-does-delta-chat-integrate-with-centralized-proprietary-applegoogle-push-services" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Delta Chat is a free and open source decentralized messenger with free server choice,
+but we want users to reliably experience “instant delivery” of messages,
+like they experience from Whatsapp, Signal or Telegram apps,
+without asking questions up-front that are more suited to expert users or developers.</p>
+
+<p>Note that Delta Chat has a <a href="#privacy-notifications">small and privacy-preserving Push Notification system</a>
+that achieves “instant delivery” of messages for all chatmail servers
+including a potential one <a href="https://delta.chat/chatmail#selfhosted">you might setup yourself without our permission</a>.
+Welcome to the power of the interoperable and massive chatmail and e-mail system :)</p>
     
       <h2 id="szyfrowanie-i-bezpieczeństwo">
         
@@ -997,12 +1201,20 @@ See our blog post about <a href="https://delta.chat/en/2024-03-25-crypto-analysi
       </h3>
 
 <ul>
-  <li>Możesz włączyć przesyłanie strumieniowe lokalizacji w sekcji „Funkcje eksperymentalne” w ustawieniach zaawansowanych.</li>
-  <li>Teraz, jeśli chcesz udostępnić swoją lokalizację na czacie, przejdź do „załącz” i wybierz „Lokalizacja”. Możesz teraz ustawić przedział czasowy, w którym Twoja lokalizacja będzie przesyłana strumieniowo do rozmówców, od 5 minut do 6 godzin.</li>
-  <li>Gdy Twoja lokalizacja się zmienia, inni uczestnicy czatu mogą ją zobaczyć na mapie w czacie.</li>
-  <li>Aby zobaczyć mapę i wyświetlić lokalizacje innych osób, musisz włączyć tę funkcję w ustawieniach zaawansowanych.</li>
-  <li>Ta funkcja nie będzie udostępniać Twojej lokalizacji nikomu poza partnerami czatu. <em>Ale:</em> aby pokazać mapę, musimy pobrać część mapy z serwisu mapbox.com, więc jeśli <em>wyświetlasz</em> mapę, serwis mapbox.com jest proszony o mapę określonego obszaru. Jeśli jest to dla Ciebie zagrożeniem dla prywatności, ta funkcja może nie być dla Ciebie. Pracujemy nad znalezieniem zdecentralizowanej alternatywy dla Mapbox.</li>
-  <li>Na komputerze system operacyjny zwykle nie może określić Twojej lokalizacji. Zamiast tego możesz kliknąć prawym przyciskiem myszy na mapie i opisać lokalizację, która jest wysyłana do czatu jako wiadomość, ale także pojawia się na mapie.</li>
+  <li>You can turn on location streaming in the “experimental features” section of
+the advanced settings.</li>
+  <li>Now, if you want to share your location in a chat, go to “attach” and select
+“location”. You can now set a time frame in which your location will be
+streamed to your chat partners, between 5 minutes and 6 hours.</li>
+  <li>When your location changes, the others in the chat can view it on a map in
+the chat.</li>
+  <li>To see the map and view locations of others, you need to turn on the feature
+in the advanced settings.</li>
+  <li>This feature will not share your location with anyone except your chat partners.
+Map tiles are downloaded from <a href="https://openstreetmap.org">OpenStreetMap</a>.</li>
+  <li>On desktop, the OS typically can’t determine your location. Instead you can
+right click on the map and describe a location, which is sent to the chat as
+a message, but also appears on the map.</li>
 </ul>
     
       <h3 id="co-właściwie-chroni-eksperymentalne-szyfrowanie-bazy-danych">
@@ -1087,27 +1299,45 @@ zostać poproszony o przyznanie uprawnień aplikacji.
 Oto, co robi Delta Chat z tymi uprawnieniami:</p>
 
 <ul>
-  <li>Aparat <em>(można zablokować)</em></li>
-  <li>robi zdjęcia i filmy: do wysyłania zdjęć</li>
-  <li>Kontakty <em>(można zablokować)</em></li>
-  <li>czyta twoje kontakty: aby znaleźć kontakty do czatu</li>
-  <li>Lokalizacja <em>(można zablokować)</em></li>
-  <li>dostęp do przybliżonej lokalizacji (sieciowe źródła lokalizacji): dla funkcji przesyłania strumieniowego lokalizacji</li>
-  <li>dostęp do dokładnej lokalizacji (GPS i sieciowe źródła lokalizacji): dla funkcji przesyłania strumieniowego lokalizacji</li>
-  <li>Mikrofon <em>(można zablokować)</em></li>
-  <li>nagrywanie dźwięku: dla wiadomości audio</li>
-  <li>Przechowywanie <em>(można zablokować)</em></li>
-  <li>modyfikowanie lub usuwanie zawartości karty SD: pobieranie załączników do wiadomości</li>
-  <li>czytanie zawartość twojej karty SD: aby udostępniać pliki swoim kontaktom</li>
-  <li>Inne możliwości aplikacji</li>
-  <li>zmiana ustawienia dźwięku: możesz wybrać dzwonki i głośność dla powiadomień i wiadomości audio</li>
-  <li>uruchamianie przy starcie: więc nie musisz ręcznie uruchamiać Delta Chat</li>
-  <li>kontrola wibracji: do powiadomień</li>
-  <li>przeglądanie połączenia sieciowych: aby połączyć się z dostawcą poczty e-mail</li>
-  <li>zapobieganie uśpieniu telefonu: dzięki czemu możesz łatwiej skopiować kod zabezpieczający podczas komunikatu konfiguracyjnego Autocrypt</li>
-  <li>pełny dostęp do sieci: aby połączyć się z dostawcą poczty e-mail</li>
-  <li>wyświetlanie połączenia Wi-Fi: aby połączyć się z dostawcą poczty e-mail</li>
-  <li>prośba o zignorowanie optymalizacji baterii: dla użytkowników, którzy chcą otrzymywać wiadomości przez cały czas</li>
+  <li>Camera <em>(can be disallowed)</em>
+    <ul>
+      <li>take pictures and videos: for sending Photos</li>
+    </ul>
+  </li>
+  <li>Contacts <em>(can be disallowed)</em>
+    <ul>
+      <li>read your contacts: to discover contacts to chat with</li>
+    </ul>
+  </li>
+  <li>Location <em>(can be disallowed)</em>
+    <ul>
+      <li>access approximate location (network location sources): for the location streaming feature</li>
+      <li>access precise location (GPS and network location sources): for the location streaming feature</li>
+    </ul>
+  </li>
+  <li>Microphone <em>(can be disallowed)</em>
+    <ul>
+      <li>record audio: for audio messages</li>
+    </ul>
+  </li>
+  <li>Storage <em>(can be disallowed)</em>
+    <ul>
+      <li>modify or delete the contents of your SD card: to download message attachments</li>
+      <li>read the contents of your SD card: to share files with your contacts</li>
+    </ul>
+  </li>
+  <li>Other app capabilities
+    <ul>
+      <li>change your audio settings: so you can choose ring tones and volume for notifications and audio messages</li>
+      <li>run at startup: so you don’t have to start Delta Chat manually</li>
+      <li>control vibration: for notifications</li>
+      <li>view network connections: to connect to your E-Mail provider</li>
+      <li>prevent phone from sleeping: so you can easier copy the security code during the Autocrypt Setup Message</li>
+      <li>have full network access: to connect to your E-Mail provider</li>
+      <li>view Wi-Fi connections: to connect to your E-Mail provider</li>
+      <li>ask to ignore battery optimisations: for achieving “instant message delivery”</li>
+    </ul>
+  </li>
 </ul>
     
       <h3 id="czy-delta-chat-działa-z-moim-dostawcą-poczty-e-mail">
@@ -1150,21 +1380,6 @@ Jednak niektórzy dostawcy potrzebują specjalnych opcji, aby działać poprawni
 
 <p>Ponieważ Delta Chat jest Open Source, możesz sprawdzić <a href="https://github.com/deltachat/deltachat-core-rust/blob/master/src/login_param.rs">Kod źródłowy</a>
 jeśli chcesz sprawdzić, czy Twoje poświadczenia są przetwarzane w bezpieczny sposób. Cieszymy się z opinii, które sprawiają, że aplikacja jest bezpieczniejsza dla wszystkich naszych użytkowników.</p>
-    
-      <h3 id="jeśli-delta-chat-korzysta-z-poczty-e-mail-czy-naprawdę-jest-to-komunikator-internetowy">
-        
-        
-          Jeśli Delta Chat korzysta z poczty e-mail, czy naprawdę jest to komunikator internetowy? <a href="#jeśli-delta-chat-korzysta-z-poczty-e-mail-czy-naprawdę-jest-to-komunikator-internetowy" class="anchor"></a>
-        
-        
-      </h3>
-
-<ul>
-  <li>Wysyłanie i odbieranie wiadomości zwykle zajmuje kilka sekund. Czasami zdarzają się przypadki, w których trwa to dłużej, ale prawdopodobnie jest to również prawdą w przypadku każdego innego komunikatora.</li>
-  <li>Natychmiastowe czatowanie działa szybko, jeśli obie strony aktywnie korzystają z aplikacji. Czasami działa wolniej, jeśli aplikacja działa w tle.</li>
-  <li>Odbieranie wiadomości może zająć kilka minut, ponieważ zarówno Android, jak i iOS często zatrzymują Delta Chat podczas działaniem w tle i budzą go tylko od czasu do czasu. To sztuczne opóźnienie jest zwykle gorsze na iOS niż na Androidzie.</li>
-  <li>Jednak „ubijanie” aplikacji działających w tle na Androidzie i iOS stanowi problem dla wielu legalnych aplikacji. Aby uzyskać więcej informacji, zobacz <a href="https://dontkillmyapp.com/">dontkillmyapp.com</a>.</li>
-</ul>
     
       <h3 id="jakie-wiadomości-pojawiają-się-w-delta-chat">
         
