@@ -1148,6 +1148,16 @@
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat quiere guardar imágenes en tu galería</string>
 
 
+    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+    <string name="pref_instant_delivery">Entrega inmediata</string>
+    <string name="pref_push_notifications">Usar servicio Push</string>
+    <string name="pref_push_notifications_explain">Notificaciones Push estables para servidores de chatmail</string>
+    <string name="pref_push_ask_disable">¿Desactivar el uso del servicio Push?\n\nEsto puede provocar retrasos en las notificaciones.</string>
+    <string name="pref_background_notifications">Usar conexión en segundo plano</string>
+    <string name="pref_background_notifications_explain">Requiere desactivar las optimizaciones de batería, utilícelas si el servicio Push no está disponible</string>
+    <string name="pref_reliable_service">Forzar conexión en segundo plano</string>
+    <string name="pref_reliable_service_explain">Usando una notificación permanente</string>
+
     <string name="pref_background_notifications_rationale">Para mantener la conexión de tu servidor email y recibir mensajes en segundo plano, ignorar las optimizaciones en el próximo paso.\n\nDelta Chat usa pocos recursos y cuida no drenar tu batería</string>
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="perm_enable_bg_reminder_title">Toque aquí para recibir mensajes mientras Delta Chat está en segundo plano.</string>

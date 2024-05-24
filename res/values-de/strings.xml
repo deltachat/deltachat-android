@@ -1137,6 +1137,7 @@
     <string name="pref_instant_delivery">Sofortige Benachrichtigungen</string>
     <string name="pref_push_notifications">Push-Dienst verwenden</string>
     <string name="pref_push_notifications_explain">Zuverlässige Push-Benachrichtigungen für Chatmail-Server</string>
+    <string name="pref_push_ask_disable">Push-Dienst nicht mehr verwenden? Dies kann zu verzögerten Benachrichtigungen führen.</string>
     <string name="pref_background_notifications">Hintergrundverbindung verwenden</string>
     <string name="pref_background_notifications_explain">Erfordert das Deaktivieren der Akku-Optimierungen, empfohlen, wenn kein Push-Dienst verfügbar ist</string>
     <string name="pref_reliable_service">Hintergrundverbindung erzwingen</string>
