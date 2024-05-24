@@ -1137,7 +1137,6 @@
     <string name="pref_instant_delivery">Instant Delivery</string>
     <string name="pref_push_notifications">Use Push Service</string>
     <string name="pref_push_notifications_explain">Reliable Push Notifications for Chatmail-Servers</string>
-    <string name="pref_push_notifications_unavailable">Not available</string>
     <string name="pref_background_notifications">Use Background Connection</string>
     <string name="pref_background_notifications_explain">Requires ignored battery optimizations, use if Push Service is unavailable</string>
     <string name="pref_reliable_service">Force Background Connection</string>
