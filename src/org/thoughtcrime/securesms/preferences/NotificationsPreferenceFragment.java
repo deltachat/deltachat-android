@@ -72,12 +72,6 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
     CheckBoxPreference usePushService = this.findPreference("pref_push_enabled");
     usePushService.setChecked(Prefs.isPushEnabled(getContext()));
     usePushService.setOnPreferenceChangeListener((preference, newValue) -> {
-      boolean enabled = (Boolean) newValue; // Prefs.isPushEnabled() still has the old value
-      if (enabled) {
-        FcmReceiveService.register(getContext());
-      } else {
-        FcmReceiveService.deleteToken();
-      }
       return true;
     });
 
@@ -126,6 +120,18 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
 
     // update ignoreBattery in onResume() to reflects changes done in the system settings
     ignoreBattery.setChecked(isIgnoringBatteryOptimizations());
+  }
+
+  @Override
+  public void onPause() {
+    super.onPause();
+
+    // we delay applying token changes to avoid changes and races if the user is just playing around
+    if (Prefs.isPushEnabled(getContext()) && FcmReceiveService.getToken() == null) {
+      FcmReceiveService.register(getContext());
+    } else if(!Prefs.isPushEnabled(getContext()) && FcmReceiveService.getToken() != null) {
+      FcmReceiveService.deleteToken();
+    }
   }
 
   @Override
