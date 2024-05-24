@@ -171,6 +171,11 @@ public class Prefs {
     return getBooleanPreference(context, NOTIFICATION_PREF, true);
   }
 
+  public static boolean isPushEnabled(Context context) {
+    boolean defaultPush = true;
+    return getBooleanPreference(context, "pref_push_enabled", defaultPush);
+  }
+
   public static boolean isHardCompressionEnabled(Context context) {
     return DcHelper.getContext(context).getConfigInt(DcHelper.CONFIG_MEDIA_QUALITY) == DcContext.DC_MEDIA_QUALITY_WORSE;
   }

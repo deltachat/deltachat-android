@@ -17,6 +17,7 @@ import com.google.firebase.messaging.RemoteMessage;
 
 import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.BuildConfig;
+import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 
 public class FcmReceiveService extends FirebaseMessagingService {
@@ -27,6 +28,11 @@ public class FcmReceiveService extends FirebaseMessagingService {
   private static volatile String prefixedToken;
 
   public static void register(Context context) {
+    if(!Prefs.isPushEnabled(context)) {
+      Log.w(TAG, "FCM disabled in user settings");
+      return;
+    }
+
     if (Build.VERSION.SDK_INT < 19) {
       Log.w(TAG, "FCM not available on SDK < 19");
       triedRegistering = true;

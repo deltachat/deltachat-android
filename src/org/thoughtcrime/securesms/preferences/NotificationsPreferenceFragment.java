@@ -30,6 +30,7 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
 
   private static final int REQUEST_CODE_NOTIFICATION_SELECTED = 1;
 
+  private CheckBoxPreference usePushService;
   private CheckBoxPreference ignoreBattery;
 
   @Override
@@ -67,6 +68,9 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
     initializeListSummary((ListPreference) findPreference(Prefs.NOTIFICATION_PRIORITY_PREF));
 
     initializeRingtoneSummary(findPreference(Prefs.RINGTONE_PREF));
+
+    usePushService = this.findPreference("pref_push_enabled");
+    usePushService.setChecked(Prefs.isPushEnabled(getActivity()));
 
     ignoreBattery = this.findPreference("pref_ignore_battery_optimizations");
     ignoreBattery.setVisible(needsIgnoreBatteryOptimizations());
