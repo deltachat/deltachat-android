@@ -1037,15 +1037,9 @@
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">O Delta Chat deseja salvar imagens em sua biblioteca de fotos.</string>
 
 
-    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
-    <string name="pref_background_notifications">Notificações de segundo plano</string>
-    <string name="pref_background_notifications_explain">Usa uma conexão de segundo plano com seu servidor e requer otimizações de bateria ignoradas.</string>
     <string name="pref_background_notifications_rationale">Para manter a conexão com seu servidor de e-mail e receber mensagens em segundo plano, ignore as otimizações de bateria na próxima etapa.\n\nO Delta Chat usa poucos recursos e toma cuidado para não descarregar a bateria.</string>
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
-    <string name="pref_reliable_service">Conexão de segundo plano confiável</string>
-    <string name="pref_reliable_service_explain">Requer uma notificação permanente</string>
     <string name="perm_enable_bg_reminder_title">Toque aqui para receber mensagens enquanto o Delta Chat estiver em segundo plano.</string>
     <string name="perm_enable_bg_already_done">Você já permitiu que o Delta Chat receba mensagens em segundo plano.\n\nSe as mensagens ainda não chegarem em segundo plano, verifique também as configurações do sistema.</string>
-
 
     </resources>

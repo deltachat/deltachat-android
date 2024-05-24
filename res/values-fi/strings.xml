@@ -973,15 +973,9 @@
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat haluaa tallentaa kuvia kirjastoosi.</string>
 
 
-    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
-    <string name="pref_background_notifications">Ilmoitukset taustalla</string>
-    <string name="pref_background_notifications_explain">Käyttää yhteyttä palvelimeesi taustalla. Akun käytön optimointi on poistettava käytöstä.</string>
     <string name="pref_background_notifications_rationale">Yhteyden ylläpitämiseksi sähköpostipalvelimen kanssa ja viestien vastaanottamiseksi taustalla, poista akun käytön optimointi käytöstä seuraavassa vaiheessa.\n\nDelta Chat käyttää vain vähän laitteen suorituskyvystä, eikä juurikaan kuluta akkua.</string>
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
-    <string name="pref_reliable_service">Luotettava yhteys taustalla</string>
-    <string name="pref_reliable_service_explain">Vaatii pysyvän ilmoituksen</string>
     <string name="perm_enable_bg_reminder_title">Napauta vastaanottaaksesi viestejä, kun Delta Chat on taustalla.</string>
     <string name="perm_enable_bg_already_done">Annoit jo luvan viestien vastaanottamiselle taustalla.\n\nJos et saa viestejä taustalla, tarkista myös järjestelmäasetukset.</string>
-
 
     </resources>

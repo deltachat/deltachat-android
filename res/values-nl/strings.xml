@@ -1133,16 +1133,10 @@
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat wil afbeeldingen opslaan in je fotogalerij.</string>
 
 
-    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
-    <string name="pref_background_notifications">Achtergrondmeldingen</string>
-    <string name="pref_background_notifications_explain">Zet een achtergrondverbinding op naar je server en negeert alle accu-optimalisaties.</string>
     <string name="pref_background_notifications_rationale">Om een achtergrondverbinding naar je server op te zetten, dien je in de volgende stap alle accu-optimalisaties te negeren.\n\nDelta Chat gebruikt weinig systeembronnen en verhoogt je accuverbruik nauwelijks.</string>
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
-    <string name="pref_reliable_service">Betrouwbare achtergrondverbinding</string>
-    <string name="pref_reliable_service_explain">Vereist een permanente melding</string>
     <string name="perm_enable_bg_reminder_title">Druk hier om berichten te ontvangen als Delta Chat niet geopend is.</string>
     <string name="perm_enable_bg_already_done">Je hebt al toestemming gegeven voor het ophalen van berichten op de achtergrond.\n\nAls het nog steeds niet werkt, controleer dan de systeeminstellingen.</string>
-
 
     <!-- device messages for updates -->
     <string name="update_1_44_android">Wijzigingslog:\n\n❤️ Jaaaa! Eindelijk een langverwachte functie toegevoegd: een bericht lang ingedrukt houden om te reageren\n\n🔗 Als je geen QR-codes kunt scannen, dan kun je ze voortaan delen als uitnodigingslinks\n\n🔵 Voortaan wordt het aantal ongelezen berichten van alle accounts in de titel getoond\n\n… en vele, vele bugs opgelost… %1$s\n\nHelp de app te verbeteren: via ‘Instellingen → Geavanceerd → Statistieken versturen’ kun je de ontwikkelaars helpen om inzicht te krijgen in het dagelijks gebruik. Je kunt alle te versturen gegevens vooraf inzien.</string>

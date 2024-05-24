@@ -688,15 +688,9 @@
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat vill spara bilder i ditt fotogalleri.</string>
 
 
-    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
-    <string name="pref_background_notifications">Bakgrundsaviseringar</string>
-    <string name="pref_background_notifications_explain">Använder en bakgrundsanslutning till din server och kräver undantagna batterioptimeringar.</string>
     <string name="pref_background_notifications_rationale">För att behålla anslutningen till din e-postserver och fortsätta ta emot meddelanden i bakgrunden, behöver du skippa batterioptimeringen i nästa steg.\n\nDelta Chat använder små resurser och ser till att inte dra ur ditt batteri.</string>
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
-    <string name="pref_reliable_service">Tillförlitlig bakgrundsanslutning</string>
-    <string name="pref_reliable_service_explain">Kräver permanent avisering</string>
     <string name="perm_enable_bg_reminder_title">Tryck här för att ta emot meddelanden medan Delta Chat är i bakgrunden.</string>
     <string name="perm_enable_bg_already_done">Du har redan gett Delta Chatt tillstånd att ta emot meddelanden i bakgrunden.\n\nKontrollera dina systeminställningar också, om det fortfarande inte kommer några meddelanden i bakgrunden.</string>
-
 
     </resources>

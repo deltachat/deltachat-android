@@ -1062,15 +1062,9 @@
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat muốn lưu hình ảnh vào thư viện ảnh của bạn.</string>
 
 
-    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
-    <string name="pref_background_notifications">Thông báo nền</string>
-    <string name="pref_background_notifications_explain">Sử dụng kết nối nền tới máy chủ của bạn và yêu cầu bỏ qua tối ưu hóa pin.</string>
     <string name="pref_background_notifications_rationale">Để duy trì kết nối với máy chủ e-mail của bạn và nhận tin nhắn ở chế độ nền, hãy bỏ qua tối ưu hóa pin trong bước tiếp theo.\n\nDelta Chat sử dụng ít tài nguyên và chú ý không làm tiêu hao pin của bạn.</string>
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
-    <string name="pref_reliable_service">Kết nối nền đáng tin cậy</string>
-    <string name="pref_reliable_service_explain">Yêu cầu thông báo vĩnh viễn</string>
     <string name="perm_enable_bg_reminder_title">Nhấn vào đây để nhận tin nhắn khi Delta Chat ở chế độ nền.</string>
     <string name="perm_enable_bg_already_done">Bạn đã cho phép Delta Chat nhận tin nhắn trong nền.\n\nNếu tin nhắn vẫn không đến trong nền, vui lòng kiểm tra cài đặt hệ thống của bạn.</string>
-
 
     </resources>

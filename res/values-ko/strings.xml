@@ -925,14 +925,9 @@
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat 에서 사진 라이브러리에 이미지를 저장하려고 합니다.</string>
 
 
-    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
-    <string name="pref_background_notifications">백그라운드 알림</string>
-    <string name="pref_background_notifications_explain">서버에 대한 백그라운드 연결을 사용하며 무시된 배터리 최적화가 필요합니다.</string>
     <string name="pref_background_notifications_rationale">이메일 서버에 대한 연결을 유지하고 백그라운드에서 메시지를 수신하려면 다음 단계에서 배터리 최적화를 무시하십시오.\n\nDelta Chat은 리소스를 거의 사용하지 않으며 배터리가 소모되지 않도록 주의합니다.</string>
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
-    <string name="pref_reliable_service">안정적인 백그라운드 연결</string>
     <string name="perm_enable_bg_reminder_title">Delta Chat이 백그라운드에 있는 동안 메시지를 받으려면 여기를 누르십시오.</string>
     <string name="perm_enable_bg_already_done">이미 Delta Chat 에서 백그라운드로 메시지를 수신하도록 허용했습니다.\n\n메시지가 여전히 백그라운드로 도착하지 않으면 시스템 설정도 확인하십시오.</string>
-
 
     </resources>

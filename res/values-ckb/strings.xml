@@ -599,11 +599,8 @@
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">دێڵتا چات دەیەوێت وێنە پاشەکەوت بکاتە نێو پیشانگاکەت.</string>
 
 
-    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
-    <string name="pref_background_notifications">وریاکەرەوەکانی پشتخان</string>
-    <string name="pref_reliable_service_explain">وریاکەرەوەیەکی هەمیشەیی پێویستە</string>
+    <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="perm_enable_bg_reminder_title">بۆ وەرگرتنی پەیامەکان لەو کاتانەدا کە دێڵتا چات لە پشتخانەوەیە، لێرە کرتە بکە.</string>
     <string name="perm_enable_bg_already_done">تۆ ئێستا ڕێگەت بە دێڵتا چات دا کە لە پشتخانەوە پەیامەکان وەربگرێت.\n\n ئەگەر هێشتا لە پشخاندا پەیامەکان نایەن، سەرنجێکیش لە ڕێکخستنەکانی سیستەم بدەوە.</string>
-
 
     </resources>

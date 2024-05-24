@@ -1087,15 +1087,9 @@
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat veut enregistrer les images dans votre bibliothèque photo.</string>
 
 
-    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
-    <string name="pref_background_notifications">Notifications d\'arrière-plan</string>
-    <string name="pref_background_notifications_explain">Utilise une connexion à votre serveur en arrière-plan et requiert la désactivation de l\'optimisation de la batterie</string>
     <string name="pref_background_notifications_rationale">Pour maintenir une connexion à votre serveur de courriel et recevoir les messages en arrière-plan, ignorez l\'optimisation de la batterie à l\'étape suivante.\n\nDelta Chat utilise peu de ressources et prend garde à ne pas vider votre batterie.</string>
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
-    <string name="pref_reliable_service">Connexion d\'arrière-plan fiable</string>
-    <string name="pref_reliable_service_explain">Requiert une notification permanente</string>
     <string name="perm_enable_bg_reminder_title">Touchez ici pour recevoir des messages pendant que DeltaChat est en arrière-plan.</string>
     <string name="perm_enable_bg_already_done">Vous avez déjà autorisé Delta Chat à recevoir des messages en arrière plan.\n\nSi vous ne les recevez toujours pas en arrière plan, vérifiez les paramètres de votre système.</string>
-
 
     </resources>

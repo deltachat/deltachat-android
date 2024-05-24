@@ -1134,15 +1134,18 @@
 
 
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
-    <string name="pref_background_notifications">Hintergrundbenachrichtigungen</string>
-    <string name="pref_background_notifications_explain">Verwendet eine Hintergrundverbindung zu Ihrem Server und erfordert das Ausschalten der Akku-Optimierung</string>
+    <string name="pref_instant_delivery">Sofortige Benachrichtigungen</string>
+    <string name="pref_push_notifications">Push-Dienst verwenden</string>
+    <string name="pref_push_notifications_explain">Zuverlässige Push-Benachrichtigungen für Chatmail-Server</string>
+    <string name="pref_background_notifications">Hintergrundverbindung verwenden</string>
+    <string name="pref_background_notifications_explain">Erfordert das Deaktivieren der Akku-Optimierungen, empfohlen, wenn kein Push-Dienst verfügbar ist</string>
+    <string name="pref_reliable_service">Hintergrundverbindung erzwingen</string>
+    <string name="pref_reliable_service_explain">Verursacht eine permanente Benachrichtigung</string>
+
     <string name="pref_background_notifications_rationale">Um die Verbindung zu Ihrem E-Mail-Server aufrechtzuerhalten und Nachrichten im Hintergrund zu empfangen, ignorieren Sie im nächsten Schritt die \"Akku-Optimierungen\".\n\nDelta Chat verbraucht nur minimale Ressourcen und achtet darauf, den Akku zu schonen.</string>
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
-    <string name="pref_reliable_service">Zuverlässige Hintergrundverbindung</string>
-    <string name="pref_reliable_service_explain">Erfordert immer sichtbaren Hinweis</string>
     <string name="perm_enable_bg_reminder_title">Tippen Sie hier, um Nachrichten zu empfangen, während Delta Chat im Hintergrund läuft.</string>
     <string name="perm_enable_bg_already_done">Sie haben Delta Chat bereits erlaubt, Nachrichten im Hintergrund zu empfangen.\n\nFalls keine Nachrichten eingehen, überprüfen Sie bitte auch Ihre Systemeinstellungen.</string>
-
 
     <!-- device messages for updates -->
     <string name="update_1_44_android">Was gibt es Neues?\n\n❤️ Lang erwartet: Nachricht lang antippen, um mit einem Emoji zu reagieren\n\n🔗 Wenn Sie keine QR-Codes scannen können, teilen Sie sie als Einladungslinks\n\n🔵 Ungelesene Nachrichten aller Konten werden gezählt und im Titel angezeigt\n\n… und VIELE Bugfixes … %1$s\n\nPS: Mit \"Einstellungen / Erweitert / Statistik senden\", können Sie den Entwicklern helfen, die App besser für die reale Nutzung zu optimieren. Sie können die Daten vor dem Senden überprüfen</string>

@@ -854,15 +854,9 @@
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat chce uložit obrázky do tvé galerie fotek.</string>
 
 
-    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
-    <string name="pref_background_notifications">Upozornění v pozadí</string>
-    <string name="pref_background_notifications_explain">V pozadí udržuje spojení s tvým serverem. Vyžaduje nedbání optimalizací baterie.</string>
     <string name="pref_background_notifications_rationale">K udržení spojení s e-mailovým serverem a přijímání zpráv na pozadí vyber v následujícím kroce nedbání optimalizací baterie.\n\nDelta Chat používá jen málo zdroje a snaží se šetřit tvou baterii.</string>
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
-    <string name="pref_reliable_service">Spolehlivé spojení na pozadí</string>
-    <string name="pref_reliable_service_explain">Vyžaduje neustálé upozornění</string>
     <string name="perm_enable_bg_reminder_title">Stiskni zde a přijímání zpráv bude probíhat při chodu Delta Chatu na pozadí.</string>
     <string name="perm_enable_bg_already_done">Přijímání zpráv na pozadí je Delta Chatu již povoleno.\n\nV případě nepřicházení nových zpráv si prosím zkontroluj své systémové nastavení.</string>
-
 
     </resources>
