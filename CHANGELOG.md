@@ -3,45 +3,16 @@
 ## v1.46.0
 2024-05
 
+* new onboarding: you can create a new profile with one tap on "Let's Get Started!" -
+  or use an existing login or second-device-setup as usual
+* use FCM PUSH notification if supported by providers (as chatmail) and by the operating system
 * do not ask for disabling "battery optimisations" when PUSH notifications are working
 * add an option to disable PUSH notifications
-* use colors for info/warning/error in the log
-* fix: hide not useful menu options in the QR screens
-* fix scanning invite codes from the "New Chat" screen
-* fix: use the last header of multiple ones with the same name; this is the one DKIM was using
-* fix migration of legacy databases
-* fix sending uncompressed images (bug introduced in beta 1.45 beta series)
-* update translations and local help
-* update to core 1.139.5
-
-
-## v1.45.1 Testrun
-2024-05
-
 * contacts can be attached as "Cards" at "Attach / Contact";
   when the receiver taps the cards, guaranteed end-to-end encrypted can be established
 * "Profiles" are names as such throughout the app;
   note that these profiles exist on the device only, there is nothing persisted on the server
 * adding contacts manually at "New Chat / New Contact / Add Contact Manually"
-* classic e-mail login is now available at "Create New Profile / Use Other Server"
-* share log to other chats or apps
-* hide folder options if not supported by the used account
-* allow to view password (after entering system secret)
-* device update message is added as unread only for the first account
-* fix: on onboarding, keep entered name and avatar when scanning QR codes or going for other options
-* fix broken "..." ellipsis for small screens
-* fix: do not mark the message with locations as seen
-* fix startup crash on android4
-* update translations and local help
-* update to core 1.139.2+iequidoo/vcard
-
-
-## v1.45.0 Testrun
-2024-05
-
-* new onboarding: you can create a new profile with one tap on "Let's Get Started!" -
-  or use an existing login or second-device-setup as usual
-* use FCM PUSH notification if supported by providers (as chatmail) and by the operating system
 * send any emoji as reaction
 * show reactions in summaries
 * nicer summaries by using some emojis for attachment types
@@ -56,6 +27,11 @@
 * improve anonymous mailing lists by not adding hostname to Message-ID
 * harden share-to-delta
 * add second device's troubleshooting is always available offline now
+* hide folder options if not supported by the used account
+* allow to view password (after entering system secret)
+* device update message is added as unread only for the first account
+* share log to other chats or apps
+* use colors for info/warning/error in the log
 * fix: preserve upper-/lowercase of links from HTML-messages
 * fix: rescan folders on "Watch Sent Folder" changes
 * fix sometimes wrong sender name in "Message Info"
@@ -84,8 +60,17 @@
 * fix remote group membership changes always overriding local ones
 * fix hint when adding a webxdc shortcut to the home page
 * fix webxdc links for securejoin
+* fix sending uncompressed images (bug introduced in beta 1.45 beta series)
+* fix: hide not useful menu options in the QR screens
+* fix scanning invite codes from the "New Chat" screen
+* fix: use the last header of multiple ones with the same name; this is the one DKIM was using
+* fix migration of legacy databases
+* fix: on onboarding, keep entered name and avatar when scanning QR codes or going for other options
+* fix broken "..." ellipsis for small screens
+* fix: do not mark the message with locations as seen
+* fix startup crash on android4
 * update translations and local help
-* update to core 1.138.0
+* update to core 1.139.5
 
 
 ## v1.44.0
