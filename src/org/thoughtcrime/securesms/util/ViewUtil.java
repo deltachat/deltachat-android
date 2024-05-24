@@ -40,10 +40,10 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.TextView;
 
-import com.b44t.messenger.util.concurrent.ListenableFuture;
-import com.b44t.messenger.util.concurrent.SettableFuture;
-
 import org.thoughtcrime.securesms.util.views.Stub;
+
+import chat.delta.util.ListenableFuture;
+import chat.delta.util.SettableFuture;
 
 public class ViewUtil {
   @SuppressWarnings("deprecation")
