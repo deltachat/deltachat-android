@@ -13,7 +13,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 
-import com.b44t.messenger.rpc.Reaction;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.components.emoji.EmojiTextView;
@@ -21,6 +20,8 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import chat.delta.rpc.types.Reaction;
 
 public class ReactionsConversationView extends LinearLayout {
 
@@ -77,13 +78,12 @@ public class ReactionsConversationView extends LinearLayout {
       List<Reaction> shortened = new ArrayList<>(3);
       shortened.add(reactions.get(0));
       shortened.add(reactions.get(1));
-      int count = 0;
-      boolean isFromSelf = false;
+      Reaction reaction = new Reaction();
       for (int index = 2; index < reactions.size(); index++) {
-          count += reactions.get(index).getCount();
-          isFromSelf = isFromSelf || reactions.get(index).isFromSelf();
+          reaction.count += reactions.get(index).count;
+          reaction.isFromSelf = reaction.isFromSelf || reactions.get(index).isFromSelf;
       }
-      shortened.add(new Reaction(null, count, isFromSelf));
+      shortened.add(reaction);
 
       return shortened;
     } else {
@@ -97,11 +97,11 @@ public class ReactionsConversationView extends LinearLayout {
     TextView       countView = root.findViewById(R.id.reactions_pill_count);
     View           spacer    = root.findViewById(R.id.reactions_pill_spacer);
 
-    if (reaction.getEmoji() != null) {
-      emojiView.setText(reaction.getEmoji());
+    if (reaction.emoji != null) {
+      emojiView.setText(reaction.emoji);
 
-      if (reaction.getCount() > 1) {
-        countView.setText(String.valueOf(reaction.getCount()));
+      if (reaction.count > 1) {
+        countView.setText(String.valueOf(reaction.count));
       } else {
         countView.setVisibility(GONE);
         spacer.setVisibility(GONE);
@@ -109,10 +109,10 @@ public class ReactionsConversationView extends LinearLayout {
     } else {
       emojiView.setVisibility(GONE);
       spacer.setVisibility(GONE);
-      countView.setText("+" + reaction.getCount());
+      countView.setText("+" + reaction.count);
     }
 
-    if (reaction.isFromSelf()) {
+    if (reaction.isFromSelf) {
       root.setBackground(ContextCompat.getDrawable(context, R.drawable.reaction_pill_background_selected));
       countView.setTextColor(ContextCompat.getColor(context, R.color.reaction_pill_text_color_selected));
     } else {

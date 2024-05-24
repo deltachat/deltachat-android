@@ -9,15 +9,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.b44t.messenger.rpc.Rpc;
-import com.b44t.messenger.rpc.RpcException;
-import com.b44t.messenger.rpc.VcardContact;
-
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.mms.SlideClickListener;
 import org.thoughtcrime.securesms.mms.VcardSlide;
 import org.thoughtcrime.securesms.recipients.Recipient;
+
+import chat.delta.rpc.Rpc;
+import chat.delta.rpc.RpcException;
+import chat.delta.rpc.types.VcardContact;
 
 public class VcardView extends FrameLayout {
   private static final String TAG = VcardView.class.getSimpleName();
@@ -60,8 +60,8 @@ public class VcardView extends FrameLayout {
   public void setVcard(@NonNull GlideRequests glideRequests, final @NonNull VcardSlide slide, final @NonNull Rpc rpc) {
     try {
       VcardContact vcardContact = rpc.parseVcard(slide.asAttachment().getRealPath(getContext())).get(0);
-      name.setText(vcardContact.getDisplayName());
-      address.setText(vcardContact.getAddr());
+      name.setText(vcardContact.displayName);
+      address.setText(vcardContact.addr);
       avatar.setAvatar(glideRequests, new Recipient(getContext(), vcardContact), false);
       this.slide = slide;
     } catch (RpcException e) {

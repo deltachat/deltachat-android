@@ -5,7 +5,9 @@ public class HttpResponse {
   /* base64-encoded response body. */
   public String blob;
   /* Encoding, e.g. "utf-8". */
+  @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
   public String encoding;
   /* MIME type, e.g. "text/plain" or "text/html". */
+  @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
   public String mimetype;
 }

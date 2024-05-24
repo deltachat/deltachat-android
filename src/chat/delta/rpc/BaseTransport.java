@@ -32,7 +32,9 @@ public abstract class BaseTransport implements Rpc.Transport {
 
   public <T> T callForResult(TypeReference<T> resultType, String method, Object... params) throws RpcException {
     try {
-      return mapper.readValue(innerCall(method, params).traverse(), resultType);
+      JsonNode node = innerCall(method, params);
+      if (node.isNull()) return null;
+      return mapper.readValue(node.traverse(), resultType);
     } catch (IOException e) {
       throw new RpcException(e.getMessage());
     }

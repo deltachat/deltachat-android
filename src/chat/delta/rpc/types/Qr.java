@@ -32,6 +32,7 @@ public abstract class Qr {
   }
 
   public static class FprMismatch extends Qr {
+    @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
     public Integer contact_id;
   }
 
@@ -54,6 +55,7 @@ public abstract class Qr {
 
   public static class Addr extends Qr {
     public Integer contact_id;
+    @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
     public String draft;
   }
 

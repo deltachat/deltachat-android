@@ -29,11 +29,9 @@ import androidx.annotation.Nullable;
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
-import com.b44t.messenger.rpc.VcardContact;
 
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.contacts.avatars.ContactPhoto;
-import org.thoughtcrime.securesms.contacts.avatars.FallbackContactPhoto;
 import org.thoughtcrime.securesms.contacts.avatars.GeneratedContactPhoto;
 import org.thoughtcrime.securesms.contacts.avatars.GroupRecordContactPhoto;
 import org.thoughtcrime.securesms.contacts.avatars.LocalFileContactPhoto;
@@ -49,6 +47,8 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.WeakHashMap;
+
+import chat.delta.rpc.types.VcardContact;
 
 public class Recipient {
 
@@ -149,7 +149,7 @@ public class Recipient {
       return dcContact.getDisplayName();
     }
     else if(vContact!=null) {
-      return vContact.getDisplayName();
+      return vContact.displayName;
     }
     return "";
   }
@@ -199,7 +199,7 @@ public class Recipient {
       rgb = dcContact.getColor();
     }
     else if(vContact!=null) {
-      rgb = Color.parseColor(vContact.getColor());
+      rgb = Color.parseColor(vContact.color);
     }
     return Color.argb(0xFF, Color.red(rgb), Color.green(rgb), Color.blue(rgb));
   }
@@ -235,7 +235,7 @@ public class Recipient {
       }
     }
 
-    if (vContact!=null && vContact.hasProfileImage()) {
+    if (vContact!=null && vContact.profileImage != null) {
       return new VcardContactPhoto(vContact);
     }
 

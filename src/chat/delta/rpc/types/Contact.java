@@ -26,6 +26,7 @@ public class Contact {
   public Integer lastSeen;
   public String name;
   public String nameAndAddr;
+  @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
   public String profileImage;
   public String status;
   /**
@@ -33,6 +34,7 @@ public class Contact {
    *
    * If this is present, display a green checkmark and "Introduced by ..." string followed by the verifier contact name and address in the contact profile.
    */
+  @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
   public Integer verifierId;
   public Boolean wasSeenRecently;
 }

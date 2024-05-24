@@ -71,8 +71,6 @@ import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcMsg;
-import com.b44t.messenger.rpc.Rpc;
-import com.b44t.messenger.rpc.RpcException;
 import com.b44t.messenger.util.concurrent.ListenableFuture;
 import com.b44t.messenger.util.concurrent.SettableFuture;
 
@@ -127,8 +125,12 @@ import org.thoughtcrime.securesms.videochat.VideochatUtil;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
+
+import chat.delta.rpc.Rpc;
+import chat.delta.rpc.RpcException;
 
 /**
  * Activity for displaying a message thread, as well as
@@ -982,7 +984,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     }
 
     try {
-      byte[] vcard = rpc.makeVcard(dcContext.getAccountId(), contactId).getBytes();
+      byte[] vcard = rpc.makeVcard(dcContext.getAccountId(), Collections.singletonList(contactId)).getBytes();
       String mimeType = "application/octet-stream";
       setMedia(PersistentBlobProvider.getInstance().create(this, vcard, mimeType, "vcard.vcf"), MediaType.DOCUMENT);
     } catch (RpcException e) {

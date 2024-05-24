@@ -6,9 +6,11 @@ public class MessageSearchResult {
   public Integer authorId;
   /* if sender name if overridden it will show it as ~alias */
   public String authorName;
+  @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
   public String authorProfileImage;
   public String chatColor;
   public String chatName;
+  @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
   public String chatProfileImage;
   public Integer chatType;
   public Integer id;

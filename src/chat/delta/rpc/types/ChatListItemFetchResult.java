@@ -12,9 +12,11 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 public abstract class ChatListItemFetchResult {
 
   public static class ChatListItem extends ChatListItemFetchResult {
+    @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
     public String avatarPath;
     public String color;
     /* contact id if this is a dm chat (for view profile entry in context menu) */
+    @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
     public Integer dmChatContact;
     public Integer freshMessageCounter;
     public Integer id;
@@ -30,11 +32,15 @@ public abstract class ChatListItemFetchResult {
     public Boolean isSelfInGroup;
     public Boolean isSelfTalk;
     public Boolean isSendingLocation;
+    @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
     public Integer lastMessageId;
+    @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
     public Viewtype lastMessageType;
+    @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
     public Integer lastUpdated;
     public String name;
     /* showing preview if last chat message is image */
+    @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
     public String summaryPreviewImage;
     public Integer summaryStatus;
     public String summaryText1;

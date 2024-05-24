@@ -25,7 +25,7 @@ import com.b44t.messenger.DcAccounts;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcEventEmitter;
-import com.b44t.messenger.rpc.Rpc;
+import com.b44t.messenger.FFITransport;
 
 import org.thoughtcrime.securesms.components.emoji.EmojiProvider;
 import org.thoughtcrime.securesms.connect.AccountManager;
@@ -51,13 +51,15 @@ import org.thoughtcrime.securesms.util.SignalProtocolLoggerProvider;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
+
+import chat.delta.rpc.Rpc;
 //import com.squareup.leakcanary.LeakCanary;
 
 public class ApplicationContext extends MultiDexApplication {
   private static final String TAG = ApplicationContext.class.getSimpleName();
 
   public static DcAccounts      dcAccounts;
-  public Rpc                    rpc;
+  public Rpc rpc;
   public DcContext              dcContext;
   public DcLocationManager      dcLocationManager;
   public DcEventCenter          eventCenter;
@@ -94,7 +96,7 @@ public class ApplicationContext extends MultiDexApplication {
     System.loadLibrary("native-utils");
 
     dcAccounts = new DcAccounts(new File(getFilesDir(), "accounts").getAbsolutePath());
-    rpc = new Rpc(dcAccounts.getJsonrpcInstance());
+    rpc = new Rpc(new FFITransport(dcAccounts.getJsonrpcInstance()));
     AccountManager.getInstance().migrateToDcAccounts(this);
     int[] allAccounts = dcAccounts.getAll();
     for (int accountId : allAccounts) {
@@ -128,8 +130,6 @@ public class ApplicationContext extends MultiDexApplication {
       }
       Log.i("DeltaChat", "shutting down event handler");
     }, "eventThread").start();
-
-    rpc.start();
 
     // migrating chat backgrounds, added  04/10/23, can be removed after some versions
     String backgroundImagePath = Prefs.getStringPreference(this, "pref_chat_background", "");

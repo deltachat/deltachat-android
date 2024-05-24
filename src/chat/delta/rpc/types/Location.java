@@ -9,6 +9,7 @@ public class Location {
   public Float latitude;
   public Integer locationId;
   public Float longitude;
+  @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
   public String marker;
   public Integer msgId;
   public Integer timestamp;
