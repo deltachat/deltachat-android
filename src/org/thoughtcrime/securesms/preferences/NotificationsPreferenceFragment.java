@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.os.PowerManager;
 import android.provider.Settings;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
 import androidx.preference.CheckBoxPreference;
@@ -26,6 +27,7 @@ import org.thoughtcrime.securesms.notifications.FcmReceiveService;
 import org.thoughtcrime.securesms.util.Prefs;
 
 import static android.app.Activity.RESULT_OK;
+import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_ONLY_FETCH_MVBOX;
 
 public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragment {
 
@@ -72,6 +74,17 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
     CheckBoxPreference usePushService = this.findPreference("pref_push_enabled");
     usePushService.setChecked(Prefs.isPushEnabled(getContext()));
     usePushService.setOnPreferenceChangeListener((preference, newValue) -> {
+      final boolean enabled = (Boolean) newValue;
+      if (!enabled) {
+        new AlertDialog.Builder(getContext())
+          .setMessage(R.string.pref_push_ask_disable)
+          .setPositiveButton(R.string.ok, (dialogInterface, i) -> {
+            ((CheckBoxPreference)preference).setChecked(false);
+          })
+          .setNegativeButton(R.string.cancel, null)
+          .show();
+        return false;
+      }
       return true;
     });
 
