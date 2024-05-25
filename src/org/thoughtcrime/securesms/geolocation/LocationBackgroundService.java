@@ -43,9 +43,11 @@ public class LocationBackgroundService extends Service {
 
         locationListener = new ServiceLocationListener();
         Location lastLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-        long locationAge = System.currentTimeMillis() - lastLocation.getTime();
-        if (locationAge <= 600 * 1000) { // not older than 10 minutes
+        if (lastLocation != null) {
+          long locationAge = System.currentTimeMillis() - lastLocation.getTime();
+          if (locationAge <= 600 * 1000) { // not older than 10 minutes
             DcLocation.getInstance().updateLocation(lastLocation);
+          }
         }
         //requestLocationUpdate(LocationManager.NETWORK_PROVIDER);
         requestLocationUpdate(LocationManager.GPS_PROVIDER);
