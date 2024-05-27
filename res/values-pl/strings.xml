@@ -1163,6 +1163,16 @@
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat chce zapisać obrazy w twojej bibliotece zdjęć.</string>
 
 
+    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+    <string name="pref_instant_delivery">Natychmiastowe dostarczenie</string>
+    <string name="pref_push_notifications">Użyj usługi push</string>
+    <string name="pref_push_notifications_explain">Niezawodne powiadomienia push dla serwerów chatmail</string>
+    <string name="pref_push_ask_disable">Wyłączyć korzystanie z usługi Push?\n\nMoże to skutkować opóźnieniami w powiadomieniach.</string>
+    <string name="pref_background_notifications">Użyj połączenia w tle</string>
+    <string name="pref_background_notifications_explain">Wymaga zignorowania optymalizacji baterii. Użyj, jeśli usługa Push jest niedostępna</string>
+    <string name="pref_reliable_service">Wymuś połączenie w tle</string>
+    <string name="pref_reliable_service_explain">Powoduje trwałe powiadomienie</string>
+
     <string name="pref_background_notifications_rationale">Aby utrzymać połączenie z serwerem e-mail i odbierać wiadomości w tle, zignoruj optymalizacje baterii w następnym kroku.\n\nDelta Chat zużywa niewiele zasobów i dba o to, aby nie wyczerpać baterii.</string>
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="perm_enable_bg_reminder_title">Dotknij tutaj, aby odbierać wiadomości, podczas gdy Delta Chat działa w tle.</string>

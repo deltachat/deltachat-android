@@ -1127,6 +1127,15 @@
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat dëshiron të ruajë figura në fototekën tuaj.</string>
 
 
+    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+    <string name="pref_instant_delivery">Dërgim i Menjëhershëm</string>
+    <string name="pref_push_notifications">Përdor Shërbim Push</string>
+    <string name="pref_push_ask_disable">Të çaktivizohet përdorimi i Shërbimit Push?\n\nKjo mund të sjellë njoftime të vonuara.</string>
+    <string name="pref_background_notifications">Përdor Lidhje Në Prapaskenë</string>
+    <string name="pref_background_notifications_explain">Lyp shpërfillje optimizimesh baterie, përdoreni nëse Shërbimi Push është jashtë funksionimi</string>
+    <string name="pref_reliable_service">Detyro Lidhje Në Prapaskenë</string>
+    <string name="pref_reliable_service_explain">Shkakton një njoftim permanent</string>
+
     <string name="pref_background_notifications_rationale">Që të ruhet lidhja me shërbyesin tuaj të email-eve dhe të merren mesazhe në prapaskenë, në hapin pasues shpërfillini optimizimet për baterinë.\n\nDelta Chat-i përdor pak burime dhe kujdeset të mos e shterojë baterinë tuaj.</string>
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="perm_enable_bg_reminder_title">Prekeni këtu që të merrni mesazhe, teksa Delta Chat rri në prapaskenë.</string>
