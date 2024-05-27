@@ -29,6 +29,8 @@ public class DcContext {
     public final static int DC_EVENT_CONNECTIVITY_CHANGED        = 2100;
     public final static int DC_EVENT_SELFAVATAR_CHANGED          = 2110;
     public final static int DC_EVENT_WEBXDC_STATUS_UPDATE        = 2120;
+    public final static int DC_EVENT_WEBXDC_INSTANCE_DELETED     = 2121;
+    public final static int DC_EVENT_WEBXDC_REALTIME_DATA        = 2150;
 
     public final static int DC_IMEX_EXPORT_SELF_KEYS = 1;
     public final static int DC_IMEX_IMPORT_SELF_KEYS = 2;
