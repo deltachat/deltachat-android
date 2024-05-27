@@ -82,7 +82,7 @@
       <li><a href="#how-can-i-share-my-location-with-my-chat-partners">How can I share my location with my chat partners?</a></li>
       <li><a href="#what-does-the-experimental-database-encryption-actually-protect">What does the experimental database encryption actually protect?</a></li>
       <li><a href="#why-can-i-choose-to-only-watch-the-deltachat-folder">Why can I choose to only watch the DeltaChat folder?</a></li>
-      <li><a href="#how-can-i-change-my-account-to-a-different-e-mail-address">How can I change my account to a different e-mail address?</a></li>
+      <li><a href="#how-can-i-use-a-different-e-mail-address-with-my-profile">How can I use a different e-mail address with my profile?</a></li>
     </ul>
   </li>
   <li><a href="#miscellaneous">Miscellaneous</a>
@@ -844,7 +844,7 @@ even if the contact is a member there.</p>
 <p><strong>Your contact is using Delta Chat on a second device (phone or laptop)</strong></p>
 
 <p>If they have another device with a Delta Chat app running,
-they should remove the account from the new device
+they should remove the profile from the new device
 and add it <a href="#multiclient">as a second device as described here</a>.
 As soon as they message you afterwards, the warning will be gone
 and guaranteed encryption is established with both devices of your contact.</p>
@@ -852,8 +852,8 @@ and guaranteed encryption is established with both devices of your contact.</p>
 <p><strong>Your contact reinstalled Delta Chat using their old account login</strong></p>
 
 <p>If they have <a href="#backup">a backup file</a>, 
-they should remove the account from the new device 
-and rather import the backup file to re-create their account. 
+they should remove the profile from the new device
+and rather import the backup file to re-create their profile.
 As soon as they message you afterwards, the warning will be gone
 and guaranteed encryption is re-established for this contact.</p>
 
@@ -1040,12 +1040,12 @@ deliver messages to recipient’s devices.</p>
 
 <p>Both for protecting against metadata-collecting e-mail servers 
 as well as against the threat of device seizure
-we recommend to use a Delta Chat optimized <a href="https://delta.chat/serverguide">e-mail server instance</a>
-to create pseudonymous temporary accounts through QR-code scans.
-Note that Delta Chat apps on all platforms support multiple accounts 
-so you can easily use action-specific “1-week” or “1-month” accounts next to your “main” account
-with the knowledge that all temporary account data, along with all metadata, will be deleted.
-Moreover, if a device is seized then contacts using temporary e-mail accounts
+we recommend to use a <a href="https://delta.chat/chatmail">chatmail server</a>
+to create pseudonymous temporary profiles through QR-code scans.
+Note that Delta Chat apps on all platforms support multiple profiles
+so you can easily use situation-specific profiles next to your “main” profile
+with the knowledge that all their data, along with all metadata, will be deleted.
+Moreover, if a device is seized then contacts using temporary profiles
 can not be identified easily, as compared to messengers which reveal
 phone numbers in chat groups which in turn are often associated with legal identities.</p>
     
@@ -1104,7 +1104,7 @@ and their non-Autocrypt e-mail app.</p>
       </h3>
 
 <p>If you need a safely end-to-end encrypted chat with a contact 
-who is using their account both with Delta Chat and non-Autocrypt apps (e.g. webmail),
+who is using their e-mail account both with Delta Chat and non-Autocrypt apps (e.g. webmail),
 it’s best to setup <a href="#howtoe2ee">guaranteed end-to-end encryption with them</a>
 and then create a guaranteed end-to-end encrypted group chat with you two as members. 
 In this group chat all messages will be end-to-end encrypted 
@@ -1299,7 +1299,7 @@ You can read the <a href="https://delta.chat/assets/blog/2019-first-security-rev
         
       </h3>
 
-<p>Yes. Delta Chat 1.36 comes with a new, experimental function for using the same account on different devices:</p>
+<p>Yes. Delta Chat 1.36 comes with a new, experimental function for using the same profile on different devices:</p>
 
 <ul>
   <li>
@@ -1361,7 +1361,7 @@ Do not exit Delta Chat.
   </li>
   <li>
     <p>Delta Chat is <strong>already logged in</strong> on the destination device?
-You can use multiple accounts per device, just <a href="#multiple-accounts">add another account</a></p>
+You can use multiple profiles per device, just <a href="#multiple-accounts">add another profile</a></p>
   </li>
   <li>
     <p>If you still have problems or if you <strong>cannot scan a QR code</strong>
@@ -1384,8 +1384,8 @@ try the <strong>manual transfer</strong> described below</p>
 screen unlock PIN, pattern, or password. Then you can click on “Start
 Backup”. This saves the backup file to your device. Now you have to transfer
 it to the other device somehow.</li>
-  <li>On the new device, on the login screen, instead of logging into your email
-account, choose “Import Backup”. After import, your conversations, encryption
+  <li>On the new device, in the “I already have a profile” menu,
+choose “restore from backup”. After import, your conversations, encryption
 keys, and media should be copied to the new device.
     <ul>
       <li><strong>If you use iOS:</strong> and you encounter difficulties, maybe
@@ -1614,10 +1614,10 @@ would be done by the Delta Chat app.</p>
 
 <p>In this case, Delta Chat doesn’t need to watch the Inbox, and it’s enough to only watch the DeltaChat folder.</p>
     
-      <h3 id="how-can-i-change-my-account-to-a-different-e-mail-address">
+      <h3 id="how-can-i-use-a-different-e-mail-address-with-my-profile">
         
         
-          How can I change my account to a different e-mail address? <a href="#how-can-i-change-my-account-to-a-different-e-mail-address" class="anchor"></a>
+          How can I use a different e-mail address with my profile? <a href="#how-can-i-use-a-different-e-mail-address-with-my-profile" class="anchor"></a>
         
         
       </h3>
@@ -1625,7 +1625,7 @@ would be done by the Delta Chat app.</p>
 <ol>
   <li>
     <p>Change your address in “Settings → Advanced → Password and Account” and
-enter the password of your new account (and if necessary, server settings).
+enter the password of your new e-mail account (and if necessary, server settings).
 You will get an information notice about the fact that you are moving to a new address. 
 An additional notice will also show up in your “Device messages” chat.</p>
   </li>
@@ -1961,7 +1961,7 @@ completing Rust/Python bindings and instigating a Chat-bot eco-system.</p>
   </li>
   <li>
     <p>In 2021 we received further EU funding for two Next-Generation-Internet
-proposals, namely for <a href="https://dapsi.ngi.eu/hall-of-fame/eppd/">EPPD - e-mail provider portability directory</a> (~97K EUR) and <a href="https://nlnet.nl/project/EmailPorting/">AEAP - email address porting</a> (~90K EUR) which resulted in better multi-account support, improved QR-code contact and group setups and many networking improvements on all platforms.</p>
+proposals, namely for <a href="https://dapsi.ngi.eu/hall-of-fame/eppd/">EPPD - e-mail provider portability directory</a> (~97K EUR) and <a href="https://nlnet.nl/project/EmailPorting/">AEAP - email address porting</a> (~90K EUR) which resulted in better multi-profile support, improved QR-code contact and group setups and many networking improvements on all platforms.</p>
   </li>
   <li>
     <p>From End 2021 till March 2023 we received <em>Internet Freedom</em> funding (500K USD) from the
