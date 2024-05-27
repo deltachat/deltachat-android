@@ -1077,7 +1077,7 @@
     <string name="encryption_info_title_desktop">Информация о шифровании</string>
     <string name="delete_message_desktop">Удалить сообщение</string>
     <string name="more_info_desktop">Больше информации</string>
-    <string name="timestamp_format_m_desktop">МММ Д</string>
+    <string name="timestamp_format_m_desktop">D MMM</string>
     <string name="remove_desktop">Удалить</string>
     <string name="save_desktop">Сохранить</string>
     <string name="name_desktop">Имя</string>
