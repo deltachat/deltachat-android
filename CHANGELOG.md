@@ -3,7 +3,7 @@
 ## v1.46.1
 2024-05
 
-* new onboarding: you can create a new profile with one tap on "Let's Get Started!" -
+* new onboarding: you can create a new profile with one tap on "Create New Profile" -
   or use an existing login or second-device-setup as usual
 * use FCM PUSH notification if supported by providers (as chatmail) and by the operating system
 * do not ask for disabling "battery optimisations" when PUSH notifications are working
