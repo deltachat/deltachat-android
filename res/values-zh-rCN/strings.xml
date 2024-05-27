@@ -1118,6 +1118,16 @@
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat 想将图像保存到图库。</string>
 
 
+    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+    <string name="pref_instant_delivery">即时传送</string>
+    <string name="pref_push_notifications">使用推送服务</string>
+    <string name="pref_push_notifications_explain">Chatmail 服务器的可靠推送通知</string>
+    <string name="pref_push_ask_disable">停用推送服务吗？\n\n这可能导致通知延迟。</string>
+    <string name="pref_background_notifications">使用后台连接</string>
+    <string name="pref_background_notifications_explain">需要忽略电池优化，请在推送服务不可用时使用它</string>
+    <string name="pref_reliable_service">强制后台连接</string>
+    <string name="pref_reliable_service_explain">会形成永久通知</string>
+
     <string name="pref_background_notifications_rationale">要保持到电子邮件服务器的连接并在后台接收消息，请在下一步中忽略电池优化。\n\nDelta Chat 仅使用少量的资源并且会注意不去耗尽电池电量。</string>
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="perm_enable_bg_reminder_title">点击此处以在 Delta Chat 处于后台时接收消息。</string>

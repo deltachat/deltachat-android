@@ -30,7 +30,7 @@
       <li><a href="#was-sind-push-benachrichtigungen-wie-kann-ich-nachrichten-sofort-erhalten">Was sind Push-Benachrichtigungen? Wie kann ich Nachrichten sofort erhalten?</a></li>
       <li><a href="#sind-push-benachrichtigungen-auf-ios-geräten-aktiviert-gibt-es-alternativen">Sind Push-Benachrichtigungen auf iOS-Geräten aktiviert? Gibt es Alternativen?</a></li>
       <li><a href="#android-push">Sind Push-Benachrichtigungen auf Android-Geräten aktiviert/erforderlich?</a></li>
-      <li><a href="#privacy-notifications">### Wie privat sind Delta Chat Push-Benachrichtigungen?</a></li>
+      <li><a href="#privacy-notifications">Wie privat sind Delta Chat Push-Benachrichtigungen?</a></li>
       <li><a href="#warum-integriert-sich-delta-chat-in-zentralisierte-proprietäre-applegoogle-push-dienste">Warum integriert sich Delta Chat in zentralisierte, proprietäre Apple/Google-Push-Dienste?</a></li>
     </ul>
   </li>
@@ -82,7 +82,7 @@
       <li><a href="#wie-kann-ich-meinen-standort-mit-meinen-chat-partnern-teilen">Wie kann ich meinen Standort mit meinen Chat-Partnern teilen?</a></li>
       <li><a href="#was-schützt-die-experimentelle-datenbankverschlüsselung-tatsächlich">Was schützt die experimentelle Datenbankverschlüsselung tatsächlich?</a></li>
       <li><a href="#warum-kann-ich-mich-dafür-entscheiden-nur-den-deltachat-ordner-zu-beobachten">Warum kann ich mich dafür entscheiden, nur den DeltaChat-Ordner zu beobachten?</a></li>
-      <li><a href="#wie-kann-ich-mein-konto-auf-eine-andere-e-mail-adresse-ändern">Wie kann ich mein Konto auf eine andere E-Mail-Adresse ändern?</a></li>
+      <li><a href="#wie-kann-ich-mein-profil-auf-eine-andere-e-mail-adresse-ändern">Wie kann ich mein Profil auf eine andere E-Mail-Adresse ändern?</a></li>
     </ul>
   </li>
   <li><a href="#verschiedenes">Verschiedenes</a>
@@ -476,25 +476,24 @@ Alle von Delta Chat empfangenen Nachrichten werden nach diesem Zeitraum vom Serv
         
       </h3>
 
-<p>Push Notifications are sent by Apple and Google “Push services” to a user’s device
-so that an inactive Delta Chat app can fetch messages in the background
-and show notifications on a user’s phone if needed.</p>
+<p>Push-Benachrichtigungen werden von Apples und Googles „Push-Diensten“ an das Gerät des Benutzers gesendet,
+so dass eine inaktive Delta-Chat-App im Hintergrund Nachrichten erhalten
+und Benachrichtigungen auf dem Telefon des Nutzers anzeigen kann.</p>
 
-<p>Push Notifications work with all <a href="https://delta.chat/chatmail">chatmail</a> servers on</p>
+<p>Push-Benachrichtigungen funktionieren mit allen <a href="https://delta.chat/chatmail">Chatmail</a>-Servern auf</p>
 
 <ul>
   <li>
-    <p>iOS devices, by integrating with Apple Push services.</p>
+    <p>iOS-Geräten, durch die Integration mit den Apple-Push-Diensten.</p>
   </li>
   <li>
-    <p>Android devices, by integrating with the Google FCM Push service,
-including on devices that use <a href="https://microg.org">microG</a>
-instead of proprietary Google code on the phone.</p>
+    <p>Android-Geräten, durch die Integration des Google FCM Push-Dienste,
+auch auf Geräten, die <a href="https://microg.org">microG</a>
+anstelle von proprietärem Google-Code auf dem Telefon.</p>
   </li>
 </ul>
 
-<p>As of May 2024, classic e-mail servers do not support Push Notifications
-for Delta Chat users.</p>
+<p>Stand Mai 2024 unterstützen die klassischen E-Mail-Server keine Push-Benachrichtigungen für Delta-Chat-Benutzer.</p>
     
       <h3 id="sind-push-benachrichtigungen-auf-ios-geräten-aktiviert-gibt-es-alternativen">
         
@@ -559,7 +558,7 @@ safe to try if you experience messages arrive only with long delays.</p>
       <h3 id="privacy-notifications">
         
         
-          ### Wie privat sind Delta Chat Push-Benachrichtigungen? <a href="#privacy-notifications" class="anchor"></a>
+          Wie privat sind Delta Chat Push-Benachrichtigungen? <a href="#privacy-notifications" class="anchor"></a>
         
         
       </h3>
@@ -805,8 +804,8 @@ und die Verschlüsselung ist mit beiden Geräten Ihres Kontakts garantiert.</p>
 <p><strong>Ihr Kontakt hat Delta Chat mit seinem alten Login neu installiert</strong></p>
 
 <p>Wenn Ihr Kontakt <a href="#backup">ein Backup</a> hat, 
-sollten das Konto auf dem neuen Gerät 
-entfernen werden und stattdessen das Backup importieren werden, um das Konto neu zu erstellen. 
+sollte das Profil auf dem neuen Gerät 
+entfernt werden und stattdessen das Backup importiert werden, um das Konto neu zu erstellen. 
 Sobald sie sich danach schreiben, wird die Warnung verschwinden
 und die garantierte Verschlüsselung wird für diesen Kontakt wiederhergestellt.</p>
 
@@ -1214,7 +1213,7 @@ Es wurden keine kritischen Probleme gefunden, aber zwei Probleme mit hohem Schwe
         
       </h3>
 
-<p>Ja. Delta Chat 1.36 comes with a new, experimental function for using the same account on different devices:</p>
+<p>Ja. Delta Chat 1.36 comes with a new, experimental function for using the same profile on different devices:</p>
 
 <ul>
   <li>
@@ -1267,7 +1266,7 @@ Verwenden Sie nach Möglichkeit ein Nicht-Gast-Netzwerk. Wenn Sie Zugriff auf de
     <p>Wenn die Übertragung begonnen hat, stellen Sie sicher, dass die Geräte <strong>aktiv bleiben</strong> und nicht ausgehen. Beenden Sie Delta Chat nicht. (wir bemühen uns, die App im Hintergrund laufen zu lassen, aber <a href="https://dontkillmyapp.com">Systeme neigen dazu, Apps zu beenden</a>, leider)</p>
   </li>
   <li>
-    <p>Sie sind auf dem Zielgerät <strong>bereits eingeloggt</strong>? Sie können mehrere Konten pro Gerät verwenden, fügen Sie einfach <a href="#multiple-accounts">ein weiteres Konto hinzu</a></p>
+    <p>Sie sind auf dem Zielgerät <strong>bereits eingeloggt</strong>? Sie können mehrere Profile pro Gerät verwenden, fügen Sie einfach <a href="#multiple-accounts">ein weiteres Konto hinzu</a></p>
   </li>
   <li>
     <p>Wenn Sie immer noch Probleme haben oder wenn Sie <strong>keinen QR-Code scannen können</strong> versuchen Sie die <strong>manuelle Übertragung</strong> wie unten beschrieben</p>
@@ -1458,10 +1457,10 @@ forum</a> veröffentlicht und diskutiert.</li>
 
 <p>In diesem Fall muss Delta Chat den Posteingang nicht beobachten, und es reicht aus, nur den DeltaChat-Ordner zu beobachten.</p>
     
-      <h3 id="wie-kann-ich-mein-konto-auf-eine-andere-e-mail-adresse-ändern">
+      <h3 id="wie-kann-ich-mein-profil-auf-eine-andere-e-mail-adresse-ändern">
         
         
-          Wie kann ich mein Konto auf eine andere E-Mail-Adresse ändern? <a href="#wie-kann-ich-mein-konto-auf-eine-andere-e-mail-adresse-ändern" class="anchor"></a>
+          Wie kann ich mein Profil auf eine andere E-Mail-Adresse ändern? <a href="#wie-kann-ich-mein-profil-auf-eine-andere-e-mail-adresse-ändern" class="anchor"></a>
         
         
       </h3>
@@ -1510,43 +1509,43 @@ gesendet haben, Nachrichten an Ihre neue Adresse senden.</p>
 <p>Je nach verwendetem Betriebssystem werden Sie möglicherweise aufgefordert, der App Berechtigungen zu erteilen. Diese werden wie folgt verwendet:</p>
 
 <ul>
-  <li>Camera <em>(can be disallowed)</em>
+  <li>Kamera <em>(kann verweigert werden)</em>
     <ul>
-      <li>take pictures and videos: for sending Photos</li>
+      <li>Bilder und Videos aufnehmen: Um Fotos zu senden</li>
     </ul>
   </li>
-  <li>Contacts <em>(can be disallowed)</em>
+  <li>Kontakte <em>(kann verweigert werden)</em>
     <ul>
-      <li>read your contacts: to discover contacts to chat with</li>
+      <li>Kontakte lesen: Um Kontakte zum Chatten zu finden</li>
     </ul>
   </li>
-  <li>Location <em>(can be disallowed)</em>
+  <li>Standort <em>(kann verweigert werden)</em>
     <ul>
-      <li>access approximate location (network location sources): for the location streaming feature</li>
-      <li>access precise location (GPS and network location sources): for the location streaming feature</li>
+      <li>Auf den ungefähren Standort zugreifen (netzwerkbasiert): Für die Standortübertragungsfunktion</li>
+      <li>Auf genauen Standort zugreifen (GPS- und netzwerkbasiert): Für die Standortübertragungsfunktion</li>
     </ul>
   </li>
-  <li>Microphone <em>(can be disallowed)</em>
+  <li>Mikrofon <em>(kann verweigert werden)</em>
     <ul>
-      <li>record audio: for audio messages</li>
+      <li>Audio aufnehmen: Für Sprachnachrichten</li>
     </ul>
   </li>
-  <li>Storage <em>(can be disallowed)</em>
+  <li>Speicher <em>(kann verweigert werden)</em>
     <ul>
-      <li>modify or delete the contents of your SD card: to download message attachments</li>
-      <li>read the contents of your SD card: to share files with your contacts</li>
+      <li>SD-Karteninhalte ändern oder löschen: Um Nachrichtenanhänge herunterzuladen</li>
+      <li>SD-Karteninhalte lesen: Um Dateien mit Ihren Kontakten zu teilen</li>
     </ul>
   </li>
-  <li>Other app capabilities
+  <li>Andere Berechtigungen:
     <ul>
-      <li>change your audio settings: so you can choose ring tones and volume for notifications and audio messages</li>
-      <li>run at startup: so you don’t have to start Delta Chat manually</li>
-      <li>control vibration: for notifications</li>
-      <li>view network connections: to connect to your E-Mail provider</li>
-      <li>prevent phone from sleeping: so you can easier copy the security code during the Autocrypt Setup Message</li>
-      <li>have full network access: to connect to your E-Mail provider</li>
-      <li>view Wi-Fi connections: to connect to your E-Mail provider</li>
-      <li>ask to ignore battery optimisations: for achieving “instant message delivery”</li>
+      <li>Audio-Einstellungen ändern: Um Klingeltöne und die Lautstärke für Benachrichtigungen und Audionachrichten zu wählen</li>
+      <li>Beim Start ausführen: Um Delta Chat nicht manuell starten zu müssen</li>
+      <li>Vibrationsalarm steuern: Für Benachrichtigungen</li>
+      <li>Netzwerkverbindungen abrufen: Um eine Verbindung zu Ihrem E-Mail-Anbieter herzustellen</li>
+      <li>Ruhezustand deaktivieren: Um den Sicherheitscode während der Autocrypt-Setupnachricht einfacher abtippen zu können</li>
+      <li>Auf alle Netzwerke zugreifen: Um eine Verbindung zu Ihrem E-Mail-Anbieter herzustellen</li>
+      <li>WLAN-Verbindungen abrufen: Um eine Verbindung zu Ihrem E-Mail-Anbieter herzustellen</li>
+      <li>Fragen, ob Akku-Leistungsoptimierungen ignoriert werden können: Für NutzerInnen, die permanent Nachrichten empfangen möchten</li>
     </ul>
   </li>
 </ul>

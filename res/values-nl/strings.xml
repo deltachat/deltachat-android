@@ -1133,6 +1133,16 @@
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat wil afbeeldingen opslaan in je fotogalerij.</string>
 
 
+    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+    <string name="pref_instant_delivery">Onmiddellijke bezorging</string>
+    <string name="pref_push_notifications">Push-afleverdienst gebruiken</string>
+    <string name="pref_push_notifications_explain">Betrouwbare pushmeldingen voor chatmailservers</string>
+    <string name="pref_push_ask_disable">Weet je zeker dat je de push-afleverdienst wilt uitschakelen?\n\nDit kan leiden tot vertraagde meldingen.</string>
+    <string name="pref_background_notifications">Achtergrondverbinding gebruiken</string>
+    <string name="pref_background_notifications_explain">Hiervoor is het verplicht dat accu-optimalisering wordt uitgeschakeld. Let op: gebruik alleen indien de push-afleverdienst niet beschikbaar is.</string>
+    <string name="pref_reliable_service">Achtergrondverbinding afdwingen</string>
+    <string name="pref_reliable_service_explain">Toont een permanente melding</string>
+
     <string name="pref_background_notifications_rationale">Om een achtergrondverbinding naar je server op te zetten, dien je in de volgende stap alle accu-optimalisaties te negeren.\n\nDelta Chat gebruikt weinig systeembronnen en verhoogt je accuverbruik nauwelijks.</string>
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="perm_enable_bg_reminder_title">Druk hier om berichten te ontvangen als Delta Chat niet geopend is.</string>
