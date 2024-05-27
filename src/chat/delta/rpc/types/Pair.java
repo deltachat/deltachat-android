@@ -20,8 +20,8 @@ public class Pair<T1, T2> {
 
   public boolean equals(Object o) {
     return o instanceof Pair &&
-        equal(((Pair) o).first(), first()) &&
-        equal(((Pair) o).second(), second());
+      equal(((Pair) o).first(), first()) &&
+      equal(((Pair) o).second(), second());
   }
 
   public int hashCode() {
