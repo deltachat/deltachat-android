@@ -349,10 +349,12 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
   }
 
   private void callJavaScriptFunction(String func) {
-    if (internetAccess) {
-      webView.evaluateJavascript("window." + func + ";", null);
-    } else {
-      webView.evaluateJavascript("document.getElementById('frame').contentWindow." + func + ";", null);
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+      if (internetAccess) {
+        webView.evaluateJavascript("window." + func + ";", null);
+      } else {
+        webView.evaluateJavascript("document.getElementById('frame').contentWindow." + func + ";", null);
+      }
     }
   }
 
