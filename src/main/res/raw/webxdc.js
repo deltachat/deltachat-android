@@ -16,8 +16,7 @@ window.webxdc = (() => {
     }
   };
 
-  window.__webxdcRealtimeData = () => {
-    const base64Data = null; // TODO: get base64Data somehow
+  window.__webxdcRealtimeData = (base64Data) => {
     if (realtimeChannel) {
       const data = Uint8Array.from(atob(base64Data), (m) => m.codePointAt(0));
       realtimeChannel.__receive(data);

@@ -126,6 +126,18 @@ public class Rpc {
         return getResult("draft_self_report", accountId).getAsInt();
     }
 
+    public void sendWebxdcRealtimeData(Integer accountId, Integer instanceMsgId, List<Integer> data) throws RpcException {
+        getResult("send_webxdc_realtime_data", accountId, instanceMsgId, data);
+    }
+
+    public void sendWebxdcRealtimeAdvertisement(Integer accountId, Integer instanceMsgId) throws RpcException {
+        getResult("send_webxdc_realtime_advertisement", accountId, instanceMsgId);
+    }
+
+    public void leaveWebxdcRealtime(Integer accountId, Integer instanceMessageId) throws RpcException {
+        getResult("leave_webxdc_realtime", accountId, instanceMessageId);
+    }
+
     private static class Request {
         private final String jsonrpc = "2.0";
         public final String method;
