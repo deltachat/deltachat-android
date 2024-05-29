@@ -1,7 +1,8 @@
 window.webxdc = (() => {
-  let setUpdateListenerPromise = null
-  var update_listener = () => {};
-  var last_serial = 0;
+  let setUpdateListenerPromise = null;
+  let update_listener = () => {};
+  let last_serial = 0;
+  let realtimeChannel = null;
 
   window.__webxdcUpdate = () => {
     var updates = JSON.parse(InternalJSApi.getStatusUpdates(last_serial));
@@ -15,10 +16,44 @@ window.webxdc = (() => {
     }
   };
 
+  window.__webxdcRealtimeData = () => {
+    const base64Data = null; // TODO: get base64Data somehow
+    if (realtimeChannel) {
+      const data = Uint8Array.from(atob(base64Data), (m) => m.codePointAt(0));
+      realtimeChannel.__receive(data);
+    }
+  };
+
+  const createRealtimeChannel = () => {
+    let listener = null;
+    const decoder = new TextDecoder('utf8');
+    return {
+      setListener: (li) => listener = li,
+      leave: () => InternalJSApi.leaveRealtimeChannel(),
+      send: (data) => {
+        if ((!data) instanceof Uint8Array) {
+          throw new Error('realtime listener data must be a Uint8Array')
+        }
+        InternalJSApi.sendRealtimeData(btoa(decoder.decode(data)));
+      },
+      __receive: (data) => {
+        if (listener) {
+          listener(data);
+        }
+      },
+    };
+  }
+
   return {
     selfAddr: InternalJSApi.selfAddr(),
 
     selfName: InternalJSApi.selfName(),
+
+    joinRealtimeChannel: () => {
+      realtimeChannel = createRealtimeChannel();
+      InternalJSApi.sendRealtimeAdvertisement();
+      return realtimeChannel;
+    },
 
     setUpdateListener: (cb, serial) => {
         last_serial = typeof serial === "undefined" ? 0 : parseInt(serial);
