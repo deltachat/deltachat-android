@@ -223,6 +223,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
   @Override
   protected void onDestroy() {
     DcHelper.getEventCenter(this.getApplicationContext()).removeObservers(this);
+    leaveRealtimeChannel();
     super.onDestroy();
   }
 
@@ -442,6 +443,16 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     super.onActivityResult(reqCode, resultCode, data);
   }
 
+  private void leaveRealtimeChannel() {
+    int accountId = dcContext.getAccountId();
+    int msgId = dcAppMsg.getId();
+    try {
+      rpc.leaveWebxdcRealtime(accountId, msgId);
+    } catch (RpcException e) {
+      e.printStackTrace();
+    }
+  }
+
   class InternalJSApi {
     @JavascriptInterface
     public String selfAddr() {
@@ -517,7 +528,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
       int accountId = WebxdcActivity.this.dcContext.getAccountId();
       int msgId = WebxdcActivity.this.dcAppMsg.getId();
       try {
-        rpc.sendWebxdcRealtimeAdvertisement(accountId, msgId);
+        WebxdcActivity.this.rpc.sendWebxdcRealtimeAdvertisement(accountId, msgId);
       } catch (RpcException e) {
         e.printStackTrace();
       }
@@ -526,13 +537,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     /** @noinspection unused*/
     @JavascriptInterface
     public void leaveRealtimeChannel() {
-      int accountId = WebxdcActivity.this.dcContext.getAccountId();
-      int msgId = WebxdcActivity.this.dcAppMsg.getId();
-      try {
-        rpc.leaveWebxdcRealtime(accountId, msgId);
-      } catch (RpcException e) {
-        e.printStackTrace();
-      }
+      WebxdcActivity.this.leaveRealtimeChannel();
     }
 
     /** @noinspection unused*/
@@ -546,7 +551,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
         data.add(Integer.valueOf(b));
       }
       try {
-        rpc.sendWebxdcRealtimeData(accountId, msgId, data);
+        WebxdcActivity.this.rpc.sendWebxdcRealtimeData(accountId, msgId, data);
       } catch (RpcException e) {
         e.printStackTrace();
       }
