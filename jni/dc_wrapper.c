@@ -1118,6 +1118,20 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcEvent_getData2Str(JNIEnv *env, jobje
 }
 
 
+JNIEXPORT jbyteArray Java_com_b44t_messenger_DcEvent_getData2Blob(JNIEnv *env, jobject obj)
+{
+    jbyteArray ret = NULL;
+    dc_event_t* event = get_dc_event(env, obj);
+
+    size_t ptrSize = dc_event_get_data2_int(event);
+    char* ptr = dc_event_get_data2_str(get_dc_event(env, obj));
+        ret = ptr2jbyteArray(env, ptr, ptrSize);
+    dc_str_unref(ptr);
+
+    return ret;
+}
+
+
 JNIEXPORT jint Java_com_b44t_messenger_DcEvent_getAccountId(JNIEnv *env, jobject obj)
 {
     return (jint)dc_event_get_account_id(get_dc_event(env, obj));
