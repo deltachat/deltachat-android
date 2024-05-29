@@ -432,7 +432,7 @@
     <string name="send_message_to">Send Message to…</string>
     <!-- Options in config menu -->
     <string name="enable_realtime">Enable Realtime APIs</string>
-    <string name="enable_realtime_explain"> Enable Webxdc realtime APIs which create direct connection between devices and leak IP addresses to each other.</string>
+    <string name="enable_realtime_explain"> Enable Webxdc realtime APIs which create direct connection between devices.</string>
 
     <!-- map -->
     <string name="filter_map_on_time">Show locations in time frame</string>
