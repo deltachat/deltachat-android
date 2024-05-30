@@ -814,7 +814,7 @@
     <string name="encryption_info_title_desktop">ពត៌មានពីការធ្វើឲ្យសារជាសម្ងាត់</string>
     <string name="delete_message_desktop">លុបសារ</string>
     <string name="more_info_desktop">ពត៌មានបន្ថែម</string>
-    <string name="timestamp_format_m_desktop">ខែ ថ្ងៃ</string>
+    <string name="timestamp_format_m_desktop">MMM D</string>
     <string name="remove_desktop">យកចេញ</string>
     <string name="save_desktop">រក្សាទុក</string>
     <string name="name_desktop">ឈ្មោះ</string>

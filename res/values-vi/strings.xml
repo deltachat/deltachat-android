@@ -412,7 +412,6 @@
     <string name="send_file_to">Gửi \"%1$s\" tới…</string>
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">Gửi tin nhắn tới…</string>
-
     <!-- map -->
     <string name="filter_map_on_time">Hiển thị vị trí trong khung thời gian</string>
     <string name="show_location_traces">Hiển thị dấu vết</string>

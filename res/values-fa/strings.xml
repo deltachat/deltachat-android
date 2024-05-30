@@ -421,7 +421,6 @@ https://meet.jit.si/$ROOM
     <string name="send_file_to">ارسال \"%1$s\" به...</string>
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">ارسال پیام به...</string>
-
     <!-- map -->
     <string name="filter_map_on_time">نمایش موقعیت‌های مکانی در چارچوب زمان</string>
     <string name="show_location_traces">نمایش ردپاها</string>
