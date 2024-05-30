@@ -430,6 +430,8 @@
     <string name="send_file_to">\"%1$s\" dosyasını gönder…</string>
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">İletiyi gönder…</string>
+    <string name="enable_realtime">Gerçek Zamanlı Webxdc Kanalları</string>
+    <string name="enable_realtime_explain">Aygıtlar arasında doğrudan bağlantılar oluşturmak için Webxdc gerçek zamanlı API\'lerini etkinleştirin.</string>
 
     <!-- map -->
     <string name="filter_map_on_time">Konumları zaman çerçevesinde göster</string>
@@ -1152,4 +1154,4 @@
     <string name="update_1_44_android">Ne yeni:\n\n❤️ Evet! Bu uzun zamandır bekleniyordu: Tepki vermek için bir iletiye uzun dokunun\n\n🔗 QR kodlarını tarayamıyorsanız, onları çağırma bağlantısı olarak paylaşın\n\n🔵 Artık tüm hesapların okunmayan iletileri sayılır ve başlıkta gösterilir\n\n… ve TONLARCA hata düzeltmesi … %1$s\n\nUygulamanın iyileştirilmesine yardımcı olun: Gerçek dünya kullanımını daha da iyileştirmek için \"Ayarlar / Gelişmiş / İstatistikleri gönder\"i kullanarak geliştiricilere yardımcı olun. Göndermeden önce verilerinizi inceleyebilirsiniz</string>
     <string name="update_1_44_ios">Ne yeni:\n\n❤️ Evet! Bu uzun zamandır bekleniyordu: Tepki vermek için bir iletiye uzun dokunun\n\n🫸 https://nine.testrun.org gibi sağlayıcılar tarafından destekleniyorsa ANLIK bildirimler\n\n🔗 QR kodlarını tarayamıyorsanız, onları çağırma bağlantısı olarak paylaşın\n\n… ve TONLARCA hata düzeltmesi … %1$s</string>
     <string name="update_1_46_android">Yeni Katılım 🐣 ve Daha Fazlası:\n\n⚡️ Hızlı güvenli Chatmail sunucularına kayıt olun (https://delta.chat/chatmail) ya da klasik e-posta sunucularını kullanın\n\n👉 Herhangi bir Chatmail sunucusu için ANINDA İLETME bildirimleri\n\n👤 \"Kişileri iliştir\" üzerinden arkadaşlarınıza güvenlice bağlanın\n\n🥰 Herhangi bir emojiyle tepki verin\n\n📌 Sohbetleri doğrudan aramadan sabitleyin … ve DAHA FAZLASI %1$s</string>
-</resources>
+    </resources>

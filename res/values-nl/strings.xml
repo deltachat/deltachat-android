@@ -430,6 +430,8 @@
     <string name="send_file_to">“%1$s” versturen naar…</string>
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">Bericht versturen naar…</string>
+    <string name="enable_realtime">Live-webxdckanalen</string>
+    <string name="enable_realtime_explain">Maak gebruik van live-api\'s van Webxdc om directe verbindingen tussen apparaten op te zetten.</string>
 
     <!-- map -->
     <string name="filter_map_on_time">Locaties tonen in tijdsbeeld</string>
@@ -1152,4 +1154,4 @@
     <string name="update_1_44_android">Wijzigingslog:\n\n❤️ Jaaaa! Eindelijk een langverwachte functie toegevoegd: een bericht lang ingedrukt houden om te reageren\n\n🔗 Als je geen QR-codes kunt scannen, dan kun je ze voortaan delen als uitnodigingslinks\n\n🔵 Voortaan wordt het aantal ongelezen berichten van alle accounts in de titel getoond\n\n… en vele, vele bugs opgelost… %1$s\n\nHelp de app te verbeteren: via ‘Instellingen → Geavanceerd → Statistieken versturen’ kun je de ontwikkelaars helpen om inzicht te krijgen in het dagelijks gebruik. Je kunt alle te versturen gegevens vooraf inzien.</string>
     <string name="update_1_44_ios">Wijzigingslog:\n\n❤️ Jaaaa! Eindelijk een langverwachte functie toegevoegd: een bericht lang ingedrukt houden om te reageren\n\n🫸 PUSHmeldingen, indien ondersteund door diensten als https://nine.testrun.org\n\n🔗 Als je geen QR-codes kunt scannen, dan kun je ze voortaan delen als uitnodigingslinks\n\n🔵 Voortaan wordt het aantal ongelezen berichten van alle accounts in de titel getoond\n\n… en vele, vele bugs opgelost… %1$s</string>
     <string name="update_1_46_android">Nieuwe registratiemogelijkheden 🐣 en nog veel meer:\n\n⚡️ Registreer een account bij snelle chatmailservers (https://delta.chat/chatmail) of maak gebruik van traditionele mailservers\n\n👉 Ontvang pushmeldingen van elke chatmailserver\n\n👤 Voeg contactpersonen toe via ‘Contactpersonen bijvoegen’\n\n🥰 Reageer met een emoji\n\n📌 Maak gesprekken vast … en nog veel meer op %1$s</string>
-</resources>
+    </resources>

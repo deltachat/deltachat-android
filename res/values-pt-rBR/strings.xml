@@ -424,7 +424,6 @@
     <string name="send_file_to">Enviar \"%1$s\" para…</string>
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">Enviar Mensagem para…</string>
-
     <!-- map -->
     <string name="filter_map_on_time">Exibir localização no tempo.</string>
     <string name="show_location_traces">Exibir pegadas</string>
