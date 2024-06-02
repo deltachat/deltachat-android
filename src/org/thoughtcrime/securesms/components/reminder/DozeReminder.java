@@ -110,18 +110,24 @@ public class DozeReminder {
     }
   }
 
-  private static boolean isAllChatmail() {
+  private static boolean isPushAvailableAndSufficient() {
+    if (FcmReceiveService.getToken() == null) {
+      return false;
+    }
+
     for (int accountId : ApplicationContext.dcAccounts.getAll()) {
       DcContext context = ApplicationContext.dcAccounts.getAccount(accountId);
       if (!context.isChatmail()) {
-        return false;
+        // only report "not sufficient" if we're actually connected -
+        // otherwise we'll recheck next time the chatlist is opened
+        int connectivity = context.getConnectivity();
+        if (connectivity >= DcContext.DC_CONNECTIVITY_WORKING) {
+          return false;
+        }
       }
     }
-    return true;
-  }
 
-  private static boolean isPushAvailableAndSufficient() {
-    return isAllChatmail() && FcmReceiveService.getToken() != null;
+    return true;
   }
 
   public static void maybeAskDirectly(Context context) {
