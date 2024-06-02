@@ -347,7 +347,7 @@
     </plurals>
     <string name="ask_forward">Továbbítja az üzenetet a számára: %1$s?</string>
     <string name="ask_forward_multiple">Továbbítja az üzenetet a következő csevegésbe: %1$d?</string>
-    <string name="ask_export_attachment">A mellékletek exportálása lehetővé teszi, hogy más alkalmazások is hozzáférjenek azokhoz a készüléken.\n\nFolytatja?</string>
+    <string name="ask_export_attachment">A mellékletek exportálása lehetővé teszi, hogy más alkalmazások is hozzáférjenek azokhoz az eszközön.\n\nFolytatja?</string>
     <string name="ask_block_contact">Blokkolja ezt a partnerét? Többé nem fog üzeneteket kapni tőle.</string>
     <string name="ask_unblock_contact">Feloldja ennek a partnerének a blokkolását? Ezután képes lesz üzeneteket fogadni tőle.</string>
     <string name="ask_delete_contacts">Partner törlése?\n\nA folyamatban lévő csevegésekkel rendelkező vagy a rendszer névjegyzékéből származó partnerek nem törölhetőek véglegesen.</string>
@@ -510,17 +510,17 @@
     <string name="multidevice_qr_subtitle">Második eszköz beállításának beolvasása a(z) %1$s számára</string>
     <string name="multidevice_receiver_title">Hozzáadás második eszközként</string>
     <string name="multidevice_open_settings_on_other_device">Az első eszközön lépjen a „Beállítások / Második eszköz hozzáadása” menüpontra, és olvassa be az ott látható kódot.</string>
-    <string name="multidevice_receiver_scanning_ask">Átmásolja a profilt a másik készülékről erre a készülékre?</string>
+    <string name="multidevice_receiver_scanning_ask">Átmásolja a profilt a másik eszközről erre az eszközre?</string>
     <string name="multidevice_abort">A második eszköz beállításának megszakítása?</string>
     <string name="multidevice_abort_will_invalidate_copied_qr">Ez érvényteleníti a vágólapra másolt QR-kódot.</string>
     <string name="multidevice_experimental_hint">(kísérleti, 1.36-os verzió szükséges)</string>
-    <string name="multidevice_transfer_done_devicemsg">ℹ️ A profil átkerül a második készülékre.</string>
+    <string name="multidevice_transfer_done_devicemsg">ℹ️ A profil átkerül a második eszközre.</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="preparing_account">Profil készítése...</string>
     <!-- Shown beside progress bar, stay short -->
-    <string name="waiting_for_receiver">Várakozás a vevőkészülékre...</string>
+    <string name="waiting_for_receiver">Várakozás a vevőeszközre...</string>
     <!-- Shown beside progress bar, stay short -->
-    <string name="receiver_connected">Vevőkészülék csatlakoztatva...</string>
+    <string name="receiver_connected">Vevőeszköz csatlakoztatva...</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="transferring">Átvitel...</string>
     <string name="troubleshooting">Hibaelhárítás</string>
@@ -587,7 +587,7 @@
     <!-- for classic email, we use the classical term "Account" -->
     <string name="login_explain">Bejelentkezés meglévő e-mail fiókkal</string>
     <string name="login_subheader">Ismert e-mail szolgáltató esetén az alábbi beállításokat automatikusan meghatározzuk. Előfordulhat, hogy az IMAP/SMTP szolgáltatást az email fiókod webes felületén engedélyezni kell.\n\nHa nem megy, kérj segítséget a szolgáltatótól vagy a barátaidtól.</string>
-    <string name="login_no_servers_hint">A Delta Chat nem gyűjt felhasználói adatokat, minden az ön készülékén marad.</string>
+    <string name="login_no_servers_hint">A Delta Chat nem gyűjt felhasználói adatokat, minden az ön eszközén marad.</string>
     <string name="login_inbox">Bejövő</string>
     <string name="login_imap_login">IMAP bejelentkezési név</string>
     <string name="login_imap_server">IMAP kiszolgáló</string>
@@ -608,7 +608,7 @@
     <string name="login_socks5_user">SOCKS5 felhasználó</string>
     <string name="login_socks5_password">SOCKS5 jelszó</string>
     <string name="login_info_oauth2_title">Folytatja az egyszerűsített beállítást?</string>
-    <string name="login_info_oauth2_text">A megadott e-mail cím támogatja az egyszerűsített beállítást (OAuth 2.0).\n\nA következő lépésben kérjük, engedélyezze, hogy a Delta Chat az ön Chat e-mail-en keresztül alkalmazásaként működjön.\n\n\nA Delta Chat nem gyűjt felhasználói adatokat, minden az ön készülékén marad.</string>
+    <string name="login_info_oauth2_text">A megadott e-mail cím támogatja az egyszerűsített beállítást (OAuth 2.0).\n\nA következő lépésben kérjük, engedélyezze, hogy a Delta Chat az ön Chat e-mail-en keresztül alkalmazásaként működjön.\n\n\nA Delta Chat nem gyűjt felhasználói adatokat, minden az ön eszközén marad.</string>
     <string name="login_certificate_checks">Tanúsítvány ellenőrzése</string>
     <string name="login_error_mail">Adjon meg egy érvényes e-mail címet</string>
     <string name="login_error_server">Adjon meg egy érvényes kiszolgáló / IP-címet</string>
@@ -824,7 +824,7 @@
     <string name="autocrypt_send_asm_title">Autocrypt beállító üzenet küldése</string>
     <string name="autocrypt_send_asm_explain_before">Egy Autocrypt beállító üzenet biztonságosan megosztja az ön végpontok közötti titkosítás beállítását más Autocrypt-kompatibilis alkalmazásokkal.\n\nA beállítás titkosítása egy itt megjelenő beállítási kóddal történik, amelyet a másik eszközön kell begépelni.</string>
     <string name="autocrypt_send_asm_button">Autocrypt beállító üzenet küldése</string>
-    <string name="autocrypt_send_asm_explain_after">Az beállításokat elküldtük önnek. Váltson a másik készülékre, és nyissa meg a beállítási üzenetet. Meg kell adnia a beállítási kódot. Írja be a következő számjegyeket:</string>
+    <string name="autocrypt_send_asm_explain_after">A beállításokat elküldtük önnek. Váltson a másik eszközre, és nyissa meg a beállítási üzenetet. Meg kell adnia a beállítási kódot. Írja be a következő számjegyeket:</string>
     <string name="autocrypt_prefer_e2ee">Végpontok közötti titkosítás előnyben részesítése</string>
     <string name="autocrypt_asm_subject">Autocrypt beállító üzenet</string>
     <string name="autocrypt_asm_general_body">Ez az Autocrypt beállító üzenet a végpontok közötti titkosítási beállítások kliensek közötti átvitelére szolgál.\n\nA beállítások visszafejtéséhez és használatához nyissa meg az üzenetet egy Autocrypt-kompatibilis kliensben, és írja be a generáló eszközön megjelenő beállítási kódot.</string>
@@ -969,7 +969,7 @@
     <!-- the placeholder will be replaced by the e-mail address of the profile -->
     <string name="qrlogin_ask_login_another">Bejelentkezés ide: „%1$s”?\n\nA meglévő profilját nem töröljük. A „Profilváltás” elemmel válthat a profiljai között.</string>
     <!-- first placeholder will be replaced by name and address of the inviter, second placeholder will be replaced by the name of the inviter. -->
-    <string name="secure_join_started">%1$s meghívta önt, hogy csatlakozzon ehhez a csoporthoz.\n\n%2$s készülékére várakozás a válaszhoz...</string>
+    <string name="secure_join_started">%1$s meghívta önt, hogy csatlakozzon ehhez a csoporthoz.\n\n%2$s eszközére várakozás a válaszhoz...</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s válaszolt, várakozik, hogy fölvegyék a csoportba...</string>
     <string name="secure_join_wait">Garantált végpontok közötti titkosítás létrehozása, várjon...</string>
@@ -1126,13 +1126,13 @@
     <string name="shortcut_step1_tap_share_btn">Kattintson a megosztás gombra</string>
     <string name="shortcut_step2_tap_add_to_home_screen">Válassza a „Hozzáadás a kezdőképernyőhöz” lehetőséget, hogy az alkalmazást hozzáadja a kezdőképernyőhöz.</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
-    <string name="InfoPlist_NSCameraUsageDescription">A Delta Chat a készüléke kameráját használja fényképek és videók készítésére és küldésére, valamint QR-kódok beolvasására.</string>
+    <string name="InfoPlist_NSCameraUsageDescription">A Delta Chat az eszköze kameráját használja fényképek és videók készítésére és küldésére, valamint QR-kódok beolvasására.</string>
     <string name="InfoPlist_NSContactsUsageDescription">A Delta Chat a névjegyek segítségével megjeleníti azon e-mail címek listáját, amelyekkel cseveghet. A Delta Chat-nek nincs központi kiszolgálója, a névjegyeit nem küldjük el sehova.</string>
     <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">A Delta Chat-nek engedélyre van szüksége ahhoz, hogy megoszthassa az ön tartózkodási helyszínét arra az időtartamra, ameddig engedélyezte a helyszínmegosztást.</string>
     <string name="InfoPlist_NSLocationWhenInUseUsageDescription">A Delta Chat-nek engedélyre van szüksége ahhoz, hogy megoszthassa az ön tartózkodási helyszínét arra az időtartamra, ameddig engedélyezte a helyszínmegosztást.</string>
-    <string name="InfoPlist_NSMicrophoneUsageDescription">A Delta Chat a készüléke mikrofonját használja hangüzenetek és hangos videók rögzítésére és küldésére.</string>
+    <string name="InfoPlist_NSMicrophoneUsageDescription">A Delta Chat az eszköze mikrofonját használja a hangüzenetek és a hangos videók rögzítésére, valamint küldésére.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">A Delta Chat segítségével kiválaszthatja, hogy mely fényképeket szeretné elküldeni a könyvtárából.</string>
-    <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">A Delta Chat el akarja menteni a képeket az készüléke fotótárába.</string>
+    <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">A Delta Chat el akarja menteni a képeket az eszköze fotótárába.</string>
 
 
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
@@ -1154,4 +1154,5 @@
     <string name="update_1_44_android">Újdonságok:\n\n❤️ Igen! Ezt már régóta vártuk: Ha nem tudja beolvasni a QR-kódokat, ossza meg őket egy meghívó hivatkozásként\n\n\n🔵 Az összes fiók olvasatlan üzeneteit számoljuk és megjelenítjük a címben\n\n\n... és további hibajavítások ... %1$s\n\nSegítsen az alkalmazás fejlesztésében: Használja a „Beállítások / Speciális / Statisztikák küldése” lehetőséget, hogy segítsen a fejlesztőknek a valós használatra való optimalizálásban. A küldés előtt áttekintheti az adatokat</string>
     <string name="update_1_44_ios">Újdonságok:\n\n❤️ Igen! Ezt már régóta vártuk: Koppintson hosszan az üzenetre az üzenetreakciók küldéséhez\n\n🫸 PUSH értesítések, ha a szolgáltatók támogatják, mint például a https://nine.testrun.org\n\n🔗 Ha nem tudja beolvasni a QR-kódokat, ossza meg őket egy meghívó hivatkozásként\n\n\n... és további hibajavítások ... %1$s</string>
     <string name="update_1_46_android">Új szolgáltatás 🐣 és még több:\n\n⚡️ Regisztráljon biztonságos, gyors chatmail kiszolgálókra (https://delta.chat/chatmail) vagy használja a klasszikus e-mail kiszolgálókat\n\n👉 PUSH értesítések bármely chatmail kiszolgálóra\n\n👤 Kapcsolja össze barátait biztonságosan a „Névjegyek csatolása”\n\n🥰 Reagáljon bármilyen hangulatjellel\n\n📌 Tűzze ki a csevegéseket közvetlenül a keresésből ... és még több itt: %1$s</string>
-    </resources>
+    <string name="update_1_46_ios">Új szolgáltatás 🐣 és még több:\n\n⚡️ Regisztráljon biztonságos, gyors chatmail kiszolgálókra (https://delta.chat/chatmail) vagy használja a klasszikus e-mail kiszolgálókat\n\n👉 PUSH értesítések bármely chatmail kiszolgálóra\n\n👤 Fogadjon „Csatolt Névjegyeket\" és csatlakozzon a barátaihoz”\n\n🥰 Gyorsabb üzenetreakció kiválasztás ... és még több itt: %1$s</string>
+</resources>
