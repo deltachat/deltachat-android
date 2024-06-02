@@ -95,6 +95,11 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
     boolean fromWelcome  = getIntent().getBooleanExtra(FROM_WELCOME, false);
+    if (DcHelper.getContext(this).isConfigured() == 1) {
+      // if account is configured it means we didn't come from Welcome screen nor from QR scanner,
+      // instead, user clicked a dcaccount:// URI directly, so we need to switch to a new account:
+      AccountManager.getInstance().beginAccountCreation(this);
+    }
     getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(!fromWelcome) {
       @Override
       public void handleOnBackPressed() {
