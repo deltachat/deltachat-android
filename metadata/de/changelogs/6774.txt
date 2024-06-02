@@ -1,0 +1,6 @@
+- synchronisieren Sie Änderungen auf "Your Profile Name", "Class Mails anzeigen", "Lesen Sie Receipts" Optionen auf Geräten
+- entfernen Empfängergrenze auf .xdc Größe
+- Log-in-Fehler für Anbieter als 163.com beheben
+- Decryption Fehler beheben, wenn Sie mehrere private Schlüssel verwenden
+- Datenbank gesperrte Fehler auf Webxdc-Updates beheben
+- Übersetzungen aktualisieren

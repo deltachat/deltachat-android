@@ -1,0 +1,8 @@
+- "Reactions": lange tippen Sie auf eine Nachricht, um darauf zu reagieren
+- Ja. Wenn Sie QR-Codes nicht scannen können, teilen Sie sie als "Einladung Links"
+- Ungelesene Nachrichten aller Konten werden jetzt gezählt und im Titel angezeigt
+- Webxdc Sendegrenze entfernt
+- Long-Tapping-Chatlist-Elemente erlauben es jetzt, Chats direkt zu stummen/unmute
+- Fragen Sie nach System entsperren Geheimnis vor dem Öffnen "Passwort & Account"
+- Neue Option "Settings / Advanced / Read System Address Book"
+- Tonnen Fehlerbehebungen

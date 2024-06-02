@@ -1,0 +1,6 @@
+- One-to-one Chats garantieren eine end-to-end-Verschlüsselung für Kontakte mit einem grünen Checkmark
+- Für jedermanns Einfachheit markieren wir diese Chats auch mit grünen Checkmarks
+- Gruppen werden automatisch mit garantierter End-to-End-Verschlüsselung erstellt, wenn möglich
+- Akzeptiert/geschlossen, archiviert, gepinnt, Mute wird über alle Ihre Geräte synchronisiert
+- Weitere Verbesserungen in der Kamera, Sprachnachrichten, Backup-all, Bildschirmleser, Per-Account Wallpaper, Galerie select-all, webxdc Landschaft
+- Tonnen Fehlerbehebungen

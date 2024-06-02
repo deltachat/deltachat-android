@@ -1,0 +1,5 @@
+* wenn möglich Bildeditor für die Avatarauswahl verwenden
+* Verbesserung des Ladebildschirms im Dunkelmodus
+* Update "verified icon"
+* Luri Bakhtiari Übersetzung hinzufügen, andere Übersetzungen aktualisieren
+* viele Fehlerbehebungen
