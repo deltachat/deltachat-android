@@ -1,5 +1,13 @@
 # Delta Chat Android Changelog
 
+## v1.46.2
+2024-06
+
+* fix: create new profile when scanning/tapping QR codes outside "Add Profile"
+* update translations and local help
+* using core 1.139.5
+
+
 ## v1.46.1
 2024-05
 
