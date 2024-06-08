@@ -31,7 +31,6 @@ import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 
 import com.b44t.messenger.DcContext;
-import com.b44t.messenger.rpc.RpcException;
 
 import org.thoughtcrime.securesms.ApplicationPreferencesActivity;
 import org.thoughtcrime.securesms.ConversationActivity;
@@ -53,6 +52,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+
+import chat.delta.rpc.RpcException;
 
 
 public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment

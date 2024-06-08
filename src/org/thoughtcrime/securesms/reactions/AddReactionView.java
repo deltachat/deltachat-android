@@ -13,15 +13,18 @@ import androidx.emoji2.emojipicker.EmojiPickerView;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMsg;
-import com.b44t.messenger.rpc.Reactions;
-import com.b44t.messenger.rpc.Rpc;
 
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.components.emoji.EmojiTextView;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.Map;
+
+import chat.delta.rpc.Rpc;
+import chat.delta.rpc.types.Reactions;
 
 public class AddReactionView extends LinearLayout {
     private EmojiTextView [] defaultReactionViews;
@@ -126,11 +129,10 @@ public class AddReactionView extends LinearLayout {
     private String getSelfReaction() {
         String result = null;
         try {
-            final Reactions reactions = rpc.getMsgReactions(dcContext.getAccountId(), msgToReactTo.getId());
-            final Map<Integer, String[]> reactionsByContact = reactions.getReactionsByContact();
-            final String [] selfReactions = reactionsByContact.get(DcContact.DC_CONTACT_ID_SELF);
-            if (selfReactions != null && selfReactions.length > 0) {
-                result = selfReactions[0];
+            final Reactions reactions = rpc.getMessageReactions(dcContext.getAccountId(), msgToReactTo.getId());
+            final List<String> selfReactions = reactions==null? null : reactions.reactionsByContact.get(String.valueOf(DcContact.DC_CONTACT_ID_SELF));
+            if (selfReactions != null && selfReactions.size() > 0) {
+                result = selfReactions.get(0);
             }
         } catch(Exception e) {
            e.printStackTrace();
@@ -176,9 +178,9 @@ public class AddReactionView extends LinearLayout {
     private void sendReaction(final String reaction) {
         try {
             if (reaction == null || reaction.equals(getSelfReaction())) {
-                rpc.sendReaction(dcContext.getAccountId(), msgToReactTo.getId(), "");
+                rpc.sendReaction(dcContext.getAccountId(), msgToReactTo.getId(), Collections.singletonList(""));
             } else {
-                rpc.sendReaction(dcContext.getAccountId(), msgToReactTo.getId(), reaction);
+                rpc.sendReaction(dcContext.getAccountId(), msgToReactTo.getId(), Collections.singletonList(reaction));
             }
         } catch(Exception e) {
             e.printStackTrace();

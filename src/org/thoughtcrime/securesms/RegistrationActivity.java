@@ -52,8 +52,6 @@ import androidx.constraintlayout.widget.Group;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcProvider;
-import com.b44t.messenger.util.concurrent.ListenableFuture;
-import com.b44t.messenger.util.concurrent.SettableFuture;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -69,6 +67,9 @@ import org.thoughtcrime.securesms.util.views.ProgressDialog;
 import java.lang.ref.WeakReference;
 import java.util.Locale;
 import java.util.concurrent.ExecutionException;
+
+import chat.delta.util.ListenableFuture;
+import chat.delta.util.SettableFuture;
 
 public class RegistrationActivity extends BaseActionBarActivity implements DcEventCenter.DcEventDelegate {
 

@@ -9,16 +9,18 @@ import android.webkit.WebSettings;
 import androidx.appcompat.app.AlertDialog;
 
 import com.b44t.messenger.DcContext;
-import com.b44t.messenger.rpc.HttpResponse;
-import com.b44t.messenger.rpc.Rpc;
 
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.util.DynamicTheme;
+import org.thoughtcrime.securesms.util.JsonUtils;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 
 import java.io.ByteArrayInputStream;
 import java.lang.ref.WeakReference;
+
+import chat.delta.rpc.Rpc;
+import chat.delta.rpc.types.HttpResponse;
 
 public class FullMsgActivity extends WebViewActivity
 {
@@ -188,11 +190,12 @@ public class FullMsgActivity extends WebViewActivity
         throw new Exception("no url specified");
       }
       HttpResponse httpResponse = rpc.getHttpResponse(dcContext.getAccountId(), url);
-      String mimeType = httpResponse.getMimetype();
+      String mimeType = httpResponse.mimetype;
       if (mimeType == null) {
         mimeType = "application/octet-stream";
       }
-      res = new WebResourceResponse(mimeType, httpResponse.getEncoding(), new ByteArrayInputStream(httpResponse.getBlob()));
+      byte[] blob = JsonUtils.decodeBase64(httpResponse.blob);
+      res = new WebResourceResponse(mimeType, httpResponse.encoding, new ByteArrayInputStream(blob));
     } catch (Exception e) {
       e.printStackTrace();
       res = new WebResourceResponse("text/plain", "UTF-8", new ByteArrayInputStream(("Error: " + e.getMessage()).getBytes()));

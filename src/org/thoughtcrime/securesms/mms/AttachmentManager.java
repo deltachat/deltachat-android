@@ -41,10 +41,6 @@ import androidx.appcompat.app.AlertDialog;
 
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMsg;
-import com.b44t.messenger.rpc.RpcException;
-import com.b44t.messenger.util.concurrent.ListenableFuture;
-import com.b44t.messenger.util.concurrent.ListenableFuture.Listener;
-import com.b44t.messenger.util.concurrent.SettableFuture;
 
 import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.MediaPreviewActivity;
@@ -78,6 +74,10 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
+
+import chat.delta.rpc.RpcException;
+import chat.delta.util.ListenableFuture;
+import chat.delta.util.SettableFuture;
 
 
 public class AttachmentManager {
@@ -138,7 +138,7 @@ public class AttachmentManager {
     if (attachmentViewStub.resolved()) {
 
       if (animate) {
-        ViewUtil.fadeOut(attachmentViewStub.get(), 200).addListener(new Listener<Boolean>() {
+        ViewUtil.fadeOut(attachmentViewStub.get(), 200).addListener(new ListenableFuture.Listener<Boolean>() {
           @Override
           public void onSuccess(Boolean result) {
             thumbnail.clear(glideRequests);
