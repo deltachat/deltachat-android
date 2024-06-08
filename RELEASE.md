@@ -109,6 +109,15 @@ on <https://developer.amazon.com/dashboard>:
     f) on "Step 4" page: "Submit app"
 
 
+## Release on Huawei AppGallery
+
+on <https://developer.huawei.com/consumer/en/appgallery>:
+
+13. a) go to "Upload your app / Android / Delta Chat / Update", again "Update" upper right
+    b) "Manage Packages / Upload", upload the APK from above, hit "Submit"
+    c) Confirm version and language
+
+
 ## Releases on Apklis, Passkoocheh
 
 These stores are not under our control.
