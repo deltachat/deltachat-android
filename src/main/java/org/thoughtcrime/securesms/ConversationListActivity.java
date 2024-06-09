@@ -104,8 +104,8 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     // it is not needed to keep all past update messages, however, when deleted, also the strings should be deleted.
     try {
       DcContext dcContext = DcHelper.getContext(this);
-      final String deviceMsgId = "update_1_46_0l_android";
-      if (!dcContext.wasDeviceMsgEverAdded(deviceMsgId)) {
+      final String deviceMsgLabel = "update_1_46_0l_android";
+      if (!dcContext.wasDeviceMsgEverAdded(deviceMsgLabel)) {
         DcMsg msg = null;
         if (!getIntent().getBooleanExtra(FROM_WELCOME, false)) {
           msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
@@ -117,15 +117,15 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
 
           msg.setText(getString(R.string.update_1_46_android, "https://get.delta.chat/#changelogs"));
         }
-        dcContext.addDeviceMsg(deviceMsgId, msg);
+        dcContext.addDeviceMsg(deviceMsgLabel, msg);
 
-        if (Prefs.getStringPreference(this, Prefs.LAST_DEVICE_MSG_ID, "").equals(deviceMsgId)) {
+        if (Prefs.getStringPreference(this, Prefs.LAST_DEVICE_MSG_LABEL, "").equals(deviceMsgLabel)) {
           int deviceChatId = dcContext.getChatIdByContactId(DcContact.DC_CONTACT_ID_DEVICE);
           if (deviceChatId != 0) {
             dcContext.marknoticedChat(deviceChatId);
           }
         }
-        Prefs.setStringPreference(this, Prefs.LAST_DEVICE_MSG_ID, deviceMsgId);
+        Prefs.setStringPreference(this, Prefs.LAST_DEVICE_MSG_LABEL, deviceMsgLabel);
       }
     } catch(Exception e) {
       e.printStackTrace();
