@@ -32,6 +32,11 @@
 
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:defaultValue="false"
+            android:key="pref_webxdc_realtime_enabled"
+            android:title="@string/pref_realtime_channels"/>
+
+        <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
+            android:defaultValue="false"
             android:key="pref_developer_mode_enabled"
             android:summary="@string/pref_developer_mode_explain"
             android:title="@string/pref_developer_mode"/>

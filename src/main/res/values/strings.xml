@@ -743,6 +743,7 @@
     <string name="pref_show_emails_all">All</string>
     <string name="pref_experimental_features">Experimental Features</string>
     <string name="pref_on_demand_location_streaming">On-demand Location Streaming</string>
+    <string name="pref_realtime_channels">Realtime Channels</string>
     <string name="pref_developer_mode">Developer Mode</string>
     <string name="pref_developer_mode_explain">Activates debugging options and can make the app less stable. For developers only.</string>
     <string name="pref_background_default">Default image</string>
