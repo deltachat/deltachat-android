@@ -56,11 +56,6 @@ dependencies {
     implementation 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'  // number of unread messages,
          // the one-letter circle for the contacts (when there is not avatar) and a white background.
     implementation 'com.googlecode.mp4parser:isoparser:1.0.6' // MP4 recoding; upgrading eg. to 1.1.22 breaks recoding, however, i have not investigated further, just reset to 1.0.6
-    implementation ('com.google.firebase:firebase-messaging:23.4.1') { // for PUSH notifications
-        exclude group: 'com.google.firebase', module: 'firebase-core'
-        exclude group: 'com.google.firebase', module: 'firebase-analytics'
-        exclude group: 'com.google.firebase', module: 'firebase-measurement-connector'
-    }
     implementation ('com.davemorrissey.labs:subsampling-scale-image-view:3.6.0') { // for the zooming on photos / media
         exclude group: 'com.android.support', module: 'support-annotations'
     }
@@ -71,6 +66,12 @@ dependencies {
     // that protects against the Surreptitious Sharing attack.
     // <https://github.com/cketti/SafeContentResolver>
     implementation 'de.cketti.safecontentresolver:safe-content-resolver-v14:1.0.0'
+
+    gplayImplementation ('com.google.firebase:firebase-messaging:23.4.1') { // for PUSH notifications
+        exclude group: 'com.google.firebase', module: 'firebase-core'
+        exclude group: 'com.google.firebase', module: 'firebase-analytics'
+        exclude group: 'com.google.firebase', module: 'firebase-measurement-connector'
+    }
 
     testImplementation 'junit:junit:4.13.1'
     testImplementation 'org.assertj:assertj-core:1.7.1'
@@ -123,6 +124,7 @@ android {
         project.ext.set("archivesBaseName", "deltachat");
 
         buildConfigField "boolean", "DEV_BUILD", "false"
+        buildConfigField "boolean", "USE_PLAY_SERVICES", "false"
 
         ndk {
             abiFilters "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
@@ -195,6 +197,7 @@ android {
             dimension "none"
             applicationId "chat.delta"
             apply plugin: "com.google.gms.google-services"
+            buildConfigField "boolean", "USE_PLAY_SERVICES", "true"
         }
     }
 
