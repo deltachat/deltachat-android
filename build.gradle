@@ -140,6 +140,12 @@ android {
             assets.srcDirs = ['assets']
             jniLibs.srcDirs = ['libs']
         }
+        fat {
+            java.srcDirs = ['src-flavor-specific/fat']
+        }
+        gplay {
+            java.srcDirs = ['src-flavor-specific/gplay']
+        }
         androidTest {
             java.srcDirs = ['androidTest']
         }
