@@ -5,6 +5,7 @@ project.properties
 .settings
 bin/
 gen/
+/gplay/
 .idea/
 *.iml
 *.so
