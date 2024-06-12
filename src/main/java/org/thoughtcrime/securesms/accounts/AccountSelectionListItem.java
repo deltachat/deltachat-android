@@ -62,7 +62,7 @@ public class AccountSelectionListItem extends LinearLayout {
 
     Recipient recipient;
     if (accountId != DcContact.DC_CONTACT_ID_ADD_ACCOUNT) {
-      deleteBtn.setVisibility(selected? View.INVISIBLE : View.VISIBLE);
+      deleteBtn.setVisibility(View.VISIBLE);
       recipient = new Recipient(getContext(), self, name);
     } else {
       deleteBtn.setVisibility(View.GONE);
