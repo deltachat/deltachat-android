@@ -5,7 +5,7 @@ project.properties
 .settings
 bin/
 gen/
-gplay/
+/gplay/
 .idea/
 *.iml
 *.so
@@ -45,3 +45,5 @@ jni/x86_64
 jni/armeabi
 jni/armeabi-v7a
 jni/arm64-v8a
+
+*~

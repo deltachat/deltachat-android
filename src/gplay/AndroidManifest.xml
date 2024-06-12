@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools">
+
+  <!-- force compiling emojipicker on sdk<21 and firebase on sdk<19; runtime checks are required then -->
+  <uses-sdk tools:overrideLibrary="androidx.emoji2.emojipicker, com.google.firebase.messaging, com.google.android.gms.cloudmessaging"/>
+
+  <meta-data android:name="firebase_analytics_collection_deactivated" android:value="true" />
+  <meta-data android:name="google_analytics_adid_collection_enabled" android:value="false" />
+  <meta-data android:name="firebase_messaging_auto_init_enabled" android:value="false" />
+
+  <application>
+    <service
+        android:name=".notifications.FcmReceiveService"
+        android:exported="true">
+      <intent-filter>
+        <action android:name="com.google.firebase.MESSAGING_EVENT" />
+      </intent-filter>
+    </service>
+
+    <provider
+        android:name="com.google.firebase.provider.FirebaseInitProvider"
+        android:authorities="${applicationId}.firebaseinitprovider"
+        tools:node="remove">
+    </provider>
+  </application>
+
+</manifest>

@@ -173,9 +173,7 @@ public class Prefs {
   }
 
   public static boolean isPushEnabled(Context context) {
-    // Do not use PUSH for the the default application ID "com.b44t.messenger" which is used eg. used by F-Droid
-    boolean defaultPush = !BuildConfig.APPLICATION_ID.equals("com.b44t.messenger");
-    return getBooleanPreference(context, "pref_push_enabled", defaultPush);
+      return BuildConfig.USE_PLAY_SERVICES && getBooleanPreference(context, "pref_push_enabled", true);
   }
 
   public static boolean isHardCompressionEnabled(Context context) {
