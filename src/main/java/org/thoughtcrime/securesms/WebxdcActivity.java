@@ -53,10 +53,9 @@ import java.io.ByteArrayInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.ArrayList;
 
 public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcEventDelegate  {
   private static final String TAG = WebxdcActivity.class.getSimpleName();
@@ -544,17 +543,13 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
 
     /** @noinspection unused*/
     @JavascriptInterface
-    public void sendRealtimeData(String base64Data) {
+    public void sendRealtimeData(String jsonData) {
       int accountId = WebxdcActivity.this.dcContext.getAccountId();
       int msgId = WebxdcActivity.this.dcAppMsg.getId();
-      byte[] bytes = Base64.decode(base64Data, Base64.NO_WRAP | Base64.NO_PADDING);
-      ArrayList<Integer> data = new ArrayList<>();
-      for (byte b : bytes) {
-        data.add(Integer.valueOf(b));
-      }
       try {
-        WebxdcActivity.this.rpc.sendWebxdcRealtimeData(accountId, msgId, data);
-      } catch (RpcException e) {
+        Integer[] data = JsonUtils.fromJson(jsonData, Integer[].class);
+        WebxdcActivity.this.rpc.sendWebxdcRealtimeData(accountId, msgId, Arrays.asList(data));
+      } catch (IOException | RpcException e) {
         e.printStackTrace();
       }
     }

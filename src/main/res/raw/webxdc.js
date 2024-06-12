@@ -25,7 +25,6 @@ window.webxdc = (() => {
 
   const createRealtimeChannel = () => {
     let listener = null;
-    const decoder = new TextDecoder('utf8');
     return {
       setListener: (li) => listener = li,
       leave: () => InternalJSApi.leaveRealtimeChannel(),
@@ -33,7 +32,7 @@ window.webxdc = (() => {
         if ((!data) instanceof Uint8Array) {
           throw new Error('realtime listener data must be a Uint8Array')
         }
-        InternalJSApi.sendRealtimeData(btoa(decoder.decode(data)));
+        InternalJSApi.sendRealtimeData(JSON.stringify(Array.from(data)));
       },
       __receive: (data) => {
         if (listener) {
