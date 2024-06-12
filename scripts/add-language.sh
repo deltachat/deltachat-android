@@ -7,18 +7,19 @@ then
 fi
 
 LANG=$1
+RES=src/main/res
 
-mkdir res/values-$LANG/
+mkdir $RES/values-$LANG/
 
-cp res/values/strings.xml res/values-$LANG/strings.xml
+cp $RES/values/strings.xml $RES/values-$LANG/strings.xml
 
 # set time to old date because transifex may have different file times
 # and does not overwrite old file
 # (using -t as sth. as -d "100 days ago" does not work on mac)
-touch -t 201901010000 res/values-$LANG/strings.xml
+touch -t 201901010000 $RES/values-$LANG/strings.xml
 
-echo "res/values-$LANG/strings.xml added:"
-echo "- add the name to res/values/arrays.xml"
+echo "$RES/values-$LANG/strings.xml added:"
+echo "- add the name to $RES/values/arrays.xml"
 echo "- if needed, language mappings can be added to .tx/config"
 echo "- pull translations using ./scripts/tx-pull-translations.sh"
 echo "  (on problems, 'tx -d pull' gives verbose output)"
