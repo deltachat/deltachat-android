@@ -21,6 +21,7 @@ import androidx.preference.Preference;
 import android.text.TextUtils;
 
 import org.thoughtcrime.securesms.ApplicationPreferencesActivity;
+import org.thoughtcrime.securesms.BuildConfig;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.connect.KeepAliveService;
@@ -74,6 +75,7 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
 
     CheckBoxPreference usePushService = this.findPreference("pref_push_enabled");
     usePushService.setChecked(Prefs.isPushEnabled(getContext()));
+    usePushService.setEnabled(BuildConfig.USE_PLAY_SERVICES);
     usePushService.setOnPreferenceChangeListener((preference, newValue) -> {
       final boolean enabled = (Boolean) newValue;
       if (!enabled) {

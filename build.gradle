@@ -111,11 +111,13 @@ android {
     productFlavors {
         fat {
             dimension "none"
+            buildConfigField "boolean", "USE_PLAY_SERVICES", "false"
         }
         gplay {
             dimension "none"
             applicationId "chat.delta"
             apply plugin: "com.google.gms.google-services"
+            buildConfigField "boolean", "USE_PLAY_SERVICES", "true"
         }
     }
 
