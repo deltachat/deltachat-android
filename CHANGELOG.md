@@ -1,5 +1,12 @@
 # Delta Chat Android Changelog
 
+## v1.46.3
+2024-06
+
+* Disable FCM PUSH notification support for F-Droid and other non-Google-Play-builds
+* using core 1.139.5
+
+
 ## v1.46.2
 2024-06
 

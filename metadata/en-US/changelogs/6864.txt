@@ -1,0 +1,7 @@
+- new onboarding: you can create a new profile with one tap on "Create New Profile" - or use an existing login or second-device-setup as usual
+- contacts can be attached as "Cards" at "Attach / Contact"; when the receiver taps the cards, guaranteed end-to-end encrypted can be established
+- add contacts manually at "New Chat / New Contact / Add Contact Manually"
+- send any emoji as reaction
+- show reactions in summaries
+- pin/archive/etc chats directly from search result
+- bug fixed and more
