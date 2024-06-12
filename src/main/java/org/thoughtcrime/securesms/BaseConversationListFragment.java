@@ -165,17 +165,22 @@ public abstract class BaseConversationListFragment extends Fragment implements A
           for (long chatId : selectedConversations) {
             dcContext.setChatMuteDuration((int)chatId, duration);
           }
+
+          if (actionMode != null) {
+            actionMode.finish();
+            actionMode = null;
+          }
       });
     } else {
       // unmute
       for (long chatId : selectedConversations) {
         dcContext.setChatMuteDuration((int)chatId, 0);
       }
-    }
 
-    if (actionMode != null) {
-      actionMode.finish();
-      actionMode = null;
+      if (actionMode != null) {
+        actionMode.finish();
+        actionMode = null;
+      }
     }
   }
 
