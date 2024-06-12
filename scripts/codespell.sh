@@ -1,4 +1,7 @@
 #!/bin/sh
+
+MAIN=./src/main
+
 codespell \
-  --skip './.git,./build,./res/values-*/strings.xml,,./assets/help,./jni/deltachat-core-rust' \
+  --skip './.git,./build,$MAIN/res/values-*/strings.xml,,$MAIN/assets/help,./jni/deltachat-core-rust' \
   --ignore-words-list formattings
