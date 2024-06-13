@@ -37,6 +37,8 @@ import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcMsg;
+import com.b44t.messenger.rpc.Rpc;
+import com.b44t.messenger.rpc.RpcException;
 
 import org.json.JSONObject;
 import org.thoughtcrime.securesms.connect.AccountManager;
@@ -51,7 +53,7 @@ import java.io.ByteArrayInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -64,6 +66,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
 
   private ValueCallback<Uri[]> filePathCallback;
   private DcContext dcContext;
+  private Rpc rpc;
   private DcMsg dcAppMsg;
   private String baseURL;
   private String sourceCodeUrl = "";
@@ -136,6 +139,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
   @Override
   protected void onCreate(Bundle state, boolean ready) {
     super.onCreate(state, ready);
+    rpc = DcHelper.getRpc(this);
 
     Bundle b = getIntent().getExtras();
     hideActionBar = b.getBoolean(EXTRA_HIDE_ACTION_BAR, false);
@@ -164,6 +168,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     DcEventCenter eventCenter = DcHelper.getEventCenter(WebxdcActivity.this.getApplicationContext());
     eventCenter.addObserver(DcContext.DC_EVENT_WEBXDC_STATUS_UPDATE, this);
     eventCenter.addObserver(DcContext.DC_EVENT_MSGS_CHANGED, this);
+    eventCenter.addObserver(DcContext.DC_EVENT_WEBXDC_REALTIME_DATA, this);
     
     int appMessageId = b.getInt(EXTRA_APP_MSG_ID);
     int accountId = b.getInt(EXTRA_ACCOUNT_ID);
@@ -217,6 +222,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
   @Override
   protected void onDestroy() {
     DcHelper.getEventCenter(this.getApplicationContext()).removeObservers(this);
+    leaveRealtimeChannel();
     super.onDestroy();
   }
 
@@ -341,16 +347,29 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     return res;
   }
 
+  private void callJavaScriptFunction(String func) {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+      if (internetAccess) {
+        webView.evaluateJavascript("window." + func + ";", null);
+      } else {
+        webView.evaluateJavascript("document.getElementById('frame').contentWindow." + func + ";", null);
+      }
+    }
+  }
+
   @Override
   public void handleEvent(@NonNull DcEvent event) {
     int eventId = event.getId();
     if ((eventId == DcContext.DC_EVENT_WEBXDC_STATUS_UPDATE && event.getData1Int() == dcAppMsg.getId())) {
-      Log.i(TAG, "handleEvent");
-      if (internetAccess) {
-        webView.loadUrl("javascript:window.__webxdcUpdate();");
-      } else {
-        webView.loadUrl("javascript:document.getElementById('frame').contentWindow.__webxdcUpdate();");
+      Log.i(TAG, "handling status update event");
+      callJavaScriptFunction("__webxdcUpdate()");
+    } else if ((eventId == DcContext.DC_EVENT_WEBXDC_REALTIME_DATA && event.getData1Int() == dcAppMsg.getId())) {
+      Log.i(TAG, "handling realtime data event");
+      StringBuilder data = new StringBuilder();
+      for (byte b : event.getData2Blob()) {
+          data.append(((int) b)  + ",");
       }
+      callJavaScriptFunction("__webxdcRealtimeData([" + data + "])");
     } else if ((eventId == DcContext.DC_EVENT_MSGS_CHANGED && event.getData2Int() == dcAppMsg.getId())) {
       this.dcAppMsg = this.dcContext.getMsg(event.getData2Int()); // msg changed, reload data from db
       Util.runOnAnyBackgroundThread(() -> {
@@ -428,6 +447,16 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     super.onActivityResult(reqCode, resultCode, data);
   }
 
+  private void leaveRealtimeChannel() {
+    int accountId = dcContext.getAccountId();
+    int msgId = dcAppMsg.getId();
+    try {
+      rpc.leaveWebxdcRealtime(accountId, msgId);
+    } catch (RpcException e) {
+      e.printStackTrace();
+    }
+  }
+
   class InternalJSApi {
     @JavascriptInterface
     public String selfAddr() {
@@ -494,6 +523,37 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
       } catch (Exception e) {
         e.printStackTrace();
         return e.toString();
+      }
+    }
+
+    /** @noinspection unused*/
+    @JavascriptInterface
+    public void sendRealtimeAdvertisement() {
+      int accountId = WebxdcActivity.this.dcContext.getAccountId();
+      int msgId = WebxdcActivity.this.dcAppMsg.getId();
+      try {
+        WebxdcActivity.this.rpc.sendWebxdcRealtimeAdvertisement(accountId, msgId);
+      } catch (RpcException e) {
+        e.printStackTrace();
+      }
+    }
+
+    /** @noinspection unused*/
+    @JavascriptInterface
+    public void leaveRealtimeChannel() {
+      WebxdcActivity.this.leaveRealtimeChannel();
+    }
+
+    /** @noinspection unused*/
+    @JavascriptInterface
+    public void sendRealtimeData(String jsonData) {
+      int accountId = WebxdcActivity.this.dcContext.getAccountId();
+      int msgId = WebxdcActivity.this.dcAppMsg.getId();
+      try {
+        Integer[] data = JsonUtils.fromJson(jsonData, Integer[].class);
+        WebxdcActivity.this.rpc.sendWebxdcRealtimeData(accountId, msgId, Arrays.asList(data));
+      } catch (IOException | RpcException e) {
+        e.printStackTrace();
       }
     }
   }
