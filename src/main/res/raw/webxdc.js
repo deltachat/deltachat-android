@@ -16,10 +16,9 @@ window.webxdc = (() => {
     }
   };
 
-  window.__webxdcRealtimeData = (base64Data) => {
+  window.__webxdcRealtimeData = (intArray) => {
     if (realtimeChannel) {
-      const data = Uint8Array.from(atob(base64Data), (m) => m.codePointAt(0));
-      realtimeChannel.__receive(data);
+      realtimeChannel.__receive(Uint8Array.from(intArray));
     }
   };
 

@@ -365,8 +365,11 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
       callJavaScriptFunction("__webxdcUpdate()");
     } else if ((eventId == DcContext.DC_EVENT_WEBXDC_REALTIME_DATA && event.getData1Int() == dcAppMsg.getId())) {
       Log.i(TAG, "handling realtime data event");
-      String base64 = Base64.encodeToString(event.getData2Blob(), Base64.NO_WRAP | Base64.NO_PADDING);
-      callJavaScriptFunction("__webxdcRealtimeData(\"" + base64 + "\")");
+      StringBuilder data = new StringBuilder();
+      for (byte b : event.getData2Blob()) {
+          data.append(((int) b)  + ",");
+      }
+      callJavaScriptFunction("__webxdcRealtimeData([" + data + "])");
     } else if ((eventId == DcContext.DC_EVENT_MSGS_CHANGED && event.getData2Int() == dcAppMsg.getId())) {
       this.dcAppMsg = this.dcContext.getMsg(event.getData2Int()); // msg changed, reload data from db
       Util.runOnAnyBackgroundThread(() -> {
