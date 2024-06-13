@@ -556,47 +556,46 @@ können sicher ausprobiert werden, wenn Sie feststellen, dass Nachrichten nur mi
         
       </h3>
 
-<p>Delta Chat Push Notification support avoids leakage of private information.
-It does not leak e-mail, IP address or message content (not even encrypted)
-to any system involved in the delivery of Push Notifications.</p>
+<p>Delta Chats Vorgehensweise, Push-Benachrichtigungen zu verwenden, vermeidet die Weitergabe privater Informationen.
+Es werden keine E-Mail- oder IP-Adressen oder Nachrichteninhalte (auch nicht verschlüsselt)
+an irgendein System, das an der Zustellung von Push-Benachrichtigungen beteiligt ist, weitergegeben.</p>
 
-<p>Here is how Delta Chat apps perform Push Notification delivery:</p>
+<p>So verwendet Delta Chat Push-Benachrichtigungen:</p>
 
 <ul>
   <li>
-    <p>A Delta Chat app obtains a “device token” locally and stores it
-on the <a href="https://delta.chat/chatmail">chatmail</a> server.</p>
+    <p>Eine Delta-Chat-Anwendung erhält lokal ein „Geräte-Token“ (eine zufällige Zahl) und speichert es
+auf dem <a href="https://delta.chat/chatmail">Chatmail</a>-Server.</p>
   </li>
   <li>
-    <p>When a <a href="https://delta.chat/chatmail">chatmail</a> server receives an e-mail for a Delta Chat user
-it forwards the “device token” to the central Delta Chat notification proxy.</p>
+    <p>Wenn ein <a href="https://delta.chat/chatmail">Chatmail</a>-Server eine E-Mail für einen Delta Chat-Benutzer erhält
+erhält, leitet er den „Geräte-Token“ an den zentralen Delta-Chat-Benachrichtigungs-Proxy weiter.</p>
   </li>
   <li>
-    <p>The central Delta Chat notification proxy forwards
-the “device token” to the respective Push service (Apple, Google, etc.),
-without ever knowing the IP or e-mail address of Delta Chat users.</p>
+    <p>Der zentrale Delta-Chat-Benachrichtigungs-Proxy leitet
+das „Geräte-Token“ an den jeweiligen Push-Dienst (Apple, Google, etc.) weiter,
+ohne jemals die IP- oder E-Mail-Adresse des Delta-Chat-Benutzers zu kennen.</p>
   </li>
   <li>
-    <p>The central Push Service (Apple, Google, etc.)
-wakes up the Delta Chat app on your device
-to check for new messages in the background.
-It does not know about the chatmail or e-mail address of the device it wakes up.
-The central Apple/Google Push services never see an e-mail address (sender or receiver)
-and also never see any message content (also not in encrypted forms).</p>
+    <p>Der zentrale Push-Dienst (Apple, Google, etc.)
+weckt die Delta-Chat-App auf Ihrem Gerät auf
+um im Hintergrund nach neuen Nachrichten zu suchen.
+Der zentrale Push-Dienst weiß nichts über die Chatmail- oder E-Mail-Adresse des Geräts, das er aufweckt und sieht nie eine E-Mail-Adresse (Absender oder Empfänger)
+und auch nie den Inhalt einer Nachricht (auch nicht in verschlüsselter Form).</p>
   </li>
 </ul>
 
-<p>As of May 2024, chatmail servers know about “device tokens”
-but we plan to encrypt this information to the notification proxy
-such that the chatmail server never learns the device token.</p>
+<p>Stand Mai 2024 kennen die Chatmail-Server die Geräte-Token,
+aber wir planen, diese Informationen an den Benachrichtigungs-Proxy zu verschlüsseln
+zu verschlüsseln, so dass der Chatmail-Server niemals das „Geräte-Token“ erfährt.</p>
 
-<p>The central Delta Chat notification proxy <a href="https://github.com/deltachat/notifiers">is small and fully implemented in Rust</a>
-and forgets about device-tokens as soon as Apple/Google/etc processed them,
-usually in a matter of milliseconds.</p>
+<p>Der zentrale Delta-Chat-Benachrichtigungs-Proxy <a href="https://github.com/deltachat/notifiers">ist klein und vollständig in Rust implementiert</a>
+und vergisst die Geräte-Token, sobald Apple/Google/etc. sie verarbeitet hat,
+normalerweise innerhalb weniger Millisekunden.</p>
 
-<p>Resulting from this overall privacy design, even the seizure of a chatmail server,
-or the full seizure of the central Delta Chat notification proxy
-would not reveal private information that Push services do not already have.</p>
+<p>Aufgrund dieses umfassenden Datenschutzkonzepts würde sogar die Beschlagnahmung eines Chatmail-Servers,
+oder die vollständige Beschlagnahmung des zentralen Delta-Chat-Benachrichtigungsproxys
+keine privaten Informationen preisgeben, die den zentralen Push-Diensten nicht bereits vorliegen.</p>
     
       <h3 id="warum-integriert-sich-delta-chat-in-zentralisierte-proprietäre-applegoogle-push-dienste">
         
