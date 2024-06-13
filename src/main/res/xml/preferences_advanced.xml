@@ -33,7 +33,8 @@
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:defaultValue="false"
             android:key="pref_webxdc_realtime_enabled"
-            android:title="@string/pref_realtime_channels"/>
+            android:summary="@string/enable_realtime_explain"
+            android:title="@string/enable_realtime"/>
 
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:defaultValue="false"
