@@ -15,7 +15,7 @@ if [[ ${VERSION:0:1} == "v" ]]; then
 fi
 
 APKGPLAY="gplay/release/deltachat-gplay-release-$VERSION.apk"
-APKDEV="build/outputs/apk/fat/debug/deltachat-fat-debug-$VERSION.apk"
+APKDEV="build/outputs/apk/foss/debug/deltachat-foss-debug-$VERSION.apk"
 ls -l $APKGPLAY
 ls -l $APKDEV
 read -p "upload these apks to download.delta.chat/android/beta? ENTER to continue, CTRL-C to abort."
@@ -28,7 +28,7 @@ echo "upload done."
 echo ""
 echo "and now: here is Delta Chat $VERSION - choose your flavour and mind your backups:"
 echo "- 🍋 https://download.delta.chat/android/beta/deltachat-gplay-release-$VERSION.apk (android, overwrites existing gplay installs, should keep data)"
-echo "- 🍉 https://download.delta.chat/android/beta/deltachat-fat-debug-$VERSION.apk (android, can be installed beside gplay)"
+echo "- 🍉 https://download.delta.chat/android/beta/deltachat-foss-debug-$VERSION.apk (android, fully FOSS, can be installed beside gplay)"
 echo "- 🍏 https://testflight.apple.com/join/uEMc1NxS (ios, update to $VERSION may take a day or so)"
 echo ""
 echo "what to test: PLEASE_FILL_OUT"
