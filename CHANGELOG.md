@@ -1,5 +1,26 @@
 # Delta Chat Android Changelog
 
+## v1.46.4
+2024-06
+
+* support webxdc apps with experimental realtime channels ("Settings / Advanced / Realtime Webxdc Channels")
+* fewer traffic in larger chatmail groups by allowing more than 50 recipients per time
+* fix: avoid asking to disable battery optimisations when creating the second profile
+* fix hangs on low/no network during onboarding
+* fix: cancel muting does not cancel selection in chatlist
+* fix migrated address losing verified status and key on experimental AEAP
+* fix: allow creation of groups by outgoing messages without recipients
+* fix: avoid group splits by preferring ID from encrypted header over references for new groups
+* fix: do not fail to send images with wrong extensions
+* fix: retry sending MDNs on temporary error
+* fix: do not miss new messages while expunging the folder
+* fix missing logging info lines
+* fix: remove group member locally even if sending fails
+* fix: revert group member addition if the corresponding message couldn't be sent
+* update translations and local help
+* update to core 1.140.2
+
+
 ## v1.46.3
 2024-06
 
