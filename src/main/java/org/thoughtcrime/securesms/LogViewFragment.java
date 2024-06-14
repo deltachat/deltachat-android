@@ -127,21 +127,27 @@ public class LogViewFragment extends Fragment {
     return logFile;
   }
 
-  private static String grabLogcat() {
+  private static String grabLogcat(LogViewFragment fragment) {
     try {
       final Process         process        = Runtime.getRuntime().exec("logcat -v threadtime -d");
       final BufferedReader  bufferedReader = new BufferedReader(new InputStreamReader(process.getInputStream()));
       final StringBuilder   log            = new StringBuilder();
       final String          separator      = System.getProperty("line.separator");
+      final boolean devMode = Prefs.isDeveloperModeEnabled(fragment.getActivity());
 
       String line;
       while ((line = bufferedReader.readLine()) != null) {
         line = line.replaceFirst(" (\\d+) E ", " $1 \uD83D\uDD34 ");
         line = line.replaceFirst(" (\\d+) W ", " $1 \uD83D\uDFE0 ");
         line = line.replaceFirst(" (\\d+) I ", " $1 \uD83D\uDD35 ");
-        line = line.replaceFirst(" (\\d+) D ", " $1 \uD83D\uDFE2 ");
-        log.append(line);
-        log.append(separator);
+        String debugLine = line.replaceFirst(" (\\d+) D ", " $1 \uD83D\uDFE2 ");
+        if (debugLine.equals(line)) { // not a debug entry
+          log.append(line);
+          log.append(separator);
+        } else if (devMode) {
+          log.append(debugLine);
+          log.append(separator);
+        }
       }
       return log.toString();
     } catch (Exception e) {
@@ -162,7 +168,7 @@ public class LogViewFragment extends Fragment {
       if (fragment == null) return null;
 
       return "**This log may contain sensitive information. If you want to post it publicly you may examine and edit it beforehand.**\n\n" +
-          buildDescription(fragment) + "\n" + grabLogcat();
+          buildDescription(fragment) + "\n" + grabLogcat(fragment);
     }
 
     @Override
