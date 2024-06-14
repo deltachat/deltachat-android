@@ -33,7 +33,7 @@
 # deploy DeltaChat from the jni/deltachat-core-rust directory by
 # typing `nmake`:
 #
-# nmake() {(cd ../..; scripts/ndk-make.sh arm64-v8a && ./gradlew installFatDebug; notify-send "install finished")}
+# nmake() {(cd ../..; scripts/ndk-make.sh arm64-v8a && ./gradlew installFossDebug; notify-send "install finished")}
 #
 #
 # If anything doesn't work, please open an issue!!
