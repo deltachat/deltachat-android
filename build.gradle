@@ -109,7 +109,7 @@ android {
     }
 
     productFlavors {
-        fat {
+        foss {
             dimension "none"
             buildConfigField "boolean", "USE_PLAY_SERVICES", "false"
         }
