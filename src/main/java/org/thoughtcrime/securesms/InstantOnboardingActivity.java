@@ -395,7 +395,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
     Intent intent = new Intent(getApplicationContext(), ConversationListActivity.class);
     intent.putExtra(ConversationListActivity.FROM_WELCOME, true);
     startActivity(intent);
-    finish();
+    finishAffinity();
   }
 
   public static void maybeShowConfigurationError(Activity activity, String data2) {
