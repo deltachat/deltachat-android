@@ -21,6 +21,10 @@
           android:id="@+id/menu_mute_selected"
           app:showAsAction="never"/>
 
+    <item android:title="@string/mark_as_read"
+          android:id="@+id/menu_marknoticed_selected"
+          app:showAsAction="never"/>
+
     <item android:title="@string/menu_select_all"
           android:id="@+id/menu_select_all"
           app:showAsAction="never"/>

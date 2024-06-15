@@ -184,6 +184,18 @@ public abstract class BaseConversationListFragment extends Fragment implements A
     }
   }
 
+  private void handleMarknoticedSelected() {
+    final DcContext dcContext             = DcHelper.getContext(requireActivity());
+    final Set<Long> selectedConversations = new HashSet<Long>(getListAdapter().getBatchSelections());
+    for (long chatId : selectedConversations) {
+      dcContext.marknoticedChat((int)chatId);
+    }
+    if (actionMode != null) {
+      actionMode.finish();
+      actionMode = null;
+    }
+  }
+
   @SuppressLint("StaticFieldLeak")
   private void handleArchiveAllSelected() {
     final DcContext dcContext             = DcHelper.getContext(requireActivity());
@@ -353,6 +365,7 @@ public abstract class BaseConversationListFragment extends Fragment implements A
     case R.id.menu_pin_selected:     handlePinAllSelected();     return true;
     case R.id.menu_archive_selected: handleArchiveAllSelected(); return true;
     case R.id.menu_mute_selected:    handleMuteAllSelected();    return true;
+    case R.id.menu_marknoticed_selected: handleMarknoticedSelected(); return true;
     }
 
     return false;
