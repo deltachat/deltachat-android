@@ -56,6 +56,7 @@
     <string name="show_full_message">Show Full Message…</string>
     <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
     <string name="mark_all_as_read">Mark All as Read</string>
+    <string name="mark_as_read">Mark as Read</string>
     <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
     <string name="mark_as_read_short">Read</string>
     <!-- Placeholder text when something is loading -->
