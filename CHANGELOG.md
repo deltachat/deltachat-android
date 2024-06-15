@@ -1,10 +1,11 @@
 # Delta Chat Android Changelog
 
-## v1.46.4
+## v1.46.5
 2024-06
 
 * support webxdc apps with experimental realtime channels ("Settings / Advanced / Realtime Webxdc Channels")
 * fewer traffic in larger chatmail groups by allowing more than 50 recipients per time
+* log debug level (mostly foreign modules) only if "Settings / Advanced / Developer Mode" is enabled
 * fix: avoid asking to disable battery optimisations when creating the second profile
 * fix hangs on low/no network during onboarding
 * fix: cancel muting does not cancel selection in chatlist
