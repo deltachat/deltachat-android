@@ -4,20 +4,19 @@
   is the Delta Chat page on F-Droid.org,
   the F-Droid-app will show similar information.
 
-- <https://github.com/deltachat/deltachat-android/tree/master/metadata>
+- <https://github.com/deltachat/deltachat-android/tree/main/metadata>
   contains the description, icon, screenshots and all meta data shown for Delta Chat on F-Droid
   in the [fastlane format](https://f-droid.org/en/docs/All_About_Descriptions_Graphics_and_Screenshots/#fastlane-structure).
 
-- <https://gitlab.com/fdroid/fdroiddata/blob/master/metadata/com.b44t.messenger.yml> and
-  <https://gitlab.com/fdroid/fdroiddata/-/tree/master/metadata/com.b44t.messenger>
-  contain [additional F-Droid-specific metadata](https://f-droid.org/en/docs/All_About_Descriptions_Graphics_and_Screenshots/#in-the-f-droid-repo)
+- <https://gitlab.com/fdroid/fdroiddata/blob/master/metadata/com.b44t.messenger.yml>
+  contains [additional F-Droid-specific metadata](https://f-droid.org/en/docs/All_About_Descriptions_Graphics_and_Screenshots/#in-the-f-droid-repo)
   and build instructions that do not fit the fastlane format.
   F-Droid adds new versions automatically to the end of `.yml` file.
 
 - new versions are recognized by tags in the form `v1.2.3` -
   before adding tags like that, have a look at `docs/release-checklist.md`
   the build and distribution is expected to take
-  [up to 5 days](https://gitlab.com/fdroid/wiki/-/wikis/FAQ#how-long-does-it-take-for-my-app-to-show-up-on-website-and-client).
+  [up to 7 days](https://gitlab.com/fdroid/wiki/-/wikis/FAQ#how-long-does-it-take-for-my-app-to-show-up-on-website-and-client).
 
 
 # F-Droid Build status
@@ -25,7 +24,7 @@
 - <https://monitor.f-droid.org/builds>
   shows F-Droid's overall build status,
   if Delta Chat shows up at "Need updating" or "Running",
-  things are working as expected :)
+  things are working as expected. :)
 
 - <https://f-droid.org/repo/com.b44t.messenger_VERSIONCODE.apk>  
   (with VERSIONCODE = 537 or so) links to successfully built apk
@@ -55,8 +54,8 @@ $ ../fdroidserver/fdroid checkupdates -v com.b44t.messenger
 build repo as f-droid would do:  
 $ ../froidserver/fdroid build -v com.b44t.messenger:<versionCode>
 
-(via https://f-droid.org/docs/Installing_the_Server_and_Repo_Tools/ 
-and https://f-droid.org/docs/Building_Applications/ -
+(via <https://f-droid.org/docs/Installing_the_Server_and_Repo_Tools/> 
+and <https://f-droid.org/docs/Building_Applications/> -
 might require `pip install pyasn1 pyasn1_modules pyaml requests`)
 
 
