@@ -2,7 +2,7 @@
 
 - <https://f-droid.org/en/packages/com.b44t.messenger/>
   is the Delta Chat page on F-Droid.org,
-  the F-Droid-app will show similar information.
+  the F-Droid app will show similar information.
 
 - <https://github.com/deltachat/deltachat-android/tree/main/metadata>
   contains the description, icon, screenshots and all meta data shown for Delta Chat on F-Droid
@@ -48,11 +48,11 @@ by adding the line `Update Check Mode:RepoManifest/BRANCH` to the file.
 Set some path to ndk etc:  
 $ cp ../fdroidserver/examples/config.py .  # adapt file as needed
 
-Checkout repo as f-droid would do:  
+Checkout repo as F-Droid would do:  
 $ ../fdroidserver/fdroid checkupdates -v com.b44t.messenger  
 (for testing with uncommitted changes, add --allow-dirty)
 
-Build repo as f-droid would do:  
+Build repo as F-Droid would do:  
 $ ../froidserver/fdroid build -v com.b44t.messenger:<versionCode>
 
 (via <https://f-droid.org/docs/Installing_the_Server_and_Repo_Tools/> 
