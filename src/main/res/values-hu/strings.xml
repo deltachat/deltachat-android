@@ -56,6 +56,7 @@
     <string name="show_full_message">Teljes üzenet megjelenítése...</string>
     <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
     <string name="mark_all_as_read">Mind megjelölése olvasottként</string>
+    <string name="mark_as_read">Olvasottnak jelölés</string>
     <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
     <string name="mark_as_read_short">Olvasás</string>
     <!-- Placeholder text when something is loading -->
@@ -348,11 +349,11 @@
     <string name="ask_forward">Továbbítja az üzenetet a számára: %1$s?</string>
     <string name="ask_forward_multiple">Továbbítja az üzenetet a következő csevegésbe: %1$d?</string>
     <string name="ask_export_attachment">A mellékletek exportálása lehetővé teszi, hogy más alkalmazások is hozzáférjenek azokhoz az eszközön.\n\nFolytatja?</string>
-    <string name="ask_block_contact">Blokkolja ezt a partnerét? Többé nem fog üzeneteket kapni tőle.</string>
-    <string name="ask_unblock_contact">Feloldja ennek a partnerének a blokkolását? Ezután képes lesz üzeneteket fogadni tőle.</string>
-    <string name="ask_delete_contacts">Partner törlése?\n\nA folyamatban lévő csevegésekkel rendelkező vagy a rendszer névjegyzékéből származó partnerek nem törölhetőek véglegesen.</string>
-    <string name="ask_delete_contact">%1$s nevű partner tölése?\n\nA folyamatban lévő csevegésekkel rendelkező vagy a rendszer névjegyzékéből származó partnerek nem törölhetőek véglegesen.</string>
-    <string name="cannot_delete_contacts_in_use">A folyamatban lévő csevegésekkel rendelkező partnerek nem törölhetőek.</string>
+    <string name="ask_block_contact">Blokkolja ezt az ismerősét? Többé nem fog üzeneteket kapni tőle.</string>
+    <string name="ask_unblock_contact">Feloldja ennek az ismerősének a blokkolását? Ezután képes lesz üzeneteket fogadni tőle.</string>
+    <string name="ask_delete_contacts">Ismerős törlése?\n\nA folyamatban lévő csevegésekkel rendelkező vagy a rendszer névjegyzékéből származó ismerősök nem törölhetőek véglegesen.</string>
+    <string name="ask_delete_contact">%1$s nevű ismerősének tölése?\n\nA folyamatban lévő csevegésekkel rendelkező vagy a rendszer névjegyzékéből származó ismerősök nem törölhetőek véglegesen.</string>
+    <string name="cannot_delete_contacts_in_use">A folyamatban lévő csevegésekkel rendelkező ismerősök nem törölhetőek.</string>
     <string name="ask_start_chat_with">Csevegés vele: %1$s?</string>
     <string name="ask_delete_value">%s törlése?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
@@ -404,7 +405,7 @@
     <string name="chat_self_talk_subtitle">Magamnak küldött üzenetek</string>
     <string name="archive_empty_hint">Az archivált csevegések itt fognak megjelenni.</string>
     <string name="saved_messages">Mentett üzenetek</string>
-    <string name="saved_messages_explain">• Üzenetek továbbítása az egyszerű hozzáférés érdekében\n\n- Jegyzetek vagy hangjegyzetek készítése\n\n• Médiaanyagok csatolása a mentéshez</string>
+    <string name="saved_messages_explain">• Üzenetek továbbítása az egyszerű hozzáférés érdekében\n\n• Jegyzetek vagy hangjegyzetek készítése\n\n• Médiaanyagok csatolása a mentéshez</string>
     <!-- Should match "Saved" from "Saved messages" -->
     <string name="saved">Mentett</string>
     <string name="save_as">Mentés  mint</string>
@@ -495,7 +496,7 @@
     <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
     <string name="aeap_addr_changed">%1$s megváltoztatta a címét erről: %2$s, erre: %3$s </string>
     <!-- the explanation is shown (1) as a modal dialog with the buttons "Cancel" and "Continue" as well as (2) as a device message -->
-    <string name="aeap_explanation">Ön megváltoztatta a saját e-mail címét erről: %1$s erre: %2$s.\n\nHa most üzenetet küld egy ellenőrzött csoportba, az ottani partnerei automatikusan lecserélik a régi címet az új címére.\n\nEzért nagyon ajánlott beállítani, hogy a régi e-mail szolgáltatója minden e-mailt továbbítson-e az új e-mail címére. Ellenkező esetben lemaradhat azoknak a partnereinek az üzeneteiről, akik még nem kapták meg az új címét.</string>
+    <string name="aeap_explanation">Ön megváltoztatta a saját e-mail címét erről: %1$s erre: %2$s.\n\nHa most üzenetet küld egy ellenőrzött csoportba, az ottani ismerősei automatikusan lecserélik a z ön régi címét az új címére.\n\nEzért nagyon ajánlott beállítani, hogy a régi e-mail szolgáltatója minden e-mailt továbbítson-e az új e-mail címére. Ellenkező esetben lemaradhat azoknak az ismerőseinek az üzeneteiről, akik még nem kapták meg az új címét.</string>
 
 
     <!-- Multi Device -->
@@ -908,11 +909,11 @@
     <!-- this may be shown instead of the chat's input field, with buttons "More Info" and "OK" -->
     <string name="chat_protection_broken">%1$s egy másik eszközről küldött üzenetet.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">Az üzenetek mostantól garantáltan titkosítva lesznek a végpontok között. Koppintson, ha többet szeretne tudni.</string>
-    <string name="chat_protection_enabled_explanation">Mostantól garantált, hogy ebben a csevegésben minden üzenet végpontok közötti titkosítással rendelkezik.\n\nA végpontok közötti titkosítással az üzenetek bizalmasak maradnak ön és a csevegőpartnerei között. Még az e-mail szolgáltatója sem tudja elolvasni őket.</string>
+    <string name="chat_protection_enabled_explanation">Mostantól garantált, hogy ebben a csevegésben minden üzenet végpontok közötti titkosítással rendelkezik.\n\nA végpontok közötti titkosítással az üzenetek bizalmasak maradnak ön és az ismerősei között. Még az e-mail szolgáltatója sem tudja elolvasni őket.</string>
     <string name="chat_protection_broken_tap_to_learn_more">%1$s egy másik eszközről küldött üzenetet. Koppintson, ha többet szeretne tudni.</string>
     <string name="chat_protection_broken_explanation">A végpontok közötti titkosítás már nem garantálható, valószínűleg azért, mert %1$s újratelepítette a Delta Chat-et, vagy egy másik eszközről küldött üzenetet.\n\n Személyesen találkozhat vele, és újra beolvashatja a QR-kódját a garantált végpontok közötti titkosítás visszaállításához.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ A(z) %1$s végpontok közötti titkosítást igényel, ami még nincs beállítva erre a csevegésre. Koppintson, ha többet szeretne megtudni.</string>
-    <string name="invalid_unencrypted_explanation">A végpontok közötti titkosítás létrehozásához személyesen is találkozhat a partnereivel, és a QR-kódjukat beolvasva bemutathatja őket.</string>
+    <string name="invalid_unencrypted_explanation">A végpontok közötti titkosítás létrehozásához személyesen is találkozhat az ismerőseivel, és a QR-kódjukat beolvasva bemutathatja őket.</string>
     <string name="learn_more">Tudjon meg többet</string>
 
     <string name="devicemsg_self_deleted">Ön törölte a „Mentett üzenetek” csevegést.\n\nℹ️ A „Mentett üzenetek” funkció újbóli használatához hozzon létre egy új csevegést önmagával.</string>
@@ -959,7 +960,7 @@
     <string name="qrshow_join_contact_no_connection_toast">Nincs internetkapcsolat, nem lehet elvégezni a QR-kód beállítását.</string>
     <string name="qraccount_ask_create_and_login">Új profil létrehozása a(z) „%1$s” oldalon és bejelentkezés ott?</string>
     <string name="qraccount_ask_create_and_login_another">Új profil létrehozása a(z) „%1$s” oldalon, és bejelentkezés ott?\n\nA meglévő profilja nem törlődik. A „Profilváltás” elemmel válthat a profiljai között.</string>
-    <string name="set_name_and_avatar_explain">Adjon meg egy olyan nevet, amelyet a partnerei felismernek. Beállíthat egy profilképet is.</string>
+    <string name="set_name_and_avatar_explain">Adjon meg egy olyan nevet, amelyet az ismerősei felismernek. Beállíthat egy profilképet is.</string>
     <string name="please_enter_name">Adjon meg egy nevet.</string>
     <string name="qraccount_qr_code_cannot_be_used">A beolvasott QR-kód nem használható új profil beállítására.</string>
     <!-- deprecated -->
@@ -981,7 +982,7 @@
     <string name="verified_by_you">Ön által bemutatva</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">Megváltoztak a(z) %1$s beállításai.</string>
-    <string name="verified_contact_required_explain">A végpontok közötti titkosítás garantálása érdekében csak zöld jelöléssel rendelkező partnereket adhat hozzá ehhez a csoporthoz.\n\n Személyesen is találkozhat a partnereivel, és beolvashatja a QR-kódjukat, hogy bemutassa őket.</string>
+    <string name="verified_contact_required_explain">A végpontok közötti titkosítás garantálása érdekében csak zöld jelöléssel rendelkező ismerősöket adhat hozzá ehhez a csoporthoz.\n\n Személyesen is találkozhat az ismerőseivel és beolvashatja a QR-kódjukat, hogy bemutassa őket.</string>
     <string name="copy_qr_data_success">QR url másolása a vágólapra</string>
     <string name="mailto_dialog_header_select_chat">Válassza ki a csevegést az üzenet elküldéséhez</string>
     <!-- first placeholder is the name of the chat -->

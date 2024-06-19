@@ -149,6 +149,7 @@
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">استیکر</string>
     <string name="add_to_sticker_collection">افزودن به مجموعه استیکر</string>
+    <string name="open_sticker_folder">بازکردن پوشه استیکر</string>
     <string name="images">تصاویر</string>
     <string name="audio">صدا</string>
     <string name="voice_message">پیام صوتی</string>
@@ -197,6 +198,7 @@
 
     <!-- menu labels (or icon, buttons...) -->
     <string name="menu_new_contact">مخاطب جدید</string>
+    <string name="menu_new_classic_contact">اضافه کردن مخاطب به صورت دستی</string>
     <string name="menu_new_chat">گپ جدید</string>
     <string name="menu_new_group">گروه جدید</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
@@ -228,6 +230,7 @@
     <string name="menu_copy_image_to_clipboard">رونوشت گرفتن از تصویر</string>
     <string name="menu_copy_email_to_clipboard">کپی کردن رایانامه</string>
     <string name="paste_from_clipboard">چسباندن از حافظه</string>
+    <string name="ask_copy_unopenable_link_to_clipboard">نمی توان لینک \"%1$d\" را در مرورگر باز کرد. می خواهید در عوض لینک را کپی کنید؟</string>
     <string name="menu_forward">هدایت پیام</string>
     <string name="menu_reply">پاسخ به پیام</string>
     <string name="menu_mute">ساکت کردن اعلان</string>
@@ -249,6 +252,7 @@
     <string name="menu_scroll_to_bottom">رفتن به پایین</string>
     <string name="menu_scroll_to_top">رفن تا بالا</string>
     <string name="menu_help">کمک</string>
+    <string name="what_is_webxdc">Webxdc چیست؟</string>
     <string name="privacy_policy">خط مشی رازداری</string>
     <string name="menu_select_all">انتخاب همه</string>
     <string name="select_chat">انتخاب چت</string>
@@ -383,7 +387,7 @@ https://meet.jit.si/$ROOM
     <string name="chat_new_group_hint">نوشتن اولین پیام به دیگران امکان می‌دهد در این گروه پاسخ دهند. \n\n• مشکلی نیست اگر همه اعضا از دلتاچت استفاده نکنند\n\n• دریافت اولین پیام ممکن است به زمان بیشتری نیاز داشته باشد. </string>
     <string name="chat_record_slide_to_cancel">برای لغو بکشید.</string>
     <string name="chat_record_explain">برای ضبط پیام صوتی فشار داده و نگهدارید، برای ارسال رها کنید. </string>
-    <string name="chat_no_chats_yet_title">جعبهٔ ورودی خالی. \n برای شروع گپ جدید «+» را فشار دهید.</string>
+    <string name="chat_no_chats_yet_title">گفتگویی وجود ندارد.\nبرای شروع گفتگو جدید دکمه «+» را فشار دهید.</string>
     <!-- deprecated -->
     <string name="chat_no_chats_yet_hint">می‌توانید با دیگر کاربران دلتاچت و هر نشانی رایانامه‌ای گپ بزنید.</string>
     <string name="chat_all_archived">تمام گپ‌ها بایگانی شده‌اند. /n برای شروع گپ جدید، «+» را فشار دهید. </string>
@@ -489,7 +493,7 @@ https://meet.jit.si/$ROOM
     <string name="multidevice_this_creates_a_qr_code">این یک کد QR ایجاد می‌کند که دستگاه دوم می‌تواند برای کپی حساب اسکن کند.</string>
     <string name="multidevice_install_dc_on_other_device">دلتاچت را روی دستگاه دیگر خود نصب کنید (https://get.delta.chat)</string>
     <!-- "I Already Have a Login / Add as Second Device” should be the same text as defined by the keys onboarding_alternative_logins and multidevice_receiver_title -->
-    <string name="multidevice_tap_scan_on_other_device">دلتاچت را اجرا کنید، روی «افزودن به عنوان دستگاه دوم» بزنید و کد نشان داده شده در اینجا را پویش کنید</string>
+    <string name="multidevice_tap_scan_on_other_device">دلتاچت را باز کنید، روی «افزودن به عنوان دستگاه دوم» بزنید و کد نشان داده شده در اینجا را اسکن کنید</string>
     <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and/or address eg. "Scan to set up second device for Alice (alice@example.org)" -->
     <string name="multidevice_qr_subtitle">برای راه اندازی دستگاه دوم برای %1$s اسکن کنید</string>
     <string name="multidevice_receiver_title">افزودن به عنوان دستگاه دوم</string>
@@ -537,6 +541,16 @@ https://meet.jit.si/$ROOM
     <!-- welcome and login -->
     <!-- Primary button on the welcome screen, allows to create an instant profile -->
     <string name="onboarding_create_instant_account">ایجاد حساب کاربری جدید</string>
+    <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
+    <string name="onboarding_alternative_logins">از قبل یک حساب کاربری دارم</string>
+    <!-- Button, allows to log in to existing email accounts, setting ports, passwords and so on -->
+    <string name="manual_account_setup_option">ساخت حساب کاربری با حساب ایمیل عادی</string>
+    <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
+    <string name="instant_onboarding_title">حساب شما</string>
+    <!-- Secondary, link-like button to open a page with other possible instances -->
+    <string name="instant_onboarding_show_more_instances">استفاده از یک سرور دیگر</string>
+    <string name="instant_onboarding_other_server">لیست سرورهای Chatmail</string>
+    <string name="welcome_chat_over_email">گفتگو غیرمتمرکز و ایمن</string>
     <string name="scan_invitation_code">اسکن کردن کد دعوت</string>
     <string name="login_title">ورود</string>
     <!-- for classic email, we use the classical term "Account" -->
@@ -585,7 +599,7 @@ https://meet.jit.si/$ROOM
     <string name="add_account">افزودن حساب کاربری</string>
     <string name="delete_account">حذف حساب کاربری</string>
     <string name="delete_account_ask">آیا از حذف حساب کاربری اطمینان دارید؟</string>
-    <string name="delete_account_explain_with_name">همه اطلاعات حساب مربوط به \"%s\" روی این دستگاه پاک می‌شود که شامل تنظیمات رمزگذاری گیرنده به گیرنده ، مخاطبین، پیام‌ها و رسانه می‌شود. این عمل قابل بازگشت نیست.</string>
+    <string name="delete_account_explain_with_name">همه اطلاعات حساب مربوط به \"%s\" روی این دستگاه پاک می‌شود؛ که شامل تنظیمات رمزگذاری سرتاسر، مخاطبین، گفتگو ها پیام‌ها، رسانه ها می‌شود. این عمل قابل بازگشت نیست.</string>
     <string name="unconfigured_account">حساب تنظیم نشده</string>
     <string name="unconfigured_account_hint">بازکردن حساب برای تنظیم آن</string>
     <string name="try_connect_now">اکنون برای اتصال تلاش کنید</string>
@@ -648,9 +662,13 @@ https://meet.jit.si/$ROOM
     <string name="pref_incognito_keyboard_explain">درخواست دهید که صفحه کلید رفتارهای شخصی شما را یاد نگیرد</string>
     <string name="pref_read_receipts">رسید خوانده شدن</string>
     <string name="pref_read_receipts_explain">اگر رسید خوانده شدن غیرفعال باشد، نمی‌توانید اعلام خوانده شدن توسط دیگران را ببینید.</string>
+    <string name="pref_server">سرور</string>
+    <string name="pref_encryption">رمزگذاری</string>
     <string name="pref_manage_keys">مدیریت کلیدها</string>
     <string name="pref_use_system_emoji">استفاده از شکلک‌های سیستم</string>
     <string name="pref_use_system_emoji_explain">غیرفعال کردن شکلک‌های داخلی دلتاچت</string>
+    <string name="pref_use_inapp_camera">استفاده از دوربین درون‌برنامه</string>
+    <string name="pref_use_inapp_camera_explain">دوربین درون‌برنامه معمولا امکانات کمتری نسبت به دوربین سیستم دارد</string>
     <string name="pref_app_access">دسترسی نرم‌افزار</string>
     <string name="pref_chats">گپ‌ها</string>
     <string name="pref_in_chat_sounds">صداهای درون‌گپی</string>
@@ -663,6 +681,10 @@ https://meet.jit.si/$ROOM
     <string name="pref_backup">نسخه پشتیبان</string>
     <string name="pref_backup_explain">تهیهٔ پشتیبان از گپ‌ها در ذخیره‌گاه خارجی</string>
     <string name="pref_backup_export_explain">تهیهٔ پشتیبان به شما  کمک می‌کند روی این دستگاه یا دستگاه دیگر نرم‌افزار را دوباره نصب کنید.\n\nپشتیبان حاوی تمام پیام‌ها، مخاطبین، گپ‌ها و برپاسازی اتوکریپت سرتاسر شما خواهد بود. پروندهٔ پشتیبانی را در یک جای امن نگه دارید و در اسرع وقت آن را پاک کنید.</string>
+    <!-- the placeholder will be replaced by the name of the profile's email address -->
+    <string name="pref_backup_export_x">برون‏بُرد(اکسپورت) %1$s</string>
+    <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
+    <string name="pref_backup_export_all">برون‏بُرد(اکسپورت) هر %1$d حساب </string>
     <string name="pref_backup_export_start_button">شروع تهیه نسخه پشتیبان</string>
     <string name="pref_backup_written_to_x">نسخه پشتیبان با موفقیت در\"%1$s\" ذخیره شد.</string>
     <string name="pref_managekeys_menu_title">مدیریت کلیدها</string>
@@ -714,6 +736,9 @@ https://meet.jit.si/$ROOM
     <string name="profile_image_delete">حذف تصویر نمایه</string>
     <string name="pref_show_tray_icon">نمایش نمادک در زیر صفحه</string>
     <string name="pref_edit_profile">ویرایش نمایه</string>
+    <string name="send_stats_to_devs">ارسال آمار برای تولیدکنندگان دلتاچت</string>
+
+
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">نتایج جستجو</string>
     <string name="emoji_not_found">شکلکی پیدا نشد</string>
@@ -729,6 +754,13 @@ https://meet.jit.si/$ROOM
 
     <!-- Reactions -->
     <string name="reactions">واکنش‌ها</string>
+    <!-- Verb, the action of adding a "Reaction" to a message. Used eg. in context menus, similar to "Reply" or "Forward" -->
+    <string name="react">واکنش</string>
+    <!-- %1$s will be replaced by an emoji. %2$s will be replaced by message summary (the summary is often long and whole string gets truncated; words after %2$s will often not being visible). Eg. 'You reacted 👍 to "Found my suitcase"'. Use less than 20 characters, otherwise the string will be truncated too soon and too few information are shown. Do not try to translate "reacted to" too strict. Depending on the language, "added 👍 to" or "gave 👍 to" or just "👍 to" may be shorter and/or clearer and work as well. -->
+    <string name="reaction_by_you">شما به «%2$s» واکنش %1$s را نشان دادید</string>
+    <!-- %1$s will be replaced a name. %2$s will be replaced by an emoji. %3$s will be replaced by message summary (the summary is often long and whole string gets truncated; words after %3$s will often not being visible). Eg. 'Alice reacted 👍 to "Nice photos"'. Use less than 20 characters, otherwise the string will be truncated too soon and too few information are shown. Do not try to translate "reacted to" too strict. Depending on the language, "added 👍 to" or "gave 👍 to" or just "👍 to" may be shorter and/or clearer work as well. -->
+    <string name="reaction_by_other">%1$s به «%3$s» واکنش %2$s را نشان داد</string>
+
     <!-- automatically delete message -->
     <string name="delete_old_messages">پاک کردن پیام‌های قدیمی</string>
     <string name="autodel_device_title">پاک کردن پیام‌ها از دستگاه</string>
@@ -787,6 +819,8 @@ https://meet.jit.si/$ROOM
     <!-- %1$s will be replaced by name and address of the contact who did the action -->
     <string name="group_image_changed_by_other">تصویر گروه توسط %1$s تغییر کرد. </string>
     <!-- %1$s will be replaced by name and address of the contact added to the group -->
+    <string name="member_x_added">%1$s عضو شد.</string>
+    <!-- %1$s will be replaced by name and address of the contact added to the group -->
     <string name="add_member_by_you">شما %1$s را به عنوان عضو جدید اضافه کردید. </string>
     <!-- %1$s will be replaced by name and address of the contact added to the group, %2$s will be replaced by name and address of the contact who did the action -->
     <string name="add_member_by_other">عضو جدید با نام %1$s توسط %2$s افزوده شد. </string>
@@ -839,6 +873,11 @@ https://meet.jit.si/$ROOM
     <string name="ephemeral_timer_weeks_by_you">زمان‌سنج ناپدید شدن پیام‌ها را روی %1$s هفته تنظیم کردید.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name and address of the contact -->
     <string name="ephemeral_timer_weeks_by_other">زمان‌سنج ناپدید شدن پیام‌ها توسط %2$s روی %1$s هفته تنظیم شد.</string>
+    <!-- this may be shown instead of the chat's input field, with buttons "More Info" and "OK" -->
+    <string name="chat_protection_broken">%1$s پیامی را از دستگاه دیگری ارسال کرد.</string>
+    <string name="chat_protection_enabled_tap_to_learn_more">رمزنگاری سرتاسر پیام ها از این به بعد تضمین می شود. برای اطلاعات بیشتر ضربه بزنید.</string>
+    <string name="chat_protection_enabled_explanation">رمزنگاری سرتاسر پیام های این گفتگو اکنون تضمین می شود. رمزنگاری سرتاسر باعث می شود پیام های شما بین شما و مخاطبین شما محرمانه بماند. حتی سرویس پست الکترونیک شما هم نمی تواند آنها را بخواند.</string>
+    <string name="chat_protection_broken_tap_to_learn_more">%1$s پیامی را از دستگاه دیگری ارسال کرد. برای اطلاعات بیشتر ضربه بزنید.</string>
     <string name="learn_more">بیشتر بدانید</string>
 
     <string name="devicemsg_self_deleted">شما گپ «پیام‌های ذخیره شده» را پاک کردید.\n\nℹ️ برای استفادهٔ دوباره از «پیام‌های ذخیره شده» کافی است یک گپ جدید با خودتان درست کنید. </string>
@@ -890,6 +929,8 @@ https://meet.jit.si/$ROOM
     <string name="qraccount_ask_create_and_login">ایجاد رایانامهٔ جدید روی «%1$s» و ورود به آنجا؟</string>
     <string name="qraccount_ask_create_and_login_another">نشانی جدید رایانامه روی «%1$s» ایجاد شده  و به آن وارد شود؟
  حساب فعلی شما پاک نمی‌شود. از بخش «تغییر حساب کاربری» برای جابجایی بین حساب‌ها استفاده کنید</string>
+    <string name="set_name_and_avatar_explain">اسمی انتخاب کنید که مخاطبینتان با آن شما را بشناسند. می توانید برای خود عکسی هم انتخاب کنید.</string>
+    <string name="please_enter_name">لطفا یک اسم وارد کنید.</string>
     <string name="qraccount_qr_code_cannot_be_used">این کد کیوآر اسکن شده را نمی‌توان برای راه اندازی اکانت جدید استفاده کرد. </string>
     <!-- deprecated -->
     <string name="qraccount_use_on_new_install">کد کیوآر اسکن شده برای راه اندازی یک اکانت جدید است. می‌توانید در حال تنظیم یک دلتاچت تازه نصب شده کیوآر  را اسکن کنید.</string>
@@ -902,10 +943,13 @@ https://meet.jit.si/$ROOM
 در انتظار دستگاه %2$s برای پاسخگویی...</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">کاربر %1$s پاسخ داد، در انتظار اضافه شدن به گروه...</string>
+    <string name="secure_join_wait">در حال برقراری رمزگذاری سرتاسر تضمین‌شده، لطفا صبر کنید...</string>
+    <string name="secure_join_wait_timeout">اکنون نمی توانیم رمزگذاری سرتاسر تضمین‌شده را برقرار کنیم. با این وجود می توانید پیام ارسال کنید.</string>
     <string name="contact_verified">%1$s تأیید شد.</string>
     <string name="contact_not_verified">امکان تایید رمزگذاری در مبدا، برای %1$sوجود ندارد.</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">احراز هویت شده توسط %1$s</string>
+    <string name="verified_by_you">تأیید شده توسط من</string>
     <!-- translators: "setup" is the "encryption setup" here, as in "Autocrypt Setup Message" -->
     <string name="contact_setup_changed">تنظیمات برای %1$s تغییر کرد. </string>
     <string name="copy_qr_data_success">آدرس کیوآر در حافظه ذخیر شد</string>
@@ -926,6 +970,8 @@ https://meet.jit.si/$ROOM
     <string name="notify_no_name_or_message">بدون نام یا پیام</string>
     <string name="notifications_disabled">اعلان‌ها غیرفعال شد</string>
     <string name="new_messages">پیام‌های جدید</string>
+    <!-- Body text for a generic "New messages" notification. Shown if we do not have more information about a new messages. Note, that the string is also referenced at https://github.com/deltachat/notifiers -->
+    <string name="new_messages_body">شما پیام های جدیدی دارید</string>
     <string name="n_messages_in_m_chats">%1$d پیام در %2$d گفتگو</string>
 
 
@@ -1076,6 +1122,11 @@ GNU GPL ورژن ۳
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">دلتاچت به شما اجازه می دهد تصویر موردنظر برای ارسال را انتخاب کنید.</string>
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">دلتاچت میخواهد تصاویر را در آلبوم شما ذخیره کند.</string>
 
+
+    <string name="pref_push_notifications">استفاده از Push Service</string>
+    <string name="pref_background_notifications">استفاده از اتصال پس زمینه</string>
+    <string name="pref_reliable_service">اجبار کردن اتصال پس زمینه</string>
+    <string name="pref_reliable_service_explain">اعلانی دائمی نشان می دهد</string>
 
     <string name="pref_background_notifications_rationale">برای حفظ ارتباطتان با سرور رایانامه و دریافت پیامها در پیش زمینه، در گام بعدی، تنظیمات بهینه سازی باتری را نادیده بگیرید. \n\n دلتاچت از منابع کمی استفاده میکند و مراقب است باتری شما را بیش از حد مصرف نکند. </string>
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
