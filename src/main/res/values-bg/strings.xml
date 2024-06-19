@@ -41,9 +41,9 @@
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">Изпращане отново</string>
     <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
-    <string name="archive">Поставяне в архив</string>
+    <string name="archive">Архивиране</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
-    <string name="unarchive">Премахване от архив</string>
+    <string name="unarchive">Деархивиране</string>
     <string name="mute">Изключване на звука</string>
     <string name="ephemeral_messages">Изчезващи съобщения</string>
     <string name="ephemeral_messages_hint">Приложимо за всички членове на този чат, ако използват Delta Chat; в противен случай те пак могат да копират, записват и препращат съобщения или да използват други клиенти за електронна поща.</string>
@@ -217,8 +217,8 @@
     <string name="menu_edit_group">Редактиране на група</string>
     <string name="menu_group_name_and_image">Име и изображение на група</string>
     <string name="menu_show_global_map">Показване на всички местоположения</string>
-    <string name="menu_archive_chat">Поставяне на чата в архив</string>
-    <string name="menu_unarchive_chat">Премахване на чата от архив</string>
+    <string name="menu_archive_chat">Архивиране на чата</string>
+    <string name="menu_unarchive_chat">Деархивиране на чата</string>
     <string name="menu_add_attachment">Добавяне на прикачен файл</string>
     <string name="menu_leave_group">Напускане на групата</string>
     <string name="menu_delete_chat">Изтриване на чата</string>
@@ -372,11 +372,11 @@
     <!-- chatlist and chat view -->
     <plurals name="chat_archived">
         <item quantity="one">%d чат е архивиран</item>
-        <item quantity="other">%d чата са поставени в архив</item>
+        <item quantity="other">%d чата са архивирани</item>
     </plurals>
     <plurals name="chat_unarchived">
         <item quantity="one">%d чат е възстановен от архив</item>
-        <item quantity="other">%d чата са премахнати от архив</item>
+        <item quantity="other">%d чата са деархивирани</item>
     </plurals>
     <string name="chat_archived_chats_title">Архивирани чатове</string>
     <string name="chat_please_enter_message">Моля, въведете съобщение</string>
@@ -402,7 +402,7 @@
     <string name="chat_request_label">Заявка</string>
     <string name="chat_no_messages">Няма съобщения.</string>
     <string name="chat_self_talk_subtitle">Съобщения към себе си</string>
-    <string name="archive_empty_hint">Чатовете, поставени в архив, ще се показват тук.</string>
+    <string name="archive_empty_hint">Архивираните чатове ще се показват тук.</string>
     <string name="saved_messages">Запазени съобщения</string>
     <string name="saved_messages_explain">• Препращайте съобщения тук за лесен достъп\n\n• Взимайте си текстови или гласови бележки\n\n• Прикрепяйте медийни файлове, за да ги запазите</string>
     <!-- Should match "Saved" from "Saved messages" -->
