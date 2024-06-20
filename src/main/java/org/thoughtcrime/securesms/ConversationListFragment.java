@@ -113,9 +113,7 @@ public class ConversationListFragment extends BaseConversationListFragment
     if (archive) {
       fab.setVisibility(View.GONE);
       TextView emptyTitle = ViewUtil.findById(view, R.id.empty_title);
-      TextView emptySubtitle = ViewUtil.findById(view, R.id.empty_subtitle);
       emptyTitle.setText(R.string.archive_empty_hint);
-      emptySubtitle.setVisibility(View.GONE);
     } else {
       fab.setVisibility(View.VISIBLE);
     }
