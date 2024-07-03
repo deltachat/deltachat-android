@@ -168,10 +168,6 @@ public class Prefs {
     return getIntegerPreference(context, PROMPTED_DOZE_MSG_ID_PREF, 0);
   }
 
-  public static boolean isNotificationsEnabled(Context context) {
-    return getBooleanPreference(context, NOTIFICATION_PREF, true);
-  }
-
   public static boolean isPushEnabled(Context context) {
       return BuildConfig.USE_PLAY_SERVICES && getBooleanPreference(context, "pref_push_enabled", true);
   }

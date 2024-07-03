@@ -46,28 +46,24 @@
 
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:key="pref_key_inthread_notifications"
-            android:dependency="pref_key_enable_notifications"
             android:title="@string/pref_in_chat_sounds"
             android:defaultValue="true" />
 
         <PreferenceCategory android:title="@string/pref_instant_delivery">
                 <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
                     android:key="pref_push_enabled"
-                    android:dependency="pref_key_enable_notifications"
                     android:defaultValue="true"
                     android:title="@string/pref_push_notifications"
                     android:summary="@string/pref_push_notifications_explain"/>
 
                 <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
                     android:key="pref_ignore_battery_optimizations"
-                    android:dependency="pref_key_enable_notifications"
                     android:defaultValue="false"
                     android:title="@string/pref_background_notifications"
                     android:summary="@string/pref_background_notifications_explain"/>
 
                 <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
                     android:key="pref_reliable_service"
-                    android:dependency="pref_key_enable_notifications"
                     android:defaultValue="false"
                     android:title="@string/pref_reliable_service"
                     android:summary="@string/pref_reliable_service_explain"/>

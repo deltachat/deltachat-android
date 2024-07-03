@@ -236,6 +236,14 @@ public class DcContext {
       return getConfigInt("is_chatmail") == 1;
     }
 
+    public boolean isMuted() {
+      return getConfigInt("ui.muted") == 1;
+    }
+
+    public void setMuted(boolean muted) {
+      setConfigInt("ui.muted", muted? 1 : 0);
+    }
+
     /**
      * @return true if at least one chat has location streaming enabled
      */

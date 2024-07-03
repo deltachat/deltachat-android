@@ -29,13 +29,13 @@ import org.thoughtcrime.securesms.notifications.FcmReceiveService;
 import org.thoughtcrime.securesms.util.Prefs;
 
 import static android.app.Activity.RESULT_OK;
-import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_ONLY_FETCH_MVBOX;
 
 public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragment {
 
   private static final int REQUEST_CODE_NOTIFICATION_SELECTED = 1;
 
   private CheckBoxPreference ignoreBattery;
+  private CheckBoxPreference notificationsEnabled;
 
   @Override
   public void onCreate(Bundle paramBundle) {
@@ -106,7 +106,7 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
     reliableService.setOnPreferenceChangeListener((preference, newValue) -> {
       Context context = getContext();
       boolean enabled = (Boolean) newValue; // Prefs.reliableService() still has the old value
-      if (enabled && Prefs.isNotificationsEnabled(context)) {
+      if (enabled) {
           KeepAliveService.startSelf(context);
       } else {
         context.stopService(new Intent(context, KeepAliveService.class));
@@ -114,15 +114,10 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
       return true;
     });
 
-    CheckBoxPreference notificationsEnabled = this.findPreference("pref_key_enable_notifications");
+    notificationsEnabled = this.findPreference("pref_key_enable_notifications");
     notificationsEnabled.setOnPreferenceChangeListener((preference, newValue) -> {
-      Context context = getContext();
-      boolean enabled = (Boolean) newValue; // Prefs.isNotificationsEnabled() still has the old value
-      if (enabled && Prefs.reliableService(context)) {
-        KeepAliveService.startSelf(context);
-      } else {
-        context.stopService(new Intent(context, KeepAliveService.class));
-      }
+      boolean enabled = (Boolean) newValue;
+      dcContext.setMuted(!enabled);
       return true;
     });
   }
@@ -139,6 +134,7 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
 
     // update ignoreBattery in onResume() to reflects changes done in the system settings
     ignoreBattery.setChecked(isIgnoringBatteryOptimizations());
+    notificationsEnabled.setChecked(!dcContext.isMuted());
   }
 
   @Override
@@ -237,7 +233,7 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
   public static CharSequence getSummary(Context context) {
     NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
     if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU || notificationManager.areNotificationsEnabled()) {
-      return context.getString(Prefs.isNotificationsEnabled(context) ? R.string.on : R.string.off);
+      return context.getString(DcHelper.getContext(context).isMuted() ? R.string.off : R.string.on);
     } else {
       return context.getString(R.string.disabled_in_system_settings);
     }
