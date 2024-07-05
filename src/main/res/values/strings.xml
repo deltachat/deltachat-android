@@ -283,11 +283,11 @@
     <string name="device_talk_explain">Messages in this chat are generated on your device to inform about app updates and problems during usage.</string>
     <string name="device_talk_welcome_message2">Get in contact!\n\n🙌 Tap \"QR code\" on the main screen of both devices. Choose \"Scan QR Code\" on one device, and point it at the other\n\n🌍 If not in the same room, scan via video call or share an invite link from \"Scan QR code\"\n\nThen: Enjoy your messenger experience over the largest decentralized network that ever existed: E-mail. And in contrast to other popular apps, without central control or tracking or selling you, friends, colleagues or family out to large organizations.</string>
     <string name="edit_contact">Edit Contact</string>
-    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin_chat">Pin Chat</string>
     <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin_chat">Unpin Chat</string>
-    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin">Pin</string>
     <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin">Unpin</string>

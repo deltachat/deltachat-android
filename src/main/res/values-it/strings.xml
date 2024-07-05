@@ -56,6 +56,7 @@
     <string name="show_full_message">Mostra Messaggio Completo…</string>
     <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
     <string name="mark_all_as_read">Segna Tutti come Letti</string>
+    <string name="mark_as_read">Segna come Letto</string>
     <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
     <string name="mark_as_read_short">Leggi</string>
     <!-- Placeholder text when something is loading -->
@@ -267,7 +268,7 @@
     <string name="menu_scroll_to_top">Scorri in Cima</string>
     <string name="menu_help">Aiuto</string>
     <string name="what_is_webxdc">Cos\'è Webxdc?</string>
-    <string name="privacy_policy">Privacy Policy</string>
+    <string name="privacy_policy">Politica sulla Riservatezza</string>
     <string name="menu_select_all">Seleziona Tutto</string>
     <string name="select_chat">Seleziona Chat</string>
     <string name="select_more">Seleziona di più</string>
@@ -575,7 +576,7 @@
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Il Tuo Profilo</string>
     <!-- deprecated -->
-    <string name="instant_onboarding_agree_default">Leggi l\'Informativa Riservatezza</string>
+    <string name="instant_onboarding_agree_default">Leggi l\'Informativa sulla Riservatezza</string>
     <!-- The placeholder will be replaced by the default onboarding server -->
     <string name="instant_onboarding_agree_default2">Informativa sulla Riservatezza per %1$s</string>
     <!-- The placeholder will be replaced by instance name, the whole text will link to the instance page -->
@@ -690,7 +691,7 @@
     <string name="pref_led_color">Colore LED</string>
     <string name="pref_sound">Suono</string>
     <string name="pref_silent">Silenzia</string>
-    <string name="pref_privacy">Privacy</string>
+    <string name="pref_privacy">Riservatezza</string>
     <string name="pref_chats_and_media">Chat e Media</string>
     <string name="pref_system_default">Predefinito di sistema</string>
     <!-- Translators: as in "opposite of dark" -->
