@@ -56,6 +56,7 @@
     <string name="show_full_message">Tam İletiyi Göster…</string>
     <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
     <string name="mark_all_as_read">Tümünü Okundu Olarak İmle</string>
+    <string name="mark_as_read">Okundu Olarak İmle</string>
     <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
     <string name="mark_as_read_short">Okundu</string>
     <!-- Placeholder text when something is loading -->
@@ -228,7 +229,7 @@
     <string name="menu_delete_messages">İletileri Sil</string>
     <string name="delete_contact">Kişiyi Sil</string>
     <string name="menu_delete_location">Bu Konumu Sil</string>
-    <string name="menu_message_details">İleti Ayrıntıları</string>
+    <string name="menu_message_details">İleti Bilgisi</string>
     <string name="menu_copy_to_clipboard">Panoya Kopyala</string>
     <string name="menu_copy_selection_to_clipboard">Seçimi Kopyala</string>
     <string name="menu_copy_link_to_clipboard">Bağlantıyı Kopyala</string>
@@ -1154,4 +1155,5 @@
     <string name="update_1_44_android">Ne yeni:\n\n❤️ Evet! Bu uzun zamandır bekleniyordu: Tepki vermek için bir iletiye uzun dokunun\n\n🔗 QR kodlarını tarayamıyorsanız, onları çağırma bağlantısı olarak paylaşın\n\n🔵 Artık tüm hesapların okunmayan iletileri sayılır ve başlıkta gösterilir\n\n… ve TONLARCA hata düzeltmesi … %1$s\n\nUygulamanın iyileştirilmesine yardımcı olun: Gerçek dünya kullanımını daha da iyileştirmek için \"Ayarlar / Gelişmiş / İstatistikleri gönder\"i kullanarak geliştiricilere yardımcı olun. Göndermeden önce verilerinizi inceleyebilirsiniz</string>
     <string name="update_1_44_ios">Ne yeni:\n\n❤️ Evet! Bu uzun zamandır bekleniyordu: Tepki vermek için bir iletiye uzun dokunun\n\n🫸 https://nine.testrun.org gibi sağlayıcılar tarafından destekleniyorsa ANLIK bildirimler\n\n🔗 QR kodlarını tarayamıyorsanız, onları çağırma bağlantısı olarak paylaşın\n\n… ve TONLARCA hata düzeltmesi … %1$s</string>
     <string name="update_1_46_android">Yeni Katılım 🐣 ve Daha Fazlası:\n\n⚡️ Hızlı güvenli Chatmail sunucularına kayıt olun (https://delta.chat/chatmail) ya da klasik e-posta sunucularını kullanın\n\n👉 Herhangi bir Chatmail sunucusu için ANINDA İLETME bildirimleri\n\n👤 \"Kişileri iliştir\" üzerinden arkadaşlarınıza güvenlice bağlanın\n\n🥰 Herhangi bir emojiyle tepki verin\n\n📌 Sohbetleri doğrudan aramadan sabitleyin … ve DAHA FAZLASI %1$s</string>
-    </resources>
+    <string name="update_1_46_ios">Yeni Katılım 🐣 ve Daha Fazlası:\n\n⚡️ Güvenli hızlı Chatmail sunucularına kaydolun (https://delta.chat/chatmail) ya da klasik e-posta sunucularını kullanın\n\n👉 Herhangi bir Chatmail sunucusu için ANLIK bildirimler\n\n👤 \"İliştirilen kişileri\" alın ve arkadaşlarınıza bağlanın\n\n🥰 Daha hızlı tepki seçimi … ve DAHA FAZLASI için %1$s</string>
+</resources>
