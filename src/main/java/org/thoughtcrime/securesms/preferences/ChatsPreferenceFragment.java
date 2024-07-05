@@ -68,6 +68,11 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
 
     autoDelServer = findPreference("autodel_server");
     autoDelServer.setOnPreferenceChangeListener(new AutodelChangeListener("delete_server_after"));
+    if (!dcContext.isChatmail()) {
+      CharSequence[] entries = autoDelServer.getEntries();
+      entries[0] = getString(R.string.never);
+      autoDelServer.setEntries(entries);
+    }
   }
 
   @Override
@@ -97,7 +102,7 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
   private void initAutodelFromCore() {
     String value = Integer.toString(dcContext.getConfigInt("delete_server_after"));
     autoDelServer.setValue(value);
-    updateListSummary(autoDelServer, value, value.equals("0")? null : getString(R.string.autodel_server_enabled_hint));
+    updateListSummary(autoDelServer, value, (value.equals("0") || dcContext.isChatmail())? null : getString(R.string.autodel_server_enabled_hint));
 
     value = Integer.toString(dcContext.getConfigInt("delete_device_after"));
     autoDelDevice.setValue(value);
@@ -186,9 +191,9 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
       int timeout = Util.objectToInt(newValue);
-      if (timeout>0) {
-        Context context = preference.getContext();
-        boolean fromServer = coreKey.equals("delete_server_after");
+      Context context = preference.getContext();
+      boolean fromServer = coreKey.equals("delete_server_after");
+      if (timeout>0 && !(fromServer && dcContext.isChatmail())) {
         int delCount = DcHelper.getContext(context).estimateDeletionCount(fromServer, timeout);
 
         View gl = View.inflate(getActivity(), R.layout.dialog_with_checkbox, null);
