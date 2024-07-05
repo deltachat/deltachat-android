@@ -505,8 +505,8 @@
     <string name="multidevice_same_network_hint">Make sure both devices are on the same Wi-Fi or network</string>
     <string name="multidevice_this_creates_a_qr_code">This creates a QR code that the second device can scan to copy the profile.</string>
     <string name="multidevice_install_dc_on_other_device">Install Delta Chat on your other device (https://get.delta.chat)</string>
-    <!-- "I Already Have a Login / Add as Second Device” should be the same text as defined by the keys onboarding_alternative_logins and multidevice_receiver_title -->
-    <string name="multidevice_tap_scan_on_other_device">Start Delta Chat, tap “I Already Have a Login / Add as Second Device” and scan the code shown here</string>
+    <!-- "I Already Have a Profile / Add as Second Device” should be the same text as defined by the keys onboarding_alternative_logins and multidevice_receiver_title -->
+    <string name="multidevice_tap_scan_on_other_device">Start Delta Chat, tap “I Already Have a Profile / Add as Second Device” and scan the code shown here</string>
     <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and/or address eg. "Scan to set up second device for Alice (alice@example.org)" -->
     <string name="multidevice_qr_subtitle">Scan to set up second device for %1$s</string>
     <string name="multidevice_receiver_title">Add as Second Device</string>
@@ -1064,7 +1064,7 @@
     <string name="select_group_image_desktop">Select Group Image</string>
     <string name="export_backup_desktop">Export Backup</string>
     <string name="autocrypt_correct_desktop">Autocrypt setup transferred.</string>
-    <string name="forget_login_confirmation_desktop">Delete this login? Everything will be deleted, including your end-to-end setup, contacts, chats, messages and media. This action cannot be undone.</string>
+    <string name="forget_login_confirmation_desktop">Delete this profile? Everything will be deleted, including your end-to-end setup, contacts, chats, messages and media. This action cannot be undone.</string>
     <!-- deprecated -->
     <string name="account_info_hover_tooltip_desktop2">E-Mail: %1$s\nSize: %2$s\nAccount Id: %3$s</string>
     <string name="message_detail_sent_desktop">sent</string>
