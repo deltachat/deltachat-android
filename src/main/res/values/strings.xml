@@ -806,7 +806,7 @@
     <string name="autodel_sever_warn_multi_device">Use short time spans only if your are not using other devices beside this one.\n\nOtherwise, using multiple devices will not work correctly.</string>
     <string name="autodel_confirm">I understand, delete all these messages</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
-    <string name="autodel_at_once">At once</string>
+    <string name="autodel_at_once">At once after Download</string>
     <string name="after_30_seconds">After 30 seconds</string>
     <string name="after_1_minute">After 1 minute</string>
     <string name="after_5_minutes">After 5 minutes</string>
@@ -818,13 +818,6 @@
     <string name="autodel_after_4_weeks">After 4 weeks</string>
     <string name="after_5_weeks">After 5 weeks</string>
     <string name="autodel_after_1_year">After 1 year</string>
-
-    <string name="autodel_server_at_once">At once after Download</string>
-    <string name="autodel_server_after_1_hour">Latest 1 hour after Download</string>
-    <string name="autodel_server_after_1_day">Latest 1 day after Download</string>
-    <string name="autodel_server_after_1_week">Latest 1 week after Download</string>
-    <string name="autodel_server_after_5_weeks">Latest 5 weeks after Download</string>
-    <string name="autodel_server_after_1_year">Latest 1 year after Download</string>
 
     <!-- autocrypt -->
     <!-- deprecated, used "Encryption" if a headline is needed -->
