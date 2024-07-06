@@ -68,6 +68,13 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
 
     autoDelServer = findPreference("autodel_server");
     autoDelServer.setOnPreferenceChangeListener(new AutodelChangeListener("delete_server_after"));
+    if (dcContext.isChatmail()) {
+      autoDelServer.setEntries(new CharSequence[]{getString(R.string.automatic), getString(R.string.autodel_at_once)});
+      autoDelServer.setEntryValues(new CharSequence[]{"0", "1"});
+      if (dcContext.getConfigInt("delete_server_after") > 1) {
+        dcContext.setConfigInt("delete_server_after", 0 /*never/automatic*/);
+      }
+    }
   }
 
   @Override
@@ -97,7 +104,7 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
   private void initAutodelFromCore() {
     String value = Integer.toString(dcContext.getConfigInt("delete_server_after"));
     autoDelServer.setValue(value);
-    updateListSummary(autoDelServer, value, value.equals("0")? null : getString(R.string.autodel_server_enabled_hint));
+    updateListSummary(autoDelServer, value, (value.equals("0") || dcContext.isChatmail())? null : getString(R.string.autodel_server_enabled_hint));
 
     value = Integer.toString(dcContext.getConfigInt("delete_device_after"));
     autoDelDevice.setValue(value);
@@ -149,13 +156,7 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
     final String onRes = context.getString(R.string.on);
     final String offRes = context.getString(R.string.off);
     String readReceiptState = dcContext.getConfigInt("mdns_enabled")!=0? onRes : offRes;
-    boolean deleteOld = (dcContext.getConfigInt("delete_device_after")!=0 || dcContext.getConfigInt("delete_server_after")!=0);
-
-    String summary = context.getString(R.string.pref_read_receipts) + " " + readReceiptState;
-    if (deleteOld) {
-      summary += ", " + context.getString(R.string.delete_old_messages) + " " + onRes;
-    }
-    return summary;
+    return context.getString(R.string.pref_read_receipts) + " " + readReceiptState;
   }
 
   private class BlockedContactsClickListener implements Preference.OnPreferenceClickListener {
@@ -186,9 +187,9 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
       int timeout = Util.objectToInt(newValue);
-      if (timeout>0) {
-        Context context = preference.getContext();
-        boolean fromServer = coreKey.equals("delete_server_after");
+      Context context = preference.getContext();
+      boolean fromServer = coreKey.equals("delete_server_after");
+      if (timeout>0 && !(fromServer && dcContext.isChatmail())) {
         int delCount = DcHelper.getContext(context).estimateDeletionCount(fromServer, timeout);
 
         View gl = View.inflate(getActivity(), R.layout.dialog_with_checkbox, null);
@@ -215,6 +216,18 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
                 })
                 .setNegativeButton(android.R.string.cancel, (dialog, whichButton) -> initAutodelFromCore())
                 .setCancelable(true) // Enable the user to quickly cancel if they are intimidated by the warnings :)
+                .setOnCancelListener(dialog -> initAutodelFromCore())
+                .show();
+      } else if (fromServer && timeout == 1 /*at once, using a constant that cannot be used in .xml would weaken grep ability*/) {
+        new AlertDialog.Builder(context)
+                .setTitle(R.string.autodel_sever_warn_multi_device_title)
+                .setMessage(R.string.autodel_sever_warn_multi_device)
+                .setPositiveButton(android.R.string.ok, (dialog, whichButton) -> {
+                  dcContext.setConfigInt(coreKey, timeout);
+                  initAutodelFromCore();
+                })
+                .setNegativeButton(android.R.string.cancel, (dialog, whichButton) -> initAutodelFromCore())
+                .setCancelable(true)
                 .setOnCancelListener(dialog -> initAutodelFromCore())
                 .show();
       } else {

@@ -803,9 +803,11 @@
     <string name="autodel_server_ask">Do you want to delete %1$d messages now and all newly fetched messages \"%2$s\" in the future?\n\n⚠️ This includes e-mails, media and \"Saved messages\" in all server folders\n\n⚠️ Do not use this function if you want to keep data on the server\n\n⚠️ Do not use this function if you are using other e-mail clients besides Delta Chat</string>
     <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
     <string name="autodel_server_enabled_hint">This includes e-mails, media and \"Saved messages\" in all server folders. Do not use this function if you want to keep data on the server or if you are using other e-mail clients besides Delta Chat.</string>
+    <string name="autodel_sever_warn_multi_device_title">Turn on at-once deletion</string>
+    <string name="autodel_sever_warn_multi_device">If you enable at-once deletion you cannot use multiple devices on this profile anymore.</string>
     <string name="autodel_confirm">I understand, delete all these messages</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
-    <string name="autodel_at_once">At once</string>
+    <string name="autodel_at_once">At once after Download</string>
     <string name="after_30_seconds">After 30 seconds</string>
     <string name="after_1_minute">After 1 minute</string>
     <string name="after_5_minutes">After 5 minutes</string>
@@ -813,6 +815,7 @@
     <string name="autodel_after_1_hour">After 1 hour</string>
     <string name="autodel_after_1_day">After 1 day</string>
     <string name="autodel_after_1_week">After 1 week</string>
+    <!-- deprecated -->
     <string name="autodel_after_4_weeks">After 4 weeks</string>
     <string name="after_5_weeks">After 5 weeks</string>
     <string name="autodel_after_1_year">After 1 year</string>
