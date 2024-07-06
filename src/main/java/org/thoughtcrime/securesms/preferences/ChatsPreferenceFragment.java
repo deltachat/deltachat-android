@@ -156,13 +156,7 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
     final String onRes = context.getString(R.string.on);
     final String offRes = context.getString(R.string.off);
     String readReceiptState = dcContext.getConfigInt("mdns_enabled")!=0? onRes : offRes;
-    boolean deleteOld = (dcContext.getConfigInt("delete_device_after")!=0 || dcContext.getConfigInt("delete_server_after")!=0);
-
-    String summary = context.getString(R.string.pref_read_receipts) + " " + readReceiptState;
-    if (deleteOld) {
-      summary += ", " + context.getString(R.string.delete_old_messages) + " " + onRes;
-    }
-    return summary;
+    return context.getString(R.string.pref_read_receipts) + " " + readReceiptState;
   }
 
   private class BlockedContactsClickListener implements Preference.OnPreferenceClickListener {
