@@ -222,6 +222,18 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
                 .setCancelable(true) // Enable the user to quickly cancel if they are intimidated by the warnings :)
                 .setOnCancelListener(dialog -> initAutodelFromCore())
                 .show();
+      } else if (fromServer && timeout>0 && timeout<=86400 /*one day, using a constant that cannot be used in .xml would weaken grep ability*/) {
+        new AlertDialog.Builder(context)
+                .setTitle(preference.getTitle())
+                .setMessage(R.string.autodel_sever_warn_multi_device)
+                .setPositiveButton(android.R.string.ok, (dialog, whichButton) -> {
+                  dcContext.setConfigInt(coreKey, timeout);
+                  initAutodelFromCore();
+                })
+                .setNegativeButton(android.R.string.cancel, (dialog, whichButton) -> initAutodelFromCore())
+                .setCancelable(true)
+                .setOnCancelListener(dialog -> initAutodelFromCore())
+                .show();
       } else {
         updateListSummary(preference, newValue);
         dcContext.setConfigInt(coreKey, timeout);
