@@ -220,8 +220,8 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
                 .show();
       } else if (fromServer && timeout == 1 /*at once, using a constant that cannot be used in .xml would weaken grep ability*/) {
         new AlertDialog.Builder(context)
-                .setTitle(R.string.autodel_sever_warn_multi_device_title)
-                .setMessage(R.string.autodel_sever_warn_multi_device)
+                .setTitle(R.string.autodel_server_warn_multi_device_title)
+                .setMessage(R.string.autodel_server_warn_multi_device)
                 .setPositiveButton(android.R.string.ok, (dialog, whichButton) -> {
                   dcContext.setConfigInt(coreKey, timeout);
                   initAutodelFromCore();
