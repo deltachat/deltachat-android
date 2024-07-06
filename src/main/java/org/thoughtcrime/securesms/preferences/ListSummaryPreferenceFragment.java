@@ -138,6 +138,7 @@ public abstract class ListSummaryPreferenceFragment extends CorrectedPreferenceF
   protected void startImexInner(int accountId, int what, String imexPath, String pathAsDisplayedToUser)
   {
     DcContext dcContext = DcHelper.getAccounts(getActivity()).getAccount(accountId);
+    dcContext.assumeMultiDevice();
     this.pathAsDisplayedToUser = pathAsDisplayedToUser;
     progressWhat = what;
     dcContext.imex(progressWhat, imexPath);

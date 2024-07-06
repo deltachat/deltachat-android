@@ -236,6 +236,19 @@ public class DcContext {
       return getConfigInt("is_chatmail") == 1;
     }
 
+    // Called for new profiles on chatmail servers that are "single device" initially;
+    // to save server disk space, we make use of that delete all messages immediately after download.
+    public void assumeSingleDevice() {
+      setConfigInt("delete_server_after", 1 /*at once*/);
+    }
+
+    // Called when we get a hint that another device may be set up.
+    public void assumeMultiDevice() {
+      if (getConfigInt("delete_server_after") == 1 /*at once*/) {
+        setConfigInt("delete_server_after", 0 /*never/automatic*/);
+      }
+    }
+
     /**
      * @return true if at least one chat has location streaming enabled
      */
