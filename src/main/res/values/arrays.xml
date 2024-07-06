@@ -187,7 +187,7 @@
   </string-array>
 
   <string-array name="autodel_server_durations">
-      <item>@string/automatic</item>
+      <item>@string/never</item>
       <item>@string/autodel_at_once</item>
       <item>@string/autodel_after_1_hour</item>
       <item>@string/autodel_after_1_day</item>

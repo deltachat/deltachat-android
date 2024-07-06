@@ -68,10 +68,12 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
 
     autoDelServer = findPreference("autodel_server");
     autoDelServer.setOnPreferenceChangeListener(new AutodelChangeListener("delete_server_after"));
-    if (!dcContext.isChatmail()) {
-      CharSequence[] entries = autoDelServer.getEntries();
-      entries[0] = getString(R.string.never);
-      autoDelServer.setEntries(entries);
+    if (dcContext.isChatmail()) {
+      autoDelServer.setEntries(new CharSequence[]{getString(R.string.automatic), getString(R.string.autodel_at_once)});
+      autoDelServer.setEntryValues(new CharSequence[]{"0", "1"});
+      if (dcContext.getConfigInt("delete_server_after") > 1) {
+        dcContext.setConfigInt("delete_server_after", 0 /*never/automatic*/);
+      }
     }
   }
 
