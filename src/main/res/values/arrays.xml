@@ -188,12 +188,12 @@
 
   <string-array name="autodel_server_durations">
       <item>@string/automatic</item>
-      <item>@string/autodel_server_at_once</item>
-      <item>@string/autodel_server_after_1_hour</item>
-      <item>@string/autodel_server_after_1_day</item>
-      <item>@string/autodel_server_after_1_week</item>
-      <item>@string/autodel_server_after_5_weeks</item>
-      <item>@string/autodel_server_after_1_year</item>
+      <item>@string/autodel_at_once</item>
+      <item>@string/autodel_after_1_hour</item>
+      <item>@string/autodel_after_1_day</item>
+      <item>@string/autodel_after_1_week</item>
+      <item>@string/after_5_weeks</item>
+      <item>@string/autodel_after_1_year</item>
   </string-array>
 
   <string-array name="autodel_server_values">
