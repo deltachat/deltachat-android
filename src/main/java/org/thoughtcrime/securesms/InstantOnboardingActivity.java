@@ -481,6 +481,9 @@ public class InstantOnboardingActivity extends BaseActionBarActivity implements 
         return;
       }
       DcHelper.getAccounts(this).stopIo();
+      if (!isDcLogin) {
+        dcContext.assumeSingleDevice();
+      }
       dcContext.configure();
     }).start();
   }
