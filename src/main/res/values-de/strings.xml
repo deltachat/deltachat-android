@@ -283,11 +283,11 @@
     <string name="device_talk_explain">Nachrichten in diesem Chat werden lokal von der Delta Chat-App erzeugt. Ihre Entwickler informieren damit über App-Updates und Probleme während der Nutzung.</string>
     <string name="device_talk_welcome_message2">Nehmen Sie Kontakt auf!\n\n🙌 Tippen Sie auf dem Hauptbildschirm beider Geräte auf \"QR-Code\". Wählen Sie \"QR-Code scannen\" auf einem Gerät und scannen Sie den QR-Code des anderen\n\n🌍 Wenn Sie sich nicht im selben Raum befinden, scannen Sie per Videoanruf oder teilen Sie einen Einladungslink aus \"QR-Code scannen\"\n\nDann: Viel Spaß beim Texten über das größte dezentrale Netzwerk, das es je gab: E-Mail. Und im Gegensatz zu anderen populären Apps, auch ohne die Daten von Ihnen, Ihren FreundInnen, KollegInnen oder Familienmitgliedern an irgendwelche Firmen zu verkaufen.</string>
     <string name="edit_contact">Kontakt bearbeiten</string>
-    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin_chat">Chat anheften</string>
     <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin_chat">Chat loslösen</string>
-    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin">Anheften</string>
     <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin">Loslösen</string>
@@ -505,8 +505,8 @@
     <string name="multidevice_same_network_hint">Beide Geräte müssen im selben Wi-Fi oder Netzwerk sein.</string>
     <string name="multidevice_this_creates_a_qr_code">Erstellt einen QR-Code, den ein Zweitgerät scannen kann, um das Profil zu kopieren.</string>
     <string name="multidevice_install_dc_on_other_device">Delta Chat auf dem anderen Gerät installieren (https://get.delta.chat)</string>
-    <!-- "I Already Have a Login / Add as Second Device” should be the same text as defined by the keys onboarding_alternative_logins and multidevice_receiver_title -->
-    <string name="multidevice_tap_scan_on_other_device">Delta Chat starten, \"Ich habe bereits ein Login / Als Zweitgerät hinzufügen\" wählen und den QR-Code scannen</string>
+    <!-- "I Already Have a Profile / Add as Second Device” should be the same text as defined by the keys onboarding_alternative_logins and multidevice_receiver_title -->
+    <string name="multidevice_tap_scan_on_other_device">Delta Chat starten, \"Ich habe bereits ein Profil / Als Zweitgerät hinzufügen\" wählen und den QR-Code scannen</string>
     <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and/or address eg. "Scan to set up second device for Alice (alice@example.org)" -->
     <string name="multidevice_qr_subtitle">Scannen, um ein zweites Gerät für %1$s hinzuzufügen</string>
     <string name="multidevice_receiver_title">Als Zweitgerät hinzufügen</string>
@@ -803,9 +803,11 @@
     <string name="autodel_server_ask">Wirklich %1$d Nachrichten jetzt und zukünftig alle neuen Nachrichten \"%2$s\" löschen?\n\n⚠️ Dies schließt E-Mails, Medien und \"Gespeicherte Nachrichten\" aus allen Server-Ordnern mit ein\n\n⚠️ Verwenden Sie diese Funktion nicht, wenn Sie Daten auf dem Server behalten möchten\n\n⚠️ Verwenden Sie diese Funktion nicht, wenn Sie neben Delta Chat noch andere E-Mail-Clients verwenden</string>
     <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
     <string name="autodel_server_enabled_hint">Dies schließt E-Mails, Medien und \"Gespeicherte Nachrichten\" aus allen Server-Ordnern mit ein. Verwenden Sie diese Funktion nicht, wenn Sie Daten auf dem Server behalten möchten oder wenn Sie neben Delta Chat noch andere E-Mail-Clients verwenden.</string>
+    <string name="autodel_server_warn_multi_device_title">Sofortiges Löschen einschalten</string>
+    <string name="autodel_server_warn_multi_device">Wenn sofortiges Löschen aktiviert ist, können nicht mehrere Geräte für dieses Profil verwendet werden.</string>
     <string name="autodel_confirm">Verstanden, all diese Nachrichten löschen</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
-    <string name="autodel_at_once">Sofort</string>
+    <string name="autodel_at_once">Sofort nach Download</string>
     <string name="after_30_seconds">Nach 30 Sekunden</string>
     <string name="after_1_minute">Nach 1 Minute</string>
     <string name="after_5_minutes">Nach 5 Minuten</string>
@@ -813,6 +815,7 @@
     <string name="autodel_after_1_hour">Nach 1 Stunde</string>
     <string name="autodel_after_1_day">Nach 1 Tag</string>
     <string name="autodel_after_1_week">Nach 1 Woche</string>
+    <!-- deprecated -->
     <string name="autodel_after_4_weeks">Nach 4 Wochen</string>
     <string name="after_5_weeks">Nach 5 Wochen</string>
     <string name="autodel_after_1_year">Nach 1 Jahr</string>
@@ -1064,7 +1067,7 @@
     <string name="select_group_image_desktop">Gruppenbild auswählen</string>
     <string name="export_backup_desktop">Backup exportieren</string>
     <string name="autocrypt_correct_desktop">Erfolgreich übertragenes Autocrypt-Setup!</string>
-    <string name="forget_login_confirmation_desktop">Dieses Login löschen? Alles wird gelöscht, einschließlich des Ende-zu-Ende-Setups, der Kontakte, Chats, Nachrichten und Medien. Diese Aktion ist endgültig und kann nicht rückgängig gemacht werden.</string>
+    <string name="forget_login_confirmation_desktop">Dieses Profil löschen? Alles wird gelöscht, einschließlich des Ende-zu-Ende-Setups, der Kontakte, Chats, Nachrichten und Medien. Diese Aktion ist endgültig und kann nicht rückgängig gemacht werden.</string>
     <!-- deprecated -->
     <string name="account_info_hover_tooltip_desktop2">E-Mail: %1$s\nGröße: %2$s\nAccount-ID: %3$s</string>
     <string name="message_detail_sent_desktop">gesendet</string>

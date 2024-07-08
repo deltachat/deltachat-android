@@ -221,11 +221,11 @@
     <string name="device_talk_subtitle">Lokalt genererade meddelanden</string>
     <string name="device_talk_explain">Meddelanden i denna chatt är lokalt genererade av din Delta Chat-app. Dess skapare använder den för att informera om app-uppdateringar och problem vid användning.</string>
     <string name="edit_contact">Redigera kontakt</string>
-    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin_chat">Fäst chatten</string>
     <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin_chat">Lösgör chatten</string>
-    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin">Fäst</string>
     <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin">Lösgör</string>
@@ -518,6 +518,7 @@
     <string name="autodel_after_1_hour">Efter 1 timma</string>
     <string name="autodel_after_1_day">Efter 1 dag</string>
     <string name="autodel_after_1_week">Efter 1 vecka</string>
+    <!-- deprecated -->
     <string name="autodel_after_4_weeks">Efter 4 veckor</string>
     <string name="autodel_after_1_year">Efter 1 år</string>
 

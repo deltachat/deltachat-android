@@ -227,11 +227,11 @@
     <string name="device_talk_subtitle">សារដែលបានបង្កើតពីសា Delta Chat</string>
     <string name="device_talk_explain">សារក្នុងការសន្ទនានេះ បានបង្កើតទិនេះដោយ សា Delta Chat ។ អ្នកបង្កើតវា ប្រើវាដើម្បីជូនដំណឹងពីការធ្វើបច្ចុប្បន្នភាពកម្មវិធី និងបញ្ហាកំឡុងពេលប្រើ។</string>
     <string name="edit_contact">កែសម្រួល ទំនាក់ទំនង</string>
-    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin_chat">ខ្ទាស់សន្ទនា</string>
     <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin_chat">ដកខ្ទាស់សន្ទនា</string>
-    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin">ខ្ទាស់</string>
     <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin">ដកខ្ទាស់</string>
@@ -620,6 +620,7 @@
     <string name="autodel_after_1_hour">បន្ទាប់ពី ១ម៉ោង</string>
     <string name="autodel_after_1_day">បន្ទាប់ពី ១ថ្ងៃ</string>
     <string name="autodel_after_1_week">បន្ទាប់ពី ១អាទិត្យ</string>
+    <!-- deprecated -->
     <string name="autodel_after_4_weeks">បន្ទាប់ពី ៤អាទិត្យ</string>
     <string name="after_5_weeks">ក្រោយរយៈពេល៣០៥សប្តាហ៍</string>
     <string name="autodel_after_1_year">បន្ទាប់ពី ១ឆ្នាំ</string>

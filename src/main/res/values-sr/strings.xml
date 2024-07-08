@@ -271,11 +271,11 @@
     <string name="device_talk_subtitle">Поруке генерисане на уређају</string>
     <string name="device_talk_explain">Поруке у овом ћаскању се генеришу на вашем уређају да обавештавају о ажурирањима апликација и проблемима током коришћења.</string>
     <string name="edit_contact">Измени контакт</string>
-    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin_chat">Закачи ћаскање</string>
     <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin_chat">Откачи ћаскање</string>
-    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin">Закачи</string>
     <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin">Откачи</string>
@@ -709,6 +709,7 @@
     <string name="autodel_after_1_hour">За 1 сат</string>
     <string name="autodel_after_1_day">За 1 дан</string>
     <string name="autodel_after_1_week">За 1 недељу</string>
+    <!-- deprecated -->
     <string name="autodel_after_4_weeks">За 4 недеље</string>
     <string name="after_5_weeks">За 5 недеља</string>
     <string name="autodel_after_1_year">За 1 годину</string>

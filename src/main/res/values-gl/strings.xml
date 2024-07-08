@@ -256,11 +256,11 @@
     <string name="device_talk_subtitle">Mensaxes xeradas localmente</string>
     <string name="device_talk_explain">As mensaxes de esta conversa xéranse localmente na túa app Delta Chat. Os creadores utilízanas para informar acerca de actualizacións e problemas durante a utilización.</string>
     <string name="edit_contact">Editar contacto</string>
-    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin_chat">Fixar conversa</string>
     <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin_chat">Desafixar conversa</string>
-    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin">Fixar</string>
     <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin">Desafixar</string>
@@ -688,6 +688,7 @@
     <string name="autodel_after_1_hour">Após 1 hora</string>
     <string name="autodel_after_1_day">Após 1 día</string>
     <string name="autodel_after_1_week">Após 1 semana</string>
+    <!-- deprecated -->
     <string name="autodel_after_4_weeks">Após 4 semanas</string>
     <string name="after_5_weeks">Após 5 semanas</string>
     <string name="autodel_after_1_year">Após 1 ano</string>

@@ -260,11 +260,11 @@
     <string name="device_talk_subtitle">Loke generitaj mesaĝoj</string>
     <string name="device_talk_explain">Mesaĝoj en tiu ĉi babilo estas surloke generataj de via Delta Chat apo. Ĝiaj kreintoj uzas ilin por informi pri apaj ĝisdatigoj kaj problemoj dum uzado.</string>
     <string name="edit_contact">Redakti kontakton</string>
-    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin_chat">Alpingli babilon</string>
     <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin_chat">Depingli babilon</string>
-    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin">Alpingli</string>
     <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin">Depingli</string>

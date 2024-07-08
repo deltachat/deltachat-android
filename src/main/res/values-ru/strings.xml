@@ -298,11 +298,11 @@
     <string name="device_talk_explain">Сообщения в этом чате генерируются локально вашим приложением Delta Chat. Разработчики используют его для информирования об обновлениях приложения и проблемах во время использования.</string>
     <string name="device_talk_welcome_message2">Оставайтесь на связи!\n\n🙌 Нажмите \"QR-код\" на главном экране обоих устройств. Выберите \"Сканировать QR-код\" на одном устройстве и покажите его на другом.\n\n🌍 Если вы не находитесь в одном помещении, отсканируйте код с помощью видеозвонка или поделитесь приглашающей ссылкой из раздела \"Сканировать QR-код\".\n\nЗатем: наслаждайтесь работой мессенджера через самую крупную децентрализованную сеть, которая когда-либо существовала — электронную почту. И, в отличие от других популярных приложений, без централизованного контроля, отслеживания или продажи вас, ваших друзей, коллег или семьи крупным организациям.</string>
     <string name="edit_contact">Изменить контакт</string>
-    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin_chat">Закрепить чат</string>
     <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin_chat">Открепить чат</string>
-    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin">Прикрепить</string>
     <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin">Открепить</string>
@@ -534,7 +534,7 @@
     <string name="multidevice_same_network_hint">Убедитесь что оба устройства в одной и той же сети или Wi-Fi</string>
     <string name="multidevice_this_creates_a_qr_code">Это создаст QR-код, который второе устройство может отсканировать для копирования профиля.</string>
     <string name="multidevice_install_dc_on_other_device">Установите Delta Chat на другое ваше устройство (https://delta.chat/ru/download)</string>
-    <!-- "I Already Have a Login / Add as Second Device” should be the same text as defined by the keys onboarding_alternative_logins and multidevice_receiver_title -->
+    <!-- "I Already Have a Profile / Add as Second Device” should be the same text as defined by the keys onboarding_alternative_logins and multidevice_receiver_title -->
     <string name="multidevice_tap_scan_on_other_device">Запустите Delta Chat, нажмите \"У меня уже есть Аккаунт / Добавить Второе Устройство\" и отсканируйте отображаемый здесь код</string>
     <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and/or address eg. "Scan to set up second device for Alice (alice@example.org)" -->
     <string name="multidevice_qr_subtitle">Отсканируйте, чтобы настроить второе устройство для %1$s</string>
@@ -842,6 +842,7 @@
     <string name="autodel_after_1_hour">Через 1 час</string>
     <string name="autodel_after_1_day">Через 1 день</string>
     <string name="autodel_after_1_week">Через 1 неделю</string>
+    <!-- deprecated -->
     <string name="autodel_after_4_weeks">Через 4 недели</string>
     <string name="after_5_weeks">Через 5 недель</string>
     <string name="autodel_after_1_year">Через 1 год</string>
