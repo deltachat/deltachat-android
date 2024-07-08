@@ -76,7 +76,9 @@ on <https://play.google.com/apps/publish/>:
       "These features will roll out over the coming days. Thanks for using Delta Chat!";
       release name should be default ("123 (1.2.3)")  
    c) click "Next", set "Rollout Percentage" to 1% (later 2%, 5%, 10%, 20%, 50%, 100%),
-      click "Start rollout to Production"
+      click "Save"
+   d) Go to "Publishing Overview", "Managed publishing" is usually off;
+      click "Send change for review", confirm
 
 
 ## Release on F-Droid
