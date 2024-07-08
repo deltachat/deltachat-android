@@ -1,6 +1,6 @@
 # Delta Chat Android Changelog
 
-## v1.46.6
+## v1.46.7
 2024-07
 
 * add option to mark all selected chats as being "Read" (long tap a chat to start select mode)
