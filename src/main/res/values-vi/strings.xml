@@ -271,11 +271,11 @@
     <string name="device_talk_subtitle">Tin nhắn được tạo cục bộ</string>
     <string name="device_talk_explain">Tin nhắn trong cuộc trò chuyện này được tạo trên thiết bị của bạn để thông báo về các bản cập nhật ứng dụng và sự cố trong quá trình sử dụng.</string>
     <string name="edit_contact">Chỉnh sửa liên hệ</string>
-    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin_chat">Ghim trò chuyện</string>
     <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin_chat">Bỏ ghim cuộc trò chuyện</string>
-    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin">Ghim</string>
     <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin">Bỏ ghim</string>
@@ -483,7 +483,7 @@
     <string name="multidevice_same_network_hint">Đảm bảo cả hai thiết bị đều sử dụng cùng một Wi-Fi hoặc mạng</string>
     <string name="multidevice_this_creates_a_qr_code">Thao tác này sẽ tạo mã QR mà thiết bị thứ hai có thể quét để sao chép tài khoản.</string>
     <string name="multidevice_install_dc_on_other_device">Cài đặt Delta Chat trên thiết bị khác của bạn (https://get.delta.chat)</string>
-    <!-- "I Already Have a Login / Add as Second Device” should be the same text as defined by the keys onboarding_alternative_logins and multidevice_receiver_title -->
+    <!-- "I Already Have a Profile / Add as Second Device” should be the same text as defined by the keys onboarding_alternative_logins and multidevice_receiver_title -->
     <string name="multidevice_tap_scan_on_other_device">Bắt đầu Delta Chat, nhấn vào “Thêm làm thiết bị thứ hai” và quét mã được hiển thị ở đây</string>
     <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and/or address eg. "Scan to set up second device for Alice (alice@example.org)" -->
     <string name="multidevice_qr_subtitle">Quét để thiết lập thiết bị thứ hai cho %1$s</string>
@@ -747,6 +747,7 @@
     <string name="autodel_after_1_hour">Sau 1 giờ</string>
     <string name="autodel_after_1_day">Sau 1 ngày</string>
     <string name="autodel_after_1_week">Sau 1 tuần</string>
+    <!-- deprecated -->
     <string name="autodel_after_4_weeks">Sau 4 tuần</string>
     <string name="after_5_weeks">Sau 5 tuần</string>
     <string name="autodel_after_1_year">Sau 1 năm</string>

@@ -282,11 +282,11 @@
     <string name="device_talk_explain">Съобщенията в този чат се генерират на Вашето устройство, за да информират относно актуализации на приложението и проблеми по време на ползване.</string>
     <string name="device_talk_welcome_message2">Свържете се!\n\n🙌 Натиснете \"QR код\" в главния екран и на двете устройства. Изберете \"Сканиране на QR код\" на едно от устройствата и го насочете към другото\n\n🌍 Ако двете устройства не се намират в една и съща стая, сканирайте посредством видео обаждане или споделете връзка с покана от \"Сканиране на QR код\"\n\nСлед това:  Насладете се на изживяването да обменяте съобщения през най-голямата децентрализирана мрежа, която някога е съществувала: електронната поща. And in contrast to other popular apps, without central control or tracking or selling you, friends, colleagues or family out to large organizations.</string>
     <string name="edit_contact">Редактиране на контакт</string>
-    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin_chat">Забождане на чата</string>
     <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin_chat">Премахване на чата от забодените</string>
-    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin">Забождане</string>
     <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin">Премахване от забодените</string>
@@ -501,7 +501,7 @@
     <string name="multidevice_same_network_hint">Уверете се, че и двете устройства са свързани към една и съща Wi-Fi или друга мрежа</string>
     <string name="multidevice_this_creates_a_qr_code">Ще бъде създаден QR код, чрез сканиране на който другото устройство може да копира акаунта.</string>
     <string name="multidevice_install_dc_on_other_device">Инсталирайте Delta Chat на другото Ви устройство (https://get.delta.chat)</string>
-    <!-- "I Already Have a Login / Add as Second Device” should be the same text as defined by the keys onboarding_alternative_logins and multidevice_receiver_title -->
+    <!-- "I Already Have a Profile / Add as Second Device” should be the same text as defined by the keys onboarding_alternative_logins and multidevice_receiver_title -->
     <string name="multidevice_tap_scan_on_other_device">Стартирайте Delta Chat, докоснете \"Добавяне като допълнително устройство\" и сканирайте кода, показан тук</string>
     <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and/or address eg. "Scan to set up second device for Alice (alice@example.org)" -->
     <string name="multidevice_qr_subtitle">Сканирайте, за да установите допълнително устройство за %1$s</string>
@@ -809,6 +809,7 @@
     <string name="autodel_after_1_hour">След 1 час</string>
     <string name="autodel_after_1_day">След 1 ден</string>
     <string name="autodel_after_1_week">След 1 седмица</string>
+    <!-- deprecated -->
     <string name="autodel_after_4_weeks">След 4 седмици</string>
     <string name="after_5_weeks">След 5 седмици</string>
     <string name="autodel_after_1_year">След 1 година</string>

@@ -242,11 +242,11 @@
     <string name="device_talk_subtitle">로컬에서 생성된 메시지</string>
     <string name="device_talk_explain">이 채팅의 메시지는 델타 채팅 앱에서 로컬로 생성됩니다. 제작자는 이것을 앱 업데이트와 사용 중 발생하는 문제에 대해 알리기 위해 사용한다.</string>
     <string name="edit_contact">연락처 수정</string>
-    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin_chat">채팅 고정</string>
     <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin_chat">채팅 고정 해제</string>
-    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin">고정</string>
     <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin">고정 해제</string>
@@ -647,6 +647,7 @@
     <string name="autodel_after_1_hour">1시간 후</string>
     <string name="autodel_after_1_day">1일 후</string>
     <string name="autodel_after_1_week">1주 후</string>
+    <!-- deprecated -->
     <string name="autodel_after_4_weeks">4주 후</string>
     <string name="after_5_weeks">5주 후</string>
     <string name="autodel_after_1_year">1년 후</string>

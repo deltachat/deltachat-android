@@ -194,11 +194,11 @@
     <string name="device_talk_subtitle">پەیامە درووستکراوە ناوخۆییەکان</string>
     <string name="device_talk_explain">پەیامەکانی نێو ئەم وتووێژە بە شێوازی ناوخۆیی لەلایەن نەرمامێری دێڵتاچاتەکەتەوە درووست کراون. درووستکەرانی نەرمامێرەکە کەڵکی لێ دەگرن بۆ ئاگادار کردنەوەی بەکارهێنەران سەبارەت بە وەشانە نوێکانی نەرمامێرەکە و کێشە و گرفتەکانی.</string>
     <string name="edit_contact">دەستکاری بەردەنگ</string>
-    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin_chat">دەرزیلەکردنی چات</string>
     <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin_chat">لابردنی دەرزیلە</string>
-    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin">دەرزیلە بکە</string>
     <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin">دەرزیلە لابە</string>
@@ -486,6 +486,7 @@
     <string name="autodel_after_1_hour">پاش 1 کاتژمێر</string>
     <string name="autodel_after_1_day">پاش 1 ڕۆژ</string>
     <string name="autodel_after_1_week">پاش 1 حەوتە</string>
+    <!-- deprecated -->
     <string name="autodel_after_4_weeks">پاش 4 حەوتە</string>
     <string name="after_5_weeks">پاش 5 حەوتە</string>
     <string name="autodel_after_1_year">پاش 1 ساڵ</string>
