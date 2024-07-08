@@ -182,11 +182,11 @@
     <string name="device_talk_subtitle">Messàgios ingendrados localmente</string>
     <string name="device_talk_explain">Sos messàgios in custa tzarrada benint ingendrados localmente dae s\'aplicatzone Delta Chat tua. Sos isvilupadores los impreant pro informare a pitzu de sos agiornamentos de s\'aplicatzione e de problemas durante s\'impreu.</string>
     <string name="edit_contact">Modìfica su cuntatu</string>
-    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin_chat">Apica sa tzarrada</string>
     <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin_chat">Isbloca sa tzarrada</string>
-    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin">Apica</string>
     <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin">Isbloca</string>
@@ -478,6 +478,7 @@
     <string name="autodel_after_1_hour">A pustis de 1 ora</string>
     <string name="autodel_after_1_day">A pustis de 1 die</string>
     <string name="autodel_after_1_week">A pustis de 1 chida</string>
+    <!-- deprecated -->
     <string name="autodel_after_4_weeks">A pustis de 4 chidas</string>
     <string name="autodel_after_1_year">A pustis de 1 annu</string>
 

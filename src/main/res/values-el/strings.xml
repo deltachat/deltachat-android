@@ -250,11 +250,11 @@
     <string name="device_talk_subtitle">Τοπικά Μηνύματα</string>
     <string name="device_talk_explain">Τα μηνύματα σε αυτήν τη συνομιλία δημιουργούνται στη συσκευή σας για την ενημέρωση σχετικά με ενημερώσεις και προβλήματα κατά τη χρήση της εφαρμογής</string>
     <string name="edit_contact">Επεξεργασία Επαφής</string>
-    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin_chat">Καρφίτσωμα Συνομιλίας</string>
     <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin_chat">Ξεκαρφίτσωμα Συνομιλίας</string>
-    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin">Καρφίτσωμα</string>
     <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin">Ξεκαρφίτσωμα</string>
@@ -681,6 +681,7 @@
     <string name="autodel_after_1_hour">Μετά από 1 ώρα</string>
     <string name="autodel_after_1_day">Μετά από 1 μέρα</string>
     <string name="autodel_after_1_week">Μετά από 1 εβδομάδα</string>
+    <!-- deprecated -->
     <string name="autodel_after_4_weeks">Μετά από 4 εβδομάδες</string>
     <string name="after_5_weeks">Μετά από 5 εβδομάδες</string>
     <string name="autodel_after_1_year">Μετά από 1 χρόνο</string>

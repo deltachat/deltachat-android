@@ -210,11 +210,11 @@
     <string name="device_talk_subtitle">ローカルで生成されたメッセージ</string>
     <string name="device_talk_explain">このチャットのメッセージはアプリで生成されます。アプリ開発者はアップデートや問題点をお知らせするために使用しています。</string>
     <string name="edit_contact">連絡先を編集</string>
-    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin_chat">チャットをピン留め</string>
     <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin_chat">チャットのピン留めを解除</string>
-    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin">ピン留め</string>
     <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin">ピン留めを解除</string>
@@ -533,6 +533,7 @@
     <string name="autodel_after_1_hour">1時間</string>
     <string name="autodel_after_1_day">1日後</string>
     <string name="autodel_after_1_week">1週間後</string>
+    <!-- deprecated -->
     <string name="autodel_after_4_weeks">4週間後</string>
     <string name="after_5_weeks">5週間後</string>
     <string name="autodel_after_1_year">1年後</string>

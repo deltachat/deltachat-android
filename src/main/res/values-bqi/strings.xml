@@ -223,9 +223,9 @@
     <string name="device_talk">payomā dasgā</string>
     <string name="device_talk_subtitle">payomā mêni</string>
     <string name="edit_contact">ālêštê homdang</string>
-    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin_chat">disniďên goftoloft</string>
-    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin">disniďên</string>
     <string name="source_code">kodê bončak</string>
     <string name="mute_for_one_hour">bî dong kerdên si 1 sāat</string>
@@ -347,6 +347,7 @@
     <string name="autodel_after_1_hour">ba\'ďê 1 sāat</string>
     <string name="autodel_after_1_day">ba\'ďê 1 ru</string>
     <string name="autodel_after_1_week">ba\'ďê 1 hafta</string>
+    <!-- deprecated -->
     <string name="autodel_after_4_weeks">ba\'ďê 4 hafta</string>
     <string name="after_5_weeks">ba\'ďê 5 hafta</string>
     <string name="autodel_after_1_year">ba\'ďê 1 sāl</string>
