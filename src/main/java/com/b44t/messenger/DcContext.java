@@ -237,11 +237,11 @@ public class DcContext {
     }
 
     public boolean isMuted() {
-      return getConfigInt("ui.muted") == 1;
+      return getConfigInt("is_muted") == 1;
     }
 
     public void setMuted(boolean muted) {
-      setConfigInt("ui.muted", muted? 1 : 0);
+      setConfigInt("is_muted", muted? 1 : 0);
     }
 
     /**
