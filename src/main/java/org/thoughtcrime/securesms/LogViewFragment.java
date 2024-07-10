@@ -251,7 +251,6 @@ public class LogViewFragment extends Fragment {
         builder.append("ignoreBatteryOptimizations=").append(
             powerManager.isIgnoringBatteryOptimizations(context.getPackageName())).append("\n");
       }
-      builder.append("notifications=").append(!dcContext.isMuted()).append("\n");
       builder.append("reliableService=").append(
               Prefs.reliableService(context)).append("\n");
 
