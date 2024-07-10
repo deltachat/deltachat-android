@@ -266,11 +266,11 @@
     <string name="device_talk_subtitle">Mesaje generate la nivel local</string>
     <string name="device_talk_explain">Mesajele din acest chat sunt generate pe dispozitivul dumneavoastră pentru a vă informa cu privire la actualizările app-ului și la problemele apărute în timpul utilizării.</string>
     <string name="edit_contact">Editați Contactul</string>
-    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin_chat">Fixați Chat</string>
     <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin_chat">Desprindeți Chat-ul</string>
-    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin">Fixați</string>
     <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin">Desprindeți</string>
@@ -478,7 +478,7 @@
     <string name="multidevice_same_network_hint">Asigurați-vă că ambele dispozitive se află în aceeași rețea Wi-Fi sau în aceeași rețea</string>
     <string name="multidevice_this_creates_a_qr_code">Astfel se creează un cod QR pe care cel de-al doilea dispozitiv îl poate scana pentru a copia contul.</string>
     <string name="multidevice_install_dc_on_other_device">Instalați Delta Chat pe celălalt dispozitiv (https://get.delta.chat)</string>
-    <!-- "I Already Have a Login / Add as Second Device” should be the same text as defined by the keys onboarding_alternative_logins and multidevice_receiver_title -->
+    <!-- "I Already Have a Profile / Add as Second Device” should be the same text as defined by the keys onboarding_alternative_logins and multidevice_receiver_title -->
     <string name="multidevice_tap_scan_on_other_device">Porniți Delta Chat, atingeți \" Adăugați ca al doilea dispozitiv\" și scanați codul afișat aici</string>
     <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and/or address eg. "Scan to set up second device for Alice (alice@example.org)" -->
     <string name="multidevice_qr_subtitle">Scanare pentru a configura un al doilea dispozitiv pentru %1$s</string>

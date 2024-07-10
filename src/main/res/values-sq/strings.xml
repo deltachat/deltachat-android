@@ -281,11 +281,11 @@
     <string name="device_talk_explain">Mesazhet në këtë fjalosje prodhohen lokalisht nga aplikacioni juaj Delta Chat. Krijuesit e tij e përdorin për t’ju bërë të ditur përditësime dhe probleme gjatë përdorimit.</string>
     <string name="device_talk_welcome_message2">Lidhuni!\n\n🙌 Prekni “Kod QR” te skena kryesore në të dyja pajisjet. Zgjidhni “Skano Kod QR” në një pajisje dhe drejtojani tjetrës\n\n🌍 Nëse s’gjenden në të njëjtën dhomë, skanojeni përmes një thirrjeje video, ose ndani një lidhje ftese që nga “Skanoni kod QR”\n\nMandej: Shijoni punimin e shkëmbyesit të mesazheve përmes rrjetit më të madh të decentralizuar që ka ekzistuar ndonjëherë: email-it. Dhe, në kontrast me aplikacione të tjera popullore, pa kontroll të centralizuar, apo gjurmim, apo shitje të dhënash tuajat, të shokëve, kolegëve apo familjes te ente të mëdha.</string>
     <string name="edit_contact">Përpunoni Kontaktin</string>
-    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin_chat">Fiksojeni Bisedën</string>
     <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin_chat">Hiqeni Bisedën Nga e Fiksuar</string>
-    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin">Fiksoje</string>
     <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin">Çfiksoje</string>
@@ -500,7 +500,7 @@
     <string name="multidevice_same_network_hint">Sigurohuni se të dy pajisjet janë në të njëjtin rrjet Wi-Fi ose klasik</string>
     <string name="multidevice_this_creates_a_qr_code">Kjo krijon një kod QR që pajisja e dytë mund ta skanojë për të kopjuar llogarinë.</string>
     <string name="multidevice_install_dc_on_other_device">Instaloni Delta Chat-in në pajisjen tuaj tjetër (https://get.delta.chat)</string>
-    <!-- "I Already Have a Login / Add as Second Device” should be the same text as defined by the keys onboarding_alternative_logins and multidevice_receiver_title -->
+    <!-- "I Already Have a Profile / Add as Second Device” should be the same text as defined by the keys onboarding_alternative_logins and multidevice_receiver_title -->
     <string name="multidevice_tap_scan_on_other_device">Nisni Delta Chat-in, prekni mbi “Shtoje si Pajisje të Dytë” dhe skanoni kodin e treguar këtu</string>
     <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and/or address eg. "Scan to set up second device for Alice (alice@example.org)" -->
     <string name="multidevice_qr_subtitle">Skanojeni, që të ujdisni pajise të dytë për %1$s</string>
@@ -806,6 +806,7 @@
     <string name="autodel_after_1_hour">Pas 1 ore</string>
     <string name="autodel_after_1_day">Pas 1 dite</string>
     <string name="autodel_after_1_week">Pas 1 jave</string>
+    <!-- deprecated -->
     <string name="autodel_after_4_weeks">Pas 4 javësh</string>
     <string name="after_5_weeks">Pas 5 javësh</string>
     <string name="autodel_after_1_year">Pas 1 viti</string>

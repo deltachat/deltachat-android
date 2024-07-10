@@ -64,6 +64,7 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
         progressBar.setIndeterminate(true);
 
         dcContext = DcHelper.getContext(getActivity());
+        dcContext.assumeMultiDevice();
         DcHelper.getEventCenter(getActivity()).addObserver(DcContext.DC_EVENT_IMEX_PROGRESS, this);
 
         prepareThread = new Thread(() -> {

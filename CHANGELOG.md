@@ -1,5 +1,17 @@
 # Delta Chat Android Changelog
 
+## v1.46.7
+2024-07
+
+* add option to mark all selected chats as being "Read" (long tap a chat to start select mode)
+* new, single-device chatmail profiles default to "Delete Messages after Download"
+* when using a chatmail profile on multiple devices, deletion is changed to "Automatic"
+  (deletion strategy is up to the server then)
+* fix back-button behaviour in the welcome screen
+* update translations and local help
+* using core 1.140.2
+
+
 ## v1.46.5
 2024-06
 

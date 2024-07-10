@@ -56,6 +56,7 @@
     <string name="show_full_message">Tam İletiyi Göster…</string>
     <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
     <string name="mark_all_as_read">Tümünü Okundu Olarak İmle</string>
+    <string name="mark_as_read">Okundu Olarak İmle</string>
     <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
     <string name="mark_as_read_short">Okundu</string>
     <!-- Placeholder text when something is loading -->
@@ -228,7 +229,7 @@
     <string name="menu_delete_messages">İletileri Sil</string>
     <string name="delete_contact">Kişiyi Sil</string>
     <string name="menu_delete_location">Bu Konumu Sil</string>
-    <string name="menu_message_details">İleti Ayrıntıları</string>
+    <string name="menu_message_details">İleti Bilgisi</string>
     <string name="menu_copy_to_clipboard">Panoya Kopyala</string>
     <string name="menu_copy_selection_to_clipboard">Seçimi Kopyala</string>
     <string name="menu_copy_link_to_clipboard">Bağlantıyı Kopyala</string>
@@ -282,11 +283,11 @@
     <string name="device_talk_explain">Bu sohbetteki iletiler, uygulama güncelleştirmeleri ve kullanım sırasındaki sorunlar hakkında bilgilendirmek için aygıtınızda oluşturulur.</string>
     <string name="device_talk_welcome_message2">İletişime geçin!\n\n🙌 Her iki aygıtın ana ekranındaki \"QR Kodu\"na dokunun. Bir aygıtta \"QR Kodunu Tara\"yı seçin ve onu diğerine doğrultun\n\n🌍 Aynı odada değilse, video araması aracılığıyla tarayın ya da \"QR Kodu\"ndan bir çağırma bağlantısı paylaşın\n\nDaha sonra: Şimdiye kadar varolan en büyük merkezi olmayan ağ üzerinden ulak deneyiminizin keyfini çıkarın: E-posta. Ve diğer yaygın uygulamaların tersine, merkezi denetim ya da izleme olmadan ya da sizi, arkadaşlarınızı, iş arkadaşlarınızı ya da ailenizi büyük kuruluşlara satmadan.</string>
     <string name="edit_contact">Kişiyi Düzenle</string>
-    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin_chat">Sohbeti Sabitle</string>
     <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin_chat">Sohbeti Sabitleme</string>
-    <!-- Verb "to pin", making something sticky, not a noun or appreviation for "pin number". -->
+    <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin">Sabitle</string>
     <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin">Sabitleme</string>
@@ -504,8 +505,8 @@
     <string name="multidevice_same_network_hint">Her iki aygıtın da aynı Wi-Fi\'da ya da ağda olduğundan emin olun</string>
     <string name="multidevice_this_creates_a_qr_code">Bu, ikinci aygıtın profili kopyalamak için tarayabileceği bir QR kodu oluşturur.</string>
     <string name="multidevice_install_dc_on_other_device">Delta Chat\'i diğer aygıtınıza kurun (https://get.delta.chat)</string>
-    <!-- "I Already Have a Login / Add as Second Device” should be the same text as defined by the keys onboarding_alternative_logins and multidevice_receiver_title -->
-    <string name="multidevice_tap_scan_on_other_device">Delta Chat\'i başlatın, “Zaten Bir Girişim Var / İkinci Aygıt Olarak Ekle”ye dokunun ve burada gösterilen kodu tarayın</string>
+    <!-- "I Already Have a Profile / Add as Second Device” should be the same text as defined by the keys onboarding_alternative_logins and multidevice_receiver_title -->
+    <string name="multidevice_tap_scan_on_other_device">Delta Chat\'i başlatın, “Zaten Bir Profilim Var / İkinci Aygıt Olarak Ekle”ye dokunun ve burada gösterilen kodu tarayın</string>
     <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and/or address eg. "Scan to set up second device for Alice (alice@example.org)" -->
     <string name="multidevice_qr_subtitle">%1$s için ikinci aygıtı ayarlamak üzere tarayın</string>
     <string name="multidevice_receiver_title">İkinci Aygıt Olarak Ayarla</string>
@@ -802,9 +803,11 @@
     <string name="autodel_server_ask">%1$d iletiyi şimdi ve gelecekte yeni getirilen tüm iletileri \"%2$s\" silmek istiyor musunuz?\n\n⚠️ Bu, tüm sunucu klasörlerindeki e-postaları, ortamları ve \"Kaydedilen iletileri\" kapsar\n\n⚠️ Verileri sunucuda tutmak istiyorsanız bu işlevi kullanmayın\n\n⚠️ Delta Chat\'ten başka diğer e-posta istemcilerini kullanıyorsanız bu işlevi kullanmayın</string>
     <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
     <string name="autodel_server_enabled_hint">Bu, tüm sunucu klasörlerindeki e-postaları, ortamları ve \"Kaydedilen iletileri\" kapsar. Verileri sunucuda tutmak istiyorsanız ya da Delta Chat\'ten başka diğer e-posta istemcilerini kullanıyorsanız bu işlevi kullanmayın.</string>
+    <string name="autodel_server_warn_multi_device_title">Bir kerede silmeyi aç</string>
+    <string name="autodel_server_warn_multi_device">Bir kerede silmeyi etkinleştirirseniz, artık bu profilde çoklu aygıtları kullanamazsınız.</string>
     <string name="autodel_confirm">Anladım, tüm bu iletileri sil</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
-    <string name="autodel_at_once">Bir kerede</string>
+    <string name="autodel_at_once">İndirdikten Sonra Bir Kerede</string>
     <string name="after_30_seconds">30 saniye sonra</string>
     <string name="after_1_minute">1 dakika sonra</string>
     <string name="after_5_minutes">5 dakika sonra</string>
@@ -812,6 +815,7 @@
     <string name="autodel_after_1_hour">1 saat sonra</string>
     <string name="autodel_after_1_day">1 gün sonra</string>
     <string name="autodel_after_1_week">1 hafta sonra</string>
+    <!-- deprecated -->
     <string name="autodel_after_4_weeks">4 hafta sonra</string>
     <string name="after_5_weeks">5 hafta sonra</string>
     <string name="autodel_after_1_year">1 yıl sonra</string>
@@ -1063,7 +1067,7 @@
     <string name="select_group_image_desktop">Öbek Görseli Seç</string>
     <string name="export_backup_desktop">Yedeği Dışa Aktar</string>
     <string name="autocrypt_correct_desktop">Autocrypt ayarlaması aktarıldı.</string>
-    <string name="forget_login_confirmation_desktop">Bu giriş silinsin mi? Uçtan uca ayarlamanızı, kişilerinizi, sohbetlerinizi, iletilerinizi ve ortamlarınızı kapsayarak her şey silinecek. Bu eylem geri alınamaz.</string>
+    <string name="forget_login_confirmation_desktop">Bu profil silinsin mi? Uçtan uca ayarlamanızı, kişilerinizi, sohbetlerinizi, iletilerinizi ve ortamlarınızı kapsayarak her şey silinecek. Bu eylem geri alınamaz.</string>
     <!-- deprecated -->
     <string name="account_info_hover_tooltip_desktop2">E-Posta: %1$s\nBoyut: %2$s\nHesap Kimliği: %3$s</string>
     <string name="message_detail_sent_desktop">gönderilme</string>
@@ -1154,4 +1158,5 @@
     <string name="update_1_44_android">Ne yeni:\n\n❤️ Evet! Bu uzun zamandır bekleniyordu: Tepki vermek için bir iletiye uzun dokunun\n\n🔗 QR kodlarını tarayamıyorsanız, onları çağırma bağlantısı olarak paylaşın\n\n🔵 Artık tüm hesapların okunmayan iletileri sayılır ve başlıkta gösterilir\n\n… ve TONLARCA hata düzeltmesi … %1$s\n\nUygulamanın iyileştirilmesine yardımcı olun: Gerçek dünya kullanımını daha da iyileştirmek için \"Ayarlar / Gelişmiş / İstatistikleri gönder\"i kullanarak geliştiricilere yardımcı olun. Göndermeden önce verilerinizi inceleyebilirsiniz</string>
     <string name="update_1_44_ios">Ne yeni:\n\n❤️ Evet! Bu uzun zamandır bekleniyordu: Tepki vermek için bir iletiye uzun dokunun\n\n🫸 https://nine.testrun.org gibi sağlayıcılar tarafından destekleniyorsa ANLIK bildirimler\n\n🔗 QR kodlarını tarayamıyorsanız, onları çağırma bağlantısı olarak paylaşın\n\n… ve TONLARCA hata düzeltmesi … %1$s</string>
     <string name="update_1_46_android">Yeni Katılım 🐣 ve Daha Fazlası:\n\n⚡️ Hızlı güvenli Chatmail sunucularına kayıt olun (https://delta.chat/chatmail) ya da klasik e-posta sunucularını kullanın\n\n👉 Herhangi bir Chatmail sunucusu için ANINDA İLETME bildirimleri\n\n👤 \"Kişileri iliştir\" üzerinden arkadaşlarınıza güvenlice bağlanın\n\n🥰 Herhangi bir emojiyle tepki verin\n\n📌 Sohbetleri doğrudan aramadan sabitleyin … ve DAHA FAZLASI %1$s</string>
-    </resources>
+    <string name="update_1_46_ios">Yeni Katılım 🐣 ve Daha Fazlası:\n\n⚡️ Güvenli hızlı Chatmail sunucularına kaydolun (https://delta.chat/chatmail) ya da klasik e-posta sunucularını kullanın\n\n👉 Herhangi bir Chatmail sunucusu için ANLIK bildirimler\n\n👤 \"İliştirilen kişileri\" alın ve arkadaşlarınıza bağlanın\n\n🥰 Daha hızlı tepki seçimi … ve DAHA FAZLASI için %1$s</string>
+</resources>
