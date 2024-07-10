@@ -3,7 +3,7 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
-                            android:key="pref_key_enable_notifications"
+                            android:key="pref_enable_notifications"
                             android:title="@string/pref_notifications"
                             android:defaultValue="true" />
 
