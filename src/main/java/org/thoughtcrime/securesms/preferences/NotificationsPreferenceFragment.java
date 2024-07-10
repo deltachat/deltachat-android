@@ -114,7 +114,7 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
       return true;
     });
 
-    notificationsEnabled = this.findPreference("pref_key_enable_notifications");
+    notificationsEnabled = this.findPreference("pref_enable_notifications");
     notificationsEnabled.setOnPreferenceChangeListener((preference, newValue) -> {
       boolean enabled = (Boolean) newValue;
       dcContext.setMuted(!enabled);
