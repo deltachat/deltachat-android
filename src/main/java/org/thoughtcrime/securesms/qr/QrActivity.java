@@ -63,6 +63,7 @@ public class QrActivity extends BaseActionBarActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_qr);
+        qrShowFragment = new QrShowFragment();
         tabLayout = ViewUtil.findById(this, R.id.tab_layout);
         viewPager = ViewUtil.findById(this, R.id.pager);
         ProfilePagerAdapter adapter = new ProfilePagerAdapter(this, getSupportFragmentManager());
@@ -229,7 +230,6 @@ public class QrActivity extends BaseActionBarActivity {
 
             switch (position) {
                 case TAB_SHOW:
-                    activity.qrShowFragment = new QrShowFragment();
                     fragment = activity.qrShowFragment;
                     break;
 
