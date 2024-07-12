@@ -54,7 +54,7 @@ public class MailtoUtil {
                 String[] queryEntryArray = queryEntry.split(KEY_VALUE_SEPARATOR);
                 try {
                     mailtoQueryMap.put(queryEntryArray[0], URLDecoder.decode(queryEntryArray[1], "UTF-8"));
-                } catch (UnsupportedEncodingException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
