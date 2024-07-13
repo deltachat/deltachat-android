@@ -3,19 +3,19 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
-                            android:key="pref_key_enable_notifications"
+                            android:key="pref_enable_notifications"
                             android:title="@string/pref_notifications"
                             android:defaultValue="true" />
 
         <Preference
-                android:dependency="pref_key_enable_notifications"
+                android:dependency="pref_enable_notifications"
                 android:key="pref_key_ringtone"
                 android:title="@string/pref_sound"
                 android:persistent="false"
                 android:defaultValue="content://settings/system/notification_sound" />
 
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
-                            android:dependency="pref_key_enable_notifications"
+                            android:dependency="pref_enable_notifications"
                             android:key="pref_key_vibrate"
                             android:defaultValue="true"
                             android:title="@string/pref_vibrate"/>
@@ -24,14 +24,14 @@
             android:key="pref_led_color"
             android:defaultValue="purple"
             android:title="@string/pref_led_color"
-            android:dependency="pref_key_enable_notifications"
+            android:dependency="pref_enable_notifications"
             android:entries="@array/pref_led_color_entries"
             android:entryValues="@array/pref_led_color_values" />
 
         <ListPreference
                 android:key="pref_notification_privacy"
                 android:title="@string/pref_notifications_show"
-                android:dependency="pref_key_enable_notifications"
+                android:dependency="pref_enable_notifications"
                 android:defaultValue="all"
                 android:entries="@array/pref_notification_privacy_entries"
                 android:entryValues="@array/pref_notification_privacy_values"/>
@@ -39,35 +39,31 @@
         <ListPreference
                 android:key="pref_notification_priority"
                 android:title="@string/pref_notifications_priority"
-                android:dependency="pref_key_enable_notifications"
+                android:dependency="pref_enable_notifications"
                 android:defaultValue="1"
                 android:entries="@array/pref_notification_priority_entries"
                 android:entryValues="@array/pref_notification_priority_values"/>
 
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:key="pref_key_inthread_notifications"
-            android:dependency="pref_key_enable_notifications"
             android:title="@string/pref_in_chat_sounds"
             android:defaultValue="true" />
 
         <PreferenceCategory android:title="@string/pref_instant_delivery">
                 <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
                     android:key="pref_push_enabled"
-                    android:dependency="pref_key_enable_notifications"
                     android:defaultValue="true"
                     android:title="@string/pref_push_notifications"
                     android:summary="@string/pref_push_notifications_explain"/>
 
                 <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
                     android:key="pref_ignore_battery_optimizations"
-                    android:dependency="pref_key_enable_notifications"
                     android:defaultValue="false"
                     android:title="@string/pref_background_notifications"
                     android:summary="@string/pref_background_notifications_explain"/>
 
                 <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
                     android:key="pref_reliable_service"
-                    android:dependency="pref_key_enable_notifications"
                     android:defaultValue="false"
                     android:title="@string/pref_reliable_service"
                     android:summary="@string/pref_reliable_service_explain"/>

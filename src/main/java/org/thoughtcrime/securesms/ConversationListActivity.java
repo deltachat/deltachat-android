@@ -287,7 +287,10 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     int skipId = dcAccounts.getSelectedAccount().getAccountId();
     for (int accountId : dcAccounts.getAll()) {
       if (accountId != skipId) {
-        unreadCount += dcAccounts.getAccount(accountId).getFreshMsgs().length;
+        DcContext dcContext = dcAccounts.getAccount(accountId);
+        if (!dcContext.isMuted()) {
+          unreadCount += dcContext.getFreshMsgs().length;
+        }
       }
     }
 
