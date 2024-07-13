@@ -218,7 +218,7 @@ public class LogViewFragment extends Fragment {
     PowerManager powerManager = (PowerManager)context.getSystemService(Context.POWER_SERVICE);
     final PackageManager pm      = context.getPackageManager();
     final StringBuilder  builder = new StringBuilder();
-
+    final DcContext dcContext = DcHelper.getContext(context);
 
     builder.append("device=")
            .append(Build.MANUFACTURER).append(" ")
@@ -251,8 +251,6 @@ public class LogViewFragment extends Fragment {
         builder.append("ignoreBatteryOptimizations=").append(
             powerManager.isIgnoringBatteryOptimizations(context.getPackageName())).append("\n");
       }
-      builder.append("notifications=").append(
-              Prefs.isNotificationsEnabled(context)).append("\n");
       builder.append("reliableService=").append(
               Prefs.reliableService(context)).append("\n");
 
@@ -271,7 +269,6 @@ public class LogViewFragment extends Fragment {
     }
 
     builder.append("\n");
-    DcContext dcContext = DcHelper.getContext(context);
     builder.append(dcContext.getInfo());
 
     return builder.toString();

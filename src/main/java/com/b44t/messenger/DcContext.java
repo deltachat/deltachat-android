@@ -236,6 +236,14 @@ public class DcContext {
       return getConfigInt("is_chatmail") == 1;
     }
 
+    public boolean isMuted() {
+      return getConfigInt("is_muted") == 1;
+    }
+
+    public void setMuted(boolean muted) {
+      setConfigInt("is_muted", muted? 1 : 0);
+    }
+
     // Called for new profiles on chatmail servers that are "single device" initially;
     // to save server disk space, we make use of that delete all messages immediately after download.
     public void assumeSingleDevice() {

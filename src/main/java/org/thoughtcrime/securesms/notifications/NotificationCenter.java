@@ -333,7 +333,7 @@ public class NotificationCenter {
             DcChat dcChat = dcContext.getChat(chatId);
             ChatData chatData = new ChatData(accountId, chatId);
 
-            if (!Prefs.isNotificationsEnabled(context) || dcChat.isMuted()) {
+            if (dcContext.isMuted() || dcChat.isMuted()) {
                 return;
             }
 
@@ -598,7 +598,7 @@ public class NotificationCenter {
     }
 
     public void maybePlaySendSound(DcChat dcChat) {
-        if (Prefs.isInChatNotifications(context) && Prefs.isNotificationsEnabled(context) && !dcChat.isMuted()) {
+        if (Prefs.isInChatNotifications(context) && !dcChat.isMuted()) {
             InChatSounds.getInstance(context).playSendSound();
         }
     }

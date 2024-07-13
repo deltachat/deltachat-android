@@ -20,6 +20,7 @@ import org.thoughtcrime.securesms.components.AvatarImageView;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.DynamicTheme;
+import org.thoughtcrime.securesms.util.ThemeUtil;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
 public class AccountSelectionListItem extends LinearLayout {
@@ -57,7 +58,7 @@ public class AccountSelectionListItem extends LinearLayout {
     ViewUtil.setTextViewGravityStart(this.nameView, getContext());
   }
 
-  public void bind(@NonNull GlideRequests glideRequests, int accountId, DcContact self, String name, String addr, int unreadCount, boolean selected) {
+  public void bind(@NonNull GlideRequests glideRequests, int accountId, DcContact self, String name, String addr, int unreadCount, boolean selected, boolean isMuted) {
     this.accountId     = accountId;
 
     Recipient recipient;
@@ -70,6 +71,8 @@ public class AccountSelectionListItem extends LinearLayout {
     }
     this.contactPhotoImage.setAvatar(glideRequests, recipient, false);
 
+    nameView.setCompoundDrawablesWithIntrinsicBounds(isMuted? R.drawable.ic_volume_off_grey600_18dp : 0, 0, 0, 0);
+
     if (selected) {
       addrView.setTypeface(null, Typeface.BOLD);
       nameView.setTypeface(null, Typeface.BOLD);
@@ -80,7 +83,7 @@ public class AccountSelectionListItem extends LinearLayout {
       checkbox.setVisibility(View.GONE);
     }
 
-    updateUnreadIndicator(unreadCount);
+    updateUnreadIndicator(unreadCount, isMuted);
     setText(name, addr);
   }
 
@@ -88,10 +91,11 @@ public class AccountSelectionListItem extends LinearLayout {
     contactPhotoImage.clear(glideRequests);
   }
 
-  private void updateUnreadIndicator(int unreadCount) {
+  private void updateUnreadIndicator(int unreadCount, boolean isMuted) {
     if(unreadCount == 0) {
       unreadIndicator.setVisibility(View.GONE);
     } else {
+      final int color = getResources().getColor(isMuted ? (ThemeUtil.isDarkTheme(getContext()) ? R.color.unread_count_muted_dark : R.color.unread_count_muted) : R.color.unread_count);
       unreadIndicator.setImageDrawable(TextDrawable.builder()
               .beginConfig()
               .width(ViewUtil.dpToPx(getContext(), 24))
@@ -99,7 +103,7 @@ public class AccountSelectionListItem extends LinearLayout {
               .textColor(Color.WHITE)
               .bold()
               .endConfig()
-              .buildRound(String.valueOf(unreadCount), getResources().getColor(R.color.unread_count)));
+              .buildRound(String.valueOf(unreadCount), color));
       unreadIndicator.setVisibility(View.VISIBLE);
     }
   }

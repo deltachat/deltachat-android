@@ -40,7 +40,6 @@ public class Prefs {
   public  static final String RINGTONE_PREF                    = "pref_key_ringtone";
   private static final String VIBRATE_PREF                     = "pref_key_vibrate";
   private static final String CHAT_VIBRATE                     = "pref_chat_vibrate_"; // followed by chat-id
-  private static final String NOTIFICATION_PREF                = "pref_key_enable_notifications";
   public  static final String LED_COLOR_PREF                   = "pref_led_color";
   private static final String CHAT_RINGTONE                    = "pref_chat_ringtone_"; // followed by chat-id
   public  static final String SCREEN_SECURITY_PREF             = "pref_screen_security";
@@ -166,10 +165,6 @@ public class Prefs {
 
   public static int getPrompteDozeMsgId(Context context) {
     return getIntegerPreference(context, PROMPTED_DOZE_MSG_ID_PREF, 0);
-  }
-
-  public static boolean isNotificationsEnabled(Context context) {
-    return getBooleanPreference(context, NOTIFICATION_PREF, true);
   }
 
   public static boolean isPushEnabled(Context context) {
@@ -326,7 +321,7 @@ public class Prefs {
     PreferenceManager.getDefaultSharedPreferences(context).edit().putLong(key, value).apply();
   }
 
-  private static void removePreference(Context context, String key) {
+  public static void removePreference(Context context, String key) {
     PreferenceManager.getDefaultSharedPreferences(context).edit().remove(key).apply();
   }
 

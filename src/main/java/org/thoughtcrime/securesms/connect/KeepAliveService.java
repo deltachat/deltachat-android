@@ -29,7 +29,7 @@ public class KeepAliveService extends Service {
         // note, that unfortunately, the check for isIgnoringBatteryOptimizations() is not sufficient,
         // this checks only stock-android settings, several os have additional "optimizers" that ignore this setting.
         // therefore, the most reliable way to not get killed is a permanent-foreground-notification.
-        if (Prefs.isNotificationsEnabled(context) && Prefs.reliableService(context))  {
+        if (Prefs.reliableService(context))  {
             startSelf(context);
         }
     }
