@@ -147,7 +147,7 @@ public class RelayUtil {
         composeIntent.putExtra(IS_SHARING, true);
     }
 
-    public static void setSharedContact(Intent composeIntent, int contactId) {
+    public static void setSharedContactId(Intent composeIntent, int contactId) {
       composeIntent.putExtra(SHARED_CONTACT_ID, contactId);
       composeIntent.putExtra(IS_SHARING, true);
     }

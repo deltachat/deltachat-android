@@ -546,7 +546,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
 
   private void onShare() {
     Intent composeIntent = new Intent();
-    RelayUtil.setSharedContact(composeIntent, contactId);
+    RelayUtil.setSharedContactId(composeIntent, contactId);
     ConversationListRelayingActivity.start(this, composeIntent);
   }
 
