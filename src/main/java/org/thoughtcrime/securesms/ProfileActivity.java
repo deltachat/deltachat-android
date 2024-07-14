@@ -1,5 +1,7 @@
 package org.thoughtcrime.securesms;
 
+import static org.thoughtcrime.securesms.util.RelayUtil.setForwardingMessageIds;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.media.RingtoneManager;
@@ -27,6 +29,7 @@ import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
+import com.b44t.messenger.DcMsg;
 import com.google.android.material.tabs.TabLayout;
 
 import org.thoughtcrime.securesms.connect.DcEventCenter;
@@ -34,6 +37,7 @@ import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
 import org.thoughtcrime.securesms.util.Prefs;
+import org.thoughtcrime.securesms.util.RelayUtil;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
@@ -135,6 +139,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
           menu.findItem(R.id.edit_name).setVisible(false);
           menu.findItem(R.id.show_encr_info).setVisible(false);
           menu.findItem(R.id.copy_addr_to_clipboard).setVisible(false);
+          menu.findItem(R.id.share).setVisible(false);
         } else if (chatIsMultiUser) {
           if (chatIsBroadcast) {
             canReceive = false;
@@ -145,6 +150,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
             }
           }
           menu.findItem(R.id.copy_addr_to_clipboard).setVisible(false);
+          menu.findItem(R.id.share).setVisible(false);
         }
       } else {
         canReceive = false;
@@ -416,6 +422,9 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
       case R.id.edit_name:
         onEditName();
         break;
+      case R.id.share:
+        onShare();
+        break;
       case R.id.copy_addr_to_clipboard:
         onCopyAddrToClipboard();
         break;
@@ -533,6 +542,12 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
           .setNegativeButton(android.R.string.cancel, null)
           .show();
     }
+  }
+
+  private void onShare() {
+    Intent composeIntent = new Intent();
+    RelayUtil.setSharedContact(composeIntent, contactId);
+    ConversationListRelayingActivity.start(this, composeIntent);
   }
 
   private void onCopyAddrToClipboard() {
