@@ -1,5 +1,6 @@
 package org.thoughtcrime.securesms;
 
+import android.app.Activity;
 import android.content.Context;
 import android.text.TextUtils;
 import android.util.AttributeSet;
@@ -145,23 +146,17 @@ public class ConversationTitleView extends RelativeLayout {
     avatar.setSeenRecently(seenRecently);
   }
 
-  public void hideAvatar() {
-    avatar.setVisibility(View.GONE);
-  }
-
   @Override
   public void setOnClickListener(@Nullable OnClickListener listener) {
     this.content.setOnClickListener(listener);
     this.avatar.setAvatarClickListener(listener);
   }
 
-  @Override
-  public void setOnLongClickListener(@Nullable OnLongClickListener listener) {
-    this.content.setOnLongClickListener(listener);
-    this.avatar.setAvatarLongClickListener(listener);
-  }
-
   public void setOnBackClickedListener(@Nullable OnClickListener listener) {
     this.back.setOnClickListener(listener);
+  }
+
+  public void registerForContextMenu(Activity activity) {
+    activity.registerForContextMenu(content);
   }
 }

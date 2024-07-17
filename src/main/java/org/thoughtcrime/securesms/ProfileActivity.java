@@ -1,13 +1,12 @@
 package org.thoughtcrime.securesms;
 
-import static org.thoughtcrime.securesms.util.RelayUtil.setForwardingMessageIds;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -29,7 +28,6 @@ import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
-import com.b44t.messenger.DcMsg;
 import com.google.android.material.tabs.TabLayout;
 
 import org.thoughtcrime.securesms.connect.DcEventCenter;
@@ -108,6 +106,9 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
       titleView = (ConversationTitleView) supportActionBar.getCustomView();
       titleView.setOnBackClickedListener(view -> onBackPressed());
       titleView.setOnClickListener(view -> onEnlargeAvatar());
+      if (isContactProfile() && !isSelfProfile() && !chatIsDeviceTalk) {
+        titleView.registerForContextMenu(this);
+      }
     }
 
     updateToolbar();
@@ -138,7 +139,6 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
         if (chatIsDeviceTalk) {
           menu.findItem(R.id.edit_name).setVisible(false);
           menu.findItem(R.id.show_encr_info).setVisible(false);
-          menu.findItem(R.id.copy_addr_to_clipboard).setVisible(false);
           menu.findItem(R.id.share).setVisible(false);
         } else if (chatIsMultiUser) {
           if (chatIsBroadcast) {
@@ -149,7 +149,6 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
               menu.findItem(R.id.edit_name).setVisible(false);
             }
           }
-          menu.findItem(R.id.copy_addr_to_clipboard).setVisible(false);
           menu.findItem(R.id.share).setVisible(false);
         }
       } else {
@@ -185,6 +184,12 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
 
     super.onPrepareOptionsMenu(menu);
     return true;
+  }
+
+  @Override
+  public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+    super.onCreateContextMenu(menu, v, menuInfo);
+    getMenuInflater().inflate(R.menu.profile_title_context, menu);
   }
 
   boolean backPressed = false;
@@ -425,9 +430,6 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
       case R.id.share:
         onShare();
         break;
-      case R.id.copy_addr_to_clipboard:
-        onCopyAddrToClipboard();
-        break;
       case R.id.show_encr_info:
         onEncrInfo();
         break;
@@ -439,6 +441,17 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
         break;
     }
 
+    return false;
+  }
+
+  @Override
+  public boolean onContextItemSelected(MenuItem item) {
+    super.onContextItemSelected(item);
+    switch (item.getItemId()) {
+      case R.id.copy_addr_to_clipboard:
+        onCopyAddrToClipboard();
+        break;
+    }
     return false;
   }
 
