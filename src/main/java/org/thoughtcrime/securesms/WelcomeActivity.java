@@ -388,6 +388,7 @@ public class WelcomeActivity extends BaseActionBarActivity implements DcEventCen
             DcLot qrParsed = dcContext.checkQr(qrRaw);
             switch (qrParsed.getState()) {
                 case DcContext.DC_QR_BACKUP:
+                case DcContext.DC_QR_BACKUP2:
                     new AlertDialog.Builder(this)
                             .setTitle(R.string.multidevice_receiver_title)
                             .setMessage(R.string.multidevice_receiver_scanning_ask)
