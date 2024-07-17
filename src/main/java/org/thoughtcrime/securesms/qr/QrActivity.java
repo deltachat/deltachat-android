@@ -31,6 +31,7 @@ import com.google.zxing.common.HybridBinarizer;
 
 import org.thoughtcrime.securesms.BaseActionBarActivity;
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.contacts.NewContactActivity;
 import org.thoughtcrime.securesms.mms.AttachmentManager;
 import org.thoughtcrime.securesms.permissions.Permissions;
@@ -114,6 +115,7 @@ public class QrActivity extends BaseActionBarActivity {
     public boolean onPrepareOptionsMenu(Menu menu) {
       menu.clear();
       getMenuInflater().inflate(R.menu.qr_show, menu);
+      menu.findItem(R.id.new_classic_contact).setVisible(!DcHelper.getContext(this).isChatmail());
       if(tabLayout.getSelectedTabPosition() == TAB_SCAN) {
         menu.findItem(R.id.withdraw).setVisible(false);
         menu.findItem(R.id.copy).setVisible(false);
