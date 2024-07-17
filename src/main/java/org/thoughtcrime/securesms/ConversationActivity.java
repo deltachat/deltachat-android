@@ -391,7 +391,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       setMedia(data.getData(), MediaType.AUDIO);
       break;
     case PICK_CONTACT:
-      addAttachmentContactInfo(data);
+      addAttachmentContactInfo(data.getIntExtra(AttachContactActivity.CONTACT_ID_EXTRA, 0));
       break;
     case GROUP_EDIT:
       dcChat = dcContext.getChat(chatId);
@@ -695,6 +695,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   private void handleSharing() {
     ArrayList<Uri> uriList =  RelayUtil.getSharedUris(this);
+    int sharedContactId = RelayUtil.getSharedContactId(this);
     if (uriList.size() > 1) {
       String message = String.format(getString(R.string.share_multiple_attachments), uriList.size());
       new AlertDialog.Builder(this)
@@ -704,7 +705,9 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
               .setPositiveButton(R.string.menu_send, (dialog, which) -> SendRelayedMessageUtil.immediatelyRelay(this, chatId))
               .show();
     } else {
-      if (uriList.isEmpty()) {
+      if (sharedContactId != 0) {
+        addAttachmentContactInfo(sharedContactId);
+      } else if (uriList.isEmpty()) {
         dcContext.setDraft(chatId, SendRelayedMessageUtil.createMessage(this, null, getSharedText(this)));
       } else {
         dcContext.setDraft(chatId, SendRelayedMessageUtil.createMessage(this, uriList.get(0), getSharedText(this)));
@@ -975,8 +978,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     return attachmentManager.setMedia(glideRequests, Uri.fromFile(new File(msg.getFile())), msg, mediaType, 0, 0, chatId);
   }
 
-  private void addAttachmentContactInfo(Intent data) {
-    int contactId = data.getIntExtra(AttachContactActivity.CONTACT_ID_EXTRA, 0);
+  private void addAttachmentContactInfo(int contactId) {
     if (contactId == 0) {
       return;
     }

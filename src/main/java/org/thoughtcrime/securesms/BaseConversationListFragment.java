@@ -32,6 +32,7 @@ import com.google.android.material.snackbar.Snackbar;
 import org.thoughtcrime.securesms.components.registration.PulsingFloatingActionButton;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.connect.DirectShareUtil;
+import org.thoughtcrime.securesms.util.RelayUtil;
 import org.thoughtcrime.securesms.util.SendRelayedMessageUtil;
 import org.thoughtcrime.securesms.util.task.SnackbarAsyncTask;
 import org.thoughtcrime.securesms.util.views.ProgressDialog;
@@ -331,6 +332,9 @@ public abstract class BaseConversationListFragment extends Fragment implements A
   @Override
   public boolean onCreateActionMode(ActionMode mode, Menu menu) {
     if (isRelayingMessageContent(getActivity())) {
+      if (RelayUtil.getSharedContactId(getActivity()) != 0) {
+        return false; // no sharing of a contact to multiple recipients at the same time, we can reconsider when that becomes a real-world need
+      }
       Context context = getContext();
       if (context != null) {
         fab.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_send_sms_white_24dp));

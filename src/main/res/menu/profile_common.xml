@@ -2,6 +2,10 @@
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <item android:title="@string/menu_share"
+        android:id="@+id/share"
+        app:showAsAction="never"/>
+
     <item android:title="@string/global_menu_edit_desktop"
           android:id="@+id/edit_name"
           app:showAsAction="never"/>
