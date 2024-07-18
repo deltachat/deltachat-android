@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent">
@@ -8,14 +10,32 @@
         android:id="@+id/background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:ignore="ContentDescription"
-        android:scaleType="centerCrop" />
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
 
 	<com.caverock.androidsvg.SVGImageView
 		android:id="@+id/qrImage"
 		android:layout_width="match_parent"
-		android:layout_height="match_parent"
+        android:layout_height="0dp"
 		android:layout_gravity="center"
-		android:contentDescription="@string/qrscan_title" />
+        android:contentDescription="@string/qrscan_title"
+        app:layout_constraintBottom_toTopOf="@id/copy_link_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</RelativeLayout>
+    <Button
+        android:id="@+id/copy_link_button"
+        style="@style/ButtonPrimary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        android:text="@string/copy_invite_link"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
