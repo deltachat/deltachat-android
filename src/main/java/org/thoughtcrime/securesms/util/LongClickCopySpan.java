@@ -58,14 +58,18 @@ public class LongClickCopySpan extends ClickableSpan {
         String addr = prepareUrl(url);
         Activity activity = (Activity) widget.getContext();
         DcContext dcContext = DcHelper.getContext(activity);
-        DcContact contact = dcContext.getContact(dcContext.createContact(null, addr));
-        if (contact.getId() != 0 && !contact.isBlocked() && dcContext.getChatIdByContactId(contact.getId()) != 0) {
+        int contactId = dcContext.lookupContactIdByAddr(addr);
+        DcContact contact = (contactId != 0)? dcContext.getContact(contactId) : null;
+        if (contact != null && !contact.isBlocked() && dcContext.getChatIdByContactId(contactId) != 0) {
           openChat(activity, contact);
+        } else if (contact != null && dcContext.isChatmail()) {
+          DcHelper.showEncryptionRequiredDialog(activity, addr);
         } else {
+          String nameNAddr = contact != null ? addr : contact.getNameNAddr();
           new AlertDialog.Builder(activity)
-                  .setMessage(activity.getString(R.string.ask_start_chat_with, contact.getNameNAddr()))
+                  .setMessage(activity.getString(R.string.ask_start_chat_with, nameNAddr))
                   .setPositiveButton(android.R.string.ok, (dialog, which) -> {
-                    openChat(activity, contact);
+                    openChat(activity, contact == null? dcContext.getContact(dcContext.createContact(null, addr)) : contact);
                   })
                   .setNegativeButton(R.string.cancel, null)
                   .show();
