@@ -245,7 +245,7 @@
     <string name="menu_delete_messages">Видалити повідомлення</string>
     <string name="delete_contact">Видалити контакт</string>
     <string name="menu_delete_location">Видалити це місце?</string>
-    <string name="menu_message_details">Деталі повідомлення</string>
+    <string name="menu_message_details">Інформація про повідомлення</string>
     <string name="menu_copy_to_clipboard">Копіювати в буфер обміну</string>
     <string name="menu_copy_selection_to_clipboard">Скопіювати позначене</string>
     <string name="menu_copy_link_to_clipboard">Скопіювати посилання</string>
@@ -536,7 +536,7 @@
     <string name="multidevice_this_creates_a_qr_code">Це створить QR-код, який другий пристрій може сканувати, щоб скопіювати обліковий запис.</string>
     <string name="multidevice_install_dc_on_other_device">Установіть Delta Chat на Ваш інший пристрій (https://get.delta.chat)</string>
     <!-- "I Already Have a Profile / Add as Second Device” should be the same text as defined by the keys onboarding_alternative_logins and multidevice_receiver_title -->
-    <string name="multidevice_tap_scan_on_other_device">Запустіть Delta Chat, торкніться \"У мене вже є логін / Додати як другий пристрій\" і відскануйте код, показаний тут</string>
+    <string name="multidevice_tap_scan_on_other_device">Запустіть Delta Chat, торкніться \"Я вже маю профіль / Додати як другий пристрій\" і відскануйте код, показаний тут</string>
     <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and/or address eg. "Scan to set up second device for Alice (alice@example.org)" -->
     <string name="multidevice_qr_subtitle">Скануйте, щоб налаштувати другий пристрій %1$s</string>
     <string name="multidevice_receiver_title">Додати як другий пристрій</string>
@@ -833,9 +833,11 @@
     <string name="autodel_server_ask">Ви хочете видалити %1$dповідомлень зараз і всі нові повідомлення \"%2$s\" в майбутньому?\n\n⚠️ Сюди входять електронні листи, медіа та \"Збережені повідомлення\" у всіх папках сервера\n\n⚠️ Не використовуйте цю функцію, якщо Ви хочете зберегти дані на сервері\n\n⚠️ Не використовуйте цю функцію, якщо користуєтеся ще й іншими поштовими клієнтами крім Delta Chat</string>
     <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
     <string name="autodel_server_enabled_hint">Це стосується повідомлень електронної пошти, медіа та \"Збережених повідомлень\" у всіх серверних папках. Не використовуйте цю функцію, якщо хочете зберегти дані на сервері або якщо користуєтесь іншими клієнтами електронної пошти крім Delta Chat.</string>
+    <string name="autodel_server_warn_multi_device_title">Увімкнути одномоментне видалення</string>
+    <string name="autodel_server_warn_multi_device">Якщо ви ввімкнули одномоментне видалення, ви не зможете використовувати кілька пристроїв у цьому профілі.</string>
     <string name="autodel_confirm">Я все розумію, видалити всі повідомлення</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
-    <string name="autodel_at_once">Одразу</string>
+    <string name="autodel_at_once">Відразу після завантаження</string>
     <string name="after_30_seconds">Через 30 секунд</string>
     <string name="after_1_minute">Через 1 хвилину</string>
     <string name="after_5_minutes">Через 5 хвилин</string>
@@ -1095,7 +1097,7 @@
     <string name="select_group_image_desktop">Вибрати зображення групи</string>
     <string name="export_backup_desktop">Експорт резервної копії</string>
     <string name="autocrypt_correct_desktop">Налаштування Autocrypt успішно передані!</string>
-    <string name="forget_login_confirmation_desktop">Видалити цей обліковий запис? При цьому будуть видалені всі дані, включно з параметрами наскрізного шифрування, списками контактів, чатами, повідомленнями та медіафайлами. Цю дію не можна буде скасувати.</string>
+    <string name="forget_login_confirmation_desktop">Видалити цей профіль? Все буде видалено, включно з усіма вашими налаштуваннями, контактами, чатами, повідомленнями та медіа. Цю дію неможливо скасувати.</string>
     <!-- deprecated -->
     <string name="account_info_hover_tooltip_desktop2">E-Mail: %1$s\nРозмір: %2$s\nІдентиф. аккаунту: %3$s</string>
     <string name="message_detail_sent_desktop">надіслано</string>

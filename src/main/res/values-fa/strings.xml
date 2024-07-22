@@ -56,6 +56,7 @@
     <string name="show_full_message">نمایش پیام کامل...</string>
     <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
     <string name="mark_all_as_read">همه را خوانده شده بزن</string>
+    <string name="mark_as_read">علامت زدن به عنوان خوانده شده</string>
     <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
     <string name="mark_as_read_short">خوانده شد</string>
     <!-- Placeholder text when something is loading -->
@@ -199,6 +200,8 @@
     <!-- menu labels (or icon, buttons...) -->
     <string name="menu_new_contact">مخاطب جدید</string>
     <string name="menu_new_classic_contact">اضافه کردن مخاطب به صورت دستی</string>
+    <string name="new_classic_contact_explain">مخاطبینی که دستی اضافه شده‌اند می توانند برای ارسال پیام به حساب ایمیل معمولی
+ استفاده شوند و رمزگذاری سرتاسر آنها تضمین نمی‌شود.</string>
     <string name="menu_new_chat">گپ جدید</string>
     <string name="menu_new_group">گروه جدید</string>
     <!-- consider keeping the term "broadcast" as in WhatsApp or Telegram -->
@@ -230,7 +233,7 @@
     <string name="menu_copy_image_to_clipboard">رونوشت گرفتن از تصویر</string>
     <string name="menu_copy_email_to_clipboard">کپی کردن رایانامه</string>
     <string name="paste_from_clipboard">چسباندن از حافظه</string>
-    <string name="ask_copy_unopenable_link_to_clipboard">نمی توان لینک \"%1$d\" را در مرورگر باز کرد. می خواهید در عوض لینک را کپی کنید؟</string>
+    <string name="ask_copy_unopenable_link_to_clipboard">نمی توان لینک \"%1$d\" را در مرورگر باز کرد. آیا می خواهید در عوض لینک را کپی کنید؟</string>
     <string name="menu_forward">هدایت پیام</string>
     <string name="menu_reply">پاسخ به پیام</string>
     <string name="menu_mute">ساکت کردن اعلان</string>
@@ -544,12 +547,14 @@ https://meet.jit.si/$ROOM
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
     <string name="onboarding_alternative_logins">از قبل یک حساب کاربری دارم</string>
     <!-- Button, allows to log in to existing email accounts, setting ports, passwords and so on -->
-    <string name="manual_account_setup_option">ساخت حساب کاربری با حساب ایمیل عادی</string>
+    <string name="manual_account_setup_option">ساخت حساب کاربری با حساب ایمیل معمولی</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
-    <string name="instant_onboarding_title">حساب شما</string>
+    <string name="instant_onboarding_title">نمایه شما</string>
     <!-- Secondary, link-like button to open a page with other possible instances -->
     <string name="instant_onboarding_show_more_instances">استفاده از یک سرور دیگر</string>
     <string name="instant_onboarding_other_server">لیست سرورهای Chatmail</string>
+    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by contact name and/or address -->
+    <string name="instant_onboarding_contact_info">برای گفتگو با %1$s یک حساب کاربری کنید.</string>
     <string name="welcome_chat_over_email">گفتگو غیرمتمرکز و ایمن</string>
     <string name="scan_invitation_code">اسکن کردن کد دعوت</string>
     <string name="login_title">ورود</string>
@@ -599,7 +604,7 @@ https://meet.jit.si/$ROOM
     <string name="add_account">افزودن حساب کاربری</string>
     <string name="delete_account">حذف حساب کاربری</string>
     <string name="delete_account_ask">آیا از حذف حساب کاربری اطمینان دارید؟</string>
-    <string name="delete_account_explain_with_name">همه اطلاعات حساب مربوط به \"%s\" روی این دستگاه پاک می‌شود؛ که شامل تنظیمات رمزگذاری سرتاسر، مخاطبین، گفتگو ها پیام‌ها، رسانه ها می‌شود. این عمل قابل بازگشت نیست.</string>
+    <string name="delete_account_explain_with_name">همه اطلاعات حساب مربوط به «%s» روی این دستگاه پاک می‌شود. این شامل تنظیمات رمزگذاری سرتاسر، مخاطبین، گفتگو ها، پیام‌ها و رسانه ها می‌شود. این عمل قابل بازگردانی نیست.</string>
     <string name="unconfigured_account">حساب تنظیم نشده</string>
     <string name="unconfigured_account_hint">بازکردن حساب برای تنظیم آن</string>
     <string name="try_connect_now">اکنون برای اتصال تلاش کنید</string>
@@ -684,7 +689,7 @@ https://meet.jit.si/$ROOM
     <!-- the placeholder will be replaced by the name of the profile's email address -->
     <string name="pref_backup_export_x">برون‏بُرد(اکسپورت) %1$s</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
-    <string name="pref_backup_export_all">برون‏بُرد(اکسپورت) هر %1$d حساب </string>
+    <string name="pref_backup_export_all">برون‏بُرد (اکسپورت) همه%1$d حساب ها</string>
     <string name="pref_backup_export_start_button">شروع تهیه نسخه پشتیبان</string>
     <string name="pref_backup_written_to_x">نسخه پشتیبان با موفقیت در\"%1$s\" ذخیره شد.</string>
     <string name="pref_managekeys_menu_title">مدیریت کلیدها</string>

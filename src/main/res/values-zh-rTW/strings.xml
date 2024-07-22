@@ -438,6 +438,8 @@
     <string name="tab_gallery_empty_hint">本對話中共享的圖片和視訊會顯示在這裡。</string>
     <string name="tab_docs_empty_hint">本對話中共享的文件、音樂和其它檔案會顯示在這裡。</string>
     <string name="media_preview">媒體預覽</string>
+    <!-- option to show images in the gallery as square (instead of using correct width/height) -->
+    <string name="square_grid">方形網格</string>
     <string name="send_message">傳送訊息</string>
     <!-- Placeholder %1$s will be replaced by the name of the contact changing their address. Placeholders %2$s and %3$s will be replaced by old/new email addresses. -->
     <string name="aeap_addr_changed">%1$s 已變更他的地址從 %2$s 為 %3$s</string>
@@ -473,10 +475,14 @@
     <string name="part_of_total_used">使用了 %2$s 中的 %1$s</string>
 
 
+    <!-- Button, allows to log in to existing email accounts, setting ports, passwords and so on -->
+    <string name="manual_account_setup_option">經典電子郵件登入</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">你的個人檔案</string>
     <!-- Secondary, link-like button to open a page with other possible instances -->
     <string name="instant_onboarding_show_more_instances">使用其他伺服器</string>
+    <string name="instant_onboarding_other_server">列出 Chatmail 伺服器</string>
+    <string name="scan_invitation_code">掃描邀請碼</string>
     <string name="login_title">登入</string>
     <!-- for classic email, we use the classical term "Account" -->
     <string name="login_header">登入你的電子郵件帳戶</string>
@@ -610,6 +616,7 @@
     <string name="pref_show_emails_accepted_contacts">顯示已接受的聯絡人</string>
     <string name="pref_show_emails_all">所有郵件</string>
     <string name="pref_experimental_features">實驗性功能</string>
+    <string name="pref_on_demand_location_streaming">按需要位置串流</string>
     <string name="pref_developer_mode">開發者模式</string>
     <string name="pref_background_default">預設圖片</string>
     <string name="pref_background_default_color">預設顏色</string>
@@ -626,6 +633,7 @@
     <string name="emoji_search_results">搜尋結果</string>
     <string name="emoji_not_found">找不到表情符號</string>
     <string name="emoji_recent">最近已使用</string>
+    <string name="emoji_nature">動物與自然</string>
     <string name="emoji_activity">活動</string>
     <string name="emoji_objects">物件</string>
     <string name="emoji_symbols">符號</string>
@@ -674,6 +682,7 @@
     <!-- system messages -->
     <string name="systemmsg_read_receipt_subject">收執回條</string>
     <string name="systemmsg_read_receipt_body">這是訊息 %1$s 的收執回條，表示本訊息已經顯示在收件人的裝置上了，但不代表收件人已讀。</string>
+    <string name="systemmsg_subject_for_new_contact">來自 %1$s 的訊息</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
     <string name="group_name_changed_by_you">我群組名稱已從 %1$s 更改為 %2$s</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
@@ -707,6 +716,9 @@
     <string name="qrscan_fingerprint_label">指紋</string>
     <string name="qrshow_title">QR 圖碼邀請碼</string>
     <string name="qrshow_x_joining">%1$s 加入了。</string>
+    <string name="qrshow_x_has_joined_group">%1$s 已加入群組。</string>
+    <string name="qrshow_join_group_title">QR 圖碼邀請碼</string>
+    <string name="qrshow_join_contact_title">QR 圖碼邀請碼</string>
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by name and address eg. "Scan to chat with Alice (alice@example.org)" -->
     <string name="qrshow_join_contact_hint">掃描 QRCode 以新增 %1$s</string>
     <string name="please_enter_name">請輸入名稱。</string>
@@ -730,11 +742,13 @@
     <string name="ImageEditorHud_brush_marker">標記筆</string>
     <string name="ImageEditorHud_brush_highlight">螢光筆</string>
     <string name="ImageEditorHud_crop">裁切</string>
+    <string name="ImageEditorHud_flip">翻轉</string>
     <string name="ImageEditorHud_rotate">旋轉</string>
 
     <!-- dc_str_* resources -->
     <string name="encrypted_message">已加密的訊息</string>
 
+    <string name="welcome_desktop">歡迎來到 Delta Chat</string>
     <string name="global_menu_preferences_language_desktop">語言</string>
     <string name="global_menu_file_desktop">檔案</string>
     <string name="global_menu_file_quit_desktop">退出</string>
@@ -748,18 +762,23 @@
     <string name="global_menu_view_developer_desktop">開發者</string>
     <string name="global_menu_view_developer_tools_desktop">開發者工具</string>
     <string name="global_menu_help_desktop">幫助</string>
+    <string name="global_menu_help_contribute_desktop">在 GitHub 上作出貢獻</string>
+    <string name="global_menu_help_report_desktop">報告問題</string>
     <string name="global_menu_help_about_desktop">關於 Delta Chat</string>
     <string name="global_menu_file_open_desktop">開啟 Delta Chat</string>
     <string name="global_menu_minimize_to_tray">最小化</string>
+    <string name="write_message_desktop">撰寫訊息</string>
     <string name="encryption_info_title_desktop">加密資訊</string>
     <string name="delete_message_desktop">刪除訊息</string>
     <string name="more_info_desktop">更多資訊</string>
     <string name="remove_desktop">移除</string>
     <string name="save_desktop">儲存</string>
     <string name="name_desktop">名稱</string>
+    <string name="select_group_image_desktop">選擇群組圖片</string>
     <string name="export_backup_desktop">匯出備份</string>
     <string name="forget_login_confirmation_desktop">確定要刪除這裡的登入嗎? 所有的設定都會被刪除，包括端到端加密設定、聯絡人、對話、訊息、媒體檔案等。本動作不能復原。</string>
     <string name="message_detail_sent_desktop">已傳送</string>
+    <string name="message_detail_received_desktop">已收到</string>
     <string name="show_window">顯示視窗</string>
     <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
     <string name="keybindings">按鍵綁定</string>
@@ -773,6 +792,8 @@
 
     <string name="a11y_message_context_menu_btn_label">訊息動作</string>
     <string name="a11y_background_preview_label">壁紙預覽</string>
+    <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
+    <string name="stop_sharing_location">停止分享位置</string>
     <string name="open_settings">開啟設定</string>
     <!-- iOS connectivity view, Adjective, used eg. as "Notifications: Delayed" -->
     <string name="delayed">已延遲</string>
