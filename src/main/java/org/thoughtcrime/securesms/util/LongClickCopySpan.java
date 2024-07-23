@@ -62,7 +62,7 @@ public class LongClickCopySpan extends ClickableSpan {
         DcContact contact = (contactId != 0)? dcContext.getContact(contactId) : null;
         if (contact != null && !contact.isBlocked() && dcContext.getChatIdByContactId(contactId) != 0) {
           openChat(activity, contact);
-        } else if (contact != null && dcContext.isChatmail()) {
+        } else if (contact == null && dcContext.isChatmail()) {
           DcHelper.showEncryptionRequiredDialog(activity, addr);
         } else {
           String nameNAddr = contact != null ? contact.getNameNAddr() : addr;
