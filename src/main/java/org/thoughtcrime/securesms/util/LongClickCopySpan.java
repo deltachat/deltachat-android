@@ -65,7 +65,7 @@ public class LongClickCopySpan extends ClickableSpan {
         } else if (contact != null && dcContext.isChatmail()) {
           DcHelper.showEncryptionRequiredDialog(activity, addr);
         } else {
-          String nameNAddr = contact != null ? addr : contact.getNameNAddr();
+          String nameNAddr = contact != null ? contact.getNameNAddr() : addr;
           new AlertDialog.Builder(activity)
                   .setMessage(activity.getString(R.string.ask_start_chat_with, nameNAddr))
                   .setPositiveButton(android.R.string.ok, (dialog, which) -> {
