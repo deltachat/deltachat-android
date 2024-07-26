@@ -58,7 +58,6 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter
   private final @NonNull Context              context;
   private final @NonNull DcContext            dcContext;
   private @NonNull int[]                      dcContactList = new int[0];
-  private String                              query;
   private final boolean                       multiSelect;
   private final boolean                       longPressSelect;
   private final LayoutInflater                li;
@@ -318,7 +317,6 @@ public class ContactSelectionListAdapter extends RecyclerView.Adapter
 
   public void changeData(DcContactsLoader.Ret loaderRet) {
     this.dcContactList = loaderRet==null? new int[0] : loaderRet.ids;
-    this.query = loaderRet==null? null : loaderRet.query;
     recordCache.clear();
     notifyDataSetChanged();
   }
