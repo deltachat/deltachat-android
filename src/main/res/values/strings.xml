@@ -622,6 +622,7 @@
     <string name="login_error_cannot_login">Cannot login as \"%1$s\". Please check if the e-mail address and the password are correct.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Accept invalid certificates</string>
+    <!-- deprecated -->
     <string name="used_settings">Used settings:</string>
     <string name="switch_account">Switch Profile</string>
     <string name="add_account">Add Profile</string>
