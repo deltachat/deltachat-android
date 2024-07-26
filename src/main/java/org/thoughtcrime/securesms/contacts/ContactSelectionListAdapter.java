@@ -49,14 +49,7 @@ import java.util.Set;
  */
 public class ContactSelectionListAdapter extends RecyclerView.Adapter
 {
-  private final static String TAG = ContactSelectionListAdapter.class.getSimpleName();
-
   private static final int VIEW_TYPE_CONTACT = 0;
-  private static final int VIEW_TYPE_DIVIDER = 1;
-
-  private final static int STYLE_ATTRIBUTES[] = new int[]{R.attr.contact_selection_push_user,
-                                                          R.attr.contact_selection_lay_user};
-
   private static final int MAX_CACHE_SIZE = 100;
 
   private final Map<Integer,SoftReference<DcContact>> recordCache =
