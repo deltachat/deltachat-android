@@ -45,7 +45,6 @@ import android.util.Log;
 import android.util.Pair;
 import android.view.KeyEvent;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -471,6 +470,11 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     if (isArchived()) {
       menu.findItem(R.id.menu_archive_chat).setTitle(R.string.menu_unarchive_chat);
     }
+
+
+    Util.redMenuItem(menu, R.id.menu_leave);
+    Util.redMenuItem(menu, R.id.menu_clear_chat);
+    Util.redMenuItem(menu, R.id.menu_delete_chat);
 
     try {
       MenuItem searchItem = menu.findItem(R.id.menu_search_chat);
