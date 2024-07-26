@@ -158,7 +158,6 @@ public class DcHelper {
     dcContext.setStockTranslation(23, context.getString(R.string.gif));
     dcContext.setStockTranslation(24, context.getString(R.string.encrypted_message));
     dcContext.setStockTranslation(29, context.getString(R.string.systemmsg_cannot_decrypt));
-    dcContext.setStockTranslation(31, context.getString(R.string.systemmsg_read_receipt_subject));
     dcContext.setStockTranslation(35, context.getString(R.string.contact_verified));
     dcContext.setStockTranslation(36, context.getString(R.string.contact_not_verified));
     dcContext.setStockTranslation(37, context.getString(R.string.contact_setup_changed));
