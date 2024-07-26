@@ -51,7 +51,6 @@ public class AudioSlidePlayer {
   private @NonNull  WeakReference<Listener> listener;
   private @Nullable SimpleExoPlayer         mediaPlayer;
   private @Nullable SimpleExoPlayer         durationCalculator;
-  private           long                    startTime;
 
   public synchronized static AudioSlidePlayer createFor(@NonNull Context context,
                                                         @NonNull AudioSlide slide,
@@ -116,7 +115,6 @@ public class AudioSlidePlayer {
 
     LoadControl loadControl = new DefaultLoadControl.Builder().setBufferDurationsMs(Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE).createDefaultLoadControl();
     this.mediaPlayer           = ExoPlayerFactory.newSimpleInstance(context, new DefaultRenderersFactory(context), new DefaultTrackSelector(), loadControl);
-    this.startTime             = System.currentTimeMillis();
 
     mediaPlayer.prepare(createMediaSource(slide.getUri()));
     mediaPlayer.setPlayWhenReady(true);
