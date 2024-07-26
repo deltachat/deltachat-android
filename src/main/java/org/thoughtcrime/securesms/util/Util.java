@@ -95,7 +95,7 @@ public class Util {
   public static void redMenuItem(Menu menu, int id) {
     MenuItem item = menu.findItem(id);
     SpannableString s = new SpannableString(item.getTitle());
-    s.setSpan(new ForegroundColorSpan(Color.RED), 0, s.length(), 0);
+    s.setSpan(new ForegroundColorSpan(0xffff0c16 /*typical "destructive red" for light/dark mode*/), 0, s.length(), 0);
     item.setTitle(s);
   }
 
