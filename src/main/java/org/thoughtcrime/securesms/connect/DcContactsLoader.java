@@ -37,7 +37,7 @@ public class DcContactsLoader extends AsyncLoader<DcContactsLoader.Ret> {
         DcContext dcContext = DcHelper.getContext(getContext());
         if (blockedContacts) {
             int[] blocked_ids = dcContext.getBlockedContacts();
-            return new DcContactsLoader.Ret(blocked_ids, query);
+            return new DcContactsLoader.Ret(blocked_ids);
         }
 
         int[] contact_ids = dcContext.getContacts(listflags, query);
@@ -58,16 +58,14 @@ public class DcContactsLoader extends AsyncLoader<DcContactsLoader.Ret> {
         int all_ids[] = new int[contact_ids.length + additional_items.length];
         System.arraycopy(additional_items, 0, all_ids, 0, additional_items.length);
         System.arraycopy(contact_ids, 0, all_ids, additional_items.length, contact_ids.length);
-        return new DcContactsLoader.Ret(all_ids, query);
+        return new DcContactsLoader.Ret(all_ids);
     }
 
     public class Ret {
         public final int[]  ids;
-        public final String query;
 
-        Ret(int[] ids, String query) {
+        Ret(int[] ids) {
             this.ids   = ids;
-            this.query = query;
         }
     }
 }
