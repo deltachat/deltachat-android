@@ -32,8 +32,11 @@ import android.os.Looper;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.TextUtils;
+import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.accessibility.AccessibilityManager;
 
 import androidx.annotation.NonNull;
@@ -87,6 +90,13 @@ public class Util {
                     Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
     return spanned;
+  }
+
+  public static void redMenuItem(Menu menu, int id) {
+    MenuItem item = menu.findItem(id);
+    SpannableString s = new SpannableString(item.getTitle());
+    s.setSpan(new ForegroundColorSpan(0xffff0c16 /*typical "destructive red" for light/dark mode*/), 0, s.length(), 0);
+    item.setTitle(s);
   }
 
   public static @NonNull int[] appendInt(@Nullable int[] cur, int val) {

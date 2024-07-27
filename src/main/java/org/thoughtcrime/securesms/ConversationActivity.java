@@ -45,7 +45,6 @@ import android.util.Log;
 import android.util.Pair;
 import android.view.KeyEvent;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -440,10 +439,9 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   @Override
   public boolean onPrepareOptionsMenu(Menu menu) {
-    MenuInflater inflater = this.getMenuInflater();
     menu.clear();
 
-    inflater.inflate(R.menu.conversation, menu);
+    getMenuInflater().inflate(R.menu.conversation, menu);
 
     if (dcChat.isSelfTalk() || dcChat.isBroadcast()) {
       menu.findItem(R.id.menu_mute_notifications).setVisible(false);
@@ -465,17 +463,18 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     if (isMultiUser()) {
       if (dcChat.canSend() && !dcChat.isBroadcast() && !dcChat.isMailingList()) {
-        inflater.inflate(R.menu.conversation_push_group_options, menu);
+        menu.findItem(R.id.menu_leave).setVisible(true);
       }
     }
 
-    inflater.inflate(R.menu.conversation_archive, menu);
     if (isArchived()) {
       menu.findItem(R.id.menu_archive_chat).setTitle(R.string.menu_unarchive_chat);
     }
 
-    inflater.inflate(R.menu.conversation_clear, menu);
-    inflater.inflate(R.menu.conversation_delete, menu);
+
+    Util.redMenuItem(menu, R.id.menu_leave);
+    Util.redMenuItem(menu, R.id.menu_clear_chat);
+    Util.redMenuItem(menu, R.id.menu_delete_chat);
 
     try {
       MenuItem searchItem = menu.findItem(R.id.menu_search_chat);
