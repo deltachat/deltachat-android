@@ -3,7 +3,6 @@ package org.thoughtcrime.securesms.util;
 import android.app.Activity;
 import android.content.Context;
 import android.net.Uri;
-import android.util.Log;
 
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMsg;
@@ -11,7 +10,6 @@ import com.b44t.messenger.DcMsg;
 import org.thoughtcrime.securesms.ConversationListRelayingActivity;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.PartAuthority;
-import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 
 import java.io.FileOutputStream;
 import java.io.InputStream;
@@ -26,7 +24,6 @@ import static org.thoughtcrime.securesms.util.RelayUtil.isSharing;
 import static org.thoughtcrime.securesms.util.RelayUtil.resetRelayingMessageContent;
 
 public class SendRelayedMessageUtil {
-  private static final String TAG = SendRelayedMessageUtil.class.getSimpleName();
 
   public static void immediatelyRelay(Activity activity, int chatId) {
     immediatelyRelay(activity, new Long[]{(long) chatId});
@@ -73,15 +70,6 @@ public class SendRelayedMessageUtil {
       }
       for (Uri uri : uris) {
         dcContext.sendMsg(chatId, createMessage(context, uri, null));
-      }
-    }
-  }
-
-  private static void cleanup(Activity activity) {
-    for (Uri uri : getSharedUris(activity)) {
-      if (uri != null && PersistentBlobProvider.isAuthority(activity, uri)) {
-        Log.i(TAG, "cleaning up " + uri);
-        PersistentBlobProvider.getInstance().delete(activity, uri);
       }
     }
   }
