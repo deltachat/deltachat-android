@@ -175,6 +175,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
     MenuItem item = menu.findItem(R.id.block_contact);
     if(item!=null) {
       item.setTitle(dcContext.getContact(contactId).isBlocked()? R.string.menu_unblock_contact : R.string.menu_block_contact);
+      Util.redMenuItem(menu, R.id.block_contact);
     }
 
     item = menu.findItem(R.id.menu_mute_notifications);
