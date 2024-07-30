@@ -86,6 +86,8 @@ public class QrShowFragment extends Fragment implements DcEventCenter.DcEventDel
             e.printStackTrace();
         }
 
+        view.findViewById(R.id.share_link_button).setOnClickListener((v) -> shareInviteURL());
+
         return view;
     }
 
