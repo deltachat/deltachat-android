@@ -268,7 +268,7 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity implement
     Intent composeIntent;
     if (addr != null) {
       composeIntent = new Intent(this, ConversationListActivity.class);
-      composeIntent.putExtra(ConversationListActivity.WARN_ADDR_EXTRA, addr);
+      composeIntent.putExtra(ConversationListActivity.WARN_CANNOT_ENCRYPT, addr);
       startActivity(composeIntent);
     } else if (chatId != -1) {
       composeIntent = getBaseShareIntent(ConversationActivity.class);
