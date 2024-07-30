@@ -483,6 +483,16 @@ public class DcHelper {
       .show();
   }
 
+  public static void showEncryptionRequiredDialog(Context context, String addr) {
+    new AlertDialog.Builder(context)
+      .setMessage(context.getString(R.string.encryption_required_for_new_contact, addr))
+      .setNeutralButton(R.string.learn_more, (d, w) -> openHelp(context, "#howtoe2ee"))
+      .setNegativeButton(R.string.qrscan_title, (d, w) -> context.startActivity(new Intent(context, QrActivity.class)))
+      .setPositiveButton(R.string.ok, null)
+      .setCancelable(true)
+      .show();
+  }
+
   public static void openHelp(Context context, String section) {
     Intent intent = new Intent(context, LocalHelpActivity.class);
     if (section != null) { intent.putExtra(LocalHelpActivity.SECTION_EXTRA, section); }
