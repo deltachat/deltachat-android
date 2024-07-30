@@ -55,13 +55,8 @@ public class QrCodeHandler {
                 showFingerPrintError(builder, nameAndAddress);
                 break;
 
-            case DcContext.DC_QR_ADDR:
-                if (dcContext.isChatmail()) {
-                    dcContext.deleteContact(qrParsed.getId());
-                    DcHelper.showEncryptionRequiredDialog(activity, nameAndAddress);
-                    return;
-                }
             case DcContext.DC_QR_FPR_OK:
+            case DcContext.DC_QR_ADDR:
                 showFingerprintOrQrSuccess(builder, qrParsed, nameAndAddress);
                 break;
 
