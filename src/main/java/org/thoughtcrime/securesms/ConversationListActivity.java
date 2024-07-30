@@ -81,6 +81,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
   public static final String CLEAR_NOTIFICATIONS = "clear_notifications";
   public static final String ACCOUNT_ID_EXTRA = "account_id";
   public static final String FROM_WELCOME   = "from_welcome";
+  public static final String WARN_CANNOT_ENCRYPT = "warn_cannot_encrypt";
 
   private ConversationListFragment conversationListFragment;
   public TextView                  title;
@@ -236,6 +237,11 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     }
     if (accountId != dcContext.getAccountId()) {
       AccountManager.getInstance().switchAccountAndStartActivity(this, accountId);
+    }
+
+    String warnAddr = getIntent().getStringExtra(WARN_CANNOT_ENCRYPT);
+    if (!TextUtils.isEmpty(warnAddr)) {
+      DcHelper.showEncryptionRequiredDialog(this, warnAddr);
     }
 
     refreshAvatar();
