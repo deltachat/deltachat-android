@@ -21,19 +21,19 @@
         android:layout_height="0dp"
 		android:layout_gravity="center"
         android:contentDescription="@string/qrscan_title"
-        app:layout_constraintBottom_toTopOf="@id/copy_link_button"
+        app:layout_constraintBottom_toTopOf="@id/share_link_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/copy_link_button"
+        android:id="@+id/share_link_button"
         style="@style/ButtonPrimary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:paddingLeft="24dp"
         android:paddingRight="24dp"
-        android:text="@string/copy_invite_link"
+        android:text="@string/share_invite_link"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
