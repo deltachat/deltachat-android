@@ -392,9 +392,6 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
       case R.id.menu_global_map:
         WebxdcActivity.openMaps(this, 0);
         return true;
-      case R.id.menu_switch_account:
-        AccountManager.getInstance().showSwitchAccountMenu(this);
-        return true;
       case android.R.id.home:
         onBackPressed();
         return true;
