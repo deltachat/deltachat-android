@@ -53,11 +53,6 @@ public class AccountSelectionListAdapter extends RecyclerView.Adapter
           clickListener.onItemClick(getView());
         }
       });
-      getView().getDeleteBtn().setOnClickListener(view -> {
-        if (clickListener != null) {
-          clickListener.onDeleteButtonClick(getView().getAccountId());
-        }
-      });
     }
 
     public AccountSelectionListItem getView() {
@@ -121,7 +116,6 @@ public class AccountSelectionListAdapter extends RecyclerView.Adapter
 
   public interface ItemClickListener {
     void onItemClick(AccountSelectionListItem item);
-    void onDeleteButtonClick(int accountId);
   }
 
   public void changeData(int[] ids, int selectedAccountId) {

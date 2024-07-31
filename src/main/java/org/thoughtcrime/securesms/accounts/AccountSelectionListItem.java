@@ -31,7 +31,6 @@ public class AccountSelectionListItem extends LinearLayout {
   private TextView        nameView;
   private ImageView       unreadIndicator;
   private ImageView       checkbox;
-  private ImageButton     deleteBtn;
 
   private int           accountId;
 
@@ -52,9 +51,7 @@ public class AccountSelectionListItem extends LinearLayout {
     this.nameView          = findViewById(R.id.name);
     this.unreadIndicator   = findViewById(R.id.unread_indicator);
     this.checkbox          = findViewById(R.id.checkbox);
-    this.deleteBtn         = findViewById(R.id.delete);
 
-    deleteBtn.setColorFilter(DynamicTheme.isDarkTheme(getContext())? Color.WHITE : Color.BLACK);
     ViewUtil.setTextViewGravityStart(this.nameView, getContext());
   }
 
@@ -63,10 +60,8 @@ public class AccountSelectionListItem extends LinearLayout {
 
     Recipient recipient;
     if (accountId != DcContact.DC_CONTACT_ID_ADD_ACCOUNT) {
-      deleteBtn.setVisibility(selected? View.INVISIBLE : View.VISIBLE);
       recipient = new Recipient(getContext(), self, name);
     } else {
-      deleteBtn.setVisibility(View.GONE);
       recipient = null;
     }
     this.contactPhotoImage.setAvatar(glideRequests, recipient, false);
@@ -117,10 +112,6 @@ public class AccountSelectionListItem extends LinearLayout {
     } else {
       this.addrContainer.setVisibility(View.GONE);
     }
-  }
-
-  public ImageButton getDeleteBtn() {
-    return deleteBtn;
   }
 
   public int getAccountId() {
