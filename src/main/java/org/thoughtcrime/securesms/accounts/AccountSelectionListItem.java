@@ -82,7 +82,11 @@ public class AccountSelectionListItem extends LinearLayout {
     updateUnreadIndicator(unreadCount, isMuted);
     setText(name, addr);
 
-    fragment.registerForContextMenu(this);
+    if (!selected && accountId != DcContact.DC_CONTACT_ID_ADD_ACCOUNT) {
+      fragment.registerForContextMenu(this);
+    } else {
+      fragment.unregisterForContextMenu(this);
+    }
   }
 
   public void unbind(GlideRequests glideRequests) {

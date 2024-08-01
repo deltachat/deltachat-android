@@ -77,7 +77,7 @@ public class AccountSelectionListFragment extends DialogFragment
     // hack to make onContextItemSelected() work with DialogFragment,
     // see https://stackoverflow.com/questions/15929026/oncontextitemselected-does-not-get-called-in-a-dialogfragment
     MenuItem.OnMenuItemClickListener listener = item -> {
-      onContextItemSelected(item);
+      onContextItemSelected(item, v);
       return true;
     };
     for (int i = 0, n = menu.size(); i < n; i++) {
@@ -86,15 +86,11 @@ public class AccountSelectionListFragment extends DialogFragment
     // /hack
   }
 
-  @Override
-  public boolean onContextItemSelected(MenuItem item) {
-    AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+  private void onContextItemSelected(MenuItem item, View view) {
     switch (item.getItemId()) {
     case R.id.delete:
-      onDeleteAccount(((AccountSelectionListItem) info.targetView).getAccountId());
-      return true;
-    default:
-      return super.onContextItemSelected(item);
+      onDeleteAccount(((AccountSelectionListItem) view).getAccountId());
+      break;
     }
   }
 
