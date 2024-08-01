@@ -1,5 +1,6 @@
 package org.thoughtcrime.securesms.accounts;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -55,7 +56,7 @@ public class AccountSelectionListItem extends LinearLayout {
     ViewUtil.setTextViewGravityStart(this.nameView, getContext());
   }
 
-  public void bind(@NonNull GlideRequests glideRequests, int accountId, DcContact self, String name, String addr, int unreadCount, boolean selected, boolean isMuted) {
+  public void bind(@NonNull GlideRequests glideRequests, int accountId, DcContact self, String name, String addr, int unreadCount, boolean selected, boolean isMuted, AccountSelectionListFragment fragment) {
     this.accountId     = accountId;
 
     Recipient recipient;
@@ -80,6 +81,8 @@ public class AccountSelectionListItem extends LinearLayout {
 
     updateUnreadIndicator(unreadCount, isMuted);
     setText(name, addr);
+
+    fragment.registerForContextMenu(this);
   }
 
   public void unbind(GlideRequests glideRequests) {

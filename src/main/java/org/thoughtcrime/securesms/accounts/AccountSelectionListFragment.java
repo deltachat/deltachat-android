@@ -34,11 +34,10 @@ public class AccountSelectionListFragment extends DialogFragment
   @Override
   public void onActivityCreated(Bundle icicle) {
     super.onActivityCreated(icicle);
-    AccountSelectionListAdapter adapter = new AccountSelectionListAdapter(getActivity(),
+    AccountSelectionListAdapter adapter = new AccountSelectionListAdapter(this,
             GlideApp.with(getActivity()),
             new ListClickListener());
     recyclerView.setAdapter(adapter);
-    registerForContextMenu(recyclerView);
 
     DcAccounts accounts = DcHelper.getAccounts(getActivity());
     int[] accountIds = accounts.getAll();
@@ -74,6 +73,17 @@ public class AccountSelectionListFragment extends DialogFragment
   public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
     super.onCreateContextMenu(menu, v, menuInfo);
     requireActivity().getMenuInflater().inflate(R.menu.account_item_context, menu);
+
+    // hack to make onContextItemSelected() work with DialogFragment,
+    // see https://stackoverflow.com/questions/15929026/oncontextitemselected-does-not-get-called-in-a-dialogfragment
+    MenuItem.OnMenuItemClickListener listener = item -> {
+      onContextItemSelected(item);
+      return true;
+    };
+    for (int i = 0, n = menu.size(); i < n; i++) {
+      menu.getItem(i).setOnMenuItemClickListener(listener);
+    }
+    // /hack
   }
 
   @Override
