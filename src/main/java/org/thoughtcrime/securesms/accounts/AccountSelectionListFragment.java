@@ -8,7 +8,6 @@ import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -23,6 +22,7 @@ import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.AccountManager;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideApp;
+import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
 import static com.b44t.messenger.DcContact.DC_CONTACT_ID_ADD_ACCOUNT;
@@ -73,6 +73,8 @@ public class AccountSelectionListFragment extends DialogFragment
   public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
     super.onCreateContextMenu(menu, v, menuInfo);
     requireActivity().getMenuInflater().inflate(R.menu.account_item_context, menu);
+
+    Util.redMenuItem(menu, R.id.delete);
 
     // hack to make onContextItemSelected() work with DialogFragment,
     // see https://stackoverflow.com/questions/15929026/oncontextitemselected-does-not-get-called-in-a-dialogfragment
