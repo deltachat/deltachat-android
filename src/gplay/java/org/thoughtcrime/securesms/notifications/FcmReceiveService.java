@@ -92,23 +92,6 @@ public class FcmReceiveService extends FirebaseMessagingService {
     return prefixedToken;
   }
 
-  public static void deleteToken() {
-    if (prefixedToken == null) {
-      Log.i(TAG, "FCM not registered yet, no token to delete");
-      return;
-    }
-
-    Util.runOnAnyBackgroundThread(() -> {
-      try {
-        Tasks.await(FirebaseMessaging.getInstance().deleteToken());
-        prefixedToken = null;
-        Log.i(TAG, "FCM token deleted for " + BuildConfig.APPLICATION_ID);
-      } catch (Exception e) {
-        Log.e(TAG, "cannot delete FCM token for " + BuildConfig.APPLICATION_ID + ": " + e);
-      }
-    });
-  }
-
   @Override
   public void onMessageReceived(@NonNull RemoteMessage remoteMessage) {
     Log.i(TAG, "FCM push notification received");
