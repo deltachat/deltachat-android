@@ -228,12 +228,8 @@ public class ApplicationContext extends MultiDexApplication {
             fetchWorkRequest);
     AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
 
-    if (BuildConfig.USE_PLAY_SERVICES) {
-      if (Prefs.isPushEnabled(this)) {
-        FcmReceiveService.register(this);
-      } else {
-        Log.i(TAG, "FCM disabled in user settings");
-      }
+    if (Prefs.isPushEnabled(this)) {
+      FcmReceiveService.register(this);
     } else {
       Log.i(TAG, "FCM disabled at build time");
     }

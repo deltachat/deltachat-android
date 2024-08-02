@@ -168,7 +168,7 @@ public class Prefs {
   }
 
   public static boolean isPushEnabled(Context context) {
-      return BuildConfig.USE_PLAY_SERVICES && getBooleanPreference(context, "pref_push_enabled", true);
+      return BuildConfig.USE_PLAY_SERVICES;
   }
 
   public static boolean isHardCompressionEnabled(Context context) {
