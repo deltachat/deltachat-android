@@ -1,5 +1,26 @@
 # Delta Chat Android Changelog
 
+## v1.46.8
+2024-08
+
+* search non-english messages case-insensitive
+* display attached contact's names in summaries and quotes
+* protect From: and To: metadata where possible
+* do not reveal sender's language metadata in read receipts
+* allow importing contacts exported by Proton Mail
+* no unarchiving of groups on member removal messages
+* improve caching of DNS results
+* focus on name for QR code titles
+* report first error instead of the last on connection failure
+* fix: keep "chatmail" state after failed reconfiguration
+* fix issues with failed backup imports
+* fix: avoid group creation on member removal messages
+* fix downloading partially downloaded messages
+* fix various networking bugs
+* update translations and local help
+* update to core 1.142.2
+
+
 ## v1.46.7
 2024-07
 
