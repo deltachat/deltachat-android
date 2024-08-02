@@ -73,27 +73,6 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
 
     initializeRingtoneSummary(findPreference(Prefs.RINGTONE_PREF));
 
-    CheckBoxPreference usePushService = this.findPreference("pref_push_enabled");
-    usePushService.setChecked(Prefs.isPushEnabled(getContext()));
-    usePushService.setEnabled(BuildConfig.USE_PLAY_SERVICES);
-    usePushService.setOnPreferenceChangeListener((preference, newValue) -> {
-      final boolean enabled = (Boolean) newValue;
-      if (!enabled) {
-        new AlertDialog.Builder(getContext())
-          .setMessage(R.string.pref_push_ask_disable)
-          .setPositiveButton(R.string.ok, (dialogInterface, i) -> {
-            ((CheckBoxPreference)preference).setChecked(false);
-          })
-          .setNegativeButton(R.string.cancel, null)
-          .setNeutralButton(R.string.learn_more, (dialogInterface, i) -> {
-            DcHelper.openHelp(getActivity(), "#instant-delivery");
-          })
-          .show();
-        return false;
-      }
-      return true;
-    });
-
     ignoreBattery = this.findPreference("pref_ignore_battery_optimizations");
     ignoreBattery.setVisible(needsIgnoreBatteryOptimizations());
     ignoreBattery.setOnPreferenceChangeListener((preference, newValue) -> {
@@ -135,18 +114,6 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
     // update ignoreBattery in onResume() to reflects changes done in the system settings
     ignoreBattery.setChecked(isIgnoringBatteryOptimizations());
     notificationsEnabled.setChecked(!dcContext.isMuted());
-  }
-
-  @Override
-  public void onPause() {
-    super.onPause();
-
-    // we delay applying token changes to avoid changes and races if the user is just playing around
-    if (Prefs.isPushEnabled(getContext()) && FcmReceiveService.getToken() == null) {
-      FcmReceiveService.register(getContext());
-    } else if(!Prefs.isPushEnabled(getContext()) && FcmReceiveService.getToken() != null) {
-      FcmReceiveService.deleteToken();
-    }
   }
 
   @Override

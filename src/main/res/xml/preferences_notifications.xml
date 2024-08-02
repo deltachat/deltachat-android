@@ -51,12 +51,6 @@
 
         <PreferenceCategory android:title="@string/pref_instant_delivery">
                 <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
-                    android:key="pref_push_enabled"
-                    android:defaultValue="true"
-                    android:title="@string/pref_push_notifications"
-                    android:summary="@string/pref_push_notifications_explain"/>
-
-                <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
                     android:key="pref_ignore_battery_optimizations"
                     android:defaultValue="false"
                     android:title="@string/pref_background_notifications"

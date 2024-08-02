@@ -1146,11 +1146,14 @@
 
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="pref_instant_delivery">Instant Delivery</string>
+    <!-- deprecated -->
     <string name="pref_push_notifications">Use Push Service</string>
+    <!-- deprecated -->
     <string name="pref_push_notifications_explain">Reliable Push Notifications for Chatmail-Servers</string>
+    <!-- deprecated -->
     <string name="pref_push_ask_disable">Disable using Push Service?\n\nThis may result in delayed notifications.</string>
     <string name="pref_background_notifications">Use Background Connection</string>
-    <string name="pref_background_notifications_explain">Requires ignored battery optimizations, use if Push Service is unavailable</string>
+    <string name="pref_background_notifications_explain">Requires ignored battery optimizations, use if notifications don\'t arrive on time</string>
     <string name="pref_reliable_service">Force Background Connection</string>
     <string name="pref_reliable_service_explain">Causes a permanent notification</string>
 
