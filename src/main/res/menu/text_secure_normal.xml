@@ -7,6 +7,12 @@
           android:icon="@drawable/baseline_qr_code_24"
           app:showAsAction="always"/>
 
+    <item android:title="@string/invite_friends"
+          android:id="@+id/menu_invite_friends" />
+
+    <item android:title="@string/menu_new_chat"
+          android:id="@+id/menu_new_chat" />
+
     <item android:title="@string/menu_all_media"
         android:id="@+id/menu_all_media" />
 
@@ -17,8 +23,5 @@
 
     <item android:title="@string/menu_settings"
           android:id="@+id/menu_settings" />
-
-    <item android:title="@string/invite_friends"
-          android:id="@+id/menu_invite_friends" />
 
 </menu>

@@ -386,6 +386,9 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     super.onOptionsItemSelected(item);
 
     switch (item.getItemId()) {
+      case R.id.menu_new_chat:
+        createChat();
+        return true;
       case R.id.menu_invite_friends:
         shareInvite();
         return true;
@@ -476,6 +479,14 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
       handleResetRelaying();
       finish();
     } else super.onBackPressed();
+  }
+
+  private void createChat() {
+    Intent intent = new Intent(this, NewConversationActivity.class);
+    if (isRelayingMessageContent(this)) {
+      acquireRelayMessageContent(this, intent);
+    }
+    startActivity(intent);
   }
 
   private void shareInvite() {
