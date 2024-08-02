@@ -622,6 +622,7 @@
     <string name="login_error_cannot_login">Het inloggen als ‘%1$s’ is mislukt. Controleer je e-mailadres en wachtwoord.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Ongeldige certificaten accepteren</string>
+    <!-- deprecated -->
     <string name="used_settings">Gebruikte instellingen:</string>
     <string name="switch_account">Ander account kiezen</string>
     <string name="add_account">Account toevoegen</string>
@@ -841,7 +842,9 @@
 
 
     <!-- system messages -->
+    <!-- deprecated -->
     <string name="systemmsg_read_receipt_subject">Leesbevestiging</string>
+    <!-- deprecated -->
     <string name="systemmsg_read_receipt_body">Het door jou verstuurde bericht, “%1$s”, heeft het scherm van de ontvanger bereikt.\n\nDit betekent echter niet dat het ook gelezen is.</string>
     <string name="systemmsg_cannot_decrypt">Dit bericht kan niet worden ontsleuteld.\n\n• Het kan helpen dit bericht te beantwoorden en de afzender te vragen het opnieuw te versturen.\n\n• Als je Delta Chat of een andere e-mailapp opnieuw hebt geïnstalleerd, voeg het dan toe als tweede apparaat of importeer een reservekopie.</string>
     <string name="systemmsg_unknown_sender_for_chat">Dit gesprek bevat een onbekende afzender. Zie ‘Informatie’ voor meer informatie.</string>
@@ -1141,8 +1144,11 @@
 
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="pref_instant_delivery">Onmiddellijke bezorging</string>
+    <!-- deprecated -->
     <string name="pref_push_notifications">Push-afleverdienst gebruiken</string>
+    <!-- deprecated -->
     <string name="pref_push_notifications_explain">Betrouwbare pushmeldingen voor chatmailservers</string>
+    <!-- deprecated -->
     <string name="pref_push_ask_disable">Weet je zeker dat je de push-afleverdienst wilt uitschakelen?\n\nDit kan leiden tot vertraagde meldingen.</string>
     <string name="pref_background_notifications">Achtergrondverbinding gebruiken</string>
     <string name="pref_background_notifications_explain">Hiervoor is het verplicht dat accu-optimalisering wordt uitgeschakeld. Let op: gebruik alleen indien de push-afleverdienst niet beschikbaar is.</string>

@@ -491,6 +491,7 @@
     <string name="import_backup_no_backup_found">백업을 찾을 수 없습니다.\n\n\"%1$s\"에 백업을 복사하고 다시 시도하십시오. 또는 \"메시징 시작\"을 눌러 일반 설정을 계속하십시오.</string>
     <!-- Translators: %1$s will be replaced by the e-mail address -->
     <string name="login_error_cannot_login">\"%1$s\"에 로그인 할 수 없음. 이메일 주소와 비밀번호가 맞는지 확인하시오.</string>
+    <!-- deprecated -->
     <string name="used_settings">사용된 설정:</string>
     <string name="switch_account">계정 전환</string>
     <string name="add_account">계정 추가</string>
@@ -671,7 +672,9 @@
 
 
     <!-- system messages -->
+    <!-- deprecated -->
     <string name="systemmsg_read_receipt_subject">메시지 열림</string>
+    <!-- deprecated -->
     <string name="systemmsg_read_receipt_body">보낸 \"%1$s\" 메시지가 수신자의 화면에 표시되었습니다.\n\n이것은 내용이 읽혔다는 것을 보장하지 않습니다.</string>
     <string name="systemmsg_unknown_sender_for_chat">이 채팅의 발신자를 알 수 없습니다. 자세한 내용은 \'info\'를 확인하세요.</string>
     <string name="systemmsg_subject_for_new_contact">%1$s가 보낸 메시지</string>

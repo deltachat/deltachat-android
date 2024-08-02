@@ -350,6 +350,7 @@
     <string name="login_error_cannot_login">Impossìbile atzèdere comente \"%1$s\". pro paghere verìfica si s\'indiritzu de posta eletrònica e sa crae de intrada sunt curretos.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Atzetat tzertificados non vàlidos</string>
+    <!-- deprecated -->
     <string name="used_settings">Impostatziones impreadas:</string>
     <string name="switch_account">Càmbia contu</string>
     <string name="add_account">Annanghe unu contu</string>

@@ -403,6 +403,7 @@
     <string name="login_error_cannot_login">Kan inte logga in som \"%1$s\". Kontrollera om e-postadressen och lösenordet är korrekt.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Acceptera ogiltiga certifikat</string>
+    <!-- deprecated -->
     <string name="used_settings">Använda inställningar:</string>
     <string name="switch_account">Byt konto</string>
     <string name="add_account">Lägg till konto</string>
@@ -543,7 +544,9 @@
 
 
     <!-- system messages -->
+    <!-- deprecated -->
     <string name="systemmsg_read_receipt_subject">Meddelande öppnat</string>
+    <!-- deprecated -->
     <string name="systemmsg_read_receipt_body">\"%1$s\" meddelandet du skickade visades på mottagarens skärm.\n\nDet är ingen garanti för att innehållet har lästs.</string>
     <string name="systemmsg_unknown_sender_for_chat">Okänd avsändare för denna chatt. Se info för fler detaljer.</string>
     <string name="systemmsg_subject_for_new_contact">Meddelande från %1$s</string>

@@ -542,6 +542,7 @@
     <string name="login_error_cannot_login">Не могу да се пријавим као „%1$s“. Проверите да ли су е-адреса и лозинка тачни.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Прихватите и неважеће сертификате</string>
+    <!-- deprecated -->
     <string name="used_settings">Поставке за корисника:</string>
     <string name="switch_account">Промени налог</string>
     <string name="add_account">Додај налог</string>
@@ -735,7 +736,9 @@
 
 
     <!-- system messages -->
+    <!-- deprecated -->
     <string name="systemmsg_read_receipt_subject">Порука је отворена</string>
+    <!-- deprecated -->
     <string name="systemmsg_read_receipt_body">Порука „%1$s“ коју сте послали била је приказана на екрану примаоца.\n\nОво није гаранција да је садржај прочитан.</string>
     <string name="systemmsg_unknown_sender_for_chat">Непознати пошиљалац за ово ћаскање. Погледајте „информације“ за више детаља.</string>
     <string name="systemmsg_subject_for_new_contact">Поруке од %1$s</string>

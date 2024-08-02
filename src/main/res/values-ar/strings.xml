@@ -161,6 +161,7 @@
     <string name="login_certificate_checks">التحقق مِن الشهادة</string>
     <string name="login_error_mail">يرجى إدخال عنوان بريد إلكتروني صالح</string>
     <string name="import_backup_title">استيراد نسخة احتياطية</string>
+    <!-- deprecated -->
     <string name="used_settings">الإعدادات المُستَخدَمة:</string>
     <string name="delete_account">حذف الحساب</string>
     <!-- preferences -->

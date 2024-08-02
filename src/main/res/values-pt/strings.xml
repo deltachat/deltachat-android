@@ -323,7 +323,9 @@
 
 
     <!-- system messages -->
+    <!-- deprecated -->
     <string name="systemmsg_read_receipt_subject">Ler recibos</string>
+    <!-- deprecated -->
     <string name="systemmsg_read_receipt_body">Este é um recibo de confirmação de leitura da mensagem \"%1$s\".\n\nEsta mensagem foi exibida no dispositivo do destinatário, não necessariamente que o conteúdo foi lido.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
     <string name="group_name_changed_by_you">O nome do grupo mudou de \"%1$s\" para \"%2$s\" por mim.</string>

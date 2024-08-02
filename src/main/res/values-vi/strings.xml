@@ -570,6 +570,7 @@
     <string name="login_error_cannot_login">Không thể đăng nhập với tên \"%1$s\". Vui lòng kiểm tra xem địa chỉ e-mail và mật khẩu có đúng không.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Chấp nhận chứng chỉ không hợp lệ</string>
+    <!-- deprecated -->
     <string name="used_settings">Thiết đặt đã sử dụng:</string>
     <string name="switch_account">Chuyển đổi tài khoản</string>
     <string name="add_account">Thêm tài khoản</string>
@@ -773,7 +774,9 @@
 
 
     <!-- system messages -->
+    <!-- deprecated -->
     <string name="systemmsg_read_receipt_subject">Đã mở tin nhắn</string>
+    <!-- deprecated -->
     <string name="systemmsg_read_receipt_body">Tin nhắn \"%1$s\" bạn gửi đã được hiển thị trên màn hình của người nhận.\n\nĐiều này không đảm bảo rằng nội dung đã được đọc.</string>
     <string name="systemmsg_cannot_decrypt">Không thể giải mã tin nhắn này.\n\n• Bạn chỉ cần trả lời tin nhắn này và yêu cầu người gửi gửi lại tin nhắn là đủ.\n\n• Nếu bạn vừa cài đặt lại Delta Chat thì tốt nhất bạn nên cài đặt lại thiết lập lại Delta Chat ngay bây giờ và chọn "Thêm làm thiết bị thứ hai" hoặc nhập bản sao lưu.</string>
     <string name="systemmsg_unknown_sender_for_chat">Người gửi không xác định cho cuộc trò chuyện này. Xem \'thông tin\' để biết thêm chi tiết.</string>
