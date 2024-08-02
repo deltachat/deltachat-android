@@ -652,6 +652,7 @@
     <string name="login_error_cannot_login">Не вдалося увійти як \"%1$s\". Будь ласка, перевірте правильність адреси електронної пошти та паролю.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Приймати недійсні сертифікати</string>
+    <!-- deprecated -->
     <string name="used_settings">Використані налаштування:</string>
     <string name="switch_account">Перемкнути обліковий запис</string>
     <string name="add_account">Додати обліковий запис</string>
@@ -871,7 +872,9 @@
 
 
     <!-- system messages -->
+    <!-- deprecated -->
     <string name="systemmsg_read_receipt_subject">Сповіщення про прочитання.</string>
+    <!-- deprecated -->
     <string name="systemmsg_read_receipt_body">Це підтвердження того, що повідомлення \"%1$s\" було відкрито на пристрої одержувача. Дане підтвердження не означає, що повідомлення було прочитано.</string>
     <string name="systemmsg_cannot_decrypt">Це повідомлення неможливо розшифрувати.\n\n- Можливо, допоможе просто відповісти на це повідомлення і попросити відправника надіслати повідомлення ще раз.\n\n- Якщо ви щойно переінсталювали Delta Chat, то краще за все переналаштувати Delta Chat зараз і вибрати \"Додати як другий пристрій\" або імпортувати резервну копію.</string>
     <string name="systemmsg_unknown_sender_for_chat">Невідомий відправник для цього чату. Дивіться \"Інформацію\" для деталей.</string>
@@ -1171,8 +1174,11 @@
 
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="pref_instant_delivery">Миттєва доставка</string>
+    <!-- deprecated -->
     <string name="pref_push_notifications">Використовувати Push-сервіс</string>
+    <!-- deprecated -->
     <string name="pref_push_notifications_explain">Надійні push-сповіщення для Chatmail-серверів</string>
+    <!-- deprecated -->
     <string name="pref_push_ask_disable">Вимкнути використання Push-сервісу?\n\nЦе може призвести до затримки сповіщень.</string>
     <string name="pref_background_notifications">Використовувати фонове підключення</string>
     <string name="pref_background_notifications_explain">Потребує ігнорування оптимізації батареї, використовуйте, якщо Push-сервіс недоступний</string>

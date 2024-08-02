@@ -394,6 +394,7 @@
     <string name="login_error_cannot_login">%1$sとしてログインできません。メールアドレスとパスワードを確認してください。</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">無効な証明書を受け入れます</string>
+    <!-- deprecated -->
     <string name="used_settings">使用した設定：</string>
     <string name="switch_account">アカウントを切り替え</string>
     <string name="add_account">アカウントを追加</string>
@@ -551,6 +552,7 @@
     <string name="autocrypt_continue_transfer_title">自動暗号化設定用ﾒｯｾｰｼﾞ</string>
     <string name="autocrypt_continue_transfer_retry">再試行</string>
     <!-- system messages -->
+    <!-- deprecated -->
     <string name="systemmsg_read_receipt_subject">既読</string>
     <string name="systemmsg_subject_for_new_contact">%1$sさんからのメッセージ</string>
     <string name="systemmsg_failed_sending_to">%1$sさんへのメッセージ送信に失敗しました。</string>

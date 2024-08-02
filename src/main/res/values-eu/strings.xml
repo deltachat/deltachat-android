@@ -311,6 +311,7 @@
     <string name="login_error_cannot_login">Ezin da \"%1$s\" bezala saioa hasi. Egiaztatu E-mail helbidea eta pasahitza zuzenak diren.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Onartu ziurtagiri baliogabeak</string>
+    <!-- deprecated -->
     <string name="used_settings">Erabilitako ezarpenak:</string>
     <string name="switch_account">Aldatu kontua</string>
     <string name="add_account">Gehitu kontua</string>
@@ -443,7 +444,9 @@
 
 
     <!-- system messages -->
+    <!-- deprecated -->
     <string name="systemmsg_read_receipt_subject">Irakurragiria</string>
+    <!-- deprecated -->
     <string name="systemmsg_read_receipt_body">Hau \"%1$s\" mezuaren irakurragiri bat da.\n\nHonek mezua jasotzailearen gailuan bistaratu dela esan nahi du, ez edukia irakurri dela.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
     <string name="group_name_changed_by_you">Nik: Taldearen izena \"%1$s\" izatetik \"%2$s\" izatera aldatu da</string>

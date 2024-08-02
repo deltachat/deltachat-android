@@ -652,6 +652,7 @@
     <string name="login_error_cannot_login">Nie można się zalogować jako „%1$s. Sprawdź, czy adres e-mail i hasło są poprawne.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Zaakceptuj nieprawidłowe certyfikaty</string>
+    <!-- deprecated -->
     <string name="used_settings">Użyte ustawienia:</string>
     <string name="switch_account">Przełącz konto</string>
     <string name="add_account">Dodaj konto</string>
@@ -871,7 +872,9 @@
 
 
     <!-- system messages -->
+    <!-- deprecated -->
     <string name="systemmsg_read_receipt_subject">Potwierdzenie odczytu</string>
+    <!-- deprecated -->
     <string name="systemmsg_read_receipt_body">To jest potwierdzenie odczytu dla wiadomości ”%1$s„.\n\nTo potwierdzenie odczytu tylko informuje, że wiadomość została wyświetlona na urządzeniu odbiorcy. Nie ma gwarancji, że odbiorca przeczytał treść wiadomości.</string>
     <string name="systemmsg_cannot_decrypt">Tej wiadomości nie można odszyfrować.\n\n• Możesz teraz pomóc odpowiadając po prostu na tą wiadomość i poprosić nadawcę o ponowne wysłanie wiadomości.\n\n• Jeśli właśnie ponownie zainstalowałeś Delta Chat, najlepiej będzie, jeśli ponownie skonfigurujesz Delta Chat teraz i wybierzesz „Dodaj jako drugie urządzenie” lub zaimportujesz kopię zapasową.</string>
     <string name="systemmsg_unknown_sender_for_chat">Nieznany nadawca tego czatu. Więcej szczegółów znajdziesz w sekcji „Informacje”.</string>
@@ -1171,8 +1174,11 @@
 
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="pref_instant_delivery">Natychmiastowe dostarczenie</string>
+    <!-- deprecated -->
     <string name="pref_push_notifications">Użyj usługi push</string>
+    <!-- deprecated -->
     <string name="pref_push_notifications_explain">Niezawodne powiadomienia push dla serwerów chatmail</string>
+    <!-- deprecated -->
     <string name="pref_push_ask_disable">Wyłączyć korzystanie z usługi Push?\n\nMoże to skutkować opóźnieniami w powiadomieniach.</string>
     <string name="pref_background_notifications">Użyj połączenia w tle</string>
     <string name="pref_background_notifications_explain">Wymaga zignorowania optymalizacji baterii. Użyj, jeśli usługa Push jest niedostępna</string>

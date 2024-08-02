@@ -598,6 +598,7 @@
     <string name="login_error_cannot_login">Connexion en tant que \"%1$s\" échouée. Vérifiez que votre adresse courriel et votre mot de passe sont corrects.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Accepter les certificats non valides</string>
+    <!-- deprecated -->
     <string name="used_settings">Paramètres utilisés :</string>
     <string name="switch_account">Changer de compte</string>
     <string name="add_account">Ajouter un compte</string>
@@ -801,7 +802,9 @@
 
 
     <!-- system messages -->
+    <!-- deprecated -->
     <string name="systemmsg_read_receipt_subject">Accusé de lecture</string>
+    <!-- deprecated -->
     <string name="systemmsg_read_receipt_body">Ceci est un accusé de lecture pour le message \"%1$s\".\n\nCela signifie que le message a été affiché sur l\'appareil du destinataire, pas forcément que le contenu ait été lu.</string>
     <string name="systemmsg_unknown_sender_for_chat">Expéditeur inconnu de cette discussion. Voir « Info » pour plus de détails.</string>
     <string name="systemmsg_subject_for_new_contact">Message de %1$s</string>

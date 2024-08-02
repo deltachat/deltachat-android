@@ -599,6 +599,7 @@ https://meet.jit.si/$ROOM
     <string name="login_error_cannot_login">نتوانست به عنوان «%1$s» وارد شود. لطفاً صحت نشانی رایانامه و گذرواژه را بررسی کنید. </string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">پذیرش گواهینامه‌های نامعتبر</string>
+    <!-- deprecated -->
     <string name="used_settings">تنظیمات استفاده شده:</string>
     <string name="switch_account">تغییر حساب کاربری</string>
     <string name="add_account">افزودن حساب کاربری</string>
@@ -812,7 +813,9 @@ https://meet.jit.si/$ROOM
 
 
     <!-- system messages -->
+    <!-- deprecated -->
     <string name="systemmsg_read_receipt_subject">پیام باز شد</string>
+    <!-- deprecated -->
     <string name="systemmsg_read_receipt_body">پیام\"%1$s\" که ارسال کرده بودید در ثفحه گیرنده نمایش داده شد\n\n. تضمینی وجود ندارد که محتوای پیام را خوانده باشد. </string>
     <string name="systemmsg_unknown_sender_for_chat">فرستنده در این گفت و گو ناشناس است. برای جزئیات بیشتر به \"اطلاعات\" مراجعه کنید.</string>
     <string name="systemmsg_subject_for_new_contact">پیام از%1$s</string>
@@ -1129,6 +1132,7 @@ GNU GPL ورژن ۳
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">دلتاچت میخواهد تصاویر را در آلبوم شما ذخیره کند.</string>
 
 
+    <!-- deprecated -->
     <string name="pref_push_notifications">استفاده از Push Service</string>
     <string name="pref_background_notifications">استفاده از اتصال پس زمینه</string>
     <string name="pref_reliable_service">اجبار کردن اتصال پس زمینه</string>

@@ -421,6 +421,7 @@
     <string name="login_error_cannot_login">Kan ikke logge ind som  \"%1$s\". Kontroller om e-mailadresse og adgangskode er korrekt.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Acceptér ugyldige certifikater</string>
+    <!-- deprecated -->
     <string name="used_settings">Benyttede indstillinger:</string>
     <string name="switch_account">Skift konto</string>
     <string name="add_account">Tilføj konto</string>
@@ -594,7 +595,9 @@
 
 
     <!-- system messages -->
+    <!-- deprecated -->
     <string name="systemmsg_read_receipt_subject">Besked åbnet</string>
+    <!-- deprecated -->
     <string name="systemmsg_read_receipt_body">Beskeden \"%1$s\" du har sendt blev vist på modtagerens skærm.\n\nDette er ikke en garanti for at indholdet blev læst.</string>
     <string name="systemmsg_unknown_sender_for_chat">Ukent afsender af denne chat. Se \'info\' for flere detaljer.</string>
     <string name="systemmsg_subject_for_new_contact">Besked fra %1$s</string>

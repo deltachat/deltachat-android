@@ -514,6 +514,7 @@
     <string name="login_error_cannot_login">Δεν είναι δυνατή η είσοδος ως \"%1$s\". Ελέγξτε εάν η διεύθυνση e-mail και ο κωδικός πρόσβασης είναι σωστά.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Αποδοχή μη έγκυρων πιστοποιητικών</string>
+    <!-- deprecated -->
     <string name="used_settings">Χρησιμοποιούμενες ρυθμίσεις:</string>
     <string name="switch_account">Αλλαγή λογαριασμού</string>
     <string name="add_account">Προσθήκη Λογαριασμού</string>
@@ -707,7 +708,9 @@
 
 
     <!-- system messages -->
+    <!-- deprecated -->
     <string name="systemmsg_read_receipt_subject">Το μήνυμα ανοίχτηκε</string>
+    <!-- deprecated -->
     <string name="systemmsg_read_receipt_body">Το μήνυμα \"%1$s\" που στείλατε εμφανίστηκε στην οθόνη του παραλήπτη.\n\nΑυτό δεν αποτελεί εγγύηση για την ανάγνωση του περιεχομένου.</string>
     <string name="systemmsg_unknown_sender_for_chat">Άγνωστος αποστολέας για αυτήν τη συνομιλία. Δείτε \"πληροφορίες\" για περισσότερες λεπτομέρειες.</string>
     <string name="systemmsg_subject_for_new_contact">Μήνυμα από τον/την %1$s</string>

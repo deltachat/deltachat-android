@@ -617,6 +617,7 @@
     <string name="login_error_cannot_login">S\’bëhet dot hyrja si “%1$s”. Ju lutemi, shihni nëse adresa email dhe fjalëkalimi janë të saktë.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Prano dëshmi të pavlefshme</string>
+    <!-- deprecated -->
     <string name="used_settings">Rregullime të përdorura:</string>
     <string name="switch_account">Ndërroni Llogari</string>
     <string name="add_account">Shtoni Llogari</string>
@@ -834,7 +835,9 @@
 
 
     <!-- system messages -->
+    <!-- deprecated -->
     <string name="systemmsg_read_receipt_subject">Mesazhi u hap</string>
+    <!-- deprecated -->
     <string name="systemmsg_read_receipt_body">Mesazhi “%1$s” që dërguat, u shfaq në ekranin e marrësit.\n\nKjo s’është garanci se lënda u lexua.</string>
     <string name="systemmsg_cannot_decrypt">Ky mesazh s’mund të shfshehtëzohet.\n\n• Mundet t’ju ndihë thjesht t’i përgjigjeni këtij mesazhi dhe t’i kërkoni dërguesit ta ridërgojë mesazhin.\n\n• Nëse sapo riinstaluat Delta Chat-in, atëherë më e mira është të riujdisni Delta Chat-in tani dhe të zgjidhni “Shtoje si pajisje të dytë”, ose të importoni një kopjeruajtje.</string>
     <string name="systemmsg_unknown_sender_for_chat">Dërgues i panjohur për këtë fjalosje. Për më tepër hollësi, shihni \'info\'.</string>
@@ -1132,7 +1135,9 @@
 
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="pref_instant_delivery">Dërgim i Menjëhershëm</string>
+    <!-- deprecated -->
     <string name="pref_push_notifications">Përdor Shërbim Push</string>
+    <!-- deprecated -->
     <string name="pref_push_ask_disable">Të çaktivizohet përdorimi i Shërbimit Push?\n\nKjo mund të sjellë njoftime të vonuara.</string>
     <string name="pref_background_notifications">Përdor Lidhje Në Prapaskenë</string>
     <string name="pref_background_notifications_explain">Lyp shpërfillje optimizimesh baterie, përdoreni nëse Shërbimi Push është jashtë funksionimi</string>

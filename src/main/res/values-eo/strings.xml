@@ -383,6 +383,7 @@
     <string name="import_backup_title">Importi savkopion</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Akcepti nevalidajn atestilojn</string>
+    <!-- deprecated -->
     <string name="used_settings">Uzitaj agordoj:</string>
     <string name="delete_account">Forigi konton</string>
     <string name="delete_account_ask">Ĉu vi certas, ke vi volas forigi ĉiujn datumojn de vi konto?</string>
