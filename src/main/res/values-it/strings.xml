@@ -637,6 +637,7 @@
     <string name="login_error_cannot_login">Impossibile accedere come \"%1$s\". Verifica che l\'indirizzo email e la password siano corretti.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Accetta certificati non validi</string>
+    <!-- deprecated -->
     <string name="used_settings">Impostazioni in uso:</string>
     <string name="switch_account">Cambia Account</string>
     <string name="add_account">Aggiungi Account</string>
@@ -856,7 +857,9 @@
 
 
     <!-- system messages -->
+    <!-- deprecated -->
     <string name="systemmsg_read_receipt_subject">Ricevuta di lettura</string>
+    <!-- deprecated -->
     <string name="systemmsg_read_receipt_body">Questa è una ricevuta di lettura del messaggio \"%1$s\".\n\nCiò significa che il messaggio è stato mostrato nel dispositivo del destinatario, ma non necessariamente che il contenuto è stato letto.</string>
     <string name="systemmsg_cannot_decrypt">Questo messaggio non può essere decrittografato.\n\n• Potrebbe essere già utile rispondere semplicemente a questo messaggio e chiedere al mittente d\'inviare nuovamente il messaggio.\n\n• Se hai appena reinstallato Delta Chat, è meglio se riconfiguri ora Delta Chat e scegli \"Aggiungi come secondo dispositivo\" o importa un backup.</string>
     <string name="systemmsg_unknown_sender_for_chat">Mittente sconosciuto per questa chat. Vedi \'info\' per maggiori dettagli.</string>
@@ -1156,8 +1159,11 @@
 
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="pref_instant_delivery">Consegna Istantanea</string>
+    <!-- deprecated -->
     <string name="pref_push_notifications">Utilizza Servizio Push</string>
+    <!-- deprecated -->
     <string name="pref_push_notifications_explain">Notifiche Push Affidabili per Server-Chatmail</string>
+    <!-- deprecated -->
     <string name="pref_push_ask_disable">Disabilitare Servizio Push?\n\nCiò potrebbe causare ritardi nelle notifiche.</string>
     <string name="pref_background_notifications">Utilizza Connessione Background</string>
     <string name="pref_background_notifications_explain">Richiede ignora ottimizzazioni della batteria, da utilizzare se il Servizio Push non è disponibile</string>

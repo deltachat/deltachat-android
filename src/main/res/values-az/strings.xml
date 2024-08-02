@@ -392,6 +392,7 @@
 
 
     <!-- system messages -->
+    <!-- deprecated -->
     <string name="systemmsg_read_receipt_subject">Qəbul olunanları oxuyun</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
     <string name="group_name_changed_by_you">Qrupun adı \"%1$s\" - dən \"%2$s\" - yə deyişildi məndən. </string>

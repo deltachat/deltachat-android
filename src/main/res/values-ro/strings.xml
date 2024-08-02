@@ -565,6 +565,7 @@
     <string name="login_error_cannot_login">Nu se poate autentifica ca \"%1$s\". Vă rugăm să verificați dacă adresa de e-mail și parola sunt corecte.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Acceptarea certificatelor nevalabile</string>
+    <!-- deprecated -->
     <string name="used_settings">Setări utilizate:</string>
     <string name="switch_account">Schimbați contul</string>
     <string name="add_account">Adăugați un cont</string>

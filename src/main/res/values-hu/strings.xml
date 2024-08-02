@@ -622,6 +622,7 @@
     <string name="login_error_cannot_login">Nem lehetett bejelentkezni ide: „%1$s”. Ellenőrizze, hogy a megadott e-mail cím és a jelszó helyes-e.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Érvénytelen tanúsítványok elfogadása</string>
+    <!-- deprecated -->
     <string name="used_settings">Használt beállítások:</string>
     <string name="switch_account">Profilváltás</string>
     <string name="add_account">Profil hozzáadása</string>
@@ -841,7 +842,9 @@
 
 
     <!-- system messages -->
+    <!-- deprecated -->
     <string name="systemmsg_read_receipt_subject">Üzenet megnyitva</string>
+    <!-- deprecated -->
     <string name="systemmsg_read_receipt_body">Az Ön által küldött „%1$s” tartalmú üzenet megjelent a címzett képernyőjén.\n\nEz nem garancia arra, hogy a tartalmat elolvasták.</string>
     <string name="systemmsg_cannot_decrypt">Ez az üzenet nem dekódolható.\n\n• Már az is segíthet, ha egyszerűen válaszol erre az üzenetre, és megkéri a feladóját, hogy küldje el újra az üzenetet.\n\n• Ha most telepítette újra a Delta Chat-et, akkor a legjobb, ha most újraindítja a Delta Chat-et, és kiválasztja a „Második eszközként való hozzáadás” lehetőséget, vagy importál egy biztonsági mentést.</string>
     <string name="systemmsg_unknown_sender_for_chat">Az üzenet küldője ismeretlen ebben a csevegésben. További részletekért nézze meg az \'Infót\'.</string>
@@ -1141,8 +1144,11 @@
 
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="pref_instant_delivery">Azonnali kézbesítés</string>
+    <!-- deprecated -->
     <string name="pref_push_notifications">Push szolgáltatás használata</string>
+    <!-- deprecated -->
     <string name="pref_push_notifications_explain">Megbízható push értesítések a chatmail kiszolgálókhoz</string>
+    <!-- deprecated -->
     <string name="pref_push_ask_disable">Push szolgáltatás letiltása?\n\nEz késleltetett értesítéseket eredményezhet.</string>
     <string name="pref_background_notifications">Háttérkapcsolat használata</string>
     <string name="pref_background_notifications_explain">Figyelmen kívül hagyott akkumulátor-optimalizációt igényel, akkor használja, ha a Push szolgáltatás nem érhető el</string>

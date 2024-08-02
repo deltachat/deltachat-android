@@ -637,6 +637,7 @@
     <string name="login_error_cannot_login">No se puede iniciar sesión como \"%1$s\". Por favor, compruebe si la dirección de correo y la contraseña son correctas.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Aceptar certificados no válidos</string>
+    <!-- deprecated -->
     <string name="used_settings">Ajustes usados:</string>
     <string name="switch_account">Cambiar cuenta</string>
     <string name="add_account">Agregar cuenta</string>
@@ -856,7 +857,9 @@
 
 
     <!-- system messages -->
+    <!-- deprecated -->
     <string name="systemmsg_read_receipt_subject">Recibo de lectura</string>
+    <!-- deprecated -->
     <string name="systemmsg_read_receipt_body">El mensaje \"%1$s\" que enviaste se mostró en la pantalla del destinatario.\n\nEsto no garantiza que el contenido haya sido leído.</string>
     <string name="systemmsg_cannot_decrypt">Este mensaje no se puede descifrar.\n\n• Podría ayudar simplemente responder a este mensaje y pedir al remitente que lo envíe de nuevo.\n\n• Si acabas de reinstalar Delta Chat, es mejor que configures Delta Chat de nuevo y elijas \"Agregar como segundo dispositivo\" o importes una copia de seguridad.</string>
     <string name="systemmsg_unknown_sender_for_chat">Remitente desconocido. Mira \"info\" para más detalles.</string>
@@ -1156,8 +1159,11 @@
 
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="pref_instant_delivery">Entrega inmediata</string>
+    <!-- deprecated -->
     <string name="pref_push_notifications">Usar servicio Push</string>
+    <!-- deprecated -->
     <string name="pref_push_notifications_explain">Notificaciones Push estables para servidores de chatmail</string>
+    <!-- deprecated -->
     <string name="pref_push_ask_disable">¿Desactivar el uso del servicio Push?\n\nEsto puede provocar retrasos en las notificaciones.</string>
     <string name="pref_background_notifications">Usar conexión en segundo plano</string>
     <string name="pref_background_notifications_explain">Requiere desactivar las optimizaciones de batería, utilícelas si el servicio Push no está disponible</string>

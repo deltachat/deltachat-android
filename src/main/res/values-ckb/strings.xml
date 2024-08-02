@@ -366,6 +366,7 @@
     <string name="import_backup_no_backup_found">هیچ یەدەکێک نەدۆزرایەوە.\n\n یەدەکەکە کۆپی بکە بۆ\"%1$s\" و دیسان هەوڵبدەوە. یان بۆ بەردەوامبوون لەسەر پرۆسەی ئاسایی دامەزراندنەکە، دەستبنە بە \"دەستپێکی نامەنووسین\"دا .</string>
     <!-- Translators: %1$s will be replaced by the e-mail address -->
     <string name="login_error_cannot_login">\"%1$s\" ناتوانێت بچێتە ژوورەوە. سەرنج بدە بزانە ئیمەیل و تێپەڕوشەکە درووستە.</string>
+    <!-- deprecated -->
     <string name="used_settings">ڕێکخستنە بەکارهێنراوەکان:</string>
     <string name="switch_account">گۆڕینی هەژمار</string>
     <string name="add_account">زیادکردنی هەژمار</string>
@@ -502,6 +503,7 @@
     <string name="autocrypt_continue_transfer_title">پەیامی ڕێکخستنی ئۆتۆکریپت</string>
     <string name="autocrypt_continue_transfer_retry">دیسان هەوڵدانەوە</string>
     <!-- system messages -->
+    <!-- deprecated -->
     <string name="systemmsg_read_receipt_subject">پەیامەکە کرایەوە</string>
     <string name="systemmsg_unknown_sender_for_chat">پەیامنێری ئەم وتووێژە نەناسراوە. بۆ وردەکاری زۆرتر سەیری \'زانیارییەکان\' بکە.</string>
     <string name="systemmsg_subject_for_new_contact">پەیام لەلایەن %1$s</string>

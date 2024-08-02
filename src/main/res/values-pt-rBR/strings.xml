@@ -575,6 +575,7 @@
     <string name="login_error_cannot_login">Impossível acessar \"%1$s\". Por favor, verifique o e-mail e senha.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Aceitar certificados inválidos</string>
+    <!-- deprecated -->
     <string name="used_settings">Configurações utilizadadas:</string>
     <string name="switch_account">Mudar de conta</string>
     <string name="add_account">Adicionar conta</string>
@@ -768,7 +769,9 @@
 
 
     <!-- system messages -->
+    <!-- deprecated -->
     <string name="systemmsg_read_receipt_subject">Confirmação de leitura</string>
+    <!-- deprecated -->
     <string name="systemmsg_read_receipt_body">Confirmação de recebimento da mensagem \"%1$s\".\n\nEsta confirmação somente assegura que a mensagem foi exibida no aparelho do destinatário, mas não há garantia de que ele tenha lido o seu conteúdo.</string>
     <string name="systemmsg_unknown_sender_for_chat">Remetente desconhecido para esta conversa. Veja \'informações\' para mais detalhes.</string>
     <string name="systemmsg_subject_for_new_contact">Mensagem de %1$s</string>

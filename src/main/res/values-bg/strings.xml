@@ -618,6 +618,7 @@
     <string name="login_error_cannot_login">Не можете да влезете като \"%1$s\". Моля, проверете дали адресът за електронна поща и паролата са правилни. </string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Да бъдат приемани невалидните сертификати</string>
+    <!-- deprecated -->
     <string name="used_settings">Използвани настройки:</string>
     <string name="switch_account">Превключване към друг акаунт</string>
     <string name="add_account">Добавяне на акаунт</string>
@@ -835,7 +836,9 @@
 
 
     <!-- system messages -->
+    <!-- deprecated -->
     <string name="systemmsg_read_receipt_subject">Съобщението е отворено</string>
+    <!-- deprecated -->
     <string name="systemmsg_read_receipt_body">Съобщението \"%1$s\", което изпратихте, беше показано на екрана на получателя.\n\nТова не е гаранция, че съдържанието му е прочетено.</string>
     <string name="systemmsg_cannot_decrypt">Това съобщение не може да бъде декриптирано.\n\n• Бихте могли просто да му отговорите и да помолите подателя да го изпрати отново.\n\n• Ако току-що сте преинсталирали Delta Chat, е най-добре да настроите приложението отново сега и да изберете \"Добавяне като второ устройство\" или да импортирате от архив.</string>
     <string name="systemmsg_unknown_sender_for_chat">Неизвестен подател за този чат. Вижте \"информация\" за повече подробности.</string>

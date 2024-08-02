@@ -540,6 +540,7 @@
     <string name="login_error_cannot_login">Nie je možné prihlásiť sa ako „%1$s“. Skontrolujte správnosť e-mailovej adresy a hesla.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Prijmite neplatné certifikáty</string>
+    <!-- deprecated -->
     <string name="used_settings">Použité nastavenia:</string>
     <string name="switch_account">Prepnúť účet</string>
     <string name="add_account">Pridať účet</string>
@@ -733,7 +734,9 @@
 
 
     <!-- system messages -->
+    <!-- deprecated -->
     <string name="systemmsg_read_receipt_subject">Správa otvorená</string>
+    <!-- deprecated -->
     <string name="systemmsg_read_receipt_body">%1$s Správa, ktorú ste poslali, sa zobrazila na obrazovke príjemcu.\n\nZaručujeme, že obsah nebol prečítaný.</string>
     <string name="systemmsg_unknown_sender_for_chat">Neznámy odosielateľ pre túto konverzáciu. Ďalšie informácie nájdete v časti „Informácie“.</string>
     <string name="systemmsg_subject_for_new_contact">Správa od %1$s</string>

@@ -521,6 +521,7 @@
     <string name="import_backup_no_backup_found">找不到備份\n\n請把備份複製到 %1$s 然後再試一次，或是按「開始傳送訊息」進行標準設定。</string>
     <!-- Translators: %1$s will be replaced by the e-mail address -->
     <string name="login_error_cannot_login">無法登入 %1$s。請確定 email 帳號和密碼是否正確。 </string>
+    <!-- deprecated -->
     <string name="used_settings">已使用的設定：</string>
     <string name="switch_account">切換個人檔案</string>
     <string name="add_account">新增個人檔案</string>
@@ -680,7 +681,9 @@
 
 
     <!-- system messages -->
+    <!-- deprecated -->
     <string name="systemmsg_read_receipt_subject">收執回條</string>
+    <!-- deprecated -->
     <string name="systemmsg_read_receipt_body">這是訊息 %1$s 的收執回條，表示本訊息已經顯示在收件人的裝置上了，但不代表收件人已讀。</string>
     <string name="systemmsg_subject_for_new_contact">來自 %1$s 的訊息</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->

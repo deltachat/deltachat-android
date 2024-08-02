@@ -231,6 +231,7 @@
     <string name="menu_delete_location">Diesen Standort löschen?</string>
     <string name="menu_message_details">Nachrichteninfo</string>
     <string name="menu_copy_to_clipboard">In Zwischenablage kopieren</string>
+    <string name="share_invite_link">Einladungslink teilen</string>
     <string name="menu_copy_selection_to_clipboard">Auswahl kopieren</string>
     <string name="menu_copy_link_to_clipboard">Link kopieren</string>
     <string name="menu_copy_text_to_clipboard">Text kopieren</string>
@@ -622,6 +623,7 @@
     <string name="login_error_cannot_login">Login als \"%1$s\" nicht möglich. Bitte E-Mail-Adresse und Passwort auf Richtigkeit überprüfen.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Ungültige Zertifikate akzeptieren</string>
+    <!-- deprecated -->
     <string name="used_settings">Verwendete Einstellungen:</string>
     <string name="switch_account">Profil wechseln</string>
     <string name="add_account">Profil hinzufügen</string>
@@ -841,7 +843,9 @@
 
 
     <!-- system messages -->
+    <!-- deprecated -->
     <string name="systemmsg_read_receipt_subject">Empfangsbestätigung</string>
+    <!-- deprecated -->
     <string name="systemmsg_read_receipt_body">Ihre Nachricht \"%1$s\" wurde auf dem Empfangsgerät angezeigt.\n\nDas ist keine Garantie dafür, dass sie auch gelesen wurde.</string>
     <string name="systemmsg_cannot_decrypt">Diese Nachricht kann nicht entschlüsselt werden.\n\n• Es kann bereits helfen, auf diese Nachricht zu antworten und den Absender zu bitten, die Nachricht noch einmal zu senden.\n\n• Wenn Sie Delta Chat gerade neu installiert haben, ist es am besten, wenn Sie Delta Chat mit \"Als Zweitgerät hinzufügen\" neu einrichten oder ein Backup importieren.</string>
     <string name="systemmsg_unknown_sender_for_chat">Absender ist für diesen Chat unbekannt. Siehe \"Info\" für weitere Details,</string>
@@ -917,6 +921,7 @@
     <string name="chat_protection_broken_explanation">Die Ende-zu-Ende-Verschlüsselung kann nicht mehr garantiert werden, wahrscheinlich weil %1$s Delta Chat neu installiert oder eine Nachricht von einem anderen Gerät gesendet hat.\n\n Sie können ihn persönlich treffen und seinen QR-Code erneut scannen, um die garantierte Ende-zu-Ende-Verschlüsselung wiederherzustellen.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s verlangt eine Ende-zu-Ende-Verschlüsselung, die für diesen Chat noch nicht hergestellt wurde. Tippen, um mehr zu erfahren.</string>
     <string name="invalid_unencrypted_explanation">Um eine Ende-zu-Ende-Verschlüsselung herzustellen, können Sie Kontakte persönlich treffen und ihren QR-Code scannen.</string>
+    <string name="encryption_required_for_new_contact">Ende-zu-Ende-Verschlüsselung ist notwendig, aber für %1$s nicht eingerichtet.\n\nZum Herstellen der Ende-zu-Ende-Verschlüsselung, können Sie Ihren Einladungslink teilen oder den Kontakt persönlich zum QR-Code-Scannen treffen.</string>
     <string name="learn_more">Mehr erfahren</string>
 
     <string name="devicemsg_self_deleted">Sie haben den Chat \"Gespeicherte Nachrichten\" gelöscht.\n\nℹ️ Um die Funktion \"Gespeicherte Nachrichten\" erneut zu verwenden, erstellen Sie einfach einen Chat mit sich selbst.</string>
@@ -1141,11 +1146,14 @@
 
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="pref_instant_delivery">Sofortige Benachrichtigungen</string>
+    <!-- deprecated -->
     <string name="pref_push_notifications">Push-Dienst verwenden</string>
+    <!-- deprecated -->
     <string name="pref_push_notifications_explain">Zuverlässige Push-Benachrichtigungen für Chatmail-Server</string>
+    <!-- deprecated -->
     <string name="pref_push_ask_disable">Push-Dienst nicht mehr verwenden? Dies kann zu verzögerten Benachrichtigungen führen.</string>
     <string name="pref_background_notifications">Hintergrundverbindung verwenden</string>
-    <string name="pref_background_notifications_explain">Erfordert das Deaktivieren der Akku-Optimierungen, empfohlen, wenn kein Push-Dienst verfügbar ist</string>
+    <string name="pref_background_notifications_explain">Erfordert das Deaktivieren der Akku-Optimierungen; empfohlen, wenn Nachrichten nicht rechtzeitig ankommen</string>
     <string name="pref_reliable_service">Hintergrundverbindung erzwingen</string>
     <string name="pref_reliable_service_explain">Verursacht eine permanente Benachrichtigung</string>
 

@@ -607,6 +607,7 @@
     <string name="login_error_cannot_login">无法作为“%1$s”登录。请检查电子邮件地址和密码是否正确。</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">接受无效的证书</string>
+    <!-- deprecated -->
     <string name="used_settings">已使用设置：</string>
     <string name="switch_account">切换账户 </string>
     <string name="add_account">添加账户</string>
@@ -826,7 +827,9 @@
 
 
     <!-- system messages -->
+    <!-- deprecated -->
     <string name="systemmsg_read_receipt_subject">消息已被打开</string>
+    <!-- deprecated -->
     <string name="systemmsg_read_receipt_body">您发送的“%1$s”消息已在接收者的屏幕上显示过。\n\n这并不保证内容已被阅读。</string>
     <string name="systemmsg_cannot_decrypt">无法解密此消息。\n\n• 简化对此消息的回复并请求发送方再次发送消息可能会有帮助。\n\n•  如果你刚重新安装 Delta Chat，你最好立即重新设置 Delta Chat 并选择“添加为第二台设备”或导入备份文件。</string>
     <string name="systemmsg_unknown_sender_for_chat">此聊天发送者未知。查看“信息”来获取更多详情。</string>
@@ -1126,8 +1129,11 @@
 
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="pref_instant_delivery">即时传送</string>
+    <!-- deprecated -->
     <string name="pref_push_notifications">使用推送服务</string>
+    <!-- deprecated -->
     <string name="pref_push_notifications_explain">Chatmail 服务器的可靠推送通知</string>
+    <!-- deprecated -->
     <string name="pref_push_ask_disable">停用推送服务吗？\n\n这可能导致通知延迟。</string>
     <string name="pref_background_notifications">使用后台连接</string>
     <string name="pref_background_notifications_explain">需要忽略电池优化，请在推送服务不可用时使用它</string>

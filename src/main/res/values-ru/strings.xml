@@ -651,6 +651,7 @@
     <string name="login_error_cannot_login">Не удалось войти с логином \"%1$s\". Убедитесь, что адрес эл. почты и пароль указаны верно.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Принимать недействительные сертификаты</string>
+    <!-- deprecated -->
     <string name="used_settings">Используемые настройки:</string>
     <string name="switch_account">Сменить Профиль</string>
     <string name="add_account">Добавить Профиль</string>
@@ -868,7 +869,9 @@
 
 
     <!-- system messages -->
+    <!-- deprecated -->
     <string name="systemmsg_read_receipt_subject">Уведомление о прочтении</string>
+    <!-- deprecated -->
     <string name="systemmsg_read_receipt_body">Это подтверждение того, что сообщение \"%1$s\" было открыто на устройстве получателя. Данное подтверждение не означает, что сообщение было прочитано.</string>
     <string name="systemmsg_cannot_decrypt">Это сообщение не может быть расшифровано.\n\n• Возможно, вам поможет простой ответ на это сообщение и просьба отправителю, отправить сообщение еще раз.\n\n• Если вы только что переустановили Delta Chat, лучше всего перенастроить Delta Chat сейчас и выбрать «Добавить как второе устройство» или импортировать резервную копию.</string>
     <string name="systemmsg_unknown_sender_for_chat">Неизвестный отправитель для данного чата. Смотрите \"информацию\" для подробностей.</string>
@@ -1168,8 +1171,11 @@
 
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="pref_instant_delivery">Мгновенная Доставка</string>
+    <!-- deprecated -->
     <string name="pref_push_notifications">Использовать Службу Push</string>
+    <!-- deprecated -->
     <string name="pref_push_notifications_explain">Надёжные Push Уведомления для Серверов Chatmail</string>
+    <!-- deprecated -->
     <string name="pref_push_ask_disable">Отключить использование Службы Push?\n\nЭто может привести к задержке уведомлений.</string>
     <string name="pref_background_notifications">Использовать Фоновое Соединение</string>
     <string name="pref_background_notifications_explain">Требуется отключение оптимизации батареи, используется, если служба Push Уведомлений недоступна</string>

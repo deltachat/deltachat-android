@@ -416,6 +416,7 @@
     <string name="login_error_cannot_login">Tidak bisa login sebagai \"%1$s\". Mohon cek apakah alamat surel dan kata sandi benar.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Terima sertifikat yang tidak sah</string>
+    <!-- deprecated -->
     <string name="used_settings">Setelan yang digunakan:</string>
     <string name="switch_account">Alihkan akun</string>
     <string name="add_account">Tambah akun</string>
@@ -560,7 +561,9 @@
 
 
     <!-- system messages -->
+    <!-- deprecated -->
     <string name="systemmsg_read_receipt_subject">Pesan dibuka</string>
+    <!-- deprecated -->
     <string name="systemmsg_read_receipt_body">Pesan \"%1$s\" yang Anda kirimkan tampak di layar penerima.\n\nIni bukan jaminan kalau isinya dibaca.</string>
     <string name="systemmsg_unknown_sender_for_chat">Pengirim tidak dikenal untuk obrolan ini. Lihat \'info\' untuk lebih jelasnya.</string>
     <string name="systemmsg_subject_for_new_contact">Pesan dari %1$s</string>
