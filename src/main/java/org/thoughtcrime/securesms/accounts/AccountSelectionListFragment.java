@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.b44t.messenger.DcAccounts;
+import com.b44t.messenger.DcContext;
 
 import org.thoughtcrime.securesms.ConnectivityActivity;
 import org.thoughtcrime.securesms.R;
@@ -74,12 +75,24 @@ public class AccountSelectionListFragment extends DialogFragment
     super.onCreateContextMenu(menu, v, menuInfo);
     requireActivity().getMenuInflater().inflate(R.menu.account_item_context, menu);
 
-    Util.redMenuItem(menu, R.id.delete);
+    AccountSelectionListItem listItem = (AccountSelectionListItem) v;
+    int accountId = listItem.getAccountId();
+    DcAccounts dcAccounts = DcHelper.getAccounts(getActivity());
+
+    if (accountId == dcAccounts.getSelectedAccount().getAccountId()) {
+      menu.findItem(R.id.delete).setVisible(false);
+    } else {
+      Util.redMenuItem(menu, R.id.delete);
+    }
+
+    if (dcAccounts.getAccount(accountId).isMuted()) {
+      menu.findItem(R.id.menu_mute_notifications).setTitle(R.string.menu_unmute);
+    }
 
     // hack to make onContextItemSelected() work with DialogFragment,
     // see https://stackoverflow.com/questions/15929026/oncontextitemselected-does-not-get-called-in-a-dialogfragment
     MenuItem.OnMenuItemClickListener listener = item -> {
-      onContextItemSelected(item, v);
+      onContextItemSelected(item, accountId);
       return true;
     };
     for (int i = 0, n = menu.size(); i < n; i++) {
@@ -88,10 +101,13 @@ public class AccountSelectionListFragment extends DialogFragment
     // /hack
   }
 
-  private void onContextItemSelected(MenuItem item, View view) {
+  private void onContextItemSelected(MenuItem item, int accountId) {
     switch (item.getItemId()) {
     case R.id.delete:
-      onDeleteAccount(((AccountSelectionListItem) view).getAccountId());
+      onDeleteAccount(accountId);
+      break;
+    case R.id.menu_mute_notifications:
+      onToggleMute(accountId);
       break;
     }
   }
@@ -111,6 +127,13 @@ public class AccountSelectionListFragment extends DialogFragment
           AccountManager.getInstance().showSwitchAccountMenu(activity);
       })
       .show();
+  }
+
+  private void onToggleMute(int accountId) {
+    DcAccounts dcAccounts = DcHelper.getAccounts(getActivity());
+    DcContext dcContext = dcAccounts.getAccount(accountId);
+    dcContext.setMuted(!dcContext.isMuted());
+    recyclerView.getAdapter().notifyDataSetChanged();
   }
 
   private class ListClickListener implements AccountSelectionListAdapter.ItemClickListener {
