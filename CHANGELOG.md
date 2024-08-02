@@ -4,7 +4,7 @@
 2024-08
 
 * "Share Contact" directly from a contact's profile
-* add "Share Invite Link" to "New Contact" dialog
+* add "Share Invite Link" to "New Contact" screen
 * add "Invite Friends" to main menu
 * cleanup "Profile Switcher", long tap to delete profiles
 * "Mute Notifications" via a long tap directly from "Profile Switcher"
