@@ -389,6 +389,9 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
       case R.id.menu_new_chat:
         createChat();
         return true;
+      case R.id.menu_invite_friends:
+        shareInvite();
+        return true;
       case R.id.menu_settings:
         startActivity(new Intent(this, ApplicationPreferencesActivity.class));
         return true;
@@ -484,6 +487,14 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
       acquireRelayMessageContent(this, intent);
     }
     startActivity(intent);
+  }
+
+  private void shareInvite() {
+    Intent intent = new Intent(Intent.ACTION_SEND);
+    intent.setType("text/plain");
+    String inviteURL = Util.QrDataToInviteURL(DcHelper.getContext(this).getSecurejoinQr(0));
+    intent.putExtra(Intent.EXTRA_TEXT, getString(R.string.invite_friends_text, inviteURL));
+    startActivity(Intent.createChooser(intent, getString(R.string.chat_share_with_title)));
   }
 
   @Override
