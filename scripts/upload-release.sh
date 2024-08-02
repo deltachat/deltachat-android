@@ -39,5 +39,5 @@ rsync --progress $SYMBOLS_ZIP jekyll@download.delta.chat:/var/www/html/download/
 echo "upload done."
 echo ""
 echo "and now: here is Delta Chat $VERSION:"
-echo "- 🍋 https://download.delta.chat/android/deltachat-gplay-release-$VERSION.apk (android, overwrites existing gplay installs, keeps data)"
+echo "- 🍋 https://download.delta.chat/android/deltachat-gplay-release-$VERSION.apk (google play candidate, overwrites existing installs, should keep data)"
 echo ""
